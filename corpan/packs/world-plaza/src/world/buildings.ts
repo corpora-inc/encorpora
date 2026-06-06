@@ -1,6 +1,7 @@
 import type { Scene } from "@babylonjs/core/scene"
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder"
 import { Mesh } from "@babylonjs/core/Meshes/mesh"
+import { TransformNode } from "@babylonjs/core/Meshes/transformNode"
 import { VertexData } from "@babylonjs/core/Meshes/mesh.vertexData"
 import { VertexBuffer } from "@babylonjs/core/Buffers/buffer"
 import { DynamicTexture } from "@babylonjs/core/Materials/Textures/dynamicTexture"
@@ -50,8 +51,26 @@ import { createFacadePainter, type FacadePainter } from "./facadePainter"
 /* --------------------------------------------------------------- public API */
 
 export interface BuildingsHandle {
-  /** the parent node holding every building; useful for bulk transforms. */
-  root: Mesh
+  /**
+   * The parent node holding every building (useful for bulk transforms). It is a
+   * pure `TransformNode`, NOT a `Mesh` — an empty-geometry root Mesh draws nothing
+   * but still counts as an ACTIVE MESH that Babylon re-evaluates every frame, and
+   * the streamed city builds one `createBuildings` call PER BUILDING (~hundreds of
+   * empty roots near the player → hundreds of pointless active-mesh evals). A
+   * TransformNode is invisible to the active-mesh pass entirely.
+   */
+  root: TransformNode
+  /**
+   * Every mesh this call built (the merged body + each separate roof/step/shadow/
+   * awning/sign/balcony piece), in build order. Exposed so a STREAMED caller
+   * (city/chunkMesh) can run a chunk-level draw-call MERGE pass — collapsing the
+   * many same-material detail meshes (roof caps, door steps, contact shadows)
+   * across a whole chunk into a handful of combined draws. This is a pure
+   * read-only view for instancing/LOD; the handle still owns disposal of whatever
+   * remains. (The merge pass disposes the originals it folds in and tracks the
+   * combined meshes itself, so they don't double-free.)
+   */
+  meshes: Mesh[]
   dispose: () => void
 }
 
@@ -793,7 +812,7 @@ function buildOne(
   texs: TexPool,
   doors: Array<{ x: number; z: number; facing?: number }> | undefined,
   seed: number,
-  parent: Mesh,
+  parent: TransformNode,
   lib: MaterialLibrary | undefined,
   style: BuildingStyle,
 ): Mesh[] {
@@ -1229,7 +1248,10 @@ export function createBuildings(
   const style = resolveStyle(opts.buildingStyle)
   const pal = resolvePalette(opts.palette, style)
   const baseSeed = opts.seed ?? 1337
-  const root = new Mesh(`wp-buildings-root-${guid++}`, scene)
+  // A pure TransformNode root (NOT a Mesh): it carries no geometry, so making it a
+  // Mesh only added an empty active-mesh the renderer re-evaluates each frame —
+  // and the streamed city makes one such root PER BUILDING. See BuildingsHandle.
+  const root = new TransformNode(`wp-buildings-root-${guid++}`, scene)
   // SHARED façade cache (city-lifetime) when supplied — painted once, reused by
   // every chunk. A private pool (standalone previews) is owned + freed by this
   // handle; a shared pool is owned + freed by the CITY (never here).
@@ -1260,12 +1282,18 @@ export function createBuildings(
 
   return {
     root,
+    meshes: all,
     dispose: () => {
       // Free ONLY this call's own meshes. The shared façade pool's textures +
       // materials are city-lifetime — disposing them here would corrupt every
       // OTHER chunk that reuses the same façade variant. We pass
       // disposeMaterialAndTextures=false so shared mats/textures survive.
-      for (const m of all) m.dispose(false, false)
+      // (A chunk-level merge pass may have disposed+removed some of `all` and
+      // pushed combined meshes in their place — `all` is kept in sync, so this
+      // never double-frees and never leaks the combined meshes.)
+      for (const m of all) {
+        if (!m.isDisposed()) m.dispose(false, false)
+      }
       root.dispose(false, false)
       // Only a PRIVATE pool (standalone preview, no shared pool supplied) is
       // freed here; a shared/city pool is freed once on city dispose.

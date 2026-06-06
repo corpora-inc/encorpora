@@ -67,8 +67,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   appears only as the capstone of an explicitly-advanced quest, never as a quest's
   first step — guarded by a catalog-integrity test so the unwinnable-mic-gate bug
   can't return. (+30 quest tests; `npm run test:run` 431 green.)
+- **Three transit HERO landmarks + boarding vignettes (the city scales out).**
+  The metropolis gains a **Union Rail Station**, a **Central Bus Terminal**, and a
+  **City Airport** — each a real anchored landmark (distinct hero footprint: rail
+  head-house + clock block, bus terminal with departure bays, airport terminal +
+  control tower) in its own quadrant, with a ceremonial forecourt ARCH you walk
+  THROUGH to board. (`city/generateCity.ts`, `world/specialPlaces.ts`.)
+- **Transit is now reachable in normal play.** Each station landmark is a literal
+  ENTRY POINT: walk up → a localized Enter affordance → the matching **boarding
+  vignette** (a paper-person clerk who talks in the TARGET language via the real
+  Qwen3 runtime, a departures board, a say-it-back challenge that EARNS the trip,
+  a fare paid from your wallet) → you ARRIVE at the chosen landmark (`travelTo`
+  re-spawn). One shared boarding vignette, three mode skins (bus / train / flight);
+  the taxi rank stays as-is. (`vignettes/boarding.ts`, `vignettes/index.ts`,
+  surgical wiring behind `addTransitPortal` in `game.ts`.) Every string is keyed
+  with an English fallback (the taxi convention) — ready for the ~50-lang fill.
 
 ### Performance
+- **Chunk-level building-detail MERGE + figure culling (city scale headroom).**
+  Three cuts that slash the per-frame *active-mesh evaluation* — the cost the docs
+  flagged as the biggest frame phase, which scales with TOTAL resident meshes, not
+  visible ones:
+  - The streamed city built one `createBuildings` call PER BUILDING, each making
+    an empty-geometry root **Mesh** — hundreds of pointless active meshes the
+    renderer re-evaluated every frame. Root is now a `TransformNode` (invisible to
+    the active-mesh pass). (`world/buildings.ts`.)
+  - A chunk now runs a **merge pass** after its buildings: every same-material
+    roof cap (`wp-r-`), door step (`wp-st-`), and contact shadow (`wp-sh-`) across
+    the whole chunk folds into ONE combined mesh each — ~3·N detail draws →
+    ~3/chunk. Prefixes the shadow/occlusion systems key off are preserved (the
+    combined roof stays a `wp-r-` caster). (`city/chunkMesh.ts`, +`meshes` on the
+    buildings handle.)
+  - 3D figures no longer force `alwaysSelectAsActiveMesh` on every part/face/shadow
+    — they cull normally against a FRESH (never-frozen) bbox, so a figure behind
+    the camera drops out of the instanced batch + its unique face/shadow draws,
+    with no dissolve regression. (`character/figure3d.ts`.)
+  - Measured at the spawn neighbourhood (9 near chunks): meshesActive 457→186
+    (−59%), resident meshesTotal 1978→1043 (−47%), in-frustum draws 470→436; the
+    draw win compounds as districts multiply. Profile with `qa/measure-perf.mjs`.
 - **Bridge merged + roofs simplified (draw-call cuts).** The bridge was ~131
   separate boxes (one static structure = 131 draw calls); now merged by material
   to ~4. Generic-building roofs — barely visible at the play camera — collapse from

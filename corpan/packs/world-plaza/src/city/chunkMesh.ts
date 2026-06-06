@@ -1,8 +1,9 @@
 import type { Scene } from "@babylonjs/core/scene"
 import "@babylonjs/core/Meshes/thinInstanceMesh"
 import { TransformNode } from "@babylonjs/core/Meshes/transformNode"
-import type { Mesh } from "@babylonjs/core/Meshes/mesh"
+import { Mesh } from "@babylonjs/core/Meshes/mesh"
 import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh"
+import type { Material } from "@babylonjs/core/Materials/material"
 import { Constants } from "@babylonjs/core/Engines/constants"
 import type { Matrix } from "@babylonjs/core/Maths/math"
 import { createBuildings, type Blocker } from "../world/buildings"
@@ -166,6 +167,12 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
     .map((b) => ({ x: b.door!.x, z: b.door!.z }))
   // build state for the per-building loop.
   let bIndex = 0
+  // Every detail mesh built this chunk (roof caps, door steps, contact shadows,
+  // awnings, signs, balconies) — accumulated across the per-building steps so a
+  // single MERGE PASS (mergeBuildingDetails, run once after the last building)
+  // can collapse the same-material groups into a few combined draws. The merged
+  // opaque BODIES are kept separate (unique façade textures) + tracked for shadows.
+  const chunkDetailMeshes: Mesh[] = []
   const buildOneBuilding = () => {
     const t = perfEnabled() ? performance.now() : 0
     const b = chunk.buildings[bIndex]
@@ -184,21 +191,90 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
     })
     handle.root.parent = root
     disposers.push(handle.dispose) // frees only THIS building's meshes
-    // Collect ONLY the building's BIG SILHOUETTE pieces as shadow casters: the
-    // merged opaque body (`wp-building-…`, which already folds in the walls +
-    // windows) and the main roof masses (`wp-r-`, `wp-r2-`). We deliberately do
-    // NOT register the swarm of small details (parapet caps, entry steps, chimneys,
-    // balcony rails, dome finials, awning/sign alpha planes): each is a separate
-    // mesh, and a building has ~8 of them, so registering them all would balloon
-    // the per-frame shadow-map draw count ~8× for shadows too tiny to read. Casting
-    // the body + roof gives the long golden-hour silhouette at ~1–3 casters/building
-    // instead of ~8 — the difference between a phone-friendly map and perf death.
-    // (registerShadowCaster also flags each as a receiver — walls catch each other.)
-    for (const m of handle.root.getChildMeshes()) {
-      if (isBigCaster(m.name)) buildingMeshes.push(m)
+    // Collect the merged opaque BODY (`wp-building-…`, which folds in the walls +
+    // windows) as a shadow CASTER now — bodies are never merged (unique façade
+    // textures). The ROOF masses (`wp-r-`/`wp-r2-`) become casters only AFTER the
+    // chunk-level merge below combines them into one mesh (registering the
+    // per-building caps then disposing them in the merge would leave dangling
+    // caster refs). The swarm of small details (steps, awnings, signs, balconies,
+    // chimneys, finials) is deliberately NOT cast — too tiny to read, and casting
+    // each would balloon the per-frame shadow-map draw count.
+    for (const m of handle.meshes) {
+      if (m.name.startsWith("wp-building-")) buildingMeshes.push(m)
+      else chunkDetailMeshes.push(m) // roof/step/shadow/awning/sign/balcony → merge pass
     }
     drawCount += 1
     bIndex++
+    if (perfEnabled()) tBld += performance.now() - t
+  }
+
+  // ---- MERGE PASS: collapse the same-material building DETAIL meshes ----
+  //
+  // THE DRAW-CALL WIN. With ~6 buildings/chunk and ~15-20 near chunks, the per-
+  // building detail meshes dominate the active-draw count: a roof CAP, a door
+  // STEP, and a contact SHADOW per building were ~3 separate draws EACH — hundreds
+  // of tiny draws that the merged opaque body (one per building, irreducible —
+  // unique façade textures) does NOT incur. Every cap shares ONE roof material,
+  // every step ONE stone material, every shadow ONE shadow material, so each group
+  // folds into a SINGLE combined mesh per chunk: ~3·N draws → ~3 draws/chunk.
+  //
+  // Correctness it preserves:
+  //   • PREFIXES the camera-occlusion + shadow systems key off: the combined roof
+  //     keeps a `wp-r-` name (still a big shadow caster + camera occluder), so
+  //     the boom/fade-by-prefix logic and the golden-hour silhouette are intact.
+  //   • The DISSOLVE/z rules: pieces are merged in WORLD space (their frozen world
+  //     transforms baked into one geometry), so nothing shifts; the combined mesh
+  //     gets a tight world bbox + `freezeWorldMatrix` like its sources.
+  //   • Disposal: merged sources are disposed by `MergeMeshes(...,disposeSource)`,
+  //     and the building handle's own `dispose` skips already-disposed meshes
+  //     (guarded), so nothing double-frees; the combined meshes are tracked here.
+  //
+  // Alpha decals (awnings `wp-aw-`, signs `wp-sg-`) are NOT merged: they're
+  // transparent (merging would break per-mesh depth-sort) and far fewer. Balcony
+  // bits (`wp-bf-`/`wp-br-`) stay too (different material + rare). The body stays
+  // one-per-building (its texture is unique). Hero landmarks use a separate path.
+  const mergeBuildingDetails = () => {
+    const t = perfEnabled() ? performance.now() : 0
+    // Group merge-eligible meshes by (name-class, material). Name-class keeps the
+    // occlusion/shadow prefix meaningful; material is what MergeMeshes requires to
+    // collapse into ONE draw (a single mesh with one material — no submeshes).
+    const groups = new Map<string, { cls: string; mat: Material | null; list: Mesh[] }>()
+    for (const m of chunkDetailMeshes) {
+      if (m.isDisposed()) continue
+      const cls = mergeClass(m.name)
+      if (!cls) continue // not a merge-eligible detail (alpha decal, balcony, …)
+      const mat = m.material ?? null
+      const key = `${cls}::${mat ? mat.uniqueId : "none"}`
+      let g = groups.get(key)
+      if (!g) groups.set(key, (g = { cls, mat, list: [] }))
+      g.list.push(m)
+    }
+    for (const [, g] of groups) {
+      if (g.list.length < 2) continue // a lone piece: nothing to save by merging
+      // MergeMeshes bakes each source's world transform into one geometry and
+      // disposes the sources (disposeSource=true). single material → no submeshes.
+      const combined = Mesh.MergeMeshes(g.list, true, true, undefined, false, false)
+      if (!combined) continue
+      combined.name = `${g.cls}-merged-${chunk.key}`
+      combined.parent = root
+      combined.isPickable = false
+      // a combined chunk-spanning detail mesh is big + static; keep normal frustum
+      // culling (its tight world bbox is correct) and freeze its matrix.
+      combined.alwaysSelectAsActiveMesh = false
+      combined.freezeWorldMatrix()
+      disposers.push(() => {
+        if (!combined.isDisposed()) combined.dispose(false, false) // shared mat survives
+      })
+      // The combined ROOF is a big silhouette caster — register it (its caps were
+      // never individually registered; see buildOneBuilding).
+      if (g.cls === "wp-r" || g.cls === "wp-r2") buildingMeshes.push(combined)
+      // `drawCount` is the streamer's coarse per-chunk metric (it counts +1 per
+      // BUILDING, not per detail mesh — the details were never added). So the merge
+      // doesn't touch it; the real per-frame draw reduction is visible via
+      // `__wpDraws`. We DO add +1 for the new combined mesh so a chunk that is ALL
+      // details (no merged bodies, e.g. a pure-roof edge case) still reports ≥1.
+      drawCount += 1
+    }
     if (perfEnabled()) tBld += performance.now() - t
   }
 
@@ -339,10 +415,17 @@ export function beginChunkMesh(scene: Scene, chunk: CityChunk, opts: BuildChunkO
           }
           stage = 2
           return false
-        case 2: // props — one batch of species per step
+        case 2: // MERGE pass — collapse same-material building details (one step).
+          // Runs once after the last building. MergeMeshes on the chunk's roof/
+          // step/shadow groups is a handful of geometry concats — comfortably under
+          // the per-step budget for a normal chunk (≤~10 buildings).
+          mergeBuildingDetails()
+          stage = 3
+          return false
+        case 3: // props — one batch of species per step
           buildPropBatch()
           if (!propGroups || pIndex >= propGroups.length) {
-            stage = 3
+            stage = 4
             finishLog()
             return true
           }
@@ -372,17 +455,25 @@ function perfEnabled(): boolean {
   return !!(globalThis as { __WP_CITY_PERF?: boolean }).__WP_CITY_PERF
 }
 
+
 /**
- * The BIG silhouette pieces of a building that are worth casting the sun's
- * shadow: the merged opaque body (`wp-building-…`) and the main roof masses
- * (`wp-r-` low/base roof, `wp-r2-` upper roof). Everything else — parapet caps
- * (`wp-pp-`), entry steps (`wp-st-`/`wp-sh-`), chimneys (`wp-ch-`), balcony
- * floor/rail (`wp-bf-`/`wp-br-`), dome finials (`wp-cx-`/`wp-cy-`), awnings
- * (`wp-aw-`) and signs (`wp-sg-`) — casts a shadow too small to read, so we keep
- * it OUT of the per-frame shadow-map render to stay phone-friendly.
+ * The merge CLASS of a building detail mesh — the name prefix that groups
+ * same-material pieces the chunk merge pass collapses into one draw, or `null`
+ * for a piece that must stay separate. We merge the high-count, same-material,
+ * static OPAQUE groups: roof caps/tiers (`wp-r-`/`wp-r2-`), the stone door STEP
+ * (`wp-st-`), and the soft contact SHADOW disc (`wp-sh-`). We deliberately do NOT
+ * merge alpha decals (awnings `wp-aw-`, signs `wp-sg-` — transparent, depth-sorted
+ * per mesh) or the rarer balcony floor/rail (`wp-bf-`/`wp-br-`, different material,
+ * few per chunk). The merge keys ALSO on material, so a `wp-r-` cap and a `wp-r2-`
+ * tier (same terracotta) still combine, while neon/PBR variants never cross-merge.
  */
-function isBigCaster(name: string): boolean {
-  return name.startsWith("wp-building-") || name.startsWith("wp-r-") || name.startsWith("wp-r2-")
+function mergeClass(name: string): string | null {
+  if (name.startsWith("wp-r2-")) return "wp-r2"
+  if (name.startsWith("wp-r-")) return "wp-r"
+  if (name.startsWith("wp-st-")) return "wp-st"
+  if (name.startsWith("wp-sh-")) return "wp-sh"
+  if (name.startsWith("wp-pp-")) return "wp-pp" // parapet ring (fancy roofs)
+  return null
 }
 
 /* small stable string hash for per-chunk seeds. */

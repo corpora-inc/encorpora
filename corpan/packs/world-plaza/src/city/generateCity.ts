@@ -456,6 +456,47 @@ function buildLandmark(
       for (let i = -3; i <= 3; i++) props.push({ species: "lamp", x: cx + i * 6, z: cz + 14, scale: 1, shadow: 0.5 })
       anchor = { id: "station", kind: "portal", x: cx, z: cz + 16, facing: 0, label: plan.label }
       break
+    case "rail_station": {
+      // THE TRAIN STATION (#34 transit) — a long head-house shed with a clock-
+      // entrance block, a lamp-lined forecourt, and a baggage row. Reads as a rail
+      // terminus, distinct from the generic `station` taxi rank. The portal anchor
+      // sits in the forecourt so you walk INTO the station to board (transit entry).
+      buildings.push({ x: cx, z: cz, w: 34, d: 13, kind: "market-hall", door: { x: cx, z: cz + 7 } })
+      buildings.push({ x: cx, z: cz - 9, w: 10, d: 8, kind: "inn" }) // the taller entrance/clock block
+      for (let i = -3; i <= 3; i++) props.push({ species: "lamp", x: cx + i * 6, z: cz + 15, scale: 1, shadow: 0.5 })
+      for (let i = -2; i <= 2; i++) props.push({ species: "bench", x: cx + i * 6, z: cz + 11, scale: 1, yaw: 0, shadow: 0.6 })
+      // a baggage/crate row by the platform side
+      for (let i = -2; i <= 2; i++) props.push({ species: "crate", x: cx + i * 4, z: cz - 14, scale: 0.95, shadow: 0.6 })
+      anchor = { id: "rail_station", kind: "portal", x: cx, z: cz + 17, facing: 0, label: plan.label }
+      break
+    }
+    case "bus_station": {
+      // THE BUS TERMINAL (#34 transit) — a low terminal hall with a saw-tooth row
+      // of departure BAYS (canopy posts as signposts + a bench under each), a
+      // forecourt of lamps. You enter from the forecourt to board the coach.
+      buildings.push({ x: cx, z: cz, w: 26, d: 12, kind: "market-hall", door: { x: cx, z: cz + 7 } })
+      // departure bays: a signpost (the bay marker) + a waiting bench in front of each.
+      for (let i = -2; i <= 2; i++) {
+        props.push({ species: "signpost", x: cx + i * 6, z: cz + 13, scale: 1, shadow: 0.5 })
+        props.push({ species: "bench", x: cx + i * 6, z: cz + 16, scale: 1, yaw: Math.PI, shadow: 0.6 })
+      }
+      for (let i = -3; i <= 3; i += 2) props.push({ species: "lamp", x: cx + i * 5, z: cz + 19, scale: 1, shadow: 0.5 })
+      anchor = { id: "bus_station", kind: "portal", x: cx, z: cz + 15, facing: 0, label: plan.label }
+      break
+    }
+    case "airport": {
+      // THE AIRPORT (#34 transit) — a long, low TERMINAL shed with a slim CONTROL
+      // TOWER set back, an apron forecourt, and a row of approach lamps. The biggest
+      // footprint in town (an apron needs room); the portal sits at the terminal
+      // doors so you walk in to check in + fly.
+      buildings.push({ x: cx, z: cz, w: 40, d: 14, kind: "market-hall", door: { x: cx, z: cz + 8 } })
+      buildings.push({ x: cx + 22, z: cz - 6, w: 6, d: 6, kind: "chapel" }) // the control tower (tall, slim)
+      for (let i = -4; i <= 4; i++) props.push({ species: "lamp", x: cx + i * 5, z: cz + 17, scale: 1, shadow: 0.5 })
+      // a baggage/cart line at the kerb
+      for (let i = -2; i <= 2; i++) props.push({ species: "cart", x: cx + i * 6, z: cz + 12, scale: 1, shadow: 0.6 })
+      anchor = { id: "airport", kind: "portal", x: cx, z: cz + 19, facing: 0, label: plan.label }
+      break
+    }
     case "hospital":
       buildings.push({ x: cx, z: cz, w: 24, d: 18, kind: "inn", door: { x: cx, z: cz + 10 } })
       anchor = { id: "hospital", kind: "landmark", x: cx, z: cz + 12, facing: 0, label: plan.label }
@@ -509,6 +550,14 @@ export function generateCity(seed = 20260603): CityLayout {
     { id: "harbor", zone: "harbor", fx: -0.1, fz: (zoneField.bankZ - 30) / islandHalf, label: "Harbor Docks" },
     { id: "station", zone: "station", fx: 0.22, fz: 0.46, label: "Central Station" },
     { id: "hospital", zone: "civic", fx: -0.06, fz: 0.32, label: "City Hospital" },
+    // #34 TRANSIT HERO LANDMARKS — the three boarding points for the bus / train /
+    // flight vignettes. Spread to distinct quadrants so each is a real DESTINATION
+    // you travel TO see (and a real ENTRY POINT you walk INTO to board). Positioned
+    // away from the river band + each other; the generator snaps each to its nearest
+    // block centre + suppresses generic infill there so it reads as singular.
+    { id: "rail_station", zone: "station", fx: -0.52, fz: 0.4, label: "Union Rail Station" },
+    { id: "bus_station", zone: "civic", fx: 0.56, fz: -0.42, label: "Central Bus Terminal" },
+    { id: "airport", zone: "airport", fx: -0.56, fz: -0.5, label: "City Airport" },
   ]
 
   const claimed: Box[] = []
