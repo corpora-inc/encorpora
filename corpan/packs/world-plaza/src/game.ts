@@ -2137,7 +2137,9 @@ function buildWorld(
   const onKey = (e: KeyboardEvent) => {
     if (shell.handleKey(e)) return // ESC → dialogue-close / pause / exit
     if (openDialogue) return // overlay is modal — swallow world hotkeys
-    if (import.meta.env.DEV && e.key.toLowerCase() === "p") {
+    // P always toggles the FPS/perf HUD (the owner uses it for QA on shipped
+    // builds) — only the on-screen "(P) perf" HINT stays DEV-gated above.
+    if (e.key.toLowerCase() === "p") {
       perfOn = !perfOn
       world.setPerfHudVisible(perfOn)
     }
