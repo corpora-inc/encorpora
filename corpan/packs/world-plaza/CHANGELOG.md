@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **The scene SETTING is now modern "Corpan City", not colonial "Antigua-1770" —
+  the last colonial thread.** Text/identity only: `setting.{place,era,mood}` +
+  `narrativeBlurb` in both scene files (`antigua-grand.json` runtime, `antigua-1770.json`
+  tests) are modernised, so the persona seed reads "…in Corpan City" instead of
+  "…in Antigua". HARD CONSTRAINT honoured: NO palette / visual / world-gen value
+  changed (the warm paper-craft look is byte-identical — a test asserts the palette
+  hexes + themeId are untouched), and the scene `id`/filename are kept so loaders/
+  economy don't ripple. `fallbackLangOf` (which used the "1770"/"antigua" era/place
+  text to pick the Spanish scripted-fallback pack) now keys on the stable scene id,
+  so the world still teaches Spanish while the dev Tokyo scene stays neutral. The
+  `era` text was chosen ("today") so the economy's `defaultCurrencyForScene` resolves
+  to the SAME default (gold-real) as before — zero economy behaviour change.
 - **NPC personas are now MODERN Corpan City roles, not colonial-1770 trades.** The
   whole wandering-crowd archetype catalogue (`src/npc/personaGen.ts`) was re-themed
   from storybook trades (lamplighter, fishmonger, scribe, friar, sailor, dockhand,

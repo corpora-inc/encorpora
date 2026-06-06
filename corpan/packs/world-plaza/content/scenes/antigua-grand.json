@@ -2,12 +2,12 @@
   "id": "antigua-grand",
   "topologyId": "plaza-grand",
   "setting": {
-    "place": "Antigua",
-    "era": "1770",
-    "mood": "warm colonial market day"
+    "place": "Corpan City",
+    "era": "today",
+    "mood": "warm market-day morning"
   },
   "themeId": "paper",
-  "narrativeBlurb": "A whole town wakes around the great plaza: streets fan out past the fountain to shops, an inn, a chapel and workshops, each door open to a story.",
+  "narrativeBlurb": "The city wakes around the great plaza: streets fan out past the fountain to cafés, shops and workshops, each door open to a story.",
   "anchorSkins": {
     "fountain": {
       "spriteRef": {

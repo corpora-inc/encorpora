@@ -915,11 +915,24 @@ const NEUTRAL_FALLBACK: FallbackPack = {
 
 /** Which teaching language does this scene primarily use, for fallback flavour. */
 function fallbackLangOf(scene: Scene): "es" | "neutral" {
-  // The Antigua scenes teach Spanish; recognise by palette/era rather than a
-  // hard scene-id list so new colonial scenes inherit it. Cheap + safe default.
-  const era = scene.setting.era.toLowerCase()
+  // The "Corpan City" scenes (the warm paper-craft world that teaches Spanish) use
+  // the es scripted fallback. The setting text is now modern ("Corpan City" /
+  // "today" — #109), so we recognise the world by its STABLE scene id (unchanged:
+  // antigua-grand / antigua-1770) or the place, and keep the legacy place/era tokens
+  // for back-compat. NOTE: do NOT key on themeId — the dev Tokyo scene also uses the
+  // "paper" theme but teaches a different language, so it must stay neutral. Cheap +
+  // safe default (neutral) otherwise.
+  const id = scene.id.toLowerCase()
   const place = scene.setting.place.toLowerCase()
-  if (era.includes("177") || place.includes("antigua") || place.includes("guadalajara")) return "es"
+  const era = scene.setting.era.toLowerCase()
+  if (
+    id.includes("antigua") || // the Corpan City scene ids (unchanged)
+    place.includes("corpan") ||
+    era.includes("177") || // legacy colonial tokens (back-compat)
+    place.includes("antigua") ||
+    place.includes("guadalajara")
+  )
+    return "es"
   return "neutral"
 }
 
