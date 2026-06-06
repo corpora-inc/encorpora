@@ -394,9 +394,12 @@ const PackModule: ContentPackModule = {
         </div>
 
         <footer class="lt-input">
-          <!-- Voice input is the keyboard's built-in dictation mic (on-device,
-               ~50 languages, no model to manage). The text field accepts it
-               directly; we don't ship a custom STT mic. -->
+          <!-- Dictation: the keyboard's built-in mic always works; ADDITIONALLY,
+               where host.asr can transcribe the active language (native on-device
+               STT — language-complete, stronger than the keyboard mic on Android),
+               this mic dictates straight into the field. HIDDEN where no provider
+               transcribes (keyboard floor), so it only shows where it adds value. -->
+          <button class="lt-mic" type="button" aria-label="Dictate" title="Dictate" disabled hidden>${ICONS.mic}</button>
           <div class="lt-field">
             <textarea class="lt-text" rows="1" dir="auto" placeholder="${t("askAnything")}" autocomplete="off"></textarea>
           </div>
@@ -424,6 +427,7 @@ const PackModule: ContentPackModule = {
     const $log = container.querySelector<HTMLElement>(".lt-log")!
     const $text = container.querySelector<HTMLTextAreaElement>(".lt-text")!
     const $send = container.querySelector<HTMLButtonElement>(".lt-send")!
+    const $mic = container.querySelector<HTMLButtonElement>(".lt-mic")!
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
     const $back = container.querySelector<HTMLButtonElement>(".lt-back")!
@@ -841,6 +845,7 @@ const PackModule: ContentPackModule = {
         saveLastLang(code)
         renderLangs()
         renderWelcome()
+        refreshDictation()
       } catch (e) {
         systemNote(t("couldntLoad", { lang: name, error: e instanceof Error ? e.message : String(e) }))
       }
@@ -854,6 +859,97 @@ const PackModule: ContentPackModule = {
       // iMessage-style: text present → show the send arrow; empty → show the
       // hold-to-talk mic. CSS swaps which control is visible off this class.
       $inputBar.classList.toggle("has-text", hasText)
+    }
+
+    // ---------- dictation (host.asr) ----------
+    // Show the mic ONLY where the device can transcribe the ACTIVE tutor's
+    // language; otherwise stay hidden (the keyboard's own dictation mic still
+    // works — this is purely additive). Re-probed on each language switch.
+    let dictateSession: import("./languageManager").HostAsrSession | null = null
+    let dictateLive = false
+    const setDictateLive = (on: boolean) => {
+      dictateLive = on
+      // `.recording` is the existing chat.css pulse style for the live mic.
+      $mic.classList.toggle("recording", on)
+      $mic.setAttribute("aria-label", on ? "Stop dictation" : "Dictate")
+    }
+    async function startDictation() {
+      const lang = state.activeLanguage?.code
+      if (!lang || !hostApi.asr) return
+      let provider: import("./languageManager").HostAsrProvider | null
+      try {
+        provider = await hostApi.asr.pick({ lang, goal: "dictation" })
+      } catch (err) {
+        console.error("[tutomaton] asr.pick failed:", err)
+        provider = null
+      }
+      if (!provider) {
+        $mic.hidden = true
+        return
+      }
+      try {
+        dictateSession = await provider.transcribe({ lang, mode: "push_to_talk" })
+      } catch (err) {
+        console.error("[tutomaton] transcribe() failed:", err)
+        return
+      }
+      setDictateLive(true)
+      dictateSession.onPartial((text) => {
+        $text.value = text
+        $text.dispatchEvent(new Event("input", { bubbles: true }))
+      })
+      dictateSession.onError((code, message) => {
+        if (code === "INTERRUPTED" || code === "CANCELLED") {
+          setDictateLive(false)
+          return
+        }
+        console.error(`[tutomaton] dictation error ${code}:`, message ?? "")
+        setDictateLive(false)
+      })
+    }
+    async function stopDictation() {
+      const s = dictateSession
+      dictateSession = null
+      if (!s) {
+        setDictateLive(false)
+        return
+      }
+      try {
+        const out = await s.stop()
+        if (out.text) {
+          $text.value = out.text
+          $text.dispatchEvent(new Event("input", { bubbles: true }))
+        }
+      } catch (err) {
+        console.error("[tutomaton] dictation stop() failed:", err)
+      } finally {
+        setDictateLive(false)
+      }
+    }
+    $mic.addEventListener("click", () => {
+      if (dictateLive) void stopDictation()
+      else void startDictation()
+    })
+    /** Probe the active language; reveal the mic only where a provider exists. */
+    function refreshDictation() {
+      const lang = state.activeLanguage?.code
+      if (!lang || !hostApi.asr) {
+        $mic.hidden = true
+        return
+      }
+      void hostApi.asr
+        .pick({ lang, goal: "dictation" })
+        .then((provider) => {
+          if (!provider) {
+            $mic.hidden = true
+            return
+          }
+          $mic.hidden = false
+          $mic.disabled = false
+        })
+        .catch(() => {
+          $mic.hidden = true
+        })
     }
 
     async function send(text: string) {
@@ -1066,6 +1162,11 @@ const PackModule: ContentPackModule = {
       unmount: () => {
         if (state.cancelStream) void state.cancelStream().catch(() => {})
         if (state.ttsEnabled) hostApi.stopSpeech?.()
+        try {
+          dictateSession?.cancel()
+        } catch (err) {
+          console.error("[tutomaton] dictation cancel on unmount failed:", err)
+        }
       },
     }
   },
