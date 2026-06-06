@@ -9,6 +9,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ### Added
 
+- **`hostApi.asr` + `hostApi.models` seam (provider-agnostic dictation +
+  on-device model Budget Arbiter).** New optional `asr` (`provider`/`pick`) and
+  `models` (`budget`/`fits`/`whatFitsAlongside` + Phase-2 store stubs) slices on
+  the host API, mirroring `@shared/asr` + the SDK. `models.budget()` reports
+  REAL device memory (from `stt.get_status`) + the resident LLM (from
+  `llm.status`), so packs can ask "does an ASR model fit next to the 4B right
+  now?". `asr.pick`/`provider` return `null` (→ keyboard floor) until an
+  `asr-*` provider plugin registers. Additive + optional — nothing changes for
+  existing packs. Part of the 0.17.0 STT overhaul (see
+  `docs/STT_MASTERPLAN.md` + `docs/ASR_INTEGRATION_MANIFEST.md`).
 - **`hostApi.getRandomEntries` accepts an optional content filter.** In addition
   to the legacy `getRandomEntries(count)`, packs may now call
   `getRandomEntries({ count, domains, levels, languageCodes })` to request a

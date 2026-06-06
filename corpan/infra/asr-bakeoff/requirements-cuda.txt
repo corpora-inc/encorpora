@@ -1,0 +1,31 @@
+# Pinned deps for the GPU desktop leg on the NVIDIA DGX Spark (GB10 Blackwell).
+# Install into a PROJECT-LOCAL venv — never system python.
+#   python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements-cuda.txt
+#
+# !! DGX SPARK / GB10 CAVEAT (read SPARK_RUNBOOK.md) !!
+# GB10 is Blackwell sm_121, supported ONLY by CUDA 13.0+. The torch index must
+# be cu130 (below). Do NOT use cu124 — those wheels are x86_64-only and link
+# libcudart.so.12, which fails on the Spark's libcudart.so.13. The platform is
+# aarch64 (ARM). On a NON-Spark CUDA box (x86_64, CUDA 12.x), swap the index to
+# the matching cu12x wheel instead.
+
+# --- core ---
+datasets>=2.19
+soundfile>=0.12
+librosa>=0.10
+numpy>=1.26
+jiwer>=3.0
+
+# --- torch: CUDA 13.0 aarch64 wheels for GB10/Blackwell (sm_121) ---
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch>=2.9
+torchaudio>=2.9
+
+# --- engines ---
+faster-whisper>=1.0          # Whisper large-v3, float16 on GPU
+qwen-asr>=0.1                # Qwen3-ASR (transformers backend)
+transformers>=4.44           # transformers backend; also MMS-TTS (optional domain tier)
+sherpa-onnx>=1.10            # Parakeet-v3 + SenseVoice (onnxruntime, CPU/GPU)
+
+# --- common voice (optional domain-tier appendix) needs HF auth ---
+huggingface-hub>=0.24

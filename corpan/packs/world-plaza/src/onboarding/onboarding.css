@@ -167,6 +167,39 @@
 }
 .wp-onb-row .wp-onb-btn { flex: 1; }
 
+/* ---- music consent step ---- */
+.wp-onb-music-hero {
+  width: clamp(96px, 8vw + 64px, 132px);
+  height: clamp(96px, 8vw + 64px, 132px);
+  margin: 2px 0 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #c45a38;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 246, 224, 1), rgba(255, 226, 180, 0.7) 62%, rgba(255, 226, 180, 0) 74%);
+}
+.wp-onb-music-hero svg {
+  width: 52%;
+  height: 52%;
+  display: block;
+}
+.wp-onb-music-hint {
+  margin: 0 4px 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #9a7a58;
+  max-width: 32ch;
+}
+.wp-onb-music-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+.wp-onb-music-choices .wp-onb-btn { width: 100%; }
+
 /* ---- name roller ---- */
 .wp-onb-roller {
   width: 100%;

@@ -68,6 +68,13 @@ export type I18nKey =
   | "onb.dress.accessoryColor"
   | "onb.dress.skin"
   | "onb.dress.enter"
+  | "onb.dress.next" // dress → music step ("Almost there")
+  | "onb.music.title" // "Want music while you explore?"
+  | "onb.music.sub" // explains the in-game radio + that it's their choice
+  | "onb.music.yes" // "Yes, play music"
+  | "onb.music.no" // "No music, thanks"
+  | "onb.music.hint" // station + volume hint, e.g. "Starts on {station}. Adjust anytime from your phone."
+  | "onb.music.enter" // final enter button on the music step
   // ── menu panel (shell/menuPanel.ts) ─────────────────────────────────────────
   | "menu.title"
   | "menu.resume"
@@ -298,6 +305,14 @@ const en: Dict = {
   "onb.dress.accessoryColor": "Accessory color",
   "onb.dress.skin": "Skin",
   "onb.dress.enter": "Enter the Plaza",
+  "onb.dress.next": "Almost there",
+  "onb.music.title": "Want music while you explore?",
+  "onb.music.sub":
+    "The city has its own radio — calm, ad-free stations to wander to. Your call: turn it on now, or keep things quiet.",
+  "onb.music.yes": "Yes, play music",
+  "onb.music.no": "No music, thanks",
+  "onb.music.hint": "Starts on {station}. Change the station or turn it off anytime from your phone.",
+  "onb.music.enter": "Enter the Plaza",
   // menu
   "menu.title": "Plaza",
   "menu.resume": "Resume",

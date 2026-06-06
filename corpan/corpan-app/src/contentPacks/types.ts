@@ -276,6 +276,98 @@ export type LlmApi = {
   ) => Promise<LlmChatHandle>
 }
 
+// --- ASR (pure transcription) + model registry ---------------------------
+// The provider-agnostic dictation surface (distinct from `SttApi` above,
+// which is Parlometron's whisper-backed scoring). Mirrors the SDK
+// (`packs/sdk/index.d.ts`) and the `@shared/asr` module. Design:
+// corpan/docs/STT_MASTERPLAN.md + ASR_INTEGRATION_MANIFEST.md.
+export type AsrProviderId = "native" | "whisper" | "qwen3" | "sherpa"
+export type AsrLatencyClass = "instant" | "fast" | "batch"
+export type AsrCaptureMode = "push_to_talk" | "auto_stop"
+
+export type AsrCapability = {
+  providerId: AsrProviderId
+  languages: string[]
+  onDevice: boolean
+  modelSizeMB: number
+  residentMemoryMB: number
+  streaming: boolean
+  latencyClass: AsrLatencyClass
+  needsDownload: boolean
+  autoregressive: boolean
+}
+
+export type AsrTranscript = {
+  text: string
+  confidence: number
+  language: string
+}
+
+export type AsrSession = {
+  onPartial: (cb: (text: string) => void) => void
+  onLevel: (cb: (rms: number, tMs: number) => void) => void
+  onError: (cb: (code: string, message?: string) => void) => void
+  stop: () => Promise<AsrTranscript>
+  cancel: () => void
+}
+
+export type AsrProvider = {
+  readonly id: AsrProviderId
+  capabilities: () => Promise<AsrCapability>
+  isAvailable: (lang: string) => Promise<{ ok: boolean; needsDownload: boolean }>
+  ensure: (lang: string) => Promise<{ ready: boolean; downloading: boolean }>
+  transcribe: (opts: { lang: string; mode: AsrCaptureMode }) => Promise<AsrSession>
+}
+
+export type AsrGoal = "dictation" | "challenge"
+
+/** Selection surface. `pick` returns null = "use the keyboard" (the permanent
+ *  floor — callers MUST handle null). */
+export type AsrApi = {
+  provider: (id: AsrProviderId) => Promise<AsrProvider | null>
+  pick: (args: {
+    lang: string
+    budgetMB?: number
+    goal?: AsrGoal
+  }) => Promise<AsrProvider | null>
+}
+
+export type AssetKind =
+  | "asr-model" | "llm" | "narration" | "phrase-pack" | "sound"
+
+export type AssetRecord = {
+  id: string
+  kind: AssetKind
+  sizeMB: number
+  path: string | null
+  refCount: number
+}
+
+export type ModelBudget = {
+  availableMB: number
+  physicalMB: number
+  resident: { id: string; mb: number; kind: AssetKind }[]
+}
+
+/** Refcount/dedup store for all on-device assets + a live memory Budget
+ *  Arbiter. The Rust backing (refcount install/evict/locate/list) is Phase-2;
+ *  `budget`/`fits`/`whatFitsAlongside` are answerable today from device
+ *  memory + the resident LLM. */
+export type ModelsApi = {
+  list: () => Promise<AssetRecord[]>
+  ensure: (
+    assetId: string,
+    args: { source: string; sizeMB: number; kind: AssetKind },
+  ) => Promise<{ ready: boolean; downloading: boolean }>
+  locate: (assetId: string) => Promise<string | null>
+  evict: (assetId: string) => Promise<void>
+  budget: () => Promise<ModelBudget>
+  fits: (
+    req: { assetId?: string; residentMB?: number },
+  ) => Promise<{ fits: boolean; mustEvict: string[] }>
+  whatFitsAlongside: (residentIds: string[]) => Promise<AsrCapability[]>
+}
+
 export type SttApi = {
   isAvailable: () => Promise<boolean>
   getStatus: () => Promise<SttStatus>
@@ -475,6 +567,15 @@ export type HostApi = {
   stt?: SttApi
   /** On-device LLM runtime (present when tauri-plugin-corpan-llm is registered). */
   llm?: LlmApi
+  /** Provider-agnostic dictation. `pick`/`provider` return null (→ keyboard)
+   *  until an asr-* provider plugin is registered; the seam is always present
+   *  so packs can program against it. */
+  asr?: AsrApi
+  /** On-device model & asset registry + memory Budget Arbiter. `budget`/`fits`/
+   *  `whatFitsAlongside` answer from real device memory + the resident LLM
+   *  today; the refcount store (install/evict/locate) lands with the registry
+   *  plugin (Phase-2). */
+  models?: ModelsApi
   isMock?: boolean
 }
 

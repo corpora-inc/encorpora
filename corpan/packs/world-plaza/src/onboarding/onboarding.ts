@@ -8,18 +8,24 @@ import {
 import namesJson from "../../content/identity/names.json"
 import starterJson from "../../content/cosmetics/starter.json"
 import { bindT, applyDir, type BoundT } from "../i18n"
+import { musicProfileStore, DEFAULT_MUSIC_PROFILE } from "../audio/musicProfile"
+import { POC_STATIONS } from "../audio/cityRadio"
 import "./onboarding.css"
 
 /**
  * runOnboarding — World Plaza's premium, skippable first run.
  *
- * Three gentle steps, framer-less (vanilla DOM + CSS transitions), mobile-first:
+ * Four gentle steps, framer-less (vanilla DOM + CSS transitions), mobile-first:
  *   1. WELCOME — the plaza vibe in one breath.
  *   2. NAME ROLLER — spin a safe, fun, non-identifying name from FIXED curated
  *      lists (adjective + noun + optional number). Reroll / Use this.
  *   3. DRESS-UP — a layered paper-doll preview (rendered with the same cutout
  *      art language as the world) with the free starter kit: top + tint, hat,
- *      accessory. Then "Enter the Plaza".
+ *      accessory. Then "Almost there".
+ *   4. MUSIC — the consent gate (world-plaza-onboarding-music-consent): "Want
+ *      music while you explore?" Yes → persist `enabled:true` + the default
+ *      station/volume; No → persist `enabled:false`. The city radio NEVER starts
+ *      from nowhere — it only ever resumes this stored choice. Then "Enter the Plaza".
  *
  * Skippable at every step (top-right "Skip"): resolves with a sensible random
  * default name + avatar. The resolved value is validated against the Zod
@@ -33,7 +39,7 @@ export interface OnboardingOptions {
   /** stable player id to brand into the identity; one is minted if absent */
   playerId?: string
   /** start at a given step (dev) */
-  startStep?: 0 | 1 | 2
+  startStep?: 0 | 1 | 2 | 3
   /**
    * The learner's NATIVE language (stack `languages[0]`). All onboarding copy
    * renders in it, and the card orients RTL when it is a right-to-left script.
@@ -394,9 +400,10 @@ export function runOnboarding(
     skip.onclick = () => finish() // resolves with the current (sensible) defaults
     card.appendChild(skip)
 
-    // Step dots
+    // Step dots — welcome · name · dress · music (the music step is the consent
+    // gate so the radio never starts from nowhere; world-plaza-onboarding-music-consent).
     const dots = el("div", "wp-onb-dots")
-    const dotEls = [0, 1, 2].map(() => el("span", "wp-onb-dot"))
+    const dotEls = [0, 1, 2, 3].map(() => el("span", "wp-onb-dot"))
     dotEls.forEach((d) => dots.appendChild(d))
     card.appendChild(dots)
 
@@ -404,15 +411,16 @@ export function runOnboarding(
     const host = el("div", "wp-onb-host")
     card.appendChild(host)
 
-    let step: 0 | 1 | 2 = opts.startStep ?? 0
-    const setStep = (s: 0 | 1 | 2) => {
+    let step: 0 | 1 | 2 | 3 = opts.startStep ?? 0
+    const setStep = (s: 0 | 1 | 2 | 3) => {
       step = s
       dotEls.forEach((d, i) => d.classList.toggle("wp-onb-dot--on", i === s))
       host.classList.remove("wp-onb-host--in")
       host.innerHTML = ""
       if (s === 0) renderWelcome()
       else if (s === 1) renderName()
-      else renderDress()
+      else if (s === 2) renderDress()
+      else renderMusic()
       requestAnimationFrame(() => host.classList.add("wp-onb-host--in"))
     }
 
@@ -629,9 +637,60 @@ export function runOnboarding(
 
       host.appendChild(wardrobe)
 
-      const enter = el("button", "wp-onb-btn wp-onb-btn--primary wp-onb-btn--enter", t("onb.dress.enter"))
-      enter.onclick = () => finish()
-      host.appendChild(enter)
+      // Dress is no longer the LAST step — advance to the music-consent step.
+      const next = el("button", "wp-onb-btn wp-onb-btn--primary wp-onb-btn--enter", t("onb.dress.next"))
+      next.onclick = () => setStep(3)
+      host.appendChild(next)
+    }
+
+    /* ---- step 3: music consent ---- */
+    // Owner directive (world-plaza-onboarding-music-consent): the player CHOOSES
+    // music here, before the world — the city radio never starts from nowhere. Both
+    // choices are a consent: "Yes" persists `enabled:true` (+ the default station/
+    // volume) so the radio resumes it; "No" persists `enabled:false` so the world
+    // stays quiet. The Phone's Music app then merely CONTROLS this consented feature.
+    const renderMusic = () => {
+      host.appendChild(el("h2", "wp-onb-title", t("onb.music.title")))
+      host.appendChild(el("p", "wp-onb-sub", t("onb.music.sub")))
+
+      // A calm radio glyph (inherits the onboarding ink) over the choice.
+      const hero = el("div", "wp-onb-music-hero")
+      hero.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<rect x="3" y="8.5" width="18" height="11.5" rx="2.5"/>' +
+        '<path d="M7 8.5 16 4"/><circle cx="8.5" cy="14.2" r="2.6"/>' +
+        '<path d="M16 12.5h2.5M16 16h2.5"/></svg>'
+      host.appendChild(hero)
+
+      // The station the radio will start on if they say yes (read off the dial).
+      const defaultStation = POC_STATIONS[0]
+      const hint = el(
+        "p",
+        "wp-onb-music-hint",
+        t("onb.music.hint", { station: defaultStation?.name ?? "the city station" }),
+      )
+      host.appendChild(hint)
+
+      const row = el("div", "wp-onb-music-choices")
+      const no = el("button", "wp-onb-btn wp-onb-btn--ghost", t("onb.music.no"))
+      no.onclick = () => {
+        musicProfileStore.set({ enabled: false })
+        finish()
+      }
+      const yes = el("button", "wp-onb-btn wp-onb-btn--primary", t("onb.music.yes"))
+      yes.onclick = () => {
+        // Consent ON + the remembered station/volume the radio resumes (defaults
+        // are explicit so a restart never reverts to a different station/level).
+        musicProfileStore.set({
+          enabled: true,
+          stationId: defaultStation?.id ?? null,
+          volume: DEFAULT_MUSIC_PROFILE.volume,
+        })
+        finish()
+      }
+      row.append(no, yes)
+      host.appendChild(row)
     }
 
     setStep(step)
