@@ -35,7 +35,7 @@ Companion docs:
 | Concern | Today | World Plaza adds |
 | --- | --- | --- |
 | Pack build | `vite build` → `dist/app.js` + `dist/app.css` (IIFE lib, ~1.8 MB) | CI runs it on PR + tag |
-| Pack publish | `ttsctl publish` (narration ZIPs → `s3://corpan-prod/artifacts/narrations/`, upserts `catalog.json`) | a **pack zip** under `pack-store/` prefix + a `world_plaza` catalog entry (per `RELEASE_ENGINEERING.md`) |
+| Pack publish | `ttsctl publish` (narration ZIPs → `s3://corpan-prod/artifacts/narrations/`, upserts `catalog.json`) | a **pack zip** under `pack-store/` prefix + a `corpan_city` catalog entry (per `RELEASE_ENGINEERING.md`) |
 | Catalog/CDN | `catalog.json` on `corpan-prod` behind CloudFront `E1RDNUCVE70SCI`, OAC, CORS policy, signed-URL key group for premium | same distribution; new `pack-store/world-plaza/*` + (optional) `scenes/`/`themes/` asset prefixes |
 | Plus gating | verify-purchase Lambda + CloudFront signed URLs (`isTwoZipEntry`) | reuse verbatim if WP ships a Plus tier |
 | Realtime | **none in prod** — `server/` runs locally on `:2567`, proven two-window | **NEW: Colyseus on Fargate + ElastiCache Redis** |
@@ -177,7 +177,7 @@ jobs:
       - run: npm --prefix packs/world-plaza run build
       - name: Assemble pack zip (preview + full per two-zip model)
         run: node packs/world-plaza/scripts/pack-zip.mjs --version ${GITHUB_REF_NAME#world-plaza-v}
-        # Emits world_plaza-<ver>.zip (+ SHA-256). If WP ships a Plus tier, also a
+        # Emits corpan_city-<ver>.zip (+ SHA-256). If WP ships a Plus tier, also a
         # preview zip per CLAUDE.md's two-zip model (full → signed, preview → public).
         # The exact contract is owned by docs/RELEASE_ENGINEERING.md.
       - uses: actions/upload-artifact@v4
@@ -195,11 +195,11 @@ jobs:
           role-to-assume: arn:aws:iam::<acct>:role/corpan-ci-publisher   # least-priv, OIDC trust
           aws-region: us-east-2
       - name: Upload pack zip → S3
-        run: aws s3 cp build/world_plaza-*.zip s3://corpan-prod/artifacts/pack-store/world-plaza/ --no-progress
-      - name: Upsert world_plaza catalog entry
+        run: aws s3 cp build/corpan_city-*.zip s3://corpan-prod/artifacts/pack-store/world-plaza/ --no-progress
+      - name: Upsert corpan_city catalog entry
         run: python infra/scripts/publish_pack_catalog.py --pack world-plaza --version ${GITHUB_REF_NAME#world-plaza-v}
         # Mirrors ttsctl's catalog-upsert: download artifacts/catalog.json, upsert the
-        # world_plaza entry (name/blurb/artwork/categories/ranking/localized strings +
+        # corpan_city entry (name/blurb/artwork/categories/ranking/localized strings +
         # downloadUrl/sha256/sizeBytes; preview/full/tier if gated), re-upload. Idempotent.
       - name: Invalidate CDN
         run: aws cloudfront create-invalidation --distribution-id E1RDNUCVE70SCI --paths '/catalog.json' '/pack-store/world-plaza/*'
@@ -568,7 +568,7 @@ scalable, cheap at idle. This unblocks P1's load/anti-cheat/rate-limit work.
 ## 6. Open items / handoffs
 - **`RELEASE_ENGINEERING.md` owns** the exact pack-zip layout, the two-zip
   preview/full split decision (is WP free or Plus-gated?), the `manifest.json`
-  fields, and the full set of `world_plaza` catalog fields. This doc's
+  fields, and the full set of `corpan_city` catalog fields. This doc's
   `publish-catalog` stage *calls* that contract — keep them in sync.
 - **`MULTIPLAYER_PROD.md` owns** the server-side room directory / reconnect-TTL /
   rate-limit / anti-cheat / Redis-driver code. This doc deploys whatever that

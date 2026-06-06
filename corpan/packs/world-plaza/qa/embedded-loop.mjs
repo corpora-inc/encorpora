@@ -48,7 +48,7 @@ async function openPack(questId) {
   }, questId)
   await page.goto(`${APP}/`, { waitUntil: "load" })
   await page.waitForTimeout(2500)
-  // Map each "Open" button to its card name; click the one whose card mentions world_plaza.
+  // Map each "Open" button to its card name; click the one whose card mentions corpan_city.
   const map = await page.evaluate(() => {
     const out = []
     Array.from(document.querySelectorAll("button")).forEach((b) => {
@@ -59,8 +59,8 @@ async function openPack(questId) {
     })
     return out
   })
-  const idx = map.findIndex((n) => /world_plaza|World Plaza/.test(n))
-  if (idx < 0) { await page.close(); return { page: null, errs, reason: "no world_plaza tile" } }
+  const idx = map.findIndex((n) => /corpan_city|Corpan City/.test(n))
+  if (idx < 0) { await page.close(); return { page: null, errs, reason: "no corpan_city tile" } }
   await page.locator("button", { hasText: /^open$/i }).nth(idx).click().catch(() => {})
   let booted = false
   for (let i = 0; i < 30; i++) {

@@ -16,7 +16,7 @@ checklists as the work.
 - **Build**: unchanged. `vite build` → an **IIFE** `dist/app.js` + `dist/app.css`.
   The pack ZIP is `manifest.json` + `dist/` only (all `content/*.json` is
   `import`-bundled at build time — verified — so nothing else ships).
-- **Manifest**: bump `version` `0.0.1` → **`0.1.0`**; keep `id: world_plaza`,
+- **Manifest**: bump `version` `0.0.1` → **`0.1.0`**; keep `id: corpan_city`,
   `entry: dist/app.js`, `styles: [dist/app.css]`, `entryType: script`. No new
   permissions (HostApi gives TTS + LLM; Colyseus presence is an outbound WS the
   WebView already allows).
@@ -53,7 +53,7 @@ checklists as the work.
 
 ### 1.2 IIFE / host-mount contract (already satisfied)
 
-`src/main.ts` registers `globalThis.CorpanGames["world_plaza"] = { id, mount }`.
+`src/main.ts` registers `globalThis.CorpanGames["corpan_city"] = { id, mount }`.
 The host's `ContentPackHost` injects the IIFE + CSS, then calls `mount(container,
 hostApi)`. The module is **idempotent**: it disposes any prior instance and clears
 the container before constructing a new game (the StrictMode double-mount fix —
@@ -108,7 +108,7 @@ Current manifest is dev-shaped (`version: 0.0.1`, a `devRevision` stamp). Target
 
 ```json
 {
-  "id": "world_plaza",
+  "id": "corpan_city",
   "name": "World Plaza",
   "version": "0.1.0",
   "entry": "dist/app.js",
@@ -126,7 +126,7 @@ Notes:
 
 - **What the host reads from the manifest**: `content_packs.rs::read_manifest_info`
   pulls `id` / `name` / `version`; the installer asserts `manifest_id == pack_id`
-  (so the catalog `id` and manifest `id` MUST both be `world_plaza`). The runtime
+  (so the catalog `id` and manifest `id` MUST both be `corpan_city`). The runtime
   mount reads `entry` + `styles` + `entryType`. Everything *catalog-facing*
   (blurb, artwork, categories, localized name) comes from the **catalog**, not the
   manifest — per `feedback_catalog_driven_everything`. The manifest stays thin.
@@ -136,7 +136,7 @@ Notes:
   on-device Qwen3 LLM, navigation) plus an outbound WebSocket for presence. There
   is no manifest permission system to populate today.
 - **Kill the dev catalog entry**: `corpan-app/src/contentPacks/catalog.ts`
-  `DEV_CATALOG` has a `world_plaza` `0.0.1` entry pointing at
+  `DEV_CATALOG` has a `corpan_city` `0.0.1` entry pointing at
   `/packs/world-plaza/manifest.json`. That is a *dev-only* convenience. On release
   it should be **bumped to `0.1.0`** (so dev mirrors prod) but the real source of
   truth is the published `catalog-v3` entry (§3). Do not rely on `DEV_CATALOG` for
@@ -160,7 +160,7 @@ World Plaza rides; nothing new is needed.**
 
 ```json
 {
-  "id": "world_plaza",
+  "id": "corpan_city",
   "name": "World Plaza",
   "nameLocalized": { "en": "World Plaza", "es": "...", "...": "(~50 langs)" },
   "version": "0.1.0",
@@ -168,7 +168,7 @@ World Plaza rides; nothing new is needed.**
   "zipUrl": "https://encorpora.io/corpan/packs/world-plaza.zip",
   "description": "A living town where you meet AI characters and real players, follow a personal journey, and turn every encounter into a language lesson.",
   "descriptionLocalized": { "en": "...", "...": "(~50 langs)" },
-  "imageUrl": "https://encorpora.io/assets/world_plaza-avatar.png",
+  "imageUrl": "https://encorpora.io/assets/corpan_city-avatar.png",
   "purchase": { "type": "free", "priceLabel": "Free" },
   "minAppVersion": "0.16.1",
   "channel": "stable",
@@ -215,7 +215,7 @@ Field reasoning:
 full ~50-language set (the live `world_radio`/`tutomaton` entries carry 51).
 **Generate them with the existing tool, not by hand**: `infra/patch-catalog.py`
 already owns localized-string emission for catalog entries (it's how
-`tutomaton`/`world_radio` got 51 langs). Add a `world_plaza` source string set to
+`tutomaton`/`world_radio` got 51 langs). Add a `corpan_city` source string set to
 that pipeline; do NOT author a 51-key blob in this doc. The English `name`/
 `description`/`tagline` are the only strings written by us; the rest are
 generated + reviewed.
@@ -225,10 +225,10 @@ generated + reviewed.
 When the published catalog is unreachable, the app falls back to
 `registry.ts::EXPERIENCES` + `catalog.ts::DEV_CATALOG`. For a clean fallback:
 
-- Add a `world_plaza` row to `EXPERIENCES` (`categories`/`goodForClass`/`order`
-  mirroring the catalog entry, `nameKey: experiences.world_plaza.name`,
-  `blurbKey: experiences.world_plaza.blurb`) — these are i18n keys, so also add
-  the `experiences.world_plaza.{name,blurb}` strings to the app's i18n bundle.
+- Add a `corpan_city` row to `EXPERIENCES` (`categories`/`goodForClass`/`order`
+  mirroring the catalog entry, `nameKey: experiences.corpan_city.name`,
+  `blurbKey: experiences.corpan_city.blurb`) — these are i18n keys, so also add
+  the `experiences.corpan_city.{name,blurb}` strings to the app's i18n bundle.
 - This is the *only* in-binary World Plaza metadata; the catalog overrides it OTA.
   Keep it minimal — it exists so the Home recommender doesn't choke offline.
 
@@ -302,12 +302,12 @@ break the "premium, no AI slop" brand voice (memory: brand voice).
 
 - **`imageUrl` (catalog avatar/thumb)**: the existing free packs publish a
   **square PNG** at `https://encorpora.io/assets/<id>-avatar.png` (e.g.
-  `world_radio-avatar.png`). Match that: `world_plaza-avatar.png`, **square**,
+  `world_radio-avatar.png`). Match that: `corpan_city-avatar.png`, **square**,
   **512×512** (the readers' covers render fine down to thumb size; 512 is a safe
   catalog avatar). PNG, no alpha needed (full-bleed cutout scene reads better than
   a floating logo).
 - Hosting: drop it in the `web/io` asset pipeline so it deploys to
-  `encorpora.io/assets/world_plaza-avatar.png` alongside the other `*-avatar.png`
+  `encorpora.io/assets/corpan_city-avatar.png` alongside the other `*-avatar.png`
   files (same place `imageUrl` already points for every pack). One file, one URL.
 - Optional larger landing hero (for the GH-Pages demo page, P4): a 16:9 ~1600px
   WEBP from the same capture. Not required for the catalog entry; nice for
@@ -352,7 +352,7 @@ Just promote.
       import bloat; gzip ≤ 0.6 MB (measure).
 
 **B. Manifest**
-- [ ] `version` = `0.1.0`; `id` = `world_plaza`; `entry`/`styles`/`entryType`
+- [ ] `version` = `0.1.0`; `id` = `corpan_city`; `entry`/`styles`/`entryType`
       correct; `nameLocalized.en` / `descriptionLocalized.en` present.
 
 **C. Changelog**
@@ -360,9 +360,9 @@ Just promote.
       heading matches manifest version.
 
 **D. Artwork**
-- [ ] `world_plaza-avatar.png` (512×512, in-engine/cutout, NOT a reused logo)
+- [ ] `corpan_city-avatar.png` (512×512, in-engine/cutout, NOT a reused logo)
       produced and placed in the `web/io` asset path → deploys to
-      `encorpora.io/assets/world_plaza-avatar.png`.
+      `encorpora.io/assets/corpan_city-avatar.png`.
 
 **E. Pack ZIP + publish wiring**
 - [ ] `world-plaza` build+zip+copy block added to
@@ -376,14 +376,14 @@ Just promote.
 - [ ] (Optional) record the ZIP SHA-256 for the catalog `expectedSha256`.
 
 **F. Catalog entry**
-- [ ] `world_plaza` entry added to `catalog-v3` via `infra/patch-catalog.py`
+- [ ] `corpan_city` entry added to `catalog-v3` via `infra/patch-catalog.py`
       (game lane, shape per §3.1), with ~50-lang `nameLocalized` /
       `descriptionLocalized` / `taglineLocalized` generated by the same tool.
 - [ ] `minAppVersion` confirmed against the live app version.
 - [ ] Catalog uploaded to S3 + **CloudFront invalidated** (`/catalog-v3.json`),
       per `infra/PUBLISHING.md`.
 - [ ] In-binary fallback aligned: `registry.ts::EXPERIENCES` + `DEV_CATALOG` row +
-      `experiences.world_plaza.{name,blurb}` i18n keys.
+      `experiences.corpan_city.{name,blurb}` i18n keys.
 
 **G. Smoke (the standalone-vs-embedded trap — verify the REAL app)**
 - [ ] Standalone demo (`mountStandalone`) loads, plays, mock host works.
@@ -407,7 +407,7 @@ Just promote.
 1. **Freeze + gate** (A–C): typecheck, tests, build, bump manifest, promote
    changelog. Pure pack work, no infra.
 2. **Artwork** (D): script the in-engine hero capture via `window.__wpScene`;
-   produce `world_plaza-avatar.png`; wire it into the `web/io` asset deploy.
+   produce `corpan_city-avatar.png`; wire it into the `web/io` asset deploy.
 3. **Wire the pack into GH Pages** (E): add the `world-plaza` block to
    `hover-runner-pages.yml`; merge to `main`; confirm the ZIP + manifest URLs are
    live.

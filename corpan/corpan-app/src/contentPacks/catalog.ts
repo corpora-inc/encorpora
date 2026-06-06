@@ -218,13 +218,19 @@ const DEV_CATALOG: CatalogGame[] = [
     purchase: { type: "free", priceLabel: "Free" },
   },
   {
-    id: "world_plaza",
-    name: "World Plaza",
-    version: "0.0.1",
+    id: "corpan_city",
+    name: "Corpan City",
+    version: "0.1.0",
     manifestUrl: "/packs/world-plaza/manifest.json",
     description:
-      "A living town where you meet AI characters and real players, follow a personal journey, and turn every encounter into a language lesson.",
+      "A living city where you meet AI characters and real players, follow a personal journey, and turn every encounter into a language lesson.",
+    imageUrl: "https://encorpora.io/assets/corpan_city-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
+    categories: ["games", "speak", "wild"],
+    goodForClass: ["learner", "polyglot", "enjoyer", "kid_native"],
+    kidFriendly: true,
+    recommendOrder: 5,
+    tagline: "A living city that turns every encounter into a lesson.",
   },
 ]
 

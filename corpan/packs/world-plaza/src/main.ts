@@ -8,7 +8,7 @@
 import "./styles.css"
 import { startGame, type GameHandle } from "./game"
 
-const GAME_ID = "world_plaza"
+const GAME_ID = "corpan_city"
 
 type MountResult = { unmount?: () => void } | void
 
