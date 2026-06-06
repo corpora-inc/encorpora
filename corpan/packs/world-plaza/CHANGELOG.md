@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **The Phone's "all-hearing ear" launcher FAB now renders.** The FAB component
+  shipped referencing `.wp-phone-fab*` classes that were never written to CSS, so
+  it was a zero-layout invisible button — the phone (Inventory + Music) was
+  unreachable. Added the FAB styles to `shell/phone/phone.css`, mirroring the pack
+  button and stacked one slot above it in the bottom-left corner. (`phone.css`)
+
 ### Added
 - **Minigames now draw rich, varied, relevant phrases from the full corpus,
   bound to WHO you're talking to and WHAT the quest is about.** A new
