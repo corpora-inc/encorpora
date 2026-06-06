@@ -1926,6 +1926,28 @@ function buildWorld(
       // reflects + writes the persisted {enabled, station, volume} profile.
       createMusicApp({ getRadio: () => cityRadio, profile: musicProfileStore }),
     ],
+    // OBJECTIVE WIDGET — the home-screen "what now" card. Reads the live quest each
+    // home render: the localized title + done/total steps; taps through to the Quest
+    // app. Returns null once the quest is complete (the widget shows "no active
+    // quest"). Single-language safe — it's the same quest engine the tracker reads.
+    objective: () => {
+      try {
+        const st = questEngine.state()
+        if (st.complete) return null
+        const quest = questEngine.quest()
+        const steps = quest.steps
+        const done = steps.filter((s) => st.stepDone[s.id]).length
+        return {
+          title: questRuntime.localizer().title(quest),
+          done,
+          total: steps.length,
+          appId: "quest",
+        }
+      } catch (err) {
+        console.error("[wp/game] phone objective widget read failed:", err)
+        return null
+      }
+    },
     // "Leave the Plaza" — homed on the phone home screen → the proven exit confirm.
     onLeave: () => void shell.requestExit(),
     onOpen: () => {

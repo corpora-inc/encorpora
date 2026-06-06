@@ -137,6 +137,7 @@ const phone = createPhoneSheet({
     createSectionApp({ id: "badges", titleKey: "phone.tab.badges", icon: APP_ICONS.badges, section: stubSection("Badges") }),
     createMusicApp({ getRadio: () => radio, profile }),
   ],
+  objective: () => ({ title: "Find the café", done: 2, total: 3, appId: "quest" }),
   onLeave: () => console.log("[verify] leave"),
 })
 

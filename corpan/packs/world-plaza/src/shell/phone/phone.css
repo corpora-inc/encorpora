@@ -289,6 +289,26 @@
 [dir="rtl"] .wp-phone-back svg {
   transform: scaleX(-1);
 }
+/* The home-screen brand mark (a tile-rounded Corpán logo) before the wordmark. */
+.wp-phone-head-mark {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #d98a63, var(--wp-phone-accent));
+  box-shadow: 0 2px 6px rgba(58, 47, 37, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.wp-phone-head-mark-img {
+  width: 84%;
+  height: 84%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
 .wp-phone-title {
   flex: 1 1 auto;
   min-width: 0;
@@ -391,35 +411,30 @@
   outline: 2px solid var(--wp-phone-accent);
   outline-offset: 2px;
 }
-/* The rounded icon tile — a soft paper square (iOS "squircle" feel). `--wp-phone-tile`
-   lets a specific app tint its tile (Music = the brand terracotta). */
+/* The app-icon tile. The jewel icons (`.wp-phone-app-svg`) carry their OWN gradient
+   squircle, so the tile is just a sized, shadowed frame — no paper fill/border that
+   would box the icon. The squircle SVG fills it edge-to-edge; the soft drop shadow
+   lifts it off the paper (real-iOS depth). */
 .wp-phone-app-icon {
-  --wp-phone-tile: rgba(255, 255, 255, 0.6);
   width: 100%;
   aspect-ratio: 1 / 1;
-  max-width: 62px;
+  max-width: 60px;
   display: grid;
-  place-items: center;
-  overflow: hidden;
-  border-radius: 18px;
-  background: linear-gradient(180deg, var(--wp-phone-tile), rgba(247, 238, 222, 0.5));
-  border: 1px solid var(--wp-phone-hairline);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 3px 9px rgba(58, 47, 37, 0.14);
+  place-items: stretch;
+  border-radius: 22px;
+  /* the drop shadow that makes the tile sit ON the paper (PHONE_DESIGN §2.3 tile elev) */
+  filter: drop-shadow(0 6px 14px rgba(58, 47, 37, 0.2));
   color: var(--wp-phone-ink);
 }
-.wp-phone-app-icon svg {
-  width: 54%;
-  height: 54%;
+.wp-phone-app-svg {
+  width: 100%;
+  height: 100%;
   display: block;
+  border-radius: 22px;
 }
-/* The Music tile carries the brand mark on a terracotta wash. */
-.wp-phone-app-mark {
-  width: 72%;
-  height: 72%;
-  object-fit: contain;
-  display: block;
-  pointer-events: none;
-  -webkit-user-drag: none;
+.wp-phone-app:active .wp-phone-app-svg {
+  /* a subtle inset "press" on tap (the haptic-feeling micro-interaction) */
+  filter: brightness(0.96);
 }
 .wp-phone-app-name {
   font: 600 11.5px/1.15 inherit;
@@ -429,6 +444,59 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* OBJECTIVE WIDGET — the pinned "what now" card (PHONE_DESIGN §5.1). Reads the
+   active quest; taps through to the Quest app. A real-iOS home widget feel. */
+.wp-phone-objective {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: start;
+  padding: 13px 14px;
+  border: 1px solid var(--wp-phone-hairline);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(247, 238, 222, 0.5));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 3px 10px rgba(58, 47, 37, 0.1);
+  color: var(--wp-phone-ink);
+  font: 600 13.5px/1.3 inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.12s cubic-bezier(0.22, 1, 0.36, 1), background 0.16s ease;
+}
+.wp-phone-objective:not(:disabled):hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(247, 238, 222, 0.62));
+}
+.wp-phone-objective:not(:disabled):active {
+  transform: scale(0.985);
+}
+.wp-phone-objective:focus-visible {
+  outline: 2px solid var(--wp-phone-accent);
+  outline-offset: 2px;
+}
+.wp-phone-objective-dot {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--wp-phone-accent);
+  box-shadow: 0 0 0 3px rgba(196, 107, 74, 0.18);
+}
+.wp-phone-objective-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wp-phone-objective--empty {
+  background: rgba(255, 255, 255, 0.32);
+  color: var(--wp-phone-ink-soft);
+  cursor: default;
+  box-shadow: none;
+  font-weight: 600;
+  justify-content: center;
 }
 
 /* "Leave the Plaza" — a quiet, dignified row at the foot of the home screen. */

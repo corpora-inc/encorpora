@@ -174,6 +174,9 @@ export type I18nKey =
   | "phone.close" // close the phone
   | "phone.back" // app screen → home (back chevron aria)
   | "phone.title" // phone home-screen header title
+  | "phone.home.city" // home-screen brand wordmark ("Corpan City")
+  | "phone.objective.widget" // home objective widget ("{title} · {done} of {total}")
+  | "phone.objective.none" // objective widget when no active quest ("No active quest")
   | "phone.leave" // "Leave the Plaza" — the home-screen exit affordance
   | "phone.tab.things" // Inventory app name ("Things")
   | "phone.tab.music" // Music / radio app name
@@ -399,6 +402,9 @@ const en: Dict = {
   "phone.close": "Close",
   "phone.back": "Back",
   "phone.title": "Phone",
+  "phone.home.city": "Corpan City",
+  "phone.objective.widget": "{title} · {done} of {total}",
+  "phone.objective.none": "No active quest",
   "phone.leave": "Leave the Plaza",
   "phone.tab.things": "Things",
   "phone.tab.music": "Music",

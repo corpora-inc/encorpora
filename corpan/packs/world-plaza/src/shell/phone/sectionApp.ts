@@ -13,35 +13,15 @@
 import type { I18nKey } from "../../i18n/strings"
 import type { PhoneApp, PhoneAppContext, PhoneAppIcon, PhoneAppInstance, PhoneT } from "./phoneApp"
 import type { MenuSectionView } from "../menuPanel"
+import { APP_ICON_SVGS } from "./appIcons"
 
 const LOG = "[wp/phone/sectionApp]"
 
-/* Home-grid icons (inline SVG, stroke currentColor → inherit the tile ink). */
-export const APP_ICONS = {
-  // A folded map.
-  map:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" ' +
-    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<path d="M9 4 3.5 6.2v13.3L9 17.3l6 2.2 5.5-2.2V4L15 6.2 9 4z"/>' +
-    '<path d="M9 4v13.3"/><path d="M15 6.2v13.3"/></svg>',
-  // A traveler's satchel (the retired pack button's motif, now the "Things" app).
-  things:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" ' +
-    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<path d="M9 7V6a3 3 0 0 1 6 0v1"/><rect x="4" y="7" width="16" height="13" rx="3.5"/>' +
-    '<path d="M4 12.5h16"/><path d="M11.5 12.5v3"/></svg>',
-  // A waypoint pin (the quest objective).
-  quest:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" ' +
-    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<path d="M12 21s7-5.5 7-11a7 7 0 0 0-14 0c0 5.5 7 11 7 11z"/>' +
-    '<circle cx="12" cy="10" r="2.6"/></svg>',
-  // A rosette / badge.
-  badges:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" ' +
-    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<circle cx="12" cy="9" r="5.2"/><path d="M8.4 13.4 7 21l5-2.4L17 21l-1.4-7.6"/></svg>',
-} as const
+/* Home-grid icons — the BEAUTIFUL filled-squircle jewel tiles (PHONE_DESIGN §5.2),
+   each a self-contained gradient SVG (built in `appIcons.ts`). The line-glyph era
+   is retired; these read as real iOS app icons. (Music carries the brand mark via
+   `corpanMarkTile()` in `musicApp.ts`.) */
+export const APP_ICONS = APP_ICON_SVGS
 
 /**
  * Wrap a `MenuSectionView` as a Phone app. `id`/`titleKey`/`icon` describe the

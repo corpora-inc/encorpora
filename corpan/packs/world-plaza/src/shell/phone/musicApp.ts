@@ -22,7 +22,7 @@
 import type { PhoneApp, PhoneAppContext, PhoneAppInstance, PhoneT } from "./phoneApp"
 import type { CityRadio, RadioState, RadioChannel } from "../../audio/cityRadio"
 import type { MusicProfileStore } from "../../audio/musicProfile"
-import { CORPAN_MARK_DATA_URI } from "../../assets/corpanMark"
+import { corpanMarkTile } from "./appIcons"
 
 const LOG = "[wp/phone/musicApp]"
 
@@ -56,9 +56,9 @@ export function createMusicApp(deps: MusicAppDeps): PhoneApp {
   return {
     id: "music",
     title: (t) => t("phone.tab.music"),
-    icon: `<img class="wp-phone-app-mark" src="${CORPAN_MARK_DATA_URI}" alt="" aria-hidden="true" draggable="false" />`,
-    // The Music tile carries the brand terracotta (it IS the brand mark).
-    tileAccent: "var(--wp-phone-accent)",
+    // The Music tile carries the brand mark on a terracotta squircle (the signature
+    // app) — same jewel-tile treatment as the other icons (PHONE_DESIGN §5.2).
+    icon: corpanMarkTile(),
     mount(body, ctx: PhoneAppContext): PhoneAppInstance {
       return mountMusic(body, ctx, deps)
     },

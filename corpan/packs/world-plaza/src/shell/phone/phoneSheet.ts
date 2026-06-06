@@ -60,6 +60,14 @@ export interface PhoneSheetOptions {
    * still always available (✕ / scrim / Escape) and is the normal "resume".
    */
   onLeave?: () => void
+  /**
+   * The home-screen OBJECTIVE WIDGET (PHONE_DESIGN §5.1): a pinned "what now" card
+   * reading the active quest. Read LIVE on each home render. Return `null` (no
+   * active quest) → the widget shows a quiet "No active quest" line; omit the
+   * option entirely → no widget at all. Tapping the widget deep-links to `appId`
+   * (the Quest app) when given. Single-language safe (it's content-agnostic).
+   */
+  objective?: () => { title: string; done: number; total: number; appId?: string } | null
   /** Called when the phone opens (orchestrator: pause world feel / recede chrome). */
   onOpen?: () => void
   /** Called when the phone closes (orchestrator: resume). */
@@ -227,7 +235,16 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
     activeId = null
     const tr = boundT()
 
-    title.textContent = tr("phone.title")
+    // The home top-bar reads as the device's springboard header: the brand wordmark
+    // ("Corpan City") instead of a generic "Phone" title. The brand mark sits before
+    // it (home only); it's removed when an app opens.
+    title.textContent = tr("phone.home.city")
+    title.classList.add("wp-phone-title--home")
+    head.querySelector(".wp-phone-head-mark")?.remove()
+    const brand = elt("span", "wp-phone-head-mark")
+    brand.innerHTML = markImg("wp-phone-head-mark-img")
+    brand.setAttribute("aria-hidden", "true")
+    head.insertBefore(brand, title)
     backBtn.style.display = "none"
     backBtn.setAttribute("aria-hidden", "true")
     backBtn.tabIndex = -1
@@ -252,6 +269,43 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
       grid.append(cell)
     }
     home.append(grid)
+
+    // OBJECTIVE WIDGET — a pinned "what now" card reading the active quest (§5.1).
+    // Live-read each home render; omit-graceful (no option → no widget). Tapping it
+    // deep-links to the given app (the Quest app).
+    if (opts.objective) {
+      let obj: { title: string; done: number; total: number; appId?: string } | null = null
+      try {
+        obj = opts.objective()
+      } catch (err) {
+        console.error(`${LOG} objective() threw:`, err)
+      }
+      const widget = document.createElement("button")
+      widget.type = "button"
+      widget.className = "wp-phone-objective"
+      if (obj) {
+        widget.innerHTML =
+          '<span class="wp-phone-objective-dot" aria-hidden="true"></span>' +
+          `<span class="wp-phone-objective-text">${escapeText(
+            tr("phone.objective.widget", {
+              title: obj.title,
+              done: obj.done,
+              total: obj.total,
+            }),
+          )}</span>`
+        const target = obj.appId
+        if (target) widget.addEventListener("click", () => openApp(target))
+        else widget.disabled = true
+      } else {
+        // Quiet "no active quest" state — still a tidy card, not a gap.
+        widget.classList.add("wp-phone-objective--empty")
+        widget.disabled = true
+        widget.innerHTML = `<span class="wp-phone-objective-text">${escapeText(
+          tr("phone.objective.none"),
+        )}</span>`
+      }
+      home.append(widget)
+    }
 
     // "Leave the Plaza" — the quiet, dignified exit, homed on the phone (no longer
     // a button buried in a retired modal). Closing the phone is the normal resume;
@@ -285,6 +339,9 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
     activeId = app.id
     const tr = boundT()
 
+    // Leaving the springboard: drop the brand wordmark + home title styling.
+    head.querySelector(".wp-phone-head-mark")?.remove()
+    title.classList.remove("wp-phone-title--home")
     title.textContent = app.title(tr)
     backBtn.style.display = ""
     backBtn.removeAttribute("aria-hidden")
