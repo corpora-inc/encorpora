@@ -335,17 +335,30 @@ sky/HUD-overlays (by prefix) + ground stamps shorter than `MIN_OCCLUDER_HEIGHT`
 `engine.ts`) AND the fade (`cameraFade.ts`) both use it; the fade detects occlusion
 by RAY (camera→player hit before the head) or camera-inside-AABB — never by a tag.
 
-THREE traps that cost time here:
+FOUR traps that cost time here:
 - **The occluder predicate and the FADE-eligibility predicate must share the
   height floor (#87).** `isCameraOccluder` and `isFadeEligible` are TWO functions
   with the same "is this real solid geometry?" height gate. The streamed city
   collapses every flat roof to a 0.2u CAP; the occluder gate was lowered 0.25→0.12
   to catch it, but the FADE gate was left at 0.25 — so caps were occluders (blocked
-  the player) yet NOT fade-eligible (couldn't dissolve), and roofs the camera
-  looked over hid the player and never went transparent. Both now key off ONE
+  the player) yet NOT fade-eligible (couldn't dissolve). Both now key off ONE
   `MIN_OCCLUDER_HEIGHT` constant. RULE: when two predicates encode the same
   physical fact, make them share the constant or they WILL drift. (Pure predicate
-  fix — touches neither the merge nor draw counts.)
+  fix — touches neither the merge nor draw counts.) **NECESSARY BUT NOT SUFFICIENT:**
+  making the roof fade-ELIGIBLE didn't make it FADE — see the crown-ray trap next.
+- **One head-point occlusion ray slips UNDER a low roof/awning (#59).** The fade
+  cast a single camera→head ray at the player's 1.6u HEAD. A low eave/awning/cap
+  drapes over the player's UPPER silhouette (the paper-person is ~2.6u) yet sits
+  ABOVE that 1.6u point, so the head ray passed cleanly beneath it and the roof
+  never registered as an occluder — "the roof hid the player" even though it was
+  fade-eligible. The body fading revealed the player in MOST poses, which masked
+  this for low buildings whose roof genuinely drapes the figure. FIX: a SECOND
+  occlusion ray to the player's CROWN (`CROWN_HEIGHT` 2.7u, the billboard top) in
+  `cameraFade.ts`, fired only when the head ray + inside-test both miss. Cheap (one
+  bounded `intersectsMesh(onlyBoundingInfo)` against near meshes, no draw change),
+  and it doesn't over-fade tall roofs (a y8 roof a 2.7u ray can't reach correctly
+  stays solid). LESSON: a single sight-point misses anything draped over the
+  figure's TOP; test the silhouette's full height, not just the head.
 - **Thin-instanced props carry ONE union AABB over every instance.** A market
   stall is `wp-city-prop-stall-…` thin-instanced — its bounding box spans the
   whole chunk, mostly air. A boom ray-test against that union sees a giant phantom

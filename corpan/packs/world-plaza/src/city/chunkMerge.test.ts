@@ -4,9 +4,13 @@ import { describe, it, expect, beforeEach, afterEach } from "vitest"
 import { NullEngine } from "@babylonjs/core/Engines/nullEngine"
 import { Scene } from "@babylonjs/core/scene"
 import "@babylonjs/core/Meshes/thinInstanceMesh"
+import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera"
+import { Vector3 } from "@babylonjs/core/Maths/math"
 import { MaterialLibrary } from "../render/materials"
 import { createCityCache } from "./cityCache"
 import { buildChunkMesh } from "./chunkMesh"
+import { createCameraFade } from "../world/cameraFade"
+import { isFadeEligible } from "../world/cameraOcclusion"
 import type { CityChunk } from "./layout"
 import { chunkKey } from "./layout"
 
@@ -119,6 +123,51 @@ describe("chunk building-detail merge pass", () => {
     // the per-building merged BODIES are still one-per-building (unique facades).
     expect(names.filter((nm) => nm.startsWith("wp-building-")).length).toBe(5)
 
+    mesh.dispose()
+    cache.dispose()
+  })
+
+  it("a real LOW building roof drapes over the player → it fades (#59 roof-hides-player)", () => {
+    // The owner's repeated report: a building ROOF hides the player and won't go
+    // transparent. We build a REAL low building (a `chapel` → a ~4u flat cap, the
+    // height a roof actually drapes over the standing 2.6u figure), put the player
+    // UNDER the roof's footprint with the camera in front + low (the follow rig),
+    // and assert the roof DISSOLVES. This is the literal failing scene: the roof
+    // covers the player's upper silhouette but sits above the old single 1.6u head
+    // ray, so it never registered as an occluder. The crown ray (#59) catches it.
+    const cache = createCityCache(scene, lib)
+    const roofChunk: CityChunk = {
+      ...chunkWithBuildings(1),
+      buildings: [{ x: 0, z: 0, w: 8, d: 8, kind: "chapel", door: { x: 0, z: 5 } }],
+    }
+    const mesh = buildChunkMesh(scene, roofChunk, { cache, lib, baseSurface: "dirt" })
+
+    // the single building's roof cap (un-merged with n=1; same `wp-r-` prefix +
+    // 0.2u cap the merge produces, so it exercises the same predicate + fade path).
+    const roof = scene.meshes.find((m) => /^wp-r(-merged)?-/.test(m.name))!
+    expect(roof, "a roof cap exists").toBeTruthy()
+    expect(isFadeEligible(roof), "the low roof cap must be fade-eligible").toBe(true)
+
+    // player tucked UNDER the roof footprint (z=-2, the roof spans z≈[-4.2,4.2] at
+    // y≈4.3); camera in FRONT + low (the cruise rig height). The roof is squarely
+    // over the player's crown but above the 1.6u head point.
+    const px = 0
+    const pz = -2
+    const cam = new FreeCamera("cam", new Vector3(px, 6.0, 8.0), scene)
+    cam.setTarget(new Vector3(px, 2.0, pz))
+    const fade = createCameraFade(scene, cam, () => ({ x: px, z: pz }))
+
+    cam.computeWorldMatrix()
+    for (const m of scene.meshes) m.computeWorldMatrix(true)
+    if (typeof roof.refreshBoundingInfo === "function") roof.refreshBoundingInfo({ applySkeleton: true })
+    for (let i = 0; i < 240; i++) fade.update(0.016)
+
+    expect(
+      roof.visibility,
+      "a roof draped over the player's silhouette must fade (owner's roof-hides-player bug)",
+    ).toBeLessThan(0.5)
+
+    fade.dispose()
     mesh.dispose()
     cache.dispose()
   })

@@ -81,6 +81,14 @@ const FADE_LERP = 0.18
 const SETTLE_EPS = 0.004
 /** player head height above feet for the camera→character sight ray. */
 const HEAD_HEIGHT = 1.6
+/** TOP of the player's billboard silhouette above feet (the paper-person plane is
+ *  ~2.6u — see world/billboard.ts PLANE_H). We cast a SECOND occlusion ray to this
+ *  crown point (#59): a low roof / awning / eave can cover the standing character
+ *  on screen yet sit ABOVE the single 1.6u head ray, so it never registered as an
+ *  occluder and "the roof hid the player." Testing the crown too catches anything
+ *  draped over the figure's upper body without fading geometry that's only near the
+ *  feet. A hair over the plane top so the very cap of the silhouette is covered. */
+const CROWN_HEIGHT = 2.7
 /** skin (world units) added around a building AABB for the inside test, so a
  *  camera grazing a wall/eave also fades (you're "in" the roof overhang). */
 const INSIDE_SKIN = 0.6
@@ -161,9 +169,12 @@ export function createCameraFade(
 
   // ---- preallocated hot-path scratch (no per-frame GC) ----
   const head = new Vector3()
+  const crown = new Vector3() // the player's silhouette TOP (#59 second occlusion ray)
   const camPos = new Vector3()
   const dir = new Vector3()
   const ray = new Ray(Vector3.Zero(), Vector3.Up(), 1)
+  const crownDir = new Vector3()
+  const crownRay = new Ray(Vector3.Zero(), Vector3.Up(), 1)
 
   const update = (dt: number) => {
     // Cheap resync if the scene rebuilt buildings (Antigua⇄Tokyo flip changes
@@ -177,7 +188,9 @@ export function createCameraFade(
     // the bridge deck to a ground-level "head" — fading the very deck you're
     // standing on. Sampling the deck height keeps the ray above the deck, so the
     // floor under you never dissolves. General: any raised walk-surface.
-    head.set(p.x, walkSurfaceHeight(scene, p.x, p.z) + HEAD_HEIGHT, p.z)
+    const groundY = walkSurfaceHeight(scene, p.x, p.z)
+    head.set(p.x, groundY + HEAD_HEIGHT, p.z)
+    crown.set(p.x, groundY + CROWN_HEIGHT, p.z) // the player's silhouette top
     camPos.copyFrom(camera.globalPosition)
 
     // sight segment camera→head
@@ -189,6 +202,19 @@ export function createCameraFade(
       ray.origin.copyFrom(camPos)
       ray.direction.copyFrom(dir)
       ray.length = segLen
+    }
+    // a SECOND sight segment camera→crown (#59): a low roof/awning/eave can drape
+    // over the standing figure on screen while sitting above the 1.6u head ray, so
+    // the head ray alone slips under it and the roof "hides the player". Testing the
+    // crown too catches anything covering the upper silhouette.
+    crownDir.copyFrom(crown)
+    crownDir.subtractInPlace(camPos)
+    const crownLen = crownDir.length()
+    if (crownLen > 1e-4) {
+      crownDir.scaleInPlace(1 / crownLen)
+      crownRay.origin.copyFrom(camPos)
+      crownRay.direction.copyFrom(crownDir)
+      crownRay.length = crownLen
     }
 
     // a mesh further than the cam→player segment (+ its own radius) can't be
@@ -231,6 +257,14 @@ export function createCameraFade(
         )
         if (pick.hit && pick.distance < segLen - OCCLUDER_MARGIN) {
           occluding = true
+        } else if (crownLen > 1e-4) {
+          // (3) the head ray missed — does a roof/awning drape over the player's
+          //     CROWN (upper silhouette)? Catches a low eave covering the standing
+          //     figure that the head-point ray slipped beneath (#59 roof-hides-player).
+          const pickC = crownRay.intersectsMesh(mesh, true, undefined, true)
+          if (pickC.hit && pickC.distance < crownLen - OCCLUDER_MARGIN) {
+            occluding = true
+          }
         }
       }
 

@@ -80,6 +80,68 @@ Four landmarks across the bigger city, each with a boarding vignette:
   lands so it doesn't collide with E's catalog edits. Until then, test these two
   surfaces on an **English** native stack to see final copy.
 
+## ROUND 2 — what to test (this session's agent round)
+
+Rebuild dist + reopen the embedded app. All committed on `world-plaza`.
+
+### The Phone (replaces the old menu)
+- [ ] Bottom-left FAB is now the **Corpán logo** (the all-hearing ear brand mark),
+      and it's the **only** FAB there (the satchel is gone). Tap → phone slides up.
+- [ ] Phone is a **home-screen grid**: Map · Things · Quest · Badges · Music.
+      Tap an app → it opens; back-chevron → home; "Leave the Plaza" on home → exit.
+      (Same Map/Inventory/Quest/Badges content as before, now as apps.)
+- [ ] Close fully — no drawer edge peeking at the bottom on **landscape or tablet**
+      (that bug is fixed).
+
+### Music is now consented, never from nowhere
+- [ ] Onboarding has a new step: **"Want music while you explore?"** (Yes/No).
+- [ ] Pick No → no music ever auto-plays. Pick Yes → radio plays your chosen
+      station; the Music app toggles it; your choice + station + volume **persist**
+      across restarts (no reset to defaults).
+
+### Quests read like real scenes now
+- [ ] "Order a coffee" sends you to an actual **Café** (not a fountain NPC). The
+      café is **enterable** — walk to its door → step inside → order → quest advances.
+- [ ] On a **non-Spanish** stack (e.g. German), quests now use **your** target
+      language, not Spanish (the big pair-agnostic fix).
+- [ ] You won't get the **same objective NPC 3 quests in a row** anymore.
+
+### Minigame correctness
+- [ ] With immersion OFF on an EN→ES stack, translate/match games are **EN↔ES**,
+      never **ES→ES** (the tautology is fixed at the corpus-query root).
+- [ ] Instructions say **"Tap the one that means…"** (no longer "Tap the WORD" when
+      it's a sentence).
+- [ ] The minigame **close (×)** sits cleanly inset, not straddling the corner.
+
+### Discoverability + world
+- [ ] **Map** now plots every venue: café, shops (Outfitter/General Store/Market),
+      taxi/bus/train/airport, hospital, etc. — each with its own icon + legend, plus
+      a **"go here"** cue toward your active objective.
+- [ ] **NPC dialogue has no emoji** anymore.
+- [ ] **Wardrobe**: one "None" per slot (no double), and the preview is the **full
+      3D character** (drag-spin), premium framing.
+- [ ] You can **walk under** the party bunting (no clip-through).
+- [ ] Building **roofs fade** when the camera is behind them — the player is never
+      hidden under a roof.
+- [ ] No **"(P) perf"** hint or dev HUD in the build. (The "↓ tokens" meter is a
+      host-side overlay, tracked separately — not the pack.)
+
+### Multiplayer (present, needs a peer to fully exercise)
+- [ ] With the Colyseus server + a second window, approaching another real player
+      reveals their **learning stack + coarse place** (country only when the cohort
+      is large enough) and offers chat / challenge / trade. Solo play is unchanged.
+
+### Perf
+- [ ] **60 FPS holds** — every round-2 world change was draw-call-flat by
+      construction (café interiors are DOM overlays, bunting is a height tweak, the
+      roof-fade is a one-constant eligibility fix). The `wp-60fps-baseline` tag is
+      our known-good anchor.
+
+> Note: a 46-language localization pass for the new Phone/Music/onboarding strings
+> is finishing as you read this; `en` is complete, so test on English (or es — done)
+> for final copy. Other languages briefly show English for those new labels until
+> the gen commit lands.
+
 ## Known parked items
 - Native on-device STT for speak challenges (#64) — genuine R&D, still parked.
 - (Enterable-building interiors #14, "word vs phrase" #56, the ES→ES tautology
