@@ -23,6 +23,8 @@ export * from "./presence"
 export * from "./interaction"
 export * from "./npc"
 export * from "./chat"
+export * from "./profile"
+export * from "./mp"
 export * from "./sync"
 
 import { RoomTopology } from "./room"
@@ -36,6 +38,17 @@ import { ChallengeSpec, ChallengeResult } from "./challenge"
 import { MediatedChatInput, MediatedChatArtifact } from "./chat"
 import { NpcIntent } from "./npc"
 import { SyncEvent } from "./sync"
+import { SafeProfile, ProfilePublish } from "./profile"
+import {
+  InviteMessage,
+  InvitedMessage,
+  InviteRespond,
+  InviteResult,
+  ProfileRequest,
+  PeerChallengeResult,
+  TradeEnvelope,
+  TradeUpdateMessage,
+} from "./mp"
 
 /**
  * Convenience strict parsers for the most-crossed boundaries. Each throws a
@@ -58,6 +71,16 @@ export const parseMediatedChatInput = (v: unknown) => MediatedChatInput.parse(v)
 export const parseMediatedChatArtifact = (v: unknown) => MediatedChatArtifact.parse(v)
 export const parseNpcIntent = (v: unknown) => NpcIntent.parse(v)
 export const parseSyncEvent = (v: unknown) => SyncEvent.parse(v)
+export const parseSafeProfile = (v: unknown) => SafeProfile.parse(v)
+export const parseProfilePublish = (v: unknown) => ProfilePublish.parse(v)
+export const parseProfileRequest = (v: unknown) => ProfileRequest.parse(v)
+export const parseInviteMessage = (v: unknown) => InviteMessage.parse(v)
+export const parseInvitedMessage = (v: unknown) => InvitedMessage.parse(v)
+export const parseInviteRespond = (v: unknown) => InviteRespond.parse(v)
+export const parseInviteResult = (v: unknown) => InviteResult.parse(v)
+export const parsePeerChallengeResult = (v: unknown) => PeerChallengeResult.parse(v)
+export const parseTradeEnvelope = (v: unknown) => TradeEnvelope.parse(v)
+export const parseTradeUpdateMessage = (v: unknown) => TradeUpdateMessage.parse(v)
 
 /**
  * Contract version. Bump on any breaking schema change; gates client/server.
@@ -69,5 +92,11 @@ export const parseSyncEvent = (v: unknown) => SyncEvent.parse(v)
  *   • badges.ts: BadgeId/Badge/BadgeDeposit/BadgeProgress/BadgeTier/family.
  *   • room.ts: Anchor.kind (typed AnchorKind) for topology/special-NPC/map.
  *   No existing field removed or narrowed; old runtimes ignore the new fields.
+ *
+ * 0.2.0 — Player-to-player INTERACTION layer (ADDITIVE):
+ *   • profile.ts: SafeProfile/StackReveal/PlaceReveal/Continent + K_ANON +
+ *     resolvePlaceReveal() — the k-anonymity place-disclosure model.
+ *   • mp.ts: MP_MSG message names + Invite/Chat/Trade wire envelopes for the
+ *     server-mediated interaction protocol. Presence/movement unchanged.
  */
-export const CONTRACTS_VERSION = "0.1.0"
+export const CONTRACTS_VERSION = "0.2.0"

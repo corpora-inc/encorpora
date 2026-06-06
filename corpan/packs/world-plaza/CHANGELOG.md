@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Real humans, bridged by the machine — the multiplayer interaction layer.**
+  When you approach another real player you see a privacy-safe profile card (their
+  language stack, and their place only when k-anonymity allows — country if enough
+  players share it, else continent, else "somewhere out there"; the finer fact
+  never crosses the wire). You can open an **LLM-mediated cross-language chat**
+  where the on-device Qwen3 translates + turns each line into a tiny lesson (with
+  tappable replies in the partner's language), **challenge** another player to a
+  shared minigame (reusing the existing challenge system; both earn — no
+  punishment), or **trade** (a Colyseus-backed transport the economy layer drives).
+  Entirely additive + feature-detected: with no server the single-player game is
+  untouched. One wiring call (`initMultiplayer`) in `game.ts`; new `src/multiplayer/*`
+  module; server interaction handlers + a k-anonymity geo histogram in `server/*`;
+  new contracts `profile.ts` (`SafeProfile`/`resolvePlaceReveal`/`K_ANON`) + `mp.ts`
+  (the typed wire protocol). Chrome localized into all ~46 langs.
+
 ### Performance
 - **Bridge merged + roofs simplified (draw-call cuts).** The bridge was ~131
   separate boxes (one static structure = 131 draw calls); now merged by material

@@ -17,6 +17,7 @@
     "server:install": "npm --prefix server install",
     "server:typecheck": "npm --prefix server run typecheck",
     "qa:mp": "node qa/mp-presence.mjs",
+    "qa:mp-interaction": "node qa/mp-interaction.mjs",
     "qa:restation": "node qa/restation.mjs"
   },
   "dependencies": {
