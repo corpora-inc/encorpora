@@ -30,7 +30,7 @@
 
 import "./phone.css"
 import { t, type I18nKey } from "../../i18n/strings"
-import { CORPAN_MARK_DATA_URI } from "../../assets/corpanMark"
+import { corpanMarkTile } from "./appIcons"
 import { createStatusBar, type StatusBarHandle } from "./statusBar"
 import type { PhoneApp, PhoneAppContext, PhoneAppIcon, PhoneAppInstance, PhoneT } from "./phoneApp"
 
@@ -100,11 +100,6 @@ function paintIcon(tile: HTMLElement, icon: PhoneAppIcon, accent?: string): void
   } catch (err) {
     console.error(`${LOG} icon paint threw:`, err)
   }
-}
-
-/** The brand-mark `<img>` for the home grid / app header (the same mark the FAB uses). */
-function markImg(cls: string): string {
-  return `<img class="${cls}" src="${CORPAN_MARK_DATA_URI}" alt="" aria-hidden="true" draggable="false" />`
 }
 
 /* A back chevron + a leave/exit glyph — inline so they inherit the ink color. */
@@ -242,7 +237,10 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
     title.classList.add("wp-phone-title--home")
     head.querySelector(".wp-phone-head-mark")?.remove()
     const brand = elt("span", "wp-phone-head-mark")
-    brand.innerHTML = markImg("wp-phone-head-mark-img")
+    // The brand mark on a clean WHITE squircle (owner: "the corpan logo on white MUST
+    // be the corpan logo on white") — same white-tile treatment as the Music icon
+    // (corpanMarkTile), so the mark reads on white everywhere it appears.
+    brand.innerHTML = corpanMarkTile()
     brand.setAttribute("aria-hidden", "true")
     head.insertBefore(brand, title)
     backBtn.style.display = "none"
@@ -450,6 +448,3 @@ function escapeText(s: string): string {
     c === "&" ? "&amp;" : c === "<" ? "&lt;" : c === ">" ? "&gt;" : c === '"' ? "&quot;" : "&#39;",
   )
 }
-
-/** Re-export so callers building grid apps can reference the brand mark img helper. */
-export { markImg }
