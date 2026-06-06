@@ -16,6 +16,7 @@
     "iap:default",
     "subscriptions:allow-show-manage-subscriptions",
     "stt:default",
+    "asr-native:default",
     "os:default",
     "corpan-llm:default"
   ]
