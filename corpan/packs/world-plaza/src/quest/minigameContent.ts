@@ -77,10 +77,10 @@ const ALL_DOMAINS: ReadonlySet<string> = new Set<CorpusDomain>([
 /**
  * Each persona archetype's DOMAIN AFFINITY — the real corpus domains its role
  * naturally talks about. A baker talks food (→ everyday + numbers/prices); a
- * guide/courier talks travel; a clerk talks business/civic; a librarian/elder
- * talks social/culture; a gardener talks environment/health; a kid talks everyday/
- * education. Ordered by relevance (the first is the strongest pull). Keyed by the
- * persona `archetype` id from `personaGen.ts`.
+ * guide/courier/commuter/cyclist talks travel; an office-worker talks business/
+ * civic; a student/busker/elder talks education/culture/social; a cleaner talks
+ * everyday/civic; a kid talks everyday/education. Ordered by relevance (first is
+ * the strongest pull). Keyed by the persona `archetype` id from `personaGen.ts`.
  */
 const ARCHETYPE_DOMAINS: Record<string, readonly CorpusDomain[]> = {
   // MODERN Corpan City wandering roles (#107). Keyed by the persona `archetype`
@@ -89,18 +89,21 @@ const ARCHETYPE_DOMAINS: Record<string, readonly CorpusDomain[]> = {
   baker: ["everyday", "numbers", "social"],
   vendor: ["everyday", "numbers", "social"],
   shopkeeper: ["everyday", "numbers", "business"],
-  gardener: ["environment", "everyday", "health"],
-  librarian: ["education", "culture", "social"],
+  "dog-walker": ["everyday", "environment", "social"],
+  student: ["education", "culture", "social"],
   guide: ["travel", "culture", "everyday"],
   courier: ["travel", "numbers", "business"],
-  trader: ["business", "numbers", "travel"],
-  musician: ["culture", "social", "everyday"],
+  cook: ["everyday", "numbers", "social"],
+  busker: ["culture", "social", "everyday"],
   elder: ["social", "culture", "everyday"],
   child: ["everyday", "education", "social"],
   "cart-vendor": ["everyday", "numbers", "social"],
-  clerk: ["business", "civic", "education"],
+  "office-worker": ["business", "civic", "education"],
   barber: ["everyday", "social", "culture"],
   florist: ["everyday", "environment", "culture"],
+  commuter: ["travel", "numbers", "everyday"],
+  cyclist: ["travel", "everyday", "numbers"],
+  cleaner: ["everyday", "civic", "housing"],
   fixer: ["travel", "civic", "business"],
   // VENUE-FIT roles (#107): the objective NPC at a clinic/café/market/station/
   // exchange. Domains match the venue so its minigame vocab is on-topic.

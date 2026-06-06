@@ -61,11 +61,11 @@ describe("#107 venue-typed NPC personas", () => {
     ]) {
       expect(ids.has(gone), `colonial id "${gone}" should be removed`).toBe(false)
     }
-    // and the modern wandering roles are present
+    // and the modern, everyday Corpan City roles are present
     for (const want of [
-      "baker", "vendor", "shopkeeper", "gardener", "librarian", "guide", "courier",
-      "trader", "musician", "elder", "child", "cart-vendor", "clerk", "barber",
-      "florist", "fixer",
+      "baker", "vendor", "shopkeeper", "dog-walker", "student", "guide", "courier",
+      "cook", "busker", "elder", "child", "cart-vendor", "office-worker", "barber",
+      "florist", "commuter", "cyclist", "cleaner", "fixer",
     ]) {
       expect(ids.has(want), `modern id "${want}" should exist`).toBe(true)
     }

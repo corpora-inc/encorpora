@@ -46,9 +46,9 @@ describe("npcDomains — NPC trade → real corpus domains", () => {
     expect(npcDomains(persona("courier"))).toContain("travel")
   })
 
-  it("maps an office clerk to business/civic (paperwork)", () => {
-    expect(npcDomains(persona("clerk"))).toContain("business")
-    expect(npcDomains(persona("clerk"))).toContain("civic")
+  it("maps an office worker to business/civic (paperwork)", () => {
+    expect(npcDomains(persona("office-worker"))).toContain("business")
+    expect(npcDomains(persona("office-worker"))).toContain("civic")
   })
 
   it("returns [] for an authored role with no archetype", () => {
@@ -179,7 +179,7 @@ describe("resolveMinigameContent — blend NPC × quest × level", () => {
   })
 
   it("a DIRECTIONS quest pulls travel phrases regardless of NPC", () => {
-    const content = resolveMinigameContent(persona("clerk"), DIRECTIONS, DIRECTIONS.steps[0])
+    const content = resolveMinigameContent(persona("office-worker"), DIRECTIONS, DIRECTIONS.steps[0])
     expect(content.filter.domains).toContain("travel")
   })
 
@@ -200,9 +200,9 @@ describe("resolveMinigameContent — blend NPC × quest × level", () => {
         contentSelector: { levels: ["A1"], domains: ["food", "shopping"], languageCodes: ["es"] },
       },
     })
-    const content = resolveMinigameContent(persona("gardener"), q, q.steps[0])
-    // gardener → environment/everyday/health; none of food/shopping survive.
-    expect(content.filter.domains?.[0]).toBe("environment")
+    const content = resolveMinigameContent(persona("student"), q, q.steps[0])
+    // student → education/culture/social; none of food/shopping survive.
+    expect(content.filter.domains?.[0]).toBe("education")
     expect(content.filter.domains).not.toContain("food")
   })
 
