@@ -719,20 +719,35 @@
 .lt-modelsheet.open .lt-modelsheet-scrim { opacity: 1; }
 .lt-modelsheet-panel {
   position: relative;
-  margin: auto;
-  width: min(620px, calc(100vw - 24px));
-  max-height: min(860px, calc(100vh - 32px));
+  margin: 0;
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
-  padding: 22px;
-  border-radius: 22px;
-  border: 1px solid var(--lt-border);
+  /* Full-screen: clear the top inset (notch / iPad window grip) like the
+     header, and the home-indicator inset at the bottom. */
+  padding:
+    calc(max(var(--lt-safe-top), 44px)) 22px calc(22px + var(--lt-safe-bottom));
+  border-radius: 0;
   background: linear-gradient(180deg, #1a1e29, #12141c);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65);
-  transform: scale(0.97);
+  transform: scale(0.99);
   opacity: 0;
   transition: transform 0.18s ease, opacity 0.18s ease;
 }
 .lt-modelsheet.open .lt-modelsheet-panel { transform: scale(1); opacity: 1; }
+/* Floating centered modal only on larger (above medium) screens. */
+@media (min-width: 768px) {
+  .lt-modelsheet-panel {
+    margin: auto;
+    width: min(620px, calc(100vw - 24px));
+    height: auto;
+    max-height: min(860px, calc(100vh - 32px));
+    padding: 22px;
+    border-radius: 22px;
+    border: 1px solid var(--lt-border);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65);
+    transform: scale(0.97);
+  }
+}
 .lt-modelsheet-head {
   display: flex;
   align-items: flex-start;
@@ -801,7 +816,10 @@
 }
 .lt-modelsheet-actions .lt-model-done { border-color: transparent; background: var(--lt-user-bg); color: #fff; }
 @media (max-width: 560px) {
-  .lt-modelsheet-panel { margin: auto 12px 12px; max-height: calc(100vh - 24px); padding: 18px; }
+  .lt-modelsheet-panel {
+    padding:
+      calc(max(var(--lt-safe-top), 44px)) 18px calc(18px + var(--lt-safe-bottom));
+  }
   .lt-model-controls { grid-template-columns: 1fr; }
   .lt-modelsheet-actions { justify-content: stretch; }
   .lt-modelsheet-actions button { flex: 1; }
@@ -829,20 +847,35 @@
 .lt-voicesheet.open .lt-voicesheet-scrim { opacity: 1; }
 .lt-voicesheet-panel {
   position: relative;
-  margin: auto;
-  width: min(520px, calc(100vw - 24px));
-  max-height: min(760px, calc(100vh - 32px));
+  margin: 0;
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
-  padding: 22px;
-  border-radius: 22px;
-  border: 1px solid var(--lt-border);
+  /* Full-screen: clear the top inset (notch / iPad window grip) like the
+     header, and the home-indicator inset at the bottom. */
+  padding:
+    calc(max(var(--lt-safe-top), 44px)) 22px calc(22px + var(--lt-safe-bottom));
+  border-radius: 0;
   background: linear-gradient(180deg, #1a1e29, #12141c);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65);
-  transform: scale(0.97);
+  transform: scale(0.99);
   opacity: 0;
   transition: transform 0.18s ease, opacity 0.18s ease;
 }
 .lt-voicesheet.open .lt-voicesheet-panel { transform: scale(1); opacity: 1; }
+/* Floating centered modal only on larger (above medium) screens. */
+@media (min-width: 768px) {
+  .lt-voicesheet-panel {
+    margin: auto;
+    width: min(520px, calc(100vw - 24px));
+    height: auto;
+    max-height: min(760px, calc(100vh - 32px));
+    padding: 22px;
+    border-radius: 22px;
+    border: 1px solid var(--lt-border);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65);
+    transform: scale(0.97);
+  }
+}
 .lt-voicesheet-head {
   display: flex;
   align-items: flex-start;
@@ -916,7 +949,10 @@
 .lt-voice-check { color: var(--lt-accent-2); opacity: 0; font-size: 18px; font-weight: 800; }
 .lt-voice-option[aria-checked="true"] .lt-voice-check { opacity: 1; }
 @media (max-width: 560px) {
-  .lt-voicesheet-panel { margin: auto 12px 12px; max-height: calc(100vh - 24px); padding: 18px; }
+  .lt-voicesheet-panel {
+    padding:
+      calc(max(var(--lt-safe-top), 44px)) 18px calc(18px + var(--lt-safe-bottom));
+  }
   .lt-voice-badge { display: none; }
 }
 
