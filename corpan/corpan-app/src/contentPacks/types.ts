@@ -206,7 +206,10 @@ export type LlmChatMessage = { role: "system" | "user" | "assistant"; content: s
 export type LlmChatOptions = {
   temperature?: number
   topP?: number
+  topK?: number
+  minP?: number
   repeatPenalty?: number
+  presencePenalty?: number
   maxTokens?: number
   stop?: string[]
 }
@@ -475,6 +478,18 @@ export type HostVoiceInfo = {
   language: string
   /** Gender when the platform exposes it (iOS/macOS do; Android often doesn't). */
   gender?: "male" | "female" | "unspecified"
+  /** Native quality tier. Packs use this to default to the best installed voice. */
+  quality?:
+    | "default"
+    | "enhanced"
+    | "premium"
+    | "very_low"
+    | "low"
+    | "normal"
+    | "high"
+    | "very_high"
+  /** Android-only; true voices are unsuitable for offline-first packs. */
+  networkRequired?: boolean
 }
 
 export type HostApi = {

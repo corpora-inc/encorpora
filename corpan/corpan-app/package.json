@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "npm run check:i18n && tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri",
+    "tauri": "bash scripts/ios-privacy-preflight.sh && tauri",
     "tailwind:init": "tailwindcss init -p",
     "tsc": "tsc --noEmit",
     "check:i18n": "node scripts/check-i18n.mjs",

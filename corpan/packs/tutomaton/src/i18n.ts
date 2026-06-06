@@ -53,6 +53,15 @@ export type I18nKey =
   | "suggestFood"
   | "suggestIntroduce"
   | "suggestGrammar"
+  | "modelLab"
+  | "modelLabIntro"
+  | "tuneModel"
+  | "chooseVoice"
+  | "voiceChoiceIntro"
+  | "loadingVoices"
+  | "noVoices"
+  | "voice"
+  | "recommended"
 
 type Dict = Record<I18nKey, string>
 
@@ -97,6 +106,15 @@ const en: Dict = {
   suggestFood: "Teach me some food words",
   suggestIntroduce: "Help me introduce myself",
   suggestGrammar: "Explain a basic grammar point",
+  modelLab: "On-device model lab",
+  modelLabIntro: "This is bleeding-edge on-device AI. Tune the prompt and sampling for this language.",
+  tuneModel: "Tune model",
+  chooseVoice: "Choose tutor voice",
+  voiceChoiceIntro: "Pinned for this language. Every streamed sentence and replay uses the same voice.",
+  loadingVoices: "Loading installed voices…",
+  noVoices: "No selectable voice is installed for this language.",
+  voice: "Voice",
+  recommended: "Recommended",
 }
 
 // ---- Generated locales (filled by tools/gen_i18n.py). en is always present. ----

@@ -2,7 +2,7 @@ import { addPluginListener, invoke } from "@tauri-apps/api/core"
 import { listen } from "@tauri-apps/api/event"
 
 import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
-import { getVoicesCached } from "@/util/tts-voices"
+import { getVoicesCached, langMatchScore, sortVoicesWithLangBias } from "@/util/tts-voices"
 import { createVoiceTTS } from "@/util/speak"
 import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
@@ -691,9 +691,14 @@ export const createHostApi = (packId?: string): HostApi => {
       for (const u of unlisteners.splice(0)) u()
     }
 
-    await invoke("plugin:asr-native|start_session", {
-      args: { sessionId, lang, mode },
-    })
+    try {
+      await invoke("plugin:asr-native|start_session", {
+        args: { sessionId, lang, mode },
+      })
+    } catch (error) {
+      teardown()
+      throw error
+    }
 
     return {
       onPartial: (cb) => {
@@ -790,21 +795,22 @@ export const createHostApi = (packId?: string): HostApi => {
     // specific voice on native + browser), so there is no new native work.
     listVoices: async (uiCode?: string) => {
       const all = await getVoicesCached({ maxAgeMs: 30_000 })
-      const base = (uiCode ?? "").toLowerCase().split("-")[0]
-      const matched = base
-        ? all.filter((v) => (v.language ?? "").toLowerCase().split("-")[0] === base)
+      const matched = uiCode
+        ? all.filter((v) => langMatchScore(v.language, uiCode) > 0)
         : all
       // Contract: listVoices(uiCode) returns ONLY uiCode-language voices — an empty
       // result is correct (the caller degrades to a language-only speak), and we must
       // NEVER substitute a wrong-language list. (`matched` is already `all` when no
       // uiCode is passed.) The old `matched.length>0 ? matched : all` returned e.g.
       // Spanish voices for `listVoices("en")` on a device with no EN voice installed.
-      const list = matched
+      const list = sortVoicesWithLangBias(matched, uiCode)
       return list.map((v) => ({
         id: v.id,
         name: v.name ?? undefined,
         language: v.language,
         gender: v.gender ?? "unspecified",
+        quality: v.quality,
+        networkRequired: v.networkRequired,
       }))
     },
     speakVoice: async (uiCode: string, text: string, voiceId: string) => {

@@ -48,6 +48,15 @@ Add:
 Required for Stargate Reader background audio playback. Also added to
 `ios/project.yml` template so it survives Xcode project regeneration.
 
+### gen/apple/corpan_iOS/Info.plist (speech-recognition privacy)
+
+`NSSpeechRecognitionUsageDescription` and `NSMicrophoneUsageDescription` live
+in `ios/project.yml`, but Tauri preserves an existing ignored `gen/apple/`
+tree. iOS hard-terminates the app when Speech authorization is requested
+without the speech-recognition key. `scripts/ios-privacy-preflight.sh` syncs
+both keys into the generated plist before every `npm run tauri ...` command and
+after `scripts/ios-gen.sh`.
+
 ### SKAdNetworkItems (Google Ads install attribution)
 
 **Lives in the template at `src-tauri/ios/project.yml`** under

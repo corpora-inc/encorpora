@@ -49,7 +49,16 @@ export type LlmApi = {
   chat: (
     args: {
       messages: LlmChatMessage[]
-      options?: { temperature?: number; topP?: number; repeatPenalty?: number; maxTokens?: number; stop?: string[] }
+      options?: {
+        temperature?: number
+        topP?: number
+        topK?: number
+        minP?: number
+        repeatPenalty?: number
+        presencePenalty?: number
+        maxTokens?: number
+        stop?: string[]
+      }
     },
     handlers: LlmChatHandlers
   ) => Promise<{ sessionId: string; cancel: () => Promise<void> }>
@@ -74,7 +83,11 @@ export type DiscoveredSource = {
 
 export type HostApi = {
   speak: (locale: string, text: string) => Promise<void>
-  stopSpeech?: () => void
+  /** Enumerate installed voices ranked by the host for this BCP-47 language. */
+  listVoices?: (locale?: string) => Promise<HostVoiceInfo[]>
+  /** Speak with one exact stable platform voice ID. */
+  speakVoice?: (locale: string, text: string, voiceId: string) => Promise<void>
+  stopSpeech?: () => void | Promise<void>
   /** Native clipboard copy (WKWebView blocks the web clipboard API). */
   copyText?: (text: string) => Promise<void>
   queryPackDb?: (args: {
@@ -123,6 +136,23 @@ export type HostApi = {
    *  plugin is registered. Minimal local mirror of @shared/asr's AsrApi — kept
    *  here (not imported) so the pack stays self-contained, same as `llm`. */
   asr?: HostAsrApi
+}
+
+export type HostVoiceInfo = {
+  id: string
+  name?: string
+  language: string
+  gender?: "male" | "female" | "unspecified"
+  quality?:
+    | "default"
+    | "enhanced"
+    | "premium"
+    | "very_low"
+    | "low"
+    | "normal"
+    | "high"
+    | "very_high"
+  networkRequired?: boolean
 }
 
 export type HostAsrApi = {

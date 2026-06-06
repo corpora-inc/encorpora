@@ -765,11 +765,15 @@ fn build_sampler(options: &ChatOptions) -> LlamaSampler {
         return LlamaSampler::greedy();
     }
     let top_p = options.top_p.unwrap_or(0.9);
+    let top_k = options.top_k.unwrap_or(40);
+    let min_p = options.min_p.unwrap_or(0.0);
     let repeat = options.repeat_penalty.unwrap_or(1.2);
+    let presence = options.presence_penalty.unwrap_or(0.0);
     LlamaSampler::chain_simple([
-        LlamaSampler::penalties(64, repeat, 0.0, 0.0),
-        LlamaSampler::top_k(40),
+        LlamaSampler::penalties(64, repeat, 0.0, presence),
+        LlamaSampler::top_k(top_k),
         LlamaSampler::top_p(top_p, 1),
+        LlamaSampler::min_p(min_p, 1),
         LlamaSampler::temp(temp),
         LlamaSampler::dist(seed()),
     ])
@@ -821,4 +825,3 @@ fn device_memory_mb() -> Option<u64> {
 fn device_memory_mb() -> Option<u64> {
     None
 }
-

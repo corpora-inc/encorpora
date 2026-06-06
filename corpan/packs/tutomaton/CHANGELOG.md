@@ -5,6 +5,64 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- Tutor speech now pins one explicit installed TTS voice per language instead of
+  allowing locale-only calls to rotate voices between streamed sentences.
+- A per-language voice switcher defaults to the best dialect-appropriate,
+  offline premium voice available, remembers the user's choice, and previews a
+  newly selected voice using the latest tutor reply.
+
+## [0.5.0] - 2026-06-06 — Compact prompts + per-language model lab
+
+### Added
+- **On-device model lab:** every tutor language now has its own persisted,
+  user-editable system prompt and sampling profile. The lab is exposed from the
+  welcome screen and chat controls, clearly identifies Qwen3-4B as bleeding-edge
+  on-device technology, applies changes to the next reply without reloading, and
+  can reset one language to calibrated defaults.
+- Exposed every useful per-generation knob currently supported by the runtime:
+  temperature, top P, top K, min P, repeat penalty, presence penalty, and maximum
+  reply tokens. `top_k` was previously hard-coded to 40, `min_p` was unused, and
+  presence penalty was fixed at zero; all now flow through the app HostApi into
+  the native llama.cpp sampler.
+- The default effective prompt includes the learner's native language, while
+  keeping that single factual hint separate from each localized tutor persona.
+- Prompt invariant tests verify all 53 shipped tutors remain compact and contain
+  no English correction directives. Tuning tests cover defaults, persistence
+  sanitation, and parameter limits.
+
+### Changed
+- Simplified all 53 localized system prompts to only: friendly tutor identity,
+  target-language reply rule, and natural conversation. Removed correction,
+  mistake-monitoring, examples, formatting rules, and persona micromanagement.
+- Reduced every RAG grounding instruction to two short sentences. This removes
+  the hidden correction instruction that was still entering the system context.
+- The conservative Qwen3 baseline now follows its documented thinking-mode
+  sampler guidance: temperature `0.6`, top P `0.95`, top K `20`, min P `0`,
+  repeat penalty `1`, presence penalty `0`, and maximum tokens `700`.
+- Minimum app version is now `0.17.0` for the expanded sampler contract.
+
+## [0.4.0] - 2026-06-06 — Streaming multilingual TTS
+
+### Added
+- Tutor replies now begin speaking while the LLM is still generating. Complete
+  sentences are detected incrementally, scrubbed, and queued to TTS immediately;
+  only the unfinished final sentence waits for the response-complete event.
+- Multilingual sentence streaming uses Unicode's `Sentence_Terminal` property
+  across every supported script, with no-space sentence handling for Chinese,
+  Cantonese, and Japanese plus conservative CLDR-style suppression for common
+  abbreviations, initials, decimals, and numbered-list markers.
+- TTS calls are serialized so rapidly generated sentences always reach the host
+  queue in order. Queued speech is invalidated and stopped on mute, replay, a
+  new user turn, conversation reset, language switch, stream error, or unmount.
+- Focused tests cover streamed English boundaries, abbreviation suppression,
+  CJK no-space boundaries, Arabic/Indic sentence punctuation, and ordered
+  cancellation behavior.
+
+### Fixed
+- Corrected the dictation button's stale `ICONS.mic` reference, which prevented
+  the pack from typechecking and could break mount when host ASR was available.
+
 ## [0.3.2] - 2026-06-02 — Localize catalog description (51 langs)
 
 ### Fixed

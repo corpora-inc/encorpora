@@ -184,16 +184,24 @@ class AsrNativePlugin: Plugin {
                     invoke.reject("MIC_DENIED")
                     return
                 }
+                // AVAudioEngine input capture is process-global in practice.
+                // Enforce one native session even if a caller races two starts.
+                for session in self.sessions.values {
+                    session.cancel()
+                }
+                self.sessions.removeAll()
                 do {
                     let session = try NativeSession(
                         sessionId: args.sessionId, locale: loc, ourLang: args.lang,
                         emit: { [weak self] name, payload in
                             try? self?.trigger(name, data: payload)
                         })
-                    self.sessions[args.sessionId] = session
                     try session.start()
+                    self.sessions[args.sessionId] = session
                     invoke.resolve(TranscribeStartResult(started: true, sessionId: args.sessionId))
                 } catch {
+                    self.sessions[args.sessionId]?.cancel()
+                    self.sessions[args.sessionId] = nil
                     try? self.trigger("asr://error", data: SessionErrorEvent(
                         sessionId: args.sessionId, code: "ENGINE",
                         message: error.localizedDescription))
@@ -269,6 +277,7 @@ private final class NativeSession {
     private var startTime = Date()
     private var lastText = ""
     private var finished = false
+    private var tapInstalled = false
     private var interruptionObserver: NSObjectProtocol?
 
     init(sessionId: String, locale: String, ourLang: String,
@@ -287,6 +296,10 @@ private final class NativeSession {
     }
 
     func start() throws {
+        guard !tapInstalled && !engine.isRunning else {
+            throw NSError(domain: "AsrNative", code: 2,
+                          userInfo: [NSLocalizedDescriptionKey: "audio session already started"])
+        }
         // Configure the audio session to COEXIST with radio-stream's `.longForm`:
         // playAndRecord + mixWithOthers + duckOthers. We do NOT change the
         // category to something exclusive and we do NOT deactivate on stop, so a
@@ -298,28 +311,40 @@ private final class NativeSession {
 
         let input = engine.inputNode
         let format = input.outputFormat(forBus: 0)
+        guard format.sampleRate > 0, format.channelCount > 0 else {
+            throw NSError(domain: "AsrNative", code: 3,
+                          userInfo: [NSLocalizedDescriptionKey: "microphone input format unavailable"])
+        }
         input.installTap(onBus: 0, bufferSize: 1024, format: format) { [weak self] buffer, _ in
             guard let self = self else { return }
             self.request.append(buffer)
             self.emitLevel(buffer)
         }
+        tapInstalled = true
 
-        startTime = Date()
-        task = recognizer.recognitionTask(with: request) { [weak self] result, error in
-            guard let self = self else { return }
-            if let result = result {
-                self.lastText = result.bestTranscription.formattedString
-                self.emit("asr://partial", PartialEvent(sessionId: self.sessionId, text: self.lastText))
+        do {
+            startTime = Date()
+            task = recognizer.recognitionTask(with: request) { [weak self] result, error in
+                guard let self = self else { return }
+                if let result = result {
+                    self.lastText = result.bestTranscription.formattedString
+                    self.emit("asr://partial", PartialEvent(sessionId: self.sessionId, text: self.lastText))
+                }
+                if error != nil || (result?.isFinal ?? false) {
+                    // Natural end or engine error; finalization happens in finish()/cancel().
+                }
             }
-            if error != nil || (result?.isFinal ?? false) {
-                // Natural end or engine error; finalization happens in finish()/cancel().
-            }
+
+            observeInterruptions()
+            engine.prepare()
+            try engine.start()
+            log("session \(sessionId) started (\(ourLang)); format=\(format.sampleRate)Hz/\(format.channelCount)ch")
+        } catch {
+            teardownAudio()
+            task?.cancel()
+            task = nil
+            throw error
         }
-
-        observeInterruptions()
-        engine.prepare()
-        try engine.start()
-        log("session \(sessionId) started (\(ourLang))")
     }
 
     func finish(_ done: @escaping (TranscriptOut) -> Void) {
@@ -338,8 +363,10 @@ private final class NativeSession {
     }
 
     func cancel() {
+        if finished { return }
         finished = true
         teardownAudio()
+        request.endAudio()
         task?.cancel()
     }
 
@@ -377,7 +404,10 @@ private final class NativeSession {
             NotificationCenter.default.removeObserver(obs)
             interruptionObserver = nil
         }
-        engine.inputNode.removeTap(onBus: 0)
+        if tapInstalled {
+            engine.inputNode.removeTap(onBus: 0)
+            tapInstalled = false
+        }
         if engine.isRunning { engine.stop() }
         // DELIBERATELY do not setActive(false): leave the shared `.longForm`
         // session active so radio-stream / the reader keep playing. The OS
