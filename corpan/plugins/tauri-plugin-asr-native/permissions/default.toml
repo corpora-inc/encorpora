@@ -1,0 +1,11 @@
+# permissions/default.toml
+[default]
+description = "Default permissions for the asr-native (OS-native dictation) plugin"
+permissions = [
+    "allow-capabilities",
+    "allow-is-available",
+    "allow-ensure",
+    "allow-start-session",
+    "allow-stop-session",
+    "allow-cancel-session",
+]
