@@ -36,7 +36,8 @@
   overflow: hidden;
   border: none;
   border-radius: var(--wp-r-chip, 12px);
-  background: var(--wp-paper-chip, rgba(247, 239, 224, 0.92));
+  /* BRAND INVARIANT: the Corpán mark sits on WHITE only (never a paper/accent wash). */
+  background: #ffffff;
   -webkit-backdrop-filter: blur(var(--wp-blur-chip, 6px)) saturate(1.05);
   backdrop-filter: blur(var(--wp-blur-chip, 6px)) saturate(1.05);
   box-shadow: var(--wp-e2, 0 4px 14px rgba(58, 47, 37, 0.2)),
@@ -82,7 +83,7 @@
 }
 @media (hover: hover) and (pointer: fine) {
   .wp-phone-fab:hover {
-    background: rgba(247, 239, 224, 0.98);
+    background: #fff; /* brand: stay WHITE under the mark on hover */
     transform: translateY(-1px);
   }
 }
@@ -256,13 +257,19 @@
   border-radius: 1px;
 }
 
-/* --- Header (back chevron · title · close) --- */
+/* --- Header (back chevron · title · close) --- OPAQUE + above the body in z, so a
+   sticky sub-header / scrolling content vanishes cleanly UNDER it (no see-through
+   strip at the body's top edge, #113). Set on the BASE rule so it holds on the home
+   screen too, not only in-app. --- */
 .wp-phone-head {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 4px 16px 10px;
+  position: relative;
+  z-index: 3;
+  background: var(--wp-phone-paper);
 }
 .wp-phone-back {
   flex: 0 0 auto;
@@ -290,16 +297,22 @@
   transform: scaleX(-1);
 }
 /* The home-screen brand mark (a tile-rounded Corpán logo) before the wordmark. */
+/* The header brand tile now holds the WHITE-squircle SVG (corpanMarkTile) — it
+   carries its own white background + rounded corners, so the wrapper is just a sized
+   box with a soft lift shadow (no terracotta gradient — the mark reads on WHITE). */
 .wp-phone-head-mark {
   flex: 0 0 auto;
   width: 28px;
   height: 28px;
-  display: grid;
-  place-items: center;
+  display: block;
   border-radius: 8px;
-  overflow: hidden;
-  background: linear-gradient(160deg, #d98a63, var(--wp-phone-accent));
-  box-shadow: 0 2px 6px rgba(58, 47, 37, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(58, 47, 37, 0.22);
+}
+.wp-phone-head-mark .wp-phone-app-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 8px;
 }
 .wp-phone-head-mark-img {
   width: 84%;
@@ -347,7 +360,12 @@
   min-height: 0;
   overflow: hidden auto;
   -webkit-overflow-scrolling: touch;
-  padding: 4px 16px 10px;
+  /* TOP padding is 0 (#113): a sticky `.wp-menu-subhead` pins at the scroller's
+     top:0; ANY top padding leaves a transparent strip ABOVE the pin where the
+     scrolling content peeks through (the recurring "gap under the Badges header").
+     With 0, a section's sub-header pins FLUSH under the opaque phone header. Apps
+     that want top breathing room add it INSIDE their own content, not on the body. */
+  padding: 0 16px 10px;
 }
 
 /* --- App-scaffold scroll clipping (QA: content peeked through a strip behind the

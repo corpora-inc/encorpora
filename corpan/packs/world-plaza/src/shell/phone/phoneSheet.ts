@@ -31,6 +31,7 @@
 import "./phone.css"
 import { t, type I18nKey } from "../../i18n/strings"
 import { CORPAN_MARK_DATA_URI } from "../../assets/corpanMark"
+import { corpanMarkTile } from "./appIcons"
 import { createStatusBar, type StatusBarHandle } from "./statusBar"
 import type { PhoneApp, PhoneAppContext, PhoneAppIcon, PhoneAppInstance, PhoneT } from "./phoneApp"
 
@@ -242,7 +243,10 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
     title.classList.add("wp-phone-title--home")
     head.querySelector(".wp-phone-head-mark")?.remove()
     const brand = elt("span", "wp-phone-head-mark")
-    brand.innerHTML = markImg("wp-phone-head-mark-img")
+    // The brand mark on a clean WHITE squircle (owner: "the corpan logo on white MUST
+    // be the corpan logo on white") — same white-tile treatment as the Music icon
+    // (corpanMarkTile), so the mark reads on white everywhere it appears.
+    brand.innerHTML = corpanMarkTile()
     brand.setAttribute("aria-hidden", "true")
     head.insertBefore(brand, title)
     backBtn.style.display = "none"
