@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Kantrus mokytojas tiesiai jūsų telefone – bet kuriai kalbai, kurios mokotės."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Gyvas miestas, kur kiekvienas susitikimas tampa pamoka."
     }
   },
   "home": {

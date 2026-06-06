@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "투토마톤",
       "blurb": "배우시는 모든 언어를 위한, 기기 안의 인내심 있는 개인 튜터입니다."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "모든 만남이 수업이 되는 살아있는 도시."
     }
   },
   "home": {

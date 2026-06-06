@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "En tålmodig handledare, direkt i din telefon, för alla språk du lär dig."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "En levande stad som gör varje möte till en lektion."
     }
   },
   "home": {

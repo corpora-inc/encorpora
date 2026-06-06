@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Türelmes, a telefonodon futó oktató, bármelyik tanult nyelvedhez."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Egy élő város, ahol minden találkozás tanulság."
     }
   },
   "home": {

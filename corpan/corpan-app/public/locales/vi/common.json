@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Gia sư kiên nhẫn, luôn bên bạn trên mọi hành trình học ngôn ngữ."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Một thành phố sống động biến mọi cuộc gặp gỡ thành bài học."
     }
   },
   "home": {

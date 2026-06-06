@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "En tålmodig veileder på enheten din for alle språk du lærer"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "En levende by som gjør hvert møte til en leksjon."
     }
   },
   "home": {

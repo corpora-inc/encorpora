@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Jouw geduldige tutor, altijd bij de hand, voor elke taal die je leert"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Een levende stad die van elke ontmoeting een les maakt."
     }
   },
   "home": {

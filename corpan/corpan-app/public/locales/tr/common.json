@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Öğrendiğiniz her dil için sabırlı, cihazınızdaki kişisel öğretmeniniz."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Her karşılaşmayı derse çeviren yaşayan bir şehir."
     }
   },
   "home": {

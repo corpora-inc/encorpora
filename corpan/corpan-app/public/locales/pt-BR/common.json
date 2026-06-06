@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Um tutor paciente, direto no seu aparelho, para todos os idiomas que você está aprendendo"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Uma cidade viva que transforma cada encontro em uma lição."
     }
   },
   "home": {

@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Strpljiv tutor na tvom uređaju za svaki jezik koji učiš."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Živi grad koji svaki susret pretvara u lekciju."
     }
   },
   "home": {

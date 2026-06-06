@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "圖特馬頓",
       "blurb": "一個有耐性嘅隨身導師，幫你喺手機度學識任何語言。"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "一座將每次相遇化作課堂的活城市。"
     }
   },
   "home": {

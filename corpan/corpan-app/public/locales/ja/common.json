@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "トゥートマトン",
       "blurb": "学ぶすべての言語に寄り添う、スマホ完結型のパーソナルチューター。"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "出会いがすべて学びになる生きた街。"
     }
   },
   "home": {

@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Oma, kärsivällinen kieltenopettajasi, joka kulkee mukanasi kaikille oppimillesi kielille."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Elävä kaupunki, jossa jokainen kohtaaminen on oppitunti."
     }
   },
   "home": {
