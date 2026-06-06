@@ -174,7 +174,7 @@ class AsrNativePlugin: Plugin {
             requestAuthorization { [weak self] granted in
                 guard let self = self else { return }
                 guard granted else {
-                    self.trigger("asr://error", data: SessionErrorEvent(
+                    try? self.trigger("asr://error", data: SessionErrorEvent(
                         sessionId: args.sessionId, code: "MIC_DENIED",
                         message: "Microphone or speech permission denied"))
                     invoke.reject("MIC_DENIED")
@@ -184,13 +184,13 @@ class AsrNativePlugin: Plugin {
                     let session = try NativeSession(
                         sessionId: args.sessionId, locale: loc, ourLang: args.lang,
                         emit: { [weak self] name, payload in
-                            self?.trigger(name, data: payload)
+                            try? self?.trigger(name, data: payload)
                         })
                     self.sessions[args.sessionId] = session
                     try session.start()
                     invoke.resolve(TranscribeStartResult(started: true, sessionId: args.sessionId))
                 } catch {
-                    self.trigger("asr://error", data: SessionErrorEvent(
+                    try? self.trigger("asr://error", data: SessionErrorEvent(
                         sessionId: args.sessionId, code: "ENGINE",
                         message: error.localizedDescription))
                     invoke.reject(error.localizedDescription)
