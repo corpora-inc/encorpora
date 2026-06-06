@@ -14,6 +14,8 @@ import { createJuice } from "./juice/juice"
 import { createNpcFocus } from "./world/npcFocus"
 import { createCrowd, type CrowdFocusHandle } from "./world/crowd"
 import { createCameraFade } from "./world/cameraFade"
+import { findSafeSpawn } from "./world/collision"
+import { poseStore, resolveResumeSpawn } from "./spawn/poseStore"
 import { createShell, type MenuSectionView, type MenuSectionId } from "./shell"
 import { createNpcRuntime, npcDisplayName } from "./npc/npcRuntime"
 import { initMultiplayer, resolveServerUrl, type MultiplayerHandle } from "./multiplayer"
@@ -456,6 +458,16 @@ function buildWorld(
   const obstacles = city.getCollision()
   // The player IS their dressed avatar (grounded cutout, self-animated).
   const player = createPlayerController(world, topology, input, identity.avatar, obstacles)
+  // SAFE SPAWN (#104): the ONE respawn/teleport/arrival path. An anchor's CENTRE can
+  // be INSIDE a solid landmark (the fountain basin) — dropping the player there traps
+  // them (per-frame collision SLIDES, can't eject from deep inside). `findSafeSpawn`
+  // lands them at the nearest CLEAR, walkable point (pushOut + outward spiral). Used
+  // by transit arrival + resume + every teleport below. `PLAYER_BODY_R` == PLAYER_RADIUS.
+  const PLAYER_BODY_R = 0.55
+  const spawnSafe = (x: number, z: number, faceYaw?: number) => {
+    const safe = findSafeSpawn(obstacles, x, z, PLAYER_BODY_R)
+    player.respawnAt(safe.x, safe.z, faceYaw)
+  }
   // The LIVE avatar (mutable): the in-game wardrobe re-dresses the figure in place
   // and persists this per-profile (global identity store). Seeded from onboarding.
   let currentAvatar = identity.avatar
@@ -967,7 +979,21 @@ function buildWorld(
     const faceYaw = Math.atan2(-(anchor.x - sx), -(anchor.z - sz))
     player.respawnAt(sx, sz, faceYaw)
   }
-  framePlayerOnObjective()
+  // RESUME AT THE EXACT EXIT SPOT (#103, per-pair): if this language pair has a saved
+  // pose (the player left this stack here before), drop them back there — routed
+  // through the SHARED safe-spawn so an old pose now inside new geometry lands on
+  // clear ground, never a wall. First visit / no pose -> framePlayerOnObjective
+  // (today's near-objective default). Keyed on the same native:target as
+  // quest/name/outfit, so each stack resumes independently.
+  const resumeOrFrame = () => {
+    const resumed = resolveResumeSpawn(learnerPair, obstacles, PLAYER_BODY_R)
+    if (resumed) {
+      player.respawnAt(resumed.x, resumed.z, resumed.f)
+      return
+    }
+    framePlayerOnObjective()
+  }
+  resumeOrFrame()
 
   // Swap the world's ACTIVE quest (the completion-interlude pick). Rebuilds the
   // inner engine, re-points `quest` (so `anchorName`/markers/content follow it),
@@ -1658,7 +1684,7 @@ function buildWorld(
         } else {
           if (result?.travelTo) {
             const a = city.getAnchor(result.travelTo)
-            if (a) player.respawnAt(a.x, a.z)
+            if (a) spawnSafe(a.x, a.z) // #104: never drop INTO the destination landmark
           }
           if (result?.questStep) questEngine.advance(result.questStep)
         }
@@ -1708,7 +1734,7 @@ function buildWorld(
         .then((r) => {
           if (r?.travelTo) {
             const a = city.getAnchor(r.travelTo)
-            if (a) player.respawnAt(a.x, a.z)
+            if (a) spawnSafe(a.x, a.z) // #104: safe-spawn the dev transit hop too
           }
         })
         .catch((e) => console.error("[world-plaza] dev transit enter failed:", e))
@@ -2089,7 +2115,7 @@ function buildWorld(
       gotoObjective: () => {
         const s = questEngine.currentStep()
         const a = s?.anchorId ? city.getAnchor(s.anchorId) : null
-        if (a) player.respawnAt(a.x, a.z)
+        if (a) spawnSafe(a.x, a.z) // #104: a quest anchor can be a solid landmark
         return !!a
       },
       /** QA: teleport the player to an arbitrary world (x,z) — used to frame the
@@ -2168,9 +2194,28 @@ function buildWorld(
   }
   window.addEventListener("keydown", onKey)
 
-  // Free the resident LLM when the app is backgrounded (iOS jetsam bait).
+  // RESUME POSE (#103): persist where the player is so they re-enter THIS pair
+  // exactly here. Cheap — write at most every `POSE_SAVE_EVERY`s, and only when the
+  // player has actually MOVED (no idle/per-frame churn). Also saved on background +
+  // teardown so a crash/reload/exit never loses the spot.
+  const POSE_SAVE_EVERY = 3 // seconds
+  let poseSaveAccum = 0
+  let lastSavedX = Number.NaN
+  let lastSavedZ = Number.NaN
+  const savePoseNow = () => {
+    const pos = player.getPos()
+    poseStore.set(learnerPair, { x: pos.x, z: pos.z, f: player.getFacing() })
+    lastSavedX = pos.x
+    lastSavedZ = pos.z
+  }
+
+  // Free the resident LLM when the app is backgrounded (iOS jetsam bait) + flush the
+  // resume pose then (backgrounding is the most common real "exit" on mobile).
   const onVisibility = () => {
-    if (document.hidden) npcRuntime.onBackground()
+    if (document.hidden) {
+      npcRuntime.onBackground()
+      savePoseNow()
+    }
   }
   document.addEventListener("visibilitychange", onVisibility)
 
@@ -2182,6 +2227,13 @@ function buildWorld(
     const p = player.getPos()
     crowd.update(dt, p) // wander + greet-on-approach
     juice.update(dt)
+    // throttled resume-pose save: after the interval AND only if moved (#103).
+    poseSaveAccum += dt
+    if (poseSaveAccum >= POSE_SAVE_EVERY) {
+      poseSaveAccum = 0
+      const movedSq = (p.x - lastSavedX) ** 2 + (p.z - lastSavedZ) ** 2
+      if (!(movedSq < 0.04)) savePoseNow() // >0.2u moved (NaN-safe: first save runs)
+    }
     // Resume the player's CONSENTED music ONCE (never from nowhere — owner rule).
     // We only auto-start if the persisted profile says `enabled`; then we tune the
     // saved station at the saved volume. Native radio needs no gesture → start it
@@ -2237,6 +2289,7 @@ function buildWorld(
   })
 
   function teardown() {
+    savePoseNow() // RESUME POSE (#103): flush the exit spot before anything disposes
     window.removeEventListener("keydown", onKey)
     document.removeEventListener("visibilitychange", onVisibility)
     econHud.dispose()
