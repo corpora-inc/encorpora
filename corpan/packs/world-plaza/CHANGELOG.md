@@ -24,11 +24,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Music now respects + persists the player's choice — it never starts from
-  nowhere.** The Phone's Music app fronts an explicit on/off switch; on/off, the
-  chosen station, and volume persist (`audio/musicProfile.ts`, localStorage) and are
-  restored on launch. A fresh player hears **nothing** until they opt in (the
-  ambient radio start in `game.ts` is gated on the consented profile).
-  (`audio/musicProfile.ts`, `shell/phone/musicApp.ts`, `game.ts`)
+  nowhere.** Onboarding gained a 4th step, "Want music while you explore?"
+  (Yes/No), so the choice is made up front, before the world. The Phone's Music app
+  fronts an explicit on/off switch; on/off, the chosen station, and volume persist
+  (`audio/musicProfile.ts`, localStorage) and are restored on launch. A fresh
+  player (or one who declines / skips onboarding) hears **nothing** until they opt
+  in — the ambient radio start in `game.ts` is gated on the consented profile, and
+  the Music app then merely *controls* an already-consented feature.
+  (`onboarding/onboarding.ts`, `audio/musicProfile.ts`, `shell/phone/musicApp.ts`,
+  `game.ts`)
 
 ### Fixed
 - **The Phone's "all-hearing ear" launcher FAB now renders.** The FAB component
