@@ -345,6 +345,41 @@ export const MAP_CSS = `
   box-shadow: 0 3px 10px rgba(196, 107, 74, 0.32);
 }
 .wp-map-route-go:active { transform: scale(0.96); }
+.wp-map-route-clear {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(120, 96, 60, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, 0.8);
+  color: #8a785c;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.wp-map-route-clear[hidden] { display: none; }
+.wp-map-route-clear:active { transform: scale(0.94); }
+
+/* "No quest" toggle — sits in the tools header; reflects + flips the host's
+   quest-active state (OFF = free-explore mode). */
+.wp-map-questtoggle {
+  align-self: flex-start;
+  border: 1px solid rgba(120, 96, 60, 0.28);
+  border-radius: 999px;
+  padding: 6px 13px;
+  background: var(--wp-map-accent, #c46b4a);
+  color: #fff7f0;
+  font: 700 12.5px/1 ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.wp-map-questtoggle--off {
+  background: rgba(255, 250, 240, 0.7);
+  color: #5a4a32;
+}
+.wp-map-questtoggle:active { transform: scale(0.97); }
 
 /* the gentle objective pulse — opt out under reduced motion */
 @keyframes wp-map-pulse {

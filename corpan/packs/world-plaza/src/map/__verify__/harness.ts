@@ -100,7 +100,24 @@ const anchorName = (id: string) =>
 const ITEMS: Record<string, string> = { "ferry-token": "the ferry token", "city-gate-pass": "the gate pass" }
 const itemName = (id: string) => ITEMS[id] ?? id
 
-const fullMapOpts = { view, accent, lang: "en", anchorName, itemName }
+// A mock nav so the verify map renders + exercises the new navigation controls
+// (tap-a-POI course + the no-quest toggle).
+let mockCourse: string | null = null
+let mockQuestActive = true
+const nav = {
+  setCourse: (id: string) => {
+    mockCourse = id
+  },
+  clearCourse: () => {
+    mockCourse = null
+  },
+  getCourse: () => mockCourse,
+  isQuestActive: () => mockQuestActive,
+  setQuestActive: (a: boolean) => {
+    mockQuestActive = a
+  },
+}
+const fullMapOpts = { view, accent, lang: "en", anchorName, itemName, nav }
 
 const minimap = mountMinimap(overlay, {
   view,
@@ -166,6 +183,8 @@ requestAnimationFrame(() => {
     const fm = overlay.querySelector(".wp-map")
     console.log("[verify] fullMap .wp-map in .wp-overlay:", fm?.parentElement === overlay)
     console.log("[verify] ready")
+    // expose the nav so the driver can exercise course/no-quest without pixel-hunting.
+    ;(window as unknown as { __wpMapNav?: unknown }).__wpMapNav = nav
     ;(window as unknown as { __wpVerifyReady?: boolean }).__wpVerifyReady = true
   })
 })

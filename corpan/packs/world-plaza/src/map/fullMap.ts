@@ -47,9 +47,30 @@ import {
   drawWayfinding,
   type PlottedRemote,
   type PlottedQuestMarker,
+  type PlottedPoi,
 } from "./schematic"
 
 const LOG = "[wp/fullMap]"
+
+/**
+ * NAVIGATION seam (owner: a fuller Maps app). When the host provides `nav`, the map
+ * gains: tap-a-POI → "Set course / Navigate here" (the on-road wayfinding arrow then
+ * guides to the CHOSEN place, via `setCourse`), and a "No quest" toggle that turns
+ * quests OFF for free exploration (`setQuestActive(false)`). All optional + omit-
+ * graceful — without `nav` the map behaves exactly as before (pure consumer).
+ */
+export interface MapNav {
+  /** Set the wayfinding course to a chosen anchor (the arrow now targets it). */
+  setCourse(anchorId: string): void
+  /** Clear the user course (arrow falls back to the quest objective, if any). */
+  clearCourse(): void
+  /** The currently-coursed anchor id (for the route strip + the pin's state), or null. */
+  getCourse(): string | null
+  /** Is a quest currently active? (false = "No quest" / free-explore mode.) */
+  isQuestActive(): boolean
+  /** Turn quests on/off. false = clear the active objective (idle the beacon). */
+  setQuestActive(active: boolean): void
+}
 
 export interface FullMapOptions {
   view: MapView
@@ -60,6 +81,8 @@ export interface FullMapOptions {
   anchorName?: (anchorId: string) => string
   /** Resolve an item id → a friendly label (for source-hint tags). */
   itemName?: (itemId: string) => string
+  /** Optional navigation controls (set-course-to-POI + no-quest toggle). */
+  nav?: MapNav
 }
 
 /**
@@ -214,13 +237,46 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   routeGo.type = "button"
   routeGo.className = "wp-map-route-go"
   routeGo.textContent = mt("map.route.go")
-  routeStrip.append(routeText, routeGo)
+  // A "clear course" ✕ on the route strip (only while a USER course is set).
+  const routeClear = document.createElement("button")
+  routeClear.type = "button"
+  routeClear.className = "wp-map-route-clear"
+  routeClear.setAttribute("aria-label", mt("map.course.clear"))
+  routeClear.innerHTML = "&#10005;"
+  routeClear.hidden = true
+  routeClear.addEventListener("click", (e) => {
+    e.stopPropagation()
+    opts.nav?.clearCourse()
+  })
+  routeStrip.append(routeText, routeGo, routeClear)
   wrap.appendChild(routeStrip)
-  // "Go": frame the player→objective leg (recenter between them, sensible zoom).
+  // "Go": frame the player→destination leg (recenter between them, sensible zoom).
   let routeGoPending = false
   routeGo.addEventListener("click", () => {
     routeGoPending = true
   })
+
+  // ── "No quest" toggle (owner: free-explore mode) — only when nav is wired. It
+  //   reflects + flips the host's quest-active state; OFF idles the objective so
+  //   the player can just wander (or navigate to a chosen POI). ───────────────────
+  if (opts.nav) {
+    const nav = opts.nav
+    const questToggle = document.createElement("button")
+    questToggle.type = "button"
+    questToggle.className = "wp-map-questtoggle"
+    const syncToggle = () => {
+      const on = nav.isQuestActive()
+      questToggle.textContent = on ? mt("map.quest.on") : mt("map.quest.off")
+      questToggle.setAttribute("aria-pressed", on ? "true" : "false")
+      questToggle.classList.toggle("wp-map-questtoggle--off", !on)
+    }
+    questToggle.addEventListener("click", () => {
+      nav.setQuestActive(!nav.isQuestActive())
+      syncToggle()
+    })
+    syncToggle()
+    tools.appendChild(questToggle)
+  }
 
   const legend = buildLegend(opts.view, accent, mt)
   if (legend) wrap.appendChild(legend)
@@ -367,20 +423,32 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   let pinchStartDist = 0
   let pinchStartZoom = 1
   let dragLast: { x: number; z: number } | null = null
+  // ── TAP-A-POI → SET COURSE (owner: navigate to a chosen place). We track the
+  //   down point + whether it moved; a near-stationary up that lands within a POI's
+  //   hit radius sets the wayfinding course to that anchor (via `opts.nav`). The
+  //   latest plotted POIs (with screen positions) are captured each frame below. ──
+  let tapStart: { x: number; y: number } | null = null
+  let tapMoved = false
+  let latestPois: PlottedPoi[] = []
   const onDown = (e: PointerEvent) => {
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
     if (pointers.size === 1) {
       const { sx, sy } = stagePoint(e.clientX, e.clientY)
       dragLast = screenToWorld(sx, sy)
+      tapStart = { x: e.clientX, y: e.clientY }
+      tapMoved = false
     } else if (pointers.size === 2) {
       const pts = [...pointers.values()]
       pinchStartDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y) || 1
       pinchStartZoom = zoom
       dragLast = null
+      tapStart = null
     }
   }
   const onMove = (e: PointerEvent) => {
     if (!pointers.has(e.pointerId)) return
+    // A tap that drifts > ~6px is a drag, not a course-set.
+    if (tapStart && Math.hypot(e.clientX - tapStart.x, e.clientY - tapStart.y) > 6) tapMoved = true
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
     if (pointers.size === 2) {
       const pts = [...pointers.values()]
@@ -400,6 +468,26 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
     }
   }
   const onUp = (e: PointerEvent) => {
+    // A clean tap (no drift) that lands on a POI sets the wayfinding course to it.
+    if (opts.nav && tapStart && !tapMoved && pointers.size === 1) {
+      const { sx, sy } = stagePoint(e.clientX, e.clientY)
+      const HIT = 18 // px hit radius around a plotted POI dot
+      let best: { poi: PlottedPoi; d: number } | null = null
+      for (const p of latestPois) {
+        const d = Math.hypot(p.sx - sx, p.sy - sy)
+        if (d <= HIT && (!best || d < best.d)) best = { poi: p, d }
+      }
+      if (best) {
+        try {
+          // Toggle: tapping the already-coursed POI clears it.
+          if (opts.nav.getCourse() === best.poi.id) opts.nav.clearCourse()
+          else opts.nav.setCourse(best.poi.id)
+        } catch (err) {
+          console.error(`${LOG} setCourse threw:`, err)
+        }
+      }
+    }
+    tapStart = null
     pointers.delete(e.pointerId)
     if (pointers.size < 2) pinchStartDist = 0
     if (pointers.size === 0) dragLast = null
@@ -426,7 +514,7 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
         drawBase(ctx, opts.view.topology, proj, cssW, cssH, true, opts.view.getMapGeometry?.())
         // Maps-app filter: when a chip/search narrows focus, non-matching POIs ghost.
         const useFilter = filterActive()
-        drawPois(ctx, opts.view.topology, proj, true, useFilter ? poiPasses : undefined)
+        latestPois = drawPois(ctx, opts.view.topology, proj, true, useFilter ? poiPasses : undefined)
 
         if (!reduced) {
           const now = typeof performance !== "undefined" ? performance.now() : Date.now()
@@ -444,32 +532,48 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
         const player = drawPlayer(ctx, opts.view, proj, true, accent)
 
         // #72 wayfinding: a "go here" cue from the player toward the active
-        // objective (dashed leader, or an edge arrow when it's off-screen).
+        // objective (dashed leader / edge arrow). Suppressed in "No quest" mode or
+        // when a user course overrides the objective (the course leader draws below).
         const obj = qmarkers.find((m) => m.kind === "objective")
-        if (obj) drawWayfinding(ctx, player.sx, player.sy, obj.sx, obj.sy, cssW, cssH, true)
+        const objActive = (opts.nav ? opts.nav.isQuestActive() : true) && !opts.nav?.getCourse()
+        if (obj && objActive) drawWayfinding(ctx, player.sx, player.sy, obj.sx, obj.sy, cssW, cssH, true)
 
-        // ── ROUTE STRIP: "Route to {place} · ~{dist}" toward the active objective.
-        if (obj) {
+        // ── ROUTE STRIP destination = the USER COURSE (if the player set one by
+        //   tapping a POI), else the quest OBJECTIVE. So with no quest the player can
+        //   still navigate to any chosen place; with a quest, a tapped course
+        //   overrides the objective until cleared. ────────────────────────────────
+        const courseId = opts.nav?.getCourse() ?? null
+        // The quest objective is a destination only while quests are ACTIVE; in
+        // "No quest" mode only a user course routes (free explore).
+        const questActive = opts.nav ? opts.nav.isQuestActive() : true
+        const destId = courseId ?? (questActive && obj ? obj.anchorId : null)
+        if (destId) {
           let pPos
           try {
             pPos = opts.view.getPlayerPos()
           } catch {
             pPos = null
           }
-          const objAnchor = opts.view.topology.anchors.find((a) => a.id === obj.anchorId)
-          if (pPos && objAnchor) {
-            const dx = objAnchor.x - pPos.x
-            const dz = objAnchor.z - pPos.z
+          const destAnchor = opts.view.topology.anchors.find((a) => a.id === destId)
+          if (pPos && destAnchor) {
+            const dx = destAnchor.x - pPos.x
+            const dz = destAnchor.z - pPos.z
             const dist = Math.round(Math.hypot(dx, dz))
+            // Draw the dashed leader to the chosen course too (not just the objective).
+            if (courseId) {
+              const s = proj.toScreen(destAnchor.x, destAnchor.z)
+              drawWayfinding(ctx, player.sx, player.sy, s.x, s.y, cssW, cssH, true)
+            }
             routeText.innerHTML =
-              `<span class="wp-map-route-to">${escapeHtml(mt("map.route", { place: anchorName(obj.anchorId) }))}</span>` +
+              `<span class="wp-map-route-to">${escapeHtml(mt("map.route", { place: anchorName(destId) }))}</span>` +
               `<span class="wp-map-route-dist">${escapeHtml(mt("map.route.distance", { dist }))}</span>`
             routeStrip.hidden = false
-            // Consume a pending "Go": center between player + objective, sane zoom.
+            routeClear.hidden = !courseId // ✕ only for a user-set course
+            // Consume a pending "Go": center between player + destination, sane zoom.
             if (routeGoPending) {
               routeGoPending = false
-              panX = (pPos.x + objAnchor.x) / 2
-              panZ = (pPos.z + objAnchor.z) / 2
+              panX = (pPos.x + destAnchor.x) / 2
+              panZ = (pPos.z + destAnchor.z) / 2
               const span = Math.max(40, Math.hypot(dx, dz))
               zoom = Math.max(1.4, Math.min(ZOOM_MAX, (cityHalf / span) * 1.1))
               clampPan()

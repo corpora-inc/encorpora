@@ -80,6 +80,10 @@ const EN: Record<string, string> = {
   "map.route": "Route to {place}",
   "map.route.distance": "~{dist} m",
   "map.route.go": "Go",
+  // Navigation: tap-a-POI course + the no-quest toggle.
+  "map.course.clear": "Clear course",
+  "map.quest.on": "Quest: on",
+  "map.quest.off": "No quest",
 }
 
 export type MapT = (key: string, params?: Record<string, string | number>) => string

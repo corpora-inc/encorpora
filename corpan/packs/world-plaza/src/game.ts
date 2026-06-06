@@ -2007,12 +2007,26 @@ function buildWorld(
   // the over-rooftop beacon, and the map star all resolve through this so they
   // can never disagree (the "I stood on the star and nothing was there" bug was a
   // landmark/anchor mismatch — objective at `plaza`, player drawn to the fountain).
+  // ── NAVIGATION state (owner: navigate-to-POI + no-quest mode) ───────────────
+  // `userCourse` = a player-chosen destination anchor (tapped on the map); it
+  // OVERRIDES the quest objective for ALL wayfinding (road arrow + beacon + map).
+  // `questMuted` = "No quest" free-explore mode: the quest objective is ignored
+  // (the beacon/arrow idle) until quests are turned back on. Minimal + commented;
+  // the lead reconciles deeper quest-state at merge.
+  let userCourse: string | null = null
+  let questMuted = false
+  const anchorWorld = (id: string | null | undefined): { x: number; z: number } | null => {
+    if (!id) return null
+    const a = city.getAnchor(id)
+    return a ? { x: a.x, z: a.z } : null
+  }
   const objectivePoint = (): { x: number; z: number } | null => {
+    // A user-set course wins; resolve it to a live point (helper NPC, else anchor).
+    if (userCourse) return locateObjective(userCourse, crowd.focusables, anchorWorld)
+    // No course + quests muted ⇒ nothing to point at (free explore).
+    if (questMuted) return null
     const obj = questEngine.getQuestMarkers().find((m) => m.kind === "objective")
-    return locateObjective(obj?.anchorId, crowd.focusables, (id) => {
-      const a = city.getAnchor(id)
-      return a ? { x: a.x, z: a.z } : null
-    })
+    return locateObjective(obj?.anchorId, crowd.focusables, anchorWorld)
   }
 
   // A subtle floor marker a few steps ahead of the player pointing at the objective.
@@ -2031,6 +2045,26 @@ function buildWorld(
     isSuppressed: () => !!openDialogue || challengeDepth > 0 || vignetteHost.isActive(),
     accent: scene.palette?.accent,
   })
+
+  // Hand the Map app the navigation controls (tap-a-POI course + no-quest toggle).
+  // `mapOpts` was built earlier + captured by `createMapSection`; the map reads
+  // `opts.nav` at render time (each open), so attaching it here (before any open)
+  // wires it for free. `setCourse` also clears the mute (you chose somewhere to go).
+  mapOpts.nav = {
+    setCourse: (id: string) => {
+      userCourse = id
+    },
+    clearCourse: () => {
+      userCourse = null
+    },
+    getCourse: () => userCourse,
+    isQuestActive: () => !questMuted,
+    setQuestActive: (active: boolean) => {
+      questMuted = !active
+      // turning quests back ON drops any free-explore course so the objective leads.
+      if (active) userCourse = null
+    },
+  }
 
   // TRAVERSE / FIND steps (#26 + #55 + #40): "Cross the river bridge" had no
   // completable action; #26 first wired a silent proximity AUTO-ADVANCE, the owner
