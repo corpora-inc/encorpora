@@ -237,6 +237,115 @@ export const MAP_CSS = `
   text-align: center;
 }
 
+/* ===================== MAPS-APP CHROME (PHONE_DESIGN §6) ===================== */
+/* Search bar + category filter chips above the stage; a route strip below it. */
+.wp-map-tools {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.wp-map-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 250, 240, 0.92);
+  border: 1px solid rgba(120, 96, 60, 0.25);
+  color: #8a785c;
+}
+.wp-map-search svg { width: 17px; height: 17px; flex: 0 0 auto; display: block; }
+.wp-map-search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font: 600 14px/1 ui-sans-serif, system-ui, sans-serif;
+  color: #4a3b27;
+  outline: none;
+}
+.wp-map-search-input::placeholder { color: #a8967a; font-weight: 500; }
+/* horizontal scrollable chip row (RTL-safe via logical scroll) */
+.wp-map-chips {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1px;
+}
+.wp-map-chips::-webkit-scrollbar { display: none; }
+.wp-map-chip {
+  flex: 0 0 auto;
+  border: 1px solid rgba(120, 96, 60, 0.28);
+  border-radius: 999px;
+  padding: 6px 13px;
+  background: rgba(255, 250, 240, 0.7);
+  color: #5a4a32;
+  font: 700 12.5px/1 ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.wp-map-chip:hover { background: rgba(255, 250, 240, 0.95); }
+.wp-map-chip[aria-current="true"] {
+  background: var(--wp-map-accent, #c46b4a);
+  border-color: var(--wp-map-accent, #c46b4a);
+  color: #fff7f0;
+}
+
+/* Route strip — "Route to {place} · ~{dist}" + a Go button. */
+.wp-map-route {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 12px 10px 14px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 250, 240, 0.95), rgba(245, 232, 211, 0.85));
+  border: 1px solid rgba(120, 96, 60, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+.wp-map-route[hidden] { display: none; }
+.wp-map-route-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: hidden;
+}
+.wp-map-route-to {
+  font: 700 13.5px/1.2 ui-sans-serif, system-ui, sans-serif;
+  color: #4a3b27;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wp-map-route-dist {
+  font: 600 11.5px/1 ui-sans-serif, system-ui, sans-serif;
+  color: #8a785c;
+}
+.wp-map-route-go {
+  flex: 0 0 auto;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  background: var(--wp-map-accent, #c46b4a);
+  color: #fff7f0;
+  font: 800 13px/1 ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 3px 10px rgba(196, 107, 74, 0.32);
+}
+.wp-map-route-go:active { transform: scale(0.96); }
+
 /* the gentle objective pulse — opt out under reduced motion */
 @keyframes wp-map-pulse {
   0% { transform: scale(1); opacity: 0.55; }

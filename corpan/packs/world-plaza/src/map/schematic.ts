@@ -8,7 +8,7 @@
  * state, no other-slice internals.
  */
 
-import type { RoomTopology } from "@world-plaza/contracts"
+import type { RoomTopology, Anchor } from "@world-plaza/contracts"
 import type { MapView, MapGeometry } from "../contracts/runtime"
 import {
   PALETTE,
@@ -142,12 +142,20 @@ export function drawPois(
   topology: RoomTopology,
   proj: Projection,
   detail: boolean,
+  /**
+   * Optional Maps-app filter (search + category chips). When given, a POI whose
+   * `(cat, anchor)` returns false is dimmed to a faint ghost instead of drawn at
+   * full strength — so a filter narrows focus without hiding the city's shape.
+   * Omitted ⇒ every marker draws normally (the minimap + legacy callers).
+   */
+  filter?: (cat: PoiCategory, a: Anchor) => boolean,
 ): PlottedPoi[] {
   const out: PlottedPoi[] = []
   // Bigger, shaped markers on the (now roomy) full map; compact on the minimap.
   const size = detail ? 8 : 4
   for (const a of topology.anchors) {
     const cat = categoryOf(a)
+    const passes = !filter || filter(cat, a)
     if (!SIGNIFICANT.has(cat)) {
       // decor/bench/portal/spawn → a barely-there tick, not a categorical marker.
       if (!detail) continue
@@ -160,6 +168,13 @@ export function drawPois(
     }
     const p = proj.toScreen(a.x, a.z)
     const style = markerStyleForCat(cat)
+    if (!passes) {
+      // Filtered out: a faint ghost so the city shape stays, focus narrows.
+      ctx.globalAlpha = 0.16
+      drawMarker(ctx, p.x, p.y, size, style, detail)
+      ctx.globalAlpha = 1
+      continue
+    }
     drawMarker(ctx, p.x, p.y, size, style, detail)
     out.push({ id: a.id, cat, sx: p.x, sy: p.y })
   }
