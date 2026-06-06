@@ -7,7 +7,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Quest believability + cohesiveness pass.** Objective NPCs now stand at
+  theme-matched venues instead of all crowding the plaza: the café order plays
+  out at the **café** (not "a barista at the fountain"), departures at the **rail
+  station**, City Hall at the **exchange**; the clinic stays at the hospital,
+  ferry/fishmonger at the harbor, groceries/numbers at the market. Quest copy was
+  tightened to match each place. The completion fork no longer sends you straight
+  back to the venue you just left (rotates the next-quest objective by venue), so
+  you don't get the same-looking NPC three quests running.
+
 ### Fixed
+- **Quests are truly pair-agnostic.** Dropped the baked
+  `contentSelector.languageCodes: ["es"]` from every pair-agnostic quest, so a
+  non-Spanish learner's challenge content is drawn from THEIR stack's target
+  language instead of being constrained to entries that happen to have Spanish.
+
+- **Translate/match minigames no longer go target→target (ES→ES) with immersion
+  OFF.** The content filter's `languageCodes` doubles as the bundled corpus's
+  TRANSLATION whitelist, so a target-only list (`["es"]`) made the corpus drop the
+  native (English) row — collapsing the challenge's native gloss to the Spanish
+  target. A learner saw "Tap the one that means «el pan»" with all-Spanish tiles,
+  and `pictureMatchWordHint` received the Spanish target in its `{native}` slot.
+  `resolveMinigameContent` now threads the learner's native code into
+  `languageCodes` whenever it differs from the target, so both translations come
+  back and cross-language games stay genuinely two-language. Single-language stacks
+  (native === target) are unaffected — the whitelist stays the single code.
+  (`quest/minigameContent.ts`, `game.ts`)
+- **Choice/match instructions no longer say "word" over a sentence tile.** The
+  picture/word-match fallback hardcoded "Tap the **word** that means …" even when
+  the answer tiles were full corpus sentences ("Trae el libro aquí."). The English
+  source for the tap-the-meaning instructions is now noun-neutral ("Tap the **one**
+  that means …"), true for a word, a phrase, or a sentence. (Locale strings are
+  regenerated from the new English source by the i18n pass.)
+  (`i18n/strings.ts`, `challenges/tools/strings.ts`)
+- **The challenge close (×) button is premium and properly inset.** It was a flat
+  34px circle straddling the card's rounded corner + the layered gold frame. It is
+  now a 44px touch target with a smaller visible disc centered well clear of the
+  corner/deckle, accent-aware (tinted to the scene accent), with hover/active/focus
+  states. One shared button serves every minigame. (`challenges/challenge.css`,
+  `challenges/overlay.ts`, `challenges/registry.ts`, `game.ts`)
 - **The Phone's "all-hearing ear" launcher FAB now renders.** The FAB component
   shipped referencing `.wp-phone-fab*` classes that were never written to CSS, so
   it was a zero-layout invisible button — the phone (Inventory + Music) was
