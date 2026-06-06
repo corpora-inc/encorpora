@@ -144,9 +144,50 @@ ttsctl publish <pack_dir>
   --bucket TEXT            S3 bucket (default: corpan-prod)
   --profile TEXT           AWS profile (default: corpan-publisher)
   --reader-dist PATH       [LEGACY] Stargate reader dist/ — reader code now deploys via GH Pages, not narration ZIPs
-  --tier [public|premium]  (default: public)
+  --tier [public|premium]  (default: public) — LEGACY per-item store flow, used for older Tolstoy-style standalone-purchase books only
+  --with-preview           **DEFAULT FOR NEW NARRATIONS** — Corpán Plus two-ZIP model (free preview + Plus-subscriber-gated full)
+  --free-segments INTEGER  Override the preview cutoff (number of TTS segments in the free ZIP). Default min(floor(total/3), 100)
   --cdn-domain TEXT        CloudFront domain (default: d38iwc9748jekz.cloudfront.net)
 ```
+
+### Default to `--with-preview` (Corpán Plus) for new narrations
+
+**Per-book IAP is retired.** All new narrations ship as Corpán Plus
+subscription content via the two-ZIP model. Use `--with-preview` (NOT
+`--tier premium`, which is the legacy per-item store flow).
+
+```bash
+ttsctl publish "$PACK" --lang en --voice-id gemini-vindy --version 0.1.0 --with-preview
+```
+
+This emits, in addition to the legacy public ZIP (unchanged for old
+runtimes):
+
+- **Free preview ZIP** at `s3://corpan-prod/artifacts/narrations/preview/<pack>-<lang>-<ver>-preview.zip`
+  — truncated to `freeSegments` (default `min(floor(total/3), 100)`,
+  or override with `--free-segments N` or `narration.yaml`
+  `narration.free_segments`).
+- **Full ZIP** at `s3://corpan-prod/artifacts/narrations/premium/<pack>-<lang>-<ver>.zip`
+  — CloudFront-signed, Plus-gated. The catalog entry stamps
+  `full.requires: "corpan.plus"`.
+
+The catalog-v2 entry gets `preview` + `full` + `totalSegments` +
+`freeSegments` fields. New runtimes read only those; old runtimes
+still see the legacy public ZIP.
+
+**Sanity check after publish:**
+
+```bash
+curl -s https://d38iwc9748jekz.cloudfront.net/catalog-v2.json | \
+  jq '.narrations[] | select(.id == "<pack-voice-lang>")'
+# verify preview.url, full.url, full.requires == "corpan.plus" all populated
+```
+
+**Architectural rationale + paywall code paths:** see `corpan/CLAUDE.md`
+"Corpán Plus (monetization) — architecture decisions" section. The
+short version: free tier is server-truncated (not client-gated, because
+the client is open source); subscription-only; no per-book IAP; clean
+runtime via the three-shape catalog.
 
 The command does 3 things:
 1. **Package**: Creates ZIP in /tmp with manifest, segments, audio, dist

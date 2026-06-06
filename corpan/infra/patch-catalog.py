@@ -522,6 +522,24 @@ BOOK_META = {
         "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device", "tts"],
         "published": "2026-05-27",
     },
+    "book_ai_this_week_2026_06_03": {
+        "description": (
+            "AI This Week for June 3, 2026 — Frontier on the Countertop. A "
+            "DIY-tinkerer issue: MiniMax M3 with a new sparse attention "
+            "architecture, NVIDIA's first open frontier release Nemotron 3 "
+            "Ultra at five hundred fifty billion parameters, Opus 4.8 leading "
+            "the Artificial Analysis Index, OpenAI quietly deprioritizing "
+            "SWE-bench Verified after a contamination audit, Microsoft's "
+            "first-party MAI models at Build, GitHub Copilot moving to "
+            "usage-based billing, and Anthropic filing for IPO. Top story is "
+            "the do-it-yourself rig: AMD Strix Halo and NVIDIA DGX Spark put "
+            "frontier-class inference on a desk. Concept of the week is "
+            "speculative decoding — the drafter-verifier trick that makes "
+            "big models on small hardware feel fast. About seventeen minutes."
+        ),
+        "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device", "diy", "hardware"],
+        "published": "2026-06-03",
+    },
     "book_ai_this_week_2026_05_20": {
         "description": (
             "AI This Week for May 20, 2026 — Magnifica Humanitas. Two hosts on "

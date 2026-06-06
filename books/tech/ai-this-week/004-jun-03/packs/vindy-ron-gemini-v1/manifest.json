@@ -1,0 +1,23 @@
+{
+  "id": "book_ai_this_week_2026_06_03",
+  "name": "AI This Week — June 3, 2026 — Frontier on the Countertop",
+  "version": "0.1.0",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "format": "dialog",
+  "metadata": {
+    "series": "AI This Week",
+    "issue": 4,
+    "issue_date": "2026-06-03",
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Hardcore DIY tinkerers — self-hosters, fine-tuners, llama.cpp / vLLM / Ollama / MLX folk — who want a calm conversation about real AI news with practical hands-on hooks.",
+    "estimatedListenTime": "15 minutes"
+  }
+}
