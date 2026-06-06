@@ -121,9 +121,10 @@ export interface Archetype {
  * The archetype catalogue — MODERN "Corpan City" roles (#107). Re-themed from the
  * old colonial-1770 trades to contemporary city life so venue-fit reads naturally
  * (a clinic NPC is a nurse, not a "lamplighter") and nothing feels like a storybook
- * mismatch in a real modern place. 16 wandering roles incl. the rare, wholesome
- * neighbourhood "fixer". Shapes (tools/tends/voice/weight) are unchanged so the
- * minigame fit + crowd balance carry over; only the flavour is modernised.
+ * mismatch in a real modern place. 19 wandering roles — everyday Corpan City people
+ * (baker, courier, student, cook, busker, dog-walker, commuter, cyclist, cleaner, …)
+ * incl. the rare, wholesome neighbourhood "fixer". Shapes (tools/tends/voice/weight)
+ * are unchanged so the minigame fit + crowd balance carry over; flavour is modern.
  */
 const ARCHETYPES: readonly Archetype[] = [
   {
@@ -197,50 +198,50 @@ const ARCHETYPES: readonly Archetype[] = [
     voice: "soft",
   },
   {
-    id: "gardener",
-    label: "a gentle park gardener",
+    id: "dog-walker",
+    label: "a friendly dog-walker",
     tends: "either",
-    toneSeeds: ["gentle", "knowing", "calm", "happiest among the plants"],
+    toneSeeds: ["friendly", "easy-going", "warm", "happiest out in the park"],
     quirkSeeds: [
-      "hold up a leaf and ask you to name its colour",
-      "speak in little bits of plant lore",
-      "keep seed packets tucked in every pocket",
+      "introduce each dog by name",
+      "wave to everyone on the path",
+      "untangle a couple of leashes while you talk",
     ],
     tools: ["picture-match", "odd-one-out", "memory-pairs", "true-false"],
     pretexts: [
-      "the plant markers got pulled up and must be sorted back",
-      "two seedlings look alike and one must be picked out",
+      "the dogs' name tags got mixed up and must be sorted back",
+      "two of the dogs look alike and one must be picked out",
     ],
-    topics: ["plant", "garden", "leaf", "flower", "park", "tree", "green"],
-    names: ["Yamile", "Don Remedio", "Esperanza", "Bruno", "Flora"],
+    topics: ["dog", "park", "walk", "leash", "bench", "tree", "green"],
+    names: ["Yamile", "Beni", "Esperanza", "Bruno", "Flora"],
     hooks: [
-      "keeps the park benches in the best shade",
-      "trades cuttings for stories from out of town",
+      "knows the best shaded benches in the park",
+      "hears all the neighbourhood news on the morning loop",
     ],
     voice: "soft",
   },
   {
-    id: "librarian",
-    label: "a kindly librarian",
-    tends: "npc_station",
-    toneSeeds: ["kindly", "patient", "gently witty", "unhurried"],
+    id: "student",
+    label: "a busy university student",
+    tends: "either",
+    toneSeeds: ["bright", "a little frazzled", "friendly", "quick on the uptake"],
     quirkSeeds: [
-      "lower your voice to a friendly hush",
-      "recommend a book mid-sentence",
-      "straighten a crooked shelf while you talk",
+      "balance a coffee and a stack of books",
+      "quote something from today's lecture",
+      "check the time, then relax and chat",
     ],
     tools: ["fill-the-blank", "dialogue-fill", "true-false", "build-sentence"],
     pretexts: [
-      "a return slip smudged and a word is missing",
-      "a sentence on the noticeboard lost its last word",
+      "the lecture notes got jumbled and a word is missing",
+      "a sentence in the assignment lost its last word",
     ],
-    topics: ["book", "library", "story", "word", "quiet", "read", "shelf"],
-    names: ["Anselmo", "Paz", "Lucas", "Tomás"],
+    topics: ["class", "book", "study", "word", "campus", "exam", "library"],
+    names: ["Ana", "Diego", "Lucas", "Tomás", "Vale"],
     hooks: [
-      "knows the reading-room schedule by heart",
-      "keeps a lost-and-found drawer everyone forgets about",
+      "knows which café has the quietest corner to study",
+      "always knows what's on at the student union",
     ],
-    voice: "old",
+    voice: "young",
   },
   {
     id: "guide",
@@ -289,31 +290,31 @@ const ARCHETYPES: readonly Archetype[] = [
     voice: "deep",
   },
   {
-    id: "trader",
-    label: "a sharp market trader",
+    id: "cook",
+    label: "a busy line cook",
     tends: "vendor",
-    toneSeeds: ["sharp", "charming", "well-connected", "quick with a deal"],
+    toneSeeds: ["busy", "warm", "quick and chatty", "proud of the food"],
     quirkSeeds: [
-      "drop the names of other neighbourhoods",
-      "talk prices for sport, then give a fair one",
-      "lay the goods out on a bright cloth",
+      "call out the day's special over the pass",
+      "taste the sauce and nod to himself",
+      "wave a towel while keeping six pans going",
     ],
     tools: ["fast-translate", "number-drill", "translate-fast", "category-sort"],
     pretexts: [
-      "the price tags blew off the stall and need re-pairing",
-      "two items got swapped and the odd one must be spotted",
+      "the order tickets got shuffled and need re-pairing",
+      "two dishes got swapped and the odd one must be spotted",
     ],
-    topics: ["price", "deal", "money", "goods", "bargain", "stall", "market"],
+    topics: ["food", "dish", "kitchen", "menu", "order", "plate", "spicy"],
     names: ["Próspero", "Valentina", "Casimiro", "Renata", "Severo"],
     hooks: [
-      "can find you anything by tomorrow — for a price",
-      "knows which stall has the real bargains",
+      "feeds half the block their lunch",
+      "knows which market stall has the freshest produce",
     ],
     voice: "bright",
   },
   {
-    id: "musician",
-    label: "a street musician",
+    id: "busker",
+    label: "a street busker",
     tends: "either",
     toneSeeds: ["lively", "playful", "lyrical", "head full of songs"],
     quirkSeeds: [
@@ -405,10 +406,10 @@ const ARCHETYPES: readonly Archetype[] = [
     voice: "bright",
   },
   {
-    id: "clerk",
-    label: "a meticulous office clerk",
+    id: "office-worker",
+    label: "a meticulous office worker",
     tends: "npc_station",
-    toneSeeds: ["meticulous", "bookish", "quietly proud", "precise with words"],
+    toneSeeds: ["meticulous", "organised", "quietly proud", "precise with words"],
     quirkSeeds: [
       "double-check a form before handing it over",
       "wince at a typo",
@@ -419,10 +420,10 @@ const ARCHETYPES: readonly Archetype[] = [
       "a printed form has a typo that must be caught",
       "a blank was left on the form and needs the right word",
     ],
-    topics: ["form", "name", "word", "spelling", "office", "sign", "stamp"],
+    topics: ["form", "name", "word", "email", "office", "sign", "meeting"],
     names: ["Plácido", "Aldo", "Serafina", "Cándido", "Ofelia"],
     hooks: [
-      "stamped half the permits in the building",
+      "knows which floor the good coffee machine is on",
       "keeps the record of who's behind on the paperwork",
     ],
     voice: "soft",
@@ -473,6 +474,75 @@ const ARCHETYPES: readonly Archetype[] = [
       "saw someone drop something shiny by the fountain",
     ],
     voice: "young",
+  },
+  {
+    id: "commuter",
+    label: "a hurried commuter",
+    tends: "npc_station",
+    toneSeeds: ["hurried but polite", "friendly once they slow down", "practical", "always checking the time"],
+    quirkSeeds: [
+      "glance at the departures board mid-sentence",
+      "balance a coffee, a bag, and a phone",
+      "relax and chat once the train's not due yet",
+    ],
+    tools: ["number-drill", "listen-choose", "fast-translate", "build-sentence"],
+    pretexts: [
+      "the timetable got jumbled and the times need sorting",
+      "a station sign is missing a word and must be filled",
+    ],
+    topics: ["train", "time", "platform", "ticket", "work", "commute", "station"],
+    names: ["Andrés", "Marta", "Julio", "Rita", "Sole"],
+    hooks: [
+      "knows every shortcut between platforms",
+      "can tell you which train is always late",
+    ],
+    voice: "bright",
+  },
+  {
+    id: "cyclist",
+    label: "a cheerful bike courier on a break",
+    tends: "either",
+    toneSeeds: ["energetic", "cheerful", "quick-talking", "always on the move"],
+    quirkSeeds: [
+      "wheel the bike along beside you",
+      "point out the best bike lanes",
+      "catch your breath and grin",
+    ],
+    tools: ["fast-translate", "number-drill", "listen-choose", "category-sort"],
+    pretexts: [
+      "the route list got scrambled and the stops need sorting",
+      "two street names got swapped and the odd one must be spotted",
+    ],
+    topics: ["bike", "street", "lane", "fast", "city", "route", "corner"],
+    names: ["Nacho", "Vera", "Pol", "Lucía", "Tin"],
+    hooks: [
+      "knows the fastest way across town on two wheels",
+      "always knows where the road's closed today",
+    ],
+    voice: "young",
+  },
+  {
+    id: "cleaner",
+    label: "a steady street cleaner",
+    tends: "npc_station",
+    toneSeeds: ["steady", "good-natured", "plain-spoken", "proud of a tidy block"],
+    quirkSeeds: [
+      "lean on the broom for a friendly chat",
+      "nod at the cleaned-up corner with satisfaction",
+      "know exactly who drops litter where",
+    ],
+    tools: ["category-sort", "odd-one-out", "picture-match", "true-false"],
+    pretexts: [
+      "the bin labels got mixed and must be sorted again",
+      "one thing in the pile doesn't belong and must be picked out",
+    ],
+    topics: ["street", "clean", "bin", "corner", "tidy", "morning", "block"],
+    names: ["Goyo", "Tona", "Beto", "Lupe", "Sara"],
+    hooks: [
+      "knows the whole block before anyone else is awake",
+      "keeps an eye on what gets left by the fountain",
+    ],
+    voice: "deep",
   },
   {
     // RARE, never mean: a roguish-but-likeable neighbourhood "fixer". Sly demeanor
@@ -819,20 +889,20 @@ const ES_FALLBACK: Record<string, FallbackPack> = {
     teach: ['"{topic}" — repite, que el precio es justo.', "¿Cuánto crees que cuesta? ¡Adivina!"],
     bye: ["¡Que aproveche, y vuelve con hambre!"],
   },
-  clerk: {
+  "office-worker": {
     greet: ["Un momento, que termino este formulario. Bienvenido.", "¿Un trámite? ¿Un nombre bien escrito?"],
     teach: ['Mira esta palabra: "{topic}". ¿La escribes bien?', "Cuidado con la ortografía, por favor."],
     bye: ["Listo el papeleo. Hasta pronto."],
   },
-  musician: {
+  busker: {
     greet: ["¡Ay, llega quien me falta para la canción!", "Quédate, que tengo una rima para ti."],
     teach: ['"{topic}"… ¿con qué rima? ¡Cántalo!', "Repite el ritmo: la-la, {topic}."],
     bye: ["¡Que la música te acompañe!"],
   },
-  librarian: {
-    greet: ["Bienvenido a la biblioteca.", "Pasa, en voz baja. ¿Buscas un libro?"],
-    teach: ['Una palabra para tu lista: "{topic}".', "Despacio, que leer también se aprende."],
-    bye: ["Vuelve cuando quieras. Aquí siempre hay sitio."],
+  student: {
+    greet: ["¡Hola! Perdona, voy con prisas entre clases.", "¿Tú también estudias por aquí?"],
+    teach: ['Apunto esta palabra: "{topic}". ¿La repasamos?', "Despacio, que así se aprende mejor."],
+    bye: ["Me voy a clase. ¡Nos vemos!"],
   },
 }
 
@@ -951,12 +1021,12 @@ export interface PersonaContext {
  * variety stays huge.
  */
 const DEMEANOR_LEAN: Partial<Record<Demeanor, readonly string[]>> = {
-  gruff: ["courier", "vendor", "trader", "guide"],
-  sleepy: ["barber", "elder", "gardener"],
-  shy: ["shopkeeper", "clerk", "florist", "child"],
-  cheery: ["baker", "florist", "cart-vendor", "musician"],
-  sly: ["fixer", "trader"],
-  friendly: ["baker", "librarian", "trader", "musician", "elder"],
+  gruff: ["courier", "cleaner", "vendor", "cook"],
+  sleepy: ["barber", "elder", "cleaner"],
+  shy: ["shopkeeper", "office-worker", "florist", "child"],
+  cheery: ["baker", "florist", "cart-vendor", "busker", "cyclist"],
+  sly: ["fixer", "commuter"],
+  friendly: ["baker", "student", "dog-walker", "busker", "elder"],
 }
 
 function chooseArchetype(r: Rand, tends: "vendor" | "npc_station", demeanor: Demeanor): Archetype {
