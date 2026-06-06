@@ -99,6 +99,14 @@ const ARCHETYPE_DOMAINS: Record<string, readonly CorpusDomain[]> = {
   lamplighter: ["everyday", "housing", "environment"],
   "flower-girl": ["everyday", "environment", "culture"],
   smuggler: ["travel", "civic", "business"],
+  // VENUE-FIT roles (#107): the objective NPC at a clinic/café/market/station/
+  // exchange. Domains match the venue so its minigame vocab is on-topic.
+  doctor: ["health", "everyday", "social"],
+  pharmacist: ["health", "numbers", "everyday"],
+  barista: ["everyday", "social", "numbers"],
+  grocer: ["everyday", "numbers", "social"],
+  conductor: ["travel", "numbers", "everyday"],
+  banker: ["business", "numbers", "civic"],
 }
 
 /**

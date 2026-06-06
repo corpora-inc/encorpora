@@ -27,6 +27,7 @@ import {
 } from "@world-plaza/contracts"
 import { segueChipLabel, resolveSegue } from "./challengeSegues"
 import { targetLanguageDirective } from "./promptLocale"
+import { roleTermFor } from "./personaGen"
 import { isCrossLanguageTool } from "../challenges/registry"
 
 /**
@@ -39,6 +40,15 @@ import { isCrossLanguageTool } from "../challenges/registry"
  */
 type PersonaEnrichment = {
   archetypeLabel?: string
+  /** archetype id (baker/doctor/…) — used to resolve a TARGET-LANGUAGE role term at
+   *  prompt-build time so the seed never leaks an English trade noun (#107). */
+  archetype?: string
+  /** The role rendered for the seed in the TARGET language (or a venue-neutral
+   *  clause), precomputed by personaGen for its default target. `personaSeed`
+   *  re-resolves it for the ACTUAL learner target when one is passed (#107). */
+  roleTerm?: string
+  /** true when the archetype was forced by the agent's VENUE anchor (#107). */
+  venueRole?: boolean
   name?: string
   challengeTools?: readonly ChallengeToolId[]
   pretexts?: readonly string[]
@@ -214,16 +224,29 @@ export function selectMood(npcId: string, visit = 0): string {
  * enrichment (name/label/first-quirk) and the scene so it lands in the world.
  * ~25 tokens. Falls back gracefully for a plain authored role.
  */
-export function personaSeed(role: NpcRole, scene: Scene): string {
+export function personaSeed(role: NpcRole, scene: Scene, target?: string): string {
   const e = enrichmentOf(role)
+  // ROLE for the seed (#107): prefer the TARGET-LANGUAGE / venue-neutral role term
+  // over the English `archetypeLabel`, so the prompt never injects a bare English
+  // trade noun the model parrots ("Soy un lamplighter"). When the actual learner
+  // `target` is known (composeSystemPrompt passes it), re-resolve the term for THAT
+  // language so a non-ES/EN pair gets its own (or a venue-neutral) role — not the
+  // Spanish default personaGen baked. Falls back to personaGen's precomputed
+  // `roleTerm`, then the label (a plain authored role with neither).
+  const localized = target && e.archetype ? roleTermFor(e.archetype, target) : null
+  const roleWord = localized ?? e.roleTerm ?? e.archetypeLabel
   const who = e.name
-    ? `${e.name}, ${e.archetypeLabel ?? "a townsperson"}`
-    : e.archetypeLabel
-      ? e.archetypeLabel
-      : `a townsperson of the "${role.id}" spot`
+    ? `${e.name}, ${roleWord ?? "a townsperson"}`
+    : roleWord ?? `a townsperson of the "${role.id}" spot`
   const quirk = role.basePersona.quirks[0]
   const quirkClause = quirk ? `; you ${quirk}` : ""
-  return `You are ${who} in ${scene.setting.place}${quirkClause}.`
+  // VENUE GROUNDING (#107): a venue NPC must NEVER deny/contradict where it stands.
+  // One short clause pins the role to this exact place so the model can't wander
+  // off-venue (the "I'm not the clinic" bug). Plain roles get no extra clause.
+  const venueClause = e.venueRole
+    ? " You work right here and never deny it; stay grounded, plausible, and brief."
+    : ""
+  return `You are ${who} in ${scene.setting.place}${quirkClause}.${venueClause}`
 }
 
 /**
@@ -310,8 +333,10 @@ export function composeSystemPrompt(args: ComposeArgs): string {
   const native = languageName(learnerPair.native)
 
   // PERSONA SEED (sharp, ~25 tokens) fills the quest template's {persona} slot —
-  // a small model gets more character from this than from a long paragraph.
-  const seed = personaSeed(npcRole, scene)
+  // a small model gets more character from this than from a long paragraph. We pass
+  // the LEARNER TARGET CODE so a venue NPC's role is named in the target language
+  // (or a venue-neutral clause) — never a bare English trade noun (#107).
+  const seed = personaSeed(npcRole, scene, learnerPair.target)
   const objective = describeObjective(quest)
   const filled = fillTemplate(pp.personaTemplate, {
     persona: seed,

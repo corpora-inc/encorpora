@@ -88,7 +88,12 @@ function pickN<T>(r: Rand, arr: readonly T[], n: number): T[] {
  */
 export interface Archetype {
   id: string
-  /** Human label used in the system prompt ("a baker", "a wandering musician"). */
+  /**
+   * Human label, ENGLISH — for analytics + the UI header ONLY, NEVER injected into
+   * the system prompt for a non-English target (a 4B model parrots a stray English
+   * noun like "lamplighter" → "Soy un lamplighter"). The prompt uses `roleNoun`
+   * (target-language) or `venuePhrase` (language-neutral) instead — see #107.
+   */
   label: string
   /** Which anchor kind this trade tends near (for seed-biasing only). */
   tends: "vendor" | "npc_station" | "either"
@@ -490,7 +495,261 @@ const ARCHETYPES: readonly Archetype[] = [
     voice: "sly",
     weight: 1,
   },
+
+  /* ── VENUE-FIT roles (#107) ────────────────────────────────────────────────
+   * Roles that fit a SPECIFIC venue — a clinic doctor, a café barista, a station
+   * conductor. These are NEVER in the random wandering bag (`weight: 0`); they are
+   * reachable ONLY when the agent is the objective/station NPC at a matching venue
+   * anchor (see VENUE_ARCHETYPE + generatePersona's venue override). So the crowd
+   * stays the colourful old trades, but the NPC you're SENT to fits where they
+   * stand — a clinic never yields a "dusk-loving lamplighter". The label is English
+   * (UI/analytics only); the prompt names the role via ROLE_TERMS / venuePhrase. */
+  {
+    id: "doctor",
+    label: "a steady clinic doctor",
+    tends: "npc_station",
+    toneSeeds: ["calm", "reassuring", "attentive", "kind but unhurried"],
+    quirkSeeds: [
+      "ask gently how the traveler is feeling",
+      "explain one thing slowly and clearly",
+      "keep the waiting room calm",
+    ],
+    tools: ["fill-the-blank", "picture-match", "true-false", "listen-choose"],
+    pretexts: [
+      "a patient chart smudged and a word needs filling in",
+      "the symptom labels got mixed and must be matched again",
+    ],
+    topics: ["health", "doctor", "clinic", "rest", "care", "fever", "help"],
+    names: ["Dra. Elena", "Dr. Marco", "Dra. Sofía", "Dr. Andrés", "Dra. Pilar"],
+    hooks: [
+      "knows which traveler skipped their rest before the road",
+      "keeps the clinic open late for the harbour workers",
+    ],
+    voice: "warm",
+    weight: 0,
+  },
+  {
+    id: "pharmacist",
+    label: "a careful pharmacist",
+    tends: "npc_station",
+    toneSeeds: ["careful", "precise", "patient", "quietly helpful"],
+    quirkSeeds: [
+      "read the label twice before handing anything over",
+      "name each remedy and what it eases",
+      "keep the little drawers in perfect order",
+    ],
+    tools: ["picture-match", "category-sort", "fill-the-blank", "number-drill"],
+    pretexts: [
+      "the remedy labels fell off and must be matched again",
+      "a dosage line got smudged and needs the right number",
+    ],
+    topics: ["remedy", "pharmacy", "dose", "label", "health", "care", "rest"],
+    names: ["Don Ramiro", "Farm. Lucía", "Doña Inés", "Farm. Teo"],
+    hooks: [
+      "knows which tonic settles a traveler's stomach before a voyage",
+      "keeps the clinic's order book straight",
+    ],
+    voice: "soft",
+    weight: 0,
+  },
+  {
+    id: "barista",
+    label: "a friendly café barista",
+    tends: "vendor",
+    toneSeeds: ["friendly", "warm", "quick and cheerful", "glad of a chat"],
+    quirkSeeds: [
+      "ask how the traveler takes their coffee",
+      "slide a little pastry across the counter",
+      "name the day's special with a smile",
+    ],
+    tools: ["fast-translate", "picture-match", "word-scramble", "category-sort"],
+    pretexts: [
+      "the menu chalk smudged and the drink names are jumbled",
+      "the orders got mixed and need calling out again",
+    ],
+    topics: ["coffee", "café", "order", "pastry", "menu", "morning", "cup"],
+    names: ["Marisol", "Diego", "Camila", "Toño", "Bea"],
+    hooks: [
+      "remembers every regular's usual order",
+      "hears all the plaza news across the counter",
+    ],
+    voice: "bright",
+    weight: 0,
+  },
+  {
+    id: "grocer",
+    label: "a bustling market grocer",
+    tends: "vendor",
+    toneSeeds: ["bustling", "good-humoured", "quick to bargain", "warm-hearted"],
+    quirkSeeds: [
+      "stack the brightest fruit out front",
+      "name each item and its price",
+      "toss in one extra 'for the road'",
+    ],
+    tools: ["number-drill", "fast-translate", "category-sort", "picture-match"],
+    pretexts: [
+      "the price tags blew off the stalls and need re-pairing",
+      "the morning prices got muddled and must be called out again",
+    ],
+    topics: ["fruit", "price", "market", "stall", "fresh", "weigh", "basket"],
+    names: ["Doña Carmen", "Nacho", "Lupita", "Beto", "Rosa"],
+    hooks: [
+      "saves the ripest fruit for travelers headed to the docks",
+      "knows which stall has the freshest catch today",
+    ],
+    voice: "warm",
+    weight: 0,
+  },
+  {
+    id: "conductor",
+    label: "a brisk station conductor",
+    tends: "npc_station",
+    toneSeeds: ["brisk", "orderly", "helpful with a hurry", "keeps the clock"],
+    quirkSeeds: [
+      "call the next departure and platform",
+      "check tickets with a quick nod",
+      "point the way to the right platform",
+    ],
+    tools: ["number-drill", "listen-choose", "fill-the-blank", "build-sentence"],
+    pretexts: [
+      "the departures board scrambled and the times need sorting",
+      "a platform sign is missing a word and must be filled",
+    ],
+    topics: ["train", "platform", "ticket", "depart", "station", "time", "track"],
+    names: ["Don Felipe", "Cond. Marta", "Don Julio", "Cond. Rita"],
+    hooks: [
+      "knows the next boat-and-rail connection to Guadalajara",
+      "holds the late platform open for a polite traveler",
+    ],
+    voice: "bright",
+    weight: 0,
+  },
+  {
+    id: "banker",
+    label: "a courteous money-changer",
+    tends: "npc_station",
+    toneSeeds: ["courteous", "precise", "discreet", "patient with numbers"],
+    quirkSeeds: [
+      "count the coins twice, smiling",
+      "name each rate clearly",
+      "keep the ledger square",
+    ],
+    tools: ["number-drill", "fast-translate", "category-sort", "true-false"],
+    pretexts: [
+      "the exchange rates got muddled and need re-pairing",
+      "a figure in the ledger smudged and must be read again",
+    ],
+    topics: ["coin", "rate", "change", "price", "ledger", "silver", "count"],
+    names: ["Don Anselmo", "Cambista Vera", "Don Ruy", "Cambista Lía"],
+    hooks: [
+      "knows the fair rate before the harbour merchants do",
+      "keeps the exchange honest for travelers far from home",
+    ],
+    voice: "soft",
+    weight: 0,
+  },
 ]
+
+/* ─────────────────────────────────────────── venue → role (#107) ───────────
+ * The objective/station NPC at a venue must be a role that FITS the venue, NOT a
+ * seed-chosen wandering trade. When `generatePersona` is called with an anchorId
+ * (or contract anchor kind) in this map, the venue archetype OVERRIDES the
+ * demeanor/seed pick — so the clinic NPC is a doctor, the café NPC a barista, the
+ * station NPC a conductor, etc. Keys are the contract anchor ids AND a few common
+ * aliases (clinic≡hospital, cafe_counter≡cafe). Unknown anchors fall through to
+ * the normal seed-chosen archetype (the colourful ambient crowd). */
+const VENUE_ARCHETYPE: Record<string, string> = {
+  // medical
+  hospital: "doctor",
+  clinic: "doctor",
+  pharmacy: "pharmacist",
+  // café / food
+  cafe: "barista",
+  cafe_counter: "barista",
+  plaza: "barista", // the plaza café host quest (special.json es-cafe-travel)
+  // market / grocer
+  market: "grocer",
+  general_store: "grocer",
+  spice_stall: "grocer",
+  silk_stall: "grocer",
+  // transit
+  station: "conductor",
+  rail_station: "conductor",
+  bus_station: "conductor",
+  airport: "conductor",
+  // finance
+  exchange: "banker",
+  money_changer: "banker",
+  // tailor / outfitter keeps the existing authored weaver-ish feel via roles.json,
+  // so it is intentionally NOT mapped here.
+}
+
+/**
+ * Resolve a venue archetype for an anchor id, if any. Tries the exact id, then a
+ * lightly-normalised id (strip a trailing `_n/_s/_e/_w` cardinal + digits) so
+ * `market_2`/`harbor_n` still match `market`/`harbor`. Returns null for an unknown
+ * anchor (→ the agent keeps its seed-chosen wandering archetype). #107.
+ */
+function venueArchetypeFor(anchorId: string | undefined): Archetype | null {
+  if (!anchorId) return null
+  const direct = VENUE_ARCHETYPE[anchorId]
+  const base = anchorId.replace(/_(n|s|e|w)$/i, "").replace(/_?\d+$/, "")
+  const id = direct ?? VENUE_ARCHETYPE[base]
+  if (!id) return null
+  return ARCHETYPES.find((a) => a.id === id) ?? null
+}
+
+/* ─────────────────────────────────────── target-language role terms (#107) ──
+ * The role noun rendered IN THE TARGET LANGUAGE so the persona seed never leaks an
+ * English trade word a 4B model would parrot ("Soy un lamplighter"). Keyed by
+ * archetype id → { langCode → noun }. `en` is the baseline; `es` covers the live
+ * Antigua world. A (archetype, target) with no entry falls back to the archetype's
+ * `venuePhrase` (a venue-grounded, language-neutral clause naming NO bare English
+ * trade noun) — so EVERY pair gets a clean, non-leaking seed. The target-language
+ * DIRECTIVE that ends the prompt (promptLocale) then carries the rest of the
+ * in-language framing. Authoring es+en here; the rest backfill via the same i18n
+ * pipeline that fills challengeSegues/promptLocale (a follow-up). */
+const ROLE_TERMS: Record<string, Record<string, string>> = {
+  doctor: { en: "a doctor", es: "médico/a de la clínica" },
+  pharmacist: { en: "a pharmacist", es: "farmacéutico/a" },
+  barista: { en: "a café barista", es: "barista del café" },
+  grocer: { en: "a market grocer", es: "verdulero/a del mercado" },
+  conductor: { en: "a station conductor", es: "revisor/a de la estación" },
+  banker: { en: "a money-changer", es: "cambista" },
+}
+
+/**
+ * A language-NEUTRAL, venue-grounded fallback clause for an archetype — used when
+ * the target language has no ROLE_TERMS entry, so the seed NEVER carries a bare
+ * English trade noun the model parrots. Phrased "who runs/works …" so it reads as
+ * a role-by-place; the target directive renders the rest in-language. #107.
+ */
+const VENUE_PHRASE: Record<string, string> = {
+  doctor: "the local who looks after people at the clinic here",
+  pharmacist: "the local who runs the pharmacy here",
+  barista: "the local who runs the café counter here",
+  grocer: "the local who runs the market stall here",
+  conductor: "the local who runs the station here",
+  banker: "the local who runs the money exchange here",
+}
+
+/**
+ * Render an archetype's role for the PERSONA SEED in the target language (#107).
+ * Order: an authored target-language role term → the language-neutral venuePhrase
+ * → (only for an archetype with neither, i.e. the old trades) null, so the caller
+ * keeps the legacy English label. NEVER returns a bare English trade noun for a
+ * non-English target. `target` is a Corpán language code ("es","ja",…); we match
+ * exact then the base subtag ("es-MX"→"es").
+ */
+export function roleTermFor(archetypeId: string, target: string): string | null {
+  const terms = ROLE_TERMS[archetypeId]
+  if (terms) {
+    const base = target.toLowerCase().split("-")[0]
+    const hit = terms[target] ?? terms[target.toLowerCase()] ?? terms[base]
+    if (hit) return hit
+  }
+  return VENUE_PHRASE[archetypeId] ?? null
+}
 
 /** Archetypes the seed may choose for a given anchor tendency, with weights. */
 function archetypeBagFor(tends: "vendor" | "npc_station"): Archetype[] {
@@ -629,8 +888,19 @@ function defaultEsPack(arch: Archetype): FallbackPack {
 export interface GeneratedPersona extends NpcRole {
   /** archetype id (baker/scribe/…) — for the prompt program + analytics. */
   archetype: string
-  /** human label ("a warm-hearted baker") used in the system prompt. */
+  /** human label ("a warm-hearted baker") — ENGLISH, for the UI header + analytics
+   *  ONLY. NOT injected into the system prompt for a non-English target (#107). */
   archetypeLabel: string
+  /**
+   * The role rendered for the PERSONA SEED, in the TARGET language when authored
+   * (ROLE_TERMS), else a language-neutral venue-grounded clause (venuePhrase), else
+   * — for an unmapped old trade — the English `archetypeLabel` (the legacy path for
+   * the colourful wandering crowd, where an in-world Spanish label is fine). NEVER a
+   * bare English trade noun for a venue NPC on a non-English pair. #107.
+   */
+  roleTerm: string
+  /** true when this persona's archetype was forced by its VENUE anchor (#107). */
+  venueRole: boolean
   /** the demeanor this persona was built from (mirrors the CharacterSpec face). */
   demeanor: Demeanor
   /** a fun, non-identifying name for the header + in-character self-reference. */
@@ -658,6 +928,13 @@ export interface PersonaContext {
   tends?: "vendor" | "npc_station"
   /** stable anchor id for dialogue routing (defaults to a crowd id from seed). */
   anchorId?: string
+  /**
+   * The learner's TARGET language code ("es","ja",…). When set, a venue NPC's role
+   * is rendered IN this language (ROLE_TERMS) for the persona seed, so the prompt
+   * never leaks an English trade noun. Defaults to the scene's teaching language
+   * (es for Antigua) when omitted, so existing callers still get a clean seed. #107.
+   */
+  target?: string
 }
 
 /* ------------------------------------------------- demeanor → archetype lean */
@@ -709,7 +986,15 @@ export function generatePersona(seed: string, ctx: PersonaContext): GeneratedPer
   const tends: "vendor" | "npc_station" =
     ctx.tends ?? (r() < 0.55 ? "vendor" : "npc_station")
 
-  const arch = chooseArchetype(r, tends, demeanor)
+  // VENUE OVERRIDE (#107): if this agent is the objective/station NPC at a known
+  // venue anchor, its role MUST fit the venue — a clinic doctor, a café barista, a
+  // station conductor — NOT a seed-/demeanor-chosen wandering trade (the bug: a
+  // "dusk-loving lamplighter" stationed at the clinic). The venue archetype wins
+  // over the demeanor lean. Unmapped anchors (the ambient crowd) keep the colourful
+  // seed-chosen trade.
+  const venueArch = venueArchetypeFor(ctx.anchorId)
+  const venueRole = venueArch != null
+  const arch = venueArch ?? chooseArchetype(r, tends, demeanor)
   const name = pick(r, arch.names)
   const topics = pickN(r, arch.topics, Math.min(4, arch.topics.length))
   const backstoryHook = pick(r, arch.hooks)
@@ -733,6 +1018,15 @@ export function generatePersona(seed: string, ctx: PersonaContext): GeneratedPer
 
   const scriptedFallback = buildScriptedFallback(r, arch, scene, name, topics[0] ?? "café")
 
+  // ROLE TERM for the persona seed (#107): a venue role is rendered in the TARGET
+  // language (ROLE_TERMS) or a language-neutral venue clause (venuePhrase) so the
+  // prompt NEVER carries a bare English trade noun the model parrots. An UNMAPPED
+  // old trade has neither → keep its in-world English label (the legacy wandering
+  // crowd, where a Spanish-flavoured label is fine in the Antigua world). Target
+  // defaults to the scene's teaching language so existing callers stay clean.
+  const target = ctx.target ?? (fallbackLangOf(scene) === "es" ? "es" : "en")
+  const roleTerm = roleTermFor(arch.id, target) ?? arch.label
+
   return {
     id,
     anchorId,
@@ -741,6 +1035,8 @@ export function generatePersona(seed: string, ctx: PersonaContext): GeneratedPer
     // ---- enrichment (additive; runtime ignores these) ----
     archetype: arch.id,
     archetypeLabel: arch.label,
+    roleTerm,
+    venueRole,
     demeanor,
     name,
     voiceHint,

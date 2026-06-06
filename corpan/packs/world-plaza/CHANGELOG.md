@@ -8,6 +8,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **The objective/station NPC at a venue is now a believable, venue-FIT role — no
+  more "dusk-loving lamplighter" standing outside the clinic.** The persona
+  generator chose its archetype from the wanderer's seeded face/demeanor and
+  ignored the venue anchor, then injected the trade's **English** label straight
+  into the system prompt — so a 4B model parroted it ("Soy un lamplighter") even
+  with the Spanish-only directive in place. Three fixes (`src/npc/personaGen.ts` +
+  `src/npc/promptProgram.ts`): (1) a `VENUE_ARCHETYPE` map forces the role to fit
+  the venue — clinic/hospital→doctor, pharmacy→pharmacist, café→barista,
+  market→grocer, station/rail/bus/airport→conductor, exchange→money-changer — and
+  the venue WINS over the demeanor lean, so a sleepy face at the clinic is still a
+  doctor; (2) the persona seed names the role in the **target language**
+  (`ROLE_TERMS`) or, for an unauthored language, a language-neutral venue clause
+  ("the local who runs the café counter here") — it never injects a bare English
+  trade noun; (3) a venue NPC's seed is grounded ("you work right here and never
+  deny it; stay grounded, plausible, and brief"), so it can't contradict the venue
+  it stands at. The colourful wandering crowd is untouched.
 - **Minigames no longer flash a 0% "Not this time" card instead of presenting the
   challenge.** Two compounding bugs: (1) the pair-agnostic quests carry no
   `contentSelector.languageCodes`, so the minigame content filter became
