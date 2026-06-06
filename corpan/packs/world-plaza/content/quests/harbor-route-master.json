@@ -31,7 +31,7 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at an {scaffold} level: keep the learner moving across the city, narrating their route, and giving a confident spoken farewell.",
     "scaffold": "advanced",
     "ragSources": ["base-travel", "base-market"],
-    "contentSelector": { "levels": ["B1", "B2"], "domains": ["travel", "market", "social"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["B1", "B2"], "domains": ["travel", "market", "social"] },
     "toolWhitelist": ["fast-translate", "say-it-back", "build-sentence"]
   },
   "rewards": { "xp": 320, "coins": 420, "badge": "route-master", "grant": ["traveler-coat"] },

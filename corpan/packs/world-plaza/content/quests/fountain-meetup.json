@@ -18,7 +18,7 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner arranging to meet, naming days and times, and making small talk.",
     "scaffold": "intermediate",
     "ragSources": ["base-social", "base-greetings"],
-    "contentSelector": { "levels": ["A2", "B1"], "domains": ["social", "greetings"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["A2", "B1"], "domains": ["social", "greetings"] },
     "toolWhitelist": ["dialogue-fill", "fill-the-blank", "build-sentence"]
   },
   "rewards": { "xp": 180, "coins": 210, "badge": "good-company" },

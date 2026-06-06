@@ -25,9 +25,9 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner asking about ferries, fares, routes, and the waterfront.",
     "scaffold": "beginner",
     "ragSources": ["base-travel"],
-    "contentSelector": { "levels": ["A1", "A2"], "domains": ["travel", "transit"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["travel", "transit"] },
     "toolWhitelist": ["translate-fast", "number-drill", "listen-choose"]
   },
   "rewards": { "xp": 170, "coins": 230, "badge": "ferry-bound", "grant": ["ferry-token"] },
-  "nextQuestIds": ["harbor-fishmonger", "bridge-crossing", "station-departures"]
+  "nextQuestIds": ["bridge-crossing", "station-departures", "harbor-fishmonger"]
 }

@@ -83,6 +83,41 @@ describe("pickNextQuests — authored fork first, rotated backfill", () => {
   it("returns empty only when the catalog has nothing but the completed quest", () => {
     expect(pickNextQuests({ completedId: "a", preferredIds: [], allIds: ["a"], seed: 1 })).toEqual([])
   })
+
+  it("NO CONSECUTIVE VENUE — never OPENS the branch at the just-finished venue", () => {
+    // a/b share the venue "x" (the place we just finished); c/d/e/f are elsewhere.
+    const venue: Record<string, string> = { a: "x", b: "x", c: "y", d: "z", e: "y", f: "z" }
+    const anchorOf = (id: string) => venue[id]
+    // Even when the AUTHORED fork leads with a same-venue quest (b), it must not be
+    // offered first while a different-venue option exists.
+    const picked = pickNextQuests({
+      completedId: "a",
+      preferredIds: ["b", "c"],
+      allIds,
+      anchorOf,
+      completedVenue: "x",
+      seed: 5,
+      max: 3,
+    })
+    expect(anchorOf(picked[0]), "first option is back at the same venue").not.toBe("x")
+    expect(picked).not.toContain("a")
+  })
+
+  it("NO CONSECUTIVE VENUE — demotes but never DROPS same-venue (branch stays full)", () => {
+    // Only same-venue options exist besides the completed quest → the branch must
+    // still fill (de-prioritisation, not a hard filter), never go empty.
+    const venue: Record<string, string> = { a: "x", b: "x", c: "x" }
+    const picked = pickNextQuests({
+      completedId: "a",
+      preferredIds: [],
+      allIds: ["a", "b", "c"],
+      anchorOf: (id) => venue[id],
+      completedVenue: "x",
+      seed: 9,
+      max: 3,
+    })
+    expect(picked.sort()).toEqual(["b", "c"]) // both surfaced despite same venue
+  })
 })
 
 describe("pushRecent — most-recent-first, de-duped, capped", () => {

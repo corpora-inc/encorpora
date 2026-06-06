@@ -7,6 +7,8 @@ import {
   firstStep,
   entryQuestId,
   objectiveAnchorIds,
+  questOpeningAnchor,
+  questClosingAnchor,
 } from "./questCatalog"
 
 describe("questCatalog — the data-driven quest graph", () => {
@@ -47,6 +49,27 @@ describe("questCatalog — the data-driven quest graph", () => {
       expect(s).not.toBeNull()
       expect(typeof s!.label).toBe("string")
       expect(s!.anchorId).toBeTruthy()
+    }
+  })
+
+  it("#75 — the next-quest branch never OPENS at the venue you just finished", () => {
+    // The "same special three quests in a row" bug: a completion fork must not send
+    // the player straight back to the SAME place. For every quest whose CLOSING venue
+    // has at least one elsewhere-opening quest in the catalog, the FIRST offered
+    // follow-up must open somewhere else.
+    const quests = allQuests()
+    for (const q of quests) {
+      const finished = questClosingAnchor(q.id)
+      if (!finished) continue
+      const elsewhereExists = quests.some(
+        (o) => o.id !== q.id && questOpeningAnchor(o.id) && questOpeningAnchor(o.id) !== finished,
+      )
+      if (!elsewhereExists) continue
+      const next = nextQuests(q.id)
+      expect(next.length, q.id).toBeGreaterThan(0)
+      expect(questOpeningAnchor(next[0].id), `${q.id} sends you straight back to "${finished}"`).not.toBe(
+        finished,
+      )
     }
   })
 

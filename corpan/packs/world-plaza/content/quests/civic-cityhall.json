@@ -9,7 +9,7 @@
     {
       "id": "fill-form",
       "label": "Answer the clerk at City Hall",
-      "anchorId": "hospital",
+      "anchorId": "exchange",
       "kind": "talk",
       "toolId": "fill-the-blank"
     }
@@ -18,7 +18,7 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner stating their name, where they are from, dates, and answering official questions politely.",
     "scaffold": "intermediate",
     "ragSources": ["base-civic"],
-    "contentSelector": { "levels": ["A2", "B1"], "domains": ["civic", "greetings", "numbers"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["A2", "B1"], "domains": ["civic", "greetings", "numbers"] },
     "toolWhitelist": ["fill-the-blank", "dialogue-fill", "build-sentence"]
   },
   "rewards": { "xp": 200, "coins": 240, "badge": "in-good-standing", "grant": ["sealed-letter"] },

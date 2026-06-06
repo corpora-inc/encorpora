@@ -10,15 +10,29 @@ const here = dirname(fileURLToPath(import.meta.url))
 const content = (rel: string) =>
   JSON.parse(readFileSync(resolve(here, "../../content", rel), "utf8"))
 
-/** The anchors the LIVE city (generateCity.ts) actually produces — the only ids a
- *  step may target so its objective NPC + beacon land on a real spot. */
+/** The FROZEN ANCHOR CONTRACT — the named venues the WORLD agent guarantees exist as
+ *  placed anchors, the only ids a quest step may target so its objective NPC + beacon
+ *  land on a real, theme-matched spot. (`bridge_n`/`bridge_s` are the live bridge
+ *  anchor ids the traverse trigger keys off; the contract names the crossing `bridge`
+ *  — see the believability report's bridge-naming flag.) */
 const CITY_ANCHORS = new Set([
+  // contract venues
+  "cafe",
+  "market",
+  "outfitter",
+  "general_store",
+  "harbor",
+  "hospital",
   "plaza",
   "fountain",
-  "market",
-  "harbor",
   "station",
-  "hospital",
+  "bus_station",
+  "rail_station",
+  "airport",
+  "central_green",
+  "stadium",
+  "exchange",
+  // live bridge anchors (the traverse trigger keys off bridge_n)
   "bridge_n",
   "bridge_s",
 ])
@@ -71,8 +85,10 @@ describe("QUESTS-AT-SCALE — the expanded catalog", () => {
       domains.add(q.domain)
       for (const s of q.steps) if (s.anchorId) anchors.add(s.anchorId)
     }
-    // Every scene anchor is touched by at least one quest.
-    for (const a of ["plaza", "market", "fountain", "harbor", "station", "hospital", "bridge_n"]) {
+    // Every key venue is touched by at least one quest (theme-matched placement: a
+    // café quest at the café, a clinic at the hospital, departures at the rail
+    // station, city hall at the exchange — not all jammed on the plaza).
+    for (const a of ["plaza", "cafe", "market", "fountain", "harbor", "rail_station", "exchange", "hospital", "bridge_n"]) {
       expect(anchors, a).toContain(a)
     }
     // A wide domain spread.
@@ -134,6 +150,48 @@ describe("QUESTS-AT-SCALE — the expanded catalog", () => {
           expect(i, `${q.id} opens on a mic gate`).toBeGreaterThan(0)
         }
       }
+    }
+  })
+
+  it("BELIEVABILITY — each objective NPC stands at a venue that MATCHES its theme", () => {
+    // The venue every step of a given quest must (one of) sit at — so a barista is
+    // never stationed at a fountain (#75). Keyed by quest id; the legacy es-* quests
+    // keep their own (looser) authoring and are exempt here.
+    const EXPECTED: Record<string, ReadonlySet<string>> = {
+      "plaza-greetings": new Set(["plaza", "fountain", "central_green"]),
+      "plaza-cafe-order": new Set(["cafe"]),
+      "plaza-business": new Set(["plaza", "exchange", "market"]),
+      "market-numbers": new Set(["market"]),
+      "market-groceries": new Set(["market"]),
+      "fountain-directions": new Set(["fountain", "plaza"]),
+      "fountain-meetup": new Set(["fountain", "plaza", "central_green"]),
+      "harbor-ferry-ride": new Set(["harbor"]),
+      "harbor-fishmonger": new Set(["harbor", "market"]),
+      // a grand tour: stock up at the market, then everything else at the harbor.
+      "harbor-route-master": new Set(["market", "harbor"]),
+      "station-departures": new Set(["rail_station", "bus_station", "station", "airport"]),
+      "civic-cityhall": new Set(["exchange", "central_green"]),
+      "civic-clinic": new Set(["hospital"]),
+      "bridge-crossing": new Set(["bridge_n", "bridge_s"]),
+    }
+    for (const id of NEW_IDS) {
+      const allowed = EXPECTED[id]
+      expect(allowed, `${id} has no expected-venue entry`).toBeDefined()
+      for (const s of getQuest(id)!.steps) {
+        if (s.anchorId) {
+          expect(allowed!.has(s.anchorId), `${id}/${s.id} sits at off-theme venue "${s.anchorId}"`).toBe(true)
+        }
+      }
+    }
+  })
+
+  it("PAIR-AGNOSTIC — NEW quests pin NO target languageCodes (content from the live stack)", () => {
+    // A baked `languageCodes:["es"]` would constrain a German learner's draw to
+    // entries that happen to have Spanish — the biggest correctness gap (#75 task 3).
+    // The target language comes from the learner's stack at runtime, never the JSON.
+    for (const id of NEW_IDS) {
+      const codes = getQuest(id)!.promptProgram.contentSelector.languageCodes
+      expect(codes ?? [], `${id} must not bake target languageCodes`).toHaveLength(0)
     }
   })
 

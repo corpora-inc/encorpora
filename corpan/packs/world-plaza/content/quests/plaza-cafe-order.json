@@ -1,7 +1,7 @@
 {
   "id": "plaza-cafe-order",
-  "title": "A Table on the Square",
-  "narrative": "Settle in at a plaza café and order something with confidence.",
+  "title": "A Table at the Café",
+  "narrative": "Step into the café, settle in, and order something with confidence.",
   "learnerPair": { "target": "es", "native": "en" },
   "domain": "food",
   "objective": { "kind": "completeChallenges", "toolId": "translate-fast", "count": 1 },
@@ -9,14 +9,14 @@
     {
       "id": "order",
       "label": "Order food and drink at the café",
-      "anchorId": "plaza",
+      "anchorId": "cafe",
       "kind": "talk",
       "toolId": "translate-fast"
     },
     {
       "id": "pay",
-      "label": "Settle the bill and say thank you",
-      "anchorId": "plaza",
+      "label": "Settle the bill and thank the barista",
+      "anchorId": "cafe",
       "kind": "talk",
       "toolId": "listen-choose"
     }
@@ -25,7 +25,7 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner ordering, naming dishes, asking for the bill, and thanking the staff.",
     "scaffold": "beginner",
     "ragSources": ["base-food", "base-travel"],
-    "contentSelector": { "levels": ["A1", "A2"], "domains": ["food", "dining", "travel"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["food", "dining", "travel"] },
     "toolWhitelist": ["translate-fast", "listen-choose", "build-sentence"]
   },
   "rewards": { "xp": 150, "coins": 180, "badge": "café-regular", "grant": ["cup-of-coffee"] },

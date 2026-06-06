@@ -18,7 +18,7 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner naming food, fruit, and everyday groceries.",
     "scaffold": "beginner",
     "ragSources": ["base-market", "base-food"],
-    "contentSelector": { "levels": ["A1", "A2"], "domains": ["market", "food", "shopping"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["market", "food", "shopping"] },
     "toolWhitelist": ["picture-match", "listen-choose-pic", "fast-translate"]
   },
   "rewards": { "xp": 150, "coins": 190, "badge": "full-basket", "grant": ["fruit-basket"] },

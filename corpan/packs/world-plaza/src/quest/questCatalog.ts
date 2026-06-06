@@ -151,6 +151,11 @@ export function nextQuests(questId: string, variety?: NextQuestVariety): Quest[]
     preferredIds,
     allIds: QUESTS.map((q) => q.id),
     recent: variety?.recent,
+    // NO CONSECUTIVE-VENUE REPEAT: don't open the next quest at the SAME place the
+    // player just finished (the "same special three quests running" bug). Compare a
+    // candidate's OPENING anchor against the completed quest's CLOSING anchor.
+    anchorOf: questOpeningAnchor,
+    completedVenue: questClosingAnchor(questId),
     // No seed ⇒ derive a stable one from the quest id (deterministic; matches the
     // legacy "catalog order" feel for callers that don't rotate).
     seed: variety?.seed ?? hashSeed(questId),
@@ -162,6 +167,28 @@ export function nextQuests(questId: string, variety?: NextQuestVariety): Quest[]
 /** The first step of a quest (where the picker says "go here / do this"), or null. */
 export function firstStep(quest: Quest): Quest["steps"][number] | null {
   return quest.steps[0] ?? null
+}
+
+/**
+ * The venue a quest OPENS at — its first step's anchor (where the next-quest fork
+ * sends the player). Undefined when the quest/step carries no anchor. Used by the
+ * no-consecutive-venue rule (so the picker doesn't send you back to the same place).
+ */
+export function questOpeningAnchor(questId: string): string | undefined {
+  return BY_ID.get(questId)?.steps[0]?.anchorId
+}
+
+/**
+ * The venue a quest ENDS at — its last step's anchor (where the player just stood
+ * when they completed it). The no-consecutive-venue rule compares THIS against the
+ * next candidates' opening anchors. Undefined when no last step carries an anchor.
+ */
+export function questClosingAnchor(questId: string): string | undefined {
+  const steps = BY_ID.get(questId)?.steps ?? []
+  for (let i = steps.length - 1; i >= 0; i--) {
+    if (steps[i].anchorId) return steps[i].anchorId
+  }
+  return undefined
 }
 
 /**

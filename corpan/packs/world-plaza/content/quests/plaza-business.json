@@ -25,7 +25,7 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner introducing themselves, naming a trade, and making a polite proposal.",
     "scaffold": "intermediate",
     "ragSources": ["base-business", "base-greetings"],
-    "contentSelector": { "levels": ["A2", "B1"], "domains": ["business", "greetings", "social"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["A2", "B1"], "domains": ["business", "greetings", "social"] },
     "toolWhitelist": ["build-sentence", "dialogue-fill", "fill-the-blank"]
   },
   "rewards": { "xp": 210, "coins": 280, "badge": "deal-maker", "grant": ["merchant-ledger"] },

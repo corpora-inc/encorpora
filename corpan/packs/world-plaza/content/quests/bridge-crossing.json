@@ -24,7 +24,7 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner greeting, asking permission, and talking about crossing and routes.",
     "scaffold": "beginner",
     "ragSources": ["base-travel"],
-    "contentSelector": { "levels": ["A1", "A2"], "domains": ["travel", "directions"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["travel", "directions"] },
     "toolWhitelist": ["translate-fast", "listen-choose", "build-sentence"]
   },
   "rewards": { "xp": 210, "coins": 260, "badge": "river-crosser", "grant": ["map-scrap"] },

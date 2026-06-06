@@ -25,7 +25,7 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner asking the way, naming landmarks, and following directions.",
     "scaffold": "beginner",
     "ragSources": ["base-travel", "base-directions"],
-    "contentSelector": { "levels": ["A1", "A2"], "domains": ["directions", "travel"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["directions", "travel"] },
     "toolWhitelist": ["listen-choose", "build-sentence", "fast-translate"]
   },
   "rewards": { "xp": 150, "coins": 190, "badge": "wayfinder", "grant": ["map-scrap"] },

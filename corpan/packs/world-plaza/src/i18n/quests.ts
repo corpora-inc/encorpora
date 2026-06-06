@@ -66,10 +66,10 @@ const en: Record<string, string> = {
   "quest.plaza-greetings.title": "First Hellos",
   "quest.plaza-greetings.narrative": "Trade greetings with the crowd on the plaza — your first warm words.",
   "quest.plaza-greetings.step.say-hello": "Greet a stranger on the plaza",
-  "quest.plaza-cafe-order.title": "A Table on the Square",
-  "quest.plaza-cafe-order.narrative": "Settle in at a plaza café and order something with confidence.",
+  "quest.plaza-cafe-order.title": "A Table at the Café",
+  "quest.plaza-cafe-order.narrative": "Step into the café, settle in, and order something with confidence.",
   "quest.plaza-cafe-order.step.order": "Order food and drink at the café",
-  "quest.plaza-cafe-order.step.pay": "Settle the bill and say thank you",
+  "quest.plaza-cafe-order.step.pay": "Settle the bill and thank the barista",
   "quest.plaza-business.title": "Talking Shop",
   "quest.plaza-business.narrative": "A merchant on the square wants to do business. Introduce yourself and your trade.",
   "quest.plaza-business.step.introduce": "Introduce yourself to the merchant",
@@ -109,8 +109,8 @@ const en: Record<string, string> = {
 
   // ── station ────────────────────────────────────────────────────────────────
   "quest.station-departures.title": "Reading the Departures",
-  "quest.station-departures.narrative": "At the station, read the board, buy a ticket, and find your platform.",
-  "quest.station-departures.step.buy-ticket": "Buy a ticket at the station",
+  "quest.station-departures.narrative": "At the rail station, read the board, buy a ticket, and find your platform.",
+  "quest.station-departures.step.buy-ticket": "Buy a ticket at the rail station",
   "quest.station-departures.step.find-platform": "Ask which platform and when it leaves",
 
   // ── civic ──────────────────────────────────────────────────────────────────

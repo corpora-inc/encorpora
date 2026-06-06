@@ -74,6 +74,25 @@ export interface PickNextOptions {
    * wins); only the catalog backfill avoids them. Optional ⇒ no bias.
    */
   recent?: readonly string[]
+  /**
+   * The OBJECTIVE VENUE (anchor) a candidate quest OPENS at — its first step's
+   * anchor, i.e. where this fork would send the player next. Paired with
+   * `completedVenue` (where the player just finished), the picker NEVER offers a
+   * quest whose opening venue equals the just-completed venue AS THE FIRST OPTION,
+   * so the player isn't sent back to the SAME place / SAME-looking NPC two quests in
+   * a row (the "same special three times" bug). A same-venue quest can still appear
+   * LATER in the branch if the catalog is too small to avoid it — it's a
+   * de-prioritisation, never a hard drop, so the branch is still always full.
+   * Resolver returns null/undefined for an unknown id (then it's a DISTINCT venue,
+   * i.e. never suppressed). Optional — needs `completedVenue` to take effect.
+   */
+  anchorOf?: (questId: string) => string | null | undefined
+  /**
+   * The venue the player JUST finished at (the completed quest's LAST step anchor).
+   * Candidates whose opening venue (`anchorOf`) equals this are demoted below
+   * different-venue alternatives. Null/omitted ⇒ no venue de-prioritisation.
+   */
+  completedVenue?: string | null
   /** A varying seed (e.g. the completed id + a play counter) so the fork rotates. */
   seed: number
   /** Cap (the design's 2–3-way picker). Default 3. */
@@ -91,17 +110,20 @@ export function pickNextQuests(opts: PickNextOptions): string[] {
   const max = Math.max(1, opts.max ?? 3)
   const known = new Set(opts.allIds)
   const recent = new Set(opts.recent ?? [])
-  const chosen: string[] = []
   const seen = new Set<string>([opts.completedId])
+
+  // Build the full ORDERED candidate list — authored fork first (designer's branch),
+  // then catalog backfill (shuffled, recently-played sorted to the back). We collect
+  // MORE than `max` here so the venue de-prioritisation below has room to reorder
+  // before we truncate.
+  const ordered: string[] = []
 
   // 1) Authored fork first (the designer's intended branch), in author order.
   for (const id of opts.preferredIds) {
-    if (chosen.length >= max) break
     if (seen.has(id) || !known.has(id)) continue
     seen.add(id)
-    chosen.push(id)
+    ordered.push(id)
   }
-  if (chosen.length >= max) return chosen
 
   // 2) Backfill from the rest of the catalog, shuffled, recent-played to the back,
   //    so replays don't keep surfacing the same cards.
@@ -109,11 +131,24 @@ export function pickNextQuests(opts: PickNextOptions): string[] {
   const shuffled = seededShuffle(rest, opts.seed)
   shuffled.sort((a, b) => Number(recent.has(a)) - Number(recent.has(b)))
   for (const id of shuffled) {
-    if (chosen.length >= max) break
-    chosen.push(id)
     seen.add(id)
+    ordered.push(id)
   }
-  return chosen
+
+  // 3) NO CONSECUTIVE-VENUE REPEAT. If we know each quest's objective venue, push
+  //    candidates that share the just-completed quest's venue toward the BACK — a
+  //    STABLE sort, so it only ever demotes same-venue picks BELOW a different-venue
+  //    alternative (the first slot is never the same place two quests running), while
+  //    keeping the authored/backfill order within each group. Never a hard drop, so a
+  //    tiny catalog still fills the branch. Skipped entirely without an `anchorOf`.
+  const anchorOf = opts.anchorOf
+  const completedVenue = opts.completedVenue
+  if (anchorOf && completedVenue != null) {
+    const sameVenue = (id: string) => Number(anchorOf(id) === completedVenue)
+    ordered.sort((a, b) => sameVenue(a) - sameVenue(b))
+  }
+
+  return ordered.slice(0, max)
 }
 
 /* ----------------------------------------------------- recent-history ring -- */

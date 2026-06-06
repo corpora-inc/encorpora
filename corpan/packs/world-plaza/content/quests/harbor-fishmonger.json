@@ -18,9 +18,9 @@
     "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner naming fish and seafood, weighing, and buying by the harbor.",
     "scaffold": "beginner",
     "ragSources": ["base-market", "base-food"],
-    "contentSelector": { "levels": ["A1", "A2"], "domains": ["market", "food", "shopping"], "languageCodes": ["es"] },
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["market", "food", "shopping"] },
     "toolWhitelist": ["picture-match", "fast-translate", "number-drill"]
   },
   "rewards": { "xp": 150, "coins": 200, "badge": "fresh-catch", "grant": ["fresh-bread"] },
-  "nextQuestIds": ["market-groceries", "harbor-ferry-ride", "plaza-cafe-order"]
+  "nextQuestIds": ["market-groceries", "plaza-cafe-order", "harbor-ferry-ride"]
 }
