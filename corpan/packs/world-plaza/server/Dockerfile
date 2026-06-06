@@ -42,5 +42,9 @@ COPY content/topologies ./content/topologies
 EXPOSE 8080
 
 # tsx is resolved from /app/node_modules/.bin; the entry's tsconfig at
-# /app/server/tsconfig.json supplies the contracts path alias.
-CMD ["node", "node_modules/tsx/dist/cli.mjs", "server/src/index.ts"]
+# /app/server/tsconfig.json supplies the contracts path alias. We pass it
+# explicitly via TSX_TSCONFIG_PATH because tsx's default tsconfig discovery
+# uses CWD (/app here), which has no tsconfig — without this the server boots
+# and dies with "Cannot find package '@world-plaza/contracts'".
+ENV TSX_TSCONFIG_PATH=/app/server/tsconfig.json
+CMD ["node", "node_modules/tsx/dist/cli.mjs", "--tsconfig", "/app/server/tsconfig.json", "server/src/index.ts"]
