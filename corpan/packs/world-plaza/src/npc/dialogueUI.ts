@@ -56,6 +56,17 @@ export type DialogueUIOptions = {
   /** Optional palette overrides (from Scene.palette). */
   palette?: { accent?: string; paper?: string; ink?: string }
   strings?: Partial<DialogueUIStrings>
+  /**
+   * Optional dictation seam. When provided, the runtime (which holds host.asr)
+   * wires the existing mic button to dictate into the input. Kept as a callback
+   * so this view module stays pure (no host/@shared/asr import): it receives the
+   * mic button + the text field and returns a teardown. When absent, the mic
+   * button stays disabled (keyboard-only), exactly as before.
+   */
+  attachVoice?: (
+    micButton: HTMLButtonElement,
+    inputField: HTMLTextAreaElement,
+  ) => (() => void) | void
 }
 
 export interface DialogueUIHandle {
@@ -154,6 +165,13 @@ export function createDialogueUI(
   const $input = root.querySelector<HTMLTextAreaElement>(".wp-npc-input")!
   const $send = root.querySelector<HTMLButtonElement>(".wp-npc-send")!
   const $close = root.querySelector<HTMLButtonElement>(".wp-npc-close")!
+  const $mic = root.querySelector<HTMLButtonElement>(".wp-npc-mic")!
+
+  // Dictation: when the runtime supplies an `attachVoice` (it holds host.asr),
+  // wire the existing mic button to dictate into $input. The helper hides the
+  // button itself where the language can't be transcribed (keyboard floor), so
+  // the mic only appears where it works. Teardown is called on dispose().
+  const detachVoice = opts.attachVoice?.($mic, $input) ?? undefined
 
   let thinkingEl: HTMLElement | null = null
   let streamingBubble: HTMLElement | null = null
@@ -374,6 +392,11 @@ export function createDialogueUI(
 
     dispose() {
       document.removeEventListener("keydown", onKey)
+      try {
+        detachVoice?.()
+      } catch (err) {
+        console.error("[wp-npc] dictation teardown failed:", err)
+      }
       root.classList.remove("wp-npc-open")
       // wait out the slide-down before removing
       window.setTimeout(() => root.remove(), 320)

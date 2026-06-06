@@ -22,7 +22,13 @@ import type {
   NpcIntent,
   ChallengeToolId,
 } from "@world-plaza/contracts"
-import type { HostApi, LlmChatHandle, LlmChatMessage } from "./hostTypes"
+import type {
+  HostApi,
+  HostAsrApi,
+  HostAsrSession,
+  LlmChatHandle,
+  LlmChatMessage,
+} from "./hostTypes"
 import type { ModelBroker } from "./modelBroker"
 import { createModelBroker } from "./modelBroker"
 import {
@@ -275,6 +281,12 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
         subtitle: `${args.scene.setting.place} · ${args.quest.title}`,
         palette: { accent: palette?.accent, paper: palette?.ground },
         strings: { playOffer: strings.playChip },
+        // Dictation into the "Say something…" field — native STT in the TARGET
+        // language (what the player is learning). The helper hides the mic where
+        // the device can't transcribe that language, so it only shows where it
+        // works. host.asr is absent on hosts without an asr provider → no-op.
+        attachVoice: (micBtn, inputField) =>
+          wireNpcDictation(hostApi.asr, micBtn, inputField, args.learnerPair.target),
       },
       {
         onSubmit: (text) => void handleUserLine(text),
@@ -1062,3 +1074,106 @@ export function npcDisplayName(role: { id?: string; name?: string }): string {
 }
 
 export type { DialogueUIHandle }
+
+/**
+ * Wire the NPC composer's mic button to dictate into its text field, using the
+ * host's native ASR in the TARGET language. Self-contained (uses the local
+ * HostAsrApi shape) so the pack stays a standalone IIFE — mirrors the tested
+ * `@shared/asr` wireDictation. Returns a teardown.
+ *
+ * Behavior:
+ *  • Probes `asr.pick({lang, goal:"dictation"})` once. No host.asr or no
+ *    provider for this language → HIDE the mic (keyboard floor); the field is
+ *    plainly type-only. So the mic only appears where the device can transcribe.
+ *  • Tap to start: partials stream into the field; tap again to stop (final
+ *    transcript written).
+ *  • INTERRUPTED / CANCELLED (call / Control-Center) → clean stop, no error UI.
+ *  • Errors are surfaced to the console (noisy, not silent).
+ */
+function wireNpcDictation(
+  asr: HostAsrApi | undefined,
+  micBtn: HTMLButtonElement,
+  field: HTMLTextAreaElement,
+  targetLang: string,
+): (() => void) | void {
+  if (!asr) {
+    micBtn.style.display = "none"
+    return
+  }
+  let session: HostAsrSession | null = null
+  let live = false
+  let destroyed = false
+
+  const setLive = (on: boolean) => {
+    live = on
+    micBtn.classList.toggle("is-live", on)
+    micBtn.setAttribute("aria-label", on ? "Stop" : "Speak")
+  }
+
+  async function start() {
+    let provider: Awaited<ReturnType<HostAsrApi["pick"]>>
+    try {
+      provider = await asr!.pick({ lang: targetLang, goal: "dictation" })
+    } catch (err) {
+      console.error("[wp-npc] asr.pick failed:", err)
+      provider = null
+    }
+    if (!provider) {
+      micBtn.style.display = "none"
+      return
+    }
+    try {
+      session = await provider.transcribe({ lang: targetLang, mode: "push_to_talk" })
+    } catch (err) {
+      console.error("[wp-npc] transcribe() failed:", err)
+      return
+    }
+    setLive(true)
+    session.onPartial((text) => {
+      if (destroyed) return
+      field.value = text
+      field.dispatchEvent(new Event("input", { bubbles: true }))
+    })
+    session.onError((code, message) => {
+      if (code === "INTERRUPTED" || code === "CANCELLED") { setLive(false); return }
+      console.error(`[wp-npc] dictation error ${code}:`, message ?? "")
+      setLive(false)
+    })
+  }
+
+  async function stop() {
+    const s = session
+    session = null
+    if (!s) { setLive(false); return }
+    try {
+      const out = await s.stop()
+      if (!destroyed && out.text) {
+        field.value = out.text
+        field.dispatchEvent(new Event("input", { bubbles: true }))
+      }
+    } catch (err) {
+      console.error("[wp-npc] stop() failed:", err)
+    } finally {
+      setLive(false)
+    }
+  }
+
+  const onClick = () => { if (live) void stop(); else void start() }
+
+  // Reveal the mic only where the language can be transcribed.
+  void asr.pick({ lang: targetLang, goal: "dictation" })
+    .then((provider) => {
+      if (destroyed) return
+      if (!provider) { micBtn.style.display = "none"; return }
+      micBtn.disabled = false
+      micBtn.setAttribute("aria-label", "Speak")
+      micBtn.addEventListener("click", onClick)
+    })
+    .catch(() => { micBtn.style.display = "none" })
+
+  return () => {
+    destroyed = true
+    micBtn.removeEventListener("click", onClick)
+    try { session?.cancel() } catch (err) { console.error("[wp-npc] cancel failed:", err) }
+  }
+}
