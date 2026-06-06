@@ -1,0 +1,22 @@
+{
+  "id": "book_persian_food",
+  "name": "Persian Food",
+  "version": "0.1.2",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "metadata": {
+    "series": "Food of the World",
+    "volume": 2,
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Adult language learners \u2014 anyone curious about Iranian and Persian food",
+    "estimatedReadTime": "12-18 minutes",
+    "estimatedListenTime": "12-18 minutes"
+  }
+}

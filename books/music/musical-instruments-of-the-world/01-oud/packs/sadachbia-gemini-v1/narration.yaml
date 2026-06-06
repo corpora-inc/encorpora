@@ -1,25 +1,17 @@
 version: 1
 engine: gemini
-voices: {}
+voices:
+  id: Sadachbia
 gemini:
-  # Director's Notes prefix, prepended verbatim to every tts.text sent to
-  # Gemini Flash 3.1 TTS. Chosen by user audition 2026-05-13 among 16 male
-  # voices x 3 prefix flavors. Sadachbia + this prefix produced the best
-  # measured-narrator register for the Oud book (audition at
-  # /tmp/oud_gemini_male_audition/12b_Sadachbia_informative_measured.wav).
-  director_prompt: "Style: informative, measured audiobook-narrator pace, calm and clear, with the warmth of a knowledgeable host introducing a long-form work. Read this: "
+  director_prompt: 'Style: informative, measured audiobook-narrator pace, calm and
+    clear, with the warmth of a knowledgeable host introducing a long-form work. Read
+    this: '
 retry:
-  # Gemini is approximately deterministic — same prompt → same audio. Same-
-  # text retries waste compute. Internal _synth_with_retry already absorbs
-  # transient API errors (≤5 attempts, ≤10s backoff = ~30s ceiling per call).
-  # Pipeline max_retries=0 means: first validation-level failure → straight
-  # to codex rewrite. After max_rewrites=3 source rewrites without
-  # convergence the segment is escalated to a human verdict file.
   max_retries: 0
   max_rewrites: 3
   jitter: 0.0
   schedules:
-    - {}
+  - {}
 tts: {}
 mastering:
   target_lufs: -22.0
