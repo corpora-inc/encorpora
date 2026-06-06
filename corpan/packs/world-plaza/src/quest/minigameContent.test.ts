@@ -41,14 +41,14 @@ describe("npcDomains — NPC trade → real corpus domains", () => {
     expect(npcDomains(persona("baker"))).toEqual(["everyday", "numbers", "social"])
   })
 
-  it("maps a boatman-ish sailor/dockhand to travel", () => {
-    expect(npcDomains(persona("sailor"))[0]).toBe("travel")
-    expect(npcDomains(persona("dockhand"))).toContain("travel")
+  it("maps a travel-ish guide/courier to travel", () => {
+    expect(npcDomains(persona("guide"))[0]).toBe("travel")
+    expect(npcDomains(persona("courier"))).toContain("travel")
   })
 
-  it("maps a scribe to business/civic (paperwork)", () => {
-    expect(npcDomains(persona("scribe"))).toContain("business")
-    expect(npcDomains(persona("scribe"))).toContain("civic")
+  it("maps an office clerk to business/civic (paperwork)", () => {
+    expect(npcDomains(persona("clerk"))).toContain("business")
+    expect(npcDomains(persona("clerk"))).toContain("civic")
   })
 
   it("returns [] for an authored role with no archetype", () => {
@@ -179,13 +179,13 @@ describe("resolveMinigameContent — blend NPC × quest × level", () => {
   })
 
   it("a DIRECTIONS quest pulls travel phrases regardless of NPC", () => {
-    const content = resolveMinigameContent(persona("scribe"), DIRECTIONS, DIRECTIONS.steps[0])
+    const content = resolveMinigameContent(persona("clerk"), DIRECTIONS, DIRECTIONS.steps[0])
     expect(content.filter.domains).toContain("travel")
   })
 
   it("de-dupes when the NPC trade overlaps the quest theme", () => {
-    // a sailor's trade leads with travel, same as the directions quest theme.
-    const content = resolveMinigameContent(persona("sailor"), DIRECTIONS, DIRECTIONS.steps[0])
+    // a guide's trade leads with travel, same as the directions quest theme.
+    const content = resolveMinigameContent(persona("guide"), DIRECTIONS, DIRECTIONS.steps[0])
     const travels = (content.filter.domains ?? []).filter((d) => d === "travel")
     expect(travels.length).toBe(1)
   })
@@ -200,9 +200,9 @@ describe("resolveMinigameContent — blend NPC × quest × level", () => {
         contentSelector: { levels: ["A1"], domains: ["food", "shopping"], languageCodes: ["es"] },
       },
     })
-    const content = resolveMinigameContent(persona("herbalist"), q, q.steps[0])
-    // herbalist → health/environment/everyday; none of food/shopping survive.
-    expect(content.filter.domains?.[0]).toBe("health")
+    const content = resolveMinigameContent(persona("gardener"), q, q.steps[0])
+    // gardener → environment/everyday/health; none of food/shopping survive.
+    expect(content.filter.domains?.[0]).toBe("environment")
     expect(content.filter.domains).not.toContain("food")
   })
 

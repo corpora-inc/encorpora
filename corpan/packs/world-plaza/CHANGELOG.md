@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **NPC personas are now MODERN Corpan City roles, not colonial-1770 trades.** The
+  whole wandering-crowd archetype catalogue (`src/npc/personaGen.ts`) was re-themed
+  from storybook trades (lamplighter, fishmonger, scribe, friar, sailor, dockhand,
+  weaver, herbalist, water-seller, flower-girl, smuggler) to contemporary city life
+  (baker, street-food vendor, shopkeeper, park gardener, librarian, tour guide,
+  delivery courier, market trader, street musician, neighbourhood regular, kid,
+  coffee-cart vendor, office clerk, barber, florist, and a rare wholesome "fixer").
+  This makes venue-fit read naturally and kills the storybook mismatch that made an
+  NPC outside the clinic feel like nonsense. Role flavour (tone/quirks/topics/names/
+  hooks/ES fallback lines) was modernised; the challenge fit, crowd balance, and
+  per-archetype domain affinities (`minigameContent.ts`) carry over.
+
 ### Fixed
 - **The objective/station NPC at a venue is now a believable, venue-FIT role — no
   more "dusk-loving lamplighter" standing outside the clinic.** The persona
@@ -23,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   ("the local who runs the café counter here") — it never injects a bare English
   trade noun; (3) a venue NPC's seed is grounded ("you work right here and never
   deny it; stay grounded, plausible, and brief"), so it can't contradict the venue
-  it stands at. The colourful wandering crowd is untouched.
+  it stands at.
 - **Minigames no longer flash a 0% "Not this time" card instead of presenting the
   challenge.** Two compounding bugs: (1) the pair-agnostic quests carry no
   `contentSelector.languageCodes`, so the minigame content filter became
