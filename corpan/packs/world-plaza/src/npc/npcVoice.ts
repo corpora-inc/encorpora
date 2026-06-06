@@ -182,6 +182,17 @@ export interface NpcVoiceResolver {
   canPin(): boolean
   /** Speak `text` in `target`, pinning the NPC's voice when the host supports it. */
   speak(npcId: string, target: string, text: string): Promise<void>
+  /**
+   * CLEAR all voice stickiness (#115): drop every pinned NPC→voice AND the
+   * per-language enumerated-voice cache, so the NEXT speak re-resolves from scratch
+   * in the CURRENT target. Call on world ENTRY + on any stack/target change. The
+   * old design held pins for the life of the resolver, so an ES→EN learner kept the
+   * Spanish voices (the `es` voicesByLang cache + `es` pins) after switching to
+   * English — "entering the world clears the voice stickiness." Within ONE
+   * conversation the runtime resolves once + reuses, so a reset BETWEEN
+   * conversations never destabilises an in-flight one.
+   */
+  reset(): void
 }
 
 export function createNpcVoiceResolver(hostApi: HostApi): NpcVoiceResolver {
@@ -293,6 +304,20 @@ export function createNpcVoiceResolver(hostApi: HostApi): NpcVoiceResolver {
     return typeof hostApi.speakVoice === "function"
   }
 
+  /**
+   * #115 — clear ALL voice stickiness so the next speak re-resolves in the CURRENT
+   * target. Wipes the pin map AND the per-language enumerated-voice cache (an `es`
+   * cache must not survive an ES→EN switch). `gapLogged` resets so the host-gap
+   * notice can re-surface for the new world entry. Cheap + synchronous.
+   */
+  function reset(): void {
+    const had = Object.keys(map).length
+    for (const k of Object.keys(map)) delete map[k]
+    voicesByLang.clear()
+    gapLogged = false
+    console.info(`${LOG} reset voice stickiness (dropped ${had} pin(s) + voice cache).`)
+  }
+
   async function speak(npcId: string, target: string, text: string): Promise<void> {
     const clean = text.trim()
     if (!clean) return
@@ -323,5 +348,5 @@ export function createNpcVoiceResolver(hostApi: HostApi): NpcVoiceResolver {
     await hostApi.speak(target, clean)
   }
 
-  return { voiceIdFor, canPin, speak }
+  return { voiceIdFor, canPin, speak, reset }
 }

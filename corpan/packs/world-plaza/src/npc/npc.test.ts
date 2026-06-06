@@ -609,6 +609,73 @@ describe("sticky per-NPC voice (CHANGE 2)", () => {
     expect(enVoice!.toLowerCase().split("-")[0]).toBe("en")
     delete (globalThis as { localStorage?: unknown }).localStorage
   })
+
+  // ── #115: reset() CLEARS stickiness on world entry / stack change ───────────
+  it("#115 reset() drops all pins + the voice cache → next resolve re-enumerates", async () => {
+    const { createNpcVoiceResolver } = await import("./npcVoice")
+    let listCalls = 0
+    const host = {
+      speak: async () => {},
+      speakVoice: async () => {},
+      listVoices: async () => {
+        listCalls++
+        return [{ id: "es-ES-1", language: "es-ES", gender: "male" as const }]
+      },
+    }
+    const r = createNpcVoiceResolver(host as never)
+    await r.voiceIdFor("boatman", "es")
+    expect(listCalls).toBe(1) // enumerated once
+    await r.voiceIdFor("boatman", "es") // cached pin + cached voice list → no new enum
+    expect(listCalls).toBe(1)
+    r.reset() // ENTER WORLD / stack change → clear everything
+    await r.voiceIdFor("boatman", "es")
+    expect(listCalls).toBe(2) // voicesByLang cache cleared → re-enumerated from scratch
+  })
+
+  it("#115 reset() between worlds: an ES voice never survives an ES→EN switch", async () => {
+    const { createNpcVoiceResolver } = await import("./npcVoice")
+    // The device exposes both es + en voices; listVoices filters by the asked code.
+    const all = [
+      { id: "es-ES-Monica", language: "es-ES", gender: "female" as const },
+      { id: "en-US-Samantha", language: "en-US", gender: "female" as const },
+    ]
+    const host = {
+      speak: async () => {},
+      speakVoice: async () => {},
+      listVoices: async (code?: string) => {
+        const base = (code ?? "").toLowerCase().split("-")[0]
+        return base ? all.filter((v) => v.language.toLowerCase().startsWith(base)) : all
+      },
+    }
+    const r = createNpcVoiceResolver(host as never)
+    // World 1: ES learner → boatman gets the Spanish voice.
+    expect(await r.voiceIdFor("boatman", "es")).toBe("es-ES-Monica")
+    // Owner changes the stack to ES→EN; the world re-enters → reset() runs.
+    r.reset()
+    // World 2: EN learner → boatman MUST now get an English voice, no es residue.
+    const en = await r.voiceIdFor("boatman", "en")
+    expect(en).toBe("en-US-Samantha")
+    expect(en!.toLowerCase().startsWith("en")).toBe(true)
+  })
+
+  it("#115 within ONE conversation the voice stays STABLE (reset is between visits, not mid-convo)", async () => {
+    const { createNpcVoiceResolver } = await import("./npcVoice")
+    const host = {
+      speak: async () => {},
+      speakVoice: async () => {},
+      listVoices: async () => [
+        { id: "en-US-1", language: "en-US", gender: "male" as const },
+        { id: "en-GB-2", language: "en-GB", gender: "female" as const },
+        { id: "en-AU-3", language: "en-US", gender: "male" as const },
+      ],
+    }
+    const r = createNpcVoiceResolver(host as never)
+    const v = await r.voiceIdFor("clinic-doctor", "en")
+    // Every line of the SAME conversation resolves the SAME voice (no per-round flip).
+    for (let i = 0; i < 5; i++) {
+      expect(await r.voiceIdFor("clinic-doctor", "en")).toBe(v)
+    }
+  })
 })
 
 describe("clue-giver item grant is idempotent (CHANGE 3)", () => {
