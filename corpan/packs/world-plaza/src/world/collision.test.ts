@@ -11,6 +11,7 @@ import {
   DEFAULT_PUSH_DX,
   DEFAULT_PUSH_DZ,
   FOUNTAIN_RADIUS,
+  findSafeSpawn,
   type Obstacle,
 } from "./collision"
 import { composeDressing } from "./composition"
@@ -172,5 +173,43 @@ describe("collision: degenerate-centre push (the fountain-bug root cause)", () =
     const out = field.pushOut(0, 0, r)
     expect(field.blocked(out.x, out.z, r)).toBe(false)
     expect(Math.hypot(out.x, out.z)).toBeGreaterThanOrEqual(FOUNTAIN_RADIUS + r)
+  })
+})
+
+
+describe("findSafeSpawn — never drop the player inside a collider (#104 taxi-to-fountain)", () => {
+  const R = 0.55 // PLAYER_RADIUS
+
+  it("teleport ONTO the fountain centre -> lands on clear, walkable ground", () => {
+    const field = buildPlazaObstacleField(topology, { caps: FULL_CAPS, seed: DRESSING_DEFAULT_SEED })
+    expect(field.blocked(0, 0, R)).toBe(true)
+    const safe = findSafeSpawn(field, 0, 0, R)
+    expect(field.blocked(safe.x, safe.z, R)).toBe(false)
+  })
+
+  it("an already-clear point is returned unchanged", () => {
+    const field = createObstacleField([{ kind: "circle", x: 0, z: 0, r: 2.9 }])
+    expect(findSafeSpawn(field, 20, 20, R)).toEqual({ x: 20, z: 20 })
+  })
+
+  it("escapes a big box even when pushOut lands on another collider (spiral fallback)", () => {
+    const field = createObstacleField([
+      { kind: "box", x: 0, z: 0, hw: 8, hd: 2 },
+      { kind: "circle", x: 0, z: 3.0, r: 2.5 },
+    ])
+    expect(field.blocked(0, 0, R)).toBe(true)
+    const safe = findSafeSpawn(field, 0, 0, R)
+    expect(field.blocked(safe.x, safe.z, R)).toBe(false)
+  })
+
+  it("is deterministic — same inputs yield the same safe point", () => {
+    const field = buildPlazaObstacleField(topology, { caps: FULL_CAPS, seed: DRESSING_DEFAULT_SEED })
+    expect(findSafeSpawn(field, 0, 0, R)).toEqual(findSafeSpawn(field, 0, 0, R))
+  })
+
+  it("works against a bare {blocked} stub without pushOut", () => {
+    const stub = { blocked: (x: number, z: number, _r: number) => x * x + z * z < 5 * 5 }
+    const safe = findSafeSpawn(stub, 0, 0, R)
+    expect(stub.blocked(safe.x, safe.z, R)).toBe(false)
   })
 })

@@ -14,6 +14,7 @@ import { createJuice } from "./juice/juice"
 import { createNpcFocus } from "./world/npcFocus"
 import { createCrowd, type CrowdFocusHandle } from "./world/crowd"
 import { createCameraFade } from "./world/cameraFade"
+import { findSafeSpawn } from "./world/collision"
 import { createShell, type MenuSectionView, type MenuSectionId } from "./shell"
 import { createNpcRuntime, npcDisplayName } from "./npc/npcRuntime"
 import { initMultiplayer, resolveServerUrl, type MultiplayerHandle } from "./multiplayer"
@@ -456,6 +457,16 @@ function buildWorld(
   const obstacles = city.getCollision()
   // The player IS their dressed avatar (grounded cutout, self-animated).
   const player = createPlayerController(world, topology, input, identity.avatar, obstacles)
+  // SAFE SPAWN (#104): the ONE respawn/teleport/arrival path. An anchor's CENTRE can
+  // be INSIDE a solid landmark (the fountain basin) — dropping the player there traps
+  // them (per-frame collision SLIDES, can't eject from deep inside). `findSafeSpawn`
+  // lands them at the nearest CLEAR, walkable point (pushOut + outward spiral). Used
+  // by transit arrival + every teleport below. `PLAYER_BODY_R` mirrors PLAYER_RADIUS.
+  const PLAYER_BODY_R = 0.55
+  const spawnSafe = (x: number, z: number, faceYaw?: number) => {
+    const safe = findSafeSpawn(obstacles, x, z, PLAYER_BODY_R)
+    player.respawnAt(safe.x, safe.z, faceYaw)
+  }
   // The LIVE avatar (mutable): the in-game wardrobe re-dresses the figure in place
   // and persists this per-profile (global identity store). Seeded from onboarding.
   let currentAvatar = identity.avatar
@@ -1658,7 +1669,7 @@ function buildWorld(
         } else {
           if (result?.travelTo) {
             const a = city.getAnchor(result.travelTo)
-            if (a) player.respawnAt(a.x, a.z)
+            if (a) spawnSafe(a.x, a.z) // #104: never drop INTO the destination landmark
           }
           if (result?.questStep) questEngine.advance(result.questStep)
         }
@@ -1708,7 +1719,7 @@ function buildWorld(
         .then((r) => {
           if (r?.travelTo) {
             const a = city.getAnchor(r.travelTo)
-            if (a) player.respawnAt(a.x, a.z)
+            if (a) spawnSafe(a.x, a.z) // #104: safe-spawn the dev transit hop too
           }
         })
         .catch((e) => console.error("[world-plaza] dev transit enter failed:", e))
@@ -2089,7 +2100,7 @@ function buildWorld(
       gotoObjective: () => {
         const s = questEngine.currentStep()
         const a = s?.anchorId ? city.getAnchor(s.anchorId) : null
-        if (a) player.respawnAt(a.x, a.z)
+        if (a) spawnSafe(a.x, a.z) // #104: a quest anchor can be a solid landmark
         return !!a
       },
       /** QA: teleport the player to an arbitrary world (x,z) — used to frame the
