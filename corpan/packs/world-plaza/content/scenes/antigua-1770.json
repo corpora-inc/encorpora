@@ -1,9 +1,9 @@
 {
   "id": "antigua-1770",
   "topologyId": "plaza-sq-a",
-  "setting": { "place": "Antigua", "era": "1770", "mood": "warm colonial morning" },
+  "setting": { "place": "Corpan City", "era": "today", "mood": "warm market-day morning" },
   "themeId": "paper",
-  "narrativeBlurb": "Cobblestones still wet with dew; a café opens its shutters and a bell rings somewhere up the hill.",
+  "narrativeBlurb": "Streets still wet with dew; a café opens its shutters and a tram bell rings somewhere up the hill.",
   "anchorSkins": {
     "fountain": { "spriteRef": { "url": "placeholder:fountain" } },
     "cafe_counter": { "spriteRef": { "url": "placeholder:cafe" } },
