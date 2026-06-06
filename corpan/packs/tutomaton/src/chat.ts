@@ -36,6 +36,7 @@ import {
   type ModelTuning,
 } from "./modelTuning"
 import { OrderedSpeechQueue, StreamingSentenceBuffer } from "./streamingTts"
+import { scrubForSpeech, scrubOutput } from "./textScrub"
 import {
   chooseTutorVoice,
   loadTutorVoiceId,
@@ -165,7 +166,7 @@ const ICON = {
   back: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>`,
   search: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
   tune: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h2"/><path d="M10 12h10"/><circle cx="8" cy="12" r="2"/><path d="M4 18h8"/><path d="M16 18h4"/><circle cx="14" cy="18" r="2"/></svg>`,
-  voice: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4Z"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v5"/><path d="M8 22h8"/></svg>`,
+  voice: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="7.5"/><path d="M6.8 10h0"/><path d="M11.2 10h0"/><ellipse cx="9" cy="14.6" rx="2" ry="1.3"/><path d="M18 9.6a4 4 0 0 1 0 4.8"/><path d="M20.6 7.5a7.5 7.5 0 0 1 0 9"/></svg>`,
 } as const
 
 /** The real Corpán brand mark (ear on a stepped ziggurat) — the same
@@ -202,30 +203,6 @@ const LANG_FLAG: Record<string, string> = {
 
 function nativeName(entry: LanguageRegistryEntry): string {
   return entry.displayName[entry.code] || entry.displayName.en || entry.code
-}
-
-function scrubOutput(s: string): string {
-  s = s.replace(
-    /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F000}-\u{1F0FF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}]/gu,
-    ""
-  )
-  s = s.replace(/^#{1,6}\s+/gm, "")
-  s = s.replace(/\*\*([^*]+?)\*\*/g, "$1")
-  s = s.replace(/\*\*/g, "")
-  s = s.replace(/<\/?reference\b[^>]*>/gi, "")
-  // Orphaned combining marks → the "dotted-circle" artifact. A combining mark
-  // (Unicode M*) only renders correctly attached to a base letter; when the
-  // model drops the base (common for small models in Indic/Tamil/Arabic/Thai),
-  // the leftover vowel-sign/virama draws on a ◌ dotted circle. Strip any run of
-  // combining marks that has no base before it — i.e. at the start of the text
-  // or right after whitespace. Well-formed clusters (mark immediately follows
-  // its base letter) are untouched. Verified: clean Tamil passes through byte-
-  // identical; only orphan-leading sequences are cleaned.
-  s = s.replace(/(^|\s)\p{M}+/gu, "$1")
-  s = s.replace(/[ \t]+(?=\n)/g, "")
-  s = s.replace(/[ \t]{2,}/g, " ")
-  s = s.replace(/\n{3,}/g, "\n\n")
-  return s.trim()
 }
 
 // ============================================================
@@ -1359,7 +1336,7 @@ const PackModule: ContentPackModule = {
         const queueSpeech = (parts: string[]) => {
           if (!state.ttsEnabled || speechEpoch !== turnSpeechEpoch) return
           for (const part of parts) {
-            const cleaned = scrubOutput(part)
+            const cleaned = scrubForSpeech(part, lang.voiceLanguageCode)
             if (cleaned) speechQueue.enqueue(lang.voiceLanguageCode, cleaned)
           }
         }
@@ -1414,8 +1391,11 @@ const PackModule: ContentPackModule = {
      *  explicit tap-to-replay on a bubble), independent of the mute toggle. */
     function speakText(text: string) {
       if (text && state.activeLanguage) {
+        const code = state.activeLanguage.voiceLanguageCode
+        const cleaned = scrubForSpeech(text, code)
+        if (!cleaned) return
         cancelSpeech()
-        speechQueue.enqueue(state.activeLanguage.voiceLanguageCode, text)
+        speechQueue.enqueue(code, cleaned)
       }
     }
 

@@ -12,6 +12,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   offline premium voice available, remembers the user's choice, and previews a
   newly selected voice using the latest tutor reply.
 
+### Fixed
+- TTS no longer reads punctuation aloud (e.g. "semicolon", "asterisk"). Replies
+  are stripped of Markdown markup before display, and the speech path
+  additionally turns synthesizer-spoken symbols and separator dashes into pauses
+  and flattens semicolons to a comma — except in Greek, where ";" is the
+  question mark and is preserved. Logic extracted to `textScrub.ts` with tests.
+
+### Changed
+- The voice switcher now uses a speaking-face icon instead of a microphone (the
+  microphone reads as dictation/input, not voice output).
+- The model lab and voice switcher fill the screen on phone and medium-width
+  screens, only becoming a centered floating modal at large (≥768px) widths.
+
 ## [0.5.0] - 2026-06-06 — Compact prompts + per-language model lab
 
 ### Added
