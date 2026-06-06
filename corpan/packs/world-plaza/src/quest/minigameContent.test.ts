@@ -136,6 +136,37 @@ describe("resolveMinigameContent — blend NPC × quest × level", () => {
     expect(content.filter.languageCodes).toEqual(["es"])
   })
 
+  // REGRESSION (final-QA blocker): the pair-agnostic quests (#75) carry NO
+  // `contentSelector.languageCodes`. With a pair given, the whitelist MUST still
+  // include the TARGET (from the pair) — otherwise it became native-only (["en"]),
+  // the corpus dropped the Spanish row, entryPair found no target → ZERO pairs →
+  // a 0% flash-fail. The filter must carry BOTH pair languages regardless of whether
+  // the quest pinned any.
+  const PAIR_AGNOSTIC = Quest.parse({
+    ...cafeJson,
+    promptProgram: {
+      ...cafeJson.promptProgram,
+      contentSelector: { levels: ["A1", "A2"], domains: ["travel", "food"] }, // NO languageCodes
+    },
+  })
+
+  it("includes the TARGET from the pair even when the quest pins NO languageCodes", () => {
+    const content = resolveMinigameContent(persona("baker"), PAIR_AGNOSTIC, PAIR_AGNOSTIC.steps[0], {
+      target: "es",
+      native: "en",
+    })
+    expect(content.filter.languageCodes).toContain("es") // ← target must be present
+    expect(content.filter.languageCodes).toContain("en") // ← native too
+  })
+
+  it("a single-language pair-agnostic quest still yields the one code (no empty filter)", () => {
+    const content = resolveMinigameContent(persona("baker"), PAIR_AGNOSTIC, PAIR_AGNOSTIC.steps[0], {
+      target: "ja",
+      native: "ja",
+    })
+    expect(content.filter.languageCodes).toEqual(["ja"])
+  })
+
   it("blends the quest theme (travel) FIRST, then the NPC trade for variety", () => {
     // es-cafe selector domains: ["travel","food"] — only "travel" is a real corpus
     // code; "food" is dropped. A baker adds everyday/numbers/social. Quest theme

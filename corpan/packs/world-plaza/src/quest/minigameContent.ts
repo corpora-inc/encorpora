@@ -201,16 +201,18 @@ export function resolveMinigameContent(
   if (stepContent.levels.length) filter.levels = stepContent.levels
 
   // The corpus reuses `languageCodes` as the translation whitelist, so it must carry
-  // BOTH the target AND a distinct native — otherwise the native row is dropped and
-  // the challenge's gloss collapses to the target (the #81 ES→ES tautology). Start
-  // from the quest's pinned target code(s), then UNION the learner's native when it
-  // differs. De-duped + order-preserved (target first).
+  // BOTH the learner's TARGET and NATIVE — otherwise a row is dropped and the
+  // challenge collapses (the #81 ES→ES tautology when native is missing; an EMPTY
+  // 0-round flash-fail when the TARGET is missing). The pair-agnostic quests (#75)
+  // pin NO `languageCodes`, so we CANNOT rely on the quest to supply the target — we
+  // seed the whitelist from the PAIR itself (target first, then a distinct native),
+  // then union any quest-pinned codes. De-duped + order-preserved. A single-language
+  // pair (native === target) yields the one code, never `["es","es"]`, and never an
+  // EMPTY filter (which would let the corpus return rows missing that language).
   const langCodes: string[] = []
   const seenLang = new Set<string>()
-  for (const code of [
-    ...stepContent.languageCodes,
-    ...(pair && pair.native !== pair.target ? [pair.native] : []),
-  ]) {
+  const pairCodes = pair ? (pair.native === pair.target ? [pair.target] : [pair.target, pair.native]) : []
+  for (const code of [...pairCodes, ...stepContent.languageCodes]) {
     if (!seenLang.has(code)) {
       seenLang.add(code)
       langCodes.push(code)

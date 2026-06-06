@@ -75,7 +75,10 @@ export const wordScramble: ToolImpl = {
         .filter((p) => p.word.length >= 3 && p.word.length <= 12 && !/\s/.test(p.word))
       const chosen = candidates[0]
       if (!chosen) {
-        overlay.complete(0, computeReward(1, 0))
+        // Insufficient content (#67/#81-hardening) → ABORT, never a 0% flash-fail.
+        // cancel() resolves as "aborted" so the encounter re-picks/closes
+        // cleanly and the quest gate never counts it against the player.
+        overlay.cancel()
         return
       }
       const word = chosen.word
@@ -174,7 +177,10 @@ export const buildSentence: ToolImpl = {
       const chosen =
         pairs.sort((a, b) => b.target.split(/\s+/).length - a.target.split(/\s+/).length)[0]
       if (!chosen) {
-        overlay.complete(0, computeReward(2, 0))
+        // Insufficient content (#67/#81-hardening) → ABORT, never a 0% flash-fail.
+        // cancel() resolves as "aborted" so the encounter re-picks/closes
+        // cleanly and the quest gate never counts it against the player.
+        overlay.cancel()
         return
       }
       const words = chosen.target.trim().split(/\s+/)
@@ -317,7 +323,10 @@ export const dialogueFill: ToolImpl = {
       const rnd = mulberry32(seedOf(spec))
       const pairs = await pickPairs(host, spec, 8)
       if (pairs.length < 4) {
-        overlay.complete(0, computeReward(2, 0))
+        // Insufficient content (#67/#81-hardening) → ABORT, never a 0% flash-fail.
+        // cancel() resolves as "aborted" so the encounter re-picks/closes
+        // cleanly and the quest gate never counts it against the player.
+        overlay.cancel()
         return
       }
       const [a, missing, b] = sample(pairs, 3, rnd)
