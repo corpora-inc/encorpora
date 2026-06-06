@@ -372,8 +372,30 @@
   /* extend the opaque band to the scroller's horizontal padding so nothing shows
      in the gutters as it pins. */
   margin-inline: -16px;
-  padding: 8px 16px 10px;
-  box-shadow: 0 6px 8px -6px rgba(58, 47, 37, 0.12);
+  padding: 8px 16px 12px;
+  /* No transparent gap below the pin: the parent section's flex `gap` (Badges =
+     12px) left a sliver between the subhead's bottom and the first card row where
+     the scrolling rows peeked through. A solid paper `::after` extends the opaque
+     band DOWN over that gap (and a touch more), so content vanishes cleanly under
+     the whole pinned band — not just under the text. */
+}
+.wp-phone-body .wp-menu-subhead::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* start 2px INSIDE the subhead (no hairline seam) and extend well past the
+     parent flex/grid `gap` (Badges = 12px) so the first content row tucks fully
+     UNDER the opaque band — no peeking sliver at any gap size. */
+  top: calc(100% - 2px);
+  height: 24px;
+  background: var(--wp-phone-paper);
+  pointer-events: none;
+}
+/* The soft drop shadow rides the BOTTOM of that extended band so the pin still
+   reads as lifted over the list. */
+.wp-phone-body .wp-menu-subhead {
+  box-shadow: 0 22px 8px -16px rgba(58, 47, 37, 0.12);
 }
 /* A soft top scroll-edge fade INSIDE the body (content dissolves as it reaches the
    header instead of hard-cutting). Sticky pseudo-band, no JS. Sits under any
