@@ -624,13 +624,36 @@
 /* The now-playing card. */
 .wp-phone-now {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
   padding: 14px 16px;
   border-radius: 18px;
   background: linear-gradient(180deg, #fffaf0, #f3e8d3);
   border: 1px solid var(--wp-phone-hairline);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 4px 14px rgba(58, 47, 37, 0.14);
+}
+/* Album-art: the brand-mark squircle at a real Now-Playing artwork size. */
+.wp-phone-now-art {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(58, 47, 37, 0.22);
+}
+.wp-phone-now-art .wp-phone-app-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 16px;
+}
+.wp-phone-now-meta {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 .wp-phone-now-label {
   font: 700 11px/1 inherit;
