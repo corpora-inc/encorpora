@@ -2405,6 +2405,16 @@ function buildWorld(
     savePoseNow() // RESUME POSE (#103): flush the exit spot before anything disposes
     window.removeEventListener("keydown", onKey)
     document.removeEventListener("visibilitychange", onVisibility)
+    // Stop the radio FIRST. It streams in the NATIVE radio plugin (a separate
+    // process with a .longForm AVAudioSession that survives the WebView), so it
+    // MUST be stopped on exit even if a later dispose throws. It was buried ~10th
+    // in this list; on iPad an earlier dispose throwing left the station playing
+    // after the player left Corpan City. Guarded so it can never be skipped.
+    try {
+      cityRadio?.dispose() // stop the native stream + clear the single-instance slot
+    } catch (e) {
+      console.error("[wp/game] cityRadio dispose failed:", e)
+    }
     econHud.dispose()
     void badges.dispose()
     phone.dispose()
@@ -2413,7 +2423,6 @@ function buildWorld(
     fullMapModal.dispose()
     unFrame()
     soundscape.dispose()
-    cityRadio?.dispose() // stop the radio + clear the single-instance slot
     openDialogue?.close()
     economy.dispose() // shop portals + unregister the P2P trade provider
     for (const tp of transitPortals) tp.affordance.dispose()
