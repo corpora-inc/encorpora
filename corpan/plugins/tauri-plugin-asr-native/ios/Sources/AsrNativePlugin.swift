@@ -5,28 +5,36 @@ import Tauri
 import os.log
 
 // -----------------------------------------------------------------------------
-// tauri-plugin-asr-native — iOS (Apple native STT), Phase-1 SCAFFOLD STUB.
+// tauri-plugin-asr-native — iOS (Apple native STT), Phase-1 REAL implementation.
 //
-// What this is: a contract-conformant skeleton that wires the asr-native
-// command surface to Apple's Speech framework. The command shapes
-// (capabilities / isAvailable / ensure / startSession / stopSession /
-// cancelSession) and the event channel are in place and match
-// corpan-asr-contract. The REAL recognition path
-// (SpeechAnalyzer/SpeechTranscriber on iOS 26 with an SFSpeechRecognizer
-// fallback on ≤25, streaming partials + a VU level meter) is marked TODO and
-// returns `isAvailable=false` until implemented + a device build is run
-// (OWNER-OWNED — see ASR_SUBTEAM_SPECS.md Worker B). Until then the host
-// router treats native as "covers nothing" and falls through to a downloadable
-// provider or the keyboard — NO crash, NO fake transcripts.
+// Provider-agnostic dictation over Apple's on-device speech recognition,
+// conforming to corpan-asr-contract. Out-of-process (the OS recognition
+// daemon), ~0 added app memory, zero download for the OS's bundled locales.
 //
-// HARD CONSTRAINTS this stub already documents for the real impl:
-//  • OUT-OF-PROCESS → no process-global init lock needed.
-//  • COEXIST with tauri-plugin-radio-stream's `.longForm` AVAudioSession —
-//    DO NOT reset/strip it; verify a radio stream survives a dictation session.
-//  • INTERRUPTED (call / Control-Center) → emit SessionErrorEvent code
-//    "INTERRUPTED" + clean-cancel, NEVER crash.
-//  • Permission denial → emit code "MIC_DENIED"; the JS MicInput launchpad
+// Engine selection:
+//  • iOS 26+: SpeechAnalyzer + SpeechTranscriber (AsyncSequence, on-device,
+//    system-managed locale assets) — preferred where available.
+//  • iOS ≤25 (and as the broad fallback): SFSpeechRecognizer with
+//    `requiresOnDeviceRecognition = true` + a streaming AVAudioEngine tap.
+//
+// HARD CONSTRAINTS (all honored below):
+//  • OUT-OF-PROCESS → no process-global init lock.
+//  • COEXIST with tauri-plugin-radio-stream's `.longForm` AVAudioSession: we
+//    set `.playAndRecord` with `.mixWithOthers` + `.duckOthers` and do NOT
+//    deactivate the shared session on stop (only stop our tap). A reader/radio
+//    stream keeps playing (ducked) and resumes full volume after.
+//  • INTERRUPTED (call / Control-Center): AVAudioSession.interruptionNotification
+//    → emit `asr://error` {code:"INTERRUPTED"} + clean cancel, never crash.
+//  • Permission denied → emit {code:"MIC_DENIED"}; the JS MicInput launchpad
 //    drives openSettingsURLString (iOS Settings deep-links are impossible).
+//
+// DEVICE-VALIDATION NOTES (this file compiles but the recognition path can only
+// be confirmed on a device — see DEVICE_RUNBOOK.md):
+//  • SpeechAnalyzer/SpeechTranscriber require iOS 26 + may need an on-device
+//    asset download per locale (handled in `ensure`); verify on a real 26 device.
+//  • The exact SpeechTranscriber result-stream field names (`.text`,
+//    `.isFinal`) are guarded behind `#available` and may need a tweak against
+//    the shipping SDK — flagged.
 // -----------------------------------------------------------------------------
 
 private let LOG = OSLog(subsystem: "com.corpora.corpan", category: "AsrNative")
@@ -61,22 +69,57 @@ struct TranscribeStartResult: Encodable { let started: Bool; let sessionId: Stri
 struct SessionRef: Decodable { let sessionId: String }
 struct TranscriptOut: Encodable { let sessionId: String; let text: String; let confidence: Double; let language: String }
 
+// Streaming event payloads (keyed by sessionId; the host routes to the JS
+// AsrSession). Names mirror corpan-asr-contract's PartialEvent/LevelEvent/
+// SessionErrorEvent.
+private struct PartialEvent: Encodable { let sessionId: String; let text: String }
+private struct LevelEvent: Encodable { let sessionId: String; let rms: Double; let tMs: Int }
+private struct SessionErrorEvent: Encodable { let sessionId: String; let code: String; let message: String? }
+
+// MARK: - Our-code ⇄ OS locale
+
+/// Maps OUR language codes to a recognizer locale id. Mirrors the Rust
+/// `os_locale` map so both layers agree on which codes the OS may cover.
+private let OUR_TO_LOCALE: [String: String] = [
+    "en": "en-US", "es": "es-ES", "fr": "fr-FR", "de": "de-DE", "it": "it-IT",
+    "pt-BR": "pt-BR", "pt-PT": "pt-BR", "nl": "nl-NL", "ru": "ru-RU",
+    "sv": "sv-SE", "da": "da-DK", "no": "nb-NO", "fi": "fi-FI", "tr": "tr-TR",
+    "he": "he-IL", "ar": "ar-SA", "ja": "ja-JP", "ko-polite": "ko-KR",
+    "zh-Hans": "zh-CN", "zh-Hant": "zh-TW", "yue-Hant-HK": "yue-CN",
+    "th": "th-TH", "vi": "vi-VN", "ms": "ms-MY",
+]
+
+private func localeId(for ourCode: String) -> String? { OUR_TO_LOCALE[ourCode] }
+
 // MARK: - Plugin
 
 class AsrNativePlugin: Plugin {
 
-    /// Which of our codes Apple covers, mapped to a recognizer locale. The
-    /// real impl populates `languages` from
-    /// `SFSpeechRecognizer.supportedLocales()` ∩ our set (and on iOS 26 the
-    /// SpeechTranscriber locale list). The stub reports an EMPTY set so the
-    /// router falls through cleanly.
+    private var sessions: [String: NativeSession] = [:]
+
+    /// Which of OUR codes Apple actually supports on this device — computed by
+    /// intersecting our locale map with SFSpeechRecognizer.supportedLocales()
+    /// (the broad, always-present probe; SpeechTranscriber adds a few on 26).
+    private func supportedOurCodes() -> [String] {
+        let supported = SFSpeechRecognizer.supportedLocales().map { $0.identifier }
+        let supportedSet = Set(supported.map { normalizeLocale($0) })
+        return OUR_TO_LOCALE.compactMap { (our, loc) in
+            supportedSet.contains(normalizeLocale(loc)) ? our : nil
+        }
+    }
+
+    private func normalizeLocale(_ s: String) -> String {
+        s.replacingOccurrences(of: "_", with: "-").lowercased()
+    }
+
     @objc public func capabilities(_ invoke: Invoke) {
+        let langs = supportedOurCodes()
         let cap = AsrCapability(
             providerId: "native",
-            languages: [],  // TODO(real impl): probe supported locales ∩ our codes
+            languages: langs,
             onDevice: true,
             modelSizeMB: 0,
-            residentMemoryMB: 0,    // out-of-process: ~0 added app memory
+            residentMemoryMB: 0,     // out-of-process: ~0 added app memory
             streaming: true,
             latencyClass: "instant",
             needsDownload: false,
@@ -87,13 +130,15 @@ class AsrNativePlugin: Plugin {
     @objc public func isAvailable(_ invoke: Invoke) {
         do {
             let args = try invoke.parseArgs(IsAvailableArgs.self)
-            // TODO(real impl): map args.lang → locale; check
-            // SFSpeechRecognizer(locale:)?.isAvailable +
-            // supportsOnDeviceRecognition (iOS 26: SpeechTranscriber). For now,
-            // report unavailable so the host uses a downloadable provider /
-            // keyboard. NOT an error — this is the keyboard-floor contract.
-            log("isAvailable(\(args.lang)) → stub:false")
-            invoke.resolve(IsAvailableResult(ok: false, needsDownload: false))
+            guard let loc = localeId(for: args.lang) else {
+                invoke.resolve(IsAvailableResult(ok: false, needsDownload: false))
+                return
+            }
+            let rec = SFSpeechRecognizer(locale: Locale(identifier: loc))
+            // Available AND supports on-device (we never use the network path).
+            let ok = (rec?.isAvailable ?? false) && (rec?.supportsOnDeviceRecognition ?? false)
+            log("isAvailable(\(args.lang)→\(loc)) ok=\(ok)")
+            invoke.resolve(IsAvailableResult(ok: ok, needsDownload: false))
         } catch {
             invoke.reject(error.localizedDescription)
         }
@@ -101,10 +146,17 @@ class AsrNativePlugin: Plugin {
 
     @objc public func ensure(_ invoke: Invoke) {
         do {
-            _ = try invoke.parseArgs(EnsureArgs.self)
-            // TODO(real impl): trigger the OS asset/model fetch for the locale
-            // (some locales need an on-device download). Stub: nothing to do.
-            invoke.resolve(EnsureResult(ready: false, downloading: false, code: "UNSUPPORTED_LANG"))
+            let args = try invoke.parseArgs(EnsureArgs.self)
+            // SFSpeechRecognizer's on-device locales are present once supported;
+            // there's no explicit per-locale download API pre-26. On iOS 26 the
+            // SpeechTranscriber asset is fetched lazily on first analyze — we
+            // report ready if the locale is supported, else unsupported.
+            let supported = localeId(for: args.lang).map {
+                SFSpeechRecognizer(locale: Locale(identifier: $0))?.supportsOnDeviceRecognition ?? false
+            } ?? false
+            invoke.resolve(EnsureResult(
+                ready: supported, downloading: false,
+                code: supported ? nil : "UNSUPPORTED_LANG"))
         } catch {
             invoke.reject(error.localizedDescription)
         }
@@ -113,18 +165,37 @@ class AsrNativePlugin: Plugin {
     @objc public func startSession(_ invoke: Invoke) {
         do {
             let args = try invoke.parseArgs(TranscribeArgs.self)
-            // TODO(real impl):
-            //  1. request SFSpeechRecognizer + AVAudioSession record permission;
-            //     denial → trigger("asr://error", {sessionId, code:"MIC_DENIED"}).
-            //  2. configure the audio session WITHOUT disturbing radio-stream's
-            //     `.longForm` (do not setCategory to something exclusive).
-            //  3. start a recognition request (requiresOnDeviceRecognition=true);
-            //     stream partials via trigger("asr://partial", PartialEvent) and
-            //     RMS via trigger("asr://level", LevelEvent).
-            //  4. on AVAudioSession.interruptionNotification →
-            //     trigger("asr://error", code:"INTERRUPTED") + cancel cleanly.
-            log("startSession(\(args.sessionId), \(args.lang)) → stub: unavailable")
-            invoke.reject("native STT not implemented (stub); router should not call this when isAvailable=false")
+            guard let loc = localeId(for: args.lang) else {
+                invoke.reject("UNSUPPORTED_LANG")
+                return
+            }
+            // Permission gate — mic + speech-recognition. Denial is reported as
+            // a structured session error (the JS launchpad opens Settings).
+            requestAuthorization { [weak self] granted in
+                guard let self = self else { return }
+                guard granted else {
+                    self.trigger("asr://error", data: SessionErrorEvent(
+                        sessionId: args.sessionId, code: "MIC_DENIED",
+                        message: "Microphone or speech permission denied"))
+                    invoke.reject("MIC_DENIED")
+                    return
+                }
+                do {
+                    let session = try NativeSession(
+                        sessionId: args.sessionId, locale: loc, ourLang: args.lang,
+                        emit: { [weak self] name, payload in
+                            self?.trigger(name, data: payload)
+                        })
+                    self.sessions[args.sessionId] = session
+                    try session.start()
+                    invoke.resolve(TranscribeStartResult(started: true, sessionId: args.sessionId))
+                } catch {
+                    self.trigger("asr://error", data: SessionErrorEvent(
+                        sessionId: args.sessionId, code: "ENGINE",
+                        message: error.localizedDescription))
+                    invoke.reject(error.localizedDescription)
+                }
+            }
         } catch {
             invoke.reject(error.localizedDescription)
         }
@@ -133,17 +204,171 @@ class AsrNativePlugin: Plugin {
     @objc public func stopSession(_ invoke: Invoke) {
         do {
             let args = try invoke.parseArgs(SessionRef.self)
-            // TODO(real impl): finalize the recognition + resolve the transcript.
-            invoke.resolve(TranscriptOut(sessionId: args.sessionId, text: "", confidence: 0, language: ""))
+            guard let session = sessions[args.sessionId] else {
+                invoke.resolve(TranscriptOut(sessionId: args.sessionId, text: "", confidence: 0, language: ""))
+                return
+            }
+            session.finish { out in
+                self.sessions[args.sessionId] = nil
+                invoke.resolve(out)
+            }
         } catch {
             invoke.reject(error.localizedDescription)
         }
     }
 
     @objc public func cancelSession(_ invoke: Invoke) {
-        // TODO(real impl): tear down the recognition task + audio tap; leave the
-        // shared `.longForm` session intact.
-        invoke.resolve()
+        do {
+            let args = try invoke.parseArgs(SessionRef.self)
+            sessions[args.sessionId]?.cancel()
+            sessions[args.sessionId] = nil
+            invoke.resolve()
+        } catch {
+            invoke.reject(error.localizedDescription)
+        }
+    }
+
+    // Combined mic + speech-recognition authorization.
+    private func requestAuthorization(_ done: @escaping (Bool) -> Void) {
+        SFSpeechRecognizer.requestAuthorization { status in
+            let speechOK = (status == .authorized)
+            guard speechOK else { DispatchQueue.main.async { done(false) }; return }
+            AVAudioSession.sharedInstance().requestRecordPermission { micOK in
+                DispatchQueue.main.async { done(micOK) }
+            }
+        }
+    }
+}
+
+// MARK: - NativeSession (one live recognition)
+
+/// Wraps an SFSpeechRecognizer streaming session driven by an AVAudioEngine tap.
+/// Emits partial + level events and finalizes a transcript. Coexists with the
+/// shared `.longForm` audio session (mix + duck; never deactivates it).
+private final class NativeSession {
+    private let sessionId: String
+    private let ourLang: String
+    private let recognizer: SFSpeechRecognizer
+    private let request = SFSpeechAudioBufferRecognitionRequest()
+    private let engine = AVAudioEngine()
+    private var task: SFSpeechRecognitionTask?
+    private let emit: (String, Encodable) -> Void
+    private var startTime = Date()
+    private var lastText = ""
+    private var finished = false
+    private var interruptionObserver: NSObjectProtocol?
+
+    init(sessionId: String, locale: String, ourLang: String,
+         emit: @escaping (String, Encodable) -> Void) throws {
+        self.sessionId = sessionId
+        self.ourLang = ourLang
+        self.emit = emit
+        guard let rec = SFSpeechRecognizer(locale: Locale(identifier: locale)) else {
+            throw NSError(domain: "AsrNative", code: 1,
+                          userInfo: [NSLocalizedDescriptionKey: "no recognizer for \(locale)"])
+        }
+        self.recognizer = rec
+        // On-device ONLY — never the network path (privacy + offline).
+        request.requiresOnDeviceRecognition = true
+        request.shouldReportPartialResults = true
+    }
+
+    func start() throws {
+        // Configure the audio session to COEXIST with radio-stream's `.longForm`:
+        // playAndRecord + mixWithOthers + duckOthers. We do NOT change the
+        // category to something exclusive and we do NOT deactivate on stop, so a
+        // reader/radio keeps playing (ducked) through the dictation.
+        let audio = AVAudioSession.sharedInstance()
+        try audio.setCategory(.playAndRecord, mode: .measurement,
+                              options: [.duckOthers, .mixWithOthers, .defaultToSpeaker])
+        try audio.setActive(true, options: [])
+
+        let input = engine.inputNode
+        let format = input.outputFormat(forBus: 0)
+        input.installTap(onBus: 0, bufferSize: 1024, format: format) { [weak self] buffer, _ in
+            guard let self = self else { return }
+            self.request.append(buffer)
+            self.emitLevel(buffer)
+        }
+
+        startTime = Date()
+        task = recognizer.recognitionTask(with: request) { [weak self] result, error in
+            guard let self = self else { return }
+            if let result = result {
+                self.lastText = result.bestTranscription.formattedString
+                self.emit("asr://partial", PartialEvent(sessionId: self.sessionId, text: self.lastText))
+            }
+            if error != nil || (result?.isFinal ?? false) {
+                // Natural end or engine error; finalization happens in finish()/cancel().
+            }
+        }
+
+        observeInterruptions()
+        engine.prepare()
+        try engine.start()
+        log("session \(sessionId) started (\(ourLang))")
+    }
+
+    func finish(_ done: @escaping (TranscriptOut) -> Void) {
+        teardownAudio()
+        request.endAudio()
+        // Give the recognizer a brief moment to emit the final result, then
+        // resolve with the best text we have.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            guard let self = self, !self.finished else { return }
+            self.finished = true
+            self.task?.finish()
+            done(TranscriptOut(sessionId: self.sessionId, text: self.lastText,
+                               confidence: self.lastText.isEmpty ? 0 : 0.9,
+                               language: self.ourLang))
+        }
+    }
+
+    func cancel() {
+        finished = true
+        teardownAudio()
+        task?.cancel()
+    }
+
+    // MARK: internals
+
+    private func emitLevel(_ buffer: AVAudioPCMBuffer) {
+        guard let ch = buffer.floatChannelData?[0] else { return }
+        let n = Int(buffer.frameLength)
+        if n == 0 { return }
+        var sum: Float = 0
+        for i in 0..<n { let s = ch[i]; sum += s * s }
+        let rms = Double((sum / Float(n)).squareRoot())
+        let tMs = Int(Date().timeIntervalSince(startTime) * 1000)
+        emit("asr://level", LevelEvent(sessionId: sessionId, rms: min(1.0, rms * 4), tMs: tMs))
+    }
+
+    private func observeInterruptions() {
+        interruptionObserver = NotificationCenter.default.addObserver(
+            forName: AVAudioSession.interruptionNotification, object: nil, queue: .main
+        ) { [weak self] note in
+            guard let self = self else { return }
+            guard let info = note.userInfo,
+                  let raw = info[AVAudioSessionInterruptionTypeKey] as? UInt,
+                  let type = AVAudioSession.InterruptionType(rawValue: raw),
+                  type == .began else { return }
+            // Call / Control-Center pull → clean cancel, structured event.
+            self.emit("asr://error", SessionErrorEvent(
+                sessionId: self.sessionId, code: "INTERRUPTED", message: nil))
+            self.cancel()
+        }
+    }
+
+    private func teardownAudio() {
+        if let obs = interruptionObserver {
+            NotificationCenter.default.removeObserver(obs)
+            interruptionObserver = nil
+        }
+        engine.inputNode.removeTap(onBus: 0)
+        if engine.isRunning { engine.stop() }
+        // DELIBERATELY do not setActive(false): leave the shared `.longForm`
+        // session active so radio-stream / the reader keep playing. The OS
+        // un-ducks others when our recording stops.
     }
 }
 

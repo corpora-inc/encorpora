@@ -38,3 +38,6 @@ export type {
   MicInputHost,
   MicStringKey,
 } from "./micInput"
+
+export { wireDictation, dictationResolver } from "./dictation"
+export type { WireDictationOpts, DictationStrings } from "./dictation"

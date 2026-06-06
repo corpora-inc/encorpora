@@ -39,6 +39,45 @@ validation remains" for the ASR overhaul. Everything below is **additive**
 
 ---
 
+## Qwen3-ASR ↔ corpan-llm runtime-sharing — spike RESULT (#97)
+
+**Question (§3.3):** can Qwen3-ASR ride the SAME llama.cpp/GGML runtime
+`tauri-plugin-corpan-llm` vendors, co-resident with the resident Qwen3-4B, so
+the NPC voice loop transcribes WITHOUT unloading the LLM (unlike Whisper)?
+
+**Result: YES on architecture + runtime; the exact co-resident MB is the one
+on-device number left (owner leg). All cited.**
+
+- **Architecture (confirmed against llama.cpp + HF):** Qwen3-ASR in llama.cpp
+  is a **multimodal (`libmtmd`)** model = a **main GGUF** (the Qwen3 LLM
+  **decoder**, `ggml-org/Qwen3-ASR-0.6B-GGUF`, Q8_0 ≈ 805 MB, arch `qwen3vl`)
+  PLUS an **audio `mmproj` GGUF** (the AuT **encoder**, ~180M), loaded via
+  `--mmproj` (`-hf` auto-fetches both; `--no-mmproj-offload` keeps the encoder
+  on CPU = the Android path). This is exactly the §3.3 split: decoder =
+  runtime-shareable with the resident 4B (same llama.cpp build + Qwen3
+  tokenizer + GGUF loader corpan-llm already has); encoder = a small separate
+  asset the registry installs once.
+- **Weight-sharing = NO** (0.6B decoder ≠ 4B checkpoint). The win is **one
+  runtime, no second LLM stack** + STT without unloading the 4B.
+- **Memory (desktop proxy):** `predict-woo/qwen3-asr.cpp` (GGML+Metal) benched
+  **~247 MB RSS + ~294 MB Metal** for a 92 s clip on M2 Pro → **~0.5 GB**
+  added, INSIDE the masterplan's +0.4–0.7 GB estimate. With the ~2.5 GB 4B
+  loaded → ~3.0 GB (flagship-plausible; mid-tier routes to native/swap via the
+  Budget Arbiter).
+- **The ONE integration unknown for the plugin:** does **llama-cpp-2 0.1.146**
+  (the Rust binding corpan-llm uses) expose the `libmtmd` AUDIO path? Yes →
+  `tauri-plugin-asr-qwen3` reuses the plugin's runtime directly. No → it
+  vendors a thin mtmd-audio shim but STILL shares the GGML build.
+- **Honest risk:** llama.cpp flags audio "highly experimental" + an open report
+  (ggml-org issue #21847) of empty output on LONG audio. Our use is SHORT clips
+  (phrase dictation / known-target challenges), matching the model's dynamic
+  1–8 s window — but the bake-off must confirm accuracy on our clips before
+  `asr-qwen3` is built. **Build nothing for a loser.**
+
+Full detail + the on-device measurement plan: `infra/asr-bakeoff/device/RUNBOOK.md §C`.
+
+---
+
 ## What's IN vs OUT for 0.17.0 (honest scope)
 
 **IN (this branch, reviewable now):**

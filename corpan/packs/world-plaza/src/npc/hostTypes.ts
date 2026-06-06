@@ -99,6 +99,39 @@ export type HostApi = {
   listVoices?: (uiCode?: string) => Promise<HostVoiceInfo[]>
   /** On-device LLM runtime; present only when tauri-plugin-corpan-llm is registered. */
   llm?: LlmApi
+  /** Provider-agnostic dictation (host.asr). Present only when an asr-* provider
+   *  plugin is registered. The minimal shape `wireDictation` needs: a `pick`
+   *  that resolves a provider (or null = keyboard floor) for a language. Kept
+   *  structurally compatible with `@shared/asr`'s AsrApi. */
+  asr?: HostAsrApi
   /** True for the standalone mock host (skips the 2.4 GB model). */
   isMock?: boolean
+}
+
+/** Minimal local mirror of `@shared/asr`'s AsrApi/AsrProvider/AsrSession — just
+ *  enough for dictation wiring. Re-declared here (not imported) so the pack
+ *  stays self-contained, same posture as LlmApi above. */
+export type HostAsrApi = {
+  provider: (id: string) => Promise<HostAsrProvider | null>
+  pick: (args: {
+    lang: string
+    budgetMB?: number
+    goal?: "dictation" | "challenge"
+  }) => Promise<HostAsrProvider | null>
+}
+
+export type HostAsrProvider = {
+  readonly id: string
+  transcribe: (opts: {
+    lang: string
+    mode: "push_to_talk" | "auto_stop"
+  }) => Promise<HostAsrSession>
+}
+
+export type HostAsrSession = {
+  onPartial: (cb: (text: string) => void) => void
+  onLevel: (cb: (rms: number, tMs: number) => void) => void
+  onError: (cb: (code: string, message?: string) => void) => void
+  stop: () => Promise<{ text: string; confidence: number; language: string }>
+  cancel: () => void
 }
