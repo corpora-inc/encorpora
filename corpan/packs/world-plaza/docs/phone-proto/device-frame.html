@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>WP device-frame prototype</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;font-family:ui-rounded,"SF Pro Rounded","Nunito",system-ui,sans-serif}
+  .stage{position:fixed;inset:0;background:linear-gradient(160deg,#cfe6ec,#bcd7c9)}
+
+  /* ---- the phone root (fixed overlay, compositor-only) ---- */
+  .wp-phone-root{
+    --wp-dev-aspect: 9 / 19.5;
+    --wp-dev-radius: 44px;
+    --wp-dev-bezel-w: 12px;
+    --wp-dev-bezel: #15110d;
+    --wp-dev-bezel-spec: rgba(255,255,255,.10);
+    --wp-dev-shadow: 0 40px 90px -20px rgba(20,14,8,.55), 0 12px 30px rgba(20,14,8,.30);
+    --wp-statusbar-h: 34px;
+    --wp-topbar-h: 52px;
+    --wp-homebar-h: 24px;
+    --wp-phone-paper:#f7efe0; --wp-phone-paper-2:#efe3cd;
+    --wp-phone-ink:#3a2f25; --wp-phone-ink-soft:#7a6a55;
+    --wp-phone-accent:#c46b4a; --wp-phone-accent-ink:#fff7f0;
+    --wp-phone-hairline:rgba(120,100,70,.18);
+    --wp-phone-ease:cubic-bezier(.22,1,.36,1);
+    --wp-r-tile:22px;
+    position:fixed; inset:0; pointer-events:none; z-index:42;
+    color:var(--wp-phone-ink);
+  }
+  .wp-phone-scrim{position:fixed;inset:0;background:radial-gradient(140% 100% at 85% 100%,rgba(30,22,14,.34),rgba(30,22,14,.06));opacity:1;}
+
+  /* THE DEVICE: fixed size from the host viewport, NOT content. Right-anchored. */
+  .wp-phone-device{
+    position:fixed;
+    inset-inline-end:max(24px, env(safe-area-inset-right,0px));
+    top:50%;
+    height:clamp(560px, calc(100svh - 48px), 920px);
+    width:calc(clamp(560px, 100svh - 48px, 920px) * 9 / 19.5);
+    transform:translateY(-50%);
+    pointer-events:auto;
+    background:var(--wp-dev-bezel);
+    border-radius:var(--wp-dev-radius);
+    box-shadow:var(--wp-dev-shadow), inset 0 1px 0 var(--wp-dev-bezel-spec);
+    padding:var(--wp-dev-bezel-w);
+    box-sizing:border-box;
+  }
+  /* THE SCREEN: fixed rect inside the bezel, clipped. */
+  .wp-phone-screen{
+    position:absolute; inset:var(--wp-dev-bezel-w);
+    border-radius:calc(var(--wp-dev-radius) - var(--wp-dev-bezel-w));
+    overflow:hidden;
+    background:linear-gradient(180deg,var(--wp-phone-paper),var(--wp-phone-paper-2));
+    display:flex; flex-direction:column;
+  }
+  /* STATUS BAR */
+  .wp-phone-status{flex:0 0 auto;height:var(--wp-statusbar-h);display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:13px;font-weight:700;color:var(--wp-phone-ink)}
+  .wp-phone-status .sig{display:flex;align-items:center;gap:6px;font-size:11px}
+  .wp-phone-batt{width:22px;height:11px;border:1.4px solid var(--wp-phone-ink);border-radius:3px;position:relative;display:inline-block}
+  .wp-phone-batt::after{content:"";position:absolute;right:-3px;top:3px;width:2px;height:5px;background:var(--wp-phone-ink);border-radius:0 1px 1px 0}
+  .wp-phone-batt::before{content:"";position:absolute;left:1.5px;top:1.5px;bottom:1.5px;width:70%;background:var(--wp-phone-ink);border-radius:1px}
+  .dots{letter-spacing:1px}
+  /* TOP BAR */
+  .wp-phone-top{flex:0 0 auto;height:var(--wp-topbar-h);display:flex;align-items:center;gap:8px;padding:0 16px}
+  .wp-phone-top .mark{width:26px;height:26px;border-radius:7px;background:var(--wp-phone-accent);display:grid;place-items:center;color:#fff;font-weight:900;font-size:14px}
+  .wp-phone-top .word{font-weight:800;font-size:17px;flex:1 1 auto}
+  .wp-phone-top .act{width:30px;height:30px;border-radius:999px;background:rgba(122,106,85,.12);display:grid;place-items:center;color:var(--wp-phone-ink-soft);border:none;cursor:pointer}
+  .wp-phone-back{width:32px;height:32px;border:none;border-radius:999px;background:rgba(122,106,85,.12);color:var(--wp-phone-ink);display:grid;place-items:center;cursor:pointer;font-size:18px}
+  /* BODY (the only scroller) */
+  .wp-phone-body{flex:1 1 auto;min-height:0;overflow:hidden auto;padding:6px 16px 8px}
+  /* HOME INDICATOR */
+  .wp-phone-home-ind{flex:0 0 auto;height:var(--wp-homebar-h);display:grid;place-items:center}
+  .wp-phone-home-ind i{width:42%;height:5px;border-radius:3px;background:rgba(120,100,70,.4)}
+
+  /* springboard */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 10px;margin-top:8px}
+  .app{display:flex;flex-direction:column;align-items:center;gap:7px;border:none;background:transparent;cursor:pointer}
+  .tile{width:100%;aspect-ratio:1;max-width:62px;border-radius:var(--wp-r-tile);display:grid;place-items:center;box-shadow:0 6px 16px rgba(58,47,37,.18),inset 0 1px 0 rgba(255,255,255,.5);color:#fff;font-size:22px}
+  .tile.map{background:linear-gradient(160deg,#7fae8c,#4f8f86)}
+  .tile.things{background:linear-gradient(160deg,#caa15a,#a9762e)}
+  .tile.quest{background:linear-gradient(160deg,#d98a63,#bf5a36)}
+  .tile.badges{background:linear-gradient(160deg,#d8b24a,#9c7a2a)}
+  .tile.music{background:linear-gradient(160deg,#d98a63,#c46b4a)}
+  .nm{font:600 11.5px/1.1 inherit;color:var(--wp-phone-ink)}
+  .obj{margin-top:18px;padding:13px 14px;border-radius:16px;background:rgba(255,255,255,.55);border:1px solid var(--wp-phone-hairline);font:600 13px/1.3 inherit;display:flex;gap:8px;align-items:center}
+  .obj b{color:var(--wp-phone-accent)}
+  .leave{margin-top:14px;text-align:center;color:var(--wp-phone-ink-soft);font:700 12.5px/1 inherit}
+  /* a tall app body to prove scroll-not-grow */
+  .rows .row{padding:13px 14px;border-radius:14px;background:rgba(255,255,255,.5);border:1px solid var(--wp-phone-hairline);margin-bottom:10px;font:600 14px/1.3 inherit}
+  .eyebrow{font:800 11px/1 inherit;letter-spacing:.08em;text-transform:uppercase;color:#9a8868;margin:4px 0 12px}
+</style>
+</head>
+<body>
+<div class="stage"></div>
+<div class="wp-phone-root" id="root">
+  <div class="wp-phone-scrim"></div>
+  <div class="wp-phone-device">
+    <div class="wp-phone-screen">
+      <div class="wp-phone-status">
+        <span id="clock">9:41</span>
+        <span class="sig"><span class="dots">●●●●</span> 5G <span class="wp-phone-batt"></span></span>
+      </div>
+      <div class="wp-phone-top" id="top"></div>
+      <div class="wp-phone-body" id="body"></div>
+      <div class="wp-phone-home-ind"><i></i></div>
+    </div>
+  </div>
+</div>
+<script>
+const topbar = document.getElementById('top');
+const body = document.getElementById('body');
+const clk = new Date();
+document.getElementById('clock').textContent = clk.getHours()+':'+String(clk.getMinutes()).padStart(2,'0');
+
+const apps = [['map','Map','🗺'],['things','Things','🎒'],['quest','Quest','📍'],['badges','Badges','🎖'],['music','Music','♪']];
+function home(){
+  topbar.innerHTML = '<div class="mark">C</div><div class="word">Corpan City</div><button class="act">⌕</button><button class="act">⚙</button>';
+  let g='<div class="grid">';
+  for(const [c,n,e] of apps) g+=`<button class="app" onclick="app('${n}')"><span class="tile ${c}">${e}</span><span class="nm">${n}</span></button>`;
+  g+='</div>';
+  g+='<div class="obj">▸ <span>Find the café — <b>2 of 3 done</b></span></div>';
+  g+='<div class="leave">⎋ Leave the Plaza</div>';
+  body.innerHTML=g;
+}
+function app(name){
+  topbar.innerHTML = `<button class="wp-phone-back" onclick="home()">‹</button><div class="word">${name}</div><button class="act">✕</button>`;
+  let h=`<div class="eyebrow">${name}</div><div class="rows">`;
+  // many rows to prove the device does NOT grow — it scrolls inside the screen
+  for(let i=1;i<=14;i++) h+=`<div class="row">${name} item ${i}</div>`;
+  h+='</div>';
+  body.innerHTML=h;
+}
+window.home=home;window.app=app;
+home();
+</script>
+</body>
+</html>
