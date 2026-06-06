@@ -75,30 +75,33 @@ const ALL_DOMAINS: ReadonlySet<string> = new Set<CorpusDomain>([
 ])
 
 /**
- * Each persona archetype's DOMAIN AFFINITY — the real corpus domains its trade
- * naturally talks about. A baker talks food/market (→ everyday + numbers/prices);
- * a boatman/sailor/dockhand talks travel; a scribe talks business/civic; a friar/
- * elder talks social/culture; a herbalist talks health; a child talks everyday/
+ * Each persona archetype's DOMAIN AFFINITY — the real corpus domains its role
+ * naturally talks about. A baker talks food (→ everyday + numbers/prices); a
+ * guide/courier talks travel; a clerk talks business/civic; a librarian/elder
+ * talks social/culture; a gardener talks environment/health; a kid talks everyday/
  * education. Ordered by relevance (the first is the strongest pull). Keyed by the
  * persona `archetype` id from `personaGen.ts`.
  */
 const ARCHETYPE_DOMAINS: Record<string, readonly CorpusDomain[]> = {
+  // MODERN Corpan City wandering roles (#107). Keyed by the persona `archetype`
+  // id from personaGen.ts — these MUST stay in lockstep with that catalogue (a
+  // test asserts every PERSONA_ARCHETYPES entry has a real-domain row here).
   baker: ["everyday", "numbers", "social"],
-  fishmonger: ["everyday", "numbers", "environment"],
-  weaver: ["everyday", "culture", "business"],
-  herbalist: ["health", "environment", "everyday"],
-  friar: ["social", "culture", "education"],
-  sailor: ["travel", "environment", "everyday"],
-  dockhand: ["travel", "numbers", "business"],
-  merchant: ["business", "numbers", "travel"],
+  vendor: ["everyday", "numbers", "social"],
+  shopkeeper: ["everyday", "numbers", "business"],
+  gardener: ["environment", "everyday", "health"],
+  librarian: ["education", "culture", "social"],
+  guide: ["travel", "culture", "everyday"],
+  courier: ["travel", "numbers", "business"],
+  trader: ["business", "numbers", "travel"],
   musician: ["culture", "social", "everyday"],
   elder: ["social", "culture", "everyday"],
   child: ["everyday", "education", "social"],
-  "water-seller": ["everyday", "numbers", "health"],
-  scribe: ["business", "civic", "education"],
-  lamplighter: ["everyday", "housing", "environment"],
-  "flower-girl": ["everyday", "environment", "culture"],
-  smuggler: ["travel", "civic", "business"],
+  "cart-vendor": ["everyday", "numbers", "social"],
+  clerk: ["business", "civic", "education"],
+  barber: ["everyday", "social", "culture"],
+  florist: ["everyday", "environment", "culture"],
+  fixer: ["travel", "civic", "business"],
   // VENUE-FIT roles (#107): the objective NPC at a clinic/café/market/station/
   // exchange. Domains match the venue so its minigame vocab is on-topic.
   doctor: ["health", "everyday", "social"],

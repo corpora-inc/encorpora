@@ -24,6 +24,7 @@ import {
   generatePersona,
   roleTermFor,
   archetypeIds,
+  PERSONA_ARCHETYPES,
   type PersonaContext,
 } from "./personaGen"
 import { composeSystemPrompt, personaSeed } from "./promptProgram"
@@ -50,6 +51,33 @@ const persona = (anchorId: string, demeanor: Demeanor, target?: string) =>
   } satisfies PersonaContext)
 
 describe("#107 venue-typed NPC personas", () => {
+  // ── MODERN catalogue (#107 era decision) — no colonial-1770 storybook trades ─
+  it("the wandering catalogue is MODERN Corpan City — no colonial-1770 trades", () => {
+    const ids = new Set(archetypeIds())
+    // the old storybook trades must be gone (they read as nonsense in a modern city)
+    for (const gone of [
+      "lamplighter", "fishmonger", "scribe", "friar", "sailor", "dockhand",
+      "merchant", "weaver", "herbalist", "water-seller", "flower-girl", "smuggler",
+    ]) {
+      expect(ids.has(gone), `colonial id "${gone}" should be removed`).toBe(false)
+    }
+    // and the modern wandering roles are present
+    for (const want of [
+      "baker", "vendor", "shopkeeper", "gardener", "librarian", "guide", "courier",
+      "trader", "musician", "elder", "child", "cart-vendor", "clerk", "barber",
+      "florist", "fixer",
+    ]) {
+      expect(ids.has(want), `modern id "${want}" should exist`).toBe(true)
+    }
+  })
+
+  it("every archetype label is plausible modern-city (no quill/loom/friar/ferry words)", () => {
+    const storybook = /\b(friar|scribe|lamplighter|fishmonger|weaver|loom|quill|ferry|smuggler|dockhand)\b/i
+    for (const a of PERSONA_ARCHETYPES) {
+      expect(storybook.test(a.label), `label "${a.label}"`).toBe(false)
+    }
+  })
+
   // ── (a) the venue drives the role — a clinic NPC is medical ────────────────
   it("a clinic/hospital anchor yields a MEDICAL role (not a wandering trade)", () => {
     for (const id of ["hospital", "clinic"]) {
