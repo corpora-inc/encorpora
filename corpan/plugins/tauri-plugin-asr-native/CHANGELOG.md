@@ -5,14 +5,23 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
-- Initial **contract-conformant scaffold** for OS-native dictation (Apple
-  SpeechAnalyzer/SFSpeechRecognizer on iOS, Android SpeechRecognizer). Rust
-  bridge (desktop + mobile) re-uses `corpan-asr-contract` structs; command
-  surface (`capabilities`/`is_available`/`ensure`/`start_session`/
-  `stop_session`/`cancel_session`) matches the frozen contract. Swift +
-  Kotlin **stubs** report `is_available=false` (host falls through to a
-  downloadable provider or the keyboard — no crash, no fake transcripts) with
-  the real-impl path + hard constraints (`.longForm` coexistence, `INTERRUPTED`
-  clean-cancel, `MIC_DENIED` launchpad) documented inline as TODOs. `cargo
-  test` green (desktop); the real recognizers + a device build are the next
-  step (owner-owned). See `docs/STT_MASTERPLAN.md` Phase 1.
+- **Real native recognizers** (replaces the scaffold stubs). iOS: streaming
+  `SFSpeechRecognizer` (`requiresOnDeviceRecognition = true`) driven by an
+  `AVAudioEngine` tap — real `capabilities`/`is_available` from
+  `SFSpeechRecognizer.supportedLocales()` ∩ our codes + `supportsOnDeviceRecognition`,
+  partial-result streaming (`asr://partial`), VU level from buffer RMS
+  (`asr://level`), interruption → `asr://error{INTERRUPTED}`, `MIC_DENIED`
+  structured error. Audio session is `.playAndRecord` + `.mixWithOthers` +
+  `.duckOthers` and is **never deactivated on stop**, so radio-stream's
+  `.longForm` reader/radio keeps playing (ducked) through a dictation.
+  SpeechAnalyzer/SpeechTranscriber (iOS 26) documented as the preferred path.
+  Android: `SpeechRecognizer.createOnDeviceSpeechRecognizer` (API 33+) /
+  `createSpeechRecognizer` (≤32) with `EXTRA_PREFER_OFFLINE`,
+  `checkRecognitionSupport` for the per-locale availability probe,
+  `RecognitionListener` partials + `onRmsChanged` VU + mapped error codes;
+  `<queries RecognitionService>` declared (required on API 30+). Out-of-process
+  → no process-global lock. `cargo test` green; build.rs trimmed to the 6
+  contract commands (events go on the trigger channel, not commands).
+- **DEVICE VALIDATION REQUIRED** before ship — see `DEVICE_RUNBOOK.md`. The
+  recognition path can only be confirmed on real iOS + Android hardware; the
+  iOS/Android device build is OWNER-OWNED.

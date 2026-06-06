@@ -2,6 +2,10 @@
 // names in `corpan-asr-contract::commands` (the FROZEN contract). Native STT
 // is out-of-process — NO XCFramework/static-lib link step is needed (unlike
 // tauri-plugin-stt's whisper.cpp), so this build.rs stays minimal.
+// Streaming partial/level/error events are pushed on the plugin event channel
+// via the native `trigger("asr://…")` calls (consumed JS-side with
+// addPluginListener); they are NOT commands, so no register/remove_listener
+// handlers are declared here.
 const COMMANDS: &[&str] = &[
     "capabilities",
     "is_available",
@@ -9,8 +13,6 @@ const COMMANDS: &[&str] = &[
     "start_session",
     "stop_session",
     "cancel_session",
-    "register_listener",
-    "remove_listener",
 ];
 
 fn main() {
