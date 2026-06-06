@@ -26,6 +26,17 @@ export const LOG = "[wp/map]"
 
 /* --------------------------------------------------- localization helper --- */
 
+/**
+ * FOLLOW-UP (#111 map-string i18n pass — NOT yet done): these `map.*` strings live
+ * ONLY in this local EN dict, NOT the main `strings.ts` I18nKey union, so the map's
+ * CHROME (POI type labels, "Route"/"Go", the tap-popover text) is English-only —
+ * even though POI NAMES are pair-agnostic (via the host `anchorName`). The owner
+ * asked for "localized popovers". To finish: move these keys into the main keyed
+ * i18n (union + en source) so `gen_i18n.py` localizes them into all ~46 langs, and
+ * thread the live `t`+locale into `createMapT`. Sequenced separately (it's a keyed-
+ * i18n + gen pass, not a map-logic change). Until then this EN dict is the floor.
+ */
+
 /** Per-key English fallback so a bare `(key)=>key` stub never paints blank. */
 const EN: Record<string, string> = {
   "map.title": "Map",
@@ -80,6 +91,11 @@ const EN: Record<string, string> = {
   "map.route": "Route to {place}",
   "map.route.distance": "~{dist} m",
   "map.route.go": "Go",
+  // #111 navigate-to-POI + no-quest + the tap popover.
+  "map.course.clear": "Clear course",
+  "map.quest.on": "Quest: on",
+  "map.quest.off": "No quest",
+  "map.poi.aria": "{name} — details",
 }
 
 export type MapT = (key: string, params?: Record<string, string | number>) => string

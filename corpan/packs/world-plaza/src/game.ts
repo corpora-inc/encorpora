@@ -2033,12 +2033,40 @@ function buildWorld(
   // the over-rooftop beacon, and the map star all resolve through this so they
   // can never disagree (the "I stood on the star and nothing was there" bug was a
   // landmark/anchor mismatch — objective at `plaza`, player drawn to the fountain).
+  // ── NAVIGATION state (#111 Maps app: navigate-to-POI + no-quest mode) ───────
+  // `userCourse` = a player-chosen destination (the map popover's Route/Go); it
+  // OVERRIDES the quest objective for ALL wayfinding (road arrow + beacon + map).
+  // `questMuted` = "No quest" free-explore: the objective is ignored until quests
+  // are turned back on. Minimal + commented; the lead reconciles deeper at merge.
+  let userCourse: string | null = null
+  let questMuted = false
+  const anchorWorld = (id: string | null | undefined): { x: number; z: number } | null => {
+    if (!id) return null
+    const a = city.getAnchor(id)
+    return a ? { x: a.x, z: a.z } : null
+  }
   const objectivePoint = (): { x: number; z: number } | null => {
+    if (userCourse) return locateObjective(userCourse, crowd.focusables, anchorWorld)
+    if (questMuted) return null
     const obj = questEngine.getQuestMarkers().find((m) => m.kind === "objective")
-    return locateObjective(obj?.anchorId, crowd.focusables, (id) => {
-      const a = city.getAnchor(id)
-      return a ? { x: a.x, z: a.z } : null
-    })
+    return locateObjective(obj?.anchorId, crowd.focusables, anchorWorld)
+  }
+  // Wire the Map app's nav controls (set-course-to-POI + no-quest toggle). mapOpts
+  // was built earlier + captured by createMapSection; the map reads opts.nav at
+  // render time (each open), so attaching here (before any open) wires it for free.
+  mapOpts.nav = {
+    setCourse: (id: string) => {
+      userCourse = id
+    },
+    clearCourse: () => {
+      userCourse = null
+    },
+    getCourse: () => userCourse,
+    isQuestActive: () => !questMuted,
+    setQuestActive: (active: boolean) => {
+      questMuted = !active
+      if (active) userCourse = null
+    },
   }
 
   // A subtle floor marker a few steps ahead of the player pointing at the objective.

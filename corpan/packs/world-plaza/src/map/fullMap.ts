@@ -47,9 +47,25 @@ import {
   drawWayfinding,
   type PlottedRemote,
   type PlottedQuestMarker,
+  type PlottedPoi,
 } from "./schematic"
+import { createMapPopover, type PopoverHandle } from "./mapPopover"
 
 const LOG = "[wp/fullMap]"
+
+/**
+ * NAVIGATION seam (#111). When the host provides `nav`, a POI popover's Route/Go sets
+ * the wayfinding COURSE to that place (the on-road arrow + beacon + map all retarget),
+ * and a "No quest" toggle turns quests off for free exploration. All optional + omit-
+ * graceful — without `nav` the map is a pure viewer.
+ */
+export interface MapNav {
+  setCourse(anchorId: string): void
+  clearCourse(): void
+  getCourse(): string | null
+  isQuestActive(): boolean
+  setQuestActive(active: boolean): void
+}
 
 export interface FullMapOptions {
   view: MapView
@@ -60,6 +76,8 @@ export interface FullMapOptions {
   anchorName?: (anchorId: string) => string
   /** Resolve an item id → a friendly label (for source-hint tags). */
   itemName?: (itemId: string) => string
+  /** Optional navigation controls (set-course-to-POI + no-quest toggle). */
+  nav?: MapNav
 }
 
 /**
@@ -195,12 +213,64 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   stage.appendChild(canvas)
   wrap.appendChild(stage)
 
-  // A layer for floated text tags (POI names, player, objective).
+  // A layer for floated text tags (now ONLY You + the objective — #111 declutter).
   const tagLayer = document.createElement("div")
   tagLayer.style.position = "absolute"
   tagLayer.style.inset = "0"
   tagLayer.style.pointerEvents = "none"
   stage.appendChild(tagLayer)
+
+  // ── PIN LAYER (#111): accessible, focusable hit-targets over each plotted POI.
+  //   The canvas draws the pin glyphs; these transparent buttons sit on top so a
+  //   POI is tappable + keyboard-focusable with a localized ARIA label, and opens
+  //   the popover. Rebuilt each frame from the plotted POIs (cheap; dozens). ──────
+  const pinLayer = document.createElement("div")
+  pinLayer.className = "wp-map-pins"
+  pinLayer.style.position = "absolute"
+  pinLayer.style.inset = "0"
+  stage.appendChild(pinLayer)
+
+  // The localized POI TYPE label for a category (e.g. "Café", "Market") — reuses the
+  // marker-style label key so it matches the legend.
+  const typeLabel = (cat: PoiCategory): string => mt(markerStyleForCat(cat).labelKey)
+
+  // Open the popover for a POI: localized name + type + distance + Route/Go (which
+  // sets the wayfinding course). Distance uses the live player world point.
+  const openPopoverFor = (poi: PlottedPoi) => {
+    let pPos
+    try {
+      pPos = opts.view.getPlayerPos()
+    } catch {
+      pPos = null
+    }
+    const a = opts.view.topology.anchors.find((an) => an.id === poi.id)
+    const dist =
+      pPos && a ? mt("map.route.distance", { dist: Math.round(Math.hypot(a.x - pPos.x, a.z - pPos.z)) }) : null
+    const isCourse = opts.nav?.getCourse() === poi.id
+    popover.show({
+      anchorId: poi.id,
+      name: anchorName(poi.id),
+      type: typeLabel(poi.cat),
+      distance: dist,
+      actionLabel: isCourse ? mt("map.course.clear") : mt("map.route.go"),
+      isCourse,
+      sx: poi.sx,
+      sy: poi.sy,
+    })
+  }
+
+  // The popover: Route/Go sets the course (or clears it if already coursed).
+  const popover: PopoverHandle = createMapPopover(stage, {
+    accent,
+    ariaLabel: (name) => mt("map.poi.aria", { name }),
+    onAct: (id) => {
+      if (!opts.nav) return
+      if (opts.nav.getCourse() === id) opts.nav.clearCourse()
+      else opts.nav.setCourse(id)
+      popover.hide()
+    },
+  })
+  // Tap-away on the stage closes the popover (a clean tap, handled in onUp below).
 
   // ROUTE STRIP — "Route to {place} · ~{dist}" + a Go button that frames the
   // player→objective leg. Hidden when there's no active objective. Sits above the
@@ -214,13 +284,44 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   routeGo.type = "button"
   routeGo.className = "wp-map-route-go"
   routeGo.textContent = mt("map.route.go")
-  routeStrip.append(routeText, routeGo)
+  // ✕ clear-course (only while a USER course is set).
+  const routeClear = document.createElement("button")
+  routeClear.type = "button"
+  routeClear.className = "wp-map-route-clear"
+  routeClear.setAttribute("aria-label", mt("map.course.clear"))
+  routeClear.innerHTML = "&#10005;"
+  routeClear.hidden = true
+  routeClear.addEventListener("click", (e) => {
+    e.stopPropagation()
+    opts.nav?.clearCourse()
+  })
+  routeStrip.append(routeText, routeGo, routeClear)
   wrap.appendChild(routeStrip)
-  // "Go": frame the player→objective leg (recenter between them, sensible zoom).
+  // "Go": frame the player→destination leg (recenter between them, sensible zoom).
   let routeGoPending = false
   routeGo.addEventListener("click", () => {
     routeGoPending = true
   })
+
+  // ── "No quest" toggle (free-explore mode) — only when nav is wired. ─────────────
+  if (opts.nav) {
+    const nav = opts.nav
+    const questToggle = document.createElement("button")
+    questToggle.type = "button"
+    questToggle.className = "wp-map-questtoggle"
+    const syncToggle = () => {
+      const on = nav.isQuestActive()
+      questToggle.textContent = on ? mt("map.quest.on") : mt("map.quest.off")
+      questToggle.setAttribute("aria-pressed", on ? "true" : "false")
+      questToggle.classList.toggle("wp-map-questtoggle--off", !on)
+    }
+    questToggle.addEventListener("click", () => {
+      nav.setQuestActive(!nav.isQuestActive())
+      syncToggle()
+    })
+    syncToggle()
+    tools.appendChild(questToggle)
+  }
 
   const legend = buildLegend(opts.view, accent, mt)
   if (legend) wrap.appendChild(legend)
@@ -368,6 +469,9 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   let pinchStartZoom = 1
   let dragLast: { x: number; z: number } | null = null
   const onDown = (e: PointerEvent) => {
+    // Tap-away: a pointerdown that reaches the stage (pins + popover stop their own
+    // propagation) dismisses any open popover (Google-Maps "tap the map to close").
+    if (popover.isOpen()) popover.hide()
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
     if (pointers.size === 1) {
       const { sx, sy } = stagePoint(e.clientX, e.clientY)
@@ -414,6 +518,43 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   let phase = 0
   let lastT = typeof performance !== "undefined" ? performance.now() : Date.now()
   let alive = true
+  let latestPois: PlottedPoi[] = []
+  /** Reusable pin buttons keyed by anchor id (rebuilt sparingly — see below). */
+  const pinBtns = new Map<string, HTMLButtonElement>()
+
+  /** Sync the focusable pin buttons to the current plotted POIs (#111). */
+  const syncPins = (pois: PlottedPoi[]) => {
+    const seen = new Set<string>()
+    for (const p of pois) {
+      seen.add(p.id)
+      let btn = pinBtns.get(p.id)
+      if (!btn) {
+        btn = document.createElement("button")
+        btn.type = "button"
+        btn.className = "wp-map-pin"
+        btn.dataset.anchor = p.id
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation()
+          // toggle: re-tapping the open pin closes the popover.
+          if (popover.current() === p.id) popover.hide()
+          else openPopoverFor(latestPois.find((q) => q.id === p.id) ?? p)
+        })
+        pinBtns.set(p.id, btn)
+        pinLayer.appendChild(btn)
+      }
+      btn.setAttribute("aria-label", `${anchorName(p.id)} — ${typeLabel(p.cat)}`)
+      btn.style.left = `${p.sx}px`
+      btn.style.top = `${p.sy}px`
+      btn.classList.toggle("wp-map-pin--course", opts.nav?.getCourse() === p.id)
+    }
+    // drop buttons whose POI is no longer plotted (e.g. filtered out).
+    for (const [id, btn] of pinBtns) {
+      if (!seen.has(id)) {
+        btn.remove()
+        pinBtns.delete(id)
+      }
+    }
+  }
 
   function frame(): void {
     if (!alive) return
@@ -426,7 +567,14 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
         drawBase(ctx, opts.view.topology, proj, cssW, cssH, true, opts.view.getMapGeometry?.())
         // Maps-app filter: when a chip/search narrows focus, non-matching POIs ghost.
         const useFilter = filterActive()
-        drawPois(ctx, opts.view.topology, proj, true, useFilter ? poiPasses : undefined)
+        latestPois = drawPois(ctx, opts.view.topology, proj, true, useFilter ? poiPasses : undefined)
+        // Keep the focusable pin buttons + the open popover in sync with the pins.
+        syncPins(latestPois)
+        if (popover.isOpen()) {
+          const cur = latestPois.find((p) => p.id === popover.current())
+          if (cur) popover.reposition(cur.sx, cur.sy)
+          else popover.hide() // its pin scrolled off / got filtered → dismiss
+        }
 
         if (!reduced) {
           const now = typeof performance !== "undefined" ? performance.now() : Date.now()
@@ -444,32 +592,43 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
         const player = drawPlayer(ctx, opts.view, proj, true, accent)
 
         // #72 wayfinding: a "go here" cue from the player toward the active
-        // objective (dashed leader, or an edge arrow when it's off-screen).
+        // objective. Suppressed in "No quest" mode or when a user course overrides
+        // it (the course leader draws below instead).
         const obj = qmarkers.find((m) => m.kind === "objective")
-        if (obj) drawWayfinding(ctx, player.sx, player.sy, obj.sx, obj.sy, cssW, cssH, true)
+        const objActive = (opts.nav ? opts.nav.isQuestActive() : true) && !opts.nav?.getCourse()
+        if (obj && objActive) drawWayfinding(ctx, player.sx, player.sy, obj.sx, obj.sy, cssW, cssH, true)
 
-        // ── ROUTE STRIP: "Route to {place} · ~{dist}" toward the active objective.
-        if (obj) {
+        // ── ROUTE STRIP destination = the USER COURSE (tapped a POI's Route/Go), else
+        //   the quest OBJECTIVE while quests are active. ───────────────────────────
+        const courseId = opts.nav?.getCourse() ?? null
+        const questActive = opts.nav ? opts.nav.isQuestActive() : true
+        const destId = courseId ?? (questActive && obj ? obj.anchorId : null)
+        if (destId) {
           let pPos
           try {
             pPos = opts.view.getPlayerPos()
           } catch {
             pPos = null
           }
-          const objAnchor = opts.view.topology.anchors.find((a) => a.id === obj.anchorId)
-          if (pPos && objAnchor) {
-            const dx = objAnchor.x - pPos.x
-            const dz = objAnchor.z - pPos.z
+          const destAnchor = opts.view.topology.anchors.find((a) => a.id === destId)
+          if (pPos && destAnchor) {
+            const dx = destAnchor.x - pPos.x
+            const dz = destAnchor.z - pPos.z
             const dist = Math.round(Math.hypot(dx, dz))
+            if (courseId) {
+              const s = proj.toScreen(destAnchor.x, destAnchor.z)
+              drawWayfinding(ctx, player.sx, player.sy, s.x, s.y, cssW, cssH, true)
+            }
             routeText.innerHTML =
-              `<span class="wp-map-route-to">${escapeHtml(mt("map.route", { place: anchorName(obj.anchorId) }))}</span>` +
+              `<span class="wp-map-route-to">${escapeHtml(mt("map.route", { place: anchorName(destId) }))}</span>` +
               `<span class="wp-map-route-dist">${escapeHtml(mt("map.route.distance", { dist }))}</span>`
             routeStrip.hidden = false
-            // Consume a pending "Go": center between player + objective, sane zoom.
+            routeClear.hidden = !courseId
+            // Consume a pending "Go": center between player + destination, sane zoom.
             if (routeGoPending) {
               routeGoPending = false
-              panX = (pPos.x + objAnchor.x) / 2
-              panZ = (pPos.z + objAnchor.z) / 2
+              panX = (pPos.x + destAnchor.x) / 2
+              panZ = (pPos.z + destAnchor.z) / 2
               const span = Math.max(40, Math.hypot(dx, dz))
               zoom = Math.max(1.4, Math.min(ZOOM_MAX, (cityHalf / span) * 1.1))
               clampPan()
@@ -512,6 +671,17 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   }
   raf = requestAnimationFrame(frame)
 
+  // Esc closes an open popover FIRST (capture, so it resolves before the modal's own
+  // Esc-to-close). Only when the popover is closed does Esc fall through to the modal.
+  const onPopoverEsc = (e: KeyboardEvent) => {
+    if (e.key === "Escape" && popover.isOpen()) {
+      e.preventDefault()
+      e.stopPropagation()
+      popover.hide()
+    }
+  }
+  document.addEventListener("keydown", onPopoverEsc, true)
+
   return {
     el: wrap,
     dispose() {
@@ -519,6 +689,8 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
       if (raf) cancelAnimationFrame(raf)
       raf = 0
       try {
+        document.removeEventListener("keydown", onPopoverEsc, true)
+        popover.dispose()
         stage.removeEventListener("wheel", onWheel)
         stage.removeEventListener("pointerdown", onDown)
         stage.removeEventListener("pointermove", onMove)
@@ -573,7 +745,6 @@ function overlaps(
 function renderTags(layer: HTMLElement, c: TagCtx): void {
   layer.replaceChildren()
   const objectiveMarkers = c.qmarkers.filter((m) => m.kind === "objective")
-  const objectiveAnchors = new Set(objectiveMarkers.map((m) => m.anchorId))
   const labelled = new Set(c.labelledPois.map((p) => p.a.id))
 
   // Build candidates in priority order. We only label what MATTERS — the
@@ -617,33 +788,15 @@ function renderTags(layer: HTMLElement, c: TagCtx): void {
     })
   }
 
-  // 4) Named specials / key POIs (curated set; objective ones already covered).
-  for (const p of c.labelledPois) {
-    if (objectiveAnchors.has(p.a.id)) continue
-    cands.push({
-      text: c.anchorName(p.a.id),
-      sx: p.sx,
-      sy: p.sy,
-      dy: -10,
-      cls: "wp-map-tag",
-      prio: 60,
-    })
-  }
+  // #111 GOOGLE-MAPS DECLUTTER: only YOU + the active objective (+ source hints)
+  // stay LABELLED on the canvas. Named-POI pills + traveller-name pills are GONE —
+  // they overlapped into illegible mush. POI names are now TAP-TO-REVEAL via the
+  // pin popover (clean pins + one popover at a time). The markers themselves still
+  // draw for every POI/traveller; only the always-on text is removed.
   void labelled
-
-  // 5) Travellers — only the NAMED few; cap so a packed room doesn't drown the
-  // map in name pills (the markers themselves still show every traveller).
-  const TRAVELLER_LABEL_CAP = 5
-  for (const r of c.remotes.slice(0, TRAVELLER_LABEL_CAP)) {
-    cands.push({
-      text: r.name,
-      sx: r.sx,
-      sy: r.sy,
-      dy: -9,
-      cls: "wp-map-tag",
-      prio: 30,
-    })
-  }
+  void c.labelledPois
+  void c.remotes
+  void c.anchorName
 
   // Place high→low; drop lower-priority pills that collide with placed ones.
   cands.sort((a, b) => b.prio - a.prio)
