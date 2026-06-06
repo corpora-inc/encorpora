@@ -259,6 +259,13 @@ const PLAYER_AVOID = 8.0
 // never buried in a scrum of ambient townsfolk — you can always see + reach the
 // one you're meant to talk to. The stationed special itself is exempt.
 const OBJECTIVE_AVOID = 6.0
+// #116 — every STATIONED special NPC (boatman/keeper/café host/…), not just the
+// single active objective, keeps a small CLEARANCE bubble: a wandering townsperson
+// that drifts within this radius is softly steered out, so an ambient NPC never
+// jams against a talkable special (the owner saw a wanderer pinned to a special →
+// the Talk affordance overlapped/flickered). Smaller than OBJECTIVE_AVOID — this is
+// a gentle "don't crowd the person you talk to" nudge, not a big exclusion zone.
+const SPECIAL_CLEAR = 2.4
 // PERF: a wanderer farther than this from the player is disabled + skipped — no
 // draw, no steering, out of the O(N²) separation. Stationed specials, active
 // seekers, and the engaged NPC are exempt. ~matches the camera's useful depth so
@@ -869,6 +876,29 @@ export function createCrowd(
           a.tx = questKeepClear.x + ux * (OBJECTIVE_AVOID + 1.5)
           a.tz = questKeepClear.z + uz * (OBJECTIVE_AVOID + 1.5)
           a.state = "walk"
+        }
+      }
+
+      // ── #116 SPECIAL CLEARANCE: a wanderer that drifts within SPECIAL_CLEAR of
+      // ANY stationed special (not just the active objective) is steered out, so an
+      // ambient NPC never crowds a talkable special and the Talk affordance stays
+      // clean. The special itself (a.station != null) + the engaged NPC are exempt.
+      if (!a.station && a.handle.anchorId !== heldId) {
+        for (const slot of specialSlots) {
+          if (!slot.bound) continue
+          const sx = slot.agent.x
+          const sz = slot.agent.z
+          const ox = a.x - sx
+          const oz = a.z - sz
+          const od = Math.hypot(ox, oz)
+          if (od < SPECIAL_CLEAR) {
+            const ux = od > 1e-3 ? ox / od : 1
+            const uz = od > 1e-3 ? oz / od : 0
+            a.tx = sx + ux * (SPECIAL_CLEAR + 1.0)
+            a.tz = sz + uz * (SPECIAL_CLEAR + 1.0)
+            a.state = "walk"
+            break // one clearance push per frame is enough (gentle nudge)
+          }
         }
       }
 

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **NPC spacing: ambient townsfolk no longer crowd a talkable special, and a
+  special no longer lands on a door portal — so the Talk and Enter affordances stop
+  overlapping/flickering.** Three light nudges: (1) every STATIONED special keeps a
+  small clearance bubble (`SPECIAL_CLEAR` ~2.4u) — a wanderer that drifts in is
+  steered out (crowd.ts), not just around the single active objective; (2)
+  enterable-venue door anchors (café/shops) get a small keep-clear circle folded
+  into the crowd's `avoidCircles`, so a special stationed at the same anchor settles
+  a step BESIDE the door, not on it (game.ts); (3) the proximity focus picker is now
+  STICKY — `chooseFocus` keeps the current Talk target unless a rival is closer by a
+  hysteresis margin, so two near-equidistant NPCs don't swap the affordance every
+  frame (npcFocus.ts). Tests in `npcSpacing.test.ts`.
+
 ### Changed
 - **The scene SETTING is now modern "Corpan City", not colonial "Antigua-1770" —
   the last colonial thread.** Text/identity only: `setting.{place,era,mood}` +
