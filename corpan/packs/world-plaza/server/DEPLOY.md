@@ -24,7 +24,13 @@ trivial ECR storage. Scaling out (`max_size = 3`) only adds cost under load.
 ```bash
 # From the repo root. Set once:
 export AWS_REGION=us-east-2
-export AWS_PROFILE=corpan-publisher          # the profile with ECR + App Runner perms
+# The `terraform-admin` IAM user has ECR + App Runner perms; its access key
+# lives in `encorpora/.env` as AWS_ACCESS_KEY / AWS_SECRET_ACCESS_KEY. Export
+# them directly (NOT via AWS_PROFILE) so the SDK picks them up. The
+# `corpan-publisher` profile is S3/CloudFront only and CANNOT do this deploy.
+export AWS_ACCESS_KEY_ID="<from encorpora/.env AWS_ACCESS_KEY>"
+export AWS_SECRET_ACCESS_KEY="<from encorpora/.env AWS_SECRET_ACCESS_KEY>"
+unset AWS_PROFILE
 export ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 export ECR_REPO="${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/corpan-plaza-server"
 export IMAGE_TAG=$(git rev-parse --short HEAD)   # or "latest"

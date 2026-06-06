@@ -152,6 +152,24 @@ jobs:
             -x "languages/*/sources/*" \
             -x "languages/*/data/*"
 
+      - name: Install Corpan City (world-plaza) Dependencies
+        working-directory: corpan/packs/world-plaza
+        run: npm install --legacy-peer-deps
+
+      - name: Build Corpan City (world-plaza)
+        # VITE_WP_SERVER_URL is baked into the IIFE bundle so the shipped pack
+        # connects to the Colyseus presence server (AWS App Runner, us-east-2)
+        # without any host-side injection. To roll a new server, redeploy and
+        # update this URL in the same PR.
+        working-directory: corpan/packs/world-plaza
+        env:
+          VITE_WP_SERVER_URL: ${{ vars.WP_SERVER_URL || 'wss://hyj4frvdmr.us-east-2.awsapprunner.com' }}
+        run: npm run build
+
+      - name: Package Corpan City (world-plaza)
+        working-directory: corpan/packs/world-plaza
+        run: node scripts/pack.mjs
+
       - name: Install Pronunciation Coach Dependencies
         working-directory: corpan/packs/pronunciation-coach
         run: npm install --legacy-peer-deps
@@ -208,6 +226,13 @@ jobs:
           cp corpan/packs/world-radio/manifest.json "web/io/out/corpan/packs/world-radio/"
           cp -R corpan/packs/world-radio/dist "web/io/out/corpan/packs/world-radio/"
           cp corpan/packs/world-radio/world-radio.zip "web/io/out/corpan/packs/world-radio.zip"
+
+      - name: Copy Corpan City (world-plaza) into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/world-plaza"
+          cp corpan/packs/world-plaza/manifest.json "web/io/out/corpan/packs/world-plaza/"
+          cp -R corpan/packs/world-plaza/dist "web/io/out/corpan/packs/world-plaza/"
+          cp corpan/packs/world-plaza/world-plaza.zip "web/io/out/corpan/packs/world-plaza.zip"
 
       - name: Copy Pronunciation Coach into io/out
         run: |

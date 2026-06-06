@@ -26,9 +26,12 @@ WORKDIR /app
 # 1) Install ONLY the server's deps (incl. tsx, which we run with) at /app so
 #    every sibling tree resolves modules from /app/node_modules. `npm ci` needs
 #    package.json + lockfile only → this layer caches across src changes.
-#    --omit=dev is intentionally NOT used: tsx (the runtime) is a devDependency.
+#    --include=dev is REQUIRED: tsx (the runtime) is a devDependency, and the
+#    NODE_ENV=production set above would otherwise make npm omit it. Without
+#    this flag the container starts and dies with "Cannot find module
+#    '/app/node_modules/tsx/dist/cli.mjs'" — that crashloop bit the first deploy.
 COPY server/package.json server/package-lock.json ./
-RUN npm ci --no-audit --no-fund
+RUN npm ci --include=dev --no-audit --no-fund
 
 # 2) Copy the three trees the server needs at runtime.
 COPY server/tsconfig.json ./server/tsconfig.json

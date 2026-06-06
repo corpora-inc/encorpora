@@ -6,6 +6,8 @@
     "dev": "vite",
     "dev:watch": "vite build --watch",
     "build": "vite build",
+    "pack": "node scripts/pack.mjs",
+    "pack:all": "npm run build && node scripts/pack.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run",

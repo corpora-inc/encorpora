@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Corpan City ships in the public catalog with multiplayer ON by default.**
+  Added the world-plaza build → `scripts/pack.mjs` → `world-plaza.zip` → io/out
+  copy steps to `.github/workflows/hover-runner-pages.yml`, with
+  `VITE_WP_SERVER_URL` baked in at build time (the Colyseus presence server
+  deployed to AWS App Runner in us-east-2). The GH Pages build emits
+  `encorpora.io/corpan/packs/world-plaza.zip` and the existing `corpan_city`
+  entry in `web/data/packs.json` (minAppVersion 0.17.0) now appears in
+  `catalog.json`, so app 0.17.0+ installs and connects to the live server.
+
 ### Fixed
 - **NPC TTS voice now always matches the CURRENT target language — voice stickiness
   CLEARS on world entry / stack change.** An ES→EN learner heard the NPC's correct
