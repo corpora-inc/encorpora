@@ -102,6 +102,24 @@ interface RenderHandle {
  * `host`. Runs its own rAF loop (live actors) until disposed. Shared by both the
  * overlay modal and the menu section.
  */
+/**
+ * The Maps-app FILTER CHIPS (PHONE_DESIGN §6): each chip maps a friendly bucket to
+ * the underlying `PoiCategory` set. "all" is the no-op default. Order = the chip row
+ * order. Localized via `map.filter.*` (EN fallback in mapCore's dict + main strings).
+ */
+const FILTER_CHIPS: Array<{ id: string; labelKey: string; cats: PoiCategory[] | null }> = [
+  { id: "all", labelKey: "map.filter.all", cats: null },
+  { id: "shops", labelKey: "map.filter.shops", cats: ["vendor", "merchant", "store", "outfitter", "cafe"] },
+  { id: "transit", labelKey: "map.filter.transit", cats: ["taxi", "bus", "rail", "airport"] },
+  { id: "food", labelKey: "map.filter.food", cats: ["cafe", "vendor"] },
+  { id: "people", labelKey: "map.filter.people", cats: ["npc"] },
+  {
+    id: "landmarks",
+    labelKey: "map.filter.landmarks",
+    cats: ["fountain", "park", "stadium", "bridge", "docks", "gate", "hospital", "cityhall", "landmark"],
+  },
+]
+
 function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   ensureMapStyles()
   const accent = opts.accent ?? "#c46b4a"
@@ -111,12 +129,64 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   const reduced =
     typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches
 
+  // ── Maps-app FILTER STATE (search query + active category chip) ──────────────
+  let searchQuery = ""
+  let activeChip = "all"
+  /** A POI passes the filter when it matches the active chip AND the search query. */
+  const poiPasses = (cat: PoiCategory, a: Anchor): boolean => {
+    const chip = FILTER_CHIPS.find((c) => c.id === activeChip)
+    if (chip && chip.cats && !chip.cats.includes(cat)) return false
+    if (searchQuery) {
+      const hay = `${anchorName(a.id)} ${a.id} ${mt(`map.${cat}`)}`.toLowerCase()
+      if (!hay.includes(searchQuery)) return false
+    }
+    return true
+  }
+  const filterActive = (): boolean => activeChip !== "all" || searchQuery !== ""
+
   const wrap = document.createElement("div")
   wrap.className = "wp-map-content"
   wrap.style.display = "flex"
   wrap.style.flexDirection = "column"
   wrap.style.minHeight = "0"
   wrap.style.flex = "1 1 auto"
+
+  // ── SEARCH + CATEGORY CHIPS header (the real-Maps-app chrome) ────────────────
+  const tools = document.createElement("div")
+  tools.className = "wp-map-tools"
+  const searchWrap = document.createElement("div")
+  searchWrap.className = "wp-map-search"
+  searchWrap.innerHTML =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+    'stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
+  const search = document.createElement("input")
+  search.type = "search"
+  search.className = "wp-map-search-input"
+  search.placeholder = mt("map.search.placeholder")
+  search.setAttribute("aria-label", mt("map.search.placeholder"))
+  search.addEventListener("input", () => {
+    searchQuery = search.value.trim().toLowerCase()
+  })
+  searchWrap.appendChild(search)
+  const chipRow = document.createElement("div")
+  chipRow.className = "wp-map-chips"
+  const chipBtns = new Map<string, HTMLButtonElement>()
+  for (const chip of FILTER_CHIPS) {
+    const b = document.createElement("button")
+    b.type = "button"
+    b.className = "wp-map-chip"
+    b.dataset.chip = chip.id
+    b.textContent = mt(chip.labelKey)
+    if (chip.id === activeChip) b.setAttribute("aria-current", "true")
+    b.addEventListener("click", () => {
+      activeChip = chip.id
+      for (const [id, btn] of chipBtns) btn.toggleAttribute("aria-current", id === chip.id)
+    })
+    chipBtns.set(chip.id, b)
+    chipRow.appendChild(b)
+  }
+  tools.append(searchWrap, chipRow)
+  wrap.appendChild(tools)
 
   const stage = document.createElement("div")
   stage.className = "wp-map-stage"
@@ -131,6 +201,26 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
   tagLayer.style.inset = "0"
   tagLayer.style.pointerEvents = "none"
   stage.appendChild(tagLayer)
+
+  // ROUTE STRIP — "Route to {place} · ~{dist}" + a Go button that frames the
+  // player→objective leg. Hidden when there's no active objective. Sits above the
+  // legend so it reads as the app's primary "what now" affordance.
+  const routeStrip = document.createElement("div")
+  routeStrip.className = "wp-map-route"
+  routeStrip.hidden = true
+  const routeText = document.createElement("div")
+  routeText.className = "wp-map-route-text"
+  const routeGo = document.createElement("button")
+  routeGo.type = "button"
+  routeGo.className = "wp-map-route-go"
+  routeGo.textContent = mt("map.route.go")
+  routeStrip.append(routeText, routeGo)
+  wrap.appendChild(routeStrip)
+  // "Go": frame the player→objective leg (recenter between them, sensible zoom).
+  let routeGoPending = false
+  routeGo.addEventListener("click", () => {
+    routeGoPending = true
+  })
 
   const legend = buildLegend(opts.view, accent, mt)
   if (legend) wrap.appendChild(legend)
@@ -219,6 +309,25 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
     })
     return b
   }
+  /** Recenter on the player: pan to their live world pos at a comfortable zoom. */
+  const recenterOnPlayer = () => {
+    let pos
+    try {
+      pos = opts.view.getPlayerPos()
+    } catch {
+      pos = null
+    }
+    if (!pos) return
+    panX = pos.x
+    panZ = pos.z
+    zoom = Math.max(zoom, 2.2)
+    clampPan()
+  }
+  // ◎ recenter-on-me (top of the control stack), then +/− zoom.
+  const recenterBtn = mkBtn("◎", () => recenterOnPlayer())
+  recenterBtn.setAttribute("aria-label", mt("map.recenter"))
+  recenterBtn.title = mt("map.recenter")
+  zoomBox.appendChild(recenterBtn)
   zoomBox.appendChild(mkBtn("+", () => setZoom(zoom * 1.5)))
   zoomBox.appendChild(mkBtn("−", () => setZoom(zoom / 1.5)))
   stage.appendChild(zoomBox)
@@ -315,7 +424,9 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
       if (ctx) {
         const proj = projForFrame(cssW, cssH)
         drawBase(ctx, opts.view.topology, proj, cssW, cssH, true, opts.view.getMapGeometry?.())
-        drawPois(ctx, opts.view.topology, proj, true)
+        // Maps-app filter: when a chip/search narrows focus, non-matching POIs ghost.
+        const useFilter = filterActive()
+        drawPois(ctx, opts.view.topology, proj, true, useFilter ? poiPasses : undefined)
 
         if (!reduced) {
           const now = typeof performance !== "undefined" ? performance.now() : Date.now()
@@ -337,14 +448,51 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
         const obj = qmarkers.find((m) => m.kind === "objective")
         if (obj) drawWayfinding(ctx, player.sx, player.sy, obj.sx, obj.sy, cssW, cssH, true)
 
-        // Floated labels (rebuild each frame — cheap, dozens of nodes).
+        // ── ROUTE STRIP: "Route to {place} · ~{dist}" toward the active objective.
+        if (obj) {
+          let pPos
+          try {
+            pPos = opts.view.getPlayerPos()
+          } catch {
+            pPos = null
+          }
+          const objAnchor = opts.view.topology.anchors.find((a) => a.id === obj.anchorId)
+          if (pPos && objAnchor) {
+            const dx = objAnchor.x - pPos.x
+            const dz = objAnchor.z - pPos.z
+            const dist = Math.round(Math.hypot(dx, dz))
+            routeText.innerHTML =
+              `<span class="wp-map-route-to">${escapeHtml(mt("map.route", { place: anchorName(obj.anchorId) }))}</span>` +
+              `<span class="wp-map-route-dist">${escapeHtml(mt("map.route.distance", { dist }))}</span>`
+            routeStrip.hidden = false
+            // Consume a pending "Go": center between player + objective, sane zoom.
+            if (routeGoPending) {
+              routeGoPending = false
+              panX = (pPos.x + objAnchor.x) / 2
+              panZ = (pPos.z + objAnchor.z) / 2
+              const span = Math.max(40, Math.hypot(dx, dz))
+              zoom = Math.max(1.4, Math.min(ZOOM_MAX, (cityHalf / span) * 1.1))
+              clampPan()
+            }
+          } else {
+            routeStrip.hidden = true
+          }
+        } else {
+          routeStrip.hidden = true
+          routeGoPending = false
+        }
+
+        // Floated labels (rebuild each frame — cheap, dozens of nodes). Honor the
+        // filter so labels match the visible (un-ghosted) POIs.
         renderTags(tagLayer, {
           mt,
           accent,
-          labelledPois: labelledPois.map(({ a, cat }) => {
-            const s = proj.toScreen(a.x, a.z)
-            return { a, cat, sx: s.x, sy: s.y }
-          }),
+          labelledPois: labelledPois
+            .filter(({ a, cat }) => !useFilter || poiPasses(cat, a))
+            .map(({ a, cat }) => {
+              const s = proj.toScreen(a.x, a.z)
+              return { a, cat, sx: s.x, sy: s.y }
+            }),
           remotes,
           qmarkers,
           player,
@@ -584,6 +732,13 @@ function prettyAnchor(id: string): string {
     .replace(/[_-]+/g, " ")
     .replace(/\b\w/g, (ch) => ch.toUpperCase())
     .trim()
+}
+
+/** Minimal HTML escaper for the few innerHTML spots (route strip). */
+function escapeHtml(s: string): string {
+  return s.replace(/[&<>"']/g, (c) =>
+    c === "&" ? "&amp;" : c === "<" ? "&lt;" : c === ">" ? "&gt;" : c === '"' ? "&quot;" : "&#39;",
+  )
 }
 
 /* ============================================================ overlay modal */

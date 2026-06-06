@@ -68,6 +68,18 @@ const EN: Record<string, string> = {
   "map.solo": "You're the only traveller here.",
   "map.findItem": "Find {item}",
   "map.goHere": "Go here",
+  // Maps-app chrome (PHONE_DESIGN §6): search + category chips + recenter + route.
+  "map.search.placeholder": "Search the city…",
+  "map.filter.all": "All",
+  "map.filter.shops": "Shops",
+  "map.filter.transit": "Transit",
+  "map.filter.food": "Food",
+  "map.filter.people": "People",
+  "map.filter.landmarks": "Landmarks",
+  "map.recenter": "Recenter on me",
+  "map.route": "Route to {place}",
+  "map.route.distance": "~{dist} m",
+  "map.route.go": "Go",
 }
 
 export type MapT = (key: string, params?: Record<string, string | number>) => string
