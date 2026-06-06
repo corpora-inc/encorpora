@@ -37,7 +37,7 @@ const EN: Record<string, string> = {
   "map.vendor": "Market",
   "map.merchant": "Money-changer",
   "map.npc": "Townsfolk",
-  "map.docks": "Docks",
+  "map.docks": "Harbor",
   "map.gate": "City gate",
   "map.fountain": "Fountain",
   "map.portal": "Doorway",
@@ -45,6 +45,23 @@ const EN: Record<string, string> = {
   "map.landmark": "Landmark",
   "map.spawn": "Start",
   "map.decor": "Dressing",
+  // Transit (#72 — the airport/rail/bus/taxi the owner couldn't find).
+  "map.airport": "Airport",
+  "map.rail": "Train station",
+  "map.bus": "Bus terminal",
+  "map.taxi": "Taxi rank",
+  // Shops + café.
+  "map.cafe": "Café",
+  "map.outfitter": "Outfitter",
+  "map.store": "General store",
+  // Civic + landmarks.
+  "map.hospital": "Hospital",
+  "map.cityhall": "Exchange",
+  "map.park": "Central green",
+  "map.stadium": "Stadium",
+  "map.bridge": "Bridge",
+  "map.transit": "Transit",
+  "map.shops": "Shops",
   "map.close": "Close",
   "map.open": "Open map",
   "map.empty": "Nothing marked here yet.",
@@ -93,9 +110,67 @@ export type PoiCategory =
   | "landmark"
   | "spawn"
   | "decor"
+  // ── #72 contract venues the map MUST surface (the owner: "none of those are on
+  // the map so I don't know where to go"). The city generator emits these as
+  // generic `portal`/`spawn`/`landmark` kinds, so we classify them by their
+  // FROZEN ANCHOR-CONTRACT id (the world guarantees the ids) → a distinct icon.
+  | "airport"
+  | "rail"
+  | "bus"
+  | "taxi"
+  | "cafe"
+  | "outfitter"
+  | "store"
+  | "hospital"
+  | "cityhall"
+  | "park"
+  | "stadium"
+  | "bridge"
 
-/** Resolve an anchor to its schematic category (kind-first, role fallback). */
+/**
+ * The FROZEN ANCHOR-CONTRACT venue ids → their map category. Keyed by id because
+ * the city generator collapses transit/shops/civic into coarse `portal`/`spawn`/
+ * `landmark` kinds (so they'd vanish from the map). The WORLD agent guarantees
+ * these ids exist; classifying by id is the reliable way to plot every venue
+ * with a legible, distinct icon — and to answer the owner's "are they in another
+ * district?" (they show wherever the world places them).
+ */
+const VENUE_BY_ID: Record<string, PoiCategory> = {
+  // transit
+  airport: "airport",
+  rail_station: "rail",
+  bus_station: "bus",
+  station: "taxi", // the central "station" anchor is the taxi rank
+  // shops + café (cafe/outfitter sit on generic anchors; classify by id)
+  cafe: "cafe",
+  outfitter: "outfitter",
+  general_store: "store",
+  general: "store",
+  // civic
+  hospital: "hospital",
+  exchange: "cityhall",
+  city_hall: "cityhall",
+  cityhall: "cityhall",
+  // landmarks
+  market: "vendor",
+  harbor: "docks",
+  fountain: "fountain",
+  plaza: "fountain", // the grand plaza reads as a civic centre dot, not a bare start tick
+  central_green: "park",
+  "central-green": "park",
+  stadium: "stadium",
+  bridge: "bridge",
+  bridge_n: "bridge",
+  bridge_s: "bridge",
+}
+
+/** Resolve an anchor to its schematic category (id-first, then kind, then role). */
 export function categoryOf(a: Anchor): PoiCategory {
+  // #72: the contract-venue id wins — a `portal`/`spawn`/`landmark` anchor whose
+  // id is a known venue gets that venue's distinct icon, so the airport/rail/bus/
+  // taxi/café/shops/park/stadium are never lost to a generic faint tick.
+  const byId = VENUE_BY_ID[a.id]
+  if (byId) return byId
   switch (a.kind) {
     case "vendor":
       return "vendor"
@@ -147,6 +222,19 @@ export const SIGNIFICANT: ReadonlySet<PoiCategory> = new Set<PoiCategory>([
   "gate",
   "fountain",
   "landmark",
+  // #72 contract venues — every one gets a plotted marker so the city is findable.
+  "airport",
+  "rail",
+  "bus",
+  "taxi",
+  "cafe",
+  "outfitter",
+  "store",
+  "hospital",
+  "cityhall",
+  "park",
+  "stadium",
+  "bridge",
 ])
 
 /** Warm-Antigua paper palette (matches the menu / tracker brand). */
@@ -189,6 +277,19 @@ export type MarkerType =
   | "gate" // city gate
   | "fountain" // plaza centrepiece
   | "landmark" // signature POI
+  // ── #72 contract venues — each a distinct, legible icon.
+  | "airport" // air travel
+  | "rail" // train station
+  | "bus" // bus terminal
+  | "taxi" // taxi rank (the central "station")
+  | "cafe" // café
+  | "outfitter" // outfitter / tailor
+  | "store" // general store
+  | "hospital" // hospital (civic)
+  | "cityhall" // exchange / city hall (civic)
+  | "park" // central green
+  | "stadium" // stadium
+  | "bridge" // bridge crossing
 
 /** Distinct geometric form per marker type (shape carries meaning, not just hue). */
 export type MarkerShape =
@@ -240,6 +341,27 @@ export const MARKER_STYLES: Record<MarkerType, MarkerStyle> = {
   fountain: { color: "#1098ad", shape: "circle", glyph: "≈", labelKey: "map.fountain" },
   // LANDMARK — signature POI. Magenta DIAMOND.
   landmark: { color: "#c2255c", shape: "diamond", glyph: "✦", labelKey: "map.landmark" },
+
+  // ── #72 TRANSIT — the cluster the owner couldn't find. A cool blue family,
+  // told apart by SHAPE + a clear mode glyph (plane / train / coach / taxi).
+  airport: { color: "#1c7ed6", shape: "triangle", glyph: "✈", labelKey: "map.airport" },
+  rail: { color: "#4263eb", shape: "square", glyph: "≣", labelKey: "map.rail" },
+  bus: { color: "#1971c2", shape: "square", glyph: "▥", labelKey: "map.bus" },
+  taxi: { color: "#f59f00", shape: "diamond", glyph: "T", labelKey: "map.taxi" },
+
+  // ── SHOPS + CAFÉ — warm earthy family, distinct glyphs.
+  cafe: { color: "#9c6644", shape: "circle", glyph: "☕", labelKey: "map.cafe" },
+  outfitter: { color: "#7048e8", shape: "square", glyph: "✂", labelKey: "map.outfitter" },
+  store: { color: "#5c940d", shape: "square", glyph: "▦", labelKey: "map.store" },
+
+  // ── CIVIC — hospital (red cross) + exchange/city hall (indigo pin).
+  hospital: { color: "#e03131", shape: "pin", glyph: "✚", labelKey: "map.hospital" },
+  cityhall: { color: "#3b5bdb", shape: "pin", glyph: "§", labelKey: "map.cityhall" },
+
+  // ── GREEN LANDMARKS — park (leafy circle), stadium (ring), bridge (span).
+  park: { color: "#2f9e44", shape: "circle", glyph: "♣", labelKey: "map.park" },
+  stadium: { color: "#1864ab", shape: "circle", glyph: "◎", labelKey: "map.stadium" },
+  bridge: { color: "#7c6f5a", shape: "triangle", glyph: "⌒", labelKey: "map.bridge" },
 }
 
 /** A POI category's marker style (the schematic POI categories are a subset). */
@@ -259,6 +381,31 @@ export function markerStyleForCat(cat: PoiCategory): MarkerStyle {
       return MARKER_STYLES.fountain
     case "landmark":
       return MARKER_STYLES.landmark
+    // #72 contract venues.
+    case "airport":
+      return MARKER_STYLES.airport
+    case "rail":
+      return MARKER_STYLES.rail
+    case "bus":
+      return MARKER_STYLES.bus
+    case "taxi":
+      return MARKER_STYLES.taxi
+    case "cafe":
+      return MARKER_STYLES.cafe
+    case "outfitter":
+      return MARKER_STYLES.outfitter
+    case "store":
+      return MARKER_STYLES.store
+    case "hospital":
+      return MARKER_STYLES.hospital
+    case "cityhall":
+      return MARKER_STYLES.cityhall
+    case "park":
+      return MARKER_STYLES.park
+    case "stadium":
+      return MARKER_STYLES.stadium
+    case "bridge":
+      return MARKER_STYLES.bridge
     default:
       // portal/bench/spawn/decor are faint ticks, not categorical markers.
       return { color: "#9a7a4a", shape: "circle", labelKey: "map.decor" }

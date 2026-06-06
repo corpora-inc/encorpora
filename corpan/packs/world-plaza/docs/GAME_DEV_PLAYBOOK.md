@@ -330,12 +330,22 @@ stalls/awnings, the bridge, and walls, so the camera buried in a market roof and
 the player vanished. **Rule: occluders are a DENY-list, not an allow-list** —
 `src/world/cameraOcclusion.ts :: isCameraOccluder` treats every solid, visible,
 real-volume mesh as an occluder and exempts only ground/water/character-billboards/
-sky/HUD-overlays (by prefix) + sub-0.25u-tall ground stamps. New world geometry is
-covered automatically. The boom (eye pull-in, `engine.ts`) AND the fade
-(`cameraFade.ts`) both use it; the fade detects occlusion by RAY (camera→player
-hit before the head) or camera-inside-AABB — never by a tag.
+sky/HUD-overlays (by prefix) + ground stamps shorter than `MIN_OCCLUDER_HEIGHT`
+(0.12u). New world geometry is covered automatically. The boom (eye pull-in,
+`engine.ts`) AND the fade (`cameraFade.ts`) both use it; the fade detects occlusion
+by RAY (camera→player hit before the head) or camera-inside-AABB — never by a tag.
 
-TWO traps that cost time here:
+THREE traps that cost time here:
+- **The occluder predicate and the FADE-eligibility predicate must share the
+  height floor (#87).** `isCameraOccluder` and `isFadeEligible` are TWO functions
+  with the same "is this real solid geometry?" height gate. The streamed city
+  collapses every flat roof to a 0.2u CAP; the occluder gate was lowered 0.25→0.12
+  to catch it, but the FADE gate was left at 0.25 — so caps were occluders (blocked
+  the player) yet NOT fade-eligible (couldn't dissolve), and roofs the camera
+  looked over hid the player and never went transparent. Both now key off ONE
+  `MIN_OCCLUDER_HEIGHT` constant. RULE: when two predicates encode the same
+  physical fact, make them share the constant or they WILL drift. (Pure predicate
+  fix — touches neither the merge nor draw counts.)
 - **Thin-instanced props carry ONE union AABB over every instance.** A market
   stall is `wp-city-prop-stall-…` thin-instanced — its bounding box spans the
   whole chunk, mostly air. A boom ray-test against that union sees a giant phantom

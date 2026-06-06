@@ -44,6 +44,7 @@ import {
   drawRemotes,
   drawPlayer,
   drawMarker,
+  drawWayfinding,
   type PlottedRemote,
   type PlottedQuestMarker,
 } from "./schematic"
@@ -61,15 +62,34 @@ export interface FullMapOptions {
   itemName?: (itemId: string) => string
 }
 
-/** legend categories shown (in this order) when present in the topology. */
+/**
+ * Legend categories shown (in this order) when present in the topology. Grouped
+ * so the key reads as a city directory: landmarks/civic first, then the transit
+ * cluster (#72 — what the owner couldn't find), then shops + café.
+ */
 const LEGEND_ORDER: PoiCategory[] = [
+  // landmarks + civic
+  "fountain",
+  "park",
+  "stadium",
+  "bridge",
+  "docks",
+  "gate",
+  "hospital",
+  "cityhall",
+  "landmark",
+  // commerce
   "vendor",
   "merchant",
   "npc",
-  "docks",
-  "gate",
-  "fountain",
-  "landmark",
+  "cafe",
+  "outfitter",
+  "store",
+  // transit
+  "taxi",
+  "bus",
+  "rail",
+  "airport",
 ]
 interface RenderHandle {
   /** root element rendered into the host body. */
@@ -311,6 +331,11 @@ function renderFullMap(host: HTMLElement, opts: FullMapOptions): RenderHandle {
         })
         const remotes = drawRemotes(ctx, opts.view, proj, true)
         const player = drawPlayer(ctx, opts.view, proj, true, accent)
+
+        // #72 wayfinding: a "go here" cue from the player toward the active
+        // objective (dashed leader, or an edge arrow when it's off-screen).
+        const obj = qmarkers.find((m) => m.kind === "objective")
+        if (obj) drawWayfinding(ctx, player.sx, player.sy, obj.sx, obj.sy, cssW, cssH, true)
 
         // Floated labels (rebuild each frame — cheap, dozens of nodes).
         renderTags(tagLayer, {

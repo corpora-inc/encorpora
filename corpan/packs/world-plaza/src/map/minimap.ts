@@ -30,7 +30,7 @@ import {
  *  radius keeps you centred with your immediate neighbourhood + nearby landmarks
  *  in view, scrolling as you walk (so you never run off the edge of the map). */
 const MINIMAP_HALF_SPAN = 120
-import { drawBase, drawPois, drawQuestMarkers, drawRemotes, drawPlayer } from "./schematic"
+import { drawBase, drawPois, drawQuestMarkers, drawRemotes, drawPlayer, drawWayfinding } from "./schematic"
 
 const LOG = "[wp/minimap]"
 
@@ -140,14 +140,19 @@ export function mountMinimap(parent: HTMLElement, opts: MinimapOptions): Minimap
         lastT = now
         phase = (phase + dt / 1.6) % 1 // ~1.6s loop
       }
-      drawQuestMarkers(ctx, opts.view, proj, false, {
+      const qmarkers = drawQuestMarkers(ctx, opts.view, proj, false, {
         accent,
         detail: false,
         pulse: !reduced,
         pulsePhase: phase,
       })
       drawRemotes(ctx, opts.view, proj, false)
-      drawPlayer(ctx, opts.view, proj, false, accent)
+      const player = drawPlayer(ctx, opts.view, proj, false, accent)
+
+      // #72 wayfinding: on the player-following minimap the objective is usually
+      // OFF-screen, so an edge arrow toward it is the key "which way do I walk?".
+      const obj = qmarkers.find((m) => m.kind === "objective")
+      if (obj) drawWayfinding(ctx, player.sx, player.sy, obj.sx, obj.sy, cssW, cssH, false)
     } catch (err) {
       console.error(`${LOG} tick draw failed:`, err)
     }

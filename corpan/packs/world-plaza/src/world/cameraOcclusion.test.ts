@@ -180,6 +180,43 @@ describe("createCameraFade — dissolves whatever blocks the shot (#59 failing s
     expect(house.visibility).toBeLessThan(0.25)
   })
 
+  it("fades a flat-cap building ROOF the camera looks DOWN over (#87 regression)", () => {
+    // The streamed city collapses every flat roof to a 0.2u CAP. A high follow-cam
+    // looking down at the player sees the roof CAP between eye and head when the
+    // player stands beside/under the eave. The cap MUST fade — it's the literal
+    // "roof occludes the player and won't go transparent" report.
+    // body (full height) + its flat cap on top at y≈12.
+    const body = MeshBuilder.CreateBox("wp-building-7", { width: 14, height: 12, depth: 12 }, scene)
+    body.position.set(0, 6, 6)
+    const cap = MeshBuilder.CreateBox("wp-r-cap-7", { width: 15, height: 0.2, depth: 13 }, scene)
+    cap.position.set(0, 12.1, 6)
+    // camera high + behind, looking down at the player on the ground → the line of
+    // sight grazes the roof cap.
+    const cam = new FreeCamera("cam", new Vector3(0, 16, 16), scene)
+    cam.setTarget(new Vector3(0, 1.6, 0))
+    const fade = createCameraFade(scene, cam, () => ({ x: 0, z: 0 }))
+    settle(fade)
+    expect(cap.visibility, "the roof cap between camera and player must fade").toBeLessThan(0.25)
+    fade.dispose()
+  })
+
+  it("fades the MERGED chunk roof when it sits over the player (#87 streamed path)", () => {
+    // The streamed city merges every flat roof cap into ONE chunk-spanning mesh
+    // `wp-r-merged-<key>` (perf: ~1 roof draw/chunk). Build that shape — a wide,
+    // 0.2u-thin combined cap covering a row of shopfronts — and prove the merged
+    // roof fades when the player stands under it with the camera looking over it.
+    const mergedRoof = MeshBuilder.CreateBox("wp-r-merged-0,0", { width: 40, height: 0.2, depth: 12 }, scene)
+    mergedRoof.position.set(0, 6.1, 0) // a low row of 1-storey shops, caps at y≈6
+    // player tucked UNDER the eave (z=-3), follow-cam high + behind (z=16) → the
+    // camera→head sightline passes DOWN through the roof cap before reaching the head.
+    const cam = new FreeCamera("cam", new Vector3(0, 12, 16), scene)
+    cam.setTarget(new Vector3(0, 1.6, -3))
+    const fade = createCameraFade(scene, cam, () => ({ x: 0, z: -3 }))
+    settle(fade)
+    expect(mergedRoof.visibility, "merged chunk roof over the player must fade").toBeLessThan(0.25)
+    fade.dispose()
+  })
+
   it("leaves a clear shot SOLID — nothing fades when the path is open", () => {
     // a building well off to the side, not between camera and player.
     const offside = MeshBuilder.CreateBox("wp-building-3", { width: 6, height: 12, depth: 6 }, scene)

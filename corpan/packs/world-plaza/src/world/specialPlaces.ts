@@ -183,13 +183,20 @@ export function buildSpecialPlaces(scene: BabylonScene, opts: SpecialPlacesOptio
 
   /* ---- a BUNTING garland: two poles + a swag of triangular pennants strung
    * between them. The pennants alternate two festive colours. One merged mesh
-   * (poles + cloth). Spans ~5u; placed in a ring/run around the market. ------ */
+   * (poles + cloth). Spans ~5u; placed in a ring/run around the market.
+   *
+   * The line is hung HIGH (poles ~4.2u; the lowest sagging pennant tip clears
+   * ~3.1u) so the player — a 2.6u paper-person — walks cleanly UNDERNEATH the
+   * festival flags instead of clipping THROUGH them at head height (the owner's
+   * "walk straight through strung party-flags" glitch, #82). No cloth physics:
+   * raising the line is the perf-zero fix (zero extra draw calls / per-frame cost
+   * — these stay frozen thin-instances). ------------------------------------- */
   const buildBunting = (): Mesh => {
     const wood = propMat(scene, pal.woodDk, { emissive: 0.24 })
     const cA = propMat(scene, pal.canvasA, { emissive: 0.4 })
     const cB = propMat(scene, pal.bloomCols[0], { emissive: 0.4 })
     const span = 5.0
-    const poleH = 2.6
+    const poleH = 4.2 // tall festival poles → the flag line hangs above head height
     const parts: Array<{ m: Mesh; mat: StandardMaterial }> = []
     for (const sx of [-1, 1]) {
       const pole = MeshBuilder.CreateCylinder(`${tag}-bp`, { diameter: 0.14, height: poleH, tessellation: 6 }, scene)

@@ -27,6 +27,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   them (previously several of these had no on-map home).
 
 ### Fixed
+- **Building roofs no longer hide your character.** When the camera looked down
+  over a rooftop, the roof stayed solid and the player vanished beneath it. Roofs
+  (the flat caps the streamed city uses) are now treated like every other
+  occluder and smoothly fade out whenever they sit between the camera and your
+  character — no draw-call cost (purely a visibility fix; the world geometry is
+  unchanged).
+- **NPC dialogue no longer contains emoji.** The on-device model sometimes
+  sprinkled emoji into a line ("…frutas frescas! 🍓"), breaking the grounded tone
+  and handing a pictograph to TTS. All generated NPC prose is now run through one
+  emoji/pictograph stripper before it's shown, spoken, or saved, so the dialogue
+  bubble, the spoken text, and the history are all clean. Real scripts (CJK,
+  Arabic, Devanagari, accented Latin), currency, digits, and punctuation are
+  untouched.
 - **Wardrobe: one clear "None" per category + a premium feel.** The Hat and
   Accessory rows showed a duplicate empty option ("None" *and* "No Hat"); each
   category now offers a single "None". The whole sheet was elevated — a gilt-

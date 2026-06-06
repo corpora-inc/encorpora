@@ -35,6 +35,7 @@ import {
   type GameOffer,
   type QuestFacts,
 } from "./promptProgram"
+import { sanitizeNpcText } from "./sanitizeNpcText"
 import { resolveSegueForSeed } from "./challengeSegues"
 import { createNpcVoiceResolver, type NpcVoiceResolver } from "./npcVoice"
 import { createDialogueUI, type DialogueUIHandle } from "./dialogueUI"
@@ -665,7 +666,13 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
               {
                 onToken: (tk) => {
                   accumulated += tk
-                  const { prose, toolStarted } = splitToolBlock(accumulated)
+                  const split = splitToolBlock(accumulated)
+                  // #79: strip any emoji/pictographs the model emitted BEFORE we
+                  // reveal/speak/store the prose. Sanitize the FULL prose (not the
+                  // delta) so a multi-codepoint emoji split across tokens is caught
+                  // once whole; `proseShown` is the already-sanitized prefix.
+                  const prose = sanitizeNpcText(split.prose)
+                  const toolStarted = split.toolStarted
                   // Only reveal NEW prose, and stop revealing once the tool
                   // block opener appears (we never show/speak control JSON).
                   // First real content → the stream is alive; cancel the watchdog
@@ -719,7 +726,9 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
     /** Split final stream text → prose (bubble + TTS + history) + intent (fire). */
     function finalizeTurn(full: string): void {
       const split = splitToolBlock(full)
-      const prose = split.prose.trim()
+      // #79: strip emoji/pictographs before the FINAL prose is shown, spoken, AND
+      // pushed to history. (.trim() after, since the splitter's prose isn't trimmed.)
+      const prose = sanitizeNpcText(split.prose).trim()
       ui.endNpcTurn(prose)
       if (prose) {
         history.push({ role: "assistant", content: prose })

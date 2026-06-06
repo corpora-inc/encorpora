@@ -539,6 +539,11 @@
   min-height: 0;
   margin-top: 16px;
   overflow-y: auto;
+  /* CLAMP X: `overflow-y:auto` with the X axis left `visible` makes the browser
+   * compute X as `auto` too — so any child a hair wider than the body (a grid
+   * cell, a filter-pill row, a wide currency line) let the panel scroll sideways
+   * and clipped the WALLET/YOUR THINGS/BADGES left edges. Pin X hidden. */
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
 /* Scroll-edge fades (FAB_POLISH §4.2): pure-CSS sticky pseudo-bands at the top +

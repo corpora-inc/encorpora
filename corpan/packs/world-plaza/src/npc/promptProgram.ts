@@ -374,7 +374,7 @@ export function composeSystemPrompt(args: ComposeArgs): string {
     "You are a real, warm local — chat naturally and stay in character. Say " +
     "something NEW every turn (never repeat your last line or drill the same phrase; " +
     'never literally say "repeat after me"). Weave a useful word or two into real ' +
-    "talk. Keep it coherent and don't ramble."
+    "talk. Keep it coherent and don't ramble. Write plain words only — no emoji or decorative symbols."
 
   return [
     filled,

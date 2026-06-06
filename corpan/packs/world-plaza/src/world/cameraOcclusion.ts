@@ -19,6 +19,17 @@ import type { Mesh } from "@babylonjs/core/Meshes/mesh"
  * AND future) is an occluder. New solid geometry is covered automatically.
  */
 
+/**
+ * The slimmest SOLID occluder we must still treat as real geometry: the streamed
+ * city collapses every flat roof to a 0.2u CAP (`buildings.ts`). Anything shorter
+ * than this is a flat ground decal / road-paint stamp the camera looks across.
+ * BOTH the occluder predicate AND the fade-eligibility predicate key off this one
+ * value — they drifted apart once (occluder lowered to catch the cap, fade left at
+ * 0.25), which silently stranded the 0.2u caps un-fadeable so roofs the camera
+ * looked over never went transparent (#87). Keep them ON THE SAME constant.
+ */
+const MIN_OCCLUDER_HEIGHT = 0.12
+
 /** name prefixes that must NEVER count as camera occluders. */
 const NON_OCCLUDER_PREFIXES = [
   // flat ground + water surfaces — the camera looks across them, never into them.
@@ -69,9 +80,9 @@ export function isCameraOccluder(mesh: AbstractMesh): boolean {
     const dy = bb.maximumWorld.y - bb.minimumWorld.y
     // Real ground decals/road paint are ~0u tall; the slimmest SOLID occluder is
     // the simplified building roof cap (0.2u) — it MUST count, or roofs never fade
-    // when the camera sits behind/inside them. 0.12 guards decals without dropping
-    // the cap. (Was 0.25, which silently excluded the new flat caps.)
-    if (dy < 0.12) return false
+    // when the camera sits behind/inside them. `MIN_OCCLUDER_HEIGHT` guards decals
+    // without dropping the cap.
+    if (dy < MIN_OCCLUDER_HEIGHT) return false
   }
   return true
 }
@@ -121,7 +132,11 @@ export function isFadeEligible(mesh: AbstractMesh): boolean {
   const bb = mesh.getBoundingInfo?.()?.boundingBox
   if (bb) {
     const dy = bb.maximumWorld.y - bb.minimumWorld.y
-    if (dy < 0.25) return false
+    // SAME floor as `isCameraOccluder` (#87): the 0.2u flat roof cap MUST be
+    // fadeable, or a roof the camera looks over never goes transparent and the
+    // player stays hidden under it. (Was 0.25 — that stale gate WAS the regression:
+    // the merge collapses roofs to 0.2u caps that 0.25 silently excluded.)
+    if (dy < MIN_OCCLUDER_HEIGHT) return false
   }
   const tc = (mesh as Mesh).thinInstanceCount
   if (typeof tc === "number" && tc > 0) return false

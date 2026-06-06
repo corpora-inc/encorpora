@@ -363,6 +363,91 @@ export function drawQuestMarkers(
   return out
 }
 
+/**
+ * WAYFINDING (#72): a subtle "go here" cue from the player toward the active
+ * objective so the owner knows which way to WALK. Two parts:
+ *   - a dashed leader from the player toward the objective (when both are in view);
+ *   - an EDGE ARROW pinned at the viewport rim pointing toward the objective when
+ *     it's off-screen (the common case on the player-following minimap, and when
+ *     zoomed in on the full map). This is what answers "where do I go?".
+ * Drawn UNDER the player/objective markers (call before drawPlayer). Cheap: a few
+ * line segments + one triangle, no allocations.
+ */
+export function drawWayfinding(
+  ctx: CanvasRenderingContext2D,
+  playerSx: number,
+  playerSy: number,
+  objSx: number,
+  objSy: number,
+  cssW: number,
+  cssH: number,
+  detail: boolean,
+): void {
+  const objColor = MARKER_STYLES.objective.color
+  const dx = objSx - playerSx
+  const dy = objSy - playerSy
+  const dist = Math.hypot(dx, dy)
+  if (dist < (detail ? 26 : 16)) return // already on top of it — no cue needed
+  const ux = dx / dist
+  const uy = dy / dist
+
+  const margin = detail ? 16 : 10
+  const objOnScreen =
+    objSx >= margin && objSx <= cssW - margin && objSy >= margin && objSy <= cssH - margin
+
+  ctx.save()
+  if (objOnScreen) {
+    // A dashed amber leader from just outside the player dot toward the objective,
+    // stopping short of the star so it doesn't crowd it.
+    const startGap = detail ? 12 : 7
+    const endGap = detail ? 16 : 9
+    ctx.strokeStyle = objColor
+    ctx.globalAlpha = 0.42
+    ctx.lineWidth = detail ? 2 : 1.4
+    ctx.lineCap = "round"
+    ctx.setLineDash(detail ? [6, 6] : [4, 4])
+    ctx.beginPath()
+    ctx.moveTo(playerSx + ux * startGap, playerSy + uy * startGap)
+    ctx.lineTo(objSx - ux * endGap, objSy - uy * endGap)
+    ctx.stroke()
+    ctx.setLineDash([])
+  } else {
+    // Objective is off the rendered window: pin a "go here" arrow at the viewport
+    // edge in its direction, so you can steer toward it even when it's not drawn.
+    const cx = cssW / 2
+    const cy = cssH / 2
+    // intersect the ray (from centre, dir u) with the inset rectangle.
+    const rx = cssW / 2 - margin
+    const ry = cssH / 2 - margin
+    const tx = ux !== 0 ? rx / Math.abs(ux) : Infinity
+    const ty = uy !== 0 ? ry / Math.abs(uy) : Infinity
+    const tEdge = Math.min(tx, ty)
+    const ex = cx + ux * tEdge
+    const ey = cy + uy * tEdge
+    const ang = Math.atan2(uy, ux)
+    const size = detail ? 11 : 7
+    if (detail) {
+      ctx.shadowColor = "rgba(40,28,12,0.3)"
+      ctx.shadowBlur = 3
+      ctx.shadowOffsetY = 1
+    }
+    ctx.translate(ex, ey)
+    ctx.rotate(ang)
+    ctx.fillStyle = objColor
+    ctx.strokeStyle = "rgba(255,255,255,0.95)"
+    ctx.lineJoin = "round"
+    ctx.lineWidth = detail ? 2 : 1.4
+    ctx.beginPath()
+    ctx.moveTo(size, 0)
+    ctx.lineTo(-size * 0.7, size * 0.82)
+    ctx.lineTo(-size * 0.7, -size * 0.82)
+    ctx.closePath()
+    ctx.fill()
+    ctx.stroke()
+  }
+  ctx.restore()
+}
+
 /** Remote players (soft dots). Returns plotted remotes (for labels on full map). */
 export interface PlottedRemote {
   sx: number

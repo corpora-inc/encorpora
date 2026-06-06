@@ -28,6 +28,21 @@ const typedAnchors: RoomTopology["anchors"] = [
   { id: "west_gate", role: "portal", kind: "city_gate", x: -42, z: 40, facing: 0 },
   { id: "grand_fountain", role: "decor", kind: "fountain", x: 0, z: 0, facing: 0 },
   { id: "clock_tower", role: "decor", kind: "landmark", x: 22, z: 30, facing: 0 },
+  // #72 — the FROZEN ANCHOR-CONTRACT venues, classified by id (these arrive from
+  // generateCity as generic portal/spawn/landmark kinds). Spread out so the new
+  // transit / shop / civic / park / stadium icons + the legend are all exercised.
+  { id: "airport", role: "portal", kind: "portal", x: -46, z: -40, facing: 0 },
+  { id: "rail_station", role: "portal", kind: "portal", x: 44, z: -42, facing: 0 },
+  { id: "bus_station", role: "portal", kind: "portal", x: 46, z: 40, facing: 0 },
+  { id: "station", role: "portal", kind: "portal", x: -44, z: 44, facing: 0 },
+  { id: "cafe", role: "decor", x: 12, z: 8, facing: 0 },
+  { id: "outfitter", role: "decor", x: -16, z: -8, facing: 0 },
+  { id: "general_store", role: "decor", x: 16, z: -16, facing: 0 },
+  { id: "hospital", role: "decor", kind: "landmark", x: -28, z: -24, facing: 0 },
+  { id: "exchange", role: "decor", x: 28, z: 18, facing: 0 },
+  { id: "central_green", role: "decor", x: -8, z: 20, facing: 0 },
+  { id: "stadium", role: "decor", x: 34, z: -6, facing: 0 },
+  { id: "bridge_n", role: "decor", kind: "landmark", x: 0, z: 44, facing: 0 },
 ]
 
 const topology: RoomTopology = { ...base, anchors: [...base.anchors, ...typedAnchors] }

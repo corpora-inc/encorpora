@@ -623,6 +623,135 @@ export function generateCity(seed = 20260603): CityLayout {
   const bridgeX = 0
   allAnchors.push({ id: "bridge_n", kind: "landmark", x: bridgeX, z: zoneField.bankZ, facing: 0, label: "North Bridge" })
   allAnchors.push({ id: "bridge_s", kind: "landmark", x: bridgeX, z: zoneField.farPromZ, facing: Math.PI, label: "Far Bank" })
+  // The ANCHOR CONTRACT (#14 enterable buildings + map/quest binding) also expects a
+  // bare `bridge` id — alias it to the near approach so quests/portals that target
+  // `bridge` resolve without caring which end. Pure data (no extra geometry).
+  allAnchors.push({ id: "bridge", kind: "landmark", x: bridgeX, z: zoneField.bankZ, facing: 0, label: "The Bridge" })
+
+  // ---- VENUE ANCHORS (#14): the enterable HEROES the world agent guarantees as
+  // placed, named anchors so quests + the map + the door portals can bind to EXACT
+  // ids (city.getAnchor): the café, the three shops, plus the contract's civic
+  // heroes (central green / stadium / exchange). Each snaps to the nearest UNCLAIMED
+  // block centre, drops a small hero facade there (so there's a real building to
+  // walk INTO), claims the block (generic infill skips it), and pushes a named
+  // anchor at the door. ZERO streaming/draw-call cost beyond the few facade boxes
+  // (which thin-instance into the chunk mesh like any building) — the INTERIORS are
+  // overlay vignettes (perf-zero), not 3D rooms. A venue whose target lands in the
+  // river band or off-island is simply skipped (graceful on any layout).
+  const venueCenters = centers // reuse the block grid computed for landmarks
+  const placeVenue = (
+    id: string,
+    fx: number,
+    fz: number,
+    label: string,
+    build: (cx: number, cz: number) => { buildings: CityBuilding[]; props: CityProp[]; doorZ: number } | null,
+  ): void => {
+    const tx = fx * islandHalf
+    const tz = fz * islandHalf
+    // nearest UNCLAIMED block centre that sits fully inland of the riverwalk.
+    let best: { x: number; z: number; w: number; d: number } | null = null
+    let bd = Infinity
+    for (const c of venueCenters) {
+      if (c.z + c.d / 2 > zoneField.bankZ) continue // would reach the quay/water
+      if (claimed.some((cl) => boxesOverlap({ x: c.x, z: c.z, w: c.w, d: c.d }, cl, 2))) continue
+      const d = (c.x - tx) ** 2 + (c.z - tz) ** 2
+      if (d < bd) {
+        bd = d
+        best = c
+      }
+    }
+    if (!best) {
+      // no free block near the target — still resolve the anchor at the target so
+      // quests/map never dead-end (it just won't have a bespoke facade).
+      allAnchors.push({ id, kind: "landmark", x: tx, z: Math.min(tz, zoneField.bankZ - 6), facing: 0, label })
+      return
+    }
+    const out = build(best.x, best.z)
+    if (out) {
+      allBuildings.push(...out.buildings)
+      allProps.push(...out.props)
+      // clamp the door anchor strictly inland of the quay (the harbor pattern) so a
+      // venue snapped to a bank-adjacent block never lands its portal on the water.
+      const doorZ = Math.min(out.doorZ, zoneField.bankZ - 3)
+      allAnchors.push({ id, kind: "landmark", x: best.x, z: doorZ, facing: 0, label })
+    } else {
+      allAnchors.push({ id, kind: "landmark", x: best.x, z: best.z, facing: 0, label })
+    }
+    claimed.push({ x: best.x, z: best.z, w: best.w + 4, d: best.d + 4 })
+  }
+  // CAFÉ — a snug corner café off the plaza: a small shopfront + two pavement
+  // café tables under the awning (where the café-order quest plays out, indoors).
+  placeVenue("cafe", -0.16, -0.04, "Corner Café", (cx, cz) => {
+    const doorZ = cz + 7
+    return {
+      buildings: [{ x: cx, z: cz, w: 14, d: 11, kind: "shop", door: { x: cx, z: doorZ } }],
+      props: [
+        { species: "cart", x: cx - 4, z: doorZ + 2, scale: 0.9, shadow: 0.6 },
+        { species: "bench", x: cx + 4, z: doorZ + 2, scale: 0.95, yaw: Math.PI, shadow: 0.6 },
+        { species: "planter", x: cx - 6, z: doorZ + 1, scale: 1, shadow: 0.5 },
+        { species: "planter", x: cx + 6, z: doorZ + 1, scale: 1, shadow: 0.5 },
+      ],
+      doorZ,
+    }
+  })
+  // OUTFITTER — the bling/outfit shop (a tall, smart shopfront).
+  placeVenue("outfitter", 0.3, -0.06, "The Outfitter", (cx, cz) => {
+    const doorZ = cz + 7
+    return {
+      buildings: [{ x: cx, z: cz, w: 14, d: 12, kind: "shop", door: { x: cx, z: doorZ } }],
+      props: [
+        { species: "lamp", x: cx - 6, z: doorZ + 1, scale: 1, shadow: 0.5 },
+        { species: "lamp", x: cx + 6, z: doorZ + 1, scale: 1, shadow: 0.5 },
+      ],
+      doorZ,
+    }
+  })
+  // GENERAL STORE — the everyday provisions shop (a broad storefront + crates).
+  placeVenue("general_store", -0.34, -0.16, "General Store", (cx, cz) => {
+    const doorZ = cz + 7
+    return {
+      buildings: [{ x: cx, z: cz, w: 15, d: 11, kind: "shop", door: { x: cx, z: doorZ } }],
+      props: [
+        { species: "crate", x: cx - 5, z: doorZ + 2, scale: 0.95, shadow: 0.6 },
+        { species: "barrel", x: cx + 5, z: doorZ + 2, scale: 0.95, shadow: 0.6 },
+      ],
+      doorZ,
+    }
+  })
+  // CENTRAL GREEN — an open civic park (no building; a ring of trees frames the
+  // green). The anchor sits at the centre so the map/quests can send you there.
+  placeVenue("central_green", 0.02, -0.34, "Central Green", (cx, cz) => {
+    const props: CityProp[] = []
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * Math.PI * 2
+      props.push({ species: "tree", x: cx + Math.cos(a) * 9, z: cz + Math.sin(a) * 9, scale: 1.05, shadow: 0.7 })
+    }
+    return { buildings: [], props, doorZ: cz }
+  })
+  // STADIUM — a big arena bowl (a broad oval footprint suggests the stands).
+  placeVenue("stadium", 0.42, 0.18, "City Stadium", (cx, cz) => {
+    const doorZ = cz + 12
+    return {
+      buildings: [{ x: cx, z: cz, w: 30, d: 22, kind: "market-hall", door: { x: cx, z: doorZ } }],
+      props: [
+        { species: "lamp", x: cx - 12, z: doorZ + 2, scale: 1.1, shadow: 0.5 },
+        { species: "lamp", x: cx + 12, z: doorZ + 2, scale: 1.1, shadow: 0.5 },
+      ],
+      doorZ,
+    }
+  })
+  // EXCHANGE — the financial hall (a tall, columned block in the dense quarter).
+  placeVenue("exchange", -0.04, 0.5, "City Exchange", (cx, cz) => {
+    const doorZ = cz + 9
+    return {
+      buildings: [{ x: cx, z: cz, w: 18, d: 16, kind: "chapel", door: { x: cx, z: doorZ } }],
+      props: [
+        { species: "lamp", x: cx - 7, z: doorZ + 1, scale: 1, shadow: 0.5 },
+        { species: "lamp", x: cx + 7, z: doorZ + 1, scale: 1, shadow: 0.5 },
+      ],
+      doorZ,
+    }
+  })
 
   // ---- generic block infill across the grid (skipping claimed blocks) ----
   // A block is skipped when ANY of its footprint reaches the riverwalk band: we
