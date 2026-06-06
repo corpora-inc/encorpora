@@ -8,7 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- **The scene SETTING is now modern "Corpan City", not colonial "Antigua-1770" —
+- **Quest titles + descriptions now localize into the learner's language (~46
+  locales) and FLIP native↔target with immersion.** They rendered English
+  regardless of the native stack. The keying machinery + `en` source already
+  existed (`quests.ts` / `questString` / `makeQuestLocalizer`); the gap was that
+  only `en` was generated. Generated all 46 ship locales for the 65 quest keys
+  (title / narrative / step) via a `--quests` mode added to `tools/gen_i18n.py`
+  (same proven pipeline as the chrome catalog). Immersion was already wired
+  (game.ts `relocalize` rebuilds the quest localizer with the live `uiLocale` =
+  native OFF / target ON), so quest copy now flips with the toggle for free. Added
+  a freshness gate (`questLocales.test.ts`) so every shipped locale carries every
+  quest key.
+- **Special-NPC NAMES localize everywhere (capsule, quest section, tracker, AND
+  the map) and flip with immersion.** The shared `anchorName` helper (game.ts)
+  passed `undefined` for the translate fn, so the objective NPC's name ("the café
+  host") rendered English on every surface even though `specialNpc.displayName`
+  already localizes via `t(nameKey, lang)`. Wired a quest-catalog-backed `t` + the
+  live `uiLocale` into that ONE shared resolver, and keyed + generated the 5
+  `special.*.name` values (content/npc/special.json) into all 46 locales — so the
+  map (a pure consumer of `anchorName`) localizes for free, with no divergence.
   the last colonial thread.** Text/identity only: `setting.{place,era,mood}` +
   `narrativeBlurb` in both scene files (`antigua-grand.json` runtime, `antigua-1770.json`
   tests) are modernised, so the persona seed reads "…in Corpan City" instead of

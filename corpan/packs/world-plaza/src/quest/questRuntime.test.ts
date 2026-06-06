@@ -6,17 +6,26 @@ import { entryQuestId, getQuest } from "./questCatalog"
 beforeEach(() => localStorage.clear())
 
 describe("createQuestRuntime — the QUESTS-AT-SCALE seam", () => {
-  it("exposes a localizer that renders the entry quest title (literal fallback)", () => {
+  it("exposes a localizer that renders the entry quest title IN the ui locale (#112)", () => {
     const rt = createQuestRuntime({ trackId: "en:es", uiLocale: "es" })
     const q = getQuest(entryQuestId)!
-    expect(rt.localizer().title(q)).toBe(q.title) // literal until the catalog has es
+    // #112: the quest catalog is now populated, so the localizer returns the SPANISH
+    // title (the immersion-target render), not the English literal. Non-empty + not
+    // the English source proves localization (not just the fallback).
+    const es = rt.localizer().title(q)
+    expect(es).toBeTruthy()
+    expect(es).not.toBe(q.title)
   })
 
-  it("setLocale re-points the localizer in place", () => {
+  it("setLocale re-points the localizer in place (es → fr is a DIFFERENT translation) (#112)", () => {
     const rt = createQuestRuntime({ trackId: "en:es", uiLocale: "es" })
-    rt.setLocale("fr")
     const q = getQuest(entryQuestId)!
-    expect(rt.localizer().title(q)).toBe(q.title) // still a valid localizer
+    const es = rt.localizer().title(q)
+    rt.setLocale("fr")
+    const fr = rt.localizer().title(q)
+    expect(fr).toBeTruthy()
+    expect(fr).not.toBe(q.title) // localized, not the English literal
+    expect(fr).not.toBe(es) // re-pointed in place → a different locale's title
   })
 
   it("nextOptions returns a non-empty, completed-excluded branch", () => {
