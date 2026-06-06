@@ -49,6 +49,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (`audio/musicProfile.ts`, `shell/phone/musicApp.ts`, `game.ts`)
 
 ### Fixed
+- **The phone sheet no longer peeks from the bottom when closed.** On landscape
+  phones and on tablet, the rounded top edge + grab handle of the closed phone
+  sheet stuck ~14px into the world view. Its off-screen transform was `105%` (a
+  5% margin), which didn't clear the panel's height + shadow at those aspect
+  ratios — and a stale inline `105%` was overriding the larger tablet rule too.
+  Both now use `translateY(calc(100% + 40px))`, so the sheet is fully off-screen
+  when closed at every aspect ratio.
 - **Building roofs no longer hide your character.** When the camera looked down
   over a rooftop, the roof stayed solid and the player vanished beneath it. Roofs
   (the flat caps the streamed city uses) are now treated like every other

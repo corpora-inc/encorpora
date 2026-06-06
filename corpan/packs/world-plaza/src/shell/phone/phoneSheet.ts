@@ -133,7 +133,9 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
   scrim.setAttribute("aria-hidden", "true")
   const panel = elt("section", "wp-phone-panel")
   // Guarantee the first painted frame is off-screen even before phone.css parses.
-  panel.style.transform = "translateY(105%)"
+  // Must MATCH the CSS closed transform: `105%` left the rounded top + handle
+  // peeking ~14px on short/landscape + tall/tablet viewports.
+  panel.style.transform = "translateY(calc(100% + 40px))"
 
   // Handle (generous 44px hit zone, not a bare pill — the canonical pattern).
   const handle = elt("div", "wp-phone-handle")

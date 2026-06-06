@@ -155,8 +155,12 @@
   border-radius: 26px 26px 0 0;
   box-shadow: var(--wp-phone-shadow);
   /* Off-screen by default; JS also stamps this inline on the first frame so the
-     opening state holds even before this stylesheet has parsed. */
-  transform: translateY(105%);
+     opening state holds even before this stylesheet has parsed.
+     `calc(100% + 40px)`, NOT `105%`: a 5% margin doesn't clear the panel on short
+     (landscape) / tall (tablet) viewports — the rounded top + box-shadow + handle
+     peeked ~14px above the bottom edge. The fixed 40px buffer clears them at any
+     aspect ratio (matches the `.wp-phone-panel--docked` off-screen rule below). */
+  transform: translateY(calc(100% + 40px));
   transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
   overflow: hidden;
