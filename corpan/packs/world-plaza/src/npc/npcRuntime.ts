@@ -132,6 +132,16 @@ export type OpenArgs = {
   /** Fired once when the panel closes (X / scrim / Escape / end-intent) so the
    *  caller can re-enable world input. */
   onClose?: () => void
+  /**
+   * MUSIC DUCKING (cityRadio): fired right BEFORE an NPC line speaks via host TTS,
+   * and `onSpeakEnd` right AFTER it resolves. The orchestrator wires these to
+   * `cityRadio.duck()` / `unduck()` so the city radio dips to ~30% under the voice
+   * and restores after. Ref-counted on the radio side, so overlapping lines are
+   * safe. ADDITIVE + optional — absent ⇒ no ducking (behaviour unchanged). The
+   * pair is ALWAYS balanced (every start has its end, even on a TTS error).
+   */
+  onSpeakStart?: () => void
+  onSpeakEnd?: () => void
   /** Suggested opening reply chips (localized by the caller). */
   starterChips?: string[]
   /** Localized connective copy around the deterministic game offer. */
@@ -495,6 +505,16 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
     async function speak(text: string): Promise<void> {
       const clean = text.trim()
       if (!clean) return
+      // DUCK the city radio under the voice (cityRadio): start before, end after —
+      // ALWAYS balanced (the finally restores even on a TTS error), so the music
+      // can never get stuck quiet. Guarded so a bad hook can't break chat.
+      let ducked = false
+      try {
+        args.onSpeakStart?.()
+        ducked = true
+      } catch (e) {
+        console.error(`${LOG} onSpeakStart hook threw:`, e)
+      }
       try {
         // STICKY per-NPC voice (CHANGE 2): route through the resolver so EVERY line
         // of THIS conversation uses the SAME deterministic voice for this NPC (the
@@ -507,6 +527,14 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
       } catch (e) {
         // Loud, never silent (project rule). TTS failing must not break chat.
         console.error(`${LOG} TTS speak failed:`, e)
+      } finally {
+        if (ducked) {
+          try {
+            args.onSpeakEnd?.()
+          } catch (e) {
+            console.error(`${LOG} onSpeakEnd hook threw:`, e)
+          }
+        }
       }
     }
 

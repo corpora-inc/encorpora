@@ -1,0 +1,420 @@
+/*
+ * World Plaza — the Phone overlay (inventory + city-radio control surface).
+ *
+ * A premium in-world "phone" the player opens from a corner FAB. Mirrors the NPC
+ * dialogue sheet's warm paper-cutout aesthetic + its no-layout-shift contract
+ * (FIXED root, compositor-only open/close), but reads as a tidy phone FRAME — a
+ * bottom sheet on phones, a docked card on tablet/desktop. Every selector is
+ * scoped under `.wp-phone-` so it never touches the game's `src/styles.css`.
+ *
+ * The palette is driven by CSS custom properties the runtime sets from the Scene
+ * palette (with sane fallbacks here). Logical properties + a single `dir="rtl"`
+ * on the pack root mirror it for RTL natives.
+ */
+
+.wp-phone-root {
+  --wp-phone-paper: #f7efe0;
+  --wp-phone-paper-2: #efe3cd;
+  --wp-phone-ink: #3a2f25;
+  --wp-phone-ink-soft: #7a6a55;
+  --wp-phone-accent: #c46b4a;
+  --wp-phone-accent-ink: #fff7f0;
+  --wp-phone-hairline: rgba(120, 100, 70, 0.18);
+  --wp-phone-shadow: 0 -8px 30px rgba(58, 47, 37, 0.26);
+
+  /* FIXED, never absolute — anchored to the viewport so it can NEVER participate
+     in an ancestor's flow and push the canvas. The sheet rides transform only. */
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  /* Just above the dialogue sheet's band (40) but below a centered challenge
+     scrim — the phone is a player surface, not a blocking modal. */
+  z-index: 42;
+  contain: layout size style;
+  font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, sans-serif;
+  color: var(--wp-phone-ink);
+}
+
+/* Tap-catching scrim; closes on tap-outside. CRITICAL: it is non-interactive
+   while the phone is CLOSED (opacity 0) — otherwise the always-present scrim
+   would eat every pointer across the whole viewport (FAB + world), even closed.
+   It only catches taps once the phone is open. */
+.wp-phone-scrim {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(120% 80% at 50% 100%, rgba(30, 22, 14, 0.42), rgba(30, 22, 14, 0.12));
+  opacity: 0;
+  transition: opacity 0.24s ease;
+  pointer-events: none;
+}
+.wp-phone-root.wp-phone-open .wp-phone-scrim {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* PHONE DEFAULT: a bottom sheet with the home-indicator inset folded in so it
+   reads as docked, not floating. */
+.wp-phone-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: auto;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  max-height: min(86svh, 760px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--wp-phone-paper), var(--wp-phone-paper-2));
+  border-radius: 26px 26px 0 0;
+  box-shadow: var(--wp-phone-shadow);
+  /* Off-screen by default; JS also stamps this inline on the first frame so the
+     opening state holds even before this stylesheet has parsed. */
+  transform: translateY(105%);
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  overflow: hidden;
+}
+.wp-phone-root.wp-phone-open .wp-phone-panel {
+  transform: translateY(0);
+}
+.wp-phone-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+}
+
+/* --- Grab handle (canonical 44px hit zone, not a bare pill) --- */
+.wp-phone-handle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  cursor: pointer;
+  touch-action: none;
+}
+.wp-phone-handle-bar {
+  width: 44px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(120, 100, 70, 0.32);
+}
+
+/* --- Header --- */
+.wp-phone-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 16px 10px;
+}
+.wp-phone-title {
+  flex: 1 1 auto;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+}
+.wp-phone-close {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(122, 106, 85, 0.12);
+  color: var(--wp-phone-ink-soft);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.wp-phone-close:hover {
+  background: rgba(122, 106, 85, 0.2);
+}
+
+/* --- Tabs (segmented control) --- */
+.wp-phone-tabs {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 4px;
+  margin: 0 16px 8px;
+  padding: 4px;
+  border-radius: 14px;
+  background: rgba(120, 100, 70, 0.1);
+}
+.wp-phone-tab {
+  flex: 1 1 0;
+  border: none;
+  background: transparent;
+  border-radius: 11px;
+  padding: 9px 8px;
+  font: 700 12.5px/1.2 inherit;
+  color: var(--wp-phone-ink-soft);
+  cursor: pointer;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+.wp-phone-tab[aria-selected="true"] {
+  background: var(--wp-phone-paper);
+  color: var(--wp-phone-ink);
+  box-shadow: 0 2px 9px rgba(58, 47, 37, 0.14);
+}
+
+/* --- Body (the sole scroll region) --- */
+.wp-phone-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 16px 18px;
+}
+
+/* ================================ MUSIC TAB ================================ */
+.wp-phone-music {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.wp-phone-music-heading {
+  font: 700 11px/1 inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9a8868;
+}
+
+/* The now-playing card. */
+.wp-phone-now {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fffaf0, #f3e8d3);
+  border: 1px solid var(--wp-phone-hairline);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 4px 14px rgba(58, 47, 37, 0.14);
+}
+.wp-phone-now-label {
+  font: 700 11px/1 inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9a8868;
+}
+.wp-phone-now-title {
+  font-weight: 800;
+  font-size: 17px;
+  line-height: 1.25;
+  color: var(--wp-phone-ink);
+  /* clamp a long ICY title to two lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.wp-phone-now-station {
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--wp-phone-ink-soft);
+}
+.wp-phone-now-duck {
+  margin-top: 2px;
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--wp-phone-accent);
+}
+
+/* Transport row: prev · big play/pause · next. */
+.wp-phone-transport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.wp-phone-tbtn {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--wp-phone-ink);
+  background: rgba(120, 100, 70, 0.1);
+  width: 48px;
+  height: 48px;
+  transition: transform 0.1s ease, background 0.16s ease;
+}
+.wp-phone-tbtn:hover {
+  background: rgba(120, 100, 70, 0.18);
+}
+.wp-phone-tbtn:active {
+  transform: scale(0.94);
+}
+.wp-phone-tbtn--play {
+  width: 64px;
+  height: 64px;
+  background: var(--wp-phone-accent);
+  color: var(--wp-phone-accent-ink);
+  box-shadow: 0 6px 18px rgba(196, 107, 74, 0.4);
+}
+.wp-phone-tbtn--play:hover {
+  background: var(--wp-phone-accent);
+  filter: brightness(1.05);
+}
+.wp-phone-tbtn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+.wp-phone-tbtn--play svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Volume row. */
+.wp-phone-volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wp-phone-volume-icon {
+  flex: 0 0 auto;
+  color: var(--wp-phone-ink-soft);
+  display: grid;
+  place-items: center;
+}
+.wp-phone-volume-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+.wp-phone-volume input[type="range"] {
+  flex: 1 1 auto;
+  width: 100%;
+  accent-color: var(--wp-phone-accent);
+  height: 28px;
+  cursor: pointer;
+}
+
+/* Station browser. */
+.wp-phone-stations {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.wp-phone-station {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.42);
+  color: var(--wp-phone-ink);
+  font: 600 13.5px/1.3 inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+.wp-phone-station:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+.wp-phone-station[aria-current="true"] {
+  border-color: var(--wp-phone-accent);
+  background: rgba(196, 107, 74, 0.1);
+  font-weight: 800;
+}
+.wp-phone-station-dot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--wp-phone-ink-soft);
+  opacity: 0.4;
+}
+.wp-phone-station[aria-current="true"] .wp-phone-station-dot {
+  background: var(--wp-phone-accent);
+  opacity: 1;
+}
+.wp-phone-station-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Quiet empty / unavailable line (single-language + no-radio safe). */
+.wp-phone-empty {
+  padding: 16px 4px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--wp-phone-ink-soft);
+}
+
+/* =============================== RESPONSIVE =============================== */
+/* Tablet + desktop: a docked card in the bottom INLINE-END corner (bottom-right
+   LTR, bottom-left RTL via the inline-axis property), NOT a full-width sheet —
+   tablet/desktop are first-class (memory). Reads well on a wide screen. */
+@media (min-width: 720px) {
+  .wp-phone-scrim {
+    background: radial-gradient(140% 100% at 85% 100%, rgba(30, 22, 14, 0.34), rgba(30, 22, 14, 0.06));
+  }
+  .wp-phone-panel {
+    left: auto;
+    right: auto;
+    inset-inline-end: max(20px, env(safe-area-inset-right, 0px));
+    bottom: max(20px, env(safe-area-inset-bottom, 0px));
+    width: min(420px, 40vw);
+    max-width: 420px;
+    margin: 0;
+    max-height: min(80svh, 760px);
+    padding-bottom: 0;
+    border-radius: 26px;
+    box-shadow: 0 18px 48px rgba(58, 47, 37, 0.34);
+    transform: translateY(calc(100% + 28px));
+  }
+  .wp-phone-root.wp-phone-open .wp-phone-panel {
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1280px) {
+  .wp-phone-panel {
+    width: 440px;
+    max-width: 440px;
+    max-height: min(74svh, 800px);
+  }
+  .wp-phone-title {
+    font-size: 19px;
+  }
+  .wp-phone-now-title {
+    font-size: 18px;
+  }
+}
+
+@media (hover: none) {
+  .wp-phone-close:hover {
+    background: rgba(122, 106, 85, 0.12);
+  }
+  .wp-phone-station:hover {
+    background: rgba(255, 255, 255, 0.42);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-phone-scrim,
+  .wp-phone-panel {
+    transition: opacity 0.2s ease;
+  }
+  .wp-phone-panel {
+    transform: none;
+  }
+  .wp-phone-root:not(.wp-phone-open) .wp-phone-panel {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

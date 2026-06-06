@@ -55,6 +55,13 @@ import { mountQuestTracker } from "./quest/questTracker"
 import { createQuestSection } from "./quest/questSection"
 import { createQuestRuntime } from "./quest/questRuntime"
 import { createInventorySection } from "./inventory/inventoryPanel"
+import {
+  createPhoneSheet,
+  createPhoneFab,
+  createInventoryApp,
+  createMusicApp,
+  type PhoneSheet,
+} from "./shell/phone"
 import { mountPlaceTag } from "./shell/placeTag"
 import { createChromeVisibility, type ChromeState } from "./shell/chromeVisibility"
 import { createEconomyHud } from "./economy/economyHud"
@@ -1150,6 +1157,9 @@ function buildWorld(
       learnerPair,
       container: overlay,
       npcName: special ? specialNpc.displayName(special, undefined, learnerPair.target) : undefined,
+      // Music ducking: dip the city radio while this NPC speaks (TTS), restore after.
+      onSpeakStart: () => cityRadio?.duck(),
+      onSpeakEnd: () => cityRadio?.unduck(),
       // The quest objective chip wins; else a dedicated NPC's commerce-offer chip.
       ...(forcedOffer ? { forcedOffer } : offerForcedOffer ? { forcedOffer: offerForcedOffer } : {}),
       ...(special ? { questEngine, inventory: inventory(), isSpecial: true } : {}),
@@ -1375,6 +1385,8 @@ function buildWorld(
       voiceCode: args.voiceCode ?? learnerPair.target,
       starterChips: args.starterChips,
       onClose: args.onClose,
+      onSpeakStart: () => cityRadio?.duck(),
+      onSpeakEnd: () => cityRadio?.unduck(),
     })
     return {
       send: (text) => handle.send(text),
@@ -1531,6 +1543,28 @@ function buildWorld(
       void enterTaxi("station")
   }
 
+  // Shared inventory section — ONE wallet/items source of truth, used by BOTH the
+  // menu's Inventory tab AND the Phone's "Things" app. Its callbacks close over
+  // `shell` (declared just below); they only fire on user action, so the forward
+  // reference is safe.
+  const inventorySection = createInventorySection({
+    store: inventory(),
+    accent: scene.palette?.accent,
+    locale: currentUiLocale,
+    renderer: iconRenderer,
+    masteredCount: () => badges.store.masteredCount(),
+    openBadges: () => shell.openSection("badges"),
+    // WARDROBE re-entry (economy): re-dress + equip bought bling, menu closed first.
+    strings: {
+      openWardrobe:
+        vt("economy.wardrobe.open") === "economy.wardrobe.open" ? "Change your look" : vt("economy.wardrobe.open"),
+    },
+    openWardrobe: () => {
+      shell.resume()
+      economy.openWardrobe(overlay)
+    },
+  })
+
   // App shell: ESC → close dialogue / menu / "Leave the Plaza?" → exit to host.
   // M0: the shell mounts ALL its chrome (menu panel, menu button, exit confirm)
   // INSIDE `.wp-overlay` (the host's accepted render surface), so the menu/exit
@@ -1546,27 +1580,7 @@ function buildWorld(
       // REAL Inventory + Quest sections (no more "coming soon"). Inventory = the
       // multi-currency wallet shown properly (named currencies + premium glyphs) +
       // owned items + a badges summary. Quest = the full objective/steps/progress.
-      inventory: createInventorySection({
-        store: inventory(),
-        accent: scene.palette?.accent,
-        // Lazy locale: read live so an immersion flip re-localizes the wallet
-        // (currency names) instantly in place on the next open — fully in-place.
-        locale: currentUiLocale,
-        renderer: iconRenderer,
-        masteredCount: () => badges.store.masteredCount(),
-        openBadges: () => shell.openSection("badges"),
-        // The dedicated WARDROBE re-entry control: opens the avatar customizer so
-        // the player re-dresses + equips bought bling. Closes the menu first so the
-        // wardrobe owns the screen, then re-localizes via the live economy handle.
-        strings: {
-          openWardrobe:
-            vt("economy.wardrobe.open") === "economy.wardrobe.open" ? "Change your look" : vt("economy.wardrobe.open"),
-        },
-        openWardrobe: () => {
-          shell.resume() // close the menu so the wardrobe owns the screen
-          economy.openWardrobe(overlay)
-        },
-      }),
+      inventory: inventorySection,
       quest: createQuestSection({
         engine: questEngine,
         inventory: inventory(),
@@ -1703,6 +1717,39 @@ function buildWorld(
   const packButton = overlay.querySelector<HTMLElement>(".wp-menu-button")
   if (packButton) chrome.register({ el: packButton, role: "pack" })
   else console.warn("[world-plaza] pack button (.wp-menu-button) not found — chrome won't govern it")
+
+  // ── The PHONE (extensible app-shell: Inventory + City Radio) ───────────────
+  // A premium in-world phone "OS" opened from the "all-hearing ear" FAB. It hosts
+  // pluggable APPS — Inventory ("Things") embeds the SAME `inventorySection` the
+  // menu uses (no duplicate wallet/item logic); Music drives the `cityRadio` handle
+  // + subscribes to its reactive Now-Playing state. Future Mail/Calls/Quest apps
+  // slot into the `apps` array without touching the shell. Forward-declared so the
+  // phone's onOpen/onClose can hide/show the FAB (the phone IS the surface while
+  // open, so its own launcher should step aside).
+  let phoneFab: ReturnType<typeof createPhoneFab>
+  const phone: PhoneSheet = createPhoneSheet({
+    overlay,
+    accent: scene.palette?.accent,
+    locale: currentUiLocale, // native locale, read live (immersion flip re-localizes on next open)
+    apps: [
+      createInventoryApp(inventorySection),
+      // getRadio read LAZILY: cityRadio probes async at boot, so a slightly-late
+      // handle still wires the Music app when the phone first opens.
+      createMusicApp(() => cityRadio),
+    ],
+    onOpen: () => phoneFab?.hide(),
+    onClose: () => phoneFab?.show(),
+  })
+  // The "all-hearing ear" launcher FAB — bottom-left, STACKED above the pack
+  // button (CSS offset = pack-size + gap, so they never overlap); a `pack`-role
+  // chrome surface so it recedes with the chrome as one breath.
+  phoneFab = createPhoneFab({
+    parent: overlay,
+    accent: scene.palette?.accent,
+    label: bindT(nativeLocale)("phone.open"),
+    onOpen: () => phone.open(),
+  })
+  chrome.register({ el: phoneFab.el, role: "pack" })
 
   // ── Immersion APPLIES IN PLACE (#20) ────────────────────────────────────────
   // Flipping the immersion toggle must NOT rebuild the world or move the player —
@@ -1956,6 +2003,8 @@ function buildWorld(
     document.removeEventListener("visibilitychange", onVisibility)
     econHud.dispose()
     void badges.dispose()
+    phone.dispose()
+    phoneFab.dispose()
     minimap.dispose()
     fullMapModal.dispose()
     unFrame()
