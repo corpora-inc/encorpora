@@ -89,6 +89,14 @@ const HEAD_HEIGHT = 1.6
  *  draped over the figure's upper body without fading geometry that's only near the
  *  feet. A hair over the plane top so the very cap of the silhouette is covered. */
 const CROWN_HEIGHT = 2.7
+/** How far straight UP from the crown we probe for an OVERHEAD canopy (#59). A wide
+ *  flat roof/awning that OVERHANGS the pavement and the player stands UNDER its outer
+ *  edge: the camera→head AND camera→crown POINT rays can graze PAST the near edge of
+ *  that horizontal slab without hitting it, yet on screen the slab covers the player's
+ *  head/upper body. A short ray straight up from the crown detects "I'm standing under
+ *  a roof plane" the slanted camera rays miss. Long enough to reach a one/two-storey
+ *  overhang, short enough not to grab a distant high roof. */
+const OVERHEAD_PROBE = 6.0
 /** skin (world units) added around a building AABB for the inside test, so a
  *  camera grazing a wall/eave also fades (you're "in" the roof overhang). */
 const INSIDE_SKIN = 0.6
@@ -175,6 +183,8 @@ export function createCameraFade(
   const ray = new Ray(Vector3.Zero(), Vector3.Up(), 1)
   const crownDir = new Vector3()
   const crownRay = new Ray(Vector3.Zero(), Vector3.Up(), 1)
+  // a short ray straight UP from the crown to detect an overhead canopy (#59).
+  const overheadRay = new Ray(Vector3.Zero(), Vector3.Up(), OVERHEAD_PROBE)
 
   const update = (dt: number) => {
     // Cheap resync if the scene rebuilt buildings (Antigua⇄Tokyo flip changes
@@ -216,6 +226,12 @@ export function createCameraFade(
       crownRay.direction.copyFrom(crownDir)
       crownRay.length = crownLen
     }
+    // a short ray straight UP from the crown (#59): detects an overhead canopy the
+    // player stands UNDER (a wide flat overhang) that the slanted camera rays graze
+    // past. Origin = crown, direction = +Y, length = OVERHEAD_PROBE.
+    overheadRay.origin.copyFrom(crown)
+    overheadRay.direction.set(0, 1, 0)
+    overheadRay.length = OVERHEAD_PROBE
 
     // a mesh further than the cam→player segment (+ its own radius) can't be
     // between them — skip it so this stays O(near meshes) in the big streamed city.
@@ -266,6 +282,19 @@ export function createCameraFade(
             occluding = true
           }
         }
+      }
+
+      // (4) OVERHEAD CANOPY (#59): the player stands UNDER a wide flat OVERHANG (its
+      //     slab juts out over the pavement). The camera→head/crown POINT rays graze
+      //     past the slab's near edge without hitting it, yet on screen it covers the
+      //     player. A short ray straight UP from the crown catches "I'm under a roof
+      //     plane." Guard with `camPos.y >= min.y` (the camera sits AT/ABOVE the
+      //     overhang's underside) so the slab is genuinely between the high follow-cam
+      //     and the player — never fading a roof when the camera is below the eave
+      //     looking horizontally (then the roof is above the shot, not covering it).
+      if (!occluding && camPos.y >= min.y - INSIDE_SKIN) {
+        const pickO = overheadRay.intersectsMesh(mesh, true, undefined, true)
+        if (pickO.hit) occluding = true
       }
 
       t.target = occluding ? FADED_VISIBILITY : 1

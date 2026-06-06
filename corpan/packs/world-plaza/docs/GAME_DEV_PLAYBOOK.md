@@ -335,7 +335,7 @@ sky/HUD-overlays (by prefix) + ground stamps shorter than `MIN_OCCLUDER_HEIGHT`
 `engine.ts`) AND the fade (`cameraFade.ts`) both use it; the fade detects occlusion
 by RAY (camera→player hit before the head) or camera-inside-AABB — never by a tag.
 
-FOUR traps that cost time here:
+FIVE traps that cost time here:
 - **The occluder predicate and the FADE-eligibility predicate must share the
   height floor (#87).** `isCameraOccluder` and `isFadeEligible` are TWO functions
   with the same "is this real solid geometry?" height gate. The streamed city
@@ -359,6 +359,21 @@ FOUR traps that cost time here:
   and it doesn't over-fade tall roofs (a y8 roof a 2.7u ray can't reach correctly
   stays solid). LESSON: a single sight-point misses anything draped over the
   figure's TOP; test the silhouette's full height, not just the head.
+- **A wide flat OVERHANG the player stands UNDER slips past the camera POINT rays
+  (#59 round 3).** A canopy/eave that juts horizontally out over the pavement, with
+  the player at its OUTER edge: BOTH the camera→head and camera→crown point rays can
+  graze PAST the slab's near edge without intersecting it (the slab is a thin
+  horizontal plane the slanted sightline just clears), yet on screen the slab covers
+  the player. NO camera-direction point ray catches "I'm standing under a roof
+  plane." FIX: a third probe — a short ray straight UP from the crown
+  (`OVERHEAD_PROBE` 6u) in `cameraFade.ts`; if it hits a fade-eligible mesh the player
+  is under a canopy → fade it. GUARD it with `camPos.y >= meshBottom` so it only
+  fires when the high follow-cam is ABOVE the overhang's underside (the slab is then
+  genuinely between cam + player) — never when the camera is below the eave looking
+  horizontally (roof above the shot, not covering it), and a position test stops it
+  ghosting every roof you walk past. LESSON: camera-direction rays answer "is X
+  between cam and player"; they CANNOT answer "is the player under X" — for an
+  overhead occluder you need a vertical probe.
 - **Thin-instanced props carry ONE union AABB over every instance.** A market
   stall is `wp-city-prop-stall-…` thin-instanced — its bounding box spans the
   whole chunk, mostly air. A boom ray-test against that union sees a giant phantom

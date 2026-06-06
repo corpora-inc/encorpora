@@ -217,6 +217,43 @@ describe("createCameraFade — dissolves whatever blocks the shot (#59 failing s
     fade.dispose()
   })
 
+  it("fades a wide flat OVERHANG the player stands UNDER (#59 canopy — camera ray grazes past)", () => {
+    // The on-device pose: a low building with a big flat roof that OVERHANGS the
+    // pavement; the player stands UNDER the overhang's outer edge; the camera is
+    // behind + above. The camera→head/crown POINT rays graze PAST the slab's near
+    // edge without hitting it (so the cap/crown checks alone leave it OPAQUE), yet on
+    // screen the slab covers the player. A short ray straight UP from the crown
+    // detects "I'm under a roof plane" → the overhang fades.
+    // a wide thin slab at y≈3.6, overhanging z∈[-8,0] (out over the pavement).
+    const overhang = MeshBuilder.CreateBox("wp-r-overhang-1", { width: 16, height: 0.3, depth: 8 }, scene)
+    overhang.position.set(0, 3.6, -4)
+    // player UNDER the slab's outer edge (z=-1); camera behind + above, its sightline
+    // to the crown passing OUTSIDE the slab's near (+z) edge.
+    const cam = new FreeCamera("cam", new Vector3(0, 7, 10), scene)
+    cam.setTarget(new Vector3(0, 2.0, -1))
+    const fade = createCameraFade(scene, cam, () => ({ x: 0, z: -1 }))
+    settle(fade)
+    expect(
+      overhang.visibility,
+      "the overhang the player stands under must fade (owner's roof-hides-player canopy case)",
+    ).toBeLessThan(0.25)
+    fade.dispose()
+  })
+
+  it("does NOT fade an overhang the player is NOT under (#59 overhead guard)", () => {
+    // the same slab, but the player stands well CLEAR of it (z=+12, out in the open).
+    // The overhead probe must not grab a roof the player isn't beneath, or every roof
+    // in town would ghost as you walk past.
+    const overhang = MeshBuilder.CreateBox("wp-r-overhang-2", { width: 16, height: 0.3, depth: 8 }, scene)
+    overhang.position.set(0, 3.6, -4) // slab over z∈[-8,0]
+    const cam = new FreeCamera("cam", new Vector3(0, 7, 22), scene)
+    cam.setTarget(new Vector3(0, 2.0, 12))
+    const fade = createCameraFade(scene, cam, () => ({ x: 0, z: 12 }))
+    settle(fade)
+    expect(overhang.visibility, "a roof the player is not under stays solid").toBe(1)
+    fade.dispose()
+  })
+
   it("leaves a clear shot SOLID — nothing fades when the path is open", () => {
     // a building well off to the side, not between camera and player.
     const offside = MeshBuilder.CreateBox("wp-building-3", { width: 6, height: 12, depth: 6 }, scene)
