@@ -1969,6 +1969,63 @@ function buildWorld(
   // "Leave the Plaza" lives on the home screen → the shell's exit handshake. The
   // phone's onOpen/onClose drive the world pause + the chrome recede (the phone IS
   // the surface while open). Future Mail/Calls slot into `apps` without shell change.
+  // #110 — RE-ONBOARD / edit identity. Returning players couldn't change their
+  // name or look (onboarding runs once per profile). `editIdentity()` re-runs ONLY
+  // the name + wardrobe steps (seeded from the CURRENT identity), then applies the
+  // result IN PLACE: the look via the same `applyAvatarChange` the in-game wardrobe
+  // uses (redress + persist), the name via `identity.name` + persist, and refreshes
+  // the live surfaces that show the name (player label, multiplayer presence). The
+  // phone closes for the edit overlay; the world stays paused until it resolves.
+  let editingIdentity = false
+  const editIdentity = async (): Promise<void> => {
+    if (editingIdentity) return
+    editingIdentity = true
+    const wasOpen = phone.isOpen()
+    if (wasOpen) phone.close()
+    setWorldActive(false)
+    try {
+      const res = await runOnboarding(container, {
+        playerId: identity.name.playerId,
+        native: learnerPair.native, // the learner's native (nativeLocale is shadowed here)
+        editOnly: true,
+        seedName: identity.name,
+        seedAvatar: identity.avatar,
+      })
+      const nameChanged = res.name.displayName !== identity.name.displayName
+      identity.name = res.name
+      applyAvatarChange(res.avatar) // redress + persist the look (keeps identity in sync)
+      saveIdentity(identity) // persist the (possibly new) name too
+      // The look applies in place via redress; a name change is confirmed with a
+      // toast (surfaces that show the name — multiplayer presence — pick up the
+      // persisted identity on their next rebuild/refresh).
+      if (nameChanged) toast(`✓ ${res.name.displayName}`)
+    } catch (err) {
+      console.error("[world-plaza] edit identity failed:", err)
+    } finally {
+      setWorldActive(true)
+      editingIdentity = false
+    }
+  }
+
+  // Profile phone app (#110): shows the current name + a "Change name & look" button
+  // that launches `editIdentity`. A plain MenuSectionView (a render fn) — no new
+  // shell machinery. Localized via the live chrome `t`.
+  const profileSection = (body: HTMLElement): void => {
+    body.innerHTML = ""
+    const wrap = document.createElement("div")
+    wrap.className = "wp-profile-app"
+    const nameEl = document.createElement("div")
+    nameEl.className = "wp-profile-name"
+    nameEl.textContent = identity.name.displayName
+    const btn = document.createElement("button")
+    btn.className = "wp-onb-btn wp-onb-btn--primary"
+    btn.textContent = chromeT("onb.edit.entry", currentUiLocale())
+    btn.onclick = () => void editIdentity()
+    wrap.appendChild(nameEl)
+    wrap.appendChild(btn)
+    body.appendChild(wrap)
+  }
+
   let phoneFab: ReturnType<typeof createPhoneFab>
   // `phone` is forward-declared above (the shell's menu delegate references it).
   phone = createPhoneSheet({
@@ -1980,6 +2037,8 @@ function buildWorld(
       createSectionApp({ id: "things", titleKey: "phone.tab.things", icon: APP_ICONS.things, section: inventorySection }),
       createSectionApp({ id: "quest", titleKey: "phone.tab.quest", icon: APP_ICONS.quest, section: questSection }),
       createSectionApp({ id: "badges", titleKey: "phone.tab.badges", icon: APP_ICONS.badges, section: badges.section }),
+      // #110 — Profile: re-onboard (change name + look) from the phone home grid.
+      createSectionApp({ id: "profile", titleKey: "profile.app", icon: APP_ICONS.badges, section: profileSection }),
       // getRadio read LAZILY: cityRadio probes async at boot, so a slightly-late
       // handle still wires the Music app when the phone first opens. The Music app
       // reflects + writes the persisted {enabled, station, volume} profile.

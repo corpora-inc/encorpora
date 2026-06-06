@@ -346,3 +346,19 @@
 @media (prefers-reduced-motion: reduce) {
   .wp-onb, .wp-onb-card, .wp-onb-host, .wp-onb-name--pop, .wp-onb-hero { animation: none; transition: opacity 0.2s ease; }
 }
+
+/* #110 — Profile phone app: the current name + a "Change name & look" launcher. */
+.wp-profile-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 28px 18px;
+  text-align: center;
+}
+.wp-profile-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--wp-ink, #3a2e22);
+}
