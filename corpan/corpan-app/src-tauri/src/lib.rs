@@ -1295,7 +1295,6 @@ fn open_apple_feedback(#[allow(unused_variables)] app: AppHandle) -> Result<(), 
     }
 }
 
-#[cfg_attr(mobile, tauri::mobile_entry_point)]
 /// Quote `s` as a JSON string literal. Used by the panic hook to build a
 /// valid-JSON breadcrumb from free-text fields. Never panics:
 /// `serde_json::to_string` on a `&str` does not fail, and the fallback keeps
@@ -1361,6 +1360,7 @@ fn take_last_crash_report(app: AppHandle) -> Option<String> {
     }
 }
 
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let pack_db_state = PackDbState::new();
     let phrase_packs_state = PhrasePacksState::new();
