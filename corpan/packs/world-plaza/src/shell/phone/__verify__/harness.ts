@@ -30,24 +30,50 @@ if (params.get("dir") === "rtl") {
   overlay.setAttribute("dir", "rtl")
 }
 
-/* A stub section: a heading + a few paper rows, so the app screen looks alive. */
-const stubSection = (label: string) => (body: HTMLElement) => {
-  const wrap = document.createElement("div")
-  wrap.style.cssText = "display:flex;flex-direction:column;gap:10px;"
-  const h = document.createElement("div")
-  h.textContent = label
-  h.style.cssText = "font:800 12px/1 system-ui;letter-spacing:.08em;text-transform:uppercase;color:#9a8868;"
-  wrap.appendChild(h)
-  for (let i = 0; i < 4; i++) {
-    const row = document.createElement("div")
-    row.textContent = `${label} item ${i + 1}`
-    row.style.cssText =
-      "padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.5);border:1px solid rgba(120,100,70,.16);font:600 14px/1.3 system-ui;color:#3a2f25;"
-    wrap.appendChild(row)
+/* A stub section: a heading + paper rows, so the app screen looks alive. When
+   `subhead` is set it pins a STICKY `.wp-menu-subhead` (like Badges' filter band)
+   over a LONG list — the exact scaffold the "content peeks behind the header" QA
+   bug needed, so the harness reproduces it + proves the fix. */
+const stubSection =
+  (label: string, opts: { subhead?: boolean; rows?: number } = {}) =>
+  (body: HTMLElement) => {
+    const wrap = document.createElement("div")
+    wrap.style.cssText = "display:flex;flex-direction:column;gap:10px;"
+    if (opts.subhead) {
+      const sub = document.createElement("div")
+      sub.className = "wp-menu-subhead"
+      sub.style.cssText = "display:flex;flex-direction:column;gap:8px;"
+      const summary = document.createElement("div")
+      summary.textContent = "0 mastered"
+      summary.style.cssText = "font:600 14px/1.3 system-ui;color:#4a3c2e;"
+      const pills = document.createElement("div")
+      pills.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;"
+      for (const p of ["All", "Earned", "Locked"]) {
+        const pill = document.createElement("button")
+        pill.textContent = p
+        pill.style.cssText =
+          "border:1px solid rgba(120,100,70,.28);border-radius:999px;padding:5px 12px;background:rgba(255,250,240,.7);font:700 12px/1 system-ui;color:#5a4a32;"
+        pills.appendChild(pill)
+      }
+      sub.append(summary, pills)
+      wrap.appendChild(sub)
+    } else {
+      const h = document.createElement("div")
+      h.textContent = label
+      h.style.cssText =
+        "font:800 12px/1 system-ui;letter-spacing:.08em;text-transform:uppercase;color:#9a8868;"
+      wrap.appendChild(h)
+    }
+    for (let i = 0; i < (opts.rows ?? 4); i++) {
+      const row = document.createElement("div")
+      row.textContent = `${label} item ${i + 1}`
+      row.style.cssText =
+        "padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.5);border:1px solid rgba(120,100,70,.16);font:600 14px/1.3 system-ui;color:#3a2f25;"
+      wrap.appendChild(row)
+    }
+    body.appendChild(wrap)
+    return () => wrap.remove()
   }
-  body.appendChild(wrap)
-  return () => wrap.remove()
-}
 
 /* A mock CityRadio so the Music app renders its full UI (switch + transport + dial). */
 function mockRadio(): CityRadio {
@@ -134,7 +160,7 @@ const phone = createPhoneSheet({
     createSectionApp({ id: "map", titleKey: "phone.tab.map", icon: APP_ICONS.map, section: stubSection("Map") }),
     createSectionApp({ id: "things", titleKey: "phone.tab.things", icon: APP_ICONS.things, section: stubSection("Things") }),
     createSectionApp({ id: "quest", titleKey: "phone.tab.quest", icon: APP_ICONS.quest, section: stubSection("Quest") }),
-    createSectionApp({ id: "badges", titleKey: "phone.tab.badges", icon: APP_ICONS.badges, section: stubSection("Badges") }),
+    createSectionApp({ id: "badges", titleKey: "phone.tab.badges", icon: APP_ICONS.badges, section: stubSection("Badges", { subhead: true, rows: 14 }) }),
     createMusicApp({ getRadio: () => radio, profile }),
   ],
   objective: () => ({ title: "Find the café", done: 2, total: 3, appId: "quest" }),
