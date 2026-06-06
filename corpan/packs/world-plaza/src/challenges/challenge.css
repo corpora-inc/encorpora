@@ -179,6 +179,10 @@
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
+  /* never scroll sideways — a wide grid/word-search wraps or scales to fit, it
+     must never push the card or expose a horizontal scrollbar (quest-scene
+     sideways-scroll fix). */
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   padding: 16px 18px 18px;
   display: flex;

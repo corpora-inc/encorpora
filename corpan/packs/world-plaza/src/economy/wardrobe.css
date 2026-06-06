@@ -55,9 +55,28 @@
   .wp-wardrobe--in .wp-wardrobe-sheet { transform: translateY(0) scale(1); }
 }
 
-.wp-wardrobe-head { padding-inline-end: 40px; }
-.wp-wardrobe-title { font-size: 20px; font-weight: 800; color: #3a2a1c; }
-.wp-wardrobe-sub { font-size: 13.5px; color: #8a6c48; margin-top: 2px; }
+.wp-wardrobe-head { padding-inline-end: 44px; }
+.wp-wardrobe-title {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #3a2a1c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* a small gilt seam under the title that reads "atelier", not "form" */
+.wp-wardrobe-title::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 35% 30%, #fff0c8, var(--wp-wardrobe-accent) 70%);
+  box-shadow: 0 1px 3px -1px rgba(120, 80, 30, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+.wp-wardrobe-sub { font-size: 13.5px; color: #8a6c48; margin-top: 3px; }
 
 .wp-wardrobe-close {
   position: absolute;
@@ -78,13 +97,42 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6px 0;
-  background: radial-gradient(80% 70% at 50% 30%, #fff6e4, #f6ead2);
-  border-radius: 20px;
+  /* a fixed PORTRAIT height so the full standing figure frames cleanly and the
+     Babylon buffer has a stable box to size to (never collapses mid-animation). */
+  height: 300px;
+  flex: 0 0 auto;
+  padding: 10px 0 6px;
+  /* a soft daylight rotunda: a warm overhead pool fading into a grounded base, so
+     the 3D figure reads as standing in a lit alcove rather than floating. */
+  background:
+    radial-gradient(70% 58% at 50% 22%, #fffaf0, rgba(255, 250, 240, 0) 72%),
+    radial-gradient(120% 96% at 50% 122%, #f0e0c2 0%, #f8edd6 42%, #fbf3e3 100%);
+  border-radius: 22px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -16px 30px -18px rgba(120, 80, 36, 0.4);
+  overflow: hidden;
 }
-.wp-wardrobe-doll { width: 200px; height: 250px; display: block; }
+/* the live 3D portrait canvas — the in-world body, gently turning. (The figure
+   carries its OWN grounded contact shadow, so no CSS pad is needed here.) */
+.wp-wardrobe-fig {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: none; /* let the drag spin the figure, not scroll the sheet */
+}
+.wp-wardrobe-fig:active { cursor: grabbing; }
+.wp-wardrobe-doll { position: relative; z-index: 1; width: 200px; height: 250px; display: block; }
+.wp-wardrobe--aura .wp-wardrobe-fig,
 .wp-wardrobe--aura .wp-wardrobe-doll {
-  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--wp-wardrobe-accent) 65%, transparent));
+  filter: drop-shadow(0 0 16px color-mix(in srgb, var(--wp-wardrobe-accent) 70%, transparent));
+}
+@media (min-width: 600px) {
+  .wp-wardrobe-stage { height: 340px; }
 }
 .wp-wardrobe-bling-badges {
   display: flex;
@@ -167,6 +215,19 @@
 .wp-wardrobe-bling-glyph--seasonal { text-shadow: 0 0 8px rgba(230, 170, 60, 0.6); }
 .wp-wardrobe-bling-name { white-space: nowrap; }
 
+/* THE FINERY — the player's collected cosmetics, set apart as a small treasury
+   so a hard-won hat doesn't read like just another chip. A warm inset panel with
+   a hairline gilt frame. */
+.wp-wardrobe-bling {
+  padding: 12px;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 238, 0.9), rgba(248, 236, 214, 0.7));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 0 1px rgba(196, 150, 70, 0.32),
+    0 6px 16px -12px rgba(120, 80, 30, 0.5);
+}
 .wp-wardrobe-empty { font-size: 13px; color: #9a7a52; font-style: italic; }
 .wp-wardrobe-link {
   align-self: flex-start;

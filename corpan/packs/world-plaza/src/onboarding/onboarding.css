@@ -41,6 +41,9 @@
   /* torn-paper top edge feel via a subtle double border */
   border: 2px solid #fdf3e0;
   overflow-y: auto;
+  /* never let a chip row scroll the card sideways and occlude the first chips —
+     the chip rows wrap (`.wp-onb-chips` flex-wrap), so X must stay contained. */
+  overflow-x: hidden;
   transform: translateY(10px) scale(0.98);
   transition: transform 0.34s cubic-bezier(0.18, 0.9, 0.3, 1.1);
 }

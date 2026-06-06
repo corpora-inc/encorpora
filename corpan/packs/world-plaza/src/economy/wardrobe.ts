@@ -11,6 +11,7 @@ import {
   type DressState,
   type DressOption,
 } from "../onboarding/onboarding"
+import { createWardrobePreview, type WardrobePreview } from "./wardrobePreview"
 
 /**
  * wardrobe — RE-OPEN the avatar customizer in-game so the player changes outfit,
@@ -188,19 +189,36 @@ export function openWardrobe(opts: WardrobeOptions): WardrobeHandle {
   closeBtn.setAttribute("aria-label", strings.cancel)
   sheet.append(head, closeBtn)
 
-  /* stage: the paper-doll preview + a worn-bling badge row */
+  /* stage: the LIVE 3D portrait (the in-world body) + a worn-bling badge row.
+     A 2D paper-doll canvas is kept as a graceful fallback when WebGL is absent. */
   const stage = el("div", "wp-wardrobe-stage")
+  const figCanvas = el("canvas", "wp-wardrobe-fig") as HTMLCanvasElement
   const cv = el("canvas", "wp-wardrobe-doll") as HTMLCanvasElement
   cv.width = 240
   cv.height = 300
   const dctx = cv.getContext("2d")
   const blingBadges = el("div", "wp-wardrobe-bling-badges")
-  stage.append(cv, blingBadges)
+  stage.append(figCanvas, cv, blingBadges)
   sheet.append(stage)
 
+  // Try the real 3D character portrait; on failure fall back to the 2D doll.
+  let preview: WardrobePreview | null = null
+  try {
+    preview = createWardrobePreview(figCanvas, composeAvatar(dress, worn))
+  } catch (e) {
+    console.error("[wp/wardrobe] 3D preview failed to mount, using 2D doll:", e)
+  }
+  if (preview) {
+    cv.style.display = "none"
+  } else {
+    figCanvas.style.display = "none"
+  }
+
   const redrawDoll = () => {
-    if (dctx) drawDoll(dctx, 240, 300, dress)
-    // Auras get a glow ring behind the doll; worn cosmetics show as badges.
+    // Drive whichever portrait is live: 3D figure tracks the new look, else 2D.
+    if (preview) preview.setAvatar(composeAvatar(dress, worn))
+    else if (dctx) drawDoll(dctx, 240, 300, dress)
+    // Auras get a glow ring behind the portrait; worn cosmetics show as badges.
     blingBadges.replaceChildren()
     for (const [slot, w] of worn) {
       const def = ownedById.get(w.itemId)
@@ -242,7 +260,11 @@ export function openWardrobe(opts: WardrobeOptions): WardrobeHandle {
       refresh()
     })
     chips.append(noneChip)
+    // DEDUPE: the starter vocabulary carries an explicit "No Hat"/"No Accessory"
+    // data item whose id IS `noneId`. The single localized "None" chip above
+    // already covers it, so drop the data twin (else the row showed both).
     for (const it of items) {
+      if (it.id === noneId) continue
       const chip = el("button", "wp-wardrobe-chip", it.name)
       chip.dataset.id = it.id
       chip.addEventListener("click", () => {
@@ -406,6 +428,7 @@ export function openWardrobe(opts: WardrobeOptions): WardrobeHandle {
     root.classList.remove("wp-wardrobe--in")
     window.removeEventListener("keydown", onKey)
     const done = () => {
+      preview?.dispose()
       root.remove()
       if (applied) {
         try {

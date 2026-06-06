@@ -356,8 +356,11 @@ function buildWorld(
 
   const hint = document.createElement("div")
   hint.className = "wp-hint"
-  hint.textContent =
-    "Left half: move · Right half: look · Walk up to a character to Talk · (P) perf"
+  // The "(P) perf" affordance is a DEV-only debug toggle — never surface it (or
+  // its perf HUD) in the shipped embedded app; gate it behind import.meta.env.DEV.
+  hint.textContent = import.meta.env.DEV
+    ? "Left half: move · Right half: look · Walk up to a character to Talk · (P) perf"
+    : "Left half: move · Right half: look · Walk up to a character to Talk"
   overlay.appendChild(hint)
 
   const world = createWorldEngine(canvas, overlay, { skyColor: scene.palette?.sky })
@@ -2111,7 +2114,7 @@ function buildWorld(
   const onKey = (e: KeyboardEvent) => {
     if (shell.handleKey(e)) return // ESC → dialogue-close / pause / exit
     if (openDialogue) return // overlay is modal — swallow world hotkeys
-    if (e.key.toLowerCase() === "p") {
+    if (import.meta.env.DEV && e.key.toLowerCase() === "p") {
       perfOn = !perfOn
       world.setPerfHudVisible(perfOn)
     }

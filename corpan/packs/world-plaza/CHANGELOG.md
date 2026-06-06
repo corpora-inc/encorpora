@@ -7,6 +7,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **The wardrobe now previews your real 3D character.** Re-opening your wardrobe
+  shows the same lit "bubble person" you walk the world as — a full standing
+  figure in a warm portrait alcove that gently turns and that you can spin with a
+  drag — instead of the old flat paper doll. Every garment, hat, skin tone, and
+  piece of finery you tap updates the figure live. (It falls back to the 2D doll
+  if the device can't open a WebGL view, so the wardrobe always works.)
+- **Enterable buildings — walk into the Corner Café.** Walk up to the café and a
+  door affordance rises; step inside to a warm interior (lit window, chalkboard
+  menu, steaming cups, a real barista you chat with in your target language). The
+  café-order objective plays out here — tap **Order a coffee**, do a quick
+  mic-free drill, and the café quest advances. The interior is a screen-space
+  overlay scene, **not** a new 3D room, so entering a building adds zero
+  persistent draw calls and never touches the world's 60 FPS.
+- **Every named venue is now a real, placed landmark.** The café, outfitter,
+  general store, central green, stadium, and exchange are placed at real building
+  facades with stable anchors, so quests, the map, and door portals all bind to
+  them (previously several of these had no on-map home).
+
+### Fixed
+- **Wardrobe: one clear "None" per category + a premium feel.** The Hat and
+  Accessory rows showed a duplicate empty option ("None" *and* "No Hat"); each
+  category now offers a single "None". The whole sheet was elevated — a gilt-
+  seamed title, a lit portrait stage for the 3D figure, and the finery you've
+  collected set apart in its own framed treasury — so it reads as an atelier, not
+  a form.
+- **No more sideways scroll on the onboarding and quest screens.** A long row of
+  dress-up chips or a wide minigame grid could scroll the card sideways and hide
+  the first options; the onboarding card and the challenge body now clamp
+  horizontal overflow (the rows already wrap), so the first chips are always
+  reachable at every screen size.
+- **Dev-only "(P) perf" hint and perf HUD no longer leak into the app.** The
+  perf-toggle hint and its overlay are now gated behind a dev build, so they never
+  appear in normal play.
+- **NPC dialogue no longer contains emoji.** The on-device model sometimes
+  sprinkled emoji into a line ("…frutas frescas! 🍓"), breaking the grounded tone
+  and handing a pictograph to TTS. All generated NPC prose is now run through one
+  emoji/pictograph stripper at the single text chokepoint, so the dialogue bubble,
+  the spoken text, and the saved history are all clean. Real scripts (CJK, Arabic,
+  Devanagari, accented Latin), currency, digits, and punctuation are untouched.
+- **You no longer walk through the party bunting.** The festival flags strung
+  around the market square hung at head height; the line was raised so you pass
+  cleanly underneath.
+
 ### Changed
 - **Quest believability + cohesiveness pass.** Objective NPCs now stand at
   theme-matched venues instead of all crowding the plaza: the café order plays
