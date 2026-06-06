@@ -350,6 +350,48 @@
   padding: 4px 16px 10px;
 }
 
+/* --- App-scaffold scroll clipping (QA: content peeked through a strip behind the
+   header). Two shared fixes, scoped to the phone so the legacy menu is untouched:
+
+   1) The app header is OPAQUE and sits ABOVE the body in z, so list content that
+      scrolls up vanishes UNDER it (no see-through strip between the title bar and a
+      section's sub-header). The status bar + header share the paper background.
+   2) A section's STICKY sub-header (`.wp-menu-subhead` — Badges filter pills,
+      inventory group headings) is made FULLY OPAQUE here. Its styles.css default
+      fades to transparent at the bottom (designed for the old menu's edge-fade),
+      which let rows peek through that transparent band; in the device we want a
+      crisp opaque pin. The header's opacity + z is set on the in-app head rule. */
+.wp-phone-body .wp-menu-subhead {
+  /* Define the sticky pin HERE (self-contained — don't depend on styles.css load
+     order in the phone), and make it FULLY OPAQUE so the list scrolls cleanly
+     under it with no see-through strip. */
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--wp-phone-paper);
+  /* extend the opaque band to the scroller's horizontal padding so nothing shows
+     in the gutters as it pins. */
+  margin-inline: -16px;
+  padding: 8px 16px 10px;
+  box-shadow: 0 6px 8px -6px rgba(58, 47, 37, 0.12);
+}
+/* A soft top scroll-edge fade INSIDE the body (content dissolves as it reaches the
+   header instead of hard-cutting). Sticky pseudo-band, no JS. Sits under any
+   sub-header (z:1 < 2). */
+.wp-phone-body::before {
+  content: "";
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  display: block;
+  margin: -4px -16px 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(var(--wp-phone-paper), rgba(247, 239, 224, 0));
+}
+
 /* --- Home indicator (gesture bar) — the bottom pill. A real device's home
    gesture: tap = app→home, else close. Generous 44px-feel wrapper, a centered
    visible bar (the canonical handle pattern). --- */
@@ -534,9 +576,14 @@
   min-width: 0;
 }
 
-/* A slightly tighter header padding once inside an app (the back chevron is there). */
+/* A slightly tighter header padding once inside an app (the back chevron is there).
+   OPAQUE + above the body in z so list content scrolls cleanly UNDER it — no
+   see-through strip (QA fix). The paper bg masks anything scrolling up beneath. */
 .wp-phone-root.wp-phone-in-app .wp-phone-head {
   padding-inline-start: 12px;
+  position: relative;
+  z-index: 3;
+  background: var(--wp-phone-paper);
 }
 
 /* ================================ MUSIC APP =============================== */
