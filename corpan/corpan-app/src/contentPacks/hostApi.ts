@@ -13,8 +13,11 @@ import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
 import type { StackConfigPatch } from "./types"
 import type {
+  AsrApi,
   HostApi,
   LlmApi,
+  ModelBudget,
+  ModelsApi,
   PackDbQuery,
   SttApi,
   SttAudioLevelEvent,
@@ -566,6 +569,73 @@ export const createHostApi = (packId?: string): HostApi => {
     },
   }
 
+  // --- host.models: the Budget Arbiter seam ------------------------------
+  // The refcount/dedup STORE (install/evict/locate/list) is the registry
+  // plugin (Phase-2). But the BUDGET — the question World Plaza/Tutomaton
+  // actually ask ("does Qwen3-ASR fit next to my 4B right now?") — is
+  // answerable TODAY from real signals: device memory via stt.getStatus()
+  // (availableMemoryMB / physicalMemoryMB) and the resident LLM via
+  // llm.status(). We surface those; the store methods are honest stubs that
+  // report "not yet" rather than pretending. Noisy on error, never silent.
+  const RESIDENT_LLM_MB = 2500 // Qwen3-4B GGUF resident footprint (approx).
+  const readBudget = async (): Promise<ModelBudget> => {
+    let availableMB = 0
+    let physicalMB = 0
+    try {
+      const s = await invoke<SttStatus>("plugin:stt|get_status")
+      availableMB = s.availableMemoryMB ?? 0
+      physicalMB = s.physicalMemoryMB ?? 0
+    } catch (error) {
+      // The stt plugin is the device-memory oracle; if it's absent we report
+      // zeros (arbiter then conservatively blocks downloadable engines).
+      console.error("[models] budget: stt.get_status failed:", error)
+    }
+    const resident: ModelBudget["resident"] = []
+    try {
+      const ls = await llm.status()
+      if (ls?.loaded) {
+        resident.push({ id: "llm-base-qwen3-4b", mb: RESIDENT_LLM_MB, kind: "llm" })
+      }
+    } catch (error) {
+      // LLM plugin not registered (or not loaded) → no LLM resident entry.
+      console.error("[models] budget: llm.status failed:", error)
+    }
+    return { availableMB, physicalMB, resident }
+  }
+
+  const models: ModelsApi = {
+    // Store ops await the registry plugin (Phase-2). Report honestly.
+    list: async () => [],
+    ensure: async () => ({ ready: false, downloading: false }),
+    locate: async () => null,
+    evict: async () => {},
+    budget: readBudget,
+    fits: async (req) => {
+      const b = await readBudget()
+      const need = req.residentMB ?? 0
+      // Headroom = what the OS says we can still allocate. No eviction list
+      // until the refcount store exists, so mustEvict is empty for now.
+      return { fits: need > 0 && need <= b.availableMB, mustEvict: [] }
+    },
+    whatFitsAlongside: async () => {
+      // Until a provider plugin registers capabilities, nothing on-device
+      // qualifies; native (residentMemoryMB 0) would always pass once present.
+      return []
+    },
+  }
+
+  // --- host.asr: selection over registered providers ---------------------
+  // No asr-* provider plugin is registered yet → both methods return null,
+  // which means KEYBOARD (the permanent floor; callers MUST handle null).
+  // The moment asr-native (or another provider) lands, `provider("native")`
+  // returns it and `pick` routes through rankProviders over the registered
+  // providers' capabilities + the live budget. The seam is present NOW so
+  // packs can program against it without a feature flag.
+  const asr: AsrApi = {
+    provider: async () => null,
+    pick: async () => null,
+  }
+
   return {
     speak: async (uiCode, text) => {
       await speakImmediate(uiCode, text)
@@ -870,5 +940,7 @@ export const createHostApi = (packId?: string): HostApi => {
     },
     stt,
     llm,
+    asr,
+    models,
   }
 }
