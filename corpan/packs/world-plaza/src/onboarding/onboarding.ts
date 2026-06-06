@@ -47,6 +47,21 @@ export interface OnboardingOptions {
    * front. Defaults to "en".
    */
   native?: string
+  /**
+   * EDIT-IDENTITY mode (#110): a RETURNING player re-running ONLY the name + look
+   * steps to change them. When true, `runOnboarding`:
+   *   - SEEDS the name roller + wardrobe from `seedName`/`seedAvatar` (the player's
+   *     current identity) so it opens on their existing choices, not random ones;
+   *   - runs ONLY steps name → dress (no welcome hero, no music consent — those are
+   *     first-run only); the dress step's primary button SAVES + closes;
+   *   - resolves the (possibly edited) identity exactly like first-run, so the
+   *     caller persists it + applies the look in place via `player.redress`.
+   */
+  editOnly?: boolean
+  /** EDIT mode: the player's current display name to seed the roller. */
+  seedName?: GeneratedIdentity
+  /** EDIT mode: the player's current avatar to seed the wardrobe. */
+  seedAvatar?: AvatarSpec
 }
 
 export interface OnboardingResult {
@@ -364,9 +379,17 @@ export function runOnboarding(
   currentPlayerId = opts.playerId ?? "player-local"
   const t: BoundT = bindT(opts.native ?? "en")
 
+  // #110 — EDIT mode: re-running ONLY name + look, seeded from the current identity.
+  const editOnly = opts.editOnly === true
+
   return new Promise<OnboardingResult>((resolve) => {
-    const dress = defaultDress()
-    let nameState = rollName()
+    // EDIT mode seeds from the player's CURRENT identity (so the roller/wardrobe open
+    // on their existing name + look); first-run starts from sensible random defaults.
+    const dress = editOnly && opts.seedAvatar ? dressFromAvatar(opts.seedAvatar) : defaultDress()
+    let nameState =
+      editOnly && opts.seedName
+        ? { identity: opts.seedName, display: opts.seedName.displayName }
+        : rollName()
 
     const root = el("div", "wp-onb")
     // Orient the onboarding card for an RTL native (Arabic, Hebrew, Farsi, Urdu).
@@ -400,21 +423,29 @@ export function runOnboarding(
     skip.onclick = () => finish() // resolves with the current (sensible) defaults
     card.appendChild(skip)
 
-    // Step dots — welcome · name · dress · music (the music step is the consent
-    // gate so the radio never starts from nowhere; world-plaza-onboarding-music-consent).
+    // Step dots — first-run: welcome · name · dress · music (the music step is the
+    // consent gate so the radio never starts from nowhere). EDIT mode (#110): only
+    // the two editable steps (name · dress) — no welcome hero, no music re-consent.
     const dots = el("div", "wp-onb-dots")
-    const dotEls = [0, 1, 2, 3].map(() => el("span", "wp-onb-dot"))
-    dotEls.forEach((d) => dots.appendChild(d))
+    const dotIdx = editOnly ? [1, 2] : [0, 1, 2, 3]
+    const dotEls = new Map<number, HTMLElement>()
+    for (const i of dotIdx) {
+      const d = el("span", "wp-onb-dot")
+      dotEls.set(i, d)
+      dots.appendChild(d)
+    }
     card.appendChild(dots)
 
     // Step host (content swaps here)
     const host = el("div", "wp-onb-host")
     card.appendChild(host)
 
-    let step: 0 | 1 | 2 | 3 = opts.startStep ?? 0
+    // EDIT mode opens directly on the NAME step (welcome is first-run only).
+    let step: 0 | 1 | 2 | 3 = opts.startStep ?? (editOnly ? 1 : 0)
     const setStep = (s: 0 | 1 | 2 | 3) => {
       step = s
       dotEls.forEach((d, i) => d.classList.toggle("wp-onb-dot--on", i === s))
+      void step // step is read by callers/handlers; keep the assignment meaningful
       host.classList.remove("wp-onb-host--in")
       host.innerHTML = ""
       if (s === 0) renderWelcome()
@@ -637,9 +668,12 @@ export function runOnboarding(
 
       host.appendChild(wardrobe)
 
-      // Dress is no longer the LAST step — advance to the music-consent step.
-      const next = el("button", "wp-onb-btn wp-onb-btn--primary wp-onb-btn--enter", t("onb.dress.next"))
-      next.onclick = () => setStep(3)
+      // First-run: dress advances to the music-consent step. EDIT mode (#110): dress
+      // is the LAST step — its button SAVES the (possibly changed) name + look and
+      // closes; the caller persists + applies the look in place via player.redress.
+      const dressBtnKey = editOnly ? "onb.edit.save" : "onb.dress.next"
+      const next = el("button", "wp-onb-btn wp-onb-btn--primary wp-onb-btn--enter", t(dressBtnKey))
+      next.onclick = editOnly ? () => finish() : () => setStep(3)
       host.appendChild(next)
     }
 

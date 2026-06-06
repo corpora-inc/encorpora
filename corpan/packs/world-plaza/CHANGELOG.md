@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Re-onboard / edit profile: returning players can change their name + look.**
+  Onboarding runs once per profile, so a returning player was stuck with their
+  original name and clothes. Added an EDIT mode to `runOnboarding` (`editOnly`) that
+  re-runs ONLY the name roller + wardrobe steps, seeded from the player's CURRENT
+  identity (no welcome hero, no music re-consent), with a "Save changes" button. A
+  new **Profile** app on the phone home grid launches it; on save the look applies in
+  place via `player.redress` (the same path the in-game wardrobe uses) and the name +
+  look persist to the per-profile identity store. Single-language safe; localized in
+  ~46 langs (`onb.edit.save`/`onb.edit.entry`/`profile.app`). Tests in
+  `onboardingEdit.test.ts`.
+
 ### Fixed
 - **NPC TTS voice now always matches the CURRENT target language — voice stickiness
   CLEARS on world entry / stack change.** An ES→EN learner heard the NPC's correct
