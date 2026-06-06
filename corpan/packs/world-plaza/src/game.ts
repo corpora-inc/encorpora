@@ -14,7 +14,7 @@ import { createJuice } from "./juice/juice"
 import { createNpcFocus } from "./world/npcFocus"
 import { createCrowd, type CrowdFocusHandle } from "./world/crowd"
 import { createCameraFade } from "./world/cameraFade"
-import { createShell } from "./shell"
+import { createShell, type MenuSectionView, type MenuSectionId } from "./shell"
 import { createNpcRuntime, npcDisplayName } from "./npc/npcRuntime"
 import { initMultiplayer, resolveServerUrl, type MultiplayerHandle } from "./multiplayer"
 import { createMockHost } from "./npc/mockHost"
@@ -59,10 +59,12 @@ import { createInventorySection } from "./inventory/inventoryPanel"
 import {
   createPhoneSheet,
   createPhoneFab,
-  createInventoryApp,
+  createSectionApp,
   createMusicApp,
+  APP_ICONS,
   type PhoneSheet,
 } from "./shell/phone"
+import { musicProfileStore } from "./audio/musicProfile"
 import { mountPlaceTag } from "./shell/placeTag"
 import { createChromeVisibility, type ChromeState } from "./shell/chromeVisibility"
 import { createEconomyHud } from "./economy/economyHud"
@@ -475,7 +477,11 @@ function buildWorld(
   // we suppress the procedural soundscape bed so you hear the radio, not both.
   // Footsteps/SFX (soundscape) stay. Ducking/phone-UI are deferred (see cityRadio.ts).
   let cityRadio: CityRadio | null = null
-  void createCityRadio({ volume: 0.5 })
+  // Restore the player's PERSISTED music choice (volume now; enabled/station gate the
+  // ambient start below). Music must never come out of nowhere — `enabled` defaults
+  // false, so a fresh player hears nothing until they opt in via the Phone's Music app.
+  const savedMusic = musicProfileStore.get()
+  void createCityRadio({ volume: savedMusic.volume })
     .then((r) => {
       cityRadio = r // started from the render loop below (race-safe), not here
     })
@@ -1685,88 +1691,90 @@ function buildWorld(
   // M0: the shell mounts ALL its chrome (menu panel, menu button, exit confirm)
   // INSIDE `.wp-overlay` (the host's accepted render surface), so the menu/exit
   // can never be clipped invisible when embedded in the Corpán host.
+  // The Quest section (the full objective/steps/progress + switch-quest + immersion
+  // toggle). Built as a named const so the PHONE's Quest app hosts it (the same
+  // `MenuSectionView` the old menu used — re-homed, not rebuilt).
+  const questSection: MenuSectionView = createQuestSection({
+    engine: questEngine,
+    inventory: inventory(),
+    anchorName,
+    accent: scene.palette?.accent,
+    // Lazy locale: the section's `MenuSectionView` runs on each open, so reading
+    // the LIVE locale here means re-opening after an immersion flip shows the new
+    // language without a world rebuild.
+    strings: () => makeSectionStrings(currentUiLocale()),
+    // Keyed-quest localizer (title/narrative/step labels). Lazy ⇒ re-opening
+    // after an immersion flip renders quest copy in the new UI locale.
+    localizeQuest: () => questRuntime.localizer(),
+    // The switch-quest escape hatch (#41): list every quest (active marked,
+    // completed flagged) so the player is NEVER trapped on one they can't or
+    // don't want to finish. Picking one re-points the world via setActiveQuest.
+    questChoices: () => {
+      const activeId = questEngine.quest().id
+      const activeComplete = questEngine.state().complete
+      const loc = questRuntime.localizer()
+      return allQuests().map((q) => {
+        const fs = firstStep(q)
+        const isActive = q.id === activeId
+        return {
+          id: q.id,
+          title: loc.title(q),
+          whereToGo: fs?.anchorId ? anchorName(fs.anchorId) : undefined,
+          isActive,
+          // Only the ACTIVE quest's progress is tracked live (the engine store
+          // is keyed by quest id); others show as fresh journeys to pick.
+          isComplete: isActive && activeComplete,
+        }
+      })
+    },
+    onSwitchQuest: (id) => {
+      const next = getQuest(id)
+      if (next) setActiveQuest(next)
+    },
+    // The immersion toggle lives at the top of the Quest section (§8). Hidden
+    // for a single-language Track (no native to hide). Flipping it persists the
+    // per-Track level and re-localizes IN PLACE (no world rebuild → the player
+    // stays exactly put). The toggle's OWN label stays NATIVE (#20b).
+    controls: immersionToggleApplies(learnerPair)
+      ? (host) => {
+          const tog = mountImmersionToggle(host, {
+            level: resolver.level(),
+            accent: scene.palette?.accent,
+            t: bindT(nativeLocale), // #20b: always the learner's native language
+            onChange: (next) => {
+              immersionStore.set(learnerPair, next)
+              relocalize(next)
+              tog.setLevel(next)
+            },
+          })
+        }
+      : undefined,
+  })
+
+  // ── PHONE-AS-MENU (world-plaza-phone-os) ────────────────────────────────────
+  // The Phone is now the SINGLE in-game menu (the old Map|Inventory|Quest|Badges
+  // modal + the satchel FAB are retired). The shell keeps ESC routing + the exit
+  // confirm + the save seam, but DELEGATES "open the menu" to the phone. The phone
+  // (built just below) hosts each old section as an app. `phone` is forward-declared
+  // so the delegate can reference it (only fired on user action → assigned by then).
+  // The menu deep-link id "inventory" maps to the phone's "things" app id.
+  let phone: PhoneSheet
+  const toAppId = (section?: MenuSectionId): string | undefined =>
+    section === "inventory" ? "things" : section
   const shell = createShell({
     overlay,
     accent: scene.palette?.accent,
-    // Menu chrome (title, Resume, Leave, tabs, "coming soon") in the NATIVE language.
-    strings: { menu: makeMenuStrings(uiLocale) },
-    sections: {
-      badges: badges.section,
-      map: createMapSection(mapOpts),
-      // REAL Inventory + Quest sections (no more "coming soon"). Inventory = the
-      // multi-currency wallet shown properly (named currencies + premium glyphs) +
-      // owned items + a badges summary. Quest = the full objective/steps/progress.
-      inventory: inventorySection,
-      quest: createQuestSection({
-        engine: questEngine,
-        inventory: inventory(),
-        anchorName,
-        accent: scene.palette?.accent,
-        // Lazy locale: the section's `MenuSectionView` runs on each open, so reading
-        // the LIVE locale here means re-opening after an immersion flip shows the new
-        // language without a world rebuild.
-        strings: () => makeSectionStrings(currentUiLocale()),
-        // Keyed-quest localizer (title/narrative/step labels). Lazy ⇒ re-opening
-        // after an immersion flip renders quest copy in the new UI locale.
-        localizeQuest: () => questRuntime.localizer(),
-        // The switch-quest escape hatch (#41): list every quest (active marked,
-        // completed flagged) so the player is NEVER trapped on one they can't or
-        // don't want to finish. Picking one re-points the world via setActiveQuest.
-        questChoices: () => {
-          const activeId = questEngine.quest().id
-          const activeComplete = questEngine.state().complete
-          const loc = questRuntime.localizer()
-          return allQuests().map((q) => {
-            const fs = firstStep(q)
-            const isActive = q.id === activeId
-            return {
-              id: q.id,
-              title: loc.title(q),
-              whereToGo: fs?.anchorId ? anchorName(fs.anchorId) : undefined,
-              isActive,
-              // Only the ACTIVE quest's progress is tracked live (the engine store
-              // is keyed by quest id); others show as fresh journeys to pick.
-              isComplete: isActive && activeComplete,
-            }
-          })
-        },
-        onSwitchQuest: (id) => {
-          const next = getQuest(id)
-          if (next) setActiveQuest(next)
-        },
-        // The immersion toggle lives at the top of the Quest section (§8). Hidden
-        // for a single-language Track (no native to hide). Flipping it persists the
-        // per-Track level and re-localizes IN PLACE (no world rebuild → the player
-        // stays exactly put). The toggle's OWN label stays NATIVE (#20b).
-        controls: immersionToggleApplies(learnerPair)
-          ? (host) => {
-              const tog = mountImmersionToggle(host, {
-                level: resolver.level(),
-                accent: scene.palette?.accent,
-                t: bindT(nativeLocale), // #20b: always the learner's native language
-                onChange: (next) => {
-                  immersionStore.set(learnerPair, next)
-                  relocalize(next)
-                  tog.setLevel(next)
-                },
-              })
-            }
-          : undefined,
-      }),
+    menu: {
+      open: (section) => phone.open(toAppId(section)),
+      isOpen: () => phone.isOpen(),
+      close: () => phone.close(),
     },
     isDialogueOpen: () => openDialogue !== null,
     closeDialogue: () => openDialogue?.close(),
-    onPause: () => {
-      setWorldActive(false)
-      npcRuntime.onBackground()
-      // Menu opened → the menu IS the surface; recede the top band + pack button.
-      chrome.set("menu")
-    },
-    onResume: () => {
-      setWorldActive(true)
-      // Menu closed → chrome returns (or stays receded if a dialogue is still up).
-      refreshChrome()
-    },
+    // onPause/onResume are unused under the phone delegate (the phone's own
+    // onOpen/onClose drive the pause + chrome recede); kept for the shell contract.
+    onPause: () => {},
+    onResume: () => {},
     onStandaloneExit: () => teardown(),
   })
 
@@ -1820,45 +1828,60 @@ function buildWorld(
     presenceCount: () => mapView.getRemotePositions().length,
   })
 
-  // Register the three chrome surfaces with the visibility state machine: the
-  // capsule + place tag are the "band", the pack button (the shell's satchel,
-  // queried out of the overlay) is the "pack" (dims on `focused`, hides on
-  // dialogue/challenge/menu). Apply the current state immediately.
+  // Register the chrome surfaces with the visibility state machine: the capsule +
+  // place tag are the "band"; the minimap is "map"; the phone FAB (below) is the
+  // sole "pack" surface (dims on `focused`, hides on dialogue/challenge/menu). The
+  // old satchel pack button is retired — the one Corpán-logo FAB owns the corner.
   chrome.register({ el: tracker.el, role: "band" })
   chrome.register({ el: placeTag.el, role: "band" })
   // The corner minimap is a "map" surface — it RECEDES during a blocking surface
   // (challenge/dialogue/menu) the same way the band does, so the map doesn't sit
   // over an NPC chat or a centered challenge (G — chrome coherence).
   chrome.register({ el: minimap.el, role: "map" })
-  const packButton = overlay.querySelector<HTMLElement>(".wp-menu-button")
-  if (packButton) chrome.register({ el: packButton, role: "pack" })
-  else console.warn("[world-plaza] pack button (.wp-menu-button) not found — chrome won't govern it")
 
-  // ── The PHONE (extensible app-shell: Inventory + City Radio) ───────────────
-  // A premium in-world phone "OS" opened from the "all-hearing ear" FAB. It hosts
-  // pluggable APPS — Inventory ("Things") embeds the SAME `inventorySection` the
-  // menu uses (no duplicate wallet/item logic); Music drives the `cityRadio` handle
-  // + subscribes to its reactive Now-Playing state. Future Mail/Calls/Quest apps
-  // slot into the `apps` array without touching the shell. Forward-declared so the
-  // phone's onOpen/onClose can hide/show the FAB (the phone IS the surface while
-  // open, so its own launcher should step aside).
+  // ── The PHONE: the SINGLE in-game menu (world-plaza-phone-os) ───────────────
+  // A premium in-world phone SIMULATOR opened from ONE FAB (the Corpán brand mark).
+  // Its HOME SCREEN is a grid of apps: Map, Things (Inventory), Quest, Badges, and
+  // Music. Each app re-homes the SAME `MenuSectionView` the old menu used (no logic
+  // duplicated); Music drives the `cityRadio` handle + the persisted music profile.
+  // "Leave the Plaza" lives on the home screen → the shell's exit handshake. The
+  // phone's onOpen/onClose drive the world pause + the chrome recede (the phone IS
+  // the surface while open). Future Mail/Calls slot into `apps` without shell change.
   let phoneFab: ReturnType<typeof createPhoneFab>
-  const phone: PhoneSheet = createPhoneSheet({
+  // `phone` is forward-declared above (the shell's menu delegate references it).
+  phone = createPhoneSheet({
     overlay,
     accent: scene.palette?.accent,
     locale: currentUiLocale, // native locale, read live (immersion flip re-localizes on next open)
     apps: [
-      createInventoryApp(inventorySection),
+      createSectionApp({ id: "map", titleKey: "phone.tab.map", icon: APP_ICONS.map, section: createMapSection(mapOpts) }),
+      createSectionApp({ id: "things", titleKey: "phone.tab.things", icon: APP_ICONS.things, section: inventorySection }),
+      createSectionApp({ id: "quest", titleKey: "phone.tab.quest", icon: APP_ICONS.quest, section: questSection }),
+      createSectionApp({ id: "badges", titleKey: "phone.tab.badges", icon: APP_ICONS.badges, section: badges.section }),
       // getRadio read LAZILY: cityRadio probes async at boot, so a slightly-late
-      // handle still wires the Music app when the phone first opens.
-      createMusicApp(() => cityRadio),
+      // handle still wires the Music app when the phone first opens. The Music app
+      // reflects + writes the persisted {enabled, station, volume} profile.
+      createMusicApp({ getRadio: () => cityRadio, profile: musicProfileStore }),
     ],
-    onOpen: () => phoneFab?.hide(),
-    onClose: () => phoneFab?.show(),
+    // "Leave the Plaza" — homed on the phone home screen → the proven exit confirm.
+    onLeave: () => void shell.requestExit(),
+    onOpen: () => {
+      phoneFab?.hide()
+      setWorldActive(false)
+      npcRuntime.onBackground()
+      shell.save()
+      // The phone IS the surface — recede the top band + minimap + the FAB.
+      chrome.set("menu")
+    },
+    onClose: () => {
+      phoneFab?.show()
+      setWorldActive(true)
+      // Chrome returns (or stays receded if a dialogue is still up).
+      refreshChrome()
+    },
   })
-  // The "all-hearing ear" launcher FAB — bottom-left, STACKED above the pack
-  // button (CSS offset = pack-size + gap, so they never overlap); a `pack`-role
-  // chrome surface so it recedes with the chrome as one breath.
+  // The single Corpán-logo launcher FAB — bottom-left; a `pack`-role chrome surface
+  // so it recedes with the chrome as one breath.
   phoneFab = createPhoneFab({
     parent: overlay,
     accent: scene.palette?.accent,
@@ -2072,24 +2095,33 @@ function buildWorld(
     const p = player.getPos()
     crowd.update(dt, p) // wander + greet-on-approach
     juice.update(dt)
-    // Start the ambient audio ONCE. Native radio needs no user gesture → start it
+    // Resume the player's CONSENTED music ONCE (never from nowhere — owner rule).
+    // We only auto-start if the persisted profile says `enabled`; then we tune the
+    // saved station at the saved volume. Native radio needs no gesture → start it
     // here in the render loop on the first frame after the probe resolves (NOT in
-    // the async probe callback — that fired during the mount window, where a
-    // double-mount dispose race could tear down the very instance that just started
-    // → no music). The render loop only runs for the LIVE game, so this is race-safe.
+    // the async probe callback — a double-mount dispose race could tear down the
+    // instance that just started). The render loop only runs for the LIVE game.
+    const startSavedStation = (r: CityRadio): Promise<void> => {
+      r.setVolume(savedMusic.volume)
+      const ch = r.channels().find((c) => c.id === savedMusic.stationId)
+      return ch ? r.play(ch) : r.start()
+    }
     if (!ambientStarted && cityRadio && cityRadio.mode() === "native") {
       ambientStarted = true
-      void cityRadio.start()
+      if (savedMusic.enabled) void startSavedStation(cityRadio)
     }
     const tap = input.consumeTap()
     if (tap) {
       // First user gesture unlocks WebAudio (footsteps/SFX) + the desktop <audio>
-      // path; the procedural bed is the fallback when there's no radio at all.
+      // path. SFX always resume; music (radio OR the procedural bed) only if the
+      // player consented — otherwise the world stays silent until they opt in.
       soundscape.resume()
       if (!ambientStarted && cityRadio) {
         ambientStarted = true
-        if (cityRadio.mode() === "webaudio") void cityRadio.start()
-        else soundscape.startAmbient()
+        if (savedMusic.enabled) {
+          if (cityRadio.mode() === "webaudio") void startSavedStation(cityRadio)
+          else soundscape.startAmbient()
+        }
       }
     }
     focus.update(dt, p, tap)

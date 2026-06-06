@@ -13,21 +13,18 @@
  */
 
 /* ----------------------------------------------------------------------------
- * The launcher FAB — the "all-hearing ear" (phoneFab.ts).
+ * The launcher FAB — THE CORPÁN APP LOGO (phoneFab.ts).
  *
- * Mirrors `.wp-menu-button` (src/styles.css) EXACTLY in size/skin/chrome-recede,
- * but STACKS one slot ABOVE the pack button in the bottom-left corner: its
- * `bottom` adds one --wp-pack-size + a gap so the two FABs share a corner without
- * ever overlapping (FAB corner-grid rule). Registered with chrome as role "pack",
- * so it dims/recedes with the rest of the chrome via [data-wp-chrome].
+ * This is now the SINGLE bottom-left FAB (the satchel pack button is retired): one
+ * Corpán-mark FAB → the phone. It owns the corner outright, so there's no stacking
+ * offset anymore — it sits at the same inset the pack button used to. Registered
+ * with chrome as role "pack", so it dims/recedes with the rest of the chrome via
+ * [data-wp-chrome]. The mark fills the tile (it's the real app icon, not a glyph).
  * ------------------------------------------------------------------------- */
 .wp-phone-fab {
   --wp-phone-fab-accent: #c46b4a;
   position: absolute;
-  bottom: calc(
-    var(--wp-fab-inset, 14px) + env(safe-area-inset-bottom, 0px) + var(--wp-pack-size, 44px) +
-      var(--wp-fab-gap, 12px)
-  );
+  bottom: calc(var(--wp-fab-inset, 14px) + env(safe-area-inset-bottom, 0px));
   left: calc(var(--wp-fab-inset, 14px) + env(safe-area-inset-left, 0px));
   width: var(--wp-pack-size, 44px);
   height: var(--wp-pack-size, 44px);
@@ -36,9 +33,10 @@
   display: grid;
   place-items: center;
   padding: 0;
+  overflow: hidden;
   border: none;
   border-radius: var(--wp-r-chip, 12px);
-  background: var(--wp-paper-chip, rgba(247, 239, 224, 0.88));
+  background: var(--wp-paper-chip, rgba(247, 239, 224, 0.92));
   -webkit-backdrop-filter: blur(var(--wp-blur-chip, 6px)) saturate(1.05);
   backdrop-filter: blur(var(--wp-blur-chip, 6px)) saturate(1.05);
   box-shadow: var(--wp-e2, 0 4px 14px rgba(58, 47, 37, 0.2)),
@@ -64,10 +62,16 @@
   transform: scale(0.9);
   pointer-events: none;
 }
-.wp-phone-fab-icon {
-  width: 24px;
-  height: 24px;
-  color: var(--wp-phone-fab-accent);
+/* The brand mark fills the tile with a little breathing room (it reads as the app
+   icon). `pointer-events:none` so the <img> never eats the button's tap. */
+.wp-phone-fab-mark {
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 .wp-phone-fab:active {
   transform: scale(0.92);
@@ -185,19 +189,48 @@
   background: rgba(120, 100, 70, 0.32);
 }
 
-/* --- Header --- */
+/* --- Header (back chevron · title · close) --- */
 .wp-phone-head {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   padding: 2px 16px 10px;
+}
+.wp-phone-back {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(122, 106, 85, 0.12);
+  color: var(--wp-phone-ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  /* hidden on the home screen; JS toggles display */
+}
+.wp-phone-back:hover {
+  background: rgba(122, 106, 85, 0.2);
+}
+.wp-phone-back svg {
+  width: 19px;
+  height: 19px;
+  display: block;
+}
+/* RTL: the back chevron points the other way (logical, via the root dir). */
+[dir="rtl"] .wp-phone-back svg {
+  transform: scaleX(-1);
 }
 .wp-phone-title {
   flex: 1 1 auto;
+  min-width: 0;
   font-weight: 800;
   font-size: 18px;
   letter-spacing: 0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .wp-phone-close {
   flex: 0 0 auto;
@@ -217,47 +250,206 @@
   background: rgba(122, 106, 85, 0.2);
 }
 
-/* --- Tabs (segmented control) --- */
-.wp-phone-tabs {
-  flex: 0 0 auto;
-  display: flex;
-  gap: 4px;
-  margin: 0 16px 8px;
-  padding: 4px;
-  border-radius: 14px;
-  background: rgba(120, 100, 70, 0.1);
-}
-.wp-phone-tab {
-  flex: 1 1 0;
-  border: none;
-  background: transparent;
-  border-radius: 11px;
-  padding: 9px 8px;
-  font: 700 12.5px/1.2 inherit;
-  color: var(--wp-phone-ink-soft);
-  cursor: pointer;
-  transition: background 0.16s ease, color 0.16s ease;
-}
-.wp-phone-tab[aria-selected="true"] {
-  background: var(--wp-phone-paper);
-  color: var(--wp-phone-ink);
-  box-shadow: 0 2px 9px rgba(58, 47, 37, 0.14);
-}
-
-/* --- Body (the sole scroll region) --- */
+/* --- Body (the sole scroll region) — holds EITHER the home grid OR an app.
+   `overflow: hidden auto` clips horizontally + scrolls vertically; min-width:0 so
+   a wide section (currency rows, the map stage) never blows the inline axis out
+   and clips its start edge (the inventory horizontal-scroll bug). --- */
 .wp-phone-body {
   flex: 1 1 auto;
+  min-width: 0;
   min-height: 0;
   overflow: hidden auto;
   -webkit-overflow-scrolling: touch;
   padding: 4px 16px 18px;
 }
 
-/* ================================ MUSIC TAB ================================ */
+/* ================================ HOME SCREEN ============================== */
+/* A grid of app icons — the phone simulator's springboard. */
+.wp-phone-home {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 6px;
+}
+.wp-phone-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px 10px;
+}
+.wp-phone-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  background: transparent;
+  padding: 4px 2px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 14px;
+  transition: transform 0.12s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wp-phone-app:active {
+  transform: scale(0.93);
+}
+.wp-phone-app:focus-visible {
+  outline: 2px solid var(--wp-phone-accent);
+  outline-offset: 2px;
+}
+/* The rounded icon tile — a soft paper square (iOS "squircle" feel). `--wp-phone-tile`
+   lets a specific app tint its tile (Music = the brand terracotta). */
+.wp-phone-app-icon {
+  --wp-phone-tile: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 62px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--wp-phone-tile), rgba(247, 238, 222, 0.5));
+  border: 1px solid var(--wp-phone-hairline);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 3px 9px rgba(58, 47, 37, 0.14);
+  color: var(--wp-phone-ink);
+}
+.wp-phone-app-icon svg {
+  width: 54%;
+  height: 54%;
+  display: block;
+}
+/* The Music tile carries the brand mark on a terracotta wash. */
+.wp-phone-app-mark {
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+.wp-phone-app-name {
+  font: 600 11.5px/1.15 inherit;
+  color: var(--wp-phone-ink);
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* "Leave the Plaza" — a quiet, dignified row at the foot of the home screen. */
+.wp-phone-leave {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 10px 18px;
+  border: 1px solid var(--wp-phone-hairline);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--wp-phone-ink-soft);
+  font: 700 13px/1 inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 42px;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+.wp-phone-leave:hover {
+  background: rgba(255, 255, 255, 0.66);
+  color: var(--wp-phone-ink);
+}
+.wp-phone-leave svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+/* ================================ APP STAGE =============================== */
+/* The single region an opened app mounts into. min-width:0 protects the inline
+   axis (re-homed sections can be content-wide). */
+.wp-phone-app-stage {
+  min-width: 0;
+}
+
+/* A slightly tighter header padding once inside an app (the back chevron is there). */
+.wp-phone-root.wp-phone-in-app .wp-phone-head {
+  padding-inline-start: 12px;
+}
+
+/* ================================ MUSIC APP =============================== */
 .wp-phone-music {
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+.wp-phone-music-player {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* The MUSIC ON/OFF switch — the consent control (never auto-blast). */
+.wp-phone-music-switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fffaf0, #f3e8d3);
+  border: 1px solid var(--wp-phone-hairline);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+.wp-phone-music-switch-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.wp-phone-music-switch-title {
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--wp-phone-ink);
+}
+.wp-phone-music-switch-sub {
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--wp-phone-ink-soft);
+}
+/* The pill switch (a real toggle, ≥44px hit zone via padding). */
+.wp-phone-switch {
+  flex: 0 0 auto;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(120, 100, 70, 0.26);
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.18s ease;
+}
+.wp-phone-switch--on {
+  background: var(--wp-phone-accent);
+}
+.wp-phone-switch-knob {
+  position: absolute;
+  top: 3px;
+  inset-inline-start: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(58, 47, 37, 0.32);
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wp-phone-switch--on .wp-phone-switch-knob {
+  transform: translateX(20px);
+}
+[dir="rtl"] .wp-phone-switch--on .wp-phone-switch-knob {
+  transform: translateX(-20px);
+}
+.wp-phone-switch:focus-visible {
+  outline: 2px solid var(--wp-phone-accent);
+  outline-offset: 2px;
 }
 .wp-phone-music-heading {
   font: 700 11px/1 inherit;

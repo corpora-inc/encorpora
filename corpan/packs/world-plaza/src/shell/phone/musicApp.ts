@@ -1,16 +1,28 @@
 /**
  * musicApp — the Phone's "Music" app: a Now-Playing + transport + station browser
- * over the city radio (`cityRadio`). It OWNS no playback logic — it drives the
- * `CityRadio` handle (toggle / next / prev / play / setVolume) and SUBSCRIBES to
- * its reactive state so the Now-Playing label, transport icon, volume slider, and
- * current-station highlight stay truthful (incl. the live ICY title on device).
+ * over the city radio (`cityRadio`), fronted by an explicit MUSIC ON/OFF switch.
+ *
+ * Owner direction (world-plaza-onboarding-music-consent): music must NEVER come
+ * out of nowhere. So this app does NOT auto-play — it reflects + drives a persisted
+ * profile (`musicProfileStore`: {enabled, stationId, volume}). The big switch is
+ * the consent: ON starts the chosen station and remembers it; OFF stops it and
+ * remembers THAT. Station + volume changes persist too, so a restart resumes the
+ * player's exact choice rather than a default blast.
+ *
+ * Its home-grid ICON is the Corpán brand mark (the all-hearing ear ↔ listening ↔
+ * radio). It OWNS no playback logic — it drives the `CityRadio` handle and writes
+ * the profile; it SUBSCRIBES to the radio's reactive state so the Now-Playing
+ * label, transport icon, volume slider, and current-station highlight stay
+ * truthful (incl. the live ICY title on device).
  *
  * Single-language safe + no-radio safe: when `mode === "unavailable"` it shows a
  * quiet dignified line, never a dead end. Every catch logs (never silent).
  */
 
 import type { PhoneApp, PhoneAppContext, PhoneAppInstance, PhoneT } from "./phoneApp"
-import type { CityRadio, RadioState } from "../../audio/cityRadio"
+import type { CityRadio, RadioState, RadioChannel } from "../../audio/cityRadio"
+import type { MusicProfileStore } from "../../audio/musicProfile"
+import { CORPAN_MARK_DATA_URI } from "../../assets/corpanMark"
 
 const LOG = "[wp/phone/musicApp]"
 
@@ -32,30 +44,34 @@ function elt(tag: string, cls?: string): HTMLElement {
   return n
 }
 
-/**
- * Build the Music Phone app. `getRadio` is read LAZILY on mount so a slightly-late
- * radio handle (it probes async at boot) still wires up when the phone opens.
- */
-export function createMusicApp(getRadio: () => CityRadio | null): PhoneApp {
+export interface MusicAppDeps {
+  /** Read LAZILY — `cityRadio` probes async at boot, so a slightly-late handle still wires up. */
+  getRadio: () => CityRadio | null
+  /** The persisted {enabled, stationId, volume} the switch reflects + writes. */
+  profile: MusicProfileStore
+}
+
+/** Build the Music Phone app (icon = the Corpán brand mark). */
+export function createMusicApp(deps: MusicAppDeps): PhoneApp {
   return {
     id: "music",
-    tabLabel: (t) => t("phone.tab.music"),
+    title: (t) => t("phone.tab.music"),
+    icon: `<img class="wp-phone-app-mark" src="${CORPAN_MARK_DATA_URI}" alt="" aria-hidden="true" draggable="false" />`,
+    // The Music tile carries the brand terracotta (it IS the brand mark).
+    tileAccent: "var(--wp-phone-accent)",
     mount(body, ctx: PhoneAppContext): PhoneAppInstance {
-      return mountMusic(body, ctx, getRadio)
+      return mountMusic(body, ctx, deps)
     },
   }
 }
 
-function mountMusic(
-  body: HTMLElement,
-  ctx: PhoneAppContext,
-  getRadio: () => CityRadio | null,
-): PhoneAppInstance {
+function mountMusic(body: HTMLElement, ctx: PhoneAppContext, deps: MusicAppDeps): PhoneAppInstance {
   const t: PhoneT = ctx.t
+  const { profile } = deps
 
   const radio = (): CityRadio | null => {
     try {
-      return getRadio()
+      return deps.getRadio()
     } catch (err) {
       console.error(`${LOG} getRadio threw:`, err)
       return null
@@ -64,6 +80,20 @@ function mountMusic(
 
   const root = elt("div", "wp-phone-music")
   body.appendChild(root)
+
+  /* ── Consent switch: MUSIC ON / OFF ──────────────────────────────────────── */
+  const switchRow = elt("div", "wp-phone-music-switch")
+  const switchText = elt("div", "wp-phone-music-switch-text")
+  const switchTitle = elt("div", "wp-phone-music-switch-title")
+  const switchSub = elt("div", "wp-phone-music-switch-sub")
+  switchText.append(switchTitle, switchSub)
+  const toggle = document.createElement("button")
+  toggle.type = "button"
+  toggle.className = "wp-phone-switch"
+  toggle.setAttribute("role", "switch")
+  const knob = elt("span", "wp-phone-switch-knob")
+  toggle.append(knob)
+  switchRow.append(switchText, toggle)
 
   // Now-playing card.
   const nowCard = elt("div", "wp-phone-now")
@@ -103,11 +133,21 @@ function mountMusic(
   const stationsHeading = elt("div", "wp-phone-music-heading")
   const stations = elt("div", "wp-phone-stations")
 
+  // The transport + browser live in one block we hide while music is OFF.
+  const player = elt("div", "wp-phone-music-player")
+  player.append(nowCard, transport, volRow, stationsHeading, stations)
+
   // Unavailable line (no audio path at all).
   const unavailable = elt("div", "wp-phone-empty")
 
-  // Guarded transport handlers (never silent).
-  const guard = (fn: (r: CityRadio) => unknown, what: string) => () => {
+  /* ── Helpers ─────────────────────────────────────────────────────────────── */
+  const stationById = (id: string | null): RadioChannel | null => {
+    if (!id) return null
+    return radio()?.channels().find((c) => c.id === id) ?? null
+  }
+
+  // Guarded radio actions (never silent).
+  const withRadio = (fn: (r: CityRadio) => unknown, what: string): void => {
     const r = radio()
     if (!r) {
       console.warn(`${LOG} ${what}: no radio handle yet`)
@@ -119,18 +159,56 @@ function mountMusic(
       console.error(`${LOG} ${what} failed:`, err)
     }
   }
-  btnPlay.addEventListener("click", guard((r) => r.toggle(), "toggle"))
-  btnPrev.addEventListener("click", guard((r) => r.prev(), "prev"))
-  btnNext.addEventListener("click", guard((r) => r.next(), "next"))
-  volInput.addEventListener("input", () => {
-    const r = radio()
-    if (!r) return
-    try {
-      r.setVolume(Number(volInput.value) / 100)
-    } catch (err) {
-      console.error(`${LOG} setVolume failed:`, err)
-    }
+
+  /** Turn music ON: persist consent + (re)start the chosen station at the saved volume. */
+  const enableMusic = () => {
+    profile.set({ enabled: true })
+    withRadio((r) => {
+      r.setVolume(profile.get().volume)
+      const ch = stationById(profile.get().stationId)
+      return ch ? r.play(ch) : r.start()
+    }, "enable")
+  }
+  /** Turn music OFF: persist + stop playback (the deliberate, remembered "off"). */
+  const disableMusic = () => {
+    profile.set({ enabled: false })
+    withRadio((r) => r.stop(), "disable")
+  }
+
+  toggle.addEventListener("click", () => {
+    if (profile.get().enabled) disableMusic()
+    else enableMusic()
   })
+
+  btnPlay.addEventListener("click", () => {
+    // The big transport toggles play/pause but NEVER turns the feature off — the
+    // switch owns consent. Pausing keeps `enabled` true (you tuned in, just paused).
+    if (!profile.get().enabled) {
+      enableMusic()
+      return
+    }
+    withRadio((r) => r.toggle(), "toggle")
+  })
+  btnPrev.addEventListener("click", () => {
+    withRadio((r) => r.prev(), "prev")
+    persistStationSoon()
+  })
+  btnNext.addEventListener("click", () => {
+    withRadio((r) => r.next(), "next")
+    persistStationSoon()
+  })
+  volInput.addEventListener("input", () => {
+    const v = Number(volInput.value) / 100
+    profile.set({ volume: v })
+    withRadio((r) => r.setVolume(v), "setVolume")
+  })
+
+  // prev/next change the dial via the radio; read the resulting station back off
+  // the next emitted state and persist it (so a restart resumes the same dial).
+  let pendingStationPersist = false
+  const persistStationSoon = () => {
+    pendingStationPersist = true
+  }
 
   const renderStations = (state: RadioState) => {
     const r = radio()
@@ -146,15 +224,25 @@ function mountMusic(
       const name = elt("span", "wp-phone-station-name")
       name.textContent = ch.name
       btn.append(dot, name)
-      btn.addEventListener(
-        "click",
-        guard((rr) => rr.play(ch), `play ${ch.id}`),
-      )
+      btn.addEventListener("click", () => {
+        // Picking a station IS opting in (and the remembered station + ON state).
+        profile.set({ enabled: true, stationId: ch.id })
+        withRadio((rr) => rr.play(ch), `play ${ch.id}`)
+      })
       stations.append(btn)
     }
   }
 
   const render = (state: RadioState | null) => {
+    const enabled = profile.get().enabled
+
+    // Switch chrome (always present, even when unavailable, so the choice is clear).
+    switchTitle.textContent = t("phone.music.title")
+    switchSub.textContent = enabled ? t("phone.music.on") : t("phone.music.off")
+    toggle.setAttribute("aria-checked", String(enabled))
+    toggle.setAttribute("aria-label", t("phone.music.toggle"))
+    toggle.classList.toggle("wp-phone-switch--on", enabled)
+
     // Static labels.
     stationsHeading.textContent = t("phone.music.browse")
     nowLabel.textContent = t("phone.music.nowPlaying")
@@ -168,8 +256,21 @@ function mountMusic(
 
     if (!state || state.mode === "unavailable") {
       unavailable.textContent = t("phone.music.unavailable")
-      root.replaceChildren(unavailable)
+      root.replaceChildren(switchRow, unavailable)
       return
+    }
+
+    // While OFF, hide the player chrome entirely — a calm "music is off" state with
+    // just the switch (so the world is silent until the player opts in).
+    if (!enabled) {
+      root.replaceChildren(switchRow)
+      return
+    }
+
+    // Persist the station the dial landed on after a prev/next step.
+    if (pendingStationPersist && state.channel) {
+      pendingStationPersist = false
+      profile.set({ stationId: state.channel.id })
     }
 
     // Now-playing: ICY title when present, else the quiet "Live stream" line; the
@@ -192,7 +293,7 @@ function mountMusic(
     }
 
     renderStations(state)
-    root.replaceChildren(nowCard, transport, volRow, stationsHeading, stations)
+    root.replaceChildren(switchRow, player)
   }
 
   // Subscribe (fires immediately) → live Now-Playing; fall back to a one-shot
@@ -209,6 +310,8 @@ function mountMusic(
   } else {
     render(null)
   }
+  // Also re-render if the profile changes from elsewhere (defensive; mostly self-driven).
+  const unsubProfile = profile.subscribe(() => render(radio()?.getState() ?? null))
 
   return {
     dispose() {
@@ -216,6 +319,11 @@ function mountMusic(
         unsub?.()
       } catch (err) {
         console.error(`${LOG} unsubscribe failed:`, err)
+      }
+      try {
+        unsubProfile()
+      } catch (err) {
+        console.error(`${LOG} profile unsubscribe failed:`, err)
       }
       root.remove()
     },
