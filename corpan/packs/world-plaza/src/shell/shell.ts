@@ -104,8 +104,27 @@ export type ShellOptions = {
    * Section view factories for the menu's Map · Inventory · Quest tabs. M0 omits
    * these → each tab shows a graceful "coming soon" placeholder; later
    * milestones pass real factories (inventory panel, full map, quest detail).
+   *
+   * IGNORED when `menu` (the phone delegate) is provided — the phone hosts the
+   * sections as apps then, so the shell mounts no built-in menu panel.
    */
   sections?: Partial<Record<MenuSectionId, MenuSectionView>>
+  /**
+   * PHONE-AS-MENU delegate (world-plaza-phone-os). When provided, the shell stops
+   * being the menu host: it mounts NO built-in menu panel and NO satchel button,
+   * and instead routes every "open the menu" edge — ESC's last step, `pause()`,
+   * and `openSection(id)` — into this delegate (the in-world Phone). The shell
+   * still owns ESC routing, the exit confirm, and the save seam. The exit ("Leave
+   * the Plaza") is homed on the phone; `onLeave` here is what the phone calls.
+   */
+  menu?: {
+    /** Open the phone (optionally deep-linked to a section/app id). */
+    open: (section?: MenuSectionId) => void
+    /** Is the phone currently open? (drives `isPaused`). */
+    isOpen: () => boolean
+    /** Close the phone (drives `resume`). */
+    close: () => void
+  }
 }
 
 export interface Shell {
@@ -153,43 +172,58 @@ export function createShell(opts: ShellOptions): Shell {
     // If the user chose "Stay", we land back on the menu (still open).
   }
 
-  const menu: MenuPanelHandle = createMenuPanel({
-    parent: opts.overlay,
-    accent: opts.accent,
-    strings: opts.strings?.menu,
-    sections: opts.sections,
-    onOpen: () => {
-      persist()
-      menuButton?.hide()
-      opts.onPause()
-    },
-    onClose: () => {
-      menuButton?.show()
-      opts.onResume()
-    },
-    onLeave: () => void runExit(),
-  })
+  // PHONE-AS-MENU: when a `menu` delegate is provided (the in-world Phone), the
+  // shell hosts NO built-in menu panel + NO satchel button — every "open the menu"
+  // edge routes into the phone. Otherwise it keeps the legacy in-overlay menu panel
+  // (+ its on-screen button), so older callers are untouched.
+  const delegate = opts.menu
 
-  // Always-visible on-screen menu button (top-left, IN the overlay) — opens the
-  // SAME menu. First-class for touch/tablet (no ESC key) and a discoverable hint
-  // on desktop. Auto-hides while the menu is open.
+  const menu: MenuPanelHandle | null = delegate
+    ? null
+    : createMenuPanel({
+        parent: opts.overlay,
+        accent: opts.accent,
+        strings: opts.strings?.menu,
+        sections: opts.sections,
+        onOpen: () => {
+          persist()
+          menuButton?.hide()
+          opts.onPause()
+        },
+        onClose: () => {
+          menuButton?.show()
+          opts.onResume()
+        },
+        onLeave: () => void runExit(),
+      })
+
+  // Always-visible on-screen menu button (the satchel) — only for the LEGACY menu.
+  // Retired under the phone delegate (one Corpán-logo FAB owns the corner instead).
   const menuButton: MenuButtonHandle | null =
-    opts.showMenuButton === false
+    delegate || opts.showMenuButton === false
       ? null
       : createMenuButton({
           parent: opts.overlay,
           accent: opts.accent,
           label: opts.menuButtonLabel,
-          onOpen: () => menu.open(),
+          onOpen: () => menu?.open(),
         })
+
+  /** Open the menu surface — the phone delegate, else the built-in panel. */
+  const openMenu = (section?: MenuSectionId) =>
+    delegate ? delegate.open(section) : menu?.open(section)
+  const menuIsOpen = (): boolean => (delegate ? delegate.isOpen() : !!menu?.isOpen())
+  const closeMenu = () => (delegate ? delegate.close() : menu?.close())
 
   const handle: Shell = {
     handleKey(e: KeyboardEvent): boolean {
       if (e.key !== "Escape") return false
-      // 1) Menu open → close it. Highest priority so ESC always dismisses the
-      //    menu, never traps the player inside it.
-      if (menu.isOpen()) {
-        menu.close()
+      // 1) Menu/phone open → close it. (Under the phone delegate, the phone owns
+      //    its own capture-phase ESC back-stack, so it has already handled this and
+      //    `isOpen()` is false by the time the shell sees a stray ESC — this stays
+      //    correct either way.)
+      if (menuIsOpen()) {
+        closeMenu()
         return true
       }
       // 2) Exit confirm open → it owns its own (capture-phase) ESC. Swallow so
@@ -203,20 +237,20 @@ export function createShell(opts: ShellOptions): Shell {
         opts.closeDialogue()
         return true
       }
-      // 5) Otherwise → open the menu.
-      menu.open()
+      // 5) Otherwise → open the menu (the phone).
+      openMenu()
       return true
     },
-    pause: () => menu.open(),
-    resume: () => menu.close(),
-    openSection: (section: MenuSectionId) => menu.open(section),
+    pause: () => openMenu(),
+    resume: () => closeMenu(),
+    openSection: (section: MenuSectionId) => openMenu(section),
     requestExit: runExit,
-    isPaused: () => menu.isOpen(),
+    isPaused: () => menuIsOpen(),
     save: persist,
-    relocalizeMenu: (strings) => menu.setStrings(strings),
+    relocalizeMenu: (strings) => menu?.setStrings(strings),
     dispose: () => {
       menuButton?.dispose()
-      menu.dispose()
+      menu?.dispose()
     },
   }
   return handle

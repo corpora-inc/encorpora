@@ -1,17 +1,18 @@
 /**
- * phoneApp — the EXTENSIBLE app-shell contract for the in-world Phone.
+ * phoneApp — the EXTENSIBLE app contract for the in-world Phone simulator.
  *
- * The Phone is a tiny "phone OS": a frame (header + tab strip + a single body
- * region) that hosts pluggable APPS. Inventory ("Things") and Music/Radio ship
- * first; Mail, Calls, and a Quest app can slot in later WITHOUT touching the
- * shell — each is just another `PhoneApp` in the array `createPhoneSheet` is
- * handed. This is the seam that keeps us from painting into a corner.
+ * The Phone is a tiny "phone OS": a HOME SCREEN grid of app icons. Tap an icon and
+ * the app slides in over a single body region; a back chevron returns home. Apps =
+ * Map, Things (Inventory), Quest, Badges, Music today; Mail/Calls/etc. slot in
+ * later WITHOUT touching the shell — each is just another `PhoneApp` in the array
+ * `createPhoneSheet` is handed. This is the seam that keeps us off a corner.
  *
- * An app owns ONLY its body DOM + lifecycle; the shell owns the frame, the tab
- * strip, open/close, localization threading, and the no-layout-shift contract.
- * Apps are MOUNTED on open and UNMOUNTED on close/tab-switch (mirrors the menu's
- * `MenuSectionView` re-run-on-open model), so each app reads the LIVE locale +
- * current state every time it appears.
+ * An app owns ONLY its body DOM + lifecycle; the shell owns the frame (home grid,
+ * the app header + back nav, open/close, localization threading, the
+ * no-layout-shift contract). Apps are MOUNTED when opened and UNMOUNTED when the
+ * player backs out / closes the phone (mirrors the menu's `MenuSectionView`
+ * re-run-on-open model), so each app reads the LIVE locale + current state every
+ * time it appears.
  */
 
 import type { I18nKey } from "../../i18n/strings"
@@ -25,7 +26,9 @@ export interface PhoneAppContext {
   t: PhoneT
   /** Accent color (Scene.palette.accent) for app-local tinting. */
   accent?: string
-  /** Close the whole phone (e.g. an app's "done" action). */
+  /** Go back to the phone home screen (an app's "done" action). */
+  goHome: () => void
+  /** Close the whole phone (resume the world). */
   closePhone: () => void
 }
 
@@ -36,15 +39,30 @@ export interface PhoneAppInstance {
 }
 
 /**
- * A pluggable Phone app. `id` is the stable tab key; `tabLabel(t)` is the
- * localized tab text; `mount(body, ctx)` renders into the shell's body region
- * and returns an instance the shell disposes on close/switch.
+ * The home-screen icon for an app. Either an HTML string (an inline SVG, or an
+ * `<img>` for the brand mark) painted into the icon tile, OR a builder that
+ * returns a node. The shell wraps whatever this yields in the rounded tile.
+ */
+export type PhoneAppIcon = string | ((accent?: string) => string | Node)
+
+/**
+ * A pluggable Phone app. `id` is the stable key (also the deep-link target);
+ * `title(t)` is the localized name shown on the home label AND the app header;
+ * `icon` is the home-grid glyph; `mount(body, ctx)` renders the app into the
+ * shell's body region and returns an instance the shell disposes on back/close.
  */
 export interface PhoneApp {
-  /** Stable id (also the tab's key + the deep-link target). */
+  /** Stable id (also the home-grid key + the deep-link target). */
   id: string
-  /** Localized short tab label (e.g. "Things", "Music"). */
-  tabLabel: (t: PhoneT) => string
+  /** Localized app name — the home-screen label AND the in-app header title. */
+  title: (t: PhoneT) => string
+  /** The home-grid icon (inline SVG string / `<img>` / a node builder). */
+  icon: PhoneAppIcon
+  /**
+   * Optional accent for THIS app's icon tile (defaults to a neutral paper tile).
+   * Lets Music carry the brand terracotta while Map/Quest stay calm, say.
+   */
+  tileAccent?: string
   /** Render the app into `body`; return its instance. Must be omit-graceful. */
   mount: (body: HTMLElement, ctx: PhoneAppContext) => PhoneAppInstance
 }

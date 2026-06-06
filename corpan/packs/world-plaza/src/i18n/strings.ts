@@ -172,9 +172,18 @@ export type I18nKey =
   // ── phone overlay (shell/phone/phoneSheet.ts) ───────────────────────────────
   | "phone.open" // FAB / aria: open the phone
   | "phone.close" // close the phone
-  | "phone.title" // phone header title
-  | "phone.tab.things" // Inventory tab
-  | "phone.tab.music" // Music / radio tab
+  | "phone.back" // app screen → home (back chevron aria)
+  | "phone.title" // phone home-screen header title
+  | "phone.leave" // "Leave the Plaza" — the home-screen exit affordance
+  | "phone.tab.things" // Inventory app name ("Things")
+  | "phone.tab.music" // Music / radio app name
+  | "phone.tab.map" // Map app name
+  | "phone.tab.quest" // Quest app name
+  | "phone.tab.badges" // Badges app name
+  | "phone.music.title" // "Music" — the on/off switch title
+  | "phone.music.on" // switch subtitle when ON ("Playing while you explore")
+  | "phone.music.off" // switch subtitle when OFF ("Off — tap to tune in")
+  | "phone.music.toggle" // aria: the music on/off switch
   | "phone.music.heading" // "City Radio"
   | "phone.music.nowPlaying" // section label over the now-playing line
   | "phone.music.station" // section label over the station name
@@ -388,9 +397,18 @@ const en: Dict = {
   // phone overlay
   "phone.open": "Phone",
   "phone.close": "Close",
+  "phone.back": "Back",
   "phone.title": "Phone",
+  "phone.leave": "Leave the Plaza",
   "phone.tab.things": "Things",
   "phone.tab.music": "Music",
+  "phone.tab.map": "Map",
+  "phone.tab.quest": "Quest",
+  "phone.tab.badges": "Badges",
+  "phone.music.title": "Music",
+  "phone.music.on": "Playing while you explore",
+  "phone.music.off": "Off — tap to tune in",
+  "phone.music.toggle": "Music on or off",
   "phone.music.heading": "City Radio",
   "phone.music.nowPlaying": "Now playing",
   "phone.music.station": "Station",

@@ -25,6 +25,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   general store, central green, stadium, and exchange are placed at real building
   facades with stable anchors, so quests, the map, and door portals all bind to
   them (previously several of these had no on-map home).
+### Changed
+- **The Phone is now the SINGLE in-game menu — a little phone simulator.** ONE FAB
+  (the real **Corpán app logo**, the "all-hearing ear" brand mark, not a drawn
+  glyph) opens a **home screen** of apps: Map, Things (Inventory), Quest, Badges,
+  Music. Tap an app → it opens; a back chevron returns home; close (or Escape twice)
+  resumes the world. The old Map | Inventory | Quest | Badges tabbed modal AND the
+  separate satchel "pack" FAB are **retired** — the phone subsumes both (one FAB
+  bottom-left, no more FAB pile-up). Each app re-homes the SAME section renderer the
+  old menu used, so all functionality (wallet, items, wardrobe entry, quest
+  tracker/switch, the full map, the badge case) is preserved, not rebuilt. "Leave
+  the Plaza" is homed on the phone's home screen → the proven exit confirm. RTL +
+  immersion-relocalize + the no-layout-shift contract are kept; tablet/desktop dock
+  the phone as a corner card (first-class). (`shell/phone/*`, `shell/shell.ts`,
+  `shell/menuButton.ts` [retired under the phone], `game.ts`)
+
+### Added
+- **Music now respects + persists the player's choice — it never starts from
+  nowhere.** The Phone's Music app fronts an explicit on/off switch; on/off, the
+  chosen station, and volume persist (`audio/musicProfile.ts`, localStorage) and are
+  restored on launch. A fresh player hears **nothing** until they opt in (the
+  ambient radio start in `game.ts` is gated on the consented profile).
+  (`audio/musicProfile.ts`, `shell/phone/musicApp.ts`, `game.ts`)
 
 ### Fixed
 - **Building roofs no longer hide your character.** When the camera looked down
