@@ -13,8 +13,8 @@ async function page(w, h, query = "") {
   return p
 }
 
-async function drive(p, fn) {
-  await p.evaluate(fn)
+async function drive(p, fn, arg) {
+  await p.evaluate(fn, arg)
   await p.waitForTimeout(450)
 }
 
@@ -57,11 +57,61 @@ async function shoot(p, name) {
 // --- Desktop (1280x800) ---
 {
   const p = await page(1280, 800)
+  await drive(p, () => window.__wpPhone.open())
+  await shoot(p, "desktop-home")
   await drive(p, () => window.__wpPhone.open("music"))
   await drive(p, () => document.querySelector(".wp-phone-switch")?.click())
   await shoot(p, "desktop-music")
   await p.close()
 }
 
+/* ===================== CONSTANT-SIZE INVARIANT (the #1 fix) =====================
+ * PHONE_DESIGN.md §1: the device frame must be byte-identical across the home
+ * screen and EVERY app — switching apps must NEVER resize the slab. We measure
+ * `.wp-phone-device` on home, then on each app, and FAIL the run on any >0.5px
+ * drift. This assertion is the contract; keep it green. */
+let invariantFailed = false
+async function assertConstantSize(w, h, label) {
+  const p = await page(w, h)
+  const rect = () =>
+    p.evaluate(() => {
+      const el = document.querySelector(".wp-phone-device")
+      if (!el) return null
+      const r = el.getBoundingClientRect()
+      return { x: r.x, y: r.y, width: r.width, height: r.height }
+    })
+  await drive(p, () => window.__wpPhone.open())
+  const home = await rect()
+  if (!home) {
+    console.log(`   [const-size ${label}] FAIL: no .wp-phone-device found`)
+    invariantFailed = true
+    await p.close()
+    return
+  }
+  const apps = ["map", "things", "quest", "badges", "music"]
+  let ok = true
+  for (const id of apps) {
+    await drive(p, (a) => window.__wpPhone.open(a), id)
+    const r = await rect()
+    const same = ["x", "y", "width", "height"].every((k) => Math.abs(r[k] - home[k]) < 0.5)
+    if (!same) {
+      ok = false
+      invariantFailed = true
+      console.log(`   [const-size ${label}] FAIL ${id}: ${JSON.stringify(r)} vs home ${JSON.stringify(home)}`)
+    }
+  }
+  console.log(
+    `   [const-size ${label}] device ${Math.round(home.width)}x${Math.round(home.height)} @ x=${Math.round(home.x)} — ${ok ? "PASS" : "FAIL"}`,
+  )
+  await p.close()
+}
+await assertConstantSize(1280, 800, "desktop")
+await assertConstantSize(834, 1112, "tablet")
+await assertConstantSize(390, 844, "phone")
+
 await browser.close()
+if (invariantFailed) {
+  console.error("CONSTANT-SIZE INVARIANT FAILED — the device frame resized between apps")
+  process.exit(1)
+}
 console.log("done")

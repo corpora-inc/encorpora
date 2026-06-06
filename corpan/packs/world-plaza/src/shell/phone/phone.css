@@ -106,8 +106,22 @@
   --wp-phone-hairline: rgba(120, 100, 70, 0.18);
   --wp-phone-shadow: 0 -8px 30px rgba(58, 47, 37, 0.26);
 
+  /* DEVICE tokens (PHONE_DESIGN.md §2.3). The frame is a fixed-aspect slab whose
+     size comes from the VIEWPORT, not content — that is the constant-size invariant. */
+  --wp-dev-radius: 44px; /* outer bezel corner */
+  --wp-dev-bezel-w: 12px; /* desktop; trimmed on tablet/phone below */
+  --wp-dev-bezel: #15110d; /* near-black device body */
+  --wp-dev-bezel-spec: rgba(255, 255, 255, 0.1); /* top-edge highlight */
+  --wp-dev-shadow: 0 40px 90px -20px rgba(20, 14, 8, 0.55), 0 12px 30px rgba(20, 14, 8, 0.3);
+  --wp-statusbar-h: 34px;
+  --wp-homebar-h: 24px;
+  /* Device HEIGHT is computed from the host viewport (desktop default); width
+     follows via the locked 9 / 19.5 phone aspect. Overridden per form factor. */
+  --wp-dev-h: clamp(560px, calc(100svh - 48px), 920px);
+  --wp-dev-w: calc(var(--wp-dev-h) * 9 / 19.5);
+
   /* FIXED, never absolute — anchored to the viewport so it can NEVER participate
-     in an ancestor's flow and push the canvas. The sheet rides transform only. */
+     in an ancestor's flow and push the canvas. The slab rides transform only. */
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -136,61 +150,110 @@
   pointer-events: auto;
 }
 
-/* PHONE DEFAULT: a bottom sheet with the home-indicator inset folded in so it
-   reads as docked, not floating. */
-.wp-phone-panel {
+/* =============================== THE DEVICE =============================== */
+/* The fixed-size slab (bezel). DESKTOP DEFAULT: right-anchored, vertically
+   centered, as big as fits. Its size is the VIEWPORT-derived `--wp-dev-{h,w}`,
+   NOT content — that is the constant-size invariant (PHONE_DESIGN.md §1). The
+   slab rides transform only (compositor-only; never pushes the canvas). It keeps
+   the legacy `.wp-phone-panel` class so the off-screen transform + the
+   sheet-offscreen regression harness apply unchanged. */
+.wp-phone-device {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset-inline-end: max(24px, env(safe-area-inset-right, 0px));
+  top: 50%;
+  height: var(--wp-dev-h);
+  width: var(--wp-dev-w);
   pointer-events: auto;
-  width: 100%;
-  max-width: 560px;
-  margin: 0 auto;
-  max-height: min(86svh, 760px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-sizing: border-box;
+  padding: var(--wp-dev-bezel-w);
+  background: var(--wp-dev-bezel);
+  border-radius: var(--wp-dev-radius);
+  box-shadow: var(--wp-dev-shadow), inset 0 1px 0 var(--wp-dev-bezel-spec);
+  /* Off-screen by default (JS also stamps this inline on the first frame so the
+     closed state holds before this stylesheet parses). `120%` clears the whole
+     slab + its shadow at any height. Centered → translate keeps the -50% Y. */
+  transform: translate(0, 120%);
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.wp-phone-root.wp-phone-open .wp-phone-device {
+  transform: translate(0, -50%);
+}
+
+/* THE SCREEN — the clipped inner rectangle. `overflow: hidden` is what makes the
+   body the sole scroller and the frame constant-size. Fills the device inside the
+   bezel; flex column stacks status bar → header → body → home indicator. */
+.wp-phone-screen {
+  position: absolute;
+  inset: var(--wp-dev-bezel-w);
+  border-radius: calc(var(--wp-dev-radius) - var(--wp-dev-bezel-w));
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background: linear-gradient(180deg, var(--wp-phone-paper), var(--wp-phone-paper-2));
-  border-radius: 26px 26px 0 0;
-  box-shadow: var(--wp-phone-shadow);
-  /* Off-screen by default; JS also stamps this inline on the first frame so the
-     opening state holds even before this stylesheet has parsed.
-     `calc(100% + 40px)`, NOT `105%`: a 5% margin doesn't clear the panel on short
-     (landscape) / tall (tablet) viewports — the rounded top + box-shadow + handle
-     peeked ~14px above the bottom edge. The fixed 40px buffer clears them at any
-     aspect ratio (matches the `.wp-phone-panel--docked` off-screen rule below). */
-  transform: translateY(calc(100% + 40px));
-  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-  overflow: hidden;
 }
-.wp-phone-root.wp-phone-open .wp-phone-panel {
-  transform: translateY(0);
-}
-.wp-phone-panel::before {
+.wp-phone-screen::before {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  z-index: 2;
 }
 
-/* --- Grab handle (canonical 44px hit zone, not a bare pill) --- */
-.wp-phone-handle {
+/* --- Status bar (live clock · signal · battery) — the "real device" tell. --- */
+.wp-phone-status {
   flex: 0 0 auto;
+  height: var(--wp-statusbar-h);
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 44px;
-  cursor: pointer;
-  touch-action: none;
+  justify-content: space-between;
+  padding: 0 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--wp-phone-ink);
+  user-select: none;
 }
-.wp-phone-handle-bar {
-  width: 44px;
-  height: 5px;
+.wp-phone-status-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.wp-phone-status-bars {
+  width: 18px;
+  height: 13px;
+  display: block;
+}
+.wp-phone-status-net {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.wp-phone-status-batt {
+  position: relative;
+  width: 22px;
+  height: 11px;
+  border: 1.4px solid var(--wp-phone-ink);
   border-radius: 3px;
-  background: rgba(120, 100, 70, 0.32);
+  opacity: 0.92;
+}
+.wp-phone-status-batt::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: -3px;
+  top: 3px;
+  width: 2px;
+  height: 5px;
+  background: var(--wp-phone-ink);
+  border-radius: 0 1px 1px 0;
+}
+.wp-phone-status-batt::before {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  inset-inline-end: 30%;
+  background: var(--wp-phone-ink);
+  border-radius: 1px;
 }
 
 /* --- Header (back chevron · title · close) --- */
@@ -199,7 +262,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 2px 16px 10px;
+  padding: 4px 16px 10px;
 }
 .wp-phone-back {
   flex: 0 0 auto;
@@ -264,7 +327,35 @@
   min-height: 0;
   overflow: hidden auto;
   -webkit-overflow-scrolling: touch;
-  padding: 4px 16px 18px;
+  padding: 4px 16px 10px;
+}
+
+/* --- Home indicator (gesture bar) — the bottom pill. A real device's home
+   gesture: tap = app→home, else close. Generous 44px-feel wrapper, a centered
+   visible bar (the canonical handle pattern). --- */
+.wp-phone-home-ind {
+  flex: 0 0 auto;
+  height: var(--wp-homebar-h);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.wp-phone-home-ind-bar {
+  width: 38%;
+  max-width: 140px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(120, 100, 70, 0.4);
+  transition: background 0.16s ease;
+}
+.wp-phone-home-ind:hover .wp-phone-home-ind-bar,
+.wp-phone-home-ind:focus-visible .wp-phone-home-ind-bar {
+  background: rgba(120, 100, 70, 0.6);
+}
+.wp-phone-home-ind:focus-visible {
+  outline: none;
 }
 
 /* ================================ HOME SCREEN ============================== */
@@ -632,43 +723,74 @@
 }
 
 /* =============================== RESPONSIVE =============================== */
-/* Tablet + desktop: a docked card in the bottom INLINE-END corner (bottom-right
-   LTR, bottom-left RTL via the inline-axis property), NOT a full-width sheet —
-   tablet/desktop are first-class (memory). Reads well on a wide screen. */
-@media (min-width: 720px) {
-  .wp-phone-scrim {
-    background: radial-gradient(140% 100% at 85% 100%, rgba(30, 22, 14, 0.34), rgba(30, 22, 14, 0.06));
+/* The BASE rules above are the DESKTOP default (≥1024): a right-anchored,
+   vertically-centered device, as big as fits. PHONE_DESIGN.md §4 form factors:
+
+   PHONE (<720): a phone-in-a-phone is silly → the bezel dissolves to a hairline
+   and the device becomes a near-full-bleed bottom SHEET (rounded top only). The
+   constant-size invariant still holds: height is a FIXED 92svh (content scrolls).
+
+   TABLET (720–1023): the full device frame, right-anchored, bottom-biased so the
+   FAB corner reads; a slightly thinner bezel. */
+@media (max-width: 719px) {
+  .wp-phone-root {
+    --wp-dev-bezel-w: 3px; /* hairline — don't waste phone width on fake chrome */
+    --wp-dev-radius: 26px;
+    /* FIXED height (constant-size); content scrolls inside. */
+    --wp-dev-h: 92svh;
   }
-  .wp-phone-panel {
-    left: auto;
-    right: auto;
-    inset-inline-end: max(20px, env(safe-area-inset-right, 0px));
-    bottom: max(20px, env(safe-area-inset-bottom, 0px));
-    width: min(420px, 40vw);
-    max-width: 420px;
-    margin: 0;
-    max-height: min(80svh, 760px);
+  .wp-phone-device {
+    inset-inline-end: 0;
+    inset-inline-start: 0;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    /* full-bleed sheet: round only the top, drop the bottom bezel into the
+       safe-area, and sit flush with the bottom edge. */
     padding-bottom: 0;
-    border-radius: 26px;
-    box-shadow: 0 18px 48px rgba(58, 47, 37, 0.34);
-    transform: translateY(calc(100% + 28px));
+    border-radius: var(--wp-dev-radius) var(--wp-dev-radius) 0 0;
+    transform: translateY(120%);
   }
-  .wp-phone-root.wp-phone-open .wp-phone-panel {
+  .wp-phone-screen {
+    inset: var(--wp-dev-bezel-w) var(--wp-dev-bezel-w) 0 var(--wp-dev-bezel-w);
+    border-radius: calc(var(--wp-dev-radius) - var(--wp-dev-bezel-w))
+      calc(var(--wp-dev-radius) - var(--wp-dev-bezel-w)) 0 0;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .wp-phone-root.wp-phone-open .wp-phone-device {
     transform: translateY(0);
   }
 }
 
-@media (min-width: 1280px) {
-  .wp-phone-panel {
-    width: 440px;
-    max-width: 440px;
-    max-height: min(74svh, 800px);
+@media (min-width: 720px) and (max-width: 1023px) {
+  .wp-phone-root {
+    --wp-dev-bezel-w: 10px;
+    --wp-dev-radius: 40px;
+    --wp-dev-h: clamp(520px, calc(100svh - 32px), 880px);
+  }
+  .wp-phone-scrim {
+    background: radial-gradient(140% 100% at 85% 100%, rgba(30, 22, 14, 0.34), rgba(30, 22, 14, 0.06));
+  }
+  /* bottom-biased anchor (not centered) so the device reads as docked near the FAB. */
+  .wp-phone-device {
+    inset-inline-end: max(18px, env(safe-area-inset-right, 0px));
+    top: auto;
+    bottom: max(16px, env(safe-area-inset-bottom, 0px));
+    transform: translateY(120%);
+  }
+  .wp-phone-root.wp-phone-open .wp-phone-device {
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wp-phone-scrim {
+    background: radial-gradient(140% 100% at 85% 100%, rgba(30, 22, 14, 0.32), rgba(30, 22, 14, 0.05));
   }
   .wp-phone-title {
     font-size: 19px;
-  }
-  .wp-phone-now-title {
-    font-size: 18px;
   }
 }
 
@@ -681,16 +803,25 @@
   }
 }
 
+/* Reduced motion: no transform animation; just fade the closed device out. The
+   centered desktop device keeps its -50% Y when open (no transition). */
 @media (prefers-reduced-motion: reduce) {
   .wp-phone-scrim,
-  .wp-phone-panel {
+  .wp-phone-device {
     transition: opacity 0.2s ease;
   }
-  .wp-phone-panel {
-    transform: none;
+  .wp-phone-device {
+    transform: translate(0, -50%);
   }
-  .wp-phone-root:not(.wp-phone-open) .wp-phone-panel {
+  .wp-phone-root:not(.wp-phone-open) .wp-phone-device {
     opacity: 0;
     pointer-events: none;
+  }
+  /* phone/tablet sheets sit at the bottom, not centered — keep them put. */
+  @media (max-width: 1023px) {
+    .wp-phone-device,
+    .wp-phone-root:not(.wp-phone-open) .wp-phone-device {
+      transform: none;
+    }
   }
 }

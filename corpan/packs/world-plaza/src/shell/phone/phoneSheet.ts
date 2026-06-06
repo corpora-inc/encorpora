@@ -8,13 +8,19 @@
  * that avoids a corner-paint). The old Map|Inventory|Quest|Badges tabbed modal AND
  * the satchel FAB are retired; the phone subsumes both.
  *
- * The shell owns the FRAME only: the home grid, the app header + back nav,
- * open/close, localization threading, the "Leave the Plaza" affordance, and the
- * no-layout-shift contract. It mirrors the NPC dialogue sheet (`npc/dialogueUI.ts`)
- * and the prior phone: a FIXED root mounted in `.wp-overlay` (never document.body —
- * the M0 host-clip lesson), compositor-only open/close (transform + opacity). On
- * phones it's a bottom sheet; on tablet/desktop a docked card (FAB_POLISH §6 —
- * tablet/desktop are first-class).
+ * The shell is now a real DEVICE (PHONE_DESIGN.md): a fixed-aspect slab with a
+ * BEZEL, a STATUS BAR (live clock · signal · battery), the app header, the body
+ * (the sole scroll region), and a HOME-INDICATOR gesture bar. Its #1 invariant is
+ * CONSTANT SIZE: the device + its screen are sized ONCE per open from the host
+ * VIEWPORT (not content), so switching apps NEVER resizes the frame — only the
+ * content inside the screen's clip scrolls. The shell owns the FRAME only: the home
+ * grid, the app header + back nav, open/close, localization threading, the "Leave
+ * the Plaza" affordance, and the no-layout-shift contract. It mirrors the NPC
+ * dialogue sheet (`npc/dialogueUI.ts`): a FIXED root mounted in `.wp-overlay` (never
+ * document.body — the M0 host-clip lesson), compositor-only open/close (transform +
+ * opacity). On tablet/desktop the device is right-anchored + as big as fits; on a
+ * real phone the bezel dissolves to a near-full-bleed sheet (PHONE_DESIGN.md §4) —
+ * tablet/desktop are first-class.
  *
  * Apps are MOUNTED when opened and UNMOUNTED on back / close (the menu
  * `MenuSectionView` re-run-on-open model), so each reads the LIVE native locale +
@@ -25,6 +31,7 @@
 import "./phone.css"
 import { t, type I18nKey } from "../../i18n/strings"
 import { CORPAN_MARK_DATA_URI } from "../../assets/corpanMark"
+import { createStatusBar, type StatusBarHandle } from "./statusBar"
 import type { PhoneApp, PhoneAppContext, PhoneAppIcon, PhoneAppInstance, PhoneT } from "./phoneApp"
 
 const LOG = "[wp/phone]"
@@ -131,16 +138,23 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
 
   const scrim = elt("div", "wp-phone-scrim")
   scrim.setAttribute("aria-hidden", "true")
-  const panel = elt("section", "wp-phone-panel")
-  // Guarantee the first painted frame is off-screen even before phone.css parses.
-  // Must MATCH the CSS closed transform: `105%` left the rounded top + handle
-  // peeking ~14px on short/landscape + tall/tablet viewports.
-  panel.style.transform = "translateY(calc(100% + 40px))"
 
-  // Handle (generous 44px hit zone, not a bare pill — the canonical pattern).
-  const handle = elt("div", "wp-phone-handle")
-  handle.setAttribute("aria-hidden", "true")
-  handle.append(elt("div", "wp-phone-handle-bar"))
+  // THE DEVICE — the fixed-size slab (bezel). It keeps the legacy `.wp-phone-panel`
+  // class too so the proven off-screen / open transform + the sheet-offscreen
+  // regression harness still apply; `.wp-phone-device` carries the bezel + the
+  // viewport-computed fixed sizing (PHONE_DESIGN.md §2).
+  const panel = elt("section", "wp-phone-device wp-phone-panel")
+  // Guarantee the first painted frame is off-screen even before phone.css parses.
+  // The device is taller than the panel was, so the closed transform must clear the
+  // whole slab; the CSS uses the same `120%` rule.
+  panel.style.transform = "translateY(120%)"
+
+  // THE SCREEN — the clipped inner rectangle (everything lives here). `overflow:
+  // hidden` is what makes the body the sole scroller and the frame constant-size.
+  const screen = elt("div", "wp-phone-screen")
+
+  // STATUS BAR — live clock · signal · battery (the "real device" tell).
+  const statusBar: StatusBarHandle = createStatusBar()
 
   // Header — a back chevron (app screen only) + the title + a close button.
   const head = elt("header", "wp-phone-head")
@@ -158,7 +172,16 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
   // Body — a single region that holds EITHER the home grid OR the open app.
   const body = elt("div", "wp-phone-body")
 
-  panel.append(handle, head, body)
+  // HOME INDICATOR — the bottom gesture bar (also the bottom-sheet grab on a real
+  // phone). Tapping it backs out: app → home, else close (a real device's gesture).
+  // Keeps a generous 44px hit zone via its wrapper (the canonical handle pattern).
+  const homeInd = elt("div", "wp-phone-home-ind")
+  homeInd.setAttribute("role", "button")
+  homeInd.setAttribute("tabindex", "0")
+  homeInd.append(elt("div", "wp-phone-home-ind-bar"))
+
+  screen.append(statusBar.el, head, body, homeInd)
+  panel.append(screen)
   root.append(scrim, panel)
   opts.overlay.appendChild(root)
 
@@ -171,6 +194,18 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
   backBtn.addEventListener("click", () => goHome())
   closeBtn.addEventListener("click", () => close())
   scrim.addEventListener("click", () => close())
+  // Home-indicator gesture: app → home, else close.
+  const onHomeInd = () => {
+    if (activeId !== null) goHome()
+    else close()
+  }
+  homeInd.addEventListener("click", onHomeInd)
+  homeInd.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      onHomeInd()
+    }
+  })
 
   /* ------------------------------- app mount ------------------------------- */
   const unmountActive = () => {
@@ -290,6 +325,8 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
     // Always (re)build the chrome labels + the requested screen on open.
     closeBtn.setAttribute("aria-label", boundT()("phone.close"))
     closeBtn.title = boundT()("phone.close")
+    // Re-read the wall clock so the status bar shows "now" each time it appears.
+    statusBar.refresh()
     if (appId && apps.some((a) => a.id === appId)) openApp(appId)
     else renderHome()
 
@@ -344,6 +381,7 @@ export function createPhoneSheet(opts: PhoneSheetOptions): PhoneSheet {
     dispose: () => {
       close()
       unmountActive() // teardown is synchronous — don't wait out the slide-out
+      statusBar.dispose()
       root.remove()
     },
   }
