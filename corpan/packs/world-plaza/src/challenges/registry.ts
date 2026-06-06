@@ -109,6 +109,8 @@ export interface RunChallengeOptions {
   partialSpec?: Partial<ChallengeSpec> & Record<string, unknown>
   /** Language for the NPC pretext line (defaults to ctx.nativeLanguage). */
   uiLanguage?: string
+  /** Scene accent color (e.g. `scene.palette.accent`) to tint chrome (close button). */
+  accent?: string
 }
 
 /**
@@ -134,7 +136,7 @@ export function runChallenge(
     const npcName = opts.npc?.name ?? "Stranger"
     const avatar = opts.npc?.avatar ?? "🧑"
     const line = opts.npc?.line ?? pretextLine(toolId, opts.uiLanguage ?? ctx.nativeLanguage)
-    const pretext: OverlayPretext = { npcName, avatar, line }
+    const pretext: OverlayPretext = { npcName, avatar, line, accent: opts.accent }
 
     let settled = false
     const finishOnce = (r: ChallengeResultPlus) => {

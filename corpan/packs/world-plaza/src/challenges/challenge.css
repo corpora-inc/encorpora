@@ -543,22 +543,60 @@
 }
 
 /* close (X) */
+/* Close (leave-challenge) button. A 44×44 transparent HIT BAND, INSET clear of the
+   card's 26px rounded corner + the layered gold frame + the dashed HUD rules, with
+   a smaller visible disc centered inside it. Inset (not corner-straddling) so it
+   never clips the deckle or the rounded border. Accent-aware via --wp-ch-accent. */
 .wp-ch-close {
   position: absolute;
-  top: 10px;
-  right: 12px;
-  z-index: 6;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+  top: 6px;
+  right: 6px;
+  z-index: 7;
+  /* 44px touch target — the whole band is tappable; the disc is the visible part. */
+  width: 44px;
+  height: 44px;
+  padding: 0;
   border: none;
+  background: none;
   cursor: pointer;
-  background: rgba(255, 247, 230, 0.85);
-  color: #8a6a3e;
-  font-size: 18px;
-  font-weight: 800;
-  box-shadow: 0 2px 6px rgba(60, 36, 14, 0.2);
+  display: grid;
+  place-items: center;
   -webkit-tap-highlight-color: transparent;
+}
+/* The visible disc sits centered inside the 44px band, well clear of the corner. */
+.wp-ch-close::before {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 250, 240, 0.92);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 2px 5px rgba(60, 36, 14, 0.22),
+    0 0 0 1.5px rgba(181, 128, 63, 0.45);
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+/* The SVG "×" rides above the disc, tinted to the scene accent (falls back warm). */
+.wp-ch-close > svg {
+  position: relative;
+  z-index: 1;
+  width: 17px;
+  height: 17px;
+  color: var(--wp-ch-accent, #8a6a3e);
+}
+.wp-ch-close:hover::before {
+  background: #fff;
+  transform: scale(1.06);
+}
+.wp-ch-close:active::before {
+  transform: scale(0.94);
+}
+.wp-ch-close:focus-visible::before {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 2px 5px rgba(60, 36, 14, 0.22),
+    0 0 0 2.5px var(--wp-ch-accent, #b5803f);
 }
 
 /* ===================== reward reveal ===================== */

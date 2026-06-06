@@ -137,7 +137,7 @@ export type I18nKey =
   | "challenge.sortPrompt"
   | "challenge.sortHint" // "🧺 {label}"
   | "challenge.pictureMatchHint"
-  | "challenge.pictureMatchWordHint" // "Tap the word that means “{native}”"
+  | "challenge.pictureMatchWordHint" // "Tap the one that means “{native}”"
   | "challenge.memorizeTitle"
   | "challenge.memorizeSub"
   | "challenge.ready"
@@ -352,8 +352,8 @@ const en: Dict = {
   "challenge.memoryStudy": "Not a match — tap anywhere to flip back",
   "challenge.sortPrompt": "Sort each phrase into its basket",
   "challenge.sortHint": "🧺 {label}",
-  "challenge.pictureMatchHint": "Tap the word for this picture",
-  "challenge.pictureMatchWordHint": "Tap the word that means “{native}”",
+  "challenge.pictureMatchHint": "Tap the one for this picture",
+  "challenge.pictureMatchWordHint": "Tap the one that means “{native}”",
   "challenge.memorizeTitle": "Memorise these",
   "challenge.memorizeSub": "study them, then tap Ready",
   "challenge.ready": "I'm ready →",

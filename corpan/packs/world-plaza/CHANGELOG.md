@@ -18,6 +18,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   you don't get the same-looking NPC three quests running.
 
 ### Fixed
+- **The map now shows the whole city — every venue is findable.** The
+  airport, rail/bus stations, taxi rank, café, outfitter, general store, central
+  green, stadium, exchange, and hospital are all plotted with distinct, legible
+  icons + a legend entry each, on both the corner minimap and the full map
+  (previously the transit hubs arrived as generic "portal" anchors and were
+  dropped to a faint tick, so the owner "couldn't find where to go"). Venues are
+  classified by their contract anchor id, so they read correctly wherever the city
+  places them. Added a "go here" wayfinding cue toward the active objective — a
+  dashed leader when it's in view, and an edge arrow pointing toward it when it's
+  off the (player-following) minimap window.
+
 - **Quests are truly pair-agnostic.** Dropped the baked
   `contentSelector.languageCodes: ["es"]` from every pair-agnostic quest, so a
   non-Spanish learner's challenge content is drawn from THEIR stack's target

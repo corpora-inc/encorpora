@@ -44,6 +44,27 @@ describe("i18n catalog integrity", () => {
   })
 })
 
+describe("#56 — choice/match instructions don't hardcode 'word'", () => {
+  // The match/choice answer tiles are whole CORPUS phrases ("Trae el libro aquí."),
+  // not single words. An instruction that says "Tap the WORD that means …" reads as
+  // a lie next to a sentence tile. The English source for these "tap the meaning"
+  // instructions must be NOUN-NEUTRAL ("the one") so it's true for a word, a phrase,
+  // or a sentence. (Tools that genuinely operate on single tokens — unscramble,
+  // rhyme, typo, fill-the-gap — legitimately keep "word".)
+  const NEUTRAL_MEANING_KEYS: I18nKey[] = [
+    "challenge.pictureMatchHint",
+    "challenge.pictureMatchWordHint",
+    "challenge.tapMeaning",
+  ]
+  it("English source for tap-the-meaning instructions never says 'word'", () => {
+    for (const key of NEUTRAL_MEANING_KEYS) {
+      expect(SOURCE_EN[key].toLowerCase(), `${key} still hardcodes "word"`).not.toContain(
+        "word",
+      )
+    }
+  })
+})
+
 describe("t() resolution", () => {
   it("returns English for an unknown / English locale", () => {
     expect(t("welcome.cta", "en")).toBe(SOURCE_EN["welcome.cta"])

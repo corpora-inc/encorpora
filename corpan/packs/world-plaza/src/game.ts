@@ -1012,7 +1012,10 @@ function buildWorld(
     // collision/placement reads, so the map can never drift from the world.
     getMapGeometry: () => cityMapGeometry(layout),
   }
-  const mapOpts = { view: mapView, accent: scene.palette?.accent, lang: uiLocale }
+  // `mapOpts` is assembled later (after `chromeT`/`anchorName` exist) so the map's
+  // legend + objective tags localize through the chrome catalog (#72). Declared
+  // here (let) and filled below to keep the MapView wiring next to its siblings.
+  let mapOpts: Parameters<typeof createMapSection>[0]
 
   // Proximity NPC engagement → open a real (or scripted-fallback) Qwen3 chat.
   const npcRuntime = createNpcRuntime(npcHost)
@@ -1214,7 +1217,13 @@ function buildWorld(
         // from a THEMED + LEVEL-SCALED draw that VARIES across plays — so a café
         // host and a dock keeper drill DIFFERENT, on-topic phrases, never the same
         // six. `role` is structurally a GeneratedPersona carrying `archetype`.
-        const content = resolveMinigameContent(role, quest, questEngine.currentStep())
+        // Pass the learner pair so the corpus translation whitelist carries BOTH
+        // the target AND a distinct native — otherwise the native gloss collapses to
+        // the target and translate/match games go ES→ES (#81).
+        const content = resolveMinigameContent(role, quest, questEngine.currentStep(), {
+          target: learnerPair.target,
+          native: learnerPair.native,
+        })
         // CROSS-LANGUAGE games (translate / tap-the-meaning / match-pairs) are
         // INHERENTLY two-language: they must ALWAYS keep the native side, even
         // under immersion — collapsing both halves makes a tautology with no
@@ -1243,6 +1252,8 @@ function buildWorld(
           container: overlay,
           npc: { name: npcDisplayName(role as { id?: string; name?: string }), avatar: "🧑" },
           partialSpec: intent.spec,
+          // Tint the encounter chrome (close button) to the scene accent.
+          accent: scene.palette?.accent,
         })
           .then((res) => {
             // Bailing (X/ESC/backdrop) is NOT a win: skip reward reveal, badges,
@@ -1323,6 +1334,17 @@ function buildWorld(
   // English fallback. Same key-unchanged contract as `vt`.
   const chromeT = (key: string, lang: string, params?: Record<string, string | number>): string =>
     KNOWN_KEYS.has(key) ? translate(key as I18nKey, lang, params) : key
+
+  // #72: feed the map the chrome translate seam + the friendly anchor namer, so
+  // its legend ("Airport", "Train station", …) and the objective tag localize and
+  // read as real place names instead of bare ids.
+  mapOpts = {
+    view: mapView,
+    accent: scene.palette?.accent,
+    lang: uiLocale,
+    t: chromeT,
+    anchorName,
+  }
 
   // ── Quest completion interlude (A2) ─────────────────────────────────────────
   // On the engine's `complete` event we PAUSE the world and run the standalone
@@ -1562,6 +1584,23 @@ function buildWorld(
     bus: { destinations: boardingDestinations("bus_station", 1.0) },
     train: { destinations: boardingDestinations("rail_station", 1.1) },
     flight: { destinations: boardingDestinations("airport", 1.6) },
+    // The enterable CORNER CAFÉ (#14): its "Order" action runs a mic-free
+    // translate-fast drill and signals an order with the `cafe-order` sentinel —
+    // the café PORTAL (below) maps that onto whatever café step is live now
+    // (markStepBeaten + advance), so ordering INSIDE the café satisfies the
+    // café-order quest just like talking to the barista in the street would.
+    cafe: {
+      baristaName:
+        vt("vignette.place.cafe.keeper") === "vignette.place.cafe.keeper"
+          ? "the barista"
+          : vt("vignette.place.cafe.keeper"),
+      objective: {
+        label: ["vignette.place.cafe.order", "Order a coffee"],
+        tool: "translate-fast",
+        questStep: "cafe-order", // sentinel — the portal resolves the LIVE step
+        reward: { xp: 12 },
+      },
+    },
   })
 
   // ── TRANSIT PORTALS: walk INTO a station landmark to board ──────────────────
@@ -1587,6 +1626,11 @@ function buildWorld(
     vignetteId: string,
     labelKey: string,
     labelFallback: string,
+    // Optional per-portal result hook. Transit portals re-spawn + advance directly;
+    // the café portal passes one to map its sentinel order-result onto the LIVE café
+    // step (markStepBeaten + advance), which a bare `advance` can't do for a
+    // challenge-gated talk step. Runs INSTEAD of the default questStep advance.
+    onResult?: (result: { travelTo?: string; questStep?: string } | null) => void,
   ): void => {
     const anchor = city.getAnchor(anchorId)
     if (!anchor) {
@@ -1600,11 +1644,15 @@ function buildWorld(
       for (const p of transitPortals) p.affordance.setEnabled(false)
       try {
         const result = await vignetteHost.enter(vignetteId, { anchorId: id })
-        if (result?.travelTo) {
-          const a = city.getAnchor(result.travelTo)
-          if (a) player.respawnAt(a.x, a.z)
+        if (onResult) {
+          onResult(result)
+        } else {
+          if (result?.travelTo) {
+            const a = city.getAnchor(result.travelTo)
+            if (a) player.respawnAt(a.x, a.z)
+          }
+          if (result?.questStep) questEngine.advance(result.questStep)
         }
-        if (result?.questStep) questEngine.advance(result.questStep)
         // Rewards were already granted inside the vignette (HUD reveal fired there).
       } catch (e) {
         console.error(`[world-plaza] ${vignetteId} vignette failed:`, e)
@@ -1626,6 +1674,18 @@ function buildWorld(
   addTransitPortal("bus_station", VIGNETTE_IDS.bus, "vignette.board.bus.enter", "Catch the coach")
   addTransitPortal("rail_station", VIGNETTE_IDS.train, "vignette.board.train.enter", "Board the train")
   addTransitPortal("airport", VIGNETTE_IDS.flight, "vignette.board.flight.enter", "Check in to fly")
+  // The enterable CORNER CAFÉ (#14): a door portal at the `cafe` building → the warm
+  // interior place-vignette (perf-zero overlay, NOT a 3D room). Ordering inside earns
+  // the café-order step: if the active step sits at the café, mark it beaten + advance
+  // (the talk-step gate). The sentinel `cafe-order` questStep just signals "ordered".
+  addTransitPortal("cafe", VIGNETTE_IDS.cafe, "vignette.place.cafe.enter", "Step into the café", (result) => {
+    if (result?.questStep !== "cafe-order") return
+    const step = questEngine.currentStep()
+    if (step && city.getAnchor(step.anchorId ?? "")?.id === "cafe") {
+      questEngine.markStepBeaten(step.id)
+      if (questEngine.advance(step.id)) toast(`✓ ${step.label}`)
+    }
+  })
 
   // DEV-ONLY hook: lets the headless harness trigger any transit flow without
   // walking to the landmark (the proximity path is exercised by the button at

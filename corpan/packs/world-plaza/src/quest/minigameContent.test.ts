@@ -1,10 +1,15 @@
 import { describe, it, expect } from "vitest"
-import { Quest, type NpcRole } from "@world-plaza/contracts"
+import { Quest, type NpcRole, type LanguageCode } from "@world-plaza/contracts"
 import {
   resolveMinigameContent,
   npcDomains,
   ARCHETYPE_DOMAIN_AFFINITY,
 } from "./minigameContent"
+import {
+  entryPair,
+  type ChallengeEntry,
+  type ChallengeTranslation,
+} from "../challenges/host"
 import { PERSONA_ARCHETYPES } from "../npc/personaGen"
 import cafeJson from "../../content/quests/es-cafe.json"
 import directionsJson from "../../content/quests/es-directions.json"
@@ -99,11 +104,36 @@ describe("resolveMinigameContent — blend NPC × quest × level", () => {
     expect(content.filter.levels).toEqual(["A1", "A2"])
   })
 
-  it("constrains to the TARGET language only (single-language safe)", () => {
+  it("constrains to the quest's TARGET language when no pair is given", () => {
+    // No learner pair → the legacy target-only behavior (the quest pins the target).
     const content = resolveMinigameContent(persona("baker"), CAFE, CAFE.steps[0])
     expect(content.filter.languageCodes).toEqual(["es"])
-    // never a native gate — only the target code(s) the quest pins
-    expect(content.filter.languageCodes).not.toContain("en")
+  })
+
+  // THE TAUTOLOGY FIX (#81): `languageCodes` doubles as the corpus's TRANSLATION
+  // whitelist — `fetch_entry_with_translations` only returns translation rows whose
+  // language is in this list. So a target-ONLY list (["es"]) makes the corpus drop
+  // the English row, and the challenge's native gloss collapses to the Spanish
+  // target → an ES→ES "tap the one that means «el pan»" tautology. When a learner
+  // has a DISTINCT native, the native code MUST be in the whitelist too so BOTH
+  // translations come back and the prompt/answer stay two-language.
+  it("includes the learner's NATIVE language so the corpus returns BOTH sides (#81)", () => {
+    const content = resolveMinigameContent(persona("baker"), CAFE, CAFE.steps[0], {
+      target: "es",
+      native: "en",
+    })
+    expect(content.filter.languageCodes).toContain("es") // target still constrained
+    expect(content.filter.languageCodes).toContain("en") // native row must come back
+  })
+
+  it("does NOT duplicate the native when it is also the target (single-language)", () => {
+    // A one-language immersion stack (native === target): the whitelist is just the
+    // one code, never ["es","es"]. There is no separate native to add.
+    const content = resolveMinigameContent(persona("baker"), CAFE, CAFE.steps[0], {
+      target: "es",
+      native: "es",
+    })
+    expect(content.filter.languageCodes).toEqual(["es"])
   })
 
   it("blends the quest theme (travel) FIRST, then the NPC trade for variety", () => {
@@ -170,5 +200,52 @@ describe("resolveMinigameContent — blend NPC × quest × level", () => {
     const content = resolveMinigameContent(persona("baker"), CAFE, null)
     expect(content.coreEntryIds).toEqual([])
     expect(content.filter.domains).toContain("travel")
+  })
+})
+
+describe("#81 end-to-end — the corpus whitelist no longer collapses the gloss", () => {
+  /**
+   * The real Corpán `fetch_entry_with_translations` uses `languageCodes` as the
+   * TRANSLATION WHITELIST: it returns ONLY translation rows whose language is in
+   * the list. This faithfully replicates that, so the test proves the WHOLE chain:
+   * resolved filter → corpus returns both rows → entryPair gives two languages.
+   */
+  function corpusReturn(
+    filterLangs: string[] | undefined,
+  ): ChallengeEntry {
+    const allRows: ChallengeTranslation[] = [
+      { language_code: "es", text: "el pan", romanization: "" },
+      { language_code: "en", text: "the bread", romanization: "" },
+    ]
+    const allow = filterLangs ? new Set(filterLangs) : null
+    return {
+      entry_id: 1,
+      level: "A1",
+      domains: ["everyday"],
+      source: "base",
+      translations: allow ? allRows.filter((r) => allow.has(r.language_code)) : allRows,
+    }
+  }
+
+  it("REGRESSION: a target-only whitelist drops the native row → ES→ES tautology", () => {
+    // The PRE-FIX state: filter.languageCodes = ["es"] only. The corpus drops the EN
+    // row, and entryPair's native gloss collapses to the Spanish target.
+    const entry = corpusReturn(["es"])
+    const p = entryPair(entry, "es" as LanguageCode, "en" as LanguageCode)
+    expect(p!.target).toBe("el pan")
+    expect(p!.native).toBe("el pan") // ← the tautology this fix prevents
+  })
+
+  it("the resolved filter carries native → corpus returns BOTH → gloss is English", () => {
+    const content = resolveMinigameContent(persona("baker"), CAFE, CAFE.steps[0], {
+      target: "es",
+      native: "en",
+    })
+    // Feed the resolved whitelist to the faithful corpus stub.
+    const entry = corpusReturn(content.filter.languageCodes)
+    const p = entryPair(entry, "es" as LanguageCode, "en" as LanguageCode)
+    expect(p!.target).toBe("el pan")
+    expect(p!.native).toBe("the bread") // ← two languages, NOT a tautology
+    expect(p!.native).not.toBe(p!.target)
   })
 })

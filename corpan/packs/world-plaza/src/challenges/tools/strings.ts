@@ -81,8 +81,11 @@ const en: ChallengeStrings = {
   memoryStudy: "Not a match — tap anywhere to flip back",
   sortPrompt: "Sort each phrase into its basket",
   sortHint: (label) => `🧺 ${label}`,
-  pictureMatchHint: "Tap the word for this picture",
-  pictureMatchWordHint: (native) => `Tap the word that means “${native}”`,
+  // NOUN-NEUTRAL ("the one"): the answer tiles are whole corpus phrases/sentences,
+  // not single words, so "Tap the WORD that means «Trae el libro aquí.»" reads as a
+  // lie. "the one" is true for a word, a phrase, or a sentence (#56).
+  pictureMatchHint: "Tap the one for this picture",
+  pictureMatchWordHint: (native) => `Tap the one that means “${native}”`,
   memorizeTitle: "Memorise these",
   memorizeSub: "study them, then tap Ready",
   ready: "I'm ready →",

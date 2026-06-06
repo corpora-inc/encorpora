@@ -151,15 +151,28 @@ export interface MinigameContent {
  * scales these per quest; a beginner quest pins A1/A2). Passed straight through as
  * the difficulty filter.
  *
- * LANGUAGES: the quest's `contentSelector.languageCodes` (constrains to entries
- * that have the target translation). SINGLE-LANGUAGE SAFE — this is the TARGET
- * code(s); it never gates on a SECOND/native language, so a one-language immersion
- * stack resolves content exactly the same way.
+ * LANGUAGES: the quest's `contentSelector.languageCodes` (the TARGET code(s)) PLUS
+ * the learner's NATIVE code when a distinct `pair` is given. This list is NOT just
+ * an entry gate — the bundled corpus reuses it as the TRANSLATION WHITELIST
+ * (`fetch_entry_with_translations` only returns translation rows whose language is
+ * in the list). So a target-ONLY list makes the corpus drop the native (e.g.
+ * English) row, and the challenge's native gloss then collapses to the target →
+ * the ES→ES "tap the one that means «el pan»" tautology (#81). Threading the
+ * native code in keeps BOTH sides available so cross-language games stay
+ * two-language. SINGLE-LANGUAGE SAFE: when `native === target` (a one-language
+ * immersion stack) there is no separate native to add, so the list stays the single
+ * target code — never `["es","es"]`.
  */
 export function resolveMinigameContent(
   npc: NpcRole | null | undefined,
   quest: Quest,
   step: QuestStep | null,
+  /**
+   * The learner's (target, native) pair. Optional for back-compat; when given and
+   * `native !== target`, the native code is added to `filter.languageCodes` so the
+   * corpus returns the native translation alongside the target (the #81 fix).
+   */
+  pair?: { target: string; native: string },
 ): MinigameContent {
   const stepContent = resolveStepContent(quest, step)
 
@@ -186,7 +199,24 @@ export function resolveMinigameContent(
   const filter: EntryFilter = {}
   if (blended.length) filter.domains = blended
   if (stepContent.levels.length) filter.levels = stepContent.levels
-  if (stepContent.languageCodes.length) filter.languageCodes = stepContent.languageCodes
+
+  // The corpus reuses `languageCodes` as the translation whitelist, so it must carry
+  // BOTH the target AND a distinct native — otherwise the native row is dropped and
+  // the challenge's gloss collapses to the target (the #81 ES→ES tautology). Start
+  // from the quest's pinned target code(s), then UNION the learner's native when it
+  // differs. De-duped + order-preserved (target first).
+  const langCodes: string[] = []
+  const seenLang = new Set<string>()
+  for (const code of [
+    ...stepContent.languageCodes,
+    ...(pair && pair.native !== pair.target ? [pair.native] : []),
+  ]) {
+    if (!seenLang.has(code)) {
+      seenLang.add(code)
+      langCodes.push(code)
+    }
+  }
+  if (langCodes.length) filter.languageCodes = langCodes
 
   return {
     coreEntryIds: stepContent.entryIds,

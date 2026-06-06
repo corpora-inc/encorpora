@@ -81,6 +81,8 @@ export interface OverlayPretext {
   avatar: string
   /** The in-character line that frames the challenge ("my words got scrambled…"). */
   line: string
+  /** Optional scene accent color to tint chrome (the close button). */
+  accent?: string
 }
 
 /** Feedback flavors a tool can splash. */
@@ -167,6 +169,10 @@ export function mountChallengeOverlay(
   const scrim = el("div", "wp-ch-scrim")
   scrim.setAttribute("role", "dialog")
   scrim.setAttribute("aria-modal", "true")
+  // Tint the chrome (close button) to the scene accent when one is supplied; the
+  // CSS falls back to a warm gold when the var is unset (or the value is invalid,
+  // in which case the browser ignores the bad custom-property assignment).
+  if (pretext.accent) scrim.style.setProperty("--wp-ch-accent", pretext.accent)
 
   const card = el("div", "wp-ch-card")
   scrim.appendChild(card)
