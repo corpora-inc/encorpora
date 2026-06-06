@@ -95,13 +95,18 @@ function mountMusic(body: HTMLElement, ctx: PhoneAppContext, deps: MusicAppDeps)
   toggle.append(knob)
   switchRow.append(switchText, toggle)
 
-  // Now-playing card.
+  // Now-playing card — a real "Now Playing" screen: album-art-sized artwork (the
+  // brand mark on a terracotta wash) over the labels (PHONE_DESIGN §7).
   const nowCard = elt("div", "wp-phone-now")
+  const nowArt = elt("div", "wp-phone-now-art")
+  nowArt.innerHTML = corpanMarkTile()
+  const nowMeta = elt("div", "wp-phone-now-meta")
   const nowLabel = elt("div", "wp-phone-now-label")
   const nowTitle = elt("div", "wp-phone-now-title")
   const nowStation = elt("div", "wp-phone-now-station")
   const nowDuck = elt("div", "wp-phone-now-duck")
-  nowCard.append(nowLabel, nowTitle, nowStation, nowDuck)
+  nowMeta.append(nowLabel, nowTitle, nowStation, nowDuck)
+  nowCard.append(nowArt, nowMeta)
 
   // Transport row.
   const transport = elt("div", "wp-phone-transport")
