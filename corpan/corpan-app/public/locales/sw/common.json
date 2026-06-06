@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Mwalimu mvumilivu ndani ya kifaa chako, kwa lugha zote unazojifunza."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Mji hai unaogeuza kila mkutano kuwa somo."
     }
   },
   "home": {

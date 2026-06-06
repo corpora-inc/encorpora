@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "图托马顿",
       "blurb": "你的专属设备内置导师，耐心助你学习每一种语言。"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "一个将每次相遇化为课程的生活城市。"
     }
   },
   "home": {

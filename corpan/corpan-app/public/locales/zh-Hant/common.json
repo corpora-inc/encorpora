@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "圖托馬通",
       "blurb": "手機裡的耐心家教，陪伴您學習每種語言。"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "一座將每次邂逅化為課程的活城市。"
     }
   },
   "home": {

@@ -191,6 +191,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "A patient on-device tutor for every language you're learning."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "A living city that turns every encounter into a lesson."
     }
   },
   "onboarding": {

@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Váš trpělivý tutor přímo v aplikaci pro všechny jazyky, které se učíte."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Živé město, kde se každé setkání stává lekcí."
     }
   },
   "home": {

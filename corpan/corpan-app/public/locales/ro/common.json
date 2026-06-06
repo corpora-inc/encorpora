@@ -747,6 +747,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Un tutore răbdător, mereu pe telefonul tău, pentru orice limbă înveți."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Un oraș viu care transformă fiecare întâlnire într-o lecție."
     }
   },
   "home": {
