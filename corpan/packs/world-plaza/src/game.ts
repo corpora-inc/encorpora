@@ -16,6 +16,7 @@ import { createCrowd, type CrowdFocusHandle } from "./world/crowd"
 import { createCameraFade } from "./world/cameraFade"
 import { createShell } from "./shell"
 import { createNpcRuntime, npcDisplayName } from "./npc/npcRuntime"
+import { initMultiplayer, resolveServerUrl, type MultiplayerHandle } from "./multiplayer"
 import { createMockHost } from "./npc/mockHost"
 import { runOnboarding, defaultIdentity, type OnboardingResult } from "./onboarding/onboarding"
 import type { HostApi as NpcHostApi } from "./npc/hostTypes"
@@ -1015,6 +1016,31 @@ function buildWorld(
 
   // Proximity NPC engagement → open a real (or scripted-fallback) Qwen3 chat.
   const npcRuntime = createNpcRuntime(npcHost)
+
+  // ── Multiplayer (ADDITIVE, feature-detected) ──────────────────────────────
+  // The ONE wiring call for the entire player-to-player layer: presence, safe
+  // k-anonymity profile reveal, LLM-mediated cross-language chat, peer
+  // challenges, and the trade transport. It reuses the NPC model broker (single
+  // model slot), the shared challenge host, and `overlay` (the host-painted
+  // surface). With no server URL it is inert and the single-player world is
+  // untouched. The economy layer consumes `mp.tradeTransport()` for trades.
+  const mp: MultiplayerHandle = initMultiplayer({
+    serverUrl: resolveServerUrl(),
+    playerId: "player-local",
+    name: identity.name.displayName,
+    avatar: identity.avatar,
+    topology,
+    scene: world.scene,
+    overlay,
+    challengeContainer: overlay,
+    getLocalPos: () => ({ ...player.getPos(), facing: player.getFacing() }),
+    learnerPair,
+    hostApi: npcHost,
+    broker: npcRuntime.broker,
+    challengeHost: chHost,
+    sceneId: scene.id,
+    questId: quest.id,
+  })
   let openDialogue: { close: () => void } | null = null
   // The NPC we're currently engaged with (dialogue open). While set, it stays
   // HELD (frozen) regardless of focus churn, so it can't wander off mid-chat.
@@ -2088,6 +2114,7 @@ function buildWorld(
     roadArrow.update(dt)
     objectiveBeacon.update(dt)
     traversalTrigger.update(dt) // walk-to-complete for traverse/find steps (#26)
+    mp.update(dt) // presence + proximity profile reveal (no-op when offline)
   })
 
   function teardown() {
@@ -2108,6 +2135,7 @@ function buildWorld(
     vignetteHost.dispose() // force-exit any running vignette + release the model
     if (typeof window !== "undefined")
       delete (window as unknown as { __wpEnterTaxi?: () => void }).__wpEnterTaxi
+    mp.dispose() // tear down presence + interaction layer (safe when offline)
     void npcRuntime.dispose()
     // Quest completion listener + active engine subscription.
     unsubComplete?.()

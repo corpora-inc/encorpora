@@ -34,6 +34,18 @@ export class PlayerState extends Schema {
   @type("string") questId = ""
   /** server time (ms) of the last accepted move — clients interpolate from it. */
   @type("number") t = 0
+
+  /* ── Safe profile (PUBLISHED, k-anonymity-safe). Additive; defaults keep an
+   *    old client that never publishes a profile fully functional (it just shows
+   *    no card). These are the ONLY identity-ish fields synced, and only the
+   *    language stack is here — the COUNTRY is deliberately NOT in synced state
+   *    (it would broadcast to everyone, defeating k-anonymity). Country lives in
+   *    the room's private histogram and is only ever surfaced through the
+   *    server-coarsened `profile-card` reply. ── */
+  /** target language the player is learning (always safe to show). */
+  @type("string") target = ""
+  /** native language the player speaks (always safe to show). */
+  @type("string") native = ""
 }
 
 export class PlazaState extends Schema {

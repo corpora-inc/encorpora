@@ -11,6 +11,7 @@ export type {
   NetClientOptions,
   NetIdentity,
   NetStatus,
+  NetRoom,
 } from "./netClient"
 export { createRemoteAvatar } from "./remoteAvatar"
 export type { RemoteAvatar, RemoteAvatarOptions } from "./remoteAvatar"

@@ -185,5 +185,5 @@ describe("contracts v0 — invalid payloads reject", () => {
 })
 
 describe("contracts v0 — meta", () => {
-  it("exposes a version", () => expect(CONTRACTS_VERSION).toBe("0.1.0"))
+  it("exposes a version", () => expect(CONTRACTS_VERSION).toBe("0.2.0"))
 })

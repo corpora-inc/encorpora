@@ -59,6 +59,30 @@ export interface NetClientOptions {
   onRemoteRemove?: (playerId: string) => void
   /** surface connection state changes (for an optional "online" pip). */
   onStatus?: (status: NetStatus) => void
+  /**
+   * Called once the room is joined (and again after a reconnect). Hands the
+   * interaction layer (src/multiplayer) a tiny messaging surface on the SAME
+   * room used for movement — so profile/chat/challenge/trade messages ride the
+   * one connection (per this file's header). Best-effort: never called when
+   * offline; the game runs solo.
+   */
+  onRoom?: (room: NetRoom) => void
+  /** Called when the room is lost (leave/reconnect drop) so the interaction
+   *  layer can detach its listeners. */
+  onRoomLost?: () => void
+}
+
+/**
+ * The minimal, typed messaging surface the interaction layer consumes — a thin
+ * façade over the Colyseus room so `src/multiplayer` never imports colyseus.js
+ * directly. `send` posts a typed message; `onMessage` subscribes (returns an
+ * unsubscribe); `localPlayerId`/`localSessionId` identify us on the wire.
+ */
+export interface NetRoom {
+  send: (type: string, payload: unknown) => void
+  onMessage: (type: string, cb: (payload: unknown) => void) => () => void
+  localSessionId: string
+  localPlayerId: string
 }
 
 export type NetStatus = "offline" | "connecting" | "online" | "reconnecting"
@@ -71,6 +95,11 @@ export interface NetClient {
   remoteCount: () => number
   /** TEST/inspection: snapshot of remote avatar positions. */
   remotePositions: () => Array<{ id: string; x: number; z: number }>
+  /**
+   * Remote players with their DURABLE playerId + interpolated position — the
+   * interaction layer uses this to find the nearest real human to reveal/invite.
+   */
+  remotePlayers: () => Array<{ sessionId: string; playerId: string; x: number; z: number }>
   dispose: () => void
 }
 
@@ -99,6 +128,9 @@ export function createNetClient(opts: NetClientOptions): NetClient {
 
   // Remote avatars we OWN, keyed by sessionId (the schema map key).
   const remotes = new Map<string, RemoteAvatar>()
+  // sessionId → durable playerId, so the interaction layer can address a nearby
+  // remote avatar by its PlayerId (profile request / invite / trade).
+  const remoteIds = new Map<string, string>()
   let room: Room | null = null
   let disposed = false
   let seq = 0
@@ -128,6 +160,7 @@ export function createNetClient(opts: NetClientOptions): NetClient {
     ra.stamp(clockMs)
     ra.setTarget(p.x, p.z, p.facing)
     remotes.set(sessionId, ra)
+    remoteIds.set(sessionId, p.playerId || sessionId)
     opts.onRemoteAdd?.(p.playerId || sessionId)
   }
 
@@ -136,6 +169,7 @@ export function createNetClient(opts: NetClientOptions): NetClient {
     if (!ra) return
     ra.dispose()
     remotes.delete(sessionId)
+    remoteIds.delete(sessionId)
     opts.onRemoteRemove?.(sessionId)
   }
 
@@ -159,6 +193,26 @@ export function createNetClient(opts: NetClientOptions): NetClient {
       }
       room = joined
       setStatus("online")
+
+      // Hand the interaction layer a typed messaging façade over THIS room.
+      if (opts.onRoom) {
+        try {
+          opts.onRoom({
+            send: (type, payload) => {
+              try {
+                joined.send(type, payload)
+              } catch (e) {
+                console.warn(`[net] send("${type}") failed:`, (e as Error)?.message ?? e)
+              }
+            },
+            onMessage: (type, cb) => joined.onMessage(type, cb as (m: unknown) => void),
+            localSessionId: joined.sessionId,
+            localPlayerId: opts.identity.playerId,
+          })
+        } catch (e) {
+          console.error("[net] onRoom handler threw:", e)
+        }
+      }
 
       // Schema callbacks (colyseus.js v0.16 / schema v3): react to the players
       // map. The decoded state is reflection-typed, so we narrow the callback
@@ -198,6 +252,11 @@ export function createNetClient(opts: NetClientOptions): NetClient {
         setStatus(code === 1000 ? "offline" : "reconnecting")
         room = null
         for (const id of [...remotes.keys()]) removeRemote(id)
+        try {
+          opts.onRoomLost?.()
+        } catch (e) {
+          console.error("[net] onRoomLost handler threw:", e)
+        }
       })
     } catch (err) {
       // No server / refused / timeout → degrade to solo. Visible, not silent.
@@ -240,6 +299,12 @@ export function createNetClient(opts: NetClientOptions): NetClient {
     remoteCount: () => remotes.size,
     remotePositions: () =>
       [...remotes.entries()].map(([id, ra]) => ({ id, ...ra.getPos() })),
+    remotePlayers: () =>
+      [...remotes.entries()].map(([sessionId, ra]) => ({
+        sessionId,
+        playerId: remoteIds.get(sessionId) ?? sessionId,
+        ...ra.getPos(),
+      })),
     dispose: () => {
       disposed = true
       for (const id of [...remotes.keys()]) removeRemote(id)

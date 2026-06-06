@@ -3,10 +3,23 @@ import { StateView } from "@colyseus/schema"
 import {
   MovementUpdate,
   AvatarSpec,
+  ProfilePublish,
+  ProfileRequest,
+  InviteMessage,
+  InviteRespond,
+  MediatedChatInput,
+  PeerChallengeResult,
+  TradeEnvelope,
+  MP_MSG,
   type RoomTopology,
+  type SafeProfile,
+  type InvitedMessage,
+  type InviteResult,
+  type TradeUpdateMessage,
 } from "@world-plaza/contracts"
 import { PlazaState, PlayerState } from "./state.js"
 import { AoiGrid, DEFAULT_AOI, type AoiConfig } from "./aoi.js"
+import { GeoHistogram } from "./geoHistogram.js"
 
 /**
  * PlazaRoom — the authoritative presence room for World Plaza (M1: movement).
@@ -67,6 +80,16 @@ export class PlazaRoom extends Room<PlazaState> {
    */
   private visible = new Map<string, Set<string>>()
 
+  /* ── Interaction layer (profile reveal / chat / challenge / trade) ── */
+  /** server-private geo tally powering the k-anonymity place reveal. */
+  private geo = new GeoHistogram()
+  /** playerId → sessionId, so an invite/trade addressed by durable PlayerId routes. */
+  private byPlayerId = new Map<string, string>()
+  /** open invites we're tracking: inviteId → { from, to } sessionIds. */
+  private invites = new Map<string, { from: string; to: string }>()
+  /** coarse anti-grief: sessionId → recent action timestamps (sliding window). */
+  private actionLog = new Map<string, number[]>()
+
   onCreate(options: { topology: RoomTopology; roomLabel?: string; aoi?: Partial<AoiConfig> }) {
     this.topology = options.topology
     // AOI cell size / radius are configurable (per-room override → env → default).
@@ -90,6 +113,8 @@ export class PlazaRoom extends Room<PlazaState> {
       }
       this.applyMove(client.sessionId, parsed.data)
     })
+
+    this.registerInteractionHandlers()
 
     console.log(
       `[plaza] room ${this.roomId} created on topology ${this.topology.id} ` +
@@ -116,6 +141,7 @@ export class PlazaRoom extends Room<PlazaState> {
 
     this.state.players.set(client.sessionId, p)
     this.clientsBySession.set(client.sessionId, client)
+    if (p.playerId) this.byPlayerId.set(p.playerId, client.sessionId)
 
     // Give this client an AOI view (filters the @view()-tagged players map to
     // this client). Place them in the grid and seed mutual visibility with every
@@ -147,6 +173,16 @@ export class PlazaRoom extends Room<PlazaState> {
     this.clientsBySession.delete(client.sessionId)
     this.state.players.delete(client.sessionId)
     this.lastSeq.delete(client.sessionId)
+    // Interaction-layer cleanup: drop from the geo tally, the playerId index,
+    // any open invites, and the rate-limit log.
+    this.geo.remove(client.sessionId)
+    if (player?.playerId && this.byPlayerId.get(player.playerId) === client.sessionId) {
+      this.byPlayerId.delete(player.playerId)
+    }
+    this.dropInvitesFor(client.sessionId)
+    for (const key of [...this.actionLog.keys()]) {
+      if (key.startsWith(`${client.sessionId}:`)) this.actionLog.delete(key)
+    }
     if (player) console.log(`[plaza] -leave ${player.name} → ${this.state.players.size} players`)
   }
 
@@ -194,6 +230,193 @@ export class PlazaRoom extends Room<PlazaState> {
     // intra-cell movement (the common case) costs a single hash + compare.
     const moved = this.aoi.set(sessionId, nx, nz)
     if (moved.changed) this.relinkAoi(sessionId)
+  }
+
+  /* ----------------------------------------------------- interaction layer */
+
+  /**
+   * Register the typed player-to-player interaction handlers. ALL of these are
+   * additive to presence/movement and validated with the contract schemas — the
+   * server never trusts a client payload. Routing is server-mediated (no P2P):
+   * a sender posts; the server authorizes + delivers a typed message to the
+   * recipient. The only expressive channels are menu choices + AI-mediated
+   * artifacts; there is no raw-text relay anywhere.
+   */
+  private registerInteractionHandlers(): void {
+    // Publish my safe stack into synced state + my RAW country into the private
+    // geo tally (NEVER synced — see geoHistogram). Re-publishing is idempotent.
+    this.onMessage(MP_MSG.profilePublish, (client, raw) => {
+      const parsed = ProfilePublish.safeParse(raw)
+      if (!parsed.success) {
+        console.warn(`[plaza] bad profile-publish from ${client.sessionId}`)
+        return
+      }
+      const p = this.state.players.get(client.sessionId)
+      if (!p) return
+      p.target = String(parsed.data.stack.target)
+      p.native = String(parsed.data.stack.native)
+      // Country/continent feed the histogram only — they are kept off the wire.
+      this.geo.set(client.sessionId, parsed.data.country, parsed.data.continent)
+    })
+
+    // A viewer asks for another player's card. We coarsen the target's place to
+    // the safest k-anonymous reveal FOR THIS MOMENT and reply only to the asker.
+    this.onMessage(MP_MSG.profileRequest, (client, raw) => {
+      const parsed = ProfileRequest.safeParse(raw)
+      if (!parsed.success) return
+      if (!this.allow(client.sessionId, "profile", 20, 5000)) return
+      const targetSession = this.byPlayerId.get(String(parsed.data.target))
+      if (!targetSession) return
+      const tp = this.state.players.get(targetSession)
+      if (!tp) return
+      const card: SafeProfile = {
+        playerId: tp.playerId as SafeProfile["playerId"],
+        name: tp.name || "Traveler",
+        stack: {
+          target: (tp.target || "en") as SafeProfile["stack"]["target"],
+          native: (tp.native || tp.target || "en") as SafeProfile["stack"]["native"],
+        },
+        place: this.geo.reveal(targetSession),
+      }
+      client.send(MP_MSG.profileCard, card)
+    })
+
+    // Invite another player to chat / challenge / trade. The server stamps the
+    // trusted sender id + name; the invitee gets a typed prompt to accept/decline.
+    this.onMessage(MP_MSG.invite, (client, raw) => {
+      const parsed = InviteMessage.safeParse(raw)
+      if (!parsed.success) {
+        console.warn(`[plaza] bad invite from ${client.sessionId}`)
+        return
+      }
+      if (!this.allow(client.sessionId, "invite", 6, 10000)) {
+        this.resultTo(client, parsed.data.inviteId, "unavailable")
+        return
+      }
+      const from = this.state.players.get(client.sessionId)
+      const toSession = this.byPlayerId.get(String(parsed.data.to))
+      const toClient = toSession ? this.clientsBySession.get(toSession) : undefined
+      if (!from || !toSession || !toClient) {
+        this.resultTo(client, parsed.data.inviteId, "unavailable")
+        return
+      }
+      this.invites.set(parsed.data.inviteId, { from: client.sessionId, to: toSession })
+      const invited: InvitedMessage = {
+        inviteId: parsed.data.inviteId,
+        from: from.playerId as InvitedMessage["from"],
+        fromName: from.name || "Traveler",
+        offer: parsed.data.offer,
+      }
+      toClient.send(MP_MSG.invited, invited)
+    })
+
+    // The invitee accepts or declines; we relay the outcome to the inviter and
+    // (on accept) the shared session id is the inviteId both clients already hold.
+    this.onMessage(MP_MSG.inviteRespond, (client, raw) => {
+      const parsed = InviteRespond.safeParse(raw)
+      if (!parsed.success) return
+      const rec = this.invites.get(parsed.data.inviteId)
+      if (!rec || rec.to !== client.sessionId) return // only the invitee may respond
+      const inviter = this.clientsBySession.get(rec.from)
+      const outcome = parsed.data.action === "accept" ? "accepted" : "declined"
+      if (inviter) this.resultTo(inviter, parsed.data.inviteId, outcome)
+      if (outcome === "declined") this.invites.delete(parsed.data.inviteId)
+    })
+
+    // AI-mediated chat: the SENDER's device already cleaned + translated +
+    // "lessonified" into a MediatedChatInput (never raw UGC). We route it to the
+    // recipient as-is; each device re-presents it for its own learner. (The
+    // server validates the typed shape; deeper moderation can layer here later.)
+    this.onMessage(MP_MSG.chatSend, (client, raw) => {
+      const parsed = MediatedChatInput.safeParse(raw)
+      if (!parsed.success) {
+        console.warn(`[plaza] bad chat-send from ${client.sessionId}`)
+        return
+      }
+      if (!this.allow(client.sessionId, "chat", 20, 10000)) return
+      const toSession = this.byPlayerId.get(String(parsed.data.to))
+      const toClient = toSession ? this.clientsBySession.get(toSession) : undefined
+      if (!toClient) return
+      // Deliver the input; the recipient's device produces its own artifact. We
+      // forward the typed input (the recipient lessonifies locally for THEIR
+      // level/quest), keeping the on-device-LLM model exclusive per device.
+      toClient.send(MP_MSG.chatDeliver, parsed.data)
+    })
+
+    // Peer-challenge result: route my result to the OTHER party of the invite.
+    // (Routed by the server's own invite record so neither client can forge the
+    // recipient.) Accepted invites persist in the registry for the session.
+    this.onMessage(MP_MSG.peerResult, (client, raw) => {
+      const parsed = PeerChallengeResult.safeParse(raw)
+      if (!parsed.success) return
+      if (!this.allow(client.sessionId, "peer", 8, 10000)) return
+      const rec = this.invites.get(parsed.data.inviteId)
+      if (!rec) return
+      if (rec.from !== client.sessionId && rec.to !== client.sessionId) return // not a party
+      const otherSession = rec.from === client.sessionId ? rec.to : rec.from
+      const otherClient = this.clientsBySession.get(otherSession)
+      if (otherClient) otherClient.send(MP_MSG.peerResultDeliver, parsed.data)
+    })
+
+    // Trade transport: route a typed envelope to the partner. The economy layer
+    // owns item rules + the rich proposal body (opaque to us); we sequence +
+    // rate-limit + stamp the trusted sender. Atomic application is the economy
+    // agent's concern (mirrored on both clients on mutual accept).
+    this.onMessage(MP_MSG.trade, (client, raw) => {
+      const parsed = TradeEnvelope.safeParse(raw)
+      if (!parsed.success) {
+        console.warn(`[plaza] bad trade from ${client.sessionId}`)
+        return
+      }
+      if (!this.allow(client.sessionId, "trade", 30, 10000)) return
+      const from = this.state.players.get(client.sessionId)
+      const toSession = this.byPlayerId.get(String(parsed.data.to))
+      const toClient = toSession ? this.clientsBySession.get(toSession) : undefined
+      if (!from || !toClient) return
+      const update: TradeUpdateMessage = {
+        ...parsed.data,
+        from: from.playerId as TradeUpdateMessage["from"],
+      }
+      toClient.send(MP_MSG.tradeUpdate, update)
+    })
+  }
+
+  /** Send an invite outcome to a client. */
+  private resultTo(client: Client, inviteId: string, outcome: InviteResult["outcome"]): void {
+    const msg: InviteResult = { inviteId, outcome }
+    client.send(MP_MSG.inviteResult, msg)
+  }
+
+  /** Drop + expire every invite touching a (leaving) session. */
+  private dropInvitesFor(sessionId: string): void {
+    for (const [id, rec] of [...this.invites]) {
+      if (rec.from === sessionId || rec.to === sessionId) {
+        const other = rec.from === sessionId ? rec.to : rec.from
+        const otherClient = this.clientsBySession.get(other)
+        if (otherClient) this.resultTo(otherClient, id, "expired")
+        this.invites.delete(id)
+      }
+    }
+  }
+
+  /**
+   * Coarse anti-grief rate limiter: allow at most `max` actions of `kind` per
+   * `windowMs` sliding window per session. Returns false (drop) when exceeded.
+   * Per-kind so chat spam can't starve trades, etc.
+   */
+  private allow(sessionId: string, kind: string, max: number, windowMs: number): boolean {
+    const now = Date.now()
+    const key = `${sessionId}:${kind}`
+    const log = this.actionLog.get(key) ?? []
+    const recent = log.filter((t) => now - t < windowMs)
+    if (recent.length >= max) {
+      this.actionLog.set(key, recent)
+      console.warn(`[plaza] rate-limited ${kind} from ${sessionId}`)
+      return false
+    }
+    recent.push(now)
+    this.actionLog.set(key, recent)
+    return true
   }
 
   /* ------------------------------------------------------------- AOI wiring */
