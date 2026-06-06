@@ -1397,6 +1397,7 @@ pub fn run() {
         .plugin(tauri_plugin_subscriptions::init())
         .plugin(tauri_plugin_stt::init())
         .plugin(tauri_plugin_corpan_llm::init())
+        .plugin(tauri_plugin_asr_native::init())
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
             let data_dir = app

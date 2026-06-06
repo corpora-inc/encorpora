@@ -119,6 +119,35 @@ export type HostApi = {
     cancelSession?: (args: { sessionId: string }) => Promise<void>
     releaseAudio?: () => Promise<void>
   }
+  /** Provider-agnostic dictation (host.asr). Present only when an asr-* provider
+   *  plugin is registered. Minimal local mirror of @shared/asr's AsrApi — kept
+   *  here (not imported) so the pack stays self-contained, same as `llm`. */
+  asr?: HostAsrApi
+}
+
+export type HostAsrApi = {
+  provider: (id: string) => Promise<HostAsrProvider | null>
+  pick: (args: {
+    lang: string
+    budgetMB?: number
+    goal?: "dictation" | "challenge"
+  }) => Promise<HostAsrProvider | null>
+}
+
+export type HostAsrProvider = {
+  readonly id: string
+  transcribe: (opts: {
+    lang: string
+    mode: "push_to_talk" | "auto_stop"
+  }) => Promise<HostAsrSession>
+}
+
+export type HostAsrSession = {
+  onPartial: (cb: (text: string) => void) => void
+  onLevel: (cb: (rms: number, tMs: number) => void) => void
+  onError: (cb: (code: string, message?: string) => void) => void
+  stop: () => Promise<{ text: string; confidence: number; language: string }>
+  cancel: () => void
 }
 
 /** A built-in source as declared in the pack manifest's `languages[<code>].sources[]`.

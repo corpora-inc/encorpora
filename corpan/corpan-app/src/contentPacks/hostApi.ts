@@ -11,9 +11,14 @@ import { useRatingStore } from "@/store/rating"
 import { usePhrasePacksStore } from "@/store/phrasePacks"
 import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
+import { rankProviders } from "@shared/asr"
 import type { StackConfigPatch } from "./types"
 import type {
   AsrApi,
+  AsrCapability,
+  AsrCaptureMode,
+  AsrProvider,
+  AsrSession,
   HostApi,
   LlmApi,
   ModelBudget,
@@ -624,16 +629,150 @@ export const createHostApi = (packId?: string): HostApi => {
     },
   }
 
-  // --- host.asr: selection over registered providers ---------------------
-  // No asr-* provider plugin is registered yet → both methods return null,
-  // which means KEYBOARD (the permanent floor; callers MUST handle null).
-  // The moment asr-native (or another provider) lands, `provider("native")`
-  // returns it and `pick` routes through rankProviders over the registered
-  // providers' capabilities + the live budget. The seam is present NOW so
-  // packs can program against it without a feature flag.
+  // --- host.asr: native dictation provider over tauri-plugin-asr-native ----
+  // The provider bridges host.asr to the OS-native recognizer plugin: its
+  // session invokes plugin:asr-native commands and relays the plugin's
+  // `asr://partial`/`asr://level`/`asr://error` events into AsrSession
+  // callbacks. DEGRADE-SAFE: every native call is wrapped — if the plugin
+  // isn't registered (desktop dev) or the language isn't supported, the
+  // probe/transcribe fails or returns nothing → pick() returns null → the
+  // caller (MicInput / wireDictation) falls back to the KEYBOARD floor (the
+  // mic just doesn't show). So this can't regress anything.
+
+  // One session = one start_session…stop_session, with its event listeners.
+  const openNativeSession = async (
+    lang: string,
+    mode: AsrCaptureMode,
+  ): Promise<AsrSession> => {
+    const sessionId = `asr-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+    let partialCb: ((t: string) => void) | undefined
+    let levelCb: ((rms: number, tMs: number) => void) | undefined
+    let errorCb: ((code: string, message?: string) => void) | undefined
+    const unlisteners: Array<() => void> = []
+
+    const sub = async <T extends { sessionId: string }>(
+      ev: string,
+      handler: (e: T) => void,
+    ) => {
+      try {
+        const h = await addPluginListener<T>("asr-native", ev, (e) => {
+          if (e?.sessionId !== sessionId) return // route to THIS session only
+          try {
+            handler(e)
+          } catch (err) {
+            console.error(`[asr] ${ev} handler threw:`, err)
+          }
+        })
+        unlisteners.push(() => {
+          try {
+            h.unregister()
+          } catch (err) {
+            console.error(`[asr] unregister ${ev} failed:`, err)
+          }
+        })
+      } catch (err) {
+        console.error(`[asr] addPluginListener ${ev} failed:`, err)
+      }
+    }
+
+    await sub<{ sessionId: string; text: string }>("asr://partial", (e) =>
+      partialCb?.(e.text),
+    )
+    await sub<{ sessionId: string; rms: number; tMs: number }>(
+      "asr://level",
+      (e) => levelCb?.(e.rms, e.tMs),
+    )
+    await sub<{ sessionId: string; code: string; message?: string }>(
+      "asr://error",
+      (e) => errorCb?.(e.code, e.message),
+    )
+
+    const teardown = () => {
+      for (const u of unlisteners.splice(0)) u()
+    }
+
+    await invoke("plugin:asr-native|start_session", {
+      args: { sessionId, lang, mode },
+    })
+
+    return {
+      onPartial: (cb) => {
+        partialCb = cb
+      },
+      onLevel: (cb) => {
+        levelCb = cb
+      },
+      onError: (cb) => {
+        errorCb = cb
+      },
+      stop: async () => {
+        try {
+          return await invoke("plugin:asr-native|stop_session", {
+            args: { sessionId },
+          })
+        } finally {
+          teardown()
+        }
+      },
+      cancel: () => {
+        void invoke("plugin:asr-native|cancel_session", {
+          args: { sessionId },
+        }).catch((err) => console.error("[asr] cancel_session failed:", err))
+        teardown()
+      },
+    }
+  }
+
+  const nativeProvider: AsrProvider = {
+    id: "native",
+    capabilities: () =>
+      invoke<AsrCapability>("plugin:asr-native|capabilities"),
+    isAvailable: (lang) =>
+      invoke<{ ok: boolean; needsDownload: boolean }>(
+        "plugin:asr-native|is_available",
+        { args: { lang } },
+      ),
+    ensure: (lang) =>
+      invoke<{ ready: boolean; downloading: boolean }>(
+        "plugin:asr-native|ensure",
+        { args: { lang } },
+      ),
+    transcribe: ({ lang, mode }) => openNativeSession(lang, mode),
+  }
+
   const asr: AsrApi = {
-    provider: async () => null,
-    pick: async () => null,
+    provider: async (id) => (id === "native" ? nativeProvider : null),
+    pick: async ({ lang, budgetMB, goal = "dictation" }) => {
+      // Probe native capabilities; any failure (plugin absent on desktop dev,
+      // etc.) → no provider → keyboard floor.
+      let cap: AsrCapability
+      try {
+        cap = await nativeProvider.capabilities()
+      } catch (err) {
+        console.error("[asr] native capabilities() failed → keyboard:", err)
+        return null
+      }
+      // Live ASR budget headroom from the registry (native is out-of-process,
+      // residentMemoryMB 0, so it always fits; this is here for downloadable
+      // providers later). Default generous if budget read fails.
+      let availableForAsrMB = budgetMB ?? 4096
+      if (budgetMB == null) {
+        try {
+          const b = await readBudget()
+          availableForAsrMB = b.availableMB || 4096
+        } catch {
+          /* keep the generous default */
+        }
+      }
+      const androidCpuOnly =
+        typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent)
+      const ranked = rankProviders([cap], {
+        lang,
+        goal,
+        budget: { availableForAsrMB, androidCpuOnly },
+      })
+      return ranked[0] === "native" ? nativeProvider : null
+    },
   }
 
   return {

@@ -751,7 +751,7 @@ dependencies = [
 
 [[package]]
 name = "corpan"
-version = "0.16.2"
+version = "0.17.0"
 dependencies = [
  "futures-util",
  "reqwest 0.12.28",
@@ -761,6 +761,7 @@ dependencies = [
  "sha2",
  "tauri",
  "tauri-build",
+ "tauri-plugin-asr-native",
  "tauri-plugin-audio-keepalive",
  "tauri-plugin-clipboard-manager",
  "tauri-plugin-corpan-llm",
@@ -774,6 +775,13 @@ dependencies = [
  "tauri-plugin-subscriptions",
  "tauri-plugin-tts",
  "zip",
+]
+
+[[package]]
+name = "corpan-asr-contract"
+version = "0.1.0"
+dependencies = [
+ "serde",
 ]
 
 [[package]]
@@ -4801,6 +4809,19 @@ dependencies = [
  "tauri-utils",
  "toml 0.9.12+spec-1.1.0",
  "walkdir",
+]
+
+[[package]]
+name = "tauri-plugin-asr-native"
+version = "0.1.0"
+dependencies = [
+ "corpan-asr-contract",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin",
+ "thiserror 2.0.18",
 ]
 
 [[package]]

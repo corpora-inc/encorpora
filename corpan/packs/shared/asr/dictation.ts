@@ -12,7 +12,8 @@
 // is plainly type-only (keyboard floor). So the button only appears where it
 // works, per-language — exactly the requirement.
 
-import type { AsrApi, AsrProvider, AsrSession, AsrCaptureMode } from "./host"
+import type { AsrProvider, AsrSession, AsrCaptureMode } from "./contract"
+import type { AsrApi } from "./host"
 
 export type DictationStrings = {
   /** mic idle label/aria. */ speak: string

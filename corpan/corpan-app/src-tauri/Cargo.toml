@@ -41,6 +41,9 @@ tauri-plugin-subscriptions = { path = "../../plugins/tauri-plugin-subscriptions"
 tauri-plugin-iap = { path = "../../plugins/tauri-plugin-iap" }
 tauri-plugin-stt = { path = "../../plugins/tauri-plugin-stt" }
 tauri-plugin-corpan-llm = { path = "../../plugins/tauri-plugin-corpan-llm" }
+# Provider-agnostic dictation over OS-native STT (Apple SpeechAnalyzer/
+# SFSpeechRecognizer + Android SpeechRecognizer). Out-of-process, zero download.
+tauri-plugin-asr-native = { path = "../../plugins/tauri-plugin-asr-native" }
 futures-util = "0.3"
 
 # Production optimizations for release builds
