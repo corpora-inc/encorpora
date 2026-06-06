@@ -2219,7 +2219,12 @@ function buildWorld(
   }
   document.addEventListener("visibilitychange", onVisibility)
 
-  let ambientStarted = false
+  // INTRO → PHONE OPEN (owner): on EVERY entry, once the world is live and the
+  // establishing shot has read, the Phone slides up so the player starts at their
+  // phone — and music is opt-in right there. Per-mount one-shot; wall-clock timing
+  // so it's robust to dt units. Music itself NEVER auto-starts (see below).
+  const mountAt = typeof performance !== "undefined" ? performance.now() : 0
+  let introPhoneOpened = false
   const unFrame = world.onFrame((dt) => {
     player.update(dt)
     soundscape.onLocomotion(player.getSpeed(), dt) // footsteps scale with walk speed
@@ -2234,33 +2239,21 @@ function buildWorld(
       const movedSq = (p.x - lastSavedX) ** 2 + (p.z - lastSavedZ) ** 2
       if (!(movedSq < 0.04)) savePoseNow() // >0.2u moved (NaN-safe: first save runs)
     }
-    // Resume the player's CONSENTED music ONCE (never from nowhere — owner rule).
-    // We only auto-start if the persisted profile says `enabled`; then we tune the
-    // saved station at the saved volume. Native radio needs no gesture → start it
-    // here in the render loop on the first frame after the probe resolves (NOT in
-    // the async probe callback — a double-mount dispose race could tear down the
-    // instance that just started). The render loop only runs for the LIVE game.
-    const startSavedStation = (r: CityRadio): Promise<void> => {
-      r.setVolume(savedMusic.volume)
-      const ch = r.channels().find((c) => c.id === savedMusic.stationId)
-      return ch ? r.play(ch) : r.start()
-    }
-    if (!ambientStarted && cityRadio && cityRadio.mode() === "native") {
-      ambientStarted = true
-      if (savedMusic.enabled) void startSavedStation(cityRadio)
-    }
+    // MUSIC IS OPT-IN ONLY (owner: no audio from nowhere, and "leave the music
+    // off"). The radio NEVER auto-starts here — it plays solely when the player taps
+    // Play in the Phone's Music app. The first user gesture still unlocks WebAudio so
+    // footsteps/SFX resume. (`savedMusic` still seeds the radio's default volume.)
     const tap = input.consumeTap()
-    if (tap) {
-      // First user gesture unlocks WebAudio (footsteps/SFX) + the desktop <audio>
-      // path. SFX always resume; music (radio OR the procedural bed) only if the
-      // player consented — otherwise the world stays silent until they opt in.
-      soundscape.resume()
-      if (!ambientStarted && cityRadio) {
-        ambientStarted = true
-        if (savedMusic.enabled) {
-          if (cityRadio.mode() === "webaudio") void startSavedStation(cityRadio)
-          else soundscape.startAmbient()
-        }
+    if (tap) soundscape.resume()
+    // INTRO → PHONE OPEN: a beat after the world goes live, slide the Phone up once.
+    // The establishing shot reads first, then the phone (its onOpen pauses the world;
+    // the player closes it to begin). Wrapped — a phone fault must never kill the loop.
+    if (!introPhoneOpened && mountAt && performance.now() - mountAt >= 1200) {
+      introPhoneOpened = true
+      try {
+        phone.open()
+      } catch (e) {
+        console.error("[wp/game] intro phone.open failed:", e)
       }
     }
     focus.update(dt, p, tap)
