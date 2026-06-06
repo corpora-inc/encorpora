@@ -537,6 +537,19 @@ function buildWorld(
   // may not yet carry when the crowd stations its specials at build time, so we
   // hand it to the crowd explicitly (keeps the objective NPC out of the basin).
   const fountainAnchorForCrowd = city.getAnchor("fountain")
+  // #116 — DOOR CLEARANCE: the enterable-venue door portals sit on these city
+  // anchors (outfitter→plaza, shop→market, shop→harbor, + the café). A special NPC
+  // stationed at the SAME anchor would land ON the door, so the Talk target and the
+  // Enter-door affordance overlap + flicker. Fold a SMALL keep-clear circle around
+  // each door anchor into `avoidCircles` (the same path `stationFor` uses to keep a
+  // special off the fountain), so the special settles a step BESIDE the door — close
+  // enough to read as "at the café", far enough that the two affordances separate.
+  const DOOR_ANCHOR_IDS = ["plaza", "market", "harbor", "cafe"] as const
+  const DOOR_CLEAR_R = 1.6
+  const doorClearCircles = DOOR_ANCHOR_IDS.map((id) => city.getAnchor(id))
+    .filter((a): a is NonNullable<typeof a> => a != null)
+    .map((a) => ({ x: a.x, z: a.z, r: DOOR_CLEAR_R }))
+
   const crowd = createCrowd(world.scene, topology, {
     count: 14, // fewer + clustered near player + far ones culled (perf2): was 21/28
     roles,
@@ -544,11 +557,14 @@ function buildWorld(
     scene,
     obstacles,
     specials: questSpecials,
-    avoidCircles: fountainAnchorForCrowd
-      ? // pad past the wall radius so the NPC stands clearly BESIDE the basin, not
-        // brushing the rim (the visible lip is a touch outside FOUNTAIN_BASE_RADIUS).
-        [{ x: fountainAnchorForCrowd.x, z: fountainAnchorForCrowd.z, r: FOUNTAIN_BASE_RADIUS + 1.2 }]
-      : [],
+    avoidCircles: [
+      ...(fountainAnchorForCrowd
+        ? // pad past the wall radius so the NPC stands clearly BESIDE the basin, not
+          // brushing the rim (the visible lip is a touch outside FOUNTAIN_BASE_RADIUS).
+          [{ x: fountainAnchorForCrowd.x, z: fountainAnchorForCrowd.z, r: FOUNTAIN_BASE_RADIUS + 1.2 }]
+        : []),
+      ...doorClearCircles,
+    ],
     // Wanderers keep clear of wherever the active objective NPC stands.
     getQuestKeepClear: () => {
       const id = questEngine.currentStep()?.anchorId

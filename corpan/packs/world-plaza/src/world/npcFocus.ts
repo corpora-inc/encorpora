@@ -15,6 +15,38 @@ import { Viewport } from "@babylonjs/core/Maths/math.viewport"
  */
 
 const RANGE = 4.0 // world units the player must be within to focus an NPC
+// #116 — focus HYSTERESIS: once an NPC is focused, a competitor must be CLOSER by
+// this margin (squared, in world units²) to STEAL focus. Without it, two NPCs at
+// nearly equal distance swap focus every frame → the Talk affordance flickers
+// between them (the owner's "talk/enter glitch" when a wanderer jams a special).
+// ~0.8u of separation in distance² terms; small enough to feel instant, big enough
+// to kill the jitter.
+const FOCUS_HYSTERESIS = 1.6
+
+/**
+ * Decide the focus target with PRIORITY + HYSTERESIS (#116). Pure — takes
+ * already-computed squared distances so it is unit-testable without Babylon:
+ *  - the objective `priority` (if in range) ALWAYS wins (#58, no hysteresis).
+ *  - else, if someone is ALREADY focused and still in range, KEEP them unless a
+ *    different `best` is closer by `FOCUS_HYSTERESIS` (kills the per-frame swap).
+ *  - else the nearest `best`.
+ * All distances are SQUARED world units; `range2 = RANGE*RANGE`.
+ */
+export function chooseFocus<T>(args: {
+  best: T | null
+  bestD: number
+  priority: T | null
+  focused: T | null
+  focusedD: number
+  range2: number
+}): T | null {
+  const { best, bestD, priority, focused, focusedD, range2 } = args
+  if (priority) return priority
+  if (focused && focused !== best && focusedD <= range2 && bestD > focusedD - FOCUS_HYSTERESIS) {
+    return focused
+  }
+  return best
+}
 const HEAD_Y = 3.0 // world height of the floating prompt above an NPC
 const ENGAGE_COOLDOWN = 0.6
 
@@ -136,7 +168,17 @@ export function createNpcFocus(
         best = it
       }
     }
-    setFocus(priority ?? best)
+    // #116 HYSTERESIS: priority (objective) always wins; else keep the current
+    // focus unless a rival is decisively closer — so two near-equidistant NPCs don't
+    // swap the Talk affordance every frame (the flicker glitch). `chooseFocus` is the
+    // pure, unit-tested decision.
+    let focusedD = RANGE * RANGE + 1 // out of range by default (so it can't "stick")
+    if (focused) {
+      const fdx = focused.billboard.root.position.x - player.x
+      const fdz = focused.billboard.root.position.z - player.z
+      focusedD = fdx * fdx + fdz * fdz
+    }
+    setFocus(chooseFocus({ best, bestD, priority, focused, focusedD, range2: RANGE * RANGE }))
 
     if (focused) {
       pulseT += dt
