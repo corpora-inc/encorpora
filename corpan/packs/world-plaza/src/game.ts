@@ -49,6 +49,7 @@ import {
   makeTrackerStrings,
   makeSectionStrings,
   makeInterludeStrings,
+  questString,
   type I18nKey,
 } from "./i18n"
 import { createSpecialNpcResolver } from "./quest/specialNpc"
@@ -75,7 +76,7 @@ import { iconRenderer } from "./items/itemArt"
 import { setIconRenderer } from "./economy/currencies"
 import { mountMinimap } from "./map/minimap"
 import { openFullMap, createMapSection } from "./map/fullMap"
-import type { MapView } from "./contracts/runtime"
+import type { MapView, Translate } from "./contracts/runtime"
 import {
   createVignetteHost,
   registerBuiltinVignettes,
@@ -1124,10 +1125,18 @@ function buildWorld(
     chrome.set(next)
   }
 
-  // A friendly NPC/anchor name for the capsule + quest section hints ("the
-  // boatman" at `docks`), resolved through the special-NPC content when present.
+  // A friendly NPC/anchor name for the capsule + quest section hints ("the café
+  // host" at `plaza`), resolved through the special-NPC content when present.
+  // #112: the SHARED resolver every name surface reads (capsule, quest section,
+  // tracker, AND the map — they all take this one `anchorName` callback). We pass
+  // a quest-catalog-backed `t` + the LIVE `uiLocale` so the special-NPC NAME
+  // localizes EVERYWHERE at once and FLIPS with immersion (native by default,
+  // target under immersion) — it used to pass `undefined` for `t`, so names
+  // rendered English on every surface. `uiLocale` is a `let` recomputed by
+  // `relocalize` on an immersion flip, so this closure always reads the current one.
+  const nameT: Translate = (key, lang, params) => questString(key, lang, key, params)
   const anchorName = (anchorId: string): string =>
-    specialNpc.anchorName(anchorId, quest.id, undefined, learnerPair.target) ?? prettyAnchorId(anchorId)
+    specialNpc.anchorName(anchorId, quest.id, nameT, uiLocale) ?? prettyAnchorId(anchorId)
 
   // Focus locks onto the nearest figure (live position each frame) — the wandering
   // crowd AND the now-talkable ambient strollers/stall-keepers (lazy-promoted: a
