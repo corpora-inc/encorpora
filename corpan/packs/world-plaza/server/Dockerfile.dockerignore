@@ -1,0 +1,20 @@
+# BuildKit reads `<dockerfile-path>.dockerignore` (this file) in preference to a
+# context-root .dockerignore, so the ignore stays scoped to server/Dockerfile
+# even though the build context is the PACK ROOT. Paths are relative to that
+# context root. Whitelist style: ignore everything, then re-include only the
+# trees the Dockerfile COPYs (keeps the context tiny and node_modules out).
+*
+
+# Re-include exactly what the Dockerfile needs.
+!server/package.json
+!server/package-lock.json
+!server/tsconfig.json
+!server/src
+!contracts/src
+!content/topologies
+
+# Never ship installed deps or build junk even if re-included by a parent rule.
+**/node_modules
+**/dist
+**/*.tsbuildinfo
+**/.DS_Store

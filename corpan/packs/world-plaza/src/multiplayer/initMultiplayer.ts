@@ -107,8 +107,10 @@ export interface MultiplayerHandle {
 
 /**
  * Resolve the multiplayer server URL, or undefined (→ single-player). Precedence:
- *   1. `globalThis.__WP_SERVER_URL` (host/harness injection)
+ *   1. `globalThis.__WP_SERVER_URL` (host/harness RUNTIME injection)
  *   2. `?wpServer=` / `?server=` query param (standalone + QA)
+ *   3. `import.meta.env.VITE_WP_SERVER_URL` (BUILD-TIME bake, e.g. the deployed
+ *      App Runner `wss://…` URL — see server/DEPLOY.md)
  * Returns undefined when none is set, so production is single-player until a
  * server is provisioned — multiplayer is strictly opt-in + additive.
  */
@@ -121,6 +123,12 @@ export function resolveServerUrl(): string | undefined {
       const url = q.get("wpServer") ?? q.get("server")
       if (url) return url
     }
+    // Build-time fallback: a deployed server URL baked at `vite build` time via
+    // VITE_WP_SERVER_URL (statically inlined). Lets a release ship multiplayer
+    // without any runtime injection, while runtime injection (1/2) still wins.
+    const baked =
+      typeof import.meta !== "undefined" ? import.meta.env?.VITE_WP_SERVER_URL : undefined
+    if (baked) return baked
   } catch (e) {
     console.warn("[mp] server URL resolution failed:", e)
   }
