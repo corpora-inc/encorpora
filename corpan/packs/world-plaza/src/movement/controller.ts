@@ -176,6 +176,17 @@ export function createPlayerController(
       const r = obstacles.resolve(x, z, nx, nz, PLAYER_RADIUS)
       x = r.x
       z = r.z
+      // NEVER-STUCK SAFETY NET (#104): `resolve` SLIDES along surfaces but cannot
+      // eject a body DEEP inside a collider — a teleport/arrival that landed in a
+      // solid landmark, or (the taxi-to-fountain trap) a chunk that STREAMED IN
+      // around the player after they respawned. So each frame, if we detect we're
+      // inside an obstacle, `pushOut` to the nearest clear point — self-healing any
+      // bad placement the moment the collider exists. (Cheap: a no-op when free.)
+      if (obstacles.blocked(x, z, PLAYER_RADIUS)) {
+        const ejected = obstacles.pushOut(x, z, PLAYER_RADIUS)
+        x = ejected.x
+        z = ejected.z
+      }
     } else {
       // Legacy fallback: building boxes only (no prop collision).
       nx = resolveAxis(nx, z, "x", topology.blockers)

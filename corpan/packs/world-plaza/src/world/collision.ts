@@ -276,6 +276,56 @@ export function pushOutCircle(
   return { x: cx + dir.dx * (need + 1e-3), z: cz + dir.dz * (need + 1e-3) }
 }
 
+/* ------------------------------------------------------------- safe spawn */
+
+/** A minimal collision view `findSafeSpawn` needs — any `ObstacleField` satisfies
+ *  it, and tests can pass a trivial stub. `pushOut` is optional (a first, cheap
+ *  ejection attempt); the ring search is the always-correct fallback. */
+export interface SpawnCollision {
+  blocked: (x: number, z: number, r: number) => boolean
+  pushOut?: (x: number, z: number, r: number) => { x: number; z: number }
+}
+
+/**
+ * Find a CLEAR, walkable spawn point near (x,z) for a body of radius `r` — the ONE
+ * safe-spawn every respawn/teleport/arrival/resume must route through so the player
+ * is NEVER dropped inside a collider (the taxi-to-fountain trap: the destination
+ * anchor's CENTRE is inside the basin -> stuck forever).
+ *
+ * Order: (1) the requested point if already free; (2) one `pushOut` (handles the
+ * dead-centre fountain case deterministically) if that lands free; (3) a
+ * deterministic outward SPIRAL — expanding rings of evenly-spaced candidates —
+ * returning the FIRST free one. The spiral is the robust fallback when `pushOut`
+ * isn't enough (overlapping colliders, a deep box, or the obstacle not yet loaded
+ * when pushOut ran). ALWAYS returns a point; pure + deterministic so it's testable.
+ */
+export function findSafeSpawn(
+  field: SpawnCollision,
+  x: number,
+  z: number,
+  r: number,
+  opts: { maxRadius?: number; step?: number; spokes?: number } = {},
+): { x: number; z: number } {
+  if (!field.blocked(x, z, r)) return { x, z }
+  if (field.pushOut) {
+    const p = field.pushOut(x, z, r)
+    if (!field.blocked(p.x, p.z, r)) return p
+  }
+  const maxRadius = opts.maxRadius ?? 60
+  const step = opts.step ?? Math.max(1, r * 2)
+  const spokes = opts.spokes ?? 16
+  for (let ring = 1; ring * step <= maxRadius; ring++) {
+    const rad = ring * step
+    for (let s = 0; s < spokes; s++) {
+      const a = (s / spokes) * Math.PI * 2 + ring * 0.39
+      const cx = x + Math.cos(a) * rad
+      const cz = z + Math.sin(a) * rad
+      if (!field.blocked(cx, cz, r)) return { x: cx, z: cz }
+    }
+  }
+  return field.pushOut ? field.pushOut(x, z, r) : { x, z }
+}
+
 /* -------------------------------------------------- precise overlap helpers */
 
 function overlapsCircle(x: number, z: number, r: number, c: CircleObstacle): boolean {
