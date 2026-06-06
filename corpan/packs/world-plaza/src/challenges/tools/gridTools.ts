@@ -135,7 +135,10 @@ export const pictureMatch: ToolImpl = {
       const usePictures = picturable.length >= 4
       const pool = usePictures ? picturable : all
       if (pool.length < 2) {
-        overlay.complete(0, computeReward(1, 0))
+        // Insufficient content (#67/#81-hardening) → ABORT, never a 0% flash-fail.
+        // cancel() resolves as "aborted" so the encounter re-picks/closes
+        // cleanly and the quest gate never counts it against the player.
+        overlay.cancel()
         return
       }
 
@@ -220,7 +223,10 @@ export const memoryPairs: ToolImpl = {
       const rnd = mulberry32(seedOf(spec))
       const ps = sample(await pairs(host, spec, 8), 4, rnd)
       if (ps.length < 2) {
-        overlay.complete(0, computeReward(2, 0))
+        // Insufficient content (#67/#81-hardening) → ABORT, never a 0% flash-fail.
+        // cancel() resolves as "aborted" so the encounter re-picks/closes
+        // cleanly and the quest gate never counts it against the player.
+        overlay.cancel()
         return
       }
       type Card = { key: number; text: string; speak?: string }
@@ -358,7 +364,10 @@ export const categorySort: ToolImpl = {
       }
       const twoDomains = [...byDomain.entries()].filter(([, v]) => v.length >= 3).slice(0, 2)
       if (twoDomains.length < 2) {
-        overlay.complete(0, computeReward(2, 0))
+        // Insufficient content (#67/#81-hardening) → ABORT, never a 0% flash-fail.
+        // cancel() resolves as "aborted" so the encounter re-picks/closes
+        // cleanly and the quest gate never counts it against the player.
+        overlay.cancel()
         return
       }
       const [da, db] = twoDomains
@@ -431,7 +440,10 @@ export const countdownRecall: ToolImpl = {
       const rnd = mulberry32(seedOf(spec))
       const ps = sample(await pairs(host, spec, 10), 4, rnd)
       if (ps.length < 3) {
-        overlay.complete(0, computeReward(3, 0))
+        // Insufficient content (#67/#81-hardening) → ABORT, never a 0% flash-fail.
+        // cancel() resolves as "aborted" so the encounter re-picks/closes
+        // cleanly and the quest gate never counts it against the player.
+        overlay.cancel()
         return
       }
       // Phase 1: show the list. The player studies at their own pace — a
@@ -541,7 +553,10 @@ export const wordSearch: ToolImpl = {
         rnd,
       )
       if (!words.length) {
-        overlay.complete(0, computeReward(2, 0))
+        // Insufficient content (#67/#81-hardening) → ABORT, never a 0% flash-fail.
+        // cancel() resolves as "aborted" so the encounter re-picks/closes
+        // cleanly and the quest gate never counts it against the player.
+        overlay.cancel()
         return
       }
       const size = Math.max(7, Math.max(...words.map((w) => w.length)) + 1)

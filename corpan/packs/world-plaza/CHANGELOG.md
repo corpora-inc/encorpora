@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Minigames no longer flash a 0% "Not this time" card instead of presenting the
+  challenge.** Two compounding bugs: (1) the pair-agnostic quests carry no
+  `contentSelector.languageCodes`, so the minigame content filter became
+  native-only (`["en"]`); since the bundled corpus reuses `languageCodes` as its
+  translation-row whitelist, the TARGET (Spanish) rows were dropped, every entry
+  resolved to zero usable pairs, and the challenge had 0 rounds. (2) On a content
+  shortfall the grid/text tools called `complete(0)` — a scored 0% fail — instead
+  of aborting. Fix: `resolveMinigameContent` now seeds the whitelist from the
+  learner PAIR (target + native) so the corpus always returns both rows, and EVERY
+  content-backed tool now `cancel()`s (degrades, re-picks) on insufficient content
+  rather than flashing a 0% result. A content miss degrades, never fails.
+  (`quest/minigameContent.ts`, `challenges/tools/gridTools.ts`,
+  `challenges/tools/textTools.ts`)
+
 ### Added
 - **The wardrobe now previews your real 3D character.** Re-opening your wardrobe
   shows the same lit "bubble person" you walk the world as — a full standing
