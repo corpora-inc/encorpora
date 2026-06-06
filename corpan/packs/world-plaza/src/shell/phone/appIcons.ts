@@ -88,24 +88,25 @@ export const APP_ICON_SVGS = {
 } as const
 
 /**
- * The Music tile — the brand mark on a terracotta squircle. The mark sits on the
- * gradient with the same specular/hairline treatment so it reads as one of the
- * jewel tiles, not a pasted logo.
+ * The Music tile — the BRAND LOGO, so it gets the WHITE app-tile treatment (owner
+ * QA): the Corpán mark on a clean white squircle so the logo POPS like a real app
+ * icon, instead of terracotta-on-terracotta where the mark barely read. A very faint
+ * top→bottom off-white gradient gives real-icon depth (not stark flat white). Used
+ * for BOTH the home-grid Music icon AND the Music app's Now-Playing artwork.
  */
 export function corpanMarkTile(): string {
-  const pal = APP_TILE_PALETTES.music
   const id = `wpAppGrad${gradSeq++}`
   return (
     `<svg viewBox="0 0 56 56" class="wp-phone-app-svg" aria-hidden="true">` +
     `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">` +
-    `<stop offset="0" stop-color="${pal.from}"/>` +
-    `<stop offset="1" stop-color="${pal.to}"/></linearGradient>` +
+    `<stop offset="0" stop-color="#ffffff"/>` +
+    `<stop offset="1" stop-color="#f3eee6"/></linearGradient>` +
     `<clipPath id="${id}clip"><rect x="0" y="0" width="56" height="56" rx="16"/></clipPath></defs>` +
     `<rect x="0" y="0" width="56" height="56" rx="16" fill="url(#${id})"/>` +
-    `<path d="M0 16C0 7 7 0 16 0h24c9 0 16 7 16 16v6C44 16 12 16 0 22z" fill="#fff" opacity="0.14"/>` +
-    `<image href="${CORPAN_MARK_DATA_URI}" x="13" y="13" width="30" height="30" ` +
+    `<image href="${CORPAN_MARK_DATA_URI}" x="12" y="12" width="32" height="32" ` +
     `clip-path="url(#${id}clip)" preserveAspectRatio="xMidYMid meet"/>` +
+    // a slightly crisper inner hairline reads well on white (colored tiles use a softer one)
     `<rect x="0.6" y="0.6" width="54.8" height="54.8" rx="15.4" fill="none" ` +
-    `stroke="#000" stroke-opacity="0.06"/></svg>`
+    `stroke="#000" stroke-opacity="0.08"/></svg>`
   )
 }
