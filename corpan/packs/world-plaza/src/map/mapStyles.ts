@@ -345,6 +345,102 @@ export const MAP_CSS = `
   box-shadow: 0 3px 10px rgba(196, 107, 74, 0.32);
 }
 .wp-map-route-go:active { transform: scale(0.96); }
+.wp-map-route-clear {
+  flex: 0 0 auto;
+  width: 30px; height: 30px;
+  border: 1px solid rgba(120, 96, 60, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, 0.8);
+  color: #8a785c; font-size: 13px; line-height: 1;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.wp-map-route-clear[hidden] { display: none; }
+.wp-map-route-clear:active { transform: scale(0.94); }
+
+/* "No quest" toggle (free-explore) in the tools header. */
+.wp-map-questtoggle {
+  align-self: flex-start;
+  border: 1px solid rgba(120, 96, 60, 0.28);
+  border-radius: 999px; padding: 6px 13px;
+  background: var(--wp-map-accent, #c46b4a); color: #fff7f0;
+  font: 700 12.5px/1 ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.wp-map-questtoggle--off { background: rgba(255, 250, 240, 0.7); color: #5a4a32; }
+.wp-map-questtoggle:active { transform: scale(0.97); }
+
+/* ============ #111 GOOGLE-MAPS PINS + POPOVER ============ */
+/* The focusable pin hit-targets over each plotted POI (the canvas draws the glyph;
+   these are transparent tap/keyboard targets). A focus ring + a course halo. */
+.wp-map-pins { pointer-events: none; }
+.wp-map-pin {
+  position: absolute;
+  width: 30px; height: 30px;
+  transform: translate(-50%, -50%);
+  border: none; background: transparent; padding: 0; margin: 0;
+  border-radius: 999px; cursor: pointer;
+  pointer-events: auto; -webkit-tap-highlight-color: transparent;
+}
+.wp-map-pin:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 0 0 5px var(--wp-map-accent, #c46b4a);
+}
+.wp-map-pin--course::after {
+  content: ""; position: absolute; inset: 4px; border-radius: 999px;
+  box-shadow: 0 0 0 2px var(--wp-map-accent, #c46b4a);
+}
+
+/* The tap popover — a small premium card anchored to the pin (above by default). */
+.wp-map-pop {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 14px));
+  z-index: 6; pointer-events: none;
+  font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif;
+}
+.wp-map-pop[hidden] { display: none; }
+.wp-map-pop--below { transform: translate(-50%, 14px); }
+.wp-map-pop-card {
+  pointer-events: auto;
+  min-width: 130px; max-width: 200px;
+  padding: 10px 12px; border-radius: 14px;
+  background: rgba(255, 251, 244, 0.98);
+  border: 1px solid rgba(120, 96, 60, 0.22);
+  box-shadow: 0 10px 28px rgba(40, 28, 12, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  display: flex; flex-direction: column; gap: 2px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.wp-map-pop-name { font: 800 14px/1.25 inherit; color: #3a2f25; }
+.wp-map-pop-type { font: 600 11.5px/1.2 inherit; color: #9a8868; }
+.wp-map-pop-dist { font: 600 11.5px/1.2 inherit; color: var(--wp-map-accent, #c46b4a); margin-top: 1px; }
+.wp-map-pop-dist[hidden] { display: none; }
+.wp-map-pop-act {
+  margin-top: 8px; align-self: stretch;
+  border: none; border-radius: 999px; padding: 8px 14px;
+  background: var(--wp-map-accent, #c46b4a); color: #fff7f0;
+  font: 800 12.5px/1 inherit; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 3px 10px rgba(196, 107, 74, 0.32);
+}
+.wp-map-pop-act:active { transform: scale(0.97); }
+.wp-map-pop-act--clear {
+  background: rgba(255, 250, 240, 0.9); color: #5a4a32;
+  border: 1px solid rgba(120, 96, 60, 0.25); box-shadow: none;
+}
+/* The little pointer tip from the card to the pin. */
+.wp-map-pop-tip {
+  position: absolute; left: 50%; bottom: -6px;
+  width: 12px; height: 12px; transform: translateX(-50%) rotate(45deg);
+  background: rgba(255, 251, 244, 0.98);
+  border-right: 1px solid rgba(120, 96, 60, 0.22);
+  border-bottom: 1px solid rgba(120, 96, 60, 0.22);
+}
+.wp-map-pop--below .wp-map-pop-tip {
+  bottom: auto; top: -6px;
+  border-right: none; border-bottom: none;
+  border-left: 1px solid rgba(120, 96, 60, 0.22);
+  border-top: 1px solid rgba(120, 96, 60, 0.22);
+}
 
 /* the gentle objective pulse — opt out under reduced motion */
 @keyframes wp-map-pulse {

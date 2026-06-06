@@ -100,7 +100,23 @@ const anchorName = (id: string) =>
 const ITEMS: Record<string, string> = { "ferry-token": "the ferry token", "city-gate-pass": "the gate pass" }
 const itemName = (id: string) => ITEMS[id] ?? id
 
-const fullMapOpts = { view, accent, lang: "en", anchorName, itemName }
+// Mock nav so the verify map exercises the #111 popover Route/Go + no-quest toggle.
+let mockCourse: string | null = null
+let mockQuestActive = true
+const nav = {
+  setCourse: (id: string) => {
+    mockCourse = id
+  },
+  clearCourse: () => {
+    mockCourse = null
+  },
+  getCourse: () => mockCourse,
+  isQuestActive: () => mockQuestActive,
+  setQuestActive: (a: boolean) => {
+    mockQuestActive = a
+  },
+}
+const fullMapOpts = { view, accent, lang: "en", anchorName, itemName, nav }
 
 const minimap = mountMinimap(overlay, {
   view,
