@@ -41,7 +41,8 @@ The Corpán "all-hearing ear" logo is now a FAB that opens an app-shell phone.
       buy/sell/swap that actually moves items + wallet (no fake flavor). Decline,
       "can't afford", and "already own" paths all read cleanly.
 - [ ] **Indoor shops**: Outfitter, Market stall, General Store each have an
-      enter affordance → shop vignette.
+      enter affordance → shop *vignette* (a 2D shop screen — NOT yet a walk-into
+      building interior; that's the enterable-buildings work now in progress).
 - [ ] **Wardrobe**: open "Change your look" (from Inventory/Things) → equip
       collected hats/outfits/colours/bling → the character on the world updates
       in place (`redress`, no world reload).
@@ -80,5 +81,7 @@ Four landmarks across the bigger city, each with a boarding vignette:
   surfaces on an **English** native stack to see final copy.
 
 ## Known parked items
-- Enterable-building interior vignettes (#14), native on-device STT for speak
-  challenges (#64), "word vs phrase" instruction wording (#56).
+- Native on-device STT for speak challenges (#64) — genuine R&D, still parked.
+- (Enterable-building interiors #14, "word vs phrase" #56, the ES→ES tautology
+  #81, quest believability #75, phone-as-OS #77, map discoverability #72, wardrobe
+  #84, emoji-strip #79 — all UN-parked and being built in the current agent round.)
