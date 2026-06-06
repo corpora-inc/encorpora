@@ -11,11 +11,12 @@ import os.log
 // conforming to corpan-asr-contract. Out-of-process (the OS recognition
 // daemon), ~0 added app memory, zero download for the OS's bundled locales.
 //
-// Engine selection:
-//  • iOS 26+: SpeechAnalyzer + SpeechTranscriber (AsyncSequence, on-device,
-//    system-managed locale assets) — preferred where available.
-//  • iOS ≤25 (and as the broad fallback): SFSpeechRecognizer with
-//    `requiresOnDeviceRecognition = true` + a streaming AVAudioEngine tap.
+// Engine: the SHIPPING implementation is SFSpeechRecognizer with
+// `requiresOnDeviceRecognition = true` + a streaming AVAudioEngine tap — it
+// compiles on the iOS 16 deployment target and covers every locale Apple
+// supports on-device. (iOS 26's SpeechAnalyzer/SpeechTranscriber is a FUTURE
+// upgrade behind an `#available(iOS 26)` branch — NOT in this file yet, so
+// there is no iOS-26-only API here to break the build.)
 //
 // HARD CONSTRAINTS (all honored below):
 //  • OUT-OF-PROCESS → no process-global init lock.
@@ -28,13 +29,16 @@ import os.log
 //  • Permission denied → emit {code:"MIC_DENIED"}; the JS MicInput launchpad
 //    drives openSettingsURLString (iOS Settings deep-links are impossible).
 //
-// DEVICE-VALIDATION NOTES (this file compiles but the recognition path can only
-// be confirmed on a device — see DEVICE_RUNBOOK.md):
-//  • SpeechAnalyzer/SpeechTranscriber require iOS 26 + may need an on-device
-//    asset download per locale (handled in `ensure`); verify on a real 26 device.
-//  • The exact SpeechTranscriber result-stream field names (`.text`,
-//    `.isFinal`) are guarded behind `#available` and may need a tweak against
-//    the shipping SDK — flagged.
+// DEVICE-VALIDATION NOTES (the recognition path can only be confirmed on a real
+// device — see DEVICE_RUNBOOK.md):
+//  • Whether `capabilities()` lists the expected locales, the `.longForm`
+//    radio/reader coexistence, INTERRUPTED, and MIC_DENIED all need a device.
+//  • The RMS→VU scale (rms*4) + the 0.3s final-result settle are tuned by ear
+//    on a real mic.
+// COMPILE NOTE: cargo check on a DESKTOP target does NOT compile this Swift;
+// only `tauri ios dev` does. Every throwing call here is handled (try/try?),
+// resolve/reject are non-throwing, and the only iOS-version-sensitive API
+// (record-permission) is `#available(iOS 17)`-branched.
 // -----------------------------------------------------------------------------
 
 private let LOG = OSLog(subsystem: "com.corpora.corpan", category: "AsrNative")
@@ -233,8 +237,17 @@ class AsrNativePlugin: Plugin {
         SFSpeechRecognizer.requestAuthorization { status in
             let speechOK = (status == .authorized)
             guard speechOK else { DispatchQueue.main.async { done(false) }; return }
-            AVAudioSession.sharedInstance().requestRecordPermission { micOK in
-                DispatchQueue.main.async { done(micOK) }
+            // iOS 17+ moved record-permission to AVAudioApplication; the old
+            // AVAudioSession API is deprecated. Branch on availability (matches
+            // tauri-plugin-stt) so the modern path is used + no deprecation noise.
+            if #available(iOS 17.0, *) {
+                AVAudioApplication.requestRecordPermission { micOK in
+                    DispatchQueue.main.async { done(micOK) }
+                }
+            } else {
+                AVAudioSession.sharedInstance().requestRecordPermission { micOK in
+                    DispatchQueue.main.async { done(micOK) }
+                }
             }
         }
     }
