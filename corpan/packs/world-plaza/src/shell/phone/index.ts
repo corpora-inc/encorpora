@@ -4,7 +4,7 @@
  * Quest, Badges, Music. Each app re-homes an existing menu section (or drives the
  * city radio). Public surface the orchestrator (`game.ts`) wires in.
  */
-export { createPhoneSheet, type PhoneSheet, type PhoneSheetOptions, markImg } from "./phoneSheet"
+export { createPhoneSheet, type PhoneSheet, type PhoneSheetOptions } from "./phoneSheet"
 export { createPhoneFab, type PhoneFabHandle, type PhoneFabOptions } from "./phoneFab"
 export { createSectionApp, APP_ICONS } from "./sectionApp"
 export { createMusicApp, type MusicAppDeps } from "./musicApp"

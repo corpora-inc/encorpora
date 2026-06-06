@@ -30,7 +30,6 @@
 
 import "./phone.css"
 import { t, type I18nKey } from "../../i18n/strings"
-import { CORPAN_MARK_DATA_URI } from "../../assets/corpanMark"
 import { corpanMarkTile } from "./appIcons"
 import { createStatusBar, type StatusBarHandle } from "./statusBar"
 import type { PhoneApp, PhoneAppContext, PhoneAppIcon, PhoneAppInstance, PhoneT } from "./phoneApp"
@@ -101,11 +100,6 @@ function paintIcon(tile: HTMLElement, icon: PhoneAppIcon, accent?: string): void
   } catch (err) {
     console.error(`${LOG} icon paint threw:`, err)
   }
-}
-
-/** The brand-mark `<img>` for the home grid / app header (the same mark the FAB uses). */
-function markImg(cls: string): string {
-  return `<img class="${cls}" src="${CORPAN_MARK_DATA_URI}" alt="" aria-hidden="true" draggable="false" />`
 }
 
 /* A back chevron + a leave/exit glyph — inline so they inherit the ink color. */
@@ -454,6 +448,3 @@ function escapeText(s: string): string {
     c === "&" ? "&amp;" : c === "<" ? "&lt;" : c === ">" ? "&gt;" : c === '"' ? "&quot;" : "&#39;",
   )
 }
-
-/** Re-export so callers building grid apps can reference the brand mark img helper. */
-export { markImg }
