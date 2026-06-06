@@ -288,11 +288,24 @@ export function createCameraFade(
       //     slab juts out over the pavement). The camera→head/crown POINT rays graze
       //     past the slab's near edge without hitting it, yet on screen it covers the
       //     player. A short ray straight UP from the crown catches "I'm under a roof
-      //     plane." Guard with `camPos.y >= min.y` (the camera sits AT/ABOVE the
-      //     overhang's underside) so the slab is genuinely between the high follow-cam
-      //     and the player — never fading a roof when the camera is below the eave
-      //     looking horizontally (then the roof is above the shot, not covering it).
-      if (!occluding && camPos.y >= min.y - INSIDE_SKIN) {
+      //     plane." PERF GATE (ed9a438e dropped ~60→55 by raycasting EVERY near mesh
+      //     each frame): the straight-up ray can ONLY hit a mesh whose XZ AABB contains
+      //     the player's column AND whose underside sits within the probe height above
+      //     the crown — so test those with a handful of cheap float compares FIRST and
+      //     raycast only the 1–2 meshes that pass (instead of a raycast per near mesh).
+      //     Also guard `camPos.y >= min.y` so it only fires when the high follow-cam is
+      //     AT/ABOVE the overhang's underside (the slab is genuinely between cam +
+      //     player; a roof the camera is below, looking up at, is above the shot).
+      if (
+        !occluding &&
+        camPos.y >= min.y - INSIDE_SKIN &&
+        crown.x >= min.x &&
+        crown.x <= max.x &&
+        crown.z >= min.z &&
+        crown.z <= max.z &&
+        max.y >= crown.y && // the slab isn't entirely below the crown
+        min.y <= crown.y + OVERHEAD_PROBE // …and its underside is within probe reach
+      ) {
         const pickO = overheadRay.intersectsMesh(mesh, true, undefined, true)
         if (pickO.hit) occluding = true
       }

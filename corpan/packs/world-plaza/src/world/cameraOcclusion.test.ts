@@ -1,10 +1,11 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest"
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest"
 import { NullEngine } from "@babylonjs/core/Engines/nullEngine"
 import { Scene } from "@babylonjs/core/scene"
 import { FreeCamera } from "@babylonjs/core/Cameras/freeCamera"
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder"
 import { Mesh } from "@babylonjs/core/Meshes/mesh"
 import { Vector3, Matrix, Quaternion } from "@babylonjs/core/Maths/math"
+import { Ray } from "@babylonjs/core/Culling/ray"
 import "@babylonjs/core/Meshes/thinInstanceMesh"
 import { isCameraOccluder } from "./cameraOcclusion"
 import { createCameraFade } from "./cameraFade"
@@ -251,6 +252,36 @@ describe("createCameraFade — dissolves whatever blocks the shot (#59 failing s
     const fade = createCameraFade(scene, cam, () => ({ x: 0, z: 12 }))
     settle(fade)
     expect(overhang.visibility, "a roof the player is not under stays solid").toBe(1)
+    fade.dispose()
+  })
+
+  it("GATES the overhead raycast — no per-mesh vertical ray when the player isn't under it (#59 perf)", () => {
+    // The first overhead-canopy fix raycast EVERY near roof every frame (FPS 60→55).
+    // Now a cheap XZ-AABB containment test runs FIRST, so the straight-up probe only
+    // raycasts the roof(s) the player is actually beneath. Build a ROW of roofs the
+    // player is NOT under and assert the upward (+Y) probe fires ~0 times across a
+    // frame — i.e. the gate, not the raycast, rejects them.
+    for (let i = 0; i < 8; i++) {
+      const r = MeshBuilder.CreateBox(`wp-r-row-${i}`, { width: 6, height: 0.3, depth: 6 }, scene)
+      r.position.set(-40 + i * 10, 3.6, 0) // a strip of canopies along X, none over the player
+    }
+    // count only UPWARD probe raycasts (direction ≈ +Y); the head/crown camera rays
+    // point toward the player and are not counted.
+    const realIntersect = Ray.prototype.intersectsMesh
+    let upwardRaycasts = 0
+    const spy = vi
+      .spyOn(Ray.prototype, "intersectsMesh")
+      .mockImplementation(function (this: Ray, ...args: Parameters<typeof realIntersect>) {
+        if (this.direction && this.direction.y > 0.9) upwardRaycasts++
+        return realIntersect.apply(this, args)
+      })
+    // player at (100, 0) — far from every roof in the row, under none of them.
+    const cam = new FreeCamera("cam", new Vector3(100, 7, 10), scene)
+    cam.setTarget(new Vector3(100, 2, 0))
+    const fade = createCameraFade(scene, cam, () => ({ x: 100, z: 0 }))
+    fade.update(0.016) // ONE frame is enough to measure the per-frame raycast count
+    spy.mockRestore()
+    expect(upwardRaycasts, "the XZ gate rejects roofs the player isn't under — no overhead raycast").toBe(0)
     fade.dispose()
   })
 
