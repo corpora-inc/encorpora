@@ -36,6 +36,7 @@ import { resolveEntry, bindStackReactivity, samePair } from "./entry"
 import { readStack } from "./entry/stackAdapter"
 import { createImmersionResolver, immersionToggleApplies, type Immersion } from "./immersion/immersion"
 import { immersionStore } from "./immersion/store"
+import { poseStore, resolveResumeSpawn } from "./spawn/poseStore"
 import { mountImmersionToggle } from "./immersion/immersionToggle"
 import {
   t as translate,
@@ -967,7 +968,22 @@ function buildWorld(
     const faceYaw = Math.atan2(-(anchor.x - sx), -(anchor.z - sz))
     player.respawnAt(sx, sz, faceYaw)
   }
-  framePlayerOnObjective()
+  // RESUME AT THE EXACT EXIT SPOT (#103, per-pair): if this language pair has a
+  // saved pose (the player left this stack here before), drop them back at that
+  // exact spot + facing — INSTEAD of the near-objective default. First visit on a
+  // pair (or a cleared/corrupt pose) falls through to `framePlayerOnObjective`.
+  // The pose is keyed on the same `native:target` as quest/name/outfit, so each
+  // stack resumes independently. We only honour a pose on WALKABLE ground (a city
+  // re-layout could leave an old pose inside new geometry) — else default.
+  const resumeOrFrame = () => {
+    const saved = resolveResumeSpawn(learnerPair, (x, z, r) => obstacles.blocked(x, z, r))
+    if (saved) {
+      player.respawnAt(saved.x, saved.z, saved.f)
+      return
+    }
+    framePlayerOnObjective()
+  }
+  resumeOrFrame()
 
   // Swap the world's ACTIVE quest (the completion-interlude pick). Rebuilds the
   // inner engine, re-points `quest` (so `anchorName`/markers/content follow it),
@@ -2146,9 +2162,29 @@ function buildWorld(
   }
   window.addEventListener("keydown", onKey)
 
-  // Free the resident LLM when the app is backgrounded (iOS jetsam bait).
+  // RESUME POSE (#103): persist where the player is so they re-enter THIS pair
+  // exactly here. Cheap — write at most every `POSE_SAVE_EVERY`s, and only when
+  // the player has actually MOVED since the last write (no idle/per-frame churn).
+  // Also saved when the app is BACKGROUNDED + on teardown, so a crash/reload/exit
+  // never loses the spot.
+  const POSE_SAVE_EVERY = 3 // seconds
+  let poseSaveAccum = 0
+  let lastSavedX = Number.NaN
+  let lastSavedZ = Number.NaN
+  const savePoseNow = () => {
+    const pos = player.getPos()
+    poseStore.set(learnerPair, { x: pos.x, z: pos.z, f: player.getFacing() })
+    lastSavedX = pos.x
+    lastSavedZ = pos.z
+  }
+
+  // Free the resident LLM when the app is backgrounded (iOS jetsam bait) + flush the
+  // resume pose then (backgrounding is the most common real "exit" on mobile).
   const onVisibility = () => {
-    if (document.hidden) npcRuntime.onBackground()
+    if (document.hidden) {
+      npcRuntime.onBackground()
+      savePoseNow()
+    }
   }
   document.addEventListener("visibilitychange", onVisibility)
 
@@ -2160,6 +2196,13 @@ function buildWorld(
     const p = player.getPos()
     crowd.update(dt, p) // wander + greet-on-approach
     juice.update(dt)
+    // throttled resume-pose save: only after the interval AND only if moved.
+    poseSaveAccum += dt
+    if (poseSaveAccum >= POSE_SAVE_EVERY) {
+      poseSaveAccum = 0
+      const movedSq = (p.x - lastSavedX) ** 2 + (p.z - lastSavedZ) ** 2
+      if (!(movedSq < 0.04)) savePoseNow() // >0.2u moved (NaN-safe: first save always runs)
+    }
     // Resume the player's CONSENTED music ONCE (never from nowhere — owner rule).
     // We only auto-start if the persisted profile says `enabled`; then we tune the
     // saved station at the saved volume. Native radio needs no gesture → start it
@@ -2215,6 +2258,9 @@ function buildWorld(
   })
 
   function teardown() {
+    // RESUME POSE (#103): flush the exit spot BEFORE anything disposes, so leaving a
+    // stack (or switching pairs) always remembers exactly where the player stood.
+    savePoseNow()
     window.removeEventListener("keydown", onKey)
     document.removeEventListener("visibilitychange", onVisibility)
     econHud.dispose()
