@@ -1,4 +1,5 @@
 import type { AvatarSpec, CosmeticSlot } from "@world-plaza/contracts"
+import { ITEM_GARMENT_ALIASES, parseHairStyle } from "./garments"
 
 /**
  * characterSpec — the ONE character data model for World Plaza.
@@ -36,8 +37,9 @@ export interface ClothingLayer {
 export type Build = "slim" | "average" | "stocky" | "tall" | "child"
 
 export interface HairSpec {
-  /** style family the renderer knows. */
-  style: "none" | "short" | "bun" | "long" | "curly" | "tied" | "bald" | "braid"
+  /** style family the renderer knows. "medium" is a length between short and
+   *  long (a soft fall to the jaw) so a look can read boyish or girlish. */
+  style: "none" | "short" | "medium" | "bun" | "long" | "curly" | "tied" | "bald" | "braid"
   color: string
 }
 
@@ -192,10 +194,22 @@ const SLOT_TO_CLOTHING: Partial<Record<CosmeticSlot, keyof Clothing>> = {
   // `shoes` and `aura` have no paper-doll garment yet; ignored gracefully.
 }
 
-/** Garment shape family for a cosmetic item id (best-effort; default per slot). */
+/**
+ * Garment shape family for a cosmetic item id. Checks the explicit alias map
+ * first (catalog ids that predate the `<slot>-<family>` convention, e.g.
+ * "straw-hat" → "straw", "top-hat" → "tophat"), then strips the slot prefix.
+ * Unknown families render as the slot's classic default downstream — the
+ * MP-safe degrade path for cosmetics this client doesn't know yet.
+ */
 function itemToGarment(slot: CosmeticSlot, itemId: string): string {
+  const alias = itemGarmentAlias(itemId)
+  if (alias) return alias
   const tail = itemId.replace(/^[a-z]+-/, "") // "top-tunic" → "tunic"
   return tail || slot
+}
+
+function itemGarmentAlias(itemId: string): string | undefined {
+  return (ITEM_GARMENT_ALIASES as Record<string, string | undefined>)[itemId]
 }
 
 /**
@@ -224,7 +238,14 @@ export function avatarToCharacterSpec(avatar: AvatarSpec, id: string): Character
       continue
     }
     if (layer.slot === "hair") {
-      spec.hair = { style: "short", color: layer.tint ?? spec.hair.color }
+      // Style rides the itemId ("hair-long" → "long") so the player's hair
+      // length/shape survives the wire. Pre-style clients ignored the id and
+      // drew "short" — parseHairStyle defaults the same way, so unknown ids
+      // (or future styles) degrade to the old look, never a crash.
+      spec.hair = {
+        style: parseHairStyle(layer.itemId),
+        color: layer.tint ?? spec.hair.color,
+      }
       continue
     }
     const clothingSlot = SLOT_TO_CLOTHING[layer.slot]

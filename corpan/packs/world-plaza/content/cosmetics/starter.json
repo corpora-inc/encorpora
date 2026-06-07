@@ -1,5 +1,5 @@
 {
-  "_doc": "Free starter dress-up KITS for World Plaza onboarding (R2-6 Pair Identity). Each kit is the cosmetic palette a fresh Track of a given target is born able to wear (CosmeticItem[] — contracts/src/identity.ts). `kit-traveler` is the UNIVERSAL DEFAULT (the original starter set); the runtime falls back to it for any unknown kit id. Per-theme kits (kit-market, kit-tokyo, …) keep the SAME slots + item ids and only swap the display name + tint swatches to the world era, so the dress-up UI + the characterSpec mapping are UNCHANGED — it is a palette swap, never a paywall. All items remain unlock.kind=xp value=0 (free from the start). `tints` is an extra, non-contract field (ignored by the CosmeticItem schema) listing the colour swatches the dress-up offers. Slots: top, hat, accessory. Wholesome + dignified only. Every kit item is validated against the CosmeticItem contract at load.",
+  "_doc": "Free starter dress-up KITS for World Plaza onboarding (R2-6 Pair Identity). Each kit is the cosmetic palette a fresh Track of a given target is born able to wear (CosmeticItem[] — contracts/src/identity.ts). `kit-traveler` is the UNIVERSAL DEFAULT (the original starter set); the runtime falls back to it for any unknown kit id. Per-theme kits (kit-market, kit-tokyo, …) keep the SAME slots + item ids and only swap the display name + tint swatches to the world era, so the dress-up UI + the characterSpec mapping are UNCHANGED — it is a palette swap, never a paywall. All items remain unlock.kind=xp value=0 (free from the start). `tints` is an extra, non-contract field (ignored by the CosmeticItem schema) listing the colour swatches the dress-up offers. Slots: hair, top, hat, accessory. HAIR (short/medium/long) and the everyday garments (dress, overalls, kurta, beanie, hijab) are identity expression and stay FREE in every kit — gender/cultural expression is never paywalled. Wholesome + dignified only. Every kit item is validated against the CosmeticItem contract at load.",
   "schemaV": 2,
   "kits": {
     "kit-traveler": {
@@ -158,6 +158,173 @@
           "tints": [
             "#9c6b3f",
             "#6f4a24"
+          ]
+        },
+        {
+          "id": "hair-short",
+          "slot": "hair",
+          "name": "Short Hair",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hair-short"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#1c1410",
+            "#3a2a1c",
+            "#5a3b24",
+            "#6e5238",
+            "#8a4a2a",
+            "#c9a23f",
+            "#8a8480"
+          ]
+        },
+        {
+          "id": "hair-medium",
+          "slot": "hair",
+          "name": "Medium Hair",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hair-medium"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#1c1410",
+            "#3a2a1c",
+            "#5a3b24",
+            "#6e5238",
+            "#8a4a2a",
+            "#c9a23f",
+            "#8a8480"
+          ]
+        },
+        {
+          "id": "hair-long",
+          "slot": "hair",
+          "name": "Long Hair",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hair-long"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#1c1410",
+            "#3a2a1c",
+            "#5a3b24",
+            "#6e5238",
+            "#8a4a2a",
+            "#c9a23f",
+            "#8a8480"
+          ]
+        },
+        {
+          "id": "top-dress",
+          "slot": "top",
+          "name": "Plaza Dress",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-top-dress"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#c0455a",
+            "#3f7fae",
+            "#6f9c54",
+            "#8a6aa8",
+            "#e0c060",
+            "#7a3b48"
+          ]
+        },
+        {
+          "id": "top-overalls",
+          "slot": "top",
+          "name": "Work Overalls",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-top-overalls"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#46647e",
+            "#5a4632",
+            "#577f40",
+            "#9c6b3f"
+          ]
+        },
+        {
+          "id": "top-kurta",
+          "slot": "top",
+          "name": "Cozy Kurta",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-top-kurta"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#2a8a8a",
+            "#c97f3a",
+            "#8a6aa8",
+            "#5a7d9a",
+            "#c4a35a"
+          ]
+        },
+        {
+          "id": "hat-beanie",
+          "slot": "hat",
+          "name": "Knit Beanie",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hat-beanie"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#c0392b",
+            "#46647e",
+            "#577f40",
+            "#e0c060",
+            "#8a6aa8"
+          ]
+        },
+        {
+          "id": "hat-hijab",
+          "slot": "hat",
+          "name": "Everyday Hijab",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hat-hijab"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#5a7d9a",
+            "#7a3b48",
+            "#577f40",
+            "#c4a35a",
+            "#8a6aa8",
+            "#2a2a32"
           ]
         }
       ]
@@ -320,6 +487,172 @@
             "#9c6b3f",
             "#6f4a24"
           ]
+        },
+        {
+          "id": "hair-short",
+          "slot": "hair",
+          "name": "Short Hair",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hair-short"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#1c1410",
+            "#3a2a1c",
+            "#5a3b24",
+            "#6e5238",
+            "#8a4a2a",
+            "#c9a23f",
+            "#8a8480"
+          ]
+        },
+        {
+          "id": "hair-medium",
+          "slot": "hair",
+          "name": "Medium Hair",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hair-medium"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#1c1410",
+            "#3a2a1c",
+            "#5a3b24",
+            "#6e5238",
+            "#8a4a2a",
+            "#c9a23f",
+            "#8a8480"
+          ]
+        },
+        {
+          "id": "hair-long",
+          "slot": "hair",
+          "name": "Long Hair",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hair-long"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#1c1410",
+            "#3a2a1c",
+            "#5a3b24",
+            "#6e5238",
+            "#8a4a2a",
+            "#c9a23f",
+            "#8a8480"
+          ]
+        },
+        {
+          "id": "top-dress",
+          "slot": "top",
+          "name": "Market Dress",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-top-dress"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#b9492f",
+            "#3f6079",
+            "#6f8a4e",
+            "#8a5a8c",
+            "#c4a35a",
+            "#7a3b48"
+          ]
+        },
+        {
+          "id": "top-overalls",
+          "slot": "top",
+          "name": "Stall Overalls",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-top-overalls"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#3f6079",
+            "#5a4632",
+            "#6f8a4e",
+            "#9c5a3c"
+          ]
+        },
+        {
+          "id": "top-kurta",
+          "slot": "top",
+          "name": "Market Kurta",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-top-kurta"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#5a7d6e",
+            "#c97f3a",
+            "#8a5a8c",
+            "#3f6079",
+            "#c4a35a"
+          ]
+        },
+        {
+          "id": "hat-beanie",
+          "slot": "hat",
+          "name": "Wool Beanie",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hat-beanie"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#b9492f",
+            "#3f6079",
+            "#6f8a4e",
+            "#c4a35a"
+          ]
+        },
+        {
+          "id": "hat-hijab",
+          "slot": "hat",
+          "name": "Market Hijab",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hat-hijab"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#3f6079",
+            "#7a3b48",
+            "#6f8a4e",
+            "#c4a35a",
+            "#8a5a8c",
+            "#2a2a32"
+          ]
         }
       ]
     },
@@ -479,6 +812,172 @@
           "tints": [
             "#22303f",
             "#3a3a44"
+          ]
+        },
+        {
+          "id": "hair-short",
+          "slot": "hair",
+          "name": "Short Hair",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hair-short"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#1c1410",
+            "#3a2a1c",
+            "#5a3b24",
+            "#6e5238",
+            "#8a4a2a",
+            "#c9a23f",
+            "#8a8480"
+          ]
+        },
+        {
+          "id": "hair-medium",
+          "slot": "hair",
+          "name": "Medium Hair",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hair-medium"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#1c1410",
+            "#3a2a1c",
+            "#5a3b24",
+            "#6e5238",
+            "#8a4a2a",
+            "#c9a23f",
+            "#8a8480"
+          ]
+        },
+        {
+          "id": "hair-long",
+          "slot": "hair",
+          "name": "Long Hair",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hair-long"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#1c1410",
+            "#3a2a1c",
+            "#5a3b24",
+            "#6e5238",
+            "#8a4a2a",
+            "#c9a23f",
+            "#8a8480"
+          ]
+        },
+        {
+          "id": "top-dress",
+          "slot": "top",
+          "name": "City Dress",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-top-dress"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#c0455a",
+            "#3a6ea5",
+            "#2a8a8a",
+            "#5a3a7a",
+            "#22303f",
+            "#4a4a52"
+          ]
+        },
+        {
+          "id": "top-overalls",
+          "slot": "top",
+          "name": "Studio Overalls",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-top-overalls"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#22303f",
+            "#3a6ea5",
+            "#2a8a6a",
+            "#4a4a52"
+          ]
+        },
+        {
+          "id": "top-kurta",
+          "slot": "top",
+          "name": "Modern Kurta",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-top-kurta"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#2a8a8a",
+            "#5a3a7a",
+            "#3a6ea5",
+            "#c0455a",
+            "#4a4a52"
+          ]
+        },
+        {
+          "id": "hat-beanie",
+          "slot": "hat",
+          "name": "Street Beanie",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hat-beanie"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#22303f",
+            "#c0455a",
+            "#3a6ea5",
+            "#2a8a8a"
+          ]
+        },
+        {
+          "id": "hat-hijab",
+          "slot": "hat",
+          "name": "City Hijab",
+          "rarity": "common",
+          "spriteRef": {
+            "url": "placeholder:cos-hat-hijab"
+          },
+          "unlock": {
+            "kind": "xp",
+            "value": 0
+          },
+          "tints": [
+            "#3a6ea5",
+            "#5a3a7a",
+            "#2a8a8a",
+            "#c0455a",
+            "#22303f",
+            "#4a4a52"
           ]
         }
       ]

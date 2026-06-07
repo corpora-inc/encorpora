@@ -118,6 +118,18 @@ const bySlot = (slot: string) => STARTER.filter((i) => i.slot === slot)
 const TOPS = bySlot("top")
 const HATS = bySlot("hat")
 const ACCS = bySlot("accessory")
+// HAIR is identity, never a paywall: lengths + classic styles, free in every
+// kit. Back-compat: a starter.json without hair items still onboards (the
+// fallback list mirrors the shipped kit so older content keeps working).
+const HAIR_FALLBACK: StarterItem[] = [
+  { id: "hair-short", slot: "hair", name: "Short", rarity: "common", spriteRef: { url: "placeholder:cos-hair-short" }, unlock: { kind: "xp", value: 0 }, tints: HAIR_TINTS_DEFAULT() },
+  { id: "hair-medium", slot: "hair", name: "Medium", rarity: "common", spriteRef: { url: "placeholder:cos-hair-medium" }, unlock: { kind: "xp", value: 0 }, tints: HAIR_TINTS_DEFAULT() },
+  { id: "hair-long", slot: "hair", name: "Long", rarity: "common", spriteRef: { url: "placeholder:cos-hair-long" }, unlock: { kind: "xp", value: 0 }, tints: HAIR_TINTS_DEFAULT() },
+]
+function HAIR_TINTS_DEFAULT(): string[] {
+  return ["#1c1410", "#3a2a1c", "#5a3b24", "#6e5238", "#8a4a2a", "#c9a23f", "#8a8480"]
+}
+const HAIRS = bySlot("hair").length ? bySlot("hair") : HAIR_FALLBACK
 
 const rand = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)]
 
@@ -156,6 +168,9 @@ export interface DressState {
   accId: string
   accTint?: string
   skin: string
+  /** hair style item ("hair-short" | "hair-medium" | "hair-long" | …). */
+  hairId: string
+  hairTint: string
 }
 
 /** A sensible default dress (the free starter look). Exported for the wardrobe. */
@@ -166,6 +181,8 @@ export function defaultDress(): DressState {
     hatId: "hat-none",
     accId: "acc-none",
     skin: SKINS[1],
+    hairId: "hair-short",
+    hairTint: HAIRS[0]?.tints?.[1] ?? "#3a2a1c",
   }
 }
 
@@ -176,13 +193,21 @@ export function dressToAvatar(d: DressState): AvatarSpec {
   const layers: AvatarLayer[] = []
   // face/skin is the base tone; we record it as a face layer tint
   layers.push({ slot: "face", itemId: "face-base", tint: d.skin })
+  // hair STYLE rides the itemId (the wire convention, contracts/identity.ts);
+  // colour is the tint. Old clients ignore the style and draw short — degrade,
+  // never break.
+  layers.push({ slot: "hair", itemId: d.hairId || "hair-short", tint: d.hairTint })
   if (d.topId && d.topId !== "top-none")
     layers.push({ slot: "top", itemId: d.topId, tint: d.topTint })
   if (d.hatId && d.hatId !== "hat-none")
     layers.push({ slot: "hat", itemId: d.hatId, ...(d.hatTint ? { tint: d.hatTint } : {}) })
   if (d.accId && d.accId !== "acc-none")
     layers.push({ slot: "accessory", itemId: d.accId, ...(d.accTint ? { tint: d.accTint } : {}) })
-  return AvatarSpec.parse({ base: "paper-doll-a", layers, palette: { skin: d.skin } })
+  return AvatarSpec.parse({
+    base: "paper-doll-a",
+    layers,
+    palette: { skin: d.skin, hair: d.hairTint },
+  })
 }
 
 /**
@@ -197,9 +222,13 @@ export function dressFromAvatar(avatar: AvatarSpec): DressState {
   const topIds = ["top-none", ...TOPS.map((t) => t.id)]
   const hatIds = ["hat-none", ...HATS.map((h) => h.id)]
   const accIds = ["acc-none", ...ACCS.map((a) => a.id)]
+  const hairIds = HAIRS.map((h) => h.id)
   for (const l of avatar.layers ?? []) {
     if (l.slot === "face") d.skin = l.tint ?? d.skin
-    else if (l.slot === "top") {
+    else if (l.slot === "hair") {
+      d.hairId = known(hairIds, l.itemId) ?? d.hairId
+      if (l.tint) d.hairTint = l.tint
+    } else if (l.slot === "top") {
       d.topId = known(topIds, l.itemId) ?? d.topId
       if (l.tint) d.topTint = l.tint
     } else if (l.slot === "hat") {
@@ -222,6 +251,7 @@ export const STARTER_DRESS = {
   tops: TOPS as ReadonlyArray<StarterItem>,
   hats: HATS as ReadonlyArray<StarterItem>,
   accessories: ACCS as ReadonlyArray<StarterItem>,
+  hair: HAIRS as ReadonlyArray<StarterItem>,
   skins: SKINS as ReadonlyArray<string>,
 }
 export type DressOption = StarterItem
@@ -316,8 +346,22 @@ export function drawDoll(ctx: CanvasRenderingContext2D, W: number, H: number, d:
   // head
   const hr = W * 0.18
   const hy = H * 0.3
-  // simple hair tuft behind head
-  paperPiece(ctx, cx - hr * 1.1, hy - hr * 1.05, hr * 2.2, hr * 1.5, hr * 0.85, "#4a3322", 4)
+  // hair behind the head — the LENGTH reads in the doll (short tuft / jaw-length
+  // medium / shoulder-length long), plus curly width, a bun, or a braid tail.
+  const hairC = d.hairTint || "#4a3322"
+  const style = (d.hairId || "hair-short").replace(/^hair-/, "")
+  const tuftH =
+    style === "long" || style === "braid" ? hr * 2.6
+    : style === "medium" ? hr * 2.0
+    : hr * 1.5
+  const tuftW = style === "curly" ? hr * 2.6 : hr * 2.2
+  paperPiece(ctx, cx - tuftW / 2, hy - hr * 1.05, tuftW, tuftH, hr * 0.85, hairC, 4)
+  if (style === "tied" || style === "bun") {
+    paperPiece(ctx, cx - hr * 0.32, hy - hr * 1.55, hr * 0.64, hr * 0.64, hr * 0.32, hairC, 3)
+  }
+  if (style === "braid") {
+    paperPiece(ctx, cx - hr * 0.16, hy + hr * 1.4, hr * 0.32, hr * 1.1, hr * 0.16, hairC, 2)
+  }
   paperPiece(ctx, cx - hr, hy - hr, hr * 2, hr * 2, hr, d.skin, 5)
   // face
   ctx.save()
@@ -644,6 +688,22 @@ export function runOnboarding(
         }),
       )
       wardrobe.appendChild(accTints.group)
+
+      // HAIR style + colour — identity expression, free for everyone, so the
+      // avatar can feel like a boy or a girl (or anything between) from minute one.
+      const hairTints = tintRow(
+        t("onb.hair.color"),
+        () => HAIRS.find((h) => h.id === dress.hairId)?.tints ?? HAIR_TINTS_DEFAULT(),
+        () => dress.hairTint,
+        (c) => (dress.hairTint = c),
+      )
+      wardrobe.appendChild(
+        swatchRow(t("onb.hair.title"), HAIRS, () => dress.hairId, (it) => {
+          dress.hairId = it.id
+          hairTints.build()
+        }),
+      )
+      wardrobe.appendChild(hairTints.group)
 
       // SKIN tones
       const skinGroup = el("div", "wp-onb-group")

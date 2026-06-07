@@ -825,7 +825,9 @@ function drawCharacter(
   // hair behind
   if (spec.hair.style !== "bald" && spec.hair.style !== "none") {
     const hairBack =
-      spec.hair.style === "long" || spec.hair.style === "braid" ? hph * 1.95 : hph * 1.7
+      spec.hair.style === "long" || spec.hair.style === "braid" ? hph * 1.95
+      : spec.hair.style === "medium" ? hph * 1.82
+      : hph * 1.7
     paper(ctx, cx - hpw * 1.15, hy - hph * 1.1, hpw * 2.3, hairBack, hr * 0.9, spec.hair.color, { deckle: 4 })
   }
   paper(ctx, cx - hpw, hy - hph, hpw * 2, hph * 2, hr * hcf, skin, { deckle: 5 })

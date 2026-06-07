@@ -11,6 +11,7 @@ import type { GroundedCutout, DrawFn } from "../render/cutout"
 import { sharedContactShadow, PLANE_H } from "../render/cutout"
 import type { CharacterSpec } from "./characterSpec"
 import type { FigurePose } from "./figurePose"
+import { HAT_GARMENTS, isOutfitFamily, type GarmentPiece } from "./garments"
 
 /**
  * figure3d — the REAL 3D "bubble person" character (HD-2D / Animal-Crossing-warm).
@@ -65,6 +66,9 @@ import type { FigurePose } from "./figurePose"
 interface SharedGeo {
   sphere: Mesh
   capsule: Mesh
+  cone: Mesh
+  cylinder: Mesh
+  torus: Mesh
   material: StandardMaterial
 }
 const GEO_CACHE = new WeakMap<Scene, SharedGeo>()
@@ -82,25 +86,45 @@ function sharedGeo(scene: Scene): SharedGeo {
   material.specularColor = new Color3(0, 0, 0)
   material.emissiveColor = new Color3(0.14, 0.14, 0.14)
 
-  const sphere = MeshBuilder.CreateSphere("wp-fig-sphere", { diameter: 1, segments: 14 }, scene)
-  sphere.isVisible = false
-  sphere.isPickable = false
-  sphere.setEnabled(false)
-  sphere.material = material
-  sphere.registerInstancedBuffer("color", 4) // per-instance diffuse tint (RGBA)
+  // Every master follows the same recipe: invisible + disabled + the shared
+  // matte material + a per-instance "color" buffer. Characters only ever
+  // create INSTANCES of these five, so the whole population batches into a
+  // handful of draws regardless of wardrobe variety.
+  const prep = (mesh: Mesh): Mesh => {
+    mesh.isVisible = false
+    mesh.isPickable = false
+    mesh.setEnabled(false)
+    mesh.material = material
+    mesh.registerInstancedBuffer("color", 4) // per-instance diffuse tint (RGBA)
+    return mesh
+  }
 
-  const capsule = MeshBuilder.CreateCapsule(
+  const sphere = prep(MeshBuilder.CreateSphere("wp-fig-sphere", { diameter: 1, segments: 14 }, scene))
+
+  const capsule = prep(MeshBuilder.CreateCapsule(
     "wp-fig-capsule",
     { radius: 0.5, height: 1, tessellation: 12, subdivisions: 1, capSubdivisions: 5 },
     scene,
-  )
-  capsule.isVisible = false
-  capsule.isPickable = false
-  capsule.setEnabled(false)
-  capsule.material = material
-  capsule.registerInstancedBuffer("color", 4)
+  ))
 
-  const geo: SharedGeo = { sphere, capsule, material }
+  // garment masters (sombrero cones, top-hat cylinders, brim/band tori…)
+  const cone = prep(MeshBuilder.CreateCylinder(
+    "wp-fig-cone",
+    { diameterTop: 0, diameterBottom: 1, height: 1, tessellation: 16 },
+    scene,
+  ))
+  const cylinder = prep(MeshBuilder.CreateCylinder(
+    "wp-fig-cylinder",
+    { diameter: 1, height: 1, tessellation: 16 },
+    scene,
+  ))
+  const torus = prep(MeshBuilder.CreateTorus(
+    "wp-fig-torus",
+    { diameter: 1, thickness: 0.22, tessellation: 20 },
+    scene,
+  ))
+
+  const geo: SharedGeo = { sphere, capsule, cone, cylinder, torus, material }
   GEO_CACHE.set(scene, geo)
   return geo
 }
@@ -336,11 +360,14 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
 
   // hair: a cap covering crown + back, plus style-specific volume. Built from the
   // body material via instances so it shares the population material + tint.
+  // Lengths: short = cap only, medium = a soft jaw-length fall, long/braid = a
+  // full back fall — so a look can read boyish or girlish at a glance.
   const headWorldR = headR
   const headTopY = head.position.y
   if (hairTint) {
     const style = spec.hair.style
     const long = style === "long" || style === "braid"
+    const medium = style === "medium"
     const tied = style === "tied" || style === "bun"
     // crown cap — a sphere slightly larger than the head, pushed up + back so the
     // FACE stays clear at the front but crown/back/sides are covered (no seam).
@@ -353,6 +380,12 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
       fall.scaling.set(headWorldR * 1.9, headWorldR * 2.3, headWorldR * 1.2)
       fall.position.set(0, headTopY - headWorldR * 0.55, -headWorldR * 0.7)
     }
+    if (medium) {
+      // a softer fall to the jawline — between the cap and the full length
+      const fall = instance(geo.sphere, "hairFall", hairTint, headPivot)
+      fall.scaling.set(headWorldR * 2.0, headWorldR * 1.5, headWorldR * 1.15)
+      fall.position.set(0, headTopY - headWorldR * 0.18, -headWorldR * 0.55)
+    }
     if (tied) {
       const bun = instance(geo.sphere, "hairBun", hairTint, headPivot)
       bun.scaling.set(headWorldR * 0.95, headWorldR * 0.95, headWorldR * 0.95)
@@ -360,15 +393,104 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
     }
   }
 
-  // hat sits on top of the hair (kept simple — a tinted dome + brim from spheres).
+  // hat sits on top of the hair. Shaped families (sombrero, top hat, hijab…)
+  // come from the data-driven GARMENT table — every piece an instance of the
+  // five shared masters. Unknown families render the classic dome+brim, which
+  // is exactly what pre-garment clients drew → cosmetics degrade, never break.
   if (spec.clothing.hat) {
     const hatHex = normalizeHex(spec.clothing.hat.color)
-    const crown = instance(geo.sphere, "hatCrown", tint(hatHex), headPivot)
-    crown.scaling.set(headWorldR * 1.7, headWorldR * 1.1, headWorldR * 1.7)
-    crown.position.set(0, headTopY + headWorldR * 0.95, -headWorldR * 0.05)
-    const brim = instance(geo.sphere, "hatBrim", tint(darken(hatHex, 0.9)), headPivot)
-    brim.scaling.set(headWorldR * 2.7, headWorldR * 0.22, headWorldR * 2.7)
-    brim.position.set(0, headTopY + headWorldR * 0.5, -headWorldR * 0.05)
+    const accentHex = spec.clothing.hat.accent
+      ? normalizeHex(spec.clothing.hat.accent)
+      : darken(hatHex, 0.72)
+    const pieces = HAT_GARMENTS[spec.clothing.hat.item]
+    if (pieces) {
+      composeGarmentPieces(pieces, {
+        instance, geo, parent: headPivot, namePrefix: "hat",
+        unit: headWorldR, anchorY: headTopY, baseHex: hatHex, accentHex,
+      })
+    } else {
+      const crown = instance(geo.sphere, "hatCrown", tint(hatHex), headPivot)
+      crown.scaling.set(headWorldR * 1.7, headWorldR * 1.1, headWorldR * 1.7)
+      crown.position.set(0, headTopY + headWorldR * 0.95, -headWorldR * 0.05)
+      const brim = instance(geo.sphere, "hatBrim", tint(darken(hatHex, 0.9)), headPivot)
+      brim.scaling.set(headWorldR * 2.7, headWorldR * 0.22, headWorldR * 2.7)
+      brim.position.set(0, headTopY + headWorldR * 0.5, -headWorldR * 0.05)
+    }
+  }
+
+  // outfit silhouettes — a couple of extra instances give a dress/sari/suit/
+  // overalls its read beyond the tinted bubble torso. Unknown tops keep the
+  // plain torso (the MP-safe default).
+  if (spec.clothing.top && isOutfitFamily(spec.clothing.top.item)) {
+    const family = spec.clothing.top.item
+    const accentHex = spec.clothing.top.accent
+      ? normalizeHex(spec.clothing.top.accent)
+      : darken(topHex, 0.74)
+    const accentTint = tint(accentHex)
+    switch (family) {
+      case "dress":
+      case "apron-dress": {
+        // flared skirt — a cone whose tip tucks inside the torso
+        const skirt = instance(geo.cone, "skirt", topTint)
+        skirt.scaling.set(torsoR * 2.9, hipY * 1.35, torsoR * 2.6)
+        skirt.position.set(0, hipY * 0.62, 0)
+        if (family === "apron-dress") {
+          // apron panel over the front of the skirt
+          const panel = instance(geo.sphere, "apronPanel", accentTint)
+          panel.scaling.set(torsoR * 1.4, hipY * 0.9, torsoR * 0.3)
+          panel.position.set(0, hipY * 0.66, torsoR * 1.05)
+        }
+        break
+      }
+      case "sari": {
+        // flowing skirt + the pallu draped shoulder-to-hip
+        const skirt = instance(geo.cone, "skirt", topTint)
+        skirt.scaling.set(torsoR * 2.8, hipY * 1.35, torsoR * 2.5)
+        skirt.position.set(0, hipY * 0.62, 0)
+        const drape = instance(geo.capsule, "pallu", accentTint)
+        drape.scaling.set(armR * 2.4, torsoH * 1.5, armR * 2.0)
+        drape.position.set(torsoR * 0.32, torsoY + torsoH * 0.08, torsoR * 0.95)
+        drape.rotation.z = 0.62
+        break
+      }
+      case "suit": {
+        // jacket lapel wedge + a neat tie
+        const lapel = instance(geo.sphere, "lapel", accentTint)
+        lapel.scaling.set(torsoR * 1.5, torsoH * 0.62, torsoR * 0.42)
+        lapel.position.set(0, torsoY + torsoH * 0.3, torsoR * 0.92)
+        const tieKnot = instance(geo.sphere, "tie", accentTint)
+        tieKnot.scaling.set(armR * 1.0, torsoH * 0.55, armR * 0.7)
+        tieKnot.position.set(0, torsoY + torsoH * 0.16, torsoR * 1.06)
+        break
+      }
+      case "overalls": {
+        // bib panel + two shoulder straps over the top colour
+        const bib = instance(geo.sphere, "bib", accentTint)
+        bib.scaling.set(torsoR * 1.5, torsoH * 0.8, torsoR * 0.4)
+        bib.position.set(0, torsoY + torsoH * 0.08, torsoR * 0.92)
+        for (const sign of [-1, 1] as const) {
+          const strap = instance(geo.capsule, `strap${sign > 0 ? "R" : "L"}`, accentTint)
+          strap.scaling.set(armR * 0.9, torsoH * 0.78, armR * 0.9)
+          strap.position.set(sign * torsoR * 0.52, torsoY + torsoH * 0.42, torsoR * 0.82)
+          strap.rotation.x = -0.28
+        }
+        break
+      }
+      case "kurta": {
+        // a longer tunic line falling over the hips
+        const hem = instance(geo.sphere, "hem", tint(darken(topHex, 0.94)))
+        hem.scaling.set(torsoR * 2.0, torsoH * 0.74, torsoR * 1.72)
+        hem.position.set(0, hipY * 0.92, 0)
+        break
+      }
+      case "hoodie": {
+        // the hood resting between the shoulders
+        const hood = instance(geo.sphere, "hood", tint(darken(topHex, 0.88)))
+        hood.scaling.set(headWorldR * 1.7, headWorldR * 1.15, headWorldR * 1.1)
+        hood.position.set(0, torsoY + torsoH * 0.6, -torsoR * 0.95)
+        break
+      }
+    }
   }
 
   // A pickable hit proxy spanning the whole figure so taps anywhere route.
@@ -535,6 +657,48 @@ export function create3DFigure(scene: Scene, spec: CharacterSpec, opts: Figure3D
       root.dispose()
     },
   }
+}
+
+/* ------------------------------------------------------- garment composer */
+
+interface GarmentComposeCtx {
+  instance: (master: Mesh, name: string, color: Color4, parent?: TransformNode) => InstancedMesh
+  geo: SharedGeo
+  parent: TransformNode
+  namePrefix: string
+  /** the scale unit (head radius for hats). */
+  unit: number
+  /** world-space Y the piece offsets are relative to. */
+  anchorY: number
+  baseHex: string
+  accentHex: string
+}
+
+/**
+ * Stamp a garment's pieces (from the data table in garments.ts) as instances
+ * of the shared masters. Pure composition — no new meshes, no new materials.
+ */
+function composeGarmentPieces(pieces: GarmentPiece[], ctx: GarmentComposeCtx): void {
+  const masters: Record<GarmentPiece["shape"], Mesh> = {
+    sphere: ctx.geo.sphere,
+    cone: ctx.geo.cone,
+    cylinder: ctx.geo.cylinder,
+    torus: ctx.geo.torus,
+  }
+  pieces.forEach((piece, i) => {
+    const hex =
+      piece.tint === "accent" ? ctx.accentHex
+      : piece.tint && typeof piece.tint === "object" ? darken(ctx.baseHex, piece.tint.darken)
+      : ctx.baseHex
+    const inst = ctx.instance(masters[piece.shape], `${ctx.namePrefix}${i}`, tint(hex), ctx.parent)
+    inst.scaling.set(piece.scale[0] * ctx.unit, piece.scale[1] * ctx.unit, piece.scale[2] * ctx.unit)
+    inst.position.set(
+      piece.offset[0] * ctx.unit,
+      ctx.anchorY + piece.offset[1] * ctx.unit,
+      piece.offset[2] * ctx.unit,
+    )
+    if (piece.rotate) inst.rotation.set(piece.rotate[0], piece.rotate[1], piece.rotate[2])
+  })
 }
 
 /* --------------------------------------------------------------- face paint */

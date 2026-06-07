@@ -398,7 +398,13 @@ export const MERCHANTS: Record<string, MerchantConfig> = {
     name: "Don Felipe, Tailor",
     subtitle: "Hats, coats & fine cloth",
     emoji: "🧵",
-    stock: ["straw-hat", "tricorn-hat", "bonnet-lace", "linen-shirt", "embroidered-blouse", "traveler-coat", "woolen-shawl", "leather-shoes"],
+    stock: [
+      "straw-hat", "tricorn-hat", "bonnet-lace", "linen-shirt", "embroidered-blouse",
+      "traveler-coat", "woolen-shawl", "leather-shoes",
+      // the modern-city wardrobe drop: shaped hats + statement outfits
+      "sombrero-festive", "top-hat", "beret", "flower-crown", "fez", "chef-toque",
+      "sari-formal", "fancy-suit", "apron-dress", "hoodie",
+    ],
   },
   cafe: {
     name: "Café Owner",
@@ -410,7 +416,7 @@ export const MERCHANTS: Record<string, MerchantConfig> = {
     name: "Wandering Trader",
     subtitle: "Curios & rare finds",
     emoji: "🎒",
-    stock: ["map-scrap", "lucky-charm", "silver-coin-old", "jade-bead", "feathered-cap", "candle-beeswax"],
+    stock: ["map-scrap", "lucky-charm", "silver-coin-old", "jade-bead", "feathered-cap", "candle-beeswax", "party-cone"],
   },
 }
 

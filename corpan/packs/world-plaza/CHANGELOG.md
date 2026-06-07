@@ -7,6 +7,57 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Hair is now real identity: short / medium / long lengths (+ the classic
+  styles), pickable at onboarding and in the wardrobe, FREE in every kit.** The
+  avatar can finally feel like a boy or a girl (or anything between) from minute
+  one. The style travels over the wire in the hair layer's itemId (`hair-long` —
+  documented in contracts/identity.ts); old clients simply render the classic
+  short cap (degrade, never break — proven by `garments.test.ts`). New `"medium"`
+  HairSpec style renders a jaw-length fall in 3D + 2D.
+- **A real hat wardrobe: 13 shaped hat families replace the one-dome-fits-all.**
+  Sombrero, top hat, beret, beanie, hijab, flower crown, fez, chef's toque, party
+  cone — plus the starter cap/baker/sun finally get their true silhouettes. All
+  data-driven (`src/character/garments.ts`: a GarmentDef table composed from FIVE
+  shared instanced masters — sphere/capsule + new cone/cylinder/torus — so the
+  whole crowd still batches into a handful of draws on iPad). Unknown families
+  fall back to the classic dome: cosmetics ship with no contract bump.
+- **Outfit silhouettes: dress, sari, overalls, fancy suit, kurta, apron-dress,
+  hoodie.** A flared skirt cone, a draped pallu, bib + straps, lapels + tie — a
+  couple of instances each over the bubble torso. Identity basics (dress,
+  overalls, kurta, beanie, hijab) are FREE starter items in every kit; the
+  statement pieces (formal sari, fancy suit, top hat, festive sombrero, flower
+  crown, fez, beret, toque, party hat, hoodie, apron dress) are coin-priced
+  catalog cosmetics stocked at the outfitter — gender/cultural expression is
+  never paywalled. Expanded fabric tint palette (~24 wholesome hexes).
+- **The street-food stand (fountain square): buy pizza / tacos / fresh juice /
+  coffee with real coins and SEE yourself enjoy it.** Pay (the taxi's graceful
+  waive when short), order it in the target language (a quick drill), then the
+  consume beat: bites shrink the slice (gulps drain the cup), crumbs pop, munch/
+  sip chimes — and a big TARGET-language "Delicious!" lands, spoken and shown, in
+  all ~46 ship languages (the word is the lesson). New consumable items.
+- **The airport's second door: GO ON VACATION.** Pick a real city — Paris,
+  London, Beirut, Singapore, Kinshasa, Mexico City, Tokyo or Nairobi — pay the
+  fare, tell the gate agent (drill), and a postcard montage plays: takeoff, two
+  paper-skyline postcards each speaking a target-language postcard phrase
+  ("Greetings from Paris!" / "How beautiful!", authored in all ~46 languages),
+  "( one week later )", the flight home, and "Welcome back home to Corpan City!"
+  — with a city souvenir in your bag. Round trip: you land where you boarded.
+  The classic flight-as-travel check-in stays untouched beside it.
+- **The harbor ferry is now a boat you actually board.** Pay the ferry hand and
+  ride out on the bay — the deck bobs, gulls wheel past, the horn sounds, the
+  city shrinks off the stern, a mid-water word with the boatman (same sticky
+  voice), and home to the quay. Round-trip sightseeing: it never consumes the
+  quest's ferry-token and never blocks the es-guadalajara/harbor quest steps.
+- **Enterable civic interiors: the clinic, City Hall, and a bakery.** The
+  civic-clinic and civic-cityhall quests now play out INSIDE real rooms on the
+  proven place seam (perf-zero DOM overlays): meet the nurse for a check-up
+  (listen-choose), fill in the clerk's form (fill-the-blank) — each mapped onto
+  the live quest step via the café's sentinel pattern. The Plaza Bakery adds a
+  true BUYING interior: order in the target language, pay a real price (waived
+  gracefully when short), and walk out with fresh-bread in your bag (place
+  objectives now support `price`).
+
 ### Fixed
 - **NPC TTS voice now always matches the CURRENT target language — voice stickiness
   CLEARS on world entry / stack change.** An ES→EN learner heard the NPC's correct

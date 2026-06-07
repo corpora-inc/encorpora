@@ -80,6 +80,7 @@ import type { MapView, Translate } from "./contracts/runtime"
 import {
   createVignetteHost,
   registerBuiltinVignettes,
+  createPlaceVignette,
   VIGNETTE_IDS,
   type OpenNpcArgs,
   type VignetteNpcHandle,
@@ -1699,6 +1700,10 @@ function buildWorld(
     // step (markStepBeaten + advance), which a bare `advance` can't do for a
     // challenge-gated talk step. Runs INSTEAD of the default questStep advance.
     onResult?: (result: { travelTo?: string; questStep?: string } | null) => void,
+    // Optional world-space nudge off the anchor — lets a SECOND portal share an
+    // anchor (the airport's fly/vacation pair) without the two Enter buttons
+    // overlapping (the affordance-flicker rule).
+    posOffset?: { x: number; z: number },
   ): void => {
     const anchor = city.getAnchor(anchorId)
     if (!anchor) {
@@ -1730,7 +1735,7 @@ function buildWorld(
     }
     const affordance = createPortalAffordance(world, overlay, {
       anchorId,
-      pos: { x: anchor.x, z: anchor.z },
+      pos: { x: anchor.x + (posOffset?.x ?? 0), z: anchor.z + (posOffset?.z ?? 0) },
       label: vt(labelKey) === labelKey ? labelFallback : vt(labelKey),
       onEnter: (id) => void enter(id),
     })
@@ -1742,6 +1747,15 @@ function buildWorld(
   addTransitPortal("bus_station", VIGNETTE_IDS.bus, "vignette.board.bus.enter", "Catch the coach")
   addTransitPortal("rail_station", VIGNETTE_IDS.train, "vignette.board.train.enter", "Board the train")
   addTransitPortal("airport", VIGNETTE_IDS.flight, "vignette.board.flight.enter", "Check in to fly")
+  // The airport's SECOND door — the international gate: a week's vacation abroad
+  // (Paris, Tokyo, Kinshasa…) as a postcard montage that returns you home with a
+  // souvenir. Offset a few units from the check-in portal so the two Enter
+  // buttons never overlap. No travelTo — the default handler is a no-op re-spawn.
+  addTransitPortal(
+    "airport", VIGNETTE_IDS.vacation, "vignette.vacation.enter", "Go on vacation",
+    undefined,
+    { x: 4.5, z: 0 },
+  )
   // The enterable CORNER CAFÉ (#14): a door portal at the `cafe` building → the warm
   // interior place-vignette (perf-zero overlay, NOT a 3D room). Ordering inside earns
   // the café-order step: if the active step sits at the café, mark it beaten + advance
@@ -1754,6 +1768,153 @@ function buildWorld(
       if (questEngine.advance(step.id)) toast(`✓ ${step.label}`)
     }
   })
+  // The STREET-FOOD STAND: pay for pizza/tacos/juice/coffee, order it in the
+  // target language, and watch yourself enjoy it (the consume beat). Parked at
+  // the fountain square so it doesn't crowd the market stall's door anchor;
+  // degrades to the market/plaza anchor on a layout without a fountain.
+  {
+    const foodAnchor = ["fountain", "market", "plaza"].find((a) => city.getAnchor(a))
+    if (foodAnchor) {
+      addTransitPortal(foodAnchor, VIGNETTE_IDS.food, "vignette.food.enter", "Grab a bite")
+    }
+  }
+  // The HARBOR FERRY: pay the ferry hand and actually ride out on the bay — a
+  // round-trip sightseeing beat (no travelTo, never consumes the quest's
+  // ferry-token, never replaces the boatman's Talk). Offset from the harbor
+  // anchor so it doesn't crowd the general store door or the boatman.
+  addTransitPortal(
+    "harbor", VIGNETTE_IDS.ferry, "vignette.ferry.enter", "Ride the ferry",
+    undefined,
+    { x: -4.5, z: 2 },
+  )
+
+  // ── ENTERABLE CIVIC INTERIORS (#building-subquests) ─────────────────────────
+  // The clinic + city hall quests existed but played out on the street; these
+  // give them real interiors on the proven place seam (perf-zero overlays). Each
+  // uses the café's sentinel pattern: the objective resolves a sentinel step id
+  // and the portal maps it onto whatever step is LIVE at that anchor.
+  const placeStepResult = (anchorId: string, sentinel: string) =>
+    (result: { travelTo?: string; questStep?: string } | null): void => {
+      if (result?.questStep !== sentinel) return
+      const step = questEngine.currentStep()
+      if (step && city.getAnchor(step.anchorId ?? "")?.id === anchorId) {
+        questEngine.markStepBeaten(step.id)
+        if (questEngine.advance(step.id)) toast(`✓ ${step.label}`)
+      }
+    }
+  // THE CLINIC (hospital anchor) — meet the nurse, answer the health-words drill.
+  vignetteHost.register("clinic", () =>
+    createPlaceVignette({
+      kind: "clinic",
+      copyKey: "clinic",
+      fallback: {
+        sign: "Clinic",
+        title: "Neighborhood Clinic",
+        sub: "Walk-ins welcome — the nurse will see you",
+        keeper: "the nurse",
+        greet: [
+          "Come in, take a seat. What brings you by?",
+          "Deep breath… very good.",
+          "You're in great shape — come back any time.",
+        ],
+      },
+      keeperId: "clinic-nurse",
+      persona: {
+        tone: "a calm, kind clinic nurse who explains everything gently",
+        quirks: [
+          "asks how you're feeling today",
+          "names the part of the body they're checking",
+          "reassures you warmly before any answer",
+        ],
+      },
+      objective: {
+        label: ["vignette.place.clinic.checkup", "Have a check-up"],
+        tool: "listen-choose",
+        questStep: "clinic-visit", // sentinel — the portal maps the LIVE step
+        reward: { xp: 14 },
+      },
+    }),
+  )
+  addTransitPortal(
+    "hospital", "clinic", "vignette.place.clinic.enter", "Step into the clinic",
+    placeStepResult("hospital", "clinic-visit"),
+  )
+  // CITY HALL (exchange anchor) — meet the clerk, fill in the form.
+  vignetteHost.register("civic", () =>
+    createPlaceVignette({
+      kind: "civic",
+      copyKey: "civic",
+      fallback: {
+        sign: "City Hall",
+        title: "Corpan City Hall",
+        sub: "Forms, stamps & a surprisingly friendly clerk",
+        keeper: "the clerk",
+        greet: [
+          "Welcome to City Hall. How can I help?",
+          "One form, two stamps — easy as that.",
+          "All done! Mind the marble on your way out.",
+        ],
+      },
+      keeperId: "cityhall-clerk",
+      persona: {
+        tone: "a precise but warm city-hall clerk who quietly loves paperwork",
+        quirks: [
+          "walks you through the form line by line",
+          "stamps things with deep satisfaction",
+          "knows every department and where its door is",
+        ],
+      },
+      objective: {
+        label: ["vignette.place.civic.form", "Fill in the form"],
+        tool: "fill-the-blank",
+        questStep: "civic-visit", // sentinel — the portal maps the LIVE step
+        reward: { xp: 14 },
+      },
+    }),
+  )
+  addTransitPortal(
+    "exchange", "civic", "vignette.place.civic.enter", "Enter City Hall",
+    placeStepResult("exchange", "civic-visit"),
+  )
+  // THE BAKERY (market square) — meet the baker and BUY a real loaf: the order
+  // drill, a debited price (graceful waive), and fresh-bread in your bag.
+  vignetteHost.register("bakery", () =>
+    createPlaceVignette({
+      kind: "cafe", // the warm interior reads perfectly as a bakery
+      copyKey: "bakery",
+      fallback: {
+        sign: "Bakery",
+        title: "Plaza Bakery",
+        sub: "Warm loaves, morning and evening",
+        keeper: "the baker",
+        greet: [
+          "Fresh out of the oven — smell that?",
+          "One loaf? Wise choice.",
+          "Come back tomorrow, the rye's even better.",
+        ],
+      },
+      keeperId: "plaza-baker",
+      persona: {
+        tone: "a flour-dusted, proud neighborhood baker",
+        quirks: [
+          "describes today's bread like it's poetry",
+          "rounds your change down with a wink",
+          "insists the secret ingredient is patience",
+        ],
+      },
+      objective: {
+        label: ["vignette.place.bakery.buy", "Buy a loaf"],
+        tool: "translate-fast",
+        price: 240,
+        reward: { xp: 10, items: ["fresh-bread"] },
+      },
+    }),
+  )
+  addTransitPortal(
+    "market", "bakery", "vignette.place.bakery.enter", "Step into the bakery",
+    undefined,
+    { x: 4.5, z: -2 },
+  )
 
   // DEV-ONLY hook: lets the headless harness trigger any transit flow without
   // walking to the landmark (the proximity path is exercised by the button at

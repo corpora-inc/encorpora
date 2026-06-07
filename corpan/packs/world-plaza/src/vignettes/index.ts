@@ -21,11 +21,20 @@ export { createBoardingVignette } from "./boarding"
 export type { BoardingDestination, BoardingOptions, BoardingMode } from "./boarding"
 export { createPlaceVignette } from "./place"
 export type { PlaceKind, PlaceOptions, PlaceObjective } from "./place"
+export { createFoodVignette } from "./food"
+export type { FoodOptions, FoodMenuItem } from "./food"
+export { createVacationVignette, VACATION_DESTINATIONS } from "./vacation"
+export type { VacationOptions, VacationDestination, VacationCity } from "./vacation"
+export { createFerryVignette } from "./ferry"
+export type { FerryOptions } from "./ferry"
 
 import type { VignetteHost } from "./types"
 import { createTaxiVignette, type TaxiOptions } from "./taxi"
 import { createBoardingVignette, type BoardingDestination } from "./boarding"
 import { createPlaceVignette, type PlaceObjective } from "./place"
+import { createFoodVignette, type FoodOptions } from "./food"
+import { createVacationVignette, type VacationOptions } from "./vacation"
+import { createFerryVignette, type FerryOptions } from "./ferry"
 
 /** Canonical ids the city's portals key on (one per shipped vignette). The three
  *  transit-hero ids match the city anchors the orchestrator binds them to:
@@ -37,6 +46,9 @@ export const VIGNETTE_IDS = {
   train: "train",
   flight: "flight",
   cafe: "cafe",
+  food: "food",
+  vacation: "vacation",
+  ferry: "ferry",
 } as const
 
 export type VignetteId = (typeof VIGNETTE_IDS)[keyof typeof VIGNETTE_IDS]
@@ -69,6 +81,12 @@ export interface BuiltinVignetteOptions {
   train?: BoardingSlot
   flight?: BoardingSlot
   cafe?: CafeSlot
+  /** The street-food stand (menu/vendor/quest-step injection). */
+  food?: FoodOptions
+  /** The airport vacation montage (destinations/agent injection). */
+  vacation?: VacationOptions
+  /** The harbor ferry ride (fare/boatman injection). */
+  ferry?: FerryOptions
 }
 
 /**
@@ -116,4 +134,14 @@ export function registerBuiltinVignettes(
       objective: opts.cafe?.objective,
     }),
   )
+  // The STREET-FOOD STAND: pay real coins, order in the target language, and SEE
+  // yourself enjoy it (the consume beat). Registered with the plaza-four default
+  // menu unless the orchestrator injects one.
+  host.register(VIGNETTE_IDS.food, () => createFoodVignette(opts.food))
+  // The AIRPORT VACATION: a week abroad in forty seconds — postcards, "(one week
+  // later)", and a souvenir. Round trip: never sets travelTo.
+  host.register(VIGNETTE_IDS.vacation, () => createVacationVignette(opts.vacation))
+  // The HARBOR FERRY: pay the ferry hand and actually ride out on the bay —
+  // round trip, never consumes the ferry-token, never blocks the harbor quests.
+  host.register(VIGNETTE_IDS.ferry, () => createFerryVignette(opts.ferry))
 }

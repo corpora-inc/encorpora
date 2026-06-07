@@ -146,6 +146,8 @@ export function initEconomy(opts: InitEconomyOptions): EconomyHandle {
     hat: tr("economy.wardrobe.hat", "Hat"),
     accessory: tr("economy.wardrobe.accessory", "Accessory"),
     skin: tr("economy.wardrobe.skin", "Skin"),
+    hair: tr("economy.wardrobe.hair", "Hair"),
+    hairColor: tr("economy.wardrobe.hairColor", "Hair colour"),
     bling: tr("economy.wardrobe.bling", "Your finery"),
     color: tr("economy.wardrobe.color", "Colour"),
     none: tr("economy.wardrobe.none", "None"),

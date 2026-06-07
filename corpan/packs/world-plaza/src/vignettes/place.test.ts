@@ -124,6 +124,65 @@ describe("createPlaceVignette — café interior", () => {
   })
 })
 
+describe("the civic-interior kinds (clinic / civic) + the buying objective", () => {
+  it("clinic and civic skins render with their own room classes", async () => {
+    for (const kind of ["clinic", "civic"] as const) {
+      document.body.innerHTML = ""
+      const root = mountRoot()
+      const { ctx } = makeCtx(root)
+      const v = createPlaceVignette({
+        kind,
+        copyKey: kind,
+        fallback: { sign: "X", title: "X", sub: "x", keeper: "the keeper", greet: ["Hi!"] },
+        persona: { tone: "kind", quirks: [] },
+      })
+      void v.enter(ctx)
+      await Promise.resolve()
+      expect(root.querySelector(`.wp-vig-place--${kind}`), kind).toBeTruthy()
+      expect(root.querySelector(".wp-vig-place-keeper")).toBeTruthy()
+      v.dispose()
+    }
+  })
+
+  it("a priced objective DEBITS the wallet (and waives a shortfall)", async () => {
+    const root = mountRoot()
+    let balance = 100 // loaf costs 240 — short on purpose
+    const debits: number[] = []
+    const { ctx, calls } = makeCtx(root)
+    ctx.wallet = () => ({
+      defaultCurrency: () => "coin",
+      balance: () => balance,
+      debit: (_c, units) => {
+        if (units > balance) return false
+        balance -= units
+        debits.push(units)
+        return true
+      },
+    })
+    const v = createPlaceVignette({
+      kind: "cafe",
+      copyKey: "bakery",
+      fallback: { sign: "Bakery", title: "Bakery", sub: "Bread", keeper: "the baker", greet: ["Hi!"] },
+      persona: { tone: "proud baker", quirks: [] },
+      objective: {
+        label: ["k", "Buy a loaf"],
+        tool: "translate-fast",
+        price: 240,
+        reward: { xp: 10, items: ["fresh-bread"] },
+      },
+    })
+    const resultP = v.enter(ctx)
+    await Promise.resolve()
+    ;(root.querySelector(".wp-vig-place-btn--primary") as HTMLButtonElement).click()
+    const result = await resultP
+    expect(debits).toEqual([100]) // charged what they had — waived, not walled
+    expect(balance).toBe(0)
+    expect(calls.granted).toEqual([{ xp: 10, items: ["fresh-bread"] }]) // the loaf is theirs
+    expect(result.questStep).toBeUndefined() // the bakery binds no quest
+    v.dispose()
+  })
+})
+
 describe("registerBuiltinVignettes — café", () => {
   it("registers the café under its canonical id", () => {
     const registered = new Set<string>()

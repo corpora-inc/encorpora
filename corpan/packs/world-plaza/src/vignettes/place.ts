@@ -38,8 +38,10 @@ import { registerRootHooks } from "./host"
 import type { ChallengeContext } from "@world-plaza/contracts"
 
 /** The place SKINS this vignette can dress. `cafe` is the shipped hero; the shop
- *  skins let a real shop building reuse the place framing + hand off to commerce. */
-export type PlaceKind = "cafe" | "shop"
+ *  skins let a real shop building reuse the place framing + hand off to commerce.
+ *  `clinic` (cool, calm — the nurse's desk) and `civic` (stately — the city-hall
+ *  counter) give the civic quests real interiors to play out in. */
+export type PlaceKind = "cafe" | "shop" | "clinic" | "civic"
 
 /** A purposeful ACTION the place offers as its primary button. */
 export interface PlaceObjective {
@@ -52,6 +54,12 @@ export interface PlaceObjective {
   questStep?: string
   /** Reward granted on success (xp + items). */
   reward?: { xp?: number; items?: string[] }
+  /**
+   * Price in MINOR units of the default currency — a BUYING action (the bakery
+   * loaf). Debited on success with the taxi's graceful waive: charge what the
+   * player has, never a payment wall.
+   */
+  price?: number
 }
 
 /** What the orchestrator injects when registering a place vignette. */
@@ -228,6 +236,18 @@ export function createPlaceVignette(opts: PlaceOptions): Vignette {
           console.error(`${LOG} runChallenge failed:`, e)
         }
         if (settled) return
+        // A BUYING action pays first — the taxi's graceful waive (charge what
+        // they have, never a wall; the keeper covers the rest with a smile).
+        if (obj.price && obj.price > 0) {
+          try {
+            const w = ctx.wallet()
+            const currency = w.defaultCurrency()
+            const charged = Math.min(obj.price, w.balance(currency))
+            if (charged > 0) w.debit(currency, charged)
+          } catch (e) {
+            console.error(`${LOG} price debit failed:`, e)
+          }
+        }
         // Pay out + resolve. A genuine attempt (any score) completes the visit; the
         // city toasts the reward + advances the quest step. (Dignified — no fail wall
         // on a café order; the learning happened in the drill.)
@@ -294,8 +314,18 @@ function btnEl(cls: string, text: string): HTMLButtonElement {
 function keeperBillboard(accent: string, kind: PlaceKind): string {
   const skin = "#c9a07a"
   const skinShade = "#a9805d"
-  const shirt = kind === "cafe" ? "#5b4636" : "#3b4a5a"
-  const apron = kind === "cafe" ? "#efe6d4" : "#cdd6df"
+  // per-kind dress: café barista (warm), shopkeeper (cool), clinic nurse (white
+  // coat over teal scrubs), civic clerk (a neat suit + sash).
+  const shirt =
+    kind === "cafe" ? "#5b4636"
+    : kind === "clinic" ? "#3e7d78"
+    : kind === "civic" ? "#2e3a50"
+    : "#3b4a5a"
+  const apron =
+    kind === "cafe" ? "#efe6d4"
+    : kind === "clinic" ? "#f6f3ea"
+    : kind === "civic" ? "#46506a"
+    : "#cdd6df"
   const hair = "#2b2117"
   return `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 170" preserveAspectRatio="xMidYMax meet">
@@ -384,6 +414,16 @@ const PLACE_CSS = `
 .wp-vig-place--shop {
   background: linear-gradient(180deg, #46505c 0%, #58636f 44%, #3c4530 44%, #2e3526 100%);
 }
+/* the clinic: calm mint walls over a clean pale floor */
+.wp-vig-place--clinic {
+  background: linear-gradient(180deg, #5f8a86 0%, #79a39e 44%, #b9c2b4 44%, #98a294 100%);
+}
+.wp-vig-place--clinic .wp-vig-place-counter { background: linear-gradient(180deg, #e9e4d6, #c9c4b4); }
+/* the civic hall: stately blue over warm stone */
+.wp-vig-place--civic {
+  background: linear-gradient(180deg, #38445e 0%, #4a5878 44%, #8a7d68 44%, #6e6354 100%);
+}
+.wp-vig-place--civic .wp-vig-place-counter { background: linear-gradient(180deg, #9a8c74, #7a6e5a); }
 .wp-vig-place--in { opacity: 1; }
 .wp-vig-place-wall {
   position: absolute; top: 0; left: 0; right: 0; height: 44%;

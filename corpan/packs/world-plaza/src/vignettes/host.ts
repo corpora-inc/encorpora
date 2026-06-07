@@ -69,6 +69,12 @@ export function registerRootHooks(root: HTMLElement, hooks: VignetteRootHooks): 
   if (btn && hooks.exitLabel) btn.textContent = hooks.exitLabel
 }
 
+/** Read a root's registered hooks — the host's Exit/ESC path, exposed so an
+ *  isolated vignette test can fire the same leave the framework button would. */
+export function getRootHooks(root: HTMLElement): VignetteRootHooks | undefined {
+  return ROOT_HOOKS.get(root)
+}
+
 export function createVignetteHost(opts: VignetteHostOptions): VignetteHost {
   ensureVignetteStyles()
   const factories = new Map<string, VignetteFactory>()

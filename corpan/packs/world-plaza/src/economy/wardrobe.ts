@@ -51,6 +51,8 @@ export interface WardrobeStrings {
   hat: string
   accessory: string
   skin: string
+  hair: string
+  hairColor: string
   bling: string
   color: string
   none: string
@@ -68,6 +70,8 @@ const DEFAULT_STRINGS: WardrobeStrings = {
   hat: "Hat",
   accessory: "Accessory",
   skin: "Skin",
+  hair: "Hair",
+  hairColor: "Hair colour",
   bling: "Your finery",
   color: "Colour",
   none: "None",
@@ -111,6 +115,9 @@ function blingGlyph(it: Item): string {
     "cos-top-linen": "👕", "cos-top-embroidered": "👚", "cos-top-coat": "🧥",
     "cos-shoes-leather": "👞", "cos-acc-satchel": "🎒", "cos-acc-shawl": "🧣",
     "cos-acc-quill": "🖋️", "cos-face-spectacles": "👓", "cos-aura-festival": "✨", "cos-aura-petals": "🌼",
+    "cos-hat-sombrero": "👒", "cos-hat-tophat": "🎩", "cos-hat-beret": "🧑‍🎨", "cos-hat-flowercrown": "🌸",
+    "cos-hat-fez": "🎩", "cos-hat-toque": "🧑‍🍳", "cos-hat-party": "🥳",
+    "cos-top-sari": "🥻", "cos-top-suit": "🤵", "cos-top-aprondress": "👗", "cos-top-hoodie": "🧥",
   }
   return map[it.art] ?? "🎽"
 }
@@ -324,6 +331,48 @@ export function openWardrobe(opts: WardrobeOptions): WardrobeHandle {
     },
   )
   controls.append(acc.group)
+
+  // HAIR style + colour — always-on identity (no "None" chip: everyone has a
+  // hair STYLE, including bald, which is itself a chip when the kit offers it).
+  const hairGroup = el("div", "wp-wardrobe-group")
+  hairGroup.append(el("div", "wp-wardrobe-group-label", strings.hair))
+  const hairChips = el("div", "wp-wardrobe-chips")
+  const hairTintChips = el("div", "wp-wardrobe-chips")
+  const refreshHair = () => {
+    hairChips.querySelectorAll(".wp-wardrobe-chip").forEach((c) => {
+      c.classList.toggle("wp-wardrobe-chip--on", (c as HTMLElement).dataset.id === dress.hairId)
+    })
+    hairTintChips.querySelectorAll(".wp-wardrobe-tint").forEach((s) =>
+      s.classList.toggle("wp-wardrobe-tint--on", (s as HTMLElement).dataset.c === dress.hairTint),
+    )
+  }
+  for (const it of STARTER_DRESS.hair) {
+    const chip = el("button", "wp-wardrobe-chip", it.name)
+    chip.dataset.id = it.id
+    chip.addEventListener("click", () => {
+      dress.hairId = it.id
+      redrawDoll()
+      refreshHair()
+    })
+    hairChips.append(chip)
+  }
+  hairGroup.append(hairChips)
+  hairGroup.append(el("div", "wp-wardrobe-group-label", strings.hairColor))
+  const hairTints = STARTER_DRESS.hair[0]?.tints ?? []
+  for (const c of hairTints) {
+    const sw = el("button", "wp-wardrobe-tint")
+    sw.style.background = c
+    sw.dataset.c = c
+    sw.addEventListener("click", () => {
+      dress.hairTint = c
+      redrawDoll()
+      refreshHair()
+    })
+    hairTintChips.append(sw)
+  }
+  hairGroup.append(hairTintChips)
+  refreshHair()
+  controls.append(hairGroup)
 
   // SKIN tones
   const skinGroup = el("div", "wp-wardrobe-group")

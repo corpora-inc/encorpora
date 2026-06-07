@@ -33,6 +33,15 @@ export const CosmeticSlot = z.enum([
 ])
 export type CosmeticSlot = z.infer<typeof CosmeticSlot>
 
+/**
+ * itemId CONVENTION (the shape contract): `<slot>-<family>` — the renderer
+ * derives the 3D garment family from the tail (e.g. "hat-sombrero" →
+ * "sombrero", "top-dress" → "dress"). The `hair` slot's family IS the style
+ * ("hair-short" | "hair-medium" | "hair-long" | "hair-curly" | "hair-tied" |
+ * "hair-braid" …). Receivers MUST treat unknown families as the slot's
+ * classic default look (tinted dome hat / plain torso / short hair) — never
+ * an error — so cosmetics ship without a contract version bump.
+ */
 export const AvatarLayer = z.object({
   slot: CosmeticSlot,
   itemId: z.string().min(1),
