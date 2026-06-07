@@ -170,17 +170,33 @@ jobs:
 
       - name: Build Corpan City (corpan-city)
         # VITE_WP_SERVER_URL is baked into the IIFE bundle so the shipped pack
-        # connects to the Colyseus presence server (AWS App Runner, us-east-2)
+        # connects to the shared Colyseus presence server
         # without any host-side injection. To roll a new server, redeploy and
         # update this URL in the same PR.
         working-directory: corpan/packs/corpan-city
         env:
-          VITE_WP_SERVER_URL: ${{ vars.WP_SERVER_URL || 'wss://fatmqwnfjv.us-east-2.awsapprunner.com' }}
+          VITE_WP_SERVER_URL: ${{ vars.WP_SERVER_URL || 'wss://presence.3-142-26-37.sslip.io' }}
         run: npm run build
 
       - name: Package Corpan City (corpan-city)
         working-directory: corpan/packs/corpan-city
         run: node scripts/pack.mjs
+
+      - name: Install Teletron Dependencies
+        working-directory: corpan/packs/teletron
+        run: npm install --legacy-peer-deps
+
+      - name: Build Teletron
+        working-directory: corpan/packs/teletron
+        env:
+          VITE_TELETRON_SERVER_URL: ${{ vars.WP_SERVER_URL || 'wss://presence.3-142-26-37.sslip.io' }}
+        run: npm run build
+
+      - name: Package Teletron as ZIP
+        run: |
+          cd corpan/packs/teletron
+          zip -r teletron.zip manifest.json dist/
+          cd ../../..
 
       - name: Install Pronunciation Coach Dependencies
         working-directory: corpan/packs/pronunciation-coach
@@ -245,6 +261,13 @@ jobs:
           cp corpan/packs/corpan-city/manifest.json "web/io/out/corpan/packs/corpan-city/"
           cp -R corpan/packs/corpan-city/dist "web/io/out/corpan/packs/corpan-city/"
           cp corpan/packs/corpan-city/corpan-city.zip "web/io/out/corpan/packs/corpan-city.zip"
+
+      - name: Copy Teletron into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/teletron"
+          cp corpan/packs/teletron/manifest.json "web/io/out/corpan/packs/teletron/"
+          cp -R corpan/packs/teletron/dist "web/io/out/corpan/packs/teletron/"
+          cp corpan/packs/teletron/teletron.zip "web/io/out/corpan/packs/teletron.zip"
 
       - name: Copy Pronunciation Coach into io/out
         run: |
