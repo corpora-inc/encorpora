@@ -1,61 +1,80 @@
 #!/usr/bin/env bash
-# Recover the 12 ep3 fan-out drops, sequentially. Different actions per drop type.
-# Logs -> /tmp/ep3_recover.log. Per-lang detail -> /tmp/ep3_<lang>/.
+# Recovery driver for Ep4 fan-out drops.
+# Phase 1: rewrite-then-rerun for 10 single-segment-stuck langs
+#          (de, th, fi, sk, ms, te, bn, mr, ro, gu) — fixup_short_reactions.py
+#          must have run first.
+# Phase 2: re-translate-then-run for 4 translate-gate drops
+#          (hi, ko, uk, yue-Hant-HK).
+# Skips: ne (5 simultaneous failures, voice fundamentally struggles
+#        with Nepali — leave dropped).
+#
+# Logs to /tmp/ep4_recover_<lang>/. Uses the per-language pipeline
+# script for the bulk work.
 set -uo pipefail
-EP=/home/skyl/encorpora/books/tech/ai-this-week/003-may-27
+EP=/home/skyl/encorpora/books/tech/ai-this-week/004-jun-03
 PACK="$EP/packs/vindy-ron-gemini-v1"
-PROG=/tmp/ep3_recover.log
-VER=0.1.1
+PY=/home/skyl/tts_venv/bin/python
+PROG=/tmp/ep4_recover.log
+CDN="https://d38iwc9748jekz.cloudfront.net"
 
-echo "=== drop recovery start $(date -u +%FT%TZ) ===" | tee -a "$PROG"
+# Load API + cloud creds
+set -a; export $(grep -v '^#' ~/.env 2>/dev/null | grep -E 'GOOGLE_CLOUD|ANTHROPIC|OPENAI|AWS_|GEMINI' | xargs) 2>/dev/null; set +a
+export TTSCTL_BUDGET_OK=1
 
-run_wrapper() { bash "$EP/scripts/run_lang_pipeline.sh" "$1" "${2:-$VER}"; }
-
-# A. Quick recoveries — stale segment files (translation gate failed on old files
-#    before the digit-check removal). rm + re-translate via wrapper.
-for L in id ja; do
-  echo ">>> [$L] stale-file recovery (rm + re-translate)" | tee -a "$PROG"
-  rm -f "$PACK/segments_$L.json"
-  rm -f "$PACK/.pipeline_$L.lock"
-  run_wrapper "$L" 0.1.1 && echo "    [$L] OK" | tee -a "$PROG" || echo "    [$L] FAILED rc=$?" | tee -a "$PROG"
-done
-
-# B. Publish-error recoveries — audio is good, publish step raced/failed. Re-run
-#    the wrapper which will skip translate + skip already-DONE generate, then
-#    re-publish.
-for L in ta gu ne et; do
-  echo ">>> [$L] publish-error recovery (re-run wrapper)" | tee -a "$PROG"
-  rm -f "$PACK/.pipeline_$L.lock"
-  run_wrapper "$L" 0.1.1 && echo "    [$L] OK" | tee -a "$PROG" || echo "    [$L] FAILED rc=$?" | tee -a "$PROG"
-done
-
-# C. Short-segment empty-response — Gemini chokes on the 2-word "Be skeptical."
-#    translations in some langs. Per-lang rephrase of ch00-175 (longer form),
-#    then re-run wrapper. hu was already manually rephrased earlier.
-declare -A REPHRASE_175=(
-  [sl]="Bodimo skeptični glede tega."
-  [te]="ఇది అనుమానించాల్సిన విషయం."
-  [hu]="Maradjunk szkeptikusak ezzel."
+# Phase 1: rewrite-then-rerun (per-lang, only need to regen the rewritten
+# segments + master + audio_gate + publish + patch-catalog).
+PHASE1_LANGS=(de th fi sk ms te bn mr ro gu)
+declare -A PHASE1=(
+  [de]="ch00-093"
+  [th]="ch00-068"
+  [fi]="ch00-178"
+  [sk]="ch00-068"
+  [ms]="ch00-068"
+  [te]="ch00-116"
+  [bn]="ch00-116"
+  [mr]="ch00-093"
+  [ro]="ch00-101"
+  [gu]="ch00-061"
 )
-for L in hu sl te; do
-  TEXT="${REPHRASE_175[$L]}"
-  echo ">>> [$L] short-segment rephrase ch00-175 -> '$TEXT'" | tee -a "$PROG"
-  /home/skyl/tts_venv/bin/python -c "
-import json
-p='$PACK/segments_$L.json'
-d=json.load(open(p))
-for s in d['segments']:
-    if s['id']=='ch00-175':
-        s['text']='$TEXT'; s['text_markdown']='$TEXT'
-        s['tts']['text']='$TEXT'
-        break
-open(p,'w').write(json.dumps(d,indent=2,ensure_ascii=False))
-print('    [$L] segments_$L.json ch00-175 updated')"
-  rm -f "$PACK/.pipeline_$L.lock"
-  run_wrapper "$L" 0.1.1 && echo "    [$L] OK" | tee -a "$PROG" || echo "    [$L] FAILED rc=$?" | tee -a "$PROG"
+
+echo "=== Ep4 recovery start $(date -u +%FT%TZ) ===" | tee -a "$PROG"
+
+for L in "${PHASE1_LANGS[@]}"; do
+  S="${PHASE1[$L]}"
+  LOG="/tmp/ep4_recover_${L}"; mkdir -p "$LOG"
+  echo ">>> phase1 [$L] reset+regen $S" | tee -a "$PROG"
+
+  $PY "$EP/scripts/reset_segments.py" "$PACK" "$L" "$S" >> "$LOG/recover.log" 2>&1
+
+  ttsctl generate "$PACK" --lang "$L" >> "$LOG/recover.log" 2>&1
+  GEN=$?
+
+  if [ $GEN -ne 0 ]; then
+    echo "    [$L] gen still failing" | tee -a "$PROG"; continue
+  fi
+
+  ttsctl master "$PACK" --lang "$L" --all >> "$LOG/recover.log" 2>&1
+  $PY "$EP/scripts/audio_gate.py" "$PACK" "$L" >> "$LOG/recover.log" 2>&1
+  if [ $? -ne 0 ]; then echo "    [$L] audio gate fail" | tee -a "$PROG"; continue; fi
+
+  ttsctl publish "$PACK" --lang "$L" --voice-id gemini-vindy --version 0.1.0 --with-preview >> "$LOG/recover.log" 2>&1
+  if [ $? -ne 0 ]; then echo "    [$L] publish fail" | tee -a "$PROG"; continue; fi
+
+  echo "    [$L] SHIPPED" | tee -a "$PROG"
 done
 
-# D. Skip — these don't render well on Gemini for this content
-echo ">>> SKIPPED (Gemini coverage gap or cascade failure): sr, fil, yue-Hant-HK" | tee -a "$PROG"
+# Patch catalog once after the phase-1 batch.
+( cd /home/skyl/encorpora/corpan/infra && $PY patch-catalog.py >> "$PROG" 2>&1 )
 
-echo "=== drop recovery DONE $(date -u +%FT%TZ) ===" | tee -a "$PROG"
+# Phase 2: re-translate the translate-gate drops via the full driver.
+# They each get a fresh translate attempt then full pipeline.
+PHASE2=(hi ko uk yue-Hant-HK)
+for L in "${PHASE2[@]}"; do
+  echo ">>> phase2 [$L] full pipeline retry" | tee -a "$PROG"
+  # clear any half-written segments_<lang>.json so translate retries cleanly
+  rm -f "$PACK/segments_${L}.json"
+  bash "$EP/scripts/run_lang_pipeline.sh" "$L" 0.1.0
+  if [ $? -eq 0 ]; then echo "    [$L] SHIPPED" | tee -a "$PROG"; else echo "    [$L] DROPPED" | tee -a "$PROG"; fi
+done
+
+echo "=== Ep4 recovery DONE $(date -u +%FT%TZ) ===" | tee -a "$PROG"
