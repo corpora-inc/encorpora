@@ -13,7 +13,6 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@rolldown/binding-linux-arm64-gnu": "^1.1.0",
     "@types/node": "^25.9.0",
     "typescript": "^6.0.0",
     "vite": "^8.0.0"
