@@ -195,7 +195,7 @@ jobs:
       - name: Package Teletron as ZIP
         run: |
           cd corpan/packs/teletron
-          zip -r teletron.zip manifest.json dist/
+          zip -r teletron.zip manifest.json dist/ teletron-avatar.png
           cd ../../..
 
       - name: Install Pronunciation Coach Dependencies
