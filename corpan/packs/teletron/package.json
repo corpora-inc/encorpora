@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:watch": "vite build --watch",
+    "dev:corpan": "node scripts/dev-corpan.mjs",
     "build": "vite build",
     "typecheck": "tsc --noEmit"
   },

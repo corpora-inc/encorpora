@@ -53,12 +53,17 @@ gameServer
 // Teletron reuses the exact same privacy + invite + mediated-chat protocol, but
 // its waiting room needs to see everyone rather than nearby city avatars. A
 // huge AOI cell keeps the full lobby in one view without introducing a second
-// server implementation or another paid service.
+// server implementation or another paid service. Country reveal is still an
+// explicit client toggle, but Teletron shows it directly instead of using the
+// plaza's k-anonymity gate.
 gameServer
   .define("teletron", PlazaRoom, {
     topology,
     roomLabel: "teletron",
     maxClients: 100,
+    reconnectionSeconds: 0,
+    replaceDuplicatePlayerId: true,
+    placeReveal: "country",
     aoi: { cellSize: 10000, radius: 1 },
   })
   .sortBy({ clients: -1 })

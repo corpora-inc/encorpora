@@ -15,8 +15,10 @@ import { wireDictation, dictationResolver } from "@shared/asr"
 import { continentOf, detectCountry } from "../../corpan-city/src/multiplayer/geo"
 import type { HostApi } from "../../corpan-city/src/npc/hostTypes"
 import { createChatMediator } from "./mediator"
+import { installDevConsoleForwarder } from "../../sdk/devConsole"
 
 const PACK_ID = "teletron"
+installDevConsoleForwarder()
 const BASE_MODEL = {
   id: "llm-base-qwen3-4b-v1",
   url: "https://d38iwc9748jekz.cloudfront.net/corpan/llm-packs/llm-base-qwen3-4b-v1-0.1.0-full.zip",
@@ -148,6 +150,34 @@ function stackReveal(
   }
 }
 
+function avatarInitial(name: string): string {
+  return name.trim().slice(0, 1).toUpperCase() || "?"
+}
+
+function countryFlag(country?: string): string {
+  if (!country || !/^[A-Z]{2}$/.test(country)) return ""
+  return country
+    .split("")
+    .map((char) => String.fromCodePoint(0x1f1e6 + char.charCodeAt(0) - 65))
+    .join("")
+}
+
+function formatContinent(continent: string): string {
+  return continent
+    .split("-")
+    .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
+    .join(" ")
+}
+
+function placeLabel(place: SafeProfile["place"]): string | undefined {
+  if (place.granularity === "country") {
+    const flag = countryFlag(place.country)
+    return `${flag ? `${flag} ` : ""}${place.country}`
+  }
+  if (place.granularity === "continent") return formatContinent(place.continent)
+  return undefined
+}
+
 function isPlus(initial?: InitialState): boolean {
   const injected = globalThis as {
     __CORPAN_PLUS?: boolean
@@ -222,7 +252,7 @@ async function mountTeletron(
         </section>
         <section class="tt-privacy">
           <label><span><b>Reveal language stack</b><small>Show what you speak and study</small></span><input data-toggle="stack" type="checkbox"></label>
-          <label><span><b>Reveal coarse location</b><small>Only after the privacy threshold is met</small></span><input data-toggle="country" type="checkbox"></label>
+          <label><span><b>Reveal country</b><small>Show your country flag in the waiting room</small></span><input data-toggle="country" type="checkbox"></label>
         </section>
         <div class="tt-list-head"><span>${icon("users")} Waiting room</span><b class="tt-count">0</b></div>
         <div class="tt-people"></div>
@@ -345,9 +375,15 @@ async function mountTeletron(
       const learning = [profile.stack.target, ...(profile.stack.alsoLearning ?? [])].join(", ")
       bits.push(`${profile.stack.native} → ${learning}`)
     }
-    if (profile.place.granularity === "country") bits.push(profile.place.country)
-    else if (profile.place.granularity === "continent") bits.push(profile.place.continent)
+    const place = placeLabel(profile.place)
+    if (place) bits.push(place)
     return bits.join(" · ") || "Private profile"
+  }
+
+  function profileBadge(player: WirePlayer): { text: string; isFlag: boolean } {
+    const profile = profiles.get(player.playerId)
+    const flag = profile?.place.granularity === "country" ? countryFlag(profile.place.country) : ""
+    return flag ? { text: flag, isFlag: true } : { text: avatarInitial(player.name), isFlag: false }
   }
 
   function renderPeople(): void {
@@ -361,7 +397,11 @@ async function mountTeletron(
     for (const p of players.values()) {
       const card = el("button", "tt-person")
       card.type = "button"
-      card.innerHTML = `<span class="tt-avatar">${p.name.slice(0, 1)}</span><span><b>${p.name}</b><small>${profileLine(p)}</small></span><em>Invite</em>`
+      const badge = profileBadge(p)
+      const avatar = el("span", badge.isFlag ? "tt-avatar is-flag" : "tt-avatar", badge.text)
+      const body = el("span")
+      body.append(el("b", undefined, p.name), el("small", undefined, profileLine(p)))
+      card.append(avatar, body, el("em", undefined, "Invite"))
       card.addEventListener("click", () => invite(p))
       people.appendChild(card)
     }
@@ -376,7 +416,7 @@ async function mountTeletron(
   }
 
   function askInvite(name: string): Promise<boolean> {
-    invitePrompt.querySelector(".tt-avatar")!.textContent = name.slice(0, 1)
+    invitePrompt.querySelector(".tt-avatar")!.textContent = avatarInitial(name)
     invitePrompt.querySelector("h3")!.textContent = `${name} sent an invitation`
     invitePrompt.removeAttribute("hidden")
     return new Promise((resolve) => {
@@ -395,7 +435,7 @@ async function mountTeletron(
     empty.setAttribute("hidden", "")
     thread.removeAttribute("hidden")
     $(".tt-partner").textContent = p.name
-    $(".tt-avatar").textContent = p.name.slice(0, 1)
+    $(".tt-avatar").textContent = avatarInitial(p.name)
     messages.replaceChildren()
     addMessage("system", `Connected with ${p.name}. Both devices independently moderate each turn.`)
     field.focus()

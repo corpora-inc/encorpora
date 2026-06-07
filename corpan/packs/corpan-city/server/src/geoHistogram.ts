@@ -45,6 +45,11 @@ export class GeoHistogram {
     this.place.delete(sessionId)
   }
 
+  /** Return the server-private raw place for room surfaces that opt into it. */
+  raw(sessionId: string): { country?: string; continent?: Continent } | undefined {
+    return this.place.get(sessionId)
+  }
+
   /**
    * Coarsen `subject`'s place to the safest k-anonymous reveal given who's
    * currently online. Returns "hidden" if the subject never published a place.

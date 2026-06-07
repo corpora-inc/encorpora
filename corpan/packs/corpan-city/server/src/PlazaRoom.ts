@@ -14,6 +14,7 @@ import {
   MP_MSG,
   type RoomTopology,
   type SafeProfile,
+  type PlaceReveal,
   type InvitedMessage,
   type InviteResult,
   type TradeUpdateMessage,
@@ -54,6 +55,16 @@ export interface PlazaJoinOptions {
   questId?: string
 }
 
+export interface PlazaRoomOptions {
+  topology: RoomTopology
+  roomLabel?: string
+  maxClients?: number
+  reconnectionSeconds?: number
+  replaceDuplicatePlayerId?: boolean
+  placeReveal?: "k-anon" | "country"
+  aoi?: Partial<AoiConfig>
+}
+
 /** Max plausible ground speed (world u/s). The local player walks at 6.5; we
  *  allow generous headroom for prediction/reconnect snap, then clamp. */
 const MAX_SPEED = 14
@@ -63,6 +74,10 @@ const MIN_DT = 0.001
 export class PlazaRoom extends Room<PlazaState> {
   /** soft cap before matchmaking spins a sibling room (see index.ts sortBy). */
   maxClients = 30
+  private roomLabel = "plaza"
+  private reconnectionSeconds = 20
+  private replaceDuplicatePlayerId = false
+  private placeReveal: PlazaRoomOptions["placeReveal"] = "k-anon"
 
   private topology!: RoomTopology
   /** last accepted seq per session — drops stale/duplicate updates. */
@@ -91,14 +106,15 @@ export class PlazaRoom extends Room<PlazaState> {
   /** coarse anti-grief: sessionId → recent action timestamps (sliding window). */
   private actionLog = new Map<string, number[]>()
 
-  onCreate(options: {
-    topology: RoomTopology
-    roomLabel?: string
-    maxClients?: number
-    aoi?: Partial<AoiConfig>
-  }) {
+  onCreate(options: PlazaRoomOptions) {
     this.topology = options.topology
+    this.roomLabel = options.roomLabel ?? "plaza"
     if (options.maxClients) this.maxClients = options.maxClients
+    if (typeof options.reconnectionSeconds === "number") {
+      this.reconnectionSeconds = Math.max(0, options.reconnectionSeconds)
+    }
+    this.replaceDuplicatePlayerId = options.replaceDuplicatePlayerId === true
+    this.placeReveal = options.placeReveal ?? "k-anon"
     // AOI cell size / radius are configurable (per-room override → env → default).
     // ENV lets ops tune interest breadth without a deploy: WP_AOI_CELL, WP_AOI_RADIUS.
     const cellSize =
@@ -124,12 +140,22 @@ export class PlazaRoom extends Room<PlazaState> {
     this.registerInteractionHandlers()
 
     console.log(
-      `[${options.roomLabel ?? "plaza"}] room ${this.roomId} created on topology ${this.topology.id} ` +
+      `[${this.roomLabel}] room ${this.roomId} created on topology ${this.topology.id} ` +
         `(AOI cell=${cellSize}u radius=${radius})`,
     )
   }
 
   onJoin(client: Client, options: PlazaJoinOptions = {}) {
+    const requestedPlayerId = PlayerId.safeParse(options.playerId)
+    if (this.replaceDuplicatePlayerId && requestedPlayerId.success) {
+      const existingSession = this.byPlayerId.get(requestedPlayerId.data)
+      if (existingSession && existingSession !== client.sessionId) {
+        const existingClient = this.clientsBySession.get(existingSession)
+        existingClient?.leave(4000, "replaced by newer session")
+        this.removeSession(existingSession)
+      }
+    }
+
     const p = new PlayerState()
     p.playerId = this.claimPlayerId(options.playerId, client.sessionId)
     p.name = sanitizeName(options.name)
@@ -157,41 +183,45 @@ export class PlazaRoom extends Room<PlazaState> {
     this.aoi.set(client.sessionId, p.x, p.z)
     this.linkAoi(client.sessionId)
 
-    console.log(`[plaza] +join ${p.name} (${client.sessionId}) → ${this.state.players.size} players`)
+    console.log(`[${this.roomLabel}] +join ${p.name} (${client.sessionId}) → ${this.state.players.size} players`)
   }
 
   async onLeave(client: Client, consented?: boolean) {
-    const player = this.state.players.get(client.sessionId)
     // Graceful reconnection: keep the avatar in-world briefly so a dropped
     // socket (backgrounded app, flaky wifi) doesn't pop the player out.
-    if (!consented) {
+    if (!consented && this.reconnectionSeconds > 0) {
       try {
-        await this.allowReconnection(client, 20)
-        console.log(`[plaza] reconnected ${client.sessionId}`)
+        await this.allowReconnection(client, this.reconnectionSeconds)
+        console.log(`[${this.roomLabel}] reconnected ${client.sessionId}`)
         return
       } catch {
         /* reconnection window lapsed → fall through to removal */
       }
     }
+    this.removeSession(client.sessionId)
+  }
+
+  private removeSession(sessionId: string): void {
+    const player = this.state.players.get(sessionId)
     // Pull the leaver out of every other client's AOI view so no ghost avatar
     // lingers, then drop our own bookkeeping.
-    this.unlinkAoi(client.sessionId)
-    this.aoi.remove(client.sessionId)
-    this.clientsBySession.delete(client.sessionId)
-    this.state.players.delete(client.sessionId)
-    this.lastSeq.delete(client.sessionId)
+    this.unlinkAoi(sessionId)
+    this.aoi.remove(sessionId)
+    this.clientsBySession.delete(sessionId)
+    this.state.players.delete(sessionId)
+    this.lastSeq.delete(sessionId)
     // Interaction-layer cleanup: drop from the geo tally, the playerId index,
     // any open invites, and the rate-limit log.
-    this.geo.remove(client.sessionId)
-    this.alsoLearning.delete(client.sessionId)
-    if (player?.playerId && this.byPlayerId.get(player.playerId) === client.sessionId) {
+    this.geo.remove(sessionId)
+    this.alsoLearning.delete(sessionId)
+    if (player?.playerId && this.byPlayerId.get(player.playerId) === sessionId) {
       this.byPlayerId.delete(player.playerId)
     }
-    this.dropInvitesFor(client.sessionId)
+    this.dropInvitesFor(sessionId)
     for (const key of [...this.actionLog.keys()]) {
-      if (key.startsWith(`${client.sessionId}:`)) this.actionLog.delete(key)
+      if (key.startsWith(`${sessionId}:`)) this.actionLog.delete(key)
     }
-    if (player) console.log(`[plaza] -leave ${player.name} → ${this.state.players.size} players`)
+    if (player) console.log(`[${this.roomLabel}] -leave ${player.name} → ${this.state.players.size} players`)
   }
 
   /**
@@ -210,7 +240,7 @@ export class PlazaRoom extends Room<PlazaState> {
   }
 
   onDispose() {
-    console.log(`[plaza] room ${this.roomId} disposed`)
+    console.log(`[${this.roomLabel}] room ${this.roomId} disposed`)
   }
 
   /** Authoritative move: drop stale seqs, clamp to bounds, reject teleports. */
@@ -286,8 +316,9 @@ export class PlazaRoom extends Room<PlazaState> {
       this.geo.set(client.sessionId, parsed.data.country, parsed.data.continent)
     })
 
-    // A viewer asks for another player's card. We coarsen the target's place to
-    // the safest k-anonymous reveal FOR THIS MOMENT and reply only to the asker.
+    // A viewer asks for another player's card. Plaza uses the k-anonymous
+    // resolver; room surfaces like Teletron can opt into country reveal because
+    // the user explicitly toggled sharing and the waiting room is country-level.
     this.onMessage(MP_MSG.profileRequest, (client, raw) => {
       const parsed = ProfileRequest.safeParse(raw)
       if (!parsed.success) return
@@ -304,7 +335,7 @@ export class PlazaRoom extends Room<PlazaState> {
           native: (tp.native || tp.target || "en") as SafeProfile["stack"]["native"],
           alsoLearning: this.alsoLearning.get(targetSession),
         },
-        place: this.geo.reveal(targetSession),
+        place: this.revealPlace(targetSession),
       }
       client.send(MP_MSG.profileCard, card)
     })
@@ -457,6 +488,16 @@ export class PlazaRoom extends Room<PlazaState> {
       if ((rec.from === a && rec.to === b) || (rec.from === b && rec.to === a)) return true
     }
     return false
+  }
+
+  private revealPlace(sessionId: string): PlaceReveal {
+    if (this.placeReveal !== "country") return this.geo.reveal(sessionId)
+    const raw = this.geo.raw(sessionId)
+    if (!raw?.continent) return { granularity: "hidden" }
+    if (raw.country) {
+      return { granularity: "country", country: raw.country, continent: raw.continent }
+    }
+    return { granularity: "continent", continent: raw.continent }
   }
 
   /**

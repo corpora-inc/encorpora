@@ -7,7 +7,9 @@
  *   • an invite round-trip (invited → accept → invite-result accepted),
  *   • chat is blocked before consent, then routes after an accepted chat invite,
  *   • a peer-result relay requires an accepted challenge invite,
- *   • a trade envelope requires an accepted trade invite.
+ *   • a trade envelope requires an accepted trade invite,
+ *   • Teletron replaces stale same-player sessions instead of showing self ghosts.
+ *   • Teletron reveals an opted-in country directly for the waiting room.
  *
  * Run:  node qa/mp-interaction.mjs   (after `npm run server:install`)
  */
@@ -84,6 +86,33 @@ async function main() {
   a.send("profile-request", { target: "pB" })
   const cardAfterCollision = await cardAfterCollisionP
   check(cardAfterCollision?.name === "Ben", "duplicate playerId cannot overwrite B's routing entry")
+
+  // Teletron is a live waiting room, not a walking world. Re-entering with the
+  // same durable playerId must replace the old socket immediately so users do
+  // not see themselves as stale strangers.
+  const ct1 = new Client(WS)
+  const tele1 = await ct1.joinOrCreate("teletron", { playerId: "tele-self", name: "Self", avatar: { base: "teletron", layers: [] } })
+  const tele1LeftP = new Promise((resolve) => tele1.onLeave(() => resolve(true)))
+  const ct2 = new Client(WS)
+  const tele2 = await ct2.joinOrCreate("teletron", { playerId: "tele-self", name: "Self", avatar: { base: "teletron", layers: [] } })
+  const tele1Left = await Promise.race([tele1LeftP, sleep(1000).then(() => false)])
+  await sleep(200)
+  check(tele1Left, "teletron duplicate playerId replaces the older session")
+  check(tele2.state.players.size === 1, "teletron waiting room has one live self after rejoin")
+  const ct3 = new Client(WS)
+  const teleObserver = await ct3.joinOrCreate("teletron", { playerId: "tele-observer", name: "Observer", avatar: { base: "teletron", layers: [] } })
+  tele2.send("profile-publish", { stack: { target: "ja", native: "en" }, country: "JP", continent: "asia" })
+  teleObserver.send("profile-publish", { stack: { target: "es", native: "en" }, country: "US", continent: "north-america" })
+  await sleep(200)
+  const teleCardP = waitMsg(teleObserver, "profile-card")
+  teleObserver.send("profile-request", { target: "tele-self" })
+  const teleCard = await teleCardP
+  check(
+    teleCard?.place?.granularity === "country" && teleCard?.place?.country === "JP",
+    "teletron reveals an opted-in country directly",
+  )
+  await teleObserver.leave()
+  await tele2.leave()
 
   // 2) invite round-trip: A invites B to a challenge; B accepts.
   const inviteId = "inv-test-1"
