@@ -58,6 +58,23 @@ type ContentPackModule = {
   ) => Promise<{ unmount: () => void }>
 }
 
+function readPackBaseUrl(): string {
+  try {
+    const el = document.querySelector<HTMLScriptElement>(
+      'script[data-corp-game="true"][data-corp-game-id]',
+    )
+    return el?.dataset.corpGameBaseUrl ? new URL(el.dataset.corpGameBaseUrl).toString() : ""
+  } catch {
+    return ""
+  }
+}
+
+function packAssetUrl(path: string): string {
+  const base = readPackBaseUrl()
+  if (!base) return path
+  return new URL(path, base).toString()
+}
+
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
   className?: string,
@@ -69,13 +86,14 @@ function el<K extends keyof HTMLElementTagNameMap>(
   return node
 }
 
-function icon(name: "back" | "send" | "mic" | "shield" | "users"): string {
+function icon(name: "back" | "send" | "mic" | "shield" | "users" | "chevron"): string {
   const paths = {
     back: '<path d="m15 18-6-6 6-6"/>',
     send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
     mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 19v3"/>',
     shield: '<path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3Z"/><path d="m9 12 2 2 4-4"/>',
     users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/>',
+    chevron: '<path d="m6 9 6 6 6-6"/>',
   }
   return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name]}</svg>`
 }
@@ -235,20 +253,22 @@ async function mountTeletron(
   let revealStack = false
   let revealCountry = false
   let pendingInvite: { inviteId: string; player: WirePlayer } | null = null
+  const teletronLogoUrl = packAssetUrl("teletron-avatar.png")
 
   const root = el("div", "tt-root")
   root.innerHTML = `
     <header class="tt-header">
       <button class="tt-icon tt-back" aria-label="Back">${icon("back")}</button>
-      <div class="tt-brand"><span class="tt-pulse"></span><strong>Teletron</strong></div>
+      <div class="tt-brand"><span class="tt-brand-mark" aria-hidden="true"><img src="${teletronLogoUrl}" alt="" draggable="false"></span><span><strong>Teletron</strong><small>local AI relay</small></span></div>
       <div class="tt-status"><span></span><b>Connecting</b></div>
     </header>
     <main class="tt-main">
       <aside class="tt-lobby">
         <section class="tt-intro">
+          <div class="tt-hero-mark" aria-hidden="true"><img src="${teletronLogoUrl}" alt="" draggable="false"></div>
           <div class="tt-kicker">${icon("shield")} Local AI on both sides</div>
-          <h1>Someone new is here.</h1>
-          <p>Raw messages stay on each device. Only locally cleaned intent crosses the line.</p>
+          <h1>Choose what you want to share.</h1>
+          <p>Your generated name is visible. Language stack and country are optional.</p>
         </section>
         <section class="tt-privacy">
           <label><span><b>Reveal language stack</b><small>Show what you speak and study</small></span><input data-toggle="stack" type="checkbox"></label>
@@ -275,12 +295,13 @@ async function mountTeletron(
         </div>
       </section>
     </main>
-    <div class="tt-model"><div><span class="tt-model-icon">AI</span><span><b>Preparing private moderation</b><small>Checking for Qwen3 4B on this device...</small></span></div><button hidden>Install model</button></div>
+    <div class="tt-model"><div><span class="tt-model-icon">AI</span><span><b>Preparing private relay</b><small>Checking for Qwen3 4B on this device...</small></span></div><button hidden>Install model</button></div>
     <div class="tt-onboarding"><div>
+      <div class="tt-onboarding-mark" aria-hidden="true"><img src="${teletronLogoUrl}" alt="" draggable="false"></div>
       <div class="tt-kicker">${icon("shield")} Private by default</div>
       <h2>Enter the waiting room</h2>
-      <label><span>Your generated name</span><div><b class="tt-own-name"></b><button type="button" data-reroll>Roll again</button></div></label>
-      <label><span>Show chat messages in</span><select class="tt-language"></select></label>
+      <label><span>Your generated name</span><div class="tt-name-row"><b class="tt-own-name"></b><button type="button" data-reroll>Roll again</button></div></label>
+      <label><span>Show chat messages in</span><div class="tt-select-wrap"><select class="tt-language"></select><span class="tt-select-chev">${icon("chevron")}</span></div></label>
       <p>Choose from the languages in your learning stack. You can change this the next time you enter.</p>
       <button class="tt-enter" type="button">Enter waiting room</button>
     </div></div>
@@ -397,11 +418,17 @@ async function mountTeletron(
     for (const p of players.values()) {
       const card = el("button", "tt-person")
       card.type = "button"
+      const isPendingTarget = pendingInvite?.player.playerId === p.playerId
+      const hasPendingInvite = pendingInvite !== null
+      if (hasPendingInvite) {
+        card.disabled = true
+        card.classList.add(isPendingTarget ? "is-invited" : "is-paused")
+      }
       const badge = profileBadge(p)
       const avatar = el("span", badge.isFlag ? "tt-avatar is-flag" : "tt-avatar", badge.text)
       const body = el("span")
       body.append(el("b", undefined, p.name), el("small", undefined, profileLine(p)))
-      card.append(avatar, body, el("em", undefined, "Invite"))
+      card.append(avatar, body, el("em", undefined, isPendingTarget ? "Invited" : hasPendingInvite ? "Wait" : "Invite"))
       card.addEventListener("click", () => invite(p))
       people.appendChild(card)
     }
@@ -450,9 +477,14 @@ async function mountTeletron(
   function invite(p: WirePlayer): void {
     if (!room) return showToast("Still connecting.")
     if (!modelReady) return showToast("Finish preparing the local AI first.")
+    if (pendingInvite) {
+      const target = pendingInvite.player.playerId === p.playerId ? p.name : pendingInvite.player.name
+      return showToast(`Waiting for ${target} to respond.`)
+    }
     const inviteId = `tele-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`
     pendingInvite = { inviteId, player: p }
     room.send(MP_MSG.invite, { inviteId, to: p.playerId, offer: { kind: "chat" } })
+    renderPeople()
     showToast(`Invitation sent to ${p.name}.`)
   }
 
@@ -491,6 +523,7 @@ async function mountTeletron(
   }
 
   async function probeModel(): Promise<void> {
+    modelBar.removeAttribute("hidden")
     if (!hostApi.llm) {
       modelText.textContent = "This version of Corpán does not expose on-device AI."
       return
@@ -507,13 +540,13 @@ async function mountTeletron(
         await hostApi.llm.load({ modelPackId: BASE_MODEL.id })
       }
       modelReady = true
-      modelText.textContent = "Private moderation is ready."
     } catch (error) {
       console.error("[teletron] model load failed:", error)
       modelReady = false
       modelText.textContent = "The installed model could not be loaded."
     }
     modelBar.classList.toggle("is-ready", modelReady)
+    modelBar.toggleAttribute("hidden", modelReady)
     updateQuota()
   }
 
@@ -596,8 +629,10 @@ async function mountTeletron(
           renderPeople()
         }),
         pc.onRemove((p, key) => {
-          players.delete(p.playerId || key)
-          profiles.delete(p.playerId || key)
+          const id = p.playerId || key
+          players.delete(id)
+          profiles.delete(id)
+          if (pendingInvite?.player.playerId === id) pendingInvite = null
           renderPeople()
         }),
         joined.onMessage(MP_MSG.profileCard, (raw) => {
@@ -625,9 +660,11 @@ async function mountTeletron(
         joined.onMessage(MP_MSG.inviteResult, (raw) => {
           const parsed = InviteResult.safeParse(raw)
           if (!parsed.success || !pendingInvite || parsed.data.inviteId !== pendingInvite.inviteId) return
-          if (parsed.data.outcome === "accepted") openThread(pendingInvite.player)
-          else showToast(`Invitation ${parsed.data.outcome}.`)
+          const invitedPlayer = pendingInvite.player
           pendingInvite = null
+          renderPeople()
+          if (parsed.data.outcome === "accepted") openThread(invitedPlayer)
+          else showToast(`Invitation ${parsed.data.outcome}.`)
         }),
         joined.onMessage(MP_MSG.chatDeliver, (raw) => {
           const parsed = MediatedChatInput.safeParse(raw)
