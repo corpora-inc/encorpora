@@ -163,7 +163,7 @@ jobs:
         # update this URL in the same PR.
         working-directory: corpan/packs/world-plaza
         env:
-          VITE_WP_SERVER_URL: ${{ vars.WP_SERVER_URL || 'wss://hyj4frvdmr.us-east-2.awsapprunner.com' }}
+          VITE_WP_SERVER_URL: ${{ vars.WP_SERVER_URL || 'wss://fatmqwnfjv.us-east-2.awsapprunner.com' }}
         run: npm run build
 
       - name: Package Corpan City (world-plaza)
