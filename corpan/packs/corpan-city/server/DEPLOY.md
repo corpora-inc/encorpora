@@ -184,8 +184,46 @@ terraform apply \
   -var plaza_server_image_tag="<newtag>"
 ```
 
-`auto_deployments_enabled = false`, so a push alone does NOT redeploy — the
-`terraform apply` with the new tag triggers the rollout (explicit + auditable).
+Important: the EC2 host has `user_data_replace_on_change = false`. Terraform
+records the new image tag in user data, but an already-running EC2 instance does
+**not** rerun user data. After pushing the image and applying Terraform, restart
+the container in place with SSM:
+
+```bash
+INSTANCE_ID="i-03643bd4d40f07cae"
+IMAGE_TAG="<newtag>"
+ECR_REPO="$(terraform output -raw plaza_server_ecr_repository_url)"
+export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-${AWS_REGION:-us-east-2}}"
+
+aws ssm send-command \
+  --instance-ids "$INSTANCE_ID" \
+  --document-name AWS-RunShellScript \
+  --comment "Deploy corpan presence ${IMAGE_TAG}" \
+  --parameters commands="[
+    \"set -euxo pipefail\",
+    \"aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REPO}\",
+    \"docker pull ${ECR_REPO}:${IMAGE_TAG}\",
+    \"docker rm -f corpan-presence corpan-presence-server || true\",
+    \"docker run -d --restart unless-stopped --name corpan-presence-server -p 127.0.0.1:8080:8080 ${ECR_REPO}:${IMAGE_TAG}\",
+    \"curl -sf http://127.0.0.1:8080/healthz\"
+  ]"
+```
+
+The canonical service container is `corpan-presence-server`; `caddy` is the
+separate TLS reverse proxy. A stale `corpan-presence` container name may exist
+from older runbooks, so the restart command removes both names before starting
+the current one.
+
+A successful deploy should pass:
+
+```bash
+curl -sk https://presence.3-142-26-37.sslip.io/healthz
+# ok
+```
+
+For the Teletron duplicate-session fix, also test two joins with the same
+`playerId`: the first socket should close with code `4000` and reason
+`replaced by newer session`, and the room should contain one matching player.
 
 ## 7. Tear down
 

@@ -23,16 +23,17 @@ presence, invite/accept, mic input, local Qwen moderation, and mediated chat.
 
 ## Initial release checklist
 
-1. Pass Plus entitlement into content packs.
-   - `ContentPackHost` currently passes `stackConfig` only.
-   - Teletron already checks `initialState.isPlus`, `initialState.entitlement.plus`,
-     and `globalThis.__CORPAN_PLUS`, but the real host likely does not set them.
-   - Until this is wired, all real users will probably see the free 20/day client
-     quota even if they are Plus.
+1. Pass Plus entitlement into content packs. Done for the initial release.
+   - `ContentPackHost` passes a cached entitlement snapshot at mount, publishes
+     `globalThis.__CORPAN_ENTITLEMENT` / `__CORPAN_PLUS`, and dispatches
+     `corpan:entitlement-changed` when subscription state changes.
+   - Teletron listens for that event and switches from the free 20/day quota to
+     unlimited without calling StoreKit/Google Play per message.
 
-2. Publish/package Teletron artifacts.
-   - Build the pack ZIP and manifest under the existing catalog publishing flow.
-   - Confirm the catalog points to an artifact that exists on the CDN.
+2. Publish/package Teletron artifacts. Done in the Pages deploy workflow.
+   - The workflow builds the pack, writes `/corpan/packs/teletron.zip`, copies
+     `manifest.json`, `dist/`, and `teletron-avatar.png`, and publishes the
+     localized catalog entry.
    - Launch as `purchase.type = free`, with Plus only affecting limits.
 
 3. Add a visible block/end affordance.
@@ -58,8 +59,25 @@ presence, invite/accept, mic input, local Qwen moderation, and mediated chat.
 1. Server-side quota and entitlement.
    - Move the free daily quota from localStorage to the presence server or a small
      entitlement/quota service.
-   - The server should receive a signed entitlement proof or app-issued session
-     token, then enforce free/Plus message limits.
+   - Do not trust `initialState.isPlus` or a client-sent boolean for production
+     enforcement. The host-side flag is for UX and honest-client behavior only.
+   - Current backend state: `corpan-verify-purchase` verifies Apple/Google when
+     the app posts a transaction or purchase token, but it does not persist a
+     subject entitlement record, and the Apple/Google notification handlers only
+     log events. `/subscription-status` still requires store proof from the
+     client; it is not a reusable server-side entitlement source.
+   - Target shape: app refreshes IAP occasionally, backend verifies the StoreKit
+     signed transaction or Google purchase token, stores `{ subject, platform,
+     originalTransactionId/orderId, plus, expiresAt, updatedAt }`, and returns a
+     short-lived first-party token scoped to Teletron.
+   - Presence server verifies that first-party token on join/message. Valid Plus
+     token means unlimited; missing/expired token means server-enforced free
+     quota.
+   - Add one stable anonymous app subject, generated once on device and not shown
+     to peers. The token subject should be this app subject, not the Teletron
+     display name and not the client-editable `playerId`.
+   - This avoids calling Apple/Google per message while still handling expiry,
+     cancellation, refund, and restore flows.
    - This is required before the quota can be considered abuse-resistant.
 
 2. Abuse reporting and moderation audit trail.
@@ -81,8 +99,17 @@ presence, invite/accept, mic input, local Qwen moderation, and mediated chat.
 
 5. Room/session identity.
    - Current identity is anonymous and device-local.
-   - For real quota/block/report enforcement, introduce a signed anonymous session
-     identity that does not expose account details to peers.
+   - Teletron now replaces duplicate live sockets with the same `playerId` on
+     the server, so one install should not accumulate redundant waiting-room
+     presence. The first socket closes with code `4000` and reason
+     `replaced by newer session`.
+   - This replacement is per live room process. Because Teletron currently uses a
+     high `maxClients` and fill-first matchmaking, duplicates from one install
+     should normally land in the same room; a future multi-room/process deployment
+     needs a shared registry if duplicate eviction must be global.
+   - For real quota/block/report enforcement across devices, introduce a signed
+     anonymous account/session identity that does not expose account details to
+     peers.
 
 6. Moderation evaluation.
    - Build a small adversarial test corpus for contact-info leakage, meet-up

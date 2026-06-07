@@ -192,7 +192,7 @@ resource "aws_instance" "presence" {
     aws ecr get-login-password --region ${var.aws_region} | \
       docker login --username AWS --password-stdin ${aws_ecr_repository.plaza_server[0].repository_url}
     docker pull ${aws_ecr_repository.plaza_server[0].repository_url}:${var.plaza_server_image_tag}
-    docker run -d --restart unless-stopped --name corpan-presence \
+    docker run -d --restart unless-stopped --name corpan-presence-server \
       -p 127.0.0.1:8080:8080 \
       ${aws_ecr_repository.plaza_server[0].repository_url}:${var.plaza_server_image_tag}
     docker run -d --restart unless-stopped --name caddy \
