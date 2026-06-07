@@ -198,12 +198,12 @@ resource "aws_apprunner_auto_scaling_configuration_version" "plaza_server" {
 # --- Outputs -----------------------------------------------------------------
 
 output "plaza_server_url" {
-  value = var.enable_plaza_server ? "https://${aws_apprunner_service.plaza_server[0].service_url}" : ""
+  value       = var.enable_plaza_server ? "https://${aws_apprunner_service.plaza_server[0].service_url}" : ""
   description = "App Runner HTTPS URL for the plaza server. The pack connects with the wss:// equivalent (swap https→wss). Bake into VITE_WP_SERVER_URL."
 }
 
 output "plaza_server_wss_url" {
-  value = var.enable_plaza_server ? "wss://${aws_apprunner_service.plaza_server[0].service_url}" : ""
+  value       = var.enable_plaza_server ? "wss://${aws_apprunner_service.plaza_server[0].service_url}" : ""
   description = "Ready-to-use wss:// URL for VITE_WP_SERVER_URL / __WP_SERVER_URL / ?wpServer=."
 }
 
