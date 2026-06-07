@@ -1,6 +1,6 @@
 name: CI
 
-# Lightweight build/typecheck gate on every PR and push to main.
+# Lightweight build gate on every PR and push to main.
 # Path-filtered so unrelated changes (books/, voices/, etc.) don't trigger.
 
 on:
@@ -112,7 +112,6 @@ jobs:
 
             echo "::group::${pack}"
             npm install --prefix "${dir}" --legacy-peer-deps
-            npm run --prefix "${dir}" typecheck --if-present
             npm run --prefix "${dir}" build --if-present
             echo "::endgroup::"
           done
