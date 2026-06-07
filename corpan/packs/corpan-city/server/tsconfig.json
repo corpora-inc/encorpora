@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2021", "DOM"],
+    "types": ["node"],
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "paths": {
+      "@corpan-city/contracts": ["../contracts/src/index.ts"],
+      "@corpan-city/contracts/*": ["../contracts/src/*"]
+    }
+  },
+  "include": ["src"]
+}

@@ -56,7 +56,7 @@ Two ways, in order of fidelity:
   confirm: which of our ~24 native locales actually transcribe on the test
   device, and that they add <50 MB resident (Phase-1 acceptance).
 - **Qwen3 co-residency (the §3.3 measurement)**: with the corpan-llm Qwen3-4B
-  LOADED (start a Tutomaton/World Plaza session), launch `qwen3-asr.cpp`
+  LOADED (start a Tutomaton/Corpan City session), launch `qwen3-asr.cpp`
   (Metal) on a clip and record the ADDED `os_proc_available_memory()` delta.
   Masterplan estimate: +0.4–0.7 GB (q5–q8). Confirm it fits next to the ~2.5
   GB LLM on the test device and on a mid-tier device (where it may NOT fit →

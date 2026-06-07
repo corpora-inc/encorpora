@@ -1,0 +1,144 @@
+/* Corpan City — the NPC offer confirm sheet (a juicy "It's a deal" modal).
+   Mounts INSIDE .wp-overlay (position:absolute), never document.body — the M0
+   lesson. Compositor-only fade/rise; warm paper-cutout to match the shop. */
+
+.wp-offer {
+  position: absolute;
+  inset: 0;
+  z-index: 64;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-rounded, "SF Pro Rounded", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #3a2a1c;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.26s ease;
+  -webkit-tap-highlight-color: transparent;
+  --wp-offer-accent: #e8b54a;
+}
+.wp-offer--in { opacity: 1; pointer-events: auto; }
+
+.wp-offer-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(60, 40, 20, 0.3), rgba(40, 26, 14, 0.56));
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.wp-offer-sheet {
+  position: relative;
+  width: min(440px, calc(100% - 32px));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fffaf0;
+  border-radius: 26px;
+  border: 2px solid #fdf3e0;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 26px 60px -14px rgba(80, 50, 20, 0.5);
+  padding: 22px 22px 20px;
+  transform: translateY(14px) scale(0.97);
+  transition: transform 0.3s cubic-bezier(0.18, 0.9, 0.3, 1.1);
+}
+.wp-offer--in .wp-offer-sheet { transform: translateY(0) scale(1); }
+
+.wp-offer-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9a7a52;
+}
+.wp-offer-pitch {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #4a3622;
+}
+
+.wp-offer-deal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 0 2px;
+}
+.wp-offer-arrow {
+  font-size: 22px;
+  color: #b89058;
+  font-weight: 800;
+}
+.wp-offer-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 104px;
+  padding: 12px 10px;
+  border-radius: 18px;
+  background: #fdf6e8;
+  border: 1.5px solid #f0e2c8;
+}
+.wp-offer-chip--get { border-color: var(--wp-offer-accent); box-shadow: 0 0 0 1px var(--wp-offer-accent) inset; }
+.wp-offer-art {
+  font-size: 34px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 3px rgba(60, 40, 20, 0.25));
+}
+.wp-offer-art--rare { text-shadow: 0 0 8px rgba(90, 150, 220, 0.5); }
+.wp-offer-art--epic { text-shadow: 0 0 10px rgba(170, 110, 220, 0.55); }
+.wp-offer-art--seasonal { text-shadow: 0 0 10px rgba(230, 170, 60, 0.6); }
+.wp-offer-chip-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: center;
+  color: #3a2a1c;
+}
+.wp-offer-chip-sub {
+  font-size: 12px;
+  font-weight: 700;
+  color: #9a7a52;
+}
+
+.wp-offer-note {
+  font-size: 13px;
+  font-weight: 600;
+  color: #b4533a;
+  text-align: center;
+}
+
+.wp-offer-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 2px;
+}
+.wp-offer-btn {
+  flex: 1;
+  min-height: 46px;
+  border: 0;
+  border-radius: 16px;
+  font: 700 15px ui-rounded, system-ui, sans-serif;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+.wp-offer-btn:active { transform: scale(0.97); }
+.wp-offer-btn--ghost {
+  background: #f1e7d6;
+  color: #6a523a;
+}
+.wp-offer-btn--accept {
+  background: linear-gradient(180deg, var(--wp-offer-accent), #d99a32);
+  color: #2a1c0e;
+  box-shadow: 0 6px 16px -6px rgba(217, 154, 50, 0.7);
+}
+.wp-offer-btn--accept:disabled {
+  filter: grayscale(0.6) opacity(0.55);
+  cursor: not-allowed;
+  box-shadow: none;
+}

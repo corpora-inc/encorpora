@@ -224,7 +224,7 @@ const DEV_CATALOG: CatalogGame[] = [
     id: "corpan_city",
     name: "Corpan City",
     version: "0.1.0",
-    manifestUrl: "/packs/world-plaza/manifest.json",
+    manifestUrl: "/packs/corpan-city/manifest.json",
     description:
       "A living city where you meet AI characters and real players, follow a personal journey, and turn every encounter into a language lesson.",
     imageUrl: "https://encorpora.io/assets/corpan_city-avatar.png",

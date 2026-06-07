@@ -576,7 +576,7 @@ export const createHostApi = (packId?: string): HostApi => {
 
   // --- host.models: the Budget Arbiter seam ------------------------------
   // The refcount/dedup STORE (install/evict/locate/list) is the registry
-  // plugin (Phase-2). But the BUDGET — the question World Plaza/Tutomaton
+  // plugin (Phase-2). But the BUDGET — the question Corpan City/Tutomaton
   // actually ask ("does Qwen3-ASR fit next to my 4B right now?") — is
   // answerable TODAY from real signals: device memory via stt.getStatus()
   // (availableMemoryMB / physicalMemoryMB) and the resident LLM via

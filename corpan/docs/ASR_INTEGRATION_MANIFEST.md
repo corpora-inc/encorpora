@@ -113,7 +113,7 @@ The corpan-app now *provides* `asr`/`models` on its concrete `hostApi`
 
 ### Still remaining (small, post-provider)
 
-- **World Plaza speak challenge** — swap the `host.sttAvailable()` gate to
+- **Corpan City speak challenge** — swap the `host.sttAvailable()` gate to
   `host.asr.pick({lang, goal:"challenge"})` + the pure-JS known-target scorer
   (the `STT_RESEARCH.md` scorer, unchanged); keep the self-rate floor. Do this
   once #96 gives `pick` something to return; until then the whisper-gated path

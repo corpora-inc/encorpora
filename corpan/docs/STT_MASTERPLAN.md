@@ -5,8 +5,8 @@
 **Out of scope (but adjacent):** Parlometron / pronunciation-coach's alignment+scoring. Today that lives in `tauri-plugin-stt`. In this plan it is **refactored to sit ON TOP of a transcription runtime** (§5) rather than being its own whisper-only silo — without breaking shipping Parlometron.
 
 > **Predecessor docs (still valid as detail references):**
-> - `packs/world-plaza/docs/MODEL_STRATEGY.md` (2026-06-02) — NPC voice-loop + the out-of-process proof + per-locale tables.
-> - `packs/world-plaza/docs/STT_RESEARCH.md` (2026-06-04) — the *challenge* known-target scorer.
+> - `packs/corpan-city/docs/MODEL_STRATEGY.md` (2026-06-02) — NPC voice-loop + the out-of-process proof + per-locale tables.
+> - `packs/corpan-city/docs/STT_RESEARCH.md` (2026-06-04) — the *challenge* known-target scorer.
 > This masterplan generalizes both to **all surfaces + pure transcription**, and supersedes the earlier single-`tauri-plugin-dictation` idea with a **provider-per-runtime** design.
 
 ---
@@ -22,7 +22,7 @@
 7. **Qwen3-ASR is the standout efficiency bet:** its decoder *is* a Qwen3 LLM (0.6B/1.7B). It can **share the llama.cpp/GGUF runtime and Qwen tokenizer family** with corpan-llm's resident Qwen3-4B — co-resident, not model-juggled. It does NOT share *weights* (4B ≠ 0.6B/1.7B), so the win is runtime/operational, not zero-RAM (§3.3). Apache-2.0, 52 langs ≈ our 51.
 8. **Keyboard is the universal, permanent floor.** The mic is additive; the field is never blocked.
 9. **PHASE 0 is a mandatory on-device bake-off** (Qwen3-ASR-0.6B vs Whisper-large-v3-q5 vs Parakeet-v3 vs SenseVoice) on our real 51 langs on a **real Android device** (WER/CER + latency + RAM). **No plugin is stood up for a model that loses.** Non-autoregressive decoders (Parakeet/SenseVoice) are weighted up for Android CPU-only.
-10. **Phase 1** = `tauri-plugin-asr-native` (iOS) + the `AsrProvider` contract + `host.asr` + `MicInput` + the registry's Budget-Arbiter seam, wired into World Plaza speak challenges.
+10. **Phase 1** = `tauri-plugin-asr-native` (iOS) + the `AsrProvider` contract + `host.asr` + `MicInput` + the registry's Budget-Arbiter seam, wired into Corpan City speak challenges.
 11. **Honest cost:** 4 native runtimes is real maintenance (per-runtime process-global init locks, streaming downloads, interruption-safety, iOS/Android/desktop each). Justified ONLY if the contract stays tight and the registry is genuinely shared.
 12. **Cloud is OFF by default** (no-login, on-device-analytics-only privacy posture). A gated, clearly-labeled opt-in is sketched (§10) for the genuine long tail — not Phase 1.
 
@@ -36,8 +36,8 @@
 | Model registry (pack-local) | `packs/pronunciation-coach/src/modelRegistry.ts` | 7 ggml tiers: `tiny`(75) `small`(465) `large_turbo_q5`(547) `large_turbo_q8`(834) `large_q5`(1031) `medium`(1463) `large_turbo_fp16`(1549) + self-quantized `large_q8`★(1580, our CDN). Memory gating via `hasLargeMemoryBudget()` (iOS ≥6500MB avail OR Android ≥8000MB physical). **This is the seed for the global registry (§4).** |
 | Wire contract | `plugins/tauri-plugin-stt/src/models.rs` | **The gatekeeper.** serde silently drops any field not declared, BOTH directions. Camel-case rename traps (`availableMemoryMB`). The `AsrProvider` Rust types must obey this. |
 | Host adapter | `corpan-app/src/contentPacks/hostApi.ts` | `const stt: SttApi` → `invoke("plugin:stt|…")`; maps structured error codes; records `stt_init_crash` analytics from `getStatus().priorInitCrash`. |
-| Pack consumers | `packs/world-plaza/src/challenges/host.ts` + `…/tools/sttTools.ts`; `packs/pronunciation-coach/src/game.ts`; `packs/tutomaton/src/languageManager.ts` (`stt?` slice) | World Plaza challenge gates on `host.sttAvailable()` → false unless a Whisper model is installed → self-rate. |
-| Resident LLM | corpan-llm plugin, Qwen3-4B GGUF (~2.5 GB), installed via `content_packs.rs` (streams to disk, 8 GiB cap) | Tutomaton/World Plaza NPC loop keep it **resident** for a session. The Budget Arbiter (§4) must account for it. |
+| Pack consumers | `packs/corpan-city/src/challenges/host.ts` + `…/tools/sttTools.ts`; `packs/pronunciation-coach/src/game.ts`; `packs/tutomaton/src/languageManager.ts` (`stt?` slice) | Corpan City challenge gates on `host.sttAvailable()` → false unless a Whisper model is installed → self-rate. |
+| Resident LLM | corpan-llm plugin, Qwen3-4B GGUF (~2.5 GB), installed via `content_packs.rs` (streams to disk, 8 GiB cap) | Tutomaton/Corpan City NPC loop keep it **resident** for a session. The Budget Arbiter (§4) must account for it. |
 | Two download paths | iOS `URLSession.downloadTask` (STT, streams to disk, truncation-guarded) **vs** `content_packs.rs` (packs/LLM, streams to disk). | `memory/content-pack-download-streaming.md` |
 
 **Constraints baked into this plan (verified in memory + code):**
@@ -150,7 +150,7 @@ A single on-device store the corpan app owns; every pack/experience reads it. Th
 - **Live Budget Arbiter:** tracks what's **resident now** (LLM/ASR/TTS) from each runtime + the device budget (iOS `os_proc_available_memory()`, Android physical/avail). Answers:
   - `fits({ assetId | residentMB }) → { fits: bool, mustEvict: AssetId[] }`
   - `whatFitsAlongside(residentSetIds) → AsrCapability[]` ("which ASR providers can run *right now* with the 4B LLM loaded?")
-  - This is the single source of truth the router (§5) and World Plaza/Tutomaton consult.
+  - This is the single source of truth the router (§5) and Corpan City/Tutomaton consult.
 
 ### 4.2 TS surface
 
@@ -172,7 +172,7 @@ Backed by a small `tauri-plugin-model-registry` (or folded into corpan-app's Rus
 
 ### 5.1 Two host selection APIs
 
-- **Explicit (power packs):** `host.asr.provider("qwen3" | "whisper" | "native" | "sherpa")` → an `AsrProvider`. World Plaza/Tutomaton compute their own pick from `host.models.budget()` + intent (e.g. "NPC loop with 4B resident → prefer native, else qwen3 co-resident if `whatFitsAlongside` says yes, else swap to whisper").
+- **Explicit (power packs):** `host.asr.provider("qwen3" | "whisper" | "native" | "sherpa")` → an `AsrProvider`. Corpan City/Tutomaton compute their own pick from `host.models.budget()` + intent (e.g. "NPC loop with 4B resident → prefer native, else qwen3 co-resident if `whatFitsAlongside` says yes, else swap to whisper").
 - **Smart router (simple packs / core app):** `host.asr.pick({ lang, budgetMB, goal })` → resolves:
   ```
   pick(lang, budgetMB, goal):
@@ -195,7 +195,7 @@ Today `tauri-plugin-stt` *is* the whisper runtime + the scorer fused. Refactor s
   3. New dictation goes through `host.asr` (providers), never the scorer.
 - **Why not collapse them:** scoring needs per-token logprobs that native/Parakeet/SenseVoice/Qwen3-ASR don't expose. Scoring therefore stays **whisper-backed**; transcription is **provider-agnostic**. Keeping the alignment layer thin and on-top is the clean seam.
 
-### 5.3 World Plaza speak challenges (known-target) — the Phase-1 wiring
+### 5.3 Corpan City speak challenges (known-target) — the Phase-1 wiring
 
 Known-target repetition: **provider transcription + a pure-JS known-target scorer** (normalize → token/char Levenshtein; char-n-grams for non-spaced `ja/zh/yue/th`; optional confidence blend; map to the existing 0.6 threshold). That scorer is the §2 design from `STT_RESEARCH.md`, unchanged. Native provider first; keyboard floor stays.
 
@@ -292,7 +292,7 @@ Mitigations: `asr-sherpa` hosts **both** Parakeet-v3 and SenseVoice in **one** o
 **Phase 1 — Contract + native + registry seam + MicInput (the MVP).**
 - `corpan-asr-contract` (TS+Rust); `tauri-plugin-asr-native` (iOS SpeechAnalyzer/SFSpeechRecognizer; Android on-device SpeechRecognizer; desktop macOS-native or keyboard).
 - `host.asr` (`provider()` + `pick()`), `host.models` with the **Budget-Arbiter seam** (residency registration + `fits`/`whatFitsAlongside`), `MicInput` UI primitive.
-- Wire into **World Plaza speak challenges** (native provider + JS known-target scorer; self-rate floor).
+- Wire into **Corpan City speak challenges** (native provider + JS known-target scorer; self-rate floor).
 - *Accept:* on iOS 26 the ~24 native locales (incl. **Arabic, Cantonese, Thai, Hebrew**) transcribe into a field on a default install with **no download, ~0 added app memory**; permission-denied shows the launchpad; uncovered lang → keyboard; reader/radio audio survives; `host.models.budget()` reports the resident 4B LLM correctly.
 
 **Phase 2 — Add the bake-off winner(s) as conforming providers.**
@@ -334,4 +334,4 @@ Mitigations: `asr-sherpa` hosts **both** Parakeet-v3 and SenseVoice in **one** o
 - **Android**: [SpeechRecognizer](https://developer.android.com/reference/android/speech/SpeechRecognizer), [ML Kit GenAI / Gemini Nano (alpha, Pixel-only)](https://developers.google.com/ml-kit/genai/speech-recognition/android), [Gemma 4 in AICore (Apr 2026)](https://android-developers.googleblog.com/2026/04/AI-Core-Developer-Preview.html)
 - **Whisper**: [large-v3-turbo (6× faster ≈ v2)](https://medium.com/@bnjmn_marie/whisper-large-v3-turbo-as-good-as-large-v2-but-6x-faster-97f0803fa933), [low-resource WER tables (arXiv 2503.23542)](https://arxiv.org/pdf/2503.23542), [openai/whisper](https://github.com/openai/whisper)
 - **Meta MMS** (1107 langs, CC-BY-NC): [arXiv 2305.13516](https://arxiv.org/abs/2305.13516)
-- **In-repo:** `packs/world-plaza/docs/{MODEL_STRATEGY,STT_RESEARCH}.md`, `plugins/tauri-plugin-stt/src/models.rs` + `ios/Sources/STTPlugin.swift`, `packs/pronunciation-coach/src/modelRegistry.ts`, `corpan-app/src/contentPacks/hostApi.ts`, `corpan-app/src/store/constants.ts`, corpan-llm Qwen3-4B; memory: `feedback_whisper_ipados26_mps_crash`, `feedback_android_whisper_gpu`, `android-stt-init-crash-process-global-lock`, `content-pack-download-streaming`, `feedback_ios_settings_deeplink_impossible`, `feedback_reader_audio_interruption_longform`, `single-language-stacks`.
+- **In-repo:** `packs/corpan-city/docs/{MODEL_STRATEGY,STT_RESEARCH}.md`, `plugins/tauri-plugin-stt/src/models.rs` + `ios/Sources/STTPlugin.swift`, `packs/pronunciation-coach/src/modelRegistry.ts`, `corpan-app/src/contentPacks/hostApi.ts`, `corpan-app/src/store/constants.ts`, corpan-llm Qwen3-4B; memory: `feedback_whisper_ipados26_mps_crash`, `feedback_android_whisper_gpu`, `android-stt-init-crash-process-global-lock`, `content-pack-download-streaming`, `feedback_ios_settings_deeplink_impossible`, `feedback_reader_audio_interruption_longform`, `single-language-stacks`.

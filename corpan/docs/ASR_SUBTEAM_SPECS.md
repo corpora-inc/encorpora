@@ -1,6 +1,6 @@
 # ASR subteam — worker specs (disjoint-by-dir, frozen-contract parallel)
 
-The World Plaza rule: **frozen contract + disjoint file/dir ownership +
+The Corpan City rule: **frozen contract + disjoint file/dir ownership +
 orthogonal axes = clean parallel.** The contract is FROZEN (below). Each
 worker owns a disjoint dir tree; none edits another's; all conform to the
 contract. The lead (asr-lead) integrates their branches into the ASR branch.

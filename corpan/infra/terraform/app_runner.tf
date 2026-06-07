@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------
-# World Plaza (Corpan City) — Colyseus presence server on AWS App Runner.
+# Corpan City — Colyseus presence server on AWS App Runner.
 #
 # App Runner runs the container from server/Dockerfile, terminates TLS for us
 # (every service gets an HTTPS *.awsapprunner.com URL → the pack connects with
@@ -9,7 +9,7 @@
 # Region / provider / backend all inherit the existing us-east-2 setup
 # (provider.tf default aws provider, backend.tf S3 state). NOTHING here is
 # applied by this CR — the integrator runs `terraform apply` with AWS creds.
-# See packs/world-plaza/server/DEPLOY.md for the end-to-end runbook.
+# See packs/corpan-city/server/DEPLOY.md for the end-to-end runbook.
 #
 # Toggle: gated behind var.enable_plaza_server (default false) so it is inert
 # until the integrator opts in with -var enable_plaza_server=true.
@@ -17,7 +17,7 @@
 
 variable "enable_plaza_server" {
   type        = bool
-  description = "Provision the World Plaza Colyseus server (ECR repo + App Runner service)."
+  description = "Provision the Corpan City Colyseus server (ECR repo + App Runner service)."
   default     = false
 }
 
@@ -70,7 +70,7 @@ resource "aws_ecr_repository" "plaza_server" {
 
   tags = {
     Project   = var.project_name
-    Component = "world-plaza-server"
+    Component = "corpan-city-server"
   }
 }
 
@@ -115,7 +115,7 @@ resource "aws_iam_role" "plaza_apprunner_ecr_access" {
 
   tags = {
     Project   = var.project_name
-    Component = "world-plaza-server"
+    Component = "corpan-city-server"
   }
 }
 
@@ -171,7 +171,7 @@ resource "aws_apprunner_service" "plaza_server" {
 
   tags = {
     Project   = var.project_name
-    Component = "world-plaza-server"
+    Component = "corpan-city-server"
   }
 
   # The repo + image must exist before the service can pull it.
@@ -191,7 +191,7 @@ resource "aws_apprunner_auto_scaling_configuration_version" "plaza_server" {
 
   tags = {
     Project   = var.project_name
-    Component = "world-plaza-server"
+    Component = "corpan-city-server"
   }
 }
 

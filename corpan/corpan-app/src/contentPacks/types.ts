@@ -525,7 +525,7 @@ export type HostApi = {
    * options object carrying a CONTENT FILTER (`domains`/`levels`/`languageCodes`).
    * The numeric form preserves the historical behaviour (user-global `levels`
    * from settings, domains intentionally NOT forwarded). The options form lets a
-   * pack request a THEMED + LEVEL-SCALED draw — e.g. World Plaza binds a café NPC
+   * pack request a THEMED + LEVEL-SCALED draw — e.g. Corpan City binds a café NPC
    * to food/everyday phrases and a dock keeper to travel phrases at the player's
    * level — by forwarding the filter to `get_random_entries_with_translations`,
    * whose relaxation ladder degrades a starved filter rather than returning empty.

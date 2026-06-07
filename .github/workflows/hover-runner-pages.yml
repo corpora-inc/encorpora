@@ -160,26 +160,26 @@ jobs:
           cd corpan/packs/tutomaton-0.3.2
           zip -r tutomaton-0.3.2.zip manifest.json dist/
 
-      - name: Install Corpan City (world-plaza) Dependencies
-        working-directory: corpan/packs/world-plaza
+      - name: Install Corpan City (corpan-city) Dependencies
+        working-directory: corpan/packs/corpan-city
         run: npm install --legacy-peer-deps
 
       - name: Check Corpan City Translations
-        working-directory: corpan/packs/world-plaza
+        working-directory: corpan/packs/corpan-city
         run: npm run check-translations
 
-      - name: Build Corpan City (world-plaza)
+      - name: Build Corpan City (corpan-city)
         # VITE_WP_SERVER_URL is baked into the IIFE bundle so the shipped pack
         # connects to the Colyseus presence server (AWS App Runner, us-east-2)
         # without any host-side injection. To roll a new server, redeploy and
         # update this URL in the same PR.
-        working-directory: corpan/packs/world-plaza
+        working-directory: corpan/packs/corpan-city
         env:
           VITE_WP_SERVER_URL: ${{ vars.WP_SERVER_URL || 'wss://fatmqwnfjv.us-east-2.awsapprunner.com' }}
         run: npm run build
 
-      - name: Package Corpan City (world-plaza)
-        working-directory: corpan/packs/world-plaza
+      - name: Package Corpan City (corpan-city)
+        working-directory: corpan/packs/corpan-city
         run: node scripts/pack.mjs
 
       - name: Install Pronunciation Coach Dependencies
@@ -239,12 +239,12 @@ jobs:
           cp -R corpan/packs/world-radio/dist "web/io/out/corpan/packs/world-radio/"
           cp corpan/packs/world-radio/world-radio.zip "web/io/out/corpan/packs/world-radio.zip"
 
-      - name: Copy Corpan City (world-plaza) into io/out
+      - name: Copy Corpan City (corpan-city) into io/out
         run: |
-          mkdir -p "web/io/out/corpan/packs/world-plaza"
-          cp corpan/packs/world-plaza/manifest.json "web/io/out/corpan/packs/world-plaza/"
-          cp -R corpan/packs/world-plaza/dist "web/io/out/corpan/packs/world-plaza/"
-          cp corpan/packs/world-plaza/world-plaza.zip "web/io/out/corpan/packs/world-plaza.zip"
+          mkdir -p "web/io/out/corpan/packs/corpan-city"
+          cp corpan/packs/corpan-city/manifest.json "web/io/out/corpan/packs/corpan-city/"
+          cp -R corpan/packs/corpan-city/dist "web/io/out/corpan/packs/corpan-city/"
+          cp corpan/packs/corpan-city/corpan-city.zip "web/io/out/corpan/packs/corpan-city.zip"
 
       - name: Copy Pronunciation Coach into io/out
         run: |

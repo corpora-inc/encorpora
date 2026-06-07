@@ -34,8 +34,8 @@ scripts, **CER** for CJK/Thai.
 ## 1. Get the code
 
 The harness lives in the Corpán monorepo on branch **`worktree-phone-os-shell`**
-(the integrator may have merged it into `world-plaza` by the time you read this
-— if `worktree-phone-os-shell` is gone, use `world-plaza`). Commit that
+(the integrator may have merged it into `corpan-city` by the time you read this
+— if `worktree-phone-os-shell` is gone, use `corpan-city`). Commit that
 introduced it: **see the "HARNESS COMMIT" line the orchestrator gives you**;
 if unsure, the latest commit touching `infra/asr-bakeoff/` is correct.
 
@@ -44,7 +44,7 @@ if unsure, the latest commit touching `infra/asr-bakeoff/` is correct.
 git clone <corpan-repo-url> corpan-mono
 cd corpan-mono
 git fetch origin
-git checkout worktree-phone-os-shell    # or world-plaza if merged
+git checkout worktree-phone-os-shell    # or corpan-city if merged
 git pull
 
 cd corpan/infra/asr-bakeoff             # ← everything below runs from HERE

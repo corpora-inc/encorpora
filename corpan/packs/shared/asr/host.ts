@@ -88,7 +88,7 @@ export type ModelsApi = {
   fits(req: { assetId?: string; residentMB?: number }): Promise<FitsResult>
   /** Which ASR providers can run RIGHT NOW alongside the given resident set
    *  (e.g. "with the 4B LLM loaded, which engines fit?"). The single source
-   *  of truth World Plaza / Tutomaton consult before opening a mic. */
+   *  of truth Corpan City / Tutomaton consult before opening a mic. */
   whatFitsAlongside(residentIds: string[]): Promise<AsrCapability[]>
 }
 
@@ -112,7 +112,7 @@ export type AsrPickArgs = {
 /**
  * Two selection APIs (STT_MASTERPLAN §5.1):
  *
- * - `provider(id)` — explicit, for power packs (World Plaza / Tutomaton)
+ * - `provider(id)` — explicit, for power packs (Corpan City / Tutomaton)
  *   that compute their own pick from `host.models.budget()` + intent
  *   ("NPC loop with 4B resident → prefer native, else qwen3 co-resident if
  *   `whatFitsAlongside` says yes, else swap to whisper").

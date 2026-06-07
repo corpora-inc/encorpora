@@ -275,7 +275,7 @@ export type ModelBudget = {
 
 /** Refcount/dedup store for ALL on-device assets + a live memory Budget
  *  Arbiter. `whatFitsAlongside` answers "which ASR engines fit RIGHT NOW with
- *  the 4B LLM loaded?" — the question World Plaza/Tutomaton consult. */
+ *  the 4B LLM loaded?" — the question Corpan City/Tutomaton consult. */
 export type ModelsApi = {
   list: () => Promise<AssetRecord[]>
   ensure: (

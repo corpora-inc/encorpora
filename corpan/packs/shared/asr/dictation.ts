@@ -2,7 +2,7 @@
 //
 // `attachMicInput` (micInput.ts) builds its own button + launchpad for fields
 // that don't have one. But some surfaces already ship a mic button in their
-// composer (e.g. World Plaza's `.wp-npc-mic`, Tutomaton's chat). For those we
+// composer (e.g. Corpan City's `.wp-npc-mic`, Tutomaton's chat). For those we
 // reuse THAT button instead of injecting a second one. Both paths share the
 // same session lifecycle: this module is the DOM-light core.
 //
