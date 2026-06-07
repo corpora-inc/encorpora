@@ -266,6 +266,7 @@ jobs:
         run: |
           mkdir -p "web/io/out/corpan/packs/teletron"
           cp corpan/packs/teletron/manifest.json "web/io/out/corpan/packs/teletron/"
+          cp corpan/packs/teletron/teletron-avatar.png "web/io/out/corpan/packs/teletron/"
           cp -R corpan/packs/teletron/dist "web/io/out/corpan/packs/teletron/"
           cp corpan/packs/teletron/teletron.zip "web/io/out/corpan/packs/teletron.zip"
 
