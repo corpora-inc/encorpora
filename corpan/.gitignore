@@ -37,6 +37,9 @@ packs/*/dist/
 packs/*/_dist/
 packs/*/node_modules/
 
+# Local binary compiled by scripts/dev/ipad/record.sh from ipad-record.swift.
+scripts/dev/ipad/ipad-record
+
 # Pinned compatibility artifacts are intentionally checked in so future pack
 # builds cannot mutate what older Corpán hosts receive.
 !packs/tutomaton-0.3.2/dist/
