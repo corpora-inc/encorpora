@@ -1072,6 +1072,21 @@
         "vacation",
         "nairobi"
       ]
+    },
+    {
+      "id": "bay-photo",
+      "name": "Photo of the Bay",
+      "art": "prop-postcard",
+      "kind": "trade-good",
+      "rarity": "common",
+      "value": 6,
+      "description": "A paper snapshot from the ferry rail — gulls, spray, and the city small on the horizon.",
+      "tags": [
+        "souvenir",
+        "harbor",
+        "ferry",
+        "photo"
+      ]
     }
   ]
 }

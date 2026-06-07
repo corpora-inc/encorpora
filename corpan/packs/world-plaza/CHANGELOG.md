@@ -46,8 +46,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   The classic flight-as-travel check-in stays untouched beside it.
 - **The harbor ferry is now a boat you actually board.** Pay the ferry hand and
   ride out on the bay — the deck bobs, gulls wheel past, the horn sounds, the
-  city shrinks off the stern, a mid-water word with the boatman (same sticky
-  voice), and home to the quay. Round-trip sightseeing: it never consumes the
+  city shrinks off the stern. MID-WATER the boatman (same sticky voice) turns
+  from the wheel with ONE quick target-language question — the bay is a fine
+  classroom — and the ride home lands a **Photo of the Bay** keepsake in your
+  bag (+xp warmed by the drill). Round-trip sightseeing: it never consumes the
   quest's ferry-token and never blocks the es-guadalajara/harbor quest steps.
 - **Enterable civic interiors: the clinic, City Hall, and a bakery.** The
   civic-clinic and civic-cityhall quests now play out INSIDE real rooms on the

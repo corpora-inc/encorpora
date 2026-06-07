@@ -8,9 +8,11 @@ import type { VignetteContext, VignetteFactory, VignetteHost } from "./types"
 /**
  * ferry.test — the harbor ferry ride. Proves: the quay renders (boat + boatman
  * NPC reusing the harbor boatman id), riding debits the coin fare (waiving a
- * shortfall), the trip is a ROUND TRIP (no travelTo), and the ferry-token quest
- * item is NEVER touched — the es-guadalajara / harbor-ferry-ride steps that
- * live at this anchor stay intact. Registration wires `ferry` under its id.
+ * shortfall), the boatman runs ONE mid-water target-language drill, the return
+ * grants the bay-photo keepsake + xp, the trip is a ROUND TRIP (no travelTo),
+ * and the ferry-token quest item is NEVER touched — the es-guadalajara /
+ * harbor-ferry-ride steps that live at this anchor stay intact. Registration
+ * wires `ferry` under its id.
  */
 
 beforeEach(() => {
@@ -36,6 +38,7 @@ function makeCtx(mountRootEl: HTMLElement, opts: { balance?: number } = {}) {
     granted: [] as Array<{ xp?: number; items?: string[] }>,
     debits: [] as number[],
     npcIds: [] as string[],
+    challenges: 0,
   }
   const ctx: VignetteContext = {
     mountRoot: mountRootEl,
@@ -62,8 +65,10 @@ function makeCtx(mountRootEl: HTMLElement, opts: { balance?: number } = {}) {
       calls.granted.push(r)
       return r.items ?? []
     },
-    runChallenge: async () =>
-      ({ score: 1, rewards: { xp: 0 } }) as Awaited<ReturnType<VignetteContext["runChallenge"]>>,
+    runChallenge: async () => {
+      calls.challenges++
+      return { score: 1, rewards: { xp: 0 } } as Awaited<ReturnType<VignetteContext["runChallenge"]>>
+    },
     t: (key) => key,
     iconRenderer: {
       renderIcon: () => document.createElement("span"),
@@ -86,7 +91,7 @@ describe("createFerryVignette — the harbor ferry", () => {
     v.dispose()
   })
 
-  it("a ride: fare debited, xp granted, ROUND TRIP (no travelTo), token untouched", async () => {
+  it("a ride: fare debited, ONE mid-water drill, bay-photo + xp granted, ROUND TRIP, token untouched", async () => {
     const root = mountRoot()
     const { ctx, calls } = makeCtx(root)
     const v = createFerryVignette({ questStep: "ferry-sightseeing" })
@@ -95,11 +100,15 @@ describe("createFerryVignette — the harbor ferry", () => {
     root.querySelector<HTMLButtonElement>(".wp-vig-ferry-btn")!.click()
     const result = await vi.waitFor(async () => await done, { timeout: 15_000 })
     expect(calls.debits).toEqual([220]) // the coin fare — exactly once
-    // the ferry-token is a GRANT-side item; the ride must never touch items at all
-    for (const g of calls.granted) expect(g.items ?? []).toEqual([])
+    expect(calls.challenges).toBe(1) // the boatman's one mid-water question
+    // the keepsake comes home with you — and it is NEVER the quest's ferry-token
+    expect(calls.granted.length).toBe(1)
+    expect(calls.granted[0].items).toEqual(["bay-photo"])
+    for (const g of calls.granted) expect(g.items ?? []).not.toContain("ferry-token")
     expect((calls.granted[0]?.xp ?? 0)).toBeGreaterThan(0)
     expect(result.travelTo).toBeUndefined() // home to the same quay
     expect(result.questStep).toBe("ferry-sightseeing")
+    expect(result.rewards?.items).toEqual(["bay-photo"])
     v.dispose()
   }, 20_000)
 

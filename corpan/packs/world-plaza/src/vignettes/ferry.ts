@@ -3,8 +3,10 @@
  *
  *   At the harbor you pay the ferry hand → walk the gangplank → and the boat
  *   PULLS AWAY: the deck rocks gently, gulls wheel past, the horn sounds, the
- *   city shrinks to a paper skyline off the stern → a short chat with the ferry
- *   hand mid-water → then the boat swings around and brings you home to the quay.
+ *   city shrinks to a paper skyline off the stern → MID-WATER the ferry hand
+ *   turns from the wheel with one quick target-language question (the drill —
+ *   the bay is a fine classroom) → then the boat swings around and brings you
+ *   home to the quay, where a PHOTO OF THE BAY lands in your bag as a keepsake.
  *
  * A ROUND-TRIP sightseeing ride by design: it resolves with NO `travelTo`, it
  * NEVER consumes the `ferry-token` quest item, and it reuses (never replaces)
@@ -24,6 +26,7 @@ import type {
 } from "./types"
 import { NO_TRAVEL } from "./types"
 import { registerRootHooks } from "./host"
+import type { ChallengeContext } from "@world-plaza/contracts"
 
 export interface FerryOptions {
   /** fare in MINOR units of the default currency. */
@@ -165,6 +168,32 @@ export function createFerryVignette(opts: FerryOptions = {}): Vignette {
           await holdBeat(stage, t("vignette.ferry.midwater", "Out on the bay — the city looks small from here."), reducedMotion ? 900 : 3000, reducedMotion)
           if (settled) return
 
+          // MID-WATER, the ferry hand turns from the wheel with one quick
+          // question — the bay is a fine classroom. Mic-free drill (the
+          // mic-gate discipline); any genuine attempt completes the ride.
+          const chCtx: ChallengeContext = {
+            language: learnerPair.target,
+            nativeLanguage: learnerPair.native,
+            mode: "solo",
+          }
+          let score = 1
+          try {
+            const res = await ctx.runChallenge({
+              tool: "translate-fast",
+              ctx: chCtx,
+              container: mountRoot,
+              npc: {
+                name: opts.boatmanName ?? t("vignette.ferry.boatman", "the ferry hand"),
+                avatar: "",
+                line: t("vignette.ferry.drill.line", "See that? Out here we say it like this —"),
+              },
+            })
+            score = res.score
+          } catch (e) {
+            console.error(`${LOG} runChallenge failed:`, e)
+          }
+          if (settled) return
+
           // …and home again.
           stage.classList.remove("wp-vig-ferry--sailing")
           stage.classList.add("wp-vig-ferry--returning")
@@ -172,8 +201,10 @@ export function createFerryVignette(opts: FerryOptions = {}): Vignette {
           await holdBeat(stage, t("vignette.ferry.return", "Coming about — home to the quay."), reducedMotion ? 900 : 2600, reducedMotion)
           if (settled) return
 
-          const xp = 14
-          const reward: VignetteReward = { xp }
+          // The keepsake: a photo of the bay in your bag, xp warmed by the
+          // drill (never zero — you rode, you listened, you tried).
+          const xp = 10 + Math.round(score * 8)
+          const reward: VignetteReward = { xp, items: ["bay-photo"] }
           try {
             ctx.grant(reward)
           } catch (e) {
