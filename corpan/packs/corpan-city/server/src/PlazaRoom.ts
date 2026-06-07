@@ -84,8 +84,8 @@ export class PlazaRoom extends Room<PlazaState> {
   private geo = new GeoHistogram()
   /** playerId → sessionId, so an invite/trade addressed by durable PlayerId routes. */
   private byPlayerId = new Map<string, string>()
-  /** open invites we're tracking: inviteId → { from, to } sessionIds. */
-  private invites = new Map<string, { from: string; to: string }>()
+  /** invites we're tracking: pending for accept/decline, accepted as a session authz record. */
+  private invites = new Map<string, { from: string; to: string; kind: InviteMessage["offer"]["kind"]; accepted: boolean }>()
   /** coarse anti-grief: sessionId → recent action timestamps (sliding window). */
   private actionLog = new Map<string, number[]>()
 
@@ -314,7 +314,16 @@ export class PlazaRoom extends Room<PlazaState> {
         this.resultTo(client, parsed.data.inviteId, "unavailable")
         return
       }
-      this.invites.set(parsed.data.inviteId, { from: client.sessionId, to: toSession })
+      if (this.invites.has(parsed.data.inviteId)) {
+        this.resultTo(client, parsed.data.inviteId, "unavailable")
+        return
+      }
+      this.invites.set(parsed.data.inviteId, {
+        from: client.sessionId,
+        to: toSession,
+        kind: parsed.data.offer.kind,
+        accepted: false,
+      })
       const invited: InvitedMessage = {
         inviteId: parsed.data.inviteId,
         from: from.playerId as InvitedMessage["from"],
@@ -333,6 +342,7 @@ export class PlazaRoom extends Room<PlazaState> {
       if (!rec || rec.to !== client.sessionId) return // only the invitee may respond
       const inviter = this.clientsBySession.get(rec.from)
       const outcome = parsed.data.action === "accept" ? "accepted" : "declined"
+      if (outcome === "accepted") rec.accepted = true
       if (inviter) this.resultTo(inviter, parsed.data.inviteId, outcome)
       if (outcome === "declined") this.invites.delete(parsed.data.inviteId)
     })
@@ -351,7 +361,11 @@ export class PlazaRoom extends Room<PlazaState> {
       const toSession = this.byPlayerId.get(String(parsed.data.to))
       const toClient = toSession ? this.clientsBySession.get(toSession) : undefined
       const to = toSession ? this.state.players.get(toSession) : undefined
-      if (!from || !toClient || !to) return
+      if (!from || !toSession || !toClient || !to) return
+      if (!this.hasAcceptedInvite(client.sessionId, toSession, "chat")) {
+        console.warn(`[plaza] rejected chat without accepted invite from ${client.sessionId}`)
+        return
+      }
       // Never trust caller-supplied routing identity. Stamp both parties from
       // the live room and frame the learning target from the recipient profile.
       const delivered = MediatedChatInput.parse({
@@ -371,7 +385,7 @@ export class PlazaRoom extends Room<PlazaState> {
       if (!parsed.success) return
       if (!this.allow(client.sessionId, "peer", 8, 10000)) return
       const rec = this.invites.get(parsed.data.inviteId)
-      if (!rec) return
+      if (!rec || !rec.accepted || rec.kind !== "challenge") return
       if (rec.from !== client.sessionId && rec.to !== client.sessionId) return // not a party
       const otherSession = rec.from === client.sessionId ? rec.to : rec.from
       const otherClient = this.clientsBySession.get(otherSession)
@@ -392,7 +406,11 @@ export class PlazaRoom extends Room<PlazaState> {
       const from = this.state.players.get(client.sessionId)
       const toSession = this.byPlayerId.get(String(parsed.data.to))
       const toClient = toSession ? this.clientsBySession.get(toSession) : undefined
-      if (!from || !toClient) return
+      if (!from || !toSession || !toClient) return
+      if (!this.hasAcceptedInvite(client.sessionId, toSession, "trade")) {
+        console.warn(`[plaza] rejected trade without accepted invite from ${client.sessionId}`)
+        return
+      }
       const update: TradeUpdateMessage = {
         ...parsed.data,
         from: from.playerId as TradeUpdateMessage["from"],
@@ -417,6 +435,14 @@ export class PlazaRoom extends Room<PlazaState> {
         this.invites.delete(id)
       }
     }
+  }
+
+  private hasAcceptedInvite(a: string, b: string, kind: InviteMessage["offer"]["kind"]): boolean {
+    for (const rec of this.invites.values()) {
+      if (!rec.accepted || rec.kind !== kind) continue
+      if ((rec.from === a && rec.to === b) || (rec.from === b && rec.to === a)) return true
+    }
+    return false
   }
 
   /**

@@ -28,8 +28,18 @@ const PORT = Number(process.env.PORT ?? 2567)
 const topologyPath = resolve(__dirname, "../../content/topologies/plaza-grand.json")
 const topology = RoomTopology.parse(JSON.parse(readFileSync(topologyPath, "utf8")))
 
+const httpServer = createServer((req, res) => {
+  if (req.url === "/healthz") {
+    res.writeHead(200, { "content-type": "text/plain" })
+    res.end("ok")
+    return
+  }
+  res.writeHead(404)
+  res.end()
+})
+
 const gameServer = new Server({
-  transport: new WebSocketTransport({ server: createServer() }),
+  transport: new WebSocketTransport({ server: httpServer }),
 })
 
 gameServer

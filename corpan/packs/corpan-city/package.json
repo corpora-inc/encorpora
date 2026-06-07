@@ -20,6 +20,7 @@
     "server:typecheck": "npm --prefix server run typecheck",
     "qa:mp": "node qa/mp-presence.mjs",
     "qa:mp-interaction": "node qa/mp-interaction.mjs",
+    "qa:mp-live": "node qa/mp-live.mjs",
     "qa:restation": "node qa/restation.mjs"
   },
   "dependencies": {

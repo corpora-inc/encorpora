@@ -5,9 +5,9 @@
  *   • profile publish + request → a k-anon-coarsened SafeProfile card,
  *   • the k-anonymity gate (a lone country reveals "hidden", not the country),
  *   • an invite round-trip (invited → accept → invite-result accepted),
- *   • chat routes to the intended player with trusted sender/recipient framing,
- *   • a peer-result relay to the other party,
- *   • a trade envelope relays to the partner.
+ *   • chat is blocked before consent, then routes after an accepted chat invite,
+ *   • a peer-result relay requires an accepted challenge invite,
+ *   • a trade envelope requires an accepted trade invite.
  *
  * Run:  node qa/mp-interaction.mjs   (after `npm run server:install`)
  */
@@ -85,10 +85,25 @@ async function main() {
   const cardAfterCollision = await cardAfterCollisionP
   check(cardAfterCollision?.name === "Ben", "duplicate playerId cannot overwrite B's routing entry")
 
-  // 2) invite round-trip: A invites B to chat; B accepts; A gets 'accepted'.
+  // 2) invite round-trip: A invites B to a challenge; B accepts.
   const inviteId = "inv-test-1"
   const invitedP = waitMsg(b, "invited")
-  a.send("invite", { inviteId, to: "pB", offer: { kind: "chat" } })
+  a.send("invite", {
+    inviteId,
+    to: "pB",
+    offer: {
+      kind: "challenge",
+      tool: "translate-fast",
+      mode: "duel",
+      spec: {
+        challengeId: "c",
+        toolId: "translate-fast",
+        language: "ja",
+        nativeLanguage: "en",
+        mode: "duel",
+      },
+    },
+  })
   const invited = await invitedP
   check(invited?.inviteId === inviteId, "B received the invite")
   check(invited?.from === "pA" && invited?.fromName === "Ada", "invite carries A's trusted id + name")
@@ -97,7 +112,30 @@ async function main() {
   const result = await resultP
   check(result?.outcome === "accepted", "A learned the invite was accepted")
 
-  // 3) chat relay: server stamps the trusted sender and B's learning target.
+  // 3) chat consent + relay: no accepted chat invite → no message.
+  const unsolicitedP = waitMsg(b, "chat-deliver", 350)
+  a.send("chat-send", {
+    from: "pB",
+    to: "pB",
+    interactionId: "chat-pre-consent",
+    source: { kind: "text", text: "cleaned safe intent" },
+    sourceLanguage: "fr",
+    targetLanguage: "fr",
+    mode: "beginner",
+  })
+  const unsolicited = await unsolicitedP
+  check(!unsolicited, "chat is blocked without an accepted chat invite")
+
+  const chatInviteId = "inv-chat-1"
+  const chatInviteP = waitMsg(b, "invited")
+  a.send("invite", { inviteId: chatInviteId, to: "pB", offer: { kind: "chat" } })
+  const chatInvite = await chatInviteP
+  check(chatInvite?.inviteId === chatInviteId, "B received the chat invite")
+  const chatAcceptedP = waitMsg(a, "invite-result")
+  b.send("invite-respond", { inviteId: chatInviteId, action: "accept" })
+  const chatAccepted = await chatAcceptedP
+  check(chatAccepted?.outcome === "accepted", "chat invite accepted")
+
   const chatP = waitMsg(b, "chat-deliver")
   a.send("chat-send", {
     from: "pB", // forged; server must replace it with pA
@@ -113,7 +151,15 @@ async function main() {
   check(chat?.targetLanguage === "ja", "chat framed for B's learning language")
   check(chat?.source?.text === "cleaned safe intent", "only the locally-cleaned intent was relayed")
 
-  // 4) peer-result relay: B reports a result on the accepted invite → A receives it.
+  // 4) peer-result relay: only an accepted challenge invite can carry scores.
+  const strayPeerP = waitMsg(a, "peer-result-deliver", 350)
+  b.send("peer-result", {
+    inviteId: chatInviteId,
+    result: { challengeId: "c", toolId: "translate-fast", playerId: "pB", score: 0.2, detail: {}, xp: [], completedAt: Date.now(), offline: true },
+  })
+  const strayPeer = await strayPeerP
+  check(!strayPeer, "chat invite cannot relay peer challenge results")
+
   const peerP = waitMsg(a, "peer-result-deliver")
   b.send("peer-result", {
     inviteId,
@@ -122,7 +168,21 @@ async function main() {
   const peer = await peerP
   check(peer?.result?.score === 0.7, "peer challenge result relayed to the other party")
 
-  // 5) trade relay: A sends a trade envelope → B receives it with A stamped.
+  // 5) trade relay: only after an accepted trade invite.
+  const strayTradeP = waitMsg(b, "trade-update", 350)
+  a.send("trade", { tradeId: "t-0", to: "pB", action: "propose", proposal: { id: "t-0" } })
+  const strayTrade = await strayTradeP
+  check(!strayTrade, "trade is blocked without an accepted trade invite")
+
+  const tradeInviteId = "inv-trade-1"
+  const tradeInvitedP = waitMsg(b, "invited")
+  a.send("invite", { inviteId: tradeInviteId, to: "pB", offer: { kind: "trade" } })
+  await tradeInvitedP
+  const tradeAcceptedP = waitMsg(a, "invite-result")
+  b.send("invite-respond", { inviteId: tradeInviteId, action: "accept" })
+  const tradeAccepted = await tradeAcceptedP
+  check(tradeAccepted?.outcome === "accepted", "trade invite accepted")
+
   const tradeP = waitMsg(b, "trade-update")
   a.send("trade", { tradeId: "t-1", to: "pB", action: "propose", proposal: { id: "t-1" } })
   const tu = await tradeP

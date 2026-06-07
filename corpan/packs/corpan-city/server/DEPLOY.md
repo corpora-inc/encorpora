@@ -1,8 +1,12 @@
-# Corpan City presence server — App Runner deployment runbook
+# Corpan City presence server deployment
+
+> App Runner can serve Colyseus matchmaking HTTP but rejects the WebSocket
+> upgrade. Do not use an App Runner URL as `VITE_WP_SERVER_URL`. Production
+> requires a host that supports long-lived WebSocket upgrades.
 
 The Colyseus presence server (`server/src/index.ts`, Colyseus 0.16, bare WS on
-`$PORT`) deploys as a container to **AWS App Runner** in **us-east-2**. App
-Runner terminates TLS for us, so the pack connects with `wss://…` and there is
+`$PORT`) deploys as a container to a WebSocket-capable host. The host terminates
+TLS for us, so the pack connects with `wss://…` and there is
 no cert to manage. The server is stateless presence — **no secrets, no env
 credentials**.
 
