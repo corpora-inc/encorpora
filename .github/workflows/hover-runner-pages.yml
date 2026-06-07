@@ -152,9 +152,21 @@ jobs:
             -x "languages/*/sources/*" \
             -x "languages/*/data/*"
 
+      # Corpán 0.16.x cannot run Tutomaton 0.5.x's expanded LLM sampler
+      # contract. Keep the last compatible release as checked-in immutable
+      # artifacts, matching the pinned legacy Parlometron pattern below.
+      - name: Package legacy Tutomaton 0.3.2 as ZIP
+        run: |
+          cd corpan/packs/tutomaton-0.3.2
+          zip -r tutomaton-0.3.2.zip manifest.json dist/
+
       - name: Install Corpan City (world-plaza) Dependencies
         working-directory: corpan/packs/world-plaza
         run: npm install --legacy-peer-deps
+
+      - name: Check Corpan City Translations
+        working-directory: corpan/packs/world-plaza
+        run: npm run check-translations
 
       - name: Build Corpan City (world-plaza)
         # VITE_WP_SERVER_URL is baked into the IIFE bundle so the shipped pack
@@ -244,12 +256,25 @@ jobs:
       - name: Copy Tutomaton into io/out
         # Shell only; per-language sqlites stream from the CloudFront catalog
         # the first time a learner activates each language (`moduleUrl` in
-        # manifest.json languages[]).
+        # manifest.json languages[]). New releases use immutable versioned URLs.
         run: |
+          TUTOMATON_VERSION="$(jq -r '.version' corpan/packs/tutomaton/manifest.json)"
           mkdir -p "web/io/out/corpan/packs/tutomaton"
+          mkdir -p "web/io/out/corpan/packs/tutomaton/${TUTOMATON_VERSION}"
           cp corpan/packs/tutomaton/manifest.json "web/io/out/corpan/packs/tutomaton/"
           cp -R corpan/packs/tutomaton/dist "web/io/out/corpan/packs/tutomaton/"
-          cp corpan/packs/tutomaton/tutomaton.zip "web/io/out/corpan/packs/tutomaton.zip"
+          cp corpan/packs/tutomaton/tutomaton.zip "web/io/out/corpan/packs/tutomaton/${TUTOMATON_VERSION}/tutomaton.zip"
+
+      - name: Copy legacy Tutomaton 0.3.2 into io/out
+        # Keep /tutomaton.zip permanently pinned to 0.3.2: old 0.16 clients may
+        # have cached the pre-versioned catalog URL before the split shipped.
+        run: |
+          mkdir -p "web/io/out/corpan/packs/tutomaton-0.3.2"
+          mkdir -p "web/io/out/corpan/packs/tutomaton/0.3.2"
+          cp corpan/packs/tutomaton-0.3.2/manifest.json "web/io/out/corpan/packs/tutomaton-0.3.2/"
+          cp -R corpan/packs/tutomaton-0.3.2/dist "web/io/out/corpan/packs/tutomaton-0.3.2/"
+          cp corpan/packs/tutomaton-0.3.2/tutomaton-0.3.2.zip "web/io/out/corpan/packs/tutomaton/0.3.2/tutomaton.zip"
+          cp corpan/packs/tutomaton-0.3.2/tutomaton-0.3.2.zip "web/io/out/corpan/packs/tutomaton.zip"
 
       # Legacy slug pinned for users on Corpán 0.12.5, which ships the
       # WhisperKit-based STT plugin and cannot run the 0.5.0+ pack

@@ -226,19 +226,19 @@
       "start": "Start exploring"
     },
     "welcomePact": {
-      "title": "You're an early adopter",
-      "subtitle": "Thirty seconds, then we open {{lang}} together.",
+      "title": "Corpán Evolves",
+      "subtitle": "You're an early adopter",
       "tinyTeamTitle": "A tiny team of enthusiasts",
-      "tinyTeamDesc": "Independent, ad-free, and built with respect for the people who use it — a small crew making the language app we always wished existed.",
+      "tinyTeamDesc": "Independent, ad-free, and built with respect for the people who use it — a small crew making the language app we always wanted.",
       "bleedingEdgeTitle": "Cutting-edge, on purpose",
-      "bleedingEdgeDesc": "Every language to every other, AI characters you can actually talk to, voice that runs right on your phone — so it works offline, your data never leaves your device, and it's lighter on the planet than the cloud. That's far harder than calling a big server, and some of it is brand new to the world. Expect a rough edge, maybe even a crash — that's the frontier, and you're standing on it. 😄",
-      "yourLangTitle": "This is an alpha — and you shape it",
-      "yourLangDesc": "{{lang}} gets better every week, and you're early enough to leave your mark. Every bug you report makes it sharper for everyone who arrives after you.",
-      "plea": "Hit something odd? Tell us — we read every report and turn fixes around fast. It's the most useful thing you can give us, and it's how Corpán grows.",
+      "bleedingEdgeDesc": "Corpán pushes the limits of what your device can do: immersive worlds, speech recognition, natural voices, and the latest AI models, all working together to create new ways to learn. Much of it runs directly on your device, giving you private, offline-first learning without depending on a data center. We release new technology while it is still raw, which means it may occasionally behave strangely, run slowly, or simply be more than your device can handle. In return, you get powerful new learning experiences as soon as they become possible.",
+      "yourLangTitle": "We don't speak every language we support",
+      "yourLangDesc": "That's the honest truth. We're building for dozens of languages because everyone deserves powerful learning tools, not because our tiny team already knows them all. You may find things we got wrong. If you know {{lang}} better than we do, we hope you'll tell us and help make Corpán worthy of it.",
+      "plea": "Have an idea, a correction, or a wild learning experience you want to see? Tell us. We read every message and think deeply about what it could unlock for Corpán and language learning.",
       "emailCta": "Email us",
       "githubCta": "Open a GitHub issue",
-      "join": "Want to help bring Corpán to {{lang}}? We're always after collaborators, translators, and local ambassadors. Come find us.",
-      "pact": "Tap below and you're in 🤝 — part of something very young and very powerful. Report the bugs, grow with us, and let's build this together.",
+      "join": "Want to help bring Corpán to the world? We're always looking for collaborators, translators, and local ambassadors. Come find us.",
+      "pact": "Tap below to start learning and grow with us. 🤝",
       "cta": "I'm in — let's go"
     },
     "fork": {

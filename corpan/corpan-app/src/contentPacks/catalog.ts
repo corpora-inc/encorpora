@@ -46,6 +46,8 @@ export type CatalogGame = {
   goodForClass?: string[]
   /** Cold-start order / tiebreak — lower surfaces earlier when scores tie. */
   recommendOrder?: number
+  /** Interests for which this is the curated best starting point. */
+  featuredFor?: string[]
   /** Gentle, kid-friendly content (bonus on the child journey). */
   kidFriendly?: boolean
   /** Language tags this experience is SPECIFIC to (e.g. Hanzipan → Chinese).
@@ -156,6 +158,7 @@ export type CatalogV3Entry = {
   categories?: string[]
   goodForClass?: string[]
   recommendOrder?: number
+  featuredFor?: string[]
   kidFriendly?: boolean
   languages?: string[]
   /** Short Home-recommendation blurb. Distinct from `description`
@@ -337,6 +340,7 @@ const parseCatalog = (data: unknown): CatalogGame[] | null => {
       categories: parseStringArray(record.categories),
       goodForClass: parseStringArray(record.goodForClass),
       recommendOrder: toOptionalNumber(record.recommendOrder),
+      featuredFor: parseStringArray(record.featuredFor),
       kidFriendly: toOptionalBool(record.kidFriendly),
       languages: parseStringArray(record.languages),
       tagline: toOptionalString(record.tagline),
@@ -490,6 +494,7 @@ const parseV3Entry = (item: unknown): CatalogV3Entry | null => {
     categories: parseStringArray(r.categories),
     goodForClass: parseStringArray(r.goodForClass),
     recommendOrder: toOptionalNumber(r.recommendOrder),
+    featuredFor: parseStringArray(r.featuredFor),
     kidFriendly: toOptionalBool(r.kidFriendly),
     languages: parseStringArray(r.languages),
     tagline: toOptionalString(r.tagline),
@@ -570,6 +575,7 @@ export const filterCatalogForApp = (
       categories: entry.categories,
       goodForClass: entry.goodForClass,
       recommendOrder: entry.recommendOrder,
+      featuredFor: entry.featuredFor,
       kidFriendly: entry.kidFriendly,
       languages: entry.languages,
       tagline: entry.tagline,

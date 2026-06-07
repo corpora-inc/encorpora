@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.17.1] - 2026-06-07
+
 ### Added
 
 - **`hostApi.asr` + `hostApi.models` seam (provider-agnostic dictation +
@@ -17,7 +19,7 @@ Conventions: `corpan/CHANGELOGS.md`.
   `llm.status`), so packs can ask "does an ASR model fit next to the 4B right
   now?". `asr.pick`/`provider` return `null` (→ keyboard floor) until an
   `asr-*` provider plugin registers. Additive + optional — nothing changes for
-  existing packs. Part of the 0.17.0 STT overhaul (see
+  existing packs. Part of the 0.17.1 STT overhaul (see
   `docs/STT_MASTERPLAN.md` + `docs/ASR_INTEGRATION_MANIFEST.md`).
 - **`hostApi.getRandomEntries` accepts an optional content filter.** In addition
   to the legacy `getRandomEntries(count)`, packs may now call
@@ -27,20 +29,6 @@ Conventions: `corpan/CHANGELOGS.md`.
   `levels`/`domains`/`language_codes` with a relaxation ladder). Additive +
   backward-compatible — existing numeric callers are unchanged. Used by World
   Plaza to bind each minigame's phrases to the NPC + quest at the player's level.
-
-### Changed
-
-- **Toolchain & framework to latest stable.** React **18.3 → 19.2**, Vite **6 →
-  8** (Rolldown bundler — production build ~3× faster), TypeScript **5.6 → 6.0**,
-  `@vitejs/plugin-react` 4 → 6, `@types/react`/`react-dom` → 19, Tailwind v4 →
-  4.3. No app code changes beyond two type fixes (a React-19 `RefObject<T|null>`
-  prop type in `StacksManagerRenamePopover`, a `node` types reference for the
-  storage harness) and a Vite-8 config change (`build.rollupOptions.output.
-  manualChunks` object → function form; added explicit `esbuild` dep). All key
-  libs (Radix, framer-motion, dnd-kit, vaul, lucide) already declared React 19
-  peer support. typecheck + production build green.
-
-### Added
 
 - **Full-document RTL foundation.** The UI language's direction is now mirrored
   onto the `<html>` root (`dir`/`lang`, reactively in `LanguageSynchronizer`) AND
@@ -56,17 +44,59 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 - **"Honest hello" onboarding interlude (`OnboardingWelcomePact`).** A new screen
   between the primary-language picker and the "What brings you to Corpán?" fork,
-  shown once in the user's chosen language. It sets expectations and builds a
-  human connection up front — tiny team, bleeding-edge/any-to-any, "we're still
-  mastering {{lang}}", everything free — then makes a heartfelt, openly-joking
-  early-adopter "pact": expect rough edges, and **please email/GitHub instead of
-  a sad rating** (routes to `team@encorpora.io` + GitHub issues), plus a
-  collaborator/ambassador recruitment line. Deliberately NOT a review gate (no
-  "you agree not to rate low" — that violates store policy); it asks, it doesn't
-  condition app use. Wired as an adapter node in the onboarding graph; localized
-  in en + ar (other ~49 locales fall back to English until the pipeline runs).
+  shown once in the user's chosen language. The "Corpán Evolves" welcome sets a
+  candid first impression: independent tiny team, ambitious on-device learning,
+  raw cutting-edge technology, and an honest admission that we do not speak
+  every language we support. It invites native-speaker corrections, new ideas,
+  and ambitious learning experiences without framing the user as a bug reporter.
+  Wired as an adapter node in the onboarding graph and fully localized across
+  all 51 app locales; `{{lang}}` resolves to the chosen language's native name.
+  The i18n build gate now also verifies interpolation-token parity so that
+  personalized copy cannot silently lose its placeholder in translation.
+
+### Changed
+
+- **Onboarding recommendations now have interest-specific featured picks.**
+  Corpan City leads when a user asks for games, while Tutomaton leads for study
+  or speaking. The new catalog-driven `featuredFor` signal only applies to
+  interests the user explicitly selected, so it does not distort the generic
+  cold start; explicit likes and dismissals still outweigh it.
+
+- **Toolchain & framework to latest stable.** React **18.3 → 19.2**, Vite **6 →
+  8** (Rolldown bundler — production build ~3× faster), TypeScript **5.6 → 6.0**,
+  `@vitejs/plugin-react` 4 → 6, `@types/react`/`react-dom` → 19, Tailwind v4 →
+  4.3. No app code changes beyond two type fixes (a React-19 `RefObject<T|null>`
+  prop type in `StacksManagerRenamePopover`, a `node` types reference for the
+  storage harness) and a Vite-8 config change (`build.rollupOptions.output.
+  manualChunks` object → function form; added explicit `esbuild` dep). All key
+  libs (Radix, framer-motion, dnd-kit, vaul, lucide) already declared React 19
+  peer support. typecheck + production build green.
+
+- **Tighter, consistent top bar.** The home top bar (logo + gear) was puffier
+  than it needed to be on phones and fullscreen iPad: it added a flat
+  per-platform clearance *on top of* `env(safe-area-inset-top)`, double-counting
+  the inset on notched devices. It now uses a single shared flat clearance
+  (`getTopBarPaddingTop`) that already clears both the safe-area inset and the
+  windowed macOS/Stage-Manager "stoplight" controls. The settings header adopts
+  the same top padding and the home bar's slimmer `px-4 md:px-8` gutters, and
+  the settings close-X is resized to match the gear (`h-10 w-12`) — so tapping
+  the gear ↔ X no longer jumps; the two buttons sit in the exact same spot. The
+  settings body content adopts the same `px-4 md:px-8` gutter as the header (was
+  the dialog's wider `p-6`), so body rows line up flush under the title/X. The
+  settings header also gets the same translucent blur as the home bar
+  (`bg-background/80 backdrop-blur`).
 
 ### Fixed
+
+- **Tutomaton releases are routed by Corpán host version.** The pack manifest
+  already required Corpán 0.17.0 for the expanded LLM sampler contract, but the
+  production catalog still advertised the latest artifact to 0.16.x. The
+  catalog now routes 0.16.x hosts to pinned Tutomaton 0.3.2 and `>=0.17.0`
+  hosts to 0.5.x. New ZIPs ship at immutable versioned URLs; the historical
+  `/tutomaton.zip` URL remains permanently pinned to 0.3.2 for old clients with
+  cached catalog data. Tutomaton remains excluded from unversioned
+  `catalog.json`, and the Pages build rejects catalog entries whose
+  compatibility claims are looser than their local manifest.
 
 - **Settings header matches the Home header.** The close-X now grows to `md:h-12`
   like the Home gear (it was fixed at `h-10`, so on tablet/desktop the gear was a
@@ -110,22 +140,6 @@ Conventions: `corpan/CHANGELOGS.md`.
   installed voices (every 3s while it's open) and refreshes the list only when
   the voice set actually changed — so freshly installed voices surface
   automatically, with zero re-renders in steady state.
-
-### Changed
-
-- **Tighter, consistent top bar.** The home top bar (logo + gear) was puffier
-  than it needed to be on phones and fullscreen iPad: it added a flat
-  per-platform clearance *on top of* `env(safe-area-inset-top)`, double-counting
-  the inset on notched devices. It now uses a single shared flat clearance
-  (`getTopBarPaddingTop`) that already clears both the safe-area inset and the
-  windowed macOS/Stage-Manager "stoplight" controls. The settings header adopts
-  the same top padding and the home bar's slimmer `px-4 md:px-8` gutters, and
-  the settings close-X is resized to match the gear (`h-10 w-12`) — so tapping
-  the gear ↔ X no longer jumps; the two buttons sit in the exact same spot. The
-  settings body content adopts the same `px-4 md:px-8` gutter as the header (was
-  the dialog's wider `p-6`), so body rows line up flush under the title/X. The
-  settings header also gets the same translucent blur as the home bar
-  (`bg-background/80 backdrop-blur`).
 
 ## [0.16.2] - 2026-06-04 — Android crash diagnostics + truncated-download guard
 

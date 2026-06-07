@@ -6,11 +6,13 @@
     "status": "active",
     "listed": true,
     "manifestUrl": "/corpan/packs/tutomaton/manifest.json",
-    "zipUrl": "/corpan/packs/tutomaton.zip",
+    "zipUrl": "/corpan/packs/tutomaton/0.5.0/tutomaton.zip",
     "landingUrl": "/corpan/packs/tutomaton/",
     "avatarSource": "corpan/packs/tutomaton/tutomaton-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/tutomaton",
-    "minAppVersion": "0.16.0",
+    "minAppVersion": "0.17.0",
+    "v1Listed": false,
+    "requireVersionedArtifact": true,
     "channel": "stable",
     "packType": "tutomaton",
     "tier": "premium",
@@ -31,6 +33,52 @@
       "polyglot"
     ],
     "recommendOrder": 9,
+    "featuredFor": [
+      "speak",
+      "study"
+    ],
+    "tagline": "A patient on-device tutor for every language you're learning."
+  },
+  {
+    "id": "tutomaton",
+    "name": "Tutomaton",
+    "description": "A patient on-device language tutor for every language you're learning \u2014 grounded by your installed phrase packs. Runs entirely on your device.",
+    "status": "active",
+    "listed": true,
+    "webListed": false,
+    "manifestUrl": "/corpan/packs/tutomaton-0.3.2/manifest.json",
+    "zipUrl": "/corpan/packs/tutomaton/0.3.2/tutomaton.zip",
+    "landingUrl": "/corpan/packs/tutomaton-0.3.2/",
+    "avatarSource": "corpan/packs/tutomaton/tutomaton-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/tutomaton",
+    "minAppVersion": "0.16.0",
+    "maxAppVersion": "0.16.99",
+    "v1Listed": false,
+    "requireVersionedArtifact": true,
+    "channel": "stable",
+    "packType": "tutomaton",
+    "tier": "premium",
+    "purchase": {
+      "type": "iap",
+      "priceLabel": "Plus"
+    },
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "speak",
+      "study"
+    ],
+    "goodForClass": [
+      "learner",
+      "polyglot"
+    ],
+    "recommendOrder": 9,
+    "featuredFor": [
+      "speak",
+      "study"
+    ],
     "tagline": "A patient on-device tutor for every language you're learning."
   },
   {
@@ -77,8 +125,13 @@
     "avatarSource": "corpan/packs/world-plaza/corpan-city-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/world-plaza",
     "minAppVersion": "0.17.0",
+    "v1Listed": false,
+    "requireCompleteLocalization": true,
     "channel": "stable",
     "packType": "game",
+    "purchase": {
+      "type": "free"
+    },
     "videos": {
       "shorts": [],
       "demos": []
@@ -95,6 +148,9 @@
       "kid_native"
     ],
     "recommendOrder": 5,
+    "featuredFor": [
+      "games"
+    ],
     "kidFriendly": true,
     "tagline": "A living city that turns every encounter into a lesson."
   },

@@ -17,6 +17,9 @@
 //      exactly the en key set: no missing keys (would fall back to English),
 //      no stale extra keys (dead translations / renamed keys left behind).
 //
+//   3. INTERPOLATION PARITY — every locale preserves the reference locale's
+//      `{{tokens}}`, so personalized copy cannot silently lose its values.
+//
 // Dynamic keys (`t(`socials.${key}.title`)`) cannot be verified statically and
 // are skipped — keep their parents covered by the locale-equality check.
 //
@@ -41,6 +44,23 @@ function flatKeys(obj, prefix = "", out = new Set()) {
     else out.add(key);
   }
   return out;
+}
+
+/** Flatten a nested translation object to dotted leaf values. */
+function flatValues(obj, prefix = "", out = new Map()) {
+  for (const [k, v] of Object.entries(obj)) {
+    const key = prefix + k;
+    if (v && typeof v === "object" && !Array.isArray(v)) flatValues(v, key + ".", out);
+    else out.set(key, v);
+  }
+  return out;
+}
+
+function interpolationTokens(value) {
+  if (typeof value !== "string") return [];
+  return [...value.matchAll(/\{\{\s*([^},\s]+)[^}]*\}\}/g)]
+    .map((match) => match[1])
+    .sort();
 }
 
 function readJSON(p) {
@@ -82,7 +102,9 @@ if (!fs.existsSync(refPath)) {
   console.error(`✗ reference locale missing: ${path.relative(ROOT, refPath)}`);
   process.exit(1);
 }
-const refKeys = flatKeys(readJSON(refPath));
+const refData = readJSON(refPath);
+const refKeys = flatKeys(refData);
+const refValues = flatValues(refData);
 
 // ---- Invariant 1: every static t() key exists in en -------------------------
 const codeKeys = new Set();
@@ -110,9 +132,19 @@ const locales = fs
 
 for (const lng of locales) {
   if (lng === REF) continue;
-  const keys = flatKeys(readJSON(path.join(LOCALES, lng, NS)));
+  const data = readJSON(path.join(LOCALES, lng, NS));
+  const keys = flatKeys(data);
+  const values = flatValues(data);
   const missing = [...refKeys].filter((k) => !keys.has(k)).sort();
   const extra = [...keys].filter((k) => !refKeys.has(k)).sort();
+  const brokenTokens = [...refKeys]
+    .filter((k) => keys.has(k))
+    .filter(
+      (k) =>
+        interpolationTokens(refValues.get(k)).join(",") !==
+        interpolationTokens(values.get(k)).join(","),
+    )
+    .sort();
   if (missing.length) {
     problems.push(
       `${lng}: missing ${missing.length} key(s) (fall back to English):\n` +
@@ -123,6 +155,12 @@ for (const lng of locales) {
     problems.push(
       `${lng}: ${extra.length} stale key(s) not in ${REF}/${NS} (remove or add to en):\n` +
         extra.map((k) => `    • ${k}`).join("\n"),
+    );
+  }
+  if (brokenTokens.length) {
+    problems.push(
+      `${lng}: ${brokenTokens.length} key(s) with mismatched {{interpolation}} tokens:\n` +
+        brokenTokens.map((k) => `    • ${k}`).join("\n"),
     );
   }
 }

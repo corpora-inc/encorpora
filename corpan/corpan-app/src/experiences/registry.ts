@@ -27,6 +27,8 @@ export type ExperienceMeta = {
   blurbKey: string
   /** Cold-start order / tiebreak — lower surfaces earlier when scores tie. */
   order: number
+  /** Interests for which this is the curated best starting point. */
+  featuredFor?: ExperienceCategory[]
   /** Gentle, kid-friendly content (small bonus for the child journey). */
   kidFriendly?: boolean
   /**
@@ -79,6 +81,18 @@ export const EXPERIENCES: ExperienceMeta[] = [
     kidFriendly: true,
   },
   {
+    // The broadest, most complete game experience. It should lead when a user
+    // explicitly asks for games, without becoming the generic cold-start pick.
+    id: "corpan_city",
+    categories: ["games", "speak", "wild"],
+    goodForClass: ["learner", "polyglot", "enjoyer", "kid_native"],
+    nameKey: "experiences.corpan_city.name",
+    blurbKey: "experiences.corpan_city.blurb",
+    order: 5,
+    featuredFor: ["games"],
+    kidFriendly: true,
+  },
+  {
     id: "juice_squeeze",
     categories: ["games", "study"],
     goodForClass: ["learner", "kid_native"],
@@ -123,6 +137,7 @@ export const EXPERIENCES: ExperienceMeta[] = [
     nameKey: "experiences.tutomaton.name",
     blurbKey: "experiences.tutomaton.blurb",
     order: 9,
+    featuredFor: ["speak", "study"],
   },
 ]
 
@@ -139,6 +154,7 @@ export type CatalogExperienceFields = {
   categories?: string[]
   goodForClass?: string[]
   recommendOrder?: number
+  featuredFor?: string[]
   kidFriendly?: boolean
   languages?: string[]
 }
@@ -162,6 +178,9 @@ export function resolveExperienceMeta(
   const cats = catalog?.categories?.filter((c) => VALID_CATEGORIES.has(c)) as
     | ExperienceCategory[]
     | undefined
+  const featuredFor = catalog?.featuredFor?.filter((c) =>
+    VALID_CATEGORIES.has(c),
+  ) as ExperienceCategory[] | undefined
   return {
     id,
     categories: cats ?? fb?.categories ?? [],
@@ -169,6 +188,7 @@ export function resolveExperienceMeta(
     nameKey: fb?.nameKey ?? `experiences.${id}.name`,
     blurbKey: fb?.blurbKey ?? `experiences.${id}.blurb`,
     order: catalog?.recommendOrder ?? fb?.order ?? 50,
+    featuredFor: featuredFor ?? fb?.featuredFor,
     kidFriendly: catalog?.kidFriendly ?? fb?.kidFriendly,
     languages: catalog?.languages ?? fb?.languages,
   }
@@ -187,6 +207,8 @@ export type RankOpts = {
 
 /** Per-matched-interest weight — the dominant signal. */
 const INTEREST_WEIGHT = 3
+/** Bonus for the curated best starting point within a chosen interest. */
+const FEATURED_INTEREST_WEIGHT = 1
 /** Bonus when the experience is a declared good fit for the user's class. */
 const CLASS_WEIGHT = 2
 /** Bonus for kid-friendly experiences on the child journey. */
@@ -199,7 +221,8 @@ const LANG_MISMATCH_PENALTY = 100
 
 /**
  * Score one experience for a user. Higher = better. Pure + deterministic:
- *   interests matched × 3  +  class-fit × 2  +  kid-fit × 2  +  order tiebreak.
+ *   interests matched × 3  +  featured match × 1  +  class-fit × 2
+ *   +  kid-fit × 2  +  order tiebreak.
  * With no interest signal (skipped), scores fall back to class-fit + order, so
  * the result is still sensible (and never makes Phrase Flip the default star).
  */
@@ -207,6 +230,9 @@ export function scoreExperience(meta: ExperienceMeta, opts: RankOpts): number {
   const interests = new Set(opts.interests)
   let score = 0
   for (const c of meta.categories) if (interests.has(c)) score += INTEREST_WEIGHT
+  for (const c of meta.featuredFor ?? []) {
+    if (interests.has(c)) score += FEATURED_INTEREST_WEIGHT
+  }
   if (opts.userClass && meta.goodForClass.includes(opts.userClass)) score += CLASS_WEIGHT
   if (opts.ageBand && opts.ageBand !== "adult" && meta.kidFriendly) score += KID_WEIGHT
   score += (opts.ratings?.[meta.id] ?? 0) * RATING_WEIGHT

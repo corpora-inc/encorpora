@@ -2,15 +2,11 @@
 //
 // The "honest hello" interlude — shown right after the user picks their primary
 // language and before "What brings you to Corpán?". Its whole job is to set
-// expectations and build a human connection in the user's OWN language, so a
-// frustrated early adopter emails us instead of leaving a heartbreak rating.
+// expectations and build a human connection in the user's OWN language.
 //
-// Tone: warm, candid, a little funny. NOT a review-gate. We never condition app
-// use on a rating and never tell users they may not rate low — that would risk
-// App Store / Play rejection (both stores forbid manipulating reviews). Instead
-// we make a heartfelt, openly-joking "early adopter pact": expect rough edges,
-// please send feedback instead of a sad rating, grow with us. The plea routes
-// unhappy users to email / GitHub (the accepted, compliant pattern).
+// Tone: warm, candid, ambitious, and collaborative. The user should understand
+// that Corpán moves quickly at the edge of on-device technology, and that their
+// language knowledge and ideas can help shape where it goes.
 import { useTranslation } from "react-i18next";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { Sparkles, FlaskConical, Languages, MessageCircleHeart, Users } from "lucide-react";
@@ -44,23 +40,23 @@ export function OnboardingWelcomePact({ onAdvance, onBack }: OnboardingStepProps
     const ROWS = [
         {
             Icon: Sparkles,
-            title: t("onboarding.welcomePact.tinyTeamTitle", { defaultValue: "Two people, not a big company" }),
+            title: t("onboarding.welcomePact.tinyTeamTitle", { defaultValue: "A tiny team of enthusiasts" }),
             desc: t("onboarding.welcomePact.tinyTeamDesc", {
-                defaultValue: "No ads, no investors, almost everything free. We pour our own time and money into this.",
+                defaultValue: "Independent, ad-free, and built with respect for the people who use it — a small crew making the language app we always wanted.",
             }),
         },
         {
             Icon: FlaskConical,
-            title: t("onboarding.welcomePact.bleedingEdgeTitle", { defaultValue: "Bleeding-edge and brand-new" }),
+            title: t("onboarding.welcomePact.bleedingEdgeTitle", { defaultValue: "Cutting-edge, on purpose" }),
             desc: t("onboarding.welcomePact.bleedingEdgeDesc", {
-                defaultValue: "50 languages, any to any — nobody has tried this before. Expect a few rough edges, a clumsy phrase, maybe a crash. We ship fixes every week.",
+                defaultValue: "Corpán pushes the limits of what your device can do: immersive worlds, speech recognition, natural voices, and the latest AI models, all working together to create new ways to learn. Much of it runs directly on your device, giving you private, offline-first learning without depending on a data center. We release new technology while it is still raw, which means it may occasionally behave strangely, run slowly, or simply be more than your device can handle. In return, you get powerful new learning experiences as soon as they become possible.",
             }),
         },
         {
             Icon: Languages,
-            title: t("onboarding.welcomePact.yourLangTitle", { defaultValue: "We're still mastering {{lang}}", lang }),
+            title: t("onboarding.welcomePact.yourLangTitle", { defaultValue: "We don't speak every language we support" }),
             desc: t("onboarding.welcomePact.yourLangDesc", {
-                defaultValue: "We don't natively speak every language we support. We work around the clock to make {{lang}} excellent — and your feedback is how it gets there.",
+                defaultValue: "That's the honest truth. We're building for dozens of languages because everyone deserves powerful learning tools, not because our tiny team already knows them all. You may find things we got wrong. If you know {{lang}} better than we do, we hope you'll tell us and help make Corpán worthy of it.",
                 lang,
             }),
         },
@@ -75,7 +71,7 @@ export function OnboardingWelcomePact({ onAdvance, onBack }: OnboardingStepProps
                 <div>
                     <p className="mb-2 text-center text-[11px] leading-snug text-muted-foreground/80">
                         {t("onboarding.welcomePact.pact", {
-                            defaultValue: "By tapping below you join as an early adopter 🤝 — expect a few bugs, send feedback instead of a sad rating, and grow with us. (Not legally binding. Emotionally? Very.)",
+                            defaultValue: "Tap below to start learning and grow with us. 🤝",
                         })}
                     </p>
                     <Button className="w-full !h-12" onClick={advance}>
@@ -85,12 +81,11 @@ export function OnboardingWelcomePact({ onAdvance, onBack }: OnboardingStepProps
             }
         >
             <h1 className="text-center text-2xl font-bold text-foreground">
-                {t("onboarding.welcomePact.title", { defaultValue: "First, the honest part" })}
+                {t("onboarding.welcomePact.title", { defaultValue: "Corpán Evolves" })}
             </h1>
             <p className="mt-2 text-center text-sm text-muted-foreground">
                 {t("onboarding.welcomePact.subtitle", {
-                    defaultValue: "Thirty seconds, then we'll set up {{lang}} for you.",
-                    lang,
+                    defaultValue: "You're an early adopter",
                 })}
             </p>
 
@@ -111,8 +106,7 @@ export function OnboardingWelcomePact({ onAdvance, onBack }: OnboardingStepProps
                 ))}
             </ul>
 
-            {/* The heartfelt plea — feedback over a low rating. Compliant: we ask,
-                we don't gate. */}
+            {/* Invitation to share corrections, ideas, and new learning experiences. */}
             <div className="mt-4 w-full rounded-xl border border-purple-400/40 bg-gradient-to-br from-purple-500/[0.1] to-purple-500/[0.02] p-4 text-start">
                 <div className="flex items-start gap-3">
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-purple-500/15 text-purple-400" aria-hidden>
@@ -121,7 +115,7 @@ export function OnboardingWelcomePact({ onAdvance, onBack }: OnboardingStepProps
                     <div className="min-w-0 flex-1">
                         <p className="text-xs leading-relaxed text-foreground/90">
                             {t("onboarding.welcomePact.plea", {
-                                defaultValue: "If something's wrong, please tell us — we read every word and fix fast. A silent 1-star just breaks our hearts and we can't fix what we can't see. Love it? Five stars mean the world. Not your thing? No worries — just keep scrolling.",
+                                defaultValue: "Have an idea, a correction, or a wild learning experience you want to see? Tell us. We read every message and think deeply about what it could unlock for Corpán and language learning.",
                             })}
                         </p>
                         <div className="mt-2 flex flex-wrap gap-2">
@@ -144,7 +138,7 @@ export function OnboardingWelcomePact({ onAdvance, onBack }: OnboardingStepProps
                 </div>
             </div>
 
-            {/* Recruitment — a personal ask to the speaker of this language. */}
+            {/* Recruitment — an invitation to help bring Corpán to the world. */}
             <button
                 type="button"
                 onClick={() => openExternal(GITHUB_ISSUES)}
@@ -155,8 +149,7 @@ export function OnboardingWelcomePact({ onAdvance, onBack }: OnboardingStepProps
                 </span>
                 <span className="min-w-0 flex-1 text-xs leading-relaxed text-muted-foreground">
                     {t("onboarding.welcomePact.join", {
-                        defaultValue: "Want to help bring Corpán to {{lang}}? We're looking for collaborators, translators, and local ambassadors — with real revenue share. Come find us.",
-                        lang,
+                        defaultValue: "Want to help bring Corpán to the world? We're always looking for collaborators, translators, and local ambassadors. Come find us.",
                     })}
                 </span>
             </button>

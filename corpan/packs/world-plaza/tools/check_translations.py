@@ -177,7 +177,7 @@ def check_leaks():
             # Only lines that introduce a visible string AND aren't t()-routed.
             if not VISIBLE_CALL.search(line):
                 continue
-            if re.search(r"\bt\(|bindT|makeMenuStrings|make\w+Strings|strings\.", line):
+            if re.search(r"\b(?:t|tr)\(|bindT|makeMenuStrings|make\w+Strings|strings\.", line):
                 continue
             for m in ENGLISH_LIT.finditer(line):
                 lit = m.group(1)

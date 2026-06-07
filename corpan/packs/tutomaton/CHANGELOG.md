@@ -13,6 +13,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   newly selected voice using the latest tutor reply.
 
 ### Fixed
+- The production catalog now honors this pack's `minAppVersion: 0.17.0`,
+  routing Corpán 0.16.x clients to pinned Tutomaton 0.3.2 while `>=0.17.0`
+  receives the latest release. New ZIPs ship at immutable versioned URLs; the
+  historical `/tutomaton.zip` URL remains permanently pinned to 0.3.2 for old
+  clients with cached catalog data.
 - TTS no longer reads punctuation aloud (e.g. "semicolon", "asterisk"). Replies
   are stripped of Markdown markup before display, and the speech path
   additionally turns synthesizer-spoken symbols and separator dashes into pauses
