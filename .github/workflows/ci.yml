@@ -10,7 +10,11 @@ on:
       - "corpan/packs/**"
       - "corpan/infra/terraform/**"
       - "web/io/**"
+      - "web/data/**"
+      - "web/pages/**"
+      - "web/scripts/**"
       - ".github/workflows/ci.yml"
+      - ".github/workflows/deploy-pages.yml"
   push:
     branches: ["main"]
     paths:
@@ -18,7 +22,11 @@ on:
       - "corpan/packs/**"
       - "corpan/infra/terraform/**"
       - "web/io/**"
+      - "web/data/**"
+      - "web/pages/**"
+      - "web/scripts/**"
       - ".github/workflows/ci.yml"
+      - ".github/workflows/deploy-pages.yml"
   workflow_dispatch: {}
 
 concurrency:
@@ -62,6 +70,52 @@ jobs:
       - name: Build
         working-directory: web/io
         run: npm run build
+
+  changed-packs:
+    name: changed packs · build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Build changed packs
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${BASE_SHA}" ] || ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
+            BASE_SHA="$(git rev-parse "${HEAD_SHA}^")"
+          fi
+
+          mapfile -t packs < <(
+            git diff --name-only "${BASE_SHA}" "${HEAD_SHA}" |
+              awk -F/ '/^corpan\/packs\/[^/]+\// { print $3 }' |
+              sort -u
+          )
+
+          if [ "${#packs[@]}" -eq 0 ]; then
+            echo "No changed packs."
+            exit 0
+          fi
+
+          for pack in "${packs[@]}"; do
+            dir="corpan/packs/${pack}"
+            if [ ! -f "${dir}/package.json" ]; then
+              echo "Skipping ${pack}: no package.json."
+              continue
+            fi
+
+            echo "::group::${pack}"
+            npm install --prefix "${dir}" --legacy-peer-deps
+            npm run --prefix "${dir}" typecheck --if-present
+            npm run --prefix "${dir}" build --if-present
+            echo "::endgroup::"
+          done
 
   terraform:
     name: terraform · fmt + validate

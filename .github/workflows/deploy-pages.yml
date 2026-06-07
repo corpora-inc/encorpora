@@ -12,7 +12,7 @@ on:
       - "books/**/pack/manifest.json"
       - "books/**/pack/segments.json"
       - "books/**/pack/narration.yaml"
-      - ".github/workflows/hover-runner-pages.yml"
+      - ".github/workflows/deploy-pages.yml"
   workflow_dispatch: {}
 
 permissions:
