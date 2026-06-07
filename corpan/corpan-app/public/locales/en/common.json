@@ -738,7 +738,13 @@
     "pendingHeading": "Waiting for approval",
     "pendingDetail": "Your subscription is awaiting approval (Ask to Buy or bank verification). It will activate automatically once approved.",
     "storeUnreachable": "We couldn't reach the App Store right now.",
-    "tryAgain": "Try again"
+    "tryAgain": "Try again",
+    "affiliateCodeLabel": "Affiliate code",
+    "affiliateCodePlaceholder": "Optional",
+    "affiliateInvalidFormat": "Use letters, numbers, dashes, or underscores.",
+    "affiliateChecking": "Checking code...",
+    "affiliateApplied": "Code will be attached to this subscription.",
+    "affiliateCodeHelp": "If someone sent you here, enter their code before subscribing."
   },
   "restore": {
     "button": "Restore Purchases",

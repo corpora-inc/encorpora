@@ -660,7 +660,13 @@
     "pendingHeading": "در انتظار تأیید",
     "pendingDetail": "اشتراک شما در انتظار تأیید است (Ask to Buy یا تأیید بانکی). پس از تأیید، خودکار فعال می‌شود.",
     "storeUnreachable": "فعلاً نتوانستیم به App Store وصل شویم.",
-    "tryAgain": "تلاش دوباره"
+    "tryAgain": "تلاش دوباره",
+    "affiliateCodeLabel": "کد همکاری",
+    "affiliateCodePlaceholder": "اختیاری",
+    "affiliateInvalidFormat": "از حروف، اعداد، خط تیره یا زیرخط استفاده کنید.",
+    "affiliateChecking": "در حال بررسی کد...",
+    "affiliateApplied": "کد به این اشتراک پیوست می‌شود.",
+    "affiliateCodeHelp": "اگر کسی شما را به اینجا فرستاده، پیش از اشتراک کد او را وارد کنید."
   },
   "restore": {
     "button": "بازیابی خریدها",

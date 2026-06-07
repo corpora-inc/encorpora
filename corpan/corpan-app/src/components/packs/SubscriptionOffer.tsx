@@ -12,9 +12,13 @@ import {
   purchaseAndVerify,
   manageSubscription,
   getProductStatus,
+  isAffiliateCodeFormatValid,
+  normalizeAffiliateCode,
+  resolveAffiliateCode,
   restoreAndSync,
   SUBSCRIPTION_MONTHLY,
   SUBSCRIPTION_ANNUAL,
+  type AffiliateResolveResponse,
   type StoreProduct,
 } from "@/contentPacks/purchase"
 
@@ -63,6 +67,13 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   const [isPurchasing, setIsPurchasing] = useState(false)
   const [isRestoring, setIsRestoring] = useState(false)
   const [restoreMessage, setRestoreMessage] = useState<string | null>(null)
+  const [affiliateCode, setAffiliateCode] = useState("")
+  const [affiliateStatus, setAffiliateStatus] = useState<
+    | { kind: "idle" }
+    | { kind: "checking"; code: string }
+    | { kind: "valid"; code: string; message?: string }
+    | { kind: "invalid"; code: string; error: string }
+  >({ kind: "idle" })
 
   const storeLabel =
     platform === "android"
@@ -120,13 +131,52 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
     trackPaidUnlockViewed("subscription_offer")
   }, [iapAvailable])
 
+  useEffect(() => {
+    const code = normalizeAffiliateCode(affiliateCode)
+    if (!code) {
+      setAffiliateStatus({ kind: "idle" })
+      return
+    }
+    if (!isAffiliateCodeFormatValid(code)) {
+      setAffiliateStatus({
+        kind: "invalid",
+        code,
+        error: t("subscription.affiliateInvalidFormat", "Use letters, numbers, dashes, or underscores."),
+      })
+      return
+    }
+    setAffiliateStatus({ kind: "checking", code })
+    const timer = window.setTimeout(() => {
+      void resolveAffiliateCode(code).then((result: AffiliateResolveResponse) => {
+        if (normalizeAffiliateCode(affiliateCode) !== code) return
+        if (result.status === "ok") {
+          setAffiliateStatus({
+            kind: "valid",
+            code: result.code,
+            message: result.message,
+          })
+        } else {
+          setAffiliateStatus({
+            kind: "invalid",
+            code,
+            error: result.error,
+          })
+        }
+      })
+    }, 450)
+    return () => window.clearTimeout(timer)
+  }, [affiliateCode, t])
+
   const handleSubscribe = async () => {
     if (state.kind !== "ready") return
     const productId =
       selectedPlan === "annual" ? SUBSCRIPTION_ANNUAL : SUBSCRIPTION_MONTHLY
     setIsPurchasing(true)
     try {
-      const result = await purchaseAndVerify(productId, undefined, "subs")
+      const code = normalizeAffiliateCode(affiliateCode)
+      const result = await purchaseAndVerify(productId, undefined, "subs", {
+        affiliateCode: isAffiliateCodeFormatValid(code) ? code : undefined,
+      })
       if (result.cancelled) return
       if (result.alreadyOwned) {
         await refresh()
@@ -412,9 +462,40 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
           ) : null}
         </div>
 
+        <label className="block space-y-1.5">
+          <span className="text-xs font-medium">
+            {t("subscription.affiliateCodeLabel", "Affiliate code")}
+          </span>
+          <input
+            value={affiliateCode}
+            onChange={(event) => setAffiliateCode(event.target.value)}
+            autoCapitalize="characters"
+            autoCorrect="off"
+            spellCheck={false}
+            maxLength={32}
+            placeholder={t("subscription.affiliateCodePlaceholder", "Optional")}
+            className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm uppercase outline-none transition-colors focus:border-primary"
+          />
+          <span
+            className={`block min-h-4 text-[11px] ${
+              affiliateStatus.kind === "invalid"
+                ? "text-destructive"
+                : "text-muted-foreground"
+            }`}
+          >
+            {affiliateStatus.kind === "checking"
+              ? t("subscription.affiliateChecking", "Checking code...")
+              : affiliateStatus.kind === "valid"
+                ? affiliateStatus.message ?? t("subscription.affiliateApplied", "Code will be attached to this subscription.")
+                : affiliateStatus.kind === "invalid"
+                  ? affiliateStatus.error
+                  : t("subscription.affiliateCodeHelp", "If someone sent you here, enter their code before subscribing.")}
+          </span>
+        </label>
+
         <Button
           onClick={() => void handleSubscribe()}
-          disabled={isPurchasing}
+          disabled={isPurchasing || affiliateStatus.kind === "checking"}
           className="w-full !h-11 md:!h-14"
           size="sm"
         >

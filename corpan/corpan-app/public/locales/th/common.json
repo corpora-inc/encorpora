@@ -660,7 +660,13 @@
     "pendingHeading": "กำลังรอการอนุมัติ",
     "pendingDetail": "การสมัครของคุณกำลังรอการอนุมัติ (Ask to Buy หรือการยืนยันจากธนาคาร) และจะเปิดใช้งานอัตโนมัติเมื่ออนุมัติแล้ว",
     "storeUnreachable": "เราไม่สามารถเชื่อมต่อกับ App Store ได้ในขณะนี้",
-    "tryAgain": "ลองอีกครั้ง"
+    "tryAgain": "ลองอีกครั้ง",
+    "affiliateCodeLabel": "รหัสพันธมิตร",
+    "affiliateCodePlaceholder": "ไม่บังคับ",
+    "affiliateInvalidFormat": "ใช้ตัวอักษร ตัวเลข ขีดกลาง หรือขีดล่าง",
+    "affiliateChecking": "กำลังตรวจสอบรหัส...",
+    "affiliateApplied": "รหัสจะถูกแนบกับการสมัครสมาชิกนี้",
+    "affiliateCodeHelp": "ถ้ามีคนส่งคุณมาที่นี่ ให้ป้อนรหัสของเขาก่อนสมัครสมาชิก"
   },
   "restore": {
     "button": "กู้คืนการซื้อ",

@@ -660,7 +660,13 @@
     "pendingHeading": "Menunggu persetujuan",
     "pendingDetail": "Langganan Anda sedang menunggu persetujuan (Minta untuk Membeli atau verifikasi bank). Akan aktif otomatis setelah disetujui.",
     "storeUnreachable": "Kami tidak bisa menjangkau App Store saat ini.",
-    "tryAgain": "Coba lagi"
+    "tryAgain": "Coba lagi",
+    "affiliateCodeLabel": "Kode afiliasi",
+    "affiliateCodePlaceholder": "Opsional",
+    "affiliateInvalidFormat": "Gunakan huruf, angka, tanda hubung, atau garis bawah.",
+    "affiliateChecking": "Memeriksa kode...",
+    "affiliateApplied": "Kode akan dilampirkan ke langganan ini.",
+    "affiliateCodeHelp": "Jika seseorang mengirimmu ke sini, masukkan kodenya sebelum berlangganan."
   },
   "restore": {
     "button": "Pulihkan pembelian",

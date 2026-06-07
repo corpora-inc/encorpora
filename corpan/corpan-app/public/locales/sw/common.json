@@ -660,7 +660,13 @@
     "pendingHeading": "Inasubiri idhini",
     "pendingDetail": "Usajili wako unasubiri idhini (Ask to Buy au uthibitishaji wa benki). Utaanza kufanya kazi moja kwa moja ukishaidhinishwa.",
     "storeUnreachable": "Hatukuweza kufikia App Store kwa sasa.",
-    "tryAgain": "Jaribu tena"
+    "tryAgain": "Jaribu tena",
+    "affiliateCodeLabel": "Msimbo wa mshirika",
+    "affiliateCodePlaceholder": "Si lazima",
+    "affiliateInvalidFormat": "Tumia herufi, nambari, vistari au mistari ya chini.",
+    "affiliateChecking": "Inakagua msimbo...",
+    "affiliateApplied": "Msimbo utaambatishwa kwenye usajili huu.",
+    "affiliateCodeHelp": "Ikiwa mtu alikutuma hapa, weka msimbo wake kabla ya kujisajili."
   },
   "restore": {
     "button": "Rejesha Manunuzi",

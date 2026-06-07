@@ -660,7 +660,13 @@
     "pendingHeading": "En attente d’approbation",
     "pendingDetail": "Votre abonnement est en attente d’approbation (Demander l’autorisation d’acheter ou vérification bancaire). Il s’activera automatiquement une fois approuvé.",
     "storeUnreachable": "Impossible de joindre l’App Store pour le moment.",
-    "tryAgain": "Réessayer"
+    "tryAgain": "Réessayer",
+    "affiliateCodeLabel": "Code affilié",
+    "affiliateCodePlaceholder": "Facultatif",
+    "affiliateInvalidFormat": "Utilisez des lettres, des chiffres, des tirets ou des traits de soulignement.",
+    "affiliateChecking": "Vérification du code...",
+    "affiliateApplied": "Le code sera associé à cet abonnement.",
+    "affiliateCodeHelp": "Si quelqu’un vous a envoyé ici, saisissez son code avant de vous abonner."
   },
   "restore": {
     "button": "Restaurer les achats",

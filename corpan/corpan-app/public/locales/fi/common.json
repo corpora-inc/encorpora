@@ -660,7 +660,13 @@
     "pendingHeading": "Odotetaan hyväksyntää",
     "pendingDetail": "Tilauksesi odottaa hyväksyntää (Ostolupa tai pankin vahvistus). Se aktivoituu automaattisesti, kun se on hyväksytty.",
     "storeUnreachable": "Emme saaneet yhteyttä App Storeen juuri nyt.",
-    "tryAgain": "Yritä uudelleen"
+    "tryAgain": "Yritä uudelleen",
+    "affiliateCodeLabel": "Kumppanikoodi",
+    "affiliateCodePlaceholder": "Valinnainen",
+    "affiliateInvalidFormat": "Käytä kirjaimia, numeroita, yhdysmerkkejä tai alaviivoja.",
+    "affiliateChecking": "Tarkistetaan koodia...",
+    "affiliateApplied": "Koodi liitetään tähän tilaukseen.",
+    "affiliateCodeHelp": "Jos joku lähetti sinut tänne, syötä hänen koodinsa ennen tilaamista."
   },
   "restore": {
     "button": "Palauta ostokset",

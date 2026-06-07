@@ -660,7 +660,13 @@
     "pendingHeading": "等待核准",
     "pendingDetail": "你的訂閱正等待核准（購買前詢問或銀行驗證）。一旦核准，將自動啟用。",
     "storeUnreachable": "目前無法連線到 App Store。",
-    "tryAgain": "再試一次"
+    "tryAgain": "再試一次",
+    "affiliateCodeLabel": "聯盟代碼",
+    "affiliateCodePlaceholder": "可選",
+    "affiliateInvalidFormat": "請使用字母、數字、連字號或底線。",
+    "affiliateChecking": "正在檢查代碼...",
+    "affiliateApplied": "此代碼將連結到這個訂閱。",
+    "affiliateCodeHelp": "如果有人推薦你來到這裡，請在訂閱前輸入他們的代碼。"
   },
   "restore": {
     "button": "恢復購買",

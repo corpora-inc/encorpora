@@ -660,7 +660,13 @@
     "pendingHeading": "Esperant aprovació",
     "pendingDetail": "La teva subscripció està pendent d'aprovació (Demanar per comprar o verificació bancària). S'activarà automàticament quan s'aprovi.",
     "storeUnreachable": "Ara mateix no hem pogut connectar amb l'App Store.",
-    "tryAgain": "Torna-ho a provar"
+    "tryAgain": "Torna-ho a provar",
+    "affiliateCodeLabel": "Codi d’afiliat",
+    "affiliateCodePlaceholder": "Opcional",
+    "affiliateInvalidFormat": "Fes servir lletres, números, guions o guions baixos.",
+    "affiliateChecking": "S’està comprovant el codi...",
+    "affiliateApplied": "El codi s’adjuntarà a aquesta subscripció.",
+    "affiliateCodeHelp": "Si algú t’ha enviat aquí, introdueix el seu codi abans de subscriure’t."
   },
   "restore": {
     "button": "Restaura compres",

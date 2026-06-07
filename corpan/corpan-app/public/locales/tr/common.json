@@ -660,7 +660,13 @@
     "pendingHeading": "Onay bekleniyor",
     "pendingDetail": "Aboneliğiniz onay bekliyor (Satın Alma İzni veya banka doğrulaması). Onaylandıktan sonra otomatik olarak etkinleşecektir.",
     "storeUnreachable": "Şu anda App Store'a ulaşamadık.",
-    "tryAgain": "Tekrar dene"
+    "tryAgain": "Tekrar dene",
+    "affiliateCodeLabel": "Satış ortağı kodu",
+    "affiliateCodePlaceholder": "İsteğe bağlı",
+    "affiliateInvalidFormat": "Harf, sayı, kısa çizgi veya alt çizgi kullanın.",
+    "affiliateChecking": "Kod kontrol ediliyor...",
+    "affiliateApplied": "Kod bu aboneliğe eklenecek.",
+    "affiliateCodeHelp": "Biri sizi buraya yönlendirdiyse abone olmadan önce kodunu girin."
   },
   "restore": {
     "button": "Satın alımları geri yükle",

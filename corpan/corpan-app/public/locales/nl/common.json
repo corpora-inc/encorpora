@@ -660,7 +660,13 @@
     "pendingHeading": "Wachten op goedkeuring",
     "pendingDetail": "Je abonnement wacht op goedkeuring (Vraag om te kopen of bankverificatie). Het wordt automatisch geactiveerd zodra het is goedgekeurd.",
     "storeUnreachable": "We konden de App Store nu niet bereiken.",
-    "tryAgain": "Opnieuw proberen"
+    "tryAgain": "Opnieuw proberen",
+    "affiliateCodeLabel": "Affiliatecode",
+    "affiliateCodePlaceholder": "Optioneel",
+    "affiliateInvalidFormat": "Gebruik letters, cijfers, koppeltekens of underscores.",
+    "affiliateChecking": "Code controleren...",
+    "affiliateApplied": "De code wordt aan dit abonnement gekoppeld.",
+    "affiliateCodeHelp": "Als iemand je hierheen heeft gestuurd, voer dan hun code in voordat je je abonneert."
   },
   "restore": {
     "button": "Aankopen herstellen",

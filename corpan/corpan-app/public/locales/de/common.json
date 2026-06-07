@@ -660,7 +660,13 @@
     "pendingHeading": "Warten auf Bestätigung",
     "pendingDetail": "Dein Abonnement wartet auf Bestätigung (Kaufanfrage oder Bankprüfung). Es wird nach der Bestätigung automatisch aktiviert.",
     "storeUnreachable": "Der App Store ist gerade nicht erreichbar.",
-    "tryAgain": "Erneut versuchen"
+    "tryAgain": "Erneut versuchen",
+    "affiliateCodeLabel": "Partnercode",
+    "affiliateCodePlaceholder": "Optional",
+    "affiliateInvalidFormat": "Verwende Buchstaben, Zahlen, Bindestriche oder Unterstriche.",
+    "affiliateChecking": "Code wird geprüft...",
+    "affiliateApplied": "Der Code wird diesem Abonnement zugeordnet.",
+    "affiliateCodeHelp": "Wenn dich jemand hierher geschickt hat, gib den Code vor dem Abonnieren ein."
   },
   "restore": {
     "button": "Käufe wiederherstellen",

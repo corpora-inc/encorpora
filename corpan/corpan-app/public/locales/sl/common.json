@@ -660,7 +660,13 @@
     "pendingHeading": "Čakanje na odobritev",
     "pendingDetail": "Vaša naročnina čaka na odobritev (Ask to Buy ali preverjanje pri banki). Ko bo odobrena, se bo samodejno aktivirala.",
     "storeUnreachable": "Trenutno ne moremo vzpostaviti povezave z App Store.",
-    "tryAgain": "Poskusi znova"
+    "tryAgain": "Poskusi znova",
+    "affiliateCodeLabel": "Partnerska koda",
+    "affiliateCodePlaceholder": "Izbirno",
+    "affiliateInvalidFormat": "Uporabite črke, številke, vezaje ali podčrtaje.",
+    "affiliateChecking": "Preverjanje kode...",
+    "affiliateApplied": "Koda bo povezana s to naročnino.",
+    "affiliateCodeHelp": "Če vas je sem poslal nekdo drug, pred naročilom vnesite njegovo kodo."
   },
   "restore": {
     "button": "Obnovi nakupe",

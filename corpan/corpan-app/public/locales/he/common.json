@@ -660,7 +660,13 @@
     "pendingHeading": "ממתין לאישור",
     "pendingDetail": "המינוי שלך ממתין לאישור (Ask to Buy או אימות בנקאי). הוא יופעל אוטומטית לאחר האישור.",
     "storeUnreachable": "לא הצלחנו להתחבר כעת ל-App Store.",
-    "tryAgain": "לנסות שוב"
+    "tryAgain": "לנסות שוב",
+    "affiliateCodeLabel": "קוד שותף",
+    "affiliateCodePlaceholder": "אופציונלי",
+    "affiliateInvalidFormat": "השתמשו באותיות, מספרים, מקפים או קווים תחתונים.",
+    "affiliateChecking": "בודקים את הקוד...",
+    "affiliateApplied": "הקוד יצורף למינוי הזה.",
+    "affiliateCodeHelp": "אם מישהו שלח אותך לכאן, הזן את הקוד שלו לפני ההרשמה."
   },
   "restore": {
     "button": "שַׁחְזֵר רְכִישׁוֹת",

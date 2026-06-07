@@ -660,7 +660,13 @@
     "pendingHeading": "Ожидание одобрения",
     "pendingDetail": "Ваша подписка ожидает одобрения (Ask to Buy или проверка банком). После одобрения она активируется автоматически.",
     "storeUnreachable": "Сейчас не удалось связаться с App Store.",
-    "tryAgain": "Повторить"
+    "tryAgain": "Повторить",
+    "affiliateCodeLabel": "Партнёрский код",
+    "affiliateCodePlaceholder": "Необязательно",
+    "affiliateInvalidFormat": "Используйте буквы, цифры, дефисы или подчёркивания.",
+    "affiliateChecking": "Проверяем код...",
+    "affiliateApplied": "Код будет привязан к этой подписке.",
+    "affiliateCodeHelp": "Если кто-то направил вас сюда, введите его код перед оформлением подписки."
   },
   "restore": {
     "button": "Восстановить покупки",

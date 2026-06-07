@@ -660,7 +660,13 @@
     "pendingHeading": "Čeká na schválení",
     "pendingDetail": "Vaše předplatné čeká na schválení (Ask to Buy nebo ověření bankou). Po schválení se aktivuje automaticky.",
     "storeUnreachable": "K App Store se teď nepodařilo připojit.",
-    "tryAgain": "Zkusit znovu"
+    "tryAgain": "Zkusit znovu",
+    "affiliateCodeLabel": "Partnerský kód",
+    "affiliateCodePlaceholder": "Volitelné",
+    "affiliateInvalidFormat": "Použijte písmena, čísla, spojovníky nebo podtržítka.",
+    "affiliateChecking": "Kontroluje se kód...",
+    "affiliateApplied": "Kód bude připojen k tomuto předplatnému.",
+    "affiliateCodeHelp": "Pokud vás sem někdo poslal, zadejte jeho kód před předplacením."
   },
   "restore": {
     "button": "Obnovit nákupy",

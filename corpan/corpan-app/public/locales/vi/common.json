@@ -660,7 +660,13 @@
     "pendingHeading": "Đang chờ phê duyệt",
     "pendingDetail": "Gói đăng ký của bạn đang chờ phê duyệt (Ask to Buy hoặc xác minh ngân hàng). Gói sẽ tự động kích hoạt sau khi được phê duyệt.",
     "storeUnreachable": "Chúng tôi không thể kết nối với App Store lúc này.",
-    "tryAgain": "Thử lại"
+    "tryAgain": "Thử lại",
+    "affiliateCodeLabel": "Mã liên kết",
+    "affiliateCodePlaceholder": "Tùy chọn",
+    "affiliateInvalidFormat": "Dùng chữ cái, số, dấu gạch ngang hoặc gạch dưới.",
+    "affiliateChecking": "Đang kiểm tra mã...",
+    "affiliateApplied": "Mã sẽ được gắn với gói đăng ký này.",
+    "affiliateCodeHelp": "Nếu có người giới thiệu bạn đến đây, hãy nhập mã của họ trước khi đăng ký."
   },
   "restore": {
     "button": "Khôi phục mua hàng",

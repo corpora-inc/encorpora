@@ -660,7 +660,13 @@
     "pendingHeading": "بانتظار الموافقة",
     "pendingDetail": "اشتراكك بانتظار الموافقة (طلب الشراء أو التحقق البنكي). سيتفعّل تلقائيًا بمجرد الموافقة عليه.",
     "storeUnreachable": "تعذّر علينا الوصول إلى App Store الآن.",
-    "tryAgain": "حاول مرة أخرى"
+    "tryAgain": "حاول مرة أخرى",
+    "affiliateCodeLabel": "رمز الشريك",
+    "affiliateCodePlaceholder": "اختياري",
+    "affiliateInvalidFormat": "استخدم أحرفًا أو أرقامًا أو شرطات أو شرطات سفلية.",
+    "affiliateChecking": "جارٍ التحقق من الرمز...",
+    "affiliateApplied": "سيتم إرفاق الرمز بهذا الاشتراك.",
+    "affiliateCodeHelp": "إذا أرسلك شخص ما إلى هنا، فأدخل رمزه قبل الاشتراك."
   },
   "restore": {
     "button": "استعادة المشتريات",

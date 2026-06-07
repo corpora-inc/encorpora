@@ -660,7 +660,13 @@
     "pendingHeading": "मंजुरीची प्रतीक्षा",
     "pendingDetail": "तुमच्या सदस्यतेला मंजुरीची प्रतीक्षा आहे (Ask to Buy किंवा बँक पडताळणी). मंजुरी मिळताच ती आपोआप सुरू होईल.",
     "storeUnreachable": "आत्ता App Store शी संपर्क साधता आला नाही.",
-    "tryAgain": "पुन्हा प्रयत्न करा"
+    "tryAgain": "पुन्हा प्रयत्न करा",
+    "affiliateCodeLabel": "अफिलिएट कोड",
+    "affiliateCodePlaceholder": "ऐच्छिक",
+    "affiliateInvalidFormat": "अक्षरे, अंक, हायफन किंवा अंडरस्कोर वापरा.",
+    "affiliateChecking": "कोड तपासत आहे...",
+    "affiliateApplied": "हा कोड या सदस्यतेशी जोडला जाईल.",
+    "affiliateCodeHelp": "कोणी तुम्हाला येथे पाठवले असल्यास, सदस्यता घेण्यापूर्वी त्यांचा कोड प्रविष्ट करा."
   },
   "restore": {
     "button": "खरेदी पुनर्संचयित करा",

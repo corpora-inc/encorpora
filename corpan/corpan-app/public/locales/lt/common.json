@@ -660,7 +660,13 @@
     "pendingHeading": "Laukiama patvirtinimo",
     "pendingDetail": "Jūsų prenumerata laukia patvirtinimo („Ask to Buy“ arba banko patikra). Patvirtinus ji bus aktyvuota automatiškai.",
     "storeUnreachable": "Šiuo metu nepavyko pasiekti App Store.",
-    "tryAgain": "Bandyti dar kartą"
+    "tryAgain": "Bandyti dar kartą",
+    "affiliateCodeLabel": "Partnerio kodas",
+    "affiliateCodePlaceholder": "Nebūtina",
+    "affiliateInvalidFormat": "Naudokite raides, skaičius, brūkšnelius arba pabraukimus.",
+    "affiliateChecking": "Tikrinamas kodas...",
+    "affiliateApplied": "Kodas bus susietas su šia prenumerata.",
+    "affiliateCodeHelp": "Jei kas nors jus čia atsiuntė, prieš prenumeruodami įveskite jo kodą."
   },
   "restore": {
     "button": "Atkurti pirkimus",

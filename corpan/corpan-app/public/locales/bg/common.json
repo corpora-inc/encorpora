@@ -660,7 +660,13 @@
     "pendingHeading": "Изчаква одобрение",
     "pendingDetail": "Абонаментът ви изчаква одобрение (Ask to Buy или банкова проверка). Ще се активира автоматично, щом бъде одобрен.",
     "storeUnreachable": "В момента не успяхме да се свържем с App Store.",
-    "tryAgain": "Опитайте отново"
+    "tryAgain": "Опитайте отново",
+    "affiliateCodeLabel": "Партньорски код",
+    "affiliateCodePlaceholder": "По избор",
+    "affiliateInvalidFormat": "Използвайте букви, цифри, тирета или долни черти.",
+    "affiliateChecking": "Проверка на кода...",
+    "affiliateApplied": "Кодът ще бъде прикачен към този абонамент.",
+    "affiliateCodeHelp": "Ако някой ви е изпратил тук, въведете кода му преди абониране."
   },
   "restore": {
     "button": "Възстановяване на покупки",

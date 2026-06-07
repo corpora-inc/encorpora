@@ -660,7 +660,13 @@
     "pendingHeading": "În așteptarea aprobării",
     "pendingDetail": "Abonamentul tău așteaptă aprobarea (Ask to Buy sau verificare bancară). Se va activa automat după aprobare.",
     "storeUnreachable": "Nu am putut accesa App Store acum.",
-    "tryAgain": "Încearcă din nou"
+    "tryAgain": "Încearcă din nou",
+    "affiliateCodeLabel": "Cod de afiliat",
+    "affiliateCodePlaceholder": "Opțional",
+    "affiliateInvalidFormat": "Folosește litere, cifre, cratime sau liniuțe de subliniere.",
+    "affiliateChecking": "Se verifică codul...",
+    "affiliateApplied": "Codul va fi atașat acestui abonament.",
+    "affiliateCodeHelp": "Dacă cineva te-a trimis aici, introdu codul înainte de abonare."
   },
   "restore": {
     "button": "Restaurare achiziții",

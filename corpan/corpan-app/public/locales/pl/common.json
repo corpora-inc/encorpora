@@ -660,7 +660,13 @@
     "pendingHeading": "Oczekiwanie na zatwierdzenie",
     "pendingDetail": "Twoja subskrypcja czeka na zatwierdzenie (Ask to Buy lub weryfikacja bankowa). Włączy się automatycznie po zatwierdzeniu.",
     "storeUnreachable": "Nie udało się teraz połączyć z App Store.",
-    "tryAgain": "Spróbuj ponownie"
+    "tryAgain": "Spróbuj ponownie",
+    "affiliateCodeLabel": "Kod partnerski",
+    "affiliateCodePlaceholder": "Opcjonalnie",
+    "affiliateInvalidFormat": "Użyj liter, cyfr, myślników lub podkreśleń.",
+    "affiliateChecking": "Sprawdzanie kodu...",
+    "affiliateApplied": "Kod zostanie przypisany do tej subskrypcji.",
+    "affiliateCodeHelp": "Jeśli ktoś Cię tu skierował, wpisz jego kod przed subskrypcją."
   },
   "restore": {
     "button": "Przywróć zakupy",

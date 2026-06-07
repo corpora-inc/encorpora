@@ -660,7 +660,13 @@
     "pendingHeading": "À espera de aprovação",
     "pendingDetail": "A sua subscrição está à espera de aprovação (Ask to Buy ou verificação bancária). Será ativada automaticamente assim que for aprovada.",
     "storeUnreachable": "Não foi possível aceder à App Store neste momento.",
-    "tryAgain": "Tentar novamente"
+    "tryAgain": "Tentar novamente",
+    "affiliateCodeLabel": "Código de afiliado",
+    "affiliateCodePlaceholder": "Opcional",
+    "affiliateInvalidFormat": "Use letras, números, hífenes ou sublinhados.",
+    "affiliateChecking": "A verificar o código...",
+    "affiliateApplied": "O código será associado a esta subscrição.",
+    "affiliateCodeHelp": "Se alguém o enviou para aqui, introduza o código antes de subscrever."
   },
   "restore": {
     "button": "Restaurar Compras",

@@ -15,6 +15,8 @@ type ContentPackHostProps = {
 
 type ContentPackEntitlementSnapshot = {
   plus: boolean
+  subjectId: string | null
+  entitlementToken: string | null
   subscription: {
     active: boolean
     plan: "monthly" | "annual" | null
@@ -237,9 +239,13 @@ export default function ContentPackHost({
   const hostApi = useMemo(() => createHostApi(id), [id])
   const subscription = useEntitlementStore((s) => s.subscription)
   const lastEntitlementRefresh = useEntitlementStore((s) => s.lastRefreshed)
+  const subjectId = useEntitlementStore((s) => s.subjectId)
+  const entitlementToken = useEntitlementStore((s) => s.entitlementToken)
   const entitlementSnapshot = useMemo<ContentPackEntitlementSnapshot>(
     () => ({
       plus: subscription.active,
+      subjectId,
+      entitlementToken,
       subscription: {
         active: subscription.active,
         plan: subscription.plan,
@@ -250,6 +256,8 @@ export default function ContentPackHost({
     }),
     [
       lastEntitlementRefresh,
+      entitlementToken,
+      subjectId,
       subscription.active,
       subscription.autoRenew,
       subscription.expiresAt,

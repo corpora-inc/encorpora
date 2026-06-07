@@ -660,7 +660,13 @@
     "pendingHeading": "Väntar på godkännande",
     "pendingDetail": "Din prenumeration väntar på godkännande (Be om att få köpa eller bankverifiering). Den aktiveras automatiskt när den har godkänts.",
     "storeUnreachable": "Vi kunde inte nå App Store just nu.",
-    "tryAgain": "Försök igen"
+    "tryAgain": "Försök igen",
+    "affiliateCodeLabel": "Partnerkod",
+    "affiliateCodePlaceholder": "Valfritt",
+    "affiliateInvalidFormat": "Använd bokstäver, siffror, bindestreck eller understreck.",
+    "affiliateChecking": "Kontrollerar kod...",
+    "affiliateApplied": "Koden kopplas till den här prenumerationen.",
+    "affiliateCodeHelp": "Om någon skickade dig hit, ange deras kod innan du prenumererar."
   },
   "restore": {
     "button": "Återställ köp",

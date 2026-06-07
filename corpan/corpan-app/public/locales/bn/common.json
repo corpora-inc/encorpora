@@ -660,7 +660,13 @@
     "pendingHeading": "অনুমোদনের অপেক্ষায়",
     "pendingDetail": "আপনার সাবস্ক্রিপশন অনুমোদনের অপেক্ষায় আছে (Ask to Buy বা ব্যাংক যাচাই)। অনুমোদন হলেই এটি স্বয়ংক্রিয়ভাবে সক্রিয় হবে।",
     "storeUnreachable": "এই মুহূর্তে আমরা App Store-এ পৌঁছাতে পারছি না।",
-    "tryAgain": "আবার চেষ্টা করুন"
+    "tryAgain": "আবার চেষ্টা করুন",
+    "affiliateCodeLabel": "অ্যাফিলিয়েট কোড",
+    "affiliateCodePlaceholder": "ঐচ্ছিক",
+    "affiliateInvalidFormat": "অক্ষর, সংখ্যা, হাইফেন বা আন্ডারস্কোর ব্যবহার করুন।",
+    "affiliateChecking": "কোড যাচাই করা হচ্ছে...",
+    "affiliateApplied": "কোডটি এই সাবস্ক্রিপশনের সাথে যুক্ত হবে।",
+    "affiliateCodeHelp": "কেউ আপনাকে এখানে পাঠালে, সাবস্ক্রাইব করার আগে তার কোড লিখুন।"
   },
   "restore": {
     "button": "ক্রয় পুনরুদ্ধার",

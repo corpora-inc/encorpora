@@ -660,7 +660,13 @@
     "pendingHeading": "Jóváhagyásra vár",
     "pendingDetail": "Az előfizetésed jóváhagyásra vár (Vásárlási engedély vagy banki ellenőrzés). A jóváhagyás után automatikusan aktiválódik.",
     "storeUnreachable": "Jelenleg nem tudtuk elérni az App Store-t.",
-    "tryAgain": "Próbáld újra"
+    "tryAgain": "Próbáld újra",
+    "affiliateCodeLabel": "Partnerkód",
+    "affiliateCodePlaceholder": "Nem kötelező",
+    "affiliateInvalidFormat": "Használj betűket, számokat, kötőjelet vagy aláhúzást.",
+    "affiliateChecking": "Kód ellenőrzése...",
+    "affiliateApplied": "A kód ehhez az előfizetéshez lesz kapcsolva.",
+    "affiliateCodeHelp": "Ha valaki ide küldött, add meg a kódját az előfizetés előtt."
   },
   "restore": {
     "button": "Vásárlások visszaállítása",

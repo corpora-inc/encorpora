@@ -660,7 +660,13 @@
     "pendingHeading": "承認待ち",
     "pendingDetail": "ご利用中のサブスクリプションは承認待ちです（Ask to Buy または銀行認証）。承認されると自動的に有効になります。",
     "storeUnreachable": "現在、App Store に接続できませんでした。",
-    "tryAgain": "再試行"
+    "tryAgain": "再試行",
+    "affiliateCodeLabel": "アフィリエイトコード",
+    "affiliateCodePlaceholder": "任意",
+    "affiliateInvalidFormat": "英字、数字、ハイフン、アンダースコアを使用してください。",
+    "affiliateChecking": "コードを確認中...",
+    "affiliateApplied": "このコードはこのサブスクリプションに関連付けられます。",
+    "affiliateCodeHelp": "紹介された場合は、登録前にそのコードを入力してください。"
   },
   "restore": {
     "button": "購入を復元",

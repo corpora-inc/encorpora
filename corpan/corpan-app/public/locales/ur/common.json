@@ -660,7 +660,13 @@
     "pendingHeading": "منظوری کا انتظار",
     "pendingDetail": "آپ کی سبسکرپشن منظوری کی منتظر ہے (Ask to Buy یا بینک تصدیق)۔ منظوری ملتے ہی یہ خودکار طور پر فعال ہو جائے گی۔",
     "storeUnreachable": "ہم ابھی App Store تک نہیں پہنچ سکے۔",
-    "tryAgain": "دوبارہ کوشش کریں"
+    "tryAgain": "دوبارہ کوشش کریں",
+    "affiliateCodeLabel": "افیلی ایٹ کوڈ",
+    "affiliateCodePlaceholder": "اختیاری",
+    "affiliateInvalidFormat": "حروف، اعداد، ڈیش یا انڈر اسکور استعمال کریں۔",
+    "affiliateChecking": "کوڈ چیک کیا جا رہا ہے...",
+    "affiliateApplied": "کوڈ اس سبسکرپشن کے ساتھ منسلک ہو جائے گا۔",
+    "affiliateCodeHelp": "اگر کسی نے آپ کو یہاں بھیجا ہے تو سبسکرائب کرنے سے پہلے اس کا کوڈ درج کریں۔"
   },
   "restore": {
     "button": "خریداریاں بحال کریں",

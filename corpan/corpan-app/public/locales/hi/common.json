@@ -660,7 +660,13 @@
     "pendingHeading": "मंजूरी की प्रतीक्षा में",
     "pendingDetail": "आपकी सदस्यता मंजूरी की प्रतीक्षा में है (Ask to Buy या बैंक सत्यापन)। मंजूरी मिलते ही यह अपने-आप सक्रिय हो जाएगी।",
     "storeUnreachable": "अभी App Store तक पहुंचा नहीं जा सका।",
-    "tryAgain": "फिर कोशिश करें"
+    "tryAgain": "फिर कोशिश करें",
+    "affiliateCodeLabel": "अफ़िलिएट कोड",
+    "affiliateCodePlaceholder": "वैकल्पिक",
+    "affiliateInvalidFormat": "अक्षर, अंक, हाइफ़न या अंडरस्कोर का उपयोग करें।",
+    "affiliateChecking": "कोड जाँचा जा रहा है...",
+    "affiliateApplied": "कोड इस सदस्यता से जोड़ा जाएगा।",
+    "affiliateCodeHelp": "अगर किसी ने आपको यहाँ भेजा है, तो सदस्यता लेने से पहले उसका कोड दर्ज करें।"
   },
   "restore": {
     "button": "खरीदारी पुनर्स्थापित करें",

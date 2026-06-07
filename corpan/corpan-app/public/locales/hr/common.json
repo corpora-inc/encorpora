@@ -660,7 +660,13 @@
     "pendingHeading": "Čeka se odobrenje",
     "pendingDetail": "Vaša pretplata čeka odobrenje (Ask to Buy ili potvrdu banke). Aktivirat će se automatski nakon odobrenja.",
     "storeUnreachable": "Trenutačno nismo mogli pristupiti App Storeu.",
-    "tryAgain": "Pokušajte ponovno"
+    "tryAgain": "Pokušajte ponovno",
+    "affiliateCodeLabel": "Partnerski kod",
+    "affiliateCodePlaceholder": "Neobavezno",
+    "affiliateInvalidFormat": "Upotrijebite slova, brojeve, crtice ili podvlake.",
+    "affiliateChecking": "Provjera koda...",
+    "affiliateApplied": "Kod će biti povezan s ovom pretplatom.",
+    "affiliateCodeHelp": "Ako vas je netko poslao ovamo, unesite njegov kod prije pretplate."
   },
   "restore": {
     "button": "Obnovi kupnje",

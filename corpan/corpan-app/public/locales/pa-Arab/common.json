@@ -660,7 +660,13 @@
     "pendingHeading": "منظوری دی اُڈیک",
     "pendingDetail": "تہاڈی سبسکرپشن منظوری دی اُڈیک وچ اے (Ask to Buy یا بینک تصدیق)۔ منظوری ملدے ایہ خودکار طور تے فعال ہو جاوے گی۔",
     "storeUnreachable": "اس وقت اسیں App Store تک نہیں پہنچ سکے۔",
-    "tryAgain": "دوبارہ کوشش کرو"
+    "tryAgain": "دوبارہ کوشش کرو",
+    "affiliateCodeLabel": "افیلی ایٹ کوڈ",
+    "affiliateCodePlaceholder": "اختیاری",
+    "affiliateInvalidFormat": "حروف، نمبر، ڈیش یا انڈر سکور استعمال کرو۔",
+    "affiliateChecking": "کوڈ چیک ہو رہا ہے...",
+    "affiliateApplied": "کوڈ اس سبسکرپشن نال جڑ جائے گا۔",
+    "affiliateCodeHelp": "جے کسے نے تہانوں ایتھے بھیجیا اے، سبسکرائب کرن توں پہلاں اوہدا کوڈ درج کرو۔"
   },
   "restore": {
     "button": "خریداریاں بحال کرو",

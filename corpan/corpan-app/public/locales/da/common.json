@@ -660,7 +660,13 @@
     "pendingHeading": "Venter på godkendelse",
     "pendingDetail": "Dit abonnement venter på godkendelse (Spørg om at købe eller bankbekræftelse). Det aktiveres automatisk, når det er godkendt.",
     "storeUnreachable": "Vi kunne ikke nå App Store lige nu.",
-    "tryAgain": "Prøv igen"
+    "tryAgain": "Prøv igen",
+    "affiliateCodeLabel": "Partnerkode",
+    "affiliateCodePlaceholder": "Valgfrit",
+    "affiliateInvalidFormat": "Brug bogstaver, tal, bindestreger eller understregninger.",
+    "affiliateChecking": "Kontrollerer kode...",
+    "affiliateApplied": "Koden knyttes til dette abonnement.",
+    "affiliateCodeHelp": "Hvis nogen sendte dig hertil, skal du indtaste deres kode, før du abonnerer."
   },
   "restore": {
     "button": "Gendan køb",

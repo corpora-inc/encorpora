@@ -660,7 +660,13 @@
     "pendingHeading": "મંજૂરીની રાહમાં",
     "pendingDetail": "તમારી સબ્સ્ક્રિપ્શન મંજૂરીની રાહમાં છે (Ask to Buy અથવા બેંક ચકાસણી). મંજૂરી મળતાં જ તે આપમેળે સક્રિય થશે.",
     "storeUnreachable": "હમણાં App Store સુધી પહોંચી શક્યા નથી.",
-    "tryAgain": "ફરી પ્રયાસ કરો"
+    "tryAgain": "ફરી પ્રયાસ કરો",
+    "affiliateCodeLabel": "અફિલિએટ કોડ",
+    "affiliateCodePlaceholder": "વૈકલ્પિક",
+    "affiliateInvalidFormat": "અક્ષરો, અંકો, હાઇફન અથવા અન્ડરસ્કોર વાપરો.",
+    "affiliateChecking": "કોડ ચકાસી રહ્યા છીએ...",
+    "affiliateApplied": "કોડ આ સબ્સ્ક્રિપ્શન સાથે જોડાશે.",
+    "affiliateCodeHelp": "જો કોઈએ તમને અહીં મોકલ્યા હોય, તો સબ્સ્ક્રાઇબ કરતા પહેલાં તેમનો કોડ દાખલ કરો."
   },
   "restore": {
     "button": "ખરીદીઓ પુનઃસ્થાપિત કરો",

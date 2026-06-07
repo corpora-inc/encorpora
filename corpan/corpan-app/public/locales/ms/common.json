@@ -660,7 +660,13 @@
     "pendingHeading": "Menunggu kelulusan",
     "pendingDetail": "Langganan anda sedang menunggu kelulusan (Ask to Buy atau pengesahan bank). Ia akan diaktifkan secara automatik sebaik sahaja diluluskan.",
     "storeUnreachable": "Kami tidak dapat menghubungi App Store buat masa ini.",
-    "tryAgain": "Cuba lagi"
+    "tryAgain": "Cuba lagi",
+    "affiliateCodeLabel": "Kod afiliasi",
+    "affiliateCodePlaceholder": "Pilihan",
+    "affiliateInvalidFormat": "Gunakan huruf, nombor, tanda sempang atau garis bawah.",
+    "affiliateChecking": "Menyemak kod...",
+    "affiliateApplied": "Kod akan dilampirkan pada langganan ini.",
+    "affiliateCodeHelp": "Jika seseorang menghantar anda ke sini, masukkan kod mereka sebelum melanggan."
   },
   "restore": {
     "button": "Pulihkan Pembelian",

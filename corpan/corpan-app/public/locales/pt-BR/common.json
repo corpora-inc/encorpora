@@ -660,7 +660,13 @@
     "pendingHeading": "Aguardando aprovação",
     "pendingDetail": "Sua assinatura está aguardando aprovação (Solicitar compra ou verificação bancária). Ela será ativada automaticamente assim que for aprovada.",
     "storeUnreachable": "Não foi possível acessar a App Store agora.",
-    "tryAgain": "Tentar novamente"
+    "tryAgain": "Tentar novamente",
+    "affiliateCodeLabel": "Código de afiliado",
+    "affiliateCodePlaceholder": "Opcional",
+    "affiliateInvalidFormat": "Use letras, números, hífens ou sublinhados.",
+    "affiliateChecking": "Verificando código...",
+    "affiliateApplied": "O código será vinculado a esta assinatura.",
+    "affiliateCodeHelp": "Se alguém te enviou para cá, insira o código antes de assinar."
   },
   "restore": {
     "button": "Restaurar compras",

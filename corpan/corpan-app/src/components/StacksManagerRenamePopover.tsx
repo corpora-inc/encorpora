@@ -1,5 +1,5 @@
 // src/components/StacksManagerRenamePopover.tsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type MutableRefObject, type RefObject } from "react";
 import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -16,7 +16,7 @@ export default function StacksManagerRenamePopover({
     setOpen: (b: boolean) => void;
     nameDraft: string;
     onChange: (next: string) => void;
-    inputRef: React.RefObject<HTMLInputElement | null>;
+    inputRef: RefObject<HTMLInputElement | null>;
 }) {
     const { t } = useTranslation();
     const triggerWrapRef = useRef<HTMLSpanElement>(null);
@@ -69,7 +69,9 @@ export default function StacksManagerRenamePopover({
                     }}
                 >
                     <input
-                        ref={inputRef}
+                        ref={(node) => {
+                            (inputRef as MutableRefObject<HTMLInputElement | null>).current = node;
+                        }}
                         type="text"
                         className="w-full rounded-md border border-input bg-background px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-ring"
                         value={nameDraft}
