@@ -136,6 +136,8 @@ export type SafeProfile = z.infer<typeof SafeProfile>
  */
 export const ProfilePublish = z.object({
   stack: StackReveal,
+  /** Explicit opt-out for surfaces where stack disclosure is optional. */
+  revealStack: z.boolean().optional(),
   /** ISO-3166-1 alpha-2 (uppercase). Omit to never reveal a place. */
   country: z.string().regex(/^[A-Z]{2}$/).optional(),
   /** Continent the country belongs to (client-resolved; validated server-side). */

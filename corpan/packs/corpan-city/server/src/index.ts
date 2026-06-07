@@ -50,9 +50,27 @@ gameServer
   .sortBy({ clients: -1 })
   .enableRealtimeListing()
 
+// Teletron reuses the exact same privacy + invite + mediated-chat protocol, but
+// its waiting room needs to see everyone rather than nearby city avatars. A
+// huge AOI cell keeps the full lobby in one view without introducing a second
+// server implementation or another paid service.
+gameServer
+  .define("teletron", PlazaRoom, {
+    topology,
+    roomLabel: "teletron",
+    maxClients: 100,
+    aoi: { cellSize: 10000, radius: 1 },
+  })
+  .sortBy({ clients: -1 })
+  .enableRealtimeListing()
+
 gameServer
   .listen(PORT)
-  .then(() => console.log(`[plaza] presence server listening on :${PORT} (topology ${topology.id})`))
+  .then(() =>
+    console.log(
+      `[presence] server listening on :${PORT} (rooms plaza, teletron; topology ${topology.id})`,
+    ),
+  )
   .catch((err) => {
     console.error("[plaza] failed to start:", err)
     process.exit(1)

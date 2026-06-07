@@ -82,6 +82,8 @@ export class PlazaRoom extends Room<PlazaState> {
   /* ── Interaction layer (profile reveal / chat / challenge / trade) ── */
   /** server-private geo tally powering the k-anonymity place reveal. */
   private geo = new GeoHistogram()
+  /** Additional learning languages, kept private until a profile card is requested. */
+  private alsoLearning = new Map<string, SafeProfile["stack"]["alsoLearning"]>()
   /** playerId → sessionId, so an invite/trade addressed by durable PlayerId routes. */
   private byPlayerId = new Map<string, string>()
   /** invites we're tracking: pending for accept/decline, accepted as a session authz record. */
@@ -89,8 +91,14 @@ export class PlazaRoom extends Room<PlazaState> {
   /** coarse anti-grief: sessionId → recent action timestamps (sliding window). */
   private actionLog = new Map<string, number[]>()
 
-  onCreate(options: { topology: RoomTopology; roomLabel?: string; aoi?: Partial<AoiConfig> }) {
+  onCreate(options: {
+    topology: RoomTopology
+    roomLabel?: string
+    maxClients?: number
+    aoi?: Partial<AoiConfig>
+  }) {
     this.topology = options.topology
+    if (options.maxClients) this.maxClients = options.maxClients
     // AOI cell size / radius are configurable (per-room override → env → default).
     // ENV lets ops tune interest breadth without a deploy: WP_AOI_CELL, WP_AOI_RADIUS.
     const cellSize =
@@ -116,7 +124,7 @@ export class PlazaRoom extends Room<PlazaState> {
     this.registerInteractionHandlers()
 
     console.log(
-      `[plaza] room ${this.roomId} created on topology ${this.topology.id} ` +
+      `[${options.roomLabel ?? "plaza"}] room ${this.roomId} created on topology ${this.topology.id} ` +
         `(AOI cell=${cellSize}u radius=${radius})`,
     )
   }
@@ -175,6 +183,7 @@ export class PlazaRoom extends Room<PlazaState> {
     // Interaction-layer cleanup: drop from the geo tally, the playerId index,
     // any open invites, and the rate-limit log.
     this.geo.remove(client.sessionId)
+    this.alsoLearning.delete(client.sessionId)
     if (player?.playerId && this.byPlayerId.get(player.playerId) === client.sessionId) {
       this.byPlayerId.delete(player.playerId)
     }
@@ -267,8 +276,12 @@ export class PlazaRoom extends Room<PlazaState> {
       }
       const p = this.state.players.get(client.sessionId)
       if (!p) return
-      p.target = String(parsed.data.stack.target)
-      p.native = String(parsed.data.stack.native)
+      p.target = parsed.data.revealStack === false ? "und" : String(parsed.data.stack.target)
+      p.native = parsed.data.revealStack === false ? "und" : String(parsed.data.stack.native)
+      this.alsoLearning.set(
+        client.sessionId,
+        parsed.data.revealStack === false ? undefined : parsed.data.stack.alsoLearning,
+      )
       // Country/continent feed the histogram only — they are kept off the wire.
       this.geo.set(client.sessionId, parsed.data.country, parsed.data.continent)
     })
@@ -289,6 +302,7 @@ export class PlazaRoom extends Room<PlazaState> {
         stack: {
           target: (tp.target || "en") as SafeProfile["stack"]["target"],
           native: (tp.native || tp.target || "en") as SafeProfile["stack"]["native"],
+          alsoLearning: this.alsoLearning.get(targetSession),
         },
         place: this.geo.reveal(targetSession),
       }

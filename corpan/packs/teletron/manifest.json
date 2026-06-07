@@ -1,0 +1,35 @@
+{
+  "id": "teletron",
+  "name": "Teletron",
+  "version": "0.1.0",
+  "entry": "dist/app.js",
+  "entryType": "script",
+  "styles": [
+    "dist/app.css"
+  ],
+  "sdkVersion": "0.1.0",
+  "minAppVersion": "0.17.0",
+  "tier": "free",
+  "packType": "social",
+  "dependsOn": [
+    {
+      "id": "llm-base-qwen3-4b-v1",
+      "minVersion": "0.1.0"
+    }
+  ],
+  "voiceSupport": {
+    "stt": {
+      "provider": "auto"
+    }
+  },
+  "displayName": {
+    "en": "Teletron"
+  },
+  "tagline": {
+    "en": "Talk to someone new. Your local AI keeps the conversation safe."
+  },
+  "descriptionLocalized": {
+    "en": "A private-by-default waiting room for real conversations, transformed and moderated independently by local AI on both devices."
+  },
+  "devRevision": "2026-06-07T20:29:34.618Z"
+}

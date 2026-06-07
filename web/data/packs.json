@@ -155,6 +155,39 @@
     "tagline": "A living city that turns every encounter into a lesson."
   },
   {
+    "id": "teletron",
+    "name": "Teletron",
+    "description": "A private-by-default waiting room for real conversations, transformed and moderated independently by local AI on both devices.",
+    "status": "prototype",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/teletron/manifest.json",
+    "zipUrl": "/corpan/packs/teletron.zip",
+    "landingUrl": "/corpan/packs/teletron/",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/teletron",
+    "minAppVersion": "0.17.0",
+    "v1Listed": false,
+    "channel": "stable",
+    "packType": "social",
+    "purchase": {
+      "type": "free",
+      "priceLabel": "Free · Plus gets unlimited messages"
+    },
+    "categories": [
+      "speak",
+      "wild"
+    ],
+    "goodForClass": [
+      "learner",
+      "polyglot",
+      "enjoyer"
+    ],
+    "recommendOrder": 8,
+    "featuredFor": [
+      "speak"
+    ],
+    "tagline": "Talk to someone new. Local AI keeps the conversation safe."
+  },
+  {
     "id": "hanzipan",
     "name": "Hanzipan",
     "description": "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples",

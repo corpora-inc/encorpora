@@ -10,16 +10,14 @@ TLS for us, so the pack connects with `wss://…` and there is
 no cert to manage. The server is stateless presence — **no secrets, no env
 credentials**.
 
-> Prep-only note: this doc is the exact runbook for the integrator who holds the
-> AWS keys. Nothing here was run against the cloud by the CR that added it. The
-> Dockerfile's runtime path (tsx → contracts alias → topology JSON) was verified
-> locally by booting `PORT=8080 npx tsx src/index.ts` (logs
-> `presence server listening on :8080 (topology plaza-grand)`). `terraform
-> validate` passes. The integrator runs `docker build` + `terraform apply`.
+Production uses a direct ARM EC2 instance with Caddy, an Elastic IP, and an
+`sslip.io` hostname. The current endpoint is
+`wss://presence.3-142-26-37.sslip.io`.
 
-Estimated cost: **~$45–60/mo** for a single always-warm 0.25 vCPU / 0.5 GB
-instance (`min_size = 1`, required so a presence socket is always live), plus
-trivial ECR storage. Scaling out (`max_size = 3`) only adds cost under load.
+Estimated cost: **~$10/mo** for the default always-warm `t4g.micro`, Elastic IP,
+and 8 GB gp3 volume, plus trivial ECR storage and transfer. A `t4g.nano` lowers
+that to about **$7.30/mo**, but its 512 MB RAM caused heavy swapping during
+bootstrap and is not the recommended production baseline.
 
 ---
 
@@ -46,7 +44,7 @@ Docker must be running. Terraform >= 1.5.
 
 ## 1. Provision the ECR repository (first apply, repo only)
 
-App Runner can only pull an image that already exists, so create the ECR repo
+The EC2 host can only pull an image that already exists, so create the ECR repo
 **before** pushing. Run terraform from `corpan/infra/terraform` with the plaza
 server enabled:
 
@@ -82,8 +80,8 @@ aws ecr get-login-password --region "$AWS_REGION" \
   | docker login --username AWS --password-stdin \
     "${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
 
-# Build for the App Runner platform (linux/amd64 — matters on Apple Silicon)
-docker build --platform linux/amd64 \
+# Build for the Graviton EC2 platform (linux/arm64)
+docker build --platform linux/arm64 \
   -f server/Dockerfile \
   -t "corpan-plaza-server:${IMAGE_TAG}" \
   .
@@ -95,25 +93,29 @@ docker push "${ECR_REPO}:${IMAGE_TAG}"
 
 ---
 
-## 3. Create the App Runner service (full apply)
+## 3. Create or update the presence EC2 host
 
-Now the image exists, apply the rest (ECR access role, autoscaling, service):
+Now the image exists, apply the shared host:
 
 ```bash
 cd corpan/infra/terraform
 terraform apply \
   -var enable_plaza_server=true \
+  -var enable_plaza_apprunner=false \
+  -var enable_presence_ec2=true \
   -var plaza_server_image_tag="$IMAGE_TAG"
 ```
 
-Default instance size is `0.25 vCPU` / `0.5 GB`. Bump per load with
-`-var plaza_server_cpu="1 vCPU" -var plaza_server_memory="2 GB"`.
+Default instance size is `t4g.micro` (2 burstable vCPU / 1 GB). Change it with
+`-var presence_ec2_instance_type=t4g.small`. A resize stops and starts the
+instance, usually causing 1-3 minutes of connection downtime. The Elastic IP
+and URL remain stable.
 
-Capture the service URL (App Runner provisioning takes a few minutes):
+Capture the service URL:
 
 ```bash
-terraform output -raw plaza_server_url       # https://xxxx.us-east-2.awsapprunner.com
-terraform output -raw plaza_server_wss_url   # wss://xxxx.us-east-2.awsapprunner.com  ← use this
+terraform output -raw presence_server_url
+terraform output -raw presence_server_wss_url   # use this
 ```
 
 ---
@@ -129,14 +131,14 @@ The client resolves the server URL in `src/multiplayer/initMultiplayer.ts`
 
 ```bash
 cd corpan/packs/corpan-city
-VITE_WP_SERVER_URL="wss://xxxx.us-east-2.awsapprunner.com" npm run build
+VITE_WP_SERVER_URL="wss://presence.3-142-26-37.sslip.io" npm run build
 # → dist/ now has the wss:// URL inlined; multiplayer is on by default.
 ```
 
 **Runtime injection (no rebuild)** — set before the pack boots in the host:
 
 ```js
-globalThis.__WP_SERVER_URL = "wss://xxxx.us-east-2.awsapprunner.com"
+globalThis.__WP_SERVER_URL = "wss://presence.3-142-26-37.sslip.io"
 ```
 
 ---
@@ -151,7 +153,7 @@ other move in real time.
 - **Against any build (no bake), via query param:** open two windows with
 
   ```
-  https://<pack-url>/?wpServer=wss://xxxx.us-east-2.awsapprunner.com
+  https://<pack-url>/?wpServer=wss://presence.3-142-26-37.sslip.io
   ```
 
 In both windows, walk the two avatars near each other: each sees the other's
@@ -161,7 +163,7 @@ profile card. That proves presence end-to-end against the deployed server.
 Quick connectivity check from a terminal (HTTP matchmake endpoint over TLS):
 
 ```bash
-curl -s "https://xxxx.us-east-2.awsapprunner.com/matchmake/joinOrCreate/plaza" \
+curl -s "https://presence.3-142-26-37.sslip.io/matchmake/joinOrCreate/plaza" \
   -H 'content-type: application/json' -d '{}' | head
 # A JSON room/seat reservation (or a Colyseus error body) = the server is live.
 ```
@@ -171,11 +173,15 @@ curl -s "https://xxxx.us-east-2.awsapprunner.com/matchmake/joinOrCreate/plaza" \
 ## 6. Updating the server later
 
 ```bash
-# rebuild + push a new tag, then point the service at it:
-docker build --platform linux/amd64 -f server/Dockerfile -t "${ECR_REPO}:<newtag>" .   # from pack root
+# rebuild + push a new tag, then point the host at it:
+docker build --platform linux/arm64 -f server/Dockerfile -t "${ECR_REPO}:<newtag>" .   # from pack root
 docker push "${ECR_REPO}:<newtag>"
 cd corpan/infra/terraform
-terraform apply -var enable_plaza_server=true -var plaza_server_image_tag="<newtag>"
+terraform apply \
+  -var enable_plaza_server=true \
+  -var enable_plaza_apprunner=false \
+  -var enable_presence_ec2=true \
+  -var plaza_server_image_tag="<newtag>"
 ```
 
 `auto_deployments_enabled = false`, so a push alone does NOT redeploy — the

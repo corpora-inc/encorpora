@@ -1,14 +1,13 @@
 # ---------------------------------------------------------------------------
-# Corpan City — Colyseus presence server on AWS App Runner.
+# Corpan City — shared Colyseus presence server image + optional legacy App Runner.
 #
-# App Runner runs the container from server/Dockerfile, terminates TLS for us
-# (every service gets an HTTPS *.awsapprunner.com URL → the pack connects with
-# wss://), autoscales, and health-checks. The server speaks bare WS on $PORT
-# (8080 here); App Runner's HTTPS front handles wss upgrade transparently.
+# ECR stores the container from server/Dockerfile. Production uses
+# presence_ec2.tf because App Runner's managed frontend did not pass Colyseus
+# WebSocket upgrades reliably. The App Runner resources remain only as a gated
+# legacy fallback.
 #
 # Region / provider / backend all inherit the existing us-east-2 setup
 # (provider.tf default aws provider, backend.tf S3 state). NOTHING here is
-# applied by this CR — the integrator runs `terraform apply` with AWS creds.
 # See packs/corpan-city/server/DEPLOY.md for the end-to-end runbook.
 #
 # Toggle: gated behind var.enable_plaza_server (default false) so it is inert
@@ -17,7 +16,13 @@
 
 variable "enable_plaza_server" {
   type        = bool
-  description = "Provision the Corpan City Colyseus server (ECR repo + App Runner service)."
+  description = "Provision the shared Corpan presence server ECR repository."
+  default     = false
+}
+
+variable "enable_plaza_apprunner" {
+  type        = bool
+  description = "Provision the legacy App Runner host. Keep false when the EC2 WebSocket host is enabled."
   default     = false
 }
 
@@ -98,7 +103,7 @@ resource "aws_ecr_lifecycle_policy" "plaza_server" {
 # --- IAM: App Runner's access role to PULL from the private ECR repo --------
 
 data "aws_iam_policy_document" "apprunner_ecr_assume" {
-  count = var.enable_plaza_server ? 1 : 0
+  count = var.enable_plaza_apprunner ? 1 : 0
   statement {
     actions = ["sts:AssumeRole"]
     principals {
@@ -109,7 +114,7 @@ data "aws_iam_policy_document" "apprunner_ecr_assume" {
 }
 
 resource "aws_iam_role" "plaza_apprunner_ecr_access" {
-  count              = var.enable_plaza_server ? 1 : 0
+  count              = var.enable_plaza_apprunner ? 1 : 0
   name               = "${var.project_name}-plaza-apprunner-ecr-access"
   assume_role_policy = data.aws_iam_policy_document.apprunner_ecr_assume[0].json
 
@@ -120,7 +125,7 @@ resource "aws_iam_role" "plaza_apprunner_ecr_access" {
 }
 
 resource "aws_iam_role_policy_attachment" "plaza_apprunner_ecr_access" {
-  count      = var.enable_plaza_server ? 1 : 0
+  count      = var.enable_plaza_apprunner ? 1 : 0
   role       = aws_iam_role.plaza_apprunner_ecr_access[0].name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppRunnerServicePolicyForECRAccess"
 }
@@ -128,7 +133,7 @@ resource "aws_iam_role_policy_attachment" "plaza_apprunner_ecr_access" {
 # --- App Runner service ------------------------------------------------------
 
 resource "aws_apprunner_service" "plaza_server" {
-  count        = var.enable_plaza_server ? 1 : 0
+  count        = var.enable_plaza_apprunner ? 1 : 0
   service_name = "${var.project_name}-plaza-server"
 
   source_configuration {
@@ -182,7 +187,7 @@ resource "aws_apprunner_service" "plaza_server" {
 }
 
 resource "aws_apprunner_auto_scaling_configuration_version" "plaza_server" {
-  count                           = var.enable_plaza_server ? 1 : 0
+  count                           = var.enable_plaza_apprunner ? 1 : 0
   auto_scaling_configuration_name = "${var.project_name}-plaza-server"
 
   max_concurrency = var.plaza_server_max_concurrency
@@ -198,12 +203,12 @@ resource "aws_apprunner_auto_scaling_configuration_version" "plaza_server" {
 # --- Outputs -----------------------------------------------------------------
 
 output "plaza_server_url" {
-  value       = var.enable_plaza_server ? "https://${aws_apprunner_service.plaza_server[0].service_url}" : ""
+  value       = var.enable_plaza_apprunner ? "https://${aws_apprunner_service.plaza_server[0].service_url}" : ""
   description = "App Runner HTTPS URL for the plaza server. The pack connects with the wss:// equivalent (swap https→wss). Bake into VITE_WP_SERVER_URL."
 }
 
 output "plaza_server_wss_url" {
-  value       = var.enable_plaza_server ? "wss://${aws_apprunner_service.plaza_server[0].service_url}" : ""
+  value       = var.enable_plaza_apprunner ? "wss://${aws_apprunner_service.plaza_server[0].service_url}" : ""
   description = "Ready-to-use wss:// URL for VITE_WP_SERVER_URL / __WP_SERVER_URL / ?wpServer=."
 }
 
