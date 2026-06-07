@@ -131,6 +131,22 @@
     "primaryLanguage": "主要（UI）语言"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán 不断进化",
+      "subtitle": "你是最早加入的一批用户",
+      "tinyTeamTitle": "一个由爱好者组成的小团队",
+      "tinyTeamDesc": "独立、无广告，并尊重每一位使用者——一个小团队，正在打造我们一直想要的语言学习应用。",
+      "bleedingEdgeTitle": "刻意为之的尖端技术",
+      "bleedingEdgeDesc": "Corpán 不断拓展你的设备所能做到的事：沉浸式世界、语音识别、自然语音和最新 AI 模型协同工作，创造全新的学习方式。许多功能直接在你的设备上运行，无需依赖数据中心，也能获得私密、离线优先的学习体验。我们会在新技术尚未完全打磨时就将它交到你手中，因此它偶尔可能表现异常、运行缓慢，或者超出你的设备所能处理的范围。作为回报，只要强大的新学习体验成为可能，你就能第一时间使用。",
+      "yourLangTitle": "我们不会说所有支持的语言",
+      "yourLangDesc": "这是坦诚的事实。我们为数十种语言开发，是因为每个人都值得拥有强大的学习工具，而不是因为我们的小团队已经懂得所有语言。你可能会发现我们做错的地方。如果你比我们更了解{{lang}}，希望你能告诉我们，并帮助 Corpán 真正配得上这门语言。",
+      "plea": "你有想法、修正意见，或者希望看到的大胆学习体验吗？请告诉我们。我们会阅读每一条消息，并认真思考它能为 Corpán 和语言学习开启哪些可能。",
+      "emailCta": "给我们发邮件",
+      "githubCta": "去 GitHub 提 issue",
+      "join": "想帮助 Corpán 走向世界吗？我们一直在寻找合作伙伴、翻译者和本地大使。欢迎联系我们。",
+      "pact": "点击下方开始学习，与我们共同成长。🤝",
+      "cta": "我加入，开始吧"
+    },
     "welcome": "欢迎",
     "makePrimaryLanguage": "将简体中文设为我的主要语言",
     "canChangeLater": "别担心，您可以随时更改。",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "支持Corpán并解锁全部内容。可选，随时。",
+      "subscribedTitle": "您是 Corpanista",
+      "subscribedDesc": "感谢您让 Corpán 保持无广告并持续成长。",
       "joinTitle": "加入Corpanistas",
       "start": "开始探索",
       "subtitle": "Corpán由一个小型开源团队制作。来打个招呼吧 — 如果您喜欢它，可以支持我们。",
@@ -642,7 +660,13 @@
     "pendingHeading": "等待批准",
     "pendingDetail": "你的订阅正在等待批准（“购买前询问”或银行验证）。获批后将自动生效。",
     "storeUnreachable": "目前无法连接到 App Store。",
-    "tryAgain": "重试"
+    "tryAgain": "重试",
+    "affiliateCodeLabel": "联盟代码",
+    "affiliateCodePlaceholder": "可选",
+    "affiliateInvalidFormat": "请使用字母、数字、连字符或下划线。",
+    "affiliateChecking": "正在检查代码...",
+    "affiliateApplied": "该代码将关联到此订阅。",
+    "affiliateCodeHelp": "如果有人推荐你来到这里，请在订阅前输入他们的代码。"
   },
   "restore": {
     "button": "恢复购买",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "图托马顿",
       "blurb": "你的专属设备内置导师，耐心助你学习每一种语言。"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "一个将每次相遇化为课程的生活城市。"
     }
   },
   "home": {

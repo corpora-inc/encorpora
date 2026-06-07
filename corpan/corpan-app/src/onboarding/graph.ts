@@ -50,7 +50,12 @@ function commitDraft(ctx: NodeCtx) {
 export const ONBOARDING_GRAPH: OnboardingGraph = {
   welcome: { kind: "adapter", id: "welcome", component: "welcome", next: "pickPrimary" },
 
-  pickPrimary: { kind: "adapter", id: "pickPrimary", component: "pickPrimary", next: "forkJourney" },
+  pickPrimary: { kind: "adapter", id: "pickPrimary", component: "pickPrimary", next: "welcomePact" },
+
+  // Honest-hello interlude: set expectations + build a human connection in the
+  // user's chosen language before the journey fork. (Compliant feedback plea,
+  // not a review gate.)
+  welcomePact: { kind: "adapter", id: "welcomePact", component: "welcomePact", next: "forkJourney" },
 
   forkJourney: {
     kind: "question",

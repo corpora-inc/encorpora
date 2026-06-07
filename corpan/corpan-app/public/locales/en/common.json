@@ -191,6 +191,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "A patient on-device tutor for every language you're learning."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "A living city that turns every encounter into a lesson."
     }
   },
   "onboarding": {
@@ -217,7 +221,25 @@
       "subtitle": "Corpán is made by a tiny open-source team. Come say hi — and if you love it, you can support us.",
       "joinTitle": "Join the Corpanistas",
       "joinDesc": "Support Corpán and unlock everything. Optional, anytime.",
+      "subscribedTitle": "You're a Corpanista",
+      "subscribedDesc": "Thank you for keeping Corpán ad-free and growing.",
       "start": "Start exploring"
+    },
+    "welcomePact": {
+      "title": "Corpán Evolves",
+      "subtitle": "You're an early adopter",
+      "tinyTeamTitle": "A tiny team of enthusiasts",
+      "tinyTeamDesc": "Independent, ad-free, and built with respect for the people who use it — a small crew making the language app we always wanted.",
+      "bleedingEdgeTitle": "Cutting-edge, on purpose",
+      "bleedingEdgeDesc": "Corpán pushes the limits of what your device can do: immersive worlds, speech recognition, natural voices, and the latest AI models, all working together to create new ways to learn. Much of it runs directly on your device, giving you private, offline-first learning without depending on a data center. We release new technology while it is still raw, which means it may occasionally behave strangely, run slowly, or simply be more than your device can handle. In return, you get powerful new learning experiences as soon as they become possible.",
+      "yourLangTitle": "We don't speak every language we support",
+      "yourLangDesc": "That's the honest truth. We're building for dozens of languages because everyone deserves powerful learning tools, not because our tiny team already knows them all. You may find things we got wrong. If you know {{lang}} better than we do, we hope you'll tell us and help make Corpán worthy of it.",
+      "plea": "Have an idea, a correction, or a wild learning experience you want to see? Tell us. We read every message and think deeply about what it could unlock for Corpán and language learning.",
+      "emailCta": "Email us",
+      "githubCta": "Open a GitHub issue",
+      "join": "Want to help bring Corpán to the world? We're always looking for collaborators, translators, and local ambassadors. Come find us.",
+      "pact": "Tap below to start learning and grow with us. 🤝",
+      "cta": "I'm in — let's go"
     },
     "fork": {
       "title": "What brings you to Corpán?",
@@ -716,7 +738,13 @@
     "pendingHeading": "Waiting for approval",
     "pendingDetail": "Your subscription is awaiting approval (Ask to Buy or bank verification). It will activate automatically once approved.",
     "storeUnreachable": "We couldn't reach the App Store right now.",
-    "tryAgain": "Try again"
+    "tryAgain": "Try again",
+    "affiliateCodeLabel": "Affiliate code",
+    "affiliateCodePlaceholder": "Optional",
+    "affiliateInvalidFormat": "Use letters, numbers, dashes, or underscores.",
+    "affiliateChecking": "Checking code...",
+    "affiliateApplied": "Code will be attached to this subscription.",
+    "affiliateCodeHelp": "If someone sent you here, enter their code before subscribing."
   },
   "restore": {
     "button": "Restore Purchases",

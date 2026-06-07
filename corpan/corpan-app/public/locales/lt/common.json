@@ -131,6 +131,22 @@
     "showStreakHint": "Mažas dienų skaičius antraštėje. Tik įrenginyje, jokių priminimų ar pranešimų."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "„Corpán“ tobulėja",
+      "subtitle": "Esate vieni pirmųjų",
+      "tinyTeamTitle": "Maža entuziastų komanda",
+      "tinyTeamDesc": "Nepriklausoma, be reklamų ir kuriama gerbiant ją naudojančius žmones — maža komanda kuria tokią kalbų programėlę, kokios visada norėjome.",
+      "bleedingEdgeTitle": "Pažangiausia, sąmoningai",
+      "bleedingEdgeDesc": "„Corpán“ plečia jūsų įrenginio galimybių ribas: įtraukiantys pasauliai, kalbos atpažinimas, natūralūs balsai ir naujausi AI modeliai kartu kuria naujus mokymosi būdus. Daug kas veikia tiesiogiai jūsų įrenginyje, todėl galite mokytis privačiai, pirmiausia neprisijungę ir nepriklausydami nuo duomenų centro. Naujas technologijas išleidžiame dar nevisiškai nugludintas, todėl kartais jos gali elgtis keistai, veikti lėtai ar tiesiog pranokti jūsų įrenginio galimybes. Už tai gaunate galingas naujas mokymosi patirtis vos joms tapus įmanomoms.",
+      "yourLangTitle": "Mes nekalbame visomis palaikomomis kalbomis",
+      "yourLangDesc": "Tokia yra sąžininga tiesa. Kuriame dešimtims kalbų, nes visi nusipelno galingų mokymosi priemonių, o ne todėl, kad mūsų maža komanda jas visas jau moka. Galite rasti dalykų, kuriuos padarėme neteisingai. Jei {{lang}} žinote geriau už mus, tikimės, kad pasakysite ir padėsite „Corpán“ tapti verta šios kalbos.",
+      "plea": "Turite idėją, pataisymą ar drąsią mokymosi patirtį, kurią norėtumėte išvysti? Parašykite mums. Skaitome kiekvieną žinutę ir giliai svarstome, ką ji galėtų atverti „Corpán“ ir kalbų mokymuisi.",
+      "emailCta": "Parašykite mums",
+      "githubCta": "Atidaryti GitHub issue",
+      "join": "Norite padėti pristatyti „Corpán“ pasauliui? Visada ieškome bendradarbių, vertėjų ir vietos ambasadorių. Susisiekite su mumis.",
+      "pact": "Palieskite žemiau, pradėkite mokytis ir augti kartu su mumis. 🤝",
+      "cta": "Aš prisijungiu — pirmyn"
+    },
     "welcome": "Sveiki atvykę",
     "makePrimaryLanguage": "Padaryti anglų kalbą mano pagrindine kalba",
     "canChangeLater": "Tai galite pakeisti bet kada.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Palaikykite Corpán ir atrakinkite viską. Neprivaloma, bet kada.",
+      "subscribedTitle": "Jūs esate Corpanista",
+      "subscribedDesc": "Ačiū, kad išlaikote Corpán be reklamų ir padedate jam augti.",
       "joinTitle": "Prisijunkite prie Corpanistas",
       "start": "Pradėti tyrinėti",
       "subtitle": "Corpán kuria maža atvirojo kodo komanda. Ateikite pasisveikinti – ir jei jums patinka, galite mus paremti.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Laukiama patvirtinimo",
     "pendingDetail": "Jūsų prenumerata laukia patvirtinimo („Ask to Buy“ arba banko patikra). Patvirtinus ji bus aktyvuota automatiškai.",
     "storeUnreachable": "Šiuo metu nepavyko pasiekti App Store.",
-    "tryAgain": "Bandyti dar kartą"
+    "tryAgain": "Bandyti dar kartą",
+    "affiliateCodeLabel": "Partnerio kodas",
+    "affiliateCodePlaceholder": "Nebūtina",
+    "affiliateInvalidFormat": "Naudokite raides, skaičius, brūkšnelius arba pabraukimus.",
+    "affiliateChecking": "Tikrinamas kodas...",
+    "affiliateApplied": "Kodas bus susietas su šia prenumerata.",
+    "affiliateCodeHelp": "Jei kas nors jus čia atsiuntė, prieš prenumeruodami įveskite jo kodą."
   },
   "restore": {
     "button": "Atkurti pirkimus",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Kantrus mokytojas tiesiai jūsų telefone – bet kuriai kalbai, kurios mokotės."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Gyvas miestas, kur kiekvienas susitikimas tampa pamoka."
     }
   },
   "home": {

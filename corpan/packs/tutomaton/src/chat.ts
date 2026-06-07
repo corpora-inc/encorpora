@@ -11,7 +11,7 @@
  *     → if kind === "theme": render the canonical list directly (no LLM call)
  *     → else: hostApi.llm.chat(systemPrompt + grounding + reference, messages)
  *           → stream tokens into the message bubble
- *     → if TTS on: hostApi.speak(activeLang.voiceLanguageCode, finalText)
+ *     → if TTS on: queue complete sentences for speech as tokens arrive
  *
  * All native access goes through `hostApi` (never `window.__TAURI__`). Voice
  * input is the keyboard's built-in dictation (on-device, ~50 languages, no model
@@ -19,9 +19,30 @@
  */
 
 import "./chat.css"
-import { LanguageManager, type HostApi, type LanguageRegistryEntry, type LanguageRuntime } from "./languageManager"
+import {
+  LanguageManager,
+  type HostApi,
+  type HostVoiceInfo,
+  type LanguageRegistryEntry,
+  type LanguageRuntime,
+} from "./languageManager"
 import { ModelManager, BASE_MODEL, type ModelPhase } from "./modelManager"
 import { t as i18n, type I18nKey } from "./i18n"
+import {
+  loadModelTuning,
+  MODEL_LIMITS,
+  resetModelTuning,
+  saveModelTuning,
+  type ModelTuning,
+} from "./modelTuning"
+import { OrderedSpeechQueue, StreamingSentenceBuffer } from "./streamingTts"
+import { scrubForSpeech, scrubOutput } from "./textScrub"
+import {
+  chooseTutorVoice,
+  loadTutorVoiceId,
+  saveTutorVoiceId,
+  sortTutorVoices,
+} from "./voicePreferences"
 
 // Minimal slice of @corpan/sdk's ContentPackModule that we actually use.
 // The host passes initialState.stackConfig — the user's active stack, where
@@ -104,6 +125,7 @@ async function llmChat(
   hostApi: HostApi,
   systemPrompt: string,
   messages: Msg[],
+  options: Omit<ModelTuning, "systemPrompt">,
   onToken: (token: string) => void,
   onDone: (full: string) => void,
   onError: (err: string) => void
@@ -112,7 +134,7 @@ async function llmChat(
   return hostApi.llm.chat(
     {
       messages: [{ role: "system", content: systemPrompt }, ...messages],
-      options: { temperature: 0.55, topP: 0.9, repeatPenalty: 1.2, maxTokens: 1500 },
+      options,
     },
     { onToken, onDone: (full) => onDone(full), onError: (err) => onError(err) }
   )
@@ -143,6 +165,8 @@ const ICON = {
   refresh: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>`,
   back: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>`,
   search: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
+  tune: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h2"/><path d="M10 12h10"/><circle cx="8" cy="12" r="2"/><path d="M4 18h8"/><path d="M16 18h4"/><circle cx="14" cy="18" r="2"/></svg>`,
+  voice: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="7.5"/><path d="M6.8 10h0"/><path d="M11.2 10h0"/><ellipse cx="9" cy="14.6" rx="2" ry="1.3"/><path d="M18 9.6a4 4 0 0 1 0 4.8"/><path d="M20.6 7.5a7.5 7.5 0 0 1 0 9"/></svg>`,
 } as const
 
 /** The real Corpán brand mark (ear on a stepped ziggurat) — the same
@@ -179,30 +203,6 @@ const LANG_FLAG: Record<string, string> = {
 
 function nativeName(entry: LanguageRegistryEntry): string {
   return entry.displayName[entry.code] || entry.displayName.en || entry.code
-}
-
-function scrubOutput(s: string): string {
-  s = s.replace(
-    /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F000}-\u{1F0FF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}\u{1F1E6}-\u{1F1FF}]/gu,
-    ""
-  )
-  s = s.replace(/^#{1,6}\s+/gm, "")
-  s = s.replace(/\*\*([^*]+?)\*\*/g, "$1")
-  s = s.replace(/\*\*/g, "")
-  s = s.replace(/<\/?reference\b[^>]*>/gi, "")
-  // Orphaned combining marks → the "dotted-circle" artifact. A combining mark
-  // (Unicode M*) only renders correctly attached to a base letter; when the
-  // model drops the base (common for small models in Indic/Tamil/Arabic/Thai),
-  // the leftover vowel-sign/virama draws on a ◌ dotted circle. Strip any run of
-  // combining marks that has no base before it — i.e. at the start of the text
-  // or right after whitespace. Well-formed clusters (mark immediately follows
-  // its base letter) are untouched. Verified: clean Tamil passes through byte-
-  // identical; only orphan-leading sequences are cleaned.
-  s = s.replace(/(^|\s)\p{M}+/gu, "$1")
-  s = s.replace(/[ \t]+(?=\n)/g, "")
-  s = s.replace(/[ \t]{2,}/g, " ")
-  s = s.replace(/\n{3,}/g, "\n\n")
-  return s.trim()
 }
 
 // ============================================================
@@ -384,19 +384,101 @@ const PackModule: ContentPackModule = {
           </div>
         </div>
 
+        <div class="lt-modelsheet" hidden role="dialog" aria-modal="true" aria-label="${t("modelLab")}">
+          <div class="lt-modelsheet-scrim"></div>
+          <div class="lt-modelsheet-panel" role="document">
+            <header class="lt-modelsheet-head">
+              <div>
+                <h2 class="lt-modelsheet-title">${t("modelLab")}</h2>
+                <p class="lt-modelsheet-language"></p>
+              </div>
+              <button class="lt-modelsheet-close" aria-label="${t("close")}">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.3 19.71 2.88 18.3 9.17 12 2.88 5.71 4.3 4.29l6.29 6.3 6.3-6.3z"/></svg>
+              </button>
+            </header>
+            <p class="lt-modelsheet-intro">${t("modelLabIntro")}</p>
+            <label class="lt-model-prompt-label" for="lt-model-prompt">System prompt</label>
+            <textarea id="lt-model-prompt" class="lt-model-prompt" rows="7" dir="auto"></textarea>
+            <div class="lt-model-controls">
+              <label class="lt-model-control">
+                <span><strong>Temperature</strong><output data-output="temperature"></output></span>
+                <small>Lower is steadier; higher is more varied.</small>
+                <input data-tuning="temperature" type="range" min="${MODEL_LIMITS.temperature.min}" max="${MODEL_LIMITS.temperature.max}" step="${MODEL_LIMITS.temperature.step}" />
+              </label>
+              <label class="lt-model-control">
+                <span><strong>Top P</strong><output data-output="topP"></output></span>
+                <small>Limits generation to the most likely token mass.</small>
+                <input data-tuning="topP" type="range" min="${MODEL_LIMITS.topP.min}" max="${MODEL_LIMITS.topP.max}" step="${MODEL_LIMITS.topP.step}" />
+              </label>
+              <label class="lt-model-control">
+                <span><strong>Top K</strong><output data-output="topK"></output></span>
+                <small>Limits each choice to the K most likely tokens.</small>
+                <input data-tuning="topK" type="range" min="${MODEL_LIMITS.topK.min}" max="${MODEL_LIMITS.topK.max}" step="${MODEL_LIMITS.topK.step}" />
+              </label>
+              <label class="lt-model-control">
+                <span><strong>Min P</strong><output data-output="minP"></output></span>
+                <small>Removes tokens far below the current best candidate.</small>
+                <input data-tuning="minP" type="range" min="${MODEL_LIMITS.minP.min}" max="${MODEL_LIMITS.minP.max}" step="${MODEL_LIMITS.minP.step}" />
+              </label>
+              <label class="lt-model-control">
+                <span><strong>Repeat penalty</strong><output data-output="repeatPenalty"></output></span>
+                <small>Higher values discourage repeated words and loops.</small>
+                <input data-tuning="repeatPenalty" type="range" min="${MODEL_LIMITS.repeatPenalty.min}" max="${MODEL_LIMITS.repeatPenalty.max}" step="${MODEL_LIMITS.repeatPenalty.step}" />
+              </label>
+              <label class="lt-model-control">
+                <span><strong>Presence penalty</strong><output data-output="presencePenalty"></output></span>
+                <small>Discourages reused tokens; high values can cause language mixing.</small>
+                <input data-tuning="presencePenalty" type="range" min="${MODEL_LIMITS.presencePenalty.min}" max="${MODEL_LIMITS.presencePenalty.max}" step="${MODEL_LIMITS.presencePenalty.step}" />
+              </label>
+              <label class="lt-model-control">
+                <span><strong>Maximum tokens</strong><output data-output="maxTokens"></output></span>
+                <small>Caps the length of each new reply.</small>
+                <input data-tuning="maxTokens" type="range" min="${MODEL_LIMITS.maxTokens.min}" max="${MODEL_LIMITS.maxTokens.max}" step="${MODEL_LIMITS.maxTokens.step}" />
+              </label>
+            </div>
+            <div class="lt-modelsheet-actions">
+              <button class="lt-model-reset" type="button">Reset this language</button>
+              <button class="lt-model-done" type="button">${t("close")}</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lt-voicesheet" hidden role="dialog" aria-modal="true" aria-label="${t("chooseVoice")}">
+          <div class="lt-voicesheet-scrim"></div>
+          <div class="lt-voicesheet-panel" role="document">
+            <header class="lt-voicesheet-head">
+              <div>
+                <h2 class="lt-voicesheet-title">${t("chooseVoice")}</h2>
+                <p class="lt-voicesheet-language"></p>
+              </div>
+              <button class="lt-voicesheet-close" aria-label="${t("close")}">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.3 19.71 2.88 18.3 9.17 12 2.88 5.71 4.3 4.29l6.29 6.3 6.3-6.3z"/></svg>
+              </button>
+            </header>
+            <p class="lt-voicesheet-intro">${t("voiceChoiceIntro")}</p>
+            <div class="lt-voice-status" role="status"></div>
+            <div class="lt-voice-list" role="radiogroup" aria-label="${t("chooseVoice")}"></div>
+          </div>
+        </div>
+
         <main class="lt-log" role="log" aria-live="polite"></main>
 
         <!-- Floating action cluster: translucent, out of the way, easy to reach.
              Mute toggle (TTS, defaults on) + new-conversation. -->
         <div class="lt-fabs">
+          <button class="lt-fab lt-tune" aria-label="${t("modelLab")}" title="${t("modelLab")}">${ICON.tune}</button>
+          <button class="lt-fab lt-voice" aria-label="${t("chooseVoice")}" title="${t("chooseVoice")}">${ICON.voice}</button>
           <button class="lt-fab lt-tts active" aria-label="${t("muteVoice")}" aria-pressed="true" title="${t("voiceReplies")}">${ICON.speaker}</button>
           <button class="lt-fab lt-clear" aria-label="${t("newConversation")}" title="${t("newConversation")}">${ICON.refresh}</button>
         </div>
 
         <footer class="lt-input">
-          <!-- Voice input is the keyboard's built-in dictation mic (on-device,
-               ~50 languages, no model to manage). The text field accepts it
-               directly; we don't ship a custom STT mic. -->
+          <!-- Dictation: the keyboard's built-in mic always works; ADDITIONALLY,
+               where host.asr can transcribe the active language (native on-device
+               STT — language-complete, stronger than the keyboard mic on Android),
+               this mic dictates straight into the field. HIDDEN where no provider
+               transcribes (keyboard floor), so it only shows where it adds value. -->
+          <button class="lt-mic" type="button" aria-label="Dictate" title="Dictate" disabled hidden>${ICON.mic}</button>
           <div class="lt-field">
             <textarea class="lt-text" rows="1" dir="auto" placeholder="${t("askAnything")}" autocomplete="off"></textarea>
           </div>
@@ -424,7 +506,10 @@ const PackModule: ContentPackModule = {
     const $log = container.querySelector<HTMLElement>(".lt-log")!
     const $text = container.querySelector<HTMLTextAreaElement>(".lt-text")!
     const $send = container.querySelector<HTMLButtonElement>(".lt-send")!
+    const $mic = container.querySelector<HTMLButtonElement>(".lt-mic")!
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
+    const $tune = container.querySelector<HTMLButtonElement>(".lt-tune")!
+    const $voice = container.querySelector<HTMLButtonElement>(".lt-voice")!
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
     const $back = container.querySelector<HTMLButtonElement>(".lt-back")!
     const $langTrigger = container.querySelector<HTMLButtonElement>(".lt-lang-trigger")!
@@ -433,12 +518,89 @@ const PackModule: ContentPackModule = {
     const $langSheetScrim = container.querySelector<HTMLDivElement>(".lt-langsheet-scrim")!
     const $langSheetClose = container.querySelector<HTMLButtonElement>(".lt-langsheet-close")!
     const $langSheetInput = container.querySelector<HTMLInputElement>(".lt-langsheet-input")!
+    const $modelSheet = container.querySelector<HTMLDivElement>(".lt-modelsheet")!
+    const $modelSheetScrim = container.querySelector<HTMLDivElement>(".lt-modelsheet-scrim")!
+    const $modelSheetClose = container.querySelector<HTMLButtonElement>(".lt-modelsheet-close")!
+    const $modelSheetDone = container.querySelector<HTMLButtonElement>(".lt-model-done")!
+    const $modelReset = container.querySelector<HTMLButtonElement>(".lt-model-reset")!
+    const $modelLanguage = container.querySelector<HTMLParagraphElement>(".lt-modelsheet-language")!
+    const $modelPrompt = container.querySelector<HTMLTextAreaElement>(".lt-model-prompt")!
+    const $modelInputs = Array.from(container.querySelectorAll<HTMLInputElement>("[data-tuning]"))
+    const $voiceSheet = container.querySelector<HTMLDivElement>(".lt-voicesheet")!
+    const $voiceSheetScrim = container.querySelector<HTMLDivElement>(".lt-voicesheet-scrim")!
+    const $voiceSheetClose = container.querySelector<HTMLButtonElement>(".lt-voicesheet-close")!
+    const $voiceLanguage = container.querySelector<HTMLParagraphElement>(".lt-voicesheet-language")!
+    const $voiceStatus = container.querySelector<HTMLDivElement>(".lt-voice-status")!
+    const $voiceList = container.querySelector<HTMLDivElement>(".lt-voice-list")!
     const $setup = container.querySelector<HTMLDivElement>(".lt-setup")!
     const $setupBody = container.querySelector<HTMLParagraphElement>(".lt-setup-body")!
     const $setupProgress = container.querySelector<HTMLDivElement>(".lt-setup-progress")!
     const $setupFill = container.querySelector<HTMLDivElement>(".lt-setup-fill")!
     const $setupPct = container.querySelector<HTMLDivElement>(".lt-setup-pct")!
     const $setupAction = container.querySelector<HTMLButtonElement>(".lt-setup-action")!
+    $voice.hidden = !hostApi.listVoices || !hostApi.speakVoice
+    const voiceLists = new Map<string, HostVoiceInfo[]>()
+    const selectedVoices = new Map<string, HostVoiceInfo | null>()
+    const voiceLoads = new Map<string, Promise<HostVoiceInfo | null>>()
+    async function ensureTutorVoice(lang: LanguageRuntime, refresh = false): Promise<HostVoiceInfo | null> {
+      if (!hostApi.listVoices || !hostApi.speakVoice) return null
+      if (!refresh && selectedVoices.has(lang.code)) return selectedVoices.get(lang.code) ?? null
+      if (!refresh && voiceLoads.has(lang.code)) return voiceLoads.get(lang.code)!
+
+      const loading = hostApi.listVoices(lang.voiceLanguageCode)
+        .then((voices) => {
+          const sorted = sortTutorVoices(voices, lang.voiceLanguageCode)
+          const selected = chooseTutorVoice(sorted, lang.voiceLanguageCode, loadTutorVoiceId(lang.code))
+          voiceLists.set(lang.code, sorted)
+          selectedVoices.set(lang.code, selected)
+          if (selected) saveTutorVoiceId(lang.code, selected.id)
+          return selected
+        })
+        .catch((error) => {
+          console.error("[tutomaton] listVoices failed:", error)
+          voiceLists.set(lang.code, [])
+          selectedVoices.set(lang.code, null)
+          return null
+        })
+        .finally(() => voiceLoads.delete(lang.code))
+      voiceLoads.set(lang.code, loading)
+      return loading
+    }
+    async function speakPinned(locale: string, text: string): Promise<void> {
+      const lang = state.activeLanguage
+      if (lang && hostApi.speakVoice) {
+        const voice = await ensureTutorVoice(lang)
+        if (voice && state.activeLanguage?.code === lang.code) {
+          await hostApi.speakVoice(locale, text, voice.id)
+          return
+        }
+        if (state.activeLanguage?.code !== lang.code) return
+      }
+      await hostApi.speak(locale, text)
+    }
+    const speechQueue = new OrderedSpeechQueue(
+      speakPinned,
+      hostApi.stopSpeech,
+      (error) => console.error("[tts]", error)
+    )
+    let speechEpoch = 0
+    const cancelSpeech = () => {
+      speechEpoch += 1
+      speechQueue.cancel()
+    }
+    const learnerCode = stackLangs[0]
+    const learnerEntry = learnerCode
+      ? registry.find((entry) =>
+          entry.code === learnerCode || entry.code.split("-")[0] === learnerCode.split("-")[0]
+        )
+      : undefined
+    const learnerName = learnerEntry ? nativeName(learnerEntry) : learnerCode
+    const defaultPromptFor = (lang: LanguageRuntime): string => [
+      lang.systemPrompt.trim(),
+      learnerName ? `Learner's native language: ${learnerName}.` : "",
+    ].filter(Boolean).join("\n")
+    const tuningFor = (lang: LanguageRuntime): ModelTuning =>
+      loadModelTuning(lang.code, defaultPromptFor(lang))
 
     // Localize the CSS pseudo-element labels (copy affordance) — pseudo-elements
     // can't call t(), so feed them via CSS custom properties (quoted strings).
@@ -494,6 +656,147 @@ const PackModule: ContentPackModule = {
     const modelMgr = new ModelManager(hostApi, renderModelPhase)
     $setupAction.addEventListener("click", () => void modelMgr.installAndLoad())
 
+    // ---------- per-language on-device model lab ----------
+    let modelSheetTuning: ModelTuning | null = null
+    function syncModelSheet() {
+      const lang = state.activeLanguage
+      if (!lang) return
+      modelSheetTuning = tuningFor(lang)
+      $modelLanguage.textContent = `${nativeName(registry.find((e) => e.code === lang.code) ?? registry[0])} · Qwen3-4B`
+      $modelPrompt.value = modelSheetTuning.systemPrompt
+      for (const input of $modelInputs) {
+        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt">
+        input.value = String(modelSheetTuning[key])
+        const output = container.querySelector<HTMLOutputElement>(`[data-output="${key}"]`)
+        if (output) output.value = String(modelSheetTuning[key])
+      }
+    }
+    function saveModelSheet() {
+      const lang = state.activeLanguage
+      if (!lang || !modelSheetTuning) return
+      const next: ModelTuning = { ...modelSheetTuning, systemPrompt: $modelPrompt.value.trim() || defaultPromptFor(lang) }
+      for (const input of $modelInputs) {
+        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt">
+        next[key] = Number(input.value)
+        const output = container.querySelector<HTMLOutputElement>(`[data-output="${key}"]`)
+        if (output) output.value = input.value
+      }
+      modelSheetTuning = next
+      saveModelTuning(lang.code, next)
+    }
+    function openModelSheet() {
+      if (!state.activeLanguage) return
+      if (!$voiceSheet.hidden) closeVoiceSheet()
+      syncModelSheet()
+      $modelSheet.hidden = false
+      requestAnimationFrame(() => $modelSheet.classList.add("open"))
+    }
+    function closeModelSheet() {
+      saveModelSheet()
+      $modelSheet.classList.remove("open")
+      window.setTimeout(() => {
+        if (!$modelSheet.classList.contains("open")) $modelSheet.hidden = true
+      }, 180)
+    }
+    $tune.addEventListener("click", openModelSheet)
+    $modelSheetScrim.addEventListener("click", closeModelSheet)
+    $modelSheetClose.addEventListener("click", closeModelSheet)
+    $modelSheetDone.addEventListener("click", closeModelSheet)
+    $modelPrompt.addEventListener("input", saveModelSheet)
+    for (const input of $modelInputs) input.addEventListener("input", saveModelSheet)
+    $modelReset.addEventListener("click", () => {
+      const lang = state.activeLanguage
+      if (!lang) return
+      resetModelTuning(lang.code)
+      syncModelSheet()
+    })
+
+    // ---------- sticky per-language tutor voice ----------
+    function qualityLabel(quality: HostVoiceInfo["quality"]): string {
+      if (!quality) return ""
+      return quality.replace("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase())
+    }
+    function renderVoiceSheet(lang: LanguageRuntime, loading = false) {
+      const entry = registry.find((item) => item.code === lang.code)
+      $voiceLanguage.textContent = entry ? nativeName(entry) : lang.code
+      $voiceList.replaceChildren()
+      if (loading) {
+        $voiceStatus.textContent = t("loadingVoices")
+        return
+      }
+
+      const voices = voiceLists.get(lang.code) ?? []
+      const selected = selectedVoices.get(lang.code)
+      if (!hostApi.listVoices || !hostApi.speakVoice || !voices.length) {
+        $voiceStatus.textContent = t("noVoices")
+        return
+      }
+      $voiceStatus.textContent = ""
+      voices.forEach((voice, index) => {
+        const option = document.createElement("button")
+        option.type = "button"
+        option.className = "lt-voice-option"
+        option.setAttribute("role", "radio")
+        option.setAttribute("aria-checked", voice.id === selected?.id ? "true" : "false")
+
+        const mark = document.createElement("span")
+        mark.className = "lt-voice-option-mark"
+        mark.innerHTML = ICON.voice
+
+        const detail = document.createElement("span")
+        detail.className = "lt-voice-option-detail"
+        const name = document.createElement("strong")
+        name.textContent = voice.name || `${t("voice")} ${index + 1}`
+        const metadata = document.createElement("small")
+        metadata.textContent = [voice.language, qualityLabel(voice.quality)].filter(Boolean).join(" · ")
+        detail.append(name, metadata)
+
+        const badges = document.createElement("span")
+        badges.className = "lt-voice-option-badges"
+        if (index === 0) {
+          const recommended = document.createElement("span")
+          recommended.className = "lt-voice-badge"
+          recommended.textContent = t("recommended")
+          badges.appendChild(recommended)
+        }
+        const check = document.createElement("span")
+        check.className = "lt-voice-check"
+        check.textContent = "✓"
+        badges.appendChild(check)
+        option.append(mark, detail, badges)
+        option.addEventListener("click", () => {
+          cancelSpeech()
+          selectedVoices.set(lang.code, voice)
+          saveTutorVoiceId(lang.code, voice.id)
+          renderVoiceSheet(lang)
+          const preview = [...state.messages].reverse().find((message) => message.role === "assistant")?.content
+          if (preview && state.activeLanguage?.code === lang.code) {
+            speechQueue.enqueue(lang.voiceLanguageCode, preview)
+          }
+        })
+        $voiceList.appendChild(option)
+      })
+    }
+    async function openVoiceSheet() {
+      const lang = state.activeLanguage
+      if (!lang) return
+      if (!$modelSheet.hidden) closeModelSheet()
+      $voiceSheet.hidden = false
+      renderVoiceSheet(lang, true)
+      requestAnimationFrame(() => $voiceSheet.classList.add("open"))
+      await ensureTutorVoice(lang, true)
+      if (state.activeLanguage?.code === lang.code && !$voiceSheet.hidden) renderVoiceSheet(lang)
+    }
+    function closeVoiceSheet() {
+      $voiceSheet.classList.remove("open")
+      window.setTimeout(() => {
+        if (!$voiceSheet.classList.contains("open")) $voiceSheet.hidden = true
+      }, 180)
+    }
+    $voice.addEventListener("click", () => void openVoiceSheet())
+    $voiceSheetScrim.addEventListener("click", closeVoiceSheet)
+    $voiceSheetClose.addEventListener("click", closeVoiceSheet)
+
     // ---------- language pills ----------
     const uiLocale = (navigator.language || "en").split("-")[0]
     // ---------- language sheet (compact trigger + glorious sheet) ----------
@@ -521,6 +824,8 @@ const PackModule: ContentPackModule = {
     $langSheetClose.addEventListener("click", closeLangSheet)
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !$langSheet.hidden) closeLangSheet()
+      if (e.key === "Escape" && !$modelSheet.hidden) closeModelSheet()
+      if (e.key === "Escape" && !$voiceSheet.hidden) closeVoiceSheet()
     })
     // Live-filter the sheet as you type. Scales gracefully to ~50 languages.
     let langQuery = ""
@@ -657,9 +962,12 @@ const PackModule: ContentPackModule = {
         <div class="lt-welcome-mark" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></div>
         <h2 class="lt-welcome-title" dir="auto">${langName ? t("practice", { lang: nativeName(langName) }) : t("yourPrivateTutor")}</h2>
         <p class="lt-welcome-sub">${t("welcomeSub")}</p>
+        <button class="lt-model-lab-open" type="button">${t("tuneModel")}</button>
+        <p class="lt-model-lab-note">${t("modelLabIntro")}</p>
         <div class="lt-welcome-langs" aria-label="${t("yourLanguages")}"></div>
         <div class="lt-chips"></div>
       `
+      wrap.querySelector<HTMLButtonElement>(".lt-model-lab-open")!.addEventListener("click", openModelSheet)
 
       // ---- intro language picker: "your languages" stacked prominently, with
       // an expand-to-all affordance (full list lives in the sheet → scales to ~50)
@@ -818,6 +1126,9 @@ const PackModule: ContentPackModule = {
 
     // ---------- language switching ----------
     async function switchLanguage(code: string) {
+      cancelSpeech()
+      if (!$modelSheet.hidden) closeModelSheet()
+      if (!$voiceSheet.hidden) closeVoiceSheet()
       const entry = registry.find((r) => r.code === code)
       const name = entry ? nativeName(entry) : code
       // Show a download card only for a language that HAS a corpus and whose
@@ -841,6 +1152,8 @@ const PackModule: ContentPackModule = {
         saveLastLang(code)
         renderLangs()
         renderWelcome()
+        refreshDictation()
+        void ensureTutorVoice(state.activeLanguage)
       } catch (e) {
         systemNote(t("couldntLoad", { lang: name, error: e instanceof Error ? e.message : String(e) }))
       }
@@ -856,8 +1169,116 @@ const PackModule: ContentPackModule = {
       $inputBar.classList.toggle("has-text", hasText)
     }
 
+    // ---------- dictation (host.asr) ----------
+    // Show the mic ONLY where the device can transcribe the ACTIVE tutor's
+    // language; otherwise stay hidden (the keyboard's own dictation mic still
+    // works — this is purely additive). Re-probed on each language switch.
+    let dictateSession: import("./languageManager").HostAsrSession | null = null
+    let dictateLive = false
+    let dictateStarting = false
+    let dictateStopping = false
+    const setDictateLive = (on: boolean) => {
+      dictateLive = on
+      // `.recording` is the existing chat.css pulse style for the live mic.
+      $mic.classList.toggle("recording", on)
+      $mic.setAttribute("aria-label", on ? "Stop dictation" : "Dictate")
+    }
+    async function startDictation() {
+      if (dictateStarting || dictateLive) return
+      const lang = state.activeLanguage?.code
+      if (!lang || !hostApi.asr) return
+      dictateStarting = true
+      $mic.disabled = true
+      try {
+        const provider = await hostApi.asr.pick({ lang, goal: "dictation" })
+        if (!provider) {
+          $mic.hidden = true
+          return
+        }
+        const session = await provider.transcribe({ lang, mode: "push_to_talk" })
+        if (state.activeLanguage?.code !== lang) {
+          session.cancel()
+          return
+        }
+        dictateSession = session
+        setDictateLive(true)
+        session.onPartial((text) => {
+          $text.value = text
+          $text.dispatchEvent(new Event("input", { bubbles: true }))
+        })
+        session.onError((code, message) => {
+          const failed = dictateSession
+          dictateSession = null
+          failed?.cancel()
+          if (code !== "INTERRUPTED" && code !== "CANCELLED") {
+            console.error(`[tutomaton] dictation error ${code}:`, message ?? "")
+          }
+          setDictateLive(false)
+        })
+      } catch (err) {
+        console.error("[tutomaton] dictation start failed:", err)
+      } finally {
+        dictateStarting = false
+        if (!$mic.hidden) $mic.disabled = false
+      }
+    }
+    async function stopDictation() {
+      if (dictateStopping) return
+      dictateStopping = true
+      $mic.disabled = true
+      const s = dictateSession
+      dictateSession = null
+      if (!s) {
+        setDictateLive(false)
+        dictateStopping = false
+        if (!$mic.hidden) $mic.disabled = false
+        return
+      }
+      try {
+        const out = await s.stop()
+        if (out.text) {
+          $text.value = out.text
+          $text.dispatchEvent(new Event("input", { bubbles: true }))
+        }
+      } catch (err) {
+        console.error("[tutomaton] dictation stop() failed:", err)
+      } finally {
+        setDictateLive(false)
+        dictateStopping = false
+        if (!$mic.hidden) $mic.disabled = false
+      }
+    }
+    $mic.addEventListener("click", () => {
+      if (dictateStarting || dictateStopping) return
+      if (dictateLive) void stopDictation()
+      else void startDictation()
+    })
+    /** Probe the active language; reveal the mic only where a provider exists. */
+    function refreshDictation() {
+      const lang = state.activeLanguage?.code
+      if (!lang || !hostApi.asr) {
+        $mic.hidden = true
+        return
+      }
+      void hostApi.asr
+        .pick({ lang, goal: "dictation" })
+        .then((provider) => {
+          if (!provider) {
+            $mic.hidden = true
+            return
+          }
+          $mic.hidden = false
+          $mic.disabled = false
+        })
+        .catch(() => {
+          $mic.hidden = true
+        })
+    }
+
     async function send(text: string) {
       if (!text.trim() || state.currentStreamId || !state.activeLanguage || !modelReady) return
+      cancelSpeech()
+      const turnSpeechEpoch = speechEpoch
       const userText = text.trim()
       const lang = state.activeLanguage
       state.messages.push({ role: "user", content: userText })
@@ -906,16 +1327,35 @@ const PackModule: ContentPackModule = {
           return
         }
 
+        const tuning = tuningFor(lang)
         const systemFull = rag.reference
-          ? `${lang.systemPrompt}\n\n${lang.groundingInstruction}${rag.reference}`
-          : lang.systemPrompt
+          ? `${tuning.systemPrompt}\n\n${lang.groundingInstruction}${rag.reference}`
+          : tuning.systemPrompt
         let buf = ""
+        const speechStream = new StreamingSentenceBuffer(lang.code)
+        const queueSpeech = (parts: string[]) => {
+          if (!state.ttsEnabled || speechEpoch !== turnSpeechEpoch) return
+          for (const part of parts) {
+            const cleaned = scrubForSpeech(part, lang.voiceLanguageCode)
+            if (cleaned) speechQueue.enqueue(lang.voiceLanguageCode, cleaned)
+          }
+        }
         const handle = await llmChat(
           hostApi,
           systemFull,
           state.messages,
+          {
+            temperature: tuning.temperature,
+            topP: tuning.topP,
+            topK: tuning.topK,
+            minP: tuning.minP,
+            repeatPenalty: tuning.repeatPenalty,
+            presencePenalty: tuning.presencePenalty,
+            maxTokens: tuning.maxTokens,
+          },
           (tok) => {
             buf += tok
+            queueSpeech(speechStream.push(tok))
             caret.remove()
             dest.textContent = scrubOutput(buf)
             dest.appendChild(caret)
@@ -925,11 +1365,13 @@ const PackModule: ContentPackModule = {
             const cleaned = scrubOutput(full)
             dest.textContent = cleaned
             state.messages.push({ role: "assistant", content: cleaned })
-            maybeSpeak(cleaned)
+            queueSpeech(speechStream.finish())
             finish()
             scrollDown()
           },
           (err) => {
+            speechStream.discard()
+            if (speechEpoch === turnSpeechEpoch) cancelSpeech()
             dest.textContent = ""
             dest.parentElement!.classList.add("lt-error")
             dest.textContent = err.replace(/^[A-Z_]+:\s*/, "")
@@ -949,7 +1391,11 @@ const PackModule: ContentPackModule = {
      *  explicit tap-to-replay on a bubble), independent of the mute toggle. */
     function speakText(text: string) {
       if (text && state.activeLanguage) {
-        hostApi.speak(state.activeLanguage.voiceLanguageCode, text).catch((e) => console.error("[tts]", e))
+        const code = state.activeLanguage.voiceLanguageCode
+        const cleaned = scrubForSpeech(text, code)
+        if (!cleaned) return
+        cancelSpeech()
+        speechQueue.enqueue(code, cleaned)
       }
     }
 
@@ -1018,6 +1464,7 @@ const PackModule: ContentPackModule = {
 
     $clear.addEventListener("click", async () => {
       if (state.cancelStream) await state.cancelStream().catch(() => {})
+      cancelSpeech()
       state.messages = []
       renderWelcome()
     })
@@ -1033,7 +1480,7 @@ const PackModule: ContentPackModule = {
     $ttsBtn.addEventListener("click", () => {
       state.ttsEnabled = !state.ttsEnabled
       syncTtsBtn()
-      if (!state.ttsEnabled) hostApi.stopSpeech?.()
+      if (!state.ttsEnabled) cancelSpeech()
     })
 
     // ---------- exit to home ----------
@@ -1065,7 +1512,12 @@ const PackModule: ContentPackModule = {
     return {
       unmount: () => {
         if (state.cancelStream) void state.cancelStream().catch(() => {})
-        if (state.ttsEnabled) hostApi.stopSpeech?.()
+        cancelSpeech()
+        try {
+          dictateSession?.cancel()
+        } catch (err) {
+          console.error("[tutomaton] dictation cancel on unmount failed:", err)
+        }
       },
     }
   },

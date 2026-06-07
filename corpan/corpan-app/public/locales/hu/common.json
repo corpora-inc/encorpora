@@ -131,6 +131,22 @@
     "primaryLanguage": "Elsődleges (felhasználói felület) nyelv"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "A Corpán fejlődik",
+      "subtitle": "A legelsők között vagy",
+      "tinyTeamTitle": "Egy apró, lelkes csapat",
+      "tinyTeamDesc": "Független, reklámmentes, és a használói iránti tisztelettel készül — egy kis csapat építi azt a nyelvi alkalmazást, amelyre mindig is vágytunk.",
+      "bleedingEdgeTitle": "Tudatosan a legmodernebb",
+      "bleedingEdgeDesc": "A Corpán kitolja annak határait, amire az eszközöd képes: magával ragadó világok, beszédfelismerés, természetes hangok és a legújabb AI-modellek együtt teremtenek új tanulási módokat. Sok minden közvetlenül az eszközödön fut, így privát, elsősorban offline tanulást kapsz adatközpont nélkül. Az új technológiát még nyers állapotában adjuk ki, ezért néha furcsán viselkedhet, lassan működhet, vagy egyszerűen több lehet annál, mint amit az eszközöd elbír. Cserébe azonnal hozzáférsz az erőteljes új tanulási élményekhez, amint lehetővé válnak.",
+      "yourLangTitle": "Nem beszélünk minden nyelven, amelyet támogatunk",
+      "yourLangDesc": "Ez az őszinte igazság. Több tucat nyelvre fejlesztünk, mert mindenki megérdemel hatékony tanulási eszközöket — nem azért, mert kis csapatunk már mindegyiket ismeri. Találhatsz dolgokat, amelyeket elrontottunk. Ha nálunk jobban ismered a(z) {{lang}} nyelvet, reméljük, szólsz, és segítesz, hogy a Corpán méltó legyen hozzá.",
+      "plea": "Van ötleted, javításod vagy egy merész tanulási élmény, amelyet szívesen látnál? Mondd el nekünk. Minden üzenetet elolvasunk, és alaposan átgondoljuk, mit nyithat meg a Corpán és a nyelvtanulás számára.",
+      "emailCta": "Írj nekünk emailt",
+      "githubCta": "Nyiss egy GitHub issue-t",
+      "join": "Segítenél eljuttatni a Corpánt a világhoz? Mindig keresünk közreműködőket, fordítókat és helyi nagyköveteket. Keress meg minket.",
+      "pact": "Koppints alább, kezdd el a tanulást, és fejlődj velünk. 🤝",
+      "cta": "Benne vagyok — menjünk"
+    },
     "welcome": "Üdvözöljük",
     "makePrimaryLanguage": "Állítsa be a magyart elsődleges nyelvként",
     "canChangeLater": "Később bármikor megváltoztathatja.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Támogasd a Corpánt és oldj fel mindent. Opcionális, bármikor.",
+      "subscribedTitle": "Corpanista vagy",
+      "subscribedDesc": "Köszönjük, hogy hirdetésmentesen tartod a Corpán-t, és segíted a fejlődését.",
       "joinTitle": "Csatlakozz a Corpanistas-hoz",
       "start": "Kezdd el a felfedezést",
       "subtitle": "A Corpánt egy apró, nyílt forráskódú csapat készíti. Gyere, köszönj be – és ha szereted, támogathatsz minket.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Jóváhagyásra vár",
     "pendingDetail": "Az előfizetésed jóváhagyásra vár (Vásárlási engedély vagy banki ellenőrzés). A jóváhagyás után automatikusan aktiválódik.",
     "storeUnreachable": "Jelenleg nem tudtuk elérni az App Store-t.",
-    "tryAgain": "Próbáld újra"
+    "tryAgain": "Próbáld újra",
+    "affiliateCodeLabel": "Partnerkód",
+    "affiliateCodePlaceholder": "Nem kötelező",
+    "affiliateInvalidFormat": "Használj betűket, számokat, kötőjelet vagy aláhúzást.",
+    "affiliateChecking": "Kód ellenőrzése...",
+    "affiliateApplied": "A kód ehhez az előfizetéshez lesz kapcsolva.",
+    "affiliateCodeHelp": "Ha valaki ide küldött, add meg a kódját az előfizetés előtt."
   },
   "restore": {
     "button": "Vásárlások visszaállítása",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Türelmes, a telefonodon futó oktató, bármelyik tanult nyelvedhez."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Egy élő város, ahol minden találkozás tanulság."
     }
   },
   "home": {

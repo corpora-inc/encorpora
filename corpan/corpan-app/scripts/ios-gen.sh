@@ -57,7 +57,12 @@ fi
 echo "[ios-gen] Running tauri ios init..."
 npx tauri ios init --ci
 
-# Step 4: Verify the rpath fix is in place
+# Step 4: Sync required privacy strings into the generated plist. Tauri keeps
+# gen/apple between runs, so a stale generated project can otherwise omit a new
+# privacy key even after ios/project.yml is fixed.
+bash "$SCRIPT_DIR/ios-privacy-preflight.sh"
+
+# Step 5: Verify the rpath fix is in place
 if grep -q "/usr/lib/swift" "$GEN_DIR/corpan.xcodeproj/project.pbxproj" 2>/dev/null; then
   echo "[ios-gen] Verified: /usr/lib/swift is in LD_RUNPATH_SEARCH_PATHS"
 else
@@ -65,7 +70,7 @@ else
   exit 1
 fi
 
-# Step 5: Patch xcscheme to add StoreKit configuration for sandbox testing.
+# Step 6: Patch xcscheme to add StoreKit configuration for sandbox testing.
 # xcodegen does not generate the storeKitConfigurationFileReference despite
 # project.yml specifying storeKitConfiguration. We patch it in post.
 SCHEME_FILE="$GEN_DIR/corpan.xcodeproj/xcshareddata/xcschemes/corpan_iOS.xcscheme"

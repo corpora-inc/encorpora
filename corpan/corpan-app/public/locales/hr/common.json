@@ -131,6 +131,22 @@
     "showStreakHint": "Mali brojač dana u zaglavlju. Samo na uređaju, bez podsjetnika ili obavijesti."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán se razvija",
+      "subtitle": "Među prvima ste",
+      "tinyTeamTitle": "Mali tim entuzijasta",
+      "tinyTeamDesc": "Neovisna, bez oglasa i izgrađena s poštovanjem prema ljudima koji je koriste — mali tim stvara jezičnu aplikaciju kakvu smo oduvijek željeli.",
+      "bleedingEdgeTitle": "Namjerno vrhunski",
+      "bleedingEdgeDesc": "Corpán pomiče granice onoga što vaš uređaj može učiniti: prožimajući svjetovi, prepoznavanje govora, prirodni glasovi i najnoviji AI modeli zajedno stvaraju nove načine učenja. Velik dio radi izravno na vašem uređaju, pružajući privatno učenje prvenstveno namijenjeno radu izvan mreže, bez oslanjanja na podatkovni centar. Novu tehnologiju objavljujemo dok je još sirova, pa se ponekad može ponašati neobično, raditi sporo ili jednostavno biti više nego što vaš uređaj može podnijeti. Zauzvrat dobivate snažna nova iskustva učenja čim postanu moguća.",
+      "yourLangTitle": "Ne govorimo svaki jezik koji podržavamo",
+      "yourLangDesc": "To je iskrena istina. Gradimo za desetke jezika jer svi zaslužuju moćne alate za učenje, a ne zato što ih naš mali tim već sve zna. Možda ćete pronaći stvari u kojima smo pogriješili. Ako znate {{lang}} bolje od nas, nadamo se da ćete nam reći i pomoći da Corpán bude dostojan tog jezika.",
+      "plea": "Imate ideju, ispravak ili odvažno iskustvo učenja koje biste željeli vidjeti? Recite nam. Čitamo svaku poruku i duboko razmišljamo što bi mogla otvoriti za Corpán i učenje jezika.",
+      "emailCta": "Pošalji nam e-mail",
+      "githubCta": "Otvori GitHub issue",
+      "join": "Želite pomoći donijeti Corpán svijetu? Uvijek tražimo suradnike, prevoditelje i lokalne ambasadore. Javite nam se.",
+      "pact": "Dodirnite ispod kako biste počeli učiti i rasti s nama. 🤝",
+      "cta": "Tu sam — idemo"
+    },
     "welcome": "Dobrodošli",
     "makePrimaryLanguage": "Postavi engleski kao moj primarni jezik",
     "canChangeLater": "Ovo možeš promijeniti u bilo kojem trenutku.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Podržite Corpán i otključajte sve. Neobavezno, bilo kada.",
+      "subscribedTitle": "Vi ste Corpanista",
+      "subscribedDesc": "Hvala što održavate Corpán bez oglasa i pomažete mu rasti.",
       "joinTitle": "Pridružite se Corpanistima",
       "start": "Počnite istraživati",
       "subtitle": "Corpán je stvorio mali tim otvorenog koda. Pozdravite nas — a ako vam se sviđa, možete nas podržati.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Čeka se odobrenje",
     "pendingDetail": "Vaša pretplata čeka odobrenje (Ask to Buy ili potvrdu banke). Aktivirat će se automatski nakon odobrenja.",
     "storeUnreachable": "Trenutačno nismo mogli pristupiti App Storeu.",
-    "tryAgain": "Pokušajte ponovno"
+    "tryAgain": "Pokušajte ponovno",
+    "affiliateCodeLabel": "Partnerski kod",
+    "affiliateCodePlaceholder": "Neobavezno",
+    "affiliateInvalidFormat": "Upotrijebite slova, brojeve, crtice ili podvlake.",
+    "affiliateChecking": "Provjera koda...",
+    "affiliateApplied": "Kod će biti povezan s ovom pretplatom.",
+    "affiliateCodeHelp": "Ako vas je netko poslao ovamo, unesite njegov kod prije pretplate."
   },
   "restore": {
     "button": "Obnovi kupnje",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Strpljiv tutor na tvom uređaju za svaki jezik koji učiš."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Živi grad koji svaki susret pretvara u lekciju."
     }
   },
   "home": {

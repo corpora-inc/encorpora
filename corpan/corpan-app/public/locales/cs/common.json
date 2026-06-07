@@ -131,6 +131,22 @@
     "showStreakHint": "Malý počet dní v záhlaví. Pouze v zařízení, bez připomenutí nebo oznámení."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán se vyvíjí",
+      "subtitle": "Jste mezi prvními",
+      "tinyTeamTitle": "Malý tým nadšenců",
+      "tinyTeamDesc": "Nezávislá, bez reklam a tvořená s úctou k lidem, kteří ji používají — malý tým vytváří jazykovou aplikaci, jakou jsme vždy chtěli.",
+      "bleedingEdgeTitle": "Špičková technologie, záměrně",
+      "bleedingEdgeDesc": "Corpán posouvá hranice toho, co vaše zařízení dokáže: pohlcující světy, rozpoznávání řeči, přirozené hlasy a nejnovější modely AI společně vytvářejí nové způsoby učení. Velká část běží přímo ve vašem zařízení, takže můžete studovat soukromě a především offline, bez závislosti na datovém centru. Nové technologie vydáváme, dokud jsou ještě syrové, takže se někdy mohou chovat zvláštně, běžet pomalu nebo být jednoduše nad možnosti vašeho zařízení. Na oplátku získáváte nové a účinné studijní zážitky hned, jakmile jsou možné.",
+      "yourLangTitle": "Nemluvíme všemi jazyky, které podporujeme",
+      "yourLangDesc": "To je upřímná pravda. Tvoříme pro desítky jazyků, protože každý si zaslouží účinné nástroje k učení, ne proto, že by je náš malý tým už všechny znal. Můžete narazit na věci, které jsme udělali špatně. Pokud znáte {{lang}} lépe než my, řekněte nám to prosím a pomozte nám, aby si Corpán tento jazyk zasloužila.",
+      "plea": "Máte nápad, opravu nebo odvážný studijní zážitek, který byste chtěli vidět? Napište nám. Čteme každou zprávu a důkladně přemýšlíme, co by mohla otevřít pro Corpán a výuku jazyků.",
+      "emailCta": "Napište nám e-mail",
+      "githubCta": "Otevřít issue na GitHub",
+      "join": "Chcete pomoci dostat Corpán do světa? Vždy hledáme spolupracovníky, překladatele a místní ambasadory. Ozvěte se nám.",
+      "pact": "Klepněte níže, začněte se učit a růst s námi. 🤝",
+      "cta": "Jdu do toho — pojďme na to"
+    },
     "welcome": "Vítejte",
     "makePrimaryLanguage": "Nastavit angličtinu jako můj primární jazyk",
     "canChangeLater": "Toto můžete změnit kdykoliv.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Podpořte Corpán a odemkněte vše. Volitelné, kdykoli.",
+      "subscribedTitle": "Jste Corpanista",
+      "subscribedDesc": "Děkujeme, že udržujete Corpán bez reklam a pomáháte mu růst.",
       "joinTitle": "Připojte se ke Corpanistas",
       "start": "Začít objevovat",
       "subtitle": "Corpán je tvořen malým open-source týmem. Přijďte pozdravit — a pokud se vám líbí, můžete nás podpořit.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Čeká na schválení",
     "pendingDetail": "Vaše předplatné čeká na schválení (Ask to Buy nebo ověření bankou). Po schválení se aktivuje automaticky.",
     "storeUnreachable": "K App Store se teď nepodařilo připojit.",
-    "tryAgain": "Zkusit znovu"
+    "tryAgain": "Zkusit znovu",
+    "affiliateCodeLabel": "Partnerský kód",
+    "affiliateCodePlaceholder": "Volitelné",
+    "affiliateInvalidFormat": "Použijte písmena, čísla, spojovníky nebo podtržítka.",
+    "affiliateChecking": "Kontroluje se kód...",
+    "affiliateApplied": "Kód bude připojen k tomuto předplatnému.",
+    "affiliateCodeHelp": "Pokud vás sem někdo poslal, zadejte jeho kód před předplacením."
   },
   "restore": {
     "button": "Obnovit nákupy",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Váš trpělivý tutor přímo v aplikaci pro všechny jazyky, které se učíte."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Živé město, kde se každé setkání stává lekcí."
     }
   },
   "home": {

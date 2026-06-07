@@ -37,6 +37,33 @@ export type PurchaseVerificationResponse = {
   signedUrl?: string
   subscriptionActive?: boolean
   expiresAt?: string | null
+  subjectId?: string
+  plus?: boolean
+  entitlementToken?: string
+  affiliateAttribution?: {
+    code?: string
+    locked?: boolean
+    message?: string
+  }
+  error?: string
+}
+
+export type AffiliateResolveResponse =
+  | {
+      status: "ok"
+      code: string
+      partnerName?: string
+      discountTier?: "none" | "pct10" | "pct20" | "pct50" | string
+      message?: string
+    }
+  | { status: "invalid"; code?: string; error: string }
+
+export type EntitlementTokenResponse = {
+  status: "ok" | "failed"
+  subjectId?: string
+  plus?: boolean
+  expiresAt?: string | null
+  entitlementToken?: string
   error?: string
 }
 
@@ -83,6 +110,61 @@ export async function getPlatform(): Promise<PurchasePlatform> {
 export function isIapAvailable(): boolean {
   const p = detectedPlatform
   return p === "ios" || p === "android" || p === "macos" || p === "windows"
+}
+
+const SUBJECT_ID_KEY = "corpan:subject-id:v1"
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+
+function randomId(): string {
+  try {
+    return crypto.randomUUID()
+  } catch {
+    const bytes = Array.from({ length: 16 }, () => Math.floor(Math.random() * 256))
+    bytes[6] = (bytes[6] & 0x0f) | 0x40
+    bytes[8] = (bytes[8] & 0x3f) | 0x80
+    const hex = bytes.map((byte) => byte.toString(16).padStart(2, "0")).join("")
+    return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`
+  }
+}
+
+export function getCorpanSubjectId(): string {
+  const store = useEntitlementStore.getState()
+  if (store.subjectId && UUID_RE.test(store.subjectId)) return store.subjectId
+  try {
+    const saved = localStorage.getItem(SUBJECT_ID_KEY)
+    if (saved && UUID_RE.test(saved)) {
+      store.setSubjectId(saved)
+      return saved
+    }
+    const id = randomId()
+    localStorage.setItem(SUBJECT_ID_KEY, id)
+    store.setSubjectId(id)
+    return id
+  } catch {
+    const id = randomId()
+    store.setSubjectId(id)
+    return id
+  }
+}
+
+export function normalizeAffiliateCode(raw: string): string {
+  return raw.trim().toUpperCase().replace(/\s+/g, "")
+}
+
+export function isAffiliateCodeFormatValid(code: string): boolean {
+  return code.length > 0 && code.length <= 32 && /^[A-Z0-9_-]+$/.test(code)
+}
+
+async function sha256Hex(value: string): Promise<string> {
+  try {
+    const bytes = new TextEncoder().encode(value)
+    const digest = await crypto.subtle.digest("SHA-256", bytes)
+    return [...new Uint8Array(digest)]
+      .map((byte) => byte.toString(16).padStart(2, "0"))
+      .join("")
+  } catch {
+    return value
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -304,6 +386,11 @@ export type PurchaseOutcome =
   | { kind: "pending" }
   | { kind: "error"; code: PurchaseFailureKind; message: string }
 
+export type PurchaseProductOptions = {
+  subjectId?: string
+  offerToken?: string
+}
+
 const PURCHASE_TIMEOUT_MS = 60_000
 
 /**
@@ -312,13 +399,24 @@ const PURCHASE_TIMEOUT_MS = 60_000
  */
 export async function purchaseProduct(
   productId: string,
-  productType: "subs" | "inapp" = "inapp"
+  productType: "subs" | "inapp" = "inapp",
+  options: PurchaseProductOptions = {}
 ): Promise<PurchaseOutcome> {
   if (!isTauriRuntime()) {
     return { kind: "error", code: "UNKNOWN", message: "IAP unavailable in this environment" }
   }
 
   try {
+    const platform = await getPlatform()
+    const subjectId = options.subjectId ?? getCorpanSubjectId()
+    const payload: Record<string, unknown> = { productId, productType }
+    if (options.offerToken) payload.offerToken = options.offerToken
+    if ((platform === "ios" || platform === "macos") && subjectId) {
+      payload.appAccountToken = subjectId
+    } else if (platform === "android" && subjectId) {
+      payload.obfuscatedAccountId = await sha256Hex(subjectId)
+    }
+
     const purchase = await withTimeout(
       invoke<{
         id: string
@@ -328,11 +426,10 @@ export async function purchaseProduct(
         jwsRepresentation?: string
         purchaseToken?: string
         environment?: string
-      }>("plugin:iap|purchase", { payload: { productId, productType } }),
+      }>("plugin:iap|purchase", { payload }),
       PURCHASE_TIMEOUT_MS
     )
 
-    const platform = await getPlatform()
     const receipt =
       purchase.jwsRepresentation ??
       purchase.purchaseToken ??
@@ -523,7 +620,8 @@ const getVerifyUrl = () => {
 
 export async function verifyPurchase(
   purchase: PurchaseResult,
-  packId?: string
+  packId?: string,
+  options: { subjectId?: string; affiliateCode?: string } = {}
 ): Promise<PurchaseVerificationResponse> {
   const urlBase = getVerifyUrl()
   if (!urlBase) {
@@ -537,6 +635,7 @@ export async function verifyPurchase(
       platform: purchase.platform,
       productId: purchase.productId,
       transactionId: purchase.transactionId,
+      subjectId: options.subjectId ?? getCorpanSubjectId(),
     }
 
     if (purchase.platform === "ios" || purchase.platform === "macos") {
@@ -546,6 +645,12 @@ export async function verifyPurchase(
     }
 
     if (packId) body.packId = packId
+    const affiliateCode = options.affiliateCode
+      ? normalizeAffiliateCode(options.affiliateCode)
+      : ""
+    if (affiliateCode && isAffiliateCodeFormatValid(affiliateCode)) {
+      body.affiliateCode = affiliateCode
+    }
 
     const res = await fetch(url, {
       method: "POST",
@@ -561,11 +666,88 @@ export async function verifyPurchase(
       }
     }
 
-    return (await res.json()) as PurchaseVerificationResponse
+    const data = (await res.json()) as PurchaseVerificationResponse
+    if (data.entitlementToken) {
+      useEntitlementStore.getState().setEntitlementToken(data.entitlementToken)
+    }
+    if (data.subjectId) {
+      useEntitlementStore.getState().setSubjectId(data.subjectId)
+    }
+    return data
   } catch (err) {
     return {
       status: "failed",
       error: err instanceof Error ? err.message : "Verification failed",
+    }
+  }
+}
+
+export async function resolveAffiliateCode(raw: string): Promise<AffiliateResolveResponse> {
+  const code = normalizeAffiliateCode(raw)
+  if (!code) return { status: "invalid", error: "Enter a code." }
+  if (!isAffiliateCodeFormatValid(code)) {
+    return { status: "invalid", code, error: "Use letters, numbers, dashes, or underscores." }
+  }
+  const urlBase = getVerifyUrl()
+  try {
+    const res = await fetch(urlBase.replace(/\/+$/, "") + "/affiliate/resolve", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ code, subjectId: getCorpanSubjectId() }),
+    })
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}))
+      if (res.status === 404) {
+        return {
+          status: "ok",
+          code,
+          message: "Code will be sent with your purchase when affiliate lookup is available.",
+        }
+      }
+      return {
+        status: "invalid",
+        code,
+        error: (data as any).error ?? `Code check failed (${res.status})`,
+      }
+    }
+    return (await res.json()) as AffiliateResolveResponse
+  } catch {
+    return {
+      status: "ok",
+      code,
+      message: "Code will be sent with your purchase when the server is available.",
+    }
+  }
+}
+
+export async function refreshEntitlementToken(): Promise<EntitlementTokenResponse> {
+  const urlBase = getVerifyUrl()
+  const subjectId = getCorpanSubjectId()
+  try {
+    const res = await fetch(urlBase.replace(/\/+$/, "") + "/entitlement-token", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ subjectId }),
+    })
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}))
+      useEntitlementStore.getState().setEntitlementToken(null)
+      return {
+        status: "failed",
+        subjectId,
+        error: (data as any).error ?? `Entitlement token failed (${res.status})`,
+      }
+    }
+    const data = (await res.json()) as EntitlementTokenResponse
+    useEntitlementStore.getState().setEntitlementToken(data.entitlementToken ?? null)
+    if (data.subjectId) useEntitlementStore.getState().setSubjectId(data.subjectId)
+    return data
+  } catch (err) {
+    useEntitlementStore.getState().setEntitlementToken(null)
+    return {
+      status: "failed",
+      subjectId,
+      error: err instanceof Error ? err.message : "Entitlement token failed",
     }
   }
 }
@@ -589,7 +771,8 @@ export const SUBSCRIPTION_ANNUAL = "corpan.sub.annual"
 export async function purchaseAndVerify(
   productId: string,
   packId?: string,
-  productType: "subs" | "inapp" = "inapp"
+  productType: "subs" | "inapp" = "inapp",
+  options: { affiliateCode?: string; offerToken?: string } = {}
 ): Promise<{
   signedUrl?: string
   error?: { code: PurchaseFailureKind; message: string }
@@ -599,7 +782,11 @@ export async function purchaseAndVerify(
   timeout?: boolean
   verifyFailed?: boolean
 }> {
-  const outcome = await purchaseProduct(productId, productType)
+  const subjectId = getCorpanSubjectId()
+  const outcome = await purchaseProduct(productId, productType, {
+    subjectId,
+    offerToken: options.offerToken,
+  })
 
   if (outcome.kind === "cancelled") return { cancelled: true }
   if (outcome.kind === "timeout") return { timeout: true }
@@ -634,7 +821,10 @@ export async function purchaseAndVerify(
     await acknowledgePurchase(purchase.receipt)
   }
 
-  const verification = await verifyPurchase(purchase, packId)
+  const verification = await verifyPurchase(purchase, packId, {
+    subjectId,
+    affiliateCode: options.affiliateCode,
+  })
   if (verification.status !== "verified") {
     console.warn(
       "[purchase] backend verification failed (entitlement still set locally):",
@@ -650,6 +840,9 @@ export async function purchaseAndVerify(
       expiresAt: verification.expiresAt,
       autoRenew: true,
     })
+  }
+  if (verification.entitlementToken) {
+    store.setEntitlementToken(verification.entitlementToken)
   }
 
   return { signedUrl: verification.signedUrl }
@@ -687,11 +880,13 @@ export async function refreshEntitlements(): Promise<void> {
       expiresAt: activeSub.expiresAt,
       autoRenew: true,
     })
+    void refreshEntitlementToken()
   } else if (!anyStatusUnknown) {
     if (store.subscription.active) {
       console.info("[purchase] refreshEntitlements: clearing stale local sub state")
       store.clearSubscription()
     }
+    store.setEntitlementToken(null)
   } else {
     console.warn("[purchase] refreshEntitlements: subscription status unknown — keeping in-memory state")
   }

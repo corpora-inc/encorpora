@@ -1,0 +1,18 @@
+[package]
+name = "corpan-asr-contract"
+version = "0.1.0"
+authors = ["Corpora Inc"]
+description = "Shared AsrProvider contract — wire-format structs every Corpán ASR runtime plugin (asr-native / asr-whisper / asr-qwen3 / asr-sherpa) conforms to, so providers can't drift."
+edition = "2021"
+exclude = ["/node_modules"]
+
+# Plain library crate — NOT a tauri plugin. It holds only the wire-format
+# types (serde structs) shared across the provider-per-runtime plugins and
+# the host. Each provider plugin depends on this by path so the capability
+# descriptor + transcription/session structs are defined in exactly ONE
+# place. See corpan/docs/STT_MASTERPLAN.md §2.2.
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1"

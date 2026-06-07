@@ -131,6 +131,22 @@
     "primaryLanguage": "Ngôn ngữ chính (giao diện)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán không ngừng tiến hóa",
+      "subtitle": "Bạn là một trong những người dùng đầu tiên",
+      "tinyTeamTitle": "Một đội ngũ nhỏ đầy nhiệt huyết",
+      "tinyTeamDesc": "Độc lập, không quảng cáo và được xây dựng với sự tôn trọng dành cho người sử dụng — một nhóm nhỏ đang làm nên ứng dụng ngôn ngữ mà chúng tôi luôn mong muốn.",
+      "bleedingEdgeTitle": "Tiên tiến, có chủ đích",
+      "bleedingEdgeDesc": "Corpán đẩy giới hạn khả năng của thiết bị: những thế giới nhập vai, nhận dạng giọng nói, giọng đọc tự nhiên và các mô hình AI mới nhất cùng phối hợp để tạo ra những cách học mới. Phần lớn hoạt động trực tiếp trên thiết bị của bạn, mang đến việc học riêng tư, ưu tiên ngoại tuyến mà không phụ thuộc vào trung tâm dữ liệu. Chúng tôi phát hành công nghệ mới khi nó vẫn còn thô, vì vậy đôi lúc nó có thể hoạt động lạ, chạy chậm hoặc đơn giản là vượt quá khả năng xử lý của thiết bị. Đổi lại, bạn được trải nghiệm những phương pháp học mới đầy sức mạnh ngay khi chúng trở nên khả thi.",
+      "yourLangTitle": "Chúng tôi không nói được mọi ngôn ngữ mình hỗ trợ",
+      "yourLangDesc": "Đó là sự thật chân thành. Chúng tôi xây dựng cho hàng chục ngôn ngữ vì ai cũng xứng đáng có những công cụ học tập mạnh mẽ, không phải vì nhóm nhỏ của chúng tôi đã biết hết tất cả. Bạn có thể phát hiện những điều chúng tôi làm sai. Nếu bạn hiểu {{lang}} hơn chúng tôi, mong bạn hãy cho chúng tôi biết và giúp Corpán trở nên xứng đáng với ngôn ngữ ấy.",
+      "plea": "Bạn có ý tưởng, chỉnh sửa hay một trải nghiệm học tập táo bạo muốn được thấy không? Hãy kể cho chúng tôi. Chúng tôi đọc mọi tin nhắn và suy nghĩ thật sâu về những điều nó có thể mở ra cho Corpán và việc học ngôn ngữ.",
+      "emailCta": "Gửi email cho bọn mình",
+      "githubCta": "Mở issue trên GitHub",
+      "join": "Bạn muốn giúp đưa Corpán đến với thế giới không? Chúng tôi luôn tìm kiếm cộng tác viên, dịch giả và đại sứ địa phương. Hãy tìm đến chúng tôi.",
+      "pact": "Chạm bên dưới để bắt đầu học và cùng chúng tôi trưởng thành. 🤝",
+      "cta": "Tôi tham gia — bắt đầu thôi"
+    },
     "welcome": "Chào mừng",
     "makePrimaryLanguage": "Đặt tiếng Việt làm ngôn ngữ chính của tôi",
     "canChangeLater": "Đừng lo, bạn có thể thay đổi điều này sau.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Hỗ trợ Corpán và mở khóa mọi thứ. Tùy chọn, bất cứ lúc nào.",
+      "subscribedTitle": "Bạn là một Corpanista",
+      "subscribedDesc": "Cảm ơn bạn đã giúp Corpán không có quảng cáo và ngày càng phát triển.",
       "joinTitle": "Tham gia Corpanistas",
       "start": "Bắt đầu khám phá",
       "subtitle": "Corpán được tạo ra bởi một nhóm mã nguồn mở nhỏ. Hãy ghé thăm — và nếu bạn yêu thích, bạn có thể ủng hộ chúng tôi.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Đang chờ phê duyệt",
     "pendingDetail": "Gói đăng ký của bạn đang chờ phê duyệt (Ask to Buy hoặc xác minh ngân hàng). Gói sẽ tự động kích hoạt sau khi được phê duyệt.",
     "storeUnreachable": "Chúng tôi không thể kết nối với App Store lúc này.",
-    "tryAgain": "Thử lại"
+    "tryAgain": "Thử lại",
+    "affiliateCodeLabel": "Mã liên kết",
+    "affiliateCodePlaceholder": "Tùy chọn",
+    "affiliateInvalidFormat": "Dùng chữ cái, số, dấu gạch ngang hoặc gạch dưới.",
+    "affiliateChecking": "Đang kiểm tra mã...",
+    "affiliateApplied": "Mã sẽ được gắn với gói đăng ký này.",
+    "affiliateCodeHelp": "Nếu có người giới thiệu bạn đến đây, hãy nhập mã của họ trước khi đăng ký."
   },
   "restore": {
     "button": "Khôi phục mua hàng",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Gia sư kiên nhẫn, luôn bên bạn trên mọi hành trình học ngôn ngữ."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Một thành phố sống động biến mọi cuộc gặp gỡ thành bài học."
     }
   },
   "home": {

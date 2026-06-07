@@ -131,6 +131,22 @@
     "primaryLanguage": "Bahasa utama (UI)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán terus berkembang",
+      "subtitle": "Anda antara pengguna terawal",
+      "tinyTeamTitle": "Pasukan kecil yang bersemangat",
+      "tinyTeamDesc": "Bebas, tanpa iklan, dan dibina dengan menghormati orang yang menggunakannya — sebuah pasukan kecil menghasilkan aplikasi bahasa yang sentiasa kami inginkan.",
+      "bleedingEdgeTitle": "Termaju, dengan sengaja",
+      "bleedingEdgeDesc": "Corpán menolak batas kemampuan peranti anda: dunia imersif, pengecaman pertuturan, suara semula jadi dan model AI terkini bekerjasama untuk mencipta cara pembelajaran baharu. Sebahagian besarnya berjalan terus pada peranti anda, memberikan pembelajaran peribadi yang mengutamakan penggunaan luar talian tanpa bergantung pada pusat data. Kami mengeluarkan teknologi baharu ketika ia masih mentah, jadi kadangkala ia mungkin bertindak pelik, berjalan perlahan atau sememangnya lebih daripada yang mampu ditangani peranti anda. Sebagai balasan, anda mendapat pengalaman pembelajaran baharu yang hebat sebaik sahaja ia menjadi mungkin.",
+      "yourLangTitle": "Kami tidak bertutur dalam setiap bahasa yang kami sokong",
+      "yourLangDesc": "Itulah kebenaran yang jujur. Kami membina untuk berpuluh-puluh bahasa kerana semua orang layak mendapat alat pembelajaran yang hebat, bukan kerana pasukan kecil kami sudah mengetahui semuanya. Anda mungkin menemui perkara yang kami tersilap. Jika anda lebih mengenali {{lang}} daripada kami, kami berharap anda akan memberitahu kami dan membantu menjadikan Corpán layak untuk bahasa itu.",
+      "plea": "Ada idea, pembetulan atau pengalaman pembelajaran luar biasa yang anda mahu lihat? Beritahu kami. Kami membaca setiap mesej dan memikirkan secara mendalam apa yang boleh dibukanya untuk Corpán dan pembelajaran bahasa.",
+      "emailCta": "E-mel kami",
+      "githubCta": "Buka isu di GitHub",
+      "join": "Mahu membantu membawa Corpán ke seluruh dunia? Kami sentiasa mencari rakan usaha sama, penterjemah dan duta tempatan. Hubungi kami.",
+      "pact": "Ketik di bawah untuk mula belajar dan berkembang bersama kami. 🤝",
+      "cta": "Saya ikut serta — jom"
+    },
     "welcome": "Selamat datang",
     "makePrimaryLanguage": "Jadikan Bahasa Melayu bahasa utama saya",
     "canChangeLater": "Anda boleh mengubahnya pada bila-bila masa.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Sokong Corpán dan buka kunci segala-galanya. Pilihan, bila-bila masa.",
+      "subscribedTitle": "Anda seorang Corpanista",
+      "subscribedDesc": "Terima kasih kerana memastikan Corpán bebas iklan dan terus berkembang.",
       "joinTitle": "Sertai Corpanistas",
       "start": "Mula meneroka",
       "subtitle": "Corpán dibangunkan oleh pasukan sumber terbuka yang kecil. Mari bertegur sapa — dan jika anda menyukainya, anda boleh menyokong kami.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Menunggu kelulusan",
     "pendingDetail": "Langganan anda sedang menunggu kelulusan (Ask to Buy atau pengesahan bank). Ia akan diaktifkan secara automatik sebaik sahaja diluluskan.",
     "storeUnreachable": "Kami tidak dapat menghubungi App Store buat masa ini.",
-    "tryAgain": "Cuba lagi"
+    "tryAgain": "Cuba lagi",
+    "affiliateCodeLabel": "Kod afiliasi",
+    "affiliateCodePlaceholder": "Pilihan",
+    "affiliateInvalidFormat": "Gunakan huruf, nombor, tanda sempang atau garis bawah.",
+    "affiliateChecking": "Menyemak kod...",
+    "affiliateApplied": "Kod akan dilampirkan pada langganan ini.",
+    "affiliateCodeHelp": "Jika seseorang menghantar anda ke sini, masukkan kod mereka sebelum melanggan."
   },
   "restore": {
     "button": "Pulihkan Pembelian",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Tutor sabar dalam peranti untuk setiap bahasa yang anda pelajari."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Sebuah bandar hidup yang menjadikan setiap pertemuan sebagai pelajaran."
     }
   },
   "home": {

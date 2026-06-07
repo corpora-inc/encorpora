@@ -1,0 +1,39 @@
+{
+  "id": "harbor-route-master",
+  "title": "The Long Way Round",
+  "narrative": "A grand tour: market to harbor to the far bank — and say your farewell aloud.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "travel",
+  "objective": { "kind": "completeChallenges", "toolId": "fast-translate", "count": 2 },
+  "steps": [
+    {
+      "id": "stock-up",
+      "label": "Stock up at the market",
+      "anchorId": "market",
+      "kind": "talk",
+      "toolId": "fast-translate"
+    },
+    {
+      "id": "to-harbor",
+      "label": "Reach the harbor",
+      "anchorId": "harbor",
+      "kind": "traverse"
+    },
+    {
+      "id": "farewell",
+      "label": "Say your farewell aloud at the harbor",
+      "anchorId": "harbor",
+      "kind": "talk",
+      "toolId": "say-it-back"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at an {scaffold} level: keep the learner moving across the city, narrating their route, and giving a confident spoken farewell.",
+    "scaffold": "advanced",
+    "ragSources": ["base-travel", "base-market"],
+    "contentSelector": { "levels": ["B1", "B2"], "domains": ["travel", "market", "social"] },
+    "toolWhitelist": ["fast-translate", "say-it-back", "build-sentence"]
+  },
+  "rewards": { "xp": 320, "coins": 420, "badge": "route-master", "grant": ["traveler-coat"] },
+  "nextQuestIds": ["bridge-crossing", "plaza-business", "civic-cityhall"]
+}

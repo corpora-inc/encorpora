@@ -1,0 +1,595 @@
+/*
+ * Corpan City — NPC dialogue panel.
+ * A premium, mobile-first chat sheet that mounts OVER the 3D canvas. Warm
+ * paper-cutout aesthetic: rounded corners, soft shadows, paper-grain surface.
+ * Every selector is scoped under .wp-npc- so it never touches the game's
+ * src/styles.css. The palette is driven by CSS custom properties the runtime
+ * sets from the Scene palette (with sane fallbacks here).
+ */
+
+.wp-npc-root {
+  --wp-npc-paper: #f7efe0;
+  --wp-npc-paper-2: #efe3cd;
+  --wp-npc-ink: #3a2f25;
+  --wp-npc-ink-soft: #7a6a55;
+  --wp-npc-accent: #c46b4a;
+  --wp-npc-accent-ink: #fff7f0;
+  --wp-npc-bubble-npc: #fffaf0;
+  --wp-npc-bubble-you: var(--wp-npc-accent);
+  --wp-npc-shadow: 0 8px 30px rgba(58, 47, 37, 0.28);
+
+  /* FIXED, never absolute: anchored to the viewport so the root can NEVER
+     participate in any ancestor's document flow and thus can NEVER push the
+     canvas. The panel is positioned by fixed anchoring + transform only —
+     there is no flow layout here to perturb the scene by a single pixel. */
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  /* Promote to its own compositor layer up front so open/close is pure
+     transform/opacity work — never a layout/paint that could ripple out. */
+  contain: layout size style;
+  font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, sans-serif;
+  color: var(--wp-npc-ink);
+}
+
+/* Tap-catching scrim that also closes on tap-outside. */
+.wp-npc-scrim {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(120% 80% at 50% 100%, rgba(30, 22, 14, 0.42), rgba(30, 22, 14, 0.12));
+  opacity: 0;
+  transition: opacity 0.24s ease;
+  pointer-events: auto;
+}
+.wp-npc-root.wp-npc-open .wp-npc-scrim {
+  opacity: 1;
+}
+
+/* PHONE DEFAULT: full-width bottom sheet anchored to the bottom edge,
+   with the home-indicator inset folded into the sheet so it reads as
+   docked, not floating. Tablet/desktop override below. */
+.wp-npc-panel {
+  /* FIXED + bottom-anchored. Out of flow from the first painted frame; the
+     only thing that ever animates is `transform` (compositor-only). The panel
+     spans up to max-height and is centered horizontally via left/right + margin
+     auto, so no flex parent is needed and nothing reflows on open/close. */
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: auto;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  max-height: min(85svh, 720px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--wp-npc-paper), var(--wp-npc-paper-2));
+  border-radius: 24px 24px 0 0;
+  box-shadow: var(--wp-npc-shadow);
+  /* Off-screen by default; JS also stamps this inline on the first frame so the
+     opening state is guaranteed even before this stylesheet has parsed. */
+  transform: translateY(105%);
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  overflow: hidden;
+}
+.wp-npc-root.wp-npc-open .wp-npc-panel {
+  transform: translateY(0);
+}
+/* subtle torn-paper top edge feel via inner highlight */
+.wp-npc-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+}
+
+/* ---- header: portrait dot + name + close ---- */
+.wp-npc-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid rgba(122, 106, 85, 0.18);
+}
+.wp-npc-portrait {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--wp-npc-accent);
+  color: var(--wp-npc-accent-ink);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 17px;
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.18), 0 2px 5px rgba(58, 47, 37, 0.25);
+  flex: 0 0 auto;
+}
+.wp-npc-titles {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.wp-npc-name {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.1;
+}
+.wp-npc-sub {
+  font-size: 12px;
+  color: var(--wp-npc-ink-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wp-npc-close {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(122, 106, 85, 0.12);
+  color: var(--wp-npc-ink);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease;
+}
+.wp-npc-close:hover {
+  background: rgba(122, 106, 85, 0.22);
+}
+
+/* ---- transcript ---- */
+.wp-npc-log {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.wp-npc-msg {
+  max-width: 86%;
+  padding: 10px 13px;
+  border-radius: 16px;
+  font-size: 15px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: 0 1px 2px rgba(58, 47, 37, 0.12);
+}
+.wp-npc-msg-npc {
+  align-self: flex-start;
+  background: var(--wp-npc-bubble-npc);
+  border-bottom-left-radius: 5px;
+}
+.wp-npc-msg-you {
+  align-self: flex-end;
+  background: var(--wp-npc-bubble-you);
+  color: var(--wp-npc-accent-ink);
+  border-bottom-right-radius: 5px;
+}
+.wp-npc-msg-note {
+  align-self: center;
+  background: transparent;
+  color: var(--wp-npc-ink-soft);
+  font-size: 12.5px;
+  box-shadow: none;
+  padding: 2px 6px;
+}
+/* a fired tool-call rendered as a small "card" inside the flow */
+.wp-npc-toolcard {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(196, 107, 74, 0.14);
+  color: var(--wp-npc-accent);
+  border: 1px dashed rgba(196, 107, 74, 0.5);
+  border-radius: 12px;
+  padding: 7px 11px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* replay (TTS) button trailing an NPC bubble */
+.wp-npc-replay {
+  margin-top: 4px;
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  color: var(--wp-npc-ink-soft);
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+}
+.wp-npc-replay:hover {
+  color: var(--wp-npc-accent);
+}
+
+/* ---- thinking state (three soft dots) ---- */
+.wp-npc-thinking {
+  align-self: flex-start;
+  display: inline-flex;
+  gap: 5px;
+  padding: 12px 14px;
+  background: var(--wp-npc-bubble-npc);
+  border-radius: 16px;
+  border-bottom-left-radius: 5px;
+}
+.wp-npc-thinking span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--wp-npc-ink-soft);
+  animation: wp-npc-bounce 1.2s infinite ease-in-out;
+}
+.wp-npc-thinking span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.wp-npc-thinking span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes wp-npc-bounce {
+  0%, 80%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* streaming caret on the in-progress bubble */
+.wp-npc-msg-streaming::after {
+  content: "▍";
+  margin-left: 1px;
+  opacity: 0.55;
+  animation: wp-npc-caret 1s steps(2) infinite;
+}
+@keyframes wp-npc-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---- suggested-reply chips ---- */
+.wp-npc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 8px;
+}
+.wp-npc-chip {
+  border: 1px solid rgba(196, 107, 74, 0.45);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--wp-npc-accent);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.wp-npc-chip:hover {
+  background: rgba(196, 107, 74, 0.14);
+}
+.wp-npc-chip:active {
+  transform: scale(0.96);
+}
+
+/* ---- the deterministic "Play a game" offer (its own prominent row) ---- */
+.wp-npc-playrow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 2px 16px 10px;
+}
+/* The challenge intro/segue line — a quiet secondary caption sitting just ABOVE
+   the Play button (its own chrome, NOT a chat bubble, never spoken). Soft + small
+   so the eye lands on the button it labels. */
+.wp-npc-play-caption {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--wp-npc-ink, #4a3a28);
+  opacity: 0.72;
+}
+/* a filled, primary CTA — distinct from the outline suggested-reply chips so it
+   reads as THE thing to tap. A soft pulse draws the eye on first appearance. */
+.wp-npc-chip-play {
+  border: none;
+  background: var(--wp-npc-accent);
+  color: var(--wp-npc-accent-ink);
+  font-weight: 800;
+  font-size: 14.5px;
+  padding: 9px 18px;
+  box-shadow: 0 3px 10px rgba(196, 107, 74, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.16);
+  animation: wp-npc-playpulse 1.8s ease-in-out 2;
+}
+.wp-npc-chip-play:hover {
+  background: var(--wp-npc-accent);
+  filter: brightness(1.06);
+}
+@keyframes wp-npc-playpulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 3px 10px rgba(196, 107, 74, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.16);
+  }
+  50% {
+    transform: scale(1.045);
+    box-shadow: 0 5px 16px rgba(196, 107, 74, 0.55), inset 0 -2px 4px rgba(0, 0, 0, 0.16);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wp-npc-chip-play {
+    animation: none;
+  }
+  .wp-npc-mic.is-starting .wp-npc-mic-icon,
+  .wp-npc-mic.is-starting::after,
+  .wp-npc-mic.is-stopping::after {
+    animation: none;
+  }
+}
+
+/* ---- composer ---- */
+.wp-npc-composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  /* bottom safe-area is folded into the panel padding so the inset isn't
+     applied twice; this keeps the input row resting on the sheet floor. */
+  padding: 10px 12px 12px;
+  border-top: 1px solid rgba(122, 106, 85, 0.18);
+  background: rgba(255, 255, 255, 0.35);
+}
+.wp-npc-mic {
+  flex: 0 0 auto;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(122, 106, 85, 0.3);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--wp-npc-ink-soft);
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
+  opacity: 0.55;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease,
+    box-shadow 0.16s ease, transform 0.1s ease, opacity 0.16s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.wp-npc-mic:not(:disabled) {
+  cursor: pointer;
+  opacity: 1;
+}
+.wp-npc-mic:not(:disabled):active {
+  transform: scale(0.96);
+}
+.wp-npc-mic-icon {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.wp-npc-mic-icon svg {
+  width: 18px;
+  height: 18px;
+}
+.wp-npc-mic-stop {
+  display: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.wp-npc-mic.is-starting,
+.wp-npc-mic.is-stopping {
+  opacity: 1;
+  background: color-mix(in srgb, var(--wp-npc-accent) 15%, white);
+  border-color: color-mix(in srgb, var(--wp-npc-accent) 45%, transparent);
+  color: var(--wp-npc-ink);
+}
+.wp-npc-mic.is-starting::after,
+.wp-npc-mic.is-stopping::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-right-color: currentColor;
+  border-radius: 50%;
+  opacity: 0.62;
+  pointer-events: none;
+  animation: wp-npc-mic-spin 0.72s linear infinite;
+}
+.wp-npc-mic.is-starting .wp-npc-mic-icon {
+  animation: wp-npc-mic-breathe 0.8s ease-in-out infinite alternate;
+}
+.wp-npc-mic.is-live {
+  opacity: 1;
+  background: #b93f47;
+  border-color: #9d3038;
+  color: #fff;
+  box-shadow: 0 0 0 var(--wp-npc-mic-ring, 4px) rgba(185, 63, 71, 0.24),
+    0 4px 12px rgba(126, 32, 39, 0.28);
+}
+.wp-npc-mic.is-live .wp-npc-mic-icon svg,
+.wp-npc-mic.is-stopping .wp-npc-mic-icon svg {
+  display: none;
+}
+.wp-npc-mic.is-live .wp-npc-mic-stop,
+.wp-npc-mic.is-stopping .wp-npc-mic-stop {
+  display: block;
+}
+.wp-npc-mic.is-stopping {
+  background: color-mix(in srgb, #b93f47 18%, white);
+  border-color: color-mix(in srgb, #b93f47 55%, transparent);
+  color: #9d3038;
+}
+@keyframes wp-npc-mic-breathe {
+  from { transform: scale(0.88); opacity: 0.62; }
+  to { transform: scale(1.08); opacity: 1; }
+}
+@keyframes wp-npc-mic-spin {
+  to { transform: rotate(360deg); }
+}
+.wp-npc-field {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid rgba(122, 106, 85, 0.3);
+  padding: 4px 6px 4px 12px;
+}
+.wp-npc-input {
+  flex: 1 1 auto;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.35;
+  max-height: 96px;
+  color: var(--wp-npc-ink);
+  padding: 6px 0;
+}
+.wp-npc-send {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--wp-npc-accent);
+  color: var(--wp-npc-accent-ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+.wp-npc-send:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.wp-npc-send:not(:disabled):active {
+  transform: scale(0.92);
+}
+
+/* =========================================================================
+   RESPONSIVE — phone bottom sheet (default above) → docked floating card.
+   The scrim stays full-bleed at every size; only the panel relocates.
+   ========================================================================= */
+
+/* Roomier touch targets on phones (close / mic / send ≥ 44px). */
+@media (max-width: 600px) {
+  .wp-npc-close {
+    width: 40px;
+    height: 40px;
+    font-size: 19px;
+  }
+  .wp-npc-send {
+    width: 44px;
+    height: 44px;
+  }
+  .wp-npc-mic {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* TABLET & DESKTOP: a tasteful floating card, never edge-to-edge.
+   Docks to the right with a margin and rounded corners on all sides so it
+   reads as a panel hovering over the world rather than a stretched sheet. */
+@media (min-width: 720px) {
+  .wp-npc-scrim {
+    /* lighter, vignette-style scrim on big screens — the world stays visible */
+    background: radial-gradient(140% 100% at 85% 100%, rgba(30, 22, 14, 0.34), rgba(30, 22, 14, 0.06));
+  }
+  .wp-npc-panel {
+    /* Dock to the bottom-right corner via fixed anchoring (no flex parent). */
+    left: auto;
+    right: max(20px, env(safe-area-inset-right, 0px));
+    bottom: max(20px, env(safe-area-inset-bottom, 0px));
+    width: min(460px, 42vw);
+    max-width: 460px;
+    margin: 0;
+    max-height: min(78svh, 760px);
+    padding-bottom: 0;
+    border-radius: 24px;
+    box-shadow: 0 18px 48px rgba(58, 47, 37, 0.34);
+    /* slide up from the dock corner */
+    transform: translateY(calc(100% + 28px));
+  }
+  .wp-npc-root.wp-npc-open .wp-npc-panel {
+    transform: translateY(0);
+  }
+  .wp-npc-composer {
+    padding: 12px 14px 14px;
+  }
+}
+
+/* Large desktop: a touch wider + a hair taller, comfortably docked. */
+@media (min-width: 1280px) {
+  .wp-npc-panel {
+    width: 480px;
+    max-width: 480px;
+    max-height: min(72svh, 800px);
+  }
+  .wp-npc-name {
+    font-size: 17px;
+  }
+  .wp-npc-msg {
+    font-size: 15.5px;
+  }
+}
+
+/* Coarse pointer (touch): kill hover-only color shifts that can stick. */
+@media (hover: none) {
+  .wp-npc-close:hover {
+    background: rgba(122, 106, 85, 0.12);
+  }
+  .wp-npc-chip:hover {
+    background: rgba(255, 255, 255, 0.55);
+  }
+  .wp-npc-replay:hover {
+    color: var(--wp-npc-ink-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-npc-scrim,
+  .wp-npc-panel {
+    transition: opacity 0.2s ease;
+  }
+  .wp-npc-panel {
+    transform: none;
+  }
+  .wp-npc-root:not(.wp-npc-open) .wp-npc-panel {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .wp-npc-thinking span,
+  .wp-npc-msg-streaming::after {
+    animation: none;
+  }
+}

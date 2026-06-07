@@ -2,16 +2,27 @@ import { addPluginListener, invoke } from "@tauri-apps/api/core"
 import { listen } from "@tauri-apps/api/event"
 
 import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
+import { getVoicesCached, langMatchScore, sortVoicesWithLangBias } from "@/util/tts-voices"
+import { createVoiceTTS } from "@/util/speak"
+import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
 import { useRatingStore } from "@/store/rating"
 import { usePhrasePacksStore } from "@/store/phrasePacks"
 import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
+import { rankProviders } from "@shared/asr"
 import type { StackConfigPatch } from "./types"
 import type {
+  AsrApi,
+  AsrCapability,
+  AsrCaptureMode,
+  AsrProvider,
+  AsrSession,
   HostApi,
   LlmApi,
+  ModelBudget,
+  ModelsApi,
   PackDbQuery,
   SttApi,
   SttAudioLevelEvent,
@@ -356,7 +367,23 @@ export const createHostApi = (packId?: string): HostApi => {
     },
     getStatus: async () => {
       try {
-        return await invoke<SttStatus>("plugin:stt|get_status")
+        const status = await invoke<SttStatus>("plugin:stt|get_status")
+        if (status.priorInitCrash) {
+          // A previous on-device whisper init never returned — an
+          // uncatchable native SIGSEGV/abort in ggml model load. The plugin
+          // wrote a breadcrumb before the crash and held it across the
+          // restart; record it ONCE into on-device analytics so the failure
+          // is actually harvested (we can't pull logcat from a random user's
+          // device). The native field is cleared by this same getStatus call.
+          try {
+            trackEvent("stt_init_crash", {
+              context: String(status.priorInitCrash).slice(0, 500),
+            })
+          } catch (e) {
+            console.error("[stt] failed to record prior init crash:", e)
+          }
+        }
+        return status
       } catch (error) {
         console.error("[stt] get_status error:", error)
         return {
@@ -547,6 +574,212 @@ export const createHostApi = (packId?: string): HostApi => {
     },
   }
 
+  // --- host.models: the Budget Arbiter seam ------------------------------
+  // The refcount/dedup STORE (install/evict/locate/list) is the registry
+  // plugin (Phase-2). But the BUDGET — the question Corpan City/Tutomaton
+  // actually ask ("does Qwen3-ASR fit next to my 4B right now?") — is
+  // answerable TODAY from real signals: device memory via stt.getStatus()
+  // (availableMemoryMB / physicalMemoryMB) and the resident LLM via
+  // llm.status(). We surface those; the store methods are honest stubs that
+  // report "not yet" rather than pretending. Noisy on error, never silent.
+  const RESIDENT_LLM_MB = 2500 // Qwen3-4B GGUF resident footprint (approx).
+  const readBudget = async (): Promise<ModelBudget> => {
+    let availableMB = 0
+    let physicalMB = 0
+    try {
+      const s = await invoke<SttStatus>("plugin:stt|get_status")
+      availableMB = s.availableMemoryMB ?? 0
+      physicalMB = s.physicalMemoryMB ?? 0
+    } catch (error) {
+      // The stt plugin is the device-memory oracle; if it's absent we report
+      // zeros (arbiter then conservatively blocks downloadable engines).
+      console.error("[models] budget: stt.get_status failed:", error)
+    }
+    const resident: ModelBudget["resident"] = []
+    try {
+      const ls = await llm.status()
+      if (ls?.loaded) {
+        resident.push({ id: "llm-base-qwen3-4b", mb: RESIDENT_LLM_MB, kind: "llm" })
+      }
+    } catch (error) {
+      // LLM plugin not registered (or not loaded) → no LLM resident entry.
+      console.error("[models] budget: llm.status failed:", error)
+    }
+    return { availableMB, physicalMB, resident }
+  }
+
+  const models: ModelsApi = {
+    // Store ops await the registry plugin (Phase-2). Report honestly.
+    list: async () => [],
+    ensure: async () => ({ ready: false, downloading: false }),
+    locate: async () => null,
+    evict: async () => {},
+    budget: readBudget,
+    fits: async (req) => {
+      const b = await readBudget()
+      const need = req.residentMB ?? 0
+      // Headroom = what the OS says we can still allocate. No eviction list
+      // until the refcount store exists, so mustEvict is empty for now.
+      return { fits: need > 0 && need <= b.availableMB, mustEvict: [] }
+    },
+    whatFitsAlongside: async () => {
+      // Until a provider plugin registers capabilities, nothing on-device
+      // qualifies; native (residentMemoryMB 0) would always pass once present.
+      return []
+    },
+  }
+
+  // --- host.asr: native dictation provider over tauri-plugin-asr-native ----
+  // The provider bridges host.asr to the OS-native recognizer plugin: its
+  // session invokes plugin:asr-native commands and relays the plugin's
+  // `asr://partial`/`asr://level`/`asr://error` events into AsrSession
+  // callbacks. DEGRADE-SAFE: every native call is wrapped — if the plugin
+  // isn't registered (desktop dev) or the language isn't supported, the
+  // probe/transcribe fails or returns nothing → pick() returns null → the
+  // caller (MicInput / wireDictation) falls back to the KEYBOARD floor (the
+  // mic just doesn't show). So this can't regress anything.
+
+  // One session = one start_session…stop_session, with its event listeners.
+  const openNativeSession = async (
+    lang: string,
+    mode: AsrCaptureMode,
+  ): Promise<AsrSession> => {
+    const sessionId = `asr-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+    let partialCb: ((t: string) => void) | undefined
+    let levelCb: ((rms: number, tMs: number) => void) | undefined
+    let errorCb: ((code: string, message?: string) => void) | undefined
+    const unlisteners: Array<() => void> = []
+
+    const sub = async <T extends { sessionId: string }>(
+      ev: string,
+      handler: (e: T) => void,
+    ) => {
+      try {
+        const h = await addPluginListener<T>("asr-native", ev, (e) => {
+          if (e?.sessionId !== sessionId) return // route to THIS session only
+          try {
+            handler(e)
+          } catch (err) {
+            console.error(`[asr] ${ev} handler threw:`, err)
+          }
+        })
+        unlisteners.push(() => {
+          try {
+            h.unregister()
+          } catch (err) {
+            console.error(`[asr] unregister ${ev} failed:`, err)
+          }
+        })
+      } catch (err) {
+        console.error(`[asr] addPluginListener ${ev} failed:`, err)
+      }
+    }
+
+    await sub<{ sessionId: string; text: string }>("asr://partial", (e) =>
+      partialCb?.(e.text),
+    )
+    await sub<{ sessionId: string; rms: number; tMs: number }>(
+      "asr://level",
+      (e) => levelCb?.(e.rms, e.tMs),
+    )
+    await sub<{ sessionId: string; code: string; message?: string }>(
+      "asr://error",
+      (e) => errorCb?.(e.code, e.message),
+    )
+
+    const teardown = () => {
+      for (const u of unlisteners.splice(0)) u()
+    }
+
+    try {
+      await invoke("plugin:asr-native|start_session", {
+        args: { sessionId, lang, mode },
+      })
+    } catch (error) {
+      teardown()
+      throw error
+    }
+
+    return {
+      onPartial: (cb) => {
+        partialCb = cb
+      },
+      onLevel: (cb) => {
+        levelCb = cb
+      },
+      onError: (cb) => {
+        errorCb = cb
+      },
+      stop: async () => {
+        try {
+          return await invoke("plugin:asr-native|stop_session", {
+            args: { sessionId },
+          })
+        } finally {
+          teardown()
+        }
+      },
+      cancel: () => {
+        void invoke("plugin:asr-native|cancel_session", {
+          args: { sessionId },
+        }).catch((err) => console.error("[asr] cancel_session failed:", err))
+        teardown()
+      },
+    }
+  }
+
+  const nativeProvider: AsrProvider = {
+    id: "native",
+    capabilities: () =>
+      invoke<AsrCapability>("plugin:asr-native|capabilities"),
+    isAvailable: (lang) =>
+      invoke<{ ok: boolean; needsDownload: boolean }>(
+        "plugin:asr-native|is_available",
+        { args: { lang } },
+      ),
+    ensure: (lang) =>
+      invoke<{ ready: boolean; downloading: boolean }>(
+        "plugin:asr-native|ensure",
+        { args: { lang } },
+      ),
+    transcribe: ({ lang, mode }) => openNativeSession(lang, mode),
+  }
+
+  const asr: AsrApi = {
+    provider: async (id) => (id === "native" ? nativeProvider : null),
+    pick: async ({ lang, budgetMB, goal = "dictation" }) => {
+      // Probe native capabilities; any failure (plugin absent on desktop dev,
+      // etc.) → no provider → keyboard floor.
+      let cap: AsrCapability
+      try {
+        cap = await nativeProvider.capabilities()
+      } catch (err) {
+        console.error("[asr] native capabilities() failed → keyboard:", err)
+        return null
+      }
+      // Live ASR budget headroom from the registry (native is out-of-process,
+      // residentMemoryMB 0, so it always fits; this is here for downloadable
+      // providers later). Default generous if budget read fails.
+      let availableForAsrMB = budgetMB ?? 4096
+      if (budgetMB == null) {
+        try {
+          const b = await readBudget()
+          availableForAsrMB = b.availableMB || 4096
+        } catch {
+          /* keep the generous default */
+        }
+      }
+      const androidCpuOnly =
+        typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent)
+      const ranked = rankProviders([cap], {
+        lang,
+        goal,
+        budget: { availableForAsrMB, androidCpuOnly },
+      })
+      return ranked[0] === "native" ? nativeProvider : null
+    },
+  }
+
   return {
     speak: async (uiCode, text) => {
       await speakImmediate(uiCode, text)
@@ -555,6 +788,36 @@ export const createHostApi = (packId?: string): HostApi => {
       return await speakConcurrent(uiCode, text)
     },
     stopSpeech,
+    // Voice enumeration + voice-pinned speak — the mechanism a pack uses to give
+    // each NPC ONE sticky, gender-matched voice. Both reuse the SAME machinery the
+    // app's own per-language `voicePrefs` already run on (native voices with gender
+    // via `getVoicesCached`; `createVoiceTTS(uiCode)(text, rate, voiceId)` speaks a
+    // specific voice on native + browser), so there is no new native work.
+    listVoices: async (uiCode?: string) => {
+      const all = await getVoicesCached({ maxAgeMs: 30_000 })
+      const matched = uiCode
+        ? all.filter((v) => langMatchScore(v.language, uiCode) > 0)
+        : all
+      // Contract: listVoices(uiCode) returns ONLY uiCode-language voices — an empty
+      // result is correct (the caller degrades to a language-only speak), and we must
+      // NEVER substitute a wrong-language list. (`matched` is already `all` when no
+      // uiCode is passed.) The old `matched.length>0 ? matched : all` returned e.g.
+      // Spanish voices for `listVoices("en")` on a device with no EN voice installed.
+      const list = sortVoicesWithLangBias(matched, uiCode)
+      return list.map((v) => ({
+        id: v.id,
+        name: v.name ?? undefined,
+        language: v.language,
+        gender: v.gender ?? "unspecified",
+        quality: v.quality,
+        networkRequired: v.networkRequired,
+      }))
+    },
+    speakVoice: async (uiCode: string, text: string, voiceId: string) => {
+      if (disposed) return
+      const { rate } = useSettingsStore.getState()
+      await createVoiceTTS(uiCode)(text, rate, voiceId)
+    },
     // Native clipboard via tauri-plugin-clipboard-manager — the web
     // `navigator.clipboard` API is blocked in the WKWebView (NotAllowedError),
     // so packs route copy through here.
@@ -612,9 +875,39 @@ export const createHostApi = (packId?: string): HostApi => {
         exclude: useHistoryStore.getState().getRecentTuples(10),
       })
     },
-    getRandomEntries: async (count: number) => {
+    getRandomEntries: async (q) => {
       const { levels, phrasePackIds, baseCorpusEnabled } =
         useSettingsStore.getState()
+      // Two call shapes. A bare number = the historical path (user-global `levels`,
+      // domains NOT forwarded — phrase packs supersede the domain axis in 0.15.1+).
+      // An options object = a pack asking for a THEMED + LEVEL-SCALED draw: forward
+      // its `domains`/`levels`/`languageCodes` to the bundled-corpus command, which
+      // INNER-JOINs on `cor_entry_domains` and relaxes (drop levels → drop domains
+      // → all) so a strict filter never starves. A pack-supplied `levels` overrides
+      // the user-global one (the pack is scaling difficulty to the quest);
+      // `languageCodes` constrains to the TARGET translation. When a pack passes a
+      // filter we sample from the BASE corpus (the filterable, domain-tagged
+      // corpus) rather than weaving in the user's phrase packs, so the requested
+      // theme is honored faithfully.
+      if (typeof q === "object") {
+        const hasFilter =
+          (q.domains?.length ?? 0) > 0 ||
+          (q.levels?.length ?? 0) > 0 ||
+          (q.languageCodes?.length ?? 0) > 0
+        if (hasFilter) {
+          return invoke("get_random_entries_with_translations", {
+            count: q.count,
+            levels: q.levels && q.levels.length ? q.levels : levels,
+            domains: q.domains,
+            languageCodes: q.languageCodes,
+            // Filtered themed draws sample the domain-tagged BASE corpus; the
+            // command falls back to base when no packs are supplied.
+            baseCorpusEnabled: true,
+            exclude: useHistoryStore.getState().getRecentTuples(10),
+          })
+        }
+      }
+      const count = typeof q === "number" ? q : q.count
       return invoke("get_random_entries_with_translations", {
         count,
         levels,
@@ -792,5 +1085,7 @@ export const createHostApi = (packId?: string): HostApi => {
     },
     stt,
     llm,
+    asr,
+    models,
   }
 }

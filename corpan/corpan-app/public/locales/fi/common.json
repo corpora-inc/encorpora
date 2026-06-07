@@ -131,6 +131,22 @@
     "primaryLanguage": "Ensisijainen (käyttöliittymä) kieli"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán kehittyy",
+      "subtitle": "Olet mukana ensimmäisten joukossa",
+      "tinyTeamTitle": "Pieni tiimi intohimoisia",
+      "tinyTeamDesc": "Itsenäinen, mainokseton ja käyttäjiään kunnioittaen rakennettu — pieni tiimi tekee kielisovellusta, jonka olemme aina halunneet.",
+      "bleedingEdgeTitle": "Tarkoituksella edistyksellinen",
+      "bleedingEdgeDesc": "Corpán koettelee laitteesi mahdollisuuksien rajoja: mukaansatempaavat maailmat, puheentunnistus, luonnolliset äänet ja uusimmat tekoälymallit luovat yhdessä uusia tapoja oppia. Suuri osa toimii suoraan laitteellasi, joten oppiminen on yksityistä ja ensisijaisesti offline-käyttöön suunniteltua ilman riippuvuutta palvelinkeskuksesta. Julkaisemme uutta teknologiaa sen ollessa vielä raakaa, joten se saattaa joskus toimia oudosti, hitaasti tai yksinkertaisesti vaatia laitteeltasi enemmän kuin se pystyy tarjoamaan. Vastineeksi saat käyttöösi tehokkaita uusia oppimiskokemuksia heti, kun ne tulevat mahdollisiksi.",
+      "yourLangTitle": "Emme puhu kaikkia tukemiamme kieliä",
+      "yourLangDesc": "Se on rehellinen totuus. Rakennamme kymmenille kielille, koska jokainen ansaitsee tehokkaita oppimistyökaluja — emme siksi, että pieni tiimimme osaisi ne jo kaikki. Saatat löytää asioita, joissa olemme erehtyneet. Jos osaat {{lang}} paremmin kuin me, toivomme, että kerrot siitä ja autat tekemään Corpánista kielen arvoisen.",
+      "plea": "Onko sinulla idea, korjaus tai rohkea oppimiskokemus, jonka haluaisit nähdä? Kerro meille. Luemme jokaisen viestin ja pohdimme syvällisesti, mitä se voisi avata Corpánille ja kielten oppimiselle.",
+      "emailCta": "Lähetä meille sähköpostia",
+      "githubCta": "Avaa issue GitHubissa",
+      "join": "Haluatko auttaa tuomaan Corpánin maailmalle? Etsimme aina yhteistyökumppaneita, kääntäjiä ja paikallisia lähettiläitä. Ota yhteyttä.",
+      "pact": "Napauta alta, aloita oppiminen ja kasva kanssamme. 🤝",
+      "cta": "Olen mukana — mennään"
+    },
     "welcome": "Tervetuloa",
     "makePrimaryLanguage": "Aseta suomi ensisijaiseksi kielekseni",
     "canChangeLater": "Voit muuttaa tätä milloin tahansa.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Tue Corpánia ja avaa kaikki. Vapaaehtoista, milloin tahansa.",
+      "subscribedTitle": "Olet Corpanista",
+      "subscribedDesc": "Kiitos, että pidät Corpánin mainoksettomana ja kasvavana.",
       "joinTitle": "Liity Corpanistas-yhteisöön",
       "start": "Aloita tutkiminen",
       "subtitle": "Corpánin on luonut pieni avoimen lähdekoodin tiimi. Tule tervehtimään – ja jos pidät siitä, voit tukea meitä.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Odotetaan hyväksyntää",
     "pendingDetail": "Tilauksesi odottaa hyväksyntää (Ostolupa tai pankin vahvistus). Se aktivoituu automaattisesti, kun se on hyväksytty.",
     "storeUnreachable": "Emme saaneet yhteyttä App Storeen juuri nyt.",
-    "tryAgain": "Yritä uudelleen"
+    "tryAgain": "Yritä uudelleen",
+    "affiliateCodeLabel": "Kumppanikoodi",
+    "affiliateCodePlaceholder": "Valinnainen",
+    "affiliateInvalidFormat": "Käytä kirjaimia, numeroita, yhdysmerkkejä tai alaviivoja.",
+    "affiliateChecking": "Tarkistetaan koodia...",
+    "affiliateApplied": "Koodi liitetään tähän tilaukseen.",
+    "affiliateCodeHelp": "Jos joku lähetti sinut tänne, syötä hänen koodinsa ennen tilaamista."
   },
   "restore": {
     "button": "Palauta ostokset",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Oma, kärsivällinen kieltenopettajasi, joka kulkee mukanasi kaikille oppimillesi kielille."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Elävä kaupunki, jossa jokainen kohtaaminen on oppitunti."
     }
   },
   "home": {

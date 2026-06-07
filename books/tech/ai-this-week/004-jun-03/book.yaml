@@ -1,0 +1,32 @@
+book:
+  issue: 4
+  title: "AI This Week — June 3, 2026"
+  subtitle: "Frontier on the Countertop"
+  date: 2026-06-03
+  target_segments: 165
+
+  audience: "Hardcore DIY tinkerers — self-hosters, fine-tuners, llama.cpp / vLLM / Ollama / MLX folk — who want a calm conversation about real AI news with practical hands-on hooks."
+  primary_language: en
+  pack_id: ai_this_week_2026_06_03
+
+  cast:
+    host: vindy
+    analyst: ron
+
+  episode_shape: ep2_open_first  # Cold open → Open weights → Leaderboards → Headlines → Top Story → Concept → Sign-off
+
+  # Topics populated AFTER research + draft. Research notes live in research/.
+  spine:
+    lead: "Architecture innovation + an NVIDIA open frontier MoE (MiniMax M3 with MSA, Nemotron 3 Ultra)"
+    leaderboards: "Eval integrity inversion — Opus 4.8 leads, OpenAI deprioritizes SWE-bench Verified, Kili harness-variance report"
+    headlines: "Microsoft MAI at Build, Anthropic S-1, GitHub Copilot usage-based billing live, SGLang CVE-2026-10775, Mistral Medium 3.5 on Copilot Studio"
+    top_story: "The DIY rig grew up — Strix Halo + DGX Spark + open weights = frontier on your desk"
+    concept: "Speculative decoding — the drafter/verifier trick under MiniMax M3's 15× decode and llama.cpp's draft-model mode"
+
+  pacing:
+    - 5 sections + cold open + sign-off, dialog format
+    - ~140-180 segments, ~12 minutes
+    - One sentence per segment (Ep 2+ rule of the road)
+    - Multiple consecutive ANALYST segments are expected when Ron has a multi-sentence thought
+    - Numbers spelled as words in tts.text everywhere; display field uses numerals
+    - Bare dialog text, no Style: prefix (director_prompt layer applies at generate time)

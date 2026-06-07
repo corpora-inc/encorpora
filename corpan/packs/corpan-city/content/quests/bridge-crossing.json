@@ -1,0 +1,32 @@
+{
+  "id": "bridge-crossing",
+  "title": "Across the River",
+  "narrative": "Talk your way past the bridge keeper, then cross to the far bank yourself.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "travel",
+  "objective": { "kind": "completeChallenges", "toolId": "translate-fast", "count": 1 },
+  "steps": [
+    {
+      "id": "greet-keeper",
+      "label": "Greet the keeper at the north bridge",
+      "anchorId": "bridge_n",
+      "kind": "talk",
+      "toolId": "translate-fast"
+    },
+    {
+      "id": "cross",
+      "label": "Cross the bridge to the far bank",
+      "anchorId": "bridge_n",
+      "kind": "traverse"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner greeting, asking permission, and talking about crossing and routes.",
+    "scaffold": "beginner",
+    "ragSources": ["base-travel"],
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["travel", "directions"] },
+    "toolWhitelist": ["translate-fast", "listen-choose", "build-sentence"]
+  },
+  "rewards": { "xp": 210, "coins": 260, "badge": "river-crosser", "grant": ["map-scrap"] },
+  "nextQuestIds": ["station-departures", "harbor-ferry-ride", "fountain-meetup"]
+}

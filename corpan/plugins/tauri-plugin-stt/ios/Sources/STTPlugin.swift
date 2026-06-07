@@ -727,6 +727,32 @@ private final class WhisperDownloadDelegate: NSObject, URLSessionDownloadDelegat
                 at: dest.deletingLastPathComponent(),
                 withIntermediateDirectories: true)
             try fm.moveItem(at: location, to: dest)
+            // Completeness gate (parity with the Android plugin). When the
+            // server advertised a Content-Length, a file shorter than that
+            // is a TRUNCATED download — a dropped connection or a CDN closing
+            // the stream early. URLSession usually reports that via
+            // didCompleteWithError, but in the case where it still calls us a
+            // short ggml file would pass the magic-byte check and then SIGSEGV
+            // inside whisper model load when native code reads tensor data
+            // past EOF. Refuse it here so the install reports a clean,
+            // retryable failure instead.
+            let expected = downloadTask.response?.expectedContentLength ?? -1
+            if expected > 0 {
+                let attrs = try? fm.attributesOfItem(atPath: dest.path)
+                let actual = (attrs?[.size] as? NSNumber)?.int64Value ?? -1
+                if actual >= 0 && actual < expected {
+                    try? fm.removeItem(at: dest)
+                    onComplete(
+                        .failure(
+                            NSError(
+                                domain: "stt", code: -1001,
+                                userInfo: [
+                                    NSLocalizedDescriptionKey:
+                                        "truncated download: got \(actual) of \(expected) bytes"
+                                ])))
+                    return
+                }
+            }
             sttLog("Whisper | download finished:", dest.path)
             onComplete(.success(dest))
         } catch {

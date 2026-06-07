@@ -131,6 +131,22 @@
     "primaryLanguage": "Bahasa utama (UI)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán terus berkembang",
+      "subtitle": "Anda termasuk pengguna awal",
+      "tinyTeamTitle": "Tim kecil para antusias",
+      "tinyTeamDesc": "Independen, bebas iklan, dan dibuat dengan menghormati orang-orang yang menggunakannya — tim kecil yang membangun aplikasi bahasa yang selalu kami inginkan.",
+      "bleedingEdgeTitle": "Terdepan, dengan tujuan",
+      "bleedingEdgeDesc": "Corpán mendorong batas kemampuan perangkat Anda: dunia imersif, pengenalan ucapan, suara alami, dan model AI terbaru bekerja bersama untuk menciptakan cara belajar yang baru. Sebagian besar berjalan langsung di perangkat Anda, memberi Anda pembelajaran yang privat dan mengutamakan penggunaan luring tanpa bergantung pada pusat data. Kami merilis teknologi baru saat masih mentah, sehingga terkadang dapat bertingkah aneh, berjalan lambat, atau memang lebih dari yang mampu ditangani perangkat Anda. Sebagai gantinya, Anda mendapatkan pengalaman belajar baru yang kuat segera setelah hal itu menjadi mungkin.",
+      "yourLangTitle": "Kami tidak berbicara setiap bahasa yang kami dukung",
+      "yourLangDesc": "Itulah kenyataannya. Kami membangun untuk puluhan bahasa karena semua orang berhak mendapatkan alat belajar yang kuat, bukan karena tim kecil kami sudah menguasai semuanya. Anda mungkin menemukan hal-hal yang kami lakukan dengan keliru. Jika Anda mengenal {{lang}} lebih baik daripada kami, kami harap Anda akan memberi tahu kami dan membantu menjadikan Corpán layak untuk bahasa tersebut.",
+      "plea": "Punya ide, koreksi, atau pengalaman belajar liar yang ingin Anda lihat? Beri tahu kami. Kami membaca setiap pesan dan memikirkan secara mendalam apa yang dapat dibukanya bagi Corpán dan pembelajaran bahasa.",
+      "emailCta": "Kirim email",
+      "githubCta": "Buka issue di GitHub",
+      "join": "Ingin membantu membawa Corpán ke seluruh dunia? Kami selalu mencari kolaborator, penerjemah, dan duta lokal. Temui kami.",
+      "pact": "Ketuk di bawah untuk mulai belajar dan berkembang bersama kami. 🤝",
+      "cta": "Saya ikut — ayo mulai"
+    },
     "welcome": "Selamat datang",
     "makePrimaryLanguage": "Jadikan bahasa Inggris bahasa utama saya",
     "canChangeLater": "Anda dapat mengubahnya kapan saja.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Dukung Corpán dan buka semua fitur. Opsional, kapan saja.",
+      "subscribedTitle": "Anda seorang Corpanista",
+      "subscribedDesc": "Terima kasih telah menjaga Corpán tetap bebas iklan dan terus berkembang.",
       "joinTitle": "Join the Corpanistas",
       "start": "Mulai menjelajah",
       "subtitle": "Corpán dibuat oleh tim open-source kecil. Sapa kami — dan jika Anda menyukainya, Anda bisa mendukung kami.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Menunggu persetujuan",
     "pendingDetail": "Langganan Anda sedang menunggu persetujuan (Minta untuk Membeli atau verifikasi bank). Akan aktif otomatis setelah disetujui.",
     "storeUnreachable": "Kami tidak bisa menjangkau App Store saat ini.",
-    "tryAgain": "Coba lagi"
+    "tryAgain": "Coba lagi",
+    "affiliateCodeLabel": "Kode afiliasi",
+    "affiliateCodePlaceholder": "Opsional",
+    "affiliateInvalidFormat": "Gunakan huruf, angka, tanda hubung, atau garis bawah.",
+    "affiliateChecking": "Memeriksa kode...",
+    "affiliateApplied": "Kode akan dilampirkan ke langganan ini.",
+    "affiliateCodeHelp": "Jika seseorang mengirimmu ke sini, masukkan kodenya sebelum berlangganan."
   },
   "restore": {
     "button": "Pulihkan pembelian",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Tutor sabar langsung di perangkat Anda, untuk setiap bahasa yang Anda pelajari."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Sebuah kota hidup yang mengubah setiap pertemuan menjadi pelajaran."
     }
   },
   "home": {

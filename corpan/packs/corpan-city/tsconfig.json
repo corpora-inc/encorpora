@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "types": ["node"],
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "@corpan-city/contracts": ["./contracts/src/index.ts"],
+      "@corpan-city/contracts/*": ["./contracts/src/*"],
+      "@shared/audio/*": ["../shared/audio/*"]
+    }
+  },
+  "include": ["src", "contracts/src"],
+  "exclude": ["server", "node_modules", "dist"]
+}

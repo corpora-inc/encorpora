@@ -7,7 +7,116 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.17.1] - 2026-06-07
+
+### Added
+
+- **`hostApi.asr` + `hostApi.models` seam (provider-agnostic dictation +
+  on-device model Budget Arbiter).** New optional `asr` (`provider`/`pick`) and
+  `models` (`budget`/`fits`/`whatFitsAlongside` + Phase-2 store stubs) slices on
+  the host API, mirroring `@shared/asr` + the SDK. `models.budget()` reports
+  REAL device memory (from `stt.get_status`) + the resident LLM (from
+  `llm.status`), so packs can ask "does an ASR model fit next to the 4B right
+  now?". `asr.pick`/`provider` return `null` (→ keyboard floor) until an
+  `asr-*` provider plugin registers. Additive + optional — nothing changes for
+  existing packs. Part of the 0.17.1 STT overhaul (see
+  `docs/STT_MASTERPLAN.md` + `docs/ASR_INTEGRATION_MANIFEST.md`).
+- **`hostApi.getRandomEntries` accepts an optional content filter.** In addition
+  to the legacy `getRandomEntries(count)`, packs may now call
+  `getRandomEntries({ count, domains, levels, languageCodes })` to request a
+  themed + level-scaled draw; the filter is forwarded to
+  `get_random_entries_with_translations` (which already supports
+  `levels`/`domains`/`language_codes` with a relaxation ladder). Additive +
+  backward-compatible — existing numeric callers are unchanged. Used by World
+  Plaza to bind each minigame's phrases to the NPC + quest at the player's level.
+
+- **Full-document RTL foundation.** The UI language's direction is now mirrored
+  onto the `<html>` root (`dir`/`lang`, reactively in `LanguageSynchronizer`) AND
+  fed to a Radix `<DirectionProvider>`, so the whole shell — and every Radix
+  primitive (Select, Slider, DropdownMenu, Popover, Tabs) — flips as one unit in
+  Arabic/Hebrew/Persian/Urdu instead of relying on each component to set its own
+  `dir`. Patched the primitives that used hardcoded physical direction: the
+  `Switch` thumb (added an `rtl:` translate so it lands on the correct side
+  instead of off the edge), the `Select` check indicator (`right-3` → logical
+  `end-3`), and the `Dialog` close button (`ml-auto`/`marginRight` → logical
+  `ms-auto`/`marginInlineEnd`). Verified the switches/slider/select render
+  correctly under `dir="rtl"`.
+
+- **"Honest hello" onboarding interlude (`OnboardingWelcomePact`).** A new screen
+  between the primary-language picker and the "What brings you to Corpán?" fork,
+  shown once in the user's chosen language. The "Corpán Evolves" welcome sets a
+  candid first impression: independent tiny team, ambitious on-device learning,
+  raw cutting-edge technology, and an honest admission that we do not speak
+  every language we support. It invites native-speaker corrections, new ideas,
+  and ambitious learning experiences without framing the user as a bug reporter.
+  Wired as an adapter node in the onboarding graph and fully localized across
+  all 51 app locales; `{{lang}}` resolves to the chosen language's native name.
+  The i18n build gate now also verifies interpolation-token parity so that
+  personalized copy cannot silently lose its placeholder in translation.
+
+### Changed
+
+- **Onboarding recommendations now have interest-specific featured picks.**
+  Corpan City leads when a user asks for games, while Tutomaton leads for study
+  or speaking. The new catalog-driven `featuredFor` signal only applies to
+  interests the user explicitly selected, so it does not distort the generic
+  cold start; explicit likes and dismissals still outweigh it.
+
+- **Toolchain & framework to latest stable.** React **18.3 → 19.2**, Vite **6 →
+  8** (Rolldown bundler — production build ~3× faster), TypeScript **5.6 → 6.0**,
+  `@vitejs/plugin-react` 4 → 6, `@types/react`/`react-dom` → 19, Tailwind v4 →
+  4.3. No app code changes beyond two type fixes (a React-19 `RefObject<T|null>`
+  prop type in `StacksManagerRenamePopover`, a `node` types reference for the
+  storage harness) and a Vite-8 config change (`build.rollupOptions.output.
+  manualChunks` object → function form; added explicit `esbuild` dep). All key
+  libs (Radix, framer-motion, dnd-kit, vaul, lucide) already declared React 19
+  peer support. typecheck + production build green.
+
+- **Tighter, consistent top bar.** The home top bar (logo + gear) was puffier
+  than it needed to be on phones and fullscreen iPad: it added a flat
+  per-platform clearance *on top of* `env(safe-area-inset-top)`, double-counting
+  the inset on notched devices. It now uses a single shared flat clearance
+  (`getTopBarPaddingTop`) that already clears both the safe-area inset and the
+  windowed macOS/Stage-Manager "stoplight" controls. The settings header adopts
+  the same top padding and the home bar's slimmer `px-4 md:px-8` gutters, and
+  the settings close-X is resized to match the gear (`h-10 w-12`) — so tapping
+  the gear ↔ X no longer jumps; the two buttons sit in the exact same spot. The
+  settings body content adopts the same `px-4 md:px-8` gutter as the header (was
+  the dialog's wider `p-6`), so body rows line up flush under the title/X. The
+  settings header also gets the same translucent blur as the home bar
+  (`bg-background/80 backdrop-blur`).
+
 ### Fixed
+
+- **Tutomaton releases are routed by Corpán host version.** The pack manifest
+  already required Corpán 0.17.0 for the expanded LLM sampler contract, but the
+  production catalog still advertised the latest artifact to 0.16.x. The
+  catalog now routes 0.16.x hosts to pinned Tutomaton 0.3.2 and `>=0.17.0`
+  hosts to 0.5.x. New ZIPs ship at immutable versioned URLs; the historical
+  `/tutomaton.zip` URL remains permanently pinned to 0.3.2 for old clients with
+  cached catalog data. Tutomaton remains excluded from unversioned
+  `catalog.json`, and the Pages build rejects catalog entries whose
+  compatibility claims are looser than their local manifest.
+
+- **Settings header matches the Home header.** The close-X now grows to `md:h-12`
+  like the Home gear (it was fixed at `h-10`, so on tablet/desktop the gear was a
+  48×48 square while the X stayed a 40×48 rectangle) — both are now identical at
+  every breakpoint and sit in the same spot. Also dropped the settings header's
+  `border-b` and the full-screen dialog's base `border`, so the header is clean
+  like Home instead of bracketed by top/bottom hairlines.
+
+- **Arabic localization polish + RTL hardening.** After a 1-star Arabic review
+  ("غير مفهوم" — "incomprehensible"), we audited the whole Arabic surface with a
+  strong-model grader (`dja/eval/ar/`, GPT-5.x via codex). The corpus, TTS, and
+  UI text graded strong (medians 5/5), but the grader caught real defects in
+  `ar/common.json`: the TTS voice-setup steps named the wrong iOS menu
+  (`تسهيلات الاستخدام` → Apple's actual `إمكانية الوصول`, so the enable-voices
+  instructions were unfollowable); Norwegian Bokmål had Latin letters welded
+  into the Arabic word (`بوكmål` → `بوكمول`); "Visit encorpora.io" had reversed
+  word order; the brand name was inconsistently transliterated (`كوربان` →
+  `Corpán`); and "stack"/"pack" chrome was rendered three different ways.
+  Unified the terminology and localized the remaining English `Packs`/`Stacks`
+  labels.
 
 - **Multi-GB model/pack installs no longer OOM/jetsam (stream to disk).** The
   content-pack installer accumulated the *entire* download into an in-memory
@@ -32,21 +141,83 @@ Conventions: `corpan/CHANGELOGS.md`.
   the voice set actually changed — so freshly installed voices surface
   automatically, with zero re-renders in steady state.
 
-### Changed
+## [0.16.2] - 2026-06-04 — Android crash diagnostics + truncated-download guard
 
-- **Tighter, consistent top bar.** The home top bar (logo + gear) was puffier
-  than it needed to be on phones and fullscreen iPad: it added a flat
-  per-platform clearance *on top of* `env(safe-area-inset-top)`, double-counting
-  the inset on notched devices. It now uses a single shared flat clearance
-  (`getTopBarPaddingTop`) that already clears both the safe-area inset and the
-  windowed macOS/Stage-Manager "stoplight" controls. The settings header adopts
-  the same top padding and the home bar's slimmer `px-4 md:px-8` gutters, and
-  the settings close-X is resized to match the gear (`h-10 w-12`) — so tapping
-  the gear ↔ X no longer jumps; the two buttons sit in the exact same spot. The
-  settings body content adopts the same `px-4 md:px-8` gutter as the header (was
-  the dialog's wider `p-6`), so body rows line up flush under the title/X. The
-  settings header also gets the same translucent blur as the home bar
-  (`bg-background/80 backdrop-blur`).
+### Added
+
+- **Rust-panic crash breadcrumb → on-device analytics (diagnose the
+  all-native Android tombstones).** The `panic = "abort"` release build turns
+  any Rust panic — in the app OR a statically-linked plugin (corpan-llm, stt,
+  …) — into an immediate libc `abort()` with no Java frame, i.e. the
+  unsymbolicated, single-`.so` tombstones the Play Console can't attribute. A
+  panic hook installed in `setup()` now records the panic's location, message,
+  and thread to a `panic-last.json` breadcrumb BEFORE the abort, then chains to
+  the default hook. On the next launch `take_last_crash_report` (a new Tauri
+  command, harvested in `main.tsx`) records it once as a `rust_panic` analytics
+  event. Mirrors the STT plugin's init breadcrumb; best-effort and never
+  panics itself. (`src-tauri/src/lib.rs`, `main.tsx`.)
+- **Prior STT native-init crashes are recorded into analytics.** The host
+  `stt.getStatus()` wrapper now reads the plugin's one-shot
+  `priorInitCrash` breadcrumb and records a `stt_init_crash` event, so the
+  uncatchable ggml-init SIGSEGV is harvested rather than only logged.
+  (`contentPacks/hostApi.ts`, `contentPacks/types.ts`; plugin
+  `tauri-plugin-stt` ≥ 0.5.2.)
+
+### Fixed
+
+- **`QuotaExceededError` from the phrase-pack catalog can no longer crash the
+  app.** The phrase-pack catalog (and the game/reader/narration catalog) were
+  persisted by zustand `persist` directly into the shared ~5 MB localStorage
+  budget; under a full catalog, `localStorage.setItem` threw an unhandled
+  `QuotaExceededError` (reported at `phrasePackCatalog.ts:36` in production).
+  Both stores now persist to a new IndexedDB-backed **LARGE storage tier** via
+  a quota-safe shim that evicts + retries + degrades to memory instead of
+  throwing. A one-time, idempotent startup migration moves any pre-existing
+  localStorage catalog blob into IndexedDB. (`store/phrasePackCatalog.ts`,
+  `store/catalog.ts`, `util/storage/**`, `main.tsx`.)
+
+### Added
+
+- **Unified, quota-safe storage service (`util/storage/`).** Two tiers —
+  TINY (settings/flags/identity → guarded localStorage) and LARGE (catalogs,
+  content blobs, analytics → IndexedDB) — with a namespaced async API
+  (`get`/`set`/`getJSON`/`setJSON`/`del`, TTL + schema version), LRU/volatile
+  eviction, an in-memory fallback, and a `createLocalStorageShim()` for
+  migrating zustand `persist` stores. Writes NEVER throw `QuotaExceededError`
+  to callers.
+- **Local-first analytics event store + sync seam (`util/storage/eventStore.ts`
+  + `util/analytics.ts`).** An on-device, append-only, ring-buffer-capped
+  (5 000-event) IndexedDB log. Every tracked event flows through ONE `emit()`
+  chokepoint (cloud queue + durable on-device log). New rich capture
+  (`trackScreenView`, `trackPackOpen`, `trackChallengeCompleted`, `trackError`)
+  and a `syncLocalEvents()` reconcile that batch-uploads to `/v1/events`.
+  Privacy unchanged: on-device, no persistent id, same opt-out flag.
+- **CORS fix for the analytics Beacon.** The unload path used
+  `navigator.sendBeacon`, which always sends credentials and clashed with the
+  endpoint's wildcard `Access-Control-Allow-Origin` (the
+  "Access-Control-Allow-Credentials" console error). It now prefers a
+  `credentials: "omit"` keepalive `fetch` (beacon kept only as a fallback).
+  (`packs/shared/analytics/index.ts`.)
+
+- **"You're a Corpanista" / "Thank you for keeping Corpán ad-free and growing"
+  now localized in all 50 languages.** The subscriber thank-you on the
+  onboarding engagement page used `t("onboarding.engage.subscribedTitle")` and
+  `…subscribedDesc`, but those keys were never added to `en/common.json` — so
+  i18next fell through to the inline English `defaultValue` in *every* language.
+  Added both keys to `en` and all 50 locales (the title reuses each locale's
+  already-translated `paywall.thanksTitle`). (`OnboardingFinish.tsx`,
+  `public/locales/*/common.json`.)
+
+### Added
+
+- **Localization completeness build gate (`scripts/check-i18n.mjs`, runs in
+  `npm run build`; also `npm run check:i18n`).** `en/common.json` is the source
+  of truth (it's what `i18next.d.ts` types `t()` against). The check fails the
+  build when (1) any statically-written `t("key")` in `src/` is missing from
+  `en` — the exact class of bug above, where a key only existed as an inline
+  English default — or (2) any locale's key set differs from `en` (missing keys
+  that silently fall back to English, or stale keys left after a rename).
+  Dynamic `` t(`a.${x}.b`) `` keys are skipped (can't be checked statically).
 
 ## [0.16.1] - 2026-06-01 — Tutomaton id fix + catalog-driven experience metadata
 

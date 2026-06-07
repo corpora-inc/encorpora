@@ -131,6 +131,22 @@
     "showStreakHint": "Un mic contor de zile în antet. Doar pe dispozitiv, fără mementouri sau notificări."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán evoluează",
+      "subtitle": "Ești printre primii",
+      "tinyTeamTitle": "O echipă mică de entuziaști",
+      "tinyTeamDesc": "Independentă, fără reclame și construită cu respect pentru oamenii care o folosesc — o echipă mică realizează aplicația de limbi pe care ne-am dorit-o mereu.",
+      "bleedingEdgeTitle": "De ultimă generație, cu un scop",
+      "bleedingEdgeDesc": "Corpán împinge limitele posibilităților dispozitivului tău: lumi captivante, recunoaștere vocală, voci naturale și cele mai noi modele AI lucrează împreună pentru a crea noi moduri de a învăța. O mare parte rulează direct pe dispozitivul tău, oferindu-ți învățare privată, gândită în primul rând pentru utilizare offline, fără dependență de un centru de date. Lansăm tehnologii noi cât timp sunt încă nefinisate, așa că uneori se pot comporta ciudat, pot rula lent sau pot fi pur și simplu mai mult decât poate gestiona dispozitivul tău. În schimb, primești experiențe noi și puternice de învățare imediat ce devin posibile.",
+      "yourLangTitle": "Nu vorbim toate limbile pe care le oferim",
+      "yourLangDesc": "Acesta este adevărul sincer. Construim pentru zeci de limbi fiindcă toată lumea merită instrumente puternice de învățare, nu fiindcă mica noastră echipă le cunoaște deja pe toate. Este posibil să găsești lucruri pe care le-am greșit. Dacă știi {{lang}} mai bine decât noi, sperăm să ne spui și să ne ajuți să facem Corpán demnă de această limbă.",
+      "plea": "Ai o idee, o corectură sau o experiență îndrăzneață de învățare pe care ai vrea să o vezi? Spune-ne. Citim fiecare mesaj și ne gândim în profunzime la ceea ce ar putea deschide pentru Corpán și învățarea limbilor.",
+      "emailCta": "Scrie-ne pe email",
+      "githubCta": "Deschide un issue pe GitHub",
+      "join": "Vrei să ajuți la aducerea Corpán în lume? Căutăm mereu colaboratori, traducători și ambasadori locali. Găsește-ne.",
+      "pact": "Atinge mai jos pentru a începe să înveți și să crești alături de noi. 🤝",
+      "cta": "Sunt cu voi — hai să-i dăm drumul"
+    },
     "welcome": "Bine ai venit",
     "makePrimaryLanguage": "Fă din engleză limba mea principală",
     "canChangeLater": "Poți schimba asta oricând.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Susține Corpán și deblochează totul. Opțional, oricând.",
+      "subscribedTitle": "Ești un Corpanista",
+      "subscribedDesc": "Mulțumim că menții Corpán fără reclame și în creștere.",
       "joinTitle": "Alătură-te Corpanistas",
       "start": "Începe explorarea",
       "subtitle": "Corpán este creat de o mică echipă open-source. Vino să ne saluți — și dacă îți place, ne poți susține.",
@@ -642,7 +660,13 @@
     "pendingHeading": "În așteptarea aprobării",
     "pendingDetail": "Abonamentul tău așteaptă aprobarea (Ask to Buy sau verificare bancară). Se va activa automat după aprobare.",
     "storeUnreachable": "Nu am putut accesa App Store acum.",
-    "tryAgain": "Încearcă din nou"
+    "tryAgain": "Încearcă din nou",
+    "affiliateCodeLabel": "Cod de afiliat",
+    "affiliateCodePlaceholder": "Opțional",
+    "affiliateInvalidFormat": "Folosește litere, cifre, cratime sau liniuțe de subliniere.",
+    "affiliateChecking": "Se verifică codul...",
+    "affiliateApplied": "Codul va fi atașat acestui abonament.",
+    "affiliateCodeHelp": "Dacă cineva te-a trimis aici, introdu codul înainte de abonare."
   },
   "restore": {
     "button": "Restaurare achiziții",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Un tutore răbdător, mereu pe telefonul tău, pentru orice limbă înveți."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Un oraș viu care transformă fiecare întâlnire într-o lecție."
     }
   },
   "home": {

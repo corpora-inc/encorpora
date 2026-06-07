@@ -132,7 +132,7 @@ const SelectItem = React.forwardRef<
         <SelectPrimitive.ItemText className="flex-1 truncate">
             {children}
         </SelectPrimitive.ItemText>
-        <SelectPrimitive.ItemIndicator className="absolute right-3 inline-flex items-center">
+        <SelectPrimitive.ItemIndicator className="absolute end-3 inline-flex items-center">
             <Check className="h-4 w-4" />
         </SelectPrimitive.ItemIndicator>
     </SelectPrimitive.Item>

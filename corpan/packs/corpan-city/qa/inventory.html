@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WP Inventory overflow harness</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #cdb38a; }
+      /* mimic the real .wp-menu-panel frame around the body so the harness
+         reproduces the exact scroll-region the inventory lives in. */
+      #panel {
+        width: min(420px, calc(100% - 40px));
+        height: min(620px, calc(100% - 40px));
+        margin: 20px auto;
+        box-sizing: border-box;
+        padding: 22px;
+        background: linear-gradient(180deg, #f7efe0, #efe3cd);
+        border-radius: 26px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="panel"><div class="wp-menu-body" id="body"></div></div>
+    <script type="module" src="./inventory-mount.ts"></script>
+  </body>
+</html>

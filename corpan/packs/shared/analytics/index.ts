@@ -252,6 +252,28 @@ function buildPayload(events: AnalyticsEvent[]): string {
   return JSON.stringify({ events })
 }
 
+// NOTE ON CORS / CREDENTIALS:
+//   `navigator.sendBeacon` ALWAYS sends with credentials (cookies) and gives
+//   the caller no way to opt out. Our endpoint responds with
+//   `Access-Control-Allow-Origin: *`, which the browser refuses to combine
+//   with a credentialed request — that mismatch is the
+//   "Access-Control-Allow-Credentials" console error seen in production.
+//   The fix is to NOT use sendBeacon for the normal path: a `keepalive: true`
+//   fetch survives unload just like a beacon AND lets us send
+//   `credentials: "omit"`, so the wildcard ACAO is honored. sendBeacon is
+//   kept only as a last-resort fallback for the (rare) environment that
+//   lacks `fetch` keepalive support.
+function fetchKeepaliveSupported(): boolean {
+  return (
+    safe(() => {
+      // `keepalive` is broadly supported in modern WebKit/WKWebView. Treat the
+      // presence of fetch as sufficient; the option is silently ignored where
+      // unsupported (and the request still goes out, just not past unload).
+      return typeof fetch === "function"
+    }) ?? false
+  )
+}
+
 function sendBeacon(payload: string): boolean {
   return (
     safe(() => {
@@ -284,6 +306,18 @@ async function sendFetch(payload: string): Promise<boolean> {
   )
 }
 
+// Unload-safe send: prefer the credential-omitting keepalive fetch (avoids the
+// CORS credentials error); fall back to sendBeacon only where keepalive fetch
+// isn't available. Returns a best-effort success boolean.
+async function sendOnUnload(payload: string): Promise<boolean> {
+  if (fetchKeepaliveSupported()) {
+    const ok = await sendFetch(payload)
+    if (ok) return true
+    // Fall through to beacon if the keepalive fetch flat-out failed.
+  }
+  return sendBeacon(payload)
+}
+
 async function flush(useBeacon = false): Promise<void> {
   if (state.flushing) return
   if (!state.config || !state.config.enabled) return
@@ -313,7 +347,9 @@ async function flush(useBeacon = false): Promise<void> {
   }
 
   const payload = buildPayload(batch)
-  const ok = useBeacon ? sendBeacon(payload) : await sendFetch(payload)
+  // On unload (`useBeacon`) use the credential-omitting keepalive path, not a
+  // raw beacon — see the CORS note above `sendBeacon`.
+  const ok = useBeacon ? await sendOnUnload(payload) : await sendFetch(payload)
 
   if (!ok) {
     // Restore everything to spillover so we try again next tick

@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.3] - 2026-06-04 — Truncated-download guard + crash-breadcrumb harvest
+
+### Fixed
+- **Android + iOS: truncated-download completeness gate.** The download
+  path renamed the `.part`/temp file into place on any non-throwing
+  finish — but a clean end-of-stream before the advertised
+  `Content-Length` (dropped connection, CDN closing the socket early) is
+  a SHORT file with valid ggml magic that then SIGSEGVs deep in
+  `whisper_init_state` when native code reads tensor data past EOF. This
+  is a likely source of the field `ggml_backend_sched_split_graph`
+  crashes that survived the 0.5.1/0.5.2 concurrency fixes. Both platforms
+  now compare bytes-received against `Content-Length`
+  (`expectedContentLength` on iOS) and fail with a clean, retryable
+  `DOWNLOAD_FAILED` on a short read instead of installing a corrupt model.
+- **Android: the pre-load ggml magic check now fails CLOSED on a read
+  error.** 0.5.2 added the check but failed *open* (a read error let the
+  load proceed). That file is about to reach native init, which can't
+  defend itself and SIGSEGVs uncatchably on a bad file; reading 4 bytes
+  of a local file that exists and is ≥1 MB does not fail transiently, so
+  refusing is strictly safer and costs no legitimate loads.
+
+### Added
+- **Android: the init-crash breadcrumb is now harvested into on-device
+  analytics, not just logged.** The 0.5.2 `STT_INIT_CRASH` breadcrumb was
+  `Log.e`-only, which we can't retrieve from a random user's device. It is
+  now also held in process-global state and surfaced exactly once via
+  `getStatus().priorInitCrash`; the host's getStatus wrapper records it as
+  a `stt_init_crash` analytics event, then the native field self-clears.
+
+## [0.5.2] - 2026-06-01 — Process-global native lock + init safeguards
+
 ### Fixed
 - **Android: native SIGSEGV during model load STILL fired after 0.5.1
   — the lock was per-instance, the corrupt state is process-global.**
@@ -26,6 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   an HTML error page saved as the model) and returns a clean
   `LOAD_FAILED` instead of handing garbage to native init. Fails open
   on a read error so a transient IO hiccup never blocks a real model.
+  (0.5.3 flips this to fail closed.)
 
 ### Added
 - **Android: native-init crash breadcrumb.** A `.json` breadcrumb is

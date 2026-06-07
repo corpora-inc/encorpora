@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Corpan City — Audio QA</title>
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        font: 15px/1.5 system-ui, sans-serif;
+        background: #14161c;
+        color: #e7e9ee;
+        margin: 0;
+        padding: 28px clamp(16px, 5vw, 64px);
+      }
+      h1 { font-size: 20px; margin: 0 0 4px; }
+      p.sub { color: #9aa0ad; margin: 0 0 24px; }
+      .grid { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0; }
+      button {
+        font: inherit;
+        background: #2a2f3a;
+        color: #e7e9ee;
+        border: 1px solid #3a4150;
+        border-radius: 10px;
+        padding: 12px 18px;
+        cursor: pointer;
+      }
+      button:hover { background: #343b48; }
+      button.primary { background: #3b5bdb; border-color: #4263eb; }
+      section { margin: 26px 0; padding-top: 18px; border-top: 1px solid #262b34; }
+      h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: #9aa0ad; }
+      label { display: inline-flex; align-items: center; gap: 8px; margin-right: 18px; }
+      .note { color: #7d8492; font-size: 13px; max-width: 64ch; }
+      code { background: #20242c; padding: 1px 6px; border-radius: 5px; }
+    </style>
+  </head>
+  <body>
+    <h1>Corpan City — Audio QA</h1>
+    <p class="sub">
+      A human ear check for the soundscape. Autoplay is blocked, so press
+      <b>Resume audio</b> first (a real user gesture), then audition each part.
+    </p>
+
+    <div class="grid">
+      <button id="resume" class="primary">Resume audio (tap me first)</button>
+    </div>
+
+    <section>
+      <h2>Ambient city bed</h2>
+      <p class="note">
+        Warm low pad (~110 Hz, breathing filter) + a faint distant-town murmur +
+        sparse soft birdsong (a chirp every 8–22 s). Default master volume is
+        <code>0.55</code>. It should feel <em>inhabited</em>, never loopy. Give it
+        ~30 s to hear a bird.
+      </p>
+      <div class="grid">
+        <button id="ambient-start">Start ambient</button>
+        <button id="ambient-stop">Stop ambient</button>
+        <button id="bird-now">Force a bird now</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Footsteps (locomotion-driven)</h2>
+      <p class="note">
+        Soft filtered-noise taps. Drag the speed slider — at rest there are NO
+        steps; faster = quicker + slightly brighter taps. This simulates the
+        controller's normalized <code>speed</code> (0..1) fed each frame.
+      </p>
+      <div class="grid">
+        <label>speed <input id="speed" type="range" min="0" max="1" step="0.01" value="0" /></label>
+        <span id="speed-val">0.00</span>
+        <button id="walk-toggle">Start walking loop</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Juice SFX</h2>
+      <div class="grid">
+        <button data-sfx="tap">tap</button>
+        <button data-sfx="engage">engage (NPC greet)</button>
+        <button data-sfx="correct">correct (sparkle)</button>
+        <button data-sfx="reward">reward (flourish)</button>
+        <button data-sfx="error">error (gentle)</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Master controls</h2>
+      <div class="grid">
+        <label><input id="mute" type="checkbox" /> mute</label>
+        <label>volume <input id="vol" type="range" min="0" max="1" step="0.01" value="0.55" /></label>
+        <span id="vol-val">0.55</span>
+      </div>
+      <p class="note">
+        Mute + volume persist to <code>localStorage</code>
+        (<code>wp:audio:muted</code> / <code>wp:audio:volume</code>) — reload to
+        confirm they stick.
+      </p>
+    </section>
+
+    <script type="module">
+      // Loaded straight from source — run this file through `npm run dev` (Vite)
+      // so the TS imports resolve: open http://localhost:5173/qa/audio-test.html
+      import { createSoundscape } from "../src/audio/soundscape.ts"
+
+      const ss = createSoundscape()
+      const $ = (id) => document.getElementById(id)
+
+      $("resume").onclick = () => {
+        ss.resume()
+        $("resume").textContent = "Audio resumed ✓"
+      }
+      $("ambient-start").onclick = () => ss.startAmbient()
+      $("ambient-stop").onclick = () => ss.stopAmbient()
+      $("bird-now").onclick = () => ss.playSfx("engage") // audible proxy; real birds are internal
+
+      // footsteps
+      let walking = false
+      let last = performance.now()
+      const speed = $("speed")
+      speed.oninput = () => ($("speed-val").textContent = (+speed.value).toFixed(2))
+      function frame(now) {
+        const dt = Math.min(0.05, (now - last) / 1000)
+        last = now
+        if (walking) ss.onLocomotion(+speed.value, dt)
+        requestAnimationFrame(frame)
+      }
+      requestAnimationFrame(frame)
+      $("walk-toggle").onclick = (e) => {
+        walking = !walking
+        e.target.textContent = walking ? "Stop walking loop" : "Start walking loop"
+        if (walking && +speed.value === 0) {
+          speed.value = "0.7"
+          $("speed-val").textContent = "0.70"
+        }
+      }
+
+      // sfx
+      document.querySelectorAll("[data-sfx]").forEach((b) => {
+        b.onclick = () => ss.playSfx(b.dataset.sfx)
+      })
+
+      // master
+      const mute = $("mute")
+      mute.checked = ss.isMuted()
+      mute.onchange = () => ss.setMuted(mute.checked)
+      const vol = $("vol")
+      vol.value = String(ss.getVolume())
+      $("vol-val").textContent = ss.getVolume().toFixed(2)
+      vol.oninput = () => {
+        ss.setVolume(+vol.value)
+        $("vol-val").textContent = (+vol.value).toFixed(2)
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,341 @@
+name: Deploy Encorpora to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "web/io/**"
+      - "web/data/**"
+      - "corpan/packs/**"
+      - "web/pages/**"
+      - "web/scripts/**"
+      - "books/**/pack/manifest.json"
+      - "books/**/pack/segments.json"
+      - "books/**/pack/narration.yaml"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ENCORPORA_BASE_PATH: /encorpora
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install io/ Dependencies
+        working-directory: web/io
+        run: npm install
+
+      - name: Build io/ Site (Root)
+        working-directory: web/io
+        run: npm run build
+
+      - name: Build Corpan Pages into io/out
+        run: |
+          node web/pages/build.js web/io/out
+
+      - name: Install Hover Runner Dependencies
+        working-directory: corpan/packs/hover-runner
+        run: npm install --legacy-peer-deps
+
+      - name: Build Hover Runner
+        working-directory: corpan/packs/hover-runner
+        run: npm run build
+
+      - name: Package Hover Runner as ZIP
+        run: |
+          cd corpan/packs/hover-runner
+          zip -r hover-runner.zip manifest.json dist/
+          cd ../../..
+
+      - name: Install Hanzipan Dependencies
+        working-directory: corpan/packs/hanzipan
+        run: npm install --legacy-peer-deps
+
+      - name: Build Hanzipan
+        working-directory: corpan/packs/hanzipan
+        run: npm run build
+
+      - name: Package Hanzipan
+        working-directory: corpan/packs/hanzipan
+        run: node scripts/pack.mjs
+
+      - name: Install Juice Squeeze Dependencies
+        working-directory: corpan/packs/juice-squeeze
+        run: npm install --legacy-peer-deps
+
+      - name: Build Juice Squeeze
+        working-directory: corpan/packs/juice-squeeze
+        run: npm run build
+
+      - name: Package Juice Squeeze as ZIP
+        run: |
+          cd corpan/packs/juice-squeeze
+          zip -r juice-squeeze.zip manifest.json dist/
+          cd ../../..
+
+      - name: Install Stargate Reader Dependencies
+        working-directory: corpan/packs/stargate-reader
+        run: npm install --legacy-peer-deps
+
+      - name: Build Stargate Reader
+        working-directory: corpan/packs/stargate-reader
+        run: npm run build
+
+      - name: Package Stargate Reader
+        working-directory: corpan/packs/stargate-reader
+        run: node scripts/pack.mjs
+
+      - name: Install Earthgate Reader Dependencies
+        working-directory: corpan/packs/earthgate-reader
+        run: npm install --legacy-peer-deps
+
+      - name: Build Earthgate Reader
+        working-directory: corpan/packs/earthgate-reader
+        run: npm run build
+
+      - name: Package Earthgate Reader
+        working-directory: corpan/packs/earthgate-reader
+        run: node scripts/pack.mjs
+
+      - name: Install World Radio Dependencies
+        working-directory: corpan/packs/world-radio
+        run: npm install --legacy-peer-deps
+
+      - name: Build World Radio
+        working-directory: corpan/packs/world-radio
+        run: npm run build
+
+      - name: Package World Radio
+        working-directory: corpan/packs/world-radio
+        run: node scripts/pack.mjs
+
+      - name: Install Tutomaton Dependencies
+        working-directory: corpan/packs/tutomaton
+        run: npm install --legacy-peer-deps
+
+      - name: Build Tutomaton
+        working-directory: corpan/packs/tutomaton
+        run: npm run build
+
+      - name: Package Tutomaton as ZIP
+        # Shell + dist + bundled bridge source + per-language module.json/prompts only.
+        # The per-language corpus sqlites (sources/core/data/*.sqlite3) ship in their
+        # own language-module ZIPs on the CloudFront catalog and are downloaded on
+        # demand when a learner activates that language.
+        run: |
+          cd corpan/packs/tutomaton
+          zip -r tutomaton.zip \
+            manifest.json \
+            dist/ \
+            sources/ \
+            languages/*/module.json \
+            languages/*/prompts/ \
+            -x "languages/*/sources/*" \
+            -x "languages/*/data/*"
+
+      # Corpán 0.16.x cannot run Tutomaton 0.5.x's expanded LLM sampler
+      # contract. Keep the last compatible release as checked-in immutable
+      # artifacts, matching the pinned legacy Parlometron pattern below.
+      - name: Package legacy Tutomaton 0.3.2 as ZIP
+        run: |
+          cd corpan/packs/tutomaton-0.3.2
+          zip -r tutomaton-0.3.2.zip manifest.json dist/
+
+      - name: Install Corpan City (corpan-city) Dependencies
+        working-directory: corpan/packs/corpan-city
+        run: npm install --legacy-peer-deps
+
+      - name: Check Corpan City Translations
+        working-directory: corpan/packs/corpan-city
+        run: npm run check-translations
+
+      - name: Build Corpan City (corpan-city)
+        # VITE_WP_SERVER_URL is baked into the IIFE bundle so the shipped pack
+        # connects to the shared Colyseus presence server
+        # without any host-side injection. To roll a new server, redeploy and
+        # update this URL in the same PR.
+        working-directory: corpan/packs/corpan-city
+        env:
+          VITE_WP_SERVER_URL: ${{ vars.WP_SERVER_URL || 'wss://presence.3-142-26-37.sslip.io' }}
+        run: npm run build
+
+      - name: Package Corpan City (corpan-city)
+        working-directory: corpan/packs/corpan-city
+        run: node scripts/pack.mjs
+
+      - name: Install Teletron Dependencies
+        working-directory: corpan/packs/teletron
+        run: npm install --legacy-peer-deps
+
+      - name: Build Teletron
+        working-directory: corpan/packs/teletron
+        env:
+          VITE_TELETRON_SERVER_URL: ${{ vars.WP_SERVER_URL || 'wss://presence.3-142-26-37.sslip.io' }}
+        run: npm run build
+
+      - name: Package Teletron as ZIP
+        run: |
+          cd corpan/packs/teletron
+          zip -r teletron.zip manifest.json dist/
+          cd ../../..
+
+      - name: Install Pronunciation Coach Dependencies
+        working-directory: corpan/packs/pronunciation-coach
+        run: npm install --legacy-peer-deps
+
+      - name: Build Pronunciation Coach
+        working-directory: corpan/packs/pronunciation-coach
+        run: npm run build
+
+      - name: Package Pronunciation Coach as ZIP
+        run: |
+          cd corpan/packs/pronunciation-coach
+          zip -r pronunciation-coach.zip manifest.json dist/
+          cd ../../..
+
+      - name: Copy Hover Runner into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/hover-runner"
+          cp corpan/packs/hover-runner/manifest.json "web/io/out/corpan/packs/hover-runner/"
+          cp -R corpan/packs/hover-runner/dist "web/io/out/corpan/packs/hover-runner/"
+          cp corpan/packs/hover-runner/hover-runner.zip "web/io/out/corpan/packs/hover-runner.zip"
+
+      - name: Copy Hanzi Atelier into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/hanzipan"
+          cp corpan/packs/hanzipan/manifest.json "web/io/out/corpan/packs/hanzipan/"
+          cp -R corpan/packs/hanzipan/dist "web/io/out/corpan/packs/hanzipan/"
+          cp -R corpan/packs/hanzipan/data "web/io/out/corpan/packs/hanzipan/"
+          cp corpan/packs/hanzipan/hanzipan.zip "web/io/out/corpan/packs/hanzipan.zip"
+
+      - name: Copy Juice Squeeze into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/juice-squeeze"
+          cp corpan/packs/juice-squeeze/manifest.json "web/io/out/corpan/packs/juice-squeeze/"
+          cp -R corpan/packs/juice-squeeze/dist "web/io/out/corpan/packs/juice-squeeze/"
+          cp corpan/packs/juice-squeeze/juice-squeeze.zip "web/io/out/corpan/packs/juice-squeeze.zip"
+
+      - name: Copy Stargate Reader into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/stargate-reader"
+          cp corpan/packs/stargate-reader/manifest.json "web/io/out/corpan/packs/stargate-reader/"
+          cp -R corpan/packs/stargate-reader/dist "web/io/out/corpan/packs/stargate-reader/"
+          cp corpan/packs/stargate-reader/stargate-reader.zip "web/io/out/corpan/packs/stargate-reader.zip"
+
+      - name: Copy Earthgate Reader into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/earthgate-reader"
+          cp corpan/packs/earthgate-reader/manifest.json "web/io/out/corpan/packs/earthgate-reader/"
+          cp -R corpan/packs/earthgate-reader/dist "web/io/out/corpan/packs/earthgate-reader/"
+          cp corpan/packs/earthgate-reader/earthgate-reader.zip "web/io/out/corpan/packs/earthgate-reader.zip"
+
+      - name: Copy World Radio into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/world-radio"
+          cp corpan/packs/world-radio/manifest.json "web/io/out/corpan/packs/world-radio/"
+          cp -R corpan/packs/world-radio/dist "web/io/out/corpan/packs/world-radio/"
+          cp corpan/packs/world-radio/world-radio.zip "web/io/out/corpan/packs/world-radio.zip"
+
+      - name: Copy Corpan City (corpan-city) into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/corpan-city"
+          cp corpan/packs/corpan-city/manifest.json "web/io/out/corpan/packs/corpan-city/"
+          cp -R corpan/packs/corpan-city/dist "web/io/out/corpan/packs/corpan-city/"
+          cp corpan/packs/corpan-city/corpan-city.zip "web/io/out/corpan/packs/corpan-city.zip"
+
+      - name: Copy Teletron into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/teletron"
+          cp corpan/packs/teletron/manifest.json "web/io/out/corpan/packs/teletron/"
+          cp corpan/packs/teletron/teletron-avatar.png "web/io/out/corpan/packs/teletron/"
+          cp -R corpan/packs/teletron/dist "web/io/out/corpan/packs/teletron/"
+          cp corpan/packs/teletron/teletron.zip "web/io/out/corpan/packs/teletron.zip"
+
+      - name: Copy Pronunciation Coach into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/pronunciation-coach"
+          cp corpan/packs/pronunciation-coach/manifest.json "web/io/out/corpan/packs/pronunciation-coach/"
+          cp -R corpan/packs/pronunciation-coach/dist "web/io/out/corpan/packs/pronunciation-coach/"
+          cp corpan/packs/pronunciation-coach/pronunciation-coach.zip "web/io/out/corpan/packs/pronunciation-coach.zip"
+
+      - name: Copy Tutomaton into io/out
+        # Shell only; per-language sqlites stream from the CloudFront catalog
+        # the first time a learner activates each language (`moduleUrl` in
+        # manifest.json languages[]). New releases use immutable versioned URLs.
+        run: |
+          TUTOMATON_VERSION="$(jq -r '.version' corpan/packs/tutomaton/manifest.json)"
+          mkdir -p "web/io/out/corpan/packs/tutomaton"
+          mkdir -p "web/io/out/corpan/packs/tutomaton/${TUTOMATON_VERSION}"
+          cp corpan/packs/tutomaton/manifest.json "web/io/out/corpan/packs/tutomaton/"
+          cp -R corpan/packs/tutomaton/dist "web/io/out/corpan/packs/tutomaton/"
+          cp corpan/packs/tutomaton/tutomaton.zip "web/io/out/corpan/packs/tutomaton/${TUTOMATON_VERSION}/tutomaton.zip"
+
+      - name: Copy legacy Tutomaton 0.3.2 into io/out
+        # Keep /tutomaton.zip permanently pinned to 0.3.2: old 0.16 clients may
+        # have cached the pre-versioned catalog URL before the split shipped.
+        run: |
+          mkdir -p "web/io/out/corpan/packs/tutomaton-0.3.2"
+          mkdir -p "web/io/out/corpan/packs/tutomaton/0.3.2"
+          cp corpan/packs/tutomaton-0.3.2/manifest.json "web/io/out/corpan/packs/tutomaton-0.3.2/"
+          cp -R corpan/packs/tutomaton-0.3.2/dist "web/io/out/corpan/packs/tutomaton-0.3.2/"
+          cp corpan/packs/tutomaton-0.3.2/tutomaton-0.3.2.zip "web/io/out/corpan/packs/tutomaton/0.3.2/tutomaton.zip"
+          cp corpan/packs/tutomaton-0.3.2/tutomaton-0.3.2.zip "web/io/out/corpan/packs/tutomaton.zip"
+
+      # Legacy slug pinned for users on Corpán 0.12.5, which ships the
+      # WhisperKit-based STT plugin and cannot run the 0.5.0+ pack
+      # (which references ggml-* model folders). Catalog entry with
+      # `maxAppVersion: "0.12.5"` routes those users here. Pre-built
+      # dist/manifest extracted from commit 19978aad and checked in
+      # at corpan/packs/pronunciation-coach-0.3.5/ (no source tree —
+      # the zip is rebuilt here from those artifacts).
+      - name: Package legacy Pronunciation Coach 0.3.5 as ZIP
+        run: |
+          cd corpan/packs/pronunciation-coach-0.3.5
+          zip -r pronunciation-coach-0.3.5.zip manifest.json dist/
+
+      - name: Copy legacy Pronunciation Coach 0.3.5 into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/pronunciation-coach-0.3.5"
+          cp corpan/packs/pronunciation-coach-0.3.5/manifest.json "web/io/out/corpan/packs/pronunciation-coach-0.3.5/"
+          cp -R corpan/packs/pronunciation-coach-0.3.5/dist "web/io/out/corpan/packs/pronunciation-coach-0.3.5/"
+          cp corpan/packs/pronunciation-coach-0.3.5/pronunciation-coach-0.3.5.zip "web/io/out/corpan/packs/pronunciation-coach-0.3.5.zip"
+
+      - name: Show Final Structure
+        run: |
+          echo "Final site structure:"
+          find web/io/out -type f | sort
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/io/out
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

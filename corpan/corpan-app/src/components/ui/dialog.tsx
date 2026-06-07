@@ -64,11 +64,11 @@ function DialogContent({
         {...props}
       >
         {!hideCloseButton && (
-          <div className="sticky top-5 z-[1001] ml-auto w-12 pointer-events-none">
+          <div className="sticky top-5 z-[1001] ms-auto w-12 pointer-events-none">
             <div className="relative h-10 w-12">
               <DialogPrimitive.Close
                 className="pointer-events-auto absolute inset-0 inline-flex h-10 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none"
-                style={{ marginRight: "-0.15em" }}
+                style={{ marginInlineEnd: "-0.15em" }}
               >
                 <XIcon className="h-5 w-5" />
                 <span className="sr-only">Close</span>

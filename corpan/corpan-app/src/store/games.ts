@@ -44,6 +44,13 @@ const devGames: InstalledGame[] = import.meta.env.DEV
         version: "0.3.0",
         installedAt: Date.now(),
       },
+      {
+        id: "corpan_city",
+        name: "Corpan City (local)",
+        manifestUrl: "/packs/corpan-city/manifest.json",
+        version: "0.1.0",
+        installedAt: Date.now(),
+      },
     ]
   : []
 

@@ -131,6 +131,22 @@
     "primaryLanguage": "Primaire (UI) taal"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán evolueert",
+      "subtitle": "Je bent er vroeg bij",
+      "tinyTeamTitle": "Een klein team van enthousiastelingen",
+      "tinyTeamDesc": "Onafhankelijk, zonder advertenties en gebouwd met respect voor de mensen die het gebruiken — een klein team maakt de taalapp die we altijd al wilden.",
+      "bleedingEdgeTitle": "Opzettelijk grensverleggend",
+      "bleedingEdgeDesc": "Corpán verlegt de grenzen van wat je apparaat kan: meeslepende werelden, spraakherkenning, natuurlijke stemmen en de nieuwste AI-modellen werken samen om nieuwe manieren van leren te creëren. Veel ervan draait rechtstreeks op je apparaat, zodat je privé en vooral offline kunt leren zonder afhankelijk te zijn van een datacenter. We brengen nieuwe technologie uit terwijl die nog ruw is. Daardoor kan ze zich soms vreemd gedragen, traag werken of simpelweg meer zijn dan je apparaat aankan. Daarvoor krijg je krachtige nieuwe leerervaringen zodra ze mogelijk worden.",
+      "yourLangTitle": "We spreken niet elke taal die we ondersteunen",
+      "yourLangDesc": "Dat is de eerlijke waarheid. We bouwen voor tientallen talen omdat iedereen krachtige leermiddelen verdient, niet omdat ons kleine team ze allemaal al kent. Misschien kom je dingen tegen die we verkeerd hebben gedaan. Als je {{lang}} beter kent dan wij, hopen we dat je het ons vertelt en helpt Corpán die taal waardig te maken.",
+      "plea": "Heb je een idee, een correctie of een avontuurlijke leerervaring die je graag zou zien? Vertel het ons. We lezen elk bericht en denken grondig na over wat het mogelijk kan maken voor Corpán en taalonderwijs.",
+      "emailCta": "Mail ons",
+      "githubCta": "Open een GitHub-issue",
+      "join": "Wil je helpen Corpán naar de wereld te brengen? We zoeken altijd bijdragers, vertalers en lokale ambassadeurs. Neem contact met ons op.",
+      "pact": "Tik hieronder om te beginnen met leren en met ons mee te groeien. 🤝",
+      "cta": "Ik doe mee — kom maar op"
+    },
     "welcome": "Welkom",
     "makePrimaryLanguage": "Maak Nederlands mijn primaire taal",
     "canChangeLater": "U kunt dit op elk moment wijzigen.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Steun Corpán en ontgrendel alles. Optioneel, op elk moment.",
+      "subscribedTitle": "Je bent een Corpanista",
+      "subscribedDesc": "Bedankt dat je Corpán advertentievrij en groeiend houdt.",
       "joinTitle": "Word lid van de Corpanistas",
       "start": "Begin met verkennen",
       "subtitle": "Corpán is gemaakt door een klein open-source team. Zeg hallo — en als je het geweldig vindt, kun je ons steunen.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Wachten op goedkeuring",
     "pendingDetail": "Je abonnement wacht op goedkeuring (Vraag om te kopen of bankverificatie). Het wordt automatisch geactiveerd zodra het is goedgekeurd.",
     "storeUnreachable": "We konden de App Store nu niet bereiken.",
-    "tryAgain": "Opnieuw proberen"
+    "tryAgain": "Opnieuw proberen",
+    "affiliateCodeLabel": "Affiliatecode",
+    "affiliateCodePlaceholder": "Optioneel",
+    "affiliateInvalidFormat": "Gebruik letters, cijfers, koppeltekens of underscores.",
+    "affiliateChecking": "Code controleren...",
+    "affiliateApplied": "De code wordt aan dit abonnement gekoppeld.",
+    "affiliateCodeHelp": "Als iemand je hierheen heeft gestuurd, voer dan hun code in voordat je je abonneert."
   },
   "restore": {
     "button": "Aankopen herstellen",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Jouw geduldige tutor, altijd bij de hand, voor elke taal die je leert"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Een levende stad die van elke ontmoeting een les maakt."
     }
   },
   "home": {

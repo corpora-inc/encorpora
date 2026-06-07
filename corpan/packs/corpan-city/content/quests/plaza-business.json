@@ -1,0 +1,33 @@
+{
+  "id": "plaza-business",
+  "title": "Talking Shop",
+  "narrative": "A merchant on the square wants to do business. Introduce yourself and your trade.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "business",
+  "objective": { "kind": "completeChallenges", "toolId": "build-sentence", "count": 1 },
+  "steps": [
+    {
+      "id": "introduce",
+      "label": "Introduce yourself to the merchant",
+      "anchorId": "plaza",
+      "kind": "talk",
+      "toolId": "build-sentence"
+    },
+    {
+      "id": "propose",
+      "label": "Propose a deal",
+      "anchorId": "plaza",
+      "kind": "talk",
+      "toolId": "dialogue-fill"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner introducing themselves, naming a trade, and making a polite proposal.",
+    "scaffold": "intermediate",
+    "ragSources": ["base-business", "base-greetings"],
+    "contentSelector": { "levels": ["A2", "B1"], "domains": ["business", "greetings", "social"] },
+    "toolWhitelist": ["build-sentence", "dialogue-fill", "fill-the-blank"]
+  },
+  "rewards": { "xp": 210, "coins": 280, "badge": "deal-maker", "grant": ["merchant-ledger"] },
+  "nextQuestIds": ["market-numbers", "civic-cityhall", "harbor-route-master"]
+}

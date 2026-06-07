@@ -131,6 +131,22 @@
     "primaryLanguage": "Primært (brugerflade) sprog"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán udvikler sig",
+      "subtitle": "Du er blandt de første",
+      "tinyTeamTitle": "Et lille team af entusiaster",
+      "tinyTeamDesc": "Uafhængig, reklamefri og bygget med respekt for dem, der bruger den — et lille hold, der skaber den sprogapp, vi altid har ønsket os.",
+      "bleedingEdgeTitle": "Avanceret, med vilje",
+      "bleedingEdgeDesc": "Corpán skubber til grænserne for, hvad din enhed kan: medrivende verdener, talegenkendelse, naturlige stemmer og de nyeste AI-modeller arbejder sammen om at skabe nye måder at lære på. Meget af det kører direkte på din enhed, så du får privat læring, der først og fremmest virker offline, uden at være afhængig af et datacenter. Vi udgiver ny teknologi, mens den stadig er rå, så den kan indimellem opføre sig mærkeligt, køre langsomt eller simpelthen være mere, end din enhed kan klare. Til gengæld får du stærke nye læringsoplevelser, så snart de bliver mulige.",
+      "yourLangTitle": "Vi taler ikke alle de sprog, vi understøtter",
+      "yourLangDesc": "Det er den ærlige sandhed. Vi bygger til dusinvis af sprog, fordi alle fortjener stærke læringsværktøjer, ikke fordi vores lille hold allerede kan dem alle. Du kan finde ting, vi har taget fejl af. Hvis du kan {{lang}} bedre end os, håber vi, at du vil fortælle os det og hjælpe med at gøre Corpán værdig til sproget.",
+      "plea": "Har du en idé, en rettelse eller en vild læringsoplevelse, du gerne vil se? Fortæl os det. Vi læser hver besked og tænker grundigt over, hvad den kan åbne for Corpán og sprogindlæring.",
+      "emailCta": "Skriv til os",
+      "githubCta": "Åbn et GitHub issue",
+      "join": "Vil du hjælpe med at bringe Corpán ud i verden? Vi leder altid efter samarbejdspartnere, oversættere og lokale ambassadører. Find os.",
+      "pact": "Tryk nedenfor for at begynde at lære og udvikle dig sammen med os. 🤝",
+      "cta": "Jeg er med — lad os komme i gang"
+    },
     "welcome": "Velkommen",
     "makePrimaryLanguage": "Gør dansk til mit primære sprog",
     "canChangeLater": "Du kan ændre dette til enhver tid.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Støt Corpán og lås op for alt. Valgfrit, når som helst.",
+      "subscribedTitle": "Du er en Corpanista",
+      "subscribedDesc": "Tak, fordi du holder Corpán reklamefrit og i vækst.",
       "joinTitle": "Join the Corpanistas",
       "start": "Begynd at udforske",
       "subtitle": "Corpán er lavet af et lille open source-team. Sig hej – og hvis du elsker det, kan du støtte os.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Venter på godkendelse",
     "pendingDetail": "Dit abonnement venter på godkendelse (Spørg om at købe eller bankbekræftelse). Det aktiveres automatisk, når det er godkendt.",
     "storeUnreachable": "Vi kunne ikke nå App Store lige nu.",
-    "tryAgain": "Prøv igen"
+    "tryAgain": "Prøv igen",
+    "affiliateCodeLabel": "Partnerkode",
+    "affiliateCodePlaceholder": "Valgfrit",
+    "affiliateInvalidFormat": "Brug bogstaver, tal, bindestreger eller understregninger.",
+    "affiliateChecking": "Kontrollerer kode...",
+    "affiliateApplied": "Koden knyttes til dette abonnement.",
+    "affiliateCodeHelp": "Hvis nogen sendte dig hertil, skal du indtaste deres kode, før du abonnerer."
   },
   "restore": {
     "button": "Gendan køb",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Din tålmodige tutor, lige på din enhed, til alle sprog du lærer."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "En levende by, der gør hvert møde til en lektion."
     }
   },
   "home": {

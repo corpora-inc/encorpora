@@ -131,6 +131,22 @@
     "primaryLanguage": "主要（使用者介面）語言"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán 不斷進化",
+      "subtitle": "您是最早加入的一批使用者",
+      "tinyTeamTitle": "一支由熱情愛好者組成的小團隊",
+      "tinyTeamDesc": "獨立、無廣告，並尊重每一位使用者——一個小團隊，正在打造我們一直想要的語言學習應用程式。",
+      "bleedingEdgeTitle": "刻意追求尖端技術",
+      "bleedingEdgeDesc": "Corpán 不斷拓展您的裝置所能做到的事：沉浸式世界、語音辨識、自然語音和最新 AI 模型協同運作，創造全新的學習方式。許多功能直接在您的裝置上執行，無需依賴資料中心，也能獲得私密、離線優先的學習體驗。我們會在新技術尚未完全打磨時就交到您手中，因此偶爾可能表現異常、執行緩慢，或超出您的裝置所能處理的範圍。作為回報，只要強大的新學習體驗成為可能，您就能第一時間使用。",
+      "yourLangTitle": "我們不會說所有支援的語言",
+      "yourLangDesc": "這是坦誠的事實。我們為數十種語言開發，是因為每個人都值得擁有強大的學習工具，而不是因為我們的小團隊已經懂得所有語言。您可能會發現我們做錯的地方。如果您比我們更了解{{lang}}，希望您能告訴我們，並幫助 Corpán 真正配得上這門語言。",
+      "plea": "您有想法、修正意見，或希望看到的大膽學習體驗嗎？請告訴我們。我們會閱讀每一則訊息，並認真思考它能為 Corpán 和語言學習開啟哪些可能。",
+      "emailCta": "寄 email 給我們",
+      "githubCta": "到 GitHub 開 issue",
+      "join": "想幫助 Corpán 走向世界嗎？我們一直在尋找合作夥伴、翻譯者和在地大使。歡迎聯絡我們。",
+      "pact": "點按下方開始學習，與我們共同成長。🤝",
+      "cta": "我加入，開始吧"
+    },
     "welcome": "歡迎",
     "makePrimaryLanguage": "將繁體中文設為主要語言",
     "canChangeLater": "別擔心，您可隨時變更此設定。",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "支持 Corpán 並解鎖所有內容。可選，隨時。",
+      "subscribedTitle": "您是 Corpanista",
+      "subscribedDesc": "感謝您讓 Corpán 保持無廣告並持續成長。",
       "joinTitle": "加入 Corpanistas",
       "start": "開始探索",
       "subtitle": "Corpán 由一個小型開源團隊打造。歡迎打聲招呼 — 如果您喜歡，可以支持我們。",
@@ -642,7 +660,13 @@
     "pendingHeading": "等待核准",
     "pendingDetail": "你的訂閱正等待核准（購買前詢問或銀行驗證）。一旦核准，將自動啟用。",
     "storeUnreachable": "目前無法連線到 App Store。",
-    "tryAgain": "再試一次"
+    "tryAgain": "再試一次",
+    "affiliateCodeLabel": "聯盟代碼",
+    "affiliateCodePlaceholder": "可選",
+    "affiliateInvalidFormat": "請使用字母、數字、連字號或底線。",
+    "affiliateChecking": "正在檢查代碼...",
+    "affiliateApplied": "此代碼將連結到這個訂閱。",
+    "affiliateCodeHelp": "如果有人推薦你來到這裡，請在訂閱前輸入他們的代碼。"
   },
   "restore": {
     "button": "恢復購買",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "圖托馬通",
       "blurb": "手機裡的耐心家教，陪伴您學習每種語言。"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "一座將每次邂逅化為課程的活城市。"
     }
   },
   "home": {

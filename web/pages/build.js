@@ -99,6 +99,86 @@ function readManifestVersion(pack) {
   return "0.0.0";
 }
 
+function compareVersions(a, b) {
+  const normalize = (value) =>
+    String(value)
+      .split('.')
+      .map((part) => Number.parseInt(part, 10))
+      .map((part) => (Number.isFinite(part) ? part : 0));
+  const left = normalize(a);
+  const right = normalize(b);
+  const length = Math.max(left.length, right.length);
+  for (let i = 0; i < length; i += 1) {
+    const diff = (left[i] || 0) - (right[i] || 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
+
+function assertCatalogHostCompatibility(pack) {
+  const manifest = readManifest(pack);
+  if (pack.requireVersionedArtifact === true) {
+    const versionSegment = `/${manifest?.version}/`;
+    if (typeof pack.zipUrl !== 'string' || !pack.zipUrl.includes(versionSegment)) {
+      throw new Error(
+        `[pages] ${pack.id} requires an immutable artifact URL containing ${versionSegment}`
+      );
+    }
+  }
+
+  const manifestMin = manifest?.minAppVersion;
+  if (typeof manifestMin !== 'string' || !manifestMin.trim()) return;
+
+  const catalogMin =
+    typeof pack.minAppVersion === 'string' && pack.minAppVersion.trim()
+      ? pack.minAppVersion.trim()
+      : '0.9.0';
+  if (compareVersions(catalogMin, manifestMin) < 0) {
+    throw new Error(
+      `[pages] ${pack.id} catalog minAppVersion ${catalogMin} is below manifest minAppVersion ${manifestMin}`
+    );
+  }
+
+  // catalog.json has no host-version field. A pack with an explicit modern
+  // host requirement must opt out or old/fallback clients can install it.
+  if (compareVersions(manifestMin, '0.9.0') > 0 && pack.v1Listed !== false) {
+    throw new Error(
+      `[pages] ${pack.id} requires app ${manifestMin} but is included in unversioned catalog.json; set v1Listed to false`
+    );
+  }
+
+}
+
+function assertVersionedCompatibilityRoutes(packs) {
+  const byId = new Map();
+  for (const pack of packs) {
+    if (pack.requireVersionedArtifact !== true) continue;
+    const group = byId.get(pack.id) || [];
+    group.push(pack);
+    byId.set(pack.id, group);
+  }
+
+  for (const [id, entries] of byId) {
+    entries.sort((a, b) =>
+      compareVersions(a.minAppVersion || '0.9.0', b.minAppVersion || '0.9.0')
+    );
+    for (let i = 1; i < entries.length; i += 1) {
+      const previous = entries[i - 1];
+      const current = entries[i];
+      if (
+        !previous.maxAppVersion ||
+        compareVersions(previous.maxAppVersion, current.minAppVersion || '0.9.0') >= 0
+      ) {
+        throw new Error(
+          `[pages] ${id} immutable compatibility routes overlap: ` +
+          `${previous.minAppVersion || '0.9.0'}..${previous.maxAppVersion || 'latest'} and ` +
+          `${current.minAppVersion || '0.9.0'}..${current.maxAppVersion || 'latest'}`
+        );
+      }
+    }
+  }
+}
+
 // Pull `nameLocalized` / `descriptionLocalized` maps off the pack's
 // manifest. Returns `{}` when the manifest is missing or the maps are
 // absent — the packs.json `name` / `description` then serve as English
@@ -185,6 +265,21 @@ function harvestExperienceLocales(packId) {
     }
   }
   return { nameMap, taglineMap };
+}
+
+function assertCompleteCatalogLocalization(pack, localized) {
+  if (pack.requireCompleteLocalization !== true) return;
+  const expectedLocales = Object.keys(loadAllLocales());
+  for (const [field, values] of Object.entries(localized)) {
+    const missing = expectedLocales.filter(
+      (lang) => typeof values?.[lang] !== 'string' || !values[lang].trim()
+    );
+    if (missing.length > 0) {
+      throw new Error(
+        `[pages] ${pack.id} requires complete ${field}; missing: ${missing.join(', ')}`
+      );
+    }
+  }
 }
 
 function ensureDir(dir) {
@@ -298,6 +393,8 @@ function buildPages(outputDir) {
     version: readManifestVersion(pack),
     ...readManifestLocalized(pack),
   }));
+  packsData.forEach(assertCatalogHostCompatibility);
+  assertVersionedCompatibilityRoutes(packsData);
   const isListed = (pack) => pack.listed !== false;
   // webListed lets us hide platform-duplicate or legacy-pinned catalog
   // entries from the public packs page while still shipping them in
@@ -365,9 +462,11 @@ function buildPages(outputDir) {
     buildPackLandingPage(pack, outputRoot);
   });
 
-  // Generate catalog.json (v1) for app consumption — only games for 0.9.x
+  // Generate catalog.json (v1) for 0.9.x clients. That schema cannot enforce
+  // minAppVersion, so packs requiring newer hosts must opt out explicitly.
   console.log('Generating catalog.json...');
-  const isV1Pack = (pack) => isListed(pack) && pack.packType !== 'reader';
+  const isV1Pack = (pack) =>
+    isListed(pack) && pack.v1Listed !== false && pack.packType !== 'reader';
   const catalogData = packsData.filter(isV1Pack).map(pack => {
     // Use zipUrl if available, otherwise fallback to manifest
     const manifestUrl = pack.zipUrl
@@ -430,6 +529,11 @@ function buildPages(outputDir) {
     if (typeof pack.tagline === 'string' && pack.tagline.length > 0) {
       taglineLocalized.en = pack.tagline;
     }
+    assertCompleteCatalogLocalization(pack, {
+      nameLocalized,
+      descriptionLocalized: pack.descriptionLocalized,
+      taglineLocalized,
+    });
 
     return {
       id: pack.id,
@@ -467,6 +571,9 @@ function buildPages(outputDir) {
         : {}),
       ...(typeof pack.recommendOrder === 'number'
         ? { recommendOrder: pack.recommendOrder }
+        : {}),
+      ...(Array.isArray(pack.featuredFor) && pack.featuredFor.length > 0
+        ? { featuredFor: pack.featuredFor }
         : {}),
       ...(typeof pack.kidFriendly === 'boolean'
         ? { kidFriendly: pack.kidFriendly }

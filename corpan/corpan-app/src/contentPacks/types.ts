@@ -149,6 +149,13 @@ export type SttStatus = {
   availableMemoryMB?: number | null
   /** Total physical RAM on the device in MB. */
   physicalMemoryMB?: number | null
+  /** Set by the Android plugin on the first getStatus after a prior
+   *  on-device whisper init crashed (uncatchable native SIGSEGV/abort in
+   *  ggml model load). The native side wrote a breadcrumb before the crash
+   *  and held it across the restart; the host's getStatus wrapper records
+   *  it once into on-device analytics, then the field is cleared natively.
+   *  JSON string with `model`/`instanceOrdinal`/`instancesCreated`/`uptimeMs`. */
+  priorInitCrash?: string | null
 }
 
 export type SttWordTiming = {
@@ -199,7 +206,10 @@ export type LlmChatMessage = { role: "system" | "user" | "assistant"; content: s
 export type LlmChatOptions = {
   temperature?: number
   topP?: number
+  topK?: number
+  minP?: number
   repeatPenalty?: number
+  presencePenalty?: number
   maxTokens?: number
   stop?: string[]
 }
@@ -267,6 +277,98 @@ export type LlmApi = {
     args: { messages: LlmChatMessage[]; options?: LlmChatOptions },
     handlers: LlmChatHandlers,
   ) => Promise<LlmChatHandle>
+}
+
+// --- ASR (pure transcription) + model registry ---------------------------
+// The provider-agnostic dictation surface (distinct from `SttApi` above,
+// which is Parlometron's whisper-backed scoring). Mirrors the SDK
+// (`packs/sdk/index.d.ts`) and the `@shared/asr` module. Design:
+// corpan/docs/STT_MASTERPLAN.md + ASR_INTEGRATION_MANIFEST.md.
+export type AsrProviderId = "native" | "whisper" | "qwen3" | "sherpa"
+export type AsrLatencyClass = "instant" | "fast" | "batch"
+export type AsrCaptureMode = "push_to_talk" | "auto_stop"
+
+export type AsrCapability = {
+  providerId: AsrProviderId
+  languages: string[]
+  onDevice: boolean
+  modelSizeMB: number
+  residentMemoryMB: number
+  streaming: boolean
+  latencyClass: AsrLatencyClass
+  needsDownload: boolean
+  autoregressive: boolean
+}
+
+export type AsrTranscript = {
+  text: string
+  confidence: number
+  language: string
+}
+
+export type AsrSession = {
+  onPartial: (cb: (text: string) => void) => void
+  onLevel: (cb: (rms: number, tMs: number) => void) => void
+  onError: (cb: (code: string, message?: string) => void) => void
+  stop: () => Promise<AsrTranscript>
+  cancel: () => void
+}
+
+export type AsrProvider = {
+  readonly id: AsrProviderId
+  capabilities: () => Promise<AsrCapability>
+  isAvailable: (lang: string) => Promise<{ ok: boolean; needsDownload: boolean }>
+  ensure: (lang: string) => Promise<{ ready: boolean; downloading: boolean }>
+  transcribe: (opts: { lang: string; mode: AsrCaptureMode }) => Promise<AsrSession>
+}
+
+export type AsrGoal = "dictation" | "challenge"
+
+/** Selection surface. `pick` returns null = "use the keyboard" (the permanent
+ *  floor — callers MUST handle null). */
+export type AsrApi = {
+  provider: (id: AsrProviderId) => Promise<AsrProvider | null>
+  pick: (args: {
+    lang: string
+    budgetMB?: number
+    goal?: AsrGoal
+  }) => Promise<AsrProvider | null>
+}
+
+export type AssetKind =
+  | "asr-model" | "llm" | "narration" | "phrase-pack" | "sound"
+
+export type AssetRecord = {
+  id: string
+  kind: AssetKind
+  sizeMB: number
+  path: string | null
+  refCount: number
+}
+
+export type ModelBudget = {
+  availableMB: number
+  physicalMB: number
+  resident: { id: string; mb: number; kind: AssetKind }[]
+}
+
+/** Refcount/dedup store for all on-device assets + a live memory Budget
+ *  Arbiter. The Rust backing (refcount install/evict/locate/list) is Phase-2;
+ *  `budget`/`fits`/`whatFitsAlongside` are answerable today from device
+ *  memory + the resident LLM. */
+export type ModelsApi = {
+  list: () => Promise<AssetRecord[]>
+  ensure: (
+    assetId: string,
+    args: { source: string; sizeMB: number; kind: AssetKind },
+  ) => Promise<{ ready: boolean; downloading: boolean }>
+  locate: (assetId: string) => Promise<string | null>
+  evict: (assetId: string) => Promise<void>
+  budget: () => Promise<ModelBudget>
+  fits: (
+    req: { assetId?: string; residentMB?: number },
+  ) => Promise<{ fits: boolean; mustEvict: string[] }>
+  whatFitsAlongside: (residentIds: string[]) => Promise<AsrCapability[]>
 }
 
 export type SttApi = {
@@ -368,11 +470,39 @@ export type SttInstallProgress = {
   code?: SttErrorCode
 }
 
+/** A TTS voice the host can speak with (for a pack's sticky per-NPC voice). */
+export type HostVoiceInfo = {
+  id: string
+  name?: string
+  /** BCP-47 (e.g. "es-MX"). */
+  language: string
+  /** Gender when the platform exposes it (iOS/macOS do; Android often doesn't). */
+  gender?: "male" | "female" | "unspecified"
+  /** Native quality tier. Packs use this to default to the best installed voice. */
+  quality?:
+    | "default"
+    | "enhanced"
+    | "premium"
+    | "very_low"
+    | "low"
+    | "normal"
+    | "high"
+    | "very_high"
+  /** Android-only; true voices are unsuitable for offline-first packs. */
+  networkRequired?: boolean
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
   speakConcurrent?: (uiCode: string, text: string) => Promise<string>
   stopSpeech?: () => Promise<void>
+  /** Enumerate available TTS voices (optionally filtered to a language), with
+   *  gender when known — lets a pack pin a sticky, gender-matched voice per NPC. */
+  listVoices?: (uiCode?: string) => Promise<HostVoiceInfo[]>
+  /** Speak `text` with a SPECIFIC voice id (from `listVoices`), not just a
+   *  language — the mechanism behind a pack's per-NPC sticky voice. */
+  speakVoice?: (uiCode: string, text: string, voiceId: string) => Promise<void>
   /** Copy text to the system clipboard (native — WKWebView blocks the web API). */
   copyText?: (text: string) => Promise<void>
   dispose?: () => void
@@ -390,7 +520,20 @@ export type HostApi = {
   /** Installed phrase-pack registry (for source chips + enable/disable). */
   phrasePacks?: HostPhrasePacksApi
   getRandomEntry: () => Promise<EntryOut>
-  getRandomEntries?: (count: number) => Promise<EntryOut[]>
+  /**
+   * Sample N random entries. Accepts EITHER the legacy numeric `count` OR an
+   * options object carrying a CONTENT FILTER (`domains`/`levels`/`languageCodes`).
+   * The numeric form preserves the historical behaviour (user-global `levels`
+   * from settings, domains intentionally NOT forwarded). The options form lets a
+   * pack request a THEMED + LEVEL-SCALED draw — e.g. Corpan City binds a café NPC
+   * to food/everyday phrases and a dock keeper to travel phrases at the player's
+   * level — by forwarding the filter to `get_random_entries_with_translations`,
+   * whose relaxation ladder degrades a starved filter rather than returning empty.
+   * ADDITIVE + back-compatible: existing callers pass a number unchanged.
+   */
+  getRandomEntries?: (
+    q: number | { count: number; domains?: string[]; levels?: string[]; languageCodes?: string[] },
+  ) => Promise<EntryOut[]>
   /**
    * Resolve an entry by id. `source` defaults to `"base"` (bundled corpus).
    * For phrase-pack entries, pass the pack id you stored alongside the
@@ -439,6 +582,15 @@ export type HostApi = {
   stt?: SttApi
   /** On-device LLM runtime (present when tauri-plugin-corpan-llm is registered). */
   llm?: LlmApi
+  /** Provider-agnostic dictation. `pick`/`provider` return null (→ keyboard)
+   *  until an asr-* provider plugin is registered; the seam is always present
+   *  so packs can program against it. */
+  asr?: AsrApi
+  /** On-device model & asset registry + memory Budget Arbiter. `budget`/`fits`/
+   *  `whatFitsAlongside` answer from real device memory + the resident LLM
+   *  today; the refcount store (install/evict/locate) lands with the registry
+   *  plugin (Phase-2). */
+  models?: ModelsApi
   isMock?: boolean
 }
 

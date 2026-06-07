@@ -1,0 +1,571 @@
+{
+  "id": "tokyo-2050",
+  "topologyId": "plaza-grand",
+  "setting": {
+    "place": "Tokyo",
+    "era": "2050",
+    "mood": "neon rain night market"
+  },
+  "themeId": "paper",
+  "narrativeBlurb": "The same plaza, fifty years from now and half a world away: a rain-slick night district hums around the central fountain — ramen counters, vending walls, capsule shops and a shrine gate, each doorway glowing with a story.",
+  "anchorSkins": {
+    "fountain": {
+      "spriteRef": {
+        "url": "placeholder:fountain-neon"
+      }
+    },
+    "plaza_bench_0": {
+      "spriteRef": {
+        "url": "placeholder:bench-steel"
+      }
+    },
+    "plaza_lamp_1": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "plaza_bench_2": {
+      "spriteRef": {
+        "url": "placeholder:bench-steel"
+      }
+    },
+    "plaza_lamp_3": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "plaza_bench_4": {
+      "spriteRef": {
+        "url": "placeholder:bench-steel"
+      }
+    },
+    "plaza_lamp_5": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "plaza_bench_6": {
+      "spriteRef": {
+        "url": "placeholder:bench-steel"
+      }
+    },
+    "plaza_lamp_7": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "plaza_market": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "plaza_crier": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "door_8": {
+      "spriteRef": {
+        "url": "placeholder:konbini"
+      }
+    },
+    "vendor_9": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "door_10": {
+      "spriteRef": {
+        "url": "placeholder:arcade"
+      }
+    },
+    "station_11": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "door_12": {
+      "spriteRef": {
+        "url": "placeholder:konbini"
+      }
+    },
+    "vendor_13": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "door_14": {
+      "spriteRef": {
+        "url": "placeholder:konbini"
+      }
+    },
+    "vendor_15": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "lamp_16": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "door_17": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "station_18": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "lamp_19": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "door_20": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "station_21": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "door_22": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "station_23": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "door_24": {
+      "spriteRef": {
+        "url": "placeholder:konbini"
+      }
+    },
+    "vendor_25": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "lamp_26": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "door_27": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "vendor_28": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "door_29": {
+      "spriteRef": {
+        "url": "placeholder:konbini"
+      }
+    },
+    "vendor_30": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "lamp_31": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "door_32": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "station_33": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "door_34": {
+      "spriteRef": {
+        "url": "placeholder:arcade"
+      }
+    },
+    "station_35": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "door_36": {
+      "spriteRef": {
+        "url": "placeholder:konbini"
+      }
+    },
+    "vendor_37": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "door_38": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "vendor_39": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "door_40": {
+      "spriteRef": {
+        "url": "placeholder:arcade"
+      }
+    },
+    "station_41": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "lamp_42": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "door_43": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "station_44": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "door_45": {
+      "spriteRef": {
+        "url": "placeholder:konbini"
+      }
+    },
+    "vendor_46": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "door_47": {
+      "spriteRef": {
+        "url": "placeholder:capsule"
+      }
+    },
+    "door_48": {
+      "spriteRef": {
+        "url": "placeholder:shrine"
+      }
+    },
+    "vendor_49": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "door_50": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "station_51": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "door_52": {
+      "spriteRef": {
+        "url": "placeholder:arcade"
+      }
+    },
+    "station_53": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "lamp_54": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "door_55": {
+      "spriteRef": {
+        "url": "placeholder:shrine"
+      }
+    },
+    "vendor_56": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "door_57": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "vendor_58": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "lamp_59": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "door_60": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "door_61": {
+      "spriteRef": {
+        "url": "placeholder:konbini"
+      }
+    },
+    "vendor_62": {
+      "spriteRef": {
+        "url": "placeholder:vending"
+      }
+    },
+    "door_63": {
+      "spriteRef": {
+        "url": "placeholder:arcade"
+      }
+    },
+    "station_64": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    },
+    "lamp_65": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "door_66": {
+      "spriteRef": {
+        "url": "placeholder:arcade"
+      }
+    },
+    "lamp_67": {
+      "spriteRef": {
+        "url": "placeholder:lamp-neon"
+      }
+    },
+    "door_68": {
+      "spriteRef": {
+        "url": "placeholder:apartment"
+      }
+    },
+    "station_69": {
+      "spriteRef": {
+        "url": "placeholder:ramen"
+      }
+    }
+  },
+  "npcSkins": {
+    "plaza_market": {
+      "spriteRef": {
+        "url": "placeholder:npc-streetfood"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "plaza_crier": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_9": {
+      "spriteRef": {
+        "url": "placeholder:npc-shopkeep"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_11": {
+      "spriteRef": {
+        "url": "placeholder:npc-barista"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_13": {
+      "spriteRef": {
+        "url": "placeholder:npc-shopkeep"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_15": {
+      "spriteRef": {
+        "url": "placeholder:npc-shopkeep"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_18": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_21": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_23": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_25": {
+      "spriteRef": {
+        "url": "placeholder:npc-shopkeep"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_28": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_30": {
+      "spriteRef": {
+        "url": "placeholder:npc-shopkeep"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_33": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_35": {
+      "spriteRef": {
+        "url": "placeholder:npc-barista"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_37": {
+      "spriteRef": {
+        "url": "placeholder:npc-shopkeep"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_39": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_41": {
+      "spriteRef": {
+        "url": "placeholder:npc-barista"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_44": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_46": {
+      "spriteRef": {
+        "url": "placeholder:npc-shopkeep"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_49": {
+      "spriteRef": {
+        "url": "placeholder:npc-monk"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_51": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_53": {
+      "spriteRef": {
+        "url": "placeholder:npc-barista"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_56": {
+      "spriteRef": {
+        "url": "placeholder:npc-monk"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_58": {
+      "spriteRef": {
+        "url": "placeholder:npc-streetfood"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "vendor_62": {
+      "spriteRef": {
+        "url": "placeholder:npc-shopkeep"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_64": {
+      "spriteRef": {
+        "url": "placeholder:npc-barista"
+      },
+      "voiceHint": "ja-JP"
+    },
+    "station_69": {
+      "spriteRef": {
+        "url": "placeholder:npc-commuter"
+      },
+      "voiceHint": "ja-JP"
+    }
+  },
+  "palette": {
+    "ground": "#1a2238",
+    "groundAlt": "#141b2e",
+    "road": "#222c44",
+    "roadEdge": "#3de0ff",
+    "plaza": "#1d2740",
+    "sky": "#0b1026",
+    "accent": "#ff4ddb",
+    "building": "#26304a",
+    "buildingAlt": "#1d2740",
+    "roof": "#10182b",
+    "trim": "#3de0ff",
+    "stone": "#2a3350"
+  },
+  "sky": {
+    "horizon": "#3a2a6a",
+    "zenith": "#070a1c",
+    "fog": 0.55,
+    "fogColor": "#2a1f55",
+    "timeOfDay": "night"
+  },
+  "landmark": {
+    "kind": "mount-fuji",
+    "tintHex": "#cfd8ff",
+    "label": "Mt. Fuji",
+    "azimuth": 0,
+    "scale": 1.15
+  },
+  "buildingStyle": "tokyo-neon"
+}

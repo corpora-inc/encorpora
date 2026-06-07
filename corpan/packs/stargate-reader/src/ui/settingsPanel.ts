@@ -90,7 +90,7 @@ export function renderStargateDisplaySettings(
       { key: "alpha", label: "Opacity", min: 0.001, max: 0.05, step: 0.001, initial: 0.005 },
       { key: "minRadius", label: "Base Size", min: 0, max: 1, step: 0.05, initial: 0 },
     ],
-    currentValues: waveConfig as Record<string, number>,
+    currentValues: waveConfig as unknown as Record<string, number>,
     onChange: (key, value) => cbs.onWaveformConfig(key, value),
   })
 

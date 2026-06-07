@@ -131,6 +131,22 @@
     "showStreakHint": "Uma pequena contagem de dias no cabeçalho. Apenas no dispositivo, sem lembretes ou notificações."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "A Corpán evolui",
+      "subtitle": "Chegou cedo",
+      "tinyTeamTitle": "Uma pequena equipa de entusiastas",
+      "tinyTeamDesc": "Independente, sem anúncios e criada com respeito por quem a utiliza — uma pequena equipa a fazer a aplicação de línguas que sempre quisemos.",
+      "bleedingEdgeTitle": "Vanguarda, de propósito",
+      "bleedingEdgeDesc": "A Corpán leva ao limite aquilo que o seu dispositivo consegue fazer: mundos imersivos, reconhecimento de fala, vozes naturais e os modelos de IA mais recentes trabalham em conjunto para criar novas formas de aprender. Grande parte funciona diretamente no seu dispositivo, oferecendo aprendizagem privada e pensada primeiro para funcionar offline, sem depender de um centro de dados. Lançamos novas tecnologias quando ainda estão em estado bruto, por isso às vezes podem comportar-se de forma estranha, funcionar lentamente ou simplesmente ser mais do que o seu dispositivo consegue suportar. Em troca, recebe novas e poderosas experiências de aprendizagem assim que se tornam possíveis.",
+      "yourLangTitle": "Não falamos todas as línguas que disponibilizamos",
+      "yourLangDesc": "Essa é a verdade. Criamos para dezenas de línguas porque todas as pessoas merecem ferramentas poderosas de aprendizagem, não porque a nossa pequena equipa já as conhece todas. Poderá encontrar coisas que fizemos mal. Se conhece {{lang}} melhor do que nós, esperamos que nos diga e nos ajude a tornar a Corpán digna dessa língua.",
+      "plea": "Tem uma ideia, uma correção ou uma experiência de aprendizagem ousada que gostaria de ver? Conte-nos. Lemos cada mensagem e pensamos profundamente no que poderá abrir para a Corpán e para a aprendizagem de línguas.",
+      "emailCta": "Envie-nos um email",
+      "githubCta": "Abrir uma issue no GitHub",
+      "join": "Quer ajudar a levar a Corpán ao mundo? Procuramos sempre colaboradores, tradutores e embaixadores locais. Venha falar connosco.",
+      "pact": "Toque abaixo para começar a aprender e crescer connosco. 🤝",
+      "cta": "Estou dentro — vamos a isso"
+    },
     "welcome": "Bem-vindo",
     "makePrimaryLanguage": "Definir o inglês como a minha língua principal",
     "canChangeLater": "Pode mudar isto a qualquer momento.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Apoie o Corpán e desbloqueie tudo. Opcional, a qualquer momento.",
+      "subscribedTitle": "É um Corpanista",
+      "subscribedDesc": "Obrigado por manter o Corpán sem anúncios e em crescimento.",
       "joinTitle": "Junte-se aos Corpanistas",
       "start": "Começar a explorar",
       "subtitle": "O Corpán é feito por uma pequena equipa de código aberto. Venha dizer olá — e se gostar, pode apoiar-nos.",
@@ -642,7 +660,13 @@
     "pendingHeading": "À espera de aprovação",
     "pendingDetail": "A sua subscrição está à espera de aprovação (Ask to Buy ou verificação bancária). Será ativada automaticamente assim que for aprovada.",
     "storeUnreachable": "Não foi possível aceder à App Store neste momento.",
-    "tryAgain": "Tentar novamente"
+    "tryAgain": "Tentar novamente",
+    "affiliateCodeLabel": "Código de afiliado",
+    "affiliateCodePlaceholder": "Opcional",
+    "affiliateInvalidFormat": "Use letras, números, hífenes ou sublinhados.",
+    "affiliateChecking": "A verificar o código...",
+    "affiliateApplied": "O código será associado a esta subscrição.",
+    "affiliateCodeHelp": "Se alguém o enviou para aqui, introduza o código antes de subscrever."
   },
   "restore": {
     "button": "Restaurar Compras",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "O seu tutor paciente, sempre consigo, para todas as línguas que está a aprender"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Uma cidade viva que transforma cada encontro numa lição."
     }
   },
   "home": {

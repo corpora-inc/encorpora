@@ -27,7 +27,7 @@ import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
-import { refreshEntitlements, getPlatform, restoreAndSync } from "@/contentPacks/purchase";
+import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId } from "@/contentPacks/purchase";
 import { useEntitlementStore } from "@/store/entitlements";
 import { InstallProvider } from "@/contentPacks/InstallContext";
 import { PaywallSheet } from "@/components/paywall/PaywallSheet";
@@ -171,6 +171,7 @@ export default function App() {
   // Fetch catalog and refresh entitlements on mount
   useEffect(() => {
     fetchCatalog();
+    getCorpanSubjectId();
     // Phrase packs ship through a dedicated S3-hosted catalog with a
     // shorter TTL (5 min) since the publisher rewrites it directly with
     // no PR. Two fetches, two stores — kept independent so a v3 catalog

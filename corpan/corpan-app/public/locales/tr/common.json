@@ -131,6 +131,22 @@
     "primaryLanguage": "Birincil (arayüz) dil"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán gelişiyor",
+      "subtitle": "İlk kullanıcılarımızdansınız",
+      "tinyTeamTitle": "Küçük bir meraklılar ekibi",
+      "tinyTeamDesc": "Bağımsız, reklamsız ve kullanan insanlara saygıyla geliştiriliyor — küçük bir ekip, hep istediğimiz dil uygulamasını yapıyor.",
+      "bleedingEdgeTitle": "Bilerek en ileri teknoloji",
+      "bleedingEdgeDesc": "Corpán, cihazınızın yapabileceklerinin sınırlarını zorluyor: sürükleyici dünyalar, konuşma tanıma, doğal sesler ve en yeni AI modelleri birlikte çalışarak öğrenmenin yeni yollarını oluşturuyor. Büyük bölümü doğrudan cihazınızda çalışır; böylece bir veri merkezine bağımlı olmadan özel ve çevrimdışı kullanıma öncelik veren öğrenme sunar. Yeni teknolojileri henüz hamken yayımlıyoruz; bu yüzden bazen tuhaf davranabilir, yavaş çalışabilir veya cihazınızın kaldırabileceğinden fazlası olabilir. Karşılığında, güçlü yeni öğrenme deneyimlerine mümkün olur olmaz erişirsiniz.",
+      "yourLangTitle": "Desteklediğimiz her dili konuşmuyoruz",
+      "yourLangDesc": "Dürüst gerçek bu. Onlarca dil için geliştiriyoruz, çünkü küçük ekibimiz hepsini zaten bildiği için değil, herkes güçlü öğrenme araçlarını hak ettiği için. Yanlış yaptığımız şeylerle karşılaşabilirsiniz. {{lang}} dilini bizden daha iyi biliyorsanız, bize söylemenizi ve Corpán'ı o dile layık hâle getirmemize yardım etmenizi umuyoruz.",
+      "plea": "Bir fikriniz, düzeltmeniz veya görmek istediğiniz sıra dışı bir öğrenme deneyimi mi var? Bize anlatın. Her mesajı okuyor ve Corpán ile dil öğrenimi için nelerin önünü açabileceğini derinlemesine düşünüyoruz.",
+      "emailCta": "Bize e-posta gönder",
+      "githubCta": "GitHub issue aç",
+      "join": "Corpán'ı dünyaya taşımaya yardım etmek ister misiniz? Her zaman katkı sunacak kişiler, çevirmenler ve yerel elçiler arıyoruz. Bize ulaşın.",
+      "pact": "Öğrenmeye başlamak ve bizimle birlikte gelişmek için aşağıya dokunun. 🤝",
+      "cta": "Varım — hadi başlayalım"
+    },
     "welcome": "Hoş geldiniz",
     "makePrimaryLanguage": "İngilizceyi birincil dilim yap",
     "canChangeLater": "Bunu istediğiniz zaman değiştirebilirsiniz.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Corpán'ı destekleyin ve her şeyin kilidini açın. İsteğe bağlı, dilediğiniz zaman.",
+      "subscribedTitle": "Bir Corpanista'sınız",
+      "subscribedDesc": "Corpán'ı reklamsız tutup büyümesine yardımcı olduğunuz için teşekkürler.",
       "joinTitle": "Corpanistas'a katılın",
       "start": "Keşfetmeye başla",
       "subtitle": "Corpán, küçük bir açık kaynak ekibi tarafından yapıldı. Merhaba deyin — ve eğer beğenirseniz, bize destek olabilirsiniz.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Onay bekleniyor",
     "pendingDetail": "Aboneliğiniz onay bekliyor (Satın Alma İzni veya banka doğrulaması). Onaylandıktan sonra otomatik olarak etkinleşecektir.",
     "storeUnreachable": "Şu anda App Store'a ulaşamadık.",
-    "tryAgain": "Tekrar dene"
+    "tryAgain": "Tekrar dene",
+    "affiliateCodeLabel": "Satış ortağı kodu",
+    "affiliateCodePlaceholder": "İsteğe bağlı",
+    "affiliateInvalidFormat": "Harf, sayı, kısa çizgi veya alt çizgi kullanın.",
+    "affiliateChecking": "Kod kontrol ediliyor...",
+    "affiliateApplied": "Kod bu aboneliğe eklenecek.",
+    "affiliateCodeHelp": "Biri sizi buraya yönlendirdiyse abone olmadan önce kodunu girin."
   },
   "restore": {
     "button": "Satın alımları geri yükle",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Öğrendiğiniz her dil için sabırlı, cihazınızdaki kişisel öğretmeniniz."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Her karşılaşmayı derse çeviren yaşayan bir şehir."
     }
   },
   "home": {

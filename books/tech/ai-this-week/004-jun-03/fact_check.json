@@ -1,0 +1,62 @@
+{
+  "issue_date": "2026-06-03",
+  "ran_at": "2026-06-05",
+  "method": "Systematic verification of every substantive factual claim via live WebSearch (training cutoff Jan 2026; must-verify on live web). Three parallel pre-research agents (model releases / leaderboards / macro) produced dated, sourced findings. Manuscript drafted from those. Then a dedicated fact-check Explore agent re-verified every date, parameter count, license, benchmark score, price, CVE, and organizational action against live URLs. Hedges retained on all vendor-stated benchmark numbers.",
+  "gate": "PASS — no unresolved CORRECTED claims. TTS spend authorized.",
+  "must_fix_applied": [],
+  "hedged_or_kept": [
+    {
+      "claim": "MiniMax M3 scores 59% on SWE-bench Pro, ahead of GPT-5.5 and Gemini 3.5 Pro",
+      "status": "HEDGED",
+      "note": "Manuscript says 'MiniMax says fifty nine percent' and 'I will say claims — this is the vendor's own scorecard, not an independent run' (ch00-027 → ch00-028). Hedge is explicit.",
+      "segments": ["ch00-027", "ch00-028"],
+      "sources": ["https://venturebeat.com/technology/minimax-m3-debuts-eclipsing-gpt-5-5-and-gemini-3-1-pro-on-key-benchmark-performance-for-just-5-10-of-the-cost/"]
+    },
+    {
+      "claim": "MiniMax M3 weights landing on Hugging Face shortly",
+      "status": "HEDGED",
+      "note": "API was live June 1; weights timing characterized as 'landing on Hugging Face shortly' rather than a hard date. Consistent with vendor messaging that weights would follow API.",
+      "segments": ["ch00-030"],
+      "sources": ["https://www.marktechpost.com/2026/06/01/minimax-releases-minimax-m3-with-msa-architecture-supporting-1m-token-context-native-multimodality-and-agentic-coding/"]
+    },
+    {
+      "claim": "Nemotron 3 Nano Omni claimed nine times more efficient than peer open omni models",
+      "status": "HEDGED",
+      "note": "Manuscript says 'claimed to be about nine times more efficient' — explicit vendor-claim framing.",
+      "segments": ["ch00-053"],
+      "sources": ["https://blogs.nvidia.com/blog/nemotron-3-nano-omni-multimodal-ai-agents/"]
+    }
+  ],
+  "all_verified": [
+    {"claim": "MiniMax M3 released June 1, 2026 with 1M-token context", "source_url": "https://www.marktechpost.com/2026/06/01/minimax-releases-minimax-m3-with-msa-architecture-supporting-1m-token-context-native-multimodality-and-agentic-coding/"},
+    {"claim": "MSA = MiniMax Sparse Attention, 9× prefill / 15× decode at 1M context vs M2", "source_url": "https://felloai.com/minimax-m3/"},
+    {"claim": "NVIDIA Nemotron 3 Ultra: 550B total / 55B active, Mamba-Transformer hybrid, June 2026", "source_url": "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents/"},
+    {"claim": "Nemotron 3 Ultra scores 48 on Artificial Analysis Intelligence Index, 9th of 89", "source_url": "https://artificialanalysis.ai/articles/nvidia-nemotron-3-ultra-released/"},
+    {"claim": "Kimi K2.6 scores 54 on AA Intelligence Index, ahead of Nemotron 3 Ultra by 6 points", "source_url": "https://artificialanalysis.ai/models/kimi-k2-6"},
+    {"claim": "Nemotron 3 Ultra ships under NVIDIA Open Model License, commercial use permitted", "source_url": "https://research.nvidia.com/labs/nemotron/Nemotron-3-Ultra/"},
+    {"claim": "Mistral Medium 3.5 added to Microsoft Copilot Studio May 28, 128B dense, 256K context", "source_url": "https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/mistral-joins-copilot-studios-growing-lineup-of-model-providers/"},
+    {"claim": "Qwen 3.7-Plus released June 2 as API-only on Bailian platform (Alibaba)", "source_url": "https://www.marktechpost.com/2026/06/02/alibabas-qwen-team-launches-qwen3-7-plus-adding-vision-deep-reasoning-tool-invocation-and-autonomous-iteration-on-the-bailian-platform/"},
+    {"claim": "Open Qwen line still stops at 3.6 (3.7 Max and 3.7 Plus are closed)", "source_url": "https://www.marktechpost.com/2026/06/02/alibabas-qwen-team-launches-qwen3-7-plus-adding-vision-deep-reasoning-tool-invocation-and-autonomous-iteration-on-the-bailian-platform/"},
+    {"claim": "Claude Opus 4.8 released May 28, 2026", "source_url": "https://www.anthropic.com/news/claude-opus-4-8"},
+    {"claim": "Opus 4.8: 88.6% SWE-bench Verified, 69.2% SWE-bench Pro", "source_url": "https://www.truefoundry.com/blog/claude-opus-4-8-and-swe-bench-pro-we-ran-anthropics-headline-through-our-gateway"},
+    {"claim": "Opus 4.8 leads AA Intelligence Index composite at 61.4 (GPT-5.5 ~60)", "source_url": "https://officechai.com/ai/claude-opus-4-8-tops-artificial-analysis-intelligence-index-edges-out-gpt-5-5-with-score-of-61-4/"},
+    {"claim": "OpenAI stopped reporting SWE-bench Verified citing contamination / flawed unit tests", "source_url": "https://artificialanalysis.ai/articles/claude-opus-4-8-analysis-and-benchmarks"},
+    {"claim": "Kili Technology methodology report: 10-20pp variance same weights across harnesses", "source_url": "https://kili-technology.com/blog/ai-benchmarks-guide-the-top-evaluations-in-2026-and-why-theyre-not-enough"},
+    {"claim": "Microsoft Build 2026 was June 2; MAI-Thinking-1 and MAI-Code-1-Flash announced", "source_url": "https://microsoft.ai/news/introducing-mai-thinking-1/"},
+    {"claim": "MAI-Thinking-1: 35B active sparse MoE, 256K context, NO third-party distillation", "source_url": "https://microsoft.ai/news/introducing-mai-thinking-1/"},
+    {"claim": "MAI-Code-1-Flash rolling to all Copilot tiers starting June 2", "source_url": "https://microsoft.ai/news/introducingmai-code-1-flash/"},
+    {"claim": "Anthropic filed confidential S-1 with SEC June 1, 2026", "source_url": "https://fortune.com/2026/06/01/anthropic-s1-confidential/"},
+    {"claim": "Anthropic stated revenue run rate ~$47B (up from ~$10B prior year)", "source_url": "https://www.cnbc.com/2026/06/01/anthropic-ipo-s1-prospectus.html"},
+    {"claim": "GitHub Copilot moved to usage-based billing on June 1, 2026", "source_url": "https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/"},
+    {"claim": "New Copilot Max plan launched same day at $100/month for heavy agentic users", "source_url": "https://github.blog/news-insights/company-news/github-copilot-individual-plans-introducing-flex-allotments-in-pro-and-pro-and-a-new-max-plan/"},
+    {"claim": "CVE-2026-10775 in SGLang ≤0.5.11, disclosed June 3, low severity, local DoS via data_hash", "source_url": "https://vuldb.com/cve/CVE-2026-10775"},
+    {"claim": "Unsloth Studio exports full fine-tunes to GGUF (not just adapter weights)", "source_url": "https://unsloth.ai/docs/new/changelog"},
+    {"claim": "AMD Ryzen AI Halo / Ryzen AI Max+ 395 mini PC, pre-orders June 2026 at $3,999, 128GB LPDDR5x, Micro Center exclusive", "source_url": "https://www.servethehome.com/amd-details-ryzen-ai-halo-ai-dev-mini-pc-pre-orders-in-june-for-3999/"},
+    {"claim": "NVIDIA DGX Spark price rose from $3,999 to $4,699 citing memory shortages", "source_url": "https://wccftech.com/nvidia-dgx-spark-700-usd-price-hike-memory-shortages-4699-new-pricing/"},
+    {"claim": "DGX Spark: GB10 Grace Blackwell, 128GB unified LPDDR5x, runs models up to 200B params", "source_url": "https://www.nvidia.com/en-us/products/workstations/dgx-spark/"},
+    {"claim": "Two DGX Sparks paired via ConnectX-7 → 256GB shared, models up to 405B (manuscript hedges as 'roughly four hundred billion territory')", "source_url": "https://marketplace.nvidia.com/en-us/enterprise/personal-ai-supercomputers/dgx-spark/"},
+    {"claim": "NERC issued summer 2026 grid risk alert citing Texas, Virginia, Ohio as elevated risk regions", "source_url": "https://www.renewableenergyworld.com/power-grid/nerc-issues-level-3-alert-to-address-immediate-risks-data-center-loads-pose-to-the-grid/"},
+    {"claim": "EAGLE-3, Medusa, lookahead decoding are speculative-decoding variants / cousins", "source_url": "https://github.com/SafeAILab/EAGLE"},
+    {"claim": "llama.cpp draft-model mode implements speculative decoding (small drafter + big verifier)", "source_url": "https://github.com/ggml-org/llama.cpp/discussions/categories/q-a"}
+  ]
+}

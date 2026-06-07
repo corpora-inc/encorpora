@@ -6,6 +6,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
+    "types": ["node"],
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -15,7 +16,9 @@
     "noUnusedParameters": true,
     "paths": {
       "@shared/ui": ["../shared/ui/index.ts"],
-      "@shared/state": ["../shared/state/index.ts"]
+      "@shared/state": ["../shared/state/index.ts"],
+      "zustand": ["./node_modules/zustand/index.d.ts"],
+      "zustand/*": ["./node_modules/zustand/*"]
     }
   },
   "include": ["src", "../shared/ui", "../shared/state"]

@@ -1,0 +1,27 @@
+# Phase-0 ASR bake-off harness deps. Install into a PROJECT-LOCAL venv —
+# never system / Homebrew python (hard rule: memory/feedback_never_break_system_python).
+#
+#   python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
+#
+# Engine deps are grouped so you can install only what you're benchmarking.
+
+# --- core (always) ---
+datasets>=2.19          # FLEURS streaming loader
+soundfile>=0.12         # wav I/O
+librosa>=0.10           # 16k resample
+numpy>=1.26
+jiwer>=3.0              # WER/CER
+
+# --- Whisper (faster-whisper desktop proxy for ggml-large-v3-q5) ---
+faster-whisper>=1.0
+
+# --- Qwen3-ASR (the north-star candidate; transformers backend) ---
+# The official package per the model card. If the PyPI name differs on your
+# box, see README troubleshooting; the GGUF/qwen3-asr.cpp device path is the
+# shipping runtime, this is the desktop accuracy proxy.
+qwen-asr>=0.1
+torch>=2.2
+transformers>=4.44
+
+# --- Parakeet-v3 + SenseVoice (one onnxruntime) ---
+sherpa-onnx>=1.10

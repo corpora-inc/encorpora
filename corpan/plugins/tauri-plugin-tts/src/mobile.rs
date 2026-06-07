@@ -159,6 +159,7 @@ impl<R: Runtime> Tts<R> {
     }
 
     /// Open a store listing for a given engine package (Android only).
+    #[cfg_attr(not(target_os = "android"), allow(unused_variables))]
     pub fn open_tts_engine_store(&self, package_name: String) -> crate::Result<bool> {
         #[cfg(target_os = "android")]
         {

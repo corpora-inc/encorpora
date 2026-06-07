@@ -19,6 +19,12 @@
 // disambiguated by reader_id in the Glue table).
 
 import * as analytics from "@shared/analytics"
+import {
+  record as recordLocalEvent,
+  drainForUpload,
+  acknowledge,
+  count as localEventCount,
+} from "@/util/storage/eventStore"
 
 declare const __APP_VERSION__: string
 
@@ -30,6 +36,38 @@ const KILL_SWITCH_OFF = import.meta.env.VITE_ANALYTICS_ENABLED === "false"
 
 let initialized = false
 
+/* -------------------------------------------------------------------------- */
+/*  Single analytics path: cloud queue + durable on-device event store        */
+/* -------------------------------------------------------------------------- */
+//
+// `emit()` is THE chokepoint. Every tracked event flows through it so there is
+// exactly one analytics path for the whole app:
+//   1. `analytics.track` → the shared module's in-memory + spillover cloud
+//      queue (network sync, opt-out-gated, CORS-safe keepalive fetch).
+//   2. `recordLocalEvent` → the IndexedDB ring-buffer (durable, on-device,
+//      survives reload, quota-safe). This is the "almost full analytics"
+//      substrate: rich capture without blowing storage.
+// Both are safe-by-construction and never throw to the caller.
+
+type EventProps = Record<string, string | number | boolean>
+
+function emit(eventName: string, props?: EventProps): void {
+  try {
+    analytics.track(eventName, props ?? {})
+  } catch {
+    /* unreachable; shared track() is safe-by-construction */
+  }
+  try {
+    // Respect the SAME opt-out flag as the cloud path: when opted out we keep
+    // nothing on device either. (getOptOut reads the shared localStorage flag.)
+    if (!analytics.getOptOut()) {
+      void recordLocalEvent(eventName, props)
+    }
+  } catch (err) {
+    console.error("[analytics] local record failed:", err)
+  }
+}
+
 // Session-scope counters — plain module refs, not React state.
 // Reset implicitly on page reload (the session itself ends).
 let packsEntered = 0
@@ -38,7 +76,7 @@ const languagesUsed = new Set<string>()
 
 function emitSessionSummary(): void {
   try {
-    analytics.track("app_session_summary", {
+    emit("app_session_summary", {
       packs_entered: packsEntered,
       segments_played: segmentsPlayed,
       languages_used: [...languagesUsed].slice(0, 32).join(","),
@@ -76,7 +114,7 @@ export function trackPackEntered(packId: string, language: string): void {
   try {
     packsEntered++
     if (language) languagesUsed.add(language)
-    analytics.track("app_pack_entered", { pack_id: packId, language })
+    emit("app_pack_entered", { pack_id: packId, language })
   } catch {
     /* unreachable */
   }
@@ -88,7 +126,7 @@ export function trackPackHeartbeat(
   segmentsDelta: number,
 ): void {
   try {
-    analytics.track("app_pack_heartbeat", {
+    emit("app_pack_heartbeat", {
       pack_id: packId,
       language,
       segments_delta: segmentsDelta,
@@ -105,7 +143,7 @@ export function trackPackExited(
   segmentsPlayedInPack: number,
 ): void {
   try {
-    analytics.track("app_pack_exited", {
+    emit("app_pack_exited", {
       pack_id: packId,
       language,
       duration_ms: durationMs,
@@ -123,7 +161,7 @@ export function trackLanguageSwitched(
 ): void {
   try {
     if (toLanguage) languagesUsed.add(toLanguage)
-    analytics.track("app_language_switched", {
+    emit("app_language_switched", {
       from_language: fromLanguage,
       to_language: toLanguage,
       scope,
@@ -135,7 +173,7 @@ export function trackLanguageSwitched(
 
 export function trackOnboardingCompleted(): void {
   try {
-    analytics.track("app_onboarding_completed")
+    emit("app_onboarding_completed")
   } catch {
     /* unreachable */
   }
@@ -143,7 +181,7 @@ export function trackOnboardingCompleted(): void {
 
 export function trackPaidUnlockViewed(surface: string, packId?: string): void {
   try {
-    analytics.track("app_paid_unlock_viewed", {
+    emit("app_paid_unlock_viewed", {
       surface,
       ...(packId ? { pack_id: packId } : {}),
     })
@@ -159,7 +197,7 @@ export function trackPaywallShown(
   language?: string,
 ): void {
   try {
-    analytics.track("app_paywall_shown", {
+    emit("app_paywall_shown", {
       surface,
       ...(bookId ? { book_id: bookId } : {}),
       ...(language ? { language } : {}),
@@ -171,7 +209,7 @@ export function trackPaywallShown(
 
 export function trackPaywallDismissed(surface: string, bookId?: string): void {
   try {
-    analytics.track("app_paywall_dismissed", {
+    emit("app_paywall_dismissed", {
       surface,
       ...(bookId ? { book_id: bookId } : {}),
     })
@@ -185,7 +223,7 @@ export function trackPaywallConverted(
   surface: string,
 ): void {
   try {
-    analytics.track("app_paywall_converted", { plan, surface })
+    emit("app_paywall_converted", { plan, surface })
   } catch {
     /* unreachable */
   }
@@ -196,7 +234,7 @@ export function trackPaywallConverted(
 /** An experience was surfaced to the user. `surface`: "tour" | "home" | "cycle". */
 export function trackPackRecommended(surface: string, packId: string, position: number): void {
   try {
-    analytics.track("app_pack_recommended", { surface, pack_id: packId, position })
+    emit("app_pack_recommended", { surface, pack_id: packId, position })
   } catch {
     /* unreachable */
   }
@@ -205,7 +243,7 @@ export function trackPackRecommended(surface: string, packId: string, position: 
 /** The user liked / kept an experience (thumbs-up, or chose "Try it"). */
 export function trackPackKept(packId: string, surface: string): void {
   try {
-    analytics.track("app_pack_kept", { pack_id: packId, surface })
+    emit("app_pack_kept", { pack_id: packId, surface })
   } catch {
     /* unreachable */
   }
@@ -214,7 +252,7 @@ export function trackPackKept(packId: string, surface: string): void {
 /** The user dismissed / skipped an experience ("Maybe later", thumbs-down). */
 export function trackPackDiscarded(packId: string, surface: string): void {
   try {
-    analytics.track("app_pack_discarded", { pack_id: packId, surface })
+    emit("app_pack_discarded", { pack_id: packId, surface })
   } catch {
     /* unreachable */
   }
@@ -223,7 +261,7 @@ export function trackPackDiscarded(packId: string, surface: string): void {
 /** The recommendation cycle advanced (e.g. "Show me another"). */
 export function trackCycleAdvanced(fromId: string | null, toId: string): void {
   try {
-    analytics.track("app_cycle_advanced", { from_id: fromId ?? "", to_id: toId })
+    emit("app_cycle_advanced", { from_id: fromId ?? "", to_id: toId })
   } catch {
     /* unreachable */
   }
@@ -248,3 +286,127 @@ export function getSessionSegmentCount(): number {
 // as everywhere else in the analytics module.
 export const getOptOut = analytics.getOptOut
 export const setOptOut = analytics.setOptOut
+
+/* -------------------------------------------------------------------------- */
+/*  Rich event capture (sessions / screens / challenges / errors)             */
+/* -------------------------------------------------------------------------- */
+//
+// "Almost full analytics" without blowing storage: these all flow through the
+// same `emit()` chokepoint, so they hit both the cloud queue and the durable
+// on-device ring buffer. New event types should be added here (a one-liner),
+// not by reaching for `analytics.track` directly — that would bypass the
+// on-device log.
+
+/** A top-level screen / route was shown. */
+export function trackScreenView(screen: string, props?: EventProps): void {
+  emit("app_screen_view", { screen, ...(props ?? {}) })
+}
+
+/** A pack/experience was opened (distinct from `trackPackEntered`, which also
+ *  bumps the session counters — use this for non-phrase experiences). */
+export function trackPackOpen(packId: string, source?: string): void {
+  emit("app_pack_open", { pack_id: packId, ...(source ? { source } : {}) })
+}
+
+/** A challenge / exercise / lesson was completed. */
+export function trackChallengeCompleted(
+  challengeId: string,
+  props?: EventProps,
+): void {
+  emit("app_challenge_completed", { challenge_id: challengeId, ...(props ?? {}) })
+}
+
+/** A handled error worth telemetry (NOT a silent swallow — the caller should
+ *  also log). Keep the message short + non-PII. */
+export function trackError(where: string, message: string): void {
+  emit("app_error", { where, message: String(message).slice(0, 200) })
+}
+
+/** Escape hatch for one-off events. Prefer a named wrapper above. */
+export function trackEvent(eventName: string, props?: EventProps): void {
+  emit(eventName, props)
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Sync seam — drain the on-device log to the cloud /v1/events endpoint       */
+/* -------------------------------------------------------------------------- */
+//
+// The on-device ring buffer is the source of truth for retention; the shared
+// module's own queue handles the live, low-latency cloud path. This seam is a
+// belt-and-suspenders RECONCILE: it batch-uploads any locally-durable events
+// the live path may have dropped (e.g. the device was offline when they were
+// recorded, then the app was killed before the spillover flushed), and acks
+// them out of the local log on success. It is intentionally decoupled from the
+// network transport: swap `uploadBatch` to retarget without touching capture.
+
+let syncInFlight = false
+
+async function uploadBatch(events: { seq: number; event: string; ts: number; props?: EventProps }[]): Promise<boolean> {
+  try {
+    // CORS-safe: credentials omitted, wildcard ACAO honored (see the shared
+    // module's CORS note). We post the same envelope shape the endpoint takes.
+    const res = await fetch(ANALYTICS_ENDPOINT, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        events: events.map((e) => ({
+          schema: 1,
+          event: e.event,
+          ts: new Date(e.ts).toISOString(),
+          reader_id: READER_ID,
+          app_version: __APP_VERSION__,
+          props: e.props ?? {},
+        })),
+      }),
+      credentials: "omit",
+      mode: "cors",
+      keepalive: true,
+    })
+    return res.ok || res.status === 204
+  } catch (err) {
+    console.error("[analytics] reconcile upload failed:", err)
+    return false
+  }
+}
+
+/** Reconcile the on-device event log with the cloud. Opt-out-gated, single-
+ *  flight, best-effort. Returns the number of events successfully uploaded. */
+export async function syncLocalEvents(): Promise<number> {
+  if (KILL_SWITCH_OFF) return 0
+  if (syncInFlight) return 0
+  try {
+    if (analytics.getOptOut()) return 0
+  } catch {
+    /* if the flag read throws, err on the side of not uploading */
+    return 0
+  }
+  syncInFlight = true
+  let uploaded = 0
+  try {
+    // Drain in batches until the log is empty or a batch fails.
+    // Bounded loop so a huge backlog can't monopolize the main thread.
+    for (let i = 0; i < 20; i += 1) {
+      const batch = await drainForUpload()
+      if (batch.length === 0) break
+      const ok = await uploadBatch(batch)
+      if (!ok) break
+      await acknowledge(batch.map((e) => e.seq))
+      uploaded += batch.length
+      if (batch.length < 50) break
+    }
+  } catch (err) {
+    console.error("[analytics] syncLocalEvents failed:", err)
+  } finally {
+    syncInFlight = false
+  }
+  return uploaded
+}
+
+/** Count of events durably stored on-device (for a debug / settings surface). */
+export async function getLocalEventCount(): Promise<number> {
+  try {
+    return await localEventCount()
+  } catch {
+    return 0
+  }
+}

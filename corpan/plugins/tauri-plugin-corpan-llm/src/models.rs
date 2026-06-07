@@ -41,7 +41,13 @@ pub struct ChatOptions {
     #[serde(default)]
     pub top_p: Option<f32>,
     #[serde(default)]
+    pub top_k: Option<i32>,
+    #[serde(default)]
+    pub min_p: Option<f32>,
+    #[serde(default)]
     pub repeat_penalty: Option<f32>,
+    #[serde(default)]
+    pub presence_penalty: Option<f32>,
     #[serde(default)]
     pub max_tokens: Option<u32>,
     /// Stop sequences to terminate generation early.
@@ -54,7 +60,10 @@ impl Default for ChatOptions {
         Self {
             temperature: Some(0.55),
             top_p: Some(0.9),
+            top_k: Some(40),
+            min_p: Some(0.0),
             repeat_penalty: Some(1.2),
+            presence_penalty: Some(0.0),
             max_tokens: Some(1500),
             stop: vec![],
         }

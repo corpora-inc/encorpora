@@ -1,6 +1,7 @@
 import type { ComponentType } from "react"
 import { OnboardingWelcome } from "@/components/OnboardingWelcome"
 import { OnboardingPickPrimary } from "@/components/OnboardingPickPrimary"
+import { OnboardingWelcomePact } from "@/components/OnboardingWelcomePact"
 import { OnboardingPickLearning } from "@/components/OnboardingPickLearning"
 import { OnboardingPickPhrasePacks } from "@/components/OnboardingPickPhrasePacks"
 import { OnboardingTTSInstructions } from "@/components/OnboardingTTSInstructions"
@@ -12,6 +13,7 @@ import type { ComponentKey, OnboardingStepProps } from "./types"
 export const ONBOARDING_COMPONENTS: Record<ComponentKey, ComponentType<OnboardingStepProps>> = {
   welcome: OnboardingWelcome,
   pickPrimary: OnboardingPickPrimary,
+  welcomePact: OnboardingWelcomePact,
   pickLearning: OnboardingPickLearning,
   pickPhrasePacks: OnboardingPickPhrasePacks,
   tts: OnboardingTTSInstructions,

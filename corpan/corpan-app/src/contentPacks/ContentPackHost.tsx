@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 
 import { createHostApi } from "./hostApi"
 import type { ContentPackManifest, ContentPackModule } from "./types"
+import { useEntitlementStore } from "@/store/entitlements"
 
 type LoadState = "idle" | "loading" | "ready" | "error"
 
@@ -10,6 +11,19 @@ type ContentPackHostProps = {
   manifestUrl?: string
   /** Optional deep-link target passed into the pack's mount initialState. */
   entry?: { entryId?: number; source?: string; route?: string }
+}
+
+type ContentPackEntitlementSnapshot = {
+  plus: boolean
+  subjectId: string | null
+  entitlementToken: string | null
+  subscription: {
+    active: boolean
+    plan: "monthly" | "annual" | null
+    expiresAt: string | null
+    autoRenew: boolean
+  }
+  checkedAt: number | null
 }
 
 const DEV_RELOAD_INTERVAL_MS = 20000  // Poll every 2s for faster dev iteration
@@ -223,6 +237,49 @@ export default function ContentPackHost({
   const hasLoadedRef = useRef(false)
 
   const hostApi = useMemo(() => createHostApi(id), [id])
+  const subscription = useEntitlementStore((s) => s.subscription)
+  const lastEntitlementRefresh = useEntitlementStore((s) => s.lastRefreshed)
+  const subjectId = useEntitlementStore((s) => s.subjectId)
+  const entitlementToken = useEntitlementStore((s) => s.entitlementToken)
+  const entitlementSnapshot = useMemo<ContentPackEntitlementSnapshot>(
+    () => ({
+      plus: subscription.active,
+      subjectId,
+      entitlementToken,
+      subscription: {
+        active: subscription.active,
+        plan: subscription.plan,
+        expiresAt: subscription.expiresAt,
+        autoRenew: subscription.autoRenew,
+      },
+      checkedAt: lastEntitlementRefresh,
+    }),
+    [
+      lastEntitlementRefresh,
+      entitlementToken,
+      subjectId,
+      subscription.active,
+      subscription.autoRenew,
+      subscription.expiresAt,
+      subscription.plan,
+    ]
+  )
+  const entitlementSnapshotRef = useRef(entitlementSnapshot)
+
+  useEffect(() => {
+    entitlementSnapshotRef.current = entitlementSnapshot
+    const scope = globalThis as typeof globalThis & {
+      __CORPAN_PLUS?: boolean
+      __CORPAN_ENTITLEMENT?: ContentPackEntitlementSnapshot
+    }
+    scope.__CORPAN_PLUS = entitlementSnapshot.plus
+    scope.__CORPAN_ENTITLEMENT = entitlementSnapshot
+    window.dispatchEvent(
+      new CustomEvent("corpan:entitlement-changed", {
+        detail: entitlementSnapshot,
+      })
+    )
+  }, [entitlementSnapshot])
 
   useEffect(() => {
     let cancelled = false
@@ -439,6 +496,8 @@ export default function ContentPackHost({
 
         activeInstance = activeModule.mount(containerRef.current, hostApi, {
           stackConfig: hostApi.getStackConfig(),
+          isPlus: entitlementSnapshotRef.current.plus,
+          entitlement: entitlementSnapshotRef.current,
           // Addressability groundwork: a deep-linked entry/route, when present.
           ...(entry ? { entryId: entry.entryId, source: entry.source, route: entry.route } : {}),
         })

@@ -72,7 +72,8 @@ targets:
         NSAppTransportSecurity:
           NSAllowsArbitraryLoadsForMedia: true
           NSAllowsArbitraryLoadsInWebContent: true
-        NSMicrophoneUsageDescription: Corpán uses your microphone for on-device pronunciation practice with the Parlometron pack. Audio is processed locally on your device.
+        NSMicrophoneUsageDescription: Corpán uses your microphone for on-device pronunciation practice and optional speech-to-text dictation. Audio is processed locally on your device.
+        NSSpeechRecognitionUsageDescription: Corpán uses on-device speech recognition for optional speech-to-text dictation, so you can speak instead of type. Speech is processed locally on your device.
         NSMotionUsageDescription: Corpán uses motion sensors in supported packs like Hover Runner so you can steer by tilting your device.
         # CFBundleShortVersionString + CFBundleVersion are auto-injected by
         # Tauri from tauri.conf.json's `version` field. Don't hardcode them

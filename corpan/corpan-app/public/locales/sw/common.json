@@ -131,6 +131,22 @@
     "primaryLanguage": "Lugha kuu (ya kiolesura)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán inaendelea kubadilika",
+      "subtitle": "Wewe ni miongoni mwa watumiaji wa mwanzo",
+      "tinyTeamTitle": "Timu ndogo ya wapenda mambo",
+      "tinyTeamDesc": "Huru, bila matangazo, na imejengwa kwa heshima kwa watu wanaoitumia — timu ndogo inatengeneza programu ya lugha tuliyoitaka siku zote.",
+      "bleedingEdgeTitle": "Teknolojia ya kisasa kabisa, kwa makusudi",
+      "bleedingEdgeDesc": "Corpán inasukuma mipaka ya kile kifaa chako kinaweza kufanya: dunia zinazokuvutia kabisa, utambuzi wa matamshi, sauti za asili na miundo ya hivi karibuni ya AI hufanya kazi pamoja kuunda njia mpya za kujifunza. Mengi yanaendeshwa moja kwa moja kwenye kifaa chako, yakikupa ujifunzaji wa faragha unaotanguliza matumizi bila intaneti bila kutegemea kituo cha data. Tunatoa teknolojia mpya ikiwa bado haijakamilika kabisa, hivyo wakati mwingine inaweza kufanya mambo ya ajabu, kwenda polepole au kuwa zaidi ya uwezo wa kifaa chako. Kwa malipo, unapata uzoefu mpya wenye nguvu wa kujifunza mara tu unapowezekana.",
+      "yourLangTitle": "Hatuzungumzi kila lugha tunayounga mkono",
+      "yourLangDesc": "Huo ndio ukweli wa wazi. Tunajenga kwa lugha nyingi kwa sababu kila mtu anastahili zana bora za kujifunza, si kwa sababu timu yetu ndogo tayari inazijua zote. Unaweza kugundua mambo tuliyokosea. Ikiwa unajua {{lang}} kuliko sisi, tunatumaini utatuambia na kutusaidia kuifanya Corpán iistahili lugha hiyo.",
+      "plea": "Una wazo, marekebisho au uzoefu wa kipekee wa kujifunza ambao ungependa kuuona? Tuambie. Tunasoma kila ujumbe na kufikiria kwa kina kuhusu kile unachoweza kufungua kwa Corpán na ujifunzaji wa lugha.",
+      "emailCta": "Tutumie barua pepe",
+      "githubCta": "Fungua issue kwenye GitHub",
+      "join": "Unataka kusaidia kuifikisha Corpán duniani? Daima tunatafuta washirika, watafsiri na mabalozi wa maeneo mbalimbali. Wasiliana nasi.",
+      "pact": "Gusa hapa chini ili uanze kujifunza na kukua pamoja nasi. 🤝",
+      "cta": "Nimo — twende"
+    },
     "welcome": "Karibu",
     "makePrimaryLanguage": "Fanya Kiswahili lugha yangu kuu",
     "canChangeLater": "Unaweza kubadilisha hili wakati wowote.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Saidia Corpán na ufungue kila kitu. Si lazima, wakati wowote.",
+      "subscribedTitle": "Wewe ni Corpanista",
+      "subscribedDesc": "Asante kwa kuiweka Corpán bila matangazo na ikikua.",
       "joinTitle": "Jiunge na Corpanistas",
       "start": "Anza kuchunguza",
       "subtitle": "Corpán imeundwa na timu ndogo ya chanzo huria. Njoo useme salamu — na kama unaipenda, unaweza kutuunga mkono.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Inasubiri idhini",
     "pendingDetail": "Usajili wako unasubiri idhini (Ask to Buy au uthibitishaji wa benki). Utaanza kufanya kazi moja kwa moja ukishaidhinishwa.",
     "storeUnreachable": "Hatukuweza kufikia App Store kwa sasa.",
-    "tryAgain": "Jaribu tena"
+    "tryAgain": "Jaribu tena",
+    "affiliateCodeLabel": "Msimbo wa mshirika",
+    "affiliateCodePlaceholder": "Si lazima",
+    "affiliateInvalidFormat": "Tumia herufi, nambari, vistari au mistari ya chini.",
+    "affiliateChecking": "Inakagua msimbo...",
+    "affiliateApplied": "Msimbo utaambatishwa kwenye usajili huu.",
+    "affiliateCodeHelp": "Ikiwa mtu alikutuma hapa, weka msimbo wake kabla ya kujisajili."
   },
   "restore": {
     "button": "Rejesha Manunuzi",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Mwalimu mvumilivu ndani ya kifaa chako, kwa lugha zote unazojifunza."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Mji hai unaogeuza kila mkutano kuwa somo."
     }
   },
   "home": {

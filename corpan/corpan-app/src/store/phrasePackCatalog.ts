@@ -18,6 +18,7 @@ import {
     type PhrasePackCatalog,
 } from "@/contentPacks/phrasePackCatalog";
 import { getNetworkStatus, listenToNetworkChanges } from "@/utils/network";
+import { createLocalStorageShim } from "@/util/storage";
 
 /** 5 minutes. The publisher uploads catalog.json with
  *  `Cache-Control: public, max-age=300, must-revalidate`, so this matches
@@ -96,7 +97,20 @@ export const usePhrasePackCatalogStore = create<PhrasePackCatalogState>()(
         {
             name: "corpan-phrase-pack-catalog-v1",
             version: 1,
-            storage: createJSONStorage(() => localStorage),
+            // Persisted to the IndexedDB (LARGE) tier — NOT localStorage. The
+            // phrase-pack catalog (hundreds of packs × localized strings) is
+            // exactly the blob that overran the shared ~5 MB localStorage budget
+            // and threw an unhandled `QuotaExceededError` in production. The
+            // LARGE-tier shim is quota-safe by construction (evict + retry +
+            // memory fallback) so a persist write can never crash the app.
+            // The startup migration (util/storage/migrate.ts) copies any
+            // pre-existing localStorage blob under this same name into IndexedDB.
+            storage: createJSONStorage(() =>
+                createLocalStorageShim("phrase-pack-catalog", {
+                    tier: "large",
+                    volatile: true,
+                }),
+            ),
             partialize: (state) => ({
                 catalog: state.catalog,
                 lastFetched: state.lastFetched,

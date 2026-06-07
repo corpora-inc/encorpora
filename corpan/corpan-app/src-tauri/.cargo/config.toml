@@ -3,13 +3,32 @@
 # macOS: Swift runtime for tauri-plugin-iap's Swift bridge.
 # System Swift is in the dyld shared cache; /usr/lib/swift resolves there.
 [target.x86_64-apple-darwin]
+# Pin the LINKER to Apple's clang. The Android NDK clang is first on $PATH (shell
+# profile), and rustc's default `cc` link driver would otherwise resolve to it —
+# the NDK clang segfaults linking a macOS binary. The CC_*-apple-darwin env pins
+# below fix the COMPILE side; this fixes the LINK side, so $PATH order no longer
+# matters. Permanent fix for the `clang: linker command failed / Segmentation
+# fault: 11` desktop crash — no more stripping the NDK from PATH by hand.
+linker = "/usr/bin/cc"
 rustflags = [
     "-C", "link-arg=-Wl,-rpath,/usr/lib/swift",
+    # Put APPLE clang's compiler-rt dir on the link search path so `-lclang_rt.osx`
+    # always resolves. A build script (llama-cpp-sys-2) still does a bare `clang`
+    # lookup → finds the NDK 26.1 clang first on $PATH → stamps the NDK's (wrong,
+    # nonexistent) clang_rt path + `-lclang_rt.osx` into the link. This -L makes the
+    # linker find the REAL Apple libclang_rt.osx.a anyway. Versioned by Xcode's clang
+    # major (`clang/21` today) — bump if Xcode updates it. Fixes `ld: library
+    # 'clang_rt.osx' not found` (the 3rd NDK-on-PATH desktop-build failure mode).
+    "-C", "link-arg=-L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin",
 ]
 
 [target.aarch64-apple-darwin]
+# Pin the LINKER to Apple's clang too (same NDK-on-$PATH reason as x86_64 above).
+linker = "/usr/bin/cc"
 rustflags = [
     "-C", "link-arg=-Wl,-rpath,/usr/lib/swift",
+    # Apple clang_rt.osx on the search path (see x86_64 note above).
+    "-C", "link-arg=-L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin",
 ]
 
 # Force NDK linkers + 16 KB page size for ALL Android ABIs.

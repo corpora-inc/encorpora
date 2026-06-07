@@ -27,6 +27,10 @@ type EntitlementState = {
   platform: string | null
   /** Whether IAP is available on this platform. PERSISTED. */
   iapAvailable: boolean
+  /** Anonymous per-install subject used for server-side IAP attribution. */
+  subjectId: string | null
+  /** Short-lived first-party entitlement token. IN-MEMORY ONLY. */
+  entitlementToken: string | null
 
   // Actions
   addPurchasedProduct: (productId: string) => void
@@ -34,6 +38,8 @@ type EntitlementState = {
   clearSubscription: () => void
   setLastRefreshed: (ts: number) => void
   setPlatform: (platform: string) => void
+  setSubjectId: (subjectId: string) => void
+  setEntitlementToken: (token: string | null) => void
 
   /** Clear all entitlements (for testing/debug) */
   clearEntitlements: () => void
@@ -56,6 +62,8 @@ export const useEntitlementStore = create<EntitlementState>()(
       lastRefreshed: null,
       platform: null,
       iapAvailable: false,
+      subjectId: null,
+      entitlementToken: null,
 
       setPlatform: (platform) => {
         set({ platform, iapAvailable: IAP_PLATFORMS.has(platform) })
@@ -82,11 +90,20 @@ export const useEntitlementStore = create<EntitlementState>()(
         set({ lastRefreshed: ts })
       },
 
+      setSubjectId: (subjectId) => {
+        set({ subjectId })
+      },
+
+      setEntitlementToken: (token) => {
+        set({ entitlementToken: token })
+      },
+
       clearEntitlements: () => {
         set({
           purchasedProducts: [],
           subscription: EMPTY_SUBSCRIPTION,
           lastRefreshed: null,
+          entitlementToken: null,
         })
       },
     }),
@@ -99,6 +116,7 @@ export const useEntitlementStore = create<EntitlementState>()(
       partialize: (state) => ({
         platform: state.platform,
         iapAvailable: state.iapAvailable,
+        subjectId: state.subjectId,
       }),
     }
   )

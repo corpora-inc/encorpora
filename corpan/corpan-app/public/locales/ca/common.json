@@ -131,6 +131,22 @@
     "showStreakHint": "Un petit comptador de dies a la capçalera. Només al dispositiu, sense recordatoris ni notificacions."
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán evoluciona",
+      "subtitle": "Ets de les primeres persones a arribar",
+      "tinyTeamTitle": "Un petit equip d'entusiastes",
+      "tinyTeamDesc": "Independent, sense anuncis i creada amb respecte per les persones que la fan servir: un equip petit construint l'aplicació d'idiomes que sempre havíem volgut.",
+      "bleedingEdgeTitle": "Punta de llança, a propòsit",
+      "bleedingEdgeDesc": "Corpán porta al límit el que pot fer el teu dispositiu: mons immersius, reconeixement de veu, veus naturals i els models d'IA més recents, tot treballant conjuntament per crear noves maneres d'aprendre. Gran part funciona directament al teu dispositiu, oferint-te un aprenentatge privat i pensat primer per funcionar sense connexió, sense dependre d'un centre de dades. Publiquem tecnologia nova quan encara és poc polida; per això, de vegades pot comportar-se de manera estranya, anar lenta o simplement superar el que el teu dispositiu pot gestionar. A canvi, reps experiències d'aprenentatge noves i potents tan aviat com són possibles.",
+      "yourLangTitle": "No parlem totes les llengües que oferim",
+      "yourLangDesc": "Aquesta és la veritat. Construïm per a desenes de llengües perquè tothom mereix eines d'aprenentatge potents, no perquè el nostre petit equip ja les conegui totes. Potser trobaràs coses en què ens hem equivocat. Si coneixes {{lang}} millor que nosaltres, esperem que ens ho diguis i ens ajudis a fer que Corpán n'estigui a l'altura.",
+      "plea": "Tens una idea, una correcció o una experiència d'aprenentatge agosarada que voldries veure? Explica'ns-la. Llegim cada missatge i pensem a fons què podria desbloquejar per a Corpán i per a l'aprenentatge d'idiomes.",
+      "emailCta": "Escriu-nos",
+      "githubCta": "Obre una incidència a GitHub",
+      "join": "Vols ajudar a portar Corpán al món? Sempre busquem persones col·laboradores, traductores i ambaixadores locals. Vine a trobar-nos.",
+      "pact": "Toca aquí sota per començar a aprendre i créixer amb nosaltres. 🤝",
+      "cta": "M'hi apunto — som-hi"
+    },
     "welcome": "Benvingut",
     "makePrimaryLanguage": "Defineix l'anglès com a idioma principal",
     "canChangeLater": "Pots canviar-ho en qualsevol moment.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Dona suport a Corpán i desbloqueja-ho tot. Opcional, en qualsevol moment.",
+      "subscribedTitle": "Ets un Corpanista",
+      "subscribedDesc": "Gràcies per mantenir Corpán sense anuncis i en creixement.",
       "joinTitle": "Uneix-te als Corpanistas",
       "start": "Comença a explorar",
       "subtitle": "Corpán és creat per un petit equip de codi obert. Saluda'ns — i si t'encanta, pots donar-nos suport.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Esperant aprovació",
     "pendingDetail": "La teva subscripció està pendent d'aprovació (Demanar per comprar o verificació bancària). S'activarà automàticament quan s'aprovi.",
     "storeUnreachable": "Ara mateix no hem pogut connectar amb l'App Store.",
-    "tryAgain": "Torna-ho a provar"
+    "tryAgain": "Torna-ho a provar",
+    "affiliateCodeLabel": "Codi d’afiliat",
+    "affiliateCodePlaceholder": "Opcional",
+    "affiliateInvalidFormat": "Fes servir lletres, números, guions o guions baixos.",
+    "affiliateChecking": "S’està comprovant el codi...",
+    "affiliateApplied": "El codi s’adjuntarà a aquesta subscripció.",
+    "affiliateCodeHelp": "Si algú t’ha enviat aquí, introdueix el seu codi abans de subscriure’t."
   },
   "restore": {
     "button": "Restaura compres",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "El teu tutor personal i pacient, directament al teu dispositiu, per a qualsevol idioma que vulguis aprendre."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Una ciutat viva que converteix cada trobada en una lliçó."
     }
   },
   "home": {

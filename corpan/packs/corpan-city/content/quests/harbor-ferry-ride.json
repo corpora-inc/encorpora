@@ -1,0 +1,33 @@
+{
+  "id": "harbor-ferry-ride",
+  "title": "Down to the Harbor",
+  "narrative": "Find the ferry at the harbor and learn the words for boats, fares, and the water.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "travel",
+  "objective": { "kind": "completeChallenges", "toolId": "translate-fast", "count": 1 },
+  "steps": [
+    {
+      "id": "find-ferry",
+      "label": "Ask for the ferry at the harbor",
+      "anchorId": "harbor",
+      "kind": "talk",
+      "toolId": "translate-fast"
+    },
+    {
+      "id": "buy-fare",
+      "label": "Buy a fare and board",
+      "anchorId": "harbor",
+      "kind": "talk",
+      "toolId": "number-drill"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner asking about ferries, fares, routes, and the waterfront.",
+    "scaffold": "beginner",
+    "ragSources": ["base-travel"],
+    "contentSelector": { "levels": ["A1", "A2"], "domains": ["travel", "transit"] },
+    "toolWhitelist": ["translate-fast", "number-drill", "listen-choose"]
+  },
+  "rewards": { "xp": 170, "coins": 230, "badge": "ferry-bound", "grant": ["ferry-token"] },
+  "nextQuestIds": ["bridge-crossing", "station-departures", "harbor-fishmonger"]
+}

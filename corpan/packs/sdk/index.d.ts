@@ -197,6 +197,100 @@ export type SttInstallProgress = {
   code?: SttErrorCode
 }
 
+// --- ASR (pure transcription / dictation) ----------------------------------
+// The provider-agnostic "speak instead of type" surface. Distinct from the
+// `stt` slice above, which is Parlometron's whisper-backed alignment/scoring.
+// Full design + the Rust wire contract: corpan/docs/STT_MASTERPLAN.md and the
+// `@shared/asr` module (packs/shared/asr). These declarations mirror that
+// module (the SDK stays standalone — no cross-package import).
+
+export type AsrProviderId = "native" | "whisper" | "qwen3" | "sherpa"
+export type AsrLatencyClass = "instant" | "fast" | "batch"
+export type AsrCaptureMode = "push_to_talk" | "auto_stop"
+
+export type AsrCapability = {
+  providerId: AsrProviderId
+  languages: string[]
+  onDevice: boolean
+  modelSizeMB: number
+  residentMemoryMB: number
+  streaming: boolean
+  latencyClass: AsrLatencyClass
+  needsDownload: boolean
+  autoregressive: boolean
+}
+
+export type AsrTranscript = {
+  text: string
+  confidence: number
+  language: string
+}
+
+export type AsrSession = {
+  onPartial(cb: (text: string) => void): void
+  onLevel(cb: (rms: number, tMs: number) => void): void
+  onError(cb: (code: string, message?: string) => void): void
+  stop(): Promise<AsrTranscript>
+  cancel(): void
+}
+
+export type AsrProvider = {
+  readonly id: AsrProviderId
+  capabilities(): Promise<AsrCapability>
+  isAvailable(lang: string): Promise<{ ok: boolean; needsDownload: boolean }>
+  ensure(lang: string): Promise<{ ready: boolean; downloading: boolean }>
+  transcribe(opts: { lang: string; mode: AsrCaptureMode }): Promise<AsrSession>
+}
+
+export type AsrGoal = "dictation" | "challenge"
+
+/** Selection surface. `pick` returns null to mean "use the keyboard" — the
+ *  permanent floor; callers MUST handle null. */
+export type AsrApi = {
+  provider: (id: AsrProviderId) => Promise<AsrProvider | null>
+  pick: (args: {
+    lang: string
+    budgetMB?: number
+    goal?: AsrGoal
+  }) => Promise<AsrProvider | null>
+}
+
+// --- Model & asset registry (host.models) ----------------------------------
+export type AssetKind =
+  | "asr-model" | "llm" | "narration" | "phrase-pack" | "sound"
+
+export type AssetRecord = {
+  id: string
+  kind: AssetKind
+  sizeMB: number
+  path: string | null
+  refCount: number
+}
+
+export type ModelBudget = {
+  availableMB: number
+  physicalMB: number
+  resident: { id: string; mb: number; kind: AssetKind }[]
+}
+
+/** Refcount/dedup store for ALL on-device assets + a live memory Budget
+ *  Arbiter. `whatFitsAlongside` answers "which ASR engines fit RIGHT NOW with
+ *  the 4B LLM loaded?" — the question Corpan City/Tutomaton consult. */
+export type ModelsApi = {
+  list: () => Promise<AssetRecord[]>
+  ensure: (
+    assetId: string,
+    args: { source: string; sizeMB: number; kind: AssetKind },
+  ) => Promise<{ ready: boolean; downloading: boolean }>
+  locate: (assetId: string) => Promise<string | null>
+  evict: (assetId: string) => Promise<void>
+  budget: () => Promise<ModelBudget>
+  fits: (
+    req: { assetId?: string; residentMB?: number },
+  ) => Promise<{ fits: boolean; mustEvict: string[] }>
+  whatFitsAlongside: (residentIds: string[]) => Promise<AsrCapability[]>
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   getStackConfig: () => StackConfig
@@ -225,6 +319,14 @@ export type HostApi = {
   }) => Promise<number>
   queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
   stt?: SttApi
+  /** Provider-agnostic dictation ("speak instead of type"). Optional: absent
+   *  on hosts/builds without the asr-* plugins → packs fall back to the
+   *  keyboard (or the `stt` scorer for known-target challenges). */
+  asr?: AsrApi
+  /** On-device model & asset registry + memory Budget Arbiter. Optional for
+   *  the same reason; power packs guard on its presence before reasoning
+   *  about co-residency. */
+  models?: ModelsApi
   isMock?: boolean
 }
 

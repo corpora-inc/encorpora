@@ -1,0 +1,21 @@
+{
+  "id": "plaza-sq-a",
+  "bounds": { "minX": -16, "maxX": 16, "minZ": -16, "maxZ": 16 },
+  "spawns": [{ "x": 0, "z": 6 }],
+  "blockers": [
+    { "x": 0, "z": 0, "w": 3, "d": 3 },
+    { "x": -10, "z": -8, "w": 6, "d": 4 },
+    { "x": 10, "z": -8, "w": 6, "d": 4 },
+    { "x": -11, "z": 6, "w": 4, "d": 4 },
+    { "x": 11, "z": 6, "w": 4, "d": 4 }
+  ],
+  "anchors": [
+    { "id": "fountain", "role": "decor", "x": 0, "z": 0 },
+    { "id": "cafe_counter", "role": "npc_station", "x": -8, "z": -6, "facing": 0.7 },
+    { "id": "market_stall", "role": "vendor", "x": 8, "z": -6, "facing": -0.7 },
+    { "id": "tailor", "role": "npc_station", "x": -10, "z": 6, "facing": 2.4 },
+    { "id": "traveler", "role": "npc_station", "x": 10, "z": 6, "facing": -2.4 },
+    { "id": "bench_w", "role": "bench", "x": -4, "z": 4 },
+    { "id": "bench_e", "role": "bench", "x": 4, "z": 4 }
+  ]
+}

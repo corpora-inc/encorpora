@@ -131,6 +131,22 @@
     "primaryLanguage": "Idioma principal (interface)"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán evolui",
+      "subtitle": "Você chegou cedo",
+      "tinyTeamTitle": "Uma pequena equipe de entusiastas",
+      "tinyTeamDesc": "Independente, sem anúncios e criada com respeito por quem a usa — uma equipe pequena fazendo o aplicativo de idiomas que sempre quisemos.",
+      "bleedingEdgeTitle": "Vanguarda, de propósito",
+      "bleedingEdgeDesc": "A Corpán leva ao limite o que seu dispositivo pode fazer: mundos imersivos, reconhecimento de fala, vozes naturais e os modelos de IA mais recentes trabalham juntos para criar novas formas de aprender. Grande parte funciona diretamente no seu dispositivo, oferecendo aprendizado privado e pensado primeiro para funcionar offline, sem depender de um data center. Lançamos novas tecnologias quando ainda estão em estado bruto, então às vezes elas podem se comportar de forma estranha, funcionar devagar ou simplesmente ser mais do que seu dispositivo consegue lidar. Em troca, você recebe novas e poderosas experiências de aprendizado assim que elas se tornam possíveis.",
+      "yourLangTitle": "Não falamos todos os idiomas que oferecemos",
+      "yourLangDesc": "Essa é a verdade. Criamos para dezenas de idiomas porque todo mundo merece ferramentas poderosas de aprendizado, não porque nossa pequena equipe já conhece todos eles. Você pode encontrar coisas que fizemos errado. Se você conhece {{lang}} melhor do que nós, esperamos que nos conte e nos ajude a tornar a Corpán digna desse idioma.",
+      "plea": "Tem uma ideia, uma correção ou uma experiência de aprendizado ousada que gostaria de ver? Conte para nós. Lemos cada mensagem e pensamos profundamente no que ela pode abrir para a Corpán e para o aprendizado de idiomas.",
+      "emailCta": "Mandar e-mail",
+      "githubCta": "Abrir uma issue no GitHub",
+      "join": "Quer ajudar a levar a Corpán para o mundo? Estamos sempre procurando colaboradores, tradutores e embaixadores locais. Venha falar com a gente.",
+      "pact": "Toque abaixo para começar a aprender e crescer com a gente. 🤝",
+      "cta": "Tô dentro — vamos nessa"
+    },
     "welcome": "Bem-vindo",
     "makePrimaryLanguage": "Definir português como idioma principal",
     "canChangeLater": "Não se preocupe, você poderá alterar isso depois.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Apoie Corpán e desbloqueie tudo. Opcional, a qualquer momento.",
+      "subscribedTitle": "Você é um Corpanista",
+      "subscribedDesc": "Obrigado por manter o Corpán sem anúncios e em crescimento.",
       "joinTitle": "Join the Corpanistas",
       "start": "Começar a explorar",
       "subtitle": "Corpán é feito por uma pequena equipe de código aberto. Venha nos cumprimentar — e se você amar, pode nos apoiar.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Aguardando aprovação",
     "pendingDetail": "Sua assinatura está aguardando aprovação (Solicitar compra ou verificação bancária). Ela será ativada automaticamente assim que for aprovada.",
     "storeUnreachable": "Não foi possível acessar a App Store agora.",
-    "tryAgain": "Tentar novamente"
+    "tryAgain": "Tentar novamente",
+    "affiliateCodeLabel": "Código de afiliado",
+    "affiliateCodePlaceholder": "Opcional",
+    "affiliateInvalidFormat": "Use letras, números, hífens ou sublinhados.",
+    "affiliateChecking": "Verificando código...",
+    "affiliateApplied": "O código será vinculado a esta assinatura.",
+    "affiliateCodeHelp": "Se alguém te enviou para cá, insira o código antes de assinar."
   },
   "restore": {
     "button": "Restaurar compras",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Um tutor paciente, direto no seu aparelho, para todos os idiomas que você está aprendendo"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Uma cidade viva que transforma cada encontro em uma lição."
     }
   },
   "home": {

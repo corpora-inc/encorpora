@@ -131,6 +131,22 @@
     "showStreakHint": "喺標題顯示細小嘅閱讀日數。只會儲存喺裝置，無提醒或通知。"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán 不斷進化",
+      "subtitle": "你係最早加入嘅一群",
+      "tinyTeamTitle": "一隊熱情嘅小團隊",
+      "tinyTeamDesc": "獨立、無廣告，亦尊重每一位用家——一個小團隊，努力整出我哋一直想要嘅語言學習程式。",
+      "bleedingEdgeTitle": "刻意領先，走在尖端",
+      "bleedingEdgeDesc": "Corpán 會盡量發揮你部裝置嘅能力：沉浸式世界、語音識別、自然語音同最新 AI 模型一齊運作，創造全新學習方法。好多功能直接喺你部裝置上運行，唔使依賴數據中心，都可以私密、以離線為先咁學習。我哋會喺新技術仲未完全打磨好嘅時候就推出，所以偶爾可能表現古怪、運行得慢，甚至超出你部裝置可以處理嘅能力。作為回報，一有可能，你就可以即刻體驗強大嘅全新學習方式。",
+      "yourLangTitle": "我哋唔識講晒所有支援嘅語言",
+      "yourLangDesc": "呢個係坦白嘅事實。我哋為幾十種語言開發，係因為每個人都值得擁有強大嘅學習工具，唔係因為我哋呢個小團隊已經識晒所有語言。你可能會發現我哋有啲地方做錯咗。如果你比我哋更熟悉{{lang}}，希望你可以話畀我哋知，幫 Corpán 做到真正配得上呢種語言。",
+      "plea": "你有新點子、修正，或者好想見到嘅大膽學習體驗？話畀我哋知。我哋會睇每一個訊息，認真思考佢可以為 Corpán 同語言學習開啟咩可能。",
+      "emailCta": "電郵我哋",
+      "githubCta": "去 GitHub 開個 issue",
+      "join": "想幫手將 Corpán 帶到世界各地？我哋一直都搵緊合作夥伴、翻譯員同本地大使。嚟搵我哋啦。",
+      "pact": "撳下面開始學習，同我哋一齊成長。🤝",
+      "cta": "我加入——開始啦"
+    },
     "welcome": "歡迎",
     "makePrimaryLanguage": "將英文設為我嘅主要語言",
     "canChangeLater": "你可以隨時更改這個。",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "支持 Corpán 並解鎖所有功能。可選，隨時。",
+      "subscribedTitle": "你是一位 Corpanista",
+      "subscribedDesc": "多謝你令 Corpán 保持無廣告並持續成長。",
       "joinTitle": "加入 Corpanistas",
       "start": "開始探索",
       "subtitle": "Corpán 由一個小型開源團隊製作。歡迎打招呼 — 如果您喜歡，可以支持我們。",
@@ -642,7 +660,13 @@
     "pendingHeading": "等待批准",
     "pendingDetail": "你嘅訂閱正等候批准（購買前先徵求同意或銀行驗證）。一經批准，系統會自動啟用。",
     "storeUnreachable": "而家未能連線到 App Store。",
-    "tryAgain": "再試一次"
+    "tryAgain": "再試一次",
+    "affiliateCodeLabel": "聯盟代碼",
+    "affiliateCodePlaceholder": "可選",
+    "affiliateInvalidFormat": "請使用字母、數字、連字符或底線。",
+    "affiliateChecking": "正在檢查代碼...",
+    "affiliateApplied": "代碼會連結到呢個訂閱。",
+    "affiliateCodeHelp": "如果有人介紹你嚟呢度，訂閱前請輸入佢嘅代碼。"
   },
   "restore": {
     "button": "恢復購買",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "圖特馬頓",
       "blurb": "一個有耐性嘅隨身導師，幫你喺手機度學識任何語言。"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "一座將每次相遇化作課堂的活城市。"
     }
   },
   "home": {

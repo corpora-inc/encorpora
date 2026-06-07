@@ -131,6 +131,22 @@
     "primaryLanguage": "Primäre (UI-)Sprache"
   },
   "onboarding": {
+    "welcomePact": {
+      "title": "Corpán entwickelt sich weiter",
+      "subtitle": "Du bist früh dabei",
+      "tinyTeamTitle": "Ein kleines Team von Enthusiasten",
+      "tinyTeamDesc": "Unabhängig, werbefrei und mit Respekt für die Menschen entwickelt, die es nutzen — ein kleines Team baut die Sprachlern-App, die wir immer wollten.",
+      "bleedingEdgeTitle": "Absichtlich auf dem neuesten Stand",
+      "bleedingEdgeDesc": "Corpán reizt aus, was dein Gerät leisten kann: immersive Welten, Spracherkennung, natürliche Stimmen und die neuesten KI-Modelle wirken zusammen, um neue Arten des Lernens zu schaffen. Vieles läuft direkt auf deinem Gerät und ermöglicht dir privates, vorrangig offline funktionierendes Lernen ohne Abhängigkeit von einem Rechenzentrum. Wir geben neue Technologie frei, solange sie noch roh ist. Deshalb kann sie sich gelegentlich seltsam verhalten, langsam laufen oder schlicht mehr sein, als dein Gerät bewältigen kann. Dafür erhältst du leistungsstarke neue Lernerlebnisse, sobald sie möglich werden.",
+      "yourLangTitle": "Wir sprechen nicht jede Sprache, die wir unterstützen",
+      "yourLangDesc": "Das ist die ehrliche Wahrheit. Wir entwickeln für Dutzende Sprachen, weil alle Menschen leistungsstarke Lernwerkzeuge verdienen — nicht, weil unser kleines Team sie bereits alle beherrscht. Vielleicht findest du Dinge, die wir falsch gemacht haben. Wenn du {{lang}} besser kennst als wir, hoffen wir, dass du es uns sagst und uns hilfst, Corpán dieser Sprache würdig zu machen.",
+      "plea": "Hast du eine Idee, eine Korrektur oder ein außergewöhnliches Lernerlebnis, das du gern sehen würdest? Erzähl es uns. Wir lesen jede Nachricht und denken gründlich darüber nach, was sie für Corpán und das Sprachenlernen eröffnen könnte.",
+      "emailCta": "Schreib uns",
+      "githubCta": "GitHub-Issue öffnen",
+      "join": "Möchtest du helfen, Corpán in die Welt zu bringen? Wir suchen immer Mitwirkende, Übersetzerinnen und Übersetzer sowie lokale Botschafter. Melde dich bei uns.",
+      "pact": "Tippe unten, um mit dem Lernen zu beginnen und gemeinsam mit uns zu wachsen. 🤝",
+      "cta": "Ich bin dabei — los geht's"
+    },
     "welcome": "Willkommen",
     "makePrimaryLanguage": "Deutsch als meine Hauptsprache festlegen",
     "canChangeLater": "Keine Sorge, du kannst das später jederzeit ändern.",
@@ -290,6 +306,8 @@
     },
     "engage": {
       "joinDesc": "Unterstütze Corpán und schalte alles frei. Optional, jederzeit.",
+      "subscribedTitle": "Du bist ein Corpanista",
+      "subscribedDesc": "Danke, dass du Corpán werbefrei hältst und sein Wachstum förderst.",
       "joinTitle": "Werde Teil der Corpanistas",
       "start": "Erkundung starten",
       "subtitle": "Corpán wird von einem kleinen Open-Source-Team entwickelt. Sag Hallo – und wenn es dir gefällt, kannst du uns unterstützen.",
@@ -642,7 +660,13 @@
     "pendingHeading": "Warten auf Bestätigung",
     "pendingDetail": "Dein Abonnement wartet auf Bestätigung (Kaufanfrage oder Bankprüfung). Es wird nach der Bestätigung automatisch aktiviert.",
     "storeUnreachable": "Der App Store ist gerade nicht erreichbar.",
-    "tryAgain": "Erneut versuchen"
+    "tryAgain": "Erneut versuchen",
+    "affiliateCodeLabel": "Partnercode",
+    "affiliateCodePlaceholder": "Optional",
+    "affiliateInvalidFormat": "Verwende Buchstaben, Zahlen, Bindestriche oder Unterstriche.",
+    "affiliateChecking": "Code wird geprüft...",
+    "affiliateApplied": "Der Code wird diesem Abonnement zugeordnet.",
+    "affiliateCodeHelp": "Wenn dich jemand hierher geschickt hat, gib den Code vor dem Abonnieren ein."
   },
   "restore": {
     "button": "Käufe wiederherstellen",
@@ -729,6 +753,10 @@
     "tutomaton": {
       "name": "Tutomaton",
       "blurb": "Ein geduldiger Tutor direkt auf deinem Gerät für jede Sprache, die du lernst."
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Eine lebendige Stadt, die jede Begegnung zur Lektion macht."
     }
   },
   "home": {

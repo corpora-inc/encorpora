@@ -1,0 +1,102 @@
+{
+  "id": "corpan-city",
+  "topologyId": "corpan-city",
+  "setting": {
+    "place": "Corpan City",
+    "era": "today",
+    "mood": "warm afternoon in a friendly, multicultural city"
+  },
+  "themeId": "paper",
+  "narrativeBlurb": "Corpan City — a sunlit, made-up metropolis where every street corner speaks a different language. The plaza fills with neighbors and newcomers; the market, the harbor, and the station each open onto their own small adventures. You live here now.",
+  "anchorSkins": {
+    "plaza": {
+      "spriteRef": {
+        "url": "placeholder:plaza"
+      }
+    },
+    "fountain": {
+      "spriteRef": {
+        "url": "placeholder:fountain"
+      }
+    },
+    "market": {
+      "spriteRef": {
+        "url": "placeholder:market"
+      }
+    },
+    "harbor": {
+      "spriteRef": {
+        "url": "placeholder:harbor"
+      }
+    },
+    "station": {
+      "spriteRef": {
+        "url": "placeholder:station"
+      }
+    },
+    "hospital": {
+      "spriteRef": {
+        "url": "placeholder:hospital"
+      }
+    },
+    "bridge_n": {
+      "spriteRef": {
+        "url": "placeholder:bridge"
+      }
+    }
+  },
+  "npcSkins": {
+    "market": {
+      "spriteRef": {
+        "url": "placeholder:npc-vendor"
+      },
+      "voiceHint": "es-MX"
+    },
+    "harbor": {
+      "spriteRef": {
+        "url": "placeholder:npc-dockhand"
+      },
+      "voiceHint": "es-ES"
+    },
+    "station": {
+      "spriteRef": {
+        "url": "placeholder:npc-traveler"
+      },
+      "voiceHint": "es-ES"
+    },
+    "hospital": {
+      "spriteRef": {
+        "url": "placeholder:npc-nurse"
+      },
+      "voiceHint": "es-ES"
+    },
+    "bridge_n": {
+      "spriteRef": {
+        "url": "placeholder:npc-resident"
+      },
+      "voiceHint": "es-ES"
+    }
+  },
+  "palette": {
+    "ground": "#dccaa6",
+    "groundAlt": "#cfbd96",
+    "road": "#b8a47e",
+    "roadEdge": "#9c8a66",
+    "plaza": "#e6d6b1",
+    "sky": "#cfe6ea",
+    "accent": "#e08a3c",
+    "building": "#ecd9b4",
+    "buildingAlt": "#e2cda4",
+    "roof": "#b56a45",
+    "trim": "#5aa0a8",
+    "stone": "#d8c8a6"
+  },
+  "sky": {
+    "horizon": "#f0dcb6",
+    "zenith": "#cfe6ea",
+    "fog": 0.3,
+    "fogColor": "#efe6d2",
+    "timeOfDay": "day"
+  },
+  "buildingStyle": "antigua-stucco"
+}

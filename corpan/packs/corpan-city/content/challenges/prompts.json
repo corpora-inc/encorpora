@@ -1,0 +1,27 @@
+{
+  "_comment": "Localizable prompt templates + NPC pretext lines for the micro-challenge library. Keyed by toolId. `{w}`/`{n}` are substituted at runtime. Localize the `en` block per language; the runner falls back to `en`.",
+  "pretexts": {
+    "en": {
+      "word-scramble": "My market words got all scrambled — help me sort one out?",
+      "read-aloud": "I lost my spectacles. Will you read this sign aloud for me?",
+      "listen-choose-pic": "My ears are old. Tell me which word I'm saying.",
+      "picture-match": "These labels fell off my crates. Match them back for me?",
+      "fast-translate": "Quick, the bell's about to ring — say what this means!",
+      "fill-the-blank": "A moth ate a word out of my note. Which fits the gap?",
+      "build-sentence": "My phrase fell apart on the cobbles. Put it back in order?",
+      "number-drill": "I can't hear the prices over the crowd — what number is it?",
+      "odd-one-out": "One of these doesn't belong on my shelf. Spot it?",
+      "memory-pairs": "I shuffled my flash-cards. Find the matching pairs?",
+      "say-it-back": "Repeat after me, traveler, and I'll mark my ledger.",
+      "dialogue-fill": "I forgot my line in this little chat. What should I say?",
+      "category-sort": "Sort my goods into the right baskets before market opens?",
+      "spot-typo": "The printer made a mistake on my sign. Which word is wrong?",
+      "conjugation-tap": "Help me speak properly — pick the right form of the verb?",
+      "rhyme-match": "I love a good rhyme. Match the words that sing together?",
+      "countdown-recall": "Remember my list — I'll test you before the bell!",
+      "true-false": "Tell me true or false: does this translation match?",
+      "word-search": "My words are hidden in this grid. Can you find them?",
+      "tap-translation": "Tap every tile that means this word — sharp eyes win coins!"
+    }
+  }
+}

@@ -66,6 +66,12 @@ private object WhisperNative {
     val mutex = Mutex()
     val instances = AtomicInteger(0)
     val processStartUptimeMs = SystemClock.elapsedRealtime()
+    /** Payload of a prior native-init crash breadcrumb, read off disk by
+     *  the first [SttPlugin] built this process and held here until
+     *  getStatus() hands it to the JS analytics sink (which clears it).
+     *  Process-global so it survives Activity recreation and is delivered
+     *  exactly once regardless of which instance serves the getStatus call. */
+    @Volatile var pendingInitCrash: String? = null
 }
 
 @InvokeArg
@@ -329,14 +335,25 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         val payload = try { f.readText() } catch (e: Exception) { "<unreadable: ${e.message}>" }
         Log.e(TAG, "STT_INIT_CRASH previous on-device whisper init did not complete " +
             "(probable native SIGSEGV in ggml init) context=$payload")
+        // Stash for getStatus() to deliver into the JS on-device analytics
+        // sink. The Log line above is for logcat/Play (which we can't pull
+        // from a random user's device); this is the durable, harvestable
+        // record. Held in process-global state so it's reported exactly once
+        // even across Activity recreation.
+        WhisperNative.pendingInitCrash = payload
         try { f.delete() } catch (_: Exception) {}
     }
 
     /** True if [f] starts with the ggml file magic. A truncated/empty
      *  download or an HTML error page saved as the model has no magic;
      *  catching it here returns a clean LOAD_FAILED instead of handing
-     *  garbage to native init. Fails OPEN on a read error so a transient
-     *  IO hiccup never blocks a genuine model. */
+     *  garbage to native init. Fails CLOSED on a read error: the file is
+     *  about to be fed to native whisper init, which cannot defend itself
+     *  against a bad file, and a SIGSEGV there is uncatchable and kills the
+     *  app. If we can't read even its first 4 bytes, refusing is strictly
+     *  safer than guessing — and reading 4 bytes of a local file that
+     *  exists and is >= 1 MB does not fail transiently, so this costs no
+     *  legitimate loads. */
     private fun looksLikeGgmlModel(f: File): Boolean {
         if (!f.exists() || f.length() < 1_000_000L) return false
         return try {
@@ -351,8 +368,8 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                 magic == 0x67676d6c
             }
         } catch (e: Exception) {
-            Log.w(TAG, "ggml magic check could not read ${f.name}, allowing load: ${e.message}")
-            true
+            Log.e(TAG, "ggml magic check could not read ${f.name}, refusing load: ${e.message}")
+            false
         }
     }
 
@@ -426,6 +443,13 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         ret.put("recording", activeSessionId != null)
         ret.put("availableMemoryMB", systemFreeMB)
         ret.put("physicalMemoryMB", totalMB)
+        // One-shot delivery of any prior native-init crash breadcrumb to the
+        // app's on-device analytics (the host's getStatus wrapper records it).
+        WhisperNative.pendingInitCrash?.let {
+            ret.put("priorInitCrash", it)
+            WhisperNative.pendingInitCrash = null
+            Log.w(TAG, "delivering prior STT init-crash breadcrumb to analytics")
+        }
         Log.i(TAG, "status() returning availableMemoryMB=$systemFreeMB physicalMemoryMB=$totalMB")
         invoke.resolve(ret)
     }
@@ -1161,10 +1185,10 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             val body = resp.body ?: throw IOException("empty body from $url")
             val total = body.contentLength()
             val tmp = File(dest.parentFile, "${dest.name}.part")
+            var completed = 0L
             tmp.outputStream().use { out ->
                 body.byteStream().use { input ->
                     val buf = ByteArray(64 * 1024)
-                    var completed = 0L
                     var lastReport = 0L
                     while (true) {
                         val n = input.read(buf)
@@ -1179,6 +1203,23 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                         }
                     }
                 }
+            }
+            // Completeness gate. When the server advertised a Content-Length
+            // (total > 0), a clean end-of-stream before we've read that many
+            // bytes is a TRUNCATED download — a dropped connection, or a CDN
+            // closing the socket early. OkHttp surfaces this as a normal EOF
+            // (input.read() == -1), NOT an exception, so without this check
+            // the short .part would be renamed into place, sail through the
+            // 4-byte ggml magic test, and then SIGSEGV deep inside
+            // whisper_init_state when native code reads tensor data past the
+            // real end of file. Fail loudly here instead; installModel's catch
+            // surfaces a clean, retryable DOWNLOAD_FAILED. (total <= 0 means
+            // the server sent no Content-Length — nothing to compare against,
+            // so we fall through and let the post-download load test catch a
+            // bad file.)
+            if (total > 0 && completed != total) {
+                tmp.delete()
+                throw IOException("truncated download from $url: got $completed of $total bytes")
             }
             if (!tmp.renameTo(dest)) {
                 tmp.delete()
