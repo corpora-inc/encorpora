@@ -27,7 +27,18 @@ const FREE_DAILY_LIMIT = 20
 type InitialState = {
   stackConfig?: { languages?: string[] }
   isPlus?: boolean
-  entitlement?: { plus?: boolean }
+  entitlement?: EntitlementSnapshot
+}
+
+type EntitlementSnapshot = {
+  plus?: boolean
+  subscription?: {
+    active?: boolean
+    plan?: "monthly" | "annual" | null
+    expiresAt?: string | null
+    autoRenew?: boolean
+  }
+  checkedAt?: number | null
 }
 
 type WirePlayer = {
@@ -138,10 +149,17 @@ function stackReveal(
 }
 
 function isPlus(initial?: InitialState): boolean {
+  const injected = globalThis as {
+    __CORPAN_PLUS?: boolean
+    __CORPAN_ENTITLEMENT?: EntitlementSnapshot
+  }
   return Boolean(
     initial?.isPlus ||
       initial?.entitlement?.plus ||
-      (globalThis as { __CORPAN_PLUS?: boolean }).__CORPAN_PLUS,
+      initial?.entitlement?.subscription?.active ||
+      injected.__CORPAN_PLUS ||
+      injected.__CORPAN_ENTITLEMENT?.plus ||
+      injected.__CORPAN_ENTITLEMENT?.subscription?.active,
   )
 }
 
@@ -176,7 +194,7 @@ async function mountTeletron(
   let name = anonymousName()
   const languages = stackLanguages(initial)
   let selectedLanguage = languages.learning[0]
-  const plus = isPlus(initial)
+  let plus = isPlus(initial)
   const mediator = createChatMediator(hostApi)
   const disposers: Array<() => void> = []
   const players = new Map<string, WirePlayer>()
@@ -286,6 +304,21 @@ async function mountTeletron(
     quota.textContent = plus ? "Corpan Plus · unlimited messages" : `${left} free messages left today`
     form.querySelector<HTMLButtonElement>(".tt-send")!.disabled = left <= 0 || !modelReady
   }
+
+  function onEntitlementChanged(event: Event): void {
+    const detail = (event as CustomEvent<EntitlementSnapshot>).detail
+    const nextPlus = Boolean(
+      detail?.plus ||
+        detail?.subscription?.active ||
+        (globalThis as { __CORPAN_PLUS?: boolean }).__CORPAN_PLUS,
+    )
+    if (nextPlus === plus) return
+    plus = nextPlus
+    updateQuota()
+    if (plus) showToast("Corpan Plus active. Messages are unlimited.")
+  }
+  window.addEventListener("corpan:entitlement-changed", onEntitlementChanged)
+  disposers.push(() => window.removeEventListener("corpan:entitlement-changed", onEntitlementChanged))
 
   function publishProfile(): void {
     if (!room) return
