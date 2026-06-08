@@ -147,8 +147,8 @@ async function main() {
     from: "pB",
     to: "pB",
     interactionId: "chat-pre-consent",
-    source: { kind: "text", text: "cleaned safe intent" },
-    sourceLanguage: "fr",
+    source: { kind: "text", text: "safe English relay text" },
+    sourceLanguage: "en",
     targetLanguage: "fr",
     mode: "beginner",
   })
@@ -170,15 +170,15 @@ async function main() {
     from: "pB", // forged; server must replace it with pA
     to: "pB",
     interactionId: "chat-1",
-    source: { kind: "text", text: "cleaned safe intent" },
-    sourceLanguage: "fr",
+    source: { kind: "text", text: "safe English relay text" },
+    sourceLanguage: "en",
     targetLanguage: "fr",
     mode: "beginner",
   })
   const chat = await chatP
   check(chat?.from === "pA" && chat?.to === "pB", "chat routed with trusted sender + recipient ids")
   check(chat?.targetLanguage === "ja", "chat framed for B's learning language")
-  check(chat?.source?.text === "cleaned safe intent", "only the locally-cleaned intent was relayed")
+  check(chat?.source?.text === "safe English relay text", "only the locally-cleaned relay text was relayed")
 
   // 4) peer-result relay: only an accepted challenge invite can carry scores.
   const strayPeerP = waitMsg(a, "peer-result-deliver", 350)

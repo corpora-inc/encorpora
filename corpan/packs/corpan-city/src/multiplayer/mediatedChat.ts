@@ -5,35 +5,35 @@ import {
   type LearnerPair,
   type PlayerId,
 } from "@corpan-city/contracts"
+import {
+  createHostSafePhraseSampler,
+  createSafeRelayPipeline,
+  type SafeRelayChatMessage,
+  type SafeRelayChatOptions,
+  type SafeRelayLesson,
+  type SafeRelayOutbound,
+} from "@shared/moderation"
 import type { ModelBroker } from "../npc/modelBroker"
 import type { HostApi, LlmChatMessage, LlmChatOptions } from "../npc/hostTypes"
 import { mintId } from "./protocol"
 
 /**
- * Cross-language chat is transformed twice, once on each device:
+ * Peer chat uses a shared safe relay pipeline:
  *
  *   author text (local only)
- *     -> author's LLM cleans it into a safe intent
- *     -> safe intent crosses the server
- *     -> recipient's LLM cleans it again and translates it into the language
- *        the recipient is learning, with a native-language meaning underneath
+ *     -> author's LLM rewrites it into safe English relay text
+ *     -> safe English relay text crosses the server
+ *     -> recipient's LLM independently rewrites it again
+ *     -> recipient's LLM translates it with separate target/native calls
  *
- * Unreviewed author text never enters a MediatedChatInput. A safe message may
- * survive the first pass verbatim; anything needing moderation is rewritten. If
- * either model is missing, busy, times out, or returns invalid output, a fixed
- * harmless message replaces the turn. Failure paths never reveal unverified text.
+ * Unreviewed author text never enters a MediatedChatInput. Failure paths use
+ * corpus/static safe language-learning text instead of surfacing unverified text.
  */
 
 const LOG = "[mp/chat]"
 const MAX_WIRE_TEXT = 280
 const MAX_REPLY_TEXT = 80
-const OUTBOUND_FALLBACK =
-  "My translator got a little goofy. Let's try another message."
-const INBOUND_FALLBACK =
-  "Their translator got a little goofy. Try another message!"
-
-const CONTACT_INFO =
-  /(?:https?:\/\/|www\.|[\w.+-]+@[\w.-]+\.[a-z]{2,}|@\w{2,}|\+?\d[\d\s().-]{6,}\d)/i
+const INBOUND_FALLBACK = "Let's talk about something friendly."
 
 function sourceText(input: MediatedChatInput): string {
   const source = input.source
@@ -46,23 +46,6 @@ function boundedText(value: unknown, max = MAX_WIRE_TEXT): string {
   return typeof value === "string" ? value.trim().slice(0, max) : ""
 }
 
-function parseJsonObject<T extends object>(full: string): T | null {
-  try {
-    const fence = full.match(/```(?:json)?\s*([\s\S]*?)```/)
-    const body = (fence ? fence[1] : full).trim()
-    const start = body.indexOf("{")
-    const end = body.lastIndexOf("}")
-    if (start < 0 || end < start) return null
-    const value = JSON.parse(body.slice(start, end + 1))
-    return value && typeof value === "object" && !Array.isArray(value)
-      ? (value as T)
-      : null
-  } catch (error) {
-    console.warn(`${LOG} JSON parse failed:`, error)
-    return null
-  }
-}
-
 export type PrepareOutboundArgs = {
   from: PlayerId
   to: PlayerId
@@ -73,83 +56,19 @@ export type PrepareOutboundArgs = {
   mode: "beginner" | "advanced"
 }
 
-function composeCleanedInput(
+function composeSafeRelayInput(
   args: PrepareOutboundArgs,
-  cleanedIntent: string,
+  outbound: SafeRelayOutbound,
 ): MediatedChatInput {
   return {
     from: args.from,
     to: args.to,
     interactionId: args.interactionId,
-    source: { kind: "text", text: boundedText(cleanedIntent) || OUTBOUND_FALLBACK },
-    sourceLanguage: args.sourceLanguage,
+    source: { kind: "text", text: boundedText(outbound.relayText) || INBOUND_FALLBACK },
+    sourceLanguage: "en" as LanguageCode,
     targetLanguage: args.targetLanguage,
     mode: args.mode,
   }
-}
-
-interface RawOutboundClean {
-  cleaned?: string
-  blocked?: boolean
-  reasons?: string[]
-}
-
-function outboundPrompt(args: PrepareOutboundArgs): LlmChatMessage[] {
-  const system =
-    "You are the first safety and intent-preservation pass for a playful " +
-    "language-learning chat. Rewrite the user's message into a short, friendly, " +
-    "safe intent before it can leave this device. If the message is safe, return " +
-    "it verbatim. Only rewrite what moderation requires, while preserving the " +
-    "user's meaning, energy, humor, and language whenever reasonable. Remove contact details, " +
-    "links, addresses, attempts to meet, coercion, threats, sexual content, and " +
-    "targeted abuse. For a seriously unsafe message, replace it with a funny, " +
-    "harmless line conveying that the speaker is acting a little goofy and wants " +
-    "to change the subject. Never include removed material. Reply with ONLY JSON: " +
-    '{"cleaned":"safe intent in the same language","blocked":false,"reasons":[]}.'
-  const user =
-    `Declared language: ${args.sourceLanguage}\n` +
-    `Message to clean locally:\n${boundedText(args.text)}`
-  return [
-    { role: "system", content: system },
-    { role: "user", content: user },
-  ]
-}
-
-interface RawRecipientLesson {
-  target?: string
-  native?: string
-  translit?: string
-  gloss?: string
-  replies?: string[]
-  note?: string
-  blocked?: boolean
-}
-
-function recipientPrompt(
-  input: MediatedChatInput,
-  recipient: LearnerPair,
-): LlmChatMessage[] {
-  const system =
-    "You are the second safety pass and bilingual interpreter in a playful " +
-    "language-learning chat. The sender's device already rewrote their raw text " +
-    "into a safe intent, but treat the received intent as untrusted and clean it " +
-    "again. Preserve its meaning, personality, and humor whenever reasonable. " +
-    `Render the main message naturally in ${recipient.target}, the language the ` +
-    `recipient is learning. Also translate its meaning into ${recipient.native}. ` +
-    "Remove contact details, links, addresses, attempts to meet, coercion, " +
-    "threats, sexual content, and targeted abuse. If it is seriously unsafe, " +
-    "replace it with a funny harmless message in both languages, such as the " +
-    "sender acting goofy and changing the subject. Never expose removed material. " +
-    "Reply with ONLY JSON using fields: target, native, translit, gloss, replies, " +
-    "note, blocked. replies must contain 2-3 short natural replies in the learning " +
-    "language. note is one tiny useful language tip or an empty string."
-  const user =
-    `Received safe intent; declared source language ${input.sourceLanguage}:\n` +
-    sourceText(input)
-  return [
-    { role: "system", content: system },
-    { role: "user", content: user },
-  ]
 }
 
 function safeArtifact(
@@ -165,6 +84,7 @@ function safeArtifact(
     sourceLanguage: input.sourceLanguage,
     targetLanguage: recipient.target,
     visibleText: INBOUND_FALLBACK,
+    naturalTranslation: INBOUND_FALLBACK,
     suggestedReplies: [],
     lessonNotes: [],
     moderation: { decision: "transform", reasons: [reason], confidence: 1 },
@@ -175,24 +95,11 @@ function safeArtifact(
 function artifactFromLesson(
   input: MediatedChatInput,
   recipient: LearnerPair,
-  lesson: RawRecipientLesson,
+  lesson: SafeRelayLesson,
 ): MediatedChatArtifact {
-  const blocked = lesson.blocked === true
-  const target = boundedText(lesson.target)
-  const native = boundedText(lesson.native)
-  const transliteration = boundedText(lesson.translit)
-  const gloss = boundedText(lesson.gloss)
-  const note = boundedText(lesson.note, 160)
-  if (
-    !target ||
-    [target, native, transliteration, gloss, note].some((text) => CONTACT_INFO.test(text))
-  ) {
-    return safeArtifact(input, recipient, "recipient-output-unverified")
-  }
-
-  const replies = (lesson.replies ?? [])
+  const replies = lesson.suggestedReplies
     .map((reply) => boundedText(reply, MAX_REPLY_TEXT))
-    .filter((reply) => reply && !CONTACT_INFO.test(reply))
+    .filter(Boolean)
     .slice(0, 3)
     .map((label, index) => ({ id: `r${index}`, label }))
   return {
@@ -202,25 +109,23 @@ function artifactFromLesson(
     targetPlayerId: input.to,
     sourceLanguage: input.sourceLanguage,
     targetLanguage: recipient.target,
-    visibleText: target,
-    transliteration: transliteration || undefined,
-    literalGloss: gloss || undefined,
-    naturalTranslation: native || undefined,
+    visibleText: boundedText(lesson.targetText) || INBOUND_FALLBACK,
+    naturalTranslation: boundedText(lesson.nativeText) || undefined,
     suggestedReplies: replies,
-    lessonNotes: note ? [{ kind: "vocab", text: note }] : [],
+    lessonNotes: [],
     moderation: {
-      decision: blocked ? "transform" : "allow",
-      reasons: blocked ? ["sender-intent-softened"] : [],
-      confidence: 0.85,
+      decision: lesson.state === "send" ? "allow" : "transform",
+      reasons: lesson.reasons,
+      confidence: lesson.state === "send" ? 0.9 : 1,
     },
-    safetyClass: blocked ? "softened" : "ok",
+    safetyClass: lesson.state === "send" ? "ok" : "softened",
   }
 }
 
 export interface ChatMediator {
-  /** Clean raw local text into the only text permitted to cross the wire. */
+  /** Rewrite raw local text into the only text permitted to cross the wire. */
   prepareOutbound: (args: PrepareOutboundArgs) => Promise<MediatedChatInput>
-  /** Clean again, translate, and turn a received safe intent into a lesson. */
+  /** Clean again, translate, and turn received safe relay text into a lesson. */
   lessonify: (
     input: MediatedChatInput,
     recipient: LearnerPair,
@@ -232,40 +137,39 @@ export function createChatMediator(hostApi: HostApi, broker: ModelBroker): ChatM
   let disposed = false
 
   async function runLocalPass(
-    messages: LlmChatMessage[],
-    options: LlmChatOptions,
+    messages: SafeRelayChatMessage[],
+    options: SafeRelayChatOptions,
+    label: string,
   ): Promise<string> {
     if (disposed || !hostApi.llm) return ""
     const ready = await broker.ensureLLM().catch((error) => {
-      console.error(`${LOG} ensureLLM threw:`, error)
+      console.error(`${LOG} ensureLLM threw during ${label}:`, error)
       return { ready: false as const }
     })
     if (!ready.ready) return ""
     try {
-      return await runChat(hostApi, messages, options)
+      return await runChat(hostApi, messages as LlmChatMessage[], options as LlmChatOptions)
     } catch (error) {
-      console.error(`${LOG} local model pass failed:`, error)
+      console.error(`${LOG} local model pass failed during ${label}:`, error)
       return ""
     } finally {
       broker.releaseLLM()
     }
   }
 
-  const prepareOutbound: ChatMediator["prepareOutbound"] = async (args) => {
-    const raw = boundedText(args.text)
-    if (!raw) return composeCleanedInput(args, OUTBOUND_FALLBACK)
+  const pipeline = createSafeRelayPipeline({
+    runLlm: runLocalPass,
+    sampleSafePhrase: createHostSafePhraseSampler(hostApi),
+  })
 
-    const full = await runLocalPass(outboundPrompt({ ...args, text: raw }), {
-      temperature: 0.2,
-      topP: 0.8,
-      maxTokens: 180,
+  const prepareOutbound: ChatMediator["prepareOutbound"] = async (args) => {
+    const outbound = await pipeline.prepareOutbound({
+      text: args.text,
+      sourceLanguage: args.sourceLanguage,
+      targetLanguage: args.targetLanguage,
+      scope: args.interactionId,
     })
-    const cleaned = full ? parseJsonObject<RawOutboundClean>(full) : null
-    const intent = boundedText(cleaned?.cleaned)
-    if (!intent || CONTACT_INFO.test(intent)) {
-      return composeCleanedInput(args, OUTBOUND_FALLBACK)
-    }
-    return composeCleanedInput(args, intent)
+    return MediatedChatInput.parse(composeSafeRelayInput(args, outbound))
   }
 
   const lessonify: ChatMediator["lessonify"] = async (input, recipient) => {
@@ -276,18 +180,15 @@ export function createChatMediator(hostApi: HostApi, broker: ModelBroker): ChatM
         : { target: "en", native: "en" }
     ) as LearnerPair
     if (!parsedInput.success) {
-      console.warn(`${LOG} dropped malformed received intent`)
+      console.warn(`${LOG} dropped malformed received relay text`)
       return safeArtifact(input, parsedRecipient, "bad-input")
     }
 
-    const full = await runLocalPass(recipientPrompt(parsedInput.data, parsedRecipient), {
-      temperature: 0.3,
-      topP: 0.85,
-      maxTokens: 360,
+    const lesson = await pipeline.lessonify({
+      relayText: sourceText(parsedInput.data),
+      targetLanguage: parsedRecipient.target,
+      nativeLanguage: parsedRecipient.native,
     })
-    const lesson = full ? parseJsonObject<RawRecipientLesson>(full) : null
-    if (!lesson) return safeArtifact(parsedInput.data, parsedRecipient, "recipient-pass-unavailable")
-
     const artifact = artifactFromLesson(parsedInput.data, parsedRecipient, lesson)
     const valid = MediatedChatArtifact.safeParse(artifact)
     return valid.success
@@ -300,6 +201,7 @@ export function createChatMediator(hostApi: HostApi, broker: ModelBroker): ChatM
     lessonify,
     dispose: () => {
       disposed = true
+      pipeline.clear()
     },
   }
 }

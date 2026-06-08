@@ -55,6 +55,19 @@ export type LlmApi = {
   ) => Promise<LlmChatHandle>
 }
 
+export type HostTranslationOut = {
+  language_code: string
+  text: string
+  romanization?: string
+}
+
+export type HostEntryOut = {
+  entry_id: number
+  level: string
+  domains: string[]
+  translations: HostTranslationOut[]
+}
+
 /**
  * One platform TTS voice as the host would expose it to a pack. Mirrors the
  * host's internal `VoiceInfo` (corpan-app `src/util/tts-voices.ts`) but trimmed to
@@ -99,6 +112,11 @@ export type HostApi = {
   listVoices?: (uiCode?: string) => Promise<HostVoiceInfo[]>
   /** On-device LLM runtime; present only when tauri-plugin-corpan-llm is registered. */
   llm?: LlmApi
+  /** Phrase corpus sampler used for safe fallback relay text when available. */
+  getRandomEntries?: (
+    q: number | { count: number; domains?: string[]; levels?: string[]; languageCodes?: string[] },
+  ) => Promise<HostEntryOut[]>
+  getRandomEntry?: () => Promise<HostEntryOut>
   /** Provider-agnostic dictation (host.asr). Present only when an asr-* provider
    *  plugin is registered. The minimal shape `wireDictation` needs: a `pick`
    *  that resolves a provider (or null = keyboard floor) for a language. Kept

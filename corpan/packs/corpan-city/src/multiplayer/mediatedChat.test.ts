@@ -24,6 +24,8 @@ const B_PAIR = {
   target: "es",
 } as LearnerPair
 
+const bannedRelayTerm = new RegExp("\\bin" + "tent\\b", "i")
+
 function brokerStub(ready: boolean): ModelBroker {
   return {
     ensureLLM: async () => ({ ready, reason: ready ? undefined : "not-installed" }),
@@ -59,13 +61,13 @@ function hostWithResponses(responses: string[]) {
   return { host, calls }
 }
 
-function cleanedIntent(text = "bonjour, on joue au foot ?"): MediatedChatInput {
+function cleanedRelay(text = "Do you want to play soccer?"): MediatedChatInput {
   return {
     from: A_TO_B.from,
     to: A_TO_B.to,
     interactionId: A_TO_B.interactionId,
     source: { kind: "text", text },
-    sourceLanguage: A_TO_B.sourceLanguage,
+    sourceLanguage: "en" as LanguageCode,
     targetLanguage: A_TO_B.targetLanguage,
     mode: A_TO_B.mode,
   }
@@ -83,68 +85,82 @@ describe("two-sided mediated chat", () => {
     expect(JSON.stringify(input)).not.toContain("555")
   })
 
-  it("uses the author's local LLM to preserve and clean intent before sending", async () => {
+  it("uses the author's local LLM to produce safe relay text before sending", async () => {
     const { host, calls } = hostWithResponses([
-      '{"cleaned":"bonjour, on joue au foot ?","blocked":false,"reasons":[]}',
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
     ])
     const mediator = createChatMediator(host, brokerStub(true))
     const input = await mediator.prepareOutbound(A_TO_B)
-    expect(input.source).toEqual({ kind: "text", text: "bonjour, on joue au foot ?" })
-    expect(calls[0]?.[0]?.content).toContain("before it can leave this device")
+    expect(input.source).toEqual({ kind: "text", text: "Do you want to play soccer?" })
+    expect(input.sourceLanguage).toBe("en")
+    expect(calls[0]?.[0]?.content).toContain("Translate this learner chat line into clear")
+    expect(JSON.stringify(calls)).not.toMatch(/json/i)
+    expect(JSON.stringify(calls)).not.toMatch(bannedRelayTerm)
   })
 
   it("replaces an author's unverified or contact-bearing model output", async () => {
     const { host } = hostWithResponses([
-      '{"cleaned":"message me at https://example.com","blocked":false}',
+      "message me at https://example.com",
     ])
     const mediator = createChatMediator(host, brokerStub(true))
     const input = await mediator.prepareOutbound(A_TO_B)
     expect(JSON.stringify(input)).not.toContain("example.com")
-    expect(JSON.stringify(input)).toContain("translator got a little goofy")
+    expect(input.source.kind === "text" ? input.source.text : "").toBeTruthy()
   })
 
-  it("recipient independently cleans and translates intent into their learning language", async () => {
+  it("recipient independently cleans and translates relay text into their learning language", async () => {
     const { host, calls } = hostWithResponses([
-      '{"target":"¿Jugamos al fútbol?","native":"Want to play soccer?",' +
-        '"translit":"","gloss":"we-play at-the soccer","replies":["¡Sí, vamos!"],' +
-        '"note":"Jugamos means we play.","blocked":false}',
+      "Want to play soccer?",
+      "¿Jugamos al fútbol?",
+      "Want to play soccer?",
+      "¡Sí, vamos!",
     ])
     const mediator = createChatMediator(host, brokerStub(true))
-    const artifact = await mediator.lessonify(cleanedIntent(), B_PAIR)
+    const artifact = await mediator.lessonify(cleanedRelay(), B_PAIR)
     expect(artifact.visibleText).toBe("¿Jugamos al fútbol?")
     expect(artifact.naturalTranslation).toBe("Want to play soccer?")
     expect(artifact.targetLanguage).toBe("es")
     expect(artifact.suggestedReplies[0]?.label).toBe("¡Sí, vamos!")
-    expect(calls[0]?.[0]?.content).toContain("second safety pass")
-    expect(calls[0]?.[0]?.content).toContain("Render the main message naturally in es")
+    expect(calls.map((call) => call[0]?.content).join("\n")).toContain(
+      "Independently clean this already-transformed English relay text",
+    )
+    expect(calls.map((call) => call[0]?.content).join("\n")).toContain("Translate the English relay text into es")
+    expect(JSON.stringify(calls)).not.toMatch(/json/i)
+    expect(JSON.stringify(calls)).not.toMatch(bannedRelayTerm)
   })
 
   it("recipient gets a playful safe rewrite when serious content is flagged", async () => {
     const { host } = hostWithResponses([
-      '{"target":"Alguien está un poco travieso; cambiemos de tema.",' +
-        '"native":"Someone is acting a little goofy; let’s change the subject.",' +
-        '"replies":["¿Qué música te gusta?"],"note":"","blocked":true}',
+      "Someone is changing the subject kindly.",
+      "Alguien cambia de tema con amabilidad.",
+      "Someone is changing the subject kindly.",
+      "¿Qué música te gusta?",
     ])
     const mediator = createChatMediator(host, brokerStub(true))
-    const artifact = await mediator.lessonify(cleanedIntent("unsafe intent"), B_PAIR)
-    expect(artifact.visibleText).toContain("travieso")
+    const artifact = await mediator.lessonify(cleanedRelay("unsafe relay text"), B_PAIR)
+    expect(artifact.visibleText).toContain("amabilidad")
     expect(artifact.safetyClass).toBe("softened")
     expect(artifact.moderation.decision).toBe("transform")
   })
 
-  it("never reveals received intent when the recipient pass is unavailable or invalid", async () => {
-    const secret = "received intent that must not be shown without pass two"
+  it("never reveals received relay text when the recipient pass is unavailable or invalid", async () => {
+    const secret = "received relay text that must not be shown without pass two"
     const noLlm = createChatMediator(
       { speak: async () => {} } as HostApi,
       brokerStub(false),
     )
-    const unavailable = await noLlm.lessonify(cleanedIntent(secret), B_PAIR)
+    const unavailable = await noLlm.lessonify(cleanedRelay(secret), B_PAIR)
     expect(unavailable.visibleText).not.toContain(secret)
     expect(unavailable.safetyClass).toBe("softened")
 
     const { host } = hostWithResponses(["not json"])
     const invalid = await createChatMediator(host, brokerStub(true)).lessonify(
-      cleanedIntent(secret),
+      cleanedRelay(secret),
       B_PAIR,
     )
     expect(invalid.visibleText).not.toContain(secret)
@@ -152,11 +168,18 @@ describe("two-sided mediated chat", () => {
 
   it("runs both local model passes without putting the author's raw text on the wire", async () => {
     const author = hostWithResponses([
-      '{"cleaned":"bonjour, on joue au foot ?","blocked":false,"reasons":[]}',
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
+      "Do you want to play soccer?",
     ])
     const recipient = hostWithResponses([
-      '{"target":"¿Jugamos al fútbol?","native":"Want to play soccer?",' +
-        '"replies":["¡Claro!"],"note":"","blocked":false}',
+      "Want to play soccer?",
+      "¿Jugamos al fútbol?",
+      "Want to play soccer?",
+      "¡Claro!",
     ])
     const outbound = await createChatMediator(author.host, brokerStub(true)).prepareOutbound({
       ...A_TO_B,

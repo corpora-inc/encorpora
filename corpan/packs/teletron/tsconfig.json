@@ -17,6 +17,7 @@
       "@corpan-city/contracts": ["../corpan-city/contracts/src/index.ts"],
       "@corpan-city/contracts/*": ["../corpan-city/contracts/src/*"],
       "@shared/asr": ["../shared/asr/index.ts"],
+      "@shared/moderation": ["../shared/moderation/index.ts"],
       "zod": ["node_modules/zod/index.d.ts"]
     }
   },

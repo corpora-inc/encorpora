@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Replaced peer-chat mediation with the shared safe relay pipeline: sender devices
+  transform raw chat into English relay text before routing, recipient devices
+  independently clean it again, and target/native translations now use separate
+  plain-text LLM calls instead of JSON-output prompts.
 - Aligned the pack directory, package/contracts namespace, published paths, and
   ZIP with the `corpan-city` product name.
 - Made NPC dictation unmistakable without adding translation burden: a compact

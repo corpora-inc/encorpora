@@ -17,7 +17,8 @@
     "paths": {
       "@corpan-city/contracts": ["./contracts/src/index.ts"],
       "@corpan-city/contracts/*": ["./contracts/src/*"],
-      "@shared/audio/*": ["../shared/audio/*"]
+      "@shared/audio/*": ["../shared/audio/*"],
+      "@shared/moderation": ["../shared/moderation/index.ts"]
     }
   },
   "include": ["src", "contracts/src"],
