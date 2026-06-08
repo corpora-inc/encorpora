@@ -1522,7 +1522,11 @@ function buildWorld(
       // default to the TARGET language if a vignette didn't specify one (R2-2):
       // never let a stale scene voiceHint pick the voice.
       voiceCode: args.voiceCode ?? learnerPair.target,
-      starterChips: args.starterChips,
+      // Starter chips are visible/sendable NPC-dialogue lines, not ordinary UI
+      // chrome. Only show caller-localized chips when the active UI locale is the
+      // target; otherwise suppress them rather than showing native-language chips
+      // inside a target-language NPC conversation.
+      starterChips: uiLocale === learnerPair.target ? args.starterChips : undefined,
       onClose: args.onClose,
       onSpeakStart: () => cityRadio?.duck(),
       onSpeakEnd: () => cityRadio?.unduck(),

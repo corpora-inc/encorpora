@@ -89,11 +89,45 @@ so it is the freshest instruction priming the model's output. The English person
 framing stays (it's instruction the model reads ABOUT the scene, not text to echo);
 a terse English anti-ramble belt remains.
 
-`promptLocale.ts` mirrors `challengeSegues.ts`: a per-language bank keyed by
-language code, `en` as the always-present fallback, a `{lang}` slot filled with the
-language's own **endonym** (e.g. "العربية", "español"), and a
-`registerPromptLocale()` seam so the 50-language localization generator can merge
-more languages without re-shipping the file.
+`promptLocale.ts` mirrors the stricter NPC-runtime rule: target-language output
+must resolve to the learner target, not to a convenient English/Spanish default.
+Known Corpán target codes must have exact or base coverage. Unknown codes should
+fail loudly in development; they must not silently paint or speak the wrong
+language.
+
+### 3. Runtime defaults pulled NPCs back into Spanish/English
+
+The model prompt and TTS voice can be correct while the runtime still poisons the
+conversation. We found three target-facing strings outside the prompt:
+
+- the hidden anti-repeat reminder prepended to later LLM turns,
+- the synthetic greeting seed used for the first model turn,
+- the no-LLM/scripted fallback lines.
+
+The anti-repeat default was Spanish, and authored NPC fallback lines in
+`content/npc/roles.json` are Spanish. That means an EN→FR stack could open a
+French TTS voice and still feed/read Spanish text.
+
+**Fix (`src/npc/runtimeLanguageText.ts` +
+`src/npc/generatedRuntimeLocales.json`):** these runtime strings now resolve from
+an explicit target-language catalog with exact stack-code aliases (`pt-BR`,
+`zh-Hans`, `ko-polite`, `pa-Guru`, `yue-Hant-HK`, etc.). Missing target locale
+throws instead of falling back to English/Spanish. Non-Spanish targets ignore the
+Spanish authored fallback line and use the generated target-language fallback.
+
+### 4. Challenge segues cross-fell back to English
+
+`challengeSegues.ts` only had rich per-tool banks for Spanish and English. Its
+resolver used `target → en → generic`, so a French learner got English challenge
+handoffs even when the rest of the stack was French.
+
+**Fix (`src/npc/challengeSegues.ts`):** per-tool banks are still used when present
+(`es`, `en` today), but a missing target now falls to generated target-language
+generic handoff text from `generatedRuntimeLocales.json`, never to another
+language. The generic handoff is less varied than the authored per-tool banks, but
+it is in the correct target language. The follow-up quality task is to generate
+full per-tool phrase banks for every target; the correctness invariant is already
+locked by tests.
 
 ### Full language coverage (all ~50 langs / 52 scripts)
 
@@ -104,8 +138,9 @@ doesn't). With Punjabi shipping Gurmukhi `pa` + Shahmukhi `pa-Arab`, Serbian
 Cyrillic `sr` + Latin `sr-Latn`, Chinese `zh`/`zh-Hans`/`zh-Hant`, Korean
 `ko`/`ko-polite`. Each directive is written IN that language and IN its native
 script, so EVERY target primes the model correctly — not just en/es/ar. Any code
-absent from the table still falls back to `en` (which names the target via
-`{lang}`), so the bank can never break a pair.
+absent from the table is a bug for shipped targets. It may only be tolerated in
+standalone development with a loud failure path; it should not ship as
+visible/spoken English for another target.
 
 **Granularity differs from the chrome i18n layer ON PURPOSE.** The chrome (`t()`
 in `src/i18n/strings.ts`) collapses variants to base (`zh-Hans`→`zh`,
@@ -154,14 +189,11 @@ Covered by `src/npc/npc.test.ts`:
   EN-learning NPC enumerates with `"en"`, picks an `en-*` voice, and speaks with
   `"en"`, never `"es"`.
 
-## Known remaining seam (outside `src/npc/*`)
+## Remaining Quality Work
 
-Two callers in OTHER domains still pass a **scene-derived `voiceHint`** as the
-explicit `voiceCode` override, which re-introduces the mismatch for those paths:
-
-- `src/game.ts` (vignette host) passes `voiceCode: args.voiceCode`.
-- `src/vignettes/taxi.ts` computes `targetVoice = scene.npcSkins?.[driverId]?.voiceHint`
-  and passes it as `voiceCode`.
-
-These should pass `learnerPair.target` (or simply omit `voiceCode`) so the runtime
-default applies. Flagged for the owner of those files.
+- Generate full per-tool challenge segue banks for every target language. The
+  current generic target-language fallback is correct but less varied.
+- Continue auditing non-NPC domains that intentionally use UI-locale English
+  fallbacks (`vignettes/*`, economy/shop/market surfaces). Those are UI/native
+  locale concerns, not NPC target speech, but they should still fail the
+  translation gate when a shipped locale is missing.
