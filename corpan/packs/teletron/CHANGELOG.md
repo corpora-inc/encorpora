@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+- Rework the local mediation pipeline (`@shared/moderation`) from a fixed
+  seven-pass cascade into Scrub → Drift → Recompose: a deterministic scrub of
+  contact/identity/place material, a risk probe that lets clean lines skip
+  straight to a single creative-polish pass (and escalates risky lines through
+  the semantic cascade), corpus-phrase seeds that replace the dead canned
+  fallbacks, and prompts that no longer collapse to a tutor/assistant voice.
+- Translation prompts now prefer a full in-language directive (best for
+  non-Latin scripts) and apply a CEFR level band (A2 simple → B natural → C2
+  erudite) drawn from the recipient's learning stack.
+
 - Fix async-penpal delivery losing messages when the recipient steps away by
   exiting Teletron (Back / pack switch). The pack's `unmount` was sending
   `chat-control { action: "ended" }` whenever the chat was active and the

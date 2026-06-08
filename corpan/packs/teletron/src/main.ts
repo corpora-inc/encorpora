@@ -40,7 +40,7 @@ const TTS_PROTOCOL_JUNK =
   /\b(as an ai|i can'?t assist|i cannot assist|policy|unsupported claim|fact[- ]?check|not appropriate)\b/i
 
 type InitialState = {
-  stackConfig?: { languages?: string[] }
+  stackConfig?: { languages?: string[]; levels?: string[] }
   isPlus?: boolean
   entitlement?: EntitlementSnapshot
 }
@@ -395,6 +395,8 @@ async function mountTeletron(
   let name = anonymousName()
   const languages = stackLanguages(initial)
   let selectedLanguage = languages.learning[0]
+  // Recipient's reach in their stack drives translation register (A2→simple, B2→natural, C2→erudite).
+  const recipientLevel = [...(initial?.stackConfig?.levels ?? [])].filter((x) => typeof x === "string").sort().pop()
   let plus = isPlus(initial)
   const disposers: Array<() => void> = []
   let ttsEnabled = localStorage.getItem("teletron.tts") !== "off"
@@ -1087,6 +1089,7 @@ async function mountTeletron(
       artifact = await mediator.lessonify(
         input,
         { native: languages.native, target: locale },
+        { level: recipientLevel },
       )
     } catch (error) {
       console.error("[teletron] lessonify failed:", error)
