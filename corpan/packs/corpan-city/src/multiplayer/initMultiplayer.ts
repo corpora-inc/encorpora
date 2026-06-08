@@ -140,6 +140,14 @@ export function resolveServerUrl(): string | undefined {
 const REVEAL_RADIUS = 3.2
 /** Re-reveal cooldown so the card doesn't re-pop while you loiter (ms). */
 const REVEAL_COOLDOWN_MS = 8000
+const ACTIVE_CHAT_STORAGE_KEY = "corpan-city.activeChat.v1"
+const ACTIVE_CHAT_RESUME_MS = 2 * 60 * 60 * 1000
+
+type RememberedChat = {
+  partnerId: PlayerId
+  partnerName: string
+  expiresAt: number
+}
 
 export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
   const t = bindT(opts.learnerPair.native)
@@ -162,6 +170,7 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     ended: boolean
     partnerOnline: boolean
     sending: boolean
+    pendingInviteId?: string
   } | null = null
   // Profile cards we've recently shown (playerId → last shown ms), to debounce.
   const recentlyRevealed = new Map<string, number>()
@@ -172,8 +181,66 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     string,
     { offer: InviteOffer; partnerId: PlayerId; partnerName: string }
   >()
+  const activeInvitePrompts = new Map<string, { from: PlayerId; close: () => void }>()
+  const knownNames = new Map<string, string>()
   // Peer-challenge result fan-in, keyed by inviteId.
   const peerResultListeners = new Map<string, (r: ChallengeResult) => void>()
+
+  function rememberName(playerId: string | PlayerId, name?: string): void {
+    const clean = typeof name === "string" ? name.trim() : ""
+    if (!clean || clean === "·") return
+    knownNames.set(String(playerId), clean)
+  }
+
+  function nameFor(playerId: string | PlayerId, fallback = "Traveler"): string {
+    return knownNames.get(String(playerId)) ?? rememberedChat(String(playerId) as PlayerId)?.partnerName ?? fallback
+  }
+
+  function rememberChat(partnerId: PlayerId, partnerName: string): void {
+    rememberName(partnerId, partnerName)
+    try {
+      const data: RememberedChat = {
+        partnerId,
+        partnerName: partnerName || nameFor(partnerId),
+        expiresAt: Date.now() + ACTIVE_CHAT_RESUME_MS,
+      }
+      localStorage.setItem(ACTIVE_CHAT_STORAGE_KEY, JSON.stringify(data))
+    } catch {
+      /* storage is best-effort only */
+    }
+  }
+
+  function rememberedChat(partnerId?: PlayerId): RememberedChat | null {
+    try {
+      const raw = localStorage.getItem(ACTIVE_CHAT_STORAGE_KEY)
+      if (!raw) return null
+      const parsed = JSON.parse(raw) as Partial<RememberedChat>
+      if (!parsed.partnerId || !parsed.expiresAt || parsed.expiresAt <= Date.now()) {
+        localStorage.removeItem(ACTIVE_CHAT_STORAGE_KEY)
+        return null
+      }
+      if (partnerId && parsed.partnerId !== partnerId) return null
+      return {
+        partnerId: parsed.partnerId as PlayerId,
+        partnerName: typeof parsed.partnerName === "string" ? parsed.partnerName : "Traveler",
+        expiresAt: Number(parsed.expiresAt),
+      }
+    } catch {
+      return null
+    }
+  }
+
+  function clearRememberedChat(partnerId?: PlayerId): void {
+    try {
+      const current = rememberedChat()
+      if (!current) return
+      if (!partnerId || current.partnerId === partnerId) {
+        localStorage.removeItem(ACTIVE_CHAT_STORAGE_KEY)
+      }
+    } catch {
+      /* storage is best-effort only */
+    }
+  }
 
   /* -------------------------------------------------- profile / reveal helpers */
 
@@ -197,6 +264,7 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
 
   function showCard(card: SafeProfile, fallbackName: string): void {
     const name = card.name || fallbackName
+    rememberName(card.playerId, name)
     showProfileCard(opts.overlay, t, opts.learnerPair.native, card, {
       onSayHi: () => {
         if (chat?.partnerId === card.playerId) return
@@ -234,8 +302,24 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
 
   function sendInvite(partnerId: string, partnerName: string, offer: InviteOffer | null): void {
     if (!proto || !offer) return
+    if (offer.kind === "chat" && chat && !chat.ended) {
+      if (chat.partnerId === partnerId) {
+        updateChatConnectivity()
+      } else {
+        showToast(opts.overlay, opts.learnerPair.native, t("mp.invite.unavailable", { name: partnerName }))
+      }
+      return
+    }
+    for (const pending of pendingInvites.values()) {
+      if (pending.partnerId === partnerId && pending.offer.kind === offer.kind) {
+        showToast(opts.overlay, opts.learnerPair.native, t("mp.invite.sent"))
+        return
+      }
+    }
+    rememberName(partnerId, partnerName)
     const inviteId = proto.invite(partnerId, offer)
     pendingInvites.set(inviteId, { offer, partnerId: partnerId as PlayerId, partnerName })
+    if (offer.kind === "chat") openChat(partnerId as PlayerId, partnerName, inviteId)
     showToast(opts.overlay, opts.learnerPair.native, t("mp.invite.sent"))
   }
 
@@ -244,6 +328,7 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     if (!pending) return
     if (msg.outcome === "accepted") {
       // The invitee accepted → start the shared session from OUR side.
+      rememberName(pending.partnerId, pending.partnerName)
       startSession(msg.inviteId, pending.offer, pending.partnerId, pending.partnerName, true)
     } else {
       const key =
@@ -252,18 +337,41 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
           : msg.outcome === "expired"
             ? "mp.invite.expired"
             : "mp.invite.unavailable"
+      if (chat?.pendingInviteId === msg.inviteId) {
+        chat.pendingInviteId = undefined
+        chat.ended = true
+        chat.partnerOnline = false
+        clearRememberedChat(chat.partnerId)
+        chat.panel.appendSystem(t(key, { name: pending.partnerName }))
+        updateChatConnectivity()
+      }
       showToast(opts.overlay, opts.learnerPair.native, t(key, { name: pending.partnerName }))
     }
     pendingInvites.delete(msg.inviteId)
   }
 
   function onInvited(msg: InvitedMessage): void {
-    showInvitePrompt(opts.overlay, t, opts.learnerPair.native, msg, (accepted) => {
+    rememberName(msg.from, msg.fromName)
+    if (msg.offer.kind === "chat" && chat && !chat.ended) {
+      proto?.respondInvite(msg.inviteId, chat.partnerId === msg.from ? "accept" : "decline")
+      if (chat.partnerId === msg.from) updateChatConnectivity()
+      return
+    }
+    for (const prompt of activeInvitePrompts.values()) {
+      if (prompt.from === msg.from) {
+        proto?.respondInvite(msg.inviteId, "decline")
+        return
+      }
+    }
+    const prompt = showInvitePrompt(opts.overlay, t, opts.learnerPair.native, msg, (accepted) => {
+      activeInvitePrompts.delete(msg.inviteId)
       proto?.respondInvite(msg.inviteId, accepted ? "accept" : "decline")
       if (accepted) {
+        rememberName(msg.from, msg.fromName)
         startSession(msg.inviteId, msg.offer, msg.from, msg.fromName, false)
       }
     })
+    activeInvitePrompts.set(msg.inviteId, { from: msg.from, close: prompt.close })
   }
 
   /** Begin the agreed-upon session (chat / challenge / trade) on this device. */
@@ -347,6 +455,10 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     text: string,
   ): Promise<void> {
     const activeChat = chat
+    if (activeChat?.pendingInviteId) {
+      updateChatConnectivity()
+      return
+    }
     if (!activeChat || activeChat.ended || !activeChat.partnerOnline || !proto) {
       updateChatConnectivity()
       showToast(opts.overlay, opts.learnerPair.native, t("mp.chat.offline"))
@@ -388,8 +500,15 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     }
   }
 
-  function openChat(partnerId: PlayerId, partnerName: string): void {
+  function openChat(partnerId: PlayerId, partnerName: string, pendingInviteId?: string): void {
+    const cleanPartnerName = partnerName && partnerName !== "·" ? partnerName : nameFor(partnerId)
+    rememberName(partnerId, cleanPartnerName)
     if (chat?.partnerId === partnerId && !chat.ended) {
+      if (!pendingInviteId) {
+        chat.pendingInviteId = undefined
+        chat.partnerOnline = true
+        rememberChat(partnerId, cleanPartnerName)
+      }
       updateChatConnectivity()
       return
     }
@@ -400,7 +519,7 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
       opts.overlay,
       t,
       opts.learnerPair.native,
-      partnerName,
+      cleanPartnerName,
       (text) => {
         // Raw text stays local. The author's LLM cleans it before transmission.
         void sendChatText(partnerId, interactionId, text)
@@ -410,22 +529,26 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
         closingFromPanel = true
         const active = chat
         if (active?.interactionId === interactionId) {
-          if (!active.ended) {
+          if (!active.ended && !active.pendingInviteId) {
             proto?.sendChatControl({ to: partnerId, interactionId, action: "ended" })
           }
+          clearRememberedChat(partnerId)
+          if (active.pendingInviteId) pendingInvites.delete(active.pendingInviteId)
           chat = null
         }
       },
     )
     chat = {
       partnerId,
-      partnerName,
+      partnerName: cleanPartnerName,
       panel,
       interactionId,
       ended: false,
-      partnerOnline: true,
+      partnerOnline: !pendingInviteId,
       sending: false,
+      pendingInviteId,
     }
+    if (!pendingInviteId) rememberChat(partnerId, cleanPartnerName)
     updateChatConnectivity()
   }
 
@@ -434,6 +557,11 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     if (chat.ended) {
       chat.panel.setCanSend(false)
       chat.panel.setStatus(t("mp.invite.unavailable", { name: chat.partnerName }))
+      return
+    }
+    if (chat.pendingInviteId) {
+      chat.panel.setCanSend(false)
+      chat.panel.setStatus(t("mp.invite.sent"))
       return
     }
     if (!chat.partnerOnline || !proto) {
@@ -446,15 +574,30 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
   }
 
   function onChatControl(msg: ChatControlDeliver): void {
-    if (!chat || chat.partnerId !== msg.from) return
+    rememberName(msg.from, msg.fromName)
+    if (!chat || chat.partnerId !== msg.from) {
+      if (msg.action === "ended") {
+        clearRememberedChat(msg.from)
+        return
+      }
+      if (msg.action === "partner-returned") {
+        const remembered = rememberedChat(msg.from)
+        if (remembered && !chat) {
+          openChat(remembered.partnerId, msg.fromName ?? remembered.partnerName)
+        }
+      }
+      return
+    }
     if (msg.action === "ended") {
       chat.ended = true
       chat.partnerOnline = false
+      clearRememberedChat(chat.partnerId)
       chat.panel.appendSystem(t("mp.invite.unavailable", { name: chat.partnerName }))
       updateChatConnectivity()
       return
     }
     if (msg.action === "partner-left") {
+      if (!chat.partnerOnline) return
       chat.partnerOnline = false
       chat.panel.appendSystem(t("mp.invite.unavailable", { name: chat.partnerName }))
       updateChatConnectivity()
@@ -462,7 +605,9 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     }
     if (msg.action === "partner-returned") {
       if (chat.ended) return
+      chat.pendingInviteId = undefined
       chat.partnerOnline = true
+      rememberChat(chat.partnerId, chat.partnerName)
       updateChatConnectivity()
     }
   }
@@ -471,7 +616,13 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
   async function onChat(input: MediatedChatInput): Promise<void> {
     // Open a panel if this is the first message from someone we're not chatting with.
     if (!chat || chat.partnerId !== input.from) {
-      openChat(input.from as PlayerId, "·") // name unknown here; the card supplies it normally
+      openChat(input.from as PlayerId, nameFor(input.from))
+    }
+    if (chat?.partnerId === input.from) {
+      chat.pendingInviteId = undefined
+      chat.partnerOnline = true
+      rememberChat(chat.partnerId, chat.partnerName)
+      updateChatConnectivity()
     }
     const panel = chat?.panel
     if (!panel) return
@@ -546,6 +697,8 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     proto = null
     tradeTransport = null
     trade = null
+    for (const prompt of activeInvitePrompts.values()) prompt.close()
+    activeInvitePrompts.clear()
     updateChatConnectivity()
   }
 
@@ -585,6 +738,8 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
       pip.dispose()
       chat?.panel.close()
       chat = null
+      for (const prompt of activeInvitePrompts.values()) prompt.close()
+      activeInvitePrompts.clear()
       unbindRoom()
       mediator.dispose()
       net?.dispose()

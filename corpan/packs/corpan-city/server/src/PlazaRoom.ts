@@ -75,9 +75,18 @@ const MAX_SPEED = 14
 const MIN_DT = 0.001
 /** How long an accepted chat/trade pair may survive a fresh socket rejoin. */
 const ACCEPTED_PAIR_TTL_MS = 2 * 60 * 60 * 1000
+/** How long an unanswered invite stays live before it resolves as expired. */
+const INVITE_TTL_MS = 30 * 1000
 
 type InviteKind = InviteMessage["offer"]["kind"]
 type AcceptedPair = { a: string; b: string; kind: InviteKind; expiresAt: number }
+type InviteRecord = {
+  from: string
+  to: string
+  kind: InviteKind
+  accepted: boolean
+  timeout?: ReturnType<typeof setTimeout>
+}
 
 export class PlazaRoom extends Room<PlazaState> {
   /** soft cap before matchmaking spins a sibling room (see index.ts sortBy). */
@@ -110,7 +119,7 @@ export class PlazaRoom extends Room<PlazaState> {
   /** playerId → sessionId, so an invite/trade addressed by durable PlayerId routes. */
   private byPlayerId = new Map<string, string>()
   /** invites we're tracking: pending for accept/decline, accepted as a session authz record. */
-  private invites = new Map<string, { from: string; to: string; kind: InviteKind; accepted: boolean }>()
+  private invites = new Map<string, InviteRecord>()
   /** Durable playerId pair auth for accepted chat/trade after reconnect/rejoin. */
   private acceptedPairs = new Map<string, AcceptedPair>()
   /** coarse anti-grief: sessionId → recent action timestamps (sliding window). */
@@ -193,6 +202,7 @@ export class PlazaRoom extends Room<PlazaState> {
     this.aoi.set(client.sessionId, p.x, p.z)
     this.linkAoi(client.sessionId)
     this.notifyAcceptedChatPartners(p.playerId, "partner-returned")
+    this.notifyJoinedPlayerAboutAcceptedChats(p.playerId)
 
     console.log(`[${this.roomLabel}] +join ${p.name} (${client.sessionId}) → ${this.state.players.size} players`)
   }
@@ -252,6 +262,7 @@ export class PlazaRoom extends Room<PlazaState> {
   }
 
   onDispose() {
+    for (const rec of this.invites.values()) this.clearInviteTimer(rec)
     console.log(`[${this.roomLabel}] room ${this.roomId} disposed`)
   }
 
@@ -371,16 +382,31 @@ export class PlazaRoom extends Room<PlazaState> {
         this.resultTo(client, parsed.data.inviteId, "unavailable")
         return
       }
+      if (
+        parsed.data.offer.kind === "chat" &&
+        this.acceptedPairForPlayerIds(from.playerId, String(parsed.data.to), "chat")
+      ) {
+        this.resultTo(client, parsed.data.inviteId, "accepted")
+        this.sendChatControlToPlayer(
+          String(parsed.data.to),
+          from.playerId,
+          "partner-returned",
+          `pair-${pairKey(from.playerId, String(parsed.data.to), "chat")}`,
+        )
+        return
+      }
       if (this.invites.has(parsed.data.inviteId)) {
         this.resultTo(client, parsed.data.inviteId, "unavailable")
         return
       }
-      this.invites.set(parsed.data.inviteId, {
+      const rec: InviteRecord = {
         from: client.sessionId,
         to: toSession,
         kind: parsed.data.offer.kind,
         accepted: false,
-      })
+      }
+      rec.timeout = setTimeout(() => this.expireInvite(parsed.data.inviteId), INVITE_TTL_MS)
+      this.invites.set(parsed.data.inviteId, rec)
       const invited: InvitedMessage = {
         inviteId: parsed.data.inviteId,
         from: from.playerId as InvitedMessage["from"],
@@ -399,6 +425,7 @@ export class PlazaRoom extends Room<PlazaState> {
       if (!rec || rec.to !== client.sessionId) return // only the invitee may respond
       const inviter = this.clientsBySession.get(rec.from)
       const outcome = parsed.data.action === "accept" ? "accepted" : "declined"
+      this.clearInviteTimer(rec)
       if (outcome === "accepted") {
         rec.accepted = true
         this.rememberAcceptedPair(rec.from, rec.to, rec.kind)
@@ -418,14 +445,20 @@ export class PlazaRoom extends Room<PlazaState> {
       }
       if (!this.allow(client.sessionId, "chat", 20, 10000)) return
       const from = this.state.players.get(client.sessionId)
-      const toSession = this.byPlayerId.get(String(parsed.data.to))
+      const toPlayerId = String(parsed.data.to)
+      const toSession = this.byPlayerId.get(toPlayerId)
       const toClient = toSession ? this.clientsBySession.get(toSession) : undefined
       const to = toSession ? this.state.players.get(toSession) : undefined
-      if (!from || !toSession || !toClient || !to) return
-      if (!this.hasAcceptedInvite(client.sessionId, toSession, "chat")) {
+      if (!from) return
+      if (!this.acceptedPairForPlayerIds(from.playerId, toPlayerId, "chat")) {
         console.warn(`[plaza] rejected chat without accepted invite from ${client.sessionId}`)
         return
       }
+      if (!toSession || !toClient || !to) {
+        this.sendChatControlToClient(client, toPlayerId, from.playerId, "partner-left")
+        return
+      }
+      this.touchAcceptedPair(from.playerId, to.playerId, "chat")
       // Never trust caller-supplied routing identity. Stamp both parties from
       // the live room and frame the learning target from the recipient profile.
       const delivered = MediatedChatInput.parse({
@@ -448,18 +481,21 @@ export class PlazaRoom extends Room<PlazaState> {
       }
       if (!this.allow(client.sessionId, "chat-control", 12, 10000)) return
       const from = this.state.players.get(client.sessionId)
-      const toSession = this.byPlayerId.get(String(parsed.data.to))
+      const toPlayerId = String(parsed.data.to)
+      const toSession = this.byPlayerId.get(toPlayerId)
       const toClient = toSession ? this.clientsBySession.get(toSession) : undefined
       const to = toSession ? this.state.players.get(toSession) : undefined
-      if (!from || !toSession || !toClient || !to) return
-      if (!this.hasAcceptedInvite(client.sessionId, toSession, "chat")) return
+      if (!from) return
+      if (!this.acceptedPairForPlayerIds(from.playerId, toPlayerId, "chat")) return
       if (parsed.data.action === "ended") {
-        this.forgetAcceptedPair(from.playerId, to.playerId, "chat")
-        this.dropAcceptedInviteForPlayers(from.playerId, to.playerId, "chat")
+        this.forgetAcceptedPair(from.playerId, toPlayerId, "chat")
+        this.dropAcceptedInviteForPlayers(from.playerId, toPlayerId, "chat")
       }
+      if (!toSession || !toClient || !to) return
       const delivered: ChatControlDeliver = {
         ...parsed.data,
         from: from.playerId as ChatControlDeliver["from"],
+        fromName: from.name || "Traveler",
         to: to.playerId as ChatControlDeliver["to"],
       }
       toClient.send(MP_MSG.chatControl, ChatControlDeliver.parse(delivered))
@@ -513,10 +549,26 @@ export class PlazaRoom extends Room<PlazaState> {
     client.send(MP_MSG.inviteResult, msg)
   }
 
+  private clearInviteTimer(rec: InviteRecord): void {
+    if (!rec.timeout) return
+    clearTimeout(rec.timeout)
+    rec.timeout = undefined
+  }
+
+  private expireInvite(inviteId: string): void {
+    const rec = this.invites.get(inviteId)
+    if (!rec || rec.accepted) return
+    this.clearInviteTimer(rec)
+    const inviter = this.clientsBySession.get(rec.from)
+    if (inviter) this.resultTo(inviter, inviteId, "expired")
+    this.invites.delete(inviteId)
+  }
+
   /** Drop + expire every invite touching a (leaving) session. */
   private dropInvitesFor(sessionId: string): void {
     for (const [id, rec] of [...this.invites]) {
       if (rec.from === sessionId || rec.to === sessionId) {
+        this.clearInviteTimer(rec)
         if (rec.accepted && (rec.kind === "chat" || rec.kind === "trade")) {
           this.invites.delete(id)
           continue
@@ -555,6 +607,10 @@ export class PlazaRoom extends Room<PlazaState> {
     const a = this.state.players.get(aSession)?.playerId
     const b = this.state.players.get(bSession)?.playerId
     if (!a || !b) return null
+    return this.acceptedPairForPlayerIds(a, b, kind)
+  }
+
+  private acceptedPairForPlayerIds(a: string, b: string, kind: InviteKind): AcceptedPair | null {
     const key = pairKey(a, b, kind)
     const rec = this.acceptedPairs.get(key)
     if (!rec) return null
@@ -563,6 +619,12 @@ export class PlazaRoom extends Room<PlazaState> {
       return null
     }
     return rec
+  }
+
+  private touchAcceptedPair(a: string, b: string, kind: InviteKind): void {
+    const rec = this.acceptedPairForPlayerIds(a, b, kind)
+    if (!rec) return
+    rec.expiresAt = Date.now() + ACCEPTED_PAIR_TTL_MS
   }
 
   private forgetAcceptedPair(a: string, b: string, kind: InviteKind): void {
@@ -574,7 +636,10 @@ export class PlazaRoom extends Room<PlazaState> {
       if (!rec.accepted || rec.kind !== kind) continue
       const from = this.state.players.get(rec.from)?.playerId
       const to = this.state.players.get(rec.to)?.playerId
-      if ((from === a && to === b) || (from === b && to === a)) this.invites.delete(id)
+      if ((from === a && to === b) || (from === b && to === a)) {
+        this.clearInviteTimer(rec)
+        this.invites.delete(id)
+      }
     }
   }
 
@@ -585,17 +650,65 @@ export class PlazaRoom extends Room<PlazaState> {
       if (rec.kind !== "chat") continue
       if (rec.a !== playerId && rec.b !== playerId) continue
       const otherPlayerId = rec.a === playerId ? rec.b : rec.a
-      const otherSession = this.byPlayerId.get(otherPlayerId)
-      const otherClient = otherSession ? this.clientsBySession.get(otherSession) : undefined
-      if (!otherClient) continue
-      const delivered: ChatControlDeliver = {
-        from: playerId as ChatControlDeliver["from"],
-        to: otherPlayerId as ChatControlDeliver["to"],
-        interactionId: `pair-${pairKey(playerId, otherPlayerId, "chat")}`,
+      this.sendChatControlToPlayer(
+        otherPlayerId,
+        playerId,
         action,
-      }
-      otherClient.send(MP_MSG.chatControl, ChatControlDeliver.parse(delivered))
+        `pair-${pairKey(playerId, otherPlayerId, "chat")}`,
+      )
     }
+  }
+
+  private notifyJoinedPlayerAboutAcceptedChats(playerId: string): void {
+    if (!playerId) return
+    this.pruneAcceptedPairs()
+    for (const rec of this.acceptedPairs.values()) {
+      if (rec.kind !== "chat") continue
+      if (rec.a !== playerId && rec.b !== playerId) continue
+      const partnerPlayerId = rec.a === playerId ? rec.b : rec.a
+      if (!this.byPlayerId.has(partnerPlayerId)) continue
+      this.sendChatControlToPlayer(
+        playerId,
+        partnerPlayerId,
+        "partner-returned",
+        `pair-${pairKey(playerId, partnerPlayerId, "chat")}`,
+      )
+    }
+  }
+
+  private sendChatControlToPlayer(
+    toPlayerId: string,
+    fromPlayerId: string,
+    action: ChatControlDeliver["action"],
+    interactionId = `pair-${pairKey(fromPlayerId, toPlayerId, "chat")}`,
+  ): void {
+    const toSession = this.byPlayerId.get(toPlayerId)
+    const toClient = toSession ? this.clientsBySession.get(toSession) : undefined
+    if (!toClient) return
+    this.sendChatControlToClient(toClient, fromPlayerId, toPlayerId, action, interactionId)
+  }
+
+  private sendChatControlToClient(
+    client: Client,
+    fromPlayerId: string,
+    toPlayerId: string,
+    action: ChatControlDeliver["action"],
+    interactionId = `pair-${pairKey(fromPlayerId, toPlayerId, "chat")}`,
+  ): void {
+    const delivered: ChatControlDeliver = {
+      from: fromPlayerId as ChatControlDeliver["from"],
+      fromName: this.playerNameById(fromPlayerId),
+      to: toPlayerId as ChatControlDeliver["to"],
+      interactionId,
+      action,
+    }
+    client.send(MP_MSG.chatControl, ChatControlDeliver.parse(delivered))
+  }
+
+  private playerNameById(playerId: string): string | undefined {
+    const sessionId = this.byPlayerId.get(playerId)
+    const player = sessionId ? this.state.players.get(sessionId) : undefined
+    return player?.name || undefined
   }
 
   private pruneAcceptedPairs(): void {

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.5] - 2026-06-08
+
+- Solidified the peer-chat lifecycle: ignored invites now expire cleanly, tapping
+  outside an invite declines it, duplicate/conflicting chat invites are suppressed,
+  and outgoing chat invites open a pending chat sheet that becomes live when the
+  peer accepts.
+- Made accepted chat sessions more resilient across reconnects and app resumes:
+  returning players now receive partner-returned signals with peer names, active
+  chat partners are remembered locally for resume, and explicit chat endings clear
+  durable server authorization even when the other player is offline.
+- Hardened dead-socket behavior so chat sends to an offline accepted partner
+  produce a lifecycle update instead of silently disappearing.
+
 ## [0.1.4] - 2026-06-08
 
 - Polished multiplayer chat for narrow mobile screens: the peer-chat sheet now
