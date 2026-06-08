@@ -5,6 +5,7 @@
 - Add Tutomaton-style streaming TTS for received chat: target-language translation tokens are sentence-buffered and spoken before the full mediated artifact finishes.
 - Add a voice mute toggle and tap-to-replay affordance for peer messages.
 - Polish the mobile layout with safe-area-aware header/conversation insets, compact phone chrome, richer message cards, and a more premium glassy waiting-room/chat treatment.
+- Make the phone chat layout stateful so the waiting-room header and active-chat header do not stack, and the composer stays pinned without a dead band below it.
 
 ## 0.1.3
 

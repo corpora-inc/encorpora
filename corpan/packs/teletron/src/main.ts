@@ -532,6 +532,7 @@ async function mountTeletron(
   function openThread(p: WirePlayer): void {
     cancelSpeech()
     partner = p
+    root.classList.add("is-thread-open")
     empty.setAttribute("hidden", "")
     thread.removeAttribute("hidden")
     $(".tt-partner").textContent = p.name
@@ -544,6 +545,7 @@ async function mountTeletron(
   function closeThread(): void {
     cancelSpeech()
     partner = null
+    root.classList.remove("is-thread-open")
     thread.setAttribute("hidden", "")
     empty.removeAttribute("hidden")
   }
