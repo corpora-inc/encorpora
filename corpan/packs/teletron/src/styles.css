@@ -567,12 +567,17 @@
   transform: translateY(-50%);
   opacity: 0.28;
   background: currentColor;
-  -webkit-mask:
-    radial-gradient(circle at 78% 50%, transparent 0 36%, #000 38% 47%, transparent 49%) right / 70% 100% no-repeat,
-    polygon(0 38%, 28% 38%, 62% 12%, 62% 88%, 28% 62%, 0 62%);
-  mask:
-    radial-gradient(circle at 78% 50%, transparent 0 36%, #000 38% 47%, transparent 49%) right / 70% 100% no-repeat,
-    polygon(0 38%, 28% 38%, 62% 12%, 62% 88%, 28% 62%, 0 62%);
+  /* Speaker icon as alpha mask. `polygon()` is a clip-path value, not a
+   * mask layer — the earlier shorthand parsed as invalid in every browser,
+   * which is why this rendered as a solid gray square. */
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5 6 9H3v6h3l5 4Z'/><path fill='none' d='M15.5 8.5a5 5 0 0 1 0 7'/><path fill='none' d='M18.5 5.5a9 9 0 0 1 0 13'/></svg>");
+  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5 6 9H3v6h3l5 4Z'/><path fill='none' d='M15.5 8.5a5 5 0 0 1 0 7'/><path fill='none' d='M18.5 5.5a9 9 0 0 1 0 13'/></svg>");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
   transition: opacity 0.15s ease;
 }
 .tt-message.is-speakable:hover div::after { opacity: 0.58; }

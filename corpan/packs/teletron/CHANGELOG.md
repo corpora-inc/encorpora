@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+- Fix the gray-square that rendered on the right side of speakable message
+  bubbles: the speaker-icon CSS was using `polygon()` as a mask layer, which is
+  a `clip-path` value and not a valid mask source — every browser dropped the
+  mask entirely and filled the box with `currentColor`. Replaced with a proper
+  inline-SVG speaker mask.
+- Add a `scripts/pack.mjs` (`npm run pack`) that bundles `teletron-avatar.png`
+  alongside `manifest.json` and `dist/` into `teletron.zip`. The brand avatar
+  is referenced by `main.ts` via `packAssetUrl()`, but the previous ad-hoc zip
+  shipped only `manifest.json + dist/`, so the logo broke on platforms that
+  resolve pack assets from the downloaded zip (e.g. Android). iOS happened to
+  work because its plugin copies the pack from the iOS app bundle, which
+  already contained the PNG.
+
 ## 0.1.7 - 2026-06-08
 
 - Add Block and Report safety controls (required for an all-ages social space):
