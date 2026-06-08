@@ -44,11 +44,26 @@ import {
   sortTutorVoices,
 } from "./voicePreferences"
 
+type EntitlementSnapshot = {
+  plus?: boolean
+  subscription?: {
+    active?: boolean
+    plan?: "monthly" | "annual" | null
+    expiresAt?: string | null
+    autoRenew?: boolean
+  }
+  checkedAt?: number | null
+}
+
 // Minimal slice of @corpan/sdk's ContentPackModule that we actually use.
 // The host passes initialState.stackConfig — the user's active stack, where
 // languages[0] is their NATIVE language and languages[1..] are the ones they're
 // learning. We use it to float the user's own languages to the top of the picker.
-type MountInit = { stackConfig?: { languages?: string[] } }
+type MountInit = {
+  stackConfig?: { languages?: string[] }
+  isPlus?: boolean
+  entitlement?: EntitlementSnapshot
+}
 type ContentPackModule = {
   mount: (
     container: HTMLElement,
@@ -58,6 +73,8 @@ type ContentPackModule = {
 }
 
 const PACK_ID = "tutomaton"
+const FREE_DAILY_LIMIT = 20
+const QUOTA_KEY = "tutomaton.quota"
 
 type Msg = { role: "user" | "assistant"; content: string }
 
@@ -67,6 +84,64 @@ type State = {
   activeLanguage: LanguageRuntime | null
   currentStreamId: string | null
   cancelStream: (() => Promise<void>) | null
+}
+
+let memoryQuota: { day: string; count: number } | null = null
+
+function localDay(): string {
+  const now = new Date()
+  const yyyy = String(now.getFullYear())
+  const mm = String(now.getMonth() + 1).padStart(2, "0")
+  const dd = String(now.getDate()).padStart(2, "0")
+  return `${yyyy}-${mm}-${dd}`
+}
+
+function isPlus(initial?: MountInit): boolean {
+  const injected = globalThis as {
+    __CORPAN_PLUS?: boolean
+    __CORPAN_ENTITLEMENT?: EntitlementSnapshot
+  }
+  return Boolean(
+    initial?.isPlus ||
+      initial?.entitlement?.plus ||
+      initial?.entitlement?.subscription?.active ||
+      injected.__CORPAN_PLUS ||
+      injected.__CORPAN_ENTITLEMENT?.plus ||
+      injected.__CORPAN_ENTITLEMENT?.subscription?.active
+  )
+}
+
+function readQuota(): { day: string; count: number } {
+  const day = localDay()
+  try {
+    const parsed = JSON.parse(localStorage.getItem(QUOTA_KEY) || "{}") as {
+      day?: string
+      count?: number
+    }
+    const storedCount = parsed.day === day ? Math.max(0, parsed.count ?? 0) : 0
+    const memoryCount = memoryQuota?.day === day ? memoryQuota.count : 0
+    return { day, count: Math.max(storedCount, memoryCount) }
+  } catch {
+    return memoryQuota?.day === day ? memoryQuota : { day, count: 0 }
+  }
+}
+
+function quotaRemaining(plus: boolean): number {
+  if (plus) return Infinity
+  const quota = readQuota()
+  return Math.max(0, FREE_DAILY_LIMIT - quota.count)
+}
+
+function consumeQuota(plus: boolean): void {
+  if (plus) return
+  const quota = readQuota()
+  const next = { day: quota.day, count: Math.min(FREE_DAILY_LIMIT, quota.count + 1) }
+  memoryQuota = next
+  try {
+    localStorage.setItem(QUOTA_KEY, JSON.stringify(next))
+  } catch {
+    /* memoryQuota carries this session if WebKit storage is unavailable/full */
+  }
 }
 
 // ============================================================
@@ -230,6 +305,8 @@ const PackModule: ContentPackModule = {
       currentStreamId: null,
       cancelStream: null,
     }
+    let plus = isPlus(initialState)
+    const disposers: Array<() => void> = []
 
     const baseUrl = readPackBaseUrl()
     const packFetch = (rel: string) => fetch(proxied(joinUrl(baseUrl, rel)), { cache: "no-store" })
@@ -485,6 +562,7 @@ const PackModule: ContentPackModule = {
           <button class="lt-send" aria-label="${t("send")}" disabled>
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.2L4 11l9 1-9 1-1.98 6.2a1 1 0 0 0 1.38 1.2z"/></svg>
           </button>
+          <div class="lt-quota" role="status" aria-live="polite"></div>
         </footer>
 
         <div class="lt-setup" hidden>
@@ -507,6 +585,7 @@ const PackModule: ContentPackModule = {
     const $text = container.querySelector<HTMLTextAreaElement>(".lt-text")!
     const $send = container.querySelector<HTMLButtonElement>(".lt-send")!
     const $mic = container.querySelector<HTMLButtonElement>(".lt-mic")!
+    const $quota = container.querySelector<HTMLDivElement>(".lt-quota")!
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
     const $tune = container.querySelector<HTMLButtonElement>(".lt-tune")!
     const $voice = container.querySelector<HTMLButtonElement>(".lt-voice")!
@@ -1161,22 +1240,58 @@ const PackModule: ContentPackModule = {
 
     // ---------- send a turn ----------
     const $inputBar = container.querySelector<HTMLElement>(".lt-input")!
+    let dictateSession: import("./languageManager").HostAsrSession | null = null
+    let dictateLive = false
+    let dictateStarting = false
+    let dictateStopping = false
+
+    function renderQuota() {
+      const remaining = quotaRemaining(plus)
+      $quota.textContent = plus
+        ? t("quotaPlus")
+        : t("quotaFree", { count: String(remaining) })
+      $quota.classList.toggle("is-plus", plus)
+      $quota.classList.toggle("is-empty", !plus && remaining <= 0)
+      $inputBar.classList.toggle("is-quota-empty", !plus && remaining <= 0)
+    }
+
     function syncSendEnabled() {
       const hasText = $text.value.trim().length > 0
-      $send.disabled = !modelReady || !hasText || !!state.currentStreamId
+      const quotaOpen = quotaRemaining(plus) > 0
+      $text.disabled = !quotaOpen
+      $send.disabled = !modelReady || !hasText || !!state.currentStreamId || !quotaOpen
+      if (!quotaOpen) {
+        $text.placeholder = t("quotaEmpty")
+        $mic.disabled = true
+      } else {
+        $text.placeholder = t("askAnything")
+        $mic.disabled = dictateStarting || dictateStopping
+      }
       // iMessage-style: text present → show the send arrow; empty → show the
       // hold-to-talk mic. CSS swaps which control is visible off this class.
       $inputBar.classList.toggle("has-text", hasText)
+      renderQuota()
     }
+
+    function onEntitlementChanged(event: Event): void {
+      const detail = (event as CustomEvent<EntitlementSnapshot>).detail
+      const nextPlus = Boolean(
+        detail?.plus ||
+          detail?.subscription?.active ||
+          (globalThis as { __CORPAN_PLUS?: boolean }).__CORPAN_PLUS
+      )
+      if (nextPlus === plus) return
+      plus = nextPlus
+      syncSendEnabled()
+      if (plus) systemNote(t("quotaPlusActivated"))
+    }
+    window.addEventListener("corpan:entitlement-changed", onEntitlementChanged)
+    disposers.push(() => window.removeEventListener("corpan:entitlement-changed", onEntitlementChanged))
 
     // ---------- dictation (host.asr) ----------
     // Show the mic ONLY where the device can transcribe the ACTIVE tutor's
     // language; otherwise stay hidden (the keyboard's own dictation mic still
     // works — this is purely additive). Re-probed on each language switch.
-    let dictateSession: import("./languageManager").HostAsrSession | null = null
-    let dictateLive = false
-    let dictateStarting = false
-    let dictateStopping = false
     const setDictateLive = (on: boolean) => {
       dictateLive = on
       // `.recording` is the existing chat.css pulse style for the live mic.
@@ -1184,7 +1299,10 @@ const PackModule: ContentPackModule = {
       $mic.setAttribute("aria-label", on ? "Stop dictation" : "Dictate")
     }
     async function startDictation() {
-      if (dictateStarting || dictateLive) return
+      if (dictateStarting || dictateLive || quotaRemaining(plus) <= 0) {
+        syncSendEnabled()
+        return
+      }
       const lang = state.activeLanguage?.code
       if (!lang || !hostApi.asr) return
       dictateStarting = true
@@ -1219,7 +1337,7 @@ const PackModule: ContentPackModule = {
         console.error("[tutomaton] dictation start failed:", err)
       } finally {
         dictateStarting = false
-        if (!$mic.hidden) $mic.disabled = false
+        syncSendEnabled()
       }
     }
     async function stopDictation() {
@@ -1231,7 +1349,7 @@ const PackModule: ContentPackModule = {
       if (!s) {
         setDictateLive(false)
         dictateStopping = false
-        if (!$mic.hidden) $mic.disabled = false
+        syncSendEnabled()
         return
       }
       try {
@@ -1245,7 +1363,7 @@ const PackModule: ContentPackModule = {
       } finally {
         setDictateLive(false)
         dictateStopping = false
-        if (!$mic.hidden) $mic.disabled = false
+        syncSendEnabled()
       }
     }
     $mic.addEventListener("click", () => {
@@ -1268,7 +1386,7 @@ const PackModule: ContentPackModule = {
             return
           }
           $mic.hidden = false
-          $mic.disabled = false
+          syncSendEnabled()
         })
         .catch(() => {
           $mic.hidden = true
@@ -1277,10 +1395,16 @@ const PackModule: ContentPackModule = {
 
     async function send(text: string) {
       if (!text.trim() || state.currentStreamId || !state.activeLanguage || !modelReady) return
+      if (quotaRemaining(plus) <= 0) {
+        syncSendEnabled()
+        systemNote(t("quotaEmptyNote"))
+        return
+      }
       cancelSpeech()
       const turnSpeechEpoch = speechEpoch
       const userText = text.trim()
       const lang = state.activeLanguage
+      consumeQuota(plus)
       state.messages.push({ role: "user", content: userText })
       bubble("user", userText)
       $text.value = ""
@@ -1511,6 +1635,7 @@ const PackModule: ContentPackModule = {
 
     return {
       unmount: () => {
+        for (const dispose of disposers) dispose()
         if (state.cancelStream) void state.cancelStream().catch(() => {})
         cancelSpeech()
         try {

@@ -34,6 +34,11 @@ export interface ChatMediator {
   dispose: () => void
 }
 
+export type ChatMediatorEvents = {
+  onToken?: (label: string, token: string) => void
+  onDone?: (label: string, fullText: string) => void
+}
+
 function bounded(value: unknown, max = MAX_TEXT): string {
   return typeof value === "string" ? value.trim().slice(0, max) : ""
 }
@@ -114,12 +119,13 @@ function artifactFromLesson(
   })
 }
 
-export function createChatMediator(hostApi: HostApi): ChatMediator {
+export function createChatMediator(hostApi: HostApi, events: ChatMediatorEvents = {}): ChatMediator {
   let disposed = false
 
   async function run(
     messages: SafeRelayChatMessage[],
     options: SafeRelayChatOptions,
+    label = "relay",
   ): Promise<string> {
     if (disposed || !hostApi.llm) return ""
     return new Promise((resolve) => {
@@ -142,9 +148,17 @@ export function createChatMediator(hostApi: HostApi): ChatMediator {
           {
             onToken: (token) => {
               acc += token
+              events.onToken?.(label, token)
             },
-            onDone: (full) => finish(full || acc),
-            onError: () => finish(""),
+            onDone: (full) => {
+              const text = full || acc
+              events.onDone?.(label, text)
+              finish(text)
+            },
+            onError: () => {
+              events.onDone?.(label, acc)
+              finish("")
+            },
           },
         )
         .then((started) => {
@@ -155,7 +169,7 @@ export function createChatMediator(hostApi: HostApi): ChatMediator {
   }
 
   const pipeline = createSafeRelayPipeline({
-    runLlm: (messages, options) => run(messages, options),
+    runLlm: (messages, options, label) => run(messages, options, label),
     sampleSafePhrase: createHostSafePhraseSampler(hostApi),
   })
 

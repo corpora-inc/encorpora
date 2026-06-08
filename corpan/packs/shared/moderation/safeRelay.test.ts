@@ -1,5 +1,7 @@
+import { readFileSync } from "node:fs"
 import { describe, expect, it } from "vitest"
 import {
+  OUTPUT_LANGUAGE_PRIMES,
   createSafeRelayPipeline,
   type SafeRelayChatMessage,
   type SafeRelayChatOptions,
@@ -41,6 +43,16 @@ const forbidden = [
 ]
 
 describe("safe relay pipeline", () => {
+  it("has native output primes for every Teletron language", () => {
+    const manifest = JSON.parse(
+      readFileSync(new URL("../../teletron/manifest.json", import.meta.url), "utf8"),
+    ) as { displayName?: Record<string, string> }
+    const languages = Object.keys(manifest.displayName ?? {})
+    const missing = languages.filter((language) => !OUTPUT_LANGUAGE_PRIMES[language])
+    expect(missing).toEqual([])
+    expect(OUTPUT_LANGUAGE_PRIMES.te).toMatch(/[ఀ-౿]/)
+  })
+
   it("uses plain-text prompts and sends English relay text only", async () => {
     const { pipeline, calls } = scriptedPipeline([
       "Do you want to play soccer?",
@@ -143,8 +155,8 @@ describe("safe relay pipeline", () => {
     expect(lesson.suggestedReplies).toEqual(["¡Sí, vamos!", "Claro, juguemos."])
     expect(calls.map((call) => call.label)).toEqual([
       "relay.recipient-clean",
-      "relay.translate.es",
-      "relay.translate.en",
+      "relay.translate-target.es",
+      "relay.translate-native.en",
       "relay.replies.es",
     ])
     expect(promptText(calls)).not.toMatch(/json/i)
@@ -166,11 +178,14 @@ describe("safe relay pipeline", () => {
 
     expect(lesson.targetText).toBe("音楽について話しましょう。")
     expect(lesson.nativeText).toBe("Hablemos de música.")
-    expect(calls.map((call) => call.label)).toContain("relay.translate.ja")
-    expect(calls.map((call) => call.label)).toContain("relay.translate.es")
-    expect(calls.find((call) => call.label === "relay.translate.ja")?.messages[0]?.content).toContain(
-      "自然な日本語",
-    )
+    expect(calls.map((call) => call.label)).toContain("relay.translate-target.ja")
+    expect(calls.map((call) => call.label)).toContain("relay.translate-native.es")
+    const targetPrompt = calls.find((call) => call.label === "relay.translate-target.ja")?.messages[0]?.content ?? ""
+    const nativePrompt = calls.find((call) => call.label === "relay.translate-native.es")?.messages[0]?.content ?? ""
+    expect(targetPrompt).toContain("自然な日本語")
+    expect(targetPrompt).toContain("entire reply must be only the translated text")
+    expect(targetPrompt).toContain("Do not answer the message")
+    expect(nativePrompt).toContain("entire reply must be only the translated text")
   })
 
   it("red-team fixtures are transformed or replaced without preserving unsafe surface text", async () => {

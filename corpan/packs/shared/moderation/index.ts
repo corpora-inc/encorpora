@@ -121,16 +121,56 @@ const TRANSFORM_PASSES = [
   },
 ]
 
-const OUTPUT_PRIMES: Record<string, string> = {
+export const OUTPUT_LANGUAGE_PRIMES: Record<string, string> = {
+  en: "Write only the natural English translation. Do not add an explanation.",
+  es: "Escribe solo la traducción en español natural. No añadas explicación.",
   ar: "اكتب الترجمة فقط باللغة العربية الطبيعية. لا تضف شرحًا.",
+  bg: "Напиши само превода на естествен български. Не добавяй обяснение.",
+  bn: "শুধু স্বাভাবিক বাংলায় অনুবাদটি লিখুন। কোনো ব্যাখ্যা যোগ করবেন না।",
+  ca: "Escriu només la traducció en català natural. No afegeixis cap explicació.",
+  cs: "Napiš pouze překlad v přirozené češtině. Nepřidávej vysvětlení.",
+  da: "Skriv kun oversættelsen på naturligt dansk. Tilføj ikke en forklaring.",
+  de: "Schreibe nur die Übersetzung in natürlichem Deutsch. Füge keine Erklärung hinzu.",
+  el: "Γράψε μόνο τη μετάφραση σε φυσικά ελληνικά. Μην προσθέτεις εξήγηση.",
   fa: "فقط ترجمه را به فارسی طبیعی بنویس. توضیح اضافه نکن.",
+  fi: "Kirjoita vain käännös luonnollisella suomella. Älä lisää selitystä.",
+  fr: "Écris seulement la traduction en français naturel. N'ajoute pas d'explication.",
+  gu: "ફક્ત સ્વાભાવિક ગુજરાતીમાં અનુવાદ લખો. કોઈ સમજાવટ ઉમેરશો નહીં.",
   he: "כתוב רק את התרגום בעברית טבעית. אל תוסיף הסבר.",
-  ur: "صرف فطری اردو میں ترجمہ لکھیں۔ کوئی وضاحت شامل نہ کریں۔",
   hi: "केवल स्वाभाविक हिंदी में अनुवाद लिखें। कोई व्याख्या न जोड़ें।",
+  hr: "Napiši samo prijevod na prirodnom hrvatskom. Nemoj dodavati objašnjenje.",
+  hu: "Csak a természetes magyar fordítást írd le. Ne adj hozzá magyarázatot.",
+  id: "Tulis hanya terjemahan dalam bahasa Indonesia yang alami. Jangan tambahkan penjelasan.",
+  it: "Scrivi solo la traduzione in italiano naturale. Non aggiungere spiegazioni.",
   ja: "自然な日本語の翻訳だけを書いてください。説明は不要です。",
+  kn: "ಸ್ವಾಭಾವಿಕ ಕನ್ನಡದಲ್ಲಿ ಅನುವಾದವನ್ನು ಮಾತ್ರ ಬರೆಯಿರಿ. ವಿವರಣೆ ಸೇರಿಸಬೇಡಿ.",
   ko: "자연스러운 한국어 번역만 쓰세요. 설명은 쓰지 마세요.",
   "ko-polite": "자연스럽고 공손한 한국어 번역만 쓰세요. 설명은 쓰지 마세요.",
+  lt: "Rašyk tik vertimą natūralia lietuvių kalba. Nepridėk paaiškinimo.",
+  mr: "फक्त नैसर्गिक मराठीत अनुवाद लिहा. कोणतेही स्पष्टीकरण जोडू नका.",
+  ms: "Tulis hanya terjemahan dalam bahasa Melayu yang semula jadi. Jangan tambah penjelasan.",
+  ne: "स्वाभाविक नेपालीमा अनुवाद मात्र लेख्नुहोस्। कुनै व्याख्या नथप्नुहोस्।",
+  nl: "Schrijf alleen de vertaling in natuurlijk Nederlands. Voeg geen uitleg toe.",
+  no: "Skriv bare oversettelsen på naturlig norsk. Ikke legg til forklaring.",
+  "pa-Arab": "صرف قدرتی پنجابی شاہ مکھی وچ ترجمہ لکھو۔ کوئی وضاحت شامل نہ کرو۔",
+  "pa-Guru": "ਸਿਰਫ਼ ਕੁਦਰਤੀ ਪੰਜਾਬੀ ਗੁਰਮੁਖੀ ਵਿੱਚ ਅਨੁਵਾਦ ਲਿਖੋ। ਕੋਈ ਵਿਆਖਿਆ ਨਾ ਜੋੜੋ।",
+  pl: "Napisz tylko tłumaczenie naturalną polszczyzną. Nie dodawaj wyjaśnień.",
+  "pt-BR": "Escreva apenas a tradução em português brasileiro natural. Não acrescente explicação.",
+  "pt-PT": "Escreve apenas a tradução em português europeu natural. Não acrescentes explicação.",
+  ro: "Scrie doar traducerea în română naturală. Nu adăuga explicații.",
+  ru: "Напиши только перевод на естественном русском. Не добавляй объяснений.",
+  sk: "Napíš iba preklad v prirodzenej slovenčine. Nepridávaj vysvetlenie.",
+  sl: "Napiši samo prevod v naravni slovenščini. Ne dodajaj razlage.",
+  sr: "Напиши само превод на природном српском. Не додај објашњење.",
+  sv: "Skriv bara översättningen på naturlig svenska. Lägg inte till någon förklaring.",
+  sw: "Andika tafsiri tu kwa Kiswahili cha kawaida. Usiongeze maelezo.",
+  ta: "இயல்பான தமிழில் மொழிபெயர்ப்பை மட்டும் எழுதுங்கள். விளக்கம் சேர்க்க வேண்டாம்.",
+  te: "సహజమైన తెలుగులో అనువాదాన్ని మాత్రమే రాయండి. వివరణను జోడించవద్దు.",
   th: "เขียนเฉพาะคำแปลภาษาไทยที่เป็นธรรมชาติ ไม่ต้องอธิบาย",
+  tr: "Yalnızca doğal Türkçe çeviriyi yaz. Açıklama ekleme.",
+  uk: "Напиши лише переклад природною українською. Не додавай пояснень.",
+  ur: "صرف فطری اردو میں ترجمہ لکھیں۔ کوئی وضاحت شامل نہ کریں۔",
+  vi: "Chỉ viết bản dịch bằng tiếng Việt tự nhiên. Đừng thêm lời giải thích.",
   "zh-Hans": "只写自然的简体中文译文，不要解释。",
   "zh-Hant": "只寫自然的繁體中文譯文，不要解釋。",
   "yue-Hant-HK": "只寫自然嘅廣東話繁體中文譯文，唔好解釋。",
@@ -247,26 +287,28 @@ function transformUser(context: string[], current: string, maxText: number): Saf
 }
 
 function translateOutPrompt(language: string): SafeRelayChatMessage {
-  const prime = OUTPUT_PRIMES[language] ?? OUTPUT_PRIMES[language.split("-")[0] ?? ""]
+  const prime = OUTPUT_LANGUAGE_PRIMES[language] ?? OUTPUT_LANGUAGE_PRIMES[language.split("-")[0] ?? ""]
   return {
     role: "system",
     content:
+      (prime ? `${prime} ` : "") +
       `Translate the English relay text into ${language}. ` +
-      "Output only the translated text. Keep it natural, friendly, and all-ages. " +
-      "Do not add warnings, explanations, notes, quotes, labels, fact-checks, or policy language." +
-      (prime ? ` ${prime}` : ""),
+      "This is the final display leg: your entire reply must be only the translated text. " +
+      "Preserve the meaning of the English relay text. Do not answer the message, continue the conversation, or add new content. " +
+      "Do not include the original English unless the requested language is English. " +
+      "Do not add warnings, explanations, notes, quotes, labels, fact-checks, or policy language.",
   }
 }
 
 function repliesPrompt(language: string): SafeRelayChatMessage {
-  const prime = OUTPUT_PRIMES[language] ?? OUTPUT_PRIMES[language.split("-")[0] ?? ""]
+  const prime = OUTPUT_LANGUAGE_PRIMES[language] ?? OUTPUT_LANGUAGE_PRIMES[language.split("-")[0] ?? ""]
   return {
     role: "system",
     content:
+      (prime ? `${prime} ` : "") +
       `Write two short friendly chat replies in ${language}. ` +
       "One reply per line. Output only the two replies. Keep them all-ages and useful for a beginner learner. " +
-      "No numbering, labels, notes, or explanations." +
-      (prime ? ` ${prime}` : ""),
+      "No numbering, labels, notes, or explanations.",
   }
 }
 
@@ -411,13 +453,17 @@ export function createSafeRelayPipeline(options: SafeRelayPipelineOptions) {
     }
   }
 
-  async function translateRelayText(relayText: string, language: string): Promise<string> {
+  async function translateRelayText(
+    relayText: string,
+    language: string,
+    role: "target" | "native",
+  ): Promise<string> {
     const cleanedLanguage = language || "en"
     return runPlainPass(
       options.runLlm,
       [translateOutPrompt(cleanedLanguage), { role: "user", content: relayText }],
       { temperature: 0.2, topP: 0.85, maxTokens: 180 },
-      `relay.translate.${cleanedLanguage}`,
+      `relay.translate-${role}.${cleanedLanguage}`,
       maxText,
     )
   }
@@ -443,13 +489,13 @@ export function createSafeRelayPipeline(options: SafeRelayPipelineOptions) {
       )) || (await fallbackPhrase("en", options.sampleSafePhrase, maxText))
     if (!sameish(cleaned, incoming)) reasons.push("recipient-clean")
 
-    let targetText = await translateRelayText(cleaned, args.targetLanguage)
+    let targetText = await translateRelayText(cleaned, args.targetLanguage, "target")
     if (!targetText) {
       targetText = await fallbackPhrase(args.targetLanguage, options.sampleSafePhrase, maxText)
       reasons.push("target-fallback")
     }
 
-    let nativeText = await translateRelayText(cleaned, args.nativeLanguage)
+    let nativeText = await translateRelayText(cleaned, args.nativeLanguage, "native")
     if (!nativeText) {
       nativeText = await fallbackPhrase(args.nativeLanguage, options.sampleSafePhrase, maxText)
       reasons.push("native-fallback")

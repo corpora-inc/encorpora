@@ -44,8 +44,19 @@ export type WireDictationOpts = {
   openAppSettings?: () => void
   /** Called when the live state flips, so the host can toggle a CSS class. */
   onLiveChange?: (live: boolean) => void
+  /** Called after provider probing so the host can combine ASR availability
+   *  with its own composer/chat lifecycle enabled state. */
+  onAvailabilityChange?: (available: boolean) => void
   /** Called with VU rms 0..1 each level event (for a meter, optional). */
   onLevel?: (rms: number) => void
+  /** Default true keeps the keyboard-floor behavior. Set false for fixed
+   *  composers where a disabled mic slot is clearer than a disappearing icon. */
+  hideWhenUnavailable?: boolean
+}
+
+export type WireDictationController = (() => void) & {
+  /** Re-probe the current lazy language and update the button state. */
+  refresh: () => Promise<boolean>
 }
 
 /**
@@ -72,20 +83,47 @@ export function dictationResolver(asr: AsrApi | undefined) {
  * if no provider, the button is hidden (keyboard floor) and we're done. If a
  * provider exists, the button is enabled and toggles a capture session.
  */
-export function wireDictation(opts: WireDictationOpts): () => void {
+export function wireDictation(opts: WireDictationOpts): WireDictationController {
   const t = (k: keyof DictationStrings) => opts.strings?.[k] ?? EN[k]
   const mode: AsrCaptureMode = opts.mode ?? "push_to_talk"
   const langOf = () => (typeof opts.lang === "function" ? opts.lang() : opts.lang)
+  const hideWhenUnavailable = opts.hideWhenUnavailable !== false
 
   let session: AsrSession | null = null
   let live = false
   let destroyed = false
+  let attached = false
+  let probeSeq = 0
 
   const setLive = (on: boolean) => {
     live = on
     opts.button.setAttribute("aria-label", on ? t("stop") : t("speak"))
     opts.button.classList.toggle("is-live", on)
     opts.onLiveChange?.(on)
+  }
+
+  const setAvailable = (available: boolean) => {
+    opts.button.dataset.asrAvailable = available ? "true" : "false"
+    opts.button.classList.toggle("is-unavailable", !available)
+    opts.button.style.display = available || !hideWhenUnavailable ? "" : "none"
+    opts.button.disabled = !available
+    opts.button.setAttribute("aria-label", available ? t("speak") : t("denied"))
+    if (available && !attached) {
+      opts.button.addEventListener("click", onClick)
+      attached = true
+    } else if (!available && attached) {
+      opts.button.removeEventListener("click", onClick)
+      attached = false
+    }
+    opts.onAvailabilityChange?.(available)
+  }
+
+  async function refresh(): Promise<boolean> {
+    const seq = ++probeSeq
+    const provider = await opts.resolveProvider(langOf()).catch(() => null)
+    if (destroyed || seq !== probeSeq) return false
+    setAvailable(Boolean(provider))
+    return Boolean(provider)
   }
 
   async function start() {
@@ -99,7 +137,7 @@ export function wireDictation(opts: WireDictationOpts): () => void {
     }
     if (!provider) {
       // Lost availability (e.g. lang changed) → hide + bail to keyboard.
-      opts.button.style.display = "none"
+      setAvailable(false)
       return
     }
     try {
@@ -164,24 +202,11 @@ export function wireDictation(opts: WireDictationOpts): () => void {
     else void start()
   }
 
-  // Probe availability once; only reveal/enable the button where it works.
-  let attached = false
-  ;(async () => {
-    const provider = await opts.resolveProvider(langOf()).catch(() => null)
-    if (destroyed) return
-    if (!provider) {
-      // Keyboard floor: hide the mic so the field is plainly type-only.
-      opts.button.style.display = "none"
-      return
-    }
-    opts.button.disabled = false
-    opts.button.style.display = ""
-    opts.button.setAttribute("aria-label", t("speak"))
-    opts.button.addEventListener("click", onClick)
-    attached = true
-  })()
+  // Probe availability once; only reveal/enable the button where it works
+  // unless a caller explicitly wants a visible disabled affordance.
+  void refresh()
 
-  return () => {
+  const teardown = (() => {
     destroyed = true
     if (attached) opts.button.removeEventListener("click", onClick)
     try {
@@ -189,5 +214,7 @@ export function wireDictation(opts: WireDictationOpts): () => void {
     } catch (err) {
       console.error("[dictation] cancel on teardown failed:", err)
     }
-  }
+  }) as WireDictationController
+  teardown.refresh = refresh
+  return teardown
 }
