@@ -110,6 +110,7 @@ export function showProfileCard(
   ava.className = "wp-mp-ava"
   ava.textContent = "🧑"
   const nameWrap = document.createElement("div")
+  nameWrap.className = "wp-mp-name-wrap"
   const name = document.createElement("div")
   name.className = "wp-mp-name"
   name.textContent = card.name
@@ -229,6 +230,8 @@ export interface ChatPanelHandle {
   setStatus: (text: string | null) => void
   /** Enable/disable the composer without closing the panel. */
   setCanSend: (canSend: boolean) => void
+  /** Mark one outbound message as being cleaned/sent; drafting can continue. */
+  setBusy: (busy: boolean) => void
   /** A transient "bridging languages…" placeholder while the LLM works. */
   showBridging: () => () => void
   close: () => void
@@ -244,6 +247,7 @@ export function openChatPanel(
   onClose: () => void,
 ): ChatPanelHandle {
   const { panel, close: closeScrim } = makeScrim(overlay, false, native)
+  panel.classList.add("wp-mp-chat-panel")
 
   const head = document.createElement("div")
   head.className = "wp-mp-head"
@@ -268,15 +272,20 @@ export function openChatPanel(
 
   const compose = document.createElement("div")
   compose.className = "wp-mp-compose"
-  const input = document.createElement("input")
+  const input = document.createElement("textarea")
   input.className = "wp-mp-input"
-  input.type = "text"
   input.placeholder = t("mp.chat.placeholder")
   input.maxLength = 240
+  input.rows = 1
+  input.setAttribute("enterkeyhint", "send")
+  input.setAttribute("autocomplete", "off")
+  input.setAttribute("autocapitalize", "sentences")
+  input.setAttribute("spellcheck", "true")
   const send = document.createElement("button")
-  send.className = "wp-mp-btn wp-mp-btn-primary"
-  send.style.flex = "0 0 auto"
-  send.textContent = t("mp.chat.send")
+  send.className = "wp-mp-send"
+  send.type = "button"
+  send.setAttribute("aria-label", t("mp.chat.send"))
+  send.textContent = "↑"
   compose.append(input, send)
 
   panel.append(head, status, log, replies, compose)
@@ -284,15 +293,36 @@ export function openChatPanel(
   const scrollDown = () => {
     log.scrollTop = log.scrollHeight
   }
+  let canSend = true
+  let busy = false
+  const resizeInput = () => {
+    input.style.blockSize = "auto"
+    input.style.blockSize = `${Math.min(input.scrollHeight, 116)}px`
+  }
+  const updateSendState = () => {
+    send.disabled = !canSend || busy || !input.value.trim()
+    compose.classList.toggle("wp-mp-compose-disabled", !canSend)
+    compose.classList.toggle("wp-mp-compose-busy", busy)
+  }
   const doSend = () => {
+    if (!canSend || busy) return
     const text = input.value.trim()
     if (!text) return
     input.value = ""
+    resizeInput()
+    updateSendState()
     onSend(text)
   }
   send.addEventListener("click", doSend)
+  input.addEventListener("input", () => {
+    resizeInput()
+    updateSendState()
+  })
   input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") doSend()
+    if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
+      e.preventDefault()
+      doSend()
+    }
   })
   let closed = false
   const close = () => {
@@ -305,6 +335,8 @@ export function openChatPanel(
 
   // Best-effort focus (mobile keyboards may ignore until a tap).
   setTimeout(() => input.focus(), 60)
+  resizeInput()
+  updateSendState()
 
   return {
     appendSelf(text) {
@@ -368,10 +400,14 @@ export function openChatPanel(
       status.textContent = text ?? ""
       status.hidden = !text
     },
-    setCanSend(canSend) {
+    setCanSend(nextCanSend) {
+      canSend = Boolean(nextCanSend)
       input.disabled = !canSend
-      send.disabled = !canSend
-      compose.classList.toggle("wp-mp-compose-disabled", !canSend)
+      updateSendState()
+    },
+    setBusy(nextBusy) {
+      busy = Boolean(nextBusy)
+      updateSendState()
     },
     showBridging() {
       const m = document.createElement("div")
