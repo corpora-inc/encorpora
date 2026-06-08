@@ -5,6 +5,7 @@
 - Stream received text into the visible chat bubble before queuing sentence-complete TTS, so speech no longer starts before words appear.
 - Queue speech for back-to-back incoming messages instead of cutting off the first message when another arrives.
 - Let the message composer grow with multi-line text while keeping a polished capped height.
+- Add Tutomaton-style iPad top chrome clearance so resized tablet windows clear the floating controls.
 - Add a focused safe-relay pass for specific place names and prevent obvious city-plus-state locations from crossing the wire.
 
 ## 0.1.4
