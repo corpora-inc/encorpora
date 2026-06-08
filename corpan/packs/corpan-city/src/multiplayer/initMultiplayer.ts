@@ -161,6 +161,7 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     interactionId: string
     ended: boolean
     partnerOnline: boolean
+    sending: boolean
   } | null = null
   // Profile cards we've recently shown (playerId → last shown ms), to debounce.
   const recentlyRevealed = new Map<string, number>()
@@ -351,8 +352,11 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
       showToast(opts.overlay, opts.learnerPair.native, t("mp.chat.offline"))
       return
     }
-    activeChat?.panel.appendSelf(text)
-    const stopCleaning = activeChat?.panel.showBridging()
+    if (activeChat.sending) return
+    activeChat.sending = true
+    activeChat.panel.setBusy(true)
+    activeChat.panel.appendSelf(text)
+    const stopCleaning = activeChat.panel.showBridging()
     try {
       const input = await mediator.prepareOutbound({
         from: localPlayerId,
@@ -371,8 +375,16 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
         activeChat.panel.appendSystem(t("mp.chat.offline"))
         updateChatConnectivity()
       }
+    } catch (error) {
+      console.error("[mp] chat send failed:", error)
+      activeChat.panel.appendSystem(t("mp.chat.failed"))
     } finally {
-      stopCleaning?.()
+      stopCleaning()
+      if (chat === activeChat) {
+        activeChat.sending = false
+        activeChat.panel.setBusy(false)
+        updateChatConnectivity()
+      }
     }
   }
 
@@ -405,7 +417,15 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
         }
       },
     )
-    chat = { partnerId, partnerName, panel, interactionId, ended: false, partnerOnline: true }
+    chat = {
+      partnerId,
+      partnerName,
+      panel,
+      interactionId,
+      ended: false,
+      partnerOnline: true,
+      sending: false,
+    }
     updateChatConnectivity()
   }
 
@@ -456,12 +476,16 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     const panel = chat?.panel
     if (!panel) return
     const stopBridging = panel.showBridging()
-    let artifact: MediatedChatArtifact
+    let artifact: MediatedChatArtifact | null = null
     try {
       artifact = await mediator.lessonify(input, opts.learnerPair)
+    } catch (error) {
+      console.error("[mp] chat receive failed:", error)
+      panel.appendSystem(t("mp.chat.failed"))
     } finally {
       stopBridging()
     }
+    if (!artifact) return
     panel.appendPeer(artifact, (label) => {
       // Suggested replies are still cleaned locally before crossing the wire.
       void sendChatText(input.from, input.interactionId, label)

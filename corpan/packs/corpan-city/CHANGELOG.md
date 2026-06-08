@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4] - 2026-06-08
+
+- Polished multiplayer chat for narrow mobile screens: the peer-chat sheet now
+  respects safe-area padding, wraps long names/messages/replies, uses a growing
+  textarea composer, and swaps the wide text send button for a compact icon
+  button.
+- Hardened peer-chat sending on older phones by allowing only one local safe-relay
+  send pipeline at a time and turning LLM/native failures into a local "not sent"
+  note instead of an unhandled rejected promise.
+
 - Improved multiplayer chat lifecycle resilience: Corpan City now uses the
   server reconnection window on iOS foreground/network resume, preserves accepted
   chat/trade authorization by durable player id for short rejoin gaps, requires
