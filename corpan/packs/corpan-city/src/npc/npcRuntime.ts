@@ -44,6 +44,7 @@ import {
 import { sanitizeNpcText } from "./sanitizeNpcText"
 import { resolveSegueForSeed } from "./challengeSegues"
 import { createNpcVoiceResolver, type NpcVoiceResolver } from "./npcVoice"
+import { runtimeLanguageText, scriptedFallbackLine } from "./runtimeLanguageText"
 import { createDialogueUI, type DialogueUIHandle } from "./dialogueUI"
 import type { InventoryStore } from "../economy/inventory"
 import { cluesFor, requiredForStep } from "../economy/questItems"
@@ -89,7 +90,8 @@ const DEFAULT_RUNTIME_STRINGS: RuntimeStrings = {
   congrats: "Nicely done! 🎉",
   challengeSkipped: "No worries — maybe later.",
   playAnother: "Want to try another?",
-  antiRepeat: "(Ya dijiste: {lines}. No te repitas — di algo NUEVO y avanza la conversación.)",
+  antiRepeat:
+    "(You already said: {lines}. Do not repeat yourself. Say something NEW and move the conversation forward.)",
 }
 
 /**
@@ -280,7 +282,12 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
         `${args.voiceCode ? `, OVERRIDE="${args.voiceCode}"` : ""}).`,
     )
 
-    const strings: RuntimeStrings = { ...DEFAULT_RUNTIME_STRINGS, ...(args.strings ?? {}) }
+    const targetRuntimeText = runtimeLanguageText(args.learnerPair.target)
+    const strings: RuntimeStrings = {
+      ...DEFAULT_RUNTIME_STRINGS,
+      antiRepeat: targetRuntimeText.antiRepeat,
+      ...(args.strings ?? {}),
+    }
 
     const palette = args.scene.palette
     const ui = createDialogueUI(
@@ -567,7 +574,8 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
         return
       }
       scripted ??= { index: 0 }
-      const line = lines[scripted.index % lines.length].text
+      const authored = lines[scripted.index % lines.length].text
+      const line = scriptedFallbackLine(args.learnerPair.target, scripted.index, authored)
       scripted.index += 1
       ui.endNpcTurn(line)
       void speak(line)
@@ -933,7 +941,10 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
         facts?.stepState === "needs-item"
           ? facts.authoredClue
           : facts?.authoredNextHint
-      if (line) {
+      // Authored clue/hint literals are not guaranteed to be in learnerPair.target.
+      // Without the model available to re-voice them, never speak those literals
+      // into a non-English target conversation.
+      if (line && args.learnerPair.target.split("-")[0] === "en") {
         ui.endNpcTurn(line)
         void speak(line)
       } else {
@@ -1007,9 +1018,7 @@ export function createNpcRuntime(hostApi: HostApi, sharedBroker?: ModelBroker): 
       // Greet: an empty-history model turn produces the opening in-character line.
       history.push({
         role: "user",
-        content: `A traveler walks up to your station. Greet them warmly in ${languageName(
-          args.learnerPair.target,
-        )} and invite them to talk.`,
+        content: targetRuntimeText.greetingSeed,
       })
       await modelTurn()
       // Don't keep the synthetic greeting prompt in the running window.
