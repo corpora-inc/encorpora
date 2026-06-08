@@ -8,6 +8,7 @@ import type {
   SafeProfile,
   InvitedMessage,
   InviteResult,
+  ChatControlDeliver,
   MediatedChatInput,
   MediatedChatArtifact,
   ChallengeResult,
@@ -158,6 +159,9 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     partnerName: string
     panel: ChatPanelHandle
     interactionId: string
+    ended: boolean
+    partnerOnline: boolean
+    sending: boolean
   } | null = null
   // Profile cards we've recently shown (playerId → last shown ms), to debounce.
   const recentlyRevealed = new Map<string, number>()
@@ -194,7 +198,10 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
   function showCard(card: SafeProfile, fallbackName: string): void {
     const name = card.name || fallbackName
     showProfileCard(opts.overlay, t, opts.learnerPair.native, card, {
-      onSayHi: () => openChat(card.playerId, name),
+      onSayHi: () => {
+        if (chat?.partnerId === card.playerId) return
+        sendInvite(card.playerId, name, { kind: "chat" })
+      },
       onChallenge: () => sendInvite(card.playerId, name, buildChallengeOffer("duel")),
       onTrade: () => sendInvite(card.playerId, name, { kind: "trade" }),
     })
@@ -340,8 +347,16 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     text: string,
   ): Promise<void> {
     const activeChat = chat
-    activeChat?.panel.appendSelf(text)
-    const stopCleaning = activeChat?.panel.showBridging()
+    if (!activeChat || activeChat.ended || !activeChat.partnerOnline || !proto) {
+      updateChatConnectivity()
+      showToast(opts.overlay, opts.learnerPair.native, t("mp.chat.offline"))
+      return
+    }
+    if (activeChat.sending) return
+    activeChat.sending = true
+    activeChat.panel.setBusy(true)
+    activeChat.panel.appendSelf(text)
+    const stopCleaning = activeChat.panel.showBridging()
     try {
       const input = await mediator.prepareOutbound({
         from: localPlayerId,
@@ -354,15 +369,33 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
         targetLanguage: opts.learnerPair.target as LanguageCode,
         mode: "beginner",
       })
-      if (proto && chat === activeChat) proto.sendChat(input)
+      if (proto && chat === activeChat && !activeChat.ended && activeChat.partnerOnline) {
+        proto.sendChat(input)
+      } else {
+        activeChat.panel.appendSystem(t("mp.chat.offline"))
+        updateChatConnectivity()
+      }
+    } catch (error) {
+      console.error("[mp] chat send failed:", error)
+      activeChat.panel.appendSystem(t("mp.chat.failed"))
     } finally {
-      stopCleaning?.()
+      stopCleaning()
+      if (chat === activeChat) {
+        activeChat.sending = false
+        activeChat.panel.setBusy(false)
+        updateChatConnectivity()
+      }
     }
   }
 
   function openChat(partnerId: PlayerId, partnerName: string): void {
+    if (chat?.partnerId === partnerId && !chat.ended) {
+      updateChatConnectivity()
+      return
+    }
     if (chat) chat.panel.close()
     const interactionId = mintId("chat")
+    let closingFromPanel = false
     const panel = openChatPanel(
       opts.overlay,
       t,
@@ -373,10 +406,65 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
         void sendChatText(partnerId, interactionId, text)
       },
       () => {
-        chat = null
+        if (closingFromPanel) return
+        closingFromPanel = true
+        const active = chat
+        if (active?.interactionId === interactionId) {
+          if (!active.ended) {
+            proto?.sendChatControl({ to: partnerId, interactionId, action: "ended" })
+          }
+          chat = null
+        }
       },
     )
-    chat = { partnerId, partnerName, panel, interactionId }
+    chat = {
+      partnerId,
+      partnerName,
+      panel,
+      interactionId,
+      ended: false,
+      partnerOnline: true,
+      sending: false,
+    }
+    updateChatConnectivity()
+  }
+
+  function updateChatConnectivity(): void {
+    if (!chat) return
+    if (chat.ended) {
+      chat.panel.setCanSend(false)
+      chat.panel.setStatus(t("mp.invite.unavailable", { name: chat.partnerName }))
+      return
+    }
+    if (!chat.partnerOnline || !proto) {
+      chat.panel.setCanSend(false)
+      chat.panel.setStatus(t("mp.chat.offline"))
+      return
+    }
+    chat.panel.setCanSend(true)
+    chat.panel.setStatus(null)
+  }
+
+  function onChatControl(msg: ChatControlDeliver): void {
+    if (!chat || chat.partnerId !== msg.from) return
+    if (msg.action === "ended") {
+      chat.ended = true
+      chat.partnerOnline = false
+      chat.panel.appendSystem(t("mp.invite.unavailable", { name: chat.partnerName }))
+      updateChatConnectivity()
+      return
+    }
+    if (msg.action === "partner-left") {
+      chat.partnerOnline = false
+      chat.panel.appendSystem(t("mp.invite.unavailable", { name: chat.partnerName }))
+      updateChatConnectivity()
+      return
+    }
+    if (msg.action === "partner-returned") {
+      if (chat.ended) return
+      chat.partnerOnline = true
+      updateChatConnectivity()
+    }
   }
 
   /** A mediated chat input arrived from a partner → lessonify + render. */
@@ -388,12 +476,16 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     const panel = chat?.panel
     if (!panel) return
     const stopBridging = panel.showBridging()
-    let artifact: MediatedChatArtifact
+    let artifact: MediatedChatArtifact | null = null
     try {
       artifact = await mediator.lessonify(input, opts.learnerPair)
+    } catch (error) {
+      console.error("[mp] chat receive failed:", error)
+      panel.appendSystem(t("mp.chat.failed"))
     } finally {
       stopBridging()
     }
+    if (!artifact) return
     panel.appendPeer(artifact, (label) => {
       // Suggested replies are still cleaned locally before crossing the wire.
       void sendChatText(input.from, input.interactionId, label)
@@ -420,12 +512,14 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
       scene: opts.scene,
       theme: opts.theme,
       getLocalPos: opts.getLocalPos,
+      onStatus: () => updateChatConnectivity(),
       onRoom: (room) => bindRoom(room),
       onRoomLost: () => unbindRoom(),
     })
   }
 
   function bindRoom(room: NetRoom): void {
+    proto?.dispose()
     proto = createProtocol(room, {
       onProfileCard: (card) => {
         const cb = pendingProfile.get(card.playerId)
@@ -435,6 +529,7 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
       onInvited,
       onInviteResult,
       onChat: (input) => void onChat(input),
+      onChatControl,
       onTrade: (msg) => tradeTransport?.onInbound(msg),
       onPeerResult: (inviteId, result) => peerResultListeners.get(inviteId)?.(result),
     })
@@ -443,6 +538,7 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     )
     trade = tradeTransport
     publishProfile()
+    updateChatConnectivity()
   }
 
   function unbindRoom(): void {
@@ -450,6 +546,7 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     proto = null
     tradeTransport = null
     trade = null
+    updateChatConnectivity()
   }
 
   /* ----------------------------------------------------------------- per-frame */

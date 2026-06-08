@@ -7,6 +7,7 @@
 - Let the message composer grow with multi-line text while keeping a polished capped height.
 - Add Tutomaton-style iPad top chrome clearance so resized tablet windows clear the floating controls.
 - Add a focused safe-relay pass for specific place names and prevent obvious city-plus-state locations from crossing the wire.
+- Show localized language names in the intro selector and hide stack languages that are not in Teletron's Qwen3 relay allowlist.
 
 ## 0.1.4
 

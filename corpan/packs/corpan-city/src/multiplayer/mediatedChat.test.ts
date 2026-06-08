@@ -93,6 +93,7 @@ describe("two-sided mediated chat", () => {
       "Do you want to play soccer?",
       "Do you want to play soccer?",
       "Do you want to play soccer?",
+      "Do you want to play soccer?",
     ])
     const mediator = createChatMediator(host, brokerStub(true))
     const input = await mediator.prepareOutbound(A_TO_B)
