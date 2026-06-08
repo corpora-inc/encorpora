@@ -128,6 +128,35 @@ presence, invite/accept, mic input, local Qwen moderation, and mediated chat.
    - Keep the names curated and non-UGC; no free-form display names and no numeric
      suffixes. Collisions are acceptable because display names are not identities.
 
+## No-server-state penpal architecture — status (0.1.7, next-trunk)
+
+Landed (Phase 1 + Phase 2 core):
+- Resilient connection: `shared/net/resilientRoom.ts` (token rejoin, backoff,
+  foreground wakers); Teletron auto-reconnects instead of ending the thread.
+  Teletron room now holds a 90s reconnect seat (was 0).
+- On-device transcripts: `src/transcripts.ts` (IndexedDB) — permanent history,
+  restore a still-living conversation on cold open. The server keeps NO history.
+- Async delivery: `server/src/outbox.ts` — a shared, bounded, self-expiring
+  store-and-forward buffer; messages to an offline penpal are delivered on their
+  return and deleted; 24h living link, then the link drifts away.
+- Safety: device-local block list + server `block`/`report` enforcement.
+
+Remaining for this architecture (next increments, not yet done):
+- **Multi-penpal UI (Plus = 3 simultaneous; free = 1).** Today Teletron is a
+  single-conversation UI (free's 1-penpal is inherent). Plus's 3 penpals needs a
+  conversation-list/switcher; the server outbox + links already support it.
+- **30-min/day live (synchronous) time budget for free.** Async replies are
+  unmetered; only live both-present time should be budgeted. Needs metering UX.
+- **Durable outbox backend.** The outbox is in-memory (lost on server restart);
+  acceptable as best-effort, but a SQLite-on-box or Redis backend behind the
+  `Outbox` interface would make async delivery restart-safe.
+- **Server-side report ingestion.** Reports currently land in container logs
+  (CloudWatch). A real moderation queue/audit store is the next step.
+- **Push notifications** (Phase 3) — handoff spec in the plan; alerts an offline
+  user that a penpal wrote. Needs a native plugin + APNs/FCM.
+- **Moderation adversarial corpus** (§6 above) — load-bearing for the
+  store-sanitized-text-in-the-clear legal posture; build before broadening.
+
 ## Open product decisions
 
 - Is 20 free messages/day the right initial number, or should it be per-chat?

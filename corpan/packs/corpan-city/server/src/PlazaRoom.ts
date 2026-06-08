@@ -13,6 +13,8 @@ import {
   ChatControlDeliver,
   PeerChallengeResult,
   TradeEnvelope,
+  BlockMessage,
+  ReportMessage,
   MP_MSG,
   type RoomTopology,
   type SafeProfile,
@@ -142,6 +144,8 @@ export class PlazaRoom extends Room<PlazaState> {
   private outbox?: Outbox
   /** coarse anti-grief: sessionId → recent action timestamps (sliding window). */
   private actionLog = new Map<string, number[]>()
+  /** live block mirror: blocker playerId → set of blocked playerIds (session-scoped). */
+  private blocks = new Map<string, Set<string>>()
 
   onCreate(options: PlazaRoomOptions) {
     this.topology = options.topology
@@ -262,6 +266,7 @@ export class PlazaRoom extends Room<PlazaState> {
       this.byPlayerId.delete(player.playerId)
     }
     this.dropInvitesFor(sessionId)
+    if (player?.playerId) this.blocks.delete(player.playerId)
     for (const key of [...this.actionLog.keys()]) {
       if (key.startsWith(`${sessionId}:`)) this.actionLog.delete(key)
     }
@@ -408,6 +413,10 @@ export class PlazaRoom extends Room<PlazaState> {
         this.resultTo(client, parsed.data.inviteId, "unavailable")
         return
       }
+      if (this.blockedEitherWay(from.playerId, String(parsed.data.to))) {
+        this.resultTo(client, parsed.data.inviteId, "unavailable")
+        return
+      }
       if (
         parsed.data.offer.kind === "chat" &&
         this.acceptedPairForPlayerIds(from.playerId, String(parsed.data.to), "chat")
@@ -476,6 +485,7 @@ export class PlazaRoom extends Room<PlazaState> {
       const toClient = toSession ? this.clientsBySession.get(toSession) : undefined
       const to = toSession ? this.state.players.get(toSession) : undefined
       if (!from) return
+      if (this.blockedEitherWay(from.playerId, toPlayerId)) return
       if (!this.acceptedPairForPlayerIds(from.playerId, toPlayerId, "chat")) {
         console.warn(`[plaza] rejected chat without accepted invite from ${client.sessionId}`)
         return
@@ -585,6 +595,50 @@ export class PlazaRoom extends Room<PlazaState> {
       }
       toClient.send(MP_MSG.tradeUpdate, update)
     })
+
+    // Block / unblock a player. The durable list lives on the device; this is
+    // the live, session-scoped mirror that suppresses the blocked player's
+    // invites and messages and tears down any link + buffered messages.
+    this.onMessage(MP_MSG.block, (client, raw) => {
+      const parsed = BlockMessage.safeParse(raw)
+      if (!parsed.success) return
+      if (!this.allow(client.sessionId, "block", 30, 10000)) return
+      const from = this.state.players.get(client.sessionId)
+      if (!from) return
+      const target = String(parsed.data.target)
+      if (parsed.data.action === "unblock") {
+        this.blocks.get(from.playerId)?.delete(target)
+        return
+      }
+      const set = this.blocks.get(from.playerId) ?? new Set<string>()
+      set.add(target)
+      this.blocks.set(from.playerId, set)
+      // Sever any live link + drop buffered messages in both directions.
+      this.forgetAcceptedPair(from.playerId, target, "chat")
+      this.dropAcceptedInviteForPlayers(from.playerId, target, "chat")
+      this.outbox?.removeForPair(from.playerId, target)
+      console.warn(`[${this.roomLabel}] block ${from.playerId} → ${target}`)
+    })
+
+    // Report a player to moderation. Records ONLY minimal structured metadata —
+    // never the raw draft. CloudWatch/container logs are the audit trail.
+    this.onMessage(MP_MSG.report, (client, raw) => {
+      const parsed = ReportMessage.safeParse(raw)
+      if (!parsed.success) return
+      if (!this.allow(client.sessionId, "report", 10, 60000)) return
+      const from = this.state.players.get(client.sessionId)
+      if (!from) return
+      console.warn(
+        `[${this.roomLabel}] REPORT reporter=${from.playerId} reported=${String(parsed.data.target)} ` +
+          `reason=${parsed.data.reason ?? "unspecified"} interaction=${parsed.data.interactionId ?? "-"} ` +
+          `ts=${Date.now()}`,
+      )
+    })
+  }
+
+  /** True when either player has blocked the other (suppress all interaction). */
+  private blockedEitherWay(a: string, b: string): boolean {
+    return (this.blocks.get(a)?.has(b) ?? false) || (this.blocks.get(b)?.has(a) ?? false)
   }
 
   /** Send an invite outcome to a client. */

@@ -4,6 +4,12 @@
 
 ## 0.1.7 - 2026-06-08
 
+- Add Block and Report safety controls (required for an all-ages social space):
+  a shield button in the chat opens Block / "Report & block". Blocking hides the
+  person from your waiting room, suppresses their invites and messages (server
+  mirror tears down the link + drops any buffered messages), and removes the
+  conversation from your device. Reporting sends only minimal moderation
+  metadata — never your message text.
 - Async penpal delivery: a message to a partner who is momentarily offline is
   now held by a bounded, self-expiring server buffer and delivered the moment
   they return — no more "they stepped away, can't send." The conversation stays

@@ -334,6 +334,26 @@ function consumeQuota(plus: boolean): void {
   localStorage.setItem("teletron.quota", JSON.stringify({ day, count: FREE_DAILY_LIMIT - remaining + 1 }))
 }
 
+const BLOCK_KEY = "teletron.blocks"
+
+/** The device-local, durable block list (the reliable layer; the server mirror is best-effort). */
+function loadBlocks(): Set<string> {
+  try {
+    const raw = JSON.parse(localStorage.getItem(BLOCK_KEY) || "[]")
+    return new Set(Array.isArray(raw) ? raw.filter((x): x is string => typeof x === "string") : [])
+  } catch {
+    return new Set()
+  }
+}
+
+function persistBlocks(blocks: Set<string>): void {
+  try {
+    localStorage.setItem(BLOCK_KEY, JSON.stringify([...blocks]))
+  } catch (error) {
+    console.error("[teletron] persist block list failed:", error)
+  }
+}
+
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
@@ -480,6 +500,8 @@ async function mountTeletron(
   let partnerOnline = false
   let chatState: ChatState = "idle"
   let restoredConversation = false
+  const blocked = loadBlocks()
+  const isBlocked = (id: string): boolean => blocked.has(id)
   const transcripts: TranscriptStore = await openTranscripts()
   let modelReady = false
   let modelBusy = false
@@ -521,7 +543,7 @@ async function mountTeletron(
           <p>They will see an invitation first. No message is delivered until they accept.</p>
         </div>
         <div class="tt-thread" hidden>
-          <div class="tt-thread-head"><div><span class="tt-avatar"></span><span><b class="tt-partner"></b><small class="tt-thread-status">AI-mediated connection</small></span></div><div class="tt-thread-actions"><button class="tt-voice" type="button" aria-pressed="true" aria-label="Mute voice">${icon("speaker")}</button><button class="tt-end" type="button">End</button></div></div>
+          <div class="tt-thread-head"><div><span class="tt-avatar"></span><span><b class="tt-partner"></b><small class="tt-thread-status">AI-mediated connection</small></span></div><div class="tt-thread-actions"><button class="tt-voice" type="button" aria-pressed="true" aria-label="Mute voice">${icon("speaker")}</button><button class="tt-flag" type="button" aria-label="Block or report">${icon("shield")}</button><button class="tt-end" type="button">End</button></div></div>
           <div class="tt-messages"></div>
           <form class="tt-composer">
             <textarea rows="1" maxlength="600" placeholder="Write a message"></textarea>
@@ -543,6 +565,7 @@ async function mountTeletron(
       <button class="tt-enter" type="button">Enter waiting room</button>
     </div></div>
     <div class="tt-invite" hidden><div><span class="tt-avatar"></span><h3></h3><p>They want to start a locally moderated conversation.</p><footer><button data-decline>Not now</button><button data-accept>Accept chat</button></footer></div></div>
+    <div class="tt-safety" hidden><div><span class="tt-avatar"></span><h3></h3><p>You won't see each other in Teletron again, and this conversation is removed from your device.</p><footer><button data-safety-cancel>Cancel</button><button data-safety-block>Block</button><button data-safety-report>Report &amp; block</button></footer></div></div>
     <div class="tt-toast" hidden></div>
   `
   container.appendChild(root)
@@ -559,7 +582,9 @@ async function mountTeletron(
   const mic = $<HTMLButtonElement>(".tt-mic")
   const sendButton = $<HTMLButtonElement>(".tt-send")
   const voiceButton = $<HTMLButtonElement>(".tt-voice")
+  const flagButton = $<HTMLButtonElement>(".tt-flag")
   const endButton = $<HTMLButtonElement>(".tt-end")
+  const safetySheet = $(".tt-safety")
   const threadStatus = $(".tt-thread-status")
   const quota = $(".tt-quota")
   const modelBar = $(".tt-model")
@@ -711,14 +736,15 @@ async function mountTeletron(
   }
 
   function renderPeople(): void {
-    count.textContent = String(players.size)
+    const visible = [...players.values()].filter((p) => !isBlocked(p.playerId))
+    count.textContent = String(visible.length)
     people.replaceChildren()
-    if (!players.size) {
+    if (!visible.length) {
       const waiting = el("div", "tt-waiting", "Waiting for another signal...")
       people.appendChild(waiting)
       return
     }
-    for (const p of players.values()) {
+    for (const p of visible) {
       const card = el("button", "tt-person")
       card.type = "button"
       const isPendingTarget = pendingInvite?.player.playerId === p.playerId
@@ -907,6 +933,39 @@ async function mountTeletron(
       return
     }
     dismissThread()
+  }
+
+  /**
+   * Block (and optionally report) a partner. Adds them to the durable device
+   * block list, mirrors it to the server (suppresses their invites/messages +
+   * tears down the link), removes the transcript from this device, and closes
+   * the thread. Required All-Ages UGC safety affordance.
+   */
+  function blockPartner(p: WirePlayer, opts: { report: boolean }): void {
+    if (opts.report) room?.send(MP_MSG.report, { target: p.playerId })
+    room?.send(MP_MSG.block, { target: p.playerId, action: "block" })
+    if (chatState === "active" && partner?.playerId === p.playerId) sendControl("ended", p)
+    blocked.add(p.playerId)
+    persistBlocks(blocked)
+    players.delete(p.playerId)
+    profiles.delete(p.playerId)
+    void transcripts
+      .remove(p.playerId)
+      .catch((error) => console.error("[teletron] remove transcript on block failed:", error))
+    dismissThread()
+    renderPeople()
+    showToast(opts.report ? `Reported and blocked ${p.name}.` : `Blocked ${p.name}.`)
+  }
+
+  function openSafetySheet(): void {
+    if (!partner) return
+    safetySheet.querySelector(".tt-avatar")!.textContent = avatarInitial(partner.name)
+    safetySheet.querySelector("h3")!.textContent = `Block ${partner.name}?`
+    safetySheet.removeAttribute("hidden")
+  }
+
+  function closeSafetySheet(): void {
+    safetySheet.setAttribute("hidden", "")
   }
 
   function invite(p: WirePlayer): void {
@@ -1181,6 +1240,16 @@ async function mountTeletron(
   disposers.push(() => window.removeEventListener("resize", autosizeComposer))
   autosizeComposer()
   endButton.addEventListener("click", endOrDismissThread)
+  flagButton.addEventListener("click", openSafetySheet)
+  safetySheet.querySelector("[data-safety-cancel]")!.addEventListener("click", closeSafetySheet)
+  safetySheet.querySelector("[data-safety-block]")!.addEventListener("click", () => {
+    closeSafetySheet()
+    if (partner) blockPartner(partner, { report: false })
+  })
+  safetySheet.querySelector("[data-safety-report]")!.addEventListener("click", () => {
+    closeSafetySheet()
+    if (partner) blockPartner(partner, { report: true })
+  })
   voiceButton.addEventListener("click", () => {
     ttsEnabled = !ttsEnabled
     localStorage.setItem("teletron.tts", ttsEnabled ? "on" : "off")
@@ -1280,6 +1349,10 @@ async function mountTeletron(
       joined.onMessage(MP_MSG.invited, async (raw) => {
         const parsed = InvitedMessage.safeParse(raw)
         if (!parsed.success || parsed.data.offer.kind !== "chat") return
+        if (isBlocked(parsed.data.from)) {
+          joined.send(MP_MSG.inviteRespond, { inviteId: parsed.data.inviteId, action: "decline" })
+          return
+        }
         const p = players.get(parsed.data.from) ?? {
           playerId: parsed.data.from,
           name: parsed.data.fromName,
@@ -1312,7 +1385,7 @@ async function mountTeletron(
       }),
       joined.onMessage(MP_MSG.chatDeliver, (raw) => {
         const parsed = MediatedChatInput.safeParse(raw)
-        if (parsed.success) enqueueReceive(parsed.data)
+        if (parsed.success && !isBlocked(parsed.data.from)) enqueueReceive(parsed.data)
       }),
     )
     // After the first successful join, return the user to a recent conversation.
@@ -1355,7 +1428,9 @@ async function mountTeletron(
     }
     if (partner) return
     const now = Date.now()
-    const recent = links.find((l) => !l.lapsedAt && now - l.lastActivityAt < LINK_TTL_MS)
+    const recent = links.find(
+      (l) => !l.lapsedAt && !isBlocked(l.partnerId) && now - l.lastActivityAt < LINK_TTL_MS,
+    )
     if (!recent) return
     openThread(
       { playerId: recent.partnerId, name: recent.partnerName, target: "", native: "" },

@@ -104,6 +104,7 @@
 .tt-send svg,
 .tt-mic svg,
 .tt-voice svg,
+.tt-flag svg,
 .tt-kicker svg,
 .tt-list-head svg,
 .tt-select-chev svg {
@@ -950,6 +951,62 @@
   border-color: transparent;
   color: #fff;
   background: linear-gradient(180deg, var(--tt-purple), #6d4be7);
+}
+
+.tt-flag {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--tt-line);
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  color: var(--tt-muted);
+  background: rgba(255, 255, 255, 0.045);
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.tt-flag:active { transform: scale(0.94); }
+
+.tt-safety {
+  position: fixed;
+  inset: 0;
+  z-index: 41;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(6, 7, 12, 0.68);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.tt-safety[hidden] { display: none; }
+.tt-safety > div {
+  width: min(370px, 100%);
+  padding: 26px;
+  border: 1px solid var(--tt-line);
+  border-radius: 24px;
+  text-align: center;
+  background: linear-gradient(180deg, #1b1f31, #121522);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.62);
+}
+.tt-safety .tt-avatar { margin: 0 auto; }
+.tt-safety h3 { margin: 16px 0 6px; font-size: 19px; }
+.tt-safety p { margin: 0; color: var(--tt-muted); font-size: 13px; }
+.tt-safety footer {
+  display: grid;
+  gap: 9px;
+  margin-top: 24px;
+}
+.tt-safety button {
+  min-height: 44px;
+  border: 1px solid var(--tt-line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--tt-ink);
+  font-weight: 760;
+}
+.tt-safety [data-safety-report] {
+  border-color: rgba(251, 113, 133, 0.28);
+  background: rgba(251, 113, 133, 0.1);
+  color: #fecdd3;
 }
 
 @media (max-width: 720px) {
