@@ -58,6 +58,11 @@ export const MP_MSG = {
   trade: "trade",
   /** S→C: a trade lifecycle update from the partner / server. */
   tradeUpdate: "trade-update",
+
+  /** C→S: block (or unblock) another player — suppress their invites/messages. */
+  block: "block",
+  /** C→S: report another player to moderation (minimal metadata; no content). */
+  report: "report",
 } as const
 export type MpMsgName = (typeof MP_MSG)[keyof typeof MP_MSG]
 
@@ -184,3 +189,39 @@ export const TradeUpdateMessage = TradeEnvelope.extend({
   from: PlayerId,
 })
 export type TradeUpdateMessage = z.infer<typeof TradeUpdateMessage>
+
+/* ----------------------------------------------------------- safety: block/report */
+
+/**
+ * C→S: block or unblock a player. Blocking suppresses their invites and messages
+ * to you (and tears down any live link + buffered messages) for the session. The
+ * durable block list lives on the device; this is the live, server-side mirror.
+ */
+export const BlockMessage = z.object({
+  target: PlayerId,
+  action: z.enum(["block", "unblock"]).default("block"),
+})
+export type BlockMessage = z.infer<typeof BlockMessage>
+
+/** Coarse, all-ages-appropriate report categories. */
+export const ReportReason = z.enum([
+  "harassment",
+  "sexual",
+  "contact-info",
+  "meetup",
+  "spam",
+  "other",
+])
+export type ReportReason = z.infer<typeof ReportReason>
+
+/**
+ * C→S: report a player to moderation. Carries ONLY minimal structured metadata —
+ * never the raw draft. The server records an audit line (reporter, reported,
+ * reason, optional interaction id, timestamp); content is not collected.
+ */
+export const ReportMessage = z.object({
+  target: PlayerId,
+  reason: ReportReason.optional(),
+  interactionId: z.string().min(1).max(120).optional(),
+})
+export type ReportMessage = z.infer<typeof ReportMessage>

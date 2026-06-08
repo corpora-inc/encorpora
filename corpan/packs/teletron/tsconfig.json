@@ -18,6 +18,8 @@
       "@corpan-city/contracts/*": ["../corpan-city/contracts/src/*"],
       "@shared/asr": ["../shared/asr/index.ts"],
       "@shared/moderation": ["../shared/moderation/index.ts"],
+      "@shared/net/*": ["../shared/net/*"],
+      "colyseus.js": ["node_modules/colyseus.js"],
       "zod": ["node_modules/zod/index.d.ts"]
     }
   },

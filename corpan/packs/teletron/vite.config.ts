@@ -25,6 +25,8 @@ export default defineConfig({
       "@corpan-city/contracts": path.resolve(__dirname, "../corpan-city/contracts/src/index.ts"),
       "@shared/asr": path.resolve(__dirname, "../shared/asr/index.ts"),
       "@shared/moderation": path.resolve(__dirname, "../shared/moderation/index.ts"),
+      "@shared/net": path.resolve(__dirname, "../shared/net"),
+      "colyseus.js": path.resolve(__dirname, "node_modules/colyseus.js"),
       "zod": path.resolve(__dirname, "node_modules/zod"),
     },
   },

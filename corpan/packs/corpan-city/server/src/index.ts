@@ -6,6 +6,7 @@ import { Server } from "@colyseus/core"
 import { WebSocketTransport } from "@colyseus/ws-transport"
 import { RoomTopology } from "@corpan-city/contracts"
 import { PlazaRoom } from "./PlazaRoom.js"
+import { createMemoryOutbox } from "./outbox.js"
 
 /**
  * Corpan City presence server boot.
@@ -42,6 +43,18 @@ const gameServer = new Server({
   transport: new WebSocketTransport({ server: httpServer }),
 })
 
+// The Teletron living-link window: a penpal stays reachable (and their buffered
+// messages survive) for 24h of inactivity, then the link drifts away.
+const TELETRON_LINK_TTL_MS = 24 * 60 * 60 * 1000
+
+// The ONLY server-side message state: a bounded, self-expiring store-and-forward
+// buffer for messages to momentarily-offline penpals. One shared instance so a
+// returning player is reachable no matter which Teletron room they land in. No
+// conversation history, no social graph — those live on each device.
+const teletronOutbox = createMemoryOutbox()
+const sweepTimer = setInterval(() => teletronOutbox.sweep(Date.now()), 60_000)
+sweepTimer.unref?.()
+
 gameServer
   .define("plaza", PlazaRoom, {
     topology,
@@ -65,10 +78,15 @@ gameServer
     topology,
     roomLabel: "teletron",
     maxClients: 100,
-    reconnectionSeconds: 0,
+    // Hold the seat across a brief background/flaky-network drop so a quick
+    // return reconnects in place and the partner never sees you leave.
+    reconnectionSeconds: 90,
     replaceDuplicatePlayerId: true,
     placeReveal: "country",
     aoi: { cellSize: 10000, radius: 1 },
+    // Async penpal support: 24h living link + buffered delivery to offline peers.
+    outbox: teletronOutbox,
+    acceptedPairTtlMs: TELETRON_LINK_TTL_MS,
   })
   .sortBy({ clients: -1 })
   .enableRealtimeListing()

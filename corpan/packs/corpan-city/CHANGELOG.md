@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Server: added an optional shared store-and-forward outbox and a configurable
+  living-link TTL to PlazaRoom (used by Teletron for async penpal delivery to
+  offline peers). Additive and opt-in — Corpan City rooms are unchanged.
+- Contracts + server: added `block` and `report` interaction messages. Blocking
+  suppresses a player's invites/messages and tears down the link + buffered
+  messages; reporting records minimal moderation metadata (no content). The
+  block enforcement applies to all PlazaRoom rooms.
+
 ## [0.1.5] - 2026-06-08
 
 - Solidified the peer-chat lifecycle: ignored invites now expire cleanly, tapping

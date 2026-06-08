@@ -13,6 +13,8 @@ plugins/tauri-plugin-subscriptions/ios/Package.resolved
 plugins/tauri-plugin-radio-stream/.tauri/
 plugins/tauri-plugin-radio-stream/android/.tauri/
 plugins/tauri-plugin-radio-stream/android/build/
+plugins/tauri-plugin-asr-native/android/.tauri/
+plugins/tauri-plugin-asr-native/android/build/
 plugins/tauri-plugin-radio-stream/ios/Package.resolved
 plugins/tauri-plugin-stt/.tauri/
 plugins/tauri-plugin-stt/android/.tauri/

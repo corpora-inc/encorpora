@@ -1,5 +1,46 @@
 # Teletron Changelog
 
+## [Unreleased]
+
+- Fix the gray-square that rendered on the right side of speakable message
+  bubbles: the speaker-icon CSS was using `polygon()` as a mask layer, which is
+  a `clip-path` value and not a valid mask source — every browser dropped the
+  mask entirely and filled the box with `currentColor`. Replaced with a proper
+  inline-SVG speaker mask.
+- Add a `scripts/pack.mjs` (`npm run pack`) that bundles `teletron-avatar.png`
+  alongside `manifest.json` and `dist/` into `teletron.zip`. The brand avatar
+  is referenced by `main.ts` via `packAssetUrl()`, but the previous ad-hoc zip
+  shipped only `manifest.json + dist/`, so the logo broke on platforms that
+  resolve pack assets from the downloaded zip (e.g. Android). iOS happened to
+  work because its plugin copies the pack from the iOS app bundle, which
+  already contained the PNG.
+
+## 0.1.7 - 2026-06-08
+
+- Add Block and Report safety controls (required for an all-ages social space):
+  a shield button in the chat opens Block / "Report & block". Blocking hides the
+  person from your waiting room, suppresses their invites and messages (server
+  mirror tears down the link + drops any buffered messages), and removes the
+  conversation from your device. Reporting sends only minimal moderation
+  metadata — never your message text.
+- Async penpal delivery: a message to a partner who is momentarily offline is
+  now held by a bounded, self-expiring server buffer and delivered the moment
+  they return — no more "they stepped away, can't send." The conversation stays
+  a living link for 24h; you can keep it going indefinitely as long as you both
+  write within a day, after which it gently drifts to a close.
+- Hold the presence seat across a brief background/network drop (90s) so a quick
+  return reconnects in place and your partner never sees you leave.
+- Make the presence connection resilient: a dropped socket now reconnects
+  automatically (token rejoin, exponential backoff, and immediate retry when the
+  app returns to the foreground) instead of ending the conversation. The chat
+  header shows "Reconnecting…" and resumes in place.
+- Persist conversations on-device (IndexedDB): reopening Teletron restores a
+  still-living conversation, and every exchange is kept as a permanent transcript
+  even after a chat ends.
+- Treat a partner leaving as "stepped away" rather than a hard end — the thread
+  stays open and resumes if they return; a lapsed conversation becomes a
+  read-only keepsake (dormant) rather than disappearing.
+
 ## 0.1.6
 
 - Publish the latest Teletron streaming chat, mobile layout, localized language selector, and safe-relay place blurring under a new pack version for users already on 0.1.5.
