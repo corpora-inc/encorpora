@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Improved multiplayer chat lifecycle resilience: Corpan City now uses the
+  server reconnection window on iOS foreground/network resume, preserves accepted
+  chat/trade authorization by durable player id for short rejoin gaps, requires
+  an accepted chat invite before opening peer chat, and surfaces partner
+  left/returned/ended states instead of letting users type into a dead socket.
 - Added native-language output prompt priming for every supported peer-chat
   translation language, so scripts like Telugu, Tamil, Punjabi, and Arabic get a
   target-language system instruction before generation.

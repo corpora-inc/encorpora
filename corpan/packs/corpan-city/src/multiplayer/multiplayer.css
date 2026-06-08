@@ -69,6 +69,16 @@
   gap: 12px;
   padding: 16px 18px 8px;
 }
+.wp-mp-chat-status {
+  margin: 0 18px 6px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(232, 181, 74, 0.12);
+  color: rgba(243, 234, 212, 0.82);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
 .wp-mp-ava {
   width: 44px;
   height: 44px;
@@ -142,6 +152,15 @@
 }
 .wp-mp-msg-self { align-self: flex-end; background: #34506a; }
 .wp-mp-msg-peer { align-self: flex-start; background: #2a2f3a; }
+.wp-mp-msg-system {
+  align-self: center;
+  max-inline-size: 92%;
+  background: rgba(243, 234, 212, 0.08);
+  color: rgba(243, 234, 212, 0.72);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-align: center;
+}
 .wp-mp-msg-orig { font-size: 12px; opacity: 0.66; margin-block-start: 4px; font-style: italic; }
 .wp-mp-msg-tip {
   font-size: 11.5px;
@@ -170,6 +189,7 @@
   padding: 10px 14px 14px;
   border-block-start: 1px solid rgba(243, 234, 212, 0.1);
 }
+.wp-mp-compose-disabled { opacity: 0.62; }
 .wp-mp-input {
   flex: 1 1 auto;
   padding: 11px 13px;
@@ -180,6 +200,13 @@
   color: #f3ead4;
 }
 .wp-mp-input::placeholder { color: rgba(243, 234, 212, 0.4); }
+.wp-mp-input:disabled,
+.wp-mp-btn:disabled {
+  cursor: default;
+  filter: grayscale(0.25);
+  opacity: 0.62;
+}
+.wp-mp-btn:disabled:active { transform: none; }
 
 .wp-mp-x {
   margin-inline-start: auto;

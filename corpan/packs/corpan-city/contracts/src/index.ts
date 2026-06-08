@@ -44,6 +44,8 @@ import {
   InvitedMessage,
   InviteRespond,
   InviteResult,
+  ChatControlMessage,
+  ChatControlDeliver,
   ProfileRequest,
   PeerChallengeResult,
   TradeEnvelope,
@@ -78,6 +80,8 @@ export const parseInviteMessage = (v: unknown) => InviteMessage.parse(v)
 export const parseInvitedMessage = (v: unknown) => InvitedMessage.parse(v)
 export const parseInviteRespond = (v: unknown) => InviteRespond.parse(v)
 export const parseInviteResult = (v: unknown) => InviteResult.parse(v)
+export const parseChatControlMessage = (v: unknown) => ChatControlMessage.parse(v)
+export const parseChatControlDeliver = (v: unknown) => ChatControlDeliver.parse(v)
 export const parsePeerChallengeResult = (v: unknown) => PeerChallengeResult.parse(v)
 export const parseTradeEnvelope = (v: unknown) => TradeEnvelope.parse(v)
 export const parseTradeUpdateMessage = (v: unknown) => TradeUpdateMessage.parse(v)

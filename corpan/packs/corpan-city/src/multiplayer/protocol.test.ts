@@ -78,6 +78,17 @@ describe("interaction protocol — outbound", () => {
     })
     expect(lastOf(MP_MSG.peerResult)?.payload).toMatchObject({ inviteId: "inv-9" })
   })
+
+  it("sends chat lifecycle control without user text", () => {
+    const { room, lastOf } = mockRoom()
+    const proto = createProtocol(room, {})
+    proto.sendChatControl({ to: "p-2" as SafeProfile["playerId"], interactionId: "chat-1", action: "ended" })
+    expect(lastOf(MP_MSG.chatControl)?.payload).toEqual({
+      to: "p-2",
+      interactionId: "chat-1",
+      action: "ended",
+    })
+  })
 })
 
 describe("interaction protocol — inbound (server → client, re-validated)", () => {
@@ -109,6 +120,7 @@ describe("interaction protocol — inbound (server → client, re-validated)", (
       onInvited: vi.fn(),
       onInviteResult: vi.fn(),
       onChat: vi.fn(),
+      onChatControl: vi.fn(),
       onTrade: vi.fn(),
       onPeerResult: vi.fn(),
     }
@@ -129,6 +141,12 @@ describe("interaction protocol — inbound (server → client, re-validated)", (
       sourceLanguage: "es",
       targetLanguage: "en",
       mode: "beginner",
+    })
+    deliver(MP_MSG.chatControl, {
+      from: "p-2",
+      to: "p-local",
+      interactionId: "x",
+      action: "partner-left",
     })
     deliver(MP_MSG.tradeUpdate, {
       tradeId: "t-1",
@@ -153,6 +171,7 @@ describe("interaction protocol — inbound (server → client, re-validated)", (
     expect(h.onInvited).toHaveBeenCalledOnce()
     expect(h.onInviteResult).toHaveBeenCalledWith(expect.objectContaining({ outcome: "accepted" }))
     expect(h.onChat).toHaveBeenCalledOnce()
+    expect(h.onChatControl).toHaveBeenCalledWith(expect.objectContaining({ action: "partner-left" }))
     expect(h.onTrade).toHaveBeenCalledWith(expect.objectContaining({ tradeId: "t-1" }))
     expect(h.onPeerResult).toHaveBeenCalledWith("i-1", expect.objectContaining({ score: 0.5 }))
   })

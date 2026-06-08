@@ -22,6 +22,15 @@
   --tt-safe-bottom: env(safe-area-inset-bottom, 0px);
   --tt-safe-left: env(safe-area-inset-left, 0px);
   --tt-safe-right: env(safe-area-inset-right, 0px);
+  /* iPad Stage Manager/window controls can float over the top-left without
+     contributing to safe-area-inset-top. Phone widths keep the raw inset. */
+  --tt-chrome-top: var(--tt-safe-top);
+}
+
+@media (min-width: 600px) {
+  :root {
+    --tt-chrome-top: max(var(--tt-safe-top), 44px);
+  }
 }
 
 .tt-root,
@@ -63,9 +72,9 @@
 }
 
 .tt-header {
-  min-height: calc(60px + var(--tt-safe-top));
+  min-height: calc(60px + var(--tt-chrome-top));
   padding:
-    calc(var(--tt-safe-top) + 10px) max(var(--tt-safe-right), 18px) 10px
+    calc(var(--tt-chrome-top) + 10px) max(var(--tt-safe-right), 18px) 10px
     max(var(--tt-safe-left), 16px);
   display: flex;
   align-items: center;
@@ -566,6 +575,18 @@
   transition: opacity 0.15s ease;
 }
 .tt-message.is-speakable:hover div::after { opacity: 0.58; }
+.tt-message.is-streaming div::after {
+  content: "";
+  display: inline-block;
+  width: 0.48em;
+  height: 0.48em;
+  margin-left: 0.36em;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.42;
+  vertical-align: baseline;
+  animation: tt-pulse 1s ease-in-out infinite;
+}
 .tt-message small {
   padding: 0 8px;
   color: var(--tt-muted);
@@ -625,9 +646,13 @@
   border: 0;
   outline: 0;
   padding: 10px 12px;
+  overflow: hidden;
   color: var(--tt-ink);
   background: transparent;
   font-size: 16px;
+  line-height: 1.35;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(167, 139, 250, 0.42) transparent;
 }
 .tt-composer textarea::placeholder { color: var(--tt-muted); }
 .tt-composer textarea:disabled {
@@ -739,7 +764,7 @@
   z-index: 35;
   display: grid;
   place-items: center;
-  padding: max(22px, var(--tt-safe-top)) 20px max(22px, var(--tt-safe-bottom));
+  padding: max(22px, var(--tt-chrome-top)) 20px max(22px, var(--tt-safe-bottom));
   background: rgba(6, 7, 12, 0.72);
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
@@ -941,9 +966,9 @@
     display: none;
   }
   .tt-header {
-    min-height: calc(58px + var(--tt-safe-top));
+    min-height: calc(58px + var(--tt-chrome-top));
     padding:
-      calc(var(--tt-safe-top) + 9px) max(var(--tt-safe-right), 12px) 9px
+      calc(var(--tt-chrome-top) + 9px) max(var(--tt-safe-right), 12px) 9px
       max(var(--tt-safe-left), 14px);
     gap: 8px;
   }
@@ -1016,9 +1041,9 @@
     background: var(--tt-bg);
   }
   .tt-thread-head {
-    min-height: calc(58px + var(--tt-safe-top));
+    min-height: calc(58px + var(--tt-chrome-top));
     padding:
-      calc(var(--tt-safe-top) + 9px) max(var(--tt-safe-right), 12px) 9px
+      calc(var(--tt-chrome-top) + 9px) max(var(--tt-safe-right), 12px) 9px
       max(var(--tt-safe-left), 12px);
   }
   .tt-thread-head small { display: none; }
@@ -1067,4 +1092,12 @@
   .tt-send {
     transition: none;
   }
+  .tt-message.is-streaming div::after {
+    animation: none;
+  }
+}
+
+@keyframes tt-pulse {
+  0%, 100% { transform: translateY(-1px) scale(0.82); opacity: 0.25; }
+  50% { transform: translateY(-1px) scale(1); opacity: 0.64; }
 }

@@ -12,6 +12,7 @@ import {
   type StackReveal,
 } from "@corpan-city/contracts"
 import { wireDictation, dictationResolver } from "@shared/asr"
+import { OUTPUT_LANGUAGE_PRIMES } from "@shared/moderation"
 import { continentOf, detectCountry } from "../../corpan-city/src/multiplayer/geo"
 import type { HostApi } from "../../corpan-city/src/npc/hostTypes"
 import { createChatMediator } from "./mediator"
@@ -61,6 +62,12 @@ type WirePlayer = {
 }
 
 type ChatState = "idle" | "active" | "ended"
+
+type TeletronLanguages = {
+  native: LanguageCode
+  learning: LanguageCode[]
+  hidden: string[]
+}
 
 type ContentPackModule = {
   mount: (
@@ -162,11 +169,87 @@ function serverUrl(): string {
   )
 }
 
-function stackLanguages(initial?: InitialState): { native: LanguageCode; learning: LanguageCode[] } {
+const TELETRON_RELAY_LANGUAGES = new Set(Object.keys(OUTPUT_LANGUAGE_PRIMES))
+const RELAY_LANGUAGE_ALIASES: Record<string, string> = {
+  ko: "ko",
+  "ko-KR": "ko",
+  pt: "pt-BR",
+  "pt-PT": "pt-PT",
+  "pt-BR": "pt-BR",
+  pa: "pa-Guru",
+  "pa-IN": "pa-Guru",
+  "pa-PK": "pa-Arab",
+  zh: "zh-Hans",
+  "zh-CN": "zh-Hans",
+  "zh-TW": "zh-Hant",
+  "zh-HK": "yue-Hant-HK",
+  yue: "yue-Hant-HK",
+}
+
+function canonicalRelayLanguage(language: string): LanguageCode | null {
+  const raw = language.trim()
+  if (!raw) return null
+  if (TELETRON_RELAY_LANGUAGES.has(raw)) return raw as LanguageCode
+  const alias = RELAY_LANGUAGE_ALIASES[raw]
+  if (alias && TELETRON_RELAY_LANGUAGES.has(alias)) return alias as LanguageCode
+  const base = raw.split("-")[0] ?? raw
+  if (TELETRON_RELAY_LANGUAGES.has(base)) return base as LanguageCode
+  return null
+}
+
+function stackLanguages(initial?: InitialState): TeletronLanguages {
   const langs = [...new Set(initial?.stackConfig?.languages?.filter((x) => typeof x === "string") ?? [])]
-  const native = (langs[0] || "en") as LanguageCode
-  const learning = langs.slice(1).filter((lang) => lang !== native) as LanguageCode[]
-  return { native, learning: learning.length > 0 ? learning : [native] }
+  const native = canonicalRelayLanguage(langs[0] || "en") ?? ("en" as LanguageCode)
+  const learning: LanguageCode[] = []
+  const hidden: string[] = []
+  for (const language of langs.slice(1)) {
+    const canonical = canonicalRelayLanguage(language)
+    if (!canonical) {
+      hidden.push(language)
+      continue
+    }
+    if (canonical !== native && !learning.includes(canonical)) learning.push(canonical)
+  }
+  return { native, learning: learning.length > 0 ? learning : [native], hidden }
+}
+
+function displayNameOf(type: "language" | "region" | "script", code: string, uiLocale: string): string | null {
+  try {
+    const dn = new Intl.DisplayNames([uiLocale, "en"], { type })
+    return dn.of(code) ?? null
+  } catch {
+    return null
+  }
+}
+
+function languageDisplayName(code: string, uiLocale: string): string {
+  const baseCode =
+    code === "ko-polite"
+      ? "ko"
+      : code.startsWith("pa-")
+        ? "pa"
+        : code.startsWith("pt-")
+          ? "pt"
+          : code.startsWith("zh-")
+            ? "zh"
+            : code.startsWith("yue-")
+              ? "yue"
+              : code.split("-")[0] || code
+  const base =
+    displayNameOf("language", baseCode, uiLocale) ??
+    (baseCode === "yue" ? "Cantonese" : code.toUpperCase())
+  const detail = (() => {
+    if (code === "pt-BR") return displayNameOf("region", "BR", uiLocale) ?? "Brazil"
+    if (code === "pt-PT") return displayNameOf("region", "PT", uiLocale) ?? "Portugal"
+    if (code === "zh-Hans") return displayNameOf("script", "Hans", uiLocale) ?? "Simplified"
+    if (code === "zh-Hant") return displayNameOf("script", "Hant", uiLocale) ?? "Traditional"
+    if (code === "yue-Hant-HK") return displayNameOf("region", "HK", uiLocale) ?? "Hong Kong"
+    if (code === "pa-Arab") return "Shahmukhi"
+    if (code === "pa-Guru") return displayNameOf("script", "Guru", uiLocale) ?? "Gurmukhi"
+    if (code === "ko-polite") return "polite"
+    return ""
+  })()
+  return detail ? `${base} (${detail})` : base
 }
 
 function stackReveal(
@@ -296,14 +379,22 @@ async function mountTeletron(
     (error) => console.error("[teletron/tts]", error),
   )
   let speechEpoch = 0
-  let activeSpeech:
-    | { epoch: number; locale: string; buffer: StreamingSentenceBuffer }
+  let activeStream:
+    | {
+        epoch: number
+        locale: string
+        buffer: StreamingSentenceBuffer | null
+        placeholder: HTMLElement
+        message: HTMLElement
+        body: HTMLElement
+        visibleText: string
+        revealed: boolean
+      }
     | null = null
 
   function cancelSpeech(): void {
     speechEpoch += 1
-    activeSpeech?.buffer.discard()
-    activeSpeech = null
+    if (activeStream) activeStream.buffer = null
     speechQueue.cancel()
   }
 
@@ -322,16 +413,54 @@ async function mountTeletron(
     speechQueue.enqueue(locale, clean)
   }
 
+  function scrollMessagesToEnd(): void {
+    messages.scrollTop = messages.scrollHeight
+  }
+
+  function revealActiveStream(stream: NonNullable<typeof activeStream>): void {
+    if (stream.revealed) return
+    stream.placeholder.remove()
+    stream.message.removeAttribute("hidden")
+    stream.revealed = true
+    scrollMessagesToEnd()
+  }
+
+  function appendTargetToken(stream: NonNullable<typeof activeStream>, token: string): void {
+    if (!token) return
+    revealActiveStream(stream)
+    stream.visibleText += token
+    stream.body.textContent = stream.visibleText
+    scrollMessagesToEnd()
+    if (stream.buffer) queueSpeech(stream.locale, stream.buffer.push(token), stream.epoch)
+  }
+
+  function finishTargetStream(stream: NonNullable<typeof activeStream>, fullText = ""): void {
+    const full = fullText.trim()
+    if (full) {
+      if (!stream.visibleText.trim()) {
+        appendTargetToken(stream, full)
+      } else if (full.startsWith(stream.visibleText)) {
+        appendTargetToken(stream, full.slice(stream.visibleText.length))
+      } else {
+        revealActiveStream(stream)
+        stream.visibleText = full
+        stream.body.textContent = full
+        scrollMessagesToEnd()
+      }
+    }
+    if (stream.buffer) queueSpeech(stream.locale, stream.buffer.finish(), stream.epoch)
+  }
+
   const mediator = createChatMediator(hostApi, {
     onToken(label, token) {
-      const speech = activeSpeech
-      if (!speech || label !== `relay.translate-target.${speech.locale}`) return
-      queueSpeech(speech.locale, speech.buffer.push(token), speech.epoch)
+      const stream = activeStream
+      if (!stream || label !== `relay.translate-target.${stream.locale}`) return
+      appendTargetToken(stream, token)
     },
-    onDone(label) {
-      const speech = activeSpeech
-      if (!speech || label !== `relay.translate-target.${speech.locale}`) return
-      queueSpeech(speech.locale, speech.buffer.finish(), speech.epoch)
+    onDone(label, fullText) {
+      const stream = activeStream
+      if (!stream || label !== `relay.translate-target.${stream.locale}`) return
+      finishTargetStream(stream, fullText)
     },
   })
   const players = new Map<string, WirePlayer>()
@@ -347,6 +476,7 @@ async function mountTeletron(
   let revealStack = false
   let revealCountry = false
   let pendingInvite: { inviteId: string; player: WirePlayer } | null = null
+  let receiveTail: Promise<void> = Promise.resolve()
   const teletronLogoUrl = packAssetUrl("teletron-avatar.png")
 
   const root = el("div", "tt-root")
@@ -396,7 +526,7 @@ async function mountTeletron(
       <h2>Enter the waiting room</h2>
       <label><span>Your generated name</span><div class="tt-name-row"><b class="tt-own-name"></b><button type="button" data-reroll>Roll again</button></div></label>
       <label><span>Show chat messages in</span><div class="tt-select-wrap"><select class="tt-language"></select><span class="tt-select-chev">${icon("chevron")}</span></div></label>
-      <p>Choose from the languages in your learning stack. You can change this the next time you enter.</p>
+      <p class="tt-language-note">Choose from the Teletron-ready languages in your learning stack. You can change this the next time you enter.</p>
       <button class="tt-enter" type="button">Enter waiting room</button>
     </div></div>
     <div class="tt-invite" hidden><div><span class="tt-avatar"></span><h3></h3><p>They want to start a locally moderated conversation.</p><footer><button data-decline>Not now</button><button data-accept>Accept chat</button></footer></div></div>
@@ -427,14 +557,28 @@ async function mountTeletron(
   const onboarding = $(".tt-onboarding")
   const ownName = $(".tt-own-name")
   const languageSelect = $<HTMLSelectElement>(".tt-language")
+  const languageNote = $(".tt-language-note")
   let inviteReply: ((accepted: boolean) => void) | null = null
+
+  function autosizeComposer(): void {
+    field.style.height = "0px"
+    const max = window.matchMedia("(max-width: 720px)").matches ? 108 : 130
+    const next = Math.min(Math.max(field.scrollHeight, 42), max)
+    field.style.height = `${next}px`
+    field.style.overflowY = field.scrollHeight > max ? "auto" : "hidden"
+  }
 
   ownName.textContent = name
   for (const language of languages.learning) {
     const option = document.createElement("option")
     option.value = language
-    option.textContent = language
+    option.textContent = languageDisplayName(language, languages.native)
     languageSelect.appendChild(option)
+  }
+  if (languages.hidden.length > 0) {
+    languageNote.textContent =
+      "Some stack languages are hidden in this first Teletron release while we test Qwen3 4B quality: " +
+      `${languages.hidden.map((language) => languageDisplayName(language, languages.native)).join(", ")}.`
   }
 
   function showToast(text: string): void {
@@ -508,8 +652,10 @@ async function mountTeletron(
     if (!profile) return "Private profile"
     const bits: string[] = []
     if (profile.stack.target !== "und") {
-      const learning = [profile.stack.target, ...(profile.stack.alsoLearning ?? [])].join(", ")
-      bits.push(`${profile.stack.native} → ${learning}`)
+      const learning = [profile.stack.target, ...(profile.stack.alsoLearning ?? [])]
+        .map((language) => languageDisplayName(language, languages.native))
+        .join(", ")
+      bits.push(`${languageDisplayName(profile.stack.native, languages.native)} → ${learning}`)
     }
     const place = placeLabel(profile.place)
     if (place) bits.push(place)
@@ -571,7 +717,7 @@ async function mountTeletron(
     msg.appendChild(el("div", undefined, text))
     if (detail) msg.appendChild(el("small", undefined, detail))
     messages.appendChild(msg)
-    messages.scrollTop = messages.scrollHeight
+    scrollMessagesToEnd()
     return msg
   }
 
@@ -631,6 +777,7 @@ async function mountTeletron(
     threadStatus.textContent = "Chat ended"
     endButton.textContent = "Done"
     field.value = ""
+    autosizeComposer()
     if (!alreadyEnded) addMessage("system", text)
     updateQuota()
     renderPeople()
@@ -684,6 +831,7 @@ async function mountTeletron(
     if (!modelReady || quotaRemaining(plus) <= 0) return
     addMessage("self", text)
     field.value = ""
+    autosizeComposer()
     const placeholder = el("div", "tt-message tt-system", "Cleaning locally...")
     messages.appendChild(placeholder)
     let input: MediatedChatInput
@@ -737,10 +885,22 @@ async function mountTeletron(
     if (!partner || partner.playerId !== sender.playerId) openThread(sender)
     const placeholder = el("div", "tt-message tt-system", "Interpreting locally...")
     messages.appendChild(placeholder)
-    cancelSpeech()
+    const streamingMessage = addMessage("peer", "")
+    streamingMessage.classList.add("is-streaming")
+    streamingMessage.setAttribute("hidden", "")
+    const streamingBody = streamingMessage.querySelector<HTMLElement>("div")!
     const epoch = speechEpoch
     const locale = selectedLanguage
-    activeSpeech = ttsEnabled ? { epoch, locale, buffer: new StreamingSentenceBuffer(locale) } : null
+    activeStream = {
+      epoch,
+      locale,
+      buffer: ttsEnabled ? new StreamingSentenceBuffer(locale) : null,
+      placeholder,
+      message: streamingMessage,
+      body: streamingBody,
+      visibleText: "",
+      revealed: false,
+    }
     let artifact
     try {
       artifact = await mediator.lessonify(
@@ -749,24 +909,45 @@ async function mountTeletron(
       )
     } catch (error) {
       console.error("[teletron] lessonify failed:", error)
-      activeSpeech = null
+      if (activeStream?.epoch === epoch) activeStream = null
       placeholder.remove()
+      streamingMessage.remove()
       addMessage("system", "That message could not be opened safely.")
       return
     }
     if (chatState !== "active" || partner?.playerId !== sender.playerId) {
-      activeSpeech = null
+      if (activeStream?.epoch === epoch) activeStream = null
       placeholder.remove()
+      streamingMessage.remove()
       return
     }
-    if (activeSpeech?.epoch === epoch) {
-      queueSpeech(locale, activeSpeech.buffer.finish(), epoch)
-      activeSpeech = null
+    const stream = activeStream?.epoch === epoch ? activeStream : null
+    if (stream) {
+      finishTargetStream(stream, artifact.visibleText)
+      placeholder.remove()
+      revealActiveStream(stream)
+      stream.message.classList.remove("is-streaming")
+      stream.body.textContent = artifact.visibleText
+      if (artifact.naturalTranslation) stream.message.appendChild(el("small", undefined, artifact.naturalTranslation))
+      stream.message.classList.add("is-speakable")
+      stream.message.addEventListener("click", () => speakNow(locale, artifact.visibleText))
+      activeStream = null
+      scrollMessagesToEnd()
+    } else {
+      placeholder.remove()
+      const msg = addMessage("peer", artifact.visibleText, artifact.naturalTranslation)
+      msg.classList.add("is-speakable")
+      msg.addEventListener("click", () => speakNow(locale, artifact.visibleText))
     }
-    placeholder.remove()
-    const msg = addMessage("peer", artifact.visibleText, artifact.naturalTranslation)
-    msg.classList.add("is-speakable")
-    msg.addEventListener("click", () => speakNow(locale, artifact.visibleText))
+  }
+
+  function enqueueReceive(input: MediatedChatInput): void {
+    receiveTail = receiveTail
+      .catch((error) => console.error("[teletron] receive queue recovered:", error))
+      .then(async () => {
+        if (!mounted) return
+        await receive(input)
+      })
   }
 
   async function probeModel(): Promise<void> {
@@ -866,6 +1047,10 @@ async function mountTeletron(
     const text = field.value.trim()
     if (text) void send(text)
   })
+  field.addEventListener("input", autosizeComposer)
+  window.addEventListener("resize", autosizeComposer)
+  disposers.push(() => window.removeEventListener("resize", autosizeComposer))
+  autosizeComposer()
   endButton.addEventListener("click", endOrDismissThread)
   voiceButton.addEventListener("click", () => {
     ttsEnabled = !ttsEnabled
@@ -994,7 +1179,7 @@ async function mountTeletron(
         }),
         joined.onMessage(MP_MSG.chatDeliver, (raw) => {
           const parsed = MediatedChatInput.safeParse(raw)
-          if (parsed.success) void receive(parsed.data)
+          if (parsed.success) enqueueReceive(parsed.data)
         }),
       )
       joined.onLeave(() => {
