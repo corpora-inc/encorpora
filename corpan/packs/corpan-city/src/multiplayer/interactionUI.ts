@@ -46,6 +46,8 @@ function flagOf(country: string): string {
   return String.fromCodePoint(A + country.charCodeAt(0) - 65, A + country.charCodeAt(1) - 65)
 }
 
+const INVITE_PROMPT_TIMEOUT_MS = 30_000
+
 function placeLine(t: BoundT, place: SafeProfile["place"]): string {
   if (place.granularity === "country") {
     const name = (() => {
@@ -175,14 +177,26 @@ export function showInvitePrompt(
   invite: InvitedMessage,
   onResult: (accepted: boolean) => void,
 ): { close: () => void } {
-  const { panel, close } = makeScrim(overlay, true, native)
+  const { scrim, panel, close: closePrompt } = makeScrim(overlay, true, native)
   let answered = false
+  const timer = setTimeout(() => answer(false), INVITE_PROMPT_TIMEOUT_MS)
+  const close = () => {
+    clearTimeout(timer)
+    closePrompt()
+  }
   const answer = (accepted: boolean) => {
     if (answered) return
     answered = true
     close()
     onResult(accepted)
   }
+  scrim.addEventListener(
+    "pointerdown",
+    (e) => {
+      if (e.target === scrim) answer(false)
+    },
+    { capture: true },
+  )
 
   const titleKey: I18nKey =
     invite.offer.kind === "challenge"

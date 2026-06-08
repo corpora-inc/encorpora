@@ -1,7 +1,8 @@
 // @vitest-environment happy-dom
 import { describe, expect, it, vi } from "vitest"
+import type { PlayerId } from "@corpan-city/contracts"
 import type { BoundT, I18nKey } from "../i18n/strings"
-import { openChatPanel } from "./interactionUI"
+import { openChatPanel, showInvitePrompt } from "./interactionUI"
 
 const LABELS: Partial<Record<I18nKey, string>> = {
   "mp.chat.title": "Chat with {name}",
@@ -10,6 +11,9 @@ const LABELS: Partial<Record<I18nKey, string>> = {
   "mp.chat.close": "Close",
   "mp.chat.bridging": "Bridging languages...",
   "mp.chat.tip": "Tip",
+  "mp.invite.chatTitle": "{name} wants to chat",
+  "mp.invite.accept": "Accept",
+  "mp.invite.decline": "Decline",
 }
 
 const t: BoundT = (key, params) => {
@@ -69,5 +73,55 @@ describe("multiplayer chat composer", () => {
 
     input.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }))
     expect(sent).toEqual(["first line"])
+  })
+})
+
+describe("multiplayer invite prompt", () => {
+  it("declines ignored invites instead of leaving the lifecycle pending", () => {
+    vi.useFakeTimers()
+    const overlay = document.createElement("div")
+    document.body.appendChild(overlay)
+    const results: boolean[] = []
+    showInvitePrompt(
+      overlay,
+      t,
+      "en",
+      {
+        inviteId: "inv-1",
+        from: "p-2" as PlayerId,
+        fromName: "Ava",
+        offer: { kind: "chat" },
+      },
+      (accepted) => results.push(accepted),
+    )
+
+    expect(overlay.querySelector(".wp-mp-panel")).toBeTruthy()
+    vi.advanceTimersByTime(30_000)
+    expect(results).toEqual([false])
+    expect(overlay.querySelector(".wp-mp-panel")).toBeNull()
+    vi.useRealTimers()
+  })
+
+  it("treats tapping outside the invite as a decline", () => {
+    const overlay = document.createElement("div")
+    document.body.appendChild(overlay)
+    const results: boolean[] = []
+    showInvitePrompt(
+      overlay,
+      t,
+      "en",
+      {
+        inviteId: "inv-2",
+        from: "p-2" as PlayerId,
+        fromName: "Ava",
+        offer: { kind: "chat" },
+      },
+      (accepted) => results.push(accepted),
+    )
+
+    const scrim = overlay.querySelector<HTMLElement>(".wp-mp-scrim")!
+    scrim.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true }))
+    expect(results).toEqual([false])
+    expect(overlay.querySelector(".wp-mp-panel")).toBeNull()
   })
 })

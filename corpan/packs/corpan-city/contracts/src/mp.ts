@@ -137,6 +137,7 @@ export type ChatControlMessage = z.infer<typeof ChatControlMessage>
 
 export const ChatControlDeliver = z.object({
   from: PlayerId,
+  fromName: z.string().min(1).max(40).optional(),
   to: PlayerId,
   interactionId: z.string().min(1),
   action: ChatControlAction,
