@@ -8,7 +8,9 @@
     "dev:watch": "vite build --watch",
     "dev:corpan": "node scripts/dev-corpan.mjs",
     "build": "vite build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "colyseus.js": "^0.16.22",
@@ -16,7 +18,10 @@
   },
   "devDependencies": {
     "@types/node": "^25.9.0",
+    "fake-indexeddb": "^6.0.0",
+    "happy-dom": "^20.10.0",
     "typescript": "^6.0.0",
-    "vite": "^8.0.0"
+    "vite": "^8.0.0",
+    "vitest": "^4.1.0"
   }
 }

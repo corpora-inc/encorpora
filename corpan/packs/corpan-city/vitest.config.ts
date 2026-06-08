@@ -10,6 +10,10 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    include: ["**/*.test.ts", "../shared/moderation/**/*.test.ts"],
+    include: [
+      "**/*.test.ts",
+      "../shared/moderation/**/*.test.ts",
+      "../shared/net/**/*.test.ts",
+    ],
   },
 })
