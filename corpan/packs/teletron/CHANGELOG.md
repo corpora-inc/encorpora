@@ -4,6 +4,13 @@
 
 ## 0.1.7 - 2026-06-08
 
+- Async penpal delivery: a message to a partner who is momentarily offline is
+  now held by a bounded, self-expiring server buffer and delivered the moment
+  they return — no more "they stepped away, can't send." The conversation stays
+  a living link for 24h; you can keep it going indefinitely as long as you both
+  write within a day, after which it gently drifts to a close.
+- Hold the presence seat across a brief background/network drop (90s) so a quick
+  return reconnects in place and your partner never sees you leave.
 - Make the presence connection resilient: a dropped socket now reconnects
   automatically (token rejoin, exponential backoff, and immediate retry when the
   app returns to the foreground) instead of ending the conversation. The chat

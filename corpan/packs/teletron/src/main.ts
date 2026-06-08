@@ -620,7 +620,7 @@ async function mountTeletron(
         connStatus !== "online"
           ? "Reconnecting…"
           : !partnerOnline
-            ? `${partner?.name ?? "They"} stepped away`
+            ? `${partner?.name ?? "They"} is offline — they'll get your messages`
             : "AI-mediated connection"
     }
     updateQuota()
@@ -629,7 +629,9 @@ async function mountTeletron(
   function updateQuota(): void {
     const left = quotaRemaining(plus)
     quota.textContent = plus ? "Corpan Plus · unlimited messages" : `${left} free messages left today`
-    const live = Boolean(room && connStatus === "online" && partnerOnline)
+    // "live" = OUR connection is up. A partner being offline no longer disables
+    // the composer — messages to them are buffered server-side (async penpal).
+    const live = Boolean(room && connStatus === "online")
     const active = Boolean(partner && chatState === "active")
     const enabled = active && live && modelReady && left > 0
     field.disabled = !enabled
@@ -642,9 +644,10 @@ async function mountTeletron(
     else if (!active) field.placeholder = "Choose someone to talk with"
     else if (!modelReady) field.placeholder = "Private relay is loading"
     else if (connStatus !== "online") field.placeholder = "Reconnecting…"
-    else if (!partnerOnline) field.placeholder = `${partner?.name ?? "They"} stepped away`
     else if (left <= 0) field.placeholder = "Daily messages used"
-    else field.placeholder = "Write a message"
+    else field.placeholder = partnerOnline
+      ? "Write a message"
+      : `Write — ${partner?.name ?? "they"}'ll see it when they return`
   }
 
   function updateVoiceButton(): void {
@@ -930,7 +933,9 @@ async function mountTeletron(
     const currentPartner = partner
     if (!room || connStatus !== "online") return showToast("Reconnecting — try again in a moment.")
     if (!currentPartner || chatState !== "active") return showToast("Choose someone to talk with first.")
-    if (!partnerOnline) return showToast(`${currentPartner.name} stepped away. Your message can't be delivered yet.`)
+    // An offline partner is fine: the server buffers the message and delivers it
+    // when they return (within the 24h living-link window). Sending only requires
+    // OUR socket to be up.
     if (!modelReady || quotaRemaining(plus) <= 0) return
     const interactionId = `chat-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`
     addMessage("self", text)
@@ -1262,7 +1267,7 @@ async function mountTeletron(
         if (partner?.playerId === id && chatState === "active" && partnerOnline) {
           partnerOnline = false
           updateThreadConnState()
-          showToast(`${partner.name} stepped away.`)
+          showToast(`${partner.name} went offline — keep writing, they'll get your messages.`)
         }
         renderPeople()
       }),

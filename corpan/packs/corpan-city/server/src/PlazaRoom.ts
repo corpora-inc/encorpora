@@ -24,6 +24,7 @@ import {
 import { PlazaState, PlayerState } from "./state.js"
 import { AoiGrid, DEFAULT_AOI, type AoiConfig } from "./aoi.js"
 import { GeoHistogram } from "./geoHistogram.js"
+import type { Outbox } from "./outbox.js"
 
 /**
  * PlazaRoom — the authoritative presence room for Corpan City (M1: movement).
@@ -66,6 +67,19 @@ export interface PlazaRoomOptions {
   replaceDuplicatePlayerId?: boolean
   placeReveal?: "k-anon" | "country"
   aoi?: Partial<AoiConfig>
+  /**
+   * Shared store-and-forward buffer for messages to momentarily-offline
+   * penpals. Pass ONE instance to every room of a definition so a returning
+   * player is reachable regardless of which room they land in. Omit to disable
+   * buffering (messages to offline peers are then simply not delivered).
+   */
+  outbox?: Outbox
+  /**
+   * The living-link window: how long an accepted chat pair (and its buffered
+   * messages) survive without a fresh socket. Teletron uses 24h for async
+   * penpals; the city defaults to a short reconnect grace.
+   */
+  acceptedPairTtlMs?: number
 }
 
 /** Max plausible ground speed (world u/s). The local player walks at 6.5; we
@@ -122,6 +136,10 @@ export class PlazaRoom extends Room<PlazaState> {
   private invites = new Map<string, InviteRecord>()
   /** Durable playerId pair auth for accepted chat/trade after reconnect/rejoin. */
   private acceptedPairs = new Map<string, AcceptedPair>()
+  /** how long an accepted pair (+ its buffered messages) survives idle. */
+  private acceptedPairTtlMs = ACCEPTED_PAIR_TTL_MS
+  /** shared store-and-forward buffer for offline penpals (optional). */
+  private outbox?: Outbox
   /** coarse anti-grief: sessionId → recent action timestamps (sliding window). */
   private actionLog = new Map<string, number[]>()
 
@@ -134,6 +152,10 @@ export class PlazaRoom extends Room<PlazaState> {
     }
     this.replaceDuplicatePlayerId = options.replaceDuplicatePlayerId === true
     this.placeReveal = options.placeReveal ?? "k-anon"
+    this.outbox = options.outbox
+    if (typeof options.acceptedPairTtlMs === "number" && options.acceptedPairTtlMs > 0) {
+      this.acceptedPairTtlMs = options.acceptedPairTtlMs
+    }
     // AOI cell size / radius are configurable (per-room override → env → default).
     // ENV lets ops tune interest breadth without a deploy: WP_AOI_CELL, WP_AOI_RADIUS.
     const cellSize =
@@ -337,6 +359,10 @@ export class PlazaRoom extends Room<PlazaState> {
       )
       // Country/continent feed the histogram only — they are kept off the wire.
       this.geo.set(client.sessionId, parsed.data.country, parsed.data.continent)
+      // The client publishes its profile right after binding its message
+      // handlers, so this is the race-free moment to flush any messages that
+      // were buffered while it was offline.
+      this.flushOutbox(p.playerId, client)
     })
 
     // A viewer asks for another player's card. Plaza uses the k-anonymous
@@ -455,6 +481,24 @@ export class PlazaRoom extends Room<PlazaState> {
         return
       }
       if (!toSession || !toClient || !to) {
+        // Recipient is offline: buffer the sanitized envelope for delivery when
+        // they return (within the living-link window), and keep the link alive.
+        if (this.outbox) {
+          const ts = Date.now()
+          const buffered = MediatedChatInput.parse({
+            ...parsed.data,
+            from: from.playerId,
+            to: toPlayerId,
+          })
+          this.outbox.enqueue({
+            to: toPlayerId,
+            from: from.playerId,
+            payload: buffered,
+            ts,
+            expiresAt: ts + this.acceptedPairTtlMs,
+          })
+          this.touchAcceptedPair(from.playerId, toPlayerId, "chat")
+        }
         this.sendChatControlToClient(client, toPlayerId, from.playerId, "partner-left")
         return
       }
@@ -599,7 +643,7 @@ export class PlazaRoom extends Room<PlazaState> {
       a,
       b,
       kind,
-      expiresAt: Date.now() + ACCEPTED_PAIR_TTL_MS,
+      expiresAt: Date.now() + this.acceptedPairTtlMs,
     })
   }
 
@@ -624,11 +668,13 @@ export class PlazaRoom extends Room<PlazaState> {
   private touchAcceptedPair(a: string, b: string, kind: InviteKind): void {
     const rec = this.acceptedPairForPlayerIds(a, b, kind)
     if (!rec) return
-    rec.expiresAt = Date.now() + ACCEPTED_PAIR_TTL_MS
+    rec.expiresAt = Date.now() + this.acceptedPairTtlMs
   }
 
   private forgetAcceptedPair(a: string, b: string, kind: InviteKind): void {
     this.acceptedPairs.delete(pairKey(a, b, kind))
+    // The link is gone — drop any messages still buffered between this pair.
+    if (kind === "chat") this.outbox?.removeForPair(a, b)
   }
 
   private dropAcceptedInviteForPlayers(a: string, b: string, kind: InviteKind): void {
@@ -703,6 +749,20 @@ export class PlazaRoom extends Room<PlazaState> {
       action,
     }
     client.send(MP_MSG.chatControl, ChatControlDeliver.parse(delivered))
+  }
+
+  /**
+   * Deliver any buffered messages addressed to this player, then forget them.
+   * Called when the client signals it is ready (its first profile-publish), so
+   * the recipient's chat-deliver handler is guaranteed bound. Idempotent: the
+   * buffer is drained, so repeated publishes deliver nothing further.
+   */
+  private flushOutbox(playerId: string, client: Client): void {
+    if (!this.outbox || !playerId) return
+    const pending = this.outbox.drain(playerId, Date.now())
+    if (!pending.length) return
+    for (const env of pending) client.send(MP_MSG.chatDeliver, env.payload)
+    console.log(`[${this.roomLabel}] flushed ${pending.length} buffered message(s) to ${playerId}`)
   }
 
   private playerNameById(playerId: string): string | undefined {
