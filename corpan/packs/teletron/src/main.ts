@@ -12,6 +12,7 @@ import {
   type StackReveal,
 } from "@corpan-city/contracts"
 import { wireDictation, dictationResolver } from "@shared/asr"
+import { OUTPUT_LANGUAGE_PRIMES } from "@shared/moderation"
 import { continentOf, detectCountry } from "../../corpan-city/src/multiplayer/geo"
 import type { HostApi } from "../../corpan-city/src/npc/hostTypes"
 import { createChatMediator } from "./mediator"
@@ -61,6 +62,12 @@ type WirePlayer = {
 }
 
 type ChatState = "idle" | "active" | "ended"
+
+type TeletronLanguages = {
+  native: LanguageCode
+  learning: LanguageCode[]
+  hidden: string[]
+}
 
 type ContentPackModule = {
   mount: (
@@ -162,11 +169,87 @@ function serverUrl(): string {
   )
 }
 
-function stackLanguages(initial?: InitialState): { native: LanguageCode; learning: LanguageCode[] } {
+const TELETRON_RELAY_LANGUAGES = new Set(Object.keys(OUTPUT_LANGUAGE_PRIMES))
+const RELAY_LANGUAGE_ALIASES: Record<string, string> = {
+  ko: "ko",
+  "ko-KR": "ko",
+  pt: "pt-BR",
+  "pt-PT": "pt-PT",
+  "pt-BR": "pt-BR",
+  pa: "pa-Guru",
+  "pa-IN": "pa-Guru",
+  "pa-PK": "pa-Arab",
+  zh: "zh-Hans",
+  "zh-CN": "zh-Hans",
+  "zh-TW": "zh-Hant",
+  "zh-HK": "yue-Hant-HK",
+  yue: "yue-Hant-HK",
+}
+
+function canonicalRelayLanguage(language: string): LanguageCode | null {
+  const raw = language.trim()
+  if (!raw) return null
+  if (TELETRON_RELAY_LANGUAGES.has(raw)) return raw as LanguageCode
+  const alias = RELAY_LANGUAGE_ALIASES[raw]
+  if (alias && TELETRON_RELAY_LANGUAGES.has(alias)) return alias as LanguageCode
+  const base = raw.split("-")[0] ?? raw
+  if (TELETRON_RELAY_LANGUAGES.has(base)) return base as LanguageCode
+  return null
+}
+
+function stackLanguages(initial?: InitialState): TeletronLanguages {
   const langs = [...new Set(initial?.stackConfig?.languages?.filter((x) => typeof x === "string") ?? [])]
-  const native = (langs[0] || "en") as LanguageCode
-  const learning = langs.slice(1).filter((lang) => lang !== native) as LanguageCode[]
-  return { native, learning: learning.length > 0 ? learning : [native] }
+  const native = canonicalRelayLanguage(langs[0] || "en") ?? ("en" as LanguageCode)
+  const learning: LanguageCode[] = []
+  const hidden: string[] = []
+  for (const language of langs.slice(1)) {
+    const canonical = canonicalRelayLanguage(language)
+    if (!canonical) {
+      hidden.push(language)
+      continue
+    }
+    if (canonical !== native && !learning.includes(canonical)) learning.push(canonical)
+  }
+  return { native, learning: learning.length > 0 ? learning : [native], hidden }
+}
+
+function displayNameOf(type: "language" | "region" | "script", code: string, uiLocale: string): string | null {
+  try {
+    const dn = new Intl.DisplayNames([uiLocale, "en"], { type })
+    return dn.of(code) ?? null
+  } catch {
+    return null
+  }
+}
+
+function languageDisplayName(code: string, uiLocale: string): string {
+  const baseCode =
+    code === "ko-polite"
+      ? "ko"
+      : code.startsWith("pa-")
+        ? "pa"
+        : code.startsWith("pt-")
+          ? "pt"
+          : code.startsWith("zh-")
+            ? "zh"
+            : code.startsWith("yue-")
+              ? "yue"
+              : code.split("-")[0] || code
+  const base =
+    displayNameOf("language", baseCode, uiLocale) ??
+    (baseCode === "yue" ? "Cantonese" : code.toUpperCase())
+  const detail = (() => {
+    if (code === "pt-BR") return displayNameOf("region", "BR", uiLocale) ?? "Brazil"
+    if (code === "pt-PT") return displayNameOf("region", "PT", uiLocale) ?? "Portugal"
+    if (code === "zh-Hans") return displayNameOf("script", "Hans", uiLocale) ?? "Simplified"
+    if (code === "zh-Hant") return displayNameOf("script", "Hant", uiLocale) ?? "Traditional"
+    if (code === "yue-Hant-HK") return displayNameOf("region", "HK", uiLocale) ?? "Hong Kong"
+    if (code === "pa-Arab") return "Shahmukhi"
+    if (code === "pa-Guru") return displayNameOf("script", "Guru", uiLocale) ?? "Gurmukhi"
+    if (code === "ko-polite") return "polite"
+    return ""
+  })()
+  return detail ? `${base} (${detail})` : base
 }
 
 function stackReveal(
@@ -443,7 +526,7 @@ async function mountTeletron(
       <h2>Enter the waiting room</h2>
       <label><span>Your generated name</span><div class="tt-name-row"><b class="tt-own-name"></b><button type="button" data-reroll>Roll again</button></div></label>
       <label><span>Show chat messages in</span><div class="tt-select-wrap"><select class="tt-language"></select><span class="tt-select-chev">${icon("chevron")}</span></div></label>
-      <p>Choose from the languages in your learning stack. You can change this the next time you enter.</p>
+      <p class="tt-language-note">Choose from the Teletron-ready languages in your learning stack. You can change this the next time you enter.</p>
       <button class="tt-enter" type="button">Enter waiting room</button>
     </div></div>
     <div class="tt-invite" hidden><div><span class="tt-avatar"></span><h3></h3><p>They want to start a locally moderated conversation.</p><footer><button data-decline>Not now</button><button data-accept>Accept chat</button></footer></div></div>
@@ -474,6 +557,7 @@ async function mountTeletron(
   const onboarding = $(".tt-onboarding")
   const ownName = $(".tt-own-name")
   const languageSelect = $<HTMLSelectElement>(".tt-language")
+  const languageNote = $(".tt-language-note")
   let inviteReply: ((accepted: boolean) => void) | null = null
 
   function autosizeComposer(): void {
@@ -488,8 +572,13 @@ async function mountTeletron(
   for (const language of languages.learning) {
     const option = document.createElement("option")
     option.value = language
-    option.textContent = language
+    option.textContent = languageDisplayName(language, languages.native)
     languageSelect.appendChild(option)
+  }
+  if (languages.hidden.length > 0) {
+    languageNote.textContent =
+      "Some stack languages are hidden in this first Teletron release while we test Qwen3 4B quality: " +
+      `${languages.hidden.map((language) => languageDisplayName(language, languages.native)).join(", ")}.`
   }
 
   function showToast(text: string): void {
@@ -563,8 +652,10 @@ async function mountTeletron(
     if (!profile) return "Private profile"
     const bits: string[] = []
     if (profile.stack.target !== "und") {
-      const learning = [profile.stack.target, ...(profile.stack.alsoLearning ?? [])].join(", ")
-      bits.push(`${profile.stack.native} → ${learning}`)
+      const learning = [profile.stack.target, ...(profile.stack.alsoLearning ?? [])]
+        .map((language) => languageDisplayName(language, languages.native))
+        .join(", ")
+      bits.push(`${languageDisplayName(profile.stack.native, languages.native)} → ${learning}`)
     }
     const place = placeLabel(profile.place)
     if (place) bits.push(place)

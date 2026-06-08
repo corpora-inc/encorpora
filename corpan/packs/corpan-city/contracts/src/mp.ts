@@ -46,6 +46,8 @@ export const MP_MSG = {
   chatSend: "chat-send",
   /** S→C: a MediatedChatArtifact framed for the recipient. */
   chatDeliver: "chat-deliver",
+  /** C→S / S→C: chat lifecycle only; never carries user-authored text. */
+  chatControl: "chat-control",
 
   /** C→S: my finished challenge result, to route to my peer-challenge partner. */
   peerResult: "peer-result",
@@ -122,6 +124,24 @@ export type InviteResult = z.infer<typeof InviteResult>
 /* -------------------------------------------------------------------- chat */
 
 export { MediatedChatInput, MediatedChatArtifact }
+
+export const ChatControlAction = z.enum(["ended", "partner-left", "partner-returned"])
+export type ChatControlAction = z.infer<typeof ChatControlAction>
+
+export const ChatControlMessage = z.object({
+  to: PlayerId,
+  interactionId: z.string().min(1),
+  action: z.literal("ended"),
+})
+export type ChatControlMessage = z.infer<typeof ChatControlMessage>
+
+export const ChatControlDeliver = z.object({
+  from: PlayerId,
+  to: PlayerId,
+  interactionId: z.string().min(1),
+  action: ChatControlAction,
+})
+export type ChatControlDeliver = z.infer<typeof ChatControlDeliver>
 
 /* ------------------------------------------------------------- challenge sync */
 

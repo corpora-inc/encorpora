@@ -8,6 +8,8 @@ import {
   InviteRespond,
   InviteResult,
   MediatedChatInput,
+  ChatControlMessage,
+  ChatControlDeliver,
   PeerChallengeResult,
   TradeEnvelope,
   TradeUpdateMessage,
@@ -40,6 +42,8 @@ export type ProtocolHandlers = {
   onInviteResult?: (msg: InviteResult) => void
   /** A mediated chat input from a partner (we lessonify it locally). */
   onChat?: (msg: MediatedChatInput) => void
+  /** Chat lifecycle only: ended / away / returned. Carries no user text. */
+  onChatControl?: (msg: ChatControlDeliver) => void
   /** A trade lifecycle update from a partner. */
   onTrade?: (msg: TradeUpdateMessage) => void
   /** A peer-challenge partner reported their result (keyed by inviteId). */
@@ -58,6 +62,8 @@ export interface InteractionProtocol {
   respondInvite: (inviteId: string, action: "accept" | "decline") => void
   /** Send a locally-cleaned mediated chat input to a partner. */
   sendChat: (input: MediatedChatInput) => void
+  /** Send a lifecycle event for the current chat; never carries user text. */
+  sendChatControl: (input: ChatControlMessage) => void
   /** Send a trade lifecycle envelope to a partner. */
   sendTrade: (env: TradeEnvelope) => void
   /** Report my finished peer-challenge result (routed to my partner). */
@@ -105,6 +111,7 @@ export function createProtocol(room: NetRoom, handlers: ProtocolHandlers): Inter
   listen(MP_MSG.invited, InvitedMessage, handlers.onInvited)
   listen(MP_MSG.inviteResult, InviteResult, handlers.onInviteResult)
   listen(MP_MSG.chatDeliver, MediatedChatInput, handlers.onChat)
+  listen(MP_MSG.chatControl, ChatControlDeliver, handlers.onChatControl)
   listen(MP_MSG.tradeUpdate, TradeUpdateMessage, handlers.onTrade)
   if (handlers.onPeerResult) {
     const off = room.onMessage(MP_MSG.peerResultDeliver, (payload) => {
@@ -164,6 +171,15 @@ export function createProtocol(room: NetRoom, handlers: ProtocolHandlers): Inter
         return
       }
       room.send(MP_MSG.chatSend, parsed.data)
+    },
+
+    sendChatControl(input) {
+      const parsed = ChatControlMessage.safeParse(input)
+      if (!parsed.success) {
+        console.error("[mp] refusing to send malformed chat control")
+        return
+      }
+      room.send(MP_MSG.chatControl, parsed.data)
     },
 
     sendTrade(env) {

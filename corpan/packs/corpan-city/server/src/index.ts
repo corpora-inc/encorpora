@@ -43,7 +43,11 @@ const gameServer = new Server({
 })
 
 gameServer
-  .define("plaza", PlazaRoom, { topology })
+  .define("plaza", PlazaRoom, {
+    topology,
+    reconnectionSeconds: 90,
+    replaceDuplicatePlayerId: true,
+  })
   // Fill rooms before opening new ones: matchmaking prefers the most-occupied
   // room with free slots, so a freshly-joined pair shares a plaza until it's
   // full, then a sibling spins for the next cohort.

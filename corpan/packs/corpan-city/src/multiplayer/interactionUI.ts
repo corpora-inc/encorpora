@@ -223,6 +223,12 @@ export interface ChatPanelHandle {
   appendSelf: (text: string) => void
   /** Show the partner's lessonified artifact, with tappable replies. */
   appendPeer: (artifact: MediatedChatArtifact, onReply: (label: string) => void) => void
+  /** Append a local lifecycle note, never user-authored text. */
+  appendSystem: (text: string) => void
+  /** Show or clear the chat status strip. */
+  setStatus: (text: string | null) => void
+  /** Enable/disable the composer without closing the panel. */
+  setCanSend: (canSend: boolean) => void
   /** A transient "bridging languages…" placeholder while the LLM works. */
   showBridging: () => () => void
   close: () => void
@@ -250,6 +256,10 @@ export function openChatPanel(
   x.textContent = "×"
   head.append(name, x)
 
+  const status = document.createElement("div")
+  status.className = "wp-mp-chat-status"
+  status.hidden = true
+
   const log = document.createElement("div")
   log.className = "wp-mp-log"
 
@@ -269,7 +279,7 @@ export function openChatPanel(
   send.textContent = t("mp.chat.send")
   compose.append(input, send)
 
-  panel.append(head, log, replies, compose)
+  panel.append(head, status, log, replies, compose)
 
   const scrollDown = () => {
     log.scrollTop = log.scrollHeight
@@ -346,6 +356,22 @@ export function openChatPanel(
         })
         replies.appendChild(b)
       }
+    },
+    appendSystem(text) {
+      const m = document.createElement("div")
+      m.className = "wp-mp-msg wp-mp-msg-system"
+      m.textContent = text
+      log.appendChild(m)
+      scrollDown()
+    },
+    setStatus(text) {
+      status.textContent = text ?? ""
+      status.hidden = !text
+    },
+    setCanSend(canSend) {
+      input.disabled = !canSend
+      send.disabled = !canSend
+      compose.classList.toggle("wp-mp-compose-disabled", !canSend)
     },
     showBridging() {
       const m = document.createElement("div")

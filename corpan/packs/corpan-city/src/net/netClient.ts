@@ -124,12 +124,29 @@ export function createNetClient(opts: NetClientOptions): NetClient {
   // sessionId → durable playerId, so the interaction layer can address a nearby
   // remote avatar by its PlayerId (profile request / invite / trade).
   const remoteIds = new Map<string, string>()
+  const client = new Client(opts.url)
+  const roomName = opts.room ?? "plaza"
+  const joinOpts = {
+    playerId: opts.identity.playerId,
+    name: opts.identity.name,
+    avatar: opts.identity.avatar,
+    sceneId: opts.identity.sceneId ?? "",
+    questId: opts.identity.questId ?? "",
+  }
   let room: Room | null = null
   let disposed = false
+  let reconnectToken = ""
+  let reconnectTimer: ReturnType<typeof setTimeout> | null = null
+  let reconnecting = false
+  let reconnectAttempt = 0
   let seq = 0
   let sendAccum = 0
   // monotonic render clock (ms) used for both send timestamps + interpolation.
   let clockMs = 0
+
+  const REJOIN_AFTER_MS = 95_000
+  const RECONNECT_DELAYS_MS = [250, 750, 1500, 3000, 5000, 8000, 10000]
+  let lostAtMs = 0
 
   /** Parse a wire avatar JSON safely; fall back to an empty spec. */
   const parseAvatar = (json: string): AvatarSpec => {
@@ -166,98 +183,158 @@ export function createNetClient(opts: NetClientOptions): NetClient {
     opts.onRemoteRemove?.(sessionId)
   }
 
-  // ---- connect (best-effort; degrade silently on any failure) ----
-  const connect = async () => {
-    setStatus("connecting")
-    try {
-      const client = new Client(opts.url)
-      const joinOpts = {
-        playerId: opts.identity.playerId,
-        name: opts.identity.name,
-        avatar: opts.identity.avatar,
-        sceneId: opts.identity.sceneId ?? "",
-        questId: opts.identity.questId ?? "",
+  const clearReconnectTimer = () => {
+    if (!reconnectTimer) return
+    clearTimeout(reconnectTimer)
+    reconnectTimer = null
+  }
+
+  const scheduleReconnect = (delayMs?: number) => {
+    if (disposed || room || reconnecting || reconnectTimer) return
+    const delay =
+      delayMs ??
+      RECONNECT_DELAYS_MS[Math.min(reconnectAttempt, RECONNECT_DELAYS_MS.length - 1)]
+    reconnectTimer = setTimeout(() => {
+      reconnectTimer = null
+      void connect()
+    }, delay)
+  }
+
+  const resetRemoteState = () => {
+    for (const id of [...remotes.keys()]) removeRemote(id)
+  }
+
+  const shouldFreshJoinAfterReconnectError = (error: unknown): boolean => {
+    const msg = String((error as Error)?.message ?? error ?? "").toLowerCase()
+    return (
+      !reconnectToken ||
+      Date.now() - lostAtMs > REJOIN_AFTER_MS ||
+      /expired|invalid|disposed|not found|seat|reconnection/.test(msg)
+    )
+  }
+
+  const bindJoinedRoom = (joined: Room) => {
+    if (disposed) {
+      void joined.leave()
+      return
+    }
+    clearReconnectTimer()
+    reconnecting = false
+    reconnectAttempt = 0
+    reconnectToken = joined.reconnectionToken || reconnectToken
+    room = joined
+    setStatus("online")
+
+    // Hand the interaction layer a typed messaging façade over THIS room.
+    if (opts.onRoom) {
+      try {
+        opts.onRoom({
+          send: (type, payload) => {
+            try {
+              joined.send(type, payload)
+            } catch (e) {
+              console.warn(`[net] send("${type}") failed:`, (e as Error)?.message ?? e)
+            }
+          },
+          onMessage: (type, cb) => joined.onMessage(type, cb as (m: unknown) => void),
+          localSessionId: joined.sessionId,
+          localPlayerId: opts.identity.playerId,
+        })
+      } catch (e) {
+        console.error("[net] onRoom handler threw:", e)
       }
-      const joined = await client.joinOrCreate(opts.room ?? "plaza", joinOpts)
-      if (disposed) {
-        // teardown raced the join — leave immediately.
-        void joined.leave()
-        return
+    }
+
+    // Schema callbacks (colyseus.js v0.16 / schema v3): react to the players
+    // map. The decoded state is reflection-typed, so we narrow the callback
+    // proxy to our own minimal shapes (the wire fields the server defines).
+    const $ = getStateCallbacks(joined) as unknown as (
+      target: unknown,
+    ) => { players: PlayersCallbacks } & PlayerListener
+    const players = $(joined.state).players
+
+    players.onAdd((player: WirePlayer, sessionId: string) => {
+      // Skip our OWN entry — we render the local player ourselves.
+      if (sessionId === joined.sessionId) return
+      addRemote(sessionId, player)
+      // Listen for authoritative position deltas on this player.
+      const $$ = $(player)
+      const onMove = () => {
+        const ra = remotes.get(sessionId)
+        if (!ra) return
+        ra.stamp(clockMs)
+        ra.setTarget(player.x, player.z, player.facing)
       }
-      room = joined
-      setStatus("online")
+      $$.listen("x", onMove)
+      $$.listen("z", onMove)
+      $$.listen("facing", onMove)
+    })
 
-      // Hand the interaction layer a typed messaging façade over THIS room.
-      if (opts.onRoom) {
-        try {
-          opts.onRoom({
-            send: (type, payload) => {
-              try {
-                joined.send(type, payload)
-              } catch (e) {
-                console.warn(`[net] send("${type}") failed:`, (e as Error)?.message ?? e)
-              }
-            },
-            onMessage: (type, cb) => joined.onMessage(type, cb as (m: unknown) => void),
-            localSessionId: joined.sessionId,
-            localPlayerId: opts.identity.playerId,
-          })
-        } catch (e) {
-          console.error("[net] onRoom handler threw:", e)
-        }
-      }
+    players.onRemove((_player: WirePlayer, sessionId: string) => {
+      removeRemote(sessionId)
+    })
 
-      // Schema callbacks (colyseus.js v0.16 / schema v3): react to the players
-      // map. The decoded state is reflection-typed, so we narrow the callback
-      // proxy to our own minimal shapes (the wire fields the server defines).
-      const $ = getStateCallbacks(joined) as unknown as (
-        target: unknown,
-      ) => { players: PlayersCallbacks } & PlayerListener
-      const players = $(joined.state).players
-
-      players.onAdd((player: WirePlayer, sessionId: string) => {
-        // Skip our OWN entry — we render the local player ourselves.
-        if (sessionId === joined.sessionId) return
-        addRemote(sessionId, player)
-        // Listen for authoritative position deltas on this player.
-        const $$ = $(player)
-        const onMove = () => {
-          const ra = remotes.get(sessionId)
-          if (!ra) return
-          ra.stamp(clockMs)
-          ra.setTarget(player.x, player.z, player.facing)
-        }
-        $$.listen("x", onMove)
-        $$.listen("z", onMove)
-        $$.listen("facing", onMove)
-      })
-
-      players.onRemove((_player: WirePlayer, sessionId: string) => {
-        removeRemote(sessionId)
-      })
-
-      joined.onError((code: number, message?: string) => {
-        console.warn(`[net] room error ${code}:`, message)
-      })
-      joined.onLeave((code: number) => {
-        // Non-consented leave → the framework's reconnection may recover; mark
-        // reconnecting. We don't auto-rejoin here (M1) — the world runs solo.
-        setStatus(code === 1000 ? "offline" : "reconnecting")
-        room = null
-        for (const id of [...remotes.keys()]) removeRemote(id)
-        try {
-          opts.onRoomLost?.()
-        } catch (e) {
-          console.error("[net] onRoomLost handler threw:", e)
-        }
-      })
-    } catch (err) {
-      // No server / refused / timeout → degrade to solo. Visible, not silent.
-      console.warn("[net] presence unavailable, running solo:", (err as Error)?.message ?? err)
-      setStatus("offline")
+    joined.onError((code: number, message?: string) => {
+      console.warn(`[net] room error ${code}:`, message)
+    })
+    joined.onLeave((code: number) => {
+      if (room !== joined) return
       room = null
+      if (disposed) return
+      lostAtMs = Date.now()
+      resetRemoteState()
+      try {
+        opts.onRoomLost?.()
+      } catch (e) {
+        console.error("[net] onRoomLost handler threw:", e)
+      }
+      if (disposed) return
+      setStatus(code === 1000 ? "offline" : "reconnecting")
+      if (code !== 1000) scheduleReconnect(0)
+    })
+  }
+
+  // ---- connect/reconnect (best-effort; degrade visibly to solo while retrying) ----
+  const connect = async () => {
+    if (disposed || room || reconnecting) return
+    reconnecting = true
+    setStatus(reconnectToken ? "reconnecting" : "connecting")
+    try {
+      if (reconnectToken) {
+        try {
+          bindJoinedRoom(await client.reconnect(reconnectToken))
+          return
+        } catch (err) {
+          console.warn("[net] reconnect failed:", (err as Error)?.message ?? err)
+          if (!shouldFreshJoinAfterReconnectError(err)) throw err
+        }
+      }
+      bindJoinedRoom(await client.joinOrCreate(roomName, joinOpts))
+    } catch (err) {
+      console.warn("[net] presence unavailable, running solo:", (err as Error)?.message ?? err)
+      room = null
+      reconnecting = false
+      reconnectAttempt += 1
+      setStatus(reconnectToken ? "reconnecting" : "offline")
+      scheduleReconnect()
     }
   }
+
+  const wakeReconnect = () => {
+    if (disposed || room) return
+    scheduleReconnect(0)
+  }
+  const onVisibility = () => {
+    if (typeof document !== "undefined" && document.visibilityState === "visible") wakeReconnect()
+  }
+  if (typeof window !== "undefined") {
+    window.addEventListener("online", wakeReconnect)
+    window.addEventListener("focus", wakeReconnect)
+  }
+  if (typeof document !== "undefined") {
+    document.addEventListener("visibilitychange", onVisibility)
+  }
+
   void connect()
 
   const update = (dt: number) => {
@@ -300,6 +377,14 @@ export function createNetClient(opts: NetClientOptions): NetClient {
       })),
     dispose: () => {
       disposed = true
+      clearReconnectTimer()
+      if (typeof window !== "undefined") {
+        window.removeEventListener("online", wakeReconnect)
+        window.removeEventListener("focus", wakeReconnect)
+      }
+      if (typeof document !== "undefined") {
+        document.removeEventListener("visibilitychange", onVisibility)
+      }
       for (const id of [...remotes.keys()]) removeRemote(id)
       if (room) {
         try {
