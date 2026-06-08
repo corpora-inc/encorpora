@@ -180,9 +180,12 @@ describe("safe relay pipeline", () => {
     expect(lesson.nativeText).toBe("Hablemos de música.")
     expect(calls.map((call) => call.label)).toContain("relay.translate-target.ja")
     expect(calls.map((call) => call.label)).toContain("relay.translate-native.es")
-    expect(calls.find((call) => call.label === "relay.translate-target.ja")?.messages[0]?.content).toContain(
-      "自然な日本語",
-    )
+    const targetPrompt = calls.find((call) => call.label === "relay.translate-target.ja")?.messages[0]?.content ?? ""
+    const nativePrompt = calls.find((call) => call.label === "relay.translate-native.es")?.messages[0]?.content ?? ""
+    expect(targetPrompt).toContain("自然な日本語")
+    expect(targetPrompt).toContain("entire reply must be only the translated text")
+    expect(targetPrompt).toContain("Do not answer the message")
+    expect(nativePrompt).toContain("entire reply must be only the translated text")
   })
 
   it("red-team fixtures are transformed or replaced without preserving unsafe surface text", async () => {

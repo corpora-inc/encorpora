@@ -293,7 +293,9 @@ function translateOutPrompt(language: string): SafeRelayChatMessage {
     content:
       (prime ? `${prime} ` : "") +
       `Translate the English relay text into ${language}. ` +
-      "Keep it natural, friendly, and all-ages. " +
+      "This is the final display leg: your entire reply must be only the translated text. " +
+      "Preserve the meaning of the English relay text. Do not answer the message, continue the conversation, or add new content. " +
+      "Do not include the original English unless the requested language is English. " +
       "Do not add warnings, explanations, notes, quotes, labels, fact-checks, or policy language.",
   }
 }

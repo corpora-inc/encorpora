@@ -1,7 +1,7 @@
 {
   "id": "tutomaton",
   "name": "Tutomaton",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "entry": "dist/chat.js",
   "entryType": "module",
   "styles": [
@@ -10,7 +10,7 @@
   "sdkVersion": "1.0.0",
   "minAppVersion": "0.17.0",
   "devOnly": true,
-  "tier": "plus",
+  "tier": "free",
   "packType": "tutomaton",
   "displayName": {
     "en": "Tutomaton — language tutor",
@@ -778,7 +778,7 @@
     "supportsLanguageDownload": true,
     "supportsVoiceMode": true
   },
-  "devRevision": "2026-06-06T23:08:50.500Z",
+  "devRevision": "2026-06-08T03:41:58.826Z",
   "databases": {
     "tutomaton-es": "languages/es/data/spanish.sqlite3",
     "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"

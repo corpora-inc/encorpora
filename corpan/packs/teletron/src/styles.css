@@ -354,6 +354,22 @@
   color: #fff;
   background: linear-gradient(180deg, var(--tt-purple), #6d4be7);
 }
+.tt-person.is-chatting {
+  border-color: rgba(56, 189, 248, 0.42);
+  background: rgba(56, 189, 248, 0.1);
+}
+.tt-person.is-chatting em {
+  color: #dff7ff;
+  background: rgba(56, 189, 248, 0.2);
+}
+.tt-person.is-ended {
+  opacity: 0.62;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.tt-person.is-ended em {
+  color: var(--tt-muted);
+  background: rgba(255, 255, 255, 0.06);
+}
 .tt-person.is-paused {
   opacity: 0.52;
 }
@@ -598,6 +614,10 @@
   transition: border-color 0.15s ease;
 }
 .tt-composer:focus-within { border-color: var(--tt-line-strong); }
+.tt-composer.is-disabled {
+  opacity: 0.72;
+  box-shadow: none;
+}
 .tt-composer textarea {
   min-height: 42px;
   max-height: 130px;
@@ -610,6 +630,10 @@
   font-size: 16px;
 }
 .tt-composer textarea::placeholder { color: var(--tt-muted); }
+.tt-composer textarea:disabled {
+  cursor: default;
+  -webkit-text-fill-color: var(--tt-muted);
+}
 .tt-mic,
 .tt-send {
   width: 42px;
@@ -624,6 +648,16 @@
   background: transparent;
 }
 .tt-mic:hover { color: var(--tt-ink); }
+.tt-mic:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+.tt-mic:disabled:hover {
+  color: var(--tt-muted);
+}
+.tt-mic.is-unavailable {
+  color: rgba(148, 163, 184, 0.62);
+}
 .tt-mic.is-live {
   color: #fff;
   background: var(--tt-coral);

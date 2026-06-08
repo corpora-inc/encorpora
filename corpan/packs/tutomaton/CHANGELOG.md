@@ -5,7 +5,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-06-08 — Free daily quota + voice polish
+
 ### Added
+- Tutomaton is now available to free users with 20 tutor messages per local day;
+  Corpan Plus users get unlimited Tutomaton messages. The composer shows the
+  remaining free messages and updates live when Plus becomes active.
 - Tutor speech now pins one explicit installed TTS voice per language instead of
   allowing locale-only calls to rotate voices between streamed sentences.
 - A per-language voice switcher defaults to the best dialect-appropriate,
@@ -25,6 +30,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   question mark and is preserved. Logic extracted to `textScrub.ts` with tests.
 
 ### Changed
+- The catalog tier is now `free`; the pack enforces the free/Plus message model
+  locally inside the chat UI.
 - The voice switcher now uses a speaking-face icon instead of a microphone (the
   microphone reads as dictation/input, not voice output).
 - The model lab and voice switcher fill the screen on phone and medium-width

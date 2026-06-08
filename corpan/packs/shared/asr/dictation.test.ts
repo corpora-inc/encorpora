@@ -44,6 +44,30 @@ describe("wireDictation", () => {
     expect(button.style.display).toBe("none")
   })
 
+  it("can keep an unavailable mic visible and refresh after the language changes", async () => {
+    const { button, field } = fixture()
+    const s = fakeSession()
+    let lang = "pa-Arab"
+    const availability: boolean[] = []
+    const controller = wireDictation({
+      button,
+      field,
+      lang: () => lang,
+      hideWhenUnavailable: false,
+      onAvailabilityChange: (available) => availability.push(available),
+      resolveProvider: async (code) => code === "en" ? fakeProvider(s) : null,
+    })
+    await tick()
+    expect(button.style.display).toBe("")
+    expect(button.disabled).toBe(true)
+    expect(button.classList.contains("is-unavailable")).toBe(true)
+    lang = "en"
+    await controller.refresh()
+    expect(button.disabled).toBe(false)
+    expect(button.classList.contains("is-unavailable")).toBe(false)
+    expect(availability).toEqual([false, true])
+  })
+
   it("enables the button + streams partials into the field when a provider exists", async () => {
     const { button, field } = fixture()
     const s = fakeSession()

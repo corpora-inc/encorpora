@@ -62,6 +62,11 @@ export type I18nKey =
   | "noVoices"
   | "voice"
   | "recommended"
+  | "quotaFree"
+  | "quotaPlus"
+  | "quotaEmpty"
+  | "quotaEmptyNote"
+  | "quotaPlusActivated"
 
 type Dict = Record<I18nKey, string>
 
@@ -115,6 +120,11 @@ const en: Dict = {
   noVoices: "No selectable voice is installed for this language.",
   voice: "Voice",
   recommended: "Recommended",
+  quotaFree: "{count} free tutor messages left today",
+  quotaPlus: "Corpan Plus · unlimited tutor messages",
+  quotaEmpty: "Free tutor messages used for today",
+  quotaEmptyNote: "Free tutor messages are used for today. Corpan Plus gives Tutomaton unlimited messages.",
+  quotaPlusActivated: "Corpan Plus active. Tutomaton messages are unlimited.",
 }
 
 // ---- Generated locales (filled by tools/gen_i18n.py). en is always present. ----

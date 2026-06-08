@@ -28,6 +28,8 @@ const BASE_MODEL = {
 }
 const FREE_DAILY_LIMIT = 20
 const MODEL_RETRY_DELAY_MS = 350
+const CONTROL_INTERACTION_PREFIX = "teletron-control:"
+const CONTROL_CHAT_ENDED_TEXT = "The chat has ended."
 const TTS_CONTACT =
   /(?:https?:\/\/|www\.|[\w.+-]+@[\w.-]+\.[a-z]{2,}|@\w{2,}|\+?\d[\d\s().-]{6,}\d|(?:^|[^\p{L}\p{N}])@[a-z0-9_.-]{2,})/iu
 const TTS_DIGIT_HEAVY = /(?:\D*\d){7,}/
@@ -57,6 +59,8 @@ type WirePlayer = {
   target: string
   native: string
 }
+
+type ChatState = "idle" | "active" | "ended"
 
 type ContentPackModule = {
   mount: (
@@ -250,6 +254,29 @@ function safeForStreamingSpeech(text: string): boolean {
   return !TTS_CONTACT.test(text) && !TTS_DIGIT_HEAVY.test(text) && !TTS_PROTOCOL_JUNK.test(text)
 }
 
+function composeControlInput(
+  from: PlayerId,
+  to: PlayerId,
+  kind: "ended",
+  targetLanguage: LanguageCode,
+): MediatedChatInput {
+  return {
+    from,
+    to,
+    interactionId: `${CONTROL_INTERACTION_PREFIX}${kind}:${Date.now().toString(36)}`,
+    source: { kind: "text", text: CONTROL_CHAT_ENDED_TEXT },
+    sourceLanguage: "en" as LanguageCode,
+    targetLanguage,
+    mode: "beginner",
+  }
+}
+
+function controlKind(input: MediatedChatInput): "ended" | null {
+  if (!input.interactionId.startsWith(CONTROL_INTERACTION_PREFIX)) return null
+  if (input.source.kind !== "text") return null
+  return input.source.text === CONTROL_CHAT_ENDED_TEXT ? "ended" : null
+}
+
 async function mountTeletron(
   container: HTMLElement,
   hostApi: HostApi,
@@ -311,8 +338,12 @@ async function mountTeletron(
   const profiles = new Map<string, SafeProfile>()
   let room: Room | null = null
   let partner: WirePlayer | null = null
+  let chatState: ChatState = "idle"
   let modelReady = false
   let modelBusy = false
+  let mounted = true
+  let dictationAvailable = false
+  let refreshDictation: () => Promise<boolean> = async () => false
   let revealStack = false
   let revealCountry = false
   let pendingInvite: { inviteId: string; player: WirePlayer } | null = null
@@ -347,7 +378,7 @@ async function mountTeletron(
           <p>They will see an invitation first. No message is delivered until they accept.</p>
         </div>
         <div class="tt-thread" hidden>
-          <div class="tt-thread-head"><div><span class="tt-avatar"></span><span><b class="tt-partner"></b><small>AI-mediated connection</small></span></div><div class="tt-thread-actions"><button class="tt-voice" type="button" aria-pressed="true" aria-label="Mute voice">${icon("speaker")}</button><button class="tt-end" type="button">End</button></div></div>
+          <div class="tt-thread-head"><div><span class="tt-avatar"></span><span><b class="tt-partner"></b><small class="tt-thread-status">AI-mediated connection</small></span></div><div class="tt-thread-actions"><button class="tt-voice" type="button" aria-pressed="true" aria-label="Mute voice">${icon("speaker")}</button><button class="tt-end" type="button">End</button></div></div>
           <div class="tt-messages"></div>
           <form class="tt-composer">
             <textarea rows="1" maxlength="600" placeholder="Write a message"></textarea>
@@ -383,7 +414,10 @@ async function mountTeletron(
   const form = $<HTMLFormElement>(".tt-composer")
   const field = $<HTMLTextAreaElement>(".tt-composer textarea")
   const mic = $<HTMLButtonElement>(".tt-mic")
+  const sendButton = $<HTMLButtonElement>(".tt-send")
   const voiceButton = $<HTMLButtonElement>(".tt-voice")
+  const endButton = $<HTMLButtonElement>(".tt-end")
+  const threadStatus = $(".tt-thread-status")
   const quota = $(".tt-quota")
   const modelBar = $(".tt-model")
   const modelText = $(".tt-model small")
@@ -417,7 +451,17 @@ async function mountTeletron(
   function updateQuota(): void {
     const left = quotaRemaining(plus)
     quota.textContent = plus ? "Corpan Plus · unlimited messages" : `${left} free messages left today`
-    form.querySelector<HTMLButtonElement>(".tt-send")!.disabled = left <= 0 || !modelReady
+    const active = Boolean(room && partner && chatState === "active")
+    const enabled = active && modelReady && left > 0
+    field.disabled = !enabled
+    sendButton.disabled = !enabled
+    mic.disabled = !enabled || !dictationAvailable
+    form.classList.toggle("is-disabled", !enabled)
+    form.classList.toggle("is-asr-unavailable", !dictationAvailable)
+    if (!active) field.placeholder = chatState === "ended" ? "Chat ended" : "Choose someone to talk with"
+    else if (!modelReady) field.placeholder = "Private relay is loading"
+    else if (left <= 0) field.placeholder = "Daily messages used"
+    else field.placeholder = "Write a message"
   }
 
   function updateVoiceButton(): void {
@@ -491,15 +535,32 @@ async function mountTeletron(
       card.type = "button"
       const isPendingTarget = pendingInvite?.player.playerId === p.playerId
       const hasPendingInvite = pendingInvite !== null
-      if (hasPendingInvite) {
+      const isCurrentPartner = partner?.playerId === p.playerId
+      const isActiveChat = chatState === "active" && partner !== null
+      const isEndedPartner = chatState === "ended" && isCurrentPartner
+      let actionLabel = "Invite"
+      if (isActiveChat && isCurrentPartner) {
+        card.disabled = true
+        card.classList.add("is-chatting")
+        actionLabel = "Chatting"
+      } else if (isActiveChat) {
+        card.disabled = true
+        card.classList.add("is-paused")
+        actionLabel = "Busy"
+      } else if (isEndedPartner) {
+        card.disabled = true
+        card.classList.add("is-ended")
+        actionLabel = "Ended"
+      } else if (hasPendingInvite) {
         card.disabled = true
         card.classList.add(isPendingTarget ? "is-invited" : "is-paused")
+        actionLabel = isPendingTarget ? "Invited" : "Wait"
       }
       const badge = profileBadge(p)
       const avatar = el("span", badge.isFlag ? "tt-avatar is-flag" : "tt-avatar", badge.text)
       const body = el("span")
       body.append(el("b", undefined, p.name), el("small", undefined, profileLine(p)))
-      card.append(avatar, body, el("em", undefined, isPendingTarget ? "Invited" : hasPendingInvite ? "Wait" : "Invite"))
+      card.append(avatar, body, el("em", undefined, actionLabel))
       card.addEventListener("click", () => invite(p))
       people.appendChild(card)
     }
@@ -529,30 +590,82 @@ async function mountTeletron(
     inviteReply = null
   }
 
+  function sendControl(kind: "ended", p = partner): void {
+    if (!room || !p) return
+    room.send(
+      MP_MSG.chatSend,
+      composeControlInput(me as PlayerId, p.playerId as PlayerId, kind, selectedLanguage),
+    )
+  }
+
   function openThread(p: WirePlayer): void {
     cancelSpeech()
     partner = p
+    chatState = "active"
     root.classList.add("is-thread-open")
     empty.setAttribute("hidden", "")
     thread.removeAttribute("hidden")
     $(".tt-partner").textContent = p.name
     $(".tt-avatar").textContent = avatarInitial(p.name)
+    threadStatus.textContent = "AI-mediated connection"
+    endButton.textContent = "End"
     messages.replaceChildren()
     addMessage("system", `Connected with ${p.name}. Both devices independently moderate each turn.`)
+    updateQuota()
+    renderPeople()
+    void refreshDictation()
     field.focus()
   }
 
-  function closeThread(): void {
+  function markThreadEnded(text: string): void {
+    const alreadyEnded = chatState === "ended"
     cancelSpeech()
+    chatState = "ended"
+    root.classList.add("is-thread-open")
+    empty.setAttribute("hidden", "")
+    thread.removeAttribute("hidden")
+    if (partner) {
+      $(".tt-partner").textContent = partner.name
+      $(".tt-avatar").textContent = avatarInitial(partner.name)
+    }
+    threadStatus.textContent = "Chat ended"
+    endButton.textContent = "Done"
+    field.value = ""
+    if (!alreadyEnded) addMessage("system", text)
+    updateQuota()
+    renderPeople()
+  }
+
+  function dismissThread(): void {
+    cancelSpeech()
+    chatState = "idle"
     partner = null
     root.classList.remove("is-thread-open")
     thread.setAttribute("hidden", "")
     empty.removeAttribute("hidden")
+    messages.replaceChildren()
+    updateQuota()
+    renderPeople()
+  }
+
+  function endOrDismissThread(): void {
+    if (chatState === "active" && partner) {
+      sendControl("ended")
+      markThreadEnded("You ended the chat.")
+      return
+    }
+    dismissThread()
   }
 
   function invite(p: WirePlayer): void {
     if (!room) return showToast("Still connecting.")
     if (!modelReady) return showToast("Finish preparing the local AI first.")
+    if (chatState === "active" && partner?.playerId === p.playerId) {
+      return showToast(`You are already chatting with ${p.name}.`)
+    }
+    if (chatState === "active" && partner) {
+      return showToast(`End your chat with ${partner.name} first.`)
+    }
     if (pendingInvite) {
       const target = pendingInvite.player.playerId === p.playerId ? p.name : pendingInvite.player.name
       return showToast(`Waiting for ${target} to respond.`)
@@ -565,20 +678,36 @@ async function mountTeletron(
   }
 
   async function send(text: string): Promise<void> {
-    if (!room || !partner || !modelReady || quotaRemaining(plus) <= 0) return
+    const currentPartner = partner
+    if (!room) return showToast("Still connecting.")
+    if (!currentPartner || chatState !== "active") return showToast("Choose someone to talk with first.")
+    if (!modelReady || quotaRemaining(plus) <= 0) return
     addMessage("self", text)
     field.value = ""
     const placeholder = el("div", "tt-message tt-system", "Cleaning locally...")
     messages.appendChild(placeholder)
-    const input = await mediator.prepareOutbound({
-      from: me as PlayerId,
-      to: partner.playerId as PlayerId,
-      interactionId: `chat-${Date.now().toString(36)}`,
-      text,
-      sourceLanguage: selectedLanguage,
-      targetLanguage: selectedLanguage,
-      mode: "beginner",
-    })
+    let input: MediatedChatInput
+    try {
+      input = await mediator.prepareOutbound({
+        from: me as PlayerId,
+        to: currentPartner.playerId as PlayerId,
+        interactionId: `chat-${Date.now().toString(36)}`,
+        text,
+        sourceLanguage: selectedLanguage,
+        targetLanguage: selectedLanguage,
+        mode: "beginner",
+      })
+    } catch (error) {
+      console.error("[teletron] prepareOutbound failed:", error)
+      placeholder.remove()
+      addMessage("system", "That message could not be prepared safely. Try again.")
+      return
+    }
+    if (!room || chatState !== "active" || partner?.playerId !== currentPartner.playerId) {
+      placeholder.remove()
+      addMessage("system", "That message was not sent because the chat ended.")
+      return
+    }
     placeholder.remove()
     room.send(MP_MSG.chatSend, input)
     consumeQuota(plus)
@@ -586,18 +715,50 @@ async function mountTeletron(
   }
 
   async function receive(input: MediatedChatInput): Promise<void> {
+    const control = controlKind(input)
     const p = players.get(input.from)
-    if (p && (!partner || partner.playerId !== p.playerId)) openThread(p)
+    const sender = p ?? {
+      playerId: input.from,
+      name: "Your chat partner",
+      target: "",
+      native: "",
+    }
+    if (control === "ended") {
+      if (!partner || partner.playerId === sender.playerId) {
+        if (!partner) partner = sender
+        markThreadEnded(`${sender.name} ended the chat.`)
+      }
+      return
+    }
+    if (partner && chatState === "active" && partner.playerId !== sender.playerId) {
+      showToast(`${sender.name} sent a message, but you are already chatting.`)
+      return
+    }
+    if (!partner || partner.playerId !== sender.playerId) openThread(sender)
     const placeholder = el("div", "tt-message tt-system", "Interpreting locally...")
     messages.appendChild(placeholder)
     cancelSpeech()
     const epoch = speechEpoch
     const locale = selectedLanguage
     activeSpeech = ttsEnabled ? { epoch, locale, buffer: new StreamingSentenceBuffer(locale) } : null
-    const artifact = await mediator.lessonify(
-      input,
-      { native: languages.native, target: locale },
-    )
+    let artifact
+    try {
+      artifact = await mediator.lessonify(
+        input,
+        { native: languages.native, target: locale },
+      )
+    } catch (error) {
+      console.error("[teletron] lessonify failed:", error)
+      activeSpeech = null
+      placeholder.remove()
+      addMessage("system", "That message could not be opened safely.")
+      return
+    }
+    if (chatState !== "active" || partner?.playerId !== sender.playerId) {
+      activeSpeech = null
+      placeholder.remove()
+      return
+    }
     if (activeSpeech?.epoch === epoch) {
       queueSpeech(locale, activeSpeech.buffer.finish(), epoch)
       activeSpeech = null
@@ -705,7 +866,7 @@ async function mountTeletron(
     const text = field.value.trim()
     if (text) void send(text)
   })
-  $(".tt-end").addEventListener("click", closeThread)
+  endButton.addEventListener("click", endOrDismissThread)
   voiceButton.addEventListener("click", () => {
     ttsEnabled = !ttsEnabled
     localStorage.setItem("teletron.tts", ttsEnabled ? "on" : "off")
@@ -723,9 +884,11 @@ async function mountTeletron(
   })
   languageSelect.addEventListener("change", () => {
     selectedLanguage = languageSelect.value as LanguageCode
+    void refreshDictation()
   })
   $(".tt-enter").addEventListener("click", () => {
     selectedLanguage = languageSelect.value as LanguageCode
+    void refreshDictation()
     onboarding.setAttribute("hidden", "")
     void connect()
   })
@@ -743,8 +906,14 @@ async function mountTeletron(
     field,
     resolveProvider: dictationResolver(hostApi.asr as never),
     lang: () => selectedLanguage,
+    hideWhenUnavailable: false,
+    onAvailabilityChange: (available: boolean) => {
+      dictationAvailable = available
+      updateQuota()
+    },
     onLiveChange: (live: boolean) => form.classList.toggle("is-listening", live),
   })
+  refreshDictation = stopDictation.refresh
   disposers.push(stopDictation)
 
   async function connect(): Promise<void> {
@@ -775,7 +944,13 @@ async function mountTeletron(
           const id = p.playerId || key
           players.delete(id)
           profiles.delete(id)
-          if (pendingInvite?.player.playerId === id) pendingInvite = null
+          if (pendingInvite?.player.playerId === id) {
+            pendingInvite = null
+            showToast(`${p.name || "That person"} left before responding.`)
+          }
+          if (partner?.playerId === id && chatState === "active") {
+            markThreadEnded(`${partner.name} left Teletron.`)
+          }
           renderPeople()
         }),
         joined.onMessage(MP_MSG.profileCard, (raw) => {
@@ -792,6 +967,14 @@ async function mountTeletron(
             name: parsed.data.fromName,
             target: "",
             native: "",
+          }
+          if (chatState === "active" || pendingInvite || inviteReply) {
+            joined.send(MP_MSG.inviteRespond, {
+              inviteId: parsed.data.inviteId,
+              action: "decline",
+            })
+            showToast(`${p.name} invited you, but you are already busy.`)
+            return
           }
           const accepted = await askInvite(p.name)
           joined.send(MP_MSG.inviteRespond, {
@@ -814,8 +997,15 @@ async function mountTeletron(
           if (parsed.success) void receive(parsed.data)
         }),
       )
-      joined.onLeave(() => setStatus("offline", "Offline"))
-      joined.onError(() => setStatus("offline", "Offline"))
+      joined.onLeave(() => {
+        setStatus("offline", "Offline")
+        if (!mounted) return
+        if (chatState === "active") markThreadEnded("Connection lost. Return to the waiting room to reconnect.")
+      })
+      joined.onError(() => {
+        setStatus("offline", "Offline")
+        if (chatState === "active") markThreadEnded("Connection lost. Return to the waiting room to reconnect.")
+      })
     } catch (error) {
       console.error("[teletron] connection failed:", error)
       setStatus("offline", "Offline")
@@ -830,6 +1020,8 @@ async function mountTeletron(
 
   return {
     unmount: () => {
+      mounted = false
+      if (chatState === "active") sendControl("ended")
       for (const dispose of disposers.splice(0)) dispose()
       cancelSpeech()
       mediator.dispose()
