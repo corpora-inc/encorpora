@@ -1,7 +1,7 @@
 {
   "id": "teletron",
   "name": "Teletron",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "entry": "dist/app.js",
   "entryType": "script",
   "styles": [
@@ -137,5 +137,5 @@
     "zh-Hans": "默认私密的等候室，让你和其他学习者真实聊天；双方设备上的本地 AI 会帮助润色并翻译消息。",
     "zh-Hant": "預設私密的等候室，讓你和其他學習者真實聊天；雙方裝置上的本機 AI 會協助柔化並翻譯訊息。"
   },
-  "devRevision": "2026-06-08T02:20:36.827Z"
+  "devRevision": "2026-06-08T02:56:15.302Z"
 }

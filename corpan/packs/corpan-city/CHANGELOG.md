@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Added native-language output prompt priming for every supported peer-chat
+  translation language, so scripts like Telugu, Tamil, Punjabi, and Arabic get a
+  target-language system instruction before generation.
 - Replaced peer-chat mediation with the shared safe relay pipeline: sender devices
   transform raw chat into English relay text before routing, recipient devices
   independently clean it again, and target/native translations now use separate

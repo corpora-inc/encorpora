@@ -16,6 +16,8 @@ import { continentOf, detectCountry } from "../../corpan-city/src/multiplayer/ge
 import type { HostApi } from "../../corpan-city/src/npc/hostTypes"
 import { createChatMediator } from "./mediator"
 import { installDevConsoleForwarder } from "../../sdk/devConsole"
+import { OrderedSpeechQueue, StreamingSentenceBuffer } from "../../tutomaton/src/streamingTts"
+import { scrubForSpeech } from "../../tutomaton/src/textScrub"
 
 const PACK_ID = "teletron"
 installDevConsoleForwarder()
@@ -25,6 +27,12 @@ const BASE_MODEL = {
   sizeMb: 2497,
 }
 const FREE_DAILY_LIMIT = 20
+const MODEL_RETRY_DELAY_MS = 350
+const TTS_CONTACT =
+  /(?:https?:\/\/|www\.|[\w.+-]+@[\w.-]+\.[a-z]{2,}|@\w{2,}|\+?\d[\d\s().-]{6,}\d|(?:^|[^\p{L}\p{N}])@[a-z0-9_.-]{2,})/iu
+const TTS_DIGIT_HEAVY = /(?:\D*\d){7,}/
+const TTS_PROTOCOL_JUNK =
+  /\b(as an ai|i can'?t assist|i cannot assist|policy|unsupported claim|fact[- ]?check|not appropriate)\b/i
 
 type InitialState = {
   stackConfig?: { languages?: string[] }
@@ -86,7 +94,7 @@ function el<K extends keyof HTMLElementTagNameMap>(
   return node
 }
 
-function icon(name: "back" | "send" | "mic" | "shield" | "users" | "chevron"): string {
+function icon(name: "back" | "send" | "mic" | "shield" | "users" | "chevron" | "speaker" | "speakerMuted"): string {
   const paths = {
     back: '<path d="m15 18-6-6 6-6"/>',
     send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
@@ -94,6 +102,8 @@ function icon(name: "back" | "send" | "mic" | "shield" | "users" | "chevron"): s
     shield: '<path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3Z"/><path d="m9 12 2 2 4-4"/>',
     users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/>',
     chevron: '<path d="m6 9 6 6 6-6"/>',
+    speaker: '<path d="M11 5 6 9H3v6h3l5 4Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/>',
+    speakerMuted: '<path d="M11 5 6 9H3v6h3l5 4Z"/><path d="m17 9 4 4"/><path d="m21 9-4 4"/>',
   }
   return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name]}</svg>`
 }
@@ -232,6 +242,14 @@ function consumeQuota(plus: boolean): void {
   localStorage.setItem("teletron.quota", JSON.stringify({ day, count: FREE_DAILY_LIMIT - remaining + 1 }))
 }
 
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+function safeForStreamingSpeech(text: string): boolean {
+  return !TTS_CONTACT.test(text) && !TTS_DIGIT_HEAVY.test(text) && !TTS_PROTOCOL_JUNK.test(text)
+}
+
 async function mountTeletron(
   container: HTMLElement,
   hostApi: HostApi,
@@ -243,13 +261,58 @@ async function mountTeletron(
   const languages = stackLanguages(initial)
   let selectedLanguage = languages.learning[0]
   let plus = isPlus(initial)
-  const mediator = createChatMediator(hostApi)
   const disposers: Array<() => void> = []
+  let ttsEnabled = localStorage.getItem("teletron.tts") !== "off"
+  const speechQueue = new OrderedSpeechQueue(
+    (locale, text) => hostApi.speak(locale, text),
+    hostApi.stopSpeech,
+    (error) => console.error("[teletron/tts]", error),
+  )
+  let speechEpoch = 0
+  let activeSpeech:
+    | { epoch: number; locale: string; buffer: StreamingSentenceBuffer }
+    | null = null
+
+  function cancelSpeech(): void {
+    speechEpoch += 1
+    activeSpeech?.buffer.discard()
+    activeSpeech = null
+    speechQueue.cancel()
+  }
+
+  function queueSpeech(locale: string, parts: string[], epoch: number): void {
+    if (!ttsEnabled || epoch !== speechEpoch) return
+    for (const part of parts) {
+      const clean = scrubForSpeech(part, locale)
+      if (clean && safeForStreamingSpeech(clean)) speechQueue.enqueue(locale, clean)
+    }
+  }
+
+  function speakNow(locale: string, text: string): void {
+    const clean = scrubForSpeech(text, locale)
+    if (!clean || !safeForStreamingSpeech(clean)) return
+    cancelSpeech()
+    speechQueue.enqueue(locale, clean)
+  }
+
+  const mediator = createChatMediator(hostApi, {
+    onToken(label, token) {
+      const speech = activeSpeech
+      if (!speech || label !== `relay.translate-target.${speech.locale}`) return
+      queueSpeech(speech.locale, speech.buffer.push(token), speech.epoch)
+    },
+    onDone(label) {
+      const speech = activeSpeech
+      if (!speech || label !== `relay.translate-target.${speech.locale}`) return
+      queueSpeech(speech.locale, speech.buffer.finish(), speech.epoch)
+    },
+  })
   const players = new Map<string, WirePlayer>()
   const profiles = new Map<string, SafeProfile>()
   let room: Room | null = null
   let partner: WirePlayer | null = null
   let modelReady = false
+  let modelBusy = false
   let revealStack = false
   let revealCountry = false
   let pendingInvite: { inviteId: string; player: WirePlayer } | null = null
@@ -284,7 +347,7 @@ async function mountTeletron(
           <p>They will see an invitation first. No message is delivered until they accept.</p>
         </div>
         <div class="tt-thread" hidden>
-          <div class="tt-thread-head"><div><span class="tt-avatar"></span><span><b class="tt-partner"></b><small>AI-mediated connection</small></span></div><button class="tt-end">End</button></div>
+          <div class="tt-thread-head"><div><span class="tt-avatar"></span><span><b class="tt-partner"></b><small>AI-mediated connection</small></span></div><div class="tt-thread-actions"><button class="tt-voice" type="button" aria-pressed="true" aria-label="Mute voice">${icon("speaker")}</button><button class="tt-end" type="button">End</button></div></div>
           <div class="tt-messages"></div>
           <form class="tt-composer">
             <textarea rows="1" maxlength="600" placeholder="Write a message"></textarea>
@@ -320,6 +383,7 @@ async function mountTeletron(
   const form = $<HTMLFormElement>(".tt-composer")
   const field = $<HTMLTextAreaElement>(".tt-composer textarea")
   const mic = $<HTMLButtonElement>(".tt-mic")
+  const voiceButton = $<HTMLButtonElement>(".tt-voice")
   const quota = $(".tt-quota")
   const modelBar = $(".tt-model")
   const modelText = $(".tt-model small")
@@ -354,6 +418,13 @@ async function mountTeletron(
     const left = quotaRemaining(plus)
     quota.textContent = plus ? "Corpan Plus · unlimited messages" : `${left} free messages left today`
     form.querySelector<HTMLButtonElement>(".tt-send")!.disabled = left <= 0 || !modelReady
+  }
+
+  function updateVoiceButton(): void {
+    voiceButton.classList.toggle("active", ttsEnabled)
+    voiceButton.innerHTML = ttsEnabled ? icon("speaker") : icon("speakerMuted")
+    voiceButton.setAttribute("aria-pressed", ttsEnabled ? "true" : "false")
+    voiceButton.setAttribute("aria-label", ttsEnabled ? "Mute voice" : "Unmute voice")
   }
 
   function onEntitlementChanged(event: Event): void {
@@ -434,12 +505,13 @@ async function mountTeletron(
     }
   }
 
-  function addMessage(side: "self" | "peer" | "system", text: string, detail?: string): void {
+  function addMessage(side: "self" | "peer" | "system", text: string, detail?: string): HTMLElement {
     const msg = el("div", `tt-message tt-${side}`)
     msg.appendChild(el("div", undefined, text))
     if (detail) msg.appendChild(el("small", undefined, detail))
     messages.appendChild(msg)
     messages.scrollTop = messages.scrollHeight
+    return msg
   }
 
   function askInvite(name: string): Promise<boolean> {
@@ -458,6 +530,7 @@ async function mountTeletron(
   }
 
   function openThread(p: WirePlayer): void {
+    cancelSpeech()
     partner = p
     empty.setAttribute("hidden", "")
     thread.removeAttribute("hidden")
@@ -469,6 +542,7 @@ async function mountTeletron(
   }
 
   function closeThread(): void {
+    cancelSpeech()
     partner = null
     thread.setAttribute("hidden", "")
     empty.removeAttribute("hidden")
@@ -514,53 +588,114 @@ async function mountTeletron(
     if (p && (!partner || partner.playerId !== p.playerId)) openThread(p)
     const placeholder = el("div", "tt-message tt-system", "Interpreting locally...")
     messages.appendChild(placeholder)
+    cancelSpeech()
+    const epoch = speechEpoch
+    const locale = selectedLanguage
+    activeSpeech = ttsEnabled ? { epoch, locale, buffer: new StreamingSentenceBuffer(locale) } : null
     const artifact = await mediator.lessonify(
       input,
-      { native: languages.native, target: selectedLanguage },
+      { native: languages.native, target: locale },
     )
+    if (activeSpeech?.epoch === epoch) {
+      queueSpeech(locale, activeSpeech.buffer.finish(), epoch)
+      activeSpeech = null
+    }
     placeholder.remove()
-    addMessage("peer", artifact.visibleText, artifact.naturalTranslation)
+    const msg = addMessage("peer", artifact.visibleText, artifact.naturalTranslation)
+    msg.classList.add("is-speakable")
+    msg.addEventListener("click", () => speakNow(locale, artifact.visibleText))
   }
 
   async function probeModel(): Promise<void> {
+    if (modelBusy) return
+    modelBusy = true
     modelBar.removeAttribute("hidden")
+    modelButton.disabled = true
+    modelButton.hidden = true
+    modelButton.textContent = "Retry"
     if (!hostApi.llm) {
       modelText.textContent = "This version of Corpán does not expose on-device AI."
-      return
-    }
-    const installed = await hostApi.llm.isInstalled(BASE_MODEL.id).catch(() => false)
-    if (!installed) {
-      modelText.textContent = `Qwen3 4B is required once and shared with Tutomaton (${BASE_MODEL.sizeMb} MB).`
-      modelButton.hidden = false
+      modelBusy = false
       return
     }
     try {
-      const status = await hostApi.llm.status()
-      if (!status.loaded || status.modelId !== BASE_MODEL.id) {
-        await hostApi.llm.load({ modelPackId: BASE_MODEL.id })
+      const installed = await hostApi.llm.isInstalled(BASE_MODEL.id).catch(() => false)
+      if (!installed) {
+        modelReady = false
+        modelText.textContent = `Qwen3 4B is required once and shared with Tutomaton (${BASE_MODEL.sizeMb} MB).`
+        modelButton.textContent = "Install model"
+        modelButton.hidden = false
+        return
       }
-      modelReady = true
+
+      modelText.textContent = "Loading Qwen3 4B on this device..."
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        try {
+          const status = await hostApi.llm.status().catch(() => null)
+          if (status?.loaded && status.modelId === BASE_MODEL.id) {
+            modelReady = true
+            break
+          }
+          if (attempt > 0 || status?.loaded) {
+            await hostApi.llm.unload().catch((error) => {
+              console.warn("[teletron] model unload before retry failed:", error)
+            })
+            await sleep(MODEL_RETRY_DELAY_MS)
+          }
+          await hostApi.llm.load({ modelPackId: BASE_MODEL.id })
+          const after = await hostApi.llm.status().catch(() => null)
+          if (after?.loaded && after.modelId === BASE_MODEL.id) {
+            modelReady = true
+            break
+          }
+          throw new Error(`loaded=${String(after?.loaded)} modelId=${after?.modelId ?? "unknown"}`)
+        } catch (error) {
+          console.error(`[teletron] model load attempt ${attempt + 1} failed:`, error)
+          modelReady = false
+          await hostApi.llm.unload().catch(() => {})
+          await sleep(MODEL_RETRY_DELAY_MS)
+        }
+      }
+
+      if (!modelReady) {
+        modelText.textContent = "The installed model could not be loaded. Close other packs or retry."
+        modelButton.textContent = "Retry"
+        modelButton.hidden = false
+      }
     } catch (error) {
       console.error("[teletron] model load failed:", error)
       modelReady = false
-      modelText.textContent = "The installed model could not be loaded."
+      modelText.textContent = "The installed model could not be loaded. Close other packs or retry."
+      modelButton.textContent = "Retry"
+      modelButton.hidden = false
+    } finally {
+      modelBusy = false
+      modelButton.disabled = false
+      modelBar.classList.toggle("is-ready", modelReady)
+      modelBar.toggleAttribute("hidden", modelReady)
+      updateQuota()
     }
-    modelBar.classList.toggle("is-ready", modelReady)
-    modelBar.toggleAttribute("hidden", modelReady)
-    updateQuota()
   }
 
   modelButton.addEventListener("click", async () => {
-    if (!hostApi.llm?.install) return
+    if (!hostApi.llm) return
     modelButton.disabled = true
-    await hostApi.llm.install({ packId: BASE_MODEL.id, url: BASE_MODEL.url }, (p) => {
-      modelText.textContent =
-        p.stage === "downloading" && p.total
-          ? `Downloading shared model · ${Math.round((p.progress / p.total) * 100)}%`
-          : p.message || p.stage
-    })
-    modelButton.hidden = true
-    await probeModel()
+    try {
+      const installed = await hostApi.llm.isInstalled(BASE_MODEL.id).catch(() => false)
+      if (!installed) {
+        if (!hostApi.llm.install) return
+        await hostApi.llm.install({ packId: BASE_MODEL.id, url: BASE_MODEL.url }, (p) => {
+          modelText.textContent =
+            p.stage === "downloading" && p.total
+              ? `Downloading shared model · ${Math.round((p.progress / p.total) * 100)}%`
+              : p.message || p.stage
+        })
+      }
+      modelButton.hidden = true
+      await probeModel()
+    } finally {
+      modelButton.disabled = false
+    }
   })
 
   form.addEventListener("submit", (event) => {
@@ -569,6 +704,12 @@ async function mountTeletron(
     if (text) void send(text)
   })
   $(".tt-end").addEventListener("click", closeThread)
+  voiceButton.addEventListener("click", () => {
+    ttsEnabled = !ttsEnabled
+    localStorage.setItem("teletron.tts", ttsEnabled ? "on" : "off")
+    updateVoiceButton()
+    if (!ttsEnabled) cancelSpeech()
+  })
   invitePrompt.querySelector("[data-accept]")!.addEventListener("click", () => settleInvite(true))
   invitePrompt.querySelector("[data-decline]")!.addEventListener("click", () => settleInvite(false))
   $(".tt-back").addEventListener("click", () =>
@@ -681,12 +822,14 @@ async function mountTeletron(
   }
 
   updateQuota()
+  updateVoiceButton()
   renderPeople()
   void probeModel()
 
   return {
     unmount: () => {
       for (const dispose of disposers.splice(0)) dispose()
+      cancelSpeech()
       mediator.dispose()
       void room?.leave(true)
       room = null
