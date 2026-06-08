@@ -40,6 +40,8 @@ const forbidden = [
   /\bguns?\b/i,
   /\bkill\b/i,
   /\bsex\b/i,
+  /\bCartersville\b/i,
+  /\bGeorgia\b/i,
 ]
 
 describe("safe relay pipeline", () => {
@@ -55,6 +57,7 @@ describe("safe relay pipeline", () => {
 
   it("uses plain-text prompts and sends English relay text only", async () => {
     const { pipeline, calls } = scriptedPipeline([
+      "Do you want to play soccer?",
       "Do you want to play soccer?",
       "Do you want to play soccer?",
       "Do you want to play soccer?",
@@ -77,6 +80,7 @@ describe("safe relay pipeline", () => {
       "relay.violence-coercion",
       "relay.hate-abuse",
       "relay.privacy-codes",
+      "relay.place-blur",
       "relay.learning-polish",
     ])
     expect(promptText(calls)).not.toMatch(/json|schema|field|blocked/i)
@@ -91,6 +95,8 @@ describe("safe relay pipeline", () => {
       "That is a friendly thought.",
       "That is a friendly thought.",
       "That is a friendly thought.",
+      "That is a friendly thought.",
+      "Let's talk about a favorite song.",
       "Let's talk about a favorite song.",
       "Let's talk about a favorite song.",
       "Let's talk about a favorite song.",
@@ -110,7 +116,9 @@ describe("safe relay pipeline", () => {
     })
 
     expect(result.relayText).toBe("Let's talk about a favorite song.")
-    const secondFirstPass = calls.find((call, index) => index > 4 && call.label === "relay.adult-tone")
+    const secondFirstPass = calls.find(
+      (call) => call.label === "relay.adult-tone" && call.messages[1]?.content.includes("word one letter"),
+    )
     expect(secondFirstPass?.messages[1]?.content).toContain("n")
     expect(secondFirstPass?.messages[1]?.content).toContain("word one letter at a time")
     expect(JSON.stringify(result)).not.toContain("word one letter")
@@ -123,6 +131,7 @@ describe("safe relay pipeline", () => {
       "safe phrase",
       "",
       "",
+      "",
     ])
 
     const result = await pipeline.prepareOutbound({
@@ -133,6 +142,23 @@ describe("safe relay pipeline", () => {
 
     expect(result.relayText).toBe("A kind phrase from the corpus.")
     expect(JSON.stringify(result)).not.toContain("555")
+    expect(result.state).toBe("replaced")
+  })
+
+  it("does not send obvious city and state place names even if the model echoes them", async () => {
+    const echoed = "Let's meet in Cartersville Georgia."
+    const { pipeline } = scriptedPipeline([echoed, echoed, echoed, echoed, echoed, echoed])
+
+    const result = await pipeline.prepareOutbound({
+      text: "let's meet in Cartersville Georgia",
+      sourceLanguage: "en",
+      scope: "place-leak",
+    })
+
+    expect(result.relayText).toBe("A kind phrase from the corpus.")
+    expect(result.relayText).not.toMatch(/\bCartersville\b/i)
+    expect(result.relayText).not.toMatch(/\bGeorgia\b/i)
+    expect(JSON.stringify(result)).not.toContain("Cartersville")
     expect(result.state).toBe("replaced")
   })
 
@@ -195,6 +221,7 @@ describe("safe relay pipeline", () => {
       "7aoid0aosdifj6qeown339aodijfnwow4900asdfjow",
       "dm me @realname or email x@example.com",
       "meet me behind the station tonight",
+      "let's meet in Cartersville Georgia",
       "gay people are mentally ill",
       "I brought a gun and I will kill them",
       "Chairman Mao had syphillis",
@@ -204,6 +231,7 @@ describe("safe relay pipeline", () => {
 
     for (const text of cases) {
       const { pipeline } = scriptedPipeline([
+        "Let's practice a kind sentence today.",
         "Let's practice a kind sentence today.",
         "Let's practice a kind sentence today.",
         "Let's practice a kind sentence today.",
@@ -222,6 +250,7 @@ describe("safe relay pipeline", () => {
 
   it("keeps normal multilingual learner chatter natural", async () => {
     const { pipeline } = scriptedPipeline([
+      "I am learning French today.",
       "I am learning French today.",
       "I am learning French today.",
       "I am learning French today.",
