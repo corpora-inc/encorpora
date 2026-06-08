@@ -1,5 +1,9 @@
 # Teletron Changelog
 
+## 0.1.6
+
+- Publish the latest Teletron streaming chat, mobile layout, localized language selector, and safe-relay place blurring under a new pack version for users already on 0.1.5.
+
 ## 0.1.5
 
 - Stream received text into the visible chat bubble before queuing sentence-complete TTS, so speech no longer starts before words appear.
