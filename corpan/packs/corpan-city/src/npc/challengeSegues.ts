@@ -21,9 +21,9 @@
  *   `turn` off the NPC seed + visit (see `npcRuntime.segueForOffer`).
  *
  * Keyed by `ChallengeToolId`, then by language code. Legacy tool ids are aliased
- * onto their canonical tool. Unknown language → we fall back to the tool's `en`
- * phrase ONLY when no target entry exists; the Antigua world ships `es`, which is
- * the shipping case.
+ * onto their canonical tool. A target with no per-tool locale uses generated
+ * TARGET-LANGUAGE generic handoff text; it never falls back to English/Spanish
+ * for a different target.
  *
  * ───────────────────────────────────────────────────────────────────────────
  * LOCALIZATION-SCALE PLAN (≈ 20 tools × 10 phrases × ~50 langs ≈ 10k strings).
@@ -34,14 +34,16 @@
  *   SEPARATE localization-generation task (see docs/LOCALIZATION_SCALE.md): the
  *   pipeline that translates the 10k phrase pack (one tool×phrase row per lang)
  *   will emit a generated `challengeSegues.<lang>.ts` (or a JSON sidecar) merged
- *   in via `registerSegueLocale(lang, table)`. We ship `es` (+ `en` fallback) by
- *   hand now; the generator backfills the rest. KEEP phrases short, imperative,
- *   in-character (TEACHER/GUIDE, varied — NOT the monotonous "help me"), and
- *   read-cleanly-aloud, because TTS speaks them verbatim.
+ *   in via `registerSegueLocale(lang, table)`. We ship rich `es` + `en` banks by
+ *   hand now; all other shipped targets use generated target-language generic
+ *   handoffs until the full per-tool generator backfills the rest. KEEP phrases
+ *   short, imperative, in-character (TEACHER/GUIDE, varied — NOT the monotonous
+ *   "help me"), and read-cleanly-aloud, because TTS speaks them verbatim.
  * ───────────────────────────────────────────────────────────────────────────
  */
 
 import type { ChallengeToolId } from "@corpan-city/contracts"
+import { genericSegueText } from "./runtimeLanguageText"
 
 /** Per-language data for one challenge tool. */
 type SegueLocale = {
@@ -64,9 +66,10 @@ const SEGUE_ALIAS: Partial<Record<ChallengeToolId, ChallengeToolId>> = {
 }
 
 /**
- * The segue data. Spanish is authored for the shipping Antigua world; `en` is a
- * safe fallback so any tool always resolves. Phrases are deliberately short and
- * read cleanly aloud (TTS speaks them verbatim).
+ * The rich segue data. Spanish is authored for the shipping Antigua world, and
+ * English is authored for English-target tracks. Other targets must not use these
+ * as cross-language fallbacks; the resolver drops to generated target-language
+ * generic handoffs instead.
  *
  * REFRAME (NPC-prompt-craft pass): the NPC is the TEACHER/GUIDE, not a helpless
  * person. Every tool used to open with the SAME "¿me ayudas…?" ("help ME") frame,
@@ -189,25 +192,21 @@ export function registerSegueLocale(
 const SEGUES = (): Partial<Record<ChallengeToolId, Record<string, SegueLocale>>> =>
   mutableSegues
 
-/** A last-ditch generic locale when even `en` is missing for a tool. */
-const GENERIC: Record<string, SegueLocale> = {
-  es: { tag: "un juego", chip: "Jugar", phrases: ["Te enseño un juego rápido.", "A ver si lo intentas.", "Practiquemos un poquito.", "Vamos con un reto cortito.", "¿Te animas a jugar?", "Hagamos uno rápido."] },
-  en: { tag: "a game", chip: "Play", phrases: ["Let me show you a quick game.", "See if you can try it.", "Let's practice a little.", "Here's a short challenge.", "Up for a quick game?", "Let's do a fast one."] },
-}
-
 /** Resolve a tool id to its canonical (alias-followed) key. */
 function canonical(tool: ChallengeToolId): ChallengeToolId {
   return SEGUE_ALIAS[tool] ?? tool
 }
 
-/** Pick the locale block for a tool + language (target → en → generic). */
+/** Pick the locale block for a tool + language. Never cross-fallback target text. */
 function localeFor(tool: ChallengeToolId, lang: string): SegueLocale {
   const code = lang.split("-")[0]
   const byLang = SEGUES()[canonical(tool)]
   if (byLang) {
-    return byLang[code] ?? byLang[lang] ?? byLang.en ?? GENERIC[code] ?? GENERIC.en
+    const targetHit = byLang[lang] ?? byLang[code]
+    if (targetHit) return targetHit
   }
-  return GENERIC[code] ?? GENERIC.en
+  const generated = genericSegueText(lang)
+  return { tag: generated.tag, chip: generated.chip, phrases: generated.phrases }
 }
 
 /** Tiny stable hash (FNV-1a) → 32-bit, for deterministic phrase rotation. */
