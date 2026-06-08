@@ -1306,7 +1306,15 @@ async function mountTeletron(
     players.clear()
     profiles.clear()
     renderPeople()
-    publishProfile()
+    // Bind room message handlers BEFORE publishProfile(). The server's
+    // profilePublish handler synchronously drains the outbox and `client.send`s
+    // each buffered chatDeliver — the comment at PlazaRoom.ts profilePublish
+    // explicitly relies on "the client publishes its profile right after
+    // binding its message handlers." Publishing first leaves a window where
+    // the round-trip is the only thing protecting freshly-buffered messages
+    // from arriving before chatDeliver is registered; on a hot reconnect the
+    // server response can land in the same microtask and the message is
+    // dropped on the floor.
     const callbacks = getStateCallbacks(joined) as unknown as (
       target: unknown,
     ) => { players: { onAdd: (cb: (p: WirePlayer, key: string) => void) => () => void; onRemove: (cb: (p: WirePlayer, key: string) => void) => () => void } }
@@ -1388,6 +1396,9 @@ async function mountTeletron(
         if (parsed.success && !isBlocked(parsed.data.from)) enqueueReceive(parsed.data)
       }),
     )
+    // All handlers (especially chatDeliver) are bound — now signal readiness so
+    // the server flushes anything the outbox was holding for us.
+    publishProfile()
     // After the first successful join, return the user to a recent conversation.
     if (!restoredConversation) {
       restoredConversation = true
@@ -1466,7 +1477,14 @@ async function mountTeletron(
   return {
     unmount: () => {
       mounted = false
-      if (chatState === "active" && partnerOnline) sendControl("ended")
+      // Unmount fires when the user steps away (Back arrow → corpan:exit, pack
+      // switch, app background that tears the pack down) — NOT a deliberate
+      // end-of-chat. Sending `ended` here would forget the accepted pair on the
+      // server, which also drops every still-buffered envelope between this
+      // pair (forgetAcceptedPair → outbox.removeForPair) and rejects any future
+      // chat-send from the partner because the pair guard fails. That defeats
+      // the whole 24h living-link / async outbox design. Only the explicit End
+      // button and Block actions tear the link down.
       for (const dispose of roomDisposers.splice(0)) {
         try {
           dispose()

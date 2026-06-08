@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+- Fix async-penpal delivery losing messages when the recipient steps away by
+  exiting Teletron (Back / pack switch). The pack's `unmount` was sending
+  `chat-control { action: "ended" }` whenever the chat was active and the
+  partner was online — the server treated that as a deliberate end-of-chat
+  and ran `forgetAcceptedPair`, which also calls `outbox.removeForPair` and
+  drops every still-buffered envelope between the two players. Any later
+  message from the partner was then rejected at the accepted-pair guard.
+  Only the explicit End button and Block actions should send `ended`.
+- Bind room message handlers (especially `chatDeliver`) before calling
+  `publishProfile()` on every (re)join. The server's `profilePublish`
+  handler synchronously drains the outbox and sends each buffered
+  `chatDeliver` to the client; if `publishProfile()` ran before the
+  handler was bound, a hot reconnect could land the flushed messages
+  before the listener existed and silently drop them. Now matches the
+  server-side comment's stated invariant.
 - Fix the gray-square that rendered on the right side of speakable message
   bubbles: the speaker-icon CSS was using `polygon()` as a mask layer, which is
   a `clip-path` value and not a valid mask source — every browser dropped the
