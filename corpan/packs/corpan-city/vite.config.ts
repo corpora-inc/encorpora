@@ -33,6 +33,7 @@ export default defineConfig({
     alias: {
       "@corpan-city/contracts": path.resolve(__dirname, "contracts/src/index.ts"),
       "@shared/audio": path.resolve(__dirname, "../shared/audio"),
+      "@shared/moderation": path.resolve(__dirname, "../shared/moderation/index.ts"),
     },
   },
   define: {

@@ -32,9 +32,10 @@ import { GeoHistogram } from "./geoHistogram.js"
  * auto-syncs binary deltas to all clients at the patch rate. Remote clients
  * interpolate those deltas for smooth motion.
  *
- * AI-mediated chat uses the same room: the sender's local model cleans a message
- * into a safe intent, this server validates and routes it, and the recipient's
- * local model independently cleans and translates it into a learning artifact.
+ * AI-mediated chat uses the same room: the sender's local model rewrites a
+ * message into safe English relay text, this server validates and routes it,
+ * and the recipient's local model independently cleans and translates it into
+ * a learning artifact.
  *
  * ── Area-of-Interest (interest management) ──
  * The world is conceptually a BIG city, so we DON'T fan every player's deltas to
@@ -392,9 +393,9 @@ export class PlazaRoom extends Room<PlazaState> {
       if (outcome === "declined") this.invites.delete(parsed.data.inviteId)
     })
 
-    // The sender's local model has already cleaned the message into a safe
-    // intent. Route it to the recipient, whose local model independently cleans
-    // it again and translates it into their learning language.
+    // The sender's local model has already rewritten the message into safe
+    // English relay text. Route it to the recipient, whose local model
+    // independently cleans it again and translates it into their learning language.
     this.onMessage(MP_MSG.chatSend, (client, raw) => {
       const parsed = MediatedChatInput.safeParse(raw)
       if (!parsed.success) {

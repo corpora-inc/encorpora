@@ -3,8 +3,8 @@ import { LanguageCode, PlayerId } from "./ids"
 
 /**
  * AI-mediated chat: unreviewed text/audio never crosses between players. The
- * sender's device cleans and moderates it into a safe intent; the server
- * validates and routes that intent; the recipient's device independently
+ * sender's device rewrites it into safe English relay text; the server
+ * validates and routes that relay text; the recipient's device independently
  * cleans it again, translates it into their learning language, and presents a
  * language-learning artifact.
  */

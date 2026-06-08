@@ -5,10 +5,11 @@ export default defineConfig({
   resolve: {
     alias: {
       "@corpan-city/contracts": path.resolve(__dirname, "contracts/src/index.ts"),
+      "@shared/moderation": path.resolve(__dirname, "../shared/moderation/index.ts"),
     },
   },
   test: {
     environment: "node",
-    include: ["**/*.test.ts"],
+    include: ["**/*.test.ts", "../shared/moderation/**/*.test.ts"],
   },
 })

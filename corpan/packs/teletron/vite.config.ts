@@ -24,6 +24,7 @@ export default defineConfig({
     alias: {
       "@corpan-city/contracts": path.resolve(__dirname, "../corpan-city/contracts/src/index.ts"),
       "@shared/asr": path.resolve(__dirname, "../shared/asr/index.ts"),
+      "@shared/moderation": path.resolve(__dirname, "../shared/moderation/index.ts"),
       "zod": path.resolve(__dirname, "node_modules/zod"),
     },
   },
