@@ -4,6 +4,11 @@
 
 ## 0.1.8 - 2026-06-09
 
+- Rewrite the catalog tagline and description across all 51 languages with
+  talk-framed copy — "Talk to the world in the language you're learning" /
+  "Join language learners from around the world in dynamic conversations and
+  surprising learning opportunities" — dropping the old AI-slop framing
+  ("a private-by-default waiting room for real conversations…").
 - Re-architect the outbound moderation so the relay is never the user's own words
   ("transform UGC into non-UGC"). A single **gate** pass reads the message and
   either returns a safe topic — regenerated into a fresh, neutral, modality-preserving
