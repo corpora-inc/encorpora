@@ -564,7 +564,7 @@
   width: 100%;
   max-width: 760px;
   margin-inline: auto;
-  text-align: right;
+  text-align: center;
   color: var(--lt-muted);
   font-size: 11.5px;
   font-weight: 600;

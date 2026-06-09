@@ -5,6 +5,23 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.5.4] - 2026-06-09 — Localized model-lab/voice chrome + centered quota line
+
+### Changed
+- The model-lab and voice-picker chrome is now fully localized into the user's
+  native language across all 47 non-English locales. Previously "Choose tutor
+  voice", "On-device model lab", "Tune model", "Voice", "Recommended", "Loading
+  installed voices…", and their sibling strings rendered in English everywhere;
+  they now show real, natural translations (authored in each destination
+  language/script, not machine-glossed).
+- The quota status line under the composer ("{count} free tutor messages left
+  today" / Corpán Plus state) is now centered instead of pushed to the right
+  edge. Its always-reserved single line-height (no layout shift) is unchanged.
+
+### Added
+- The "Jump to latest" scroll-lock chip string is now translated into all 47
+  non-English locales (it previously fell back to English per-key).
+
 ## [0.5.3] - 2026-06-09 — Stick-to-bottom chat autoscroll
 
 ### Changed
