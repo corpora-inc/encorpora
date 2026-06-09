@@ -19,7 +19,11 @@ export type SafeRelayRunLlm = (
 
 export type SafeRelayState = "send" | "replaced" | "blocked"
 
-export type SafePhraseSampler = (language: string) => Promise<string | null | undefined>
+// `query` lets the eject ask the corpus for a phrase that shares safe surface
+// words with the user's line (production: FTS5 over the phrase packs) — so the
+// relay is loosely connected and fun rather than a non-sequitur. Safe because the
+// result is always a clean corpus phrase; unsafe query words simply don't match.
+export type SafePhraseSampler = (language: string, query?: string) => Promise<string | null | undefined>
 
 export type SafeRelayPipelineOptions = {
   runLlm: SafeRelayRunLlm
@@ -74,6 +78,11 @@ export type SafePhraseHost = {
     q: number | { count: number; domains?: string[]; levels?: string[]; languageCodes?: string[] },
   ) => Promise<RandomEntry[]>
   getRandomEntry?: () => Promise<RandomEntry>
+  // FTS5 lexical search over the phrase packs — used by the eject to pull a phrase
+  // that shares safe words with the input. Optional: falls back to random when absent.
+  searchEntries?: (
+    q: { query: string; count: number; levels?: string[]; languageCodes?: string[] },
+  ) => Promise<RandomEntry[]>
 }
 
 const DEFAULT_MAX_TEXT = 280
@@ -205,34 +214,6 @@ const STATIC_SAFE_PHRASES = [
   "A good conversation can start with a kind question.",
 ]
 
-// The semantic-harm passes — categories a deterministic filter cannot catch, so
-// they rely on the model. Run only when the risk probe escalates (clean lines
-// skip straight to the creative-polish pass). Privacy/contact/place are handled
-// deterministically by scrubText() + the usableModelText guards, so they no
-// longer need their own model passes.
-const SEMANTIC_PASSES = [
-  {
-    label: "adult-tone",
-    focus:
-      "Remove all sexual meaning, flirting pressure, romantic pressure, innuendo, body comments, age-gap weirdness, and grooming. Turn it into playful, non-romantic talk. Keep at most one safe trace, such as a mood, color, food, song, animal, joke, or kind of place.",
-  },
-  {
-    label: "violence-coercion",
-    focus:
-      "Remove all threats, weapons, intimidation, revenge, forced action, self-harm pressure, and violent images. Turn it into a harmless challenge, game, small mystery, weather note, adventure idea, or calm feeling.",
-  },
-  {
-    label: "hate-abuse",
-    focus:
-      "Remove all slurs, group attacks, demeaning claims, bullying, humiliation, and coded insults. Turn it into a friendly line about people, curiosity, ordinary life, food, animals, travel, music, games, or learning.",
-  },
-]
-
-// Always-run final pass: make the line natural and a little interesting, and as a
-// last resort drop unsafe meaning entirely and improvise from a safe phrase seed.
-const POLISH_FOCUS =
-  "Make the line short, natural, and a little interesting, like something a real person would actually send in a chat. If it still feels unsafe, private, coded, sexual, hateful, violent, or too specific, drop its meaning completely and write a fresh line built from one of the safe phrase seeds."
-
 // Deterministic pre-model scrub: replace obvious contact/identity material with
 // vague wording before the model ever sees the line. Boring on purpose — the
 // model is never trusted to decide whether a phone number is okay.
@@ -249,18 +230,6 @@ function scrubText(text: string, maxText: number): string {
   for (const [re, repl] of SCRUB_RULES) t = t.replace(re, repl)
   t = t.replace(CITY_STATE_PLACE_G, "a nearby place")
   return bounded(t.replace(/\s+/g, " "), maxText)
-}
-
-// Cheap risk router: decides whether to run the full semantic cascade or skip
-// straight to polish. Runs on the English-normalized line. Errs toward escalation;
-// false negatives still pass through polish + the recipient re-clean.
-const HARM_LEXICON =
-  /\b(sex|sexual|sexy|nude|naked|horny|porn|boobs?|tits?|dick|cock|pussy|penis|vagina|rape|kill|murder|shoot|gun|knife|bomb|stab|behead|hang|suicide|self[-\s]?harm|cut myself|hate|nazi|hitler|slur|retard|faggot|fag|nigg|kike|spic|chink|tranny|whore|slut|bitch|terrorist|jihad|meet me|our secret|don'?t tell|mature for your age|kys|kill yourself)\b/i
-
-function riskProbe(english: string, scrubbed: string): boolean {
-  if (!sameish(english, scrubbed)) return true
-  if (leaksContactOrCode(english) || leaksSpecificPlace(english)) return true
-  return HARM_LEXICON.test(english)
 }
 
 // CEFR band phrasing, authored IN each language so the (in-language) translation
@@ -464,10 +433,6 @@ function normalize(value: string): string {
     .trim()
 }
 
-function isEnglish(code: string): boolean {
-  return normalize(code).startsWith("en")
-}
-
 function sameish(a: string, b: string): boolean {
   return normalize(a) === normalize(b)
 }
@@ -526,52 +491,50 @@ async function fallbackPhrase(
   return sampled || STATIC_SAFE_PHRASES[fallbackIndex(language)] || STATIC_SAFE_PHRASES[0]
 }
 
-function formatContext(messages: string[], maxText: number): string {
-  const trimmed = messages.map((m) => bounded(m, maxText)).filter(Boolean)
-  if (trimmed.length === 0) return "(none)"
-  return trimmed.map((m, i) => `${i + 1}. ${m}`).join("\n")
-}
-
-function normalizePrompt(sourceLanguage: string): SafeRelayChatMessage {
+// One pass on the RAW message: decide EJECT (obliterate via a corpus remix) or
+// emit a safe topic label (regenerate on-topic). Combining the old abstract+guard
+// into a single decision on the raw text removes the "laundering" gap where a
+// benign-sounding label hid a meetup/contact behind it.
+function gatePrompt(sourceLanguage: string): SafeRelayChatMessage {
   return {
     role: "system",
     content:
-      "Rewrite this chat message as one simple, natural English line. " +
-      "Output only the English line. Do not answer it, explain, warn, or add labels. " +
-      "Keep the harmless meaning, tone, and humor. " +
-      "Turn any names, handles, contact details, exact places, sexual content, grooming, threats, weapons, hate, or hidden codes into vague, harmless everyday wording. " +
-      `Declared language: ${sourceLanguage}.`,
+      "Read this chat message (it may be in any language). " +
+      "If it is sexual, romantic, or flirtatious; about meeting in person or making plans to meet; about where someone is, lives, or is from; sharing or asking for contact details, names, or identity; about someone's body, age, looks, or clothes; about keeping a secret; a slur or attack on a group of people; or a threat, violence, or self-harm — reply with exactly one word: EJECT. " +
+      "Otherwise reply with one to three plain words naming the safe, everyday topic it is about. For a strong opinion about history, politics, or public life, name only the broad field it touches, not the opinion. " +
+      `Output only EJECT or the topic words. Declared language: ${sourceLanguage}.`,
   }
 }
 
-function driftPrompt(focus: string): SafeRelayChatMessage {
+// Eject path for off-limits content: instead of a bland deflection, spin a fresh
+// text from a RANDOM corpus phrase — different phrase every time, so the relay is
+// varied and surprising, never the same line twice. Flip the table, don't drone.
+function regenerateFromPhrasePrompt(phrase: string): SafeRelayChatMessage {
   return {
     role: "system",
     content:
-      "Rewrite this one English chat line into a safer, more interesting chat line. " +
-      "Output only the rewritten line. " +
-      "Do not answer the speaker, give advice, explain, refuse, mention rules or safety, or act like an assistant or a teacher. " +
-      "Transform the line. You may change the subject. " +
-      "Keep only one safe trace from the source — a mood, object, setting, joke, color, animal, food, sound, weather, activity, or feeling — and drop anything unsafe. " +
-      "Change specific people into vague people and specific places into vague places. " +
-      "Keep it easy to translate. " +
-      focus,
+      `Write one short, casual text message a real person might send, loosely using a few of the words or ideas in: "${phrase}". ` +
+      "Keep it first person and a little unexpected, under about fourteen words. " +
+      "No emoji, no greeting, not a question, not an assistant voice. Mention no real person, place, or contact detail. " +
+      "Output only the message.",
   }
 }
 
-function driftUser(context: string[], current: string, seeds: string[], maxText: number): SafeRelayChatMessage {
-  const seedBlock = seeds.length
-    ? "\n\nSafe phrase seeds (use one silently only if the line is unsafe or empty — never copy it):\n" +
-      seeds.map((s, i) => `${i + 1}. ${bounded(s, maxText)}`).join("\n")
-    : ""
+// Step 2. Write a brand-new line from ONLY the abstract topic — never the user's
+// original text. This is what makes the relay non-UGC.
+function regeneratePrompt(form: "question" | "statement"): SafeRelayChatMessage {
+  const shape =
+    form === "question"
+      ? "Write ONE short, casual question on the given topic — the kind a real person texts to ask someone."
+      : "Write ONE short, plain first-person statement about the given topic — the kind a real person texts."
   return {
-    role: "user",
+    role: "system",
     content:
-      "Recent local messages, private context only:\n" +
-      `${formatContext(context, maxText)}\n\n` +
-      "Current relay text:\n" +
-      current +
-      seedBlock,
+      shape +
+      " Keep it under about twelve words. " +
+      "Do NOT greet, do NOT sound warm, enthusiastic, or like an assistant answering, and use NO emoji. " +
+      "Never mention meeting in person, where anyone is or lives, anyone's body, age, or clothes, secrets, names, numbers, or contact details. " +
+      "This is a safety filter, not a friendly one — keep it neutral and forgettable. Output only the message.",
   }
 }
 
@@ -693,15 +656,24 @@ class RollingTextContext {
   }
 }
 
-async function sampleHostPhrase(host: SafePhraseHost, language: string): Promise<string | null> {
+// Build a safe FTS5 MATCH query from a raw line: keep only word characters, drop
+// 1–2 char noise, OR the terms. Unsafe tokens simply won't match the clean corpus.
+function ftsQuery(raw: string): string {
+  const terms = (normalize(raw).match(/[\p{L}\p{N}]{3,}/gu) ?? []).slice(0, 8)
+  return [...new Set(terms)].join(" OR ")
+}
+
+async function sampleHostPhrase(host: SafePhraseHost, language: string, query?: string): Promise<string | null> {
   const wanted = language || "en"
-  const entries = host.getRandomEntries
-    ? await host
-        .getRandomEntries({ count: 8, languageCodes: [wanted, "en"], levels: ["A1", "A2"] })
-        .catch(() => [])
-    : host.getRandomEntry
-      ? [await host.getRandomEntry().catch(() => null)]
-      : []
+  const match = query ? ftsQuery(query) : ""
+  const entries =
+    match && host.searchEntries
+      ? await host.searchEntries({ query: match, count: 8, languageCodes: [wanted, "en"], levels: ["A1", "A2"] }).catch(() => [])
+      : host.getRandomEntries
+        ? await host.getRandomEntries({ count: 8, languageCodes: [wanted, "en"], levels: ["A1", "A2"] }).catch(() => [])
+        : host.getRandomEntry
+          ? [await host.getRandomEntry().catch(() => null)]
+          : []
   for (const entry of entries) {
     const translations = entry?.translations ?? []
     const exact = translations.find((t) => normalize(t.language_code) === normalize(wanted))
@@ -714,7 +686,9 @@ async function sampleHostPhrase(host: SafePhraseHost, language: string): Promise
 }
 
 export function createHostSafePhraseSampler(host: SafePhraseHost): SafePhraseSampler {
-  return (language) => sampleHostPhrase(host, language)
+  // Uses host.searchEntries (FTS5) when present so the eject pulls a phrase sharing
+  // safe words with the input; otherwise falls back to a random safe phrase.
+  return (language, query) => sampleHostPhrase(host, language, query)
 }
 
 export function createSafeRelayPipeline(options: SafeRelayPipelineOptions) {
@@ -733,92 +707,72 @@ export function createSafeRelayPipeline(options: SafeRelayPipelineOptions) {
       }
     }
 
-    const scope = args.scope || "default"
-    const recent = args.recentRawMessages?.length
-      ? args.recentRawMessages.map((m) => bounded(m, maxText)).filter(Boolean).slice(-maxContext)
-      : rawContext.add(scope, raw)
-
     const reasons: string[] = []
 
-    // 1. Normalize to plain English (model) — only when the source isn't English.
-    let english = raw
-    if (!isEnglish(args.sourceLanguage)) {
-      const translated = await runPlainPass(
-        options.runLlm,
-        [
-          normalizePrompt(args.sourceLanguage),
-          {
-            role: "user",
-            content:
-              "Recent local messages, private context only:\n" +
-              `${formatContext(recent, maxText)}\n\n` +
-              "Current message:\n" +
-              raw,
-          },
-        ],
-        { temperature: 0.15, topP: 0.8, maxTokens: 160 },
-        "relay.normalize-english",
-        maxText,
-      )
-      if (translated) {
-        english = translated
-        if (!sameish(translated, raw)) reasons.push("translated-to-english")
-      } else {
-        english = pickSeed(seeds, 1) || (await fallbackPhrase("en", options.sampleSafePhrase, maxText))
-        reasons.push("translation-fallback")
-      }
-    }
+    // Transform UGC into NON-UGC. Either EJECT (obliterate via a corpus remix) or
+    // regenerate a fresh line from a safe topic label — the relay is never the
+    // user's own words, so names, places, contact info, locations, and hidden jokes
+    // cannot survive. No wordlists, no examples in the prompts.
 
-    // 2. Deterministic scrub of obvious contact/identity/place material.
-    const scrubbed = scrubText(english, maxText)
-    if (!sameish(scrubbed, english)) reasons.push("scrubbed")
-    let current = scrubbed
-    const firstEnglish = current
-
-    // 3. Risk-gated semantic cascade — clean lines skip straight to polish.
-    const risky = riskProbe(english, scrubbed)
-    if (risky) reasons.push("risk-escalated")
-    let seedCursor = 0
-    for (const pass of risky ? SEMANTIC_PASSES : []) {
-      const next = await runPlainPass(
-        options.runLlm,
-        [driftPrompt(pass.focus), driftUser(recent, current, seeds, maxText)],
-        { temperature: 0.45, topP: 0.85, maxTokens: 160 },
-        `relay.${pass.label}`,
-        maxText,
-      )
-      if (!next) {
-        current = pickSeed(seeds, seedCursor++) || (await fallbackPhrase("en", options.sampleSafePhrase, maxText))
-        reasons.push(`${pass.label}-fallback`)
-      } else {
-        if (!sameish(next, current)) reasons.push(pass.label)
-        current = next
-      }
-    }
-
-    // 4. Always-run creative polish: natural, a little interesting, never canned.
-    const polished = await runPlainPass(
+    // 1. Gate the RAW message → "EJECT" (off-limits) or a safe topic label.
+    const gate = await runPlainPass(
       options.runLlm,
-      [driftPrompt(POLISH_FOCUS), driftUser(recent, current, seeds, maxText)],
-      { temperature: 0.7, topP: 0.92, maxTokens: 160 },
-      "relay.creative-polish",
+      [gatePrompt(args.sourceLanguage), { role: "user", content: raw }],
+      { temperature: 0.2, topP: 0.8, maxTokens: 16 },
+      "relay.gate",
       maxText,
     )
-    if (polished) {
-      if (!sameish(polished, current)) reasons.push("creative-polish")
-      current = polished
+
+    // 2. Off-limits → FLIP THE TABLE: regenerate from a corpus phrase that shares
+    // safe words with the input (loosely connected, fun, never the same twice).
+    // Safe topics → a fresh on-topic line.
+    const offLimits = !gate || /eject/i.test(gate)
+    let current: string
+    if (offLimits) {
+      const phrase =
+        (await options.sampleSafePhrase?.("en", raw).catch(() => "")) ||
+        pickSeed(seeds, 0) ||
+        (await fallbackPhrase("en", options.sampleSafePhrase, maxText))
+      current = await runPlainPass(
+        options.runLlm,
+        [regenerateFromPhrasePrompt(phrase), { role: "user", content: "Write the message." }],
+        { temperature: 0.85, topP: 0.95, maxTokens: 80 },
+        "relay.phrase-eject",
+        maxText,
+      )
+      reasons.push("phrase-eject")
+    } else {
+      // Preserve modality: a question stays a question, a statement stays a
+      // statement — so the relay never fabricates an answer the sender didn't give.
+      const form = /\?\s*$/.test(raw.trim()) ? "question" : "statement"
+      current = await runPlainPass(
+        options.runLlm,
+        [regeneratePrompt(form), { role: "user", content: `Topic: ${gate}` }],
+        { temperature: 0.6, topP: 0.9, maxTokens: 120 },
+        "relay.regenerate",
+        maxText,
+      )
     }
 
-    // 5. Final guard → recompose-from-seed (model) → real corpus phrase. Never a dead canned line.
+    // 3. Deterministic scrub backstop (the regenerated line should already be clean).
+    if (current) {
+      const scrubbed = scrubText(current, maxText)
+      if (!sameish(scrubbed, current)) reasons.push("scrubbed")
+      current = scrubbed
+    }
+
+    // 4. Guard → recompose-from-seed → corpus phrase. Never echo, never a dead canned line.
     let finalText = usableModelText(current, maxText)
     if (!finalText) {
-      finalText = await recomposeFromSeed(seeds, seedCursor)
-      reasons.push("recompose-fallback")
+      finalText = await recomposeFromSeed(seeds, 0)
+      reasons.push("regenerate-fallback")
     }
 
-    const changed = !sameish(finalText, firstEnglish) || reasons.some((reason) => reason.endsWith("fallback"))
+    // An eject (off-limits) or any fallback is a hard replacement; an on-topic
+    // regenerate of benign content is reported as a clean send.
+    const replaced = reasons.includes("phrase-eject") || reasons.some((reason) => reason.endsWith("fallback"))
     return {
-      state: changed ? "replaced" : "send",
+      state: replaced ? "replaced" : "send",
       relayText: finalText,
       reasons,
     }

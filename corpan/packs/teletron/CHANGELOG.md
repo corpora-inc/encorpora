@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## 0.1.8 - 2026-06-09
+
+- Re-architect the outbound moderation so the relay is never the user's own words
+  ("transform UGC into non-UGC"). A single **gate** pass reads the message and
+  either returns a safe topic — regenerated into a fresh, neutral, modality-preserving
+  line (a question stays a question) — or `EJECT`, which remixes a corpus phrase that
+  shares safe words with the input (loosely connected, varied, never the same twice).
+  Names, places, contact info, locations, ages, and phonetic/innuendo "jokes" cannot
+  survive because nothing downstream ever sees the raw text. No wordlists, no examples
+  in the prompts. (FTS5 corpus query is seam-wired; the host backend is a follow-up.)
 - Fix an "online ↔ reconnecting" reconnect war: two live Teletron instances
   (a React StrictMode double-invoke or a hot-reload/re-mount that didn't unmount
   the previous one) each opened a presence connection with the SAME persisted
