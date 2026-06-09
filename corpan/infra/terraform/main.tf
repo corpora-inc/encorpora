@@ -84,9 +84,12 @@ resource "aws_iam_role_policy" "verify_lambda" {
         Resource = "*"
       },
       {
-        Effect   = "Allow"
-        Action   = ["secretsmanager:GetSecretValue"]
-        Resource = aws_secretsmanager_secret.verify.arn
+        Effect = "Allow"
+        Action = ["secretsmanager:GetSecretValue"]
+        Resource = [
+          aws_secretsmanager_secret.verify.arn,
+          aws_secretsmanager_secret.iap_token.arn,
+        ]
       },
       {
         Effect   = "Allow"
@@ -102,6 +105,20 @@ resource "aws_iam_role_policy" "verify_lambda" {
             "s3:prefix" = ["artifacts/narrations/premium/*"]
           }
         }
+      },
+      # Affiliate + discount codes: single-table read/write.
+      {
+        Effect = "Allow"
+        Action = [
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:UpdateItem",
+          "dynamodb:Query",
+        ]
+        Resource = [
+          aws_dynamodb_table.iap.arn,
+          "${aws_dynamodb_table.iap.arn}/index/*",
+        ]
       }
     ]
   })
@@ -130,6 +147,12 @@ resource "aws_lambda_function" "verify" {
       CLOUDFRONT_DOMAIN      = var.enable_cdn ? (var.cdn_domain_name != "" ? var.cdn_domain_name : aws_cloudfront_distribution.packs[0].domain_name) : ""
       CLOUDFRONT_KEY_PAIR_ID = var.enable_cdn && var.enable_premium_content ? aws_cloudfront_public_key.premium[0].id : ""
       CATALOG_URL            = var.enable_cdn ? "https://${var.cdn_domain_name != "" ? var.cdn_domain_name : aws_cloudfront_distribution.packs[0].domain_name}/catalog.json" : ""
+
+      # Affiliate + discount codes (0.17.4). The HMAC token secret lives in its
+      # OWN Secrets Manager secret (not the verify secret, to avoid clobbering
+      # the out-of-band Apple/Google creds). The Lambda fetches it by ARN.
+      IAP_TABLE            = aws_dynamodb_table.iap.name
+      IAP_TOKEN_SECRET_ARN = aws_secretsmanager_secret.iap_token.arn
     }
   }
 }
@@ -182,6 +205,27 @@ resource "aws_apigatewayv2_route" "verify" {
 resource "aws_apigatewayv2_route" "subscription_status" {
   api_id    = aws_apigatewayv2_api.verify.id
   route_key = "POST /subscription-status"
+  target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
+}
+
+# Affiliate + discount codes (0.17.4)
+resource "aws_apigatewayv2_route" "code_resolve" {
+  api_id    = aws_apigatewayv2_api.verify.id
+  route_key = "POST /code/resolve"
+  target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
+}
+
+# Legacy alias the 0.17.x client posts to (handler is shared; no longer fails
+# open). Remove once all clients adopt /code/resolve.
+resource "aws_apigatewayv2_route" "affiliate_resolve" {
+  api_id    = aws_apigatewayv2_api.verify.id
+  route_key = "POST /affiliate/resolve"
+  target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
+}
+
+resource "aws_apigatewayv2_route" "entitlement_token" {
+  api_id    = aws_apigatewayv2_api.verify.id
+  route_key = "POST /entitlement-token"
   target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
 }
 

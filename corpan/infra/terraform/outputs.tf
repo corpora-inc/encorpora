@@ -3,6 +3,16 @@ output "verify_api_url" {
   description = "Base URL for verify API (append /verify-purchase)."
 }
 
+output "iap_table_name" {
+  value       = aws_dynamodb_table.iap.name
+  description = "DynamoDB single-table for affiliate/discount codes (registry, ledger, attribution)."
+}
+
+output "iap_token_secret_arn" {
+  value       = aws_secretsmanager_secret.iap_token.arn
+  description = "Secrets Manager ARN holding the HMAC token-signing secret for resolution/entitlement tokens."
+}
+
 output "verify_custom_domain_validation" {
   value       = var.enable_custom_domain ? aws_acm_certificate.verify[0].domain_validation_options : []
   description = "DNS validation records for custom domain (Namecheap)."
