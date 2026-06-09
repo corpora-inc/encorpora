@@ -63,7 +63,19 @@ type WirePlayer = {
   native: string
 }
 
-type ChatState = "idle" | "active" | "ended" | "dormant"
+/** Where the messaging app currently is — orthogonal to per-conversation lifecycle. */
+type TeletronView = "onboarding" | "inbox" | "waiting" | "thread"
+/** A single conversation's standing. "ended" threads stay as read-only keepsakes. */
+type Lifecycle = "active" | "dormant" | "ended"
+
+type Conversation = {
+  partnerId: string
+  partnerName: string
+  lifecycle: Lifecycle
+  partnerOnline: boolean
+  lastActivityAt: number
+  unread: number
+}
 
 /** A living link stays reachable while both sides tend it within this window. */
 const LINK_TTL_MS = 24 * 60 * 60 * 1000
@@ -110,7 +122,7 @@ function el<K extends keyof HTMLElementTagNameMap>(
   return node
 }
 
-function icon(name: "back" | "send" | "mic" | "shield" | "users" | "chevron" | "speaker" | "speakerMuted"): string {
+function icon(name: "back" | "send" | "mic" | "shield" | "users" | "chevron" | "speaker" | "speakerMuted" | "more"): string {
   const paths = {
     back: '<path d="m15 18-6-6 6-6"/>',
     send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
@@ -120,6 +132,7 @@ function icon(name: "back" | "send" | "mic" | "shield" | "users" | "chevron" | "
     chevron: '<path d="m6 9 6 6 6-6"/>',
     speaker: '<path d="M11 5 6 9H3v6h3l5 4Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/>',
     speakerMuted: '<path d="M11 5 6 9H3v6h3l5 4Z"/><path d="m17 9 4 4"/><path d="m21 9-4 4"/>',
+    more: '<circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/>',
   }
   return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name]}</svg>`
 }
@@ -497,14 +510,66 @@ async function mountTeletron(
   let connStatus: ConnStatus = "offline"
   // handlers bound to the CURRENT room; cleared each time the room is lost.
   let roomDisposers: Array<() => void> = []
-  let partner: WirePlayer | null = null
-  // whether the live partner is currently present in the room (vs. stepped away).
-  let partnerOnline = false
-  let chatState: ChatState = "idle"
+  // Every conversation this device knows about, keyed by partner playerId. The
+  // server supports many simultaneous penpals; this map is the client mirror.
+  const conversations = new Map<string, Conversation>()
+  // The partner whose thread is currently open (null in inbox/waiting/onboarding).
+  let openPartnerId: string | null = null
+  // The top-level view. Inbox is home; waiting is "find a penpal".
+  let view: TeletronView = "onboarding"
+  const FREE_LINK_CAP = 1
+  const PLUS_LINK_CAP = 100
   let restoredConversation = false
   const blocked = loadBlocks()
   const isBlocked = (id: string): boolean => blocked.has(id)
   const transcripts: TranscriptStore = await openTranscripts()
+
+  // --- conversation accessors ------------------------------------------------
+  /** The currently-open conversation, or null. */
+  const currentConvo = (): Conversation | null =>
+    openPartnerId ? conversations.get(openPartnerId) ?? null : null
+  /** True when there is an OPEN, still-active conversation with this partner. */
+  const isActiveWith = (id: string): boolean => {
+    const c = conversations.get(id)
+    return openPartnerId === id && !!c && c.lifecycle === "active"
+  }
+  /** How many living (non-ended) conversations exist — what the link cap gates on. */
+  const livingCount = (): number => {
+    let n = 0
+    for (const c of conversations.values()) if (c.lifecycle !== "ended") n += 1
+    return n
+  }
+  /** Max simultaneous living links for this tier. */
+  const linkCap = (): number => (plus ? PLUS_LINK_CAP : FREE_LINK_CAP)
+  /** Create or patch a conversation; returns the (now-current) entry. */
+  function upsertConvo(id: string, partnerName: string, patch?: Partial<Conversation>): Conversation {
+    const existing = conversations.get(id)
+    const next: Conversation = existing
+      ? { ...existing, partnerName: partnerName || existing.partnerName, ...patch }
+      : {
+          partnerId: id,
+          partnerName: partnerName || "Your chat partner",
+          lifecycle: "active",
+          partnerOnline: false,
+          lastActivityAt: Date.now(),
+          unread: 0,
+          ...patch,
+        }
+    conversations.set(id, next)
+    return next
+  }
+  /** A minimal WirePlayer for the open convo — used for control sends. */
+  function openPartnerWire(): WirePlayer | null {
+    const c = currentConvo()
+    if (!c) return null
+    return { playerId: c.partnerId, name: c.partnerName, target: "", native: "" }
+  }
+  /** A minimal WirePlayer for any known convo id. */
+  function convoWire(id: string): WirePlayer | null {
+    const c = conversations.get(id)
+    if (!c) return null
+    return { playerId: c.partnerId, name: c.partnerName, target: "", native: "" }
+  }
   let modelReady = false
   let modelBusy = false
   let mounted = true
@@ -517,16 +582,17 @@ async function mountTeletron(
   const teletronLogoUrl = packAssetUrl("teletron-avatar.png")
 
   const root = el("div", "tt-root")
+  root.dataset.view = "onboarding"
   root.innerHTML = `
     <header class="tt-header">
-      <button class="tt-icon tt-back" aria-label="Back">${icon("back")}</button>
+      <button class="tt-icon tt-back" aria-label="Exit to Corpan">${icon("back")}</button>
       <div class="tt-brand"><span class="tt-brand-mark" aria-hidden="true"><img src="${teletronLogoUrl}" alt="" draggable="false"></span><span><strong>Teletron</strong><small>local AI relay</small></span></div>
       <div class="tt-status"><span></span><b>Connecting</b></div>
     </header>
     <main class="tt-main">
       <aside class="tt-lobby">
         <section class="tt-intro">
-          <div class="tt-hero-mark" aria-hidden="true"><img src="${teletronLogoUrl}" alt="" draggable="false"></div>
+          <button class="tt-lobby-back" type="button" aria-label="Back to conversations">${icon("back")} Conversations</button>
           <div class="tt-kicker">${icon("shield")} Local AI on both sides</div>
           <h1>Choose what you want to share.</h1>
           <p>Your generated name is visible. Language stack and country are optional.</p>
@@ -539,13 +605,12 @@ async function mountTeletron(
         <div class="tt-people"></div>
       </aside>
       <section class="tt-conversation">
-        <div class="tt-empty">
-          <div class="tt-mark">T</div>
-          <h2>Choose someone to talk with</h2>
-          <p>They will see an invitation first. No message is delivered until they accept.</p>
+        <div class="tt-inbox">
+          <div class="tt-inbox-head"><b>Conversations</b><button class="tt-find" type="button">${icon("users")} Find a penpal</button></div>
+          <div class="tt-inbox-list"></div>
         </div>
         <div class="tt-thread" hidden>
-          <div class="tt-thread-head"><div><span class="tt-avatar"></span><span><b class="tt-partner"></b><small class="tt-thread-status">AI-mediated connection</small></span></div><div class="tt-thread-actions"><button class="tt-voice" type="button" aria-pressed="true" aria-label="Mute voice">${icon("speaker")}</button><button class="tt-flag" type="button" aria-label="Block or report">${icon("shield")}</button><button class="tt-end" type="button">End</button></div></div>
+          <div class="tt-thread-head"><div><button class="tt-thread-back" type="button" aria-label="Back to conversations">${icon("back")}</button><span class="tt-avatar"></span><span><b class="tt-partner"></b><small class="tt-thread-status">AI-mediated connection</small></span></div><div class="tt-thread-actions"><button class="tt-voice" type="button" aria-pressed="true" aria-label="Mute voice">${icon("speaker")}</button><button class="tt-overflow" type="button" aria-label="More" aria-haspopup="menu" aria-expanded="false">${icon("more")}</button><div class="tt-thread-menu" role="menu" hidden><button type="button" role="menuitem" class="tt-menu-end is-danger">End conversation</button><button type="button" role="menuitem" class="tt-menu-block">Block or report</button><button type="button" role="menuitem" class="tt-menu-exit">Exit to Corpan</button></div></div></div>
           <div class="tt-messages"></div>
           <form class="tt-composer">
             <textarea rows="1" maxlength="600" placeholder="Write a message"></textarea>
@@ -568,6 +633,7 @@ async function mountTeletron(
     </div></div>
     <div class="tt-invite" hidden><div><span class="tt-avatar"></span><h3></h3><p>They want to start a locally moderated conversation.</p><footer><button data-decline>Not now</button><button data-accept>Accept chat</button></footer></div></div>
     <div class="tt-safety" hidden><div><span class="tt-avatar"></span><h3></h3><p>You won't see each other in Teletron again, and this conversation is removed from your device.</p><footer><button data-safety-cancel>Cancel</button><button data-safety-block>Block</button><button data-safety-report>Report &amp; block</button></footer></div></div>
+    <div class="tt-cap-choice" hidden><div><h3>You already have a penpal</h3><p>The free tier keeps one conversation at a time. Get Corpán Plus to write with many penpals at once.</p><footer><button data-cap-keep>Keep current</button><button data-cap-swap>End current &amp; start new</button><button data-cap-plus>Get Plus</button></footer></div></div>
     <div class="tt-toast" hidden></div>
   `
   container.appendChild(root)
@@ -576,7 +642,7 @@ async function mountTeletron(
   const status = $(".tt-status")
   const people = $(".tt-people")
   const count = $(".tt-count")
-  const empty = $(".tt-empty")
+  const inboxList = $(".tt-inbox-list")
   const thread = $(".tt-thread")
   const messages = $(".tt-messages")
   const form = $<HTMLFormElement>(".tt-composer")
@@ -584,9 +650,13 @@ async function mountTeletron(
   const mic = $<HTMLButtonElement>(".tt-mic")
   const sendButton = $<HTMLButtonElement>(".tt-send")
   const voiceButton = $<HTMLButtonElement>(".tt-voice")
-  const flagButton = $<HTMLButtonElement>(".tt-flag")
-  const endButton = $<HTMLButtonElement>(".tt-end")
+  const overflowButton = $<HTMLButtonElement>(".tt-overflow")
+  const threadMenu = $(".tt-thread-menu")
   const safetySheet = $(".tt-safety")
+  const capChoiceSheet = $(".tt-cap-choice")
+  // The thread-head avatar — SCOPED, because inbox rows also use `.tt-avatar` and
+  // a bare first-match `$(".tt-avatar")` would resolve to an inbox row.
+  const threadAvatar = $(".tt-thread-head .tt-avatar")
   const threadStatus = $(".tt-thread-status")
   const quota = $(".tt-quota")
   const modelBar = $(".tt-model")
@@ -641,40 +711,42 @@ async function mountTeletron(
 
   /** Reflect the live connection in the open thread header + composer. */
   function updateThreadConnState(): void {
-    if (chatState === "active") {
+    const convo = currentConvo()
+    if (convo && convo.lifecycle === "active") {
       // Our own connection comes first: while reconnecting, don't blame the peer.
       threadStatus.textContent =
         connStatus !== "online"
           ? "Reconnecting…"
-          : !partnerOnline
-            ? `${partner?.name ?? "They"} is offline — they'll get your messages`
+          : !convo.partnerOnline
+            ? `${convo.partnerName} is offline — they'll get your messages`
             : "AI-mediated connection"
     }
     updateQuota()
   }
 
   function updateQuota(): void {
+    const convo = currentConvo()
     const left = quotaRemaining(plus)
     quota.textContent = plus ? "Corpan Plus · unlimited messages" : `${left} free messages left today`
     // "live" = OUR connection is up. A partner being offline no longer disables
     // the composer — messages to them are buffered server-side (async penpal).
     const live = Boolean(room && connStatus === "online")
-    const active = Boolean(partner && chatState === "active")
+    const active = Boolean(convo && convo.lifecycle === "active")
     const enabled = active && live && modelReady && left > 0
     field.disabled = !enabled
     sendButton.disabled = !enabled
     mic.disabled = !enabled || !dictationAvailable
     form.classList.toggle("is-disabled", !enabled)
     form.classList.toggle("is-asr-unavailable", !dictationAvailable)
-    if (chatState === "dormant") field.placeholder = "This conversation drifted to a close"
-    else if (chatState === "ended") field.placeholder = "Chat ended"
+    if (convo?.lifecycle === "dormant") field.placeholder = "This conversation drifted to a close"
+    else if (convo?.lifecycle === "ended") field.placeholder = "Chat ended"
     else if (!active) field.placeholder = "Choose someone to talk with"
     else if (!modelReady) field.placeholder = "Private relay is loading"
     else if (connStatus !== "online") field.placeholder = "Reconnecting…"
     else if (left <= 0) field.placeholder = "Daily messages used"
-    else field.placeholder = partnerOnline
+    else field.placeholder = convo?.partnerOnline
       ? "Write a message"
-      : `Write — ${partner?.name ?? "they"}'ll see it when they return`
+      : `Write — ${convo?.partnerName ?? "they"}'ll see it when they return`
   }
 
   function updateVoiceButton(): void {
@@ -751,19 +823,14 @@ async function mountTeletron(
       card.type = "button"
       const isPendingTarget = pendingInvite?.player.playerId === p.playerId
       const hasPendingInvite = pendingInvite !== null
-      const isCurrentPartner = partner?.playerId === p.playerId
-      const isActiveChat = chatState === "active" && partner !== null
-      const isEndedPartner = chatState === "ended" && isCurrentPartner
+      const convo = conversations.get(p.playerId)
+      const atCap = livingCount() >= linkCap()
       let actionLabel = "Invite"
-      if (isActiveChat && isCurrentPartner) {
-        card.disabled = true
+      if (convo && convo.lifecycle === "active") {
+        // Already a living conversation with this person → open it, don't re-invite.
         card.classList.add("is-chatting")
-        actionLabel = "Chatting"
-      } else if (isActiveChat) {
-        card.disabled = true
-        card.classList.add("is-paused")
-        actionLabel = "Busy"
-      } else if (isEndedPartner) {
+        actionLabel = "Open"
+      } else if (convo && convo.lifecycle === "ended") {
         card.disabled = true
         card.classList.add("is-ended")
         actionLabel = "Ended"
@@ -771,13 +838,22 @@ async function mountTeletron(
         card.disabled = true
         card.classList.add(isPendingTarget ? "is-invited" : "is-paused")
         actionLabel = isPendingTarget ? "Invited" : "Wait"
+      } else if (atCap && !plus) {
+        // Free tier at its one-link cap — invite still works, but offers a choice.
+        card.classList.add("is-paused")
+        actionLabel = "Invite"
       }
       const badge = profileBadge(p)
       const avatar = el("span", badge.isFlag ? "tt-avatar is-flag" : "tt-avatar", badge.text)
       const body = el("span")
       body.append(el("b", undefined, p.name), el("small", undefined, profileLine(p)))
       card.append(avatar, body, el("em", undefined, actionLabel))
-      card.addEventListener("click", () => invite(p))
+      const existing = conversations.get(p.playerId)
+      card.addEventListener("click", () => {
+        // Re-open a living conversation rather than re-inviting.
+        if (existing && existing.lifecycle === "active") openThread(p)
+        else invite(p)
+      })
       people.appendChild(card)
     }
   }
@@ -825,16 +901,17 @@ async function mountTeletron(
     } catch (error) {
       console.error("[teletron] transcript hydrate failed:", error)
     }
-    if (partner?.playerId !== partnerId) return // thread changed while loading
+    if (openPartnerId !== partnerId) return // thread changed while loading
     if (stored.length) {
       const frag = document.createDocumentFragment()
       for (const m of stored) frag.appendChild(buildBubble(m))
       messages.insertBefore(frag, messages.firstChild)
     } else if (fresh) {
+      const convo = conversations.get(partnerId)
       const intro = el(
         "div",
         "tt-message tt-system",
-        `Connected with ${partner.name}. Both devices independently moderate each turn.`,
+        `Connected with ${convo?.partnerName ?? "your penpal"}. Both devices independently moderate each turn.`,
       )
       messages.insertBefore(intro, messages.firstChild)
     }
@@ -856,7 +933,7 @@ async function mountTeletron(
     inviteReply = null
   }
 
-  function sendControl(kind: "ended", p = partner): void {
+  function sendControl(kind: "ended", p: WirePlayer | null = openPartnerWire()): void {
     if (!room || !p) return
     room.send(
       MP_MSG.chatSend,
@@ -864,29 +941,91 @@ async function mountTeletron(
     )
   }
 
+  /** Switch the top-level view and render the surface it lands on. */
+  function setView(next: TeletronView): void {
+    view = next
+    root.dataset.view = next
+    root.classList.toggle("is-thread-open", next === "thread")
+    if (next === "inbox") renderInbox()
+    else if (next === "waiting") renderPeople()
+  }
+
+  /** Human-readable status line for an inbox row. */
+  function convoStatusLine(c: Conversation): string {
+    if (c.lifecycle === "ended") return "Ended — kept here"
+    if (c.lifecycle === "dormant") return "Drifted to a close"
+    return c.partnerOnline ? "Online" : "Away"
+  }
+
+  /** (Re)draw the inbox conversation list. Inbox is home. */
+  function renderInbox(): void {
+    inboxList.replaceChildren()
+    const items = [...conversations.values()].sort((a, b) => b.lastActivityAt - a.lastActivityAt)
+    if (!items.length) {
+      const empty = el("div", "tt-inbox-empty")
+      empty.append(
+        el("p", undefined, "No conversations yet."),
+        (() => {
+          const cta = el("button", "tt-inbox-cta")
+          cta.type = "button"
+          cta.textContent = "Find a penpal"
+          cta.addEventListener("click", () => setView("waiting"))
+          return cta
+        })(),
+      )
+      inboxList.appendChild(empty)
+      return
+    }
+    for (const c of items) {
+      const row = el("button", "tt-inbox-row")
+      row.type = "button"
+      if (c.lifecycle === "ended") row.classList.add("is-ended")
+      else if (!c.partnerOnline) row.classList.add("is-away")
+      row.setAttribute(
+        "aria-label",
+        `${c.partnerName}, ${convoStatusLine(c)}${c.unread ? `, ${c.unread} unread` : ""}`,
+      )
+      const avatar = el("span", "tt-avatar", avatarInitial(c.partnerName))
+      if (c.lifecycle === "active" && c.partnerOnline) avatar.classList.add("is-online")
+      const body = el("span")
+      body.append(el("b", undefined, c.partnerName), el("small", undefined, convoStatusLine(c)))
+      row.append(avatar, body)
+      if (c.unread > 0) row.appendChild(el("span", "tt-unread", String(c.unread)))
+      row.addEventListener("click", () =>
+        openThread({ playerId: c.partnerId, name: c.partnerName, target: "", native: "" }),
+      )
+      inboxList.appendChild(row)
+    }
+  }
+
   function openThread(p: WirePlayer, opts?: { dormant?: boolean; online?: boolean }): void {
     cancelSpeech()
+    closeThreadMenu()
     const dormant = opts?.dormant ?? false
-    partner = p
-    chatState = dormant ? "dormant" : "active"
-    partnerOnline = dormant ? false : opts?.online ?? true
+    const convo = upsertConvo(p.playerId, p.name, {
+      lifecycle: dormant ? "dormant" : "active",
+      partnerOnline: dormant ? false : opts?.online ?? true,
+      unread: 0,
+    })
+    openPartnerId = p.playerId
+    view = "thread"
+    root.dataset.view = "thread"
     root.classList.add("is-thread-open")
-    empty.setAttribute("hidden", "")
     thread.removeAttribute("hidden")
-    $(".tt-partner").textContent = p.name
-    $(".tt-avatar").textContent = avatarInitial(p.name)
+    $(".tt-partner").textContent = convo.partnerName
+    threadAvatar.textContent = avatarInitial(convo.partnerName)
     threadStatus.textContent = dormant
       ? "This conversation drifted to a close — saved here."
       : "AI-mediated connection"
-    endButton.textContent = dormant ? "Done" : "End"
     messages.replaceChildren()
     // Fresh, live chats get the moderation intro; restored/dormant ones hydrate
     // from disk (and a dormant restore shows a warm closure note if empty).
     void hydrateThread(p.playerId, !dormant)
     if (dormant) {
-      addMessage("system", `${p.name} drifted away. Your conversation is kept here.`)
+      addMessage("system", `${convo.partnerName} drifted away. Your conversation is kept here.`)
     }
     updateThreadConnState()
+    renderInbox()
     renderPeople()
     if (!dormant) {
       void refreshDictation()
@@ -894,47 +1033,58 @@ async function mountTeletron(
     }
   }
 
-  function markThreadEnded(text: string): void {
-    const alreadyEnded = chatState === "ended"
-    cancelSpeech()
-    chatState = "ended"
-    partnerOnline = false
-    root.classList.add("is-thread-open")
-    empty.setAttribute("hidden", "")
-    thread.removeAttribute("hidden")
-    if (partner) {
-      $(".tt-partner").textContent = partner.name
-      $(".tt-avatar").textContent = avatarInitial(partner.name)
+  /**
+   * Mark a specific conversation ended. Only mutates the visible thread when it's
+   * the one open; otherwise it just badges the inbox row.
+   */
+  function markThreadEnded(partnerId: string, text: string): void {
+    const convo = conversations.get(partnerId)
+    const alreadyEnded = convo?.lifecycle === "ended"
+    upsertConvo(partnerId, convo?.partnerName ?? "Your chat partner", {
+      lifecycle: "ended",
+      partnerOnline: false,
+    })
+    void transcripts
+      .setMeta({
+        partnerId,
+        partnerName: convo?.partnerName ?? "Your chat partner",
+        lastActivityAt: convo?.lastActivityAt ?? Date.now(),
+        lapsedAt: Date.now(),
+      })
+      .catch((error) => console.error("[teletron] lapse transcript meta failed:", error))
+    if (openPartnerId === partnerId) {
+      cancelSpeech()
+      threadStatus.textContent = "Chat ended"
+      field.value = ""
+      autosizeComposer()
+      if (!alreadyEnded) addMessage("system", text)
     }
-    threadStatus.textContent = "Chat ended"
-    endButton.textContent = "Done"
-    field.value = ""
-    autosizeComposer()
-    if (!alreadyEnded) addMessage("system", text)
     updateQuota()
+    renderInbox()
     renderPeople()
   }
 
-  function dismissThread(): void {
+  /** Back chevron / Exit-to-Corpan inbox return — non-destructive. */
+  function closeThreadToInbox(): void {
     cancelSpeech()
-    chatState = "idle"
-    partner = null
-    partnerOnline = false
-    root.classList.remove("is-thread-open")
-    thread.setAttribute("hidden", "")
-    empty.removeAttribute("hidden")
+    closeThreadMenu()
+    openPartnerId = null
     messages.replaceChildren()
+    thread.setAttribute("hidden", "")
+    setView("inbox")
     updateQuota()
-    renderPeople()
   }
 
-  function endOrDismissThread(): void {
-    if (chatState === "active" && partner) {
-      sendControl("ended")
-      markThreadEnded("You ended the chat.")
-      return
+  /** The overflow "End conversation" — sends ended, keeps the keepsake, to inbox. */
+  function endConversation(): void {
+    closeThreadMenu()
+    const convo = currentConvo()
+    if (!convo) return closeThreadToInbox()
+    if (convo.lifecycle === "active") {
+      sendControl("ended", openPartnerWire())
     }
-    dismissThread()
+    markThreadEnded(convo.partnerId, "You ended the chat.")
+    closeThreadToInbox()
   }
 
   /**
@@ -946,23 +1096,24 @@ async function mountTeletron(
   function blockPartner(p: WirePlayer, opts: { report: boolean }): void {
     if (opts.report) room?.send(MP_MSG.report, { target: p.playerId })
     room?.send(MP_MSG.block, { target: p.playerId, action: "block" })
-    if (chatState === "active" && partner?.playerId === p.playerId) sendControl("ended", p)
+    if (isActiveWith(p.playerId)) sendControl("ended", p)
     blocked.add(p.playerId)
     persistBlocks(blocked)
     players.delete(p.playerId)
     profiles.delete(p.playerId)
+    conversations.delete(p.playerId)
     void transcripts
       .remove(p.playerId)
       .catch((error) => console.error("[teletron] remove transcript on block failed:", error))
-    dismissThread()
-    renderPeople()
+    closeThreadToInbox()
     showToast(opts.report ? `Reported and blocked ${p.name}.` : `Blocked ${p.name}.`)
   }
 
   function openSafetySheet(): void {
-    if (!partner) return
-    safetySheet.querySelector(".tt-avatar")!.textContent = avatarInitial(partner.name)
-    safetySheet.querySelector("h3")!.textContent = `Block ${partner.name}?`
+    const convo = currentConvo()
+    if (!convo) return
+    safetySheet.querySelector(".tt-avatar")!.textContent = avatarInitial(convo.partnerName)
+    safetySheet.querySelector("h3")!.textContent = `Block ${convo.partnerName}?`
     safetySheet.removeAttribute("hidden")
   }
 
@@ -970,19 +1121,73 @@ async function mountTeletron(
     safetySheet.setAttribute("hidden", "")
   }
 
+  /** Overflow popover (End / Block / Exit). */
+  let overflowOutside: ((e: MouseEvent) => void) | null = null
+  let overflowEsc: ((e: KeyboardEvent) => void) | null = null
+  function openThreadMenu(): void {
+    if (!threadMenu.hasAttribute("hidden")) return
+    threadMenu.removeAttribute("hidden")
+    overflowButton.setAttribute("aria-expanded", "true")
+    const first = threadMenu.querySelector<HTMLButtonElement>("button")
+    first?.focus()
+    overflowOutside = (e: MouseEvent) => {
+      if (!threadMenu.contains(e.target as Node) && e.target !== overflowButton) closeThreadMenu()
+    }
+    overflowEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault()
+        closeThreadMenu()
+      }
+    }
+    document.addEventListener("mousedown", overflowOutside)
+    document.addEventListener("keydown", overflowEsc)
+  }
+  function closeThreadMenu(): void {
+    if (threadMenu.hasAttribute("hidden")) return
+    threadMenu.setAttribute("hidden", "")
+    overflowButton.setAttribute("aria-expanded", "false")
+    if (overflowOutside) document.removeEventListener("mousedown", overflowOutside)
+    if (overflowEsc) document.removeEventListener("keydown", overflowEsc)
+    overflowOutside = null
+    overflowEsc = null
+    // Return focus to the trigger for keyboard users — but only while the thread
+    // is still on screen (some closes immediately route away to the inbox).
+    if (view === "thread") overflowButton.focus()
+  }
+
+  /** Cap-choice sheet (free tier already at its one-link limit). */
+  let capChoiceTarget: WirePlayer | null = null
+  function openCapChoice(p: WirePlayer): void {
+    capChoiceTarget = p
+    capChoiceSheet.removeAttribute("hidden")
+  }
+  function closeCapChoice(): void {
+    capChoiceSheet.setAttribute("hidden", "")
+    capChoiceTarget = null
+  }
+
   function invite(p: WirePlayer): void {
     if (!room) return showToast("Still connecting.")
     if (!modelReady) return showToast("Finish preparing the local AI first.")
-    if (chatState === "active" && partner?.playerId === p.playerId) {
+    if (isActiveWith(p.playerId)) {
       return showToast(`You are already chatting with ${p.name}.`)
-    }
-    if (chatState === "active" && partner) {
-      return showToast(`End your chat with ${partner.name} first.`)
     }
     if (pendingInvite) {
       const target = pendingInvite.player.playerId === p.playerId ? p.name : pendingInvite.player.name
       return showToast(`Waiting for ${target} to respond.`)
     }
+    // Capacity gate (not "already active"): at cap, free tier gets a choice sheet,
+    // Plus has plenty of room. No silent end.
+    if (livingCount() >= linkCap()) {
+      if (plus) return showToast("You've reached the conversation limit.")
+      return openCapChoice(p)
+    }
+    sendInvite(p)
+  }
+
+  /** Actually fire an invite to a player (post-gate). */
+  function sendInvite(p: WirePlayer): void {
+    if (!room) return showToast("Still connecting.")
     const inviteId = `tele-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`
     pendingInvite = { inviteId, player: p }
     room.send(MP_MSG.invite, { inviteId, to: p.playerId, offer: { kind: "chat" } })
@@ -991,21 +1196,23 @@ async function mountTeletron(
   }
 
   async function send(text: string): Promise<void> {
-    const currentPartner = partner
+    const convo = currentConvo()
     if (!room || connStatus !== "online") return showToast("Reconnecting — try again in a moment.")
-    if (!currentPartner || chatState !== "active") return showToast("Choose someone to talk with first.")
+    if (!convo || convo.lifecycle !== "active") return showToast("Choose someone to talk with first.")
+    const currentPartnerId = convo.partnerId
     // An offline partner is fine: the server buffers the message and delivers it
     // when they return (within the 24h living-link window). Sending only requires
     // OUR socket to be up.
     if (!modelReady || quotaRemaining(plus) <= 0) return
     const interactionId = `chat-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`
     addMessage("self", text)
-    persistMessage(currentPartner.playerId, currentPartner.name, {
+    persistMessage(convo.partnerId, convo.partnerName, {
       id: interactionId,
       side: "self",
       text,
       ts: Date.now(),
     })
+    upsertConvo(convo.partnerId, convo.partnerName, { lastActivityAt: Date.now() })
     field.value = ""
     autosizeComposer()
     const placeholder = el("div", "tt-message tt-system", "Cleaning locally...")
@@ -1014,7 +1221,7 @@ async function mountTeletron(
     try {
       input = await mediator.prepareOutbound({
         from: me as PlayerId,
-        to: currentPartner.playerId as PlayerId,
+        to: currentPartnerId as PlayerId,
         interactionId,
         text,
         sourceLanguage: selectedLanguage,
@@ -1027,7 +1234,7 @@ async function mountTeletron(
       addMessage("system", "That message could not be prepared safely. Try again.")
       return
     }
-    if (!room || chatState !== "active" || partner?.playerId !== currentPartner.playerId) {
+    if (!room || !isActiveWith(currentPartnerId)) {
       placeholder.remove()
       addMessage("system", "That message was not sent because the chat ended.")
       return
@@ -1038,32 +1245,96 @@ async function mountTeletron(
     updateQuota()
   }
 
+  /**
+   * A background inbound message — for a conversation that is NOT the open
+   * thread. It must never touch the `activeStream` singleton (that belongs to
+   * the open thread) nor render into the visible `messages` DOM; it lessonifies
+   * off-screen, appends to that convo's transcript, bumps unread, and re-renders
+   * the inbox + toasts.
+   */
+  async function receiveBackground(
+    input: MediatedChatInput,
+    sender: WirePlayer,
+  ): Promise<void> {
+    const locale = selectedLanguage
+    let artifact
+    try {
+      artifact = await mediator.lessonify(
+        input,
+        { native: languages.native, target: locale },
+        { level: recipientLevel },
+      )
+    } catch (error) {
+      console.error("[teletron] background lessonify failed:", error)
+      return
+    }
+    const convo = conversations.get(sender.playerId)
+    // If, while lessonifying, the user opened THIS thread, fall through to the
+    // open-thread persist+render path instead of double-handling.
+    persistMessage(sender.playerId, sender.name, {
+      id: input.interactionId,
+      side: "peer",
+      text: artifact.visibleText,
+      detail: artifact.naturalTranslation,
+      ts: Date.now(),
+    })
+    if (openPartnerId === sender.playerId) {
+      // The thread is open now — render it inline (no unread bump).
+      const msg = addMessage("peer", artifact.visibleText, artifact.naturalTranslation)
+      msg.classList.add("is-speakable")
+      msg.addEventListener("click", () => speakNow(locale, artifact.visibleText))
+      return
+    }
+    upsertConvo(sender.playerId, sender.name, {
+      lifecycle: convo?.lifecycle === "ended" ? "active" : convo?.lifecycle ?? "active",
+      partnerOnline: true,
+      lastActivityAt: Date.now(),
+      unread: (convo?.unread ?? 0) + 1,
+    })
+    renderInbox()
+    renderPeople()
+    showToast(`${sender.name} sent a message.`)
+  }
+
   async function receive(input: MediatedChatInput): Promise<void> {
     const control = controlKind(input)
     const p = players.get(input.from)
+    const known = conversations.get(input.from)
     const sender = p ?? {
       playerId: input.from,
-      name: "Your chat partner",
+      name: known?.partnerName ?? "Your chat partner",
       target: "",
       native: "",
     }
     if (control === "ended") {
-      if (!partner || partner.playerId === sender.playerId) {
-        if (!partner) partner = sender
-        markThreadEnded(`${sender.name} ended the chat.`)
+      markThreadEnded(sender.playerId, `${sender.name} ended the chat.`)
+      return
+    }
+    // Route to the OPEN active thread, or a background conversation.
+    const isOpenActive = isActiveWith(sender.playerId)
+    if (!isOpenActive) {
+      // Not the open thread. If it's a brand-new sender and we're under cap and
+      // the inbox is empty/no thread is open, surface it as the active thread;
+      // otherwise it's a background penpal message.
+      const convo = conversations.get(sender.playerId)
+      const noOpenThread = openPartnerId === null
+      const wasLiving = convo && convo.lifecycle !== "ended"
+      // Auto-open ONLY when nothing else is open and this becomes the focus —
+      // keeps single-thread free-tier flow intact while supporting many penpals.
+      if (noOpenThread && (wasLiving || livingCount() === 0)) {
+        upsertConvo(sender.playerId, sender.name, {
+          lifecycle: "active",
+          partnerOnline: true,
+          lastActivityAt: Date.now(),
+        })
+        openThread(sender)
+        // fall through to the open-thread render path below
+      } else {
+        await receiveBackground(input, sender)
+        return
       }
-      return
-    }
-    if (partner && chatState === "active" && partner.playerId !== sender.playerId) {
-      showToast(`${sender.name} sent a message, but you are already chatting.`)
-      return
-    }
-    // A new message from this sender (re)activates the thread — including a
-    // dormant/ended one — and proves they are present.
-    if (chatState !== "active" || partner?.playerId !== sender.playerId) {
-      openThread(sender)
     } else {
-      partnerOnline = true
+      upsertConvo(sender.playerId, sender.name, { partnerOnline: true, lastActivityAt: Date.now() })
       updateThreadConnState()
     }
     const placeholder = el("div", "tt-message tt-system", "Interpreting locally...")
@@ -1099,7 +1370,7 @@ async function mountTeletron(
       addMessage("system", "That message could not be opened safely.")
       return
     }
-    if (chatState !== "active" || partner?.playerId !== sender.playerId) {
+    if (openPartnerId !== sender.playerId) {
       if (activeStream?.epoch === epoch) activeStream = null
       placeholder.remove()
       streamingMessage.remove()
@@ -1123,6 +1394,7 @@ async function mountTeletron(
       msg.classList.add("is-speakable")
       msg.addEventListener("click", () => speakNow(locale, artifact.visibleText))
     }
+    upsertConvo(sender.playerId, sender.name, { lastActivityAt: Date.now() })
     persistMessage(sender.playerId, sender.name, {
       id: input.interactionId,
       side: "peer",
@@ -1242,16 +1514,61 @@ async function mountTeletron(
   window.addEventListener("resize", autosizeComposer)
   disposers.push(() => window.removeEventListener("resize", autosizeComposer))
   autosizeComposer()
-  endButton.addEventListener("click", endOrDismissThread)
-  flagButton.addEventListener("click", openSafetySheet)
+
+  /** The PRIMARY phone leave — dispatch corpan:exit ONLY. Non-destructive: never
+   * disposes the socket, never ends a chat. */
+  function exitToCorpan(): void {
+    closeThreadMenu()
+    window.dispatchEvent(new CustomEvent("corpan:exit", { detail: { packId: PACK_ID } }))
+  }
+
+  // Thread Back chevron → inbox (non-destructive).
+  $(".tt-thread-back").addEventListener("click", closeThreadToInbox)
+  // Inbox "Find a penpal" → waiting room.
+  $(".tt-find").addEventListener("click", () => setView("waiting"))
+  // Waiting room → back to inbox.
+  $(".tt-lobby-back").addEventListener("click", () => setView("inbox"))
+  // Overflow menu trigger + items.
+  overflowButton.addEventListener("click", () => {
+    if (threadMenu.hasAttribute("hidden")) openThreadMenu()
+    else closeThreadMenu()
+  })
+  threadMenu.querySelector(".tt-menu-end")!.addEventListener("click", endConversation)
+  threadMenu.querySelector(".tt-menu-block")!.addEventListener("click", () => {
+    closeThreadMenu()
+    openSafetySheet()
+  })
+  threadMenu.querySelector(".tt-menu-exit")!.addEventListener("click", exitToCorpan)
   safetySheet.querySelector("[data-safety-cancel]")!.addEventListener("click", closeSafetySheet)
   safetySheet.querySelector("[data-safety-block]")!.addEventListener("click", () => {
     closeSafetySheet()
-    if (partner) blockPartner(partner, { report: false })
+    const wire = openPartnerWire()
+    if (wire) blockPartner(wire, { report: false })
   })
   safetySheet.querySelector("[data-safety-report]")!.addEventListener("click", () => {
     closeSafetySheet()
-    if (partner) blockPartner(partner, { report: true })
+    const wire = openPartnerWire()
+    if (wire) blockPartner(wire, { report: true })
+  })
+  // Cap-choice sheet actions.
+  capChoiceSheet.querySelector("[data-cap-keep]")!.addEventListener("click", closeCapChoice)
+  capChoiceSheet.querySelector("[data-cap-swap]")!.addEventListener("click", () => {
+    const target = capChoiceTarget
+    closeCapChoice()
+    if (!target) return
+    // End the current living conversation, then invite the new partner.
+    const current = [...conversations.values()].find((c) => c.lifecycle !== "ended")
+    if (current) {
+      if (current.lifecycle === "active") {
+        sendControl("ended", { playerId: current.partnerId, name: current.partnerName, target: "", native: "" })
+      }
+      markThreadEnded(current.partnerId, "You ended the chat.")
+    }
+    sendInvite(target)
+  })
+  capChoiceSheet.querySelector("[data-cap-plus]")!.addEventListener("click", () => {
+    closeCapChoice()
+    window.dispatchEvent(new CustomEvent("corpan:request-unlock", { detail: { packId: PACK_ID } }))
   })
   voiceButton.addEventListener("click", () => {
     ttsEnabled = !ttsEnabled
@@ -1261,9 +1578,7 @@ async function mountTeletron(
   })
   invitePrompt.querySelector("[data-accept]")!.addEventListener("click", () => settleInvite(true))
   invitePrompt.querySelector("[data-decline]")!.addEventListener("click", () => settleInvite(false))
-  $(".tt-back").addEventListener("click", () =>
-    window.dispatchEvent(new CustomEvent("corpan:exit", { detail: { packId: PACK_ID } })),
-  )
+  $(".tt-back").addEventListener("click", exitToCorpan)
   onboarding.querySelector("[data-reroll]")!.addEventListener("click", () => {
     name = anonymousName(true)
     ownName.textContent = name
@@ -1276,6 +1591,8 @@ async function mountTeletron(
     selectedLanguage = languageSelect.value as LanguageCode
     void refreshDictation()
     onboarding.setAttribute("hidden", "")
+    // Land on the inbox (home). hydrateInbox() refines this after the first join.
+    setView("inbox")
     void connect()
   })
   for (const toggle of root.querySelectorAll<HTMLInputElement>("[data-toggle]")) {
@@ -1328,10 +1645,12 @@ async function mountTeletron(
         const id = p.playerId || key
         players.set(id, p)
         joined.send(MP_MSG.profileRequest, { target: id })
-        // Our partner returned to the room → resume the live link.
-        if (partner?.playerId === id && chatState === "active" && !partnerOnline) {
-          partnerOnline = true
-          updateThreadConnState()
+        // A penpal of ANY living conversation returned to the room → mark online.
+        const convo = conversations.get(id)
+        if (convo && convo.lifecycle !== "ended" && !convo.partnerOnline) {
+          upsertConvo(id, convo.partnerName, { partnerOnline: true })
+          if (openPartnerId === id) updateThreadConnState()
+          renderInbox()
         }
         renderPeople()
       }),
@@ -1343,11 +1662,15 @@ async function mountTeletron(
           pendingInvite = null
           showToast(`${p.name || "That person"} left before responding.`)
         }
-        // Partner stepped away — keep the thread alive (resilient), just pause it.
-        if (partner?.playerId === id && chatState === "active" && partnerOnline) {
-          partnerOnline = false
-          updateThreadConnState()
-          showToast(`${partner.name} went offline — keep writing, they'll get your messages.`)
+        // A penpal stepped away — keep the thread alive (resilient), just pause it.
+        const convo = conversations.get(id)
+        if (convo && convo.lifecycle !== "ended" && convo.partnerOnline) {
+          upsertConvo(id, convo.partnerName, { partnerOnline: false })
+          if (openPartnerId === id) {
+            updateThreadConnState()
+            showToast(`${convo.partnerName} went offline — keep writing, they'll get your messages.`)
+          }
+          renderInbox()
         }
         renderPeople()
       }),
@@ -1370,7 +1693,9 @@ async function mountTeletron(
           target: "",
           native: "",
         }
-        if (chatState === "active" || pendingInvite || inviteReply) {
+        // Already mid-invite-flow, OR no room for a new living link → decline.
+        const atCap = livingCount() >= linkCap() && !isActiveWith(parsed.data.from)
+        if (pendingInvite || inviteReply || atCap) {
           joined.send(MP_MSG.inviteRespond, {
             inviteId: parsed.data.inviteId,
             action: "decline",
@@ -1383,7 +1708,10 @@ async function mountTeletron(
           inviteId: parsed.data.inviteId,
           action: accepted ? "accept" : "decline",
         })
-        if (accepted) openThread(p)
+        if (accepted) {
+          upsertConvo(p.playerId, p.name, { lifecycle: "active", partnerOnline: true })
+          openThread(p)
+        }
       }),
       joined.onMessage(MP_MSG.inviteResult, (raw) => {
         const parsed = InviteResult.safeParse(raw)
@@ -1391,8 +1719,13 @@ async function mountTeletron(
         const invitedPlayer = pendingInvite.player
         pendingInvite = null
         renderPeople()
-        if (parsed.data.outcome === "accepted") openThread(invitedPlayer)
-        else showToast(`Invitation ${parsed.data.outcome}.`)
+        if (parsed.data.outcome === "accepted") {
+          upsertConvo(invitedPlayer.playerId, invitedPlayer.name, {
+            lifecycle: "active",
+            partnerOnline: true,
+          })
+          openThread(invitedPlayer)
+        } else showToast(`Invitation ${parsed.data.outcome}.`)
       }),
       joined.onMessage(MP_MSG.chatDeliver, (raw) => {
         const parsed = MediatedChatInput.safeParse(raw)
@@ -1402,17 +1735,21 @@ async function mountTeletron(
     // All handlers (especially chatDeliver) are bound — now signal readiness so
     // the server flushes anything the outbox was holding for us.
     publishProfile()
-    // After the first successful join, return the user to a recent conversation.
+    // After the first successful join, build the inbox from on-device history.
     if (!restoredConversation) {
       restoredConversation = true
-      void restoreLastConversation()
+      void hydrateInbox()
     }
   }
 
-  /** The current room dropped — detach handlers and show a reconnecting thread. */
+  /** The current room dropped — detach handlers; all penpals are now offline. */
   function loseRoom(): void {
     room = null
-    partnerOnline = false
+    for (const c of conversations.values()) {
+      if (c.lifecycle !== "ended" && c.partnerOnline) {
+        upsertConvo(c.partnerId, c.partnerName, { partnerOnline: false })
+      }
+    }
     for (const dispose of roomDisposers.splice(0)) {
       try {
         dispose()
@@ -1422,34 +1759,48 @@ async function mountTeletron(
     }
     players.clear()
     profiles.clear()
+    renderInbox()
     renderPeople()
     updateThreadConnState()
   }
 
   /**
-   * On cold start, reopen the most recent still-living conversation so the user
-   * returns to the same penpal. Lapsed/older links are NOT auto-opened — they
-   * remain on-device keepsakes. Best-effort; never throws.
+   * On cold start, build the inbox from ALL on-device links: living links become
+   * dormant conversations (reachable keepsakes that re-activate on the next
+   * message), lapsed/expired links become read-only "ended" keepsakes. We land
+   * on the INBOX — and only deep-link straight into a thread when there's exactly
+   * one living conversation that has unread (nothing ambiguous to choose from).
+   * Best-effort; never throws.
    */
-  async function restoreLastConversation(): Promise<void> {
-    if (partner) return
+  async function hydrateInbox(): Promise<void> {
     let links
     try {
       links = await transcripts.links()
     } catch (error) {
-      console.error("[teletron] restore conversation failed:", error)
+      console.error("[teletron] hydrate inbox failed:", error)
+      setView("inbox")
       return
     }
-    if (partner) return
     const now = Date.now()
-    const recent = links.find(
-      (l) => !l.lapsedAt && !isBlocked(l.partnerId) && now - l.lastActivityAt < LINK_TTL_MS,
-    )
-    if (!recent) return
-    openThread(
-      { playerId: recent.partnerId, name: recent.partnerName, target: "", native: "" },
-      { online: players.has(recent.partnerId) },
-    )
+    for (const l of links) {
+      if (isBlocked(l.partnerId)) continue
+      const living = !l.lapsedAt && now - l.lastActivityAt < LINK_TTL_MS
+      // Don't clobber a conversation that already came alive (live message landed
+      // during hydration).
+      if (conversations.has(l.partnerId)) continue
+      upsertConvo(l.partnerId, l.partnerName, {
+        lifecycle: living ? "dormant" : "ended",
+        partnerOnline: living ? players.has(l.partnerId) : false,
+        lastActivityAt: l.lastActivityAt,
+        unread: 0,
+      })
+    }
+    if (view === "thread") {
+      // A live message already opened a thread during hydration — leave it.
+      renderInbox()
+      return
+    }
+    setView("inbox")
   }
 
   function connect(): void {
@@ -1496,11 +1847,14 @@ async function mountTeletron(
         }
       }
       for (const dispose of disposers.splice(0)) dispose()
+      closeThreadMenu()
       cancelSpeech()
       mediator.dispose()
       conn?.dispose()
       conn = null
       room = null
+      conversations.clear()
+      openPartnerId = null
       transcripts.close()
       container.replaceChildren()
     },

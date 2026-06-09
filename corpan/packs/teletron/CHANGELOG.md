@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+- Rebuild Teletron as a messaging app: the home is now an **inbox** of
+  conversations (unread badges, online dots) instead of a lobby with one
+  embedded thread. Leaving a thread (**Back**) or **Exit to Corpan** keeps the
+  socket/link and outbox alive so you can come back later; **End conversation**,
+  **Block**, and **Report** moved into a three-dot overflow menu and are the only
+  actions that tear a link down. Conversations persist as read-only keepsakes
+  when ended.
+- Support multiple simultaneous penpals (free = 1, Corpán Plus = up to 100):
+  background-thread messages land in the inbox with an unread badge without
+  interrupting the open thread; a free user at the cap gets a choice sheet
+  (keep current / start new / go Plus) instead of a silent end.
+- Fix the duplicate Teletron logo on iPad (removed the redundant hero mark; the
+  header keeps the single brand mark).
 - Rework the local mediation pipeline (`@shared/moderation`) from a fixed
   seven-pass cascade into Scrub → Drift → Recompose: a deterministic scrub of
   contact/identity/place material, a risk probe that lets clean lines skip
