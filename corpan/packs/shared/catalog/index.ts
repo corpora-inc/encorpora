@@ -56,6 +56,9 @@ export {
 export {
   groupByBook,
   groupBySeries,
+  sortBooksWithinSeries,
+  sortBooks,
+  type BookSort,
   groupByCharacter,
   filterByLanguage,
   filterByCharacter,

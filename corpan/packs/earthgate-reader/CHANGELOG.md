@@ -9,12 +9,32 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.6.8] - 2026-06-09
+### Added
+- Catalog browse now has **compact and expanded views** with a clean
+  toggle. Compact (the new default) is a dense, scannable list — small
+  cover thumb + title + series/author caption + language badges per row
+  (Apple Books / Audible style) — that flows to 2 columns on tablet and
+  3 on desktop. Expanded keeps the large-cover series grid. The choice
+  persists per reader (`corpan-catalog-view:<readerId>`).
+- A **sort control** (Latest / Title / Series). "Latest" orders by
+  `publishedAt` descending so a returning reader finds new additions at
+  a glance; choice persists (`corpan-catalog-sort:<readerId>`).
 ### Changed
-- Dated periodicals in the catalog (e.g. "AI This Week") now list
-  newest-first. The shared catalog grouping (`@shared/catalog`
-  `groupByBook`) sorts books by `publishedAt` descending when present,
-  falling back to the legacy narration-count/volume/title order for
-  evergreen titles.
+- Books within a series now honor an **explicit order**: `volume` (a
+  series index) first, then publish date front-to-back, then title — so
+  multi-volume series read in reading order rather than by narration
+  count. (`@shared/catalog` `groupBySeries` / `sortBooksWithinSeries`.)
+- Dated periodicals (e.g. "AI This Week") list newest-first across the
+  catalog when sorted by Latest.
+- Downloading a narration from the **Now Playing** surface now selects
+  it (makes it the active narration), matching the language-pill flow.
+### Fixed
+- The catalog fetch parser was silently dropping `publishedAt` from
+  narration and book rows, so "Latest" sort and newest-first periodical
+  ordering had nothing to sort on. Carry it through. (Applies to
+  stargate-reader too.)
 
 ## [0.6.7] - 2026-05-30
 ### Fixed

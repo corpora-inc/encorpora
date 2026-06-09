@@ -95,6 +95,11 @@ function parseNarration(item: unknown): CatalogNarrationEntry | null {
     sizeMb: toNumber(r.sizeMb) ?? 0,
     series: toOptString(r.series),
     volume: toNumber(r.volume),
+    // ISO publish date, denormalized from the book. WITHOUT carrying this
+    // through, the "Latest" sort and newest-first periodical ordering have
+    // nothing to sort on — every entry looks undated. (searchFilter sorts on
+    // it; the parser was silently dropping it.)
+    publishedAt: toOptString(r.publishedAt),
     tier: tierRaw === "premium" ? "premium" : "public",
     purchase: parsePurchase(r.purchase),
     minAppVersion: toOptString(r.minAppVersion),
@@ -223,6 +228,7 @@ function parseBookEntry(item: unknown): BookEntry | null {
     volume: toNumber(r.volume),
     primaryLanguage: toString(r.primaryLanguage) || "en",
     tags: Array.isArray(r.tags) ? parseStringArray(r.tags) : undefined,
+    publishedAt: toOptString(r.publishedAt),
   }
 }
 

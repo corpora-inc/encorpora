@@ -48,6 +48,35 @@ export function groupByBook(narrations: CatalogNarrationEntry[]): BookGroup[] {
   })
 }
 
+/**
+ * Order books WITHIN a single series by explicit position. We honor `volume`
+ * as the per-entry order field (a series index), so "Vol. 1, Vol. 2, Vol. 3…"
+ * always reads in reading order rather than by narration-count. Books without
+ * a volume fall back to publishedAt (oldest-first within a series — a series is
+ * read front-to-back), then title. The input array order is the final
+ * tiebreaker so the catalog's authored order is preserved.
+ */
+export function sortBooksWithinSeries(books: BookGroup[]): BookGroup[] {
+  const indexed = books.map((b, i) => ({ b, i }))
+  indexed.sort((x, y) => {
+    const a = x.b
+    const b = y.b
+    const av = a.volume
+    const bv = b.volume
+    if (av != null && bv != null && av !== bv) return av - bv
+    if (av != null && bv == null) return -1
+    if (av == null && bv != null) return 1
+    if (a.publishedAt && b.publishedAt && a.publishedAt !== b.publishedAt) {
+      // Front-to-back within a series: earliest volume first.
+      return a.publishedAt < b.publishedAt ? -1 : 1
+    }
+    const byTitle = a.bookTitle.localeCompare(b.bookTitle)
+    if (byTitle !== 0) return byTitle
+    return x.i - y.i
+  })
+  return indexed.map((t) => t.b)
+}
+
 /** Group books by series, ordered so the series with the most-narrated book floats up */
 export function groupBySeries(narrations: CatalogNarrationEntry[]): SeriesGroup[] {
   const books = groupByBook(narrations)
@@ -63,12 +92,68 @@ export function groupBySeries(narrations: CatalogNarrationEntry[]): SeriesGroup[
     group.books.push(book)
   }
 
+  // Books within each series read in explicit (volume → date → title) order,
+  // not the global narration-count order groupByBook handed us.
+  for (const group of map.values()) {
+    group.books = sortBooksWithinSeries(group.books)
+  }
+
   return [...map.values()].sort((a, b) => {
     const ma = Math.max(...a.books.map((b) => b.narrations.length))
     const mb = Math.max(...b.books.map((b) => b.narrations.length))
     if (ma !== mb) return mb - ma
     return a.series.localeCompare(b.series)
   })
+}
+
+/** Sort dimension for the flat (compact) book list. */
+export type BookSort = "latest" | "title" | "series"
+
+/**
+ * Flatten + sort books for the compact list view.
+ *
+ *   - "latest": newest `publishedAt` first; undated books sink below dated ones
+ *     (a returning reader who has seen everything finds new additions fast).
+ *   - "title":  alphabetical by book title.
+ *   - "series": grouped by series in `groupBySeries` order, each series'
+ *     books in explicit volume order — flattened. Lets the flat list still
+ *     read series front-to-back when the user prefers that order.
+ */
+export function sortBooks(books: BookGroup[], sort: BookSort): BookGroup[] {
+  if (sort === "title") {
+    return [...books].sort((a, b) => a.bookTitle.localeCompare(b.bookTitle))
+  }
+  if (sort === "latest") {
+    const indexed = books.map((b, i) => ({ b, i }))
+    indexed.sort((x, y) => {
+      const a = x.b.publishedAt
+      const b = y.b.publishedAt
+      if (a && b && a !== b) return a < b ? 1 : -1 // newest first
+      if (a && !b) return -1
+      if (!a && b) return 1
+      return x.i - y.i
+    })
+    return indexed.map((t) => t.b)
+  }
+  // "series" — preserve groupBySeries ordering, flattened.
+  const map = new Map<string, BookGroup[]>()
+  for (const book of books) {
+    const series = book.series || "Other"
+    const list = map.get(series)
+    if (list) list.push(book)
+    else map.set(series, [book])
+  }
+  const seriesOrder = [...map.entries()].sort((a, b) => {
+    const ma = Math.max(...a[1].map((bk) => bk.narrations.length))
+    const mb = Math.max(...b[1].map((bk) => bk.narrations.length))
+    if (ma !== mb) return mb - ma
+    return a[0].localeCompare(b[0])
+  })
+  const out: BookGroup[] = []
+  for (const [, list] of seriesOrder) {
+    for (const bk of sortBooksWithinSeries(list)) out.push(bk)
+  }
+  return out
 }
 
 /** Filter narrations by language (empty string = all) */
