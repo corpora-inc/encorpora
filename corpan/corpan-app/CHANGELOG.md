@@ -7,6 +7,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+
+- Installed-pack image/font/audio assets now load on Android. Asset URLs were
+  hardcoded `corpan-pack://localhost/…` on every platform, but Tauri serves that
+  scheme at `http://corpan-pack.localhost/…` on Android/Windows, so `<img>` (e.g.
+  a pack logo) and other WebView-resolved assets silently failed there. The
+  installed-pack URL is now platform-aware and the native fetch + host gate accept
+  both forms; desktop/iOS unchanged.
+
 ## [0.17.1] - 2026-06-07
 
 ### Added

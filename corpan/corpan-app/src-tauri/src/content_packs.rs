@@ -68,8 +68,57 @@ fn save_index(root: &Path, index: &ContentPackIndex) -> Result<(), String> {
     fs::write(path, raw).map_err(|e| e.to_string())
 }
 
+/// Base URL prefix under which the `corpan-pack` custom URI-scheme protocol
+/// handler (registered by `tauri-plugin-game-packs`) is actually reachable from
+/// the WebView, which differs by platform. Per the Tauri 2 docs for
+/// `register_uri_scheme_protocol`:
+///
+/// - macOS, iOS, Linux: `corpan-pack://localhost/<path>`
+/// - **Windows, Android**: `http://corpan-pack.localhost/<path>`
+///
+/// This matters for DIRECT asset URLs that the WebView resolves itself —
+/// `<img src>`, `@font-face`, CSS `url(...)`, `<audio>`/`<video>` — because
+/// those never go through the `content_packs_fetch_*` commands (only the
+/// manifest + entry JS/CSS are command-fetched and inlined by ContentPackHost).
+/// On Android, a pack-built `corpan-pack://localhost/...` URL hits an
+/// UNREGISTERED scheme and silently fails to load; the served form is
+/// `http://corpan-pack.localhost/...`. Emitting the platform-correct base here
+/// lets the registered protocol handler serve every pack file natively.
+fn pack_url_base() -> &'static str {
+    if cfg!(any(target_os = "android", target_os = "windows")) {
+        "http://corpan-pack.localhost/"
+    } else {
+        "corpan-pack://localhost/"
+    }
+}
+
 fn manifest_url_for(pack_id: &str) -> String {
-    format!("corpan-pack://localhost/{pack_id}/manifest.json")
+    format!("{}{pack_id}/manifest.json", pack_url_base())
+}
+
+/// Split a pack asset URL (either custom-scheme form) into `(pack_id, rel_path)`.
+/// Accepts BOTH `corpan-pack://localhost/<pack>/<path>` (desktop/iOS) and
+/// `http://corpan-pack.localhost/<pack>/<path>` (Android/Windows) so the
+/// `content_packs_fetch_*` commands resolve a pack URL regardless of which
+/// platform-specific form the front-end built it as. Query string is stripped.
+/// Returns `None` for any URL that is not a corpan-pack URL.
+fn parse_pack_url(url: &str) -> Option<(&str, &str)> {
+    let no_query = url.split('?').next().unwrap_or(url);
+    let path_part = no_query
+        .strip_prefix("corpan-pack://localhost/")
+        .or_else(|| no_query.strip_prefix("http://corpan-pack.localhost/"))
+        .or_else(|| no_query.strip_prefix("https://corpan-pack.localhost/"))?;
+    let mut parts = path_part.splitn(2, '/');
+    let pack_id = parts.next().filter(|s| !s.is_empty())?;
+    let rel_path = parts.next().filter(|s| !s.is_empty())?;
+    Some((pack_id, rel_path))
+}
+
+/// Whether a URL targets the corpan-pack custom scheme in any platform form.
+fn is_pack_url(url: &str) -> bool {
+    url.starts_with("corpan-pack://")
+        || url.starts_with("http://corpan-pack.localhost/")
+        || url.starts_with("https://corpan-pack.localhost/")
 }
 
 fn now_epoch_ms() -> i64 {
@@ -226,17 +275,14 @@ fn is_private_host(host: &str) -> bool {
 pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<String, String> {
     eprintln!("[fetch_text] Fetching URL: {}", url);
 
-    // Handle corpan-pack:// URLs by reading from local filesystem
-    if url.starts_with("corpan-pack://") {
-        eprintln!("[fetch_text] Handling corpan-pack:// URL");
-        // Parse: corpan-pack://localhost/pack_id/path/to/file
-        // Strip query parameters (e.g., ?dev=timestamp)
-        let url_without_query = url.split('?').next().unwrap_or(&url);
-        let path_part = url_without_query.strip_prefix("corpan-pack://localhost/")
-            .ok_or("Invalid corpan-pack URL format")?;
-        let mut parts = path_part.splitn(2, '/');
-        let pack_id = parts.next().ok_or("Missing pack ID in corpan-pack URL")?;
-        let rel_path = parts.next().ok_or("Missing file path in corpan-pack URL")?;
+    // Handle corpan-pack URLs (either platform form) by reading from disk.
+    if is_pack_url(&url) {
+        eprintln!("[fetch_text] Handling corpan-pack URL");
+        // Parse: corpan-pack://localhost/pack_id/path  OR
+        //        http://corpan-pack.localhost/pack_id/path (Android/Windows).
+        // Query parameters (e.g. ?dev=timestamp) are stripped by the parser.
+        let (pack_id, rel_path) =
+            parse_pack_url(&url).ok_or("Invalid corpan-pack URL format")?;
 
         eprintln!("[fetch_text] Pack ID: {}, Rel path: {}", pack_id, rel_path);
 
@@ -515,15 +561,10 @@ pub fn list_installed<R: Runtime>(app: &AppHandle<R>) -> Result<Vec<ContentPackI
 pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<Vec<u8>, String> {
     eprintln!("[fetch_bytes] Fetching URL: {}", url);
 
-    // Handle corpan-pack:// URLs by reading from local filesystem
-    if url.starts_with("corpan-pack://") {
-        let url_without_query = url.split('?').next().unwrap_or(&url);
-        let path_part = url_without_query
-            .strip_prefix("corpan-pack://localhost/")
-            .ok_or("Invalid corpan-pack URL format")?;
-        let mut parts = path_part.splitn(2, '/');
-        let pack_id = parts.next().ok_or("Missing pack ID in corpan-pack URL")?;
-        let rel_path = parts.next().ok_or("Missing file path in corpan-pack URL")?;
+    // Handle corpan-pack URLs (either platform form) by reading from disk.
+    if is_pack_url(&url) {
+        let (pack_id, rel_path) =
+            parse_pack_url(&url).ok_or("Invalid corpan-pack URL format")?;
 
         eprintln!("[fetch_bytes] Pack ID: {}, Rel path: {}", pack_id, rel_path);
 

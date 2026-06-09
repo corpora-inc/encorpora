@@ -36,6 +36,8 @@ import { useProgressStore } from "@/store/progress";
 import { SystemPackInstaller } from "@/components/SystemPackInstaller";
 import { useLandingStore } from "@/store/landing";
 
+const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
+
 // In a module that always loads (e.g. App.tsx)
 if (import.meta.env.DEV) {
   (window as any).resetRatingState = () => {
@@ -193,6 +195,37 @@ export default function App() {
         console.warn("[App] phrase-pack rehydrate failed:", err);
       }
     })();
+  }, [fetchCatalog, fetchPhrasePackCatalog]);
+
+  // Keep the Home/discovery catalogs fresh while the app stays open. Each
+  // store enforces its own TTL and online checks, so this is usually a cheap
+  // no-op and becomes a real network fetch only after the catalog is stale.
+  useEffect(() => {
+    const refreshStaleCatalogs = () => {
+      if (document.visibilityState === "hidden") return;
+      void fetchCatalog();
+      void fetchPhrasePackCatalog();
+    };
+
+    const intervalId = window.setInterval(
+      refreshStaleCatalogs,
+      CATALOG_REFRESH_CHECK_INTERVAL_MS,
+    );
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        refreshStaleCatalogs();
+      }
+    };
+
+    window.addEventListener("focus", refreshStaleCatalogs);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      window.clearInterval(intervalId);
+      window.removeEventListener("focus", refreshStaleCatalogs);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
   }, [fetchCatalog, fetchPhrasePackCatalog]);
 
   // Re-check entitlements when the app returns to the foreground. Without

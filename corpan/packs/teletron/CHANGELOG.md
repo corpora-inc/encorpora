@@ -2,6 +2,40 @@
 
 ## [Unreleased]
 
+## 0.1.9 - 2026-06-09
+
+- **Reliable chat delivery (live, offline, and rejoin).** The accepted-pair link
+  that gates delivery is volatile (lost on a server redeploy, a 24h TTL lapse, or a
+  fresh join after the reconnect window) and the client never re-established it, so
+  a message was **silently dropped before it ever reached the outbox** — which is
+  why two online people saw nothing, offline messages never arrived, and re-entering
+  a conversation felt dead. Now the server signals `link-stale` instead of dropping,
+  the client queues the message and silently re-invites, an established penpal
+  (durable on-device transcript) is auto-accepted, and the queue flushes on confirm —
+  so live delivery, offline→online drain, and leave→rejoin all work. (8 new
+  end-to-end transport tests.)
+- Split outbound moderation into two narrow steps for reliability and connection.
+  A binary safety **classifier** (BLOCK / SAFE) makes one small decision a small
+  on-device model does well, and never answers or rewrites. Off-limits messages
+  are BLOCKed and obliterated via a corpus remix (the raw text is never restated).
+  Safe messages are laundered by a separate **paraphrase** that keeps the everyday
+  subject and harmless vocab — so a clean conversation stays loosely on-topic
+  instead of collapsing to noise — then naturalized into a casual line. Fixes the
+  prior single-gate's meetup/location leaks and its urge to answer questions like
+  an assistant ("you like your garage?" → an encyclopedia entry). No wordlists, no
+  examples in the prompts.
+- Pin one stable voice per conversation language so spoken replies no longer jump
+  between voices from one sentence to the next (mirrors Tutomaton's tutor voice).
+- A new incoming message now raises an unread badge on the Conversations screen
+  instead of yanking you straight into the room.
+- Stop auto-focusing the text field when a thread opens, so the keyboard no longer
+  pops up for people who would rather tap the microphone.
+- Reframe copy away from "penpal" / "private by default" / "safe penpals" toward a
+  warm "talk to the world" voice; "Tidying up your words…" becomes "Sending…".
+- Localize the entire app chrome into 50 languages (it was English-only), with
+  correct writing systems per locale — Simplified vs Traditional Chinese and
+  Shahmukhi vs Gurmukhi Punjabi are kept distinct rather than collapsed.
+
 ## 0.1.8 - 2026-06-09
 
 - Rewrite the catalog tagline and description across all 51 languages with

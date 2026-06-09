@@ -23,7 +23,9 @@ type CatalogState = {
   clearCache: () => void
 }
 
-const CACHE_DURATION = 60 * 60 * 1000 // 1 hour in milliseconds
+// Match the CDN freshness window. Packs are published continuously, so Home
+// should see new/updated catalog entries during the same app session.
+const CACHE_DURATION = 5 * 60 * 1000
 
 export const useCatalogStore = create<CatalogState>()(
   persist(
@@ -51,7 +53,7 @@ export const useCatalogStore = create<CatalogState>()(
 
         const now = Date.now()
 
-        // Use cached catalog if fresh (< 1 hour old) and not forcing refresh
+        // Use cached catalog if fresh and not forcing refresh.
         if (
           !force &&
           state.lastFetched &&

@@ -1,7 +1,7 @@
 {
   "id": "teletron",
   "name": "Teletron",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "entry": "dist/app.js",
   "entryType": "script",
   "styles": [
@@ -181,5 +181,5 @@
     "zh-Hans": "和世界各地的语言学习者一起，在生动的对话里遇见意想不到的学习时刻。",
     "zh-Hant": "和世界各地的語言學習者一起，在生動的對話裡遇見意想不到的學習時刻。"
   },
-  "devRevision": "2026-06-09T04:02:53.096Z"
+  "devRevision": "2026-06-09T06:25:24.719Z"
 }

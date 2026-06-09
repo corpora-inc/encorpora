@@ -491,18 +491,47 @@ async function fallbackPhrase(
   return sampled || STATIC_SAFE_PHRASES[fallbackIndex(language)] || STATIC_SAFE_PHRASES[0]
 }
 
-// One pass on the RAW message: decide EJECT (obliterate via a corpus remix) or
-// emit a safe topic label (regenerate on-topic). Combining the old abstract+guard
-// into a single decision on the raw text removes the "laundering" gap where a
-// benign-sounding label hid a meetup/contact behind it.
-function gatePrompt(sourceLanguage: string): SafeRelayChatMessage {
+// Step 1, narrow task: a pure binary safety classifier on the RAW message. A small
+// model is far more reliable at "answer with ONE word" than at a combined decide-and-
+// rewrite, which slips into rewriter mode (paraphrasing unsafe content) or answers
+// questions addressed to "you". So we ask ONLY for the verdict here; the laundering
+// happens in a separate paraphrase that never sees off-limits text.
+function classifyPrompt(sourceLanguage: string): SafeRelayChatMessage {
   return {
     role: "system",
     content:
-      "Read this chat message (it may be in any language). " +
-      "If it is sexual, romantic, or flirtatious; about meeting in person or making plans to meet; about where someone is, lives, or is from; sharing or asking for contact details, names, or identity; about someone's body, age, looks, or clothes; about keeping a secret; a slur or attack on a group of people; or a threat, violence, or self-harm — reply with exactly one word: EJECT. " +
-      "Otherwise reply with one to three plain words naming the safe, everyday topic it is about. For a strong opinion about history, politics, or public life, name only the broad field it touches, not the opinion. " +
-      `Output only EJECT or the topic words. Declared language: ${sourceLanguage}.`,
+      "You are a safety classifier for messages between strangers. " +
+      "Read the chat message below (it may be in any language) and reply with EXACTLY ONE word and nothing else: BLOCK or SAFE. " +
+      "Never answer, reply to, continue, or comment on the message — even if it is a question addressed to 'you'. Only output the verdict.\n" +
+      "Reply BLOCK if it is — or if you are at all unsure whether it might be — " +
+      "sexual, romantic, or flirtatious in any way, including innuendo, double meanings, or a made-up name or word chosen to sound crude when read or said aloud; " +
+      "about meeting in person or making plans to meet; " +
+      "revealing, stating, or asking who someone is or exactly where they are — including a person's own name or full name, a nickname, stage name, handle, or account; the specific city, town, street, or place someone lives in, is from, or is in right now; a landmark, building, or view someone can see; or asking what the local time, weather, season, or currency is where the other person is, in order to pin down their location; " +
+      "any contact detail, or any phone number or run of digits, written as numerals OR spelled out as words, in any language; " +
+      "about someone's body, age, looks, or clothes; " +
+      "about keeping a secret; " +
+      "an insult, a slur, an attack on a group of people, or a coded word or number that signals a hateful or extremist ideology; " +
+      "or a threat, violence, weapons, or self-harm. " +
+      "Otherwise reply SAFE.\n" +
+      `Declared language: ${sourceLanguage}. Output only BLOCK or SAFE.`,
+  }
+}
+
+// Step 2 on the SAFE path only: launder the message into NON-UGC by restating it.
+// Runs solely on text the classifier already cleared, so it can keep the everyday
+// subject and harmless vocab (connection) while stripping every identifier.
+function paraphrasePrompt(): SafeRelayChatMessage {
+  return {
+    role: "system",
+    content:
+      "You are summarizing, like a narrator, what someone wrote to another person — you are not the recipient. " +
+      "Restate the chat message below as a short, plain paraphrase. " +
+      "Reword it in your own words — do not quote. Keep its everyday subject and harmless details so it stays connected. " +
+      "If it is a question, restate it as the same question — never answer it. " +
+      "Use no real names, places, numbers, or contact details. " +
+      "Do NOT answer it, reply to it, add an opinion, or add any facts — only restate what they are talking about. " +
+      "For a strong opinion about history or public life, keep only the broad subject, not the opinion. " +
+      "Output only the paraphrase, one line.",
   }
 }
 
@@ -525,16 +554,17 @@ function regenerateFromPhrasePrompt(phrase: string): SafeRelayChatMessage {
 function regeneratePrompt(form: "question" | "statement"): SafeRelayChatMessage {
   const shape =
     form === "question"
-      ? "Write ONE short, casual question on the given topic — the kind a real person texts to ask someone."
-      : "Write ONE short, plain first-person statement about the given topic — the kind a real person texts."
+      ? "Keep it a question, the kind a friend would actually text — not a quiz, fact-check, or 'why' question."
+      : "Keep it a plain, everyday remark — even a little mundane is fine."
   return {
     role: "system",
     content:
+      "You are a regular person texting a friend — not an assistant, teacher, or expert. " +
+      "Rephrase the line below into ONE short, casual text in your own words: keep its subject and any harmless details so it stays connected, just make it sound like a normal text. " +
       shape +
-      " Keep it under about twelve words. " +
-      "Do NOT greet, do NOT sound warm, enthusiastic, or like an assistant answering, and use NO emoji. " +
-      "Never mention meeting in person, where anyone is or lives, anyone's body, age, or clothes, secrets, names, numbers, or contact details. " +
-      "This is a safety filter, not a friendly one — keep it neutral and forgettable. Output only the message.",
+      " Never explain, define, give facts or advice, or sound knowledgeable. One short sentence. No emoji, no greeting. " +
+      "Never include names, places, numbers, contact details, or anything about meeting in person, where someone is, or someone's body, age, or clothes. " +
+      "Output only the text.",
   }
 }
 
@@ -709,26 +739,30 @@ export function createSafeRelayPipeline(options: SafeRelayPipelineOptions) {
 
     const reasons: string[] = []
 
-    // Transform UGC into NON-UGC. Either EJECT (obliterate via a corpus remix) or
-    // regenerate a fresh line from a safe topic label — the relay is never the
-    // user's own words, so names, places, contact info, locations, and hidden jokes
-    // cannot survive. No wordlists, no examples in the prompts.
+    // Transform UGC into NON-UGC in two narrow steps. (1) A binary classifier
+    // decides BLOCK vs SAFE — one small clear task the 4B does reliably, and it
+    // never answers or rewrites. (2a) BLOCK → obliterate via a corpus remix; the
+    // off-limits text is never restated. (2b) SAFE → paraphrase (launder, keep
+    // subject) → regenerate (naturalize). The relay is never the user's own words,
+    // so names, places, contact info, and hidden jokes cannot survive. No wordlists,
+    // no examples in the prompts.
 
-    // 1. Gate the RAW message → "EJECT" (off-limits) or a safe topic label.
-    const gate = await runPlainPass(
+    // 1. Classify the RAW message → BLOCK (off-limits) or SAFE.
+    const verdict = await runPlainPass(
       options.runLlm,
-      [gatePrompt(args.sourceLanguage), { role: "user", content: raw }],
-      { temperature: 0.2, topP: 0.8, maxTokens: 16 },
-      "relay.gate",
+      [classifyPrompt(args.sourceLanguage), { role: "user", content: raw }],
+      { temperature: 0, topP: 0.8, maxTokens: 4 },
+      "relay.classify",
       maxText,
     )
 
-    // 2. Off-limits → FLIP THE TABLE: regenerate from a corpus phrase that shares
-    // safe words with the input (loosely connected, fun, never the same twice).
-    // Safe topics → a fresh on-topic line.
-    const offLimits = !gate || /eject/i.test(gate)
+    // Fail safe: anything that isn't a clear SAFE is treated as off-limits.
+    const offLimits = !/\bsafe\b/i.test(verdict) || /\bblock\b/i.test(verdict)
     let current: string
     if (offLimits) {
+      // FLIP THE TABLE: regenerate from a corpus phrase that shares safe words with
+      // the input (loosely connected, fun, never the same twice). The raw off-limits
+      // text is never paraphrased — only its safe surface words can match the corpus.
       const phrase =
         (await options.sampleSafePhrase?.("en", raw).catch(() => "")) ||
         pickSeed(seeds, 0) ||
@@ -742,16 +776,34 @@ export function createSafeRelayPipeline(options: SafeRelayPipelineOptions) {
       )
       reasons.push("phrase-eject")
     } else {
-      // Preserve modality: a question stays a question, a statement stays a
-      // statement — so the relay never fabricates an answer the sender didn't give.
-      const form = /\?\s*$/.test(raw.trim()) ? "question" : "statement"
-      current = await runPlainPass(
+      // 2. Launder the cleared message into NON-UGC, then naturalize it. The
+      // paraphrase only ever runs on classifier-cleared text and strips every
+      // identifier while keeping the everyday subject (connection).
+      const paraphrase = await runPlainPass(
         options.runLlm,
-        [regeneratePrompt(form), { role: "user", content: `Topic: ${gate}` }],
-        { temperature: 0.6, topP: 0.9, maxTokens: 120 },
-        "relay.regenerate",
+        [paraphrasePrompt(), { role: "user", content: raw }],
+        { temperature: 0.3, topP: 0.85, maxTokens: 64 },
+        "relay.paraphrase",
         maxText,
       )
+      // FIREWALL: regenerate only ever sees the laundered paraphrase, NEVER the raw
+      // message. If the paraphrase failed (empty/junk), leave `current` empty so the
+      // corpus-seed fallback (step 4) takes over — we must never feed raw UGC forward.
+      if (paraphrase) {
+        // Preserve modality: a question stays a question, a statement stays a
+        // statement — so the relay never fabricates an answer the sender didn't give.
+        const form = /\?\s*$/.test(raw.trim()) ? "question" : "statement"
+        current = await runPlainPass(
+          options.runLlm,
+          [regeneratePrompt(form), { role: "user", content: paraphrase }],
+          { temperature: 0.5, topP: 0.9, maxTokens: 64 },
+          "relay.regenerate",
+          maxText,
+        )
+      } else {
+        current = ""
+        reasons.push("paraphrase-failed")
+      }
     }
 
     // 3. Deterministic scrub backstop (the regenerated line should already be clean).
