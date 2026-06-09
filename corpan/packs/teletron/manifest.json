@@ -76,7 +76,7 @@
     "zh-Hant": "Teletron"
   },
   "tagline": {
-    "en": "Talk to someone new. Local AI keeps the conversation safe.",
+    "en": "Find a safe penpal. Quietly looked after on your device.",
     "es": "Habla con alguien nuevo. La IA local ayuda a mantener segura la conversación.",
     "fr": "Parlez avec quelqu'un de nouveau. L'IA locale aide à sécuriser la conversation.",
     "de": "Sprich mit jemand Neuem. Lokale KI hilft, das Gespräch sicher zu halten.",
@@ -93,7 +93,7 @@
     "da": "Et privat venteværelse som standard til rigtige samtaler med andre sprogbrugere, hvor lokal AI på begge enheder hjælper med at gøre beskeder trygge og oversatte.",
     "de": "Ein standardmäßig privater Warteraum für echte Gespräche mit anderen Lernenden, bei dem lokale KI auf beiden Geräten Nachrichten entschärft und übersetzt.",
     "el": "Μια ιδιωτική από προεπιλογή αίθουσα αναμονής για πραγματικές συνομιλίες με άλλους μαθητές, όπου τοπική AI και στις δύο συσκευές βοηθά στην εξομάλυνση και μετάφραση των μηνυμάτων.",
-    "en": "A private-by-default waiting room for real conversations with other learners, softened and translated by local AI on both devices.",
+    "en": "A private-by-default place to find a safe penpal — real conversations with other learners, drawn from content inspired by real people. Messages are translated and kept kind right on your device.",
     "es": "Una sala de espera privada por defecto para conversaciones reales con otros estudiantes, suavizadas y traducidas por IA local en ambos dispositivos.",
     "fa": "یک اتاق انتظار پیش‌فرض خصوصی برای گفت‌وگوهای واقعی با زبان‌آموزان دیگر، که AI محلی روی هر دو دستگاه به نرم‌سازی و ترجمهٔ پیام‌ها کمک می‌کند.",
     "fi": "Oletuksena yksityinen odotushuone oikeisiin keskusteluihin muiden oppijoiden kanssa; paikallinen AI molemmissa laitteissa pehmentää ja kääntää viestejä.",
@@ -137,5 +137,5 @@
     "zh-Hans": "默认私密的等候室，让你和其他学习者真实聊天；双方设备上的本地 AI 会帮助润色并翻译消息。",
     "zh-Hant": "預設私密的等候室，讓你和其他學習者真實聊天；雙方裝置上的本機 AI 會協助柔化並翻譯訊息。"
   },
-  "devRevision": "2026-06-08T19:12:11.713Z"
+  "devRevision": "2026-06-09T00:19:17.162Z"
 }

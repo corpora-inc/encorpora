@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+- Reframe Teletron's copy as warm "safe penpals" rather than "AI-mediated /
+  local AI relay" jargon, and move all chrome through a new `src/i18n.ts`
+  (English ships now; locales fill in via `tools/gen_i18n.py`, whose targets
+  come from the manifest's `displayName`). One honest on-device line is kept in
+  the privacy section.
 - Rebuild Teletron as a messaging app: the home is now an **inbox** of
   conversations (unread badges, online dots) instead of a lobby with one
   embedded thread. Leaving a thread (**Back**) or **Exit to Corpan** keeps the
