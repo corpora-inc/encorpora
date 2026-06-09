@@ -1,5 +1,6 @@
 {
   "id": "corpan_city",
+  "channel": "preview",
   "name": "Corpan City",
   "version": "0.1.7",
   "entry": "dist/app.js",
