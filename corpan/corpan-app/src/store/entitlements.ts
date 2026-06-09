@@ -29,6 +29,13 @@ type EntitlementState = {
   iapAvailable: boolean
   /** Anonymous per-install subject used for server-side IAP attribution. */
   subjectId: string | null
+  /**
+   * Stable per-install purchase token (UUID) passed to StoreKit `appAccountToken`
+   * on every purchase so renewals stay attributed to the same subject. PERSISTED
+   * (it must survive app restarts — Apple echoes it back only on the INITIAL
+   * transaction, never on renewals; our ledger keys renewal credit on it).
+   */
+  appAccountToken: string | null
   /** Short-lived first-party entitlement token. IN-MEMORY ONLY. */
   entitlementToken: string | null
 
@@ -39,6 +46,7 @@ type EntitlementState = {
   setLastRefreshed: (ts: number) => void
   setPlatform: (platform: string) => void
   setSubjectId: (subjectId: string) => void
+  setAppAccountToken: (token: string) => void
   setEntitlementToken: (token: string | null) => void
 
   /** Clear all entitlements (for testing/debug) */
@@ -63,6 +71,7 @@ export const useEntitlementStore = create<EntitlementState>()(
       platform: null,
       iapAvailable: false,
       subjectId: null,
+      appAccountToken: null,
       entitlementToken: null,
 
       setPlatform: (platform) => {
@@ -94,6 +103,10 @@ export const useEntitlementStore = create<EntitlementState>()(
         set({ subjectId })
       },
 
+      setAppAccountToken: (appAccountToken) => {
+        set({ appAccountToken })
+      },
+
       setEntitlementToken: (token) => {
         set({ entitlementToken: token })
       },
@@ -117,6 +130,7 @@ export const useEntitlementStore = create<EntitlementState>()(
         platform: state.platform,
         iapAvailable: state.iapAvailable,
         subjectId: state.subjectId,
+        appAccountToken: state.appAccountToken,
       }),
     }
   )

@@ -28,6 +28,12 @@ export type PurchaseResult = {
   platform: PurchasePlatform
   /** "Production" / "Sandbox" / "Xcode" — emitted by the iOS plugin (iOS 16+) */
   environment?: string
+  /** `appAccountToken` echoed back by StoreKit on the initial transaction (iOS/macOS). */
+  appAccountToken?: string
+  /** Offer id applied to this transaction, when the platform exposes it. */
+  offerId?: string
+  /** Offer type for the applied offer, when the platform exposes it. */
+  offerType?: string
 }
 
 export type PurchaseVerificationResponse = {
@@ -42,21 +48,65 @@ export type PurchaseVerificationResponse = {
   entitlementToken?: string
   affiliateAttribution?: {
     code?: string
+    partnerId?: string | null
     locked?: boolean
+    verified?: boolean
+    discountApplied?: boolean
+    ledgerEventId?: string
     message?: string
   }
   error?: string
 }
 
-export type AffiliateResolveResponse =
+/**
+ * Platform redemption mechanism the client must route to, decided SERVER-SIDE by
+ * `/code/resolve`. Mirrors the backend `PURCHASE_ACTIONS` (codes.js):
+ *
+ *  - `normal`                      → full-price purchase; attach the code/token so
+ *                                    the server records attribution (affiliate or
+ *                                    unknown free-text).
+ *  - `apple_offer_code`            → present Apple's offer-code redeem sheet.
+ *  - `google_promo_code`           → open Play's redeem flow (usually a URL).
+ *  - `android_subscription_offer`  → purchase with the resolved offer's offerToken.
+ */
+export type CodePurchaseActionType =
+  | "normal"
+  | "apple_offer_code"
+  | "google_promo_code"
+  | "android_subscription_offer"
+
+export type CodeResolveResponse =
   | {
       status: "ok"
       code: string
+      /** Registry classification: affiliate | affiliate+offer | appleOfferCode | playPromo | playOffer. */
+      kind: string
+      /** True only for a registry-backed partner code (revenue-share attribution). */
+      verified: boolean
+      purchaseAction: { type: CodePurchaseActionType }
       partnerName?: string
-      discountTier?: "none" | "pct10" | "pct20" | "pct50" | string
-      message?: string
+      /** Human, server-localized, e.g. "50% off first year". Present for discount kinds. */
+      discountLabel?: string
+      /** Apple offer id (REDEEM_APPLE_SHEET); informational. */
+      appleOfferId?: string | null
+      /** Apple redeem URL fallback when the in-app sheet is unavailable. */
+      appleRedeemUrl?: string
+      /** Android offer descriptor — client re-reads the offerToken from getProducts. */
+      offer?: {
+        playOfferId?: string | null
+        playBasePlanId?: string | null
+        offerToken?: string | null
+      }
+      /** A KNOWN code that is currently expired/paused (treated as free-text affiliate). */
+      inactiveKnown?: boolean
+      /** Short-lived signed token binding {code, subjectId, kind}; required for any attribution write. */
+      resolutionToken: string
+      expiresInSec?: number
     }
+  // Format/validation rejection (4xx) — show inline, do NOT proceed with this code.
   | { status: "invalid"; code?: string; error: string }
+  // Lookup/network failure — NO fail-open. Let the user retry or continue WITHOUT a code.
+  | { status: "error"; code?: string; error: string }
 
 export type EntitlementTokenResponse = {
   status: "ok" | "failed"
@@ -147,6 +197,47 @@ export function getCorpanSubjectId(): string {
   }
 }
 
+const APP_ACCOUNT_TOKEN_KEY = "corpan:app-account-token:v1"
+
+/**
+ * Stable per-install `appAccountToken` (UUID) for StoreKit purchases.
+ *
+ * This is THE durable attribution key on Apple: it's echoed back on the initial
+ * transaction and persists across renewals, so renewals stay credited to the
+ * same subject via our ledger. Generated once and persisted (localStorage +
+ * the entitlement store), then reused for EVERY purchase.
+ *
+ * Seeded from the `subjectId` so the two line up (the backend's renewal
+ * fallback reads the attribution lock directly when `appAccountToken ===
+ * subjectId`), but stored independently so a later subjectId change can't
+ * silently break renewal crediting of an already-locked purchase.
+ */
+export function getAppAccountToken(): string {
+  const store = useEntitlementStore.getState()
+  if (store.appAccountToken && UUID_RE.test(store.appAccountToken)) {
+    return store.appAccountToken
+  }
+  try {
+    const saved = localStorage.getItem(APP_ACCOUNT_TOKEN_KEY)
+    if (saved && UUID_RE.test(saved)) {
+      store.setAppAccountToken(saved)
+      return saved
+    }
+    // Seed from the subjectId (itself a UUID) so the keys align; fall back to a
+    // fresh UUID only if the subjectId is somehow unusable.
+    const subjectId = getCorpanSubjectId()
+    const token = UUID_RE.test(subjectId) ? subjectId : randomId()
+    localStorage.setItem(APP_ACCOUNT_TOKEN_KEY, token)
+    store.setAppAccountToken(token)
+    return token
+  } catch {
+    const subjectId = getCorpanSubjectId()
+    const token = UUID_RE.test(subjectId) ? subjectId : randomId()
+    store.setAppAccountToken(token)
+    return token
+  }
+}
+
 export function normalizeAffiliateCode(raw: string): string {
   return raw.trim().toUpperCase().replace(/\s+/g, "")
 }
@@ -201,6 +292,8 @@ type RawPricingPhase = {
 
 type RawSubscriptionOffer = {
   offerToken?: string
+  offerId?: string
+  basePlanId?: string
   pricingPhases?: RawPricingPhase[]
 }
 
@@ -296,6 +389,47 @@ export async function fetchProducts(
   return { ok: false, error: lastError || "App Store unreachable" }
 }
 
+/**
+ * Re-read the Android subscription offerToken for a product, matched by the
+ * resolved offer's `playOfferId` / `playBasePlanId`. The server returns offer
+ * IDs (stable), never the token (device/session-specific), so the client must
+ * re-fetch `getProducts` and select the matching offer's `offerToken`.
+ *
+ * Returns `undefined` when not on Android, the plugin is unavailable, or no
+ * matching offer exists (caller falls back to a full-price purchase).
+ */
+export async function findAndroidOfferToken(
+  productId: string,
+  offer: { playOfferId?: string | null; playBasePlanId?: string | null } | undefined | null
+): Promise<string | undefined> {
+  if (!isTauriRuntime() || !offer) return undefined
+  try {
+    const result = await invoke<{ products: RawProduct[] }>("plugin:iap|get_products", {
+      payload: { productIds: [productId], productType: "subs" },
+    })
+    const product = (result.products ?? []).find((p) => p.productId === productId)
+    const offers = product?.subscriptionOfferDetails ?? []
+    if (offers.length === 0) return undefined
+
+    // Prefer an exact offerId match, then basePlanId, so a paid-discount offer
+    // is selected over the bare base plan.
+    const wantOfferId = offer.playOfferId ?? undefined
+    const wantBasePlan = offer.playBasePlanId ?? undefined
+    const byOfferId = wantOfferId
+      ? offers.find((o) => o.offerId === wantOfferId)
+      : undefined
+    if (byOfferId?.offerToken) return byOfferId.offerToken
+    const byBasePlan = wantBasePlan
+      ? offers.find((o) => o.basePlanId === wantBasePlan)
+      : undefined
+    if (byBasePlan?.offerToken) return byBasePlan.offerToken
+    return undefined
+  } catch (err) {
+    console.warn("[purchase] findAndroidOfferToken failed:", err)
+    return undefined
+  }
+}
+
 /** Wrap a promise with a timeout that rejects with TimeoutError after ms. */
 class TimeoutError extends Error {
   constructor(ms: number) {
@@ -388,6 +522,7 @@ export type PurchaseOutcome =
 
 export type PurchaseProductOptions = {
   subjectId?: string
+  /** Android subscription offer token (selects a specific paid-discount offer). */
   offerToken?: string
 }
 
@@ -411,8 +546,9 @@ export async function purchaseProduct(
     const subjectId = options.subjectId ?? getCorpanSubjectId()
     const payload: Record<string, unknown> = { productId, productType }
     if (options.offerToken) payload.offerToken = options.offerToken
-    if ((platform === "ios" || platform === "macos") && subjectId) {
-      payload.appAccountToken = subjectId
+    if (platform === "ios" || platform === "macos") {
+      // Stable per-install UUID → keeps renewals attributed (see getAppAccountToken).
+      payload.appAccountToken = getAppAccountToken()
     } else if (platform === "android" && subjectId) {
       payload.obfuscatedAccountId = await sha256Hex(subjectId)
     }
@@ -426,6 +562,9 @@ export async function purchaseProduct(
         jwsRepresentation?: string
         purchaseToken?: string
         environment?: string
+        appAccountToken?: string
+        offerId?: string
+        offerType?: string
       }>("plugin:iap|purchase", { payload }),
       PURCHASE_TIMEOUT_MS
     )
@@ -444,6 +583,9 @@ export async function purchaseProduct(
         receipt,
         platform,
         environment: purchase.environment,
+        appAccountToken: purchase.appAccountToken,
+        offerId: purchase.offerId,
+        offerType: purchase.offerType,
       },
     }
   } catch (err) {
@@ -621,7 +763,12 @@ const getVerifyUrl = () => {
 export async function verifyPurchase(
   purchase: PurchaseResult,
   packId?: string,
-  options: { subjectId?: string; affiliateCode?: string } = {}
+  options: {
+    subjectId?: string
+    affiliateCode?: string
+    /** Signed token from `/code/resolve`; required for the server to record attribution. */
+    resolutionToken?: string
+  } = {}
 ): Promise<PurchaseVerificationResponse> {
   const urlBase = getVerifyUrl()
   if (!urlBase) {
@@ -645,11 +792,22 @@ export async function verifyPurchase(
     }
 
     if (packId) body.packId = packId
+
+    // `appAccountToken` is the durable attribution key for renewals (iOS/macOS):
+    // it's echoed back on the initial transaction and rides every renewal in our
+    // ledger. Send it so the backend's reverse-map is seeded.
+    if (purchase.platform === "ios" || purchase.platform === "macos") {
+      body.appAccountToken = purchase.appAccountToken ?? getAppAccountToken()
+    }
+
     const affiliateCode = options.affiliateCode
       ? normalizeAffiliateCode(options.affiliateCode)
       : ""
     if (affiliateCode && isAffiliateCodeFormatValid(affiliateCode)) {
       body.affiliateCode = affiliateCode
+      // The resolutionToken is only meaningful alongside a code; the server
+      // requires it to write a VERIFIED partner attribution (else: unverified).
+      if (options.resolutionToken) body.resolutionToken = options.resolutionToken
     }
 
     const res = await fetch(url, {
@@ -682,42 +840,152 @@ export async function verifyPurchase(
   }
 }
 
-export async function resolveAffiliateCode(raw: string): Promise<AffiliateResolveResponse> {
+/**
+ * Resolve an affiliate / offer code SERVER-SIDE via `POST /code/resolve`.
+ *
+ * The client never classifies — it sends the raw code and acts on the returned
+ * `kind` + `purchaseAction.type`. There is NO fail-open: a `status:"error"`
+ * (HTTP 502) or any network failure returns an explicit `error` state so the UI
+ * can let the user retry or continue WITHOUT a code. We never claim a code is
+ * "applied" just because the check was unreachable.
+ *
+ * A 4xx format/validation rejection maps to `status:"invalid"` (show inline,
+ * don't proceed with this code).
+ */
+export async function resolveCode(raw: string): Promise<CodeResolveResponse> {
   const code = normalizeAffiliateCode(raw)
   if (!code) return { status: "invalid", error: "Enter a code." }
   if (!isAffiliateCodeFormatValid(code)) {
     return { status: "invalid", code, error: "Use letters, numbers, dashes, or underscores." }
   }
   const urlBase = getVerifyUrl()
+  if (!urlBase) {
+    return { status: "error", code, error: "Couldn't check the code." }
+  }
   try {
-    const res = await fetch(urlBase.replace(/\/+$/, "") + "/affiliate/resolve", {
+    const platform = await getPlatform()
+    const res = await fetch(urlBase.replace(/\/+$/, "") + "/code/resolve", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ code, subjectId: getCorpanSubjectId() }),
+      body: JSON.stringify({
+        code,
+        subjectId: getCorpanSubjectId(),
+        platform,
+        productId: undefined,
+      }),
     })
     if (!res.ok) {
       const data = await res.json().catch(() => ({}))
-      if (res.status === 404) {
+      // 4xx → a real validation rejection (bad format / missing field). 5xx /
+      // 502 → lookup failure: NO fail-open, surface as a retryable error.
+      if (res.status >= 400 && res.status < 500) {
         return {
-          status: "ok",
+          status: "invalid",
           code,
-          message: "Code will be sent with your purchase when affiliate lookup is available.",
+          error: (data as any).error ?? `Code check failed (${res.status})`,
         }
       }
+      console.error("[purchase] resolveCode lookup failed:", res.status, (data as any).error)
       return {
-        status: "invalid",
+        status: "error",
         code,
-        error: (data as any).error ?? `Code check failed (${res.status})`,
+        error: (data as any).error ?? `Couldn't check the code (${res.status}).`,
       }
     }
-    return (await res.json()) as AffiliateResolveResponse
-  } catch {
+    const data = (await res.json()) as CodeResolveResponse
+    // The server returns status:"error" with HTTP 502 on a lookup failure; if it
+    // ever returns it with 200, honor it as an error (never auto-promote).
+    return data
+  } catch (err) {
+    console.error("[purchase] resolveCode network error:", err)
     return {
-      status: "ok",
+      status: "error",
       code,
-      message: "Code will be sent with your purchase when the server is available.",
+      error: err instanceof Error ? err.message : "Couldn't check the code.",
     }
   }
+}
+
+/**
+ * Present the native offer-code / promo-code redemption flow (iOS sheet or a
+ * Play / Apple redeem URL). The sheet only *presents* — it never reports whether
+ * a code was redeemed. The caller MUST follow up with {@link syncAfterRedemption}
+ * once the user returns, to observe the discounted entitlement + attribution.
+ */
+export async function redeemOfferCode(
+  code?: string
+): Promise<{ outcome: "presented" | "useUrl" | "unsupported"; url?: string; message?: string }> {
+  if (!isTauriRuntime()) {
+    return { outcome: "unsupported", message: "IAP unavailable in this environment" }
+  }
+  try {
+    return await invoke<{
+      outcome: "presented" | "useUrl" | "unsupported"
+      url?: string
+      message?: string
+    }>("plugin:iap|redeem_offer_code", { payload: { code } })
+  } catch (err) {
+    console.error("[purchase] redeemOfferCode error:", err)
+    return {
+      outcome: "unsupported",
+      message: err instanceof Error ? err.message : String(err),
+    }
+  }
+}
+
+/**
+ * After launching a redemption (Apple sheet / Play or Apple redeem URL), sync the
+ * new entitlement + attribution once the user returns. Restores purchases, runs
+ * `verifyPurchase` (carrying the `resolutionToken` so attribution is recorded on
+ * the redemption path that has no Subscribe button), and refreshes the
+ * entitlement token. Returns whether any active subscription was observed.
+ */
+export async function syncAfterRedemption(options: {
+  affiliateCode?: string
+  resolutionToken?: string
+} = {}): Promise<{ observedActive: boolean }> {
+  console.info("[purchase] syncAfterRedemption START")
+  const subjectId = getCorpanSubjectId()
+  let observedActive = false
+
+  let restored: PurchaseResult[] = []
+  try {
+    restored = await restorePurchases()
+  } catch (err) {
+    console.warn("[purchase] syncAfterRedemption restore failed:", err)
+  }
+
+  const store = useEntitlementStore.getState()
+  for (const purchase of restored) {
+    if (purchase.productId !== SUBSCRIPTION_MONTHLY && purchase.productId !== SUBSCRIPTION_ANNUAL) {
+      continue
+    }
+    const verification = await verifyPurchase(purchase, undefined, {
+      subjectId,
+      // Attach code + token so the redeemed offer is attributed (the redemption
+      // path never went through the Subscribe button / purchaseAndVerify).
+      affiliateCode: options.affiliateCode,
+      resolutionToken: options.resolutionToken,
+    })
+    if (verification.status === "verified" && verification.subscriptionActive) {
+      observedActive = true
+      const plan: SubscriptionPlan =
+        purchase.productId === SUBSCRIPTION_ANNUAL ? "annual" : "monthly"
+      store.setSubscription({
+        active: true,
+        plan,
+        expiresAt: verification.expiresAt ?? null,
+        autoRenew: true,
+      })
+    }
+  }
+
+  // Pick up entitlement even if the restore didn't surface it (platform cache).
+  await refreshEntitlements()
+  await refreshEntitlementToken()
+  store.setLastRefreshed(Date.now())
+  console.info("[purchase] syncAfterRedemption DONE — observedActive=", observedActive)
+  return { observedActive }
 }
 
 export async function refreshEntitlementToken(): Promise<EntitlementTokenResponse> {
@@ -772,7 +1040,7 @@ export async function purchaseAndVerify(
   productId: string,
   packId?: string,
   productType: "subs" | "inapp" = "inapp",
-  options: { affiliateCode?: string; offerToken?: string } = {}
+  options: { affiliateCode?: string; offerToken?: string; resolutionToken?: string } = {}
 ): Promise<{
   signedUrl?: string
   error?: { code: PurchaseFailureKind; message: string }
@@ -824,6 +1092,7 @@ export async function purchaseAndVerify(
   const verification = await verifyPurchase(purchase, packId, {
     subjectId,
     affiliateCode: options.affiliateCode,
+    resolutionToken: options.resolutionToken,
   })
   if (verification.status !== "verified") {
     console.warn(

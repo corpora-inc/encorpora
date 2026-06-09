@@ -11,14 +11,17 @@ import {
   fetchProducts,
   purchaseAndVerify,
   manageSubscription,
+  findAndroidOfferToken,
   getProductStatus,
   isAffiliateCodeFormatValid,
   normalizeAffiliateCode,
-  resolveAffiliateCode,
+  resolveCode,
+  redeemOfferCode,
+  syncAfterRedemption,
   restoreAndSync,
   SUBSCRIPTION_MONTHLY,
   SUBSCRIPTION_ANNUAL,
-  type AffiliateResolveResponse,
+  type CodeResolveResponse,
   type StoreProduct,
 } from "@/contentPacks/purchase"
 
@@ -67,17 +70,21 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   const [isPurchasing, setIsPurchasing] = useState(false)
   const [isRestoring, setIsRestoring] = useState(false)
   const [restoreMessage, setRestoreMessage] = useState<string | null>(null)
-  // Affiliate / offer code entry is HIDDEN until the 0.17.4 codes feature
-  // (backend server-side resolve + in-app StoreKit/Billing redemption) lands —
-  // shipping a field that only records an unverified string is worse than no
-  // field. See corpan/infra/AFFILIATE_CODES_PLAN.md. Flip true to re-enable.
-  const SHOW_AFFILIATE_CODE_FIELD = false
+  // Affiliate / offer code entry — ENABLED on the 0.17.4 codes branch
+  // (server-side resolve + in-app StoreKit/Billing redemption). Stays HIDDEN on
+  // f17 / 0.17.3 where the field would only record an unverified string. See
+  // corpan/infra/AFFILIATE_CODES_PLAN.md.
+  const SHOW_AFFILIATE_CODE_FIELD = true
   const [affiliateCode, setAffiliateCode] = useState("")
+  // The full server resolution is kept so handleSubscribe can branch on
+  // `purchaseAction.type`. NO fail-open: an unreachable check is `error`, never
+  // `resolved` — we never claim a code is applied unless the server said so.
   const [affiliateStatus, setAffiliateStatus] = useState<
     | { kind: "idle" }
     | { kind: "checking"; code: string }
-    | { kind: "valid"; code: string; message?: string }
+    | { kind: "resolved"; code: string; resolution: Extract<CodeResolveResponse, { status: "ok" }> }
     | { kind: "invalid"; code: string; error: string }
+    | { kind: "error"; code: string; error: string }
   >({ kind: "idle" })
 
   const storeLabel =
@@ -152,57 +159,138 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
     }
     setAffiliateStatus({ kind: "checking", code })
     const timer = window.setTimeout(() => {
-      void resolveAffiliateCode(code).then((result: AffiliateResolveResponse) => {
+      void resolveCode(code).then((result: CodeResolveResponse) => {
         if (normalizeAffiliateCode(affiliateCode) !== code) return
         if (result.status === "ok") {
-          setAffiliateStatus({
-            kind: "valid",
-            code: result.code,
-            message: result.message,
-          })
+          setAffiliateStatus({ kind: "resolved", code: result.code, resolution: result })
+        } else if (result.status === "invalid") {
+          setAffiliateStatus({ kind: "invalid", code, error: result.error })
         } else {
-          setAffiliateStatus({
-            kind: "invalid",
-            code,
-            error: result.error,
-          })
+          // NO fail-open: a lookup/network error does NOT become "applied".
+          setAffiliateStatus({ kind: "error", code, error: result.error })
         }
       })
     }, 450)
     return () => window.clearTimeout(timer)
   }, [affiliateCode, t])
 
+  /**
+   * Map the result of `purchaseAndVerify` onto the paywall state. Shared by the
+   * normal and offer-token (Android paid-discount) branches.
+   */
+  const applyPurchaseResult = async (
+    result: Awaited<ReturnType<typeof purchaseAndVerify>>
+  ): Promise<boolean> => {
+    if (result.cancelled) return false
+    if (result.alreadyOwned) {
+      await refresh()
+      return true
+    }
+    if (result.pending) {
+      setState({ kind: "pending" })
+      return true
+    }
+    if (result.timeout) {
+      setState({ kind: "store_unreachable", error: "TIMEOUT: Purchase timed out. Please try again." })
+      return true
+    }
+    if (result.error) {
+      setState({ kind: "store_unreachable", error: `${result.error.code}: ${result.error.message}` })
+      return true
+    }
+    await refresh()
+    return true
+  }
+
+  /**
+   * Subscribe. The branch is driven SERVER-SIDE by `purchaseAction.type` from
+   * `/code/resolve` — the client only routes. (Plan §2.2 / §5.)
+   *
+   *   no code / format-invalid    → normal purchase, no token.
+   *   normal                      → normal purchase + affiliateCode + resolutionToken.
+   *   apple_offer_code (iOS)      → present Apple sheet, then restore-on-return + verify.
+   *   google_promo_code (Android) → open Play redeem URL, then restore-on-return + verify.
+   *   android_subscription_offer  → purchase with the resolved offer's offerToken.
+   *
+   * In every store-offer branch that is ALSO an affiliate kind, the
+   * affiliateCode + resolutionToken still ride along so attribution is recorded
+   * alongside the discount.
+   */
   const handleSubscribe = async () => {
     if (state.kind !== "ready") return
     const productId =
       selectedPlan === "annual" ? SUBSCRIPTION_ANNUAL : SUBSCRIPTION_MONTHLY
     setIsPurchasing(true)
     try {
-      const code = normalizeAffiliateCode(affiliateCode)
-      const result = await purchaseAndVerify(productId, undefined, "subs", {
-        affiliateCode: isAffiliateCodeFormatValid(code) ? code : undefined,
-      })
-      if (result.cancelled) return
-      if (result.alreadyOwned) {
+      const resolved =
+        affiliateStatus.kind === "resolved" ? affiliateStatus.resolution : null
+      const code = resolved?.code
+      const resolutionToken = resolved?.resolutionToken
+      const action = resolved?.purchaseAction.type ?? "normal"
+
+      // --- Apple offer-code redemption sheet (iOS/macOS) ---
+      if (action === "apple_offer_code") {
+        const res = await redeemOfferCode(code)
+        if (res.outcome === "useUrl" && res.url) {
+          await openUrl(res.url)
+        } else if (res.outcome === "unsupported") {
+          // No in-app sheet path — fall through to a normal full-price purchase
+          // so the user can still subscribe (attribution still attaches).
+          console.warn("[subscribe] offer-code redemption unsupported:", res.message)
+          const result = await purchaseAndVerify(productId, undefined, "subs", {
+            affiliateCode: code,
+            resolutionToken,
+          })
+          await applyPurchaseResult(result)
+          return
+        }
+        // "presented" or "useUrl": the sheet/URL is now in front of the user. On
+        // return, observe the discounted entitlement + record attribution.
+        await syncAfterRedemption({ affiliateCode: code, resolutionToken })
         await refresh()
         return
       }
-      if (result.pending) {
-        setState({ kind: "pending" })
+
+      // --- Google Play promo code (Android) — typically a redeem URL ---
+      if (action === "google_promo_code") {
+        const res = await redeemOfferCode(code)
+        if (res.outcome === "useUrl" && res.url) {
+          await openUrl(res.url)
+        } else if (res.outcome === "unsupported") {
+          console.warn("[subscribe] promo-code redemption unsupported:", res.message)
+        }
+        await syncAfterRedemption({ affiliateCode: code, resolutionToken })
+        await refresh()
         return
       }
-      if (result.timeout) {
-        setState({ kind: "store_unreachable", error: "TIMEOUT: Purchase timed out. Please try again." })
-        return
-      }
-      if (result.error) {
-        setState({
-          kind: "store_unreachable",
-          error: `${result.error.code}: ${result.error.message}`,
+
+      // --- Android paid subscription offer (offerToken) ---
+      if (action === "android_subscription_offer") {
+        // Re-read the offerToken from getProducts, matched by the resolved
+        // offer's playOfferId / playBasePlanId (the server returns ids, not the
+        // token — the token is device/session-specific).
+        const offerToken = await findAndroidOfferToken(productId, resolved?.offer)
+        if (!offerToken) {
+          console.warn(
+            "[subscribe] resolved android offer not found on product; subscribing at full price",
+            resolved?.offer
+          )
+        }
+        const result = await purchaseAndVerify(productId, undefined, "subs", {
+          offerToken,
+          affiliateCode: code,
+          resolutionToken,
         })
+        await applyPurchaseResult(result)
         return
       }
-      await refresh()
+
+      // --- Normal purchase (no code, affiliate, or unknown free-text) ---
+      const result = await purchaseAndVerify(productId, undefined, "subs", {
+        affiliateCode: code,
+        resolutionToken,
+      })
+      await applyPurchaseResult(result)
     } finally {
       setIsPurchasing(false)
     }
@@ -412,6 +500,67 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
       ? Math.round((1 - annualProduct.priceMicros / (monthlyProduct.priceMicros * 12)) * 100)
       : 0
 
+  // ---------------------------------------------------------------------
+  // Honest code states (NO fail-open). The resolved purchaseAction decides
+  // both the helper copy and the CTA verb (Subscribe vs Redeem).
+  // ---------------------------------------------------------------------
+  const resolvedAction =
+    affiliateStatus.kind === "resolved"
+      ? affiliateStatus.resolution.purchaseAction.type
+      : null
+  const isRedeemAction =
+    resolvedAction === "apple_offer_code" || resolvedAction === "google_promo_code"
+
+  const subscribeCtaLabel = isRedeemAction
+    ? platform === "android"
+      ? t("subscription.redeemGoogle", "Redeem with Google Play")
+      : t("subscription.redeemApple", "Redeem with Apple")
+    : t("subscription.subscribe", "Subscribe")
+  const subscribeBusyLabel = isRedeemAction
+    ? t("subscription.redeeming", "Redeeming...")
+    : t("subscription.subscribing", "Subscribing...")
+
+  let codeStatusMessage: string
+  if (affiliateStatus.kind === "checking") {
+    codeStatusMessage = t("subscription.codeChecking", "Checking code...")
+  } else if (affiliateStatus.kind === "invalid") {
+    codeStatusMessage = affiliateStatus.error
+  } else if (affiliateStatus.kind === "error") {
+    codeStatusMessage = t(
+      "subscription.codeUnverified",
+      "Couldn't verify this code. Try again, or continue without it."
+    )
+  } else if (affiliateStatus.kind === "resolved") {
+    const r = affiliateStatus.resolution
+    if (r.discountLabel) {
+      // Confirmed platform discount.
+      codeStatusMessage = r.partnerName
+        ? t("subscription.codeDiscountPartner", "{{discount}} · from {{partner}}", {
+            discount: r.discountLabel,
+            partner: r.partnerName,
+          })
+        : t("subscription.codeDiscount", "{{discount}} applied at checkout.", {
+            discount: r.discountLabel,
+          })
+    } else if (r.verified && r.partnerName) {
+      // Verified affiliate, no discount.
+      codeStatusMessage = t("subscription.codeAffiliatePartner", "Code recorded · {{partner}}", {
+        partner: r.partnerName,
+      })
+    } else {
+      // Unknown free-text — recorded, unverified. Honest copy.
+      codeStatusMessage = t(
+        "subscription.codeRecorded",
+        "We'll record this code with your purchase."
+      )
+    }
+  } else {
+    codeStatusMessage = t(
+      "subscription.affiliateCodeHelp",
+      "If someone sent you here, enter their code before subscribing."
+    )
+  }
+
   return (
     <div className={wrapper}>
       <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
@@ -470,7 +619,7 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
         {SHOW_AFFILIATE_CODE_FIELD ? (
         <label className="block space-y-1.5">
           <span className="text-xs font-medium">
-            {t("subscription.affiliateCodeLabel", "Affiliate code")}
+            {t("subscription.codeLabel", "Affiliate or offer code")}
           </span>
           <input
             value={affiliateCode}
@@ -484,18 +633,14 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
           />
           <span
             className={`block min-h-4 text-[11px] ${
-              affiliateStatus.kind === "invalid"
+              affiliateStatus.kind === "invalid" || affiliateStatus.kind === "error"
                 ? "text-destructive"
-                : "text-muted-foreground"
+                : affiliateStatus.kind === "resolved"
+                  ? "text-emerald-600 dark:text-emerald-400"
+                  : "text-muted-foreground"
             }`}
           >
-            {affiliateStatus.kind === "checking"
-              ? t("subscription.affiliateChecking", "Checking code...")
-              : affiliateStatus.kind === "valid"
-                ? affiliateStatus.message ?? t("subscription.affiliateApplied", "Code will be attached to this subscription.")
-                : affiliateStatus.kind === "invalid"
-                  ? affiliateStatus.error
-                  : t("subscription.affiliateCodeHelp", "If someone sent you here, enter their code before subscribing.")}
+            {codeStatusMessage}
           </span>
         </label>
         ) : null}
@@ -507,8 +652,8 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
           size="sm"
         >
           {isPurchasing
-            ? t("subscription.subscribing", "Subscribing...")
-            : t("subscription.subscribe", "Subscribe")}
+            ? subscribeBusyLabel
+            : subscribeCtaLabel}
         </Button>
 
         {restoreInline}
