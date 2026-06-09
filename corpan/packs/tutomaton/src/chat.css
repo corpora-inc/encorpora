@@ -50,6 +50,9 @@
   background: rgba(10, 11, 15, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  /* Never let the trigger/kebab push the header wider than the pack — the
+     trigger ellipsises its name instead (keeps the container query honest). */
+  overflow: hidden;
 }
 
 /* back-to-home chevron — iOS-standard exit, far top-left */
@@ -169,6 +172,140 @@
 /* speaker-on is the resting "active" state; muted dims it */
 .lt-fab.lt-tts.active { opacity: 1; color: var(--lt-fg); }
 .lt-fab.lt-tts:not(.active) { opacity: 0.6; }
+
+/* ---------- "jump to latest" scroll-lock chip ----------
+   Shown only when the reader has scrolled up (autoscroll released). Floats just
+   above the composer, centered on the chat's reading column, understated. */
+.lt-jump {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Sit clear of the composer footer (input row + quota line + safe area). */
+  bottom: calc(86px + var(--lt-safe-bottom));
+  z-index: 11;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--lt-border);
+  background: color-mix(in srgb, var(--lt-bg-elev) 86%, transparent);
+  color: var(--lt-fg);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.34);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+  opacity: 0.92;
+}
+.lt-jump[hidden] { display: none; }
+.lt-jump svg { display: block; }
+.lt-jump:hover { opacity: 1; border-color: #34384a; }
+.lt-jump:active { transform: translateX(-50%) scale(0.92); }
+
+/* ---------- header overflow (kebab) ----------
+   On NARROW widths the floating .lt-fabs overlap the chat text, so they're
+   hidden and this single kebab in the header takes their place (opening a
+   popover with the same four actions). On WIDE widths the kebab is hidden and
+   the fabs float. The decision is CONTAINER-based (see .lt-root container-type)
+   so it's correct inside the pack overlay regardless of the device viewport. */
+.lt-kebab {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  margin-right: -2px;
+  border-radius: 11px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: none; /* shown only below the breakpoint (container query below) */
+  place-items: center;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+.lt-kebab svg { display: block; }
+.lt-kebab:hover { color: var(--lt-fg); border-color: #34384a; }
+.lt-kebab:active { transform: scale(0.92); }
+.lt-kebab[aria-expanded="true"] { color: var(--lt-fg); border-color: var(--lt-accent); }
+
+/* overflow popover — anchored under the header, top-right */
+.lt-actionmenu { position: absolute; inset: 0; z-index: 30; }
+.lt-actionmenu[hidden] { display: none; }
+.lt-actionmenu-scrim { position: absolute; inset: 0; background: transparent; }
+.lt-actionmenu-popover {
+  position: absolute;
+  top: calc(max(var(--lt-safe-top), 44px) + 50px);
+  right: max(var(--lt-safe-right, 0px), 12px);
+  min-width: 224px;
+  max-width: min(280px, calc(100vw - 24px));
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  border-radius: 16px;
+  border: 1px solid var(--lt-border);
+  background: linear-gradient(180deg, #1c2030, #161a24);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  transform-origin: top right;
+  transform: translateY(-6px) scale(0.97);
+  opacity: 0;
+  transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.16s ease;
+}
+.lt-actionmenu.open .lt-actionmenu-popover { transform: translateY(0) scale(1); opacity: 1; }
+.lt-actionmenu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 46px;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--lt-fg);
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 550;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.lt-actionmenu-item[hidden] { display: none; }
+.lt-actionmenu-item:hover { background: rgba(255, 255, 255, 0.06); }
+.lt-actionmenu-item:active { background: rgba(255, 255, 255, 0.1); }
+.lt-actionmenu-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: var(--lt-muted);
+}
+.lt-actionmenu-icon svg { display: block; }
+.lt-actionmenu-label { min-width: 0; }
+[dir="rtl"] .lt-actionmenu-item { text-align: right; }
+[dir="rtl"] .lt-actionmenu-popover { right: auto; left: max(var(--lt-safe-left, 0px), 12px); transform-origin: top left; }
+
+/* The pack root is the container for the fab/kebab decision (correct inside the
+   overlay regardless of viewport). Narrow → kebab; wide → floating fabs. */
+.lt-root { container-type: inline-size; container-name: lt; }
+@container lt (max-width: 559px) {
+  .lt-fabs { display: none; }
+  .lt-kebab { display: grid; }
+  /* The kebab now needs room. Whenever it's present, drop the wordmark and cap
+     the language trigger so back · mark · switcher · kebab always fit, even on
+     the narrowest phones. The brand mark + active-tutor flag still identify it. */
+  .lt-brand-name { display: none; }
+  .lt-lang-trigger { max-width: 42vw; }
+}
+/* Fallback for engines without container queries: same decisions by viewport. */
+@supports not (container-type: inline-size) {
+  @media (max-width: 559px) {
+    .lt-fabs { display: none; }
+    .lt-kebab { display: grid; }
+    .lt-brand-name { display: none; }
+    .lt-lang-trigger { max-width: 42vw; }
+  }
+}
 
 /* ---------- log ---------- */
 .lt-log {
@@ -398,29 +535,45 @@
 .lt-langpill-more:hover { color: var(--lt-fg); border-color: var(--lt-accent); }
 .lt-langpill-chev { display: inline-grid; place-items: center; }
 
-/* ---------- input ---------- */
+/* ---------- input / composer ----------
+   STABLE HEIGHT by construction: a single action row (mic · field · send) plus
+   a quota sub-line that always reserves one line-height. The mic keeps its slot
+   even when hidden (visibility, not display) so the row never reflows; the quota
+   keeps its line even when empty. The composer therefore never jumps as the mic
+   appears/disappears or the quota text changes. */
 .lt-input {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 10px;
+  flex-direction: column;
+  gap: 6px;
   padding: 12px 14px calc(12px + var(--lt-safe-bottom));
   border-top: 1px solid var(--lt-border);
   background: rgba(10, 11, 15, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-.lt-quota {
-  order: -1;
-  flex: 1 0 100%;
+/* the action row: mic · field · send, bottom-aligned, centered column on wide */
+.lt-input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
   max-width: 760px;
-  margin: 0 auto -2px;
+  margin-inline: auto;
+}
+.lt-quota {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
   text-align: right;
   color: var(--lt-muted);
   font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.01em;
+  /* Reserve one line always, so an empty/changing quota never shifts the row. */
+  min-height: 1.25em;
+  line-height: 1.25;
 }
+.lt-quota:empty::after { content: "\00a0"; } /* keep the line height when blank */
 .lt-quota.is-plus {
   color: var(--lt-accent-2);
 }
@@ -442,8 +595,7 @@
   border: 1px solid var(--lt-border);
   border-radius: 22px;
   padding: 4px 4px 4px 6px;
-  max-width: 760px;
-  margin-inline: auto;
+  min-width: 0;
   transition: border-color 0.15s ease;
 }
 .lt-field:focus-within { border-color: var(--lt-accent); }
@@ -499,9 +651,16 @@
   color: var(--lt-accent-2);
   animation: lt-mic-spin 0.9s linear infinite;
 }
-/* When the user is typing, the send arrow is primary and the mic steps aside. */
-.lt-input.has-text .lt-mic { display: none; }
-.lt-input:not(.has-text) .lt-send { display: none; }
+/* Stable composer width: the mic is the LEADING control (left), the send is the
+   TRAILING control (right). Both ALWAYS keep their box — they hide via
+   visibility, never display:none — so the field width is constant and the row
+   never reflows as the mic shows/hides or the send swaps in. iMessage feel:
+   empty field → mic visible; text present → send visible. */
+.lt-input.has-text .lt-mic { visibility: hidden; pointer-events: none; }
+.lt-input:not(.has-text) .lt-send { visibility: hidden; pointer-events: none; }
+/* No ASR provider for this language → mic stays hidden but its slot is kept,
+   so adding/removing the mic never resizes the field. */
+.lt-mic[hidden] { display: grid; visibility: hidden; pointer-events: none; }
 
 .lt-send {
   flex: 0 0 auto;
