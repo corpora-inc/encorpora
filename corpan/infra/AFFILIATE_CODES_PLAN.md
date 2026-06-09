@@ -1,6 +1,12 @@
 # Affiliate + Discount Codes — Implementation Plan
 
-Status: **DRAFT FOR CTO REVIEW** · Author: Payments/IAP architecture · Last updated: 2026-06-09
+Status: **APPROVED — building on `feature/iap-codes` for 0.17.4** · Last updated: 2026-06-09
+
+> **Locked decisions (2026-06-09):**
+> - Target **0.17.4**. The code field is HIDDEN in 0.17.3 (`SHOW_AFFILIATE_CODE_FIELD=false` in `SubscriptionOffer.tsx`).
+> - Redemption UX = **in-app native StoreKit/Billing sheet** (`plugin:iap|redeem_offer_code` → `presentCodeRedemptionSheet` / `presentOfferCodeRedeemSheet` on iOS; Play offer/promo flow on Android).
+> - The overloaded single field resolves **server-side**: registry classifies one-time / custom-discount / affiliate (a code like `LCCLT` can be both); unknown codes → recorded as **free-text affiliate, unverified-but-credited**.
+> - Founder-gated to go live: App Store Connect / Play offer+code setup; AWS backend deploy; one iOS rebuild; sandbox testing.
 
 This is a plan, not an implementation. It audits the real code, fixes the prior
 draft's incorrect/optimistic claims, locks down platform accuracy against current
