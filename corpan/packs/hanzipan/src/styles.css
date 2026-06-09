@@ -5,7 +5,18 @@
    Stroke colors (`--stroke-*`, `--accent`, `--accent-strong`) keep their
    names so JS lookups in main.js continue to resolve. */
 
-:root {
+/* Palette + tokens are defined on BOTH :root and the pack's own .hanzi-root
+   wrapper. The host injects this stylesheet as a GLOBAL <style> in its document
+   head (ContentPackHost inline mode), so a bare `:root` block lands on the
+   HOST's <html> and can be shadowed by the host app or a sibling pack that
+   defines the same custom properties. When `--paper` / `--bg` resolve to
+   nothing, `background: var(--paper)` silently falls back to `transparent` and
+   the writing-area backdrop (the "character background") visually disappears.
+   Re-declaring the tokens on `.hanzi-root` (higher specificity than :root/html)
+   makes the pack self-contained: its own wrapper always carries the palette,
+   immune to host-side variable shadowing across binary versions. */
+:root,
+.hanzi-root {
   color-scheme: light;
   font-family: Georgia, "Times New Roman", serif;
 
@@ -56,9 +67,9 @@
   height: 100%;
   overflow: hidden;
   --safe-top: 0px;
-  color: var(--ink);
+  color: var(--ink, #3d2b1f);
   font-family: Georgia, "Times New Roman", serif;
-  background: var(--bg);
+  background: var(--bg, #f5f0e8);
 }
 
 .hanzi-app {
@@ -83,7 +94,7 @@
 }
 
 .card {
-  background: var(--paper);
+  background: var(--paper, #fbf6ec);
   border-radius: var(--radius-lg);
   box-shadow: 0 12px 28px var(--shadow-soft);
   border: 1px solid rgba(107, 76, 42, 0.12);
@@ -490,7 +501,7 @@
 }
 
 .panel {
-  background: var(--paper);
+  background: var(--paper, #fbf6ec);
   border-radius: var(--radius-lg);
   padding: clamp(16px, 2.6vw, 20px);
   box-shadow: 0 14px 32px var(--shadow-soft);
@@ -639,7 +650,7 @@
 
 .canvas-shell {
   position: relative;
-  background: var(--paper);
+  background: var(--paper, #fbf6ec);
   border-radius: var(--radius-md);
   box-shadow: inset 0 0 0 1px rgba(107, 76, 42, 0.12);
   padding: 12px;
@@ -1344,7 +1355,7 @@
   max-width: 280px;
   height: 100px;
   border-radius: var(--radius-md);
-  background: var(--paper);
+  background: var(--paper, #fbf6ec);
   border: 1px solid rgba(107, 76, 42, 0.18);
   box-shadow: inset 0 1px 3px var(--shadow-soft);
   cursor: crosshair;

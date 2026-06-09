@@ -10,7 +10,24 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-## [0.6.0] - 2026-05-30 — Etymologies in 22 new languages
+## [0.6.1] - 2026-06-09 — Fix vanished writing-area background
+
+### Fixed
+- The parchment backdrop behind the character (the writing-area paper
+  card, its inset frame, and the page background) could disappear,
+  leaving the glyph floating on the host's bare background. The pack's
+  palette tokens (`--paper`, `--bg`, `--ink`, …) were defined only on a
+  bare `:root`. The host injects each pack's stylesheet as a *global*
+  `<style>` in its own document (ContentPackHost inline mode), so that
+  `:root` block lands on the host's `<html>` and can be shadowed by the
+  host app or a sibling pack that defines the same custom properties.
+  When `--paper`/`--bg` resolved to nothing, `background: var(--paper)`
+  fell back to `transparent` and the backdrop vanished. The tokens are
+  now also declared on the pack's own `.hanzi-root` wrapper (higher
+  specificity than `:root`/`html`, so host-side shadowing can't win),
+  and the load-bearing background/text declarations carry literal
+  fallback values as a final safety net. Purely pack-side; no host
+  change required.
 
 ### Added
 - Character etymologies now ship in all 51 Corpán languages (was 29).
