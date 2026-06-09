@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.7] - 2026-06-09
+
 - Adopt Teletron's two-step mediated-chat moderation (binary safety classifier +
   separate paraphrase, rebuilt from `shared/moderation`): off-limits messages are
   blocked and obliterated, while clean messages keep their everyday subject and
   vocab instead of being thrashed into an unrelated line.
+- Server: reply `chat-control { action: "link-stale" }` instead of silently
+  dropping a `chat-send` with no live accepted pair, so the Teletron client can
+  re-establish the link and recover delivery (additive `ChatControlAction`; the
+  in-world City chat ignores unknown actions).
 
 ## [0.1.6] - 2026-06-09
 

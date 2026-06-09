@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+## 0.1.9 - 2026-06-09
+
+- **Reliable chat delivery (live, offline, and rejoin).** The accepted-pair link
+  that gates delivery is volatile (lost on a server redeploy, a 24h TTL lapse, or a
+  fresh join after the reconnect window) and the client never re-established it, so
+  a message was **silently dropped before it ever reached the outbox** — which is
+  why two online people saw nothing, offline messages never arrived, and re-entering
+  a conversation felt dead. Now the server signals `link-stale` instead of dropping,
+  the client queues the message and silently re-invites, an established penpal
+  (durable on-device transcript) is auto-accepted, and the queue flushes on confirm —
+  so live delivery, offline→online drain, and leave→rejoin all work. (8 new
+  end-to-end transport tests.)
 - Split outbound moderation into two narrow steps for reliability and connection.
   A binary safety **classifier** (BLOCK / SAFE) makes one small decision a small
   on-device model does well, and never answers or rewrites. Off-limits messages
@@ -20,6 +32,9 @@
   pops up for people who would rather tap the microphone.
 - Reframe copy away from "penpal" / "private by default" / "safe penpals" toward a
   warm "talk to the world" voice; "Tidying up your words…" becomes "Sending…".
+- Localize the entire app chrome into 50 languages (it was English-only), with
+  correct writing systems per locale — Simplified vs Traditional Chinese and
+  Shahmukhi vs Gurmukhi Punjabi are kept distinct rather than collapsed.
 
 ## 0.1.8 - 2026-06-09
 

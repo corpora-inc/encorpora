@@ -1,7 +1,7 @@
 {
   "id": "corpan_city",
   "name": "Corpan City",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
@@ -115,5 +115,5 @@
     "zh-Hans": "在Corpan City，你会遇到AI角色和真实玩家，展开个人旅程，将每次相遇转化为语言课程。",
     "zh-Hant": "在這座活城市中，您將遇見AI角色和真實玩家，開展個人旅程，將每次邂逅轉化為語言課程。"
   },
-  "devRevision": "2026-06-09T05:04:10.344Z"
+  "devRevision": "2026-06-09T06:25:33.884Z"
 }
