@@ -1868,8 +1868,64 @@ async function mountTeletron(
   }
 }
 
-const module: ContentPackModule = { mount: mountTeletron }
-const scope = globalThis as typeof globalThis & { CorpanGames?: Record<string, ContentPackModule> }
+// Exactly one live Teletron instance at a time. Teletron opens a presence
+// connection keyed by a persisted per-install playerId. Two live instances —
+// a React StrictMode double-invoke, or a dev hot-reload / re-mount that doesn't
+// unmount the previous one — would each connect with the SAME playerId, and the
+// server replaces the older session ("replaced by newer session", code 4000).
+// The replaced instance then reconnects with a now-invalid token ("reconnection
+// token invalid or expired"), fresh-joins, and replaces the other; the two
+// ping-pong reconnects forever. Tearing down any prior instance before mounting
+// the next guarantees a single connection and kills that war at the source.
+// Guard state lives on globalThis (not module scope) so a dev hot-reload — which
+// re-executes this script in a fresh module scope — still sees, and tears down,
+// the connection from the previous load instead of racing a zombie.
+type TeletronMountState = { active: { unmount: () => void } | null; generation: number }
+const scope = globalThis as typeof globalThis & {
+  CorpanGames?: Record<string, ContentPackModule>
+  __teletronMount?: TeletronMountState
+}
+const mountState: TeletronMountState = (scope.__teletronMount ??= { active: null, generation: 0 })
+
+async function mountTeletronOnce(
+  container: HTMLElement,
+  hostApi: HostApi,
+  initial?: InitialState,
+): Promise<{ unmount: () => void }> {
+  if (mountState.active) {
+    try {
+      mountState.active.unmount()
+    } catch (error) {
+      console.warn("[teletron] tearing down previous mount failed:", error)
+    }
+    mountState.active = null
+  }
+  const generation = ++mountState.generation
+  const instance = await mountTeletron(container, hostApi, initial)
+  if (generation !== mountState.generation) {
+    // A newer mount superseded us while we were initializing — stand down.
+    try {
+      instance.unmount()
+    } catch {
+      /* best effort */
+    }
+    return { unmount: () => {} }
+  }
+  const handle = {
+    unmount: () => {
+      if (mountState.active === handle) mountState.active = null
+      try {
+        instance.unmount()
+      } catch (error) {
+        console.warn("[teletron] unmount failed:", error)
+      }
+    },
+  }
+  mountState.active = handle
+  return handle
+}
+
+const module: ContentPackModule = { mount: mountTeletronOnce }
 scope.CorpanGames = scope.CorpanGames || {}
 scope.CorpanGames[PACK_ID] = module
 
@@ -1878,5 +1934,5 @@ if (devRoot) {
   const mockHost = {
     speak: async () => {},
   } as HostApi
-  void mountTeletron(devRoot, mockHost, { stackConfig: { languages: ["en", "es"] } })
+  void mountTeletronOnce(devRoot, mockHost, { stackConfig: { languages: ["en", "es"] } })
 }

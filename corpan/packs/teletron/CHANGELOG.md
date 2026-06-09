@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+- Fix an "online ↔ reconnecting" reconnect war: two live Teletron instances
+  (a React StrictMode double-invoke or a hot-reload/re-mount that didn't unmount
+  the previous one) each opened a presence connection with the SAME persisted
+  playerId, so the server replaced the older session ("replaced by newer
+  session"), the replaced one fresh-joined with an invalid reconnect token and
+  replaced the other, and they ping-ponged forever. Mounting is now idempotent
+  (guard state on `globalThis`, surviving hot-reload), so exactly one connection
+  is ever live. Pre-existing; rare in a clean prod install, common in dev.
 - Reframe Teletron's copy as warm "safe penpals" rather than "AI-mediated /
   local AI relay" jargon, and move all chrome through a new `src/i18n.ts`
   (English ships now; locales fill in via `tools/gen_i18n.py`, whose targets
