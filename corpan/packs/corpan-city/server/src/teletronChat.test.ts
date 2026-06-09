@@ -264,6 +264,10 @@ describe("Teletron live + async penpal transport (real PlazaRoom)", () => {
     const controls = a.sent.filter((m) => m.type === MP_MSG.chatControl)
     expect(controls).toHaveLength(1)
     expect(controls[0].payload).toMatchObject({ action: "link-stale", from: "p-b", to: "p-a" })
+    // The reply MUST echo the rejected message's interactionId so the client can
+    // requeue that exact message instead of losing it (the confirmed-locally /
+    // stale-on-server case).
+    expect(controls[0].payload.interactionId).toBe("chat-are-you-there")
   })
 
   it("re-establishes a forgotten pair via a fresh invite/accept, then delivers", () => {

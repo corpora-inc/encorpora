@@ -120,6 +120,30 @@ describe("safe relay pipeline — classify / paraphrase / regenerate / eject", (
     expect(userText(regen)).not.toContain("Bruce")
   })
 
+  it("never feeds raw UGC forward when the paraphrase fails on the SAFE path", async () => {
+    // If the laundering paraphrase returns empty/junk, the pipeline must fall back
+    // to a safe corpus seed — NEVER hand the raw message to regenerate (old bug:
+    // `seed = paraphrase || raw`).
+    const secret = "my name is Bruce and I live at 42 Wallaby Way"
+    const { pipeline, calls, result } = await (async () => {
+      const sp = scriptedPipeline(
+        { "relay.classify": "SAFE", "relay.paraphrase": "", "relay.regenerate": secret },
+        "I made soup today.",
+      )
+      const result = await sp.pipeline.prepareOutbound({ text: secret, sourceLanguage: "en" })
+      return { ...sp, result }
+    })()
+    // regenerate must NOT have been invoked with the raw text...
+    for (const c of calls.filter((x) => x.label === "relay.regenerate")) {
+      expect(userText(c)).not.toContain("Wallaby")
+      expect(userText(c)).not.toContain("Bruce")
+    }
+    // ...and the relay output is a safe replacement, not the raw secret.
+    expect(result.relayText).not.toContain("Wallaby")
+    expect(result.relayText).not.toContain("Bruce")
+    expect(result.state).toBe("replaced")
+  })
+
   it("scrub backstop strips structural PII the regenerator might echo", async () => {
     const { pipeline } = scriptedPipeline({
       "relay.classify": "SAFE",

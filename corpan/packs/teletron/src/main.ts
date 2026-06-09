@@ -533,6 +533,12 @@ async function mountTeletron(
   const confirmedPairs = new Set<string>()
   //   • outbound messages typed before the pair is confirmed, flushed on confirm.
   const pendingOutbound = new Map<string, MediatedChatInput[]>()
+  //   • messages sent on the confirmed path but not yet known-delivered, keyed by
+  //     interactionId. If the server actually forgot the pair it replies `link-stale`
+  //     carrying that interactionId, and we requeue the EXACT message instead of
+  //     losing it. Bounded ring (link-stale returns on the same round-trip).
+  const inFlight = new Map<string, MediatedChatInput>()
+  const IN_FLIGHT_CAP = 50
   //   • re-establish invites in flight: inviteId → partnerId (separate from the
   //     human-facing single-slot `pendingInvite`, so resume never clobbers it).
   const reestablishing = new Map<string, string>()
@@ -920,9 +926,15 @@ async function mountTeletron(
    * a genuine stranger has neither, so they always require a human accept.
    */
   async function isEstablishedPenpal(partnerId: string): Promise<boolean> {
-    if (conversations.has(partnerId)) return true
+    // An EXPLICITLY ended link (End button / block) must NOT silently auto-accept a
+    // re-invite — that would revive a conversation the user chose to close without a
+    // fresh human accept. Same for a lapsed keepsake. Only a live, non-ended link (or
+    // a non-lapsed transcript) counts as standing consent.
+    const convo = conversations.get(partnerId)
+    if (convo) return convo.lifecycle !== "ended"
     try {
-      return (await transcripts.meta(partnerId)) !== null
+      const meta = await transcripts.meta(partnerId)
+      return meta !== null && meta.lapsedAt == null
     } catch (error) {
       console.error("[teletron] penpal lookup failed:", error)
       return false
@@ -1265,13 +1277,27 @@ async function mountTeletron(
     room.send(MP_MSG.invite, { inviteId, to: partnerId, offer: { kind: "chat" } })
   }
 
+  /** Send a chat-send NOW and retain it as in-flight so a `link-stale` (server
+   * forgot the pair) can requeue the exact message instead of dropping it. */
+  function sendChatNow(input: MediatedChatInput): void {
+    if (!room) return
+    if (input.interactionId) {
+      inFlight.set(input.interactionId, input)
+      if (inFlight.size > IN_FLIGHT_CAP) {
+        const oldest = inFlight.keys().next().value
+        if (oldest !== undefined) inFlight.delete(oldest)
+      }
+    }
+    room.send(MP_MSG.chatSend, input)
+  }
+
   /** Flush any messages queued while a pair was being (re)established. */
   function flushPendingOutbound(partnerId: string): void {
     if (!room || !confirmedPairs.has(partnerId)) return
     const queue = pendingOutbound.get(partnerId)
     if (!queue || !queue.length) return
     pendingOutbound.delete(partnerId)
-    for (const input of queue) room.send(MP_MSG.chatSend, input)
+    for (const input of queue) sendChatNow(input)
   }
 
   /**
@@ -1284,7 +1310,7 @@ async function mountTeletron(
   function dispatchOutbound(partnerId: string, input: MediatedChatInput): void {
     if (!room) return
     if (confirmedPairs.has(partnerId)) {
-      room.send(MP_MSG.chatSend, input)
+      sendChatNow(input)
       return
     }
     const queue = pendingOutbound.get(partnerId) ?? []
@@ -1885,6 +1911,17 @@ async function mountTeletron(
           const convo = conversations.get(partnerId)
           if (convo && convo.lifecycle !== "ended") {
             confirmedPairs.delete(partnerId)
+            // Requeue the EXACT message the server just rejected (it echoes its
+            // interactionId), so a send made while we wrongly believed the pair was
+            // live isn't lost — it flushes once the link is re-confirmed.
+            const staleId = parsed.data.interactionId
+            const lost = staleId ? inFlight.get(staleId) : undefined
+            if (lost) {
+              inFlight.delete(staleId)
+              const queue = pendingOutbound.get(partnerId) ?? []
+              if (!queue.some((m) => m.interactionId === lost.interactionId)) queue.push(lost)
+              pendingOutbound.set(partnerId, queue)
+            }
             reestablishLink(partnerId)
           }
           return
@@ -1917,6 +1954,7 @@ async function mountTeletron(
     // invites (their inviteIds belong to the dead room).
     confirmedPairs.clear()
     reestablishing.clear()
+    inFlight.clear()
     for (const c of conversations.values()) {
       if (c.lifecycle !== "ended" && c.partnerOnline) {
         upsertConvo(c.partnerId, c.partnerName, { partnerOnline: false })

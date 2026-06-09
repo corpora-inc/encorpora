@@ -182,12 +182,14 @@ def main():
         print(f"translating {len(en)} keys into {len(langs)} languages via {MODEL}…")
         locales = {}
         for code in langs:
-            base = code.split("-")[0]
-            if base in locales:
+            key = loc_key(code)  # keep script variants distinct (matches from_json)
+            if key in locales:
                 continue
             try:
-                locales[base] = translate(en, code, base)
-                print(f"  ✓ {code} ({base})")
+                locales[key] = translate(en, code, key)
+                if code in BASE_ALIAS and BASE_ALIAS[code] not in locales:
+                    locales[BASE_ALIAS[code]] = locales[key]
+                print(f"  ✓ {code} ({key})")
             except Exception as e:
                 print(f"  ✗ {code}: {e} — skipping (English fallback at runtime)")
     # build the LOCALES block

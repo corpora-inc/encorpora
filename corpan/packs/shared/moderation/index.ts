@@ -786,17 +786,24 @@ export function createSafeRelayPipeline(options: SafeRelayPipelineOptions) {
         "relay.paraphrase",
         maxText,
       )
-      const seed = paraphrase || raw
-      // Preserve modality: a question stays a question, a statement stays a
-      // statement — so the relay never fabricates an answer the sender didn't give.
-      const form = /\?\s*$/.test(raw.trim()) ? "question" : "statement"
-      current = await runPlainPass(
-        options.runLlm,
-        [regeneratePrompt(form), { role: "user", content: seed }],
-        { temperature: 0.5, topP: 0.9, maxTokens: 64 },
-        "relay.regenerate",
-        maxText,
-      )
+      // FIREWALL: regenerate only ever sees the laundered paraphrase, NEVER the raw
+      // message. If the paraphrase failed (empty/junk), leave `current` empty so the
+      // corpus-seed fallback (step 4) takes over — we must never feed raw UGC forward.
+      if (paraphrase) {
+        // Preserve modality: a question stays a question, a statement stays a
+        // statement — so the relay never fabricates an answer the sender didn't give.
+        const form = /\?\s*$/.test(raw.trim()) ? "question" : "statement"
+        current = await runPlainPass(
+          options.runLlm,
+          [regeneratePrompt(form), { role: "user", content: paraphrase }],
+          { temperature: 0.5, topP: 0.9, maxTokens: 64 },
+          "relay.regenerate",
+          maxText,
+        )
+      } else {
+        current = ""
+        reasons.push("paraphrase-failed")
+      }
     }
 
     // 3. Deterministic scrub backstop (the regenerated line should already be clean).

@@ -495,7 +495,9 @@ export class PlazaRoom extends Room<PlazaState> {
         console.warn(`[plaza] chat-send with no accepted pair from ${client.sessionId} → link-stale`)
         // from = the partner whose link is stale (so the client re-invites THEM);
         // to = us. fromName resolves to the partner's live name if they're here.
-        this.sendChatControlToClient(client, toPlayerId, from.playerId, "link-stale")
+        // Echo the REJECTED message's interactionId so the sender requeues the exact
+        // message it just lost (instead of dropping it).
+        this.sendChatControlToClient(client, toPlayerId, from.playerId, "link-stale", parsed.data.interactionId)
         return
       }
       if (!toSession || !toClient || !to) {
