@@ -206,7 +206,7 @@ describe("safe relay pipeline", () => {
     expect(promptText(calls)).not.toMatch(/json/i)
   })
 
-  it("translates both recipient languages with the in-language prime", async () => {
+  it("translates with a fully in-language directive and injects the CEFR band", async () => {
     const { pipeline, calls } = scriptedPipeline([
       "Let's talk about music.", // recipient-clean
       "音楽について話しましょう。", // translate-target.ja
@@ -223,13 +223,29 @@ describe("safe relay pipeline", () => {
 
     expect(lesson.targetText).toBe("音楽について話しましょう。")
     expect(lesson.nativeText).toBe("Hablemos de música.")
-    expect(calls.map((call) => call.label)).toContain("relay.translate-target.ja")
-    expect(calls.map((call) => call.label)).toContain("relay.translate-native.es")
     const targetPrompt = calls.find((call) => call.label === "relay.translate-target.ja")?.messages[0]?.content ?? ""
-    // ja has no in-language directive yet → primed fallback in Japanese + English body.
-    expect(targetPrompt).toContain("自然な日本語")
+    // The whole translation system prompt is in Japanese — no English body, no token.
+    expect(targetPrompt).toContain("自然な日本語に翻訳")
+    expect(targetPrompt).not.toContain("Translate the English")
+    expect(targetPrompt).not.toContain("{level}")
+    // A2 → the in-language "simple words" band is spliced in.
+    expect(targetPrompt).toContain("とても簡単で")
+    const nativePrompt = calls.find((call) => call.label === "relay.translate-native.es")?.messages[0]?.content ?? ""
+    expect(nativePrompt).toContain("Traduce al español")
+    expect(nativePrompt).toContain("palabras muy sencillas")
+  })
+
+  it("falls back to a primed English body for an unsupported language", async () => {
+    const { pipeline, calls } = scriptedPipeline([
+      "Let's talk about music.", // recipient-clean
+      "...", // translate-target.tl
+      "...", // translate-native.en
+      "...", // replies.tl
+    ])
+    await pipeline.lessonify({ relayText: "Let's talk about music.", targetLanguage: "tl", nativeLanguage: "en" })
+    const targetPrompt = calls.find((call) => call.label === "relay.translate-target.tl")?.messages[0]?.content ?? ""
+    expect(targetPrompt).toContain("Translate the English chat line into tl")
     expect(targetPrompt).toContain("your entire reply must be only the translation")
-    expect(targetPrompt).toContain("Do not answer the message")
   })
 
   it("red-team fixtures are transformed or replaced without preserving unsafe surface text", async () => {
