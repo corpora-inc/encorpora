@@ -113,7 +113,7 @@ def extract_locales(en):
     body = m.group(1)
     out = {}
     # match `  <code>: { ... },` blocks (code may be bare base like `pt`)
-    for bm in re.finditer(r"\n  ([a-z]{2,3}(?:-[A-Za-z]+)?): \{(.*?)\n  \},", body, re.S):
+    for bm in re.finditer(r'\n  "?([a-z]{2,3}(?:-[A-Za-z]+)?)"?: \{(.*?)\n  \},', body, re.S):
         code, inner = bm.group(1), bm.group(2)
         if code == "en":
             continue
@@ -125,25 +125,44 @@ def extract_locales(en):
     return out
 
 
+# Script variants whose translations must NOT collapse to a base code (different
+# writing systems): keep the full code as its own LOCALES key. The resolver t()
+# prefers an exact LOCALES[lang] hit before the base, so zh-Hant/zh-Hans/pa-Arab/
+# pa-Guru users get the right script. BASE_ALIAS additionally fills the bare-base
+# block (e.g. "zh") from the larger-audience default, for any bare stack code.
+SCRIPT_KEEP = {"zh-Hans", "zh-Hant", "pa-Arab", "pa-Guru"}
+BASE_ALIAS = {"zh-Hans": "zh", "pa-Guru": "pa"}
+
+
+def loc_key(code):
+    return code if code in SCRIPT_KEEP else code.split("-")[0]
+
+
 def from_json(path, en):
     """Inject translations from a prebuilt JSON file: {code: {key: value}}.
     MERGES onto the locales already in i18n.ts: existing translated keys are
     preserved, the JSON's keys overlay them, and any key still missing falls
-    back to English. Validates {placeholder} tokens per key."""
+    back to English. Validates {placeholder} tokens per key. Script variants
+    (SCRIPT_KEEP) stay keyed by full code; others collapse to base."""
     data = json.loads(pathlib.Path(path).read_text())
-    locales = {base: dict(d) for base, d in extract_locales(en).items()}
-    for code, d in data.items():
-        base = code.split("-")[0]
-        if base == "en":
-            continue
-        locales.setdefault(base, {})
+    locales = {k: dict(d) for k, d in extract_locales(en).items()}
+
+    def apply(target, d):
+        locales.setdefault(target, {})
         for k, tv in d.items():
             if k not in en or not isinstance(tv, str) or not tv.strip():
                 continue
             want = set(re.findall(r"\{(\w+)\}", en[k]))
             got = set(re.findall(r"\{(\w+)\}", tv))
             if want == got:
-                locales[base][k] = tv
+                locales[target][k] = tv
+
+    for code, d in data.items():
+        if code.split("-")[0] == "en":
+            continue
+        apply(loc_key(code), d)
+        if code in BASE_ALIAS:
+            apply(BASE_ALIAS[code], d)
     # English-fallback for any key still missing in a locale (keeps Dict total)
     for base, merged in locales.items():
         for k, v in en.items():
@@ -174,7 +193,9 @@ def main():
     # build the LOCALES block
     lines = ["const LOCALES: Record<string, Partial<Dict>> = {", "  en,"]
     for base, d in sorted(locales.items()):
-        lines.append(f"  {base}: {{")
+        # Quote keys that aren't valid JS identifiers (e.g. "zh-Hant").
+        keyrepr = base if re.fullmatch(r"[A-Za-z_$][\w$]*", base) else json.dumps(base)
+        lines.append(f"  {keyrepr}: {{")
         for k, v in d.items():
             lines.append(f"    {k}: {ts_literal(v)},")
         lines.append("  },")
