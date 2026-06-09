@@ -383,7 +383,7 @@ function stripPlainModelText(raw: string, maxText: number): string {
   return bounded(text, maxText)
 }
 
-function looksLikeProtocolJunk(text: string): boolean {
+export function looksLikeProtocolJunk(text: string): boolean {
   const t = normalize(text)
   return (
     !t ||
@@ -393,11 +393,11 @@ function looksLikeProtocolJunk(text: string): boolean {
   )
 }
 
-function leaksContactOrCode(text: string): boolean {
+export function leaksContactOrCode(text: string): boolean {
   return CONTACT_INFO.test(text) || DIGIT_HEAVY.test(text)
 }
 
-function leaksSpecificPlace(text: string): boolean {
+export function leaksSpecificPlace(text: string): boolean {
   return CITY_STATE_PLACE.test(text)
 }
 
