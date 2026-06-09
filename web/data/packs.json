@@ -127,7 +127,7 @@
     "minAppVersion": "0.17.0",
     "v1Listed": false,
     "requireCompleteLocalization": true,
-    "channel": "stable",
+    "channel": "preview",
     "packType": "game",
     "purchase": {
       "type": "free"
@@ -167,7 +167,7 @@
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/teletron",
     "minAppVersion": "0.17.0",
     "v1Listed": false,
-    "channel": "stable",
+    "channel": "preview",
     "packType": "social",
     "purchase": {
       "type": "free",
