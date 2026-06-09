@@ -171,7 +171,11 @@ export function SettingsModal({
           </div>
         </div>
 
-        <div className="space-y-4 mt-3 pb-16">
+        {/* Center + cap the body width on wide screens so settings rows
+            don't stretch edge-to-edge across a desktop/iPad-landscape
+            modal; roomier vertical spacing at >= md, compact on phones.
+            The sticky header above stays full-bleed by design. */}
+        <div className="space-y-4 md:space-y-6 mt-3 pb-16 w-full md:max-w-2xl md:mx-auto">
           <ThemeToggle />
 
           <DismissableTip

@@ -42,6 +42,11 @@ Conventions: `corpan/CHANGELOGS.md`.
 - Introduced shared design tokens in `index.css`: safe-area insets (`--safe-*`),
   a safe-area-aware `--dialog-max-h`, and a `--z-*` layering ladder, so overlays
   and modals stack and inset consistently instead of using ad-hoc magic numbers.
+- Responsive density pass: surfaces stay compact on phones but grow roomier at
+  `>= md` (iPad/desktop). The phrase-pack browser's filter pills get larger
+  touch/click targets and type, and Settings / Quick settings / the phrase-pack
+  browser now cap + center their content width instead of stretching edge-to-edge
+  on wide screens. Convention documented in `AGENTS.md` §1.1.
 
 ## [0.17.1] - 2026-06-07
 

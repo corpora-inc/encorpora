@@ -21,6 +21,40 @@ frontend taste guide.
 - When in doubt about a string, ask. Strings are user-visible
   forever; over-clever copy ages worse than minimal copy.
 
+### 1.1 Responsive density — compact by default, roomier at `>= md`
+
+Phone, iPad, **and** desktop are equal first-class targets — never
+"phone-first". The convention: **be thrifty with space on small
+screens and grow roomier on bigger ones** via responsive Tailwind
+utilities, not by restructuring layout. The base (unprefixed) value is
+the compact phone value; an `md:` (≥768px) step adds breathing room for
+tablet/desktop.
+
+- **Reuse the `index.css` tokens** (`--safe-*`, `--dialog-max-h`,
+  `--z-*`) for insets/heights/layering — don't reinvent magic numbers.
+- Prefer **bumping padding / type / gaps and capping+centering content
+  width** at `md:` over changing the structure. Don't touch the
+  dialog max-height/scroll logic (§3.1 / §7) — that's load-bearing.
+- Only roomify what is actually cramped on iPad/desktop. Don't change
+  what already reads well (the Home hero/grid is already responsive).
+
+Concrete patterns used across the app:
+
+```tsx
+// Pills / filter chips (§4): dense phone, comfortable md+ hit area
+className="px-2.5 py-1 text-[11px] md:px-4 md:py-1.5 md:text-sm md:min-h-[36px]"
+
+// Padding + section spacing step up at md+
+className="space-y-4 md:space-y-6 px-4 md:px-6"
+
+// Cap + center a full-width surface's content on wide screens
+className="w-full md:max-w-2xl md:mx-auto"
+```
+
+Hero buttons have their own pair (§2.1, `!h-11 md:!h-14`); cards have
+their own compact rules (§5). This section is the default for
+everything else.
+
 ---
 
 ## 2. Buttons — heights, hierarchy, hero CTAs
@@ -174,9 +208,18 @@ stability):
 )
 ```
 
-Pill dimensions: `px-2.5 py-0.5 text-[11px]` for compact rails (in
-drawers, dense filter rows). Use `px-3 py-1 text-xs` only when the
-rail is the page's primary control.
+Pill dimensions follow the responsive-density convention (§1.1):
+compact on phones, roomier touch/click targets at `>= md`. The
+phrase-pack filter rails use
+
+```tsx
+className="px-2.5 py-1 text-[11px] md:px-4 md:py-1.5 md:text-sm md:min-h-[36px] md:inline-flex md:items-center"
+```
+
+and the rail gap steps `gap-1.5 md:gap-2`. Phones stay dense; iPad/
+desktop get a comfortable ~36px hit area and readable type. The
+`md:min-h` + `md:inline-flex md:items-center` keep the larger pill's
+label vertically centred without bloating phones.
 
 **Don't** add a "More categories" overflow popover unless the user
 asks — horizontal scroll + edge fades is the affordance. Selected-

@@ -44,7 +44,10 @@ export function QuickSettingsSheet() {
           </DrawerTitle>
         </DrawerHeader>
 
-        <div className="flex-1 space-y-4 overflow-y-auto px-4 pb-10">
+        {/* Center + cap width at >= md so the controls don't stretch
+            edge-to-edge on the full-width iPad/desktop drawer; roomier
+            spacing/padding there, compact on phones. */}
+        <div className="flex-1 space-y-4 md:space-y-6 overflow-y-auto px-4 md:px-6 pb-10 w-full md:max-w-2xl md:mx-auto">
           <RateAdjuster />
           <TextSizeAdjuster />
           <LanguageSelectOrder />
