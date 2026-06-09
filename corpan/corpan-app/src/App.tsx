@@ -458,6 +458,20 @@ export default function App() {
     return () => window.removeEventListener("corpan:open-tts", onOpenTTS as EventListener);
   }, []);
 
+  useEffect(() => {
+    // While a full-screen experience (pack or native phrase) overlays Home,
+    // mark the body so Home's own scroll container is frozen (see index.css).
+    // Without this, Home's scrollbar bleeds through the opaque overlay on
+    // Android WebView and a hidden second scroller can steal momentum.
+    const active = Boolean(activeGame);
+    if (active) {
+      document.body.setAttribute("data-experience-active", "true");
+    } else {
+      document.body.removeAttribute("data-experience-active");
+    }
+    return () => document.body.removeAttribute("data-experience-active");
+  }, [activeGame]);
+
   // Launch the phrase experience (currently the in-app MainExperience; becomes
   // the phrase_main pack in Phase 3 — distinguished at render by the absence of
   // a manifestUrl). Single chokepoint for the native experience.

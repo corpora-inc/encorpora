@@ -205,6 +205,7 @@ export function HomeHub({
 
   return (
     <div
+      data-home-scroll
       className="fixed inset-0 overflow-y-auto overscroll-contain bg-background"
       style={{
         WebkitOverflowScrolling: "touch",
