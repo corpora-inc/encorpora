@@ -474,7 +474,7 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
             spellCheck={false}
             maxLength={32}
             placeholder={t("subscription.affiliateCodePlaceholder", "Optional")}
-            className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm uppercase outline-none transition-colors focus:border-primary"
+            className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm uppercase placeholder:normal-case placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary"
           />
           <span
             className={`block min-h-4 text-[11px] ${
