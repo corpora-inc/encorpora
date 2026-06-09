@@ -143,6 +143,7 @@ impl LlmState {
             let _ = f.read_exact(&mut magic);
         }
         let magic_ok = &magic == b"GGUF";
+        #[cfg(debug_assertions)]
         eprintln!(
             "[corpan-llm] gguf preflight size={} magic_ok={} ({:?})",
             size, magic_ok, magic
@@ -314,6 +315,8 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 resp,
             } => {
                 let want_gpu = n_gpu_layers.unwrap_or(999).max(0) as u32;
+                // Only read by the debug-gated load traces below; silence release warning.
+                let _ = &model_id;
                 // Free any previously-loaded model BEFORE allocating the new one.
                 // The weights are a ~2.5 GB resident buffer (a GPU buffer under
                 // Metal); on unified-memory iOS, holding the old copy while
@@ -321,6 +324,7 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 // returns null from BOTH the GPU and CPU paths. This is exactly
                 // the pack exit→re-enter reload case: drop first, then load.
                 if model.is_some() {
+                    #[cfg(debug_assertions)]
                     eprintln!("[corpan-llm] dropping previously-loaded model before reload");
                     // INVARIANT: drop the session (its ctx borrows the old model)
                     // BEFORE the model, and its KV belongs to the old weights.
@@ -329,6 +333,7 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 }
                 let avail = device_memory_mb();
                 let load_start = std::time::Instant::now();
+                #[cfg(debug_assertions)]
                 eprintln!(
                     "[corpan-llm] load START {model_id} want_gpu={want_gpu} avail={avail:?}MB perf_cores={}",
                     perf_core_count()
@@ -361,10 +366,12 @@ fn actor_loop(rx: Receiver<Cmd>, shared: Arc<Shared>) {
                 match outcome {
                     Ok((m, backend_str)) => {
                         model = Some(m);
+                        #[cfg(debug_assertions)]
                         eprintln!(
                             "[corpan-llm] loaded {model_id} ({backend_str}) in {}ms",
                             load_start.elapsed().as_millis()
                         );
+                        let _ = &load_start;
                         let _ = resp.send(Ok(backend_str));
                     }
                     Err(e) => {
@@ -476,6 +483,7 @@ fn run_turn(
     let budget = (n_ctx_i - reserve).max(256);
     let (_kept_msgs, tokens, dropped) = window_messages(model, messages, budget)?;
     if dropped > 0 {
+        #[cfg(debug_assertions)]
         eprintln!(
             "[corpan-llm] context window: dropped {dropped} oldest message(s) to fit {budget} tok (n_ctx={n_ctx_i}, reserve={reserve})"
         );
@@ -529,13 +537,19 @@ fn run_turn(
     sess.cached.extend_from_slice(&tokens[reuse..]);
 
     // PERF: report prefilled vs reused so the cache win is visible in logcat.
-    let prefilled = n_prompt - reuse as i32;
-    let prefill_ms = prefill_start.elapsed().as_millis().max(1) as f64;
-    eprintln!(
-        "[corpan-llm] PERF prefill: {prefilled} tok (reused {reuse}) in {:.0}ms = {:.1} tok/s | threads={threads} n_ctx={n_ctx_i}",
-        prefill_ms,
-        (prefilled as f64) * 1000.0 / prefill_ms,
-    );
+    // Debug-only: this fires on every chat turn (hot path); keep release logs quiet.
+    #[cfg(debug_assertions)]
+    {
+        let prefilled = n_prompt - reuse as i32;
+        let prefill_ms = prefill_start.elapsed().as_millis().max(1) as f64;
+        eprintln!(
+            "[corpan-llm] PERF prefill: {prefilled} tok (reused {reuse}) in {:.0}ms = {:.1} tok/s | threads={threads} n_ctx={n_ctx_i}",
+            prefill_ms,
+            (prefilled as f64) * 1000.0 / prefill_ms,
+        );
+    }
+    // Used only by the debug-gated PERF trace above; silence release warnings.
+    let _ = (&prefill_start, threads);
 
     let mut sampler = build_sampler(&options);
     let mut decoder = encoding_rs::UTF_8.new_decoder();
@@ -589,12 +603,16 @@ fn run_turn(
     }
 
     // PERF: decode (token generation) throughput, separate from prefill above.
-    let decode_ms = start.elapsed().as_millis().max(1) as f64;
-    eprintln!(
-        "[corpan-llm] PERF decode: {produced} tok in {:.0}ms = {:.1} tok/s",
-        decode_ms,
-        (produced as f64) * 1000.0 / decode_ms,
-    );
+    // Debug-only: fires on every chat turn (hot path); keep release logs quiet.
+    #[cfg(debug_assertions)]
+    {
+        let decode_ms = start.elapsed().as_millis().max(1) as f64;
+        eprintln!(
+            "[corpan-llm] PERF decode: {produced} tok in {:.0}ms = {:.1} tok/s",
+            decode_ms,
+            (produced as f64) * 1000.0 / decode_ms,
+        );
+    }
 
     let _ = app.emit(
         &format!("llm-done:{session_id}"),

@@ -273,10 +273,12 @@ fn is_private_host(host: &str) -> bool {
 }
 
 pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<String, String> {
+    #[cfg(debug_assertions)]
     eprintln!("[fetch_text] Fetching URL: {}", url);
 
     // Handle corpan-pack URLs (either platform form) by reading from disk.
     if is_pack_url(&url) {
+        #[cfg(debug_assertions)]
         eprintln!("[fetch_text] Handling corpan-pack URL");
         // Parse: corpan-pack://localhost/pack_id/path  OR
         //        http://corpan-pack.localhost/pack_id/path (Android/Windows).
@@ -284,6 +286,7 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
         let (pack_id, rel_path) =
             parse_pack_url(&url).ok_or("Invalid corpan-pack URL format")?;
 
+        #[cfg(debug_assertions)]
         eprintln!("[fetch_text] Pack ID: {}, Rel path: {}", pack_id, rel_path);
 
         // Use Tauri's proper API to get app data directory - works across all platforms
@@ -292,6 +295,7 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
             .map(|dir| dir.join("corpan-packs"))
             .map_err(|e| format!("Failed to get app data dir: {}", e))?;
 
+        #[cfg(debug_assertions)]
         eprintln!("[fetch_text] Pack root: {:?}", pack_root);
         // SECURITY: sanitize BOTH segments so a corpan-pack:// URL cannot escape
         // the pack root via `..` (arbitrary file read in the app sandbox). Mirror
@@ -308,16 +312,19 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
         if !file_canon.starts_with(&root_canon) {
             return Err("path escapes pack root".to_string());
         }
+        #[cfg(debug_assertions)]
         eprintln!("[fetch_text] Reading file: {:?}", file_canon);
 
         let content = fs::read_to_string(&file_canon)
             .map_err(|e| format!("Failed to read file {:?}: {}", file_canon, e))?;
+        #[cfg(debug_assertions)]
         eprintln!("[fetch_text] Successfully read {} bytes from disk", content.len());
         return Ok(content);
     }
 
     let parsed = reqwest::Url::parse(&url).map_err(|e| e.to_string())?;
     let scheme = parsed.scheme();
+    #[cfg(debug_assertions)]
     eprintln!("[fetch_text] URL scheme: {}", scheme);
     if scheme != "https" && scheme != "http" {
         eprintln!("[fetch_text] Unsupported URL scheme: {}", scheme);
@@ -336,6 +343,7 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
         e.to_string()
     })?;
     let status = res.status();
+    #[cfg(debug_assertions)]
     eprintln!("[fetch_text] Response status: {}", status);
     if !status.is_success() {
         return Err(format!("Request failed ({status})"));
@@ -344,6 +352,7 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
         eprintln!("[fetch_text] Text decode error: {}", e);
         e.to_string()
     })?;
+    #[cfg(debug_assertions)]
     eprintln!("[fetch_text] Successfully fetched {} bytes", text.len());
     Ok(text)
 }
@@ -354,6 +363,7 @@ pub async fn download_and_install<R: Runtime>(
     download_url: String,
     expected_sha256: Option<String>,
 ) -> Result<ContentPackInstallResult, String> {
+    #[cfg(debug_assertions)]
     eprintln!(
         "[pack-install] Starting install pack_id={}, url={}",
         pack_id, download_url
@@ -409,6 +419,7 @@ pub async fn download_and_install<R: Runtime>(
             return Err(e);
         }
     };
+    #[cfg(debug_assertions)]
     eprintln!("[pack-install] Downloaded archive to {:?} for {}", tmp_zip, pack_id);
 
     emit_progress("verifying", total, total, "Verifying integrity");
@@ -515,6 +526,7 @@ pub async fn download_and_install<R: Runtime>(
     };
     index.packs.insert(info.id.clone(), info.clone());
     save_index(&root, &index)?;
+    #[cfg(debug_assertions)]
     eprintln!(
         "[pack-install] Installed {} ({:?})",
         info.id, info.version
@@ -559,6 +571,7 @@ pub fn list_installed<R: Runtime>(app: &AppHandle<R>) -> Result<Vec<ContentPackI
 }
 
 pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<Vec<u8>, String> {
+    #[cfg(debug_assertions)]
     eprintln!("[fetch_bytes] Fetching URL: {}", url);
 
     // Handle corpan-pack URLs (either platform form) by reading from disk.
@@ -566,6 +579,7 @@ pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<
         let (pack_id, rel_path) =
             parse_pack_url(&url).ok_or("Invalid corpan-pack URL format")?;
 
+        #[cfg(debug_assertions)]
         eprintln!("[fetch_bytes] Pack ID: {}, Rel path: {}", pack_id, rel_path);
 
         let pack_root = app
@@ -588,10 +602,12 @@ pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<
         if !file_canon.starts_with(&root_canon) {
             return Err("path escapes pack root".to_string());
         }
+        #[cfg(debug_assertions)]
         eprintln!("[fetch_bytes] Reading file: {:?}", file_canon);
 
         let content = fs::read(&file_canon)
             .map_err(|e| format!("Failed to read file {:?}: {}", file_canon, e))?;
+        #[cfg(debug_assertions)]
         eprintln!("[fetch_bytes] Successfully read {} bytes from disk", content.len());
         return Ok(content);
     }
@@ -599,6 +615,7 @@ pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<
     // Handle HTTP/HTTPS URLs via reqwest (no CORS restrictions)
     let parsed = reqwest::Url::parse(&url).map_err(|e| e.to_string())?;
     let scheme = parsed.scheme();
+    #[cfg(debug_assertions)]
     eprintln!("[fetch_bytes] URL scheme: {}", scheme);
     if scheme != "https" && scheme != "http" {
         eprintln!("[fetch_bytes] Unsupported URL scheme: {}", scheme);
@@ -617,6 +634,7 @@ pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<
         e.to_string()
     })?;
     let status = res.status();
+    #[cfg(debug_assertions)]
     eprintln!("[fetch_bytes] Response status: {}", status);
     if !status.is_success() {
         return Err(format!("Request failed ({status})"));
@@ -625,6 +643,7 @@ pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<
         eprintln!("[fetch_bytes] Bytes decode error: {}", e);
         e.to_string()
     })?;
+    #[cfg(debug_assertions)]
     eprintln!("[fetch_bytes] Successfully fetched {} bytes", bytes.len());
     Ok(bytes.to_vec())
 }
@@ -682,6 +701,7 @@ pub async fn install_module<R: Runtime>(
     expected_sha256: Option<String>,
     pack_manifest: Option<String>,
 ) -> Result<(), String> {
+    #[cfg(debug_assertions)]
     eprintln!(
         "[pack-module] Starting module install pack_id={}, sub_path={}, url={}",
         pack_id, sub_path, download_url
@@ -739,6 +759,7 @@ pub async fn install_module<R: Runtime>(
             return Err(e);
         }
     };
+    #[cfg(debug_assertions)]
     eprintln!(
         "[pack-module] Downloaded archive to {:?} for {}/{}",
         tmp_zip, pack_id, sub_path
@@ -781,10 +802,12 @@ pub async fn install_module<R: Runtime>(
                 emit_progress("error", 0, 0, &format!("Failed to write manifest: {e}"));
                 format!("Failed to write manifest: {e}")
             })?;
+            #[cfg(debug_assertions)]
             eprintln!("[pack-module] Wrote manifest at {:?}", manifest_path);
         }
     }
 
+    #[cfg(debug_assertions)]
     eprintln!(
         "[pack-module] Installed module {} into {:?}",
         pack_id, dest
