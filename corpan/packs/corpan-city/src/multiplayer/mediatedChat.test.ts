@@ -99,7 +99,7 @@ describe("two-sided mediated chat", () => {
     const input = await mediator.prepareOutbound(A_TO_B)
     expect(input.source).toEqual({ kind: "text", text: "Do you want to play soccer?" })
     expect(input.sourceLanguage).toBe("en")
-    expect(calls[0]?.[0]?.content).toContain("Translate this learner chat line into clear")
+    expect(calls[0]?.[0]?.content).toContain("Rewrite this chat message as one simple, natural English line")
     expect(JSON.stringify(calls)).not.toMatch(/json/i)
     expect(JSON.stringify(calls)).not.toMatch(bannedRelayTerm)
   })
@@ -128,9 +128,10 @@ describe("two-sided mediated chat", () => {
     expect(artifact.targetLanguage).toBe("es")
     expect(artifact.suggestedReplies[0]?.label).toBe("¡Sí, vamos!")
     expect(calls.map((call) => call[0]?.content).join("\n")).toContain(
-      "Independently clean this already-transformed English relay text",
+      "Rewrite this already-prepared English chat line one more time",
     )
-    expect(calls.map((call) => call[0]?.content).join("\n")).toContain("Translate the English relay text into es")
+    // es now uses a fully in-language (Spanish) translation directive.
+    expect(calls.map((call) => call[0]?.content).join("\n")).toContain("Traduce al español")
     expect(JSON.stringify(calls)).not.toMatch(/json/i)
     expect(JSON.stringify(calls)).not.toMatch(bannedRelayTerm)
   })
