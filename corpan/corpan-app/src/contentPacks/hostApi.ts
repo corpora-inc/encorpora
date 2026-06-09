@@ -186,6 +186,33 @@ export const createHostApi = (packId?: string): HostApi => {
 
   const dispose = () => {
     disposed = true
+    // Free heavyweight native resources held on behalf of this pack so they do
+    // not leak across pack switches — the #1 cause of memory growth and the
+    // iOS jetsam kills we saw when re-entering an LLM pack (the ~2.5 GB model
+    // buffer was never released). Every command below is an idempotent no-op
+    // when nothing is loaded/playing, and we fire-and-forget so dispose() stays
+    // non-blocking for the host teardown path. Failures are logged, never
+    // silently swallowed (e.g. a build without a given plugin).
+    const release = (
+      label: string,
+      run: () => Promise<unknown> | undefined | void,
+    ) => {
+      // Promise.resolve wraps optional methods that may be absent (returning
+      // undefined) on a given build, so .catch is always safe.
+      void Promise.resolve(run()).catch((error) => {
+        console.error(`[hostApi] ${label} on dispose failed:`, error)
+      })
+    }
+    release("llm.unload", () => llm.unload()) // frees the ~2.5 GB model buffer
+    release("stt.unload", () => stt.unload?.()) // frees the resident whisper model
+    release("stt.releaseAudio", () => stt.releaseAudio?.()) // releases mic/audio session
+    // Belt-and-braces: stop any native audio this pack may have left running.
+    // Packs normally stop their own, but a pack that exits mid-playback would
+    // otherwise leak a player/decoder thread or hold the audio session.
+    release("radio.stop", () => invoke("plugin:radio-stream|stop"))
+    release("audioKeepalive.stop", () =>
+      invoke("plugin:audio-keepalive|stop_audio_keepalive"),
+    )
   }
 
   const resolvePackId = (query: PackDbQuery) => {

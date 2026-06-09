@@ -7,14 +7,46 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.17.3] - 2026-06-09
+
 ### Fixed
 
+- **Memory: on-device models are now freed when a pack exits.** The LLM (~2.5 GB
+  Qwen3 buffer) and the resident Whisper STT model were never released on pack
+  teardown, so re-entering an LLM pack (e.g. Tutomaton) leaked memory each time
+  and degraded the device until the app was restarted (iOS jetsam kills under
+  pressure). `hostApi.dispose()` now frees the LLM and STT models, releases the
+  mic/audio session, and idempotently stops any radio/keepalive audio a pack
+  left playing.
+- **Dialogs can no longer trap the user.** A tall dialog (notably the Corpán
+  Plus paywall) on a small screen or with a large system font could overflow the
+  viewport with no way to scroll to its dismiss control. The shared dialog now
+  caps its height to a safe-area-aware viewport height and scrolls internally,
+  with the close control always reachable — every dialog inherits this.
+- **Android: the Home scrollbar no longer bleeds through a running pack.** Home
+  is a fixed, independently-scrolling layer; on Android WebView its scrollbar
+  painted through the opaque pack/experience overlay on top. Home's scroll is now
+  frozen while a full-screen experience is open (iOS was unaffected).
 - Installed-pack image/font/audio assets now load on Android. Asset URLs were
   hardcoded `corpan-pack://localhost/…` on every platform, but Tauri serves that
   scheme at `http://corpan-pack.localhost/…` on Android/Windows, so `<img>` (e.g.
   a pack logo) and other WebView-resolved assets silently failed there. The
   installed-pack URL is now platform-aware and the native fetch + host gate accept
   both forms; desktop/iOS unchanged.
+
+### Changed
+
+- High-frequency native debug/PERF logging (per-prefill/decode in the LLM plugin,
+  pack fetch/install traces) is now gated out of release builds; error logging is
+  unchanged (still always visible).
+- Introduced shared design tokens in `index.css`: safe-area insets (`--safe-*`),
+  a safe-area-aware `--dialog-max-h`, and a `--z-*` layering ladder, so overlays
+  and modals stack and inset consistently instead of using ad-hoc magic numbers.
+- Responsive density pass: surfaces stay compact on phones but grow roomier at
+  `>= md` (iPad/desktop). The phrase-pack browser's filter pills get larger
+  touch/click targets and type, and Settings / Quick settings / the phrase-pack
+  browser now cap + center their content width instead of stretching edge-to-edge
+  on wide screens. Convention documented in `AGENTS.md` §1.1.
 
 ## [0.17.1] - 2026-06-07
 

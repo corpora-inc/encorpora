@@ -49,7 +49,7 @@ function PillRail({ children }: { children: React.ReactNode }) {
         >
             <div
                 className="
-                    flex flex-nowrap gap-1 overflow-x-auto
+                    flex flex-nowrap gap-1.5 md:gap-2 overflow-x-auto
                     [-webkit-overflow-scrolling:touch] [scrollbar-width:none]
                     [&::-webkit-scrollbar]:hidden
                     px-2
@@ -75,7 +75,11 @@ function PillButton({
             type="button"
             onClick={onClick}
             className={[
-                "shrink-0 px-2.5 py-0.5 rounded-full text-[11px] font-medium border transition-colors whitespace-nowrap",
+                // Compact on phones; roomier touch/click target + larger
+                // type at >= md (iPad/desktop). The min-h keeps the >= md
+                // hit area a comfortable ~36px without bloating phones.
+                "shrink-0 rounded-full font-medium border transition-colors whitespace-nowrap",
+                "px-2.5 py-1 text-[11px] md:px-4 md:py-1.5 md:text-sm md:min-h-[36px] md:inline-flex md:items-center",
                 selected
                     ? "border-purple-400/60 bg-purple-500/[0.08] text-purple-500"
                     : "border-border bg-background text-muted-foreground hover:border-purple-400/40 hover:text-foreground",
@@ -237,7 +241,7 @@ export function PhrasePackBrowser() {
             {/* Sticky filter chrome — stays pinned at the top of the
                 drawer's scroll area so users keep their filter
                 affordances regardless of how far they've scrolled. */}
-            <div className="sticky top-0 z-10 bg-background space-y-2 px-4 pt-2 pb-3 border-b border-border/40">
+            <div className="sticky top-0 z-10 bg-background space-y-2 md:space-y-3 px-4 md:px-6 pt-2 md:pt-3 pb-3 border-b border-border/40">
                 {!isOnline && (
                     <OfflineNotice
                         density="compact"
@@ -259,7 +263,7 @@ export function PhrasePackBrowser() {
                         placeholder={t("packs.phrasePack.searchPlaceholder", {
                             defaultValue: "Search phrase packs",
                         })}
-                        className="w-full pl-8 pr-3 py-2 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-purple-400/40"
+                        className="w-full pl-8 pr-3 py-2 md:py-2.5 rounded-md border border-input bg-background text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-purple-400/40"
                     />
                 </div>
                 <PillRail>
@@ -309,7 +313,7 @@ export function PhrasePackBrowser() {
              *  here (returns 0 on Android, undersized inside Vaul's
              *  portal on iPad in landscape) so we use the static
              *  convention per AGENTS.md §6. */}
-            <div className="flex-1 overflow-y-auto px-4 pt-3 pb-16">
+            <div className="flex-1 overflow-y-auto px-4 md:px-6 pt-3 md:pt-4 pb-16">
                 {showAllInstalledHero && (
                     <div className="rounded-lg border border-purple-400/40 bg-purple-500/[0.04] p-5 text-center">
                         <CheckCircle2
@@ -369,7 +373,7 @@ export function PhrasePackBrowser() {
                             )}
 
                         {visiblePacks.length > 0 && (
-                            <div className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                            <div className="grid gap-2 md:gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                                 {visiblePacks.map((pack) => (
                                     <PhrasePackCard
                                         key={pack.id}

@@ -440,7 +440,40 @@ const PackModule: ContentPackModule = {
               <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
             </span>
           </button>
+          <!-- Narrow-screen overflow: on phones the floating .lt-fabs would
+               overlap chat text, so they're CSS-hidden below the breakpoint and
+               this kebab takes their place. Above the breakpoint the kebab is
+               hidden and the fabs float. The menu items below just forward
+               clicks to the same fab buttons — one set of handlers. -->
+          <button class="lt-kebab" aria-haspopup="menu" aria-expanded="false" aria-label="${t("moreOptions")}" title="${t("moreOptions")}">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+          </button>
         </header>
+
+        <!-- Overflow menu for the four actions on narrow screens. Each item
+             forwards its click to the matching floating fab so there is exactly
+             one handler per action (no duplicated logic). -->
+        <div class="lt-actionmenu" hidden>
+          <div class="lt-actionmenu-scrim"></div>
+          <div class="lt-actionmenu-popover" role="menu" aria-label="${t("moreOptions")}">
+            <button class="lt-actionmenu-item" role="menuitem" data-action="tune">
+              <span class="lt-actionmenu-icon" aria-hidden="true">${ICON.tune}</span>
+              <span class="lt-actionmenu-label">${t("modelLab")}</span>
+            </button>
+            <button class="lt-actionmenu-item" role="menuitem" data-action="voice">
+              <span class="lt-actionmenu-icon" aria-hidden="true">${ICON.voice}</span>
+              <span class="lt-actionmenu-label">${t("chooseVoice")}</span>
+            </button>
+            <button class="lt-actionmenu-item lt-actionmenu-tts" role="menuitemcheckbox" data-action="tts">
+              <span class="lt-actionmenu-icon" aria-hidden="true">${ICON.speaker}</span>
+              <span class="lt-actionmenu-label">${t("voiceReplies")}</span>
+            </button>
+            <button class="lt-actionmenu-item" role="menuitem" data-action="clear">
+              <span class="lt-actionmenu-icon" aria-hidden="true">${ICON.refresh}</span>
+              <span class="lt-actionmenu-label">${t("newConversation")}</span>
+            </button>
+          </div>
+        </div>
 
         <div class="lt-langsheet" hidden role="dialog" aria-modal="true" aria-label="${t("chooseTutor")}">
           <div class="lt-langsheet-scrim"></div>
@@ -549,21 +582,34 @@ const PackModule: ContentPackModule = {
           <button class="lt-fab lt-clear" aria-label="${t("newConversation")}" title="${t("newConversation")}">${ICON.refresh}</button>
         </div>
 
+        <!-- Composer. Height is STABLE: the mic keeps its slot even when hidden
+             (visibility, not display:none), and the quota line reserves a fixed
+             line-height even when empty — so the footer never jumps as the mic
+             appears/disappears or the quota text changes. -->
         <footer class="lt-input">
-          <!-- Dictation: the keyboard's built-in mic always works; ADDITIONALLY,
-               where host.asr can transcribe the active language (native on-device
-               STT — language-complete, stronger than the keyboard mic on Android),
-               this mic dictates straight into the field. HIDDEN where no provider
-               transcribes (keyboard floor), so it only shows where it adds value. -->
-          <button class="lt-mic" type="button" aria-label="Dictate" title="Dictate" disabled hidden>${ICON.mic}</button>
-          <div class="lt-field">
-            <textarea class="lt-text" rows="1" dir="auto" placeholder="${t("askAnything")}" autocomplete="off"></textarea>
+          <div class="lt-input-row">
+            <!-- Dictation: the keyboard's built-in mic always works; ADDITIONALLY,
+                 where host.asr can transcribe the active language (native on-device
+                 STT — language-complete, stronger than the keyboard mic on Android),
+                 this mic dictates straight into the field. Its slot stays reserved
+                 even when no provider transcribes, so the row never reflows. -->
+            <button class="lt-mic" type="button" aria-label="Dictate" title="Dictate" disabled hidden>${ICON.mic}</button>
+            <div class="lt-field">
+              <textarea class="lt-text" rows="1" dir="auto" placeholder="${t("askAnything")}" autocomplete="off"></textarea>
+            </div>
+            <button class="lt-send" aria-label="${t("send")}" disabled>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.2L4 11l9 1-9 1-1.98 6.2a1 1 0 0 0 1.38 1.2z"/></svg>
+            </button>
           </div>
-          <button class="lt-send" aria-label="${t("send")}" disabled>
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4l17.45-7.48a1 1 0 0 0 0-1.84L3.4 3.6a1 1 0 0 0-1.39 1.2L4 11l9 1-9 1-1.98 6.2a1 1 0 0 0 1.38 1.2z"/></svg>
-          </button>
           <div class="lt-quota" role="status" aria-live="polite"></div>
         </footer>
+
+        <!-- "Scroll lock" affordance: appears only when the user has scrolled up
+             (autoscroll released) AND new content arrived below. Tapping it
+             returns to the bottom and re-engages stick-to-bottom. -->
+        <button class="lt-jump" type="button" hidden aria-label="${t("jumpToLatest")}" title="${t("jumpToLatest")}">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 16.5l-7-7L6.4 8l5.6 5.6L17.6 8 19 9.5z"/></svg>
+        </button>
 
         <div class="lt-setup" hidden>
           <div class="lt-setup-card">
@@ -586,11 +632,16 @@ const PackModule: ContentPackModule = {
     const $send = container.querySelector<HTMLButtonElement>(".lt-send")!
     const $mic = container.querySelector<HTMLButtonElement>(".lt-mic")!
     const $quota = container.querySelector<HTMLDivElement>(".lt-quota")!
+    const $jump = container.querySelector<HTMLButtonElement>(".lt-jump")!
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
     const $tune = container.querySelector<HTMLButtonElement>(".lt-tune")!
     const $voice = container.querySelector<HTMLButtonElement>(".lt-voice")!
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
     const $back = container.querySelector<HTMLButtonElement>(".lt-back")!
+    const $kebab = container.querySelector<HTMLButtonElement>(".lt-kebab")!
+    const $actionMenu = container.querySelector<HTMLDivElement>(".lt-actionmenu")!
+    const $actionMenuScrim = container.querySelector<HTMLDivElement>(".lt-actionmenu-scrim")!
+    const $actionMenuTts = container.querySelector<HTMLButtonElement>(".lt-actionmenu-tts")!
     const $langTrigger = container.querySelector<HTMLButtonElement>(".lt-lang-trigger")!
     const $langSheet = container.querySelector<HTMLDivElement>(".lt-langsheet")!
     const $langSheetList = container.querySelector<HTMLDivElement>(".lt-langsheet-list")!
@@ -618,6 +669,46 @@ const PackModule: ContentPackModule = {
     const $setupPct = container.querySelector<HTMLDivElement>(".lt-setup-pct")!
     const $setupAction = container.querySelector<HTMLButtonElement>(".lt-setup-action")!
     $voice.hidden = !hostApi.listVoices || !hostApi.speakVoice
+
+    // ---------- header overflow menu (narrow screens) ----------
+    // The kebab + popover mirror the four floating fabs. Each item forwards its
+    // click to the corresponding fab button so there is exactly one handler per
+    // action. CSS shows the kebab OR the fabs by width, never both.
+    function openActionMenu() {
+      // The voice action is meaningless without a host voice API — hide the item
+      // when its fab is hidden so the menu mirrors what's actually available.
+      const voiceItem = $actionMenu.querySelector<HTMLButtonElement>('[data-action="voice"]')
+      if (voiceItem) voiceItem.hidden = $voice.hidden
+      $actionMenu.hidden = false
+      $kebab.setAttribute("aria-expanded", "true")
+      requestAnimationFrame(() => $actionMenu.classList.add("open"))
+    }
+    function closeActionMenu() {
+      $actionMenu.classList.remove("open")
+      $kebab.setAttribute("aria-expanded", "false")
+      window.setTimeout(() => {
+        if (!$actionMenu.classList.contains("open")) $actionMenu.hidden = true
+      }, 160)
+    }
+    $kebab.addEventListener("click", () => {
+      if ($actionMenu.hidden) openActionMenu()
+      else closeActionMenu()
+    })
+    $actionMenuScrim.addEventListener("click", closeActionMenu)
+    $actionMenu.querySelectorAll<HTMLButtonElement>(".lt-actionmenu-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const action = item.dataset.action
+        const target =
+          action === "tune" ? $tune :
+          action === "voice" ? $voice :
+          action === "tts" ? $ttsBtn :
+          action === "clear" ? $clear : null
+        closeActionMenu()
+        // Forward to the canonical fab handler — single source of truth.
+        target?.click()
+      })
+    })
+
     const voiceLists = new Map<string, HostVoiceInfo[]>()
     const selectedVoices = new Map<string, HostVoiceInfo | null>()
     const voiceLoads = new Map<string, Promise<HostVoiceInfo | null>>()
@@ -905,6 +996,7 @@ const PackModule: ContentPackModule = {
       if (e.key === "Escape" && !$langSheet.hidden) closeLangSheet()
       if (e.key === "Escape" && !$modelSheet.hidden) closeModelSheet()
       if (e.key === "Escape" && !$voiceSheet.hidden) closeVoiceSheet()
+      if (e.key === "Escape" && !$actionMenu.hidden) closeActionMenu()
     })
     // Live-filter the sheet as you type. Scales gracefully to ~50 languages.
     let langQuery = ""
@@ -1029,6 +1121,9 @@ const PackModule: ContentPackModule = {
     // ---------- message rendering ----------
     function clearLog() {
       $log.innerHTML = ""
+      // Fresh/empty log → nothing to scroll past, so re-engage the lock.
+      stickToBottom = true
+      syncJumpChip()
     }
 
     function renderWelcome() {
@@ -1098,9 +1193,56 @@ const PackModule: ContentPackModule = {
       $log.appendChild(wrap)
     }
 
-    function scrollDown() {
-      $log.scrollTop = $log.scrollHeight
+    // ---------- "stick to bottom" scroll lock ----------
+    // Industry-standard pattern: while the reader is at (or near) the bottom we
+    // keep autoscrolling as tokens/messages arrive; the moment they scroll UP we
+    // RELEASE the lock and respect their position; returning to the bottom
+    // RE-ENGAGES it. Detection is purely positional and recomputed on every
+    // scroll event — this naturally distinguishes a user scroll-up from our own
+    // programmatic scroll (which lands at the bottom → stays "near bottom" → stays
+    // engaged) without any "ignore the next event" bookkeeping, and never fights
+    // iOS momentum scrolling.
+    const STICK_THRESHOLD = 48 // px from the bottom that still counts as "stuck"
+    let stickToBottom = true
+
+    function isNearBottom() {
+      return (
+        $log.scrollHeight - $log.scrollTop - $log.clientHeight <= STICK_THRESHOLD
+      )
     }
+
+    // The jump-to-latest chip is shown only when the lock is RELEASED.
+    function syncJumpChip() {
+      $jump.hidden = stickToBottom
+    }
+
+    // Force the log to the bottom and re-engage the lock — for the user's own
+    // sends and explicit actions (a brand-new user turn always pulls them down).
+    function scrollToLatest() {
+      stickToBottom = true
+      $log.scrollTop = $log.scrollHeight
+      syncJumpChip()
+    }
+
+    // Autoscroll ONLY while engaged; when released, leave the reader where they
+    // are (content keeps growing above the fold; the chip cues them back).
+    function scrollDown() {
+      if (stickToBottom) $log.scrollTop = $log.scrollHeight
+      syncJumpChip()
+    }
+
+    // Recompute the lock from the live position on every scroll. Passive so it
+    // never blocks/janks touch momentum.
+    $log.addEventListener(
+      "scroll",
+      () => {
+        stickToBottom = isNearBottom()
+        syncJumpChip()
+      },
+      { passive: true }
+    )
+
+    $jump.addEventListener("click", scrollToLatest)
 
     function bubble(role: "user" | "assistant", text = ""): HTMLDivElement {
       // First real message clears the welcome state.
@@ -1156,7 +1298,11 @@ const PackModule: ContentPackModule = {
       }
       wrap.appendChild(body)
       $log.appendChild(wrap)
-      scrollDown()
+      // A brand-new USER turn always pulls them to the bottom and re-engages the
+      // lock (you asked → you want to see the answer). The assistant bubble only
+      // autoscrolls if still engaged, so a reader who scrolled up stays put.
+      if (role === "user") scrollToLatest()
+      else scrollDown()
       return body
     }
 
@@ -1599,6 +1745,12 @@ const PackModule: ContentPackModule = {
       $ttsBtn.innerHTML = state.ttsEnabled ? ICON.speaker : ICON.speakerMuted
       $ttsBtn.setAttribute("aria-pressed", state.ttsEnabled ? "true" : "false")
       $ttsBtn.setAttribute("aria-label", state.ttsEnabled ? t("muteVoice") : t("unmuteVoice"))
+      // Mirror the toggle state into the overflow-menu item (icon + checked).
+      const icon = $actionMenuTts.querySelector<HTMLSpanElement>(".lt-actionmenu-icon")
+      const label = $actionMenuTts.querySelector<HTMLSpanElement>(".lt-actionmenu-label")
+      if (icon) icon.innerHTML = state.ttsEnabled ? ICON.speaker : ICON.speakerMuted
+      if (label) label.textContent = state.ttsEnabled ? t("muteVoice") : t("unmuteVoice")
+      $actionMenuTts.setAttribute("aria-checked", state.ttsEnabled ? "true" : "false")
     }
     syncTtsBtn()
     $ttsBtn.addEventListener("click", () => {

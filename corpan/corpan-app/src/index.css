@@ -263,30 +263,41 @@ body {
 }
 
 /* ──────────────────────────────────────────────────────────────────
-   4) Safe-area handling (plugin → env() → 0)
-   - Pads page content
-   - Auto-lifts any Tailwind `fixed bottom-0/top-0/...`
+   4) Safe-area + layering tokens (the shared design scale)
+   - Safe insets resolve to env(); callers that need a hard floor on
+     Android WebViews (where env(safe-area-inset-bottom) can report 0)
+     should use max(var(--safe-*), <fallback>) at the call site, as the
+     onboarding/home screens already do.
+   - --dialog-max-h caps centered modals so they clear the notch AND the
+     home indicator and can always be scrolled (paywall-trap fix).
+   - --z-* is one layering ladder so overlays stack predictably instead
+     of every component inventing its own magic number.
    ------------------------------------------------------------------ */
-/* :root {
+:root {
     --safe-top: env(safe-area-inset-top, 0px);
     --safe-right: env(safe-area-inset-right, 0px);
     --safe-bottom: env(safe-area-inset-bottom, 0px);
     --safe-left: env(safe-area-inset-left, 0px);
 
-    --inset-top: var(--safe-area-inset-top, var(--safe-top));
-    --inset-right: var(--safe-area-inset-right, var(--safe-right));
-    --inset-bottom: var(--safe-area-inset-bottom, var(--safe-bottom));
-    --inset-left: var(--safe-area-inset-left, var(--safe-left));
-} */
+    --dialog-max-h: calc(100dvh - var(--safe-top) - var(--safe-bottom) - 2rem);
 
-/* Pad page edges so long content never hides under bars/cutouts */
-/* body { */
-/* padding-top: var(--inset-top); */
-/* padding-right: var(--inset-right); */
-/* padding-bottom: var(--inset-bottom); */
-/* padding-bottom: 500px; */
-/* padding-left: var(--inset-left); */
-/* } */
+    --z-sticky: 1001;
+    --z-overlay: 1100;
+    --z-modal: 1100;
+    --z-modal-close: 1101;
+    --z-drawer: 1200;
+    --z-popover: 1300;
+    --z-toast: 1400;
+}
+
+/* When a full-screen experience overlays Home, freeze Home's own scroll
+   container. Home is `position:fixed; overflow-y:auto` (its own scroll
+   context), so on Android WebView its scrollbar otherwise paints THROUGH
+   the opaque pack overlay on top. Locking it removes the bleed-through and
+   stops a hidden second scroller from eating momentum. iOS is unaffected. */
+body[data-experience-active="true"] [data-home-scroll] {
+    overflow: hidden !important;
+}
 
 /* Auto-lift any Tailwind fixed elements anchored to screen edges */
 /* [class~="fixed"][class~="bottom-0"] {

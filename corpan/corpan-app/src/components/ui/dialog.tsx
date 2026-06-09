@@ -36,7 +36,7 @@ const DialogOverlay = React.forwardRef<
     ref={ref}
     data-slot="dialog-overlay"
     className={cn(
-      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-[1100] bg-black/50",
+      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-[var(--z-overlay)] bg-black/50",
       className
     )}
     {...props}
@@ -58,13 +58,19 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-[1100] grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-md border p-6 shadow-lg duration-200 sm:max-w-lg",
+          // max-h + overflow keep the dialog inside the viewport so a tall
+          // dialog (e.g. the paywall on a small screen with large system font)
+          // can always be scrolled and its controls reached — never a trap.
+          // --dialog-max-h subtracts the safe-area insets so the sheet clears
+          // the notch and home indicator; overscroll-contain stops the scroll
+          // from chaining to the page behind it.
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-[var(--z-modal)] grid w-full max-w-[calc(100%-2rem)] max-h-[var(--dialog-max-h)] translate-x-[-50%] translate-y-[-50%] gap-4 overflow-y-auto overscroll-contain rounded-md border p-6 shadow-lg duration-200 sm:max-w-lg",
           className
         )}
         {...props}
       >
         {!hideCloseButton && (
-          <div className="sticky top-5 z-[1001] ms-auto w-12 pointer-events-none">
+          <div className="sticky top-3 z-[var(--z-modal-close)] ms-auto w-12 pointer-events-none">
             <div className="relative h-10 w-12">
               <DialogPrimitive.Close
                 className="pointer-events-auto absolute inset-0 inline-flex h-10 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none"

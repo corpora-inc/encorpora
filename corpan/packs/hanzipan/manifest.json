@@ -1,7 +1,7 @@
 {
   "id": "hanzipan",
   "name": "Hanzipan",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"

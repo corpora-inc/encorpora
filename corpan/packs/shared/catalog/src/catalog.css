@@ -1544,6 +1544,228 @@
 }
 
 /* ============================================================
+   Browse controls bar — sort segment + density toggle
+   ============================================================ */
+
+.catalog-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px 0;
+  flex-wrap: wrap;
+}
+
+/* Sort segmented control */
+.catalog-sort {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  gap: 2px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: var(--catalog-surface);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.catalog-sort-opt {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.catalog-sort-opt:hover {
+  color: var(--catalog-text);
+}
+
+.catalog-sort-opt--active {
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
+.catalog-sort-opt:focus-visible {
+  outline: 2px solid var(--catalog-accent);
+  outline-offset: 2px;
+}
+
+/* Density toggle (compact ↔ expanded) */
+.catalog-view-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 7px 12px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.catalog-view-toggle:hover {
+  color: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+}
+
+.catalog-view-toggle:focus-visible {
+  outline: 2px solid var(--catalog-accent);
+  outline-offset: 2px;
+}
+
+.catalog-view-toggle svg {
+  flex-shrink: 0;
+}
+
+/* Hide the toggle's text label on the narrowest screens — the icon carries it. */
+@media (max-width: 380px) {
+  .catalog-view-toggle-label {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Compact list rows (dense, scannable — Apple Books / Audible)
+   ============================================================ */
+
+.catalog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.catalog-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--catalog-radius);
+  background: transparent;
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  cursor: pointer;
+  text-align: left;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.catalog-list-row:hover {
+  background: var(--catalog-surface);
+  border-color: var(--catalog-border);
+}
+
+.catalog-list-row:focus-visible {
+  outline: none;
+  border-color: var(--catalog-accent);
+}
+
+.catalog-list-row--active {
+  border-color: var(--catalog-accent);
+  background: color-mix(in srgb, var(--catalog-accent) 7%, transparent);
+}
+
+.catalog-list-thumb {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: calc(var(--catalog-radius) - 4px);
+  background: var(--catalog-surface);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--catalog-border);
+}
+
+.catalog-list-thumb--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--catalog-text-dim);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.catalog-list-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.catalog-list-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.catalog-list-sub {
+  display: flex;
+  min-width: 0;
+}
+
+.catalog-list-sub-text {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Language badges sit on the meta line in compact rows — kept to one line and
+   clipped so a 50-language book never blows the row height. */
+.catalog-list-langs.catalog-card-langs {
+  margin-bottom: 0;
+  margin-top: 2px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  max-height: 20px;
+}
+
+.catalog-list-price.catalog-card-meta {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--catalog-text-dim);
+  white-space: nowrap;
+  align-self: center;
+}
+
+/* On wide screens the compact list reads better as two columns — the rows are
+   short, so a single column wastes the iPad/desktop width. */
+@media (min-width: 768px) {
+  .catalog-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .catalog-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ============================================================
    Cover thumbnails on book cards
    ============================================================ */
 

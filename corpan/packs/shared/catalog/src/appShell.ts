@@ -18,7 +18,10 @@ import { stopPreview } from "./voicePreview"
 import { libraryStore, isInstalled, getInstalled, listInstalled } from "./libraryStore"
 import { getPackUrl, isTauriAvailable, installNarration, deleteNarration, isTwoZipEntry } from "./installManager"
 import {
+  groupByBook,
   groupBySeries,
+  sortBooks,
+  type BookSort,
   filterByLanguage,
   searchByTitle,
   getAvailableLanguages,
@@ -26,6 +29,7 @@ import {
   partitionLanguagesByStack,
   sortNarrationsByStack,
 } from "./searchFilter"
+import type { BookGroup } from "./types"
 import { hasUpdate } from "./versionUtil"
 import {
   purchaseBookProduct,
@@ -449,6 +453,31 @@ export function createAppShell(
   let browseShowingDetail = false
   /** Which dimension the browse list is showing. */
   let browseMode: "books" | "narrators" = "books"
+
+  // --- Browse view density + sort (persisted, pack-scoped) ---
+  // "compact" = dense scannable rows (default, à la Apple Books / Audible list
+  // rows); "expanded" = large-cover cards grouped by series. Sort drives the
+  // compact flat list AND the order series float in expanded view.
+  type BrowseView = "compact" | "expanded"
+  const viewKey = `corpan-catalog-view:${opts.readerId}`
+  const sortKey = `corpan-catalog-sort:${opts.readerId}`
+
+  function loadBrowseView(): BrowseView {
+    try {
+      return localStorage.getItem(viewKey) === "expanded" ? "expanded" : "compact"
+    } catch {
+      return "compact"
+    }
+  }
+  function loadBrowseSort(): BookSort {
+    try {
+      const raw = localStorage.getItem(sortKey)
+      if (raw === "latest" || raw === "title" || raw === "series") return raw
+    } catch { /* ignore */ }
+    return "series"
+  }
+  let browseView: BrowseView = loadBrowseView()
+  let browseSort: BookSort = loadBrowseSort()
 
   // --- Now-playing section state ---
   let nowPlayingSectionEl: HTMLElement | null = null
@@ -896,7 +925,15 @@ export function createAppShell(
         refreshNowPlayingSection()
         refreshLibrarySection()
       },
-      onInstalled: () => rebuildAll(),
+      // Downloading a narration from Now Playing SELECTS it — the user pulled
+      // this language/voice from the surface that shows what's currently
+      // playing, so make it the active narration (then rebuild every surface).
+      onInstalled: (narr) => {
+        if (isInstalled(narr.id) && narr.id !== getActive()) {
+          switchToNarration(narr.id)
+        }
+        rebuildAll()
+      },
     }
 
     for (const narr of installedNarrs) {
@@ -1120,6 +1157,12 @@ export function createAppShell(
     header.appendChild(searchInput)
     browseSectionEl.appendChild(header)
 
+    // View density + sort controls — books mode only. The narrators tab is an
+    // avatar grid that doesn't benefit from a dense/sort toggle.
+    if (browseMode === "books") {
+      browseSectionEl.appendChild(buildBrowseControls())
+    }
+
     // Language filter — single chooser button; bottom-sheet for scale.
     // Narrators view doesn't filter by language at the top level (the per-narrator
     // language pills do that on the profile screen).
@@ -1159,6 +1202,78 @@ export function createAppShell(
     renderBrowseResults()
   }
 
+  // SVG glyphs for the compact/expanded view toggle.
+  const SVG_VIEW_COMPACT = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>`
+  const SVG_VIEW_EXPANDED = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`
+
+  /**
+   * Browse controls bar: a Latest / Title / Series sort segment + a
+   * compact/expanded density toggle. Both choices persist (pack-scoped) and
+   * trigger a results re-render only — the catalog isn't refetched.
+   */
+  function buildBrowseControls(): HTMLElement {
+    const bar = document.createElement("div")
+    bar.className = "catalog-controls"
+
+    // --- Sort segmented control ---
+    const seg = document.createElement("div")
+    seg.className = "catalog-sort"
+    seg.setAttribute("role", "radiogroup")
+    seg.setAttribute(
+      "aria-label",
+      tt("catalog.sort.label", "Sort books"),
+    )
+
+    const sortOptions: { id: BookSort; label: string }[] = [
+      { id: "latest", label: tt("catalog.sort.latest", "Latest") },
+      { id: "title", label: tt("catalog.sort.title", "Title") },
+      { id: "series", label: tt("catalog.sort.series", "Series") },
+    ]
+    for (const opt of sortOptions) {
+      const btn = document.createElement("button")
+      btn.type = "button"
+      btn.className =
+        "catalog-sort-opt" + (browseSort === opt.id ? " catalog-sort-opt--active" : "")
+      btn.textContent = opt.label
+      btn.setAttribute("role", "radio")
+      btn.setAttribute("aria-checked", browseSort === opt.id ? "true" : "false")
+      btn.addEventListener("click", () => {
+        if (browseSort === opt.id) return
+        browseSort = opt.id
+        try { localStorage.setItem(sortKey, browseSort) } catch { /* ignore */ }
+        refreshBrowseSection()
+      })
+      seg.appendChild(btn)
+    }
+    bar.appendChild(seg)
+
+    // --- Density toggle (compact ↔ expanded) ---
+    const toggle = document.createElement("button")
+    toggle.type = "button"
+    toggle.className = "catalog-view-toggle"
+    const compactNext = browseView === "expanded"
+    // The button SHOWS the icon of the mode it switches TO, with a label
+    // describing that target, so it reads as an action.
+    toggle.innerHTML = compactNext ? SVG_VIEW_COMPACT : SVG_VIEW_EXPANDED
+    const toggleLabel = compactNext
+      ? tt("catalog.view.compact", "Compact")
+      : tt("catalog.view.expanded", "Expanded")
+    const labelSpan = document.createElement("span")
+    labelSpan.className = "catalog-view-toggle-label"
+    labelSpan.textContent = toggleLabel
+    toggle.appendChild(labelSpan)
+    toggle.setAttribute("aria-label", toggleLabel)
+    toggle.title = toggleLabel
+    toggle.addEventListener("click", () => {
+      browseView = browseView === "compact" ? "expanded" : "compact"
+      try { localStorage.setItem(viewKey, browseView) } catch { /* ignore */ }
+      refreshBrowseSection()
+    })
+    bar.appendChild(toggle)
+
+    return bar
+  }
+
   function renderBrowseResults(): void {
     if (!browseSectionEl) return
     const results = browseSectionEl.querySelector("[data-browse-results]") as HTMLElement | null
@@ -1196,87 +1311,61 @@ export function createAppShell(
 
     const active = getActive()
 
-    const seriesGroups = groupBySeries(filtered)
     // Collect every premium book product ID so we can batch one platform-store
     // request for all card prices instead of N. Cached for 5 min by purchaseManager.
     const premiumProductIds = new Set<string>()
     const cardMetaByProductId = new Map<string, HTMLElement>()
 
-    for (const sg of seriesGroups) {
-      const sectionTitle = document.createElement("div")
-      sectionTitle.className = "command-drawer-section-title"
-      sectionTitle.textContent = sg.series
-      results.appendChild(sectionTitle)
+    // Capture the meta element for a book so the batched price fetch can fill in
+    // the platform-localized price once it lands.
+    function registerPriceMeta(book: BookGroup, meta: HTMLElement): void {
+      const firstNarr = book.narrations[0]
+      meta.textContent =
+        firstNarr?.purchase?.priceLabel ||
+        (firstNarr?.tier === "premium" ? "Premium" : "Free")
+      if (firstNarr?.purchase?.type === "iap" && firstNarr.purchase.productId) {
+        premiumProductIds.add(firstNarr.purchase.productId)
+        cardMetaByProductId.set(firstNarr.purchase.productId, meta)
+      }
+    }
 
+    if (browseView === "compact") {
+      // Dense, flat, scannable list (Apple Books / Audible list rows). Series
+      // grouping is dropped in favor of packing rows; the "Series" sort still
+      // keeps each series contiguous and in volume order, so a series is never
+      // scattered. A small series caption sits in each row's meta line.
+      const books = sortBooks(groupByBook(filtered), browseSort)
+      const list = document.createElement("div")
+      list.className = "catalog-list"
+      for (const book of books) {
+        list.appendChild(buildBookRow(book, active, registerPriceMeta))
+      }
+      results.appendChild(list)
+    } else if (browseSort === "series") {
+      // Expanded + series sort → the classic grouped grid with series headers.
+      const seriesGroups = groupBySeries(filtered)
+      for (const sg of seriesGroups) {
+        const sectionTitle = document.createElement("div")
+        sectionTitle.className = "command-drawer-section-title"
+        sectionTitle.textContent = sg.series
+        results.appendChild(sectionTitle)
+
+        const grid = document.createElement("div")
+        grid.className = "catalog-grid"
+        for (const book of sg.books) {
+          grid.appendChild(buildBookCard(book, active, registerPriceMeta))
+        }
+        results.appendChild(grid)
+      }
+    } else {
+      // Expanded + latest/title → a single flat grid in the chosen order, so the
+      // sort is actually expressed (series headers would fight a date/title sort).
+      const books = sortBooks(groupByBook(filtered), browseSort)
       const grid = document.createElement("div")
       grid.className = "catalog-grid"
-
-      for (const book of sg.books) {
-        const card = document.createElement("div")
-        card.className = "catalog-card"
-        card.addEventListener("click", () => {
-          const bookNarrations = allNarrations.filter(n => n.bookId === book.bookId)
-          showInlineBookDetail(bookNarrations)
-        })
-
-        // Cover thumbnail with optional character chip overlay
-        const bookEntry = catalogIndex?.getBook(book.bookId)
-        const coverUrl =
-          catalogIndex?.getCoverUrl(book.bookId, book.narrations[0]) ?? ""
-        if (coverUrl || bookEntry) {
-          const thumb = document.createElement("div")
-          if (coverUrl) {
-            thumb.className = "catalog-cover-thumb"
-            thumb.style.backgroundImage = `url(${cssUrl(coverUrl)})`
-          } else {
-            thumb.className = "catalog-cover-thumb catalog-cover-thumb--placeholder"
-            thumb.textContent = initials(book.bookTitle)
-          }
-
-          // Narrator chip on the cover — distinct characters for this book
-          const chips = makeNarratorChipsForBook(book.narrations, "on-cover")
-          if (chips) {
-            const overlay = document.createElement("div")
-            overlay.className = "catalog-cover-thumb-overlay"
-            overlay.appendChild(chips)
-            thumb.appendChild(overlay)
-          }
-          card.appendChild(thumb)
-        }
-
-        const title = document.createElement("div")
-        title.className = "catalog-card-title"
-        title.textContent = book.bookTitle
-
-        const langs = renderStackFirstLangBadges(book.languages, {
-          variant: "card",
-        })
-
-        const meta = document.createElement("div")
-        meta.className = "catalog-card-meta"
-        const firstNarr = book.narrations[0]
-        // Show fallback `priceLabel` (or "Premium"/"Free") immediately; if this
-        // is a paid IAP product, replace with the platform's localized price
-        // once it arrives from the batched fetch below.
-        meta.textContent = firstNarr?.purchase?.priceLabel || (firstNarr?.tier === "premium" ? "Premium" : "Free")
-        if (
-          firstNarr?.purchase?.type === "iap" &&
-          firstNarr.purchase.productId
-        ) {
-          premiumProductIds.add(firstNarr.purchase.productId)
-          cardMetaByProductId.set(firstNarr.purchase.productId, meta)
-        }
-
-        card.append(title, langs, meta)
-
-        // Active indicator
-        if (book.narrations.some(n => n.id === active)) {
-          card.classList.add("catalog-card--active")
-        }
-
-        grid.appendChild(card)
+      for (const book of books) {
+        grid.appendChild(buildBookCard(book, active, registerPriceMeta))
       }
-
       results.appendChild(grid)
     }
 
@@ -1289,6 +1378,128 @@ export function createAppShell(
         }
       })
     }
+  }
+
+  /** Large-cover book card (expanded view). */
+  function buildBookCard(
+    book: BookGroup,
+    active: string,
+    registerPriceMeta: (book: BookGroup, meta: HTMLElement) => void,
+  ): HTMLElement {
+    const card = document.createElement("div")
+    card.className = "catalog-card"
+    card.addEventListener("click", () => {
+      const bookNarrations = allNarrations.filter(n => n.bookId === book.bookId)
+      showInlineBookDetail(bookNarrations)
+    })
+
+    const bookEntry = catalogIndex?.getBook(book.bookId)
+    const coverUrl = catalogIndex?.getCoverUrl(book.bookId, book.narrations[0]) ?? ""
+    if (coverUrl || bookEntry) {
+      const thumb = document.createElement("div")
+      if (coverUrl) {
+        thumb.className = "catalog-cover-thumb"
+        thumb.style.backgroundImage = `url(${cssUrl(coverUrl)})`
+      } else {
+        thumb.className = "catalog-cover-thumb catalog-cover-thumb--placeholder"
+        thumb.textContent = initials(book.bookTitle)
+      }
+      const chips = makeNarratorChipsForBook(book.narrations, "on-cover")
+      if (chips) {
+        const overlay = document.createElement("div")
+        overlay.className = "catalog-cover-thumb-overlay"
+        overlay.appendChild(chips)
+        thumb.appendChild(overlay)
+      }
+      card.appendChild(thumb)
+    }
+
+    const title = document.createElement("div")
+    title.className = "catalog-card-title"
+    title.textContent = book.bookTitle
+
+    const langs = renderStackFirstLangBadges(book.languages, { variant: "card" })
+
+    const meta = document.createElement("div")
+    meta.className = "catalog-card-meta"
+    registerPriceMeta(book, meta)
+
+    card.append(title, langs, meta)
+
+    if (book.narrations.some(n => n.id === active)) {
+      card.classList.add("catalog-card--active")
+    }
+    return card
+  }
+
+  /** Dense list row (compact view): small thumb + title + meta + lang badges. */
+  function buildBookRow(
+    book: BookGroup,
+    active: string,
+    registerPriceMeta: (book: BookGroup, meta: HTMLElement) => void,
+  ): HTMLElement {
+    const row = document.createElement("button")
+    row.type = "button"
+    row.className = "catalog-list-row"
+    if (book.narrations.some(n => n.id === active)) {
+      row.classList.add("catalog-list-row--active")
+    }
+    row.addEventListener("click", () => {
+      const bookNarrations = allNarrations.filter(n => n.bookId === book.bookId)
+      showInlineBookDetail(bookNarrations)
+    })
+
+    // Leading thumbnail
+    const coverUrl = catalogIndex?.getCoverUrl(book.bookId, book.narrations[0]) ?? ""
+    const thumb = document.createElement("div")
+    if (coverUrl) {
+      thumb.className = "catalog-list-thumb"
+      thumb.style.backgroundImage = `url(${cssUrl(coverUrl)})`
+    } else {
+      thumb.className = "catalog-list-thumb catalog-list-thumb--placeholder"
+      thumb.textContent = initials(book.bookTitle)
+    }
+    row.appendChild(thumb)
+
+    // Info column: title + meta line (series · author/price), then lang badges.
+    const info = document.createElement("div")
+    info.className = "catalog-list-info"
+
+    const title = document.createElement("div")
+    title.className = "catalog-list-title"
+    title.textContent = book.bookTitle
+    info.appendChild(title)
+
+    const bookEntry = catalogIndex?.getBook(book.bookId)
+    const metaBits: string[] = []
+    if (book.series) {
+      metaBits.push(book.series + (book.volume ? ` · Vol. ${book.volume}` : ""))
+    }
+    if (bookEntry?.author) metaBits.push(bookEntry.author)
+
+    const sub = document.createElement("div")
+    sub.className = "catalog-list-sub"
+    if (metaBits.length > 0) {
+      const subText = document.createElement("span")
+      subText.className = "catalog-list-sub-text"
+      subText.textContent = metaBits.join(" · ")
+      sub.appendChild(subText)
+    }
+    info.appendChild(sub)
+
+    const langs = renderStackFirstLangBadges(book.languages, { variant: "card" })
+    langs.classList.add("catalog-list-langs")
+    info.appendChild(langs)
+
+    row.appendChild(info)
+
+    // Trailing price/tier chip — same batched localization as the cards.
+    const meta = document.createElement("div")
+    meta.className = "catalog-card-meta catalog-list-price"
+    registerPriceMeta(book, meta)
+    row.appendChild(meta)
+
+    return row
   }
 
   /** Render the Narrators tab — avatar grid of every active character. */
@@ -1905,8 +2116,9 @@ export function createAppShell(
     onSwitch: (narration: CatalogNarrationEntry) => void
     /** User deleted an installed narration. */
     onDeleted: () => void
-    /** User completed a fresh install (download or post-purchase). */
-    onInstalled: () => void
+    /** User completed a fresh install (download or post-purchase). The
+     *  freshly-installed narration is passed so callers can select it. */
+    onInstalled: (narration: CatalogNarrationEntry) => void
   }
 
   function formatMetaLine(
@@ -2084,7 +2296,7 @@ export function createAppShell(
     try {
       const result = await installNarration(narration)
       if (result.ok) {
-        handlers.onInstalled()
+        handlers.onInstalled(narration)
       } else {
         reportInstallFailure(result)
         setButtonError(btn, label, () => runCompactInstall(narration, btn, handlers, label))

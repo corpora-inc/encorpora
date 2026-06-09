@@ -5,7 +5,63 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [0.5.1] - 2026-06-08 — Free daily quota + voice polish
+## [0.5.4] - 2026-06-09 — Localized model-lab/voice chrome + centered quota line
+
+### Changed
+- The model-lab and voice-picker chrome is now fully localized into the user's
+  native language across all 47 non-English locales. Previously "Choose tutor
+  voice", "On-device model lab", "Tune model", "Voice", "Recommended", "Loading
+  installed voices…", and their sibling strings rendered in English everywhere;
+  they now show real, natural translations (authored in each destination
+  language/script, not machine-glossed).
+- The quota status line under the composer ("{count} free tutor messages left
+  today" / Corpán Plus state) is now centered instead of pushed to the right
+  edge. Its always-reserved single line-height (no layout shift) is unchanged.
+
+### Added
+- The "Jump to latest" scroll-lock chip string is now translated into all 47
+  non-English locales (it previously fell back to English per-key).
+
+## [0.5.3] - 2026-06-09 — Stick-to-bottom chat autoscroll
+
+### Changed
+- The chat log now follows the industry-standard "scroll lock / stick-to-bottom"
+  pattern instead of always yanking to the bottom. While you are at (or near) the
+  bottom, the view keeps autoscrolling as the tutor streams its reply. The moment
+  you scroll up to read earlier messages, autoscroll is released and your
+  position is respected — it no longer pulls you back down mid-stream. Scroll
+  back to the bottom and it re-engages. Detection is purely positional (recomputed
+  on every scroll event), so it never fights iOS momentum scrolling and never
+  mistakes its own programmatic scroll for a user scroll. Sending a new message
+  always returns you to the bottom and re-engages the lock.
+
+### Added
+- A small, understated "Jump to latest" chip floats above the composer whenever
+  autoscroll is released, so one tap returns to the bottom and re-engages
+  stick-to-bottom. New "Jump to latest" string added to the English source
+  (other languages fall back to English per-key until generated).
+
+## [0.5.2] - 2026-06-09 — Stable composer + responsive header overflow
+
+### Changed
+- The composer no longer shifts vertically. The mic, text field, and send button
+  sit on one fixed row and the quota line always reserves its space, so the
+  footer height stays constant whether the dictation mic is shown or hidden and
+  whatever the daily-quota text says. The mic and send now share stable slots
+  (they swap by visibility, not by collapsing the layout).
+
+### Added
+- A responsive header overflow control. On narrow screens (pack width ≤ 559px,
+  e.g. phones) the four floating action buttons — adjust model, change voice,
+  mute/sound, new conversation — would overlap the chat text, so they are now
+  hidden and replaced by a single compact kebab (⋮) menu to the right of the
+  language switcher. The menu lists the same four actions and forwards each tap
+  to the existing button, so behavior is identical. Above the breakpoint the
+  floating buttons return and the kebab is hidden. The decision is container-
+  width based, so it is correct inside the pack overlay on any device.
+  Menu opens/closes with the kebab, a click outside, or Escape; the sound item
+  reflects the current mute state. New "More options" string localized into all
+  shipped languages.
 
 ### Added
 - Tutomaton is now available to free users with 20 tutor messages per local day;

@@ -205,6 +205,7 @@ export function HomeHub({
 
   return (
     <div
+      data-home-scroll
       className="fixed inset-0 overflow-y-auto overscroll-contain bg-background"
       style={{
         WebkitOverflowScrolling: "touch",
@@ -333,18 +334,18 @@ export function HomeHub({
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
               {t("home.recommended", { defaultValue: "Recommended" })}
             </h2>
-            <div className="no-scrollbar -mx-1 flex gap-3 overflow-x-auto px-1 pb-1">
+            <div className="no-scrollbar -mx-1 flex gap-3 md:gap-4 overflow-x-auto px-1 pb-1">
               {rest.map((e) => (
                 <button
                   key={e.id}
                   type="button"
                   onClick={e.onClick}
-                  className="group flex w-36 shrink-0 flex-col items-start gap-3 rounded-xl border border-border bg-card p-4 text-start transition hover:border-purple-400/50 hover:bg-accent/30 active:scale-[0.98]"
+                  className="group flex w-36 md:w-44 shrink-0 flex-col items-start gap-3 rounded-xl border border-border bg-card p-4 md:p-5 text-start transition hover:border-purple-400/50 hover:bg-accent/30 active:scale-[0.98]"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-purple-500/10">
-                    <Glyph imageUrl={e.imageUrl} Icon={e.Icon} glyphClass="h-5 w-5 text-purple-400" />
+                  <span className="flex h-11 w-11 md:h-12 md:w-12 items-center justify-center overflow-hidden rounded-xl bg-purple-500/10">
+                    <Glyph imageUrl={e.imageUrl} Icon={e.Icon} glyphClass="h-5 w-5 md:h-6 md:w-6 text-purple-400" />
                   </span>
-                  <span className="line-clamp-2 min-h-[2.5rem] w-full text-sm font-semibold text-foreground">
+                  <span className="line-clamp-2 min-h-[2.5rem] w-full text-sm md:text-base font-semibold text-foreground">
                     {e.name}
                   </span>
                   <span className="mt-auto inline-flex items-center gap-1 text-xs font-medium text-muted-foreground group-hover:text-foreground">
