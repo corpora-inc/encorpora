@@ -13,6 +13,7 @@ Default permissions for the plugin
 - `allow-get-purchase-history`
 - `allow-acknowledge-purchase`
 - `allow-get-product-status`
+- `allow-redeem-offer-code`
 
 ## Permission Table
 
@@ -175,6 +176,32 @@ Enables the purchase command without any pre-configured scope.
 <td>
 
 Denies the purchase command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`iap:allow-redeem-offer-code`
+
+</td>
+<td>
+
+Enables the redeem_offer_code command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`iap:deny-redeem-offer-code`
+
+</td>
+<td>
+
+Denies the redeem_offer_code command without any pre-configured scope.
 
 </td>
 </tr>

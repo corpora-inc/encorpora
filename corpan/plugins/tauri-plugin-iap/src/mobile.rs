@@ -98,4 +98,14 @@ impl<R: Runtime> Iap<R> {
             .await
             .map_err(Into::into)
     }
+
+    pub async fn redeem_offer_code(
+        &self,
+        payload: RedeemOfferCodeRequest,
+    ) -> crate::Result<RedeemOfferCodeResponse> {
+        self.0
+            .run_mobile_plugin_async("redeemOfferCode", payload)
+            .await
+            .map_err(Into::into)
+    }
 }

@@ -110,6 +110,21 @@ pub struct Purchase {
     pub original_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub jws_representation: Option<String>,
+    /// App-account token echoed back from the request (iOS/macOS only). Used by
+    /// the backend to attribute the purchase to an anon subject. Present only
+    /// when an `appAccountToken` was supplied to the purchase.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub app_account_token: Option<String>,
+    /// Offer identifier that was applied to this transaction, when the platform
+    /// exposes it. iOS: `Transaction.offerID` (StoreKit 2); Android: the
+    /// `offerId` of the selected `subscriptionOfferDetails` entry.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub offer_id: Option<String>,
+    /// Offer type for the applied offer, when the platform exposes it. iOS:
+    /// `Transaction.offerType` raw value (1=introductory, 2=promotional,
+    /// 3=code). Android: the `basePlanId` of the selected offer.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub offer_type: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -213,6 +228,39 @@ pub struct ProductStatus {
     pub is_acknowledged: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub purchase_token: Option<String>,
+}
+
+/// Request to present the native offer-code / promo-code redemption flow.
+#[derive(Debug, Clone, Default, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RedeemOfferCodeRequest {
+    /// Optional raw code. Used by Android to build the Play redeem URL and
+    /// surfaced to the caller in the result. iOS ignores it (the user types the
+    /// code in Apple's sheet); supplying it does not pre-fill the sheet.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub code: Option<String>,
+}
+
+/// Result of a redeem-offer-code invocation.
+///
+/// The native sheet (iOS) only *presents* — it does not report whether a code
+/// was actually redeemed. Callers must follow a `presented`/`useUrl` result
+/// with `restorePurchases()` + a server verify to observe any new entitlement.
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct RedeemOfferCodeResponse {
+    /// Outcome discriminator. One of:
+    /// - `presented`  — a native redemption sheet was shown (iOS).
+    /// - `useUrl`     — the caller should open `url` to complete redemption
+    ///                  (Android Play redeem, or iOS pre-16 fallback).
+    /// - `unsupported`— this platform/OS version has no redemption path.
+    pub outcome: String,
+    /// URL the caller should open when `outcome == "useUrl"`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+    /// Human-readable explanation, primarily for `unsupported`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub message: Option<String>,
 }
 
 #[cfg(test)]
@@ -374,6 +422,9 @@ mod tests {
             signature: "sig".to_string(),
             original_id: None,
             jws_representation: Some("test_jws".to_string()),
+            app_account_token: None,
+            offer_id: None,
+            offer_type: None,
         };
 
         let json = serde_json::to_string(&purchase).expect("Failed to serialize Purchase");
@@ -526,6 +577,77 @@ mod tests {
             serde_json::from_str(json).expect("Failed to deserialize GetProductStatusRequest");
         assert_eq!(request.product_id, "prod1");
         assert_eq!(request.product_type, "subs"); // default
+    }
+
+    #[test]
+    fn test_redeem_offer_code_request_default() {
+        // Empty body must deserialize (code is optional).
+        let request: RedeemOfferCodeRequest =
+            serde_json::from_str("{}").expect("Failed to deserialize empty RedeemOfferCodeRequest");
+        assert_eq!(request.code, None);
+
+        let request: RedeemOfferCodeRequest = serde_json::from_str(r#"{"code":"LCCLT"}"#)
+            .expect("Failed to deserialize RedeemOfferCodeRequest");
+        assert_eq!(request.code, Some("LCCLT".to_string()));
+    }
+
+    #[test]
+    fn test_redeem_offer_code_response_serde() {
+        let response = RedeemOfferCodeResponse {
+            outcome: "useUrl".to_string(),
+            url: Some("https://play.google.com/redeem?code=LCCLT".to_string()),
+            message: None,
+        };
+        let json =
+            serde_json::to_string(&response).expect("Failed to serialize RedeemOfferCodeResponse");
+        assert!(json.contains(r#""outcome":"useUrl""#));
+        assert!(json.contains("play.google.com"));
+        // None fields skipped.
+        assert!(!json.contains("message"));
+
+        let presented = RedeemOfferCodeResponse {
+            outcome: "presented".to_string(),
+            url: None,
+            message: None,
+        };
+        let json = serde_json::to_string(&presented).expect("Failed to serialize presented");
+        assert_eq!(json, r#"{"outcome":"presented"}"#);
+    }
+
+    #[test]
+    fn test_purchase_attribution_fields_skip_when_none() {
+        let purchase = Purchase {
+            order_id: None,
+            package_name: "pkg".to_string(),
+            product_id: "prod".to_string(),
+            purchase_time: 0,
+            purchase_token: "tok".to_string(),
+            purchase_state: PurchaseStateValue::Purchased,
+            is_auto_renewing: false,
+            is_acknowledged: true,
+            original_json: "".to_string(),
+            signature: "".to_string(),
+            original_id: None,
+            jws_representation: None,
+            app_account_token: None,
+            offer_id: None,
+            offer_type: None,
+        };
+        let json = serde_json::to_string(&purchase).expect("Failed to serialize Purchase");
+        assert!(!json.contains("appAccountToken"));
+        assert!(!json.contains("offerId"));
+        assert!(!json.contains("offerType"));
+
+        let attributed = Purchase {
+            app_account_token: Some("550e8400-e29b-41d4-a716-446655440000".to_string()),
+            offer_id: Some("annual-lcclt".to_string()),
+            offer_type: Some("3".to_string()),
+            ..purchase
+        };
+        let json = serde_json::to_string(&attributed).expect("Failed to serialize Purchase");
+        assert!(json.contains(r#""appAccountToken":"550e8400-e29b-41d4-a716-446655440000""#));
+        assert!(json.contains(r#""offerId":"annual-lcclt""#));
+        assert!(json.contains(r#""offerType":"3""#));
     }
 
     #[test]

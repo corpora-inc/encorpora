@@ -264,7 +264,36 @@ Initiates a purchase flow with enhanced options for fraud prevention and account
   - `oldPurchaseToken`: (Android) Purchase token of existing subscription to replace for upgrades/downgrades
   - `subscriptionReplacementMode`: (Android) Proration mode using `SubscriptionReplacementMode` enum (defaults to `WITH_TIME_PRORATION`)
 
-**Returns:** Purchase object with transaction details
+**Returns:** Purchase object with transaction details. In addition to the core
+fields, the returned object may carry attribution fields when the platform
+exposes them:
+- `appAccountToken`: (iOS/macOS) the UUID supplied to the purchase, echoed back
+- `offerId`: the offer applied — iOS `Transaction.offerID`; Android the selected
+  offer's `offerId`
+- `offerType`: iOS `Transaction.offerType` rawValue as a string
+  (`"1"`=introductory, `"2"`=promotional, `"3"`=code); Android the selected
+  offer's `basePlanId`
+
+> On Android, when `offerToken` is supplied it is matched to the exact
+> `subscriptionOfferDetails` entry (so a paid % discount offer applies). When
+> omitted, the first available offer is used (unchanged behavior).
+
+### `redeemOfferCode(options?: { code?: string })`
+Presents the native offer/promo code redemption flow.
+
+- **iOS 16+:** presents `AppStore.presentOfferCodeRedeemSheet(in:)`; resolves
+  `{ outcome: "presented" }`. iOS 15 falls back to
+  `SKPaymentQueue.presentCodeRedemptionSheet()`. With no active scene it
+  resolves `{ outcome: "useUrl", url: "https://apps.apple.com/redeem" }`.
+- **macOS:** no in-app sheet API — resolves `{ outcome: "useUrl", url }`.
+- **Android:** Play has no in-app redeem API — resolves
+  `{ outcome: "useUrl", url: "https://play.google.com/redeem?code=<code>" }`.
+
+The sheet only *presents*; it never reports redemption success. After a
+`"presented"`/post-`useUrl` return, call `restorePurchases()` and run your
+server verify so the redeemed entitlement and its attribution are observed.
+
+**Returns:** `{ outcome: "presented" | "useUrl" | "unsupported", url?, message? }`
 
 ### `restorePurchases(productType: 'subs' | 'inapp' = 'subs')`
 Queries and returns all active purchases.

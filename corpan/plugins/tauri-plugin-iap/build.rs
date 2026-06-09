@@ -11,6 +11,7 @@ const COMMANDS: &[&str] = &[
     "get_purchase_history",
     "acknowledge_purchase",
     "get_product_status",
+    "redeem_offer_code",
 ];
 
 fn main() {

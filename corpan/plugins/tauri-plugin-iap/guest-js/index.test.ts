@@ -8,6 +8,7 @@ import {
   acknowledgePurchase,
   getProductStatus,
   onPurchaseUpdated,
+  redeemOfferCode,
   PurchaseState,
   type GetProductsResponse,
   type Purchase,
@@ -16,6 +17,7 @@ import {
   type AcknowledgePurchaseResponse,
   type ProductStatus,
   type PurchaseOptions,
+  type RedeemOfferCodeResponse,
 } from "./index";
 
 // Mock Tauri API
@@ -468,6 +470,36 @@ describe("IAP Plugin", () => {
       await listener.unregister();
 
       expect(mockUnregister).toHaveBeenCalled();
+    });
+  });
+
+  describe("redeemOfferCode", () => {
+    it("should invoke redeem_offer_code with no args", async () => {
+      const response: RedeemOfferCodeResponse = { outcome: "presented" };
+      vi.mocked(invoke).mockResolvedValue(response);
+
+      const result = await redeemOfferCode();
+
+      expect(invoke).toHaveBeenCalledWith("plugin:iap|redeem_offer_code", {
+        payload: {},
+      });
+      expect(result.outcome).toBe("presented");
+    });
+
+    it("should forward the code and return a useUrl outcome", async () => {
+      const response: RedeemOfferCodeResponse = {
+        outcome: "useUrl",
+        url: "https://play.google.com/redeem?code=LCCLT",
+      };
+      vi.mocked(invoke).mockResolvedValue(response);
+
+      const result = await redeemOfferCode({ code: "LCCLT" });
+
+      expect(invoke).toHaveBeenCalledWith("plugin:iap|redeem_offer_code", {
+        payload: { code: "LCCLT" },
+      });
+      expect(result.outcome).toBe("useUrl");
+      expect(result.url).toContain("LCCLT");
     });
   });
 

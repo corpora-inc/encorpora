@@ -109,7 +109,12 @@ class IapPlugin {
         return try serializeToJSON(["products": productsArray])
     }
 
-    public func purchase(productId: RustString, productType: RustString, offerToken: RustString?)
+    public func purchase(
+        productId: RustString,
+        productType: RustString,
+        offerToken: RustString?,
+        appAccountToken: RustString?
+    )
         async throws(FFIResult) -> String
     {
         let id = productId.as_str().toString()
@@ -126,10 +131,23 @@ class IapPlugin {
             throw FFIResult.Err(RustString("Product not found"))
         }
 
+        // Build purchase options. macOS doesn't use Android-style offer tokens;
+        // appAccountToken (for backend attribution) is honored when a valid
+        // UUID is supplied.
+        var purchaseOptions: Set<Product.PurchaseOption> = []
+        if let tokenStr = appAccountToken?.as_str().toString(), !tokenStr.isEmpty {
+            guard let uuid = UUID(uuidString: tokenStr) else {
+                throw FFIResult.Err(RustString("appAccountToken must be a valid UUID string"))
+            }
+            purchaseOptions.insert(.appAccountToken(uuid))
+        }
+
         // Initiate purchase
         let result: Product.PurchaseResult
         do {
-            result = try await product.purchase()
+            result = purchaseOptions.isEmpty
+                ? try await product.purchase()
+                : try await product.purchase(options: purchaseOptions)
         } catch {
             throw FFIResult.Err(RustString("Purchase failed: \(error.localizedDescription)"))
         }
@@ -283,6 +301,20 @@ class IapPlugin {
         return try serializeToJSON(statusResult)
     }
 
+    public func redeemOfferCode(code: RustString?) async throws(FFIResult) -> String {
+        // macOS has no in-app offer-code redemption sheet
+        // (AppStore.presentOfferCodeRedeemSheet(in:) is iOS-only, requiring a
+        // UIWindowScene; SKPaymentQueue.presentCodeRedemptionSheet() is also
+        // iOS-only). Return a `useUrl` result so the app opens the App Store
+        // redeem page. A redeemed entitlement still arrives on the
+        // Transaction.updates listener.
+        return try serializeToJSON([
+            "outcome": "useUrl",
+            "url": "https://apps.apple.com/redeem",
+            "message": "macOS has no in-app redeem sheet; open the redeem URL.",
+        ])
+    }
+
     // MARK: - Helper Functions
 
     private func handleTransactionUpdate(_ result: VerificationResult<Transaction>) async {
@@ -360,7 +392,7 @@ class IapPlugin {
             }
         }
 
-        return [
+        var purchase: JsonObject = [
             "orderId": String(transaction.id),
             "originalId": String(transaction.originalID),
             "jwsRepresentation": verificationResult.jwsRepresentation,
@@ -375,6 +407,19 @@ class IapPlugin {
             "originalJson": "",  // Not available in StoreKit 2
             "signature": "",  // Not available in StoreKit 2
         ]
+
+        // Attribution fields for the backend (initial-transaction only).
+        if let appAccountToken = transaction.appAccountToken {
+            purchase["appAccountToken"] = appAccountToken.uuidString
+        }
+        if let offerID = transaction.offerID {
+            purchase["offerId"] = offerID
+        }
+        if let offerType = transaction.offerType {
+            purchase["offerType"] = String(offerType.rawValue)
+        }
+
+        return purchase
     }
 }
 

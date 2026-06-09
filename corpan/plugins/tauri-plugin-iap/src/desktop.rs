@@ -63,4 +63,15 @@ impl<R: Runtime> Iap<R> {
             "IAP is not supported on this platform",
         )))
     }
+
+    pub async fn redeem_offer_code(
+        &self,
+        _payload: RedeemOfferCodeRequest,
+    ) -> crate::Result<RedeemOfferCodeResponse> {
+        Ok(RedeemOfferCodeResponse {
+            outcome: "unsupported".to_string(),
+            url: None,
+            message: Some("Offer-code redemption is not supported on this platform.".to_string()),
+        })
+    }
 }

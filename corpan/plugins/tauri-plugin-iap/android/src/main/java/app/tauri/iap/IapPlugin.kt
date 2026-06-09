@@ -52,11 +52,22 @@ class GetProductStatusArgs {
     var productType: String = "subs" // "subs" or "inapp"
 }
 
+@InvokeArg
+class RedeemOfferCodeArgs {
+    var code: String? = null
+}
+
 @TauriPlugin
 class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpdatedListener, BillingClientStateListener {
     private lateinit var billingClient: BillingClient
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     private var pendingPurchaseInvoke: Invoke? = null
+    // Offer identifiers for the offer selected for the in-flight purchase, so
+    // the resolved Purchase can carry them back for backend attribution.
+    // Play's Purchase object does not expose the chosen offer, so we stash it
+    // from the productDetails at launch time.
+    private var pendingOfferId: String? = null
+    private var pendingBasePlanId: String? = null
     private val TAG = "IapPlugin"
     
     // Keep in sync with PurchaseState in guest-js/index.ts
@@ -202,13 +213,27 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && productDetailsResult.productDetailsList.isNotEmpty()) {
                 val productDetails = productDetailsResult.productDetailsList[0]
 
-                // Get offer token from args or from first available subscription offer
-                val offerToken = args.offerToken ?: 
-                    productDetails.subscriptionOfferDetails?.firstOrNull()?.offerToken
-                
+                // Select the offer. When the caller passes an explicit
+                // offerToken (e.g. the resolved discount offer), match it to the
+                // exact subscriptionOfferDetails entry; otherwise default to the
+                // first available offer. This is what makes a paid % discount
+                // apply instead of the base plan.
+                val offerDetailsList = productDetails.subscriptionOfferDetails
+                val selectedOffer = when {
+                    args.offerToken != null ->
+                        offerDetailsList?.firstOrNull { it.offerToken == args.offerToken }
+                            ?: offerDetailsList?.firstOrNull()
+                    else -> offerDetailsList?.firstOrNull()
+                }
+                val offerToken = args.offerToken ?: selectedOffer?.offerToken
+
+                // Stash the selected offer's identifiers for attribution.
+                pendingOfferId = selectedOffer?.offerId
+                pendingBasePlanId = selectedOffer?.basePlanId
+
                 val productDetailsParamsBuilder = BillingFlowParams.ProductDetailsParams.newBuilder()
                     .setProductDetails(productDetails)
-                
+
                 offerToken?.let { productDetailsParamsBuilder.setOfferToken(it) }
                 
                 val productDetailsParamsList = listOf(productDetailsParamsBuilder.build())
@@ -245,10 +270,14 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
                 
                 if (billingResult.responseCode != BillingClient.BillingResponseCode.OK) {
                     pendingPurchaseInvoke = null
+                    pendingOfferId = null
+                    pendingBasePlanId = null
                     invoke.reject("STOREKIT_UNKNOWN: Failed to launch billing flow: ${billingResult.debugMessage}")
                 }
             } else {
                 pendingPurchaseInvoke = null
+                pendingOfferId = null
+                pendingBasePlanId = null
                 invoke.reject("PRODUCT_UNAVAILABLE: Product not found")
             }
         }
@@ -372,7 +401,30 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
             }
         }
     }
-    
+
+    @Command
+    fun redeemOfferCode(invoke: Invoke) {
+        // Play Billing has no in-app promo/offer code redemption API. Promo
+        // codes are redeemed in the Play Store ("Redeem" flow). Return a
+        // `useUrl` result so the app opens the Play redeem page; a code with a
+        // query param deep-links straight to the prefilled redeem screen.
+        //
+        // Honesty note (per plan): Play promo codes grant free trials / free
+        // unlocks only. Paid percentage discounts are NOT promo codes — they
+        // are subscription OFFERS applied via the `offerToken` purchase arg.
+        val args = invoke.parseArgs(RedeemOfferCodeArgs::class.java)
+        val code = args.code?.trim()
+        val url = if (!code.isNullOrEmpty()) {
+            "https://play.google.com/redeem?code=$code"
+        } else {
+            "https://play.google.com/redeem"
+        }
+        invoke.resolve(JSObject().apply {
+            put("outcome", "useUrl")
+            put("url", url)
+        })
+    }
+
     override fun onPurchasesUpdated(billingResult: BillingResult, purchases: List<Purchase>?) {
         when (billingResult.responseCode) {
             BillingClient.BillingResponseCode.OK -> {
@@ -432,10 +484,17 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
                     put("isAcknowledged", purchase.isAcknowledged)
                     put("originalJson", purchase.originalJson)
                     put("signature", purchase.signature)
+                    // Attribution: the offer chosen for this purchase. offerType
+                    // carries the basePlanId for cross-platform shape parity
+                    // (iOS sends the StoreKit offerType rawValue here).
+                    pendingOfferId?.let { put("offerId", it) }
+                    pendingBasePlanId?.let { put("offerType", it) }
                 }
 
                 pendingPurchaseInvoke?.resolve(purchaseData)
                 pendingPurchaseInvoke = null
+                pendingOfferId = null
+                pendingBasePlanId = null
 
                 // Emit event for purchase state change
                 trigger("purchaseUpdated", purchaseData)
@@ -448,12 +507,16 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
                 // and JS hangs forever.
                 pendingPurchaseInvoke?.reject("PURCHASE_PENDING: Purchase is awaiting external approval")
                 pendingPurchaseInvoke = null
+                pendingOfferId = null
+                pendingBasePlanId = null
             }
             else -> {
                 // UNSPECIFIED_STATE or any future case — surface as error
                 // rather than hang.
                 pendingPurchaseInvoke?.reject("PURCHASE_UNKNOWN: Unexpected purchase state ${purchase.purchaseState}")
                 pendingPurchaseInvoke = null
+                pendingOfferId = null
+                pendingBasePlanId = null
             }
         }
     }

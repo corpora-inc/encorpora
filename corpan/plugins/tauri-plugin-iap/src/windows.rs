@@ -403,6 +403,9 @@ impl<R: Runtime> Iap<R> {
             signature: String::new(), // Windows doesn't provide signatures like Android
             original_id: None, // Windows doesn't have original transaction IDs like iOS/macOS
             jws_representation: None, // Windows doesn't have JWS like iOS/macOS
+            app_account_token: None, // Windows Store doesn't expose an app-account token
+            offer_id: None,
+            offer_type: None,
         };
 
         // Emit event for purchase state change
@@ -496,6 +499,9 @@ impl<R: Runtime> Iap<R> {
             signature: String::new(),
             original_id: None,
             jws_representation: None, // Windows doesn't have JWS like iOS/macOS
+            app_account_token: None,
+            offer_id: None,
+            offer_type: None,
         })
     }
 
@@ -506,6 +512,17 @@ impl<R: Runtime> Iap<R> {
         // Windows Store handles acknowledgment automatically
         // This method exists for API compatibility
         Ok(AcknowledgePurchaseResponse { success: true })
+    }
+
+    pub async fn redeem_offer_code(
+        &self,
+        _payload: RedeemOfferCodeRequest,
+    ) -> crate::Result<RedeemOfferCodeResponse> {
+        Ok(RedeemOfferCodeResponse {
+            outcome: "unsupported".to_string(),
+            url: None,
+            message: Some("Offer-code redemption is not supported on Windows.".to_string()),
+        })
     }
 
     pub async fn get_product_status(

@@ -90,6 +90,24 @@ export interface Purchase {
   originalId?: string;
   /** JWS representation of the signed transaction for server-side validation. (iOS/macOS only) */
   jwsRepresentation?: string;
+  /**
+   * The `appAccountToken` (UUID) supplied to this purchase, echoed back for
+   * backend attribution. (iOS/macOS only; present only when supplied.)
+   */
+  appAccountToken?: string;
+  /**
+   * Offer identifier applied to this transaction, when the platform exposes it.
+   * iOS: StoreKit 2 `Transaction.offerID`. Android: the `offerId` of the
+   * selected subscription offer.
+   */
+  offerId?: string;
+  /**
+   * Offer type for the applied offer, when the platform exposes it.
+   * iOS: `Transaction.offerType` raw value as a string
+   * (`"1"`=introductory, `"2"`=promotional, `"3"`=code).
+   * Android: the `basePlanId` of the selected offer.
+   */
+  offerType?: string;
 }
 
 /**
@@ -402,4 +420,75 @@ export async function onPurchaseUpdated(
   callback: (purchase: Purchase) => void,
 ): Promise<PluginListener> {
   return await addPluginListener("iap", "purchaseUpdated", callback);
+}
+
+/**
+ * Outcome of {@link redeemOfferCode}.
+ *
+ * - `"presented"`   — a native redemption sheet was shown (iOS 16+). The sheet
+ *                     does NOT report whether a code was redeemed; the caller
+ *                     must follow up with {@link restorePurchases} and a server
+ *                     verify to observe any new entitlement.
+ * - `"useUrl"`      — the caller should open `url` to complete redemption
+ *                     (Android Play redeem, or iOS pre-16 fallback / macOS).
+ * - `"unsupported"` — this platform/OS version has no redemption path.
+ */
+export interface RedeemOfferCodeResponse {
+  outcome: "presented" | "useUrl" | "unsupported";
+  /** URL to open when `outcome === "useUrl"`. */
+  url?: string;
+  /** Human-readable explanation, primarily for `"unsupported"`. */
+  message?: string;
+}
+
+/**
+ * Optional parameters for {@link redeemOfferCode}.
+ */
+export interface RedeemOfferCodeOptions {
+  /**
+   * Raw code. Used by Android to build the Play redeem URL and surfaced back in
+   * the result. iOS ignores it — the user types the code into Apple's sheet;
+   * supplying it does NOT pre-fill the sheet.
+   */
+  code?: string;
+}
+
+/**
+ * Present the native offer-code / promo-code redemption flow.
+ *
+ * **iOS (16+):** presents `AppStore.presentOfferCodeRedeemSheet(in:)` (with a
+ * `SKPaymentQueue.presentCodeRedemptionSheet()` fallback on older builds);
+ * resolves `{ outcome: "presented" }` once shown. On iOS < 16 with no scene,
+ * resolves `{ outcome: "useUrl", url: "https://apps.apple.com/redeem" }`.
+ *
+ * **macOS / Android:** there is no in-app sheet API — resolves
+ * `{ outcome: "useUrl", url }` (Apple redeem URL / `play.google.com/redeem`)
+ * for the caller to open, or `{ outcome: "unsupported" }`.
+ *
+ * The sheet only *presents*; it never reports redemption success. After a
+ * `"presented"` or post-`useUrl` return, call {@link restorePurchases} and run
+ * your server verify (carrying the `resolutionToken`) so the redeemed
+ * entitlement and its attribution are observed.
+ *
+ * @param options - Optional `{ code }`.
+ * @returns Promise resolving to the redemption outcome.
+ * @example
+ * ```typescript
+ * const res = await redeemOfferCode({ code: "LCCLT" });
+ * if (res.outcome === "useUrl" && res.url) {
+ *   await openUrl(res.url); // @tauri-apps/plugin-opener
+ * }
+ * // Either way, sync entitlement + attribution:
+ * await restorePurchases("subs");
+ * await verifyPurchase({ resolutionToken });
+ * ```
+ */
+export async function redeemOfferCode(
+  options?: RedeemOfferCodeOptions,
+): Promise<RedeemOfferCodeResponse> {
+  return await invoke<RedeemOfferCodeResponse>("plugin:iap|redeem_offer_code", {
+    payload: {
+      ...options,
+    },
+  });
 }

@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-redeem-offer-code"
+description = "Enables the redeem_offer_code command without any pre-configured scope."
+commands.allow = ["redeem_offer_code"]
+
+[[permission]]
+identifier = "deny-redeem-offer-code"
+description = "Denies the redeem_offer_code command without any pre-configured scope."
+commands.deny = ["redeem_offer_code"]

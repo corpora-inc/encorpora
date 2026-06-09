@@ -30,6 +30,12 @@ class GetProductStatusArgs: Decodable {
     let productType: String?
 }
 
+class RedeemOfferCodeArgs: Decodable {
+    // iOS ignores `code` (the user types it into Apple's sheet); accepted for
+    // a uniform cross-platform contract.
+    let code: String?
+}
+
 /// Keep in sync with PurchaseState in guest-js/index.ts
 enum PurchaseStateValue: Int {
     case purchased = 0
@@ -522,6 +528,68 @@ class IapPlugin: Plugin {
         invoke.resolve(statusResult)
     }
 
+    // MARK: - redeemOfferCode
+
+    /// Present the native offer-code redemption sheet.
+    ///
+    /// Preferred path is StoreKit 2's `AppStore.presentOfferCodeRedeemSheet(in:)`
+    /// (iOS 16+), which requires a foreground `UIWindowScene`. On iOS 15 we fall
+    /// back to StoreKit 1's `SKPaymentQueue.presentCodeRedemptionSheet()`. If no
+    /// scene is available we return a `useUrl` result with the redeem URL so the
+    /// app can open it instead.
+    ///
+    /// The sheet only *presents* — a successful redemption arrives on the
+    /// existing `Transaction.updates` listener (which finishes + emits
+    /// `purchaseUpdated`). The JS caller still follows up with
+    /// `restorePurchases()` + a server verify to capture attribution.
+    @objc public func redeemOfferCode(_ invoke: Invoke) async throws {
+        // Parse for contract uniformity; `code` is unused on iOS.
+        _ = try? invoke.parseArgs(RedeemOfferCodeArgs.self)
+
+        let scene = await activeWindowScene()
+
+        if #available(iOS 16.0, *), let scene = scene {
+            do {
+                try await AppStore.presentOfferCodeRedeemSheet(in: scene)
+                invoke.resolve(["outcome": "presented"])
+            } catch {
+                let (code, msg) = errorCodeAndMessage(error)
+                reject(invoke, code: code, message: "Failed to present redeem sheet: \(msg)")
+            }
+            return
+        }
+
+        // iOS 15 fallback: StoreKit 1 code-redemption sheet. It posts onto the
+        // key window's scene; no scene argument is taken.
+        if #available(iOS 15.0, *), scene != nil {
+            await MainActor.run {
+                SKPaymentQueue.default().presentCodeRedemptionSheet()
+            }
+            invoke.resolve(["outcome": "presented"])
+            return
+        }
+
+        // No usable scene (e.g. background) — let the app open the redeem URL.
+        invoke.resolve([
+            "outcome": "useUrl",
+            "url": "https://apps.apple.com/redeem",
+            "message": "No active window scene; open the redeem URL instead.",
+        ])
+    }
+
+    /// Find a foreground-active `UIWindowScene` to host the redeem sheet.
+    @MainActor
+    private func activeWindowScene() -> UIWindowScene? {
+        let scenes = UIApplication.shared.connectedScenes
+        // Prefer a foreground-active scene; fall back to any window scene.
+        if let active = scenes.first(where: {
+            $0.activationState == .foregroundActive
+        }) as? UIWindowScene {
+            return active
+        }
+        return scenes.compactMap { $0 as? UIWindowScene }.first
+    }
+
     // MARK: - Transaction.updates handler
 
     private func handleTransactionUpdate(_ result: VerificationResult<Transaction>) async {
@@ -600,6 +668,21 @@ class IapPlugin: Plugin {
             purchase["environment"] = String(describing: transaction.environment)
         }
 
+        // Attribution fields for the backend. These appear ONLY on the initial
+        // transaction (offer fields are never on renewals) — the backend
+        // durably attributes renewals via appAccountToken + its own ledger.
+        if let appAccountToken = transaction.appAccountToken {
+            purchase["appAccountToken"] = appAccountToken.uuidString
+        }
+        if let offerID = transaction.offerID {
+            purchase["offerId"] = offerID
+        }
+        if let offerType = transaction.offerType {
+            // 1=introductory, 2=promotional, 3=code. Stringify for a stable
+            // cross-platform contract (Android sends a basePlanId string here).
+            purchase["offerType"] = String(offerType.rawValue)
+        }
+
         return purchase
     }
 
@@ -650,6 +733,13 @@ func initPlugin() -> Plugin {
             }
             @objc func getProductStatus(_ invoke: Invoke) {
                 invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
+            }
+            @objc func redeemOfferCode(_ invoke: Invoke) {
+                invoke.resolve([
+                    "outcome": "useUrl",
+                    "url": "https://apps.apple.com/redeem",
+                    "message": "IAP requires iOS 15.0 or later; open the redeem URL.",
+                ])
             }
         }
         return DummyPlugin()
