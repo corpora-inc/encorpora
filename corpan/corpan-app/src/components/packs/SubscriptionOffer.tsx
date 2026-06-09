@@ -67,6 +67,11 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   const [isPurchasing, setIsPurchasing] = useState(false)
   const [isRestoring, setIsRestoring] = useState(false)
   const [restoreMessage, setRestoreMessage] = useState<string | null>(null)
+  // Affiliate / offer code entry is HIDDEN until the 0.17.4 codes feature
+  // (backend server-side resolve + in-app StoreKit/Billing redemption) lands —
+  // shipping a field that only records an unverified string is worse than no
+  // field. See corpan/infra/AFFILIATE_CODES_PLAN.md. Flip true to re-enable.
+  const SHOW_AFFILIATE_CODE_FIELD = false
   const [affiliateCode, setAffiliateCode] = useState("")
   const [affiliateStatus, setAffiliateStatus] = useState<
     | { kind: "idle" }
@@ -462,6 +467,7 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
           ) : null}
         </div>
 
+        {SHOW_AFFILIATE_CODE_FIELD ? (
         <label className="block space-y-1.5">
           <span className="text-xs font-medium">
             {t("subscription.affiliateCodeLabel", "Affiliate code")}
@@ -492,6 +498,7 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
                   : t("subscription.affiliateCodeHelp", "If someone sent you here, enter their code before subscribing.")}
           </span>
         </label>
+        ) : null}
 
         <Button
           onClick={() => void handleSubscribe()}
