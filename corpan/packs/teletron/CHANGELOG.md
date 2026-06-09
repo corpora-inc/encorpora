@@ -2,6 +2,72 @@
 
 ## [Unreleased]
 
+## 0.1.8 - 2026-06-09
+
+- Rewrite the catalog tagline and description across all 51 languages with
+  talk-framed copy — "Talk to the world in the language you're learning" /
+  "Join language learners from around the world in dynamic conversations and
+  surprising learning opportunities" — dropping the old AI-slop framing
+  ("a private-by-default waiting room for real conversations…").
+- Re-architect the outbound moderation so the relay is never the user's own words
+  ("transform UGC into non-UGC"). A single **gate** pass reads the message and
+  either returns a safe topic — regenerated into a fresh, neutral, modality-preserving
+  line (a question stays a question) — or `EJECT`, which remixes a corpus phrase that
+  shares safe words with the input (loosely connected, varied, never the same twice).
+  Names, places, contact info, locations, ages, and phonetic/innuendo "jokes" cannot
+  survive because nothing downstream ever sees the raw text. No wordlists, no examples
+  in the prompts. (FTS5 corpus query is seam-wired; the host backend is a follow-up.)
+- Fix an "online ↔ reconnecting" reconnect war: two live Teletron instances
+  (a React StrictMode double-invoke or a hot-reload/re-mount that didn't unmount
+  the previous one) each opened a presence connection with the SAME persisted
+  playerId, so the server replaced the older session ("replaced by newer
+  session"), the replaced one fresh-joined with an invalid reconnect token and
+  replaced the other, and they ping-ponged forever. Mounting is now idempotent
+  (guard state on `globalThis`, surviving hot-reload), so exactly one connection
+  is ever live. Pre-existing; rare in a clean prod install, common in dev.
+- Reframe Teletron's copy as warm "safe penpals" rather than "AI-mediated /
+  local AI relay" jargon, and move all chrome through a new `src/i18n.ts`
+  (English ships now; locales fill in via `tools/gen_i18n.py`, whose targets
+  come from the manifest's `displayName`). One honest on-device line is kept in
+  the privacy section.
+- Rebuild Teletron as a messaging app: the home is now an **inbox** of
+  conversations (unread badges, online dots) instead of a lobby with one
+  embedded thread. Leaving a thread (**Back**) or **Exit to Corpan** keeps the
+  socket/link and outbox alive so you can come back later; **End conversation**,
+  **Block**, and **Report** moved into a three-dot overflow menu and are the only
+  actions that tear a link down. Conversations persist as read-only keepsakes
+  when ended.
+- Support multiple simultaneous penpals (free = 1, Corpán Plus = up to 100):
+  background-thread messages land in the inbox with an unread badge without
+  interrupting the open thread; a free user at the cap gets a choice sheet
+  (keep current / start new / go Plus) instead of a silent end.
+- Fix the duplicate Teletron logo on iPad (removed the redundant hero mark; the
+  header keeps the single brand mark).
+- Rework the local mediation pipeline (`@shared/moderation`) from a fixed
+  seven-pass cascade into Scrub → Drift → Recompose: a deterministic scrub of
+  contact/identity/place material, a risk probe that lets clean lines skip
+  straight to a single creative-polish pass (and escalates risky lines through
+  the semantic cascade), corpus-phrase seeds that replace the dead canned
+  fallbacks, and prompts that no longer collapse to a tutor/assistant voice.
+- Translation prompts now prefer a full in-language directive (best for
+  non-Latin scripts) and apply a CEFR level band (A2 simple → B natural → C2
+  erudite) drawn from the recipient's learning stack.
+
+- Fix async-penpal delivery losing messages when the recipient steps away by
+  exiting Teletron (Back / pack switch). The pack's `unmount` was sending
+  `chat-control { action: "ended" }` whenever the chat was active and the
+  partner was online — the server treated that as a deliberate end-of-chat
+  and ran `forgetAcceptedPair`, which also calls `outbox.removeForPair` and
+  drops every still-buffered envelope between the two players. Any later
+  message from the partner was then rejected at the accepted-pair guard.
+  Only the explicit End button and Block actions should send `ended`.
+- Bind room message handlers (especially `chatDeliver`) before calling
+  `publishProfile()` on every (re)join. The server's `profilePublish`
+  handler synchronously drains the outbox and sends each buffered
+  `chatDeliver` to the client; if `publishProfile()` ran before the
+  handler was bound, a hot reconnect could land the flushed messages
+  before the listener existed and silently drop them. Now matches the
+  server-side comment's stated invariant.
 - Fix the gray-square that rendered on the right side of speakable message
   bubbles: the speaker-icon CSS was using `polygon()` as a mask layer, which is
   a `clip-path` value and not a valid mask source — every browser dropped the

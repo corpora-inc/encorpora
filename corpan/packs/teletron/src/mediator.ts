@@ -28,9 +28,18 @@ export type PrepareOutboundArgs = {
   mode: "beginner" | "advanced"
 }
 
+export type LessonifyOptions = {
+  /** Recipient's CEFR level (e.g. "A2", "B2", "C1"); shapes translation register. */
+  level?: string
+}
+
 export interface ChatMediator {
   prepareOutbound: (args: PrepareOutboundArgs) => Promise<MediatedChatInput>
-  lessonify: (input: MediatedChatInput, recipient: LearnerPair) => Promise<MediatedChatArtifact>
+  lessonify: (
+    input: MediatedChatInput,
+    recipient: LearnerPair,
+    opts?: LessonifyOptions,
+  ) => Promise<MediatedChatArtifact>
   dispose: () => void
 }
 
@@ -184,13 +193,14 @@ export function createChatMediator(hostApi: HostApi, events: ChatMediatorEvents 
       return composeSafeRelayInput(args, outbound)
     },
 
-    async lessonify(input, recipient) {
+    async lessonify(input, recipient, opts) {
       const parsed = MediatedChatInput.safeParse(input)
       if (!parsed.success) return fallbackArtifact(input, recipient, "bad-input")
       const lesson = await pipeline.lessonify({
         relayText: sourceText(parsed.data),
         targetLanguage: recipient.target,
         nativeLanguage: recipient.native,
+        level: opts?.level,
       })
       return artifactFromLesson(parsed.data, recipient, lesson)
     },
