@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-06-09
+
+- In-world Block / Report affordance on the player profile card (mirrors
+  Teletron). "Block" suppresses a player's invites and messages; "Report &
+  block" files a coarse moderation report (no content) then blocks. A blocked
+  player is torn down (live chat + pending invites dropped) and disappears from
+  the interaction UI for the session. Localized into the full Corpán language set.
+- Mediated chat adopts the reworked shared moderation pipeline (`@shared/moderation`):
+  the relay is regenerated from a safe gate topic or remixed from a corpus phrase,
+  never the user's own words. Version bump so the rebuilt pack ships to users (the
+  shared bones now back both Corpan City and Teletron).
 - Server: added an optional shared store-and-forward outbox and a configurable
   living-link TTL to PlazaRoom (used by Teletron for async penpal delivery to
   offline peers). Additive and opt-in — Corpan City rooms are unchanged.

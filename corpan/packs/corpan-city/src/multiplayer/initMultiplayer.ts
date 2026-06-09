@@ -174,6 +174,10 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
   } | null = null
   // Profile cards we've recently shown (playerId → last shown ms), to debounce.
   const recentlyRevealed = new Map<string, number>()
+  // Locally blocked players: never re-reveal their card or surface their invites
+  // this session. The server is the authoritative mirror; this is the in-pack
+  // suppression so a blocked player disappears from the interaction UI at once.
+  const blockedPlayers = new Set<string>()
   // Pending profile requests we initiated, with what to do when the card lands.
   const pendingProfile = new Map<string, (card: SafeProfile) => void>()
   // Outstanding invites WE sent: inviteId → resolver continuation.
@@ -272,7 +276,43 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
       },
       onChallenge: () => sendInvite(card.playerId, name, buildChallengeOffer("duel")),
       onTrade: () => sendInvite(card.playerId, name, { kind: "trade" }),
+      onBlock: () => blockPlayer(card.playerId as PlayerId, name),
+      onReport: () => {
+        // "Report & block" — file a coarse report, then block (mirrors Teletron).
+        proto?.report(card.playerId, "other")
+        blockPlayer(card.playerId as PlayerId, name)
+      },
     })
+  }
+
+  /**
+   * Block a player: mirror the block to the server, suppress them locally (no more
+   * card reveals or invites this session), tear down any live chat with them, drop
+   * any pending invites, and confirm to the learner. They vanish from the UI.
+   */
+  function blockPlayer(partnerId: PlayerId, name: string): void {
+    blockedPlayers.add(String(partnerId))
+    proto?.block(partnerId)
+    // Tear down a live/pending chat with this player.
+    if (chat?.partnerId === partnerId) {
+      if (!chat.ended && !chat.pendingInviteId) {
+        proto?.sendChatControl({ to: partnerId, interactionId: chat.interactionId, action: "ended" })
+      }
+      chat.panel.close()
+      chat = null
+    }
+    clearRememberedChat(partnerId)
+    // Drop any outstanding invites to/from this player.
+    for (const [inviteId, pending] of pendingInvites) {
+      if (pending.partnerId === partnerId) pendingInvites.delete(inviteId)
+    }
+    for (const [inviteId, prompt] of activeInvitePrompts) {
+      if (prompt.from === partnerId) {
+        prompt.close()
+        activeInvitePrompts.delete(inviteId)
+      }
+    }
+    showToast(opts.overlay, opts.learnerPair.native, t("mp.profile.blocked", { name }))
   }
 
   /* ------------------------------------------------------------ invites/launch */
@@ -351,6 +391,12 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
   }
 
   function onInvited(msg: InvitedMessage): void {
+    // A blocked player can't reach us; decline silently (server already suppresses,
+    // this is the belt-and-braces client guard).
+    if (blockedPlayers.has(String(msg.from))) {
+      proto?.respondInvite(msg.inviteId, "decline")
+      return
+    }
     rememberName(msg.from, msg.fromName)
     if (msg.offer.kind === "chat" && chat && !chat.ended) {
       proto?.respondInvite(msg.inviteId, chat.partnerId === msg.from ? "accept" : "decline")
@@ -718,6 +764,7 @@ export function initMultiplayer(opts: MultiplayerOptions): MultiplayerHandle {
     const now = Date.now()
     let nearest: { playerId: string; d: number } | null = null
     for (const rp of net.remotePlayers()) {
+      if (blockedPlayers.has(rp.playerId)) continue
       const d = Math.hypot(rp.x - me.x, rp.z - me.z)
       if (d > REVEAL_RADIUS) continue
       const last = recentlyRevealed.get(rp.playerId) ?? 0

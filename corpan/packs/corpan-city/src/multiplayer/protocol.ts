@@ -13,8 +13,11 @@ import {
   PeerChallengeResult,
   TradeEnvelope,
   TradeUpdateMessage,
+  BlockMessage,
+  ReportMessage,
   type InviteOffer,
   type ChallengeResult,
+  type ReportReason,
 } from "@corpan-city/contracts"
 import type { NetRoom } from "../net"
 
@@ -68,6 +71,10 @@ export interface InteractionProtocol {
   sendTrade: (env: TradeEnvelope) => void
   /** Report my finished peer-challenge result (routed to my partner). */
   reportPeerResult: (inviteId: string, result: ChallengeResult) => void
+  /** Block another player — suppress their invites/messages (server-side mirror). */
+  block: (target: string) => void
+  /** Report another player to moderation (coarse reason; never content). */
+  report: (target: string, reason: ReportReason) => void
   /** Detach all listeners (room lost / teardown). */
   dispose: () => void
 }
@@ -198,6 +205,24 @@ export function createProtocol(room: NetRoom, handlers: ProtocolHandlers): Inter
         return
       }
       room.send(MP_MSG.peerResult, msg)
+    },
+
+    block(target) {
+      const parsed = BlockMessage.safeParse({ target, action: "block" })
+      if (!parsed.success) {
+        console.error("[mp] refusing to send malformed block")
+        return
+      }
+      room.send(MP_MSG.block, parsed.data)
+    },
+
+    report(target, reason) {
+      const parsed = ReportMessage.safeParse({ target, reason })
+      if (!parsed.success) {
+        console.error("[mp] refusing to send malformed report")
+        return
+      }
+      room.send(MP_MSG.report, parsed.data)
     },
 
     dispose() {
