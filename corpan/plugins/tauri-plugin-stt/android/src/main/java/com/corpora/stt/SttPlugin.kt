@@ -29,8 +29,11 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+import java.io.RandomAccessFile
 import java.util.concurrent.TimeUnit
+import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicInteger
 
 // Android implementation of tauri-plugin-stt — Phase 1.
@@ -50,6 +53,9 @@ private const val MODELS_SUBDIR = "whisper-cpp/models"
 private const val MARKER_SUBDIR = ".pronunciation-coach/installed"
 private const val SAMPLE_RATE = 16_000
 private const val LEADING_PAD_SAMPLES = 4_800   // 300 ms
+private const val GGML_FILE_MAGIC = 0x67676d6c
+private const val MIN_PLAUSIBLE_MODEL_BYTES = 1_000_000L
+private const val MODEL_PROBE_BYTES = 4096
 
 // Matches the `[_BEG_]`, `[_END_]`, `[_TT_50]`, `[_PT_*]` markers
 // whisper.cpp emits when token_timestamps is on. Stripped from token
@@ -221,6 +227,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
      *  compression threshold). nil = use the native ramps unchanged. */
     @Volatile private var activeScoringParams: ScoringParamsArg? = null
     @Volatile private var sessionStartedAt: Long = 0L
+    private val freshInstallReadyAt = ConcurrentHashMap<String, Long>()
 
     init {
         if (instanceOrdinal > 1) {
@@ -265,7 +272,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
     private fun writeInstallMarker(name: String) {
         try {
             markerFile(name).writeText(
-                """{"installed":true,"model":"$name","writtenAt":"${System.currentTimeMillis()}"}"""
+                """{"installed":true,"model":"$name","verifiedBy":"ggml-probe-v2","writtenAt":"${System.currentTimeMillis()}"}"""
             )
         } catch (e: Exception) {
             Log.w(TAG, "failed to write install marker: ${e.message}")
@@ -279,15 +286,10 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
     private fun installMarkerExists(name: String) = markerFile(name).exists()
 
     private fun validateModelInternal(name: String): List<String> {
-        val f = modelFile(name)
-        if (!f.exists()) {
+        val problems = validateGgmlModelFile(modelFile(name))
+        if (problems.isNotEmpty()) {
             if (installMarkerExists(name)) removeInstallMarker(name)
-            return listOf("<model file missing>")
-        }
-        val size = f.length()
-        if (size < 1_000_000) {
-            if (installMarkerExists(name)) removeInstallMarker(name)
-            return listOf("<model file too small: $size bytes>")
+            return problems
         }
         if (!installMarkerExists(name)) writeInstallMarker(name)
         return emptyList()
@@ -344,32 +346,42 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         try { f.delete() } catch (_: Exception) {}
     }
 
-    /** True if [f] starts with the ggml file magic. A truncated/empty
-     *  download or an HTML error page saved as the model has no magic;
-     *  catching it here returns a clean LOAD_FAILED instead of handing
-     *  garbage to native init. Fails CLOSED on a read error: the file is
-     *  about to be fed to native whisper init, which cannot defend itself
-     *  against a bad file, and a SIGSEGV there is uncatchable and kills the
-     *  app. If we can't read even its first 4 bytes, refusing is strictly
-     *  safer than guessing — and reading 4 bytes of a local file that
-     *  exists and is >= 1 MB does not fail transiently, so this costs no
-     *  legitimate loads. */
-    private fun looksLikeGgmlModel(f: File): Boolean {
-        if (!f.exists() || f.length() < 1_000_000L) return false
+    /** Cheap model-file sanity check before native whisper.cpp sees the file.
+     *  Reads only the first and last 4 KiB: enough to reject HTML error pages,
+     *  empty/truncated artifacts, unreadable files, and storage-layer readback
+     *  failures without buffering a giant model in memory. */
+    private fun validateGgmlModelFile(f: File, expectedBytes: Long? = null): List<String> {
+        if (!f.exists()) return listOf("<model file missing>")
+        if (!f.canRead()) return listOf("<model file unreadable>")
+        val size = f.length()
+        if (size < MIN_PLAUSIBLE_MODEL_BYTES) {
+            return listOf("<model file too small: $size bytes>")
+        }
+        if (expectedBytes != null && expectedBytes > 0 && size != expectedBytes) {
+            return listOf("<model file size mismatch: got $size of $expectedBytes bytes>")
+        }
         return try {
-            f.inputStream().use { s ->
+            RandomAccessFile(f, "r").use { raf ->
                 val b = ByteArray(4)
-                if (s.read(b) != 4) return@use false
+                if (raf.read(b) != 4) return@use listOf("<model file header unreadable>")
                 // GGML_FILE_MAGIC 0x67676d6c, stored little-endian on disk.
                 val magic = (b[0].toInt() and 0xff) or
                     ((b[1].toInt() and 0xff) shl 8) or
                     ((b[2].toInt() and 0xff) shl 16) or
                     ((b[3].toInt() and 0xff) shl 24)
-                magic == 0x67676d6c
+                if (magic != GGML_FILE_MAGIC) {
+                    return@use listOf("<bad ggml magic: ${String.format("0x%08x", magic)}>")
+                }
+                if (size > MODEL_PROBE_BYTES.toLong()) {
+                    raf.seek(maxOf(0L, size - MODEL_PROBE_BYTES.toLong()))
+                    val tail = ByteArray(MODEL_PROBE_BYTES)
+                    val n = raf.read(tail)
+                    if (n <= 0) return@use listOf("<model file tail unreadable>")
+                }
+                emptyList()
             }
         } catch (e: Exception) {
-            Log.e(TAG, "ggml magic check could not read ${f.name}, refusing load: ${e.message}")
-            false
+            listOf("<model file readback failed: ${e.message}>")
         }
     }
 
@@ -377,8 +389,9 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
      *  holding [nativeMutex]. Rejects a non-ggml file before native code
      *  sees it, then brackets the native call with the crash breadcrumb. */
     private fun loadGuarded(name: String, path: String): WhisperContext? {
-        if (!looksLikeGgmlModel(File(path))) {
-            Log.e(TAG, "refusing to load $name: not a valid ggml model (bad magic / too small)")
+        val problems = validateGgmlModelFile(File(path))
+        if (problems.isNotEmpty()) {
+            Log.e(TAG, "refusing to load $name: ${problems.joinToString(", ")}")
             return null
         }
         writeInitBreadcrumb(name)
@@ -387,6 +400,33 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
         } finally {
             clearInitBreadcrumb()
         }
+    }
+
+    private fun postInstallSettleMs(name: String): Long {
+        val size = modelFile(name).length()
+        return when {
+            size >= 1_200_000_000L -> 5_000L
+            size >= 800_000_000L -> 4_000L
+            size >= 500_000_000L -> 2_500L
+            size >= 250_000_000L -> 1_250L
+            else -> 400L
+        }
+    }
+
+    private fun markFreshInstall(name: String) {
+        val delayMs = postInstallSettleMs(name)
+        freshInstallReadyAt[name] = SystemClock.elapsedRealtime() + delayMs
+        Log.i(TAG, "fresh install cooldown: $name delayMs=$delayMs")
+    }
+
+    private fun waitForFreshInstallSettleIfNeeded(name: String) {
+        val readyAt = freshInstallReadyAt[name] ?: return
+        val remaining = readyAt - SystemClock.elapsedRealtime()
+        if (remaining > 0L) {
+            Log.i(TAG, "waiting for fresh install to settle: $name remainingMs=$remaining")
+            Thread.sleep(remaining)
+        }
+        freshInstallReadyAt.remove(name)
     }
 
     private fun hasMicPermission(): Boolean {
@@ -516,8 +556,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
 
         // Bail BEFORE touching WhisperContext when the native lib
         // failed to load (e.g. x86_64 Chromebook with no matching
-        // .so). Any reference to WhisperContext (including the
-        // post-download verify load test below) would otherwise
+        // .so). Any reference to WhisperContext during prepare would otherwise
         // re-throw UnsatisfiedLinkError from the companion's
         // <clinit> — only fatal because Kotlin coroutines have no
         // default uncaught-exception handler that survives. We
@@ -560,34 +599,19 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                     channel?.send(installEvent(name, "downloading", fraction, completed, total, null, null))
                     Log.i(TAG, "install progress $name bytes: $completed / $total fraction: ${"%.3f".format(fraction)}")
                 }
-                Log.i(TAG, "download finished: ${dest.absolutePath}")
+                Log.i(TAG, "download finished + file barrier passed: ${dest.absolutePath}")
                 channel?.send(installEvent(name, "verifying", 1.0, null, null, null, null))
-                Log.i(TAG, "running whisper.cpp load test: $name")
-                // Release + load + adopt the new ctx under ONE lock. Doing
-                // the ctx/loadedModel assignment outside the lock would
-                // re-open the check-then-act race the mutex exists to close:
-                // a concurrent prepare()/install could load a second context
-                // and leak one. Also drops any ctx another flow loaded while
-                // we were downloading.
-                val loaded = nativeMutex.withLock {
-                    if (ctx != null) {
-                        Log.i(TAG, "dropping current ctx before install load test: $loadedModel")
-                        ctx?.release(); ctx = null; loadedModel = null
-                    }
-                    loadGuarded(name, dest.absolutePath)?.also { newCtx ->
-                        ctx = newCtx
-                        loadedModel = name
-                    }
-                }
-                if (loaded != null) {
+                val problems = validateModelInternal(name)
+                if (problems.isEmpty()) {
+                    markFreshInstall(name)
                     writeInstallMarker(name)
-                    Log.i(TAG, "install + load test ok: $name")
+                    Log.i(TAG, "install verified on disk: $name")
                     channel?.send(installEvent(name, "verified", 1.0, null, null, null, null))
                     val ret = JSObject()
                     ret.put("installed", true); ret.put("model", name); ret.put("alreadyInstalled", false)
                     invoke.resolve(ret)
                 } else {
-                    val msg = "Model file downloaded but failed to load. The download was probably truncated."
+                    val msg = "Model file downloaded but failed verification: ${problems.joinToString(", ")}"
                     Log.e(TAG, msg)
                     dest.delete(); removeInstallMarker(name)
                     channel?.send(installEvent(name, "failed", null, null, null, msg, "LOAD_FAILED"))
@@ -669,11 +693,17 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                     Thread.sleep(150)
                     memSnapshot("swap-after-settle")
                 }
+                System.gc()
+                Thread.sleep(150)
+                memSnapshot("prepare-after-settle: $name")
+                waitForFreshInstallSettleIfNeeded(name)
+                memSnapshot("prepare-after-fresh-install-barrier: $name")
                 val dest = modelFile(name)
-                if (!dest.exists()) {
+                val problems = validateModelInternal(name)
+                if (problems.isNotEmpty()) {
                     val ret = JSObject()
                     ret.put("ready", false); ret.put("model", name)
-                    ret.put("message", "Model not installed")
+                    ret.put("message", "Model not installed: ${problems.joinToString(", ")}")
                     ret.put("code", "MODEL_NOT_INSTALLED")
                     invoke.resolve(ret); return@launch
                 }
@@ -1185,8 +1215,9 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             val body = resp.body ?: throw IOException("empty body from $url")
             val total = body.contentLength()
             val tmp = File(dest.parentFile, "${dest.name}.part")
+            tmp.delete()
             var completed = 0L
-            tmp.outputStream().use { out ->
+            FileOutputStream(tmp).use { out ->
                 body.byteStream().use { input ->
                     val buf = ByteArray(64 * 1024)
                     var lastReport = 0L
@@ -1203,6 +1234,7 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
                         }
                     }
                 }
+                out.fd.sync()
             }
             // Completeness gate. When the server advertised a Content-Length
             // (total > 0), a clean end-of-stream before we've read that many
@@ -1215,15 +1247,24 @@ class SttPlugin(private val activity: Activity) : Plugin(activity) {
             // real end of file. Fail loudly here instead; installModel's catch
             // surfaces a clean, retryable DOWNLOAD_FAILED. (total <= 0 means
             // the server sent no Content-Length — nothing to compare against,
-            // so we fall through and let the post-download load test catch a
-            // bad file.)
+            // so we fall through and let the post-download ggml probe catch a
+            // bad file before native init sees it.)
             if (total > 0 && completed != total) {
                 tmp.delete()
                 throw IOException("truncated download from $url: got $completed of $total bytes")
             }
+            if (dest.exists() && !dest.delete()) {
+                tmp.delete()
+                throw IOException("failed to replace existing ${dest.absolutePath}")
+            }
             if (!tmp.renameTo(dest)) {
                 tmp.delete()
                 throw IOException("failed to move temp file to ${dest.absolutePath}")
+            }
+            val problems = validateGgmlModelFile(dest, expectedBytes = total.takeIf { it > 0 })
+            if (problems.isNotEmpty()) {
+                dest.delete()
+                throw IOException("downloaded model failed file verification: ${problems.joinToString(", ")}")
             }
         }
     }

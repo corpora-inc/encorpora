@@ -66,6 +66,7 @@ impl<R: Runtime> Stt<R> {
             message: Some("STT not supported on desktop in this build".to_string()),
             available_memory_mb: None,
             physical_memory_mb: None,
+            prior_init_crash: None,
         })
     }
 }

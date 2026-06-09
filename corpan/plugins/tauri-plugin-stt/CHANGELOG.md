@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Android + iOS: model install now verifies bytes on disk instead of
+  immediately running a native load test.** Download completion now does
+  a durable write/readback barrier, validates ggml magic plus tail
+  readability, writes a `ggml-probe-v2` install marker, and leaves native
+  initialization to `prepare()`, where memory headroom, fresh-install
+  settle timing, and crash breadcrumbs all run in one guarded path. This
+  avoids stacking large-model download finalization and whisper.cpp init
+  in the same memory-pressure window on first install.
+
+### Added
+- **iOS: native-init crash breadcrumbs now match Android's analytics
+  path.** A failed previous process load is surfaced once via
+  `getStatus().priorInitCrash`.
+
 ## [0.5.3] - 2026-06-04 — Truncated-download guard + crash-breadcrumb harvest
 
 ### Fixed
