@@ -213,4 +213,9 @@ pub struct StatusResult {
     /// `available_memory_mb`.
     #[serde(default, rename = "physicalMemoryMB")]
     pub physical_memory_mb: Option<i64>,
+    /// One-shot native-init crash breadcrumb delivered by iOS/Android after
+    /// the previous process died inside whisper.cpp model load. The host
+    /// records this into on-device analytics, then native clears it.
+    #[serde(default, rename = "priorInitCrash")]
+    pub prior_init_crash: Option<String>,
 }

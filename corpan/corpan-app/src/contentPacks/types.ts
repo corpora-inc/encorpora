@@ -149,12 +149,12 @@ export type SttStatus = {
   availableMemoryMB?: number | null
   /** Total physical RAM on the device in MB. */
   physicalMemoryMB?: number | null
-  /** Set by the Android plugin on the first getStatus after a prior
+  /** Set by the native plugin on the first getStatus after a prior
    *  on-device whisper init crashed (uncatchable native SIGSEGV/abort in
    *  ggml model load). The native side wrote a breadcrumb before the crash
    *  and held it across the restart; the host's getStatus wrapper records
    *  it once into on-device analytics, then the field is cleared natively.
-   *  JSON string with `model`/`instanceOrdinal`/`instancesCreated`/`uptimeMs`. */
+   *  JSON string with native model-load context and timing fields. */
   priorInitCrash?: string | null
 }
 
@@ -400,8 +400,10 @@ export type SttApi = {
     problems: string[]
   }>
   /**
-   * Downloads a model from Hugging Face into the app's data dir, then
-   * verifies file integrity. Calls `onProgress` with `phase` ∈
+   * Downloads a model into the app's data dir, fsyncs/moves it into place,
+   * and verifies the ggml header plus tail readback. The expensive native
+   * init happens later in `prepare()`, under the runtime memory gate.
+   * Calls `onProgress` with `phase` in
    * `downloading | verifying | verified | failed`. Throws on failure.
    */
   installModel?: (

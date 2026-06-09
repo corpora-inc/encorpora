@@ -239,6 +239,7 @@ struct StatusPayload: Encodable {
     let message: String?
     let availableMemoryMB: Int?
     let physicalMemoryMB: Int?
+    let priorInitCrash: String?
 }
 
 struct InstallProgressPayload: Encodable {
@@ -342,6 +343,99 @@ private func classifyLoadError(_ error: Error) -> SttErrorCode {
         return .modelNotInstalled
     }
     return .loadFailed
+}
+
+private let ggmlFileMagic: UInt32 = 0x67676d6c
+private let minPlausibleModelBytes: Int64 = 1_000_000
+private let modelProbeBytes = 4096
+
+private func sttFileSizeBytes(_ url: URL) -> Int64 {
+    let attrs = try? FileManager.default.attributesOfItem(atPath: url.path)
+    return Int64((attrs?[.size] as? NSNumber)?.int64Value ?? 0)
+}
+
+private func sttPosixError(_ operation: String, _ path: String) -> NSError {
+    return NSError(
+        domain: NSPOSIXErrorDomain,
+        code: Int(errno),
+        userInfo: [
+            NSLocalizedDescriptionKey:
+                "\(operation) failed for \(path): \(String(cString: strerror(errno)))"
+        ])
+}
+
+/// Best-effort durability barrier after URLSession moves a multi-GB model
+/// into place. APFS rename semantics are already strong, but fsync + readback
+/// removes two avoidable sources of "download finished, native init touched it
+/// immediately" risk on first install.
+private func syncModelFileToDisk(_ url: URL) throws {
+    let fd = url.path.withCString { pathPtr in Darwin.open(pathPtr, O_RDONLY) }
+    if fd < 0 { throw sttPosixError("open", url.path) }
+    defer { Darwin.close(fd) }
+    if Darwin.fsync(fd) != 0 { throw sttPosixError("fsync", url.path) }
+
+    // Directory fsync is not available on every iOS filesystem view. Treat it
+    // as a bonus barrier, not an install failure.
+    let parent = url.deletingLastPathComponent()
+    let dirFd = parent.path.withCString { pathPtr in Darwin.open(pathPtr, O_RDONLY) }
+    if dirFd >= 0 {
+        _ = Darwin.fsync(dirFd)
+        Darwin.close(dirFd)
+    }
+}
+
+/// Cheap model-file sanity check before native whisper.cpp sees the file.
+/// Reads only the first and last 4 KiB: enough to reject HTML error pages,
+/// empty/truncated artifacts, unreadable files, and storage-layer readback
+/// failures without buffering a giant model in memory.
+private func validateGgmlModelFile(_ url: URL, expectedBytes: Int64? = nil) -> [String] {
+    let fm = FileManager.default
+    guard fm.fileExists(atPath: url.path) else { return ["<model file missing>"] }
+    guard fm.isReadableFile(atPath: url.path) else { return ["<model file unreadable>"] }
+
+    let size = sttFileSizeBytes(url)
+    if size < minPlausibleModelBytes {
+        return ["<model file too small: \(size) bytes>"]
+    }
+    if let expectedBytes, expectedBytes > 0, size != expectedBytes {
+        return ["<model file size mismatch: got \(size) of \(expectedBytes) bytes>"]
+    }
+
+    do {
+        let handle = try FileHandle(forReadingFrom: url)
+        defer { try? handle.close() }
+
+        guard let head = try handle.read(upToCount: modelProbeBytes),
+            head.count >= 4
+        else {
+            return ["<model file header unreadable>"]
+        }
+        let b = Array(head.prefix(4))
+        let magic =
+            UInt32(b[0])
+            | (UInt32(b[1]) << 8)
+            | (UInt32(b[2]) << 16)
+            | (UInt32(b[3]) << 24)
+        if magic != ggmlFileMagic {
+            return [
+                String(
+                    format: "<bad ggml magic: 0x%08x>",
+                    Int(magic))
+            ]
+        }
+
+        if size > Int64(modelProbeBytes) {
+            try handle.seek(toOffset: UInt64(max(0, size - Int64(modelProbeBytes))))
+            guard let tail = try handle.read(upToCount: modelProbeBytes),
+                !tail.isEmpty
+            else {
+                return ["<model file tail unreadable>"]
+            }
+        }
+    } catch {
+        return ["<model file readback failed: \(error.localizedDescription)>"]
+    }
+    return []
 }
 
 // -----------------------------------------------------------------------------
@@ -753,9 +847,26 @@ private final class WhisperDownloadDelegate: NSObject, URLSessionDownloadDelegat
                     return
                 }
             }
-            sttLog("Whisper | download finished:", dest.path)
+            try syncModelFileToDisk(dest)
+            let problems = validateGgmlModelFile(
+                dest,
+                expectedBytes: expected > 0 ? expected : nil)
+            if !problems.isEmpty {
+                try? fm.removeItem(at: dest)
+                onComplete(
+                    .failure(
+                        NSError(
+                            domain: "stt", code: -1002,
+                            userInfo: [
+                                NSLocalizedDescriptionKey:
+                                    "downloaded model failed file verification: \(problems.joined(separator: ", "))"
+                            ])))
+                return
+            }
+            sttLog("Whisper | download finished + file barrier passed:", dest.path)
             onComplete(.success(dest))
         } catch {
+            try? fm.removeItem(at: dest)
             onComplete(.failure(error))
         }
     }
@@ -797,6 +908,16 @@ private final class WhisperManager {
     /// running one.
     private var loadInFlightFor: String?
 
+    /// Per-process post-install cooling window. The file is already moved,
+    /// fsynced, and header/tail-probed before install resolves; this just
+    /// avoids immediately asking ggml/Metal to map a fresh multi-GB artifact
+    /// in the same allocator pressure window as the download finalization.
+    private var freshInstallReadyAt: [String: Date] = [:]
+
+    /// One-shot native-init crash breadcrumb captured from the previous
+    /// process. `status()` hands it to JS analytics once, then clears it.
+    private var pendingInitCrash: String?
+
     // Audio capture
     private var audioEngine: AVAudioEngine?
     private var converter: AVAudioConverter?
@@ -826,6 +947,11 @@ private final class WhisperManager {
     /// the only entry. Phase 2 replaces this with the real Small.
     private static let defaultModel = "ggml-tiny.bin"
     private static let targetSampleRate: Double = 16000.0
+
+    private init() {
+        pendingInitCrash = nil
+        pendingInitCrash = reportPriorInitCrash()
+    }
 
     // ---------------------------------------------------------------------
     // Model storage layout (whisper.cpp era)
@@ -861,6 +987,13 @@ private final class WhisperManager {
             .appendingPathComponent("\(name).marker")
     }
 
+    private func initBreadcrumbURL() -> URL {
+        return documentsDir()
+            .appendingPathComponent(".pronunciation-coach")
+            .appendingPathComponent("installed")
+            .appendingPathComponent("stt-init-inflight.json")
+    }
+
     private func writeInstallMarker(_ name: String) {
         let url = installMarkerURL(name)
         let fm = FileManager.default
@@ -869,7 +1002,7 @@ private final class WhisperManager {
             try fm.createDirectory(
                 at: dir, withIntermediateDirectories: true)
             let payload = """
-                {"installed":true,"model":"\(name)","writtenAt":"\(Date())"}
+                {"installed":true,"model":"\(name)","verifiedBy":"ggml-probe-v2","writtenAt":"\(Date())"}
                 """
             try payload.write(to: url, atomically: true, encoding: .utf8)
             sttLog("Whisper | wrote install marker:", url.path)
@@ -891,8 +1024,87 @@ private final class WhisperManager {
 
     /// File size in bytes, or 0 if the file is missing.
     private func fileSizeBytes(_ url: URL) -> Int64 {
-        let attrs = try? FileManager.default.attributesOfItem(atPath: url.path)
-        return Int64((attrs?[.size] as? NSNumber)?.intValue ?? 0)
+        return sttFileSizeBytes(url)
+    }
+
+    private func writeInitBreadcrumb(_ modelName: String) {
+        let url = initBreadcrumbURL()
+        do {
+            try FileManager.default.createDirectory(
+                at: url.deletingLastPathComponent(),
+                withIntermediateDirectories: true)
+            let payload = """
+                {"model":"\(modelName)","phase":"native-init","uptimeMs":\(Int(ProcessInfo.processInfo.systemUptime * 1000)),"ts":"\(Date())"}
+                """
+            try payload.write(to: url, atomically: true, encoding: .utf8)
+        } catch {
+            sttErr(
+                "Whisper | failed to write init breadcrumb for",
+                modelName, "—", error.localizedDescription)
+        }
+    }
+
+    private func clearInitBreadcrumb() {
+        try? FileManager.default.removeItem(at: initBreadcrumbURL())
+    }
+
+    private func reportPriorInitCrash() -> String? {
+        let url = initBreadcrumbURL()
+        guard FileManager.default.fileExists(atPath: url.path) else { return nil }
+        let payload =
+            (try? String(contentsOf: url, encoding: .utf8))
+            ?? "<unreadable init breadcrumb>"
+        sttErr(
+            "STT_INIT_CRASH previous on-device whisper init did not complete",
+            "context=\(payload)")
+        try? FileManager.default.removeItem(at: url)
+        return payload
+    }
+
+    private func loadGuarded(modelName: String, path: String) -> WhisperCppContext? {
+        let file = URL(fileURLWithPath: path)
+        let problems = validateGgmlModelFile(file)
+        if !problems.isEmpty {
+            sttErr(
+                "Whisper | refusing native load for",
+                modelName, "—", problems.joined(separator: ", "))
+            return nil
+        }
+        writeInitBreadcrumb(modelName)
+        defer { clearInitBreadcrumb() }
+        return WhisperCppContext.load(path: path)
+    }
+
+    private func postInstallSettleSeconds(for modelName: String) -> TimeInterval {
+        let size = fileSizeBytes(modelFile(modelName))
+        if size >= 1_200_000_000 { return 5.0 }
+        if size >= 800_000_000 { return 4.0 }
+        if size >= 500_000_000 { return 2.5 }
+        if size >= 250_000_000 { return 1.25 }
+        return 0.4
+    }
+
+    private func markFreshInstall(_ modelName: String) {
+        let seconds = postInstallSettleSeconds(for: modelName)
+        let readyAt = Date().addingTimeInterval(seconds)
+        queue.sync { self.freshInstallReadyAt[modelName] = readyAt }
+        sttLog(
+            "Whisper | fresh install cooldown:",
+            modelName, "seconds=\(String(format: "%.2f", seconds))")
+    }
+
+    private func waitForFreshInstallSettleIfNeeded(_ modelName: String) async {
+        let readyAt = queue.sync { self.freshInstallReadyAt[modelName] }
+        guard let readyAt else { return }
+        let remaining = readyAt.timeIntervalSinceNow
+        if remaining > 0 {
+            sttLog(
+                "Whisper | waiting for fresh install to settle:",
+                modelName, "seconds=\(String(format: "%.2f", remaining))")
+            try? await Task.sleep(
+                nanoseconds: UInt64(max(0.0, remaining) * 1_000_000_000.0))
+        }
+        queue.sync { _ = self.freshInstallReadyAt.removeValue(forKey: modelName) }
     }
 
     /// Authoritative "is this model installed?" answer.
@@ -903,29 +1115,15 @@ private final class WhisperManager {
     /// with the marker, we trust disk and rewrite the marker.
     private func validateModel(_ name: String) -> [String] {
         let file = modelFile(name)
-        let fm = FileManager.default
-        guard fm.fileExists(atPath: file.path) else {
-            sttLog(
-                "Whisper | validateModel: file missing —",
-                "name=", name, "path=", file.path)
+        let problems = validateGgmlModelFile(file)
+        if !problems.isEmpty {
             if installMarkerExists(name) {
                 sttLog(
-                    "Whisper | clearing stale marker (file missing):", name)
+                    "Whisper | clearing stale marker (validation failed):",
+                    name, problems.joined(separator: ", "))
                 self.removeInstallMarker(name)
             }
-            return ["<model file missing>"]
-        }
-        let size = fileSizeBytes(file)
-        // 1 MB floor catches truncated downloads. Real models are tens
-        // to hundreds of MB; tiny is the smallest at ~75 MB.
-        if size < 1_000_000 {
-            if installMarkerExists(name) {
-                sttLog(
-                    "Whisper | clearing stale marker (file too small \(size) bytes):",
-                    name)
-                self.removeInstallMarker(name)
-            }
-            return ["<model file too small: \(size) bytes>"]
+            return problems
         }
         if !installMarkerExists(name) {
             self.writeInstallMarker(name)
@@ -979,14 +1177,17 @@ private final class WhisperManager {
         sttLog(
             "Whisper | status() returning availableMemoryMB=\(availMB.map { String($0) } ?? "nil") physicalMemoryMB=\(physMB)")
         return queue.sync {
-            StatusPayload(
+            let prior = self.pendingInitCrash
+            self.pendingInitCrash = nil
+            return StatusPayload(
                 available: true,
                 prepared: ctx != nil,
                 model: loadedModel,
                 recording: isRecording,
                 message: nil,
                 availableMemoryMB: availMB,
-                physicalMemoryMB: physMB
+                physicalMemoryMB: physMB,
+                priorInitCrash: prior
             )
         }
     }
@@ -994,12 +1195,14 @@ private final class WhisperManager {
     func isAvailable() -> Bool { true }
 
     // ---------------------------------------------------------------------
-    // Install — single-file URLSession download, then load test.
+    // Install — single-file URLSession download, then disk verification.
     //
     // The pack passes the model id as the .bin filename (e.g.
     // "ggml-tiny.bin"). We resolve it to the canonical Hugging Face
     // download URL on `ggml-org/whisper.cpp` and stream to our private
-    // model dir.
+    // model dir. Native model init is intentionally left to prepare(),
+    // where the memory gate, fresh-install cooldown, and crash breadcrumb
+    // all run in one place.
     // ---------------------------------------------------------------------
 
     // Use ggerganov/whisper.cpp (not ggml-org/whisper.cpp) — the
@@ -1077,7 +1280,7 @@ private final class WhisperManager {
         let previouslyLoaded: String? = self.queue.sync { self.loadedModel }
         if let prev = previouslyLoaded, prev != modelName {
             sttLog(
-                "Whisper | dropping previous kit before install load test:",
+                "Whisper | dropping previous kit before model download:",
                 prev)
             self.queue.sync {
                 self.ctx = nil
@@ -1096,7 +1299,13 @@ private final class WhisperManager {
             sttLog(
                 "Whisper | install failed; restoring previously-loaded model:",
                 prev)
-            if let prevCtx = WhisperCppContext.load(path: prevPath) {
+            if let headroomError = self.checkMemoryHeadroom(for: prev) {
+                sttErr(
+                    "Whisper | skip restore after install failure (INSUFFICIENT_MEMORY):",
+                    headroomError)
+                return
+            }
+            if let prevCtx = self.loadGuarded(modelName: prev, path: prevPath) {
                 self.queue.sync {
                     self.ctx = prevCtx
                     self.loadedModel = prev
@@ -1122,21 +1331,19 @@ private final class WhisperManager {
             case .success(let downloadedURL):
                 Task {
                     sttLog(
-                        "Whisper | running whisper.cpp load test:", modelName)
+                        "Whisper | finalizing verified model install:",
+                        modelName, downloadedURL.path)
                     onProgress(
                         InstallProgressPayload(
                             model: modelName, phase: "verifying",
                             fraction: 1.0, completed: nil, total: nil,
                             error: nil, code: nil))
-                    let loaded = WhisperCppContext.load(path: downloadedURL.path)
-                    if let loaded {
-                        self.queue.sync {
-                            self.ctx = loaded
-                            self.loadedModel = modelName
-                        }
+                    let problems = self.validateModel(modelName)
+                    if problems.isEmpty {
+                        self.markFreshInstall(modelName)
                         self.writeInstallMarker(modelName)
                         sttLog(
-                            "Whisper | install + load test ok:", modelName)
+                            "Whisper | install verified on disk:", modelName)
                         onProgress(
                             InstallProgressPayload(
                                 model: modelName, phase: "verified",
@@ -1148,10 +1355,8 @@ private final class WhisperManager {
                                     installed: true, model: modelName,
                                     alreadyInstalled: false)))
                     } else {
-                        // Load test failed — wipe the bytes so we don't
-                        // serve a half-broken install on next boot.
                         let msg =
-                            "Model file downloaded but failed to load. The download was probably truncated."
+                            "Model file downloaded but failed verification: \(problems.joined(separator: ", "))"
                         sttErr("Whisper |", msg)
                         try? FileManager.default.removeItem(at: dest)
                         self.removeInstallMarker(modelName)
@@ -1279,8 +1484,10 @@ private final class WhisperManager {
             // schedule even when malloc doesn't return them eagerly.
             _ = malloc_zone_pressure_relief(nil, 0)
             sttMemSnapshot("prepare-after-pressure-relief: \(modelName)")
-            Thread.sleep(forTimeInterval: 0.15)
+            try? await Task.sleep(nanoseconds: 150_000_000)
             sttMemSnapshot("prepare-after-settle: \(modelName)")
+            await self.waitForFreshInstallSettleIfNeeded(modelName)
+            sttMemSnapshot("prepare-after-fresh-install-barrier: \(modelName)")
 
             // File present?
             let problems = self.validateModel(modelName)
@@ -1322,7 +1529,7 @@ private final class WhisperManager {
 
             sttLog("Whisper | loading model from disk:", modelName)
             let path = self.modelFile(modelName).path
-            guard let loaded = WhisperCppContext.load(path: path) else {
+            guard let loaded = self.loadGuarded(modelName: modelName, path: path) else {
                 let msg = "Failed to load \(modelName) (whisper_init returned nil)"
                 sttErr("Whisper | load failed (LOAD_FAILED):", msg)
                 completion(
@@ -2573,6 +2780,10 @@ final class STTPlugin: Plugin {
         if let model = s.model { dict["model"] = model }
         if let message = s.message { dict["message"] = message }
         if let availMB { dict["availableMemoryMB"] = availMB }
+        if let prior = s.priorInitCrash {
+            dict["priorInitCrash"] = prior
+            sttErr("Whisper | delivering prior STT init-crash breadcrumb to analytics")
+        }
         invoke.resolve(dict)
     }
 

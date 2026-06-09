@@ -76,6 +76,8 @@ type SttStatus = {
   availableMemoryMB?: number | null
   /** Total physical RAM on the device in MB. */
   physicalMemoryMB?: number | null
+  /** One-shot native-init crash breadcrumb from the previous process. */
+  priorInitCrash?: string | null
 }
 export type SttWordTiming = {
   word: string
@@ -260,17 +262,26 @@ const folderForMode = (mode: ModelMode): string => {
 const labelForMode = (mode: ModelMode): string => {
   return modelById(mode)?.label ?? mode
 }
-// prepare() is local-only — never downloads. First load on a fresh
-// device is dominated by CoreML compiling each .mlmodelc into an ANE
-// execution plan: on M-series iPad large-v3-turbo this is typically
-// 30–90 s the first time, 3–5 s after the ANE cache is warm. Bigger
-// models get a longer deadline; default 60 s for sub-300 MB variants.
+// prepare() is local-only — never downloads. Bigger whisper.cpp ggml
+// models can take a long time to map and initialize on-device, so they
+// get a longer deadline; default 60 s for smaller variants.
 const prepareTimeoutMs = (mode: ModelMode): number => {
   const m = modelById(mode)
   if (m && m.approxSizeMB >= 1000) return 180_000
   return 60_000
 }
 const TRANSCRIBE_TIMEOUT_MS = 90_000
+const delay = (ms: number): Promise<void> =>
+  new Promise((resolve) => window.setTimeout(resolve, ms))
+
+const postInstallSettleMs = (mode: ModelMode): number => {
+  const size = modelById(mode)?.approxSizeMB ?? 0
+  if (size >= 1200) return 5000
+  if (size >= 800) return 4000
+  if (size >= 500) return 2500
+  if (size >= 250) return 1250
+  return 400
+}
 
 const withTimeout = async <T>(
   p: Promise<T>,
@@ -886,7 +897,7 @@ export const mountGame = (
       </div>
 
       <div class="pc-footer">
-        Powered by WhisperKit · <span id="pc-footer-model">Standard</span> · on-device, iOS
+        Powered by whisper.cpp · <span id="pc-footer-model">Standard</span> · on-device
       </div>
     </div>
   `
@@ -1990,14 +2001,11 @@ export const mountGame = (
     else dispatchExit()
   })
 
-  // Re-prepare the saved-mode kit if it isn't currently loaded.
-  // Idempotent: if Swift's prepare hits its in-memory cache, returns
-  // immediately. The plugin's install path drops the previously-loaded
-  // kit before running its load test for a different model; if that
-  // install fails (or the user cancels mid-flight), the previous
-  // model's kit ends up nil'd in memory while its files and marker
-  // are still on disk. Calling this after any setup interaction
-  // restores the working state without requiring a JS-side guess
+  // Re-prepare the saved-mode native context if it isn't currently
+  // loaded. Idempotent: if prepare hits its in-memory cache, returns
+  // immediately. Install and unload paths can drop the previous native
+  // context while leaving its files and marker on disk; calling this
+  // after setup restores the working state without a JS-side guess
   // about what the plugin did internally.
   const ensureLoaded = async (mode: ModelMode): Promise<boolean> => {
     if (!stt?.prepare) return false
@@ -2166,7 +2174,7 @@ export const mountGame = (
       persist()
       renderModeButton()
       console.log(
-        `[pronunciation-coach] WhisperKit prepared: ${r.model} (${targetLabel})`
+        `[pronunciation-coach] Whisper prepared: ${r.model} (${targetLabel})`
       )
       hideOverlay()
       micBtn.disabled = false
@@ -2894,8 +2902,8 @@ export const mountGame = (
         // round-trip count.
         if (!stt?.validateModel) return
         for (const m of MODELS) {
-          // The currently-active model is installed by definition —
-          // WhisperKit has it loaded. Skip validateModel for it; the
+          // The currently-active model is installed by definition:
+          // the native context has it loaded. Skip validateModel for it; the
           // heuristic has been observed reporting "<model dir missing>"
           // for models that prepare() then loads successfully (the
           // fundamental bug that motivated this whole rebuild). We trust
@@ -2982,7 +2990,7 @@ export const mountGame = (
         setProgress(mode, 0, "Starting…")
 
         try {
-          await stt.installModel(
+          const installResult = await stt.installModel(
             {
               model: folderForMode(mode),
               downloadUrl: modelById(mode)?.downloadUrl,
@@ -3002,7 +3010,7 @@ export const mountGame = (
                 }
                 setProgress(mode, event.fraction ?? 0, label)
               } else if (event.phase === "verifying") {
-                setProgress(mode, 1, "Verifying files…")
+                setProgress(mode, 1, "Verifying download…")
               } else if (event.phase === "verified") {
                 setProgress(mode, 1, "Verified ✓")
               } else if (event.phase === "failed") {
@@ -3013,11 +3021,18 @@ export const mountGame = (
           if (disposed) return
           installed[mode] = true
           installing = null
-          setProgress(mode, 1, "Verified ✓")
-          setTimeout(() => {
-            cleanup()
-            resolve({ kind: "selected", mode })
-          }, 300)
+          const settleMs =
+            installResult.alreadyInstalled ? 0 : postInstallSettleMs(mode)
+          if (settleMs > 0) {
+            setProgress(mode, 1, "Finalizing…")
+            await delay(settleMs)
+            if (disposed) return
+          }
+          setProgress(mode, 1, "Verified")
+          await delay(300)
+          if (disposed) return
+          cleanup()
+          resolve({ kind: "selected", mode })
         } catch (err) {
           installing = null
           setProgressVisible(mode, false)
@@ -3039,13 +3054,11 @@ export const mountGame = (
             errorEl.textContent = `Install failed: ${msg}`
           }
           errorEl.hidden = false
-          // Critical: the plugin's install path drops the previously
-          // loaded kit before its load test. If install fails here,
-          // the previously-active model's kit is nil'd in memory
-          // even though its files and marker are intact on disk.
-          // Re-prepare the previously-active model so the user can
-          // keep using it. Without this, the user records, taps stop,
-          // and stopSession reports "WhisperKit not prepared".
+          // Critical: install can drop the previously loaded native
+          // context while replacing files. If install fails here, the
+          // previously-active model may be nil'd in memory even though
+          // its files and marker are intact on disk. Re-prepare it so
+          // the user can keep using it.
           if (currentActive && currentActive !== mode && stt?.prepare) {
             try {
               const r = await stt.prepare({
@@ -3053,7 +3066,7 @@ export const mountGame = (
               })
               if (r.ready) {
                 console.log(
-                  `[pronunciation-coach] restored ${currentActive} kit after ${mode} install failed`
+                  `[pronunciation-coach] restored ${currentActive} model after ${mode} install failed`
                 )
               }
             } catch (restoreErr) {
@@ -3151,7 +3164,7 @@ export const mountGame = (
     // directory layout we don't fully control, and we've seen it
     // report "missing" on models that prepare() then loads
     // successfully. The only definition of "installed" that matters
-    // is "WhisperKit can load it right now".
+    // is "the native runtime can load it right now".
     const savedEarly = loadSavedState(storage)
     if (savedEarly?.mode && modelById(savedEarly.mode)) {
       modelMode = savedEarly.mode
@@ -3180,10 +3193,10 @@ export const mountGame = (
     }
 
     renderModeButton()
-    // Larger models pay a one-time CoreML compile cost on first
-    // launch. Surface the wait honestly so users don't think the
-    // app froze. Threshold (~300 MB) chosen so Standard / Small
-    // skip the warning but Medium / Large / Advanced get it.
+    // Larger models can spend real time on first native initialization.
+    // Surface the wait honestly so users don't think the app froze.
+    // Threshold (~300 MB) chosen so Standard / Small skip the warning
+    // but Medium / Large / Advanced get it.
     const bootModelLabel = labelForMode(modelMode)
     const bootIsLargeModel = (modelById(modelMode)?.approxSizeMB ?? 0) >= 300
     showOverlay(
@@ -3213,7 +3226,7 @@ export const mountGame = (
         prepareWithRecovery(bootTargetMode).then((r) => {
           modelReady = true
           console.log(
-            `[pronunciation-coach] WhisperKit prepared: ${r.model} (${labelForMode(bootTargetMode)})`
+            `[pronunciation-coach] Whisper prepared: ${r.model} (${labelForMode(bootTargetMode)})`
           )
         }),
         loadFirstPhrase(),
