@@ -94,6 +94,10 @@ export interface ProfileCardActions {
   onSayHi?: () => void
   onChallenge?: () => void
   onTrade?: () => void
+  /** Block this player (suppress their invites/messages). A tap blocks. */
+  onBlock?: () => void
+  /** Report then block this player (coarse moderation; never carries content). */
+  onReport?: () => void
 }
 
 /** Show the safe profile card for a nearby real player. */
@@ -166,6 +170,28 @@ export function showProfileCard(
   acts.appendChild(closeBtn)
 
   panel.append(head, body, acts)
+
+  // Discreet safety footer: Block (a tap blocks) + Report & block. Kept quiet
+  // and separate from the primary actions so it never competes for attention.
+  if (actions.onBlock || actions.onReport) {
+    const safety = document.createElement("div")
+    safety.className = "wp-mp-safety"
+    const addSafetyBtn = (label: string, fn?: () => void) => {
+      if (!fn) return
+      const b = document.createElement("button")
+      b.className = "wp-mp-safety-btn"
+      b.textContent = label
+      b.addEventListener("click", () => {
+        close()
+        fn()
+      })
+      safety.appendChild(b)
+    }
+    addSafetyBtn(t("mp.profile.block"), actions.onBlock)
+    addSafetyBtn(t("mp.profile.report"), actions.onReport)
+    panel.appendChild(safety)
+  }
+
   return { close }
 }
 

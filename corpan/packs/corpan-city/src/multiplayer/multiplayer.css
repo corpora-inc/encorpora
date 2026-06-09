@@ -158,6 +158,29 @@
 .wp-mp-btn-primary { background: linear-gradient(180deg, #e8b54a, #cf9a2f); color: #1a1205; }
 .wp-mp-btn-ghost { background: transparent; box-shadow: inset 0 0 0 1px rgba(243, 234, 212, 0.2); }
 
+/* discreet safety footer (block / report & block) */
+.wp-mp-safety {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  padding: 2px 18px 16px;
+  border-block-start: 1px solid rgba(243, 234, 212, 0.08);
+  margin-block-start: 2px;
+}
+.wp-mp-safety-btn {
+  background: transparent;
+  border: none;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(243, 234, 212, 0.55);
+  cursor: pointer;
+  transition: color 120ms ease;
+}
+.wp-mp-safety-btn:hover { color: #e88a8a; }
+.wp-mp-safety-btn:active { color: #d96a6a; }
+
 /* chat panel */
 .wp-mp-log {
   display: flex;
