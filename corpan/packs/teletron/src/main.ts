@@ -3,6 +3,7 @@ import { getStateCallbacks, type Room } from "colyseus.js"
 import { createResilientRoom, type ConnStatus, type ResilientRoom } from "@shared/net/resilientRoom"
 import { openTranscripts, type StoredMessage, type TranscriptStore } from "./transcripts"
 import {
+  ChatControlDeliver,
   InviteResult,
   InvitedMessage,
   MediatedChatInput,
@@ -522,6 +523,19 @@ async function mountTeletron(
   // Every conversation this device knows about, keyed by partner playerId. The
   // server supports many simultaneous penpals; this map is the client mirror.
   const conversations = new Map<string, Conversation>()
+  // ── Accepted-pair recovery ──────────────────────────────────────────────
+  // The server's accepted pair (its routing/auth record) is in-memory and
+  // VOLATILE: a server restart, the 24h TTL lapse, or a fresh-join after the
+  // reconnect window all forget it. On-device transcripts are the durable truth.
+  // These three structures let the client transparently re-establish a forgotten
+  // pair (via the existing invite handshake) instead of sending into a void.
+  //   • partnerIds whose accepted pair is CONFIRMED live this session.
+  const confirmedPairs = new Set<string>()
+  //   • outbound messages typed before the pair is confirmed, flushed on confirm.
+  const pendingOutbound = new Map<string, MediatedChatInput[]>()
+  //   • re-establish invites in flight: inviteId → partnerId (separate from the
+  //     human-facing single-slot `pendingInvite`, so resume never clobbers it).
+  const reestablishing = new Map<string, string>()
   // The partner whose thread is currently open (null in inbox/waiting/onboarding).
   let openPartnerId: string | null = null
   // The top-level view. Inbox is home; waiting is "find a penpal".
@@ -900,6 +914,22 @@ async function mountTeletron(
   }
 
   /**
+   * True when `partnerId` is someone we've already corresponded with — a durable
+   * on-device transcript link OR a live conversation entry. This is the consent
+   * signal that lets us AUTO-ACCEPT a re-invite when the server forgot the pair:
+   * a genuine stranger has neither, so they always require a human accept.
+   */
+  async function isEstablishedPenpal(partnerId: string): Promise<boolean> {
+    if (conversations.has(partnerId)) return true
+    try {
+      return (await transcripts.meta(partnerId)) !== null
+    } catch (error) {
+      console.error("[teletron] penpal lookup failed:", error)
+      return false
+    }
+  }
+
+  /**
    * Restore an opened thread from on-device history. Stored bubbles are
    * prepended (they predate anything live), so this is race-safe with live
    * messages that may arrive while IndexedDB resolves.
@@ -1050,6 +1080,12 @@ async function mountTeletron(
   function markThreadEnded(partnerId: string, text: string): void {
     const convo = conversations.get(partnerId)
     const alreadyEnded = convo?.lifecycle === "ended"
+    // An ended conversation has no live pair to resume against.
+    confirmedPairs.delete(partnerId)
+    pendingOutbound.delete(partnerId)
+    for (const [inviteId, partner] of reestablishing) {
+      if (partner === partnerId) reestablishing.delete(inviteId)
+    }
     upsertConvo(partnerId, convo?.partnerName ?? t("someonePlaceholder"), {
       lifecycle: "ended",
       partnerOnline: false,
@@ -1112,6 +1148,12 @@ async function mountTeletron(
     players.delete(p.playerId)
     profiles.delete(p.playerId)
     conversations.delete(p.playerId)
+    // Drop all recovery state for a blocked partner (no resume, no queued sends).
+    confirmedPairs.delete(p.playerId)
+    pendingOutbound.delete(p.playerId)
+    for (const [inviteId, partner] of reestablishing) {
+      if (partner === p.playerId) reestablishing.delete(inviteId)
+    }
     void transcripts
       .remove(p.playerId)
       .catch((error) => console.error("[teletron] remove transcript on block failed:", error))
@@ -1205,6 +1247,58 @@ async function mountTeletron(
     showToast(t("invitationSent", { name: p.name }))
   }
 
+  /**
+   * Transparently re-establish a forgotten server-side accepted pair for an
+   * EXISTING penpal. Reuses the normal invite handshake, but tracked separately
+   * from the human-facing `pendingInvite` slot so resuming one conversation never
+   * clobbers a fresh invite the user is making. The recipient auto-accepts when
+   * we are an established penpal (see the `invited` handler), so this is silent.
+   */
+  function reestablishLink(partnerId: string): void {
+    if (!room || connStatus !== "online") return
+    // One in-flight re-establish per partner is enough.
+    for (const id of reestablishing.values()) if (id === partnerId) return
+    const convo = conversations.get(partnerId)
+    if (!convo) return
+    const inviteId = `tele-resume-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`
+    reestablishing.set(inviteId, partnerId)
+    room.send(MP_MSG.invite, { inviteId, to: partnerId, offer: { kind: "chat" } })
+  }
+
+  /** Flush any messages queued while a pair was being (re)established. */
+  function flushPendingOutbound(partnerId: string): void {
+    if (!room || !confirmedPairs.has(partnerId)) return
+    const queue = pendingOutbound.get(partnerId)
+    if (!queue || !queue.length) return
+    pendingOutbound.delete(partnerId)
+    for (const input of queue) room.send(MP_MSG.chatSend, input)
+  }
+
+  /**
+   * Route a prepared outbound message. If the accepted pair is confirmed this
+   * session, send immediately. Otherwise QUEUE it and re-establish the link —
+   * the message flushes the moment the pair is (re)confirmed. This is what makes
+   * a resumed conversation actually deliver after a server restart / TTL lapse,
+   * and what stops the silent message loss the server used to produce.
+   */
+  function dispatchOutbound(partnerId: string, input: MediatedChatInput): void {
+    if (!room) return
+    if (confirmedPairs.has(partnerId)) {
+      room.send(MP_MSG.chatSend, input)
+      return
+    }
+    const queue = pendingOutbound.get(partnerId) ?? []
+    queue.push(input)
+    pendingOutbound.set(partnerId, queue)
+    reestablishLink(partnerId)
+  }
+
+  /** Mark a partner's accepted pair confirmed live and flush anything queued. */
+  function confirmPair(partnerId: string): void {
+    confirmedPairs.add(partnerId)
+    flushPendingOutbound(partnerId)
+  }
+
   async function send(text: string): Promise<void> {
     const convo = currentConvo()
     if (!room || connStatus !== "online") return showToast(t("reconnectingTryAgain"))
@@ -1250,7 +1344,10 @@ async function mountTeletron(
       return
     }
     placeholder.remove()
-    room.send(MP_MSG.chatSend, input)
+    // Route through the pair-aware dispatcher: sends now if the accepted pair is
+    // confirmed, otherwise queues + re-establishes the link (server restart / TTL
+    // lapse) and flushes on confirm — no more sending into a void.
+    dispatchOutbound(currentPartnerId, input)
     consumeQuota(plus)
     updateQuota()
   }
@@ -1644,6 +1741,17 @@ async function mountTeletron(
           if (openPartnerId === id) updateThreadConnState()
           renderInbox()
         }
+        // If we have messages queued for a partner whose pair is not yet
+        // confirmed (server forgot it while they were offline), their return is
+        // the moment to re-establish the link and flush the queue.
+        if (
+          convo &&
+          convo.lifecycle !== "ended" &&
+          !confirmedPairs.has(id) &&
+          pendingOutbound.get(id)?.length
+        ) {
+          reestablishLink(id)
+        }
         renderPeople()
       }),
       pc.onRemove((p, key) => {
@@ -1685,6 +1793,25 @@ async function mountTeletron(
           target: "",
           native: "",
         }
+        // An ESTABLISHED penpal (one we hold a durable transcript link for) is
+        // re-establishing a link the server forgot (restart / TTL lapse). Auto-
+        // accept WITHOUT a prompt — we already consented to this person, and the
+        // safety model still holds: a genuine stranger has no on-device link, so
+        // they always fall through to the human accept/decline prompt below.
+        const known = await isEstablishedPenpal(parsed.data.from)
+        if (known) {
+          joined.send(MP_MSG.inviteRespond, { inviteId: parsed.data.inviteId, action: "accept" })
+          const convo = conversations.get(p.playerId)
+          upsertConvo(p.playerId, convo?.partnerName || p.name, {
+            lifecycle: convo?.lifecycle === "ended" ? "ended" : "active",
+            partnerOnline: true,
+          })
+          // The pair is now live on the server → flush anything we had queued.
+          confirmPair(p.playerId)
+          renderInbox()
+          renderPeople()
+          return
+        }
         // Already mid-invite-flow, OR no room for a new living link → decline.
         const atCap = livingCount() >= linkCap() && !isActiveWith(parsed.data.from)
         if (pendingInvite || inviteReply || atCap) {
@@ -1702,12 +1829,33 @@ async function mountTeletron(
         })
         if (accepted) {
           upsertConvo(p.playerId, p.name, { lifecycle: "active", partnerOnline: true })
+          confirmPair(p.playerId)
           openThread(p)
         }
       }),
       joined.onMessage(MP_MSG.inviteResult, (raw) => {
         const parsed = InviteResult.safeParse(raw)
-        if (!parsed.success || !pendingInvite || parsed.data.inviteId !== pendingInvite.inviteId) return
+        if (!parsed.success) return
+        // (a) Silent re-establish handshake (resuming a forgotten pair).
+        const reestablishPartner = reestablishing.get(parsed.data.inviteId)
+        if (reestablishPartner) {
+          reestablishing.delete(parsed.data.inviteId)
+          if (parsed.data.outcome === "accepted") {
+            // Pair is live again → flush the queued message(s).
+            confirmPair(reestablishPartner)
+          } else {
+            // Couldn't re-establish now (partner offline → the server can't form
+            // a pair without a live partner). KEEP the queued message; it flushes
+            // when the partner returns (presence onAdd retries reestablishLink).
+            const convo = conversations.get(reestablishPartner)
+            if (convo && openPartnerId === reestablishPartner) {
+              addMessage("system", t("wentOffline", { name: convo.partnerName }))
+            }
+          }
+          return
+        }
+        // (b) The human-facing invite the user just sent.
+        if (!pendingInvite || parsed.data.inviteId !== pendingInvite.inviteId) return
         const invitedPlayer = pendingInvite.player
         pendingInvite = null
         renderPeople()
@@ -1716,12 +1864,38 @@ async function mountTeletron(
             lifecycle: "active",
             partnerOnline: true,
           })
+          confirmPair(invitedPlayer.playerId)
           openThread(invitedPlayer)
         } else showToast(t("invitationOutcome", { outcome: parsed.data.outcome }))
       }),
       joined.onMessage(MP_MSG.chatDeliver, (raw) => {
         const parsed = MediatedChatInput.safeParse(raw)
         if (parsed.success && !isBlocked(parsed.data.from)) enqueueReceive(parsed.data)
+      }),
+      joined.onMessage(MP_MSG.chatControl, (raw) => {
+        const parsed = ChatControlDeliver.safeParse(raw)
+        if (!parsed.success) return
+        const partnerId = parsed.data.from
+        if (isBlocked(partnerId)) return
+        if (parsed.data.action === "link-stale") {
+          // We tried to send but the server holds no accepted pair (restart / TTL
+          // lapse). Don't lose the message: re-establish the link. Anything we
+          // queued for this partner flushes once the pair is confirmed. Only do
+          // this for a living conversation we still care about.
+          const convo = conversations.get(partnerId)
+          if (convo && convo.lifecycle !== "ended") {
+            confirmedPairs.delete(partnerId)
+            reestablishLink(partnerId)
+          }
+          return
+        }
+        // partner-returned implies the server's pair is live again → confirm it
+        // so a queued message flushes immediately on the partner's return.
+        if (parsed.data.action === "partner-returned") {
+          confirmPair(partnerId)
+        }
+        // partner-left / ended are already covered by presence onRemove + the
+        // magic-interactionId "ended" chat-send path; nothing extra needed here.
       }),
     )
     // All handlers (especially chatDeliver) are bound — now signal readiness so
@@ -1737,6 +1911,12 @@ async function mountTeletron(
   /** The current room dropped — detach handlers; all penpals are now offline. */
   function loseRoom(): void {
     room = null
+    // The accepted pair lives in the (possibly different) room we'll rejoin; a
+    // fresh join must re-confirm it. Keep any queued outbound — it flushes once
+    // the pair is re-established on the new room. Drop in-flight re-establish
+    // invites (their inviteIds belong to the dead room).
+    confirmedPairs.clear()
+    reestablishing.clear()
     for (const c of conversations.values()) {
       if (c.lifecycle !== "ended" && c.partnerOnline) {
         upsertConvo(c.partnerId, c.partnerName, { partnerOnline: false })

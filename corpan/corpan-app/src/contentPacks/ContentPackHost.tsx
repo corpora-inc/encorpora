@@ -130,6 +130,22 @@ const clearInjectedAssets = (id: string) => {
     .forEach((node) => node.remove())
 }
 
+/**
+ * A URL that targets the `corpan-pack` custom URI-scheme protocol handler —
+ * in EITHER platform form. The handler (registered by tauri-plugin-game-packs)
+ * is reachable at `corpan-pack://localhost/...` on macOS/iOS/Linux but at
+ * `http://corpan-pack.localhost/...` on Android/Windows (per Tauri's
+ * register_uri_scheme_protocol docs). Installed-pack URLs are emitted in the
+ * platform-correct form by the native `content_packs_*` commands, so the host
+ * must recognize both: these must be command-fetched + inlined (the WebView
+ * can't `fetch()` the scheme, but `<img>`/CSS/font URLs resolve against it
+ * natively via the same handler).
+ */
+const isContentPackProtocolUrl = (rawUrl: string) =>
+  rawUrl.startsWith("corpan-pack://") ||
+  rawUrl.startsWith("http://corpan-pack.localhost/") ||
+  rawUrl.startsWith("https://corpan-pack.localhost/")
+
 const proxyUrlIfNeeded = (rawUrl: string) => {
   try {
     const resolved = new URL(rawUrl, window.location.href)
@@ -336,7 +352,7 @@ export default function ContentPackHost({
       for (const { sourceUrl, fetchUrl } of candidates) {
         try {
           let manifest: ContentPackManifest
-          const isCorpanPack = sourceUrl.startsWith('corpan-pack://')
+          const isCorpanPack = isContentPackProtocolUrl(sourceUrl)
 
           console.log(`[fetchManifest] Fetching sourceUrl=${sourceUrl}, isCorpanPack=${isCorpanPack}`)
 
@@ -459,11 +475,16 @@ export default function ContentPackHost({
         const baseUrl = manifest.baseUrl
           ? new URL(manifest.baseUrl, activeManifestSourceUrl).toString()
           : new URL(".", activeManifestSourceUrl).toString()
-        const isLocalInstall = baseUrl.startsWith('corpan-pack://')
+        const isLocalInstall = isContentPackProtocolUrl(baseUrl)
         const devToken = isLocalInstall ? undefined : (manifest.devRevision || manifest.version)
 
-        // corpan-pack:// URLs must be fetched via Tauri commands and injected inline
-        const useInlineLoad = baseUrl.startsWith('corpan-pack://')
+        // corpan-pack URLs (either platform form) must be fetched via Tauri
+        // commands and injected inline — the WebView can't fetch() the scheme,
+        // and on Android the entry would otherwise load over an http.localhost
+        // <script src> we'd rather keep as the proven inline path. Direct asset
+        // URLs (<img>, fonts, audio) still resolve against the same protocol
+        // handler natively, which is the whole point of the platform-correct base.
+        const useInlineLoad = isLocalInstall
 
         console.log(`[ContentPackHost] baseUrl=${baseUrl}, useInlineLoad=${useInlineLoad}, entry=${manifest.entry}, styles=${JSON.stringify(manifest.styles)}`)
 

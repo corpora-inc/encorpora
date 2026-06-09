@@ -130,7 +130,24 @@ export type InviteResult = z.infer<typeof InviteResult>
 
 export { MediatedChatInput, MediatedChatArtifact }
 
-export const ChatControlAction = z.enum(["ended", "partner-left", "partner-returned"])
+/**
+ * Chat lifecycle actions (server→client unless noted).
+ *   • ended            — the pair was deliberately torn down.
+ *   • partner-left     — the partner's socket went away (still re-establishable).
+ *   • partner-returned — the partner is back AND the accepted pair is live.
+ *   • link-stale       — the SENDER tried to chat-send but the server holds no
+ *                        accepted pair for them (server restart / TTL lapse /
+ *                        fresh-join after the reconnect window). The message was
+ *                        NOT delivered; the client should re-establish the link
+ *                        (re-invite) before sending. Without this the server used
+ *                        to drop the send silently and the UI lied "delivered".
+ */
+export const ChatControlAction = z.enum([
+  "ended",
+  "partner-left",
+  "partner-returned",
+  "link-stale",
+])
 export type ChatControlAction = z.infer<typeof ChatControlAction>
 
 export const ChatControlMessage = z.object({

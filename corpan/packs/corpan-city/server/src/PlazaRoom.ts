@@ -487,7 +487,15 @@ export class PlazaRoom extends Room<PlazaState> {
       if (!from) return
       if (this.blockedEitherWay(from.playerId, toPlayerId)) return
       if (!this.acceptedPairForPlayerIds(from.playerId, toPlayerId, "chat")) {
-        console.warn(`[plaza] rejected chat without accepted invite from ${client.sessionId}`)
+        // The server holds no accepted pair (restart / TTL lapse / fresh-join
+        // after the reconnect window). DON'T silently drop — that's the bug that
+        // made resumed conversations look online yet deliver nothing. Tell the
+        // sender the link is stale so the client can re-establish it (re-invite)
+        // and re-send. The message itself is not delivered here.
+        console.warn(`[plaza] chat-send with no accepted pair from ${client.sessionId} → link-stale`)
+        // from = the partner whose link is stale (so the client re-invites THEM);
+        // to = us. fromName resolves to the partner's live name if they're here.
+        this.sendChatControlToClient(client, toPlayerId, from.playerId, "link-stale")
         return
       }
       if (!toSession || !toClient || !to) {
