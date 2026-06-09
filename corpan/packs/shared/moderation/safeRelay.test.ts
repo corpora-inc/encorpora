@@ -30,7 +30,7 @@ function scriptedPipeline(byLabel: Record<string, string>, phrase = "I made soup
 const promptText = (calls: Call[]) => calls.flatMap((c) => c.messages.map((m) => m.content)).join("\n")
 const userText = (call?: Call) => call?.messages.find((m) => m.role === "user")?.content ?? ""
 
-describe("safe relay pipeline — gate / eject / regenerate", () => {
+describe("safe relay pipeline — classify / paraphrase / regenerate / eject", () => {
   it("has native output primes for every Teletron language", () => {
     const manifest = JSON.parse(readFileSync(new URL("../../teletron/manifest.json", import.meta.url), "utf8")) as {
       displayName?: Record<string, string>
@@ -40,29 +40,42 @@ describe("safe relay pipeline — gate / eject / regenerate", () => {
     expect(OUTPUT_LANGUAGE_PRIMES.te).toMatch(/[ఀ-౿]/)
   })
 
-  it("gates a safe message to an on-topic regenerate, preserving the QUESTION form", async () => {
-    const { pipeline, calls } = scriptedPipeline({ "relay.gate": "pets", "relay.regenerate": "Do you have a dog?" })
+  it("classifies a safe message SAFE → paraphrase → regenerate, preserving the QUESTION form", async () => {
+    const { pipeline, calls } = scriptedPipeline({
+      "relay.classify": "SAFE",
+      "relay.paraphrase": "Do you keep any pets?",
+      "relay.regenerate": "Do you have a dog?",
+    })
     const result = await pipeline.prepareOutbound({ text: "do you have any pets?", sourceLanguage: "en" })
 
     expect(result.relayText).toBe("Do you have a dog?")
-    expect(calls.map((c) => c.label)).toEqual(["relay.gate", "relay.regenerate"])
+    expect(result.state).toBe("send")
+    expect(calls.map((c) => c.label)).toEqual(["relay.classify", "relay.paraphrase", "relay.regenerate"])
     const regen = calls.find((c) => c.label === "relay.regenerate")!
     // The regenerator is asked for a QUESTION (input ended with "?")…
     expect(regen.messages[0]?.content).toMatch(/question/i)
-    // …and is given ONLY the topic label, never the user's raw words.
-    expect(userText(regen)).toBe("Topic: pets")
-    expect(promptText([regen])).not.toContain("pets?")
+    // …and is given ONLY the laundered paraphrase, never the user's raw words.
+    // (Keeping the safe subject word "pets" is the point — connection without UGC.)
+    expect(userText(regen)).toBe("Do you keep any pets?")
+    expect(promptText([regen])).not.toContain("do you have any pets?")
   })
 
   it("preserves the STATEMENT form for a non-question", async () => {
-    const { pipeline, calls } = scriptedPipeline({ "relay.gate": "weather", "relay.regenerate": "Rain makes me calm." })
+    const { pipeline, calls } = scriptedPipeline({
+      "relay.classify": "SAFE",
+      "relay.paraphrase": "They enjoy rainy weather.",
+      "relay.regenerate": "Rain makes me calm.",
+    })
     await pipeline.prepareOutbound({ text: "I love rainy days", sourceLanguage: "en" })
-    expect(calls.find((c) => c.label === "relay.regenerate")!.messages[0]?.content).toMatch(/statement/i)
+    // Statement form asks for a plain everyday remark (not a question).
+    const regen = calls.find((c) => c.label === "relay.regenerate")!.messages[0]?.content ?? ""
+    expect(regen).toMatch(/remark/i)
+    expect(regen).not.toMatch(/keep it a question/i)
   })
 
-  it("EJECTs off-limits content to a corpus-phrase remix, querying the corpus by the input", async () => {
+  it("BLOCKs off-limits content to a corpus-phrase remix, querying the corpus by the input", async () => {
     const { pipeline, calls, queries } = scriptedPipeline(
-      { "relay.gate": "EJECT", "relay.phrase-eject": "I left my mug in the fridge." },
+      { "relay.classify": "BLOCK", "relay.phrase-eject": "I left my mug in the fridge." },
       "Where did you put my favorite mug?",
     )
     const raw = "meet me behind the school at 9pm, here's my number 555-123-4567"
@@ -71,31 +84,48 @@ describe("safe relay pipeline — gate / eject / regenerate", () => {
     expect(result.relayText).toBe("I left my mug in the fridge.")
     expect(result.state).toBe("replaced")
     expect(result.reasons).toContain("phrase-eject")
-    expect(calls.map((c) => c.label)).toEqual(["relay.gate", "relay.phrase-eject"])
+    // No paraphrase on the BLOCK path — the off-limits text is never restated.
+    expect(calls.map((c) => c.label)).toEqual(["relay.classify", "relay.phrase-eject"])
     // The corpus was queried with the user's line (FTS5 in prod) …
     expect(queries.at(-1)).toBe(raw)
     // … and the eject prompt is built from the SAMPLED phrase, not the user's text.
     expect(promptText([calls.find((c) => c.label === "relay.phrase-eject")!])).toContain("favorite mug")
   })
 
+  it("treats any non-SAFE verdict as off-limits (fail safe)", async () => {
+    const { pipeline, calls } = scriptedPipeline({
+      "relay.classify": "hmm, maybe",
+      "relay.phrase-eject": "I left my mug in the fridge.",
+    })
+    const result = await pipeline.prepareOutbound({ text: "where do you live?", sourceLanguage: "en" })
+    expect(result.state).toBe("replaced")
+    expect(calls.map((c) => c.label)).toEqual(["relay.classify", "relay.phrase-eject"])
+  })
+
   it("never lets the user's raw text reach the regenerate or eject step (the firewall)", async () => {
     const secret = "my address is 42 Wallaby Way and my name is Bruce"
-    for (const gate of ["EJECT", "neighbours"]) {
-      const { calls } = await (async () => {
-        const sp = scriptedPipeline({ "relay.gate": gate, "relay.regenerate": "ok", "relay.phrase-eject": "ok" })
-        await sp.pipeline.prepareOutbound({ text: secret, sourceLanguage: "en" })
-        return sp
-      })()
-      // The gate alone is allowed to see the raw text; nothing downstream may.
-      for (const c of calls.filter((x) => x.label !== "relay.gate")) {
-        expect(userText(c) + (c.messages[0]?.content ?? "")).not.toContain("Wallaby")
-        expect(userText(c)).not.toContain("Bruce")
-      }
+    // BLOCK path: nothing downstream of classify sees the raw text.
+    const block = scriptedPipeline({ "relay.classify": "BLOCK", "relay.phrase-eject": "ok" })
+    await block.pipeline.prepareOutbound({ text: secret, sourceLanguage: "en" })
+    for (const c of block.calls.filter((x) => x.label === "relay.phrase-eject")) {
+      expect(userText(c) + (c.messages[0]?.content ?? "")).not.toContain("Wallaby")
+      expect(userText(c)).not.toContain("Bruce")
     }
+    // SAFE path: the paraphrase is the laundering step (it may see raw), but the
+    // regenerate that produces the relay only ever sees the laundered paraphrase.
+    const safe = scriptedPipeline({ "relay.classify": "SAFE", "relay.paraphrase": "They mentioned their neighbourhood.", "relay.regenerate": "ok" })
+    await safe.pipeline.prepareOutbound({ text: secret, sourceLanguage: "en" })
+    const regen = safe.calls.find((c) => c.label === "relay.regenerate")!
+    expect(userText(regen) + (regen.messages[0]?.content ?? "")).not.toContain("Wallaby")
+    expect(userText(regen)).not.toContain("Bruce")
   })
 
   it("scrub backstop strips structural PII the regenerator might echo", async () => {
-    const { pipeline } = scriptedPipeline({ "relay.gate": "contact", "relay.regenerate": "reach me at a@b.com or 5551234567" })
+    const { pipeline } = scriptedPipeline({
+      "relay.classify": "SAFE",
+      "relay.paraphrase": "They shared how to reach them.",
+      "relay.regenerate": "reach me at a@b.com or 5551234567",
+    })
     const result = await pipeline.prepareOutbound({ text: "what's up", sourceLanguage: "en" })
     expect(result.relayText).not.toContain("a@b.com")
     expect(result.relayText).not.toMatch(/\d{7,}/)

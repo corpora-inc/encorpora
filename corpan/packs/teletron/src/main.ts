@@ -20,6 +20,7 @@ import type { HostApi } from "../../corpan-city/src/npc/hostTypes"
 import { createChatMediator } from "./mediator"
 import { installDevConsoleForwarder } from "../../sdk/devConsole"
 import { OrderedSpeechQueue, StreamingSentenceBuffer } from "../../tutomaton/src/streamingTts"
+import { createStableSpeaker } from "./voice"
 import { scrubForSpeech } from "../../tutomaton/src/textScrub"
 import { t as i18n, type I18nKey } from "./i18n"
 
@@ -418,8 +419,11 @@ async function mountTeletron(
   let plus = isPlus(initial)
   const disposers: Array<() => void> = []
   let ttsEnabled = localStorage.getItem("teletron.tts") !== "off"
+  // Pin one stable voice per locale so a conversation never jumps voices between
+  // sentences (the host's plain speak() picks a default voice per utterance).
+  const stableSpeak = createStableSpeaker(hostApi)
   const speechQueue = new OrderedSpeechQueue(
-    (locale, text) => hostApi.speak(locale, text),
+    (locale, text) => stableSpeak(locale, text),
     hostApi.stopSpeech,
     (error) => console.error("[teletron/tts]", error),
   )
@@ -1034,10 +1038,9 @@ async function mountTeletron(
     updateThreadConnState()
     renderInbox()
     renderPeople()
-    if (!dormant) {
-      void refreshDictation()
-      field.focus()
-    }
+    // Don't auto-focus the field — that pops the keyboard, and many people will
+    // reach for the mic. Ready dictation; let the user choose to type or speak.
+    if (!dormant) void refreshDictation()
   }
 
   /**
@@ -1317,33 +1320,15 @@ async function mountTeletron(
       markThreadEnded(sender.playerId, t("partnerEndedChat", { name: sender.name }))
       return
     }
-    // Route to the OPEN active thread, or a background conversation.
-    const isOpenActive = isActiveWith(sender.playerId)
-    if (!isOpenActive) {
-      // Not the open thread. If it's a brand-new sender and we're under cap and
-      // the inbox is empty/no thread is open, surface it as the active thread;
-      // otherwise it's a background penpal message.
-      const convo = conversations.get(sender.playerId)
-      const noOpenThread = openPartnerId === null
-      const wasLiving = convo && convo.lifecycle !== "ended"
-      // Auto-open ONLY when nothing else is open and this becomes the focus —
-      // keeps single-thread free-tier flow intact while supporting many penpals.
-      if (noOpenThread && (wasLiving || livingCount() === 0)) {
-        upsertConvo(sender.playerId, sender.name, {
-          lifecycle: "active",
-          partnerOnline: true,
-          lastActivityAt: Date.now(),
-        })
-        openThread(sender)
-        // fall through to the open-thread render path below
-      } else {
-        await receiveBackground(input, sender)
-        return
-      }
-    } else {
-      upsertConvo(sender.playerId, sender.name, { partnerOnline: true, lastActivityAt: Date.now() })
-      updateThreadConnState()
+    // A message for a thread that isn't open must never jerk the user into the
+    // room. Surface it as an unread on the Conversations screen (+ a toast) and
+    // let them choose to open it.
+    if (!isActiveWith(sender.playerId)) {
+      await receiveBackground(input, sender)
+      return
     }
+    upsertConvo(sender.playerId, sender.name, { partnerOnline: true, lastActivityAt: Date.now() })
+    updateThreadConnState()
     const placeholder = el("div", "tt-message tt-system", t("interpretingLocally"))
     messages.appendChild(placeholder)
     const streamingMessage = addMessage("peer", "")

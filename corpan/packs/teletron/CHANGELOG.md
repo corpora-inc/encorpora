@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+- Split outbound moderation into two narrow steps for reliability and connection.
+  A binary safety **classifier** (BLOCK / SAFE) makes one small decision a small
+  on-device model does well, and never answers or rewrites. Off-limits messages
+  are BLOCKed and obliterated via a corpus remix (the raw text is never restated).
+  Safe messages are laundered by a separate **paraphrase** that keeps the everyday
+  subject and harmless vocab — so a clean conversation stays loosely on-topic
+  instead of collapsing to noise — then naturalized into a casual line. Fixes the
+  prior single-gate's meetup/location leaks and its urge to answer questions like
+  an assistant ("you like your garage?" → an encyclopedia entry). No wordlists, no
+  examples in the prompts.
+- Pin one stable voice per conversation language so spoken replies no longer jump
+  between voices from one sentence to the next (mirrors Tutomaton's tutor voice).
+- A new incoming message now raises an unread badge on the Conversations screen
+  instead of yanking you straight into the room.
+- Stop auto-focusing the text field when a thread opens, so the keyboard no longer
+  pops up for people who would rather tap the microphone.
+- Reframe copy away from "penpal" / "private by default" / "safe penpals" toward a
+  warm "talk to the world" voice; "Tidying up your words…" becomes "Sending…".
+
 ## 0.1.8 - 2026-06-09
 
 - Rewrite the catalog tagline and description across all 51 languages with

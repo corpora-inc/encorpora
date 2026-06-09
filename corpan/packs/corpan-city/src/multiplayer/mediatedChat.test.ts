@@ -99,7 +99,7 @@ describe("two-sided mediated chat", () => {
     const input = await mediator.prepareOutbound(A_TO_B)
     expect(input.source).toEqual({ kind: "text", text: "Do you want to play soccer?" })
     expect(input.sourceLanguage).toBe("en")
-    expect(calls[0]?.[0]?.content).toContain("reply with exactly one word: EJECT")
+    expect(calls[0]?.[0]?.content).toContain("reply with EXACTLY ONE word")
     expect(JSON.stringify(calls)).not.toMatch(/json/i)
     expect(JSON.stringify(calls)).not.toMatch(bannedRelayTerm)
   })

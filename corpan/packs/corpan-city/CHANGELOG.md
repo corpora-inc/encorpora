@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Adopt Teletron's two-step mediated-chat moderation (binary safety classifier +
+  separate paraphrase, rebuilt from `shared/moderation`): off-limits messages are
+  blocked and obliterated, while clean messages keep their everyday subject and
+  vocab instead of being thrashed into an unrelated line.
+
 ## [0.1.6] - 2026-06-09
 
 - In-world Block / Report affordance on the player profile card (mirrors
