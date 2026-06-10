@@ -1,0 +1,192 @@
+/* ============================================================
+   beatlounge — design-system foundation (FROZEN tokens).
+   Dark-only skin family. No Tailwind, no CSS-in-JS — CSS variables
+   keyed off [data-skin], matching the Corpán pack convention.
+   Namespace: .bl-* classes, --bl-* tokens, --bl-z-* z-scale.
+   Team SHELL + bl-ui build on these; modules ship scoped styles.
+   ============================================================ */
+
+:root {
+  /* One z-scale source of truth — contiguous bands, never document.body. */
+  --bl-z-stage: 10;
+  --bl-z-rail: 40;
+  --bl-z-immersive: 60;
+  --bl-z-palette: 80;
+  --bl-z-toast: 90;
+  --bl-z-confirm: 100;
+
+  /* Safe-area insets (notch / home indicator) — used everywhere. */
+  --bl-safe-top: env(safe-area-inset-top, 0px);
+  --bl-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --bl-safe-left: env(safe-area-inset-left, 0px);
+  --bl-safe-right: env(safe-area-inset-right, 0px);
+
+  /* Spacing & radius (4px base). FAB non-overlap becomes math. */
+  --bl-s1: 4px;
+  --bl-s2: 8px;
+  --bl-s3: 12px;
+  --bl-s4: 16px;
+  --bl-s5: 24px;
+  --bl-s6: 32px;
+  --bl-radius: 14px;
+  --bl-radius-sm: 8px;
+  --bl-radius-pill: 999px;
+  --bl-fab: 56px;
+  --bl-hit: 44px;
+
+  /* Type scale. Mono for numbers/labels (DAW feel); sans for prose. */
+  --bl-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bl-font-mono: "SFMono-Regular", ui-monospace, "Space Mono", monospace;
+  --bl-fs-micro: 11px;
+  --bl-fs-label: 13px;
+  --bl-fs-body: 15px;
+  --bl-fs-value: 18px;
+  --bl-fs-title: 22px;
+  --bl-fs-display: 30px;
+
+  /* Motion. */
+  --bl-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --bl-dur-fast: 130ms;
+  --bl-dur: 180ms;
+  --bl-dur-immersive: 220ms;
+}
+
+/* ---- midnight (default): ink + electric cyan ---- */
+.bl-root[data-skin="midnight"],
+.bl-root:not([data-skin]) {
+  --bl-bg: #06080d;
+  --bl-bg-grad: radial-gradient(circle at 50% -10%, #0c1424, #06080d 70%);
+  --bl-surface: rgba(16, 22, 36, 0.72);
+  --bl-surface-2: rgba(26, 34, 54, 0.72);
+  --bl-text: #cdd8ec;
+  --bl-text-dim: #5d6f8c;
+  --bl-accent: #39e0ff;
+  --bl-accent-2: #d56a1a;
+  --bl-accent-hot: #7af0ff;
+  --bl-success: #46f0a8;
+  --bl-warn: #ffb24d;
+  --bl-error: #ff5d6c;
+  --bl-cell-off: rgba(57, 224, 255, 0.06);
+  --bl-cell-on: var(--bl-accent);
+  --bl-playhead: rgba(57, 224, 255, 0.16);
+  --bl-border: rgba(57, 224, 255, 0.16);
+  --bl-glow: 0 0 18px;
+}
+
+/* ---- noir: graphite + warm amber, no neon ---- */
+.bl-root[data-skin="noir"] {
+  --bl-bg: #0b0b0c;
+  --bl-bg-grad: radial-gradient(circle at 50% -10%, #161616, #0b0b0c 70%);
+  --bl-surface: rgba(24, 24, 26, 0.74);
+  --bl-surface-2: rgba(34, 34, 38, 0.74);
+  --bl-text: #e6e2d8;
+  --bl-text-dim: #8a8478;
+  --bl-accent: #ffb454;
+  --bl-accent-2: #7a8aff;
+  --bl-accent-hot: #ffd089;
+  --bl-success: #8fd66a;
+  --bl-warn: #ffb24d;
+  --bl-error: #ff6b6b;
+  --bl-cell-off: rgba(255, 180, 84, 0.07);
+  --bl-cell-on: var(--bl-accent);
+  --bl-playhead: rgba(255, 180, 84, 0.16);
+  --bl-border: rgba(255, 180, 84, 0.14);
+  --bl-glow: 0 0 16px;
+}
+
+/* ---- aurora: deep indigo + magenta→teal ---- */
+.bl-root[data-skin="aurora"] {
+  --bl-bg: #080612;
+  --bl-bg-grad: radial-gradient(circle at 50% -10%, #1a1030, #080612 70%);
+  --bl-surface: rgba(26, 18, 44, 0.72);
+  --bl-surface-2: rgba(40, 26, 64, 0.72);
+  --bl-text: #e0d6f4;
+  --bl-text-dim: #7a6c9c;
+  --bl-accent: #c66bff;
+  --bl-accent-2: #39e0ff;
+  --bl-accent-hot: #e09bff;
+  --bl-success: #5cf0c0;
+  --bl-warn: #ffc24d;
+  --bl-error: #ff6b8c;
+  --bl-cell-off: rgba(198, 107, 255, 0.07);
+  --bl-cell-on: var(--bl-accent);
+  --bl-playhead: rgba(198, 107, 255, 0.18);
+  --bl-border: rgba(198, 107, 255, 0.16);
+  --bl-glow: 0 0 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bl-root {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-body);
+  color: var(--bl-text);
+  background: var(--bl-bg);
+  background-image: var(--bl-bg-grad);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Boot / Stage placeholder (Wave 0). Real shell lands in Wave 1. */
+.bl-boot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--bl-safe-top) + var(--bl-s5)) var(--bl-s5)
+    calc(var(--bl-safe-bottom) + var(--bl-s5));
+  gap: var(--bl-s4);
+}
+.bl-wordmark {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-title);
+  letter-spacing: 0.18em;
+  color: var(--bl-text-dim);
+  text-transform: lowercase;
+}
+.bl-boot-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  margin-top: var(--bl-s4);
+}
+.bl-boot-track {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  padding: var(--bl-s3) var(--bl-s4);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+}
+.bl-boot-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bl-cell-on);
+  box-shadow: var(--bl-glow) var(--bl-cell-on);
+}
+.bl-boot-name {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+}
+.bl-boot-meta {
+  margin-left: auto;
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,90 @@
+/**
+ * beatlounge — engine-facing contracts (FROZEN).
+ *
+ * These narrow interfaces let separate teams build the scheduler, the audio
+ * graph, each instrument engine, and each effect in parallel against stubs.
+ * The only shared dependency is the pure ./model layer.
+ */
+
+import type { BeatloungeDoc, Id, InstrumentConfig, Midi, Normalized, Tick } from "../model/document"
+
+// ----------------------------------------------------------- asset loading
+export interface AssetLoader {
+  /** Resolve a corpan-pack:// / catalog / blob asset to raw bytes. */
+  resolve(ref: {
+    assetUrl?: string
+    soundfontId?: Id
+    sampleId?: Id
+    fragmentId?: Id
+  }): Promise<ArrayBuffer>
+  /** A decodable object URL for a fragment/sample (Blob-URL on iOS WebKit). */
+  url(ref: { assetUrl?: string; fragmentId?: Id; sampleId?: Id }): Promise<string>
+}
+
+// ----------------------------------------------------------- instruments
+export interface TriggerNote {
+  pitch: Midi
+  velocity: Normalized
+  durationSec: number
+  // ttsFragment extras:
+  fragmentId?: Id
+  pitchSemis?: number
+  stretch?: number
+  reverse?: boolean
+  scratchCurve?: number[]
+}
+
+/** Every instrument engine (synth/fm/wavetable/sampler/drumSampler/soundfont/
+ *  ttsFragment) implements this. The audioGraph owns its lifecycle. */
+export interface Instrument {
+  /** Output node — connect into the track's insert chain. */
+  readonly output: AudioNode
+  /** Schedule a note at an exact AudioContext time (seconds). */
+  trigger(note: TriggerNote, when: number): void
+  /** Apply a config delta (reconciler calls on doc change). */
+  update(config: InstrumentConfig): void | Promise<void>
+  /** Set an automatable param at audio time. */
+  setParam(param: string, value: number, when: number): void
+  /** Async asset load (samples / soundfonts / fragments). */
+  load(assets: AssetLoader): Promise<void>
+  dispose(): void
+}
+
+// ----------------------------------------------------------- effects
+export interface Effect {
+  readonly input: AudioNode
+  readonly output: AudioNode
+  update(params: Record<string, number | string | boolean>, enabled: boolean): void
+  setParam(param: string, value: number, when: number): void
+  dispose(): void
+}
+
+// ----------------------------------------------------------- scheduler
+export interface ScheduledTrigger {
+  trackId: Id
+  when: number // AudioContext seconds
+  note: TriggerNote
+}
+
+export interface Scheduler {
+  start(fromTick?: Tick): Promise<void>
+  stop(): void
+  isPlaying(): boolean
+  /** Re-read tempo / loop / events from a new immutable doc snapshot. */
+  setDoc(doc: BeatloungeDoc): void
+  /** Audio-thread subscription: fires per event at exact AudioContext time. */
+  onTrigger(cb: (e: ScheduledTrigger) => void): () => void
+  /** UI subscription: rAF-driven playhead position in ticks. */
+  onPlayhead(cb: (tick: Tick) => void): () => void
+  dispose(): void
+}
+
+// ----------------------------------------------------------- audio graph
+export interface AudioGraph {
+  /** Diff-driven: touch only the nodes that changed between docs. */
+  reconcile(prev: BeatloungeDoc | null, next: BeatloungeDoc): void | Promise<void>
+  /** Route a scheduled trigger from the scheduler to the right instrument. */
+  dispatch(t: ScheduledTrigger): void
+  setMasterVolume(v: Normalized): void
+  dispose(): void
+}
