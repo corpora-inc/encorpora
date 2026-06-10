@@ -172,7 +172,11 @@
   flex-direction: column;
   min-height: 0;
   box-sizing: border-box;
-  background: var(--bl-surface);
+  /* OPAQUE panel — the translucent --bl-surface alone let the step grid bleed
+   * through the effects/mixer controls. Stack the surface tint over the solid bg
+   * so the drawer fully occludes the grid behind it (token-only, no alpha). */
+  background-color: var(--bl-bg);
+  background-image: linear-gradient(var(--bl-surface), var(--bl-surface));
   border-top: 1px solid var(--bl-border);
   border-top-left-radius: var(--bl-radius, 14px);
   border-top-right-radius: var(--bl-radius, 14px);
