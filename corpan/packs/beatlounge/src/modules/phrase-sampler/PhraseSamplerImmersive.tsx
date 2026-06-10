@@ -1,67 +1,152 @@
 /**
- * beatlounge — phrase-sampler IMMERSIVE view: the elite corpus browser.
+ * beatlounge — phrase DISCOVERY / LIBRARY: the heart of the language feature.
  *
- * Layout (calm, glanceable, touch-first):
- *   - a search field (debounced) + a 🎲 randomize button,
- *   - facet chips (level + domain) that filter the result feed,
- *   - a VIRTUALIZED result list: target text big, romanization + native gloss
- *     under it, a ▸ audition button (hostApi.speak), and a ⊕ place button that
- *     runs the pipeline to drop the phrase as a sampler track on the grid,
- *   - a mode toggle (stack = one word up the scale / scatter = phrase across).
+ * Interface #1 of two (the sequencer is #2). The flow:
  *
- * The list is windowed (only the visible rows render) so 25k phrases scroll at
- * 60fps. Heavy work (audio resolution) is async + happens on "place" only.
+ *   search / shuffle the corpus
+ *     → tap a phrase  → see EVERY stack language (one row each: code · text ·
+ *                        romanization), not just native+target
+ *       → drill a language → the full contiguous n-gram breakdown, grouped by N
+ *                            (ella · lo · explicará / ella lo · lo explicará / …)
+ *         → audition any combo through Web Audio (NEVER speak())
+ *         → SAVE a combo to the BANK (renders + IDB-caches + registers a ref)
+ *
+ * A Bank tab manages the saved library (audition + remove). Saving to the bank
+ * is this screen's endpoint; placement on the grid lives in the sequencer.
+ *
+ * Performance: the result list is windowed (only visible rows render) so 25k
+ * phrases scroll smoothly. Heavy work (TTS render) happens only on audition/save.
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
-import type { EntryOut } from "../../sdk/types"
+import { useBeatloungeStore } from "../../store/store"
+import type { EntryOut, VoiceInfo } from "../../sdk/types"
 import { Glyph } from "../../bl-ui"
-import { applyCommands } from "../runAction"
 import type { AudioSource } from "../../phrase/audioSource"
 import { auditionPhrase } from "../../phrase/audition"
+import { buildBankRef, bankHas } from "../../phrase/bank"
 import {
-  buildClip,
-  clipToCommands,
-  phraseLanguageCodes,
-  resolvePhraseContent,
-  type ClipMode,
-} from "../../phrase/pipeline"
+  entryLanguageRows,
+  headlineRow,
+  nativeGloss,
+  comboBreakdown,
+  discoveryLanguageCodes,
+  type LanguageRow,
+} from "./discoveryModel"
+import { languageLabel } from "./langLabel"
+import { BankView } from "./BankView"
 
-const ROW_HEIGHT = 92
-const OVERSCAN = 4
 const SEARCH_DEBOUNCE_MS = 220
-const PAGE = 60
+const PAGE = 80
+const ROW_HEIGHT = 88
+const OVERSCAN = 4
+/** Cap the longest n-gram band for long phrases; what's hidden is surfaced. */
+const COMBO_MAX_N = 6
+
+const LOG = "[beatlounge/phrase-discovery]"
+
+type Tab = "discover" | "bank"
 
 interface Props {
   host: BeatloungeHost
   store: BeatloungeStore
   audioSource: AudioSource
-  /** Lifted state so the tile reflects the last-placed phrase. */
+  /** Lifted so the tile reflects the last saved snippet. */
   onPlaced: (entry: EntryOut, summary: string) => void
 }
 
-const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const
-
 export const PhraseSamplerImmersive = ({ host, store, audioSource, onPlaced }: Props) => {
   const hostApi = host.hostApi
-  // Snapshot the stack ONCE per mount. The real host returns a fresh object on
-  // every getStackConfig() call; reading it in the render body made `languages`
-  // (and thus langCodes -> fetchEntries -> the fetch effect) change identity
-  // every render, which re-fetched the corpus in an infinite loop.
+  // Snapshot the stack ONCE per mount — the real host returns a fresh object on
+  // every getStackConfig() call; reading it in render churned `languages`
+  // identity and re-fetched the corpus in a loop.
   const stack = useMemo(() => hostApi.getStackConfig(), [hostApi])
-  const languages = useMemo(() => stack.languages, [stack])
-  const langCodes = useMemo(() => phraseLanguageCodes(languages), [languages])
+  const languages = useMemo(() => stack.languages ?? [], [stack])
+  const langCodes = useMemo(() => discoveryLanguageCodes(stack), [stack])
+  const nativeCode = languages[0]
 
+  const bankCount = useBeatloungeStore(store, (s) => s.doc.fragmentLibrary?.length ?? 0)
+
+  const [tab, setTab] = useState<Tab>("discover")
+  const [selected, setSelected] = useState<EntryOut | null>(null)
+
+  return (
+    <div className="bl-disc">
+      <div className="bl-disc-tabs" data-bl-nocapture role="tablist" aria-label="Phrase library">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={tab === "discover"}
+          className={`bl-disc-tab${tab === "discover" ? " is-on" : ""}`}
+          onClick={() => setTab("discover")}
+        >
+          <Glyph name="drawer" size={16} /> Discover
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={tab === "bank"}
+          className={`bl-disc-tab${tab === "bank" ? " is-on" : ""}`}
+          onClick={() => setTab("bank")}
+        >
+          <Glyph name="wave" size={16} /> Bank
+          {bankCount > 0 && <span className="bl-disc-tabcount">{bankCount}</span>}
+        </button>
+      </div>
+
+      {tab === "discover" ? (
+        <DiscoverView
+          host={host}
+          store={store}
+          audioSource={audioSource}
+          languages={languages}
+          langCodes={langCodes}
+          nativeCode={nativeCode}
+          showRomanization={stack.showRomanization}
+          selected={selected}
+          onSelect={setSelected}
+          onSaved={onPlaced}
+        />
+      ) : (
+        <BankView host={host} store={store} audioSource={audioSource} nativeCode={nativeCode} />
+      )}
+    </div>
+  )
+}
+
+// ============================================================ Discover view
+interface DiscoverProps {
+  host: BeatloungeHost
+  store: BeatloungeStore
+  audioSource: AudioSource
+  languages: string[]
+  langCodes: string[]
+  nativeCode?: string
+  showRomanization: boolean
+  selected: EntryOut | null
+  onSelect: (e: EntryOut | null) => void
+  onSaved: (e: EntryOut, summary: string) => void
+}
+
+const DiscoverView = ({
+  host,
+  store,
+  audioSource,
+  languages,
+  langCodes,
+  nativeCode,
+  showRomanization,
+  selected,
+  onSelect,
+  onSaved,
+}: DiscoverProps) => {
+  const hostApi = host.hostApi
   const [query, setQuery] = useState("")
   const [debounced, setDebounced] = useState("")
-  const [level, setLevel] = useState<string | null>(null)
-  const [domain, setDomain] = useState<string | null>(null)
-  const [mode, setMode] = useState<ClipMode>("stack")
   const [entries, setEntries] = useState<EntryOut[]>([])
   const [loading, setLoading] = useState(false)
-  const [busyId, setBusyId] = useState<number | null>(null)
   const reqSeq = useRef(0)
 
   // Debounce the search box.
@@ -70,119 +155,72 @@ export const PhraseSamplerImmersive = ({ host, store, audioSource, onPlaced }: P
     return () => clearTimeout(id)
   }, [query])
 
-  const domains = stack.domains ?? []
-
-  // Fetch entries on query / facet change (search OR random feed).
   const fetchEntries = useCallback(async () => {
     const seq = ++reqSeq.current
     setLoading(true)
     try {
       let list: EntryOut[] = []
-      const levels = level ? [level] : undefined
-      const dom = domain ? [domain] : undefined
       if (debounced && hostApi.searchEntriesByText) {
         list = await hostApi.searchEntriesByText({
           text: debounced,
           languageCodes: langCodes,
           limit: PAGE,
         })
-      } else if (hostApi.getRandomEntries) {
-        list = await hostApi.getRandomEntries({
-          count: PAGE,
-          languageCodes: langCodes,
-          levels,
-          domains: dom,
-        })
-      }
-      // Client-side facet narrowing on the search path (search lacks filters).
-      if (debounced) {
-        list = list.filter(
-          (e) =>
-            (!level || e.level === level) &&
-            (!domain || (e.domains ?? []).includes(domain))
-        )
+      } else if (!debounced && hostApi.getRandomEntries) {
+        list = await hostApi.getRandomEntries({ count: PAGE, languageCodes: langCodes })
+      } else if (debounced && !hostApi.searchEntriesByText) {
+        // Older host without text search: degrade to a random browse + a note.
+        host.toast("Search isn't available on this host — showing a random set")
+        if (hostApi.getRandomEntries) {
+          list = await hostApi.getRandomEntries({ count: PAGE, languageCodes: langCodes })
+        }
       }
       if (seq === reqSeq.current) setEntries(list)
     } catch (err) {
-      console.warn("[beatlounge/phrase-sampler] fetch failed:", err)
-      if (seq === reqSeq.current) setEntries([])
+      console.warn(`${LOG} fetch failed:`, err)
+      if (seq === reqSeq.current) {
+        setEntries([])
+        host.toast("Couldn't load phrases")
+      }
     } finally {
       if (seq === reqSeq.current) setLoading(false)
     }
-  }, [debounced, level, domain, langCodes, hostApi])
+  }, [debounced, langCodes, hostApi, host])
 
   useEffect(() => {
     void fetchEntries()
   }, [fetchEntries])
 
-  const randomize = useCallback(async () => {
+  const shuffle = useCallback(async () => {
     setQuery("")
     setDebounced("")
+    onSelect(null)
     const seq = ++reqSeq.current
     setLoading(true)
     try {
       if (hostApi.getRandomEntries) {
-        const list = await hostApi.getRandomEntries({
-          count: PAGE,
-          languageCodes: langCodes,
-          levels: level ? [level] : undefined,
-          domains: domain ? [domain] : undefined,
-        })
+        const list = await hostApi.getRandomEntries({ count: PAGE, languageCodes: langCodes })
         if (seq === reqSeq.current) setEntries(list)
+      } else {
+        host.toast("Shuffle isn't available on this host")
       }
     } catch (err) {
-      console.warn("[beatlounge/phrase-sampler] randomize failed:", err)
+      console.warn(`${LOG} shuffle failed:`, err)
+      host.toast("Couldn't shuffle")
     } finally {
       if (seq === reqSeq.current) setLoading(false)
     }
-  }, [hostApi, langCodes, level, domain])
-
-  const audition = useCallback(
-    (entry: EntryOut) => {
-      const content = resolvePhraseContent(entry, languages)
-      if (!content.phraseText) return
-      // ALWAYS through our own Web Audio graph — never the OS speaker (which
-      // ducks the music). Renders TTS to a buffer and plays it.
-      void auditionPhrase(host.audioContext(), audioSource, content.phraseText, content.targetLang)
-    },
-    [host, audioSource, languages]
-  )
-
-  const place = useCallback(
-    async (entry: EntryOut) => {
-      setBusyId(entry.entry_id)
-      try {
-        const content = resolvePhraseContent(entry, languages)
-        const doc = store.vanilla.getState().doc
-        const clip = await buildClip(
-          { audioSource, hostApi, loopTicks: doc.loopLengthTicks },
-          { content, mode }
-        )
-        const commands = clipToCommands(clip)
-        applyCommands(store, commands, `Place "${clip.phraseText}"`)
-        const summary =
-          mode === "stack"
-            ? `Riff: "${clip.phraseText}"`
-            : `Phrase: "${clip.phraseText}"`
-        host.toast(summary, { undo: () => store.undo() })
-        onPlaced(entry, summary)
-      } catch (err) {
-        console.warn("[beatlounge/phrase-sampler] place failed:", err)
-        host.toast("Could not place phrase")
-      } finally {
-        setBusyId(null)
-      }
-    },
-    [audioSource, hostApi, languages, mode, store, host, onPlaced]
-  )
+  }, [hostApi, langCodes, host, onSelect])
 
   return (
-    <div className="bl-ps">
-      <div className="bl-ps-toolbar" data-bl-nocapture>
-        <div className="bl-ps-search">
-          <Glyph name="drawer" size={16} />
+    <div className="bl-disc-body">
+      <div className="bl-disc-toolbar" data-bl-nocapture>
+        <div className="bl-disc-search">
+          <span className="bl-disc-searchicon">
+            <Glyph name="drawer" size={16} />
+          </span>
           <input
-            className="bl-ps-input"
+            className="bl-disc-input"
             type="search"
             inputMode="search"
             placeholder="Search the corpus…"
@@ -193,7 +231,7 @@ export const PhraseSamplerImmersive = ({ host, store, audioSource, onPlaced }: P
           {query && (
             <button
               type="button"
-              className="bl-ps-clear"
+              className="bl-disc-clear"
               aria-label="Clear search"
               onClick={() => setQuery("")}
             >
@@ -203,101 +241,51 @@ export const PhraseSamplerImmersive = ({ host, store, audioSource, onPlaced }: P
         </div>
         <button
           type="button"
-          className="bl-chip bl-ps-dice"
-          onClick={() => void randomize()}
-          aria-label="Randomize phrases"
-          title="Randomize"
+          className="bl-disc-shuffle"
+          onClick={() => void shuffle()}
+          aria-label="Shuffle phrases"
+          title="Shuffle"
         >
-          <Glyph name="wave" size={16} /> Shuffle
+          <Glyph name="wave" size={16} />
+          <span>Shuffle</span>
         </button>
       </div>
 
-      <div className="bl-ps-facets" data-bl-nocapture>
-        <div className="bl-ps-facetrow">
-          {ALL_LEVELS.map((lv) => (
-            <button
-              key={lv}
-              type="button"
-              className={`bl-ps-facet${level === lv ? " is-on" : ""}`}
-              onClick={() => setLevel(level === lv ? null : lv)}
-            >
-              {lv}
-            </button>
-          ))}
-        </div>
-        {domains.length > 0 && (
-          <div className="bl-ps-facetrow">
-            {domains.map((d) => (
-              <button
-                key={d}
-                type="button"
-                className={`bl-ps-facet${domain === d ? " is-on" : ""}`}
-                onClick={() => setDomain(domain === d ? null : d)}
-              >
-                {d}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div className="bl-ps-modebar" data-bl-nocapture>
-        <span className="bl-ps-modelabel">Place as</span>
-        <div className="bl-ps-modeseg" role="radiogroup" aria-label="Placement mode">
-          <button
-            type="button"
-            role="radio"
-            aria-checked={mode === "stack"}
-            className={`bl-ps-modebtn${mode === "stack" ? " is-on" : ""}`}
-            onClick={() => setMode("stack")}
-          >
-            Riff
-          </button>
-          <button
-            type="button"
-            role="radio"
-            aria-checked={mode === "scatter"}
-            className={`bl-ps-modebtn${mode === "scatter" ? " is-on" : ""}`}
-            onClick={() => setMode("scatter")}
-          >
-            Phrase
-          </button>
-        </div>
-      </div>
-
-      <VirtualList
+      <ResultList
         entries={entries}
         loading={loading}
         languages={languages}
-        showRomanization={stack.showRomanization}
-        busyId={busyId}
-        onAudition={audition}
-        onPlace={(e) => void place(e)}
+        selectedId={selected?.entry_id ?? null}
+        onSelect={onSelect}
       />
+
+      {selected && (
+        <PhraseDetail
+          host={host}
+          store={store}
+          audioSource={audioSource}
+          entry={selected}
+          languages={languages}
+          nativeCode={nativeCode}
+          showRomanization={showRomanization}
+          onClose={() => onSelect(null)}
+          onSaved={(summary) => onSaved(selected, summary)}
+        />
+      )}
     </div>
   )
 }
 
-// ----------------------------------------------------------- virtual list
-interface VListProps {
+// ------------------------------------------------------------ result list
+interface ResultListProps {
   entries: EntryOut[]
   loading: boolean
   languages: string[]
-  showRomanization: boolean
-  busyId: number | null
-  onAudition: (e: EntryOut) => void
-  onPlace: (e: EntryOut) => void
+  selectedId: number | null
+  onSelect: (e: EntryOut) => void
 }
 
-const VirtualList = ({
-  entries,
-  loading,
-  languages,
-  showRomanization,
-  busyId,
-  onAudition,
-  onPlace,
-}: VListProps) => {
+const ResultList = ({ entries, loading, languages, selectedId, onSelect }: ResultListProps) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [scrollTop, setScrollTop] = useState(0)
   const [viewportH, setViewportH] = useState(480)
@@ -320,31 +308,29 @@ const VirtualList = ({
 
   if (!loading && total === 0) {
     return (
-      <div className="bl-ps-list is-empty" ref={scrollRef}>
-        <p className="bl-ps-empty">No phrases. Try a different search or Shuffle.</p>
+      <div className="bl-disc-list is-empty" ref={scrollRef}>
+        <p className="bl-disc-empty">No phrases. Try another search, or Shuffle.</p>
       </div>
     )
   }
 
   return (
     <div
-      className="bl-ps-list"
+      className="bl-disc-list"
       ref={scrollRef}
       onScroll={(e) => setScrollTop((e.target as HTMLDivElement).scrollTop)}
     >
-      <div className="bl-ps-spacer" style={{ height: total * ROW_HEIGHT }}>
+      <div className="bl-disc-spacer" style={{ height: total * ROW_HEIGHT }}>
         {slice.map((entry, i) => {
           const idx = first + i
           return (
-            <PhraseRow
+            <ResultRow
               key={`${entry.source ?? "base"}:${entry.entry_id}`}
               entry={entry}
               top={idx * ROW_HEIGHT}
               languages={languages}
-              showRomanization={showRomanization}
-              busy={busyId === entry.entry_id}
-              onAudition={() => onAudition(entry)}
-              onPlace={() => onPlace(entry)}
+              selected={entry.entry_id === selectedId}
+              onSelect={() => onSelect(entry)}
             />
           )
         })}
@@ -353,71 +339,407 @@ const VirtualList = ({
   )
 }
 
-// ----------------------------------------------------------- one row
-interface RowProps {
+interface ResultRowProps {
   entry: EntryOut
   top: number
   languages: string[]
-  showRomanization: boolean
-  busy: boolean
-  onAudition: () => void
-  onPlace: () => void
+  selected: boolean
+  onSelect: () => void
 }
 
-const PhraseRow = ({
-  entry,
-  top,
-  languages,
-  showRomanization,
-  busy,
-  onAudition,
-  onPlace,
-}: RowProps) => {
-  const content = resolvePhraseContent(entry, languages)
+const ResultRow = ({ entry, top, languages, selected, onSelect }: ResultRowProps) => {
+  const head = headlineRow(entry, languages)
+  const gloss = nativeGloss(entry, languages)
+  const rowCount = entryLanguageRows(entry, languages).length
   return (
-    <div className="bl-ps-row" style={{ top }}>
-      <div className="bl-ps-text">
-        <div className="bl-ps-target" lang={content.targetLang}>
-          {content.phraseText || "—"}
+    <button
+      type="button"
+      className={`bl-disc-row${selected ? " is-sel" : ""}`}
+      style={{ top }}
+      onClick={onSelect}
+      aria-pressed={selected}
+    >
+      <div className="bl-disc-rowtext">
+        <div className="bl-disc-rowhead" lang={head?.code}>
+          {head?.text || "—"}
         </div>
-        {showRomanization && content.romanization && (
-          <div className="bl-ps-roman">{content.romanization}</div>
-        )}
-        {content.gloss && content.gloss !== content.phraseText && (
-          <div className="bl-ps-gloss" lang={content.nativeLang ?? undefined}>
-            {content.gloss}
+        {gloss && head && gloss !== head.text && (
+          <div className="bl-disc-rowgloss" lang={languages[0]}>
+            {gloss}
           </div>
         )}
-        <div className="bl-ps-meta">
-          <span className="bl-ps-badge">{entry.level}</span>
-          {(entry.domains ?? []).slice(0, 2).map((d) => (
-            <span className="bl-ps-tag" key={d}>
+        <div className="bl-disc-rowmeta">
+          <span className="bl-disc-badge">{entry.level}</span>
+          {rowCount > 0 && (
+            <span className="bl-disc-langcount">
+              {rowCount} {rowCount === 1 ? "language" : "languages"}
+            </span>
+          )}
+          {(entry.domains ?? []).slice(0, 1).map((d) => (
+            <span className="bl-disc-tag" key={d}>
               {d}
             </span>
           ))}
         </div>
       </div>
-      <div className="bl-ps-actions" data-bl-nocapture>
-        <button
-          type="button"
-          className="bl-ps-act"
-          aria-label="Audition phrase"
-          title="Hear it"
-          onClick={onAudition}
-        >
-          <Glyph name="play" size={18} />
+      <span className="bl-disc-rowchevron" aria-hidden="true">
+        <Glyph name="chevron-left" size={18} style={{ transform: "scaleX(-1)" }} />
+      </span>
+    </button>
+  )
+}
+
+// ============================================================ phrase detail
+interface DetailProps {
+  host: BeatloungeHost
+  store: BeatloungeStore
+  audioSource: AudioSource
+  entry: EntryOut
+  languages: string[]
+  nativeCode?: string
+  showRomanization: boolean
+  onClose: () => void
+  onSaved: (summary: string) => void
+}
+
+const PhraseDetail = ({
+  host,
+  store,
+  audioSource,
+  entry,
+  languages,
+  nativeCode,
+  showRomanization,
+  onClose,
+  onSaved,
+}: DetailProps) => {
+  const rows = useMemo(() => entryLanguageRows(entry, languages), [entry, languages])
+  // Default the drilled language to the first non-native (target) row, else 0.
+  const defaultLang = useMemo(
+    () => rows.find((r) => !r.isNative)?.code ?? rows[0]?.code ?? null,
+    [rows]
+  )
+  const [drillLang, setDrillLang] = useState<string | null>(defaultLang)
+  useEffect(() => setDrillLang(defaultLang), [defaultLang])
+
+  const drillRow = rows.find((r) => r.code === drillLang) ?? null
+
+  return (
+    <div className="bl-disc-detail" data-bl-nocapture role="dialog" aria-label="Phrase detail">
+      <div className="bl-disc-detail-head">
+        <button type="button" className="bl-disc-back" onClick={onClose} aria-label="Back to results">
+          <Glyph name="chevron-left" size={18} />
         </button>
-        <button
-          type="button"
-          className="bl-ps-act is-place"
-          aria-label="Place phrase as a sampler track"
-          title="Place on the grid"
-          onClick={onPlace}
-          disabled={busy}
-        >
-          {busy ? <span className="bl-ps-spin" /> : <Glyph name="grid" size={18} />}
-        </button>
+        <div className="bl-disc-detail-title">
+          <span className="bl-disc-badge">{entry.level}</span>
+          {(entry.domains ?? []).slice(0, 2).map((d) => (
+            <span className="bl-disc-tag" key={d}>
+              {d}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="bl-disc-detail-scroll">
+        {/* Every stack language present — one row each. */}
+        <div className="bl-disc-langs">
+          <div className="bl-disc-section-h">All languages in your stack</div>
+          {rows.length === 0 && <p className="bl-disc-empty-sm">No translations for your stack.</p>}
+          {rows.map((row) => (
+            <LanguageRowView
+              key={row.code}
+              row={row}
+              nativeCode={nativeCode}
+              showRomanization={showRomanization}
+              isDrilled={row.code === drillLang}
+              onDrill={() => setDrillLang(row.code)}
+              onAudition={() =>
+                void auditionPhrase(host.audioContext(), audioSource, row.text, row.code).catch(
+                  (err) => {
+                    console.warn(`${LOG} audition row failed:`, err)
+                    host.toast("Couldn't play that")
+                  }
+                )
+              }
+            />
+          ))}
+        </div>
+
+        {drillRow && (
+          <ComboBreakdownView
+            host={host}
+            store={store}
+            audioSource={audioSource}
+            row={drillRow}
+            nativeCode={nativeCode}
+            onSaved={onSaved}
+          />
+        )}
       </div>
     </div>
   )
 }
+
+// ------------------------------------------------------------ language row
+interface LanguageRowViewProps {
+  row: LanguageRow
+  nativeCode?: string
+  showRomanization: boolean
+  isDrilled: boolean
+  onDrill: () => void
+  onAudition: () => void
+}
+
+const LanguageRowView = ({
+  row,
+  nativeCode,
+  showRomanization,
+  isDrilled,
+  onDrill,
+  onAudition,
+}: LanguageRowViewProps) => (
+  <div className={`bl-disc-lang${isDrilled ? " is-drilled" : ""}`}>
+    <button type="button" className="bl-disc-lang-main" onClick={onDrill} aria-pressed={isDrilled}>
+      <span className="bl-disc-lang-tag">
+        {languageLabel(row.code, nativeCode)}
+        {row.isNative && <span className="bl-disc-native-dot" title="Native" />}
+      </span>
+      <span className="bl-disc-lang-text" lang={row.code}>
+        {row.text}
+      </span>
+      {showRomanization && row.romanization && (
+        <span className="bl-disc-lang-roman">{row.romanization}</span>
+      )}
+    </button>
+    <button
+      type="button"
+      className="bl-disc-iconbtn"
+      onClick={onAudition}
+      aria-label={`Hear ${languageLabel(row.code, nativeCode)}`}
+      title="Hear it"
+    >
+      <Glyph name="play" size={18} />
+    </button>
+  </div>
+)
+
+// ------------------------------------------------------------ combo breakdown
+interface ComboViewProps {
+  host: BeatloungeHost
+  store: BeatloungeStore
+  audioSource: AudioSource
+  row: LanguageRow
+  nativeCode?: string
+  onSaved: (summary: string) => void
+}
+
+const ComboBreakdownView = ({ host, store, audioSource, row, nativeCode, onSaved }: ComboViewProps) => {
+  const [voiceId, setVoiceId] = useState<string | undefined>(undefined)
+  const breakdown = useMemo(() => comboBreakdown(row.text, row.code, COMBO_MAX_N), [row])
+  // Which N bands are expanded. N=1 and N=2 open by default; deeper bands collapse.
+  const [openBands, setOpenBands] = useState<Set<number>>(new Set([1, 2]))
+  useEffect(() => setOpenBands(new Set([1, 2])), [row.code, row.text])
+  const [busyText, setBusyText] = useState<string | null>(null)
+
+  // Reactive doc for bank-membership "saved" checkmarks.
+  const doc = useBeatloungeStore(store, (s) => s.doc)
+
+  const toggleBand = (n: number) =>
+    setOpenBands((prev) => {
+      const next = new Set(prev)
+      if (next.has(n)) next.delete(n)
+      else next.add(n)
+      return next
+    })
+
+  const audition = useCallback(
+    (text: string) => {
+      void auditionPhrase(host.audioContext(), audioSource, text, row.code, { voiceId }).catch(
+        (err) => {
+          console.warn(`${LOG} audition combo failed:`, err)
+          host.toast("Couldn't play that")
+        }
+      )
+    },
+    [host, audioSource, row.code, voiceId]
+  )
+
+  const save = useCallback(
+    async (text: string) => {
+      setBusyText(text)
+      try {
+        const built = await buildBankRef(audioSource, { text, lang: row.code, voiceId })
+        if (!built) {
+          host.toast("Nothing to save")
+          return
+        }
+        store.dispatch({ t: "registerFragment", ref: built.ref })
+        const note = built.result.hasAudio ? "" : " (synth voice)"
+        host.toast(`Saved to bank: "${text}"${note}`, { undo: () => store.undo() })
+        onSaved(`Saved "${text}"`)
+      } catch (err) {
+        console.warn(`${LOG} save combo failed:`, err)
+        host.toast("Couldn't save to bank")
+      } finally {
+        setBusyText(null)
+      }
+    },
+    [audioSource, row.code, voiceId, store, host, onSaved]
+  )
+
+  return (
+    <div className="bl-disc-combos">
+      <div className="bl-disc-section-h bl-disc-combos-h">
+        <span>
+          Breakdown · <span lang={row.code}>{languageLabel(row.code, nativeCode)}</span>
+        </span>
+        <VoicePicker host={host} lang={row.code} voiceId={voiceId} onPick={setVoiceId} />
+      </div>
+
+      {breakdown.tokens.length === 0 ? (
+        <p className="bl-disc-empty-sm">Nothing to break down.</p>
+      ) : (
+        <>
+          <p className="bl-disc-combos-sub">
+            {breakdown.tokens.length} {breakdown.tokens.length === 1 ? "token" : "tokens"} ·{" "}
+            {breakdown.shownCount} of {breakdown.fullCount} combos
+            {breakdown.cappedAtN !== undefined && (
+              <span className="bl-disc-capnote">
+                {" "}
+                — capped at {breakdown.cappedAtN}-grams ({breakdown.hiddenCount} longer hidden)
+              </span>
+            )}
+          </p>
+
+          {breakdown.bands.map((band) => {
+            const open = openBands.has(band.n)
+            return (
+              <div key={band.n} className={`bl-disc-band${open ? " is-open" : ""}`}>
+                <button
+                  type="button"
+                  className="bl-disc-band-h"
+                  onClick={() => toggleBand(band.n)}
+                  aria-expanded={open}
+                >
+                  <span className="bl-disc-band-chev" aria-hidden="true">
+                    <Glyph name="chevron-down" size={16} />
+                  </span>
+                  <span className="bl-disc-band-n">{band.n}-gram</span>
+                  <span className="bl-disc-band-count">{band.combos.length}</span>
+                </button>
+                {open && (
+                  <div className="bl-disc-band-grid">
+                    {band.combos.map((c) => {
+                      const saved = bankHas(doc, c.text, row.code, voiceId)
+                      const busy = busyText === c.text
+                      return (
+                        <div key={`${c.n}:${c.start}`} className="bl-disc-combo">
+                          <button
+                            type="button"
+                            className="bl-disc-combo-text"
+                            lang={row.code}
+                            onClick={() => audition(c.text)}
+                            title="Audition"
+                          >
+                            <Glyph name="play" size={14} />
+                            <span>{c.text}</span>
+                          </button>
+                          <button
+                            type="button"
+                            className={`bl-disc-combo-save${saved ? " is-saved" : ""}`}
+                            onClick={() => !saved && void save(c.text)}
+                            disabled={busy || saved}
+                            aria-label={saved ? "Already in bank" : `Save "${c.text}" to bank`}
+                            title={saved ? "In bank" : "Save to bank"}
+                          >
+                            {busy ? (
+                              <span className="bl-disc-spin" />
+                            ) : saved ? (
+                              <Check />
+                            ) : (
+                              <Plus />
+                            )}
+                          </button>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </>
+      )}
+    </div>
+  )
+}
+
+// ------------------------------------------------------------ voice picker
+interface VoicePickerProps {
+  host: BeatloungeHost
+  lang: string
+  voiceId?: string
+  onPick: (id: string | undefined) => void
+}
+
+const VoicePicker = ({ host, lang, voiceId, onPick }: VoicePickerProps) => {
+  const [voices, setVoices] = useState<VoiceInfo[] | null>(null)
+  const listVoices = host.hostApi.listVoices
+
+  useEffect(() => {
+    let alive = true
+    onPick(undefined)
+    if (!listVoices) {
+      setVoices(null)
+      return
+    }
+    setVoices(null)
+    void (async () => {
+      try {
+        const vs = await listVoices(lang)
+        if (alive) setVoices(vs ?? [])
+      } catch (err) {
+        console.warn(`${LOG} listVoices failed:`, err)
+        if (alive) setVoices([])
+      }
+    })()
+    return () => {
+      alive = false
+    }
+    // onPick is stable from parent; lang/listVoices drive the refetch.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang, listVoices])
+
+  if (!listVoices || !voices || voices.length === 0) return null
+
+  return (
+    <label className="bl-disc-voice">
+      <span className="bl-disc-voice-label">Voice</span>
+      <select
+        className="bl-disc-voice-sel"
+        value={voiceId ?? ""}
+        onChange={(e) => onPick(e.target.value || undefined)}
+        aria-label="Render voice"
+      >
+        <option value="">Default</option>
+        {voices.map((v) => (
+          <option key={v.id} value={v.id}>
+            {v.name || v.id}
+          </option>
+        ))}
+      </select>
+    </label>
+  )
+}
+
+// ------------------------------------------------------------ inline glyphs
+const Plus = () => (
+  <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" aria-hidden="true">
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+)
+const Check = () => (
+  <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M5 12.5l4.5 4.5L19 7" />
+  </svg>
+)
