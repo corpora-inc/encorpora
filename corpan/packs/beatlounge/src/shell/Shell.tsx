@@ -26,6 +26,7 @@ import { ModuleHost } from "./ModuleHost"
 import { Immersive } from "./Immersive"
 import { DockRail } from "./DockRail"
 import { Toast, type ToastState } from "./Toast"
+import { CommandBar, createCommandBarController } from "../modules/command-bar"
 
 export interface ShellChromeApi {
   enterImmersive(id: ModuleId): () => void
@@ -62,6 +63,15 @@ export const Shell = ({
   const [masterLevel, setMasterLevel] = useState(0)
   const [toast, setToast] = useState<ToastState | null>(null)
   const toastSeq = useRef(0)
+  const [commandOpen, setCommandOpen] = useState(false)
+
+  // The headline natural-language surface: one controller for the pack,
+  // opened from the Dock-Rail's command button into a palette-level overlay.
+  const commandController = useMemo(
+    () => createCommandBarController({ store, host, hostApi: host.hostApi }),
+    [store, host]
+  )
+  useEffect(() => () => commandController.dispose(), [commandController])
 
   // --- form factor (single resize owner) ---
   useEffect(() => {
@@ -170,7 +180,7 @@ export const Shell = ({
         canRedo={canRedo}
         onUndo={store.undo}
         onRedo={store.redo}
-        onCommand={() => showToast("Command bar coming soon")}
+        onCommand={() => setCommandOpen(true)}
         onDrawer={() => showToast(`${modules.length} module${modules.length === 1 ? "" : "s"}`)}
       />
 
@@ -188,6 +198,21 @@ export const Shell = ({
             className="bl-immersive-mount"
           />
         </Immersive>
+      )}
+
+      {/* ---- Command bar: the headline natural-language surface ---- */}
+      {commandOpen && (
+        <div
+          className="bl-command-overlay"
+          onPointerDown={(e) => {
+            if (e.target === e.currentTarget) setCommandOpen(false)
+          }}
+        >
+          <CommandBar
+            controller={commandController}
+            onClose={() => setCommandOpen(false)}
+          />
+        </div>
       )}
 
       <Toast toast={toast} onDismiss={() => setToast(null)} />

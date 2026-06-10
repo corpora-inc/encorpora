@@ -972,6 +972,32 @@
   }
 }
 
+/* ---- Command bar overlay (the headline natural-language surface) ---- */
+.bl-command-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--bl-z-palette);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: calc(var(--bl-safe-top) + var(--bl-s5)) calc(var(--bl-safe-right) + var(--bl-s4))
+    calc(var(--bl-safe-bottom) + var(--bl-s5)) calc(var(--bl-safe-left) + var(--bl-s4));
+  background: rgba(2, 4, 9, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: bl-overlay-in var(--bl-dur) var(--bl-ease);
+}
+@media (min-width: 600px) {
+  .bl-command-overlay {
+    align-items: center;
+  }
+}
+@keyframes bl-overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;

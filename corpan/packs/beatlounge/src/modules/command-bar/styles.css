@@ -1,0 +1,196 @@
+/* beatlounge — Command Bar styles (co-located; uses --bl-* tokens). */
+
+.bl-cmdbar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(640px, 100%);
+  padding: 12px;
+  border-radius: var(--bl-radius, 14px);
+  background: var(--bl-surface, rgba(16, 22, 36, 0.92));
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(14px);
+  color: var(--bl-text, #cdd8ec);
+}
+
+.bl-cmdbar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bl-cmdbar-glyph {
+  display: inline-flex;
+  color: var(--bl-accent, #39e0ff);
+  flex: 0 0 auto;
+}
+
+.bl-cmdbar-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 44px;
+  padding: 0 12px;
+  font-size: 16px;
+  color: var(--bl-text, #cdd8ec);
+  background: var(--bl-surface-2, rgba(26, 34, 54, 0.72));
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  border-radius: var(--bl-radius-sm, 8px);
+  outline: none;
+}
+.bl-cmdbar-input:focus {
+  border-color: var(--bl-accent, #39e0ff);
+}
+.bl-cmdbar-input::placeholder {
+  color: var(--bl-text-dim, #5d6f8c);
+}
+.bl-cmdbar-input:disabled {
+  opacity: 0.6;
+}
+
+.bl-cmdbar-go,
+.bl-cmdbar-keep,
+.bl-cmdbar-reroll,
+.bl-cmdbar-undo {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--bl-radius-pill, 999px);
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  background: var(--bl-surface-2, rgba(26, 34, 54, 0.72));
+  color: var(--bl-text, #cdd8ec);
+  cursor: pointer;
+}
+.bl-cmdbar-go {
+  background: var(--bl-accent, #39e0ff);
+  color: #04111a;
+  border-color: transparent;
+}
+.bl-cmdbar-go:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.bl-cmdbar-close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--bl-radius-pill, 999px);
+  border: none;
+  background: transparent;
+  color: var(--bl-text-dim, #5d6f8c);
+  cursor: pointer;
+}
+.bl-cmdbar-close:hover {
+  color: var(--bl-text, #cdd8ec);
+}
+
+.bl-cmdbar-spinner {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--bl-border, rgba(57, 224, 255, 0.3));
+  border-top-color: var(--bl-accent, #39e0ff);
+  animation: bl-cmdbar-spin 0.8s linear infinite;
+}
+@keyframes bl-cmdbar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-cmdbar-spinner {
+    animation-duration: 1.8s;
+  }
+}
+
+.bl-cmdbar-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px 10px;
+  border-radius: var(--bl-radius-sm, 8px);
+  background: var(--bl-surface-2, rgba(26, 34, 54, 0.72));
+  border: 1px solid var(--bl-accent, #39e0ff);
+}
+.bl-cmdbar-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.bl-cmdbar-summary strong {
+  font-size: 15px;
+}
+.bl-cmdbar-via {
+  font-size: 12px;
+  color: var(--bl-text-dim, #5d6f8c);
+}
+.bl-cmdbar-actions {
+  display: flex;
+  gap: 8px;
+}
+.bl-cmdbar-keep {
+  background: var(--bl-accent, #39e0ff);
+  color: #04111a;
+  border-color: transparent;
+}
+
+.bl-cmdbar-message {
+  font-size: 14px;
+  color: var(--bl-text-dim, #5d6f8c);
+  padding: 2px 4px;
+}
+
+.bl-cmdbar-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.bl-cmdbar-chip {
+  min-height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: var(--bl-radius-pill, 999px);
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  background: transparent;
+  color: var(--bl-text-dim, #5d6f8c);
+  cursor: pointer;
+}
+.bl-cmdbar-chip:hover {
+  color: var(--bl-text, #cdd8ec);
+  border-color: var(--bl-accent, #39e0ff);
+}
+
+/* Launcher tile (in the Stage) + immersive sheet wrapper. */
+.bl-cmdbar-launcher {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 64px;
+  padding: 0 16px;
+  border-radius: var(--bl-radius, 14px);
+  border: 1px dashed var(--bl-border, rgba(57, 224, 255, 0.16));
+  background: var(--bl-surface, rgba(16, 22, 36, 0.72));
+  color: var(--bl-text-dim, #5d6f8c);
+  font-size: 15px;
+  cursor: pointer;
+}
+.bl-cmdbar-launcher:hover {
+  color: var(--bl-text, #cdd8ec);
+  border-color: var(--bl-accent, #39e0ff);
+}
+
+.bl-cmdbar-immersive {
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+}
