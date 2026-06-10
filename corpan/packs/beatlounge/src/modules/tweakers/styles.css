@@ -1,0 +1,174 @@
+/**
+ * beatlounge — tweakers module styles (co-located; Vite bundles into app.css).
+ * Uses only --bl-* tokens. No edits to styles.css.
+ */
+
+/* ---- tile ---- */
+.bl-twk-tile-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+  padding: var(--bl-s2);
+  min-height: 44px;
+  justify-content: center;
+}
+.bl-twk-tile-empty {
+  font: var(--bl-fs-label) / 1.2 var(--bl-font);
+  color: var(--bl-text-dim);
+}
+.bl-twk-spark {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+.bl-twk-spark-line {
+  stroke: var(--bl-accent);
+  stroke-width: 1.4;
+  filter: drop-shadow(0 0 4px var(--bl-accent));
+}
+.bl-twk-tile-count {
+  font: 600 var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ---- immersive panel ---- */
+.bl-twk {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  padding: var(--bl-s4);
+  height: 100%;
+  overflow: hidden auto;
+}
+
+/* ---- agents ---- */
+.bl-twk-agents {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-twk-agents-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.bl-twk-agents-title {
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  color: var(--bl-text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.bl-twk-live {
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font-mono);
+  color: var(--bl-accent);
+}
+.bl-twk-agent-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+}
+.bl-twk-agent {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  padding: var(--bl-s2) var(--bl-s4);
+  border-radius: var(--bl-radius);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  cursor: pointer;
+  transition: border-color var(--bl-dur) var(--bl-ease),
+    box-shadow var(--bl-dur) var(--bl-ease), color var(--bl-dur) var(--bl-ease);
+}
+.bl-twk-agent:hover {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
+.bl-twk-agent:active {
+  transform: translateY(1px);
+}
+.bl-twk-agent:disabled {
+  opacity: 0.4;
+  cursor: default;
+  box-shadow: none;
+}
+.bl-twk-agent.is-danger:hover {
+  border-color: var(--bl-error);
+  color: var(--bl-error);
+  box-shadow: none;
+}
+.bl-twk-agent-label {
+  font: 600 var(--bl-fs-body) / 1 var(--bl-font);
+}
+
+/* ---- modulator list ---- */
+.bl-twk-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+.bl-twk-row {
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  padding: var(--bl-s3);
+  transition: opacity var(--bl-dur) var(--bl-ease);
+}
+.bl-twk-row.is-off {
+  opacity: 0.5;
+}
+.bl-twk-row-head {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  margin-bottom: var(--bl-s2);
+}
+.bl-twk-power {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--bl-text-dim);
+  background: transparent;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 0;
+}
+.bl-twk-power.is-on {
+  border-color: var(--bl-accent);
+  background: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
+.bl-twk-row-target {
+  font: 600 var(--bl-fs-body) / 1 var(--bl-font);
+  color: var(--bl-text);
+  flex: 1;
+}
+.bl-twk-row-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s3);
+  align-items: flex-end;
+}
+
+.bl-twk-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+}
+.bl-twk-field-label {
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+  text-align: center;
+}
+.bl-twk-select {
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: var(--bl-s1) var(--bl-s2);
+  font: var(--bl-fs-label) / 1 var(--bl-font);
+  min-height: 32px;
+}

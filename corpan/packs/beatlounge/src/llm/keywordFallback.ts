@@ -39,6 +39,27 @@ export const keywordRoute = (utterance: string): ToolCall | null => {
   const s = utterance.toLowerCase().trim()
   if (!s) return null
 
+  // --- autonomous modulation agents (Wave 3 headline; high signal) ---
+  // These come first so "breathe"/"calm" route to tweakers, not humanize/mood.
+  if (has(s, "stop tweaking", "stop the tweak", "stop modulat", "calm down", "settle down", "hold still", "stop evolving", "freeze")) {
+    return { name: "calm", args: {} }
+  }
+  if (has(s, "chaos", "go wild", "go crazy", "freak out", "glitch out", "lose it")) {
+    return { name: "chaos", args: { amount: 1.5 } }
+  }
+  if (has(s, "evolve", "evolving", "morph", "keep changing", "tweak itself", "drive the knobs", "modulate")) {
+    return { name: "vibe", args: { name: "evolve" } }
+  }
+  if (has(s, "drift", "wander", "meander", "float around")) {
+    return { name: "vibe", args: { name: "drift" } }
+  }
+  if (has(s, "pulse", "throb", "pump it", "pulsate")) {
+    return { name: "vibe", args: { name: "pulse" } }
+  }
+  if (has(s, "breathe", "breathing", "swell", "come alive", "bring it alive", "make it alive")) {
+    return { name: "vibe", args: { name: "breathe" } }
+  }
+
   // --- explicit mood words (highest signal) ---
   for (const mood of MOOD_NAMES) {
     if (s.includes(mood)) return { name: "setMood", args: { mood } }
@@ -79,7 +100,7 @@ export const keywordRoute = (utterance: string): ToolCall | null => {
   }
 
   // --- humanize ---
-  if (has(s, "humanize", "human", "loosen", "looser", "natural", "less robotic", "breathe", "feel played")) {
+  if (has(s, "humanize", "human", "loosen", "looser", "natural", "less robotic", "feel played")) {
     return { name: "humanize", args: { amount: 0.5 } }
   }
 

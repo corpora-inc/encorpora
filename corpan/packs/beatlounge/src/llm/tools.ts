@@ -13,10 +13,17 @@
  */
 
 import type { Command } from "../model/command"
-import type { BeatloungeDoc, Id, NoteEvent } from "../model/document"
-import { DRUM_PITCH, findTrack, isInstrumentTrack } from "../model/document"
+import type { BeatloungeDoc, Id, NoteEvent, ParamTarget } from "../model/document"
+import { DRUM_PITCH, createModulator, findTrack, isInstrumentTrack } from "../model/document"
 import { stepsInLoop, tickForStep } from "../model/timing"
 import { euclidIndices } from "../music/euclid"
+import {
+  AGENT_NAMES,
+  AGENT_META,
+  agentCommands,
+  chaosCommands,
+  type AgentName,
+} from "../modulation/agents"
 
 /** Deterministic RNG: same shape as runAction's mulberry32 stream. */
 export type Rng = () => number
@@ -363,6 +370,142 @@ const setMood: ToolSpec = {
   },
 }
 
+// ----------------------------------------------------------------- modulation
+/**
+ * vibe — set an AUTONOMOUS modulation agent loose so the loop evolves itself,
+ * or "calm" to clear all tweakers. The headline of Wave 3: "make it breathe",
+ * "let it evolve", "go chaotic". Reuses the shared agent presets so the LLM and
+ * the Tweakers UI spawn identical modulators.
+ */
+const VIBE_NAMES = [...AGENT_NAMES, "calm"] as const
+
+const vibe: ToolSpec = {
+  name: "vibe",
+  describe:
+    "Set an autonomous knob-tweaker agent loose so the loop evolves itself (breathe, drift, chaos, evolve, pulse) — or 'calm' to clear all tweakers.",
+  params: {
+    name: {
+      type: "enum",
+      options: VIBE_NAMES,
+      default: "evolve",
+      required: true,
+      describe: "One of: breathe, drift, chaos, evolve, pulse, calm.",
+    },
+  },
+  build(args, doc) {
+    const raw = String(args.name ?? "evolve").toLowerCase()
+    if (raw === "calm") {
+      const n = (doc.modulators ?? []).length
+      return {
+        commands: n ? [{ t: "clearModulators" }] : [],
+        summary: n ? "Calmed (cleared tweakers)" : "Already calm",
+      }
+    }
+    const name = (AGENT_NAMES.includes(raw as AgentName) ? raw : "evolve") as AgentName
+    const commands = agentCommands(name, doc)
+    return {
+      commands,
+      summary: commands.length
+        ? `${AGENT_META[name].label} — ${commands.length} tweaker${commands.length === 1 ? "" : "s"}`
+        : "Nothing to modulate",
+    }
+  },
+}
+
+/**
+ * automate — add ONE autonomous modulator to a sensible target. Defaults to a
+ * slow sine on the master volume; `target` ("master"|"pan"|"filter"|"volume")
+ * picks a doc-resolved param. The catch-all single-knob version of `vibe`.
+ */
+type AutomateTarget = "master" | "volume" | "pan" | "filter"
+
+const resolveAutomateTarget = (which: AutomateTarget, doc: BeatloungeDoc): ParamTarget | undefined => {
+  const inst = doc.tracks.find(isInstrumentTrack)
+  switch (which) {
+    case "master":
+      return { scope: "master", param: "volume" }
+    case "volume":
+      return inst ? { scope: "track", trackId: inst.id, param: "volume" } : { scope: "master", param: "volume" }
+    case "pan":
+      return inst ? { scope: "track", trackId: inst.id, param: "pan" } : undefined
+    case "filter": {
+      for (const track of doc.tracks) {
+        const fx = track.inserts.find((i) => i.kind === "filter")
+        if (fx) return { scope: "insert", trackId: track.id, insertId: fx.id, param: "frequency" }
+      }
+      // No filter insert → sweep a track pan instead so the intent isn't lost.
+      return inst ? { scope: "track", trackId: inst.id, param: "pan" } : undefined
+    }
+    default:
+      return { scope: "master", param: "volume" }
+  }
+}
+
+const automate: ToolSpec = {
+  name: "automate",
+  describe:
+    "Add one autonomous tweaker to a param. target: master, volume, pan, or filter. shape + depth optional.",
+  params: {
+    target: {
+      type: "enum",
+      options: ["master", "volume", "pan", "filter"],
+      default: "master",
+      describe: "Which param to drive.",
+    },
+    shape: {
+      type: "enum",
+      options: ["sine", "triangle", "saw", "square", "random", "drift"],
+      default: "sine",
+      describe: "Modulation shape.",
+    },
+    depth: { type: "number", min: 0, max: 1, default: 0.4, describe: "Swing amount 0–1." },
+  },
+  build(args, doc) {
+    const which = (["master", "volume", "pan", "filter"].includes(String(args.target))
+      ? String(args.target)
+      : "master") as AutomateTarget
+    const target = resolveAutomateTarget(which, doc)
+    if (!target) return { commands: [], summary: "No param to automate" }
+    const shape = (
+      ["sine", "triangle", "saw", "square", "random", "drift"].includes(String(args.shape))
+        ? String(args.shape)
+        : "sine"
+    ) as "sine" | "triangle" | "saw" | "square" | "random" | "drift"
+    const depth = clamp(Number(args.depth ?? 0.4), 0, 1)
+    const center = target.scope === "track" && target.param === "pan" ? 0.5 : 0.75
+    const modulator = createModulator(target, { shape, depth, center, syncBeats: 8 })
+    return { commands: [{ t: "addModulator", modulator }], summary: `Automating ${which}` }
+  },
+}
+
+/** chaos — spawn the chaos agent, scaled up by `amount`. "go wild". */
+const chaosTool: ToolSpec = {
+  name: "chaos",
+  describe: "Spawn fast random tweakers across effects and sends. amount scales the intensity (0.25–3).",
+  params: {
+    amount: { type: "number", min: 0.25, max: 3, default: 1, describe: "Intensity, 0.25–3." },
+  },
+  build(args, doc) {
+    const amount = clamp(Number(args.amount ?? 1), 0.25, 3)
+    const commands = chaosCommands(doc, amount)
+    return { commands, summary: commands.length ? `Chaos × ${amount}` : "Nothing to modulate" }
+  },
+}
+
+/** calm — clear every autonomous tweaker (the explicit "stop tweaking"). */
+const calm: ToolSpec = {
+  name: "calm",
+  describe: "Clear every autonomous tweaker — back to a still loop.",
+  params: {},
+  build(_args, doc) {
+    const n = (doc.modulators ?? []).length
+    return {
+      commands: n ? [{ t: "clearModulators" }] : [],
+      summary: n ? `Cleared ${n} tweaker${n === 1 ? "" : "s"}` : "Already calm",
+    }
+  },
+}
+
 // ----------------------------------------------------------------- internals
 const stripId = (n: NoteEvent): Omit<NoteEvent, "id"> => {
   const { id: _id, ...rest } = n
@@ -397,6 +540,10 @@ export const TOOL_SPECS: ToolSpec[] = [
   setMood,
   euclidTool,
   humanize,
+  vibe,
+  automate,
+  chaosTool,
+  calm,
 ]
 
 export const TOOL_BY_NAME: Record<string, ToolSpec> = Object.fromEntries(

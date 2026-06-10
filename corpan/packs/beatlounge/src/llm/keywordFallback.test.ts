@@ -70,6 +70,32 @@ describe("keywordRoute — explicit intents", () => {
   })
 })
 
+describe("keywordRoute — autonomous modulation", () => {
+  it("evolve → vibe evolve", () => {
+    expect(route("let it evolve")).toMatchObject({ name: "vibe", args: { name: "evolve" } })
+    expect(route("make it modulate itself")).toMatchObject({ name: "vibe", args: { name: "evolve" } })
+  })
+  it("breathe → vibe breathe", () => {
+    expect(route("make it breathe")).toMatchObject({ name: "vibe", args: { name: "breathe" } })
+    expect(route("bring it alive")).toMatchObject({ name: "vibe", args: { name: "breathe" } })
+  })
+  it("drift / pulse vibes", () => {
+    expect(route("let the pans wander")).toMatchObject({ name: "vibe", args: { name: "drift" } })
+    expect(route("make it throb")).toMatchObject({ name: "vibe", args: { name: "pulse" } })
+  })
+  it("chaos / go wild → chaos", () => {
+    expect(route("go wild").name).toBe("chaos")
+    expect(route("total chaos").name).toBe("chaos")
+  })
+  it("calm / stop tweaking → calm", () => {
+    expect(route("stop tweaking")).toMatchObject({ name: "calm" })
+    expect(route("settle down").name).toBe("calm")
+  })
+  it("does not hijack a plain 'chill' mood", () => {
+    expect(route("make it chill").name).toBe("setMood")
+  })
+})
+
 describe("keywordRoute — guarantees", () => {
   it("returns null ONLY for empty/whitespace", () => {
     expect(keywordRoute("")).toBeNull()

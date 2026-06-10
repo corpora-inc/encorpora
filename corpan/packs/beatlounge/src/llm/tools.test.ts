@@ -153,6 +153,68 @@ describe("setMood", () => {
   })
 })
 
+describe("vibe (autonomous agents)", () => {
+  it("spawns a modulator bundle that applies through the reducer", () => {
+    const doc = createDefaultDoc(0)
+    const r = TOOL_BY_NAME.vibe.build({ name: "breathe" }, doc, seededRng(1))
+    expect(r.commands.length).toBeGreaterThan(0)
+    expect(r.commands.every((c) => c.t === "addModulator")).toBe(true)
+    const next = apply(doc, r.commands)
+    expect(next.modulators.length).toBe(r.commands.length)
+  })
+  it("calm clears modulators", () => {
+    let doc = createDefaultDoc(0)
+    doc = apply(doc, TOOL_BY_NAME.vibe.build({ name: "evolve" }, doc, seededRng(1)).commands)
+    expect(doc.modulators.length).toBeGreaterThan(0)
+    const r = TOOL_BY_NAME.vibe.build({ name: "calm" }, doc, seededRng(1))
+    const next = apply(doc, r.commands)
+    expect(next.modulators.length).toBe(0)
+  })
+  it("an unknown vibe falls back to evolve (never throws)", () => {
+    const doc = createDefaultDoc(0)
+    const r = TOOL_BY_NAME.vibe.build({ name: "spicy" }, doc, seededRng(1))
+    expect(r.commands.length).toBeGreaterThan(0)
+  })
+})
+
+describe("automate", () => {
+  it("adds one modulator to the requested target", () => {
+    const doc = createDefaultDoc(0)
+    const r = TOOL_BY_NAME.automate.build({ target: "pan", shape: "drift", depth: 0.5 }, doc, seededRng(1))
+    expect(r.commands).toHaveLength(1)
+    const next = apply(doc, r.commands)
+    expect(next.modulators).toHaveLength(1)
+    expect(next.modulators[0].target.scope).toBe("track")
+  })
+  it("defaults to a master modulator", () => {
+    const doc = createDefaultDoc(0)
+    const r = TOOL_BY_NAME.automate.build({}, doc, seededRng(1))
+    const next = apply(doc, r.commands)
+    expect(next.modulators[0].target.scope).toBe("master")
+  })
+})
+
+describe("chaos", () => {
+  it("spawns random tweakers that apply", () => {
+    const doc = createDefaultDoc(0)
+    const r = TOOL_BY_NAME.chaos.build({ amount: 2 }, doc, seededRng(1))
+    expect(r.commands.length).toBeGreaterThan(0)
+    const next = apply(doc, r.commands)
+    expect(next.modulators.length).toBe(r.commands.length)
+  })
+})
+
+describe("calm tool", () => {
+  it("clears modulators and is a clean no-op when already calm", () => {
+    let doc = createDefaultDoc(0)
+    doc = apply(doc, TOOL_BY_NAME.chaos.build({ amount: 1 }, doc, seededRng(1)).commands)
+    const cleared = apply(doc, TOOL_BY_NAME.calm.build({}, doc, seededRng(1)).commands)
+    expect(cleared.modulators).toHaveLength(0)
+    const again = TOOL_BY_NAME.calm.build({}, cleared, seededRng(1))
+    expect(again.commands).toHaveLength(0)
+  })
+})
+
 describe("catalog invariants", () => {
   it("every tool with default args produces an applyable result", () => {
     for (const spec of TOOL_SPECS) {

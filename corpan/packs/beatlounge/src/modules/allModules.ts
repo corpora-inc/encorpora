@@ -17,6 +17,7 @@ import { createFxRackModule } from "./fx-rack"
 import { createPianoRollModule } from "./piano-roll"
 import { createDrumPadsModule } from "./drum-pads"
 import { createPhraseSamplerModule } from "./phrase-sampler"
+import { createTweakersModule } from "./tweakers"
 
 export interface ModuleDeps {
   store: BeatloungeStore
@@ -31,4 +32,5 @@ export const registerAllModules = (registry: ModuleRegistry, deps: ModuleDeps): 
   registry.register(createPhraseSamplerModule(deps))
   registry.register(createFxRackModule(deps))
   registry.register(createMixerModule(deps))
+  registry.register(createTweakersModule(deps))
 }

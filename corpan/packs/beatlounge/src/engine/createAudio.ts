@@ -13,6 +13,7 @@ import type { BeatloungeDoc } from "../model/document"
 import { findTrack, isInstrumentTrack, DRUM_PITCH } from "../model/document"
 import { createAudioGraph } from "./audioGraph"
 import { createScheduler } from "./scheduler"
+import { createModulationEngine } from "../modulation/engine"
 
 const makeContext = (): AudioContext =>
   new (globalThis.AudioContext ||
@@ -26,6 +27,10 @@ export const createBeatloungeAudio: CreateBeatloungeAudio = (bus, opts): AudioFa
   let current: BeatloungeDoc = bus.snapshot()
   void graph.reconcile(null, current)
   scheduler.setDoc(current)
+
+  // Autonomous knob-tweakers: drives params each frame via graph.applyParam.
+  // Idle (no rAF) until the doc has ≥1 enabled modulator.
+  const modulation = createModulationEngine({ bus, graph })
 
   const offTrigger = scheduler.onTrigger((t) => graph.dispatch(t))
   const offBus = bus.subscribe((doc) => {
@@ -77,6 +82,7 @@ export const createBeatloungeAudio: CreateBeatloungeAudio = (bus, opts): AudioFa
     dispose() {
       offTrigger()
       offBus()
+      modulation.dispose()
       scheduler.dispose()
       graph.dispose()
     },

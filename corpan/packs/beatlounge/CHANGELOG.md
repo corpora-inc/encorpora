@@ -6,6 +6,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Wave 3 — autonomous knob-tweakers.** Instead of hand-tweaking, set off agents
+  that drive params over time so the loop evolves itself.
+  - The `Modulator` model (sine/triangle/saw/square/random/drift shapes, tempo-
+    synced or Hz, depth/center in normalized param space) + a modulation engine
+    that writes any param each frame via `AudioGraph.applyParam` (respects
+    mute/solo, idle when no tweakers exist).
+  - Agent presets — **breathe / drift / chaos / evolve / pulse** — and a
+    **Tweakers** panel to spawn/edit/remove them; shared one-source-of-truth with
+    the command bar's new `vibe` / `automate` / `chaos` / `calm` tools, so
+    "make it evolve" / "more chaos" / "calm down" fire autonomous tweakers en masse.
+
+### Fixed
+- Knobs couldn't be turned on iPad — the chrome-bail guard cancelled a control's
+  own drag when an ancestor was marked `[data-bl-nocapture]`. Now only nested
+  chrome bails.
+- Phrase-sampler re-rendered/​re-fetched infinitely (a fresh `getStackConfig()`
+  object every render churned the fetch effect's deps). Snapshot the stack once.
+- Drum pads auditioned the kick for every pad — `previewTrack` now takes a pitch.
+
 - **Wave 2 — the fan-out (5 parallel teams).** Built the full feature surface on
   the proven spine; integrated in sequence on `melo`.
   - **Instruments & sound:** multi-zone sampler, wavetable synth, real
