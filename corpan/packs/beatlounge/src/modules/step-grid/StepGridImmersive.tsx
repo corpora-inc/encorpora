@@ -38,7 +38,7 @@ import {
   type InstrumentTrack,
 } from "../../model/document"
 import { stepForTick, tickForStep } from "../../model/timing"
-import { Fader, MuteSolo, StepCell } from "../../bl-ui"
+import { Fader, MuteSolo, StepCell, Transport } from "../../bl-ui"
 import { TrackParamKnob } from "../TrackParamKnob"
 import { GroovesPanel } from "../grooves/GroovesPanel"
 import { TrackFxChain } from "../fx-rack/TrackFxChain"
@@ -70,6 +70,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
   const [playStep, setPlayStep] = useState(-1)
+  const [playing, setPlaying] = useState(audio.isPlaying())
   const [tab, setTab] = useState<DrawerTab>("grooves")
   const [drawer, setDrawer] = useState<DrawerState>("open")
   // Lane-head selection (kit pitches). Local UI only — drives groove targeting.
@@ -151,6 +152,20 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
   }
   const clearSelection = () => setSelected(new Set())
 
+  // Global transport — drives the whole song (not just this track), surfaced
+  // here in the header so you can audition grooves without leaving Drums.
+  const toggleTransport = () => {
+    if (audio.isPlaying()) {
+      audio.stop()
+      setPlaying(false)
+    } else {
+      void audio
+        .start()
+        .then(() => setPlaying(true))
+        .catch((err) => console.warn("[beatlounge/drums] transport start failed:", err))
+    }
+  }
+
   const stepsPerBeat = view.stepsPerBeat
   const anySolo = doc.tracks.some((t) => t.solo)
 
@@ -180,8 +195,8 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
       >
         <div className="bl-grid-toolbar" data-bl-nocapture>
           <div className="bl-grid-title">
+            <Transport playing={playing} onToggle={toggleTransport} spaceToToggle />
             <span className="bl-dot" style={{ background: track.color }} />
-            {track.name}
           </div>
           <div className="bl-grid-actions">
             <TrackParamKnob host={host} store={store} trackId={trackId} param="volume" value={track.volume} />

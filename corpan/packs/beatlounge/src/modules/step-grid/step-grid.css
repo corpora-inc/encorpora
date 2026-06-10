@@ -18,6 +18,13 @@
   position: relative; /* the drawer is absolutely positioned within this */
   display: flex;
   flex-direction: column;
+  /* Fill the immersive mount in BOTH axes — the mount is `display:flex` (row),
+   * so a bare `height:100%` doesn't reliably stretch and the drawer would bottom
+   * out at the grid's end instead of the screen's. flex:1 + width:100% + stretch
+   * guarantee the module owns the full sheet so the drawer reaches the bottom. */
+  flex: 1 1 auto;
+  align-self: stretch;
+  width: 100%;
   height: 100%;
   min-height: 0;
   box-sizing: border-box;
