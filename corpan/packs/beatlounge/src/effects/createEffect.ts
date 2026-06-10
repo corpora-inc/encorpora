@@ -51,7 +51,10 @@ const ramp = (p: Rampable, v: number, when?: number): void => {
 const wetEffect = (
   kind: EffectKind,
   node: Tone.ToneAudioNode & { wet?: Rampable },
-  apply: (params: Params, when?: number) => void
+  apply: (params: Params, when?: number) => void,
+  /** Apply ONE param to the live node (for realtime knob drags via applyParam).
+   *  The shared `wet`/mix is handled here; each effect maps its own params. */
+  live?: (param: string, value: number, when?: number) => void
 ): Effect => ({
   input: node,
   output: node,
@@ -64,9 +67,11 @@ const wetEffect = (
       ramp(node.wet, enabled ? wet : 0)
     }
   },
-  setParam(_param, _value, _when) {
-    // Wet effects accept automation through update(); discrete params (enum
-    // filter type etc.) are not audio-rate. No-op keeps the seam total.
+  setParam(param, value, when) {
+    // Live, click-free single-param moves so fx knobs/pads sweep DURING the drag
+    // (host.applyParam), not just on release. "wet" (dry/wet mix) is universal.
+    if (param === "wet" && node.wet) ramp(node.wet, value, when)
+    else live?.(param, value, when)
   },
   dispose() {
     node.dispose()
@@ -110,6 +115,8 @@ const createEq3 = (): Effect => {
       if (param === "low") ramp(node.low, value, when)
       else if (param === "mid") ramp(node.mid, value, when)
       else if (param === "high") ramp(node.high, value, when)
+      else if (param === "lowFrequency") ramp(node.lowFrequency, value, when)
+      else if (param === "highFrequency") ramp(node.highFrequency, value, when)
     },
     dispose() {
       node.dispose()
@@ -131,8 +138,12 @@ const createCompressor = (): Effect => {
       node.knee.value = num("compressor", params, "knee")
     },
     setParam(param, value, when) {
-      if (param === "threshold") node.threshold.setValueAtTime(value, when)
-      else if (param === "ratio") node.ratio.setValueAtTime(value, when)
+      const at = when ?? Tone.now()
+      if (param === "threshold") node.threshold.setValueAtTime(value, at)
+      else if (param === "ratio") node.ratio.setValueAtTime(value, at)
+      else if (param === "attack") node.attack.setValueAtTime(value, at)
+      else if (param === "release") node.release.setValueAtTime(value, at)
+      else if (param === "knee") node.knee.setValueAtTime(value, at)
     },
     dispose() {
       node.dispose()
@@ -176,51 +187,99 @@ const createGain = (): Effect => {
 
 const createDistortion = (): Effect => {
   const node = new Tone.Distortion(0.3)
-  return wetEffect("distortion", node, (params) => {
-    node.distortion = num("distortion", params, "distortion")
-  })
+  return wetEffect(
+    "distortion",
+    node,
+    (params) => {
+      node.distortion = num("distortion", params, "distortion")
+    },
+    (param, value) => {
+      if (param === "distortion") node.distortion = value
+    }
+  )
 }
 
 const createChorus = (): Effect => {
   const node = new Tone.Chorus(1.5, 3.5, 0.7).start()
-  return wetEffect("chorus", node, (params) => {
-    node.frequency.value = num("chorus", params, "frequency")
-    node.delayTime = num("chorus", params, "delayTime")
-    node.depth = num("chorus", params, "depth")
-  })
+  return wetEffect(
+    "chorus",
+    node,
+    (params) => {
+      node.frequency.value = num("chorus", params, "frequency")
+      node.delayTime = num("chorus", params, "delayTime")
+      node.depth = num("chorus", params, "depth")
+    },
+    (param, value, when) => {
+      if (param === "frequency") ramp(node.frequency, value, when)
+      else if (param === "delayTime") node.delayTime = value
+      else if (param === "depth") node.depth = value
+    }
+  )
 }
 
 const createPhaser = (): Effect => {
   const node = new Tone.Phaser({ frequency: 0.5, octaves: 3, baseFrequency: 350 })
-  return wetEffect("phaser", node, (params) => {
-    node.frequency.value = num("phaser", params, "frequency")
-    node.octaves = num("phaser", params, "octaves")
-    node.baseFrequency = num("phaser", params, "baseFrequency")
-  })
+  return wetEffect(
+    "phaser",
+    node,
+    (params) => {
+      node.frequency.value = num("phaser", params, "frequency")
+      node.octaves = num("phaser", params, "octaves")
+      node.baseFrequency = num("phaser", params, "baseFrequency")
+    },
+    (param, value, when) => {
+      if (param === "frequency") ramp(node.frequency, value, when)
+      else if (param === "octaves") node.octaves = value
+      else if (param === "baseFrequency") node.baseFrequency = value
+    }
+  )
 }
 
 const createBitcrusher = (): Effect => {
   const node = new Tone.BitCrusher(6)
-  return wetEffect("bitcrusher", node, (params) => {
-    node.bits.value = num("bitcrusher", params, "bits")
-  })
+  return wetEffect(
+    "bitcrusher",
+    node,
+    (params) => {
+      node.bits.value = num("bitcrusher", params, "bits")
+    },
+    (param, value, when) => {
+      if (param === "bits") node.bits.setValueAtTime(value, when ?? Tone.now())
+    }
+  )
 }
 
 const createDelay = (): Effect => {
   // maxDelay 3 mirrors melopan's slowest-BPM headroom.
   const node = new Tone.FeedbackDelay({ delayTime: 0.25, feedback: 0.35, maxDelay: 3 })
-  return wetEffect("delay", node, (params) => {
-    node.delayTime.value = num("delay", params, "delayTime")
-    node.feedback.value = num("delay", params, "feedback")
-  })
+  return wetEffect(
+    "delay",
+    node,
+    (params) => {
+      node.delayTime.value = num("delay", params, "delayTime")
+      node.feedback.value = num("delay", params, "feedback")
+    },
+    (param, value, when) => {
+      if (param === "delayTime") ramp(node.delayTime, value, when)
+      else if (param === "feedback") ramp(node.feedback, value, when)
+    }
+  )
 }
 
 const createReverb = (): Effect => {
   const node = new Tone.Freeverb(0.7, 3000)
-  return wetEffect("reverb", node, (params) => {
-    node.roomSize.value = num("reverb", params, "roomSize")
-    node.dampening = 1000 + num("reverb", params, "dampening") * 9000
-  })
+  return wetEffect(
+    "reverb",
+    node,
+    (params) => {
+      node.roomSize.value = num("reverb", params, "roomSize")
+      node.dampening = 1000 + num("reverb", params, "dampening") * 9000
+    },
+    (param, value, when) => {
+      if (param === "roomSize") ramp(node.roomSize, value, when)
+      else if (param === "dampening") node.dampening = 1000 + value * 9000
+    }
+  )
 }
 
 const BUILDERS: Record<EffectKind, () => Effect> = {
