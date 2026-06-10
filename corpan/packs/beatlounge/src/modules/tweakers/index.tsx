@@ -56,7 +56,7 @@ export const createTweakersModule = ({ store, audio }: TweakersDeps): Beatlounge
 
       return {
         unmount() {
-          queueMicrotask(() => root.unmount())
+          try { root.unmount() } catch { /* root container already detached */ }
         },
         refreshTile: render,
       }

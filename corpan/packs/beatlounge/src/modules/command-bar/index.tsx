@@ -77,7 +77,7 @@ export const mountCommandBar = (
     controller,
     unmount() {
       controller.dispose()
-      queueMicrotask(() => root.unmount())
+      try { root.unmount() } catch { /* root container already detached */ }
     },
   }
 }
@@ -124,13 +124,13 @@ export const createCommandBarModule = (deps: CommandBarModuleDeps): BeatloungeMo
         return {
           unmount() {
             controller.dispose()
-            queueMicrotask(() => root.unmount())
+            try { root.unmount() } catch { /* root container already detached */ }
           },
         }
       }
       return {
         unmount() {
-          queueMicrotask(() => root.unmount())
+          try { root.unmount() } catch { /* root container already detached */ }
         },
       }
     },

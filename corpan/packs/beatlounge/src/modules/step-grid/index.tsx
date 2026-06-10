@@ -76,7 +76,7 @@ export const createStepGridModule = ({ store, audio }: StepGridDeps): Beatlounge
     return {
       unmount() {
         // Defer to avoid React "unmount during render" warnings on fast swaps.
-        queueMicrotask(() => root.unmount())
+        try { root.unmount() } catch { /* root container already detached */ }
       },
       refreshTile: render,
     }

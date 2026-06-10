@@ -75,7 +75,7 @@ export const createPianoRollModule = ({ store, audio }: ModuleDeps): BeatloungeM
 
     return {
       unmount() {
-        queueMicrotask(() => root.unmount())
+        try { root.unmount() } catch { /* root container already detached */ }
       },
       refreshTile: render,
     }

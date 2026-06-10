@@ -34,26 +34,38 @@ const openOnce = (): Promise<IDBPDatabase | null> =>
     blocked() {
       console.warn("[beatlounge/db] open blocked by another connection")
     },
-    blocking() {
-      // Another context wants to upgrade — never hold it hostage.
-      void getBeatloungeDb().then((db) => db?.close())
-      dbPromise = null
+  }).then(
+    (db) => {
+      // Close our connection if another context needs to upgrade, so we never
+      // block it — and drop the cache so the next call reopens cleanly.
+      db.addEventListener("versionchange", () => {
+        try {
+          db.close()
+        } catch {
+          /* already closing */
+        }
+        dbPromise = null
+      })
+      return db
     },
-  }).catch((err) => {
-    console.warn("[beatlounge/db] openDB failed:", err)
-    return null
-  })
+    (err) => {
+      console.warn("[beatlounge/db] openDB failed:", err)
+      dbPromise = null // allow a retry on the next call
+      return null
+    }
+  )
 
 export const getBeatloungeDb = (): Promise<IDBPDatabase | null> => {
   if (!hasIndexedDB()) return Promise.resolve(null)
-  if (!dbPromise) {
-    const timeout = new Promise<IDBPDatabase | null>((resolve) =>
-      setTimeout(() => {
-        console.warn(`[beatlounge/db] open timed out after ${OPEN_TIMEOUT_MS}ms — degrading`)
-        resolve(null)
-      }, OPEN_TIMEOUT_MS)
-    )
-    dbPromise = Promise.race([openOnce(), timeout])
-  }
-  return dbPromise
+  if (!dbPromise) dbPromise = openOnce()
+  // Race the (cached, never-abandoned) open against a timeout for THIS call only.
+  // The real open keeps running; a slow first call degrades alone, and if the
+  // open ultimately fails we reset the cache (above) so callers retry.
+  const timeout = new Promise<IDBPDatabase | null>((resolve) =>
+    setTimeout(() => {
+      console.warn(`[beatlounge/db] open slow (>${OPEN_TIMEOUT_MS}ms) — degrading this call`)
+      resolve(null)
+    }, OPEN_TIMEOUT_MS)
+  )
+  return Promise.race([dbPromise, timeout])
 }

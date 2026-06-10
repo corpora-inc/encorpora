@@ -28,6 +28,7 @@ import { createFormObserver } from "./host/formFactor"
 import { createModuleRegistry } from "./modules/registry"
 import { registerAllModules } from "./modules/allModules"
 import { Shell } from "./shell/Shell"
+import { ErrorBoundary } from "./shell/ErrorBoundary"
 
 /** Backfill fields added after a doc was persisted, so the engine never reads
  *  an undefined array (e.g. audioGraph iterates doc.buses). */
@@ -74,6 +75,8 @@ const buildRig = (hostApi: HostApi, doc: BeatloungeDoc): Rig => {
 export const App = ({ hostApi }: { hostApi: HostApi }) => {
   const [rig, setRig] = useState<Rig | null>(null)
 
+  const [nonce, setNonce] = useState(0)
+
   useEffect(() => {
     let alive = true
     let built: Rig | null = null
@@ -85,11 +88,12 @@ export const App = ({ hostApi }: { hostApi: HostApi }) => {
     })
     return () => {
       alive = false
+      setRig(null)
       built?.store.dispose()
       built?.audio.dispose()
       built?.formObs.dispose()
     }
-  }, [hostApi])
+  }, [hostApi, nonce])
 
   if (!rig) {
     return (
@@ -102,13 +106,15 @@ export const App = ({ hostApi }: { hostApi: HostApi }) => {
   }
 
   return (
-    <Shell
-      store={rig.store}
-      audio={rig.audio}
-      registry={rig.registry}
-      host={rig.host}
-      attachChrome={(chrome) => rig.bridge.set(chrome)}
-      skin="midnight"
-    />
+    <ErrorBoundary onReset={() => setNonce((n) => n + 1)}>
+      <Shell
+        store={rig.store}
+        audio={rig.audio}
+        registry={rig.registry}
+        host={rig.host}
+        attachChrome={(chrome) => rig.bridge.set(chrome)}
+        skin="midnight"
+      />
+    </ErrorBoundary>
   )
 }

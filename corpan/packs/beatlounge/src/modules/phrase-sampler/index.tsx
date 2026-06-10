@@ -94,7 +94,7 @@ export const createPhraseSamplerModule = ({
       return {
         unmount() {
           tileRoots.delete(tileHandle)
-          queueMicrotask(() => root.unmount())
+          try { root.unmount() } catch { /* root container already detached */ }
         },
         refreshTile: mount.surface === "tile" ? renderTile : undefined,
       }

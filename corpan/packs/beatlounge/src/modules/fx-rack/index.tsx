@@ -69,7 +69,7 @@ export const createFxRackModule = ({ store, audio }: FxRackDeps): BeatloungeModu
 
       return {
         unmount() {
-          queueMicrotask(() => root.unmount())
+          try { root.unmount() } catch { /* root container already detached */ }
         },
         refreshTile: render,
       }

@@ -79,7 +79,7 @@ export const createRibbonModule = ({ store, audio }: ModuleDeps): BeatloungeModu
 
     return {
       unmount() {
-        queueMicrotask(() => root.unmount())
+        try { root.unmount() } catch { /* root container already detached */ }
       },
       refreshTile: render,
     }
