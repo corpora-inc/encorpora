@@ -6,6 +6,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **Phrase Discovery responsive pass — two-pane master/detail on wide screens.**
+  The immersive Discovery screen now fills the available width on big iPad /
+  desktop instead of collapsing to a slim column (root cause: `.bl-disc` didn't
+  grow to fill the `display:flex` immersive mount). Content is capped at 1280px
+  and centered to match the Stage. At ≥900px the body becomes a master/detail
+  grid — search + results on the left, the selected phrase's languages and
+  n-gram breakdown given room on the right (with a resting "pick a phrase" pane
+  when nothing is selected); the per-language rows go two-up (three-up ≥1240px)
+  and the Bank becomes a 2-/3-column grid. Below 900px it keeps the existing
+  single-column flow (list → tap → slide-over detail) that already worked well.
+  Same DOM reflowed via CSS at the shared 900/1240 breakpoints; no IA changes.
 - **Responsive Stage foundation — a deliberate bento from ~300px to desktop.**
   The home Stage is now a fixed-column bento grid with `grid-auto-flow: dense`
   (no dead right column): 1 column below 520px (a clean single stack with

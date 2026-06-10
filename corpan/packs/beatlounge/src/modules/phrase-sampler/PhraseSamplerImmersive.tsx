@@ -213,53 +213,59 @@ const DiscoverView = ({
   }, [hostApi, langCodes, host, onSelect])
 
   return (
-    <div className="bl-disc-body">
-      <div className="bl-disc-toolbar" data-bl-nocapture>
-        <div className="bl-disc-search">
-          <span className="bl-disc-searchicon">
-            <Glyph name="drawer" size={16} />
-          </span>
-          <input
-            className="bl-disc-input"
-            type="search"
-            inputMode="search"
-            placeholder="Search the corpus…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-label="Search phrases"
-          />
-          {query && (
-            <button
-              type="button"
-              className="bl-disc-clear"
-              aria-label="Clear search"
-              onClick={() => setQuery("")}
-            >
-              ×
-            </button>
-          )}
+    <div className="bl-disc-body bl-disc-body--split">
+      {/* Master pane: search/shuffle + results. Its own column on wide screens. */}
+      <div className="bl-disc-master">
+        <div className="bl-disc-toolbar" data-bl-nocapture>
+          <div className="bl-disc-search">
+            <span className="bl-disc-searchicon">
+              <Glyph name="drawer" size={16} />
+            </span>
+            <input
+              className="bl-disc-input"
+              type="search"
+              inputMode="search"
+              placeholder="Search the corpus…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label="Search phrases"
+            />
+            {query && (
+              <button
+                type="button"
+                className="bl-disc-clear"
+                aria-label="Clear search"
+                onClick={() => setQuery("")}
+              >
+                ×
+              </button>
+            )}
+          </div>
+          <button
+            type="button"
+            className="bl-disc-shuffle"
+            onClick={() => void shuffle()}
+            aria-label="Shuffle phrases"
+            title="Shuffle"
+          >
+            <Glyph name="wave" size={16} />
+            <span>Shuffle</span>
+          </button>
         </div>
-        <button
-          type="button"
-          className="bl-disc-shuffle"
-          onClick={() => void shuffle()}
-          aria-label="Shuffle phrases"
-          title="Shuffle"
-        >
-          <Glyph name="wave" size={16} />
-          <span>Shuffle</span>
-        </button>
+
+        <ResultList
+          entries={entries}
+          loading={loading}
+          languages={languages}
+          selectedId={selected?.entry_id ?? null}
+          onSelect={onSelect}
+        />
       </div>
 
-      <ResultList
-        entries={entries}
-        loading={loading}
-        languages={languages}
-        selectedId={selected?.entry_id ?? null}
-        onSelect={onSelect}
-      />
-
-      {selected && (
+      {/* Detail pane. On phone it's an absolute slide-over (only when a phrase is
+          selected). On wide screens it's a persistent second column — including
+          an empty/resting state when nothing is selected. Same DOM, CSS reflows. */}
+      {selected ? (
         <PhraseDetail
           host={host}
           store={store}
@@ -271,6 +277,19 @@ const DiscoverView = ({
           onClose={() => onSelect(null)}
           onSaved={(summary) => onSaved(selected, summary)}
         />
+      ) : (
+        <div className="bl-disc-detail bl-disc-detail-rest" aria-hidden="true">
+          <div className="bl-disc-rest-inner">
+            <span className="bl-disc-rest-glyph">
+              <Glyph name="drawer" size={30} />
+            </span>
+            <p className="bl-disc-rest-title">Pick a phrase</p>
+            <p className="bl-disc-empty-sm">
+              Choose a phrase on the left to see every language in your stack and
+              its combinatorial breakdown.
+            </p>
+          </div>
+        </div>
       )}
     </div>
   )

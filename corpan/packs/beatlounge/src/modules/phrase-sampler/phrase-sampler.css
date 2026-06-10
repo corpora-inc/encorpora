@@ -4,13 +4,23 @@
  * motion aware. Fixed-height scroll regions use `overflow: hidden auto`.
  * Works at phone, tablet, and desktop widths (first-class all three). */
 
+/* Root fills the immersive mount (which is `display:flex`, so without an
+   explicit grow the column would collapse to its content width — that was the
+   "slim column, empty around it" bug at iPad/desktop widths). We grow to fill,
+   then cap + center the content so huge screens look designed, not stretched. */
 .bl-disc {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-width: 0;
   height: 100%;
   min-height: 0;
   gap: var(--bl-s3);
   color: var(--bl-text);
+  /* Cap matches the Stage grid (1280) so the two screens feel coherent. */
+  max-width: 1280px;
+  margin-inline: auto;
 }
 
 /* ---- tabs ---- */
@@ -58,11 +68,26 @@
   font-family: var(--bl-font-mono);
 }
 
-/* ---- body (relative anchor for the slide-in detail) ---- */
+/* ---- body ----
+   Phone: single column. The master (toolbar + list) flows; the detail is an
+   absolute slide-over (inset:0) — `position:relative` here anchors it.
+   Wide (≥900px): a two-pane master/detail grid (list | persistent detail). */
 .bl-disc-body {
   position: relative;
   flex: 1 1 auto;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+
+/* Master pane: toolbar + scrolling list. Fills the body on phone; the left
+   column on wide screens. Always a fixed-height flex column so the list owns
+   the scroll (overflow: hidden auto) rather than the sheet growing. */
+.bl-disc-master {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--bl-s3);
@@ -686,10 +711,118 @@
   }
 }
 
-/* ---- tablet / desktop: roomier combo text, two-up languages ---- */
-@media (min-width: 720px) {
+/* ---- resting detail pane (wide screens only) ---- */
+/* Hidden on phone — there the detail is an on-demand absolute slide-over. */
+.bl-disc-detail-rest {
+  display: none;
+}
+.bl-disc-rest-inner {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s5);
+}
+.bl-disc-rest-glyph {
+  color: var(--bl-text-dim);
+  opacity: 0.6;
+}
+.bl-disc-rest-title {
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  color: var(--bl-text);
+  margin: 0;
+}
+.bl-disc-rest-inner .bl-disc-empty-sm {
+  max-width: 36ch;
+}
+
+/* ============================================================ WIDE SCREENS
+   Mirrors the Stage breakpoints (900 = tablet/portrait iPad, 1240 = landscape
+   iPad/desktop). The Discover body becomes a master/detail split: the list on
+   the left, the selected phrase's detail given room to breathe on the right.
+   The Bank becomes a multi-column grid. Phone keeps its single-column flow. */
+@media (min-width: 900px) {
+  /* roomier combo text once the detail has its own pane */
   .bl-disc-combo-text > span {
-    max-width: 32vw;
+    max-width: 320px;
+  }
+  .bl-disc-voice-sel {
+    max-width: 220px;
+  }
+
+  /* Two-pane master/detail (Discover only — the Bank body stays a flow column).
+     The body becomes a grid; the detail leaves the overlay flow and sits in the
+     second column with room to breathe. */
+  .bl-disc-body--split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: var(--bl-s4);
+    align-items: stretch;
+  }
+  .bl-disc-master {
+    min-height: 0;
+    height: 100%;
+  }
+  /* Detail (both the real one and the resting placeholder) becomes a static
+     right-hand pane — no longer an absolute overlay, no slide-in transform. */
+  .bl-disc-detail {
+    position: static;
+    inset: auto;
+    height: 100%;
+    min-height: 0;
+    animation: none;
+  }
+  .bl-disc-detail-rest {
+    display: flex;
+  }
+  /* The phone "Back to results" affordance is meaningless beside the list. */
+  .bl-disc-back {
+    display: none;
+  }
+  /* When the detail head has nothing but the (now-hidden) back button + meta,
+     keep it left-padded for alignment with the scroll body. */
+  .bl-disc-detail-head {
+    padding-inline-start: var(--bl-s3);
+  }
+
+  /* Two-up the per-language rows so the wide detail pane fills nicely. The
+     section header spans the full width above the grid of rows. */
+  .bl-disc-langs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--bl-s2);
+  }
+  .bl-disc-langs > .bl-disc-section-h {
+    grid-column: 1 / -1;
+  }
+  .bl-disc-langs > .bl-disc-empty-sm {
+    grid-column: 1 / -1;
+  }
+
+  /* ---- Bank: multi-column grid of saved snippets ---- */
+  .bl-disc-bank-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    gap: var(--bl-s3);
+  }
+}
+
+@media (min-width: 1240px) {
+  /* Even more room for the detail at desktop / landscape iPad. */
+  .bl-disc-body--split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: var(--bl-s5);
+  }
+  .bl-disc-langs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .bl-disc-bank-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
