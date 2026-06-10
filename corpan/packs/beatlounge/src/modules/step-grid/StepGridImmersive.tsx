@@ -22,7 +22,8 @@ import {
   type InstrumentTrack,
 } from "../../model/document"
 import { stepForTick, tickForStep } from "../../model/timing"
-import { Knob, MuteSolo, StepCell } from "../../bl-ui"
+import { MuteSolo, StepCell } from "../../bl-ui"
+import { TrackParamKnob } from "../TrackParamKnob"
 import { buildGridView } from "./gridModel"
 import { clearAction, fillEveryOtherAction } from "./actions"
 import { runAction } from "../runAction"
@@ -184,30 +185,8 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
       </div>
 
       <div className="bl-grid-foot" data-bl-nocapture>
-        <Knob
-          label="Volume"
-          value={track.volume}
-          min={0}
-          max={1}
-          step={0.01}
-          defaultValue={0.8}
-          format={(v) => `${Math.round(v * 100)}`}
-          onChange={(v) =>
-            store.dispatch({ t: "setTrackProp", trackId, prop: "volume", value: v })
-          }
-        />
-        <Knob
-          label="Pan"
-          value={track.pan}
-          min={-1}
-          max={1}
-          step={0.02}
-          defaultValue={0}
-          format={(v) => (v === 0 ? "C" : `${v > 0 ? "R" : "L"}${Math.round(Math.abs(v) * 100)}`)}
-          onChange={(v) =>
-            store.dispatch({ t: "setTrackProp", trackId, prop: "pan", value: v })
-          }
-        />
+        <TrackParamKnob host={host} store={store} trackId={trackId} param="volume" value={track.volume} />
+        <TrackParamKnob host={host} store={store} trackId={trackId} param="pan" value={track.pan} />
       </div>
     </div>
   )

@@ -6,6 +6,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **Continuous audio-param controls are now REALTIME (founder note).** Every
+  knob / XY pad / fader / pan slider that drives an audio parameter now changes
+  the SOUND CONTINUOUSLY as the finger moves, instead of only on release —
+  driving the live node via `host.applyParam` during the drag (no document
+  write, no undo spam) and persisting ONE undo step on release. Flagship fix:
+  the fx-rack Filter Cutoff × Resonance XY pad swept only when you let go; it now
+  sweeps under the finger. Same pattern applied to fx-rack effect param knobs +
+  send levels, the mixer track/master faders + pan, the analog synth knobs/XY
+  pad, and the drum-pads / piano-roll / step-grid track Volume & Pan. The pitch
+  ribbon (already realtime) is unchanged.
 - **Phrase Jam polish pass (founder iPad notes).** Four targeted fixes:
   (1) **Scramble now sounds like a riff.** It drew pitches from an unbounded
   pentatonic ladder that climbed with bar position and pinned every cell at the
