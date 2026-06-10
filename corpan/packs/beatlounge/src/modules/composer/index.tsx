@@ -47,7 +47,7 @@ export const createComposerModule = ({ store, audio }: ModuleDeps): BeatloungeMo
   title: "Composer",
   glyph: "wave",
   immersive: "full",
-  tileAspect: "wide",
+  tileAspect: "square",
   actions: composerActions,
   mount(mount: ModuleMount): ModuleInstance {
     const root: Root = createRoot(mount.container)

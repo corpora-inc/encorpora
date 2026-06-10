@@ -47,7 +47,7 @@ export const createRibbonModule = ({ store, audio }: ModuleDeps): BeatloungeModu
   title: "Ribbon",
   glyph: "wave",
   immersive: "full",
-  tileAspect: "wide",
+  tileAspect: "square",
   actions: ribbonActions,
   mount(mount: ModuleMount): ModuleInstance {
     const root: Root = createRoot(mount.container)

@@ -55,7 +55,7 @@ export const createAnalogSynthModule = ({ store }: ModuleDeps): BeatloungeModule
   title: "Analog",
   glyph: "wave",
   immersive: "full",
-  tileAspect: "wide",
+  tileAspect: "square",
   actions: synthAnalogActions,
   mount(mount: ModuleMount): ModuleInstance {
     const root: Root = createRoot(mount.container)

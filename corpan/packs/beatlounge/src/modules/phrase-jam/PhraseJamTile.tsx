@@ -16,13 +16,17 @@ interface Props {
 }
 
 export const PhraseJamTile = ({ store }: Props) => {
-  const { bankCount, placed } = useBeatloungeStore(store, (s) => {
-    const bankCount = bankSnippets(s.doc).length
-    const placed = s.doc.tracks
+  // IMPORTANT: select PRIMITIVES, not a fresh object. Returning a new object
+  // literal from the selector makes zustand v5's useSyncExternalStore see a
+  // changed snapshot every render → infinite re-render loop → React bails and
+  // the tile renders blank. Two scalar selectors keep snapshots referentially
+  // stable. (This was the root cause of the blank Phrase Jam tile.)
+  const bankCount = useBeatloungeStore(store, (s) => bankSnippets(s.doc).length)
+  const placed = useBeatloungeStore(store, (s) =>
+    s.doc.tracks
       .filter(isFragmentTrack)
       .reduce((n, t) => n + t.fragments.length, 0)
-    return { bankCount, placed }
-  })
+  )
 
   return (
     <div className="bl-tile-jam">

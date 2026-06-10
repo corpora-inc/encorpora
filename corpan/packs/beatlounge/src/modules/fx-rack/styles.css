@@ -3,13 +3,34 @@
  * Uses only --bl-* tokens. No edits to styles.css.
  */
 
-/* ---- tile ---- */
+/* ---- tile (project-wide effects summary) ---- */
+.bl-fxtile-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-fxtile-row {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-width: 0;
+}
+.bl-fxtile-track {
+  flex: 0 0 auto;
+  max-width: 38%;
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  letter-spacing: 0.04em;
+  color: var(--bl-text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .bl-fxtile-chain {
   display: flex;
   flex-wrap: wrap;
   gap: var(--bl-s1);
-  padding: var(--bl-s2);
   align-content: flex-start;
+  min-width: 0;
 }
 .bl-fxtile-pill {
   font: 600 var(--bl-fs-micro) / 1 var(--bl-font);
@@ -18,20 +39,24 @@
   background: var(--bl-accent);
   border-radius: var(--bl-radius-pill);
   padding: 4px 9px;
+  white-space: nowrap;
 }
 .bl-fxtile-pill.is-off {
   background: var(--bl-surface-2);
   color: var(--bl-text-dim);
 }
-.bl-fxtile-empty {
-  font: var(--bl-fs-label) / 1.2 var(--bl-font);
+.bl-fxtile-pill.is-more {
+  background: transparent;
+  border: 1px solid var(--bl-border);
   color: var(--bl-text-dim);
-  padding: 0 var(--bl-s2);
+}
+.bl-fxtile-empty {
+  font: var(--bl-fs-label) / 1.4 var(--bl-font);
+  color: var(--bl-text-dim);
 }
 .bl-fxtile-sends {
   font: var(--bl-fs-micro) / 1 var(--bl-font);
   color: var(--bl-text-dim);
-  padding: 0 var(--bl-s2) var(--bl-s2);
 }
 
 /* ---- immersive rack ---- */
