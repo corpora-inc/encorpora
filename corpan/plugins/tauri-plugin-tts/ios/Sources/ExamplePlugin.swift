@@ -638,6 +638,13 @@ final class Speaker: NSObject, AVSpeechSynthesizerDelegate {
     /// We accumulate the float samples (downmixed to mono), convert to
     /// little-endian Int16, wrap a 16-bit PCM WAV container, base64-encode, and
     /// resolve with the SynthesizeResult shape Rust/JS expect.
+    /// Strong refs to in-flight offline renderers. AVSpeechSynthesizer.write does
+    /// NOT retain self, so without holding the synth here it deallocates before
+    /// the render callbacks fire and we get an EMPTY buffer (the "boop"). Each
+    /// entry is removed in finish() once its render completes.
+    private static var renderSynths = [AVSpeechSynthesizer]()
+    private static let renderSynthsLock = NSLock()
+
     func synthesizeToBuffer(_ args: SynthesizeArgs, invoke: Invoke) {
         DispatchQueue.global(qos: .userInitiated).async {
             ttsLog(
@@ -662,8 +669,12 @@ final class Speaker: NSObject, AVSpeechSynthesizerDelegate {
                 ? mapWebRateToAVRate(args.rate!) : AVSpeechUtteranceDefaultSpeechRate
 
             // A dedicated synthesizer for offline rendering — must NOT be the
-            // shared playback synth, and we keep a strong reference until done.
+            // shared playback synth, and we keep a STRONG reference until done
+            // (else ARC frees it before the render callbacks run → empty audio).
             let writer = AVSpeechSynthesizer()
+            Self.renderSynthsLock.lock()
+            Self.renderSynths.append(writer)
+            Self.renderSynthsLock.unlock()
 
             // Accumulators (filled on the synthesizer's callback queue).
             var pcm16 = Data()
@@ -675,7 +686,12 @@ final class Speaker: NSObject, AVSpeechSynthesizerDelegate {
             let finish: () -> Void = { [weak writer] in
                 if resolved { return }
                 resolved = true
-                _ = writer  // keep alive through this closure
+                // Release the strong ref now that this render is done.
+                if let w = writer {
+                    Self.renderSynthsLock.lock()
+                    Self.renderSynths.removeAll { $0 === w }
+                    Self.renderSynthsLock.unlock()
+                }
 
                 let sampleRate = outSampleRate > 0 ? UInt32(outSampleRate) : 22050
                 let wav = Speaker.makeWavData(
