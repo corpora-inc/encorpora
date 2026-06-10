@@ -150,7 +150,6 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
       return next
     })
   }
-  const clearSelection = () => setSelected(new Set())
 
   // Global transport — drives the whole song (not just this track), surfaced
   // here in the header so you can audition grooves without leaving Drums.
@@ -207,24 +206,6 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
           </div>
         </div>
 
-        {/* Selection status line — only present while lanes are selected. */}
-        {targets.pitches.length > 0 && (
-          <div className="bl-drums-selbar" data-bl-nocapture role="status">
-            <span className="bl-drums-selbar-text">
-              {targets.pitches.length === 1
-                ? `Grooves play on ${targets.labels[0]}`
-                : `Grooves spread across ${targets.pitches.length}: ${targets.labels.join(", ")}`}
-            </span>
-            <button
-              type="button"
-              className="bl-drums-selbar-clear"
-              onClick={clearSelection}
-            >
-              Clear selection
-            </button>
-          </div>
-        )}
-
         <div
           className="bl-grid-scroll"
           style={{ ["--bl-steps" as string]: String(view.steps) }}
@@ -246,9 +227,6 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
                     }
                     onClick={() => toggleLane(lane.pitch)}
                   >
-                    <span className="bl-lane-sel" aria-hidden="true">
-                      {isSel ? <SelOnGlyph /> : <SelOffGlyph />}
-                    </span>
                     <span className="bl-lane-name">{lane.label}</span>
                   </button>
                   <div
@@ -505,33 +483,6 @@ const DrumMixer = ({
     </div>
   )
 }
-
-// ----------------------------------------------------------------- glyphs (no emoji)
-const SelOnGlyph = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <rect x="3" y="3" width="18" height="18" rx="5" fill="currentColor" />
-    <path
-      d="M7 12.5l3 3L17 8.5"
-      stroke="var(--bl-bg, #06080d)"
-      strokeWidth="2.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-)
-const SelOffGlyph = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <rect
-      x="3.5"
-      y="3.5"
-      width="17"
-      height="17"
-      rx="4.5"
-      stroke="currentColor"
-      strokeWidth="1.6"
-    />
-  </svg>
-)
 
 /** Is the (pitch, step) cell currently lit? Uses the reducer's tick mapping. */
 const cellOn = (track: InstrumentTrack, pitch: number, step: number): boolean => {

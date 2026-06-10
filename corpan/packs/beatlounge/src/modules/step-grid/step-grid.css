@@ -83,21 +83,29 @@
 .bl-lane {
   display: grid;
   grid-template-columns: var(--bl-lane-head-w, 92px) minmax(0, 1fr);
-  align-items: stretch;
+  /* center the head + cells as BLOCKS in the row (NOT stretch) — Safari won't
+   * stretch the <button> head, which left its label pinned to the top. Centered
+   * blocks put the label and the cells at the same vertical center. */
+  align-items: center;
   gap: var(--bl-s2);
 }
 .bl-lane-head {
-  display: flex;
-  align-items: center;
-  gap: var(--bl-s2);
-  min-height: var(--bl-hit, 44px);
+  /* NOT flex: WebKit/Safari does not reliably apply fl/grid centering inside a
+   * <button>, which left the label stuck to the top. Center the single-line
+   * label the bulletproof way — line-height == height — no flex involved. */
+  display: block;
+  height: var(--bl-hit, 44px);
   padding: 0 var(--bl-s2);
   border: 1px solid transparent;
   border-radius: var(--bl-radius-sm, 8px);
   background: transparent;
   color: var(--bl-text-dim);
-  font: 600 var(--bl-fs-label) / 1.1 var(--bl-font);
+  font: 600 var(--bl-fs-label) var(--bl-font);
+  line-height: var(--bl-hit, 44px);
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
@@ -107,14 +115,12 @@
 }
 .bl-lane-head:hover { color: var(--bl-text); }
 .bl-lane-head:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+/* Selected just tints the LABEL accent; the highlight itself is ONE uniform
+ * full-row band on .bl-lane (below) — head + cells share the exact same band, so
+ * nothing can look taller/misaligned. */
 .bl-lane-head.is-selected {
   color: var(--bl-accent);
-  border-color: var(--bl-accent);
-  background: var(--bl-surface-2, var(--bl-surface));
-  box-shadow: 0 0 0 1px var(--bl-accent) inset, var(--bl-glow, none);
 }
-.bl-lane-sel { display: inline-flex; color: var(--bl-text-dim); flex: 0 0 auto; }
-.bl-lane-head.is-selected .bl-lane-sel { color: var(--bl-accent); }
 .bl-lane-name {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -123,53 +129,18 @@
 .bl-lane-cells {
   display: grid;
   grid-template-columns: repeat(var(--bl-steps, 16), minmax(0, 1fr));
+  align-items: center; /* center the square cells in the row so they sit centered
+                          in the selection highlight band (not top-aligned) */
   gap: 3px;
   min-width: 0;
 }
-.bl-lane.is-selected .bl-lane-cells {
-  /* a faint accent wash so the targeted lane reads as "live" */
-  outline: 1px solid color-mix(in srgb, var(--bl-accent) 35%, transparent);
-  outline-offset: 2px;
+.bl-lane.is-selected {
+  /* ONE uniform full-row accent band (spans head + gap + cells) with a clean
+   * accent left edge — the targeted voice reads as a single lit lane. */
+  background: color-mix(in srgb, var(--bl-accent) 9%, transparent);
   border-radius: var(--bl-radius-sm, 8px);
+  box-shadow: inset 3px 0 0 0 var(--bl-accent);
 }
-
-/* ---- selection status bar (only present while lanes selected) ---- */
-.bl-drums-selbar {
-  display: flex;
-  align-items: center;
-  gap: var(--bl-s2);
-  flex: 0 0 auto;
-  padding: var(--bl-s2) var(--bl-s3);
-  border: 1px solid var(--bl-accent);
-  border-radius: var(--bl-radius-sm, 8px);
-  background: var(--bl-surface);
-  box-shadow: 0 0 0 1px var(--bl-accent) inset;
-}
-.bl-drums-selbar-text {
-  flex: 1 1 auto;
-  min-width: 0;
-  font-size: var(--bl-fs-label);
-  color: var(--bl-text);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.bl-drums-selbar-clear {
-  appearance: none;
-  -webkit-appearance: none;
-  flex: 0 0 auto;
-  min-height: 32px;
-  padding: 0 var(--bl-s3);
-  border-radius: var(--bl-radius-pill, 999px);
-  border: 1px solid var(--bl-border);
-  background: transparent;
-  color: var(--bl-text-dim);
-  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
-  letter-spacing: 0.04em;
-  cursor: pointer;
-}
-.bl-drums-selbar-clear:hover { color: var(--bl-text); border-color: var(--bl-accent); }
-.bl-drums-selbar-clear:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
 
 /* ============================================================ the drawer */
 .bl-drums-drawer {
