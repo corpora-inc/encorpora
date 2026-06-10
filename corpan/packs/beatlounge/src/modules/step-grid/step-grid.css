@@ -14,6 +14,16 @@
  *                uses the full width, so Grooves finally breathes.
  */
 
+/* The immersive mount is a `display:flex` ROW with `overflow:auto` (global), so a
+ * bare flex:1/stretch child doesn't reliably take the full height — the drums
+ * module ends at its grid and the bottom drawer floats short of the screen edge.
+ * Force THIS module's mount to a non-scrolling COLUMN so `.bl-drums { flex:1 }`
+ * fills the full sheet height; the grid scrolls internally, not the mount. */
+.bl-immersive-mount:has(> .bl-drums) {
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .bl-drums {
   position: relative; /* the drawer is absolutely positioned within this */
   display: flex;

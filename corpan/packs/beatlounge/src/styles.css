@@ -637,6 +637,14 @@
   min-height: 0;
   overflow: hidden auto;
 }
+.bl-immersive-body {
+  /* Flex COLUMN so the module mount (flex:1) actually fills the sheet height.
+   * Without this, .bl-immersive-body was a plain block, the mount's flex:1 was
+   * ignored, and the mount (→ the drums drawer's container) only grew to its
+   * content — floating short of the bottom with dead space below it. */
+  display: flex;
+  flex-direction: column;
+}
 .bl-immersive-mount {
   display: flex;
 }
