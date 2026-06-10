@@ -62,6 +62,8 @@ export type Command =
   | { t: "setNotes"; trackId: Id; notes: Omit<NoteEvent, "id">[] }
   // ---- fragments (phrase-sampler) ----
   | { t: "registerFragment"; ref: FragmentRef }
+  /** Remove a saved snippet from the bank (library) + any placed events using it. */
+  | { t: "removeFragmentRef"; refId: Id }
   | { t: "placeFragment"; trackId: Id; frag: Omit<FragmentEvent, "id"> }
   | { t: "removeFragment"; trackId: Id; fragId: Id }
   | {

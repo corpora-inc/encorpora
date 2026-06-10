@@ -236,6 +236,18 @@ export const reduce = (doc: BeatloungeDoc, cmd: Command): BeatloungeDoc => {
         : { ...doc, fragmentLibrary: [...doc.fragmentLibrary, cmd.ref] }
     }
 
+    case "removeFragmentRef": {
+      const lib = doc.fragmentLibrary.filter((f) => f.id !== cmd.refId)
+      if (lib.length === doc.fragmentLibrary.length) return doc
+      // Also strip any placed events that referenced the removed snippet.
+      const tracks = doc.tracks.map((t) => {
+        if (!isFragmentTrack(t)) return t
+        const fragments = t.fragments.filter((f) => f.fragmentId !== cmd.refId)
+        return fragments.length === t.fragments.length ? t : { ...t, fragments }
+      })
+      return { ...doc, fragmentLibrary: lib, tracks }
+    }
+
     case "placeFragment":
       return mapFragmentTrack(doc, cmd.trackId, (t) => ({
         ...t,
