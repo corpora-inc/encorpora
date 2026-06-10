@@ -47,6 +47,7 @@ import {
 } from "./jamModel"
 import { scrambleAction } from "./actions"
 import { runAction } from "../runAction"
+import { GroovesPanel } from "../grooves/GroovesPanel"
 
 interface Props {
   host: BeatloungeHost
@@ -76,6 +77,7 @@ export const PhraseJamImmersive = ({
   const [playStep, setPlayStep] = useState(-1)
   const [playing, setPlaying] = useState(audio.isPlaying())
   const [bend, setBend] = useState(0) // live ribbon bend, semitones (display)
+  const [showGrooves, setShowGrooves] = useState(false) // world-rhythm browser
   // The musical scale the live ribbon snaps to (DEFAULT = minor pentatonic,
   // always tuneful for scratching). "chromatic" = snap off (every semitone).
   const [scale, setScale] = useState<ScaleId>(DEFAULT_SCALE)
@@ -375,6 +377,16 @@ export const PhraseJamImmersive = ({
         </div>
         <div className="bl-grid-actions">
           <Transport playing={playing} onToggle={toggleTransport} spaceToToggle={false} />
+          <button
+            type="button"
+            className={`bl-chip${showGrooves ? " is-on" : ""}`}
+            aria-pressed={showGrooves}
+            onClick={() => setShowGrooves((v) => !v)}
+            title="Browse world rhythms and lay your phrases on a groove"
+          >
+            <Glyph name="grid" size={14} />
+            <span>Grooves</span>
+          </button>
           <button type="button" className="bl-chip" onClick={onScramble}>
             Scramble
           </button>
@@ -471,6 +483,18 @@ export const PhraseJamImmersive = ({
           </div>
         ))}
       </div>
+
+      {/* ---- the GROOVE BRAIN: browse world rhythms, lay phrases on a groove ---- */}
+      {showGrooves && (
+        <div className="bl-jam-grooves" data-bl-nocapture>
+          <GroovesPanel
+            store={store}
+            host={host}
+            variant="embedded"
+            target={{ kind: "phrases", trackId }}
+          />
+        </div>
+      )}
 
       {/* ---- the live pitch ribbon ---- */}
       <div className="bl-jam-perform">

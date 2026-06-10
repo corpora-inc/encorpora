@@ -302,8 +302,12 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
             store={store}
             host={host}
             variant="embedded"
-            targetPitches={targets.pitches}
-            targetLabels={targets.labels}
+            target={{
+              kind: "drums",
+              trackId,
+              selectedPitches: targets.pitches,
+              laneLabels: targets.labels,
+            }}
           />
         )}
         {tab === "kit" && (

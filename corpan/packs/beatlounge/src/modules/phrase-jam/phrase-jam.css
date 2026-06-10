@@ -345,6 +345,41 @@
   color: var(--bl-accent);
 }
 
+/* The toolbar Grooves toggle (icon + label), matching the Clear chip's metrics
+ * and lighting up when the groove browser is open. */
+.bl-grid-actions .bl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  min-height: 44px;
+}
+.bl-grid-actions .bl-chip svg {
+  flex: 0 0 auto;
+}
+.bl-grid-actions .bl-chip.is-on {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+  background: color-mix(in srgb, var(--bl-accent) 14%, var(--bl-surface-2));
+}
+
+/* The embedded GROOVE BRAIN section — browse world rhythms and lay your saved
+ * phrases on a groove, inline beneath the jam grid (a bounded, scrollable card
+ * so it never pushes the live ribbon off-screen). */
+.bl-jam-grooves {
+  margin-top: var(--bl-s3);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  background: var(--bl-surface);
+  overflow: hidden;
+  /* Cap the height so the ribbon below stays reachable; the panel scrolls. */
+  max-height: min(52vh, 460px);
+  display: flex;
+  flex-direction: column;
+}
+.bl-jam-grooves .bl-grooves-panel {
+  min-height: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bl-jam-ribbon-thumb,
   .bl-jam-pitch-btn,

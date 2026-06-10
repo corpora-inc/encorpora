@@ -74,18 +74,29 @@ describe("grooveModel.buildGrooveCommands", () => {
     expect(commands.some((c) => c.t === "setLoopLength")).toBe(false)
   })
 
-  it("lays phrases onto a phrase track when withPhrases + a bank exists", () => {
-    const d = doc()
-    const ref: FragmentRef = { id: newId("frg"), source: "ttsRender", text: "hola", language: "es" }
-    const withBank: BeatloungeDoc = {
-      ...d,
-      fragmentLibrary: [ref],
+})
+
+describe("grooveModel — PHRASES target (the groove brain on the phrase grid)", () => {
+  /** A doc with a fragment track + a bank of `n` snippets. */
+  const withBank = (n: number): { d: BeatloungeDoc; phraseId: string } => {
+    const base = doc()
+    const refs: FragmentRef[] = Array.from({ length: n }, (_, i) => ({
+      id: newId("frg"),
+      source: "ttsRender",
+      text: `word${i}`,
+      language: "es",
+    }))
+    const phraseId = newId("trk")
+    const d: BeatloungeDoc = {
+      ...base,
+      fragmentLibrary: refs,
       tracks: [
-        ...d.tracks,
+        ...base.tracks,
         {
-          id: newId("trk"),
+          id: phraseId,
           kind: "fragment",
           name: "Phrases",
+          color: "#7cf2c0",
           grid: { denominator: 16 },
           volume: 0.8,
           pan: 0,
@@ -99,39 +110,114 @@ describe("grooveModel.buildGrooveCommands", () => {
         },
       ],
     }
-    const phraseId = findPhraseTrackId(withBank)
-    expect(phraseId).toBeTruthy()
-    const { commands, placedPhrases } = buildGrooveCommands(withBank, getRhythm("samba")!, {
-      withPhrases: true,
-      rng: rngFrom(3),
-      phraseDensity: 1,
-    })
+    return { d, phraseId }
+  }
+
+  it("places FragmentEvents on the groove's onsets from the bank (the real apply path)", () => {
+    const { d, phraseId } = withBank(3)
+    expect(findPhraseTrackId(d)).toBe(phraseId)
+    const { commands, placedPhrases, phrasesUnavailable } = buildGrooveCommands(
+      d,
+      getRhythm("samba")!,
+      { target: { kind: "phrases", trackId: phraseId }, rng: rngFrom(3), phraseDensity: 1 }
+    )
+    expect(phrasesUnavailable).toBe(false)
     expect(placedPhrases).toBe(true)
     const placed = commands.filter((c) => c.t === "placeFragment")
     expect(placed.length).toBeGreaterThan(0)
-    for (const c of placed) if (c.t === "placeFragment") expect(c.trackId).toBe(phraseId)
+    for (const c of placed) {
+      if (c.t !== "placeFragment") continue
+      expect(c.trackId).toBe(phraseId)
+      // Real placements: each references a bank snippet and lands on an onset tick.
+      expect(d.fragmentLibrary!.some((r) => r.id === c.frag.fragmentId)).toBe(true)
+      expect(c.frag.tick).toBeGreaterThanOrEqual(0)
+    }
+    // A phrases target NEVER writes drum notes.
+    expect(commands.some((c) => c.t === "setNotes")).toBe(false)
   })
 
-  it("ignores phrases when there is no bank", () => {
-    const d = doc()
-    const { commands, placedPhrases } = buildGrooveCommands(d, getRhythm("samba")!, {
-      withPhrases: true,
-      rng: rngFrom(1),
+  it("applied placements survive the reducer as real events on the phrase track", () => {
+    const { d, phraseId } = withBank(2)
+    const { commands } = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+      target: { kind: "phrases", trackId: phraseId },
+      rng: rngFrom(9),
+      phraseDensity: 1,
     })
-    expect(placedPhrases).toBe(false)
-    expect(commands.some((c) => c.t === "placeFragment")).toBe(false)
+    const after = commands.reduce((acc, c) => reduce(acc, c), d)
+    const track = after.tracks.find((t) => t.id === phraseId)
+    expect(track && track.kind === "fragment" ? track.fragments.length : 0).toBeGreaterThan(0)
   })
 
-  it("flags phrasesUnavailable when phrases are requested but impossible (no silent no-op)", () => {
-    const d = doc() // no phrase track / empty bank
-    const requested = buildGrooveCommands(d, getRhythm("samba")!, {
-      withPhrases: true,
+  it("Apply REPLACES existing phrase placements; Layer keeps them", () => {
+    const { d, phraseId } = withBank(2)
+    const seeded = reduce(d, {
+      t: "placeFragment",
+      trackId: phraseId,
+      frag: { tick: 0, fragmentId: d.fragmentLibrary![0].id, gain: 0.9, pitchSemis: 0 },
+    })
+    // Apply emits a removeFragment for the held event (replace).
+    const apply = buildGrooveCommands(seeded, getRhythm("samba")!, {
+      target: { kind: "phrases", trackId: phraseId },
+      rng: rngFrom(2),
+      phraseDensity: 1,
+    })
+    expect(apply.commands.some((c) => c.t === "removeFragment")).toBe(true)
+    // Layer never removes — it adds onto free onsets.
+    const layer = buildGrooveCommands(seeded, getRhythm("samba")!, {
+      target: { kind: "phrases", trackId: phraseId },
+      layer: true,
+      rng: rngFrom(2),
+      phraseDensity: 1,
+    })
+    expect(layer.commands.some((c) => c.t === "removeFragment")).toBe(false)
+  })
+
+  it("flags phrasesUnavailable (no silent no-op) when the bank is empty", () => {
+    const base = doc()
+    const phraseId = newId("trk")
+    const emptyBank: BeatloungeDoc = {
+      ...base,
+      fragmentLibrary: [],
+      tracks: [
+        ...base.tracks,
+        {
+          id: phraseId,
+          kind: "fragment",
+          name: "Phrases",
+          color: "#7cf2c0",
+          grid: { denominator: 16 },
+          volume: 0.8,
+          pan: 0,
+          mute: false,
+          solo: false,
+          inserts: [],
+          sends: [],
+          automation: [],
+          instrument: { kind: "ttsFragment" },
+          fragments: [],
+        },
+      ],
+    }
+    const res = buildGrooveCommands(emptyBank, getRhythm("samba")!, {
+      target: { kind: "phrases", trackId: phraseId },
       rng: rngFrom(1),
     })
-    expect(requested.phrasesUnavailable).toBe(true)
-    // ... but NOT flagged when phrases weren't requested.
-    const notRequested = buildGrooveCommands(d, getRhythm("samba")!)
-    expect(notRequested.phrasesUnavailable).toBe(false)
+    expect(res.phrasesUnavailable).toBe(true)
+    expect(res.commands.length).toBe(0)
+  })
+
+  it("flags phrasesUnavailable when there is no phrase track at all", () => {
+    const d = doc() // no fragment track
+    const res = buildGrooveCommands(d, getRhythm("samba")!, {
+      target: { kind: "phrases" },
+      rng: rngFrom(1),
+    })
+    expect(res.phrasesUnavailable).toBe(true)
+    expect(res.commands.length).toBe(0)
+    // A DRUMS target on the same doc is fine (not flagged).
+    const drums = buildGrooveCommands(d, getRhythm("samba")!)
+    expect(drums.phrasesUnavailable).toBe(false)
+    expect(drums.commands.some((c) => c.t === "setNotes")).toBe(true)
   })
 })
 
@@ -252,8 +338,45 @@ describe("grooves actions through the command bus", () => {
     expect(a).toEqual(b)
   })
 
-  it("never emits a fragment placement when no phrase track present", () => {
-    const { result } = run(applyAction, { rhythmId: "samba", withPhrases: true })
+  it("a drums-target apply never emits a fragment placement", () => {
+    const { result } = run(applyAction, { rhythmId: "samba" })
     expect(result.commands.some((c) => c.t === "placeFragment")).toBe(false)
+    expect(result.commands.some((c) => c.t === "setNotes")).toBe(true)
+  })
+
+  it("a phrases-target apply (through the action) places fragments from the bank", () => {
+    const base = doc()
+    const ref: FragmentRef = { id: newId("frg"), source: "ttsRender", text: "hola", language: "es" }
+    const phraseId = newId("trk")
+    const d: BeatloungeDoc = {
+      ...base,
+      fragmentLibrary: [ref],
+      tracks: [
+        ...base.tracks,
+        {
+          id: phraseId,
+          kind: "fragment",
+          name: "Phrases",
+          color: "#7cf2c0",
+          grid: { denominator: 16 },
+          volume: 0.8,
+          pan: 0,
+          mute: false,
+          solo: false,
+          inserts: [],
+          sends: [],
+          automation: [],
+          instrument: { kind: "ttsFragment" },
+          fragments: [],
+        },
+      ],
+    }
+    const result = applyAction.run(
+      { doc: d, rng: rngFrom(4) },
+      { rhythmId: "samba", target: { kind: "phrases", trackId: phraseId }, phraseDensity: 1 }
+    )
+    const placed = result.commands.filter((c) => c.t === "placeFragment")
+    expect(placed.length).toBeGreaterThan(0)
+    expect(result.commands.some((c) => c.t === "setNotes")).toBe(false)
   })
 })
