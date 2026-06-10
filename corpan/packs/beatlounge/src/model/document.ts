@@ -98,6 +98,41 @@ export interface AutomationLane {
   default: number
 }
 
+// ---------------------------------------------------------------- modulators
+/**
+ * An AUTONOMOUS modulator — a "knob tweaker". It drives a ParamTarget over time
+ * with a shape, so the loop evolves itself instead of being hand-tweaked. The
+ * modulation engine evaluates these against the tempo clock and writes the
+ * result onto the live audio nodes (the doc keeps the BASE value; modulation is
+ * a live overlay around it). Agents/macros and the LLM spawn these en masse.
+ */
+export type ModulatorShape =
+  | "sine"
+  | "triangle"
+  | "saw"
+  | "square"
+  | "random" // stepped random (sample & hold) at the rate
+  | "drift" // smooth random walk (perlin-ish)
+
+export interface Modulator {
+  id: Id
+  target: ParamTarget
+  shape: ModulatorShape
+  /** Cycle length in beats (tempo-synced). Use this OR rateHz. */
+  syncBeats?: number
+  /** Free rate in Hz when not tempo-synced. */
+  rateHz?: number
+  /** Swing of the modulation, in normalized 0..1 param space. */
+  depth: Normalized
+  /** Center of the swing, in normalized 0..1 param space (the resting value). */
+  center: Normalized
+  /** Start phase 0..1. */
+  phase?: Normalized
+  /** Seed for random/drift shapes (reproducible). */
+  seed?: number
+  enabled: boolean
+}
+
 // ---------------------------------------------------------------- effects
 export type EffectKind =
   | "filter"
@@ -249,6 +284,8 @@ export interface BeatloungeDoc {
   tracks: Track[] // render order
   buses: Bus[]
   fragmentLibrary: FragmentRef[]
+  /** Autonomous knob-tweakers driving params over time. */
+  modulators: Modulator[]
   createdAt: number
   updatedAt: number
 }
@@ -357,10 +394,27 @@ export const createDefaultDoc = (now: number): BeatloungeDoc => {
     tracks: [drumTrack, synthTrack],
     buses: [],
     fragmentLibrary: [],
+    modulators: [],
     createdAt: now,
     updatedAt: now,
   }
 }
+
+/** Build a Modulator with sensible defaults (1-bar sine around the midpoint). */
+export const createModulator = (
+  target: ParamTarget,
+  patch: Partial<Omit<Modulator, "id" | "target">> = {}
+): Modulator => ({
+  id: newId("mod"),
+  target,
+  shape: "sine",
+  syncBeats: 4,
+  depth: 0.4,
+  center: 0.5,
+  phase: 0,
+  enabled: true,
+  ...patch,
+})
 
 // ---------------------------------------------------------------- lookups
 export const findTrack = (doc: BeatloungeDoc, trackId: Id): Track | undefined =>

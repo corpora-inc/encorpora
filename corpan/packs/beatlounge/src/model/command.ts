@@ -16,6 +16,7 @@ import type {
   Id,
   InstrumentConfig,
   Midi,
+  Modulator,
   NoteEvent,
   Normalized,
   ParamTarget,
@@ -79,5 +80,12 @@ export type Command =
   | { t: "removeBus"; busId: Id }
   // ---- automation ----
   | { t: "addAutomationPoint"; target: ParamTarget; tick: Tick; value: number }
+  // ---- modulators (autonomous knob-tweakers) ----
+  | { t: "addModulator"; modulator: Modulator }
+  | { t: "removeModulator"; modulatorId: Id }
+  | { t: "editModulator"; modulatorId: Id; patch: Partial<Omit<Modulator, "id" | "target">> }
+  | { t: "setModulatorEnabled"; modulatorId: Id; enabled: boolean }
+  /** Clear all modulators, or only those whose target matches. */
+  | { t: "clearModulators"; target?: ParamTarget }
   // ---- atomic multi-command transaction (one undo step) ----
   | { t: "batch"; commands: Command[]; label?: string }

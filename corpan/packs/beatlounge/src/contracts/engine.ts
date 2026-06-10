@@ -7,7 +7,15 @@
  */
 
 import type { ToneAudioNode } from "tone"
-import type { BeatloungeDoc, Id, InstrumentConfig, Midi, Normalized, Tick } from "../model/document"
+import type {
+  BeatloungeDoc,
+  Id,
+  InstrumentConfig,
+  Midi,
+  Normalized,
+  ParamTarget,
+  Tick,
+} from "../model/document"
 
 // ----------------------------------------------------------- asset loading
 export interface AssetLoader {
@@ -87,5 +95,8 @@ export interface AudioGraph {
   /** Route a scheduled trigger from the scheduler to the right instrument. */
   dispatch(t: ScheduledTrigger): void
   setMasterVolume(v: Normalized): void
+  /** Write a resolved ACTUAL value onto the live node a ParamTarget addresses
+   *  (the modulation engine calls this each frame to drive autonomous knobs). */
+  applyParam(target: ParamTarget, value: number): void
   dispose(): void
 }

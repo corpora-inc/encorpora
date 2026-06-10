@@ -339,6 +339,45 @@ export const reduce = (doc: BeatloungeDoc, cmd: Command): BeatloungeDoc => {
         return { ...t, automation }
       })
 
+    // ---------------------------------------------------------- modulators
+    case "addModulator":
+      return { ...doc, modulators: [...(doc.modulators ?? []), cmd.modulator] }
+
+    case "removeModulator": {
+      const all = doc.modulators ?? []
+      const mods = all.filter((m) => m.id !== cmd.modulatorId)
+      return mods.length === all.length ? doc : { ...doc, modulators: mods }
+    }
+
+    case "editModulator": {
+      let touched = false
+      const mods = (doc.modulators ?? []).map((m) => {
+        if (m.id !== cmd.modulatorId) return m
+        touched = true
+        return { ...m, ...cmd.patch, id: m.id, target: m.target }
+      })
+      return touched ? { ...doc, modulators: mods } : doc
+    }
+
+    case "setModulatorEnabled": {
+      let touched = false
+      const mods = (doc.modulators ?? []).map((m) => {
+        if (m.id !== cmd.modulatorId || m.enabled === cmd.enabled) return m
+        touched = true
+        return { ...m, enabled: cmd.enabled }
+      })
+      return touched ? { ...doc, modulators: mods } : doc
+    }
+
+    case "clearModulators": {
+      const all = doc.modulators ?? []
+      if (all.length === 0) return doc
+      if (!cmd.target) return { ...doc, modulators: [] }
+      const key = JSON.stringify(cmd.target)
+      const mods = all.filter((m) => JSON.stringify(m.target) !== key)
+      return mods.length === all.length ? doc : { ...doc, modulators: mods }
+    }
+
     // ---------------------------------------------------------- batch
     case "batch":
       return cmd.commands.reduce((d, c) => reduce(d, c), doc)

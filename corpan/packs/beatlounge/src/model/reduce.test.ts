@@ -182,6 +182,50 @@ describe("reduce — batch", () => {
   })
 })
 
+describe("reduce — modulators (autonomous knob-tweakers)", () => {
+  const mod = (id = "m1") => ({
+    id,
+    target: { scope: "master" as const, param: "volume" as const },
+    shape: "sine" as const,
+    syncBeats: 4,
+    depth: 0.4,
+    center: 0.5,
+    enabled: true,
+  })
+
+  it("adds and removes a modulator", () => {
+    const a = doc0()
+    expect(a.modulators).toEqual([])
+    const b = reduce(a, { t: "addModulator", modulator: mod() })
+    expect(b.modulators.length).toBe(1)
+    const c = reduce(b, { t: "removeModulator", modulatorId: "m1" })
+    expect(c.modulators.length).toBe(0)
+  })
+
+  it("edits a modulator without touching id/target", () => {
+    const a = reduce(doc0(), { t: "addModulator", modulator: mod() })
+    const b = reduce(a, { t: "editModulator", modulatorId: "m1", patch: { depth: 0.9, shape: "drift" } })
+    expect(b.modulators[0].depth).toBe(0.9)
+    expect(b.modulators[0].shape).toBe("drift")
+    expect(b.modulators[0].id).toBe("m1")
+    expect(b.modulators[0].target.scope).toBe("master")
+  })
+
+  it("toggles enabled and clears by target", () => {
+    let d = reduce(doc0(), { t: "addModulator", modulator: mod("m1") })
+    d = reduce(d, {
+      t: "addModulator",
+      modulator: { ...mod("m2"), target: { scope: "track", trackId: "t", param: "pan" } },
+    })
+    d = reduce(d, { t: "setModulatorEnabled", modulatorId: "m1", enabled: false })
+    expect(d.modulators.find((m) => m.id === "m1")!.enabled).toBe(false)
+    const cleared = reduce(d, { t: "clearModulators", target: { scope: "master", param: "volume" } })
+    expect(cleared.modulators.map((m) => m.id)).toEqual(["m2"])
+    const all = reduce(d, { t: "clearModulators" })
+    expect(all.modulators.length).toBe(0)
+  })
+})
+
 describe("default doc", () => {
   it("is musically alive and valid", () => {
     const d = doc0()

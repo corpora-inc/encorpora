@@ -80,6 +80,8 @@ export const createAudioGraph = (
 
   const nodes = new Map<string, TrackNodes>()
   const buses = new Map<string, BusNodes>()
+  // Latest doc, kept so applyParam can resolve insertId → effect by index.
+  let currentDoc: BeatloungeDoc | null = null
 
   // ----------------------------------------------------------- insert chains
   const disposeChain = (chain: ChainState) => {
@@ -210,8 +212,11 @@ export const createAudioGraph = (
     b.gain.dispose()
   }
 
+  const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v))
+
   return {
     reconcile(prev, next) {
+      currentDoc = next
       const when = ctx.currentTime
 
       // ---- buses first: sends need their targets to exist before wiring ----
@@ -287,6 +292,44 @@ export const createAudioGraph = (
 
     setMasterVolume(v: Normalized) {
       masterVol.volume.value = Tone.gainToDb(Math.max(0.0001, Math.min(1, v)))
+    },
+
+    applyParam(target, value) {
+      const when = ctx.currentTime
+      const R = 0.02
+      switch (target.scope) {
+        case "master":
+          masterVol.volume.setTargetAtTime(Tone.gainToDb(clamp(value, 0.0001, 1)), when, R)
+          break
+        case "track": {
+          const n = nodes.get(target.trackId)
+          if (!n) break
+          if (target.param === "volume") n.gain.gain.setTargetAtTime(clamp(value, 0, 1), when, R)
+          else n.panner.pan.setTargetAtTime(clamp(value, -1, 1), when, R)
+          break
+        }
+        case "send": {
+          const s = nodes.get(target.trackId)?.sends.get(target.sendId)
+          if (s) s.gain.gain.setTargetAtTime(clamp(value, 0, 1), when, R)
+          break
+        }
+        case "insert": {
+          const n = nodes.get(target.trackId)
+          const track = currentDoc?.tracks.find((t) => t.id === target.trackId)
+          if (!n || !track) break
+          const idx = track.inserts.findIndex((fx) => fx.id === target.insertId)
+          if (idx >= 0) n.chain.effects[idx]?.setParam(target.param, value, when)
+          break
+        }
+        case "bus": {
+          const b = buses.get(target.busId)
+          if (b && target.param === "volume") b.gain.gain.setTargetAtTime(clamp(value, 0, 1), when, R)
+          break
+        }
+        case "instrument":
+          nodes.get(target.trackId)?.instrument.setParam(target.param, value, when)
+          break
+      }
     },
 
     dispose() {
