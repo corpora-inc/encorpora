@@ -1,0 +1,127 @@
+/* ============================================================
+   beatlounge — drum-pads module styles. Co-located; builds ONLY on the
+   frozen --bl-* tokens (never edits the design-system file). A dark, tactile
+   velocity pad bank that scales 4×4 on tablet/desktop, 4×2 on phone.
+   ============================================================ */
+
+.bl-pads {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: var(--bl-s4);
+  gap: var(--bl-s4);
+}
+
+.bl-chip.is-armed {
+  border-color: var(--bl-error);
+  color: var(--bl-error);
+  background: color-mix(in srgb, var(--bl-error) 22%, var(--bl-surface-2));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--bl-error) 40%, transparent);
+}
+
+/* The pad grid. Square pads via aspect-ratio; comfortable ≥44px hit targets. */
+.bl-pad-bank {
+  display: grid;
+  grid-template-columns: repeat(var(--bl-pad-cols, 4), minmax(0, 1fr));
+  gap: var(--bl-s3);
+  flex: 1;
+  min-height: 0;
+  align-content: center;
+  transition: opacity var(--bl-dur) var(--bl-ease);
+}
+.bl-pad-bank.is-silent {
+  opacity: 0.4;
+}
+
+.bl-pad {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  aspect-ratio: 1;
+  min-height: var(--bl-hit);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  background: var(--bl-surface-2);
+  color: var(--bl-text-dim);
+  cursor: pointer;
+  touch-action: none;
+  transition:
+    transform var(--bl-dur-fast) var(--bl-ease),
+    box-shadow var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur) var(--bl-ease);
+}
+.bl-pad.has-hits {
+  border-color: color-mix(in srgb, var(--bl-accent) 36%, transparent);
+  color: var(--bl-text);
+}
+.bl-pad:active {
+  transform: scale(0.95);
+}
+.bl-pad.is-live {
+  border-color: var(--bl-accent);
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 70%, transparent);
+  background: color-mix(in srgb, var(--bl-accent) 22%, var(--bl-surface-2));
+  color: var(--bl-bg);
+}
+.bl-pad:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+
+/* Velocity fill rises from the bottom. */
+.bl-pad-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: color-mix(in srgb, var(--bl-accent) 26%, transparent);
+  pointer-events: none;
+  transition: height var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-pad.is-live .bl-pad-fill {
+  background: color-mix(in srgb, var(--bl-accent-hot) 40%, transparent);
+}
+
+.bl-pad-label {
+  position: absolute;
+  left: var(--bl-s2);
+  bottom: var(--bl-s2);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+.bl-pad-count {
+  position: absolute;
+  top: var(--bl-s2);
+  right: var(--bl-s2);
+  font-family: var(--bl-font-mono);
+  font-size: 9px;
+  color: var(--bl-accent);
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------- tile preview */
+.bl-pad-mini {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.bl-pad-mini-cell {
+  aspect-ratio: 1;
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-cell-off);
+  border: 1px solid transparent;
+  transition: background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-pad-mini-cell.has-hits {
+  background: color-mix(in srgb, var(--bl-cell-on) 22%, var(--bl-cell-off));
+  border-color: color-mix(in srgb, var(--bl-cell-on) 34%, transparent);
+}
+.bl-pad-mini-cell.is-live {
+  background: var(--bl-accent-hot);
+  box-shadow: 0 0 8px var(--bl-accent-hot);
+}

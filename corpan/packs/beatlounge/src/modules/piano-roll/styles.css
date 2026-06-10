@@ -1,0 +1,171 @@
+/* ============================================================
+   beatlounge — piano-roll module styles. Co-located; builds ONLY on the
+   frozen --bl-* tokens (never edits the design-system file). Dark, immersive,
+   and tuned for phone / iPad / desktop alike.
+   ============================================================ */
+
+.bl-roll {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: var(--bl-s4);
+  gap: var(--bl-s3);
+}
+
+.bl-roll-frame {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--bl-s2);
+  flex: 1;
+  min-height: 0;
+}
+
+/* Octave shift rail (left of the grid). */
+.bl-roll-octave {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--bl-s2);
+}
+.bl-roll-octave .bl-icon-btn {
+  min-width: 32px;
+  min-height: 32px;
+  font-size: 11px;
+  color: var(--bl-text-dim);
+}
+
+/* The pitch-row × step grid. Scrolls vertically if the window overflows. */
+.bl-roll-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: var(--bl-s1);
+  transition: opacity var(--bl-dur) var(--bl-ease);
+}
+.bl-roll-grid.is-silent {
+  opacity: 0.4;
+}
+
+.bl-roll-row {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: stretch;
+  gap: var(--bl-s2);
+  min-height: 18px;
+}
+
+/* Keyboard gutter label — only tonic rows print their name. */
+.bl-roll-key {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--bl-s1);
+  font-family: var(--bl-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: var(--bl-text-dim);
+}
+.bl-roll-row.is-tonic .bl-roll-key {
+  color: var(--bl-accent);
+}
+
+.bl-roll-cells {
+  display: grid;
+  grid-template-columns: repeat(var(--bl-steps, 16), minmax(0, 1fr));
+  gap: 2px;
+}
+
+/* In-scale rows read brighter; accidentals (off-scale) recede but stay live. */
+.bl-roll-cell {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  min-height: 16px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: var(--bl-cell-off);
+  cursor: pointer;
+  touch-action: none;
+  transition:
+    background var(--bl-dur-fast) var(--bl-ease),
+    box-shadow var(--bl-dur-fast) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-roll-row.is-accidental .bl-roll-cell {
+  background: color-mix(in srgb, var(--bl-cell-off) 35%, transparent);
+}
+.bl-roll-row.is-scale .bl-roll-cell {
+  background: color-mix(in srgb, var(--bl-cell-off) 130%, transparent);
+}
+.bl-roll-row.is-tonic .bl-roll-cell {
+  border-bottom: 1px solid color-mix(in srgb, var(--bl-accent) 18%, transparent);
+}
+.bl-roll-cell.is-beat {
+  background: color-mix(in srgb, var(--bl-surface-2) 50%, var(--bl-cell-off));
+}
+.bl-roll-cell.is-active {
+  background: var(--bl-playhead);
+}
+.bl-roll-cell.is-on {
+  background: var(--bl-cell-on);
+  opacity: var(--bl-cell-vel, 0.9);
+  border-color: color-mix(in srgb, var(--bl-cell-on) 50%, transparent);
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-cell-on) 55%, transparent);
+}
+.bl-roll-cell.is-on.is-active {
+  background: var(--bl-accent-hot);
+  box-shadow: 0 0 18px var(--bl-accent-hot);
+}
+.bl-roll-cell.is-on.is-selected {
+  border-color: var(--bl-text);
+  box-shadow: 0 0 0 2px var(--bl-text), var(--bl-glow) color-mix(in srgb, var(--bl-cell-on) 60%, transparent);
+}
+.bl-roll-cell:active {
+  transform: scale(0.88);
+}
+.bl-roll-cell:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+
+.bl-roll-hint {
+  align-self: center;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ---------------------------------------------------------- tile cloud */
+.bl-roll-cloud {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-cell-off);
+  overflow: hidden;
+}
+.bl-roll-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  margin: -3px;
+  border-radius: 50%;
+  background: var(--bl-cell-on);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--bl-cell-on) 60%, transparent);
+}
+.bl-roll-dot.is-active {
+  background: var(--bl-accent-hot);
+  box-shadow: 0 0 10px var(--bl-accent-hot);
+}
+.bl-roll-cloud-play {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: color-mix(in srgb, var(--bl-accent) 50%, transparent);
+}
