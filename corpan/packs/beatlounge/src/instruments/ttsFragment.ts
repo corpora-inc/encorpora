@@ -45,7 +45,17 @@ interface FragmentVoice {
   /** True when a real, decoded sample is ready (else synth-vox). */
   ready: boolean
   reversed: boolean
+  /** The placed event's baked pitch (semitones) from its last trigger, WITHOUT
+   *  the live ribbon offset — so the ribbon can retune this voice in real time
+   *  as (baseSemis + pitchOffset) while it is still sounding. */
+  baseSemis: number
 }
+
+/** Live pitch-ribbon range: ±4 octaves, plenty to "scratch" a phrase around. */
+const MAX_BEND_SEMIS = 48
+/** Clamp a semitone value to GrainPlayer detune cents within the bend range. */
+const detuneCents = (semis: number): number =>
+  Math.max(-MAX_BEND_SEMIS * 100, Math.min(MAX_BEND_SEMIS * 100, semis * 100))
 
 export const createTtsFragmentInstrument = (
   config: TtsConfig,
@@ -69,14 +79,16 @@ export const createTtsFragmentInstrument = (
   let voiceId = config.voiceId
   let disposed = false
   // Live pitch-ribbon offset (semitones), driven by applyParam("pitchOffset").
-  // Added to every trigger's baked pitchSemis so a performer can bend the whole
-  // phrase track in real time without rewriting the document. NOT persisted.
+  // Applied to NEW triggers AND pushed onto every currently-sounding voice's
+  // GrainPlayer.detune the instant it changes — so dragging the ribbon bends the
+  // whole phrase track in real time (scratch/jam), not just on the next hit.
+  // A live performance control: NOT written to the document.
   let pitchOffset = 0
 
   const ensureVoice = (fragmentId: Id): FragmentVoice => {
     let v = voices.get(fragmentId)
     if (!v) {
-      v = { player: null, loadAttempted: false, ready: false, reversed: false }
+      v = { player: null, loadAttempted: false, ready: false, reversed: false, baseSemis: 0 }
       voices.set(fragmentId, v)
     }
     return v
@@ -149,13 +161,17 @@ export const createTtsFragmentInstrument = (
 
   const trigger = (note: TriggerNote, when: number): void => {
     const fragmentId = note.fragmentId
-    const semis = (note.pitchSemis ?? 0) + pitchOffset
+    const baseSemis = note.pitchSemis ?? 0
+    const semis = baseSemis + pitchOffset
     const v = fragmentId ? voices.get(fragmentId) : undefined
 
     if (v?.ready && v.player && v.player.buffer && v.player.buffer.loaded) {
+      // Remember this voice's baked pitch so the live ribbon can keep retuning
+      // it (base + offset) while the grain is still sounding.
+      v.baseSemis = baseSemis
       const p = v.player
       try {
-        p.detune = Math.max(-2400, Math.min(2400, semis * 100))
+        p.detune = detuneCents(baseSemis + pitchOffset)
         const reverse = Boolean(note.reverse)
         if (p.reverse !== reverse) p.reverse = reverse
         // stretch: grain time-stretch independent of pitch (1 = natural).
@@ -198,8 +214,20 @@ export const createTtsFragmentInstrument = (
       void voiceId
     },
     setParam(param: string, value: number) {
-      // Live pitch-ribbon bend for the whole phrase track (semitones).
-      if (param === "pitchOffset") pitchOffset = Math.max(-24, Math.min(24, value))
+      // Live pitch-ribbon bend for the WHOLE phrase track (semitones, ±4 oct).
+      if (param !== "pitchOffset") return
+      pitchOffset = Math.max(-MAX_BEND_SEMIS, Math.min(MAX_BEND_SEMIS, value))
+      // Retune every voice that is CURRENTLY SOUNDING, in real time — a held
+      // phrase swoops under the ribbon (turntable / scratch feel) instead of the
+      // offset only taking effect on the next trigger.
+      for (const v of voices.values()) {
+        if (!v.player) continue
+        try {
+          v.player.detune = detuneCents(v.baseSemis + pitchOffset)
+        } catch {
+          /* detached/disposed player — ignore */
+        }
+      }
     },
     async load(_assets: AssetLoader) {
       // Voices load lazily per fragment on first trigger; nothing eager here.
