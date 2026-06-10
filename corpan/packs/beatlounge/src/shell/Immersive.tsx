@@ -9,7 +9,7 @@
  * without the sheet growing. transform/opacity transitions only (60fps).
  */
 
-import { useEffect, useRef, useState, type ReactNode } from "react"
+import { useEffect, useRef, type ReactNode } from "react"
 import { Glyph } from "../bl-ui"
 
 interface Props {
@@ -21,8 +21,9 @@ interface Props {
 const SWIPE_DISMISS_PX = 90
 
 export const Immersive = ({ title, onExit, children }: Props) => {
-  const [dragY, setDragY] = useState(0)
+  const sheetRef = useRef<HTMLDivElement>(null)
   const startY = useRef<number | null>(null)
+  const dragY = useRef(0)
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -35,28 +36,39 @@ export const Immersive = ({ title, onExit, children }: Props) => {
     return () => window.removeEventListener("keydown", onKey)
   }, [onExit])
 
-  // Swipe-down to dismiss, captured on the header grabber only.
+  // Swipe-down to dismiss. We write the transform DIRECTLY to the node (no React
+  // re-render per frame) and kill the CSS transition while dragging, so the
+  // sheet tracks the finger 1:1 instead of lagging behind it (the "two copies"
+  // jitter). The transition is restored on release for the snap-back.
   const onHeaderPointerDown = (e: React.PointerEvent) => {
     if (e.target instanceof Element && e.target.closest("button")) return
     startY.current = e.clientY
+    dragY.current = 0
+    const sheet = sheetRef.current
+    if (sheet) sheet.style.transition = "none"
     ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
   }
   const onHeaderPointerMove = (e: React.PointerEvent) => {
     if (startY.current == null) return
-    setDragY(Math.max(0, e.clientY - startY.current))
+    dragY.current = Math.max(0, e.clientY - startY.current)
+    const sheet = sheetRef.current
+    if (sheet) sheet.style.transform = `translateY(${dragY.current}px)`
   }
   const onHeaderPointerUp = () => {
-    if (startY.current != null && dragY > SWIPE_DISMISS_PX) onExit()
+    const dismissed = startY.current != null && dragY.current > SWIPE_DISMISS_PX
     startY.current = null
-    setDragY(0)
+    const sheet = sheetRef.current
+    if (sheet) {
+      sheet.style.transition = ""
+      sheet.style.transform = ""
+    }
+    dragY.current = 0
+    if (dismissed) onExit()
   }
 
   return (
     <div className="bl-immersive" role="dialog" aria-modal="true" aria-label={title}>
-      <div
-        className="bl-immersive-sheet"
-        style={dragY ? { transform: `translateY(${dragY}px)` } : undefined}
-      >
+      <div className="bl-immersive-sheet" ref={sheetRef}>
         <div
           className="bl-immersive-header"
           onPointerDown={onHeaderPointerDown}
