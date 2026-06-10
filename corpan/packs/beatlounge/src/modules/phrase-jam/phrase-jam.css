@@ -156,12 +156,60 @@
   color: var(--bl-accent);
   min-width: 3.2em;
 }
-.bl-jam-snap {
-  margin-left: auto;
+/* Clear control (toolbar): icon + label, danger-tinted, ≥44px hit target. */
+.bl-jam-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  min-height: 44px;
 }
-.bl-jam-snap.is-on {
+.bl-jam-clear svg {
+  flex: 0 0 auto;
+}
+
+/* the live-ribbon scale picker — small segmented chips that NAME the scale */
+.bl-jam-scales {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s1);
+  justify-content: flex-end;
+}
+.bl-jam-scale-chip {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 44px;
+  padding: 0 var(--bl-s2);
+  border-radius: var(--bl-radius-pill);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    background var(--bl-dur) var(--bl-ease),
+    border-color var(--bl-dur) var(--bl-ease),
+    color var(--bl-dur) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-jam-scale-chip:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 40%, transparent);
+}
+.bl-jam-scale-chip:active {
+  transform: scale(0.95);
+}
+.bl-jam-scale-chip:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+.bl-jam-scale-chip.is-on {
   border-color: var(--bl-accent);
   color: var(--bl-accent);
+  background: color-mix(in srgb, var(--bl-accent) 14%, var(--bl-surface-2));
 }
 
 .bl-jam-ribbon {
@@ -210,6 +258,14 @@
   box-shadow: 0 0 calc(6px + 18px * var(--bl-jam-bend-on)) var(--bl-accent-hot);
   transition:
     left var(--bl-dur-fast) var(--bl-ease),
+    opacity var(--bl-dur) var(--bl-ease),
+    box-shadow var(--bl-dur) var(--bl-ease);
+}
+/* While dragging, the thumb tracks the finger 1:1 — NO `left` easing (the ease
+ * smoothed/lagged the bend). The transition is restored on pointerup so the
+ * snap-back-to-centre still eases premium-smooth. */
+.bl-jam-ribbon.is-dragging .bl-jam-ribbon-thumb {
+  transition:
     opacity var(--bl-dur) var(--bl-ease),
     box-shadow var(--bl-dur) var(--bl-ease);
 }

@@ -36,7 +36,15 @@ import { bankSnippets } from "../../phrase/bank"
 import { auditionPhrase } from "../../phrase/audition"
 import type { AudioSource } from "../../phrase/audioSource"
 import { Glyph, Transport } from "../../bl-ui"
-import { buildJamView, cellEventAt, clampPitch } from "./jamModel"
+import {
+  buildJamView,
+  cellEventAt,
+  clampPitch,
+  DEFAULT_SCALE,
+  SCALES,
+  snapToScale,
+  type ScaleId,
+} from "./jamModel"
 import { scrambleAction } from "./actions"
 import { runAction } from "../runAction"
 
@@ -68,7 +76,9 @@ export const PhraseJamImmersive = ({
   const [playStep, setPlayStep] = useState(-1)
   const [playing, setPlaying] = useState(audio.isPlaying())
   const [bend, setBend] = useState(0) // live ribbon bend, semitones (display)
-  const [snapScale, setSnapScale] = useState(false)
+  // The musical scale the live ribbon snaps to (DEFAULT = minor pentatonic,
+  // always tuneful for scratching). "chromatic" = snap off (every semitone).
+  const [scale, setScale] = useState<ScaleId>(DEFAULT_SCALE)
 
   // Paint stroke state for the grid (mirrors step-grid).
   const paintMode = useRef<null | "add" | "remove">(null)
@@ -250,8 +260,11 @@ export const PhraseJamImmersive = ({
     if (!el) return 0
     const r = el.getBoundingClientRect()
     const x = clamp01((clientX - r.left) / Math.max(1, r.width))
-    let semis = (x - 0.5) * 2 * RIBBON_SPAN
-    if (snapScale) semis = Math.round(semis) // semitone-locked when scale-lock on
+    const raw = (x - 0.5) * 2 * RIBBON_SPAN
+    // Snap the live bend to scale degrees of the chosen musical scale (relative
+    // to centre = the snippet's natural pitch) so the scratch lands on consonant
+    // intervals. "chromatic" is the off identity (nearest semitone).
+    const semis = snapToScale(raw, scale, RIBBON_SPAN)
     return Math.max(-RIBBON_SPAN, Math.min(RIBBON_SPAN, semis))
   }
 
@@ -274,6 +287,10 @@ export const PhraseJamImmersive = ({
     if (!el) return
     try { el.setPointerCapture(e.pointerId) } catch { /* ignore (tests) */ }
     dragging.current = true
+    // Raw finger tracking: kill the thumb's `left` easing WHILE dragging so it
+    // follows the pointer 1:1 (no perceived lag). The snap-back-to-centre ease
+    // on release is restored in onRibbonUp.
+    el.classList.add("is-dragging")
     const semis = semisFromX(e.clientX)
     setBend(semis)
     paintRibbon(semis)
@@ -294,6 +311,9 @@ export const PhraseJamImmersive = ({
     dragging.current = false
     const el = ribbonRef.current
     try { el?.releasePointerCapture(e.pointerId) } catch { /* ignore */ }
+    // Drop raw-tracking mode so the thumb's `left` transition is restored — the
+    // snap-back-to-centre then eases premium-smooth instead of jumping.
+    if (el) el.classList.remove("is-dragging")
     // Ease back to centre — a quick snap-to-zero on release (premium touch).
     setBend(0)
     if (el) el.style.setProperty("--bl-jam-bend-on", "0")
@@ -334,6 +354,19 @@ export const PhraseJamImmersive = ({
     else host.toast(r.summary)
   }
 
+  // Grid is empty when no snippets are placed on this track (Clear is then a
+  // no-op → hide it; undo covers any accidental clear, so no confirm dialog).
+  const gridEmpty = ftrack.fragments.length === 0
+
+  const onClear = () => {
+    const before = store.vanilla.getState().doc
+    if (ftrack.fragments.length === 0) return
+    store.dispatch({ t: "clearTrack", trackId })
+    host.toast("Cleared the jam", {
+      undo: () => store.vanilla.getState().doc !== before && store.undo(),
+    })
+  }
+
   return (
     <div className="bl-jam" onPointerUp={endStroke} onPointerLeave={endStroke}>
       <div className="bl-grid-toolbar" data-bl-nocapture>
@@ -346,6 +379,17 @@ export const PhraseJamImmersive = ({
           <button type="button" className="bl-chip" onClick={onScramble}>
             Scramble
           </button>
+          {!gridEmpty && (
+            <button
+              type="button"
+              className="bl-chip is-danger bl-jam-clear"
+              onClick={onClear}
+              aria-label="Clear the jam"
+            >
+              <Glyph name="trash" size={14} />
+              <span>Clear</span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -434,16 +478,31 @@ export const PhraseJamImmersive = ({
         <div className="bl-jam-perform-head" data-bl-nocapture>
           <span className="bl-jam-perform-title">Pitch ribbon</span>
           <span className="bl-jam-bend-readout" aria-live="off">
-            {fmtSemis(Math.round(bend * 10) / 10)}
+            {fmtSemis(Math.round(bend))}
           </span>
-          <button
-            type="button"
-            className={`bl-chip bl-jam-snap${snapScale ? " is-on" : ""}`}
-            aria-pressed={snapScale}
-            onClick={() => setSnapScale((v) => !v)}
+          <div
+            className="bl-jam-scales"
+            role="radiogroup"
+            aria-label="Ribbon scale (snap the bend to a musical scale)"
           >
-            Scale lock
-          </button>
+            {SCALES.map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                role="radio"
+                aria-checked={scale === s.id}
+                className={`bl-jam-scale-chip${scale === s.id ? " is-on" : ""}`}
+                onClick={() => setScale(s.id)}
+                title={
+                  s.id === "chromatic"
+                    ? "No scale — bend snaps to the nearest semitone"
+                    : `Snap the bend to the ${s.label} scale`
+                }
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
         </div>
         <div
           ref={ribbonRef}
