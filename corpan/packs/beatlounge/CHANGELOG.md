@@ -6,6 +6,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **World-modes corpus + exact pitch math (foundation).** New canonical
+  `src/music/tuning.ts` (cents/ratio/frequency math — `equal12`/`pythagorean`/
+  `just` tuning systems, the MIDI→mode detune bridge that retunes a 12-TET MIDI
+  note to a mode's exact pitch, e.g. a MIDI piano detuned to maqam) and
+  `src/music/modes/` — a comprehensive corpus of modes as exact cents-above-tonic:
+  19 Western modes, all 10 Hindustani thaats, all 72 Carnatic melakartas, and 12
+  principal Arabic maqamat with researched non-12-TET neutral tones + ajnas. Pure,
+  fully tested against textbook values; consumed by future harmony work. Does not
+  yet touch the existing scale tables. See `docs/MODES_CORPUS.md`.
 - **Scratch — a turntable for one isolated phrase.** A new headline widget that
   loads a single saved snippet onto a big vinyl record you drag to **scratch it
   like a record** — continuous, click-free, forward AND reverse. The engine is a
