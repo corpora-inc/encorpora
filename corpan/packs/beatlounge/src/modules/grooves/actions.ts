@@ -1,9 +1,10 @@
 /**
  * beatlounge — Grooves module actions. Pure, deterministic-given-rng, and
  * LLM-callable. They apply a world rhythm (or a vary/evolve/randomize of it) to
- * the drum track through existing commands, as ONE undo batch. The current
- * groove is addressed by `rhythmId` so the LLM can drive "apply samba", "vary
- * the current groove", "evolve it 4 steps", "randomize a Caribbean beat".
+ * whatever GRID the host points the brain at — drums OR phrases — through
+ * existing commands, as ONE undo batch. The current groove is addressed by
+ * `rhythmId` so the LLM can drive "apply samba", "vary the current groove",
+ * "evolve it 4 steps", "randomize a Caribbean beat".
  *
  * v1 variation is fully ALGORITHMIC/seeded (engine.ts). The LLM-as-artist hook
  * is future — these actions are the surface it will later call.
@@ -14,7 +15,7 @@
 import type { ActionContext, ActionResult, ModuleAction } from "../../contracts/module"
 import { getRhythm, evolveRhythm, randomizeRhythm, varyRhythm, RHYTHMS } from "../../rhythm"
 import type { RhythmFamily } from "../../rhythm"
-import { buildGrooveCommands, type GrooveBuildOpts } from "./grooveModel"
+import { buildGrooveCommands, type GrooveBuildOpts, type GrooveTarget } from "./grooveModel"
 
 const FAMILY_OPTIONS = [
   "afro-cuban",
@@ -43,30 +44,52 @@ const sharedParams = {
     default: 1,
     describe: "Scale all hit velocities; 1 = as written, lower = gentler.",
   },
-  withPhrases: {
-    type: "boolean" as const,
-    default: false,
-    describe: "Also lay saved phrase snippets onto the groove's onsets (needs a phrase track + bank).",
-  },
 }
 
-/** Coerce an unknown `targetPitches` param into a finite-number array (or undefined). */
+/** Coerce an unknown selected-pitches list into a finite-number array (or undefined). */
 const coerceTargets = (v: unknown): number[] | undefined => {
   if (!Array.isArray(v)) return undefined
   const out = v.map(Number).filter((n) => Number.isFinite(n))
   return out.length > 0 ? out : undefined
 }
 
+/**
+ * Resolve the GROOVE TARGET from the params. The host passes a typed `target`
+ * (`{kind:"drums",...}` / `{kind:"phrases",...}`); for LLM/back-compat we also
+ * accept a flat `targetKind` + `selectedPitches`/`targetTrackId`. Defaults to a
+ * drums target so legacy callers keep their behaviour.
+ */
+const resolveTarget = (params: Record<string, unknown>): GrooveTarget => {
+  const t = params.target
+  if (t && typeof t === "object" && (t as { kind?: string }).kind === "phrases") {
+    const trackId = (t as { trackId?: unknown }).trackId
+    return { kind: "phrases", trackId: typeof trackId === "string" ? trackId : undefined }
+  }
+  if (t && typeof t === "object" && (t as { kind?: string }).kind === "drums") {
+    const d = t as { trackId?: unknown; selectedPitches?: unknown; laneLabels?: unknown }
+    return {
+      kind: "drums",
+      trackId: typeof d.trackId === "string" ? d.trackId : undefined,
+      selectedPitches: coerceTargets(d.selectedPitches),
+      laneLabels: Array.isArray(d.laneLabels) ? d.laneLabels.map(String) : undefined,
+    }
+  }
+  // Flat fallback (LLM): targetKind + selectedPitches.
+  if (params.targetKind === "phrases") {
+    return { kind: "phrases", trackId: typeof params.targetTrackId === "string" ? params.targetTrackId : undefined }
+  }
+  return { kind: "drums", selectedPitches: coerceTargets(params.selectedPitches ?? params.targetPitches) }
+}
+
 const buildOpts = (
   params: Record<string, unknown>,
   ctx: ActionContext
 ): GrooveBuildOpts => ({
+  target: resolveTarget(params),
   intensity: Number(params.intensity ?? 1),
-  withPhrases: Boolean(params.withPhrases),
   layer: Boolean(params.layer),
   rng: ctx.rng,
   phraseDensity: params.phraseDensity != null ? Number(params.phraseDensity) : undefined,
-  targetPitches: coerceTargets(params.targetPitches),
 })
 
 const resolveRhythmId = (params: Record<string, unknown>): string =>
@@ -179,7 +202,6 @@ export const randomizeAction: ModuleAction = {
       describe: "Apply this much vary on top of the picked rhythm (0 = pristine).",
     },
     intensity: sharedParams.intensity,
-    withPhrases: sharedParams.withPhrases,
   },
   stochastic: true,
   impact: "mutate",

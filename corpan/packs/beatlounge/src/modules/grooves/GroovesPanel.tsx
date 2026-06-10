@@ -1,11 +1,15 @@
 /**
- * beatlounge — the reusable GROOVES PANEL: the single source of truth for the
- * world-rhythm browser + Apply / Layer / Vary / Evolve / Randomize actions.
+ * beatlounge — the reusable GROOVE-BRAIN PANEL: the single source of truth for
+ * the world-rhythm browser + Apply / Layer / Vary / Evolve / Randomize actions.
  *
- * It is embedded in TWO places:
- *   • the standalone Grooves module (GroovesImmersive renders it full-bleed), and
- *   • the Drums page (StepGridImmersive embeds it as an in-screen panel so you
- *     browse styles and watch the live grid update without leaving the screen).
+ * It is GRID-AGNOSTIC. The HOST tells it what it's driving via the typed
+ * `target` prop — the same browse + actions apply the same corpus + engine to
+ * EITHER grid; only the write target differs:
+ *   • the standalone Grooves module + the Drums page → `target.kind === "drums"`
+ *     (write the rhythm onto the drum track; the drum-lane selection re-points
+ *     it 0/1/N), and
+ *   • the Phrase Jam page → `target.kind === "phrases"` (distribute saved bank
+ *     snippets onto the rhythm's onsets on the phrase track).
  *
  *   • STYLE PICKER — families as sections; each rhythm a tappable card with a
  *     mini-pattern thumbnail. Search filters by name/origin/tag.
@@ -13,8 +17,8 @@
  *     approx-voice footnote when the kit substitutes a percussion role.
  *   • ACTIONS — Apply (replace), Layer (stack additively), Vary (small change),
  *     Evolve (drift), Randomize (re-roll). Each dispatches ONE undo batch.
- *   • OPTIONS — an Intensity slider + a "Lay phrases on the groove" toggle
- *     (DISABLED with a visible hint when no phrase track / empty bank).
+ *   • OPTIONS — an Intensity slider; a drums-context "applying to…" hint (0/1/N
+ *     lanes); a phrases-context hint that DISABLES Apply when the bank is empty.
  *
  * Applying only WRITES the grid; it never starts playback ("setup, don't play").
  * Failures surface via host.toast; everything is noisy-not-silent.
@@ -23,12 +27,12 @@
 import { useMemo, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
+import type { Midi } from "../../model/document"
 import { useBeatloungeStore } from "../../store/store"
 import { isFragmentTrack } from "../../model/document"
 import { groupedByFamily, FAMILY_META, getRhythm, type Rhythm } from "../../rhythm"
 import { resolveRole } from "../../rhythm"
 import { bankSnippets } from "../../phrase/bank"
-import { runAction } from "../runAction"
 import {
   applyAction,
   layerAction,
@@ -39,26 +43,30 @@ import {
 import { buildPreview } from "./preview"
 import { GrooveMark } from "./GrooveMark"
 
+/**
+ * What this panel is driving. The host knows; the panel never guesses. Drums
+ * carries the lane-head selection for 0/1/N re-pointing; phrases just names the
+ * fragment track to distribute the bank onto.
+ */
+export type GroovesPanelTarget =
+  | { kind: "drums"; trackId?: string; selectedPitches?: Midi[]; laneLabels?: string[] }
+  | { kind: "phrases"; trackId?: string }
+
 interface Props {
   store: BeatloungeStore
   host: BeatloungeHost
   /**
    * "standalone" = the full module screen (its own toolbar/header);
-   * "embedded" = inside the Drums page (compact, no big title — the host
-   * panel chrome owns the heading). Default "standalone".
+   * "embedded" = inside a host page (compact, no big title — the host panel
+   * chrome owns the heading). Default "standalone".
    */
   variant?: "standalone" | "embedded"
   /**
-   * DRUM-LANE TARGETING. The kit pitches the drum page has selected (its lane
-   * heads). Apply / Layer / Vary / Evolve thread this into the engine:
-   *   • empty → natural role→pitch mapping (the default behaviour).
-   *   • one   → collapse the whole rhythm onto that one voice.
-   *   • N     → distribute the top-N lanes across them.
-   * Omitted in the standalone module (no lane selection there).
+   * The GRID this panel drives. The host supplies it (drums vs phrases). Default
+   * is a bare drums target (resolve/create the drum track) so the standalone
+   * module keeps today's behaviour.
    */
-  targetPitches?: number[]
-  /** Human labels for the selected pitches, for the "applying to …" hint. */
-  targetLabels?: string[]
+  target?: GroovesPanelTarget
 }
 
 const FAMILY_LABEL = new Map(FAMILY_META.map((f) => [f.family, f.label]))
@@ -67,13 +75,15 @@ export const GroovesPanel = ({
   store,
   host,
   variant = "standalone",
-  targetPitches,
-  targetLabels,
+  target = { kind: "drums" },
 }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const bankCount = useMemo(() => bankSnippets(doc).length, [doc])
   const hasPhraseTrack = useMemo(() => doc.tracks.some(isFragmentTrack), [doc])
-  const phrasesPossible = hasPhraseTrack && bankCount > 0
+
+  // For a phrases target, Apply needs a fragment track AND a non-empty bank.
+  const phrasesReady = target.kind === "phrases" && hasPhraseTrack && bankCount > 0
+  const applyDisabled = target.kind === "phrases" && !phrasesReady
 
   const groups = useMemo(() => groupedByFamily(), [])
   const allRhythms = useMemo(() => groups.flatMap((g) => g.rhythms), [groups])
@@ -81,7 +91,6 @@ export const GroovesPanel = ({
   const [selectedId, setSelectedId] = useState<string>(allRhythms[0]?.id ?? "")
   const [query, setQuery] = useState("")
   const [intensity, setIntensity] = useState(1)
-  const [withPhrases, setWithPhrases] = useState(false)
 
   const selected = getRhythm(selectedId) ?? allRhythms[0]
 
@@ -106,6 +115,14 @@ export const GroovesPanel = ({
     action: typeof applyAction,
     extra: Record<string, unknown> = {}
   ) => {
+    if (applyDisabled) {
+      host.toast(
+        hasPhraseTrack
+          ? "Save some phrases to lay on a groove."
+          : "Add a phrase track and save phrases first."
+      )
+      return
+    }
     const before = store.vanilla.getState().doc
     const rng = () => Math.random()
     const result = action.run(
@@ -113,11 +130,8 @@ export const GroovesPanel = ({
       {
         rhythmId: selected?.id,
         intensity,
-        withPhrases: withPhrases && phrasesPossible,
-        // The drum page's lane selection re-points the groove (0/1/N voices).
-        ...(targetPitches && targetPitches.length > 0
-          ? { targetPitches }
-          : {}),
+        // The host-chosen grid (drums vs phrases) + drum-lane re-pointing.
+        target,
         ...extra,
       }
     )
@@ -137,20 +151,8 @@ export const GroovesPanel = ({
     })
   }
 
-  // Randomize jumps the selection to whatever it rolled so the detail follows.
-  const onRandomize = () => {
-    const before = store.vanilla.getState().doc
-    const result = runAction(store, randomizeAction, {
-      doc: store.vanilla.getState().doc,
-    })
-    if (result.commands.length === 0) {
-      host.toast(result.summary || "Couldn't randomize")
-      return
-    }
-    host.toast(result.summary, {
-      undo: () => store.vanilla.getState().doc !== before && store.undo(),
-    })
-  }
+  // Randomize re-rolls onto the SAME target grid (drums or phrases).
+  const onRandomize = () => runGroove(randomizeAction)
 
   if (!selected) {
     return <div className="bl-grid-empty">No rhythms available.</div>
@@ -221,35 +223,35 @@ export const GroovesPanel = ({
               />
               <span className="bl-grooves-opt-val">{Math.round(intensity * 100)}%</span>
             </label>
-
-            <label
-              className={`bl-grooves-toggle${phrasesPossible ? "" : " is-disabled"}`}
-            >
-              <input
-                type="checkbox"
-                checked={withPhrases && phrasesPossible}
-                disabled={!phrasesPossible}
-                onChange={(e) => setWithPhrases(e.target.checked)}
-              />
-              <span>Lay phrases on the groove</span>
-            </label>
-            {!phrasesPossible && (
-              <p className="bl-grooves-hint" role="note">
-                {hasPhraseTrack
-                  ? "Save some phrases (Phrase Sampler) to lay them on a groove."
-                  : "Add a phrase track and save phrases to lay them on a groove."}
-              </p>
-            )}
           </div>
 
-          <TargetHint pitches={targetPitches} labels={targetLabels} />
+          {/* Context-appropriate "applying to…" hint — drums: 0/1/N lanes;
+              phrases: the bank/track readiness. */}
+          {target.kind === "drums" ? (
+            <DrumTargetHint
+              pitches={target.selectedPitches}
+              labels={target.laneLabels}
+            />
+          ) : (
+            <PhraseTargetHint
+              ready={phrasesReady}
+              hasPhraseTrack={hasPhraseTrack}
+              bankCount={bankCount}
+            />
+          )}
 
           <div className="bl-grooves-actions" data-bl-nocapture>
             <button
               type="button"
               className="bl-grooves-btn is-primary"
               onClick={() => runGroove(applyAction)}
-              title="Replace the drum pattern with this groove"
+              disabled={applyDisabled}
+              aria-disabled={applyDisabled}
+              title={
+                target.kind === "phrases"
+                  ? "Distribute your saved phrases onto this groove"
+                  : "Replace the drum pattern with this groove"
+              }
             >
               Apply
             </button>
@@ -257,7 +259,13 @@ export const GroovesPanel = ({
               type="button"
               className="bl-grooves-btn"
               onClick={() => runGroove(layerAction)}
-              title="Stack this groove OVER the current pattern (don't replace)"
+              disabled={applyDisabled}
+              aria-disabled={applyDisabled}
+              title={
+                target.kind === "phrases"
+                  ? "Add phrases on this groove without clearing the current ones"
+                  : "Stack this groove OVER the current pattern (don't replace)"
+              }
             >
               Layer
             </button>
@@ -265,6 +273,8 @@ export const GroovesPanel = ({
               type="button"
               className="bl-grooves-btn"
               onClick={() => runGroove(varyAction, { amount: 0.25 })}
+              disabled={applyDisabled}
+              aria-disabled={applyDisabled}
               title="Keep the flavor, make small changes"
             >
               Vary
@@ -273,6 +283,8 @@ export const GroovesPanel = ({
               type="button"
               className="bl-grooves-btn"
               onClick={() => runGroove(evolveAction, { generations: 4, amount: 0.2 })}
+              disabled={applyDisabled}
+              aria-disabled={applyDisabled}
               title="Drift the groove further across several generations"
             >
               Evolve
@@ -281,6 +293,8 @@ export const GroovesPanel = ({
               type="button"
               className="bl-grooves-btn"
               onClick={onRandomize}
+              disabled={applyDisabled}
+              aria-disabled={applyDisabled}
               title="Re-roll a fresh groove from the whole world"
             >
               Randomize
@@ -294,10 +308,11 @@ export const GroovesPanel = ({
 
 // ---------------------------------------------------------------- sub-views
 /**
- * The "applying to…" hint above the action buttons — surfaces the live drum-lane
- * selection so the user knows the 0/1/N targeting mode before they Apply.
+ * DRUMS context — the "applying to…" hint above the action buttons surfaces the
+ * live drum-lane selection so the user knows the 0/1/N targeting mode before
+ * they Apply. (Only the drums context renders this.)
  */
-const TargetHint = ({
+const DrumTargetHint = ({
   pitches,
   labels,
 }: {
@@ -306,8 +321,8 @@ const TargetHint = ({
 }) => {
   const n = pitches?.length ?? 0
   if (n === 0) {
-    // No selection → the default kit-voice mapping. Only shown in the drum page
-    // (the standalone module passes no targetPitches → labels undefined too).
+    // No selection → the default kit-voice mapping. Only shown when the host
+    // passes lane labels (the drum page); the standalone module passes none.
     if (labels === undefined) return null
     return (
       <p className="bl-grooves-target is-none" role="note">
@@ -327,6 +342,41 @@ const TargetHint = ({
         <>
           Spreads the rhythm across <strong>{n}</strong> voices: {names}.
         </>
+      )}
+    </p>
+  )
+}
+
+/**
+ * PHRASES context — the hint tells the user the groove will lay their SAVED bank
+ * snippets onto its onsets, and (when the bank/track isn't ready) why Apply is
+ * disabled. Never a silent no-op.
+ */
+const PhraseTargetHint = ({
+  ready,
+  hasPhraseTrack,
+  bankCount,
+}: {
+  ready: boolean
+  hasPhraseTrack: boolean
+  bankCount: number
+}) => {
+  if (ready) {
+    return (
+      <p className="bl-grooves-target is-on" role="note">
+        Lays your <strong>{bankCount}</strong> saved phrase
+        {bankCount === 1 ? "" : "s"} onto this groove's onsets.
+      </p>
+    )
+  }
+  return (
+    <p className="bl-grooves-target" role="note">
+      {hasPhraseTrack ? (
+        <>
+          Save some phrases in <strong>Phrases</strong> to lay them on a groove.
+        </>
+      ) : (
+        <>Add a phrase track and save phrases to lay them on a groove.</>
       )}
     </p>
   )
