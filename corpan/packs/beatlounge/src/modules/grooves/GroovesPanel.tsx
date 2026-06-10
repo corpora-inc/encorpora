@@ -48,11 +48,28 @@ interface Props {
    * panel chrome owns the heading). Default "standalone".
    */
   variant?: "standalone" | "embedded"
+  /**
+   * DRUM-LANE TARGETING. The kit pitches the drum page has selected (its lane
+   * heads). Apply / Layer / Vary / Evolve thread this into the engine:
+   *   • empty → natural role→pitch mapping (the default behaviour).
+   *   • one   → collapse the whole rhythm onto that one voice.
+   *   • N     → distribute the top-N lanes across them.
+   * Omitted in the standalone module (no lane selection there).
+   */
+  targetPitches?: number[]
+  /** Human labels for the selected pitches, for the "applying to …" hint. */
+  targetLabels?: string[]
 }
 
 const FAMILY_LABEL = new Map(FAMILY_META.map((f) => [f.family, f.label]))
 
-export const GroovesPanel = ({ store, host, variant = "standalone" }: Props) => {
+export const GroovesPanel = ({
+  store,
+  host,
+  variant = "standalone",
+  targetPitches,
+  targetLabels,
+}: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const bankCount = useMemo(() => bankSnippets(doc).length, [doc])
   const hasPhraseTrack = useMemo(() => doc.tracks.some(isFragmentTrack), [doc])
@@ -97,6 +114,10 @@ export const GroovesPanel = ({ store, host, variant = "standalone" }: Props) => 
         rhythmId: selected?.id,
         intensity,
         withPhrases: withPhrases && phrasesPossible,
+        // The drum page's lane selection re-points the groove (0/1/N voices).
+        ...(targetPitches && targetPitches.length > 0
+          ? { targetPitches }
+          : {}),
         ...extra,
       }
     )
@@ -221,6 +242,8 @@ export const GroovesPanel = ({ store, host, variant = "standalone" }: Props) => 
             )}
           </div>
 
+          <TargetHint pitches={targetPitches} labels={targetLabels} />
+
           <div className="bl-grooves-actions" data-bl-nocapture>
             <button
               type="button"
@@ -270,6 +293,45 @@ export const GroovesPanel = ({ store, host, variant = "standalone" }: Props) => 
 }
 
 // ---------------------------------------------------------------- sub-views
+/**
+ * The "applying to…" hint above the action buttons — surfaces the live drum-lane
+ * selection so the user knows the 0/1/N targeting mode before they Apply.
+ */
+const TargetHint = ({
+  pitches,
+  labels,
+}: {
+  pitches?: number[]
+  labels?: string[]
+}) => {
+  const n = pitches?.length ?? 0
+  if (n === 0) {
+    // No selection → the default kit-voice mapping. Only shown in the drum page
+    // (the standalone module passes no targetPitches → labels undefined too).
+    if (labels === undefined) return null
+    return (
+      <p className="bl-grooves-target is-none" role="note">
+        Applies to the <strong>whole kit</strong> (each voice in its place).
+        Select drum lanes to re-point this rhythm.
+      </p>
+    )
+  }
+  const names = (labels ?? []).join(", ")
+  return (
+    <p className="bl-grooves-target is-on" role="note">
+      {n === 1 ? (
+        <>
+          Plays the <strong>whole rhythm</strong> on <strong>{names}</strong>.
+        </>
+      ) : (
+        <>
+          Spreads the rhythm across <strong>{n}</strong> voices: {names}.
+        </>
+      )}
+    </p>
+  )
+}
+
 const RhythmCard = ({
   rhythm,
   selected,

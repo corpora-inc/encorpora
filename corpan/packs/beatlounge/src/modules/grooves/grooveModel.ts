@@ -72,6 +72,14 @@ export interface GrooveBuildOpts {
   rng?: () => number
   /** Pitch ladder for phrase placement (semitones). Default a minor pentatonic. */
   phraseScale?: number[]
+  /**
+   * DRUM TARGETING — which kit voice(s) the rhythm plays on, from the drum
+   * page's lane-head selection. Passed straight to `applyRhythm`:
+   *   • empty/undefined → natural role→pitch mapping (unchanged).
+   *   • one pitch → collapse the whole rhythm onto that voice.
+   *   • N pitches → distribute the top-N lanes across them.
+   */
+  targetPitches?: number[]
 }
 
 const DEFAULT_PHRASE_SCALE = [0, 3, 5, 7, 10, 12]
@@ -124,7 +132,11 @@ export const buildGrooveCommands = (
   // Duration: a touch under a cell so adjacent hits don't bleed. Use the drum
   // track's grid cell as the reference (it's a one-shot kit anyway).
   const dur = Math.max(1, Math.round(gridTicks(refGrid) / 2))
-  const placements = applyRhythm(rhythm, { loopTicks, intensity: opts.intensity })
+  const placements = applyRhythm(rhythm, {
+    loopTicks,
+    intensity: opts.intensity,
+    targetPitches: opts.targetPitches,
+  })
   const grooveNotes: Omit<NoteEvent, "id">[] = placements.map((p) => ({
     tick: p.tick,
     duration: dur,
