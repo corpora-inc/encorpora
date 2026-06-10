@@ -6,6 +6,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Phrase Jam — sequence saved snippets like drums + a live pitch ribbon.** A
+  drum-style step grid where each row is a saved phrase snippet from the bank
+  (`doc.fragmentLibrary`) and columns are the loop's steps: tap to place/clear a
+  snippet on the beat. Per-lane pitch (−12..+12) re-pitches the same word across
+  the bar into a riff. A prominent live pitch ribbon bends the whole phrase
+  track in real time (`pitchOffset`) while it plays, snapping back to centre on
+  release, with optional scale-lock. A Scramble action (re)places snippets
+  stochastically for happy accidents (one undo step).
+
+### Added
 - **Wave 3 — autonomous knob-tweakers.** Instead of hand-tweaking, set off agents
   that drive params over time so the loop evolves itself.
   - The `Modulator` model (sine/triangle/saw/square/random/drift shapes, tempo-
