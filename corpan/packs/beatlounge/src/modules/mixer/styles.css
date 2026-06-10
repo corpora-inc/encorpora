@@ -79,3 +79,41 @@
   gap: var(--bl-s2);
   flex: 1;
 }
+
+/* ---- channel strip head: name + remove ---- */
+.bl-mixstrip-head {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  width: 100%;
+}
+.bl-mixstrip-head .bl-mixstrip-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-mixstrip-remove {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--bl-border);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-mixstrip-remove:active {
+  transform: scale(0.9);
+}
+.bl-mixstrip-remove:hover {
+  color: var(--bl-error);
+  border-color: var(--bl-error);
+}

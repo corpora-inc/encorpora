@@ -22,7 +22,8 @@
 import * as Tone from "tone"
 import type { Instrument, TriggerNote, AssetLoader } from "../contracts/engine"
 import type { InstrumentConfig, Id, FragmentRef } from "../model/document"
-import type { AudioSource, FragmentAudioBytes } from "../phrase/audioSource"
+import type { AudioSource } from "../phrase/audioSource"
+import { decodeFragmentBytes } from "../phrase/decode"
 
 type TtsConfig = Extract<InstrumentConfig, { kind: "ttsFragment" }>
 
@@ -44,40 +45,6 @@ interface FragmentVoice {
   /** True when a real, decoded sample is ready (else synth-vox). */
   ready: boolean
   reversed: boolean
-}
-
-/** Decode raw fragment bytes into an AudioBuffer the GrainPlayer can host. */
-const decodeBytes = async (
-  ctx: BaseAudioContext,
-  audio: FragmentAudioBytes
-): Promise<AudioBuffer | null> => {
-  if (!audio.bytes || audio.bytes.byteLength === 0) return null
-  try {
-    if (audio.codec === "wav") {
-      // A complete WAV container — let the context decode it.
-      return await ctx.decodeAudioData(audio.bytes.slice(0))
-    }
-    // Raw PCM — wrap the samples into a buffer at the stated sample rate.
-    const sr = audio.sampleRate || ctx.sampleRate
-    const sampleCount =
-      audio.codec === "pcm-f32"
-        ? audio.bytes.byteLength / 4
-        : audio.bytes.byteLength / 2
-    const buf = ctx.createBuffer(1, Math.max(1, sampleCount), sr)
-    // Write directly into the channel's own ArrayBuffer-backed Float32Array.
-    const channel = buf.getChannelData(0)
-    if (audio.codec === "pcm-f32") {
-      channel.set(new Float32Array(audio.bytes).subarray(0, channel.length))
-    } else {
-      const i16 = new Int16Array(audio.bytes)
-      const n = Math.min(i16.length, channel.length)
-      for (let i = 0; i < n; i++) channel[i] = i16[i] / 0x8000
-    }
-    return buf
-  } catch (err) {
-    console.warn("[beatlounge/ttsFragment] decode failed:", err)
-    return null
-  }
 }
 
 export const createTtsFragmentInstrument = (
@@ -121,7 +88,7 @@ export const createTtsFragmentInstrument = (
     try {
       const bytes = await deps.audioSource.getCachedAudio(ref.sha256)
       if (!bytes) return
-      const buffer = await decodeBytes(Tone.getContext().rawContext, bytes)
+      const buffer = await decodeFragmentBytes(Tone.getContext().rawContext, bytes)
       if (!buffer || disposed) return
       const player = new Tone.GrainPlayer({
         grainSize: 0.1,

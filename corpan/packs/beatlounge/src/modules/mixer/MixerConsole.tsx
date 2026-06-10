@@ -75,10 +75,21 @@ const ChannelStrip = ({
 
   return (
     <div className="bl-mixstrip" data-bl-nocapture>
-      <span className="bl-mixstrip-name" title={track.name}>
-        <span className="bl-dot" style={{ background: track.color ?? "var(--bl-accent)" }} />
-        {track.name}
-      </span>
+      <div className="bl-mixstrip-head">
+        <span className="bl-mixstrip-name" title={track.name}>
+          <span className="bl-dot" style={{ background: track.color ?? "var(--bl-accent)" }} />
+          {track.name}
+        </span>
+        <button
+          type="button"
+          className="bl-mixstrip-remove"
+          aria-label={`Remove ${track.name}`}
+          title="Remove track"
+          onClick={() => store.dispatch({ t: "removeTrack", trackId: track.id })}
+        >
+          ×
+        </button>
+      </div>
       <PanSlider value={track.pan} onChange={(v) => set("pan", v)} />
       <div className="bl-mixstrip-body">
         <Meter level={level} segments={14} />

@@ -20,6 +20,7 @@ import type { EntryOut } from "../../sdk/types"
 import { Glyph } from "../../bl-ui"
 import { applyCommands } from "../runAction"
 import type { AudioSource } from "../../phrase/audioSource"
+import { auditionPhrase } from "../../phrase/audition"
 import {
   buildClip,
   clipToCommands,
@@ -139,15 +140,12 @@ export const PhraseSamplerImmersive = ({ host, store, audioSource, onPlaced }: P
   const audition = useCallback(
     (entry: EntryOut) => {
       const content = resolvePhraseContent(entry, languages)
-      if (content.phraseText) {
-        try {
-          void hostApi.speak(content.targetLang, content.phraseText)
-        } catch (err) {
-          console.warn("[beatlounge/phrase-sampler] speak failed:", err)
-        }
-      }
+      if (!content.phraseText) return
+      // ALWAYS through our own Web Audio graph — never the OS speaker (which
+      // ducks the music). Renders TTS to a buffer and plays it.
+      void auditionPhrase(host.audioContext(), audioSource, content.phraseText, content.targetLang)
     },
-    [hostApi, languages]
+    [host, audioSource, languages]
   )
 
   const place = useCallback(
