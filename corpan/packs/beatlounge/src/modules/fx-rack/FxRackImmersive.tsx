@@ -34,6 +34,11 @@ import {
   strParam,
   type EffectParamSpec,
 } from "../../effects/params"
+import {
+  TIME_DIVISIONS,
+  divisionSeconds,
+  closestDivisionId,
+} from "../../effects/timeDivisions"
 import { addInsertAction, clearInsertsAction } from "./actions"
 import { runAction } from "../runAction"
 
@@ -108,6 +113,7 @@ export const FxRackImmersive = ({ host, store, trackId: initialTrackId }: Props)
             fx={fx}
             index={i}
             count={track.inserts.length}
+            bpm={doc.bpm}
           />
         ))}
 
@@ -166,10 +172,12 @@ interface CardProps {
   fx: EffectNode
   index: number
   count: number
+  bpm: number
 }
 
-const EffectCard = ({ store, host, trackId, fx, index, count }: CardProps) => {
+const EffectCard = ({ store, host, trackId, fx, index, count, bpm }: CardProps) => {
   const spec = EFFECT_SPECS[fx.kind]
+  const timeSpec = spec.params.find((p) => p.key === "delayTime")
 
   const setParam = (key: string, value: number | string) =>
     store.dispatch({
@@ -251,6 +259,14 @@ const EffectCard = ({ store, host, trackId, fx, index, count }: CardProps) => {
         </div>
       </div>
 
+      {timeSpec && (
+        <SyncRow
+          bpm={bpm}
+          seconds={numParam(fx.params, timeSpec)}
+          onPick={(beats) => setParam("delayTime", divisionSeconds(beats, bpm))}
+        />
+      )}
+
       <div className="bl-fxcard-params" data-bl-nocapture>
         {spec.params.map((p) =>
           p.type === "enum" ? (
@@ -259,6 +275,37 @@ const EffectCard = ({ store, host, trackId, fx, index, count }: CardProps) => {
             <ParamKnob key={p.key} spec={p} fx={fx} onChange={(v) => setParam(p.key, v)} />
           )
         )}
+      </div>
+    </div>
+  )
+}
+
+// ----------------------------------------------------------- beat-sync row
+const SyncRow = ({
+  bpm,
+  seconds,
+  onPick,
+}: {
+  bpm: number
+  seconds: number
+  onPick: (beats: number) => void
+}) => {
+  const active = closestDivisionId(seconds, bpm)
+  return (
+    <div className="bl-fxsync" data-bl-nocapture>
+      <span className="bl-fxsync-label">Sync</span>
+      <div className="bl-fxsync-chips">
+        {TIME_DIVISIONS.map((d) => (
+          <button
+            key={d.id}
+            type="button"
+            className={`bl-fxsync-chip${active === d.id ? " is-on" : ""}`}
+            onClick={() => onPick(d.beats)}
+            aria-pressed={active === d.id}
+          >
+            {d.label}
+          </button>
+        ))}
       </div>
     </div>
   )

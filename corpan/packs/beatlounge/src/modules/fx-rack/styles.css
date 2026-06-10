@@ -209,3 +209,48 @@
   font: var(--bl-fs-micro) / 1 var(--bl-font);
   color: var(--bl-text-dim);
 }
+
+/* ---- delay beat-sync presets (lock the time to the grid) ---- */
+.bl-fxsync {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2) var(--bl-s3) 0;
+}
+.bl-fxsync-label {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+  flex: 0 0 auto;
+}
+.bl-fxsync-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s1);
+}
+.bl-fxsync-chip {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  background: var(--bl-cell-off);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: 4px 7px;
+  min-height: 28px;
+  cursor: pointer;
+  transition: color var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-fxsync-chip:active {
+  transform: scale(0.94);
+}
+.bl-fxsync-chip.is-on {
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  border-color: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
