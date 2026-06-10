@@ -1,7 +1,11 @@
 import { addPluginListener, invoke } from "@tauri-apps/api/core"
 import { listen } from "@tauri-apps/api/event"
 
-import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
+import {
+  speakWithStackPrefs,
+  speakConcurrentWithStackPrefs,
+  getPreferredVoiceId,
+} from "@/util/speakWithStackPrefs"
 import { getVoicesCached, langMatchScore, sortVoicesWithLangBias } from "@/util/tts-voices"
 import { createVoiceTTS } from "@/util/speak"
 import { trackEvent } from "@/util/analytics"
@@ -182,6 +186,70 @@ export const createHostApi = (packId?: string): HostApi => {
     }
     const { rate } = useSettingsStore.getState()
     return await speakConcurrentWithStackPrefs(uiCode, text, rate)
+  }
+
+  // Render TTS to a RAW AUDIO buffer instead of speaking it (the music-pack
+  // capture path — no speaker playback ⇒ no ducking). Bridges to the native
+  // `synthesize_to_buffer` command (iOS AVSpeechSynthesizer.write / Android
+  // synthesizeToFile); the native side returns base64 PCM/WAV + metadata, which
+  // we decode to an ArrayBuffer for the pack. Rejects on hosts/platforms that
+  // don't support it (desktop) — packs feature-detect + degrade.
+  const synthesizeToBuffer = async (
+    text: string,
+    lang: string,
+    voiceId?: string,
+  ): Promise<{
+    pcm: ArrayBuffer
+    sampleRate: number
+    channels: number
+    durationMs: number
+    voiceId: string
+    codec: "wav" | "pcm-i16" | "pcm-f32"
+  }> => {
+    const { rate } = useSettingsStore.getState()
+    // If the pack didn't pin a voice, reuse the stack's preferred voice so the
+    // rendered audio matches what `speak()` would have sounded like.
+    const resolvedVoiceId = voiceId ?? (await getPreferredVoiceId(lang))
+
+    const res = await invoke<{
+      pcmBase64: string
+      sampleRate: number
+      channels: number
+      durationMs: number
+      codec: string
+      voiceId: string
+    }>("plugin:tts|synthesize_to_buffer", {
+      args: {
+        text,
+        language: lang,
+        rate,
+        voiceId: resolvedVoiceId,
+      },
+    })
+
+    // base64 → ArrayBuffer (atob is available in the WKWebView/WebView context).
+    const binary = atob(res.pcmBase64)
+    const len = binary.length
+    const bytes = new Uint8Array(len)
+    for (let i = 0; i < len; i++) {
+      bytes[i] = binary.charCodeAt(i)
+    }
+
+    const codec: "wav" | "pcm-i16" | "pcm-f32" =
+      res.codec === "pcm-i16"
+        ? "pcm-i16"
+        : res.codec === "pcm-f32"
+          ? "pcm-f32"
+          : "wav"
+
+    return {
+      pcm: bytes.buffer,
+      sampleRate: res.sampleRate,
+      channels: res.channels,
+      durationMs: res.durationMs,
+      voiceId: res.voiceId || resolvedVoiceId || "",
+      codec,
+    }
   }
 
   const dispose = () => {
@@ -844,6 +912,9 @@ export const createHostApi = (packId?: string): HostApi => {
       if (disposed) return
       const { rate } = useSettingsStore.getState()
       await createVoiceTTS(uiCode)(text, rate, voiceId)
+    },
+    synthesizeToBuffer: async (text: string, lang: string, voiceId?: string) => {
+      return await synthesizeToBuffer(text, lang, voiceId)
     },
     // Native clipboard via tauri-plugin-clipboard-manager — the web
     // `navigator.clipboard` API is blocked in the WKWebView (NotAllowedError),

@@ -44,6 +44,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
         .invoke_handler(tauri::generate_handler![
             commands::speak,
             commands::speak_concurrent,
+            commands::synthesize_to_buffer,
             commands::stop,
             commands::open_tts_settings,
             commands::install_tts_data_if_supported,

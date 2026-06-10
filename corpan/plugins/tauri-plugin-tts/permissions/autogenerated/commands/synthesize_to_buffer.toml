@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-synthesize-to-buffer"
+description = "Enables the synthesize_to_buffer command without any pre-configured scope."
+commands.allow = ["synthesize_to_buffer"]
+
+[[permission]]
+identifier = "deny-synthesize-to-buffer"
+description = "Denies the synthesize_to_buffer command without any pre-configured scope."
+commands.deny = ["synthesize_to_buffer"]

@@ -9,6 +9,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- `synthesize_to_buffer` command: render TTS to a RAW AUDIO buffer WITHOUT
+  speaker playback, so a music pack can play captured speech through its own
+  Web Audio graph (OS `speak()` ducks other audio and never restores). Returns
+  `{ pcmBase64, sampleRate, channels, durationMs, codec, voiceId }`. iOS uses
+  `AVSpeechSynthesizer.write` (no audio session ⇒ no ducking); Android uses
+  `TextToSpeech.synthesizeToFile`; both emit a 16-bit PCM WAV (`codec: "wav"`).
+  Desktop returns an `unsupported` error. Additive — existing `speak`/
+  `speak_concurrent`/`stop`/`list_voices` are unchanged. Exposed to packs via
+  `hostApi.synthesizeToBuffer` (feature-detected).
+
 ### Changed
 - `openTtsSettings` (iOS): removed all private Settings URL schemes
   (`prefs:`, `App-Prefs:`, `settings-navigation:`) — every one is rejected by
