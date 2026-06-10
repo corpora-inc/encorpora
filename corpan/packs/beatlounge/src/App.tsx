@@ -1,42 +1,57 @@
-import { useEffect, useState } from "react"
+/**
+ * beatlounge — App: the composition root.
+ *
+ * Constructs the spine (command bus + store with debounced IDB persistence),
+ * the audio facade (the real lookahead scheduler + audio graph), the host (via
+ * a chrome bridge so it exists before the shell), and the
+ * module registry with the step-grid module placed on the Stage. Then renders
+ * the Stage + Dock-Rail + Immersive shell.
+ */
+
+import { useEffect, useMemo } from "react"
 import type { HostApi } from "./sdk/types"
 import { createCommandBus } from "./model/commandBus"
-import { createDefaultDoc, type BeatloungeDoc } from "./model/document"
+import { createDefaultDoc } from "./model/document"
+import { createBeatloungeAudio } from "./engine/createAudio"
+import { createBeatloungeStore } from "./store/store"
+import { createChromeBridge } from "./host/chromeBridge"
+import { createHost } from "./host/createHost"
+import { createFormObserver } from "./host/formFactor"
+import { createModuleRegistry } from "./modules/registry"
+import { createStepGridModule } from "./modules/step-grid"
+import { Shell } from "./shell/Shell"
 
-/**
- * Wave 0 boot shell — proves the command-bus spine wires up and renders the
- * default document. Team SHELL replaces this with the Stage + Rail + immersive
- * system in Wave 1; the contracts it consumes (commandBus, document) are frozen.
- */
 export const App = ({ hostApi }: { hostApi: HostApi }) => {
-  const [bus] = useState(() => createCommandBus(createDefaultDoc(Date.now())))
-  const [doc, setDoc] = useState<BeatloungeDoc>(() => bus.snapshot())
+  const rig = useMemo(() => {
+    const bus = createCommandBus(createDefaultDoc(Date.now()))
+    const store = createBeatloungeStore(bus)
+    const audio = createBeatloungeAudio(bus)
+    const formObs = createFormObserver()
+    const bridge = createChromeBridge(formObs.get)
+    const host = createHost({ hostApi, bus, audio, chrome: bridge.chrome })
+    const registry = createModuleRegistry()
+    registry.register(createStepGridModule({ store, audio }))
+    return { bus, store, audio, formObs, bridge, host, registry }
+  }, [hostApi])
 
-  useEffect(() => bus.subscribe((d) => setDoc(d)), [bus])
-
-  const skin = "midnight"
-  void hostApi
+  // Hydrate from IndexedDB once, then own teardown.
+  useEffect(() => {
+    void rig.store.hydrateFromIdb()
+    return () => {
+      rig.store.dispose()
+      rig.audio.dispose()
+      rig.formObs.dispose()
+    }
+  }, [rig])
 
   return (
-    <div className="bl-root" data-skin={skin}>
-      <div className="bl-boot">
-        <div className="bl-wordmark">beatlounge</div>
-        <div style={{ color: "var(--bl-text-dim)", fontSize: "var(--bl-fs-label)" }}>
-          {doc.name} · {doc.bpm} bpm · {doc.tracks.length} tracks
-        </div>
-        <div className="bl-boot-tracks">
-          {doc.tracks.map((t) => (
-            <div className="bl-boot-track" key={t.id}>
-              <span className="bl-boot-dot" style={{ background: t.color }} />
-              <span className="bl-boot-name">{t.name}</span>
-              <span className="bl-boot-meta">
-                {t.kind === "instrument" ? t.instrument.kind : "tts"} ·{" "}
-                {t.kind === "instrument" ? t.notes.length : t.fragments.length} events
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <Shell
+      store={rig.store}
+      audio={rig.audio}
+      registry={rig.registry}
+      host={rig.host}
+      attachChrome={(chrome) => rig.bridge.set(chrome)}
+      skin="midnight"
+    />
   )
 }

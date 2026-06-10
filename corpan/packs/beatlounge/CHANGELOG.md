@@ -6,6 +6,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Wave 1 — shell + design system.** The premium dark UI half, built on the
+  frozen spine.
+  - Zustand store (`src/store/`) wrapping the CommandBus with debounced
+    IndexedDB persistence of the active song (DB "beatlounge", store "songs",
+    key "active") + async hydration via `bus.load`.
+  - `BeatloungeHost` builder (`src/host/`) with a chrome bridge, matchMedia
+    form-factor observer (phone < 600 / tablet / desktop ≥ 1024).
+  - `bl-ui` primitive library (`src/bl-ui/`): Transport (Space-to-toggle),
+    StepCell (tap + drag-paint), Knob (drag/wheel/arrows/double-tap-default),
+    Fader, MuteSolo, Meter — touch + mouse + keyboard, ≥44px hits, ARIA,
+    reduced-motion, inline-SVG glyphs (no emoji), pointer-capture chrome-bail.
+  - Stage + Dock-Rail + Immersive shell (`src/shell/`) with a single
+    `data-bl-chrome` recede owner, one-z-scale, swipe/Esc to exit immersive,
+    dignified toast with Undo. Bottom bar on phone, left rail on tablet/desktop.
+  - First real module: the **step-grid sequencer** (`src/modules/step-grid/`) —
+    read-only mini-grid tile + full interactive immersive grid (kick/snare/hat/
+    clap lanes, live playhead, drag-paint, per-track mute/solo/volume) with a
+    `clear` + `fillEveryOther` action registry for the future LLM command bar.
+  - Tests for the store (dispatch/undo/redo), the grid's step↔tick mapping, and
+    the module actions returning valid commands.
 - **Wave 0 — frozen spine.** New pack scaffold (`corpan/packs/beatlounge/`),
   the sibling-in-reverse of melopán: a dark, AI-driven, fully-featured beat
   sequencer that also teaches language.
