@@ -1005,6 +1005,26 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
   animation: bl-toast-in var(--bl-dur) var(--bl-ease);
 }
+.bl-toast-close {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin: -4px var(--bl-s1) -4px calc(-1 * var(--bl-s1));
+  padding: 0;
+  border: none;
+  border-radius: var(--bl-radius-pill);
+  background: transparent;
+  color: var(--bl-text-dim);
+  cursor: pointer;
+  transition: color var(--bl-dur-fast) var(--bl-ease), background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-toast-close:hover { color: var(--bl-text); background: var(--bl-surface); }
+.bl-toast-close:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
 .bl-toast-msg {
   font-size: var(--bl-fs-label);
   color: var(--bl-text);
