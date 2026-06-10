@@ -12,6 +12,8 @@ import type { AudioFacade } from "../contracts/audioFacade"
 import type { BeatloungeHost, ModuleRegistry } from "../contracts/module"
 import type { BeatloungeStore } from "../store/store"
 import { createStepGridModule } from "./step-grid"
+import { createMixerModule } from "./mixer"
+import { createFxRackModule } from "./fx-rack"
 
 export interface ModuleDeps {
   store: BeatloungeStore
@@ -21,10 +23,10 @@ export interface ModuleDeps {
 
 export const registerAllModules = (registry: ModuleRegistry, deps: ModuleDeps): void => {
   registry.register(createStepGridModule(deps))
-  // ---- Wave 2 modules (integrator wires each as it lands) ----
+  registry.register(createFxRackModule(deps))
+  registry.register(createMixerModule(deps))
+  // ---- remaining Wave 2 modules (integrator wires each as it lands) ----
   // registry.register(createDrumPadsModule(deps))
   // registry.register(createPianoRollModule(deps))
-  // registry.register(createMixerModule(deps))
-  // registry.register(createFxRackModule(deps))
   // registry.register(createPhraseSamplerModule(deps))
 }

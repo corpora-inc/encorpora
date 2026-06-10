@@ -1,0 +1,211 @@
+/**
+ * beatlounge — fx-rack module styles (co-located; Vite bundles into app.css).
+ * Uses only --bl-* tokens. No edits to styles.css.
+ */
+
+/* ---- tile ---- */
+.bl-fxtile-chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s1);
+  padding: var(--bl-s2);
+  align-content: flex-start;
+}
+.bl-fxtile-pill {
+  font: 600 var(--bl-fs-micro) / 1 var(--bl-font);
+  letter-spacing: 0.04em;
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  border-radius: var(--bl-radius-pill);
+  padding: 4px 9px;
+}
+.bl-fxtile-pill.is-off {
+  background: var(--bl-surface-2);
+  color: var(--bl-text-dim);
+}
+.bl-fxtile-empty {
+  font: var(--bl-fs-label) / 1.2 var(--bl-font);
+  color: var(--bl-text-dim);
+  padding: 0 var(--bl-s2);
+}
+.bl-fxtile-sends {
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+  padding: 0 var(--bl-s2) var(--bl-s2);
+}
+
+/* ---- immersive rack ---- */
+.bl-fxrack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  padding: var(--bl-s4);
+  height: 100%;
+  overflow: hidden auto;
+}
+.bl-fxrack-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+}
+.bl-fxrack-tracks {
+  display: flex;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+  flex: 1;
+}
+.bl-fxrack-chain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+
+.bl-fxcard {
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  padding: var(--bl-s3);
+  transition: opacity var(--bl-dur) var(--bl-ease);
+}
+.bl-fxcard.is-bypassed {
+  opacity: 0.5;
+}
+.bl-fxcard-head {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  margin-bottom: var(--bl-s2);
+}
+.bl-fxcard-power {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--bl-text-dim);
+  background: transparent;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 0;
+}
+.bl-fxcard-power.is-on {
+  border-color: var(--bl-accent);
+  background: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
+.bl-fxcard-name {
+  font: 600 var(--bl-fs-body) / 1 var(--bl-font);
+  color: var(--bl-text);
+  flex: 1;
+}
+.bl-fxcard-actions {
+  display: flex;
+  gap: var(--bl-s1);
+}
+.bl-fxcard-params {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s3);
+  align-items: flex-start;
+}
+
+.bl-iconbtn {
+  min-width: 32px;
+  height: 32px;
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font: var(--bl-fs-body) / 1 var(--bl-font);
+  cursor: pointer;
+}
+.bl-iconbtn:hover {
+  border-color: var(--bl-accent);
+}
+.bl-iconbtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.bl-iconbtn.is-danger:hover {
+  border-color: var(--bl-error);
+  color: var(--bl-error);
+}
+
+/* ---- enum (filter type) ---- */
+.bl-fxenum {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+}
+.bl-fxenum-label {
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+  text-align: center;
+}
+.bl-fxenum-select {
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: var(--bl-s1) var(--bl-s2);
+  font: var(--bl-fs-label) / 1 var(--bl-font);
+  min-height: 32px;
+}
+
+/* ---- add menu ---- */
+.bl-fxrack-add {
+  display: flex;
+}
+.bl-fxrack-addbtn {
+  width: 100%;
+  border: 1px dashed var(--bl-border);
+  border-radius: var(--bl-radius);
+  background: transparent;
+  color: var(--bl-text-dim);
+  padding: var(--bl-s3);
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  cursor: pointer;
+  min-height: var(--bl-hit);
+}
+.bl-fxrack-addbtn:hover {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+}
+.bl-fxrack-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+  width: 100%;
+}
+
+/* ---- sends ---- */
+.bl-fxsends {
+  border-top: 1px solid var(--bl-border);
+  padding-top: var(--bl-s3);
+}
+.bl-fxsends-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--bl-s2);
+}
+.bl-fxsends-title {
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  color: var(--bl-text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.bl-fxsends-rows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s4);
+}
+.bl-fxsend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s1);
+}
+.bl-fxsend-name {
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+}

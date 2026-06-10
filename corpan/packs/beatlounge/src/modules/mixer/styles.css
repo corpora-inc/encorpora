@@ -1,0 +1,81 @@
+/**
+ * beatlounge — mixer module styles (co-located; Vite bundles into app.css).
+ * Uses only --bl-* tokens. No edits to styles.css.
+ */
+
+/* ---- tile ---- */
+.bl-mixtile {
+  display: flex;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2);
+  align-items: flex-end;
+  overflow: hidden;
+}
+.bl-mixtile-ch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s1);
+  flex: 0 0 auto;
+}
+
+/* ---- console ---- */
+.bl-mixer {
+  display: flex;
+  gap: var(--bl-s4);
+  padding: var(--bl-s4);
+  height: 100%;
+  overflow: auto hidden;
+  align-items: stretch;
+}
+.bl-mixer-strips {
+  display: flex;
+  gap: var(--bl-s3);
+  flex: 1;
+  overflow: auto hidden;
+}
+.bl-mixstrip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s2);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  padding: var(--bl-s3) var(--bl-s2);
+  min-width: 92px;
+  flex: 0 0 auto;
+}
+.bl-mixer-master {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s2);
+  background: var(--bl-surface-2);
+  border: 1px solid var(--bl-accent);
+  border-radius: var(--bl-radius);
+  padding: var(--bl-s3) var(--bl-s2);
+  min-width: 100px;
+  flex: 0 0 auto;
+}
+.bl-mixstrip-name {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  font: 600 var(--bl-fs-label) / 1.1 var(--bl-font);
+  color: var(--bl-text);
+  max-width: 92px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-mixstrip-pan {
+  display: flex;
+  justify-content: center;
+}
+.bl-mixstrip-body {
+  display: flex;
+  align-items: stretch;
+  gap: var(--bl-s2);
+  flex: 1;
+}
