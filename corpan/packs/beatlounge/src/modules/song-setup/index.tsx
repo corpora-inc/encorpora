@@ -38,7 +38,7 @@ export const createSongSetupModule = ({ store }: SongSetupDeps): BeatloungeModul
   title: "Song",
   glyph: "metronome",
   immersive: "full",
-  tileAspect: "wide",
+  tileAspect: "square",
   actions: songSetupActions,
   mount(mount: ModuleMount): ModuleInstance {
     const root: Root = createRoot(mount.container)

@@ -62,7 +62,7 @@ export const createPhraseSamplerModule = ({
     title: "Phrases",
     glyph: "wave",
     immersive: "full",
-    tileAspect: "wide",
+    tileAspect: "tall",
     actions: phraseSamplerActions,
     mount(mount: ModuleMount): ModuleInstance {
       const root: Root = createRoot(mount.container)

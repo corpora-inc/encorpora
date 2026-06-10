@@ -39,7 +39,7 @@ export const createTweakersModule = ({ store, audio }: TweakersDeps): Beatlounge
     title: "Tweakers",
     glyph: "wave",
     immersive: "full",
-    tileAspect: "wide",
+    tileAspect: "square",
     actions: tweakersActions,
     mount(mount: ModuleMount): ModuleInstance {
       const root: Root = createRoot(mount.container)

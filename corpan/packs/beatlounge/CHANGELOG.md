@@ -5,6 +5,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **Responsive Stage foundation — a deliberate bento from ~300px to desktop.**
+  The home Stage is now a fixed-column bento grid with `grid-auto-flow: dense`
+  (no dead right column): 1 column below 520px (a clean single stack with
+  ≥116px, tappable tiles — no overflow/clipping at ~300px), 2 columns at 520px,
+  3 at 900px, 4 at 1240px. Tiles map `tileAspect` to spans (square 1×1, wide
+  2×1, tall 1×2), collapsing to 1×1 in the phone band so a wide tile never
+  overflows. Re-balanced aspects: Drums / Synth / Mixer / Effects stay **wide**
+  feature tiles, Phrases is now a **tall** list tile, and Song / Pads /
+  Instruments / Analog / Composer / Ribbon / Phrase Jam are compact **square**
+  tiles — ending the old "12 left / 1 right" imbalance. Pure span/column helpers
+  in `shell/tileLayout.ts` (tested).
+
+### Fixed
+- **Phrase Jam tile rendered blank.** Its store selector returned a fresh object
+  literal each render, which zustand v5's `useSyncExternalStore` saw as a changed
+  snapshot every time → an infinite re-render loop ("getSnapshot should be
+  cached") → React bailed and the tile showed nothing. Now selects primitives.
+- **Effects tile** is now a project-wide at-a-glance summary (active-insert count
+  + a per-track mini chain of effect pills) instead of a single bound track, and
+  is guaranteed visible (defensive primitive selectors, min-height cell).
+
 ### Added
 - **Phrase Jam — sequence saved snippets like drums + a live pitch ribbon.** A
   drum-style step grid where each row is a saved phrase snippet from the bank
