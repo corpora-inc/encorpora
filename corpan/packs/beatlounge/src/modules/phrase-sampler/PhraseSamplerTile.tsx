@@ -1,13 +1,12 @@
 /**
- * beatlounge — phrase-sampler TILE: a compact "current phrase" summary on the
- * calm Stage. Shows the most-recently-placed phrase (target + gloss) and the
- * count of sampler tracks in the song; tapping enters the immersive browser
- * (the shell wires the tile's activation). Glanceable, read-only.
+ * beatlounge — phrase DISCOVERY TILE: a compact summary on the calm Stage.
+ * Shows the size of the saved phrase BANK and the most-recently-saved snippet;
+ * tapping enters the immersive Discovery/Library screen (the shell wires the
+ * tile's activation). Glanceable, read-only.
  */
 
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
-import { isFragmentTrack } from "../../model/document"
 import { Glyph } from "../../bl-ui"
 
 export interface CurrentPhrase {
@@ -22,9 +21,13 @@ interface Props {
 }
 
 export const PhraseSamplerTile = ({ store, current }: Props) => {
-  const samplerCount = useBeatloungeStore(
+  const bankCount = useBeatloungeStore(
     store,
-    (s) => s.doc.tracks.filter(isFragmentTrack).length
+    (s) => s.doc.fragmentLibrary?.length ?? 0
+  )
+  const lastSaved = useBeatloungeStore(
+    store,
+    (s) => s.doc.fragmentLibrary?.[s.doc.fragmentLibrary.length - 1]?.text ?? null
   )
 
   return (
@@ -33,18 +36,20 @@ export const PhraseSamplerTile = ({ store, current }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="wave" size={16} />
         </span>
-        <span className="bl-tile-title">Phrase Sampler</span>
-        <span className="bl-tile-meta">{samplerCount}</span>
+        <span className="bl-tile-title">Phrases</span>
+        <span className="bl-tile-meta">{bankCount}</span>
       </div>
       <div className="bl-tile-ps-body">
-        {current ? (
+        {bankCount > 0 ? (
           <>
-            <div className="bl-tile-ps-target">{current.target || "—"}</div>
-            {current.gloss && <div className="bl-tile-ps-gloss">{current.gloss}</div>}
+            <div className="bl-tile-ps-target">{current?.target || lastSaved || "—"}</div>
+            <div className="bl-tile-ps-gloss">
+              {bankCount} {bankCount === 1 ? "snippet" : "snippets"} in bank
+            </div>
           </>
         ) : (
           <div className="bl-tile-ps-hint">
-            Browse 25k phrases — place a word as a pitched instrument.
+            Discover phrases across your stack — save snippets to your bank.
           </div>
         )}
       </div>
