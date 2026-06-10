@@ -5,6 +5,23 @@ surfaces, instruments + effects + mixer, the phrase-sampler, and autonomous
 "knob-tweaker" agents. This is what's left to make it world-class. Ordered by the
 founder's stated priorities.
 
+## 0. TTS → raw audio → track → grid (THE centerpiece — must work to ship)
+The killer feature, and why the current `speak()` audition is wrong: fire-and-
+forget OS TTS **ducks the music and doesn't un-duck**. We must bring TTS in as
+RAW AUDIO and play it through our own Web Audio graph (no OS ducking), then it
+becomes a pitch-performable instrument on the grid — exactly melopán's voice
+pitch-shifting, but for any corpus phrase.
+- **Native `synthesizeToBuffer`** in `tauri-plugin-tts` (Rust command + iOS
+  `AVSpeechSynthesizer.write(_:toBufferCallback:)` + Android
+  `TextToSpeech.synthesizeToFile`) → returns PCM/WAV bytes. Wire into the host
+  `HostApi.synthesizeToBuffer` (the pack already feature-detects + caches it in
+  IDB). **Needs device builds → your coordination** (`npm run ios:redeploy`).
+- Once captured: audition AND grid playback both play the buffer (no ducking),
+  the ttsFragment GrainPlayer pitch-shifts per step (basslines, rhythmic words),
+  and we add **live record-scratching** on a pad + optional **frontend auto-tune**
+  (pitch-snap the fragment to the scale). This is the headline performance.
+- Until native lands, placement works but falls to the synth-vox floor.
+
 ## 1. Mass-effect the grid (the stated #1 — "autonomous knob tweakers", expanded)
 The modulation engine + agents already let you (and the LLM) fire autonomous
 tweakers. The frontier:
@@ -48,7 +65,25 @@ bug, now worked around by hydrate-first). Render module tile/immersive surfaces
 in the main React tree instead (or a single shared root) to remove the nested-
 root fragility + the per-tile overhead. Keep the `BeatloungeModule` contract.
 
-## 6. The rest
-MIDI import/export (the 960-PPQ model is built for it), song arrangement/scenes,
-catalog-driven pack metadata + i18n chrome, and a proper "new song / songs"
-browser over the IDB store.
+## 6. Built-in rhythm knowledge (make "randomize" feel magic)
+The drum "randomize" already nails the "do something cool / turn it over" spirit.
+Scale it: ship an **exhaustive library of traditional rhythms** as plain data
+(rock/funk/samba/reggaeton/breakbeat/son clave/maqsoum/…), then apply controlled
+noise/variation on top. The LLM (and the dice) pull from this canon + perturb it.
+Built-in tradition + stochastic variation = magic with zero network. Pairs with
+the rhythm-as-text idea so the LLM can name and morph styles.
+
+## 7. Elite 2D X/Y control surface (reusable abstraction)
+A premium X/Y pad that maps two axes to any two params (filter cutoff×reso, send×
+feedback, two modulator depths, fragment pitch×rate). Build it once as a control
+primitive, then apply it everywhere it fits — and let the modulation engine /
+LLM drive it too. (Greenlit to build in parallel.)
+
+## 8. The rest (big rocks)
+- **Full MIDI soundfont implementation** (the spessasynth engine is in; needs the
+  GM/world SF2 delivery + a clean instrument browser) and an **automated piano**.
+- **N drum kits, smoothly** — the drumSampler/AssetLoader seam already supports
+  swapping kits; ship sample-based kits as downloadable packs (the synth kit is
+  the offline floor).
+- MIDI import/export (960-PPQ model is built for it), song arrangement/scenes,
+  catalog-driven pack metadata + i18n chrome, a "songs" browser over IDB.
