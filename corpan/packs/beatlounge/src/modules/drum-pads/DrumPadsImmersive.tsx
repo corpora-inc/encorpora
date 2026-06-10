@@ -2,9 +2,10 @@
  * beatlounge — the drum-pads IMMERSIVE view: a velocity pad bank.
  *
  * A 4×4 (phone: 4×2) bank over the drum track's lanes. Tapping a pad auditions
- * the track (host.previewTrack) and — when STEP-RECORD is armed — writes the
- * pad's lane note at the live playhead step via `toggleStep`, so the running
- * scheduler plays it on the loop. Vertical drag on a pad sets its velocity (DAW
+ * the track (host.previewTrack) for live performance; when STEP-RECORD is armed
+ * the tap instead writes the pad's lane note at the live playhead step via
+ * `toggleStep` (silently — we're setting up the grid, not playing), so the
+ * running scheduler plays it on the loop. Vertical drag on a pad sets its velocity (DAW
  * "soft↔hard" feel), shown as a fill. Pads glow on the beat from the playhead.
  *
  * Header wires the registry action (randomPattern) plus a Clear, and the
@@ -69,7 +70,9 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
 
   const hitPad = (pitch: number) => {
     const velocity = velOf(pitch)
-    host.previewTrack(trackId, velocity, pitch)
+    // Auditioning a pad is live performance — but when STEP-RECORD is armed
+    // we're setting up the grid, not playing, so stay silent and just write.
+    if (!record) host.previewTrack(trackId, velocity, pitch)
     if (record) {
       const step = recordStep(playStep, view.steps)
       const cur = findTrack(store.vanilla.getState().doc, trackId)

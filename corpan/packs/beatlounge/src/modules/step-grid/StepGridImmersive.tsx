@@ -76,7 +76,6 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
     paintMode.current = isOn ? "remove" : "add"
     touched.current = new Set([`${pitch}:${step}`])
     setStep(pitch, step, !isOn)
-    host.previewTrack(trackId, 0.8)
   }
 
   const onCellEnter = (pitch: number, step: number) => {
