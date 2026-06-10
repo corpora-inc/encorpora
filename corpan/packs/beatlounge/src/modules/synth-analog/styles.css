@@ -1,0 +1,231 @@
+/**
+ * beatlounge — synth-analog module styles (co-located; Vite bundles into
+ * app.css). Uses only --bl-* tokens. No edits to styles.css.
+ */
+
+/* ---- tile ---- */
+.bl-synthtile-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2);
+}
+.bl-synthtile-waves {
+  display: flex;
+  gap: var(--bl-s1);
+  flex-wrap: wrap;
+}
+.bl-synthtile-pill {
+  font: 600 var(--bl-fs-micro) / 1 var(--bl-font);
+  letter-spacing: 0.04em;
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  border-radius: var(--bl-radius-pill);
+  padding: 4px 9px;
+}
+.bl-synthtile-filter {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px var(--bl-s2);
+  align-items: baseline;
+}
+.bl-synthtile-key {
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bl-text-dim);
+}
+.bl-synthtile-val {
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font-mono);
+  color: var(--bl-text);
+}
+.bl-synthtile-empty {
+  font: var(--bl-fs-label) / 1.3 var(--bl-font);
+  color: var(--bl-text-dim);
+}
+
+/* ---- immersive ---- */
+.bl-synth {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  padding: var(--bl-s4);
+  height: 100%;
+  overflow: hidden auto;
+}
+.bl-synth-bar {
+  display: flex;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+}
+.bl-synth-presets {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+}
+.bl-synth-presetchips {
+  display: flex;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.bl-synth-customtag {
+  font: 600 var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bl-accent);
+  border: 1px solid var(--bl-accent);
+  border-radius: var(--bl-radius-pill);
+  padding: 3px 8px;
+}
+.bl-synth-section-label {
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bl-text-dim);
+  flex: 0 0 auto;
+}
+
+/* responsive panel grid: 1 col on phone, multi on tablet/desktop */
+.bl-synth-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--bl-s4);
+}
+@media (min-width: 720px) {
+  .bl-synth-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1100px) {
+  .bl-synth-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.bl-synth-panel {
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  padding: var(--bl-s3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+.bl-synth-panel-title {
+  margin: 0;
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bl-text);
+}
+.bl-synth-row {
+  display: flex;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.bl-synth-knobs {
+  display: flex;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.bl-synth-adsr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+
+/* the marquee Cutoff × Resonance pad */
+.bl-synth-xy {
+  display: flex;
+}
+.bl-synth-xy .bl-xypad {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* ---- enum / wave selects ---- */
+.bl-synth-enum {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+}
+.bl-synth-enum-label {
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+}
+.bl-synth-enum-select {
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: var(--bl-s1) var(--bl-s2);
+  font: var(--bl-fs-label) / 1 var(--bl-font);
+  min-height: var(--bl-hit);
+}
+
+/* ---- make-analog invitation ---- */
+.bl-synth-makeanalog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  align-items: flex-start;
+  padding: var(--bl-s4);
+  background: var(--bl-surface);
+  border: 1px dashed var(--bl-border);
+  border-radius: var(--bl-radius);
+}
+.bl-synth-makeanalog-copy {
+  margin: 0;
+  font: var(--bl-fs-body) / 1.4 var(--bl-font);
+  color: var(--bl-text);
+}
+
+/* ---- playable keyboard strip ---- */
+.bl-synth-keys {
+  margin-top: auto;
+  padding-top: var(--bl-s3);
+}
+.bl-synth-keys-bed {
+  position: relative;
+  display: flex;
+  height: 96px;
+  background: var(--bl-surface-2);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  overflow: hidden;
+  touch-action: none;
+}
+.bl-synth-key {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+}
+.bl-synth-key.is-white {
+  height: 100%;
+  background: linear-gradient(180deg, var(--bl-surface) 0%, var(--bl-surface-2) 100%);
+  border: none;
+  border-right: 1px solid var(--bl-border);
+}
+.bl-synth-key.is-white:active {
+  background: var(--bl-accent);
+}
+.bl-synth-key.is-black {
+  position: absolute;
+  top: 0;
+  width: 7%;
+  height: 60%;
+  transform: translateX(-50%);
+  background: var(--bl-bg);
+  border: 1px solid var(--bl-border);
+  border-top: none;
+  border-radius: 0 0 var(--bl-radius-sm) var(--bl-radius-sm);
+  z-index: 2;
+}
+.bl-synth-key.is-black:active {
+  background: var(--bl-accent);
+}

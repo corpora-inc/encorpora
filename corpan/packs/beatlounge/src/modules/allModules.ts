@@ -22,6 +22,7 @@ import { createSongSetupModule } from "./song-setup"
 import { createInstrumentsModule } from "./instruments"
 import { createRibbonModule } from "./ribbon"
 import { createComposerModule } from "./composer"
+import { createAnalogSynthModule } from "./synth-analog"
 
 export interface ModuleDeps {
   store: BeatloungeStore
@@ -34,6 +35,7 @@ export const registerAllModules = (registry: ModuleRegistry, deps: ModuleDeps): 
   registry.register(createStepGridModule(deps))
   registry.register(createDrumPadsModule(deps))
   registry.register(createInstrumentsModule(deps))
+  registry.register(createAnalogSynthModule(deps))
   registry.register(createPianoRollModule(deps))
   registry.register(createComposerModule(deps))
   registry.register(createRibbonModule(deps))
