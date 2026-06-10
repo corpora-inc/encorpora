@@ -25,7 +25,7 @@ import {
   type Track,
 } from "../../model/document"
 import { newId } from "../../model/ids"
-import { Knob } from "../../bl-ui"
+import { Knob, XYPad } from "../../bl-ui"
 import {
   EFFECT_KINDS,
   EFFECT_SPECS,
@@ -33,6 +33,7 @@ import {
   numParam,
   strParam,
   type EffectParamSpec,
+  type EffectSpec,
 } from "../../effects/params"
 import {
   TIME_DIVISIONS,
@@ -187,6 +188,16 @@ const EffectCard = ({ store, host, trackId, fx, index, count, bpm }: CardProps) 
       params: { [key]: value },
     })
 
+  // Set several params at once — still ONE setEffectParams command (one undo
+  // step), used by the Filter XYPad (frequency × Q) on commit.
+  const setParams = (params: Record<string, number | string>) =>
+    store.dispatch({
+      t: "setEffectParams",
+      trackId,
+      insertId: fx.id,
+      params,
+    })
+
   const remove = () => {
     const before = store.vanilla.getState().doc
     store.dispatch({ t: "removeInsert", trackId, insertId: fx.id })
@@ -267,6 +278,10 @@ const EffectCard = ({ store, host, trackId, fx, index, count, bpm }: CardProps) 
         />
       )}
 
+      {fx.kind === "filter" && (
+        <FilterPad fx={fx} spec={spec} onCommit={setParams} />
+      )}
+
       <div className="bl-fxcard-params" data-bl-nocapture>
         {spec.params.map((p) =>
           p.type === "enum" ? (
@@ -307,6 +322,65 @@ const SyncRow = ({
           </button>
         ))}
       </div>
+    </div>
+  )
+}
+
+// ----------------------------------------------------------- filter XY pad
+/**
+ * The Filter card's X/Y control surface: X = cutoff frequency, Y = resonance
+ * (Q). It complements the knobs — drag the puck to sweep both at once. During
+ * the gesture we hold the live values locally (no command per move = no undo
+ * spam); on release we dispatch ONE setEffectParams (one undo step).
+ */
+const FilterPad = ({
+  fx,
+  spec,
+  onCommit,
+}: {
+  fx: EffectNode
+  spec: EffectSpec
+  onCommit: (params: Record<string, number>) => void
+}) => {
+  const freqSpec = spec.params.find((p) => p.key === "frequency")
+  const qSpec = spec.params.find((p) => p.key === "q")
+  // Live drag values (null = mirror the committed store value). We DON'T
+  // dispatch per move — the puck tracks the finger locally and a single
+  // setEffectParams lands on release, so the whole sweep is ONE undo step.
+  const [live, setLive] = useState<{ x: number; y: number } | null>(null)
+  if (!freqSpec || !qSpec) return null
+
+  const freqVal = live?.x ?? numParam(fx.params, freqSpec)
+  const qVal = live?.y ?? numParam(fx.params, qSpec)
+
+  const fmtFreq = (v: number): string =>
+    v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v.toFixed(0)
+
+  return (
+    <div className="bl-fxcard-xy">
+      <XYPad
+        label="Cutoff × Resonance"
+        x={{
+          value: freqVal,
+          min: freqSpec.min ?? 20,
+          max: freqSpec.max ?? 18000,
+          label: "Cutoff",
+          unit: "Hz",
+          format: fmtFreq,
+        }}
+        y={{
+          value: qVal,
+          min: qSpec.min ?? 0.1,
+          max: qSpec.max ?? 20,
+          label: "Q",
+          format: (v) => v.toFixed(1),
+        }}
+        onChange={(fx2, q2) => setLive({ x: fx2, y: q2 })}
+        onCommit={(fx2, q2) => {
+          setLive(null)
+          onCommit({ frequency: fx2, q: q2 })
+        }}
+      />
     </div>
   )
 }

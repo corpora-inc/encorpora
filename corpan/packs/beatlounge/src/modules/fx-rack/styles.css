@@ -108,6 +108,15 @@
   align-items: flex-start;
 }
 
+/* Filter X/Y control surface — a compact square that complements the knobs. */
+.bl-fxcard-xy {
+  display: flex;
+  margin-bottom: var(--bl-s3);
+}
+.bl-fxcard-xy .bl-xypad {
+  width: 168px;
+}
+
 .bl-iconbtn {
   min-width: 32px;
   height: 32px;
