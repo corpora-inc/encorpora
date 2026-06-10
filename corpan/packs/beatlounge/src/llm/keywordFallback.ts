@@ -13,8 +13,59 @@
 
 import type { ToolCall } from "./protocol"
 import { MOOD_NAMES } from "./tools"
+import { TEMPLATE_NAMES } from "../music/templates"
+import { SCALE_NAMES } from "../music/harmony"
 
 const has = (s: string, ...words: string[]): boolean => words.some((w) => s.includes(w))
+
+/** Detect a key (note name) mentioned in the text, e.g. "in D", "key of Eb". */
+const keyIn = (s: string): string | undefined => {
+  // Look for a standalone note letter, optionally with an accidental.
+  const m = s.match(/\b(?:in|key of|key)\s+([a-g])(\s?(#|sharp|b|flat))?\b/)
+  if (m) {
+    let k = m[1].toUpperCase()
+    const acc = m[3]
+    if (acc === "#" || acc === "sharp") k += "#"
+    else if (acc === "b" || acc === "flat") k += "b"
+    return k
+  }
+  return undefined
+}
+
+/** Detect a mode/scale name in the text (dorian, minor, mixolydian, …). */
+const modeIn = (s: string): string | undefined => {
+  for (const name of SCALE_NAMES) {
+    // Match the lowercased scale name, plus a couple of friendly aliases below.
+    const lower = name.toLowerCase()
+    if (s.includes(lower)) return name
+  }
+  if (has(s, "minor", "sad", "dark")) return "minor"
+  if (has(s, "major", "happy")) return "major"
+  return undefined
+}
+
+/** Detect a feel (melody / arp / chords / bass) in the text. */
+const feelIn = (s: string): string | undefined => {
+  if (has(s, "arp", "arpeggi")) return "arp"
+  if (has(s, "bassline", "bass line", "bass")) return "bass"
+  if (has(s, "chord", "comp", "pads")) return "chords"
+  if (has(s, "melody", "lead", "solo", "tune")) return "melody"
+  return undefined
+}
+
+/** Detect a named progression template in the text. */
+const templateIn = (s: string): string | undefined => {
+  for (const name of TEMPLATE_NAMES) if (s.includes(name)) return name
+  // Friendly synonyms → templates.
+  if (has(s, "doo-wop", "doo wop", "50s", "fifties")) return "doowop"
+  if (has(s, "epic", "cinematic", "heroic")) return "epic"
+  if (has(s, "sad", "melancholy", "plaintive")) return "sad"
+  if (has(s, "jazzy", "ii-v", "2-5-1")) return "jazz"
+  if (has(s, "twelve bar", "12 bar")) return "blues"
+  if (has(s, "pachelbel")) return "canon"
+  if (has(s, "spanish", "flamenco")) return "andalusian"
+  return undefined
+}
 
 /** Pull the first integer out of a string, if any. */
 const firstInt = (s: string): number | undefined => {
@@ -58,6 +109,34 @@ export const keywordRoute = (utterance: string): ToolCall | null => {
   }
   if (has(s, "breathe", "breathing", "swell", "come alive", "bring it alive", "make it alive")) {
     return { name: "vibe", args: { name: "breathe" } }
+  }
+
+  // --- harmony: jam + named progressions (high signal) ---
+  // A named progression template, or an explicit "progression/chords in <key>".
+  const tpl = templateIn(s)
+  if (tpl || has(s, "progression", "chord progression", "changes")) {
+    const args: Record<string, unknown> = { template: tpl ?? "pop" }
+    const k = keyIn(s)
+    const mode = modeIn(s)
+    const feel = feelIn(s)
+    if (k) args.key = k
+    if (mode) args.mode = mode
+    if (feel) args.feel = feel
+    return { name: "progression", args }
+  }
+  // "jam in D dorian", "play a melody in G minor", "arpeggiate in C". A bare
+  // feel word ("more bass") is NOT enough — it must pair with a jam/play/compose
+  // verb or a key/mode, so drum-density phrasing still routes to `density`.
+  const jamVerb = has(s, "jam", "play in", "play a", "play me", "noodle", "improv", "compose", "arpeggiate")
+  if (jamVerb || ((feelIn(s) || modeIn(s)) && (keyIn(s) || has(s, "scale", "mode", "in the key")))) {
+    const args: Record<string, unknown> = {}
+    const k = keyIn(s)
+    const mode = modeIn(s)
+    const feel = feelIn(s)
+    if (k) args.key = k
+    if (mode) args.mode = mode
+    if (feel) args.feel = feel
+    return { name: "jam", args }
   }
 
   // --- explicit mood words (highest signal) ---

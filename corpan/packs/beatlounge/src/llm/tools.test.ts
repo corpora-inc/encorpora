@@ -5,11 +5,19 @@
  */
 
 import { describe, expect, it } from "vitest"
-import { TOOL_BY_NAME, TOOL_SPECS, resolveDrumPitch, MOOD_NAMES } from "./tools"
+import {
+  TOOL_BY_NAME,
+  TOOL_SPECS,
+  resolveDrumPitch,
+  resolveSynthTrack,
+  MOOD_NAMES,
+  JAM_FEELS,
+} from "./tools"
 import { reduce } from "../model/reduce"
 import { createDefaultDoc, DRUM_PITCH, isInstrumentTrack } from "../model/document"
 import type { BeatloungeDoc, InstrumentTrack } from "../model/document"
 import type { Command } from "../model/command"
+import { toPc } from "../music/harmony"
 
 const seededRng = (seed: number) => {
   let a = seed >>> 0
@@ -212,6 +220,98 @@ describe("calm tool", () => {
     expect(cleared.modulators).toHaveLength(0)
     const again = TOOL_BY_NAME.calm.build({}, cleared, seededRng(1))
     expect(again.commands).toHaveLength(0)
+  })
+})
+
+const synthTrack = (doc: BeatloungeDoc): InstrumentTrack => {
+  const t = resolveSynthTrack(doc)
+  if (!t) throw new Error("no synth track")
+  return t
+}
+
+describe("jam", () => {
+  it("writes a composed part onto the synth + sizes the loop", () => {
+    const doc = createDefaultDoc(0)
+    const r = TOOL_BY_NAME.jam.build({ key: "D", mode: "dorian", feel: "melody" }, doc, seededRng(5))
+    expect(r.commands.length).toBeGreaterThan(0)
+    const next = apply(doc, r.commands)
+    const synth = next.tracks.find((t) => t.id === synthTrack(doc).id)!
+    expect(isInstrumentTrack(synth)).toBe(true)
+    if (isInstrumentTrack(synth)) expect(synth.notes.length).toBeGreaterThan(0)
+    // The drum track must be untouched (jam binds the SYNTH).
+    const drum = next.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler")!
+    const drumBefore = drumTrack(doc).notes.length
+    expect(isInstrumentTrack(drum) && drum.notes.length).toBe(drumBefore)
+    expect(r.summary.toLowerCase()).toContain("jam")
+  })
+
+  it("every feel produces a valid, applyable part", () => {
+    for (const feel of JAM_FEELS) {
+      const doc = createDefaultDoc(0)
+      const r = TOOL_BY_NAME.jam.build({ key: "C", mode: "major", feel }, doc, seededRng(3))
+      const next = apply(doc, r.commands)
+      const synth = next.tracks.find((t) => t.id === synthTrack(doc).id)!
+      if (isInstrumentTrack(synth)) {
+        for (const n of synth.notes) {
+          expect(n.pitch).toBeGreaterThanOrEqual(0)
+          expect(n.pitch).toBeLessThanOrEqual(127)
+          expect(n.duration).toBeGreaterThan(0)
+        }
+      }
+    }
+  })
+
+  it("is reproducible given the same rng seed", () => {
+    const doc = createDefaultDoc(0)
+    const a = TOOL_BY_NAME.jam.build({ key: "G", mode: "minor", feel: "arp" }, doc, seededRng(42))
+    const b = TOOL_BY_NAME.jam.build({ key: "G", mode: "minor", feel: "arp" }, doc, seededRng(42))
+    expect(JSON.stringify(a.commands)).toBe(JSON.stringify(b.commands))
+  })
+
+  it("an unknown key/mode/feel degrades gracefully (never empty)", () => {
+    const doc = createDefaultDoc(0)
+    const r = TOOL_BY_NAME.jam.build({ key: "Q", mode: "klingon", feel: "yodel" }, doc, seededRng(1))
+    expect(r.commands.length).toBeGreaterThan(0)
+  })
+})
+
+describe("progression", () => {
+  it("lays a named progression + jams over it", () => {
+    const doc = createDefaultDoc(0)
+    const r = TOOL_BY_NAME.progression.build({ template: "jazz", key: "C", mode: "major" }, doc, seededRng(2))
+    const next = apply(doc, r.commands)
+    const synth = next.tracks.find((t) => t.id === synthTrack(doc).id)!
+    if (isInstrumentTrack(synth)) expect(synth.notes.length).toBeGreaterThan(0)
+    expect(r.summary).toContain("jazz")
+  })
+
+  it("the laid part is harmonically consistent (downbeats are chord tones)", () => {
+    const doc = createDefaultDoc(0)
+    // pop in C = C G Am F; a melody's downbeats must be chord tones of each.
+    const r = TOOL_BY_NAME.progression.build({ template: "pop", key: "C", mode: "major", feel: "melody" }, doc, seededRng(9))
+    const next = apply(doc, r.commands)
+    const synth = next.tracks.find((t) => t.id === synthTrack(doc).id)!
+    // C(0,4,7) G(7,11,2) Am(9,0,4) F(5,9,0), one chord per 4 beats (3840t/bar).
+    const PPQ = next.ppq
+    const chordPcs = [
+      [0, 4, 7],
+      [7, 11, 2],
+      [9, 0, 4],
+      [5, 9, 0],
+    ]
+    if (isInstrumentTrack(synth)) {
+      for (const n of synth.notes) {
+        if (n.tick % PPQ !== 0) continue // downbeats only
+        const bar = Math.floor(n.tick / (PPQ * 4)) % 4
+        expect(chordPcs[bar]).toContain(toPc(n.pitch))
+      }
+    }
+  })
+
+  it("an unknown template falls back to pop", () => {
+    const doc = createDefaultDoc(0)
+    const r = TOOL_BY_NAME.progression.build({ template: "nonsense" }, doc, seededRng(1))
+    expect(r.commands.length).toBeGreaterThan(0)
   })
 })
 

@@ -90,6 +90,8 @@ const FEW_SHOT = [
   ['"give it a latin feel"', '{ "name": "setMood", "args": { "mood": "latin" } }'],
   ['"tresillo on the kick"', '{ "name": "euclid", "args": { "drum": "kick", "pulses": 3, "steps": 8 } }'],
   ['"loosen up the drums"', '{ "name": "humanize", "args": { "amount": 0.5 } }'],
+  ['"jam in D dorian"', '{ "name": "jam", "args": { "key": "D", "mode": "dorian", "feel": "melody" } }'],
+  ['"give me a sad progression"', '{ "name": "progression", "args": { "template": "sad", "mode": "minor" } }'],
 ] as const
 
 export const buildSystemPrompt = (doc: BeatloungeDoc): string => {

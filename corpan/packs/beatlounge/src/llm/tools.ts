@@ -17,6 +17,9 @@ import type { BeatloungeDoc, Id, NoteEvent, ParamTarget } from "../model/documen
 import { DRUM_PITCH, createModulator, findTrack, isInstrumentTrack } from "../model/document"
 import { stepsInLoop, tickForStep } from "../model/timing"
 import { euclidIndices } from "../music/euclid"
+import { parseNoteName, SCALE_NAMES, type ScaleName } from "../music/harmony"
+import { TEMPLATE_NAMES, renderTemplate } from "../music/templates"
+import { jam as composeJam, progressionTicks, type JamFeel } from "../music/jam"
 import {
   AGENT_NAMES,
   AGENT_META,
@@ -492,6 +495,191 @@ const chaosTool: ToolSpec = {
   },
 }
 
+// ----------------------------------------------------------------- jam (harmony)
+/**
+ * The musical "feels" the composer offers + the keys/modes the model picks from.
+ * All CLOSED sets so the 4B model only ever selects a label; the deterministic
+ * composer (music/jam.ts) does the actual music.
+ */
+export const JAM_FEELS: readonly JamFeel[] = ["melody", "arp", "chords", "bass"]
+export const JAM_MODES: readonly ScaleName[] = SCALE_NAMES
+export const JAM_KEYS = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"] as const
+
+/** The first non-drum instrument track (the synth the composer writes onto). */
+export const resolveSynthTrack = (doc: BeatloungeDoc, trackId?: Id) => {
+  if (trackId) {
+    const t = findTrack(doc, trackId)
+    if (t && isInstrumentTrack(t)) return t
+  }
+  const synth = doc.tracks.find(
+    (t) => isInstrumentTrack(t) && t.instrument.kind !== "drumSampler",
+  )
+  if (synth && isInstrumentTrack(synth)) return synth
+  // Fall back to any instrument track (never the drum track if avoidable).
+  const any = doc.tracks.find(isInstrumentTrack)
+  return any && isInstrumentTrack(any) ? any : undefined
+}
+
+/** Resolve a key name / note name to a pitch class (default C = 0). */
+const resolveKeyPc = (raw: unknown): number => {
+  const pc = parseNoteName(String(raw ?? "C"))
+  return pc == null ? 0 : pc
+}
+
+/** Resolve a mode/scale label to a ScaleName (default major). */
+const resolveMode = (raw: unknown): ScaleName => {
+  const s = String(raw ?? "major")
+  return (SCALE_NAMES.includes(s as ScaleName) ? s : "major") as ScaleName
+}
+
+/** A default template that suits a mode when the model gives none. */
+const DEFAULT_TEMPLATE_FOR_MODE: Partial<Record<ScaleName, string>> = {
+  major: "pop",
+  minor: "epic",
+  dorian: "vamp",
+  phrygian: "andalusian",
+  mixolydian: "blues",
+  lydian: "pop",
+  harmonicMinor: "epic",
+  melodicMinor: "sad",
+}
+
+/**
+ * Write a composed jam onto the synth track + size the loop to the progression.
+ * Shared by the `jam` and `progression` tools so both paths are identical.
+ */
+const composeOntoSynth = (
+  trackId: Id,
+  templateName: string,
+  keyPc: number,
+  mode: ScaleName,
+  feel: JamFeel,
+  density: number,
+  seed: number,
+): { commands: Command[]; noteCount: number; loopTicks: number } => {
+  const prog = renderTemplate(templateName, keyPc, mode)
+  const register = feel === "bass" ? 48 : feel === "chords" ? 57 : 62
+  const notes = composeJam(prog, { feel, density, register, seed, velocity: 0.72 })
+  const loopTicks = progressionTicks(prog)
+  const commands: Command[] = [
+    { t: "setLoopLength", ticks: loopTicks },
+    { t: "setNotes", trackId, notes },
+  ]
+  return { commands, noteCount: notes.length, loopTicks }
+}
+
+/**
+ * jam — the headline harmony tool. Compose a directed, non-repetitive part in a
+ * key + mode + feel over a named chord template, written onto the synth track.
+ * The 4B model picks labels; the deterministic composer does the music.
+ */
+const jamTool: ToolSpec = {
+  name: "jam",
+  describe:
+    "Compose a musical part on the synth in a key + mode + feel over a chord progression. feel: melody, arp, chords, bass.",
+  params: {
+    key: {
+      type: "enum",
+      options: JAM_KEYS,
+      default: "C",
+      describe: "Tonic key, e.g. C, G, Eb, F#.",
+    },
+    mode: {
+      type: "enum",
+      options: JAM_MODES,
+      default: "major",
+      describe: "Scale/mode: major, minor, dorian, mixolydian, …",
+    },
+    feel: {
+      type: "enum",
+      options: JAM_FEELS,
+      default: "melody",
+      describe: "What to play: melody, arp, chords, or bass.",
+    },
+    template: {
+      type: "enum",
+      options: TEMPLATE_NAMES,
+      describe: "Optional named progression: pop, jazz, blues, epic, sad, …",
+    },
+    density: { type: "number", min: 0, max: 1, default: 0.55, describe: "How busy, 0–1." },
+    trackId: { type: "enum", describe: "Optional explicit synth track id." },
+  },
+  build(args, doc, rng) {
+    const track = resolveSynthTrack(doc, args.trackId as Id | undefined)
+    if (!track) return { commands: [], summary: "No synth track" }
+    const keyPc = resolveKeyPc(args.key)
+    const mode = resolveMode(args.mode)
+    const feel = (JAM_FEELS.includes(String(args.feel) as JamFeel)
+      ? String(args.feel)
+      : "melody") as JamFeel
+    const template =
+      typeof args.template === "string" && TEMPLATE_NAMES.includes(args.template)
+        ? args.template
+        : DEFAULT_TEMPLATE_FOR_MODE[mode] ?? "pop"
+    const density = clamp(Number(args.density ?? 0.55), 0, 1)
+    const seed = Math.floor(rng() * 0xffffffff)
+    const { commands, noteCount } = composeOntoSynth(
+      track.id, template, keyPc, mode, feel, density, seed,
+    )
+    const keyName = JAM_KEYS[keyPc] ?? "C"
+    return {
+      commands,
+      summary: noteCount
+        ? `Jam · ${keyName} ${mode} ${feel} (${noteCount} notes)`
+        : "Nothing to jam",
+    }
+  },
+}
+
+/**
+ * progression — lay a NAMED chord progression in a key/mode and jam a part over
+ * it. The "give me a sad / epic / jazz progression" intent. Delegates to the
+ * same composer as `jam`; defaults the feel to a tasteful melody.
+ */
+const progressionTool: ToolSpec = {
+  name: "progression",
+  describe:
+    "Lay a named chord progression (pop, jazz, blues, epic, sad, doowop, vamp, andalusian, canon…) in a key/mode and play over it.",
+  params: {
+    template: {
+      type: "enum",
+      options: TEMPLATE_NAMES,
+      default: "pop",
+      required: true,
+      describe: "Named progression: pop, jazz, blues, epic, sad, …",
+    },
+    key: { type: "enum", options: JAM_KEYS, default: "C", describe: "Tonic key." },
+    mode: { type: "enum", options: JAM_MODES, default: "major", describe: "Scale/mode." },
+    feel: {
+      type: "enum",
+      options: JAM_FEELS,
+      default: "melody",
+      describe: "What to play over it.",
+    },
+  },
+  build(args, doc, rng) {
+    const track = resolveSynthTrack(doc)
+    if (!track) return { commands: [], summary: "No synth track" }
+    const template =
+      typeof args.template === "string" && TEMPLATE_NAMES.includes(args.template)
+        ? args.template
+        : "pop"
+    const keyPc = resolveKeyPc(args.key)
+    const mode = resolveMode(args.mode)
+    const feel = (JAM_FEELS.includes(String(args.feel) as JamFeel)
+      ? String(args.feel)
+      : "melody") as JamFeel
+    const seed = Math.floor(rng() * 0xffffffff)
+    const { commands, noteCount } = composeOntoSynth(
+      track.id, template, keyPc, mode, feel, 0.5, seed,
+    )
+    return {
+      commands,
+      summary: noteCount ? `${template} progression · ${JAM_KEYS[keyPc]} ${mode}` : "Nothing to lay",
+    }
+  },
+}
+
 /** calm — clear every autonomous tweaker (the explicit "stop tweaking"). */
 const calm: ToolSpec = {
   name: "calm",
@@ -540,6 +728,8 @@ export const TOOL_SPECS: ToolSpec[] = [
   setMood,
   euclidTool,
   humanize,
+  jamTool,
+  progressionTool,
   vibe,
   automate,
   chaosTool,

@@ -1,0 +1,224 @@
+/**
+ * beatlounge — composer module styles (co-located; Vite bundles into app.css).
+ * Uses only --bl-* tokens. No edits to styles.css. Dark, premium, calm.
+ */
+
+/* ---- immersive surface ---- */
+.bl-cmp {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  padding: var(--bl-s4);
+  height: 100%;
+  overflow: hidden auto;
+}
+
+.bl-cmp-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bl-s2);
+}
+.bl-cmp-title {
+  font: 600 var(--bl-fs-title) / 1 var(--bl-font);
+  color: var(--bl-text);
+  letter-spacing: 0.02em;
+}
+.bl-cmp-sub {
+  font: var(--bl-fs-label) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+}
+
+/* ---- progression text field ---- */
+.bl-cmp-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+}
+.bl-cmp-label {
+  font: 600 var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.bl-cmp-text {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  resize: vertical;
+  min-height: 44px;
+  padding: var(--bl-s2);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-body);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+.bl-cmp-text:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--bl-accent) 55%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bl-accent) 35%, transparent);
+}
+.bl-cmp-text::placeholder {
+  color: var(--bl-text-dim);
+  opacity: 0.7;
+}
+
+/* ---- pickers ---- */
+.bl-cmp-rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--bl-s2);
+}
+.bl-cmp-pick {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+}
+.bl-cmp-pick.is-disabled {
+  opacity: 0.45;
+}
+.bl-cmp-pick-label {
+  font: 600 var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.bl-cmp-select {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 40px;
+  padding: 0 var(--bl-s2);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+.bl-cmp-select:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--bl-accent) 55%, transparent);
+}
+.bl-cmp-select:disabled {
+  cursor: not-allowed;
+}
+
+/* ---- density knob + action buttons ---- */
+.bl-cmp-knobs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bl-s4);
+  padding: var(--bl-s2) 0;
+}
+.bl-cmp-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+}
+.bl-chip.is-primary {
+  background: color-mix(in srgb, var(--bl-accent) 22%, var(--bl-surface-2));
+  border-color: color-mix(in srgb, var(--bl-accent) 55%, transparent);
+  color: var(--bl-text);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--bl-accent) 25%, transparent);
+}
+.bl-chip.is-primary:hover {
+  background: color-mix(in srgb, var(--bl-accent) 32%, var(--bl-surface-2));
+}
+
+/* ---- live parsed readout ---- */
+.bl-cmp-readout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  padding-top: var(--bl-s1);
+  border-top: 1px solid var(--bl-border);
+}
+.bl-cmp-readout-label {
+  font: 600 var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+  letter-spacing: 0.04em;
+}
+.bl-cmp-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+}
+.bl-cmp-chord {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--bl-s1);
+  padding: var(--bl-s1) var(--bl-s2);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+}
+.bl-cmp-chord-name {
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font-mono);
+  color: var(--bl-accent);
+}
+.bl-cmp-chord-beats {
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  color: var(--bl-text-dim);
+}
+.bl-cmp-empty {
+  font: var(--bl-fs-label) / 1.2 var(--bl-font);
+  color: var(--bl-text-dim);
+}
+
+/* ---- tile ---- */
+.bl-cmp-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2);
+  height: 100%;
+}
+.bl-cmp-tile-head {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-cmp-tile-glyph {
+  display: inline-flex;
+  color: var(--bl-accent);
+}
+.bl-cmp-tile-title {
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  color: var(--bl-text);
+  flex: 1;
+}
+.bl-cmp-tile-meta {
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  color: var(--bl-text-dim);
+}
+.bl-cmp-spark {
+  position: relative;
+  flex: 1;
+  min-height: 36px;
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface-2);
+  overflow: hidden;
+}
+.bl-cmp-spark-dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--bl-accent);
+  transform: translate(-50%, 50%);
+  box-shadow: 0 0 4px var(--bl-accent);
+}
+.bl-cmp-tile-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+}

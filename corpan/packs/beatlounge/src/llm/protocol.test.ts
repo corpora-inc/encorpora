@@ -145,7 +145,7 @@ describe("buildSystemPrompt + renderGrid", () => {
   const doc = createDefaultDoc(0)
   it("lists every tool by name", () => {
     const p = buildSystemPrompt(doc)
-    for (const name of ["setTempo", "setSwing", "density", "setMood", "euclid", "humanize"]) {
+    for (const name of ["setTempo", "setSwing", "density", "setMood", "euclid", "humanize", "jam", "progression"]) {
       expect(p).toContain(name)
     }
   })

@@ -70,6 +70,42 @@ describe("keywordRoute — explicit intents", () => {
   })
 })
 
+describe("keywordRoute — harmony (jam + progression)", () => {
+  it("named progressions route to `progression`", () => {
+    expect(route("give me a sad progression")).toMatchObject({ name: "progression", args: { template: "sad" } })
+    expect(route("epic chord progression")).toMatchObject({ name: "progression", args: { template: "epic" } })
+    expect(route("play a jazz progression")).toMatchObject({ name: "progression", args: { template: "jazz" } })
+    expect(route("twelve bar blues")).toMatchObject({ name: "progression", args: { template: "blues" } })
+    expect(route("pachelbel canon")).toMatchObject({ name: "progression", args: { template: "canon" } })
+  })
+
+  it("a bare 'progression' request defaults to pop", () => {
+    expect(route("give me a progression")).toMatchObject({ name: "progression", args: { template: "pop" } })
+  })
+
+  it("progression carries key/mode/feel when present", () => {
+    const call = route("a sad progression in D minor with an arp")
+    expect(call.name).toBe("progression")
+    expect(call.args).toMatchObject({ template: "sad", key: "D", mode: "minor", feel: "arp" })
+  })
+
+  it("jam in a key + mode routes to `jam`", () => {
+    expect(route("jam in D dorian")).toMatchObject({ name: "jam", args: { key: "D", mode: "dorian" } })
+    expect(route("noodle in G")).toMatchObject({ name: "jam", args: { key: "G" } })
+    expect(route("play a melody in C")).toMatchObject({ name: "jam", args: { key: "C", feel: "melody" } })
+    expect(route("arpeggiate in F")).toMatchObject({ name: "jam", args: { key: "F" } })
+  })
+
+  it("'more bass' still routes to density, not jam", () => {
+    expect(route("more bass")).toMatchObject({ name: "density" })
+  })
+
+  it("a plain 'dark'/'dreamy' still routes to mood, not harmony", () => {
+    expect(route("make it dark").name).toBe("setMood")
+    expect(route("dreamy vibe").name).toBe("setMood")
+  })
+})
+
 describe("keywordRoute — autonomous modulation", () => {
   it("evolve → vibe evolve", () => {
     expect(route("let it evolve")).toMatchObject({ name: "vibe", args: { name: "evolve" } })
