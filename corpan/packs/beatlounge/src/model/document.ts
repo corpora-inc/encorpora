@@ -202,6 +202,10 @@ export type InstrumentConfig =
   | { kind: "wavetable"; tableId: Id; env: EnvCfg; filter: FilterCfg }
   | { kind: "soundfont"; soundfontId: Id; program: number; bank: number }
   | { kind: "ttsFragment"; voiceId?: string }
+  /** A premium analog/subtractive synth. Flat param bag (like EffectNode) so
+   *  the instrument owns its own rich schema (oscillators, filter+env, LFO,
+   *  drive, glide …) without churning this union. */
+  | { kind: "analogSynth"; preset?: string; params: Record<string, number | string | boolean> }
 
 export type InstrumentKind = InstrumentConfig["kind"]
 
@@ -303,6 +307,37 @@ export const synthPreset = (
   osc,
   filter: { type: "lowpass", frequency: 3000, q: 1.2 },
   env: { attack: 0.005, decay: 0.18, sustain: 0.2, release: 0.25 },
+})
+
+/** A default analog/subtractive synth config (the analog-synth instrument owns
+ *  the full param schema; this is just sensible starting values). */
+export const analogSynthPreset = (): Extract<InstrumentConfig, { kind: "analogSynth" }> => ({
+  kind: "analogSynth",
+  preset: "init",
+  params: {
+    osc1Wave: "sawtooth",
+    osc2Wave: "square",
+    osc2Detune: 7,
+    oscMix: 0.5,
+    subLevel: 0.3,
+    noiseLevel: 0,
+    cutoff: 2200,
+    resonance: 4,
+    filterEnvAmount: 0.5,
+    filterAttack: 0.01,
+    filterDecay: 0.25,
+    filterSustain: 0.3,
+    filterRelease: 0.3,
+    ampAttack: 0.005,
+    ampDecay: 0.2,
+    ampSustain: 0.6,
+    ampRelease: 0.3,
+    lfoRate: 5,
+    lfoDepth: 0,
+    lfoTarget: "pitch",
+    drive: 0.15,
+    glide: 0,
+  },
 })
 
 const newInstrumentTrack = (

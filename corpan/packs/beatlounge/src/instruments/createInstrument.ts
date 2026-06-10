@@ -20,6 +20,7 @@ import { createWavetableInstrument } from "./wavetable"
 import { createSoundfontInstrument } from "./soundfont"
 import { createSinePadInstrument } from "./sinePad"
 import { createTtsFragmentInstrument, type TtsFragmentDeps } from "./ttsFragment"
+import { createAnalogSynthInstrument } from "./analogSynth"
 
 type SynthConfig = Extract<InstrumentConfig, { kind: "synth" }>
 
@@ -48,6 +49,8 @@ export const createInstrument = (
       return createWavetableInstrument(config)
     case "soundfont":
       return createSoundfontInstrument(config)
+    case "analogSynth":
+      return createAnalogSynthInstrument(config)
     case "ttsFragment":
       // The phrase-sampler instrument: GrainPlayer per fragment with a
       // synth-vox floor. Falls back to a synth only when deps are absent.
