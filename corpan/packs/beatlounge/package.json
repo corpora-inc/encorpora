@@ -16,6 +16,7 @@
     "idb": "^8.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "spessasynth_lib": "^4.3.7",
     "tone": "^15.1.22",
     "zustand": "^5.0.4"
   },
