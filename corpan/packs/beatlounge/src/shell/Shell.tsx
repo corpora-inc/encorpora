@@ -181,7 +181,10 @@ export const Shell = ({
         onUndo={store.undo}
         onRedo={store.redo}
         onCommand={() => setCommandOpen(true)}
-        onDrawer={() => showToast(`${modules.length} module${modules.length === 1 ? "" : "s"}`)}
+        onExit={() => {
+          audio.stop()
+          window.dispatchEvent(new CustomEvent("corpan:exit"))
+        }}
       />
 
       {/* ---- Immersive: one module full-bleed at a time ---- */}

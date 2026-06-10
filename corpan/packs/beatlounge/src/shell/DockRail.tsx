@@ -22,7 +22,7 @@ interface Props {
   onUndo: () => void
   onRedo: () => void
   onCommand: () => void
-  onDrawer: () => void
+  onExit: () => void
 }
 
 const clampBpm = (v: number) => Math.max(20, Math.min(300, Math.round(v)))
@@ -39,13 +39,24 @@ export const DockRail = ({
   onUndo,
   onRedo,
   onCommand,
-  onDrawer,
+  onExit,
 }: Props) => {
   const [editing, setEditing] = useState(false)
   const vertical = form !== "phone"
 
   return (
     <div className={`bl-rail bl-rail--${vertical ? "vertical" : "horizontal"}`}>
+      {/* Back to Corpán — top-left, the corpan-pack standard. */}
+      <button
+        type="button"
+        className="bl-icon-btn bl-rail-back"
+        aria-label="Back to Corpán"
+        title="Back to Corpán"
+        onClick={onExit}
+      >
+        <Glyph name="chevron-left" size={22} />
+      </button>
+
       <Transport playing={playing} onToggle={onToggle} size={vertical ? "lg" : "md"} />
 
       <div className="bl-bpm" data-bl-nocapture>
@@ -120,19 +131,10 @@ export const DockRail = ({
         type="button"
         className="bl-icon-btn bl-cmd-btn"
         aria-label="Command"
-        title="Command (coming soon)"
+        title="Reshape the loop with a word"
         onClick={onCommand}
       >
         <Glyph name="command" size={20} />
-      </button>
-      <button
-        type="button"
-        className="bl-icon-btn"
-        aria-label="Modules"
-        title="Modules"
-        onClick={onDrawer}
-      >
-        <Glyph name="drawer" size={20} />
       </button>
     </div>
   )
