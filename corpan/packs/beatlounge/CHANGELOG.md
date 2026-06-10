@@ -6,6 +6,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Wave 2 — the fan-out (5 parallel teams).** Built the full feature surface on
+  the proven spine; integrated in sequence on `melo`.
+  - **Instruments & sound:** multi-zone sampler, wavetable synth, real
+    **spessasynth** soundfont (SF2/SF3 — worklet inlined, soundfont stays a
+    downloadable asset) for GM + world instruments, lush sine-pad, and
+    tamburá/tabla/drone/sub-bass/pluck/bell presets over the engines.
+  - **Effects & mixer:** all 11 effect kinds (filter/eq3/comp/dist/chorus/phaser/
+    bitcrusher/delay/reverb/limiter/gain), per-track insert chains + post-fader
+    sends to group/fx buses in the audio graph (rebuild only on structure
+    change), an FX-rack module and a mixer console.
+  - **Headline · LLM grid:** a closed tool DSL (setTempo/setSwing/density/
+    setMood/euclid/humanize) the on-device Qwen3 4B drives through a tolerant
+    `<<tool>>` protocol with parse→validate→repair→keyword-fallback so every
+    utterance yields a legal result; a command bar with preview + Keep/Reroll/
+    Undo, opened from the Dock-Rail.
+  - **Headline · phrase-sampler:** browse/search/randomize the corpus → language-
+    aware tokenize → 3-tier AudioSource (native `synthesizeToBuffer` → kit →
+    synth-vox floor, IDB byte-cache) → place a pitch-performable sampler track;
+    a `ttsFragment` GrainPlayer instrument (detune pitch, scratch) wired through
+    the audio graph so placed phrases play real audio.
+  - **Surfaces:** a scale-highlighted piano-roll and a velocity drum-pad bank.
+  - 271 unit tests green; six module tiles + the command bar verified rendering
+    in a real headless browser.
 - **Wave 1 — shell + design system.** The premium dark UI half, built on the
   frozen spine.
   - Zustand store (`src/store/`) wrapping the CommandBus with debounced
