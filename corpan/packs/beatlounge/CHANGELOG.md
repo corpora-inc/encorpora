@@ -6,6 +6,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **Phrase Jam polish pass (founder iPad notes).** Four targeted fixes:
+  (1) **Scramble now sounds like a riff.** It drew pitches from an unbounded
+  pentatonic ladder that climbed with bar position and pinned every cell at the
+  +24 clamp once the bar filled; it now draws each column INDEPENDENTLY from a
+  bounded ±12 minor-pentatonic palette, so a scrambled bar is varied, modest and
+  tuneful (still pure/reproducible from the seed; one undo step).
+  (2) **Clear control.** A danger-tinted icon+label Clear button (inline trash
+  glyph, ≥44px) sits beside Scramble and empties the grid in one undo step;
+  hidden when the grid is already empty (undo covers mistakes — no confirm
+  dialog).
+  (3) **Ribbon tracks the finger 1:1.** The thumb's `left` no longer eases
+  during a drag (an `.is-dragging` class drops the transition); the
+  snap-back-to-centre ease on release is preserved. The shared `ttsFragment`
+  GrainPlayer grain was tightened (grainSize 0.1→0.05, overlap 0.05→0.025) so
+  live detune responds ~2× snappier without warble on normal playback.
+  (4) **Scale lock is now a real musical scale.** The opaque semitone-snap
+  toggle became a small named scale picker (Chromatic · Major · Major Pent ·
+  Minor Pent · Minor), defaulting to **minor pentatonic**. The ribbon snaps the
+  live bend to that scale's degrees relative to centre, so scratching lands on
+  consonant intervals. Scale math is a pure, tested `snapToScale` helper.
 - **Phrase Discovery responsive pass — two-pane master/detail on wide screens.**
   The immersive Discovery screen now fills the available width on big iPad /
   desktop instead of collapsing to a slim column (root cause: `.bl-disc` didn't

@@ -111,6 +111,78 @@ export const cellEventAt = (
 export const clampPitch = (semis: number): number =>
   Math.max(-24, Math.min(24, Math.round(semis)))
 
+// ----------------------------------------------------------- musical scales
+/**
+ * Pitch-class sets (semitone offsets within ONE octave, relative to centre 0)
+ * for the live ribbon's snap-to-scale and the scramble riff. These are real,
+ * named scales so the control reads as music — NOT bare chromatic snapping.
+ * `chromatic` is the "off" identity (every semitone is in-scale).
+ */
+export type ScaleId =
+  | "chromatic"
+  | "major"
+  | "majorPent"
+  | "minorPent"
+  | "minor"
+
+export interface ScaleDef {
+  id: ScaleId
+  /** Short, plain-language label for the picker chip. */
+  label: string
+  /** Ascending semitone offsets within an octave (0..11). */
+  degrees: number[]
+}
+
+export const SCALES: ScaleDef[] = [
+  { id: "chromatic", label: "Chromatic", degrees: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
+  { id: "major", label: "Major", degrees: [0, 2, 4, 5, 7, 9, 11] },
+  { id: "majorPent", label: "Major Pent", degrees: [0, 2, 4, 7, 9] },
+  { id: "minorPent", label: "Minor Pent", degrees: [0, 3, 5, 7, 10] },
+  { id: "minor", label: "Minor", degrees: [0, 2, 3, 5, 7, 8, 10] },
+]
+
+/** Minor pentatonic is the always-tuneful default for performing/scratching. */
+export const DEFAULT_SCALE: ScaleId = "minorPent"
+
+const scaleById = (scale: ScaleId): ScaleDef =>
+  SCALES.find((s) => s.id === scale) ?? SCALES[0]
+
+/**
+ * Snap a (possibly fractional) semitone bend to the nearest in-scale semitone of
+ * `scale`, relative to centre (0 = the snippet's natural pitch). Pure + total.
+ * `chromatic` just rounds. The scale repeats every octave in BOTH directions, so
+ * a degree like the minor-pentatonic ♭3 lands at +3 going up and −9 going down
+ * — always a consonant interval above or below the word. Result is clamped to
+ * ±`span` so the ribbon never snaps past its own range.
+ */
+export const snapToScale = (
+  semis: number,
+  scale: ScaleId,
+  span = 36
+): number => {
+  const def = scaleById(scale)
+  if (def.id === "chromatic") {
+    return Math.max(-span, Math.min(span, Math.round(semis)))
+  }
+  // Build the in-scale pitch set across the full ±span range (octave-repeating),
+  // then pick the nearest to `semis`. Bounded loops → cheap + allocation-light.
+  let best = 0
+  let bestDist = Infinity
+  const maxOct = Math.ceil(span / 12)
+  for (let oct = -maxOct; oct <= maxOct; oct++) {
+    for (const d of def.degrees) {
+      const pitch = oct * 12 + d
+      if (pitch < -span || pitch > span) continue
+      const dist = Math.abs(pitch - semis)
+      if (dist < bestDist) {
+        bestDist = dist
+        best = pitch
+      }
+    }
+  }
+  return best
+}
+
 // ----------------------------------------------------------- scramble
 /** A planned scramble cell (lane index + step) to place. */
 export interface ScramblePlacement {
@@ -119,12 +191,21 @@ export interface ScramblePlacement {
   pitchSemis: number
 }
 
+/** Scramble draws pitches from this bounded, musical palette (semitones around
+ *  centre): a two-octave minor pentatonic, −12..+12, so a scrambled bar reads as
+ *  a tuneful riff and NEVER bunches at the clamp ceiling. */
+const SCRAMBLE_PALETTE = [-12, -9, -7, -5, -3, 0, 3, 5, 7, 10, 12]
+
 /**
  * Plan a stochastic (re)placement of bank snippets across the grid for happy
  * accidents — pure given an RNG so it's reproducible (reroll = fresh seed) and
  * undoable in one batch. Each step column gets at most one snippet (so the bar
  * reads as a phrase, not mud); `density` ∈ 0..1 controls how many columns fire.
- * Pitches ride a small in-scale ladder per column for an instant riff feel.
+ *
+ * Each fired column draws an INDEPENDENT pitch from `SCRAMBLE_PALETTE` (a bounded
+ * minor-pentatonic spanning an octave either side of centre). Pitches are varied
+ * and modest — they do NOT climb with bar position — so the riff sounds playful
+ * and tuneful and never pins to +24.
  */
 export const planScramble = (
   laneCount: number,
@@ -133,17 +214,13 @@ export const planScramble = (
   density = 0.6
 ): ScramblePlacement[] => {
   if (laneCount <= 0 || steps <= 0) return []
-  // A friendly major-pentatonic ladder (semitone offsets), wrapped per octave.
-  const LADDER = [0, 2, 4, 7, 9]
   const out: ScramblePlacement[] = []
-  let rung = 0
   for (let step = 0; step < steps; step++) {
     if (rng() > density) continue
     const laneIndex = Math.floor(rng() * laneCount) % laneCount
-    const octave = Math.floor(rung / LADDER.length)
-    const semis = clampPitch(LADDER[rung % LADDER.length] + octave * 12)
+    const pick = Math.floor(rng() * SCRAMBLE_PALETTE.length) % SCRAMBLE_PALETTE.length
+    const semis = clampPitch(SCRAMBLE_PALETTE[pick])
     out.push({ laneIndex, step, pitchSemis: semis })
-    rung++
   }
   return out
 }

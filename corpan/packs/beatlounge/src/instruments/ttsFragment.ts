@@ -107,8 +107,13 @@ export const createTtsFragmentInstrument = (
       const buffer = await decodeFragmentBytes(Tone.getContext().rawContext, bytes)
       if (!buffer || disposed) return
       const player = new Tone.GrainPlayer({
-        grainSize: 0.1,
-        overlap: 0.05,
+        // SHARED by ALL fragment playback (sequencer + auditions). Tightened
+        // from grainSize 0.1 / overlap 0.05 → 0.05 / 0.025 so LIVE detune (the
+        // pitch ribbon) responds ~2× snappier — the old ~100ms grain made bends
+        // feel behind the finger. 50ms grains still keep formants/clarity on
+        // normal playback (vs <40ms, which starts to warble on vowels).
+        grainSize: 0.05,
+        overlap: 0.025,
         loop: false,
         playbackRate: 1,
         detune: 0,

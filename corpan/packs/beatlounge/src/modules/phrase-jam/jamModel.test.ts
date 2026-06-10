@@ -11,8 +11,11 @@ import {
   buildJamView,
   cellEventAt,
   clampPitch,
+  DEFAULT_SCALE,
   laneLabel,
   planScramble,
+  SCALES,
+  snapToScale,
 } from "./jamModel"
 
 const ref = (text: string, language = "es"): FragmentRef => ({
@@ -137,6 +140,28 @@ describe("planScramble (pure, reproducible)", () => {
     }
   })
 
+  it("keeps pitches MODEST + MUSICAL: bounded to ±12 and never all the same", () => {
+    // Regression for the old runaway ladder that pinned a full bar to +24.
+    // Across many seeds the pitches must stay within an octave either side of
+    // centre and show real variation (not a monotone climb to the ceiling).
+    let sawVariation = false
+    for (let seed = 1; seed <= 40; seed++) {
+      const plan = planScramble(4, 16, seeded(seed), 1)
+      const pitches = plan.map((p) => p.pitchSemis)
+      for (const semis of pitches) {
+        expect(semis).toBeGreaterThanOrEqual(-12)
+        expect(semis).toBeLessThanOrEqual(12)
+      }
+      if (pitches.length > 4 && new Set(pitches).size > 1) sawVariation = true
+      // pitches must NOT be monotonically increasing with column position
+      const increasing = pitches.every(
+        (v, i) => i === 0 || v >= pitches[i - 1]
+      )
+      if (pitches.length > 6) expect(increasing).toBe(false)
+    }
+    expect(sawVariation).toBe(true)
+  })
+
   it("density 0 places nothing; empty bank/grid is a no-op", () => {
     expect(planScramble(3, 16, seeded(1), 0)).toEqual([])
     expect(planScramble(0, 16, seeded(1), 1)).toEqual([])
@@ -147,5 +172,48 @@ describe("planScramble (pure, reproducible)", () => {
     expect(clampPitch(3.4)).toBe(3)
     expect(clampPitch(99)).toBe(24)
     expect(clampPitch(-99)).toBe(-24)
+  })
+})
+
+describe("snapToScale (live ribbon scale-lock)", () => {
+  it("chromatic just rounds (the 'off' identity)", () => {
+    expect(snapToScale(3.4, "chromatic")).toBe(3)
+    expect(snapToScale(-7.6, "chromatic")).toBe(-8)
+    expect(snapToScale(0, "chromatic")).toBe(0)
+  })
+
+  it("snaps to in-scale degrees of a real scale, relative to centre 0", () => {
+    // Minor pentatonic degrees: 0,3,5,7,10 (octave-repeating, both directions).
+    expect(snapToScale(1, "minorPent")).toBe(0)
+    expect(snapToScale(2, "minorPent")).toBe(3)
+    expect(snapToScale(4, "minorPent")).toBe(3)
+    expect(snapToScale(6, "minorPent")).toBe(5)
+    expect(snapToScale(11, "minorPent")).toBe(10)
+    // up an octave: 12 + degree
+    expect(snapToScale(13, "minorPent")).toBe(12)
+    // below centre mirrors: -1 → nearest in-scale is -2 (i.e. 10 down an oct)
+    expect(snapToScale(-1, "minorPent")).toBe(-2)
+  })
+
+  it("every snapped value is an actual scale degree (mod 12) within the span", () => {
+    for (const scale of SCALES) {
+      const pcs = new Set(scale.degrees.map((d) => ((d % 12) + 12) % 12))
+      for (let x = -36; x <= 36; x += 0.25) {
+        const snapped = snapToScale(x, scale.id, 36)
+        expect(Math.abs(snapped)).toBeLessThanOrEqual(36)
+        expect(Number.isInteger(snapped)).toBe(true)
+        expect(pcs.has(((snapped % 12) + 12) % 12)).toBe(true)
+      }
+    }
+  })
+
+  it("never snaps past the span", () => {
+    expect(snapToScale(40, "minorPent", 36)).toBeLessThanOrEqual(36)
+    expect(snapToScale(-40, "minorPent", 36)).toBeGreaterThanOrEqual(-36)
+  })
+
+  it("default scale is the always-tuneful minor pentatonic", () => {
+    expect(DEFAULT_SCALE).toBe("minorPent")
+    expect(SCALES.some((s) => s.id === DEFAULT_SCALE)).toBe(true)
   })
 })

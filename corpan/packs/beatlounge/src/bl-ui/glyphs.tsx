@@ -22,6 +22,7 @@ export type GlyphName =
   | "solo"
   | "metronome"
   | "wave"
+  | "trash"
 
 const PATHS: Record<GlyphName, JSX.Element> = {
   play: <path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none" />,
@@ -75,6 +76,14 @@ const PATHS: Record<GlyphName, JSX.Element> = {
   ),
   wave: (
     <path d="M3 12h2l1.5-5 2 10 2-13 2 16 2-9 1.5 1H21" />
+  ),
+  trash: (
+    <>
+      <path d="M5 7h14" />
+      <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7" />
+      <path d="M6.5 7l.8 11a2 2 0 0 0 2 1.9h5.4a2 2 0 0 0 2-1.9L17.5 7" />
+      <path d="M10 11v5M14 11v5" />
+    </>
   ),
 }
 
