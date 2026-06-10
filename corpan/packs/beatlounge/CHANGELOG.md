@@ -5,6 +5,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Scratch — a turntable for one isolated phrase.** A new headline widget that
+  loads a single saved snippet onto a big vinyl record you drag to **scratch it
+  like a record** — continuous, click-free, forward AND reverse. The engine is a
+  looped `Tone.GrainPlayer` riding `playbackRate` directly on the shared
+  AudioContext (a live instrument, not the transport): the source never
+  re-triggers, so moving the rate even through zero / into reverse is gapless —
+  **no skips, no clicks**. The finger drives it turntablist-style (drag angular
+  velocity → rate; a held finger holds the groove; release coasts back to the
+  baseline). A **Spin/Hold** toggle parks the baseline at a normal loop or a held
+  record so you can scratch over the top, plus an independent ±12-semitone pitch
+  (granular detune) and a bank-snippet picker. Premium dark platter with grooves
+  + label, ≥44px controls, safe-area aware, `prefers-reduced-motion` honored (the
+  disc holds still; audio scratch still works). Velocity→rate + rotation math is
+  a pure, unit-tested helper.
+
 ### Changed
 - **Phrase Jam polish pass (founder iPad notes).** Four targeted fixes:
   (1) **Scramble now sounds like a riff.** It drew pitches from an unbounded

@@ -1,0 +1,467 @@
+/**
+ * beatlounge — phrase-SCRATCH styles. Dark, premium, elegant. ONLY global
+ * --bl-* tokens (no hardcoded colors). The platter is a real vinyl record the
+ * user drags; the disc rotation is driven by a --bl-scr-rot custom property the
+ * RAF loop writes via React. ≥44px hit targets, safe-area aware, one z-scale,
+ * never document.body, prefers-reduced-motion respected (the disc holds still;
+ * audio scratch still works).
+ */
+
+.bl-scr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  height: 100%;
+  min-height: 0;
+  padding-bottom: var(--bl-safe-bottom);
+}
+
+/* ---------------------------------------------------------- top bar */
+.bl-scr-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bl-s3);
+  flex: 0 0 auto;
+}
+.bl-scr-title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  font-size: var(--bl-fs-title);
+  font-weight: 600;
+  color: var(--bl-text);
+}
+.bl-scr-title svg {
+  color: var(--bl-accent);
+}
+.bl-scr-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-scr-picker-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  max-width: 60vw;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-pill);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scr-picker-btn:hover {
+  border-color: var(--bl-accent);
+}
+.bl-scr-picker-cur {
+  max-width: 42vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------- picker list */
+.bl-scr-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+  max-height: 40vh;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--bl-s2);
+  border-radius: var(--bl-radius);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+}
+.bl-scr-picker-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bl-s3);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--bl-text);
+  font-size: var(--bl-fs-body);
+  text-align: left;
+  cursor: pointer;
+}
+.bl-scr-picker-row:hover {
+  background: var(--bl-cell-off);
+}
+.bl-scr-picker-row.is-sel {
+  border-color: var(--bl-accent);
+  background: var(--bl-cell-off);
+}
+.bl-scr-picker-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-scr-picker-lang {
+  flex: 0 0 auto;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+
+/* ---------------------------------------------------------- the stage */
+.bl-scr-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s4);
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* ---------------------------------------------------------- the platter */
+.bl-scr-platter {
+  --bl-scr-rot: 0rad;
+  position: relative;
+  width: min(72vw, 340px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  touch-action: none; /* we own the gesture; no scroll/zoom hijack */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.bl-scr-platter.is-active {
+  cursor: grabbing;
+}
+.bl-scr-vinyl {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform: rotate(var(--bl-scr-rot));
+  background:
+    radial-gradient(circle at 50% 50%, var(--bl-surface-2) 0 26%, transparent 26.5%),
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 0, 0, 0.32) 0 2px,
+      transparent 2px 5px
+    ),
+    radial-gradient(circle at 38% 32%, var(--bl-surface-2), var(--bl-bg) 78%);
+  box-shadow:
+    inset 0 0 0 1px var(--bl-border),
+    var(--bl-glow) rgba(0, 0, 0, 0.001);
+  display: grid;
+  place-items: center;
+}
+.bl-scr-platter.is-active .bl-scr-vinyl {
+  box-shadow:
+    inset 0 0 0 1px var(--bl-accent),
+    var(--bl-glow) var(--bl-accent);
+}
+.bl-scr-grooves {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.035) 0 1px,
+    transparent 1px 4px
+  );
+  pointer-events: none;
+}
+.bl-scr-label {
+  position: relative;
+  width: 46%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 2px;
+  padding: var(--bl-s2);
+  background: radial-gradient(circle at 42% 36%, var(--bl-accent-2), var(--bl-bg) 92%);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+  overflow: hidden;
+}
+.bl-scr-label-text {
+  font-size: var(--bl-fs-label);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--bl-text);
+  max-width: 92%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.bl-scr-label-lang {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+.bl-scr-spindle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bl-bg);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+}
+/* A groove marker so the spin is visible (a single radial tick). */
+.bl-scr-marker {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  width: 3px;
+  height: 18%;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-accent);
+  opacity: 0.5;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------- readout */
+.bl-scr-readout {
+  min-height: 1.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bl-scr-rate {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-display);
+  font-weight: 600;
+  color: var(--bl-accent);
+  font-variant-numeric: tabular-nums;
+}
+.bl-scr-rate.is-hold {
+  color: var(--bl-text-dim);
+}
+.bl-scr-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-body);
+}
+
+/* ---------------------------------------------------------- controls */
+.bl-scr-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s4);
+  flex: 0 0 auto;
+}
+.bl-scr-spinbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s5);
+  border-radius: var(--bl-radius-pill);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  font-size: var(--bl-fs-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    box-shadow var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scr-spinbtn:hover:not(:disabled) {
+  border-color: var(--bl-accent);
+}
+.bl-scr-spinbtn.is-on {
+  border-color: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+  color: var(--bl-accent);
+}
+.bl-scr-spinbtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.bl-scr-pitch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  padding: 0 var(--bl-s2);
+  border-radius: var(--bl-radius-pill);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+}
+.bl-scr-pitch-btn {
+  min-width: var(--bl-hit);
+  min-height: var(--bl-hit);
+  border: none;
+  background: transparent;
+  color: var(--bl-text);
+  font-size: var(--bl-fs-value);
+  cursor: pointer;
+  border-radius: var(--bl-radius-sm);
+}
+.bl-scr-pitch-btn:hover {
+  color: var(--bl-accent);
+}
+.bl-scr-pitch-val {
+  min-width: 2.4em;
+  text-align: center;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  color: var(--bl-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------- hint */
+.bl-scr-hint {
+  flex: 0 0 auto;
+  margin: 0;
+  text-align: center;
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  line-height: 1.4;
+}
+.bl-scr-hint strong {
+  color: var(--bl-text);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------- empty state */
+.bl-scr-empty {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s3);
+  text-align: center;
+  padding: var(--bl-s5);
+  color: var(--bl-text-dim);
+}
+.bl-scr-empty svg {
+  color: var(--bl-accent);
+  opacity: 0.7;
+}
+.bl-scr-empty-title {
+  margin: 0;
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  color: var(--bl-text);
+}
+.bl-scr-empty-sub {
+  margin: 0;
+  max-width: 32ch;
+  font-size: var(--bl-fs-label);
+  line-height: 1.45;
+}
+.bl-scr-empty strong {
+  color: var(--bl-text);
+}
+
+/* ---------------------------------------------------------- spinner */
+.bl-scr-spin {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--bl-border);
+  border-top-color: var(--bl-accent);
+  animation: bl-scr-spin 0.8s linear infinite;
+}
+@keyframes bl-scr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------------------------------------------------- the tile */
+.bl-tile-scr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  height: 100%;
+}
+.bl-tile-scr-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s3);
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.bl-tile-scr-disc {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 0, 0, 0.32) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(circle at 40% 34%, var(--bl-surface-2), var(--bl-bg) 80%);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+  animation: bl-scr-disc-spin 6s linear infinite;
+}
+.bl-tile-scr-disc-label {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 36%, var(--bl-accent-2), var(--bl-bg) 92%);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+}
+@keyframes bl-scr-disc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.bl-tile-scr-stat {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  text-align: center;
+}
+.bl-tile-scr-stat strong {
+  color: var(--bl-text);
+  font-size: var(--bl-fs-value);
+  font-weight: 700;
+}
+.bl-tile-scr-hint {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  text-align: center;
+  line-height: 1.4;
+}
+.bl-tile-scr-hint strong {
+  color: var(--bl-text);
+}
+
+/* ---------------------------------------------------------- bigger screens */
+@media (min-width: 600px) {
+  .bl-scr-platter {
+    width: min(56vw, 420px);
+  }
+}
+
+/* ---------------------------------------------------------- reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bl-scr-vinyl {
+    transform: none; /* the disc holds still; audio scratch still works */
+  }
+  .bl-tile-scr-disc {
+    animation: none;
+  }
+  .bl-scr-spin {
+    animation-duration: 1.6s;
+  }
+}
