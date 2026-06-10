@@ -6,6 +6,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Drums page rework v2 — the whole drum-track pipeline in one place.** Replaced
+  the cramped Grooves/Effects side column with a single FULL-WIDTH bottom DRAWER
+  (drag handle + peek/open/expanded states, local to the module, one z-scale,
+  safe-area + reduced-motion aware) holding four tabs: **Grooves** (the shared
+  panel, now with room to breathe — no truncated names), **Kit** (the `<KitPicker>`
+  — the previously-missing kit corpus, 18 kits), **Effects** (the drum-bus
+  `<TrackFxChain>`), and **Mixer** (level/pan/mute/solo). When peeked, the grid
+  takes the full screen.
+- **Drum-lane groove targeting.** The step grid's lane heads are now selectable
+  (tap to toggle, clear-all chip). The selection re-points an applied groove:
+  **0** selected → the natural role→kit mapping (unchanged); **1** → the whole
+  rhythm collapses onto that one voice (a clave can play the kick); **N** → the
+  rhythm is distributed across them (signature lane first, then by hit density).
+  Threaded through `applyRhythm` / `buildGrooveCommands` / the Grooves Apply ·
+  Layer · Vary · Evolve actions, with pure unit tests.
+- **Drums grid polish.** Lane cells fill the full row width responsively (the old
+  wasted horizontal region is gone now the grid is full-width); selected lanes are
+  visually distinct.
 - **Drum-kit corpus + parametric drum synth (the 4th corpus).** New `src/kits/`:
   a typed `KitDef` schema (per-voice synthesis params as plain data — no samples,
   no downloads) and a curated repertoire of **18 kits** across three families —

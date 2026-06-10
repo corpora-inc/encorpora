@@ -50,6 +50,13 @@ const sharedParams = {
   },
 }
 
+/** Coerce an unknown `targetPitches` param into a finite-number array (or undefined). */
+const coerceTargets = (v: unknown): number[] | undefined => {
+  if (!Array.isArray(v)) return undefined
+  const out = v.map(Number).filter((n) => Number.isFinite(n))
+  return out.length > 0 ? out : undefined
+}
+
 const buildOpts = (
   params: Record<string, unknown>,
   ctx: ActionContext
@@ -59,6 +66,7 @@ const buildOpts = (
   layer: Boolean(params.layer),
   rng: ctx.rng,
   phraseDensity: params.phraseDensity != null ? Number(params.phraseDensity) : undefined,
+  targetPitches: coerceTargets(params.targetPitches),
 })
 
 const resolveRhythmId = (params: Record<string, unknown>): string =>

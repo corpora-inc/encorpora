@@ -17,7 +17,7 @@
  */
 
 import { PPQ } from "../model/timing"
-import { hitVelocity, rhythmCells, type Hit, type Lane, type Rhythm } from "./types"
+import { hitVelocity, laneVelocity, rhythmCells, type Hit, type Lane, type Rhythm } from "./types"
 import { pitchForRole } from "./roles"
 import { RHYTHMS } from "./corpus"
 
@@ -53,11 +53,28 @@ export interface ApplyOptions {
   intensity?: number
   /** If true, a trailing partial cycle is dropped instead of truncated mid-cycle. */
   wholeCyclesOnly?: boolean
+  /**
+   * DRUM TARGETING — which kit voice(s) the rhythm should play on. The drum page
+   * lets the user select lane heads; this carries that selection so a groove can
+   * be re-pointed at arbitrary kit voices (e.g. play a clave on the kick).
+   *
+   *   • undefined / empty → the natural role→DRUM_PITCH mapping (unchanged).
+   *   • exactly one pitch → COLLAPSE: union ALL the rhythm's onsets (across every
+   *     lane) onto that single pitch, so the whole pattern triggers one voice.
+   *   • N pitches        → DISTRIBUTE: rank the rhythm's lanes by importance and
+   *     assign the top-N lanes, in order, to the N selected pitches.
+   *
+   * See `collapseTo` / `distributeAcross` for the exact heuristics.
+   */
+  targetPitches?: number[]
 }
 
 /**
  * Produce the concrete note placements for a drum track from a rhythm, tiled
  * across `loopTicks`. Pure; the caller maps these to `setNotes` inputs.
+ *
+ * When `targetPitches` is set the role→pitch mapping is overridden by the
+ * targeting heuristics (collapse to one voice / distribute across N voices).
  */
 export const applyRhythm = (r: Rhythm, opts: ApplyOptions = {}): NotePlacement[] => {
   const ct = cellTicks(r)
@@ -71,11 +88,32 @@ export const applyRhythm = (r: Rhythm, opts: ApplyOptions = {}): NotePlacement[]
   const tailTicks = loop - fullCopies * oneCycle
   const copies = opts.wholeCyclesOnly ? fullCopies : fullCopies + (tailTicks > 0 ? 1 : 0)
 
+  // Resolve the per-lane pitch override from the targeting selection (if any).
+  // `laneTargets` maps lane index → kit pitch; lanes absent from the map are
+  // dropped (only the top-N lanes survive an N-pitch distribution).
+  const targets = (opts.targetPitches ?? []).filter((p) => Number.isFinite(p))
+  const targeting = targets.length > 0
+  const laneTargets: Map<number, number> | null = targeting
+    ? targets.length === 1
+      ? collapseTo(r, targets[0])
+      : distributeAcross(r, targets)
+    : null
+
   const out: NotePlacement[] = []
   for (let copy = 0; copy < copies; copy++) {
     const offset = copy * oneCycle
-    for (const lane of r.lanes) {
-      const pitch = pitchForRole(lane.role)
+    for (let li = 0; li < r.lanes.length; li++) {
+      const lane = r.lanes[li]
+      // Targeted: use the override pitch for this lane (or skip it if the lane
+      // wasn't selected by the heuristic). Untargeted: the natural role pitch.
+      let pitch: number
+      if (laneTargets) {
+        const t = laneTargets.get(li)
+        if (t == null) continue // lane not assigned a target → drop it
+        pitch = t
+      } else {
+        pitch = pitchForRole(lane.role)
+      }
       for (const hit of lane.hits) {
         const tick = offset + hit.cell * ct
         if (tick >= loop) continue // truncate a partial trailing cycle
@@ -88,8 +126,71 @@ export const applyRhythm = (r: Rhythm, opts: ApplyOptions = {}): NotePlacement[]
       }
     }
   }
+
+  // Targeting can route two lanes onto the same pitch+tick (collapse always
+  // does; distribute can on overlapping onsets). De-dupe by (tick, pitch),
+  // keeping the LOUDER hit so accents survive.
+  if (laneTargets) return dedupeKeepLoudest(out)
+
   out.sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
   return out
+}
+
+// ----------------------------------------------------------- targeting heuristics
+/**
+ * COLLAPSE — point the whole rhythm at one voice. Every lane is mapped to the
+ * single target pitch, so unioning their onsets (the de-dupe in applyRhythm)
+ * produces one merged pattern on that voice. A clave's 3-2 stabs, a samba's
+ * surdo + caixa + tamborim, etc. all fold onto, say, the kick.
+ */
+const collapseTo = (r: Rhythm, pitch: number): Map<number, number> => {
+  const m = new Map<number, number>()
+  for (let i = 0; i < r.lanes.length; i++) m.set(i, pitch)
+  return m
+}
+
+/**
+ * DISTRIBUTE — spread the rhythm across N selected voices. We RANK lanes by
+ * importance, take the top N, and assign them in order to the N target pitches
+ * (target[0] gets the most important lane). Importance ranking:
+ *   1. SIGNATURE lanes first (the clave / surdo / tala backbone defines the
+ *      groove, so it should land on the first selected voice).
+ *   2. then by HIT DENSITY (more onsets ⇒ more musically load-bearing), using
+ *      total accent-weighted velocity as the tiebreak (louder lane wins).
+ *   3. stable by original lane order for full ties (reproducible).
+ * If the rhythm has fewer lanes than targets, the extra targets simply go
+ * unused (no empty lanes invented).
+ */
+const distributeAcross = (r: Rhythm, pitches: number[]): Map<number, number> => {
+  const ranked = r.lanes
+    .map((lane, idx) => ({
+      idx,
+      signature: lane.signature ? 1 : 0,
+      hits: lane.hits.length,
+      weight: lane.hits.reduce((s, h) => s + hitVelocity(lane, h), 0) || laneVelocity(lane),
+    }))
+    .sort(
+      (a, b) =>
+        b.signature - a.signature ||
+        b.hits - a.hits ||
+        b.weight - a.weight ||
+        a.idx - b.idx
+    )
+  const m = new Map<number, number>()
+  const n = Math.min(pitches.length, ranked.length)
+  for (let k = 0; k < n; k++) m.set(ranked[k].idx, pitches[k])
+  return m
+}
+
+/** De-dupe placements by (tick, pitch), keeping the louder of any collision. */
+const dedupeKeepLoudest = (placements: NotePlacement[]): NotePlacement[] => {
+  const best = new Map<string, NotePlacement>()
+  for (const p of placements) {
+    const key = `${p.tick}:${p.pitch}`
+    const cur = best.get(key)
+    if (!cur || p.velocity > cur.velocity) best.set(key, p)
+  }
+  return [...best.values()].sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
 }
 
 // ========================================================= applyRhythmToPhrases

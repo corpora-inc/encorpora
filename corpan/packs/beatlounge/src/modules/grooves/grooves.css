@@ -352,6 +352,24 @@
   color: var(--bl-text-dim);
 }
 
+/* ---- targeting hint (the live drum-lane selection drives 0/1/N) ---- */
+.bl-grooves-target {
+  margin: 0;
+  font-size: var(--bl-fs-micro);
+  line-height: 1.4;
+  color: var(--bl-text-dim);
+  padding: var(--bl-s2) var(--bl-s3);
+  border-radius: var(--bl-radius-sm, var(--bl-radius));
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+}
+.bl-grooves-target.is-on {
+  color: var(--bl-text);
+  border-color: var(--bl-accent);
+  box-shadow: 0 0 0 1px var(--bl-accent) inset;
+}
+.bl-grooves-target strong { color: var(--bl-accent); font-weight: 700; }
+
 /* ---- action buttons (Apply · Layer · Vary · Evolve · Randomize) ---- */
 .bl-grooves-actions {
   display: grid;
