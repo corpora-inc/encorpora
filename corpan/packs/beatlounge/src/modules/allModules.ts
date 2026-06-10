@@ -16,6 +16,7 @@ import { createMixerModule } from "./mixer"
 import { createFxRackModule } from "./fx-rack"
 import { createPianoRollModule } from "./piano-roll"
 import { createDrumPadsModule } from "./drum-pads"
+import { createPhraseSamplerModule } from "./phrase-sampler"
 
 export interface ModuleDeps {
   store: BeatloungeStore
@@ -27,8 +28,7 @@ export const registerAllModules = (registry: ModuleRegistry, deps: ModuleDeps): 
   registry.register(createStepGridModule(deps))
   registry.register(createDrumPadsModule(deps))
   registry.register(createPianoRollModule(deps))
+  registry.register(createPhraseSamplerModule(deps))
   registry.register(createFxRackModule(deps))
   registry.register(createMixerModule(deps))
-  // ---- remaining Wave 2 modules (integrator wires each as it lands) ----
-  // registry.register(createPhraseSamplerModule(deps))
 }

@@ -18,9 +18,9 @@ const makeContext = (): AudioContext =>
   new (globalThis.AudioContext ||
     (globalThis as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext)()
 
-export const createBeatloungeAudio: CreateBeatloungeAudio = (bus, ctx): AudioFacade => {
-  const context = ctx ?? makeContext()
-  const graph = createAudioGraph(context)
+export const createBeatloungeAudio: CreateBeatloungeAudio = (bus, opts): AudioFacade => {
+  const context = opts?.ctx ?? makeContext()
+  const graph = createAudioGraph(context, opts?.fragmentDeps)
   const scheduler = createScheduler({ context })
 
   let current: BeatloungeDoc = bus.snapshot()

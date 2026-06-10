@@ -14,6 +14,7 @@ import { createCommandBus } from "./model/commandBus"
 import { createDefaultDoc } from "./model/document"
 import { createBeatloungeAudio } from "./engine/createAudio"
 import { createBeatloungeStore } from "./store/store"
+import { createAudioSource } from "./phrase/audioSource"
 import { createChromeBridge } from "./host/chromeBridge"
 import { createHost } from "./host/createHost"
 import { createFormObserver } from "./host/formFactor"
@@ -25,7 +26,16 @@ export const App = ({ hostApi }: { hostApi: HostApi }) => {
   const rig = useMemo(() => {
     const bus = createCommandBus(createDefaultDoc(Date.now()))
     const store = createBeatloungeStore(bus)
-    const audio = createBeatloungeAudio(bus)
+    // Shared phrase-sampler audio source so ttsFragment tracks play real audio
+    // (the headline sampler feature); the IDB byte-cache is shared with the
+    // phrase-sampler module by content hash.
+    const audioSource = createAudioSource({ hostApi })
+    const audio = createBeatloungeAudio(bus, {
+      fragmentDeps: {
+        audioSource,
+        getFragmentRef: (id) => bus.snapshot().fragmentLibrary.find((f) => f.id === id),
+      },
+    })
     const formObs = createFormObserver()
     const bridge = createChromeBridge(formObs.get)
     const host = createHost({ hostApi, bus, audio, chrome: bridge.chrome })

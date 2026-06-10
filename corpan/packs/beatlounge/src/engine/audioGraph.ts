@@ -21,6 +21,7 @@ import type { AudioGraph, Effect, Instrument, ScheduledTrigger } from "../contra
 import type { Bus, BeatloungeDoc, EffectNode, Normalized, Send, Track } from "../model/document"
 import { isTrackAudible } from "../model/document"
 import { createInstrument, instrumentKindOf } from "../instruments/createInstrument"
+import type { TtsFragmentDeps } from "../instruments/ttsFragment"
 import { createEffect } from "../effects/createEffect"
 import { chainSig } from "../effects/chainSig"
 
@@ -66,7 +67,11 @@ const targetGain = (doc: BeatloungeDoc, track: Track): number =>
 const busTargetGain = (bus: Bus): number =>
   bus.mute ? 0 : Math.max(0, Math.min(1, bus.volume))
 
-export const createAudioGraph = (ctx: AudioContext): AudioGraph => {
+export const createAudioGraph = (
+  ctx: AudioContext,
+  /** Phrase-sampler deps for ttsFragment tracks; omit for a synth fallback. */
+  fragmentDeps?: TtsFragmentDeps
+): AudioGraph => {
   // Ensure Tone uses our context so node times line up with the scheduler.
   Tone.setContext(ctx)
 
@@ -158,7 +163,7 @@ export const createAudioGraph = (ctx: AudioContext): AudioGraph => {
 
   // ----------------------------------------------------------- tracks
   const build = (track: Track): TrackNodes => {
-    const instrument = createInstrument(track.instrument)
+    const instrument = createInstrument(track.instrument, fragmentDeps)
     const gain = new Tone.Gain(0).connect(masterVol)
     const panner = new Tone.Panner(track.pan).connect(gain)
     const chainHead = new Tone.Gain(1)

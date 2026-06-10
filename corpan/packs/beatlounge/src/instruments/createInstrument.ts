@@ -19,6 +19,7 @@ import { createSamplerInstrument } from "./sampler"
 import { createWavetableInstrument } from "./wavetable"
 import { createSoundfontInstrument } from "./soundfont"
 import { createSinePadInstrument } from "./sinePad"
+import { createTtsFragmentInstrument, type TtsFragmentDeps } from "./ttsFragment"
 
 type SynthConfig = Extract<InstrumentConfig, { kind: "synth" }>
 
@@ -27,7 +28,11 @@ const PAD_ATTACK_THRESHOLD = 0.4
 const isPadVoice = (c: SynthConfig): boolean =>
   (c.osc === "sine" || c.osc === "triangle") && c.env.attack >= PAD_ATTACK_THRESHOLD
 
-export const createInstrument = (config: InstrumentConfig): Instrument => {
+export const createInstrument = (
+  config: InstrumentConfig,
+  /** Provided by the audio graph for ttsFragment tracks (phrase-sampler). */
+  fragmentDeps?: TtsFragmentDeps
+): Instrument => {
   switch (config.kind) {
     case "synth":
       return isPadVoice(config)
@@ -43,9 +48,14 @@ export const createInstrument = (config: InstrumentConfig): Instrument => {
       return createWavetableInstrument(config)
     case "soundfont":
       return createSoundfontInstrument(config)
+    case "ttsFragment":
+      // The phrase-sampler instrument: GrainPlayer per fragment with a
+      // synth-vox floor. Falls back to a synth only when deps are absent.
+      return fragmentDeps
+        ? createTtsFragmentInstrument(config, fragmentDeps)
+        : createSynthInstrument(synthPreset("sine"))
     default:
-      // ttsFragment (owned by the fragment team) + any future kind → audible
-      // synth fallback so a track is never silent.
+      // Any future kind → audible synth fallback so a track is never silent.
       return createSynthInstrument(synthPreset("sawtooth"))
   }
 }

@@ -9,6 +9,7 @@
 
 import type { CommandBus } from "../model/commandBus"
 import type { Id, Tick } from "../model/document"
+import type { TtsFragmentDeps } from "../instruments/ttsFragment"
 
 export interface AudioFacade {
   /** Resume the AudioContext (user-gesture) and start the transport. */
@@ -24,8 +25,19 @@ export interface AudioFacade {
   dispose(): void
 }
 
+export interface BeatloungeAudioOpts {
+  /** Reuse an existing AudioContext (else one is created). */
+  ctx?: AudioContext
+  /** Phrase-sampler deps so ttsFragment tracks play real audio (the headline
+   *  sampler feature). Omit ⇒ ttsFragment tracks use a synth fallback. */
+  fragmentDeps?: TtsFragmentDeps
+}
+
 /**
- * Factory the engine exports and `main.tsx` calls. The facade subscribes to the
- * bus for the lifetime of the pack; `dispose()` unsubscribes and frees nodes.
+ * Factory the engine exports and `App` calls. The facade subscribes to the bus
+ * for the lifetime of the pack; `dispose()` unsubscribes and frees nodes.
  */
-export type CreateBeatloungeAudio = (bus: CommandBus, ctx?: AudioContext) => AudioFacade
+export type CreateBeatloungeAudio = (
+  bus: CommandBus,
+  opts?: BeatloungeAudioOpts
+) => AudioFacade

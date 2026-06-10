@@ -1,0 +1,305 @@
+/* beatlounge — phrase-sampler module styles (co-located; imported by index.tsx).
+ * Uses the global --bl-* tokens from styles.css; never edits that file. */
+
+.bl-ps {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  gap: var(--bl-s3);
+  color: var(--bl-text);
+}
+
+/* ---- toolbar: search + shuffle ---- */
+.bl-ps-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-ps-search {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s3);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-pill);
+  color: var(--bl-text-dim);
+}
+.bl-ps-input {
+  flex: 1 1 auto;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--bl-text);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-body);
+  min-width: 0;
+}
+.bl-ps-input::placeholder {
+  color: var(--bl-text-dim);
+}
+.bl-ps-clear {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  color: var(--bl-text-dim);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--bl-radius-pill);
+}
+.bl-ps-clear:hover {
+  color: var(--bl-text);
+}
+.bl-ps-dice {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  white-space: nowrap;
+}
+
+/* ---- facets ---- */
+.bl-ps-facets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-ps-facetrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s1);
+}
+.bl-ps-facet {
+  min-height: 32px;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-pill);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+  transition: color var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-ps-facet.is-on {
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  border-color: var(--bl-accent);
+}
+
+/* ---- mode segmented control ---- */
+.bl-ps-modebar {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+}
+.bl-ps-modelabel {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+}
+.bl-ps-modeseg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-pill);
+}
+.bl-ps-modebtn {
+  min-height: 32px;
+  padding: 0 var(--bl-s4);
+  border: none;
+  background: transparent;
+  color: var(--bl-text-dim);
+  border-radius: var(--bl-radius-pill);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+}
+.bl-ps-modebtn.is-on {
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+}
+
+/* ---- virtualized list ---- */
+.bl-ps-list {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid var(--bl-border);
+}
+.bl-ps-spacer {
+  position: relative;
+  width: 100%;
+}
+.bl-ps-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  padding: var(--bl-s2) var(--bl-s1);
+  border-bottom: 1px solid var(--bl-border);
+  box-sizing: border-box;
+}
+.bl-ps-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.bl-ps-target {
+  font-size: var(--bl-fs-title);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--bl-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-ps-roman {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-accent);
+  font-family: var(--bl-font-mono);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-ps-gloss {
+  font-size: var(--bl-fs-body);
+  color: var(--bl-text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-ps-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  margin-top: 2px;
+}
+.bl-ps-badge {
+  font-size: var(--bl-fs-micro);
+  font-family: var(--bl-font-mono);
+  color: var(--bl-bg);
+  background: var(--bl-text-dim);
+  border-radius: var(--bl-radius-sm);
+  padding: 1px 6px;
+}
+.bl-ps-tag {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: 1px 6px;
+}
+.bl-ps-actions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: var(--bl-s2);
+}
+.bl-ps-act {
+  width: var(--bl-hit);
+  height: var(--bl-hit);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-ps-act:hover {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+}
+.bl-ps-act.is-place:hover {
+  color: var(--bl-success);
+  border-color: var(--bl-success);
+}
+.bl-ps-act:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.bl-ps-spin {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--bl-border);
+  border-top-color: var(--bl-accent);
+  animation: bl-ps-spin 0.7s linear infinite;
+}
+@keyframes bl-ps-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-ps-spin {
+    animation-duration: 1.6s;
+  }
+}
+
+.bl-ps-list.is-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bl-ps-empty {
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-body);
+  text-align: center;
+  padding: var(--bl-s5);
+}
+
+/* ---- tile ---- */
+.bl-tile-ps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  height: 100%;
+}
+.bl-tile-ps-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 0;
+}
+.bl-tile-ps-target {
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  color: var(--bl-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-tile-ps-gloss {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-tile-ps-hint {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  line-height: 1.3;
+}
