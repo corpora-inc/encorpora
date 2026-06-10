@@ -6,6 +6,7 @@
  * The only shared dependency is the pure ./model layer.
  */
 
+import type { ToneAudioNode } from "tone"
 import type { BeatloungeDoc, Id, InstrumentConfig, Midi, Normalized, Tick } from "../model/document"
 
 // ----------------------------------------------------------- asset loading
@@ -37,8 +38,8 @@ export interface TriggerNote {
 /** Every instrument engine (synth/fm/wavetable/sampler/drumSampler/soundfont/
  *  ttsFragment) implements this. The audioGraph owns its lifecycle. */
 export interface Instrument {
-  /** Output node — connect into the track's insert chain. */
-  readonly output: AudioNode
+  /** Output node — connect into the track's insert chain / track gain. */
+  readonly output: ToneAudioNode
   /** Schedule a note at an exact AudioContext time (seconds). */
   trigger(note: TriggerNote, when: number): void
   /** Apply a config delta (reconciler calls on doc change). */
@@ -52,8 +53,8 @@ export interface Instrument {
 
 // ----------------------------------------------------------- effects
 export interface Effect {
-  readonly input: AudioNode
-  readonly output: AudioNode
+  readonly input: ToneAudioNode
+  readonly output: ToneAudioNode
   update(params: Record<string, number | string | boolean>, enabled: boolean): void
   setParam(param: string, value: number, when: number): void
   dispose(): void
