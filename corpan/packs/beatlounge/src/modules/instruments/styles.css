@@ -1,0 +1,173 @@
+/* ============================================================
+   beatlounge — instruments module (GM browser) styles. Co-located; builds ONLY
+   on the frozen --bl-* tokens (never edits the design system). Dark, immersive,
+   tuned for phone / iPad / desktop alike.
+   ============================================================ */
+
+/* ---------------------------------------------------------- tile */
+.bl-instr-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-cell-off);
+}
+.bl-instr-tile-name {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.02em;
+  color: var(--bl-text);
+}
+.bl-instr-tile-prog {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+
+/* ---------------------------------------------------------- immersive */
+.bl-instr {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: var(--bl-s4);
+  gap: var(--bl-s3);
+  min-height: 0;
+}
+
+.bl-instr-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.bl-instr-tracks {
+  display: flex;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+}
+.bl-instr-empty,
+.bl-instr-foot-hint {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+
+/* Now-playing header. */
+.bl-instr-now {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bl-s3);
+  padding: var(--bl-s3) var(--bl-s4);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+}
+.bl-instr-now-label {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-instr-now-name {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-accent);
+}
+
+/* Family rail + program grid. */
+.bl-instr-browser {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  flex: 1;
+  min-height: 0;
+}
+.bl-instr-families {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+}
+
+.bl-instr-programs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--bl-s2);
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: var(--bl-s1);
+  align-content: start;
+}
+@media (min-width: 600px) {
+  .bl-instr-programs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 960px) {
+  .bl-instr-programs {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.bl-instr-prog {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  padding: var(--bl-s2) var(--bl-s3);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease),
+    box-shadow var(--bl-dur) var(--bl-ease);
+}
+.bl-instr-prog:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 40%, transparent);
+  background: var(--bl-surface);
+}
+.bl-instr-prog:active {
+  transform: scale(0.98);
+}
+.bl-instr-prog:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+.bl-instr-prog.is-on {
+  border-color: var(--bl-accent);
+  background: color-mix(in srgb, var(--bl-accent) 16%, var(--bl-surface-2));
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 45%, transparent);
+}
+.bl-instr-prog-name {
+  font-size: var(--bl-fs-body);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-instr-prog-num {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  flex: none;
+}
+.bl-instr-prog.is-on .bl-instr-prog-num {
+  color: var(--bl-accent);
+}
+
+/* Footer audition row. */
+.bl-instr-foot {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+}

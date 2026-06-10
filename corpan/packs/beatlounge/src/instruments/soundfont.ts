@@ -34,6 +34,29 @@ const isSoundfont = (c: InstrumentConfig): c is SoundfontConfig =>
 const CHANNEL = 0
 const MIDI_FULL_VELOCITY = 127
 
+/**
+ * Where the soundfont instrument self-fetches an SF2/SF3 when the host's
+ * AssetLoader returns nothing (the standalone dev seam does). The committed
+ * "beatlounge-gm" bank lives in `public/soundfonts/` → served at this base.
+ * Override globally before the pack boots, e.g. to point at a remote CDN:
+ *   globalThis.BEATLOUNGE_SOUNDFONT_BASE = "https://cdn.example.com/sf/"
+ */
+const DEFAULT_SOUNDFONT_BASE = "soundfonts/"
+
+const soundfontBase = (): string => {
+  const g = globalThis as { BEATLOUNGE_SOUNDFONT_BASE?: string }
+  return g.BEATLOUNGE_SOUNDFONT_BASE ?? DEFAULT_SOUNDFONT_BASE
+}
+
+/** Resolve a soundfontId to its self-hosted URL (under the configured base). */
+const soundfontUrl = (id: Id): string => {
+  const base = soundfontBase()
+  // SF3 is preferred if present; we ship .sf2. Callers may host either —
+  // we request the id verbatim with a .sf2 extension when none is given.
+  const hasExt = /\.(sf2|sf3)$/i.test(id)
+  return `${base}${hasExt ? id : `${id}.sf2`}`
+}
+
 /** Per-AudioContext guard so the worklet module is only registered once. */
 const REGISTERED = new WeakSet<BaseAudioContext>()
 
@@ -76,24 +99,49 @@ export const createSoundfontInstrument = (config: SoundfontConfig): Instrument =
     synth.programChange(CHANNEL, program & 0x7f)
   }
 
-  const initSynth = async (assets: AssetLoader): Promise<void> => {
-    const ctx = rawCtx()
-    let bytes: ArrayBuffer
+  /** Fetch the SF2/SF3 bytes for this track's soundfont. Order:
+   *   1. the host AssetLoader (a real Corpán host wires this to pack assets),
+   *   2. self-fetch from the configured base URL (the committed bank ships in
+   *      `public/soundfonts/` → reachable at `soundfonts/<id>.sf2`).
+   *  Either path makes a real GM voice SOUND; the synth fallback is last. */
+  const fetchSoundfontBytes = async (assets: AssetLoader): Promise<ArrayBuffer | null> => {
+    // 1) Host-provided bytes (overrides everything when present).
     try {
-      bytes = await assets.resolve({ soundfontId })
+      const viaHost = await assets.resolve({ soundfontId })
+      if (viaHost && viaHost.byteLength > 0) return viaHost
     } catch (err) {
       console.warn(
-        `[beatlounge] soundfont: no asset for soundfontId=${soundfontId}; using fallback synth`,
+        `[beatlounge] soundfont: host AssetLoader had no bytes for ${soundfontId}; self-fetching`,
         err
       )
-      return
     }
-    if (!bytes || bytes.byteLength === 0) {
+    // 2) Self-fetch from the bundled / configured location.
+    const url = soundfontUrl(soundfontId)
+    try {
+      const res = await fetch(url)
+      if (!res.ok) {
+        console.warn(`[beatlounge] soundfont: fetch ${url} → ${res.status}; using fallback synth`)
+        return null
+      }
+      const buf = await res.arrayBuffer()
+      if (!buf || buf.byteLength === 0) {
+        console.warn(`[beatlounge] soundfont: ${url} was empty; using fallback synth`)
+        return null
+      }
+      return buf
+    } catch (err) {
       console.warn(
-        `[beatlounge] soundfont: empty asset for soundfontId=${soundfontId}; using fallback synth`
+        `[beatlounge] soundfont: could not fetch ${url}; using fallback synth`,
+        err
       )
-      return
+      return null
     }
+  }
+
+  const initSynth = async (assets: AssetLoader): Promise<void> => {
+    const ctx = rawCtx()
+    const bytes = await fetchSoundfontBytes(assets)
+    if (!bytes) return
     try {
       await ensureProcessor(ctx)
       const s = new WorkletSynthesizer(ctx)
