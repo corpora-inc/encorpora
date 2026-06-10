@@ -160,7 +160,6 @@ export const PhraseJamImmersive = ({
     paintMode.current = isOn ? "remove" : "add"
     touched.current = new Set([`${laneIndex}:${step}`])
     setCell(laneIndex, step, !isOn)
-    if (!isOn) void preview(laneIndex)
   }
 
   const onCellEnter = (laneIndex: number, step: number) => {
