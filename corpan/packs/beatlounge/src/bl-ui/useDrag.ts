@@ -30,8 +30,11 @@ const CHROME_SELECTOR = 'button,a,input,select,textarea,[role="button"],[data-bl
 const isChromeTarget = (target: EventTarget | null, self: EventTarget): boolean => {
   if (!(target instanceof Element)) return false
   const hit = target.closest(CHROME_SELECTOR)
-  // A press on the control's OWN element is fine; only bail for nested chrome.
-  return hit != null && hit !== self
+  if (hit == null || hit === self) return false
+  // Only bail for chrome NESTED INSIDE the drag surface (e.g. a button inside a
+  // draggable row). An ANCESTOR marked [data-bl-nocapture] — like the .bl-knob
+  // wrapper around its own dial — must not cancel the control's own drag.
+  return self instanceof Element ? self.contains(hit) : false
 }
 
 export const useDrag = (callbacks: DragCallbacks, moveThreshold = 3): DragHandlers => {

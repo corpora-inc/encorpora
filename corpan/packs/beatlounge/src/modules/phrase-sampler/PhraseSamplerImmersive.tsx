@@ -45,8 +45,12 @@ const ALL_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const
 
 export const PhraseSamplerImmersive = ({ host, store, audioSource, onPlaced }: Props) => {
   const hostApi = host.hostApi
-  const stack = hostApi.getStackConfig()
-  const languages = stack.languages
+  // Snapshot the stack ONCE per mount. The real host returns a fresh object on
+  // every getStackConfig() call; reading it in the render body made `languages`
+  // (and thus langCodes -> fetchEntries -> the fetch effect) change identity
+  // every render, which re-fetched the corpus in an infinite loop.
+  const stack = useMemo(() => hostApi.getStackConfig(), [hostApi])
+  const languages = useMemo(() => stack.languages, [stack])
   const langCodes = useMemo(() => phraseLanguageCodes(languages), [languages])
 
   const [query, setQuery] = useState("")
