@@ -43,7 +43,7 @@ export const createMixerModule = ({ store, audio }: MixerDeps): BeatloungeModule
       if (mount.surface === "tile") {
         root.render(<MixerTile store={store} audio={audio} />)
       } else {
-        root.render(<MixerConsole store={store} audio={audio} />)
+        root.render(<MixerConsole store={store} audio={audio} host={mount.host} />)
       }
     }
 

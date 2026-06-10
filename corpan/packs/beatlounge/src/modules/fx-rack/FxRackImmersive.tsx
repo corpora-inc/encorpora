@@ -188,6 +188,12 @@ const EffectCard = ({ store, host, trackId, fx, index, count, bpm }: CardProps) 
       params: { [key]: value },
     })
 
+  // Live (per-move): drive the audio node straight through the engine — NO
+  // document write, NO undo step. The effect's setParam ramps the node, so the
+  // sound sweeps continuously under the finger (the filter's frequency/q do).
+  const liveParam = (key: string, value: number) =>
+    host.applyParam({ scope: "insert", trackId, insertId: fx.id, param: key }, value)
+
   // Set several params at once — still ONE setEffectParams command (one undo
   // step), used by the Filter XYPad (frequency × Q) on commit.
   const setParams = (params: Record<string, number | string>) =>
@@ -279,7 +285,7 @@ const EffectCard = ({ store, host, trackId, fx, index, count, bpm }: CardProps) 
       )}
 
       {fx.kind === "filter" && (
-        <FilterPad fx={fx} spec={spec} onCommit={setParams} />
+        <FilterPad fx={fx} spec={spec} onLive={liveParam} onCommit={setParams} />
       )}
 
       <div className="bl-fxcard-params" data-bl-nocapture>
@@ -287,7 +293,13 @@ const EffectCard = ({ store, host, trackId, fx, index, count, bpm }: CardProps) 
           p.type === "enum" ? (
             <EnumParam key={p.key} spec={p} fx={fx} onChange={(v) => setParam(p.key, v)} />
           ) : (
-            <ParamKnob key={p.key} spec={p} fx={fx} onChange={(v) => setParam(p.key, v)} />
+            <ParamKnob
+              key={p.key}
+              spec={p}
+              fx={fx}
+              onLive={(v) => liveParam(p.key, v)}
+              onCommit={(v) => setParam(p.key, v)}
+            />
           )
         )}
       </div>
@@ -329,24 +341,29 @@ const SyncRow = ({
 // ----------------------------------------------------------- filter XY pad
 /**
  * The Filter card's X/Y control surface: X = cutoff frequency, Y = resonance
- * (Q). It complements the knobs — drag the puck to sweep both at once. During
- * the gesture we hold the live values locally (no command per move = no undo
- * spam); on release we dispatch ONE setEffectParams (one undo step).
+ * (Q). It complements the knobs — drag the puck to sweep both at once. As the
+ * finger MOVES we drive the audio node in REAL TIME via `onLive` (host.applyParam
+ * → the filter's setParam ramps frequency/Q) so the cutoff sweeps continuously;
+ * we also hold the live values locally so the puck tracks the finger. On RELEASE
+ * we dispatch ONE setEffectParams (one undo step) with the SAME final values, so
+ * there is no jump on release.
  */
 const FilterPad = ({
   fx,
   spec,
+  onLive,
   onCommit,
 }: {
   fx: EffectNode
   spec: EffectSpec
+  onLive: (key: string, value: number) => void
   onCommit: (params: Record<string, number>) => void
 }) => {
   const freqSpec = spec.params.find((p) => p.key === "frequency")
   const qSpec = spec.params.find((p) => p.key === "q")
   // Live drag values (null = mirror the committed store value). We DON'T
-  // dispatch per move — the puck tracks the finger locally and a single
-  // setEffectParams lands on release, so the whole sweep is ONE undo step.
+  // dispatch per move — the audio is driven live via onLive and the puck tracks
+  // the finger locally; a single setEffectParams lands on release (ONE undo step).
   const [live, setLive] = useState<{ x: number; y: number } | null>(null)
   if (!freqSpec || !qSpec) return null
 
@@ -375,7 +392,12 @@ const FilterPad = ({
           label: "Q",
           format: (v) => v.toFixed(1),
         }}
-        onChange={(fx2, q2) => setLive({ x: fx2, y: q2 })}
+        onChange={(fx2, q2) => {
+          setLive({ x: fx2, y: q2 })
+          // Drive BOTH params live so the filter sweeps under the finger.
+          onLive("frequency", fx2)
+          onLive("q", q2)
+        }}
         onCommit={(fx2, q2) => {
           setLive(null)
           onCommit({ frequency: fx2, q: q2 })
@@ -389,13 +411,21 @@ const FilterPad = ({
 const ParamKnob = ({
   spec,
   fx,
-  onChange,
+  onLive,
+  onCommit,
 }: {
   spec: EffectParamSpec
   fx: EffectNode
-  onChange: (v: number) => void
+  /** Per-move: drive the audio node live (host.applyParam). */
+  onLive: (v: number) => void
+  /** On release: dispatch the persisting command once (one undo step). */
+  onCommit: (v: number) => void
 }) => {
-  const value = numParam(fx.params, spec)
+  const docValue = numParam(fx.params, spec)
+  // Mirror the live value during the drag so the dial tracks the finger (the doc
+  // isn't written until release). Null = follow the committed doc value.
+  const [live, setLive] = useState<number | null>(null)
+  const value = live ?? docValue
   const fmt = (v: number): string => {
     if (spec.unit === "Hz") return v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v.toFixed(0)
     if (spec.unit === "dB") return v.toFixed(1)
@@ -413,7 +443,14 @@ const ParamKnob = ({
       defaultValue={spec.default as number}
       unit={spec.unit && spec.unit !== "Hz" && spec.unit !== "dB" && spec.unit !== "s" ? spec.unit : undefined}
       format={fmt}
-      onChange={onChange}
+      onChange={(v) => {
+        setLive(v)
+        onLive(v)
+      }}
+      onCommit={(v) => {
+        setLive(null)
+        onCommit(v)
+      }}
       size={50}
     />
   )
@@ -444,6 +481,48 @@ const EnumParam = ({
         ))}
       </select>
     </label>
+  )
+}
+
+// ----------------------------------------------------------- send level knob
+/**
+ * A send-level knob: live during the drag (drives the send gain node via
+ * applyParam when the send already exists), persisting ONE undo step on release.
+ * Local `live` state tracks the dial so it follows the finger before the doc
+ * write lands. When the send doesn't exist yet there is no node to drive, so the
+ * first turn simply lands the send on release.
+ */
+const SendKnob = ({
+  level,
+  sendId,
+  onLive,
+  onCommit,
+}: {
+  level: number
+  sendId: Id | null
+  onLive: (sendId: Id, level: number) => void
+  onCommit: (level: number) => void
+}) => {
+  const [live, setLive] = useState<number | null>(null)
+  return (
+    <Knob
+      label="Send"
+      value={live ?? level}
+      min={0}
+      max={1}
+      step={0.01}
+      defaultValue={0}
+      format={(v) => `${Math.round(v * 100)}`}
+      onChange={(v) => {
+        setLive(v)
+        if (sendId) onLive(sendId, v)
+      }}
+      onCommit={(v) => {
+        setLive(null)
+        onCommit(v)
+      }}
+      size={46}
+    />
   )
 }
 
@@ -479,7 +558,13 @@ const SendsPanel = ({
   const sendFor = (busId: Id): Send | undefined =>
     track.sends.find((s) => s.busId === busId)
 
-  const setSendLevel = (busId: Id, level: number) => {
+  // Live (per-move): drive the send gain node straight through the engine while
+  // the send already exists — no document write, no undo step.
+  const liveSendLevel = (sendId: Id, level: number) =>
+    host.applyParam({ scope: "send", trackId: track.id, sendId, param: "level" }, level)
+
+  // On release: persist the final level as ONE undo step.
+  const commitSendLevel = (busId: Id, level: number) => {
     const existing = sendFor(busId)
     if (existing) {
       // Re-create the send at the new level in one undo step (sends have no
@@ -520,16 +605,11 @@ const SendsPanel = ({
             return (
               <div className="bl-fxsend" key={bus.id}>
                 <span className="bl-fxsend-name">{bus.name}</span>
-                <Knob
-                  label="Send"
-                  value={level}
-                  min={0}
-                  max={1}
-                  step={0.01}
-                  defaultValue={0}
-                  format={(v) => `${Math.round(v * 100)}`}
-                  onChange={(v) => setSendLevel(bus.id, v)}
-                  size={46}
+                <SendKnob
+                  level={level}
+                  sendId={send?.id ?? null}
+                  onLive={liveSendLevel}
+                  onCommit={(v) => commitSendLevel(bus.id, v)}
                 />
                 {send && (
                   <button

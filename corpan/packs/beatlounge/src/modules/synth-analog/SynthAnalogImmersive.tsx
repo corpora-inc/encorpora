@@ -98,11 +98,14 @@ export const SynthAnalogImmersive = ({ host, store, trackId: initialTrackId }: P
     params: { ...params, ...liveRef.current, ...patch },
   })
 
-  // Live (per-move): track the value locally so the dial/puck follows the
-  // finger — NO command per move (no undo spam). The single setInstrument lands
-  // on release, so the whole gesture is ONE undo step (mirrors fx-rack).
+  // Live (per-move): drive the instrument node in REAL TIME via host.applyParam
+  // (the analog synth's setParam ramps cutoff/resonance/drive/level/etc. on the
+  // live voices) AND track the value locally so the dial/puck follows the finger
+  // — NO command per move (no undo spam). The single setInstrument lands on
+  // release, so the whole gesture is ONE undo step (mirrors fx-rack).
   const live = (key: string, value: number) => {
     liveRef.current[key] = value
+    host.applyParam({ scope: "instrument", trackId: track.id, param: key }, value)
     bump()
   }
 
