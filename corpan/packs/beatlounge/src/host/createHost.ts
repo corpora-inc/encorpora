@@ -45,6 +45,7 @@ export const createHost = ({
   audioContext: () => audio.context(),
   previewTrack: (trackId: Id, velocity?: number, pitch?: number) =>
     audio.previewTrack(trackId, velocity, pitch),
+  applyParam: (target, value) => audio.applyParam(target, value),
   enterImmersive: (id) => chrome.enterImmersive(id),
   form: () => chrome.form(),
   toast: (message, opts) => chrome.toast(message, opts),

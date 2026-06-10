@@ -78,6 +78,9 @@ export const createBeatloungeAudio: CreateBeatloungeAudio = (bus, opts): AudioFa
       const note: TriggerNote = { pitch: p, velocity, durationSec: 0.25 }
       graph.dispatch({ trackId, when: context.currentTime + 0.02, note })
     },
+    applyParam(target, value) {
+      graph.applyParam(target, value)
+    },
     context: () => context,
     dispose() {
       offTrigger()

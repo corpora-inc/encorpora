@@ -68,6 +68,10 @@ export const createTtsFragmentInstrument = (
   const voices = new Map<Id, FragmentVoice>()
   let voiceId = config.voiceId
   let disposed = false
+  // Live pitch-ribbon offset (semitones), driven by applyParam("pitchOffset").
+  // Added to every trigger's baked pitchSemis so a performer can bend the whole
+  // phrase track in real time without rewriting the document. NOT persisted.
+  let pitchOffset = 0
 
   const ensureVoice = (fragmentId: Id): FragmentVoice => {
     let v = voices.get(fragmentId)
@@ -145,7 +149,7 @@ export const createTtsFragmentInstrument = (
 
   const trigger = (note: TriggerNote, when: number): void => {
     const fragmentId = note.fragmentId
-    const semis = note.pitchSemis ?? 0
+    const semis = (note.pitchSemis ?? 0) + pitchOffset
     const v = fragmentId ? voices.get(fragmentId) : undefined
 
     if (v?.ready && v.player && v.player.buffer && v.player.buffer.loaded) {
@@ -193,8 +197,9 @@ export const createTtsFragmentInstrument = (
       voiceId = next.voiceId
       void voiceId
     },
-    setParam() {
-      /* no continuous params yet */
+    setParam(param: string, value: number) {
+      // Live pitch-ribbon bend for the whole phrase track (semitones).
+      if (param === "pitchOffset") pitchOffset = Math.max(-24, Math.min(24, value))
     },
     async load(_assets: AssetLoader) {
       // Voices load lazily per fragment on first trigger; nothing eager here.

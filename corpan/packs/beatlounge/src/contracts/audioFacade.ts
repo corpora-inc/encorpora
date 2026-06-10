@@ -8,7 +8,7 @@
  */
 
 import type { CommandBus } from "../model/commandBus"
-import type { Id, Tick } from "../model/document"
+import type { Id, ParamTarget, Tick } from "../model/document"
 import type { TtsFragmentDeps } from "../instruments/ttsFragment"
 
 export interface AudioFacade {
@@ -22,6 +22,10 @@ export interface AudioFacade {
    *  `pitch` (MIDI / drum-pad number) overrides the track's default so drum
    *  pads audition the right pad. */
   previewTrack(trackId: Id, velocity?: number, pitch?: number): void
+  /** Drive a param in REAL TIME (no document write) — the live-performance seam
+   *  behind ribbons / XY pads. e.g. {scope:"instrument",trackId,param:"pitchOffset"}
+   *  bends a phrase track's pitch as the finger moves. Smoothed at the node. */
+  applyParam(target: ParamTarget, value: number): void
   /** The shared AudioContext, for modules that need their own nodes (scopes). */
   context(): AudioContext
   dispose(): void
