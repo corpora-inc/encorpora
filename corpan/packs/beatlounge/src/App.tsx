@@ -18,7 +18,7 @@ import { createChromeBridge } from "./host/chromeBridge"
 import { createHost } from "./host/createHost"
 import { createFormObserver } from "./host/formFactor"
 import { createModuleRegistry } from "./modules/registry"
-import { createStepGridModule } from "./modules/step-grid"
+import { registerAllModules } from "./modules/allModules"
 import { Shell } from "./shell/Shell"
 
 export const App = ({ hostApi }: { hostApi: HostApi }) => {
@@ -30,7 +30,7 @@ export const App = ({ hostApi }: { hostApi: HostApi }) => {
     const bridge = createChromeBridge(formObs.get)
     const host = createHost({ hostApi, bus, audio, chrome: bridge.chrome })
     const registry = createModuleRegistry()
-    registry.register(createStepGridModule({ store, audio }))
+    registerAllModules(registry, { store, audio, host })
     return { bus, store, audio, formObs, bridge, host, registry }
   }, [hostApi])
 
