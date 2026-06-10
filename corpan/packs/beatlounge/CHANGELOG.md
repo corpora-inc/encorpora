@@ -31,6 +31,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   a pure, unit-tested helper.
 
 ### Changed
+- **Drums page is now a complete, self-contained drum studio (founder note).**
+  The Drums screen shows the **FULL kit** — one editable lane per voice the kit
+  triggers (kick · snare · rim · clap · closed/pedal/open hat · ride · crash ·
+  hi/lo tom · conga · cowbell · tamb · shaker · claves), sourced from the kit so
+  no groove hit is ever invisible; the lane stack scrolls vertically while the
+  playhead, hit-testing and paint-stroke keep working. **Grooves** are embedded
+  right in the page (the shared `<GroovesPanel>`, also used by the standalone
+  Grooves module) so you browse styles by family and **Apply / Layer / Vary /
+  Evolve / Randomize** them while watching the live grid update — no leaving the
+  screen. **Layer** is new: it applies a groove *additively* (unioned with the
+  existing pattern, de-duped + idempotent) so you can stack a clave over a
+  backbeat. The drum bus's **effects pipeline** is embedded too (the shared
+  `<TrackFxChain>`, also used by the FX rack) with the realtime param wiring
+  intact. Responsive IA with zero clip ~300px → iPad/desktop: grid is the main
+  canvas, with Grooves/Effects as a collapsible sheet under it on phone and a
+  side panel on wide. Removed the old "fill the hi-hat lane" placeholder button.
+  Fixed "Lay phrases on the groove": it now places phrases on the groove's onsets
+  (Apply replaces, Layer unions) and, when there's no phrase track / empty bank,
+  the toggle is disabled with a **visible hint** instead of a silent no-op.
 - **Continuous audio-param controls are now REALTIME (founder note).** Every
   knob / XY pad / fader / pan slider that drives an audio parameter now changes
   the SOUND CONTINUOUSLY as the finger moves, instead of only on release —

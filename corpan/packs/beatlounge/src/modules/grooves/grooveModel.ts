@@ -57,6 +57,13 @@ export interface GrooveBuildOpts {
    * (used by Apply so a 16-matra teental gets room). Default true.
    */
   fitLoop?: boolean
+  /**
+   * LAYER mode. When true the groove is laid ADDITIVELY: its hits are UNIONED
+   * with the drum track's existing notes (de-duped by tick+pitch) instead of
+   * replacing them — so you can stack a clave over a backbeat. Default false
+   * (Apply replaces). Phrases, when laid, are likewise unioned in layer mode.
+   */
+  layer?: boolean
   /** Also lay phrases from the bank onto the groove onsets. Default false. */
   withPhrases?: boolean
   /** Phrase density (0..1) when withPhrases. Default 0.5. */
@@ -75,6 +82,12 @@ export interface GrooveBuildResult {
   summary: string
   /** True if a phrase track received placements. */
   placedPhrases: boolean
+  /**
+   * True when phrases were REQUESTED (`withPhrases`) but couldn't be laid
+   * because the doc has no phrase track or an empty bank. Lets the caller
+   * surface a visible hint instead of a silent no-op.
+   */
+  phrasesUnavailable: boolean
 }
 
 /**
@@ -107,41 +120,71 @@ export const buildGrooveCommands = (
   }
 
   // 3) Concrete notes, tiled across the (possibly grown) loop.
+  const refGrid = drumGrid && isInstrumentTrack(drumGrid) ? drumGrid.grid : { denominator: 16 as const }
+  // Duration: a touch under a cell so adjacent hits don't bleed. Use the drum
+  // track's grid cell as the reference (it's a one-shot kit anyway).
+  const dur = Math.max(1, Math.round(gridTicks(refGrid) / 2))
   const placements = applyRhythm(rhythm, { loopTicks, intensity: opts.intensity })
-  const notes: Omit<NoteEvent, "id">[] = placements.map((p) => {
-    // Duration: a touch under a cell so adjacent hits don't bleed. Use the
-    // drum track's grid cell as the reference (it's a one-shot kit anyway).
-    const refGrid = drumGrid && isInstrumentTrack(drumGrid) ? drumGrid.grid : { denominator: 16 as const }
-    const dur = Math.max(1, Math.round(gridTicks(refGrid) / 2))
-    return {
-      tick: p.tick,
-      duration: dur,
-      pitch: p.pitch,
-      velocity: p.velocity,
-      ...(p.ratchet && p.ratchet > 1 ? { ratchet: p.ratchet } : {}),
-    }
-  })
+  const grooveNotes: Omit<NoteEvent, "id">[] = placements.map((p) => ({
+    tick: p.tick,
+    duration: dur,
+    pitch: p.pitch,
+    velocity: p.velocity,
+    ...(p.ratchet && p.ratchet > 1 ? { ratchet: p.ratchet } : {}),
+  }))
+
+  // LAYER mode: union the groove's hits with the track's EXISTING notes, de-duped
+  // by (tick, pitch) so re-applying the same groove is idempotent and a clave can
+  // sit over a backbeat. Apply mode replaces (just the groove's notes).
+  const existing: Omit<NoteEvent, "id">[] =
+    opts.layer && drumGrid && isInstrumentTrack(drumGrid)
+      ? drumGrid.notes.map(({ tick, duration, pitch, velocity, probability, ratchet, micro }) => ({
+          tick,
+          duration,
+          pitch,
+          velocity,
+          ...(probability != null ? { probability } : {}),
+          ...(ratchet != null ? { ratchet } : {}),
+          ...(micro != null ? { micro } : {}),
+        }))
+      : []
+  const seen = new Set<string>()
+  const notes: Omit<NoteEvent, "id">[] = []
+  for (const n of [...existing, ...grooveNotes]) {
+    const key = `${n.tick}:${n.pitch}`
+    if (seen.has(key)) continue // keep the FIRST (existing wins) — idempotent layer
+    seen.add(key)
+    notes.push(n)
+  }
+  notes.sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
   commands.push({ t: "setNotes", trackId: drumId, notes })
 
   // 4) Optionally lay phrases from the bank onto the groove onsets.
   let placedPhrases = false
-  if (opts.withPhrases && opts.rng) {
+  let phrasesUnavailable = false
+  if (opts.withPhrases) {
     const phraseId = findPhraseTrackId(doc)
     const bank = bankSnippets(doc)
-    if (phraseId && bank.length > 0) {
+    // Phrases need a fragment track AND a non-empty bank AND a seeded RNG.
+    if (phraseId && bank.length > 0 && opts.rng) {
       const phraseTrack = doc.tracks.find((t) => t.id === phraseId)
-      // Clear current placements first (Apply replaces, like the drum lane).
-      if (phraseTrack && isFragmentTrack(phraseTrack)) {
+      // Apply replaces existing placements; Layer keeps them and adds on top.
+      if (!opts.layer && phraseTrack && isFragmentTrack(phraseTrack)) {
         for (const ev of phraseTrack.fragments) {
           commands.push({ t: "removeFragment", trackId: phraseId, fragId: ev.id })
         }
       }
+      const occupied =
+        opts.layer && phraseTrack && isFragmentTrack(phraseTrack)
+          ? new Set(phraseTrack.fragments.map((f) => f.tick))
+          : new Set<number>()
       const phrasePlacements = applyRhythmToPhrases(rhythm, bank.length, opts.rng, {
         loopTicks,
         density: opts.phraseDensity ?? 0.5,
         scale: opts.phraseScale ?? DEFAULT_PHRASE_SCALE,
       })
       for (const pp of phrasePlacements) {
+        if (occupied.has(pp.tick)) continue // don't double-stack a phrase on a held tick
         const ref = bank[pp.snippetIndex]
         if (!ref) continue
         const frag: Omit<FragmentEvent, "id"> = {
@@ -151,17 +194,22 @@ export const buildGrooveCommands = (
           pitchSemis: pp.pitchSemis,
         }
         commands.push({ t: "placeFragment", trackId: phraseId, frag })
+        placedPhrases = true
       }
-      placedPhrases = phrasePlacements.length > 0
+    } else {
+      // Requested but impossible — the caller surfaces a visible hint.
+      phrasesUnavailable = true
     }
   }
 
   const hitWord = `${notes.length} hit${notes.length === 1 ? "" : "s"}`
+  const verb = opts.layer ? "layered" : ""
   const phraseSuffix = placedPhrases ? " + phrases" : ""
   return {
     commands,
-    summary: `${rhythm.name} · ${hitWord}${phraseSuffix}`,
+    summary: `${rhythm.name} · ${verb ? verb + " " : ""}${hitWord}${phraseSuffix}`,
     placedPhrases,
+    phrasesUnavailable,
   }
 }
 

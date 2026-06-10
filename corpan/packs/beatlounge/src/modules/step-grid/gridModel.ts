@@ -3,8 +3,15 @@
  *
  * Pure functions mapping the tick-addressed note set into lanes × steps for
  * rendering, and back via the timing helpers. The visible step count is
- * `stepsInLoop(loopLengthTicks, track.grid)` per the contract. One lane per
- * drum pitch in DRUM_PITCH (kick / snare / hat / clap).
+ * `stepsInLoop(loopLengthTicks, track.grid)` per the contract.
+ *
+ * LANE SOURCE — the FULL kit, not just kick/snare/hat/clap. The drum synth
+ * (instruments/drumKit.ts) voices ~16 distinct pitches, the drum-pads PAD_BANK
+ * exposes them, and the groove engine (rhythm/roles.ts) places hits across ALL
+ * of them. So a groove's toms / ride / cowbell / congas must each have a visible
+ * editable lane — otherwise the grid hides hits a groove just wrote. We build
+ * the lane set from `KIT_LANES` below (every voice the kit triggers), ordered
+ * musically (kick → snare → rim/clap → hats → cymbals → toms → percussion).
  */
 
 import type { BeatloungeDoc, InstrumentTrack, Midi } from "../../model/document"
@@ -25,13 +32,34 @@ export interface GridView {
   lanes: Lane[]
 }
 
-/** Lane order top→bottom and human labels. */
+/**
+ * THE FULL KIT, top→bottom in musical order. Every pitch the drum synth voices
+ * (drumKit.ts `triggerForPitch`) and every role the groove corpus can resolve
+ * to (roles.ts `KIT`) appears here exactly once, so no groove hit is invisible:
+ *   kick → snare → rim → clap → closed/pedal/open hat → ride → crash →
+ *   lo/hi tom → conga → cowbell → tambourine → shaker → claves.
+ */
 export const DRUM_LANES: { pitch: Midi; label: string }[] = [
-  { pitch: DRUM_PITCH.kick, label: "Kick" },
-  { pitch: DRUM_PITCH.snare, label: "Snare" },
-  { pitch: DRUM_PITCH.hat, label: "Hat" },
-  { pitch: DRUM_PITCH.clap, label: "Clap" },
+  { pitch: DRUM_PITCH.kick, label: "Kick" }, // 36
+  { pitch: DRUM_PITCH.snare, label: "Snare" }, // 38
+  { pitch: 37, label: "Rim" },
+  { pitch: DRUM_PITCH.clap, label: "Clap" }, // 39
+  { pitch: DRUM_PITCH.hat, label: "Closed Hat" }, // 42
+  { pitch: 44, label: "Pedal Hat" },
+  { pitch: 46, label: "Open Hat" },
+  { pitch: 51, label: "Ride" },
+  { pitch: 49, label: "Crash" },
+  { pitch: 45, label: "Hi Tom" },
+  { pitch: 43, label: "Lo Tom" },
+  { pitch: 64, label: "Conga" },
+  { pitch: 56, label: "Cowbell" },
+  { pitch: 54, label: "Tamb" },
+  { pitch: 70, label: "Shaker" },
+  { pitch: 75, label: "Claves" },
 ]
+
+/** How many top lanes the calm tile mini-view shows (kick/snare/closed-hat). */
+export const MINI_LANE_COUNT = 3
 
 export const buildGridView = (
   doc: BeatloungeDoc,
@@ -57,11 +85,14 @@ export const buildGridView = (
   return { steps, stepsPerBeat, lanes }
 }
 
-/** The mini read-only view for the tile: the kick + snare + hat lanes only. */
+/**
+ * The mini read-only view for the tile: the first `MINI_LANE_COUNT` lanes
+ * (kick / snare / closed-hat) — a calm, glanceable subset of the full kit.
+ */
 export const buildMiniView = (
   doc: BeatloungeDoc,
   track: InstrumentTrack
 ): GridView => {
   const full = buildGridView(doc, track)
-  return { ...full, lanes: full.lanes.slice(0, 3) }
+  return { ...full, lanes: full.lanes.slice(0, MINI_LANE_COUNT) }
 }

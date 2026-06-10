@@ -20,6 +20,11 @@ import { isInstrumentTrack } from "../../model/document"
 import { stepGridActions } from "./actions"
 import { StepGridTile } from "./StepGridTile"
 import { StepGridImmersive } from "./StepGridImmersive"
+import "./step-grid.css"
+// The Drums page embeds the shared Grooves panel + FX chain; pull their styles
+// in so they're present even if those modules' tiles aren't mounted first.
+import "../grooves/grooves.css"
+import "../fx-rack/styles.css"
 
 export interface StepGridDeps {
   store: BeatloungeStore

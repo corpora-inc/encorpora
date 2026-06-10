@@ -56,6 +56,7 @@ const buildOpts = (
 ): GrooveBuildOpts => ({
   intensity: Number(params.intensity ?? 1),
   withPhrases: Boolean(params.withPhrases),
+  layer: Boolean(params.layer),
   rng: ctx.rng,
   phraseDensity: params.phraseDensity != null ? Number(params.phraseDensity) : undefined,
 })
@@ -74,6 +75,23 @@ export const applyAction: ModuleAction = {
     if (!r) return { commands: [], summary: "Unknown rhythm" }
     const { commands, summary } = buildGrooveCommands(ctx.doc, r, buildOpts(params, ctx))
     return { commands, summary: `Applied ${summary}` }
+  },
+}
+
+/** layer — apply a world rhythm ADDITIVELY (union with the existing pattern). */
+export const layerAction: ModuleAction = {
+  name: "layer",
+  describe: "Layer a world rhythm onto the drum track — stack it OVER the current pattern (don't replace).",
+  params: { ...sharedParams },
+  impact: "mutate",
+  run(ctx, params): ActionResult {
+    const r = getRhythm(resolveRhythmId(params))
+    if (!r) return { commands: [], summary: "Unknown rhythm" }
+    const { commands, summary } = buildGrooveCommands(ctx.doc, r, {
+      ...buildOpts(params, ctx),
+      layer: true,
+    })
+    return { commands, summary: `Layered ${summary}` }
   },
 }
 
@@ -170,6 +188,7 @@ export const randomizeAction: ModuleAction = {
 
 export const groovesActions: ReadonlyArray<ModuleAction> = [
   applyAction,
+  layerAction,
   varyAction,
   evolveAction,
   randomizeAction,

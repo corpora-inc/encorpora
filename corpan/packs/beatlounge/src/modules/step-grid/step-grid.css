@@ -1,0 +1,156 @@
+/**
+ * beatlounge — Drums page (step-grid immersive) layout. Token-only (--bl-*),
+ * responsive ~300px → big iPad/desktop, safe-area aware, ≥44px hit targets,
+ * prefers-reduced-motion honored. The grid is the primary canvas; Grooves +
+ * Effects are in-screen panels (a side column on wide, a collapsible sheet on
+ * phone) so nothing is a separate destination and nothing clips.
+ */
+
+.bl-drums {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  padding-left: var(--bl-safe-left, 0);
+  padding-right: var(--bl-safe-right, 0);
+}
+
+/* ---- grid region (always visible; scrolls within a fixed height) ---- */
+.bl-drums-grid.bl-grid {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  /* phone: cap the grid so the panel below stays reachable; the lanes scroll. */
+  flex: 1 1 auto;
+  padding: var(--bl-s4) var(--bl-s4) var(--bl-s3);
+  gap: var(--bl-s3);
+}
+.bl-grid-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  /* room so the last lane clears the foot */
+  padding-bottom: var(--bl-s2);
+}
+/* The grid toolbar's controls (volume/pan knobs + Clear) sit inline, wrapping
+ * on a narrow phone without clipping. */
+.bl-drums .bl-grid-actions {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--bl-s3);
+}
+.bl-drums .bl-grid-foot {
+  flex: 0 0 auto;
+  padding-top: var(--bl-s2);
+}
+
+/* ---- the Grooves / Effects panel ---- */
+.bl-drums-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 0 0 auto;
+  border-top: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  /* phone: a collapsible sheet under the grid. Capped so the grid stays in view
+   * while you change grooves; its body scrolls. */
+  max-height: 46vh;
+}
+.bl-drums-panel:not(.is-open) {
+  max-height: none;
+  flex: 0 0 auto;
+}
+.bl-drums-tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2) var(--bl-s4);
+  border-bottom: 1px solid var(--bl-border);
+  flex: 0 0 auto;
+}
+.bl-drums-tab {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 44px;
+  padding: 0 var(--bl-s4);
+  border-radius: var(--bl-radius-pill, 999px);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2, var(--bl-surface));
+  color: var(--bl-text-dim);
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color var(--bl-dur-fast, 120ms) var(--bl-ease),
+    border-color var(--bl-dur-fast, 120ms) var(--bl-ease),
+    background var(--bl-dur-fast, 120ms) var(--bl-ease);
+}
+.bl-drums-tab:hover { border-color: var(--bl-accent); }
+.bl-drums-tab.is-on {
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  border-color: var(--bl-accent);
+}
+.bl-drums-tab:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+.bl-drums-collapse {
+  appearance: none;
+  -webkit-appearance: none;
+  margin-left: auto;
+  min-height: 44px;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-pill, 999px);
+  border: 1px solid var(--bl-border);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.bl-drums-collapse:hover { color: var(--bl-text); border-color: var(--bl-accent); }
+.bl-drums-collapse:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+
+.bl-drums-panel-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--bl-safe-bottom, 0);
+}
+/* When collapsed (phone), hide the body — only the tab bar remains so the grid
+ * can take the full screen. */
+.bl-drums-panel:not(.is-open) .bl-drums-panel-body { display: none; }
+.bl-drums-panel:not(.is-open) { max-height: none; }
+
+/* The embedded FX chain gets comfortable padding inside the panel body. */
+.bl-drums-panel-body .bl-fxchain { padding: var(--bl-s4); }
+
+/* ============================================================ wide layout */
+/* tablet / desktop: grid is the main column, Grooves/Effects fill a side panel
+ * using the extra width. Both columns scroll within fixed heights. */
+@media (min-width: 760px) {
+  .bl-drums {
+    flex-direction: row;
+    gap: 0;
+  }
+  .bl-drums-grid.bl-grid {
+    flex: 1 1 auto;
+    min-width: 0;
+    border-right: 1px solid var(--bl-border);
+  }
+  .bl-drums-panel {
+    flex: 0 0 clamp(340px, 38%, 520px);
+    max-height: none;
+    border-top: none;
+    min-height: 0;
+    height: 100%;
+  }
+  /* The collapse affordance is phone-only; on wide the panel is always open. */
+  .bl-drums-collapse { display: none; }
+  .bl-drums-panel:not(.is-open) .bl-drums-panel-body { display: flex; }
+  .bl-drums-panel:not(.is-open) { max-height: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-drums-tab { transition: none; }
+}
