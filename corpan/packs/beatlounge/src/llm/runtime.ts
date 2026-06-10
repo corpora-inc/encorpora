@@ -171,7 +171,7 @@ const streamOnce = (
           },
           onDone: (full) => finish((full || acc).trim() || null),
           onError: (err) => {
-            console.error(`${LOG} chat error:`, err)
+            console.warn(`${LOG} chat error (falling back):`, err)
             finish(acc.trim() ? acc : null)
           },
         },
@@ -180,7 +180,7 @@ const streamOnce = (
         handle = h
       })
       .catch((e) => {
-        console.error(`${LOG} chat failed to start:`, e)
+        console.warn(`${LOG} chat failed to start (falling back):`, e)
         finish(null)
       })
   })
@@ -192,16 +192,24 @@ export const createLlmGridRuntime = (deps: LlmGridRuntimeDeps): LlmGridRuntime =
 
   const doc = () => store.vanilla.getState().doc
 
+  // The on-device model may simply not be loaded (MODEL_NOT_LOADED). Calling
+  // chat() anyway spams the console with errors on every utterance, so we gate
+  // chat on a cheap status() check and announce "AI offline" ONCE per session;
+  // the deterministic keyword router still makes every command work.
+  let announcedOffline = false
+  const modelLoaded = async (): Promise<boolean> => {
+    if (!hostApi.llm) return false
+    try {
+      const status = await hostApi.llm.status()
+      return Boolean(status.loaded)
+    } catch {
+      return false
+    }
+  }
+
   return {
     async llmAvailable() {
-      if (!hostApi.llm) return false
-      try {
-        const status = await hostApi.llm.status()
-        return Boolean(status.loaded)
-      } catch (e) {
-        console.error(`${LOG} llm.status() threw:`, e)
-        return false
-      }
+      return modelLoaded()
     },
 
     async run(utterance, opts) {
@@ -214,10 +222,16 @@ export const createLlmGridRuntime = (deps: LlmGridRuntimeDeps): LlmGridRuntime =
         return { utterance, call: { name: "density", args: {} }, commands: [], summary: "Say what you'd like to change", source: "keyword", note: "empty" }
       }
 
-      // No host LLM → straight to the deterministic router.
-      if (!hostApi.llm) {
+      // No host LLM, or the model isn't loaded → deterministic router. We do NOT
+      // call chat() in this case (that's what was spewing MODEL_NOT_LOADED).
+      const loaded = await modelLoaded()
+      if (!loaded) {
+        if (!announcedOffline) {
+          console.info(`${LOG} on-device model not loaded — using keyword routing.`)
+          announcedOffline = true
+        }
         const call = keywordRoute(text) ?? { name: "density", args: { dir: "more", drum: "hat" } }
-        return finalize(text, call, current, rng, "keyword-no-llm", "no host LLM")
+        return finalize(text, call, current, rng, "keyword-no-llm", "model not loaded")
       }
 
       const system = buildSystemPrompt(current)
