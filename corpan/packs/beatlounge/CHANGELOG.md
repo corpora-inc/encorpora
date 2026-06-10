@@ -17,7 +17,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     the command bar's new `vibe` / `automate` / `chaos` / `calm` tools, so
     "make it evolve" / "more chaos" / "calm down" fire autonomous tweakers en masse.
 
-### Fixed
+### Added
+- **Delay beat-sync presets** — a Sync row (1/4, 1/4., 1/4T, 1/8, 1/8., 1/8T,
+  1/16, 1/16., 1/16T) locks the delay to the live tempo, so echoes sit on the
+  grid. The active division highlights; the raw seconds knob still works.
+
+### Fixed (device testing)
+- **Empty home tiles** — track-bound tiles (Drums/Pads/Synth/Effects) rendered
+  nothing because they captured a track id at mount, then App swapped in a
+  persisted IndexedDB doc with different ids. Now HYDRATE-FIRST: build the bus +
+  modules from the loaded doc; backfill fields added since (buses, modulators…).
+- **Pads were all one sound** — the synth drum kit only voiced kick/snare/hat/
+  clap; every other pad fell through to the hat. Expanded to a full GM-ish
+  synthesized bank (toms/congas/crash/ride/cowbell/shaker/tamb/rim/claves…).
+- **Drawer drag jitter** — the immersive sheet had `transition: transform`, so a
+  swipe chased the finger with a lag ("two copies"). Drag now writes the
+  transform directly with the transition off.
+- **LLM command-bar error spam** — when the on-device model isn't loaded it no
+  longer calls `chat()` on every utterance (MODEL_NOT_LOADED ×N); it checks
+  status first and falls to keyword routing quietly, announcing "AI offline" once.
 - Knobs couldn't be turned on iPad — the chrome-bail guard cancelled a control's
   own drag when an ancestor was marked `[data-bl-nocapture]`. Now only nested
   chrome bails.
