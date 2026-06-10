@@ -48,8 +48,10 @@ interface Props {
   trackId: Id
 }
 
-/** The live ribbon spans this many semitones either side of centre. */
-const RIBBON_SPAN = 12
+/** The live ribbon spans this many semitones either side of centre — ±3 octaves
+ *  so you can "scratch" a phrase a long way up or down while it sounds (the
+ *  engine clamps the live bend at ±4 octaves). */
+const RIBBON_SPAN = 36
 const clamp01 = (v: number): number => (v < 0 ? 0 : v > 1 ? 1 : v)
 
 export const PhraseJamImmersive = ({
