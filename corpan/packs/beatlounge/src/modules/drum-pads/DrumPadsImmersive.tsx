@@ -69,7 +69,7 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
 
   const hitPad = (pitch: number) => {
     const velocity = velOf(pitch)
-    host.previewTrack(trackId, velocity)
+    host.previewTrack(trackId, velocity, pitch)
     if (record) {
       const step = recordStep(playStep, view.steps)
       const cur = findTrack(store.vanilla.getState().doc, trackId)

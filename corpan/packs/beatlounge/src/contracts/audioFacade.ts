@@ -18,8 +18,10 @@ export interface AudioFacade {
   isPlaying(): boolean
   /** rAF-driven playhead in ticks (wrapped into the loop). -1 when stopped. */
   onPlayhead(cb: (tick: Tick) => void): () => void
-  /** One-shot audition of a track's instrument (click-to-hear), at audio-now. */
-  previewTrack(trackId: Id, velocity?: number): void
+  /** One-shot audition of a track's instrument (click-to-hear), at audio-now.
+   *  `pitch` (MIDI / drum-pad number) overrides the track's default so drum
+   *  pads audition the right pad. */
+  previewTrack(trackId: Id, velocity?: number, pitch?: number): void
   /** The shared AudioContext, for modules that need their own nodes (scopes). */
   context(): AudioContext
   dispose(): void

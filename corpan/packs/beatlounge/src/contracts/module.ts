@@ -87,7 +87,7 @@ export interface BeatloungeHost {
   /** The live AudioContext (shared across the pack). */
   audioContext(): AudioContext
   /** Trigger a one-shot preview of a track's instrument (click-to-hear). */
-  previewTrack(trackId: Id, velocity?: number): void
+  previewTrack(trackId: Id, velocity?: number, pitch?: number): void
   /** Enter immersive for a module; returns a dispose to exit (one owner). */
   enterImmersive(id: ModuleId): () => void
   /** Current form factor (re-evaluated on resize). */

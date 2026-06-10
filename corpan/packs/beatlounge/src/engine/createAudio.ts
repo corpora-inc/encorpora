@@ -56,18 +56,21 @@ export const createBeatloungeAudio: CreateBeatloungeAudio = (bus, opts): AudioFa
     },
     isPlaying: () => scheduler.isPlaying(),
     onPlayhead: (cb) => scheduler.onPlayhead(cb),
-    previewTrack(trackId, velocity = 0.9) {
+    previewTrack(trackId, velocity = 0.9, pitch) {
       const track = findTrack(current, trackId)
       if (!track) return
       void ensureRunning()
-      let pitch = 60
-      if (isInstrumentTrack(track)) {
-        pitch =
-          track.instrument.kind === "drumSampler"
-            ? DRUM_PITCH.kick
-            : (track.notes[0]?.pitch ?? 60)
+      let p = pitch
+      if (p == null) {
+        p = 60
+        if (isInstrumentTrack(track)) {
+          p =
+            track.instrument.kind === "drumSampler"
+              ? DRUM_PITCH.kick
+              : (track.notes[0]?.pitch ?? 60)
+        }
       }
-      const note: TriggerNote = { pitch, velocity, durationSec: 0.25 }
+      const note: TriggerNote = { pitch: p, velocity, durationSec: 0.25 }
       graph.dispatch({ trackId, when: context.currentTime + 0.02, note })
     },
     context: () => context,
