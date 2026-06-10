@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+.vite/
+
+# Voice kit samples live in public/voice-kit/{voice}/{word}.wav (16-bit PCM,
+# 24 kHz mono) and are committed intentionally so the repo can rebuild
+# the pack without external source files. iOS WebKit decodes plain WAV
+# universally; the Opus-in-OGG path was rejected by iOS < 17.
