@@ -86,6 +86,26 @@
   gap: var(--bl-s3);
 }
 
+/* ---- reusable chain wrapper (shared by the rack module + the Drums page) ---- */
+.bl-fxchain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  min-width: 0;
+}
+.bl-fxchain-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bl-s2);
+}
+.bl-fxchain-count {
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+
 .bl-fxcard {
   background: var(--bl-surface);
   border: 1px solid var(--bl-border);

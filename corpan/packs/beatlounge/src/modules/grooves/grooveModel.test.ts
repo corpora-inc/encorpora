@@ -15,7 +15,8 @@ import {
   findDrumTrackId,
   findPhraseTrackId,
 } from "./grooveModel"
-import { applyAction, varyAction, evolveAction, randomizeAction } from "./actions"
+import { applyAction, layerAction, varyAction, evolveAction, randomizeAction } from "./actions"
+import { reduce } from "../../model/reduce"
 
 const rngFrom = (seed: number): (() => number) => {
   let a = seed >>> 0
@@ -119,6 +120,77 @@ describe("grooveModel.buildGrooveCommands", () => {
     })
     expect(placedPhrases).toBe(false)
     expect(commands.some((c) => c.t === "placeFragment")).toBe(false)
+  })
+
+  it("flags phrasesUnavailable when phrases are requested but impossible (no silent no-op)", () => {
+    const d = doc() // no phrase track / empty bank
+    const requested = buildGrooveCommands(d, getRhythm("samba")!, {
+      withPhrases: true,
+      rng: rngFrom(1),
+    })
+    expect(requested.phrasesUnavailable).toBe(true)
+    // ... but NOT flagged when phrases weren't requested.
+    const notRequested = buildGrooveCommands(d, getRhythm("samba")!)
+    expect(notRequested.phrasesUnavailable).toBe(false)
+  })
+})
+
+describe("grooveModel — LAYER (additive apply)", () => {
+  /** Apply a build's commands to a doc so we can inspect the resulting notes. */
+  const applyTo = (d: BeatloungeDoc, commands: ReturnType<typeof buildGrooveCommands>["commands"]) =>
+    commands.reduce((acc, c) => reduce(acc, c), d)
+
+  const drumNotes = (d: BeatloungeDoc) => {
+    const t = d.tracks.find((x) => isInstrumentTrack(x) && x.instrument.kind === "drumSampler")
+    return t && isInstrumentTrack(t) ? t.notes : []
+  }
+
+  it("Apply REPLACES the pattern (only the groove's hits remain)", () => {
+    const d = doc()
+    const before = drumNotes(d).length
+    expect(before).toBeGreaterThan(0)
+    const { commands } = buildGrooveCommands(d, getRhythm("son-clave-3-2")!)
+    const after = drumNotes(applyTo(d, commands))
+    // The clave's hits, not the default four-on-the-floor + backbeat + hats.
+    expect(after.length).toBeGreaterThan(0)
+    expect(after.length).toBeLessThan(before)
+  })
+
+  it("Layer UNIONS the groove with the existing pattern (keeps both)", () => {
+    const d = doc()
+    const existing = drumNotes(d)
+    const existingKeys = new Set(existing.map((n) => `${n.tick}:${n.pitch}`))
+    const { commands, summary } = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+      layer: true,
+    })
+    expect(summary).toMatch(/layered/i)
+    const after = drumNotes(applyTo(d, commands))
+    const afterKeys = new Set(after.map((n) => `${n.tick}:${n.pitch}`))
+    // Every existing hit survives, and the layer added new ones on top.
+    for (const k of existingKeys) expect(afterKeys.has(k)).toBe(true)
+    expect(after.length).toBeGreaterThanOrEqual(existing.length)
+  })
+
+  it("Layer is idempotent — re-layering the same groove adds no duplicate (tick,pitch)", () => {
+    const d = doc()
+    const once = applyTo(d, buildGrooveCommands(d, getRhythm("son-clave-3-2")!, { layer: true }).commands)
+    const onceCount = drumNotes(once).length
+    const twice = applyTo(once, buildGrooveCommands(once, getRhythm("son-clave-3-2")!, { layer: true }).commands)
+    expect(drumNotes(twice).length).toBe(onceCount)
+    // No duplicate (tick,pitch) keys.
+    const keys = drumNotes(twice).map((n) => `${n.tick}:${n.pitch}`)
+    expect(new Set(keys).size).toBe(keys.length)
+  })
+
+  it("layerAction summary says 'Layered' and is one undo batch through the bus", () => {
+    const bus = createCommandBus(doc())
+    const before = bus.snapshot()
+    const result = layerAction.run({ doc: before, rng: rngFrom(7) }, { rhythmId: "son-clave-3-2" })
+    expect(result.summary).toMatch(/Layered/)
+    bus.dispatch({ t: "batch", commands: result.commands })
+    expect(bus.snapshot()).not.toEqual(before)
+    bus.undo()
+    expect(bus.snapshot()).toEqual(before)
   })
 })
 
