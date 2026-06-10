@@ -254,6 +254,12 @@
   -webkit-appearance: none;
   display: block;
   width: 100%;
+  /* Let the tile shrink to its grid track — without this a wide mini-grid
+     (e.g. the 16-step Drums preview) forces the tile past its column and
+     pushes neighbours (Pads) off-screen. */
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
   text-align: left;
   padding: var(--bl-s4);
   background: var(--bl-surface);
@@ -289,6 +295,8 @@
 }
 .bl-tile-mount {
   display: block;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .bl-tile-grid {

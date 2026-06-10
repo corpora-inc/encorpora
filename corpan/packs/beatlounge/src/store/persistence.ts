@@ -9,35 +9,12 @@
  * (SSR / private-mode / tests) — noisy, not silent, on real failures.
  */
 
-import { openDB, type IDBPDatabase } from "idb"
 import type { BeatloungeDoc } from "../model/document"
+import { getBeatloungeDb, SONGS_STORE as STORE } from "./db"
 
-const DB_NAME = "beatlounge"
-const STORE = "songs"
 const ACTIVE_KEY = "active"
-const DB_VERSION = 1
 
-let dbPromise: Promise<IDBPDatabase | null> | null = null
-
-const hasIndexedDB = (): boolean =>
-  typeof indexedDB !== "undefined" && indexedDB != null
-
-const getDb = (): Promise<IDBPDatabase | null> => {
-  if (!hasIndexedDB()) return Promise.resolve(null)
-  if (!dbPromise) {
-    dbPromise = openDB(DB_NAME, DB_VERSION, {
-      upgrade(db) {
-        if (!db.objectStoreNames.contains(STORE)) {
-          db.createObjectStore(STORE)
-        }
-      },
-    }).catch((err) => {
-      console.warn("[beatlounge/persistence] openDB failed:", err)
-      return null
-    })
-  }
-  return dbPromise
-}
+const getDb = getBeatloungeDb
 
 /** Load the persisted active doc, or null if none / unavailable. */
 export const loadActiveDoc = async (): Promise<BeatloungeDoc | null> => {

@@ -62,23 +62,20 @@ export const createDrumKitInstrument = (_config: InstrumentConfig): Instrument =
     volume: 4,
   }).connect(hatHpf)
 
-  // ----- CYMBALS (crash/ride) ----- bright metallic via MetalSynth
-  const crash = new Tone.MetalSynth({
-    envelope: { attack: 0.001, decay: 1.2, release: 0.4 },
-    harmonicity: 5.1,
-    modulationIndex: 32,
-    resonance: 4000,
-    octaves: 1.5,
-    volume: -12,
-  }).connect(out)
-  const ride = new Tone.MetalSynth({
-    envelope: { attack: 0.001, decay: 0.5, release: 0.2 },
-    harmonicity: 8,
-    modulationIndex: 20,
-    resonance: 6000,
-    octaves: 1,
-    volume: -16,
-  }).connect(out)
+  // ----- CYMBALS (crash/ride) ----- bright filtered-noise (reliable + audible;
+  // MetalSynth came out silent on device). Crash = long wash, ride = shorter ping.
+  const crashHpf = new Tone.Filter({ type: "highpass", frequency: 5000 }).connect(out)
+  const crash = new Tone.NoiseSynth({
+    noise: { type: "white" },
+    envelope: { attack: 0.001, decay: 1.4, sustain: 0, release: 0.6 },
+    volume: 2,
+  }).connect(crashHpf)
+  const rideBpf = new Tone.Filter({ type: "bandpass", frequency: 7000, Q: 0.7 }).connect(out)
+  const ride = new Tone.NoiseSynth({
+    noise: { type: "white" },
+    envelope: { attack: 0.001, decay: 0.5, sustain: 0, release: 0.25 },
+    volume: 0,
+  }).connect(rideBpf)
 
   // ----- CLAP ----- pink noise burst
   const clapBpf = new Tone.Filter({ type: "bandpass", frequency: 1500, Q: 0.8 }).connect(out)
@@ -88,15 +85,20 @@ export const createDrumKitInstrument = (_config: InstrumentConfig): Instrument =
     volume: 2,
   }).connect(clapBpf)
 
-  // ----- COWBELL ----- short metallic ring
-  const cowbell = new Tone.MetalSynth({
-    envelope: { attack: 0.001, decay: 0.12, release: 0.05 },
-    harmonicity: 3.4,
-    modulationIndex: 12,
-    resonance: 1800,
-    octaves: 0.8,
-    volume: -16,
+  // ----- COWBELL ----- classic dual-square (≈540 + 800 Hz) gated by an amp env.
+  const cowbellEnv = new Tone.AmplitudeEnvelope({
+    attack: 0.001,
+    decay: 0.2,
+    sustain: 0,
+    release: 0.06,
   }).connect(out)
+  const cowbellFilter = new Tone.Filter({ type: "bandpass", frequency: 2640, Q: 1.2 }).connect(cowbellEnv)
+  const cowbellA = new Tone.Oscillator({ frequency: 540, type: "square", volume: -6 })
+    .connect(cowbellFilter)
+    .start()
+  const cowbellB = new Tone.Oscillator({ frequency: 800, type: "square", volume: -6 })
+    .connect(cowbellFilter)
+    .start()
 
   // ----- SHAKER / TAMBOURINE ----- soft high filtered noise
   const shakerBpf = new Tone.Filter({ type: "bandpass", frequency: 6500, Q: 1.4 }).connect(out)
@@ -146,11 +148,11 @@ export const createDrumKitInstrument = (_config: InstrumentConfig): Instrument =
       case 64: // conga
         tom.triggerAttackRelease("G2", "16n", when, v); break
       case 49: // crash
-        crash.triggerAttackRelease("16n", when, clamp(v)); break
+        crash.triggerAttackRelease("4n", when, clamp(v)); break
       case 51: // ride
-        ride.triggerAttackRelease("16n", when, clamp(v)); break
+        ride.triggerAttackRelease("8n", when, clamp(v)); break
       case 56: // cowbell
-        cowbell.triggerAttackRelease("16n", when, clamp(v)); break
+        cowbellEnv.triggerAttackRelease(0.18, when, clamp(v)); break
       case 54: // tambourine
         tamb.triggerAttackRelease("32n", when, clamp(v)); break
       case 70: // shaker
@@ -178,7 +180,8 @@ export const createDrumKitInstrument = (_config: InstrumentConfig): Instrument =
     dispose() {
       for (const node of [
         kick, tom, snareNoise, snareBody, closedHat, openHat, pedalHat,
-        hatHpf, hatBpf, crash, ride, clap, clapBpf, cowbell, shaker, tamb,
+        hatHpf, hatBpf, crash, crashHpf, ride, rideBpf, clap, clapBpf,
+        cowbellA, cowbellB, cowbellFilter, cowbellEnv, shaker, tamb,
         shakerBpf, click, out,
       ]) {
         node.dispose()
