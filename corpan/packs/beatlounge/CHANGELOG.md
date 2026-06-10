@@ -6,6 +6,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Drum-kit corpus + parametric drum synth (the 4th corpus).** New `src/kits/`:
+  a typed `KitDef` schema (per-voice synthesis params as plain data — no samples,
+  no downloads) and a curated repertoire of **18 kits** across three families —
+  Electronic (808, 909, 707, techno, house, trap, lo-fi, industrial, synthwave),
+  Acoustic (studio/default, rock, jazz brushes, orchestral, vintage 60s), and
+  World (Afro-Cuban, Brazilian batucada, Middle-Eastern, Indian tabla). The drum
+  instrument (`instruments/drumKit.ts`) is now a **parametric synth** that builds
+  its 16 voices from a kit; the default "studio" kit reproduces the original sound
+  1:1. Switching kits is **live** — selecting a kit emits one `setInstrument`
+  (swap `kitId`, preserve pads) and the synth `update()` rebuilds its voices so the
+  new kit is heard immediately, with clean disposal (no node leaks). Ships a
+  reusable, premium-dark `<KitPicker>` component (family-grouped browse, active-kit
+  highlight, explicit voice preview that never starts the transport) for the drum
+  page to embed. See `docs/KITS_CORPUS.md`.
 - **World-modes corpus + exact pitch math (foundation).** New canonical
   `src/music/tuning.ts` (cents/ratio/frequency math — `equal12`/`pythagorean`/
   `just` tuning systems, the MIDI→mode detune bridge that retunes a 12-TET MIDI
