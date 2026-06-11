@@ -13,6 +13,7 @@
  */
 
 import { createRoot, type Root } from "react-dom/client"
+import { makeDeferredUnmount } from "../_shared/deferUnmount"
 import type {
   BeatloungeModule,
   ModuleInstance,
@@ -75,9 +76,7 @@ export const createComposerModule = ({ store, audio }: ModuleDeps): BeatloungeMo
     render()
 
     return {
-      unmount() {
-        try { root.unmount() } catch { /* root container already detached */ }
-      },
+      unmount: makeDeferredUnmount(root),
       refreshTile: render,
     }
   },

@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Reliable load/unload — no more black screen on reload.** The pack and every
+  module now tear down their React root via a shared deferred, once-only
+  `unmount()` (microtask, never synchronously mid-render), so a host reload can
+  no longer interrupt React mid-commit and detach the DOM (`NotFoundError` →
+  black screen). The pack root's rig dispose is per-subsystem try/catch so one
+  failing dispose can't blank the screen. The AudioContext now resumes ONLY from
+  a real user gesture (the scratch turntable no longer attempts an off-gesture
+  resume), silencing the "AudioContext was not allowed to start" spam. The IDB
+  open no longer caches a stuck/slow connection — it retries on the next call
+  (jittered) and first paint always falls back to the in-memory default.
+
 ### Added
 - **Explicit track naming + rename + N-synth navigation.** Every track is now
   named by its KIND, never by its content: synths are "Synth 1", "Synth 2", …

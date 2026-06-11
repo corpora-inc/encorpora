@@ -55,17 +55,36 @@ const openOnce = (): Promise<IDBPDatabase | null> =>
     }
   )
 
+/** Marker so the timeout branch is distinguishable from a real null open. */
+const TIMED_OUT = Symbol("idb-timeout")
+
 export const getBeatloungeDb = (): Promise<IDBPDatabase | null> => {
   if (!hasIndexedDB()) return Promise.resolve(null)
-  if (!dbPromise) dbPromise = openOnce()
-  // Race the (cached, never-abandoned) open against a timeout for THIS call only.
-  // The real open keeps running; a slow first call degrades alone, and if the
-  // open ultimately fails we reset the cache (above) so callers retry.
-  const timeout = new Promise<IDBPDatabase | null>((resolve) =>
-    setTimeout(() => {
-      console.warn(`[beatlounge/db] open slow (>${OPEN_TIMEOUT_MS}ms) — degrading this call`)
-      resolve(null)
-    }, OPEN_TIMEOUT_MS)
+  // Capture the open we're about to race so the timeout handler clears EXACTLY
+  // this attempt (and never a newer one a later caller may have started).
+  const pending = dbPromise ?? (dbPromise = openOnce())
+  // Race the cached open against a timeout for THIS call only. The real open
+  // keeps running; a slow first call degrades alone (callers fall back to the
+  // in-memory default doc) instead of blocking first paint.
+  const timeout = new Promise<typeof TIMED_OUT>((resolve) =>
+    setTimeout(
+      () => resolve(TIMED_OUT),
+      // Jitter so concurrent callers don't all give up on the same frame.
+      OPEN_TIMEOUT_MS + Math.floor(Math.random() * 500)
+    )
   )
-  return Promise.race([dbPromise, timeout])
+  return Promise.race([pending, timeout]).then((result) => {
+    if (result === TIMED_OUT) {
+      console.warn(
+        `[beatlounge/db] open slow (>${OPEN_TIMEOUT_MS}ms) — degrading this call`
+      )
+      // Don't permanently cache a hung/slow open: drop the cache so the NEXT
+      // call starts a fresh attempt instead of re-racing the same stuck promise.
+      // (Only clear if it's still the one we raced — a newer caller may have
+      // already replaced it after a versionchange/failure reset.)
+      if (dbPromise === pending) dbPromise = null
+      return null
+    }
+    return result
+  })
 }

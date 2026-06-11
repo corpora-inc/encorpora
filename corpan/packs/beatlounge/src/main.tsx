@@ -2,6 +2,7 @@ import { createRoot, type Root } from "react-dom/client"
 import "./styles.css"
 import type { GameModule, HostApi, StackConfig } from "./sdk/types"
 import { createMockHostApi } from "./sdk/mockHostApi"
+import { makeDeferredUnmount } from "./modules/_shared/deferUnmount"
 import { App } from "./App"
 
 type GlobalScope = typeof globalThis & {
@@ -21,7 +22,10 @@ const mountBeatlounge = (
 ): { dispose: () => void } => {
   const root: Root = createRoot(container)
   root.render(<App hostApi={hostApi} />)
-  return { dispose: () => root.unmount() }
+  // Deferred + once-only: never call root.unmount() synchronously during a
+  // React render/commit (host teardown can fire mid-render → detached DOM →
+  // NotFoundError → black screen). The actual unmount runs on a microtask.
+  return { dispose: makeDeferredUnmount(root) }
 }
 
 const registerGame = () => {

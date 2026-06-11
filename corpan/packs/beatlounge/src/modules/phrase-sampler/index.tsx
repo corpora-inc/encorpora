@@ -16,6 +16,7 @@
  */
 
 import { createRoot, type Root } from "react-dom/client"
+import { makeDeferredUnmount } from "../_shared/deferUnmount"
 import type {
   BeatloungeModule,
   ModuleInstance,
@@ -92,10 +93,9 @@ export const createPhraseSamplerModule = ({
       }
 
       return {
-        unmount() {
+        unmount: makeDeferredUnmount(root, () => {
           tileRoots.delete(tileHandle)
-          try { root.unmount() } catch { /* root container already detached */ }
-        },
+        }),
         refreshTile: mount.surface === "tile" ? renderTile : undefined,
       }
     },
