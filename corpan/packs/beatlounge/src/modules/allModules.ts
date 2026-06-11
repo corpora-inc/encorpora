@@ -14,7 +14,6 @@ import type { BeatloungeStore } from "../store/store"
 import { createStepGridModule } from "./step-grid"
 import { createMixerModule } from "./mixer"
 import { createFxRackModule } from "./fx-rack"
-import { createPianoRollModule } from "./piano-roll"
 import { createPhraseSamplerModule } from "./phrase-sampler"
 import { createTweakersModule } from "./tweakers"
 import { createSongSetupModule } from "./song-setup"
@@ -31,17 +30,34 @@ export interface ModuleDeps {
   host: BeatloungeHost
 }
 
+/**
+ * Registration order IS the Stage bento order (dense flow). Grouped by adjacency
+ * so related surfaces cluster:
+ *   • SESSION   — Rhythmic Cycle, Scenes (define the piece, near the top).
+ *   • INSTRUMENTS — Instruments, Ribbon (live play strip), Harmony (popover).
+ *   • DRUMS     — the live groove widget.
+ *   • PHRASES   — Phrases, Phrase Jam, Scratch.
+ *   • MIX       — Effects, Mixer, Tweakers.
+ *
+ * The old standalone Piano-roll ("Synth") tile is gone from Home — the in-
+ * Instruments Score replaces it (the module code is kept for reuse, just not
+ * registered). The Ribbon + Harmony tiles are now LIVE widgets (see their defs).
+ */
 export const registerAllModules = (registry: ModuleRegistry, deps: ModuleDeps): void => {
+  // — session —
   registry.register(createSongSetupModule(deps))
   registry.register(createScenesModule(deps))
-  registry.register(createStepGridModule(deps))
+  // — instruments —
   registry.register(createInstrumentsModule(deps))
-  registry.register(createPianoRollModule(deps))
-  registry.register(createComposerModule(deps))
   registry.register(createRibbonModule(deps))
+  registry.register(createComposerModule(deps))
+  // — drums —
+  registry.register(createStepGridModule(deps))
+  // — phrases —
   registry.register(createPhraseSamplerModule(deps))
   registry.register(createPhraseJamModule(deps))
   registry.register(createPhraseScratchModule(deps))
+  // — mix —
   registry.register(createFxRackModule(deps))
   registry.register(createMixerModule(deps))
   registry.register(createTweakersModule(deps))

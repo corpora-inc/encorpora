@@ -24,6 +24,7 @@ import { createFormObserver } from "../host/formFactor"
 import { useBeatloungeStore } from "../store/store"
 import { useTransport, stopTransport, syncTransportFromAudio } from "../store/transport"
 import { ModuleHost } from "./ModuleHost"
+import { Tile } from "./Tile"
 import { Immersive } from "./Immersive"
 import { DockRail } from "./DockRail"
 import { Toast, type ToastState } from "./Toast"
@@ -149,21 +150,7 @@ export const Shell = ({
         </div>
         <div className="bl-stage-grid">
           {modules.map((m) => (
-            <button
-              type="button"
-              key={m.id}
-              className={`bl-tile bl-tile--${m.tileAspect ?? "square"}`}
-              onClick={() => host.enterImmersive(m.id)}
-              aria-label={`Open ${m.title}`}
-            >
-              <ModuleHost
-                module={m}
-                surface="tile"
-                form={form}
-                host={host}
-                className="bl-tile-mount"
-              />
-            </button>
+            <Tile key={m.id} module={m} form={form} host={host} />
           ))}
         </div>
       </main>

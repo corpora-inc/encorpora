@@ -23,7 +23,7 @@ import type { ModuleDeps } from "../allModules"
 import { isInstrumentTrack } from "../../model/document"
 import type { BeatloungeStore } from "../../store/store"
 import { composerActions } from "./actions"
-import { ComposerTile } from "./ComposerTile"
+import { HarmonyWidget } from "./HarmonyWidget"
 import { ComposerImmersive } from "./ComposerImmersive"
 import "./styles.css"
 
@@ -49,28 +49,33 @@ export const createComposerModule = ({ store, audio }: ModuleDeps): BeatloungeMo
   glyph: "wave",
   immersive: "full",
   tileAspect: "square",
+  // The Stage tile is a live summary whose control opens a HOME POPOVER (the
+  // full HarmonyPanel), not the immersive page — so it owns its own affordance.
+  tileInteractive: true,
+  tileOwnsExpand: true,
   actions: composerActions,
   mount(mount: ModuleMount): ModuleInstance {
     const root: Root = createRoot(mount.container)
-    const trackId = resolveSynthTrackId(store, mount.trackId)
 
     const render = () => {
+      if (mount.surface === "tile") {
+        // The popover binds the snap to the persisted selected synth itself.
+        root.render(<HarmonyWidget host={mount.host} store={store} />)
+        return
+      }
+      const trackId = resolveSynthTrackId(store, mount.trackId)
       if (!trackId) {
         root.render(<div className="bl-grid-empty">No synth track.</div>)
         return
       }
-      if (mount.surface === "tile") {
-        root.render(<ComposerTile store={store} trackId={trackId} title="Harmony" />)
-      } else {
-        root.render(
-          <ComposerImmersive
-            host={mount.host}
-            store={store}
-            audio={audio}
-            trackId={trackId}
-          />
-        )
-      }
+      root.render(
+        <ComposerImmersive
+          host={mount.host}
+          store={store}
+          audio={audio}
+          trackId={trackId}
+        />
+      )
     }
 
     render()

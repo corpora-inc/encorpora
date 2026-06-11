@@ -22,8 +22,9 @@ import type {
 import type { ModuleDeps } from "../allModules"
 import { isInstrumentTrack } from "../../model/document"
 import type { BeatloungeStore } from "../../store/store"
+import { INSTRUMENTS_ID } from "../instruments"
 import { ribbonActions } from "./actions"
-import { RibbonTile } from "./RibbonTile"
+import { RibbonWidget } from "./RibbonWidget"
 import { RibbonImmersive } from "./RibbonImmersive"
 import "./styles.css"
 
@@ -48,20 +49,23 @@ export const createRibbonModule = ({ store, audio }: ModuleDeps): BeatloungeModu
   title: "Ribbon",
   glyph: "wave",
   immersive: "full",
-  tileAspect: "square",
+  // A comfortable play strip on the Stage — a live widget, not a summary.
+  tileAspect: "wide",
+  tileInteractive: true,
+  // The voice is managed on the Instruments page; the expand opens it there.
+  tileExpandTo: INSTRUMENTS_ID,
   actions: ribbonActions,
   mount(mount: ModuleMount): ModuleInstance {
     const root: Root = createRoot(mount.container)
-    const trackId = resolveMelodicTrackId(store, mount.trackId)
 
     const render = () => {
-      const color = trackId
-        ? store.vanilla.getState().doc.tracks.find((t) => t.id === trackId)?.color
-        : undefined
       if (mount.surface === "tile") {
-        root.render(<RibbonTile store={store} color={color} />)
+        // Bound to the PERSISTED selected synth (same voice the Instruments page
+        // edits) — reactive, so a new selection re-points it live.
+        root.render(<RibbonWidget host={mount.host} store={store} audio={audio} />)
         return
       }
+      const trackId = resolveMelodicTrackId(store, mount.trackId)
       if (!trackId) {
         root.render(<div className="bl-grid-empty">No melodic track.</div>)
         return

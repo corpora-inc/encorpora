@@ -21,7 +21,7 @@ import { useBeatloungeStore, type BeatloungeStore } from "../../store/store"
 import { isInstrumentTrack } from "../../model/document"
 import { newDrumTrack } from "../grooves/grooveModel"
 import { stepGridActions } from "./actions"
-import { StepGridTile } from "./StepGridTile"
+import { DrumGrooveWidget } from "./DrumGrooveWidget"
 import { StepGridImmersive } from "./StepGridImmersive"
 import "./step-grid.css"
 // The Drums page embeds the shared Grooves panel + FX chain; pull their styles
@@ -80,7 +80,7 @@ const DrumsRoot = ({
   }
 
   return surface === "tile" ? (
-    <StepGridTile store={store} audio={audio} trackId={drumId} title="Drums" />
+    <DrumGrooveWidget host={host} store={store} audio={audio} trackId={drumId} />
   ) : (
     <StepGridImmersive host={host} store={store} audio={audio} trackId={drumId} />
   )
@@ -93,6 +93,9 @@ export const createStepGridModule = ({ store, audio }: StepGridDeps): Beatlounge
   glyph: "grid",
   immersive: "full",
   tileAspect: "wide",
+  // The Stage tile is a LIVE groove widget (density dial + shuffle), not a
+  // tap-to-open summary — the shell renders it un-buttoned + adds the expand.
+  tileInteractive: true,
   actions: stepGridActions,
   mount(mount: ModuleMount): ModuleInstance {
     const root: Root = createRoot(mount.container)
