@@ -1,16 +1,25 @@
 import { describe, expect, it } from "vitest"
 import {
-  advanceRotation,
+  advanceRotationByVel,
   angleDelta,
   angularVelocityToRate,
+  BUFFER_SECONDS_PER_REV,
   clampRate,
-  easeRate,
+  clipArcRadians,
+  COAST_STOP_EPSILON,
+  decayAngularVelocity,
   fmtRate,
+  FRICTION_PER_SEC,
   HOLD_EPSILON,
   isHeld,
   MAX_RATE,
   pointerAngle,
-  RATE_GAIN,
+  rotationDeltaToRate,
+  rotationToBufferPos,
+  SECONDS_PER_RAD,
+  SPIN_ANG_VEL,
+  wordIndexAt,
+  type WordSpan,
 } from "./scratchMath"
 
 describe("clampRate", () => {
@@ -36,7 +45,6 @@ describe("angleDelta", () => {
     expect(angleDelta(1, 0)).toBeCloseTo(-1)
   })
   it("wraps across the +/-pi seam so a sweep stays continuous (no rate spike)", () => {
-    // 170deg -> -170deg is really a +20deg forward step, not a -340deg jump.
     const from = (170 * Math.PI) / 180
     const to = (-170 * Math.PI) / 180
     const d = angleDelta(from, to)
@@ -47,61 +55,155 @@ describe("angleDelta", () => {
 
 describe("pointerAngle", () => {
   it("reports the angle of a point about the centre", () => {
-    // point directly to the right of centre -> 0 rad
     expect(pointerAngle(0, 0, 5, 0)).toBeCloseTo(0)
-    // directly below (y down) -> +pi/2
     expect(pointerAngle(0, 0, 0, 5)).toBeCloseTo(Math.PI / 2)
   })
 })
 
-describe("angularVelocityToRate", () => {
-  it("maps a one-rotation-per-second sweep near unity at the default gain", () => {
-    // 2*pi rad/s * RATE_GAIN(=1/2pi) = 1.0
-    expect(angularVelocityToRate(2 * Math.PI)).toBeCloseTo(1, 5)
+describe("word-spans-half-disc mapping", () => {
+  it("SECONDS_PER_RAD is BUFFER_SECONDS_PER_REV / 2pi", () => {
+    expect(SECONDS_PER_RAD).toBeCloseTo(BUFFER_SECONDS_PER_REV / (2 * Math.PI), 10)
   })
-  it("is signed: a backwards sweep gives a negative (reverse) rate", () => {
-    expect(angularVelocityToRate(-2 * Math.PI)).toBeCloseTo(-1, 5)
+  it("a clip half the revolution length spans ~half the disc (pi radians)", () => {
+    const halfRevClip = BUFFER_SECONDS_PER_REV / 2
+    expect(clipArcRadians(halfRevClip)).toBeCloseTo(Math.PI, 6)
   })
-  it("clamps a frantic flick to the safe range", () => {
-    expect(angularVelocityToRate(100 * Math.PI)).toBe(MAX_RATE)
-    expect(angularVelocityToRate(-100 * Math.PI)).toBe(-MAX_RATE)
-  })
-  it("respects a custom gain", () => {
-    expect(angularVelocityToRate(1, 2)).toBeCloseTo(2)
-  })
-  it("RATE_GAIN is the documented 1/2pi", () => {
-    expect(RATE_GAIN).toBeCloseTo(1 / (2 * Math.PI), 10)
+  it("a ~1s padded word slot spans roughly half the record at the chosen rev", () => {
+    // BUFFER_SECONDS_PER_REV is tuned ≈ 2s so a ~1s word slot ≈ half a turn.
+    const wordSlotSec = 1.0
+    const arc = clipArcRadians(wordSlotSec)
+    expect(arc).toBeGreaterThan(Math.PI * 0.6) // clearly more than a small arc
+    expect(arc).toBeLessThan(Math.PI * 1.4)
   })
 })
 
-describe("easeRate", () => {
-  it("moves toward the target without overshooting (smooth = click-free)", () => {
-    const next = easeRate(0, 1, 0.016, 0.04)
-    expect(next).toBeGreaterThan(0)
-    expect(next).toBeLessThan(1)
+describe("rotationDeltaToRate / angularVelocityToRate (faithful 1:1 contact)", () => {
+  it("returns 0 for a non-positive dt", () => {
+    expect(rotationDeltaToRate(1, 0)).toBe(0)
+    expect(rotationDeltaToRate(1, -1)).toBe(0)
   })
-  it("converges to the target over many steps", () => {
-    let r = 0
-    for (let i = 0; i < 200; i++) r = easeRate(r, 1, 0.016, 0.04)
-    expect(r).toBeCloseTo(1, 3)
+  it("is exactly d(buffer-pos)/dt — 1:1 with no easing", () => {
+    // Drag 1 radian over 0.5s → bufferDelta = SECONDS_PER_RAD; rate = that / 0.5.
+    const rate = rotationDeltaToRate(1, 0.5)
+    expect(rate).toBeCloseTo(SECONDS_PER_RAD / 0.5, 8)
   })
-  it("passes smoothly THROUGH zero forward->reverse (no discontinuity)", () => {
-    // From +1 easing toward -1: the path crosses zero monotonically, never jumps.
-    let r = 1
-    let prev = r
-    let crossed = false
-    for (let i = 0; i < 300; i++) {
-      r = easeRate(r, -1, 0.016, 0.04)
-      // monotonic decrease (no skip / oscillation through zero)
-      expect(r).toBeLessThanOrEqual(prev + 1e-9)
-      if (prev > 0 && r <= 0) crossed = true
-      prev = r
+  it("doubling the drag doubles the rate (linear, faithful at any speed)", () => {
+    const slow = rotationDeltaToRate(0.5, 0.1)
+    const fast = rotationDeltaToRate(1.0, 0.1)
+    expect(fast).toBeCloseTo(slow * 2, 8)
+  })
+  it("is signed: a backwards drag plays in reverse", () => {
+    expect(rotationDeltaToRate(-1, 0.5)).toBeLessThan(0)
+  })
+  it("angularVelocityToRate = the per-second contact mapping", () => {
+    const angVel = 3.0
+    expect(angularVelocityToRate(angVel)).toBeCloseTo(rotationDeltaToRate(angVel, 1), 10)
+    expect(angularVelocityToRate(angVel)).toBeCloseTo(angVel * SECONDS_PER_RAD, 10)
+  })
+  it("clamps a frantic flick to the safe range", () => {
+    expect(rotationDeltaToRate(1000, 0.001)).toBe(MAX_RATE)
+    expect(rotationDeltaToRate(-1000, 0.001)).toBe(-MAX_RATE)
+  })
+})
+
+describe("rotationToBufferPos", () => {
+  it("0 rotation → position 0", () => {
+    expect(rotationToBufferPos(0, 2)).toBe(0)
+  })
+  it("wraps into [0, loopSeconds)", () => {
+    const loop = 1.3
+    const pos = rotationToBufferPos(1000, loop)
+    expect(pos).toBeGreaterThanOrEqual(0)
+    expect(pos).toBeLessThan(loop)
+  })
+  it("a negative rotation wraps to a positive position (reverse scrub)", () => {
+    const pos = rotationToBufferPos(-0.1, 2)
+    expect(pos).toBeGreaterThan(0)
+    expect(pos).toBeLessThan(2)
+  })
+  it("returns 0 for a non-positive loop length", () => {
+    expect(rotationToBufferPos(5, 0)).toBe(0)
+  })
+})
+
+describe("wordIndexAt (label sync; inter-word gap is silent)", () => {
+  // Two words on a gapped, looped timeline: [0,0.4] word0, gap, [0.7,1.0] word1, gap.
+  const spans: WordSpan[] = [
+    { start: 0, end: 0.4 },
+    { start: 0.7, end: 1.0 },
+  ]
+  const loop = 1.3 // 1.0 + a trailing gap
+  it("inside a word's audible span → that word", () => {
+    expect(wordIndexAt(spans, 0.2, loop)).toBe(0)
+    expect(wordIndexAt(spans, 0.85, loop)).toBe(1)
+  })
+  it("in the gap after a word holds that word's label (no flicker)", () => {
+    expect(wordIndexAt(spans, 0.5, loop)).toBe(0) // gap between word0 and word1
+    expect(wordIndexAt(spans, 1.15, loop)).toBe(1) // gap after the last word
+  })
+  it("wraps the position into the loop", () => {
+    expect(wordIndexAt(spans, 0.2 + loop, loop)).toBe(0)
+  })
+  it("−1 only when there are no words", () => {
+    expect(wordIndexAt([], 0.2, loop)).toBe(-1)
+  })
+})
+
+describe("momentum / friction physics (release coast)", () => {
+  it("decay is monotonic toward zero", () => {
+    let v = 10
+    let prev = v
+    for (let i = 0; i < 50; i++) {
+      v = decayAngularVelocity(v, 0.05)
+      expect(Math.abs(v)).toBeLessThanOrEqual(Math.abs(prev) + 1e-9)
+      prev = v
     }
-    expect(crossed).toBe(true)
-    expect(r).toBeCloseTo(-1, 3)
   })
-  it("returns the target immediately when tau<=0", () => {
-    expect(easeRate(0.5, 3, 0.016, 0)).toBe(3)
+  it("comes fully to rest (snaps to 0 below the stop epsilon)", () => {
+    let v = COAST_STOP_EPSILON * 1.2
+    v = decayAngularVelocity(v, 1) // one second of friction
+    // FRICTION_PER_SEC keeps only a fraction per second → below epsilon → 0.
+    expect(v).toBe(0)
+  })
+  it("a faster flick coasts longer than a gentle one", () => {
+    const steps = (v0: number) => {
+      let v = v0
+      let n = 0
+      while (v !== 0 && n < 10000) {
+        v = decayAngularVelocity(v, 1 / 60)
+        n++
+      }
+      return n
+    }
+    expect(steps(20)).toBeGreaterThan(steps(2))
+  })
+  it("preserves direction during the coast (a reverse flick coasts backward)", () => {
+    const v = decayAngularVelocity(-5, 0.05)
+    expect(v).toBeLessThan(0)
+  })
+  it("FRICTION_PER_SEC is a retained-fraction in (0,1)", () => {
+    expect(FRICTION_PER_SEC).toBeGreaterThan(0)
+    expect(FRICTION_PER_SEC).toBeLessThan(1)
+  })
+})
+
+describe("advanceRotationByVel (off-contact coast)", () => {
+  it("does not move at zero velocity", () => {
+    expect(advanceRotationByVel(1.234, 0, 0.5)).toBeCloseTo(1.234)
+  })
+  it("advances forward for a positive velocity and is unwrapped (smooth coast)", () => {
+    const r = advanceRotationByVel(6.0, 2.0, 0.5)
+    expect(r).toBeCloseTo(7.0, 8) // 6.0 + 2.0*0.5, NOT wrapped into 0..2pi
+  })
+  it("advances backward for a negative velocity", () => {
+    expect(advanceRotationByVel(1.0, -2.0, 0.25)).toBeCloseTo(0.5, 8)
+  })
+})
+
+describe("SPIN_ANG_VEL", () => {
+  it("is the angular velocity that plays the snippet once per revolution-period", () => {
+    // one whole BUFFER_SECONDS_PER_REV per 2pi radians → SECONDS_PER_RAD * SPIN = 1
+    expect(angularVelocityToRate(SPIN_ANG_VEL)).toBeCloseTo(1, 6)
   })
 })
 
@@ -110,22 +212,6 @@ describe("isHeld / HOLD_EPSILON", () => {
     expect(isHeld(0)).toBe(true)
     expect(isHeld(HOLD_EPSILON / 2)).toBe(true)
     expect(isHeld(0.5)).toBe(false)
-  })
-})
-
-describe("advanceRotation", () => {
-  it("does not move when the rate is zero (held record)", () => {
-    expect(advanceRotation(1, 0, 0.5)).toBeCloseTo(1)
-  })
-  it("turns forward for a positive rate and stays within 0..2pi", () => {
-    const r = advanceRotation(0, 1, 0.5)
-    expect(r).toBeGreaterThan(0)
-    expect(r).toBeLessThan(2 * Math.PI)
-  })
-  it("turns backward for a negative rate (reverse scratch)", () => {
-    const r = advanceRotation(0.5, -1, 0.2)
-    // wrapped into 0..2pi, a backward step from 0.5 lands near the top of the range
-    expect(r).toBeGreaterThan(Math.PI)
   })
 })
 

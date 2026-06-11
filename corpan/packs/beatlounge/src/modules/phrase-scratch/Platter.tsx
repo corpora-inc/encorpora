@@ -1,14 +1,15 @@
 /**
  * beatlounge — the SCRATCH PLATTER: a big circular record the user drags to
- * scratch. The drag's angular sweep around the centre is reported to the parent
- * (which maps angular velocity → playbackRate); the parent feeds back the live
- * rotation so the disc visibly tracks the audio (label, grooves and a spindle
- * spin with it).
+ * scratch. The drag's angular sweep around the centre is reported to the parent,
+ * which maps the sweep DIRECTLY to a buffer position (1:1, no lag) and feeds back
+ * the live rotation so the disc visibly tracks the finger — the label, grooves
+ * and spindle all turn with it. The CURRENT WORD is printed on the rotating
+ * label so you can see which word you are scrubbing.
  *
  * Pointer-captured, but it ONLY owns the drag when the pointer starts on the
  * platter surface itself — chrome carries `data-bl-nocapture` and never overlaps
- * the disc — so it never steals taps from controls (playbook). ≥44px is moot
- * (the disc is huge) but the centre spindle stays clear of the rim controls.
+ * the disc — so it never steals taps from controls (playbook). The whole disc is
+ * the grab target; the centre spindle stays clear of the rim controls.
  */
 
 import { useRef } from "react"
@@ -17,9 +18,9 @@ import { pointerAngle } from "./scratchMath"
 interface Props {
   /** Current visual rotation in radians (driven by the parent's RAF loop). */
   rotation: number
-  /** Phrase text shown on the record label. */
-  label: string
-  /** Language tag under the label. */
+  /** The CURRENT word being scrubbed, shown on the rotating label. */
+  word: string
+  /** Language tag under the word. */
   langTag?: string
   /** True while a finger is scratching (rim glows). */
   active: boolean
@@ -27,15 +28,15 @@ interface Props {
   reducedMotion: boolean
   /** A grab begins — parent zeroes its velocity tracker. */
   onGrab(): void
-  /** Angular sweep since the last sample, in radians (signed). */
+  /** Angular sweep since the last sample, in radians (signed, seam-unwrapped). */
   onSweep(deltaRadians: number): void
-  /** The finger lifted — parent coasts the rate back to baseline. */
+  /** The finger lifted — parent coasts the platter with momentum. */
   onRelease(): void
 }
 
 export const Platter = ({
   rotation,
-  label,
+  word,
   langTag,
   active,
   reducedMotion,
@@ -119,7 +120,7 @@ export const Platter = ({
         <div className="bl-scr-grooves" />
         <div className="bl-scr-label">
           <span className="bl-scr-label-text" lang={langTag}>
-            {label || "—"}
+            {word || "—"}
           </span>
           {langTag && <span className="bl-scr-label-lang">{langTag}</span>}
           <span className="bl-scr-spindle" />

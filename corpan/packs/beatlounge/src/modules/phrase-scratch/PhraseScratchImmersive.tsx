@@ -2,20 +2,24 @@
  * beatlounge — the phrase-SCRATCH IMMERSIVE view: isolate ONE saved snippet and
  * scratch it like a record. The headline widget.
  *
- *   • PLATTER — a big vinyl the user drags. Each animation frame we convert the
- *     finger's recent angular VELOCITY into a turntable playbackRate (sign =
- *     direction: drag backwards → the phrase plays in reverse) and feed it to the
- *     ScratchEngine. A held finger ⇒ rate eases toward the baseline (0 = hold,
- *     or 1 = spin) so a release coasts instead of snapping.
- *   • SPIN/HOLD — parks the baseline at 0 (a held record) or 1 (the phrase loops
- *     normally), so you can start it spinning then scratch over the top.
+ *   • PLATTER — a big vinyl the user drags. The disc's angular position maps
+ *     DIRECTLY to a position in the snippet's buffer (1:1, no easing), so the
+ *     record goes exactly where the finger puts it at any speed; the playbackRate
+ *     handed to the engine each frame is just d(buffer-position)/d(real-time).
+ *     A word is stretched across ~half the disc (slow, precise scrubbing) and a
+ *     silent gap is baked between words so each word is separated + legible. The
+ *     CURRENT word is printed on the rotating label.
+ *   • RELEASE — the platter coasts with friction (turntable spin-down); a flick
+ *     imparts momentum. While a finger owns the platter it tracks 1:1; the
+ *     momentum physics are a separate, opt-in release layer.
+ *   • SPIN/HOLD — parks the released baseline at a natural spin or a dead hold.
  *   • PITCH — an independent detune (granular decoupling) ±12 semitones.
  *   • PICKER — choose which bank snippet is loaded onto the turntable.
  *
  * The engine plays DIRECTLY on the shared AudioContext (a live instrument, not
  * the transport). Continuity is by construction: the looped GrainPlayer never
- * re-triggers, so moving the rate (even through zero / into reverse) is gapless —
- * no skips, no clicks. We dispose the engine + RAF on unmount / snippet change.
+ * re-triggers, so moving the rate (even through zero / into reverse) is gapless.
+ * We dispose the engine + RAF on unmount / snippet change.
  */
 
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -29,12 +33,19 @@ import { decodeFragmentBytes } from "../../phrase/decode"
 import { Glyph, prefersReducedMotion } from "../../bl-ui"
 import { ensureAudio } from "../../engine/ensureAudio"
 import { createScratchEngine, type ScratchEngine } from "./scratchEngine"
+import { buildGappedBuffer } from "./scratchBuffer"
+import { createLoadToken } from "./loadToken"
 import {
-  advanceRotation,
+  advanceRotationByVel,
   angularVelocityToRate,
-  easeRate,
+  clampRate,
+  decayAngularVelocity,
   fmtRate,
   isHeld,
+  rotationToBufferPos,
+  SPIN_ANG_VEL,
+  wordIndexAt,
+  type WordSpan,
 } from "./scratchMath"
 import { Platter } from "./Platter"
 
@@ -46,12 +57,12 @@ interface Props {
   audioSource: AudioSource
 }
 
-/** How quickly the live rate eases toward the finger / baseline (seconds). */
-const FOLLOW_TAU = 0.04
-const COAST_TAU = 0.22
-
 /** A snippet's stable identity for picker selection + dedup. */
 const refKey = (r: FragmentRef): string => `${r.language ?? ""}:${r.text ?? ""}:${r.voiceId ?? ""}`
+
+/** Split a phrase into word tokens for per-word labels (best-effort). */
+const splitWords = (text: string): string[] =>
+  text.split(/\s+/).map((w) => w.trim()).filter(Boolean)
 
 export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
@@ -70,89 +81,114 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   }, [bank, selectedKey])
 
   const [loading, setLoading] = useState(false)
-  const [spinning, setSpinning] = useState(false) // baseline 1 vs 0 (hold)
+  const [spinning, setSpinning] = useState(false) // released baseline: spin vs hold
   const [pitch, setPitch] = useState(0)
   const [active, setActive] = useState(false) // a finger is on the platter
   const [rateDisplay, setRateDisplay] = useState(0)
   const [rotation, setRotation] = useState(0)
+  const [wordIdx, setWordIdx] = useState(-1)
   const [pickerOpen, setPickerOpen] = useState(false)
 
   // Live engine + animation state live in refs (no re-render churn per frame).
   const engineRef = useRef<ScratchEngine | null>(null)
-  const baselineRef = useRef(0) // 0 = hold, 1 = spin
-  const liveRateRef = useRef(0) // the rate currently driving the engine
-  const targetRef = useRef(0) // finger-driven target (overrides baseline while held)
+  const spinningRef = useRef(false) // released baseline: true = natural spin
+  // Word spans (seconds) + per-word labels on the gapped buffer + its loop length.
+  const spansRef = useRef<WordSpan[]>([])
+  const wordsRef = useRef<(string | undefined)[]>([])
+  const loopSecRef = useRef(0)
+
   const grabbedRef = useRef(false) // a finger owns the platter
-  // Recent angular velocity from the platter sweep (radians/sec), low-passed.
-  const angVelRef = useRef(0)
-  const rotRef = useRef(0)
+  const discRotRef = useRef(0) // disc angular position (radians, the 1:1 truth)
+  const prevDiscRotRef = useRef(0) // disc position last RAF frame (for the contact rate)
+  const angVelRef = useRef(0) // coast angular velocity (rad/s), off-contact only
   const rafRef = useRef<number | null>(null)
   const lastTsRef = useRef<number | null>(null)
+  // Monotonic load token: a snippet change / unmount supersedes in-flight loads.
+  const loadTokenRef = useRef(createLoadToken())
 
-  baselineRef.current = spinning ? 1 : 0
+  spinningRef.current = spinning
 
   // ---- load the selected snippet onto the turntable -------------------------
   useEffect(() => {
-    let cancelled = false
+    // Open a fresh load token FIRST: any in-flight load for a prior selection is
+    // now stale and will discard its result at its next checkpoint.
+    const token = loadTokenRef.current.open()
+    const stale = () => !loadTokenRef.current.isCurrent(token)
+
     // Tear down any prior engine before loading the next snippet.
     engineRef.current?.dispose()
     engineRef.current = null
-    liveRateRef.current = 0
-    targetRef.current = 0
+    spansRef.current = []
+    wordsRef.current = []
+    loopSecRef.current = 0
+    discRotRef.current = 0
     angVelRef.current = 0
     setRateDisplay(0)
+    setWordIdx(-1)
 
     if (!selected || !selected.text || !selected.language) {
       setLoading(false)
       return
     }
 
-    const ref = selected
+    // Snapshot the fields we need NOW so no later render's `selected` closure
+    // can be read inside the async body (stale-closure race source).
+    const text = selected.text
+    const language = selected.language
+    const voiceId = selected.voiceId
+    const sha256 = selected.sha256
+
     setLoading(true)
     void (async () => {
       try {
         const ctx = host.audioContext()
         // NB: do NOT resume the context here — this effect runs on mount /
-        // snippet change, NOT a user gesture, so an off-gesture resume() fails
-        // silently and spams the "AudioContext was not allowed to start"
-        // warning. Resuming happens from `onGrab` (a real pointer gesture).
+        // snippet change, NOT a user gesture. Resuming happens from `onGrab`.
         // Prefer cached bytes; resolve fresh (renders + caches) if absent.
-        let bytes = ref.sha256 ? await audioSource.getCachedAudio(ref.sha256) : null
+        let bytes = sha256 ? await audioSource.getCachedAudio(sha256) : null
+        if (stale()) return
         if (!bytes) {
-          const resolved = await audioSource.resolveFragmentAudio(
-            ref.text!,
-            ref.language!,
-            ref.voiceId
-          )
+          const resolved = await audioSource.resolveFragmentAudio(text, language, voiceId)
+          if (stale()) return
           if (resolved.audio && resolved.audio.bytes.byteLength > 0) {
             bytes = resolved.audio
           }
         }
-        if (cancelled) return
         if (!bytes) {
-          console.warn(`${LOG} no audio bytes for snippet (synth-vox floor):`, ref.text)
+          console.warn(`${LOG} no audio bytes for snippet (synth-vox floor):`, text)
           host.toast("That snippet has no audio yet — open Phrases to render it")
-          setLoading(false)
+          if (!stale()) setLoading(false)
           return
         }
-        const buffer = await decodeFragmentBytes(ctx, bytes)
-        if (cancelled) return
-        if (!buffer) {
+        const decoded = await decodeFragmentBytes(ctx, bytes)
+        if (stale()) return
+        if (!decoded) {
           host.toast("Couldn't decode that snippet")
           setLoading(false)
           return
         }
-        const engine = createScratchEngine(ctx, buffer, {
-          baselineRate: baselineRef.current,
+        // Rebuild into a gapped buffer: words separated by baked silence.
+        const gapped = buildGappedBuffer(ctx, decoded, splitWords(text))
+        if (stale()) return
+        spansRef.current = gapped.spans
+        // Prefer the per-slot label; fall back to the whole phrase if unknown.
+        wordsRef.current = gapped.words.map((w) => w ?? text)
+        loopSecRef.current = gapped.totalSeconds
+
+        const engine = createScratchEngine(ctx, gapped.buffer, {
+          baselineRate: 0,
           gain: 0.95,
         })
         engine.setPitch(pitch)
+        if (stale()) {
+          engine.dispose()
+          return
+        }
         engineRef.current = engine
-        liveRateRef.current = baselineRef.current
         setLoading(false)
       } catch (err) {
         console.warn(`${LOG} load failed:`, err)
-        if (!cancelled) {
+        if (!stale()) {
           host.toast("Couldn't load that snippet")
           setLoading(false)
         }
@@ -160,7 +196,8 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     })()
 
     return () => {
-      cancelled = true
+      // Invalidate on cleanup so an unmount (not just a re-run) discards a load.
+      loadTokenRef.current.invalidate()
     }
     // pitch intentionally excluded: pitch changes are applied live below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -171,36 +208,46 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     engineRef.current?.setPitch(pitch)
   }, [pitch])
 
-  // ---- the RAF loop: ease the live rate, drive the engine + rotation --------
+  // ---- the RAF loop: 1:1 follow on contact, momentum coast off it -----------
   useEffect(() => {
     const tick = (ts: number) => {
       const last = lastTsRef.current
       const dt = last == null ? 1 / 60 : Math.min(0.05, (ts - last) / 1000)
       lastTsRef.current = ts
 
-      // Decide the target rate this frame.
-      let target: number
+      let rate: number
       if (grabbedRef.current) {
-        // Finger owns it: rate ∝ recent angular velocity of the sweep.
-        target = angularVelocityToRate(angVelRef.current)
-        // Decay the stored velocity so a stalled-but-held finger settles to hold.
-        angVelRef.current *= Math.exp(-dt / 0.08)
+        // FAITHFUL: onSweep moved the disc to the finger; the rate this frame is
+        // exactly the buffer motion that disc movement demands (no easing / low
+        // pass — the record is where the finger is). Deriving the rate from the
+        // disc's ACTUAL movement this frame means a stalled finger (no sweeps) →
+        // 0 movement → silence, with no stored velocity to keep it droning.
+        const moved = discRotRef.current - prevDiscRotRef.current
+        rate = angularVelocityToRate(moved / dt)
+        angVelRef.current = moved / dt // remembered so release can throw it
       } else {
-        // Released: coast toward the baseline (spin or hold).
-        target = baselineRef.current
+        // RELEASED: friction-decay the coast. With Spin on, the decay floors at
+        // the natural baseline spin (the record keeps looping); else it stops.
+        const decayed = decayAngularVelocity(angVelRef.current, dt)
+        angVelRef.current =
+          spinningRef.current && decayed < SPIN_ANG_VEL ? SPIN_ANG_VEL : decayed
+        discRotRef.current = advanceRotationByVel(discRotRef.current, angVelRef.current, dt)
+        rate = angularVelocityToRate(angVelRef.current)
       }
 
-      const tau = grabbedRef.current ? FOLLOW_TAU : COAST_TAU
-      const next = easeRate(liveRateRef.current, target, dt, tau)
-      liveRateRef.current = next
-      engineRef.current?.setRate(next)
+      prevDiscRotRef.current = discRotRef.current
 
-      // Advance the visual rotation by the live rate (disc tracks the audio).
-      rotRef.current = advanceRotation(rotRef.current, next, dt)
+      const clamped = clampRate(rate)
+      engineRef.current?.setRate(clamped)
+
+      // The current word follows the buffer position (= disc position).
+      const pos = rotationToBufferPos(discRotRef.current, loopSecRef.current)
+      const wi = wordIndexAt(spansRef.current, pos, loopSecRef.current)
 
       // Throttle React state to ~every frame but only when it meaningfully moved.
-      setRateDisplay((prev) => (Math.abs(prev - next) > 0.01 ? next : prev))
-      setRotation(rotRef.current)
+      setRateDisplay((prev) => (Math.abs(prev - clamped) > 0.01 ? clamped : prev))
+      setRotation(discRotRef.current)
+      setWordIdx((prev) => (prev !== wi ? wi : prev))
 
       rafRef.current = requestAnimationFrame(tick)
     }
@@ -224,35 +271,30 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const onGrab = () => {
     grabbedRef.current = true
     angVelRef.current = 0
+    // Sync the prev marker so the first contact frame measures movement from
+    // HERE (no spike from a stale coast position).
+    prevDiscRotRef.current = discRotRef.current
     setActive(true)
     // A grab is a real user gesture — the one place we resume the context.
     void ensureAudio(host.audioContext())
   }
 
   const onSweep = (deltaRadians: number) => {
-    // Convert this frame's angular delta to an angular velocity estimate and
-    // low-pass it so the rate is smooth (no jitter spikes = no clicks).
-    const last = lastTsRef.current
-    const now = performance.now()
-    const dt = last == null ? 1 / 60 : Math.max(0.001, (now - last) / 1000)
-    const instVel = deltaRadians / dt
-    // Blend toward the instantaneous velocity (heavier weight = snappier feel).
-    angVelRef.current = angVelRef.current * 0.4 + instVel * 0.6
+    // Move the disc to the finger 1:1 — this IS the truth. The RAF derives the
+    // playbackRate from the disc's movement per frame, so this is the only place
+    // the finger writes position; a stalled finger stops the record (silence).
+    discRotRef.current += deltaRadians
   }
 
   const onRelease = () => {
     grabbedRef.current = false
     setActive(false)
-    // angVel keeps a little residual → a touch of throw before coasting to baseline.
+    // angVel keeps the finger's last speed → a flick throws the platter, then it
+    // coasts to rest (or to the baseline spin) under friction in the RAF.
   }
 
   // ---- spin / hold toggle ---------------------------------------------------
-  const toggleSpin = () => {
-    const next = !spinning
-    setSpinning(next)
-    // If not currently scratching, nudge the target immediately so the toggle
-    // feels responsive (the RAF eases the rest).
-  }
+  const toggleSpin = () => setSpinning((v) => !v)
 
   const onSelect = (r: FragmentRef) => {
     setSelectedKey(refKey(r))
@@ -277,6 +319,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
 
   const label = selected?.text ?? ""
   const langTag = selected?.language?.toUpperCase()
+  // Word printed on the disc: the live slot if we have one, else the phrase.
+  const discWord =
+    wordIdx >= 0 && wordsRef.current[wordIdx] ? (wordsRef.current[wordIdx] as string) : label
 
   return (
     <div className="bl-scr">
@@ -327,7 +372,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       <div className="bl-scr-stage">
         <Platter
           rotation={rotation}
-          label={label}
+          word={discWord}
           langTag={langTag}
           active={active}
           reducedMotion={reduced}
