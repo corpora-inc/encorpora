@@ -260,6 +260,84 @@ export interface Bus {
   mute: boolean
 }
 
+// ---------------------------------------------------------------- harmony
+/**
+ * THE GLOBAL PITCH WORLD (HARMONY_VISION §4). One field on the doc is the sole
+ * source of truth for tonic, tuning, the modal/chordal choice, and the chord
+ * timeline. Every melodic module reads it through the pure resolver
+ * (`music/resolver.ts`) — no module ever picks its own scale.
+ *
+ * Plain JSON (document.ts rule #1): a tonic pitch-class, a scale reference (the
+ * corpus mode id + family + tuning), a tick-addressed chord timeline, and the
+ * configurable reference pitch. 12-TET / C-major / A=440 is the migration-safe
+ * default so old docs open sounding identical.
+ */
+
+/** Which editor's output the resolver consumes (HARMONY_VISION §3). */
+export type HarmonyMode = "modal" | "chordal"
+
+/** The corpus family a modal scale is drawn from (mirrors `music/modes`). */
+export type HarmonyScaleFamily = "western" | "thaat" | "melakarta" | "maqam"
+
+/** Built-in tuning systems (mirrors `music/tuning` TuningSystemId). */
+export type HarmonyTuningId = "equal12" | "pythagorean" | "just"
+
+/**
+ * The active modal scale: a corpus mode id (e.g. "western.ionian") within a
+ * family, intonated through a tuning. The tonic lives on `Harmony` (shared with
+ * chordal mode) so switching editors keeps the key.
+ */
+export interface HarmonyScale {
+  family: HarmonyScaleFamily
+  /** Stable corpus mode id, e.g. "western.ionian", "thaat.bhairav", "maqam.rast". */
+  id: string
+  /** How the abstract degrees are intonated. Default "equal12" (chord-safe). */
+  tuning: HarmonyTuningId
+}
+
+/**
+ * A chord placed on the loop timeline — same (tick) addressing as NoteEvent /
+ * TempoEvent. The `symbol` is parsed by `music/harmony.parseChord` (forgiving).
+ * `durationTicks` is informational; the active chord at a tick is simply the
+ * last chord whose tick ≤ the query tick (it sustains until the next chord).
+ */
+export interface HarmonyChordEvent {
+  id: Id
+  tick: Tick
+  /** Chord SYMBOL ("Cmaj7", "Dm7b5", "G7"). 12-TET; chords require 12-TET. */
+  symbol: string
+  /** Sustain in ticks (until the next chord by default). Informational. */
+  durationTicks?: Tick
+}
+
+/** The configurable reference pitch (A4 = 440 @ MIDI 69 by convention). */
+export interface HarmonyReference {
+  hz: number
+  midi: number
+}
+
+export interface Harmony {
+  /** Which editor's output the resolver consumes. */
+  mode: HarmonyMode
+  /** Tonic pitch class 0..11 (C = 0). Shared by modal + chordal. */
+  tonic: number
+  /** The active modal scale (used directly when mode === "modal"). */
+  scale: HarmonyScale
+  /** Tick-addressed chord timeline (used when mode === "chordal"), sorted by tick. */
+  progression: HarmonyChordEvent[]
+  /** Reference pitch the tuning is anchored to. Default { hz: 440, midi: 69 }. */
+  reference: HarmonyReference
+}
+
+/** The migration-safe default: modal, C, Western Ionian, 12-TET, A = 440. */
+export const defaultHarmony = (): Harmony => ({
+  mode: "modal",
+  tonic: 0,
+  scale: { family: "western", id: "western.ionian", tuning: "equal12" },
+  progression: [],
+  reference: { hz: 440, midi: 69 },
+})
+
 // ---------------------------------------------------------------- fragments
 export interface FragmentRef {
   id: Id
@@ -290,9 +368,29 @@ export interface BeatloungeDoc {
   fragmentLibrary: FragmentRef[]
   /** Autonomous knob-tweakers driving params over time. */
   modulators: Modulator[]
+  /** THE GLOBAL PITCH WORLD — tonic/scale/tuning + chord timeline. Every
+   *  melodic module reads it through `music/resolver.ts`. Optional in the type
+   *  so persisted pre-harmony docs deserialize; `migrateDoc` fills it on load. */
+  harmony?: Harmony
   createdAt: number
   updatedAt: number
 }
+
+/**
+ * Migration-safe harmony accessor: returns the doc's harmony, or the default
+ * (modal C-major 12-TET) if a persisted doc predates the field. The resolver
+ * and every consumer go through this so a missing field never throws.
+ */
+export const docHarmony = (doc: BeatloungeDoc): Harmony =>
+  doc.harmony ?? defaultHarmony()
+
+/**
+ * Fill a missing `harmony` on a (possibly persisted) doc with the default,
+ * additively + idempotently. Old docs open sounding identical; NoteEvent.pitch
+ * is untouched. Returns the same reference when nothing changes.
+ */
+export const migrateDoc = (doc: BeatloungeDoc): BeatloungeDoc =>
+  doc.harmony ? doc : { ...doc, harmony: defaultHarmony() }
 
 // ---------------------------------------------------------------- factories
 export const defaultInsertChain = (): EffectNode[] => []
@@ -438,6 +536,7 @@ export const createDefaultDoc = (now: number): BeatloungeDoc => {
     buses: [],
     fragmentLibrary: [],
     modulators: [],
+    harmony: defaultHarmony(),
     createdAt: now,
     updatedAt: now,
   }

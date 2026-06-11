@@ -11,11 +11,14 @@ import {
   buildRollView,
   buildRows,
   DEFAULT_LOW_PITCH,
+  isInPcSet,
   isInScale,
   octaveOf,
   pitchLabel,
   ROW_SPAN,
 } from "./pitchModel"
+import { reduce } from "../../model/reduce"
+import { activePitches } from "../../music/resolver"
 
 const synthTrack = (): { doc: BeatloungeDoc; track: InstrumentTrack } => {
   const doc = createDefaultDoc(0)
@@ -119,5 +122,58 @@ describe("autoWindow — frames the existing melody", () => {
         expect(view.cells[rowIdx][step].on).toBe(true)
       }
     }
+  })
+})
+
+describe("piano-roll follows the global harmony", () => {
+  /** Build the highlighted (in-scale) pitch classes for a doc's active set. */
+  const highlightedPcs = (doc: BeatloungeDoc): Set<number> => {
+    const ap = activePitches(doc, 0)
+    const pcSet = new Set(ap.pcs)
+    const view = buildRollView(doc, synthTrack().track, {
+      low: 60,
+      span: 12,
+      pcSet,
+      tonicPc: ap.tonicPc,
+    })
+    return new Set(view.rows.filter((r) => r.inScale).map((r) => r.pitch % 12))
+  }
+
+  it("highlights the C-major rows by default", () => {
+    const { doc } = synthTrack()
+    expect(highlightedPcs(doc)).toEqual(new Set([0, 2, 4, 5, 7, 9, 11]))
+  })
+
+  it("re-highlights when the song's tonic + mode change (A minor)", () => {
+    let d = synthTrack().doc
+    d = reduce(d, { t: "setTonic", pc: 9 })
+    d = reduce(d, { t: "setScale", family: "western", id: "western.aeolian" })
+    // A natural minor: A B C D E F G
+    expect(highlightedPcs(d)).toEqual(new Set([0, 2, 4, 5, 7, 9, 11]))
+    // The tonic row is flagged at A (pc 9).
+    const ap = activePitches(d, 0)
+    const rows = buildRows(60, 12, 0, undefined, new Set(ap.pcs), ap.tonicPc)
+    expect(rows.find((r) => r.tonic)?.pitch! % 12).toBe(9)
+  })
+
+  it("follows chordal mode (implied scale from the chords)", () => {
+    let d = synthTrack().doc
+    d = reduce(d, { t: "setHarmonyMode", mode: "chordal" })
+    d = reduce(d, {
+      t: "setProgression",
+      chords: [
+        { tick: 0, symbol: "Dm7" },
+        { tick: 1920, symbol: "G7" },
+      ],
+    })
+    // Dm7 {2,5,9,0} ∪ G7 {7,11,2,5} = {0,2,5,7,9,11}
+    expect(highlightedPcs(d)).toEqual(new Set([0, 2, 5, 7, 9, 11]))
+  })
+
+  it("isInPcSet matches absolute pitch classes", () => {
+    const pcs = new Set([0, 4, 7])
+    expect(isInPcSet(60, pcs)).toBe(true) // C
+    expect(isInPcSet(64, pcs)).toBe(true) // E
+    expect(isInPcSet(62, pcs)).toBe(false) // D
   })
 })

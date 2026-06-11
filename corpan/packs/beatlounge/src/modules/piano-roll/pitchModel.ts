@@ -7,8 +7,11 @@
  * visible rows span a sensible 2-octave window. One row per MIDI pitch.
  *
  * Scale highlighting: a row is "in scale" when its pitch-class is a degree of
- * the active scale (C-major by default). Accidentals stay reachable — they are
- * rendered as dimmer rows, never hidden — so the player can always play them.
+ * the active scale. The scale comes from the GLOBAL harmony (`doc.harmony` via
+ * `music/resolver.ts`) — change the song's mode/chords and the highlighted rows
+ * follow. A C-major default is used only when no harmony pitch set is supplied.
+ * Accidentals stay reachable — they are rendered as dimmer rows, never hidden —
+ * so the player can always play them.
  *
  * Kept free of React so it's unit-testable in isolation.
  */
@@ -91,18 +94,31 @@ export const isInScale = (
   return scale.includes(pc)
 }
 
+/** Is `pitch`'s absolute pitch-class in the given (resolver) pitch-class set? */
+export const isInPcSet = (pitch: Midi, pcs: ReadonlySet<number>): boolean =>
+  pcs.has((((pitch % 12) + 12) % 12))
+
 /**
  * The visible pitch window, highest pitch first. `low` is the bottom row's
  * pitch; `span` rows are shown (default a hair over two octaves so both tonics
- * are visible). C-major (tonic = pitch-class 0) by default.
+ * are visible).
+ *
+ * Scale highlighting source (in precedence order):
+ *   - `pcSet` (an ABSOLUTE pitch-class set from the resolver) — the harmony path;
+ *     a row is in-scale when its pc is in the set, the tonic is `tonicPc`.
+ *   - else the semitone `scale` rooted at `tonic` (C-major default).
  */
 export const buildRows = (
   low: Midi = DEFAULT_LOW_PITCH,
   span = ROW_SPAN,
   tonic = 0,
-  scale: readonly number[] = MAJOR_SCALE
+  scale: readonly number[] = MAJOR_SCALE,
+  pcSet?: ReadonlySet<number>,
+  tonicPc?: number
 ): PitchRow[] => {
   const rows: PitchRow[] = []
+  const useSet = pcSet != null && pcSet.size > 0
+  const tPc = ((((useSet ? tonicPc ?? tonic : tonic) % 12) + 12) % 12)
   // Highest pitch at the top (descending), like a real piano roll.
   for (let i = span - 1; i >= 0; i--) {
     const pitch = low + i
@@ -110,9 +126,9 @@ export const buildRows = (
     rows.push({
       pitch,
       label: pitchLabel(pitch),
-      inScale: isInScale(pitch, tonic, scale),
+      inScale: useSet ? pcSet!.has(pc) : isInScale(pitch, tonic, scale),
       accidental: BLACK_KEYS.has(pc),
-      tonic: pc === ((tonic % 12) + 12) % 12,
+      tonic: pc === tPc,
     })
   }
   return rows
@@ -123,6 +139,10 @@ export interface BuildRollOpts {
   span?: number
   tonic?: number
   scale?: readonly number[]
+  /** Absolute pitch-class set from the global harmony resolver (takes precedence). */
+  pcSet?: ReadonlySet<number>
+  /** The harmony tonic pitch class (when `pcSet` is supplied). */
+  tonicPc?: number
 }
 
 /**
@@ -141,7 +161,9 @@ export const buildRollView = (
     opts.low ?? DEFAULT_LOW_PITCH,
     opts.span ?? ROW_SPAN,
     opts.tonic ?? 0,
-    opts.scale ?? MAJOR_SCALE
+    opts.scale ?? MAJOR_SCALE,
+    opts.pcSet,
+    opts.tonicPc
   )
 
   // Index notes by (pitch → tick → {velocity,id}) for O(1) cell lookup.

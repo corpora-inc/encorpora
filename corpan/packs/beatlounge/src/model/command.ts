@@ -13,6 +13,11 @@ import type {
   FragmentEvent,
   FragmentRef,
   Grid,
+  HarmonyChordEvent,
+  HarmonyMode,
+  HarmonyReference,
+  HarmonyScaleFamily,
+  HarmonyTuningId,
   Id,
   InstrumentConfig,
   Midi,
@@ -89,5 +94,24 @@ export type Command =
   | { t: "setModulatorEnabled"; modulatorId: Id; enabled: boolean }
   /** Clear all modulators, or only those whose target matches. */
   | { t: "clearModulators"; target?: ParamTarget }
+  // ---- harmony (the global pitch world) ----
+  /** Switch which editor's output the resolver consumes (modal ⇄ chordal). */
+  | { t: "setHarmonyMode"; mode: HarmonyMode }
+  /** Set the global tonic (pitch class 0..11). Shared by modal + chordal. */
+  | { t: "setTonic"; pc: number }
+  /** Pick a modal scale: a corpus mode id + its family. */
+  | { t: "setScale"; family: HarmonyScaleFamily; id: string }
+  /** Set the modal tuning (equal12 | pythagorean | just). */
+  | { t: "setTuning"; tuning: HarmonyTuningId }
+  /** Set the reference pitch (A4 = 440 / 442 / drone anchor). */
+  | { t: "setReference"; reference: HarmonyReference }
+  /** Replace the whole chord timeline (chord-fill / browse-994 drop). */
+  | { t: "setProgression"; chords: Omit<HarmonyChordEvent, "id">[] }
+  /** Add or REPLACE the chord at a tick (visual grid tap). */
+  | { t: "setChordAt"; tick: Tick; symbol: string; durationTicks?: Tick }
+  /** Add a chord to the timeline. */
+  | { t: "addChord"; chord: Omit<HarmonyChordEvent, "id"> }
+  /** Remove a chord by id. */
+  | { t: "removeChord"; chordId: Id }
   // ---- atomic multi-command transaction (one undo step) ----
   | { t: "batch"; commands: Command[]; label?: string }
