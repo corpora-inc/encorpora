@@ -99,7 +99,7 @@ export const TweakersImmersive = ({ host, store }: Props) => {
 
       <div className="bl-twk-list">
         {mods.length === 0 ? (
-          <div className="bl-grid-empty">
+          <div className="bl-twk-empty">
             No tweakers yet. Set an agent loose, and the loop evolves itself.
           </div>
         ) : (
