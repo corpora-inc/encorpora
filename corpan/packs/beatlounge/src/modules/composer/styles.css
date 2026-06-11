@@ -15,6 +15,24 @@
   position: relative;
 }
 
+/* The standalone Harmony view wraps the bar with its own head + jam controls.
+   The wrapper owns the full-height scroll column; the nested bar flows to its
+   content height so head + jam are siblings, not overlapped by a 100% bar. */
+.bl-hb-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  padding: var(--bl-s4);
+  height: 100%;
+  overflow: hidden auto;
+  position: relative;
+}
+.bl-hb-wrap > .bl-hb {
+  height: auto;
+  overflow: visible;
+  padding: 0;
+}
+
 .bl-hb-head {
   display: flex;
   align-items: baseline;

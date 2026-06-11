@@ -6,6 +6,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Instruments — Harmony now leads the page.** The harmony bar (tonic +
+  Mode⇄Progression + chord grid + 994-progression browser) is extracted into a
+  reusable `HarmonyPanel` and mounted at the TOP of the Instruments page as a
+  compact one-line summary row that expands to a popover — so the page leads with
+  the harmony that governs every voice. The standalone Harmony tile is unchanged
+  (it now renders the same panel, plus its jam controls).
+- **Harmony → score snap.** Changing the mode / scale / progression re-quantizes
+  the bound melody to the nearest in-key pitch (`snapTrackToHarmony`), keeping
+  each note's tick / duration / velocity and moving only its pitch — one undo
+  step, setup-don't-play (never starts the transport). The score follows the key.
+- **The selected instrument persists.** The Instruments page's bound melodic
+  track is now a global, document-keyed selection (`store/selectedInstrument.ts`)
+  that survives leaving the page and returning, with a graceful fallback to the
+  first melodic track when the stored one vanishes.
+- **Deeper instrument palette.** The synthesis preset corpus grows to 78
+  genuinely-distinct, premium voices across keys, bass, leads, pads, plucks &
+  mallets, brass & wind, and FX — each its own oscillator mix / filter / envelope
+  (e.g. Moog Bass, Sync Lead, Voices, Trumpet, Atmosphere). Analog, Preset, and
+  Osc voice types all remain distinct.
 - **Score — compose a melody with a +/− "layer" dial.** The Instruments page's
   Score drawer tab is now a real melody editor (`src/modules/score/`). Rows are
   the active scale degrees across ~2 octaves, resolved in key via the harmony
