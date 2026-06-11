@@ -9,7 +9,8 @@ import { createCommandBarController } from "./controller"
 import { createCommandBus } from "../../model/commandBus"
 import { createBeatloungeStore } from "../../store/store"
 import { createDefaultDoc } from "../../model/document"
-import type { BeatloungeHost } from "../../contracts/module"
+import { createModuleRegistry } from "../registry"
+import type { BeatloungeHost, BeatloungeModule, ModuleAction } from "../../contracts/module"
 import type { CommandBus } from "../../model/commandBus"
 import type { LlmGridRuntime, GridRunResult } from "../../llm/runtime"
 
@@ -134,6 +135,147 @@ describe("controller — preview lifecycle", () => {
     expect(phases).toContain("preview")
   })
 
+  it("exposes the registry it was given (for the picker)", () => {
+    const registry = createModuleRegistry()
+    const ctrl = createCommandBarController({
+      store: createBeatloungeStore(createCommandBus(createDefaultDoc(0))),
+      host: { bus: createCommandBus(createDefaultDoc(0)), toast: () => {} } as unknown as BeatloungeHost,
+      hostApi: {} as never,
+      runtime: fixedRuntime(() => tempoResult(120)),
+      registry,
+    })
+    expect(ctrl.registry()).toBe(registry)
+  })
+
+  it("registry() is undefined when none was provided", () => {
+    const { ctrl } = setup(fixedRuntime(() => tempoResult(120)))
+    expect(ctrl.registry()).toBeUndefined()
+  })
+})
+
+// A picker action that sets the tempo via a command (deterministic-given-rng).
+const tempoModule = (): BeatloungeModule => {
+  const action: ModuleAction = {
+    name: "setTempo",
+    describe: "Set the tempo.",
+    params: { bpm: { type: "number", default: 100, describe: "bpm" } },
+    impact: "mutate",
+    run: (_ctx, params) => {
+      const bpm = Number(params.bpm ?? 100)
+      return { commands: [{ t: "setTempo", bpm }], summary: `Tempo → ${bpm}` }
+    },
+  }
+  // A stochastic action that derives its tempo from rng, so reroll varies it.
+  const rollAction: ModuleAction = {
+    name: "rollTempo",
+    describe: "Roll a random tempo.",
+    params: {},
+    stochastic: true,
+    impact: "mutate",
+    run: (ctx) => {
+      const bpm = 80 + Math.floor(ctx.rng() * 80)
+      return { commands: [{ t: "setTempo", bpm }], summary: `Tempo → ${bpm}` }
+    },
+  }
+  return {
+    id: "tempo",
+    kind: "utility",
+    title: "Tempo",
+    glyph: "command",
+    immersive: "sheet",
+    mount: () => ({ unmount: () => {} }),
+    actions: [action, rollAction],
+  }
+}
+
+describe("controller — runAction (picker path)", () => {
+  const pickerSetup = () => {
+    const bus = createCommandBus(createDefaultDoc(0))
+    const store = createBeatloungeStore(bus)
+    const toasts: { message: string }[] = []
+    const host = {
+      bus,
+      toast: (message: string) => toasts.push({ message }),
+    } as unknown as BeatloungeHost
+    const registry = createModuleRegistry()
+    const mod = tempoModule()
+    registry.register(mod)
+    const ctrl = createCommandBarController({
+      store,
+      host,
+      hostApi: {} as never,
+      runtime: fixedRuntime(() => tempoResult(120)),
+      registry,
+    })
+    return { ctrl, store, toasts, mod }
+  }
+
+  it("runs an action with explicit params as a transient preview", () => {
+    const { ctrl, store, mod } = pickerSetup()
+    ctrl.runAction(mod.id, mod.actions[0], { bpm: 144 })
+    expect(ctrl.getState().phase).toBe("preview")
+    expect(ctrl.getState().result?.source).toBe("keyword") // honest: no model
+    expect(store.vanilla.getState().doc.bpm).toBe(144)
+  })
+
+  it("fills missing params from the schema default", () => {
+    const { ctrl, store, mod } = pickerSetup()
+    ctrl.runAction(mod.id, mod.actions[0]) // no params → default 100
+    expect(store.vanilla.getState().doc.bpm).toBe(100)
+  })
+
+  it("keep commits the picker preview onto the undo stack", () => {
+    const { ctrl, store } = pickerSetup()
+    const { mod } = pickerSetup()
+    ctrl.runAction(mod.id, mod.actions[0], { bpm: 132 })
+    ctrl.keep()
+    expect(ctrl.getState().phase).toBe("idle")
+    expect(store.vanilla.getState().doc.bpm).toBe(132)
+    expect(store.vanilla.getState().canUndo).toBe(true)
+  })
+
+  it("cancel rolls a picker preview back", () => {
+    const { ctrl, store, mod } = pickerSetup()
+    const before = store.vanilla.getState().doc.bpm
+    ctrl.runAction(mod.id, mod.actions[0], { bpm: 200 })
+    ctrl.cancel()
+    expect(store.vanilla.getState().doc.bpm).toBe(before)
+  })
+
+  it("reroll re-runs a stochastic picker action with a fresh seed", async () => {
+    const { ctrl, store, mod } = pickerSetup()
+    ctrl.runAction(mod.id, mod.actions[1]) // rollTempo
+    const first = store.vanilla.getState().doc.bpm
+    // Reroll many times; a fresh seed should eventually land on a different bpm.
+    let changed = false
+    for (let i = 0; i < 12 && !changed; i++) {
+      await ctrl.reroll()
+      if (store.vanilla.getState().doc.bpm !== first) changed = true
+    }
+    expect(changed).toBe(true)
+    expect(ctrl.getState().phase).toBe("preview")
+  })
+
+  it("never throws if an action's run throws", () => {
+    const { ctrl } = pickerSetup()
+    const boom: ModuleAction = {
+      name: "boom",
+      describe: "throws",
+      params: {},
+      impact: "mutate",
+      run: () => {
+        throw new Error("nope")
+      },
+    }
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {})
+    ctrl.runAction("x", boom)
+    expect(ctrl.getState().phase).toBe("idle")
+    expect(ctrl.getState().message).toBeTruthy()
+    spy.mockRestore()
+  })
+})
+
+describe("controller — error path", () => {
   it("never throws if the runtime rejects", async () => {
     const ctrl = createCommandBarController({
       store: createBeatloungeStore(createCommandBus(createDefaultDoc(0))),

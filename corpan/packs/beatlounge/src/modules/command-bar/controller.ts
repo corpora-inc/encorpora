@@ -17,10 +17,11 @@
 
 import type { Command } from "../../model/command"
 import type { PreviewHandle } from "../../model/commandBus"
-import type { BeatloungeHost, ModuleRegistry } from "../../contracts/module"
+import type { BeatloungeHost, ModuleAction, ModuleId, ModuleRegistry } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { HostApi } from "../../sdk/types"
 import { createLlmGridRuntime, type GridRunResult, type LlmGridRuntime } from "../../llm/runtime"
+import { defaultParams } from "./actionCatalog"
 
 const LOG = "[bl/cmdbar]"
 const MAX_RECENT = 6
@@ -50,6 +51,12 @@ export interface CommandBarControllerDeps {
 export interface CommandBarController {
   getState(): CommandBarState
   subscribe(cb: (s: CommandBarState) => void): () => void
+  /** The module registry to enumerate for the browsable picker (may be absent
+   *  on surfaces that weren't given one — the picker hides itself then). */
+  registry(): ModuleRegistry | undefined
+  /** True if the on-device model is loaded (async status). Drives honest
+   *  offline framing — never used to gate the keyword/picker surfaces. */
+  llmAvailable(): Promise<boolean>
   /** Run an utterance: interpret → preview. */
   submit(utterance: string): Promise<void>
   /** Commit the live preview onto the undo stack. */
@@ -58,7 +65,25 @@ export interface CommandBarController {
   cancel(): void
   /** Re-run the SAME utterance with a fresh seed (stochastic variation). */
   reroll(): Promise<void>
+  /**
+   * Run a registry action (from the browsable picker) through the SAME preview
+   * path the bar uses: one preview batch → Keep / Reroll (stochastic) / Undo.
+   * Deterministic-given-seed so reroll is reproducible. Never throws.
+   */
+  runAction(moduleId: ModuleId, action: ModuleAction, params?: Record<string, unknown>): void
   dispose(): void
+}
+
+/** mulberry32 (same family as runAction/runtime) so picker reroll is reproducible. */
+const mulberry32 = (seed: number): (() => number) => {
+  let a = seed >>> 0
+  return () => {
+    a |= 0
+    a = (a + 0x6d2b79f5) | 0
+    let t = Math.imul(a ^ (a >>> 15), 1 | a)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
 }
 
 export const createCommandBarController = (
@@ -79,8 +104,10 @@ export const createCommandBarController = (
 
   /** The live preview handle + the utterance/seed that produced it (for reroll). */
   let preview: PreviewHandle | null = null
-  let lastUtterance = ""
   let runToken = 0
+  /** Re-run the LAST thing previewed (utterance OR picker action) with a fresh
+   *  seed. Set by submit() and runAction(); reroll() simply calls it. */
+  let lastRun: ((seed: number) => void | Promise<void>) | null = null
 
   const rememberRecent = (u: string) => {
     const next = [u, ...state.recent.filter((r) => r !== u)].slice(0, MAX_RECENT)
@@ -139,6 +166,35 @@ export const createCommandBarController = (
     applyPreview(result)
   }
 
+  /**
+   * Build + preview a registry action's commands as ONE batch. The picker is a
+   * deterministic surface, so the source is always "keywords" — honest: no model
+   * was involved. Stochastic actions vary by `seed`; reroll re-runs with a fresh
+   * one. Mirrors the bar's preview lifecycle exactly (keep / undo / reroll).
+   */
+  const runActionWith = (moduleId: ModuleId, action: ModuleAction, params: Record<string, unknown>, seed: number) => {
+    // Bump the token so any in-flight model run can't clobber this preview.
+    runToken++
+    const current = deps.store.vanilla.getState().doc
+    const rng = mulberry32(seed)
+    let built: { commands: Command[]; summary: string }
+    try {
+      built = action.run({ doc: current, rng }, params)
+    } catch (e) {
+      console.error(`${LOG} action "${moduleId}.${action.name}" threw:`, e)
+      set({ phase: "idle", result: null, message: "Could not run that" })
+      return
+    }
+    const result: GridRunResult = {
+      utterance: action.describe,
+      call: { name: action.name, args: params },
+      commands: built.commands,
+      summary: built.summary,
+      source: "keyword",
+    }
+    applyPreview(result)
+  }
+
   return {
     getState: () => state,
     subscribe(cb) {
@@ -148,13 +204,23 @@ export const createCommandBarController = (
       }
     },
 
+    registry: () => deps.registry,
+    llmAvailable: () => runtime.llmAvailable(),
+
     async submit(utterance) {
       const u = utterance.trim()
       if (!u) return
       dropPreview()
-      lastUtterance = u
       rememberRecent(u)
+      lastRun = (seed) => runWith(u, seed)
       await runWith(u, Date.now())
+    },
+
+    runAction(moduleId, action, params) {
+      dropPreview()
+      const args = { ...defaultParams(action), ...(params ?? {}) }
+      lastRun = (seed) => runActionWith(moduleId, action, args, seed)
+      runActionWith(moduleId, action, args, Date.now())
     },
 
     keep() {
@@ -176,9 +242,9 @@ export const createCommandBarController = (
     },
 
     async reroll() {
-      if (!lastUtterance) return
+      if (!lastRun) return
       dropPreview()
-      await runWith(lastUtterance, Date.now() + Math.floor(Math.random() * 1e6))
+      await lastRun(Date.now() + Math.floor(Math.random() * 1e6))
     },
 
     dispose() {

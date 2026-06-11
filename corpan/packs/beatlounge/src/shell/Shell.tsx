@@ -72,8 +72,8 @@ export const Shell = ({
   // The headline natural-language surface: one controller for the pack,
   // opened from the Dock-Rail's command button into a palette-level overlay.
   const commandController = useMemo(
-    () => createCommandBarController({ store, host, hostApi: host.hostApi }),
-    [store, host]
+    () => createCommandBarController({ store, host, hostApi: host.hostApi, registry }),
+    [store, host, registry]
   )
   useEffect(() => () => commandController.dispose(), [commandController])
 
