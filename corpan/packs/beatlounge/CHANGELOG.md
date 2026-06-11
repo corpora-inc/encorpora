@@ -25,6 +25,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   mallets, brass & wind, and FX — each its own oscillator mix / filter / envelope
   (e.g. Moog Bass, Sync Lead, Voices, Trumpet, Atmosphere). Analog, Preset, and
   Osc voice types all remain distinct.
+- **Scenes — save, name, and switch between complete states of a loop.** A new
+  Scenes module (`src/modules/scenes/`) lets you snapshot the whole musical state
+  of the song (tracks, harmony, loop length, tempo/meter, swing, master volume,
+  buses, fragment library, modulators), name it, and return to it later. Save the
+  current state as a Scene, then evolve the loop and save another — tap any saved
+  Scene to load it (the live song becomes that snapshot) and switch A ↔ B ↔ C
+  freely. Loading is one atomic, undoable step (a mis-tap is one undo away) and
+  leaves the transport running. Default names are date-prefixed with a random
+  two-word name (e.g. "2026-06-11 · brave-canyon"); rename inline (double-tap) or
+  delete. An unsaved-changes indicator shows when the live loop has drifted from
+  the loaded Scene. Scenes persist per-song in their own IndexedDB slice, so the
+  live document and its undo history stay lean. The LLM can save a Scene or load
+  one by name. Not undo/redo — these are explicit checkpoints you curate.
 - **Score — compose a melody with a +/− "layer" dial.** The Instruments page's
   Score drawer tab is now a real melody editor (`src/modules/score/`). Rows are
   the active scale degrees across ~2 octaves, resolved in key via the harmony

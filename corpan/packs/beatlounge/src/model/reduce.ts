@@ -22,6 +22,7 @@ import type {
   Track,
 } from "./document"
 import { defaultHarmony, isFragmentTrack, isInstrumentTrack } from "./document"
+import { applySnapshot } from "./snapshot"
 import { newId } from "./ids"
 import {
   clampLoopTicks,
@@ -499,6 +500,13 @@ export const reduce = (doc: BeatloungeDoc, cmd: Command): BeatloungeDoc => {
       if (progression.length === h.progression.length) return doc
       return withHarmony(doc, { ...h, progression })
     }
+
+    // ---------------------------------------------------------- scenes
+    case "loadScene":
+      // Replace the musical state with the snapshot, preserving id/name. The
+      // bus pushes the prior doc onto undo, so a mis-tap is one undo away. The
+      // scenes-list slice is NOT on the doc, so nothing to preserve there.
+      return applySnapshot(doc, cmd.snapshot)
 
     // ---------------------------------------------------------- batch
     case "batch":

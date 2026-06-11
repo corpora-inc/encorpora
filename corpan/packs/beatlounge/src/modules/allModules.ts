@@ -23,6 +23,7 @@ import { createRibbonModule } from "./ribbon"
 import { createComposerModule } from "./composer"
 import { createPhraseJamModule } from "./phrase-jam"
 import { createPhraseScratchModule } from "./phrase-scratch"
+import { createScenesModule } from "./scenes"
 
 export interface ModuleDeps {
   store: BeatloungeStore
@@ -32,6 +33,7 @@ export interface ModuleDeps {
 
 export const registerAllModules = (registry: ModuleRegistry, deps: ModuleDeps): void => {
   registry.register(createSongSetupModule(deps))
+  registry.register(createScenesModule(deps))
   registry.register(createStepGridModule(deps))
   registry.register(createInstrumentsModule(deps))
   registry.register(createPianoRollModule(deps))
