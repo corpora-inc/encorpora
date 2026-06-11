@@ -212,9 +212,21 @@
   grid-area: stage;
   position: relative;
   overflow: hidden auto;
+  /* min-width:0 lets the stage shrink inside the shell grid so a wide child
+     (e.g. a tile's mini step-grid) can never push the column past the viewport
+     and clip horizontally at the ~320px floor. */
+  min-width: 0;
   padding: calc(var(--bl-safe-top) + var(--bl-s5)) calc(var(--bl-safe-right) + var(--bl-s5))
     var(--bl-s5) calc(var(--bl-safe-left) + var(--bl-s5));
   -webkit-overflow-scrolling: touch;
+}
+/* Small-phone floor (~320px): trim the stage gutter so the single-column bento
+   keeps comfortable tile width and nothing clips horizontally. */
+@media (max-width: 400px) {
+  .bl-stage {
+    padding: calc(var(--bl-safe-top) + var(--bl-s4)) calc(var(--bl-safe-right) + var(--bl-s4))
+      var(--bl-s4) calc(var(--bl-safe-left) + var(--bl-s4));
+  }
 }
 .bl-stage-head {
   display: flex;

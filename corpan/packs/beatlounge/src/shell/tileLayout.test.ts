@@ -2,7 +2,8 @@ import { describe, it, expect } from "vitest"
 import { columnsForWidth, spanForAspect } from "./tileLayout"
 
 describe("columnsForWidth", () => {
-  it("is a single column at and below ~300–520px (phone)", () => {
+  it("is a single column at and below ~320–520px (phone, incl. the 320px floor)", () => {
+    expect(columnsForWidth(320)).toBe(1) // small-phone floor: clean single stack
     expect(columnsForWidth(300)).toBe(1)
     expect(columnsForWidth(360)).toBe(1)
     expect(columnsForWidth(519)).toBe(1)

@@ -30,7 +30,7 @@ import {
   type InstrumentTrack,
 } from "../../model/document"
 import { stepForTick, tickForStep } from "../../model/timing"
-import { MuteSolo, Transport } from "../../bl-ui"
+import { MuteSolo } from "../../bl-ui"
 import { TrackParamKnob } from "../TrackParamKnob"
 import { GroovesPanel } from "../grooves/GroovesPanel"
 import { TrackFxChain } from "../fx-rack/TrackFxChain"
@@ -54,7 +54,6 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
   const [playStep, setPlayStep] = useState(-1)
-  const [playing, setPlaying] = useState(audio.isPlaying())
   const [tab, setTab] = useState<string>("grooves")
   const [drawer, setDrawer] = useState<DrawerState>("open")
   // Lane-head selection (kit pitches). Local UI only — drives groove targeting.
@@ -138,19 +137,6 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
     })
   }
 
-  // Global transport — drives the whole song (not just this track).
-  const toggleTransport = () => {
-    if (audio.isPlaying()) {
-      audio.stop()
-      setPlaying(false)
-    } else {
-      void audio
-        .start()
-        .then(() => setPlaying(true))
-        .catch((err) => console.warn("[beatlounge/drums] transport start failed:", err))
-    }
-  }
-
   const clearGrid = () => {
     const before = store.vanilla.getState().doc
     const r = runAction(store, clearAction, { doc, targetTrackId: trackId })
@@ -219,7 +205,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
       <section className="bl-drums-grid bl-trackpage-grid bl-grid">
         <div className="bl-grid-toolbar" data-bl-nocapture>
           <div className="bl-grid-title">
-            <Transport playing={playing} onToggle={toggleTransport} spaceToToggle />
+            {/* Transport lives once, globally, in the immersive header / Dock-Rail. */}
             <span className="bl-dot" style={{ background: track.color }} />
           </div>
           <div className="bl-grid-actions">
