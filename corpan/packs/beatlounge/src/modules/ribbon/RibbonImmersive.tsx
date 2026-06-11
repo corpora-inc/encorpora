@@ -26,15 +26,15 @@ import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
 import { gridTicks, stepForTick, tickForStep } from "../../model/timing"
 import {
   KEY_NAMES,
-  modeLabel,
+  midiToX,
   noteLabel,
-  ribbonFrets,
-  SCALE_MODE_IDS,
+  pitchClass,
   xToMidi,
-  xToScaleNote,
+  type Fret,
   type RibbonWindow,
-  type ScaleMode,
 } from "../../music/ribbonScales"
+import { docHarmony } from "../../model/document"
+import { activeMidiInRange, quantizeToHarmony } from "../../music/resolver"
 import { createRibbonVoice, type RibbonVoice, type RibbonWave } from "./ribbonVoice"
 import { clearAction } from "./actions"
 import { runAction } from "../runAction"
@@ -66,9 +66,10 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
 
-  const [keyPc, setKeyPc] = useState(0) // C
-  const [mode, setMode] = useState<ScaleMode>("major")
   const [wave, setWave] = useState<RibbonWave>("sawtooth")
+  // "fretted" now means "follow the song's harmony" — the ribbon snaps/frets to
+  // the GLOBAL active pitch set (doc.harmony via the resolver). Fretless = a free
+  // chromatic glide (opt-out). Either way the player can't stray out of the song.
   const [fretted, setFretted] = useState(true)
   const [spanOct, setSpanOct] = useState<number>(5)
   const [lowMidi, setLowMidi] = useState(36) // C2 — a comfy default left edge
@@ -77,10 +78,18 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
   const [liveLabel, setLiveLabel] = useState<string>("")
   const [playStep, setPlayStep] = useState(-1)
 
+  const harmony = docHarmony(doc)
+  const tonicPc = ((harmony.tonic % 12) + 12) % 12
+  // A short label of what the ribbon is following (the mode name, or "chords").
+  const harmonyLabel =
+    harmony.mode === "chordal"
+      ? `${harmony.progression.length} chords`
+      : harmony.scale.id.split(".").pop()?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "scale"
+
   const surfaceRef = useRef<HTMLDivElement | null>(null)
   const voiceRef = useRef<RibbonVoice | null>(null)
   // Latest values for the pointer closures (avoid stale captures at 60fps).
-  const live = useRef({ fretted, keyPc, mode, lowMidi, spanOct, record })
+  const live = useRef({ fretted, lowMidi, spanOct, record })
   const lastRecordedStep = useRef<number>(-1)
   const lastMidi = useRef<number>(-1)
   // Live playhead step, mirrored for the (closure-bound) record path.
@@ -90,10 +99,18 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
     () => ({ lowMidi, spanSemis: spanOct * 12 }),
     [lowMidi, spanOct]
   )
-  const frets = useMemo(
-    () => ribbonFrets(win, keyPc, mode),
-    [win, keyPc, mode]
-  )
+  // Frets = the global harmony's active pitches across the window. Change the
+  // song's mode/chords and the frets re-lay-out instantly (the founder's
+  // "change the chords, the player follows").
+  const frets: Fret[] = useMemo(() => {
+    const notes = activeMidiInRange(doc, 0, win.lowMidi, win.lowMidi + win.spanSemis)
+    return notes.map((midi) => ({
+      midi,
+      x: midiToX(midi, win),
+      tonic: pitchClass(midi) === tonicPc,
+      label: noteLabel(midi),
+    }))
+  }, [doc, win, tonicPc])
 
   // Build the voice once (per AudioContext) and dispose on unmount.
   useEffect(() => {
@@ -117,8 +134,8 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
 
   // Mirror the latest control values for the pointer handlers.
   useEffect(() => {
-    live.current = { fretted, keyPc, mode, lowMidi, spanOct, record }
-  }, [fretted, keyPc, mode, lowMidi, spanOct, record])
+    live.current = { fretted, lowMidi, spanOct, record }
+  }, [fretted, lowMidi, spanOct, record])
 
   // Live playhead → current step on this track's grid (for record placement).
   useEffect(() => {
@@ -187,7 +204,12 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
   const resolveMidi = (x: number): number => {
     const st = live.current
     const w: RibbonWindow = { lowMidi: st.lowMidi, spanSemis: st.spanOct * 12 }
-    return st.fretted ? xToScaleNote(x, w, st.keyPc, st.mode) : xToMidi(x, w)
+    const raw = xToMidi(x, w)
+    // Fretted = snap to the nearest pitch of the SONG's active harmony (resolver,
+    // read live so chord/mode changes apply immediately). Fretless = free glide.
+    return st.fretted
+      ? quantizeToHarmony(raw, store.vanilla.getState().doc, 0)
+      : raw
   }
 
   const onDown = (e: React.PointerEvent) => {
@@ -298,34 +320,10 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
 
       {/* ---- control strip ---- */}
       <div className="bl-ribbon-controls" data-bl-nocapture>
-        <label className="bl-ribbon-field">
-          <span>Key</span>
-          <select
-            className="bl-select"
-            value={keyPc}
-            onChange={(e) => setKeyPc(Number(e.target.value))}
-          >
-            {KEY_NAMES.map((n, i) => (
-              <option key={n} value={i}>
-                {n}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="bl-ribbon-field">
-          <span>Mode</span>
-          <select
-            className="bl-select"
-            value={mode}
-            onChange={(e) => setMode(e.target.value as ScaleMode)}
-          >
-            {SCALE_MODE_IDS.map((m) => (
-              <option key={m} value={m}>
-                {modeLabel(m)}
-              </option>
-            ))}
-          </select>
-        </label>
+        {/* Harmony is the SONG's — set in the Harmony module; the ribbon follows. */}
+        <span className="bl-ribbon-follow" aria-label={`Following ${KEY_NAMES[tonicPc]} ${harmonyLabel}`}>
+          Following {KEY_NAMES[tonicPc]} {harmonyLabel}
+        </span>
 
         <div className="bl-seg" role="group" aria-label="Fret mode">
           <button
@@ -334,7 +332,7 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
             aria-pressed={fretted}
             onClick={() => setFretted(true)}
           >
-            Fretted
+            In key
           </button>
           <button
             type="button"
@@ -342,7 +340,7 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
             aria-pressed={!fretted}
             onClick={() => setFretted(false)}
           >
-            Fretless
+            Free glide
           </button>
         </div>
 
@@ -407,8 +405,8 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
           (silent ? " is-silent" : "")
         }
         role="slider"
-        aria-label={`Ribbon · ${KEY_NAMES[keyPc]} ${modeLabel(mode)} · ${fretted ? "fretted" : "fretless"}`}
-        aria-valuetext={liveLabel || `${KEY_NAMES[keyPc]} ${modeLabel(mode)}`}
+        aria-label={`Ribbon · ${KEY_NAMES[tonicPc]} ${harmonyLabel} · ${fretted ? "in key" : "free glide"}`}
+        aria-valuetext={liveLabel || `${KEY_NAMES[tonicPc]} ${harmonyLabel}`}
         onPointerDown={onDown}
         onPointerMove={onMove}
         onPointerUp={onUp}
@@ -443,8 +441,8 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
 
       <div className="bl-ribbon-foot" data-bl-nocapture>
         <span className="bl-ribbon-status">
-          {KEY_NAMES[keyPc]} {modeLabel(mode)} · {WAVE_LABEL[wave]} ·{" "}
-          {fretted ? "fretted" : "fretless"}
+          {KEY_NAMES[tonicPc]} {harmonyLabel} · {WAVE_LABEL[wave]} ·{" "}
+          {fretted ? "in key" : "free glide"}
           {record ? " · armed" : ""}
         </span>
       </div>

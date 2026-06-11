@@ -58,7 +58,7 @@ export const createRibbonModule = ({ store, audio }: ModuleDeps): BeatloungeModu
         ? store.vanilla.getState().doc.tracks.find((t) => t.id === trackId)?.color
         : undefined
       if (mount.surface === "tile") {
-        root.render(<RibbonTile color={color} />)
+        root.render(<RibbonTile store={store} color={color} />)
         return
       }
       if (!trackId) {

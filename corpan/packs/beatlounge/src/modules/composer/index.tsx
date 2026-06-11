@@ -44,7 +44,7 @@ const resolveSynthTrackId = (
 export const createComposerModule = ({ store, audio }: ModuleDeps): BeatloungeModule => ({
   id: COMPOSER_ID,
   kind: "instrument",
-  title: "Composer",
+  title: "Harmony",
   glyph: "wave",
   immersive: "full",
   tileAspect: "square",
@@ -59,7 +59,7 @@ export const createComposerModule = ({ store, audio }: ModuleDeps): BeatloungeMo
         return
       }
       if (mount.surface === "tile") {
-        root.render(<ComposerTile store={store} trackId={trackId} title="Composer" />)
+        root.render(<ComposerTile store={store} trackId={trackId} title="Harmony" />)
       } else {
         root.render(
           <ComposerImmersive

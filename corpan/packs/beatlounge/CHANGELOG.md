@@ -5,6 +5,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Global Harmony engine + the top-level Harmony bar.** Harmony (tonic, scale/
+  mode or chord progression, tuning, reference pitch) now lives once on
+  `doc.harmony` and every melodic module reads it through one pure resolver
+  (`music/resolver.ts` — `harmonyAt` / `activePitches` / `chordAt` /
+  `quantizeToHarmony` / `inHarmony` / `detuneForMidi`). Modal and chordal modes
+  resolve to the SAME active-pitch set, so consumers never branch on mode.
+- **Harmony module replaces the Composer's chord text input.** "Both in one
+  Harmony bar": a tonic/key picker, a Mode⇄Progression toggle, a family→scale
+  picker (Western · Thaat · Melakarta · Maqam, with a microtonal flag) that shows
+  the resulting note row, a **visual chord grid across the loop's beats** (tap a
+  beat → pick a chord from a root/quality palette; sustained chords tie), and a
+  "browse 994 progressions" picker that drops a ready-made progression in. The
+  free-text chord field is gone; every edit is one undo-friendly command.
+- **Piano-roll and Ribbon follow the song.** The piano-roll highlights the global
+  active pitch set and the ribbon frets/snaps to it (`In key`), with a `Free
+  glide` opt-out — change the song's mode or chords and both update live. The
+  ribbon's private key/mode controls were retired in favour of following the
+  global harmony. Microtonal tunings (just/Pythagorean) and maqam carry an exact
+  detune via `detuneForMidi` (audio-edge wiring is a follow-up; 12-TET locking is
+  live). Persisted pre-harmony songs migrate to modal C-major on load.
+
 ### Changed
 - **Phrase Jam now mirrors the Drums page.** The page was rebuilt on the SAME
   shared track-studio building blocks as Drums so the two can't drift: a selectable

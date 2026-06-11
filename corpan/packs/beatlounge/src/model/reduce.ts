@@ -13,13 +13,15 @@ import type {
   EffectNode,
   FragmentEvent,
   FragmentTrack,
+  Harmony,
+  HarmonyChordEvent,
   Id,
   InstrumentTrack,
   NoteEvent,
   Send,
   Track,
 } from "./document"
-import { isFragmentTrack, isInstrumentTrack } from "./document"
+import { defaultHarmony, isFragmentTrack, isInstrumentTrack } from "./document"
 import { newId } from "./ids"
 import {
   clampLoopTicks,
@@ -75,6 +77,32 @@ const mapFragmentTrack = (
 const materializeTrack = (init: TrackInit): Track => {
   const id = init.id ?? newId("trk")
   return { ...(init as Track), id }
+}
+
+/** Positive int pitch-class 0..11. */
+const toPc12 = (n: number): number => ((Math.round(n) % 12) + 12) % 12
+
+/** The doc's harmony, defaulted (migration-safe) so reduce never sees undefined. */
+const harmonyOf = (doc: BeatloungeDoc): Harmony => doc.harmony ?? defaultHarmony()
+
+/** Apply a harmony patch, sharing the rest of the doc. */
+const withHarmony = (doc: BeatloungeDoc, next: Harmony): BeatloungeDoc => ({
+  ...doc,
+  harmony: next,
+})
+
+/** Insert/replace a chord on the tick-sorted progression. Replaces any chord
+ *  at the SAME tick (one chord per tick — the grid-slot semantics). */
+const upsertChord = (
+  chords: readonly HarmonyChordEvent[],
+  chord: HarmonyChordEvent
+): HarmonyChordEvent[] => {
+  const without = chords.filter((c) => c.tick !== chord.tick)
+  const out = without.slice()
+  let i = out.length
+  while (i > 0 && out[i - 1].tick > chord.tick) i--
+  out.splice(i, 0, chord)
+  return out
 }
 
 export const reduce = (doc: BeatloungeDoc, cmd: Command): BeatloungeDoc => {
@@ -388,6 +416,88 @@ export const reduce = (doc: BeatloungeDoc, cmd: Command): BeatloungeDoc => {
       const key = JSON.stringify(cmd.target)
       const mods = all.filter((m) => JSON.stringify(m.target) !== key)
       return mods.length === all.length ? doc : { ...doc, modulators: mods }
+    }
+
+    // ---------------------------------------------------------- harmony
+    case "setHarmonyMode": {
+      const h = harmonyOf(doc)
+      if (h.mode === cmd.mode) return doc
+      return withHarmony(doc, { ...h, mode: cmd.mode })
+    }
+
+    case "setTonic": {
+      const h = harmonyOf(doc)
+      const pc = toPc12(cmd.pc)
+      if (h.tonic === pc) return doc
+      return withHarmony(doc, { ...h, tonic: pc })
+    }
+
+    case "setScale": {
+      const h = harmonyOf(doc)
+      if (h.scale.family === cmd.family && h.scale.id === cmd.id) return doc
+      return withHarmony(doc, {
+        ...h,
+        scale: { ...h.scale, family: cmd.family, id: cmd.id },
+      })
+    }
+
+    case "setTuning": {
+      const h = harmonyOf(doc)
+      if (h.scale.tuning === cmd.tuning) return doc
+      return withHarmony(doc, { ...h, scale: { ...h.scale, tuning: cmd.tuning } })
+    }
+
+    case "setReference": {
+      const h = harmonyOf(doc)
+      const hz = cmd.reference.hz
+      const midi = cmd.reference.midi
+      if (!(hz > 0) || !Number.isFinite(hz) || !Number.isFinite(midi)) return doc
+      if (h.reference.hz === hz && h.reference.midi === midi) return doc
+      return withHarmony(doc, { ...h, reference: { hz, midi } })
+    }
+
+    case "setProgression": {
+      const h = harmonyOf(doc)
+      const chords = cmd.chords
+        .map((c) => ({ ...c, id: newId("chd") }) as HarmonyChordEvent)
+        .sort((a, b) => a.tick - b.tick)
+      return withHarmony(doc, { ...h, progression: chords })
+    }
+
+    case "setChordAt": {
+      const h = harmonyOf(doc)
+      const tick = Math.max(0, Math.round(cmd.tick))
+      const existing = h.progression.find((c) => c.tick === tick)
+      const chord: HarmonyChordEvent = {
+        id: existing?.id ?? newId("chd"),
+        tick,
+        symbol: cmd.symbol,
+        durationTicks: cmd.durationTicks,
+      }
+      return withHarmony(doc, {
+        ...h,
+        progression: upsertChord(h.progression, chord),
+      })
+    }
+
+    case "addChord": {
+      const h = harmonyOf(doc)
+      const chord: HarmonyChordEvent = {
+        ...cmd.chord,
+        tick: Math.max(0, Math.round(cmd.chord.tick)),
+        id: newId("chd"),
+      }
+      return withHarmony(doc, {
+        ...h,
+        progression: upsertChord(h.progression, chord),
+      })
+    }
+
+    case "removeChord": {
+      const h = harmonyOf(doc)
+      const progression = h.progression.filter((c) => c.id !== cmd.chordId)
+      if (progression.length === h.progression.length) return doc
+      return withHarmony(doc, { ...h, progression })
     }
 
     // ---------------------------------------------------------- batch

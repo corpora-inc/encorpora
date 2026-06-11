@@ -26,6 +26,7 @@ import {
   type InstrumentTrack,
 } from "../../model/document"
 import { stepForTick, tickForStep } from "../../model/timing"
+import { activePitches } from "../../music/resolver"
 import { Knob } from "../../bl-ui"
 import { TrackParamKnob } from "../TrackParamKnob"
 import {
@@ -82,12 +83,24 @@ export const PianoRollImmersive = ({ host, store, audio, trackId }: Props) => {
     []
   )
 
+  // The active pitch SET from the GLOBAL harmony — the piano-roll highlights
+  // these rows, so changing the song's mode/chords moves the highlight live.
+  const harmony = useMemo(() => {
+    const ap = activePitches(doc, 0)
+    return { pcSet: new Set(ap.pcs), tonicPc: ap.tonicPc }
+  }, [doc])
+
   const view = useMemo(
     () =>
       track && isInstrumentTrack(track) && low != null
-        ? buildRollView(doc, track, { low, span: ROW_SPAN })
+        ? buildRollView(doc, track, {
+            low,
+            span: ROW_SPAN,
+            pcSet: harmony.pcSet,
+            tonicPc: harmony.tonicPc,
+          })
         : null,
-    [doc, track, low]
+    [doc, track, low, harmony]
   )
 
   if (!track || !isInstrumentTrack(track) || view == null || low == null) {
