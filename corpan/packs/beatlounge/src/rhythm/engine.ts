@@ -20,6 +20,7 @@ import { PPQ } from "../model/timing"
 import { hitVelocity, laneVelocity, rhythmCells, type Hit, type Lane, type Rhythm } from "./types"
 import { pitchForRole } from "./roles"
 import { RHYTHMS } from "./corpus"
+import { grooveProfile } from "./profile"
 
 // ----------------------------------------------------------------- RNG helpers
 const randInt = (rng: () => number, lo: number, hi: number): number =>
@@ -191,6 +192,143 @@ const dedupeKeepLoudest = (placements: NotePlacement[]): NotePlacement[] => {
     if (!cur || p.velocity > cur.velocity) best.set(key, p)
   }
   return [...best.values()].sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
+}
+
+// ================================================================ scatterRhythm
+export interface ScatterOptions {
+  /** Loop length to tile across, in ticks (defaults to the rhythm's own length). */
+  loopTicks?: number
+  /**
+   * Overall density multiplier (0..1) applied to every step's derived
+   * probability. 1 ⇒ the groove's natural profile; lower ⇒ sparser. Default 1.
+   */
+  density?: number
+  /** Scale all chosen velocities (0..1). Default 1. */
+  intensity?: number
+}
+
+/**
+ * SCATTER — the founder's probabilistic spread. Given the kit voices the user
+ * selected (one per "row") and a seeded RNG, walk EVERY row × EVERY step and
+ * maybe place a hit there:
+ *
+ *   for row in rows:
+ *     for step in steps:
+ *       if rng() < profile[step].prob * density:
+ *         place a hit at random velocity within profile[step]'s band
+ *
+ * The probability + velocity band come from the groove's SCATTER PROFILE (see
+ * ./profile) — so a clave's onset steps fire often + loud and its rests rarely,
+ * and the clave's *feel* gets sprinkled across all the selected rows, DIFFERENT
+ * every press (the caller passes a fresh seed). Pure + seeded → testable; the
+ * pattern tiles across the loop exactly like applyRhythm.
+ *
+ * `rowPitches` is the ordered list of selected kit pitches (each a row). Returns
+ * concrete NotePlacements the caller maps to notes.
+ */
+export const scatterRhythm = (
+  r: Rhythm,
+  rowPitches: number[],
+  rng: () => number,
+  opts: ScatterOptions = {}
+): NotePlacement[] => {
+  const rows = rowPitches.filter((p) => Number.isFinite(p))
+  if (rows.length === 0) return []
+  const ct = cellTicks(r)
+  const oneCycle = rhythmTicks(r)
+  if (oneCycle <= 0) return []
+  const cells = rhythmCells(r)
+  const loop = Math.max(oneCycle, Math.round(opts.loopTicks ?? oneCycle))
+  const density = clamp01(opts.density == null ? 1 : opts.density)
+  const intensity = opts.intensity == null ? 1 : Math.max(0, opts.intensity)
+  const profile = grooveProfile(r)
+
+  const fullCopies = Math.floor(loop / oneCycle)
+  const tailTicks = loop - fullCopies * oneCycle
+  const copies = fullCopies + (tailTicks > 0 ? 1 : 0)
+
+  const out: NotePlacement[] = []
+  // Roll independently per (row, copy, cell) so each row gets its OWN spread and
+  // the same groove never lands identically on two rows.
+  for (let ri = 0; ri < rows.length; ri++) {
+    const pitch = rows[ri]
+    for (let copy = 0; copy < copies; copy++) {
+      const offset = copy * oneCycle
+      for (let c = 0; c < cells; c++) {
+        const tick = offset + c * ct
+        if (tick >= loop) continue // truncate a partial trailing cycle
+        const step = profile[c]
+        if (rng() >= step.prob * density) continue // didn't fire this step
+        // Random velocity within the step's emphasis band (accents loud, ghosts
+        // quiet), then scaled by intensity.
+        const band = step.velMax - step.velMin
+        const vel = step.velMin + rng() * (band > 0 ? band : 0)
+        out.push({ tick, pitch, velocity: clamp01(vel * intensity) })
+      }
+    }
+  }
+  // A row can never collide with itself (one roll per cell), but de-dupe defends
+  // future callers; keep the louder.
+  return dedupeKeepLoudest(out)
+}
+
+// ============================================================= scatterPhrases
+export interface ScatterPhrasesOptions {
+  loopTicks?: number
+  /** Overall density multiplier (0..1) on each step's probability. Default 0.6. */
+  density?: number
+  /** Pitch ladder (semitone offsets); snippets pick a random degree. Default [0]. */
+  scale?: number[]
+}
+
+/**
+ * The PHRASES analogue of scatterRhythm: walk every step of the groove and
+ * probabilistically drop a random bank snippet there, with the placement chance
+ * driven by the groove's scatter PROFILE (snippets cluster on the groove's onset
+ * steps, sparse on its rests) and a random pitch from the scale. One pass over
+ * the loop (phrases are one "row"), fresh-seeded each press. Returns placements
+ * the caller maps to `placeFragment`.
+ */
+export const scatterPhrases = (
+  r: Rhythm,
+  snippetCount: number,
+  rng: () => number,
+  opts: ScatterPhrasesOptions = {}
+): PhrasePlacement[] => {
+  if (snippetCount <= 0) return []
+  const ct = cellTicks(r)
+  const oneCycle = rhythmTicks(r)
+  if (oneCycle <= 0) return []
+  const cells = rhythmCells(r)
+  const loop = Math.max(oneCycle, Math.round(opts.loopTicks ?? oneCycle))
+  const density = clamp01(opts.density ?? 0.6)
+  const scale = opts.scale && opts.scale.length > 0 ? opts.scale : [0]
+  const profile = grooveProfile(r)
+
+  const fullCopies = Math.floor(loop / oneCycle)
+  const tailTicks = loop - fullCopies * oneCycle
+  const copies = fullCopies + (tailTicks > 0 ? 1 : 0)
+
+  const out: PhrasePlacement[] = []
+  for (let copy = 0; copy < copies; copy++) {
+    const offset = copy * oneCycle
+    for (let c = 0; c < cells; c++) {
+      const tick = offset + c * ct
+      if (tick >= loop) continue
+      const step = profile[c]
+      if (rng() >= step.prob * density) continue
+      const snippetIndex = snippetCount === 1 ? 0 : randInt(rng, 0, snippetCount - 1)
+      const pitchSemis = pickOne(rng, scale)
+      out.push({
+        tick,
+        snippetIndex,
+        pitchSemis: Math.max(-24, Math.min(24, pitchSemis)),
+        velocity: clamp01(step.velMax),
+      })
+    }
+  }
+  out.sort((a, b) => a.tick - b.tick)
+  return out
 }
 
 // ========================================================= applyRhythmToPhrases

@@ -1,6 +1,6 @@
 /**
  * beatlounge — the reusable GROOVE-BRAIN PANEL: the single source of truth for
- * the world-rhythm browser + Apply / Layer / Vary / Evolve / Randomize actions.
+ * the world-rhythm browser + the SCATTER actions.
  *
  * It is GRID-AGNOSTIC. The HOST tells it what it's driving via the typed
  * `target` prop — the same browse + actions apply the same corpus + engine to
@@ -15,10 +15,12 @@
  *     mini-pattern thumbnail. Search filters by name/origin/tag.
  *   • DETAIL — the selected rhythm's blurb, time signature, lane preview, and an
  *     approx-voice footnote when the kit substitutes a percussion role.
- *   • ACTIONS — Apply (replace), Layer (stack additively), Vary (small change),
- *     Evolve (drift), Randomize (re-roll). Each dispatches ONE undo batch.
- *   • OPTIONS — an Intensity slider; a drums-context "applying to…" hint (0/1/N
- *     lanes); a phrases-context hint that DISABLES Apply when the bank is empty.
+ *   • ACTIONS — just TWO, the primary at the TOP (no scroll): SCATTER (spread the
+ *     groove probabilistically across the selected rows, LEAVING existing notes —
+ *     each press re-rolls a fresh seed so it's different + surprising) and CLEAR +
+ *     SCATTER (wipe the targeted rows first). Each dispatches ONE undo batch.
+ *   • OPTIONS — an Intensity slider; a drums-context "scattering across…" hint;
+ *     a phrases-context hint that DISABLES the actions when the bank is empty.
  *
  * Applying only WRITES the grid; it never starts playback ("setup, don't play").
  * Failures surface via host.toast; everything is noisy-not-silent.
@@ -33,13 +35,7 @@ import { isFragmentTrack } from "../../model/document"
 import { groupedByFamily, FAMILY_META, getRhythm, type Rhythm } from "../../rhythm"
 import { resolveRole } from "../../rhythm"
 import { bankSnippets } from "../../phrase/bank"
-import {
-  applyAction,
-  layerAction,
-  varyAction,
-  evolveAction,
-  randomizeAction,
-} from "./actions"
+import { scatterAction, clearScatterAction } from "./actions"
 import { buildPreview } from "./preview"
 import { GrooveMark } from "./GrooveMark"
 
@@ -112,7 +108,7 @@ export const GroovesPanel = ({
 
   // ---- run an action through the store as one undo step --------------------
   const runGroove = (
-    action: typeof applyAction,
+    action: typeof scatterAction,
     extra: Record<string, unknown> = {}
   ) => {
     if (applyDisabled) {
@@ -124,12 +120,16 @@ export const GroovesPanel = ({
       return
     }
     const before = store.vanilla.getState().doc
+    // FRESH per-press seed → every press re-rolls a genuinely different scatter.
+    // The engine logic stays pure/seeded (it consumes this); only the seed varies.
+    const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
     const rng = () => Math.random()
     const result = action.run(
       { doc: store.vanilla.getState().doc, rng },
       {
         rhythmId: selected?.id,
         intensity,
+        seed,
         // The host-chosen grid (drums vs phrases) + drum-lane re-pointing.
         target,
         ...extra,
@@ -150,9 +150,6 @@ export const GroovesPanel = ({
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
-
-  // Randomize re-rolls onto the SAME target grid (drums or phrases).
-  const onRandomize = () => runGroove(randomizeAction)
 
   if (!selected) {
     return <div className="bl-grid-empty">No rhythms available.</div>
@@ -205,9 +202,59 @@ export const GroovesPanel = ({
           )}
         </div>
 
-        {/* ---- the selected-rhythm detail + actions ---- */}
+        {/* ---- the selected-rhythm detail + actions ----
+            ACTIONS FIRST so the primary Scatter never needs a scroll. */}
         <aside className="bl-grooves-detail" aria-live="polite">
-          <RhythmDetail rhythm={selected} />
+          <div className="bl-grooves-actions" data-bl-nocapture>
+            {/* PRIMARY — scatter the groove across the selected rows (re-rolls
+                fresh every press). Big + first. */}
+            <button
+              type="button"
+              className="bl-grooves-btn is-primary"
+              onClick={() => runGroove(scatterAction)}
+              disabled={applyDisabled}
+              aria-disabled={applyDisabled}
+              title={
+                target.kind === "phrases"
+                  ? "Scatter your saved phrases across this groove — press again for a fresh spread"
+                  : "Scatter this groove across the selected rows — press again for a fresh, different spread"
+              }
+            >
+              <ScatterGlyph />
+              Scatter
+            </button>
+            {/* VARIANT — clear the targeted rows first, then scatter. */}
+            <button
+              type="button"
+              className="bl-grooves-btn"
+              onClick={() => runGroove(clearScatterAction)}
+              disabled={applyDisabled}
+              aria-disabled={applyDisabled}
+              title={
+                target.kind === "phrases"
+                  ? "Clear the phrase track, then scatter your saved phrases"
+                  : "Clear the targeted rows, then scatter this groove onto them"
+              }
+            >
+              <ClearGlyph />
+              Clear + Scatter
+            </button>
+          </div>
+
+          {/* Context-appropriate "scattering across…" hint — drums: rows;
+              phrases: the bank/track readiness. */}
+          {target.kind === "drums" ? (
+            <DrumTargetHint
+              pitches={target.selectedPitches}
+              labels={target.laneLabels}
+            />
+          ) : (
+            <PhraseTargetHint
+              ready={phrasesReady}
+              hasPhraseTrack={hasPhraseTrack}
+              bankCount={bankCount}
+            />
+          )}
 
           <div className="bl-grooves-options" data-bl-nocapture>
             <label className="bl-grooves-opt">
@@ -225,92 +272,58 @@ export const GroovesPanel = ({
             </label>
           </div>
 
-          {/* Context-appropriate "applying to…" hint — drums: 0/1/N lanes;
-              phrases: the bank/track readiness. */}
-          {target.kind === "drums" ? (
-            <DrumTargetHint
-              pitches={target.selectedPitches}
-              labels={target.laneLabels}
-            />
-          ) : (
-            <PhraseTargetHint
-              ready={phrasesReady}
-              hasPhraseTrack={hasPhraseTrack}
-              bankCount={bankCount}
-            />
-          )}
-
-          <div className="bl-grooves-actions" data-bl-nocapture>
-            <button
-              type="button"
-              className="bl-grooves-btn is-primary"
-              onClick={() => runGroove(applyAction)}
-              disabled={applyDisabled}
-              aria-disabled={applyDisabled}
-              title={
-                target.kind === "phrases"
-                  ? "Distribute your saved phrases onto this groove"
-                  : "Replace the drum pattern with this groove"
-              }
-            >
-              Apply
-            </button>
-            <button
-              type="button"
-              className="bl-grooves-btn"
-              onClick={() => runGroove(layerAction)}
-              disabled={applyDisabled}
-              aria-disabled={applyDisabled}
-              title={
-                target.kind === "phrases"
-                  ? "Add phrases on this groove without clearing the current ones"
-                  : "Stack this groove OVER the current pattern (don't replace)"
-              }
-            >
-              Layer
-            </button>
-            <button
-              type="button"
-              className="bl-grooves-btn"
-              onClick={() => runGroove(varyAction, { amount: 0.25 })}
-              disabled={applyDisabled}
-              aria-disabled={applyDisabled}
-              title="Keep the flavor, make small changes"
-            >
-              Vary
-            </button>
-            <button
-              type="button"
-              className="bl-grooves-btn"
-              onClick={() => runGroove(evolveAction, { generations: 4, amount: 0.2 })}
-              disabled={applyDisabled}
-              aria-disabled={applyDisabled}
-              title="Drift the groove further across several generations"
-            >
-              Evolve
-            </button>
-            <button
-              type="button"
-              className="bl-grooves-btn"
-              onClick={onRandomize}
-              disabled={applyDisabled}
-              aria-disabled={applyDisabled}
-              title="Re-roll a fresh groove from the whole world"
-            >
-              Randomize
-            </button>
-          </div>
+          <RhythmDetail rhythm={selected} />
         </aside>
       </div>
     </div>
   )
 }
 
+// ---------------------------------------------------------------- glyphs
+/** Scatter — sprinkled dots radiating out (the probabilistic spread). */
+const ScatterGlyph = () => (
+  <svg className="bl-grooves-btn-glyph" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+    <g fill="currentColor">
+      <circle cx="8" cy="8" r="1.7" />
+      <circle cx="3" cy="4" r="1.1" />
+      <circle cx="13" cy="5" r="1.1" />
+      <circle cx="4" cy="12" r="1.1" />
+      <circle cx="12" cy="12" r="1.1" />
+      <circle cx="8" cy="2.5" r="0.9" />
+    </g>
+  </svg>
+)
+
+/** Clear + scatter — a broom-sweep arc then the same dots. */
+const ClearGlyph = () => (
+  <svg className="bl-grooves-btn-glyph" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+    <path
+      d="M2.5 13.5 L9 7"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+    />
+    <path
+      d="M9 7 L12.5 3.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+    />
+    <g fill="currentColor">
+      <circle cx="11.5" cy="11" r="1.1" />
+      <circle cx="14" cy="9" r="0.9" />
+      <circle cx="13.5" cy="13" r="0.9" />
+    </g>
+  </svg>
+)
+
 // ---------------------------------------------------------------- sub-views
 /**
- * DRUMS context — the "applying to…" hint above the action buttons surfaces the
- * live drum-lane selection so the user knows the 0/1/N targeting mode before
- * they Apply. (Only the drums context renders this.)
+ * DRUMS context — the "scattering across…" hint surfaces the live row selection
+ * so the user knows where the groove will land before they press. With no rows
+ * selected the groove plays on its natural kit voices. (Only drums renders this.)
  */
 const DrumTargetHint = ({
   pitches,
@@ -321,28 +334,20 @@ const DrumTargetHint = ({
 }) => {
   const n = pitches?.length ?? 0
   if (n === 0) {
-    // No selection → the default kit-voice mapping. Only shown when the host
-    // passes lane labels (the drum page); the standalone module passes none.
+    // No selection → the groove on its natural kit voices. Only shown when the
+    // host passes lane labels (the drum page); the standalone module passes none.
     if (labels === undefined) return null
     return (
       <p className="bl-grooves-target is-none" role="note">
-        Applies to the <strong>whole kit</strong> (each voice in its place).
-        Select drum lanes to re-point this rhythm.
+        Plays on its <strong>natural voices</strong> (each in its place).
+        Select rows to <strong>scatter</strong> the groove across them.
       </p>
     )
   }
   const names = (labels ?? []).join(", ")
   return (
     <p className="bl-grooves-target is-on" role="note">
-      {n === 1 ? (
-        <>
-          Plays the <strong>whole rhythm</strong> on <strong>{names}</strong>.
-        </>
-      ) : (
-        <>
-          Spreads the rhythm across <strong>{n}</strong> voices: {names}.
-        </>
-      )}
+      Scatters across <strong>{n}</strong> row{n === 1 ? "" : "s"}: {names}.
     </p>
   )
 }
