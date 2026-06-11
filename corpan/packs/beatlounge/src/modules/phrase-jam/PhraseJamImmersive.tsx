@@ -271,7 +271,7 @@ export const PhraseJamImmersive = ({
           store={store}
           host={host}
           variant="embedded"
-          target={{ kind: "phrases", trackId }}
+          target={{ kind: "phrases", trackId, selectedSnippetIds: [...selected] }}
         />
       ),
     },

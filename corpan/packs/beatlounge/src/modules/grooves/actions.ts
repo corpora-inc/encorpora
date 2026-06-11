@@ -64,8 +64,14 @@ const coerceTargets = (v: unknown): number[] | undefined => {
 const resolveTarget = (params: Record<string, unknown>): GrooveTarget => {
   const t = params.target
   if (t && typeof t === "object" && (t as { kind?: string }).kind === "phrases") {
-    const trackId = (t as { trackId?: unknown }).trackId
-    return { kind: "phrases", trackId: typeof trackId === "string" ? trackId : undefined }
+    const p = t as { trackId?: unknown; selectedSnippetIds?: unknown }
+    return {
+      kind: "phrases",
+      trackId: typeof p.trackId === "string" ? p.trackId : undefined,
+      selectedSnippetIds: Array.isArray(p.selectedSnippetIds)
+        ? p.selectedSnippetIds.map(String)
+        : undefined,
+    }
   }
   if (t && typeof t === "object" && (t as { kind?: string }).kind === "drums") {
     const d = t as { trackId?: unknown; selectedPitches?: unknown; laneLabels?: unknown }

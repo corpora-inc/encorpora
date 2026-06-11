@@ -277,15 +277,24 @@ export interface ScatterPhrasesOptions {
   loopTicks?: number
   /** Overall density multiplier (0..1) on each step's probability. Default 0.6. */
   density?: number
+  /**
+   * The SELECTED snippet rows (indices into the bank) to put the groove on —
+   * mirrors the drum scatter onto selected lanes. Each selected snippet gets its
+   * OWN independent spread of the groove's profile across the loop (so the same
+   * word can layer a clave while another word layers a different feel). When
+   * empty/undefined: spread random bank snippets across the groove's onsets.
+   */
+  rows?: number[]
 }
 
 /**
- * The PHRASES analogue of scatterRhythm: walk every step of the groove and
- * probabilistically drop a random bank snippet there, with the placement chance
- * driven by the groove's scatter PROFILE (snippets cluster on the groove's onset
- * steps, sparse on its rests). Snippets are placed at their NATURAL pitch — no
- * semitone shift ever (the only phrase pitch control is the live ribbon). One
- * pass over the loop, fresh-seeded each press; caller maps to `placeFragment`.
+ * The PHRASES analogue of scatterRhythm. Walk the groove's steps and place
+ * snippets where the groove's PROFILE fires (clusters on onsets, sparse on
+ * rests), at a random velocity in the step's emphasis band. With `rows` set, the
+ * GROOVE is put on exactly those selected snippet rows (each its own spread);
+ * without it, random bank snippets are spread across the onsets. Snippets are
+ * placed at their NATURAL pitch — never semitone-shifted (the only phrase pitch
+ * control is the live ribbon). Caller maps to `placeFragment`.
  */
 export const scatterPhrases = (
   r: Rhythm,
@@ -306,17 +315,34 @@ export const scatterPhrases = (
   const tailTicks = loop - fullCopies * oneCycle
   const copies = fullCopies + (tailTicks > 0 ? 1 : 0)
 
+  // The rows to scatter onto. Selected rows (clamped to the bank) → the groove
+  // lands on each; none → a single "any snippet" pass (random per onset).
+  const selected = (opts.rows ?? []).filter((i) => i >= 0 && i < snippetCount)
+  const useRows = selected.length > 0
+
   const out: PhrasePlacement[] = []
-  for (let copy = 0; copy < copies; copy++) {
-    const offset = copy * oneCycle
-    for (let c = 0; c < cells; c++) {
-      const tick = offset + c * ct
-      if (tick >= loop) continue
-      const step = profile[c]
-      if (rng() >= step.prob * density) continue
-      const snippetIndex = snippetCount === 1 ? 0 : randInt(rng, 0, snippetCount - 1)
-      // Natural pitch — never shifted.
-      out.push({ tick, snippetIndex, velocity: clamp01(step.velMax) })
+  // One pass per row (selected snippet), or a single pass that picks a random
+  // snippet per onset when nothing is selected. Roll independently per (row,
+  // copy, cell) so each row gets its own spread.
+  const rowList = useRows ? selected : [-1]
+  for (const row of rowList) {
+    for (let copy = 0; copy < copies; copy++) {
+      const offset = copy * oneCycle
+      for (let c = 0; c < cells; c++) {
+        const tick = offset + c * ct
+        if (tick >= loop) continue
+        const step = profile[c]
+        if (rng() >= step.prob * density) continue
+        const snippetIndex =
+          row >= 0
+            ? row
+            : snippetCount === 1
+              ? 0
+              : randInt(rng, 0, snippetCount - 1)
+        const band = step.velMax - step.velMin
+        const vel = step.velMin + rng() * (band > 0 ? band : 0)
+        out.push({ tick, snippetIndex, velocity: clamp01(vel) })
+      }
     }
   }
   out.sort((a, b) => a.tick - b.tick)

@@ -221,6 +221,21 @@ describe("scatterPhrases — probabilistic snippet placement", () => {
   it("returns nothing with no snippets", () => {
     expect(scatterPhrases(son(), 0, rngFrom(1))).toEqual([])
   })
+
+  it("with selected rows, puts the groove on ONLY those rows (like drums)", () => {
+    const out = scatterPhrases(samba(), 5, rngFrom(7), {
+      loopTicks: PPQ * 4,
+      density: 1,
+      rows: [1, 3],
+    })
+    expect(out.length).toBeGreaterThan(0)
+    // Only the selected snippet rows are placed — nothing else.
+    const used = new Set(out.map((e) => e.snippetIndex))
+    expect([...used].sort()).toEqual([1, 3])
+    // Each selected row got its own spread (the groove appears on both).
+    expect(out.some((e) => e.snippetIndex === 1)).toBe(true)
+    expect(out.some((e) => e.snippetIndex === 3)).toBe(true)
+  })
 })
 
 describe("applyRhythmToPhrases", () => {

@@ -85,6 +85,9 @@ export type GrooveTarget =
       kind: "phrases"
       /** The fragment track to place onto; resolved when omitted. */
       trackId?: string
+      /** Selected snippet rows (FragmentRef ids) to put the groove on — like the
+       *  drums' selectedPitches. Empty ⇒ spread random snippets across onsets. */
+      selectedSnippetIds?: string[]
     }
 
 export interface GrooveBuildOpts {
@@ -351,19 +354,28 @@ const buildPhraseGroove = (
       commands.push({ t: "removeFragment", trackId: phraseId, fragId: ev.id })
     }
   }
+  // Keyed by tick+snippet so the SAME word isn't doubled on a tick, but DIFFERENT
+  // words can layer on the same beat (the whole point — layering phrases).
   const occupied = opts.clear
-    ? new Set<number>()
-    : new Set(phraseTrack.fragments.map((f) => f.tick))
+    ? new Set<string>()
+    : new Set(phraseTrack.fragments.map((f) => `${f.tick}:${f.fragmentId}`))
 
+  // Selected snippet rows → put the groove on exactly those rows (like drums).
+  const rows = (target.selectedSnippetIds ?? [])
+    .map((id) => bank.findIndex((ref) => ref.id === id))
+    .filter((i) => i >= 0)
   const phrasePlacements = scatterPhrases(rhythm, bank.length, rng, {
     loopTicks,
     density: opts.phraseDensity ?? 0.6,
+    rows,
   })
   let placed = 0
   for (const pp of phrasePlacements) {
-    if (occupied.has(pp.tick)) continue // don't double-stack a phrase on a held tick
     const ref = bank[pp.snippetIndex]
     if (!ref) continue
+    const key = `${pp.tick}:${ref.id}`
+    if (occupied.has(key)) continue // same word already on this tick — don't dup
+    occupied.add(key)
     const frag: Omit<FragmentEvent, "id"> = {
       tick: pp.tick,
       fragmentId: ref.id,

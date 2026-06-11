@@ -46,7 +46,7 @@ import { GrooveMark } from "./GrooveMark"
  */
 export type GroovesPanelTarget =
   | { kind: "drums"; trackId?: string; selectedPitches?: Midi[]; laneLabels?: string[] }
-  | { kind: "phrases"; trackId?: string }
+  | { kind: "phrases"; trackId?: string; selectedSnippetIds?: string[] }
 
 interface Props {
   store: BeatloungeStore
