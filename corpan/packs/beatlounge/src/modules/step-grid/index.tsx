@@ -10,13 +10,15 @@
 
 import { createRoot, type Root } from "react-dom/client"
 import type {
+  BeatloungeHost,
   BeatloungeModule,
   ModuleInstance,
   ModuleMount,
 } from "../../contracts/module"
 import type { AudioFacade } from "../../contracts/audioFacade"
-import type { BeatloungeStore } from "../../store/store"
+import { useBeatloungeStore, type BeatloungeStore } from "../../store/store"
 import { isInstrumentTrack } from "../../model/document"
+import { newDrumTrack } from "../grooves/grooveModel"
 import { stepGridActions } from "./actions"
 import { StepGridTile } from "./StepGridTile"
 import { StepGridImmersive } from "./StepGridImmersive"
@@ -33,14 +35,54 @@ export interface StepGridDeps {
 
 export const STEP_GRID_ID = "step-grid"
 
-/** Resolve the drum track id for the current doc (the module binds to it). */
-const resolveDrumTrackId = (store: BeatloungeStore, fallback?: string): string | undefined => {
-  if (fallback) return fallback
-  const doc = store.vanilla.getState().doc
-  const drum = doc.tracks.find(
-    (t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler"
+/**
+ * Reactive root for the Drums page: finds the drum track LIVE (so creating one
+ * shows the grid immediately — no remount), and when there is none renders a
+ * recovery surface that creates a drum track in one tap. The drum track can NEVER
+ * be a dead end: drums are first-class and always recoverable here.
+ */
+const DrumsRoot = ({
+  store,
+  audio,
+  host,
+  surface,
+  fallbackId,
+}: {
+  store: BeatloungeStore
+  audio: AudioFacade
+  host: BeatloungeHost
+  surface: "tile" | "immersive"
+  fallbackId?: string
+}) => {
+  const doc = useBeatloungeStore(store, (s) => s.doc)
+  const drumId =
+    (fallbackId && doc.tracks.some((t) => t.id === fallbackId) ? fallbackId : undefined) ??
+    doc.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler")?.id
+
+  if (!drumId) {
+    const createDrums = () => store.dispatch({ t: "addTrack", track: newDrumTrack() })
+    if (surface === "tile") {
+      return (
+        <button type="button" className="bl-drums-empty bl-drums-empty--tile" onClick={createDrums}>
+          <span className="bl-drums-empty-title">Add drum track</span>
+        </button>
+      )
+    }
+    return (
+      <div className="bl-drums-empty">
+        <p className="bl-drums-empty-title">No drum track</p>
+        <button type="button" className="bl-drums-empty-btn" onClick={createDrums}>
+          Create drum track
+        </button>
+      </div>
+    )
+  }
+
+  return surface === "tile" ? (
+    <StepGridTile store={store} audio={audio} trackId={drumId} title="Drums" />
+  ) : (
+    <StepGridImmersive host={host} store={store} audio={audio} trackId={drumId} />
   )
-  return drum?.id
 }
 
 export const createStepGridModule = ({ store, audio }: StepGridDeps): BeatloungeModule => ({
@@ -53,37 +95,22 @@ export const createStepGridModule = ({ store, audio }: StepGridDeps): Beatlounge
   actions: stepGridActions,
   mount(mount: ModuleMount): ModuleInstance {
     const root: Root = createRoot(mount.container)
-    const trackId = resolveDrumTrackId(store, mount.trackId)
-
-    const render = () => {
-      if (!trackId) {
-        root.render(<div className="bl-grid-empty">No drum track.</div>)
-        return
-      }
-      if (mount.surface === "tile") {
-        root.render(
-          <StepGridTile store={store} audio={audio} trackId={trackId} title="Drums" />
-        )
-      } else {
-        root.render(
-          <StepGridImmersive
-            host={mount.host}
-            store={store}
-            audio={audio}
-            trackId={trackId}
-          />
-        )
-      }
-    }
-
-    render()
+    // DrumsRoot reads the doc reactively, so it handles create/recovery + live
+    // updates itself — no manual re-render needed on doc change.
+    root.render(
+      <DrumsRoot
+        store={store}
+        audio={audio}
+        host={mount.host}
+        surface={mount.surface}
+        fallbackId={mount.trackId}
+      />
+    )
 
     return {
       unmount() {
-        // Defer to avoid React "unmount during render" warnings on fast swaps.
         try { root.unmount() } catch { /* root container already detached */ }
       },
-      refreshTile: render,
     }
   },
 })
