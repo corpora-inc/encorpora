@@ -1,26 +1,33 @@
 /**
- * beatlounge — the SCRATCH PLATTER: a big circular record the user drags to
- * scratch. The drag's angular sweep around the centre is reported to the parent,
- * which maps the sweep DIRECTLY to a buffer position (1:1, no lag) and feeds back
- * the live rotation so the disc visibly tracks the finger — the label, grooves
- * and spindle all turn with it. The CURRENT WORD is printed on the rotating
- * label so you can see which word you are scrubbing.
+ * beatlounge — the SCRATCH PLATTER: a real record the user drags. The disc rotates
+ * under a FIXED NEEDLE; the needle points at ONE exact moment in the phrase (the
+ * playhead) and the sound is LOCKED to that same moment. Words are placed along the
+ * spiral groove at their real buffer-time positions (spiraling inward across
+ * revolutions for a phrase longer than one turn), so you can see — and scrub to —
+ * any word.
  *
- * Pointer-captured, but it ONLY owns the drag when the pointer starts on the
- * platter surface itself — chrome carries `data-bl-nocapture` and never overlaps
- * the disc — so it never steals taps from controls (playbook). The whole disc is
- * the grab target; the centre spindle stays clear of the rim controls.
+ * The drag's angular sweep around the centre is reported to the parent, which
+ * accumulates it into an UNWRAPPED rotation → a single clamped buffer playhead
+ * (no wrap: past the end is run-off). Pointer-captured, but it only owns the drag
+ * when the pointer starts on the platter surface (chrome carries data-bl-nocapture
+ * and never overlaps the disc), so it never steals taps from controls.
  */
 
 import { useRef } from "react"
-import { pointerAngle } from "./scratchMath"
+import { pointerAngle, timeToSpiral, type WordSpan } from "./scratchMath"
 
 interface Props {
   /** Current visual rotation in radians (driven by the parent's RAF loop). */
   rotation: number
-  /** The CURRENT word being scrubbed, shown on the rotating label. */
-  word: string
-  /** Language tag under the word. */
+  /** Total phrase duration (seconds) — sets the spiral's inward walk. */
+  durationSec: number
+  /** Word spans (seconds) placed along the groove. */
+  spans: WordSpan[]
+  /** Per-word labels parallel to `spans`. */
+  words: string[]
+  /** Index of the current word (under the needle); −1 if none. */
+  currentWord: number
+  /** Language tag for the word labels. */
   langTag?: string
   /** True while a finger is scratching (rim glows). */
   active: boolean
@@ -34,9 +41,15 @@ interface Props {
   onRelease(): void
 }
 
+/** Inner radius floor (fraction) the spiral stops at — clears the spindle/label. */
+const INNER_FLOOR = 0.2
+
 export const Platter = ({
   rotation,
-  word,
+  durationSec,
+  spans,
+  words,
+  currentWord,
   langTag,
   active,
   reducedMotion,
@@ -56,7 +69,6 @@ export const Platter = ({
   }
 
   const onPointerDown = (e: React.PointerEvent) => {
-    // Only own the drag when it starts on the platter surface (never under chrome).
     if (e.button != null && e.button > 0) return
     const el = elRef.current
     if (!el) return
@@ -81,7 +93,6 @@ export const Platter = ({
     const prev = lastAngle.current
     if (prev != null) {
       let d = ang - prev
-      // Unwrap the −π/π seam so a sweep across the back of the disc stays smooth.
       while (d > Math.PI) d -= 2 * Math.PI
       while (d < -Math.PI) d += 2 * Math.PI
       onSweep(d)
@@ -103,6 +114,19 @@ export const Platter = ({
 
   const spin = reducedMotion ? 0 : rotation
 
+  // Place each word along the spiral groove (positioned in the ROTATING frame:
+  // the vinyl wrapper carries `rotation`, so a word at buffer-time t sits at its
+  // spiral angle and rides under the fixed needle when the disc turns to it).
+  const wordDots = spans.map((s, i) => {
+    const mid = (s.start + s.end) / 2
+    const sp = timeToSpiral(mid, durationSec, INNER_FLOOR)
+    const r = sp.radiusFrac * 0.5 // fraction of half-width (radius) from centre
+    // Spiral angle, measured from straight up (the needle sits at the top).
+    const x = 50 + Math.sin(sp.angle) * r * 100
+    const y = 50 - Math.cos(sp.angle) * r * 100
+    return { i, x, y, text: words[i] ?? "" }
+  })
+
   return (
     <div
       ref={elRef}
@@ -118,14 +142,29 @@ export const Platter = ({
     >
       <div className="bl-scr-vinyl" aria-hidden="true">
         <div className="bl-scr-grooves" />
-        <div className="bl-scr-label">
-          <span className="bl-scr-label-text" lang={langTag}>
-            {word || "—"}
+        {wordDots.map((w) => (
+          <span
+            key={w.i}
+            className={`bl-scr-word${w.i === currentWord ? " is-cur" : ""}`}
+            lang={langTag}
+            style={{
+              ["--bl-scr-wx" as string]: `${w.x}%`,
+              ["--bl-scr-wy" as string]: `${w.y}%`,
+            }}
+          >
+            {w.text}
           </span>
+        ))}
+        <div className="bl-scr-label">
           {langTag && <span className="bl-scr-label-lang">{langTag}</span>}
           <span className="bl-scr-spindle" />
         </div>
-        <div className="bl-scr-marker" />
+      </div>
+
+      {/* Fixed needle: never rotates; points at the moment under the head. */}
+      <div className="bl-scr-needle" aria-hidden="true">
+        <span className="bl-scr-needle-arm" />
+        <span className="bl-scr-needle-tip" />
       </div>
     </div>
   )

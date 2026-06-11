@@ -1,22 +1,28 @@
 /**
- * beatlounge — phrase-SCRATCH pure math.
+ * beatlounge — phrase-SCRATCH pure math (POSITION-BASED turntablism).
  *
- * These helpers turn FINGER MOTION into a turntable playbackRate and a platter
- * ROTATION, with no audio / DOM dependency so the feel is unit-testable.
+ * A real record is ONE wave with ONE read-head. The needle points at ONE exact
+ * moment in the phrase; moving the disc moves that single playhead forward or
+ * backward through the single buffer; the speed you move = the (signed) playback
+ * rate. No grains, no looping, no re-triggering. A fixed arc of vinyl = a fixed
+ * slice of time in the wave.
  *
- * The model is POSITION-based turntablism, not velocity-based: the disc's
- * angular position directly indexes a position in the decoded buffer, so the
- * platter follows the finger 1:1 with NO easing or low-pass lag during contact.
- * A word is stretched across roughly HALF a revolution (you can scrub one word
- * slowly + precisely), and a SILENT gap is mapped between words so each word is
- * legible and separated. The playbackRate handed to the GrainPlayer each frame
- * is simply d(buffer-position)/d(real-time) — exactly the rate that makes the
- * audio track the disc. On RELEASE a friction-decayed momentum keeps the platter
- * coasting (a real turntable's spin-down), which then feeds the same mapping.
+ * These helpers turn DISC ROTATION into a BUFFER TIME (the playhead the needle
+ * points at + the worklet scrubs to) and back, plus the release-coast friction
+ * physics and the word-placement geometry. All pure / DOM- and audio-free so the
+ * feel is unit-testable. The actual sample reading / playhead advance lives in
+ * `scratchDsp.ts` (shared by the worklet processor and its tests).
+ *
+ * THE SPIRAL: rotation accumulates WITHOUT wrapping. A fixed `BUFFER_SECONDS_PER_REV`
+ * maps one full revolution to a fixed slice of the phrase, so a phrase longer than
+ * one revolution spans MULTIPLE revolutions — the groove/label spirals inward per
+ * turn, exactly like a real record. The playhead is clamped to the phrase duration
+ * (a real record does not wrap: past the end is run-off silence, past the start is
+ * silence).
  */
 
-/** Max absolute playbackRate. Beyond this grains can't keep up cleanly. */
-export const MAX_RATE = 4
+/** Max absolute playbackRate. Beyond this the scrub aliases hard. */
+export const MAX_RATE = 8
 
 /** Below this |rate| we treat the record as effectively held (silence-ish). */
 export const HOLD_EPSILON = 0.02
@@ -52,14 +58,13 @@ export const angleDelta = (from: number, to: number): number => {
   return d
 }
 
-/* ------------------------------------------------------------------ mapping */
+/* ---------------------------------------------------- disc rotation <-> buffer */
 
 /**
- * Buffer-seconds covered by ONE full disc revolution. The whole snippet (every
- * padded word slot, see SILENCE_GAP) is laid out around the disc at this many
- * seconds per turn. A small value = a tiny snippet still fills the whole record,
- * so a single word occupies a big arc — slow, precise, scrubbable. Tuned so a
- * typical ~0.7s word (padded to ~1.0s with its gap) spans about HALF a turn.
+ * Buffer-seconds covered by ONE full disc revolution. The phrase is laid out
+ * along the groove at this many seconds per turn; a value of ~2s means a typical
+ * word spans a comfortable arc you can scrub slowly + precisely, and a phrase
+ * longer than 2s spirals across multiple revolutions.
  */
 export const BUFFER_SECONDS_PER_REV = 2.0
 
@@ -68,9 +73,7 @@ export const SECONDS_PER_RAD = BUFFER_SECONDS_PER_REV / (2 * Math.PI)
 
 /**
  * The angular arc (radians) a clip of `clipSeconds` buffer-seconds occupies on
- * the disc. A clip equal to BUFFER_SECONDS_PER_REV fills a whole revolution; a
- * half-rev clip is BUFFER_SECONDS_PER_REV/2 seconds long. Pure so tests can
- * assert "one word ≈ half the record".
+ * the disc. A clip equal to BUFFER_SECONDS_PER_REV fills a whole revolution.
  */
 export const clipArcRadians = (clipSeconds: number): number =>
   (clipSeconds / BUFFER_SECONDS_PER_REV) * (2 * Math.PI)
@@ -78,9 +81,8 @@ export const clipArcRadians = (clipSeconds: number): number =>
 /**
  * Convert a signed disc-angle delta (radians the finger just dragged the platter)
  * into the playbackRate that makes the audio track that motion over `dt` seconds.
- * This is the FAITHFUL, lag-free mapping: rate = bufferΔ / dt, where bufferΔ is
- * the buffer-seconds the rotation just demanded. No easing, no low-pass — the
- * record goes exactly where the finger puts it, at any speed.
+ * rate = bufferΔ / dt, where bufferΔ is the buffer-seconds the rotation demanded.
+ * Faithful, lag-free: the record goes exactly where the finger puts it, signed.
  */
 export const rotationDeltaToRate = (deltaRadians: number, dt: number): number => {
   if (!(dt > 0)) return 0
@@ -89,65 +91,98 @@ export const rotationDeltaToRate = (deltaRadians: number, dt: number): number =>
 }
 
 /**
- * The playbackRate for a given disc angular velocity (rad/s). Equivalent to
- * rotationDeltaToRate over one second; the disc spinning at `angVel` rad/s plays
- * the buffer at this signed rate. This is the lag-free contact mapping.
+ * The playbackRate for a given disc angular velocity (rad/s). The disc spinning
+ * at `angVel` rad/s plays the buffer at this signed rate. The lag-free contact
+ * mapping (equivalent to rotationDeltaToRate over one second).
  */
 export const angularVelocityToRate = (angVel: number): number =>
   clampRate(angVel * SECONDS_PER_RAD)
 
 /**
- * Buffer playback position (seconds, ≥0, wrapped into the snippet) for a disc
- * rotation. The disc angle directly indexes the buffer; `loopSeconds` is the
- * padded snippet length so the position loops cleanly with the disc.
+ * Map an UNWRAPPED disc rotation (radians, accumulated, may be many turns) to the
+ * absolute buffer PLAYHEAD TIME (seconds), CLAMPED to [0, durationSeconds]. This
+ * is the single source of truth the needle points at AND the worklet scrubs to.
+ *
+ * No modulo: rotation 0 → time 0, and each additional revolution adds
+ * BUFFER_SECONDS_PER_REV — so a long phrase spirals across revolutions. Past the
+ * end clamps to the run-off (duration); below zero clamps to the lead-in (0). A
+ * real record does NOT wrap.
  */
-export const rotationToBufferPos = (rotation: number, loopSeconds: number): number => {
-  if (!(loopSeconds > 0)) return 0
+export const rotationToPlayhead = (rotation: number, durationSeconds: number): number => {
+  if (!(durationSeconds > 0)) return 0
   const raw = rotation * SECONDS_PER_RAD
-  return ((raw % loopSeconds) + loopSeconds) % loopSeconds
+  if (raw <= 0) return 0
+  if (raw >= durationSeconds) return durationSeconds
+  return raw
 }
 
-/* -------------------------------------------------------- silence between words */
+/** Inverse of `rotationToPlayhead`: the disc rotation (radians) for a buffer time. */
+export const playheadToRotation = (seconds: number): number => seconds / SECONDS_PER_RAD
+
+/* -------------------------------------------------------------- the spiral geometry */
+
+/** A point on the spiral groove, normalized: angle (radians) + radius fraction 0..1. */
+export interface SpiralPoint {
+  /** Rotation around the disc (radians, may exceed 2π for inner turns). */
+  angle: number
+  /** Radius as a fraction of the playable groove band (0 = inner, 1 = outer rim). */
+  radiusFrac: number
+}
 
 /**
- * Silent pad (seconds) inserted AFTER each word so consecutive words don't blur
- * together — you hear space, the disc still turns through it. Audible but tight.
+ * Place a buffer TIME (seconds) on the spiral groove. A real record's groove
+ * starts at the OUTER rim and spirals INWARD; we mirror that. `time / SECONDS_PER_REV`
+ * is the revolution count; its fractional part is the angle around the disc and
+ * its whole part steps the radius inward by one band per revolution.
+ *
+ *   • `angle`      = (time / BUFFER_SECONDS_PER_REV) * 2π  (unwrapped, total turn)
+ *   • `radiusFrac` = 1 − revsDone/totalRevs                (outer→inner across the phrase)
+ *
+ * `totalSeconds` is the whole phrase; `radiusFrac` walks from 1 (rim, t=0) down to
+ * a floor at the spindle (t=totalSeconds). With a sub-1-rev phrase the groove just
+ * uses the outer band (no visible spiral, which is correct).
  */
-export const SILENCE_GAP = 0.32
+export const timeToSpiral = (
+  time: number,
+  totalSeconds: number,
+  innerFloor: number = 0.18
+): SpiralPoint => {
+  const t = Math.max(0, time)
+  const revs = t / BUFFER_SECONDS_PER_REV
+  const angle = revs * 2 * Math.PI
+  const totalRevs = Math.max(1e-6, totalSeconds / BUFFER_SECONDS_PER_REV)
+  const frac = totalRevs <= 1 ? 1 : 1 - revs / totalRevs
+  const span = 1 - innerFloor
+  // Keep the groove inside [innerFloor, 1].
+  const r = innerFloor + Math.max(0, Math.min(1, frac)) * span
+  return { angle, radiusFrac: r }
+}
 
-/**
- * A word's AUDIBLE span on the gapped timeline: [start, end] in seconds. The
- * trailing silence (SILENCE_GAP) lives BETWEEN one span's end and the next
- * span's start (or, for the last word, before the loop wraps).
- */
+/* -------------------------------------------------- words along the groove (visual) */
+
+/** A word's AUDIBLE span on the REAL phrase timeline: [start, end] in seconds. */
 export interface WordSpan {
   start: number
   end: number
 }
 
 /**
- * Which word index is "current" at a buffer position (seconds) on the gapped,
- * looped timeline. While inside a word's audible span, that word; while inside
- * the trailing gap, the word that JUST played (so the label holds through the
- * silence rather than flickering). −1 only when there are no words. Drives the
- * rotating label so the printed word matches what is being scrubbed/heard.
+ * Which word index is "current" at a buffer position (seconds) on the REAL (non-
+ * looping) phrase timeline. While inside a word's span, that word; otherwise the
+ * NEAREST word boundary already crossed (so the label holds through inter-word
+ * space rather than flickering to nothing). −1 only when there are no words.
  */
-export const wordIndexAt = (
-  spans: WordSpan[],
-  pos: number,
-  loopSeconds: number
-): number => {
+export const wordIndexAt = (spans: WordSpan[], pos: number): number => {
   if (spans.length === 0) return -1
-  if (!(loopSeconds > 0)) return 0
-  const p = ((pos % loopSeconds) + loopSeconds) % loopSeconds
+  if (pos <= spans[0].start) return 0
   // Inside an audible span → that word.
   for (let i = 0; i < spans.length; i++) {
-    if (p >= spans[i].start && p < spans[i].end) return i
+    if (pos >= spans[i].start && pos < spans[i].end) return i
   }
-  // In a gap → the most recent word whose span ended at/before p (wrap-aware).
-  let best = spans.length - 1 // default: the gap after the last word
+  // Between words / past the end → the most recent word that began at/before pos.
+  let best = 0
   for (let i = 0; i < spans.length; i++) {
-    if (spans[i].end <= p) best = i
+    if (spans[i].start <= pos) best = i
   }
   return best
 }
@@ -157,8 +192,7 @@ export const wordIndexAt = (
 /**
  * Per-second friction (fraction of angular velocity retained per second). A
  * released platter coasts and decays toward rest; lower = grippier (stops
- * sooner), higher = a longer free spin. A real turntable platter coasts for a
- * couple of seconds, so we keep ~12% of velocity per second.
+ * sooner), higher = a longer free spin. ~12% per second ≈ a couple-second coast.
  */
 export const FRICTION_PER_SEC = 0.12
 
@@ -168,9 +202,8 @@ export const COAST_STOP_EPSILON = 0.05
 /**
  * Decay an angular velocity (rad/s) by friction over `dt` seconds. Frame-rate
  * independent (exponential), monotonic toward zero, snaps to 0 once tiny so the
- * record actually comes to rest. SEPARATE from in-contact tracking — only the
- * RELEASE coast uses this; while a finger owns the platter the velocity is the
- * finger's, untouched by friction.
+ * record actually comes to rest. Only the RELEASE coast uses this; while a finger
+ * owns the platter the velocity is the finger's, untouched by friction.
  */
 export const decayAngularVelocity = (angVel: number, dt: number): number => {
   if (!(dt > 0)) return angVel
@@ -182,21 +215,15 @@ export const decayAngularVelocity = (angVel: number, dt: number): number => {
 
 /**
  * Advance the platter's visual rotation by an angular-velocity coast (rad/s) for
- * `dt` seconds — used ONLY off-contact (release / spin baseline). In-contact the
- * rotation is moved by the finger's angular delta (1:1). Kept UNWRAPPED so the
- * coast continues smoothly from wherever contact left the disc (no jump at the
- * contact→coast boundary); `rotationToBufferPos` does the modulo for audio, and
- * CSS `rotate()` handles large radian values. Double precision is ample for a
- * session (thousands of radians stays exact).
+ * `dt` seconds — used OFF-contact (release coast). Kept UNWRAPPED so the coast
+ * continues smoothly from wherever contact left the disc; `rotationToPlayhead`
+ * clamps for audio, CSS `rotate()` handles large radian values.
  */
 export const advanceRotationByVel = (
   rotation: number,
   angVel: number,
   dt: number
 ): number => rotation + angVel * Math.max(0, dt)
-
-/** Baseline "spin" angular velocity (rad/s) when the record is set to loop. */
-export const SPIN_ANG_VEL = (2 * Math.PI) / BUFFER_SECONDS_PER_REV // one snippet/2s-rev → natural
 
 /** Is this rate close enough to zero that the record is effectively held? */
 export const isHeld = (rate: number): boolean => Math.abs(rate) < HOLD_EPSILON
@@ -207,3 +234,6 @@ export const fmtRate = (rate: number): string => {
   const sign = rate >= 0 ? "+" : "−"
   return `${sign}${Math.abs(rate).toFixed(2)}×`
 }
+
+/** Format a buffer time (seconds) for the position readout, e.g. "0.84s". */
+export const fmtTime = (seconds: number): string => `${Math.max(0, seconds).toFixed(2)}s`
