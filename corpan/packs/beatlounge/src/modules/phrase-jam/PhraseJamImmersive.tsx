@@ -35,7 +35,8 @@ import {
 import { stepForTick, tickForStep } from "../../model/timing"
 import { bankSnippets } from "../../phrase/bank"
 import type { AudioSource } from "../../phrase/audioSource"
-import { Glyph, Transport } from "../../bl-ui"
+import { Glyph } from "../../bl-ui"
+import { useTransport } from "../../store/transport"
 import { TrackParamKnob } from "../TrackParamKnob"
 import { GroovesPanel } from "../grooves/GroovesPanel"
 import { TrackFxChain } from "../fx-rack/TrackFxChain"
@@ -72,7 +73,8 @@ export const PhraseJamImmersive = ({
   const bank = bankSnippets(doc)
 
   const [playStep, setPlayStep] = useState(-1)
-  const [playing, setPlaying] = useState(audio.isPlaying())
+  // Read the ONE global transport flag for the ribbon hint copy — no local copy.
+  const { isPlaying: playing } = useTransport(audio)
   const [tab, setTab] = useState<string>("grooves")
   const [drawer, setDrawer] = useState<DrawerState>("open")
   // Lane-head selection (snippet ids). Local UI only — drives groove targeting.
@@ -235,19 +237,6 @@ export const PhraseJamImmersive = ({
     applyBend(0)
   }
 
-  // ---- transport -----------------------------------------------------------
-  const toggleTransport = () => {
-    if (audio.isPlaying()) {
-      audio.stop()
-      setPlaying(false)
-    } else {
-      void audio.start().then(() => setPlaying(true)).catch((err) => {
-        console.warn("[beatlounge/phrase-jam] transport start failed:", err)
-        host.toast("Couldn't start playback")
-      })
-    }
-  }
-
   const onClear = () => {
     const before = store.vanilla.getState().doc
     if (ftrack.fragments.length === 0) return
@@ -301,7 +290,7 @@ export const PhraseJamImmersive = ({
         {/* ---- header (consistent with Drums) ---- */}
         <div className="bl-grid-toolbar" data-bl-nocapture>
           <div className="bl-grid-title">
-            <Transport playing={playing} onToggle={toggleTransport} spaceToToggle />
+            {/* Transport lives once, globally, in the immersive header / Dock-Rail. */}
             <span className="bl-dot" style={{ background: ftrack.color }} />
           </div>
           <div className="bl-grid-actions">

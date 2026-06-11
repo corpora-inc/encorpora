@@ -22,6 +22,7 @@ import type {
 import type { BeatloungeStore } from "../store/store"
 import { createFormObserver } from "../host/formFactor"
 import { useBeatloungeStore } from "../store/store"
+import { useTransport, stopTransport, syncTransportFromAudio } from "../store/transport"
 import { ModuleHost } from "./ModuleHost"
 import { Immersive } from "./Immersive"
 import { DockRail } from "./DockRail"
@@ -59,7 +60,10 @@ export const Shell = ({
 
   const [form, setForm] = useState<FormFactor>("desktop")
   const [immersiveId, setImmersiveId] = useState<ModuleId | null>(null)
-  const [playing, setPlaying] = useState(audio.isPlaying())
+  // ONE global transport — the shell header, the Dock-Rail, and every immersive
+  // page all read this same flag and toggle through this same path, so there is
+  // no second copy of "playing" to drift out of sync.
+  const { isPlaying: playing, toggle: toggleTransport } = useTransport(audio)
   const [masterLevel, setMasterLevel] = useState(0)
   const [toast, setToast] = useState<ToastState | null>(null)
   const toastSeq = useRef(0)
@@ -72,6 +76,12 @@ export const Shell = ({
     [store, host]
   )
   useEffect(() => () => commandController.dispose(), [commandController])
+
+  // A fresh facade (first mount / ErrorBoundary reset) is always stopped — seed
+  // the global transport flag from its truth so the UI starts honest.
+  useEffect(() => {
+    syncTransportFromAudio(audio)
+  }, [audio])
 
   // --- form factor (single resize owner) ---
   useEffect(() => {
@@ -124,16 +134,6 @@ export const Shell = ({
     }
   }, [audio, doc.ppq, doc.masterVolume])
 
-  const toggleTransport = useCallback(() => {
-    if (audio.isPlaying()) {
-      audio.stop()
-      setPlaying(false)
-    } else {
-      void audio.start()
-      setPlaying(true)
-    }
-  }, [audio])
-
   const modules = useMemo(() => registry.all(), [registry])
   const immersiveModule = immersiveId ? registry.get(immersiveId) : undefined
 
@@ -182,7 +182,7 @@ export const Shell = ({
         onRedo={store.redo}
         onCommand={() => setCommandOpen(true)}
         onExit={() => {
-          audio.stop()
+          stopTransport(audio)
           window.dispatchEvent(new CustomEvent("corpan:exit"))
         }}
       />

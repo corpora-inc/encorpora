@@ -45,12 +45,18 @@ export const createFormObserver = (
 
   phone.addEventListener("change", handle)
   desktop.addEventListener("change", handle)
+  // Belt-and-suspenders: some embedded WebViews don't deliver matchMedia
+  // `change` reliably on a window resize, so the Rail orientation only flipped
+  // on reload. A plain `resize` listener guarantees the breakpoint crosses live.
+  // `handle` is idempotent (no-op until the form factor actually changes).
+  window.addEventListener("resize", handle)
 
   return {
     get: () => current,
     dispose: () => {
       phone.removeEventListener("change", handle)
       desktop.removeEventListener("change", handle)
+      window.removeEventListener("resize", handle)
     },
   }
 }
