@@ -10,17 +10,20 @@
  */
 
 import { useEffect, useRef, type ReactNode } from "react"
-import { Glyph } from "../bl-ui"
+import { Glyph, Transport } from "../bl-ui"
 
 interface Props {
   title: string
   onExit: () => void
   children: ReactNode
+  /** Global transport — present so you can stop/start the song from any screen. */
+  playing?: boolean
+  onToggleTransport?: () => void
 }
 
 const SWIPE_DISMISS_PX = 90
 
-export const Immersive = ({ title, onExit, children }: Props) => {
+export const Immersive = ({ title, onExit, children, playing, onToggleTransport }: Props) => {
   const sheetRef = useRef<HTMLDivElement>(null)
   const startY = useRef<number | null>(null)
   const dragY = useRef(0)
@@ -87,6 +90,13 @@ export const Immersive = ({ title, onExit, children }: Props) => {
           </button>
           <span className="bl-immersive-title">{title}</span>
           <span className="bl-immersive-grabber" aria-hidden="true" />
+          {onToggleTransport && (
+            <Transport
+              playing={!!playing}
+              onToggle={onToggleTransport}
+              spaceToToggle={false}
+            />
+          )}
         </div>
         <div className="bl-immersive-body">{children}</div>
       </div>

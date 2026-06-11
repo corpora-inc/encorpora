@@ -192,6 +192,8 @@ export const Shell = ({
         <Immersive
           title={immersiveModule.title}
           onExit={() => setImmersiveId(null)}
+          playing={playing}
+          onToggleTransport={toggleTransport}
         >
           <ModuleHost
             module={immersiveModule}
