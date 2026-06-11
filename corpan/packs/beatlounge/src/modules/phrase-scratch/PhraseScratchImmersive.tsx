@@ -3,16 +3,19 @@
  * scratch it like a REAL record. The headline widget.
  *
  *   • PLATTER — a real vinyl the user drags. The disc's accumulated (unwrapped)
- *     angular position maps to ONE clamped buffer PLAYHEAD; the fixed needle points
- *     at that exact moment and the sound is LOCKED to it. A phrase longer than one
- *     revolution spirals inward across turns. No grains, no looping — one wave, one
- *     read-head (the AudioWorklet scratch engine; ScriptProcessor fallback).
- *   • IN CONTACT — the parent posts the exact target buffer position each frame;
- *     the engine scrubs the playhead to it. Emergent rate = the finger's speed.
- *   • RELEASE — the engine is thrown with the finger's last rate and coasts under
- *     friction; the AUDIO slows + stops with the disc.
+ *     angular position maps to ONE LOOPED buffer PLAYHEAD; the fixed needle (3
+ *     o'clock) points at that exact moment and the sound is LOCKED to it. A phrase
+ *     longer than one revolution spirals inward across turns and LOOPS.
+ *   • CONTINUOUS RATE — each frame we derive the disc's signed angular speed and post
+ *     it as a RATE to the engine, which integrates `playhead += rate` every sample
+ *     and loops at the ends. The audio never freezes between frames. The engine
+ *     reports its true playhead back so the needle/visual stay locked to the sound.
+ *   • SPIN / HOLD — Spin auto-rotates the platter at natural tempo (rate 1.0, the
+ *     phrase plays at normal speed, looping); Hold stops it dead (silence). Scratching
+ *     over the top overrides; on release it returns to Spin (if on) or coasts to rest.
+ *   • CUT FADER — a throwable level fader on EACH deck (the scratch "cut"): flick it
+ *     0→full for fast fade-ins. Exists with a single deck.
  *   • TWO DECKS — an optional second turntable, crossfaded against the first.
- *   • PICKER — choose which bank snippet is loaded onto each deck.
  *
  * The engine plays DIRECTLY on the shared AudioContext (a live instrument, not the
  * transport). We dispose the deck(s) + RAF on unmount / snippet change.
@@ -34,15 +37,20 @@ import { createLoadToken } from "./loadToken"
 import {
   advanceRotationByVel,
   angularVelocityToRate,
+  clampRate,
   decayAngularVelocity,
   fmtRate,
   fmtTime,
   isHeld,
+  NATURAL_ANGULAR_VEL,
+  playheadToRotation,
   rotationToPlayhead,
+  SECONDS_PER_RAD,
   wordIndexAt,
   type WordSpan,
 } from "./scratchMath"
 import { Platter } from "./Platter"
+import { CutFader } from "./CutFader"
 
 const LOG = "[beatlounge/phrase-scratch]"
 
@@ -68,8 +76,12 @@ interface DeckRuntime {
   // disc geometry (the 1:1 truth)
   discRot: number
   prevDiscRot: number
-  angVel: number // coast angular velocity (rad/s), off-contact only
+  angVel: number // coast/contact angular velocity (rad/s)
   grabbed: boolean
+  spin: boolean // auto-rotate at natural tempo
+  // last playhead the ENGINE actually reported (audio truth) — to lock the needle.
+  audioSec: number
+  unsubPos: (() => void) | null
 }
 
 const freshRuntime = (): DeckRuntime => ({
@@ -81,6 +93,9 @@ const freshRuntime = (): DeckRuntime => ({
   prevDiscRot: 0,
   angVel: 0,
   grabbed: false,
+  spin: false,
+  audioSec: 0,
+  unsubPos: null,
 })
 
 /** Which deck a UI surface refers to. */
@@ -106,6 +121,12 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const [showDeckB, setShowDeckB] = useState(false)
   const [crossfade, setCrossfade] = useState(0) // 0 = all A, 1 = all B
   const [pickerFor, setPickerFor] = useState<DeckId | null>(null)
+  // Spin/Hold transport per deck (Hold by default — the record sits in its groove).
+  const [spinA, setSpinA] = useState(false)
+  const [spinB, setSpinB] = useState(false)
+  // Cut-fader level per deck (the deck's own level; multiplied with the crossfade).
+  const [cutA, setCutA] = useState(1)
+  const [cutB, setCutB] = useState(1)
 
   const selectFor = (key: string | null, fallbackIdx: number): FragmentRef | null => {
     if (bank.length === 0) return null
@@ -135,13 +156,19 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const rafRef = useRef<number | null>(null)
   const lastTsRef = useRef<number | null>(null)
 
-  // ---- crossfade → deck gains (equal-power-ish) -----------------------------
+  // Keep the runtime's spin flags in sync with the toggles (read in the RAF loop).
+  rtA.current.spin = spinA
+  rtB.current.spin = spinB
+
+  // ---- deck level = cut (this deck) × crossfade contribution ------------------
   useEffect(() => {
-    const a = Math.cos((crossfade * Math.PI) / 2)
-    const b = Math.cos(((1 - crossfade) * Math.PI) / 2)
-    rtA.current.deck?.setGain(showDeckB ? a : 1)
-    rtB.current.deck?.setGain(showDeckB ? b : 0)
-  }, [crossfade, showDeckB])
+    // Equal-power crossfade (only when the second deck exists); otherwise the deck
+    // is full and the cut fader alone trims it.
+    const xa = showDeckB ? Math.cos((crossfade * Math.PI) / 2) : 1
+    const xb = showDeckB ? Math.cos(((1 - crossfade) * Math.PI) / 2) : 0
+    rtA.current.deck?.setGain(cutA * xa)
+    rtB.current.deck?.setGain(cutB * (showDeckB ? xb : 0))
+  }, [crossfade, showDeckB, cutA, cutB])
 
   // ---- load a snippet onto a deck -------------------------------------------
   const loadDeck = (
@@ -154,6 +181,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     const id = token.current.open()
     const stale = () => !token.current.isCurrent(id)
 
+    rt.current.unsubPos?.()
     rt.current.deck?.dispose()
     rt.current = freshRuntime()
 
@@ -207,6 +235,10 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         rt.current.spans = spans
         rt.current.words = labels.length > 0 ? labels : [text]
         rt.current.durationSec = decoded.duration
+        // Lock the needle to the audio: the engine reports its true playhead.
+        rt.current.unsubPos = deck.onPos((p) => {
+          rt.current.audioSec = p.seconds
+        })
         deck.hold()
         setLoading(false)
       } catch (err) {
@@ -236,29 +268,46 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   useEffect(() => {
     const driveDeck = (rt: DeckRuntime, dt: number): DeckView => {
       const deck = rt.deck
+      const dur = rt.durationSec
       if (rt.grabbed) {
-        // Contact: the disc is where the finger put it (onSweep). Post the exact
-        // buffer position (seconds) the needle should be at → the engine scrubs
-        // the single playhead there. Rate emerges from the move this frame.
+        // CONTACT: the disc is where the finger put it (onSweep moved discRot). The
+        // signed angular speed this frame → the rate the engine should integrate.
         const moved = rt.discRot - rt.prevDiscRot
         rt.angVel = moved / dt
-        const playheadSec = rotationToPlayhead(rt.discRot, rt.durationSec)
-        deck?.setTargetSeconds(playheadSec)
+        deck?.setRate(clampRate(rt.angVel * SECONDS_PER_RAD))
+      } else if (rt.spin) {
+        // SPIN: auto-rotate at natural tempo (rate 1.0, the phrase at normal speed).
+        rt.angVel = NATURAL_ANGULAR_VEL
+        rt.discRot = advanceRotationByVel(rt.discRot, rt.angVel, dt)
+        deck?.setRate(1)
       } else {
-        // Released: friction-decay the coast. The disc advances and we keep the
-        // visual + audio locked by re-posting position; when it stops, hold.
+        // RELEASED, not spinning: friction-decay the coast, then HOLD at rest.
         const prevVel = rt.angVel
         rt.angVel = decayAngularVelocity(rt.angVel, dt)
         rt.discRot = advanceRotationByVel(rt.discRot, rt.angVel, dt)
-        const playheadSec = rotationToPlayhead(rt.discRot, rt.durationSec)
-        if (rt.angVel !== 0) {
-          deck?.setTargetSeconds(playheadSec)
-        } else if (prevVel !== 0) {
-          deck?.hold() // just came to rest → silence (held record)
+        if (rt.angVel !== 0) deck?.setRate(clampRate(rt.angVel * SECONDS_PER_RAD))
+        else if (prevVel !== 0) deck?.hold()
+      }
+
+      // NEEDLE LOCK: off-contact (Spin / coast), trust the engine's reported playhead
+      // and re-derive the disc rotation from it so visual + sound can never drift over
+      // a long spin. While the FINGER owns the disc, discRot is the truth (the audio
+      // follows it through the rate slew); while held (dead), the disc stays put.
+      const moving = !rt.grabbed && (rt.spin || rt.angVel !== 0)
+      if (moving && dur > 0) {
+        // Gently pull discRot toward the rotation that matches the audio playhead,
+        // preserving the whole-revolution winding so the spiral/coast stay smooth.
+        const targetWithinRev = playheadToRotation(rt.audioSec)
+        const revSpan = playheadToRotation(dur)
+        if (revSpan > 0) {
+          const winding = Math.round((rt.discRot - targetWithinRev) / revSpan)
+          const lockedRot = targetWithinRev + winding * revSpan
+          rt.discRot += (lockedRot - rt.discRot) * 0.25
         }
       }
+
       rt.prevDiscRot = rt.discRot
-      const playheadSec = rotationToPlayhead(rt.discRot, rt.durationSec)
+      const playheadSec = rotationToPlayhead(rt.discRot, dur)
       const rate = angularVelocityToRate(rt.angVel)
       const wordIdx = wordIndexAt(rt.spans, playheadSec)
       return { rotation: rt.discRot, rate, playheadSec, wordIdx }
@@ -299,6 +348,8 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   // Tear decks down on unmount.
   useEffect(() => {
     return () => {
+      rtA.current.unsubPos?.()
+      rtB.current.unsubPos?.()
       rtA.current.deck?.dispose()
       rtB.current.deck?.dispose()
       rtA.current.deck = null
@@ -320,16 +371,38 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const onRelease = (rt: React.MutableRefObject<DeckRuntime>) => () => {
     rt.current.grabbed = false
     setActive(false)
+    if (rt.current.spin) return // returns to natural spin in the loop
     // Throw the engine with the finger's last rate → it coasts under friction.
     const rate = angularVelocityToRate(rt.current.angVel)
-    if (isHeld(rate)) rt.current.deck?.hold()
-    else rt.current.deck?.release(rate)
+    if (isHeld(rate)) {
+      rt.current.angVel = 0
+      rt.current.deck?.hold()
+    } else {
+      rt.current.deck?.setRate(rate)
+    }
   }
 
   const onSelect = (id: DeckId) => (r: FragmentRef) => {
     if (id === "a") setSelKeyA(refKey(r))
     else setSelKeyB(refKey(r))
     setPickerFor(null)
+  }
+
+  const toggleSpin = (id: DeckId) => () => {
+    void ensureAudio(host.audioContext())
+    if (id === "a") {
+      setSpinA((v) => {
+        const next = !v
+        if (!next) rtA.current.deck?.hold()
+        return next
+      })
+    } else {
+      setSpinB((v) => {
+        const next = !v
+        if (!next) rtB.current.deck?.hold()
+        return next
+      })
+    }
   }
 
   // ---- empty state ----------------------------------------------------------
@@ -353,7 +426,10 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     selected: FragmentRef | null,
     rt: React.MutableRefObject<DeckRuntime>,
     view: DeckView,
-    loading: boolean
+    loading: boolean,
+    spin: boolean,
+    cut: number,
+    setCut: (v: number) => void
   ) => {
     const label = selected?.text ?? ""
     const langTag = selected?.language?.toUpperCase()
@@ -406,19 +482,59 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           </div>
         )}
 
-        <Platter
-          rotation={view.rotation}
-          durationSec={rt.current.durationSec}
-          spans={rt.current.spans}
-          words={rt.current.words}
-          currentWord={view.wordIdx}
-          langTag={langTag}
-          active={active}
-          reducedMotion={reduced}
-          onGrab={onGrab(rt)}
-          onSweep={onSweep(rt)}
-          onRelease={onRelease(rt)}
-        />
+        <div className="bl-scr-stage">
+          <Platter
+            rotation={view.rotation}
+            durationSec={rt.current.durationSec}
+            spans={rt.current.spans}
+            words={rt.current.words}
+            currentWord={view.wordIdx}
+            langTag={langTag}
+            active={active}
+            reducedMotion={reduced}
+            onGrab={onGrab(rt)}
+            onSweep={onSweep(rt)}
+            onRelease={onRelease(rt)}
+          />
+          <CutFader
+            value={cut}
+            label="Cut fader — fade this deck 0 to full"
+            onChange={setCut}
+          />
+        </div>
+
+        <div className="bl-scr-transport" data-bl-nocapture>
+          <button
+            type="button"
+            className={`bl-scr-tbtn${spin ? " is-on" : ""}`}
+            onClick={toggleSpin(id)}
+            aria-pressed={spin}
+            aria-label="Spin — play at natural tempo"
+            title="Spin"
+          >
+            <Glyph name="play" size={16} />
+          </button>
+          <button
+            type="button"
+            className={`bl-scr-tbtn${!spin ? " is-on" : ""}`}
+            onClick={() => {
+              if (id === "a") {
+                setSpinA(false)
+                rtA.current.angVel = 0
+                rtA.current.deck?.hold()
+              } else {
+                setSpinB(false)
+                rtB.current.angVel = 0
+                rtB.current.deck?.hold()
+              }
+            }}
+            aria-pressed={!spin}
+            aria-label="Hold — stop the record"
+            title="Hold"
+          >
+            <Glyph name="stop" size={16} />
+          </button>
+        </div>
 
         <div className="bl-scr-readout" aria-live="off">
           {loading ? (
@@ -441,8 +557,8 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   return (
     <div className={`bl-scr${showDeckB ? " is-dual" : ""}`}>
       <div className="bl-scr-decks">
-        {renderDeck("a", selectedA, rtA, viewA, loadingA)}
-        {showDeckB && renderDeck("b", selectedB, rtB, viewB, loadingB)}
+        {renderDeck("a", selectedA, rtA, viewA, loadingA, spinA, cutA, setCutA)}
+        {showDeckB && renderDeck("b", selectedB, rtB, viewB, loadingB, spinB, cutB, setCutB)}
       </div>
 
       {showDeckB && (

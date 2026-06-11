@@ -14,11 +14,13 @@ import {
   HOLD_EPSILON,
   isHeld,
   MAX_RATE,
+  NATURAL_ANGULAR_VEL,
   playheadToRotation,
   pointerAngle,
   rotationDeltaToRate,
   rotationToPlayhead,
   SECONDS_PER_RAD,
+  SECONDS_PER_REV,
   timeToSpiral,
   wordIndexAt,
   type WordSpan,
@@ -62,12 +64,21 @@ describe("pointerAngle", () => {
   })
 })
 
-describe("clip arc / seconds-per-rad geometry", () => {
-  it("SECONDS_PER_RAD is BUFFER_SECONDS_PER_REV / 2pi", () => {
-    expect(SECONDS_PER_RAD).toBeCloseTo(BUFFER_SECONDS_PER_REV / (2 * Math.PI), 10)
+describe("clip arc / seconds-per-rad geometry (FIXED per revolution)", () => {
+  it("SECONDS_PER_REV is the fixed constant; the alias matches", () => {
+    expect(SECONDS_PER_REV).toBe(2.0)
+    expect(BUFFER_SECONDS_PER_REV).toBe(SECONDS_PER_REV)
+  })
+  it("SECONDS_PER_RAD is SECONDS_PER_REV / 2pi", () => {
+    expect(SECONDS_PER_RAD).toBeCloseTo(SECONDS_PER_REV / (2 * Math.PI), 10)
+  })
+  it("NATURAL_ANGULAR_VEL turns one rev per SECONDS_PER_REV (rate 1.0)", () => {
+    expect(NATURAL_ANGULAR_VEL).toBeCloseTo((2 * Math.PI) / SECONDS_PER_REV, 10)
+    // spinning at natural speed plays at exactly rate 1.0
+    expect(angularVelocityToRate(NATURAL_ANGULAR_VEL)).toBeCloseTo(1, 10)
   })
   it("a clip half the revolution length spans ~half the disc (pi radians)", () => {
-    const halfRevClip = BUFFER_SECONDS_PER_REV / 2
+    const halfRevClip = SECONDS_PER_REV / 2
     expect(clipArcRadians(halfRevClip)).toBeCloseTo(Math.PI, 6)
   })
 })
@@ -100,34 +111,44 @@ describe("rotationDeltaToRate / angularVelocityToRate (faithful 1:1 contact)", (
   })
 })
 
-describe("rotationToPlayhead (single read-head, NO wrap, clamped)", () => {
-  it("0 rotation → playhead 0 (the lead-in)", () => {
+describe("rotationToPlayhead (single read-head, LOOPS, forward=forward)", () => {
+  it("0 rotation → playhead 0", () => {
     expect(rotationToPlayhead(0, 2)).toBe(0)
   })
-  it("one full revolution advances BUFFER_SECONDS_PER_REV into the buffer", () => {
+  it("FORWARD (positive) rotation advances FORWARD into the buffer", () => {
     const dur = 10
+    const quarterRev = Math.PI / 2
+    expect(rotationToPlayhead(quarterRev, dur)).toBeCloseTo(SECONDS_PER_REV / 4, 8)
+  })
+  it("one full revolution advances SECONDS_PER_REV — independent of phrase length", () => {
     const oneRev = 2 * Math.PI
-    expect(rotationToPlayhead(oneRev, dur)).toBeCloseTo(BUFFER_SECONDS_PER_REV, 8)
+    // Same advance for a short AND a long phrase: the mapping is NOT scaled by length.
+    expect(rotationToPlayhead(oneRev, 10)).toBeCloseTo(SECONDS_PER_REV, 8)
+    expect(rotationToPlayhead(oneRev, 100)).toBeCloseTo(SECONDS_PER_REV, 8)
   })
-  it("CLAMPS at the run-off — does NOT wrap past the end", () => {
+  it("WRAPS (loops) past the end — keeps spinning replays the phrase", () => {
     const dur = 1.3
-    // A huge forward rotation must sit AT the duration, never wrap back to ~0.
+    // A huge forward rotation wraps modulo duration into [0, dur).
     const pos = rotationToPlayhead(1000, dur)
-    expect(pos).toBe(dur)
+    expect(pos).toBeGreaterThanOrEqual(0)
+    expect(pos).toBeLessThan(dur)
   })
-  it("CLAMPS at the lead-in — a backward rotation stops at 0 (silence), no wrap", () => {
-    expect(rotationToPlayhead(-5, 2)).toBe(0)
-    expect(rotationToPlayhead(-0.0001, 2)).toBe(0)
+  it("WRAPS past the start — a backward rotation loops to the END", () => {
+    const dur = 2
+    // -0.0001 rad of rotation → just before the end, not clamped to 0.
+    const pos = rotationToPlayhead(-0.0001, dur)
+    expect(pos).toBeGreaterThan(dur - 0.01)
+    expect(pos).toBeLessThan(dur)
   })
   it("a multi-rev phrase spirals: rev 2 reads the second slice (not the first)", () => {
     const dur = 6 // 3 revolutions at 2s/rev
     const twoRevs = 4 * Math.PI
-    expect(rotationToPlayhead(twoRevs, dur)).toBeCloseTo(2 * BUFFER_SECONDS_PER_REV, 6)
+    expect(rotationToPlayhead(twoRevs, dur)).toBeCloseTo(2 * SECONDS_PER_REV, 6)
   })
   it("returns 0 for a non-positive duration", () => {
     expect(rotationToPlayhead(5, 0)).toBe(0)
   })
-  it("playheadToRotation is the inverse of rotationToPlayhead in-range", () => {
+  it("playheadToRotation is the inverse of rotationToPlayhead within the first loop", () => {
     const dur = 10
     const rot = 3.1
     const t = rotationToPlayhead(rot, dur)

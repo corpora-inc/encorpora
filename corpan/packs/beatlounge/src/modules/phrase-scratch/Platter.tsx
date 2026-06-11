@@ -1,16 +1,26 @@
 /**
  * beatlounge — the SCRATCH PLATTER: a real record the user drags. The disc rotates
- * under a FIXED NEEDLE; the needle points at ONE exact moment in the phrase (the
- * playhead) and the sound is LOCKED to that same moment. Words are placed along the
- * spiral groove at their real buffer-time positions (spiraling inward across
- * revolutions for a phrase longer than one turn), so you can see — and scrub to —
- * any word.
+ * under a FIXED NEEDLE at 3 o'clock (the RIGHT); the needle points at ONE exact
+ * moment in the phrase (the playhead) and the sound is LOCKED to that same moment.
+ * Words are placed along the spiral groove at their real buffer-time positions
+ * (spiraling inward across revolutions; the phrase loops), so the word UNDER the
+ * needle is exactly the word you hear.
+ *
+ * NEEDLE / DIRECTION CONVENTION
+ *   The disc's accumulated `rotation` is clockwise-positive (a forward, clockwise
+ *   drag plays forward). CSS `rotate(rotation)` turns the vinyl clockwise. The
+ *   current playhead time `t` has spiral angle `θ = t / SECONDS_PER_RAD` which EQUALS
+ *   `rotation` (mod 2π). So we place each word at LOCAL screen angle `−θ` (measured
+ *   from the needle's 3 o'clock direction); after the disc rotates by `rotation`, the
+ *   current word lands at screen angle `−θ + rotation = 0` = under the right-side
+ *   needle. (The old build placed the needle at the TOP and used `sin θ / −cos θ`,
+ *   which put the label ~180° from the audio — fixed here.)
  *
  * The drag's angular sweep around the centre is reported to the parent, which
- * accumulates it into an UNWRAPPED rotation → a single clamped buffer playhead
- * (no wrap: past the end is run-off). Pointer-captured, but it only owns the drag
- * when the pointer starts on the platter surface (chrome carries data-bl-nocapture
- * and never overlaps the disc), so it never steals taps from controls.
+ * accumulates it into an UNWRAPPED rotation → a single LOOPED buffer playhead.
+ * Pointer-captured, but it only owns the drag when the pointer starts on the platter
+ * surface (chrome carries data-bl-nocapture and never overlaps the disc), so it
+ * never steals taps from controls.
  */
 
 import { useRef } from "react"
@@ -114,16 +124,17 @@ export const Platter = ({
 
   const spin = reducedMotion ? 0 : rotation
 
-  // Place each word along the spiral groove (positioned in the ROTATING frame:
-  // the vinyl wrapper carries `rotation`, so a word at buffer-time t sits at its
-  // spiral angle and rides under the fixed needle when the disc turns to it).
+  // Place each word along the spiral groove in the disc's LOCAL frame. The needle is
+  // fixed at 3 o'clock (screen angle 0, the +x / east direction). A word at spiral
+  // angle θ sits at local screen angle −θ from the needle, so when the vinyl rotates
+  // CW by `rotation`, the current word (θ == rotation) lands exactly under the needle.
   const wordDots = spans.map((s, i) => {
     const mid = (s.start + s.end) / 2
     const sp = timeToSpiral(mid, durationSec, INNER_FLOOR)
     const r = sp.radiusFrac * 0.5 // fraction of half-width (radius) from centre
-    // Spiral angle, measured from straight up (the needle sits at the top).
-    const x = 50 + Math.sin(sp.angle) * r * 100
-    const y = 50 - Math.cos(sp.angle) * r * 100
+    const a = -sp.angle // local screen angle from the 3 o'clock needle
+    const x = 50 + Math.cos(a) * r * 100
+    const y = 50 + Math.sin(a) * r * 100
     return { i, x, y, text: words[i] ?? "" }
   })
 
@@ -161,7 +172,7 @@ export const Platter = ({
         </div>
       </div>
 
-      {/* Fixed needle: never rotates; points at the moment under the head. */}
+      {/* Fixed needle at 3 o'clock: never rotates; points at the moment under it. */}
       <div className="bl-scr-needle" aria-hidden="true">
         <span className="bl-scr-needle-arm" />
         <span className="bl-scr-needle-tip" />

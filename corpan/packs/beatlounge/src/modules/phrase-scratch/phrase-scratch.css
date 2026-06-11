@@ -225,31 +225,127 @@
   text-shadow: var(--bl-glow) var(--bl-accent);
 }
 
-/* Fixed needle: never rotates. Points at the moment under the head (the top). */
+/* Fixed needle at 3 o'clock (the RIGHT): never rotates. The arm comes in from the
+   right edge; the tip sits where the groove meets the needle (the playhead). */
 .bl-scr-needle {
   position: absolute;
-  top: -2%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  right: -2%;
+  transform: translateY(-50%);
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   align-items: center;
   pointer-events: none;
   z-index: 1;
 }
 .bl-scr-needle-arm {
-  width: 3px;
-  height: 14%;
-  min-height: 28px;
+  width: 14%;
+  min-width: 28px;
+  height: 3px;
   border-radius: var(--bl-radius-pill);
-  background: linear-gradient(var(--bl-text-dim), var(--bl-accent));
+  background: linear-gradient(to left, var(--bl-text-dim), var(--bl-accent));
 }
 .bl-scr-needle-tip {
   width: 9px;
   height: 9px;
-  margin-top: -3px;
+  margin-left: -3px;
   border-radius: 50%;
   background: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- stage: platter + cut */
+.bl-scr-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s4);
+}
+
+/* ---------------------------------------------------------- cut fader (the cut) */
+.bl-scr-cut {
+  --bl-cut: 100%;
+  position: relative;
+  flex: 0 0 auto;
+  width: 34px;
+  height: min(64vw, 300px);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  cursor: ns-resize;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.bl-scr-cut:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 3px;
+  border-radius: var(--bl-radius);
+}
+.bl-scr-cut-track {
+  position: relative;
+  width: 8px;
+  margin: 0 auto;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-surface-2);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+  overflow: hidden;
+}
+.bl-scr-cut-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--bl-cut);
+  background: linear-gradient(to top, var(--bl-accent-2), var(--bl-accent));
+  opacity: 0.85;
+}
+.bl-scr-cut-cap {
+  position: absolute;
+  left: 50%;
+  bottom: var(--bl-cut);
+  width: 28px;
+  height: 16px;
+  transform: translate(-50%, 50%);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface);
+  box-shadow: inset 0 0 0 1px var(--bl-border), var(--bl-glow) rgba(0, 0, 0, 0.001);
+  transition: box-shadow var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scr-cut:active .bl-scr-cut-cap,
+.bl-scr-cut:focus-visible .bl-scr-cut-cap {
+  box-shadow: inset 0 0 0 1px var(--bl-accent), var(--bl-glow) var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- spin / hold transport */
+.bl-scr-transport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s2);
+  flex: 0 0 auto;
+}
+.bl-scr-tbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--bl-hit);
+  height: var(--bl-hit);
+  border-radius: 50%;
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    box-shadow var(--bl-dur-fast) var(--bl-ease), color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scr-tbtn:hover {
+  border-color: var(--bl-accent);
+}
+.bl-scr-tbtn.is-on {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
   box-shadow: var(--bl-glow) var(--bl-accent);
 }
 
@@ -285,9 +381,16 @@
   font-size: var(--bl-fs-body);
 }
 
-/* In dual-deck mode each platter shrinks so two fit side by side. */
+/* In dual-deck mode each platter + cut fader shrinks so two decks fit side by side. */
 .bl-scr.is-dual .bl-scr-platter {
-  width: min(40vw, 260px);
+  width: min(34vw, 230px);
+}
+.bl-scr.is-dual .bl-scr-cut {
+  height: min(36vw, 210px);
+  width: 28px;
+}
+.bl-scr.is-dual .bl-scr-stage {
+  gap: var(--bl-s2);
 }
 
 /* ---------------------------------------------------------- crossfader */
