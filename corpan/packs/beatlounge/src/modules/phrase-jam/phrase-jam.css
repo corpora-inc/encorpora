@@ -1,222 +1,32 @@
 /**
- * beatlounge — phrase-JAM styles. Dark, premium, elegant. ONLY global --bl-*
- * tokens. Reuses the shared .bl-cell / .bl-grid-toolbar / .bl-chip / .bl-dot /
- * .bl-grid-empty classes (defined in src/styles.css); this file only adds the
- * jam-specific lane heads, the per-lane pitch stepper, the live pitch ribbon,
- * the empty state, and the tile. ≥44px hit targets, safe-area aware,
- * reduced-motion respected, one z-scale, never document.body.
+ * beatlounge — Phrase Jam page styles. The page MIRRORS the Drums page: the
+ * selectable lane grid, the bottom pipeline drawer, and the mixer strip are all
+ * SHARED (../track-studio/track-studio.css — the page root carries `bl-trackpage`
+ * so those rules apply). This file only adds the PHRASE-specific bits: the
+ * free-slide pitch ribbon at the TOP of the grid, the empty state, and the tile.
+ *
+ * ONLY global --bl-* tokens. ≥44px hit targets, safe-area aware, reduced-motion
+ * respected, one z-scale, never document.body.
  */
 
-.bl-jam {
-  display: flex;
-  flex-direction: column;
-  gap: var(--bl-s4);
-  height: 100%;
-  min-height: 0;
-  padding-bottom: var(--bl-safe-bottom);
+/* The page root (.bl-jam) and grid region (.bl-jam-grid-region) get all their
+ * layout from the shared .bl-trackpage / .bl-trackpage-grid / .bl-grid rules —
+ * the page carries both `bl-jam` and `bl-trackpage` so nothing extra is needed.
+ * Give the top ribbon a little breathing room from the toolbar above it. */
+.bl-jam-grid-region > .bl-jam-ribbon {
+  margin-bottom: var(--bl-s2);
 }
 
-/* ---------------------------------------------------------- the grid */
-.bl-jam-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--bl-s2);
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow: hidden auto;
-  -webkit-overflow-scrolling: touch;
-  padding-right: var(--bl-s1);
-}
-.bl-jam-grid.is-silent {
-  opacity: 0.45;
-}
-
-.bl-jam-lane {
-  display: grid;
-  grid-template-columns: minmax(150px, 200px) 1fr;
-  align-items: center;
-  gap: var(--bl-s3);
-}
-@media (max-width: 560px) {
-  .bl-jam-lane {
-    grid-template-columns: minmax(120px, 150px) 1fr;
-  }
-}
-
-.bl-jam-lane-head {
-  display: flex;
-  flex-direction: column;
-  gap: var(--bl-s1);
-  min-width: 0;
-}
-.bl-jam-lane-id {
-  display: flex;
-  align-items: center;
-  gap: var(--bl-s2);
-  min-width: 0;
-}
-.bl-jam-lane-name {
-  font-size: var(--bl-fs-label);
-  color: var(--bl-text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
-}
-.bl-jam-lane-lang {
-  flex: 0 0 auto;
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-micro);
-  letter-spacing: 0.06em;
-  color: var(--bl-text-dim);
-  padding: 1px 5px;
-  border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius-pill);
-}
-
-/* per-lane pitch stepper + audition */
-.bl-jam-pitch {
-  display: flex;
-  align-items: center;
-  gap: var(--bl-s1);
-}
-.bl-jam-pitch-btn,
-.bl-jam-audition {
-  appearance: none;
-  -webkit-appearance: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 30px;
-  height: 30px;
-  padding: 0 var(--bl-s2);
-  border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius-sm);
-  background: var(--bl-surface-2);
-  color: var(--bl-text);
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-value);
-  line-height: 1;
-  cursor: pointer;
-  touch-action: manipulation;
-  transition:
-    background var(--bl-dur-fast) var(--bl-ease),
-    border-color var(--bl-dur-fast) var(--bl-ease),
-    transform var(--bl-dur-fast) var(--bl-ease);
-}
-.bl-jam-audition {
-  color: var(--bl-accent);
-}
-.bl-jam-pitch-btn:hover,
-.bl-jam-audition:hover {
-  border-color: color-mix(in srgb, var(--bl-accent) 50%, var(--bl-border));
-}
-.bl-jam-pitch-btn:active,
-.bl-jam-audition:active {
-  transform: scale(0.92);
-}
-.bl-jam-pitch-btn:focus-visible,
-.bl-jam-audition:focus-visible {
-  outline: 2px solid var(--bl-accent);
-  outline-offset: 1px;
-}
-.bl-jam-pitch-val {
-  min-width: 30px;
-  text-align: center;
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-label);
-  color: var(--bl-text-dim);
-}
-
-.bl-jam-cells {
-  display: grid;
-  grid-template-columns: repeat(var(--bl-steps, 16), minmax(0, 1fr));
-  gap: var(--bl-s1);
-}
-
-/* ---------------------------------------------------------- the live ribbon */
-.bl-jam-perform {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--bl-s2);
-}
-.bl-jam-perform-head {
-  display: flex;
-  align-items: center;
-  gap: var(--bl-s3);
-}
-.bl-jam-perform-title {
-  font-size: var(--bl-fs-label);
-  color: var(--bl-text);
-}
-.bl-jam-bend-readout {
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-value);
-  color: var(--bl-accent);
-  min-width: 3.2em;
-}
-/* Clear control (toolbar): icon + label, danger-tinted, ≥44px hit target. */
-.bl-jam-clear {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--bl-s1);
-  min-height: 44px;
-}
-.bl-jam-clear svg {
-  flex: 0 0 auto;
-}
-
-/* the live-ribbon scale picker — small segmented chips that NAME the scale */
-.bl-jam-scales {
-  margin-left: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--bl-s1);
-  justify-content: flex-end;
-}
-.bl-jam-scale-chip {
-  appearance: none;
-  -webkit-appearance: none;
-  min-height: 44px;
-  padding: 0 var(--bl-s2);
-  border-radius: var(--bl-radius-pill);
-  border: 1px solid var(--bl-border);
-  background: var(--bl-surface-2);
-  color: var(--bl-text-dim);
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-micro);
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  cursor: pointer;
-  touch-action: manipulation;
-  transition:
-    background var(--bl-dur) var(--bl-ease),
-    border-color var(--bl-dur) var(--bl-ease),
-    color var(--bl-dur) var(--bl-ease),
-    transform var(--bl-dur-fast) var(--bl-ease);
-}
-.bl-jam-scale-chip:hover {
-  border-color: color-mix(in srgb, var(--bl-accent) 40%, transparent);
-}
-.bl-jam-scale-chip:active {
-  transform: scale(0.95);
-}
-.bl-jam-scale-chip:focus-visible {
-  outline: 2px solid var(--bl-accent);
-  outline-offset: 1px;
-}
-.bl-jam-scale-chip.is-on {
-  border-color: var(--bl-accent);
-  color: var(--bl-accent);
-  background: color-mix(in srgb, var(--bl-accent) 14%, var(--bl-surface-2));
-}
-
+/* ---------------------------------------------------------- the free-slide ribbon
+ * Sits at the TOP of the grid region, above the lane grid (so it never overlaps
+ * the bottom drawer). A continuous low → high bend: NO scales, NO keys, NO
+ * semitone/cents readout — just a smooth slide. */
 .bl-jam-ribbon {
   --bl-jam-bend: 50%;
   --bl-jam-bend-on: 0;
+  flex: 0 0 auto;
   position: relative;
-  height: 96px;
+  height: 72px;
   border: 1px solid var(--bl-border);
   border-radius: var(--bl-radius);
   background:
@@ -238,8 +48,8 @@
 /* the resting centre line */
 .bl-jam-ribbon-center {
   position: absolute;
-  top: 8%;
-  bottom: 8%;
+  top: 10%;
+  bottom: 10%;
   left: 50%;
   width: 1px;
   background: color-mix(in srgb, var(--bl-text-dim) 60%, transparent);
@@ -261,9 +71,8 @@
     opacity var(--bl-dur) var(--bl-ease),
     box-shadow var(--bl-dur) var(--bl-ease);
 }
-/* While dragging, the thumb tracks the finger 1:1 — NO `left` easing (the ease
- * smoothed/lagged the bend). The transition is restored on pointerup so the
- * snap-back-to-centre still eases premium-smooth. */
+/* While dragging, the thumb tracks the finger 1:1 — NO `left` easing. The
+ * transition is restored on pointerup so the snap-back-to-centre eases smooth. */
 .bl-jam-ribbon.is-dragging .bl-jam-ribbon-thumb {
   transition:
     opacity var(--bl-dur) var(--bl-ease),
@@ -345,45 +154,8 @@
   color: var(--bl-accent);
 }
 
-/* The toolbar Grooves toggle (icon + label), matching the Clear chip's metrics
- * and lighting up when the groove browser is open. */
-.bl-grid-actions .bl-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--bl-s1);
-  min-height: 44px;
-}
-.bl-grid-actions .bl-chip svg {
-  flex: 0 0 auto;
-}
-.bl-grid-actions .bl-chip.is-on {
-  border-color: var(--bl-accent);
-  color: var(--bl-accent);
-  background: color-mix(in srgb, var(--bl-accent) 14%, var(--bl-surface-2));
-}
-
-/* The embedded GROOVE BRAIN section — browse world rhythms and lay your saved
- * phrases on a groove, inline beneath the jam grid (a bounded, scrollable card
- * so it never pushes the live ribbon off-screen). */
-.bl-jam-grooves {
-  margin-top: var(--bl-s3);
-  border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius);
-  background: var(--bl-surface);
-  overflow: hidden;
-  /* Cap the height so the ribbon below stays reachable; the panel scrolls. */
-  max-height: min(52vh, 460px);
-  display: flex;
-  flex-direction: column;
-}
-.bl-jam-grooves .bl-grooves-panel {
-  min-height: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .bl-jam-ribbon-thumb,
-  .bl-jam-pitch-btn,
-  .bl-jam-audition {
+  .bl-jam-ribbon-thumb {
     transition: none;
   }
 }

@@ -6,6 +6,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **Phrase Jam now mirrors the Drums page.** The page was rebuilt on the SAME
+  shared track-studio building blocks as Drums so the two can't drift: a selectable
+  lane grid (`<LaneGrid>` — one row per saved snippet, lane heads select to target
+  groove scatter, hard-won line-height label centering preserved), the full-width
+  bottom pipeline drawer (`<TrackDrawer>` with tabs **Grooves · Effects · Mixer** —
+  no Kit, since phrases have no drum kit), and a header consistent with Drums
+  (global transport + track volume/pan + Clear). The drum page was refactored to
+  consume the same extracted components, rendering identically.
+- **No more semitone/scale on phrases.** Removed the per-lane −/+ semitone steppers
+  (phrases are spoken sounds, not notes — snippets place at centre pitch), the
+  "Scramble" header button (Scatter in the drawer replaces it), and ALL scale UI
+  from the pitch ribbon (no Chromatic/Major/Pentatonic pills, no key/cents readout,
+  no snapping).
+- **Pitch ribbon is a free slide at the TOP.** Moved above the grid (it used to be
+  pinned at the bottom where it overlapped the drawer) and turned into a continuous
+  low → high slide that bends the whole phrase track's pitch live during playback
+  (the realtime `applyParam` pitch bend stays; only its scale/cents UI is gone).
 - **Grooves panel redesign — probabilistic SCATTER + a two-action box.** The five
   buttons (Apply · Layer · Vary · Evolve · Randomize) collapse to TWO, with the
   primary pinned to the TOP of the action box (no scroll): **Scatter** (the star —

@@ -1,0 +1,313 @@
+/**
+ * beatlounge — track-studio SHARED layout: the SELECTABLE lane grid, the bottom
+ * PIPELINE DRAWER (handle + tabs + body), and the compact mixer strip. Used by
+ * BOTH the Drums page (step-grid) and the Phrase Jam page so the two can't drift.
+ * Token-only (--bl-*), responsive ~300px → big iPad/desktop, safe-area aware,
+ * ≥44px hit targets, prefers-reduced-motion honored, one z-scale, never
+ * document.body (the drawer is positioned relative to the page container).
+ *
+ * IA: the lane grid is the hero (full width, scrolls within a fixed height). The
+ * whole track PIPELINE lives in a single FULL-WIDTH BOTTOM DRAWER that overlays
+ * the grid, with three height states: peek (handle + tabs only), open (working
+ * height), expanded (taller — uses the iPad's extra height).
+ */
+
+/* The immersive mount is a `display:flex` ROW with `overflow:auto`, so a bare
+ * flex:1 child doesn't reliably take the full height — force the page mount to a
+ * non-scrolling COLUMN so `.bl-trackpage { flex:1 }` fills the full sheet; the
+ * grid scrolls internally, not the mount. (Applies to any track-studio page.) */
+.bl-immersive-mount:has(> .bl-trackpage) {
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.bl-trackpage {
+  position: relative; /* the drawer is absolutely positioned within this */
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-self: stretch;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  padding-left: var(--bl-safe-left, 0);
+  padding-right: var(--bl-safe-right, 0);
+  overflow: hidden; /* clip the drawer's translate when peeked */
+}
+
+/* ---- grid region (always visible; scrolls within a fixed height) ---- */
+.bl-trackpage-grid.bl-grid {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1 1 auto;
+  /* Reserve the drawer's peek zone at the bottom so the grid's foot + last lane
+   * are never permanently hidden behind the always-present handle + tab bar. */
+  padding: var(--bl-s4) var(--bl-s4)
+    calc(var(--bl-drawer-peek, 96px) + var(--bl-safe-bottom, 0px) + var(--bl-s3));
+  gap: var(--bl-s3);
+}
+.bl-grid-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--bl-s2);
+}
+.bl-grid-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+}
+.bl-trackpage .bl-grid-actions {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--bl-s3);
+}
+.bl-trackpage .bl-grid-foot {
+  flex: 0 0 auto;
+  padding-top: var(--bl-s2);
+}
+
+/* ---- the lane (head + cells) — the grid HERO. The head is a fixed, modest
+ * width so the cells get the rest of the row and FILL it responsively. ---- */
+.bl-lane {
+  display: grid;
+  grid-template-columns: var(--bl-lane-head-w, 92px) minmax(0, 1fr);
+  /* center the head + cells as BLOCKS in the row (NOT stretch) — Safari won't
+   * stretch the <button> head, which left its label pinned to the top. Centered
+   * blocks put the label and the cells at the same vertical center. */
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-lane-head {
+  /* NOT flex: WebKit/Safari does not reliably apply flex/grid centering inside a
+   * <button>, which left the label stuck to the top. Center the single-line
+   * label the bulletproof way — line-height == height — no flex involved. */
+  display: block;
+  height: var(--bl-hit, 44px);
+  padding: 0 var(--bl-s2);
+  border: 1px solid transparent;
+  border-radius: var(--bl-radius-sm, 8px);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font: 600 var(--bl-fs-label) var(--bl-font);
+  line-height: var(--bl-hit, 44px);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: color var(--bl-dur-fast, 130ms) var(--bl-ease),
+    border-color var(--bl-dur-fast, 130ms) var(--bl-ease),
+    background var(--bl-dur-fast, 130ms) var(--bl-ease);
+}
+.bl-lane-head:hover { color: var(--bl-text); }
+.bl-lane-head:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+/* Selected just tints the LABEL accent; the highlight itself is ONE uniform
+ * full-row band on .bl-lane (below) — head + cells share the exact same band. */
+.bl-lane-head.is-selected {
+  color: var(--bl-accent);
+}
+.bl-lane-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Optional trailing chip in a lane head (e.g. a language tag). Stays on the same
+ * single line as the label — the head height is fixed via line-height. */
+.bl-lane-badge {
+  display: inline-block;
+  margin-left: var(--bl-s2);
+  vertical-align: middle;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  color: var(--bl-text-dim);
+  padding: 0 5px;
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-pill);
+}
+.bl-lane-cells {
+  display: grid;
+  grid-template-columns: repeat(var(--bl-steps, 16), minmax(0, 1fr));
+  align-items: center; /* center the square cells so they sit centered in the
+                          selection highlight band (not top-aligned) */
+  gap: 3px;
+  min-width: 0;
+}
+.bl-lane-cells.is-silent { opacity: 0.45; }
+.bl-lane.is-selected {
+  /* ONE uniform full-row accent band (spans head + gap + cells) with a clean
+   * accent left edge — the targeted row reads as a single lit lane. */
+  background: color-mix(in srgb, var(--bl-accent) 9%, transparent);
+  border-radius: var(--bl-radius-sm, 8px);
+  box-shadow: inset 3px 0 0 0 var(--bl-accent);
+}
+
+/* ============================================================ the drawer */
+.bl-trackdrawer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--bl-z-stage); /* inside the page — one z-scale, never body */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+  /* OPAQUE panel — stack the surface tint over the solid bg so the drawer fully
+   * occludes the grid behind it (token-only, no alpha). */
+  background-color: var(--bl-bg);
+  background-image: linear-gradient(var(--bl-surface), var(--bl-surface));
+  border-top: 1px solid var(--bl-border);
+  border-top-left-radius: var(--bl-radius, 14px);
+  border-top-right-radius: var(--bl-radius, 14px);
+  box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.45);
+  /* The three states are height-driven; transition the height for the slide. */
+  transition: height var(--bl-dur-immersive, 220ms) var(--bl-ease);
+}
+.bl-trackdrawer.is-peek {
+  height: calc(var(--bl-drawer-peek, 96px) + var(--bl-safe-bottom, 0px));
+}
+.bl-trackdrawer.is-open {
+  height: min(48vh, 520px);
+}
+.bl-trackdrawer.is-expanded {
+  height: calc(82vh - var(--bl-safe-top, 0px));
+}
+
+/* drag handle — ≥44px tappable zone, the visual grip is the pill inside */
+.bl-trackdrawer-handle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px; /* OVERSIZED grab zone — easy to catch the drawer. */
+  cursor: grab;
+  touch-action: none; /* we own the vertical drag */
+}
+.bl-trackdrawer-handle:active { cursor: grabbing; }
+.bl-trackdrawer-handle:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: -3px;
+  border-radius: var(--bl-radius);
+}
+.bl-trackdrawer-grip {
+  width: 60px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bl-text-dim);
+  opacity: 0.7;
+}
+.bl-trackdrawer-handle:hover .bl-trackdrawer-grip { opacity: 0.85; }
+
+/* tab bar — pills, horizontally scrollable on a 300px phone, never clip */
+.bl-trackdrawer-tabs {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  padding: 0 var(--bl-s4) var(--bl-s2);
+  border-bottom: 1px solid var(--bl-border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.bl-trackdrawer-tabs::-webkit-scrollbar { display: none; }
+.bl-trackdrawer-tab {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  min-height: var(--bl-hit, 44px);
+  padding: 0 var(--bl-s4);
+  border-radius: var(--bl-radius-pill, 999px);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2, var(--bl-surface));
+  color: var(--bl-text-dim);
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--bl-dur-fast, 130ms) var(--bl-ease),
+    border-color var(--bl-dur-fast, 130ms) var(--bl-ease),
+    background var(--bl-dur-fast, 130ms) var(--bl-ease);
+}
+.bl-trackdrawer-tab:hover { border-color: var(--bl-accent); }
+.bl-trackdrawer-tab.is-on {
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  border-color: var(--bl-accent);
+}
+.bl-trackdrawer-tab:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+
+/* the active section body — the ONE place that scrolls; everything inside it
+ * (Grooves / Kit / FX / Mixer) gets the full width. */
+.bl-trackdrawer-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--bl-safe-bottom, 0);
+  display: flex;
+  flex-direction: column;
+}
+.bl-trackdrawer-body .bl-grooves-panel { flex: 1 1 auto; min-height: 0; }
+.bl-trackdrawer-body .bl-fxchain { padding: var(--bl-s4); }
+.bl-trackdrawer-pad { padding: var(--bl-s4); }
+
+/* ---- the shared mixer strip ---- */
+.bl-trackmixer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  padding: var(--bl-s5) var(--bl-s4);
+  align-items: center;
+}
+.bl-trackmixer-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s3);
+  padding: var(--bl-s4);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius, 14px);
+  background: var(--bl-surface-2, var(--bl-surface));
+  min-width: 132px;
+}
+.bl-trackmixer-strip.is-silent { opacity: 0.5; }
+.bl-trackmixer-name {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  font-size: var(--bl-fs-label);
+  font-weight: 600;
+  color: var(--bl-text);
+}
+.bl-trackmixer-pan { margin-top: calc(-1 * var(--bl-s1)); }
+.bl-trackmixer-hint {
+  margin: 0;
+  max-width: 38ch;
+  text-align: center;
+  font-size: var(--bl-fs-micro);
+  line-height: 1.4;
+  color: var(--bl-text-dim);
+}
+
+/* ============================================================ wide layout */
+@media (min-width: 760px) {
+  .bl-trackpage { --bl-lane-head-w: 116px; }
+  .bl-trackdrawer.is-open { height: min(46vh, 560px); }
+  .bl-trackdrawer.is-expanded { height: calc(78vh - var(--bl-safe-top, 0px)); }
+  .bl-trackdrawer-body { padding-left: var(--bl-safe-left, 0); padding-right: var(--bl-safe-right, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-trackdrawer { transition: none; }
+  .bl-trackdrawer-tab,
+  .bl-lane-head { transition: none; }
+}
