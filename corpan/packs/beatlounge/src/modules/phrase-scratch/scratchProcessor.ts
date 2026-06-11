@@ -6,21 +6,22 @@
  * lives here as a STRING; the engine wraps it in a Blob, makes an object URL, and
  * `audioWorklet.addModule(blobUrl)`s it (once per AudioContext). See `scratchEngine.ts`.
  *
- * The processor holds the phrase's channel data (Float32Array per channel) and one
- * floating-point `playhead`. It has two control modes (set via `port`):
- *   • "position" — main thread posts the exact target buffer position (samples) the
- *     needle should be at each frame; each block advances the playhead linearly
- *     toward target (increment = (target−playhead)/blockSize), reading the buffer
- *     with interpolation. The emergent per-sample rate = the finger's signed speed.
- *   • "inertia" — integrate playhead += velocity per sample with friction decay so
- *     the disc + audio coast and slow to rest; below a tiny |velocity| → silence.
- * Output is silent when |rate|≈0 (held). The playhead clamps to [0,length] — NO
- * wrap (run-off / lead-in are silence). Mono + stereo. A short gain ramp at
- * contact transitions avoids clicks (interpolation already kills most).
+ * THE ENGINE IS A CONTINUOUS-RATE INTEGRATOR. The processor holds the phrase's
+ * channel data (Float32Array per channel), one floating-point `playhead`, and a
+ * signed `rate` (buffer-samples per output-sample). EVERY sample it reads the buffer
+ * (interpolated, LOOPING) at the playhead, advances `playhead += rate` (WRAPPED
+ * modulo length — the phrase loops), and slews `rate` one step toward `targetRate`.
+ * It NEVER snaps to a target and freezes between frames (that was the old bug: ~3ms
+ * of audio then ~13ms of frozen DC buzz). The main thread just posts a target rate:
+ *   • "rate"  — set the target rate (finger drag, coast, or Spin's natural 1.0).
+ *   • "hold"  — target rate 0 → slews to a dead stop (silence).
+ *   • "load" / "config" — buffer + tuning.
+ * The processor posts back its true `playhead` periodically ("pos") so the main
+ * thread can keep the needle/visual exactly locked to the audio.
  *
  * !! KEEP THE DSP HERE IN LOCKSTEP WITH `scratchDsp.ts` !! The TS file is the
- * tested twin of this inlined math (renderPositionBlock / renderInertiaBlock /
- * linearSample / cubicSample). Change one → change both.
+ * tested twin of this inlined math (renderRateBlock / linearSample / cubicSample /
+ * wrapPlayhead). Change one → change both.
  */
 
 export const SCRATCH_PROCESSOR_NAME = "bl-scratch-processor"
@@ -31,15 +32,14 @@ class BlScratchProcessor extends AudioWorkletProcessor {
     super()
     this.channels = []      // Float32Array[] (1 = mono, 2 = stereo)
     this.length = 0
-    this.playhead = 0        // float sample index — the ONE read-head
-    this.target = 0          // position-mode goal (samples)
-    this.velocity = 0        // inertia-mode samples/sample
-    this.mode = "idle"       // "position" | "inertia" | "idle"
+    this.playhead = 0        // float sample index — the ONE read-head (wraps/loops)
+    this.rate = 0            // current signed rate (samples/output-sample)
+    this.targetRate = 0      // rate the main thread asked for (slewed toward)
     this.useCubic = true
-    this.frictionPerSec = 0.12
-    this.stop = 0.02         // |velocity| below this (samples/sample) = stopped
-    this.gain = 0            // output trim ramp (anti-click)
+    this.slew = 0.0042       // per-sample one-pole coefficient toward targetRate
+    this.gain = 0            // output trim ramp (anti-click on first contact)
     this.targetGain = 0
+    this.posEvery = 0        // sample counter for periodic playhead reports
     this.port.onmessage = (e) => this.onMessage(e.data)
   }
 
@@ -50,57 +50,51 @@ class BlScratchProcessor extends AudioWorkletProcessor {
         this.channels = (msg.channels || []).map((c) => new Float32Array(c))
         this.length = msg.length || (this.channels[0] ? this.channels[0].length : 0)
         this.playhead = 0
-        this.target = 0
-        this.velocity = 0
-        this.mode = "idle"
+        this.rate = 0
+        this.targetRate = 0
         break
-      case "position":
-        // Finger in contact: scrub toward an exact buffer position (samples).
-        this.mode = "position"
-        this.target = msg.target
+      case "rate":
+        // Continuous: set the target rate; the integrator glides there + keeps moving.
+        this.targetRate = msg.rate || 0
         this.targetGain = 1
         break
-      case "inertia":
-        // Released with a thrown velocity (samples/sample); coast under friction.
-        this.mode = "inertia"
-        this.velocity = msg.velocity || 0
-        this.targetGain = 1
+      case "hold":
+        // Stop the record dead — slew the rate to 0 (silence).
+        this.targetRate = 0
         break
       case "config":
         if (msg.useCubic != null) this.useCubic = !!msg.useCubic
-        if (msg.frictionPerSec != null) this.frictionPerSec = msg.frictionPerSec
-        if (msg.stop != null) this.stop = msg.stop
-        break
-      case "idle":
-        this.mode = "idle"
-        this.velocity = 0
+        if (msg.slew != null && msg.slew > 0) this.slew = msg.slew
         break
     }
   }
 
-  clampPh(idx) {
+  wrapPh(idx) {
     if (!(this.length > 0)) return 0
-    if (idx < 0) return 0
-    if (idx > this.length) return this.length
-    return idx
+    let p = idx % this.length
+    if (p < 0) p += this.length
+    return p
   }
 
   sample(data, idx) {
     const n = data.length
     if (n === 0) return 0
-    if (idx < -1 || idx > n) return 0
-    if (idx <= 0) return data[0] * Math.max(0, 1 + idx)
-    if (idx >= n - 1) return data[n - 1] * Math.max(0, 1 - (idx - (n - 1)))
-    const i = idx | 0
-    const frac = idx - i
-    if (!this.useCubic) {
-      const a = data[i], b = data[i + 1]
+    if (n < 4 || !this.useCubic) {
+      let p = idx % n
+      if (p < 0) p += n
+      const i = p | 0
+      const frac = p - i
+      const a = data[i], b = data[(i + 1) % n]
       return a + (b - a) * frac
     }
-    const x0 = data[i - 1 >= 0 ? i - 1 : 0]
+    let p = idx % n
+    if (p < 0) p += n
+    const i = p | 0
+    const frac = p - i
+    const x0 = data[(i - 1 + n) % n]
     const x1 = data[i]
-    const x2 = data[i + 1 < n ? i + 1 : n - 1]
-    const x3 = data[i + 2 < n ? i + 2 : n - 1]
+    const x2 = data[(i + 1) % n]
+    const x3 = data[(i + 2) % n]
     const a0 = -0.5 * x0 + 1.5 * x1 - 1.5 * x2 + 0.5 * x3
     const a1 = x0 - 2.5 * x1 + 2 * x2 - 0.5 * x3
     const a2 = -0.5 * x0 + 0.5 * x2
@@ -117,74 +111,36 @@ class BlScratchProcessor extends AudioWorkletProcessor {
       return true
     }
 
-    const block = new Float32Array(blockSize)
-    let increment = 0
-
-    if (this.mode === "position") {
-      const target = this.clampPh(this.target)
-      increment = (target - this.playhead) / blockSize
-      // (we compute samples per-channel below; playhead advanced once)
-    } else if (this.mode === "inertia") {
-      // friction over this block (frame-rate independent, exponential)
-      if (Math.abs(this.velocity) < this.stop) {
-        for (let ch = 0; ch < output.length; ch++) output[ch].fill(0)
-        this.velocity = 0
-        return true
-      }
-    } else {
-      // idle / held: silence, but keep the node alive.
-      for (let ch = 0; ch < output.length; ch++) output[ch].fill(0)
-      return true
-    }
-
-    // Render each output channel from its source channel (mono → both).
     const ch0 = this.channels[0]
     const ch1 = this.channels.length > 1 ? this.channels[1] : ch0
+    const k = this.slew <= 0 ? 0 : this.slew >= 1 ? 1 : this.slew
+    const length = this.length
 
-    if (this.mode === "position") {
-      const target = this.clampPh(this.target)
-      for (let ch = 0; ch < output.length; ch++) {
-        const src = ch === 1 && this.channels.length > 1 ? ch1 : ch0
-        let ph = this.playhead
-        const out = output[ch]
-        for (let s = 0; s < blockSize; s++) {
-          out[s] = this.sample(src, ph)
-          ph += increment
-        }
+    // Integrate the CONTINUOUS rate. Per channel we replay the SAME integration from
+    // the block's start state so both channels stay phase-aligned; the shared end
+    // state (playhead/rate) is captured once.
+    let endPh = this.playhead
+    let endRate = this.rate
+    for (let ch = 0; ch < output.length; ch++) {
+      const src = ch === 1 && this.channels.length > 1 ? ch1 : ch0
+      let ph = this.playhead
+      let r = this.rate
+      const out = output[ch]
+      for (let s = 0; s < blockSize; s++) {
+        out[s] = this.sample(src, ph)
+        ph += r
+        if (ph >= length) ph -= length
+        else if (ph < 0) ph += length
+        if (ph >= length || ph < 0) ph = this.wrapPh(ph)
+        r += (this.targetRate - r) * k
       }
-      this.playhead = target
-    } else {
-      // INERTIA
-      const blockMul = Math.pow(this.frictionPerSec, blockSize / sampleRate)
-      const perSampleMul = Math.pow(blockMul, 1 / blockSize)
-      let endPh = this.playhead
-      let endV = this.velocity
-      for (let ch = 0; ch < output.length; ch++) {
-        const src = ch === 1 && this.channels.length > 1 ? ch1 : ch0
-        let ph = this.playhead
-        let v = this.velocity
-        const out = output[ch]
-        for (let s = 0; s < blockSize; s++) {
-          out[s] = this.sample(src, ph)
-          ph += v
-          v *= perSampleMul
-          if (ph <= 0 || ph >= this.length) {
-            ph = this.clampPh(ph)
-            v = 0
-            for (let r = s + 1; r < blockSize; r++) out[r] = 0
-            break
-          }
-        }
-        endPh = ph
-        endV = v
-      }
-      this.playhead = this.clampPh(endPh)
-      this.velocity = Math.abs(endV) < this.stop ? 0 : endV
-      // Report rest so the main thread can flip to idle + stop the visual coast.
-      if (this.velocity === 0) this.port.postMessage({ type: "rest", playhead: this.playhead })
+      endPh = ph
+      endRate = r
     }
+    this.playhead = endPh
+    this.rate = endRate
 
-    // Anti-click gain ramp (~3ms) across the block at contact transitions.
+    // Anti-click gain ramp (~3ms) across the block at the very first contact.
     const rampStep = 1 / Math.max(1, Math.floor(0.003 * sampleRate))
     for (let ch = 0; ch < output.length; ch++) {
       const out = output[ch]
@@ -195,6 +151,15 @@ class BlScratchProcessor extends AudioWorkletProcessor {
         out[s] *= g
       }
       if (ch === output.length - 1) this.gain = g
+    }
+
+    // Report the true playhead ~once per animation frame (every 1024 samples ≈ 21ms
+    // at 48k) so the main thread can lock the needle/visual to the audio without
+    // flooding the port (the RAF loop only consumes one report per frame anyway).
+    this.posEvery += blockSize
+    if (this.posEvery >= 1024) {
+      this.posEvery = 0
+      this.port.postMessage({ type: "pos", playhead: this.playhead, rate: this.rate })
     }
     return true
   }

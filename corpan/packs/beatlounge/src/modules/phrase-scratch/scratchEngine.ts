@@ -1,26 +1,28 @@
 /**
  * beatlounge — phrase-SCRATCH ENGINE: a REAL turntable. ONE AudioBuffer, ONE
- * floating-point playhead, signed variable rate, interpolated. The needle points
- * at ONE exact moment in the phrase; moving the disc moves that single read-head
- * forward / backward through the single wave. NO grains, NO looping, NO
- * re-triggering, NO voice spawning. (This replaces the old GrainPlayer looper.)
+ * floating-point playhead, ONE continuous signed RATE, interpolated. The needle
+ * points at ONE exact moment in the phrase; moving the disc moves that single
+ * read-head forward / backward through the single wave at the finger's speed. The
+ * phrase LOOPS (wraps modulo length). NO grains, NO re-triggering, NO voice
+ * spawning.
  *
  * ARCHITECTURE
  *   • An AudioWorklet (`scratchProcessor.ts`) holds the channel data + the float
- *     playhead and does the per-sample interpolated read each render block. Two
- *     control modes posted over its port:
- *       – POSITION (finger down): the main thread posts the exact target buffer
- *         position (samples) each animation frame; the block scrubs the playhead
- *         linearly to it. Emergent per-sample rate = the finger's signed speed.
- *       – INERTIA (released): a thrown velocity (samples/sample) coasts under
- *         friction; the audio slows + stops with the disc.
+ *     playhead + the signed rate and integrates `playhead += rate` EVERY sample,
+ *     continuously, slewing `rate` toward the target the main thread posts. The main
+ *     thread derives the target rate from the disc's angular speed each RAF tick and
+ *     posts it; between posts the worklet keeps moving — so the audio NEVER freezes
+ *     between frames (the old position/snap-to-target engine froze for ~13ms of each
+ *     16ms frame → DC buzz). The worklet posts its true playhead back ("pos") so the
+ *     needle stays locked to the audio.
  *   • The pack is a single bundled IIFE behind a proxy — there is no served worklet
  *     file — so the processor source is a STRING wrapped in a Blob URL and added
  *     once per AudioContext. If `audioWorklet` is missing or `addModule` throws we
  *     degrade to a ScriptProcessorNode running the SAME pure DSP (`scratchDsp.ts`),
  *     never crashing the load.
- *   • Each deck connects through its own gain into a shared output, so a SECOND
- *     deck is just another instance crossfaded against the first.
+ *   • Each deck connects through its own gain into a shared output. That gain is the
+ *     deck's LEVEL: the single-deck CUT FADER and the two-deck crossfader both write
+ *     it. A SECOND deck is just another instance.
  *
  * The math is the tested twin in `scratchDsp.ts` / `scratchMath.ts`.
  */
@@ -29,31 +31,34 @@ import {
   SCRATCH_PROCESSOR_NAME,
   SCRATCH_PROCESSOR_SOURCE,
 } from "./scratchProcessor"
-import {
-  blockFriction,
-  renderInertiaBlock,
-  renderPositionBlock,
-  cubicSample,
-} from "./scratchDsp"
-import { FRICTION_PER_SEC } from "./scratchMath"
+import { renderRateBlock, cubicSample, DEFAULT_RATE_SLEW } from "./scratchDsp"
 
 const LOG = "[beatlounge/phrase-scratch]"
 
-/** Below this |velocity| (samples/sample) the inertia coast is dead → silence. */
-const STOP_SAMPLES_PER_SAMPLE = 0.02
+/** A playhead report from the engine (seconds + current signed rate). */
+export interface PosReport {
+  /** True playhead in buffer-seconds (wrapped into [0, duration)). */
+  seconds: number
+  /** Current signed rate (buffer-sec per real-sec). */
+  rate: number
+}
 
 /** A loaded turntable deck driven by the disc. */
 export interface ScratchDeck {
   /** True once a buffer is loaded and the node is live. */
   isLive(): boolean
-  /** POSITION mode: scrub toward this exact buffer time (seconds). Finger-down. */
-  setTargetSeconds(seconds: number): void
-  /** INERTIA mode: throw the playhead with this signed rate (×, buffer-sec/sec). */
-  release(rate: number): void
-  /** Hold the record dead-still (silence) without coasting. */
+  /**
+   * Set the CONTINUOUS target rate (signed, buffer-sec per real-sec). The finger
+   * drag, the release coast, and Spin all just set a rate; the engine integrates it
+   * smoothly every sample. 0 ≈ held.
+   */
+  setRate(rate: number): void
+  /** Stop the record dead (rate → 0, silence). */
   hold(): void
-  /** This deck's mix level 0..1 (the crossfader writes this). */
+  /** This deck's output level 0..1 (the cut fader AND the crossfader write this). */
   setGain(gain: number): void
+  /** Subscribe to playhead reports (for needle/visual lock). Returns an unsubscribe. */
+  onPos(cb: (p: PosReport) => void): () => void
   /** Loaded buffer duration in seconds (0 if none). */
   duration(): number
   /** Sample rate of the loaded buffer. */
@@ -118,6 +123,15 @@ const createWorkletDeck = (
   let disposed = false
   let baseGain = clamp01(gain)
   out.gain.value = baseGain
+  const posSubs = new Set<(p: PosReport) => void>()
+
+  node.port.onmessage = (e: MessageEvent) => {
+    const msg = e.data
+    if (msg && msg.type === "pos" && posSubs.size > 0) {
+      const report: PosReport = { seconds: msg.playhead / sr, rate: msg.rate }
+      posSubs.forEach((cb) => cb(report))
+    }
+  }
 
   // Transfer channel data to the processor (small phrase buffers — copy is fine).
   const channels: Float32Array[] = []
@@ -128,35 +142,36 @@ const createWorkletDeck = (
     { type: "load", channels, sampleRate: sr, length: buffer.length },
     channels.map((c) => c.buffer)
   )
-  node.port.postMessage({ type: "config", useCubic: true, frictionPerSec: FRICTION_PER_SEC, stop: STOP_SAMPLES_PER_SAMPLE })
+  node.port.postMessage({ type: "config", useCubic: true, slew: DEFAULT_RATE_SLEW })
 
   return {
     isLive: () => !disposed,
-    setTargetSeconds(seconds: number) {
+    setRate(rate: number) {
       if (disposed) return
-      node.port.postMessage({ type: "position", target: seconds * sr })
-    },
-    release(rate: number) {
-      if (disposed) return
-      // rate is buffer-seconds per real second → samples per output-sample.
-      node.port.postMessage({ type: "inertia", velocity: rate })
+      node.port.postMessage({ type: "rate", rate })
     },
     hold() {
       if (disposed) return
-      node.port.postMessage({ type: "idle" })
+      node.port.postMessage({ type: "hold" })
     },
     setGain(g: number) {
       if (disposed) return
       baseGain = clamp01(g)
-      out.gain.setTargetAtTime(baseGain, ctx.currentTime, 0.01)
+      out.gain.setTargetAtTime(baseGain, ctx.currentTime, 0.008)
+    },
+    onPos(cb) {
+      posSubs.add(cb)
+      return () => posSubs.delete(cb)
     },
     duration: () => buffer.duration,
     sampleRate: () => sr,
     dispose() {
       if (disposed) return
       disposed = true
+      posSubs.clear()
       try {
-        node.port.postMessage({ type: "idle" })
+        node.port.onmessage = null
+        node.port.postMessage({ type: "hold" })
         node.disconnect()
       } catch {
         /* ignore */
@@ -179,75 +194,66 @@ const createScriptProcessorDeck = (
   gain: number
 ): ScratchDeck => {
   const sr = buffer.sampleRate
-  const length = buffer.length
   let disposed = false
   let baseGain = clamp01(gain)
   out.gain.value = baseGain
+  const posSubs = new Set<(p: PosReport) => void>()
 
   const ch0 = buffer.getChannelData(0).slice()
   const ch1 = buffer.numberOfChannels > 1 ? buffer.getChannelData(1).slice() : ch0
 
-  let mode: "idle" | "position" | "inertia" = "idle"
   let playhead = 0
-  let targetSamples = 0
-  let velocity = 0
+  let rate = 0
+  let targetRate = 0
   const interp = cubicSample
 
   // 256-frame buffer keeps latency low while staying inside SP's allowed sizes.
   const bufSize = 256
   const sp = ctx.createScriptProcessor(bufSize, 0, 2)
+  let posCounter = 0
   sp.onaudioprocess = (e: AudioProcessingEvent) => {
     const outL = e.outputBuffer.getChannelData(0)
     const outR = e.outputBuffer.numberOfChannels > 1 ? e.outputBuffer.getChannelData(1) : outL
-    if (mode === "position") {
-      const res = renderPositionBlock(ch0, outL, playhead, targetSamples, interp)
-      if (outR !== outL) renderPositionBlock(ch1, outR, playhead, targetSamples, interp)
-      playhead = res.playhead
-    } else if (mode === "inertia") {
-      const mul = blockFriction(FRICTION_PER_SEC, bufSize, sr)
-      const res = renderInertiaBlock(
-        ch0, outL, playhead, velocity, mul, STOP_SAMPLES_PER_SAMPLE, interp
-      )
-      if (outR !== outL) {
-        renderInertiaBlock(ch1, outR, playhead, velocity, mul, STOP_SAMPLES_PER_SAMPLE, interp)
-      }
-      playhead = res.playhead
-      velocity = res.velocity
-      if (velocity === 0) mode = "idle"
-    } else {
-      outL.fill(0)
-      if (outR !== outL) outR.fill(0)
+    const res = renderRateBlock(ch0, outL, playhead, rate, targetRate, DEFAULT_RATE_SLEW, interp)
+    if (outR !== outL) {
+      renderRateBlock(ch1, outR, playhead, rate, targetRate, DEFAULT_RATE_SLEW, interp)
+    }
+    playhead = res.playhead
+    rate = res.rate
+    posCounter += bufSize
+    if (posCounter >= 1024 && posSubs.size > 0) {
+      posCounter = 0
+      const report: PosReport = { seconds: playhead / sr, rate }
+      posSubs.forEach((cb) => cb(report))
     }
   }
   sp.connect(out)
 
   return {
     isLive: () => !disposed,
-    setTargetSeconds(seconds: number) {
+    setRate(r: number) {
       if (disposed) return
-      mode = "position"
-      targetSamples = Math.max(0, Math.min(length, seconds * sr))
-    },
-    release(rate: number) {
-      if (disposed) return
-      mode = "inertia"
-      velocity = rate
+      targetRate = r
     },
     hold() {
       if (disposed) return
-      mode = "idle"
-      velocity = 0
+      targetRate = 0
     },
     setGain(g: number) {
       if (disposed) return
       baseGain = clamp01(g)
-      out.gain.setTargetAtTime(baseGain, ctx.currentTime, 0.01)
+      out.gain.setTargetAtTime(baseGain, ctx.currentTime, 0.008)
+    },
+    onPos(cb) {
+      posSubs.add(cb)
+      return () => posSubs.delete(cb)
     },
     duration: () => buffer.duration,
     sampleRate: () => sr,
     dispose() {
       if (disposed) return
       disposed = true
+      posSubs.clear()
       try {
         sp.onaudioprocess = null
         sp.disconnect()
@@ -303,10 +309,10 @@ export const createScratchDeck = async (
     // Dignified silent stub: never crash the load.
     return {
       isLive: () => false,
-      setTargetSeconds: () => {},
-      release: () => {},
+      setRate: () => {},
       hold: () => {},
       setGain: () => {},
+      onPos: () => () => {},
       duration: () => buffer.duration,
       sampleRate: () => buffer.sampleRate,
       dispose: () => {
@@ -320,4 +326,4 @@ export const createScratchDeck = async (
   }
 }
 
-export { ensureWorkletModule, STOP_SAMPLES_PER_SAMPLE }
+export { ensureWorkletModule }

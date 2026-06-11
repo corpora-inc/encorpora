@@ -6,28 +6,45 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
-- **Scratch — a REAL turntable (position-based scrub engine).** The phrase-scratch
+- **Scratch — a REAL turntable (CONTINUOUS-RATE scrub engine).** The phrase-scratch
   module's granular looper (`Tone.GrainPlayer`) is replaced by a single-read-head
-  scrub engine: ONE `AudioBuffer`, ONE floating-point playhead, signed variable
-  rate, interpolated (Catmull-Rom cubic, linear-selectable). An `AudioWorklet`
+  velocity engine: ONE `AudioBuffer`, ONE floating-point playhead, ONE continuous
+  signed rate, interpolated (Catmull-Rom cubic, linear-selectable). An `AudioWorklet`
   processor (loaded via a Blob URL since the pack has no served worklet file) holds
-  the wave and scrubs the playhead — *position mode* posts the exact needle position
-  each frame (the emergent per-sample rate is the finger's signed speed: real
-  forward/reverse scratch, natural pitch), *inertia mode* coasts the playhead under
-  friction on release so the audio slows and stops with the disc. A `ScriptProcessor`
-  fallback runs the same DSP if the worklet is unavailable; the load never crashes.
-  No grains, no looping, no re-triggering — moving the disc a hair plays ONE position
-  of the phrase, not overlapping voices.
-- **Scratch — needle + spiral groove.** A fixed needle points at the exact moment
-  under the head, with a position + current-word readout; words are placed along the
-  groove at their real buffer-time ranges, and the groove **spirals inward** across
-  revolutions for phrases longer than one turn. The disc and sound are locked to the
-  same playhead. Word times come from a forced-alignment seam (exact `WordTiming[]`
-  if a host ever provides Whisper-style alignment; else silence-split or even
-  distribution).
+  the wave and integrates `playhead += rate` EVERY sample, continuously, slewing the
+  rate (one-pole) toward the target the main thread posts each frame — so the audio
+  is always gliding at the finger's speed and never freezes between frames. (The
+  earlier position/snap-to-target build froze the playhead for ~13ms of each 16ms
+  frame → a distorted DC buzz; this fixes that — slow-scrubbing a word is now
+  intelligible.) A `ScriptProcessor` fallback runs the same DSP if the worklet is
+  unavailable; the load never crashes.
+- **Scratch — the phrase LOOPS.** Past the end the playhead wraps to the start (and
+  past the start, to the end), so continuous spinning replays the phrase — a locked
+  groove, not a run-off.
+- **Scratch — consistent time per revolution + forward = forward.** A fixed
+  `SECONDS_PER_REV` (≈2s) maps one disc turn to a fixed slice of audio for EVERY
+  phrase, regardless of sample length (a longer phrase just spans more revolutions);
+  the mapping is never scaled by duration. Dragging the record forward (clockwise)
+  now plays the phrase forward (the direction sign was inverted before).
+- **Scratch — needle on the RIGHT, locked to the audio.** The fixed needle moves to
+  3 o'clock and its angle convention is corrected so the groove position UNDER the
+  needle is exactly the playhead you hear (it previously read ~180° off). The engine
+  reports its true playhead back so the needle/visual stay locked. Words are placed
+  along the spiral groove at their real buffer-time ranges (spiraling inward across
+  revolutions); word times come from a forced-alignment seam (exact `WordTiming[]`,
+  else silence-split or even distribution).
 - **Scratch — optional second deck + crossfader.** A "Two decks" affordance reveals
   a second turntable (its own snippet) and an equal-power crossfader; the single
   deck is the default and unaffected.
+
+### Added
+- **Scratch — Spin / Hold.** A per-deck Spin/Hold toggle: Spin auto-rotates the
+  platter at natural tempo (the phrase plays at normal speed, looping) and the disc
+  turns at the matching angular speed; Hold stops the record dead (silence).
+  Scratching over the top overrides while in contact and returns to Spin on release.
+- **Scratch — single-deck CUT FADER.** A throwable vertical level fader on each deck
+  (the scratch "cut") for fast 0→full fade-ins — present even with one turntable,
+  composed with the two-deck crossfader.
 
 ### Added
 - **Home Stage — live mini-widgets.** Tiles can declare `tileInteractive` to be
