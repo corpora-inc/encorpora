@@ -25,28 +25,142 @@
   color: var(--bl-text-dim);
 }
 
-/* ---------------------------------------------------------- immersive */
+/* ---------------------------------------------------------- immersive page
+ * The Instruments page is a track-studio page: the .bl-trackpage wrapper makes
+ * the bottom TrackDrawer size correctly (shared CSS in track-studio.css). The
+ * stage holds the track bar + the playable ribbon + the voice-type segment; the
+ * drawer overlays the bottom. */
 .bl-instr {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: var(--bl-s4);
   gap: var(--bl-s3);
   min-height: 0;
+}
+.bl-instr-stage {
+  gap: var(--bl-s3);
 }
 
 .bl-instr-bar {
   display: flex;
   align-items: center;
-  gap: var(--bl-s2);
-  overflow-x: auto;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
   -webkit-overflow-scrolling: touch;
 }
 .bl-instr-tracks {
   display: flex;
   gap: var(--bl-s2);
   flex-wrap: wrap;
+  flex: 1 1 auto;
+}
+
+/* one track entry in the switcher: pick (dot) + editable name + remove */
+.bl-instr-track {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s2) 0 var(--bl-s1);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-surface-2);
+  transition:
+    border-color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-instr-track.is-on {
+  border-color: var(--bl-accent);
+  background: color-mix(in srgb, var(--bl-accent) 16%, var(--bl-surface-2));
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 40%, transparent);
+}
+.bl-instr-track-pick {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--bl-hit);
+  height: var(--bl-hit);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.bl-instr-track-pick:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: -2px;
+  border-radius: var(--bl-radius-pill);
+}
+.bl-instr-track-name {
+  font-size: var(--bl-fs-label);
+}
+.bl-instr-track-remove {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  /* line-height == box keeps the × centered (WebKit won't flex-center a button) */
+  line-height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bl-radius-pill);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-body);
+  cursor: pointer;
+  transition:
+    color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-instr-track-remove:hover {
+  color: var(--bl-error);
+  background: color-mix(in srgb, var(--bl-error) 16%, transparent);
+}
+.bl-instr-track-remove:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+
+/* armed Record chip on the track bar (matches the ribbon's armed treatment) */
+.bl-instr .bl-chip.is-armed {
+  border-color: var(--bl-error);
+  color: var(--bl-error);
+  background: color-mix(in srgb, var(--bl-error) 22%, var(--bl-surface-2));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--bl-error) 40%, transparent);
+}
+
+/* the playable ribbon fills the stage between the bar and the voice-type seg */
+.bl-instr-ribbon {
+  flex: 1 1 auto;
+  min-height: 200px;
+  display: flex;
+}
+.bl-instr-ribbon > .bl-ribbon {
+  flex: 1;
+  padding: 0;
+}
+
+/* voice-type segment (Analog / Preset / Osc) */
+.bl-instr-voicetype {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+/* the raw-oscillator chooser (Osc voice type, in the Voice drawer tab) */
+.bl-instr-osc {
+  display: flex;
+  padding: var(--bl-s2);
+}
+
+/* the reserved score-editor seam (WS-F fills it) */
+.bl-instr-score {
+  min-height: 120px;
 }
 .bl-instr-empty,
 .bl-instr-foot-hint {
@@ -88,121 +202,13 @@
   outline: 2px solid var(--bl-accent);
   outline-offset: 1px;
 }
-
-/* ---------------------------------------------------------- play surface */
-.bl-play {
-  display: flex;
-  flex-direction: column;
-  gap: var(--bl-s2);
-  flex: 1 1 auto;
-  min-height: 0;
-}
-
-/* Mode switch row (Fretless / Chromatic / Scale) + live note readout. */
-.bl-play-modes {
-  display: flex;
-  align-items: center;
-  gap: var(--bl-s2);
-}
-.bl-play-note {
-  margin-left: auto;
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-label);
-  letter-spacing: 0.04em;
-  color: var(--bl-accent);
-  min-width: 3.2ch;
-  text-align: right;
-}
-
-/* The playable surface — a continuous-pitch string field. Touch-first. */
-.bl-play-surface {
-  position: relative;
-  flex: 1 1 auto;
-  /* Big enough to play on a phone; grows on iPad/desktop. */
-  min-height: 168px;
-  border-radius: var(--bl-radius);
-  border: 1px solid var(--bl-border);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--bl-accent) 6%, var(--bl-surface)),
-      var(--bl-surface)
-    );
-  overflow: hidden;
-  /* No browser gestures stealing the multitouch (scroll/zoom/select). */
-  touch-action: none;
-  -webkit-user-select: none;
-  user-select: none;
-  cursor: crosshair;
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--bl-accent) 10%, transparent);
-}
-@media (min-width: 600px) {
-  .bl-play-surface { min-height: 240px; }
-}
-@media (min-width: 960px) {
-  .bl-play-surface { min-height: 320px; }
-}
-
-/* Each stacked octave row + its semitone reference markers. */
-.bl-play-row {
-  position: absolute;
-  left: 0;
-  right: 0;
-  border-top: 1px solid color-mix(in srgb, var(--bl-border) 70%, transparent);
-}
-.bl-play-row:first-child { border-top: none; }
-
-.bl-play-marker {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: color-mix(in srgb, var(--bl-text-dim) 40%, transparent);
-  transform: translateX(-0.5px);
-}
-.bl-play-marker.is-octave {
-  width: 2px;
-  background: color-mix(in srgb, var(--bl-accent) 55%, transparent);
-  transform: translateX(-1px);
-}
-/* Scale mode: in-scale degrees glow; out-of-scale recede to near-invisible. */
-.bl-play-surface.is-scale .bl-play-marker.is-out { opacity: 0.12; }
-.bl-play-surface.is-scale .bl-play-marker.is-in {
-  width: 2px;
-  background: color-mix(in srgb, var(--bl-accent) 60%, transparent);
-  transform: translateX(-1px);
-}
-
-/* Live finger glow — one per active touch. */
-.bl-play-dot {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  margin: -15px 0 0 -15px;
-  border-radius: var(--bl-radius-pill);
-  background: radial-gradient(
-    circle,
-    var(--bl-accent-hot),
-    color-mix(in srgb, var(--bl-accent) 40%, transparent) 60%,
-    transparent 72%
-  );
-  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 70%, transparent);
-  pointer-events: none;
-  transition: opacity var(--bl-dur-fast) var(--bl-ease);
-}
-@media (prefers-reduced-motion: reduce) {
-  .bl-play-dot { transition: none; }
-}
-
-/* Family rail + program grid. The PLAY surface is the headline; the picker
- *  below is a bounded, scrollable region so the surface keeps prominence. */
+/* Family rail + program grid — the Preset voice type's browser (lives inside the
+ *  Voice drawer tab, which scrolls itself). */
 .bl-instr-browser {
   display: flex;
   flex-direction: column;
   gap: var(--bl-s3);
-  flex: 0 1 auto;
   min-height: 0;
-  max-height: 42%;
 }
 .bl-instr-families {
   display: flex;

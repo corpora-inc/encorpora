@@ -16,6 +16,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   layer dial and auto-play; see `docs/MELODY_CORPUS.md`.
 
 ### Changed
+- **Instruments is now one playable page — the ribbon plays the track's real
+  voice.** The Instruments page leads with a polyphonic performance ribbon that
+  plays the bound track's actual instrument through its FX + mixer (was a
+  throwaway mono synth on the wrong sound). It keeps the in-key / free-glide
+  feel, frets that follow the song's chords as they change mid-drag, and records
+  into the same track. A track-switcher bar renames + adds + removes voices (you
+  can't delete the last one), a voice-type segment (Analog · Preset · Osc)
+  re-voices the track, and a bottom drawer holds Voice / Effects / Mixer (plus a
+  reserved Score step-editor tab). The standalone Analog tile folds in as the
+  Analog voice type; the Ribbon stays as the quick-perform surface.
 - **Fewer, more intentional Stage tiles + a single header convention.** Module
   bodies no longer repeat their own title or carry a play/stop button — the
   shell's immersive header owns the title and the one global transport. Grooves

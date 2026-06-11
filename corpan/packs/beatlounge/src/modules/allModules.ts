@@ -21,7 +21,6 @@ import { createSongSetupModule } from "./song-setup"
 import { createInstrumentsModule } from "./instruments"
 import { createRibbonModule } from "./ribbon"
 import { createComposerModule } from "./composer"
-import { createAnalogSynthModule } from "./synth-analog"
 import { createPhraseJamModule } from "./phrase-jam"
 import { createPhraseScratchModule } from "./phrase-scratch"
 
@@ -35,7 +34,6 @@ export const registerAllModules = (registry: ModuleRegistry, deps: ModuleDeps): 
   registry.register(createSongSetupModule(deps))
   registry.register(createStepGridModule(deps))
   registry.register(createInstrumentsModule(deps))
-  registry.register(createAnalogSynthModule(deps))
   registry.register(createPianoRollModule(deps))
   registry.register(createComposerModule(deps))
   registry.register(createRibbonModule(deps))

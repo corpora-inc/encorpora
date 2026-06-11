@@ -56,7 +56,6 @@ export const createInstrumentsModule = ({
   audio,
   host,
 }: InstrumentsDeps): BeatloungeModule => {
-  void audio // live play goes through host.playLiveVoice, not the facade directly
   void host
   return {
     id: INSTRUMENTS_ID,
@@ -79,7 +78,12 @@ export const createInstrumentsModule = ({
           root.render(<InstrumentsTile store={store} trackId={trackId} />)
         } else {
           root.render(
-            <InstrumentsBrowser host={mount.host} store={store} trackId={trackId} />
+            <InstrumentsBrowser
+              host={mount.host}
+              store={store}
+              audio={audio}
+              trackId={trackId}
+            />
           )
         }
       }
