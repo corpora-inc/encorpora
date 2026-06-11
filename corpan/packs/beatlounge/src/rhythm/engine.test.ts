@@ -12,11 +12,13 @@ import {
   applyRhythmToPhrases,
   scatterRhythm,
   scatterPhrases,
+  chooseHitsToSparsify,
   cellTicks,
   evolveRhythm,
   randomizeRhythm,
   rhythmTicks,
   varyRhythm,
+  type RemovableHit,
 } from "./engine"
 import { hitVelocity, rhythmCells, type Lane, type Rhythm } from "./types"
 import { pitchForRole, KIT_PITCHES } from "./roles"
@@ -235,6 +237,58 @@ describe("scatterPhrases — probabilistic snippet placement", () => {
     // Each selected row got its own spread (the groove appears on both).
     expect(out.some((e) => e.snippetIndex === 1)).toBe(true)
     expect(out.some((e) => e.snippetIndex === 3)).toBe(true)
+  })
+})
+
+describe("chooseHitsToSparsify — the '−' of the density dial", () => {
+  const hit = (ref: string, tick: number, velocity: number): RemovableHit => ({ ref, tick, velocity })
+
+  it("removes a FRACTION (rounded, ≥1) of the hits, not all of them", () => {
+    const hits = Array.from({ length: 10 }, (_, i) => hit(`h${i}`, i * 24, 0.6))
+    const out = chooseHitsToSparsify(hits, 0.3, () => 0.5)
+    expect(out.length).toBe(3) // round(10 * 0.3)
+  })
+
+  it("always removes at least ONE so a − tap makes progress", () => {
+    const hits = [hit("a", 0, 0.9), hit("b", 24, 0.9)]
+    // 2 * 0.1 rounds to 0 → clamp up to 1.
+    const out = chooseHitsToSparsify(hits, 0.1, () => 1)
+    expect(out.length).toBe(1)
+  })
+
+  it("can take the LAST hit down to nothing", () => {
+    const hits = [hit("only", 0, 0.5)]
+    expect(chooseHitsToSparsify(hits, 1, () => 1).length).toBe(1)
+    // Repeated thinning of a single hit still removes it.
+    expect(chooseHitsToSparsify(hits, 0.3, () => 0.5).length).toBe(1)
+  })
+
+  it("prefers OFF-BEAT hits first (low groove probability removed before onsets)", () => {
+    // Two hits, equal velocity: one on a strong onset cell, one off-beat.
+    const onset = hit("onset", 0, 0.7)
+    const offbeat = hit("offbeat", 24, 0.7)
+    const probOf = (tick: number) => (tick === 0 ? 0.9 : 0.06)
+    const out = chooseHitsToSparsify([onset, offbeat], 0.5, probOf)
+    expect(out.map((h) => h.ref)).toEqual(["offbeat"])
+  })
+
+  it("prefers QUIET hits when groove emphasis ties (keep the loud ones)", () => {
+    const loud = hit("loud", 0, 0.95)
+    const quiet = hit("quiet", 24, 0.2)
+    const out = chooseHitsToSparsify([loud, quiet], 0.5, () => 0.5)
+    expect(out.map((h) => h.ref)).toEqual(["quiet"])
+  })
+
+  it("is empty for an empty input or a zero fraction", () => {
+    expect(chooseHitsToSparsify([], 0.5, () => 1)).toEqual([])
+    expect(chooseHitsToSparsify([hit("a", 0, 0.5)], 0, () => 1)).toEqual([])
+  })
+
+  it("is pure/stable (same args ⇒ same removal set)", () => {
+    const hits = Array.from({ length: 8 }, (_, i) => hit(`h${i}`, i * 12, 0.3 + i * 0.05))
+    const a = chooseHitsToSparsify(hits, 0.5, (t) => (t % 48 === 0 ? 0.9 : 0.1))
+    const b = chooseHitsToSparsify(hits, 0.5, (t) => (t % 48 === 0 ? 0.9 : 0.1))
+    expect(a).toEqual(b)
   })
 })
 

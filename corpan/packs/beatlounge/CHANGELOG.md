@@ -50,6 +50,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   a fresh synth track and makes THAT analog, leaving Drums/Pads untouched.
 
 ### Changed
+- **Grooves: a granular +/− density dial replaces the Scatter / Clear + Scatter
+  buttons.** The two big word-buttons are gone for a compact, icon-forward − / +
+  control on the targeted rows. **+** lays one more probabilistic layer of the
+  selected groove (ADDITIVE — keeps what's there, re-rolls a fresh sprinkle each
+  tap, gradually denser). **−** thins the row, removing a fraction of the current
+  hits lowest-emphasis/off-beat first, each tap thinner, down to nothing — and a
+  − removes a smaller bite than a + adds ("harder to take away than to add").
+  Each tap is one undo step, grid-only (never auto-plays). **Phrases are now far
+  sparser than drums**: a phrase + uses a dramatically lower per-tap placement
+  density (~90% sparser) so it drops only a handful of well-placed words instead
+  of one on every 8th — build phrase density with more + taps. New pure engine
+  op `chooseHitsToSparsify` (off-beat/quiet first, down to empty) plus
+  `denser`/`sparser` actions; unit-tested.
 - **Phrase Jam now mirrors the Drums page.** The page was rebuilt on the SAME
   shared track-studio building blocks as Drums so the two can't drift: a selectable
   lane grid (`<LaneGrid>` — one row per saved snippet, lane heads select to target

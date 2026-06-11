@@ -26,8 +26,13 @@ import {
   applyRhythm,
   scatterRhythm,
   scatterPhrases,
+  chooseHitsToSparsify,
   rhythmTicks,
+  cellTicks,
+  grooveProfile,
+  rhythmCells,
   type Rhythm,
+  type RemovableHit,
 } from "../../rhythm"
 import { pitchForRole } from "../../rhythm"
 import { bankSnippets } from "../../phrase/bank"
@@ -90,6 +95,38 @@ export type GrooveTarget =
       selectedSnippetIds?: string[]
     }
 
+/**
+ * THE +/− DENSITY DIAL. The Grooves panel's whole apply surface is now ONE
+ * granular control: "+" lays one more probabilistic layer of the groove on the
+ * targeted rows (denser); "−" peels a fraction of the current hits back off
+ * (sparser), lowest-emphasis first, down to nothing.
+ *
+ *   • "add"    — ADDITIVE scatter at a per-tap density increment, merged with
+ *                what's already there (never clears). Fresh seed each tap ⇒ each
+ *                + re-rolls a different sprinkle, gradually denser.
+ *   • "remove" — pure sparsify: drop ~SPARSIFY_FRACTION of the targeted rows'
+ *                current hits (off-beat / quiet first). Each − thins further; the
+ *                last − removes the last hit.
+ *
+ * ASYMMETRY ("harder to take away than to add"): a single + adds at
+ * `ADD_DENSITY_STEP` of the groove's full profile, while a single − removes only
+ * `SPARSIFY_FRACTION` of what's present — a smaller bite — so it takes more −
+ * taps to undo a +.
+ */
+export type DensityOp = "add" | "remove"
+
+/** Per-+-tap drum scatter density (fraction of the groove's full profile). */
+export const ADD_DENSITY_STEP_DRUMS = 0.5
+/**
+ * Per-+-tap PHRASE scatter density — DRAMATICALLY lower than drums (~90%
+ * sparser) so one + on a phrase groove drops only a handful of well-placed
+ * words (clustered on the strongest onsets), not a word on every 8th. Build
+ * density with more + taps.
+ */
+export const ADD_DENSITY_STEP_PHRASES = 0.05
+/** Per-−-tap fraction of CURRENT hits removed — smaller than a + adds (gentle). */
+export const SPARSIFY_FRACTION = 0.3
+
 export interface GrooveBuildOpts {
   /**
    * Which grid this groove drives. REQUIRED — the host always knows. Defaults to
@@ -97,6 +134,12 @@ export interface GrooveBuildOpts {
    * behaviour.
    */
   target?: GrooveTarget
+  /**
+   * The +/− density-dial direction. "add" (default) lays one more probabilistic
+   * layer (denser); "remove" thins the targeted rows (sparser). Supersedes the
+   * old clear/layer split for the dial — see DensityOp.
+   */
+  op?: DensityOp
   /** 0..1 — scale all hit velocities. Default 1. */
   intensity?: number
   /**
@@ -197,6 +240,23 @@ const fitLoopTicks = (
 }
 
 /**
+ * A tick → groove-onset-probability lookup for the SPARSIFY ranking: maps any
+ * tick back to its cell in the rhythm's cycle and returns that cell's profile
+ * probability (high on a strong onset, low off-beat). Hits on low-prob cells are
+ * the first the "−" peels away. Pure; built once per build.
+ */
+const makeCellProbOf = (rhythm: Rhythm): ((tick: number) => number) => {
+  const profile = grooveProfile(rhythm)
+  const cells = rhythmCells(rhythm)
+  const ct = cellTicks(rhythm)
+  if (cells <= 0 || ct <= 0) return () => 1
+  return (tick: number): number => {
+    const cell = ((Math.round(tick / ct) % cells) + cells) % cells
+    return profile[cell]?.prob ?? 1
+  }
+}
+
+/**
  * DRUMS grid — the rhythm becomes drum notes. Two paths by selection:
  *
  *   • NO rows selected → the groove plays on its NATURAL kit voices (role→pitch),
@@ -228,21 +288,33 @@ const buildDrumGroove = (
   }
   const drumGrid = doc.tracks.find((t) => t.id === drumId)
 
-  // 2) Optionally grow the loop to one whole cycle so long rhythms fit.
-  const loopTicks = fitLoopTicks(doc, rhythm, opts.fitLoop ?? true, commands)
-
-  // 3) Build the new hits — scatter across selected rows, or the natural mapping.
   const refGrid = drumGrid && isInstrumentTrack(drumGrid) ? drumGrid.grid : { denominator: 16 as const }
   // Duration: a touch under a cell so adjacent hits don't bleed.
   const dur = Math.max(1, Math.round(gridTicks(refGrid) / 2))
   const selected = (target.selectedPitches ?? []).filter((p) => Number.isFinite(p))
+
+  // ---- "−" (sparser): peel a fraction of the targeted rows' current hits ------
+  // Pure: choose which existing notes to remove (off-beat/quiet first), down to
+  // nothing. Removes only — never grows the loop, never lays new hits.
+  if (opts.op === "remove") {
+    return sparsifyDrumGroove(doc, rhythm, drumId, drumGrid, selected)
+  }
+
+  // 2) Optionally grow the loop to one whole cycle so long rhythms fit.
+  const loopTicks = fitLoopTicks(doc, rhythm, opts.fitLoop ?? true, commands)
+
+  // 3) Build the new hits — scatter across selected rows, or the natural mapping.
+  // The +/− dial's "+" lays ONE more layer at a per-tap density increment so each
+  // tap adds a little (gradually denser); the legacy scatter path keeps opts.density.
+  const addDensity =
+    opts.op === "add" ? (opts.density ?? ADD_DENSITY_STEP_DRUMS) : opts.density
 
   let grooveNotes: Omit<NoteEvent, "id">[]
   if (selected.length > 0) {
     // NEW probabilistic scatter across exactly the selected rows.
     const placements = scatterRhythm(rhythm, selected, resolveRng(opts), {
       loopTicks,
-      density: opts.density,
+      density: addDensity,
       intensity: opts.intensity,
     })
     grooveNotes = placements.map((p) => ({
@@ -314,6 +386,56 @@ const buildDrumGroove = (
 }
 
 /**
+ * "−" on DRUMS — make the targeted rows SPARSER. Remove ~SPARSIFY_FRACTION of
+ * the current hits on the selected rows (or, with no selection, the groove's
+ * natural voices), lowest-emphasis first (off-beat / quiet before strong onsets),
+ * via the pure `chooseHitsToSparsify`. Each − thins further; the last − removes
+ * the last hit. Emits `removeNote` per dropped note — one undo batch, no new hits.
+ */
+const sparsifyDrumGroove = (
+  _doc: BeatloungeDoc,
+  rhythm: Rhythm,
+  drumId: string,
+  drumGrid: ReturnType<BeatloungeDoc["tracks"]["find"]>,
+  selected: number[]
+): GrooveBuildResult => {
+  const notes =
+    drumGrid && isInstrumentTrack(drumGrid) ? drumGrid.notes : []
+  // The rows we thin: the explicit selection, or the groove's natural voices.
+  const targeted = new Set<number>(
+    selected.length > 0 ? selected : rhythm.lanes.map((l) => pitchForRole(l.role))
+  )
+  const onRows = notes.filter((n) => targeted.has(n.pitch))
+  if (onRows.length === 0) {
+    return {
+      commands: [],
+      summary: "Nothing to thin",
+      placedPhrases: false,
+      phrasesUnavailable: false,
+    }
+  }
+  const removable: RemovableHit[] = onRows.map((n) => ({
+    ref: n.id,
+    tick: n.tick,
+    velocity: n.velocity,
+  }))
+  const cellProbOf = makeCellProbOf(rhythm)
+  const toRemove = chooseHitsToSparsify(removable, SPARSIFY_FRACTION, cellProbOf)
+  const commands: Command[] = toRemove.map((h) => ({
+    t: "removeNote",
+    trackId: drumId,
+    noteId: h.ref,
+  }))
+  const n = toRemove.length
+  return {
+    commands,
+    summary: `${rhythm.name} · −${n} hit${n === 1 ? "" : "s"}`,
+    placedPhrases: false,
+    phrasesUnavailable: false,
+  }
+}
+
+/**
  * PHRASES grid — the same SCATTER idea on phrase snippet lanes: walk the groove's
  * steps and probabilistically drop a random saved-bank snippet (chance from the
  * groove profile), differently each press. LAYER keeps the held placements and
@@ -341,6 +463,16 @@ const buildPhraseGroove = (
       phrasesUnavailable: true,
     }
   }
+  // Selected snippet rows → put the groove on exactly those rows (like drums).
+  const rows = (target.selectedSnippetIds ?? [])
+    .map((id) => bank.findIndex((ref) => ref.id === id))
+    .filter((i) => i >= 0)
+
+  // ---- "−" (sparser): peel a fraction of the targeted snippet rows' fragments --
+  if (opts.op === "remove") {
+    return sparsifyPhraseGroove(rhythm, phraseId, phraseTrack.fragments, target, bank)
+  }
+
   // Fresh-seeded each press so scatters differ; pure/seeded so it's testable.
   const rng = resolveRng(opts)
 
@@ -360,13 +492,16 @@ const buildPhraseGroove = (
     ? new Set<string>()
     : new Set(phraseTrack.fragments.map((f) => `${f.tick}:${f.fragmentId}`))
 
-  // Selected snippet rows → put the groove on exactly those rows (like drums).
-  const rows = (target.selectedSnippetIds ?? [])
-    .map((id) => bank.findIndex((ref) => ref.id === id))
-    .filter((i) => i >= 0)
+  // The "+" dial lays ONE more layer at the MUCH-SPARSER phrase density step
+  // (~90% sparser than drums) so each + drops only a handful of well-placed words;
+  // the legacy scatter path keeps its 0.6 default.
+  const phraseDensity =
+    opts.op === "add"
+      ? (opts.phraseDensity ?? ADD_DENSITY_STEP_PHRASES)
+      : (opts.phraseDensity ?? 0.6)
   const phrasePlacements = scatterPhrases(rhythm, bank.length, rng, {
     loopTicks,
-    density: opts.phraseDensity ?? 0.6,
+    density: phraseDensity,
     rows,
   })
   let placed = 0
@@ -403,6 +538,55 @@ const buildPhraseGroove = (
     commands,
     summary: `${rhythm.name} · ${verb}${word}`,
     placedPhrases: true,
+    phrasesUnavailable: false,
+  }
+}
+
+/**
+ * "−" on PHRASES — thin the targeted snippet rows. Remove ~SPARSIFY_FRACTION of
+ * the current fragment placements on the selected snippet rows (or, with no
+ * selection, all rows), off-beat first via the shared sparsify ranking. Each −
+ * peels back; the last − removes the last word. Emits `removeFragment` per drop.
+ */
+const sparsifyPhraseGroove = (
+  rhythm: Rhythm,
+  phraseId: string,
+  fragments: readonly FragmentEvent[],
+  target: Extract<GrooveTarget, { kind: "phrases" }>,
+  bank: ReturnType<typeof bankSnippets>
+): GrooveBuildResult => {
+  // Targeted snippet fragment-ids: the selection, or every saved snippet.
+  const selectedIds = target.selectedSnippetIds ?? []
+  const targetIds = new Set<string>(
+    selectedIds.length > 0 ? selectedIds : bank.map((b) => b.id)
+  )
+  const onRows = fragments.filter((f) => targetIds.has(f.fragmentId))
+  if (onRows.length === 0) {
+    return {
+      commands: [],
+      summary: "Nothing to thin",
+      placedPhrases: false,
+      phrasesUnavailable: false,
+    }
+  }
+  // Phrases carry no velocity — rank by gain (a stand-in for emphasis) + cell prob.
+  const removable: RemovableHit[] = onRows.map((f) => ({
+    ref: f.id,
+    tick: f.tick,
+    velocity: f.gain,
+  }))
+  const cellProbOf = makeCellProbOf(rhythm)
+  const toRemove = chooseHitsToSparsify(removable, SPARSIFY_FRACTION, cellProbOf)
+  const commands: Command[] = toRemove.map((h) => ({
+    t: "removeFragment",
+    trackId: phraseId,
+    fragId: h.ref,
+  }))
+  const n = toRemove.length
+  return {
+    commands,
+    summary: `${rhythm.name} · −${n} phrase${n === 1 ? "" : "s"}`,
+    placedPhrases: false,
     phrasesUnavailable: false,
   }
 }

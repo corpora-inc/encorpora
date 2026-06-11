@@ -272,6 +272,78 @@ export const scatterRhythm = (
   return dedupeKeepLoudest(out)
 }
 
+// ================================================================ sparsify
+/**
+ * SPARSIFY — the "−" of the +/− density dial. Pure selection of WHICH existing
+ * hits to remove to make a row(s) thinner, lowest-emphasis first. No RNG, no
+ * doc: caller passes the current events on the targeted rows + the groove (for
+ * its profile, which defines "emphasis" per cell) + a fraction to thin, and gets
+ * back the SUBSET to remove. Off-beat / quiet / between-onset hits go first; the
+ * loud on-onset backbone is the last thing to go (so repeated − gently peels back
+ * to nothing, hardest hits last). Down to empty: a fraction that rounds to "all
+ * remaining" clears the row.
+ *
+ * "Harder to take away than to add": the dial passes a SMALLER fraction to − than
+ * the per-tap density a + adds, so it takes more − taps to undo a +.
+ */
+
+/** A removable hit, addressed minimally (the caller maps back to its event). */
+export interface RemovableHit {
+  /** Stable handle the caller uses to map the decision back to a real event. */
+  ref: string
+  tick: number
+  /** 0..1 loudness — the primary "keep the loud ones" key. */
+  velocity: number
+}
+
+/**
+ * Score a hit by how EXPENDABLE it is (higher ⇒ removed sooner). Off-beat cells
+ * (low groove probability) and quiet hits are the most expendable; loud hits that
+ * land on a strong onset cell are the least. `cellOf` maps a tick → its grid cell
+ * so we can read the groove profile; missing profile ⇒ velocity-only ranking.
+ */
+const expendability = (
+  hit: RemovableHit,
+  cellProb: number
+): number => {
+  // Low onset probability ⇒ off-beat ⇒ very expendable. Quiet ⇒ expendable.
+  // Weight emphasis (the groove's own feel) above raw velocity so the backbone
+  // survives even if a ghost happens to be loud.
+  return (1 - cellProb) * 0.65 + (1 - clamp01(hit.velocity)) * 0.35
+}
+
+/**
+ * Choose which hits to remove to thin a row by `fraction` (0..1 of the current
+ * count). Pure + stable. Removes the MOST expendable first; ties break by
+ * lower velocity then later tick (so earlier/loud onsets are kept longest).
+ * `cellProbOf(tick)` returns the groove's onset probability for the hit's cell
+ * (1 = strong onset, low = off-beat); pass `() => 1` to fall back to velocity.
+ *
+ * The last hit is removable: a fraction that rounds up to the full count clears
+ * the row entirely (the founder's "even removes the last hits down to nothing").
+ */
+export const chooseHitsToSparsify = (
+  hits: RemovableHit[],
+  fraction: number,
+  cellProbOf: (tick: number) => number
+): RemovableHit[] => {
+  const n = hits.length
+  if (n === 0) return []
+  const frac = clamp01(fraction)
+  if (frac <= 0) return []
+  // At least ONE goes per − tap (so it always makes progress), at most all.
+  const remove = Math.min(n, Math.max(1, Math.round(n * frac)))
+  const ranked = hits
+    .map((h) => ({ h, score: expendability(h, clamp01(cellProbOf(h.tick))) }))
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        a.h.velocity - b.h.velocity ||
+        b.h.tick - a.h.tick
+    )
+  return ranked.slice(0, remove).map((r) => r.h)
+}
+
 // ============================================================= scatterPhrases
 export interface ScatterPhrasesOptions {
   loopTicks?: number

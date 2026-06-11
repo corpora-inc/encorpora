@@ -35,7 +35,7 @@ import { isFragmentTrack } from "../../model/document"
 import { groupedByFamily, FAMILY_META, getRhythm, type Rhythm } from "../../rhythm"
 import { resolveRole } from "../../rhythm"
 import { bankSnippets } from "../../phrase/bank"
-import { scatterAction, clearScatterAction } from "./actions"
+import { denserAction, sparserAction } from "./actions"
 import { buildPreview } from "./preview"
 import { GrooveMark } from "./GrooveMark"
 
@@ -108,7 +108,7 @@ export const GroovesPanel = ({
 
   // ---- run an action through the store as one undo step --------------------
   const runGroove = (
-    action: typeof scatterAction,
+    action: typeof denserAction,
     extra: Record<string, unknown> = {}
   ) => {
     if (applyDisabled) {
@@ -205,39 +205,47 @@ export const GroovesPanel = ({
         {/* ---- the selected-rhythm detail + actions ----
             ACTIONS FIRST so the primary Scatter never needs a scroll. */}
         <aside className="bl-grooves-detail" aria-live="polite">
-          <div className="bl-grooves-actions" data-bl-nocapture>
-            {/* PRIMARY — scatter the groove across the selected rows (re-rolls
-                fresh every press). Big + first. */}
+          {/* THE +/− DENSITY DIAL — granular: "−" thins the targeted rows
+              (sparser, down to nothing), "+" lays one more probabilistic layer
+              (denser). Icon-forward, minimal copy. */}
+          <div
+            className="bl-grooves-dial"
+            data-bl-nocapture
+            role="group"
+            aria-label={
+              target.kind === "phrases"
+                ? "Phrase density — sparser or denser"
+                : "Groove density — sparser or denser"
+            }
+          >
             <button
               type="button"
-              className="bl-grooves-btn is-primary"
-              onClick={() => runGroove(scatterAction)}
+              className="bl-grooves-dial-btn"
+              onClick={() => runGroove(sparserAction)}
               disabled={applyDisabled}
               aria-disabled={applyDisabled}
-              title={
-                target.kind === "phrases"
-                  ? "Scatter your saved phrases across this groove — press again for a fresh spread"
-                  : "Scatter this groove across the selected rows — press again for a fresh, different spread"
-              }
+              aria-label="Sparser"
+              title="Sparser — peel a few hits back (off-beat first), down to nothing"
             >
-              <ScatterGlyph />
-              Scatter
+              <MinusGlyph />
             </button>
-            {/* VARIANT — clear the targeted rows first, then scatter. */}
+            <span className="bl-grooves-dial-label" aria-hidden="true">
+              Density
+            </span>
             <button
               type="button"
-              className="bl-grooves-btn"
-              onClick={() => runGroove(clearScatterAction)}
+              className="bl-grooves-dial-btn is-primary"
+              onClick={() => runGroove(denserAction)}
               disabled={applyDisabled}
               aria-disabled={applyDisabled}
+              aria-label="Denser"
               title={
                 target.kind === "phrases"
-                  ? "Clear the phrase track, then scatter your saved phrases"
-                  : "Clear the targeted rows, then scatter this groove onto them"
+                  ? "Denser — lay a few more phrases on the groove"
+                  : "Denser — lay one more layer of the groove on the selected rows"
               }
             >
-              <ClearGlyph />
-              Clear + Scatter
+              <PlusGlyph />
             </button>
           </div>
 
@@ -280,42 +288,18 @@ export const GroovesPanel = ({
 }
 
 // ---------------------------------------------------------------- glyphs
-/** Scatter — sprinkled dots radiating out (the probabilistic spread). */
-const ScatterGlyph = () => (
-  <svg className="bl-grooves-btn-glyph" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-    <g fill="currentColor">
-      <circle cx="8" cy="8" r="1.7" />
-      <circle cx="3" cy="4" r="1.1" />
-      <circle cx="13" cy="5" r="1.1" />
-      <circle cx="4" cy="12" r="1.1" />
-      <circle cx="12" cy="12" r="1.1" />
-      <circle cx="8" cy="2.5" r="0.9" />
-    </g>
+/** "−" — sparser (a single minus bar). */
+const MinusGlyph = () => (
+  <svg className="bl-grooves-dial-glyph" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+    <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
   </svg>
 )
 
-/** Clear + scatter — a broom-sweep arc then the same dots. */
-const ClearGlyph = () => (
-  <svg className="bl-grooves-btn-glyph" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
-    <path
-      d="M2.5 13.5 L9 7"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-    <path
-      d="M9 7 L12.5 3.5"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-    <g fill="currentColor">
-      <circle cx="11.5" cy="11" r="1.1" />
-      <circle cx="14" cy="9" r="0.9" />
-      <circle cx="13.5" cy="13" r="0.9" />
-    </g>
+/** "+" — denser (a plus). */
+const PlusGlyph = () => (
+  <svg className="bl-grooves-dial-glyph" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+    <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+    <line x1="10" y1="5" x2="10" y2="15" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
   </svg>
 )
 
@@ -339,15 +323,15 @@ const DrumTargetHint = ({
     if (labels === undefined) return null
     return (
       <p className="bl-grooves-target is-none" role="note">
-        Plays on its <strong>natural voices</strong> (each in its place).
-        Select rows to <strong>scatter</strong> the groove across them.
+        Plays on its <strong>natural voices</strong>. Select rows to build the
+        groove across them.
       </p>
     )
   }
   const names = (labels ?? []).join(", ")
   return (
     <p className="bl-grooves-target is-on" role="note">
-      Scatters across <strong>{n}</strong> row{n === 1 ? "" : "s"}: {names}.
+      <strong>{n}</strong> row{n === 1 ? "" : "s"}: {names}.
     </p>
   )
 }

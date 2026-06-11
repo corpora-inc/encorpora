@@ -3,14 +3,16 @@
  * LLM-callable. They SCATTER a world rhythm across the host's grid — drums OR
  * phrases — through existing commands, as ONE undo batch.
  *
- * THE ACTION SET IS DELIBERATELY TWO:
- *   • scatter      — the PRIMARY action. Probabilistically spread the groove's
- *                    feel across the selected rows (or play it on its natural
- *                    voices when nothing is selected), LEAVING existing notes.
- *                    Each call re-rolls (ctx.rng is fresh-seeded per call), so
- *                    pressing again gives a different, surprising result.
- *   • clearScatter — the same scatter, but CLEAR the targeted rows first (the
- *                    old "Apply" reduced to "clear + scatter").
+ * THE PRIMARY SURFACE IS A +/− DENSITY DIAL:
+ *   • denser  — "+": lay ONE more probabilistic layer of the groove on the
+ *                targeted rows (ADDITIVE, gradually denser; re-rolls each tap).
+ *                Phrases land far sparser than drums (a + drops a few words).
+ *   • sparser — "−": remove a fraction of the current hits (off-beat/quiet
+ *                first), each tap thinner, down to nothing. Pure; a smaller bite
+ *                than + (harder to take away than to add).
+ *
+ * scatter / clearScatter remain for the LLM command bus + back-compat (the old
+ * probabilistic spread + clear-then-spread); the UI dial drives denser/sparser.
  *
  * Vary / Evolve / Randomize are GONE: the variation is baked into scatter (every
  * press re-rolls), and "randomize" had nothing to do with the chosen groove. The
@@ -105,6 +107,24 @@ const buildOpts = (
   phraseDensity: params.phraseDensity != null ? Number(params.phraseDensity) : undefined,
 })
 
+/** Build opts for the +/− density dial — carries the op; never clears. */
+const buildDialOpts = (
+  params: Record<string, unknown>,
+  ctx: ActionContext,
+  op: "add" | "remove"
+): GrooveBuildOpts => ({
+  target: resolveTarget(params),
+  intensity: Number(params.intensity ?? 1),
+  op,
+  // "+" re-rolls a fresh layer each tap (seeded for reproducibility); "−" is pure
+  // selection (no RNG). The per-tap density increments live in grooveModel.
+  rng: ctx.rng,
+  seed: params.seed != null ? Number(params.seed) : undefined,
+  // Allow an explicit override (tests / LLM), else grooveModel's per-tap steps.
+  density: params.density != null ? Number(params.density) : undefined,
+  phraseDensity: params.phraseDensity != null ? Number(params.phraseDensity) : undefined,
+})
+
 const resolveRhythmId = (params: Record<string, unknown>): string =>
   typeof params.rhythmId === "string" && params.rhythmId ? params.rhythmId : DEFAULT_RHYTHM_ID
 
@@ -149,7 +169,52 @@ export const clearScatterAction: ModuleAction = {
   },
 }
 
+/**
+ * denser — the "+" of the density dial. Lay ONE more probabilistic layer of the
+ * groove onto the targeted rows (ADDITIVE: keeps what's there, adds more hits per
+ * the groove's profile, at a per-tap density increment). Re-rolls every tap, so
+ * repeated + gradually + variably densifies. For PHRASES the per-tap density is
+ * dramatically lower than drums — a + drops only a handful of well-placed words.
+ */
+export const denserAction: ModuleAction = {
+  name: "denser",
+  describe:
+    "Layer one more probabilistic pass of the world rhythm onto the targeted rows — additive, gradually denser. Phrases land far sparser than drums.",
+  params: { ...sharedParams },
+  stochastic: true,
+  impact: "mutate",
+  run(ctx, params): ActionResult {
+    const r = getRhythm(resolveRhythmId(params))
+    if (!r) return { commands: [], summary: "Unknown rhythm" }
+    const { commands, summary } = buildGrooveCommands(ctx.doc, r, buildDialOpts(params, ctx, "add"))
+    return { commands, summary }
+  },
+}
+
+/**
+ * sparser — the "−" of the density dial. Remove a fraction of the targeted rows'
+ * current hits (lowest-emphasis / off-beat first), each tap thinner, down to
+ * nothing. Pure (no RNG). Asymmetric: a − removes a smaller bite than a + adds,
+ * so it's "harder to take away than to add".
+ */
+export const sparserAction: ModuleAction = {
+  name: "sparser",
+  describe:
+    "Thin the targeted rows — remove a fraction of the current hits (off-beat/quiet first), down to nothing. Pure; smaller bite than +.",
+  params: { ...sharedParams },
+  stochastic: false,
+  impact: "mutate",
+  run(ctx, params): ActionResult {
+    const r = getRhythm(resolveRhythmId(params))
+    if (!r) return { commands: [], summary: "Unknown rhythm" }
+    const { commands, summary } = buildGrooveCommands(ctx.doc, r, buildDialOpts(params, ctx, "remove"))
+    return { commands, summary }
+  },
+}
+
 export const groovesActions: ReadonlyArray<ModuleAction> = [
+  denserAction,
+  sparserAction,
   scatterAction,
   clearScatterAction,
 ]
