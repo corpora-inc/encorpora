@@ -17,7 +17,7 @@ import {
   findDrumTrackId,
   findPhraseTrackId,
 } from "./grooveModel"
-import { scatterAction, clearScatterAction } from "./actions"
+import { scatterAction, clearScatterAction, denserAction, sparserAction } from "./actions"
 import { reduce } from "../../model/reduce"
 
 const rngFrom = (seed: number): (() => number) => {
@@ -443,6 +443,232 @@ describe("grooveModel — PHRASES target (scatter snippets on the phrase grid)",
   })
 })
 
+describe("grooveModel — the +/− DENSITY DIAL (denser/sparser)", () => {
+  const drumNotesOf = (d: BeatloungeDoc) => drumNotes(d)
+
+  /** Apply one + (denser) tap to a doc on the given rows, returning the new doc. */
+  const plus = (d: BeatloungeDoc, rows: number[], seed: number): BeatloungeDoc => {
+    const res = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+      target: { kind: "drums", selectedPitches: rows },
+      op: "add",
+      seed,
+    })
+    return applyTo(d, res.commands)
+  }
+  /** Apply one − (sparser) tap to a doc on the given rows. */
+  const minus = (d: BeatloungeDoc, rows: number[]): BeatloungeDoc => {
+    const res = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+      target: { kind: "drums", selectedPitches: rows },
+      op: "remove",
+    })
+    return applyTo(d, res.commands)
+  }
+
+  it("+ is ADDITIVE — keeps existing hits and adds more (never clears)", () => {
+    const rows = [KICK, SNARE]
+    let d = emptyDrumDoc()
+    d = plus(d, rows, 1)
+    const afterOne = drumNotesOf(d).map((n) => `${n.tick}:${n.pitch}`)
+    expect(afterOne.length).toBeGreaterThan(0)
+    d = plus(d, rows, 2)
+    const afterTwo = drumNotesOf(d).map((n) => `${n.tick}:${n.pitch}`)
+    // Every hit from the first + survived the second (additive, deduped).
+    for (const k of afterOne) expect(afterTwo).toContain(k)
+  })
+
+  it("+ gets DENSER each tap (cumulative count grows across taps)", () => {
+    const rows = [KICK, SNARE, COWBELL]
+    let d = emptyDrumDoc()
+    const counts: number[] = []
+    for (let tap = 1; tap <= 5; tap++) {
+      d = plus(d, rows, tap)
+      counts.push(drumNotesOf(d).length)
+    }
+    // Non-decreasing and strictly grown overall (additive layers accumulate).
+    for (let i = 1; i < counts.length; i++) expect(counts[i]).toBeGreaterThanOrEqual(counts[i - 1])
+    expect(counts[counts.length - 1]).toBeGreaterThan(counts[0])
+  })
+
+  it("+ only ever lands on the selected rows", () => {
+    const rows = [KICK, COWBELL]
+    let d = emptyDrumDoc()
+    for (let tap = 1; tap <= 4; tap++) d = plus(d, rows, tap)
+    for (const n of drumNotesOf(d)) expect(rows).toContain(n.pitch)
+  })
+
+  it("− removes a FRACTION (smaller bite than + adds) — harder to take away", () => {
+    const rows = [KICK, SNARE, COWBELL]
+    // Build up a dense bed first.
+    let d = emptyDrumDoc()
+    for (let tap = 1; tap <= 6; tap++) d = plus(d, rows, tap)
+    const full = drumNotesOf(d).length
+    expect(full).toBeGreaterThan(4)
+    // One − removes only a fraction (not everything, not nothing).
+    const afterOneMinus = drumNotesOf(minus(d, rows)).length
+    const removed = full - afterOneMinus
+    expect(removed).toBeGreaterThan(0)
+    expect(afterOneMinus).toBeGreaterThan(0)
+    // Asymmetry: the − fraction (~0.3) takes a smaller bite than the count one +
+    // adds, so it removes well under half in one tap.
+    expect(removed).toBeLessThan(full * 0.5)
+  })
+
+  it("repeated − thins all the way down to NOTHING (the last − clears the row)", () => {
+    const rows = [KICK, SNARE]
+    let d = emptyDrumDoc()
+    for (let tap = 1; tap <= 5; tap++) d = plus(d, rows, tap)
+    expect(drumNotesOf(d).length).toBeGreaterThan(0)
+    let prev = Infinity
+    for (let i = 0; i < 30 && drumNotesOf(d).length > 0; i++) {
+      const before = drumNotesOf(d).length
+      d = minus(d, rows)
+      const after = drumNotesOf(d).length
+      expect(after).toBeLessThan(before) // always makes progress
+      expect(after).toBeLessThanOrEqual(prev)
+      prev = after
+    }
+    expect(drumNotesOf(d).length).toBe(0)
+  })
+
+  it("− leaves UNTARGETED rows untouched", () => {
+    const rows = [KICK, SNARE, COWBELL]
+    let d = emptyDrumDoc()
+    for (let tap = 1; tap <= 6; tap++) d = plus(d, rows, tap)
+    const cowbellBefore = drumNotesOf(d).filter((n) => n.pitch === COWBELL).length
+    // − targeting only KICK/SNARE must not touch COWBELL hits.
+    const after = minus(d, [KICK, SNARE])
+    const cowbellAfter = drumNotesOf(after).filter((n) => n.pitch === COWBELL).length
+    expect(cowbellAfter).toBe(cowbellBefore)
+  })
+
+  it("PHRASES are FAR sparser than drums for the same groove (a + drops only a handful)", () => {
+    // A bank of 6 snippets on a phrase track; same groove, same single + tap.
+    const refs: FragmentRef[] = Array.from({ length: 6 }, (_, i) => ({
+      id: newId("frg"),
+      source: "ttsRender",
+      text: `w${i}`,
+      language: "es",
+    }))
+    const phraseId = newId("trk")
+    const base = doc()
+    const phraseDoc: BeatloungeDoc = {
+      ...base,
+      fragmentLibrary: refs,
+      tracks: [
+        ...base.tracks,
+        {
+          id: phraseId,
+          kind: "fragment",
+          name: "Phrases",
+          color: "#7cf2c0",
+          grid: { denominator: 16 },
+          volume: 0.8,
+          pan: 0,
+          mute: false,
+          solo: false,
+          inserts: [],
+          sends: [],
+          automation: [],
+          instrument: { kind: "ttsFragment" },
+          fragments: [],
+        },
+      ],
+    }
+    const r = getRhythm("son-clave-3-2")!
+    // Average phrase + placements vs drum + placements (3 rows) over seeds.
+    let phraseTotal = 0
+    let drumTotal = 0
+    const SEEDS = 12
+    const drumRows = [KICK, SNARE, COWBELL]
+    for (let seed = 1; seed <= SEEDS; seed++) {
+      const ph = buildGrooveCommands(phraseDoc, r, {
+        target: { kind: "phrases", trackId: phraseId },
+        op: "add",
+        seed,
+      })
+      phraseTotal += ph.commands.filter((c) => c.t === "placeFragment").length
+      const dr = buildGrooveCommands(emptyDrumDoc(), r, {
+        target: { kind: "drums", selectedPitches: drumRows },
+        op: "add",
+        seed,
+      })
+      const setNotes = dr.commands.find((c) => c.t === "setNotes")
+      drumTotal += setNotes && setNotes.t === "setNotes" ? setNotes.notes.length : 0
+    }
+    const phraseAvg = phraseTotal / SEEDS
+    const drumPerRowAvg = drumTotal / SEEDS / drumRows.length
+    // Phrases per + are a small handful, and MUCH sparser per-row than drums
+    // (≥~5× fewer): one + must not paste a word on every 8th.
+    expect(phraseAvg).toBeLessThan(drumPerRowAvg)
+    expect(phraseAvg).toBeLessThanOrEqual(3)
+  })
+
+  it("PHRASES − thins ONLY the selected snippet rows", () => {
+    const refs: FragmentRef[] = Array.from({ length: 4 }, (_, i) => ({
+      id: newId("frg"),
+      source: "ttsRender",
+      text: `w${i}`,
+      language: "es",
+    }))
+    const phraseId = newId("trk")
+    const base = doc()
+    // Pre-seed fragments: 3 of snippet[0] and 3 of snippet[1] across cells.
+    const fragsFor = (fragmentId: string, ticks: number[]) =>
+      ticks.map((tick) => ({ id: newId("fev"), tick, fragmentId, gain: 0.9, pitchSemis: 0 }))
+    const phraseDoc: BeatloungeDoc = {
+      ...base,
+      fragmentLibrary: refs,
+      tracks: [
+        ...base.tracks,
+        {
+          id: phraseId,
+          kind: "fragment",
+          name: "Phrases",
+          color: "#7cf2c0",
+          grid: { denominator: 16 },
+          volume: 0.8,
+          pan: 0,
+          mute: false,
+          solo: false,
+          inserts: [],
+          sends: [],
+          automation: [],
+          instrument: { kind: "ttsFragment" },
+          fragments: [
+            ...fragsFor(refs[0].id, [0, 120, 240]),
+            ...fragsFor(refs[1].id, [0, 120, 240]),
+          ],
+        },
+      ],
+    }
+    const r = getRhythm("son-clave-3-2")!
+    const res = buildGrooveCommands(phraseDoc, r, {
+      target: { kind: "phrases", trackId: phraseId, selectedSnippetIds: [refs[0].id] },
+      op: "remove",
+    })
+    const removed = res.commands.filter((c) => c.t === "removeFragment")
+    expect(removed.length).toBeGreaterThan(0)
+    // Every removal targets the selected snippet's fragments only.
+    const after = applyTo(phraseDoc, res.commands)
+    const track = after.tracks.find((t) => t.id === phraseId)
+    const frags = track && track.kind === "fragment" ? track.fragments : []
+    // snippet[1] fully intact (3 still present); snippet[0] thinned (fewer than 3).
+    expect(frags.filter((f) => f.fragmentId === refs[1].id).length).toBe(3)
+    expect(frags.filter((f) => f.fragmentId === refs[0].id).length).toBeLessThan(3)
+  })
+
+  it("each dial tap is grid-only (no setTempo / play) and a clean batch", () => {
+    const rows = [KICK, SNARE]
+    const res = buildGrooveCommands(emptyDrumDoc(), getRhythm("son-clave-3-2")!, {
+      target: { kind: "drums", selectedPitches: rows },
+      op: "add",
+      seed: 3,
+    })
+    expect(res.commands.every((c) => c.t !== "setTempo")).toBe(true)
+    expect(res.commands.some((c) => c.t === "setNotes")).toBe(true)
+  })
+})
+
 describe("grooves actions through the command bus", () => {
   const run = (action: typeof scatterAction, params: Record<string, unknown>) => {
     const bus = createCommandBus(doc())
@@ -552,5 +778,47 @@ describe("grooves actions through the command bus", () => {
     const placed = result.commands.filter((c) => c.t === "placeFragment")
     expect(placed.length).toBeGreaterThan(0)
     expect(result.commands.some((c) => c.t === "setNotes")).toBe(false)
+  })
+
+  it("denser (+) adds a layer; sparser (−) thins it — one undo step each", () => {
+    const bus = createCommandBus(emptyDrumDoc())
+    const before = bus.snapshot()
+    const plus = denserAction.run(
+      { doc: before, rng: rngFrom(5) },
+      { rhythmId: "son-clave-3-2", target: { kind: "drums", selectedPitches: [KICK, SNARE] }, seed: 8 }
+    )
+    bus.dispatch({ t: "batch", commands: plus.commands })
+    const drumAfterPlus = bus.snapshot().tracks.find(
+      (t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler"
+    )
+    const countAfterPlus = drumAfterPlus && isInstrumentTrack(drumAfterPlus) ? drumAfterPlus.notes.length : 0
+    expect(countAfterPlus).toBeGreaterThan(0)
+
+    const afterPlus = bus.snapshot()
+    const minus = sparserAction.run(
+      { doc: afterPlus, rng: rngFrom(5) },
+      { rhythmId: "son-clave-3-2", target: { kind: "drums", selectedPitches: [KICK, SNARE] } }
+    )
+    // − is pure removeNote (no scatter, no new notes).
+    expect(minus.commands.every((c) => c.t === "removeNote")).toBe(true)
+    expect(minus.commands.length).toBeGreaterThan(0)
+    bus.dispatch({ t: "batch", commands: minus.commands })
+    const drumAfterMinus = bus.snapshot().tracks.find(
+      (t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler"
+    )
+    const countAfterMinus = drumAfterMinus && isInstrumentTrack(drumAfterMinus) ? drumAfterMinus.notes.length : 0
+    expect(countAfterMinus).toBeLessThan(countAfterPlus)
+
+    bus.undo() // undo the −
+    bus.undo() // undo the +
+    expect(bus.snapshot()).toEqual(before)
+  })
+
+  it("sparser on an empty target is a clean no-op (no commands)", () => {
+    const res = sparserAction.run(
+      { doc: emptyDrumDoc(), rng: rngFrom(1) },
+      { rhythmId: "son-clave-3-2", target: { kind: "drums", selectedPitches: [KICK] } }
+    )
+    expect(res.commands).toEqual([])
   })
 })
