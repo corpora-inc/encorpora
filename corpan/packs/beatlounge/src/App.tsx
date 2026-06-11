@@ -72,6 +72,19 @@ const buildRig = (hostApi: HostApi, doc: BeatloungeDoc): Rig => {
   return { store, audio, formObs, bridge, host, registry }
 }
 
+/** Dispose every rig subsystem, each guarded so one failure can't abort the
+ *  rest or throw out of React cleanup (which would white-screen the pack). */
+const disposeRig = (rig: Rig | null): void => {
+  if (!rig) return
+  for (const dispose of [rig.store.dispose, rig.audio.dispose, rig.formObs.dispose]) {
+    try {
+      dispose()
+    } catch (err) {
+      console.warn("[beatlounge] rig dispose threw (continuing):", err)
+    }
+  }
+}
+
 export const App = ({ hostApi }: { hostApi: HostApi }) => {
   const [rig, setRig] = useState<Rig | null>(null)
 
@@ -89,9 +102,12 @@ export const App = ({ hostApi }: { hostApi: HostApi }) => {
     return () => {
       alive = false
       setRig(null)
-      built?.store.dispose()
-      built?.audio.dispose()
-      built?.formObs.dispose()
+      // Dispose each subsystem independently + defensively: a throw in one
+      // (e.g. an audio node already torn down) must never abort the others or
+      // bubble out of cleanup and blank the screen. Each dispose is itself
+      // idempotent, so a double-cleanup is a no-op.
+      disposeRig(built)
+      built = null
     }
   }, [hostApi, nonce])
 

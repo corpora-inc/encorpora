@@ -27,6 +27,7 @@ import { bankSnippets } from "../../phrase/bank"
 import type { AudioSource } from "../../phrase/audioSource"
 import { decodeFragmentBytes } from "../../phrase/decode"
 import { Glyph, prefersReducedMotion } from "../../bl-ui"
+import { ensureAudio } from "../../engine/ensureAudio"
 import { createScratchEngine, type ScratchEngine } from "./scratchEngine"
 import {
   advanceRotation,
@@ -111,13 +112,10 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     void (async () => {
       try {
         const ctx = host.audioContext()
-        if (ctx.state === "suspended") {
-          try {
-            await ctx.resume()
-          } catch {
-            /* needs a gesture; the picker tap is one */
-          }
-        }
+        // NB: do NOT resume the context here — this effect runs on mount /
+        // snippet change, NOT a user gesture, so an off-gesture resume() fails
+        // silently and spams the "AudioContext was not allowed to start"
+        // warning. Resuming happens from `onGrab` (a real pointer gesture).
         // Prefer cached bytes; resolve fresh (renders + caches) if absent.
         let bytes = ref.sha256 ? await audioSource.getCachedAudio(ref.sha256) : null
         if (!bytes) {
@@ -227,9 +225,8 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     grabbedRef.current = true
     angVelRef.current = 0
     setActive(true)
-    // A grab is a user gesture — make sure the context is running.
-    const ctx = host.audioContext()
-    if (ctx.state === "suspended") void ctx.resume().catch(() => {})
+    // A grab is a real user gesture — the one place we resume the context.
+    void ensureAudio(host.audioContext())
   }
 
   const onSweep = (deltaRadians: number) => {

@@ -9,6 +9,7 @@
  */
 
 import { createRoot, type Root } from "react-dom/client"
+import { makeDeferredUnmount } from "../_shared/deferUnmount"
 import type {
   BeatloungeHost,
   BeatloungeModule,
@@ -108,9 +109,7 @@ export const createStepGridModule = ({ store, audio }: StepGridDeps): Beatlounge
     )
 
     return {
-      unmount() {
-        try { root.unmount() } catch { /* root container already detached */ }
-      },
+      unmount: makeDeferredUnmount(root),
     }
   },
 })

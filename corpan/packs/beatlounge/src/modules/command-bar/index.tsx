@@ -16,6 +16,7 @@
  */
 
 import { createRoot, type Root } from "react-dom/client"
+import { makeDeferredUnmount } from "../_shared/deferUnmount"
 import type {
   BeatloungeModule,
   ModuleAction,
@@ -75,10 +76,7 @@ export const mountCommandBar = (
   )
   return {
     controller,
-    unmount() {
-      controller.dispose()
-      try { root.unmount() } catch { /* root container already detached */ }
-    },
+    unmount: makeDeferredUnmount(root, () => controller.dispose()),
   }
 }
 
@@ -122,16 +120,11 @@ export const createCommandBarModule = (deps: CommandBarModuleDeps): BeatloungeMo
           </div>,
         )
         return {
-          unmount() {
-            controller.dispose()
-            try { root.unmount() } catch { /* root container already detached */ }
-          },
+          unmount: makeDeferredUnmount(root, () => controller.dispose()),
         }
       }
       return {
-        unmount() {
-          try { root.unmount() } catch { /* root container already detached */ }
-        },
+        unmount: makeDeferredUnmount(root),
       }
     },
   }

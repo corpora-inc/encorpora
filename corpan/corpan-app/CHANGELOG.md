@@ -7,6 +7,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Content-pack teardown ordering — fewer reload black screens.**
+  `ContentPackHost` now defers the pack's React-root unmount past the current
+  render (`requestAnimationFrame`, not a bare microtask that races the container
+  removal) and only clears the pack's injected `<script>`/`<style>` assets AFTER
+  that unmount runs — and only the snapshot of the assets that pack injected, so
+  a concurrent reload's fresh assets aren't yanked. Teardown is idempotent.
+  (Needs an iOS/Android redeploy to ship to devices.)
+
 ## [0.17.3] - 2026-06-09
 
 ### Fixed
