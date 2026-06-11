@@ -24,12 +24,24 @@ import { createInstrument, instrumentKindOf } from "../instruments/createInstrum
 import type { TtsFragmentDeps } from "../instruments/ttsFragment"
 import { createEffect } from "../effects/createEffect"
 import { chainSig } from "../effects/chainSig"
+import { CROSSFADE_SEC, startCrossfade } from "./crossfade"
+
+/** An in-flight crossfade: its idempotent teardown + the clearable timer. */
+interface PendingFade {
+  finalize: () => void
+  timer: ReturnType<typeof setTimeout>
+}
 
 interface ChainState {
-  /** Live effects in order; [] when the chain is empty (direct head→tail). */
+  /** Live effects in order; [] when the chain is empty (direct head→fade). */
   effects: Effect[]
   /** Structural signature the chain was last built from. */
   sig: string
+  /** Terminating unity gain (`…lastFx → fade → tail`); the crossfade ramps it. */
+  fade: Tone.Gain
+  /** The node `head` connects INTO for this chain (effects[0].input, or `fade`
+   *  for an empty chain) — lets us targeted-disconnect head→here on teardown. */
+  headTarget: Tone.ToneAudioNode
 }
 
 interface SendState {
@@ -84,30 +96,48 @@ export const createAudioGraph = (
   let currentDoc: BeatloungeDoc | null = null
 
   // ----------------------------------------------------------- insert chains
+  // In-flight crossfades, keyed by the NEW (now-current) chain they produced.
+  // When a newer restructure arrives mid-fade we look the prior one up here,
+  // finalize it immediately (deterministic, leak-free), then start fresh.
+  const pendingFades = new Map<ChainState, PendingFade>()
+
+  /** Dispose a chain's EFFECTS (its fade gain is disposed separately, after
+   *  the crossfade window or in disposeTrack/Bus). Idempotent. */
   const disposeChain = (chain: ChainState) => {
     for (const fx of chain.effects) fx.dispose()
     chain.effects = []
   }
 
-  /** (Re)wire `head → fx[0]…fx[n] → tail` for a fresh set of EffectNodes. */
+  /** (Re)wire `head → fx[0]…fx[n] → fade → tail` for a fresh set of
+   *  EffectNodes. Every chain — including empty — terminates in a unity fade
+   *  `Gain` (default 1) so a crossfade can ramp it without touching `tail`. */
   const buildChain = (
     head: Tone.ToneAudioNode,
     tail: Tone.ToneAudioNode,
-    inserts: EffectNode[]
+    inserts: EffectNode[],
+    /** Fade gain to START at (1 = audible now; 0 = fading in behind the old). */
+    initialFade = 1
   ): ChainState => {
     const effects = inserts.map((node) => createEffect(node))
+    const fade = new Tone.Gain(initialFade)
     let cursor: Tone.ToneAudioNode = head
+    const headTarget: Tone.ToneAudioNode = effects[0]?.input ?? fade
     for (const fx of effects) {
       cursor.connect(fx.input)
       cursor = fx.output
     }
-    cursor.connect(tail)
-    return { effects, sig: chainSig(inserts) }
+    cursor.connect(fade)
+    fade.connect(tail)
+    return { effects, sig: chainSig(inserts), fade, headTarget }
   }
 
   /**
    * Reconcile a chain in place. Structure unchanged ⇒ just update each effect's
-   * params/enabled. Structure changed ⇒ disconnect head/tail, dispose, rebuild.
+   * params/enabled (fast path, no rebuild). Structure changed ⇒ MAKE-BEFORE-
+   * BREAK: build the new chain in parallel off the same `head` (new fade @0),
+   * equal-power crossfade old→new over CROSSFADE_SEC, then surgically tear the
+   * old chain down. The audio path is never broken, so reordering — even moving
+   * a disabled effect — no longer cuts the sound.
    */
   const reconcileChain = (
     chain: ChainState,
@@ -119,10 +149,56 @@ export const createAudioGraph = (
       inserts.forEach((node, i) => chain.effects[i]?.update(node.params, node.enabled))
       return chain
     }
-    // Structure changed → tear down old wiring + nodes, rebuild from head.
-    head.disconnect()
+
+    // A restructure landed while THIS chain was still fading in: finalize that
+    // in-flight teardown now (disposes the old-old chain + its fade — no leak,
+    // no stuck-at-partial gain) before we layer a fresh fade on top.
+    const inFlight = pendingFades.get(chain)
+    if (inFlight) {
+      clearTimeout(inFlight.timer)
+      inFlight.finalize()
+      pendingFades.delete(chain)
+    }
+    // The current chain may still be mid-ramp from a fade-IN; pin it audible so
+    // the new crossfade starts from full level (no doubling, no dip).
+    chain.fade.gain.cancelScheduledValues(when0())
+    chain.fade.gain.setValueAtTime(1, when0())
+
+    // Build the replacement in PARALLEL off the same head, fading in from 0.
+    const next = buildChain(head, tail, inserts, 0)
+    const finalizeFade = startCrossfade({
+      head,
+      tail,
+      old: chain,
+      next,
+      now: when0(),
+      disposeChain,
+    })
+    // Wrap so the registry entry is cleaned up whenever the fade completes
+    // (naturally via the timer, or early via the in-flight path above).
+    const finalize = () => {
+      finalizeFade()
+      pendingFades.delete(next)
+    }
+    const timer = setTimeout(finalize, CROSSFADE_SEC * 1000)
+    pendingFades.set(next, { finalize, timer })
+    return next
+  }
+
+  /** AudioContext clock helper (single read per reconcile pass). */
+  const when0 = () => ctx.currentTime
+
+  /** Fully retire a chain when its OWNER (track/bus) is torn down: finalize any
+   *  in-flight fade INTO this chain (disposes the old-old chain it superseded),
+   *  then dispose this chain's effects + its terminating fade gain. */
+  const disposeChainFull = (chain: ChainState) => {
+    const inFlight = pendingFades.get(chain)
+    if (inFlight) {
+      clearTimeout(inFlight.timer)
+      inFlight.finalize() // idempotent; clears the registry entry
+    }
     disposeChain(chain)
-    return buildChain(head, tail, inserts)
+    chain.fade.dispose()
   }
 
   // ----------------------------------------------------------- sends
@@ -189,7 +265,7 @@ export const createAudioGraph = (
   const disposeTrack = (n: TrackNodes) => {
     for (const s of n.sends.values()) s.gain.dispose()
     n.sends.clear()
-    disposeChain(n.chain)
+    disposeChainFull(n.chain)
     n.instrument.dispose()
     n.chainHead.dispose()
     n.panner.dispose()
@@ -207,7 +283,7 @@ export const createAudioGraph = (
   const disposeBus = (b: BusNodes) => {
     for (const s of b.sends.values()) s.gain.dispose()
     b.sends.clear()
-    disposeChain(b.chain)
+    disposeChainFull(b.chain)
     b.input.dispose()
     b.gain.dispose()
   }
@@ -337,6 +413,14 @@ export const createAudioGraph = (
       nodes.clear()
       for (const b of buses.values()) disposeBus(b)
       buses.clear()
+      // Belt-and-suspenders: finalize any crossfade still in flight (disposeTrack/
+      // disposeBus already retire each owned chain, but a fade timer must never
+      // fire after dispose). Idempotent finalize + cleared timers ⇒ no leaks.
+      for (const { finalize, timer } of [...pendingFades.values()]) {
+        clearTimeout(timer)
+        finalize()
+      }
+      pendingFades.clear()
       masterVol.dispose()
       limiter.dispose()
     },
