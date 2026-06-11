@@ -1,177 +1,605 @@
 /**
- * beatlounge — instrument presets. PURE DATA over the generic engines
- * (synth / fmSynth / wavetable / sampler / drumSampler). Tamburas, tablas,
- * drones and sine pads are presets here — NOT new engine kinds (see the
- * document.ts contract note).
+ * beatlounge — the SOFTWARE-INSTRUMENT preset corpus. PURE DATA over the
+ * pack's existing synthesis engines (synth / sinePad / fmSynth / wavetable /
+ * analogSynth). Every preset is a named, well-tuned `InstrumentConfig` plus
+ * display metadata; NO sample/soundfont assets are needed, so each one is a
+ * fully-synthesized, distinct, recognizable voice that works offline.
  *
- * Each preset is an `InstrumentConfig` plus display metadata so the UI can list
- * them. Engine factories (./createInstrument) route these to the right runtime
- * (e.g. a sine/triangle-pad synth preset → the sine-pad engine).
+ * This is the working instrument content. Real multisampled soundfonts remain a
+ * FUTURE downloadable/paid path via the catalog (see SOUNDFONTS.md) — the
+ * soundfont engine stays, it is just no longer the default that collapses every
+ * program to one triangle voice.
+ *
+ * Structured like the pack's other corpora (rhythms / kits / modes / chords): a
+ * typed schema + a frozen index + lookups (`getPreset`, `listPresets`,
+ * `presetsByFamily`). Engine routing is handled by ./createInstrument:
+ *   • a `synth` config whose osc is sine/triangle AND attack ≥ 0.4 routes to the
+ *     lush sine-pad engine (so the "pad" family reads as a pad, not a beep);
+ *   • short `synth` configs use the plain subtractive synth;
+ *   • `analogSynth` configs carry a FULL param bag (so the engine never has to
+ *     reach for a preset name) and own filter-envelope timbres (bass / lead /
+ *     brass / pluck);
+ *   • `fmSynth` / `wavetable` route to their own engines.
  */
 
-import type { InstrumentConfig, SampleZone } from "../model/document"
-import { newId } from "../model/ids"
+import type { InstrumentConfig } from "../model/document"
+import {
+  defaultAnalogParams,
+  resolveAnalogPreset,
+  type AnalogParams,
+} from "./analogSynth"
 
-export type PresetCategory = "drone" | "pad" | "bass" | "pluck" | "keys" | "percussion"
+/** The instrument families the browser groups by (ordered for the UI). */
+export const PRESET_FAMILIES = [
+  "keys",
+  "bass",
+  "lead",
+  "pad",
+  "pluck",
+  "brass",
+  "fx",
+] as const
+export type PresetFamily = (typeof PRESET_FAMILIES)[number]
+
+/** Human labels for each family (UI section headers). */
+export const FAMILY_LABEL: Record<PresetFamily, string> = {
+  keys: "Keys",
+  bass: "Bass",
+  lead: "Leads",
+  pad: "Pads",
+  pluck: "Plucks & Mallets",
+  brass: "Brass & Wind",
+  fx: "FX & Other",
+}
 
 export interface InstrumentPreset {
-  /** Stable preset key (e.g. "tambura"). */
+  /** Stable preset key (e.g. "grand-piano"). */
   id: string
   /** Human label for the picker. */
-  label: string
+  name: string
+  /** Which family this preset lives in. */
+  family: PresetFamily
   /** Short blurb for the UI. */
   description: string
-  category: PresetCategory
   /** The frozen engine config this preset materializes. */
   config: InstrumentConfig
 }
 
-/** A multi-zone chromatic map across a sample set, repitched from `roots`. */
-const chromaticZones = (sampleSetId: string, roots: number[]): SampleZone[] => {
-  const sorted = [...roots].sort((a, b) => a - b)
-  return sorted.map((root, i) => {
-    const lo = i === 0 ? 0 : Math.floor((sorted[i - 1] + root) / 2) + 1
-    const hi = i === sorted.length - 1 ? 127 : Math.floor((root + sorted[i + 1]) / 2)
-    return {
-      sampleId: `${sampleSetId}:${root}`,
-      rootNote: root,
-      loNote: lo,
-      hiNote: hi,
-    }
-  })
+// ---------------------------------------------------------------- builders
+/** A subtractive `synth` config (routes to the plain or pad engine by attack). */
+const synth = (
+  osc: "sine" | "triangle" | "sawtooth" | "square",
+  filter: { frequency: number; q: number; type?: "lowpass" | "highpass" | "bandpass" },
+  env: { attack: number; decay: number; sustain: number; release: number }
+): InstrumentConfig => ({
+  kind: "synth",
+  osc,
+  filter: { type: filter.type ?? "lowpass", frequency: filter.frequency, q: filter.q },
+  env,
+})
+
+/** An `fmSynth` config (harmonicity / modulation index / amp env). */
+const fm = (
+  harmonicity: number,
+  modIndex: number,
+  env: { attack: number; decay: number; sustain: number; release: number }
+): InstrumentConfig => ({ kind: "fmSynth", harmonicity, modIndex, env })
+
+/** A `wavetable` config over one of the built-in tables. */
+const wavetable = (
+  tableId: string,
+  env: { attack: number; decay: number; sustain: number; release: number },
+  filter: { frequency: number; q: number; type?: "lowpass" | "highpass" | "bandpass" }
+): InstrumentConfig => ({
+  kind: "wavetable",
+  tableId,
+  env,
+  filter: { type: filter.type ?? "lowpass", frequency: filter.frequency, q: filter.q },
+})
+
+/**
+ * An `analogSynth` config carrying a FULL param bag. We start from a named
+ * engine preset (or the defaults) and layer sparse overrides, then FREEZE the
+ * resolved bag into the config so the document is self-describing (the engine
+ * never has to resolve a preset name — params win).
+ */
+const analog = (base: string | null, overrides: AnalogParams = {}): InstrumentConfig => {
+  const params: AnalogParams = {
+    ...(base ? resolveAnalogPreset(base) : defaultAnalogParams()),
+    ...overrides,
+  }
+  return { kind: "analogSynth", preset: base ?? "init", params }
 }
 
-// ---------------------------------------------------------------- presets
+// ================================================================ presets
+//
+// Each preset is tuned so the FAMILY is clearly audible and distinct from the
+// others: oscillator/table choice, filter cutoff/Q + (analog) filter envelope,
+// amp ADSR, FM harmonicity/index. Comments note the engine each one rides.
 
-/** Tambura drone — long, droning saw-ish synth tuned for a sustained pad bed. */
-const tambura: InstrumentPreset = {
-  id: "tambura",
-  label: "Tambura",
-  description: "Sustained Indian drone — long release, slow swell.",
-  category: "drone",
-  config: {
-    kind: "synth",
-    osc: "sawtooth",
-    filter: { type: "lowpass", frequency: 1400, q: 2.0 },
-    env: { attack: 0.6, decay: 1.2, sustain: 0.9, release: 3.0 },
+const PRESETS: InstrumentPreset[] = [
+  // ----------------------------------------------------------------- keys
+  {
+    id: "grand-piano",
+    name: "Grand Piano",
+    family: "keys",
+    description: "Bright struck acoustic — fast attack, natural decay.",
+    // analog: square+triangle, open filter w/ env, percussive amp decay.
+    config: analog(null, {
+      osc1Wave: "triangle",
+      osc2Wave: "square",
+      osc2Semi: 0,
+      osc2Detune: 3,
+      oscMix: 0.32,
+      subLevel: 0.1,
+      cutoff: 5200,
+      resonance: 1.2,
+      filterEnvAmount: 0.4,
+      keyTracking: 0.6,
+      filterAttack: 0.002,
+      filterDecay: 0.6,
+      filterSustain: 0.15,
+      filterRelease: 0.4,
+      ampAttack: 0.002,
+      ampDecay: 1.0,
+      ampSustain: 0.0,
+      ampRelease: 0.5,
+      drive: 0.08,
+      voiceMode: "poly",
+    }),
   },
-}
-
-/** Sine drone — pure, glassy sustained tone (routed to the sine-pad engine). */
-const sineDrone: InstrumentPreset = {
-  id: "sine-drone",
-  label: "Sine Drone",
-  description: "Pure detuned sine bed — endless, calm.",
-  category: "drone",
-  config: {
-    kind: "synth",
-    osc: "sine",
-    filter: { type: "lowpass", frequency: 2200, q: 0.7 },
-    env: { attack: 1.2, decay: 1.0, sustain: 1.0, release: 4.0 },
+  {
+    id: "electric-piano",
+    name: "Electric Piano",
+    family: "keys",
+    description: "Rhodes-ish tine EP — bell-tinged, warm, vibey.",
+    // FM gives the classic tine bark + body; gentle decay.
+    config: fm(3, 4.2, { attack: 0.003, decay: 0.9, sustain: 0.28, release: 0.7 }),
   },
-}
-
-/** Warm pad — triangle sine-pad with a soft attack and lush release. */
-const warmPad: InstrumentPreset = {
-  id: "warm-pad",
-  label: "Warm Pad",
-  description: "Lush detuned triangle pad — slow attack.",
-  category: "pad",
-  config: {
-    kind: "synth",
-    osc: "triangle",
-    filter: { type: "lowpass", frequency: 3000, q: 0.9 },
-    env: { attack: 0.8, decay: 1.4, sustain: 0.8, release: 2.4 },
+  {
+    id: "clav",
+    name: "Clav",
+    family: "keys",
+    description: "Funky clavinet — tight, biting, plucked envelope.",
+    config: analog("pluck", {
+      osc1Wave: "square",
+      osc2Wave: "sawtooth",
+      osc2Semi: 0,
+      oscMix: 0.45,
+      cutoff: 2600,
+      resonance: 6,
+      filterEnvAmount: 0.7,
+      filterDecay: 0.12,
+      filterSustain: 0.0,
+      ampAttack: 0.001,
+      ampDecay: 0.22,
+      ampSustain: 0.0,
+      ampRelease: 0.1,
+      drive: 0.3,
+      voiceMode: "poly",
+    }),
   },
-}
-
-/** Sub bass — deep, round FM bass with a fast attack. */
-const subBass: InstrumentPreset = {
-  id: "sub-bass",
-  label: "Sub Bass",
-  description: "Deep round FM sub — fast attack, tight tail.",
-  category: "bass",
-  config: {
-    kind: "fmSynth",
-    harmonicity: 1,
-    modIndex: 2.5,
-    env: { attack: 0.005, decay: 0.25, sustain: 0.4, release: 0.3 },
+  {
+    id: "drawbar-organ",
+    name: "Drawbar Organ",
+    family: "keys",
+    description: "Tonewheel organ — drawbar harmonics, instant on/off.",
+    // wavetable "organ" recipe = drawbar harmonics; flat sustain, no attack.
+    config: wavetable(
+      "organ",
+      { attack: 0.005, decay: 0.05, sustain: 1.0, release: 0.08 },
+      { frequency: 4200, q: 0.6 }
+    ),
   },
-}
-
-/** Pluck — short percussive sampler voice (placeholder until pluck samples). */
-const pluck: InstrumentPreset = {
-  id: "pluck",
-  label: "Pluck",
-  description: "Short plucked string — bright, decaying.",
-  category: "pluck",
-  config: {
-    kind: "sampler",
-    sampleSetId: "pluck",
-    mode: "repitch",
-    zones: chromaticZones("pluck", [48, 55, 60, 67, 72]),
+  {
+    id: "harpsichord",
+    name: "Harpsichord",
+    family: "keys",
+    description: "Plucked baroque keys — bright, jangly, quick decay.",
+    config: wavetable(
+      "saw",
+      { attack: 0.001, decay: 0.5, sustain: 0.0, release: 0.25 },
+      { frequency: 6500, q: 1.0, type: "highpass" }
+    ),
   },
-}
 
-/** Bell — glassy wavetable with a long ring. */
-const bell: InstrumentPreset = {
-  id: "bell",
-  label: "Bell",
-  description: "Glassy struck bell — bright wavetable, long ring.",
-  category: "keys",
-  config: {
-    kind: "wavetable",
-    tableId: "glass",
-    env: { attack: 0.002, decay: 1.6, sustain: 0.0, release: 1.8 },
-    filter: { type: "lowpass", frequency: 6000, q: 0.6 },
+  // ----------------------------------------------------------------- bass
+  {
+    id: "sub-bass",
+    name: "Sub Bass",
+    family: "bass",
+    description: "Deep round sine sub — fast attack, tight tail.",
+    config: fm(1, 1.2, { attack: 0.004, decay: 0.2, sustain: 0.7, release: 0.18 }),
   },
-}
-
-/** Tabla — pitched percussion sample kit (tabla/baya zones via sampler). */
-const tabla: InstrumentPreset = {
-  id: "tabla",
-  label: "Tabla",
-  description: "Indian tabla & baya hits — repitched sampler kit.",
-  category: "percussion",
-  config: {
-    kind: "sampler",
-    sampleSetId: "tabla",
-    mode: "repitch",
-    // Low baya (left drum) + higher dayan (right drum) zones.
-    zones: chromaticZones("tabla", [43, 50, 57, 62, 67]),
+  {
+    id: "acid-bass",
+    name: "Acid Bass",
+    family: "bass",
+    description: "Squelchy 303-style — high resonance, filter-env zap.",
+    config: analog("acid lead", {
+      osc2Semi: -12,
+      cutoff: 480,
+      resonance: 18,
+      filterEnvAmount: 0.9,
+      filterDecay: 0.22,
+      ampSustain: 0.6,
+      voiceMode: "mono",
+      glide: 0.05,
+    }),
   },
-}
+  {
+    id: "fm-bass",
+    name: "FM Bass",
+    family: "bass",
+    description: "Metallic FM growl — punchy, harmonically rich.",
+    config: fm(2, 6, { attack: 0.003, decay: 0.3, sustain: 0.5, release: 0.2 }),
+  },
+  {
+    id: "pluck-bass",
+    name: "Pluck Bass",
+    family: "bass",
+    description: "Short stabby bass — percussive, no sustain.",
+    config: analog("fat bass", {
+      cutoff: 700,
+      resonance: 5,
+      filterEnvAmount: 0.6,
+      filterDecay: 0.14,
+      ampDecay: 0.2,
+      ampSustain: 0.0,
+      ampRelease: 0.12,
+      voiceMode: "mono",
+    }),
+  },
+  {
+    id: "upright-bass",
+    name: "Upright Bass",
+    family: "bass",
+    description: "Round acoustic-ish upright — soft attack, woody.",
+    config: synth(
+      "triangle",
+      { frequency: 900, q: 1.4 },
+      { attack: 0.02, decay: 0.3, sustain: 0.5, release: 0.25 }
+    ),
+  },
 
-export const INSTRUMENT_PRESETS: readonly InstrumentPreset[] = [
-  tambura,
-  sineDrone,
-  warmPad,
-  subBass,
-  pluck,
-  bell,
-  tabla,
-] as const
+  // ----------------------------------------------------------------- leads
+  {
+    id: "saw-lead",
+    name: "Saw Lead",
+    family: "lead",
+    description: "Classic bright sawtooth lead — cutting, expressive.",
+    config: synth(
+      "sawtooth",
+      { frequency: 4000, q: 2.0 },
+      { attack: 0.01, decay: 0.2, sustain: 0.7, release: 0.25 }
+    ),
+  },
+  {
+    id: "square-lead",
+    name: "Square Lead",
+    family: "lead",
+    description: "Hollow square lead — woody, chiptune-leaning.",
+    config: synth(
+      "square",
+      { frequency: 3200, q: 1.6 },
+      { attack: 0.008, decay: 0.18, sustain: 0.65, release: 0.2 }
+    ),
+  },
+  {
+    id: "fm-lead",
+    name: "FM Lead",
+    family: "lead",
+    description: "Glassy FM lead — sparkly upper harmonics.",
+    config: fm(2.5, 5, { attack: 0.005, decay: 0.25, sustain: 0.6, release: 0.3 }),
+  },
+  {
+    id: "supersaw",
+    name: "Supersaw",
+    family: "lead",
+    description: "Huge detuned saw stack — anthemic, wide.",
+    config: analog("init", {
+      osc1Wave: "fatsawtooth",
+      osc2Wave: "fatsawtooth",
+      osc2Detune: 28,
+      osc2Semi: 0,
+      oscMix: 0.5,
+      subLevel: 0.1,
+      cutoff: 6000,
+      resonance: 1.5,
+      filterEnvAmount: 0.25,
+      ampAttack: 0.01,
+      ampDecay: 0.3,
+      ampSustain: 0.8,
+      ampRelease: 0.4,
+      drive: 0.12,
+      voiceMode: "poly",
+    }),
+  },
+
+  // ------------------------------------------------------------------ pads
+  {
+    id: "warm-pad",
+    name: "Warm Pad",
+    family: "pad",
+    description: "Lush detuned triangle pad — slow swell. (sine-pad engine)",
+    // triangle + slow attack ⇒ routes to the lush sine-pad engine.
+    config: synth(
+      "triangle",
+      { frequency: 3000, q: 0.9 },
+      { attack: 0.8, decay: 1.4, sustain: 0.8, release: 2.4 }
+    ),
+  },
+  {
+    id: "glass-pad",
+    name: "Glass Pad",
+    family: "pad",
+    description: "Pure detuned sine bed — glassy, calm. (sine-pad engine)",
+    config: synth(
+      "sine",
+      { frequency: 2400, q: 0.7 },
+      { attack: 1.1, decay: 1.2, sustain: 0.9, release: 3.2 }
+    ),
+  },
+  {
+    id: "string-ensemble",
+    name: "String Ensemble",
+    family: "pad",
+    description: "Bowed string section — fat saws, slow attack.",
+    config: analog("warm pad", {
+      osc1Wave: "fatsawtooth",
+      osc2Wave: "fatsawtooth",
+      osc2Detune: 16,
+      cutoff: 2600,
+      resonance: 1.0,
+      filterAttack: 0.4,
+      ampAttack: 0.35,
+      ampDecay: 1.0,
+      ampSustain: 0.85,
+      ampRelease: 1.8,
+      drive: 0.08,
+    }),
+  },
+  {
+    id: "choir-pad",
+    name: "Choir",
+    family: "pad",
+    description: "Vowel-formant voices — breathy 'aah' ensemble.",
+    // wavetable "vocal" recipe = two formant bumps.
+    config: wavetable(
+      "vocal",
+      { attack: 0.4, decay: 1.0, sustain: 0.85, release: 2.2 },
+      { frequency: 2800, q: 0.8 }
+    ),
+  },
+  {
+    id: "sweep-pad",
+    name: "Sweep Pad",
+    family: "pad",
+    description: "Evolving filter sweep — slow LFO wobble, motion.",
+    config: analog("warm pad", {
+      osc1Wave: "fatsawtooth",
+      osc2Wave: "square",
+      cutoff: 900,
+      resonance: 5,
+      filterEnvAmount: 0.6,
+      filterAttack: 1.6,
+      filterDecay: 2.0,
+      filterSustain: 0.7,
+      ampAttack: 0.6,
+      ampRelease: 2.4,
+      lfoRate: 0.18,
+      lfoDepth: 0.5,
+      lfoTarget: "filter",
+    }),
+  },
+
+  // ------------------------------------------------------- plucks & mallets
+  {
+    id: "synth-pluck",
+    name: "Synth Pluck",
+    family: "pluck",
+    description: "Bright resonant pluck — snappy filter-env decay.",
+    config: analog("pluck", {}),
+  },
+  {
+    id: "marimba",
+    name: "Marimba",
+    family: "pluck",
+    description: "Wooden mallet — soft sine-ish tone, quick decay.",
+    config: fm(1, 1, { attack: 0.001, decay: 0.5, sustain: 0.0, release: 0.4 }),
+  },
+  {
+    id: "bell-mallet",
+    name: "Bell",
+    family: "pluck",
+    description: "Struck bell — inharmonic FM clang, long ring.",
+    config: fm(3.5, 8, { attack: 0.001, decay: 1.6, sustain: 0.0, release: 1.8 }),
+  },
+  {
+    id: "kalimba",
+    name: "Kalimba",
+    family: "pluck",
+    description: "Thumb-piano tine — bright ping, short bloom.",
+    config: fm(2, 2.5, { attack: 0.001, decay: 0.35, sustain: 0.0, release: 0.3 }),
+  },
+  {
+    id: "music-box",
+    name: "Music Box",
+    family: "pluck",
+    description: "Tinkling glass comb — sparkly, fragile, decaying.",
+    config: wavetable(
+      "glass",
+      { attack: 0.001, decay: 1.2, sustain: 0.0, release: 1.4 },
+      { frequency: 7000, q: 0.7 }
+    ),
+  },
+
+  // ------------------------------------------------------------ brass & wind
+  {
+    id: "brass-section",
+    name: "Brass Section",
+    family: "brass",
+    description: "Punchy saw brass — filter-env bite, ensemble body.",
+    config: analog(null, {
+      osc1Wave: "sawtooth",
+      osc2Wave: "sawtooth",
+      osc2Detune: 9,
+      oscMix: 0.5,
+      cutoff: 1100,
+      resonance: 2.5,
+      filterEnvAmount: 0.7,
+      filterAttack: 0.06,
+      filterDecay: 0.3,
+      filterSustain: 0.5,
+      ampAttack: 0.04,
+      ampDecay: 0.2,
+      ampSustain: 0.8,
+      ampRelease: 0.25,
+      drive: 0.2,
+      voiceMode: "poly",
+    }),
+  },
+  {
+    id: "synth-brass",
+    name: "Synth Brass",
+    family: "brass",
+    description: "Fat 80s synth-brass stab — bold, resonant.",
+    config: analog(null, {
+      osc1Wave: "fatsawtooth",
+      osc2Wave: "square",
+      osc2Detune: 12,
+      oscMix: 0.4,
+      cutoff: 1400,
+      resonance: 4,
+      filterEnvAmount: 0.75,
+      filterAttack: 0.03,
+      filterDecay: 0.25,
+      filterSustain: 0.45,
+      ampAttack: 0.02,
+      ampSustain: 0.85,
+      ampRelease: 0.2,
+      drive: 0.28,
+    }),
+  },
+  {
+    id: "reed",
+    name: "Reed",
+    family: "brass",
+    description: "Hollow reed/wind — soft square, breathy attack.",
+    config: synth(
+      "square",
+      { frequency: 1800, q: 1.2 },
+      { attack: 0.06, decay: 0.2, sustain: 0.7, release: 0.3 }
+    ),
+  },
+
+  // ------------------------------------------------------------- fx & other
+  {
+    id: "glass-bell",
+    name: "Glass Bell",
+    family: "fx",
+    description: "Crystalline struck glass — bright wavetable ring.",
+    config: wavetable(
+      "glass",
+      { attack: 0.002, decay: 1.8, sustain: 0.0, release: 2.0 },
+      { frequency: 6000, q: 0.6 }
+    ),
+  },
+  {
+    id: "drone",
+    name: "Drone",
+    family: "fx",
+    description: "Endless sustained bed — slow swell, long tail. (sine-pad)",
+    config: synth(
+      "sine",
+      { frequency: 2200, q: 0.7 },
+      { attack: 1.2, decay: 1.0, sustain: 1.0, release: 4.0 }
+    ),
+  },
+  {
+    id: "stab",
+    name: "Stab",
+    family: "fx",
+    description: "Arp-friendly resonant stab — short, sharp, rhythmic.",
+    config: analog(null, {
+      osc1Wave: "sawtooth",
+      osc2Wave: "square",
+      osc2Semi: 12,
+      oscMix: 0.45,
+      cutoff: 1600,
+      resonance: 8,
+      filterEnvAmount: 0.8,
+      filterDecay: 0.12,
+      filterSustain: 0.0,
+      ampAttack: 0.002,
+      ampDecay: 0.16,
+      ampSustain: 0.0,
+      ampRelease: 0.1,
+      drive: 0.25,
+      voiceMode: "poly",
+    }),
+  },
+]
+
+export const INSTRUMENT_PRESETS: readonly InstrumentPreset[] = Object.freeze(PRESETS)
 
 const PRESET_BY_ID: Readonly<Record<string, InstrumentPreset>> = Object.freeze(
   Object.fromEntries(INSTRUMENT_PRESETS.map((p) => [p.id, p]))
 )
 
+// ---------------------------------------------------------------- lookups
+/** All presets, in corpus order. */
+export const listPresets = (): readonly InstrumentPreset[] => INSTRUMENT_PRESETS
+
+/** A single preset by id, or undefined. */
 export const getPreset = (id: string): InstrumentPreset | undefined => PRESET_BY_ID[id]
 
-/** A fresh, deep copy of a preset's config (so document mutation never aliases
- *  the shared frozen preset data). `sampleSetId`s stay stable, but per-track
- *  ids that need uniqueness can be re-seeded by the caller. */
+/** Presets grouped by family, in `PRESET_FAMILIES` order (only non-empty
+ *  families with their members in corpus order). */
+export const presetsByFamily = (): { family: PresetFamily; presets: InstrumentPreset[] }[] =>
+  PRESET_FAMILIES.map((family) => ({
+    family,
+    presets: INSTRUMENT_PRESETS.filter((p) => p.family === family),
+  })).filter((g) => g.presets.length > 0)
+
+/** The family that owns a preset id (for opening the right section). */
+export const familyOfPreset = (id: string): PresetFamily | undefined => PRESET_BY_ID[id]?.family
+
+/** Find the corpus preset whose config equals `config` (so the UI can show the
+ *  active preset). Compares by stable JSON so a re-voiced track resolves back to
+ *  its preset; returns undefined for a hand-edited / soundfont / tts voice. */
+export const matchPreset = (config: InstrumentConfig): InstrumentPreset | undefined => {
+  const key = stableKey(config)
+  for (const p of INSTRUMENT_PRESETS) {
+    if (stableKey(p.config) === key) return p
+  }
+  return undefined
+}
+
+/** Order-independent JSON key for an InstrumentConfig (param-bag order varies). */
+const stableKey = (config: InstrumentConfig): string => {
+  const sort = (v: unknown): unknown => {
+    if (Array.isArray(v)) return v.map(sort)
+    if (v && typeof v === "object") {
+      return Object.fromEntries(
+        Object.keys(v as Record<string, unknown>)
+          .sort()
+          .map((k) => [k, sort((v as Record<string, unknown>)[k])])
+      )
+    }
+    return v
+  }
+  return JSON.stringify(sort(config))
+}
+
+/** A fresh, deep copy of a preset's config so document mutation never aliases
+ *  the shared frozen preset data. */
 export const instantiatePreset = (id: string): InstrumentConfig | undefined => {
   const preset = PRESET_BY_ID[id]
   if (!preset) return undefined
   return structuredClone(preset.config)
 }
 
-/** Convenience for callers that want a unique sample-set id per instance. */
-export const instantiatePresetWithFreshSet = (id: string): InstrumentConfig | undefined => {
-  const cfg = instantiatePreset(id)
-  if (cfg && cfg.kind === "sampler") {
-    return { ...cfg, sampleSetId: `${cfg.sampleSetId}-${newId()}` }
-  }
-  return cfg
-}
+/** The default voice a brand-new instrument track gets — a sensible, audible
+ *  starting point (a bright saw lead). */
+export const DEFAULT_PRESET_ID = "saw-lead"

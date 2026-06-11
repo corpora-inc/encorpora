@@ -21,6 +21,8 @@ export const instrumentSummary = (config: InstrumentConfig): string => {
       return "Sampler"
     case "wavetable":
       return "Wavetable"
+    case "analogSynth":
+      return "Analog Synth"
     case "ttsFragment":
       return "Phrase Sampler"
     default:

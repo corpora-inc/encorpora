@@ -55,6 +55,40 @@
   color: var(--bl-text-dim);
 }
 
+/* Add-instrument-track affordance (sits at the end of the track switcher). */
+.bl-instr-add {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  min-height: var(--bl-hit);
+  min-width: var(--bl-hit);
+  padding: 0 var(--bl-s3);
+  border: 1px dashed var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font: inherit;
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+  transition:
+    border-color var(--bl-dur) var(--bl-ease),
+    color var(--bl-dur) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-instr-add:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 50%, transparent);
+  color: var(--bl-text);
+}
+.bl-instr-add:active {
+  transform: scale(0.97);
+}
+.bl-instr-add:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+
 /* Now-playing header. */
 .bl-instr-now {
   display: flex;
@@ -116,7 +150,7 @@
   -webkit-appearance: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--bl-s2);
   min-height: var(--bl-hit);
   padding: var(--bl-s2) var(--bl-s3);
@@ -149,20 +183,27 @@
   background: color-mix(in srgb, var(--bl-accent) 16%, var(--bl-surface-2));
   box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 45%, transparent);
 }
+.bl-instr-prog-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
 .bl-instr-prog-name {
   font-size: var(--bl-fs-body);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.bl-instr-prog-num {
-  font-family: var(--bl-font-mono);
+.bl-instr-prog-desc {
   font-size: var(--bl-fs-micro);
   color: var(--bl-text-dim);
-  flex: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.bl-instr-prog.is-on .bl-instr-prog-num {
-  color: var(--bl-accent);
+.bl-instr-prog.is-on .bl-instr-prog-desc {
+  color: color-mix(in srgb, var(--bl-accent) 70%, var(--bl-text-dim));
 }
 
 /* Footer audition row. */
