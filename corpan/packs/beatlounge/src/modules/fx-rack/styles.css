@@ -65,8 +65,17 @@
   flex-direction: column;
   gap: var(--bl-s4);
   padding: var(--bl-s4);
-  height: 100%;
+  /* Fill the immersive sheet on BOTH axes (the sheet is a flex column). On a
+   * wide iPad the rack stretches edge-to-edge instead of a narrow column. */
+  flex: 1;
+  width: 100%;
+  min-height: 0;
   overflow: hidden auto;
+}
+/* Let the chain take the freed-up height so the track switcher reads as a
+ * calm header above it. */
+.bl-fxrack > .bl-fxchain {
+  flex: 1;
 }
 .bl-fxrack-bar {
   display: flex;
@@ -80,10 +89,18 @@
   flex-wrap: wrap;
   flex: 1;
 }
+/* The effect cards reflow into columns as the rack widens (iPad/desktop) so a
+ * short chain doesn't leave a tall empty column on the right; ONE column under
+ * ~340px (a card needs room for the XY pad + a row of knobs). align-content
+ * keeps the cards top-packed; the add button spans the full width below them. */
 .bl-fxrack-chain {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   gap: var(--bl-s3);
+  align-content: start;
+}
+.bl-fxrack-chain > .bl-fxrack-add {
+  grid-column: 1 / -1;
 }
 
 /* ---- reusable chain wrapper (shared by the rack module + the Drums page) ---- */

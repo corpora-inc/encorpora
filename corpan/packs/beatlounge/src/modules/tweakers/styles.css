@@ -38,8 +38,18 @@
   flex-direction: column;
   gap: var(--bl-s4);
   padding: var(--bl-s4);
-  height: 100%;
+  /* flex:1 + width:100% so the panel fills the immersive sheet (which is a
+   * flex COLUMN) on BOTH axes — on a wide iPad it stretches edge-to-edge
+   * instead of sitting in a narrow column. min-height:0 keeps the scroll. */
+  flex: 1;
+  width: 100%;
+  min-height: 0;
   overflow: hidden auto;
+}
+/* The list of tweakers is the part that should consume the extra height +
+ * width; let it grow so the agent row stays a calm header above it. */
+.bl-twk > .bl-twk-list {
+  flex: 1;
 }
 
 /* ---- agents ---- */
@@ -105,10 +115,28 @@
 }
 
 /* ---- modulator list ---- */
+/* A responsive grid: ONE column on a phone (the cards are full-width), filling
+ * to TWO+ columns as the panel widens (iPad/desktop) so tweakers use the whole
+ * width instead of a single tall column with dead space on the right. The
+ * `minmax(min(100%, 280px), 1fr)` keeps it a single column under ~280px. */
 .bl-twk-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: var(--bl-s3);
+  align-content: start;
+}
+/* Empty state spans every grid column and centers in the freed-up height so
+ * the panel never shows a small line of text floating in a wide void. */
+.bl-twk-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 160px;
+  padding: var(--bl-s6);
+  color: var(--bl-text-dim);
+  font: var(--bl-fs-label) / 1.5 var(--bl-font-mono);
 }
 .bl-twk-row {
   background: var(--bl-surface);

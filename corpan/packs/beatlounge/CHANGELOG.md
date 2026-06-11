@@ -68,6 +68,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   ~320px to iPad.
 
 ### Fixed
+- **Tweakers + Effects fill the screen on tablet/desktop.** Both immersive
+  panels now stretch edge-to-edge (`flex:1; width:100%`) instead of sitting in a
+  narrow column. The tweakers list and the effects chain reflow into a
+  responsive grid (one column on a phone, two-plus as the panel widens) so a
+  short list no longer leaves a tall empty column on the right; the tweakers
+  empty state now centers in the freed space. Clean from 320px to iPad. No
+  behaviour, audio, or model change — layout only.
 - **Reliable load/unload — no more black screen on reload.** The pack and every
   module now tear down their React root via a shared deferred, once-only
   `unmount()` (microtask, never synchronously mid-render), so a host reload can
