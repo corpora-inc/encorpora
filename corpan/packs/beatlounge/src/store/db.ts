@@ -15,9 +15,11 @@
 import { openDB, type IDBPDatabase } from "idb"
 
 const DB_NAME = "beatlounge"
-const DB_VERSION = 2
+const DB_VERSION = 3
 export const SONGS_STORE = "songs"
 export const TTS_STORE = "tts-assets"
+/** Saved Scenes (named complete-state checkpoints), keyed by `scenes:<docId>`. */
+export const SCENES_STORE = "scenes"
 const OPEN_TIMEOUT_MS = 4000
 
 let dbPromise: Promise<IDBPDatabase | null> | null = null
@@ -30,6 +32,8 @@ const openOnce = (): Promise<IDBPDatabase | null> =>
     upgrade(db) {
       if (!db.objectStoreNames.contains(SONGS_STORE)) db.createObjectStore(SONGS_STORE)
       if (!db.objectStoreNames.contains(TTS_STORE)) db.createObjectStore(TTS_STORE)
+      // v3: per-song saved Scenes. Additive — a pre-v3 DB just gains the store.
+      if (!db.objectStoreNames.contains(SCENES_STORE)) db.createObjectStore(SCENES_STORE)
     },
     blocked() {
       console.warn("[beatlounge/db] open blocked by another connection")

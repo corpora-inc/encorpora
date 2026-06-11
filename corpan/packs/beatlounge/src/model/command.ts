@@ -30,6 +30,7 @@ import type {
   TimeSignature,
   Track,
 } from "./document"
+import type { SceneSnapshot } from "./snapshot"
 
 /** Omit that distributes over a union, preserving each member's own keys. */
 type DistributiveOmit<T, K extends keyof T> = T extends unknown ? Omit<T, K> : never
@@ -113,5 +114,10 @@ export type Command =
   | { t: "addChord"; chord: Omit<HarmonyChordEvent, "id"> }
   /** Remove a chord by id. */
   | { t: "removeChord"; chordId: Id }
+  // ---- scenes (named complete-state checkpoints) ----
+  /** Replace the live doc's MUSICAL state with a saved Scene snapshot, in ONE
+   *  atomic + undoable step. Preserves the song's id/name; the scheduler/audio
+   *  graph re-read the new doc (transport is untouched — no stop/start here). */
+  | { t: "loadScene"; snapshot: SceneSnapshot }
   // ---- atomic multi-command transaction (one undo step) ----
   | { t: "batch"; commands: Command[]; label?: string }
