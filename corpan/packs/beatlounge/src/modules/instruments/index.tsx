@@ -40,10 +40,12 @@ export const INSTRUMENTS_ID = "instruments"
 const resolveTrackId = (store: BeatloungeStore, fallback?: string): string | undefined => {
   if (fallback) return fallback
   const doc = store.vanilla.getState().doc
-  const melodic = doc.tracks.find(
+  // ONLY melodic (non-drum) tracks. A drum track is an InstrumentTrack too, but
+  // it must NEVER be a target here — voicing it with "Grand Piano" would destroy
+  // the kit. No melodic track ⇒ undefined (the browser offers to add one).
+  return doc.tracks.find(
     (t) => isInstrumentTrack(t) && t.instrument.kind !== "drumSampler"
-  )
-  return (melodic ?? doc.tracks.find((t) => isInstrumentTrack(t)))?.id
+  )?.id
 }
 
 export const createInstrumentsModule = ({
