@@ -203,9 +203,6 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
             >
               Audition
             </button>
-            <span className="bl-instr-foot-hint">
-              Synthesized presets · soundfont packs coming via downloads
-            </span>
           </div>
         </>
       )}
