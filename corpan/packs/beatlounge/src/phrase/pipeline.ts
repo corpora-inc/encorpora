@@ -389,11 +389,14 @@ const contentHashLite = (text: string, lang: string): string => {
 }
 
 // ----------------------------------------------------------- command emit
-const trackName = (clip: TTSFragmentClip): string => {
-  const base = clip.phraseText.trim() || clip.gloss.trim() || "Phrase"
-  // keep it short for the track lane
-  return base.length > 22 ? `${base.slice(0, 21)}…` : base
-}
+/**
+ * The fragment track is named by KIND, never by the phrase it carries. A placed
+ * phrase used to become the track name ("I will always…"), so a mixer strip read
+ * as a sentence and the user couldn't tell what it was. The phrase text lives on
+ * the fragment events / lanes — the TRACK is just "Phrases".
+ */
+const PHRASE_TRACK_NAME = "Phrases"
+const trackName = (_clip: TTSFragmentClip): string => PHRASE_TRACK_NAME
 
 /**
  * Compile a resolved clip into the command list (pure). Order matters:

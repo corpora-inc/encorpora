@@ -13,6 +13,56 @@
   gap: var(--bl-s3);
 }
 
+/* Track switcher (chips of the N synth tracks) + Add, in the roll toolbar. */
+.bl-roll-tracks {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.bl-roll-tracks::-webkit-scrollbar {
+  display: none;
+}
+.bl-roll-tracks .bl-chip {
+  flex: 0 0 auto;
+}
+.bl-roll-add {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  min-height: 36px;
+  padding: 0 var(--bl-s3);
+  border: 1px dashed var(--bl-border);
+  border-radius: var(--bl-radius-pill);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font: inherit;
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+  transition:
+    border-color var(--bl-dur) var(--bl-ease),
+    color var(--bl-dur) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-roll-add:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 50%, transparent);
+  color: var(--bl-text);
+}
+.bl-roll-add:active {
+  transform: scale(0.97);
+}
+.bl-roll-add:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+
 .bl-roll-frame {
   display: grid;
   grid-template-columns: auto 1fr;

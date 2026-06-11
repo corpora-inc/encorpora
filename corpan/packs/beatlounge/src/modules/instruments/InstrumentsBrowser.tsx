@@ -100,7 +100,9 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
   }
 
   const addInstrumentTrack = () => {
-    const init = newInstrumentTrackInit(instrumentTracks.length)
+    // Pass the existing track NAMES so the new one gets a unique "Synth N"
+    // (never a duplicate of a surviving strip after a delete).
+    const init = newInstrumentTrackInit(doc.tracks.map((t) => t.name))
     store.dispatch({ t: "addTrack", track: init })
     // The reducer assigns the id; bind to the new track once it lands.
     if (init.id) setTrackId(init.id)

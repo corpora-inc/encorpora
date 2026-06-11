@@ -25,8 +25,9 @@ import "./styles.css"
 
 export const PIANO_ROLL_ID = "piano-roll"
 
-/** Resolve the melodic track id: the first non-drum instrument track (Synth). */
-const resolveMelodicTrackId = (
+/** Resolve the melodic track id: the first non-drum instrument track (Synth).
+ *  Exported for the targeting test — the roll must NEVER bind to a drum track. */
+export const resolveMelodicTrackId = (
   store: BeatloungeStore,
   fallback?: string
 ): string | undefined => {
