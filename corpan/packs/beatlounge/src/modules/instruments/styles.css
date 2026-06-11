@@ -296,3 +296,77 @@
 .bl-instr-prog.is-on .bl-instr-prog-desc {
   color: color-mix(in srgb, var(--bl-accent) 70%, var(--bl-text-dim));
 }
+
+/* ---- harmony row (leads the page) + popover -------------------------------
+   Harmony governs every voice, so it sits at the very top of the Instruments
+   page as ONE compact row that expands to a popover holding the full reusable
+   <HarmonyPanel>. Space-efficient (no permanent real estate), premium, resize-
+   clean 320px → iPad. Tokens only. */
+.bl-instr-harmony {
+  position: relative;
+}
+.bl-instr-harmony-row {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  width: 100%;
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s2);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-label);
+  line-height: var(--bl-hit); /* WebKit vertical centering for button text */
+  text-align: left;
+  cursor: pointer;
+}
+.bl-instr-harmony-row.is-open {
+  border-color: color-mix(in srgb, var(--bl-accent) 60%, var(--bl-border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bl-accent) 35%, transparent);
+}
+.bl-instr-harmony-tonic {
+  font-family: var(--bl-font-mono);
+  font-weight: 600;
+  color: var(--bl-accent);
+}
+.bl-instr-harmony-detail {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--bl-text-dim);
+}
+.bl-instr-harmony-caret {
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-micro);
+}
+/* full-bleed scrim closes the popover on outside tap (transparent, no jolt) */
+.bl-instr-harmony-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  border: 0;
+  background: color-mix(in srgb, black 35%, transparent);
+  cursor: default;
+}
+.bl-instr-harmony-pop {
+  position: absolute;
+  z-index: 41;
+  top: calc(100% + var(--bl-s2));
+  left: 0;
+  right: 0;
+  max-height: min(70vh, 30rem);
+  overflow: hidden auto;
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  box-shadow: 0 12px 32px color-mix(in srgb, black 55%, transparent);
+}
+/* the embedded harmony bar flows to content height inside the popover */
+.bl-instr-harmony-pop > .bl-hb {
+  height: auto;
+  overflow: visible;
+}

@@ -18,7 +18,7 @@
  * editor lives on the Drums page). No emoji; --bl-* tokens only.
  */
 
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useRef, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
@@ -29,6 +29,10 @@ import {
   type Id,
   type InstrumentTrack,
 } from "../../model/document"
+import { useSelectedInstrument } from "../../store/selectedInstrument"
+import { HarmonyPanel } from "../composer/HarmonyPanel"
+import { harmonySummary } from "./harmonySummary"
+import "../composer/styles.css"
 import {
   FAMILY_LABEL,
   familyOfPreset,
@@ -88,25 +92,37 @@ export const InstrumentsBrowser = ({
   trackId: initialTrackId,
 }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
-  const [trackId, setTrackId] = useState<Id>(initialTrackId)
+  // The bound melodic track is a GLOBAL, doc-keyed selection (survives leaving
+  // the page / going Home). Seed it once from the mount's track, then own it.
+  const { trackId: selectedTrackId, select } = useSelectedInstrument(doc)
+  const seededRef = useRef(false)
+  if (!seededRef.current) {
+    seededRef.current = true
+    // Honor the mount's requested track on first render (else keep the stored /
+    // first-melodic selection the slice already resolves to).
+    if (initialTrackId && rebindTrackId(doc.tracks, initialTrackId) === initialTrackId) {
+      select(initialTrackId)
+    }
+  }
+  const trackId = selectedTrackId
+  const setTrackId = select
+
   const [tab, setTab] = useState<string>("voice")
   const [drawer, setDrawer] = useState<DrawerState>("open")
   const [record, setRecord] = useState(false)
   const [openFamily, setOpenFamily] = useState<PresetFamily | null>(null)
   const [oscWave, setOscWave] = useState<OscWave>("triangle")
+  // The harmony bar leads the page as a compact row that expands to a popover.
+  const [harmonyOpen, setHarmonyOpen] = useState(false)
 
   const instrumentTracks = useMemo(
     () => doc.tracks.filter((t): t is InstrumentTrack => isMelodicTrack(t)),
     [doc.tracks]
   )
 
-  // Keep the bound track valid as the doc changes (re-bind on a vanished track).
-  useEffect(() => {
-    const next = rebindTrackId(doc.tracks, trackId)
-    if (next && next !== trackId) setTrackId(next)
-  }, [doc.tracks, trackId])
+  const summary = useMemo(() => harmonySummary(doc), [doc])
 
-  const track = findTrack(doc, trackId)
+  const track = trackId ? findTrack(doc, trackId) : undefined
   const config = track && isInstrumentTrack(track) ? track.instrument : undefined
   const activeVoiceType: VoiceType = config ? voiceTypeOf(config) : "preset"
   const activePreset = config ? matchPreset(config) : undefined
@@ -277,6 +293,37 @@ export const InstrumentsBrowser = ({
   return (
     <div className={`bl-instr bl-trackpage bl-instr--${drawer}`}>
       <section className="bl-instr-stage bl-trackpage-grid bl-grid">
+        {/* ---- harmony leads the page: a compact summary row → popover ---- */}
+        <div className="bl-instr-harmony" data-bl-nocapture>
+          <button
+            type="button"
+            className={`bl-instr-harmony-row${harmonyOpen ? " is-open" : ""}`}
+            aria-expanded={harmonyOpen}
+            aria-label="Harmony"
+            onClick={() => setHarmonyOpen((o) => !o)}
+          >
+            <Glyph name="wave" size={14} />
+            <span className="bl-instr-harmony-tonic">{summary.tonic}</span>
+            <span className="bl-instr-harmony-detail">{summary.detail}</span>
+            <span className="bl-instr-harmony-caret" aria-hidden="true">
+              {harmonyOpen ? "▴" : "▾"}
+            </span>
+          </button>
+          {harmonyOpen && (
+            <>
+              <button
+                type="button"
+                className="bl-instr-harmony-scrim"
+                aria-label="Close harmony"
+                onClick={() => setHarmonyOpen(false)}
+              />
+              <div className="bl-instr-harmony-pop" role="dialog" aria-label="Harmony">
+                <HarmonyPanel host={host} store={store} snapTrackId={itrack.id} />
+              </div>
+            </>
+          )}
+        </div>
+
         {/* ---- track switcher + Record arm ---- */}
         <div className="bl-instr-bar" data-bl-nocapture>
           <div className="bl-instr-tracks">
