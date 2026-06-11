@@ -11,11 +11,8 @@ import {
   buildJamView,
   cellEventAt,
   clampPitch,
-  DEFAULT_SCALE,
   laneLabel,
   planScramble,
-  SCALES,
-  snapToScale,
 } from "./jamModel"
 
 const ref = (text: string, language = "es"): FragmentRef => ({
@@ -172,48 +169,5 @@ describe("planScramble (pure, reproducible)", () => {
     expect(clampPitch(3.4)).toBe(3)
     expect(clampPitch(99)).toBe(24)
     expect(clampPitch(-99)).toBe(-24)
-  })
-})
-
-describe("snapToScale (live ribbon scale-lock)", () => {
-  it("chromatic just rounds (the 'off' identity)", () => {
-    expect(snapToScale(3.4, "chromatic")).toBe(3)
-    expect(snapToScale(-7.6, "chromatic")).toBe(-8)
-    expect(snapToScale(0, "chromatic")).toBe(0)
-  })
-
-  it("snaps to in-scale degrees of a real scale, relative to centre 0", () => {
-    // Minor pentatonic degrees: 0,3,5,7,10 (octave-repeating, both directions).
-    expect(snapToScale(1, "minorPent")).toBe(0)
-    expect(snapToScale(2, "minorPent")).toBe(3)
-    expect(snapToScale(4, "minorPent")).toBe(3)
-    expect(snapToScale(6, "minorPent")).toBe(5)
-    expect(snapToScale(11, "minorPent")).toBe(10)
-    // up an octave: 12 + degree
-    expect(snapToScale(13, "minorPent")).toBe(12)
-    // below centre mirrors: -1 → nearest in-scale is -2 (i.e. 10 down an oct)
-    expect(snapToScale(-1, "minorPent")).toBe(-2)
-  })
-
-  it("every snapped value is an actual scale degree (mod 12) within the span", () => {
-    for (const scale of SCALES) {
-      const pcs = new Set(scale.degrees.map((d) => ((d % 12) + 12) % 12))
-      for (let x = -36; x <= 36; x += 0.25) {
-        const snapped = snapToScale(x, scale.id, 36)
-        expect(Math.abs(snapped)).toBeLessThanOrEqual(36)
-        expect(Number.isInteger(snapped)).toBe(true)
-        expect(pcs.has(((snapped % 12) + 12) % 12)).toBe(true)
-      }
-    }
-  })
-
-  it("never snaps past the span", () => {
-    expect(snapToScale(40, "minorPent", 36)).toBeLessThanOrEqual(36)
-    expect(snapToScale(-40, "minorPent", 36)).toBeGreaterThanOrEqual(-36)
-  })
-
-  it("default scale is the always-tuneful minor pentatonic", () => {
-    expect(DEFAULT_SCALE).toBe("minorPent")
-    expect(SCALES.some((s) => s.id === DEFAULT_SCALE)).toBe(true)
   })
 })

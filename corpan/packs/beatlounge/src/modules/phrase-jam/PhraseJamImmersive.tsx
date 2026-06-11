@@ -1,23 +1,24 @@
 /**
- * beatlounge — the phrase-JAM IMMERSIVE view: the drum sequencer for SAVED
- * PHRASE SNIPPETS, plus a live pitch RIBBON to perform with.
+ * beatlounge — the PHRASE JAM page: a complete phrase-snippet studio that
+ * MIRRORS the Drums page. Same shape, different content (spoken phrases, not
+ * drum voices) — so the two pages can't drift.
  *
- *   • GRID — one row per bank snippet (`doc.fragmentLibrary`), columns = the
- *     phrase track's loop steps. Tap a cell to place / clear a snippet on that
- *     beat (`placeFragment` / `removeFragment`), exactly like the drum step grid
- *     (same `tickForStep` mapping, same paint-stroke + playhead column).
- *   • PER-LANE PITCH — a small −12..+12 stepper per row re-pitches that lane's
- *     placed events (`editFragment`) AND sets the default pitch for new cells:
- *     the same word climbing the bar IS the riff.
- *   • LIVE RIBBON — drag horizontally to bend the WHOLE phrase track's pitch in
- *     real time via `host.applyParam({scope:"instrument",trackId,
- *     param:"pitchOffset"}, semis)` — NO document write. Snaps back to 0 on
- *     release. This is the "perform live" headline.
- *   • SCRAMBLE — the registry action, for happy accidents (one undo step).
+ *   • HEADER — global transport (play/stop) + track volume/pan + Clear, exactly
+ *     like Drums. (No Scramble, no Grooves toggle — Scatter lives in the drawer.)
+ *   • TOP RIBBON — a continuous FREE SLIDE above the grid that bends the WHOLE
+ *     phrase track's pitch live while you play (via host.applyParam pitchOffset).
+ *     No scales, no keys, no semitone/cents readout — just low → high. It snaps
+ *     back to centre on release and writes NOTHING to the doc.
+ *   • GRID — the shared <LaneGrid>: one SELECTABLE row per saved bank snippet
+ *     (doc.fragmentLibrary). Tap a cell to place / clear that snippet on the
+ *     beat; tap a lane head to target it for groove scatter. No per-snippet pitch
+ *     — phrases are spoken sounds, not notes.
+ *   • DRAWER — the shared <TrackDrawer>: Grooves (the shared <GroovesPanel>
+ *     scattering the bank onto a rhythm) · Effects (<TrackFxChain>) · Mixer (the
+ *     shared <TrackMixer>). No Kit tab — phrases have no drum kit.
  *
- * The ribbon uses pointer-capture and OWNS the drag only when the pointer starts
- * on the ribbon surface itself (chrome carries `data-bl-nocapture` and the
- * ribbon never lives under it), so it never steals taps from the grid/controls.
+ * Placing / scattering only WRITES the grid; it never auto-plays. The ribbon
+ * bends only during live playback ("setup, don't play").
  */
 
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -33,21 +34,16 @@ import {
 } from "../../model/document"
 import { stepForTick, tickForStep } from "../../model/timing"
 import { bankSnippets } from "../../phrase/bank"
-import { auditionPhrase } from "../../phrase/audition"
 import type { AudioSource } from "../../phrase/audioSource"
 import { Glyph, Transport } from "../../bl-ui"
-import {
-  buildJamView,
-  cellEventAt,
-  clampPitch,
-  DEFAULT_SCALE,
-  SCALES,
-  snapToScale,
-  type ScaleId,
-} from "./jamModel"
-import { scrambleAction } from "./actions"
-import { runAction } from "../runAction"
+import { TrackParamKnob } from "../TrackParamKnob"
 import { GroovesPanel } from "../grooves/GroovesPanel"
+import { TrackFxChain } from "../fx-rack/TrackFxChain"
+import { LaneGrid, type LaneGridLane } from "../track-studio/LaneGrid"
+import { TrackDrawer, type DrawerState, type DrawerTabDef } from "../track-studio/TrackDrawer"
+import { TrackMixer } from "../track-studio/TrackMixer"
+import "../track-studio/track-studio.css"
+import { buildJamView, cellEventAt } from "./jamModel"
 
 interface Props {
   host: BeatloungeHost
@@ -57,9 +53,10 @@ interface Props {
   trackId: Id
 }
 
-/** The live ribbon spans this many semitones either side of centre — ±3 octaves
- *  so you can "scratch" a phrase a long way up or down while it sounds (the
- *  engine clamps the live bend at ±4 octaves). */
+/** The free-slide ribbon spans this many semitones either side of centre — a
+ *  wide ±3-octave bend so you can scratch a phrase a long way up or down while it
+ *  sounds. This number NEVER surfaces in the UI; the ribbon shows only a smooth
+ *  low → high slide. The engine clamps the live bend internally. */
 const RIBBON_SPAN = 36
 const clamp01 = (v: number): number => (v < 0 ? 0 : v > 1 ? 1 : v)
 
@@ -67,7 +64,7 @@ export const PhraseJamImmersive = ({
   host,
   store,
   audio,
-  audioSource,
+  audioSource: _audioSource,
   trackId,
 }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
@@ -76,15 +73,11 @@ export const PhraseJamImmersive = ({
 
   const [playStep, setPlayStep] = useState(-1)
   const [playing, setPlaying] = useState(audio.isPlaying())
-  const [bend, setBend] = useState(0) // live ribbon bend, semitones (display)
-  const [showGrooves, setShowGrooves] = useState(false) // world-rhythm browser
-  // The musical scale the live ribbon snaps to (DEFAULT = minor pentatonic,
-  // always tuneful for scratching). "chromatic" = snap off (every semitone).
-  const [scale, setScale] = useState<ScaleId>(DEFAULT_SCALE)
+  const [tab, setTab] = useState<string>("grooves")
+  const [drawer, setDrawer] = useState<DrawerState>("open")
+  // Lane-head selection (snippet ids). Local UI only — drives groove targeting.
+  const [selected, setSelected] = useState<ReadonlySet<string>>(new Set())
 
-  // Paint stroke state for the grid (mirrors step-grid).
-  const paintMode = useRef<null | "add" | "remove">(null)
-  const touched = useRef(new Set<string>())
   // Ribbon drag state.
   const ribbonRef = useRef<HTMLDivElement | null>(null)
   const dragging = useRef(false)
@@ -103,15 +96,31 @@ export const PhraseJamImmersive = ({
     [doc, track, bank]
   )
 
+  const anySolo = doc.tracks.some((t) => t.solo)
+
+  // ---- live free-slide ribbon (declared before any early return so hooks are
+  //      unconditional; the handlers no-op until the ribbon is mounted) --------
+  const applyBend = (semis: number) => {
+    host.applyParam({ scope: "instrument", trackId, param: "pitchOffset" }, semis)
+  }
+  // Safety: drop the bend if we unmount mid-drag so the track doesn't stay bent.
+  useEffect(() => {
+    return () => {
+      if (dragging.current) applyBend(0)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   if (!track || !isFragmentTrack(track)) {
     return <div className="bl-grid-empty">No phrase track.</div>
   }
   const ftrack: FragmentTrack = track
+  const silent = ftrack.mute || (anySolo && !ftrack.solo)
 
   // Empty bank → calm pointer to the Phrases (discovery) screen.
   if (!view || view.lanes.length === 0) {
     return (
-      <div className="bl-jam">
+      <div className="bl-jam bl-trackpage">
         <div className="bl-grid-toolbar" data-bl-nocapture>
           <div className="bl-grid-title">
             <span className="bl-dot" style={{ background: ftrack.color }} />
@@ -130,14 +139,27 @@ export const PhraseJamImmersive = ({
     )
   }
 
-  const stepsPerBeat = view.stepsPerBeat
+  // ---- the shared LaneGrid's lane shape (snippets keyed by snippet id) -------
+  const lanes: LaneGridLane[] = view.lanes.map((lane) => ({
+    key: lane.ref.id,
+    selectKey: lane.ref.id,
+    label: lane.label,
+    title: lane.ref.text ?? undefined,
+    badge: lane.langTag ? (
+      <span className="bl-lane-badge">{lane.langTag}</span>
+    ) : undefined,
+    cells: lane.cells.map((c) => ({ on: c.on, velocity: c.gain })),
+  }))
 
-  // ---- grid cell place / clear --------------------------------------------
+  // ---- grid cell place / clear (default pitch 0 — no per-snippet pitch) ------
+  const isCellOn = (laneIndex: number, step: number): boolean =>
+    view.lanes[laneIndex]?.cells[step]?.on ?? false
+
   const setCell = (laneIndex: number, step: number, on: boolean) => {
-    const cur = findTrack(store.vanilla.getState().doc, trackId)
-    if (!cur || !isFragmentTrack(cur)) return
     const lane = view.lanes[laneIndex]
     if (!lane) return
+    const cur = findTrack(store.vanilla.getState().doc, trackId)
+    if (!cur || !isFragmentTrack(cur)) return
     const existing = cellEventAt(cur, lane.ref.id, step)
     if (on && !existing) {
       store.dispatch({
@@ -147,7 +169,7 @@ export const PhraseJamImmersive = ({
           tick: tickForStep(step, cur.grid),
           fragmentId: lane.ref.id,
           gain: 0.9,
-          pitchSemis: clampPitch(lane.pitchSemis),
+          pitchSemis: 0, // phrases are spoken sounds, not notes — always centre
         },
       })
     } else if (!on && existing) {
@@ -155,120 +177,25 @@ export const PhraseJamImmersive = ({
     }
   }
 
-  const onCellDown = (laneIndex: number, step: number) => {
-    const lane = view.lanes[laneIndex]
-    if (!lane) return
-    const isOn = lane.cells[step]?.on ?? false
-    paintMode.current = isOn ? "remove" : "add"
-    touched.current = new Set([`${laneIndex}:${step}`])
-    setCell(laneIndex, step, !isOn)
+  const toggleLane = (selectKey: string) => {
+    setSelected((cur) => {
+      const next = new Set(cur)
+      if (next.has(selectKey)) next.delete(selectKey)
+      else next.add(selectKey)
+      return next
+    })
   }
 
-  const onCellEnter = (laneIndex: number, step: number) => {
-    if (!paintMode.current) return
-    const key = `${laneIndex}:${step}`
-    if (touched.current.has(key)) return
-    touched.current.add(key)
-    setCell(laneIndex, step, paintMode.current === "add")
-  }
-
-  const endStroke = () => {
-    paintMode.current = null
-    touched.current.clear()
-  }
-
-  // ---- audition one lane (preview without the transport) -------------------
-  const preview = async (laneIndex: number) => {
-    const lane = view.lanes[laneIndex]
-    if (!lane?.ref.text || !lane.ref.language) return
-    try {
-      await auditionPhrase(
-        host.audioContext(),
-        audioSource,
-        lane.ref.text,
-        lane.ref.language,
-        { voiceId: lane.ref.voiceId, pitchSemis: clampPitch(lane.pitchSemis) }
-      )
-    } catch (err) {
-      console.warn("[beatlounge/phrase-jam] audition failed:", err)
-    }
-  }
-
-  // ---- per-lane pitch ------------------------------------------------------
-  const setLanePitch = (laneIndex: number, next: number) => {
-    const cur = findTrack(store.vanilla.getState().doc, trackId)
-    if (!cur || !isFragmentTrack(cur)) return
-    const lane = view.lanes[laneIndex]
-    if (!lane) return
-    const semis = clampPitch(next)
-    const edits = cur.fragments.filter((e) => e.fragmentId === lane.ref.id)
-    if (edits.length === 0) {
-      // Nothing placed yet — re-pitching the empty lane only changes the default
-      // for the next placement, which we surface by auditioning the new pitch.
-      void auditionLaneAt(lane.ref, semis)
-      // Force a re-render so the stepper shows the new value: place+immediately
-      // not desired; instead keep the value in a tiny per-lane override map.
-      laneOverride.current.set(lane.ref.id, semis)
-      bump((n) => n + 1)
-      return
-    }
-    laneOverride.current.delete(lane.ref.id)
-    if (edits.length === 1) {
-      store.dispatch({ t: "editFragment", trackId, fragId: edits[0].id, patch: { pitchSemis: semis } })
-    } else {
-      store.dispatch({
-        t: "batch",
-        label: "Re-pitch lane",
-        commands: edits.map((e) => ({
-          t: "editFragment" as const,
-          trackId,
-          fragId: e.id,
-          patch: { pitchSemis: semis },
-        })),
-      })
-    }
-    void auditionLaneAt(lane.ref, semis)
-  }
-
-  const auditionLaneAt = async (
-    ref: { text?: string; language?: string; voiceId?: string },
-    semis: number
-  ) => {
-    if (!ref.text || !ref.language) return
-    try {
-      await auditionPhrase(host.audioContext(), audioSource, ref.text, ref.language, {
-        voiceId: ref.voiceId,
-        pitchSemis: semis,
-      })
-    } catch (err) {
-      console.warn("[beatlounge/phrase-jam] audition failed:", err)
-    }
-  }
-
-  // Empty-lane pitch overrides (the default for the NEXT placement) + a tiny
-  // re-render bump so the stepper reflects them before any event exists.
-  const laneOverride = useRef(new Map<Id, number>())
-  const [, bump] = useState(0)
-  const lanePitch = (laneIndex: number): number => {
-    const lane = view.lanes[laneIndex]
-    if (!lane) return 0
-    return laneOverride.current.get(lane.ref.id) ?? lane.pitchSemis
-  }
-
-  // ---- live ribbon ---------------------------------------------------------
+  // ---- the free-slide ribbon: x → a continuous bend, no scale, no snapping ---
   const semisFromX = (clientX: number): number => {
     const el = ribbonRef.current
     if (!el) return 0
     const r = el.getBoundingClientRect()
     const x = clamp01((clientX - r.left) / Math.max(1, r.width))
-    const raw = (x - 0.5) * 2 * RIBBON_SPAN
-    // Snap the live bend to scale degrees of the chosen musical scale (relative
-    // to centre = the snippet's natural pitch) so the scratch lands on consonant
-    // intervals. "chromatic" is the off identity (nearest semitone).
-    const semis = snapToScale(raw, scale, RIBBON_SPAN)
-    return Math.max(-RIBBON_SPAN, Math.min(RIBBON_SPAN, semis))
+    // Continuous: 0 at left → +SPAN at right, centre = 0. No rounding to a
+    // semitone, no scale degrees — a smooth bend the engine reads as a number.
+    return (x - 0.5) * 2 * RIBBON_SPAN
   }
-
   const paintRibbon = (semis: number) => {
     const el = ribbonRef.current
     if (!el) return
@@ -276,58 +203,37 @@ export const PhraseJamImmersive = ({
     el.style.setProperty("--bl-jam-bend-on", "1")
   }
 
-  const applyBend = (semis: number) => {
-    host.applyParam({ scope: "instrument", trackId, param: "pitchOffset" }, semis)
-  }
-
   const onRibbonDown = (e: React.PointerEvent) => {
-    // Only own the drag when the pointer starts on the ribbon surface itself.
-    if (e.currentTarget !== e.target && !(e.target as HTMLElement).closest(".bl-jam-ribbon")) return
     if (e.button != null && e.button > 0) return
     const el = ribbonRef.current
     if (!el) return
     try { el.setPointerCapture(e.pointerId) } catch { /* ignore (tests) */ }
     dragging.current = true
-    // Raw finger tracking: kill the thumb's `left` easing WHILE dragging so it
-    // follows the pointer 1:1 (no perceived lag). The snap-back-to-centre ease
-    // on release is restored in onRibbonUp.
     el.classList.add("is-dragging")
     const semis = semisFromX(e.clientX)
-    setBend(semis)
     paintRibbon(semis)
     applyBend(semis)
     e.preventDefault()
   }
-
   const onRibbonMove = (e: React.PointerEvent) => {
     if (!dragging.current) return
     const semis = semisFromX(e.clientX)
-    setBend(semis)
     paintRibbon(semis)
     applyBend(semis)
   }
-
   const onRibbonUp = (e: React.PointerEvent) => {
     if (!dragging.current) return
     dragging.current = false
     const el = ribbonRef.current
     try { el?.releasePointerCapture(e.pointerId) } catch { /* ignore */ }
-    // Drop raw-tracking mode so the thumb's `left` transition is restored — the
-    // snap-back-to-centre then eases premium-smooth instead of jumping.
-    if (el) el.classList.remove("is-dragging")
-    // Ease back to centre — a quick snap-to-zero on release (premium touch).
-    setBend(0)
-    if (el) el.style.setProperty("--bl-jam-bend-on", "0")
+    if (el) {
+      el.classList.remove("is-dragging")
+      // Ease back to centre — a premium snap-to-zero on release.
+      el.style.setProperty("--bl-jam-bend", "50%")
+      el.style.setProperty("--bl-jam-bend-on", "0")
+    }
     applyBend(0)
   }
-
-  // Safety: drop the bend if we unmount mid-drag so the track doesn't stay bent.
-  useEffect(() => {
-    return () => {
-      if (dragging.current) applyBend(0)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   // ---- transport -----------------------------------------------------------
   const toggleTransport = () => {
@@ -342,23 +248,6 @@ export const PhraseJamImmersive = ({
     }
   }
 
-  const anySolo = doc.tracks.some((t) => t.solo)
-  const silent = ftrack.mute || (anySolo && !ftrack.solo)
-
-  const onScramble = () => {
-    const before = store.vanilla.getState().doc
-    const r = runAction(store, scrambleAction, { doc, targetTrackId: trackId })
-    if (r.commands.length)
-      host.toast(r.summary, {
-        undo: () => store.vanilla.getState().doc !== before && store.undo(),
-      })
-    else host.toast(r.summary)
-  }
-
-  // Grid is empty when no snippets are placed on this track (Clear is then a
-  // no-op → hide it; undo covers any accidental clear, so no confirm dialog).
-  const gridEmpty = ftrack.fragments.length === 0
-
   const onClear = () => {
     const before = store.vanilla.getState().doc
     if (ftrack.fragments.length === 0) return
@@ -368,174 +257,72 @@ export const PhraseJamImmersive = ({
     })
   }
 
+  const openTab = (next: string) => {
+    setTab(next)
+    setDrawer((d) => (d === "peek" ? "open" : d))
+  }
+
+  const tabs: DrawerTabDef[] = [
+    {
+      id: "grooves",
+      label: "Grooves",
+      render: () => (
+        <GroovesPanel
+          store={store}
+          host={host}
+          variant="embedded"
+          target={{ kind: "phrases", trackId }}
+        />
+      ),
+    },
+    {
+      id: "fx",
+      label: "Effects",
+      render: () => <TrackFxChain host={host} store={store} trackId={trackId} />,
+    },
+    {
+      id: "mixer",
+      label: "Mixer",
+      render: () => (
+        <TrackMixer
+          host={host}
+          store={store}
+          track={ftrack}
+          anySolo={anySolo}
+          hint="The full mixer (all tracks + sends) lives on the Mix page; this controls the phrase track right here."
+        />
+      ),
+    },
+  ]
+
   return (
-    <div className="bl-jam" onPointerUp={endStroke} onPointerLeave={endStroke}>
-      <div className="bl-grid-toolbar" data-bl-nocapture>
-        <div className="bl-grid-title">
-          <span className="bl-dot" style={{ background: ftrack.color }} />
-          Phrase Jam
-        </div>
-        <div className="bl-grid-actions">
-          <Transport playing={playing} onToggle={toggleTransport} spaceToToggle={false} />
-          <button
-            type="button"
-            className={`bl-chip${showGrooves ? " is-on" : ""}`}
-            aria-pressed={showGrooves}
-            onClick={() => setShowGrooves((v) => !v)}
-            title="Browse world rhythms and lay your phrases on a groove"
-          >
-            <Glyph name="grid" size={14} />
-            <span>Grooves</span>
-          </button>
-          <button type="button" className="bl-chip" onClick={onScramble}>
-            Scramble
-          </button>
-          {!gridEmpty && (
-            <button
-              type="button"
-              className="bl-chip is-danger bl-jam-clear"
-              onClick={onClear}
-              aria-label="Clear the jam"
-            >
-              <Glyph name="trash" size={14} />
-              <span>Clear</span>
+    <div className={`bl-jam bl-trackpage bl-jam--${drawer}`}>
+      <section className="bl-jam-grid-region bl-trackpage-grid bl-grid">
+        {/* ---- header (consistent with Drums) ---- */}
+        <div className="bl-grid-toolbar" data-bl-nocapture>
+          <div className="bl-grid-title">
+            <Transport playing={playing} onToggle={toggleTransport} spaceToToggle />
+            <span className="bl-dot" style={{ background: ftrack.color }} />
+          </div>
+          <div className="bl-grid-actions">
+            <TrackParamKnob host={host} store={store} trackId={trackId} param="volume" value={ftrack.volume} />
+            <TrackParamKnob host={host} store={store} trackId={trackId} param="pan" value={ftrack.pan} />
+            <button type="button" className="bl-chip is-danger" onClick={onClear}>
+              Clear
             </button>
-          )}
-        </div>
-      </div>
-
-      {/* ---- the snippet step grid ---- */}
-      <div
-        className={`bl-jam-grid${silent ? " is-silent" : ""}`}
-        style={{ ["--bl-steps" as string]: String(view.steps) }}
-      >
-        {view.lanes.map((lane, laneIndex) => (
-          <div className="bl-jam-lane" key={lane.ref.id}>
-            <div className="bl-jam-lane-head" data-bl-nocapture>
-              <div className="bl-jam-lane-id">
-                <span className="bl-jam-lane-name" title={lane.ref.text ?? ""}>
-                  {lane.label}
-                </span>
-                {lane.langTag && <span className="bl-jam-lane-lang">{lane.langTag}</span>}
-              </div>
-              <div className="bl-jam-pitch" role="group" aria-label={`${lane.label} pitch`}>
-                <button
-                  type="button"
-                  className="bl-jam-pitch-btn"
-                  aria-label="Pitch down"
-                  onClick={() => setLanePitch(laneIndex, lanePitch(laneIndex) - 1)}
-                >
-                  −
-                </button>
-                <span className="bl-jam-pitch-val" aria-live="off">
-                  {fmtSemis(lanePitch(laneIndex))}
-                </span>
-                <button
-                  type="button"
-                  className="bl-jam-pitch-btn"
-                  aria-label="Pitch up"
-                  onClick={() => setLanePitch(laneIndex, lanePitch(laneIndex) + 1)}
-                >
-                  +
-                </button>
-                <button
-                  type="button"
-                  className="bl-jam-audition"
-                  aria-label={`Audition ${lane.label}`}
-                  onClick={() => void preview(laneIndex)}
-                >
-                  <Glyph name="play" size={14} />
-                </button>
-              </div>
-            </div>
-            <div className="bl-jam-cells" role="row">
-              {lane.cells.map((cell, s) => (
-                <button
-                  key={s}
-                  type="button"
-                  role="gridcell"
-                  aria-pressed={cell.on}
-                  aria-label={`${lane.label} step ${s + 1}`}
-                  className={
-                    "bl-cell" +
-                    (cell.on ? " is-on" : "") +
-                    (s === playStep ? " is-active" : "") +
-                    (s % stepsPerBeat === 0 ? " is-beat" : "")
-                  }
-                  data-bl-nocapture
-                  style={
-                    cell.on
-                      ? ({ "--bl-cell-vel": String(0.45 + cell.gain * 0.55) } as React.CSSProperties)
-                      : undefined
-                  }
-                  onPointerDown={(e) => {
-                    if (e.button != null && e.button > 0) return
-                    onCellDown(laneIndex, s)
-                  }}
-                  onPointerEnter={(e) => {
-                    if (e.buttons & 1) onCellEnter(laneIndex, s)
-                  }}
-                >
-                  <span className="bl-cell-core" />
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* ---- the GROOVE BRAIN: browse world rhythms, lay phrases on a groove ---- */}
-      {showGrooves && (
-        <div className="bl-jam-grooves" data-bl-nocapture>
-          <GroovesPanel
-            store={store}
-            host={host}
-            variant="embedded"
-            target={{ kind: "phrases", trackId }}
-          />
-        </div>
-      )}
-
-      {/* ---- the live pitch ribbon ---- */}
-      <div className="bl-jam-perform">
-        <div className="bl-jam-perform-head" data-bl-nocapture>
-          <span className="bl-jam-perform-title">Pitch ribbon</span>
-          <span className="bl-jam-bend-readout" aria-live="off">
-            {fmtSemis(Math.round(bend))}
-          </span>
-          <div
-            className="bl-jam-scales"
-            role="radiogroup"
-            aria-label="Ribbon scale (snap the bend to a musical scale)"
-          >
-            {SCALES.map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                role="radio"
-                aria-checked={scale === s.id}
-                className={`bl-jam-scale-chip${scale === s.id ? " is-on" : ""}`}
-                onClick={() => setScale(s.id)}
-                title={
-                  s.id === "chromatic"
-                    ? "No scale — bend snaps to the nearest semitone"
-                    : `Snap the bend to the ${s.label} scale`
-                }
-              >
-                {s.label}
-              </button>
-            ))}
           </div>
         </div>
+
+        {/* ---- the free-slide pitch ribbon — at the TOP, above the grid ---- */}
         <div
           ref={ribbonRef}
           className={`bl-jam-ribbon${silent ? " is-silent" : ""}`}
           role="slider"
-          aria-label="Live pitch bend (semitones)"
-          aria-valuemin={-RIBBON_SPAN}
-          aria-valuemax={RIBBON_SPAN}
-          aria-valuenow={Math.round(bend)}
-          aria-valuetext={`${fmtSemis(Math.round(bend))} semitones`}
+          aria-label="Pitch bend"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={50}
+          aria-valuetext="centre"
           onPointerDown={onRibbonDown}
           onPointerMove={onRibbonMove}
           onPointerUp={onRibbonUp}
@@ -547,13 +334,33 @@ export const PhraseJamImmersive = ({
             {playing ? "Slide to bend the whole phrase" : "Press play, then slide to bend"}
           </span>
         </div>
-      </div>
+
+        {/* ---- the snippet step grid (shared LaneGrid) ---- */}
+        <div className="bl-grid-scroll">
+          <LaneGrid
+            lanes={lanes}
+            steps={view.steps}
+            stepsPerBeat={view.stepsPerBeat}
+            playStep={playStep}
+            silent={silent}
+            selected={selected}
+            onToggleLane={toggleLane}
+            setCell={setCell}
+            isCellOn={isCellOn}
+          />
+        </div>
+      </section>
+
+      {/* ---- the PIPELINE DRAWER (Grooves / Effects / Mixer) ---- */}
+      <TrackDrawer
+        label="Phrase track pipeline"
+        tabsLabel="Phrase tools"
+        tabs={tabs}
+        activeTab={tab}
+        onTab={openTab}
+        state={drawer}
+        setState={setDrawer}
+      />
     </div>
   )
-}
-
-/** Format a signed semitone value, e.g. "+3", "0", "−5". */
-const fmtSemis = (n: number): string => {
-  if (n === 0) return "0"
-  return n > 0 ? `+${n}` : `−${Math.abs(n)}`
 }
