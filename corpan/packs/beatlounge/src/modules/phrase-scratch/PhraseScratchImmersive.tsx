@@ -32,6 +32,7 @@ import { decodeFragmentBytes } from "../../phrase/decode"
 import { Glyph, prefersReducedMotion } from "../../bl-ui"
 import { ensureAudio } from "../../engine/ensureAudio"
 import { createScratchDeck, type ScratchDeck } from "./scratchEngine"
+import { padBufferToRevolution } from "./scratchPad"
 import { resolveWordSpans } from "./wordTiming"
 import { createLoadToken } from "./loadToken"
 import {
@@ -72,7 +73,8 @@ interface DeckRuntime {
   deck: ScratchDeck | null
   spans: WordSpan[]
   words: string[]
-  durationSec: number
+  durationSec: number // PADDED loop length (the disc wraps here — integer revolutions)
+  phraseSec: number // REAL phrase duration (word placement spirals across this)
   // disc geometry (the 1:1 truth)
   discRot: number
   prevDiscRot: number
@@ -89,6 +91,7 @@ const freshRuntime = (): DeckRuntime => ({
   spans: [],
   words: [],
   durationSec: 0,
+  phraseSec: 0,
   discRot: 0,
   prevDiscRot: 0,
   angVel: 0,
@@ -218,7 +221,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           setLoading(false)
           return
         }
-        // RAW wave — one buffer, one read-head. Word spans for the groove labels.
+        // Word spans live on the REAL phrase timeline (before padding).
         const channel = decoded.getChannelData(0)
         const { spans, labels } = resolveWordSpans(
           channel,
@@ -226,7 +229,12 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           decoded.duration,
           splitWords(text)
         )
-        const deck = await createScratchDeck(ctx, decoded, { gain: initialGain })
+        // LOOP-ANGLE FIX: pad the wave with trailing silence to a WHOLE number of
+        // revolutions (+ boundary fades) so the loop wraps at an integer disc turn —
+        // the phrase START returns under the needle at the SAME angle every loop. The
+        // disc mapping uses the PADDED duration; words stay on the real timeline.
+        const padded = padBufferToRevolution(ctx, decoded)
+        const deck = await createScratchDeck(ctx, padded, { gain: initialGain })
         if (stale()) {
           deck.dispose()
           return
@@ -234,7 +242,8 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         rt.current.deck = deck
         rt.current.spans = spans
         rt.current.words = labels.length > 0 ? labels : [text]
-        rt.current.durationSec = decoded.duration
+        rt.current.durationSec = padded.duration
+        rt.current.phraseSec = decoded.duration
         // Lock the needle to the audio: the engine reports its true playhead.
         rt.current.unsubPos = deck.onPos((p) => {
           rt.current.audioSec = p.seconds
@@ -485,7 +494,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         <div className="bl-scr-stage">
           <Platter
             rotation={view.rotation}
-            durationSec={rt.current.durationSec}
+            phraseSec={rt.current.phraseSec}
             spans={rt.current.spans}
             words={rt.current.words}
             currentWord={view.wordIdx}
@@ -558,23 +567,24 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     <div className={`bl-scr${showDeckB ? " is-dual" : ""}`}>
       <div className="bl-scr-decks">
         {renderDeck("a", selectedA, rtA, viewA, loadingA, spinA, cutA, setCutA)}
+        {showDeckB && (
+          <div className="bl-scr-mixer" data-bl-nocapture>
+            <div className="bl-scr-xfade">
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.01}
+                value={crossfade}
+                onChange={(e) => setCrossfade(parseFloat(e.target.value))}
+                aria-label="Crossfader (deck A to deck B)"
+                className="bl-scr-xfade-input"
+              />
+            </div>
+          </div>
+        )}
         {showDeckB && renderDeck("b", selectedB, rtB, viewB, loadingB, spinB, cutB, setCutB)}
       </div>
-
-      {showDeckB && (
-        <div className="bl-scr-xfade" data-bl-nocapture>
-          <input
-            type="range"
-            min={0}
-            max={1}
-            step={0.01}
-            value={crossfade}
-            onChange={(e) => setCrossfade(parseFloat(e.target.value))}
-            aria-label="Crossfader (deck A to deck B)"
-            className="bl-scr-xfade-input"
-          />
-        </div>
-      )}
 
       <div className="bl-scr-controls" data-bl-nocapture>
         <button

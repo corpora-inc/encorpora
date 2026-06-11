@@ -101,14 +101,21 @@
   color: var(--bl-text-dim);
 }
 
-/* ---------------------------------------------------------- decks layout */
+/* ---------------------------------------------------------- decks layout
+   The scratch view FILLS the immersive sheet luxuriously. The decks row is the
+   flexible middle; on a wide screen the two decks sit either side of a center mixer
+   column (a real DJ console); on a narrow screen they stack. Every turntable lives
+   in a RESERVED, fixed-aspect FOOTPRINT — the disc/needle/marker/labels are all
+   positioned ABSOLUTELY inside it — so nothing about playback (spin, marker, words)
+   can change a deck's size or shove its neighbour. */
 .bl-scr-decks {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
-  gap: var(--bl-s4);
+  gap: var(--bl-s5);
   flex: 1 1 auto;
   min-height: 0;
+  min-width: 0;
 }
 .bl-scr-deck {
   display: flex;
@@ -118,14 +125,28 @@
   gap: var(--bl-s4);
   flex: 1 1 0;
   min-width: 0;
+  min-height: 0;
   position: relative;
 }
 
-/* ---------------------------------------------------------- the platter */
+/* ---------------------------------------------------------- the platter
+   The platter's footprint is a single value (`--bl-platter`) derived from the
+   available box — width AND height (vh) — minus the fader's lane, so a deck NEVER
+   overflows its column and can't push its neighbour at any size down to ~320px. */
+.bl-scr {
+  /* one deck: big & centered. The fader (~46px lane) is subtracted from width. */
+  --bl-platter: min(
+    calc(86vw - 64px),
+    calc(74vh - 180px),
+    520px
+  );
+}
 .bl-scr-platter {
   --bl-scr-rot: 0rad;
   position: relative;
-  width: min(72vw, 340px);
+  width: var(--bl-platter);
+  height: var(--bl-platter);
+  flex: 0 0 auto;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: grid;
@@ -225,6 +246,24 @@
   text-shadow: var(--bl-glow) var(--bl-accent);
 }
 
+/* The single START marker — a tasteful tick fixed on the disc at the phrase start
+   (t=0, outer rim). Rides the rotating vinyl; because the loop is rev-quantized it
+   returns under the 3 o'clock needle at the same angle every loop. Absolutely
+   positioned (out of flow) so it never affects the deck footprint. */
+.bl-scr-start {
+  position: absolute;
+  left: var(--bl-scr-sx, 100%);
+  top: var(--bl-scr-sy, 50%);
+  width: 4px;
+  height: 11%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--bl-radius-pill);
+  background: linear-gradient(to bottom, var(--bl-accent-hot), var(--bl-accent));
+  box-shadow: var(--bl-glow) var(--bl-accent);
+  opacity: 0.92;
+  pointer-events: none;
+}
+
 /* Fixed needle at 3 o'clock (the RIGHT): never rotates. The arm comes in from the
    right edge; the tip sits where the groove meets the needle (the playhead). */
 .bl-scr-needle {
@@ -254,21 +293,27 @@
   box-shadow: var(--bl-glow) var(--bl-accent);
 }
 
-/* ---------------------------------------------------------- stage: platter + cut */
+/* ---------------------------------------------------------- stage: platter + cut
+   The platter and its cut fader sit side by side in a reserved row; the row's height
+   is the platter footprint, so spinning never resizes it. */
 .bl-scr-stage {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--bl-s4);
+  flex: 0 0 auto;
 }
 
-/* ---------------------------------------------------------- cut fader (the cut) */
+/* ---------------------------------------------------------- cut fader (the cut)
+   A real channel fader: a fat cap on a slim track, the throw matching the platter
+   height so a flick 0→full covers a satisfying distance. Generous hit lane. */
 .bl-scr-cut {
   --bl-cut: 100%;
   position: relative;
   flex: 0 0 auto;
-  width: 34px;
-  height: min(64vw, 300px);
+  width: 46px;
+  height: var(--bl-platter);
+  max-height: 520px;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -285,11 +330,11 @@
 }
 .bl-scr-cut-track {
   position: relative;
-  width: 8px;
+  width: 10px;
   margin: 0 auto;
   border-radius: var(--bl-radius-pill);
   background: var(--bl-surface-2);
-  box-shadow: inset 0 0 0 1px var(--bl-border);
+  box-shadow: inset 0 0 0 1px var(--bl-border), inset 0 2px 6px rgba(0, 0, 0, 0.35);
   overflow: hidden;
 }
 .bl-scr-cut-fill {
@@ -305,13 +350,26 @@
   position: absolute;
   left: 50%;
   bottom: var(--bl-cut);
-  width: 28px;
-  height: 16px;
+  width: 38px;
+  height: 22px;
   transform: translate(-50%, 50%);
-  border-radius: var(--bl-radius-sm);
-  background: var(--bl-surface);
-  box-shadow: inset 0 0 0 1px var(--bl-border), var(--bl-glow) rgba(0, 0, 0, 0.001);
+  border-radius: 6px;
+  background: linear-gradient(to bottom, var(--bl-surface-2), var(--bl-surface));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px var(--bl-border), 0 3px 8px rgba(0, 0, 0, 0.4);
   transition: box-shadow var(--bl-dur-fast) var(--bl-ease);
+}
+/* A center grip line on the cap — the channel-fader detail. */
+.bl-scr-cut-cap::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-border);
 }
 .bl-scr-cut:active .bl-scr-cut-cap,
 .bl-scr-cut:focus-visible .bl-scr-cut-cap {
@@ -381,28 +439,49 @@
   font-size: var(--bl-fs-body);
 }
 
-/* In dual-deck mode each platter + cut fader shrinks so two decks fit side by side. */
-.bl-scr.is-dual .bl-scr-platter {
-  width: min(34vw, 230px);
+/* ---------------------------------------------------------- two-deck DJ console
+   In dual mode each deck shares the width with a CENTER MIXER COLUMN that carries the
+   crossfader. Platters shrink to fit two-across (the footprint accounts for the lane
+   + mixer), but the reserved-footprint rule holds — nothing resizes on spin. */
+.bl-scr.is-dual {
+  --bl-platter: min(
+    calc(42vw - 70px),
+    calc(72vh - 180px),
+    360px
+  );
 }
-.bl-scr.is-dual .bl-scr-cut {
-  height: min(36vw, 210px);
-  width: 28px;
+.bl-scr.is-dual .bl-scr-decks {
+  gap: var(--bl-s4);
 }
 .bl-scr.is-dual .bl-scr-stage {
-  gap: var(--bl-s2);
+  gap: var(--bl-s3);
 }
 
-/* ---------------------------------------------------------- crossfader */
+/* center mixer column (the crossfader, vertical) */
+.bl-scr-mixer {
+  flex: 0 0 auto;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--bl-s2);
+}
+
+/* ---------------------------------------------------------- crossfader
+   Wide (two-across): a VERTICAL crossfader in the mixer column (rotated range).
+   It still reads A↔B left-to-right when you tilt your head; the label keeps it
+   accessible. */
 .bl-scr-xfade {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--bl-s5);
 }
 .bl-scr-xfade-input {
-  width: min(70vw, 320px);
+  width: var(--bl-platter);
+  max-width: 360px;
+  transform: rotate(-90deg);
   accent-color: var(--bl-accent);
   cursor: pointer;
 }
@@ -551,10 +630,29 @@
   color: var(--bl-text);
 }
 
-/* ---------------------------------------------------------- bigger screens */
-@media (min-width: 600px) {
-  .bl-scr-platter {
-    width: min(56vw, 420px);
+/* ---------------------------------------------------------- narrow: stack decks
+   Below ~640px two decks no longer fit side by side — stack them and lay the
+   crossfader HORIZONTALLY between them. One big platter each, controls reachable,
+   nothing clipped; the reserved footprint keeps each deck fixed while spinning. */
+@media (max-width: 640px) {
+  .bl-scr.is-dual {
+    --bl-platter: min(
+      calc(88vw - 64px),
+      calc(40vh - 90px),
+      360px
+    );
+  }
+  .bl-scr.is-dual .bl-scr-decks {
+    flex-direction: column;
+    gap: var(--bl-s3);
+  }
+  .bl-scr-mixer {
+    align-self: center;
+    padding: var(--bl-s1) 0;
+  }
+  .bl-scr.is-dual .bl-scr-xfade-input {
+    transform: none; /* horizontal between the stacked decks */
+    width: min(72vw, 320px);
   }
 }
 

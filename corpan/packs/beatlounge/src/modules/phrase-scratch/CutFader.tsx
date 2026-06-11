@@ -36,6 +36,14 @@ export const CutFader = ({ value, label, onChange }: Props) => {
     return clamp01(1 - (clientY - r.top) / r.height)
   }, [value])
 
+  // Drive the cap/fill IMMEDIATELY via the CSS var (no wait for a React re-render) so
+  // a fast flick tracks the finger with zero lag, AND report the value up for the gain.
+  const apply = useCallback((v: number) => {
+    const el = trackRef.current
+    if (el) el.style.setProperty("--bl-cut", `${clamp01(v) * 100}%`)
+    onChange(v)
+  }, [onChange])
+
   const onPointerDown = (e: React.PointerEvent) => {
     if (e.button != null && e.button > 0) return
     const el = trackRef.current
@@ -46,14 +54,14 @@ export const CutFader = ({ value, label, onChange }: Props) => {
       /* ignore */
     }
     dragging.current = true
-    onChange(levelFromY(e.clientY)) // instant jump-to-tap (a hard cut)
+    apply(levelFromY(e.clientY)) // instant jump-to-tap (a hard cut)
     e.preventDefault()
     e.stopPropagation()
   }
 
   const onPointerMove = (e: React.PointerEvent) => {
     if (!dragging.current) return
-    onChange(levelFromY(e.clientY))
+    apply(levelFromY(e.clientY))
     e.stopPropagation()
   }
 
@@ -74,13 +82,13 @@ export const CutFader = ({ value, label, onChange }: Props) => {
     else if (e.key === "Home") next = 0
     else if (e.key === "End") next = 1
     if (next != null) {
-      onChange(next)
+      apply(next)
       e.preventDefault()
     }
   }
 
   const onWheel = (e: React.WheelEvent) => {
-    onChange(clamp01(value - Math.sign(e.deltaY) * 0.06))
+    apply(clamp01(value - Math.sign(e.deltaY) * 0.06))
   }
 
   return (

@@ -136,6 +136,44 @@ export const rotationToPlayhead = (rotation: number, durationSeconds: number): n
 /** Inverse-ish: the disc rotation (radians) for a buffer time within the first loop. */
 export const playheadToRotation = (seconds: number): number => seconds / SECONDS_PER_RAD
 
+/* -------------------------------------------- loop quantized to the revolution */
+
+/**
+ * The LOOP length (seconds) for a phrase: its real duration rounded UP to a whole
+ * number of revolutions (`ceil(duration / SECONDS_PER_REV) * SECONDS_PER_REV`). The
+ * buffer is padded with trailing SILENCE to this length so the engine wraps at an
+ * INTEGER number of full disc turns. After every loop the playhead returns to 0 at a
+ * whole number of revolutions → the phrase start comes back under the 3 o'clock
+ * needle at exactly the SAME angle, every loop. A zero/short phrase still gets one
+ * full revolution so there's always a groove to spin.
+ */
+export const paddedLoopSeconds = (durationSeconds: number): number => {
+  if (!(durationSeconds > 0)) return SECONDS_PER_REV
+  const revs = Math.max(1, Math.ceil(durationSeconds / SECONDS_PER_REV - 1e-9))
+  return revs * SECONDS_PER_REV
+}
+
+/** How many whole revolutions the padded loop spans (integer ≥ 1). */
+export const loopRevolutions = (durationSeconds: number): number =>
+  Math.round(paddedLoopSeconds(durationSeconds) / SECONDS_PER_REV)
+
+/**
+ * The screen angle (radians, normalized to [0, 2π)) at which the START of the phrase
+ * (playhead = 0) sits, after the disc has rotated by `rotation`. The start groove
+ * point lives at local angle 0 (the 3 o'clock needle direction in the disc's own
+ * frame — see Platter), so on screen it is at `rotation` itself, modulo 2π. Because
+ * the loop is rev-quantized, when the playhead returns to 0 the rotation has advanced
+ * by an INTEGER × 2π, so this angle is INVARIANT across loops — the start marker
+ * returns under the needle every time. (Used to prove the invariance in tests and to
+ * place the fixed start marker.)
+ */
+export const startMarkerScreenAngle = (rotation: number): number => {
+  const tau = 2 * Math.PI
+  let a = rotation % tau
+  if (a < 0) a += tau
+  return a
+}
+
 /* -------------------------------------------------------------- the spiral geometry */
 
 /** A point on the spiral groove, normalized: angle (radians) + radius fraction 0..1. */

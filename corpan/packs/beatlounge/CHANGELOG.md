@@ -36,6 +36,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **Scratch — optional second deck + crossfader.** A "Two decks" affordance reveals
   a second turntable (its own snippet) and an equal-power crossfader; the single
   deck is the default and unaffected.
+- **Scratch — loop QUANTIZED to the revolution + a single START marker.** The phrase
+  used to loop at its raw duration (never a whole number of 2s revolutions), so the
+  phrase start landed at a different angle every loop. Now the decoded buffer is
+  padded with trailing SILENCE up to a whole number of revolutions
+  (`ceil(duration / SECONDS_PER_REV) * SECONDS_PER_REV`) with a short (~22ms) baked
+  fade at each phrase↔silence boundary (click-free), so after every loop the playhead
+  returns to 0 at an integer number of full disc turns — the phrase START returns
+  under the 3 o'clock needle at the SAME angle every time. A single tasteful START
+  marker is fixed on the disc at that start-of-phrase groove point (replacing
+  per-word markers as the primary reference; subtle word labels remain).
+  `SECONDS_PER_REV` is unchanged; the mapping is still never scaled by duration.
+- **Scratch — fixed decks at every size.** Each turntable now lives in a reserved,
+  fixed-aspect footprint (disc / needle / marker / labels positioned absolutely
+  inside it), so spinning a record can no longer grow its box or shove its neighbour
+  — decks stay put down to ~320px.
+- **Scratch — deluxe, space-filling layout.** The immersive view fills the sheet:
+  one large platter + a channel-fader-style Cut on a single deck; a real DJ console
+  (deck A | center crossfader column | deck B) when two decks are shown, stacking
+  with a horizontal crossfader on narrow screens. Sizes off the available box, no
+  lonely corner.
+- **Scratch — Cut fader feel.** The Cut now drives its cap imperatively on pointer
+  move (zero lag on a fast flick), with a fatter grip cap, a satisfying throw
+  matching the platter height, and tap-to-jump for an instant cut.
 
 ### Added
 - **Scratch — Spin / Hold.** A per-deck Spin/Hold toggle: Spin auto-rotates the
