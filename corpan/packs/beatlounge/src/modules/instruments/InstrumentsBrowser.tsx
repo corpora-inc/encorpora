@@ -14,7 +14,7 @@
  * Pure synthesis presets are the working instrument content.
  */
 
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
@@ -24,6 +24,7 @@ import {
   type Id,
   type InstrumentTrack,
 } from "../../model/document"
+import { activePitches, quantizeToHarmony } from "../../music/resolver"
 import {
   FAMILY_LABEL,
   familyOfPreset,
@@ -68,6 +69,14 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
   const activePreset = config ? matchPreset(config) : undefined
 
   const groups = useMemo(() => presetsByFamily(), [])
+
+  // Wire the play surface's Scale mode to the GLOBAL harmony: the in-key pitch
+  // classes (for markers) + a snap fn, both following the song's mode/chords live.
+  const scalePitches = useMemo(() => activePitches(doc, 0).pcs, [doc])
+  const quantizeToScale = useCallback(
+    (midi: number) => quantizeToHarmony(midi, doc, 0),
+    [doc]
+  )
 
   // Open the family that owns the active preset, else the first.
   const [openFamily, setOpenFamily] = useState<PresetFamily>(
@@ -138,7 +147,12 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
         <div className="bl-grid-empty">Add an instrument track to start.</div>
       ) : (
         <>
-          <PlaySurface host={host} trackId={track.id} />
+          <PlaySurface
+            host={host}
+            trackId={track.id}
+            scalePitches={scalePitches}
+            quantizeToScale={quantizeToScale}
+          />
 
           <div className="bl-instr-browser">
             <div
