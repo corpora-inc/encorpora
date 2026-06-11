@@ -28,25 +28,30 @@ import "./styles.css"
 export const SYNTH_ANALOG_ID = "synth-analog"
 
 /**
- * Resolve the track this surface binds to: prefer an existing analogSynth, else
- * the first non-drum instrument track (so "make analog" has a sensible target),
- * else the first instrument track.
+ * Resolve the MELODIC track this surface binds to: prefer an existing
+ * analogSynth, else the first non-drum instrument track (so "make analog" has a
+ * sensible target). NEVER falls back to a drum track — selecting a drum track
+ * and "make analog"-ing it would dispatch setInstrument and DESTROY the drum
+ * track (the founder's data-wrecking bug). When no melodic track exists this
+ * returns undefined and the surface creates a fresh synth track instead.
  */
-const resolveAnalogTrackId = (
+export const resolveAnalogTrackId = (
   store: BeatloungeStore,
   fallback?: string
 ): string | undefined => {
-  if (fallback) return fallback
   const doc = store.vanilla.getState().doc
+  const isMelodic = (t: (typeof doc.tracks)[number]) =>
+    isInstrumentTrack(t) && t.instrument.kind !== "drumSampler"
+  // Honor an explicit mount target ONLY if it is a melodic (non-drum) track.
+  if (fallback) {
+    const bound = doc.tracks.find((t) => t.id === fallback)
+    if (bound && isMelodic(bound)) return fallback
+  }
   const analog = doc.tracks.find(
     (t) => isInstrumentTrack(t) && t.instrument.kind === "analogSynth"
   )
   if (analog) return analog.id
-  const melodic = doc.tracks.find(
-    (t) => isInstrumentTrack(t) && t.instrument.kind !== "drumSampler"
-  )
-  if (melodic) return melodic.id
-  return doc.tracks.find((t) => isInstrumentTrack(t))?.id
+  return doc.tracks.find(isMelodic)?.id
 }
 
 export const createAnalogSynthModule = ({ store }: ModuleDeps): BeatloungeModule => ({
@@ -62,15 +67,23 @@ export const createAnalogSynthModule = ({ store }: ModuleDeps): BeatloungeModule
     const trackId = resolveAnalogTrackId(store, mount.trackId)
 
     const render = () => {
-      if (!trackId) {
-        root.render(<div className="bl-grid-empty">No instrument track.</div>)
-        return
-      }
       if (mount.surface === "tile") {
+        // The tile is a read-only patch summary; it has nothing to show without
+        // an existing melodic track (it must NOT clobber/create on its own).
+        if (!trackId) {
+          root.render(<div className="bl-grid-empty">No synth track.</div>)
+          return
+        }
         root.render(<SynthAnalogTile store={store} trackId={trackId} />)
       } else {
+        // The immersive surface handles a missing melodic track itself by
+        // CREATING a new synth track on "Make analog" (never repurposing drums).
         root.render(
-          <SynthAnalogImmersive host={mount.host} store={store} trackId={trackId} />
+          <SynthAnalogImmersive
+            host={mount.host}
+            store={store}
+            trackId={trackId}
+          />
         )
       }
     }
