@@ -136,17 +136,6 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   in `shell/tileLayout.ts` (tested).
 
 ### Fixed
-- **Reordering effects no longer cuts the sound.** Changing an insert chain's
-  structure (reordering, adding, or removing an effect — even moving a disabled
-  one) used to hard-disconnect the audio path and dispose the live nodes BEFORE
-  the replacement existed, leaving an audible gap. The reconciler now does a
-  **make-before-break crossfade**: it builds the new chain in parallel off the
-  same source, equal-power ramps the old chain out and the new chain in over
-  ~250 ms (every chain terminates in its own fade gain), then surgically tears
-  the old chain down after the window (no broad `head.disconnect()` that would
-  nuke sends). Rapid successive reorders finalize the in-flight fade
-  deterministically — no node leaks, no stuck volume. The param-only fast path
-  (just re-`update()` each effect) is unchanged.
 - **Phrase Jam tile rendered blank.** Its store selector returned a fresh object
   literal each render, which zustand v5's `useSyncExternalStore` saw as a changed
   snapshot every time → an infinite re-render loop ("getSnapshot should be
