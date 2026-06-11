@@ -129,8 +129,10 @@ export const Platter = ({
   // angle θ sits at local screen angle −θ from the needle, so when the vinyl rotates
   // CW by `rotation`, the current word (θ == rotation) lands exactly under the needle.
   const wordDots = spans.map((s, i) => {
-    const mid = (s.start + s.end) / 2
-    const sp = timeToSpiral(mid, phraseSec, INNER_FLOOR)
+    // Anchor the label at the word's START (when its highlight begins), so the
+    // active word sits UNDER the needle as it lights up — not a quarter-turn
+    // behind (which is what anchoring at the mid/end produced).
+    const sp = timeToSpiral(s.start, phraseSec, INNER_FLOOR)
     const r = sp.radiusFrac * 0.5 // fraction of half-width (radius) from centre
     const a = -sp.angle // local screen angle from the 3 o'clock needle
     const x = 50 + Math.cos(a) * r * 100

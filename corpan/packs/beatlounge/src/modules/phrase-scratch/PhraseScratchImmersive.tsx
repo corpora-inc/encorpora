@@ -80,7 +80,7 @@ interface DeckRuntime {
   prevDiscRot: number
   angVel: number // coast/contact angular velocity (rad/s)
   grabbed: boolean
-  spin: boolean // auto-rotate at natural tempo
+  spinDir: number // auto-rotate: +1 forward, -1 reverse, 0 hold
   // last playhead the ENGINE actually reported (audio truth) — to lock the needle.
   audioSec: number
   unsubPos: (() => void) | null
@@ -96,7 +96,7 @@ const freshRuntime = (): DeckRuntime => ({
   prevDiscRot: 0,
   angVel: 0,
   grabbed: false,
-  spin: false,
+  spinDir: 0,
   audioSec: 0,
   unsubPos: null,
 })
@@ -124,9 +124,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const [showDeckB, setShowDeckB] = useState(false)
   const [crossfade, setCrossfade] = useState(0) // 0 = all A, 1 = all B
   const [pickerFor, setPickerFor] = useState<DeckId | null>(null)
-  // Spin/Hold transport per deck (Hold by default — the record sits in its groove).
-  const [spinA, setSpinA] = useState(false)
-  const [spinB, setSpinB] = useState(false)
+  // Per-deck spin direction (0 = held in the groove, +1 = spin forward, -1 = reverse).
+  const [dirA, setDirA] = useState(0)
+  const [dirB, setDirB] = useState(0)
   // Cut-fader level per deck (the deck's own level; multiplied with the crossfade).
   const [cutA, setCutA] = useState(1)
   const [cutB, setCutB] = useState(1)
@@ -159,9 +159,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const rafRef = useRef<number | null>(null)
   const lastTsRef = useRef<number | null>(null)
 
-  // Keep the runtime's spin flags in sync with the toggles (read in the RAF loop).
-  rtA.current.spin = spinA
-  rtB.current.spin = spinB
+  // Keep the runtime's spin direction in sync with the toggles (read in the RAF loop).
+  rtA.current.spinDir = dirA
+  rtB.current.spinDir = dirB
 
   // ---- deck level = cut (this deck) × crossfade contribution ------------------
   useEffect(() => {
@@ -284,11 +284,12 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         const moved = rt.discRot - rt.prevDiscRot
         rt.angVel = moved / dt
         deck?.setRate(clampRate(rt.angVel * SECONDS_PER_RAD))
-      } else if (rt.spin) {
-        // SPIN: auto-rotate at natural tempo (rate 1.0, the phrase at normal speed).
-        rt.angVel = NATURAL_ANGULAR_VEL
+      } else if (rt.spinDir !== 0) {
+        // SPIN: auto-rotate at natural tempo (forward or reverse), the phrase at
+        // normal speed; the disc turns the matching way.
+        rt.angVel = NATURAL_ANGULAR_VEL * rt.spinDir
         rt.discRot = advanceRotationByVel(rt.discRot, rt.angVel, dt)
-        deck?.setRate(1)
+        deck?.setRate(rt.spinDir)
       } else {
         // RELEASED, not spinning: friction-decay the coast, then HOLD at rest.
         const prevVel = rt.angVel
@@ -302,7 +303,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       // and re-derive the disc rotation from it so visual + sound can never drift over
       // a long spin. While the FINGER owns the disc, discRot is the truth (the audio
       // follows it through the rate slew); while held (dead), the disc stays put.
-      const moving = !rt.grabbed && (rt.spin || rt.angVel !== 0)
+      const moving = !rt.grabbed && (rt.spinDir !== 0 || rt.angVel !== 0)
       if (moving && dur > 0) {
         // Gently pull discRot toward the rotation that matches the audio playhead,
         // preserving the whole-revolution winding so the spiral/coast stay smooth.
@@ -380,7 +381,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const onRelease = (rt: React.MutableRefObject<DeckRuntime>) => () => {
     rt.current.grabbed = false
     setActive(false)
-    if (rt.current.spin) return // returns to natural spin in the loop
+    if (rt.current.spinDir !== 0) return // returns to natural spin in the loop
     // Throw the engine with the finger's last rate → it coasts under friction.
     const rate = angularVelocityToRate(rt.current.angVel)
     if (isHeld(rate)) {
@@ -397,21 +398,20 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     setPickerFor(null)
   }
 
-  const toggleSpin = (id: DeckId) => () => {
+  // Set a deck's spin direction. Tapping the active direction again returns to
+  // hold (play/stop are the same button). The RAF reads spinDir live.
+  const setSpin = (id: DeckId, want: number) => () => {
     void ensureAudio(host.audioContext())
-    if (id === "a") {
-      setSpinA((v) => {
-        const next = !v
-        if (!next) rtA.current.deck?.hold()
-        return next
-      })
-    } else {
-      setSpinB((v) => {
-        const next = !v
-        if (!next) rtB.current.deck?.hold()
-        return next
-      })
-    }
+    const set = id === "a" ? setDirA : setDirB
+    const rt = id === "a" ? rtA : rtB
+    set((cur) => {
+      const next = cur === want ? 0 : want
+      if (next === 0) {
+        rt.current.angVel = 0
+        rt.current.deck?.hold()
+      }
+      return next
+    })
   }
 
   // ---- empty state ----------------------------------------------------------
@@ -436,7 +436,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     rt: React.MutableRefObject<DeckRuntime>,
     view: DeckView,
     loading: boolean,
-    spin: boolean,
+    dir: number,
     cut: number,
     setCut: (v: number) => void
   ) => {
@@ -515,33 +515,23 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         <div className="bl-scr-transport" data-bl-nocapture>
           <button
             type="button"
-            className={`bl-scr-tbtn${spin ? " is-on" : ""}`}
-            onClick={toggleSpin(id)}
-            aria-pressed={spin}
-            aria-label="Spin — play at natural tempo"
-            title="Spin"
+            className={`bl-scr-tbtn bl-scr-tbtn--rev${dir === -1 ? " is-on" : ""}`}
+            onClick={setSpin(id, -1)}
+            aria-pressed={dir === -1}
+            aria-label="Reverse — spin backward"
+            title="Reverse"
           >
-            <Glyph name="play" size={16} />
+            <Glyph name="play" size={18} />
           </button>
           <button
             type="button"
-            className={`bl-scr-tbtn${!spin ? " is-on" : ""}`}
-            onClick={() => {
-              if (id === "a") {
-                setSpinA(false)
-                rtA.current.angVel = 0
-                rtA.current.deck?.hold()
-              } else {
-                setSpinB(false)
-                rtB.current.angVel = 0
-                rtB.current.deck?.hold()
-              }
-            }}
-            aria-pressed={!spin}
-            aria-label="Hold — stop the record"
-            title="Hold"
+            className={`bl-scr-tbtn bl-scr-tbtn--spin${dir === 1 ? " is-on" : ""}`}
+            onClick={setSpin(id, 1)}
+            aria-pressed={dir === 1}
+            aria-label="Spin — play at natural tempo (tap again to stop)"
+            title="Spin"
           >
-            <Glyph name="stop" size={16} />
+            <Glyph name="play" size={18} />
           </button>
         </div>
 
@@ -566,27 +556,29 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   return (
     <div className={`bl-scr${showDeckB ? " is-dual" : ""}`}>
       <div className="bl-scr-decks">
-        {renderDeck("a", selectedA, rtA, viewA, loadingA, spinA, cutA, setCutA)}
-        {showDeckB && (
-          <div className="bl-scr-mixer" data-bl-nocapture>
-            <div className="bl-scr-xfade">
-              <input
-                type="range"
-                min={0}
-                max={1}
-                step={0.01}
-                value={crossfade}
-                onChange={(e) => setCrossfade(parseFloat(e.target.value))}
-                aria-label="Crossfader (deck A to deck B)"
-                className="bl-scr-xfade-input"
-              />
-            </div>
-          </div>
-        )}
-        {showDeckB && renderDeck("b", selectedB, rtB, viewB, loadingB, spinB, cutB, setCutB)}
+        {renderDeck("a", selectedA, rtA, viewA, loadingA, dirA, cutA, setCutA)}
+        {showDeckB && renderDeck("b", selectedB, rtB, viewB, loadingB, dirB, cutB, setCutB)}
       </div>
 
-      <div className="bl-scr-controls" data-bl-nocapture>
+      {/* The foot: the horizontal crossfader (A↔B, fixed at the bottom, big grab)
+          + the deck toggle. Never floats; always reachable on stage. */}
+      <div className="bl-scr-foot" data-bl-nocapture>
+        {showDeckB && (
+          <div className="bl-scr-xfade">
+            <span className="bl-scr-xfade-end">A</span>
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.01}
+              value={crossfade}
+              onChange={(e) => setCrossfade(parseFloat(e.target.value))}
+              aria-label="Crossfader (A on the left, B on the right)"
+              className="bl-scr-xfade-input"
+            />
+            <span className="bl-scr-xfade-end">B</span>
+          </div>
+        )}
         <button
           type="button"
           className={`bl-scr-deckbtn${showDeckB ? " is-on" : ""}`}

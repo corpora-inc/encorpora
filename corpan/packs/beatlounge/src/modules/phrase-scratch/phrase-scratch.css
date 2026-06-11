@@ -110,9 +110,10 @@
    can change a deck's size or shove its neighbour. */
 .bl-scr-decks {
   display: flex;
+  flex-direction: column; /* stack decks vertically: never overflow portrait width */
   align-items: center;
-  justify-content: center;
-  gap: var(--bl-s5);
+  justify-content: space-evenly;
+  gap: var(--bl-s4);
   flex: 1 1 auto;
   min-height: 0;
   min-width: 0;
@@ -122,10 +123,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--bl-s4);
+  gap: var(--bl-s3);
   flex: 1 1 0;
   min-width: 0;
   min-height: 0;
+  width: 100%;
   position: relative;
 }
 
@@ -134,11 +136,12 @@
    available box — width AND height (vh) — minus the fader's lane, so a deck NEVER
    overflows its column and can't push its neighbour at any size down to ~320px. */
 .bl-scr {
-  /* one deck: big & centered. The fader (~46px lane) is subtracted from width. */
+  /* one deck: big & centered, filling the sheet. The cut fader lane (~80px) is
+     subtracted from the width so the deck never overflows. */
   --bl-platter: min(
-    calc(86vw - 64px),
-    calc(74vh - 180px),
-    520px
+    calc(92vw - 84px),
+    calc(76vh - 150px),
+    560px
   );
 }
 .bl-scr-platter {
@@ -311,9 +314,9 @@
   --bl-cut: 100%;
   position: relative;
   flex: 0 0 auto;
-  width: 46px;
+  width: 58px;
   height: var(--bl-platter);
-  max-height: 520px;
+  max-height: 560px;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -350,10 +353,10 @@
   position: absolute;
   left: 50%;
   bottom: var(--bl-cut);
-  width: 38px;
-  height: 22px;
+  width: 48px;
+  height: 26px;
   transform: translate(-50%, 50%);
-  border-radius: 6px;
+  border-radius: 7px;
   background: linear-gradient(to bottom, var(--bl-surface-2), var(--bl-surface));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
     inset 0 0 0 1px var(--bl-border), 0 3px 8px rgba(0, 0, 0, 0.4);
@@ -388,8 +391,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--bl-hit);
-  height: var(--bl-hit);
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
@@ -405,6 +408,10 @@
   border-color: var(--bl-accent);
   color: var(--bl-accent);
   box-shadow: var(--bl-glow) var(--bl-accent);
+}
+/* Reverse = the play triangle mirrored to point backward (◀). */
+.bl-scr-tbtn--rev svg {
+  transform: scaleX(-1);
 }
 
 /* ---------------------------------------------------------- readout */
@@ -439,51 +446,86 @@
   font-size: var(--bl-fs-body);
 }
 
-/* ---------------------------------------------------------- two-deck DJ console
-   In dual mode each deck shares the width with a CENTER MIXER COLUMN that carries the
-   crossfader. Platters shrink to fit two-across (the footprint accounts for the lane
-   + mixer), but the reserved-footprint rule holds — nothing resizes on spin. */
+/* ---------------------------------------------------------- two decks (stacked)
+   In dual mode the two decks STACK vertically (each full-width), so neither can
+   overflow the portrait width or shove the other. Platters fit ~half the height. */
 .bl-scr.is-dual {
   --bl-platter: min(
-    calc(42vw - 70px),
-    calc(72vh - 180px),
-    360px
+    calc(86vw - 84px),
+    calc(42vh - 64px),
+    400px
   );
 }
-.bl-scr.is-dual .bl-scr-decks {
-  gap: var(--bl-s4);
-}
-.bl-scr.is-dual .bl-scr-stage {
-  gap: var(--bl-s3);
-}
 
-/* center mixer column (the crossfader, vertical) */
-.bl-scr-mixer {
+/* ---------------------------------------------------------- foot: crossfader + toggle
+   A real DJ crossfader, HORIZONTAL, fixed at the bottom: A on the left, B on the
+   right, a fat throwable handle. Never floats, always reachable on stage. */
+.bl-scr-foot {
   flex: 0 0 auto;
-  align-self: stretch;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0 var(--bl-s2);
+  gap: var(--bl-s3);
+  width: 100%;
+  padding-top: var(--bl-s2);
 }
-
-/* ---------------------------------------------------------- crossfader
-   Wide (two-across): a VERTICAL crossfader in the mixer column (rotated range).
-   It still reads A↔B left-to-right when you tilt your head; the label keeps it
-   accessible. */
 .bl-scr-xfade {
-  flex: 0 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: var(--bl-s3);
+  width: min(100%, 560px);
+  padding: 0 var(--bl-s3);
+}
+.bl-scr-xfade-end {
+  flex: 0 0 auto;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  font-weight: 600;
+  color: var(--bl-text-dim);
+  width: 1.2em;
+  text-align: center;
 }
 .bl-scr-xfade-input {
-  width: var(--bl-platter);
-  max-width: 360px;
-  transform: rotate(-90deg);
-  accent-color: var(--bl-accent);
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 44px; /* a tall, easy-to-grab lane */
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
   cursor: pointer;
+}
+.bl-scr-xfade-input::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-surface-2);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+}
+.bl-scr-xfade-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 40px;
+  margin-top: -16px; /* centre the fat cap on the 8px track */
+  border-radius: 7px;
+  background: linear-gradient(to bottom, var(--bl-surface-2), var(--bl-surface));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px var(--bl-border), 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+.bl-scr-xfade-input:active::-webkit-slider-thumb {
+  box-shadow: inset 0 0 0 1px var(--bl-accent), var(--bl-glow) var(--bl-accent);
+}
+.bl-scr-xfade-input::-moz-range-track {
+  height: 8px;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-surface-2);
+}
+.bl-scr-xfade-input::-moz-range-thumb {
+  width: 30px;
+  height: 40px;
+  border: 1px solid var(--bl-border);
+  border-radius: 7px;
+  background: var(--bl-surface-2);
 }
 
 /* ---------------------------------------------------------- controls */

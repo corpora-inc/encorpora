@@ -6,6 +6,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **Scratch — performance layout overhaul.** The two decks now STACK vertically
+  (full-width each) so the second deck can never overflow the screen, and the
+  crossfader is a real horizontal A↔B fader fixed at the bottom with a fat,
+  throwable handle (was a small vertical slider floating in the middle). Each
+  deck's transport is now a **Spin** toggle (tap to play at natural tempo, tap to
+  stop — one button) plus a **Reverse** button, not separate play/stop. Word
+  labels are anchored at each word's START so the active word sits under the
+  right-side needle as it lights up (was a quarter-turn behind). Bigger grab
+  targets on the platter buttons and the cut fader; platters fill the space.
 - **Scratch — a REAL turntable (CONTINUOUS-RATE scrub engine).** The phrase-scratch
   module's granular looper (`Tone.GrainPlayer`) is replaced by a single-read-head
   velocity engine: ONE `AudioBuffer`, ONE floating-point playhead, ONE continuous
