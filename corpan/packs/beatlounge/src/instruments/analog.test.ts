@@ -5,9 +5,9 @@
  */
 
 import { describe, expect, it } from "vitest"
-import type { ActionContext } from "../../contracts/module"
-import { createDefaultDoc, isInstrumentTrack } from "../../model/document"
-import { analogSynthPreset } from "../../model/document"
+import type { ActionContext } from "../contracts/module"
+import { createDefaultDoc, isInstrumentTrack } from "../model/document"
+import { analogSynthPreset } from "../model/document"
 import {
   ANALOG_PARAMS,
   ANALOG_PRESETS,
@@ -21,13 +21,13 @@ import {
   enumParam,
   numParam,
   resolveAnalogPreset,
-} from "../../instruments/analogSynth"
+} from "./analogSynth"
 import {
   applyPresetAction,
   makeAnalogAction,
   randomizePatchAction,
   setAnalogParam,
-} from "./actions"
+} from "../modules/instruments/actions"
 
 const mulberry32 = (seed: number) => {
   let a = seed >>> 0

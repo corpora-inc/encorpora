@@ -1,50 +1,10 @@
 /**
- * beatlounge — synth-analog module styles (co-located; Vite bundles into
- * app.css). Uses only --bl-* tokens. No edits to styles.css.
+ * beatlounge — AnalogPanel styles (the analog VOICE-TYPE editor body). Migrated
+ * from the retired synth-analog module's stylesheet; uses only --bl-* tokens.
+ * The track-bar + keyboard rules are gone (the Instruments page owns those); the
+ * tile rules left with the tile. No edits to the design-system file.
  */
 
-/* ---- tile ---- */
-.bl-synthtile-body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--bl-s2);
-  padding: var(--bl-s2);
-}
-.bl-synthtile-waves {
-  display: flex;
-  gap: var(--bl-s1);
-  flex-wrap: wrap;
-}
-.bl-synthtile-pill {
-  font: 600 var(--bl-fs-micro) / 1 var(--bl-font);
-  letter-spacing: 0.04em;
-  color: var(--bl-bg);
-  background: var(--bl-accent);
-  border-radius: var(--bl-radius-pill);
-  padding: 4px 9px;
-}
-.bl-synthtile-filter {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2px var(--bl-s2);
-  align-items: baseline;
-}
-.bl-synthtile-key {
-  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--bl-text-dim);
-}
-.bl-synthtile-val {
-  font: 600 var(--bl-fs-label) / 1 var(--bl-font-mono);
-  color: var(--bl-text);
-}
-.bl-synthtile-empty {
-  font: var(--bl-fs-label) / 1.3 var(--bl-font);
-  color: var(--bl-text-dim);
-}
-
-/* ---- immersive ---- */
 .bl-synth {
   display: flex;
   flex-direction: column;
@@ -52,11 +12,6 @@
   padding: var(--bl-s4);
   height: 100%;
   overflow: hidden auto;
-}
-.bl-synth-bar {
-  display: flex;
-  gap: var(--bl-s2);
-  flex-wrap: wrap;
 }
 .bl-synth-presets {
   display: flex;
@@ -94,11 +49,6 @@
   gap: var(--bl-s4);
 }
 @media (min-width: 720px) {
-  .bl-synth-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (min-width: 1100px) {
   .bl-synth-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -182,50 +132,4 @@
   margin: 0;
   font: var(--bl-fs-body) / 1.4 var(--bl-font);
   color: var(--bl-text);
-}
-
-/* ---- playable keyboard strip ---- */
-.bl-synth-keys {
-  margin-top: auto;
-  padding-top: var(--bl-s3);
-}
-.bl-synth-keys-bed {
-  position: relative;
-  display: flex;
-  height: 96px;
-  background: var(--bl-surface-2);
-  border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius);
-  overflow: hidden;
-  touch-action: none;
-}
-.bl-synth-key {
-  appearance: none;
-  -webkit-appearance: none;
-  padding: 0;
-  cursor: pointer;
-}
-.bl-synth-key.is-white {
-  height: 100%;
-  background: linear-gradient(180deg, var(--bl-surface) 0%, var(--bl-surface-2) 100%);
-  border: none;
-  border-right: 1px solid var(--bl-border);
-}
-.bl-synth-key.is-white:active {
-  background: var(--bl-accent);
-}
-.bl-synth-key.is-black {
-  position: absolute;
-  top: 0;
-  width: 7%;
-  height: 60%;
-  transform: translateX(-50%);
-  background: var(--bl-bg);
-  border: 1px solid var(--bl-border);
-  border-top: none;
-  border-radius: 0 0 var(--bl-radius-sm) var(--bl-radius-sm);
-  z-index: 2;
-}
-.bl-synth-key.is-black:active {
-  background: var(--bl-accent);
 }

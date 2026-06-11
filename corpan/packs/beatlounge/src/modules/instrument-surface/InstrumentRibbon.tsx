@@ -2,18 +2,24 @@
  * beatlounge — the INSTRUMENT RIBBON: the reusable performance surface.
  *
  * A wide ribbon: the HORIZONTAL axis is pitch across a configurable window
- * (octave-shiftable); the VERTICAL axis is expression (brightness + level).
- * Drag your finger to PLAY:
+ * (octave-shiftable); the VERTICAL axis is expression (brightness). Drag your
+ * finger(s) to PLAY:
  *   • In key  — snaps to the nearest pitch of the SONG's active harmony as you
  *     cross it, locked to the key + mode/chords so every note is right; frets
  *     shimmer on the active degrees.
  *   • Free glide — continuous chromatic glide (portamento), theremin scoops.
  *
- * The surface plays through the BOUND TRACK's real instrument (polyphonic, via
- * `host.playLiveVoice` → the track's FX + mixer), so the ribbon sounds like the
- * track. When RECORD is armed, live play is captured into that track as
- * NoteEvents (snapped to the nearest semitone, optionally quantized to the grid
- * at the live playhead). Arming Record never starts the transport.
+ * The surface plays the BOUND TRACK's REAL instrument: each finger opens a live
+ * voice via `host.playLiveVoice` (POLYPHONIC, through the track's FX + mixer) so
+ * the ribbon sounds exactly like the track. Vertical expression drives the
+ * instrument's cutoff via `host.applyParam` (analog/synth only — wrapped so it's
+ * a harmless no-op for sampler/soundfont voices). When the engine can't open a
+ * live voice (no `.live` pool) we fall back to a stepped `host.previewTrack` per
+ * note crossing — gated, never thrown.
+ *
+ * When RECORD is armed, live play is captured into the bound track as NoteEvents
+ * (snapped to the nearest semitone, optionally quantized to the grid at the live
+ * playhead). Arming Record never starts the transport.
  *
  * 60fps: only transform/opacity animate; the comet trail + active glow are
  * positioned via CSS custom properties written in the pointer handler.
@@ -25,10 +31,10 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
-import type { AudioFacade } from "../../contracts/audioFacade"
+import type { AudioFacade, LiveVoiceHandle } from "../../contracts/audioFacade"
 import { useBeatloungeStore } from "../../store/store"
 import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
-import { gridTicks, stepForTick, tickForStep } from "../../model/timing"
+import { stepForTick } from "../../model/timing"
 import {
   KEY_NAMES,
   midiToX,
@@ -40,9 +46,9 @@ import {
 } from "../../music/ribbonScales"
 import { docHarmony } from "../../model/document"
 import { activeMidiInRange, quantizeToHarmony } from "../../music/resolver"
-import { createRibbonVoice, type RibbonVoice, type RibbonWave } from "../ribbon/ribbonVoice"
 import { clearAction } from "../ribbon/actions"
 import { runAction } from "../runAction"
+import { placeRecordedNote } from "./recordPlacement"
 import "./instrument-surface.css"
 // The shared chrome (.bl-seg / .bl-icon-btn / .bl-select / .bl-ribbon-field) and
 // the "Following" field still live in the ribbon module's stylesheet.
@@ -60,25 +66,30 @@ interface Props {
   /** Quantize recorded notes to the track grid (true, default) or place at the
    *  raw playhead tick (false). */
   quantizeRecord?: boolean
-  /** Show the surface's own Record chip (default true). The page hides it and
-   *  drives `record` from its own track-bar chip instead. */
+  /** Show the surface's own Record/Clear toolbar (default true). The page hides
+   *  it and drives `record` from its own track-bar chip instead. */
   showRecord?: boolean
-}
-
-const WAVES: RibbonWave[] = ["sine", "sawtooth", "triangle", "square"]
-const WAVE_LABEL: Record<RibbonWave, string> = {
-  sine: "Sine",
-  sawtooth: "Saw",
-  triangle: "Tri",
-  square: "Sqr",
 }
 
 /** Octave-window presets: how many octaves the ribbon spans. */
 const SPAN_OCTAVES = [3, 5, 8] as const
-const GLIDE_FRETLESS = 0.085 // seconds of portamento for the glide
-const GLIDE_FRETTED = 0.0 // instant — snapped notes don't slur
+
+/** Vertical expression → instrument cutoff (Hz). Darker low, brighter high. The
+ *  same mapping the old self-contained voice used, now driven into the REAL
+ *  instrument (no-op for engines without a cutoff param). */
+const exprToCutoff = (expr: number): number => 420 + clamp01(expr) * 7200
 
 const clamp01 = (v: number): number => (v < 0 ? 0 : v > 1 ? 1 : v)
+
+/** One live finger on the ribbon. */
+interface Touch {
+  /** The bound track's live voice (undefined when the engine can't open one). */
+  handle: LiveVoiceHandle | undefined
+  /** The last RESOLVED (possibly snapped) pitch this finger sounded. */
+  midi: number
+  /** The last grid step this finger recorded into (per-pointer dedupe). */
+  lastRecordedStep: number
+}
 
 export const InstrumentRibbon = ({
   host,
@@ -92,7 +103,6 @@ export const InstrumentRibbon = ({
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
 
-  const [wave, setWave] = useState<RibbonWave>("sawtooth")
   // "In key" snaps/frets to the GLOBAL active pitch set (doc.harmony via the
   // resolver). Free glide = a free chromatic glide (opt-out). Either way the
   // player can't stray out of the song.
@@ -115,18 +125,20 @@ export const InstrumentRibbon = ({
       : harmony.scale.id.split(".").pop()?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "scale"
 
   const surfaceRef = useRef<HTMLDivElement | null>(null)
-  const voiceRef = useRef<RibbonVoice | null>(null)
-  // Latest values for the pointer closures (avoid stale captures at 60fps).
+  // Per-pointer live voices — POLYPHONY (ported from PlaySurface's touch map).
+  const touches = useRef<Map<number, Touch>>(new Map())
+  // Latest control values for the pointer closures (avoid stale captures @60fps).
   const live = useRef({ fretted, lowMidi, spanOct, record, quantizeRecord })
-  const lastRecordedStep = useRef<number>(-1)
-  const lastMidi = useRef<number>(-1)
   // Live playhead step, mirrored for the (closure-bound) record path.
   const playStepRef = useRef(playStep)
+  // Live RAW playhead tick (for non-quantized record placement).
+  const playTickRef = useRef(-1)
 
   const win: RibbonWindow = useMemo(
     () => ({ lowMidi, spanSemis: spanOct * 12 }),
     [lowMidi, spanOct]
   )
+
   // Frets = the global harmony's active pitches across the window. Change the
   // song's mode/chords and the frets re-lay-out instantly.
   const frets: Fret[] = useMemo(() => {
@@ -139,25 +151,14 @@ export const InstrumentRibbon = ({
     }))
   }, [doc, win, tonicPc])
 
-  // Build the voice once (per AudioContext) and dispose on unmount.
+  // Release every in-flight voice on unmount / track change (no dangling notes).
   useEffect(() => {
-    const voice = createRibbonVoice(audio.context(), wave, GLIDE_FRETLESS)
-    voiceRef.current = voice
+    const map = touches.current
     return () => {
-      voice.noteOff()
-      voice.dispose()
-      voiceRef.current = null
+      for (const t of map.values()) t.handle?.release()
+      map.clear()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [audio])
-
-  // Keep the voice's waveform + glide in sync with the controls.
-  useEffect(() => {
-    voiceRef.current?.setWave(wave)
-  }, [wave])
-  useEffect(() => {
-    voiceRef.current?.setGlide(fretted ? GLIDE_FRETTED : GLIDE_FRETLESS)
-  }, [fretted])
+  }, [trackId])
 
   // Mirror the latest control values for the pointer handlers.
   useEffect(() => {
@@ -168,9 +169,13 @@ export const InstrumentRibbon = ({
   useEffect(() => {
     return audio.onPlayhead((tick) => {
       const t = findTrack(store.vanilla.getState().doc, trackId)
+      playTickRef.current = tick
       setPlayStep(tick < 0 || !t ? -1 : stepForTick(tick, t.grid))
     })
   }, [audio, store, trackId])
+  useEffect(() => {
+    playStepRef.current = playStep
+  }, [playStep])
 
   // ---- pointer → pitch -----------------------------------------------------
   const xFromEvent = (clientX: number): number => {
@@ -196,37 +201,18 @@ export const InstrumentRibbon = ({
     el.style.setProperty("--bl-ribbon-on", "1")
   }
 
-  const recordIntoTrack = (midi: number) => {
-    const st = live.current
-    if (!st.record) return
-    const cur = findTrack(store.vanilla.getState().doc, trackId)
-    if (!cur || !isInstrumentTrack(cur)) return
-    // Place at the live playhead step; if stopped, lay it at step 0.
-    const ph = playStepRef.current
-    const step = ph >= 0 ? ph : 0
-    // One note per (step) crossing — don't spam the same step while gliding.
-    if (step === lastRecordedStep.current) return
-    lastRecordedStep.current = step
-    const tick = tickForStep(step, cur.grid)
-    // Avoid duplicate identical notes on the same cell.
-    const exists = cur.notes.some((n) => n.tick === tick && n.pitch === midi)
-    if (exists) return
-    store.dispatch({
-      t: "addNote",
-      trackId,
-      note: {
-        tick,
-        duration: gridTicks(cur.grid),
-        pitch: Math.max(0, Math.min(127, Math.round(midi))),
-        velocity: 0.8,
-      },
-    })
+  /** Drive the bound instrument's brightness from vertical expression. Only
+   *  meaningful for analog/synth (cutoff); wrapped so sampler/soundfont no-op. */
+  const applyExpression = (expr: number) => {
+    try {
+      host.applyParam(
+        { scope: "instrument", trackId, param: "cutoff" },
+        exprToCutoff(expr)
+      )
+    } catch {
+      /* engines without a cutoff param: harmless no-op */
+    }
   }
-
-  // Keep the playhead ref current for the record path.
-  useEffect(() => {
-    playStepRef.current = playStep
-  }, [playStep])
 
   const resolveMidi = (x: number): number => {
     const st = live.current
@@ -237,6 +223,28 @@ export const InstrumentRibbon = ({
     return st.fretted
       ? quantizeToHarmony(raw, store.vanilla.getState().doc, 0)
       : raw
+  }
+
+  /** Record a (resolved) pitch into the bound track for ONE finger. Per-pointer
+   *  step dedupe so two fingers can both lay notes without clobbering. The
+   *  placement rules (dedupe + quantize on/off + duplicate-cell) are pure. */
+  const recordIntoTrack = (t: Touch, midi: number) => {
+    const st = live.current
+    if (!st.record) return
+    const cur = findTrack(store.vanilla.getState().doc, trackId)
+    if (!cur || !isInstrumentTrack(cur)) return
+    const result = placeRecordedNote({
+      trackId,
+      notes: cur.notes,
+      grid: cur.grid,
+      playStep: playStepRef.current,
+      playTick: playTickRef.current,
+      lastRecordedStep: t.lastRecordedStep,
+      quantizeRecord: st.quantizeRecord,
+      midi,
+    })
+    t.lastRecordedStep = result.lastRecordedStep
+    if (result.command) store.dispatch(result.command)
   }
 
   const onDown = (e: React.PointerEvent) => {
@@ -251,51 +259,52 @@ export const InstrumentRibbon = ({
     const x = xFromEvent(e.clientX)
     const expr = exprFromEvent(e.clientY)
     const midi = resolveMidi(x)
-    lastMidi.current = Math.round(midi)
-    lastRecordedStep.current = -1
-    voiceRef.current?.noteOn(midi, expr)
+    // Open a live voice on the BOUND TRACK's real instrument (polyphonic).
+    const handle = host.playLiveVoice(trackId, midi, 0.9)
+    // Soundfont/sampler fallback: no live pool → a stepped one-shot per crossing.
+    if (!handle) host.previewTrack(trackId, 0.9, Math.round(midi))
+    applyExpression(expr)
+    const t: Touch = { handle, midi, lastRecordedStep: -1 }
+    touches.current.set(e.pointerId, t)
     paint(x, expr)
     setPlaying(true)
     setLiveLabel(noteLabel(midi))
-    recordIntoTrack(midi)
+    recordIntoTrack(t, midi)
     e.preventDefault()
   }
 
   const onMove = (e: React.PointerEvent) => {
-    if (!playing && !(e.buttons & 1)) return
-    if (voiceRef.current == null) return
+    const t = touches.current.get(e.pointerId)
+    if (!t) return
     const x = xFromEvent(e.clientX)
     const expr = exprFromEvent(e.clientY)
     const midi = resolveMidi(x)
-    const st = live.current
-    voiceRef.current.setExpression(expr)
-    if (st.fretted) {
-      const r = Math.round(midi)
-      if (r !== lastMidi.current) {
-        lastMidi.current = r
-        voiceRef.current.setPitch(midi)
-        setLiveLabel(noteLabel(midi))
-        recordIntoTrack(midi)
-      }
-    } else {
-      voiceRef.current.glide(midi)
-      const r = Math.round(midi)
-      if (r !== lastMidi.current) {
-        lastMidi.current = r
-        setLiveLabel(noteLabel(midi))
-      }
+    applyExpression(expr)
+    // Only act when the resolved pitch actually moved (in-key snapping resolves
+    // many micro-moves to the same note → no needless bends / previews).
+    if (midi !== t.midi) {
+      const crossed = Math.round(midi) !== Math.round(t.midi)
+      t.midi = midi
+      if (t.handle) t.handle.bend(midi)
+      else if (crossed) host.previewTrack(trackId, 0.9, Math.round(midi)) // stepped fallback
+      setLiveLabel(noteLabel(midi))
+      if (crossed) recordIntoTrack(t, midi)
     }
     paint(x, expr)
   }
 
-  const onUp = (e: React.PointerEvent) => {
-    voiceRef.current?.noteOff()
-    setPlaying(false)
-    lastRecordedStep.current = -1
-    const el = surfaceRef.current
-    if (el) el.style.setProperty("--bl-ribbon-on", "0")
+  const endPointer = (e: React.PointerEvent) => {
+    const t = touches.current.get(e.pointerId)
+    if (!t) return
+    t.handle?.release()
+    touches.current.delete(e.pointerId)
+    if (touches.current.size === 0) {
+      setPlaying(false)
+      const el = surfaceRef.current
+      if (el) el.style.setProperty("--bl-ribbon-on", "0")
+    }
     try {
-      el?.releasePointerCapture(e.pointerId)
+      surfaceRef.current?.releasePointerCapture(e.pointerId)
     } catch {
       /* ignore */
     }
@@ -372,20 +381,6 @@ export const InstrumentRibbon = ({
           </button>
         </div>
 
-        <div className="bl-seg" role="group" aria-label="Voice">
-          {WAVES.map((w) => (
-            <button
-              key={w}
-              type="button"
-              className={`bl-seg-btn${wave === w ? " is-on" : ""}`}
-              aria-pressed={wave === w}
-              onClick={() => setWave(w)}
-            >
-              {WAVE_LABEL[w]}
-            </button>
-          ))}
-        </div>
-
         <div className="bl-seg" role="group" aria-label="Octave span">
           {SPAN_OCTAVES.map((o) => (
             <button
@@ -437,8 +432,9 @@ export const InstrumentRibbon = ({
         aria-valuetext={liveLabel || `${KEY_NAMES[tonicPc]} ${harmonyLabel}`}
         onPointerDown={onDown}
         onPointerMove={onMove}
-        onPointerUp={onUp}
-        onPointerCancel={onUp}
+        onPointerUp={endPointer}
+        onPointerCancel={endPointer}
+        onPointerLeave={endPointer}
       >
         {/* fret lines on in-scale degrees */}
         <div className="bl-ribbon-frets" aria-hidden="true">
@@ -469,7 +465,7 @@ export const InstrumentRibbon = ({
 
       <div className="bl-ribbon-foot" data-bl-nocapture>
         <span className="bl-ribbon-status">
-          {KEY_NAMES[tonicPc]} {harmonyLabel} · {WAVE_LABEL[wave]} ·{" "}
+          {KEY_NAMES[tonicPc]} {harmonyLabel} ·{" "}
           {fretted ? "in key" : "free glide"}
           {record ? " · armed" : ""}
         </span>
@@ -477,6 +473,3 @@ export const InstrumentRibbon = ({
     </div>
   )
 }
-
-// Re-export so callers can import the public wave type from the surface module.
-export type { RibbonWave }
