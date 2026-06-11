@@ -101,15 +101,24 @@
   color: var(--bl-text-dim);
 }
 
-/* ---------------------------------------------------------- the stage */
-.bl-scr-stage {
+/* ---------------------------------------------------------- decks layout */
+.bl-scr-decks {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: var(--bl-s4);
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.bl-scr-deck {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--bl-s4);
-  flex: 1 1 auto;
-  min-height: 0;
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
 }
 
 /* ---------------------------------------------------------- the platter */
@@ -166,8 +175,8 @@
   pointer-events: none;
 }
 .bl-scr-label {
-  position: relative;
-  width: 46%;
+  position: absolute;
+  width: 36%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: grid;
@@ -177,17 +186,6 @@
   padding: var(--bl-s2);
   background: radial-gradient(circle at 42% 36%, var(--bl-accent-2), var(--bl-bg) 92%);
   box-shadow: inset 0 0 0 1px var(--bl-border);
-  overflow: hidden;
-}
-.bl-scr-label-text {
-  font-size: var(--bl-fs-label);
-  font-weight: 600;
-  line-height: 1.15;
-  color: var(--bl-text);
-  max-width: 92%;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 .bl-scr-label-lang {
@@ -203,26 +201,71 @@
   background: var(--bl-bg);
   box-shadow: inset 0 0 0 1px var(--bl-border);
 }
-/* A groove marker so the spin is visible (a single radial tick). */
-.bl-scr-marker {
+
+/* Words placed along the spiral groove at their real buffer-time positions.
+   They ride the rotating vinyl frame; counter-rotated so the text stays upright. */
+.bl-scr-word {
   position: absolute;
-  top: 8%;
-  left: 50%;
-  width: 3px;
-  height: 18%;
-  border-radius: var(--bl-radius-pill);
-  background: var(--bl-accent);
-  opacity: 0.5;
-  transform: translateX(-50%);
+  left: var(--bl-scr-wx, 50%);
+  top: var(--bl-scr-wy, 50%);
+  transform: translate(-50%, -50%) rotate(calc(-1 * var(--bl-scr-rot, 0rad)));
+  font-size: var(--bl-fs-micro);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--bl-text-dim);
+  white-space: nowrap;
   pointer-events: none;
+  max-width: 38%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scr-word.is-cur {
+  color: var(--bl-accent);
+  text-shadow: var(--bl-glow) var(--bl-accent);
+}
+
+/* Fixed needle: never rotates. Points at the moment under the head (the top). */
+.bl-scr-needle {
+  position: absolute;
+  top: -2%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.bl-scr-needle-arm {
+  width: 3px;
+  height: 14%;
+  min-height: 28px;
+  border-radius: var(--bl-radius-pill);
+  background: linear-gradient(var(--bl-text-dim), var(--bl-accent));
+}
+.bl-scr-needle-tip {
+  width: 9px;
+  height: 9px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
 }
 
 /* ---------------------------------------------------------- readout */
 .bl-scr-readout {
   min-height: 1.6em;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
+  gap: var(--bl-s3);
+}
+.bl-scr-pos {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  font-variant-numeric: tabular-nums;
 }
 .bl-scr-rate {
   font-family: var(--bl-font-mono);
@@ -242,6 +285,25 @@
   font-size: var(--bl-fs-body);
 }
 
+/* In dual-deck mode each platter shrinks so two fit side by side. */
+.bl-scr.is-dual .bl-scr-platter {
+  width: min(40vw, 260px);
+}
+
+/* ---------------------------------------------------------- crossfader */
+.bl-scr-xfade {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--bl-s5);
+}
+.bl-scr-xfade-input {
+  width: min(70vw, 320px);
+  accent-color: var(--bl-accent);
+  cursor: pointer;
+}
+
 /* ---------------------------------------------------------- controls */
 .bl-scr-controls {
   display: flex;
@@ -250,7 +312,7 @@
   gap: var(--bl-s4);
   flex: 0 0 auto;
 }
-.bl-scr-spinbtn {
+.bl-scr-deckbtn {
   display: inline-flex;
   align-items: center;
   gap: var(--bl-s2);
@@ -266,61 +328,13 @@
   transition: border-color var(--bl-dur-fast) var(--bl-ease),
     box-shadow var(--bl-dur-fast) var(--bl-ease);
 }
-.bl-scr-spinbtn:hover:not(:disabled) {
+.bl-scr-deckbtn:hover {
   border-color: var(--bl-accent);
 }
-.bl-scr-spinbtn.is-on {
+.bl-scr-deckbtn.is-on {
   border-color: var(--bl-accent);
   box-shadow: var(--bl-glow) var(--bl-accent);
   color: var(--bl-accent);
-}
-.bl-scr-spinbtn:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-.bl-scr-pitch {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--bl-s1);
-  padding: 0 var(--bl-s2);
-  border-radius: var(--bl-radius-pill);
-  border: 1px solid var(--bl-border);
-  background: var(--bl-surface);
-}
-.bl-scr-pitch-btn {
-  min-width: var(--bl-hit);
-  min-height: var(--bl-hit);
-  border: none;
-  background: transparent;
-  color: var(--bl-text);
-  font-size: var(--bl-fs-value);
-  cursor: pointer;
-  border-radius: var(--bl-radius-sm);
-}
-.bl-scr-pitch-btn:hover {
-  color: var(--bl-accent);
-}
-.bl-scr-pitch-val {
-  min-width: 2.4em;
-  text-align: center;
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-value);
-  color: var(--bl-text);
-  font-variant-numeric: tabular-nums;
-}
-
-/* ---------------------------------------------------------- hint */
-.bl-scr-hint {
-  flex: 0 0 auto;
-  margin: 0;
-  text-align: center;
-  font-size: var(--bl-fs-label);
-  color: var(--bl-text-dim);
-  line-height: 1.4;
-}
-.bl-scr-hint strong {
-  color: var(--bl-text);
-  font-weight: 600;
 }
 
 /* ---------------------------------------------------------- empty state */

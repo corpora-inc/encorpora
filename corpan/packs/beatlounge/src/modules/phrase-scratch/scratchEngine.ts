@@ -1,179 +1,323 @@
 /**
- * beatlounge — the phrase-SCRATCH ENGINE: a LIVE, hand-driven turntable for a
- * single isolated phrase snippet. Like `auditionPhrase`, it plays DIRECTLY on
- * the pack's shared AudioContext (NOT through the command bus / transport /
- * scheduler) — it's a performance instrument the widget drives by hand.
+ * beatlounge — phrase-SCRATCH ENGINE: a REAL turntable. ONE AudioBuffer, ONE
+ * floating-point playhead, signed variable rate, interpolated. The needle points
+ * at ONE exact moment in the phrase; moving the disc moves that single read-head
+ * forward / backward through the single wave. NO grains, NO looping, NO
+ * re-triggering, NO voice spawning. (This replaces the old GrainPlayer looper.)
  *
- * CONTINUITY — the whole point — is by construction:
+ * ARCHITECTURE
+ *   • An AudioWorklet (`scratchProcessor.ts`) holds the channel data + the float
+ *     playhead and does the per-sample interpolated read each render block. Two
+ *     control modes posted over its port:
+ *       – POSITION (finger down): the main thread posts the exact target buffer
+ *         position (samples) each animation frame; the block scrubs the playhead
+ *         linearly to it. Emergent per-sample rate = the finger's signed speed.
+ *       – INERTIA (released): a thrown velocity (samples/sample) coasts under
+ *         friction; the audio slows + stops with the disc.
+ *   • The pack is a single bundled IIFE behind a proxy — there is no served worklet
+ *     file — so the processor source is a STRING wrapped in a Blob URL and added
+ *     once per AudioContext. If `audioWorklet` is missing or `addModule` throws we
+ *     degrade to a ScriptProcessorNode running the SAME pure DSP (`scratchDsp.ts`),
+ *     never crashing the load.
+ *   • Each deck connects through its own gain into a shared output, so a SECOND
+ *     deck is just another instance crossfaded against the first.
  *
- *   • A `Tone.GrainPlayer` with `loop: true` is the source. Granular playback
- *     decouples playback SPEED from pitch and lets the rate move smoothly through
- *     and across ZERO (forward ⇄ reverse) WITHOUT ever re-triggering the source.
- *     Because we NEVER call stop()/start() to change speed — we only ride
- *     `playbackRate` — there are no re-trigger gaps, so there are NO SKIPS and no
- *     clicks. A held finger = rate ~0 = the record sits in its groove (the loop
- *     keeps the node alive); the user resumes the scratch with zero discontinuity.
- *   • Small grains (grainSize ~0.05, like the rest of the pack) keep the scratch
- *     feeling immediate while overlap crossfades any grain boundary so it stays
- *     click-free even at high speed.
- *
- * The widget feeds this engine a target rate every animation frame (mapped from
- * finger velocity by scratchMath); the engine just keeps the GrainPlayer looping
- * and writes the rate. A separate "spin" toggle parks the baseline at 0 (hold)
- * or 1 (the phrase loops normally) so the user can start it spinning then scratch
- * over the top. Pitch is an independent `detune` (the grain decoupling is exactly
- * what lets pitch and scratch-speed move independently).
- *
- * Errors are logged, not swallowed. `dispose()` stops + frees every node.
+ * The math is the tested twin in `scratchDsp.ts` / `scratchMath.ts`.
  */
 
-import * as Tone from "tone"
-import { clampRate, HOLD_EPSILON } from "./scratchMath"
+import {
+  SCRATCH_PROCESSOR_NAME,
+  SCRATCH_PROCESSOR_SOURCE,
+} from "./scratchProcessor"
+import {
+  blockFriction,
+  renderInertiaBlock,
+  renderPositionBlock,
+  cubicSample,
+} from "./scratchDsp"
+import { FRICTION_PER_SEC } from "./scratchMath"
 
 const LOG = "[beatlounge/phrase-scratch]"
 
-/**
- * Tone's GrainPlayer rejects a playbackRate below 0.001 (`RangeError: Value must
- * be within [0.001, Infinity]`). A held record (|rate| ~0) must therefore keep a
- * VALID floor rate while we make it SILENT via the output gain — never an invalid
- * sub-floor rate. The grain clock stays warm at the floor so resuming is gapless.
- */
-const MIN_PLAYBACK = 0.001
+/** Below this |velocity| (samples/sample) the inertia coast is dead → silence. */
+const STOP_SAMPLES_PER_SAMPLE = 0.02
 
-export interface ScratchEngine {
-  /** True once a buffer is loaded and the loop is running. */
+/** A loaded turntable deck driven by the disc. */
+export interface ScratchDeck {
+  /** True once a buffer is loaded and the node is live. */
   isLive(): boolean
-  /** Set the live turntable rate (signed; negative = reverse). Click-free. */
-  setRate(rate: number): void
-  /** Read the rate currently driving the source. */
-  getRate(): number
-  /** Independent pitch in semitones (grain detune; does NOT change scratch speed). */
-  setPitch(semitones: number): void
-  /** Master output level 0..1. */
+  /** POSITION mode: scrub toward this exact buffer time (seconds). Finger-down. */
+  setTargetSeconds(seconds: number): void
+  /** INERTIA mode: throw the playhead with this signed rate (×, buffer-sec/sec). */
+  release(rate: number): void
+  /** Hold the record dead-still (silence) without coasting. */
+  hold(): void
+  /** This deck's mix level 0..1 (the crossfader writes this). */
   setGain(gain: number): void
   /** Loaded buffer duration in seconds (0 if none). */
   duration(): number
+  /** Sample rate of the loaded buffer. */
+  sampleRate(): number
   /** Free every node + stop sound. Idempotent. */
   dispose(): void
 }
 
 const clamp01 = (v: number): number => (v < 0 ? 0 : v > 1 ? 1 : v)
 
+/* ----------------------------------------------------- worklet module (once/ctx) */
+
+// Guard `addModule` per AudioContext (idempotent-ish but addModule rejects a dup
+// only sometimes; we never want to add twice). WeakSet keyed by the context.
+const moduleLoaded = new WeakSet<BaseAudioContext>()
+const moduleLoading = new WeakMap<BaseAudioContext, Promise<boolean>>()
+
 /**
- * Build a scratch engine over the shared AudioContext for a decoded buffer.
- * The GrainPlayer starts looping immediately at the given baseline rate (0 by
- * default = a held record) so the source is ALWAYS alive and rate changes are
- * gapless from the first touch.
+ * Ensure the scratch worklet module is added to `ctx`. Returns true if the worklet
+ * is usable, false if we must fall back to a ScriptProcessor. Loads via a Blob URL
+ * (no served file). Safe to call repeatedly; loads at most once per context.
  */
-export const createScratchEngine = (
-  ctx: AudioContext,
-  buffer: AudioBuffer,
-  opts: { baselineRate?: number; gain?: number } = {}
-): ScratchEngine => {
-  // Adopt the shared context so Tone schedules on the same clock + destination
-  // as the rest of the pack (idempotent, matches ribbonVoice / audioGraph).
-  Tone.setContext(ctx)
-
-  // The user's master level. The output starts SILENT and is ducked up only when
-  // the record actually moves, so a held record (rate ~0) makes no sound (and we
-  // never hand Tone an invalid sub-floor playbackRate).
-  let baseGain = clamp01(opts.gain ?? 0.95)
-  const out = new Tone.Gain(0)
-  out.connect(ctx.destination)
-
-  let rate = clampRate(opts.baselineRate ?? 0)
-  let disposed = false
-  let live = false
-  let silenced = true // start held → silent
-
-  // GrainPlayer: looped granular source. grainSize/overlap chosen small enough
-  // to feel immediate yet overlap-crossfaded so grain seams never click.
-  const player = new Tone.GrainPlayer({
-    url: new Tone.ToneAudioBuffer(buffer),
-    loop: true,
-    grainSize: 0.05,
-    overlap: 0.025,
-    playbackRate: Math.max(MIN_PLAYBACK, Math.abs(rate)),
-    detune: 0,
-  }).connect(out)
-
-  // GrainPlayer has no signed reverse on playbackRate; direction is a boolean.
-  // We set both: |rate| drives speed, sign drives the `reverse` flag. Below
-  // HOLD_EPSILON the record is "held": we floor the rate to keep the grain clock
-  // warm and DUCK THE GAIN to silence, rather than feed Tone an invalid rate.
-  const applyRate = () => {
-    if (disposed) return
-    const abs = Math.abs(rate)
+const ensureWorkletModule = async (ctx: BaseAudioContext): Promise<boolean> => {
+  if (moduleLoaded.has(ctx)) return true
+  const inflight = moduleLoading.get(ctx)
+  if (inflight) return inflight
+  const anyCtx = ctx as unknown as { audioWorklet?: AudioWorklet }
+  if (!anyCtx.audioWorklet || typeof anyCtx.audioWorklet.addModule !== "function") {
+    return false
+  }
+  const p = (async () => {
+    let url: string | null = null
     try {
-      player.playbackRate = Math.max(MIN_PLAYBACK, abs)
-      const wantReverse = rate < 0
-      if (player.reverse !== wantReverse) player.reverse = wantReverse
-      const wantSilent = abs < HOLD_EPSILON
-      if (wantSilent !== silenced) {
-        silenced = wantSilent
-        out.gain.rampTo(wantSilent ? 0 : baseGain, 0.02)
-      }
+      const blob = new Blob([SCRATCH_PROCESSOR_SOURCE], {
+        type: "application/javascript",
+      })
+      url = URL.createObjectURL(blob)
+      await anyCtx.audioWorklet!.addModule(url)
+      moduleLoaded.add(ctx)
+      return true
     } catch (err) {
-      console.warn(`${LOG} applyRate failed:`, err)
+      console.warn(`${LOG} worklet addModule failed; falling back to ScriptProcessor:`, err)
+      return false
+    } finally {
+      if (url) URL.revokeObjectURL(url)
     }
-  }
+  })()
+  moduleLoading.set(ctx, p)
+  return p
+}
 
-  // Start the loop now so the record is spinning (or held) before the first drag.
-  try {
-    player.start()
-    live = true
-    applyRate()
-  } catch (err) {
-    console.warn(`${LOG} GrainPlayer start failed:`, err)
+/* ---------------------------------------------------------- worklet-backed deck */
+
+const createWorkletDeck = (
+  ctx: AudioContext,
+  node: AudioWorkletNode,
+  buffer: AudioBuffer,
+  out: GainNode,
+  gain: number
+): ScratchDeck => {
+  const sr = buffer.sampleRate
+  let disposed = false
+  let baseGain = clamp01(gain)
+  out.gain.value = baseGain
+
+  // Transfer channel data to the processor (small phrase buffers — copy is fine).
+  const channels: Float32Array[] = []
+  for (let c = 0; c < buffer.numberOfChannels; c++) {
+    channels.push(buffer.getChannelData(c).slice())
   }
+  node.port.postMessage(
+    { type: "load", channels, sampleRate: sr, length: buffer.length },
+    channels.map((c) => c.buffer)
+  )
+  node.port.postMessage({ type: "config", useCubic: true, frictionPerSec: FRICTION_PER_SEC, stop: STOP_SAMPLES_PER_SAMPLE })
 
   return {
-    isLive: () => live && !disposed,
-    setRate(next: number) {
+    isLive: () => !disposed,
+    setTargetSeconds(seconds: number) {
       if (disposed) return
-      rate = clampRate(next)
-      applyRate()
+      node.port.postMessage({ type: "position", target: seconds * sr })
     },
-    getRate: () => rate,
-    setPitch(semitones: number) {
+    release(rate: number) {
       if (disposed) return
-      try {
-        player.detune = Math.max(-2400, Math.min(2400, semitones * 100))
-      } catch (err) {
-        console.warn(`${LOG} setPitch failed:`, err)
-      }
+      // rate is buffer-seconds per real second → samples per output-sample.
+      node.port.postMessage({ type: "inertia", velocity: rate })
     },
-    setGain(gain: number) {
+    hold() {
       if (disposed) return
-      try {
-        baseGain = clamp01(gain)
-        // Only push it to the output if the record is actually moving; a held
-        // record stays silent regardless of the master level.
-        out.gain.rampTo(silenced ? 0 : baseGain, 0.02)
-      } catch (err) {
-        console.warn(`${LOG} setGain failed:`, err)
-      }
+      node.port.postMessage({ type: "idle" })
+    },
+    setGain(g: number) {
+      if (disposed) return
+      baseGain = clamp01(g)
+      out.gain.setTargetAtTime(baseGain, ctx.currentTime, 0.01)
     },
     duration: () => buffer.duration,
+    sampleRate: () => sr,
     dispose() {
       if (disposed) return
       disposed = true
-      live = false
       try {
-        player.stop()
+        node.port.postMessage({ type: "idle" })
+        node.disconnect()
       } catch {
-        /* already stopped */
+        /* ignore */
       }
       try {
-        player.dispose()
-      } catch (err) {
-        console.warn(`${LOG} player dispose failed:`, err)
-      }
-      try {
-        out.dispose()
-      } catch (err) {
-        console.warn(`${LOG} out dispose failed:`, err)
+        out.disconnect()
+      } catch {
+        /* ignore */
       }
     },
   }
 }
+
+/* ----------------------------------------------- ScriptProcessor fallback deck */
+
+const createScriptProcessorDeck = (
+  ctx: AudioContext,
+  buffer: AudioBuffer,
+  out: GainNode,
+  gain: number
+): ScratchDeck => {
+  const sr = buffer.sampleRate
+  const length = buffer.length
+  let disposed = false
+  let baseGain = clamp01(gain)
+  out.gain.value = baseGain
+
+  const ch0 = buffer.getChannelData(0).slice()
+  const ch1 = buffer.numberOfChannels > 1 ? buffer.getChannelData(1).slice() : ch0
+
+  let mode: "idle" | "position" | "inertia" = "idle"
+  let playhead = 0
+  let targetSamples = 0
+  let velocity = 0
+  const interp = cubicSample
+
+  // 256-frame buffer keeps latency low while staying inside SP's allowed sizes.
+  const bufSize = 256
+  const sp = ctx.createScriptProcessor(bufSize, 0, 2)
+  sp.onaudioprocess = (e: AudioProcessingEvent) => {
+    const outL = e.outputBuffer.getChannelData(0)
+    const outR = e.outputBuffer.numberOfChannels > 1 ? e.outputBuffer.getChannelData(1) : outL
+    if (mode === "position") {
+      const res = renderPositionBlock(ch0, outL, playhead, targetSamples, interp)
+      if (outR !== outL) renderPositionBlock(ch1, outR, playhead, targetSamples, interp)
+      playhead = res.playhead
+    } else if (mode === "inertia") {
+      const mul = blockFriction(FRICTION_PER_SEC, bufSize, sr)
+      const res = renderInertiaBlock(
+        ch0, outL, playhead, velocity, mul, STOP_SAMPLES_PER_SAMPLE, interp
+      )
+      if (outR !== outL) {
+        renderInertiaBlock(ch1, outR, playhead, velocity, mul, STOP_SAMPLES_PER_SAMPLE, interp)
+      }
+      playhead = res.playhead
+      velocity = res.velocity
+      if (velocity === 0) mode = "idle"
+    } else {
+      outL.fill(0)
+      if (outR !== outL) outR.fill(0)
+    }
+  }
+  sp.connect(out)
+
+  return {
+    isLive: () => !disposed,
+    setTargetSeconds(seconds: number) {
+      if (disposed) return
+      mode = "position"
+      targetSamples = Math.max(0, Math.min(length, seconds * sr))
+    },
+    release(rate: number) {
+      if (disposed) return
+      mode = "inertia"
+      velocity = rate
+    },
+    hold() {
+      if (disposed) return
+      mode = "idle"
+      velocity = 0
+    },
+    setGain(g: number) {
+      if (disposed) return
+      baseGain = clamp01(g)
+      out.gain.setTargetAtTime(baseGain, ctx.currentTime, 0.01)
+    },
+    duration: () => buffer.duration,
+    sampleRate: () => sr,
+    dispose() {
+      if (disposed) return
+      disposed = true
+      try {
+        sp.onaudioprocess = null
+        sp.disconnect()
+      } catch {
+        /* ignore */
+      }
+      try {
+        out.disconnect()
+      } catch {
+        /* ignore */
+      }
+    },
+  }
+}
+
+/* --------------------------------------------------------------- public factory */
+
+/**
+ * Build a scratch DECK over the shared AudioContext for a decoded buffer, connected
+ * through a fresh gain into `destination` (default: ctx.destination). Tries the
+ * AudioWorklet engine; degrades to a ScriptProcessor running the same DSP if the
+ * worklet is unavailable. Never throws on a missing worklet — it always returns a
+ * usable deck (or a silent stub if even the fallback can't build).
+ */
+export const createScratchDeck = async (
+  ctx: AudioContext,
+  buffer: AudioBuffer,
+  opts: { gain?: number; destination?: AudioNode } = {}
+): Promise<ScratchDeck> => {
+  const gain = opts.gain ?? 0.95
+  const out = ctx.createGain()
+  out.connect(opts.destination ?? ctx.destination)
+
+  const haveWorklet = await ensureWorkletModule(ctx)
+  if (haveWorklet) {
+    try {
+      const node = new AudioWorkletNode(ctx, SCRATCH_PROCESSOR_NAME, {
+        numberOfInputs: 0,
+        numberOfOutputs: 1,
+        outputChannelCount: [2],
+      })
+      node.connect(out)
+      return createWorkletDeck(ctx, node, buffer, out, gain)
+    } catch (err) {
+      console.warn(`${LOG} AudioWorkletNode construction failed; ScriptProcessor:`, err)
+    }
+  }
+
+  try {
+    return createScriptProcessorDeck(ctx, buffer, out, gain)
+  } catch (err) {
+    console.warn(`${LOG} ScriptProcessor fallback failed — scratch disabled:`, err)
+    // Dignified silent stub: never crash the load.
+    return {
+      isLive: () => false,
+      setTargetSeconds: () => {},
+      release: () => {},
+      hold: () => {},
+      setGain: () => {},
+      duration: () => buffer.duration,
+      sampleRate: () => buffer.sampleRate,
+      dispose: () => {
+        try {
+          out.disconnect()
+        } catch {
+          /* ignore */
+        }
+      },
+    }
+  }
+}
+
+export { ensureWorkletModule, STOP_SAMPLES_PER_SAMPLE }

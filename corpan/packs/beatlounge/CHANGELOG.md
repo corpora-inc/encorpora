@@ -5,6 +5,30 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **Scratch — a REAL turntable (position-based scrub engine).** The phrase-scratch
+  module's granular looper (`Tone.GrainPlayer`) is replaced by a single-read-head
+  scrub engine: ONE `AudioBuffer`, ONE floating-point playhead, signed variable
+  rate, interpolated (Catmull-Rom cubic, linear-selectable). An `AudioWorklet`
+  processor (loaded via a Blob URL since the pack has no served worklet file) holds
+  the wave and scrubs the playhead — *position mode* posts the exact needle position
+  each frame (the emergent per-sample rate is the finger's signed speed: real
+  forward/reverse scratch, natural pitch), *inertia mode* coasts the playhead under
+  friction on release so the audio slows and stops with the disc. A `ScriptProcessor`
+  fallback runs the same DSP if the worklet is unavailable; the load never crashes.
+  No grains, no looping, no re-triggering — moving the disc a hair plays ONE position
+  of the phrase, not overlapping voices.
+- **Scratch — needle + spiral groove.** A fixed needle points at the exact moment
+  under the head, with a position + current-word readout; words are placed along the
+  groove at their real buffer-time ranges, and the groove **spirals inward** across
+  revolutions for phrases longer than one turn. The disc and sound are locked to the
+  same playhead. Word times come from a forced-alignment seam (exact `WordTiming[]`
+  if a host ever provides Whisper-style alignment; else silence-split or even
+  distribution).
+- **Scratch — optional second deck + crossfader.** A "Two decks" affordance reveals
+  a second turntable (its own snippet) and an equal-power crossfader; the single
+  deck is the default and unaffected.
+
 ### Added
 - **Home Stage — live mini-widgets.** Tiles can declare `tileInteractive` to be
   a live control surface (rendered un-buttoned so their own controls work)
