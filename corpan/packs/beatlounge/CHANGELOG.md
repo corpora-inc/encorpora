@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Melody corpus — compose without tapping every note.** A new key- and
+  mode-agnostic library (`src/music/melody/`) of 351 generated contour cells plus
+  two probability banks — per-sixteenth metric-onset profiles (downbeats high,
+  pre-downbeat ≈ 0) and degree-transition tables (stepwise / arpeggiac /
+  pentatonic) — driving endless, non-repeating, LLM-free melody generation.
+  Degrees resolve against the global harmony (any mode/maqam) and a tiny
+  degree→pitch bridge carries non-12-TET detune. Foundation for the score's +/−
+  layer dial and auto-play; see `docs/MELODY_CORPUS.md`.
+
 ### Changed
 - **Fewer, more intentional Stage tiles + a single header convention.** Module
   bodies no longer repeat their own title or carry a play/stop button — the
