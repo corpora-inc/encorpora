@@ -28,9 +28,17 @@
  */
 
 import * as Tone from "tone"
-import { clampRate } from "./scratchMath"
+import { clampRate, HOLD_EPSILON } from "./scratchMath"
 
 const LOG = "[beatlounge/phrase-scratch]"
+
+/**
+ * Tone's GrainPlayer rejects a playbackRate below 0.001 (`RangeError: Value must
+ * be within [0.001, Infinity]`). A held record (|rate| ~0) must therefore keep a
+ * VALID floor rate while we make it SILENT via the output gain — never an invalid
+ * sub-floor rate. The grain clock stays warm at the floor so resuming is gapless.
+ */
+const MIN_PLAYBACK = 0.001
 
 export interface ScratchEngine {
   /** True once a buffer is loaded and the loop is running. */
@@ -66,12 +74,17 @@ export const createScratchEngine = (
   // as the rest of the pack (idempotent, matches ribbonVoice / audioGraph).
   Tone.setContext(ctx)
 
-  const out = new Tone.Gain(clamp01(opts.gain ?? 0.95))
+  // The user's master level. The output starts SILENT and is ducked up only when
+  // the record actually moves, so a held record (rate ~0) makes no sound (and we
+  // never hand Tone an invalid sub-floor playbackRate).
+  let baseGain = clamp01(opts.gain ?? 0.95)
+  const out = new Tone.Gain(0)
   out.connect(ctx.destination)
 
   let rate = clampRate(opts.baselineRate ?? 0)
   let disposed = false
   let live = false
+  let silenced = true // start held → silent
 
   // GrainPlayer: looped granular source. grainSize/overlap chosen small enough
   // to feel immediate yet overlap-crossfaded so grain seams never click.
@@ -80,21 +93,26 @@ export const createScratchEngine = (
     loop: true,
     grainSize: 0.05,
     overlap: 0.025,
-    playbackRate: Math.abs(rate) < 1e-4 ? 0.0001 : Math.abs(rate),
+    playbackRate: Math.max(MIN_PLAYBACK, Math.abs(rate)),
     detune: 0,
   }).connect(out)
 
   // GrainPlayer has no signed reverse on playbackRate; direction is a boolean.
-  // We set both: |rate| drives speed, sign drives the `reverse` flag.
+  // We set both: |rate| drives speed, sign drives the `reverse` flag. Below
+  // HOLD_EPSILON the record is "held": we floor the rate to keep the grain clock
+  // warm and DUCK THE GAIN to silence, rather than feed Tone an invalid rate.
   const applyRate = () => {
     if (disposed) return
     const abs = Math.abs(rate)
     try {
-      // A true zero would freeze the grain clock; keep a hair of motion so the
-      // source stays warm and resuming is instantaneous + click-free.
-      player.playbackRate = abs < 1e-4 ? 0.0001 : abs
+      player.playbackRate = Math.max(MIN_PLAYBACK, abs)
       const wantReverse = rate < 0
       if (player.reverse !== wantReverse) player.reverse = wantReverse
+      const wantSilent = abs < HOLD_EPSILON
+      if (wantSilent !== silenced) {
+        silenced = wantSilent
+        out.gain.rampTo(wantSilent ? 0 : baseGain, 0.02)
+      }
     } catch (err) {
       console.warn(`${LOG} applyRate failed:`, err)
     }
@@ -128,7 +146,10 @@ export const createScratchEngine = (
     setGain(gain: number) {
       if (disposed) return
       try {
-        out.gain.rampTo(clamp01(gain), 0.02)
+        baseGain = clamp01(gain)
+        // Only push it to the output if the record is actually moving; a held
+        // record stays silent regardless of the master level.
+        out.gain.rampTo(silenced ? 0 : baseGain, 0.02)
       } catch (err) {
         console.warn(`${LOG} setGain failed:`, err)
       }
