@@ -6,6 +6,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Home Stage — live mini-widgets.** Tiles can declare `tileInteractive` to be
+  a live control surface (rendered un-buttoned so their own controls work)
+  instead of a tap-to-open summary; the shell adds one consistent corner
+  "expand" control (redirectable via `tileExpandTo`, or suppressed via
+  `tileOwnsExpand` when the widget owns its own affordance). Three Home tiles
+  are now live: **Drums** embeds the Grooves +/− density dial + a shuffle
+  (random world rhythm) bound to the drum track (setup-don't-play); **Ribbon**
+  is a play strip bound to the persisted selected synth (the same voice the
+  Instruments page edits); **Harmony** opens a premium home popover with the
+  full `HarmonyPanel` (changing mode/progression snaps the score).
 - **Instruments — Harmony now leads the page.** The harmony bar (tonic +
   Mode⇄Progression + chord grid + 994-progression browser) is extracted into a
   reusable `HarmonyPanel` and mounted at the TOP of the Instruments page as a
@@ -71,6 +81,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   layer dial and auto-play; see `docs/MELODY_CORPUS.md`.
 
 ### Changed
+- **Home Stage — regrouped + trimmed bento.** Tiles are grouped by adjacency
+  (session: Rhythmic Cycle + Scenes; instruments: Instruments + Ribbon +
+  Harmony; drums; phrases: Phrases + Phrase Jam + Scratch; mix: Effects + Mixer
+  + Tweakers). The standalone Piano-roll ("Synth") tile is removed from Home —
+  the in-Instruments Score replaces it.
 - **Scratch turntable now feels like real vinyl.** The platter follows your
   finger 1:1 at any speed (no easing/inertia lag during contact — the disc angle
   maps directly to a position in the buffer). A single word is stretched across

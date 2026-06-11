@@ -133,6 +133,30 @@ export interface BeatloungeModule {
   glyph: string
   immersive: ImmersiveMode
   tileAspect?: "square" | "wide" | "tall"
+  /**
+   * When true the Stage tile is a LIVE, interactive widget (a mini control
+   * surface) rather than a tap-to-open summary. The shell renders it in a plain
+   * container — NOT wrapped in the tap-to-open `<button>` — so the widget's own
+   * controls work without a nested button or a tap bubbling to enterImmersive.
+   * The shell still provides a small, consistent corner "expand" control that
+   * opens the module's full page (`host.enterImmersive(id)`). Omitted/false ⇒
+   * today's behaviour exactly (button-wrapped, whole-tile tap opens immersive).
+   */
+  tileInteractive?: boolean
+  /**
+   * For an interactive tile: the module the shell's corner "expand" control
+   * opens, when it is NOT this module's own immersive page. e.g. the Ribbon home
+   * widget expands to the Instruments page (where its voice is managed), not a
+   * standalone ribbon page. Omitted ⇒ expand opens this module (`id`).
+   */
+  tileExpandTo?: ModuleId
+  /**
+   * For an interactive tile that fully OWNS its open affordance (e.g. the
+   * Harmony widget, whose control opens a home POPOVER rather than the immersive
+   * page): suppress the shell's corner expand control. Default (omitted/false) ⇒
+   * the shell adds its consistent expand. Has no effect on non-interactive tiles.
+   */
+  tileOwnsExpand?: boolean
   mount(mount: ModuleMount): ModuleInstance
   /** LLM-callable action registry; the command bus indexes all of them. */
   actions: ReadonlyArray<ModuleAction>
