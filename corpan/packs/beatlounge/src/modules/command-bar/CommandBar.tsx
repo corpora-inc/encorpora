@@ -11,8 +11,9 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Glyph } from "../../bl-ui"
-import type { ResultSource } from "../../llm/runtime"
 import type { CommandBarController, CommandBarState } from "./controller"
+import { ActionsPicker } from "./ActionsPicker"
+import { sourceLabel } from "./actionCatalog"
 import "./styles.css"
 
 export interface CommandBarProps {
@@ -25,29 +26,32 @@ export interface CommandBarProps {
 
 const DEFAULT_EXAMPLES = ["more hihats", "make it darker", "latin feel", "tresillo on the kick", "loosen up the drums"]
 
-const sourceLabel = (source: ResultSource): string => {
-  switch (source) {
-    case "model":
-    case "model-repair":
-      return "assistant"
-    case "keyword":
-    case "keyword-no-llm":
-      return "keywords"
-    default:
-      return ""
-  }
-}
-
 export const CommandBar = ({ controller, onClose, placeholderExamples }: CommandBarProps) => {
   const [state, setState] = useState<CommandBarState>(controller.getState())
   const [text, setText] = useState("")
+  const [browsing, setBrowsing] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const examples = placeholderExamples ?? DEFAULT_EXAMPLES
+  const hasPicker = controller.registry() !== undefined
 
   useEffect(() => controller.subscribe(setState), [controller])
   useEffect(() => {
     inputRef.current?.focus()
   }, [])
+
+  // Honest, no-nag offline framing: when the on-device model isn't loaded, the
+  // picker is the primary surface — open it by default. The text box still takes
+  // typed (keyword) commands. No "download" / "coming soon" copy anywhere.
+  useEffect(() => {
+    if (!hasPicker) return
+    let live = true
+    void controller.llmAvailable().then((loaded) => {
+      if (live && !loaded) setBrowsing(true)
+    })
+    return () => {
+      live = false
+    }
+  }, [controller, hasPicker])
 
   const submit = (value: string) => {
     const u = value.trim()
@@ -98,7 +102,19 @@ export const CommandBar = ({ controller, onClose, placeholderExamples }: Command
             disabled={!text.trim()}
             aria-label="Run"
           >
-            Go
+            <Glyph name="play" size={16} />
+          </button>
+        )}
+        {hasPicker && (
+          <button
+            type="button"
+            className={`bl-cmdbar-browse${browsing ? " is-on" : ""}`}
+            onClick={() => setBrowsing((b) => !b)}
+            aria-pressed={browsing}
+            aria-label="Browse actions"
+            title="Browse actions"
+          >
+            <Glyph name="grid" size={18} />
           </button>
         )}
         {onClose && (
@@ -123,8 +139,9 @@ export const CommandBar = ({ controller, onClose, placeholderExamples }: Command
               className="bl-cmdbar-reroll"
               onClick={() => void controller.reroll()}
               title="Try another take"
+              aria-label="Reroll"
             >
-              <span aria-hidden>🎲</span> Reroll
+              <Glyph name="redo" size={16} />
             </button>
             <button type="button" className="bl-cmdbar-undo" onClick={() => controller.cancel()}>
               Undo
@@ -139,7 +156,7 @@ export const CommandBar = ({ controller, onClose, placeholderExamples }: Command
         </div>
       )}
 
-      {!previewing && !thinking && (
+      {!previewing && !thinking && !browsing && (
         <div className="bl-cmdbar-chips" aria-label="Suggestions">
           {(state.recent.length ? state.recent : examples).map((c) => (
             <button
@@ -156,6 +173,8 @@ export const CommandBar = ({ controller, onClose, placeholderExamples }: Command
           ))}
         </div>
       )}
+
+      {browsing && <ActionsPicker controller={controller} />}
     </div>
   )
 }

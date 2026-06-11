@@ -18,6 +18,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   note resolves through `degreeToPitch`, so changing the song's mode/chords keeps
   the score in key. Pure model in `scoreModel.ts` (unit-tested); setup-don't-play
   (never auto-starts the transport).
+- **Command bar — a browsable actions picker (the model is now optional).** A
+  grid button opens a panel that lists every module's actions grouped by module,
+  each with its plain-language description and a one-tap Run. Actions with simple
+  params expose quick sliders / selects / toggles; everything else runs on
+  sensible defaults. Running routes through the same live-preview lifecycle as the
+  text bar — one undo step, Keep / Reroll (for varying actions) / Undo — so a
+  low-power device gets the full power of the command bar with zero LLM. Each
+  result is honestly labelled by where it came from ("via assistant" when the
+  on-device model interpreted it, "via keywords" otherwise). The text box still
+  takes typed commands when no model is loaded; the bar's icons and controls were
+  tightened to the pack's tokens.
 - **Melody corpus — compose without tapping every note.** A new key- and
   mode-agnostic library (`src/music/melody/`) of 351 generated contour cells plus
   two probability banks — per-sixteenth metric-onset profiles (downbeats high,
