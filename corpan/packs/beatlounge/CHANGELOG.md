@@ -16,6 +16,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   layer dial and auto-play; see `docs/MELODY_CORPUS.md`.
 
 ### Changed
+- **Scratch turntable now feels like real vinyl.** The platter follows your
+  finger 1:1 at any speed (no easing/inertia lag during contact — the disc angle
+  maps directly to a position in the buffer). A single word is stretched across
+  about half the record so you can scrub one word slowly and precisely, with
+  baked silence between words so each word is separated and legible. The current
+  word is printed on the rotating label. On release the platter coasts with
+  friction (a flick throws it; Spin floors the coast at a natural loop), and the
+  first phrase now loads reliably (a monotonic load token discards stale async
+  decodes so the current selection always wins).
 - **Instruments is now one playable page — the ribbon plays the track's real
   voice.** The Instruments page leads with a polyphonic performance ribbon that
   plays the bound track's actual instrument through its FX + mixer (was a
