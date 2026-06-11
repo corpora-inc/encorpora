@@ -14,7 +14,7 @@
  * and commit ONE setInstrument per gesture (one undo step), mirroring fx-rack.
  */
 
-import { useReducer, useRef, useState } from "react"
+import { useEffect, useReducer, useRef, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
@@ -26,6 +26,7 @@ import {
   type InstrumentConfig,
   type Track,
 } from "../../model/document"
+import { newInstrumentTrackInit } from "../instruments/addTrack"
 import { Knob, XYPad } from "../../bl-ui"
 import {
   ANALOG_PRESET_NAMES,
@@ -44,8 +45,15 @@ import { Keyboard } from "./Keyboard"
 interface Props {
   host: BeatloungeHost
   store: BeatloungeStore
-  trackId: Id
+  /** The bound MELODIC track, or undefined when the song has none yet (the
+   *  surface then creates a fresh synth track instead of touching drums). */
+  trackId?: Id
 }
+
+/** A melodic (non-drum) instrument track. The analog synth lives ONLY among
+ *  these — a drumSampler track is never a valid target (clobber guard). */
+const isMelodicTrack = (t: Track): boolean =>
+  isInstrumentTrack(t) && t.instrument.kind !== "drumSampler"
 
 const fmtFreq = (v: number): string => (v >= 1000 ? `${(v / 1000).toFixed(2)}k` : v.toFixed(0))
 const fmtSec = (v: number): string => (v < 1 ? `${Math.round(v * 1000)}ms` : `${v.toFixed(2)}s`)
@@ -53,14 +61,66 @@ const fmtPct = (v: number): string => `${Math.round(v * 100)}`
 
 export const SynthAnalogImmersive = ({ host, store, trackId: initialTrackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
-  const [trackId, setTrackId] = useState<Id>(initialTrackId)
+  const [trackId, setTrackId] = useState<Id | undefined>(initialTrackId)
   // Force a re-render while a knob/XYPad gesture updates liveRef (the puck/dial
   // tracks the finger locally; we don't dispatch a command per move).
   const [, bump] = useReducer((x: number) => x + 1, 0)
 
-  const track = findTrack(doc, trackId) ?? doc.tracks.find((t) => isInstrumentTrack(t))
-  if (!track || !isInstrumentTrack(track)) {
-    return <div className="bl-grid-empty">No instrument track.</div>
+  // Resolve the bound MELODIC track. NEVER fall back to a drum track — the
+  // analog synth must not target or clobber drums.
+  const bound = trackId ? findTrack(doc, trackId) : undefined
+  const track =
+    bound && isMelodicTrack(bound) ? bound : doc.tracks.find(isMelodicTrack)
+
+  // If the selected track vanished or wasn't melodic, re-bind to the resolved
+  // melodic track so the switcher highlight stays correct.
+  useEffect(() => {
+    if (track && track.id !== trackId) setTrackId(track.id)
+  }, [track, trackId])
+
+  // No melodic track yet: "Make analog" must CREATE a fresh synth track and
+  // target THAT — it must NEVER repurpose the drum track.
+  const createAndMakeAnalog = (preset = "init") => {
+    const melodicCount = doc.tracks.filter(isMelodicTrack).length
+    const init = newInstrumentTrackInit(melodicCount)
+    store.dispatch({ t: "addTrack", track: init })
+    if (init.id) {
+      setTrackId(init.id)
+      store.dispatch({
+        t: "setInstrument",
+        trackId: init.id,
+        config: { kind: "analogSynth", preset, params: resolveAnalogPreset(preset) },
+      })
+      host.toast(`Analog synth · ${preset}`)
+    } else {
+      // newInstrumentTrackInit always pre-seeds an id; loud if that ever breaks.
+      console.error("[synth-analog] new track init missing id; cannot make analog")
+      host.toast("Couldn't add a synth track")
+    }
+  }
+
+  if (!track) {
+    return (
+      <div className="bl-synth">
+        <div className="bl-synth-makeanalog">
+          <p className="bl-synth-makeanalog-copy">
+            No synth track yet. Add one and make it analog.
+          </p>
+          <div className="bl-synth-presetchips">
+            {ANALOG_PRESET_NAMES.map((p) => (
+              <button
+                key={p}
+                type="button"
+                className="bl-chip"
+                onClick={() => createAndMakeAnalog(p)}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
   }
 
   const inst = track.instrument
@@ -291,7 +351,9 @@ const TrackBar = ({
 }) => (
   <div className="bl-synth-bar" data-bl-nocapture>
     {doc.tracks
-      .filter((t) => isInstrumentTrack(t))
+      // MELODIC tracks only — a drum track must never appear as an analog
+      // target chip (selecting it + "make analog" would destroy the drums).
+      .filter((t) => isMelodicTrack(t))
       .map((t) => (
         <button
           key={t.id}

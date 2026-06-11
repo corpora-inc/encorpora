@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **The Analog synth can no longer wreck your drum track.** Selecting the stray
+  "Drums" chip in the Analog synth and tapping "Make analog" used to turn the
+  drum track into a synth and destroy it ("no drum track"). The analog surface
+  now treats ONLY melodic (non-`drumSampler`) instrument tracks as targets: no
+  "Drums" chip, no drum-track fallback in the resolver, and a drum-track mount
+  hint is refused. When a song has no melodic track yet, "Make analog" now ADDS
+  a fresh synth track and makes THAT analog, leaving Drums/Pads untouched.
+
 ### Changed
 - **Phrase Jam now mirrors the Drums page.** The page was rebuilt on the SAME
   shared track-studio building blocks as Drums so the two can't drift: a selectable
