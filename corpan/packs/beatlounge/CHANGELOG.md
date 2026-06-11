@@ -6,6 +6,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Score — compose a melody with a +/− "layer" dial.** The Instruments page's
+  Score drawer tab is now a real melody editor (`src/modules/score/`). Rows are
+  the active scale degrees across ~2 octaves, resolved in key via the harmony
+  resolver; select a row range to target. The +/− layer dial mirrors Grooves:
+  "+" lays one more probabilistic melodic pass (metric profile × transition
+  table) into the selected rows — additive, re-rolled each tap; "−" thins the
+  current melody (lowest-weight / off-beat first) down to nothing, a smaller bite
+  than "+" adds. An optional Auto toggle fills the loop with an endless,
+  non-repeating line that re-generates each loop on the global transport. Every
+  note resolves through `degreeToPitch`, so changing the song's mode/chords keeps
+  the score in key. Pure model in `scoreModel.ts` (unit-tested); setup-don't-play
+  (never auto-starts the transport).
 - **Melody corpus — compose without tapping every note.** A new key- and
   mode-agnostic library (`src/music/melody/`) of 351 generated contour cells plus
   two probability banks — per-sixteenth metric-onset profiles (downbeats high,

@@ -270,7 +270,7 @@ export const InstrumentsBrowser = ({
     {
       id: "score",
       label: "Score",
-      render: () => <ScorePlaceholder host={host} store={store} trackId={itrack.id} />,
+      render: () => <ScorePlaceholder host={host} store={store} trackId={itrack.id} audio={audio} />,
     },
   ]
 
