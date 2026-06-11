@@ -10,6 +10,8 @@ import { getRhythm } from "./index"
 import {
   applyRhythm,
   applyRhythmToPhrases,
+  scatterRhythm,
+  scatterPhrases,
   cellTicks,
   evolveRhythm,
   randomizeRhythm,
@@ -104,6 +106,120 @@ describe("applyRhythm — determinism", () => {
     const a = applyRhythm(samba(), { loopTicks: PPQ * 8, intensity: 0.8 })
     const b = applyRhythm(samba(), { loopTicks: PPQ * 8, intensity: 0.8 })
     expect(a).toEqual(b)
+  })
+})
+
+describe("scatterRhythm — probabilistic spread across selected rows", () => {
+  const KICK = 36
+  const SNARE = 38
+  const COWBELL = 56
+
+  it("only places hits on the given rows", () => {
+    const rows = [KICK, SNARE, COWBELL]
+    for (let seed = 1; seed <= 12; seed++) {
+      const out = scatterRhythm(son(), rows, rngFrom(seed), { loopTicks: PPQ * 4 })
+      for (const n of out) expect(rows).toContain(n.pitch)
+    }
+  })
+
+  it("spreads across ALL the selected rows (over a handful of seeds)", () => {
+    const rows = [KICK, SNARE, COWBELL]
+    const used = new Set<number>()
+    for (let seed = 1; seed <= 8; seed++) {
+      for (const n of scatterRhythm(son(), rows, rngFrom(seed), { loopTicks: PPQ * 4 })) {
+        used.add(n.pitch)
+      }
+    }
+    for (const p of rows) expect(used.has(p)).toBe(true)
+  })
+
+  it("follows the profile: onset cells fire much more often than rests", () => {
+    const r = son()
+    const ct = cellTicks(r)
+    const onset = new Set([0, 3, 6, 10, 12])
+    let onsetHits = 0
+    let restHits = 0
+    for (let seed = 1; seed <= 100; seed++) {
+      for (const n of scatterRhythm(r, [KICK], rngFrom(seed))) {
+        const cell = Math.round(n.tick / ct) % 16
+        if (onset.has(cell)) onsetHits++
+        else restHits++
+      }
+    }
+    expect(onsetHits).toBeGreaterThan(restHits)
+    expect(onsetHits).toBeGreaterThan(0)
+  })
+
+  it("chooses velocities inside the step's band (loud accents seen, all in 0..1)", () => {
+    const r = son()
+    const ct = cellTicks(r)
+    let sawLoudAccent = false
+    for (let seed = 1; seed <= 80; seed++) {
+      for (const n of scatterRhythm(r, [SNARE], rngFrom(seed))) {
+        expect(n.velocity).toBeGreaterThan(0)
+        expect(n.velocity).toBeLessThanOrEqual(1)
+        if (Math.round(n.tick / ct) % 16 === 0 && n.velocity > 0.7) sawLoudAccent = true
+      }
+    }
+    expect(sawLoudAccent).toBe(true)
+  })
+
+  it("is deterministic from a seed, and DIFFERENT seeds differ", () => {
+    const rows = [KICK, SNARE]
+    const a1 = scatterRhythm(son(), rows, rngFrom(7), { loopTicks: PPQ * 4 })
+    const a2 = scatterRhythm(son(), rows, rngFrom(7), { loopTicks: PPQ * 4 })
+    expect(a1).toEqual(a2) // same seed ⇒ identical
+    const b = scatterRhythm(son(), rows, rngFrom(8), { loopTicks: PPQ * 4 })
+    expect(JSON.stringify(b)).not.toBe(JSON.stringify(a1)) // fresh seed ⇒ different
+  })
+
+  it("density scales the placement count", () => {
+    const rows = [KICK, SNARE, COWBELL]
+    let dense = 0
+    let sparse = 0
+    for (let seed = 1; seed <= 30; seed++) {
+      dense += scatterRhythm(son(), rows, rngFrom(seed), { density: 1 }).length
+      sparse += scatterRhythm(son(), rows, rngFrom(seed), { density: 0.3 }).length
+    }
+    expect(sparse).toBeLessThan(dense)
+  })
+
+  it("works for a multi-lane groove (samba) and an empty row list is a no-op", () => {
+    expect(scatterRhythm(son(), [], rngFrom(1))).toEqual([])
+    const out = scatterRhythm(samba(), [KICK, SNARE], rngFrom(3), { loopTicks: PPQ * 4 })
+    for (const n of out) expect([KICK, SNARE]).toContain(n.pitch)
+  })
+
+  it("tiles + truncates across the loop (no hit at/after loop end)", () => {
+    const r = son()
+    const loop = rhythmTicks(r) * 3
+    const out = scatterRhythm(r, [KICK], rngFrom(5), { loopTicks: loop })
+    expect(out.every((n) => n.tick < loop)).toBe(true)
+  })
+})
+
+describe("scatterPhrases — probabilistic snippet placement", () => {
+  it("places snippets on the groove, seeded + within the loop", () => {
+    const out = scatterPhrases(samba(), 3, rngFrom(7), { loopTicks: PPQ * 4, density: 1 })
+    expect(out.length).toBeGreaterThan(0)
+    for (const ev of out) {
+      expect(ev.snippetIndex).toBeGreaterThanOrEqual(0)
+      expect(ev.snippetIndex).toBeLessThan(3)
+      expect(ev.tick).toBeGreaterThanOrEqual(0)
+      expect(ev.tick).toBeLessThan(PPQ * 4)
+    }
+  })
+
+  it("is deterministic from a seed; different seeds differ", () => {
+    const a = scatterPhrases(samba(), 3, rngFrom(7), { loopTicks: PPQ * 4, density: 1 })
+    const b = scatterPhrases(samba(), 3, rngFrom(7), { loopTicks: PPQ * 4, density: 1 })
+    expect(a).toEqual(b)
+    const c = scatterPhrases(samba(), 3, rngFrom(8), { loopTicks: PPQ * 4, density: 1 })
+    expect(JSON.stringify(c)).not.toBe(JSON.stringify(a))
+  })
+
+  it("returns nothing with no snippets", () => {
+    expect(scatterPhrases(son(), 0, rngFrom(1))).toEqual([])
   })
 })
 

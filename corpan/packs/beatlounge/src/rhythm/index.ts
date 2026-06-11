@@ -15,8 +15,15 @@ export type {
   Rhythm,
   RhythmFamily,
   Role,
+  ScatterStep,
 } from "./types"
 export { rhythmCells, laneVelocity, hitVelocity } from "./types"
+
+export {
+  grooveProfile,
+  type GrooveProfile,
+  type ProfileCell,
+} from "./profile"
 
 export { RHYTHMS, FAMILY_META } from "./corpus"
 export {
@@ -31,6 +38,8 @@ export {
 export {
   applyRhythm,
   applyRhythmToPhrases,
+  scatterRhythm,
+  scatterPhrases,
   varyRhythm,
   evolveRhythm,
   randomizeRhythm,
@@ -38,6 +47,8 @@ export {
   rhythmTicks,
   type NotePlacement,
   type ApplyOptions,
+  type ScatterOptions,
+  type ScatterPhrasesOptions,
   type ApplyToPhrasesOptions,
   type PhrasePlacement,
   type RandomizeOptions,

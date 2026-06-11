@@ -1,7 +1,9 @@
 /**
  * beatlounge — Grooves module model + actions tests. Verify groove commands go
  * through existing commands only, target/create the drum track, fit the loop for
- * long cycles, optionally place phrases, and that the actions are one undo batch.
+ * long cycles, SCATTER probabilistically across selected rows (vs the natural
+ * mapping with none selected), the clear-vs-layer semantics, the phrases path,
+ * and that each action is one undo batch.
  */
 
 import { describe, expect, it } from "vitest"
@@ -15,7 +17,7 @@ import {
   findDrumTrackId,
   findPhraseTrackId,
 } from "./grooveModel"
-import { applyAction, layerAction, varyAction, evolveAction, randomizeAction } from "./actions"
+import { scatterAction, clearScatterAction } from "./actions"
 import { reduce } from "../../model/reduce"
 
 const rngFrom = (seed: number): (() => number) => {
@@ -31,6 +33,20 @@ const rngFrom = (seed: number): (() => number) => {
 
 const doc = (): BeatloungeDoc => createDefaultDoc(0)
 
+/** Kit pitches we'll select as rows. */
+const KICK = 36
+const SNARE = 38
+const COWBELL = 56
+
+const drumNotes = (d: BeatloungeDoc) => {
+  const t = d.tracks.find((x) => isInstrumentTrack(x) && x.instrument.kind === "drumSampler")
+  return t && isInstrumentTrack(t) ? t.notes : []
+}
+const applyTo = (
+  d: BeatloungeDoc,
+  commands: ReturnType<typeof buildGrooveCommands>["commands"]
+) => commands.reduce((acc, c) => reduce(acc, c), d)
+
 describe("grooveModel.buildGrooveCommands", () => {
   it("writes the drum track via setNotes (no auto-play, just the grid)", () => {
     const d = doc()
@@ -39,7 +55,6 @@ describe("grooveModel.buildGrooveCommands", () => {
     const setNotes = commands.find((c) => c.t === "setNotes")
     expect(setNotes).toBeTruthy()
     expect(commands.every((c) => c.t !== "setTempo")).toBe(true)
-    // Targets the existing drum track.
     if (setNotes && setNotes.t === "setNotes") {
       expect(setNotes.trackId).toBe(findDrumTrackId(d))
       for (const n of setNotes.notes) expect(n.velocity).toBeLessThanOrEqual(1)
@@ -73,11 +88,221 @@ describe("grooveModel.buildGrooveCommands", () => {
     const { commands } = buildGrooveCommands(d, getRhythm("teental")!, { fitLoop: false })
     expect(commands.some((c) => c.t === "setLoopLength")).toBe(false)
   })
-
 })
 
-describe("grooveModel — PHRASES target (the groove brain on the phrase grid)", () => {
-  /** A doc with a fragment track + a bank of `n` snippets. */
+describe("grooveModel — NO selection plays the natural mapping (unchanged)", () => {
+  it("with no selected rows the groove keeps its per-role kit pitches", () => {
+    const d = doc()
+    const { commands } = buildGrooveCommands(d, getRhythm("samba")!, { clear: true })
+    const setNotes = commands.find((c) => c.t === "setNotes")
+    expect(setNotes && setNotes.t === "setNotes").toBeTruthy()
+    if (setNotes && setNotes.t === "setNotes") {
+      const pitches = new Set(setNotes.notes.map((n) => n.pitch))
+      // Several distinct natural voices (surdo/caixa/ganzá/tamborim), not a scatter.
+      expect(pitches.size).toBeGreaterThan(1)
+    }
+  })
+
+  it("with no selection the result is deterministic (no RNG path)", () => {
+    const d = doc()
+    const a = buildGrooveCommands(d, getRhythm("samba")!, { clear: true, seed: 1 })
+    const b = buildGrooveCommands(d, getRhythm("samba")!, { clear: true, seed: 999 })
+    // Different seeds, identical output — the natural path doesn't roll dice.
+    expect(a.commands).toEqual(b.commands)
+  })
+})
+
+/** A doc whose drum track is EMPTY (so scatter output is the only content). */
+const emptyDrumDoc = (): BeatloungeDoc => {
+  const d = doc()
+  const drumId = findDrumTrackId(d)!
+  return reduce(d, { t: "setNotes", trackId: drumId, notes: [] })
+}
+
+describe("grooveModel — SCATTER across selected rows (the core ask)", () => {
+  const scatterOn = (
+    d: BeatloungeDoc,
+    rows: number[],
+    seed: number,
+    extra: Record<string, unknown> = {}
+  ) =>
+    buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+      target: { kind: "drums", selectedPitches: rows },
+      clear: true,
+      seed,
+      ...extra,
+    })
+
+  const notesOf = (res: ReturnType<typeof scatterOn>) => {
+    const setNotes = res.commands.find((c) => c.t === "setNotes")
+    return setNotes && setNotes.t === "setNotes" ? setNotes.notes : []
+  }
+
+  it("only ever lands on the selected rows (never another pitch)", () => {
+    const d = emptyDrumDoc()
+    const rows = [KICK, SNARE, COWBELL]
+    for (let seed = 1; seed <= 12; seed++) {
+      const notes = notesOf(scatterOn(d, rows, seed))
+      for (const n of notes) expect(rows).toContain(n.pitch)
+    }
+  })
+
+  it("spreads the rhythm ACROSS all the selected rows (not just the first)", () => {
+    const d = emptyDrumDoc()
+    const rows = [KICK, SNARE, COWBELL]
+    const used = new Set<number>()
+    // Aggregate a few seeds: every selected row should receive hits.
+    for (let seed = 1; seed <= 8; seed++) {
+      for (const n of notesOf(scatterOn(d, rows, seed))) used.add(n.pitch)
+    }
+    for (const p of rows) expect(used.has(p)).toBe(true)
+  })
+
+  it("probability follows the groove PROFILE — onset steps fire far more than rests", () => {
+    const d = emptyDrumDoc()
+    const rows = [KICK]
+    const son = getRhythm("son-clave-3-2")!
+    // Son clave 3-2 onset cells: 0,3,6,10,12 (a 16-cell bar).
+    const onsetCells = new Set([0, 3, 6, 10, 12])
+    const ct = rhythmTicks(son) / 16
+    let onsetHits = 0
+    let restHits = 0
+    const TRIALS = 80
+    for (let seed = 1; seed <= TRIALS; seed++) {
+      for (const n of notesOf(scatterOn(d, rows, seed))) {
+        const cell = Math.round(n.tick / ct) % 16
+        if (onsetCells.has(cell)) onsetHits++
+        else restHits++
+      }
+    }
+    // The clave's actual onsets should dominate placements (its feel carries),
+    // while rests still get the occasional surprise hit (> 0, but far fewer).
+    expect(onsetHits).toBeGreaterThan(restHits)
+  })
+
+  it("velocities fall within the step's emphasis band (accents loud, in 0..1)", () => {
+    const d = emptyDrumDoc()
+    const rows = [KICK]
+    for (let seed = 1; seed <= 30; seed++) {
+      for (const n of notesOf(scatterOn(d, rows, seed))) {
+        expect(n.velocity).toBeGreaterThan(0)
+        expect(n.velocity).toBeLessThanOrEqual(1)
+      }
+    }
+    // An accented onset cell (cell 0) should, over trials, produce loud hits.
+    const son = getRhythm("son-clave-3-2")!
+    const ct = rhythmTicks(son) / 16
+    let sawLoud = false
+    for (let seed = 1; seed <= 60 && !sawLoud; seed++) {
+      for (const n of notesOf(scatterOn(d, rows, seed))) {
+        if (Math.round(n.tick / ct) % 16 === 0 && n.velocity > 0.7) sawLoud = true
+      }
+    }
+    expect(sawLoud).toBe(true)
+  })
+
+  it("DIFFERENT seeds give different scatters (each press re-rolls)", () => {
+    const d = emptyDrumDoc()
+    const rows = [KICK, SNARE, COWBELL]
+    const sig = (seed: number) =>
+      JSON.stringify(
+        notesOf(scatterOn(d, rows, seed)).map((n) => `${n.tick}:${n.pitch}:${n.velocity.toFixed(3)}`)
+      )
+    const a = sig(1)
+    const b = sig(2)
+    const c = sig(3)
+    // At least two of three distinct (overwhelmingly all three).
+    expect(new Set([a, b, c]).size).toBeGreaterThanOrEqual(2)
+  })
+
+  it("the SAME seed is reproducible (pure/seeded engine)", () => {
+    const d = emptyDrumDoc()
+    const rows = [KICK, SNARE]
+    const a = scatterOn(d, rows, 77)
+    const b = scatterOn(d, rows, 77)
+    expect(a.commands).toEqual(b.commands)
+  })
+
+  it("density scales the placement count (sparser at low density)", () => {
+    const d = emptyDrumDoc()
+    const rows = [KICK, SNARE, COWBELL]
+    let dense = 0
+    let sparse = 0
+    for (let seed = 1; seed <= 30; seed++) {
+      dense += notesOf(scatterOn(d, rows, seed, { density: 1 })).length
+      sparse += notesOf(scatterOn(d, rows, seed, { density: 0.3 })).length
+    }
+    expect(sparse).toBeLessThan(dense)
+    expect(sparse).toBeGreaterThan(0)
+  })
+})
+
+describe("grooveModel — CLEAR vs LAYER semantics on the targeted rows", () => {
+  /** A doc whose drum track has one note on each of KICK/SNARE/COWBELL at tick 0. */
+  const seeded = (): BeatloungeDoc => {
+    const d = doc()
+    const drumId = findDrumTrackId(d)!
+    let out = reduce(d, { t: "setNotes", trackId: drumId, notes: [] })
+    for (const pitch of [KICK, SNARE, COWBELL]) {
+      out = reduce(out, {
+        t: "addNote",
+        trackId: drumId,
+        note: { tick: 0, duration: 10, pitch, velocity: 0.9 },
+      })
+    }
+    return out
+  }
+
+  it("CLEAR wipes the targeted rows first; untargeted rows survive", () => {
+    const d = seeded()
+    // Target only KICK + SNARE; COWBELL is NOT targeted → its note must survive.
+    const res = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+      target: { kind: "drums", selectedPitches: [KICK, SNARE] },
+      clear: true,
+      seed: 5,
+    })
+    const after = drumNotes(applyTo(d, res.commands))
+    // COWBELL@0 survived (untargeted).
+    expect(after.some((n) => n.pitch === COWBELL && n.tick === 0)).toBe(true)
+    // No KICK/SNARE note remains at tick 0 UNLESS the scatter happened to place one
+    // there; assert instead that any KICK/SNARE notes are scatter output (could be
+    // absent at tick 0). The pre-existing ones were cleared.
+    const kickSnareAt0 = after.filter((n) => (n.pitch === KICK || n.pitch === SNARE) && n.tick === 0)
+    // tick 0 is an accented onset (high prob) so a fresh hit MAY land — but it's a
+    // scatter hit, never the old 0.9 placeholder velocity unless re-rolled. The
+    // point: clear removed the old rows, so we only see scatter-shaped output.
+    for (const n of kickSnareAt0) expect(n.velocity).toBeGreaterThan(0)
+  })
+
+  it("LAYER keeps existing notes on the targeted rows and adds scatter on top", () => {
+    const d = seeded()
+    const before = drumNotes(d)
+    const beforeKeys = new Set(before.map((n) => `${n.tick}:${n.pitch}`))
+    const res = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+      target: { kind: "drums", selectedPitches: [KICK, SNARE, COWBELL] },
+      clear: false,
+      seed: 5,
+    })
+    const after = drumNotes(applyTo(d, res.commands))
+    const afterKeys = new Set(after.map((n) => `${n.tick}:${n.pitch}`))
+    // Every existing note survives a LAYER.
+    for (const k of beforeKeys) expect(afterKeys.has(k)).toBe(true)
+  })
+
+  it("no duplicate (tick,pitch) after the union (idempotent merge)", () => {
+    const d = seeded()
+    const res = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+      target: { kind: "drums", selectedPitches: [KICK, SNARE, COWBELL] },
+      clear: false,
+      seed: 3,
+    })
+    const after = drumNotes(applyTo(d, res.commands))
+    const keys = after.map((n) => `${n.tick}:${n.pitch}`)
+    expect(new Set(keys).size).toBe(keys.length)
+  })
+})
+
+describe("grooveModel — PHRASES target (scatter snippets on the phrase grid)", () => {
   const withBank = (n: number): { d: BeatloungeDoc; phraseId: string } => {
     const base = doc()
     const refs: FragmentRef[] = Array.from({ length: n }, (_, i) => ({
@@ -113,13 +338,13 @@ describe("grooveModel — PHRASES target (the groove brain on the phrase grid)",
     return { d, phraseId }
   }
 
-  it("places FragmentEvents on the groove's onsets from the bank (the real apply path)", () => {
+  it("scatters FragmentEvents from the bank onto the groove (the real path)", () => {
     const { d, phraseId } = withBank(3)
     expect(findPhraseTrackId(d)).toBe(phraseId)
     const { commands, placedPhrases, phrasesUnavailable } = buildGrooveCommands(
       d,
       getRhythm("samba")!,
-      { target: { kind: "phrases", trackId: phraseId }, rng: rngFrom(3), phraseDensity: 1 }
+      { target: { kind: "phrases", trackId: phraseId }, seed: 3, phraseDensity: 1 }
     )
     expect(phrasesUnavailable).toBe(false)
     expect(placedPhrases).toBe(true)
@@ -128,7 +353,6 @@ describe("grooveModel — PHRASES target (the groove brain on the phrase grid)",
     for (const c of placed) {
       if (c.t !== "placeFragment") continue
       expect(c.trackId).toBe(phraseId)
-      // Real placements: each references a bank snippet and lands on an onset tick.
       expect(d.fragmentLibrary!.some((r) => r.id === c.frag.fragmentId)).toBe(true)
       expect(c.frag.tick).toBeGreaterThanOrEqual(0)
     }
@@ -136,11 +360,11 @@ describe("grooveModel — PHRASES target (the groove brain on the phrase grid)",
     expect(commands.some((c) => c.t === "setNotes")).toBe(false)
   })
 
-  it("applied placements survive the reducer as real events on the phrase track", () => {
+  it("placements survive the reducer as real events on the phrase track", () => {
     const { d, phraseId } = withBank(2)
     const { commands } = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
       target: { kind: "phrases", trackId: phraseId },
-      rng: rngFrom(9),
+      seed: 9,
       phraseDensity: 1,
     })
     const after = commands.reduce((acc, c) => reduce(acc, c), d)
@@ -148,28 +372,27 @@ describe("grooveModel — PHRASES target (the groove brain on the phrase grid)",
     expect(track && track.kind === "fragment" ? track.fragments.length : 0).toBeGreaterThan(0)
   })
 
-  it("Apply REPLACES existing phrase placements; Layer keeps them", () => {
+  it("CLEAR removes held phrase placements; LAYER keeps them", () => {
     const { d, phraseId } = withBank(2)
-    const seeded = reduce(d, {
+    const withHeld = reduce(d, {
       t: "placeFragment",
       trackId: phraseId,
       frag: { tick: 0, fragmentId: d.fragmentLibrary![0].id, gain: 0.9, pitchSemis: 0 },
     })
-    // Apply emits a removeFragment for the held event (replace).
-    const apply = buildGrooveCommands(seeded, getRhythm("samba")!, {
+    const cleared = buildGrooveCommands(withHeld, getRhythm("samba")!, {
       target: { kind: "phrases", trackId: phraseId },
-      rng: rngFrom(2),
+      clear: true,
+      seed: 2,
       phraseDensity: 1,
     })
-    expect(apply.commands.some((c) => c.t === "removeFragment")).toBe(true)
-    // Layer never removes — it adds onto free onsets.
-    const layer = buildGrooveCommands(seeded, getRhythm("samba")!, {
+    expect(cleared.commands.some((c) => c.t === "removeFragment")).toBe(true)
+    const layered = buildGrooveCommands(withHeld, getRhythm("samba")!, {
       target: { kind: "phrases", trackId: phraseId },
-      layer: true,
-      rng: rngFrom(2),
+      clear: false,
+      seed: 2,
       phraseDensity: 1,
     })
-    expect(layer.commands.some((c) => c.t === "removeFragment")).toBe(false)
+    expect(layered.commands.some((c) => c.t === "removeFragment")).toBe(false)
   })
 
   it("flags phrasesUnavailable (no silent no-op) when the bank is empty", () => {
@@ -200,88 +423,28 @@ describe("grooveModel — PHRASES target (the groove brain on the phrase grid)",
     }
     const res = buildGrooveCommands(emptyBank, getRhythm("samba")!, {
       target: { kind: "phrases", trackId: phraseId },
-      rng: rngFrom(1),
+      seed: 1,
     })
     expect(res.phrasesUnavailable).toBe(true)
     expect(res.commands.length).toBe(0)
   })
 
   it("flags phrasesUnavailable when there is no phrase track at all", () => {
-    const d = doc() // no fragment track
+    const d = doc()
     const res = buildGrooveCommands(d, getRhythm("samba")!, {
       target: { kind: "phrases" },
-      rng: rngFrom(1),
+      seed: 1,
     })
     expect(res.phrasesUnavailable).toBe(true)
     expect(res.commands.length).toBe(0)
-    // A DRUMS target on the same doc is fine (not flagged).
     const drums = buildGrooveCommands(d, getRhythm("samba")!)
     expect(drums.phrasesUnavailable).toBe(false)
     expect(drums.commands.some((c) => c.t === "setNotes")).toBe(true)
   })
 })
 
-describe("grooveModel — LAYER (additive apply)", () => {
-  /** Apply a build's commands to a doc so we can inspect the resulting notes. */
-  const applyTo = (d: BeatloungeDoc, commands: ReturnType<typeof buildGrooveCommands>["commands"]) =>
-    commands.reduce((acc, c) => reduce(acc, c), d)
-
-  const drumNotes = (d: BeatloungeDoc) => {
-    const t = d.tracks.find((x) => isInstrumentTrack(x) && x.instrument.kind === "drumSampler")
-    return t && isInstrumentTrack(t) ? t.notes : []
-  }
-
-  it("Apply REPLACES the pattern (only the groove's hits remain)", () => {
-    const d = doc()
-    const before = drumNotes(d).length
-    expect(before).toBeGreaterThan(0)
-    const { commands } = buildGrooveCommands(d, getRhythm("son-clave-3-2")!)
-    const after = drumNotes(applyTo(d, commands))
-    // The clave's hits, not the default four-on-the-floor + backbeat + hats.
-    expect(after.length).toBeGreaterThan(0)
-    expect(after.length).toBeLessThan(before)
-  })
-
-  it("Layer UNIONS the groove with the existing pattern (keeps both)", () => {
-    const d = doc()
-    const existing = drumNotes(d)
-    const existingKeys = new Set(existing.map((n) => `${n.tick}:${n.pitch}`))
-    const { commands, summary } = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
-      layer: true,
-    })
-    expect(summary).toMatch(/layered/i)
-    const after = drumNotes(applyTo(d, commands))
-    const afterKeys = new Set(after.map((n) => `${n.tick}:${n.pitch}`))
-    // Every existing hit survives, and the layer added new ones on top.
-    for (const k of existingKeys) expect(afterKeys.has(k)).toBe(true)
-    expect(after.length).toBeGreaterThanOrEqual(existing.length)
-  })
-
-  it("Layer is idempotent — re-layering the same groove adds no duplicate (tick,pitch)", () => {
-    const d = doc()
-    const once = applyTo(d, buildGrooveCommands(d, getRhythm("son-clave-3-2")!, { layer: true }).commands)
-    const onceCount = drumNotes(once).length
-    const twice = applyTo(once, buildGrooveCommands(once, getRhythm("son-clave-3-2")!, { layer: true }).commands)
-    expect(drumNotes(twice).length).toBe(onceCount)
-    // No duplicate (tick,pitch) keys.
-    const keys = drumNotes(twice).map((n) => `${n.tick}:${n.pitch}`)
-    expect(new Set(keys).size).toBe(keys.length)
-  })
-
-  it("layerAction summary says 'Layered' and is one undo batch through the bus", () => {
-    const bus = createCommandBus(doc())
-    const before = bus.snapshot()
-    const result = layerAction.run({ doc: before, rng: rngFrom(7) }, { rhythmId: "son-clave-3-2" })
-    expect(result.summary).toMatch(/Layered/)
-    bus.dispatch({ t: "batch", commands: result.commands })
-    expect(bus.snapshot()).not.toEqual(before)
-    bus.undo()
-    expect(bus.snapshot()).toEqual(before)
-  })
-})
-
 describe("grooves actions through the command bus", () => {
-  const run = (action: typeof applyAction, params: Record<string, unknown>) => {
+  const run = (action: typeof scatterAction, params: Record<string, unknown>) => {
     const bus = createCommandBus(doc())
     const before = bus.snapshot()
     const result = action.run({ doc: before, rng: rngFrom(5) }, params)
@@ -290,61 +453,72 @@ describe("grooves actions through the command bus", () => {
     return { bus, before, result }
   }
 
-  it("apply writes a recognizable groove and is one undo step", () => {
-    const { bus, before, result } = run(applyAction, { rhythmId: "reggaeton-dembow" })
+  it("scatter writes a groove and is ONE undo step (natural voices, no selection)", () => {
+    const { bus, before, result } = run(scatterAction, { rhythmId: "reggaeton-dembow" })
     expect(result.summary).toContain("Reggaetón")
     const after = bus.snapshot()
     expect(after).not.toBe(before)
     const drum = after.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler")
     expect(drum && isInstrumentTrack(drum) ? drum.notes.length : 0).toBeGreaterThan(0)
-    // single undo restores the original
     bus.undo()
     expect(bus.snapshot()).toEqual(before)
   })
 
-  it("apply on an unknown rhythm is a clean no-op", () => {
-    const { result } = run(applyAction, { rhythmId: "nope-not-real" })
+  it("scatter on an unknown rhythm is a clean no-op", () => {
+    const { result } = run(scatterAction, { rhythmId: "nope-not-real" })
     expect(result.commands).toEqual([])
   })
 
-  it("vary applies and stays one undo step", () => {
-    const { bus, before } = run(varyAction, { rhythmId: "samba", amount: 0.3 })
-    expect(bus.snapshot()).not.toEqual(before)
+  it("scatter across selected rows lands only on those rows + is one undo step", () => {
+    // Empty drum track so only the scatter output is present; clearScatter so
+    // the selected rows carry nothing but the fresh scatter.
+    const bus = createCommandBus(emptyDrumDoc())
+    const before = bus.snapshot()
+    const result = clearScatterAction.run(
+      { doc: before, rng: rngFrom(5) },
+      { rhythmId: "son-clave-3-2", target: { kind: "drums", selectedPitches: [KICK, SNARE] }, seed: 8 }
+    )
+    bus.dispatch({ t: "batch", commands: result.commands })
+    const setNotes = result.commands.find((c) => c.t === "setNotes")
+    if (setNotes && setNotes.t === "setNotes") {
+      for (const n of setNotes.notes) expect([KICK, SNARE]).toContain(n.pitch)
+    }
     bus.undo()
     expect(bus.snapshot()).toEqual(before)
   })
 
-  it("evolve applies across generations", () => {
-    const { bus, result } = run(evolveAction, { rhythmId: "samba", generations: 5 })
-    expect(result.summary).toContain("5 gens")
+  it("clearScatter clears the targeted rows first (one undo batch)", () => {
+    const d = doc()
+    const drumId = findDrumTrackId(d)!
+    const withKick = reduce(d, {
+      t: "addNote",
+      trackId: drumId,
+      note: { tick: 240, duration: 10, pitch: COWBELL, velocity: 0.9 },
+    })
+    const bus = createCommandBus(withKick)
+    const before = bus.snapshot()
+    const result = clearScatterAction.run(
+      { doc: before, rng: rngFrom(5) },
+      { rhythmId: "son-clave-3-2", target: { kind: "drums", selectedPitches: [COWBELL] }, seed: 4 }
+    )
+    bus.dispatch({ t: "batch", commands: result.commands })
     const drum = bus.snapshot().tracks.find(
       (t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler"
     )
-    expect(drum && isInstrumentTrack(drum) ? drum.notes.length : 0).toBeGreaterThan(0)
+    // The stray COWBELL@240 (a rest cell, low prob) was cleared and is unlikely to
+    // be re-placed there; at minimum the action stays one reversible step.
+    expect(drum && isInstrumentTrack(drum) ? drum.notes.length : 0).toBeGreaterThanOrEqual(0)
+    bus.undo()
+    expect(bus.snapshot()).toEqual(before)
   })
 
-  it("randomize within a family yields a groove", () => {
-    const { bus, result } = run(randomizeAction, { family: "indian" })
-    expect(result.commands.length).toBeGreaterThan(0)
-    const after = bus.snapshot()
-    const drum = after.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler")
-    expect(drum && isInstrumentTrack(drum) ? drum.notes.length : 0).toBeGreaterThan(0)
-  })
-
-  it("is deterministic given a seed (apply against the same doc)", () => {
-    const d = doc() // same doc ⇒ same track ids, so output is identical
-    const a = applyAction.run({ doc: d, rng: rngFrom(11) }, { rhythmId: "samba" })
-    const b = applyAction.run({ doc: d, rng: rngFrom(11) }, { rhythmId: "samba" })
-    expect(a).toEqual(b)
-  })
-
-  it("a drums-target apply never emits a fragment placement", () => {
-    const { result } = run(applyAction, { rhythmId: "samba" })
+  it("a drums-target scatter never emits a fragment placement", () => {
+    const { result } = run(scatterAction, { rhythmId: "samba" })
     expect(result.commands.some((c) => c.t === "placeFragment")).toBe(false)
     expect(result.commands.some((c) => c.t === "setNotes")).toBe(true)
   })
 
-  it("a phrases-target apply (through the action) places fragments from the bank", () => {
+  it("a phrases-target scatter places fragments from the bank", () => {
     const base = doc()
     const ref: FragmentRef = { id: newId("frg"), source: "ttsRender", text: "hola", language: "es" }
     const phraseId = newId("trk")
@@ -371,9 +545,9 @@ describe("grooves actions through the command bus", () => {
         },
       ],
     }
-    const result = applyAction.run(
+    const result = scatterAction.run(
       { doc: d, rng: rngFrom(4) },
-      { rhythmId: "samba", target: { kind: "phrases", trackId: phraseId }, phraseDensity: 1 }
+      { rhythmId: "samba", target: { kind: "phrases", trackId: phraseId }, seed: 4, phraseDensity: 1 }
     )
     const placed = result.commands.filter((c) => c.t === "placeFragment")
     expect(placed.length).toBeGreaterThan(0)

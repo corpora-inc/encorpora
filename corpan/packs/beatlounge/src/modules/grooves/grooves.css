@@ -371,14 +371,24 @@
 .bl-grooves-target strong { color: var(--bl-accent); font-weight: 700; }
 
 /* ---- action buttons (Apply · Layer · Vary · Evolve · Randomize) ---- */
+/* TWO actions, primary first + reachable with NO scroll: pin them to the top of
+ * the (scrollable) detail pane so the Scatter button is always visible. */
 .bl-grooves-actions {
-  display: grid;
-  /* Auto-fit so 5 buttons wrap cleanly: 2-up on a 300px phone, more as width
-   * allows, never clipping. */
-  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: var(--bl-s2);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  /* Sit on the pane surface so scrolled content doesn't bleed under it. */
+  background: var(--bl-surface);
+  padding-bottom: var(--bl-s2);
 }
 .bl-grooves-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s2);
   min-height: 44px;
   padding: 0 var(--bl-s3);
   border-radius: var(--bl-radius, 10px);
@@ -394,12 +404,18 @@
 .bl-grooves-btn:hover { border-color: var(--bl-accent); }
 .bl-grooves-btn:active { transform: scale(0.97); }
 .bl-grooves-btn:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+.bl-grooves-btn[disabled] { opacity: 0.5; cursor: default; }
 .bl-grooves-btn.is-primary {
+  /* The star action — bigger + filled. */
+  min-height: 52px;
+  font-size: var(--bl-fs-title);
+  font-weight: 700;
   background: var(--bl-accent);
   border-color: var(--bl-accent);
   color: var(--bl-bg);
 }
 .bl-grooves-btn.is-primary:hover { filter: brightness(1.08); }
+.bl-grooves-btn-glyph { flex: 0 0 auto; }
 
 .bl-grooves-empty {
   padding: var(--bl-s5);

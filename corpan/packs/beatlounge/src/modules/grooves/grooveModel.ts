@@ -24,10 +24,12 @@ import { newId } from "../../model/ids"
 import { gridTicks, stepsInLoop } from "../../model/timing"
 import {
   applyRhythm,
-  applyRhythmToPhrases,
+  scatterRhythm,
+  scatterPhrases,
   rhythmTicks,
   type Rhythm,
 } from "../../rhythm"
+import { pitchForRole } from "../../rhythm"
 import { bankSnippets } from "../../phrase/bank"
 
 /** Resolve the drum track id: the first drumSampler instrument track, else none. */
@@ -101,19 +103,52 @@ export interface GrooveBuildOpts {
    */
   fitLoop?: boolean
   /**
-   * LAYER mode. When true the groove is laid ADDITIVELY: its hits/placements are
-   * UNIONED with the target track's existing content (de-duped by tick) instead
-   * of replacing them — stack a clave over a backbeat, or add phrases without
-   * clearing the held ones. Default false (Apply replaces).
+   * CLEAR mode (the "Clear + scatter" variant of the primary action). When true
+   * the TARGETED rows are wiped before the new hits/placements are laid down —
+   * the selected kit voices (or, with no selection, the groove's natural voices)
+   * for drums; the whole fragment track for phrases. The default (false) LAYERS:
+   * existing notes are kept and the scatter is added on top. There is no separate
+   * "replace everything" mode any more — the two actions are LAYER and CLEAR+LAYER.
    */
-  layer?: boolean
-  /** Phrase density (0..1) for a phrases target. Default 0.5. */
+  clear?: boolean
+  /**
+   * Overall SCATTER DENSITY (0..1) — scales every step's derived probability.
+   * 1 ⇒ the groove's natural feel; lower ⇒ sparser. Default 1. (The old
+   * `intensity` still scales velocities.)
+   */
+  density?: number
+  /**
+   * Per-press SEED for the scatter RNG. Each press should pass a FRESH seed
+   * (e.g. `Math.floor(Math.random() * 2**31)` in the UI handler) so repeated
+   * presses give genuinely different, surprising scatters while the engine logic
+   * stays pure/seeded + testable. When omitted, `rng` is used directly, else a
+   * default deterministic stream.
+   */
+  seed?: number
+  /** Phrase density (0..1) for a phrases target. Default 0.6. */
   phraseDensity?: number
-  /** A seeded RNG (required for a phrases target — reproducible placement). */
+  /** A seeded RNG (used for scatter/phrases when `seed` is not supplied). */
   rng?: () => number
   /** Pitch ladder for phrase placement (semitones). Default a minor pentatonic. */
   phraseScale?: number[]
 }
+
+/** mulberry32 — the pack-standard deterministic stream from an integer seed. */
+const makeRng = (seed: number): (() => number) => {
+  let a = seed >>> 0
+  return () => {
+    a |= 0
+    a = (a + 0x6d2b79f5) | 0
+    let t = Math.imul(a ^ (a >>> 15), 1 | a)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+}
+
+/** Resolve the RNG the scatter uses: a fresh-seeded stream (per-press seed) →
+ *  the passed rng → a default. So each UI press is different but reproducible. */
+const resolveRng = (opts: GrooveBuildOpts): (() => number) =>
+  opts.seed != null ? makeRng(opts.seed) : opts.rng ?? makeRng(1)
 
 const DEFAULT_PHRASE_SCALE = [0, 3, 5, 7, 10, 12]
 
@@ -162,7 +197,20 @@ const fitLoopTicks = (
   return loopTicks
 }
 
-/** DRUMS grid — the rhythm's onsets become drum notes (Apply replaces, Layer unions). */
+/**
+ * DRUMS grid — the rhythm becomes drum notes. Two paths by selection:
+ *
+ *   • NO rows selected → the groove plays on its NATURAL kit voices (role→pitch),
+ *     exactly as before. (We don't force the scatter when nothing is selected.)
+ *   • 1+ rows selected → the PROBABILISTIC SCATTER (scatterRhythm): for each
+ *     selected row × each step, maybe place a hit (chance from the groove's
+ *     profile × density) at a random velocity within that step's band. A fresh
+ *     per-press seed makes every press different + surprising.
+ *
+ * Both paths LAYER by default (add to the track's existing notes). The CLEAR
+ * variant wipes the TARGETED rows first — the selected voices, or (no selection)
+ * the groove's natural voices — then lays the new hits on top.
+ */
 const buildDrumGroove = (
   doc: BeatloungeDoc,
   rhythm: Rhythm,
@@ -184,29 +232,48 @@ const buildDrumGroove = (
   // 2) Optionally grow the loop to one whole cycle so long rhythms fit.
   const loopTicks = fitLoopTicks(doc, rhythm, opts.fitLoop ?? true, commands)
 
-  // 3) Concrete notes, tiled across the (possibly grown) loop.
+  // 3) Build the new hits — scatter across selected rows, or the natural mapping.
   const refGrid = drumGrid && isInstrumentTrack(drumGrid) ? drumGrid.grid : { denominator: 16 as const }
   // Duration: a touch under a cell so adjacent hits don't bleed.
   const dur = Math.max(1, Math.round(gridTicks(refGrid) / 2))
   const selected = (target.selectedPitches ?? []).filter((p) => Number.isFinite(p))
-  const placements = applyRhythm(rhythm, {
-    loopTicks,
-    intensity: opts.intensity,
-    targetPitches: selected.length > 0 ? selected : undefined,
-  })
-  const grooveNotes: Omit<NoteEvent, "id">[] = placements.map((p) => ({
-    tick: p.tick,
-    duration: dur,
-    pitch: p.pitch,
-    velocity: p.velocity,
-    ...(p.ratchet && p.ratchet > 1 ? { ratchet: p.ratchet } : {}),
-  }))
 
-  // LAYER mode: union the groove's hits with the track's EXISTING notes, de-duped
-  // by (tick, pitch) so re-applying the same groove is idempotent and a clave can
-  // sit over a backbeat. Apply mode replaces (just the groove's notes).
-  const existing: Omit<NoteEvent, "id">[] =
-    opts.layer && drumGrid && isInstrumentTrack(drumGrid)
+  let grooveNotes: Omit<NoteEvent, "id">[]
+  if (selected.length > 0) {
+    // NEW probabilistic scatter across exactly the selected rows.
+    const placements = scatterRhythm(rhythm, selected, resolveRng(opts), {
+      loopTicks,
+      density: opts.density,
+      intensity: opts.intensity,
+    })
+    grooveNotes = placements.map((p) => ({
+      tick: p.tick,
+      duration: dur,
+      pitch: p.pitch,
+      velocity: p.velocity,
+    }))
+  } else {
+    // No selection → the groove on its natural kit voices (unchanged behaviour).
+    const placements = applyRhythm(rhythm, { loopTicks, intensity: opts.intensity })
+    grooveNotes = placements.map((p) => ({
+      tick: p.tick,
+      duration: dur,
+      pitch: p.pitch,
+      velocity: p.velocity,
+      ...(p.ratchet && p.ratchet > 1 ? { ratchet: p.ratchet } : {}),
+    }))
+  }
+
+  // The rows this action TARGETS — selected voices, or (no selection) the
+  // groove's natural voices. CLEAR wipes existing notes on these rows first.
+  const targetedPitches = new Set<number>(
+    selected.length > 0 ? selected : rhythm.lanes.map((l) => pitchForRole(l.role))
+  )
+
+  // Existing notes we KEEP: everything when layering; only notes OUTSIDE the
+  // targeted rows when clearing (so Clear+scatter resets those voices cleanly).
+  const existingAll: Omit<NoteEvent, "id">[] =
+    drumGrid && isInstrumentTrack(drumGrid)
       ? drumGrid.notes.map(({ tick, duration, pitch, velocity, probability, ratchet, micro }) => ({
           tick,
           duration,
@@ -217,33 +284,43 @@ const buildDrumGroove = (
           ...(micro != null ? { micro } : {}),
         }))
       : []
+  const existing = opts.clear
+    ? existingAll.filter((n) => !targetedPitches.has(n.pitch))
+    : existingAll
+
+  // Union existing + groove, de-duped by (tick, pitch) — keep the FIRST so a
+  // re-layer is idempotent and a clave can sit over a backbeat.
   const seen = new Set<string>()
   const notes: Omit<NoteEvent, "id">[] = []
   for (const n of [...existing, ...grooveNotes]) {
     const key = `${n.tick}:${n.pitch}`
-    if (seen.has(key)) continue // keep the FIRST (existing wins) — idempotent layer
+    if (seen.has(key)) continue
     seen.add(key)
     notes.push(n)
   }
   notes.sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
   commands.push({ t: "setNotes", trackId: drumId, notes })
 
-  const hitWord = `${notes.length} hit${notes.length === 1 ? "" : "s"}`
-  const verb = opts.layer ? "layered " : ""
+  const placed = grooveNotes.length
+  const hitWord = `${placed} hit${placed === 1 ? "" : "s"}`
+  const where =
+    selected.length > 0 ? ` across ${selected.length} row${selected.length === 1 ? "" : "s"}` : ""
+  const verb = opts.clear ? "reset · " : ""
   return {
     commands,
-    summary: `${rhythm.name} · ${verb}${hitWord}`,
+    summary: `${rhythm.name} · ${verb}${hitWord}${where}`,
     placedPhrases: false,
     phrasesUnavailable: false,
   }
 }
 
 /**
- * PHRASES grid — distribute SAVED bank snippets onto the rhythm's onsets on a
- * fragment track. Apply replaces the track's current placements; Layer keeps
- * them and adds onto free onsets. NOTHING is written to drums. When there's no
- * fragment track or an empty bank, returns `phrasesUnavailable` (no silent
- * no-op) so the host disables Apply with a visible hint.
+ * PHRASES grid — the same SCATTER idea on phrase snippet lanes: walk the groove's
+ * steps and probabilistically drop a random saved-bank snippet (chance from the
+ * groove profile), differently each press. LAYER keeps the held placements and
+ * adds on free onsets; CLEAR wipes the track first. NOTHING is written to drums.
+ * When there's no fragment track or an empty bank, returns `phrasesUnavailable`
+ * (no silent no-op) so the host surfaces a visible hint.
  */
 const buildPhraseGroove = (
   doc: BeatloungeDoc,
@@ -254,11 +331,10 @@ const buildPhraseGroove = (
   const phraseId = target.trackId ?? findPhraseTrackId(doc)
   const bank = bankSnippets(doc)
   const phraseTrack = phraseId ? doc.tracks.find((t) => t.id === phraseId) : undefined
-  const rng = opts.rng
 
-  // A phrases target needs a real fragment track AND a non-empty bank AND a seeded
-  // RNG. Without them we DON'T touch the doc — surface a visible hint instead.
-  if (!phraseId || !phraseTrack || !isFragmentTrack(phraseTrack) || bank.length === 0 || !rng) {
+  // A phrases target needs a real fragment track AND a non-empty bank. Without
+  // them we DON'T touch the doc — surface a visible hint instead.
+  if (!phraseId || !phraseTrack || !isFragmentTrack(phraseTrack) || bank.length === 0) {
     return {
       commands: [],
       summary: bank.length === 0 ? "Save some phrases first" : "No phrase track yet",
@@ -266,24 +342,26 @@ const buildPhraseGroove = (
       phrasesUnavailable: true,
     }
   }
+  // Fresh-seeded each press so scatters differ; pure/seeded so it's testable.
+  const rng = resolveRng(opts)
 
   const commands: Command[] = []
   // Grow the loop so a long cycle isn't truncated, exactly like the drums path.
   const loopTicks = fitLoopTicks(doc, rhythm, opts.fitLoop ?? true, commands)
 
-  // Apply replaces existing placements; Layer keeps them and adds on top.
-  if (!opts.layer) {
+  // CLEAR wipes existing placements; LAYER keeps them and adds on top.
+  if (opts.clear) {
     for (const ev of phraseTrack.fragments) {
       commands.push({ t: "removeFragment", trackId: phraseId, fragId: ev.id })
     }
   }
-  const occupied = opts.layer
-    ? new Set(phraseTrack.fragments.map((f) => f.tick))
-    : new Set<number>()
+  const occupied = opts.clear
+    ? new Set<number>()
+    : new Set(phraseTrack.fragments.map((f) => f.tick))
 
-  const phrasePlacements = applyRhythmToPhrases(rhythm, bank.length, rng, {
+  const phrasePlacements = scatterPhrases(rhythm, bank.length, rng, {
     loopTicks,
-    density: opts.phraseDensity ?? 0.5,
+    density: opts.phraseDensity ?? 0.6,
     scale: opts.phraseScale ?? DEFAULT_PHRASE_SCALE,
   })
   let placed = 0
@@ -313,7 +391,7 @@ const buildPhraseGroove = (
   }
 
   const word = `${placed} phrase${placed === 1 ? "" : "s"}`
-  const verb = opts.layer ? "layered " : ""
+  const verb = opts.clear ? "reset · " : ""
   return {
     commands,
     summary: `${rhythm.name} · ${verb}${word}`,

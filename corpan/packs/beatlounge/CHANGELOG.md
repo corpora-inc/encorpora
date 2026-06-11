@@ -5,6 +5,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **Grooves panel redesign — probabilistic SCATTER + a two-action box.** The five
+  buttons (Apply · Layer · Vary · Evolve · Randomize) collapse to TWO, with the
+  primary pinned to the TOP of the action box (no scroll): **Scatter** (the star —
+  spread the groove across the selected rows, leaving existing notes) and **Clear +
+  Scatter** (wipe the targeted rows first). Each press RE-ROLLS a fresh seed, so
+  pressing again gives a different, surprising result (Vary/Evolve baked in;
+  Randomize removed — it had nothing to do with the chosen groove).
+- **The new apply algorithm.** Applying a groove to selected rows now SPREADS it
+  stochastically: for each selected row × each step, a hit lands with a probability
+  taken from the groove's per-step emphasis profile (a clave's onsets fire often +
+  loud, its rests rarely), at a random velocity within that step's band. With NO
+  rows selected the groove still plays on its natural kit voices. Phrase Jam gets
+  the same idea — snippets scatter onto the groove's steps probabilistically.
+- **Groove corpus schema.** `Rhythm` gains an optional `scatter` override and a
+  derived per-cell `GrooveProfile` (`src/rhythm/profile.ts`) — probability +
+  velocity band computed from each rhythm's own lanes/accents/ghosts, so all 66
+  grooves get a musical scatter profile with no hand-editing (override per-rhythm
+  later). The groove brain stays the source of these profiles.
+
 ### Added
 - **Drums page rework v2 — the whole drum-track pipeline in one place.** Replaced
   the cramped Grooves/Effects side column with a single FULL-WIDTH bottom DRAWER

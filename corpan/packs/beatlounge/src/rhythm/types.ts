@@ -96,6 +96,37 @@ export interface Rhythm {
   lanes: Lane[]
   /** Optional free tags for search/affinity, e.g. ["clave","2-3","dance"]. */
   tags?: string[]
+  /**
+   * OPTIONAL per-rhythm SCATTER PROFILE override (see ./profile).
+   *
+   * The probabilistic SCATTER engine (the founder's "for row, for beat, maybe
+   * place a hit" feature) needs, for every cell of the grid, how LIKELY a hit is
+   * and how LOUD it should be when it fires. By default that profile is COMPUTED
+   * from this rhythm's own lanes/accents/ghosts (an accented onset → high
+   * probability + a loud velocity band; a ghost → lower; a rest → a low baseline)
+   * so all 66 rhythms get a musical profile with zero hand-editing.
+   *
+   * Author this only to OVERRIDE the derived profile for a specific groove. It is
+   * a sparse, cell-indexed list; cells you omit keep their derived value.
+   */
+  scatter?: ScatterStep[]
+}
+
+/**
+ * One cell's SCATTER weighting — how the groove's *feel* gets spread across the
+ * selected rows. `cell` indexes the grid (0 … cells-1). `prob` is the placement
+ * chance at that step (0..1) before the overall density scale; `velMin`/`velMax`
+ * bound the random velocity chosen when a hit fires there (accents → a loud band,
+ * ghosts → a quiet one). All fields optional so an override can tweak just one.
+ */
+export interface ScatterStep {
+  cell: number
+  /** Placement probability at this step (0..1), pre-density. */
+  prob?: number
+  /** Velocity band lower bound when a hit fires here (0..1). */
+  velMin?: number
+  /** Velocity band upper bound when a hit fires here (0..1). */
+  velMax?: number
 }
 
 /** Total cell count of a rhythm's grid (beats × stepsPerBeat). */
