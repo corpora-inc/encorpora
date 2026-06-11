@@ -1,83 +1,13 @@
-import { spawn } from "node:child_process"
-import { readFile, writeFile } from "node:fs/promises"
-import { watch } from "node:fs"
-import path from "node:path"
-import { fileURLToPath } from "node:url"
+/**
+ * Melopán dev:corpan — serve the pack to a corpan-app running on a device.
+ *
+ * All the real work (CORS static server, build:watch, LAN banner, manifest
+ * cache-bust) lives in the shared harness. Don't re-add a bespoke server here.
+ * See corpan/packs/shared/dev/README.md and PORT REGISTRY.
+ */
+import { startPackDevServer } from "../../shared/dev/serve-pack.mjs"
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const packRoot = path.resolve(__dirname, "..")
-const packsRoot = path.resolve(packRoot, "..")
-const manifestPath = path.join(packRoot, "manifest.json")
-const distDir = path.join(packRoot, "dist")
-
-const isWin = process.platform === "win32"
-const npmCmd = isWin ? "npm.cmd" : "npm"
-
-let updateTimer = null
-const scheduleManifestUpdate = () => {
-  if (updateTimer) {
-    clearTimeout(updateTimer)
-  }
-  updateTimer = setTimeout(async () => {
-    try {
-      const raw = await readFile(manifestPath, "utf8")
-      const manifest = JSON.parse(raw)
-      manifest.devRevision = new Date().toISOString()
-      await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
-    } catch (err) {
-      console.error("[melopan] Failed to update dev manifest:", err)
-    }
-  }, 150)
-}
-
-const watchDist = () => {
-  try {
-    watch(distDir, { recursive: true }, (_event, filename) => {
-      if (!filename) {
-        return
-      }
-      if (filename.endsWith(".js") || filename.endsWith(".css")) {
-        scheduleManifestUpdate()
-      }
-    })
-  } catch (err) {
-    console.warn("[melopan] Dist watcher unavailable:", err)
-  }
-}
-
-const run = (cmd, args, cwd, name) => {
-  const child = spawn(cmd, args, { cwd, stdio: "inherit" })
-  child.on("exit", (code) => {
-    if (code && code !== 0) {
-      console.error(`[melopan] ${name} exited with ${code}`)
-    }
-    process.exit(code ?? 0)
-  })
-  return child
-}
-
-const buildWatcher = run(
-  npmCmd,
-  ["run", "build", "--", "--watch"],
-  packRoot,
-  "build:watch"
-)
-
-const server = run(
-  "python3",
-  ["-m", "http.server", "8989", "--bind", "0.0.0.0"],
-  packsRoot,
-  "server"
-)
-
-watchDist()
-scheduleManifestUpdate()
-
-const shutdown = () => {
-  buildWatcher.kill("SIGINT")
-  server.kill("SIGINT")
-  process.exit(0)
-}
-
-process.on("SIGINT", shutdown)
-process.on("SIGTERM", shutdown)
+startPackDevServer({
+  packDir: new URL("..", import.meta.url),
+  port: Number(process.env.MELOPAN_DEV_PORT || 8992), // 8992 — see PORT REGISTRY
+})
