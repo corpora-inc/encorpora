@@ -181,18 +181,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--bl-hit, 44px);
+  /* OVERSIZED grab zone — easy to catch the drawer. */
+  min-height: 64px;
   cursor: grab;
   touch-action: none; /* we own the vertical drag */
 }
 .bl-drums-handle:active { cursor: grabbing; }
 .bl-drums-handle:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: -3px; border-radius: var(--bl-radius); }
 .bl-drums-handle-grip {
-  width: 44px;
-  height: 5px;
+  width: 60px;
+  height: 6px;
   border-radius: 999px;
   background: var(--bl-text-dim);
-  opacity: 0.55;
+  opacity: 0.7;
 }
 .bl-drums-handle:hover .bl-drums-handle-grip { opacity: 0.85; }
 
