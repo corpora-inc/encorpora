@@ -1,18 +1,17 @@
 /**
- * beatlounge — instruments IMMERSIVE: the SOFTWARE-INSTRUMENT preset browser.
+ * beatlounge — instruments IMMERSIVE: a PLAYABLE software-instrument surface.
  *
- *  • Track switcher (chips) so one browser re-voices any instrument track, with
- *    an "Add" affordance to spawn a NEW melodic track (multiple synth voices).
- *  • Current voice header — what the bound track plays right now.
- *  • Browse presets grouped by FAMILY (Keys, Bass, Leads, Pads, …) → pick a
- *    preset. Picking dispatches ONE `setInstrument` with the preset's
- *    synthesized config (a single undo step) and auditions it via
- *    host.previewTrack — a short note, never starting the transport.
+ *  • Track switcher (chips) so one view re-voices any instrument track, with an
+ *    "Add" affordance to spawn a NEW melodic track (multiple synth voices).
+ *  • The headline: a multitouch PLAY surface (continuous-pitch string field,
+ *    fretless / chromatic / scale modes) playing the bound track's voice live.
+ *  • Browse presets grouped by FAMILY (Keys, Bass, Leads, Pads, …) → pick to
+ *    re-voice. Picking dispatches ONE `setInstrument` (a single undo step); you
+ *    then HEAR it by playing the surface — there is no separate audition button.
  *
  * The store is the only write path; drum tracks are excluded (they have their
  * own kit editor). No emoji; reuses the frozen bl-ui chips/dots + --bl-* tokens.
- * Synthesized presets are the working instrument content; real multisampled
- * soundfonts remain a future downloadable path (see the footer note).
+ * Pure synthesis presets are the working instrument content.
  */
 
 import { useEffect, useMemo, useState } from "react"
@@ -34,7 +33,7 @@ import {
   type PresetFamily,
 } from "../../instruments/presets"
 import { Glyph } from "../../bl-ui"
-import { instrumentSummary } from "./instrumentSummary"
+import { PlaySurface } from "./PlaySurface"
 import { newInstrumentTrackInit } from "./addTrack"
 
 interface Props {
@@ -42,9 +41,6 @@ interface Props {
   store: BeatloungeStore
   trackId: Id
 }
-
-/** A pitch in the middle of the keyboard so auditions are representative. */
-const PREVIEW_PITCH = 60
 
 export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
@@ -89,9 +85,9 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
       console.warn("[instruments] cannot voice preset", presetId)
       return
     }
+    // Re-voice the bound track (one undo step). You HEAR it by playing the
+    // surface — the surface is the audition.
     store.dispatch({ t: "setInstrument", trackId: track.id, config: cfg })
-    // Audition the freshly-set voice — a single note; never starts transport.
-    host.previewTrack(track.id, 0.9, PREVIEW_PITCH)
   }
 
   const addInstrumentTrack = () => {
@@ -142,12 +138,7 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
         <div className="bl-grid-empty">Add an instrument track to start.</div>
       ) : (
         <>
-          <div className="bl-instr-now">
-            <span className="bl-instr-now-label">Now playing</span>
-            <span className="bl-instr-now-name">
-              {activePreset ? activePreset.name : config ? instrumentSummary(config) : "—"}
-            </span>
-          </div>
+          <PlaySurface host={host} trackId={track.id} />
 
           <div className="bl-instr-browser">
             <div
@@ -193,16 +184,6 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
                 )
               })}
             </div>
-          </div>
-
-          <div className="bl-instr-foot" data-bl-nocapture>
-            <button
-              type="button"
-              className="bl-chip"
-              onClick={() => host.previewTrack(track.id, 0.9, PREVIEW_PITCH)}
-            >
-              Audition
-            </button>
           </div>
         </>
       )}

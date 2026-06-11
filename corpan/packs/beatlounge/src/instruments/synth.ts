@@ -8,6 +8,7 @@
 import * as Tone from "tone"
 import type { Instrument, TriggerNote } from "../contracts/engine"
 import type { InstrumentConfig } from "../model/document"
+import { createMonoSynthLive } from "./monoSynthLive"
 
 type SynthConfig = Extract<InstrumentConfig, { kind: "synth" }>
 
@@ -26,8 +27,19 @@ export const createSynthInstrument = (config: SynthConfig): Instrument => {
   }).connect(filter)
   poly.maxPolyphony = 16
 
+  // Live multitouch path: a small pool of mono Tone.Synth voices through the
+  // SAME filter/output, so live play matches the sequencer voice but each
+  // finger can glide pitch continuously.
+  let liveOsc: SynthConfig["osc"] = config.osc
+  let liveEnv = { ...config.env }
+  const live = createMonoSynthLive({
+    dest: filter,
+    make: () => new Tone.Synth({ oscillator: { type: liveOsc }, envelope: { ...liveEnv } }),
+  })
+
   return {
     output: out,
+    live: live.api,
     trigger(note: TriggerNote, when: number) {
       const name = Tone.Frequency(note.pitch, "midi").toNote()
       try {
@@ -39,6 +51,9 @@ export const createSynthInstrument = (config: SynthConfig): Instrument => {
     update(next: InstrumentConfig) {
       if (!isSynth(next)) return
       poly.set({ oscillator: { type: next.osc }, envelope: { ...next.env } })
+      liveOsc = next.osc
+      liveEnv = { ...next.env }
+      live.refresh((v) => v.set({ oscillator: { type: liveOsc }, envelope: { ...liveEnv } }))
       filter.type = next.filter.type
       filter.frequency.value = next.filter.frequency
       filter.Q.value = next.filter.q
@@ -58,6 +73,7 @@ export const createSynthInstrument = (config: SynthConfig): Instrument => {
       /* no assets */
     },
     dispose() {
+      live.dispose()
       poly.dispose()
       filter.dispose()
       out.dispose()

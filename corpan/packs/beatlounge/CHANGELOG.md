@@ -5,6 +5,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **The Instruments page is now a PLAYABLE instrument.** The browse-and-audition
+  flow is replaced by a premium multitouch play surface: a continuous-pitch
+  "string field" (X = pitch, stacked octave rows) that performs the bound track's
+  voice live. It's polyphonic — every finger is its own voice — and dragging a
+  finger glides pitch smoothly (fretless / Theremin feel). Three play modes:
+  **Fretless** (continuous), **Chromatic** (continuous + semitone reference
+  markers), and **Scale** (snaps to the song's scale via the global Harmony
+  engine when present; chromatic until then). Picking a preset re-voices the
+  track and you hear it by playing — the standalone "Audition" button is gone.
+- **A richer synthesis palette.** The instrument corpus grew from 31 to 45
+  hand-tuned presets — Wurli, DX Piano, Reese & Synth Bass, Mono & Chip Lead,
+  Analog & Halo pads, Harp, Vibraphone, Flute, French Horn, Metallic, Riser and
+  more — every family now several voices deep.
+
 ### Fixed
 - **The Analog synth can no longer wreck your drum track.** Selecting the stray
   "Drums" chip in the Analog synth and tapping "Make analog" used to turn the

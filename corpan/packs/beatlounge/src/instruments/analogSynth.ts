@@ -465,6 +465,40 @@ class AnalogVoice {
 
   releaseAt = 0
 
+  // ---- live-performance (continuous, sustained) play ----
+  /** Open a SUSTAINED live voice at a fractional midi pitch (held until
+   *  `liveRelease`). Unlike `trigger`, no auto-release is scheduled — the amp +
+   *  filter envelopes attack and hold at sustain while the finger is down. */
+  liveAttack(midi: number, velocity: number, when: number, p: VoiceParams) {
+    this.note = midi
+    this.startedAt = when
+    this.setPitch(midi, p, when, 0)
+    this.applyCutoff(midi, p)
+    this.ampEnv.triggerAttack(when, velocity)
+    this.filterEnv.triggerAttack(when)
+    this.active = true
+    this.releaseAt = Number.POSITIVE_INFINITY
+  }
+
+  /** Glide a held live voice to a new fractional midi pitch (smooth portamento
+   *  on every oscillator — click-free). */
+  liveBend(midi: number, when: number, glideSec: number, p: VoiceParams) {
+    this.note = midi
+    this.setPitch(midi, p, when, Math.max(0.001, glideSec))
+    // Track key-tracked cutoff base as the finger sweeps.
+    this.applyCutoff(midi, p)
+  }
+
+  /** Release a held live voice into its amp tail; returns the release seconds. */
+  liveRelease(when: number): number {
+    this.ampEnv.triggerRelease(when)
+    this.filterEnv.triggerRelease(when)
+    this.active = false
+    const r = Tone.Time(this.ampEnv.release).toSeconds()
+    this.releaseAt = when + (Number.isFinite(r) ? r : 0.3)
+    return Number.isFinite(r) ? r : 0.3
+  }
+
   /** The filter cutoff signal — the pool fans the shared LFO into this for the
    *  "filter" target, and `setParam("cutoff")` writes it directly. */
   get cutoffSignal(): Tone.Signal<"frequency"> {
@@ -629,8 +663,61 @@ export const createAnalogSynthInstrument = (config: AnalogConfig): Instrument =>
     wireLfo()
   }
 
+  // ---- live multitouch path: a dedicated pool of sustained AnalogVoices ----
+  // Separate from the sequencer voices so live fingers never steal scheduled
+  // notes. Each finger holds one voice and glides its pitch continuously.
+  const LIVE_MAX = 8
+  const LIVE_GLIDE = 0.06
+  interface LiveSlot {
+    id: number
+    voice: AnalogVoice
+    freeAt: number
+    startedAt: number
+    held: boolean
+  }
+  const liveSlots: LiveSlot[] = []
+  let liveNextId = 1
+  const allocLive = (when: number): LiveSlot => {
+    const free = liveSlots.find((s) => !s.held && when >= s.freeAt)
+    if (free) return free
+    if (liveSlots.length < LIVE_MAX) {
+      const voice = new AnalogVoice(voiceBus, vp)
+      const slot: LiveSlot = { id: 0, voice, freeAt: 0, startedAt: 0, held: false }
+      liveSlots.push(slot)
+      return slot
+    }
+    let oldest = liveSlots[0]
+    for (const s of liveSlots) if (s.startedAt < oldest.startedAt) oldest = s
+    return oldest
+  }
+  const liveById = (id: number): LiveSlot | undefined =>
+    liveSlots.find((s) => s.held && s.id === id)
+  /** Sequencer + live voices — so live knob tweaks reach a held finger too. */
+  const allLiveAndSeq = (): AnalogVoice[] => [...voices, ...liveSlots.map((s) => s.voice)]
+
   return {
     output: out,
+    live: {
+      startVoice(midi, velocity, when) {
+        const slot = allocLive(when)
+        slot.id = liveNextId++
+        slot.held = true
+        slot.startedAt = when
+        slot.voice.applyMix(vp)
+        slot.voice.liveAttack(midi, Math.max(0, Math.min(1, velocity)), when, vp)
+        return slot.id
+      },
+      bendVoice(id, midi, when) {
+        liveById(id)?.voice.liveBend(midi, when, LIVE_GLIDE, vp)
+      },
+      endVoice(id, when) {
+        const slot = liveById(id)
+        if (!slot) return
+        const r = slot.voice.liveRelease(when)
+        slot.held = false
+        slot.freeAt = when + Math.max(0.02, r) + 0.05
+      },
+    },
     trigger(note: TriggerNote, when: number) {
       try {
         if (vp.glide > 0 || (params.voiceMode === "mono")) triggerMono(note, when)
@@ -646,6 +733,7 @@ export const createAnalogSynthInstrument = (config: AnalogConfig): Instrument =>
       // Mode change: drop the mono voice so poly re-allocates fresh.
       if (params.voiceMode !== "mono" && vp.glide <= 0) monoVoice = null
       applyAll()
+      for (const s of liveSlots) s.voice.applyMix(vp)
     },
     setParam(param: string, value: number, when: number) {
       // Live continuous knob tweaks — touch only the affected nodes (no rebuild).
@@ -653,13 +741,13 @@ export const createAnalogSynthInstrument = (config: AnalogConfig): Instrument =>
         case "cutoff": {
           params.cutoff = value
           vp.cutoff = value
-          for (const v of voices) v.cutoffSignal.setValueAtTime(value, when)
+          for (const v of allLiveAndSeq()) v.cutoffSignal.setValueAtTime(value, when)
           break
         }
         case "resonance": {
           params.resonance = value
           vp.resonance = value
-          for (const v of voices) v.applyMix(vp)
+          for (const v of allLiveAndSeq()) v.applyMix(vp)
           break
         }
         case "drive": {
@@ -689,14 +777,14 @@ export const createAnalogSynthInstrument = (config: AnalogConfig): Instrument =>
         case "filterEnvAmount": {
           ;(params as AnalogParams)[param] = value
           vp = readVoiceParams(params)
-          for (const v of voices) v.applyMix(vp)
+          for (const v of allLiveAndSeq()) v.applyMix(vp)
           break
         }
         default: {
           // Generic numeric param: fold into the bag + re-derive voice params.
           ;(params as AnalogParams)[param] = value
           vp = readVoiceParams(params)
-          for (const v of voices) v.applyMix(vp)
+          for (const v of allLiveAndSeq()) v.applyMix(vp)
         }
       }
     },
@@ -706,6 +794,8 @@ export const createAnalogSynthInstrument = (config: AnalogConfig): Instrument =>
     dispose() {
       for (const v of voices) v.dispose()
       voices.length = 0
+      for (const s of liveSlots) s.voice.dispose()
+      liveSlots.length = 0
       monoVoice = null
       lfo.dispose()
       lfoScale.dispose()

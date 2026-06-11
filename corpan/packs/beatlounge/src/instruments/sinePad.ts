@@ -14,6 +14,7 @@
 import * as Tone from "tone"
 import type { Instrument, TriggerNote } from "../contracts/engine"
 import type { InstrumentConfig } from "../model/document"
+import { createMonoSynthLive } from "./monoSynthLive"
 
 type SynthConfig = Extract<InstrumentConfig, { kind: "synth" }>
 const isSynth = (c: InstrumentConfig): c is SynthConfig => c.kind === "synth"
@@ -61,8 +62,20 @@ export const createSinePadInstrument = (config: SynthConfig): Instrument => {
   const layerGain = (l: Tone.PolySynth): Tone.Gain | undefined =>
     (l as unknown as { _padGain?: Tone.Gain })._padGain
 
+  // Live multitouch path: mono detuned-pair voices through the chorus → filter
+  // bed, so a held finger can glide the pad's pitch. The slow pad attack/release
+  // is the voice's own character.
+  let liveOsc: "sine" | "triangle" = osc
+  let liveEnv = { ...config.env }
+  const live = createMonoSynthLive({
+    dest: chorus,
+    glideSec: 0.12, // pads want a slower, smoother glide
+    make: () => new Tone.Synth({ oscillator: { type: liveOsc }, envelope: { ...liveEnv } }),
+  })
+
   return {
     output: out,
+    live: live.api,
     trigger(note: TriggerNote, when: number) {
       const name = Tone.Frequency(note.pitch, "midi").toNote()
       // Pads want to breathe: ensure a minimum sustain so the slow attack opens.
@@ -81,6 +94,9 @@ export const createSinePadInstrument = (config: SynthConfig): Instrument => {
       for (const layer of layers) {
         layer.set({ oscillator: { type: nextOsc }, envelope: { ...next.env } })
       }
+      liveOsc = nextOsc
+      liveEnv = { ...next.env }
+      live.refresh((v) => v.set({ oscillator: { type: liveOsc }, envelope: { ...liveEnv } }))
       filter.type = next.filter.type
       filter.frequency.value = next.filter.frequency
       filter.Q.value = next.filter.q
@@ -100,6 +116,7 @@ export const createSinePadInstrument = (config: SynthConfig): Instrument => {
       /* no assets */
     },
     dispose() {
+      live.dispose()
       for (const layer of layers) {
         layerGain(layer)?.dispose()
         layer.dispose()
