@@ -13,14 +13,17 @@ import {
   FRICTION_PER_SEC,
   HOLD_EPSILON,
   isHeld,
+  loopRevolutions,
   MAX_RATE,
   NATURAL_ANGULAR_VEL,
+  paddedLoopSeconds,
   playheadToRotation,
   pointerAngle,
   rotationDeltaToRate,
   rotationToPlayhead,
   SECONDS_PER_RAD,
   SECONDS_PER_REV,
+  startMarkerScreenAngle,
   timeToSpiral,
   wordIndexAt,
   type WordSpan,
@@ -153,6 +156,71 @@ describe("rotationToPlayhead (single read-head, LOOPS, forward=forward)", () => 
     const rot = 3.1
     const t = rotationToPlayhead(rot, dur)
     expect(playheadToRotation(t)).toBeCloseTo(rot, 8)
+  })
+})
+
+describe("paddedLoopSeconds (loop quantized to a WHOLE revolution)", () => {
+  it("rounds a phrase UP to an integer number of revolutions", () => {
+    // 1.3s → ceil(0.65) = 1 rev = 2s; 2.1s → ceil(1.05) = 2 revs = 4s.
+    expect(paddedLoopSeconds(1.3)).toBeCloseTo(SECONDS_PER_REV, 10)
+    expect(paddedLoopSeconds(2.1)).toBeCloseTo(2 * SECONDS_PER_REV, 10)
+  })
+  it("an EXACT multiple stays put (no spurious extra revolution)", () => {
+    expect(paddedLoopSeconds(2.0)).toBeCloseTo(SECONDS_PER_REV, 10)
+    expect(paddedLoopSeconds(4.0)).toBeCloseTo(2 * SECONDS_PER_REV, 10)
+  })
+  it("the padded length is ALWAYS an integer × SECONDS_PER_REV", () => {
+    for (const d of [0.2, 0.9, 1.0, 1.7, 3.3, 5.5, 7.9, 12.4]) {
+      const padded = paddedLoopSeconds(d)
+      const revs = padded / SECONDS_PER_REV
+      expect(revs).toBeCloseTo(Math.round(revs), 9)
+      expect(Number.isInteger(loopRevolutions(d))).toBe(true)
+      expect(padded).toBeGreaterThanOrEqual(d - 1e-9)
+    }
+  })
+  it("a zero/empty phrase still gets one full revolution to spin", () => {
+    expect(paddedLoopSeconds(0)).toBeCloseTo(SECONDS_PER_REV, 10)
+    expect(loopRevolutions(0)).toBe(1)
+  })
+})
+
+describe("start-marker angle is INVARIANT across loops (the needle returns)", () => {
+  it("playhead 0 recurs at an INTEGER number of revolutions on the padded loop", () => {
+    const padded = paddedLoopSeconds(3.3) // 4s = 2 revs
+    // The disc rotation advanced over one full loop:
+    const revSpan = playheadToRotation(padded)
+    const revs = revSpan / (2 * Math.PI)
+    expect(revs).toBeCloseTo(Math.round(revs), 8)
+  })
+  it("the start marker sits at the SAME screen angle after every loop", () => {
+    const padded = paddedLoopSeconds(2.7) // 4s = 2 revs
+    const revSpan = playheadToRotation(padded) // rotation added per loop
+    // Start at some rotation where playhead == 0 (an integer # of loops in).
+    const base = 0.0 // playhead 0
+    const angle0 = startMarkerScreenAngle(base)
+    for (let loop = 1; loop <= 6; loop++) {
+      const rot = base + loop * revSpan
+      // playhead is back to 0 at each of these rotations (rev-quantized loop)
+      expect(rotationToPlayhead(rot, padded)).toBeCloseTo(0, 6)
+      // and the start marker's screen angle is unchanged
+      expect(startMarkerScreenAngle(rot)).toBeCloseTo(angle0, 6)
+    }
+  })
+  it("CONTRAST: an UNQUANTIZED loop (raw duration) drifts the start angle each loop", () => {
+    const rawDur = 2.7 // NOT a whole number of revolutions
+    const revSpan = playheadToRotation(rawDur)
+    const angle0 = startMarkerScreenAngle(0)
+    // After one raw-duration loop the start angle is DIFFERENT (the bug we fixed).
+    const drifted = startMarkerScreenAngle(revSpan)
+    expect(Math.abs(drifted - angle0)).toBeGreaterThan(0.01)
+  })
+  it("startMarkerScreenAngle normalizes into [0, 2pi)", () => {
+    expect(startMarkerScreenAngle(0)).toBeCloseTo(0, 10)
+    expect(startMarkerScreenAngle(2 * Math.PI)).toBeCloseTo(0, 10)
+    expect(startMarkerScreenAngle(-0.1)).toBeCloseTo(2 * Math.PI - 0.1, 8)
+    const a = startMarkerScreenAngle(7.3)
+    expect(a).toBeGreaterThanOrEqual(0)
+    expect(a).toBeLessThan(2 * Math.PI)
   })
 })
 

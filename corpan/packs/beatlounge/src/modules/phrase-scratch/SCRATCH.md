@@ -66,6 +66,49 @@ before it loops; the mapping is NEVER scaled by phrase duration. `rotationToPlay
 WRAPS (modulo duration) → the phrase loops. The groove/label **spirals inward** per
 turn (`timeToSpiral`).
 
+## Loop QUANTIZED to the revolution + one START marker (`scratchPad.ts`)
+
+The phrase used to loop at its raw duration, which is almost never a whole number of
+2s revolutions — so the phrase START landed at a DIFFERENT angle every loop (the
+needle "in a different place every time"). The fix (`scratchPad.ts`): when a snippet
+loads, **pad the decoded buffer with trailing SILENCE** to
+`paddedLoopSeconds(duration) = ceil(duration / SECONDS_PER_REV) * SECONDS_PER_REV` —
+an INTEGER number of revolutions. The engine wraps at this padded length, so after
+every loop the playhead returns to 0 at a whole number of full disc turns → the
+phrase start comes back **under the 3 o'clock needle at the SAME angle, every loop**.
+`SECONDS_PER_REV` stays fixed; the mapping is NOT scaled by duration.
+
+A short (~22ms) **fade is baked at the phrase↔silence boundary** (fade-out into the
+trailing pad, fade-in at the very start) so looping through the silent gap is
+click-free even on a hard transient (`padChannelToLength`).
+
+The disc mapping (`durationSec`) uses the **padded** length (so the wrap is
+rev-quantized); **word spans + the spiral stay on the REAL phrase timeline**
+(`phraseSec`), so labels don't smear across the silent pad. A single **START marker**
+(`.bl-scr-start`) is fixed on the disc at the start-of-phrase groove point (spiral
+angle 0, outer rim → under the needle at playhead 0). Because the loop is
+rev-quantized, that marker returns under the needle every loop. This REPLACES marking
+every word as the primary reference; subtle word labels remain as a secondary layer
+(the `wordTiming.ts` forced-alignment seam is kept for later). Proven pure:
+`startMarkerScreenAngle` is invariant across loops on the padded length
+(`scratchMath.test.ts`); the padding + fade math is in `scratchPad.test.ts`.
+
+## Fixed decks + deluxe, space-filling layout (`phrase-scratch.css`)
+
+**Reserved footprint.** Each turntable is a fixed aspect-ratio box sized from a single
+`--bl-platter` value derived from the available box (width AND `vh`, minus the fader
+lane / mixer column). The disc, needle, START marker, and word labels are all
+positioned ABSOLUTELY inside that box, so nothing about playback (spin, marker, word
+position) can change a deck's size — decks **stay fixed** and never shove each other,
+down to ~320px. `--bl-platter` is the ONE knob.
+
+**Deluxe layout.** Single-deck mode centers one large platter + its channel-fader-style
+Cut fader (the throw matches the platter height), filling the immersive sheet. Two-deck
+mode lays out a real **DJ console**: deck A | a center **mixer column** carrying the
+crossfader (vertical) | deck B on wide screens; below ~640px the decks **stack** with a
+horizontal crossfader between them. Everything sizes off `min()/clamp()` of the
+available box, never fixed px — it reflows on resize, no lonely corner.
+
 **Direction:** the disc's accumulated `rotation` is clockwise-positive (screen atan2,
 y-down). Dragging the record FORWARD (clockwise) advances the playhead FORWARD
 (`playhead = +rotation * SECONDS_PER_RAD`); reverse drag plays backward.
@@ -94,11 +137,14 @@ build Whisper here.
 
 ## Single-deck CUT FADER (`CutFader.tsx`)
 
-A throwable vertical level fader **on each deck** — the scratch "cut". Flick it 0→full
-for the fast fade-ins real scratching lives on. It writes THIS deck's output gain
-directly and immediately (tap-to-jump, drag, wheel, keyboard). It exists with a single
-deck (not gated behind two). The deck gain = `cut × crossfade-contribution`, so the
-cut and the two-deck crossfader compose.
+A throwable vertical level fader **on each deck** — the scratch "cut", styled as a real
+channel fader (fat grip cap on a slim recessed track). Flick it 0→full for the fast
+fade-ins real scratching lives on. On pointer move it writes the cap position to its
+`--bl-cut` CSS var **imperatively** (immediate, no wait for a React re-render → zero
+lag on a fast flick) AND reports the value up so the deck gain follows. Tap anywhere on
+the track to jump there (instant cut); drag, wheel, keyboard all work. It exists with a
+single deck (not gated behind two). The deck gain = `cut × crossfade-contribution`, so
+the cut and the two-deck crossfader compose.
 
 ## Two decks + crossfader
 

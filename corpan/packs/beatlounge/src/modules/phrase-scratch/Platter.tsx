@@ -29,8 +29,8 @@ import { pointerAngle, timeToSpiral, type WordSpan } from "./scratchMath"
 interface Props {
   /** Current visual rotation in radians (driven by the parent's RAF loop). */
   rotation: number
-  /** Total phrase duration (seconds) — sets the spiral's inward walk. */
-  durationSec: number
+  /** REAL phrase duration (seconds) — sets the spiral's inward walk for word labels. */
+  phraseSec: number
   /** Word spans (seconds) placed along the groove. */
   spans: WordSpan[]
   /** Per-word labels parallel to `spans`. */
@@ -56,7 +56,7 @@ const INNER_FLOOR = 0.2
 
 export const Platter = ({
   rotation,
-  durationSec,
+  phraseSec,
   spans,
   words,
   currentWord,
@@ -130,13 +130,20 @@ export const Platter = ({
   // CW by `rotation`, the current word (θ == rotation) lands exactly under the needle.
   const wordDots = spans.map((s, i) => {
     const mid = (s.start + s.end) / 2
-    const sp = timeToSpiral(mid, durationSec, INNER_FLOOR)
+    const sp = timeToSpiral(mid, phraseSec, INNER_FLOOR)
     const r = sp.radiusFrac * 0.5 // fraction of half-width (radius) from centre
     const a = -sp.angle // local screen angle from the 3 o'clock needle
     const x = 50 + Math.cos(a) * r * 100
     const y = 50 + Math.sin(a) * r * 100
     return { i, x, y, text: words[i] ?? "" }
   })
+
+  // The START marker: a single tasteful tick fixed on the disc at the start-of-phrase
+  // groove point (spiral angle 0, outer rim → local screen angle 0). It rides the
+  // rotating vinyl; because the loop is rev-quantized, this point returns under the
+  // fixed 3 o'clock needle at the SAME angle every loop. The reference for the loop.
+  const startX = 50 + Math.cos(0) * (1 * 0.5) * 100 // outer rim, +x
+  const startY = 50
 
   return (
     <div
@@ -153,6 +160,14 @@ export const Platter = ({
     >
       <div className="bl-scr-vinyl" aria-hidden="true">
         <div className="bl-scr-grooves" />
+        {/* The single START marker — fixed on the disc at the phrase start (t=0). */}
+        <span
+          className="bl-scr-start"
+          style={{
+            ["--bl-scr-sx" as string]: `${startX}%`,
+            ["--bl-scr-sy" as string]: `${startY}%`,
+          }}
+        />
         {wordDots.map((w) => (
           <span
             key={w.i}
