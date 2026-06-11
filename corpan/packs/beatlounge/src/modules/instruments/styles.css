@@ -89,35 +89,120 @@
   outline-offset: 1px;
 }
 
-/* Now-playing header. */
-.bl-instr-now {
+/* ---------------------------------------------------------- play surface */
+.bl-play {
   display: flex;
-  align-items: baseline;
-  gap: var(--bl-s3);
-  padding: var(--bl-s3) var(--bl-s4);
-  border-radius: var(--bl-radius-sm);
-  background: var(--bl-surface);
-  border: 1px solid var(--bl-border);
-}
-.bl-instr-now-label {
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-micro);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--bl-text-dim);
-}
-.bl-instr-now-name {
-  font-size: var(--bl-fs-label);
-  color: var(--bl-accent);
+  flex-direction: column;
+  gap: var(--bl-s2);
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
-/* Family rail + program grid. */
+/* Mode switch row (Fretless / Chromatic / Scale) + live note readout. */
+.bl-play-modes {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-play-note {
+  margin-left: auto;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.04em;
+  color: var(--bl-accent);
+  min-width: 3.2ch;
+  text-align: right;
+}
+
+/* The playable surface — a continuous-pitch string field. Touch-first. */
+.bl-play-surface {
+  position: relative;
+  flex: 1 1 auto;
+  /* Big enough to play on a phone; grows on iPad/desktop. */
+  min-height: 168px;
+  border-radius: var(--bl-radius);
+  border: 1px solid var(--bl-border);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bl-accent) 6%, var(--bl-surface)),
+      var(--bl-surface)
+    );
+  overflow: hidden;
+  /* No browser gestures stealing the multitouch (scroll/zoom/select). */
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: crosshair;
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--bl-accent) 10%, transparent);
+}
+@media (min-width: 600px) {
+  .bl-play-surface { min-height: 240px; }
+}
+@media (min-width: 960px) {
+  .bl-play-surface { min-height: 320px; }
+}
+
+/* Each stacked octave row + its semitone reference markers. */
+.bl-play-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px solid color-mix(in srgb, var(--bl-border) 70%, transparent);
+}
+.bl-play-row:first-child { border-top: none; }
+
+.bl-play-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: color-mix(in srgb, var(--bl-text-dim) 40%, transparent);
+  transform: translateX(-0.5px);
+}
+.bl-play-marker.is-octave {
+  width: 2px;
+  background: color-mix(in srgb, var(--bl-accent) 55%, transparent);
+  transform: translateX(-1px);
+}
+/* Scale mode: in-scale degrees glow; out-of-scale recede to near-invisible. */
+.bl-play-surface.is-scale .bl-play-marker.is-out { opacity: 0.12; }
+.bl-play-surface.is-scale .bl-play-marker.is-in {
+  width: 2px;
+  background: color-mix(in srgb, var(--bl-accent) 60%, transparent);
+  transform: translateX(-1px);
+}
+
+/* Live finger glow — one per active touch. */
+.bl-play-dot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-radius: var(--bl-radius-pill);
+  background: radial-gradient(
+    circle,
+    var(--bl-accent-hot),
+    color-mix(in srgb, var(--bl-accent) 40%, transparent) 60%,
+    transparent 72%
+  );
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 70%, transparent);
+  pointer-events: none;
+  transition: opacity var(--bl-dur-fast) var(--bl-ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-play-dot { transition: none; }
+}
+
+/* Family rail + program grid. The PLAY surface is the headline; the picker
+ *  below is a bounded, scrollable region so the surface keeps prominence. */
 .bl-instr-browser {
   display: flex;
   flex-direction: column;
   gap: var(--bl-s3);
-  flex: 1;
+  flex: 0 1 auto;
   min-height: 0;
+  max-height: 42%;
 }
 .bl-instr-families {
   display: flex;
@@ -204,11 +289,4 @@
 }
 .bl-instr-prog.is-on .bl-instr-prog-desc {
   color: color-mix(in srgb, var(--bl-accent) 70%, var(--bl-text-dim));
-}
-
-/* Footer audition row. */
-.bl-instr-foot {
-  display: flex;
-  align-items: center;
-  gap: var(--bl-s3);
 }

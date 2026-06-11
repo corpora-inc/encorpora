@@ -43,6 +43,30 @@ export interface TriggerNote {
   scratchCurve?: number[]
 }
 
+/** An opaque handle to ONE live performance voice (a single finger). The
+ *  surface bends its pitch as the finger drags and releases it on lift. */
+export type VoiceId = number
+
+/** A continuous, per-touch live-performance voice — the seam the multitouch
+ *  instrument surface plays through. Distinct from the sequencer's `trigger`
+ *  (which schedules fixed notes at exact times): here a voice is held open,
+ *  glided in pitch while a finger drags, and released on lift, so dragging a
+ *  finger sweeps pitch smoothly (Theremin / fretless feel) and many fingers =
+ *  many simultaneous voices.
+ *
+ *  Pitch is a FRACTIONAL MIDI number (60.0 = C4, 60.5 = +50 cents) so the
+ *  surface can request any frequency between the chromatic grid. Engines that
+ *  cannot retune a held voice cleanly fall back to retriggering on a big jump
+ *  (and may note that). All methods are no-ops for unknown ids. */
+export interface LivePlayable {
+  /** Open a voice at a fractional MIDI pitch; returns its id (per finger). */
+  startVoice(midi: number, velocity: Normalized, when: number): VoiceId
+  /** Glide an open voice to a new fractional MIDI pitch (smooth portamento). */
+  bendVoice(id: VoiceId, midi: number, when: number): void
+  /** Release an open voice into its amp-release tail. */
+  endVoice(id: VoiceId, when: number): void
+}
+
 /** Every instrument engine (synth/fm/wavetable/sampler/drumSampler/soundfont/
  *  ttsFragment) implements this. The audioGraph owns its lifecycle. */
 export interface Instrument {
@@ -56,6 +80,9 @@ export interface Instrument {
   setParam(param: string, value: number, when: number): void
   /** Async asset load (samples / soundfonts / fragments). */
   load(assets: AssetLoader): Promise<void>
+  /** OPTIONAL live-performance voices (continuous-pitch multitouch play). When
+   *  absent the surface falls back to fixed-note `trigger`s. */
+  readonly live?: LivePlayable
   dispose(): void
 }
 
@@ -98,5 +125,8 @@ export interface AudioGraph {
   /** Write a resolved ACTUAL value onto the live node a ParamTarget addresses
    *  (the modulation engine calls this each frame to drive autonomous knobs). */
   applyParam(target: ParamTarget, value: number): void
+  /** The live-performance voices of a track's instrument, if the engine supports
+   *  continuous play (the multitouch instrument surface plays through this). */
+  liveInstrument(trackId: Id): LivePlayable | undefined
   dispose(): void
 }

@@ -38,9 +38,16 @@ beforeAll(async () => {
 const SYNTH_KINDS = new Set(["synth", "fmSynth", "wavetable", "analogSynth"])
 
 describe("INSTRUMENT_PRESETS corpus", () => {
-  it("ships a broad palette (~20-30 presets)", () => {
-    expect(INSTRUMENT_PRESETS.length).toBeGreaterThanOrEqual(20)
-    expect(INSTRUMENT_PRESETS.length).toBeLessThanOrEqual(40)
+  it("ships a broad, world-class palette (40+ presets)", () => {
+    expect(INSTRUMENT_PRESETS.length).toBeGreaterThanOrEqual(40)
+    expect(INSTRUMENT_PRESETS.length).toBeLessThanOrEqual(80)
+  })
+
+  it("every family is well-stocked (≥4 members) for a deep palette", () => {
+    const groups = presetsByFamily()
+    for (const g of groups) {
+      expect(g.presets.length, g.family).toBeGreaterThanOrEqual(4)
+    }
   })
 
   it("has unique ids", () => {
@@ -131,6 +138,19 @@ describe("INSTRUMENT_PRESETS corpus", () => {
       const inst = createInstrument(p.config)
       expect(inst, p.id).toBeTruthy()
       expect(typeof inst.trigger, p.id).toBe("function")
+      inst.dispose()
+    }
+  })
+
+  it("every synthesis preset exposes the LIVE multitouch play path", () => {
+    if (!audioReady) return // needs a real Tone graph to build the live voices
+    for (const p of INSTRUMENT_PRESETS) {
+      const inst = createInstrument(p.config)
+      expect(inst.live, `${p.id} must support continuous live play`).toBeTruthy()
+      // A finger opens, glides, and releases without throwing.
+      const id = inst.live!.startVoice(60.5, 0.8, 0)
+      inst.live!.bendVoice(id, 62.25, 0.01)
+      inst.live!.endVoice(id, 0.02)
       inst.dispose()
     }
   })

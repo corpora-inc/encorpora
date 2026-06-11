@@ -290,6 +290,10 @@ export const createAudioGraph = (
       if (n) n.instrument.trigger(t.note, t.when)
     },
 
+    liveInstrument(trackId) {
+      return nodes.get(trackId)?.instrument.live
+    },
+
     setMasterVolume(v: Normalized) {
       masterVol.volume.value = Tone.gainToDb(Math.max(0.0001, Math.min(1, v)))
     },

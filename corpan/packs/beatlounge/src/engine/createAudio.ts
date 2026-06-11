@@ -81,6 +81,25 @@ export const createBeatloungeAudio: CreateBeatloungeAudio = (bus, opts): AudioFa
     applyParam(target, value) {
       graph.applyParam(target, value)
     },
+    playLiveVoice(trackId, midi, velocity = 0.9) {
+      void ensureRunning()
+      const live = graph.liveInstrument(trackId)
+      if (!live) return undefined
+      // A hair ahead of now so the attack lands cleanly on the audio thread.
+      const at = context.currentTime + 0.005
+      const id = live.startVoice(midi, velocity, at)
+      let released = false
+      return {
+        bend(m: number) {
+          if (!released) live.bendVoice(id, m, context.currentTime)
+        },
+        release() {
+          if (released) return
+          released = true
+          live.endVoice(id, context.currentTime)
+        },
+      }
+    },
     context: () => context,
     dispose() {
       offTrigger()

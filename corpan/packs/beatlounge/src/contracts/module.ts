@@ -14,6 +14,7 @@
 import type { Command } from "../model/command"
 import type { CommandBus } from "../model/commandBus"
 import type { BeatloungeDoc, Id, ParamTarget } from "../model/document"
+import type { LiveVoiceHandle } from "./audioFacade"
 import type { HostApi } from "../sdk/types"
 
 export type ModuleId = string
@@ -88,6 +89,11 @@ export interface BeatloungeHost {
   audioContext(): AudioContext
   /** Trigger a one-shot preview of a track's instrument (click-to-hear). */
   previewTrack(trackId: Id, velocity?: number, pitch?: number): void
+  /** Open a CONTINUOUS live-performance voice on a track's instrument (one
+   *  finger of a multitouch instrument surface). `midi` is fractional. Returns
+   *  a handle to glide pitch + release, or undefined if the engine can't play
+   *  live. Live performance — never writes the document. */
+  playLiveVoice(trackId: Id, midi: number, velocity?: number): LiveVoiceHandle | undefined
   /** Drive a param in REAL TIME (no document write) for live performance —
    *  ribbons / XY pads. e.g. applyParam({scope:"instrument",trackId,
    *  param:"pitchOffset"}, semis) bends a phrase track as the finger moves. */

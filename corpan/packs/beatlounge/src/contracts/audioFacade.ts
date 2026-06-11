@@ -11,6 +11,15 @@ import type { CommandBus } from "../model/commandBus"
 import type { Id, ParamTarget, Tick } from "../model/document"
 import type { TtsFragmentDeps } from "../instruments/ttsFragment"
 
+/** A live voice in flight (one finger). The surface bends its pitch while the
+ *  finger drags and releases it on lift. Idempotent release. */
+export interface LiveVoiceHandle {
+  /** Glide this voice to a new fractional MIDI pitch (smooth portamento). */
+  bend(midi: number): void
+  /** Release this voice into its amp tail (safe to call more than once). */
+  release(): void
+}
+
 export interface AudioFacade {
   /** Resume the AudioContext (user-gesture) and start the transport. */
   start(): Promise<void>
@@ -26,6 +35,12 @@ export interface AudioFacade {
    *  behind ribbons / XY pads. e.g. {scope:"instrument",trackId,param:"pitchOffset"}
    *  bends a phrase track's pitch as the finger moves. Smoothed at the node. */
   applyParam(target: ParamTarget, value: number): void
+  /** Open a CONTINUOUS live-performance voice on a track's instrument (one
+   *  finger). `midi` is fractional (60.5 = +50 cents). Returns a handle to glide
+   *  the pitch as the finger drags and release it on lift. Undefined when the
+   *  track / engine cannot play live (the surface then falls back to previews).
+   *  Live performance — never writes the document. */
+  playLiveVoice(trackId: Id, midi: number, velocity?: number): LiveVoiceHandle | undefined
   /** The shared AudioContext, for modules that need their own nodes (scopes). */
   context(): AudioContext
   dispose(): void

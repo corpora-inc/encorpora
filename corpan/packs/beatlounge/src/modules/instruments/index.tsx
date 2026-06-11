@@ -1,10 +1,12 @@
 /**
- * beatlounge — the instruments module (kind "instrument"): the software-
- * instrument PRESET browser. The tile summarizes a track's current voice; the
- * immersive view browses synthesized presets grouped by family (Keys, Bass,
- * Leads, Pads, …) and re-voices the bound track to that preset's config (one
- * `setInstrument` per pick) with an instant audition, plus an Add affordance to
- * spawn more melodic synth tracks.
+ * beatlounge — the instruments module (kind "instrument"): a PLAYABLE
+ * software-instrument surface. The tile summarizes a track's current voice; the
+ * immersive view is a multitouch, continuous-pitch play surface (fretless /
+ * chromatic / scale modes) that performs the bound track's voice live, with a
+ * preset picker grouped by family (Keys, Bass, Leads, Pads, …) that re-voices
+ * the bound track (one `setInstrument` per pick) plus an Add affordance to spawn
+ * more melodic synth tracks. You hear a voice by PLAYING it — there is no
+ * separate audition.
  *
  * Mirrors the step-grid / fx-rack module pattern: a `createInstrumentsModule(deps)`
  * factory binds store + audio + host and renders its own React root into the
@@ -53,7 +55,7 @@ export const createInstrumentsModule = ({
   audio,
   host,
 }: InstrumentsDeps): BeatloungeModule => {
-  void audio // auditions go through host.previewTrack, not the facade directly
+  void audio // live play goes through host.playLiveVoice, not the facade directly
   void host
   return {
     id: INSTRUMENTS_ID,

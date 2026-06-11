@@ -9,6 +9,7 @@ import * as Tone from "tone"
 import type { Instrument, TriggerNote } from "../contracts/engine"
 import type { InstrumentConfig } from "../model/document"
 import { resolveWavetable } from "./wavetables"
+import { createMonoSynthLive } from "./monoSynthLive"
 
 type WavetableConfig = Extract<InstrumentConfig, { kind: "wavetable" }>
 const isWavetable = (c: InstrumentConfig): c is WavetableConfig =>
@@ -36,9 +37,22 @@ export const createWavetableInstrument = (config: WavetableConfig): Instrument =
   poly.maxPolyphony = 16
 
   let tableId = config.tableId
+  let liveEnv = { ...config.env }
+
+  // Live multitouch path: mono custom-partials voices through the SAME filter,
+  // glided per finger.
+  const live = createMonoSynthLive({
+    dest: filter,
+    make: () =>
+      new Tone.Synth({
+        oscillator: { type: "custom", partials: partialsFor(tableId) },
+        envelope: { ...liveEnv },
+      }),
+  })
 
   return {
     output: out,
+    live: live.api,
     trigger(note: TriggerNote, when: number) {
       const name = Tone.Frequency(note.pitch, "midi").toNote()
       try {
@@ -52,8 +66,13 @@ export const createWavetableInstrument = (config: WavetableConfig): Instrument =
       if (next.tableId !== tableId) {
         tableId = next.tableId
         poly.set({ oscillator: { type: "custom", partials: partialsFor(tableId) } })
+        live.refresh((v) =>
+          v.set({ oscillator: { type: "custom", partials: partialsFor(tableId) } })
+        )
       }
       poly.set({ envelope: { ...next.env } })
+      liveEnv = { ...next.env }
+      live.refresh((v) => v.set({ envelope: { ...liveEnv } }))
       filter.type = next.filter.type
       filter.frequency.value = next.filter.frequency
       filter.Q.value = next.filter.q
@@ -73,6 +92,7 @@ export const createWavetableInstrument = (config: WavetableConfig): Instrument =
       /* tables are built-in; no async assets */
     },
     dispose() {
+      live.dispose()
       poly.dispose()
       filter.dispose()
       out.dispose()
