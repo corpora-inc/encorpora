@@ -1,8 +1,10 @@
 /**
- * beatlounge — the instruments module (kind "instrument"): the General-MIDI
- * instrument browser. The tile summarizes a track's current voice; the immersive
- * view browses GM families → programs and re-voices the track to a real
- * soundfont instrument (one `setInstrument` per pick) with an instant audition.
+ * beatlounge — the instruments module (kind "instrument"): the software-
+ * instrument PRESET browser. The tile summarizes a track's current voice; the
+ * immersive view browses synthesized presets grouped by family (Keys, Bass,
+ * Leads, Pads, …) and re-voices the bound track to that preset's config (one
+ * `setInstrument` per pick) with an instant audition, plus an Add affordance to
+ * spawn more melodic synth tracks.
  *
  * Mirrors the step-grid / fx-rack module pattern: a `createInstrumentsModule(deps)`
  * factory binds store + audio + host and renders its own React root into the

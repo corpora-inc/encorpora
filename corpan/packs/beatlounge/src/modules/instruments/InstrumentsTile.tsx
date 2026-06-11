@@ -9,6 +9,7 @@ import { useBeatloungeStore } from "../../store/store"
 import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
 import { Glyph } from "../../bl-ui"
 import { gmFamilyOf } from "../../instruments/gmPrograms"
+import { FAMILY_LABEL, matchPreset } from "../../instruments/presets"
 import { instrumentSummary } from "./instrumentSummary"
 
 interface Props {
@@ -22,13 +23,16 @@ export const InstrumentsTile = ({ store, trackId }: Props) => {
   if (!track || !isInstrumentTrack(track)) return null
 
   const config = track.instrument
-  const name = instrumentSummary(config)
+  const preset = matchPreset(config)
+  const name = preset?.name ?? instrumentSummary(config)
   const family =
     config.kind === "soundfont" && config.bank !== 128
       ? gmFamilyOf(config.program)?.label
       : config.kind === "soundfont"
         ? "Drums"
-        : "Synthesis"
+        : preset
+          ? FAMILY_LABEL[preset.family]
+          : "Synthesis"
 
   return (
     <div className="bl-tile-grid">

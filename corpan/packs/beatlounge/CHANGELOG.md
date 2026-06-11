@@ -43,6 +43,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   later). The groove brain stays the source of these profiles.
 
 ### Added
+- **Software-instrument preset corpus + preset browser (fix: every instrument
+  sounded the same).** The Instruments browser used to pick a General-MIDI program
+  and set a `soundfont` voice — but no GM soundfont asset ships, so EVERY program
+  collapsed to one triangle synth. Replaced it with a corpus of ~30 fully
+  *synthesized* presets (`src/instruments/presets.ts`) across seven families —
+  Keys, Bass, Leads, Pads, Plucks & Mallets, Brass & Wind, FX — each a distinct,
+  recognizable voice built on the existing synth / sine-pad / FM / wavetable /
+  analog engines (no sample assets). The immersive view now browses presets grouped
+  by family; picking one dispatches a single `setInstrument` (one undo step) and
+  auditions a short note (never starts the transport). The tile + header show the
+  active preset by name. Typed schema + `getPreset` / `listPresets` /
+  `presetsByFamily` / `matchPreset` lookups, mirroring the other corpora. Real
+  multisampled soundfonts remain a future downloadable path (the engine stays).
+- **Multiple instrument tracks.** The browser gains an **Add** affordance that
+  spawns a new melodic synth track (voiced to a sensible default preset) plus a
+  track switcher to pick which track the browser is editing — so a song can carry
+  several distinct synth voices. Pure `newInstrumentTrackInit` helper over the
+  existing `addTrack` command, with tests.
 - **Drums page rework v2 — the whole drum-track pipeline in one place.** Replaced
   the cramped Grooves/Effects side column with a single FULL-WIDTH bottom DRAWER
   (drag handle + peek/open/expanded states, local to the module, one z-scale,

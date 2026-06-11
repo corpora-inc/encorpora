@@ -1,25 +1,41 @@
 /**
- * beatlounge — instruments IMMERSIVE: the General-MIDI instrument browser.
+ * beatlounge — instruments IMMERSIVE: the SOFTWARE-INSTRUMENT preset browser.
  *
- *  • Track switcher (chips) so one browser re-voices any instrument track.
- *  • Current voice header — what the track plays right now.
- *  • Browse by FAMILY (Piano, Organ, Strings, Bass, ...) → pick a PROGRAM.
- *  • Picking a program dispatches ONE `setInstrument` (a soundfont voice at the
- *    right GM program) — a single undo step — and auditions it via
- *    host.previewTrack so you hear the instrument the moment you choose it.
+ *  • Track switcher (chips) so one browser re-voices any instrument track, with
+ *    an "Add" affordance to spawn a NEW melodic track (multiple synth voices).
+ *  • Current voice header — what the bound track plays right now.
+ *  • Browse presets grouped by FAMILY (Keys, Bass, Leads, Pads, …) → pick a
+ *    preset. Picking dispatches ONE `setInstrument` with the preset's
+ *    synthesized config (a single undo step) and auditions it via
+ *    host.previewTrack — a short note, never starting the transport.
  *
  * The store is the only write path; drum tracks are excluded (they have their
  * own kit editor). No emoji; reuses the frozen bl-ui chips/dots + --bl-* tokens.
+ * Synthesized presets are the working instrument content; real multisampled
+ * soundfonts remain a future downloadable path (see the footer note).
  */
 
 import { useEffect, useMemo, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
-import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
-import { GM_FAMILIES } from "../../instruments/gmPrograms"
-import { GM_SOUNDFONT_ID } from "../../instruments/gmSoundbank"
+import {
+  findTrack,
+  isInstrumentTrack,
+  type Id,
+  type InstrumentTrack,
+} from "../../model/document"
+import {
+  FAMILY_LABEL,
+  familyOfPreset,
+  instantiatePreset,
+  matchPreset,
+  presetsByFamily,
+  type PresetFamily,
+} from "../../instruments/presets"
+import { Glyph } from "../../bl-ui"
 import { instrumentSummary } from "./instrumentSummary"
+import { newInstrumentTrackInit } from "./addTrack"
 
 interface Props {
   host: BeatloungeHost
@@ -38,7 +54,8 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
   const instrumentTracks = useMemo(
     () =>
       doc.tracks.filter(
-        (t) => isInstrumentTrack(t) && t.instrument.kind !== "drumSampler"
+        (t): t is InstrumentTrack =>
+          isInstrumentTrack(t) && t.instrument.kind !== "drumSampler"
       ),
     [doc.tracks]
   )
@@ -52,32 +69,39 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
 
   const track = findTrack(doc, trackId)
   const config = track && isInstrumentTrack(track) ? track.instrument : undefined
-  const currentProgram =
-    config && config.kind === "soundfont" && config.bank !== 128 ? config.program : -1
+  const activePreset = config ? matchPreset(config) : undefined
 
-  // Open the family that owns the current program, else the first.
-  const [openFamily, setOpenFamily] = useState<string>(() => {
-    const fam = GM_FAMILIES.find(
-      (f) => currentProgram >= f.programs[0].program && currentProgram <= f.programs[7].program
-    )
-    return fam?.id ?? GM_FAMILIES[0].id
-  })
+  const groups = useMemo(() => presetsByFamily(), [])
 
-  if (!track || !isInstrumentTrack(track)) {
-    return <div className="bl-grid-empty">No instrument track to voice.</div>
-  }
+  // Open the family that owns the active preset, else the first.
+  const [openFamily, setOpenFamily] = useState<PresetFamily>(
+    () => (activePreset && familyOfPreset(activePreset.id)) ?? groups[0].family
+  )
+  // Track the family of the active preset as the bound track changes.
+  useEffect(() => {
+    const fam = activePreset && familyOfPreset(activePreset.id)
+    if (fam) setOpenFamily(fam)
+  }, [activePreset])
 
-  const chooseProgram = (program: number) => {
-    store.dispatch({
-      t: "setInstrument",
-      trackId: track.id,
-      config: { kind: "soundfont", soundfontId: GM_SOUNDFONT_ID, program, bank: 0 },
-    })
-    // Audition the freshly-set voice (host resumes audio on first gesture).
+  const choosePreset = (presetId: string) => {
+    const cfg = instantiatePreset(presetId)
+    if (!cfg || !track || !isInstrumentTrack(track)) {
+      console.warn("[instruments] cannot voice preset", presetId)
+      return
+    }
+    store.dispatch({ t: "setInstrument", trackId: track.id, config: cfg })
+    // Audition the freshly-set voice — a single note; never starts transport.
     host.previewTrack(track.id, 0.9, PREVIEW_PITCH)
   }
 
-  const family = GM_FAMILIES.find((f) => f.id === openFamily) ?? GM_FAMILIES[0]
+  const addInstrumentTrack = () => {
+    const init = newInstrumentTrackInit(instrumentTracks.length)
+    store.dispatch({ t: "addTrack", track: init })
+    // The reducer assigns the id; bind to the new track once it lands.
+    if (init.id) setTrackId(init.id)
+  }
+
+  const family = groups.find((g) => g.family === openFamily) ?? groups[0]
 
   return (
     <div className="bl-instr">
@@ -90,7 +114,7 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
               <button
                 key={t.id}
                 type="button"
-                className={`bl-chip${t.id === track.id ? " is-on" : ""}`}
+                className={`bl-chip${t.id === trackId ? " is-on" : ""}`}
                 onClick={() => setTrackId(t.id)}
               >
                 <span
@@ -101,62 +125,90 @@ export const InstrumentsBrowser = ({ host, store, trackId: initialTrackId }: Pro
               </button>
             ))
           )}
+          <button
+            type="button"
+            className="bl-instr-add"
+            onClick={addInstrumentTrack}
+            aria-label="Add instrument track"
+            title="Add instrument track"
+          >
+            <Glyph name="wave" size={14} />
+            <span>Add</span>
+          </button>
         </div>
       </div>
 
-      <div className="bl-instr-now">
-        <span className="bl-instr-now-label">Now playing</span>
-        <span className="bl-instr-now-name">
-          {config ? instrumentSummary(config) : "—"}
-        </span>
-      </div>
+      {!track || !isInstrumentTrack(track) ? (
+        <div className="bl-grid-empty">Add an instrument track to start.</div>
+      ) : (
+        <>
+          <div className="bl-instr-now">
+            <span className="bl-instr-now-label">Now playing</span>
+            <span className="bl-instr-now-name">
+              {activePreset ? activePreset.name : config ? instrumentSummary(config) : "—"}
+            </span>
+          </div>
 
-      <div className="bl-instr-browser">
-        <div className="bl-instr-families" role="tablist" aria-label="Instrument families">
-          {GM_FAMILIES.map((f) => (
-            <button
-              key={f.id}
-              type="button"
-              role="tab"
-              aria-selected={f.id === openFamily}
-              className={`bl-chip${f.id === openFamily ? " is-on" : ""}`}
-              onClick={() => setOpenFamily(f.id)}
+          <div className="bl-instr-browser">
+            <div
+              className="bl-instr-families"
+              role="tablist"
+              aria-label="Instrument families"
             >
-              {f.label}
+              {groups.map((g) => (
+                <button
+                  key={g.family}
+                  type="button"
+                  role="tab"
+                  aria-selected={g.family === openFamily}
+                  className={`bl-chip${g.family === openFamily ? " is-on" : ""}`}
+                  onClick={() => setOpenFamily(g.family)}
+                >
+                  {FAMILY_LABEL[g.family]}
+                </button>
+              ))}
+            </div>
+
+            <div
+              className="bl-instr-programs"
+              role="listbox"
+              aria-label={`${FAMILY_LABEL[family.family]} instruments`}
+            >
+              {family.presets.map((p) => {
+                const selected = activePreset?.id === p.id
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    role="option"
+                    aria-selected={selected}
+                    className={`bl-instr-prog${selected ? " is-on" : ""}`}
+                    onClick={() => choosePreset(p.id)}
+                  >
+                    <span className="bl-instr-prog-text">
+                      <span className="bl-instr-prog-name">{p.name}</span>
+                      <span className="bl-instr-prog-desc">{p.description}</span>
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          <div className="bl-instr-foot" data-bl-nocapture>
+            <button
+              type="button"
+              className="bl-chip"
+              onClick={() => host.previewTrack(track.id, 0.9, PREVIEW_PITCH)}
+            >
+              Audition
             </button>
-          ))}
-        </div>
-
-        <div className="bl-instr-programs" role="listbox" aria-label={`${family.label} instruments`}>
-          {family.programs.map((p) => {
-            const selected = p.program === currentProgram
-            return (
-              <button
-                key={p.program}
-                type="button"
-                role="option"
-                aria-selected={selected}
-                className={`bl-instr-prog${selected ? " is-on" : ""}`}
-                onClick={() => chooseProgram(p.program)}
-              >
-                <span className="bl-instr-prog-name">{p.name}</span>
-                <span className="bl-instr-prog-num">{p.program}</span>
-              </button>
-            )
-          })}
-        </div>
-      </div>
-
-      <div className="bl-instr-foot" data-bl-nocapture>
-        <button
-          type="button"
-          className="bl-chip"
-          onClick={() => host.previewTrack(track.id, 0.9, PREVIEW_PITCH)}
-        >
-          Audition
-        </button>
-        <span className="bl-instr-foot-hint">General MIDI</span>
-      </div>
+            <span className="bl-instr-foot-hint">
+              Synthesized presets · soundfont packs coming via downloads
+            </span>
+          </div>
+        </>
+      )}
     </div>
   )
 }
