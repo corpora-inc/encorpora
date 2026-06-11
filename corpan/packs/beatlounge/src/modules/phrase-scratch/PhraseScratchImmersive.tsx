@@ -263,12 +263,6 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   if (bank.length === 0) {
     return (
       <div className="bl-scr">
-        <div className="bl-scr-bar" data-bl-nocapture>
-          <div className="bl-scr-title">
-            <Glyph name="wave" size={16} />
-            <span>Scratch</span>
-          </div>
-        </div>
         <div className="bl-scr-empty">
           <Glyph name="wave" size={28} />
           <p className="bl-scr-empty-title">No snippet to scratch yet</p>
@@ -287,10 +281,6 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   return (
     <div className="bl-scr">
       <div className="bl-scr-bar" data-bl-nocapture>
-        <div className="bl-scr-title">
-          <Glyph name="wave" size={16} />
-          <span>Scratch</span>
-        </div>
         <div className="bl-scr-bar-actions">
           <button
             type="button"

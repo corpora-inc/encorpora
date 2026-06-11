@@ -20,6 +20,20 @@
   box-shadow: 0 0 14px color-mix(in srgb, var(--bl-error) 40%, transparent);
 }
 
+/* The reusable pad-bank surface: a Record-arm row above the pad grid. Fills its
+   host (the immersive view OR the Drums-page Pads tab). */
+.bl-padbank {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: var(--bl-s3);
+}
+.bl-padbank-arm {
+  display: flex;
+  flex: 0 0 auto;
+}
+
 /* The pad grid. Square pads via aspect-ratio; comfortable ≥44px hit targets. */
 .bl-pad-bank {
   display: grid;

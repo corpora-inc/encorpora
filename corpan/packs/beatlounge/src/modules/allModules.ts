@@ -15,7 +15,6 @@ import { createStepGridModule } from "./step-grid"
 import { createMixerModule } from "./mixer"
 import { createFxRackModule } from "./fx-rack"
 import { createPianoRollModule } from "./piano-roll"
-import { createDrumPadsModule } from "./drum-pads"
 import { createPhraseSamplerModule } from "./phrase-sampler"
 import { createTweakersModule } from "./tweakers"
 import { createSongSetupModule } from "./song-setup"
@@ -25,7 +24,6 @@ import { createComposerModule } from "./composer"
 import { createAnalogSynthModule } from "./synth-analog"
 import { createPhraseJamModule } from "./phrase-jam"
 import { createPhraseScratchModule } from "./phrase-scratch"
-import { createGroovesModule } from "./grooves"
 
 export interface ModuleDeps {
   store: BeatloungeStore
@@ -36,8 +34,6 @@ export interface ModuleDeps {
 export const registerAllModules = (registry: ModuleRegistry, deps: ModuleDeps): void => {
   registry.register(createSongSetupModule(deps))
   registry.register(createStepGridModule(deps))
-  registry.register(createDrumPadsModule(deps))
-  registry.register(createGroovesModule(deps))
   registry.register(createInstrumentsModule(deps))
   registry.register(createAnalogSynthModule(deps))
   registry.register(createPianoRollModule(deps))

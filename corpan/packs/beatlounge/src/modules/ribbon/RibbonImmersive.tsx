@@ -288,8 +288,8 @@ export const RibbonImmersive = ({ host, store, audio, trackId }: Props) => {
     <div className="bl-ribbon">
       <div className="bl-grid-toolbar" data-bl-nocapture>
         <div className="bl-grid-title">
+          {/* Title + transport live once, globally, in the immersive header. */}
           <span className="bl-dot" style={{ background: track?.color }} />
-          Ribbon
         </div>
         <div className="bl-grid-actions">
           <button

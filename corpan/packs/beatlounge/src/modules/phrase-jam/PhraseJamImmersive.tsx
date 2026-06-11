@@ -126,7 +126,6 @@ export const PhraseJamImmersive = ({
         <div className="bl-grid-toolbar" data-bl-nocapture>
           <div className="bl-grid-title">
             <span className="bl-dot" style={{ background: ftrack.color }} />
-            Phrase Jam
           </div>
         </div>
         <div className="bl-jam-empty">

@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **Fewer, more intentional Stage tiles + a single header convention.** Module
+  bodies no longer repeat their own title or carry a play/stop button — the
+  shell's immersive header owns the title and the one global transport. Grooves
+  and Pads are no longer standalone tiles: Grooves stays embedded in the Drums
+  and Phrase-Jam drawers, and the velocity Pads surface now folds into the Drums
+  module as a "Pads" tab. The Song tile is renamed **Rhythmic Cycle** (this
+  loop's length / meter / tempo). The Grooves density panel reflows cleanly from
+  ~320px to iPad.
+
 ### Fixed
 - **Reliable load/unload — no more black screen on reload.** The pack and every
   module now tear down their React root via a shared deferred, once-only

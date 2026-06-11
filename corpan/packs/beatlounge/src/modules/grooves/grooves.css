@@ -56,8 +56,11 @@
   flex-direction: column;
   height: 100%;
   min-height: 0;
+  min-width: 0;
   flex: 1 1 auto;
+  box-sizing: border-box;
 }
+.bl-grooves-panel * { box-sizing: border-box; }
 /* Embedded in the Drums page: the panel's container (a fixed-height tab body)
  * owns scroll; the body becomes a single scrolling column on phone and a
  * picker+detail split on wide. No big title (the panel chrome owns it). */
@@ -125,6 +128,7 @@
   -webkit-overflow-scrolling: touch;
   padding: var(--bl-s3) var(--bl-s4) calc(var(--bl-s5) + var(--bl-safe-bottom, 0));
   min-height: 0;
+  min-width: 0;
 }
 .bl-grooves-family { margin-bottom: var(--bl-s4); }
 .bl-grooves-family-label {
@@ -205,6 +209,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
+  min-width: 0;
   border-top: 1px solid var(--bl-border);
   background: var(--bl-surface);
   padding: var(--bl-s4);
@@ -422,7 +427,7 @@
  * top of the detail pane (no scroll), generous ≥44px round hit targets. */
 .bl-grooves-dial {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: var(--bl-s2);
   position: sticky;
@@ -430,6 +435,12 @@
   z-index: 2;
   background: var(--bl-surface);
   padding-bottom: var(--bl-s2);
+  /* Don't stretch the dial across a wide pane — keep the +/− a tidy cluster,
+   * centred, so it reads as one control instead of two far-flung buttons. */
+  width: 100%;
+  max-width: 320px;
+  margin-inline: auto;
+  box-sizing: border-box;
 }
 .bl-grooves-dial-label {
   font-size: var(--bl-fs-label);

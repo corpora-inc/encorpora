@@ -36,7 +36,7 @@ export const SONG_SETUP_ID = "song-setup"
 export const createSongSetupModule = ({ store }: SongSetupDeps): BeatloungeModule => ({
   id: SONG_SETUP_ID,
   kind: "utility",
-  title: "Song",
+  title: "Rhythmic Cycle",
   glyph: "metronome",
   immersive: "full",
   tileAspect: "square",
