@@ -129,8 +129,6 @@ export interface GrooveBuildOpts {
   phraseDensity?: number
   /** A seeded RNG (used for scatter/phrases when `seed` is not supplied). */
   rng?: () => number
-  /** Pitch ladder for phrase placement (semitones). Default a minor pentatonic. */
-  phraseScale?: number[]
 }
 
 /** mulberry32 — the pack-standard deterministic stream from an integer seed. */
@@ -149,8 +147,6 @@ const makeRng = (seed: number): (() => number) => {
  *  the passed rng → a default. So each UI press is different but reproducible. */
 const resolveRng = (opts: GrooveBuildOpts): (() => number) =>
   opts.seed != null ? makeRng(opts.seed) : opts.rng ?? makeRng(1)
-
-const DEFAULT_PHRASE_SCALE = [0, 3, 5, 7, 10, 12]
 
 export interface GrooveBuildResult {
   commands: Command[]
@@ -362,7 +358,6 @@ const buildPhraseGroove = (
   const phrasePlacements = scatterPhrases(rhythm, bank.length, rng, {
     loopTicks,
     density: opts.phraseDensity ?? 0.6,
-    scale: opts.phraseScale ?? DEFAULT_PHRASE_SCALE,
   })
   let placed = 0
   for (const pp of phrasePlacements) {
@@ -373,7 +368,7 @@ const buildPhraseGroove = (
       tick: pp.tick,
       fragmentId: ref.id,
       gain: 0.9,
-      pitchSemis: pp.pitchSemis,
+      pitchSemis: 0, // phrases placed at NATURAL pitch — never shifted
     }
     commands.push({ t: "placeFragment", trackId: phraseId, frag })
     placed++

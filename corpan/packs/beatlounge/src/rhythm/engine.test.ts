@@ -246,15 +246,11 @@ describe("applyRhythmToPhrases", () => {
     expect(sparse.length).toBeGreaterThan(0)
   })
 
-  it("uses a passed scale ladder for pitch (in key, decoupled from harmony)", () => {
-    const r = son()
-    const scale = [0, 3, 5, 7, 10]
-    const placed = applyRhythmToPhrases(r, 1, rngFrom(2), {
-      loopTicks: PPQ * 4,
-      density: 1,
-      scale,
-    })
-    for (const ev of placed) expect(scale).toContain(ev.pitchSemis)
+  it("places phrases at their NATURAL pitch — no semitone shift ever", () => {
+    const placed = applyRhythmToPhrases(son(), 1, rngFrom(2), { loopTicks: PPQ * 4, density: 1 })
+    expect(placed.length).toBeGreaterThan(0)
+    // PhrasePlacement carries no pitch field; placements only have tick/snippet/velocity.
+    for (const ev of placed) expect(ev).not.toHaveProperty("pitchSemis")
   })
 
   it("returns nothing with no snippets", () => {

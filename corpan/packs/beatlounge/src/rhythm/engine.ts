@@ -277,17 +277,15 @@ export interface ScatterPhrasesOptions {
   loopTicks?: number
   /** Overall density multiplier (0..1) on each step's probability. Default 0.6. */
   density?: number
-  /** Pitch ladder (semitone offsets); snippets pick a random degree. Default [0]. */
-  scale?: number[]
 }
 
 /**
  * The PHRASES analogue of scatterRhythm: walk every step of the groove and
  * probabilistically drop a random bank snippet there, with the placement chance
  * driven by the groove's scatter PROFILE (snippets cluster on the groove's onset
- * steps, sparse on its rests) and a random pitch from the scale. One pass over
- * the loop (phrases are one "row"), fresh-seeded each press. Returns placements
- * the caller maps to `placeFragment`.
+ * steps, sparse on its rests). Snippets are placed at their NATURAL pitch — no
+ * semitone shift ever (the only phrase pitch control is the live ribbon). One
+ * pass over the loop, fresh-seeded each press; caller maps to `placeFragment`.
  */
 export const scatterPhrases = (
   r: Rhythm,
@@ -302,7 +300,6 @@ export const scatterPhrases = (
   const cells = rhythmCells(r)
   const loop = Math.max(oneCycle, Math.round(opts.loopTicks ?? oneCycle))
   const density = clamp01(opts.density ?? 0.6)
-  const scale = opts.scale && opts.scale.length > 0 ? opts.scale : [0]
   const profile = grooveProfile(r)
 
   const fullCopies = Math.floor(loop / oneCycle)
@@ -318,13 +315,8 @@ export const scatterPhrases = (
       const step = profile[c]
       if (rng() >= step.prob * density) continue
       const snippetIndex = snippetCount === 1 ? 0 : randInt(rng, 0, snippetCount - 1)
-      const pitchSemis = pickOne(rng, scale)
-      out.push({
-        tick,
-        snippetIndex,
-        pitchSemis: Math.max(-24, Math.min(24, pitchSemis)),
-        velocity: clamp01(step.velMax),
-      })
+      // Natural pitch — never shifted.
+      out.push({ tick, snippetIndex, velocity: clamp01(step.velMax) })
     }
   }
   out.sort((a, b) => a.tick - b.tick)
@@ -332,13 +324,13 @@ export const scatterPhrases = (
 }
 
 // ========================================================= applyRhythmToPhrases
-/** A phrase placement on a groove onset (caller maps to `placeFragment`). */
+/** A phrase placement on a groove onset (caller maps to `placeFragment`).
+ *  Phrases are spoken words — they are placed at their NATURAL pitch, NEVER
+ *  semitone-shifted. The only pitch control for phrases is the live ribbon. */
 export interface PhrasePlacement {
   tick: number
   /** Index into the passed `snippets` array. */
   snippetIndex: number
-  /** -24..+24 semitones. Random or from the passed scale; 0 if none. */
-  pitchSemis: number
   velocity: number
 }
 
@@ -352,17 +344,12 @@ export interface ApplyToPhrasesOptions {
    * the clave/surdo/key pattern. "all" uses every lane's onsets.
    */
   onsetSource?: "signature" | "all"
-  /** Pitch ladder (semitone offsets) to climb as phrases are placed; phrases
-   *  step through it. Pass a scale here to keep them in key. Default [0]. */
-  scale?: number[]
-  /** True ⇒ pick scale degrees randomly instead of climbing the ladder. */
-  randomPitch?: boolean
 }
 
 /**
  * Distribute phrase snippets onto a groove's onsets so phrases fall on the
- * rhythm. Returns placements the caller maps to `placeFragment` events. Pure +
- * decoupled from harmony (pitch is optional / passed in).
+ * rhythm. Returns placements the caller maps to `placeFragment` events — at the
+ * snippet's NATURAL pitch (no semitone shift, ever). Pure.
  */
 export const applyRhythmToPhrases = (
   r: Rhythm,
@@ -376,7 +363,6 @@ export const applyRhythmToPhrases = (
   if (oneCycle <= 0) return []
   const loop = Math.max(oneCycle, Math.round(opts.loopTicks ?? oneCycle))
   const density = clamp01(opts.density ?? 0.5)
-  const scale = opts.scale && opts.scale.length > 0 ? opts.scale : [0]
 
   // Collect distinct onset cells from the chosen lanes.
   const useSignature = (opts.onsetSource ?? "signature") === "signature"
@@ -418,18 +404,10 @@ export const applyRhythmToPhrases = (
   const uniqueTicks = chosen.filter((t) => (seen.has(t) ? false : (seen.add(t), true)))
 
   const out: PhrasePlacement[] = []
-  let ladder = 0
   for (let i = 0; i < uniqueTicks.length; i++) {
     const snippetIndex = snippetCount === 1 ? 0 : randInt(rng, 0, snippetCount - 1)
-    const pitchSemis = opts.randomPitch
-      ? pickOne(rng, scale)
-      : scale[ladder++ % scale.length]
-    out.push({
-      tick: uniqueTicks[i],
-      snippetIndex,
-      pitchSemis: Math.max(-24, Math.min(24, pitchSemis)),
-      velocity: 0.9,
-    })
+    // Natural pitch — phrases are NEVER semitone-shifted on placement.
+    out.push({ tick: uniqueTicks[i], snippetIndex, velocity: 0.9 })
   }
   out.sort((a, b) => a.tick - b.tick)
   return out
