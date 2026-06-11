@@ -81,8 +81,8 @@ export const SynthAnalogImmersive = ({ host, store, trackId: initialTrackId }: P
   // No melodic track yet: "Make analog" must CREATE a fresh synth track and
   // target THAT — it must NEVER repurpose the drum track.
   const createAndMakeAnalog = (preset = "init") => {
-    const melodicCount = doc.tracks.filter(isMelodicTrack).length
-    const init = newInstrumentTrackInit(melodicCount)
+    // Existing names → a unique "Synth N" for the new analog track.
+    const init = newInstrumentTrackInit(doc.tracks.map((t) => t.name))
     store.dispatch({ t: "addTrack", track: init })
     if (init.id) {
       setTrackId(init.id)

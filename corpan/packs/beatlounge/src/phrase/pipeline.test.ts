@@ -180,6 +180,12 @@ describe("clipToCommands — valid command sequence", () => {
     }
     expect((track as { instrument: { kind: string } }).instrument.kind).toBe("ttsFragment")
 
+    // The track is named by KIND, NEVER by the phrase it carries — a placed
+    // phrase used to become the track name ("I will always…"). It is "Phrases"
+    // regardless of the clip's text/gloss.
+    expect((track as { name: string }).name).toBe("Phrases")
+    expect((track as { name: string }).name).not.toContain(clip.phraseText)
+
     // placeFragment ticks line up with the grid steps + fragmentId is registered
     const refId = (reg[0] as Extract<typeof reg[number], { t: "registerFragment" }>).ref.id
     place.forEach((p, i) => {

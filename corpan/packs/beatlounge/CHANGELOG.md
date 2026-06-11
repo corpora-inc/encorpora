@@ -6,6 +6,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Explicit track naming + rename + N-synth navigation.** Every track is now
+  named by its KIND, never by its content: synths are "Synth 1", "Synth 2", …
+  (uniquely numbered so a name never collides with a surviving strip after a
+  delete), drums stay "Drums", and the phrase/fragment track is "Phrases" — a
+  placed phrase no longer becomes the track name ("I will always…"). Track names
+  are now editable everywhere they appear: tap the name in the mixer (or the
+  Synth editor) to rename it (`setTrackProp prop:"name"`, one undo step). The
+  **Synth (piano-roll) editor gained a track switcher** — chips of the N melodic
+  synth tracks with the active one marked, plus an "Add" affordance — matching
+  the Instruments and Analog pages, so you can finally get to and edit every
+  synth track. The synth editors agree on which tracks they target (melodic =
+  non-drum).
 - **Global Harmony engine + the top-level Harmony bar.** Harmony (tonic, scale/
   mode or chord progression, tuning, reference pitch) now lives once on
   `doc.harmony` and every melodic module reads it through one pure resolver
@@ -50,6 +62,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   a fresh synth track and makes THAT analog, leaving Drums/Pads untouched.
 
 ### Changed
+- **Synth editor: dropped the "Arpeggiate" / "Octave Up" boilerplate buttons.**
+  They laid down a stock rising scale on tap; the piano-roll edits notes, so the
+  header is now just the track switcher + rename + Clear. (The arpeggiate /
+  transpose actions stay registered for the assistant's command bus.)
 - **Phrase Jam now mirrors the Drums page.** The page was rebuilt on the SAME
   shared track-studio building blocks as Drums so the two can't drift: a selectable
   lane grid (`<LaneGrid>` — one row per saved snippet, lane heads select to target

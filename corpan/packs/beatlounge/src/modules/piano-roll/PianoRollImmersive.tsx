@@ -24,11 +24,14 @@ import {
   isInstrumentTrack,
   type Id,
   type InstrumentTrack,
+  type Track,
 } from "../../model/document"
 import { stepForTick, tickForStep } from "../../model/timing"
 import { activePitches } from "../../music/resolver"
-import { Knob } from "../../bl-ui"
+import { Glyph, Knob } from "../../bl-ui"
 import { TrackParamKnob } from "../TrackParamKnob"
+import { TrackNameEdit } from "../TrackNameEdit"
+import { newInstrumentTrackInit } from "../instruments/addTrack"
 import {
   autoWindow,
   buildRollView,
@@ -36,20 +39,45 @@ import {
   pitchLabel,
   type RollCell,
 } from "./pitchModel"
-import { arpeggiateAction, clearAction, transposeAction } from "./actions"
+import { clearAction } from "./actions"
 import { runAction } from "../runAction"
 
 interface Props {
   host: BeatloungeHost
   store: BeatloungeStore
   audio: AudioFacade
+  /** The melodic track to open initially; the in-view switcher can change it. */
   trackId: Id
 }
 
 const LONG_PRESS_MS = 360
 
-export const PianoRollImmersive = ({ host, store, audio, trackId }: Props) => {
+/** A melodic (non-drum) instrument track — the only tracks the roll edits. */
+const isMelodicTrack = (t: Track): boolean =>
+  isInstrumentTrack(t) && t.instrument.kind !== "drumSampler"
+
+export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
+  // The roll targets ONE melodic track at a time; the switcher (chips) below
+  // moves between the N synth tracks — the founder couldn't "get to" them before.
+  const [trackId, setTrackId] = useState<Id>(initialTrackId)
+  const melodicTracks = useMemo(() => doc.tracks.filter(isMelodicTrack), [doc.tracks])
+
+  // Keep the bound track valid (e.g. after a delete) — fall back to the first
+  // melodic track so the switcher highlight + editor stay coherent.
+  useEffect(() => {
+    if (!melodicTracks.some((t) => t.id === trackId) && melodicTracks[0]) {
+      setTrackId(melodicTracks[0].id)
+    }
+  }, [melodicTracks, trackId])
+
+  const addMelodicTrack = () => {
+    // Existing names → a unique "Synth N"; bind the roll to the new track.
+    const init = newInstrumentTrackInit(doc.tracks.map((t) => t.name))
+    store.dispatch({ t: "addTrack", track: init })
+    if (init.id) setTrackId(init.id)
+  }
+
   const track = findTrack(doc, trackId)
   const [playStep, setPlayStep] = useState(-1)
   // The bottom pitch of the visible window; framed on the melody initially.
@@ -61,12 +89,13 @@ export const PianoRollImmersive = ({ host, store, audio, trackId }: Props) => {
   const touched = useRef(new Set<string>())
   const longTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // Frame the window on the existing melody the first time we see the track.
+  // Frame the window on the bound track's melody — initially and whenever the
+  // switcher moves to a different track (so each synth opens in view).
   useEffect(() => {
-    if (low != null) return
     const t = findTrack(store.vanilla.getState().doc, trackId)
     if (t && isInstrumentTrack(t)) setLow(autoWindow(t))
-  }, [low, store, trackId])
+    setSelectedNoteId(null)
+  }, [store, trackId])
 
   // Live playhead → current step on this track's grid.
   useEffect(() => {
@@ -198,38 +227,20 @@ export const PianoRollImmersive = ({ host, store, audio, trackId }: Props) => {
   return (
     <div className="bl-roll" onPointerUp={endStroke} onPointerLeave={endStroke}>
       <div className="bl-grid-toolbar" data-bl-nocapture>
-        <div className="bl-grid-title">
-          <span className="bl-dot" style={{ background: track.color }} />
-          {track.name}
-        </div>
+        <TrackSwitcher
+          tracks={melodicTracks}
+          activeId={trackId}
+          onPick={setTrackId}
+          onAdd={addMelodicTrack}
+        />
         <div className="bl-grid-actions">
-          <button
-            type="button"
-            className="bl-chip"
-            onClick={() => {
-              const r = runAction(store, arpeggiateAction, { doc, targetTrackId: trackId })
-              host.toast(r.summary, undefined)
-            }}
-          >
-            Arpeggiate
-          </button>
-          <button
-            type="button"
-            className="bl-chip"
-            onClick={() => {
-              const before = store.vanilla.getState().doc
-              const r = runAction(store, transposeAction, {
-                doc,
-                targetTrackId: trackId,
-              })
-              if (r.commands.length)
-                host.toast(r.summary, {
-                  undo: () => store.vanilla.getState().doc !== before && store.undo(),
-                })
-            }}
-          >
-            Octave Up
-          </button>
+          <TrackNameEdit
+            store={store}
+            trackId={track.id}
+            name={track.name}
+            color={track.color}
+            className="bl-grid-title"
+          />
           <button
             type="button"
             className="bl-chip is-danger"
@@ -351,6 +362,48 @@ export const PianoRollImmersive = ({ host, store, audio, trackId }: Props) => {
     </div>
   )
 }
+
+// ----------------------------------------------------------- track switcher
+/**
+ * Chips of the N melodic (synth) tracks + an Add affordance. The active track is
+ * marked; tapping a chip switches the roll to it. This is the missing "how do I
+ * get to my other synth tracks" — the same shape as the instruments/analog bars.
+ */
+const TrackSwitcher = ({
+  tracks,
+  activeId,
+  onPick,
+  onAdd,
+}: {
+  tracks: Track[]
+  activeId: Id
+  onPick: (id: Id) => void
+  onAdd: () => void
+}) => (
+  <div className="bl-roll-tracks" data-bl-nocapture>
+    {tracks.map((t) => (
+      <button
+        key={t.id}
+        type="button"
+        className={`bl-chip${t.id === activeId ? " is-on" : ""}`}
+        onClick={() => onPick(t.id)}
+      >
+        <span className="bl-dot" style={{ background: t.color ?? "var(--bl-accent)" }} />
+        {t.name}
+      </button>
+    ))}
+    <button
+      type="button"
+      className="bl-roll-add"
+      onClick={onAdd}
+      aria-label="Add synth track"
+      title="Add synth track"
+    >
+      <Glyph name="wave" size={14} />
+      <span>Add</span>
+    </button>
+  </div>
+)
 
 /** Read whether the (pitch, step) cell is lit — used by tests/inspection. */
 export const rollCellOn = (track: InstrumentTrack, pitch: number, step: number): boolean => {

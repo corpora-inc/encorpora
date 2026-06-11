@@ -22,6 +22,7 @@ import type { ModuleDeps } from "../allModules"
 import type { TrackInit } from "../../model/command"
 import { isFragmentTrack } from "../../model/document"
 import { newId } from "../../model/ids"
+import { TRACK_BASE } from "../trackNaming"
 import type { BeatloungeStore } from "../../store/store"
 import { createAudioSource, type AudioSource } from "../../phrase/audioSource"
 import { phraseJamActions } from "./actions"
@@ -31,11 +32,13 @@ import "./phrase-jam.css"
 
 export const PHRASE_JAM_ID = "phrase-jam"
 
-/** A fresh, empty FragmentTrack to sequence saved snippets on (16-step bar). */
+/** A fresh, empty FragmentTrack to sequence saved snippets on (16-step bar).
+ *  Named by KIND ("Phrases") so the mixer strip reads as what it is — never
+ *  derived from whatever phrase happens to land on it. */
 const newPhraseTrack = (): TrackInit => ({
   id: newId("trk"),
   kind: "fragment",
-  name: "Phrase Jam",
+  name: TRACK_BASE.phrases,
   color: "#7cf2c0",
   grid: { denominator: 16 },
   volume: 0.8,

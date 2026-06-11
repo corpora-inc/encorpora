@@ -56,4 +56,19 @@ describe("newInstrumentTrackInit", () => {
     const b = newInstrumentTrackInit(0)
     expect(a.id).not.toBe(b.id)
   })
+
+  it("names by KIND from existing names — a unique, non-colliding 'Synth N'", () => {
+    // Passing the song's NAMES (not a count) yields a unique synth name even
+    // after a delete left a gap (the founder couldn't tell strips apart).
+    expect(newInstrumentTrackInit(["Drums", "Synth 1", "Synth 2"]).name).toBe("Synth 3")
+    // Synth 1 deleted → reuse the freed index, never the surviving "Synth 2".
+    expect(newInstrumentTrackInit(["Drums", "Synth 2"]).name).toBe("Synth 1")
+    // First synth in a drums-only song.
+    expect(newInstrumentTrackInit(["Drums"]).name).toBe("Synth 1")
+  })
+
+  it("never derives the name from track content — always 'Synth N'", () => {
+    const init = newInstrumentTrackInit(["I will always…", "Phrases"])
+    expect(init.name).toBe("Synth 1")
+  })
 })

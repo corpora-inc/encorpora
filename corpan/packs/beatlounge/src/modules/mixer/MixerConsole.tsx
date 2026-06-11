@@ -17,6 +17,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import { type Track } from "../../model/document"
 import { Fader, Meter, MuteSolo } from "../../bl-ui"
+import { TrackNameEdit } from "../TrackNameEdit"
 import { useMeterPulse } from "./useMeterPulse"
 
 interface Props {
@@ -87,10 +88,13 @@ const ChannelStrip = ({
   return (
     <div className="bl-mixstrip" data-bl-nocapture>
       <div className="bl-mixstrip-head">
-        <span className="bl-mixstrip-name" title={track.name}>
-          <span className="bl-dot" style={{ background: track.color ?? "var(--bl-accent)" }} />
-          {track.name}
-        </span>
+        <TrackNameEdit
+          store={store}
+          trackId={track.id}
+          name={track.name}
+          color={track.color ?? "var(--bl-accent)"}
+          className="bl-mixstrip-name"
+        />
         <button
           type="button"
           className="bl-mixstrip-remove"
