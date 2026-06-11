@@ -98,7 +98,6 @@ export const ComposerImmersive = ({ host, store, trackId }: Props) => {
   return (
     <div className="bl-hb">
       <div className="bl-hb-head" data-bl-nocapture>
-        <span className="bl-hb-title">Harmony</span>
         <span className="bl-hb-sub">{track.name}</span>
       </div>
 

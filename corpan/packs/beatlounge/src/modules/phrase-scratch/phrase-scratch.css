@@ -20,20 +20,8 @@
 .bl-scr-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--bl-s3);
   flex: 0 0 auto;
-}
-.bl-scr-title {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--bl-s2);
-  font-size: var(--bl-fs-title);
-  font-weight: 600;
-  color: var(--bl-text);
-}
-.bl-scr-title svg {
-  color: var(--bl-accent);
 }
 .bl-scr-bar-actions {
   display: flex;

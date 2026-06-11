@@ -33,6 +33,8 @@ import { stepForTick, tickForStep } from "../../model/timing"
 import { MuteSolo } from "../../bl-ui"
 import { TrackParamKnob } from "../TrackParamKnob"
 import { GroovesPanel } from "../grooves/GroovesPanel"
+import { DrumPadBank } from "../drum-pads/DrumPadBank"
+import "../drum-pads/styles.css"
 import { TrackFxChain } from "../fx-rack/TrackFxChain"
 import { KitPicker } from "../../kits/KitPicker"
 import { LaneGrid, type LaneGridLane } from "../track-studio/LaneGrid"
@@ -168,6 +170,15 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
             laneLabels: targets.labels,
           }}
         />
+      ),
+    },
+    {
+      id: "pads",
+      label: "Pads",
+      render: () => (
+        <div className="bl-trackdrawer-pad">
+          <DrumPadBank host={host} store={store} audio={audio} trackId={trackId} />
+        </div>
       ),
     },
     {

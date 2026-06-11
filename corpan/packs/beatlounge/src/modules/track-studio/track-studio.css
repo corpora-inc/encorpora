@@ -259,6 +259,13 @@
 .bl-trackdrawer-body .bl-grooves-panel { flex: 1 1 auto; min-height: 0; }
 .bl-trackdrawer-body .bl-fxchain { padding: var(--bl-s4); }
 .bl-trackdrawer-pad { padding: var(--bl-s4); }
+/* the Pads tab hosts the reusable pad bank — let it fill the drawer body. */
+.bl-trackdrawer-body .bl-trackdrawer-pad:has(.bl-padbank) {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+}
+.bl-trackdrawer-body .bl-padbank { flex: 1 1 auto; min-height: 0; }
 
 /* ---- the shared mixer strip ---- */
 .bl-trackmixer {

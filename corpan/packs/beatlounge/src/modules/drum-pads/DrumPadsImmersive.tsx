@@ -12,16 +12,13 @@
  * step-record arm. A velocity Knob + the track Volume/Pan sit in the foot.
  */
 
-import { useEffect, useMemo, useRef, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
 import { useBeatloungeStore } from "../../store/store"
 import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
-import { stepForTick } from "../../model/timing"
-import { useDrag } from "../../bl-ui/useDrag"
 import { TrackParamKnob } from "../TrackParamKnob"
-import { buildPadView, recordStep, visiblePadCount } from "./padModel"
+import { DrumPadBank } from "./DrumPadBank"
 import { randomPatternAction } from "./actions"
 import { runAction } from "../runAction"
 
@@ -32,64 +29,13 @@ interface Props {
   trackId: Id
 }
 
-const clamp01 = (v: number) => Math.max(0.05, Math.min(1, v))
-
 export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
-  const [playStep, setPlayStep] = useState(-1)
-  const [record, setRecord] = useState(false)
-  // Per-pad velocity the next hit/record uses, by pitch (0.05..1).
-  const [velocities, setVelocities] = useState<Record<number, number>>({})
 
-  const form = host.form()
-
-  useEffect(() => {
-    return audio.onPlayhead((tick) => {
-      const t = findTrack(store.vanilla.getState().doc, trackId)
-      setPlayStep(tick < 0 || !t ? -1 : stepForTick(tick, t.grid))
-    })
-  }, [audio, store, trackId])
-
-  const view = useMemo(
-    () =>
-      track && isInstrumentTrack(track)
-        ? buildPadView(doc, track, playStep)
-        : null,
-    [doc, track, playStep]
-  )
-
-  if (!track || !isInstrumentTrack(track) || view == null) {
+  if (!track || !isInstrumentTrack(track)) {
     return <div className="bl-grid-empty">No drum track.</div>
   }
-
-  const count = visiblePadCount(form)
-  const pads = view.pads.slice(0, count)
-  const cols = 4
-  const velOf = (pitch: number) => velocities[pitch] ?? 0.85
-
-  const hitPad = (pitch: number) => {
-    const velocity = velOf(pitch)
-    // Auditioning a pad is live performance — but when STEP-RECORD is armed
-    // we're setting up the grid, not playing, so stay silent and just write.
-    if (!record) host.previewTrack(trackId, velocity, pitch)
-    if (record) {
-      const step = recordStep(playStep, view.steps)
-      const cur = findTrack(store.vanilla.getState().doc, trackId)
-      if (cur && isInstrumentTrack(cur)) {
-        // Only ADD (never toggle off) while recording a live performance.
-        const exists = cur.notes.some(
-          (n) => stepForTick(n.tick, cur.grid) === step && n.pitch === pitch
-        )
-        if (!exists) {
-          store.dispatch({ t: "toggleStep", trackId, step, pitch, velocity })
-        }
-      }
-    }
-  }
-
-  const anySolo = doc.tracks.some((t) => t.solo)
-  const silent = track.mute || (anySolo && !track.solo)
 
   return (
     <div className="bl-pads">
@@ -99,14 +45,6 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
           {track.name}
         </div>
         <div className="bl-grid-actions">
-          <button
-            type="button"
-            className={`bl-chip${record ? " is-armed" : ""}`}
-            aria-pressed={record}
-            onClick={() => setRecord((r) => !r)}
-          >
-            {record ? "Recording" : "Record"}
-          </button>
           <button
             type="button"
             className="bl-chip"
@@ -134,73 +72,12 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
         </div>
       </div>
 
-      <div
-        className={`bl-pad-bank${silent ? " is-silent" : ""}`}
-        style={{ ["--bl-pad-cols" as string]: String(cols) }}
-      >
-        {pads.map((pad) => (
-          <Pad
-            key={pad.pitch}
-            label={pad.label}
-            count={pad.count}
-            live={pad.liveHit && playStep >= 0}
-            velocity={velOf(pad.pitch)}
-            onHit={() => hitPad(pad.pitch)}
-            onVelocity={(v) =>
-              setVelocities((prev) => ({ ...prev, [pad.pitch]: clamp01(v) }))
-            }
-          />
-        ))}
-      </div>
+      <DrumPadBank host={host} store={store} audio={audio} trackId={trackId} />
 
       <div className="bl-grid-foot" data-bl-nocapture>
         <TrackParamKnob host={host} store={store} trackId={trackId} param="volume" value={track.volume} />
         <TrackParamKnob host={host} store={store} trackId={trackId} param="pan" value={track.pan} />
       </div>
     </div>
-  )
-}
-
-interface PadProps {
-  label: string
-  count: number
-  live: boolean
-  velocity: number
-  onHit: () => void
-  onVelocity: (v: number) => void
-}
-
-/**
- * One velocity pad. A clean tap triggers; a vertical drag (up = harder) sets the
- * pad's velocity without triggering. The fill height reflects velocity.
- */
-const Pad = ({ label, count, live, velocity, onHit, onVelocity }: PadProps) => {
-  const startVel = useRef(velocity)
-  const drag = useDrag({
-    onStart: () => {
-      startVel.current = velocity
-    },
-    onMove: ({ dy }) => {
-      // 120px of travel sweeps the full velocity range; up = harder.
-      onVelocity(startVel.current - dy / 120)
-    },
-    onEnd: (moved) => {
-      // A clean tap (no drag) triggers the pad.
-      if (!moved) onHit()
-    },
-  })
-
-  return (
-    <button
-      type="button"
-      className={`bl-pad${live ? " is-live" : ""}${count > 0 ? " has-hits" : ""}`}
-      aria-label={`${label}, velocity ${Math.round(velocity * 100)}`}
-      data-bl-nocapture
-      onPointerDown={drag.onPointerDown}
-    >
-      <span className="bl-pad-fill" style={{ height: `${velocity * 100}%` }} />
-      <span className="bl-pad-label">{label}</span>
-      {count > 0 && <span className="bl-pad-count">{count}</span>}
-    </button>
   )
 }
