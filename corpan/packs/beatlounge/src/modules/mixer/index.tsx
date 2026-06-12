@@ -40,7 +40,7 @@ export const createMixerModule = ({ store, audio }: MixerDeps): BeatloungeModule
   title: "Mixer",
   glyph: "sliders",
   immersive: "full",
-  tileAspect: "wide",
+  tileAspect: "full",
   actions: mixerActions,
   mount(mount: ModuleMount): ModuleInstance {
     const root: Root = createRoot(mount.container)

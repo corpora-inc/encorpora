@@ -132,7 +132,7 @@ export interface BeatloungeModule {
   /** Inline-SVG glyph id (no emoji). */
   glyph: string
   immersive: ImmersiveMode
-  tileAspect?: "square" | "wide" | "tall"
+  tileAspect?: "square" | "wide" | "tall" | "full"
   /**
    * When true the Stage tile is a LIVE, interactive widget (a mini control
    * surface) rather than a tap-to-open summary. The shell renders it in a plain

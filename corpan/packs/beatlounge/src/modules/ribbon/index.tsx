@@ -50,7 +50,7 @@ export const createRibbonModule = ({ store, audio }: ModuleDeps): BeatloungeModu
   glyph: "wave",
   immersive: "full",
   // A comfortable play strip on the Stage — a live widget, not a summary.
-  tileAspect: "wide",
+  tileAspect: "square",
   tileInteractive: true,
   // The voice is managed on the Instruments page; the expand opens it there.
   tileExpandTo: INSTRUMENTS_ID,

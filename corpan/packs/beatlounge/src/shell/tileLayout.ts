@@ -13,7 +13,7 @@
  *   tall   → 1 col × 2 rows
  */
 
-export type TileAspect = "square" | "wide" | "tall"
+export type TileAspect = "square" | "wide" | "tall" | "full"
 
 export interface TileSpan {
   /** Column span at the given column count. */
@@ -22,12 +22,16 @@ export interface TileSpan {
   rows: number
 }
 
-/** Width breakpoints (px) → bento column count. Mirrors the media queries. */
+/** Width breakpoints (px) → bento column count. Mirrors the media queries.
+ *  Capped at 3 columns so the home IA groups ([cycle+drums]·[harmony+
+ *  instruments+ribbon]·[phrases+jam+scratch]·[mixer]) tile as clean rows on
+ *  every iPad (2-col portrait-11" / 3-col 12.9"-portrait + landscape); a wider
+ *  screen just gets roomier 3-col tiles instead of a 4th column that splits the
+ *  groups. */
 export const STAGE_BREAKPOINTS: ReadonlyArray<{ minWidth: number; columns: number }> = [
   { minWidth: 0, columns: 1 },
   { minWidth: 520, columns: 2 },
   { minWidth: 900, columns: 3 },
-  { minWidth: 1240, columns: 4 },
 ]
 
 /** Resolve the bento column count for a viewport width. */
@@ -49,8 +53,13 @@ export const spanForAspect = (
 ): TileSpan => {
   if (columns <= 1) return { cols: 1, rows: 1 }
   switch (aspect) {
+    case "full":
+      // Spans every column (a full-width row) — e.g. the Mixer.
+      return { cols: columns, rows: 1 }
     case "wide":
-      return { cols: Math.min(2, columns), rows: 1 }
+      // Two columns, but ONLY from 3 columns up; at 2 columns it stays one so the
+      // [cycle+drums] / [harmony+instruments+ribbon] rows tile cleanly.
+      return { cols: columns >= 3 ? 2 : 1, rows: 1 }
     case "tall":
       return { cols: 1, rows: 2 }
     case "square":

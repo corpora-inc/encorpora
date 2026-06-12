@@ -273,9 +273,12 @@
   gap: var(--bl-s4);
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(116px, auto);
-  grid-auto-flow: row dense;
+  /* ORDERED flow (not dense) so the IA groups read top-to-bottom in order and a
+     tile never jumps a row to backfill a gap. The aspects are chosen to tile the
+     groups cleanly, so there are no gaps to fill. */
+  grid-auto-flow: row;
   align-content: start;
-  max-width: 1280px;
+  max-width: 1180px;
 }
 @media (min-width: 520px) {
   .bl-stage-grid {
@@ -287,11 +290,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--bl-s5);
     grid-auto-rows: minmax(132px, auto);
-  }
-}
-@media (min-width: 1240px) {
-  .bl-stage-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -342,11 +340,20 @@
   grid-row: span 1;
 }
 @media (min-width: 520px) {
-  .bl-tile--wide {
-    grid-column: span 2;
-  }
+  /* 2-column band: wide tiles stay ONE column (so [cycle+drums] is a clean pair);
+     full spans the row; tall spans two rows. */
   .bl-tile--tall {
     grid-row: span 2;
+  }
+  .bl-tile--full {
+    grid-column: 1 / -1;
+  }
+}
+@media (min-width: 900px) {
+  /* 3-column band: wide spans two columns so [cycle + drums(wide)] fills the row,
+     and the 3-tile groups each fill their own row. */
+  .bl-tile--wide {
+    grid-column: span 2;
   }
 }
 /* The mounted content fills the bento cell (tall tiles get the extra height;
