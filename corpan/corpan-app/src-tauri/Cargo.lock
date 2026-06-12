@@ -754,6 +754,7 @@ name = "corpan"
 version = "0.17.3"
 dependencies = [
  "futures-util",
+ "libc",
  "reqwest 0.12.28",
  "rusqlite",
  "serde",

@@ -7,6 +7,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Native-fault crash breadcrumb (Android).** The existing breadcrumb only
+  caught Rust panics; a SIGSEGV/SIGABRT/SIGBUS/SIGILL/SIGFPE in a statically
+  linked native lib (llama/ggml/whisper) bypassed it and left an unsymbolicated,
+  single-frame, wild-PC tombstone in the Play Console we couldn't attribute. An
+  async-signal-safe handler now records the signal, the faulting thread name, and
+  the fault address to `native-crash-last.json` before chaining to debuggerd (so
+  the real tombstone still uploads), runs on an alternate signal stack (survives
+  stack-overflow), and is harvested by `take_last_crash_report` on next launch.
+  The thread name survives a corrupt PC, so we learn which subsystem faulted.
+
 ### Fixed
 - **Content-pack teardown ordering — fewer reload black screens.**
   `ContentPackHost` now defers the pack's React-root unmount past the current

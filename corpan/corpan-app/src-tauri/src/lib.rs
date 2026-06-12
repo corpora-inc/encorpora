@@ -1343,21 +1343,229 @@ fn install_panic_breadcrumb(data_dir: &std::path::Path) {
     }));
 }
 
-/// Read and clear the last Rust-panic breadcrumb, if any. Called once at JS
-/// boot; the returned JSON string is recorded into on-device analytics. Returns
-/// `None` when no breadcrumb exists (the common, healthy case).
+// ============================================================
+// Native-fault breadcrumb (Android)
+// ============================================================
+//
+// `install_panic_breadcrumb` only catches Rust panics. A SIGSEGV / SIGBUS /
+// SIGILL / SIGFPE or a C++ `abort()` inside a statically-linked native lib
+// (llama.cpp / ggml / whisper) bypasses it entirely and produces an
+// unsymbolicated, single-frame, wild-PC tombstone in the Play Console that we
+// cannot attribute to any subsystem. We install an async-signal-safe handler
+// that, BEFORE chaining to Android's debuggerd (so the normal tombstone is
+// still produced and uploaded), records the signal, the faulting thread's name,
+// and the fault address to `native-crash-last.json`. The thread name survives
+// even a corrupt PC, so the next launch's breadcrumb tells us whether the crash
+// was on the `corpan-llm` actor, a `ggml` worker, an STT/whisper thread, audio,
+// or the main thread. Harvested by `take_last_crash_report`.
+//
+// Async-signal-safety: the handler touches ONLY preallocated statics and calls
+// ONLY async-signal-safe libc functions (open/write/close/prctl/sigaction).
+// There is no Rust allocation, no `format!`, no `std::fs`, and no locking — the
+// path bytes are built at install time and an alternate signal stack
+// (SA_ONSTACK) lets the handler run even when the crash is a stack overflow.
+#[cfg(target_os = "android")]
+static NATIVE_CRASH_PATH: std::sync::OnceLock<Vec<u8>> = std::sync::OnceLock::new();
+#[cfg(target_os = "android")]
+static NATIVE_CRASH_IN_HANDLER: std::sync::atomic::AtomicBool =
+    std::sync::atomic::AtomicBool::new(false);
+#[cfg(target_os = "android")]
+const NATIVE_CRASH_SIGS: [libc::c_int; 5] = [
+    libc::SIGSEGV,
+    libc::SIGABRT,
+    libc::SIGBUS,
+    libc::SIGILL,
+    libc::SIGFPE,
+];
+#[cfg(target_os = "android")]
+static mut NATIVE_CRASH_OLD: [std::mem::MaybeUninit<libc::sigaction>; 5] =
+    [std::mem::MaybeUninit::uninit(); 5];
+
+/// Append `src` into `buf` at `*n`, truncating at the buffer end. Pure memory —
+/// async-signal-safe.
+#[cfg(target_os = "android")]
+fn nc_put(buf: &mut [u8; 192], n: &mut usize, src: &[u8]) {
+    let mut i = 0;
+    while i < src.len() && *n < buf.len() {
+        buf[*n] = src[i];
+        *n += 1;
+        i += 1;
+    }
+}
+
+/// Append `v` as decimal. Async-signal-safe (no libc, no alloc).
+#[cfg(target_os = "android")]
+fn nc_put_u64(buf: &mut [u8; 192], n: &mut usize, mut v: u64) {
+    if v == 0 {
+        nc_put(buf, n, b"0");
+        return;
+    }
+    let mut tmp = [0u8; 20];
+    let mut t = 0;
+    while v > 0 {
+        tmp[t] = b'0' + (v % 10) as u8;
+        v /= 10;
+        t += 1;
+    }
+    while t > 0 {
+        t -= 1;
+        nc_put(buf, n, &[tmp[t]]);
+    }
+}
+
+/// Append `v` as `0x`-prefixed hex. Async-signal-safe.
+#[cfg(target_os = "android")]
+fn nc_put_hex(buf: &mut [u8; 192], n: &mut usize, mut v: usize) {
+    nc_put(buf, n, b"0x");
+    if v == 0 {
+        nc_put(buf, n, b"0");
+        return;
+    }
+    const HEX: &[u8; 16] = b"0123456789abcdef";
+    let mut tmp = [0u8; 16];
+    let mut t = 0;
+    while v > 0 {
+        tmp[t] = HEX[v & 0xf];
+        v >>= 4;
+        t += 1;
+    }
+    while t > 0 {
+        t -= 1;
+        nc_put(buf, n, &[tmp[t]]);
+    }
+}
+
+#[cfg(target_os = "android")]
+extern "C" fn native_crash_handler(
+    sig: libc::c_int,
+    info: *mut libc::siginfo_t,
+    _ctx: *mut libc::c_void,
+) {
+    use std::sync::atomic::Ordering;
+    // If the handler itself faults, do not recurse — fall through to default.
+    if NATIVE_CRASH_IN_HANDLER.swap(true, Ordering::SeqCst) {
+        return;
+    }
+    unsafe {
+        // --- Build the JSON breadcrumb in a stack buffer (no allocation) ---
+        let mut buf = [0u8; 192];
+        let mut n = 0usize;
+        nc_put(&mut buf, &mut n, b"{\"kind\":\"native_signal\",\"signal\":");
+        nc_put_u64(&mut buf, &mut n, sig as u64);
+        nc_put(&mut buf, &mut n, b",\"thread\":\"");
+        // Faulting thread name (<=16 bytes incl NUL); sanitize for JSON.
+        let mut tname = [0u8; 16];
+        libc::prctl(
+            libc::PR_GET_NAME,
+            tname.as_mut_ptr() as libc::c_ulong,
+            0,
+            0,
+            0,
+        );
+        let mut i = 0;
+        while i < tname.len() && tname[i] != 0 {
+            let c = tname[i];
+            let safe = if c < 0x20 || c == b'"' || c == b'\\' {
+                b'_'
+            } else {
+                c
+            };
+            nc_put(&mut buf, &mut n, &[safe]);
+            i += 1;
+        }
+        nc_put(&mut buf, &mut n, b"\",\"fault_addr\":");
+        let addr = if info.is_null() {
+            0
+        } else {
+            (*info).si_addr() as usize
+        };
+        nc_put_hex(&mut buf, &mut n, addr);
+        nc_put(&mut buf, &mut n, b"}");
+
+        // --- Write it (open/write/close are async-signal-safe) ---
+        if let Some(path) = NATIVE_CRASH_PATH.get() {
+            let fd = libc::open(
+                path.as_ptr() as *const libc::c_char,
+                libc::O_WRONLY | libc::O_CREAT | libc::O_TRUNC,
+                0o600,
+            );
+            if fd >= 0 {
+                let _ = libc::write(fd, buf.as_ptr() as *const libc::c_void, n);
+                libc::close(fd);
+            }
+        }
+
+        // --- Chain to the previously-installed handler (debuggerd) so the real
+        // tombstone is still generated and uploaded to Play. Restore its
+        // disposition; hardware faults re-execute the offending instruction and
+        // re-enter it on return, while a software-raised SIGABRT is re-raised. ---
+        if let Some(idx) = NATIVE_CRASH_SIGS.iter().position(|&s| s == sig) {
+            let old = (*std::ptr::addr_of!(NATIVE_CRASH_OLD))[idx].assume_init();
+            libc::sigaction(sig, &old, std::ptr::null_mut());
+        }
+        if sig == libc::SIGABRT {
+            libc::raise(sig);
+        }
+    }
+}
+
+/// Install the native-fault breadcrumb handler. See the module comment above.
+/// Best-effort: a later native lib that overrides a signal disposition (e.g.
+/// ggml's own backtrace handler) would shadow us for that signal; the rest stay
+/// covered.
+#[cfg(target_os = "android")]
+fn install_native_crash_breadcrumb(data_dir: &std::path::Path) {
+    use std::os::unix::ffi::OsStrExt;
+    // NUL-terminated path bytes for the async-signal-safe `open()` at crash time.
+    let mut bytes = data_dir
+        .join("native-crash-last.json")
+        .as_os_str()
+        .as_bytes()
+        .to_vec();
+    bytes.push(0);
+    let _ = NATIVE_CRASH_PATH.set(bytes);
+    unsafe {
+        // Alternate signal stack so a stack-overflow SIGSEGV can still run the
+        // handler. Leaked for the process lifetime (handlers never uninstall).
+        let stack_size: usize = 64 * 1024;
+        let sp = libc::malloc(stack_size);
+        if !sp.is_null() {
+            let ss = libc::stack_t {
+                ss_sp: sp,
+                ss_flags: 0,
+                ss_size: stack_size,
+            };
+            libc::sigaltstack(&ss, std::ptr::null_mut());
+        }
+        for (i, &sig) in NATIVE_CRASH_SIGS.iter().enumerate() {
+            let mut sa: libc::sigaction = std::mem::zeroed();
+            sa.sa_sigaction = native_crash_handler as *const () as libc::sighandler_t;
+            sa.sa_flags = libc::SA_SIGINFO | libc::SA_ONSTACK;
+            libc::sigemptyset(&mut sa.sa_mask);
+            let slot = &mut (*std::ptr::addr_of_mut!(NATIVE_CRASH_OLD))[i];
+            libc::sigaction(sig, &sa, slot.as_mut_ptr());
+        }
+    }
+}
+
+/// Read and clear the last crash breadcrumb, if any. Called once at JS boot; the
+/// returned JSON string is recorded into on-device analytics. The native-fault
+/// breadcrumb is rarer and more urgent (no Rust frame at all), so it is surfaced
+/// ahead of the Rust-panic one. Returns `None` in the common, healthy case.
 #[command]
 fn take_last_crash_report(app: AppHandle) -> Option<String> {
     let dir = app.path().app_data_dir().ok()?;
-    let path = dir.join("panic-last.json");
-    let content = std::fs::read_to_string(&path).ok()?;
-    let _ = std::fs::remove_file(&path);
-    let trimmed = content.trim();
-    if trimmed.is_empty() {
-        None
-    } else {
-        Some(trimmed.to_string())
+    for name in ["native-crash-last.json", "panic-last.json"] {
+        let path = dir.join(name);
+        if let Ok(content) = std::fs::read_to_string(&path) {
+            let _ = std::fs::remove_file(&path);
+            let trimmed = content.trim();
+            if !trimmed.is_empty() {
+                return Some(trimmed.to_string());
+            }
+        }
     }
+    None
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -1407,6 +1615,10 @@ pub fn run() {
             // Install the panic breadcrumb hook before anything else can crash.
             // Borrow data_dir here; it is moved into DbState::new below.
             install_panic_breadcrumb(&data_dir);
+            // And the native-fault (SIGSEGV/SIGABRT/…) breadcrumb, which the
+            // panic hook cannot see — for crashes in llama/ggml/whisper.
+            #[cfg(target_os = "android")]
+            install_native_crash_breadcrumb(&data_dir);
             let db_state = db::DbState::new(data_dir)
                 .map_err(|e| format!("failed to initialize database: {}", e))?;
             app.manage(db_state);
