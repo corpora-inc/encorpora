@@ -125,7 +125,9 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
     const t = findTrack(cur, trackId)
     if (!t || !isInstrumentTrack(t)) return
     const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
-    const notes = buildAutoPlayNotes(cur, { metric, table, octaves: OCTAVES, seed })
+    // Pass the track grid so auto-play notes snap to the visible cells too (no
+    // off-grid phantoms), matching the +/- layer path.
+    const notes = buildAutoPlayNotes(cur, { metric, table, octaves: OCTAVES, seed, grid: t.grid })
     store.dispatch({ t: "setNotes", trackId, notes })
   }
 
