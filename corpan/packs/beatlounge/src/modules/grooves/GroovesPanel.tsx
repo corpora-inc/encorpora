@@ -35,9 +35,11 @@ import { isFragmentTrack } from "../../model/document"
 import { groupedByFamily, FAMILY_META, getRhythm, type Rhythm } from "../../rhythm"
 import { resolveRole } from "../../rhythm"
 import { bankSnippets } from "../../phrase/bank"
-import { denserAction, sparserAction } from "./actions"
+import { denserAction, sparserAction, generateAction } from "./actions"
+import { MAX_DENSITY_LEVEL } from "./grooveModel"
 import { buildPreview } from "./preview"
 import { GrooveMark } from "./GrooveMark"
+import { useSelectedGroove } from "../../store/selectedGroove"
 
 /**
  * What this panel is driving. The host knows; the panel never guesses. Drums
@@ -84,8 +86,12 @@ export const GroovesPanel = ({
   const groups = useMemo(() => groupedByFamily(), [])
   const allRhythms = useMemo(() => groups.flatMap((g) => g.rhythms), [groups])
 
-  const [selectedId, setSelectedId] = useState<string>(allRhythms[0]?.id ?? "")
+  // The SHARED selected groove — same id the home Drums widget + the Drums pane
+  // use, so picking a groove here reflects everywhere (and vice-versa).
+  const { rhythmId: selectedId, select: setSelectedId } = useSelectedGroove()
   const [intensity, setIntensity] = useState(1)
+  // Generator density level for the DRUMS dial (each + raises it; − lowers, to 0).
+  const [level, setLevel] = useState(0)
 
   const selected = getRhythm(selectedId) ?? allRhythms[0]
 
@@ -132,6 +138,28 @@ export const GroovesPanel = ({
     host.toast(result.summary, {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
+  }
+
+  // The +/− dial. DRUMS use the GENERATOR (regenerate a fresh beat across the kit
+  // at a density level — + raises, − lowers, to empty). PHRASES keep the additive
+  // denser / pure sparser behaviour (each + lays a few more words, − peels back).
+  const onDenser = () => {
+    if (target.kind === "drums") {
+      const next = Math.min(MAX_DENSITY_LEVEL, level + 1)
+      setLevel(next)
+      runGroove(generateAction, { level: next })
+    } else {
+      runGroove(denserAction)
+    }
+  }
+  const onSparser = () => {
+    if (target.kind === "drums") {
+      const next = Math.max(0, level - 1)
+      setLevel(next)
+      runGroove(generateAction, { level: next })
+    } else {
+      runGroove(sparserAction)
+    }
   }
 
   if (!selected) {
@@ -192,11 +220,11 @@ export const GroovesPanel = ({
             <button
               type="button"
               className="bl-grooves-dial-btn"
-              onClick={() => runGroove(sparserAction)}
+              onClick={onSparser}
               disabled={applyDisabled}
               aria-disabled={applyDisabled}
               aria-label="Sparser"
-              title="Sparser — peel a few hits back (off-beat first), down to nothing"
+              title="Sparser — a new, thinner beat (down to empty)"
             >
               <MinusGlyph />
             </button>
@@ -206,14 +234,14 @@ export const GroovesPanel = ({
             <button
               type="button"
               className="bl-grooves-dial-btn is-primary"
-              onClick={() => runGroove(denserAction)}
+              onClick={onDenser}
               disabled={applyDisabled}
               aria-disabled={applyDisabled}
               aria-label="Denser"
               title={
                 target.kind === "phrases"
                   ? "Denser — lay a few more phrases on the groove"
-                  : "Denser — lay one more layer of the groove on the selected rows"
+                  : "Denser — generate a fresh, fuller beat across the kit"
               }
             >
               <PlusGlyph />

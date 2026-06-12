@@ -24,9 +24,11 @@ import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
 import { stepForTick } from "../../model/timing"
 import { Glyph } from "../../bl-ui"
 import { buildMiniView } from "./gridModel"
-import { denserAction, sparserAction, clearScatterAction } from "../grooves/actions"
+import { generateAction } from "../grooves/actions"
+import { MAX_DENSITY_LEVEL } from "../grooves/grooveModel"
 import { getRhythm } from "../../rhythm"
-import { pickRandomRhythmId, resolveDialRhythmId } from "../grooves/randomRhythm"
+import { pickRandomRhythmId } from "../grooves/randomRhythm"
+import { useSelectedGroove } from "../../store/selectedGroove"
 
 interface Props {
   host: BeatloungeHost
@@ -39,9 +41,13 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
   const [playStep, setPlayStep] = useState(-1)
-  // The last shuffled rhythm — so a re-shuffle always lands somewhere new and
-  // the dial knows which groove to densify/thin.
-  const [rhythmId, setRhythmId] = useState<string | undefined>(undefined)
+  // The SHARED selected groove — same id the Drums pane + Grooves panel use, so
+  // picking a groove anywhere reflects here. Defaults to a random groove (never
+  // "the first"), persisted across reloads.
+  const { rhythmId, select: selectGroove } = useSelectedGroove()
+  // The dial's density LEVEL: each "+" raises it (denser, all-new beat), each "−"
+  // lowers it (sparser, down to 0 = empty). Tracked on this surface.
+  const [level, setLevel] = useState(0)
 
   useEffect(() => {
     return audio.onPlayhead((tick) => {
@@ -55,33 +61,20 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
     [doc, track]
   )
 
-  /** Run a grooves action on THIS drum track (ALL rows — no selection → the
-   *  engine targets every drum lane) as one undo step. Fresh per-press seed →
-   *  each + / shuffle re-rolls a genuinely different scatter.
-   *
-   *  NEVER default to "the first" rhythm: when nothing has been chosen on this
-   *  surface yet (the +/- dial pressed before any shuffle), pick a RANDOM groove
-   *  and remember it — so the dial densifies/thins a random world rhythm, not
-   *  son-clave (the old RHYTHMS[0] cling). An explicit `extra.rhythmId` (shuffle)
-   *  always wins; the last-used `rhythmId` carries between dial presses. */
-  const runGroove = (
-    action: typeof denserAction,
-    extra: Record<string, unknown> = {}
-  ) => {
+  /** GENERATE a fresh stochastic beat across the WHOLE kit on THIS drum track at
+   *  density `lvl`, as one undo step. No selectedPitches ⇒ ALL drum rows. A fresh
+   *  per-press seed → every press is a genuinely new beat (never a stock pattern).
+   *  Uses the SHARED selected groove (or `extra.rhythmId` for a shuffle). */
+  const generate = (lvl: number, extra: Record<string, unknown> = {}) => {
     const before = store.vanilla.getState().doc
     const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
-    const useRhythmId = resolveDialRhythmId(
-      Math.random,
-      rhythmId,
-      extra.rhythmId as string | undefined
-    )
-    // Remember a freshly-rolled default so subsequent dial presses stay on it.
-    if (rhythmId == null && extra.rhythmId == null) setRhythmId(useRhythmId)
-    const result = action.run(
+    const useRhythmId = (extra.rhythmId as string | undefined) ?? rhythmId
+    const result = generateAction.run(
       { doc: store.vanilla.getState().doc, rng: () => Math.random() },
       {
         rhythmId: useRhythmId,
         intensity: 1,
+        level: lvl,
         seed,
         // No selectedPitches ⇒ ALL drum rows (the dial/shuffle affect the whole kit).
         target: { kind: "drums", trackId },
@@ -92,32 +85,42 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
       host.toast(result.summary || "Nothing to apply")
       return
     }
-    store.dispatch({ t: "batch", commands: result.commands, label: action.name })
+    store.dispatch({ t: "batch", commands: result.commands, label: generateAction.name })
     host.toast(result.summary, {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
 
-  /** SHUFFLE — lean into delightful randomness: a fresh world rhythm (never the
-   *  current one) clear-scattered across the WHOLE kit, with a randomized
-   *  intensity + density each press so no two shuffles feel the same. Still one
-   *  undo, grid-only, never starts transport. */
+  /** "+" — denser: raise the level and regenerate a brand-new beat across the kit. */
+  const denser = () => {
+    const next = Math.min(MAX_DENSITY_LEVEL, level + 1)
+    setLevel(next)
+    generate(next)
+  }
+
+  /** "−" — sparser: lower the level and regenerate (down to 0 = empty). */
+  const sparser = () => {
+    const next = Math.max(0, level - 1)
+    setLevel(next)
+    generate(next)
+  }
+
+  /** SHUFFLE — pick a fresh world rhythm (never the current one), share it across
+   *  every surface, and generate a satisfying mid-density beat on the whole kit.
+   *  One undo, grid-only, never starts transport. */
   const shuffle = () => {
     const id = pickRandomRhythmId(Math.random, rhythmId)
-    setRhythmId(id)
-    runGroove(clearScatterAction, {
-      rhythmId: id,
-      // Vary the feel per press: a touch of intensity + density spread.
-      intensity: 0.7 + Math.random() * 0.3,
-      density: 0.6 + Math.random() * 0.4,
-    })
+    selectGroove(id)
+    const next = Math.max(2, level || 2)
+    setLevel(next)
+    generate(next, { rhythmId: id })
   }
 
   const openDrums = () => host.enterImmersive("step-grid")
 
   if (!track || !isInstrumentTrack(track) || !view) return null
 
-  const grooveName = rhythmId ? getRhythm(rhythmId)?.name : undefined
+  const grooveName = getRhythm(rhythmId)?.name
 
   return (
     <div className="bl-tile-grid bl-drumwidget">
@@ -178,9 +181,9 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
           <button
             type="button"
             className="bl-drumwidget-btn"
-            onClick={() => runGroove(sparserAction)}
+            onClick={sparser}
             aria-label="Sparser"
-            title="Sparser — peel a few hits back"
+            title="Sparser — a new, thinner beat (down to empty)"
           >
             <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
               <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
@@ -189,9 +192,9 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
           <button
             type="button"
             className="bl-drumwidget-btn is-primary"
-            onClick={() => runGroove(denserAction)}
+            onClick={denser}
             aria-label="Denser"
-            title="Denser — lay one more layer of the groove"
+            title="Denser — generate a fresh, fuller beat across the kit"
           >
             <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
               <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />

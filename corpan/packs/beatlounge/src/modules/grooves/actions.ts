@@ -111,7 +111,7 @@ const buildOpts = (
 const buildDialOpts = (
   params: Record<string, unknown>,
   ctx: ActionContext,
-  op: "add" | "remove"
+  op: "add" | "remove" | "generate"
 ): GrooveBuildOpts => ({
   target: resolveTarget(params),
   intensity: Number(params.intensity ?? 1),
@@ -120,6 +120,8 @@ const buildDialOpts = (
   // selection (no RNG). The per-tap density increments live in grooveModel.
   rng: ctx.rng,
   seed: params.seed != null ? Number(params.seed) : undefined,
+  // The generator DENSITY LEVEL for op:"generate" (the home/Drums dial).
+  level: params.level != null ? Number(params.level) : undefined,
   // Allow an explicit override (tests / LLM), else grooveModel's per-tap steps.
   density: params.density != null ? Number(params.density) : undefined,
   phraseDensity: params.phraseDensity != null ? Number(params.phraseDensity) : undefined,
@@ -192,6 +194,38 @@ export const denserAction: ModuleAction = {
 }
 
 /**
+ * generate — the +/− dial's PRIMARY drum action. REGENERATE a fresh stochastic
+ * beat across the WHOLE kit (or the selected rows) at a density `level`. Every
+ * press is a brand-new beat (fresh seed) spread over every drum row — kick on the
+ * downbeats, snare on the backbeats, hats subdividing, perc colour — flavoured by
+ * the chosen groove. "+" raises the level (denser); "−" lowers it; level 0 = empty.
+ * This is the founder's "+ makes an all-new beat", NOT a stale stock pattern.
+ */
+export const generateAction: ModuleAction = {
+  name: "generate",
+  describe:
+    "Generate a fresh stochastic drum beat across the whole kit at a density level — a brand-new musical beat every press, flavoured by the chosen world rhythm.",
+  params: {
+    ...sharedParams,
+    level: {
+      type: "number" as const,
+      min: 0,
+      max: 12,
+      default: 1,
+      describe: "Density level: 0 = empty, 1 ≈ five hits, higher = denser.",
+    },
+  },
+  stochastic: true,
+  impact: "mutate",
+  run(ctx, params): ActionResult {
+    const r = getRhythm(resolveRhythmId(params))
+    if (!r) return { commands: [], summary: "Unknown rhythm" }
+    const { commands, summary } = buildGrooveCommands(ctx.doc, r, buildDialOpts(params, ctx, "generate"))
+    return { commands, summary }
+  },
+}
+
+/**
  * sparser — the "−" of the density dial. Remove a fraction of the targeted rows'
  * current hits (lowest-emphasis / off-beat first), each tap thinner, down to
  * nothing. Pure (no RNG). Asymmetric: a − removes a smaller bite than a + adds,
@@ -213,6 +247,7 @@ export const sparserAction: ModuleAction = {
 }
 
 export const groovesActions: ReadonlyArray<ModuleAction> = [
+  generateAction,
   denserAction,
   sparserAction,
   scatterAction,

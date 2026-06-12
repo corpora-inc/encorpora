@@ -27,6 +27,9 @@ import {
   scatterRhythm,
   scatterPhrases,
   chooseHitsToSparsify,
+  generateBeat,
+  kitPitches,
+  DENSITY_LEVELS,
   rhythmTicks,
   cellTicks,
   grooveProfile,
@@ -113,7 +116,19 @@ export type GrooveTarget =
  * `SPARSIFY_FRACTION` of what's present — a smaller bite — so it takes more −
  * taps to undo a +.
  */
-export type DensityOp = "add" | "remove"
+export type DensityOp = "add" | "remove" | "generate"
+
+/**
+ * THE GENERATOR LEVEL — the home/Drums +/− dial's primary model. Unlike the old
+ * additive "add" (which layered the same scatter), the dial now REGENERATES a
+ * fresh stochastic beat across the WHOLE kit at a density LEVEL each press:
+ *   • "+" raises the level → a denser, all-new beat (fresh seed every press);
+ *   • "−" lowers the level → a sparser all-new beat, down to LEVEL 0 = empty.
+ * Level 1 from empty averages ~5 hits (legitimately 1–10). Each press clears the
+ * targeted rows and lays a brand-new generated beat, so the kit is never a stale
+ * stock pattern. The dial tracks the level on its surface and passes it here.
+ */
+export const MAX_DENSITY_LEVEL = DENSITY_LEVELS
 
 /** Per-+-tap drum scatter density (fraction of the groove's full profile). */
 export const ADD_DENSITY_STEP_DRUMS = 0.5
@@ -144,11 +159,16 @@ export interface GrooveBuildOpts {
    */
   target?: GrooveTarget
   /**
-   * The +/− density-dial direction. "add" (default) lays one more probabilistic
-   * layer (denser); "remove" thins the targeted rows (sparser). Supersedes the
-   * old clear/layer split for the dial — see DensityOp.
+   * The +/− density-dial direction. "generate" (the home/Drums dial) REGENERATES
+   * a fresh stochastic beat across the whole kit at `level`. "add" (legacy) lays
+   * one more probabilistic layer; "remove" thins the targeted rows. See DensityOp.
    */
   op?: DensityOp
+  /**
+   * The generator DENSITY LEVEL for `op:"generate"` (0..MAX_DENSITY_LEVEL). 0 ⇒
+   * empty; 1 ⇒ ~5 hits; higher ⇒ denser. The dial tracks + passes this.
+   */
+  level?: number
   /** 0..1 — scale all hit velocities. Default 1. */
   intensity?: number
   /**
@@ -356,6 +376,14 @@ const buildDrumGroove = (
     return sparsifyDrumGroove(doc, rhythm, drumId, drumGrid, selected)
   }
 
+  // ---- "generate" (the +/− dial): a FRESH stochastic beat across the kit ------
+  // Regenerate the whole beat at the dial's density LEVEL, replacing the targeted
+  // rows (all rows when nothing is selected). Every press is a brand-new beat
+  // (fresh seed) — never a stale stock pattern.
+  if (opts.op === "generate") {
+    return generateDrumGroove(doc, rhythm, drumId, drumGrid, refGrid, selected, opts, commands)
+  }
+
   // 2) Optionally grow the loop to one whole cycle so long rhythms fit.
   const loopTicks = fitLoopTicks(doc, rhythm, opts.fitLoop ?? true, commands)
 
@@ -448,6 +476,88 @@ const buildDrumGroove = (
     placedPhrases: false,
     phrasesUnavailable: false,
   }
+}
+
+/**
+ * THE GENERATOR PATH — the +/− dial regenerates a FRESH stochastic beat across the
+ * whole kit (or the selected rows) at `opts.level`. It REPLACES the targeted rows'
+ * notes (level 0 ⇒ those rows go empty) and lays the brand-new generated beat on
+ * top of whatever's on the untouched rows. Each press uses a fresh seed (the UI
+ * passes one) so the beat is genuinely new every time — never a stock pattern.
+ *
+ * "All rows" when nothing is selected = the WHOLE kit (KIT_ROLES via the generator
+ * default), so the rhythm spreads over every drum row, not the groove's 3 lanes.
+ */
+const generateDrumGroove = (
+  _doc: BeatloungeDoc,
+  rhythm: Rhythm,
+  drumId: string,
+  drumGrid: ReturnType<BeatloungeDoc["tracks"]["find"]>,
+  refGrid: Grid,
+  selected: number[],
+  opts: GrooveBuildOpts,
+  commands: Command[]
+): GrooveBuildResult => {
+  const loopTicks = fitLoopTicks(_doc, rhythm, opts.fitLoop ?? false, commands)
+  const stepsPerBeat = Math.max(1, Math.round(refGrid.denominator / 4))
+  const level = Math.max(0, Math.min(MAX_DENSITY_LEVEL, Math.round(opts.level ?? 1)))
+  const dur = Math.max(1, Math.round(gridTicks(refGrid) / 2))
+  const snap = (tick: number): number => snapTickToGrid(tick, refGrid)
+
+  // Generate the fresh beat across the selected rows, or ALL kit rows (default).
+  const placements = generateBeat(rhythm, resolveRng(opts), {
+    loopTicks,
+    stepsPerBeat,
+    level,
+    rows: selected.length > 0 ? selected : undefined,
+    intensity: opts.intensity,
+  })
+  const grooveNotes: Omit<NoteEvent, "id">[] = placements.map((p) => ({
+    tick: snap(p.tick),
+    duration: dur,
+    pitch: p.pitch,
+    velocity: p.velocity,
+  }))
+
+  // The rows this regenerate OWNS — the selection, or (none) the WHOLE kit. We
+  // wipe these rows' existing notes (regenerate replaces them) and keep notes on
+  // any rows outside the generated set untouched.
+  const ownedRows = new Set<number>(
+    selected.length > 0 ? selected : kitPitches()
+  )
+  const existingAll: Omit<NoteEvent, "id">[] =
+    drumGrid && isInstrumentTrack(drumGrid)
+      ? drumGrid.notes.map(({ tick, duration, pitch, velocity, probability, ratchet, micro }) => ({
+          tick,
+          duration,
+          pitch,
+          velocity,
+          ...(probability != null ? { probability } : {}),
+          ...(ratchet != null ? { ratchet } : {}),
+          ...(micro != null ? { micro } : {}),
+        }))
+      : []
+  const kept = existingAll.filter((n) => !ownedRows.has(n.pitch))
+
+  const seen = new Set<string>()
+  const notes: Omit<NoteEvent, "id">[] = []
+  for (const n of [...kept, ...grooveNotes]) {
+    const key = `${n.tick}:${n.pitch}`
+    if (seen.has(key)) continue
+    seen.add(key)
+    notes.push(n)
+  }
+  notes.sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
+  commands.push({ t: "setNotes", trackId: drumId, notes })
+
+  const placed = grooveNotes.length
+  const where =
+    selected.length > 0 ? ` · ${selected.length} row${selected.length === 1 ? "" : "s"}` : ""
+  const summary =
+    placed === 0
+      ? `${rhythm.name} · cleared`
+      : `${rhythm.name} · ${placed} hit${placed === 1 ? "" : "s"}${where}`
+  return { commands, summary, placedPhrases: false, phrasesUnavailable: false }
 }
 
 /**

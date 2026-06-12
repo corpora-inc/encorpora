@@ -5,6 +5,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Stochastic, musical drum-beat GENERATOR behind the +/− dial.** The home Drums
+  widget, the Drums pane and the Grooves panel now GENERATE a fresh, surprising
+  beat across the WHOLE kit on every press — never a stale stock pattern on three
+  drums. A shipped per-(role, step) weight model combines metric ARCHETYPES (kick →
+  downbeats, snare/clap → backbeats, hats → swung subdivisions, open-hat →
+  off-beats, toms/conga/cowbell/tamb/shaker/claves → sparse syncopated colour) with
+  the chosen groove's SIGNATURE onsets, so the result spreads over all 16 rows yet
+  feels like the selected world rhythm. Every (role, step) carries a probability
+  (strongest capped at 0.92 — even beat 1 is skippable), an emphasis → velocity
+  band, and a per-press jitter, so presses vary. `+` raises a density level (a
+  denser all-new beat), `−` lowers it (sparser, down to empty); a single `+` from
+  empty averages ~5 hits (legitimately 1–10). A contrast curve keeps the strong
+  beats frequent and the ~0 beats quiet at low density. New `src/rhythm/{kit,
+  archetypes,weights,generator}.ts` + the `generate` action.
+- **Shared, persisted "selected groove" store slice** (`store/selectedGroove.ts`):
+  one source of truth for the chosen world rhythm across the home widget, the Drums
+  pane and the Grooves panel — pick a groove anywhere and it reflects everywhere.
+  Defaults to a random groove (never "the first"/son-clave) and survives reloads.
+
 ### Changed
 - **Scenes moved off the home Stage into the nav.** Scenes (save / load complete
   states) is no longer a home tile — its entry is a button in the persistent
