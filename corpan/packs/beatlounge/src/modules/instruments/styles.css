@@ -39,7 +39,24 @@
   min-height: 0;
 }
 .bl-instr-stage {
-  gap: var(--bl-s3);
+  /* A flex COLUMN so the ribbon (flex:1) always fills the space ABOVE the drawer
+     — the header (harmony summary + track bar) stays compact at the top, the
+     ribbon takes everything that's left. */
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: var(--bl-s2);
+}
+
+/* Reserve the drawer's ACTUAL height per state (not just the peek) so the stage —
+   and the ribbon inside it — sit ABOVE the drawer and are never covered. (The grid
+   reserve uses --bl-drawer-peek; we point it at the live drawer height.) */
+.bl-instr--open {
+  --bl-drawer-peek: min(48vh, 520px);
+}
+.bl-instr--expanded {
+  --bl-drawer-peek: calc(82vh - var(--bl-safe-top, 0px));
 }
 
 .bl-instr-bar {
@@ -156,16 +173,17 @@
  * the ribbon to a pinned mini height, so you can keep playing the ribbon at the
  * top while adjusting effects in the drawer below at the same time. */
 .bl-instr--expanded {
-  --bl-instr-ribbon-min: 96px;
+  --bl-instr-ribbon-min: 72px;
 }
-.bl-instr--expanded .bl-instr-harmony {
-  /* hide the harmony summary row at the tallest detent — no layout jolt; it
-   * returns when the drawer comes back down. */
+/* At the tallest detent the ribbon SLIDES UP with the drawer and every header item
+   gets out of its way: the harmony summary, the track bar, AND the ribbon's own
+   control strip (Lock/Free · octave · range) hide, leaving a pure playable surface
+   you can keep performing while you work the FX/Mixer drawer below. They all
+   return when the drawer comes back down — no content is lost, just hidden. */
+.bl-instr--expanded .bl-instr-harmony,
+.bl-instr--expanded .bl-instr-bar,
+.bl-instr--expanded .bl-ribbon-controls {
   display: none;
-}
-.bl-instr--expanded .bl-instr-bar {
-  /* tighten the track bar so the mini ribbon stays comfortably in view */
-  margin-bottom: calc(-1 * var(--bl-s1));
 }
 
 /* on-demand analog "Shape this voice" disclosure (inside the Voice tab) */

@@ -39,22 +39,8 @@
 }
 
 /* Read-only "Following <key> <scale>" chip — harmony is set in the Harmony
-   module; the ribbon follows the song. */
-.bl-ribbon-follow {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--bl-hit);
-  padding: 0 var(--bl-s3);
-  border: 1px solid color-mix(in srgb, var(--bl-accent) 35%, var(--bl-border));
-  border-radius: var(--bl-radius-sm);
-  background: color-mix(in srgb, var(--bl-accent) 8%, var(--bl-surface-2));
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-micro);
-  letter-spacing: 0.04em;
-  color: var(--bl-text-dim);
-  text-transform: capitalize;
-}
-
+   module; the ribbon follows the song. The key/mode is shown ONCE — the clickable
+   Harmony summary atop the page — so there's no "following …" label here. */
 .bl-ribbon-octave {
   display: inline-flex;
   align-items: center;
@@ -246,15 +232,3 @@
   }
 }
 
-/* ---------------------------------------------------------- foot */
-.bl-ribbon-foot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.bl-ribbon-status {
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-label);
-  letter-spacing: 0.04em;
-  color: var(--bl-text-dim);
-}

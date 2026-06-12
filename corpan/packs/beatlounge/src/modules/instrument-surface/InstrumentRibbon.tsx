@@ -390,19 +390,16 @@ export const InstrumentRibbon = ({
 
       {/* ---- control strip ---- */}
       <div className="bl-ribbon-controls" data-bl-nocapture>
-        {/* Harmony is the SONG's — set in the Harmony module; the ribbon follows. */}
-        <span className="bl-ribbon-follow" aria-label={`Following ${KEY_NAMES[tonicPc]} ${harmonyLabel}`}>
-          Following {KEY_NAMES[tonicPc]} {harmonyLabel}
-        </span>
-
-        <div className="bl-seg" role="group" aria-label="Fret mode">
+        {/* The song's key/mode is shown once — the clickable Harmony summary at the
+            top of the page. No duplicate label here. */}
+        <div className="bl-seg" role="group" aria-label="Pitch lock">
           <button
             type="button"
             className={`bl-seg-btn${fretted ? " is-on" : ""}`}
             aria-pressed={fretted}
             onClick={() => setFretted(true)}
           >
-            In key
+            Lock
           </button>
           <button
             type="button"
@@ -410,7 +407,7 @@ export const InstrumentRibbon = ({
             aria-pressed={!fretted}
             onClick={() => setFretted(false)}
           >
-            Free glide
+            Free
           </button>
         </div>
 
@@ -421,9 +418,10 @@ export const InstrumentRibbon = ({
               type="button"
               className={`bl-seg-btn${spanOct === o ? " is-on" : ""}`}
               aria-pressed={spanOct === o}
+              aria-label={`${o} octaves`}
               onClick={() => setSpanOct(o)}
             >
-              {o} oct
+              {o}
             </button>
           ))}
         </div>
@@ -461,7 +459,7 @@ export const InstrumentRibbon = ({
           (silent ? " is-silent" : "")
         }
         role="slider"
-        aria-label={`Ribbon · ${KEY_NAMES[tonicPc]} ${harmonyLabel} · ${fretted ? "in key" : "free glide"}`}
+        aria-label={`Ribbon · ${KEY_NAMES[tonicPc]} ${harmonyLabel} · ${fretted ? "lock" : "free"}`}
         aria-valuetext={liveLabel || `${KEY_NAMES[tonicPc]} ${harmonyLabel}`}
         onPointerDown={onDown}
         onPointerMove={onMove}
@@ -504,17 +502,9 @@ export const InstrumentRibbon = ({
         )}
         {!playing && (
           <span className="bl-ribbon-hint" aria-hidden="true">
-            Slide to play · {fretted ? "always in key" : "glide freely"}
+            Slide to play
           </span>
         )}
-      </div>
-
-      <div className="bl-ribbon-foot" data-bl-nocapture>
-        <span className="bl-ribbon-status">
-          {KEY_NAMES[tonicPc]} {harmonyLabel} ·{" "}
-          {fretted ? "in key" : "free glide"}
-          {record ? " · armed" : ""}
-        </span>
       </div>
     </div>
   )
