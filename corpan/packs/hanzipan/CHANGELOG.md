@@ -10,7 +10,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-## [0.6.1] - 2026-06-09 — Fix vanished writing-area background
+## [0.6.2] - 2026-06-12 — Fix iPad: HanziWriter "Invalid color" + viewport-fit
+
+### Fixed
+- **HanziWriter died on iPad (outline, autoplay, tutor/quiz all broke).** WebKit
+  serializes the `--stroke-ghost` rgba() custom property as 8-digit hex
+  (`#RRGGBBAA`) via `getComputedStyle`, which HanziWriter's color parser rejects
+  with "Invalid color" — so `HanziWriter.create()` threw and every HanziWriter
+  feature died (only the separate user-draw canvas survived). Normalize any
+  `#RRGGBBAA` / `#RGBA` value back into `rgba()` before handing colors to
+  HanziWriter. Also adopted the Earthgate viewport-fit standard so a portrait iPad
+  lays out correctly. Pack-side fix — ships via the catalog, no app release needed.
 
 ### Fixed
 - The parchment backdrop behind the character (the writing-area paper

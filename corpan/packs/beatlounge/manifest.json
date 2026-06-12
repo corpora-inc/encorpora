@@ -8,6 +8,7 @@
     "dist/app.css"
   ],
   "entryType": "script",
+  "minAppVersion": "0.18.0",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-06-12T10:55:57.370Z"
+  "devRevision": "2026-06-12T18:53:23.761Z"
 }

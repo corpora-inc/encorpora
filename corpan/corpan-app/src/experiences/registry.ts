@@ -41,9 +41,11 @@ export type ExperienceMeta = {
 }
 
 /**
- * The experience metadata. `phrase_main` (Phrase Flip) is intentionally
- * `order: 8` with narrow categories so it is NOT the default star — it only
- * rises when the user signals study/speak interest or is a learner/polyglot.
+ * The experience metadata. `phrase_main` (Phrase Flip) is a STRONG language-
+ * learning pick: narrow `study`/`speak` categories (no wild/game) and
+ * `featuredFor: ["study","speak"]`, so it rises to the top when a user signals
+ * language learning — while its categories keep it out of the games/wild lanes
+ * and the readers (lower `order` + kidFriendly) still lead a no-interest cold start.
  */
 export const EXPERIENCES: ExperienceMeta[] = [
   {
@@ -126,7 +128,10 @@ export const EXPERIENCES: ExperienceMeta[] = [
     goodForClass: ["learner", "polyglot"],
     nameKey: "experiences.phrase_main.name",
     blurbKey: "experiences.phrase_main.blurb",
-    order: 8,
+    order: 4,
+    // A core language-learning experience — featured for study/speak so it leads
+    // when the user wants to learn (was under-ranked at order 8, unfeatured).
+    featuredFor: ["study", "speak"],
   },
   {
     // On-device multilingual LLM tutor (Plus). Strong fit for learners/polyglots
