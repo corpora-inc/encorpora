@@ -505,12 +505,12 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             onSweep={onSweep(rt)}
             onRelease={onRelease(rt)}
           />
-          <CutFader
-            value={cut}
-            label="Cut fader — fade this deck 0 to full"
-            onChange={setCut}
-          />
         </div>
+        <CutFader
+          value={cut}
+          label="Cut fader — fade this deck 0 to full"
+          onChange={setCut}
+        />
 
         <div className="bl-scr-transport" data-bl-nocapture>
           <button

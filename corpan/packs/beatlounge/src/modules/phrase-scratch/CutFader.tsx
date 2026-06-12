@@ -1,8 +1,8 @@
 /**
- * beatlounge — the single-deck CUT FADER: a throwable vertical level fader on the
- * deck (the scratch "cut"). Flick it 0→full for the fast fade-ins that real
- * scratching lives on. It controls THIS deck's output gain directly and immediately
- * — pointer-captured, big enough to flick, with keyboard + wheel for accessibility.
+ * beatlounge — the single-deck CUT FADER: a throwable HORIZONTAL level fader on the
+ * deck (the scratch "cut"). Flick it left→right (0→full) for the fast fade-ins that
+ * real scratching lives on. It controls THIS deck's output gain directly and
+ * immediately — pointer-captured, big enough to flick, keyboard + wheel for a11y.
  *
  * It writes the cap position to a CSS var on pointer move (no per-move React churn
  * for the visual) AND reports the value up so the engine sets the gain right away.
@@ -27,13 +27,13 @@ export const CutFader = ({ value, label, onChange }: Props) => {
   const trackRef = useRef<HTMLDivElement | null>(null)
   const dragging = useRef(false)
 
-  // Map a clientY to a 0..1 level (top = full, bottom = 0 — a natural throw up).
-  const levelFromY = useCallback((clientY: number): number => {
+  // Map a clientX to a 0..1 level (left = 0, right = full — a natural throw right).
+  const levelFromX = useCallback((clientX: number): number => {
     const el = trackRef.current
     if (!el) return value
     const r = el.getBoundingClientRect()
-    if (r.height <= 0) return value
-    return clamp01(1 - (clientY - r.top) / r.height)
+    if (r.width <= 0) return value
+    return clamp01((clientX - r.left) / r.width)
   }, [value])
 
   // Drive the cap/fill IMMEDIATELY via the CSS var (no wait for a React re-render) so
@@ -54,14 +54,14 @@ export const CutFader = ({ value, label, onChange }: Props) => {
       /* ignore */
     }
     dragging.current = true
-    apply(levelFromY(e.clientY)) // instant jump-to-tap (a hard cut)
+    apply(levelFromX(e.clientX)) // instant jump-to-tap (a hard cut)
     e.preventDefault()
     e.stopPropagation()
   }
 
   const onPointerMove = (e: React.PointerEvent) => {
     if (!dragging.current) return
-    apply(levelFromY(e.clientY))
+    apply(levelFromX(e.clientX))
     e.stopPropagation()
   }
 

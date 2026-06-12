@@ -8,12 +8,18 @@
  */
 
 .bl-scr {
+  /* The immersive mount is a flex ROW; without flex:1 we'd shrink to content
+     width and hug the left. flex:1 makes the scratch view FILL the whole sheet. */
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--bl-s4);
+  align-items: center;
+  gap: var(--bl-s3);
   height: 100%;
   min-height: 0;
-  padding-bottom: var(--bl-safe-bottom);
+  min-width: 0;
+  padding: var(--bl-s3) var(--bl-s4) var(--bl-safe-bottom);
+  box-sizing: border-box;
 }
 
 /* ---------------------------------------------------------- top bar */
@@ -110,11 +116,12 @@
    can change a deck's size or shove its neighbour. */
 .bl-scr-decks {
   display: flex;
-  flex-direction: column; /* stack decks vertically: never overflow portrait width */
+  flex-direction: column; /* portrait default: stack. Landscape → row (below). */
   align-items: center;
   justify-content: space-evenly;
   gap: var(--bl-s4);
   flex: 1 1 auto;
+  width: 100%;
   min-height: 0;
   min-width: 0;
 }
@@ -123,11 +130,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--bl-s3);
+  gap: var(--bl-s2);
   flex: 1 1 0;
   min-width: 0;
   min-height: 0;
   width: 100%;
+  max-width: calc(var(--bl-platter) + 2 * var(--bl-s4));
   position: relative;
 }
 
@@ -136,12 +144,13 @@
    available box — width AND height (vh) — minus the fader's lane, so a deck NEVER
    overflows its column and can't push its neighbour at any size down to ~320px. */
 .bl-scr {
-  /* one deck: big & centered, filling the sheet. The cut fader lane (~80px) is
-     subtracted from the width so the deck never overflows. */
+  /* one deck (portrait default): big & centered. The cut fader is BELOW the
+     platter now, so only the chrome height (picker/fader/transport/readout/foot)
+     is subtracted — the platter spans the deck width. */
   --bl-platter: min(
-    calc(92vw - 84px),
-    calc(76vh - 150px),
-    560px
+    92vw,
+    calc(80vh - 210px),
+    540px
   );
 }
 .bl-scr-platter {
@@ -307,20 +316,20 @@
   flex: 0 0 auto;
 }
 
-/* ---------------------------------------------------------- cut fader (the cut)
-   A real channel fader: a fat cap on a slim track, the throw matching the platter
-   height so a flick 0→full covers a satisfying distance. Generous hit lane. */
+/* ---------------------------------------------------------- cut fader (HORIZONTAL)
+   A real channel fader laid LEFT→RIGHT under the platter: 0 at the left, full at the
+   right, a fat throwable cap. Spans the platter width; tall hit lane for the flick. */
 .bl-scr-cut {
   --bl-cut: 100%;
   position: relative;
   flex: 0 0 auto;
-  width: 58px;
-  height: var(--bl-platter);
-  max-height: 560px;
+  width: var(--bl-platter);
+  max-width: 100%;
+  height: 46px;
   display: flex;
-  align-items: stretch;
-  justify-content: center;
-  cursor: ns-resize;
+  align-items: center;
+  justify-content: stretch;
+  cursor: ew-resize;
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
@@ -333,8 +342,9 @@
 }
 .bl-scr-cut-track {
   position: relative;
-  width: 10px;
-  margin: 0 auto;
+  width: 100%;
+  height: 10px;
+  margin: auto 0;
   border-radius: var(--bl-radius-pill);
   background: var(--bl-surface-2);
   box-shadow: inset 0 0 0 1px var(--bl-border), inset 0 2px 6px rgba(0, 0, 0, 0.35);
@@ -343,19 +353,19 @@
 .bl-scr-cut-fill {
   position: absolute;
   left: 0;
-  right: 0;
+  top: 0;
   bottom: 0;
-  height: var(--bl-cut);
-  background: linear-gradient(to top, var(--bl-accent-2), var(--bl-accent));
+  width: var(--bl-cut);
+  background: linear-gradient(to right, var(--bl-accent-2), var(--bl-accent));
   opacity: 0.85;
 }
 .bl-scr-cut-cap {
   position: absolute;
-  left: 50%;
-  bottom: var(--bl-cut);
-  width: 48px;
-  height: 26px;
-  transform: translate(-50%, 50%);
+  top: 50%;
+  left: var(--bl-cut);
+  width: 26px;
+  height: 40px;
+  transform: translate(-50%, -50%);
   border-radius: 7px;
   background: linear-gradient(to bottom, var(--bl-surface-2), var(--bl-surface));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
@@ -368,8 +378,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 22px;
-  height: 2px;
+  width: 2px;
+  height: 22px;
   transform: translate(-50%, -50%);
   border-radius: var(--bl-radius-pill);
   background: var(--bl-border);
@@ -446,14 +456,17 @@
   font-size: var(--bl-fs-body);
 }
 
-/* ---------------------------------------------------------- two decks (stacked)
-   In dual mode the two decks STACK vertically (each full-width), so neither can
-   overflow the portrait width or shove the other. Platters fit ~half the height. */
+/* ---------------------------------------------------------- two decks
+   PORTRAIT: stack the decks vertically (each ~half the height). LANDSCAPE (the
+   marquee experience): two platters SIDE BY SIDE, crossfader underneath — see the
+   landscape media query below. */
 .bl-scr.is-dual {
+  /* portrait, stacked: two decks + their chrome + the foot must all fit the
+     height, so each platter is sized off ~half the viewport height. */
   --bl-platter: min(
-    calc(86vw - 84px),
-    calc(42vh - 64px),
-    400px
+    86vw,
+    calc(42vh - 196px),
+    300px
   );
 }
 
@@ -672,29 +685,22 @@
   color: var(--bl-text);
 }
 
-/* ---------------------------------------------------------- narrow: stack decks
-   Below ~640px two decks no longer fit side by side — stack them and lay the
-   crossfader HORIZONTALLY between them. One big platter each, controls reachable,
-   nothing clipped; the reserved footprint keeps each deck fixed while spinning. */
-@media (max-width: 640px) {
+/* ----------------------------------------------------- landscape: the DJ console
+   The marquee experience (big iPad in landscape): TWO platters SIDE BY SIDE, each
+   with its own horizontal cut fader, and the crossfader HORIZONTAL underneath both.
+   Fills the width. Single deck just sits big & centered. */
+@media (orientation: landscape) and (min-width: 720px) {
+  .bl-scr {
+    --bl-platter: min(64vw, calc(86vh - 200px), 520px);
+  }
   .bl-scr.is-dual {
-    --bl-platter: min(
-      calc(88vw - 64px),
-      calc(40vh - 90px),
-      360px
-    );
+    --bl-platter: min(46vw, calc(88vh - 210px), 440px);
   }
   .bl-scr.is-dual .bl-scr-decks {
-    flex-direction: column;
-    gap: var(--bl-s3);
-  }
-  .bl-scr-mixer {
-    align-self: center;
-    padding: var(--bl-s1) 0;
-  }
-  .bl-scr.is-dual .bl-scr-xfade-input {
-    transform: none; /* horizontal between the stacked decks */
-    width: min(72vw, 320px);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: var(--bl-s5);
   }
 }
 
