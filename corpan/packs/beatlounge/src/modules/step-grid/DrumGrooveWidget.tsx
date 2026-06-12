@@ -55,8 +55,9 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
     [doc, track]
   )
 
-  /** Run a grooves action on THIS drum track as one undo step. Fresh per-press
-   *  seed → each + / shuffle re-rolls a genuinely different scatter. */
+  /** Run a grooves action on THIS drum track (ALL rows — no selection → the
+   *  engine targets every drum lane) as one undo step. Fresh per-press seed →
+   *  each + / shuffle re-rolls a genuinely different scatter. */
   const runGroove = (
     action: typeof denserAction,
     extra: Record<string, unknown> = {}
@@ -69,6 +70,7 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
         rhythmId: rhythmId ?? extra.rhythmId,
         intensity: 1,
         seed,
+        // No selectedPitches ⇒ ALL drum rows (the dial/shuffle affect the whole kit).
         target: { kind: "drums", trackId },
         ...extra,
       }
@@ -83,11 +85,22 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
     })
   }
 
+  /** SHUFFLE — lean into delightful randomness: a fresh world rhythm (never the
+   *  current one) clear-scattered across the WHOLE kit, with a randomized
+   *  intensity + density each press so no two shuffles feel the same. Still one
+   *  undo, grid-only, never starts transport. */
   const shuffle = () => {
     const id = pickRandomRhythmId(Math.random, rhythmId)
     setRhythmId(id)
-    runGroove(clearScatterAction, { rhythmId: id })
+    runGroove(clearScatterAction, {
+      rhythmId: id,
+      // Vary the feel per press: a touch of intensity + density spread.
+      intensity: 0.7 + Math.random() * 0.3,
+      density: 0.6 + Math.random() * 0.4,
+    })
   }
+
+  const openDrums = () => host.enterImmersive("step-grid")
 
   if (!track || !isInstrumentTrack(track) || !view) return null
 
@@ -95,40 +108,54 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
 
   return (
     <div className="bl-tile-grid bl-drumwidget">
-      <div className="bl-tile-head">
-        <span className="bl-tile-glyph">
-          <Glyph name="grid" size={16} />
-        </span>
-        <span className="bl-tile-title">Drums</span>
-        {grooveName && (
-          <span className="bl-drumwidget-groove" title={grooveName}>
-            {grooveName}
-          </span>
-        )}
-      </div>
-
-      <div
-        className="bl-mini bl-drumwidget-mini"
-        style={{ ["--bl-steps" as string]: String(view.steps) }}
-        aria-hidden="true"
+      {/* The head + mini-grid ARE the "open Drums" affordance — tapping the tile
+          body (anywhere but the controls below) enters the immersive Drums page.
+          The live dial + shuffle are rendered OUTSIDE this button (siblings, not
+          children), so they act in place and never open the page. */}
+      <button
+        type="button"
+        className="bl-drumwidget-open"
+        onClick={openDrums}
+        aria-label="Open Drums"
+        title="Open Drums"
       >
-        {view.lanes.map((lane) => (
-          <div className="bl-mini-row" key={lane.pitch}>
-            {lane.cells.map((c, s) => (
-              <span
-                key={s}
-                className={
-                  "bl-mini-cell" +
-                  (c.on ? " is-on" : "") +
-                  (s === playStep ? " is-active" : "")
-                }
-              />
-            ))}
-          </div>
-        ))}
-      </div>
+        <span className="bl-tile-head">
+          <span className="bl-tile-glyph">
+            <Glyph name="grid" size={16} />
+          </span>
+          <span className="bl-tile-title">Drums</span>
+          {grooveName && (
+            <span className="bl-drumwidget-groove" title={grooveName}>
+              {grooveName}
+            </span>
+          )}
+        </span>
 
-      {/* ---- the live dial + shuffle (setup, never play) ---- */}
+        <span
+          className="bl-mini bl-drumwidget-mini"
+          style={{ ["--bl-steps" as string]: String(view.steps) }}
+          aria-hidden="true"
+        >
+          {view.lanes.map((lane) => (
+            <span className="bl-mini-row" key={lane.pitch}>
+              {lane.cells.map((c, s) => (
+                <span
+                  key={s}
+                  className={
+                    "bl-mini-cell" +
+                    (c.on ? " is-on" : "") +
+                    (s === playStep ? " is-active" : "")
+                  }
+                />
+              ))}
+            </span>
+          ))}
+        </span>
+      </button>
+
+      {/* ---- the live dial + shuffle (setup, never play). These are SIBLINGS of
+          the open-button above (not nested in it), so adjusting density /
+          shuffling acts in place and never opens the Drums page ---- */}
       <div className="bl-drumwidget-controls" data-bl-nocapture>
         <div
           className="bl-drumwidget-dial"

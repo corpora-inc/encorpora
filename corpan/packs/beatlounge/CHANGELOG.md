@@ -6,6 +6,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **Home Drums tile — tapping the body now OPENS the Drums pane.** The mini-grid
+  (and header) act as the "open Drums" affordance — a tap anywhere but the live
+  controls enters the immersive step-grid. The −/+ density dial and Shuffle keep
+  working in place (they are siblings of the open affordance, so they never bubble
+  to open). The dial + shuffle target the WHOLE kit (no row selection ⇒ all drum
+  rows), and Shuffle now leans into delightful randomness — a fresh world rhythm
+  (never the current one) clear-scattered across the kit with a randomized
+  intensity + density each press. Still grid-only, one undo per press, never starts
+  transport.
+- **Home Harmony tile — opens the FULL-SIZE harmony form.** The press now opens a
+  large, premium, OPAQUE sheet (opaque base under the surface tint, real elevation,
+  scrim-dismissed) that hosts the COMPLETE HarmonyPanel (tonic · Mode⇄Progression ·
+  chord grid · 994-browser · note row) at a comfortable size — was a cramped popover
+  too small for the full form. Resize-clean 320px→iPad; the tile summary stays.
+- **Home Ribbon tile — a flat PLAY surface, not a button.** The ribbon strip no
+  longer depresses/scales or shifts its background when touched (it's a surface you
+  play on directly); the InstrumentRibbon inside still captures the play gesture.
+  Live (interactive) tiles in general no longer depress as a whole — their own
+  controls give the press feedback.
 - **Scratch — performance layout overhaul.** The two decks now STACK vertically
   (full-width each) so the second deck can never overflow the screen, and the
   crossfader is a real horizontal A↔B fader fixed at the bottom with a fat,
