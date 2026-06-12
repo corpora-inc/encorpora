@@ -59,8 +59,14 @@ import {
   toggleInsert,
   setInsertParams,
 } from "./scratchFxChain"
-import { ScratchFxRack } from "./ScratchFxRack"
-import { ScratchBankDrawer } from "./ScratchBankDrawer"
+import { ScratchFxPanel } from "./ScratchFxPanel"
+import { ScratchPhrasePanel } from "./ScratchPhrasePanel"
+import {
+  TrackDrawer,
+  type DrawerState,
+  type DrawerTabDef,
+} from "../track-studio/TrackDrawer"
+import "../track-studio/track-studio.css"
 
 const LOG = "[beatlounge/phrase-scratch]"
 
@@ -140,10 +146,14 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const [cutA, setCutA] = useState(1)
   const [cutB, setCutB] = useState(1)
 
-  // ---- master FX rack + phrase drawer (scratch-local; no doc coupling) -------
+  // ---- master FX rack + phrase discovery: ONE shared bottom drawer (the same
+  // surface Drums / Instruments use), with Effects + Phrases tabs. No bespoke
+  // popovers. The chain is scratch-local (live bus, no doc coupling). ----------
   const [fxChain, setFxChain] = useState<EffectNode[]>(() => defaultScratchChain())
-  const [fxOpen, setFxOpen] = useState(false)
-  const [bankOpen, setBankOpen] = useState(false)
+  const [drawerTab, setDrawerTab] = useState("fx")
+  const [drawer, setDrawer] = useState<DrawerState>("peek")
+  // Which deck a discovered phrase lands on (A unless the user aims B).
+  const [aimDeck, setAimDeck] = useState<DeckId>("a")
   const fxBusRef = useRef<ScratchFxBus | null>(null)
 
   const selectFor = (key: string | null, fallbackIdx: number): FragmentRef | null => {
@@ -469,19 +479,64 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     })
   }
 
-  // ---- load a snippet onto a deck from the drawer ----------------------------
-  const onBankLoad = (deck: DeckId, r: FragmentRef) => {
+  // ---- a freshly-DISCOVERED phrase (saved to the bank in the Phrases tab) is
+  // auto-loaded onto the active deck so "discover → on the platter" is one move.
+  // The bank ref keyed by (lang|voice|text) is what the picker/loader selects on.
+  const onDiscovered = (saved: { text: string; language: string }) => {
     void ensureAudio(host.audioContext())
-    if (deck === "a") setSelKeyA(refKey(r))
+    const ref = bank.find(
+      (r) => r.text === saved.text && r.language === saved.language
+    )
+    if (!ref) return
+    if (aimDeck === "a") setSelKeyA(refKey(ref))
     else {
       if (!showDeckB) setShowDeckB(true)
-      setSelKeyB(refKey(r))
+      setSelKeyB(refKey(ref))
     }
+  }
+
+  // Open the bottom drawer on a given tab (header tools route here). A peeked
+  // drawer grows to working height; an already-open one just switches tab.
+  const openDrawer = (tab: string) => {
+    setDrawerTab(tab)
+    setDrawer((d) => (d === "peek" ? "open" : d))
   }
 
   const fxActive = chainHasActive(fxChain)
 
-  // ---- empty state ----------------------------------------------------------
+  // The shared drawer's tabs: the FULL master effect rack + catalog discovery.
+  const drawerTabs: DrawerTabDef[] = [
+    {
+      id: "fx",
+      label: "Effects",
+      render: () => (
+        <ScratchFxPanel
+          chain={fxChain}
+          bus={fxBusRef.current}
+          onToggle={onFxToggle}
+          onSetParams={onFxSetParams}
+        />
+      ),
+    },
+    {
+      id: "phrases",
+      label: "Phrases",
+      render: () => (
+        <ScratchPhrasePanel
+          host={host}
+          store={store}
+          audioSource={audioSource}
+          loadDeck={aimDeck}
+          onAimDeck={setAimDeck}
+          showDeckB={showDeckB}
+          onDiscovered={onDiscovered}
+        />
+      ),
+    },
+  ]
+
+  // ---- empty state: no snippet yet. Keep the shared drawer mounted (open on
+  // Phrases) so the user can DISCOVER + load their first phrase right here. -----
   if (bank.length === 0) {
     return (
       <div className="bl-scr">
@@ -489,10 +544,19 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           <Glyph name="wave" size={28} />
           <p className="bl-scr-empty-title">No snippet to scratch yet</p>
           <p className="bl-scr-empty-sub">
-            Open <strong>Phrases</strong> to audition words and save them to your
-            bank. Saved snippets can be loaded onto the turntable here.
+            Open <strong>Phrases</strong> below to find a phrase in the catalog and
+            load it onto the turntable.
           </p>
         </div>
+        <TrackDrawer
+          label="Scratch tools"
+          tabsLabel="Scratch tools"
+          tabs={drawerTabs}
+          activeTab="phrases"
+          onTab={openDrawer}
+          state={drawer === "peek" ? "open" : drawer}
+          setState={setDrawer}
+        />
       </div>
     )
   }
@@ -636,14 +700,13 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           <span>{showDeckB ? "One deck" : "Two decks"}</span>
         </button>
         <div className="bl-scr-header-tools">
+          {/* The header tools OPEN the shared bottom drawer on a tab (they no
+              longer toggle bespoke popovers). The drawer's own tab bar reflects
+              the active surface; "is-open" lights the tool when its tab is up. */}
           <button
             type="button"
-            className={`bl-scr-tool${fxOpen ? " is-open" : ""}${fxActive ? " is-active" : ""}`}
-            onClick={() => {
-              setFxOpen((v) => !v)
-              setBankOpen(false)
-            }}
-            aria-pressed={fxOpen}
+            className={`bl-scr-tool${drawer !== "peek" && drawerTab === "fx" ? " is-open" : ""}${fxActive ? " is-active" : ""}`}
+            onClick={() => openDrawer("fx")}
             aria-label="Master effects"
           >
             <Glyph name="sliders" size={16} />
@@ -651,13 +714,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           </button>
           <button
             type="button"
-            className={`bl-scr-tool${bankOpen ? " is-open" : ""}`}
-            onClick={() => {
-              setBankOpen((v) => !v)
-              setFxOpen(false)
-            }}
-            aria-pressed={bankOpen}
-            aria-label="Phrase bank"
+            className={`bl-scr-tool${drawer !== "peek" && drawerTab === "phrases" ? " is-open" : ""}`}
+            onClick={() => openDrawer("phrases")}
+            aria-label="Discover phrases"
           >
             <Glyph name="drawer" size={16} />
             <span>Phrases</span>
@@ -670,30 +729,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         {showDeckB && renderDeck("b", selectedB, rtB, viewB, loadingB, dirB, cutB, setCutB)}
       </div>
 
-      {/* The foot: the horizontal crossfader (A↔B, fixed at the bottom, big grab).
-          Never floats; always reachable on stage. The pop-ups (FX rack / bank
-          drawer) anchor here so the bottom is the management zone. */}
+      {/* The foot: the horizontal crossfader (A↔B, fixed above the drawer's peek
+          zone, big grab). Never floats; always reachable on stage. */}
       <div className="bl-scr-foot" data-bl-nocapture>
-        {fxOpen && (
-          <ScratchFxRack
-            chain={fxChain}
-            bus={fxBusRef.current}
-            onToggle={onFxToggle}
-            onSetParams={onFxSetParams}
-            onClose={() => setFxOpen(false)}
-          />
-        )}
-        {bankOpen && (
-          <ScratchBankDrawer
-            bank={bank}
-            keyA={selectedA ? refKey(selectedA) : null}
-            keyB={selectedB ? refKey(selectedB) : null}
-            showDeckB={showDeckB}
-            refKey={refKey}
-            onLoad={onBankLoad}
-            onClose={() => setBankOpen(false)}
-          />
-        )}
         {showDeckB && (
           <div className="bl-scr-xfade">
             <span className="bl-scr-xfade-end">A</span>
@@ -711,6 +749,19 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           </div>
         )}
       </div>
+
+      {/* ---- the SHARED bottom drawer (Effects / Phrases) — the same surface as
+          Drums / Instruments. Effects is the FULL master rack; Phrases discovers
+          from the whole catalog and loads a new phrase onto a deck. ---- */}
+      <TrackDrawer
+        label="Scratch tools"
+        tabsLabel="Scratch tools"
+        tabs={drawerTabs}
+        activeTab={drawerTab}
+        onTab={openDrawer}
+        state={drawer}
+        setState={setDrawer}
+      />
     </div>
   )
 }

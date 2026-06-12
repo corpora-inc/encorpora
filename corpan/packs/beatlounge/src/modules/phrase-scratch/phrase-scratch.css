@@ -18,8 +18,23 @@
   height: 100%;
   min-height: 0;
   min-width: 0;
-  padding: var(--bl-s3) var(--bl-s4) var(--bl-safe-bottom);
+  /* The shared bottom drawer (TrackDrawer) is absolutely positioned within this
+     page, so the page must be the positioning context + clip the drawer's slide.
+     Reserve the drawer's peek zone at the bottom so the crossfader / foot are
+     never permanently hidden behind the always-present handle + tab bar. */
+  position: relative;
+  overflow: hidden;
+  padding: var(--bl-s3) var(--bl-s4)
+    calc(var(--bl-drawer-peek, 96px) + var(--bl-safe-bottom, 0px) + var(--bl-s2));
   box-sizing: border-box;
+}
+
+/* The immersive mount is a `display:flex` ROW with `overflow:auto`; force the
+   scratch mount to a non-scrolling COLUMN so `.bl-scr { flex:1 }` fills the full
+   sheet and the absolutely-positioned drawer anchors to the page, not the row. */
+.bl-immersive-mount:has(> .bl-scr) {
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* ---------------------------------------------------------- top header
@@ -116,8 +131,16 @@
   white-space: nowrap;
 }
 
-/* ---------------------------------------------------------- picker list */
+/* ---------------------------------------------------------- picker list
+   OVERLAY (absolute) — opening the picker must never push the turntable down or
+   resize the platter. It floats below the picker button (anchored to the deck,
+   which is `position:relative`), above the stage, on the rail z-layer. */
 .bl-scr-picker {
+  position: absolute;
+  top: calc(var(--bl-hit) + var(--bl-s2));
+  left: 0;
+  right: 0;
+  z-index: var(--bl-z-rail);
   display: flex;
   flex-direction: column;
   gap: var(--bl-s1);
@@ -128,6 +151,7 @@
   border-radius: var(--bl-radius);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface-2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 .bl-scr-picker-row {
   display: flex;
@@ -598,202 +622,67 @@
   background: var(--bl-surface-2);
 }
 
-/* ---------------------------------------------------------- master FX rack (popup)
-   A premium popover above the crossfader controlling the OPTIONAL effect chain on
-   the scratch master (both decks). Fixed curated inserts; scrolls if tight. */
-.bl-scrfx,
-.bl-scrbank {
-  /* Overlay ABOVE the foot (absolutely positioned) so opening a panel never
-     reflows the decks / resizes a platter. Anchored just above the crossfader. */
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  transform: translateX(-50%);
-  margin-bottom: var(--bl-s2);
-  z-index: var(--bl-z-rail);
-  width: min(100%, 560px);
-  max-height: min(46vh, 360px);
-  display: flex;
-  flex-direction: column;
-  gap: var(--bl-s2);
-  padding: var(--bl-s3);
-  border-radius: var(--bl-radius);
-  border: 1px solid var(--bl-border);
-  background: var(--bl-surface-2);
-  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.45);
-  box-sizing: border-box;
+/* ----------------------------------------------- master FX rack (shared drawer)
+   The scratch master rack lives in the SHARED bottom drawer's Effects tab and
+   reuses the EXACT fx-rack effect-card classes (.bl-fxchain / .bl-fxcard /
+   .bl-fxcard-power / .bl-fxcard-xy) so it matches the rack on every other screen.
+   Only the chain's grid wrapper is scratch-local (the cards reflow like the
+   immersive rack). */
+.bl-scrfx-chain {
+  padding: var(--bl-s4);
 }
-.bl-scrfx-head,
-.bl-scrbank-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex: 0 0 auto;
-}
-.bl-scrfx-title,
-.bl-scrbank-title {
-  font-size: var(--bl-fs-label);
-  font-weight: 700;
-  color: var(--bl-text);
-}
-.bl-scrfx-close,
-.bl-scrbank-close {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--bl-hit);
-  height: var(--bl-hit);
-  border-radius: var(--bl-radius-sm);
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--bl-text-dim);
-  cursor: pointer;
-}
-.bl-scrfx-close:hover,
-.bl-scrbank-close:hover {
-  color: var(--bl-accent);
-}
-.bl-scrfx-body {
-  display: flex;
+.bl-scrfx-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   gap: var(--bl-s3);
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: var(--bl-s1);
-}
-.bl-scrfx-card {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--bl-s2);
-  padding: var(--bl-s2);
-  border-radius: var(--bl-radius-sm);
-  border: 1px solid var(--bl-border);
-  background: var(--bl-surface);
-  opacity: 0.62;
-  transition: opacity var(--bl-dur-fast) var(--bl-ease),
-    border-color var(--bl-dur-fast) var(--bl-ease);
-}
-.bl-scrfx-card.is-on {
-  opacity: 1;
-  border-color: var(--bl-accent);
-}
-.bl-scrfx-card-head {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--bl-s2);
-  min-height: 32px;
-  padding: 0 var(--bl-s2);
-  border: none;
-  background: transparent;
-  color: var(--bl-text);
-  font-size: var(--bl-fs-label);
-  font-weight: 600;
-  cursor: pointer;
-}
-.bl-scrfx-power {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--bl-surface-2);
-  box-shadow: inset 0 0 0 1px var(--bl-border);
-}
-.bl-scrfx-power.is-on {
-  background: var(--bl-accent);
-  box-shadow: var(--bl-glow) var(--bl-accent);
-}
-.bl-scrfx-knobs {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: var(--bl-s2);
-}
-.bl-scrfx-xy {
-  width: 132px;
-  height: 132px;
+  align-content: start;
 }
 
-/* ---------------------------------------------------------- phrase bank drawer */
-.bl-scrbank-search {
+/* ----------------------------------------------- phrases (catalog discovery)
+   The Phrases tab mounts the SHARED PhraseSamplerImmersive discovery flow; it
+   fills the drawer body. A compact A/B aim toggle (dual decks only) sits above. */
+.bl-scrphrase {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.bl-scrphrase .bl-disc {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.bl-scrphrase-aim {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
   flex: 0 0 auto;
-  min-height: var(--bl-hit);
+  padding: var(--bl-s2) var(--bl-s4) 0;
+}
+.bl-scrphrase-aim-label {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-scrphrase-aim-btn {
+  min-height: 32px;
   padding: 0 var(--bl-s3);
   border-radius: var(--bl-radius-pill);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
-  color: var(--bl-text);
-  font-size: var(--bl-fs-body);
-}
-.bl-scrbank-search:focus-visible {
-  outline: none;
-  border-color: var(--bl-accent);
-  box-shadow: var(--bl-glow) var(--bl-accent);
-}
-.bl-scrbank-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--bl-s1);
-  overflow: hidden auto;
-  -webkit-overflow-scrolling: touch;
-  min-height: 0;
-}
-.bl-scrbank-empty {
-  margin: var(--bl-s3) 0;
-  text-align: center;
   color: var(--bl-text-dim);
   font-size: var(--bl-fs-label);
-}
-.bl-scrbank-row {
-  display: flex;
-  align-items: center;
-  gap: var(--bl-s2);
-  min-height: var(--bl-hit);
-  padding: 0 var(--bl-s2);
-  border-radius: var(--bl-radius-sm);
-}
-.bl-scrbank-row:hover {
-  background: var(--bl-cell-off);
-}
-.bl-scrbank-text {
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: var(--bl-text);
-  font-size: var(--bl-fs-body);
-}
-.bl-scrbank-lang {
-  flex: 0 0 auto;
-  font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-micro);
-  color: var(--bl-text-dim);
-}
-.bl-scrbank-load {
-  flex: 0 0 auto;
-  display: flex;
-  gap: var(--bl-s1);
-}
-.bl-scrbank-deck {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--bl-radius-sm);
-  border: 1px solid var(--bl-border);
-  background: var(--bl-surface);
-  color: var(--bl-text-dim);
-  font-family: var(--bl-font-mono);
-  font-weight: 700;
-  font-size: var(--bl-fs-label);
+  font-weight: 600;
   cursor: pointer;
   transition: border-color var(--bl-dur-fast) var(--bl-ease),
     color var(--bl-dur-fast) var(--bl-ease);
 }
-.bl-scrbank-deck:hover {
+.bl-scrphrase-aim-btn:hover {
   border-color: var(--bl-accent);
   color: var(--bl-text);
 }
-.bl-scrbank-deck.is-on {
+.bl-scrphrase-aim-btn.is-on {
   border-color: var(--bl-accent);
   color: var(--bl-accent);
   box-shadow: var(--bl-glow) var(--bl-accent);

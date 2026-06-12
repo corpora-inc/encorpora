@@ -153,7 +153,16 @@ into the destination, so a **second deck** is just another instance. A "Two deck
 affordance reveals a second turntable + an equal-power **crossfader** (deck A ↔ deck B);
 the per-deck cut fader stays.
 
-## Master FX rack (`scratchFxBus.ts` + `scratchFxChain.ts` + `ScratchFxRack.tsx`)
+## The shared bottom drawer (Effects + Phrases) — UNIFIED surface
+
+Scratch hosts its tools in the SAME bottom drawer Drums / Instruments use
+(`../track-studio/TrackDrawer`), NOT a bespoke popover. The page (`.bl-scr`) is
+`position:relative; overflow:hidden` and reserves the drawer peek zone at the bottom, so
+the drawer slides over the stage on the one z-scale (never `document.body`), exactly like
+the other track-studio pages. The header "Effects" / "Phrases" tools just OPEN the drawer
+on their tab. One surface type, one open/close convention.
+
+### Master FX rack (`scratchFxBus.ts` + `scratchFxChain.ts` + `ScratchFxPanel.tsx`)
 
 The decks aren't a mixer track, but they still deserve a turntable's master FX. The
 decks connect into a native `input` GainNode (their `destination`); that bus is wired
@@ -163,22 +172,30 @@ once — the right model for one turntable. The inserts are the SAME `Effect`s t
 builds (`createEffect`, the shared `EFFECT_SPECS` param schemas), so a "Filter" here is
 the exact filter there. The rack is a FIXED curated set (Filter, Delay, Reverb, Crush),
 held in scratch-LOCAL React state — there is no document coupling (scratch never writes
-the doc / has no undo history; `actions: []`). Inserts start BYPASSED, so a fresh table
-is transparent (bypassed wet/dry → wet 0; bypassed filter → open). The chain is rebuilt
-only on add/remove; toggling + param moves go through the effect's own `update`/
-`setParam` (no graph rebuild). Realtime knob wiring mirrors the fx-rack: live moves drive
-`bus.liveParam`; release commits one local edit. Pure chain helpers (`scratchFxChain.ts`)
-are unit-tested (`scratchFxChain.test.ts`).
+the doc / has no undo history; `actions: []`), so it CAN'T be the doc-backed `TrackFxChain`.
+Instead `ScratchFxPanel` renders the SHARED fx-rack effect-CARD look — the EXACT
+`.bl-fxchain` / `.bl-fxcard` / `.bl-fxcard-power` / `.bl-fxcard-xy` classes the mixer rack
+uses (reused by class, no edits to fx-rack) — and drives the live bus directly so the
+cards match every other screen's rack. Inserts start BYPASSED. The chain is rebuilt only
+on add/remove; toggling + param moves go through the effect's own `update`/`setParam` (no
+graph rebuild). Realtime knob wiring mirrors the fx-rack: live moves drive `bus.liveParam`;
+release commits one local edit. Pure chain helpers (`scratchFxChain.ts`) are unit-tested.
 
-## Phrase bank drawer (`ScratchBankDrawer.tsx`)
+### Phrases → catalog DISCOVERY (`ScratchPhrasePanel.tsx`)
 
-Phrase management lives INSIDE scratch: a bottom drawer searches the saved bank
-(`bankSnippets`, the same data the per-deck picker reads — nothing duplicated) and loads
-any snippet onto deck A or B. Loading onto B reveals the second deck. The row marked A/B
-shows what each deck holds. The deck toggle moved to the TOP header (with the Effects +
-Phrases buttons), freeing the bottom as the management zone; the crossfader stays fixed
-at the bottom and the responsive landscape-row / portrait-stack deck layout is unchanged
-(the `--bl-platter` budgets account for the new header height).
+The "Phrases" drawer tab is phrase DISCOVERY, not an owned-list (the per-deck picker
+already covers owned snippets). It REUSES the full `phrase-sampler/PhraseSamplerImmersive`
+flow verbatim — search the WHOLE corpus → drill a language → audition → save a combo
+(renders TTS + IDB-caches + registers a `FragmentRef`). On save we auto-load the new
+snippet onto the aimed deck (A unless the user aims B), so "discover → on the platter" is
+one gesture. The empty state keeps the drawer mounted on Phrases so the first phrase is
+found right here.
+
+The deck toggle lives in the TOP header (with the Effects + Phrases buttons); the
+crossfader stays fixed above the drawer's peek zone and the responsive landscape-row /
+portrait-stack deck layout is unchanged. The per-deck picker dropdown is an absolutely
+positioned OVERLAY (anchored to its `position:relative` deck), so opening it never pushes
+or resizes the platter.
 
 ## Constraints honored
 

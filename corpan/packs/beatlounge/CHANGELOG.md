@@ -6,22 +6,32 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
-- **Scratch — a master EFFECTS RACK (popup).** An optional effect chain now sits on
-  the scratch MASTER output (between both decks' bus and the speakers), so a few
-  high-value DJ effects colour the whole turntable at once — Filter (with the same
-  Cutoff×Resonance XY pad as the mixer), Delay, Reverb, and Crush. A premium popover
-  (the "Effects" button in the header) toggles each insert and tweaks its knobs; the
-  rack reuses the SHARED effect factory + param schemas, so a knob here drives the
-  exact same Tone node the mixer would. Inserts start bypassed (the table is clean
-  until you dial one in); a dot on the button shows when any is engaged. No document
-  coupling — it's a live performance, like the rest of scratch.
-- **Scratch — a phrase BANK drawer.** Phrase management now lives INSIDE scratch: a
-  bottom drawer ("Phrases" in the header) searches the saved phrase bank and loads
-  any snippet onto deck A or B (the row marked A/B is what each deck holds), so you
-  never leave the turntable to manage what's on the decks. Loading onto B brings the
-  second deck up automatically. Reads the same bank data as the per-deck picker.
+- **Scratch — a master EFFECTS RACK in the shared drawer.** An optional effect chain
+  now sits on the scratch MASTER output (between both decks' bus and the speakers), so
+  a few high-value DJ effects colour the whole turntable at once — Filter (with the
+  same Cutoff×Resonance XY pad as the mixer), Delay, Reverb, and Crush. It's the FULL
+  effect rack from every other screen, mounted in the SAME bottom drawer Drums and
+  Instruments use (the "Effects" tab) — not a bespoke popover. The cards reuse the
+  shared fx-rack look and the shared effect factory + param schemas, so a knob here
+  drives the exact same Tone node the mixer would. Inserts start bypassed (the table
+  is clean until you dial one in); a dot on the header tool shows when any is engaged.
+  No document coupling — it's a live performance, like the rest of scratch.
+- **Scratch — "Phrases" now DISCOVERS from the whole catalog.** The "Phrases" tab in
+  the shared drawer is full phrase discovery: search the entire corpus, drill a
+  language, audition, and save — reusing the same discovery flow as the Phrases
+  screen. Saving loads the new phrase straight onto a deck (aim A or B when two decks
+  are up), so finding a phrase and dropping it on the platter is one move. The per-deck
+  picker still handles what's already on the table.
 
 ### Changed
+- **Scratch — UNIFIED on the shared bottom drawer (no more dinky popovers).** The
+  scratch FX rack and Phrases now live in the SAME drawer surface every other screen
+  uses (handle + tabs + sized panel, scrim/peek conventions), instead of two bespoke
+  mini-popovers anchored to the crossfader — one surface type, premium and consistent.
+- **Scratch — the per-deck phrase picker now OVERLAYS, never reflows.** Opening the
+  picker dropdown floats it above the stage (absolutely positioned on its deck) so it
+  never pushes the turntable down or resizes the platter — same fix class as the FX/
+  phrase surfaces (surfaces overlay the layout, never sit in flow).
 - **Home Drums tile — tapping the body now OPENS the Drums pane.** The mini-grid
   (and header) act as the "open Drums" affordance — a tap anywhere but the live
   controls enters the immersive step-grid. The −/+ density dial and Shuffle keep
