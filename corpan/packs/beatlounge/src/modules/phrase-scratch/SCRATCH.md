@@ -162,24 +162,30 @@ the drawer slides over the stage on the one z-scale (never `document.body`), exa
 the other track-studio pages. The header "Effects" / "Phrases" tools just OPEN the drawer
 on their tab. One surface type, one open/close convention.
 
-### Master FX rack (`scratchFxBus.ts` + `scratchFxChain.ts` + `ScratchFxPanel.tsx`)
+### Master FX rack (`scratchFxBus.ts` + `scratchFxLive.ts` + `FxChainView`)
 
 The decks aren't a mixer track, but they still deserve a turntable's master FX. The
 decks connect into a native `input` GainNode (their `destination`); that bus is wired
 `input → fx[0] → … → fx[n] → ctx.destination` using `Tone.connect` (Tone shares our
-AudioContext via `Tone.setContext`), so a few curated DJ inserts colour BOTH decks at
-once — the right model for one turntable. The inserts are the SAME `Effect`s the mixer
-builds (`createEffect`, the shared `EFFECT_SPECS` param schemas), so a "Filter" here is
-the exact filter there. The rack is a FIXED curated set (Filter, Delay, Reverb, Crush),
-held in scratch-LOCAL React state — there is no document coupling (scratch never writes
-the doc / has no undo history; `actions: []`), so it CAN'T be the doc-backed `TrackFxChain`.
-Instead `ScratchFxPanel` renders the SHARED fx-rack effect-CARD look — the EXACT
-`.bl-fxchain` / `.bl-fxcard` / `.bl-fxcard-power` / `.bl-fxcard-xy` classes the mixer rack
-uses (reused by class, no edits to fx-rack) — and drives the live bus directly so the
-cards match every other screen's rack. Inserts start BYPASSED. The chain is rebuilt only
-on add/remove; toggling + param moves go through the effect's own `update`/`setParam` (no
-graph rebuild). Realtime knob wiring mirrors the fx-rack: live moves drive `bus.liveParam`;
-release commits one local edit. Pure chain helpers (`scratchFxChain.ts`) are unit-tested.
+AudioContext via `Tone.setContext`), so the master chain colours BOTH decks at once —
+the right model for one turntable. The inserts are the SAME `Effect`s the mixer builds
+(`createEffect`, the shared `EFFECT_SPECS` param schemas), so a "Filter" here is the
+exact filter there.
+
+The rack is **the canonical `FxChainView`** — the SAME full, chainable pipeline drums /
+instruments / the mixer use: the add-effect menu over the WHOLE palette, the insert
+list (each a card with a power toggle + params + the Filter XY pad + the delay
+note-length presets), REMOVE, and REORDER (move up/down). There is **no bespoke scratch
+FX rack** — we unify on the one canonical view and make it better. Because scratch is a
+hand-driven performance with **no document coupling** (it never writes the doc / has no
+undo history; `actions: []`), it can't use the doc-backed `TrackFxChain` adapter;
+instead `PhraseScratchImmersive` renders `FxChainView` with a **live-bus adapter**:
+the chain lives in scratch-LOCAL React state (`scratchFxLive.ts`, pure + unit-tested);
+`onAdd`/`onRemove`/`onMove` rebuild the chain and push it with `bus.setInserts`;
+`onToggle`/`onParamCommit` re-apply ONE insert via `bus.updateInsert`; knob/XY drags
+drive the live node in real time via `bus.liveParam`. The structural chain is rebuilt
+only on add/remove/reorder; toggling + param moves go through the effect's own
+`update`/`setParam` (no graph rebuild). A freshly-added insert starts ENABLED (DJ-natural).
 
 ### Phrases → catalog DISCOVERY (`ScratchPhrasePanel.tsx`)
 

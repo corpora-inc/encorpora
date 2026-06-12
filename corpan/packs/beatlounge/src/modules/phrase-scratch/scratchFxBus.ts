@@ -21,7 +21,7 @@
 
 import * as Tone from "tone"
 import type { Effect } from "../../contracts/engine"
-import type { EffectKind, EffectNode } from "../../model/document"
+import type { EffectNode } from "../../model/document"
 import { createEffect } from "../../effects/createEffect"
 
 /** One live insert on the scratch master: its config node + the built Effect. */
@@ -117,11 +117,3 @@ export const createScratchFxBus = (ctx: AudioContext): ScratchFxBus => {
     },
   }
 }
-
-/** The curated DJ insert palette for the scratch rack, in chain order. */
-export const SCRATCH_FX_KINDS: readonly EffectKind[] = [
-  "filter",
-  "delay",
-  "reverb",
-  "bitcrusher",
-]
