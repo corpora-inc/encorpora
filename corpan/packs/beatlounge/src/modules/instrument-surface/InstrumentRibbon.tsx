@@ -138,6 +138,10 @@ export const InstrumentRibbon = ({
   // The fixed pool of per-finger lit markers (positioned directly via the DOM,
   // never via React state, so multitouch lighting stays 60fps).
   const markerRefs = useRef<(HTMLSpanElement | null)[]>([])
+  // Per-finger note labels (one per marker) — EACH finger reads its OWN note, so a
+  // two-finger chord shows both names and a release clears only that finger's label
+  // (no single shared readout that strands the last note under another finger).
+  const markerLabelRefs = useRef<(HTMLSpanElement | null)[]>([])
   // Per-pointer live voices — POLYPHONY (ported from PlaySurface's touch map).
   const touches = useRef<Map<number, Touch>>(new Map())
   // Latest control values for the pointer closures (avoid stale captures @60fps).
@@ -171,6 +175,7 @@ export const InstrumentRibbon = ({
       for (const t of map.values()) t.handle?.release()
       map.clear()
       for (const node of markerRefs.current) if (node) node.style.opacity = "0"
+      for (const label of markerLabelRefs.current) if (label) label.textContent = ""
     }
   }, [trackId])
 
@@ -217,19 +222,23 @@ export const InstrumentRibbon = ({
     el.style.setProperty("--bl-ribbon-on", "1")
   }
 
-  /** Light EVERY currently-held note: one marker per active pointer, positioned
-   *  straight on the DOM pool node (no React churn). Unused pool slots hide. */
+  /** Light EVERY currently-held note: one marker + its OWN note label per active
+   *  pointer, positioned straight on the DOM pool node (no React churn). Each
+   *  finger reads its own note; unused pool slots (lifted fingers) hide + clear. */
   const paintMarkers = () => {
-    const xs: number[] = []
-    for (const t of touches.current.values()) xs.push(t.x)
+    const list = [...touches.current.values()]
     for (let i = 0; i < MARKER_POOL; i++) {
       const node = markerRefs.current[i]
+      const label = markerLabelRefs.current[i]
       if (!node) continue
-      if (i < xs.length) {
-        node.style.left = `${xs[i] * 100}%`
+      if (i < list.length) {
+        const t = list[i]
+        node.style.left = `${t.x * 100}%`
         node.style.opacity = "1"
+        if (label) label.textContent = noteLabel(t.midi)
       } else if (node.style.opacity !== "0") {
         node.style.opacity = "0"
+        if (label) label.textContent = ""
       }
     }
   }
@@ -337,8 +346,13 @@ export const InstrumentRibbon = ({
     paintMarkers()
     if (touches.current.size === 0) {
       setPlaying(false)
+      setLiveLabel("") // no fingers → drop the aria value (no stale note)
       const el = surfaceRef.current
       if (el) el.style.setProperty("--bl-ribbon-on", "0")
+    } else {
+      // Aria reflects a finger that's still down (not the one just lifted).
+      const last = [...touches.current.values()].pop()
+      if (last) setLiveLabel(noteLabel(last.midi))
     }
     try {
       surfaceRef.current?.releasePointerCapture(e.pointerId)
@@ -499,7 +513,8 @@ export const InstrumentRibbon = ({
         {/* finger comet + active column glow (the PRIMARY finger) */}
         <span className="bl-ribbon-comet" aria-hidden="true" />
         <span className="bl-ribbon-beam" aria-hidden="true" />
-        {/* one lit marker per active pointer — multitouch lights ALL held notes */}
+        {/* one lit marker + its OWN note label per active pointer — multitouch
+            lights ALL held notes and each finger reads its independent note */}
         <div className="bl-ribbon-marks" aria-hidden="true">
           {Array.from({ length: MARKER_POOL }, (_, i) => (
             <span
@@ -509,14 +524,16 @@ export const InstrumentRibbon = ({
               }}
               className="bl-ribbon-mark"
               style={{ opacity: 0 }}
-            />
+            >
+              <span
+                ref={(n) => {
+                  markerLabelRefs.current[i] = n
+                }}
+                className="bl-ribbon-mark-label"
+              />
+            </span>
           ))}
         </div>
-        {liveLabel && playing && (
-          <span className="bl-ribbon-readout" aria-hidden="true">
-            {liveLabel}
-          </span>
-        )}
         {!playing && (
           <span className="bl-ribbon-hint" aria-hidden="true">
             Slide to play

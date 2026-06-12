@@ -183,6 +183,22 @@
   /* opacity is toggled in JS; soften the on/off so a lift doesn't snap-flicker */
   transition: opacity var(--bl-dur-fast) var(--bl-ease);
 }
+/* each finger's OWN note label, pinned to the foot of its marker bar — so a chord
+   shows every note and lifting one finger clears only that one (no shared readout
+   stranding the last note under another finger). textContent is set in JS. */
+.bl-ribbon-mark-label {
+  position: absolute;
+  left: 50%;
+  bottom: var(--bl-s3);
+  transform: translateX(-50%);
+  line-height: 1;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-accent-hot);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--bl-accent) 60%, transparent);
+  white-space: nowrap;
+  pointer-events: none;
+}
 
 /* the finger comet — a soft glowing puck at (x, y) */
 .bl-ribbon-comet {

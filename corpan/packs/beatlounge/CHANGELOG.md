@@ -26,6 +26,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Fixed
+- **Ribbon note readouts are per-finger now.** A single shared readout showed the
+  last-touched note, so playing a C3 + an E5 and lifting the E5 left "E5" stranded
+  under the C3. Each active finger now carries its OWN note label on its lit marker;
+  a chord shows every name and a release clears only that finger's label.
 - **Live tile expand button no longer steals a column.** The Ribbon (and Drums)
   home widgets reserved a ~30px right column for the shell's floating expand
   control, so the ribbon strip + surface stopped short of the right edge. The
