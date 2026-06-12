@@ -43,9 +43,10 @@ export type ExperienceMeta = {
 /**
  * The experience metadata. `phrase_main` (Phrase Flip) is a STRONG language-
  * learning pick: narrow `study`/`speak` categories (no wild/game) and
- * `featuredFor: ["study","speak"]`, so it rises to the top when a user signals
- * language learning — while its categories keep it out of the games/wild lanes
- * and the readers (lower `order` + kidFriendly) still lead a no-interest cold start.
+ * `featuredFor: ["study"]`, so it leads when a user signals STUDY — while the
+ * conversational tutor (`tutomaton`) stays the star for SPEAK (and study+speak).
+ * Its categories keep it out of the games/wild lanes, and the readers (lower
+ * `order` + kidFriendly) still lead a no-interest cold start.
  */
 export const EXPERIENCES: ExperienceMeta[] = [
   {
@@ -129,9 +130,10 @@ export const EXPERIENCES: ExperienceMeta[] = [
     nameKey: "experiences.phrase_main.name",
     blurbKey: "experiences.phrase_main.blurb",
     order: 4,
-    // A core language-learning experience — featured for study/speak so it leads
-    // when the user wants to learn (was under-ranked at order 8, unfeatured).
-    featuredFor: ["study", "speak"],
+    // A core language-learning experience — featured for STUDY so Phrase Flip leads
+    // when the user wants to study (was under-ranked at order 8, unfeatured). The
+    // conversational tutor (tutomaton) stays the star for SPEAK / study+speak.
+    featuredFor: ["study"],
   },
   {
     // On-device multilingual LLM tutor (Plus). Strong fit for learners/polyglots
