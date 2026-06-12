@@ -38,18 +38,13 @@ describe("noteLengths", () => {
     expect(closestNoteLengthId(0.31, 120)).toBeNull()
   })
 
-  it("exposes the full 1/16 → whole set, short → long", () => {
+  it("exposes the COMPLETE 1/32 → 1/1 grid (plain · triplet · dotted), short → long", () => {
     expect(NOTE_LENGTH_PRESETS.map((p) => p.id)).toEqual([
-      "1/16",
-      "1/8t",
-      "1/8",
-      "1/4",
-      "1/2t",
-      "1/4.",
-      "1/2",
-      "1/2.",
-      "1/1",
+      "1/32t", "1/32", "1/16t", "1/32.", "1/16", "1/8t", "1/16.", "1/8", "1/4t",
+      "1/8.", "1/4", "1/2t", "1/4.", "1/2", "1/1t", "1/2.", "1/1", "1/1.",
     ])
+    // every note value 1/32..1/1 in all three flavours = 6 × 3 = 18 chips
+    expect(NOTE_LENGTH_PRESETS).toHaveLength(18)
     // ascending duration (the row reads short → long)
     const secs = NOTE_LENGTH_PRESETS.map((p) => noteLengthSeconds(p.fraction, 120))
     expect(secs).toEqual([...secs].sort((a, b) => a - b))

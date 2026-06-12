@@ -22,21 +22,32 @@ export interface NoteLengthPreset {
 }
 
 /**
- * The quick-set chips for the delay card, ordered short → long: a tight 1/16
- * stutter up to a whole-note wash, with the common triplet + dotted flavours.
- * (dotted = ×1.5, triplet = ×2/3.) At slow tempos the longest values can exceed
- * the delay's maxDelay — the card dims/clamps those (see `MAX_DELAY_SECONDS`).
+ * The COMPLETE quick-set grid for the delay card, ordered short → long: every
+ * note value 1/32 → 1/1, each in its plain · triplet (×2/3) · dotted (×1.5)
+ * flavour. At slow tempos the longest values can exceed the delay's maxDelay —
+ * the card dims/clamps those (see `MAX_DELAY_SECONDS`).
  */
+const DOT = 1.5
+const TRIP = 2 / 3
 export const NOTE_LENGTH_PRESETS: readonly NoteLengthPreset[] = [
+  { id: "1/32t", label: "1/32T", fraction: (1 / 32) * TRIP },
+  { id: "1/32", label: "1/32", fraction: 1 / 32 },
+  { id: "1/16t", label: "1/16T", fraction: (1 / 16) * TRIP },
+  { id: "1/32.", label: "1/32·", fraction: (1 / 32) * DOT },
   { id: "1/16", label: "1/16", fraction: 1 / 16 },
-  { id: "1/8t", label: "1/8T", fraction: (1 / 8) * (2 / 3) },
+  { id: "1/8t", label: "1/8T", fraction: (1 / 8) * TRIP },
+  { id: "1/16.", label: "1/16·", fraction: (1 / 16) * DOT },
   { id: "1/8", label: "1/8", fraction: 1 / 8 },
+  { id: "1/4t", label: "1/4T", fraction: (1 / 4) * TRIP },
+  { id: "1/8.", label: "1/8·", fraction: (1 / 8) * DOT },
   { id: "1/4", label: "1/4", fraction: 1 / 4 },
-  { id: "1/2t", label: "1/2T", fraction: (1 / 2) * (2 / 3) },
-  { id: "1/4.", label: "1/4·", fraction: (1 / 4) * 1.5 },
+  { id: "1/2t", label: "1/2T", fraction: (1 / 2) * TRIP },
+  { id: "1/4.", label: "1/4·", fraction: (1 / 4) * DOT },
   { id: "1/2", label: "1/2", fraction: 1 / 2 },
-  { id: "1/2.", label: "1/2·", fraction: (1 / 2) * 1.5 },
+  { id: "1/1t", label: "1/1T", fraction: 1 * TRIP },
+  { id: "1/2.", label: "1/2·", fraction: (1 / 2) * DOT },
   { id: "1/1", label: "1/1", fraction: 1 },
+  { id: "1/1.", label: "1/1·", fraction: 1 * DOT },
 ] as const
 
 /** The delay's maxDelay headroom (seconds) — longer note lengths clamp to this. */
