@@ -8,7 +8,7 @@
 import { describe, expect, it } from "vitest"
 import { createDefaultDoc, isInstrumentTrack } from "../../model/document"
 import type { BeatloungeDoc, NoteEvent } from "../../model/document"
-import { PPQ } from "../../model/timing"
+import { PPQ, gridTicks } from "../../model/timing"
 import { reduce } from "../../model/reduce"
 import { activePitches } from "../../music/resolver"
 import { METRIC_PROFILES, TRANSITION_TABLES } from "../../music/melody"
@@ -223,5 +223,75 @@ describe("no melodic track", () => {
     const r = buildScoreCommands(d, { trackId: "nope", op: "add", metric, table, seed: 1 })
     expect(r.commands.length).toBe(0)
     void drum
+  })
+})
+
+describe("every laid note is ON the track's visible grid (no phantom hits)", () => {
+  /** The synth track's grid in the default doc (denominator 8 ⇒ 480-tick steps).
+   *  The melody corpus walks 16ths (240-tick), so without snapping a "+" would
+   *  drop notes between visible 8th steps — phantom hits the score can't show. */
+  const synthGrid = (d: BeatloungeDoc): { id: string; step: number } => {
+    const t = d.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind !== "drumSampler")
+    if (!t || !isInstrumentTrack(t)) throw new Error("no melodic track")
+    return { id: t.id, step: gridTicks(t.grid) }
+  }
+
+  it("layer notes snap to the track grid (every tick a multiple of the step)", () => {
+    const d = doc()
+    const { id, step } = synthGrid(d)
+    expect(step).toBeGreaterThan(SIXTEENTH_TICKS) // a coarser grid → real snapping
+    // Clear so we observe only the layer's placements.
+    const cleared = reduce(d, { t: "setNotes", trackId: id, notes: [] })
+    for (let seed = 1; seed <= 20; seed++) {
+      const r = buildScoreCommands(cleared, { trackId: id, op: "add", metric, table, seed })
+      const cmd = r.commands[0]
+      if (!cmd || cmd.t !== "setNotes") continue
+      for (const n of cmd.notes) expect(n.tick % step).toBe(0)
+    }
+  })
+
+  it("auto-play notes snap when a grid is supplied", () => {
+    const d = doc()
+    const { step } = synthGrid(d)
+    const grid = { denominator: 8 as const }
+    const notes = buildAutoPlayNotes(d, { metric, table, seed: 5, grid })
+    expect(notes.length).toBeGreaterThan(0)
+    for (const n of notes) expect(n.tick % step).toBe(0)
+  })
+})
+
+describe("+ ALWAYS adds ≥1 note (never a silent 'No room to layer')", () => {
+  const melodicId = (d: BeatloungeDoc): string => {
+    const t = d.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind !== "drumSampler")
+    if (!t) throw new Error("no melodic track")
+    return t.id
+  }
+
+  it("a + on an empty track always adds at least one note (every seed)", () => {
+    const d = doc()
+    const id = melodicId(d)
+    const cleared = reduce(d, { t: "setNotes", trackId: id, notes: [] })
+    for (let seed = 1; seed <= 20; seed++) {
+      const r = buildScoreCommands(cleared, { trackId: id, op: "add", metric, table, seed })
+      expect(r.count).toBeGreaterThanOrEqual(1)
+      expect(r.summary).not.toBe("No room to layer")
+    }
+  })
+
+  it("a + at a vanishing density still adds ≥1 (the re-roll / force guarantee)", () => {
+    const d = doc()
+    const id = melodicId(d)
+    const cleared = reduce(d, { t: "setNotes", trackId: id, notes: [] })
+    for (let seed = 1; seed <= 20; seed++) {
+      const r = buildScoreCommands(cleared, {
+        trackId: id,
+        op: "add",
+        metric,
+        table,
+        density: 0.0001,
+        seed,
+      })
+      expect(r.count).toBeGreaterThanOrEqual(1)
+    }
   })
 })

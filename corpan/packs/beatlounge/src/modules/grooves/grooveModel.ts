@@ -21,7 +21,7 @@ import type { Command, TrackInit } from "../../model/command"
 import type { BeatloungeDoc, Midi, NoteEvent, FragmentEvent } from "../../model/document"
 import { isFragmentTrack, isInstrumentTrack } from "../../model/document"
 import { newId } from "../../model/ids"
-import { gridTicks, stepsInLoop } from "../../model/timing"
+import { gridTicks, quantizeTick, stepsInLoop, type Grid } from "../../model/timing"
 import {
   applyRhythm,
   scatterRhythm,
@@ -127,6 +127,15 @@ export const ADD_DENSITY_STEP_PHRASES = 0.05
 /** Per-−-tap fraction of CURRENT hits removed — smaller than a + adds (gentle). */
 export const SPARSIFY_FRACTION = 0.3
 
+/**
+ * Bounded re-roll cap for the "+ always adds ≥1" guarantee. A probabilistic "+"
+ * can roll ZERO onsets (sparse phrase density) OR have every rolled onset already
+ * occupied; rather than fail, we re-roll with a fresh seed up to this many times,
+ * then fall back to a deterministic forced placement. Keeps the engine from ever
+ * returning "nothing happened" on a "+", with no unbounded loop.
+ */
+export const PLUS_REROLL_CAP = 6
+
 export interface GrooveBuildOpts {
   /**
    * Which grid this groove drives. REQUIRED — the host always knows. Defaults to
@@ -193,6 +202,53 @@ const makeRng = (seed: number): (() => number) => {
  *  the passed rng → a default. So each UI press is different but reproducible. */
 const resolveRng = (opts: GrooveBuildOpts): (() => number) =>
   opts.seed != null ? makeRng(opts.seed) : opts.rng ?? makeRng(1)
+
+/**
+ * Snap a placed tick to the TRACK'S VISIBLE GRID step. A world rhythm's cell grid
+ * (e.g. triplets — `stepsPerBeat: 3` ⇒ 320-tick cells) can land notes BETWEEN the
+ * 16th-note steps the UI renders → "phantom hits" the user can't see or edit. We
+ * quantize every placement to the nearest grid cell so a placed note is ALWAYS on
+ * a cell the grid draws. Collisions from snapping are removed by the caller's
+ * (tick, …) de-dupe. Pure; uses the canonical `quantizeTick`.
+ */
+const snapTickToGrid = (tick: number, grid: Grid): number => quantizeTick(tick, grid)
+
+/**
+ * GUARANTEE ≥1 drum hit for a "+": when the probabilistic scatter rolled zero
+ * onsets, re-roll with fresh seeds (bounded by PLUS_REROLL_CAP), then — if STILL
+ * empty — force one hit on the groove's STRONGEST onset cell, on the first
+ * selected row. So a "+" always adds at least one audible, on-grid hit. Pure +
+ * deterministic given the seed; no unbounded loop.
+ */
+const guaranteedScatter = (
+  rhythm: Rhythm,
+  selected: number[],
+  opts: GrooveBuildOpts,
+  loopTicks: number,
+  density: number | undefined
+): NonNullable<ReturnType<typeof scatterRhythm>> => {
+  const baseSeed = opts.seed ?? 1
+  for (let i = 1; i <= PLUS_REROLL_CAP; i++) {
+    const rng = makeRng((baseSeed + i * 0x9e3779b1) | 0)
+    const placements = scatterRhythm(rhythm, selected, rng, {
+      loopTicks,
+      density,
+      intensity: opts.intensity,
+    })
+    if (placements.length > 0) return placements
+  }
+  // Deterministic fallback: the loudest/most-likely onset cell of the rhythm.
+  const profile = grooveProfile(rhythm)
+  const ct = cellTicks(rhythm)
+  let best = 0
+  for (let c = 1; c < profile.length; c++) {
+    if ((profile[c]?.prob ?? 0) > (profile[best]?.prob ?? 0)) best = c
+  }
+  const step = profile[best]
+  const intensity = opts.intensity == null ? 1 : Math.max(0, opts.intensity)
+  const vel = Math.max(0, Math.min(1, (step?.velMax ?? 0.9) * intensity))
+  return [{ tick: best * ct, pitch: selected[0], velocity: vel }]
+}
 
 export interface GrooveBuildResult {
   commands: Command[]
@@ -309,25 +365,34 @@ const buildDrumGroove = (
   const addDensity =
     opts.op === "add" ? (opts.density ?? ADD_DENSITY_STEP_DRUMS) : opts.density
 
+  // Snap every placement onto the drum track's visible grid so a hit is never
+  // off-grid (a triplet rhythm on a 16th grid would otherwise drop phantom hits).
+  const snap = (tick: number): number => snapTickToGrid(tick, refGrid)
+
   let grooveNotes: Omit<NoteEvent, "id">[]
   if (selected.length > 0) {
-    // NEW probabilistic scatter across exactly the selected rows.
-    const placements = scatterRhythm(rhythm, selected, resolveRng(opts), {
+    // NEW probabilistic scatter across exactly the selected rows. A "+" GUARANTEES
+    // at least one hit: a sparse roll that yields nothing is re-rolled (fresh
+    // seed) up to PLUS_REROLL_CAP, then forced onto the strongest onset.
+    let placements = scatterRhythm(rhythm, selected, resolveRng(opts), {
       loopTicks,
       density: addDensity,
       intensity: opts.intensity,
     })
+    if (placements.length === 0 && opts.op === "add") {
+      placements = guaranteedScatter(rhythm, selected, opts, loopTicks, addDensity)
+    }
     grooveNotes = placements.map((p) => ({
-      tick: p.tick,
+      tick: snap(p.tick),
       duration: dur,
       pitch: p.pitch,
       velocity: p.velocity,
     }))
   } else {
-    // No selection → the groove on its natural kit voices (unchanged behaviour).
+    // No selection → the groove on ALL its natural kit voices (every lane).
     const placements = applyRhythm(rhythm, { loopTicks, intensity: opts.intensity })
     grooveNotes = placements.map((p) => ({
-      tick: p.tick,
+      tick: snap(p.tick),
       duration: dur,
       pitch: p.pitch,
       velocity: p.velocity,
@@ -464,17 +529,17 @@ const buildPhraseGroove = (
     }
   }
   // Selected snippet rows → put the groove on exactly those rows (like drums).
-  const rows = (target.selectedSnippetIds ?? [])
+  // NO selection ⇒ ALL snippet rows (every bank entry), so the groove spreads
+  // across every phrase row, not a single random snippet per onset.
+  const selectedRows = (target.selectedSnippetIds ?? [])
     .map((id) => bank.findIndex((ref) => ref.id === id))
     .filter((i) => i >= 0)
+  const rows = selectedRows.length > 0 ? selectedRows : bank.map((_, i) => i)
 
   // ---- "−" (sparser): peel a fraction of the targeted snippet rows' fragments --
   if (opts.op === "remove") {
     return sparsifyPhraseGroove(rhythm, phraseId, phraseTrack.fragments, target, bank)
   }
-
-  // Fresh-seeded each press so scatters differ; pure/seeded so it's testable.
-  const rng = resolveRng(opts)
 
   const commands: Command[] = []
   // Grow the loop so a long cycle isn't truncated, exactly like the drums path.
@@ -499,30 +564,70 @@ const buildPhraseGroove = (
     opts.op === "add"
       ? (opts.phraseDensity ?? ADD_DENSITY_STEP_PHRASES)
       : (opts.phraseDensity ?? 0.6)
-  const phrasePlacements = scatterPhrases(rhythm, bank.length, rng, {
-    loopTicks,
-    density: phraseDensity,
-    rows,
-  })
-  let placed = 0
-  for (const pp of phrasePlacements) {
-    const ref = bank[pp.snippetIndex]
-    if (!ref) continue
-    const key = `${pp.tick}:${ref.id}`
-    if (occupied.has(key)) continue // same word already on this tick — don't dup
-    occupied.add(key)
-    const frag: Omit<FragmentEvent, "id"> = {
-      tick: pp.tick,
-      fragmentId: ref.id,
-      gain: 0.9,
-      pitchSemis: 0, // phrases placed at NATURAL pitch — never shifted
+
+  // The phrase track's visible grid — every placement snaps to it so a word is
+  // never dropped between the steps the UI renders (phantom phrase placement).
+  const phraseGrid = phraseTrack.grid
+
+  // Roll scatter placements (snapped to the grid, de-duped by tick+snippet). A "+"
+  // GUARANTEES ≥1 placement: a sparse/empty roll is re-rolled with a fresh seed
+  // up to PLUS_REROLL_CAP, then forced onto the strongest onset. No silent no-op.
+  const rollPlacements = (rng: () => number): { frag: Omit<FragmentEvent, "id">; key: string }[] => {
+    const out: { frag: Omit<FragmentEvent, "id">; key: string }[] = []
+    const seen = new Set<string>()
+    for (const pp of scatterPhrases(rhythm, bank.length, rng, {
+      loopTicks,
+      density: phraseDensity,
+      rows,
+    })) {
+      const ref = bank[pp.snippetIndex]
+      if (!ref) continue
+      const tick = snapTickToGrid(pp.tick, phraseGrid)
+      const key = `${tick}:${ref.id}`
+      if (occupied.has(key) || seen.has(key)) continue // same word already here
+      seen.add(key)
+      out.push({
+        key,
+        frag: { tick, fragmentId: ref.id, gain: 0.9, pitchSemis: 0 }, // natural pitch
+      })
     }
+    return out
+  }
+
+  let toPlace = rollPlacements(resolveRng(opts))
+  if (toPlace.length === 0 && opts.op === "add") {
+    const baseSeed = opts.seed ?? 1
+    for (let i = 1; i <= PLUS_REROLL_CAP && toPlace.length === 0; i++) {
+      toPlace = rollPlacements(makeRng((baseSeed + i * 0x9e3779b1) | 0))
+    }
+    if (toPlace.length === 0) {
+      // Deterministic fallback: force the strongest onset cell, first row's snippet.
+      const profile = grooveProfile(rhythm)
+      const ct = cellTicks(rhythm)
+      let best = 0
+      for (let c = 1; c < profile.length; c++) {
+        if ((profile[c]?.prob ?? 0) > (profile[best]?.prob ?? 0)) best = c
+      }
+      const ref = bank[rows[0]]
+      if (ref) {
+        const tick = snapTickToGrid(best * ct, phraseGrid)
+        const key = `${tick}:${ref.id}`
+        if (!occupied.has(key)) {
+          toPlace = [{ key, frag: { tick, fragmentId: ref.id, gain: 0.9, pitchSemis: 0 } }]
+        }
+      }
+    }
+  }
+
+  let placed = 0
+  for (const { frag } of toPlace) {
     commands.push({ t: "placeFragment", trackId: phraseId, frag })
     placed++
   }
 
-  // No onsets landed (e.g. every onset already occupied in layer mode): emit no
-  // command so the caller can warn rather than dispatch an empty batch.
+  // Truly nothing to place (e.g. every onset already occupied in layer mode and a
+  // "remove"/legacy path): emit no command so the caller can warn rather than
+  // dispatch an empty batch. A "+" never reaches here (guaranteed ≥1 above).
   if (placed === 0) {
     return {
       commands: [],

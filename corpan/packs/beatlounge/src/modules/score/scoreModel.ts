@@ -29,7 +29,7 @@
 import type { Command } from "../../model/command"
 import type { BeatloungeDoc, NoteEvent } from "../../model/document"
 import { findTrack, isInstrumentTrack } from "../../model/document"
-import { PPQ, stepsInLoop, tickForStep, type Grid, type Tick } from "../../model/timing"
+import { PPQ, quantizeTick, stepsInLoop, tickForStep, type Grid, type Tick } from "../../model/timing"
 import { activePitches, type ActivePitches } from "../../music/resolver"
 import {
   degreeToPitch,
@@ -58,6 +58,15 @@ export const ADD_DENSITY_STEP = 0.5
 /** Per-"−"-tap fraction of CURRENT notes removed — a SMALLER bite than "+" adds
  *  (gentle, asymmetric: it takes more "−" taps to undo a "+"). */
 export const SPARSIFY_FRACTION = 0.3
+
+/**
+ * Bounded re-roll cap for the "+ always adds ≥1 note" guarantee. A layer whose
+ * generated notes all collide with existing notes (occupied cells) is re-rolled
+ * with a fresh seed up to this many times before a deterministic forced note, so
+ * a "+" never reports "No room to layer" while there's open space. No unbounded
+ * loop.
+ */
+export const PLUS_REROLL_CAP = 6
 
 // ===================================================================== rows
 /**
@@ -246,6 +255,36 @@ const loopBars = (doc: BeatloungeDoc, metric: MetricProfile): number => {
 }
 
 /**
+ * The deterministic fallback note for the "+ always adds ≥1" guarantee: the
+ * STRONGEST metric onset of the profile, on the first selected degree (or the
+ * tonic), snapped to the track grid. Used only when every re-rolled layer
+ * collided with existing notes — so a "+" never silently does nothing.
+ */
+const forcedLayerNote = (
+  doc: BeatloungeDoc,
+  ap: ActivePitches,
+  tonicMidi: number,
+  grid: Grid,
+  opts: ScoreBuildOpts,
+  snapToSelected: (degree: number) => number
+): Omit<NoteEvent, "id"> | null => {
+  const w = opts.metric.weights
+  if (!w || w.length === 0) return null
+  let best = 0
+  for (let p = 1; p < w.length; p++) if ((w[p] ?? 0) > (w[best] ?? 0)) best = p
+  const degree = snapToSelected(0)
+  const pitch = degreeToPitch(degree, ap, tonicMidi)
+  const dur = Math.max(1, sixteenthsToTicks(1))
+  void doc
+  return {
+    tick: quantizeTick(sixteenthsToTicks(best), grid),
+    duration: dur,
+    pitch: Math.max(0, Math.min(127, pitch.midi)),
+    velocity: clamp01(0.4 + 0.6 * (w[best] ?? 0.5)),
+  }
+}
+
+/**
  * Build the commands for the score's +/− dial. Dispatches by `op`:
  *   • add    — generate a melody layer into the selected rows, additive.
  *   • remove — thin the current melody notes, lowest-weight / off-beat first.
@@ -260,7 +299,7 @@ export const buildScoreCommands = (
   }
   return opts.op === "remove"
     ? sparsifyMelody(doc, track.id, track.notes)
-    : layerMelody(doc, track.id, track.notes, opts)
+    : layerMelody(doc, track.id, track.notes, track.grid, opts)
 }
 
 /**
@@ -274,13 +313,13 @@ const layerMelody = (
   doc: BeatloungeDoc,
   trackId: string,
   existing: readonly NoteEvent[],
+  grid: Grid,
   opts: ScoreBuildOpts
 ): ScoreBuildResult => {
   const ap = activePitches(doc, 0)
   const size = ap.cents.length > 0 ? ap.cents.length : 7
   const octaves = Math.max(1, Math.floor(opts.octaves ?? 2))
   const tonicMidi = workingTonicMidi(ap, opts.centerMidi ?? 60)
-  const rng = resolveRng(opts)
 
   // The eligible degree window (matches degreeRows): hi … lo.
   const hi = octaves * size
@@ -305,26 +344,29 @@ const layerMelody = (
     return best
   }
 
-  // Generate a raw degree-relative line for the whole loop at the per-tap density.
   const bars = loopBars(doc, opts.metric)
   const density = opts.density ?? ADD_DENSITY_STEP
-  const raw: MelodyNote[] = generateMelody(
-    { table: opts.table, metric: opts.metric, bars, density, startDegree: 0 },
-    rng
-  )
 
-  // Resolve each note into a placeable NoteEvent, constrained to the rows.
-  const fresh: Omit<NoteEvent, "id">[] = []
-  for (const n of raw) {
-    const degree = snapToSelected(n.degree)
-    const p = degreeToPitch(degree, ap, tonicMidi)
-    const tick = sixteenthsToTicks(n.pos)
-    const duration = Math.max(1, sixteenthsToTicks(n.dur))
-    fresh.push({
-      tick,
-      duration,
-      pitch: Math.max(0, Math.min(127, p.midi)),
-      velocity: clamp01(n.weight),
+  /**
+   * Resolve a raw degree line into placeable notes, each SNAPPED to the track's
+   * visible grid so a note is never dropped between the steps the score renders
+   * (the corpus walks 16ths; a coarser track grid would otherwise hide notes as
+   * phantom hits). Collisions from snapping are removed by the (tick,pitch) merge.
+   */
+  const resolveLayer = (rng: () => number): Omit<NoteEvent, "id">[] => {
+    const raw: MelodyNote[] = generateMelody(
+      { table: opts.table, metric: opts.metric, bars, density, startDegree: 0 },
+      rng
+    )
+    return raw.map((n) => {
+      const degree = snapToSelected(n.degree)
+      const p = degreeToPitch(degree, ap, tonicMidi)
+      return {
+        tick: quantizeTick(sixteenthsToTicks(n.pos), grid),
+        duration: Math.max(1, sixteenthsToTicks(n.dur)),
+        pitch: Math.max(0, Math.min(127, p.midi)),
+        velocity: clamp01(n.weight),
+      }
     })
   }
 
@@ -350,7 +392,22 @@ const layerMelody = (
     })
   }
   const before = merged.length
-  for (const n of fresh) carry(n)
+
+  // "+" GUARANTEES ≥1 note: roll a layer; if every generated note collided with an
+  // existing one, re-roll with a fresh seed up to PLUS_REROLL_CAP, then force the
+  // tonic on the strongest open metric onset. Never a silent "No room to layer".
+  for (const n of resolveLayer(resolveRng(opts))) carry(n)
+  if (merged.length === before && opts.op !== "remove") {
+    const baseSeed = opts.seed ?? 1
+    for (let i = 1; i <= PLUS_REROLL_CAP && merged.length === before; i++) {
+      for (const n of resolveLayer(makeRng((baseSeed + i * 0x9e3779b1) | 0))) carry(n)
+    }
+    if (merged.length === before) {
+      const forced = forcedLayerNote(doc, ap, tonicMidi, grid, opts, snapToSelected)
+      if (forced) carry(forced)
+    }
+  }
+
   const added = merged.length - before
   if (added === 0) {
     return { commands: [], summary: "No room to layer", count: 0 }
@@ -426,6 +483,9 @@ export const buildAutoPlayNotes = (
     centerMidi?: number
     seed?: number
     rng?: () => number
+    /** The destination track's grid — placements snap to it so the auto-play line
+     *  the score paints never lands between visible steps. Omit ⇒ no snap. */
+    grid?: Grid
   }
 ): Omit<NoteEvent, "id">[] => {
   const ap = activePitches(doc, 0)
@@ -436,15 +496,25 @@ export const buildAutoPlayNotes = (
     { table: opts.table, metric: opts.metric, bars, density: opts.density ?? 0.6, startDegree: 0 },
     rng
   )
-  return raw.map((n) => {
+  const snap = (tick: Tick): Tick => (opts.grid ? quantizeTick(tick, opts.grid) : tick)
+  // De-dupe by (tick, pitch) — snapping can collide adjacent notes onto one cell.
+  const seen = new Set<string>()
+  const out: Omit<NoteEvent, "id">[] = []
+  for (const n of raw) {
     const p = degreeToPitch(n.degree, ap, tonicMidi)
-    return {
-      tick: sixteenthsToTicks(n.pos),
+    const tick = snap(sixteenthsToTicks(n.pos))
+    const pitch = Math.max(0, Math.min(127, p.midi))
+    const key = `${tick}:${pitch}`
+    if (seen.has(key)) continue
+    seen.add(key)
+    out.push({
+      tick,
       duration: Math.max(1, sixteenthsToTicks(n.dur)),
-      pitch: Math.max(0, Math.min(127, p.midi)),
+      pitch,
       velocity: clamp01(n.weight),
-    }
-  })
+    })
+  }
+  return out
 }
 
 // ----------------------------------------------------------------- helpers
