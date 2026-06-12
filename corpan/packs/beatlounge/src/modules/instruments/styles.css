@@ -59,18 +59,35 @@
   --bl-drawer-peek: calc(82vh - var(--bl-safe-top, 0px));
 }
 
-.bl-instr-bar {
+/* Header row: the harmony summary (left) + the track switcher (fills the rest)
+   share ONE row so the width isn't wasted on two short stacked rows. */
+.bl-instr-head {
   display: flex;
   align-items: center;
-  gap: var(--bl-s3);
+  gap: var(--bl-s2) var(--bl-s3);
   flex-wrap: wrap;
-  -webkit-overflow-scrolling: touch;
+  flex: 0 0 auto;
+}
+.bl-instr-head .bl-instr-harmony {
+  flex: 0 0 auto;
 }
 .bl-instr-tracks {
   display: flex;
   gap: var(--bl-s2);
   flex-wrap: wrap;
+  /* basis 0 + min-width 0 so the chips SHRINK-AND-WRAP within the row instead of
+     overflowing the right edge on a narrow phone. */
+  flex: 1 1 0;
+  min-width: 0;
+}
+/* Record arms on its OWN row — a clear, full-width tappable bar. */
+.bl-instr-recordrow {
+  display: flex;
+  flex: 0 0 auto;
+}
+.bl-instr-record {
   flex: 1 1 auto;
+  justify-content: center;
 }
 
 /* one track entry in the switcher: a SQUARED, roomy tab segment (reads as a real
@@ -175,13 +192,19 @@
 .bl-instr--expanded {
   --bl-instr-ribbon-min: 72px;
 }
-/* At the tallest detent the ribbon SLIDES UP with the drawer and every header item
-   gets out of its way: the harmony summary, the track bar, AND the ribbon's own
-   control strip (Lock/Free · octave · range) hide, leaving a pure playable surface
-   you can keep performing while you work the FX/Mixer drawer below. They all
-   return when the drawer comes back down — no content is lost, just hidden. */
-.bl-instr--expanded .bl-instr-harmony,
-.bl-instr--expanded .bl-instr-bar,
+/* The HEADER (harmony summary + track switcher + Record) shows ONLY when the
+   drawer is fully DOWN (peek). The moment the drawer rises (open or expanded) it
+   gets out of the way so the ribbon takes the space. No content lost — it returns
+   when the drawer comes back down. */
+.bl-instr--open .bl-instr-head,
+.bl-instr--open .bl-instr-recordrow,
+.bl-instr--expanded .bl-instr-head,
+.bl-instr--expanded .bl-instr-recordrow {
+  display: none;
+}
+/* At the TALLEST detent the ribbon's own control strip (Lock/Free · octave · range)
+   hides too, leaving a pure playable surface to perform on while you work the
+   FX/Mixer/Score drawer below. */
 .bl-instr--expanded .bl-ribbon-controls {
   display: none;
 }

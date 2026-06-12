@@ -120,7 +120,9 @@ export const InstrumentsBrowser = ({
   const setTrackId = select
 
   const [tab, setTab] = useState<string>("voice")
-  const [drawer, setDrawer] = useState<DrawerState>("open")
+  // Start with the drawer DOWN (peek) so the header (harmony + switcher + Record)
+  // and the full ribbon are both visible; raise it to work the FX/Mixer/Score.
+  const [drawer, setDrawer] = useState<DrawerState>("peek")
   const [record, setRecord] = useState(false)
   // The open browser bank: a preset family, or "raw" (the bare-oscillator bank).
   const [openBank, setOpenBank] = useState<PresetFamily | "raw" | null>(null)
@@ -336,39 +338,41 @@ export const InstrumentsBrowser = ({
   return (
     <div className={`bl-instr bl-trackpage bl-instr--${drawer}`}>
       <section className="bl-instr-stage bl-trackpage-grid bl-grid">
-        {/* ---- harmony leads the page: a compact summary row → popover ---- */}
-        <div className="bl-instr-harmony" data-bl-nocapture>
-          <button
-            type="button"
-            className={`bl-instr-harmony-row${harmonyOpen ? " is-open" : ""}`}
-            aria-expanded={harmonyOpen}
-            aria-label="Harmony"
-            onClick={() => setHarmonyOpen((o) => !o)}
-          >
-            <Glyph name="wave" size={14} />
-            <span className="bl-instr-harmony-tonic">{summary.tonic}</span>
-            <span className="bl-instr-harmony-detail">{summary.detail}</span>
-            <span className="bl-instr-harmony-caret" aria-hidden="true">
-              {harmonyOpen ? "▴" : "▾"}
-            </span>
-          </button>
-          {harmonyOpen && (
-            <>
-              <button
-                type="button"
-                className="bl-instr-harmony-scrim"
-                aria-label="Close harmony"
-                onClick={() => setHarmonyOpen(false)}
-              />
-              <div className="bl-instr-harmony-pop" role="dialog" aria-label="Harmony">
-                <HarmonyPanel host={host} store={store} snapTrackId={itrack.id} />
-              </div>
-            </>
-          )}
-        </div>
+        {/* ---- header (shown only when the drawer is DOWN): the harmony summary
+             and the track switcher share ONE row to use the width; Record arms on
+             its own row below. All of it hides as the drawer rises so the ribbon
+             takes the space. ---- */}
+        <div className="bl-instr-head" data-bl-nocapture>
+          <div className="bl-instr-harmony">
+            <button
+              type="button"
+              className={`bl-instr-harmony-row${harmonyOpen ? " is-open" : ""}`}
+              aria-expanded={harmonyOpen}
+              aria-label="Harmony"
+              onClick={() => setHarmonyOpen((o) => !o)}
+            >
+              <Glyph name="wave" size={14} />
+              <span className="bl-instr-harmony-tonic">{summary.tonic}</span>
+              <span className="bl-instr-harmony-detail">{summary.detail}</span>
+              <span className="bl-instr-harmony-caret" aria-hidden="true">
+                {harmonyOpen ? "▴" : "▾"}
+              </span>
+            </button>
+            {harmonyOpen && (
+              <>
+                <button
+                  type="button"
+                  className="bl-instr-harmony-scrim"
+                  aria-label="Close harmony"
+                  onClick={() => setHarmonyOpen(false)}
+                />
+                <div className="bl-instr-harmony-pop" role="dialog" aria-label="Harmony">
+                  <HarmonyPanel host={host} store={store} snapTrackId={itrack.id} />
+                </div>
+              </>
+            )}
+          </div>
 
-        {/* ---- track switcher + Record arm ---- */}
-        <div className="bl-instr-bar" data-bl-nocapture>
           <div className="bl-instr-tracks">
             {instrumentTracks.map((t) => (
               <div
@@ -408,9 +412,12 @@ export const InstrumentsBrowser = ({
               <span>Add</span>
             </button>
           </div>
+        </div>
+
+        <div className="bl-instr-recordrow" data-bl-nocapture>
           <button
             type="button"
-            className={`bl-chip${record ? " is-armed" : ""}`}
+            className={`bl-chip bl-instr-record${record ? " is-armed" : ""}`}
             aria-pressed={record}
             onClick={() => setRecord((r) => !r)}
           >
