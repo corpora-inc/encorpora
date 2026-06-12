@@ -80,7 +80,6 @@ interface Props extends FxChainCallbacks {
 export const FxChainView = ({
   effects,
   bpm,
-  form,
   header,
   sends,
   onAdd,
@@ -89,7 +88,6 @@ export const FxChainView = ({
   onToggle,
   onParamLive,
   onParamCommit,
-  onQuickAdd,
 }: Props) => {
   const [adding, setAdding] = useState(false)
 
@@ -144,15 +142,7 @@ export const FxChainView = ({
             <button
               type="button"
               className="bl-fxrack-addbtn"
-              onClick={() => {
-                if (form === "phone" && onQuickAdd) {
-                  // Phone: a quick default insert; the long-list menu is still
-                  // available by re-tapping. Keeps the FAB-light layout.
-                  onQuickAdd()
-                } else {
-                  setAdding(true)
-                }
-              }}
+              onClick={() => setAdding(true)}
             >
               + Add effect
             </button>

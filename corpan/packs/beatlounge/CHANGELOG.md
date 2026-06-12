@@ -26,6 +26,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Fixed
+- **"+ Add effect" opens the effect-type picker (not a silent filter).** On phone
+  it was doing a one-tap default insert (always a Filter); now it always reveals
+  the full picker (Filter · EQ · Compressor · Distortion · Chorus · Phaser ·
+  Bitcrusher · Delay · Reverb · Limiter · Gain) to choose from.
 - **The drum density dial is strictly +/- again (no more shuffle).** "+" was
   REGENERATING (clear-then-place) the kit each press — it looked like a reshuffle
   of the same few hits. Now "+" strictly ADDS a fresh stochastic layer ON TOP of
