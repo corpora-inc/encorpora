@@ -98,22 +98,21 @@
   flex-direction: column;
   gap: var(--bl-s2);
 }
-/* The 4 scale systems (Western · Thaat · Melakarta · Maqam) don't fit one phone
-   row — "Melakarta" is long. Keep the segmented control on ONE line and scroll it
-   horizontally instead of wrapping into a broken two-line block. */
+/* The 4 scale systems (Western · Thaat · Melakarta · Maqam) must FIT one phone row
+   — "Melakarta" is long, and the popover swallows an inner scroll, so make them fit
+   rather than scroll: nowrap + tight padding + a hair-smaller label so all four sit
+   on one line down to ~320px, none clipped. */
 .bl-hb-fam {
   flex-wrap: nowrap;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-}
-.bl-hb-fam::-webkit-scrollbar {
-  display: none;
+  width: 100%;
 }
 .bl-hb-fam .bl-seg-btn {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  min-width: 0;
   white-space: nowrap;
+  padding: 0 var(--bl-s2);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0;
 }
 .bl-hb-micro {
   align-self: flex-start;
