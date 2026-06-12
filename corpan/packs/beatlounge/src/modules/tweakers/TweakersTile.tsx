@@ -43,7 +43,7 @@ export const TweakersTile = ({ store }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="wave" size={16} />
         </span>
-        <span className="bl-tile-title">Tweakers</span>
+        <span className="bl-tile-title">Players</span>
         <span className="bl-tile-meta">{live.length}</span>
       </div>
       <div className="bl-twk-tile-body" aria-hidden="true">
@@ -68,7 +68,7 @@ export const TweakersTile = ({ store }: Props) => {
               ))}
             </svg>
             <span className="bl-twk-tile-count">
-              {live.length} live tweaker{live.length === 1 ? "" : "s"}
+              {live.length} live Player{live.length === 1 ? "" : "s"}
             </span>
           </>
         )}

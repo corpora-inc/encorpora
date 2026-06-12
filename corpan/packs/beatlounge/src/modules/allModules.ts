@@ -13,9 +13,7 @@ import type { BeatloungeHost, ModuleRegistry } from "../contracts/module"
 import type { BeatloungeStore } from "../store/store"
 import { createStepGridModule } from "./step-grid"
 import { createMixerModule } from "./mixer"
-import { createFxRackModule } from "./fx-rack"
 import { createPhraseSamplerModule } from "./phrase-sampler"
-import { createTweakersModule } from "./tweakers"
 import { createSongSetupModule } from "./song-setup"
 import { createInstrumentsModule } from "./instruments"
 import { createRibbonModule } from "./ribbon"
@@ -31,34 +29,33 @@ export interface ModuleDeps {
 }
 
 /**
- * Registration order IS the Stage bento order (dense flow). Grouped by adjacency
- * so related surfaces cluster:
- *   • SESSION   — Rhythmic Cycle, Scenes (define the piece, near the top).
- *   • INSTRUMENTS — Instruments, Ribbon (live play strip), Harmony (popover).
- *   • DRUMS     — the live groove widget.
- *   • PHRASES   — Phrases, Phrase Jam, Scratch.
- *   • MIX       — Effects, Mixer, Tweakers.
+ * Registration order IS the Stage bento order (dense flow). Grouped by the home
+ * information architecture so related surfaces cluster as one reads down:
+ *   • CYCLE + DRUMS   — Rhythmic Cycle, Drums.
+ *   • SOUND           — Harmony, Instruments, Ribbon.
+ *   • PHRASES         — Phrases, Phrase Jam, Scratch.
+ *   • GLOBAL          — Mixer (now the home for per-track Effects + Players).
  *
- * The old standalone Piano-roll ("Synth") tile is gone from Home — the in-
- * Instruments Score replaces it (the module code is kept for reuse, just not
- * registered). The Ribbon + Harmony tiles are now LIVE widgets (see their defs).
+ * Off the Stage: Scenes lives in the Dock-Rail (`hideOnStage`) — registered for
+ * the nav button + its save/load actions, but no tile. Effects + Tweakers→Players
+ * are folded INTO the Mixer (no standalone tiles). The old Piano-roll ("Synth")
+ * tile is gone (the in-Instruments Score replaced it). Ribbon + Harmony are live
+ * widgets (see their defs).
  */
 export const registerAllModules = (registry: ModuleRegistry, deps: ModuleDeps): void => {
-  // — session —
-  registry.register(createSongSetupModule(deps))
+  // Scenes — Dock-Rail nav (hideOnStage; registered for nav + actions only).
   registry.register(createScenesModule(deps))
-  // — instruments —
+  // — cycle + drums —
+  registry.register(createSongSetupModule(deps))
+  registry.register(createStepGridModule(deps))
+  // — sound: harmony · instruments · ribbon —
+  registry.register(createComposerModule(deps))
   registry.register(createInstrumentsModule(deps))
   registry.register(createRibbonModule(deps))
-  registry.register(createComposerModule(deps))
-  // — drums —
-  registry.register(createStepGridModule(deps))
   // — phrases —
   registry.register(createPhraseSamplerModule(deps))
   registry.register(createPhraseJamModule(deps))
   registry.register(createPhraseScratchModule(deps))
-  // — mix —
-  registry.register(createFxRackModule(deps))
+  // — global —
   registry.register(createMixerModule(deps))
-  registry.register(createTweakersModule(deps))
 }

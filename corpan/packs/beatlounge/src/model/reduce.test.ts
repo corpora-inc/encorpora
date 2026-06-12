@@ -1,8 +1,12 @@
 import { describe, expect, it } from "vitest"
 import {
   createDefaultDoc,
+  migrateDoc,
+  isFragmentTrack,
   DRUM_PITCH,
   isInstrumentTrack,
+  PHRASE_TRACK_NAME,
+  type BeatloungeDoc,
   type InstrumentTrack,
 } from "./document"
 import { reduce } from "./reduce"
@@ -239,5 +243,33 @@ describe("default doc", () => {
     // notes are tick-sorted
     const ticks = drums.notes.map((n) => n.tick)
     expect(ticks).toEqual([...ticks].sort((x, y) => x - y))
+  })
+
+  it("ships a singular, kind-named phrase track (the mixer's Phrases strip)", () => {
+    const d = doc0()
+    const fragments = d.tracks.filter(isFragmentTrack)
+    expect(fragments).toHaveLength(1)
+    expect(fragments[0].name).toBe(PHRASE_TRACK_NAME)
+    expect(fragments[0].instrument.kind).toBe("ttsFragment")
+  })
+})
+
+describe("migrateDoc — phrase-track + harmony backfill (additive, idempotent)", () => {
+  it("appends a singular phrase track to a doc that lacks one", () => {
+    const base = doc0()
+    const noPhrase: BeatloungeDoc = {
+      ...base,
+      tracks: base.tracks.filter((t) => !isFragmentTrack(t)),
+    }
+    const migrated = migrateDoc(noPhrase)
+    expect(migrated.tracks.filter(isFragmentTrack)).toHaveLength(1)
+    // existing tracks + ids + order preserved; the phrase track is appended.
+    expect(migrated.tracks.slice(0, noPhrase.tracks.length)).toEqual(noPhrase.tracks)
+  })
+
+  it("is idempotent — a doc that already has a phrase track is returned unchanged", () => {
+    const d = doc0()
+    expect(migrateDoc(d)).toBe(d)
+    expect(migrateDoc(migrateDoc(d))).toBe(migrateDoc(d))
   })
 })

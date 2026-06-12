@@ -312,30 +312,11 @@ describe("grooveModel — PHRASES target (scatter snippets on the phrase grid)",
       text: `word${i}`,
       language: "es",
     }))
-    const phraseId = newId("trk")
-    const d: BeatloungeDoc = {
-      ...base,
-      fragmentLibrary: refs,
-      tracks: [
-        ...base.tracks,
-        {
-          id: phraseId,
-          kind: "fragment",
-          name: "Phrases",
-          color: "#7cf2c0",
-          grid: { denominator: 16 },
-          volume: 0.8,
-          pan: 0,
-          mute: false,
-          solo: false,
-          inserts: [],
-          sends: [],
-          automation: [],
-          instrument: { kind: "ttsFragment" },
-          fragments: [],
-        },
-      ],
-    }
+    // The default doc now carries a singular "Phrases" fragment track — reuse it
+    // (the model guarantees exactly one), so the bank scatters onto the real
+    // phrase track the mixer/Phrase Jam share.
+    const phraseId = base.tracks.find((t) => t.kind === "fragment")!.id
+    const d: BeatloungeDoc = { ...base, fragmentLibrary: refs }
     return { d, phraseId }
   }
 
@@ -431,7 +412,12 @@ describe("grooveModel — PHRASES target (scatter snippets on the phrase grid)",
   })
 
   it("flags phrasesUnavailable when there is no phrase track at all", () => {
-    const d = doc()
+    // Strip the default doc's singular phrase track to exercise the no-track path.
+    const base = doc()
+    const d: BeatloungeDoc = {
+      ...base,
+      tracks: base.tracks.filter((t) => t.kind !== "fragment"),
+    }
     const res = buildGrooveCommands(d, getRhythm("samba")!, {
       target: { kind: "phrases" },
       seed: 1,
