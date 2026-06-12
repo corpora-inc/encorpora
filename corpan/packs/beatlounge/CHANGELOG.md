@@ -29,6 +29,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Rhythmic Cycle accent map, and trimmed empty-state / home-tile copy to terse
   fragments. The UI shows what to do by how it looks, not by a sentence to read.
 
+### Performance
+- **The scratch platter spins at 60fps without re-rendering React.** The turntable's
+  rotation now writes its CSS variable straight to the disc each frame instead of
+  pushing React state every frame (which re-rendered the whole platter + every word
+  label and churned the garbage collector — the "audio getting crusty" culprit). The
+  readout (rate/clock/word) updates only when it changes, ~8×/s. No visual change.
+- **The mixer meters stop churning when the mix is quiet.** The per-frame meter pulse
+  cached its track lookup (was two array scans per track per frame) and skips the
+  re-render once every meter has settled to dark — so a stopped/held mix no longer
+  spins React on every animation frame.
+
+### Fixed
+- **The scratch effects rack is remembered.** A master chain you dial in now survives
+  leaving the pack and coming back (it was rebuilt empty on every entry).
+
 ## [0.1.0] - 2026-06-12
 
 _First public release: the full beat-lounge studio — tick-addressed sequencer +

@@ -23,12 +23,17 @@
  * never steals taps from controls.
  */
 
-import { useRef } from "react"
+import { useRef, type MutableRefObject } from "react"
 import { pointerAngle, timeToSpiral, type WordSpan } from "./scratchMath"
 
 interface Props {
-  /** Current visual rotation in radians (driven by the parent's RAF loop). */
-  rotation: number
+  /**
+   * The parent's RAF loop owns the live rotation: it writes the `--bl-scr-rot`
+   * CSS var straight onto THIS element every frame via `rootRef`, so the disc
+   * spins at 60fps without ever re-rendering React (the per-frame render was the
+   * scratch view's GC/jank source). React state only changes on rate/word ticks.
+   */
+  rootRef?: MutableRefObject<HTMLDivElement | null>
   /** REAL phrase duration (seconds) — sets the spiral's inward walk for word labels. */
   phraseSec: number
   /** Word spans (seconds) placed along the groove. */
@@ -41,8 +46,6 @@ interface Props {
   langTag?: string
   /** True while a finger is scratching (rim glows). */
   active: boolean
-  /** Reduced-motion: the disc holds still; audio scratch still works. */
-  reducedMotion: boolean
   /** A grab begins — parent zeroes its velocity tracker. */
   onGrab(): void
   /** Angular sweep since the last sample, in radians (signed, seam-unwrapped). */
@@ -55,14 +58,13 @@ interface Props {
 const INNER_FLOOR = 0.2
 
 export const Platter = ({
-  rotation,
+  rootRef,
   phraseSec,
   spans,
   words,
   currentWord,
   langTag,
   active,
-  reducedMotion,
   onGrab,
   onSweep,
   onRelease,
@@ -70,6 +72,12 @@ export const Platter = ({
   const elRef = useRef<HTMLDivElement | null>(null)
   const lastAngle = useRef<number | null>(null)
   const dragging = useRef(false)
+
+  // Merge our measurement ref with the parent's rotation-driving ref.
+  const setRoot = (el: HTMLDivElement | null) => {
+    elRef.current = el
+    if (rootRef) rootRef.current = el
+  }
 
   const centre = (): { cx: number; cy: number } | null => {
     const el = elRef.current
@@ -122,8 +130,6 @@ export const Platter = ({
     onRelease()
   }
 
-  const spin = reducedMotion ? 0 : rotation
-
   // Place each word along the spiral groove in the disc's LOCAL frame. The needle is
   // fixed at 3 o'clock (screen angle 0, the +x / east direction). A word at spiral
   // angle θ sits at local screen angle −θ from the needle, so when the vinyl rotates
@@ -149,7 +155,7 @@ export const Platter = ({
 
   return (
     <div
-      ref={elRef}
+      ref={setRoot}
       className={`bl-scr-platter${active ? " is-active" : ""}`}
       role="slider"
       aria-label="Scratch platter — drag to scratch the phrase"
@@ -158,7 +164,6 @@ export const Platter = ({
       onPointerMove={onPointerMove}
       onPointerUp={end}
       onPointerCancel={end}
-      style={{ ["--bl-scr-rot" as string]: `${spin}rad` }}
     >
       <div className="bl-scr-vinyl" aria-hidden="true">
         <div className="bl-scr-grooves" />

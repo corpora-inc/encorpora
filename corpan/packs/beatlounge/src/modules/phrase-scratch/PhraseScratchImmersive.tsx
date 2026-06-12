@@ -54,7 +54,6 @@ import { Platter } from "./Platter"
 import { CutFader } from "./CutFader"
 import { createScratchFxBus, type ScratchFxBus } from "./scratchFxBus"
 import {
-  emptyScratchChain,
   chainHasActive,
   addInsert,
   removeInsert,
@@ -62,6 +61,7 @@ import {
   toggleInsert,
   setInsertParams,
 } from "./scratchFxLive"
+import { loadScratchChain, saveScratchChain } from "./scratchFxStore"
 import { FxChainView, type FxForm } from "../fx-rack/FxChainView"
 import { ScratchPhrasePanel } from "./ScratchPhrasePanel"
 import {
@@ -152,7 +152,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   // ---- master FX rack + phrase discovery: ONE shared bottom drawer (the same
   // surface Drums / Instruments use), with Effects + Phrases tabs. No bespoke
   // popovers. The chain is scratch-local (live bus, no doc coupling). ----------
-  const [fxChain, setFxChain] = useState<EffectNode[]>(() => emptyScratchChain())
+  // The master chain is persisted (localStorage) so a rack you dial in survives
+  // leaving the pack and coming back — restored on mount, saved on every change.
+  const [fxChain, setFxChain] = useState<EffectNode[]>(() => loadScratchChain())
   const [drawerTab, setDrawerTab] = useState("fx")
   const [drawer, setDrawer] = useState<DrawerState>("peek")
   // Which deck a discovered phrase lands on (A unless the user aims B).
@@ -186,6 +188,13 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
 
   const rafRef = useRef<number | null>(null)
   const lastTsRef = useRef<number | null>(null)
+  // The platter DOM nodes — the RAF writes their --bl-scr-rot var directly each
+  // frame so the disc spins at 60fps without re-rendering React (the readout state
+  // below only ticks on rate/word changes or ~8×/s for the clock).
+  const platterAEl = useRef<HTMLDivElement | null>(null)
+  const platterBEl = useRef<HTMLDivElement | null>(null)
+  const lastEmitA = useRef(0)
+  const lastEmitB = useRef(0)
 
   // Keep the runtime's spin direction in sync with the toggles (read in the RAF loop).
   rtA.current.spinDir = dirA
@@ -208,6 +217,12 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       fxBusRef.current = null
     }
   }, [])
+
+  // Persist the master chain on every change so it's there next time (restored on
+  // mount via loadScratchChain). Plain config — the live nodes rebuild from it.
+  useEffect(() => {
+    saveScratchChain(fxChain)
+  }, [fxChain])
 
   // ---- deck level = cut (this deck) × crossfade contribution ------------------
   useEffect(() => {
@@ -372,26 +387,42 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       return { rotation: rt.discRot, rate, playheadSec, wordIdx }
     }
 
+    // Write the disc rotation straight to the DOM (no React). Reduced motion → 0
+    // so the words don't counter-rotate over a still disc (the vinyl transform is
+    // already zeroed by CSS under prefers-reduced-motion).
+    const applyRot = (el: HTMLDivElement | null, rotation: number) => {
+      if (el) el.style.setProperty("--bl-scr-rot", `${reduced ? 0 : rotation}rad`)
+    }
+    // React state only needs to change for the readout (rate/word/clock) — NOT for
+    // the spin. Emit on a word change, a real rate change, or ~8×/s while the
+    // playhead is actually moving; a held/stopped deck stops re-rendering entirely.
+    const READOUT_MS = 120
+    const shouldEmit = (p: DeckView, v: DeckView, lastEmit: number, ts: number): boolean => {
+      if (p.wordIdx !== v.wordIdx) return true
+      if (Math.abs(p.rate - v.rate) > 0.02) return true
+      return ts - lastEmit > READOUT_MS && Math.abs(p.playheadSec - v.playheadSec) > 0.02
+    }
+
     const tick = (ts: number) => {
       const last = lastTsRef.current
       const dt = last == null ? 1 / 60 : Math.min(0.05, (ts - last) / 1000)
       lastTsRef.current = ts
 
       const va = driveDeck(rtA.current, dt)
-      setViewA((p) =>
-        Math.abs(p.rate - va.rate) > 0.01 || p.wordIdx !== va.wordIdx || p.rotation !== va.rotation
-          ? va
-          : p
-      )
+      applyRot(platterAEl.current, va.rotation)
+      setViewA((p) => {
+        if (!shouldEmit(p, va, lastEmitA.current, ts)) return p
+        lastEmitA.current = ts
+        return va
+      })
       if (showDeckB) {
         const vb = driveDeck(rtB.current, dt)
-        setViewB((p) =>
-          Math.abs(p.rate - vb.rate) > 0.01 ||
-          p.wordIdx !== vb.wordIdx ||
-          p.rotation !== vb.rotation
-            ? vb
-            : p
-        )
+        applyRot(platterBEl.current, vb.rotation)
+        setViewB((p) => {
+          if (!shouldEmit(p, vb, lastEmitB.current, ts)) return p
+          lastEmitB.current = ts
+          return vb
+        })
       }
 
       rafRef.current = requestAnimationFrame(tick)
@@ -668,14 +699,13 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
 
         <div className="bl-scr-stage">
           <Platter
-            rotation={view.rotation}
+            rootRef={id === "a" ? platterAEl : platterBEl}
             phraseSec={rt.current.phraseSec}
             spans={rt.current.spans}
             words={rt.current.words}
             currentWord={view.wordIdx}
             langTag={langTag}
             active={active}
-            reducedMotion={reduced}
             onGrab={onGrab(rt)}
             onSweep={onSweep(rt)}
             onRelease={onRelease(rt)}
