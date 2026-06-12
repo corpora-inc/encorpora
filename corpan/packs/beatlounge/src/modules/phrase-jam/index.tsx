@@ -21,9 +21,7 @@ import type {
 } from "../../contracts/module"
 import type { ModuleDeps } from "../allModules"
 import type { TrackInit } from "../../model/command"
-import { isFragmentTrack } from "../../model/document"
-import { newId } from "../../model/ids"
-import { TRACK_BASE } from "../trackNaming"
+import { isFragmentTrack, newFragmentTrack } from "../../model/document"
 import type { BeatloungeStore } from "../../store/store"
 import { createAudioSource, type AudioSource } from "../../phrase/audioSource"
 import { phraseJamActions } from "./actions"
@@ -33,34 +31,17 @@ import "./phrase-jam.css"
 
 export const PHRASE_JAM_ID = "phrase-jam"
 
-/** A fresh, empty FragmentTrack to sequence saved snippets on (16-step bar).
- *  Named by KIND ("Phrases") so the mixer strip reads as what it is — never
- *  derived from whatever phrase happens to land on it. */
-const newPhraseTrack = (): TrackInit => ({
-  id: newId("trk"),
-  kind: "fragment",
-  name: TRACK_BASE.phrases,
-  color: "#7cf2c0",
-  grid: { denominator: 16 },
-  volume: 0.8,
-  pan: 0,
-  mute: false,
-  solo: false,
-  inserts: [],
-  sends: [],
-  automation: [],
-  instrument: { kind: "ttsFragment" },
-  fragments: [],
-})
-
 /** Resolve the phrase track id: the bound track, else the first fragment track,
- *  else create one (so the screen always has somewhere to place snippets). */
+ *  else create one (so the screen always has somewhere to place snippets). New
+ *  docs + migrated docs already carry a singular "Phrases" fragment track (see
+ *  model/document.ts), so this almost always finds the existing one — the lazy
+ *  create is just a backstop. Uses the SAME shared `newFragmentTrack` factory. */
 const resolvePhraseTrackId = (store: BeatloungeStore, fallback?: string): string => {
   if (fallback) return fallback
   const doc = store.vanilla.getState().doc
   const existing = doc.tracks.find(isFragmentTrack)
   if (existing) return existing.id
-  const track = newPhraseTrack()
+  const track: TrackInit = newFragmentTrack()
   store.dispatch({ t: "addTrack", track })
   return track.id as string
 }

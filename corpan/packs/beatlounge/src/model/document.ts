@@ -385,12 +385,23 @@ export const docHarmony = (doc: BeatloungeDoc): Harmony =>
   doc.harmony ?? defaultHarmony()
 
 /**
- * Fill a missing `harmony` on a (possibly persisted) doc with the default,
- * additively + idempotently. Old docs open sounding identical; NoteEvent.pitch
- * is untouched. Returns the same reference when nothing changes.
+ * Migrate a (possibly persisted) doc additively + idempotently. Returns the SAME
+ * reference when nothing changes (no churn). Old docs open sounding identical;
+ * NoteEvent.pitch is untouched. Steps:
+ *  1. fill a missing `harmony` with the default,
+ *  2. ensure ONE phrase (fragment) track exists so the mixer always shows a
+ *     "Phrases" strip with its own FX chain — appended (existing tracks/ids and
+ *     order are preserved). Phrase Jam still binds to the first fragment track,
+ *     so it reuses this one instead of lazily creating another.
  */
-export const migrateDoc = (doc: BeatloungeDoc): BeatloungeDoc =>
-  doc.harmony ? doc : { ...doc, harmony: defaultHarmony() }
+export const migrateDoc = (doc: BeatloungeDoc): BeatloungeDoc => {
+  let next = doc
+  if (!next.harmony) next = { ...next, harmony: defaultHarmony() }
+  if (!next.tracks.some(isFragmentTrack)) {
+    next = { ...next, tracks: [...next.tracks, newFragmentTrack()] }
+  }
+  return next
+}
 
 // ---------------------------------------------------------------- factories
 export const defaultInsertChain = (): EffectNode[] => []
@@ -468,6 +479,33 @@ const newInstrumentTrack = (
   notes,
 })
 
+/** The display name of the singular phrase (fragment) track — named by KIND so
+ *  its mixer strip always reads "Phrases", never the snippet it happens to hold.
+ *  Mirrors `TRACK_BASE.phrases`; kept here so the model layer needs no UI import. */
+export const PHRASE_TRACK_NAME = "Phrases"
+
+/** A fresh, empty phrase (fragment) track — the one Phrase Jam sequences saved
+ *  snippets on, and the strip the mixer shows for phrases. 16-step bar, named by
+ *  kind. Same shape Phrase Jam creates lazily; making it part of the default doc
+ *  + migration means the Phrases strip is in the mixer from the first open. */
+export const newFragmentTrack = (patch: Partial<TrackBase> = {}): FragmentTrack => ({
+  id: newId("trk"),
+  name: PHRASE_TRACK_NAME,
+  color: "#7cf2c0",
+  grid: sixteenth,
+  volume: 0.8,
+  pan: 0,
+  mute: false,
+  solo: false,
+  inserts: [],
+  sends: [],
+  automation: [],
+  ...patch,
+  kind: "fragment",
+  instrument: { kind: "ttsFragment" },
+  fragments: [],
+})
+
 const drumNote = (tick: Tick, pitch: Midi, velocity = 0.9): NoteEvent => ({
   id: newId("n"),
   tick,
@@ -532,7 +570,7 @@ export const createDefaultDoc = (now: number): BeatloungeDoc => {
     loopLengthTicks: bar,
     swing: { amount: 0, grid: { denominator: 16 } },
     masterVolume: 0.8,
-    tracks: [drumTrack, synthTrack],
+    tracks: [drumTrack, synthTrack, newFragmentTrack()],
     buses: [],
     fragmentLibrary: [],
     modulators: [],

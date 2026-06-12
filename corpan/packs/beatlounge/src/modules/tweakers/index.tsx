@@ -37,7 +37,7 @@ export const createTweakersModule = ({ store, audio }: TweakersDeps): Beatlounge
   return {
     id: TWEAKERS_ID,
     kind: "utility",
-    title: "Tweakers",
+    title: "Players",
     glyph: "wave",
     immersive: "full",
     tileAspect: "square",

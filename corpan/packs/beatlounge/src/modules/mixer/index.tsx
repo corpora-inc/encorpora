@@ -21,6 +21,11 @@ import { mixerActions } from "./actions"
 import { MixerTile } from "./MixerTile"
 import { MixerConsole } from "./MixerConsole"
 import "./styles.css"
+// The mixer is now the HOME for per-track effects (the shared rack) + Players —
+// pull in their stylesheets directly so the console renders correctly even if
+// the integrator deregisters the standalone Effects / Players tiles.
+import "../fx-rack/styles.css"
+import "../tweakers/styles.css"
 
 export interface MixerDeps {
   store: BeatloungeStore

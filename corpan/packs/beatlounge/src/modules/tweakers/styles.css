@@ -52,6 +52,16 @@
   flex: 1;
 }
 
+/* Embedded in the Mixer's Players section: no own padding/scroll/flex-grow —
+ * it flows with the page scroll under the channel strips. */
+.bl-twk.is-embedded {
+  padding: 0;
+  flex: initial;
+  min-height: auto;
+  overflow: visible;
+  gap: var(--bl-s3);
+}
+
 /* ---- agents ---- */
 .bl-twk-agents {
   display: flex;

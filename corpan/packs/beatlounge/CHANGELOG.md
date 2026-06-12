@@ -6,6 +6,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **The Mixer is now the HOME for the whole mix — effects + modulators folded in.**
+  Each channel strip pulls up THAT track's full effects chain inline (the SAME
+  shared `TrackFxChain` rack — no parallel FX UI) via an **FX** affordance, and an
+  **Open** affordance deeplinks to the track's dedicated detail page: a drum strip
+  opens the Drums step-grid, a synth strip opens the Instruments page bound to that
+  synth, the Phrases strip opens Phrase Jam. The standalone **Effects** and
+  **Players** tiles are retired from Home (their surfaces live in the Mixer now).
+- **"Tweakers" renamed to "Players"** (per docs/PLAYERS.md) and re-homed into the
+  Mixer as a global Players section, reusing the same autonomous-modulation panel
+  (extracted to a shared `PlayersPanel`). Behavior unchanged; the deeper
+  Players-protocol rebuild remains a later round.
+- **Mobile-first Mixer redesign.** At phone width every strip is a compact card —
+  horizontal meter + horizontal level fader + pan + Mute/Solo + FX/Open — so all
+  channels and the Players section fit on one phone screen with thumb-reachable
+  controls; the per-track FX chain expands cleanly inline. It promotes to the
+  classic side-by-side console of tall vertical faders on iPad/desktop (FX-open
+  strips expand to a controls-left / rack-right grid). One stylesheet, `--bl-*`
+  tokens only.
 - **Scratch now uses the FULL shared effects pipeline (one canonical rack).** The
   turntable's master FX is no longer a bespoke fixed-4 panel — it's the SAME
   chainable `FxChainView` drums / instruments / the mixer use: the add-effect menu
