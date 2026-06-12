@@ -22,6 +22,8 @@ interface Props {
   onUndo: () => void
   onRedo: () => void
   onCommand: () => void
+  /** Open the Scenes drawer (save / load complete states). Omitted ⇒ no button. */
+  onScenes?: () => void
   onExit: () => void
 }
 
@@ -39,6 +41,7 @@ export const DockRail = ({
   onUndo,
   onRedo,
   onCommand,
+  onScenes,
   onExit,
 }: Props) => {
   const [editing, setEditing] = useState(false)
@@ -126,6 +129,18 @@ export const DockRail = ({
       >
         <Glyph name="redo" size={20} />
       </button>
+
+      {onScenes && (
+        <button
+          type="button"
+          className="bl-icon-btn bl-scenes-btn"
+          aria-label="Scenes"
+          title="Scenes — save and switch between complete states"
+          onClick={onScenes}
+        >
+          <Glyph name="drawer" size={20} />
+        </button>
+      )}
 
       <button
         type="button"

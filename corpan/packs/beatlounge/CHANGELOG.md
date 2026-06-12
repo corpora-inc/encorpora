@@ -6,6 +6,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **Scenes moved off the home Stage into the nav.** Scenes (save / load complete
+  states) is no longer a home tile — its entry is a button in the persistent
+  Dock-Rail that opens the existing Scenes drawer. The module stays registered so
+  its save/load actions remain in the command bar's browse picker + the LLM tool
+  index. New `hideOnStage` module flag (a module can live in the nav/command
+  surface with no Stage tile while keeping its actions + immersive). The Stage
+  skips `hideOnStage` modules.
+
+### Verified
+- **Scene snapshots fully serialize/deserialize the ENTIRE musical state.** Added
+  a rigorous round-trip proof (`snapshot.roundtrip.test.ts`): a maximally-loaded
+  doc (multi-preset instrument tracks with multi-insert chains + sends, a fragment
+  track, buses with effects, chordal harmony + progression, modulators, non-default
+  swing/tempo/meter) snapshots, the live doc is mutated heavily, applies back, and
+  every sound-defining field deep-equals the original — with explicit non-aliasing
+  and JSON-durability (IDB path) assertions. Audit confirmed all 11 sound-defining
+  doc fields are captured (deep-cloned) and only identity/volatile/structural ones
+  excluded; no gaps found.
+
 - **Scratch now uses the FULL shared effects pipeline (one canonical rack).** The
   turntable's master FX is no longer a bespoke fixed-4 panel — it's the SAME
   chainable `FxChainView` drums / instruments / the mixer use: the add-effect menu

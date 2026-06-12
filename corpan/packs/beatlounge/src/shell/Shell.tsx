@@ -29,6 +29,7 @@ import { Immersive } from "./Immersive"
 import { DockRail } from "./DockRail"
 import { Toast, type ToastState } from "./Toast"
 import { CommandBar, createCommandBarController } from "../modules/command-bar"
+import { SCENES_ID } from "../modules/scenes"
 
 export interface ShellChromeApi {
   enterImmersive(id: ModuleId): () => void
@@ -135,8 +136,13 @@ export const Shell = ({
     }
   }, [audio, doc.ppq, doc.masterVolume])
 
-  const modules = useMemo(() => registry.all(), [registry])
+  // Stage tiles = every registered module EXCEPT those whose entry lives in the
+  // nav / command surface (e.g. Scenes, opened from the Dock-Rail). Such modules
+  // stay registered (actions indexed, immersive openable) but get no home tile.
+  const tiles = useMemo(() => registry.all().filter((m) => !m.hideOnStage), [registry])
   const immersiveModule = immersiveId ? registry.get(immersiveId) : undefined
+  // Scenes lives in the nav: show its Dock-Rail button only when registered.
+  const hasScenes = registry.get(SCENES_ID) !== undefined
 
   const chromeState = immersiveId ? "immersive" : "stage"
 
@@ -149,7 +155,7 @@ export const Shell = ({
           <span className="bl-song-name">{doc.name}</span>
         </div>
         <div className="bl-stage-grid">
-          {modules.map((m) => (
+          {tiles.map((m) => (
             <Tile key={m.id} module={m} form={form} host={host} />
           ))}
         </div>
@@ -168,6 +174,7 @@ export const Shell = ({
         onUndo={store.undo}
         onRedo={store.redo}
         onCommand={() => setCommandOpen(true)}
+        onScenes={hasScenes ? () => enterImmersive(SCENES_ID) : undefined}
         onExit={() => {
           stopTransport(audio)
           window.dispatchEvent(new CustomEvent("corpan:exit"))

@@ -54,6 +54,11 @@ export const createScenesModule = ({ host }: ScenesDeps): BeatloungeModule => {
     glyph: "drawer",
     immersive: "full",
     tileAspect: "square",
+    // Scenes has no home tile — its entry lives in the Dock-Rail (nav) and the
+    // command bar. The module stays registered so its save/load actions are
+    // indexed by the LLM + ActionsPicker and `enterImmersive("scenes")` opens
+    // the drawer. The Stage skips `hideOnStage` modules (see Shell).
+    hideOnStage: true,
     actions: createScenesActions(ctrl),
     mount(mount: ModuleMount): ModuleInstance {
       ensureHydrated()
