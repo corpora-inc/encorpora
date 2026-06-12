@@ -1,19 +1,18 @@
 /**
- * beatlounge — the reusable per-track FX-CHAIN editor.
+ * beatlounge — the DOC-BACKED adapter over the canonical FX-chain pipeline.
  *
- * Extracted from FxRackImmersive so the SAME chain UI (insert list + add-effect
- * menu + per-effect param controls + sends) is rendered in TWO places:
- *   • the fx-rack module (which adds a track switcher on top), and
- *   • the Drums page (embedded so you can tweak the drum bus's FX without
- *     leaving the screen).
+ * This is a THIN adapter: it renders the backing-agnostic `FxChainView` (the one
+ * canonical rack — add menu + insert cards + reorder + the delay note-length
+ * presets) and maps every callback onto the document store. The SAME view renders
+ * over the live scratch bus; this adapter is the doc half (the only one with undo
+ * + sends, which target arrangement buses).
  *
  * CRITICAL — the REALTIME param wiring is preserved verbatim: as a knob/XY pad
  * MOVES we drive the live audio node through `host.applyParam` (no doc write, no
  * undo step) so the sound sweeps under the finger; on RELEASE we dispatch ONE
- * `setEffectParams`/`setParam` with the same final value (one undo step). Do not
- * regress this — it is what makes filter cutoff / resonance sweep smoothly.
- *
- * Every gesture is one command → one undo step. The store is the only write path.
+ * `setEffectParams` with the same final value (one undo step). Every gesture is
+ * one command → one undo step. The store is the only write path. Used by:
+ * fx-rack, Drums, Instruments, phrase-jam.
  */
 
 import { useState } from "react"
@@ -23,29 +22,16 @@ import { useBeatloungeStore } from "../../store/store"
 import {
   findTrack,
   type Bus,
-  type EffectNode,
   type Id,
   type Send,
   type Track,
 } from "../../model/document"
 import { newId } from "../../model/ids"
-import { Knob, XYPad } from "../../bl-ui"
-import {
-  EFFECT_KINDS,
-  EFFECT_SPECS,
-  defaultEffectParams,
-  numParam,
-  strParam,
-  type EffectParamSpec,
-  type EffectSpec,
-} from "../../effects/params"
-import {
-  TIME_DIVISIONS,
-  divisionSeconds,
-  closestDivisionId,
-} from "../../effects/timeDivisions"
+import { Knob } from "../../bl-ui"
+import { EFFECT_KINDS, EFFECT_SPECS, defaultEffectParams } from "../../effects/params"
 import { clearInsertsAction, addInsertAction } from "./actions"
 import { runAction } from "../runAction"
+import { FxChainView, type FxForm } from "./FxChainView"
 
 interface Props {
   host: BeatloungeHost
@@ -57,431 +43,132 @@ interface Props {
 
 /**
  * The full insert chain + add menu + sends for ONE track (no track switcher —
- * the caller decides which track this binds to).
+ * the caller decides which track this binds to). A thin map of the canonical
+ * `FxChainView` onto store commands; behavior is identical to the pre-extraction
+ * rack.
  */
 export const TrackFxChain = ({ host, store, trackId, showSends = true }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
-  const [adding, setAdding] = useState(false)
 
   const track = findTrack(doc, trackId)
   if (!track) return <div className="bl-grid-empty">No track.</div>
 
-  const addInsert = (kind: (typeof EFFECT_KINDS)[number]) => {
+  // --- add (palette menu): one addInsert command (one undo step). The phone
+  // quick-add goes through addInsertAction (a default filter), matching the
+  // pre-extraction shortcut. ---
+  const onAdd = (kind: (typeof EFFECT_KINDS)[number]) =>
     store.dispatch({
       t: "addInsert",
       trackId: track.id,
       effect: { kind, enabled: true, params: defaultEffectParams(kind) },
     })
-    setAdding(false)
-  }
+  const onQuickAdd = () =>
+    runAction(store, addInsertAction, { doc, targetTrackId: track.id })
 
-  return (
-    <div className="bl-fxchain">
-      {track.inserts.length > 0 && (
-        <div className="bl-fxchain-bar" data-bl-nocapture>
-          <span className="bl-fxchain-count">
-            {track.inserts.length} effect{track.inserts.length === 1 ? "" : "s"}
-          </span>
-          <button
-            type="button"
-            className="bl-chip is-danger"
-            onClick={() => {
-              const before = store.vanilla.getState().doc
-              const r = runAction(store, clearInsertsAction, {
-                doc,
-                targetTrackId: track.id,
-              })
-              if (r.commands.length) {
-                host.toast(r.summary, {
-                  undo: () => store.vanilla.getState().doc !== before && store.undo(),
-                })
-              }
-            }}
-          >
-            Clear
-          </button>
-        </div>
-      )}
-
-      <div className="bl-fxrack-chain">
-        {track.inserts.map((fx, i) => (
-          <EffectCard
-            key={fx.id}
-            store={store}
-            host={host}
-            trackId={track.id}
-            fx={fx}
-            index={i}
-            count={track.inserts.length}
-            bpm={doc.bpm}
-          />
-        ))}
-
-        <div className="bl-fxrack-add" data-bl-nocapture>
-          {adding ? (
-            <div className="bl-fxrack-menu" role="menu">
-              {EFFECT_KINDS.map((kind) => (
-                <button
-                  key={kind}
-                  type="button"
-                  className="bl-chip"
-                  role="menuitem"
-                  onClick={() => addInsert(kind)}
-                >
-                  {EFFECT_SPECS[kind].label}
-                </button>
-              ))}
-              <button
-                type="button"
-                className="bl-chip"
-                onClick={() => setAdding(false)}
-              >
-                Cancel
-              </button>
-            </div>
-          ) : (
-            <button
-              type="button"
-              className="bl-fxrack-addbtn"
-              onClick={() => {
-                if (host.form() === "phone") {
-                  // Phone: a quick default (filter) via the action; long-list menu
-                  // still available by re-tapping. Keeps the FAB-light layout.
-                  runAction(store, addInsertAction, { doc, targetTrackId: track.id })
-                } else {
-                  setAdding(true)
-                }
-              }}
-            >
-              + Add effect
-            </button>
-          )}
-        </div>
-      </div>
-
-      {showSends && (
-        <SendsPanel store={store} host={host} track={track} buses={doc.buses} />
-      )}
-    </div>
-  )
-}
-
-// ----------------------------------------------------------- effect card
-interface CardProps {
-  store: BeatloungeStore
-  host: BeatloungeHost
-  trackId: Id
-  fx: EffectNode
-  index: number
-  count: number
-  bpm: number
-}
-
-const EffectCard = ({ store, host, trackId, fx, index, count, bpm }: CardProps) => {
-  const spec = EFFECT_SPECS[fx.kind]
-  const timeSpec = spec.params.find((p) => p.key === "delayTime")
-
-  const setParam = (key: string, value: number | string) =>
-    store.dispatch({
-      t: "setEffectParams",
-      trackId,
-      insertId: fx.id,
-      params: { [key]: value },
-    })
-
-  // Live (per-move): drive the audio node straight through the engine — NO
-  // document write, NO undo step. The effect's setParam ramps the node, so the
-  // sound sweeps continuously under the finger (the filter's frequency/q do).
-  const liveParam = (key: string, value: number) =>
-    host.applyParam({ scope: "insert", trackId, insertId: fx.id, param: key }, value)
-
-  // Set several params at once — still ONE setEffectParams command (one undo
-  // step), used by the Filter XYPad (frequency × Q) on commit.
-  const setParams = (params: Record<string, number | string>) =>
-    store.dispatch({
-      t: "setEffectParams",
-      trackId,
-      insertId: fx.id,
-      params,
-    })
-
-  const remove = () => {
+  // --- remove: one removeInsert + a toast/undo (verbatim). ---
+  const onRemove = (id: string) => {
+    const fx = track.inserts.find((n) => n.id === id)
     const before = store.vanilla.getState().doc
-    store.dispatch({ t: "removeInsert", trackId, insertId: fx.id })
-    host.toast(`Removed ${spec.label}`, {
+    store.dispatch({ t: "removeInsert", trackId: track.id, insertId: id })
+    host.toast(`Removed ${fx ? EFFECT_SPECS[fx.kind].label : "effect"}`, {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
 
-  // Reorder = remove + re-add at the new index (one undo step via batch).
-  const move = (delta: number) => {
-    const to = index + delta
-    if (to < 0 || to >= count) return
+  // --- reorder = remove + re-add at the new index, in ONE batch (one undo step). ---
+  const onMove = (id: string, dir: -1 | 1) => {
+    const idx = track.inserts.findIndex((n) => n.id === id)
+    if (idx < 0) return
+    const to = idx + dir
+    if (to < 0 || to >= track.inserts.length) return
+    const fx = track.inserts[idx]
     store.dispatch({
       t: "batch",
       label: "Reorder effect",
       commands: [
-        { t: "removeInsert", trackId, insertId: fx.id },
-        { t: "addInsert", trackId, effect: { kind: fx.kind, enabled: fx.enabled, params: fx.params }, atIndex: to },
+        { t: "removeInsert", trackId: track.id, insertId: fx.id },
+        {
+          t: "addInsert",
+          trackId: track.id,
+          effect: { kind: fx.kind, enabled: fx.enabled, params: fx.params },
+          atIndex: to,
+        },
       ],
     })
   }
 
-  return (
-    <div className={`bl-fxcard${fx.enabled ? "" : " is-bypassed"}`}>
-      <div className="bl-fxcard-head" data-bl-nocapture>
-        <button
-          type="button"
-          className={`bl-fxcard-power${fx.enabled ? " is-on" : ""}`}
-          aria-pressed={fx.enabled}
-          aria-label={fx.enabled ? "Bypass effect" : "Enable effect"}
-          title={fx.enabled ? "Bypass" : "Enable"}
-          onClick={() =>
-            store.dispatch({
-              t: "setEffectParams",
-              trackId,
-              insertId: fx.id,
-              params: {},
-              enabled: !fx.enabled,
-            })
-          }
-        />
-        <span className="bl-fxcard-name">{spec.label}</span>
-        <div className="bl-fxcard-actions">
-          <button
-            type="button"
-            className="bl-iconbtn"
-            aria-label="Move up"
-            disabled={index === 0}
-            onClick={() => move(-1)}
-          >
-            ↑
-          </button>
-          <button
-            type="button"
-            className="bl-iconbtn"
-            aria-label="Move down"
-            disabled={index === count - 1}
-            onClick={() => move(1)}
-          >
-            ↓
-          </button>
-          <button
-            type="button"
-            className="bl-iconbtn is-danger"
-            aria-label="Remove effect"
-            onClick={remove}
-          >
-            ✕
-          </button>
-        </div>
-      </div>
-
-      {timeSpec && (
-        <SyncRow
-          bpm={bpm}
-          seconds={numParam(fx.params, timeSpec)}
-          onPick={(beats) => setParam("delayTime", divisionSeconds(beats, bpm))}
-        />
-      )}
-
-      {fx.kind === "filter" && (
-        <FilterPad fx={fx} spec={spec} onLive={liveParam} onCommit={setParams} />
-      )}
-
-      <div className="bl-fxcard-params" data-bl-nocapture>
-        {spec.params.map((p) =>
-          p.type === "enum" ? (
-            <EnumParam key={p.key} spec={p} fx={fx} onChange={(v) => setParam(p.key, v)} />
-          ) : (
-            <ParamKnob
-              key={p.key}
-              spec={p}
-              fx={fx}
-              onLive={(v) => liveParam(p.key, v)}
-              onCommit={(v) => setParam(p.key, v)}
-            />
-          )
-        )}
-      </div>
-    </div>
-  )
-}
-
-// ----------------------------------------------------------- beat-sync row
-const SyncRow = ({
-  bpm,
-  seconds,
-  onPick,
-}: {
-  bpm: number
-  seconds: number
-  onPick: (beats: number) => void
-}) => {
-  const active = closestDivisionId(seconds, bpm)
-  return (
-    <div className="bl-fxsync" data-bl-nocapture>
-      <span className="bl-fxsync-label">Sync</span>
-      <div className="bl-fxsync-chips">
-        {TIME_DIVISIONS.map((d) => (
-          <button
-            key={d.id}
-            type="button"
-            className={`bl-fxsync-chip${active === d.id ? " is-on" : ""}`}
-            onClick={() => onPick(d.beats)}
-            aria-pressed={active === d.id}
-          >
-            {d.label}
-          </button>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-// ----------------------------------------------------------- filter XY pad
-/**
- * The Filter card's X/Y control surface: X = cutoff frequency, Y = resonance
- * (Q). It complements the knobs — drag the puck to sweep both at once. As the
- * finger MOVES we drive the audio node in REAL TIME via `onLive` (host.applyParam
- * → the filter's setParam ramps frequency/Q) so the cutoff sweeps continuously;
- * we also hold the live values locally so the puck tracks the finger. On RELEASE
- * we dispatch ONE setEffectParams (one undo step) with the SAME final values, so
- * there is no jump on release.
- */
-const FilterPad = ({
-  fx,
-  spec,
-  onLive,
-  onCommit,
-}: {
-  fx: EffectNode
-  spec: EffectSpec
-  onLive: (key: string, value: number) => void
-  onCommit: (params: Record<string, number>) => void
-}) => {
-  const freqSpec = spec.params.find((p) => p.key === "frequency")
-  const qSpec = spec.params.find((p) => p.key === "q")
-  // Live drag values (null = mirror the committed store value). We DON'T
-  // dispatch per move — the audio is driven live via onLive and the puck tracks
-  // the finger locally; a single setEffectParams lands on release (ONE undo step).
-  const [live, setLive] = useState<{ x: number; y: number } | null>(null)
-  if (!freqSpec || !qSpec) return null
-
-  const freqVal = live?.x ?? numParam(fx.params, freqSpec)
-  const qVal = live?.y ?? numParam(fx.params, qSpec)
-
-  const fmtFreq = (v: number): string =>
-    v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v.toFixed(0)
-
-  return (
-    <div className="bl-fxcard-xy">
-      <XYPad
-        label="Cutoff × Resonance"
-        x={{
-          value: freqVal,
-          min: freqSpec.min ?? 20,
-          max: freqSpec.max ?? 18000,
-          label: "Cutoff",
-          unit: "Hz",
-          format: fmtFreq,
-        }}
-        y={{
-          value: qVal,
-          min: qSpec.min ?? 0.1,
-          max: qSpec.max ?? 20,
-          label: "Q",
-          format: (v) => v.toFixed(1),
-        }}
-        onChange={(fx2, q2) => {
-          setLive({ x: fx2, y: q2 })
-          // Drive BOTH params live so the filter sweeps under the finger.
-          onLive("frequency", fx2)
-          onLive("q", q2)
-        }}
-        onCommit={(fx2, q2) => {
-          setLive(null)
-          onCommit({ frequency: fx2, q: q2 })
-        }}
-      />
-    </div>
-  )
-}
-
-// ----------------------------------------------------------- param controls
-const ParamKnob = ({
-  spec,
-  fx,
-  onLive,
-  onCommit,
-}: {
-  spec: EffectParamSpec
-  fx: EffectNode
-  /** Per-move: drive the audio node live (host.applyParam). */
-  onLive: (v: number) => void
-  /** On release: dispatch the persisting command once (one undo step). */
-  onCommit: (v: number) => void
-}) => {
-  const docValue = numParam(fx.params, spec)
-  // Mirror the live value during the drag so the dial tracks the finger (the doc
-  // isn't written until release). Null = follow the committed doc value.
-  const [live, setLive] = useState<number | null>(null)
-  const value = live ?? docValue
-  const fmt = (v: number): string => {
-    if (spec.unit === "Hz") return v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v.toFixed(0)
-    if (spec.unit === "dB") return v.toFixed(1)
-    if (spec.unit === "s") return v < 1 ? `${Math.round(v * 1000)}ms` : `${v.toFixed(2)}s`
-    if (spec.min === 0 && spec.max === 1) return `${Math.round(v * 100)}`
-    return v.toFixed(spec.step && spec.step < 1 ? 2 : 0)
+  // --- toggle bypass: a setEffectParams with the flipped `enabled` (verbatim). ---
+  const onToggle = (id: string) => {
+    const fx = track.inserts.find((n) => n.id === id)
+    if (!fx) return
+    store.dispatch({
+      t: "setEffectParams",
+      trackId: track.id,
+      insertId: id,
+      params: {},
+      enabled: !fx.enabled,
+    })
   }
-  return (
-    <Knob
-      label={spec.label}
-      value={value}
-      min={spec.min ?? 0}
-      max={spec.max ?? 1}
-      step={spec.step}
-      defaultValue={spec.default as number}
-      unit={spec.unit && spec.unit !== "Hz" && spec.unit !== "dB" && spec.unit !== "s" ? spec.unit : undefined}
-      format={fmt}
-      onChange={(v) => {
-        setLive(v)
-        onLive(v)
-      }}
-      onCommit={(v) => {
-        setLive(null)
-        onCommit(v)
-      }}
-      size={50}
-    />
-  )
-}
 
-const EnumParam = ({
-  spec,
-  fx,
-  onChange,
-}: {
-  spec: EffectParamSpec
-  fx: EffectNode
-  onChange: (v: string) => void
-}) => {
-  const value = strParam(fx.params, spec)
+  // --- live (per-move): drive the audio node straight through the engine — NO
+  // doc write, NO undo step. ---
+  const onParamLive = (id: string, param: string, value: number) =>
+    host.applyParam(
+      { scope: "insert", trackId: track.id, insertId: id, param },
+      value
+    )
+
+  // --- commit (on release): ONE setEffectParams (one undo step). ---
+  const onParamCommit = (id: string, params: Record<string, number | string>) =>
+    store.dispatch({ t: "setEffectParams", trackId: track.id, insertId: id, params })
+
+  const form = host.form() as FxForm
+
   return (
-    <label className="bl-fxenum">
-      <span className="bl-fxenum-label">{spec.label}</span>
-      <select
-        className="bl-fxenum-select"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      >
-        {(spec.options ?? []).map((o) => (
-          <option key={o} value={o}>
-            {o}
-          </option>
-        ))}
-      </select>
-    </label>
+    <FxChainView
+      effects={track.inserts}
+      bpm={doc.bpm}
+      form={form}
+      onAdd={onAdd}
+      onQuickAdd={onQuickAdd}
+      onRemove={onRemove}
+      onMove={onMove}
+      onToggle={onToggle}
+      onParamLive={onParamLive}
+      onParamCommit={onParamCommit}
+      header={
+        track.inserts.length > 0 ? (
+          <div className="bl-fxchain-bar" data-bl-nocapture>
+            <span className="bl-fxchain-count">
+              {track.inserts.length} effect{track.inserts.length === 1 ? "" : "s"}
+            </span>
+            <button
+              type="button"
+              className="bl-chip is-danger"
+              onClick={() => {
+                const before = store.vanilla.getState().doc
+                const r = runAction(store, clearInsertsAction, {
+                  doc,
+                  targetTrackId: track.id,
+                })
+                if (r.commands.length) {
+                  host.toast(r.summary, {
+                    undo: () => store.vanilla.getState().doc !== before && store.undo(),
+                  })
+                }
+              }}
+            >
+              Clear
+            </button>
+          </div>
+        ) : null
+      }
+      sends={
+        showSends ? (
+          <SendsPanel store={store} host={host} track={track} buses={doc.buses} />
+        ) : null
+      }
+    />
   )
 }
 

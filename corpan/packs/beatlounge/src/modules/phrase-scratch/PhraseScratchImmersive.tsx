@@ -25,7 +25,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
-import type { EffectNode, FragmentRef } from "../../model/document"
+import type { EffectKind, EffectNode, FragmentRef } from "../../model/document"
 import { bankSnippets } from "../../phrase/bank"
 import type { AudioSource } from "../../phrase/audioSource"
 import { decodeFragmentBytes } from "../../phrase/decode"
@@ -54,12 +54,15 @@ import { Platter } from "./Platter"
 import { CutFader } from "./CutFader"
 import { createScratchFxBus, type ScratchFxBus } from "./scratchFxBus"
 import {
-  defaultScratchChain,
+  emptyScratchChain,
   chainHasActive,
+  addInsert,
+  removeInsert,
+  moveInsert,
   toggleInsert,
   setInsertParams,
-} from "./scratchFxChain"
-import { ScratchFxPanel } from "./ScratchFxPanel"
+} from "./scratchFxLive"
+import { FxChainView, type FxForm } from "../fx-rack/FxChainView"
 import { ScratchPhrasePanel } from "./ScratchPhrasePanel"
 import {
   TrackDrawer,
@@ -149,7 +152,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   // ---- master FX rack + phrase discovery: ONE shared bottom drawer (the same
   // surface Drums / Instruments use), with Effects + Phrases tabs. No bespoke
   // popovers. The chain is scratch-local (live bus, no doc coupling). ----------
-  const [fxChain, setFxChain] = useState<EffectNode[]>(() => defaultScratchChain())
+  const [fxChain, setFxChain] = useState<EffectNode[]>(() => emptyScratchChain())
   const [drawerTab, setDrawerTab] = useState("fx")
   const [drawer, setDrawer] = useState<DrawerState>("peek")
   // Which deck a discovered phrase lands on (A unless the user aims B).
@@ -460,7 +463,33 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     })
   }
 
-  // ---- master FX rack edits (live node + local state, no doc / undo) ---------
+  // ---- master FX rack edits — the FULL canonical pipeline (FxChainView) driven
+  // over the LIVE bus. Scratch is a hand-driven performance: the chain lives in
+  // local state (no doc, no undo). STRUCTURAL edits (add/remove/reorder) rebuild
+  // the bus chain with `setInserts`; toggle/param commits re-apply ONE insert via
+  // `updateInsert`; knob drags drive the node in real time via `liveParam`. ------
+  const onFxAdd = (kind: EffectKind) => {
+    void ensureAudio(host.audioContext())
+    setFxChain((chain) => {
+      const next = addInsert(chain, kind)
+      fxBusRef.current?.setInserts(next)
+      return next
+    })
+  }
+  const onFxRemove = (id: string) => {
+    setFxChain((chain) => {
+      const next = removeInsert(chain, id)
+      fxBusRef.current?.setInserts(next)
+      return next
+    })
+  }
+  const onFxMove = (id: string, dir: -1 | 1) => {
+    setFxChain((chain) => {
+      const next = moveInsert(chain, id, dir)
+      fxBusRef.current?.setInserts(next)
+      return next
+    })
+  }
   const onFxToggle = (id: string) => {
     void ensureAudio(host.audioContext())
     setFxChain((chain) => {
@@ -470,7 +499,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       return next
     })
   }
-  const onFxSetParams = (id: string, params: Record<string, number>) => {
+  const onFxParamLive = (id: string, param: string, value: number) =>
+    fxBusRef.current?.liveParam(id, param, value)
+  const onFxParamCommit = (id: string, params: Record<string, number | string>) => {
     setFxChain((chain) => {
       const next = setInsertParams(chain, id, params)
       const node = next.find((n) => n.id === id)
@@ -510,12 +541,26 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       id: "fx",
       label: "Effects",
       render: () => (
-        <ScratchFxPanel
-          chain={fxChain}
-          bus={fxBusRef.current}
-          onToggle={onFxToggle}
-          onSetParams={onFxSetParams}
-        />
+        <div className="bl-scrfx-chain">
+          <FxChainView
+            effects={fxChain}
+            bpm={doc.bpm}
+            form={host.form() as FxForm}
+            onAdd={onFxAdd}
+            onRemove={onFxRemove}
+            onMove={onFxMove}
+            onToggle={onFxToggle}
+            onParamLive={onFxParamLive}
+            onParamCommit={onFxParamCommit}
+            header={
+              <div className="bl-fxchain-bar" data-bl-nocapture>
+                <span className="bl-fxchain-count">
+                  {fxChain.length} effect{fxChain.length === 1 ? "" : "s"} · master
+                </span>
+              </div>
+            }
+          />
+        </div>
       ),
     },
     {

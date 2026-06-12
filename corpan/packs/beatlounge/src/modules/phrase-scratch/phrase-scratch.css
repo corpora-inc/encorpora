@@ -623,19 +623,13 @@
 }
 
 /* ----------------------------------------------- master FX rack (shared drawer)
-   The scratch master rack lives in the SHARED bottom drawer's Effects tab and
-   reuses the EXACT fx-rack effect-card classes (.bl-fxchain / .bl-fxcard /
-   .bl-fxcard-power / .bl-fxcard-xy) so it matches the rack on every other screen.
-   Only the chain's grid wrapper is scratch-local (the cards reflow like the
-   immersive rack). */
+   The scratch master rack IS the canonical FxChainView — the SAME add menu +
+   insert cards + reorder + delay note-length presets the mixer / drums use —
+   driven over the live ScratchFxBus (no doc, no undo). It reuses every fx-rack
+   class (.bl-fxchain / .bl-fxrack-chain / .bl-fxcard / .bl-fxcard-xy / the add
+   menu) verbatim; this is only the drawer-body padding wrapper. */
 .bl-scrfx-chain {
   padding: var(--bl-s4);
-}
-.bl-scrfx-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-  gap: var(--bl-s3);
-  align-content: start;
 }
 
 /* ----------------------------------------------- phrases (catalog discovery)

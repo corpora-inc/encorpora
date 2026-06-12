@@ -6,6 +6,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- **Scratch now uses the FULL shared effects pipeline (one canonical rack).** The
+  turntable's master FX is no longer a bespoke fixed-4 panel — it's the SAME
+  chainable `FxChainView` drums / instruments / the mixer use: the add-effect menu
+  over the WHOLE palette, add / remove / reorder, per-effect power + params + the
+  Filter XY pad. Extracted the presentational pipeline out of `TrackFxChain` into a
+  backing-agnostic `FxChainView`; `TrackFxChain` is now a thin doc adapter (store
+  commands + undo + sends, behavior-identical) and scratch drives the same view over
+  the live `ScratchFxBus` (no doc / no undo). Deleted the bespoke `ScratchFxPanel` +
+  `scratchFxChain`.
+- **Delay effect — tempo-synced note-length presets (every screen).** The shared
+  delay card gains quick-set chips — 1/4 · 1/4· · 1/8 · 1/8T · 1/16 — that lock the
+  delay time to that note value at the song BPM (the matching chip highlights; the
+  free seconds knob stays for fine control). New pure `noteLengthSeconds` helper +
+  preset table. Because it lives in the shared pipeline, drums, instruments, the
+  mixer AND scratch all get it.
 - **Squared-off, iPhone-bezel rounding pass (central).** Tuned the shared
   `--bl-radius*` tokens toward a tighter, consistent iOS "continuous corner"
   scale — cards `14px → 11px`, with a new `--bl-radius-lg: 14px` reserved for the
