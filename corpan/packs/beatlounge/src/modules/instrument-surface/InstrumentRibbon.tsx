@@ -69,6 +69,9 @@ interface Props {
   /** Show the surface's own Record/Clear toolbar (default true). The page hides
    *  it and drives `record` from its own track-bar chip instead. */
   showRecord?: boolean
+  /** Optional node placed on the control strip's first row, right of Lock/Free
+   *  (the Instruments page slots its Record arm here so the chrome stays compact). */
+  headerSlot?: React.ReactNode
 }
 
 /** Octave-window presets: how many octaves the ribbon spans. */
@@ -105,6 +108,7 @@ export const InstrumentRibbon = ({
   record: recordProp,
   quantizeRecord = true,
   showRecord = true,
+  headerSlot,
 }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
@@ -388,64 +392,77 @@ export const InstrumentRibbon = ({
         </div>
       )}
 
-      {/* ---- control strip ---- */}
+      {/* ---- control strip: two tidy rows ----
+           Row 1 — Lock/Free (+ an optional slot, e.g. the page's Record arm).
+           Row 2 — the octave window: ◀ low … 3|5|8 span … high ▶ (the span sits
+           centred between the shift edges, the range read at each edge). The
+           song's key/mode is shown once (the Harmony summary), never duplicated. */}
       <div className="bl-ribbon-controls" data-bl-nocapture>
-        {/* The song's key/mode is shown once — the clickable Harmony summary at the
-            top of the page. No duplicate label here. */}
-        <div className="bl-seg" role="group" aria-label="Pitch lock">
-          <button
-            type="button"
-            className={`bl-seg-btn${fretted ? " is-on" : ""}`}
-            aria-pressed={fretted}
-            onClick={() => setFretted(true)}
-          >
-            Lock
-          </button>
-          <button
-            type="button"
-            className={`bl-seg-btn${!fretted ? " is-on" : ""}`}
-            aria-pressed={!fretted}
-            onClick={() => setFretted(false)}
-          >
-            Free
-          </button>
-        </div>
-
-        <div className="bl-seg" role="group" aria-label="Octave span">
-          {SPAN_OCTAVES.map((o) => (
+        <div className="bl-ribbon-ctl-row">
+          <div className="bl-seg" role="group" aria-label="Pitch lock">
             <button
-              key={o}
               type="button"
-              className={`bl-seg-btn${spanOct === o ? " is-on" : ""}`}
-              aria-pressed={spanOct === o}
-              aria-label={`${o} octaves`}
-              onClick={() => setSpanOct(o)}
+              className={`bl-seg-btn${fretted ? " is-on" : ""}`}
+              aria-pressed={fretted}
+              onClick={() => setFretted(true)}
             >
-              {o}
+              Lock
             </button>
-          ))}
+            <button
+              type="button"
+              className={`bl-seg-btn${!fretted ? " is-on" : ""}`}
+              aria-pressed={!fretted}
+              onClick={() => setFretted(false)}
+            >
+              Free
+            </button>
+          </div>
+          {headerSlot && <div className="bl-ribbon-ctl-slot">{headerSlot}</div>}
         </div>
 
-        <div className="bl-ribbon-octave">
-          <button
-            type="button"
-            className="bl-icon-btn"
-            aria-label="Shift window down an octave"
-            onClick={() => shiftOctave(-1)}
-          >
-            ◀
-          </button>
-          <span className="bl-ribbon-range" aria-hidden="true">
-            {noteLabel(lowMidi)}–{noteLabel(lowMidi + spanOct * 12)}
-          </span>
-          <button
-            type="button"
-            className="bl-icon-btn"
-            aria-label="Shift window up an octave"
-            onClick={() => shiftOctave(1)}
-          >
-            ▶
-          </button>
+        <div className="bl-ribbon-ctl-row bl-ribbon-octrow">
+          <div className="bl-ribbon-oct-edge">
+            <button
+              type="button"
+              className="bl-icon-btn"
+              aria-label="Shift window down an octave"
+              onClick={() => shiftOctave(-1)}
+            >
+              ◀
+            </button>
+            <span className="bl-ribbon-oct-label" aria-hidden="true">
+              {noteLabel(lowMidi)}
+            </span>
+          </div>
+
+          <div className="bl-seg" role="group" aria-label="Octave span">
+            {SPAN_OCTAVES.map((o) => (
+              <button
+                key={o}
+                type="button"
+                className={`bl-seg-btn${spanOct === o ? " is-on" : ""}`}
+                aria-pressed={spanOct === o}
+                aria-label={`${o} octaves`}
+                onClick={() => setSpanOct(o)}
+              >
+                {o}
+              </button>
+            ))}
+          </div>
+
+          <div className="bl-ribbon-oct-edge">
+            <span className="bl-ribbon-oct-label" aria-hidden="true">
+              {noteLabel(lowMidi + spanOct * 12)}
+            </span>
+            <button
+              type="button"
+              className="bl-icon-btn"
+              aria-label="Shift window up an octave"
+              onClick={() => shiftOctave(1)}
+            >
+              ▶
+            </button>
+          </div>
         </div>
       </div>
 

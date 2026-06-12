@@ -59,35 +59,148 @@
   --bl-drawer-peek: calc(82vh - var(--bl-safe-top, 0px));
 }
 
-/* Header row: the harmony summary (left) + the track switcher (fills the rest)
-   share ONE row so the width isn't wasted on two short stacked rows. */
+/* Header row 1: the harmony summary (flex-grow) + the compact voice dropdown
+   share ONE row to use the width. Lock/Free + Record and the octave window live
+   in the ribbon's own control strip below, so the whole chrome is 3 tidy rows.
+   The header shows only when the drawer is down (peek). */
 .bl-instr-head {
   display: flex;
   align-items: center;
-  gap: var(--bl-s2) var(--bl-s3);
-  flex-wrap: wrap;
+  gap: var(--bl-s2);
   flex: 0 0 auto;
 }
 .bl-instr-head .bl-instr-harmony {
-  flex: 0 0 auto;
-}
-.bl-instr-tracks {
-  display: flex;
-  gap: var(--bl-s2);
-  flex-wrap: wrap;
-  /* basis 0 + min-width 0 so the chips SHRINK-AND-WRAP within the row instead of
-     overflowing the right edge on a narrow phone. */
-  flex: 1 1 0;
+  flex: 1 1 auto;
   min-width: 0;
 }
-/* Record arms on its OWN row — a clear, full-width tappable bar. */
-.bl-instr-recordrow {
-  display: flex;
+.bl-instr-record {
+  justify-content: center;
+}
+
+/* ---- the voice dropdown (collapsed track switcher) ---------------------- */
+.bl-instr-voicepick {
+  position: relative;
   flex: 0 0 auto;
 }
-.bl-instr-record {
+.bl-instr-voicebtn {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  max-width: 48vw;
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s3);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font: inherit;
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+  transition:
+    border-color var(--bl-dur) var(--bl-ease),
+    box-shadow var(--bl-dur) var(--bl-ease);
+}
+.bl-instr-voicebtn.is-open {
+  border-color: color-mix(in srgb, var(--bl-accent) 60%, var(--bl-border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bl-accent) 35%, transparent);
+}
+.bl-instr-voicebtn-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-instr-voicebtn-caret {
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-micro);
+}
+/* the popover menu — switch / rename / remove / add (mirrors the harmony pop) */
+.bl-instr-voice-menu {
+  position: absolute;
+  z-index: 41;
+  top: calc(100% + var(--bl-s2));
+  right: 0;
+  min-width: max(56vw, 12rem);
+  max-width: min(86vw, 22rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--bl-s2);
+  background:
+    linear-gradient(var(--bl-surface), var(--bl-surface)),
+    linear-gradient(180deg, var(--bl-surface-2), var(--bl-bg));
+  border: 1px solid color-mix(in srgb, var(--bl-accent) 22%, var(--bl-border));
+  border-radius: var(--bl-radius);
+  box-shadow:
+    0 18px 48px color-mix(in srgb, black 70%, transparent),
+    0 2px 8px color-mix(in srgb, black 50%, transparent);
+}
+.bl-instr-voice-item {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s2);
+  border: 1px solid transparent;
+  border-radius: var(--bl-radius-sm);
+}
+.bl-instr-voice-item.is-on {
+  border-color: var(--bl-accent);
+  background: color-mix(in srgb, var(--bl-accent) 16%, var(--bl-surface-2));
+}
+.bl-instr-voice-name {
   flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--bl-fs-label);
+}
+.bl-instr-voice-remove {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bl-radius-pill);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-body);
+  cursor: pointer;
+  transition:
+    color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-instr-voice-remove:hover {
+  color: var(--bl-error);
+  background: color-mix(in srgb, var(--bl-error) 16%, transparent);
+}
+.bl-instr-voice-add {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  min-height: var(--bl-hit);
+  margin-top: 2px;
+  padding: 0 var(--bl-s2);
+  border: 1px dashed var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font: inherit;
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+  transition:
+    border-color var(--bl-dur) var(--bl-ease),
+    color var(--bl-dur) var(--bl-ease);
+}
+.bl-instr-voice-add:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 50%, transparent);
+  color: var(--bl-text);
 }
 
 /* one track entry in the switcher: a SQUARED, roomy tab segment (reads as a real
@@ -192,14 +305,12 @@
 .bl-instr--expanded {
   --bl-instr-ribbon-min: 72px;
 }
-/* The HEADER (harmony summary + track switcher + Record) shows ONLY when the
-   drawer is fully DOWN (peek). The moment the drawer rises (open or expanded) it
-   gets out of the way so the ribbon takes the space. No content lost — it returns
-   when the drawer comes back down. */
+/* The HEADER (harmony summary + voice dropdown) shows ONLY when the drawer is
+   fully DOWN (peek). The moment the drawer rises (open or expanded) it gets out of
+   the way so the ribbon takes the space. No content lost — it returns when the
+   drawer comes back down. */
 .bl-instr--open .bl-instr-head,
-.bl-instr--open .bl-instr-recordrow,
-.bl-instr--expanded .bl-instr-head,
-.bl-instr--expanded .bl-instr-recordrow {
+.bl-instr--expanded .bl-instr-head {
   display: none;
 }
 /* At the TALLEST detent the ribbon's own control strip (Lock/Free · octave · range)
@@ -278,10 +389,26 @@
   gap: var(--bl-s3);
   min-height: 0;
 }
+/* the family banks line up on ONE row and scroll horizontally, so they never
+   wrap into several rows eating the drawer's vertical space. */
 .bl-instr-families {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: var(--bl-s2);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* a hair of bottom room so the scrollbar (where shown) never clips the chips */
+  padding-bottom: 2px;
+  scroll-snap-type: x proximity;
+}
+.bl-instr-families::-webkit-scrollbar {
+  display: none;
+}
+.bl-instr-families > .bl-chip {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
 }
 
 .bl-instr-programs {

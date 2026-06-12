@@ -181,13 +181,15 @@
   height: calc(82vh - var(--bl-safe-top, 0px));
 }
 
-/* drag handle — ≥44px tappable zone, the visual grip is the pill inside */
+/* drag handle — a 44px tappable zone (the platform target floor, still easy to
+   catch) without the old 64px height eating the drawer. A bold, wide grip pill
+   keeps it obviously grabbable despite the trimmer zone. */
 .bl-trackdrawer-handle {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 64px; /* OVERSIZED grab zone — easy to catch the drawer. */
+  min-height: 44px;
   cursor: grab;
   touch-action: none; /* we own the vertical drag */
 }
@@ -198,13 +200,13 @@
   border-radius: var(--bl-radius);
 }
 .bl-trackdrawer-grip {
-  width: 60px;
-  height: 6px;
+  width: 72px;
+  height: 7px;
   border-radius: 999px;
   background: var(--bl-text-dim);
-  opacity: 0.7;
+  opacity: 0.8;
 }
-.bl-trackdrawer-handle:hover .bl-trackdrawer-grip { opacity: 0.85; }
+.bl-trackdrawer-handle:hover .bl-trackdrawer-grip { opacity: 1; }
 
 /* tab bar — a SQUARED segment bar (reads as real app tabs, not pills): ONE
  * squared track holding the segments, horizontally scrollable on a 300px phone.

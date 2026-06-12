@@ -26,6 +26,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Changed
+- **Instruments header compacted to 3 tidy rows.** The detail-page chrome was
+  eating the ribbon's space (harmony, a wrapping chip-row of voices, a full-width
+  Record row, plus the ribbon's own controls). Now: row 1 = the harmony summary
+  (flex-grow) + a compact **voice dropdown** (switch / rename / remove / add — the
+  old wrapping chip switcher collapsed into one control); row 2 = **Lock/Free +
+  Record** sharing a line (Record no longer owns a row — it slots into the ribbon's
+  control strip); row 3 = the octave window **◀ low · 3│5│8 span · high ▶**. Clean
+  at 320 → iPad. The Voice drawer's family banks line up on ONE horizontally-
+  scrolling row instead of wrapping into several. The bottom-drawer grab handle
+  trimmed 64px → 44px (the platform touch-target floor) with a bolder grip pill —
+  just as grabbable, far less vertical space.
 - **Scenes moved off the home Stage into the nav.** Scenes (save / load complete
   states) is no longer a home tile — its entry is a button in the persistent
   Dock-Rail that opens the existing Scenes drawer. The module stays registered so

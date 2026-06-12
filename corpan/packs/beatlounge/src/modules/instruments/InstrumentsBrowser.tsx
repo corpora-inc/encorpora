@@ -131,6 +131,9 @@ export const InstrumentsBrowser = ({
   const [tweakOpen, setTweakOpen] = useState(false)
   // The harmony bar leads the page as a compact row that expands to a popover.
   const [harmonyOpen, setHarmonyOpen] = useState(false)
+  // The voice switcher collapses into a compact dropdown (switch / rename / remove
+  // / add) so it never eats a wrapping chip-row of vertical space.
+  const [voiceOpen, setVoiceOpen] = useState(false)
 
   const instrumentTracks = useMemo(
     () => doc.tracks.filter((t): t is InstrumentTrack => isMelodicTrack(t)),
@@ -339,9 +342,10 @@ export const InstrumentsBrowser = ({
     <div className={`bl-instr bl-trackpage bl-instr--${drawer}`}>
       <section className="bl-instr-stage bl-trackpage-grid bl-grid">
         {/* ---- header (shown only when the drawer is DOWN): the harmony summary
-             and the track switcher share ONE row to use the width; Record arms on
-             its own row below. All of it hides as the drawer rises so the ribbon
-             takes the space. ---- */}
+             and the voice dropdown share ONE compact row. Lock/Free + Record and
+             the octave window live in the ribbon's own control strip below, so the
+             whole chrome is 3 tidy rows. All of it hides as the drawer rises so the
+             ribbon takes the space. ---- */}
         <div className="bl-instr-head" data-bl-nocapture>
           <div className="bl-instr-harmony">
             <button
@@ -373,59 +377,88 @@ export const InstrumentsBrowser = ({
             )}
           </div>
 
-          <div className="bl-instr-tracks">
-            {instrumentTracks.map((t) => (
-              <div
-                key={t.id}
-                className={`bl-instr-track${t.id === trackId ? " is-on" : ""}`}
-              >
-                {/* tap the chip ⇒ switch; long-press the name ⇒ rename */}
-                <TrackNameEdit
-                  store={store}
-                  trackId={t.id}
-                  name={t.name}
-                  color={t.color ?? "var(--bl-accent)"}
-                  className="bl-instr-track-name"
-                  onTap={() => setTrackId(t.id)}
-                />
-                {instrumentTracks.length > 1 && (
-                  <button
-                    type="button"
-                    className="bl-instr-track-remove"
-                    aria-label={`Remove ${t.name}`}
-                    title="Remove track"
-                    onClick={() => removeTrack(t.id)}
-                  >
-                    ×
-                  </button>
-                )}
-              </div>
-            ))}
+          {/* the voice switcher, collapsed into a compact dropdown (switch /
+              rename / remove / add) so it never eats a wrapping chip-row */}
+          <div className="bl-instr-voicepick">
             <button
               type="button"
-              className="bl-instr-add"
-              onClick={addInstrumentTrack}
-              aria-label="Add instrument track"
-              title="Add instrument track"
+              className={`bl-instr-voicebtn${voiceOpen ? " is-open" : ""}`}
+              aria-expanded={voiceOpen}
+              aria-haspopup="menu"
+              aria-label="Voice"
+              onClick={() => setVoiceOpen((o) => !o)}
             >
-              <Glyph name="wave" size={14} />
-              <span>Add</span>
+              <span
+                className="bl-dot"
+                style={{ background: itrack.color ?? "var(--bl-accent)" }}
+              />
+              <span className="bl-instr-voicebtn-name">{itrack.name}</span>
+              <span className="bl-instr-voicebtn-caret" aria-hidden="true">
+                {voiceOpen ? "▴" : "▾"}
+              </span>
             </button>
+            {voiceOpen && (
+              <>
+                <button
+                  type="button"
+                  className="bl-instr-harmony-scrim"
+                  aria-label="Close voices"
+                  onClick={() => setVoiceOpen(false)}
+                />
+                <div className="bl-instr-voice-menu" role="menu" aria-label="Voices">
+                  {instrumentTracks.map((t) => (
+                    <div
+                      key={t.id}
+                      className={`bl-instr-voice-item${t.id === trackId ? " is-on" : ""}`}
+                    >
+                      <span
+                        className="bl-dot"
+                        style={{ background: t.color ?? "var(--bl-accent)" }}
+                      />
+                      {/* tap ⇒ switch + close; long-press the name ⇒ rename */}
+                      <TrackNameEdit
+                        store={store}
+                        trackId={t.id}
+                        name={t.name}
+                        color={t.color ?? "var(--bl-accent)"}
+                        className="bl-instr-voice-name"
+                        onTap={() => {
+                          setTrackId(t.id)
+                          setVoiceOpen(false)
+                        }}
+                      />
+                      {instrumentTracks.length > 1 && (
+                        <button
+                          type="button"
+                          className="bl-instr-voice-remove"
+                          aria-label={`Remove ${t.name}`}
+                          title="Remove track"
+                          onClick={() => removeTrack(t.id)}
+                        >
+                          ×
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    className="bl-instr-voice-add"
+                    onClick={() => {
+                      addInstrumentTrack()
+                      setVoiceOpen(false)
+                    }}
+                  >
+                    <Glyph name="wave" size={14} />
+                    <span>Add voice</span>
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
 
-        <div className="bl-instr-recordrow" data-bl-nocapture>
-          <button
-            type="button"
-            className={`bl-chip bl-instr-record${record ? " is-armed" : ""}`}
-            aria-pressed={record}
-            onClick={() => setRecord((r) => !r)}
-          >
-            {record ? "Recording" : "Record"}
-          </button>
-        </div>
-
-        {/* ---- the playable ribbon (headline) ---- */}
+        {/* ---- the playable ribbon (headline). Record rides in the ribbon's own
+             control strip (next to Lock/Free) via headerSlot. ---- */}
         <div className="bl-instr-ribbon">
           <InstrumentRibbon
             host={host}
@@ -434,6 +467,16 @@ export const InstrumentsBrowser = ({
             trackId={itrack.id}
             record={record}
             showRecord={false}
+            headerSlot={
+              <button
+                type="button"
+                className={`bl-chip bl-instr-record${record ? " is-armed" : ""}`}
+                aria-pressed={record}
+                onClick={() => setRecord((r) => !r)}
+              >
+                {record ? "Recording" : "Record"}
+              </button>
+            }
           />
         </div>
 

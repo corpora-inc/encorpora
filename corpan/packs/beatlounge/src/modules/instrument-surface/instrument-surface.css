@@ -30,28 +30,44 @@
   box-shadow: 0 0 14px color-mix(in srgb, var(--bl-error) 40%, transparent);
 }
 
-/* ---------------------------------------------------------- control strip */
+/* ---------------------------------------------------------- control strip
+   Two tidy rows: Lock/Free (+ optional slot) above, the octave window below. The
+   key/mode is shown ONCE — the clickable Harmony summary atop the page — so
+   there's no "following …" label here. */
 .bl-ribbon-controls {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-ribbon-ctl-row {
+  display: flex;
   align-items: center;
   gap: var(--bl-s3);
 }
-
-/* Read-only "Following <key> <scale>" chip — harmony is set in the Harmony
-   module; the ribbon follows the song. The key/mode is shown ONCE — the clickable
-   Harmony summary atop the page — so there's no "following …" label here. */
-.bl-ribbon-octave {
+/* the slot (e.g. the page's Record arm) fills the rest of row 1 */
+.bl-ribbon-ctl-slot {
+  flex: 1 1 auto;
+  display: flex;
+  min-width: 0;
+}
+.bl-ribbon-ctl-slot > .bl-chip {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+/* row 2 — span centred between the shift edges; the range read at each edge */
+.bl-ribbon-octrow {
+  justify-content: space-between;
+}
+.bl-ribbon-oct-edge {
   display: inline-flex;
   align-items: center;
   gap: var(--bl-s2);
-  margin-left: auto;
 }
-.bl-ribbon-range {
+.bl-ribbon-oct-label {
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-label);
   color: var(--bl-text-dim);
-  min-width: 7ch;
+  min-width: 3ch;
   text-align: center;
 }
 
