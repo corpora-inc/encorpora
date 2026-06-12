@@ -12,6 +12,15 @@ command bus, harmony engine (modes/maqam/chords), the ribbon + N instruments, th
 generative drum density dial, phrase jam/scratch, the mixer + FX rack, and the
 squared-off, compact-mobile design standard. Everything below ships in 0.1.0._
 
+### Fixed (on-device Android polish)
+- **Drums beat grid scrolls horizontally with comfortable cells.** The step cells
+  used `minmax(0,1fr)` (crammed to fit), so 8 steps were tiny and 128 unusable. Now
+  cells are a fixed 34px and the grid scrolls horizontally — with the drum-name head
+  pinned (sticky) on the left so you always know the row. Works 8 → 128+ steps.
+- **Grooves +/- bar — tight inset.** The two density buttons were small and centred
+  in a wide padded strip (way too much inset on phone); they now fill the bar with a
+  tight gutter.
+
 ### Fixed (pre-release, from PR review)
 - **In-key snapping no longer jumps an octave in sparse modes.** `detuneCentsForMidi`
   tracked the nearest mode degree but lost which octave-candidate won, so a note just

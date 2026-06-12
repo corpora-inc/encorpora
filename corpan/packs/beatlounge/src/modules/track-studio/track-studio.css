@@ -51,7 +51,11 @@
 .bl-grid-scroll {
   flex: 1 1 auto;
   min-height: 0;
-  overflow: hidden auto;
+  /* BOTH axes scroll — the beat grid keeps comfortable fixed-width cells and
+     scrolls horizontally for long patterns (8 → 128+ steps) instead of cramming
+     them into the viewport. The lane head stays pinned (sticky) while you scroll. */
+  overflow: auto;
+  overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   padding-bottom: var(--bl-s2);
 }
@@ -59,6 +63,9 @@
   display: flex;
   flex-direction: column;
   gap: var(--bl-s1);
+  /* as wide as the widest lane (so it scrolls), but never narrower than the view */
+  width: max-content;
+  min-width: 100%;
 }
 .bl-trackpage .bl-grid-actions {
   align-items: center;
@@ -74,23 +81,30 @@
  * width so the cells get the rest of the row and FILL it responsively. ---- */
 .bl-lane {
   display: grid;
-  grid-template-columns: var(--bl-lane-head-w, 92px) minmax(0, 1fr);
-  /* center the head + cells as BLOCKS in the row (NOT stretch) — Safari won't
-   * stretch the <button> head, which left its label pinned to the top. Centered
-   * blocks put the label and the cells at the same vertical center. */
+  /* cells take their NATURAL width (steps × fixed cell), so the row grows + scrolls
+     instead of shrinking each cell. gap:0 — the sticky head abuts the cells and
+     masks the seam as they scroll under it. */
+  grid-template-columns: var(--bl-lane-head-w, 92px) max-content;
   align-items: center;
-  gap: var(--bl-s2);
+  gap: 0;
+  width: max-content;
+  min-width: 100%;
 }
 .bl-lane-head {
   /* NOT flex: WebKit/Safari does not reliably apply flex/grid centering inside a
    * <button>, which left the label stuck to the top. Center the single-line
    * label the bulletproof way — line-height == height — no flex involved. */
   display: block;
+  /* pinned to the left while the cells scroll horizontally — always know the row.
+     Opaque bg so scrolled cells hide behind it (z above the cells). */
+  position: sticky;
+  left: 0;
+  z-index: 2;
   height: var(--bl-hit, 44px);
   padding: 0 var(--bl-s2);
   border: 1px solid transparent;
   border-radius: var(--bl-radius-sm, 8px);
-  background: transparent;
+  background: var(--bl-bg);
   color: var(--bl-text-dim);
   font: 600 var(--bl-fs-label) var(--bl-font);
   line-height: var(--bl-hit, 44px);
@@ -111,6 +125,10 @@
  * full-row band on .bl-lane (below) — head + cells share the exact same band. */
 .bl-lane-head.is-selected {
   color: var(--bl-accent);
+  /* the sticky head shows the selection band itself (opaque tint over bg) + the
+     accent left edge, so the lit row reads correctly even while scrolled. */
+  background: color-mix(in srgb, var(--bl-accent) 10%, var(--bl-bg));
+  box-shadow: inset 3px 0 0 0 var(--bl-accent);
 }
 .bl-lane-name {
   overflow: hidden;
@@ -134,11 +152,13 @@
 }
 .bl-lane-cells {
   display: grid;
-  grid-template-columns: repeat(var(--bl-steps, 16), minmax(0, 1fr));
+  /* FIXED comfortable cell width → never cramped; the row scrolls for long
+     patterns. (was minmax(0,1fr), which shrank every cell to fit the viewport.) */
+  grid-template-columns: repeat(var(--bl-steps, 16), var(--bl-cell-w, 34px));
   align-items: center; /* center the square cells so they sit centered in the
                           selection highlight band (not top-aligned) */
   gap: 3px;
-  min-width: 0;
+  padding-left: var(--bl-s2); /* separation from the head; scrolls under it */
 }
 .bl-lane-cells.is-silent { opacity: 0.45; }
 .bl-lane.is-selected {

@@ -208,7 +208,9 @@
 .bl-grooves-pcell.is-ghost { background: var(--bl-text-dim); opacity: 0.45; }
 
 /* ---- detail pane ---- */
-/* PHONE: a slim bottom bar holding just the small +/- dial (extras hidden). */
+/* PHONE: a slim bottom bar holding just the +/- dial (extras hidden). Tight inset
+   — the buttons fill the bar so it doesn't read as two tiny buttons floating in a
+   big padded strip. */
 .bl-grooves-detail {
   display: flex;
   flex-direction: column;
@@ -216,7 +218,7 @@
   min-width: 0;
   border-top: 1px solid var(--bl-border);
   background: var(--bl-surface);
-  padding: var(--bl-s2) var(--bl-s4);
+  padding: var(--bl-s2);
   padding-bottom: calc(var(--bl-s2) + var(--bl-safe-bottom, 0));
   gap: var(--bl-s2);
   flex: 0 0 auto;
@@ -443,21 +445,23 @@
 /* ---- the +/− DENSITY DIAL (replaces the Scatter buttons) ----
  * Compact, icon-forward, minimal copy: "−" sparser, "+" denser. Pinned to the
  * top of the detail pane (no scroll), generous ≥44px round hit targets. */
-/* small +/- buttons, by themselves, centred — a tidy two-button cluster. */
+/* the +/- buttons FILL the bar (each half) — no big empty inset around two tiny
+   centred buttons. A max-width keeps them sane on a wide iPad detail pane. */
 .bl-grooves-dial {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: var(--bl-s3);
+  gap: var(--bl-s2);
   flex: 0 0 auto;
+  width: 100%;
 }
 .bl-grooves-dial-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  min-width: 64px;
-  padding: 0 var(--bl-s4);
+  flex: 1 1 0;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0 var(--bl-s3);
   border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface-2, var(--bl-surface));
