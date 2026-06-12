@@ -63,7 +63,7 @@ export const createInstrumentsModule = ({
     title: "Instruments",
     glyph: "drawer",
     immersive: "full",
-    tileAspect: "square",
+    tileAspect: "half",
     actions: instrumentsActions,
     mount(mount: ModuleMount): ModuleInstance {
       const root: Root = createRoot(mount.container)

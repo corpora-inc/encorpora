@@ -44,7 +44,7 @@ export const createPhraseScratchModule = ({
     title: "Scratch",
     glyph: "wave",
     immersive: "full",
-    tileAspect: "square",
+    tileAspect: "third",
     actions: [],
     mount(mount: ModuleMount): ModuleInstance {
       const root: Root = createRoot(mount.container)

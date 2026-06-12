@@ -56,7 +56,7 @@ export const createPhraseJamModule = ({ store, audio, host }: ModuleDeps): Beatl
     title: "Phrase Jam",
     glyph: "grid",
     immersive: "full",
-    tileAspect: "square",
+    tileAspect: "third",
     actions: phraseJamActions,
     mount(mount: ModuleMount): ModuleInstance {
       const root: Root = createRoot(mount.container)

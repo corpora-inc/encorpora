@@ -132,7 +132,10 @@ export interface BeatloungeModule {
   /** Inline-SVG glyph id (no emoji). */
   glyph: string
   immersive: ImmersiveMode
-  tileAspect?: "square" | "wide" | "tall" | "full"
+  /** Bento footprint on a 6-column tablet grid (collapses to 1 column on phone):
+   *  third = 2/6 (a 3-up row), half = 3/6 (a 2-up row), twothirds = 4/6,
+   *  full = the whole row. (Legacy square/wide/tall map onto this.) */
+  tileAspect?: "third" | "half" | "twothirds" | "full" | "band" | "square" | "wide" | "tall"
   /**
    * When true the Stage tile is a LIVE, interactive widget (a mini control
    * surface) rather than a tap-to-open summary. The shell renders it in a plain

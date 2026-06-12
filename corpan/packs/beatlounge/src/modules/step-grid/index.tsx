@@ -92,7 +92,7 @@ export const createStepGridModule = ({ store, audio }: StepGridDeps): Beatlounge
   title: "Drums",
   glyph: "grid",
   immersive: "full",
-  tileAspect: "wide",
+  tileAspect: "twothirds",
   // The Stage tile is a LIVE groove widget (density dial + shuffle), not a
   // tap-to-open summary — the shell renders it un-buttoned + adds the expand.
   tileInteractive: true,

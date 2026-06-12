@@ -48,7 +48,7 @@ export const createComposerModule = ({ store, audio }: ModuleDeps): BeatloungeMo
   title: "Harmony",
   glyph: "wave",
   immersive: "full",
-  tileAspect: "square",
+  tileAspect: "half",
   // The Stage tile is a live summary whose control opens a HOME POPOVER (the
   // full HarmonyPanel), not the immersive page — so it owns its own affordance.
   tileInteractive: true,

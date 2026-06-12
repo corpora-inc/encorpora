@@ -280,14 +280,10 @@
   align-content: start;
   max-width: 1180px;
 }
-@media (min-width: 520px) {
+@media (min-width: 720px) {
+  /* Tablet+: the 6-column IA grid (same in portrait + landscape). */
   .bl-stage-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (min-width: 900px) {
-  .bl-stage-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: var(--bl-s5);
     grid-auto-rows: minmax(132px, auto);
   }
@@ -339,21 +335,31 @@
   grid-column: span 1;
   grid-row: span 1;
 }
-@media (min-width: 520px) {
-  /* 2-column band: wide tiles stay ONE column (so [cycle+drums] is a clean pair);
-     full spans the row; tall spans two rows. */
-  .bl-tile--tall {
-    grid-row: span 2;
+@media (min-width: 720px) {
+  /* 6-column IA grid: third=2 (3-up rows), half=3 (2-up rows),
+     twothirds=4 (the drums lead), full=the whole row (ribbon, mixer). */
+  .bl-tile--third,
+  .bl-tile--square {
+    grid-column: span 2;
+  }
+  .bl-tile--half {
+    grid-column: span 3;
+  }
+  .bl-tile--twothirds,
+  .bl-tile--wide {
+    grid-column: span 4;
   }
   .bl-tile--full {
     grid-column: 1 / -1;
   }
-}
-@media (min-width: 900px) {
-  /* 3-column band: wide spans two columns so [cycle + drums(wide)] fills the row,
-     and the 3-tile groups each fill their own row. */
-  .bl-tile--wide {
+  /* A full-width BAND that's also tall — the Ribbon play strip (the hero). */
+  .bl-tile--band {
+    grid-column: 1 / -1;
+    grid-row: span 2;
+  }
+  .bl-tile--tall {
     grid-column: span 2;
+    grid-row: span 2;
   }
 }
 /* The mounted content fills the bento cell (tall tiles get the extra height;
