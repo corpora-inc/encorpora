@@ -14,9 +14,11 @@
 import { createStore, type StoreApi } from "zustand/vanilla"
 import { useStore } from "zustand"
 import type { Command } from "../model/command"
-import type { ChangeMeta, CommandBus } from "../model/commandBus"
+import type { ChangeMeta, CommandBus, PreviewHandle } from "../model/commandBus"
 import type { BeatloungeDoc } from "../model/document"
 import { saveActiveDoc, loadActiveDoc } from "./persistence"
+
+export type { PreviewHandle } from "../model/commandBus"
 
 const PERSIST_DEBOUNCE_MS = 500
 
@@ -35,6 +37,14 @@ export interface BeatloungeStore {
   readonly vanilla: StoreApi<BeatloungeStoreState>
   /** The one write path. */
   dispatch(cmd: Command): BeatloungeDoc
+  /**
+   * Apply a command TRANSIENTLY — returns a handle to keep (commit onto the
+   * undo stack) or rollback. The always-on Auto conductor writes through this
+   * and NEVER calls keep(): each loop wrap's preview re-bases on the current doc
+   * and supersedes the last, so a continuously-regenerating line leaves the undo
+   * stack (and debounced IDB) untouched. Forwards to the bus's preview seam.
+   */
+  preview(cmd: Command): PreviewHandle
   undo(): void
   redo(): void
   /** Async: load a persisted doc into the bus if present. */
@@ -92,6 +102,7 @@ export const createBeatloungeStore = (bus: CommandBus): BeatloungeStore => {
   return {
     vanilla,
     dispatch: (cmd) => bus.dispatch(cmd),
+    preview: (cmd) => bus.preview(cmd),
     undo: () => {
       bus.undo()
     },

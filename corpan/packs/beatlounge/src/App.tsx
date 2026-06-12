@@ -29,6 +29,7 @@ import { createModuleRegistry } from "./modules/registry"
 import { registerAllModules } from "./modules/allModules"
 import { Shell } from "./shell/Shell"
 import { ErrorBoundary } from "./shell/ErrorBoundary"
+import { createAutoConductor } from "./shell/AutoConductor"
 
 /** Backfill fields added after a doc was persisted, so the engine never reads
  *  an undefined array (e.g. audioGraph iterates doc.buses). */
@@ -52,6 +53,9 @@ interface Rig {
   bridge: ReturnType<typeof createChromeBridge>
   host: ReturnType<typeof createHost>
   registry: ReturnType<typeof createModuleRegistry>
+  /** The always-on Auto melody conductor — rig-level so an armed line keeps
+   *  regenerating after you leave Instruments / go to the Stage. */
+  conductor: ReturnType<typeof createAutoConductor>
 }
 
 const buildRig = (hostApi: HostApi, doc: BeatloungeDoc): Rig => {
@@ -69,14 +73,23 @@ const buildRig = (hostApi: HostApi, doc: BeatloungeDoc): Rig => {
   const host = createHost({ hostApi, bus, audio, chrome: bridge.chrome })
   const registry = createModuleRegistry()
   registerAllModules(registry, { store, audio, host })
-  return { store, audio, formObs, bridge, host, registry }
+  // The Auto melody conductor lives at the rig (pack) lifetime — created exactly
+  // once per rig and immune to Score remount / screen nav. Generation is gated
+  // on the global transport, so this is silent until the user presses play.
+  const conductor = createAutoConductor({ store, audio })
+  return { store, audio, formObs, bridge, host, registry, conductor }
 }
 
 /** Dispose every rig subsystem, each guarded so one failure can't abort the
  *  rest or throw out of React cleanup (which would white-screen the pack). */
 const disposeRig = (rig: Rig | null): void => {
   if (!rig) return
-  for (const dispose of [rig.store.dispose, rig.audio.dispose, rig.formObs.dispose]) {
+  for (const dispose of [
+    rig.conductor.dispose,
+    rig.store.dispose,
+    rig.audio.dispose,
+    rig.formObs.dispose,
+  ]) {
     try {
       dispose()
     } catch (err) {

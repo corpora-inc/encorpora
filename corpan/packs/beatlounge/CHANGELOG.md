@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Auto melody expansion — per-track, persisted, always-on.** The Score editor's
+  Auto is now a per-track generative conductor that keeps re-walking a flowing
+  line each loop wrap, and keeps going after you leave the Instruments screen
+  (it runs at the pack level, not the editor). Behind the Auto chip: **Feel**,
+  **Motion**, a **Density** +/- stepper, and a new **Variation** control —
+  **Lock** (a fixed ostinato), **Evolve** (gradual mutation), or **New** (a fresh
+  line every loop). Two armed voices de-correlate so they don't play in lockstep.
+  Painting a cell or tapping the +/- layer dial on an armed track hands control
+  back to you. The endless line no longer floods undo — it writes transiently, so
+  your real edits stay on the undo stack.
+
 ## [0.1.0] - 2026-06-12
 
 _First public release: the full beat-lounge studio — tick-addressed sequencer +

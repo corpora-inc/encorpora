@@ -71,3 +71,16 @@
 .bl-score-scroll {
   flex: 1 1 auto;
 }
+
+/* Armed Auto chip — the score module's bar had no local is-armed rule, so the
+   armed highlight never showed. A solid accent fill reads as "live". */
+.bl-score .bl-chip.is-armed {
+  background: var(--bl-accent);
+  color: var(--bl-on-accent, #04141a);
+  border-color: var(--bl-accent);
+}
+
+/* The Variation control (Lock | Evolve | New) reuses the SHARED .bl-seg /
+   .bl-seg-btn segmented control (defined in ribbon/styles.css, also used by the
+   Harmony panel + instrument surface) — no local redefinition, so every
+   segmented control in the pack stays visually identical. */

@@ -38,12 +38,12 @@ import {
   type MetricProfile,
   type TransitionTable,
 } from "../../music/melody"
+import { useAutoConfig, type AutoVariation } from "../../store/autoMelody"
 import { LaneGrid, type LaneGridLane } from "../track-studio/LaneGrid"
 import {
   buildScoreView,
   fillScoreCells,
   buildScoreCommands,
-  buildAutoPlayNotes,
   type ScoreView,
 } from "./scoreModel"
 import "./score.css"
@@ -61,16 +61,32 @@ export interface ScoreProps {
 /** ~2 octaves around the working tonic — singable, mostly-ascending register. */
 const OCTAVES = 2
 
+/** The Variation seed-policy values + their short, translatable labels. */
+const VARIATIONS: readonly AutoVariation[] = ["lock", "evolve", "new"]
+const VARIATION_LABEL: Record<AutoVariation, string> = {
+  lock: "Lock",
+  evolve: "Evolve",
+  new: "New",
+}
+
+/** Density step per +/- tap (clamped 0..1 by the store). */
+const DENSITY_STEP = 0.15
+
 export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
 
-  // Local UI: the head selection (degree-row keys) + corpus picks + auto-play.
+  // Local UI: the head selection (degree-row keys) + the live playhead step.
   const [selected, setSelected] = useState<ReadonlySet<string>>(new Set())
-  const [metricId, setMetricId] = useState<string>(METRIC_PROFILES[0]?.id ?? "")
-  const [tableId, setTableId] = useState<string>(TRANSITION_TABLES[0]?.id ?? "")
-  const [auto, setAuto] = useState(false)
   const [playStep, setPlayStep] = useState(-1)
+
+  // Per-track Auto config (Feel/Motion/Density/Variation + the arm flag) lives in
+  // the persisted store — so the line keeps regenerating after you leave this
+  // screen, and the rig-level conductor (not this component) drives generation.
+  const auto = useAutoConfig(trackId)
+  const metricId = auto.metricId
+  const tableId = auto.tableId
+  const armed = auto.on
 
   const metric: MetricProfile =
     METRIC_PROFILES.find((m) => m.id === metricId) ?? METRIC_PROFILES[0]
@@ -84,7 +100,8 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
     return fillScoreCells(base, track.notes, track.grid)
   }, [doc, track])
 
-  // Live playhead → current step on this track's grid; also drives auto-play.
+  // Live playhead → current step on this track's grid. (Auto generation now runs
+  // in the rig-level AutoConductor, not here, so it survives leaving the screen.)
   const lastTick = useRef(-1)
   useEffect(() => {
     if (!audio) return
@@ -94,42 +111,6 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
       lastTick.current = tick
     })
   }, [audio, store, trackId])
-
-  // Endless auto-play: on each loop WRAP (tick decreased) regenerate a fresh,
-  // non-repeating line into the bound track. Rides the GLOBAL transport (we only
-  // fill while it's actually playing). One write per wrap; OFF by default.
-  const prevWrapTick = useRef(-1)
-  const autoRef = useRef(auto)
-  useEffect(() => {
-    autoRef.current = auto
-  }, [auto])
-  useEffect(() => {
-    if (!audio || !auto) return
-    // Seed a first fill immediately so turning it ON does something audible.
-    fillAuto()
-    const off = audio.onPlayhead((tick) => {
-      if (!autoRef.current || !audio.isPlaying()) {
-        prevWrapTick.current = tick
-        return
-      }
-      // Loop wrap = the playhead jumped backwards.
-      if (prevWrapTick.current >= 0 && tick < prevWrapTick.current) fillAuto()
-      prevWrapTick.current = tick
-    })
-    return off
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [audio, auto, metricId, tableId])
-
-  const fillAuto = () => {
-    const cur = store.vanilla.getState().doc
-    const t = findTrack(cur, trackId)
-    if (!t || !isInstrumentTrack(t)) return
-    const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
-    // Pass the track grid so auto-play notes snap to the visible cells too (no
-    // off-grid phantoms), matching the +/- layer path.
-    const notes = buildAutoPlayNotes(cur, { metric, table, octaves: OCTAVES, seed, grid: t.grid })
-    store.dispatch({ t: "setNotes", trackId, notes })
-  }
 
   if (!track || !isInstrumentTrack(track) || !view) {
     return <div className="bl-grid-empty">No melodic track.</div>
@@ -159,6 +140,10 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
   const setCell = (rowIndex: number, step: number, on: boolean) => {
     const row = view.rows[rowIndex]
     if (!row) return
+    // A hand edit on an armed track wins: disarm first so the conductor doesn't
+    // overwrite the manual touch next wrap. The last previewed line stays put;
+    // this edit lands on top as a normal, undoable dispatch.
+    if (auto.on) auto.arm(false)
     const cur = findTrack(store.vanilla.getState().doc, trackId)
     if (!cur || !isInstrumentTrack(cur)) return
     const tick = tickForStep(step, cur.grid)
@@ -185,6 +170,9 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
 
   // ---- the +/− layer dial — one undo batch per tap --------------------------
   const runDial = (op: "add" | "remove") => {
+    // A manual layer tap on an armed track wins: disarm so the conductor stops
+    // overwriting it. The +/- batch below stays a single undoable edit + toast.
+    if (auto.on) auto.arm(false)
     const before = store.vanilla.getState().doc
     const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
     const result = buildScoreCommands(store.vanilla.getState().doc, {
@@ -250,7 +238,7 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
             className="bl-select"
             aria-label="Melodic feel"
             value={metricId}
-            onChange={(e) => setMetricId(e.target.value)}
+            onChange={(e) => auto.setOption({ metricId: e.target.value })}
           >
             {METRIC_PROFILES.map((m) => (
               <option key={m.id} value={m.id}>
@@ -262,7 +250,7 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
             className="bl-select"
             aria-label="Melodic motion"
             value={tableId}
-            onChange={(e) => setTableId(e.target.value)}
+            onChange={(e) => auto.setOption({ tableId: e.target.value })}
           >
             {TRANSITION_TABLES.map((t) => (
               <option key={t.id} value={t.id}>
@@ -273,13 +261,61 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
           {audio && (
             <button
               type="button"
-              className={`bl-chip${auto ? " is-armed" : ""}`}
-              aria-pressed={auto}
-              onClick={() => setAuto((a) => !a)}
-              title="Endless auto-play — re-generate a flowing line each loop (rides the global transport)"
+              className={`bl-chip${armed ? " is-armed" : ""}`}
+              aria-pressed={armed}
+              onClick={() => auto.arm(!armed)}
+              title="Auto — keep re-generating a flowing line each loop (rides the global transport)"
             >
               Auto
             </button>
+          )}
+
+          {/* Armed-only: the headline Variation policy + a Density stepper. Shown
+              only when it matters; no transient/status text that reflows the grid. */}
+          {audio && armed && (
+            <>
+              <div
+                className="bl-seg"
+                role="group"
+                aria-label="Variation"
+                data-bl-nocapture
+              >
+                {VARIATIONS.map((v) => (
+                  <button
+                    key={v}
+                    type="button"
+                    className={`bl-seg-btn${auto.variation === v ? " is-on" : ""}`}
+                    aria-pressed={auto.variation === v}
+                    onClick={() => auto.setOption({ variation: v })}
+                  >
+                    {VARIATION_LABEL[v]}
+                  </button>
+                ))}
+              </div>
+              <div
+                className="bl-score-dial"
+                role="group"
+                aria-label="Density"
+                data-bl-nocapture
+              >
+                <button
+                  type="button"
+                  className="bl-score-dial-btn"
+                  aria-label="Sparser"
+                  onClick={() => auto.setOption({ density: auto.density - DENSITY_STEP })}
+                >
+                  <MinusGlyph />
+                </button>
+                <button
+                  type="button"
+                  className="bl-score-dial-btn is-primary"
+                  aria-label="Busier"
+                  onClick={() => auto.setOption({ density: auto.density + DENSITY_STEP })}
+                >
+                  <PlusGlyph />
+                </button>
+              </div>
+            </>
           )}
         </div>
       </div>
