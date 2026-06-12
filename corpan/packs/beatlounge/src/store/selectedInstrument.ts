@@ -27,8 +27,35 @@ interface SelectionState {
   byDoc: Record<string, Id>
 }
 
-/** Module singleton — one selection map per pack instance. */
-const selectionStore = createStore<SelectionState>(() => ({ byDoc: {} }))
+const LS_KEY = "beatlounge:selectedInstrument"
+
+/** Read the persisted docId→trackId map (graceful in SSR / private mode). */
+const readPersisted = (): Record<string, Id> => {
+  try {
+    if (typeof localStorage === "undefined") return {}
+    const raw = localStorage.getItem(LS_KEY)
+    if (!raw) return {}
+    const parsed = JSON.parse(raw) as unknown
+    return parsed && typeof parsed === "object" ? (parsed as Record<string, Id>) : {}
+  } catch {
+    return {}
+  }
+}
+
+/** Persist the map (best-effort; the in-memory store still works if this fails). */
+const writePersisted = (byDoc: Record<string, Id>): void => {
+  try {
+    if (typeof localStorage !== "undefined") localStorage.setItem(LS_KEY, JSON.stringify(byDoc))
+  } catch {
+    /* private mode / quota — ignore */
+  }
+}
+
+/** Module singleton — one selection map per pack instance, hydrated from + written
+ *  through to localStorage so the chosen synth survives a full reload / app restart
+ *  (not just in-session navigation). The resolver validates the stored id against
+ *  the live doc, so a vanished track falls back to the first melodic track. */
+const selectionStore = createStore<SelectionState>(() => ({ byDoc: readPersisted() }))
 
 /** The first melodic (non-drum) track of a doc, or undefined. */
 const firstMelodicId = (doc: BeatloungeDoc): Id | undefined =>
@@ -88,7 +115,11 @@ export const getSelectedInstrumentTrackId = (doc: BeatloungeDoc): Id | undefined
 export const setSelectedInstrumentTrackId = (docId: Id, trackId: Id): void => {
   const cur = selectionStore.getState().byDoc[docId]
   if (cur === trackId) return
-  selectionStore.setState((s) => ({ byDoc: { ...s.byDoc, [docId]: trackId } }))
+  selectionStore.setState((s) => {
+    const byDoc = { ...s.byDoc, [docId]: trackId }
+    writePersisted(byDoc) // durable: survives reload / app restart
+    return { byDoc }
+  })
 }
 
 /**
@@ -106,7 +137,12 @@ export const useSelectedInstrument = (
   return { trackId, select }
 }
 
-/** Test seam: reset the singleton between specs. */
+/** Test seam: reset the singleton (and clear persistence) between specs. */
 export const __resetSelectedInstrumentForTest = (): void => {
   selectionStore.setState({ byDoc: {} })
+  try {
+    if (typeof localStorage !== "undefined") localStorage.removeItem(LS_KEY)
+  } catch {
+    /* ignore */
+  }
 }

@@ -142,4 +142,15 @@ describe("seedSelectionOnMount — persisted selection wins, never resets to fir
     expect(seedSelectionOnMount(d, undefined, drum.id)).toBeUndefined()
     expect(seedSelectionOnMount(d, undefined, undefined)).toBeUndefined()
   })
+  it("persists the chosen track to localStorage (survives reload)", () => {
+    const d = doc()
+    const lead = d.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind !== "drumSampler")!
+    setSelectedInstrumentTrackId(d.id, lead.id)
+    // written through to storage under the namespaced key…
+    const raw = localStorage.getItem("beatlounge:selectedInstrument")
+    expect(raw).toBeTruthy()
+    expect(JSON.parse(raw!)[d.id]).toBe(lead.id)
+    // …and a fresh read (what the store hydrates from on reload) returns it.
+    expect(getStoredInstrumentTrackId(d.id)).toBe(lead.id)
+  })
 })

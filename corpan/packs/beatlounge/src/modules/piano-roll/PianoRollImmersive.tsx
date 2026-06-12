@@ -36,6 +36,11 @@ import {
   withHeaderToast,
 } from "../_shared/HeaderStatus"
 import { TrackNameEdit } from "../TrackNameEdit"
+import {
+  getStoredInstrumentTrackId,
+  seedSelectionOnMount,
+  useSelectedInstrument,
+} from "../../store/selectedInstrument"
 import { newInstrumentTrackInit } from "../instruments/addTrack"
 import {
   autoWindow,
@@ -64,8 +69,26 @@ const isMelodicTrack = (t: Track): boolean =>
 export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   // The roll targets ONE melodic track at a time; the switcher (chips) below
-  // moves between the N synth tracks — the founder couldn't "get to" them before.
-  const [trackId, setTrackId] = useState<Id>(initialTrackId)
+  // moves between the N synth tracks. The binding is the SHARED, persisted
+  // selection (same slice the Instruments page / ribbon / FX use) so switching to
+  // Synth 3 here, leaving, and coming back returns to Synth 3 — not Synth 1. The
+  // resolver keeps it valid (falls back to the first melodic track if it vanished).
+  const { trackId: selectedTrackId, select } = useSelectedInstrument(doc)
+  const seededRef = useRef(false)
+  if (!seededRef.current) {
+    seededRef.current = true
+    const seed = seedSelectionOnMount(
+      doc,
+      getStoredInstrumentTrackId(doc.id),
+      initialTrackId
+    )
+    if (seed) select(seed)
+  }
+  // selectedTrackId is undefined only when the doc has NO melodic track — fall
+  // back to the mount's id (always defined); the early return below handles the
+  // genuinely-empty case. Keeps `trackId` a plain Id for the editor.
+  const trackId = selectedTrackId ?? initialTrackId
+  const setTrackId = select
   const melodicTracks = useMemo(() => doc.tracks.filter(isMelodicTrack), [doc.tracks])
 
   // Inline streaming status — toasts type out in the header by the track light.
@@ -74,14 +97,6 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
     () => withHeaderToast(host, status.notify),
     [host, status.notify]
   )
-
-  // Keep the bound track valid (e.g. after a delete) — fall back to the first
-  // melodic track so the switcher highlight + editor stay coherent.
-  useEffect(() => {
-    if (!melodicTracks.some((t) => t.id === trackId) && melodicTracks[0]) {
-      setTrackId(melodicTracks[0].id)
-    }
-  }, [melodicTracks, trackId])
 
   const addMelodicTrack = () => {
     // Existing names → a unique "Synth N"; bind the roll to the new track.

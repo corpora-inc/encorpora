@@ -33,6 +33,11 @@ squared-off, compact-mobile design standard. Everything below ships in 0.1.0._
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Fixed
+- **The selected synth persists.** The piano-roll kept its bound track in LOCAL
+  state, so switching to Synth 3, leaving, and coming back snapped you to Synth 1.
+  It now uses the SAME shared selection slice as the Instruments page / ribbon / FX
+  (one source of truth), and that slice is now persisted to localStorage — so the
+  chosen synth survives a full reload / app restart, not just in-session navigation.
 - **Ribbon note readouts are per-finger now.** A single shared readout showed the
   last-touched note, so playing a C3 + an E5 and lifting the E5 left "E5" stranded
   under the C3. Each active finger now carries its OWN note label on its lit marker;
