@@ -1235,8 +1235,22 @@ const PRESETS: InstrumentPreset[] = [
 
 export const INSTRUMENT_PRESETS: readonly InstrumentPreset[] = Object.freeze(PRESETS)
 
-const PRESET_BY_ID: Readonly<Record<string, InstrumentPreset>> = Object.freeze(
-  Object.fromEntries(INSTRUMENT_PRESETS.map((p) => [p.id, p]))
+// Build the id→preset index with a duplicate guard so a copy-paste id collision in
+// the hand-authored corpus FAILS FAST at load (Object.fromEntries would silently
+// drop the earlier preset, making it vanish from id-based lookups but linger in
+// the list — a confusing, hard-to-spot corpus bug).
+const buildPresetIndex = (
+  presets: readonly InstrumentPreset[]
+): Readonly<Record<string, InstrumentPreset>> => {
+  const byId: Record<string, InstrumentPreset> = {}
+  for (const p of presets) {
+    if (byId[p.id]) throw new Error(`Duplicate instrument preset id: ${p.id}`)
+    byId[p.id] = p
+  }
+  return Object.freeze(byId)
+}
+const PRESET_BY_ID: Readonly<Record<string, InstrumentPreset>> = buildPresetIndex(
+  INSTRUMENT_PRESETS
 )
 
 // ---------------------------------------------------------------- lookups

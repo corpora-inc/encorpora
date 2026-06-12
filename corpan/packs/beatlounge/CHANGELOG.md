@@ -12,6 +12,16 @@ command bus, harmony engine (modes/maqam/chords), the ribbon + N instruments, th
 generative drum density dial, phrase jam/scratch, the mixer + FX rack, and the
 squared-off, compact-mobile design standard. Everything below ships in 0.1.0._
 
+### Fixed (pre-release, from PR review)
+- **In-key snapping no longer jumps an octave in sparse modes.** `detuneCentsForMidi`
+  tracked the nearest mode degree but lost which octave-candidate won, so a note just
+  below the next tonic in a pentatonic (etc.) snapped a whole octave DOWN (≈ −1100¢)
+  instead of up (+100¢). Now the winning candidate's octave is carried through.
+- **Jazz-blues `#IVdim7` is rooted correctly** — it was at semitone 4 (E/III) instead
+  of 6 (F#/#IV), out of step with the same chord elsewhere in the corpus.
+- **Duplicate preset-id guard** — the id index fails fast on a collision instead of
+  silently dropping a preset.
+
 ### Added
 - **Stochastic, musical drum-beat GENERATOR behind the +/− dial.** The home Drums
   widget, the Drums pane and the Grooves panel now GENERATE a fresh, surprising

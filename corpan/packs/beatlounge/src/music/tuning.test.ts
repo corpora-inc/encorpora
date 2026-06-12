@@ -153,6 +153,18 @@ describe("MIDI ↔ mode detune bridge", () => {
     expect(d).toBeCloseTo(355 - 400, 1)
   })
 
+  it("a note below the next tonic in a SPARSE mode snaps UP an octave, not down", () => {
+    // C major PENTATONIC: C D E G A (no B). MIDI B (71) over tonic C (60) is 1100¢;
+    // the nearest degree is the TONIC wrapped UP an octave (1200¢), so it must bend
+    // UP +100¢ to the next C — NOT collapse −1100¢ down to the lower tonic (the
+    // octave-loss bug). Equal12 keeps the snap exact.
+    const cPenta: ModeCents = { degrees: [0, 200, 400, 700, 900] }
+    expect(detuneCentsForMidi(71, cPenta, equal12, 60)).toBeCloseTo(100, 6)
+    // …and symmetrically just ABOVE the lower tonic in the octave BELOW snaps down.
+    const justBelow = detuneCentsForMidi(49, cPenta, equal12, 60) // 11 semis below C
+    expect(justBelow).toBeCloseTo(-100, 6)
+  })
+
   it("freqForMidiInMode bends E to the just third's exact Hz", () => {
     // C4 = 60. Just M3 above C4: C4hz * 5/4.
     const cHz = midiToFreq(60)

@@ -392,29 +392,34 @@ export const detuneCentsForMidi = (
   const { pc, octave } = octaveReduce(twelveTetCents)
   let bestIdx = 0
   let bestDelta = Infinity
+  // Track which octave-candidate WON, not just the degree index. A note just below
+  // the next tonic (sparse modes — pentatonic) is nearest to the degree wrapped UP
+  // an octave; if we ignored that and used the input note's `octave`, the result
+  // would snap a whole octave the wrong way (≈ −1100¢ instead of +100¢).
+  let bestOctaveShift = 0
   for (let i = 0; i < mode.degrees.length; i++) {
-    for (const cand of [
-      mode.degrees[i] - CENTS_PER_OCTAVE,
-      mode.degrees[i],
-      mode.degrees[i] + CENTS_PER_OCTAVE,
-    ]) {
+    for (const shift of [-1, 0, 1] as const) {
+      const cand = mode.degrees[i] + shift * CENTS_PER_OCTAVE
       const delta = cand - pc
       if (Math.abs(delta) < Math.abs(bestDelta)) {
         bestDelta = delta
         bestIdx = i
+        bestOctaveShift = shift
       }
     }
   }
+  // The effective octave = the note's octave PLUS the winning candidate's wrap.
+  const effOctave = octave + bestOctaveShift
   // The mode degree's 12-TET semitone offset (round its stored cents to a
   // semitone class) is what the tuning re-intonates.
   const degreeSemitone =
-    Math.round(mode.degrees[bestIdx] / CENTS_PER_SEMITONE) + octave * 12
+    Math.round(mode.degrees[bestIdx] / CENTS_PER_SEMITONE) + effOctave * 12
   // If the mode degree IS a non-12-TET value (maqam neutral tone), the corpus
   // already carries its exact cents — prefer that directly when the tuning is
   // equal12 (the maqam path), else re-voice the semitone skeleton via `tuning`.
   const exactCents =
     tuning.id === "equal12"
-      ? mode.degrees[bestIdx] + octave * CENTS_PER_OCTAVE
+      ? mode.degrees[bestIdx] + effOctave * CENTS_PER_OCTAVE
       : tuning.degreeToCents(degreeSemitone)
   return exactCents - twelveTetCents
 }

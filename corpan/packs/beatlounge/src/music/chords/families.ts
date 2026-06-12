@@ -249,7 +249,7 @@ export const genBlues = (): CorpusProgression[] => {
   const twelveBar: Array<[string, CorpusChord[], string[]]> = [
     ["basic", [I7, I7, I7, I7, IV7, IV7, I7, I7, V7, IV7, I7, V7], ["blues-12bar", "shuffle"]],
     ["quick-change", [I7, IV7, I7, I7, IV7, IV7, I7, I7, V7, IV7, I7, V7], ["blues-12bar", "quick-change"]],
-    ["jazz", [I7, IV7, I7, c(7, "min7", "v7"), IV7, c(4, "dim7", "#IVdim7"), I7, VI7, ii, V7, I7, V7], ["blues-12bar", "jazz-blues"]],
+    ["jazz", [I7, IV7, I7, c(7, "min7", "v7"), IV7, c(6, "dim7", "#IVdim7"), I7, VI7, ii, V7, I7, V7], ["blues-12bar", "jazz-blues"]],
     ["bird", [I7, c(9, "min7", "vi7"), c(2, "min7", "ii7"), V7, IV7, c(8, "dom7", "bVI7"), c(2, "min7", "ii7"), V7, c(2, "min7", "ii7"), c(7, "min7", "v7"), I7, V7], ["blues-12bar", "bebop-blues"]],
     ["turnaround-end", [I7, IV7, I7, I7, IV7, IV7, I7, VI7, ii, V7, I7, bVII7], ["blues-12bar"]],
     ["nine-chord", [I9, IV9, I9, I9, IV9, IV9, I9, I9, V7, IV9, I9, V7], ["blues-12bar", "ninth"]],
