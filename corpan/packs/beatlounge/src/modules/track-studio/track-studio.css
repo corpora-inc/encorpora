@@ -206,14 +206,19 @@
 }
 .bl-trackdrawer-handle:hover .bl-trackdrawer-grip { opacity: 0.85; }
 
-/* tab bar — pills, horizontally scrollable on a 300px phone, never clip */
+/* tab bar — a SQUARED segment bar (reads as real app tabs, not pills): ONE
+ * squared track holding the segments, horizontally scrollable on a 300px phone.
+ * The active segment lifts to a solid accent fill. */
 .bl-trackdrawer-tabs {
   flex: 0 0 auto;
   display: flex;
-  align-items: center;
-  gap: var(--bl-s2);
-  padding: 0 var(--bl-s4) var(--bl-s2);
-  border-bottom: 1px solid var(--bl-border);
+  align-items: stretch;
+  gap: var(--bl-s1);
+  margin: 0 var(--bl-s4) var(--bl-s3);
+  padding: 3px;
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-tab, 9px);
+  background: color-mix(in srgb, var(--bl-bg) 55%, var(--bl-surface));
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -222,28 +227,31 @@
 .bl-trackdrawer-tab {
   appearance: none;
   -webkit-appearance: none;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: var(--bl-hit, 44px);
   padding: 0 var(--bl-s4);
-  border-radius: var(--bl-radius-pill, 999px);
-  border: 1px solid var(--bl-border);
-  background: var(--bl-surface-2, var(--bl-surface));
+  border-radius: calc(var(--bl-radius-tab, 9px) - 3px);
+  border: 1px solid transparent;
+  background: transparent;
   color: var(--bl-text-dim);
   font: 600 var(--bl-fs-label) / 1 var(--bl-font);
   letter-spacing: 0.02em;
   cursor: pointer;
   white-space: nowrap;
   transition: color var(--bl-dur-fast, 130ms) var(--bl-ease),
-    border-color var(--bl-dur-fast, 130ms) var(--bl-ease),
-    background var(--bl-dur-fast, 130ms) var(--bl-ease);
+    box-shadow var(--bl-dur, 180ms) var(--bl-ease),
+    background var(--bl-dur, 180ms) var(--bl-ease);
 }
-.bl-trackdrawer-tab:hover { border-color: var(--bl-accent); }
+.bl-trackdrawer-tab:hover { color: var(--bl-text); }
 .bl-trackdrawer-tab.is-on {
   color: var(--bl-bg);
   background: var(--bl-accent);
-  border-color: var(--bl-accent);
+  box-shadow: 0 1px 6px color-mix(in srgb, var(--bl-accent) 45%, transparent);
 }
-.bl-trackdrawer-tab:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+.bl-trackdrawer-tab:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 2px; }
 
 /* the active section body — the ONE place that scrolls; everything inside it
  * (Grooves / Kit / FX / Mixer) gets the full width. */

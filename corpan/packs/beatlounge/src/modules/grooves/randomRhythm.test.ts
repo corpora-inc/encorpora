@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest"
-import { pickRandomRhythmId } from "./randomRhythm"
+import { pickRandomRhythmId, resolveDialRhythmId } from "./randomRhythm"
 import { RHYTHMS, getRhythm } from "../../rhythm"
 
 describe("pickRandomRhythmId", () => {
@@ -25,5 +25,24 @@ describe("pickRandomRhythmId", () => {
     const a = pickRandomRhythmId(() => 0.37)
     const b = pickRandomRhythmId(() => 0.37)
     expect(a).toBe(b)
+  })
+})
+
+describe("resolveDialRhythmId — NEVER defaults to 'the first' rhythm", () => {
+  it("uses an explicit id when given (a shuffle just picked one)", () => {
+    expect(resolveDialRhythmId(() => 0.5, undefined, "samba")).toBe("samba")
+    // explicit wins even over a last-used id
+    expect(resolveDialRhythmId(() => 0.5, "techno", "samba")).toBe("samba")
+  })
+
+  it("falls back to the last-used id (sticky between dial presses)", () => {
+    expect(resolveDialRhythmId(() => 0.5, "techno")).toBe("techno")
+  })
+
+  it("picks a RANDOM groove (not index 0) when nothing is chosen yet", () => {
+    // A mid-range rng must NOT land on RHYTHMS[0] (the old son-clave cling).
+    const id = resolveDialRhythmId(() => 0.5, undefined, undefined)
+    expect(getRhythm(id)).toBeTruthy()
+    expect(id).not.toBe(RHYTHMS[0]!.id)
   })
 })

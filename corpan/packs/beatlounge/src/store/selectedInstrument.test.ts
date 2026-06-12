@@ -13,6 +13,7 @@ import {
   getSelectedInstrumentTrackId,
   getStoredInstrumentTrackId,
   resolveSelectedInstrumentTrackId,
+  seedSelectionOnMount,
   setSelectedInstrumentTrackId,
 } from "./selectedInstrument"
 
@@ -98,5 +99,47 @@ describe("selection store (persist / restore / fallback)", () => {
     // Remove the selected track → resolves to the first melodic (the synth).
     const removed = reduce(after, { t: "removeTrack", trackId: added })
     expect(getSelectedInstrumentTrackId(removed)).toBe(melodicId(removed))
+  })
+})
+
+describe("seedSelectionOnMount — persisted selection wins, never resets to first", () => {
+  it("seeds the mount's track when there is no stored selection", () => {
+    const d = doc()
+    const id = melodicId(d)
+    expect(seedSelectionOnMount(d, undefined, id)).toBe(id)
+  })
+
+  it("does NOT seed (keeps the persisted pick) when something is already stored", () => {
+    const d = doc()
+    const stored = melodicId(d)
+    // The mount requests a DIFFERENT melodic track; the persisted one must win.
+    const after = reduce(d, {
+      t: "addTrack",
+      track: {
+        kind: "instrument",
+        name: "Lead",
+        grid: { denominator: 16 },
+        volume: 0.8,
+        pan: 0,
+        mute: false,
+        solo: false,
+        inserts: [],
+        sends: [],
+        automation: [],
+        instrument: { kind: "synth", osc: "sawtooth", filter: { type: "lowpass", frequency: 3000, q: 1 }, env: { attack: 0.01, decay: 0.2, sustain: 0.6, release: 0.3 } },
+        notes: [],
+      },
+    })
+    const added = after.tracks[after.tracks.length - 1].id
+    // Stored = the added lead; the mount points at the first track — must NOT seed.
+    expect(seedSelectionOnMount(after, added, stored)).toBeUndefined()
+  })
+
+  it("never seeds a requested id that is not a real melodic track", () => {
+    const d = doc()
+    const drum = d.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler")!
+    expect(seedSelectionOnMount(d, undefined, "trk_gone")).toBeUndefined()
+    expect(seedSelectionOnMount(d, undefined, drum.id)).toBeUndefined()
+    expect(seedSelectionOnMount(d, undefined, undefined)).toBeUndefined()
   })
 })
