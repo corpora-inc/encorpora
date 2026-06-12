@@ -25,7 +25,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   pane and the Grooves panel — pick a groove anywhere and it reflects everywhere.
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
+### Fixed
+- **The drum density dial is strictly +/- again (no more shuffle).** "+" was
+  REGENERATING (clear-then-place) the kit each press — it looked like a reshuffle
+  of the same few hits. Now "+" strictly ADDS a fresh stochastic layer ON TOP of
+  what's there (keeps every existing hit, unions new ones, de-duped) so repeated +
+  genuinely densifies while staying surprising; "−" strictly REMOVES a fraction.
+  Either acts on the SELECTED rows, or the WHOLE kit when none are selected — so
+  "−" with no selection no longer says "nothing to thin" while hits sit on
+  off-groove rows. Dropped the now-unused density-level state + Intensity.
+
+### Added
+- **Clear honours the lane selection on the Drums page.** With drum lane heads
+  selected, the header Clear wipes ONLY those rows; with none selected it clears
+  the whole grid (one undo batch either way). Its tooltip reflects which.
+
 ### Changed
+- **Streaming header status across all editor panes.** Drums, Piano-roll,
+  Phrase-jam and Pads now stream their toasts inline by the track light.
 - **Track-editor headers stripped to a tiny Clear; toasts stream inline.** Volume,
   Pan, Mute and Solo are gone from the Drums / Piano-roll / Phrase-jam / Pads
   editor headers + foots — they live in the Mixer drawer, so the header carries

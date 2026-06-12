@@ -96,12 +96,24 @@ describe("generate path (the +/− dial)", () => {
     expect(count(3)).toBeGreaterThan(count(1))
   })
 
-  it("level 0 clears the kit (empty) — sparser-to-nothing", () => {
+  it("generate is ADDITIVE — never clears; level 0 adds nothing but keeps existing", () => {
     const r = getRhythm("son-clave-3-2")!
     const d = doc() // default doc has kick/snare/hat notes
-    expect(drumNotes(d).length).toBeGreaterThan(0)
+    const before = drumNotes(d).length
+    expect(before).toBeGreaterThan(0)
+    // "+" strictly adds — it must NEVER remove existing hits (clearing/sparsing is
+    // the `remove` op's job). Level 0 generates no new hits, so the count holds.
     const { commands } = buildGrooveCommands(d, r, { op: "generate", level: 0, target: { kind: "drums" } })
-    expect(drumNotes(applyTo(d, commands)).length).toBe(0)
+    expect(drumNotes(applyTo(d, commands)).length).toBe(before)
+  })
+
+  it("generate ADDS on top of existing hits (denser, never replaces)", () => {
+    const r = getRhythm("son-clave-3-2")!
+    const d = doc()
+    const before = drumNotes(d).length
+    const { commands } = buildGrooveCommands(d, r, { op: "generate", level: 4, seed: 7, target: { kind: "drums" } })
+    const after = drumNotes(applyTo(d, commands)).length
+    expect(after).toBeGreaterThan(before) // strictly more — additive
   })
 
   it("with a selection, regenerates ONLY those rows and keeps the rest", () => {

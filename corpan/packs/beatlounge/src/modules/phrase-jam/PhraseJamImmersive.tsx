@@ -39,6 +39,11 @@ import type { AudioSource } from "../../phrase/audioSource"
 import { Glyph } from "../../bl-ui"
 import { useTransport } from "../../store/transport"
 import { ClearButton } from "../_shared/ClearButton"
+import {
+  HeaderStatusLine,
+  useHeaderStatus,
+  withHeaderToast,
+} from "../_shared/HeaderStatus"
 import { GroovesPanel } from "../grooves/GroovesPanel"
 import { TrackFxChain } from "../fx-rack/TrackFxChain"
 import { LaneGrid, type LaneGridLane } from "../track-studio/LaneGrid"
@@ -79,6 +84,14 @@ export const PhraseJamImmersive = ({
   const { isPlaying: playing } = useTransport(audio)
   const [tab, setTab] = useState<string>("grooves")
   const [drawer, setDrawer] = useState<DrawerState>("open")
+
+  // Inline streaming status — toasts type out in the header by the track light
+  // instead of floating over the controls. `localHost` routes every child toast.
+  const status = useHeaderStatus()
+  const localHost = useMemo(
+    () => withHeaderToast(host, status.notify),
+    [host, status.notify]
+  )
   // Lane-head selection (snippet ids). Local UI only — drives groove targeting.
   const [selected, setSelected] = useState<ReadonlySet<string>>(new Set())
 
@@ -242,7 +255,7 @@ export const PhraseJamImmersive = ({
     const before = store.vanilla.getState().doc
     if (ftrack.fragments.length === 0) return
     store.dispatch({ t: "clearTrack", trackId })
-    host.toast("Cleared the jam", {
+    localHost.toast("Cleared the jam", {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
@@ -259,7 +272,7 @@ export const PhraseJamImmersive = ({
       render: () => (
         <GroovesPanel
           store={store}
-          host={host}
+          host={localHost}
           variant="embedded"
           target={{ kind: "phrases", trackId, selectedSnippetIds: [...selected] }}
         />
@@ -268,14 +281,14 @@ export const PhraseJamImmersive = ({
     {
       id: "fx",
       label: "Effects",
-      render: () => <TrackFxChain host={host} store={store} trackId={trackId} />,
+      render: () => <TrackFxChain host={localHost} store={store} trackId={trackId} />,
     },
     {
       id: "mixer",
       label: "Mixer",
       render: () => (
         <TrackMixer
-          host={host}
+          host={localHost}
           store={store}
           track={ftrack}
           anySolo={anySolo}
@@ -291,8 +304,9 @@ export const PhraseJamImmersive = ({
         {/* ---- header (consistent with Drums) ---- */}
         <div className="bl-grid-toolbar" data-bl-nocapture>
           <div className="bl-grid-title">
-            {/* Transport lives once, globally, in the immersive header / Dock-Rail. */}
+            {/* Transport lives once, globally; toasts stream inline by the light. */}
             <span className="bl-dot" style={{ background: ftrack.color }} />
+            <HeaderStatusLine ctl={status} />
           </div>
           <div className="bl-grid-actions">
             {/* Volume/Pan/Mute/Solo live in the Mixer drawer — header keeps a tiny Clear. */}

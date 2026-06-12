@@ -154,6 +154,26 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
 
   const clearGrid = () => {
     const before = store.vanilla.getState().doc
+    const cur = findTrack(store.vanilla.getState().doc, trackId)
+    if (!cur || !isInstrumentTrack(cur)) return
+    // Lane heads selected → clear ONLY those rows; none selected → clear all.
+    const rows = new Set(targets.pitches)
+    if (rows.size > 0) {
+      const toRemove = cur.notes.filter((n) => rows.has(n.pitch))
+      if (toRemove.length === 0) {
+        localHost.toast("Those rows are empty")
+        return
+      }
+      store.dispatch({
+        t: "batch",
+        commands: toRemove.map((n) => ({ t: "removeNote", trackId, noteId: n.id })),
+        label: "Clear rows",
+      })
+      localHost.toast(`Cleared ${rows.size} row${rows.size === 1 ? "" : "s"}`, {
+        undo: () => store.vanilla.getState().doc !== before && store.undo(),
+      })
+      return
+    }
     const r = runAction(store, clearAction, { doc, targetTrackId: trackId })
     if (r.commands.length) {
       localHost.toast(r.summary, {
@@ -236,8 +256,11 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
           </div>
           <div className="bl-grid-actions">
             {/* Volume/Pan/Mute/Solo all live in the Mixer drawer — the editor
-                header carries only a tiny Clear. */}
-            <ClearButton onClear={clearGrid} />
+                header carries only a tiny Clear (selected rows only, if any). */}
+            <ClearButton
+              onClear={clearGrid}
+              label={targets.pitches.length ? "Clear selected rows" : "Clear"}
+            />
           </div>
         </div>
 

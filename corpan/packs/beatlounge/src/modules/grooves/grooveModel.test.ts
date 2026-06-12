@@ -483,6 +483,21 @@ describe("grooveModel — the +/− DENSITY DIAL (denser/sparser)", () => {
     for (const n of drumNotesOf(d)) expect(rows).toContain(n.pitch)
   })
 
+  it("− with NO selection thins hits on ANY row (whole kit in play)", () => {
+    // Lay hits on COWBELL — NOT one of son-clave's natural voices.
+    let d = emptyDrumDoc()
+    for (let tap = 1; tap <= 4; tap++) d = plus(d, [COWBELL], tap)
+    const before = drumNotesOf(d).length
+    expect(before).toBeGreaterThan(0)
+    // − with no selectedPitches must still find + thin them (not "nothing to thin").
+    const res = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+      target: { kind: "drums" },
+      op: "remove",
+    })
+    expect(res.commands.length).toBeGreaterThan(0)
+    expect(drumNotesOf(applyTo(d, res.commands)).length).toBeLessThan(before)
+  })
+
   it("− removes a FRACTION (smaller bite than + adds) — harder to take away", () => {
     const rows = [KICK, SNARE, COWBELL]
     // Build up a dense bed first.

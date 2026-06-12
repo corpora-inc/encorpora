@@ -26,7 +26,7 @@
  * Failures surface via host.toast; everything is noisy-not-silent.
  */
 
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { Midi } from "../../model/document"
@@ -36,7 +36,6 @@ import { groupedByFamily, FAMILY_META, getRhythm, type Rhythm } from "../../rhyt
 import { resolveRole } from "../../rhythm"
 import { bankSnippets } from "../../phrase/bank"
 import { denserAction, sparserAction, generateAction } from "./actions"
-import { MAX_DENSITY_LEVEL } from "./grooveModel"
 import { buildPreview } from "./preview"
 import { GrooveMark } from "./GrooveMark"
 import { useSelectedGroove } from "../../store/selectedGroove"
@@ -92,8 +91,6 @@ export const GroovesPanel = ({
   // Intensity (velocity spread) is fixed at full now — the slider was cut as
   // clutter; the +/- density dial is the one knob.
   const intensity = 1
-  // Generator density level for the DRUMS dial (each + raises it; − lowers, to 0).
-  const [level, setLevel] = useState(0)
 
   const selected = getRhythm(selectedId) ?? allRhythms[0]
 
@@ -142,27 +139,16 @@ export const GroovesPanel = ({
     })
   }
 
-  // The +/− dial. DRUMS use the GENERATOR (regenerate a fresh beat across the kit
-  // at a density level — + raises, − lowers, to empty). PHRASES keep the additive
-  // denser / pure sparser behaviour (each + lays a few more words, − peels back).
-  const onDenser = () => {
-    if (target.kind === "drums") {
-      const next = Math.min(MAX_DENSITY_LEVEL, level + 1)
-      setLevel(next)
-      runGroove(generateAction, { level: next })
-    } else {
-      runGroove(denserAction)
-    }
-  }
-  const onSparser = () => {
-    if (target.kind === "drums") {
-      const next = Math.max(0, level - 1)
-      setLevel(next)
-      runGroove(generateAction, { level: next })
-    } else {
-      runGroove(sparserAction)
-    }
-  }
+  // The +/− dial is STRICTLY additive / subtractive (it never shuffles). "+" lays
+  // ONE more fresh stochastic layer ON TOP of what's there — drums use the kit-wide
+  // generator (additive), phrases lay a few words; "−" purely removes a fraction.
+  // Either op acts on the SELECTED rows, or all rows when none are selected. Each
+  // press re-rolls (fresh seed) so + stays surprising while strictly densifying.
+  const onDenser = () =>
+    target.kind === "drums"
+      ? runGroove(generateAction, { level: 1 })
+      : runGroove(denserAction)
+  const onSparser = () => runGroove(sparserAction)
 
   if (!selected) {
     return <div className="bl-grid-empty">No rhythms available.</div>

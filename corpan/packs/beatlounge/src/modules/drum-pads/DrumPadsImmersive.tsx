@@ -12,12 +12,18 @@
  * step-record arm. A velocity Knob + the track Volume/Pan sit in the foot.
  */
 
+import { useMemo } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
 import { useBeatloungeStore } from "../../store/store"
 import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
 import { ClearButton } from "../_shared/ClearButton"
+import {
+  HeaderStatusLine,
+  useHeaderStatus,
+  withHeaderToast,
+} from "../_shared/HeaderStatus"
 import { DrumPadBank } from "./DrumPadBank"
 import { randomPatternAction } from "./actions"
 import { runAction } from "../runAction"
@@ -33,6 +39,13 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
 
+  // Inline streaming status — toasts type out in the header by the track light.
+  const status = useHeaderStatus()
+  const localHost = useMemo(
+    () => withHeaderToast(host, status.notify),
+    [host, status.notify]
+  )
+
   if (!track || !isInstrumentTrack(track)) {
     return <div className="bl-grid-empty">No drum track.</div>
   }
@@ -42,7 +55,7 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
       <div className="bl-grid-toolbar" data-bl-nocapture>
         <div className="bl-grid-title">
           <span className="bl-dot" style={{ background: track.color }} />
-          {track.name}
+          <HeaderStatusLine ctl={status} />
         </div>
         <div className="bl-grid-actions">
           <button
@@ -50,7 +63,7 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
             className="bl-chip"
             onClick={() => {
               const r = runAction(store, randomPatternAction, { doc, targetTrackId: trackId })
-              host.toast(r.summary, undefined)
+              localHost.toast(r.summary, undefined)
             }}
           >
             Randomize
@@ -60,7 +73,7 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
               const before = store.vanilla.getState().doc
               if (isInstrumentTrack(track) && track.notes.length === 0) return
               store.dispatch({ t: "clearTrack", trackId })
-              host.toast("Cleared pattern", {
+              localHost.toast("Cleared pattern", {
                 undo: () => store.vanilla.getState().doc !== before && store.undo(),
               })
             }}
@@ -68,7 +81,7 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
         </div>
       </div>
 
-      <DrumPadBank host={host} store={store} audio={audio} trackId={trackId} />
+      <DrumPadBank host={localHost} store={store} audio={audio} trackId={trackId} />
     </div>
   )
 }

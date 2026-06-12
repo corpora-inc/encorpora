@@ -30,6 +30,11 @@ import { stepForTick, tickForStep } from "../../model/timing"
 import { activePitches } from "../../music/resolver"
 import { Glyph, Knob } from "../../bl-ui"
 import { ClearButton } from "../_shared/ClearButton"
+import {
+  HeaderStatusLine,
+  useHeaderStatus,
+  withHeaderToast,
+} from "../_shared/HeaderStatus"
 import { TrackNameEdit } from "../TrackNameEdit"
 import { newInstrumentTrackInit } from "../instruments/addTrack"
 import {
@@ -62,6 +67,13 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
   // moves between the N synth tracks — the founder couldn't "get to" them before.
   const [trackId, setTrackId] = useState<Id>(initialTrackId)
   const melodicTracks = useMemo(() => doc.tracks.filter(isMelodicTrack), [doc.tracks])
+
+  // Inline streaming status — toasts type out in the header by the track light.
+  const status = useHeaderStatus()
+  const localHost = useMemo(
+    () => withHeaderToast(host, status.notify),
+    [host, status.notify]
+  )
 
   // Keep the bound track valid (e.g. after a delete) — fall back to the first
   // melodic track so the switcher highlight + editor stay coherent.
@@ -190,7 +202,7 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
             ? reAdded.notes.find((n) => n.tick === tick && n.pitch === pitch)
             : undefined
         setSelectedNoteId(note?.id ?? noteId)
-        host.toast(`${pitchLabel(pitch)} selected`, undefined)
+        localHost.toast(`${pitchLabel(pitch)} selected`, undefined)
       }, LONG_PRESS_MS)
     }
   }
@@ -241,13 +253,14 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
             color={track.color}
             className="bl-grid-title"
           />
+          <HeaderStatusLine ctl={status} />
           <ClearButton
             onClear={() => {
               const before = store.vanilla.getState().doc
               const r = runAction(store, clearAction, { doc, targetTrackId: trackId })
               if (r.commands.length) {
                 setSelectedNoteId(null)
-                host.toast(r.summary, {
+                localHost.toast(r.summary, {
                   undo: () => store.vanilla.getState().doc !== before && store.undo(),
                 })
               }

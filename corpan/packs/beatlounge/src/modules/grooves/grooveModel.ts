@@ -28,7 +28,6 @@ import {
   scatterPhrases,
   chooseHitsToSparsify,
   generateBeat,
-  kitPitches,
   DENSITY_LEVELS,
   rhythmTicks,
   cellTicks,
@@ -519,12 +518,11 @@ const generateDrumGroove = (
     velocity: p.velocity,
   }))
 
-  // The rows this regenerate OWNS — the selection, or (none) the WHOLE kit. We
-  // wipe these rows' existing notes (regenerate replaces them) and keep notes on
-  // any rows outside the generated set untouched.
-  const ownedRows = new Set<number>(
-    selected.length > 0 ? selected : kitPitches()
-  )
+  // ADDITIVE: "+" strictly ADDS a fresh stochastic layer — keep EVERY existing
+  // note and union the new hits on top (de-dupe by tick+pitch so a hit landing on
+  // an occupied cell is a harmless no-op). Each press lays more across the kit, so
+  // repeated + gets denser (never a clear-then-replace "shuffle"). "−" is the
+  // separate `remove` op (sparsifyDrumGroove), so the dial is strictly +/−.
   const existingAll: Omit<NoteEvent, "id">[] =
     drumGrid && isInstrumentTrack(drumGrid)
       ? drumGrid.notes.map(({ tick, duration, pitch, velocity, probability, ratchet, micro }) => ({
@@ -537,26 +535,26 @@ const generateDrumGroove = (
           ...(micro != null ? { micro } : {}),
         }))
       : []
-  const kept = existingAll.filter((n) => !ownedRows.has(n.pitch))
 
   const seen = new Set<string>()
   const notes: Omit<NoteEvent, "id">[] = []
-  for (const n of [...kept, ...grooveNotes]) {
+  for (const n of [...existingAll, ...grooveNotes]) {
     const key = `${n.tick}:${n.pitch}`
     if (seen.has(key)) continue
     seen.add(key)
     notes.push(n)
   }
+  // Net new hits actually added (those that didn't collide with an existing note).
+  const added = notes.length - existingAll.length
   notes.sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
   commands.push({ t: "setNotes", trackId: drumId, notes })
 
-  const placed = grooveNotes.length
   const where =
     selected.length > 0 ? ` · ${selected.length} row${selected.length === 1 ? "" : "s"}` : ""
   const summary =
-    placed === 0
-      ? `${rhythm.name} · cleared`
-      : `${rhythm.name} · ${placed} hit${placed === 1 ? "" : "s"}${where}`
+    added <= 0
+      ? `${rhythm.name} · no room`
+      : `${rhythm.name} · +${added} hit${added === 1 ? "" : "s"}${where}`
   return { commands, summary, placedPhrases: false, phrasesUnavailable: false }
 }
 
@@ -576,11 +574,12 @@ const sparsifyDrumGroove = (
 ): GrooveBuildResult => {
   const notes =
     drumGrid && isInstrumentTrack(drumGrid) ? drumGrid.notes : []
-  // The rows we thin: the explicit selection, or the groove's natural voices.
-  const targeted = new Set<number>(
-    selected.length > 0 ? selected : rhythm.lanes.map((l) => pitchForRole(l.role))
-  )
-  const onRows = notes.filter((n) => targeted.has(n.pitch))
+  // Rows we thin: the explicit selection, or — with NO selection — the WHOLE kit
+  // (every hit on the grid is in play), so "−" mirrors "+"'s kit-wide reach and
+  // never says "nothing to thin" while hits sit on un-natural rows.
+  const targeted = new Set<number>(selected)
+  const onRows =
+    selected.length > 0 ? notes.filter((n) => targeted.has(n.pitch)) : notes
   if (onRows.length === 0) {
     return {
       commands: [],
