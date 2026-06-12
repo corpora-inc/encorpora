@@ -1,0 +1,429 @@
+/**
+ * beatlounge — Song Setup module styles (co-located; Vite bundles into app.css).
+ * Uses only --bl-* tokens. No edits to styles.css. Dark, premium, calm.
+ */
+
+/* ---------------------------------------------------------- tile */
+.bl-song-tilesummary {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  font-variant-numeric: tabular-nums;
+  color: var(--bl-text);
+  letter-spacing: 0.02em;
+}
+.bl-song-tilecycle {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+.bl-song-beat {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--bl-cell-off);
+}
+.bl-song-beat.is-accent {
+  background: var(--bl-accent);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--bl-accent) 60%, transparent);
+}
+.bl-song-beat-more {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  margin-left: var(--bl-s1);
+}
+
+/* ---------------------------------------------------------- immersive shell */
+.bl-song {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  width: 100%;
+  padding: var(--bl-s4);
+}
+
+.bl-song-summary {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+  font-family: var(--bl-font-mono);
+  padding: var(--bl-s3) var(--bl-s4);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+}
+.bl-song-summary-big {
+  font-size: var(--bl-fs-display);
+  color: var(--bl-accent);
+  font-variant-numeric: tabular-nums;
+}
+.bl-song-summary-unit {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.bl-song-summary-sep {
+  color: var(--bl-text-dim);
+}
+.bl-song-summary-meter,
+.bl-song-summary-bpm {
+  font-size: var(--bl-fs-value);
+  color: var(--bl-text);
+  font-variant-numeric: tabular-nums;
+}
+.bl-song-summary-tag {
+  margin-left: auto;
+  padding: var(--bl-s1) var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  background: color-mix(in srgb, var(--bl-accent) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bl-accent) 40%, transparent);
+  color: var(--bl-accent-hot);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.06em;
+}
+
+/* ---------------------------------------------------------- columns */
+.bl-song-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--bl-s4);
+}
+@media (min-width: 760px) {
+  .bl-song-cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.bl-song-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  padding: var(--bl-s4);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+}
+.bl-song-h {
+  margin: 0;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bl-text);
+}
+.bl-song-h-sub {
+  margin-left: var(--bl-s2);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-micro);
+}
+
+/* ---------------------------------------------------------- readouts */
+.bl-song-readrow {
+  display: flex;
+  gap: var(--bl-s4);
+  flex-wrap: wrap;
+}
+.bl-song-read {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  font-variant-numeric: tabular-nums;
+  color: var(--bl-text);
+}
+.bl-song-read em {
+  font-style: normal;
+  font-size: var(--bl-fs-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bl-text-dim);
+  margin-left: 2px;
+}
+.bl-song-read-dim {
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-label);
+}
+
+.bl-song-fieldlabel {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-song-snaplabel {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+  margin-top: var(--bl-s1);
+}
+
+/* ---------------------------------------------------------- stepper + inputs */
+.bl-song-stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-song-numinput {
+  width: 76px;
+  text-align: center;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  font-variant-numeric: tabular-nums;
+  color: var(--bl-accent);
+  background: var(--bl-surface-2);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: var(--bl-s2);
+  min-height: var(--bl-hit);
+}
+.bl-song-numinput:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+  border-color: var(--bl-accent);
+}
+.bl-song-numinput-lg {
+  font-size: var(--bl-fs-title);
+  width: 84px;
+}
+
+/* range slider — themed for both webkit & firefox */
+.bl-song-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-cell-off);
+  cursor: pointer;
+  outline: none;
+}
+.bl-song-range:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 3px;
+}
+.bl-song-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bl-text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5),
+    var(--bl-glow) color-mix(in srgb, var(--bl-accent) 40%, transparent);
+  cursor: pointer;
+}
+.bl-song-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bl-text);
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------- chips */
+.bl-song-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+}
+.bl-chip.is-on {
+  background: color-mix(in srgb, var(--bl-accent) 22%, var(--bl-surface-2));
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+}
+
+/* meter preset chip — sig over feel */
+.bl-song-preset {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  min-height: 48px;
+  padding: var(--bl-s2) var(--bl-s3);
+}
+.bl-song-preset-sig {
+  font-size: var(--bl-fs-label);
+}
+.bl-song-preset-feel {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-song-preset.is-on .bl-song-preset-feel {
+  color: color-mix(in srgb, var(--bl-accent) 70%, var(--bl-text-dim));
+}
+
+/* ---------------------------------------------------------- meter editor */
+.bl-song-meter {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+}
+.bl-song-meter-slash {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-title);
+  color: var(--bl-text-dim);
+}
+.bl-song-denoms {
+  display: flex;
+  gap: var(--bl-s1);
+}
+
+/* ---------------------------------------------------------- tempo + swing */
+.bl-song-section-knobs .bl-song-knobrow {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s4);
+  flex-wrap: wrap;
+}
+.bl-song-bpmfield {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s1);
+}
+
+/* ---------------------------------------------------------- cycles (talas) */
+.bl-song-cyclegrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--bl-s3);
+}
+.bl-song-cycle {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+  text-align: left;
+  padding: var(--bl-s3);
+  background: var(--bl-surface-2);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  color: inherit;
+  cursor: pointer;
+  transition:
+    border-color var(--bl-dur) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-song-cycle:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 45%, transparent);
+  background: color-mix(in srgb, var(--bl-accent) 8%, var(--bl-surface-2));
+}
+.bl-song-cycle:active {
+  transform: scale(0.985);
+}
+.bl-song-cycle:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+.bl-song-cycle.is-on {
+  border-color: var(--bl-accent);
+  background: color-mix(in srgb, var(--bl-accent) 14%, var(--bl-surface-2));
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 30%, transparent);
+}
+.bl-song-cycle-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--bl-s2);
+}
+.bl-song-cycle-name {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-body);
+  color: var(--bl-text);
+  letter-spacing: 0.02em;
+}
+.bl-song-cycle-beats {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  font-variant-numeric: tabular-nums;
+  color: var(--bl-accent);
+}
+.bl-song-cycle-trad {
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-song-cycle-groups {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-accent-2);
+  letter-spacing: 0.04em;
+}
+.bl-song-cycle-blurb {
+  font-size: var(--bl-fs-micro);
+  line-height: 1.45;
+  color: var(--bl-text-dim);
+}
+.bl-song-cycle-custom {
+  cursor: default;
+  border-style: dashed;
+}
+.bl-song-cycle-custom:hover {
+  transform: none;
+}
+.bl-song-cycle-go {
+  margin-top: var(--bl-s1);
+  align-self: flex-start;
+}
+
+/* ---------------------------------------------------------- accent map */
+.bl-song-accentrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s1);
+}
+.bl-song-accent {
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 34px;
+  min-height: 34px;
+  padding: 0;
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-cell-off);
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition:
+    background var(--bl-dur-fast) var(--bl-ease),
+    color var(--bl-dur-fast) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-song-accent.is-barstart {
+  border-color: color-mix(in srgb, var(--bl-accent) 40%, var(--bl-border));
+}
+.bl-song-accent.is-accent {
+  background: var(--bl-accent);
+  color: var(--bl-bg);
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 55%, transparent);
+}
+.bl-song-accent:active {
+  transform: scale(0.9);
+}
+.bl-song-accent:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+.bl-song-note {
+  margin: 0;
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  font-style: italic;
+}

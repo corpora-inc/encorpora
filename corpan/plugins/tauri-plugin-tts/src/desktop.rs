@@ -4,8 +4,8 @@ use serde::de::DeserializeOwned;
 use tauri::{plugin::PluginApi, AppHandle, Runtime};
 
 use crate::models::{
-    BindEngineResult, InstallVoiceDataResult, RecoverResult, SpeakResult, TtsEngineStatus,
-    TtsHealthProbe, VoiceInfo,
+    BindEngineResult, InstallVoiceDataResult, RecoverResult, SpeakResult, SynthesizeResult,
+    TtsEngineStatus, TtsHealthProbe, VoiceInfo,
 };
 
 // Initialize desktop TTS handle
@@ -60,6 +60,24 @@ impl<R: Runtime> Tts<R> {
                 utterance_id: uuid::Uuid::new_v4().to_string(),
             })
         }
+    }
+
+    /// `synthesize_to_buffer` is a MOBILE capability (iOS AVSpeechSynthesizer.write /
+    /// Android synthesizeToFile). Desktop has no off-speaker render path here, so it
+    /// returns an `unsupported` error and callers feature-degrade (the beatlounge
+    /// pack falls through to its fragment kit / synth-vox floor).
+    pub fn synthesize_to_buffer(
+        &self,
+        text: String,
+        language: Option<String>,
+        rate: Option<f32>,
+        voice_id: Option<String>,
+    ) -> crate::Result<SynthesizeResult> {
+        let _ = (text, language, rate, voice_id);
+        Err(crate::Error::Io(std::io::Error::new(
+            std::io::ErrorKind::Unsupported,
+            "synthesize_to_buffer is not supported on desktop (mobile-only capability)",
+        )))
     }
 
     pub fn stop(&self) -> crate::Result<()> {

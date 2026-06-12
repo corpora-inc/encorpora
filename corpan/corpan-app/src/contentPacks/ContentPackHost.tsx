@@ -122,13 +122,12 @@ const loadStyle = async (href: string, id: string, inline?: boolean) => {
   return link
 }
 
-const clearInjectedAssets = (id: string) => {
-  document
-    .querySelectorAll(
+const injectedAssetNodes = (id: string) =>
+  Array.from(
+    document.querySelectorAll(
       `script[data-corp-game-id="${id}"], link[data-corp-game-id="${id}"], style[data-corp-game-id="${id}"]`
     )
-    .forEach((node) => node.remove())
-}
+  )
 
 /**
  * A URL that targets the `corpan-pack` custom URI-scheme protocol handler —
@@ -396,6 +395,9 @@ export default function ContentPackHost({
         window.clearTimeout(retryTimer)
         retryTimer = null
       }
+      // Idempotent: snapshot the instance and clear our handle up front so a
+      // second cleanup() (StrictMode double-invoke / overlapping reload) is a
+      // no-op rather than unmounting/clearing assets twice.
       const instanceToUnmount = activeInstance
       activeModule = null
       activeInstance = undefined
@@ -406,15 +408,6 @@ export default function ContentPackHost({
       } catch {
         // Ignore host-dispose dispatch failures.
       }
-      if (instanceToUnmount && typeof instanceToUnmount.unmount === "function") {
-        queueMicrotask(() => {
-          try {
-            instanceToUnmount.unmount?.()
-          } catch {
-            // Avoid unmount errors from crashing the host UI.
-          }
-        })
-      }
       if (hasLoadedRef.current) {
         hostApi.stopSpeech?.()
         hostApi.dispose?.()
@@ -423,7 +416,37 @@ export default function ContentPackHost({
       if (shouldDevReload) {
         ; (globalThis as { __corpanPerf?: boolean }).__corpanPerf = false
       }
-      clearInjectedAssets(id)
+      // ORDERING + TIMING are the whole point of this teardown:
+      //   1. DEFER the pack's React-root unmount past the current render. A bare
+      //      queueMicrotask runs before the next frame while React may still be
+      //      committing → "synchronously unmount a root while React was already
+      //      rendering" → detached DOM → NotFoundError → black screen on reload.
+      //      requestAnimationFrame waits until the current render/commit unwinds.
+      //   2. Only AFTER the pack has unmounted do we remove its injected scripts/
+      //      styles. Clearing them first would yank stylesheets out from under a
+      //      still-mounted tree (flash/half-rendered teardown). The pack root is
+      //      detached together with the host container by React, so the unmount
+      //      itself is the safe moment to drop the orphaned <script>/<style>.
+      // Snapshot the CURRENT injected nodes now, so the deferred clear removes
+      // exactly THIS pack instance's assets and never the fresh ones a
+      // subsequent load() (which runs concurrently after this synchronous
+      // cleanup) may have injected by the time the frame fires.
+      const staleAssets = injectedAssetNodes(id)
+      const finishTeardown = () => {
+        try {
+          instanceToUnmount?.unmount?.()
+        } catch {
+          // Avoid unmount errors from crashing the host UI.
+        }
+        staleAssets.forEach((node) => node.remove())
+      }
+      if (instanceToUnmount && typeof instanceToUnmount.unmount === "function") {
+        // Past the current render, then clear assets once the unmount has run.
+        requestAnimationFrame(finishTeardown)
+      } else {
+        // Nothing to unmount — still clear this instance's injected assets.
+        staleAssets.forEach((node) => node.remove())
+      }
     }
 
     const updateManifestSignature = (manifest: ContentPackManifest) => {

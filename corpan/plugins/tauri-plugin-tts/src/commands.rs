@@ -1,7 +1,7 @@
 use crate::{
     models::{
         BindEngineResult, InstallVoiceDataResult, RecoverResult, SpeakArgs, SpeakConcurrentArgs,
-        SpeakResult, TtsEngineStatus, TtsHealthProbe, VoiceInfo,
+        SpeakResult, SynthesizeArgs, SynthesizeResult, TtsEngineStatus, TtsHealthProbe, VoiceInfo,
     },
     Result, TtsExt,
 };
@@ -47,18 +47,40 @@ pub(crate) async fn speak_concurrent<R: Runtime>(
         args.voice_id,
     );
 
-    app.tts().speak_concurrent(
-        args.text,
-        args.language,
-        args.rate,
-        args.voice_id,
-    )
+    app.tts()
+        .speak_concurrent(args.text, args.language, args.rate, args.voice_id)
 }
 
 #[command]
 pub(crate) async fn stop<R: Runtime>(app: AppHandle<R>) -> Result<()> {
     println!("[NATIVE_TTS:DEBUG] stop invoked");
     app.tts().stop()
+}
+
+/// Render text to a RAW AUDIO buffer WITHOUT playing it through the speaker.
+///
+/// This is the capture path music packs need: OS `speak()` ducks other audio and
+/// never restores, so a music app captures TTS as raw PCM and plays it through its
+/// own Web Audio graph. Mobile (iOS/Android) is the supported target; desktop
+/// returns an `unsupported` error (see `desktop.rs`).
+///
+/// Frontend must call:
+///   invoke("plugin:tts|synthesize_to_buffer", { args: { text, language?, rate?, voice_id? } })
+#[command]
+pub(crate) async fn synthesize_to_buffer<R: Runtime>(
+    app: AppHandle<R>,
+    args: SynthesizeArgs,
+) -> Result<SynthesizeResult> {
+    println!(
+        "[NATIVE_TTS:DEBUG] synthesize_to_buffer invoked: text='{}', lang={:?}, rate={:?}, voice_id={:?}",
+        args.text.chars().take(50).collect::<String>(),
+        args.language,
+        args.rate,
+        args.voice_id,
+    );
+
+    app.tts()
+        .synthesize_to_buffer(args.text, args.language, args.rate, args.voice_id)
 }
 
 /// Open the closest-possible system UI for managing/downloading TTS voices.
@@ -79,7 +101,9 @@ pub(crate) async fn install_tts_data_if_supported<R: Runtime>(app: AppHandle<R>)
 
 /// Android engine inventory/status (supported=false on non-Android).
 #[command]
-pub(crate) async fn get_tts_engine_status<R: Runtime>(app: AppHandle<R>) -> Result<TtsEngineStatus> {
+pub(crate) async fn get_tts_engine_status<R: Runtime>(
+    app: AppHandle<R>,
+) -> Result<TtsEngineStatus> {
     println!("[NATIVE_TTS:DEBUG] get_tts_engine_status invoked");
     app.tts().get_tts_engine_status()
 }

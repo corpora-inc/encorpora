@@ -1,0 +1,163 @@
+/**
+ * beatlounge — XYPad styles (co-located; Vite bundles into app.css).
+ * Built only on --bl-* tokens. A square 2D control surface with a glowing
+ * puck, faint grid, tracking crosshairs, and a mono readout. Reduced-motion is
+ * handled globally in styles.css (transitions/animations off).
+ */
+
+.bl-xypad {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  min-width: 0;
+}
+
+.bl-xypad-label {
+  font-family: var(--bl-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+
+.bl-xypad-surface {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  /* A comfortable default footprint when no explicit size is set. */
+  min-width: 132px;
+  min-height: 132px;
+  max-width: 100%;
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      color-mix(in srgb, var(--bl-accent) 5%, transparent),
+      transparent 70%
+    ),
+    var(--bl-cell-off);
+  overflow: hidden;
+  cursor: crosshair;
+  touch-action: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color var(--bl-dur) var(--bl-ease);
+}
+.bl-xypad-surface:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 36%, transparent);
+}
+.bl-xypad-surface:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 3px;
+}
+
+/* ---- grid ---- */
+.bl-xypad-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.bl-xypad-gridline {
+  stroke: var(--bl-border);
+  stroke-width: 0.5;
+  vector-effect: non-scaling-stroke;
+}
+.bl-xypad-gridline.is-faint {
+  stroke: color-mix(in srgb, var(--bl-border) 50%, transparent);
+}
+
+/* ---- tracking crosshairs ---- */
+.bl-xypad-crosshair {
+  position: absolute;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--bl-accent) 22%, transparent);
+  transition:
+    left var(--bl-dur-fast) var(--bl-ease),
+    top var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-xypad-crosshair.is-v {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-0.5px);
+}
+.bl-xypad-crosshair.is-h {
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-0.5px);
+}
+
+/* ---- puck ---- */
+.bl-xypad-puck {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bl-text);
+  border: 2px solid var(--bl-accent);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.55),
+    var(--bl-glow) color-mix(in srgb, var(--bl-accent) 70%, transparent);
+  pointer-events: none;
+  /* Springy settle toward the target position. */
+  transition:
+    left var(--bl-dur-fast) var(--bl-ease),
+    top var(--bl-dur-fast) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+  transform: translate(-50%, -50%);
+}
+.bl-xypad-surface:active .bl-xypad-puck {
+  /* No position-tween while actively dragging — the puck must pin to the
+     finger; only scale up for the "grabbed" feel. */
+  transition: transform var(--bl-dur-fast) var(--bl-ease);
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+/* ---- axis labels (corner hints inside the pad) ---- */
+.bl-xypad-axis {
+  position: absolute;
+  font-family: var(--bl-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+  pointer-events: none;
+}
+.bl-xypad-axis.is-x {
+  right: var(--bl-s2);
+  bottom: var(--bl-s1);
+}
+.bl-xypad-axis.is-y {
+  left: var(--bl-s2);
+  top: var(--bl-s2);
+  writing-mode: vertical-rl;
+}
+
+/* ---- readouts ---- */
+.bl-xypad-readouts {
+  display: flex;
+  gap: var(--bl-s4);
+}
+.bl-xypad-readout {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bl-s1);
+  min-width: 0;
+}
+.bl-xypad-readout-key {
+  font-family: var(--bl-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-xypad-readout-val {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  font-variant-numeric: tabular-nums;
+  color: var(--bl-text);
+}

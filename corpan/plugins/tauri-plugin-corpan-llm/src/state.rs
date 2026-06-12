@@ -561,6 +561,22 @@ fn run_turn(
     let mut produced: u32 = 0;
     let gen_limit = (n_prompt + max_tokens).min(n_ctx_i);
 
+    // Coalesce streamed pieces. Emitting one IPC event per token marshals to the
+    // WebView on the UI thread as a JS eval result — a `Handler.post` onto the
+    // main looper PER TOKEN. On a fast decode that floods the main thread (a
+    // confirmed Play-vitals ANR: main stuck in `onEvaluateJavaScriptResult`) and
+    // also starves the WebView of looper time it needs to draw/handle input.
+    // Buffering and flushing at most every FLUSH_MS caps that at ~25 events/sec
+    // regardless of decode speed. The frontend concatenates `token` strings
+    // (hostApi.ts: `buf += tok`), so a multi-piece chunk is byte-identical to the
+    // per-token stream; and the incremental UTF-8 decoder above already keeps
+    // multi-byte chars whole, so a coalesced chunk never splits a codepoint.
+    const FLUSH_MS: u128 = 40;
+    const FLUSH_BYTES: usize = 256;
+    let mut pending = String::new();
+    let mut last_flush = std::time::Instant::now();
+    let mut first_emit = true;
+
     while n_cur < gen_limit {
         if cancel.load(Ordering::SeqCst) {
             break;
@@ -578,13 +594,23 @@ fn run_turn(
             .token_to_piece(token, &mut decoder, false, None)
             .map_err(|e| Error::LlamaCpp(format!("detok: {e}")))?;
         if !piece.is_empty() {
-            let _ = app.emit(
-                &format!("llm-token:{session_id}"),
-                TokenEvent {
-                    session_id: session_id.to_string(),
-                    token: piece,
-                },
-            );
+            pending.push_str(&piece);
+            // Flush the first piece immediately (time-to-first-token is the
+            // perceived-latency metric a learner feels); coalesce the rest.
+            if first_emit
+                || pending.len() >= FLUSH_BYTES
+                || last_flush.elapsed().as_millis() >= FLUSH_MS
+            {
+                let _ = app.emit(
+                    &format!("llm-token:{session_id}"),
+                    TokenEvent {
+                        session_id: session_id.to_string(),
+                        token: std::mem::take(&mut pending),
+                    },
+                );
+                last_flush = std::time::Instant::now();
+                first_emit = false;
+            }
         }
         produced += 1;
 
@@ -611,6 +637,20 @@ fn run_turn(
             "[corpan-llm] PERF decode: {produced} tok in {:.0}ms = {:.1} tok/s",
             decode_ms,
             (produced as f64) * 1000.0 / decode_ms,
+        );
+    }
+
+    // Flush the tail accumulated since the last interval flush so the closing
+    // words of the reply land before `llm-done` (which hands the pack the full
+    // buffer). Covers every loop-exit path (EOG, cancel, gen_limit); the `?`
+    // error paths intentionally drop it — that turn emits `llm-error`, not done.
+    if !pending.is_empty() {
+        let _ = app.emit(
+            &format!("llm-token:{session_id}"),
+            TokenEvent {
+                session_id: session_id.to_string(),
+                token: std::mem::take(&mut pending),
+            },
         );
     }
 

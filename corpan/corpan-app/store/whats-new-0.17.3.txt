@@ -1,0 +1,23 @@
+Pure Learning, now smoother and steadier.
+
+This release is a focused pass on performance, stability, and polish across every screen size.
+
+Performance and memory
+On-device AI now gives memory back. When you leave the tutor or any experience, its models are released, so moving between experiences stays smooth and the app keeps running well across long sessions, even on devices with less memory. We also trimmed background work for quieter, faster on-device processing.
+
+A comfortable fit on every screen
+Dialogs and sheets now always fit your screen and scroll when there is more to show, so nothing gets cut off and every button stays reachable, including at larger text sizes. Layouts are tidier on phones and roomier on iPad and larger displays.
+
+Reading and listening
+The library has a new compact view by default, alongside the familiar large cover view, so a growing catalog is easier to scan. Sort by Latest to find new additions quickly, and books in a series now follow their intended order.
+
+Your on-device tutor
+The chat box no longer shifts as you type, the action buttons tuck into a tidy menu on smaller screens, and autoscroll now steps aside the moment you scroll up to read back, then catches up when you return to the bottom. More of the tutor is translated into your language.
+
+Writing practice
+Fixed the character practice background in the Mandarin studio.
+
+More languages, everywhere
+Additional parts of the interface are now translated across the languages we support.
+
+Thank you for learning with Corpan. It runs entirely on your device, with no ads and no login. If it has been useful, a review genuinely helps.

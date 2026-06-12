@@ -1,0 +1,281 @@
+/**
+ * beatlounge — mixer module styles (co-located; Vite bundles into app.css).
+ * Uses only --bl-* tokens. No edits to styles.css.
+ *
+ * MOBILE-FIRST: the console is a single vertical scroll of self-contained strip
+ * CARDS at phone width (each card stacks name · meter+fader · pan+mute/solo ·
+ * FX/Open, all thumb-reachable, nothing clipped). At ≥720px it promotes to the
+ * classic side-by-side console of tall columns. One stylesheet, no JS branch.
+ */
+
+/* ---- tile ---- */
+.bl-mixtile {
+  display: flex;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2);
+  align-items: flex-end;
+  overflow: hidden;
+}
+.bl-mixtile-ch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s1);
+  flex: 0 0 auto;
+}
+
+/* ---- console shell ---- */
+.bl-mixer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  padding: var(--bl-s3);
+  height: 100%;
+  width: 100%;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* PHONE (base): strips stack as full-width cards in a single column. */
+.bl-mixer-strips {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  align-items: stretch;
+}
+
+/* ---- one channel strip — a CARD on phone ---- */
+.bl-mixstrip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  padding: var(--bl-s3);
+}
+.bl-mixstrip--master {
+  background: var(--bl-surface-2);
+  border-color: var(--bl-accent);
+}
+.bl-mixstrip.is-fxopen {
+  border-color: var(--bl-accent);
+}
+
+/* head: name + remove */
+.bl-mixstrip-head {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  width: 100%;
+}
+.bl-mixstrip-name {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  font: 600 var(--bl-fs-label) / 1.1 var(--bl-font);
+  color: var(--bl-text);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-mixstrip-remove {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--bl-border);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-mixstrip-remove:active {
+  transform: scale(0.92);
+}
+.bl-mixstrip-remove:hover {
+  color: var(--bl-error);
+  border-color: var(--bl-error);
+}
+
+/* controls block: on phone, level row above the pan/mute row */
+.bl-mixstrip-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+.bl-mixstrip-body {
+  display: flex;
+  align-items: stretch;
+  gap: var(--bl-s3);
+  min-height: 92px;
+}
+.bl-mixstrip-side {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+}
+.bl-mixstrip-pan {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+/* =================================================================
+   PHONE: a COMPACT strip — horizontal meter + horizontal level fader
+   stacked, so each channel is a short row and 4–5 fit without scrolling.
+   The level fader fills the card width; the readout sits at its end.
+   ================================================================= */
+.bl-mixer--phone .bl-mixstrip-body {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--bl-s2);
+  min-height: 0;
+}
+.bl-mixer--phone .bl-mixstrip-body .bl-meter--horizontal {
+  width: 100%;
+  height: 8px;
+}
+.bl-mixer--phone .bl-mixstrip-body .bl-fader--horizontal {
+  width: 100%;
+}
+/* the horizontal level fader's track flexes to fill, readout pinned right */
+.bl-mixer--phone .bl-mixstrip-body .bl-fader--horizontal .bl-fader-track {
+  flex: 1 1 auto;
+  width: auto !important;
+}
+.bl-mixer--phone .bl-mixstrip-pan .bl-fader-track {
+  width: auto !important;
+  flex: 1 1 auto;
+}
+.bl-mixer--phone .bl-mixstrip-pan {
+  max-width: 60%;
+}
+
+/* FX / Open action row — big, thumb-friendly chips */
+.bl-mixstrip-actions {
+  display: flex;
+  gap: var(--bl-s2);
+}
+.bl-mixstrip-act {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s1);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s2);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    color var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-mixstrip-act > span {
+  white-space: nowrap;
+}
+.bl-mixstrip-act:active {
+  transform: scale(0.98);
+}
+.bl-mixstrip-act.is-on {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+}
+.bl-mixstrip-open {
+  border-color: color-mix(in srgb, var(--bl-accent) 40%, var(--bl-border));
+  color: var(--bl-accent);
+}
+
+/* the inline per-track FX chain (the shared rack), tucked under the strip */
+.bl-mixstrip-fx {
+  border-top: 1px solid var(--bl-border);
+  padding-top: var(--bl-s2);
+}
+
+/* ---- the global Players section, folded into the mixer ---- */
+.bl-mixer-players {
+  border-top: 1px solid var(--bl-border);
+  padding-top: var(--bl-s3);
+}
+
+/* =================================================================
+   TABLET / DESKTOP (≥720px): promote strips to a side-by-side console
+   of tall columns — the classic mixer, with the FX chain dropping below
+   its column. Horizontal scroll only if there are many tracks.
+   ================================================================= */
+@media (min-width: 720px) {
+  .bl-mixer-strips {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--bl-s3);
+  }
+  .bl-mixstrip {
+    flex: 0 0 auto;
+    width: 144px;
+    align-items: center;
+  }
+  .bl-mixstrip-head {
+    justify-content: center;
+  }
+  .bl-mixstrip-controls {
+    width: 100%;
+    align-items: center;
+  }
+  .bl-mixstrip-body {
+    justify-content: center;
+    min-height: 168px;
+  }
+  .bl-mixstrip-side {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* A strip with its FX open spans the full row and lays the column controls on
+   * the LEFT (capped width) with the effects rack flowing to the right — so the
+   * rack gets the width without the fader floating in a sea of empty space. */
+  .bl-mixstrip.is-fxopen {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    grid-template-areas:
+      "head head"
+      "controls fx"
+      "actions fx";
+    align-items: start;
+    column-gap: var(--bl-s4);
+  }
+  .bl-mixstrip.is-fxopen .bl-mixstrip-head {
+    grid-area: head;
+  }
+  .bl-mixstrip.is-fxopen .bl-mixstrip-controls {
+    grid-area: controls;
+  }
+  .bl-mixstrip.is-fxopen .bl-mixstrip-actions {
+    grid-area: actions;
+  }
+  .bl-mixstrip.is-fxopen .bl-mixstrip-fx {
+    grid-area: fx;
+    border-top: 0;
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "melopan",
+  "name": "Melopán",
+  "version": "0.2.6",
+  "description": "Make music in any language. Lightweight offline DAW with the corpan voice clones and phrase corpus as first-class instruments.",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "devRevision": "2026-06-10T01:56:19.508Z"
+}

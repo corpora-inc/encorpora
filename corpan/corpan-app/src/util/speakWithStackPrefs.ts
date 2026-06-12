@@ -11,7 +11,7 @@ import { incrementSegmentCounter } from "@/util/analytics";
  * Helper to get the voice ID to use based on stack preferences.
  * Returns undefined if no preferred voice is available.
  */
-async function getPreferredVoiceId(uiCode: string): Promise<string | undefined> {
+export async function getPreferredVoiceId(uiCode: string): Promise<string | undefined> {
     const state = useSettingsStore.getState();
     const { voicePrefs, nextVoiceId } = state;
 

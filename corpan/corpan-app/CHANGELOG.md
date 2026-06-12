@@ -7,6 +7,32 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.18.0] - 2026-06-12
+
+### Added
+- **beatlounge pack — 0.1.0.** A dark, AI-driven beat lounge ships in the catalog:
+  a premium tick-addressed sequencer + harmony engine + ribbon/phrase performance
+  that doubles as language practice. Host seams (`hostApi`/`ContentPackHost`) land
+  here; the pack is added to the in-app catalog with its one-color line-art avatar.
+- **Native-fault crash breadcrumb (Android).** The existing breadcrumb only
+  caught Rust panics; a SIGSEGV/SIGABRT/SIGBUS/SIGILL/SIGFPE in a statically
+  linked native lib (llama/ggml/whisper) bypassed it and left an unsymbolicated,
+  single-frame, wild-PC tombstone in the Play Console we couldn't attribute. An
+  async-signal-safe handler now records the signal, the faulting thread name, and
+  the fault address to `native-crash-last.json` before chaining to debuggerd (so
+  the real tombstone still uploads), runs on an alternate signal stack (survives
+  stack-overflow), and is harvested by `take_last_crash_report` on next launch.
+  The thread name survives a corrupt PC, so we learn which subsystem faulted.
+
+### Fixed
+- **Content-pack teardown ordering — fewer reload black screens.**
+  `ContentPackHost` now defers the pack's React-root unmount past the current
+  render (`requestAnimationFrame`, not a bare microtask that races the container
+  removal) and only clears the pack's injected `<script>`/`<style>` assets AFTER
+  that unmount runs — and only the snapshot of the assets that pack injected, so
+  a concurrent reload's fresh assets aren't yanked. Teardown is idempotent.
+  (Needs an iOS/Android redeploy to ship to devices.)
+
 ## [0.17.3] - 2026-06-09
 
 ### Fixed

@@ -291,8 +291,29 @@ export type ModelsApi = {
   whatFitsAlongside: (residentIds: string[]) => Promise<AsrCapability[]>
 }
 
+/** Result of rendering TTS to a raw audio buffer (see `synthesizeToBuffer`). */
+export type HostSynthesizeResult = {
+  /** Raw audio bytes — `codec` disambiguates (a WAV container or raw PCM). */
+  pcm: ArrayBuffer
+  sampleRate: number
+  channels: number
+  durationMs: number
+  voiceId: string
+  codec: "wav" | "pcm-i16" | "pcm-f32"
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
+  /** Render TTS to a RAW AUDIO buffer instead of speaking it — lets a pack play
+   *  captured TTS through its own Web Audio graph (e.g. a music pack that must
+   *  not let OS `speak()` duck its mix). Optional & feature-detected: backed by
+   *  native `synthesize_to_buffer` (iOS AVSpeechSynthesizer.write / Android
+   *  synthesizeToFile); rejects on desktop / hosts without the command. */
+  synthesizeToBuffer?: (
+    text: string,
+    lang: string,
+    voiceId?: string,
+  ) => Promise<HostSynthesizeResult>
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
   setStackConfig?: (patch: StackConfigPatch) => void

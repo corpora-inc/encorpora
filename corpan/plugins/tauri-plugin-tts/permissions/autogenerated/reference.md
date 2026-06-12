@@ -6,6 +6,7 @@ Default permissions for the TTS plugin
 
 - `allow-speak`
 - `allow-speak-concurrent`
+- `allow-synthesize-to-buffer`
 - `allow-stop`
 - `allow-open-tts-settings`
 - `allow-install-tts-data-if-supported`
@@ -361,6 +362,32 @@ Enables the stop command without any pre-configured scope.
 <td>
 
 Denies the stop command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:allow-synthesize-to-buffer`
+
+</td>
+<td>
+
+Enables the synthesize_to_buffer command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:deny-synthesize-to-buffer`
+
+</td>
+<td>
+
+Denies the synthesize_to_buffer command without any pre-configured scope.
 
 </td>
 </tr>

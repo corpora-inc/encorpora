@@ -5,6 +5,17 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **Token streaming is coalesced (Android ANR fix).** The actor emitted one
+  `llm-token` IPC event per token; on Android every event marshals to the WebView
+  on the UI thread as a JS eval result (a `Handler.post` onto the main looper per
+  token), flooding it on fast decode — a confirmed Play-vitals ANR
+  (`onEvaluateJavaScriptResult`) and a drag on the WebView's own frame/input
+  servicing. Pieces are now flushed at most every ~40 ms (or per 256 bytes),
+  capping event rate at ~25/s regardless of decode speed. First token flushes
+  immediately (time-to-first-token preserved); the tail flushes before
+  `llm-done`. Byte-identical to the frontend, which concatenates `token` strings.
+
 ### Added
 - **Live system-prompt override** for on-device A/B with no rebuild: env
   `CORPAN_LLM_SYSPROMPT` or `adb shell setprop debug.corpan.sysprompt "..."`.

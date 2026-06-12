@@ -30,6 +30,10 @@ export type CatalogGame = {
   descriptionLocalized?: LocalizedString
   imageUrl?: string
   purchase?: PurchaseInfo
+  /** Minimum Corpán app version required to run this pack (e.g. beatlounge needs
+   *  the 0.18.0 host seams). The live V3 catalog filters on it; carried here on
+   *  the in-app fallback for parity (this binary only ships to compatible hosts). */
+  minAppVersion?: string
   /** System packs (Library, readers) auto-install on launch — no user action.
    * Lets us ship Library/reader UX updates without an app-store release. */
   systemPack?: boolean
@@ -198,6 +202,21 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     imageUrl: "https://encorpora.io/assets/hanzipan-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
+  {
+    id: "beatlounge",
+    name: "beatlounge",
+    version: "0.1.0",
+    minAppVersion: "0.18.0",
+    manifestUrl: "https://encorpora.io/corpan/packs/beatlounge.zip",
+    description:
+      "A dark, AI-driven beat lounge — build loops on a premium sequencer, reshape them with a word, and sample the phrase corpus into your music.",
+    imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["wild", "games", "study"],
+    goodForClass: ["enjoyer", "learner"],
+    featuredFor: ["wild"],
+    recommendOrder: 6,
+  },
 ]
 
 const DEV_CATALOG: CatalogGame[] = [
@@ -234,6 +253,22 @@ const DEV_CATALOG: CatalogGame[] = [
     kidFriendly: true,
     recommendOrder: 5,
     tagline: "A living city that turns every encounter into a lesson.",
+  },
+  {
+    id: "beatlounge",
+    name: "beatlounge",
+    version: "0.1.0",
+    minAppVersion: "0.18.0",
+    manifestUrl: "/packs/beatlounge/manifest.json",
+    description:
+      "A dark, AI-driven beat lounge — build loops on a premium sequencer, reshape them with a word, and sample the phrase corpus into your music.",
+    imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["wild", "games", "study"],
+    goodForClass: ["enjoyer", "learner"],
+    featuredFor: ["wild"],
+    recommendOrder: 6,
+    tagline: "Build loops, reshape them with a word, learn in rhythm.",
   },
 ]
 

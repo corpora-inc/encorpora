@@ -505,6 +505,24 @@ export type HostApi = {
   /** Speak `text` with a SPECIFIC voice id (from `listVoices`), not just a
    *  language — the mechanism behind a pack's per-NPC sticky voice. */
   speakVoice?: (uiCode: string, text: string, voiceId: string) => Promise<void>
+  /** Render TTS to a RAW AUDIO buffer instead of speaking it — the capture path
+   *  music packs need (OS `speak()` ducks other audio and never restores, so a
+   *  music app plays captured TTS through its own Web Audio graph). Optional &
+   *  feature-detected: backed by native `synthesize_to_buffer` (iOS
+   *  AVSpeechSynthesizer.write / Android synthesizeToFile); rejects on desktop
+   *  and older hosts without the command. */
+  synthesizeToBuffer?: (
+    text: string,
+    lang: string,
+    voiceId?: string,
+  ) => Promise<{
+    pcm: ArrayBuffer
+    sampleRate: number
+    channels: number
+    durationMs: number
+    voiceId: string
+    codec: "wav" | "pcm-i16" | "pcm-f32"
+  }>
   /** Copy text to the system clipboard (native — WKWebView blocks the web API). */
   copyText?: (text: string) => Promise<void>
   dispose?: () => void

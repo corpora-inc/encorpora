@@ -1,5 +1,11 @@
 # Corpan packs (two-phase rollout)
 
+> **Building or running a pack locally?** See **[PACK_DEV.md](./PACK_DEV.md)** —
+> the canonical boilerplate & dev standards (manifest contract, build config,
+> the shared on-device dev server, asset fetching, the new-pack checklist). It
+> exists so packs stop reinventing dev tooling. The shared dev harness lives in
+> [`shared/dev/`](./shared/dev/README.md).
+
 This repo uses a two-phase approach for pack delivery so the dev app matches the production app as closely as possible.
 
 ## Phase 1 (now): Manifest install flow
