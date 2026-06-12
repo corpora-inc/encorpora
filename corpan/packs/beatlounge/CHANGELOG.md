@@ -13,6 +13,11 @@ generative drum density dial, phrase jam/scratch, the mixer + FX rack, and the
 squared-off, compact-mobile design standard. Everything below ships in 0.1.0._
 
 ### Fixed (on-device Android polish)
+- **No OS text-selection / copy-paste callout while jamming.** A long-press on the
+  ribbon (or anywhere) could pop the system selection menu — the root's
+  `user-select: none` was missing the `-webkit-` prefixes WebKit/Android WebView
+  need. Suppressed selection + the touch callout on every element (form fields opt
+  back in so BPM / rename / command-bar typing still works).
 - **Drums beat grid scrolls horizontally with comfortable cells.** The step cells
   used `minmax(0,1fr)` (crammed to fit), so 8 steps were tiny and 128 unusable. Now
   cells are a fixed 34px and the grid scrolls horizontally — with the drum-name head

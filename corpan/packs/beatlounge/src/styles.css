@@ -141,6 +141,25 @@
   user-select: none;
 }
 
+/* beatlounge is a PERFORMANCE surface, not a document: a long-press while jamming
+   (e.g. on the ribbon) must NEVER pop the OS text-selection / copy-paste callout.
+   The bare `user-select: none` above is ignored by WebKit (iOS) and Android WebView
+   without the `-webkit-` prefixes, so suppress selection + the touch callout on
+   EVERY element. Form fields opt back in so typing (BPM, rename, command bar) works. */
+.bl-root,
+.bl-root * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.bl-root input,
+.bl-root textarea,
+.bl-root [contenteditable="true"] {
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
 /* Boot / Stage placeholder (Wave 0). Real shell lands in Wave 1. */
 .bl-boot {
   position: absolute;
