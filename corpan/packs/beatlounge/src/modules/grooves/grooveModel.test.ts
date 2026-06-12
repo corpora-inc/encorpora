@@ -483,6 +483,23 @@ describe("grooveModel — the +/− DENSITY DIAL (denser/sparser)", () => {
     for (const n of drumNotesOf(d)) expect(rows).toContain(n.pitch)
   })
 
+  it("+ ALWAYS lands ≥1 on an off-groove single row with space (no dead 'no room')", () => {
+    // COWBELL is not a son-clave voice; the weights barely favour it — but a "+"
+    // must still add a hit (the guarantee), never reject the row.
+    for (let seed = 1; seed <= 12; seed++) {
+      const d = emptyDrumDoc()
+      const res = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+        target: { kind: "drums", selectedPitches: [COWBELL] },
+        op: "generate",
+        level: 1,
+        seed,
+      })
+      const after = drumNotesOf(applyTo(d, res.commands))
+      expect(after.length).toBeGreaterThanOrEqual(1)
+      for (const n of after) expect(n.pitch).toBe(COWBELL)
+    }
+  })
+
   it("− with NO selection thins hits on ANY row (whole kit in play)", () => {
     // Lay hits on COWBELL — NOT one of son-clave's natural voices.
     let d = emptyDrumDoc()

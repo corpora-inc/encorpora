@@ -21,13 +21,14 @@ import type { Command, TrackInit } from "../../model/command"
 import type { BeatloungeDoc, Midi, NoteEvent, FragmentEvent } from "../../model/document"
 import { isFragmentTrack, isInstrumentTrack } from "../../model/document"
 import { newId } from "../../model/ids"
-import { gridTicks, quantizeTick, stepsInLoop, type Grid } from "../../model/timing"
+import { gridTicks, quantizeTick, stepsInLoop, tickForStep, type Grid } from "../../model/timing"
 import {
   applyRhythm,
   scatterRhythm,
   scatterPhrases,
   chooseHitsToSparsify,
   generateBeat,
+  kitPitches,
   DENSITY_LEVELS,
   rhythmTicks,
   cellTicks,
@@ -545,7 +546,22 @@ const generateDrumGroove = (
     notes.push(n)
   }
   // Net new hits actually added (those that didn't collide with an existing note).
-  const added = notes.length - existingAll.length
+  let added = notes.length - existingAll.length
+
+  // GUARANTEE: a "+" must always do SOMETHING if there's any space. When the roll
+  // lands nothing on the targeted rows (an "off-groove" row the weights barely
+  // favour — no groove should fully reject a drum), force ONE hit on a free cell,
+  // metric-weighted (downbeats favoured) but every empty cell has a chance. So
+  // "+ on any row, any groove" reliably adds — never a dead "no room".
+  if (added <= 0 && level > 0) {
+    const rows = selected.length > 0 ? selected : kitPitches()
+    const forced = forceOneHit(rows, seen, refGrid, loopTicks, stepsPerBeat, dur, resolveRng(opts), opts.intensity)
+    if (forced) {
+      notes.push(forced)
+      added = 1
+    }
+  }
+
   notes.sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
   commands.push({ t: "setNotes", trackId: drumId, notes })
 
@@ -553,9 +569,62 @@ const generateDrumGroove = (
     selected.length > 0 ? ` · ${selected.length} row${selected.length === 1 ? "" : "s"}` : ""
   const summary =
     added <= 0
-      ? `${rhythm.name} · no room`
+      ? `${rhythm.name} · full`
       : `${rhythm.name} · +${added} hit${added === 1 ? "" : "s"}${where}`
   return { commands, summary, placedPhrases: false, phrasesUnavailable: false }
+}
+
+/**
+ * Force ONE hit on a FREE cell across the targeted rows — the "+ always adds if
+ * there's space" guarantee. Every empty (row, step) is a candidate with a NON-ZERO
+ * weight (no place is ever rejected); strong metric positions (downbeats > beats >
+ * backbeats > off-beats) are weighted heavier so the forced hit still feels placed,
+ * not random junk. Returns null only when there is genuinely no free cell.
+ */
+const forceOneHit = (
+  rows: number[],
+  occupied: Set<string>,
+  grid: Grid,
+  loopTicks: number,
+  stepsPerBeat: number,
+  dur: number,
+  rng: () => number,
+  intensity: number | undefined
+): Omit<NoteEvent, "id"> | null => {
+  const steps = Math.max(0, stepsInLoop(loopTicks, grid))
+  if (steps === 0 || rows.length === 0) return null
+  const perBar = Math.max(1, stepsPerBeat * 4)
+  // Metric weight: every place has SOME probability (0.5 floor); beats lift it.
+  const metric = (s: number): number => {
+    const inBar = s % perBar
+    if (inBar === 0) return 4 // bar downbeat
+    if (inBar % stepsPerBeat === 0) return inBar === stepsPerBeat * 2 ? 3 : 2.4 // beat 3 / other beats
+    if (inBar % stepsPerBeat === Math.floor(stepsPerBeat / 2)) return 1.2 // off-beat eighth
+    return 0.5 // every other place — never zero
+  }
+  const candidates: { tick: number; pitch: number; w: number }[] = []
+  let total = 0
+  for (const pitch of rows) {
+    for (let s = 0; s < steps; s++) {
+      const tick = snapTickToGrid(tickForStep(s, grid), grid)
+      if (occupied.has(`${tick}:${pitch}`)) continue
+      const w = metric(s)
+      candidates.push({ tick, pitch, w })
+      total += w
+    }
+  }
+  if (candidates.length === 0) return null // genuinely full
+  let r = rng() * total
+  let pick = candidates[candidates.length - 1]
+  for (const c of candidates) {
+    r -= c.w
+    if (r <= 0) {
+      pick = c
+      break
+    }
+  }
+  const vel = Math.max(0, Math.min(1, 0.78 * (intensity == null ? 1 : Math.max(0, intensity))))
+  return { tick: pick.tick, duration: dur, pitch: pick.pitch, velocity: vel }
 }
 
 /**

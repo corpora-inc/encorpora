@@ -51,10 +51,19 @@ describe("weight table shape", () => {
     expect(strongest).toBeLessThanOrEqual(PROB_CAP)
   })
 
-  it("some (role,step) cells are ≈ 0 (skipped beats)", () => {
-    let nearZero = 0
-    for (const row of table.rows) for (const c of row) if (c.prob <= 0.02) nearZero++
-    expect(nearZero).toBeGreaterThan(10)
+  it("EVERY (role,step) cell keeps SOME probability — no groove rejects a drum", () => {
+    // The floor means no cell is a dead zero: every place can fire (rarely). Weak
+    // steps stay weak (the contrast curve keeps low density musical), but the
+    // weighting is never prescriptive enough to lock a row out entirely.
+    let min = 1
+    let weakCount = 0
+    for (const row of table.rows)
+      for (const c of row) {
+        min = Math.min(min, c.prob)
+        if (c.prob < 0.1) weakCount++
+      }
+    expect(min).toBeGreaterThan(0) // never zero — always some chance
+    expect(weakCount).toBeGreaterThan(10) // weak steps still exist (kept musical)
   })
 
   it("velocity bands are well-formed (velMax > velMin, in 0..1)", () => {

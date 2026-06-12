@@ -59,12 +59,25 @@ const bandFor = (emphasis: number, half: number): [number, number] => {
   return [lo, Math.max(hi, lo + 0.02)]
 }
 
+/** Probability FLOOR: every (row, step) keeps a small non-zero chance, so NO
+ *  groove ever fully rejects a drum row — there's always SOME probability on every
+ *  place (the founder's rule). It's tiny, so at low density the contrast curve
+ *  still keeps the few hits musical; it just means an "off-groove" row is never a
+ *  dead zero. (The hard "+ always adds if there's space" promise is the generate
+ *  guarantee in grooveModel; this floor makes the weighting itself non-prescriptive.) */
+const PROB_FLOOR = 0.04
+
 /** The archetype-only weighting for one kit row at one step (no signature yet). */
 const archCell = (family: KitFamily, step: number, steps: number): WeightCell => {
   const arch = ARCHETYPES[family]
   const a: ArchStep = weightAt(arch, step, steps)
   const [velMin, velMax] = bandFor(a.emphasis, arch.bandHalf)
-  return { prob: Math.min(a.prob, PROB_CAP), velMin, velMax, vary: a.vary }
+  return {
+    prob: Math.min(PROB_CAP, Math.max(PROB_FLOOR, a.prob)),
+    velMin,
+    velMax,
+    vary: a.vary,
+  }
 }
 
 /**

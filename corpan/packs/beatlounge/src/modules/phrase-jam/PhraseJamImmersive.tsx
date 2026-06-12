@@ -254,6 +254,24 @@ export const PhraseJamImmersive = ({
   const onClear = () => {
     const before = store.vanilla.getState().doc
     if (ftrack.fragments.length === 0) return
+    // Lane heads selected → clear ONLY those snippet rows; none → clear all (just
+    // like the Drums page).
+    if (selected.size > 0) {
+      const toRemove = ftrack.fragments.filter((f) => selected.has(f.fragmentId))
+      if (toRemove.length === 0) {
+        localHost.toast("Those rows are empty")
+        return
+      }
+      store.dispatch({
+        t: "batch",
+        commands: toRemove.map((f) => ({ t: "removeFragment", trackId, fragId: f.id })),
+        label: "Clear rows",
+      })
+      localHost.toast(`Cleared ${selected.size} row${selected.size === 1 ? "" : "s"}`, {
+        undo: () => store.vanilla.getState().doc !== before && store.undo(),
+      })
+      return
+    }
     store.dispatch({ t: "clearTrack", trackId })
     localHost.toast("Cleared the jam", {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
@@ -310,7 +328,10 @@ export const PhraseJamImmersive = ({
           </div>
           <div className="bl-grid-actions">
             {/* Volume/Pan/Mute/Solo live in the Mixer drawer — header keeps a tiny Clear. */}
-            <ClearButton onClear={onClear} />
+            <ClearButton
+              onClear={onClear}
+              label={selected.size ? "Clear selected rows" : "Clear"}
+            />
           </div>
         </div>
 

@@ -26,6 +26,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Fixed
+- **No groove rejects a drum row — "+" always adds if there's space.** The
+  generator could leave a selected "off-groove" row at zero probability, so "+"
+  said "no room" / nothing happened. Now every (row, step) keeps a small non-zero
+  probability floor (no place is ever a dead zero), AND a "+" that would otherwise
+  add nothing forces ONE hit on a free cell — metric-weighted (downbeats favoured)
+  but every empty cell has a chance. So "+ on any row, any groove" reliably adds.
+- **Clear honours the lane selection on Phrase Jam too** (matching Drums): with
+  snippet rows selected, Clear wipes only those; none selected clears the jam.
 - **"+ Add effect" opens the effect-type picker (not a silent filter).** On phone
   it was doing a one-tap default insert (always a Filter); now it always reveals
   the full picker (Filter · EQ · Compressor · Distortion · Chorus · Phaser ·
