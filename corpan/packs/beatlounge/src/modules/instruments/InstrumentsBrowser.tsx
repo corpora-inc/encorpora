@@ -410,11 +410,8 @@ export const InstrumentsBrowser = ({
                       key={t.id}
                       className={`bl-instr-voice-item${t.id === trackId ? " is-on" : ""}`}
                     >
-                      <span
-                        className="bl-dot"
-                        style={{ background: t.color ?? "var(--bl-accent)" }}
-                      />
-                      {/* tap ⇒ switch + close; long-press the name ⇒ rename */}
+                      {/* TrackNameEdit draws its OWN colour dot — no extra one here.
+                          tap ⇒ switch + close; long-press the name ⇒ rename */}
                       <TrackNameEdit
                         store={store}
                         trackId={t.id}
