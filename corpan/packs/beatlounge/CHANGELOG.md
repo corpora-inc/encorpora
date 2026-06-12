@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-06-12
+
+_First public release: the full beat-lounge studio — tick-addressed sequencer +
+command bus, harmony engine (modes/maqam/chords), the ribbon + N instruments, the
+generative drum density dial, phrase jam/scratch, the mixer + FX rack, and the
+squared-off, compact-mobile design standard. Everything below ships in 0.1.0._
+
 ### Added
 - **Stochastic, musical drum-beat GENERATOR behind the +/− dial.** The home Drums
   widget, the Drums pane and the Grooves panel now GENERATE a fresh, surprising

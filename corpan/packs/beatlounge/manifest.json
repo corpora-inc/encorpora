@@ -1,7 +1,7 @@
 {
   "id": "beatlounge",
   "name": "beatlounge",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A dark, AI-driven beat lounge. Build loops on a premium sequencer, reshape them with a word, and sample the phrase corpus into your music — pure learning, made of rhythm.",
   "entry": "dist/app.js",
   "styles": [
@@ -9,5 +9,5 @@
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-06-12T10:20:38.701Z"
+  "devRevision": "2026-06-12T10:27:30.679Z"
 }
