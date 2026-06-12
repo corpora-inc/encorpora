@@ -54,7 +54,6 @@ import { Platter } from "./Platter"
 import { CutFader } from "./CutFader"
 import { createScratchFxBus, type ScratchFxBus } from "./scratchFxBus"
 import {
-  chainHasActive,
   addInsert,
   removeInsert,
   moveInsert,
@@ -564,8 +563,6 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     setDrawer((d) => (d === "peek" ? "open" : d))
   }
 
-  const fxActive = chainHasActive(fxChain)
-
   // The shared drawer's tabs: the FULL master effect rack + catalog discovery.
   const drawerTabs: DrawerTabDef[] = [
     {
@@ -717,6 +714,8 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           onChange={setCut}
         />
 
+        {/* Transport + readout share ONE row (the spin buttons with the rate/clock
+            beside them) — one less stacked row so the deck breathes on a phone. */}
         <div className="bl-scr-transport" data-bl-nocapture>
           <button
             type="button"
@@ -738,21 +737,20 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           >
             <Glyph name="play" size={18} />
           </button>
-        </div>
-
-        <div className="bl-scr-readout" aria-live="off">
-          {loading ? (
-            <span className="bl-scr-loading">
-              <span className="bl-scr-spin" /> loading…
-            </span>
-          ) : (
-            <>
-              <span className={`bl-scr-rate${isHeld(view.rate) ? " is-hold" : ""}`}>
-                {fmtRate(view.rate)}
+          <div className="bl-scr-readout" aria-live="off">
+            {loading ? (
+              <span className="bl-scr-loading">
+                <span className="bl-scr-spin" /> loading…
               </span>
-              <span className="bl-scr-pos">{fmtTime(view.playheadSec)}</span>
-            </>
-          )}
+            ) : (
+              <>
+                <span className={`bl-scr-rate${isHeld(view.rate) ? " is-hold" : ""}`}>
+                  {fmtRate(view.rate)}
+                </span>
+                <span className="bl-scr-pos">{fmtTime(view.playheadSec)}</span>
+              </>
+            )}
+          </div>
         </div>
       </div>
     )
@@ -760,8 +758,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
 
   return (
     <div className={`bl-scr${showDeckB ? " is-dual" : ""}`}>
-      {/* TOP header: the deck toggle (moved up here so the bottom is free for the
-          crossfader + phrase management). FX + Phrases live on the right. */}
+      {/* TOP header: ONLY the compact deck toggle, tucked top-right out of the way.
+          Effects + Phrases are NOT mirrored here — they're the bottom drawer's own
+          tabs — so the main stage stays empty and uncramped on the phone. */}
       <div className="bl-scr-header" data-bl-nocapture>
         <button
           type="button"
@@ -770,32 +769,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           aria-pressed={showDeckB}
           aria-label={showDeckB ? "Hide the second deck" : "Add a second deck"}
         >
-          <Glyph name="wave" size={16} />
-          <span>{showDeckB ? "One deck" : "Two decks"}</span>
+          <Glyph name="wave" size={15} />
+          <span>{showDeckB ? "1 deck" : "2 decks"}</span>
         </button>
-        <div className="bl-scr-header-tools">
-          {/* The header tools OPEN the shared bottom drawer on a tab (they no
-              longer toggle bespoke popovers). The drawer's own tab bar reflects
-              the active surface; "is-open" lights the tool when its tab is up. */}
-          <button
-            type="button"
-            className={`bl-scr-tool${drawer !== "peek" && drawerTab === "fx" ? " is-open" : ""}${fxActive ? " is-active" : ""}`}
-            onClick={() => openDrawer("fx")}
-            aria-label="Master effects"
-          >
-            <Glyph name="sliders" size={16} />
-            <span>Effects</span>
-          </button>
-          <button
-            type="button"
-            className={`bl-scr-tool${drawer !== "peek" && drawerTab === "phrases" ? " is-open" : ""}`}
-            onClick={() => openDrawer("phrases")}
-            aria-label="Discover phrases"
-          >
-            <Glyph name="drawer" size={16} />
-            <span>Phrases</span>
-          </button>
-        </div>
       </div>
 
       <div className="bl-scr-decks">

@@ -44,53 +44,9 @@
 .bl-scr-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap; /* narrow screens: tools wrap below rather than clip off-edge */
-  gap: var(--bl-s2) var(--bl-s3);
+  justify-content: flex-end; /* the lone deck toggle tucks top-right, out of the way */
   flex: 0 0 auto;
   width: 100%;
-}
-.bl-scr-header-tools {
-  display: flex;
-  align-items: center;
-  gap: var(--bl-s2);
-}
-.bl-scr-tool {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--bl-s2);
-  min-height: var(--bl-hit);
-  padding: 0 var(--bl-s3);
-  border-radius: var(--bl-radius-sm);
-  border: 1px solid var(--bl-border);
-  background: var(--bl-surface);
-  color: var(--bl-text);
-  font-size: var(--bl-fs-label);
-  font-weight: 600;
-  cursor: pointer;
-  position: relative;
-  transition: border-color var(--bl-dur-fast) var(--bl-ease),
-    box-shadow var(--bl-dur-fast) var(--bl-ease), color var(--bl-dur-fast) var(--bl-ease);
-}
-.bl-scr-tool:hover {
-  border-color: var(--bl-accent);
-}
-.bl-scr-tool.is-open {
-  border-color: var(--bl-accent);
-  color: var(--bl-accent);
-  box-shadow: var(--bl-glow) var(--bl-accent);
-}
-/* A small "engaged" dot on the FX tool when any insert is live. */
-.bl-scr-tool.is-active::after {
-  content: "";
-  position: absolute;
-  top: 6px;
-  right: 8px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--bl-accent);
-  box-shadow: var(--bl-glow) var(--bl-accent);
 }
 
 /* ---------------------------------------------------------- top bar */
@@ -224,13 +180,14 @@
    available box — width AND height (vh) — minus the fader's lane, so a deck NEVER
    overflows its column and can't push its neighbour at any size down to ~320px. */
 .bl-scr {
-  /* one deck (portrait default): big & centered. The cut fader is BELOW the
-     platter now, so only the chrome height (picker/fader/transport/readout/foot)
-     is subtracted — the platter spans the deck width. */
+  /* one deck (portrait default): big & centered. The platter is capped by BOTH the
+     deck width AND the leftover height after the chrome (picker/cut/transport/
+     readout) + the drawer's peek zone, so the spin transport never hides behind the
+     drawer on a phone. (Header is now a single compact toggle — small constant.) */
   --bl-platter: min(
-    92vw,
-    calc(80vh - 266px),
-    540px
+    86vw,
+    calc(76vh - 244px),
+    520px
   );
 }
 .bl-scr-platter {
@@ -504,13 +461,15 @@
   transform: scaleX(-1);
 }
 
-/* ---------------------------------------------------------- readout */
+/* ---------------------------------------------------------- readout
+   Sits inline at the end of the transport row (spin buttons + rate/clock). */
 .bl-scr-readout {
-  min-height: 1.6em;
-  display: flex;
+  display: inline-flex;
   align-items: baseline;
-  justify-content: center;
-  gap: var(--bl-s3);
+  justify-content: flex-start;
+  gap: var(--bl-s2);
+  margin-left: var(--bl-s2);
+  min-width: 5.5em; /* reserve width so the row doesn't jitter as the rate changes */
 }
 .bl-scr-pos {
   font-family: var(--bl-font-mono);
@@ -694,17 +653,17 @@
   display: inline-flex;
   align-items: center;
   gap: var(--bl-s2);
-  min-height: var(--bl-hit);
-  padding: 0 var(--bl-s5);
+  min-height: 34px;
+  padding: 0 var(--bl-s3);
   border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
-  color: var(--bl-text);
-  font-size: var(--bl-fs-body);
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-label);
   font-weight: 600;
   cursor: pointer;
   transition: border-color var(--bl-dur-fast) var(--bl-ease),
-    box-shadow var(--bl-dur-fast) var(--bl-ease);
+    box-shadow var(--bl-dur-fast) var(--bl-ease), color var(--bl-dur-fast) var(--bl-ease);
 }
 .bl-scr-deckbtn:hover {
   border-color: var(--bl-accent);
