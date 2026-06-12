@@ -258,7 +258,9 @@ export const EFFECT_SPECS: Record<EffectKind, EffectSpec> = {
         min: 0,
         max: 3,
         step: 0.001,
-        default: 0.25,
+        // A dotted quarter at the 96 BPM default (60/96 × 1.5 = 0.9375s) — the
+        // musical default for an echo; freely adjustable in seconds from there.
+        default: 0.9375,
         unit: "s",
         describe: "Delay time (seconds; maxDelay 3).",
       },

@@ -55,10 +55,11 @@ interface Props {
 }
 
 /** The free-slide ribbon spans this many semitones either side of centre — a
- *  wide ±3-octave bend so you can scratch a phrase a long way up or down while it
- *  sounds. This number NEVER surfaces in the UI; the ribbon shows only a smooth
- *  low → high slide. The engine clamps the live bend internally. */
-const RIBBON_SPAN = 36
+ *  ±1.5-octave bend (halved from ±3): the extreme top/bottom were rarely useful
+ *  and ate the precision in the middle, so the range is shaved aggressively to
+ *  give far more control around the natural pitch. NEVER surfaces in the UI; the
+ *  ribbon shows only a smooth low → high slide. The engine clamps internally. */
+const RIBBON_SPAN = 18
 const clamp01 = (v: number): number => (v < 0 ? 0 : v > 1 ? 1 : v)
 
 export const PhraseJamImmersive = ({

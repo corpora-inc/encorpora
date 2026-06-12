@@ -250,8 +250,9 @@ const createBitcrusher = (): Effect => {
 }
 
 const createDelay = (): Effect => {
-  // maxDelay 3 mirrors melopan's slowest-BPM headroom.
-  const node = new Tone.FeedbackDelay({ delayTime: 0.25, feedback: 0.35, maxDelay: 3 })
+  // maxDelay 3 mirrors melopan's slowest-BPM headroom. Default = a dotted quarter
+  // at the 96 BPM default (0.9375s) — the musical starting point for an echo.
+  const node = new Tone.FeedbackDelay({ delayTime: 0.9375, feedback: 0.35, maxDelay: 3 })
   return wetEffect(
     "delay",
     node,
