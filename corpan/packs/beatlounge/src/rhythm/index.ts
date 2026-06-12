@@ -25,6 +25,38 @@ export {
   type ProfileCell,
 } from "./profile"
 
+export {
+  KIT_ROLES,
+  kitPitches,
+  ROLE_BY_PITCH,
+  type KitRole,
+  type KitFamily,
+} from "./kit"
+
+export {
+  ARCHETYPES,
+  PROB_CAP,
+  weightAt,
+  type Archetype,
+  type ArchStep,
+} from "./archetypes"
+
+export {
+  buildWeightTable,
+  type KitWeightTable,
+  type WeightCell,
+} from "./weights"
+
+export {
+  generateBeat,
+  densityScale,
+  tableWeightMass,
+  gammaForLevel,
+  DENSITY_LEVELS,
+  LEVEL1_TARGET_HITS,
+  type GenerateOptions,
+} from "./generator"
+
 export { RHYTHMS, FAMILY_META } from "./corpus"
 export {
   ROLE_MAP,
