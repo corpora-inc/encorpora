@@ -157,6 +157,31 @@
   transition: opacity var(--bl-dur-fast) var(--bl-ease);
 }
 
+/* per-finger lit markers — one glowing bar per active pointer so EVERY held
+   note lights, not just the primary finger. Positioned by `left` straight on
+   the DOM node (no React re-render); opacity toggles as fingers come/go. */
+.bl-ribbon-marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.bl-ribbon-mark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-1px);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--bl-accent-hot) 85%, transparent),
+    transparent
+  );
+  box-shadow: 0 0 10px color-mix(in srgb, var(--bl-accent) 55%, transparent);
+  /* opacity is toggled in JS; soften the on/off so a lift doesn't snap-flicker */
+  transition: opacity var(--bl-dur-fast) var(--bl-ease);
+}
+
 /* the finger comet — a soft glowing puck at (x, y) */
 .bl-ribbon-comet {
   position: absolute;
@@ -215,7 +240,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .bl-ribbon-comet,
-  .bl-ribbon-beam {
+  .bl-ribbon-beam,
+  .bl-ribbon-mark {
     transition: none;
   }
 }

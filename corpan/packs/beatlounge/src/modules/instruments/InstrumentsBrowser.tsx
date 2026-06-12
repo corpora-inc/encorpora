@@ -8,11 +8,15 @@
  *  • The headline: the reusable <InstrumentRibbon> — a polyphonic performance
  *    surface that plays the bound track's REAL instrument (through its FX +
  *    mixer) and records into it.
- *  • A voice-type segment — Analog · Preset · Osc — derived from the bound
- *    track's instrument.kind; switching voices the track to that type's default.
+ *  • The UNIFIED Voice tab in the bottom drawer (see VOICES.md): ONE browser of
+ *    families (with a leading "Raw" bank that folds the bare oscillators in as
+ *    ordinary pickable voices) → presets; picking a preset re-voices and STAYS
+ *    PUT (no jump). When the active voice is an analog patch, an on-demand "Shape
+ *    this voice" disclosure reveals the analog knobs IN PLACE — never an auto
+ *    jump just because a preset is analog under the hood.
  *  • A bottom <TrackDrawer> (Voice / Effects / Mixer / Score), copying the Drums
- *    page pattern: Voice edits the active voice type, Effects + Mixer reuse the
- *    shared track-studio panels, Score reserves the step-editor seam (WS-F).
+ *    page pattern: Effects + Mixer reuse the shared track-studio panels, Score
+ *    reserves the step-editor seam (WS-F).
  *
  * The store is the only write path; drum tracks are excluded (their own kit
  * editor lives on the Drums page). No emoji; --bl-* tokens only.
@@ -43,8 +47,6 @@ import {
 } from "../../instruments/presets"
 import {
   OSC_WAVES,
-  VOICE_TYPES,
-  VOICE_TYPE_LABEL,
   configForVoiceType,
   voiceTypeOf,
   type OscWave,
@@ -110,8 +112,11 @@ export const InstrumentsBrowser = ({
   const [tab, setTab] = useState<string>("voice")
   const [drawer, setDrawer] = useState<DrawerState>("open")
   const [record, setRecord] = useState(false)
-  const [openFamily, setOpenFamily] = useState<PresetFamily | null>(null)
+  // The open browser bank: a preset family, or "raw" (the bare-oscillator bank).
+  const [openBank, setOpenBank] = useState<PresetFamily | "raw" | null>(null)
   const [oscWave, setOscWave] = useState<OscWave>("triangle")
+  // The analog "Shape this voice" disclosure (on-demand, never auto-jumps).
+  const [tweakOpen, setTweakOpen] = useState(false)
   // The harmony bar leads the page as a compact row that expands to a popover.
   const [harmonyOpen, setHarmonyOpen] = useState(false)
 
@@ -128,11 +133,15 @@ export const InstrumentsBrowser = ({
   const activePreset = config ? matchPreset(config) : undefined
 
   const groups = useMemo(() => presetsByFamily(), [])
-  // The open preset family follows the active preset (else the first family).
-  const family =
-    groups.find(
-      (g) => g.family === (openFamily ?? (activePreset && familyOfPreset(activePreset.id)))
-    ) ?? groups[0]
+  // The active bank: an explicit pick, else follow the current voice — "raw" when
+  // the voice is a bare oscillator, else the active preset's family, else first.
+  const activeBank: PresetFamily | "raw" =
+    openBank ??
+    (activeVoiceType === "osc"
+      ? "raw"
+      : (activePreset && familyOfPreset(activePreset.id)) ?? groups[0].family)
+  // The open preset family group (undefined while the Raw bank is open).
+  const family = groups.find((g) => g.family === activeBank)
 
   const addInstrumentTrack = () => {
     const init = newInstrumentTrackInit(doc.tracks.map((t) => t.name))
@@ -148,27 +157,18 @@ export const InstrumentsBrowser = ({
     store.dispatch({ t: "removeTrack", trackId: id })
   }
 
-  // Switch the bound track to a voice type's default config (one undo step). The
-  // Voice drawer tab then edits the new kind. No-op if already that type.
-  const chooseVoiceType = (type: VoiceType) => {
-    if (!track || !isInstrumentTrack(track) || type === activeVoiceType) return
-    store.dispatch({
-      t: "setInstrument",
-      trackId: track.id,
-      config: configForVoiceType(type, oscWave),
-    })
-    setTab("voice")
-    setDrawer((d) => (d === "peek" ? "open" : d))
-  }
-
+  // Re-voice the bound track to a preset; STAY PUT (no jump). One undo step.
   const choosePreset = (presetId: string) => {
     const cfg = instantiatePreset(presetId)
     if (!cfg || !track || !isInstrumentTrack(track)) return
+    setTweakOpen(false) // a fresh preset starts un-tweaked
     store.dispatch({ t: "setInstrument", trackId: track.id, config: cfg })
   }
 
+  // Pick a bare oscillator from the Raw bank (the simplest "preset"). One undo.
   const chooseOsc = (wave: OscWave) => {
     setOscWave(wave)
+    setTweakOpen(false)
     if (!track || !isInstrumentTrack(track)) return
     store.dispatch({
       t: "setInstrument",
@@ -193,75 +193,108 @@ export const InstrumentsBrowser = ({
   }
   const itrack = track
 
-  // ---- the Voice drawer tab: the active voice type's editor ----------------
-  const renderVoice = () => {
-    if (activeVoiceType === "analog") {
-      return <AnalogPanel host={host} store={store} trackId={itrack.id} />
-    }
-    if (activeVoiceType === "osc") {
-      const curWave = itrack.instrument.kind === "synth" ? itrack.instrument.osc : oscWave
-      return (
-        <div className="bl-instr-osc">
-          <div className="bl-seg" role="group" aria-label="Oscillator">
-            {OSC_WAVES.map((w) => (
-              <button
-                key={w}
-                type="button"
-                className={`bl-seg-btn${curWave === w ? " is-on" : ""}`}
-                aria-pressed={curWave === w}
-                onClick={() => chooseOsc(w)}
-              >
-                {OSC_LABEL[w]}
-              </button>
-            ))}
-          </div>
-        </div>
-      )
-    }
-    // preset = the GM family browser
-    return (
-      <div className="bl-instr-browser">
-        <div className="bl-instr-families" role="tablist" aria-label="Instrument families">
-          {groups.map((g) => (
-            <button
-              key={g.family}
-              type="button"
-              role="tab"
-              aria-selected={g.family === family.family}
-              className={`bl-chip${g.family === family.family ? " is-on" : ""}`}
-              onClick={() => setOpenFamily(g.family)}
-            >
-              {FAMILY_LABEL[g.family]}
-            </button>
-          ))}
-        </div>
-        <div
-          className="bl-instr-programs"
-          role="listbox"
-          aria-label={`${FAMILY_LABEL[family.family]} instruments`}
+  // The bare oscillator currently in play (highlights its card in the Raw bank).
+  const curOscWave: OscWave =
+    itrack.instrument.kind === "synth" ? (itrack.instrument.osc as OscWave) : oscWave
+
+  // ---- the unified Voice drawer tab: families (incl. Raw) → presets --------
+  const renderVoice = () => (
+    <div className="bl-instr-browser">
+      {/* families rail — a leading "Raw" bank folds in the bare oscillators */}
+      <div className="bl-instr-families" role="tablist" aria-label="Voice banks">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeBank === "raw"}
+          className={`bl-chip${activeBank === "raw" ? " is-on" : ""}`}
+          onClick={() => setOpenBank("raw")}
         >
-          {family.presets.map((p) => {
-            const selected = activePreset?.id === p.id
+          Raw
+        </button>
+        {groups.map((g) => (
+          <button
+            key={g.family}
+            type="button"
+            role="tab"
+            aria-selected={g.family === activeBank}
+            className={`bl-chip${g.family === activeBank ? " is-on" : ""}`}
+            onClick={() => setOpenBank(g.family)}
+          >
+            {FAMILY_LABEL[g.family]}
+          </button>
+        ))}
+      </div>
+
+      {/* grid: the Raw bank's oscillators, OR the open family's presets */}
+      {activeBank === "raw" ? (
+        <div className="bl-instr-programs" role="listbox" aria-label="Raw oscillators">
+          {OSC_WAVES.map((w) => {
+            const selected = activeVoiceType === "osc" && curOscWave === w
             return (
               <button
-                key={p.id}
+                key={w}
                 type="button"
                 role="option"
                 aria-selected={selected}
                 className={`bl-instr-prog${selected ? " is-on" : ""}`}
-                onClick={() => choosePreset(p.id)}
+                onClick={() => chooseOsc(w)}
               >
                 <span className="bl-instr-prog-text">
-                  <span className="bl-instr-prog-name">{p.name}</span>
-                  <span className="bl-instr-prog-desc">{p.description}</span>
+                  <span className="bl-instr-prog-name">{OSC_LABEL[w]}</span>
+                  <span className="bl-instr-prog-desc">Bare oscillator — shape it yourself.</span>
                 </span>
               </button>
             )
           })}
         </div>
-      </div>
-    )
-  }
+      ) : (
+        family && (
+          <div
+            className="bl-instr-programs"
+            role="listbox"
+            aria-label={`${FAMILY_LABEL[family.family]} instruments`}
+          >
+            {family.presets.map((p) => {
+              const selected = activePreset?.id === p.id
+              return (
+                <button
+                  key={p.id}
+                  type="button"
+                  role="option"
+                  aria-selected={selected}
+                  className={`bl-instr-prog${selected ? " is-on" : ""}`}
+                  onClick={() => choosePreset(p.id)}
+                >
+                  <span className="bl-instr-prog-text">
+                    <span className="bl-instr-prog-name">{p.name}</span>
+                    <span className="bl-instr-prog-desc">{p.description}</span>
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+        )
+      )}
+
+      {/* on-demand analog tweak — only for analog patches, never an auto jump */}
+      {activeVoiceType === "analog" && (
+        <div className="bl-instr-tweak">
+          <button
+            type="button"
+            className={`bl-chip bl-instr-tweak-toggle${tweakOpen ? " is-on" : ""}`}
+            aria-expanded={tweakOpen}
+            onClick={() => setTweakOpen((o) => !o)}
+          >
+            Shape this voice
+            <span className="bl-instr-tweak-caret" aria-hidden="true">
+              {tweakOpen ? "▴" : "▾"}
+            </span>
+          </button>
+          {tweakOpen && <AnalogPanel host={host} store={store} trackId={itrack.id} />}
+        </div>
+      )}
+    </div>
+  )
 
   const tabs: DrawerTabDef[] = [
     { id: "voice", label: "Voice", render: renderVoice },
@@ -332,23 +365,14 @@ export const InstrumentsBrowser = ({
                 key={t.id}
                 className={`bl-instr-track${t.id === trackId ? " is-on" : ""}`}
               >
-                <button
-                  type="button"
-                  className="bl-instr-track-pick"
-                  aria-pressed={t.id === trackId}
-                  aria-label={`Select ${t.name}`}
-                  onClick={() => setTrackId(t.id)}
-                >
-                  <span
-                    className="bl-dot"
-                    style={{ background: t.color ?? "var(--bl-accent)" }}
-                  />
-                </button>
+                {/* tap the chip ⇒ switch; long-press the name ⇒ rename */}
                 <TrackNameEdit
                   store={store}
                   trackId={t.id}
                   name={t.name}
+                  color={t.color ?? "var(--bl-accent)"}
                   className="bl-instr-track-name"
+                  onTap={() => setTrackId(t.id)}
                 />
                 {instrumentTracks.length > 1 && (
                   <button
@@ -396,22 +420,6 @@ export const InstrumentsBrowser = ({
           />
         </div>
 
-        {/* ---- voice-type segment ---- */}
-        <div className="bl-instr-voicetype" data-bl-nocapture>
-          <div className="bl-seg" role="group" aria-label="Voice type">
-            {VOICE_TYPES.map((vt) => (
-              <button
-                key={vt}
-                type="button"
-                className={`bl-seg-btn${vt === activeVoiceType ? " is-on" : ""}`}
-                aria-pressed={vt === activeVoiceType}
-                onClick={() => chooseVoiceType(vt)}
-              >
-                {VOICE_TYPE_LABEL[vt]}
-              </button>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ---- the PIPELINE DRAWER (Voice / Effects / Mixer / Score) ---- */}

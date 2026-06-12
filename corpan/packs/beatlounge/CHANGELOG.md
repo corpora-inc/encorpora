@@ -25,6 +25,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   play on directly); the InstrumentRibbon inside still captures the play gesture.
   Live (interactive) tiles in general no longer depress as a whole — their own
   controls give the press feedback.
+- **Instruments — a harmony change now snaps the WHOLE SONG into the new key.**
+  Changing the mode/scale/progression re-quantizes EVERY melodic track to the
+  nearest in-key pitch (drums skipped) in one undo step — was only the bound
+  track. Setup-don't-play: it writes notes, never starts the transport.
+- **Instruments — the home tile reflects the SELECTED synth.** The tile now binds
+  to the same persisted selection the page uses, showing that track's name +
+  preset/voice label + family, and updating when you pick a different synth.
+- **Instruments — one coherent Voice tab (no more "jump to the analog knobs").**
+  The Analog/Preset/Osc segment under the ribbon is gone; the voice pipeline now
+  lives entirely in the drawer's Voice tab as ONE browser: families (plus a
+  leading **Raw** bank that folds the bare oscillators in as pickable voices) →
+  presets. Picking a preset re-voices and STAYS PUT. When the voice is an analog
+  patch, an on-demand "Shape this voice" disclosure reveals the analog knobs in
+  place — never an automatic jump. (See `src/modules/instruments/VOICES.md`.)
+- **Instruments — the ribbon lights ALL held notes.** Multitouch now glows one
+  lit marker per active finger (the primary finger keeps the comet/beam), so
+  every note you're holding is visible. 60fps — markers are positioned straight
+  on the DOM, no per-frame React re-render.
+- **Instruments — tap a track to switch, long-press to rename.** Tapping a track
+  chip now SWITCHES to it (the common action); renaming requires a ~450ms
+  long-press on the name. (The shared `TrackNameEdit` keeps tap-to-rename where
+  no switch action is wired.)
+- **Instruments — the harmony popover is a solid, premium surface.** The
+  top-of-page harmony popover was see-through (the surface tokens carry alpha);
+  it now sits on an opaque base with proper elevation and spacing.
 - **Scratch — performance layout overhaul.** The two decks now STACK vertically
   (full-width each) so the second deck can never overflow the screen, and the
   crossfader is a real horizontal A↔B fader fixed at the bottom with a fat,

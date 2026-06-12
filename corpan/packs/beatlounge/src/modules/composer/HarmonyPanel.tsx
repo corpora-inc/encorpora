@@ -10,13 +10,13 @@
  * dropped in from the 994-progression browser. Every edit dispatches ONE command
  * (undo-friendly). Changing anything here makes the piano-roll + ribbon follow.
  *
- * NEW: changing the mode/scale/progression SNAPS the bound melody into the new
+ * NEW: changing the mode/scale/progression SNAPS the WHOLE SONG into the new
  * key. Every harmony-changing dispatch routes through `applyHarmony`, which
  * dispatches the harmony command and THEN — against the resulting doc —
- * dispatches `snapTrackToHarmony(snapTrackId)` so the score follows (closest
- * in-key). Setup-don't-play: the snap only writes notes; it never starts the
- * transport. When `snapTrackId` is absent the panel behaves exactly as before
- * (no snap) — so old call sites are byte-for-byte unchanged.
+ * dispatches `snapAllMelodicTracksToHarmony(doc)` so EVERY melodic track follows
+ * (closest in-key, drums skipped) in ONE undo step. Setup-don't-play: the snap
+ * only writes notes; it never starts the transport. When `snap` is false the
+ * panel behaves exactly as before (no snap) — so old call sites are unchanged.
  */
 
 import { useMemo, useState } from "react"
@@ -29,7 +29,7 @@ import {
   type Id,
 } from "../../model/document"
 import type { Command } from "../../model/command"
-import { snapTrackToHarmony } from "../instruments/snapHarmony"
+import { snapAllMelodicTracksToHarmony } from "../instruments/snapHarmony"
 import { CORPUS, listByFamily, FAMILIES, type CorpusProgression } from "../../music/chords"
 import {
   HARMONY_FAMILIES,
@@ -50,9 +50,10 @@ export interface HarmonyPanelProps {
   host: BeatloungeHost
   store: BeatloungeStore
   /**
-   * The melodic track the harmony snap follows. Omit ⇒ no snap (legacy parity).
-   * The Instruments page passes its bound/selected track; the standalone tile
-   * passes the resolved synth track.
+   * Presence ⇒ a harmony change snaps the WHOLE SONG (every melodic track) into
+   * the new key. Omit ⇒ no snap (legacy parity). The id itself is no longer used
+   * to pick a single track — the snap is song-wide — but the prop is kept so the
+   * Instruments page and the standalone tile opt in exactly as before.
    */
   snapTrackId?: Id
 }
@@ -72,15 +73,16 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
   const micro = scaleIsMicrotonal(mode)
 
   /**
-   * Dispatch a harmony-changing command and THEN snap the bound melody into the
-   * resulting key (one extra undo step, only when notes actually move). The snap
-   * reads the POST-change doc (`store.vanilla.getState().doc`) so it quantizes
-   * against the new harmony. No `snapTrackId` ⇒ plain dispatch (legacy parity).
+   * Dispatch a harmony-changing command and THEN snap the WHOLE SONG (every
+   * melodic track) into the resulting key — one extra undo step, only when notes
+   * actually move. The snap reads the POST-change doc (`store.vanilla`) so it
+   * quantizes against the new harmony. No `snapTrackId` ⇒ plain dispatch (legacy
+   * parity).
    */
   const applyHarmony = (command: Command): void => {
     store.dispatch(command)
     if (!snapTrackId) return
-    const snap = snapTrackToHarmony(store.vanilla.getState().doc, snapTrackId)
+    const snap = snapAllMelodicTracksToHarmony(store.vanilla.getState().doc)
     if (snap) store.dispatch(snap)
   }
 

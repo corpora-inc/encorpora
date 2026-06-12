@@ -11,6 +11,7 @@ import type { BeatloungeDoc, NoteEvent } from "../../model/document"
 import { reduce } from "../../model/reduce"
 import { inHarmony } from "../../music/resolver"
 import { snapTrackToHarmony, snapAllMelodicTracksToHarmony } from "./snapHarmony"
+import { newInstrumentTrackInit } from "./addTrack"
 
 const doc = (): BeatloungeDoc => createDefaultDoc(0)
 
@@ -97,5 +98,32 @@ describe("snapAllMelodicTracksToHarmony", () => {
 
   it("is null when nothing moves (already in key)", () => {
     expect(snapAllMelodicTracksToHarmony(doc())).toBeNull()
+  })
+
+  it("snaps EVERY melodic track (not just one) when several are out of key", () => {
+    // Add a SECOND melodic track with an out-of-key note (E, pc 4), then switch
+    // to aeolian where E is out → BOTH the default lead and the new track snap.
+    const init = newInstrumentTrackInit(0)
+    let d = reduce(doc(), { t: "addTrack", track: init })
+    d = reduce(d, {
+      t: "setNotes",
+      trackId: init.id!,
+      notes: [{ tick: 0, duration: 24, pitch: 64, velocity: 100 }],
+    })
+    d = toAeolian(d)
+
+    const cmd = snapAllMelodicTracksToHarmony(d)
+    expect(cmd).not.toBeNull()
+    if (cmd!.t !== "batch") throw new Error("expected batch")
+    // Two melodic tracks move (default lead has E; the added track is just E).
+    expect(cmd!.commands).toHaveLength(2)
+    const ids = cmd!.commands.map((c) => (c.t === "setNotes" ? c.trackId : null))
+    expect(ids).toContain(init.id)
+
+    // Applying the batch puts the added track's E (64) onto Eb (63) — in key.
+    const next = reduce(d, cmd!)
+    const added = next.tracks.find((t) => t.id === init.id)!
+    if (!isInstrumentTrack(added)) throw new Error("melodic")
+    expect(added.notes.map((n) => n.pitch)).toEqual([63])
   })
 })
