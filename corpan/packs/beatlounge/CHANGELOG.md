@@ -20,6 +20,11 @@ squared-off, compact-mobile design standard. Everything below ships in 0.1.0._
 - **Grooves +/- bar — tight inset.** The two density buttons were small and centred
   in a wide padded strip (way too much inset on phone); they now fill the bar with a
   tight gutter.
+- **Killed the dead strip below the Drums +/- (≈20% of the screen on Android).** The
+  bottom safe-area was counted THREE times under the +/- bar — the immersive sheet's
+  margin, the drawer body's padding, AND the grooves footer all added
+  `safe-area-inset-bottom`. The sheet margin is the single home-indicator clearance;
+  dropped the redundant two so the +/- sits just above the gesture bar.
 
 ### Fixed (pre-release, from PR review)
 - **In-key snapping no longer jumps an octave in sparse modes.** `detuneCentsForMidi`

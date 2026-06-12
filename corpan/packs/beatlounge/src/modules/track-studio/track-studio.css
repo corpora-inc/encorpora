@@ -282,7 +282,10 @@
   min-height: 0;
   overflow: hidden auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: var(--bl-safe-bottom, 0);
+  /* NO safe-area here — the immersive SHEET already margins `safe-bottom + s3`
+     around the whole drawer, so adding it again (here + in the grooves footer)
+     triple-counted it and left a big dead strip below the +/- on gesture-bar
+     devices. The sheet's bottom margin is the single home-indicator clearance. */
   display: flex;
   flex-direction: column;
 }

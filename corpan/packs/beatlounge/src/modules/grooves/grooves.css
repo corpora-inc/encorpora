@@ -218,8 +218,10 @@
   min-width: 0;
   border-top: 1px solid var(--bl-border);
   background: var(--bl-surface);
+  /* NO safe-area here — the drawer body (`.bl-trackdrawer-body`) already reserves
+     `safe-area-inset-bottom`, so adding it again double-counted it and left a huge
+     dead strip (~18% of the screen) below the +/- on devices with a gesture bar. */
   padding: var(--bl-s2);
-  padding-bottom: calc(var(--bl-s2) + var(--bl-safe-bottom, 0));
   gap: var(--bl-s2);
   flex: 0 0 auto;
 }
@@ -235,7 +237,6 @@
     border-top: none;
     border-left: 1px solid var(--bl-border);
     padding: var(--bl-s4);
-    padding-bottom: calc(var(--bl-s4) + var(--bl-safe-bottom, 0));
     gap: var(--bl-s3);
     overflow: auto;
   }
