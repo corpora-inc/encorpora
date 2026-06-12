@@ -30,7 +30,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--bl-s3);
+  flex-wrap: wrap; /* narrow screens: tools wrap below rather than clip off-edge */
+  gap: var(--bl-s2) var(--bl-s3);
   flex: 0 0 auto;
   width: 100%;
 }
