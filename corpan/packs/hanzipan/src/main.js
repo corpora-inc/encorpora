@@ -297,6 +297,34 @@ import "./styles.css"
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
+  // HanziWriter's color parser only understands #RGB, #RRGGBB, and rgb()/rgba().
+  // iOS/WebKit serializes an rgba() custom property read via getComputedStyle as
+  // 8-digit hex (e.g. #6b4c2a38), which HanziWriter rejects with "Invalid color"
+  // — that crash kills the outline, autoplay, and quiz/tutor rendering. Normalize
+  // any #RRGGBBAA / #RGBA value back into rgba() so the parser accepts it.
+  const normalizeHanziColor = (value) => {
+    const color = (value || "").trim();
+    const hex = color.replace(/^#/, "");
+    let r;
+    let g;
+    let b;
+    let a;
+    if (/^[0-9a-fA-F]{8}$/.test(hex)) {
+      r = parseInt(hex.slice(0, 2), 16);
+      g = parseInt(hex.slice(2, 4), 16);
+      b = parseInt(hex.slice(4, 6), 16);
+      a = parseInt(hex.slice(6, 8), 16) / 255;
+    } else if (/^[0-9a-fA-F]{4}$/.test(hex)) {
+      r = parseInt(hex[0] + hex[0], 16);
+      g = parseInt(hex[1] + hex[1], 16);
+      b = parseInt(hex[2] + hex[2], 16);
+      a = parseInt(hex[3] + hex[3], 16) / 255;
+    } else {
+      return color;
+    }
+    return `rgba(${r}, ${g}, ${b}, ${Math.round(a * 1000) / 1000})`;
+  };
+
   const lerp = (a, b, t) => a + (b - a) * t;
 
   const lerpPoint = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
@@ -2026,9 +2054,15 @@ import "./styles.css"
       ? new HanziWriterLayer(writerLayerEl, () => {
         const styles = getComputedStyle(root);
         return {
-          ghost: styles.getPropertyValue("--stroke-ghost").trim() || "rgba(107,76,42,0.22)",
-          accent: styles.getPropertyValue("--accent").trim() || "#8b6914",
-          user: styles.getPropertyValue("--stroke-user").trim() || "#1a1410",
+          ghost: normalizeHanziColor(
+            styles.getPropertyValue("--stroke-ghost").trim() || "rgba(107,76,42,0.22)"
+          ),
+          accent: normalizeHanziColor(
+            styles.getPropertyValue("--accent").trim() || "#8b6914"
+          ),
+          user: normalizeHanziColor(
+            styles.getPropertyValue("--stroke-user").trim() || "#1a1410"
+          ),
         };
       })
       : null;
