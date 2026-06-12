@@ -18,16 +18,19 @@ interface Props {
   track: Track
   /** Is any track soloed (so a non-soloed track reads as silent)? */
   anySolo: boolean
-  /** A short context hint under the strip (page-specific). */
-  hint: string
 }
 
-export const TrackMixer = ({ host, store, track, anySolo, hint }: Props) => {
+export const TrackMixer = ({ host, store, track, anySolo }: Props) => {
   const [liveVol, setLiveVol] = useState<number | null>(null)
   const silent = track.mute || (anySolo && !track.solo)
+  // Phone gets the wide HORIZONTAL level fader (thumb-friendly, fills the drawer)
+  // — matching the mixer console's phone layout; the tall vertical fader is only
+  // worth the height on the iPad. Driven by the host form factor (re-evaluated on
+  // resize) so the JS layout and the CSS breakpoint agree.
+  const phone = host.form() === "phone"
 
   return (
-    <div className="bl-trackmixer" data-bl-nocapture>
+    <div className={`bl-trackmixer${phone ? " bl-trackmixer--h" : ""}`} data-bl-nocapture>
       <div className={`bl-trackmixer-strip${silent ? " is-silent" : ""}`}>
         <span className="bl-trackmixer-name">
           <span className="bl-dot" style={{ background: track.color }} />
@@ -40,8 +43,8 @@ export const TrackMixer = ({ host, store, track, anySolo, hint }: Props) => {
           max={1}
           step={0.01}
           defaultValue={0.8}
-          orientation="vertical"
-          length={150}
+          orientation={phone ? "horizontal" : "vertical"}
+          length={phone ? 200 : 150}
           format={(v) => `${Math.round(v * 100)}`}
           onChange={(v) => {
             setLiveVol(v)
@@ -52,21 +55,22 @@ export const TrackMixer = ({ host, store, track, anySolo, hint }: Props) => {
             store.dispatch({ t: "setTrackProp", trackId: track.id, prop: "volume", value: v })
           }}
         />
-        <div className="bl-trackmixer-pan">
-          <TrackParamKnob host={host} store={store} trackId={track.id} param="pan" value={track.pan} />
+        <div className="bl-trackmixer-side">
+          <div className="bl-trackmixer-pan">
+            <TrackParamKnob host={host} store={store} trackId={track.id} param="pan" value={track.pan} />
+          </div>
+          <MuteSolo
+            mute={track.mute}
+            solo={track.solo}
+            onMute={() =>
+              store.dispatch({ t: "setTrackProp", trackId: track.id, prop: "mute", value: !track.mute })
+            }
+            onSolo={() =>
+              store.dispatch({ t: "setTrackProp", trackId: track.id, prop: "solo", value: !track.solo })
+            }
+          />
         </div>
-        <MuteSolo
-          mute={track.mute}
-          solo={track.solo}
-          onMute={() =>
-            store.dispatch({ t: "setTrackProp", trackId: track.id, prop: "mute", value: !track.mute })
-          }
-          onSolo={() =>
-            store.dispatch({ t: "setTrackProp", trackId: track.id, prop: "solo", value: !track.solo })
-          }
-        />
       </div>
-      <p className="bl-trackmixer-hint">{hint}</p>
     </div>
   )
 }

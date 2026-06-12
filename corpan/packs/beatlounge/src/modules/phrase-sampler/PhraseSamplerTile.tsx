@@ -48,9 +48,7 @@ export const PhraseSamplerTile = ({ store, current }: Props) => {
             </div>
           </>
         ) : (
-          <div className="bl-tile-ps-hint">
-            Discover phrases across your stack — save snippets to your bank.
-          </div>
+          <div className="bl-tile-ps-hint">Discover phrases across your stack</div>
         )}
       </div>
     </div>

@@ -398,9 +398,6 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
             )
           })}
         </div>
-        <p className="bl-song-note">
-          Accents are a visual guide for now (the song model has no accent field yet).
-        </p>
       </section>
     </div>
   )

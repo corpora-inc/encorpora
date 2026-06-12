@@ -145,10 +145,9 @@ export const PhraseJamImmersive = ({
         </div>
         <div className="bl-jam-empty">
           <Glyph name="wave" size={28} />
-          <p className="bl-jam-empty-title">Your snippet bank is empty</p>
+          <p className="bl-jam-empty-title">No snippets yet</p>
           <p className="bl-jam-empty-sub">
-            Open <strong>Phrases</strong> to audition words and save them to the
-            bank. Saved snippets appear here as lanes you can place on the beat.
+            Open <strong>Phrases</strong> to save some.
           </p>
         </div>
       </div>
@@ -310,7 +309,6 @@ export const PhraseJamImmersive = ({
           store={store}
           track={ftrack}
           anySolo={anySolo}
-          hint="The full mixer (all tracks + sends) lives on the Mix page; this controls the phrase track right here."
         />
       ),
     },

@@ -237,7 +237,6 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
           store={store}
           track={itrack}
           anySolo={anySolo}
-          hint="The full mixer (all tracks + sends) lives on the Mix page; this controls the drum bus right here."
         />
       ),
     },

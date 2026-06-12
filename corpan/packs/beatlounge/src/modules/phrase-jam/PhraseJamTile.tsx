@@ -43,9 +43,7 @@ export const PhraseJamTile = ({ store }: Props) => {
             <strong>{bankCount}</strong> snippet{bankCount === 1 ? "" : "s"} in the bank
           </div>
         ) : (
-          <div className="bl-tile-jam-hint">
-            Save phrases in <strong>Phrases</strong>, then place them on the beat.
-          </div>
+          <div className="bl-tile-jam-hint">Place phrases on the beat</div>
         )}
       </div>
     </div>

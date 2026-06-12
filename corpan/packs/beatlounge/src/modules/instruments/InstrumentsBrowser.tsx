@@ -326,7 +326,6 @@ export const InstrumentsBrowser = ({
           store={store}
           track={itrack}
           anySolo={anySolo}
-          hint="The full mixer (all tracks + sends) lives on the Mix page; this controls this voice right here."
         />
       ),
     },

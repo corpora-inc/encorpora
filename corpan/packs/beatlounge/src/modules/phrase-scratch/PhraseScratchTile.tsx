@@ -36,9 +36,7 @@ export const PhraseScratchTile = ({ store }: Props) => {
             <strong>{bankCount}</strong> snippet{bankCount === 1 ? "" : "s"} to scratch
           </div>
         ) : (
-          <div className="bl-tile-scr-hint">
-            Save a phrase in <strong>Phrases</strong>, then scratch it like vinyl.
-          </div>
+          <div className="bl-tile-scr-hint">Scratch a phrase like vinyl</div>
         )}
       </div>
     </div>

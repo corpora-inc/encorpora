@@ -587,10 +587,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       <div className="bl-scr">
         <div className="bl-scr-empty">
           <Glyph name="wave" size={28} />
-          <p className="bl-scr-empty-title">No snippet to scratch yet</p>
+          <p className="bl-scr-empty-title">Nothing on the deck</p>
           <p className="bl-scr-empty-sub">
-            Open <strong>Phrases</strong> below to find a phrase in the catalog and
-            load it onto the turntable.
+            Open <strong>Phrases</strong> to load one.
           </p>
         </div>
         <TrackDrawer

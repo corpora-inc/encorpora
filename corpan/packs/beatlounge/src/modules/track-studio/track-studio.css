@@ -328,15 +328,32 @@
   font-weight: 600;
   color: var(--bl-text);
 }
-.bl-trackmixer-pan { margin-top: calc(-1 * var(--bl-s1)); }
-.bl-trackmixer-hint {
-  margin: 0;
-  max-width: 38ch;
-  text-align: center;
-  font-size: var(--bl-fs-micro);
-  line-height: 1.4;
-  color: var(--bl-text-dim);
+.bl-trackmixer-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s3);
 }
+.bl-trackmixer-pan { margin-top: calc(-1 * var(--bl-s1)); }
+
+/* ---- phone: WIDE horizontal strip (matches the mixer console's phone layout).
+   The tall vertical fader is great on the iPad but wastes the drawer's width on
+   a phone — here the level fader runs horizontally full-width with pan + mute/solo
+   on one row beneath it, thumb-reachable and never clipped. ---- */
+.bl-trackmixer--h .bl-trackmixer-strip {
+  align-self: stretch;
+  width: 100%;
+  min-width: 0;
+  align-items: stretch;
+}
+.bl-trackmixer--h .bl-fader--horizontal { align-self: center; }
+.bl-trackmixer--h .bl-trackmixer-side {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--bl-s4);
+}
+.bl-trackmixer--h .bl-trackmixer-pan { margin-top: 0; }
 
 /* ============================================================ wide layout */
 @media (min-width: 760px) {

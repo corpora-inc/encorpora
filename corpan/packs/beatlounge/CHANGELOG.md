@@ -17,6 +17,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   back to you. The endless line no longer floods undo — it writes transiently, so
   your real edits stay on the undo stack.
 
+### Changed
+- **Drawer mixers are horizontal on the phone.** The in-drawer track mixer (Drums,
+  Phrase Jam, Instruments) now uses the same wide horizontal level fader as the
+  mixer console on the phone — level on top, pan + mute/solo on one row beneath —
+  instead of a narrow vertical strip. The tall vertical fader stays on the iPad.
+
+### Removed
+- **Explainer sentences nobody needs to read.** Cut the "the full mixer lives on
+  the Mix page…" paragraph under the drawer mixer, a dev-status note on the
+  Rhythmic Cycle accent map, and trimmed empty-state / home-tile copy to terse
+  fragments. The UI shows what to do by how it looks, not by a sentence to read.
+
 ## [0.1.0] - 2026-06-12
 
 _First public release: the full beat-lounge studio — tick-addressed sequencer +
@@ -27,7 +39,7 @@ squared-off, compact-mobile design standard. Everything below ships in 0.1.0._
 ### Fixed (on-device Android polish)
 - **Harmony scale-system selector no longer wraps funny.** Western/Thaat/Melakarta/
   Maqam overflowed the phone row and wrapped the segmented control into a broken
-  two-line block; it's now one horizontally-scrolling row.
+  two-line block; all four now fit on one row (no scroll) down to ~320px.
 - **No OS text-selection / copy-paste callout while jamming.** A long-press on the
   ribbon (or anywhere) could pop the system selection menu — the root's
   `user-select: none` was missing the `-webkit-` prefixes WebKit/Android WebView
