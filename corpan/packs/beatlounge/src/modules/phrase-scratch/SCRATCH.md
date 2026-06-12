@@ -153,6 +153,33 @@ into the destination, so a **second deck** is just another instance. A "Two deck
 affordance reveals a second turntable + an equal-power **crossfader** (deck A ↔ deck B);
 the per-deck cut fader stays.
 
+## Master FX rack (`scratchFxBus.ts` + `scratchFxChain.ts` + `ScratchFxRack.tsx`)
+
+The decks aren't a mixer track, but they still deserve a turntable's master FX. The
+decks connect into a native `input` GainNode (their `destination`); that bus is wired
+`input → fx[0] → … → fx[n] → ctx.destination` using `Tone.connect` (Tone shares our
+AudioContext via `Tone.setContext`), so a few curated DJ inserts colour BOTH decks at
+once — the right model for one turntable. The inserts are the SAME `Effect`s the mixer
+builds (`createEffect`, the shared `EFFECT_SPECS` param schemas), so a "Filter" here is
+the exact filter there. The rack is a FIXED curated set (Filter, Delay, Reverb, Crush),
+held in scratch-LOCAL React state — there is no document coupling (scratch never writes
+the doc / has no undo history; `actions: []`). Inserts start BYPASSED, so a fresh table
+is transparent (bypassed wet/dry → wet 0; bypassed filter → open). The chain is rebuilt
+only on add/remove; toggling + param moves go through the effect's own `update`/
+`setParam` (no graph rebuild). Realtime knob wiring mirrors the fx-rack: live moves drive
+`bus.liveParam`; release commits one local edit. Pure chain helpers (`scratchFxChain.ts`)
+are unit-tested (`scratchFxChain.test.ts`).
+
+## Phrase bank drawer (`ScratchBankDrawer.tsx`)
+
+Phrase management lives INSIDE scratch: a bottom drawer searches the saved bank
+(`bankSnippets`, the same data the per-deck picker reads — nothing duplicated) and loads
+any snippet onto deck A or B. Loading onto B reveals the second deck. The row marked A/B
+shows what each deck holds. The deck toggle moved to the TOP header (with the Effects +
+Phrases buttons), freeing the bottom as the management zone; the crossfader stays fixed
+at the bottom and the responsive landscape-row / portrait-stack deck layout is unchanged
+(the `--bl-platter` budgets account for the new header height).
+
 ## Constraints honored
 
 One global transport — the platter plays by hand / Spin, never via the transport.

@@ -25,7 +25,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
-import type { FragmentRef } from "../../model/document"
+import type { EffectNode, FragmentRef } from "../../model/document"
 import { bankSnippets } from "../../phrase/bank"
 import type { AudioSource } from "../../phrase/audioSource"
 import { decodeFragmentBytes } from "../../phrase/decode"
@@ -52,6 +52,15 @@ import {
 } from "./scratchMath"
 import { Platter } from "./Platter"
 import { CutFader } from "./CutFader"
+import { createScratchFxBus, type ScratchFxBus } from "./scratchFxBus"
+import {
+  defaultScratchChain,
+  chainHasActive,
+  toggleInsert,
+  setInsertParams,
+} from "./scratchFxChain"
+import { ScratchFxRack } from "./ScratchFxRack"
+import { ScratchBankDrawer } from "./ScratchBankDrawer"
 
 const LOG = "[beatlounge/phrase-scratch]"
 
@@ -131,6 +140,12 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const [cutA, setCutA] = useState(1)
   const [cutB, setCutB] = useState(1)
 
+  // ---- master FX rack + phrase drawer (scratch-local; no doc coupling) -------
+  const [fxChain, setFxChain] = useState<EffectNode[]>(() => defaultScratchChain())
+  const [fxOpen, setFxOpen] = useState(false)
+  const [bankOpen, setBankOpen] = useState(false)
+  const fxBusRef = useRef<ScratchFxBus | null>(null)
+
   const selectFor = (key: string | null, fallbackIdx: number): FragmentRef | null => {
     if (bank.length === 0) return null
     if (key) {
@@ -162,6 +177,24 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   // Keep the runtime's spin direction in sync with the toggles (read in the RAF loop).
   rtA.current.spinDir = dirA
   rtB.current.spinDir = dirB
+
+  // ---- master FX bus: decks feed this; it inserts the chain → destination -----
+  // Built once; the decks connect into bus.input (their destination) so the chain
+  // colours BOTH decks. The chain is pushed whenever the config changes.
+  if (!fxBusRef.current) {
+    // Build the bus + wire the initial (bypassed) chain. Idempotent via the ref
+    // guard; recreated after a StrictMode dispose/remount. Toggles + param moves
+    // go through updateInsert/liveParam (no rebuild).
+    const bus = createScratchFxBus(host.audioContext())
+    bus.setInserts(fxChain)
+    fxBusRef.current = bus
+  }
+  useEffect(() => {
+    return () => {
+      fxBusRef.current?.dispose()
+      fxBusRef.current = null
+    }
+  }, [])
 
   // ---- deck level = cut (this deck) × crossfade contribution ------------------
   useEffect(() => {
@@ -234,7 +267,10 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         // the phrase START returns under the needle at the SAME angle every loop. The
         // disc mapping uses the PADDED duration; words stay on the real timeline.
         const padded = padBufferToRevolution(ctx, decoded)
-        const deck = await createScratchDeck(ctx, padded, { gain: initialGain })
+        const deck = await createScratchDeck(ctx, padded, {
+          gain: initialGain,
+          destination: fxBusRef.current?.input,
+        })
         if (stale()) {
           deck.dispose()
           return
@@ -414,6 +450,37 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     })
   }
 
+  // ---- master FX rack edits (live node + local state, no doc / undo) ---------
+  const onFxToggle = (id: string) => {
+    void ensureAudio(host.audioContext())
+    setFxChain((chain) => {
+      const next = toggleInsert(chain, id)
+      const node = next.find((n) => n.id === id)
+      if (node) fxBusRef.current?.updateInsert(node)
+      return next
+    })
+  }
+  const onFxSetParams = (id: string, params: Record<string, number>) => {
+    setFxChain((chain) => {
+      const next = setInsertParams(chain, id, params)
+      const node = next.find((n) => n.id === id)
+      if (node) fxBusRef.current?.updateInsert(node)
+      return next
+    })
+  }
+
+  // ---- load a snippet onto a deck from the drawer ----------------------------
+  const onBankLoad = (deck: DeckId, r: FragmentRef) => {
+    void ensureAudio(host.audioContext())
+    if (deck === "a") setSelKeyA(refKey(r))
+    else {
+      if (!showDeckB) setShowDeckB(true)
+      setSelKeyB(refKey(r))
+    }
+  }
+
+  const fxActive = chainHasActive(fxChain)
+
   // ---- empty state ----------------------------------------------------------
   if (bank.length === 0) {
     return (
@@ -555,14 +622,78 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
 
   return (
     <div className={`bl-scr${showDeckB ? " is-dual" : ""}`}>
+      {/* TOP header: the deck toggle (moved up here so the bottom is free for the
+          crossfader + phrase management). FX + Phrases live on the right. */}
+      <div className="bl-scr-header" data-bl-nocapture>
+        <button
+          type="button"
+          className={`bl-scr-deckbtn${showDeckB ? " is-on" : ""}`}
+          onClick={() => setShowDeckB((v) => !v)}
+          aria-pressed={showDeckB}
+          aria-label={showDeckB ? "Hide the second deck" : "Add a second deck"}
+        >
+          <Glyph name="wave" size={16} />
+          <span>{showDeckB ? "One deck" : "Two decks"}</span>
+        </button>
+        <div className="bl-scr-header-tools">
+          <button
+            type="button"
+            className={`bl-scr-tool${fxOpen ? " is-open" : ""}${fxActive ? " is-active" : ""}`}
+            onClick={() => {
+              setFxOpen((v) => !v)
+              setBankOpen(false)
+            }}
+            aria-pressed={fxOpen}
+            aria-label="Master effects"
+          >
+            <Glyph name="sliders" size={16} />
+            <span>Effects</span>
+          </button>
+          <button
+            type="button"
+            className={`bl-scr-tool${bankOpen ? " is-open" : ""}`}
+            onClick={() => {
+              setBankOpen((v) => !v)
+              setFxOpen(false)
+            }}
+            aria-pressed={bankOpen}
+            aria-label="Phrase bank"
+          >
+            <Glyph name="drawer" size={16} />
+            <span>Phrases</span>
+          </button>
+        </div>
+      </div>
+
       <div className="bl-scr-decks">
         {renderDeck("a", selectedA, rtA, viewA, loadingA, dirA, cutA, setCutA)}
         {showDeckB && renderDeck("b", selectedB, rtB, viewB, loadingB, dirB, cutB, setCutB)}
       </div>
 
-      {/* The foot: the horizontal crossfader (A↔B, fixed at the bottom, big grab)
-          + the deck toggle. Never floats; always reachable on stage. */}
+      {/* The foot: the horizontal crossfader (A↔B, fixed at the bottom, big grab).
+          Never floats; always reachable on stage. The pop-ups (FX rack / bank
+          drawer) anchor here so the bottom is the management zone. */}
       <div className="bl-scr-foot" data-bl-nocapture>
+        {fxOpen && (
+          <ScratchFxRack
+            chain={fxChain}
+            bus={fxBusRef.current}
+            onToggle={onFxToggle}
+            onSetParams={onFxSetParams}
+            onClose={() => setFxOpen(false)}
+          />
+        )}
+        {bankOpen && (
+          <ScratchBankDrawer
+            bank={bank}
+            keyA={selectedA ? refKey(selectedA) : null}
+            keyB={selectedB ? refKey(selectedB) : null}
+            showDeckB={showDeckB}
+            refKey={refKey}
+            onLoad={onBankLoad}
+            onClose={() => setBankOpen(false)}
+          />
+        )}
         {showDeckB && (
           <div className="bl-scr-xfade">
             <span className="bl-scr-xfade-end">A</span>
@@ -579,16 +710,6 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             <span className="bl-scr-xfade-end">B</span>
           </div>
         )}
-        <button
-          type="button"
-          className={`bl-scr-deckbtn${showDeckB ? " is-on" : ""}`}
-          onClick={() => setShowDeckB((v) => !v)}
-          aria-pressed={showDeckB}
-          aria-label={showDeckB ? "Hide the second deck" : "Add a second deck"}
-        >
-          <Glyph name="wave" size={16} />
-          <span>{showDeckB ? "One deck" : "Two decks"}</span>
-        </button>
       </div>
     </div>
   )

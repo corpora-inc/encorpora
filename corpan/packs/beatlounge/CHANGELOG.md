@@ -5,7 +5,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Scratch — a master EFFECTS RACK (popup).** An optional effect chain now sits on
+  the scratch MASTER output (between both decks' bus and the speakers), so a few
+  high-value DJ effects colour the whole turntable at once — Filter (with the same
+  Cutoff×Resonance XY pad as the mixer), Delay, Reverb, and Crush. A premium popover
+  (the "Effects" button in the header) toggles each insert and tweaks its knobs; the
+  rack reuses the SHARED effect factory + param schemas, so a knob here drives the
+  exact same Tone node the mixer would. Inserts start bypassed (the table is clean
+  until you dial one in); a dot on the button shows when any is engaged. No document
+  coupling — it's a live performance, like the rest of scratch.
+- **Scratch — a phrase BANK drawer.** Phrase management now lives INSIDE scratch: a
+  bottom drawer ("Phrases" in the header) searches the saved phrase bank and loads
+  any snippet onto deck A or B (the row marked A/B is what each deck holds), so you
+  never leave the turntable to manage what's on the decks. Loading onto B brings the
+  second deck up automatically. Reads the same bank data as the per-deck picker.
+
 ### Changed
+- **Scratch — the deck toggle moved to the TOP.** The "One deck / Two decks" toggle
+  now sits in a header bar at the top of the scratch view (alongside the new Effects
+  and Phrases buttons), freeing the bottom for the crossfader + the phrase-management
+  drawer so it never gets overrun. The crossfader stays a horizontal A↔B fader fixed
+  at the bottom; the responsive side-by-side (landscape) / stacked (portrait) deck
+  layout is unchanged.
 - **Scratch — performance layout overhaul.** The two decks now STACK vertically
   (full-width each) so the second deck can never overflow the screen, and the
   crossfader is a real horizontal A↔B fader fixed at the bottom with a fat,
