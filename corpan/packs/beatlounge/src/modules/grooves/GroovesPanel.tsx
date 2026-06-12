@@ -85,26 +85,9 @@ export const GroovesPanel = ({
   const allRhythms = useMemo(() => groups.flatMap((g) => g.rhythms), [groups])
 
   const [selectedId, setSelectedId] = useState<string>(allRhythms[0]?.id ?? "")
-  const [query, setQuery] = useState("")
   const [intensity, setIntensity] = useState(1)
 
   const selected = getRhythm(selectedId) ?? allRhythms[0]
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (!q) return groups
-    return groups
-      .map((g) => ({
-        ...g,
-        rhythms: g.rhythms.filter(
-          (r) =>
-            r.name.toLowerCase().includes(q) ||
-            r.origin.toLowerCase().includes(q) ||
-            (r.tags ?? []).some((t) => t.includes(q))
-        ),
-      }))
-      .filter((g) => g.rhythms.length > 0)
-  }, [groups, query])
 
   // ---- run an action through the store as one undo step --------------------
   const runGroove = (
@@ -157,30 +140,21 @@ export const GroovesPanel = ({
 
   return (
     <div className={`bl-grooves-panel bl-grooves-panel--${variant}`}>
-      {/* ---- search ---- */}
-      <div className="bl-grooves-toolbar" data-bl-nocapture>
-        {variant === "standalone" && (
+      {variant === "standalone" && (
+        <div className="bl-grooves-toolbar" data-bl-nocapture>
           <div className="bl-grooves-title">
             <span className="bl-grooves-title-mark">
               <GrooveMark size={18} />
             </span>
             Grooves
           </div>
-        )}
-        <input
-          type="search"
-          className="bl-grooves-search"
-          placeholder="Search rhythms…"
-          value={query}
-          aria-label="Search rhythms"
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </div>
+        </div>
+      )}
 
       <div className="bl-grooves-body">
-        {/* ---- the browsable picker ---- */}
+        {/* ---- the browsable picker (only ~70 rhythms — no search needed) ---- */}
         <div className="bl-grooves-picker" role="listbox" aria-label="World rhythms">
-          {filtered.map((group) => (
+          {groups.map((group) => (
             <section className="bl-grooves-family" key={group.family}>
               <h3 className="bl-grooves-family-label">
                 {FAMILY_LABEL.get(group.family) ?? group.family}
@@ -197,9 +171,6 @@ export const GroovesPanel = ({
               </div>
             </section>
           ))}
-          {filtered.length === 0 && (
-            <div className="bl-grooves-empty">No rhythms match “{query}”.</div>
-          )}
         </div>
 
         {/* ---- the selected-rhythm detail + actions ----
