@@ -501,7 +501,12 @@
 
 /* ---------------------------------------------------------- Drums live widget */
 .bl-drumwidget {
-  /* Leave room at top-right for the shell's expand control. */
+  min-width: 0;
+}
+/* The expand control floats over the top-right corner (y≈12–40) — so ONLY the
+   head row (which carries the groove name top-right) needs to clear it; the mini-
+   grid + the +/- controls below span the FULL width. No wasted right column. */
+.bl-drumwidget .bl-tile-head {
   padding-right: 30px;
 }
 /* The head + mini-grid form a flat, full-bleed "open Drums" affordance. It is a
@@ -591,9 +596,11 @@
 
 /* ---------------------------------------------------------- Ribbon live widget */
 .bl-ribbonwidget {
-  /* Leave room at top-right for the shell's expand control over the ribbon's
-     own control strip. */
-  padding-right: 30px;
+  /* No reserved right column — the ribbon strip + surface span the FULL width
+     (all the way right). The shell's small floating expand control just sits over
+     the empty top-right of the control row (Lock/Free is left-aligned), so the
+     layout reads: [Lock│Free   ⤢] / [octave] / [ribbon] — no wasted column. */
+  min-width: 0;
 }
 .bl-ribbonwidget .bl-ribbon {
   flex: 1 1 auto;

@@ -26,6 +26,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Fixed
+- **Live tile expand button no longer steals a column.** The Ribbon (and Drums)
+  home widgets reserved a ~30px right column for the shell's floating expand
+  control, so the ribbon strip + surface stopped short of the right edge. The
+  expand only overlaps the top-right CORNER (y≈12–40), so the reservation moved to
+  just the head row that needs it (the Drums groove label); the Ribbon drops it
+  entirely. Now: `[Lock│Free   ⤢] / [octave] / [ribbon full width]` — the surface
+  reaches all the way right.
 - **Home stops overflowing right on slim phones.** Root cause (found by driving the
   REAL pack at a true 390px viewport over CDP — the Stage measured 514px): the SHELL
   grid used `grid-template-areas` with NO explicit columns, so the stage column was
