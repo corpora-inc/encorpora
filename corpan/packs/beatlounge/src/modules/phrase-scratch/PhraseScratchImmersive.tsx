@@ -134,6 +134,10 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const bank = bankSnippets(doc)
   const reduced = prefersReducedMotion()
+  // Two decks is a tablet/desktop (≥md) experience — a phone doesn't have the room
+  // for a real two-turntable console, so we stay single-deck there (no toggle).
+  // host.form() re-evaluates on resize, so this tracks a live window resize too.
+  const twoDeckCapable = host.form() !== "phone"
 
   // Selection per deck (default: newest saved for A; previous for B).
   const [selKeyA, setSelKeyA] = useState<string | null>(null)
@@ -222,6 +226,12 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   useEffect(() => {
     saveScratchChain(fxChain)
   }, [fxChain])
+
+  // If the window narrows to a phone while a second deck is up, fold back to one
+  // deck (the toggle is hidden there, so it would otherwise be stuck on).
+  useEffect(() => {
+    if (!twoDeckCapable && showDeckB) setShowDeckB(false)
+  }, [twoDeckCapable, showDeckB])
 
   // ---- deck level = cut (this deck) × crossfade contribution ------------------
   useEffect(() => {
@@ -758,21 +768,24 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
 
   return (
     <div className={`bl-scr${showDeckB ? " is-dual" : ""}`}>
-      {/* TOP header: ONLY the compact deck toggle, tucked top-right out of the way.
-          Effects + Phrases are NOT mirrored here — they're the bottom drawer's own
-          tabs — so the main stage stays empty and uncramped on the phone. */}
-      <div className="bl-scr-header" data-bl-nocapture>
-        <button
-          type="button"
-          className={`bl-scr-deckbtn${showDeckB ? " is-on" : ""}`}
-          onClick={() => setShowDeckB((v) => !v)}
-          aria-pressed={showDeckB}
-          aria-label={showDeckB ? "Hide the second deck" : "Add a second deck"}
-        >
-          <Glyph name="wave" size={15} />
-          <span>{showDeckB ? "1 deck" : "2 decks"}</span>
-        </button>
-      </div>
+      {/* TOP header: ONLY the compact deck toggle, tucked top-right out of the way,
+          and ONLY on ≥md screens (a phone stays single-deck — no toggle, no header,
+          so the disc gets the full stage). Effects + Phrases are the drawer's own
+          tabs, never mirrored here, so the stage stays empty and uncramped. */}
+      {twoDeckCapable && (
+        <div className="bl-scr-header" data-bl-nocapture>
+          <button
+            type="button"
+            className={`bl-scr-deckbtn${showDeckB ? " is-on" : ""}`}
+            onClick={() => setShowDeckB((v) => !v)}
+            aria-pressed={showDeckB}
+            aria-label={showDeckB ? "Hide the second deck" : "Add a second deck"}
+          >
+            <Glyph name="wave" size={15} />
+            <span>{showDeckB ? "1 deck" : "2 decks"}</span>
+          </button>
+        </div>
+      )}
 
       <div className="bl-scr-decks">
         {renderDeck("a", selectedA, rtA, viewA, loadingA, dirA, cutA, setCutA)}

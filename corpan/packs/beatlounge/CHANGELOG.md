@@ -24,10 +24,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 - **Scratch stage decluttered on the phone.** The main turntable area no longer
   mirrors the **Effects** / **Phrases** buttons (they're the bottom drawer's own
-  tabs) — that pair is gone from the stage. The **deck toggle** shrank to a compact
-  chip tucked top-right, the snippet picker sits beside it on one row, and the spin
-  transport now shares a row with the rate/clock readout. The platter is sized so the
-  transport never hides behind the drawer. Less crowding, no overlap, nothing clipped.
+  tabs) — that pair is gone from the stage. The spin transport now shares a row with
+  the rate/clock readout (a FIXED-width slot so the value changing each frame never
+  shoves the buttons around). The platter is sized so the transport never hides behind
+  the drawer. Less crowding, no overlap, nothing clipped.
+- **Two turntables is a tablet/desktop feature.** A phone stays single-deck (the deck
+  toggle and its header are hidden below the md breakpoint) — a phone has no room for a
+  real two-deck console, and dropping it gives the disc the full stage.
+- **Tighter drawer peek.** The collapsed Effects/Phrases drawer no longer leaves a dead
+  band under the tabs on phones (the full safe-area was padding empty space below a
+  top-aligned tab bar); the tabs now sit close to the edge. Shared by every drawer.
 - **Drawer mixers are horizontal on the phone.** The in-drawer track mixer (Drums,
   Phrase Jam, Instruments) now uses the same wide horizontal level fader as the
   mixer console on the phone — level on top, pan + mute/solo on one row beneath —

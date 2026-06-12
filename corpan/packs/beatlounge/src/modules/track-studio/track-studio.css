@@ -45,7 +45,7 @@
   /* Reserve the drawer's peek zone at the bottom so the grid's foot + last lane
    * are never permanently hidden behind the always-present handle + tab bar. */
   padding: var(--bl-s4) var(--bl-s4)
-    calc(var(--bl-drawer-peek, 96px) + var(--bl-safe-bottom, 0px) + var(--bl-s3));
+    calc(var(--bl-drawer-peek, 96px) + min(var(--bl-safe-bottom, 0px), var(--bl-s2)) + var(--bl-s3));
   gap: var(--bl-s3);
 }
 .bl-grid-scroll {
@@ -192,7 +192,14 @@
   transition: height var(--bl-dur-immersive, 220ms) var(--bl-ease);
 }
 .bl-trackdrawer.is-peek {
-  height: calc(var(--bl-drawer-peek, 96px) + var(--bl-safe-bottom, 0px));
+  /* Peek = handle + tab bar, nothing more. The content is top-aligned, so adding
+     the FULL safe-area below just left a dead band under the tabs on phones; cap
+     the bottom inset to a hair so the tabs sit close to the edge (still clear of
+     the home indicator) — tighter on small screens. */
+  height: calc(var(--bl-drawer-peek, 96px) + min(var(--bl-safe-bottom, 0px), var(--bl-s2)));
+}
+.bl-trackdrawer.is-peek .bl-trackdrawer-tabs {
+  margin-bottom: var(--bl-s2);
 }
 .bl-trackdrawer.is-open {
   height: min(48vh, 520px);

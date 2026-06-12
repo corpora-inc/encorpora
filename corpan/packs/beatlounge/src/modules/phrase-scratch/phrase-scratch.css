@@ -25,7 +25,7 @@
   position: relative;
   overflow: hidden;
   padding: var(--bl-s3) var(--bl-s4)
-    calc(var(--bl-drawer-peek, 96px) + var(--bl-safe-bottom, 0px) + var(--bl-s2));
+    calc(var(--bl-drawer-peek, 96px) + min(var(--bl-safe-bottom, 0px), var(--bl-s2)) + var(--bl-s2));
   box-sizing: border-box;
 }
 
@@ -462,27 +462,35 @@
 }
 
 /* ---------------------------------------------------------- readout
-   Sits inline at the end of the transport row (spin buttons + rate/clock). */
+   Sits inline at the end of the transport row (spin buttons + rate/clock). FIXED
+   width + tabular digits: the rate value changes every frame ("hold" → +0.50 →
+   −1.20), and a growing/shrinking box would shove the spin buttons around — so the
+   slot is a constant size and the value just changes WITHIN it (no reflow). */
 .bl-scr-readout {
   display: inline-flex;
   align-items: baseline;
-  justify-content: flex-start;
+  justify-content: center;
   gap: var(--bl-s2);
-  margin-left: var(--bl-s2);
-  min-width: 5.5em; /* reserve width so the row doesn't jitter as the rate changes */
+  white-space: nowrap;
 }
+/* Fixed-width slots (tabular) so the value changing each frame ("hold" → +0.50 →
+   −1.20, 0.00s → 12.34s) never resizes the readout and shoves the spin buttons. */
 .bl-scr-pos {
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-label);
   color: var(--bl-text-dim);
   font-variant-numeric: tabular-nums;
+  min-width: 4em;
+  text-align: left;
 }
 .bl-scr-rate {
   font-family: var(--bl-font-mono);
-  font-size: var(--bl-fs-display);
+  font-size: var(--bl-fs-value);
   font-weight: 600;
   color: var(--bl-accent);
   font-variant-numeric: tabular-nums;
+  min-width: 4.2em;
+  text-align: right;
 }
 .bl-scr-rate.is-hold {
   color: var(--bl-text-dim);
