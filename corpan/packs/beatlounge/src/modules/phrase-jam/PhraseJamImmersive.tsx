@@ -3,7 +3,8 @@
  * MIRRORS the Drums page. Same shape, different content (spoken phrases, not
  * drum voices) — so the two pages can't drift.
  *
- *   • HEADER — global transport (play/stop) + track volume/pan + Clear, exactly
+ *   • HEADER — global transport (play/stop) + a tiny Clear (vol/pan/mute/solo
+ *     live in the Mixer drawer now), exactly
  *     like Drums. (No Scramble, no Grooves toggle — Scatter lives in the drawer.)
  *   • TOP RIBBON — a continuous FREE SLIDE above the grid that bends the WHOLE
  *     phrase track's pitch live while you play (via host.applyParam pitchOffset).
@@ -37,7 +38,7 @@ import { bankSnippets } from "../../phrase/bank"
 import type { AudioSource } from "../../phrase/audioSource"
 import { Glyph } from "../../bl-ui"
 import { useTransport } from "../../store/transport"
-import { TrackParamKnob } from "../TrackParamKnob"
+import { ClearButton } from "../_shared/ClearButton"
 import { GroovesPanel } from "../grooves/GroovesPanel"
 import { TrackFxChain } from "../fx-rack/TrackFxChain"
 import { LaneGrid, type LaneGridLane } from "../track-studio/LaneGrid"
@@ -294,11 +295,8 @@ export const PhraseJamImmersive = ({
             <span className="bl-dot" style={{ background: ftrack.color }} />
           </div>
           <div className="bl-grid-actions">
-            <TrackParamKnob host={host} store={store} trackId={trackId} param="volume" value={ftrack.volume} />
-            <TrackParamKnob host={host} store={store} trackId={trackId} param="pan" value={ftrack.pan} />
-            <button type="button" className="bl-chip is-danger" onClick={onClear}>
-              Clear
-            </button>
+            {/* Volume/Pan/Mute/Solo live in the Mixer drawer — header keeps a tiny Clear. */}
+            <ClearButton onClear={onClear} />
           </div>
         </div>
 

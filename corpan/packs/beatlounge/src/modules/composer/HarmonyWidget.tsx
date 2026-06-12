@@ -12,7 +12,8 @@
  * Setup-don't-play: harmony edits + the snap only WRITE the doc.
  */
 
-import { useState } from "react"
+import { useRef, useState } from "react"
+import { createPortal } from "react-dom"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
@@ -31,9 +32,19 @@ export const HarmonyWidget = ({ host, store }: Props) => {
   const { trackId } = useSelectedInstrument(doc)
   const summary = harmonySummary(doc)
   const [open, setOpen] = useState(false)
+  const rootRef = useRef<HTMLDivElement | null>(null)
+
+  // The popover must escape the Stage TILE: a tile has `backdrop-filter`, which
+  // makes it the containing block for `position:fixed` — so an in-tile fixed
+  // modal would be trapped + clipped INSIDE the little tile. Portal it to the
+  // pack root (`.bl-root`, no filter/transform) so it's a true full-screen sheet.
+  const overlayRoot =
+    rootRef.current?.closest<HTMLElement>(".bl-root") ??
+    rootRef.current?.ownerDocument.body ??
+    null
 
   return (
-    <div className="bl-tile-grid bl-harmonywidget">
+    <div className="bl-tile-grid bl-harmonywidget" ref={rootRef}>
       <button
         type="button"
         className="bl-harmonywidget-open"
@@ -54,13 +65,15 @@ export const HarmonyWidget = ({ host, store }: Props) => {
         </span>
       </button>
 
-      {open && (
-        <div
-          className="bl-harmonywidget-scrim"
-          onPointerDown={(e) => {
-            if (e.target === e.currentTarget) setOpen(false)
-          }}
-        >
+      {open &&
+        overlayRoot &&
+        createPortal(
+          <div
+            className="bl-harmonywidget-scrim"
+            onPointerDown={(e) => {
+              if (e.target === e.currentTarget) setOpen(false)
+            }}
+          >
           <div
             className="bl-harmonywidget-pop"
             role="dialog"
@@ -82,8 +95,9 @@ export const HarmonyWidget = ({ host, store }: Props) => {
               <HarmonyPanel host={host} store={store} snapTrackId={trackId} />
             </div>
           </div>
-        </div>
-      )}
+          </div>,
+          overlayRoot
+        )}
     </div>
   )
 }

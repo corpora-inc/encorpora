@@ -26,6 +26,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Changed
+- **Track-editor headers stripped to a tiny Clear; toasts stream inline.** Volume,
+  Pan, Mute and Solo are gone from the Drums / Piano-roll / Phrase-jam / Pads
+  editor headers + foots — they live in the Mixer drawer, so the header carries
+  only a small icon-only Clear (shared `ClearButton`, no translated string). And
+  the floating toast — which overlapped the controls and got in the way of rapid
+  +/- density taps — now types itself out INLINE in the header next to the track
+  light (LLM-stream style, shared `HeaderStatus`), with a tiny inline Undo; it
+  never covers a control or reflows the layout. The Drums pane routes every child
+  toast (incl. the Grooves dial) through it.
+- **Grooves panel, compact on mobile.** The drum-drawer Grooves tab gives the
+  rhythm picker the scroll room: the +/- density dial is two small squared buttons
+  pinned to the bottom, ALONE — the Intensity slider and the "Plays on its natural
+  voices…" / detail copy are cut on phone (the detail returns on iPad).
+- **Even the transport play button is squared** now (the unified 8px corner) —
+  no circles except true round shapes.
+- **Home Harmony tile fixed.** Its popover used `position:fixed` but a Stage tile
+  has `backdrop-filter`, which traps fixed descendants — so the full Harmony sheet
+  rendered crammed + clipped INSIDE the little tile. It now portals to the pack
+  root, opening as a proper full-screen sheet.
 - **Squared-off rounding, unified everywhere.** Dropped the over-rounded stadium
   pills: every tappable control — chips, segmented toggles (`Lock│Free`, `3│5│8`),
   Record, command-bar buttons, scratch tool/deck/picker buttons, sampler tabs,

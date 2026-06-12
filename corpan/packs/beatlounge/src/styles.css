@@ -731,7 +731,8 @@
   min-height: var(--bl-hit);
   width: var(--bl-hit);
   height: var(--bl-hit);
-  border-radius: var(--bl-radius-pill);
+  /* squared-off, like every other control — the new standard (not a circle) */
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface-2);
   color: var(--bl-accent);
@@ -842,6 +843,15 @@
 .bl-icon-btn:focus-visible {
   outline: 2px solid var(--bl-accent);
   outline-offset: 1px;
+}
+/* the shared tiny Clear (trash) — reads destructive on hover */
+.bl-clear-btn {
+  color: var(--bl-text-dim);
+}
+.bl-clear-btn:hover:not(:disabled) {
+  color: var(--bl-error);
+  border-color: color-mix(in srgb, var(--bl-error) 55%, var(--bl-border));
+  background: color-mix(in srgb, var(--bl-error) 14%, transparent);
 }
 .bl-cmd-btn {
   color: var(--bl-accent);
@@ -977,9 +987,71 @@
   display: flex;
   align-items: center;
   gap: var(--bl-s2);
+  /* take the width so the inline status streams along the header; actions pin
+     right. min-width:0 lets the status clip instead of pushing the layout. */
+  flex: 1 1 auto;
+  min-width: 0;
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-label);
   color: var(--bl-text);
+}
+
+/* ---- the inline streaming header status (replaces the floating toast on the
+   track-editor panes — never overlaps a control, never reflows) ---- */
+.bl-hstatus {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-width: 0;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+}
+.bl-hstatus-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-hstatus-caret {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 1.05em;
+  background: var(--bl-accent);
+  box-shadow: 0 0 8px var(--bl-accent);
+  animation: bl-hstatus-blink 1s steps(2, start) infinite;
+}
+@keyframes bl-hstatus-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.bl-hstatus-undo {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bl-radius-sm);
+  background: transparent;
+  color: var(--bl-accent);
+  cursor: pointer;
+}
+.bl-hstatus-undo:hover {
+  background: color-mix(in srgb, var(--bl-accent) 16%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-hstatus-caret {
+    animation: none;
+  }
 }
 .bl-dot {
   width: 9px;

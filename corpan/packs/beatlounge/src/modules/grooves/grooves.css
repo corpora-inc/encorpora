@@ -109,10 +109,12 @@
   outline-offset: 1px;
 }
 
-/* two-pane: picker scrolls, detail is sticky on wide; stacks on phone */
+/* two-pane on wide: picker | detail. On phone: the picker FILLS + scrolls and a
+   slim density bar pins to the bottom (rows = 1fr picker, auto bar). */
 .bl-grooves-body {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: minmax(0, 1fr) auto;
   min-height: 0;
   flex: 1 1 auto;
   overflow: hidden;
@@ -120,6 +122,7 @@
 @media (min-width: 720px) {
   .bl-grooves-body {
     grid-template-columns: minmax(0, 1fr) clamp(280px, 34%, 420px);
+    grid-template-rows: 1fr;
   }
 }
 
@@ -205,6 +208,7 @@
 .bl-grooves-pcell.is-ghost { background: var(--bl-text-dim); opacity: 0.45; }
 
 /* ---- detail pane ---- */
+/* PHONE: a slim bottom bar holding just the small +/- dial (extras hidden). */
 .bl-grooves-detail {
   display: flex;
   flex-direction: column;
@@ -212,15 +216,29 @@
   min-width: 0;
   border-top: 1px solid var(--bl-border);
   background: var(--bl-surface);
-  padding: var(--bl-s4);
-  padding-bottom: calc(var(--bl-s4) + var(--bl-safe-bottom, 0));
-  gap: var(--bl-s3);
-  overflow: auto;
+  padding: var(--bl-s2) var(--bl-s4);
+  padding-bottom: calc(var(--bl-s2) + var(--bl-safe-bottom, 0));
+  gap: var(--bl-s2);
+  flex: 0 0 auto;
+}
+/* the secondary detail/preview — gone on phone (the picker gets the room), back
+   on iPad where the detail pane has space. */
+.bl-grooves-extras {
+  display: none;
+  flex-direction: column;
+  gap: var(--bl-s2);
 }
 @media (min-width: 720px) {
   .bl-grooves-detail {
     border-top: none;
     border-left: 1px solid var(--bl-border);
+    padding: var(--bl-s4);
+    padding-bottom: calc(var(--bl-s4) + var(--bl-safe-bottom, 0));
+    gap: var(--bl-s3);
+    overflow: auto;
+  }
+  .bl-grooves-extras {
+    display: flex;
   }
 }
 .bl-grooves-detail-inner {
@@ -425,40 +443,22 @@
 /* ---- the +/− DENSITY DIAL (replaces the Scatter buttons) ----
  * Compact, icon-forward, minimal copy: "−" sparser, "+" denser. Pinned to the
  * top of the detail pane (no scroll), generous ≥44px round hit targets. */
+/* small +/- buttons, by themselves, centred — a tidy two-button cluster. */
 .bl-grooves-dial {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: var(--bl-s2);
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: var(--bl-surface);
-  padding-bottom: var(--bl-s2);
-  /* Don't stretch the dial across a wide pane — keep the +/− a tidy cluster,
-   * centred, so it reads as one control instead of two far-flung buttons. */
-  width: 100%;
-  max-width: 320px;
-  margin-inline: auto;
-  box-sizing: border-box;
-}
-.bl-grooves-dial-label {
-  font-size: var(--bl-fs-label);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--bl-text-dim);
-  text-align: center;
-  user-select: none;
+  gap: var(--bl-s3);
+  flex: 0 0 auto;
 }
 .bl-grooves-dial-btn {
-  justify-self: stretch;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  min-width: 48px;
-  padding: 0 var(--bl-s3);
-  border-radius: var(--bl-radius, 12px);
+  min-height: 40px;
+  min-width: 64px;
+  padding: 0 var(--bl-s4);
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface-2, var(--bl-surface));
   color: var(--bl-text);

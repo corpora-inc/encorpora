@@ -29,7 +29,7 @@ import {
 import { stepForTick, tickForStep } from "../../model/timing"
 import { activePitches } from "../../music/resolver"
 import { Glyph, Knob } from "../../bl-ui"
-import { TrackParamKnob } from "../TrackParamKnob"
+import { ClearButton } from "../_shared/ClearButton"
 import { TrackNameEdit } from "../TrackNameEdit"
 import { newInstrumentTrackInit } from "../instruments/addTrack"
 import {
@@ -241,10 +241,8 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
             color={track.color}
             className="bl-grid-title"
           />
-          <button
-            type="button"
-            className="bl-chip is-danger"
-            onClick={() => {
+          <ClearButton
+            onClear={() => {
               const before = store.vanilla.getState().doc
               const r = runAction(store, clearAction, { doc, targetTrackId: trackId })
               if (r.commands.length) {
@@ -254,9 +252,7 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
                 })
               }
             }}
-          >
-            Clear
-          </button>
+          />
         </div>
       </div>
 
@@ -356,8 +352,6 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
         ) : (
           <span className="bl-roll-hint">Long-press a note to set velocity</span>
         )}
-        <TrackParamKnob host={host} store={store} trackId={trackId} param="volume" value={track.volume} />
-        <TrackParamKnob host={host} store={store} trackId={trackId} param="pan" value={track.pan} />
       </div>
     </div>
   )

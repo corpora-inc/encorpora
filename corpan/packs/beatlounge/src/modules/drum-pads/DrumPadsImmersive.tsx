@@ -17,7 +17,7 @@ import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
 import { useBeatloungeStore } from "../../store/store"
 import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
-import { TrackParamKnob } from "../TrackParamKnob"
+import { ClearButton } from "../_shared/ClearButton"
 import { DrumPadBank } from "./DrumPadBank"
 import { randomPatternAction } from "./actions"
 import { runAction } from "../runAction"
@@ -55,10 +55,8 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
           >
             Randomize
           </button>
-          <button
-            type="button"
-            className="bl-chip is-danger"
-            onClick={() => {
+          <ClearButton
+            onClear={() => {
               const before = store.vanilla.getState().doc
               if (isInstrumentTrack(track) && track.notes.length === 0) return
               store.dispatch({ t: "clearTrack", trackId })
@@ -66,18 +64,11 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
                 undo: () => store.vanilla.getState().doc !== before && store.undo(),
               })
             }}
-          >
-            Clear
-          </button>
+          />
         </div>
       </div>
 
       <DrumPadBank host={host} store={store} audio={audio} trackId={trackId} />
-
-      <div className="bl-grid-foot" data-bl-nocapture>
-        <TrackParamKnob host={host} store={store} trackId={trackId} param="volume" value={track.volume} />
-        <TrackParamKnob host={host} store={store} trackId={trackId} param="pan" value={track.pan} />
-      </div>
     </div>
   )
 }

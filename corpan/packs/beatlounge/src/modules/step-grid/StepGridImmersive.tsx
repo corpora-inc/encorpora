@@ -30,8 +30,12 @@ import {
   type InstrumentTrack,
 } from "../../model/document"
 import { stepForTick, tickForStep } from "../../model/timing"
-import { MuteSolo } from "../../bl-ui"
-import { TrackParamKnob } from "../TrackParamKnob"
+import { ClearButton } from "../_shared/ClearButton"
+import {
+  HeaderStatusLine,
+  useHeaderStatus,
+  withHeaderToast,
+} from "../_shared/HeaderStatus"
 import { GroovesPanel } from "../grooves/GroovesPanel"
 import { DrumPadBank } from "../drum-pads/DrumPadBank"
 import "../drum-pads/styles.css"
@@ -60,6 +64,15 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
   const [drawer, setDrawer] = useState<DrawerState>("open")
   // Lane-head selection (kit pitches). Local UI only — drives groove targeting.
   const [selected, setSelected] = useState<ReadonlySet<string>>(new Set())
+
+  // Inline streaming status: this pane's toasts type out in the header (next to
+  // the track light) instead of floating over the controls. `localHost` routes
+  // EVERY child toast (incl. the embedded Grooves +/- dial) into it.
+  const status = useHeaderStatus()
+  const localHost = useMemo(
+    () => withHeaderToast(host, status.notify),
+    [host, status.notify]
+  )
 
   // Live playhead → current step on this track's grid.
   useEffect(() => {
@@ -143,7 +156,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
     const before = store.vanilla.getState().doc
     const r = runAction(store, clearAction, { doc, targetTrackId: trackId })
     if (r.commands.length) {
-      host.toast(r.summary, {
+      localHost.toast(r.summary, {
         undo: () => store.vanilla.getState().doc !== before && store.undo(),
       })
     }
@@ -161,7 +174,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
       render: () => (
         <GroovesPanel
           store={store}
-          host={host}
+          host={localHost}
           variant="embedded"
           target={{
             kind: "drums",
@@ -177,7 +190,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
       label: "Pads",
       render: () => (
         <div className="bl-trackdrawer-pad">
-          <DrumPadBank host={host} store={store} audio={audio} trackId={trackId} />
+          <DrumPadBank host={localHost} store={store} audio={audio} trackId={trackId} />
         </div>
       ),
     },
@@ -186,21 +199,21 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
       label: "Kit",
       render: () => (
         <div className="bl-trackdrawer-pad">
-          <KitPicker host={host} store={store} trackId={trackId} />
+          <KitPicker host={localHost} store={store} trackId={trackId} />
         </div>
       ),
     },
     {
       id: "fx",
       label: "Effects",
-      render: () => <TrackFxChain host={host} store={store} trackId={trackId} />,
+      render: () => <TrackFxChain host={localHost} store={store} trackId={trackId} />,
     },
     {
       id: "mixer",
       label: "Mixer",
       render: () => (
         <TrackMixer
-          host={host}
+          host={localHost}
           store={store}
           track={itrack}
           anySolo={anySolo}
@@ -216,15 +229,15 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
       <section className="bl-drums-grid bl-trackpage-grid bl-grid">
         <div className="bl-grid-toolbar" data-bl-nocapture>
           <div className="bl-grid-title">
-            {/* Transport lives once, globally, in the immersive header / Dock-Rail. */}
+            {/* Transport lives once, globally, in the immersive header / Dock-Rail.
+                Toasts stream INLINE here, by the track light — never over the controls. */}
             <span className="bl-dot" style={{ background: track.color }} />
+            <HeaderStatusLine ctl={status} />
           </div>
           <div className="bl-grid-actions">
-            <TrackParamKnob host={host} store={store} trackId={trackId} param="volume" value={track.volume} />
-            <TrackParamKnob host={host} store={store} trackId={trackId} param="pan" value={track.pan} />
-            <button type="button" className="bl-chip is-danger" onClick={clearGrid}>
-              Clear
-            </button>
+            {/* Volume/Pan/Mute/Solo all live in the Mixer drawer — the editor
+                header carries only a tiny Clear. */}
+            <ClearButton onClear={clearGrid} />
           </div>
         </div>
 
@@ -242,18 +255,6 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
           />
         </div>
 
-        <div className="bl-grid-foot" data-bl-nocapture>
-          <MuteSolo
-            mute={track.mute}
-            solo={track.solo}
-            onMute={() =>
-              store.dispatch({ t: "setTrackProp", trackId, prop: "mute", value: !track.mute })
-            }
-            onSolo={() =>
-              store.dispatch({ t: "setTrackProp", trackId, prop: "solo", value: !track.solo })
-            }
-          />
-        </div>
       </section>
 
       {/* ---- the PIPELINE DRAWER (Grooves / Kit / Effects / Mixer) ---- */}

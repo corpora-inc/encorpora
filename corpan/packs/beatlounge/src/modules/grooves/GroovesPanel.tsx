@@ -89,7 +89,9 @@ export const GroovesPanel = ({
   // The SHARED selected groove — same id the home Drums widget + the Drums pane
   // use, so picking a groove here reflects everywhere (and vice-versa).
   const { rhythmId: selectedId, select: setSelectedId } = useSelectedGroove()
-  const [intensity, setIntensity] = useState(1)
+  // Intensity (velocity spread) is fixed at full now — the slider was cut as
+  // clutter; the +/- density dial is the one knob.
+  const intensity = 1
   // Generator density level for the DRUMS dial (each + raises it; − lowers, to 0).
   const [level, setLevel] = useState(0)
 
@@ -201,12 +203,12 @@ export const GroovesPanel = ({
           ))}
         </div>
 
-        {/* ---- the selected-rhythm detail + actions ----
-            ACTIONS FIRST so the primary Scatter never needs a scroll. */}
+        {/* ---- a slim density bar pinned to the bottom: just the small +/− ----
+            "−" thins the targeted rows (down to nothing), "+" lays a fuller
+            probabilistic beat. No label, no intensity, no explainer copy — small
+            buttons, by themselves, so the picker above gets the scroll room. The
+            rhythm detail returns on iPad (the extras block). */}
         <aside className="bl-grooves-detail" aria-live="polite">
-          {/* THE +/− DENSITY DIAL — granular: "−" thins the targeted rows
-              (sparser, down to nothing), "+" lays one more probabilistic layer
-              (denser). Icon-forward, minimal copy. */}
           <div
             className="bl-grooves-dial"
             data-bl-nocapture
@@ -224,13 +226,9 @@ export const GroovesPanel = ({
               disabled={applyDisabled}
               aria-disabled={applyDisabled}
               aria-label="Sparser"
-              title="Sparser — a new, thinner beat (down to empty)"
             >
               <MinusGlyph />
             </button>
-            <span className="bl-grooves-dial-label" aria-hidden="true">
-              Density
-            </span>
             <button
               type="button"
               className="bl-grooves-dial-btn is-primary"
@@ -238,48 +236,23 @@ export const GroovesPanel = ({
               disabled={applyDisabled}
               aria-disabled={applyDisabled}
               aria-label="Denser"
-              title={
-                target.kind === "phrases"
-                  ? "Denser — lay a few more phrases on the groove"
-                  : "Denser — generate a fresh, fuller beat across the kit"
-              }
             >
               <PlusGlyph />
             </button>
           </div>
 
-          {/* Context-appropriate "scattering across…" hint — drums: rows;
-              phrases: the bank/track readiness. */}
-          {target.kind === "drums" ? (
-            <DrumTargetHint
-              pitches={target.selectedPitches}
-              labels={target.laneLabels}
-            />
-          ) : (
-            <PhraseTargetHint
-              ready={phrasesReady}
-              hasPhraseTrack={hasPhraseTrack}
-              bankCount={bankCount}
-            />
-          )}
-
-          <div className="bl-grooves-options" data-bl-nocapture>
-            <label className="bl-grooves-opt">
-              <span className="bl-grooves-opt-label">Intensity</span>
-              <input
-                type="range"
-                min={0.2}
-                max={1}
-                step={0.05}
-                value={intensity}
-                aria-label="Intensity"
-                onChange={(e) => setIntensity(Number(e.target.value))}
+          {/* Secondary — collapses on mobile (the dial is enough there), returns on
+              iPad. Phrases keep their readiness note (it gates Apply). */}
+          <div className="bl-grooves-extras">
+            {target.kind === "phrases" && (
+              <PhraseTargetHint
+                ready={phrasesReady}
+                hasPhraseTrack={hasPhraseTrack}
+                bankCount={bankCount}
               />
-              <span className="bl-grooves-opt-val">{Math.round(intensity * 100)}%</span>
-            </label>
+            )}
+            <RhythmDetail rhythm={selected} />
           </div>
-
-          <RhythmDetail rhythm={selected} />
         </aside>
       </div>
     </div>
@@ -303,38 +276,6 @@ const PlusGlyph = () => (
 )
 
 // ---------------------------------------------------------------- sub-views
-/**
- * DRUMS context — the "scattering across…" hint surfaces the live row selection
- * so the user knows where the groove will land before they press. With no rows
- * selected the groove plays on its natural kit voices. (Only drums renders this.)
- */
-const DrumTargetHint = ({
-  pitches,
-  labels,
-}: {
-  pitches?: number[]
-  labels?: string[]
-}) => {
-  const n = pitches?.length ?? 0
-  if (n === 0) {
-    // No selection → the groove on its natural kit voices. Only shown when the
-    // host passes lane labels (the drum page); the standalone module passes none.
-    if (labels === undefined) return null
-    return (
-      <p className="bl-grooves-target is-none" role="note">
-        Plays on its <strong>natural voices</strong>. Select rows to build the
-        groove across them.
-      </p>
-    )
-  }
-  const names = (labels ?? []).join(", ")
-  return (
-    <p className="bl-grooves-target is-on" role="note">
-      <strong>{n}</strong> row{n === 1 ? "" : "s"}: {names}.
-    </p>
-  )
-}
-
 /**
  * PHRASES context — the hint tells the user the groove will lay their SAVED bank
  * snippets onto its onsets, and (when the bank/track isn't ready) why Apply is
