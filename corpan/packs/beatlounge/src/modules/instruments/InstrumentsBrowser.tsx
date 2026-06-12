@@ -256,7 +256,6 @@ export const InstrumentsBrowser = ({
               >
                 <span className="bl-instr-prog-text">
                   <span className="bl-instr-prog-name">{OSC_LABEL[w]}</span>
-                  <span className="bl-instr-prog-desc">Bare oscillator — shape it yourself.</span>
                 </span>
               </button>
             )

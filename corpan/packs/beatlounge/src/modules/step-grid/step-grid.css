@@ -32,7 +32,7 @@
   min-height: var(--bl-hit, 44px);
   padding: 0 var(--bl-s5);
   border: 1px solid var(--bl-accent);
-  border-radius: var(--bl-radius-pill, 999px);
+  border-radius: var(--bl-radius-sm);
   background: color-mix(in srgb, var(--bl-accent) 16%, transparent);
   color: var(--bl-accent);
   font: 600 var(--bl-fs-body) var(--bl-font);

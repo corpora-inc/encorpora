@@ -35,7 +35,7 @@
   gap: var(--bl-s2);
   min-height: var(--bl-hit);
   padding: 0 var(--bl-s4);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
   color: var(--bl-text-dim);
@@ -61,7 +61,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   background: var(--bl-accent);
   color: var(--bl-bg);
   font-size: var(--bl-fs-micro);
@@ -109,7 +109,7 @@
   padding: 0 var(--bl-s3);
   background: var(--bl-surface);
   border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   color: var(--bl-text-dim);
 }
 .bl-disc-searchicon {
@@ -139,7 +139,7 @@
   cursor: pointer;
   width: 28px;
   height: 28px;
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
 }
 .bl-disc-clear:hover {
   color: var(--bl-text);
@@ -151,7 +151,7 @@
   gap: var(--bl-s2);
   min-height: var(--bl-hit);
   padding: 0 var(--bl-s4);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
   color: var(--bl-text);
@@ -531,7 +531,7 @@
   display: flex;
   align-items: stretch;
   border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   background: var(--bl-surface-2);
   overflow: hidden;
   max-width: 100%;

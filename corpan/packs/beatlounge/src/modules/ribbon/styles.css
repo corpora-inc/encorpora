@@ -45,7 +45,8 @@
 .bl-seg {
   display: inline-flex;
   border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius-pill);
+  /* squared-off aesthetic — segmented control, not a rounded pill */
+  border-radius: var(--bl-radius-sm);
   overflow: hidden;
   background: var(--bl-surface);
 }

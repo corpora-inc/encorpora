@@ -61,7 +61,7 @@
   gap: var(--bl-s2);
   min-height: var(--bl-hit);
   padding: 0 var(--bl-s3);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
   color: var(--bl-text);
@@ -112,7 +112,7 @@
   min-height: var(--bl-hit);
   max-width: 60vw;
   padding: 0 var(--bl-s3);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
   color: var(--bl-text);
@@ -662,7 +662,7 @@
 .bl-scrphrase-aim-btn {
   min-height: 32px;
   padding: 0 var(--bl-s3);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
   color: var(--bl-text-dim);
@@ -696,7 +696,7 @@
   gap: var(--bl-s2);
   min-height: var(--bl-hit);
   padding: 0 var(--bl-s5);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
   color: var(--bl-text);

@@ -96,7 +96,7 @@
   flex: 1 1 160px;
   max-width: 320px;
   padding: 0 var(--bl-s3);
-  border-radius: var(--bl-radius-pill, var(--bl-radius));
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
   color: var(--bl-text);
@@ -244,7 +244,7 @@
   font-family: var(--bl-font-mono);
   color: var(--bl-text-dim);
   border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius-pill, 999px);
+  border-radius: var(--bl-radius-sm);
   padding: 1px var(--bl-s2);
 }
 .bl-grooves-detail-blurb {

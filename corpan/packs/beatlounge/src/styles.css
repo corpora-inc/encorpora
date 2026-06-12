@@ -997,7 +997,8 @@
   -webkit-appearance: none;
   min-height: 36px;
   padding: 0 var(--bl-s3);
-  border-radius: var(--bl-radius-pill);
+  /* squared-off aesthetic — not a fully-rounded pill */
+  border-radius: var(--bl-radius-sm);
   border: 1px solid var(--bl-border);
   background: var(--bl-surface-2);
   color: var(--bl-text);
@@ -1351,7 +1352,7 @@
   padding: var(--bl-s3) var(--bl-s4);
   background: var(--bl-surface-2);
   border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   backdrop-filter: blur(14px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
   animation: bl-toast-in var(--bl-dur) var(--bl-ease);

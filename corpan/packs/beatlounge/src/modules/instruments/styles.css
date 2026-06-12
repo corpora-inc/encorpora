@@ -390,8 +390,11 @@
   min-height: 0;
 }
 /* the family banks line up on ONE row and scroll horizontally, so they never
-   wrap into several rows eating the drawer's vertical space. */
+   wrap into several rows eating the drawer's vertical space. flex:0 0 auto pins
+   the row's height — without it, `overflow` zeroes the flex auto-min-size and the
+   sibling program grid shrinks the rail to nothing (invisible pills). */
 .bl-instr-families {
+  flex: 0 0 auto;
   display: flex;
   flex-wrap: nowrap;
   gap: var(--bl-s2);

@@ -130,7 +130,7 @@
   color: var(--bl-text-dim);
   padding: 0 5px;
   border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
 }
 .bl-lane-cells {
   display: grid;

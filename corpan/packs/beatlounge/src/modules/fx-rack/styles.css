@@ -37,7 +37,7 @@
   letter-spacing: 0.04em;
   color: var(--bl-bg);
   background: var(--bl-accent);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   padding: 4px 9px;
   white-space: nowrap;
 }

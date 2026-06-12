@@ -26,6 +26,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Changed
+- **Squared-off rounding, unified everywhere.** Dropped the over-rounded stadium
+  pills: every tappable control — chips, segmented toggles (`Lock│Free`, `3│5│8`),
+  Record, command-bar buttons, scratch tool/deck/picker buttons, sampler tabs,
+  grooves/song tags, the piano-roll + drums add buttons — now shares ONE 8px
+  squared corner (the iOS "continuous corner" feel). Only genuinely-round things
+  stay round: the circular transport play button, slider tracks/thumbs, the
+  scratch needle/cut bars, fader tracks, grip handles, and tiny circular × remove
+  buttons. The Voice drawer's Raw bank drops the repeated "Bare oscillator — shape
+  it yourself." line under every wave (the name says it).
 - **Instruments header compacted to 3 tidy rows.** The detail-page chrome was
   eating the ribbon's space (harmony, a wrapping chip-row of voices, a full-width
   Record row, plus the ribbon's own controls). Now: row 1 = the harmony summary

@@ -40,7 +40,7 @@
   min-height: 36px;
   padding: 0 var(--bl-s3);
   border: 1px dashed var(--bl-border);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-sm);
   background: transparent;
   color: var(--bl-text-dim);
   font: inherit;
