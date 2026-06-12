@@ -157,6 +157,15 @@ export interface BeatloungeModule {
    * the shell adds its consistent expand. Has no effect on non-interactive tiles.
    */
   tileOwnsExpand?: boolean
+  /**
+   * When true the module is NOT laid out as a Stage tile — it stays fully
+   * registered (its `actions` are indexed by the command bus / LLM, and it can
+   * be opened with `host.enterImmersive(id)`) but has no home-screen presence.
+   * For modules whose ENTRY lives in the nav / command surface rather than on
+   * the Stage (e.g. Scenes, reached from the Dock-Rail). Omitted/false ⇒ today's
+   * behaviour (the module gets a Stage tile).
+   */
+  hideOnStage?: boolean
   mount(mount: ModuleMount): ModuleInstance
   /** LLM-callable action registry; the command bus indexes all of them. */
   actions: ReadonlyArray<ModuleAction>
