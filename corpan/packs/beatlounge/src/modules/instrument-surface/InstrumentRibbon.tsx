@@ -89,7 +89,13 @@ interface Touch {
   midi: number
   /** The last grid step this finger recorded into (per-pointer dedupe). */
   lastRecordedStep: number
+  /** The finger's current x (0..1) — drives its own lit marker. */
+  x: number
 }
+
+/** How many simultaneous lit markers the surface can show (one per finger). A
+ *  fixed pool so we never allocate / re-render per frame; 10 covers every hand. */
+const MARKER_POOL = 10
 
 export const InstrumentRibbon = ({
   host,
@@ -125,6 +131,9 @@ export const InstrumentRibbon = ({
       : harmony.scale.id.split(".").pop()?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "scale"
 
   const surfaceRef = useRef<HTMLDivElement | null>(null)
+  // The fixed pool of per-finger lit markers (positioned directly via the DOM,
+  // never via React state, so multitouch lighting stays 60fps).
+  const markerRefs = useRef<(HTMLSpanElement | null)[]>([])
   // Per-pointer live voices — POLYPHONY (ported from PlaySurface's touch map).
   const touches = useRef<Map<number, Touch>>(new Map())
   // Latest control values for the pointer closures (avoid stale captures @60fps).
@@ -157,6 +166,7 @@ export const InstrumentRibbon = ({
     return () => {
       for (const t of map.values()) t.handle?.release()
       map.clear()
+      for (const node of markerRefs.current) if (node) node.style.opacity = "0"
     }
   }, [trackId])
 
@@ -192,13 +202,32 @@ export const InstrumentRibbon = ({
     return clamp01(1 - (clientY - r.top) / Math.max(1, r.height))
   }
 
-  /** Paint the comet + active glow via CSS vars (no React re-render per frame). */
+  /** Paint the PRIMARY comet + beam via CSS vars (no React re-render per frame).
+   *  The primary finger keeps the rich comet/glow; every finger ALSO gets its own
+   *  lit marker via `paintMarkers`. */
   const paint = (x: number, expr: number) => {
     const el = surfaceRef.current
     if (!el) return
     el.style.setProperty("--bl-ribbon-x", `${x * 100}%`)
     el.style.setProperty("--bl-ribbon-y", `${(1 - expr) * 100}%`)
     el.style.setProperty("--bl-ribbon-on", "1")
+  }
+
+  /** Light EVERY currently-held note: one marker per active pointer, positioned
+   *  straight on the DOM pool node (no React churn). Unused pool slots hide. */
+  const paintMarkers = () => {
+    const xs: number[] = []
+    for (const t of touches.current.values()) xs.push(t.x)
+    for (let i = 0; i < MARKER_POOL; i++) {
+      const node = markerRefs.current[i]
+      if (!node) continue
+      if (i < xs.length) {
+        node.style.left = `${xs[i] * 100}%`
+        node.style.opacity = "1"
+      } else if (node.style.opacity !== "0") {
+        node.style.opacity = "0"
+      }
+    }
   }
 
   /** Drive the bound instrument's brightness from vertical expression. Only
@@ -264,9 +293,10 @@ export const InstrumentRibbon = ({
     // Soundfont/sampler fallback: no live pool → a stepped one-shot per crossing.
     if (!handle) host.previewTrack(trackId, 0.9, Math.round(midi))
     applyExpression(expr)
-    const t: Touch = { handle, midi, lastRecordedStep: -1 }
+    const t: Touch = { handle, midi, lastRecordedStep: -1, x }
     touches.current.set(e.pointerId, t)
     paint(x, expr)
+    paintMarkers()
     setPlaying(true)
     setLiveLabel(noteLabel(midi))
     recordIntoTrack(t, midi)
@@ -280,6 +310,7 @@ export const InstrumentRibbon = ({
     const expr = exprFromEvent(e.clientY)
     const midi = resolveMidi(x)
     applyExpression(expr)
+    t.x = x
     // Only act when the resolved pitch actually moved (in-key snapping resolves
     // many micro-moves to the same note → no needless bends / previews).
     if (midi !== t.midi) {
@@ -291,6 +322,7 @@ export const InstrumentRibbon = ({
       if (crossed) recordIntoTrack(t, midi)
     }
     paint(x, expr)
+    paintMarkers()
   }
 
   const endPointer = (e: React.PointerEvent) => {
@@ -298,6 +330,7 @@ export const InstrumentRibbon = ({
     if (!t) return
     t.handle?.release()
     touches.current.delete(e.pointerId)
+    paintMarkers()
     if (touches.current.size === 0) {
       setPlaying(false)
       const el = surfaceRef.current
@@ -448,9 +481,22 @@ export const InstrumentRibbon = ({
             </span>
           ))}
         </div>
-        {/* finger comet + active column glow */}
+        {/* finger comet + active column glow (the PRIMARY finger) */}
         <span className="bl-ribbon-comet" aria-hidden="true" />
         <span className="bl-ribbon-beam" aria-hidden="true" />
+        {/* one lit marker per active pointer — multitouch lights ALL held notes */}
+        <div className="bl-ribbon-marks" aria-hidden="true">
+          {Array.from({ length: MARKER_POOL }, (_, i) => (
+            <span
+              key={i}
+              ref={(n) => {
+                markerRefs.current[i] = n
+              }}
+              className="bl-ribbon-mark"
+              style={{ opacity: 0 }}
+            />
+          ))}
+        </div>
         {liveLabel && playing && (
           <span className="bl-ribbon-readout" aria-hidden="true">
             {liveLabel}

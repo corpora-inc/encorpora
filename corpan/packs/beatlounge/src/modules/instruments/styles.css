@@ -145,17 +145,21 @@
   padding: 0;
 }
 
-/* voice-type segment (Analog / Preset / Osc) */
-.bl-instr-voicetype {
+/* on-demand analog "Shape this voice" disclosure (inside the Voice tab) */
+.bl-instr-tweak {
   display: flex;
-  justify-content: center;
-  flex: 0 0 auto;
+  flex-direction: column;
+  gap: var(--bl-s2);
 }
-
-/* the raw-oscillator chooser (Osc voice type, in the Voice drawer tab) */
-.bl-instr-osc {
-  display: flex;
-  padding: var(--bl-s2);
+.bl-instr-tweak-toggle {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+}
+.bl-instr-tweak-caret {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
 }
 
 /* the reserved score-editor seam (WS-F fills it) */
@@ -360,10 +364,17 @@
   right: 0;
   max-height: min(70vh, 30rem);
   overflow: hidden auto;
-  background: var(--bl-surface);
-  border: 1px solid var(--bl-border);
+  padding: var(--bl-s2);
+  /* SOLID premium surface: an opaque base (--bl-bg) under the tinted surface so
+     the popover never reads see-through (the raw tokens carry alpha). */
+  background:
+    linear-gradient(var(--bl-surface), var(--bl-surface)),
+    linear-gradient(180deg, var(--bl-surface-2), var(--bl-bg));
+  border: 1px solid color-mix(in srgb, var(--bl-accent) 22%, var(--bl-border));
   border-radius: var(--bl-radius);
-  box-shadow: 0 12px 32px color-mix(in srgb, black 55%, transparent);
+  box-shadow:
+    0 18px 48px color-mix(in srgb, black 70%, transparent),
+    0 2px 8px color-mix(in srgb, black 50%, transparent);
 }
 /* the embedded harmony bar flows to content height inside the popover */
 .bl-instr-harmony-pop > .bl-hb {
