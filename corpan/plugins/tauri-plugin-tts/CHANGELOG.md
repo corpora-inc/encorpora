@@ -9,6 +9,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-12 — synthesize-to-buffer (Corpán 0.18.0)
+
 ### Added
 - `synthesize_to_buffer` command: render TTS to a RAW AUDIO buffer WITHOUT
   speaker playback, so a music pack can play captured speech through its own
