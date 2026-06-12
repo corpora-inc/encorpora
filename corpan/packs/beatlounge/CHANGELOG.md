@@ -46,6 +46,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   fragments. The UI shows what to do by how it looks, not by a sentence to read.
 
 ### Performance
+- **No more first-entry scratch hitch.** The scratch AudioWorklet compiles once per
+  audio session; it used to do that the first time you grabbed the platter, hitching
+  the running beat. It now warms the instant you open the Scratch pane — overlapping
+  the first snippet's decode and finishing before you scratch — so the beat stays put.
 - **The scratch platter spins at 60fps without re-rendering React.** The turntable's
   rotation now writes its CSS variable straight to the disc each frame instead of
   pushing React state every frame (which re-rendered the whole platter + every word

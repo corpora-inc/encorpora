@@ -31,7 +31,7 @@ import type { AudioSource } from "../../phrase/audioSource"
 import { decodeFragmentBytes } from "../../phrase/decode"
 import { Glyph, prefersReducedMotion } from "../../bl-ui"
 import { ensureAudio } from "../../engine/ensureAudio"
-import { createScratchDeck, type ScratchDeck } from "./scratchEngine"
+import { createScratchDeck, ensureWorkletModule, type ScratchDeck } from "./scratchEngine"
 import { padBufferToRevolution } from "./scratchPad"
 import { resolveWordSpans } from "./wordTiming"
 import { createLoadToken } from "./loadToken"
@@ -220,6 +220,15 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       fxBusRef.current = null
     }
   }, [])
+
+  // Warm the scratch AudioWorklet module the instant you enter the pane, so its
+  // one-time per-AudioContext compile happens NOW — overlapping the first snippet's
+  // decode and finishing well before your first scratch — instead of hitching the
+  // running beat the first time you grab the platter. Idempotent; no-op after the
+  // first load. This is the "first-entry glitch" fix.
+  useEffect(() => {
+    void ensureWorkletModule(host.audioContext())
+  }, [host])
 
   // Persist the master chain on every change so it's there next time (restored on
   // mount via loadScratchChain). Plain config — the live nodes rebuild from it.
