@@ -200,15 +200,21 @@
   display: grid;
 }
 
-/* Phone: Stage fills, Rail is a bottom bar. */
+/* Phone: Stage fills, Rail is a bottom bar. The single column MUST be
+   minmax(0, 1fr): without an explicit column, grid-template-areas creates an
+   `auto` column that sizes to the tiles' MAX-content and pushes the stage WIDER
+   than the viewport (the right-overflow bug — the stage measured 514px in a 390px
+   phone). minmax(0,1fr) constrains it to the viewport so the stage clips/shrinks. */
 .bl-shell {
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 1fr auto;
   grid-template-areas: "stage" "rail";
 }
-/* Tablet / desktop: Rail becomes a left column. */
+/* Tablet / desktop: Rail becomes a left column. The stage column is minmax(0,1fr)
+   (not a bare 1fr) for the same reason — it must shrink below tile content. */
 @media (min-width: 600px) {
   .bl-shell {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto minmax(0, 1fr);
     grid-template-rows: 1fr;
     grid-template-areas: "rail stage";
   }
@@ -718,6 +724,43 @@
   padding: var(--bl-s3) calc(var(--bl-safe-right) + var(--bl-s4)) calc(var(--bl-safe-bottom) + var(--bl-s3))
     calc(var(--bl-safe-left) + var(--bl-s4));
   border-width: 1px 0 0 0;
+}
+/* Slim phones: the horizontal rail's transport + undo/redo + scenes + command
+   must fit the viewport. Drop the discretionary master meter (it stays on the
+   vertical desktop rail), tighten the gap, and — as a hard safety so the rail can
+   NEVER push the page right — let it scroll horizontally within itself. */
+@media (max-width: 460px) {
+  .bl-rail--horizontal {
+    gap: var(--bl-s2);
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .bl-rail--horizontal::-webkit-scrollbar {
+    display: none;
+  }
+  .bl-rail--horizontal .bl-meter {
+    display: none;
+  }
+}
+/* Tighter still on small phones (≤400px): smaller (still ≥40px) buttons, a tighter
+   gutter, and the BPM number without its "BPM" unit — so all controls fit ~360px
+   without scrolling. */
+@media (max-width: 400px) {
+  .bl-rail--horizontal {
+    gap: var(--bl-s1);
+    padding-left: calc(var(--bl-safe-left) + var(--bl-s2));
+    padding-right: calc(var(--bl-safe-right) + var(--bl-s2));
+  }
+  .bl-rail--horizontal .bl-icon-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .bl-rail--horizontal .bl-bpm-unit {
+    display: none;
+  }
 }
 .bl-rail--vertical {
   flex-direction: column;

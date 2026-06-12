@@ -26,12 +26,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Fixed
-- **Home stops overflowing right on slim phones.** The Stage bento column was a
-  bare `1fr` (= `minmax(auto, 1fr)`); WebKit (iOS WKWebView) sized the `auto` floor
-  from a tile's intrinsic content — the 16-column Drums mini-grid — pushing the grid
-  wider than a ~320–390px viewport. Switched the stage column AND the mini-grid (and
-  the composer/pads tile grids) to `minmax(0, 1fr)` + `min-width: 0`, so columns
-  shrink to share the width instead of forcing an overflow.
+- **Home stops overflowing right on slim phones.** Root cause (found by driving the
+  REAL pack at a true 390px viewport over CDP — the Stage measured 514px): the SHELL
+  grid used `grid-template-areas` with NO explicit columns, so the stage column was
+  `auto` and sized to the tiles' MAX-content, pushing the stage wider than the
+  viewport (then `.bl-root`'s `overflow:hidden` just CLIPPED the right of the panels).
+  Fixed by giving the shell `grid-template-columns: minmax(0,1fr)` (phone) /
+  `auto minmax(0,1fr)` (desktop), and the bento + mini-grids `minmax(0,1fr)` +
+  `min-width:0`, so columns shrink to the viewport. Also fit the bottom Dock-Rail on
+  slim phones (drop the master meter <460px, smaller buttons + no "BPM" unit <400px,
+  rail scrolls within itself as a hard safety). Verified zero overflow at 320/360/390.
 - **No groove rejects a drum row — "+" always adds if there's space.** The
   generator could leave a selected "off-groove" row at zero probability, so "+"
   said "no room" / nothing happened. Now every (row, step) keeps a small non-zero
