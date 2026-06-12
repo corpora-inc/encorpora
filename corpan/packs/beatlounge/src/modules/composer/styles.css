@@ -98,8 +98,22 @@
   flex-direction: column;
   gap: var(--bl-s2);
 }
+/* The 4 scale systems (Western · Thaat · Melakarta · Maqam) don't fit one phone
+   row — "Melakarta" is long. Keep the segmented control on ONE line and scroll it
+   horizontally instead of wrapping into a broken two-line block. */
 .bl-hb-fam {
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.bl-hb-fam::-webkit-scrollbar {
+  display: none;
+}
+.bl-hb-fam .bl-seg-btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 .bl-hb-micro {
   align-self: flex-start;

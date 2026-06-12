@@ -13,6 +13,9 @@ generative drum density dial, phrase jam/scratch, the mixer + FX rack, and the
 squared-off, compact-mobile design standard. Everything below ships in 0.1.0._
 
 ### Fixed (on-device Android polish)
+- **Harmony scale-system selector no longer wraps funny.** Western/Thaat/Melakarta/
+  Maqam overflowed the phone row and wrapped the segmented control into a broken
+  two-line block; it's now one horizontally-scrolling row.
 - **No OS text-selection / copy-paste callout while jamming.** A long-press on the
   ribbon (or anywhere) could pop the system selection menu — the root's
   `user-select: none` was missing the `-webkit-` prefixes WebKit/Android WebView
