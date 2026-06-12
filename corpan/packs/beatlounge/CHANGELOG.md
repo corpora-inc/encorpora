@@ -69,6 +69,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   move (zero lag on a fast flick), with a fatter grip cap, a satisfying throw
   matching the platter height, and tap-to-jump for an instant cut.
 
+### Fixed
+- **Grooves / Score +/− — no off-grid "phantom" placements.** Every hit/word/note
+  the +/− engine lays now SNAPS to the target track's visible grid step
+  (`quantizeTick`). World rhythms with finer-than-16th detail (triplet grooves,
+  `stepsPerBeat: 3` ⇒ 320-tick cells) and the 16th-grained melody corpus could
+  land notes BETWEEN the cells the grid renders — hits you could hear but not see
+  or edit. Drum scatter, the natural-voice mapping, phrase scatter, and the melody
+  layer (plus auto-play when a grid is supplied) all quantize each placed tick;
+  snap collisions de-dupe by (tick, pitch) / (tick, snippet).
+- **Grooves / Score +/− — a "+" ALWAYS adds at least one hit (no more "no onsets
+  to place").** When the probabilistic roll yielded zero onsets (very sparse phrase
+  density) or every rolled onset was already occupied, "+" used to silently do
+  nothing. It now re-rolls with a fresh seed (bounded) and, failing that, forces a
+  placement on the groove's / metric's strongest onset — so a "+" is always
+  audible, with no unbounded retry loop.
+- **Grooves — "+/−" with NOTHING selected targets ALL rows.** A phrases "+" with no
+  snippet row selected now spreads the groove across EVERY saved snippet (was a
+  single random snippet per onset); drums with no selection continue to play all of
+  the groove's natural voices.
+
 ### Added
 - **Scratch — Spin / Hold.** A per-deck Spin/Hold toggle: Spin auto-rotates the
   platter at natural tempo (the phrase plays at normal speed, looping) and the disc

@@ -12,6 +12,7 @@ import { createDefaultDoc, isInstrumentTrack } from "../../model/document"
 import { newId } from "../../model/ids"
 import type { BeatloungeDoc, FragmentRef } from "../../model/document"
 import { getRhythm, rhythmTicks } from "../../rhythm"
+import { gridTicks } from "../../model/timing"
 import {
   buildGrooveCommands,
   findDrumTrackId,
@@ -820,5 +821,211 @@ describe("grooves actions through the command bus", () => {
       { rhythmId: "son-clave-3-2", target: { kind: "drums", selectedPitches: [KICK] } }
     )
     expect(res.commands).toEqual([])
+  })
+})
+
+// ---- the drum track's visible grid step (denominator 16 in the default doc) ----
+const drumGridTicks = (d: BeatloungeDoc): number => {
+  const t = d.tracks.find((x) => isInstrumentTrack(x) && x.instrument.kind === "drumSampler")
+  return t && isInstrumentTrack(t) ? gridTicks(t.grid) : gridTicks({ denominator: 16 })
+}
+
+describe("grooveModel — every placed tick is ON the visible grid (no phantom hits)", () => {
+  // A TRIPLET rhythm (stepsPerBeat: 3 ⇒ 320-tick cells) does NOT line up with the
+  // 16th-note grid (240-tick steps); before snapping it dropped off-grid hits.
+  const TRIPLET = "swing"
+
+  it("DRUMS: scatter on a triplet rhythm lands only on grid-step ticks", () => {
+    const d = emptyDrumDoc()
+    const step = drumGridTicks(d)
+    for (let seed = 1; seed <= 20; seed++) {
+      const res = buildGrooveCommands(d, getRhythm(TRIPLET)!, {
+        target: { kind: "drums", selectedPitches: [KICK, SNARE] },
+        clear: true,
+        seed,
+      })
+      const setNotes = res.commands.find((c) => c.t === "setNotes")
+      if (setNotes && setNotes.t === "setNotes") {
+        for (const n of setNotes.notes) expect(n.tick % step).toBe(0)
+      }
+    }
+  })
+
+  it("DRUMS: natural mapping (no selection) on a triplet rhythm is on-grid", () => {
+    const d = emptyDrumDoc()
+    const step = drumGridTicks(d)
+    const res = buildGrooveCommands(d, getRhythm(TRIPLET)!, { clear: true })
+    const setNotes = res.commands.find((c) => c.t === "setNotes")
+    expect(setNotes && setNotes.t === "setNotes").toBeTruthy()
+    if (setNotes && setNotes.t === "setNotes") {
+      expect(setNotes.notes.length).toBeGreaterThan(0)
+      for (const n of setNotes.notes) expect(n.tick % step).toBe(0)
+    }
+  })
+
+  it("PHRASES: scatter on a triplet rhythm lands only on grid-step ticks", () => {
+    const refs: FragmentRef[] = Array.from({ length: 4 }, (_, i) => ({
+      id: newId("frg"),
+      source: "ttsRender",
+      text: `w${i}`,
+      language: "es",
+    }))
+    const phraseId = newId("trk")
+    const base = doc()
+    const phraseDoc: BeatloungeDoc = {
+      ...base,
+      fragmentLibrary: refs,
+      tracks: [
+        ...base.tracks,
+        {
+          id: phraseId,
+          kind: "fragment",
+          name: "Phrases",
+          color: "#7cf2c0",
+          grid: { denominator: 16 },
+          volume: 0.8,
+          pan: 0,
+          mute: false,
+          solo: false,
+          inserts: [],
+          sends: [],
+          automation: [],
+          instrument: { kind: "ttsFragment" },
+          fragments: [],
+        },
+      ],
+    }
+    const step = gridTicks({ denominator: 16 })
+    for (let seed = 1; seed <= 20; seed++) {
+      const res = buildGrooveCommands(phraseDoc, getRhythm(TRIPLET)!, {
+        target: { kind: "phrases", trackId: phraseId },
+        op: "add",
+        seed,
+        phraseDensity: 1,
+      })
+      for (const c of res.commands) {
+        if (c.t === "placeFragment") expect(c.frag.tick % step).toBe(0)
+      }
+    }
+  })
+})
+
+describe("grooveModel — '+' ALWAYS adds ≥1 (never 'no onsets to place')", () => {
+  it("DRUMS: a + with a tiny density still places at least one hit", () => {
+    const d = emptyDrumDoc()
+    // A vanishingly small density would roll zero onsets without the guarantee.
+    for (let seed = 1; seed <= 15; seed++) {
+      const res = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+        target: { kind: "drums", selectedPitches: [KICK] },
+        op: "add",
+        density: 0.0001,
+        seed,
+      })
+      const setNotes = res.commands.find((c) => c.t === "setNotes")
+      const count = setNotes && setNotes.t === "setNotes" ? setNotes.notes.length : 0
+      expect(count).toBeGreaterThanOrEqual(1)
+    }
+  })
+
+  const phraseDocWith = (n: number): { d: BeatloungeDoc; phraseId: string } => {
+    const refs: FragmentRef[] = Array.from({ length: n }, (_, i) => ({
+      id: newId("frg"),
+      source: "ttsRender",
+      text: `w${i}`,
+      language: "es",
+    }))
+    const phraseId = newId("trk")
+    const base = doc()
+    return {
+      phraseId,
+      d: {
+        ...base,
+        fragmentLibrary: refs,
+        tracks: [
+          ...base.tracks,
+          {
+            id: phraseId,
+            kind: "fragment",
+            name: "Phrases",
+            color: "#7cf2c0",
+            grid: { denominator: 16 },
+            volume: 0.8,
+            pan: 0,
+            mute: false,
+            solo: false,
+            inserts: [],
+            sends: [],
+            automation: [],
+            instrument: { kind: "ttsFragment" },
+            fragments: [],
+          },
+        ],
+      },
+    }
+  }
+
+  it("PHRASES: a + at the sparse default density always places ≥1 phrase", () => {
+    const { d, phraseId } = phraseDocWith(3)
+    for (let seed = 1; seed <= 20; seed++) {
+      const res = buildGrooveCommands(d, getRhythm("son-clave-3-2")!, {
+        target: { kind: "phrases", trackId: phraseId },
+        op: "add",
+        seed, // no phraseDensity ⇒ the very-sparse ADD step; pre-fix this rolled 0
+      })
+      const placed = res.commands.filter((c) => c.t === "placeFragment").length
+      expect(placed).toBeGreaterThanOrEqual(1)
+      expect(res.summary).not.toBe("No onsets to place phrases on")
+    }
+  })
+})
+
+describe("grooveModel — NO selection ⇒ ALL rows (phrases spread across every snippet)", () => {
+  it("PHRASES with no selected rows scatter across ALL bank snippets", () => {
+    const refs: FragmentRef[] = Array.from({ length: 4 }, (_, i) => ({
+      id: newId("frg"),
+      source: "ttsRender",
+      text: `w${i}`,
+      language: "es",
+    }))
+    const phraseId = newId("trk")
+    const base = doc()
+    const phraseDoc: BeatloungeDoc = {
+      ...base,
+      fragmentLibrary: refs,
+      tracks: [
+        ...base.tracks,
+        {
+          id: phraseId,
+          kind: "fragment",
+          name: "Phrases",
+          color: "#7cf2c0",
+          grid: { denominator: 16 },
+          volume: 0.8,
+          pan: 0,
+          mute: false,
+          solo: false,
+          inserts: [],
+          sends: [],
+          automation: [],
+          instrument: { kind: "ttsFragment" },
+          fragments: [],
+        },
+      ],
+    }
+    // Aggregate across seeds: with NO selection, EVERY snippet row must receive a
+    // placement (the groove spreads across all rows, not one random snippet).
+    const used = new Set<string>()
+    for (let seed = 1; seed <= 24; seed++) {
+      const res = buildGrooveCommands(phraseDoc, getRhythm("samba")!, {
+        target: { kind: "phrases", trackId: phraseId },
+        op: "add",
+        seed,
+        phraseDensity: 1,
+      })
+      for (const c of res.commands) {
+        if (c.t === "placeFragment") used.add(c.frag.fragmentId)
+      }
+    }
+    for (const ref of refs) expect(used.has(ref.id)).toBe(true)
   })
 })
