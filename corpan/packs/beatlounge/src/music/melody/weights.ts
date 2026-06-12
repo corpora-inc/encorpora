@@ -63,6 +63,24 @@ const SYNCOPATED: number[] = [
   0.48, 0.16, 0.6, 0.04,
 ]
 
+/** Offbeat / upstroke: the eighth-note &s sing nearly as hard as the beats (a
+ *  reggae/ska-leaning lilt) while the downbeat still leads. */
+const OFFBEAT: number[] = [
+  1.0, 0.1, 0.82, 0.12,
+  0.84, 0.1, 0.8, 0.12,
+  0.86, 0.1, 0.82, 0.12,
+  0.82, 0.12, 0.74, 0.04,
+]
+
+/** Driving / motoric: all four beats pulse nearly equal over steady &s — a
+ *  house/krautrock engine that never lets up (fuller than four-on-floor). */
+const DRIVING: number[] = [
+  1.0, 0.12, 0.5, 0.14,
+  0.9, 0.12, 0.48, 0.14,
+  0.92, 0.12, 0.5, 0.14,
+  0.88, 0.14, 0.46, 0.05,
+]
+
 export const METRIC_PROFILES: readonly MetricProfile[] = Object.freeze(
   (
     [
@@ -71,6 +89,8 @@ export const METRIC_PROFILES: readonly MetricProfile[] = Object.freeze(
       ["ballad", BALLAD, ["sparse", "slow", "long-notes"]],
       ["sixteenths", SIXTEENTHS, ["busy", "driving", "run"]],
       ["syncopated", SYNCOPATED, ["syncopation", "anticipation"]],
+      ["offbeat", OFFBEAT, ["reggae", "ska", "upbeat", "lilt"]],
+      ["driving", DRIVING, ["motoric", "house", "krautrock", "pulse"]],
     ] as const
   ).map(([name, weights, tags]) =>
     Object.freeze({
@@ -129,12 +149,61 @@ const PENTATONIC: number[][] = [
   /* 6 */        [0.46, 0.04, 0.16, 0.02, 0.22, 0.08, 0.02],
 ]
 
+/**
+ * Descending (gravity): a falling line — each degree leans toward the step BELOW,
+ * resolving downward (the leading tone still snaps up). A natural cadential drift.
+ */
+// prettier-ignore
+const DESCENDING: number[][] = [
+  //         to:  0     1     2     3     4     5     6
+  /* 0 */        [0.16, 0.08, 0.08, 0.06, 0.12, 0.10, 0.40],
+  /* 1 */        [0.50, 0.10, 0.12, 0.06, 0.08, 0.08, 0.06],
+  /* 2 */        [0.18, 0.46, 0.10, 0.06, 0.10, 0.06, 0.04],
+  /* 3 */        [0.10, 0.16, 0.44, 0.08, 0.10, 0.08, 0.04],
+  /* 4 */        [0.20, 0.08, 0.14, 0.40, 0.08, 0.06, 0.04],
+  /* 5 */        [0.12, 0.06, 0.08, 0.12, 0.46, 0.08, 0.08],
+  /* 6 */        [0.14, 0.06, 0.06, 0.08, 0.12, 0.46, 0.08],
+]
+
+/**
+ * Drone (modal / raga): the line orbits the tonic (0) and the fifth (4), forever
+ * pulled back to them — a tonal-centre, sruti-box feel. Stays in register.
+ */
+// prettier-ignore
+const DRONE: number[][] = [
+  /* 0 */        [0.18, 0.18, 0.10, 0.04, 0.30, 0.06, 0.14],
+  /* 1 */        [0.42, 0.12, 0.18, 0.04, 0.18, 0.04, 0.02],
+  /* 2 */        [0.30, 0.22, 0.10, 0.06, 0.24, 0.06, 0.02],
+  /* 3 */        [0.22, 0.08, 0.22, 0.08, 0.30, 0.06, 0.04],
+  /* 4 */        [0.34, 0.10, 0.14, 0.04, 0.18, 0.10, 0.10],
+  /* 5 */        [0.18, 0.06, 0.10, 0.06, 0.42, 0.10, 0.08],
+  /* 6 */        [0.46, 0.04, 0.06, 0.04, 0.26, 0.08, 0.06],
+]
+
+/**
+ * Wide (leaps / call): bold disjunct motion — big jumps between chord tones and
+ * across the octave (high octaveBias). A hornlike, declamatory contour.
+ */
+// prettier-ignore
+const WIDE: number[][] = [
+  /* 0 */        [0.08, 0.06, 0.20, 0.06, 0.34, 0.06, 0.20],
+  /* 1 */        [0.24, 0.06, 0.10, 0.06, 0.30, 0.08, 0.16],
+  /* 2 */        [0.30, 0.06, 0.08, 0.06, 0.26, 0.06, 0.18],
+  /* 3 */        [0.22, 0.06, 0.24, 0.06, 0.10, 0.10, 0.22],
+  /* 4 */        [0.34, 0.08, 0.22, 0.06, 0.08, 0.06, 0.16],
+  /* 5 */        [0.20, 0.10, 0.18, 0.08, 0.30, 0.06, 0.08],
+  /* 6 */        [0.34, 0.08, 0.18, 0.06, 0.22, 0.08, 0.04],
+]
+
 export const TRANSITION_TABLES: readonly TransitionTable[] = Object.freeze(
   (
     [
       ["stepwise", STEPWISE, 0.1, ["conjunct", "singer", "smooth"]],
       ["arpeggiac", ARPEGGIAC, 0.18, ["disjunct", "triadic", "leaps"]],
       ["pentatonic", PENTATONIC, 0.12, ["pentatonic", "safe", "universal"]],
+      ["descending", DESCENDING, 0.2, ["gravity", "falling", "cadential"]],
+      ["drone", DRONE, 0.06, ["modal", "raga", "tonic-pull"]],
+      ["wide", WIDE, 0.22, ["leaps", "disjunct", "call"]],
     ] as const
   ).map(([name, weights, octaveBias, tags]) =>
     Object.freeze({

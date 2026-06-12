@@ -16,6 +16,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Painting a cell or tapping the +/- layer dial on an armed track hands control
   back to you. The endless line no longer floods undo — it writes transiently, so
   your real edits stay on the undo stack.
+- **More Auto melody character.** The generative Auto banks grew: two new Feels
+  (**offbeat**, **driving**) and three new Motions (**descending**, **drone**,
+  **wide**) — 7 Feels × 6 Motions now feed the conductor, so armed lines have far
+  more variety. (Everything was already wired; the corpus was just small.)
 
 ### Changed
 - **Drawer mixers are horizontal on the phone.** The in-drawer track mixer (Drums,
