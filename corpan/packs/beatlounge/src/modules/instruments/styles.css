@@ -56,18 +56,20 @@
   flex: 1 1 auto;
 }
 
-/* one track entry in the switcher: pick (dot) + editable name + remove */
+/* one track entry in the switcher: a SQUARED, roomy tab segment (reads as a real
+ * track tab, not a rounded pill) — pick name + remove. */
 .bl-instr-track {
   display: inline-flex;
   align-items: center;
   gap: var(--bl-s1);
   min-height: var(--bl-hit);
-  padding: 0 var(--bl-s2) 0 var(--bl-s1);
+  padding: 0 var(--bl-s3) 0 var(--bl-s2);
   border: 1px solid var(--bl-border);
-  border-radius: var(--bl-radius-pill);
+  border-radius: var(--bl-radius-tab);
   background: var(--bl-surface-2);
   transition:
     border-color var(--bl-dur) var(--bl-ease),
+    box-shadow var(--bl-dur) var(--bl-ease),
     background var(--bl-dur) var(--bl-ease);
 }
 .bl-instr-track.is-on {
@@ -137,12 +139,33 @@
 /* the playable ribbon fills the stage between the bar and the voice-type seg */
 .bl-instr-ribbon {
   flex: 1 1 auto;
-  min-height: 200px;
+  /* RESERVE a playable minimum so the ribbon is never fully covered even when the
+   * drawer is pulled all the way up (see .bl-instr--expanded below). */
+  min-height: var(--bl-instr-ribbon-min, 200px);
   display: flex;
 }
 .bl-instr-ribbon > .bl-ribbon {
   flex: 1;
   padding: 0;
+}
+
+/* ---- drawer-at-FULL: keep a MINI ribbon playable ----
+ * When the bottom drawer is pulled all the way up (expanded — to play with FX /
+ * mixer), the page header would otherwise eat the freed space and the ribbon
+ * gets fully covered. Instead we COLLAPSE the harmony summary header and shrink
+ * the ribbon to a pinned mini height, so you can keep playing the ribbon at the
+ * top while adjusting effects in the drawer below at the same time. */
+.bl-instr--expanded {
+  --bl-instr-ribbon-min: 96px;
+}
+.bl-instr--expanded .bl-instr-harmony {
+  /* hide the harmony summary row at the tallest detent — no layout jolt; it
+   * returns when the drawer comes back down. */
+  display: none;
+}
+.bl-instr--expanded .bl-instr-bar {
+  /* tighten the track bar so the mini ribbon stays comfortably in view */
+  margin-bottom: calc(-1 * var(--bl-s1));
 }
 
 /* on-demand analog "Shape this voice" disclosure (inside the Voice tab) */

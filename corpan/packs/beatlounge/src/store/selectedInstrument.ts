@@ -54,6 +54,29 @@ export const getStoredInstrumentTrackId = (docId: Id): Id | undefined =>
   selectionStore.getState().byDoc[docId]
 
 /**
+ * Decide what (if anything) the Instruments page should SEED its selection to on
+ * mount. Pure so it's unit-testable. The persisted selection ALWAYS wins; the
+ * mount's `requested` trackId is honored ONLY when there is no stored selection
+ * AND it names a real melodic track. Returns the id to seed, or undefined to
+ * leave the resolved (stored / first-melodic) selection untouched.
+ *
+ * (Bug it guards: the mount resolves `requested` to the FIRST melodic track, so
+ * unconditionally seeding from it clobbered a persisted pick — re-entering the
+ * page snapped back to track 1.)
+ */
+export const seedSelectionOnMount = (
+  doc: BeatloungeDoc,
+  stored: Id | undefined,
+  requested: Id | undefined
+): Id | undefined => {
+  if (stored != null) return undefined // persisted selection wins
+  if (requested && doc.tracks.some((t) => t.id === requested && isMelodicTrack(t))) {
+    return requested
+  }
+  return undefined
+}
+
+/**
  * The RESOLVED selected melodic track id for a doc (stored-if-valid else first
  * melodic), outside React. The future Home ribbon widget binds to THIS so it
  * shows the same voice the Instruments page is on.

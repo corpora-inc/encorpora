@@ -26,7 +26,7 @@ import { Glyph } from "../../bl-ui"
 import { buildMiniView } from "./gridModel"
 import { denserAction, sparserAction, clearScatterAction } from "../grooves/actions"
 import { getRhythm } from "../../rhythm"
-import { pickRandomRhythmId } from "../grooves/randomRhythm"
+import { pickRandomRhythmId, resolveDialRhythmId } from "../grooves/randomRhythm"
 
 interface Props {
   host: BeatloungeHost
@@ -57,17 +57,30 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
 
   /** Run a grooves action on THIS drum track (ALL rows — no selection → the
    *  engine targets every drum lane) as one undo step. Fresh per-press seed →
-   *  each + / shuffle re-rolls a genuinely different scatter. */
+   *  each + / shuffle re-rolls a genuinely different scatter.
+   *
+   *  NEVER default to "the first" rhythm: when nothing has been chosen on this
+   *  surface yet (the +/- dial pressed before any shuffle), pick a RANDOM groove
+   *  and remember it — so the dial densifies/thins a random world rhythm, not
+   *  son-clave (the old RHYTHMS[0] cling). An explicit `extra.rhythmId` (shuffle)
+   *  always wins; the last-used `rhythmId` carries between dial presses. */
   const runGroove = (
     action: typeof denserAction,
     extra: Record<string, unknown> = {}
   ) => {
     const before = store.vanilla.getState().doc
     const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
+    const useRhythmId = resolveDialRhythmId(
+      Math.random,
+      rhythmId,
+      extra.rhythmId as string | undefined
+    )
+    // Remember a freshly-rolled default so subsequent dial presses stay on it.
+    if (rhythmId == null && extra.rhythmId == null) setRhythmId(useRhythmId)
     const result = action.run(
       { doc: store.vanilla.getState().doc, rng: () => Math.random() },
       {
-        rhythmId: rhythmId ?? extra.rhythmId,
+        rhythmId: useRhythmId,
         intensity: 1,
         seed,
         // No selectedPitches ⇒ ALL drum rows (the dial/shuffle affect the whole kit).

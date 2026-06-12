@@ -33,7 +33,11 @@ import {
   type Id,
   type InstrumentTrack,
 } from "../../model/document"
-import { useSelectedInstrument } from "../../store/selectedInstrument"
+import {
+  getStoredInstrumentTrackId,
+  seedSelectionOnMount,
+  useSelectedInstrument,
+} from "../../store/selectedInstrument"
 import { HarmonyPanel } from "../composer/HarmonyPanel"
 import { harmonySummary } from "./harmonySummary"
 import "../composer/styles.css"
@@ -69,7 +73,6 @@ import { newInstrumentTrackInit } from "./addTrack"
 import {
   canRemoveTrack,
   isMelodicTrack,
-  rebindTrackId,
   trackIdAfterRemoval,
 } from "./trackBinding"
 
@@ -95,16 +98,23 @@ export const InstrumentsBrowser = ({
 }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   // The bound melodic track is a GLOBAL, doc-keyed selection (survives leaving
-  // the page / going Home). Seed it once from the mount's track, then own it.
+  // the page / going Home). The PERSISTED selection always WINS on mount; the
+  // mount's trackId is only a fallback when there is NO stored selection yet.
+  //
+  // (Bug fixed: the mount passes `mount.trackId` resolved to the FIRST melodic
+  // track, so unconditionally seeding from it on first render clobbered a
+  // persisted pick — re-entering Instruments snapped back to track 1. Now we
+  // only seed when nothing is stored.)
   const { trackId: selectedTrackId, select } = useSelectedInstrument(doc)
   const seededRef = useRef(false)
   if (!seededRef.current) {
     seededRef.current = true
-    // Honor the mount's requested track on first render (else keep the stored /
-    // first-melodic selection the slice already resolves to).
-    if (initialTrackId && rebindTrackId(doc.tracks, initialTrackId) === initialTrackId) {
-      select(initialTrackId)
-    }
+    const seed = seedSelectionOnMount(
+      doc,
+      getStoredInstrumentTrackId(doc.id),
+      initialTrackId
+    )
+    if (seed) select(seed)
   }
   const trackId = selectedTrackId
   const setTrackId = select

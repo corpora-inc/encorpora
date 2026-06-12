@@ -5,6 +5,33 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **Squared-off, iPhone-bezel rounding pass (central).** Tuned the shared
+  `--bl-radius*` tokens toward a tighter, consistent iOS "continuous corner"
+  scale — cards `14px → 11px`, with a new `--bl-radius-lg: 14px` reserved for the
+  large sheets/popovers (immersive sheet, harmony popover) and `--bl-radius-tab:
+  9px` for tab bars; the full pill (999px) is now reserved for genuinely pill
+  things (status chips, circular icon/transport buttons). Because everything
+  keys off the tokens, the whole app reads subtly squarer + more premium in one
+  edit. Added a shared squared `.bl-tabbar`/`.bl-tab` component.
+- **Switchers that are really tab bars now READ as squared tabs, not pills.** The
+  Drums/Phrase-Jam drawer header tabs (Grooves/Pads/Kit/Effects/Mixer) and the
+  Instruments synth-track switcher are now roomy, squared SEGMENT bars (one
+  squared track with the active segment lifted to a solid accent fill).
+- **Instruments — re-entering STAYS on the selected synth (no reset to the
+  first).** The persisted `useSelectedInstrument` selection now wins on mount;
+  the mount's `trackId` is only a fallback when nothing is stored. (Root cause:
+  the page unconditionally seeded from the mount's track — resolved to the FIRST
+  melodic track — clobbering a persisted pick.) New pure `seedSelectionOnMount`.
+- **Instruments — drawer-at-FULL keeps a mini ribbon playable.** At the tallest
+  drawer detent the harmony summary header collapses and the ribbon shrinks to a
+  pinned mini height (reserved ~96px) instead of being fully covered — so you can
+  play the ribbon while adjusting effects in the drawer at the same time.
+- **Home Drums −/+ dial NEVER defaults to "the first" rhythm.** The density dial
+  used `RHYTHMS[0]` (son clave) when nothing had been chosen yet; it now defaults
+  to a RANDOM world groove (then stays on it / the last-used one between presses),
+  matching Shuffle. New pure `resolveDialRhythmId`.
+
 ### Added
 - **Scratch — a master EFFECTS RACK in the shared drawer.** An optional effect chain
   now sits on the scratch MASTER output (between both decks' bus and the speakers), so
@@ -22,6 +49,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   screen. Saving loads the new phrase straight onto a deck (aim A or B when two decks
   are up), so finding a phrase and dropping it on the platter is one move. The per-deck
   picker still handles what's already on the table.
+- **Groove corpus expanded to 87 world rhythms** (was 66) so random/shuffle stays
+  surprising: e.g. mozambique, pilón, bembé, afoxé, frevo, cumbia, salsa cáscara,
+  gospel shout, surf, half-time, dubstep, electro, gabber, kpanlogo, bikutsi, paso
+  doble, tarantella, waḥda, samāʿī (10/8), deepchandi (14), chautal. Each is
+  authored with accents/ghosts so the auto-derived scatter profile keeps random
+  placement consistently musical (no per-rhythm weighting needed).
+- **Scratch — a master EFFECTS RACK (popup).** An optional effect chain now sits on
+  the scratch MASTER output (between both decks' bus and the speakers), so a few
+  high-value DJ effects colour the whole turntable at once — Filter (with the same
+  Cutoff×Resonance XY pad as the mixer), Delay, Reverb, and Crush. A premium popover
+  (the "Effects" button in the header) toggles each insert and tweaks its knobs; the
+  rack reuses the SHARED effect factory + param schemas, so a knob here drives the
+  exact same Tone node the mixer would. Inserts start bypassed (the table is clean
+  until you dial one in); a dot on the button shows when any is engaged. No document
+  coupling — it's a live performance, like the rest of scratch.
+- **Scratch — a phrase BANK drawer.** Phrase management now lives INSIDE scratch: a
+  bottom drawer ("Phrases" in the header) searches the saved phrase bank and loads
+  any snippet onto deck A or B (the row marked A/B is what each deck holds), so you
+  never leave the turntable to manage what's on the decks. Loading onto B brings the
+  second deck up automatically. Reads the same bank data as the per-deck picker.
 
 ### Changed
 - **Scratch — UNIFIED on the shared bottom drawer (no more dinky popovers).** The

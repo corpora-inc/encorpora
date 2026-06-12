@@ -27,3 +27,18 @@ export const pickRandomRhythmId = (
   const i = Math.min(pool.length - 1, Math.max(0, Math.floor(rng() * pool.length)))
   return pool[i]!.id
 }
+
+/**
+ * Resolve the rhythm id a "default rhythm" surface (e.g. the home Drums +/-
+ * dial) should operate on, NEVER defaulting to "the first" rhythm:
+ *   1. an EXPLICIT id (e.g. a shuffle that just picked one) always wins;
+ *   2. else the LAST-USED id on this surface (sticky between presses);
+ *   3. else a RANDOM groove from the corpus.
+ *
+ * Pure + seedable (pass an `rng`) so the never-first behaviour is unit-testable.
+ */
+export const resolveDialRhythmId = (
+  rng: () => number,
+  lastUsed: string | undefined,
+  explicit?: string
+): string => explicit ?? lastUsed ?? pickRandomRhythmId(rng)
