@@ -605,10 +605,11 @@
 .bl-ribbonwidget .bl-ribbon {
   flex: 1 1 auto;
   min-height: 0;
-  /* the tile already pads 16px; trim the ribbon's OWN horizontal padding so the
-     strip + surface run nearly edge-to-edge (more playable width on a phone). */
-  padding-left: var(--bl-s1);
-  padding-right: var(--bl-s1);
+  /* the tile already pads 16px; drop the ribbon's OWN horizontal padding so the
+     strip + surface sit flush at the tile content edge — SAME width/inset as every
+     other widget (Harmony, Synth, …), not double-padded. */
+  padding-left: 0;
+  padding-right: 0;
 }
 /* The tile is a compact play strip — keep the ribbon surface a comfortable,
    bounded height (the full page gets the room; the tile stays glanceable). */
