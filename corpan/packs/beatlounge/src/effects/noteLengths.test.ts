@@ -3,6 +3,8 @@ import {
   NOTE_LENGTH_PRESETS,
   noteLengthSeconds,
   closestNoteLengthId,
+  exceedsMaxDelay,
+  MAX_DELAY_SECONDS,
 } from "./noteLengths"
 
 describe("noteLengths", () => {
@@ -36,13 +38,31 @@ describe("noteLengths", () => {
     expect(closestNoteLengthId(0.31, 120)).toBeNull()
   })
 
-  it("exposes the curated five-chip set in a stable order", () => {
+  it("exposes the full 1/16 → whole set, short → long", () => {
     expect(NOTE_LENGTH_PRESETS.map((p) => p.id)).toEqual([
-      "1/4",
-      "1/4.",
-      "1/8",
-      "1/8t",
       "1/16",
+      "1/8t",
+      "1/8",
+      "1/4",
+      "1/2t",
+      "1/4.",
+      "1/2",
+      "1/2.",
+      "1/1",
     ])
+    // ascending duration (the row reads short → long)
+    const secs = NOTE_LENGTH_PRESETS.map((p) => noteLengthSeconds(p.fraction, 120))
+    expect(secs).toEqual([...secs].sort((a, b) => a - b))
+  })
+
+  it("flags note lengths that exceed the delay max at slow tempos", () => {
+    // a whole note at 60 bpm = 4s > 3s max
+    expect(exceedsMaxDelay(1, 60)).toBe(true)
+    expect(noteLengthSeconds(1, 60)).toBeCloseTo(4, 6)
+    // …but it fits at 96 bpm (2.5s)
+    expect(exceedsMaxDelay(1, 96)).toBe(false)
+    // a quarter never exceeds the max in any sane tempo
+    expect(exceedsMaxDelay(1 / 4, 40)).toBe(false)
+    expect(MAX_DELAY_SECONDS).toBe(3)
   })
 })

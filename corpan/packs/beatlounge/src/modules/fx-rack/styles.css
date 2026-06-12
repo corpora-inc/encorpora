@@ -325,3 +325,8 @@
   border-color: var(--bl-accent);
   box-shadow: var(--bl-glow) var(--bl-accent);
 }
+/* Too long at the current tempo (would exceed the delay's maxDelay) — dimmed. */
+.bl-fxsync-chip.is-over {
+  opacity: 0.32;
+  cursor: not-allowed;
+}

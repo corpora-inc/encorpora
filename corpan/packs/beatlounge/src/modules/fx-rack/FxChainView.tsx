@@ -36,6 +36,8 @@ import {
   NOTE_LENGTH_PRESETS,
   noteLengthSeconds,
   closestNoteLengthId,
+  exceedsMaxDelay,
+  MAX_DELAY_SECONDS,
 } from "../../effects/noteLengths"
 
 /** Form factor — drives the phone quick-add shortcut. */
@@ -246,7 +248,13 @@ const EffectCard = ({
         <NoteLengthRow
           bpm={bpm}
           seconds={numParam(fx.params, timeSpec)}
-          onPick={(fraction) => setParam("delayTime", noteLengthSeconds(fraction, bpm))}
+          maxSeconds={timeSpec.max ?? MAX_DELAY_SECONDS}
+          onPick={(fraction) =>
+            setParam(
+              "delayTime",
+              Math.min(timeSpec.max ?? MAX_DELAY_SECONDS, noteLengthSeconds(fraction, bpm))
+            )
+          }
         />
       )}
 
@@ -283,10 +291,13 @@ const EffectCard = ({
 const NoteLengthRow = ({
   bpm,
   seconds,
+  maxSeconds,
   onPick,
 }: {
   bpm: number
   seconds: number
+  /** The delay's maxDelay; longer note lengths are dimmed at slow tempos. */
+  maxSeconds: number
   onPick: (fraction: number) => void
 }) => {
   const active = closestNoteLengthId(seconds, bpm)
@@ -294,17 +305,22 @@ const NoteLengthRow = ({
     <div className="bl-fxsync" data-bl-nocapture>
       <span className="bl-fxsync-label">Sync</span>
       <div className="bl-fxsync-chips">
-        {NOTE_LENGTH_PRESETS.map((p) => (
-          <button
-            key={p.id}
-            type="button"
-            className={`bl-fxsync-chip${active === p.id ? " is-on" : ""}`}
-            onClick={() => onPick(p.fraction)}
-            aria-pressed={active === p.id}
-          >
-            {p.label}
-          </button>
-        ))}
+        {NOTE_LENGTH_PRESETS.map((p) => {
+          const over = exceedsMaxDelay(p.fraction, bpm, maxSeconds)
+          return (
+            <button
+              key={p.id}
+              type="button"
+              className={`bl-fxsync-chip${active === p.id ? " is-on" : ""}${over ? " is-over" : ""}`}
+              onClick={() => onPick(p.fraction)}
+              disabled={over}
+              aria-pressed={active === p.id}
+              title={over ? "Too long at this tempo" : undefined}
+            >
+              {p.label}
+            </button>
+          )
+        })}
       </div>
     </div>
   )

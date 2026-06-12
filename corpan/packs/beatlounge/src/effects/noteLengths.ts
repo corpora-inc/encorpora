@@ -22,20 +22,33 @@ export interface NoteLengthPreset {
 }
 
 /**
- * The curated quick-set chips for the delay card: 1/4, dotted-1/4, 1/8,
- * 1/8 triplet, 1/16. Tasteful spread from a long slap to a tight stutter.
+ * The quick-set chips for the delay card, ordered short → long: a tight 1/16
+ * stutter up to a whole-note wash, with the common triplet + dotted flavours.
+ * (dotted = ×1.5, triplet = ×2/3.) At slow tempos the longest values can exceed
+ * the delay's maxDelay — the card dims/clamps those (see `MAX_DELAY_SECONDS`).
  */
 export const NOTE_LENGTH_PRESETS: readonly NoteLengthPreset[] = [
-  { id: "1/4", label: "1/4", fraction: 1 / 4 },
-  { id: "1/4.", label: "1/4·", fraction: (1 / 4) * 1.5 },
-  { id: "1/8", label: "1/8", fraction: 1 / 8 },
-  { id: "1/8t", label: "1/8T", fraction: (1 / 8) * (2 / 3) },
   { id: "1/16", label: "1/16", fraction: 1 / 16 },
+  { id: "1/8t", label: "1/8T", fraction: (1 / 8) * (2 / 3) },
+  { id: "1/8", label: "1/8", fraction: 1 / 8 },
+  { id: "1/4", label: "1/4", fraction: 1 / 4 },
+  { id: "1/2t", label: "1/2T", fraction: (1 / 2) * (2 / 3) },
+  { id: "1/4.", label: "1/4·", fraction: (1 / 4) * 1.5 },
+  { id: "1/2", label: "1/2", fraction: 1 / 2 },
+  { id: "1/2.", label: "1/2·", fraction: (1 / 2) * 1.5 },
+  { id: "1/1", label: "1/1", fraction: 1 },
 ] as const
+
+/** The delay's maxDelay headroom (seconds) — longer note lengths clamp to this. */
+export const MAX_DELAY_SECONDS = 3
 
 /** Seconds for a note length (fraction of a whole note) at a given tempo. */
 export const noteLengthSeconds = (fraction: number, bpm: number): number =>
   fraction * 4 * (60 / Math.max(1, bpm))
+
+/** True when a note length would exceed the delay's max at this tempo. */
+export const exceedsMaxDelay = (fraction: number, bpm: number, max = MAX_DELAY_SECONDS): boolean =>
+  noteLengthSeconds(fraction, bpm) > max + 1e-9
 
 /**
  * The preset id whose time matches `seconds` at `bpm` (within ~3ms), else null
