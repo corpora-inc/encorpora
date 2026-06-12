@@ -26,6 +26,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   Defaults to a random groove (never "the first"/son-clave) and survives reloads.
 
 ### Fixed
+- **Home stops overflowing right on slim phones.** The Stage bento column was a
+  bare `1fr` (= `minmax(auto, 1fr)`); WebKit (iOS WKWebView) sized the `auto` floor
+  from a tile's intrinsic content — the 16-column Drums mini-grid — pushing the grid
+  wider than a ~320–390px viewport. Switched the stage column AND the mini-grid (and
+  the composer/pads tile grids) to `minmax(0, 1fr)` + `min-width: 0`, so columns
+  shrink to share the width instead of forcing an overflow.
 - **No groove rejects a drum row — "+" always adds if there's space.** The
   generator could leave a selected "off-groove" row at zero probability, so "+"
   said "no room" / nothing happened. Now every (row, step) keeps a small non-zero

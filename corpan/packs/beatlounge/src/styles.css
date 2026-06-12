@@ -271,7 +271,11 @@
 .bl-stage-grid {
   display: grid;
   gap: var(--bl-s4);
-  grid-template-columns: 1fr;
+  /* minmax(0, 1fr) — NOT a bare 1fr — so the column can shrink BELOW a tile's
+     intrinsic content width. A bare 1fr is minmax(auto, 1fr): WebKit (iOS WKWebView)
+     sizes the `auto` floor from a tile's min-content (e.g. the 16-col Drums mini-
+     grid), pushing the grid wider than a slim phone viewport → right overflow. */
+  grid-template-columns: minmax(0, 1fr);
   grid-auto-rows: minmax(116px, auto);
   /* ORDERED flow (not dense) so the IA groups read top-to-bottom in order and a
      tile never jumps a row to backfill a gap. The aspects are chosen to tile the
@@ -461,11 +465,16 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
+  /* shrink below the cells' intrinsic width (WebKit min-content safety) */
+  min-width: 0;
 }
 .bl-mini-row {
   display: grid;
-  grid-template-columns: repeat(var(--bl-steps, 16), 1fr);
+  /* minmax(0, …) so the 16 cells shrink to share the tile width instead of
+     forcing an intrinsic min that overflows the slim-phone column (WebKit). */
+  grid-template-columns: repeat(var(--bl-steps, 16), minmax(0, 1fr));
   gap: 3px;
+  min-width: 0;
 }
 .bl-mini-cell {
   aspect-ratio: 1;
