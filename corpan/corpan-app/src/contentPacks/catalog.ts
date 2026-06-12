@@ -198,6 +198,18 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     imageUrl: "https://encorpora.io/assets/hanzipan-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
+  {
+    id: "beatlounge",
+    name: "beatlounge",
+    version: "0.1.0",
+    manifestUrl: "https://encorpora.io/corpan/packs/beatlounge.zip",
+    description:
+      "A dark, AI-driven beat lounge — build loops on a premium sequencer, reshape them with a word, and sample the phrase corpus into your music.",
+    imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["games", "wild"],
+    goodForClass: ["enjoyer", "learner"],
+  },
 ]
 
 const DEV_CATALOG: CatalogGame[] = [
@@ -234,6 +246,19 @@ const DEV_CATALOG: CatalogGame[] = [
     kidFriendly: true,
     recommendOrder: 5,
     tagline: "A living city that turns every encounter into a lesson.",
+  },
+  {
+    id: "beatlounge",
+    name: "beatlounge",
+    version: "0.1.0",
+    manifestUrl: "/packs/beatlounge/manifest.json",
+    description:
+      "A dark, AI-driven beat lounge — build loops on a premium sequencer, reshape them with a word, and sample the phrase corpus into your music.",
+    imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["games", "wild"],
+    goodForClass: ["enjoyer", "learner"],
+    tagline: "Build loops, reshape them with a word, learn in rhythm.",
   },
 ]
 

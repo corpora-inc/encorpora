@@ -7,7 +7,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.18.0] - 2026-06-12
+
 ### Added
+- **beatlounge pack — 0.1.0.** A dark, AI-driven beat lounge ships in the catalog:
+  a premium tick-addressed sequencer + harmony engine + ribbon/phrase performance
+  that doubles as language practice. Host seams (`hostApi`/`ContentPackHost`) land
+  here; the pack is added to the in-app catalog with its one-color line-art avatar.
 - **Native-fault crash breadcrumb (Android).** The existing breadcrumb only
   caught Rust panics; a SIGSEGV/SIGABRT/SIGBUS/SIGILL/SIGFPE in a statically
   linked native lib (llama/ggml/whisper) bypassed it and left an unsymbolicated,
