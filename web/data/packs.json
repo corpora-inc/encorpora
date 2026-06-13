@@ -192,7 +192,7 @@
     "id": "beatlounge",
     "name": "beatlounge",
     "description": "A dark, AI-driven beat lounge — build loops on a premium sequencer, reshape them with a word, and sample the phrase corpus into your music.",
-    "status": "prototype",
+    "status": "active",
     "listed": true,
     "manifestUrl": "/corpan/packs/beatlounge/manifest.json",
     "zipUrl": "/corpan/packs/beatlounge.zip",
@@ -201,7 +201,7 @@
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/beatlounge",
     "minAppVersion": "0.18.0",
     "v1Listed": false,
-    "channel": "preview",
+    "channel": "stable",
     "packType": "game",
     "purchase": {
       "type": "free",
