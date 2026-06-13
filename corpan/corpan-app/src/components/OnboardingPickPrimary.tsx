@@ -95,7 +95,7 @@ export function OnboardingPickPrimary({ onAdvance }: OnboardingStepProps = {}) {
                 <ul
                     role="listbox"
                     aria-label="Choose your primary language"
-                    className="flex flex-col gap-2.5 list-none p-0 m-0"
+                    className="flex flex-col gap-2 sm:gap-2.5 list-none p-0 m-0"
                 >
                     {orderedLangs.map((code, i) => (
                         <PrimaryLanguageButton
@@ -211,9 +211,11 @@ function PrimaryLanguageButton({
                 dir={rtl ? "rtl" : "ltr"}
                 className={[
                     "group relative w-full",
-                    "px-5 py-4 rounded-xl",
+                    "px-4 py-3.5 sm:px-5 sm:py-4 rounded-xl",
+                    "min-h-[52px] sm:min-h-[56px]",
+                    "text-[15px] sm:text-base",
                     "bg-card text-foreground",
-                    "flex items-center justify-between gap-3 text-start",
+                    "flex items-center justify-between gap-2.5 sm:gap-3 text-start",
                     "cursor-pointer select-none break-words",
                     "transition-[background-color,border-color,box-shadow,transform]",
                     "duration-150",
@@ -224,15 +226,13 @@ function PrimaryLanguageButton({
                         : "border border-border hover:border-purple-400/55 hover:bg-accent/40",
                 ].join(" ")}
                 style={{
-                    minHeight: 56,
                     wordBreak: "break-word",
                     whiteSpace: "normal",
-                    fontSize: 16,
                     fontWeight: 500,
                     lineHeight: 1.35,
                 }}
             >
-                <span className="flex-1">{label}</span>
+                <span className="min-w-0 flex-1">{label}</span>
                 <Arrow
                     size={18}
                     className={[
@@ -260,23 +260,23 @@ function ComingSoonRow({ code, stagger }: { code: string; stagger: number }) {
                 dir={rtl ? "rtl" : "ltr"}
                 className="
                     relative w-full
-                    px-5 py-3 rounded-xl
+                    px-4 py-3 sm:px-5 rounded-xl
+                    min-h-[44px] sm:min-h-[48px]
+                    text-[15px] sm:text-base
                     border border-dashed border-border/55
                     bg-muted/25
-                    flex items-center justify-between gap-3 text-start
+                    flex items-center justify-between gap-2.5 sm:gap-3 text-start
                     select-none break-words
                 "
                 style={{
-                    minHeight: 48,
                     wordBreak: "break-word",
                     whiteSpace: "normal",
-                    fontSize: 16,
                     fontWeight: 500,
                     lineHeight: 1.35,
                 }}
             >
-                <span className="flex-1 text-foreground/55">{autonym}</span>
-                <span className="text-[11px] uppercase tracking-wide text-muted-foreground/60 max-w-[160px] truncate">
+                <span className="min-w-0 flex-1 text-foreground/55">{autonym}</span>
+                <span className="shrink-0 text-[11px] uppercase tracking-wide text-muted-foreground/60 max-w-[120px] sm:max-w-[160px] truncate">
                     {statusLabel}
                 </span>
             </div>

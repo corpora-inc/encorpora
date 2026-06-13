@@ -27,6 +27,16 @@ type DrawerState = {
     openQuickSettings: () => void
     closeQuickSettings: () => void
     setQuickSettingsOpen: (open: boolean) => void
+
+    /** Text-to-speech / voice-picker drawer — opened from the Settings modal
+     *  (JumpToTTSButton) to re-tune voices IN PLACE, without re-walking
+     *  onboarding. Hosted by `<TTSSettingsDrawer />` inside SettingsModal.
+     *  vaul's drawer (z-[1200]) intentionally sits above the Settings Radix
+     *  dialog (z-[1100]) so it overlays cleanly. */
+    ttsSettingsOpen: boolean
+    openTTSSettings: () => void
+    closeTTSSettings: () => void
+    setTTSSettingsOpen: (open: boolean) => void
 }
 
 export const useDrawerStore = create<DrawerState>()((set) => ({
@@ -39,4 +49,9 @@ export const useDrawerStore = create<DrawerState>()((set) => ({
     openQuickSettings: () => set({ quickSettingsOpen: true }),
     closeQuickSettings: () => set({ quickSettingsOpen: false }),
     setQuickSettingsOpen: (open) => set({ quickSettingsOpen: open }),
+
+    ttsSettingsOpen: false,
+    openTTSSettings: () => set({ ttsSettingsOpen: true }),
+    closeTTSSettings: () => set({ ttsSettingsOpen: false }),
+    setTTSSettingsOpen: (open) => set({ ttsSettingsOpen: open }),
 }))
