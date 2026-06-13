@@ -1,7 +1,7 @@
 {
   "id": "beatlounge",
   "name": "beatlounge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
   "descriptionLocalized": {
     "en": "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
@@ -63,5 +63,5 @@
   "entryType": "script",
   "minAppVersion": "0.18.0",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-06-12T20:40:57.717Z"
+  "devRevision": "2026-06-13T05:47:35.235Z"
 }

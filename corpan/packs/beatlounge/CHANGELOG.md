@@ -5,6 +5,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-13
+
+_GA + the calling card: beatlounge goes stable and the entire interface ships in
+50+ languages, with a localized catalog listing to match._
+
 ### Added
 - **The whole interface speaks your language — 50+ of them.** Every chrome string
   (buttons, labels, hints, empty states, toasts) is now localized into the user's
