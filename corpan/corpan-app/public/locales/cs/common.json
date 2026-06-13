@@ -54,7 +54,7 @@
     "sl": "Slovinština",
     "jv": "javánština",
     "su": "sundština",
-    "tl": "tagalog"
+    "tl": "tagalština"
   },
   "categories": {
     "travel": "Cestování",
@@ -167,8 +167,8 @@
     "welcomeFollowUp": "Děkujeme, že jste se připojili — uvidíme se v komunitě!",
     "learning": "Učení jazyků",
     "learningStepTitle": "Učení",
-    "tts": "Text-to-speech",
-    "ttsStepTitle": "Text-to-speech",
+    "tts": "Převod textu na řeč",
+    "ttsStepTitle": "Převod textu na řeč",
     "socials": "Sledujte a spojte se",
     "socialsStepTitle": "Sociální sítě",
     "noVoices": "Žádné hlasy",

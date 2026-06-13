@@ -97,8 +97,8 @@
     "testTts": "নিচের বোতাম দিয়ে টিটিএস পরীক্ষা করুন:",
     "showRomanization": "রোমানাইজেশন দেখান",
     "scrollNavigation": "স্ক্রল নেভিগেশন",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "প্যাকসমূহ",
+    "stacks": "স্ট্যাকসমূহ",
     "theme": "থিম",
     "themeLight": "লাইট",
     "themeDark": "ডার্ক",
@@ -361,7 +361,7 @@
       "macStep3": "System Voice-এর অধীনে, Manage Voices খুলুন।",
       "macStep4": "আপনার ভাষার জন্য একটি Premium বা Enhanced ভয়েস ডাউনলোড করুন।",
       "macStep5": "Corpán-এ ফিরে আসুন — এটি এখানে স্বয়ংক্রিয়ভাবে প্রদর্শিত হবে।",
-      "step1": "নিচে Open Settings-এ ট্যাপ করুন।",
+      "step1": "নিচে “সেটিংস খুলুন”-এ ট্যাপ করুন।",
       "step2": "Accessibility → Spoken Content → Voices-এ যান।",
       "step3": "আপনার ভাষায় ট্যাপ করুন।",
       "step4": "একটি Premium বা Enhanced ভয়েস ডাউনলোড করুন।",
@@ -568,7 +568,7 @@
     "close": "বন্ধ করুন"
   },
   "packs": {
-    "title": "Packs",
+    "title": "প্যাকসমূহ",
     "available": "উপলব্ধ",
     "emptyAvailable": "এখনও কিছু উপলব্ধ নেই।",
     "installed": "ইনস্টল করা",

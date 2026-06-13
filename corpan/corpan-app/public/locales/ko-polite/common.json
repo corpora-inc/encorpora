@@ -97,8 +97,8 @@
     "testTts": "아래 버튼을 눌러 TTS 설정을 테스트해 보세요:",
     "showRomanization": "로마자 표기 보기",
     "scrollNavigation": "스크롤 탐색",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "팩",
+    "stacks": "스택",
     "theme": "테마",
     "themeLight": "라이트",
     "themeDark": "다크",
@@ -311,7 +311,7 @@
       "joinDesc": "Corpán을 지원하고 모든 기능을 잠금 해제하세요. 선택 사항이며 언제든지 가능합니다.",
       "subscribedTitle": "Corpanista가 되셨습니다",
       "subscribedDesc": "Corpán을 광고 없이 성장시켜 주셔서 감사합니다.",
-      "joinTitle": "Join the Corpanistas",
+      "joinTitle": "Corpanistas에 참여하세요",
       "start": "탐색 시작하기",
       "subtitle": "Corpán은 작은 오픈소스 팀이 만들었습니다. 인사해 주세요 — 마음에 드신다면 저희를 지원할 수 있습니다.",
       "title": "모든 준비가 완료되었습니다"
@@ -568,7 +568,7 @@
     "feedbackButton": "GitHub에서 피드백 보내기"
   },
   "packs": {
-    "title": "Packs",
+    "title": "팩",
     "available": "사용 가능",
     "emptyAvailable": "아직 사용할 수 있는 항목이 없습니다.",
     "installed": "설치됨",

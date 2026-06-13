@@ -97,8 +97,8 @@
     "testTts": "கீழே உள்ள பொத்தான்களுடன் TTS ஐ சோதிக்கவும்:",
     "showRomanization": "ரோமானியமயமாக்கல் காட்டவும்",
     "scrollNavigation": "ஸ்க்ரோல் வழிசெலுத்தல்",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "பேக்குகள்",
+    "stacks": "ஸ்டாக்குகள்",
     "theme": "தீம்",
     "themeLight": "ஒளி",
     "themeDark": "இருள்",
@@ -568,7 +568,7 @@
     "feedbackButton": "GitHub இல் கருத்து பகிரவும்"
   },
   "packs": {
-    "title": "Packs",
+    "title": "பேக்குகள்",
     "available": "கிடைக்கும்",
     "emptyAvailable": "இன்னும் எதுவும் கிடைக்கவில்லை.",
     "installed": "நிறுவப்பட்டது",

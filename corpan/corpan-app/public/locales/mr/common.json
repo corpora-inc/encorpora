@@ -97,8 +97,8 @@
     "testTts": "खालील बटणांसह TTS चाचणी करा:",
     "showRomanization": "रोमनीकरण दाखवा",
     "scrollNavigation": "स्क्रोल नेव्हिगेशन",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "पॅक्स",
+    "stacks": "स्टॅक्स",
     "theme": "थीम",
     "themeLight": "लाइट",
     "themeDark": "डार्क",
@@ -568,7 +568,7 @@
     "feedbackButton": "GitHub वर फीडबॅक शेअर करा"
   },
   "packs": {
-    "title": "Packs",
+    "title": "पॅक्स",
     "available": "उपलब्ध",
     "emptyAvailable": "आत्तापर्यंत काहीही उपलब्ध नाही.",
     "installed": "इंस्टॉल झालेले",

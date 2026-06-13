@@ -97,8 +97,8 @@
     "testTts": "Aşağıdaki düğmelerle TTS'yi test edin:",
     "showRomanization": "Okunuşu göster",
     "scrollNavigation": "Kaydırma navigasyonu",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Paketler",
+    "stacks": "Yığınlar",
     "theme": "Tema",
     "themeLight": "Açık",
     "themeDark": "Koyu",
@@ -568,7 +568,7 @@
     "close": "Kapat"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Paketler",
     "available": "Mevcut",
     "emptyAvailable": "Henüz mevcut bir şey yok.",
     "installed": "Yüklü",

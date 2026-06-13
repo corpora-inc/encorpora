@@ -97,8 +97,8 @@
     "testTts": "Prueba TTS con los botones de abajo:",
     "showRomanization": "Mostrar romanización",
     "scrollNavigation": "Navegación con desplazamiento",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Paquetes",
+    "stacks": "Pilas",
     "theme": "Tema",
     "themeLight": "Claro",
     "themeDark": "Oscuro",
@@ -568,7 +568,7 @@
     "feedbackButton": "Enviar comentarios en GitHub"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Paquetes",
     "available": "Disponible",
     "emptyAvailable": "Nada disponible todavía.",
     "installed": "Instalado",

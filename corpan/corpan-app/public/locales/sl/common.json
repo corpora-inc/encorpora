@@ -52,9 +52,9 @@
     "lt": "Litvanščina",
     "sk": "Slovaščina",
     "sl": "Slovenščina",
-    "jv": "javanski",
-    "su": "sundanski",
-    "tl": "tagalog"
+    "jv": "javanščina",
+    "su": "sundanščina",
+    "tl": "tagalogščina"
   },
   "categories": {
     "travel": "Potovanje",
@@ -311,7 +311,7 @@
       "joinDesc": "Podprite Corpán in odklenite vse. Neobvezno, kadarkoli.",
       "subscribedTitle": "Ste Corpanista",
       "subscribedDesc": "Hvala, ker ohranjate Corpán brez oglasov in mu pomagate rasti.",
-      "joinTitle": "Join the Corpanistas",
+      "joinTitle": "Pridružite se Corpanistas",
       "start": "Začnite raziskovati",
       "subtitle": "Corpán je ustvarila majhna ekipa odprtokodnih razvijalcev. Pozdravite nas — in če vam je všeč, nas lahko podprete.",
       "title": "Vse je pripravljeno"

@@ -97,8 +97,8 @@
     "testTts": "Subukan ang TTS gamit ang mga pindutan sa ibaba:",
     "showRomanization": "Ipakita ang romanization",
     "scrollNavigation": "Scroll navigation",
-    "stacks": "Stacks",
-    "packs": "Packs",
+    "stacks": "Mga Stack",
+    "packs": "Mga Pack",
     "theme": "Tema",
     "themeLight": "Maliwanag",
     "themeSystem": "Sistema",
@@ -625,7 +625,7 @@
     "renameLabel": "Bagong pangalan para sa stack",
     "selectAria": "Pumili ng isang stack",
     "selectPlaceholder": "Pumili…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "Mga Stack",
     "introTipBody": "Sine-save ng stacks ang iba't ibang setup ng pag-aaral — isa para sa paglalakbay, isa para sa trabaho. I-tap ang + para gumawa ng bagong stack."
   },
   "update": {
@@ -650,8 +650,8 @@
     "feedbackButton": "Ibahagi ang feedback sa GitHub"
   },
   "packs": {
-    "title": "Mga Packs",
-    "available": "Available",
+    "title": "Mga Pack",
+    "available": "Magagamit",
     "emptyAvailable": "Walang available pa.",
     "installed": "Naka-install",
     "emptyInstalled": "Walang naka-install pa.",

@@ -97,8 +97,8 @@
     "testTts": "Kiểm tra cài đặt TTS của bạn bằng cách nhấp vào các nút bên dưới:",
     "showRomanization": "Hiển thị La-tinh hóa",
     "scrollNavigation": "Điều hướng cuộn",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Gói",
+    "stacks": "Bộ học",
     "theme": "Giao diện",
     "themeLight": "Sáng",
     "themeDark": "Tối",
@@ -554,7 +554,7 @@
     "renameLabel": "Tên mới cho ngăn xếp",
     "selectAria": "Chọn hồ sơ",
     "selectPlaceholder": "Chọn…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "Bộ học",
     "introTipBody": "Stacks lưu các thiết lập học tập khác nhau — một cho du lịch, một cho công việc. Nhấn + để tạo stack mới."
   },
   "rating": {
@@ -568,7 +568,7 @@
     "feedbackButton": "Góp ý trên GitHub"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Gói",
     "available": "Có sẵn",
     "emptyAvailable": "Chưa có gì khả dụng.",
     "installed": "Đã cài",

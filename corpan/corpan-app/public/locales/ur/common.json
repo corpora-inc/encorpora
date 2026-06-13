@@ -97,8 +97,8 @@
     "testTts": "نیچے والے بٹنوں سے TTS آزمائیں:",
     "showRomanization": "رومنائزیشن دکھائیں",
     "scrollNavigation": "اسکرول نیویگیشن",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "پیک",
+    "stacks": "اسٹیکس",
     "theme": "تھیم",
     "themeLight": "ہلکا",
     "themeDark": "گہرا",
@@ -568,7 +568,7 @@
     "feedbackButton": "GitHub پر فیڈبیک شیئر کریں"
   },
   "packs": {
-    "title": "Packs",
+    "title": "پیک",
     "available": "دستیاب",
     "emptyAvailable": "ابھی کچھ دستیاب نہیں ہے۔",
     "installed": "انسٹال شدہ",

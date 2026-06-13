@@ -97,8 +97,8 @@
     "testTts": "క్రింది బటన్‌లతో TTS పరీక్షించండి:",
     "showRomanization": "రోమనైజేషన్ చూపించు",
     "scrollNavigation": "స్క్రోల్ నావిగేషన్",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "ప్యాక్‌లు",
+    "stacks": "స్టాక్‌లు",
     "theme": "థీమ్",
     "themeLight": "లైట్",
     "themeDark": "డార్క్",
@@ -568,7 +568,7 @@
     "feedbackButton": "GitHub లో అభిప్రాయం పంచుకోండి"
   },
   "packs": {
-    "title": "Packs",
+    "title": "ప్యాక్‌లు",
     "available": "లభ్యం",
     "emptyAvailable": "ఇప్పటికీ ఏదీ లభ్యం లేదు.",
     "installed": "ఇన్‌స్టాల్ అయ్యింది",

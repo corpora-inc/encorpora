@@ -311,7 +311,7 @@
       "joinDesc": "Støt Corpán og lås op for alt. Valgfrit, når som helst.",
       "subscribedTitle": "Du er en Corpanista",
       "subscribedDesc": "Tak, fordi du holder Corpán reklamefrit og i vækst.",
-      "joinTitle": "Join the Corpanistas",
+      "joinTitle": "Bliv Corpanista",
       "start": "Begynd at udforske",
       "subtitle": "Corpán er lavet af et lille open source-team. Sig hej – og hvis du elsker det, kan du støtte os.",
       "title": "Du er klar"
@@ -554,7 +554,7 @@
     "renameLabel": "Nyt navn til stak",
     "selectAria": "Vælg en stak",
     "selectPlaceholder": "Vælg…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "Stakke",
     "introTipBody": "Stacks gemmer forskellige læringsopsætninger — én til rejser, en anden til arbejde. Tryk på + for at oprette en ny stack."
   },
   "rating": {
