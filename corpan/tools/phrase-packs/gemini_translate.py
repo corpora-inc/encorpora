@@ -42,7 +42,7 @@ from google import genai
 from google.genai import types as gtypes
 
 
-# Mirrors corpan-app/src/store/settings.ts :: ALL_LANGUAGES (51 codes).
+# Mirrors corpan-app/src/store/settings.ts :: ALL_LANGUAGES.
 ALL_LANGS = (
     "en", "es", "ca", "fr", "it", "ro", "pt-PT", "pt-BR",
     "de", "nl", "no", "sv", "da", "fi", "hu",
@@ -50,7 +50,7 @@ ALL_LANGS = (
     "el", "tr",
     "he", "ar", "fa", "ur", "pa-Arab",
     "pa-Guru", "hi", "ne", "bn", "mr", "gu", "kn", "te", "ta",
-    "th", "vi", "id", "ms",
+    "th", "vi", "id", "jv", "su", "ms", "tl",
     "sw",
     "zh-Hans", "zh-Hant", "yue-Hant-HK", "ko-polite", "ja",
 )
@@ -70,7 +70,10 @@ LANG_NAME = {
     "bn": "Bengali", "mr": "Marathi", "gu": "Gujarati", "kn": "Kannada",
     "te": "Telugu", "ta": "Tamil",
     "th": "Thai", "vi": "Vietnamese", "id": "Indonesian (Bahasa Indonesia)",
-    "ms": "Malay (Bahasa Malaysia)", "sw": "Swahili (Kiswahili)",
+    "jv": "Javanese (Basa Jawa, Latin script)",
+    "su": "Sundanese (Basa Sunda, Latin script)",
+    "ms": "Malay (Bahasa Malaysia)", "tl": "Tagalog (Filipino, Latin script)",
+    "sw": "Swahili (Kiswahili)",
     "zh-Hans": "Simplified Mandarin Chinese", "zh-Hant": "Traditional Mandarin Chinese (Taiwan)",
     "yue-Hant-HK": "Hong Kong written Cantonese (Traditional script)",
     "ko-polite": "Korean (polite forms only)", "ja": "Japanese",
@@ -124,7 +127,10 @@ LANG_NOTES = {
     "hi": "Modern conversational Hindi. Use tum for second person (warm, learner-appropriate).",
     "bn": "Modern Cholito-bhasha Bengali. Use tumi for second person.",
     "id": "Standard Bahasa Indonesia. Distinct from Bahasa Malaysia.",
+    "jv": "Modern conversational Javanese in Latin script. Use Ngoko alus / broadly understandable polite-neutral wording; avoid Indonesian calques and avoid Javanese script.",
+    "su": "Modern conversational Sundanese in Latin script. Use polite-neutral standard Basa Sunda; avoid Indonesian calques and avoid Sundanese script.",
     "ms": "Standard Bahasa Malaysia (Bahasa Melayu Baku). Distinct from Bahasa Indonesia.",
+    "tl": "Modern conversational Tagalog/Filipino in Latin script, natural Manila-standard usage. Avoid over-Spanish or overly formal register unless the English demands it.",
     "sw": "Standard East African Kiswahili sanifu.",
     "zh-Hans": "Simplified characters, Mainland Mandarin. NOT Cantonese vocabulary.",
     "zh-Hant": "Traditional characters, Taiwan Mandarin (影片 not 视频, 軟體 not 软件). NOT Cantonese.",

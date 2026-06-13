@@ -24,8 +24,10 @@ import re
 import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
 from openai import OpenAI
 
+load_dotenv(Path.home() / ".env")
 
 HERE = Path(__file__).resolve().parent
 EN_PATH = HERE / "en" / "common.json"
@@ -48,6 +50,9 @@ LANG_AUTONYMS: dict[str, str] = {
     "lt": "lietuvių",
     "sk": "slovenčina",
     "sl": "slovenščina",
+    "jv": "Basa Jawa",
+    "su": "Basa Sunda",
+    "tl": "Tagalog",
 }
 
 
@@ -66,7 +71,10 @@ ABSOLUTE RULES:
 10. For Cantonese (yue-Hant-HK), write in HK Cantonese using Traditional characters; vernacular characters (係, 喺, 唔, 嘅, 咗) are welcome.
 11. For European Portuguese (pt-PT), reject Brazilian vocab/structure: 'autocarro' not 'ônibus', 'comboio' not 'trem', 'estou a fazer' not 'estou fazendo', etc.
 12. For Serbian (sr), write in Cyrillic, ekavian variant.
-13. If a value is a learner-friendly micro-string ("Yes", "No", "Loading"), translate naturally — short and clean."""
+13. For Javanese (jv), write in Latin-script Basa Jawa, polite-neutral Ngoko alus where possible; do not use Javanese script.
+14. For Sundanese (su), write in Latin-script Basa Sunda, polite-neutral standard wording; do not use Sundanese script.
+15. For Tagalog (tl), write natural modern Tagalog/Filipino in Latin script.
+16. If a value is a learner-friendly micro-string ("Yes", "No", "Loading"), translate naturally — short and clean."""
 
 
 def collect_leaf_keys(d, prefix=""):

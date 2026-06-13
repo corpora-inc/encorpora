@@ -132,6 +132,15 @@
         },
         "sl": {
           "type": "string"
+        },
+        "jv": {
+          "type": "string"
+        },
+        "su": {
+          "type": "string"
+        },
+        "tl": {
+          "type": "string"
         }
       },
       "required": [
@@ -155,6 +164,8 @@
         "zh-Hant",
         "th",
         "id",
+        "jv",
+        "su",
         "tr",
         "ta",
         "te",
@@ -176,7 +187,8 @@
         "cs",
         "lt",
         "sk",
-        "sl"
+        "sl",
+        "tl"
       ],
       "additionalProperties": false
     },

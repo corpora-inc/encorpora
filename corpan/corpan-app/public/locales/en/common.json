@@ -51,7 +51,10 @@
     "cs": "Czech",
     "lt": "Lithuanian",
     "sk": "Slovak",
-    "sl": "Slovenian"
+    "sl": "Slovenian",
+    "jv": "Javanese",
+    "su": "Sundanese",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Travel",

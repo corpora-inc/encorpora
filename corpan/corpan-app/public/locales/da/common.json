@@ -51,7 +51,10 @@
     "cs": "Tjekkisk",
     "lt": "Litauisk",
     "sk": "Slovakisk",
-    "sl": "Slovensk"
+    "sl": "Slovensk",
+    "jv": "javanesisk",
+    "su": "sundanesisk",
+    "tl": "tagalog"
   },
   "categories": {
     "travel": "Rejse",

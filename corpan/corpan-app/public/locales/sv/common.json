@@ -51,7 +51,10 @@
     "cs": "Tjeckiska",
     "lt": "Litauiska",
     "sk": "Slovakiska",
-    "sl": "Slovenska"
+    "sl": "Slovenska",
+    "jv": "javanesiska",
+    "su": "sundanesisk",
+    "tl": "tagalog"
   },
   "categories": {
     "travel": "Resor",
