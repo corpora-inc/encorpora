@@ -185,7 +185,7 @@
         },
         "pronunciation_coach": {
             "name": "Parlometron",
-            "blurb": "Ucapake frasa kanthi keras lan entuk umpan balik pelafalan."
+            "blurb": "Ucapake frasa banter lan entuk tanggapan babagan pelafalan."
         },
         "hanzipan": {
             "name": "Hanzipan",
@@ -206,80 +206,80 @@
     },
     "onboarding": {
         "settingUp": "Nyetel barang…",
-        "ttsIntro": "Corpán maca kanthi keras. Ketuk swara kanggo ngrungokake kanthi kecepatan sampeyan.",
+        "ttsIntro": "Corpán bisa maca banter. Tutul swara kanggo ngrungokake nganggo kacepetan sing cocog karo sampeyan.",
         "interests": {
             "title": "Apa sing pengin sampeyan lakoni?",
-            "subtitle": "Pilih apa wae sing menarik — kita bakal nyaranake pengalaman sing cocog. Opsional.",
-            "read": "Waca cerita & buku",
-            "readDesc": "Menyelami pembaca ing basa sampeyan.",
+            "subtitle": "Pilih sing sampeyan senengi — kita bakal menehi saran pengalaman sing cocog. Opsional.",
+            "read": "Waca crita & buku",
+            "readDesc": "Maca nganggo basa sing nyaman kanggo sampeyan.",
             "audio": "Rungokake audio",
             "audioDesc": "Buku audio, narasi, lan radio.",
             "games": "Main game",
             "gamesDesc": "Sinau liwat tantangan sing nyenengake.",
             "speak": "Latihan ngomong",
-            "speakDesc": "Ucapake frasa kanthi keras lan entuk umpan balik.",
+            "speakDesc": "Ucapake frasa banter lan entuk tanggapan.",
             "study": "Sinau & latihan",
-            "studyDesc": "Bangun kosakata kanthi latihan fokus.",
-            "wild": "Jelajahi barang liar",
-            "wildDesc": "Pengalaman sing ngagetake, eksperimental."
+            "studyDesc": "Tambah kosakata nganggo latihan sing fokus.",
+            "wild": "Coba sing ora biasa",
+            "wildDesc": "Pengalaman eksperimen sing bisa ngagetake."
         },
         "engage": {
             "title": "Sampeyan wis siap",
-            "subtitle": "Corpán digawe dening tim open-source cilik. Ayo ucapake halo — lan yen sampeyan seneng, sampeyan bisa ndhukung kita.",
+            "subtitle": "Corpán digawe dening tim open-source cilik. Ayo nyapa — lan yen sampeyan seneng, sampeyan bisa ndhukung kita.",
             "joinTitle": "Gabung karo Corpanistas",
-            "joinDesc": "Dukung Corpán lan mbukak kabeh. Opsional, kapan wae.",
+            "joinDesc": "Dukung Corpán lan bukak kabeh. Opsional, kapan wae.",
             "subscribedTitle": "Sampeyan minangka Corpanista",
-            "subscribedDesc": "Matur nuwun kanggo njaga Corpán tanpa iklan lan berkembang.",
+            "subscribedDesc": "Matur nuwun wis mbantu njaga Corpán tanpa iklan lan terus ngrembaka.",
             "start": "Mulai jelajahi"
         },
         "welcomePact": {
-            "title": "Corpán Evolves",
-            "subtitle": "Sampeyan minangka pangguna awal",
-            "tinyTeamTitle": "Tim cilik penggemar",
-            "tinyTeamDesc": "Independen, tanpa iklan, lan dibangun kanthi hormat kanggo wong-wong sing nggunakake — kru cilik nggawe aplikasi basa sing kita pengin.",
-            "bleedingEdgeTitle": "Tepi-tepi, kanthi sengaja",
-            "bleedingEdgeDesc": "Corpán ngedorong watesan apa sing bisa ditindakake piranti sampeyan: jagad imersif, pengenalan ucapan, swara alami, lan model AI paling anyar, kabeh bisa kerja bareng kanggo nggawe cara anyar kanggo sinau. Akeh sing mlaku langsung ing piranti sampeyan, menehi sampeyan sinau pribadi, offline-first tanpa gumantung ing pusat data. Kita ngluncurake teknologi anyar nalika isih mentah, sing tegese bisa kadang-kadang tumindak aneh, mlaku alon, utawa mung luwih saka sing bisa ditangani piranti sampeyan. Sebagai gantine, sampeyan entuk pengalaman sinau anyar sing kuat sawise bisa.",
-            "yourLangTitle": "Kita ora bisa ngomong saben basa sing kita dukung",
-            "yourLangDesc": "Iku kebenaran sing jujur. Kita mbangun kanggo puluhan basa amarga saben wong pantes alat sinau sing kuat, ora amarga tim cilik kita wis ngerti kabeh. Sampeyan bisa nemokake barang-barang sing kita salah. Yen sampeyan ngerti {{lang}} luwih apik tinimbang kita, kita ngarep sampeyan bakal ngandhani kita lan mbantu nggawe Corpán pantes.",
-            "plea": "Apa sampeyan duwe ide, koreksi, utawa pengalaman sinau liar sing pengin sampeyan deleng? Critakake marang kita. Kita maca saben pesen lan mikir kanthi jero babagan apa sing bisa mbukak kanggo Corpán lan sinau basa.",
-            "emailCta": "Email kita",
-            "githubCta": "Buka masalah GitHub",
-            "join": "Pengin mbantu nggawa Corpán menyang jagad? Kita tansah golek kolaborator, penerjemah, lan duta lokal. Ayo golek kita.",
-            "pact": "Ketuk ing ngisor iki kanggo miwiti sinau lan berkembang karo kita. 🤝",
-            "cta": "Aku melu — ayo mlaku"
+            "title": "Corpán terus ngrembaka",
+            "subtitle": "Sampeyan kalebu sing nyoba luwih dhisik",
+            "tinyTeamTitle": "Tim cilik sing tresna marang basa",
+            "tinyTeamDesc": "Mandhiri, tanpa iklan, lan digawe kanthi ngajeni wong sing nggunakake — tim cilik sing mbangun aplikasi basa sing suwe kita karepake.",
+            "bleedingEdgeTitle": "Sengaja nganggo teknologi paling anyar",
+            "bleedingEdgeDesc": "Corpán nyoba nggedhekake apa sing bisa ditindakake piranti sampeyan: donya imersif, pangenalan wicara, swara alami, lan model AI paling anyar, kabeh digandhengake kanggo nggawe cara anyar sinau. Akeh sing mlaku langsung ing piranti sampeyan, supaya sinau luwih pribadi lan bisa luwih dhisik offline. Amarga teknologi iki isih anyar, kadhang bisa tumindak aneh, alon, utawa kakehan kanggo piranti sampeyan. Nanging imbalane, sampeyan bisa nyoba pengalaman sinau anyar luwih awal.",
+            "yourLangTitle": "Ora kabeh basa sing didhukung wis kita kuwasani dhewe",
+            "yourLangDesc": "Iki sing sejatine. Kita mbangun kanggo puluhan basa amarga saben wong pantes nduweni piranti sinau sing kuat, dudu amarga tim cilik kita wis ngerti kabeh basa kasebut. Sampeyan bisa wae nemokake sing salah utawa kurang alami. Yen sampeyan luwih ngerti {{lang}} tinimbang kita, tulung critakake supaya Corpán luwih becik ing kene.",
+            "plea": "Duwe ide, koreksi, utawa pengalaman sinau anyar sing pengin sampeyan deleng? Kabari kita. Saben pesen kita waca lan kita pikirake tenanan kanggo masa depan Corpán lan sinau basa.",
+            "emailCta": "Kirim email",
+            "githubCta": "Gawe GitHub issue",
+            "join": "Pengin melu nggawa Corpán menyang luwih akeh wong? Kita tansah golek mitra, penerjemah, lan wakil lokal. Hubungi kita.",
+            "pact": "Tutul ing ngisor iki kanggo miwiti sinau lan tuwuh bareng kita. 🤝",
+            "cta": "Aku melu — ayo!"
         },
         "fork": {
             "title": "Apa sing nggawa sampeyan menyang Corpán?",
-            "subtitle": "Kita bakal nyetel kabeh kanggo sampeyan. Sampeyan bisa ngganti mengko.",
+            "subtitle": "Kita bakal nyiapake kabeh kanggo sampeyan. Mengko isih bisa diganti.",
             "enjoy": {
-                "label": "Nikmati Corpán ing {{lang}}",
-                "desc": "Buku, cerita, game, latihan lan liyane — kabeh ing basa sampeyan."
+                "label": "Gunakake Corpán nganggo {{lang}}",
+                "desc": "Buku, crita, game, latihan, lan liyane — kabeh nganggo basa sampeyan."
             },
             "learn": {
                 "label": "Sinau basa",
-                "desc": "Cerita, game, latihan lan audio ing basa anyar."
+                "desc": "Crita, game, latihan, lan audio nganggo basa anyar."
             },
             "polyglot": {
                 "label": "Jelajahi akeh basa",
-                "desc": "Tumpuk sawetara basa lan jelajahi kabeh."
+                "desc": "Gabungake sawetara basa lan jelajahi kabeh."
             },
             "child": {
-                "label": "Atur kanggo anak",
-                "desc": "Buku lan game sing lembut, nyenengake kanggo sinau luwih enom."
+                "label": "Siapake kanggo bocah",
+                "desc": "Buku lan game sing alus lan nyenengake kanggo sing isih enom."
             }
         },
         "calibrate": {
-            "enjoyTitle": "Pira apik sampeyan maca {{lang}}?",
-            "enjoyNative": "Fasih — iki basa aku",
-            "enjoyComfortable": "Cukup apik",
+            "enjoyTitle": "Sepira lancar sampeyan maca {{lang}}?",
+            "enjoyNative": "Lancar — iki basaku",
+            "enjoyComfortable": "Wis cukup lancar",
             "enjoyImproving": "Aku isih sinau maca",
-            "enjoyJustStarting": "Mung miwiti — aku anyar maca",
+            "enjoyJustStarting": "Bubar miwiti — aku isih anyar maca basa iki",
             "learnTitle": "Apa sampeyan wis sinau {{lang}} sadurunge?",
-            "learnNever": "Ora tau — pemula total",
+            "learnNever": "Durung tau — pancen pamula",
             "learnLittle": "Sithik",
             "learnAdvanced": "Aku cukup maju",
-            "childAgeTitle": "Pira umur pembaca?",
-            "childUnder13": "Ngisor 13",
+            "childAgeTitle": "Pira umure sing maca?",
+            "childUnder13": "Ngisor 13 taun",
             "childTeen": "13–17"
         },
         "welcome": "Sugeng rawuh",
@@ -290,7 +290,7 @@
         "ttsPoorQualityNote": "Yen audio krasa kurang apik, instal swara berkualitas tinggi ing setelan TTS piranti sampeyan.",
         "howToSetupTtsOn": "Carane nyetel TTS ing",
         "welcomeTitle": "Sugeng rawuh ing kulawarga Corpán!",
-        "welcomeBody": "Corpán minangka aplikasi open-source saka tim cilik, dudu perusahaan gedhe. Kita peduli banget babagan basa lan pendidikan lan kita isih awal, mula sampeyan bisa ndeleng pinggiran kasar utawa fitur lan basa sing ilang. Yen ana sing ora bisa digunakake, tulung critakake marang kita ing GitHub utawa liwat email. Umpan balik sampeyan mbantu kita ngirim pembaruan sing asring lan nggawe sinau basa luwih apik kanggo kabeh wong.",
+        "welcomeBody": "Corpán iku aplikasi open-source saka tim cilik, dudu perusahaan gedhe. Kita nggatekake banget basa lan pendidikan, lan iki isih tahap awal, mula sampeyan bisa nemokake bagean sing durung rapi utawa fitur lan basa sing durung lengkap. Yen ana sing ora mlaku, tulung kabari liwat GitHub utawa email. Masukan sampeyan mbantu kita luwih kerep nganyari lan nggawe sinau basa luwih apik kanggo kabeh wong.",
         "welcomeVisit": "Kunjungi encorpora.io",
         "linkCopied": "Tautan disalin. Buka ing browser sampeyan:",
         "reconfigureStack": "Konfigurasi ulang tumpukan",
@@ -416,13 +416,13 @@
             "learner": "Aku sinau basa",
             "learnerDesc": "Waca lan rungokake ing basa sing sampeyan sinau.",
             "enjoyer": "Aku pengin nikmati konten",
-            "enjoyerDesc": "Buku, cerita, lan game ing basa sampeyan.",
-            "polyglot": "Kedua — aku pengin kabeh",
-            "polyglotDesc": "Sawetara basa sekaligus, plus kabeh liyane.",
+            "enjoyerDesc": "Buku, crita, lan game nganggo basa sampeyan.",
+            "polyglot": "Loro-lorone — aku pengin kabeh",
+            "polyglotDesc": "Sawetara basa bareng, plus kabeh liyane.",
             "kid": "Iki kanggo anak",
-            "kidDesc": "Buku lan game sinau sing dipilih kanggo pembaca enom.",
-            "ageTitle": "Pira umur pembaca?",
-            "ageUnder13": "Ngisor 13",
+            "kidDesc": "Buku lan game sinau sing dipilih kanggo sing isih enom.",
+            "ageTitle": "Pira umure sing maca?",
+            "ageUnder13": "Ngisor 13 taun",
             "ageTeen": "13–17"
         },
         "pitch": {
@@ -435,13 +435,13 @@
             "continueFree": "Terusake nganggo tingkat gratis"
         },
         "confident": {
-            "yourVoiceFor": "Suara {{lang}} sampeyan",
-            "voiceCountOne": "1 suara siap",
-            "voiceCountMany": "{{count}} suara siap",
+            "yourVoiceFor": "Swara {{lang}} sampeyan",
+            "voiceCountOne": "1 swara siap",
+            "voiceCountMany": "{{count}} swara siap",
             "andMore": "+{{count}} liyane",
-            "noVoiceFor": "Ora ana suara {{lang}} saiki — ayo tambah siji supaya Corpán bisa maca kanthi keras.",
-            "addBetter": "Mbukak suara sing luwih sugih",
-            "chooseVoices": "Pilih suara"
+            "noVoiceFor": "Durung ana swara {{lang}} — ayo tambah siji supaya Corpán bisa maca banter.",
+            "addBetter": "Bukak swara sing luwih apik",
+            "chooseVoices": "Pilih swara"
         }
     },
     "socials": {
@@ -607,8 +607,8 @@
     "footer": {
         "appVersion": "Versi aplikasi",
         "website": "Situs web",
-        "supportAndFeedback": "Dukungan & Umpan Balik",
-        "feedbackNote": "Kanggo masalah utawa saran, tulung kunjungi repositori GitHub kita utawa hubungi kita liwat email.",
+        "supportAndFeedback": "Dhukungan & Masukan",
+        "feedbackNote": "Yen ana masalah utawa saran, tulung bukak repositori GitHub kita utawa hubungi liwat email.",
         "githubIssues": "Masalah GitHub",
         "aboutCorpan": "Babagan Corpán"
     },
@@ -646,8 +646,8 @@
         "remindLater": "Mungkin mengko",
         "noThanks": "Ora, matur nuwun",
         "close": "Tutup",
-        "feedbackHint": "Ora 5 bintang saiki? Ketuk 'Bagikan umpan balik' lan critakake kepiye kita bisa nggawe luwih apik.",
-        "feedbackButton": "Bagikan umpan balik ing GitHub"
+        "feedbackHint": "Durung 5 bintang? Tutul 'Wenehi masukan' lan critakake carane supaya luwih apik.",
+        "feedbackButton": "Wenehi masukan ing GitHub"
     },
     "packs": {
         "title": "Paket",
@@ -784,7 +784,7 @@
     },
     "discoverPacks": {
         "title": "Gawe Corpán dadi milikmu",
-        "subtitle": "Tambah pembaca imersif, game, lan alat — dibangun ing Corpán kanggo nggedhekake latihan sampeyan.",
+        "subtitle": "Tambah maca imersif, game, lan alat — dibangun ing Corpán kanggo nggedhekake latihan sampeyan.",
         "maybeLater": "Mungkin mengko",
         "empty": "Luwih akeh paket bakal teka — jelajahi Corpán ing wektu iki.",
         "offlineEmpty": "Sambung menyang internet kanggo nemokake paket — utawa skip iki kanggo saiki."

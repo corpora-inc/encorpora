@@ -45,15 +45,23 @@ export function stripUnicodeExtensions(tag: string): string {
  * `dialects.*` i18n namespace, falling back from most-specific to least.
  * `trDial(key)` must return "" when the key is missing.
  */
-export function resolveDialectLabel(fullTag: string, trDial: (k: string) => string): string {
+export function resolveDialectLabel(
+    fullTag: string,
+    trDial: (k: string) => string,
+    trLang?: (k: string) => string,
+): string {
     const normFull = normalizeTagCasing(fullTag);
     const base = stripUnicodeExtensions(normFull);
 
     const v1 = trDial(normFull);
     if (v1) return v1;
+    const l1 = trLang?.(normFull);
+    if (l1) return l1;
 
     const v2 = trDial(base);
     if (v2) return v2;
+    const l2 = trLang?.(base);
+    if (l2) return l2;
 
     const parts = base.split("-");
     const lang = parts[0];
@@ -63,14 +71,20 @@ export function resolveDialectLabel(fullTag: string, trDial: (k: string) => stri
     if (script) {
         const v3a = trDial(`${lang}-${script}`);
         if (v3a) return v3a;
+        const l3a = trLang?.(`${lang}-${script}`);
+        if (l3a) return l3a;
     }
     if (region) {
         const v3b = trDial(`${lang}-${region}`);
         if (v3b) return v3b;
+        const l3b = trLang?.(`${lang}-${region}`);
+        if (l3b) return l3b;
     }
 
     const v4 = trDial(lang);
     if (v4) return v4;
+    const l4 = trLang?.(lang);
+    if (l4) return l4;
 
     if (base === "zh-Hans") return "Chinese (Simplified)";
     if (base === "zh-Hant") return "Chinese (Traditional)";

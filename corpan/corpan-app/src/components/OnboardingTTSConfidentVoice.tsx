@@ -72,13 +72,15 @@ export function OnboardingTTSConfidentVoice({
     const { t } = useTranslation();
     const trDial = (key: string) =>
         (t(`dialects.${key}`, { defaultValue: "" }) as unknown as string) || "";
+    const trLang = (key: string) =>
+        (t(`languages.${key}`, { defaultValue: "" }) as unknown as string) || "";
 
     const best = voices[0] ?? null;
     const count = voices.length;
 
-    const langLabel = useMemo(() => resolveDialectLabel(code, trDial), [code, t]);
+    const langLabel = useMemo(() => resolveDialectLabel(code, trDial, trLang), [code, t]);
     const voiceDialect = useMemo(
-        () => (best ? resolveDialectLabel(best.language || code, trDial) : ""),
+        () => (best ? resolveDialectLabel(best.language || code, trDial, trLang) : ""),
         [best, code, t],
     );
 

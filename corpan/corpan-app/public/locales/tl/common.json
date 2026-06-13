@@ -206,58 +206,58 @@
   },
   "onboarding": {
     "settingUp": "Nagsasaayos…",
-    "ttsIntro": "Binabasa ng Corpán nang malakas. Tapikin ang isang boses upang marinig ito sa iyong bilis.",
+    "ttsIntro": "Nagbabasa nang malakas ang Corpán. I-tap ang isang boses para marinig ito sa bilis na komportable sa iyo.",
     "interests": {
       "title": "Ano ang gusto mong gawin?",
-      "subtitle": "Pumili ng kahit ano na kaakit-akit — magmumungkahi kami ng mga karanasan na tumutugma. Opsyonal.",
-      "read": "Magbasa ng mga kwento at libro",
-      "readDesc": "Sumisid sa mga mambabasa sa iyong wika.",
+      "subtitle": "Piliin ang mga gusto mo — magmumungkahi kami ng bagay na bagay sa iyo. Opsyonal ito.",
+      "read": "Magbasa ng kuwento at libro",
+      "readDesc": "Magbasa sa wikang komportable sa iyo.",
       "audio": "Makinig sa audio",
-      "audioDesc": "Audiobooks, narration at radyo.",
-      "games": "Maglaro ng mga laro",
+      "audioDesc": "Audiobooks, narration, at radyo.",
+      "games": "Maglaro",
       "gamesDesc": "Matuto sa pamamagitan ng mga masayang hamon.",
-      "speak": "Magpraktis ng pagsasalita",
-      "speakDesc": "Sabihin ang mga parirala nang malakas at makakuha ng feedback.",
-      "study": "Mag-aral at mag-drill",
-      "studyDesc": "Bumuo ng bokabularyo sa nakatuon na pagsasanay.",
-      "wild": "Mag-explore ng mga kakaibang bagay",
-      "wildDesc": "Nakakagulat, eksperimento na mga karanasan."
+      "speak": "Magpraktis magsalita",
+      "speakDesc": "Bigkasin ang mga parirala at makatanggap ng feedback.",
+      "study": "Mag-aral at mag-practice",
+      "studyDesc": "Palawakin ang bokabularyo gamit ang focused practice.",
+      "wild": "Subukan ang kakaiba",
+      "wildDesc": "Mga nakakagulat at experimental na karanasan."
     },
     "engage": {
       "title": "Naka-set ka na",
-      "subtitle": "Ang Corpán ay ginawa ng isang maliit na open-source na koponan. Halika at batiin kami — at kung gusto mo ito, maaari mo kaming suportahan.",
+      "subtitle": "Ginawa ang Corpán ng maliit na open-source team. Kumustahin kami — at kung nagustuhan mo ito, puwede mo kaming suportahan.",
       "joinTitle": "Sumali sa mga Corpanista",
       "joinDesc": "Suportahan ang Corpán at i-unlock ang lahat. Opsyonal, anumang oras.",
-      "subscribedTitle": "Ikaw ay isang Corpanista",
-      "subscribedDesc": "Salamat sa pagpapanatiling walang ad ang Corpán at lumalaki.",
+      "subscribedTitle": "Corpanista ka na",
+      "subscribedDesc": "Salamat sa pagtulong na panatilihing walang ads at patuloy na lumalago ang Corpán.",
       "start": "Simulan ang pag-explore"
     },
     "welcomePact": {
       "title": "Nag-e-evolve ang Corpán",
-      "subtitle": "Ikaw ay isang maagang adopter",
-      "tinyTeamTitle": "Isang maliit na koponan ng mga mahilig",
-      "tinyTeamDesc": "Independiyente, walang ad, at itinayo nang may paggalang sa mga tao na gumagamit nito — isang maliit na grupo na gumagawa ng wika app na palagi naming nais.",
-      "bleedingEdgeTitle": "Nasa cutting-edge, sa layunin",
-      "bleedingEdgeDesc": "Itinutulak ng Corpán ang mga hangganan ng kung ano ang kayang gawin ng iyong device: nakaka-engganyong mga mundo, pagkilala sa pagsasalita, natural na mga boses, at ang pinakabagong mga modelo ng AI, lahat ay nagtutulungan upang lumikha ng mga bagong paraan upang matuto. Marami sa mga ito ay tumatakbo nang direkta sa iyong device, na nagbibigay sa iyo ng pribadong, offline-first na pag-aaral nang hindi umaasa sa isang data center. Naglalabas kami ng bagong teknolohiya habang ito ay nasa hilaw pa, na nangangahulugang maaari itong paminsang kumilos nang kakaiba, tumakbo nang mabagal, o simpleng higit pa sa kayang hawakan ng iyong device. Bilang kapalit, nakakakuha ka ng makapangyarihang bagong mga karanasan sa pag-aaral sa lalong madaling panahon na maging posible ang mga ito.",
-      "yourLangTitle": "Hindi kami nagsasalita ng bawat wika na sinusuportahan namin",
-      "yourLangDesc": "Iyan ang tapat na katotohanan. Nagtatayo kami para sa dose-dosenang mga wika dahil lahat ay nararapat sa makapangyarihang mga tool sa pag-aaral, hindi dahil alam na ng aming maliit na koponan ang lahat ng ito. Maaaring makatagpo ka ng mga bagay na mali ang aming pagkakaintindi. Kung alam mo ang {{lang}} nang mas mabuti kaysa sa amin, umaasa kaming sasabihin mo sa amin at tulungan kaming gawing karapat-dapat ang Corpán dito.",
-      "plea": "May ideya, isang pagwawasto, o isang kakaibang karanasan sa pag-aaral na nais mong makita? Sabihin mo sa amin. Binabasa namin ang bawat mensahe at nag-iisip nang malalim tungkol sa kung ano ang maaaring buksan nito para sa Corpán at pag-aaral ng wika.",
+      "subtitle": "Isa ka sa mga unang sumubok",
+      "tinyTeamTitle": "Maliit na koponan na mahilig sa wika",
+      "tinyTeamDesc": "Independent, walang ads, at ginawa nang may respeto sa mga gumagamit nito — maliit lang kami, pero ginagawa namin ang language app na matagal na naming hinahanap.",
+      "bleedingEdgeTitle": "Sadyang cutting-edge",
+      "bleedingEdgeDesc": "Sinusubukan ng Corpán ang mga bagong kayang gawin ng device mo: immersive worlds, speech recognition, natural voices, at pinakabagong AI models na nagtutulungan para gumawa ng bagong paraan ng pag-aaral. Marami rito ang tumatakbo mismo sa device mo, kaya mas private at offline-first ang learning. Dahil maaga naming inilalabas ang bagong teknolohiya, minsan puwede itong kumilos nang kakaiba, bumagal, o hindi kayanin ng device. Kapalit nito, mas maaga mong nasusubukan ang malalakas na bagong paraan ng pagkatuto.",
+      "yourLangTitle": "Hindi namin personal na alam ang lahat ng wikang sinusuportahan namin",
+      "yourLangDesc": "Iyan ang totoo. Gumagawa kami para sa maraming wika dahil lahat ay deserve ng makapangyarihang learning tools, hindi dahil kabisado na ng maliit naming team ang lahat ng ito. Maaaring may makita kang mali o hindi natural. Kung mas alam mo ang {{lang}} kaysa sa amin, sana sabihin mo sa amin at tulungan kaming pagandahin ang Corpán dito.",
+      "plea": "May ideya, correction, o bagong uri ng learning experience na gusto mong makita? Sabihin sa amin. Binabasa namin ang bawat message at pinag-iisipan nang mabuti kung ano ang puwede nitong buksan para sa Corpán at sa language learning.",
       "emailCta": "I-email kami",
-      "githubCta": "Buksan ang isang GitHub issue",
-      "join": "Gusto mo bang tulungan dalhin ang Corpán sa mundo? Palagi kaming naghahanap ng mga kasosyo, tagasalin, at lokal na mga embahador. Halika at hanapin kami.",
-      "pact": "Tapikin sa ibaba upang simulan ang pag-aaral at lumago kasama namin. 🤝",
-      "cta": "Kasama ako — tara na"
+      "githubCta": "Magbukas ng GitHub issue",
+      "join": "Gusto mo bang tumulong na dalhin ang Corpán sa mas maraming tao? Lagi kaming naghahanap ng partners, translators, at local ambassadors. Makipag-ugnayan sa amin.",
+      "pact": "I-tap sa ibaba para magsimulang matuto at lumago kasama namin. 🤝",
+      "cta": "Kasama ako — tara!"
     },
     "fork": {
       "title": "Ano ang nagdala sa iyo sa Corpán?",
       "subtitle": "I-set up namin ang lahat para sa iyo. Maaari mo itong baguhin mamaya.",
       "enjoy": {
         "label": "Mag-enjoy sa Corpán sa {{lang}}",
-        "desc": "Mga libro, kwento, laro, drills at higit pa — lahat sa iyong wika."
+        "desc": "Mga libro, kuwento, laro, drill, at iba pa — lahat sa wika mo."
       },
       "learn": {
         "label": "Matuto ng isang wika",
-        "desc": "Mga kwento, laro, drills at audio sa isang bagong wika."
+        "desc": "Mga kuwento, laro, drill, at audio sa bagong wika."
       },
       "polyglot": {
         "label": "Mag-explore ng maraming wika",
@@ -270,9 +270,9 @@
     },
     "calibrate": {
       "enjoyTitle": "Gaano ka kahusay magbasa ng {{lang}}?",
-      "enjoyNative": "Fluently — ito ang aking wika",
-      "enjoyComfortable": "Medyo mahusay",
-      "enjoyImproving": "Patuloy akong natututo na basahin ito",
+      "enjoyNative": "Fluent — wika ko ito",
+      "enjoyComfortable": "Medyo sanay na ako",
+      "enjoyImproving": "Natututo pa akong basahin ito",
       "enjoyJustStarting": "Nagsisimula pa lang — bago ako sa pagbabasa nito",
       "learnTitle": "Nakapag-aral ka na ba ng {{lang}} dati?",
       "learnNever": "Hindi pa — total beginner",
@@ -290,7 +290,7 @@
     "ttsPoorQualityNote": "Kung ang audio ay mukhang mahina, mag-install ng mataas na kalidad na mga boses sa mga setting ng TTS ng iyong device.",
     "howToSetupTtsOn": "Paano i-set up ang TTS sa",
     "welcomeTitle": "Maligayang pagdating sa pamilya ng Corpán!",
-    "welcomeBody": "Ang Corpán ay isang open-source na app mula sa isang maliit na koponan, hindi isang malaking kumpanya. Mahalaga sa amin ang wika at edukasyon at kami ay nasa simula pa lamang, kaya maaari mong makita ang mga magaspang na gilid o nawawalang mga tampok at wika. Kung may hindi gumagana, mangyaring sabihin sa amin sa GitHub o sa pamamagitan ng email. Ang iyong feedback ay tumutulong sa amin na maglabas ng madalas na mga update at gawing mas mahusay ang pag-aaral ng wika para sa lahat.",
+      "welcomeBody": "Ang Corpán ay isang open-source app mula sa maliit na team, hindi malaking kumpanya. Mahalaga sa amin ang wika at edukasyon, at maaga pa kami, kaya may makikita ka pang kulang, magaspang, o hindi pa tapos. Kung may hindi gumagana, sabihin sa amin sa GitHub o email. Malaking tulong ang feedback mo para mas mapaganda namin ang language learning para sa lahat.",
     "welcomeVisit": "Bisitahin ang encorpora.io",
     "linkCopied": "Link na kopya. Buksan sa iyong browser:",
     "reconfigureStack": "I-reconfigure ang stack",
@@ -298,9 +298,9 @@
     "voiceGuide": {
       "title": "I-unlock ang pinakamahusay na mga boses ng iyong device",
       "intro": "Mayaman at natural na mga boses ang iyong device na nakabuilt-in — libre, at mas mahusay kaysa sa default. Iniwan lang ito ng gumawa na nakasara. I-on natin ito; ilang tap lang ang kailangan:",
-      "step1": "Tapikin ang Buksan ang Mga Setting sa ibaba.",
+      "step1": "I-tap ang Buksan ang Mga Setting sa ibaba.",
       "step2": "Pumunta sa Accessibility → Spoken Content → Voices.",
-      "step3": "Tapikin ang iyong wika.",
+      "step3": "I-tap ang iyong wika.",
       "step4": "I-download ang isang Premium o Enhanced na boses.",
       "step5": "Bumalik sa Corpán — awtomatikong lilitaw ito dito.",
       "macStep1": "Buksan ang System Settings.",
@@ -362,7 +362,7 @@
       },
       "engineHung": {
         "heading": "Hindi tumutugon ang voice engine",
-        "detail": "Minsan ang serbisyo ng TTS ng sistema ay nagiging stuck. Tapikin sa ibaba upang subukan muli — kadalasang nalulutas ito.",
+        "detail": "Minsan nagha-hang ang TTS service ng system. I-tap sa ibaba para subukan ulit — kadalasan, naaayos ito.",
         "button": "Subukan muli"
       },
       "probing": "Nagsasaayos ng mga boses…",
@@ -626,7 +626,7 @@
     "selectAria": "Pumili ng isang stack",
     "selectPlaceholder": "Pumili…",
     "introTipTitle": "Stacks",
-    "introTipBody": "Nagsasave ang stacks ng iba't ibang setup ng pag-aaral — isa para sa paglalakbay, isa para sa trabaho. Tapikin ang + upang gumawa ng bagong stack."
+    "introTipBody": "Sine-save ng stacks ang iba't ibang setup ng pag-aaral — isa para sa paglalakbay, isa para sa trabaho. I-tap ang + para gumawa ng bagong stack."
   },
   "update": {
     "title": "Available ang update",
@@ -646,7 +646,7 @@
     "remindLater": "Marahil mamaya",
     "noThanks": "Hindi, salamat",
     "close": "Isara",
-    "feedbackHint": "Hindi pa 5 stars? Tapikin ang 'Ibahagi ang feedback' at sabihin sa amin kung paano namin ito mapapabuti.",
+    "feedbackHint": "Hindi pa 5 stars? I-tap ang 'Ibahagi ang feedback' at sabihin sa amin kung paano namin ito mapapabuti.",
     "feedbackButton": "Ibahagi ang feedback sa GitHub"
   },
   "packs": {
@@ -674,7 +674,7 @@
     "installStuckDetail": "Walang progreso sa loob ng ilang sandali. Suriin ang iyong koneksyon at subukan muli.",
     "installFailedTitle": "Nabigong i-install",
     "devUnlockTitle": "Developer Packs",
-    "devUnlockHint": "Tapikin ng 7 beses upang i-unlock ang mga manifest installs.",
+    "devUnlockHint": "I-tap nang 7 beses para i-unlock ang manifest installs.",
     "devUnlockToast": "Naka-unlock ang Developer Packs.",
     "devIntro": "Subukan ang isang Corpán Pack o gumawa ng sarili mo.",
     "devLink": "Matuto nang higit pa sa Free2z",

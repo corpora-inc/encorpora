@@ -185,7 +185,7 @@
         },
         "pronunciation_coach": {
             "name": "Parlometron",
-            "blurb": "Sebutkeun frasa sacara lisan sareng meunang umpan balik pelafalan."
+            "blurb": "Ucapkeun frasa tarik teras kéngingkeun tanggapan ngeunaan pelafalan."
         },
         "hanzipan": {
             "name": "Hanzipan",
@@ -206,54 +206,54 @@
     },
     "onboarding": {
         "settingUp": "Nyetél hal-hal…",
-        "ttsIntro": "Corpán maca sacara lisan. Ketok sora pikeun ngadangu dina kecepatan anjeun.",
+        "ttsIntro": "Corpán tiasa maca tarik. Ketok hiji sora pikeun ngadangu dina kagancangan anu merenah pikeun anjeun.",
         "interests": {
             "title": "Naon anu anjeun hoyong laksanakeun?",
-            "subtitle": "Pilih naon waé anu menarik — kami bakal nyarankeun pangalaman anu cocog. Pilihan.",
+            "subtitle": "Pilih naon waé anu dipikaresep — kami bakal nyarankeun pangalaman anu cocog. Opsional.",
             "read": "Baca carita & buku",
-            "readDesc": "Jelajah pembaca dina basa anjeun.",
+            "readDesc": "Maca dina basa anu merenah pikeun anjeun.",
             "audio": "Dangu audio",
             "audioDesc": "Buku audio, narasi, sareng radio.",
             "games": "Maén kaulinan",
             "gamesDesc": "Diajar ngalangkungan tantangan anu pikaresepeun.",
             "speak": "Latihan nyarios",
-            "speakDesc": "Sebutkeun frasa sacara lisan sareng meunang umpan balik.",
+            "speakDesc": "Ucapkeun frasa tarik teras kéngingkeun tanggapan.",
             "study": "Diajar & latihan",
-            "studyDesc": "Ngawangun kosa kata kalayan latihan anu fokus.",
-            "wild": "Jelajah hal-hal liar",
-            "wildDesc": "Pangalaman anu ngareuwaskeun, éksperimental."
+            "studyDesc": "Nambahan kosa kata ku latihan anu fokus.",
+            "wild": "Coba anu teu biasa",
+            "wildDesc": "Pangalaman eksperimen anu bisa ngareuwaskeun."
         },
         "engage": {
             "title": "Anjeun parantos siap",
-            "subtitle": "Corpán didamel ku tim open-source leutik. Ayo sapa — sareng upami anjeun resep, anjeun tiasa ngadukung kami.",
+            "subtitle": "Corpán didamel ku tim open-source leutik. Hayu urang sapa — sareng upami anjeun resep, anjeun tiasa ngadukung kami.",
             "joinTitle": "Gabung sareng Corpanistas",
-            "joinDesc": "Dukung Corpán sareng buka sadayana. Pilihan, iraha waé.",
-            "subscribedTitle": "Anjeun mangrupikeun Corpanista",
+            "joinDesc": "Dukung Corpán sareng buka sadayana. Opsional, iraha waé.",
+            "subscribedTitle": "Anjeun Corpanista",
             "subscribedDesc": "Hatur nuhun parantos ngajaga Corpán tanpa iklan sareng terus berkembang.",
             "start": "Mimitian jelajah"
         },
         "welcomePact": {
-            "title": "Corpán Berkembang",
-            "subtitle": "Anjeun mangrupikeun pangguna awal",
-            "tinyTeamTitle": "Tim leutik anu antusias",
-            "tinyTeamDesc": "Mandiri, tanpa iklan, sareng didamel kalayan hormat pikeun jalma anu ngagunakeunana — kru leutik anu nyiptakeun aplikasi basa anu salawasna kami hoyong.",
-            "bleedingEdgeTitle": "Tepi-tepi, sacara sengaja",
-            "bleedingEdgeDesc": "Corpán ngadorong watesan naon anu tiasa dilakukeun alat anjeun: dunya imersif, pengenalan ucapan, sora alami, sareng modél AI panganyarna, sadayana digabungkeun pikeun nyiptakeun cara anyar pikeun diajar. Loba di antarana langsung dijalankeun dina alat anjeun, masihan anjeun diajar pribadi, offline-first tanpa gumantung kana pusat data. Kami ngaleupaskeun téknologi anyar nalika éta masih mentah, anu hartosna éta tiasa kadang-kadang kalakuanana aneh, jalan lambat, atanapi ngan saukur langkung ti anu tiasa ditangani alat anjeun. Sabalikna, anjeun kéngingkeun pangalaman diajar anu kuat nalika aranjeunna janten mungkin.",
-            "yourLangTitle": "Kami henteu nyarios unggal basa anu kami dukung",
-            "yourLangDesc": "Ieu mangrupikeun kanyataan anu jujur. Kami ngawangun pikeun puluhan basa sabab sadayana pantes ngagaduhan alat diajar anu kuat, sanés sabab tim leutik kami parantos terang sadayana. Anjeun tiasa mendakan hal-hal anu kami salah. Upami anjeun terang {{lang}} langkung saé tibatan kami, kami ngarepkeun anjeun bakal nyarios ka kami sareng ngabantosan ngajantenkeun Corpán pantes pikeun éta.",
-            "plea": "Naha anjeun gaduh ide, koreksi, atanapi pangalaman diajar liar anu anjeun hoyong tingali? Béjakeun ka kami. Kami maca unggal pesen sareng mikir sacara jero ngeunaan naon anu tiasa dibuka pikeun Corpán sareng diajar basa.",
-            "emailCta": "Email kami",
-            "githubCta": "Buka masalah GitHub",
-            "join": "Hoyong ngabantosan nyebarkeun Corpán ka dunya? Kami salawasna milarian kolaborator, penerjemah, sareng duta lokal. Ayo mendakan kami.",
-            "pact": "Ketok di handap pikeun ngamimitian diajar sareng tumbuh sareng kami. 🤝",
-            "cta": "Kuring sumping — hayu urang angkat"
+            "title": "Corpán terus mekar",
+            "subtitle": "Anjeun kaasup anu mimiti nyobaan",
+            "tinyTeamTitle": "Tim leutik anu mikanyaah basa",
+            "tinyTeamDesc": "Mandiri, tanpa iklan, sareng didamel kalayan hormat ka jalma anu ngagunakeunana — tim leutik anu ngawangun aplikasi basa anu ti baheula dipikahoyong ku kami.",
+            "bleedingEdgeTitle": "Sengaja nganggo teknologi panganyarna",
+            "bleedingEdgeDesc": "Corpán nyobaan ngadorong kamampuan alat anjeun: dunya imersif, pangwanoh ucapan, sora alami, sareng model AI panganyarna, sadayana digabungkeun pikeun nyieun cara anyar diajar. Loba bagianna jalan langsung dina alat anjeun, janten diajar leuwih pribadi jeung bisa leuwih heula offline. Kusabab teknologi ieu masih anyar, kadang bisa kalakuanana aneh, jalan lalaunan, atawa beurat teuing pikeun alat anjeun. Tapi gantina, anjeun bisa nyobaan pangalaman diajar anyar leuwih awal.",
+            "yourLangTitle": "Henteu sadaya basa anu kami dukung ku kami dipikawanoh sorangan",
+            "yourLangDesc": "Ieu anu saenyana. Kami ngawangun pikeun puluhan basa sabab sadayana pantes gaduh alat diajar anu kuat, sanés kusabab tim leutik kami parantos terang sadayana. Anjeun tiasa mendakan anu salah atanapi kirang alami. Upami anjeun langkung terang {{lang}} tibatan kami, punten béjakeun ka kami supaya Corpán langkung saé di dieu.",
+            "plea": "Aya ide, koreksi, atanapi pangalaman diajar anyar anu hoyong anjeun tingali? Béjakeun ka kami. Unggal pesen kami baca, teras dipikirkeun sacara serius pikeun masa depan Corpán sareng diajar basa.",
+            "emailCta": "Kirim email",
+            "githubCta": "Jieun GitHub issue",
+            "join": "Hoyong ngabantosan nyebarkeun Corpán ka langkung seueur jalma? Kami sok milarian mitra, panarjamah, sareng duta lokal. Hubungi kami.",
+            "pact": "Ketok di handap pikeun ngamimitian diajar sareng tumuwuh babarengan sareng kami. 🤝",
+            "cta": "Abdi ngiring — hayu!"
         },
         "fork": {
-            "title": "Naon anu nyababkeun anjeun ka Corpán?",
-            "subtitle": "Kami bakal nyetél sadayana pikeun anjeun. Anjeun tiasa ngarobihna engké.",
+            "title": "Naon anu nyandak anjeun ka Corpán?",
+            "subtitle": "Kami bade nyiapkeun sadayana kanggo anjeun. Engke tiasa dirobih deui.",
             "enjoy": {
-                "label": "Nikmati Corpán dina {{lang}}",
-                "desc": "Buku, carita, kaulinan, latihan, sareng langkung seueur — sadayana dina basa anjeun."
+                "label": "Anggo Corpán dina {{lang}}",
+                "desc": "Buku, carita, kaulinan, latihan, sareng seueur deui — sadayana dina basa anjeun."
             },
             "learn": {
                 "label": "Diajar basa",
@@ -261,25 +261,25 @@
             },
             "polyglot": {
                 "label": "Jelajah seueur basa",
-                "desc": "Tumpuk sababaraha basa sareng jelajah sadayana."
+                "desc": "Gabungkeun sababaraha basa teras jelajah sadayana."
             },
             "child": {
-                "label": "Setél pikeun budak",
-                "desc": "Buku sareng kaulinan anu lembut, pikaresepeun pikeun pembaca anu langkung ngora."
+                "label": "Siapkeun kanggo murangkalih",
+                "desc": "Buku sareng kaulinan anu hampang jeung pikaresepeun pikeun nu leuwih ngora."
             }
         },
         "calibrate": {
-            "enjoyTitle": "Sakumaha saé anjeun maca {{lang}}?",
-            "enjoyNative": "Fasih — ieu basa kuring",
-            "enjoyComfortable": "Cukup saé",
-            "enjoyImproving": "Kuring masih diajar maca éta",
-            "enjoyJustStarting": "Ngan ngamimitian — kuring anyar maca éta",
+            "enjoyTitle": "Sakumaha lancar anjeun maca {{lang}}?",
+            "enjoyNative": "Lancar — ieu basa abdi",
+            "enjoyComfortable": "Cukup lancar",
+            "enjoyImproving": "Abdi masih diajar maca",
+            "enjoyJustStarting": "Kakara ngamimitian — abdi masih anyar maca ieu",
             "learnTitle": "Naha anjeun parantos diajar {{lang}} sateuacanna?",
-            "learnNever": "Teu pernah — pamula total",
+            "learnNever": "Can pernah — masih pamula pisan",
             "learnLittle": "Sakedik",
-            "learnAdvanced": "Kuring cukup maju",
-            "childAgeTitle": "Sabaraha umur pembaca?",
-            "childUnder13": "Di handapeun 13",
+            "learnAdvanced": "Abdi cukup maju",
+            "childAgeTitle": "Sabaraha umur anu maca?",
+            "childUnder13": "Di handapeun 13 taun",
             "childTeen": "13–17"
         },
         "welcome": "Wilujeng sumping",
@@ -290,7 +290,7 @@
         "ttsPoorQualityNote": "Upami audio katingalina goréng, pasang sora kualitas luhur dina setélan TTS alat anjeun.",
         "howToSetupTtsOn": "Kumaha nyetél TTS dina",
         "welcomeTitle": "Wilujeng sumping di kulawarga Corpán!",
-        "welcomeBody": "Corpán mangrupikeun aplikasi open-source ti tim leutik, sanés perusahaan ageung. Kami paduli pisan ngeunaan basa sareng pendidikan sareng kami masih awal, janten anjeun tiasa ningali sisi kasar atanapi fitur sareng basa anu hilang. Upami aya anu henteu jalan, punten béjakeun ka kami di GitHub atanapi ku email. Umpan balik anjeun ngabantosan kami ngaluarkeun pembaruan anu sering sareng ngajantenkeun diajar basa langkung saé pikeun sadayana.",
+        "welcomeBody": "Corpán nyaéta aplikasi open-source ti tim leutik, sanés perusahaan ageung. Kami paduli pisan kana basa sareng pendidikan, sareng ieu masih tahap awal, janten anjeun tiasa mendakan bagian anu can rapih atanapi fitur jeung basa anu can lengkep. Upami aya anu henteu jalan, punten wartosan kami liwat GitHub atanapi email. Masukan anjeun ngabantosan kami ngaluarkeun apdet langkung sering sareng ngajantenkeun diajar basa langkung saé pikeun sadayana.",
         "welcomeVisit": "Kunjungi encorpora.io",
         "linkCopied": "Tautan disalin. Buka di panyungsi anjeun:",
         "reconfigureStack": "Konfigurasi ulang tumpukan",
@@ -415,14 +415,14 @@
             "subtitle": "Kami bakal nyaluyukeun Corpán pikeun anjeun. Ieu tetep dina alat anjeun — kami henteu pernah ngirim ka mana waé.",
             "learner": "Kuring diajar basa",
             "learnerDesc": "Baca sareng dangu dina basa anu anjeun pelajari.",
-            "enjoyer": "Kuring hoyong nikmati kontén",
+            "enjoyer": "Abdi hoyong ngarasakeun kontén",
             "enjoyerDesc": "Buku, carita, sareng kaulinan dina basa anjeun sorangan.",
             "polyglot": "Duanana — kuring hoyong sadayana",
             "polyglotDesc": "Sababaraha basa sakaligus, ditambah sadayana anu sanés.",
-            "kid": "Ieu pikeun budak",
-            "kidDesc": "Buku sareng kaulinan anu dipilih pikeun pembaca anu langkung ngora.",
-            "ageTitle": "Sabaraha umur pembaca?",
-            "ageUnder13": "Di handapeun 13",
+            "kid": "Ieu kanggo murangkalih",
+            "kidDesc": "Buku sareng kaulinan anu dipilih pikeun nu leuwih ngora.",
+            "ageTitle": "Sabaraha umur anu maca?",
+            "ageUnder13": "Di handapeun 13 taun",
             "ageTeen": "13–17"
         },
         "pitch": {
@@ -439,7 +439,7 @@
             "voiceCountOne": "1 sora siap",
             "voiceCountMany": "{{count}} sora siap",
             "andMore": "+{{count}} deui",
-            "noVoiceFor": "Teu aya sora {{lang}} acan — hayu urang tambahkeun hiji supados Corpán tiasa maca sacara lisan.",
+            "noVoiceFor": "Can aya sora {{lang}} — hayu urang tambahkeun hiji supados Corpán tiasa maca tarik.",
             "addBetter": "Buka sora anu langkung beunghar",
             "chooseVoices": "Pilih sora"
         }
@@ -607,8 +607,8 @@
     "footer": {
         "appVersion": "Versi aplikasi",
         "website": "Situs web",
-        "supportAndFeedback": "Dukungan & Umpan Balik",
-        "feedbackNote": "Pikeun masalah atanapi saran, punten kunjungi repositori GitHub kami atanapi kontak kami via email.",
+        "supportAndFeedback": "Pangrojong & Masukan",
+        "feedbackNote": "Pikeun masalah atanapi saran, punten buka repositori GitHub kami atanapi hubungi kami liwat email.",
         "githubIssues": "Masalah GitHub",
         "aboutCorpan": "Tentang Corpán"
     },
@@ -640,14 +640,14 @@
         "close": "Tutup"
     },
     "rating": {
-        "title": "Nikmati Corpán?",
+        "title": "Resep Corpán?",
         "description": "Corpán didamel ku tim open-source leutik anu anyar ngamimitian. Upami katingalina sapertos aplikasi 5-bintang, penilaian gancang ngabantosan kami pisan.",
         "rateNow": "⭐ Nilai 5 bintang",
         "remindLater": "Meureun engké",
         "noThanks": "Teu, hatur nuhun",
         "close": "Tutup",
-        "feedbackHint": "Teu 5 bintang acan? Ketok 'Bagikeun umpan balik' sareng béjakeun ka kami kumaha kami tiasa ngajantenkeunana langkung saé.",
-        "feedbackButton": "Bagikeun umpan balik di GitHub"
+        "feedbackHint": "Can 5 bintang? Ketok 'Bagikeun masukan' teras béjakeun ka kami kumaha supaya langkung saé.",
+        "feedbackButton": "Bagikeun masukan di GitHub"
     },
     "packs": {
         "title": "Paket",
@@ -784,7 +784,7 @@
     },
     "discoverPacks": {
         "title": "Jantenkeun Corpán milik anjeun",
-        "subtitle": "Tambah pembaca imersif, kaulinan, sareng alat — diwangun kana Corpán pikeun ngagedékeun latihan anjeun.",
+        "subtitle": "Tambah maca imersif, kaulinan, sareng alat — diwangun kana Corpán pikeun ngagedékeun latihan anjeun.",
         "maybeLater": "Meureun engké",
         "empty": "Langkung seueur paket bakal datang — jelajah Corpán samentawis.",
         "offlineEmpty": "Sambungkeun ka internét pikeun mendakan paket — atanapi lewatan ieu pikeun ayeuna."
