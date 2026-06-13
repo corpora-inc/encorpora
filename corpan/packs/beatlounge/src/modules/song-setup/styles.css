@@ -31,7 +31,7 @@
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-micro);
   color: var(--bl-text-dim);
-  margin-left: var(--bl-s1);
+  margin-inline-start: var(--bl-s1);
 }
 
 /* ---------------------------------------------------------- immersive shell */
@@ -75,7 +75,7 @@
   font-variant-numeric: tabular-nums;
 }
 .bl-song-summary-tag {
-  margin-left: auto;
+  margin-inline-start: auto;
   padding: var(--bl-s1) var(--bl-s3);
   border-radius: var(--bl-radius-sm);
   background: color-mix(in srgb, var(--bl-accent) 18%, transparent);
@@ -116,7 +116,7 @@
   color: var(--bl-text);
 }
 .bl-song-h-sub {
-  margin-left: var(--bl-s2);
+  margin-inline-start: var(--bl-s2);
   font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: none;
@@ -142,7 +142,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--bl-text-dim);
-  margin-left: 2px;
+  margin-inline-start: 2px;
 }
 .bl-song-read-dim {
   color: var(--bl-text-dim);
@@ -306,7 +306,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--bl-s1);
-  text-align: left;
+  text-align: start;
   padding: var(--bl-s3);
   background: var(--bl-surface-2);
   border: 1px solid var(--bl-border);

@@ -50,6 +50,7 @@ import { activeMidiInRange, quantizeToHarmony } from "../../music/resolver"
 import { clearAction } from "../ribbon/actions"
 import { runAction } from "../runAction"
 import { placeRecordedNote } from "./recordPlacement"
+import { useRtl } from "../_shared/useRtl"
 import "./instrument-surface.css"
 // The shared chrome (.bl-seg / .bl-icon-btn / .bl-select / .bl-ribbon-field) and
 // the "Following" field still live in the ribbon module's stylesheet.
@@ -113,6 +114,11 @@ export const InstrumentRibbon = ({
 }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
+  // RTL flips the ribbon so HIGH pitch reads on the LEFT, LOW on the right. The
+  // pointer math mirrors (a touch's pitch is read from the start edge) and the
+  // frets paint from the opposite side; the live comet/markers ride the finger
+  // (rawX) so they need no mirroring.
+  const rtl = useRtl()
 
   // "In key" snaps/frets to the GLOBAL active pitch set (doc.harmony via the
   // resolver). Free glide = a free chromatic glide (opt-out). Either way the
@@ -260,7 +266,9 @@ export const InstrumentRibbon = ({
   const resolveMidi = (x: number): number => {
     const st = live.current
     const w: RibbonWindow = { lowMidi: st.lowMidi, spanSemis: st.spanOct * 12 }
-    const raw = xToMidi(x, w)
+    // RTL: the left edge is HIGH pitch, so read the pitch fraction from the start
+    // (right) edge. Visuals still ride rawX (they sit under the finger).
+    const raw = xToMidi(rtl ? 1 - x : x, w)
     // In key = snap to the nearest pitch of the SONG's active harmony (resolver,
     // read live so chord/mode changes apply immediately). Free glide = raw.
     return st.fretted
@@ -443,7 +451,7 @@ export const InstrumentRibbon = ({
               aria-label={ct("instrumentSurface.shiftDownOctave")}
               onClick={() => shiftOctave(-1)}
             >
-              ◀
+              {rtl ? "▶" : "◀"}
             </button>
             <span className="bl-ribbon-oct-label" aria-hidden="true">
               {noteLabel(lowMidi)}
@@ -475,7 +483,7 @@ export const InstrumentRibbon = ({
               aria-label={ct("instrumentSurface.shiftUpOctave")}
               onClick={() => shiftOctave(1)}
             >
-              ▶
+              {rtl ? "◀" : "▶"}
             </button>
           </div>
         </div>
@@ -509,7 +517,7 @@ export const InstrumentRibbon = ({
             <span
               key={f.midi}
               className={`bl-fret${f.tonic ? " is-tonic" : ""}`}
-              style={{ left: `${f.x * 100}%` }}
+              style={{ left: `${(rtl ? 1 - f.x : f.x) * 100}%` }}
             >
               {f.tonic && <span className="bl-fret-label">{f.label}</span>}
             </span>

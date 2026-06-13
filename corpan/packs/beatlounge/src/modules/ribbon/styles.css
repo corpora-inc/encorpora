@@ -67,7 +67,7 @@
     background var(--bl-dur-fast) var(--bl-ease);
 }
 .bl-seg-btn + .bl-seg-btn {
-  border-left: 1px solid var(--bl-border);
+  border-inline-start: 1px solid var(--bl-border);
 }
 .bl-seg-btn.is-on {
   color: var(--bl-bg);
@@ -122,7 +122,7 @@
   color: var(--bl-text);
 }
 .bl-ribbon-tile-key {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-micro);
   letter-spacing: 0.04em;

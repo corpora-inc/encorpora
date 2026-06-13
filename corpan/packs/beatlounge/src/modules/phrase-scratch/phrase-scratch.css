@@ -121,7 +121,7 @@
   background: transparent;
   color: var(--bl-text);
   font-size: var(--bl-fs-body);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .bl-scr-picker-row:hover {
@@ -481,7 +481,7 @@
   color: var(--bl-text-dim);
   font-variant-numeric: tabular-nums;
   min-width: 4em;
-  text-align: left;
+  text-align: start;
 }
 .bl-scr-rate {
   font-family: var(--bl-font-mono);

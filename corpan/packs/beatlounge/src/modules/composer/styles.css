@@ -344,7 +344,7 @@
   background: var(--bl-surface-2);
   color: var(--bl-text);
   cursor: pointer;
-  text-align: left;
+  text-align: start;
 }
 .bl-hb-browser-name {
   font: 600 var(--bl-fs-label) / 1 var(--bl-font-mono);

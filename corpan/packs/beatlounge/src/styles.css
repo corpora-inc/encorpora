@@ -141,6 +141,16 @@
   user-select: none;
 }
 
+/* ---- RTL (right-to-left) ------------------------------------------------------
+   The native UI language sets `dir="rtl"` on the pack root (Shell) — and the host
+   app also flips `dir` near <html>. Layout flips for free off CSS logical
+   properties + the cascade; only the bits that CAN'T flip logically live here:
+   intrinsically-directional GLYPHS (the play triangle, the back chevron) are
+   mirrored, since a shape can't be flipped by `text-align` / logical insets. */
+[dir="rtl"] .bl-glyph--dir {
+  transform: scaleX(-1);
+}
+
 /* beatlounge is a PERFORMANCE surface, not a document: a long-press while jamming
    (e.g. on the ribbon) must NEVER pop the OS text-selection / copy-paste callout.
    The bare `user-select: none` above is ignored by WebKit (iOS) and Android WebView
@@ -204,7 +214,7 @@
   font-size: var(--bl-fs-label);
 }
 .bl-boot-meta {
-  margin-left: auto;
+  margin-inline-start: auto;
   color: var(--bl-text-dim);
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-micro);
@@ -331,7 +341,9 @@
   min-width: 0;
   max-width: 100%;
   overflow: hidden;
-  text-align: left;
+  /* Logical start so tile copy (groove/instrument/phrase summaries) right-aligns
+     in RTL — a hardcoded `left` here kept every tile's info line on the left. */
+  text-align: start;
   padding: var(--bl-s4);
   background: var(--bl-surface);
   border: 1px solid var(--bl-border);
@@ -426,7 +438,8 @@
 .bl-tile-expand {
   position: absolute;
   top: var(--bl-s3);
-  right: var(--bl-s3);
+  /* Logical end edge: upper-right in LTR, upper-LEFT in RTL. */
+  inset-inline-end: var(--bl-s3);
   z-index: 1;
   display: inline-flex;
   align-items: center;
@@ -479,7 +492,7 @@
   color: var(--bl-text);
 }
 .bl-tile-meta {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-micro);
   color: var(--bl-text-dim);
@@ -522,11 +535,12 @@
 .bl-drumwidget {
   min-width: 0;
 }
-/* The expand control floats over the top-right corner (y≈12–40) — so ONLY the
-   head row (which carries the groove name top-right) needs to clear it; the mini-
-   grid + the +/- controls below span the FULL width. No wasted right column. */
+/* The expand control floats over the top END corner (top-right in LTR, top-left
+   in RTL; y≈12–40) — so ONLY the head row (which carries the groove name at that
+   corner) needs to clear it; the mini-grid + the +/- controls below span the FULL
+   width. Logical padding so RTL clears the (now upper-left) expand. */
 .bl-drumwidget .bl-tile-head {
-  padding-right: 30px;
+  padding-inline-end: 30px;
 }
 /* The head + mini-grid form a flat, full-bleed "open Drums" affordance. It is a
    <button> for a11y/keyboard, but renders as a plain surface — no chrome, no
@@ -545,7 +559,7 @@
   background: none;
   color: inherit;
   font: inherit;
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .bl-drumwidget-open:focus-visible {
@@ -554,7 +568,7 @@
   border-radius: var(--bl-radius-sm);
 }
 .bl-drumwidget-groove {
-  margin-left: auto;
+  margin-inline-start: auto;
   max-width: 9rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -609,7 +623,7 @@
   color: var(--bl-accent-hot, var(--bl-accent));
 }
 .bl-drumwidget-shuffle {
-  margin-left: auto;
+  margin-inline-start: auto;
   color: var(--bl-accent);
 }
 
@@ -656,7 +670,7 @@
   background: none;
   color: inherit;
   font: inherit;
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .bl-harmonywidget-summary {
@@ -730,7 +744,7 @@
   color: var(--bl-text);
 }
 .bl-harmonywidget-pophead .bl-icon-btn {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 .bl-harmonywidget-popbody {
   flex: 1 1 auto;
@@ -1012,7 +1026,7 @@
   color: var(--bl-text);
 }
 .bl-immersive-grabber {
-  margin-left: auto;
+  margin-inline-start: auto;
   width: 36px;
   height: 4px;
   border-radius: var(--bl-radius-pill);
@@ -1143,7 +1157,7 @@
   box-shadow: 0 0 8px currentColor;
 }
 .bl-grid-actions {
-  margin-left: auto;
+  margin-inline-start: auto;
   display: flex;
   gap: var(--bl-s2);
 }
@@ -1650,7 +1664,7 @@
   flex-direction: column;
   gap: var(--bl-s1);
   align-items: flex-start;
-  text-align: left;
+  text-align: start;
   padding: var(--bl-s3) var(--bl-s3);
   background: transparent;
   border: 0;
@@ -1686,7 +1700,7 @@
   display: grid;
   place-items: center;
   border: 0;
-  border-left: 1px solid var(--bl-border);
+  border-inline-start: 1px solid var(--bl-border);
   background: transparent;
   color: var(--bl-text-dim);
   cursor: pointer;

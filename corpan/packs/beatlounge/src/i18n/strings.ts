@@ -27512,6 +27512,25 @@ export function uiLang(): string {
   return _uiLang
 }
 
+// ---- writing direction ------------------------------------------------------
+// The native UI language decides the pack's reading direction (matches the host
+// app's RTL_LANGUAGES list). Most layout flips for free off an ancestor
+// `dir="rtl"`; this lets the pack stamp its own root + lets standalone dev force
+// RTL via `?lang=ar`. Components that need JS-side mirroring (the ribbon) read
+// `uiDir()`; CSS keys off `[dir="rtl"]`.
+const RTL_LANGS = new Set(["ar", "he", "fa", "pa-Arab", "ur"])
+
+/** Is `lang` written right-to-left? Tolerant of regional variants (e.g. ar-EG). */
+export function isRtlLang(lang: string): boolean {
+  if (!lang) return false
+  return RTL_LANGS.has(lang) || RTL_LANGS.has(lang.split("-")[0])
+}
+
+/** The current native language's writing direction ("rtl" | "ltr"). */
+export function uiDir(): "rtl" | "ltr" {
+  return isRtlLang(_uiLang) ? "rtl" : "ltr"
+}
+
 /** Translate `key` into the ambient native language. The seam components/actions
  *  use: `ct("score.noTrack")`. Music loan-words are NOT keyed — pass as-is. */
 export function ct(key: I18nKey, params?: Record<string, string>): string {

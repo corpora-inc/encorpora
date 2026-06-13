@@ -90,7 +90,7 @@
   color: var(--bl-accent);
 }
 .bl-grooves-search {
-  margin-left: auto;
+  margin-inline-start: auto;
   min-height: 44px;
   min-width: 0;
   flex: 1 1 160px;
@@ -154,7 +154,7 @@
   gap: 4px;
   min-height: 44px;
   padding: var(--bl-s2) var(--bl-s3);
-  text-align: left;
+  text-align: start;
   border-radius: var(--bl-radius-sm, var(--bl-radius));
   border: 1px solid var(--bl-border);
   background: var(--bl-surface);
@@ -235,7 +235,7 @@
 @media (min-width: 720px) {
   .bl-grooves-detail {
     border-top: none;
-    border-left: 1px solid var(--bl-border);
+    border-inline-start: 1px solid var(--bl-border);
     padding: var(--bl-s4);
     gap: var(--bl-s3);
     overflow: auto;
@@ -325,7 +325,7 @@
 }
 .bl-grooves-approx ul {
   margin: var(--bl-s1) 0 0;
-  padding-left: var(--bl-s4);
+  padding-inline-start: var(--bl-s4);
   line-height: 1.4;
 }
 
