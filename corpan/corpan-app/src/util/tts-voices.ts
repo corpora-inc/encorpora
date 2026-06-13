@@ -208,12 +208,20 @@ export function baseLang(tag: string | null | undefined): string {
  *                  pick the generic ISO 639-1 `no`. Two-way alias so the
  *                  voice section lights up regardless of which side users
  *                  configure.
+ *   tl  ↔ fil    → we ship Tagalog as the ISO 639-1 `tl`, but Android TTS
+ *                  publishes the Filipino voice as `fil-PH`/`fil` (ISO 639-2).
+ *                  Two-way alias so a `tl` learner picks up an on-device
+ *                  `fil` voice (and vice-versa) instead of falling back to a
+ *                  generic voice. iOS ships neither, so the Apple-gap path is
+ *                  unaffected.
  */
 const LANG_ALIASES: Record<string, string[]> = {
     "yue-hant-hk": ["yue", "yue-hk", "zh-hk"],
     sr: ["hr"],
     no: ["nb"],
     nb: ["no"],
+    tl: ["fil"],
+    fil: ["tl"],
 };
 
 /**

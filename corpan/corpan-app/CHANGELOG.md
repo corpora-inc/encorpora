@@ -30,6 +30,9 @@ Conventions: `corpan/CHANGELOGS.md`.
   old full-screen voice setup rendered over the open Settings dialog, whose
   pointer-events lock made its Back/Continue unclickable — the only escape was
   to force-quit. It's now a dismissable drawer (scrim, swipe, or ×).
+- **Tagalog finds the on-device voice.** We ship Tagalog as `tl`, but Android
+  publishes the voice as `fil`/`fil-PH`; a two-way `tl`↔`fil` alias now lets a
+  Tagalog stack use that voice instead of falling back to a generic one.
 
 ## [0.18.0] - 2026-06-12
 
