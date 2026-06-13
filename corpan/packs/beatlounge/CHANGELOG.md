@@ -67,6 +67,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   *add* hits. It now removes hits with a weighted-random thinning that plucks
   off-beat and quieter notes first and spares the downbeat — surprising each
   press, but always strictly fewer hits, never more.
+- **The mixer pan slider is grabbable again.** On the phone drawer mixer the
+  per-track pan had collapsed to a ~5px nub with no track (its wrapper was never
+  stretched, only the inner track), so it was almost impossible to use. It now
+  spans the row like the level fader above it. (The level fader and the iPad
+  console were unaffected.)
 
 ### Performance
 - **No more first-entry scratch hitch.** The scratch AudioWorklet compiles once per

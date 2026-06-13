@@ -156,6 +156,12 @@
   flex: 1 1 auto;
   width: auto !important;
 }
+/* the pan is a horizontal fader too: stretch its WRAPPER to fill the pan box
+ * (like the level fader above) so the track has room to flex into — without
+ * this the .bl-fader wrapper shrinks to its cap and the track collapses to ~5px. */
+.bl-mixer--phone .bl-mixstrip-pan .bl-fader--horizontal {
+  width: 100%;
+}
 .bl-mixer--phone .bl-mixstrip-pan .bl-fader-track {
   width: auto !important;
   flex: 1 1 auto;
