@@ -87,6 +87,13 @@ const PATHS: Record<GlyphName, JSX.Element> = {
   ),
 }
 
+/** Glyphs whose shape points one way (a triangle, an arrow). These get mirrored
+ *  under `dir="rtl"` so they read correctly — logical CSS can't flip a glyph. */
+const DIRECTIONAL: ReadonlySet<GlyphName> = new Set<GlyphName>([
+  "play",
+  "chevron-left",
+])
+
 export const Glyph = ({
   name,
   size = 22,
@@ -111,7 +118,10 @@ export const Glyph = ({
     strokeLinejoin="round"
     aria-hidden="true"
     focusable="false"
-    className={className}
+    className={
+      (DIRECTIONAL.has(name) ? "bl-glyph--dir" : "") +
+      (className ? ` ${className}` : "")
+    }
     style={style}
   >
     {PATHS[name]}

@@ -51,7 +51,10 @@
     "cs": "捷克语",
     "lt": "立陶宛语",
     "sk": "斯洛伐克语",
-    "sl": "斯洛文尼亚语"
+    "sl": "斯洛文尼亚语",
+    "jv": "爪哇语",
+    "su": "巽他语",
+    "tl": "他加禄语"
   },
   "categories": {
     "travel": "旅行",
@@ -94,8 +97,8 @@
     "testTts": "点击下方按钮测试您的 TTS 设置：",
     "showRomanization": "显示罗马化",
     "scrollNavigation": "滚动导航",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "包",
+    "stacks": "学习组合",
     "theme": "主题",
     "themeLight": "浅色",
     "themeDark": "深色",
@@ -565,7 +568,7 @@
     "feedbackButton": "在 GitHub 提交反馈"
   },
   "packs": {
-    "title": "Packs",
+    "title": "包",
     "available": "可用",
     "emptyAvailable": "暂无可用内容。",
     "installed": "已安装",

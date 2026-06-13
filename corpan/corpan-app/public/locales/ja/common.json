@@ -51,7 +51,10 @@
     "cs": "チェコ語",
     "lt": "リトアニア語",
     "sk": "スロバキア語",
-    "sl": "スロベニア語"
+    "sl": "スロベニア語",
+    "jv": "ジャワ語",
+    "su": "スンダ語",
+    "tl": "タガログ語"
   },
   "categories": {
     "travel": "旅行",
@@ -94,8 +97,8 @@
     "testTts": "下のボタンを押してTTS設定をテストしてください：",
     "showRomanization": "ローマ字表記を表示",
     "scrollNavigation": "スクロールナビゲーション",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "パック",
+    "stacks": "スタック",
     "theme": "テーマ",
     "themeLight": "ライト",
     "themeDark": "ダーク",
@@ -565,7 +568,7 @@
     "feedbackButton": "GitHubでフィードバックを送る"
   },
   "packs": {
-    "title": "Packs",
+    "title": "パック",
     "available": "利用可能",
     "emptyAvailable": "まだ利用可能なものはありません。",
     "installed": "インストール済み",

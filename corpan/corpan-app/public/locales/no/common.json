@@ -51,7 +51,10 @@
     "cs": "Tsjekkisk",
     "lt": "Litauisk",
     "sk": "Slovakisk",
-    "sl": "Slovensk"
+    "sl": "Slovensk",
+    "jv": "Javanesisk",
+    "su": "Sundanesisk",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Reise",
@@ -551,7 +554,7 @@
     "renameLabel": "Nytt navn på stabelen",
     "selectAria": "Velg en stabel",
     "selectPlaceholder": "Velg…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "Stabler",
     "introTipBody": "Stacks lagrer ulike læringsoppsett — ett for reise, et annet for jobb. Trykk på + for å lage en ny stack."
   },
   "rating": {

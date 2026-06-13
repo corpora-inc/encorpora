@@ -108,7 +108,7 @@
   color: var(--bl-text-dim);
   font: 600 var(--bl-fs-label) var(--bl-font);
   line-height: var(--bl-hit, 44px);
-  text-align: left;
+  text-align: start;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -139,7 +139,7 @@
  * single line as the label — the head height is fixed via line-height. */
 .bl-lane-badge {
   display: inline-block;
-  margin-left: var(--bl-s2);
+  margin-inline-start: var(--bl-s2);
   vertical-align: middle;
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-micro);

@@ -17,6 +17,15 @@ _GA + the calling card: beatlounge goes stable and the entire interface ships in
   `tools/gen_i18n.py` (codex-cli, one call per locale). Music loan-words stay
   international on purpose — Reverb/Delay/EQ, BPM, note/mode/raga names, the proper
   names of kits and world rhythms. A freshness-gate test keeps every locale in sync.
+- **Right-to-left layout (Arabic, Hebrew, Persian, Urdu).** The interface now
+  flips properly under an RTL language, not just translates. Panel copy
+  right-aligns (the rhythmic-cycle "Teental · 4/4 · 96 bpm" line, the instrument
+  name box, the phrase picker); the performance ribbon mirrors so high pitches
+  sit on the left and low on the right, with its octave arrows and expand button
+  following suit; and directional glyphs flip — the play button points left, the
+  exit chevron points right. Built on CSS logical properties so left-to-right
+  stays pixel-identical. (The piano-roll and track timeline keep their physical
+  left-to-right orientation on purpose.)
 
 - **Auto melody expansion — per-track, persisted, always-on.** The Score editor's
   Auto is now a per-track generative conductor that keeps re-walking a flowing
@@ -56,6 +65,18 @@ _GA + the calling card: beatlounge goes stable and the entire interface ships in
   the Mix page…" paragraph under the drawer mixer, a dev-status note on the
   Rhythmic Cycle accent map, and trimmed empty-state / home-tile copy to terse
   fragments. The UI shows what to do by how it looks, not by a sentence to read.
+
+### Fixed
+- **The drums "−" now actually thins the beat.** On the drums home widget, "−"
+  was wired to the additive generator, so it layered a new beat on top and could
+  *add* hits. It now removes hits with a weighted-random thinning that plucks
+  off-beat and quieter notes first and spares the downbeat — surprising each
+  press, but always strictly fewer hits, never more.
+- **The mixer pan slider is grabbable again.** On the phone drawer mixer the
+  per-track pan had collapsed to a ~5px nub with no track (its wrapper was never
+  stretched, only the inner track), so it was almost impossible to use. It now
+  spans the row like the level fader above it. (The level fader and the iPad
+  console were unaffected.)
 
 ### Performance
 - **No more first-entry scratch hitch.** The scratch AudioWorklet compiles once per

@@ -560,6 +560,100 @@ describe("grooveModel — the +/− DENSITY DIAL (denser/sparser)", () => {
     expect(cowbellAfter).toBe(cowbellBefore)
   })
 
+  /** One − tap at an explicit seed (the UI passes a fresh seed each press). */
+  const minusSeeded = (d: BeatloungeDoc, rows: number[], rhythmId: string, seed: number): BeatloungeDoc => {
+    const res = buildGrooveCommands(d, getRhythm(rhythmId)!, {
+      target: { kind: "drums", selectedPitches: rows },
+      op: "remove",
+      seed,
+    })
+    // The "−" must emit ONLY removeNote — never an addTrack/setNotes/placeFragment.
+    expect(res.commands.every((c) => c.t === "removeNote")).toBe(true)
+    return applyTo(d, res.commands)
+  }
+
+  it("− NEVER increases the hit count — strictly decreases across many seeds + grooves", () => {
+    const grooves = ["son-clave-3-2", "samba", "teental"]
+    const rows = [KICK, SNARE, COWBELL]
+    for (const id of grooves) {
+      for (let seed = 1; seed <= 40; seed++) {
+        // Build a varied bed, then thin it all the way down at this seed.
+        let d = emptyDrumDoc()
+        for (let tap = 1; tap <= 5; tap++) d = plus(d, rows, tap + seed)
+        let count = drumNotesOf(d).length
+        expect(count).toBeGreaterThan(0)
+        for (let i = 0; i < 50 && count > 0; i++) {
+          const next = drumNotesOf(minusSeeded(d, rows, id, seed * 131 + i)).length
+          // The cardinal invariant: a − strictly removes, never adds.
+          expect(next).toBeLessThan(count)
+          d = minusSeeded(d, rows, id, seed * 131 + i)
+          count = next
+        }
+        expect(count).toBe(0)
+      }
+    }
+  })
+
+  it("− is PROBABILISTIC — different seeds can thin different spots (surprising)", () => {
+    // A dense, symmetric bed so there's real choice in which hits go.
+    const rows = [KICK, SNARE, COWBELL]
+    let bed = emptyDrumDoc()
+    for (let tap = 1; tap <= 8; tap++) bed = plus(bed, rows, tap)
+    const removedSetFor = (seed: number): string => {
+      const res = buildGrooveCommands(bed, getRhythm("samba")!, {
+        target: { kind: "drums", selectedPitches: rows },
+        op: "remove",
+        seed,
+      })
+      const after = drumNotesOf(applyTo(bed, res.commands)).map((n) => `${n.tick}:${n.pitch}`).sort()
+      return after.join("|")
+    }
+    // Same seed ⇒ identical (seeded/reproducible). Across many seeds ⇒ ≥2 outcomes.
+    expect(removedSetFor(7)).toBe(removedSetFor(7))
+    const outcomes = new Set(Array.from({ length: 16 }, (_, i) => removedSetFor(i + 1)))
+    expect(outcomes.size).toBeGreaterThan(1)
+  })
+
+  it("− prefers OFF-BEAT / weak hits and spares the DOWNBEAT backbone", () => {
+    // Lay one strong on-onset hit (the son-clave downbeat, cell 0 / tick 0) plus a
+    // bunch of weak off-beat hits on the same row, then thin ONE at a time. Over
+    // many seeds the strong downbeat should survive far more often than a random
+    // pick would (it's the LEAST expendable), and usually be the very last to go.
+    const r = getRhythm("son-clave-3-2")!
+    const drumId = findDrumTrackId(doc())!
+    let downbeatSurvivedFirstTap = 0
+    const TRIALS = 60
+    for (let seed = 1; seed <= TRIALS; seed++) {
+      // tick 0 = strong onset (loud); off-beats between the grid steps (quiet).
+      const notes = [
+        { tick: 0, duration: 30, pitch: KICK, velocity: 1 }, // the downbeat backbone
+        ...Array.from({ length: 7 }, (_, i) => ({
+          tick: (i + 1) * 30 + 6, // off the cell onsets, between steps
+          duration: 30,
+          pitch: KICK,
+          velocity: 0.35, // quiet ghosts
+        })),
+      ]
+      const d = reduce(doc(), { t: "setNotes", trackId: drumId, notes })
+      const res = buildGrooveCommands(d, r, {
+        target: { kind: "drums", selectedPitches: [KICK] },
+        op: "remove",
+        seed,
+      })
+      const removedTicks = res.commands
+        .filter((c) => c.t === "removeNote")
+        .map((c) => (c.t === "removeNote" ? c.noteId : ""))
+      const beforeNotes = drumNotes(d)
+      const removedIsDownbeat = removedTicks.some(
+        (id) => beforeNotes.find((n) => n.id === id)?.tick === 0
+      )
+      if (!removedIsDownbeat) downbeatSurvivedFirstTap++
+    }
+    // The loud downbeat is the LEAST expendable — it should almost always survive
+    // the first thin (a uniform random pick would drop it ~1/8 of the time).
+    expect(downbeatSurvivedFirstTap).toBeGreaterThan(TRIALS * 0.85)
+  })
+
   it("PHRASES are FAR sparser than drums for the same groove (a + drops only a handful)", () => {
     // A bank of 6 snippets on a phrase track; same groove, same single + tap.
     const refs: FragmentRef[] = Array.from({ length: 6 }, (_, i) => ({

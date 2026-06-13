@@ -51,7 +51,10 @@
     "cs": "Ceco",
     "lt": "Lituano",
     "sk": "Slovacco",
-    "sl": "Sloveno"
+    "sl": "Sloveno",
+    "jv": "giavanese",
+    "su": "sundanese",
+    "tl": "tagalog"
   },
   "categories": {
     "travel": "Viaggio",
@@ -94,8 +97,8 @@
     "testTts": "Prova le impostazioni TTS con i pulsanti qui sotto:",
     "showRomanization": "Mostra romanizzazione",
     "scrollNavigation": "Navigazione a scorrimento",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Pacchetti",
+    "stacks": "Configurazioni",
     "theme": "Tema",
     "themeLight": "Chiaro",
     "themeDark": "Scuro",
@@ -155,7 +158,7 @@
     "ttsPoorQualityNote": "Se la qualità audio è scarsa, installa voci di alta qualità nelle impostazioni TTS del dispositivo.",
     "howToSetupTtsOn": "Come configurare la sintesi vocale su",
     "welcomeTitle": "Benvenuto nella famiglia Corpán!",
-    "welcomeBody": "Corpán è un’app open source creata por un team piccolissimo, non da una grande azienda. Ci teniamo molto alle lingue e all’educazione e il progetto è ancora all’inizio, quindi potresti trovare parti poco rifinite, funzioni mancanti o lingue non ancora disponibili. Se qualcosa non funziona, scrivici su GitHub o via e-mail. I tuoi feedback ci aiutano a rilasciare aggiornamenti frequenti e a migliorare l’apprendimento delle lingue per tutti.",
+    "welcomeBody": "Corpán è un’app open source creata da un team piccolissimo, non da una grande azienda. Ci teniamo molto alle lingue e all’educazione e il progetto è ancora all’inizio, quindi potresti trovare parti poco rifinite, funzioni mancanti o lingue non ancora disponibili. Se qualcosa non funziona, scrivici su GitHub o via e-mail. I tuoi feedback ci aiutano a rilasciare aggiornamenti frequenti e a migliorare l’apprendimento delle lingue per tutti.",
     "welcomeVisit": "Visita encorpora.io",
     "linkCopied": "Link copiato. Aprilo nel browser:",
     "reconfigureStack": "Riconfigura profilo",
@@ -565,7 +568,7 @@
     "feedbackButton": "Invia feedback su GitHub"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Pacchetti",
     "available": "Disponibile",
     "emptyAvailable": "Niente di disponibile per ora.",
     "installed": "Installato",

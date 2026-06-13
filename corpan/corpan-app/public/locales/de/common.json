@@ -51,7 +51,10 @@
     "cs": "Tschechisch",
     "lt": "Litauisch",
     "sk": "Slowakisch",
-    "sl": "Slowenisch"
+    "sl": "Slowenisch",
+    "jv": "Javanesisch",
+    "su": "Sundanesisch",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Reise",
@@ -94,8 +97,8 @@
     "testTts": "Testen Sie Ihre TTS-Einstellungen, indem Sie auf die Schaltflächen unten klicken:",
     "showRomanization": "Romanisierung anzeigen",
     "scrollNavigation": "Scrollnavigation",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Pakete",
+    "stacks": "Stapel",
     "theme": "Design",
     "themeLight": "Hell",
     "themeDark": "Dunkel",
@@ -551,7 +554,7 @@
     "renameLabel": "Neuer Name für Stapel",
     "selectAria": "Profil auswählen",
     "selectPlaceholder": "Auswählen…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "Stapel",
     "introTipBody": "Stacks speichern verschiedene Lern-Setups — eines für die Reise, ein anderes für die Arbeit. Tippe auf +, um einen neuen Stack zu erstellen."
   },
   "rating": {
@@ -565,7 +568,7 @@
     "feedbackButton": "Feedback auf GitHub geben"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Pakete",
     "available": "Verfügbar",
     "emptyAvailable": "Noch nichts verfügbar.",
     "installed": "Installiert",

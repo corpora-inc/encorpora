@@ -51,7 +51,10 @@
     "cs": "Češki",
     "lt": "Litvanski",
     "sk": "Slovački",
-    "sl": "Slovenski"
+    "sl": "Slovenski",
+    "jv": "Javanski",
+    "su": "Sundanski",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Putovanje",
@@ -66,7 +69,7 @@
     "environment": "Okoliš",
     "emergency": "Hitno",
     "culture": "Kultura",
-    "everyday": "Sv everyday"
+    "everyday": "Svakodnevno"
   },
   "settings": {
     "addMoreLanguages": "Dodaj više jezika",

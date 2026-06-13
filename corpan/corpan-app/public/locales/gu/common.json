@@ -51,7 +51,10 @@
     "cs": "ચેક",
     "lt": "લિથુઆનિયન",
     "sk": "સ્લોવાક",
-    "sl": "સ્લોવેનીયન"
+    "sl": "સ્લોવેનીયન",
+    "jv": "જાવાનીસ",
+    "su": "સુન્દાની",
+    "tl": "તાગાલોગ"
   },
   "categories": {
     "travel": "પ્રવાસ",
@@ -94,8 +97,8 @@
     "testTts": "નીચેના બટનો વડે TTS અજમાવો:",
     "showRomanization": "રોમનાઇઝેશન બતાવો",
     "scrollNavigation": "સ્ક્રોલ નેવિગેશન",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "પૅક્સ",
+    "stacks": "સ્ટૅક્સ",
     "theme": "થીમ",
     "themeLight": "લાઇટ",
     "themeDark": "ડાર્ક",
@@ -358,7 +361,7 @@
       "macStep3": "System Voice હેઠળ, Manage Voices ખોલો.",
       "macStep4": "તમારી ભાષા માટે Premium અથવા Enhanced અવાજ ડાઉનલોડ કરો.",
       "macStep5": "Corpán પર પાછા આવો — તે અહીં આપમેળે દેખાશે.",
-      "step1": "નીચે Open Settings પર ટેપ કરો.",
+      "step1": "નીચે “સેટિંગ્સ ખોલો” પર ટેપ કરો.",
       "step2": "Accessibility → Spoken Content → Voices પર જાઓ.",
       "step3": "તમારી ભાષા પર ટેપ કરો.",
       "step4": "Premium અથવા Enhanced અવાજ ડાઉનલોડ કરો.",
@@ -565,7 +568,7 @@
     "feedbackButton": "GitHub પર પ્રતિસાદ શેર કરો"
   },
   "packs": {
-    "title": "Packs",
+    "title": "પૅક્સ",
     "available": "ઉપલબ્ધ",
     "emptyAvailable": "હજુ કંઈ ઉપલબ્ધ નથી.",
     "installed": "ઇન્સ્ટોલ થયેલ",

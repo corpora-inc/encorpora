@@ -51,7 +51,10 @@
     "cs": "捷克語",
     "lt": "立陶宛語",
     "sk": "斯洛伐克語",
-    "sl": "斯洛維尼亞語"
+    "sl": "斯洛維尼亞語",
+    "jv": "爪哇語",
+    "su": "巽他語",
+    "tl": "他加祿語"
   },
   "categories": {
     "travel": "旅行",
@@ -94,8 +97,8 @@
     "testTts": "點擊下方按鈕以測試您的 TTS 設定：",
     "showRomanization": "顯示羅馬拼音",
     "scrollNavigation": "滾動導航",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "套件",
+    "stacks": "學習組合",
     "theme": "主題",
     "themeLight": "淺色",
     "themeDark": "深色",
@@ -565,7 +568,7 @@
     "feedbackButton": "在 GitHub 提供回饋"
   },
   "packs": {
-    "title": "Packs",
+    "title": "套件",
     "available": "可用",
     "emptyAvailable": "目前沒有可用內容。",
     "installed": "已安裝",

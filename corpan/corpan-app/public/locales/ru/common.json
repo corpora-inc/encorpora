@@ -51,7 +51,10 @@
     "cs": "Чешский",
     "lt": "Литовский",
     "sk": "Словацкий",
-    "sl": "Словенский"
+    "sl": "Словенский",
+    "jv": "яванский",
+    "su": "сунданский",
+    "tl": "тагальский"
   },
   "categories": {
     "travel": "Путешествия",
@@ -94,8 +97,8 @@
     "testTts": "Проверьте настройки TTS, нажав кнопки ниже:",
     "showRomanization": "Показать романизацию",
     "scrollNavigation": "Навигация прокруткой",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Пакеты",
+    "stacks": "Стеки",
     "theme": "Тема",
     "themeLight": "Светлая",
     "themeDark": "Тёмная",
@@ -565,7 +568,7 @@
     "feedbackButton": "Оставить отзыв на GitHub"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Пакеты",
     "available": "Доступно",
     "emptyAvailable": "Пока ничего не доступно.",
     "installed": "Установлено",

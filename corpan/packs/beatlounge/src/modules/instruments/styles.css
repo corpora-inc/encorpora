@@ -448,7 +448,7 @@
   background: var(--bl-surface-2);
   color: var(--bl-text);
   font: inherit;
-  text-align: left;
+  text-align: start;
   cursor: pointer;
   transition:
     transform var(--bl-dur-fast) var(--bl-ease),
@@ -517,7 +517,7 @@
   font-family: var(--bl-font);
   font-size: var(--bl-fs-label);
   line-height: var(--bl-hit); /* WebKit vertical centering for button text */
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 .bl-instr-harmony-row.is-open {

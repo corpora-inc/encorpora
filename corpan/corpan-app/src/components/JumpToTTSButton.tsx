@@ -3,15 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Volume2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useSettingsStore } from "@/store/settings";
+import { useDrawerStore } from "@/store/drawer";
 import { memo } from "react";
 
 /**
- * Opens the standalone Text-to-speech / voice configurator.
+ * Opens the Text-to-speech / voice configurator as a drawer over Settings.
  *
- * Onboarding is now a decision GRAPH (no linear step index), so the old
- * `setOnboarded(false); setStep(3)` jump dumped the user back at the welcome
- * screen. Instead we dispatch `corpan:open-tts`, which App listens for and
- * renders the same `OnboardingTTSInstructions` screen standalone over Settings.
+ * It used to dispatch `corpan:open-tts` and re-render the full-screen
+ * onboarding TTS shell over the open Settings dialog — but Radix locks
+ * body `pointer-events` while the dialog is open, so that overlay's
+ * Continue/Back were unclickable and trapped the user. Now it opens
+ * `<TTSSettingsDrawer />` (vaul, z above the dialog), which hosts the same
+ * shared <TTSVoicePicker> and is reliably dismissable.
  */
 export const JumpToTTSButton = memo(function JumpToTTSButton({
     className,
@@ -21,13 +24,14 @@ export const JumpToTTSButton = memo(function JumpToTTSButton({
     fullWidth?: boolean;
 }) {
     const languages = useSettingsStore((s) => s.languages);
+    const openTTSSettings = useDrawerStore((s) => s.openTTSSettings);
     const { t } = useTranslation();
 
     // Enable once a primary language exists (you can relax this if desired)
     const canEnter = (languages?.length || 0) > 0;
 
     const handleClick = () => {
-        window.dispatchEvent(new CustomEvent("corpan:open-tts"));
+        openTTSSettings();
     };
 
     return (

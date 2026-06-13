@@ -18,13 +18,19 @@
     "fr": "Tutomaton — tuteur de langues",
     "de": "Tutomaton — Sprachtutor",
     "zh": "Tutomaton — 语言老师",
-    "ja": "Tutomaton — 言語チューター"
+    "ja": "Tutomaton — 言語チューター",
+    "jv": "Tutomaton",
+    "su": "Tutomaton",
+    "tl": "Tutomaton"
   },
   "tagline": {
     "en": "A patient tutor for every language you're learning. Runs entirely on your device.",
     "es": "Un tutor paciente para cada idioma que estás aprendiendo. Funciona completamente en tu dispositivo.",
     "fr": "Un tuteur patient pour chaque langue que vous apprenez. Fonctionne entièrement sur votre appareil.",
-    "zh": "为你正在学的每种语言准备的耐心老师。完全在你的设备上运行。"
+    "zh": "为你正在学的每种语言准备的耐心老师。完全在你的设备上运行。",
+    "jv": "AI tutor lembut kanggo latihan obrolan nyata",
+    "su": "Tutor AI anu lemes pikeun latihan paguneman nyata",
+    "tl": "Isang banayad na AI tutor para sa tunay na pagsasanay sa pag-uusap."
   },
   "descriptionLocalized": {
     "ar": "مدرس لغة صبور يعمل على جهازك، لكل لغة تتعلمها — مستند إلى حزم العبارات التي ثبّتها. يعمل بالكامل على جهازك.",
@@ -77,7 +83,10 @@
     "vi": "Gia sư ngôn ngữ kiên nhẫn ngay trên thiết bị của bạn, cho mọi ngôn ngữ bạn đang học — dựa trên các gói cụm từ bạn đã cài đặt. Chạy hoàn toàn trên thiết bị của bạn.",
     "yue-Hant-HK": "一個有耐性嘅隨身語言導師，幫你喺手機度學識任何語言 — 以你已安裝嘅短語包為基礎。所有運算都喺你部裝置入面進行。",
     "zh-Hans": "你的专属设备内置语言导师，耐心助你学习每一种语言——基于你已安装的短语包。全部运行都在你的设备上完成。",
-    "zh-Hant": "手機裡的耐心語言家教，陪伴您學習每一種語言——以您已安裝的短語包為基礎。所有運算都在您的裝置上完成。"
+    "zh-Hant": "手機裡的耐心語言家教，陪伴您學習每一種語言——以您已安裝的短語包為基礎。所有運算都在您的裝置上完成。",
+    "jv": "Latihan obrolan nyata karo tutor AI sabar sing adaptasi karo basamu.",
+    "su": "Latihan paguneman nyata sareng tutor AI anu sabar anu nyaluyukeun sareng basa anjeun.",
+    "tl": "Magsanay ng totoong pag-uusap kasama ang pasensyosong AI tutor na umaangkop sa iyong wika."
   },
   "dependsOn": [
     {
@@ -353,6 +362,30 @@
       "sha256": ""
     },
     {
+      "code": "jv",
+      "displayName": {
+        "en": "Javanese",
+        "jv": "Basa Jawa"
+      },
+      "voiceLanguageCode": "jv-ID",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/jv-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "su",
+      "displayName": {
+        "en": "Sundanese",
+        "su": "Basa Sunda"
+      },
+      "voiceLanguageCode": "su-ID",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/su-0.1.0.zip",
+      "sha256": ""
+    },
+    {
       "code": "it",
       "displayName": {
         "en": "Italian",
@@ -438,6 +471,18 @@
       "contentVersion": "0.1.0",
       "sizeMb": 1,
       "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ms-0.1.0.zip",
+      "sha256": ""
+    },
+    {
+      "code": "tl",
+      "displayName": {
+        "en": "Tagalog",
+        "tl": "Tagalog"
+      },
+      "voiceLanguageCode": "fil-PH",
+      "contentVersion": "0.1.0",
+      "sizeMb": 1,
+      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/tl-0.1.0.zip",
       "sha256": ""
     },
     {
@@ -778,7 +823,7 @@
     "supportsLanguageDownload": true,
     "supportsVoiceMode": true
   },
-  "devRevision": "2026-06-09T20:49:04.224Z",
+  "devRevision": "2026-06-13T08:52:20.412Z",
   "databases": {
     "tutomaton-es": "languages/es/data/spanish.sqlite3",
     "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"

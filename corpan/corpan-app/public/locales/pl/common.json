@@ -51,7 +51,10 @@
     "cs": "Czeski",
     "lt": "Litewski",
     "sk": "Słowacki",
-    "sl": "Słoweński"
+    "sl": "Słoweński",
+    "jv": "jawajski",
+    "su": "sundajski",
+    "tl": "tagalski"
   },
   "categories": {
     "travel": "Podróże",
@@ -94,8 +97,8 @@
     "testTts": "Przetestuj ustawienia TTS, klikając przyciski poniżej:",
     "showRomanization": "Pokaż romanizację",
     "scrollNavigation": "Nawigacja przewijaniem",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Pakiety",
+    "stacks": "Stosy",
     "theme": "Motyw",
     "themeLight": "Jasny",
     "themeDark": "Ciemny",
@@ -565,7 +568,7 @@
     "feedbackButton": "Przekaż opinię na GitHubie"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Pakiety",
     "available": "Dostępne",
     "emptyAvailable": "Na razie nic nie jest dostępne.",
     "installed": "Zainstalowane",

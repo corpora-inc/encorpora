@@ -26,7 +26,7 @@
     "te": "Telugu",
     "kn": "Kannada",
     "mr": "Marathi",
-    "gu": "Gujarat",
+    "gu": "Gujarati",
     "ur": "Urdu",
     "pa-Guru": "Punjabi (Gurmukhi)",
     "pa-Arab": "Punjabi (Shahmukhi)",
@@ -51,7 +51,10 @@
     "cs": "Bahasa Ceska",
     "lt": "Bahasa Lituania",
     "sk": "Bahasa Slovakia",
-    "sl": "Bahasa Slovenia"
+    "sl": "Bahasa Slovenia",
+    "jv": "Jawa",
+    "su": "Sunda",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Perjalanan",
@@ -94,8 +97,8 @@
     "testTts": "Uji TTS dengan tombol di bawah:",
     "showRomanization": "Tampilkan romanisasi",
     "scrollNavigation": "Navigasi gulir",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Paket",
+    "stacks": "Tumpukan",
     "theme": "Tema",
     "themeLight": "Terang",
     "themeDark": "Gelap",
@@ -308,7 +311,7 @@
       "joinDesc": "Dukung Corpán dan buka semua fitur. Opsional, kapan saja.",
       "subscribedTitle": "Anda seorang Corpanista",
       "subscribedDesc": "Terima kasih telah menjaga Corpán tetap bebas iklan dan terus berkembang.",
-      "joinTitle": "Join the Corpanistas",
+      "joinTitle": "Gabung dengan Corpanistas",
       "start": "Mulai menjelajah",
       "subtitle": "Corpán dibuat oleh tim open-source kecil. Sapa kami — dan jika Anda menyukainya, Anda bisa mendukung kami.",
       "title": "Anda siap"
@@ -565,7 +568,7 @@
     "close": "Tutup"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Paket",
     "available": "Tersedia",
     "emptyAvailable": "Belum ada yang tersedia.",
     "installed": "Terpasang",

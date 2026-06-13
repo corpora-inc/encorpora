@@ -30,6 +30,7 @@ import { DockRail } from "./DockRail"
 import { Toast, type ToastState } from "./Toast"
 import { CommandBar, createCommandBarController } from "../modules/command-bar"
 import { SCENES_ID } from "../modules/scenes"
+import { uiDir } from "../i18n/strings"
 
 export interface ShellChromeApi {
   enterImmersive(id: ModuleId): () => void
@@ -147,7 +148,7 @@ export const Shell = ({
   const chromeState = immersiveId ? "immersive" : "stage"
 
   return (
-    <div className="bl-root bl-shell" data-skin={skin} data-bl-chrome={chromeState}>
+    <div className="bl-root bl-shell" dir={uiDir()} data-skin={skin} data-bl-chrome={chromeState}>
       {/* ---- Stage: calm canvas of placed module tiles ---- */}
       <main className={`bl-stage bl-stage--${form}`}>
         <div className="bl-stage-head">

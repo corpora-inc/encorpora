@@ -51,7 +51,10 @@
     "cs": "Tchèque",
     "lt": "Lituanien",
     "sk": "Slovaque",
-    "sl": "Slovène"
+    "sl": "Slovène",
+    "jv": "javanais",
+    "su": "soundanais",
+    "tl": "tagalog"
   },
   "categories": {
     "travel": "Voyage",
@@ -95,7 +98,7 @@
     "showRomanization": "Afficher la romanisation",
     "scrollNavigation": "Navigation par défilement",
     "packs": "Packs",
-    "stacks": "Stacks",
+    "stacks": "Profils",
     "theme": "Thème",
     "themeLight": "Clair",
     "themeDark": "Sombre",
@@ -551,8 +554,8 @@
     "renameLabel": "Nouveau nom pour la pile",
     "selectAria": "Sélectionner un profil",
     "selectPlaceholder": "Choisir…",
-    "introTipTitle": "Stacks",
-    "introTipBody": "Les stacks enregistrent différentes configurations d'apprentissage — une pour le voyage, une autre pour le travail. Appuyez sur + pour en créer une nouvelle."
+    "introTipTitle": "Profils",
+    "introTipBody": "Les profils enregistrent différentes configurations d'apprentissage — une pour le voyage, une autre pour le travail. Appuyez sur + pour en créer un nouveau."
   },
   "rating": {
     "title": "Vous aimez Corpán ?",

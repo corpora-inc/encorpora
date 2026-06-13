@@ -313,11 +313,31 @@ const expendability = (
 }
 
 /**
+ * SOFTMAX-ish temperature for the probabilistic draw: how sharply expendability
+ * biases the lottery. Higher ⇒ the weakest/off-beat hits are MUCH likelier to be
+ * picked; we keep it warm enough that two presses on the same pattern usually
+ * differ (the founder's "delightful, surprising" −), but cool enough that the
+ * strong backbone almost always survives a light thin.
+ */
+const SPARSIFY_BIAS = 4
+
+/**
  * Choose which hits to remove to thin a row by `fraction` (0..1 of the current
- * count). Pure + stable. Removes the MOST expendable first; ties break by
- * lower velocity then later tick (so earlier/loud onsets are kept longest).
+ * count). Always strictly REMOVES (never adds), at least ONE and at most all.
+ *
  * `cellProbOf(tick)` returns the groove's onset probability for the hit's cell
  * (1 = strong onset, low = off-beat); pass `() => 1` to fall back to velocity.
+ *
+ * TWO MODES:
+ *   • NO `rng` ⇒ deterministic + stable: removes the MOST expendable first (ties
+ *     break by lower velocity then later tick), so earlier/loud onsets last.
+ *   • WITH `rng` ⇒ a DELIGHTFUL probabilistic draw: each remaining hit is weighted
+ *     by `exp(SPARSIFY_BIAS · expendability)`, so off-beat / quiet hits are far
+ *     likelier to be plucked but the choice is genuinely stochastic — two presses
+ *     on the same pattern usually thin in different spots, and the strong downbeat
+ *     backbone is the LEAST likely to go (but never fully immune once it's all
+ *     that's left). The count is identical to the deterministic mode, so a − still
+ *     strictly decreases the hit count by the same intended amount.
  *
  * The last hit is removable: a fraction that rounds up to the full count clears
  * the row entirely (the founder's "even removes the last hits down to nothing").
@@ -325,7 +345,8 @@ const expendability = (
 export const chooseHitsToSparsify = (
   hits: RemovableHit[],
   fraction: number,
-  cellProbOf: (tick: number) => number
+  cellProbOf: (tick: number) => number,
+  rng?: () => number
 ): RemovableHit[] => {
   const n = hits.length
   if (n === 0) return []
@@ -333,15 +354,47 @@ export const chooseHitsToSparsify = (
   if (frac <= 0) return []
   // At least ONE goes per − tap (so it always makes progress), at most all.
   const remove = Math.min(n, Math.max(1, Math.round(n * frac)))
-  const ranked = hits
-    .map((h) => ({ h, score: expendability(h, clamp01(cellProbOf(h.tick))) }))
-    .sort(
-      (a, b) =>
-        b.score - a.score ||
-        a.h.velocity - b.h.velocity ||
-        b.h.tick - a.h.tick
-    )
-  return ranked.slice(0, remove).map((r) => r.h)
+
+  const scored = hits.map((h) => ({
+    h,
+    score: expendability(h, clamp01(cellProbOf(h.tick))),
+  }))
+
+  // Deterministic mode (no rng): the classic "most expendable first" ranking.
+  if (rng == null) {
+    return scored
+      .sort(
+        (a, b) =>
+          b.score - a.score ||
+          a.h.velocity - b.h.velocity ||
+          b.h.tick - a.h.tick
+      )
+      .slice(0, remove)
+      .map((r) => r.h)
+  }
+
+  // Probabilistic mode: weighted draw WITHOUT replacement, weight ∝ exp(bias·score)
+  // so off-beat/quiet hits are far likelier to be plucked but the result is
+  // surprising — and the strong backbone is the last to go. When the fraction
+  // wants every hit, this degenerates to "remove all" (order doesn't matter).
+  const pool = scored.map((s) => ({ ...s, weight: Math.exp(SPARSIFY_BIAS * s.score) }))
+  const out: RemovableHit[] = []
+  for (let k = 0; k < remove && pool.length > 0; k++) {
+    let total = 0
+    for (const p of pool) total += p.weight
+    let r = rng() * total
+    let idx = pool.length - 1
+    for (let i = 0; i < pool.length; i++) {
+      r -= pool[i].weight
+      if (r <= 0) {
+        idx = i
+        break
+      }
+    }
+    out.push(pool[idx].h)
+    pool.splice(idx, 1)
+  }
+  return out
 }
 
 // ============================================================= scatterPhrases

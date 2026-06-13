@@ -51,7 +51,10 @@
     "cs": "Tcheco",
     "lt": "Lituano",
     "sk": "Eslovaco",
-    "sl": "Esloveno"
+    "sl": "Esloveno",
+    "jv": "Javanês",
+    "su": "Sundanês",
+    "tl": "Tagalo"
   },
   "categories": {
     "travel": "Viagem",
@@ -94,8 +97,8 @@
     "testTts": "Teste suas configurações de TTS clicando nos botões abaixo:",
     "showRomanization": "Mostrar romanização",
     "scrollNavigation": "Navegação por rolagem",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Pacotes",
+    "stacks": "Conjuntos",
     "theme": "Tema",
     "themeLight": "Claro",
     "themeDark": "Escuro",
@@ -308,7 +311,7 @@
       "joinDesc": "Apoie Corpán e desbloqueie tudo. Opcional, a qualquer momento.",
       "subscribedTitle": "Você é um Corpanista",
       "subscribedDesc": "Obrigado por manter o Corpán sem anúncios e em crescimento.",
-      "joinTitle": "Join the Corpanistas",
+      "joinTitle": "Junte-se aos Corpanistas",
       "start": "Começar a explorar",
       "subtitle": "Corpán é feito por uma pequena equipe de código aberto. Venha nos cumprimentar — e se você amar, pode nos apoiar.",
       "title": "Tudo pronto"
@@ -565,7 +568,7 @@
     "feedbackButton": "Enviar feedback no GitHub"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Pacotes",
     "available": "Disponível",
     "emptyAvailable": "Nada disponível ainda.",
     "installed": "Instalado",

@@ -23,6 +23,8 @@ import { trackLanguageSwitched } from "@/util/analytics";
 //   - pa-Arab→pa-Guru: Punjabi script bridge
 //   - pa-Guru…ta: India north→south sweep ending in the Tamil south
 //   - hi→ne: Devanagari neighbors across the open border
+//   - id/ms↔jv/su: Malay-world bridge into Java and Sunda
+//   - tl: Austronesian hop through the Philippines before the Indian-Ocean detour
 //   - sw: Indian-Ocean detour before the East Asian arrival
 //   - zh-Hans↔zh-Hant↔yue-Hant-HK: Sinitic cluster (Mandarin → Cantonese)
 export const ALL_LANGUAGES = [
@@ -81,7 +83,10 @@ export const ALL_LANGUAGES = [
     "th",
     "vi",
     "id",
+    "jv",
+    "su",
     "ms",
+    "tl",
     // Indian-Ocean detour
     "sw",
     // East Asia (Sinitic cluster → Korean → Japanese)
@@ -97,7 +102,6 @@ export const COMING_SOON_LANGUAGES = [
     "ml",
     "si",
     // SE Asian
-    "fil",
     "my",
     "km",
     // Africa

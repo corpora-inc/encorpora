@@ -95,7 +95,7 @@
 }
 .bl-scenes-save-label {
   flex: 1 1 auto;
-  text-align: left;
+  text-align: start;
 }
 .bl-scenes-save-dirty {
   flex: 0 0 auto;
@@ -174,7 +174,7 @@
   font-size: var(--bl-fs-value);
   letter-spacing: 0.02em;
   line-height: 1;
-  text-align: left;
+  text-align: start;
   cursor: pointer;
   transition:
     background var(--bl-dur-fast) var(--bl-ease),

@@ -51,7 +51,10 @@
     "cs": "چکی",
     "lt": "لیتوانیایی",
     "sk": "اسلواکی",
-    "sl": "اسلونیایی"
+    "sl": "اسلونیایی",
+    "jv": "جاوه‌ای",
+    "su": "سوندایی",
+    "tl": "تاگالوگ"
   },
   "categories": {
     "travel": "سفر",
@@ -94,8 +97,8 @@
     "testTts": "برای آزمایش تنظیمات TTS روی دکمه‌های زیر بزنید:",
     "showRomanization": "نمایش رومن‌نویسی",
     "scrollNavigation": "ناوبری با لغزش",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "بسته‌ها",
+    "stacks": "پشته‌ها",
     "theme": "پوسته",
     "themeLight": "روشن",
     "themeDark": "تیره",
@@ -565,7 +568,7 @@
     "feedbackButton": "ارسال بازخورد در GitHub"
   },
   "packs": {
-    "title": "Packs",
+    "title": "بسته‌ها",
     "available": "در دسترس",
     "emptyAvailable": "فعلاً چیزی در دسترس نیست.",
     "installed": "نصب‌شده",

@@ -51,7 +51,10 @@
     "cs": "Kicheki",
     "lt": "Kilithuania",
     "sk": "Kislovakia",
-    "sl": "Kislovenia"
+    "sl": "Kislovenia",
+    "jv": "Kijavan",
+    "su": "Kiswahili",
+    "tl": "Kitaliano"
   },
   "categories": {
     "travel": "Usafiri",
@@ -551,7 +554,7 @@
     "renameLabel": "Jina jipya la mfumo",
     "selectAria": "Chagua mfumo",
     "selectPlaceholder": "Chagua…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "Rundo",
     "introTipBody": "Stacks huhifadhi mipangilio tofauti ya kujifunza — moja kwa safari, nyingine kwa kazi. Gusa + kuunda stack mpya."
   },
   "rating": {

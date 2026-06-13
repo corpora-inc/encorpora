@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Grind translation passes until EVERY pack has EVERY 51 langs at full
+Grind translation passes until EVERY pack has EVERY supported lang at full
 phrase count. Loops at most N rounds; per-round runs incremental_translate
 on every short lang of every short pack in parallel.
 
@@ -26,14 +26,7 @@ LOG_DIR.mkdir(exist_ok=True)
 
 sys.path.insert(0, str(HERE))
 from facets import TIER
-
-ALL_LANGS = [
-    "ar","bg","bn","ca","cs","da","de","el","en","es","fa","fi","fr",
-    "gu","he","hi","hr","hu","id","it","ja","kn","ko-polite","lt","mr",
-    "ms","ne","nl","no","pa-Arab","pa-Guru","pl","pt-BR","pt-PT","ro",
-    "ru","sk","sl","sr","sv","sw","ta","te","th","tr","uk","ur","vi",
-    "yue-Hant-HK","zh-Hans","zh-Hant",
-]
+from gemini_translate import ALL_LANGS
 
 
 def pack_dir(pack_id: str) -> Path:

@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest"
 import { readFileSync, readdirSync, statSync } from "node:fs"
 import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
-import { SOURCE_EN, ALL_KEYS, presentLocales, __LOCALES_FOR_TEST, setUiLang, ct } from "./strings"
+import { SOURCE_EN, ALL_KEYS, presentLocales, __LOCALES_FOR_TEST, setUiLang, ct, isRtlLang } from "./strings"
 
 /** The locales beatlounge ships chrome in (matches the app's catalog set). */
 const SHIPPED = [
@@ -91,5 +91,29 @@ describe("beatlounge i18n catalog", () => {
       const coverage = Object.keys(dict).length / ALL_KEYS.length
       expect(coverage).toBeGreaterThan(0.9)
     }
+  })
+})
+
+describe("isRtlLang — writing direction", () => {
+  it("treats the core RTL languages (and regional variants) as RTL", () => {
+    for (const t of ["ar", "he", "fa", "ur", "ar-EG", "fa-IR", "he-IL"]) {
+      expect(isRtlLang(t)).toBe(true)
+    }
+  })
+
+  it("keeps LTR languages LTR", () => {
+    for (const t of ["en", "es", "id", "jv", "su", "tl", "zh-Hant", "ja", ""]) {
+      expect(isRtlLang(t)).toBe(false)
+    }
+  })
+
+  it("resolves Punjabi by SCRIPT, not base — incl. scripted regional tags", () => {
+    // Shahmukhi (Arabic script) is RTL; Gurmukhi is LTR. The bare base `pa`
+    // is ambiguous and must NOT be treated as RTL.
+    expect(isRtlLang("pa-Arab")).toBe(true)
+    expect(isRtlLang("pa-Arab-PK")).toBe(true) // regressed before: rendered LTR
+    expect(isRtlLang("pa-Guru")).toBe(false)
+    expect(isRtlLang("pa-Guru-IN")).toBe(false)
+    expect(isRtlLang("pa")).toBe(false)
   })
 })

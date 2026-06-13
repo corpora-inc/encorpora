@@ -1,6 +1,6 @@
 """Corpán language set ⇄ FLEURS config map for the Phase-0 ASR bake-off.
 
-Our app speaks 51 languages / 52 written scripts (the authoritative list is
+Our app speaks 54 languages / 55 written scripts (the authoritative list is
 the coverage matrix in corpan/docs/STT_MASTERPLAN.md §6). FLEURS
 (google/fleurs, CC-BY) is the eval corpus: 102 langs, a 350-sentence `test`
 split each, loadable per-language with
@@ -129,7 +129,10 @@ LANGS: list[Lang] = [
     # --- SEA / other ---
     Lang("vi", "Vietnamese", "vi_vn"),
     Lang("id", "Indonesian", "id_id"),
+    Lang("jv", "Javanese", "jv_id"),
+    Lang("su", "Sundanese", "su_id"),
     Lang("ms", "Malay", "ms_my"),
+    Lang("tl", "Tagalog", "fil_ph"),
     Lang("sw", "Swahili", "sw_ke"),
 ]
 

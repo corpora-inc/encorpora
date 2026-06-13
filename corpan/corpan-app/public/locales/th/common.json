@@ -51,7 +51,10 @@
     "cs": "เช็ก",
     "lt": "ลิทัวเนีย",
     "sk": "สโลวัก",
-    "sl": "สโลวีเนีย"
+    "sl": "สโลวีเนีย",
+    "jv": "ชวา",
+    "su": "ซุนดา",
+    "tl": "ตากาล็อก"
   },
   "categories": {
     "travel": "การท่องเที่ยว",
@@ -94,8 +97,8 @@
     "testTts": "ทดสอบ TTS ด้วยปุ่มด้านล่าง:",
     "showRomanization": "แสดงถอดเสียง",
     "scrollNavigation": "การนำทางด้วยการเลื่อน",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "แพ็ก",
+    "stacks": "สแต็ก",
     "theme": "ธีม",
     "themeLight": "สว่าง",
     "themeDark": "มืด",
@@ -358,7 +361,7 @@
       "macStep3": "ใต้ เสียงระบบ (System Voice) เปิด จัดการเสียง (Manage Voices)",
       "macStep4": "ดาวน์โหลดเสียง Premium หรือ Enhanced สำหรับภาษาของคุณ",
       "macStep5": "กลับมาที่ Corpán — เสียงจะปรากฏขึ้นที่นี่โดยอัตโนมัติ",
-      "step1": "แตะ เปิดการตั้งค่า (Open Settings) ด้านล่าง",
+      "step1": "แตะ “เปิดการตั้งค่า” ด้านล่าง",
       "step2": "ไปที่ การช่วยการเข้าถึง (Accessibility) → เนื้อหาเสียงพูด (Spoken Content) → เสียง (Voices)",
       "step3": "แตะภาษาของคุณ",
       "step4": "ดาวน์โหลดเสียง Premium หรือ Enhanced",
@@ -551,7 +554,7 @@
     "renameLabel": "ชื่อใหม่สำหรับสแต็ก",
     "selectAria": "เลือกสแต็ก",
     "selectPlaceholder": "เลือก…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "สแต็ก",
     "introTipBody": "Stacks เก็บการตั้งค่าการเรียนรู้ที่แตกต่างกัน — อันหนึ่งสำหรับท่องเที่ยว อีกอันสำหรับงาน แตะ + เพื่อสร้าง stack ใหม่"
   },
   "rating": {
@@ -565,7 +568,7 @@
     "close": "ปิด"
   },
   "packs": {
-    "title": "Packs",
+    "title": "แพ็ก",
     "available": "พร้อมใช้งาน",
     "emptyAvailable": "ยังไม่มีรายการที่พร้อมใช้งาน",
     "installed": "ติดตั้งแล้ว",

@@ -51,7 +51,10 @@
     "cs": "Cseh",
     "lt": "Litván",
     "sk": "Szlovák",
-    "sl": "Szlovén"
+    "sl": "Szlovén",
+    "jv": "jávai",
+    "su": "szundáli",
+    "tl": "tagalog"
   },
   "categories": {
     "travel": "Utazás",
@@ -94,8 +97,8 @@
     "testTts": "Tesztelje a TTS beállításokat az alábbi gombokkal:",
     "showRomanization": "Rómaizáció megjelenítése",
     "scrollNavigation": "Görgetés navigáció",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Csomagok",
+    "stacks": "Készletek",
     "theme": "Téma",
     "themeLight": "Világos",
     "themeDark": "Sötét",
@@ -565,7 +568,7 @@
     "feedbackButton": "Visszajelzés GitHubon"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Csomagok",
     "available": "Elérhető",
     "emptyAvailable": "Még semmi nem érhető el.",
     "installed": "Telepítve",

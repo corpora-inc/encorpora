@@ -51,7 +51,10 @@
     "cs": "چیک",
     "lt": "لتھوانیائی",
     "sk": "سلوواکی",
-    "sl": "سلووینیائی"
+    "sl": "سلووینیائی",
+    "jv": "جاوانی",
+    "su": "سوندانی",
+    "tl": "تاگالوگ"
   },
   "categories": {
     "travel": "سفر",
@@ -94,8 +97,8 @@
     "testTts": "نیچے والے بٹنوں سے TTS آزمائیں:",
     "showRomanization": "رومنائزیشن دکھائیں",
     "scrollNavigation": "سکرول نیویگیشن",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "پیک",
+    "stacks": "سٹیکس",
     "theme": "تھیم",
     "themeLight": "ہلکا",
     "themeDark": "گوڑھا",
@@ -308,7 +311,7 @@
       "joinDesc": "Corpán دی حمایت کرو تے سب کُجھ انلاک کرو۔ اختیاری، کدی وی۔",
       "subscribedTitle": "تُسی اِک Corpanista او",
       "subscribedDesc": "Corpán نوں اشتہار-مفت تے ودھدا رکھن لئی تہاڈا شکریہ۔",
-      "joinTitle": "Join the Corpanistas",
+      "joinTitle": "Corpanistas وچ شامل ہوو",
       "start": "کھوجنا شروع کرو",
       "subtitle": "Corpán اک نِکی اوپن سورس ٹیم نے بنایا اے۔ آؤ سلام کرو — تے جے تُسی ایہنوں پسند کردے او، تُسی ساڈی حمایت کر سکدے او۔",
       "title": "تُسی تیار او"
@@ -565,7 +568,7 @@
     "feedbackButton": "GitHub تے فیڈبیک شیئر کرو"
   },
   "packs": {
-    "title": "Packs",
+    "title": "پیک",
     "available": "دستیاب",
     "emptyAvailable": "ہنوز کچھ دستیاب نہیں۔",
     "installed": "انسٹال شدہ",

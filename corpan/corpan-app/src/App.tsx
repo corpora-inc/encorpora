@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { useDrawerStore } from "@/store/drawer";
 import { QuickSettingsSheet } from "@/components/QuickSettingsSheet";
 import { OnboardingTour } from "@/components/tour/OnboardingTour";
-import { OnboardingTTSInstructions } from "@/components/OnboardingTTSInstructions";
 import { useState, useEffect, useLayoutEffect, useCallback, useRef } from "react";
 import { MainExperience } from "./components/MainExperience";
 import { HomeHub } from "@/components/home/HomeHub";
@@ -133,7 +132,6 @@ function PhraseFlipChrome() {
 export default function App() {
   useThemeEffect();
   const [showSettings, setShowSettings] = useState(false);
-  const [showTTS, setShowTTS] = useState(false);
   const [showTour, setShowTour] = useState(false);
   const [activeGame, setActiveGame] = useState<{
     id: string;
@@ -450,15 +448,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    // The standalone Text-to-speech / voice configurator, opened from Settings
-    // (JumpToTTSButton). Onboarding is a decision graph now, so we render the
-    // TTS screen directly rather than re-entering onboarding at a step index.
-    const onOpenTTS = () => setShowTTS(true);
-    window.addEventListener("corpan:open-tts", onOpenTTS as EventListener);
-    return () => window.removeEventListener("corpan:open-tts", onOpenTTS as EventListener);
-  }, []);
-
-  useEffect(() => {
     // While a full-screen experience (pack or native phrase) overlays Home,
     // mark the body so Home's own scroll container is frozen (see index.css).
     // Without this, Home's scrollbar bleeds through the opaque overlay on
@@ -574,18 +563,6 @@ export default function App() {
 
       {/* Quick Settings sheet — opened by Phrase Flip's gear or hostApi. */}
       <QuickSettingsSheet />
-
-      {/* Standalone Text-to-speech / voice configurator, opened from Settings.
-          z above SettingsModal (Radix dialog) so it overlays it; Back/Continue
-          both just close it (voice selections persist live to the store). */}
-      {showTTS ? (
-        <div className="fixed inset-0 z-[1200]">
-          <OnboardingTTSInstructions
-            onAdvance={() => setShowTTS(false)}
-            onBack={() => setShowTTS(false)}
-          />
-        </div>
-      ) : null}
 
       {/* Post-onboarding guided tour (over Home; launching a pack closes it). */}
       {showTour ? (

@@ -25,7 +25,7 @@ import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
 import { stepForTick } from "../../model/timing"
 import { Glyph } from "../../bl-ui"
 import { buildMiniView } from "./gridModel"
-import { generateAction } from "../grooves/actions"
+import { generateAction, sparserAction } from "../grooves/actions"
 import { MAX_DENSITY_LEVEL } from "../grooves/grooveModel"
 import { getRhythm } from "../../rhythm"
 import { pickRandomRhythmId } from "../grooves/randomRhythm"
@@ -99,11 +99,36 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
     generate(next)
   }
 
-  /** "−" — sparser: lower the level and regenerate (down to 0 = empty). */
+  /** "−" — sparser: REMOVE a fraction of the kit's current hits (off-beat / quiet
+   *  first, probabilistically — surprising but the downbeat backbone survives
+   *  longest), down to nothing. The `generate` op is purely ADDITIVE, so "−" must
+   *  run the dedicated `remove` action (`sparserAction`) — decrementing the level
+   *  and regenerating would lay MORE hits on top, never fewer. One undo batch. */
   const sparser = () => {
-    const next = Math.max(0, level - 1)
-    setLevel(next)
-    generate(next)
+    const before = store.vanilla.getState().doc
+    const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
+    const result = sparserAction.run(
+      { doc: store.vanilla.getState().doc, rng: () => Math.random() },
+      {
+        rhythmId,
+        intensity: 1,
+        seed,
+        // No selectedPitches ⇒ thin the WHOLE kit (mirrors the kit-wide "+").
+        target: { kind: "drums", trackId },
+      }
+    )
+    if (result.commands.length === 0) {
+      host.toast(result.summary || ct("grooves.nothingToApply"))
+      return
+    }
+    // Only drop the density level once we know hits were actually removed —
+    // decrementing on an empty/non-removable kit would drift the UI level
+    // away from the document.
+    setLevel((lvl) => Math.max(0, lvl - 1))
+    store.dispatch({ t: "batch", commands: result.commands, label: sparserAction.name })
+    host.toast(result.summary, {
+      undo: () => store.vanilla.getState().doc !== before && store.undo(),
+    })
   }
 
   /** SHUFFLE — pick a fresh world rhythm (never the current one), share it across

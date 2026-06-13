@@ -53,7 +53,7 @@ SCHEMA_VERSION = 2  # v2 (2026-05-31): adds entries_fts (FTS5 over english).
                    # the dual-mode consumer pattern.
 APPLICATION_ID = 0x434F5250  # "CORP"
 
-# Mirrors corpan-app/src/store/settings.ts :: ALL_LANGUAGES (51 shipping codes).
+# Mirrors corpan-app/src/store/settings.ts :: ALL_LANGUAGES.
 # If that list grows, update here too — `--langs` overrides for one-off packs.
 DEFAULT_LANGS: tuple[str, ...] = (
     "en", "es", "ca", "fr", "it", "ro", "pt-PT", "pt-BR",
@@ -62,7 +62,7 @@ DEFAULT_LANGS: tuple[str, ...] = (
     "el", "tr",
     "he", "ar", "fa", "ur", "pa-Arab",
     "pa-Guru", "hi", "ne", "bn", "mr", "gu", "kn", "te", "ta",
-    "th", "vi", "id", "ms",
+    "th", "vi", "id", "jv", "su", "ms", "tl",
     "sw",
     "zh-Hans", "zh-Hant", "yue-Hant-HK", "ko-polite", "ja",
 )

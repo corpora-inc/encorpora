@@ -51,7 +51,10 @@
     "cs": "ಚೆಕ್",
     "lt": "ಲಿತ್ವೇನಿಯನ್",
     "sk": "ಸ್ಲೊವಾಕ್",
-    "sl": "ಸ್ಲೊವೆನಿಯನ್"
+    "sl": "ಸ್ಲೊವೆನಿಯನ್",
+    "jv": "ಜಾವಾನೀಸ್",
+    "su": "ಸುಂದಾನೀಸ್",
+    "tl": "ತಾಗಾಲೋಗ್"
   },
   "categories": {
     "travel": "ಪ್ರಯಾಣ",
@@ -94,8 +97,8 @@
     "testTts": "ಕೆಳಗಿನ ಬಟನ್‌ಗಳೊಂದಿಗೆ TTS ಅನ್ನು ಪರೀಕ್ಷಿಸಿ:",
     "showRomanization": "ರೋಮನೀಕರಣವನ್ನು ತೋರಿಸಿ",
     "scrollNavigation": "ಸ್ಕ್ರೋಲ್ ನ್ಯಾವಿಗೇಶನ್",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "ಪ್ಯಾಕ್‌ಗಳು",
+    "stacks": "ಸ್ಟ್ಯಾಕ್‌ಗಳು",
     "theme": "ಥೀಮ್",
     "themeLight": "ಬೆಳಕು",
     "themeDark": "ಕತ್ತಲೆ",
@@ -565,7 +568,7 @@
     "feedbackButton": "GitHub ನಲ್ಲಿ ಪ್ರತಿಕ್ರಿಯೆ ಹಂಚಿಕೊಳ್ಳಿ"
   },
   "packs": {
-    "title": "Packs",
+    "title": "ಪ್ಯಾಕ್‌ಗಳು",
     "available": "ಲಭ್ಯ",
     "emptyAvailable": "ಇನ್ನೂ ಏನೂ ಲಭ್ಯವಿಲ್ಲ.",
     "installed": "ಸ್ಥಾಪಿತ",

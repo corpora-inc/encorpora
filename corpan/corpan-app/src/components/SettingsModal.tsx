@@ -28,6 +28,7 @@ import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
 import { DismissableTip } from "./DismissableTip";
 import { JumpToTTSButton } from "./JumpToTTSButton";
+import { TTSSettingsDrawer } from "./TTSSettingsDrawer";
 import { usePaywallStore } from "@/store/paywall";
 import { useEntitlementStore } from "@/store/entitlements";
 import { manageSubscription } from "@/contentPacks/purchase";
@@ -287,6 +288,11 @@ export function SettingsModal({
             </div>
           </div>
         ) : null}
+
+        {/* Voice tuning, in place. Opened by JumpToTTSButton; vaul drawer sits
+            above this Radix dialog so it stays interactive (the old full-screen
+            overlay was trapped by the dialog's pointer-events lock). */}
+        <TTSSettingsDrawer />
       </DialogContent>
     </Dialog>
   );

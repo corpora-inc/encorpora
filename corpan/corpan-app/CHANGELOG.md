@@ -7,6 +7,33 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.18.1] - 2026-06-13
+
+### Added
+- **Three more languages: Tagalog, Javanese, Sundanese.** Added across the
+  app and packs. They now appear on the first onboarding screen labeled in
+  their own language (Tagalog, Basa Jawa, Basa Sunda) rather than falling back
+  to an unlabeled English row.
+
+### Changed
+- **Voice settings open in place.** "Text-to-speech setup" in Settings now
+  opens a drawer with the same voice pickers, instead of re-entering the
+  onboarding flow. The voice-picker UI is shared between onboarding and
+  Settings, so the two never drift.
+- **Tighter onboarding language list on small screens.** Nudged the
+  language-pick row sizing down at the smallest widths so the longer list
+  fits without horizontal overflow on a 320–360px phone; tablet/desktop
+  sizing is unchanged.
+
+### Fixed
+- **"Open TTS Settings" no longer traps the app.** Opened from Settings, the
+  old full-screen voice setup rendered over the open Settings dialog, whose
+  pointer-events lock made its Back/Continue unclickable — the only escape was
+  to force-quit. It's now a dismissable drawer (scrim, swipe, or ×).
+- **Tagalog finds the on-device voice.** We ship Tagalog as `tl`, but Android
+  publishes the voice as `fil`/`fil-PH`; a two-way `tl`↔`fil` alias now lets a
+  Tagalog stack use that voice instead of falling back to a generic one.
+
 ## [0.18.0] - 2026-06-12
 
 ### Added

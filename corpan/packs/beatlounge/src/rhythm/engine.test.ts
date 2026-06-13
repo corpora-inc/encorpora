@@ -290,6 +290,57 @@ describe("chooseHitsToSparsify — the '−' of the density dial", () => {
     const b = chooseHitsToSparsify(hits, 0.5, (t) => (t % 48 === 0 ? 0.9 : 0.1))
     expect(a).toEqual(b)
   })
+
+  // ----- the PROBABILISTIC draw (with an rng) — surprising but still subtractive
+  it("with an rng: removes the SAME count, never more, always ≥1", () => {
+    const hits = Array.from({ length: 10 }, (_, i) => hit(`h${i}`, i * 24, 0.6))
+    for (let seed = 1; seed <= 20; seed++) {
+      const out = chooseHitsToSparsify(hits, 0.3, () => 0.5, rngFrom(seed))
+      expect(out.length).toBe(3) // identical count to the deterministic mode
+      // No duplicates, all from the input (a strict SUBSET — never invents a hit).
+      const refs = new Set(out.map((h) => h.ref))
+      expect(refs.size).toBe(out.length)
+      for (const h of out) expect(hits).toContain(h)
+    }
+  })
+
+  it("with an rng: is SEEDED — same seed ⇒ same set, different seeds ⇒ variety", () => {
+    const hits = Array.from({ length: 12 }, (_, i) => hit(`h${i}`, i * 24, 0.5))
+    const setFor = (seed: number) =>
+      chooseHitsToSparsify(hits, 0.4, () => 0.5, rngFrom(seed))
+        .map((h) => h.ref)
+        .sort()
+        .join(",")
+    expect(setFor(3)).toBe(setFor(3)) // reproducible
+    const outcomes = new Set(Array.from({ length: 16 }, (_, i) => setFor(i + 1)))
+    expect(outcomes.size).toBeGreaterThan(1) // genuinely surprising
+  })
+
+  it("with an rng: still WEIGHTS toward off-beat (strong onset survives most of the time)", () => {
+    // One strong onset cell + 7 weak off-beat hits; thin ONE. The onset is the
+    // least expendable, so across many seeds it should survive far more often than
+    // a uniform 7/8.
+    const onset = hit("onset", 0, 0.95)
+    const offbeats = Array.from({ length: 7 }, (_, i) => hit(`off${i}`, (i + 1) * 24, 0.3))
+    const probOf = (t: number) => (t === 0 ? 0.95 : 0.05)
+    let onsetSurvived = 0
+    const TRIALS = 80
+    for (let seed = 1; seed <= TRIALS; seed++) {
+      const out = chooseHitsToSparsify([onset, ...offbeats], 0.125, probOf, rngFrom(seed))
+      expect(out.length).toBe(1)
+      if (out[0].ref !== "onset") onsetSurvived++
+    }
+    // A uniform pick drops the onset ~1/8 of the time (survives ~87%); the bias
+    // should push survival well above that.
+    expect(onsetSurvived).toBeGreaterThan(TRIALS * 0.95)
+  })
+
+  it("with an rng: a full-fraction draw still removes EVERYTHING (down to nothing)", () => {
+    const hits = Array.from({ length: 5 }, (_, i) => hit(`h${i}`, i * 24, 0.5))
+    const out = chooseHitsToSparsify(hits, 1, () => 0.5, rngFrom(9))
+    expect(out.length).toBe(5)
+    expect(new Set(out.map((h) => h.ref)).size).toBe(5)
+  })
 })
 
 describe("applyRhythmToPhrases", () => {

@@ -129,7 +129,7 @@
 .bl-fret-label {
   position: absolute;
   top: var(--bl-s2);
-  left: 4px;
+  inset-inline-start: 4px;
   /* a single-line label inside an absolutely-placed span — pin its baseline with
    * an explicit line-height so it never drifts vertically (WebKit safety). */
   line-height: 1;
