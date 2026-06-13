@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Elävä kaupunki, jossa jokainen kohtaaminen on oppitunti."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Samplaa kieltä, jota opettelet. Scratchaa, kunnes se jää päähän."
     }
   },
   "home": {

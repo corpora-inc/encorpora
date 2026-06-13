@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Egy élő város, ahol minden találkozás tanulság."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sample-özd a nyelvet, amit tanulsz. Scratcheld addig, míg beragad."
     }
   },
   "home": {

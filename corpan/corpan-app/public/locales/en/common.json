@@ -195,6 +195,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "A living city that turns every encounter into a lesson."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sample the language you're learning. Scratch it till it sticks."
     }
   },
   "onboarding": {

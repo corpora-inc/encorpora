@@ -191,7 +191,7 @@
   {
     "id": "beatlounge",
     "name": "beatlounge",
-    "description": "A dark, AI-driven beat lounge — build loops on a premium sequencer, reshape them with a word, and sample the phrase corpus into your music.",
+    "description": "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
     "status": "active",
     "listed": true,
     "manifestUrl": "/corpan/packs/beatlounge/manifest.json",
@@ -220,7 +220,7 @@
     "featuredFor": [
       "wild"
     ],
-    "tagline": "Build loops, reshape them with a word, learn in rhythm."
+    "tagline": "Sample the language you're learning. Scratch it till it sticks."
   },
   {
     "id": "hanzipan",

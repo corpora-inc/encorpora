@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Een levende stad die van elke ontmoeting een les maakt."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sample de taal die je leert. Scratch tot het blijft hangen."
     }
   },
   "home": {

@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Một thành phố sống động biến mọi cuộc gặp gỡ thành bài học."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sample ngôn ngữ bạn đang học. Scratch đến khi nhớ nằm lòng."
     }
   },
   "home": {

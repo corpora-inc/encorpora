@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Mji hai unaogeuza kila mkutano kuwa somo."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sampuli lugha unayojifunza. Iscratch mpaka iingie kichwani."
     }
   },
   "home": {

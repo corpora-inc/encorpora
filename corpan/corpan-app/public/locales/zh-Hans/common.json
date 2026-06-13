@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "一个将每次相遇化为课程的生活城市。"
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "采样你正在学的语言。Scratch 到它刻进脑子里。"
     }
   },
   "home": {

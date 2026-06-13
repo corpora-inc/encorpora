@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Her karşılaşmayı derse çeviren yaşayan bir şehir."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Öğrendiğin dili sample’la. Aklına kazınana kadar scratch’le."
     }
   },
   "home": {

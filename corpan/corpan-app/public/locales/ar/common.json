@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "مدينة حية تحول كل لقاء إلى درس."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "خذ عيّنة من اللغة التي تتعلمها. اخدشها حتى ترسخ."
     }
   },
   "home": {
