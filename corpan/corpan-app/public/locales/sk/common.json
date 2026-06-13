@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Živé mesto, kde sa každé stretnutie mení na lekciu."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sampluj jazyk, ktorý sa učíš. Scratchuj ho, kým sa ti nevryje pod kožu."
     }
   },
   "home": {

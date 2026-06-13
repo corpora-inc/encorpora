@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Gyvas miestas, kur kiekvienas susitikimas tampa pamoka."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sampluok kalbą, kurios mokaisi. Scratch’ink, kol prilips."
     }
   },
   "home": {

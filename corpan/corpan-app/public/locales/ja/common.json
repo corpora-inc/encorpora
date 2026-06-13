@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "出会いがすべて学びになる生きた街。"
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "学んでいる言語をサンプリング。染みつくまでスクラッチ。"
     }
   },
   "home": {

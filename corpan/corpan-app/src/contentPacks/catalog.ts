@@ -209,7 +209,8 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     minAppVersion: "0.18.0",
     manifestUrl: "https://encorpora.io/corpan/packs/beatlounge.zip",
     description:
-      "A dark, AI-driven beat lounge — build loops on a premium sequencer, reshape them with a word, and sample the phrase corpus into your music.",
+      "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
+    tagline: "Sample the language you're learning. Scratch it till it sticks.",
     imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
     categories: ["wild", "games", "study"],
@@ -261,14 +262,14 @@ const DEV_CATALOG: CatalogGame[] = [
     minAppVersion: "0.18.0",
     manifestUrl: "/packs/beatlounge/manifest.json",
     description:
-      "A dark, AI-driven beat lounge — build loops on a premium sequencer, reshape them with a word, and sample the phrase corpus into your music.",
+      "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
+    tagline: "Sample the language you're learning. Scratch it till it sticks.",
     imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
     categories: ["wild", "games", "study"],
     goodForClass: ["enjoyer", "learner"],
     featuredFor: ["wild"],
     recommendOrder: 6,
-    tagline: "Build loops, reshape them with a word, learn in rhythm.",
   },
 ]
 

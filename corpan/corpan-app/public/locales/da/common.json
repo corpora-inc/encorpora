@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "En levende by, der gør hvert møde til en lektion."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sample det sprog, du lærer. Scratch det, til det sidder fast."
     }
   },
   "home": {

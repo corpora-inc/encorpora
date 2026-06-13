@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "ప్రతి పరిచయాన్ని పాఠంగా మార్చే జీవంతమైన నగరం."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "మీరు నేర్చుకుంటున్న భాషనే sample చేయండి. గుర్తుండిపోయే వరకు scratch చేయండి."
     }
   },
   "home": {

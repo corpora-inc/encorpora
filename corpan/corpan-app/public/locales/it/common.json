@@ -757,6 +757,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Una città viva che trasforma ogni incontro in una lezione."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Campiona la lingua che stai imparando. Scratchala finché ti resta addosso."
     }
   },
   "home": {

@@ -1,14 +1,13 @@
-Pure Learning, now with rhythm.
+You never forget a song.
 
-This release introduces beatlounge — a new way to learn inside music — and continues our steady work on stability and fit.
+That's the whole idea behind beatlounge — the new studio inside Corpan, and the most fun you'll ever have learning a language. Or fifty.
 
-beatlounge
-A dark, premium beat studio. Build a loop on the sequencer, set a key and mode, and play melodies on a wide ribbon that always stays in tune. Tap plus or minus to grow or thin a groove, sample words from the phrase corpus straight into your tracks, and reshape the whole loop with a single word. It is made to be played with — and every sound can carry a phrase, so you learn in rhythm.
+beatlounge is a real instrument. The ribbon, the turntable, the effects rack — professional, expressive, and yours to play any way you like. Not sure where to start? Tell it what you want in plain words and the loop reworks itself. You don't need a shred of music theory to make something that sounds incredible — and if you want to learn it, beatlounge teaches you, with a harmony engine fluent in modes, maqam, and ragas. Whether it's your first beat or your hundredth, it meets you where you are.
 
-Steadier on reload
-We refined how experiences load and unload, for fewer interruptions when you move between them.
+Then comes the part that still gives us chills: your samples are the language you're learning. Build a groove, pull in real phrases — tens of thousands of them, across 50+ languages — and scratch, chop, and play them on the deck. Sliced into words and fragments, that's more than ten million utterances at your fingertips. Every one of them on your device. No connection. No catch.
 
-A comfortable fit on every screen
-More compact, tidier layouts on phones, with room to breathe on iPad and larger displays.
+You won't feel like you're studying. You'll feel like you're making something — and the words stay with you, because you put them on the beat.
 
-Thank you for learning with Corpan. It runs entirely on your device, with no ads and no login. If it has been useful, a review genuinely helps.
+This release also runs smoother and steadier, with cleaner transitions between experiences and tougher handling under the hood.
+
+No ads. No login. It all lives on your device. Open beatlounge and make something — we can't wait to hear it.
