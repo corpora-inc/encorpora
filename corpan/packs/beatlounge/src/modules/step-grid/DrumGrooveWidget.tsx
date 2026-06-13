@@ -105,7 +105,6 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
    *  run the dedicated `remove` action (`sparserAction`) — decrementing the level
    *  and regenerating would lay MORE hits on top, never fewer. One undo batch. */
   const sparser = () => {
-    setLevel((lvl) => Math.max(0, lvl - 1))
     const before = store.vanilla.getState().doc
     const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
     const result = sparserAction.run(
@@ -122,6 +121,10 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
       host.toast(result.summary || ct("grooves.nothingToApply"))
       return
     }
+    // Only drop the density level once we know hits were actually removed —
+    // decrementing on an empty/non-removable kit would drift the UI level
+    // away from the document.
+    setLevel((lvl) => Math.max(0, lvl - 1))
     store.dispatch({ t: "batch", commands: result.commands, label: sparserAction.name })
     host.toast(result.summary, {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),

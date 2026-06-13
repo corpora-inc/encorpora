@@ -27520,10 +27520,21 @@ export function uiLang(): string {
 // `uiDir()`; CSS keys off `[dir="rtl"]`.
 const RTL_LANGS = new Set(["ar", "he", "fa", "pa-Arab", "ur"])
 
-/** Is `lang` written right-to-left? Tolerant of regional variants (e.g. ar-EG). */
+/** Is `lang` written right-to-left? Tolerant of regional variants (`ar-EG`) and
+ *  scripted regional variants (`pa-Arab-PK`) — a 4-letter script subtag decides
+ *  direction independently of region, so it's checked before the bare base
+ *  (which keeps Gurmukhi `pa-Guru` LTR while Shahmukhi `pa-Arab` is RTL). */
 export function isRtlLang(lang: string): boolean {
   if (!lang) return false
-  return RTL_LANGS.has(lang) || RTL_LANGS.has(lang.split("-")[0])
+  if (RTL_LANGS.has(lang)) return true
+  const parts = lang.split("-")
+  const base = parts[0].toLowerCase()
+  const script = parts.find((p) => /^[a-zA-Z]{4}$/.test(p))
+  if (script) {
+    const norm = `${base}-${script[0].toUpperCase()}${script.slice(1).toLowerCase()}`
+    if (RTL_LANGS.has(norm)) return true
+  }
+  return RTL_LANGS.has(base)
 }
 
 /** The current native language's writing direction ("rtl" | "ltr"). */
