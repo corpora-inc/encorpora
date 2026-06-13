@@ -17,6 +17,7 @@ import type {
   ModuleId,
 } from "../contracts/module"
 import type { HostApi } from "../sdk/types"
+import { setUiLang } from "../i18n/strings"
 
 export interface ShellChrome {
   /** Enter immersive for a module; returns a dispose that exits it. */
@@ -39,7 +40,16 @@ export const createHost = ({
   bus,
   audio,
   chrome,
-}: HostDeps): BeatloungeHost => ({
+}: HostDeps): BeatloungeHost => {
+  // Set the ambient native UI language ONCE at mount — languages[0] from the
+  // stack (a language change remounts the pack). Components/actions read it via
+  // `ct()` from i18n/strings. Falls back to English.
+  try {
+    setUiLang(hostApi.getStackConfig().languages?.[0] || "en")
+  } catch {
+    setUiLang("en")
+  }
+  return {
   hostApi,
   bus,
   audioContext: () => audio.context(),
@@ -51,4 +61,5 @@ export const createHost = ({
   enterImmersive: (id) => chrome.enterImmersive(id),
   form: () => chrome.form(),
   toast: (message, opts) => chrome.toast(message, opts),
-})
+  }
+}

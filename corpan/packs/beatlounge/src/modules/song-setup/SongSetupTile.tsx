@@ -16,6 +16,7 @@ import {
   type Cycle,
 } from "./songMath"
 import type { TimeSignature } from "../../model/timing"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   store: BeatloungeStore
@@ -59,7 +60,7 @@ export const SongSetupTile = ({ store, cycleId }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="metronome" size={16} />
         </span>
-        <span className="bl-tile-title">Rhythmic Cycle</span>
+        <span className="bl-tile-title">{ct("song.title")}</span>
         <span className="bl-tile-meta">{formatMeter(sig)}</span>
       </div>
 

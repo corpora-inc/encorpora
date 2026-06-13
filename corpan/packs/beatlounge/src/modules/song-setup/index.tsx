@@ -25,6 +25,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { songSetupActions } from "./actions"
 import { SongSetupTile } from "./SongSetupTile"
 import { SongSetupImmersive } from "./SongSetupImmersive"
+import { ct } from "../../i18n/strings"
 import "./styles.css"
 
 export interface SongSetupDeps {
@@ -36,7 +37,7 @@ export const SONG_SETUP_ID = "song-setup"
 export const createSongSetupModule = ({ store }: SongSetupDeps): BeatloungeModule => ({
   id: SONG_SETUP_ID,
   kind: "utility",
-  title: "Rhythmic Cycle",
+  title: ct("song.title"),
   glyph: "metronome",
   immersive: "full",
   tileAspect: "third",

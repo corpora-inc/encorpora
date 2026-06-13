@@ -6,6 +6,7 @@
  */
 
 import { useEffect, useRef } from "react"
+import { ct } from "../i18n/strings"
 
 export interface ToastState {
   id: number
@@ -44,7 +45,7 @@ export const Toast = ({
         <button
           type="button"
           className="bl-toast-close"
-          aria-label="Dismiss"
+          aria-label={ct("shell.dismiss")}
           onClick={onDismiss}
         >
           <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
@@ -67,7 +68,7 @@ export const Toast = ({
               onDismiss()
             }}
           >
-            Undo
+            {ct("shell.undo")}
           </button>
         )}
       </div>

@@ -11,6 +11,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react"
 import { Glyph, Transport } from "../bl-ui"
+import { ct } from "../i18n/strings"
 
 interface Props {
   title: string
@@ -82,8 +83,8 @@ export const Immersive = ({ title, onExit, children, playing, onToggleTransport 
           <button
             type="button"
             className="bl-icon-btn"
-            aria-label="Collapse"
-            title="Collapse (Esc)"
+            aria-label={ct("shell.collapse")}
+            title={ct("shell.collapseHint")}
             onClick={onExit}
           >
             <Glyph name="chevron-down" size={22} />

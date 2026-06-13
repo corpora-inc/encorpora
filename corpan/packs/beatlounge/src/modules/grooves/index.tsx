@@ -16,6 +16,7 @@
  */
 
 import { createRoot, type Root } from "react-dom/client"
+import { ct } from "../../i18n/strings"
 import { makeDeferredUnmount } from "../_shared/deferUnmount"
 import type {
   BeatloungeModule,
@@ -36,7 +37,7 @@ export const createGroovesModule = ({ store }: ModuleDeps): BeatloungeModule => 
   // The module-bar glyph must be a known bl-ui GlyphName; "metronome" reads as
   // rhythm. The tile + immersive render a custom inline-SVG groove mark.
   glyph: "metronome",
-  title: "Grooves",
+  title: ct("grooves.title"),
   immersive: "full",
   tileAspect: "wide",
   actions: groovesActions,

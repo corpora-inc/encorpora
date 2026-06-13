@@ -29,6 +29,7 @@ import {
 import { stepForTick, tickForStep } from "../../model/timing"
 import { activePitches } from "../../music/resolver"
 import { Glyph, Knob } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 import { ClearButton } from "../_shared/ClearButton"
 import {
   HeaderStatusLine,
@@ -160,7 +161,7 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
   )
 
   if (!track || !isInstrumentTrack(track) || view == null || low == null) {
-    return <div className="bl-grid-empty">No melodic track.</div>
+    return <div className="bl-grid-empty">{ct("roll.noTrack")}</div>
   }
 
   const cellOf = (pitch: number, step: number): RollCell | null => {
@@ -217,7 +218,7 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
             ? reAdded.notes.find((n) => n.tick === tick && n.pitch === pitch)
             : undefined
         setSelectedNoteId(note?.id ?? noteId)
-        localHost.toast(`${pitchLabel(pitch)} selected`, undefined)
+        localHost.toast(ct("roll.noteSelected", { note: pitchLabel(pitch) }), undefined)
       }, LONG_PRESS_MS)
     }
   }
@@ -289,7 +290,7 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
           <button
             type="button"
             className="bl-icon-btn"
-            aria-label="Shift window up an octave"
+            aria-label={ct("roll.shiftUpOctave")}
             onClick={() => shiftWindow(12)}
           >
             ▲
@@ -297,7 +298,7 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
           <button
             type="button"
             className="bl-icon-btn"
-            aria-label="Shift window down an octave"
+            aria-label={ct("roll.shiftDownOctave")}
             onClick={() => shiftWindow(-12)}
           >
             ▼
@@ -329,7 +330,7 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
                     type="button"
                     role="gridcell"
                     aria-pressed={cell.on}
-                    aria-label={`${row.label} step ${s + 1}`}
+                    aria-label={ct("roll.cellLabel", { note: row.label, step: String(s + 1) })}
                     className={
                       "bl-roll-cell" +
                       (cell.on ? " is-on" : "") +
@@ -361,7 +362,7 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
       <div className="bl-grid-foot" data-bl-nocapture>
         {selectedNote ? (
           <Knob
-            label="Velocity"
+            label={ct("roll.velocity")}
             value={selectedNote.velocity}
             min={0.05}
             max={1}
@@ -378,7 +379,7 @@ export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId
             }
           />
         ) : (
-          <span className="bl-roll-hint">Long-press a note to set velocity</span>
+          <span className="bl-roll-hint">{ct("roll.velocityHint")}</span>
         )}
       </div>
     </div>
@@ -418,11 +419,11 @@ const TrackSwitcher = ({
       type="button"
       className="bl-roll-add"
       onClick={onAdd}
-      aria-label="Add synth track"
-      title="Add synth track"
+      aria-label={ct("roll.addSynthTrack")}
+      title={ct("roll.addSynthTrack")}
     >
       <Glyph name="wave" size={14} />
-      <span>Add</span>
+      <span>{ct("roll.add")}</span>
     </button>
   </div>
 )

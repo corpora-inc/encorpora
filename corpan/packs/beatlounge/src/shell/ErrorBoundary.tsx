@@ -6,6 +6,7 @@
  */
 
 import { Component, type ErrorInfo, type ReactNode } from "react"
+import { ct } from "../i18n/strings"
 
 interface Props {
   children: ReactNode
@@ -39,7 +40,7 @@ export class ErrorBoundary extends Component<Props, State> {
           <div className="bl-boot" style={{ alignItems: "center", justifyContent: "center" }}>
             <div className="bl-wordmark">beatlounge</div>
             <p style={{ color: "var(--bl-text-dim)", fontSize: "var(--bl-fs-label)", textAlign: "center", maxWidth: 360 }}>
-              Something hiccuped. Your loop is safe.
+              {ct("shell.crashTitle")}
             </p>
             <button
               type="button"
@@ -59,7 +60,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 cursor: "pointer",
               }}
             >
-              Reload
+              {ct("shell.reload")}
             </button>
           </div>
         </div>

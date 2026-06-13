@@ -11,6 +11,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import { bankSnippets } from "../../phrase/bank"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   store: BeatloungeStore
@@ -25,7 +26,7 @@ export const PhraseScratchTile = ({ store }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="wave" size={16} />
         </span>
-        <span className="bl-tile-title">Scratch</span>
+        <span className="bl-tile-title">{ct("scratch.title")}</span>
       </div>
       <div className="bl-tile-scr-body">
         <span className="bl-tile-scr-disc" aria-hidden="true">
@@ -33,10 +34,12 @@ export const PhraseScratchTile = ({ store }: Props) => {
         </span>
         {bankCount > 0 ? (
           <div className="bl-tile-scr-stat">
-            <strong>{bankCount}</strong> snippet{bankCount === 1 ? "" : "s"} to scratch
+            {bankCount === 1
+              ? ct("scratch.tileToScratchOne", { n: String(bankCount) })
+              : ct("scratch.tileToScratch", { n: String(bankCount) })}
           </div>
         ) : (
-          <div className="bl-tile-scr-hint">Scratch a phrase like vinyl</div>
+          <div className="bl-tile-scr-hint">{ct("scratch.tileHint")}</div>
         )}
       </div>
     </div>

@@ -10,6 +10,7 @@ import { useBeatloungeStore } from "../../store/store"
 import { isFragmentTrack } from "../../model/document"
 import { bankSnippets } from "../../phrase/bank"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   store: BeatloungeStore
@@ -34,16 +35,18 @@ export const PhraseJamTile = ({ store }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="grid" size={16} />
         </span>
-        <span className="bl-tile-title">Phrase Jam</span>
+        <span className="bl-tile-title">{ct("jam.title")}</span>
         <span className="bl-tile-meta">{placed}</span>
       </div>
       <div className="bl-tile-jam-body">
         {bankCount > 0 ? (
           <div className="bl-tile-jam-stat">
-            <strong>{bankCount}</strong> snippet{bankCount === 1 ? "" : "s"} in the bank
+            {bankCount === 1
+              ? ct("jam.tileInBankOne", { n: String(bankCount) })
+              : ct("jam.tileInBank", { n: String(bankCount) })}
           </div>
         ) : (
-          <div className="bl-tile-jam-hint">Place phrases on the beat</div>
+          <div className="bl-tile-jam-hint">{ct("jam.tileHint")}</div>
         )}
       </div>
     </div>

@@ -19,6 +19,7 @@
 
 import type { BeatloungeHost, BeatloungeModule, FormFactor } from "../contracts/module"
 import { ModuleHost } from "./ModuleHost"
+import { ct } from "../i18n/strings"
 
 interface Props {
   module: BeatloungeModule
@@ -45,8 +46,8 @@ export const Tile = ({ module: m, form, host }: Props) => {
             type="button"
             className="bl-tile-expand"
             onClick={() => host.enterImmersive(expandTo)}
-            aria-label={`Open ${m.title}`}
-            title={`Open ${m.title}`}
+            aria-label={ct("shell.openModule", { name: m.title })}
+            title={ct("shell.openModule", { name: m.title })}
           >
             <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
               <path
@@ -69,7 +70,7 @@ export const Tile = ({ module: m, form, host }: Props) => {
       type="button"
       className={aspectClass}
       onClick={() => host.enterImmersive(m.id)}
-      aria-label={`Open ${m.title}`}
+      aria-label={ct("shell.openModule", { name: m.title })}
     >
       <ModuleHost
         module={m}

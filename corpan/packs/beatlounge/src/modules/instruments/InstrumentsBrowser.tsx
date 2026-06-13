@@ -23,6 +23,7 @@
  */
 
 import { useMemo, useRef, useState } from "react"
+import { ct } from "../../i18n/strings"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
@@ -202,7 +203,7 @@ export const InstrumentsBrowser = ({
   if (!track || !isInstrumentTrack(track)) {
     return (
       <div className="bl-instr bl-trackpage">
-        <div className="bl-grid-empty">Add an instrument track to start.</div>
+        <div className="bl-grid-empty">{ct("instruments.addTrackToStart")}</div>
       </div>
     )
   }
@@ -216,7 +217,7 @@ export const InstrumentsBrowser = ({
   const renderVoice = () => (
     <div className="bl-instr-browser">
       {/* families rail — a leading "Raw" bank folds in the bare oscillators */}
-      <div className="bl-instr-families" role="tablist" aria-label="Voice banks">
+      <div className="bl-instr-families" role="tablist" aria-label={ct("instruments.voiceBanks")}>
         <button
           type="button"
           role="tab"
@@ -224,7 +225,7 @@ export const InstrumentsBrowser = ({
           className={`bl-chip${activeBank === "raw" ? " is-on" : ""}`}
           onClick={() => setOpenBank("raw")}
         >
-          Raw
+          {ct("instruments.raw")}
         </button>
         {groups.map((g) => (
           <button
@@ -242,7 +243,7 @@ export const InstrumentsBrowser = ({
 
       {/* grid: the Raw bank's oscillators, OR the open family's presets */}
       {activeBank === "raw" ? (
-        <div className="bl-instr-programs" role="listbox" aria-label="Raw oscillators">
+        <div className="bl-instr-programs" role="listbox" aria-label={ct("instruments.rawOscillators")}>
           {OSC_WAVES.map((w) => {
             const selected = activeVoiceType === "osc" && curOscWave === w
             return (
@@ -266,7 +267,7 @@ export const InstrumentsBrowser = ({
           <div
             className="bl-instr-programs"
             role="listbox"
-            aria-label={`${FAMILY_LABEL[family.family]} instruments`}
+            aria-label={ct("instruments.familyInstruments", { family: FAMILY_LABEL[family.family] })}
           >
             {family.presets.map((p) => {
               const selected = activePreset?.id === p.id
@@ -299,7 +300,7 @@ export const InstrumentsBrowser = ({
             aria-expanded={tweakOpen}
             onClick={() => setTweakOpen((o) => !o)}
           >
-            Shape this voice
+            {ct("instruments.shapeThisVoice")}
             <span className="bl-instr-tweak-caret" aria-hidden="true">
               {tweakOpen ? "▴" : "▾"}
             </span>
@@ -311,15 +312,15 @@ export const InstrumentsBrowser = ({
   )
 
   const tabs: DrawerTabDef[] = [
-    { id: "voice", label: "Voice", render: renderVoice },
+    { id: "voice", label: ct("instruments.tabVoice"), render: renderVoice },
     {
       id: "fx",
-      label: "Effects",
+      label: ct("instruments.tabEffects"),
       render: () => <TrackFxChain host={host} store={store} trackId={itrack.id} />,
     },
     {
       id: "mixer",
-      label: "Mixer",
+      label: ct("instruments.tabMixer"),
       render: () => (
         <TrackMixer
           host={host}
@@ -331,7 +332,7 @@ export const InstrumentsBrowser = ({
     },
     {
       id: "score",
-      label: "Score",
+      label: ct("instruments.tabScore"),
       render: () => <ScorePlaceholder host={host} store={store} trackId={itrack.id} audio={audio} />,
     },
   ]
@@ -350,7 +351,7 @@ export const InstrumentsBrowser = ({
               type="button"
               className={`bl-instr-harmony-row${harmonyOpen ? " is-open" : ""}`}
               aria-expanded={harmonyOpen}
-              aria-label="Harmony"
+              aria-label={ct("harmony.title")}
               onClick={() => setHarmonyOpen((o) => !o)}
             >
               <Glyph name="wave" size={14} />
@@ -365,10 +366,10 @@ export const InstrumentsBrowser = ({
                 <button
                   type="button"
                   className="bl-instr-harmony-scrim"
-                  aria-label="Close harmony"
+                  aria-label={ct("instruments.closeHarmony")}
                   onClick={() => setHarmonyOpen(false)}
                 />
-                <div className="bl-instr-harmony-pop" role="dialog" aria-label="Harmony">
+                <div className="bl-instr-harmony-pop" role="dialog" aria-label={ct("harmony.title")}>
                   <HarmonyPanel host={host} store={store} snapTrackId={itrack.id} />
                 </div>
               </>
@@ -383,7 +384,7 @@ export const InstrumentsBrowser = ({
               className={`bl-instr-voicebtn${voiceOpen ? " is-open" : ""}`}
               aria-expanded={voiceOpen}
               aria-haspopup="menu"
-              aria-label="Voice"
+              aria-label={ct("instruments.tabVoice")}
               onClick={() => setVoiceOpen((o) => !o)}
             >
               <span
@@ -400,10 +401,10 @@ export const InstrumentsBrowser = ({
                 <button
                   type="button"
                   className="bl-instr-harmony-scrim"
-                  aria-label="Close voices"
+                  aria-label={ct("instruments.closeVoices")}
                   onClick={() => setVoiceOpen(false)}
                 />
-                <div className="bl-instr-voice-menu" role="menu" aria-label="Voices">
+                <div className="bl-instr-voice-menu" role="menu" aria-label={ct("instruments.voices")}>
                   {instrumentTracks.map((t) => (
                     <div
                       key={t.id}
@@ -426,8 +427,8 @@ export const InstrumentsBrowser = ({
                         <button
                           type="button"
                           className="bl-instr-voice-remove"
-                          aria-label={`Remove ${t.name}`}
-                          title="Remove track"
+                          aria-label={ct("instruments.removeNamed", { name: t.name })}
+                          title={ct("instruments.removeTrack")}
                           onClick={() => removeTrack(t.id)}
                         >
                           ×
@@ -444,7 +445,7 @@ export const InstrumentsBrowser = ({
                     }}
                   >
                     <Glyph name="wave" size={14} />
-                    <span>Add voice</span>
+                    <span>{ct("instruments.addVoice")}</span>
                   </button>
                 </div>
               </>
@@ -469,7 +470,7 @@ export const InstrumentsBrowser = ({
                 aria-pressed={record}
                 onClick={() => setRecord((r) => !r)}
               >
-                {record ? "Recording" : "Record"}
+                {record ? ct("instrumentSurface.recording") : ct("instrumentSurface.record")}
               </button>
             }
           />
@@ -479,8 +480,8 @@ export const InstrumentsBrowser = ({
 
       {/* ---- the PIPELINE DRAWER (Voice / Effects / Mixer / Score) ---- */}
       <TrackDrawer
-        label="Instrument track pipeline"
-        tabsLabel="Instrument tools"
+        label={ct("instruments.pipeline")}
+        tabsLabel={ct("instruments.tools")}
         tabs={tabs}
         activeTab={tab}
         onTab={openTab}

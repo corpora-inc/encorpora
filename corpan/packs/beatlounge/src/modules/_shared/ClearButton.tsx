@@ -6,6 +6,7 @@
  */
 
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   onClear: () => void
@@ -13,14 +14,17 @@ interface Props {
   label?: string
 }
 
-export const ClearButton = ({ onClear, label = "Clear" }: Props) => (
-  <button
-    type="button"
-    className="bl-icon-btn bl-clear-btn"
-    onClick={onClear}
-    aria-label={label}
-    title={label}
-  >
-    <Glyph name="trash" size={16} />
-  </button>
-)
+export const ClearButton = ({ onClear, label }: Props) => {
+  const text = label ?? ct("shared.clear")
+  return (
+    <button
+      type="button"
+      className="bl-icon-btn bl-clear-btn"
+      onClick={onClear}
+      aria-label={text}
+      title={text}
+    >
+      <Glyph name="trash" size={16} />
+    </button>
+  )
+}

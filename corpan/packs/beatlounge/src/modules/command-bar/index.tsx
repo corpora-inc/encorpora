@@ -16,6 +16,7 @@
  */
 
 import { createRoot, type Root } from "react-dom/client"
+import { ct } from "../../i18n/strings"
 import { makeDeferredUnmount } from "../_shared/deferUnmount"
 import type {
   BeatloungeModule,
@@ -83,7 +84,7 @@ export const mountCommandBar = (
 /** A tiny launcher tile React view — opens the bar immersively when tapped. */
 const LauncherTile = ({ onOpen }: { onOpen: () => void }) => (
   <button type="button" className="bl-cmdbar-launcher" onClick={onOpen}>
-    <span className="bl-cmdbar-launcher-label">Tell the loop what to do…</span>
+    <span className="bl-cmdbar-launcher-label">{ct("cmd.launcherLabel")}</span>
   </button>
 )
 
@@ -102,7 +103,7 @@ export const createCommandBarModule = (deps: CommandBarModuleDeps): BeatloungeMo
   return {
     id: COMMAND_BAR_ID,
     kind: "utility",
-    title: "Command",
+    title: ct("cmd.title"),
     glyph: "command",
     immersive: "sheet",
     tileAspect: "wide",
@@ -139,11 +140,11 @@ export const createCommandBarModule = (deps: CommandBarModuleDeps): BeatloungeMo
 const COMMAND_BAR_ACTIONS: ReadonlyArray<ModuleAction> = [
   {
     name: "naturalLanguage",
-    describe: "Reshape the loop from a plain-language request (the command bar).",
+    describe: ct("cmd.naturalLanguageDescribe"),
     params: {
-      text: { type: "string", describe: "What to change, e.g. 'more hihats' or 'latin feel'." },
+      text: { type: "string", describe: ct("cmd.naturalLanguageTextParam") },
     },
     impact: "mutate",
-    run: () => ({ commands: [], summary: "Open the command bar" }),
+    run: () => ({ commands: [], summary: ct("cmd.openCommandBar") }),
   },
 ]

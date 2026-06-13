@@ -25,6 +25,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { composerActions } from "./actions"
 import { HarmonyWidget } from "./HarmonyWidget"
 import { ComposerImmersive } from "./ComposerImmersive"
+import { ct } from "../../i18n/strings"
 import "./styles.css"
 
 export const COMPOSER_ID = "composer"
@@ -45,7 +46,7 @@ const resolveSynthTrackId = (
 export const createComposerModule = ({ store, audio }: ModuleDeps): BeatloungeModule => ({
   id: COMPOSER_ID,
   kind: "instrument",
-  title: "Harmony",
+  title: ct("harmony.title"),
   glyph: "wave",
   immersive: "full",
   tileAspect: "half",
@@ -65,7 +66,7 @@ export const createComposerModule = ({ store, audio }: ModuleDeps): BeatloungeMo
       }
       const trackId = resolveSynthTrackId(store, mount.trackId)
       if (!trackId) {
-        root.render(<div className="bl-grid-empty">No synth track.</div>)
+        root.render(<div className="bl-grid-empty">{ct("harmony.noSynthTrack")}</div>)
         return
       }
       root.render(

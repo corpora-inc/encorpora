@@ -11,6 +11,7 @@ import type { BeatloungeStore } from "../../store/store"
 import type { Track } from "../../model/document"
 import { Fader, MuteSolo } from "../../bl-ui"
 import { TrackParamKnob } from "../TrackParamKnob"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   host: BeatloungeHost
@@ -37,7 +38,7 @@ export const TrackMixer = ({ host, store, track, anySolo }: Props) => {
           {track.name}
         </span>
         <Fader
-          label="Level"
+          label={ct("trackStudio.level")}
           value={liveVol ?? track.volume}
           min={0}
           max={1}

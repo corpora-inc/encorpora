@@ -11,6 +11,7 @@
 
 import type { ModuleAction, ModuleId, ModuleRegistry, ParamSchema } from "../../contracts/module"
 import type { ResultSource } from "../../llm/runtime"
+import { ct } from "../../i18n/strings"
 
 /** One enumerated action plus the module it belongs to. */
 export interface CatalogAction {
@@ -38,10 +39,10 @@ const IMPACT_ORDER: Record<ModuleAction["impact"], number> = {
 }
 
 /** Section labels for impact grouping (minimal, no roadmap copy). */
-const IMPACT_LABEL: Record<ModuleAction["impact"], string> = {
-  tweak: "Tweaks",
-  mutate: "Shapers",
-  destructive: "Clears",
+const IMPACT_LABEL: Record<ModuleAction["impact"], () => string> = {
+  tweak: () => ct("cmd.impactTweaks"),
+  mutate: () => ct("cmd.impactShapers"),
+  destructive: () => ct("cmd.impactClears"),
 }
 
 /** Turn a moduleId ("drum-pads") into a readable section label ("Drum Pads"). */
@@ -97,7 +98,7 @@ export const groupCatalogActions = (
   return keys.map((key) => ({
     key,
     label:
-      by === "impact" ? IMPACT_LABEL[key as ModuleAction["impact"]] : moduleLabel(key as ModuleId),
+      by === "impact" ? IMPACT_LABEL[key as ModuleAction["impact"]]() : moduleLabel(key as ModuleId),
     actions: buckets.get(key)!,
   }))
 }
@@ -162,10 +163,10 @@ export const sourceLabel = (source: ResultSource): string => {
   switch (source) {
     case "model":
     case "model-repair":
-      return "assistant"
+      return ct("cmd.sourceAssistant")
     case "keyword":
     case "keyword-no-llm":
-      return "keywords"
+      return ct("cmd.sourceKeywords")
     default:
       return ""
   }

@@ -15,6 +15,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import { findTrack, type Id } from "../../model/document"
 import { TrackFxChain } from "./TrackFxChain"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   host: BeatloungeHost
@@ -27,7 +28,7 @@ export const FxRackImmersive = ({ host, store, trackId: initialTrackId }: Props)
   const [trackId, setTrackId] = useState<Id>(initialTrackId)
 
   const track = findTrack(doc, trackId) ?? doc.tracks[0]
-  if (!track) return <div className="bl-grid-empty">No track.</div>
+  if (!track) return <div className="bl-grid-empty">{ct("fx.noTrack")}</div>
 
   return (
     <div className="bl-fxrack">

@@ -38,6 +38,7 @@ import {
   type MetricProfile,
   type TransitionTable,
 } from "../../music/melody"
+import { ct } from "../../i18n/strings"
 
 /** Ticks per one sixteenth note — the melody corpus's metric grain. The corpus
  *  expresses pos/dur in sixteenths; the track addresses ticks. PPQ/4 (= 240 at
@@ -295,7 +296,7 @@ export const buildScoreCommands = (
 ): ScoreBuildResult => {
   const track = findTrack(doc, opts.trackId)
   if (!track || !isInstrumentTrack(track)) {
-    return { commands: [], summary: "No melodic track", count: 0 }
+    return { commands: [], summary: ct("score.noTrackSummary"), count: 0 }
   }
   return opts.op === "remove"
     ? sparsifyMelody(doc, track.id, track.notes)
@@ -410,13 +411,15 @@ const layerMelody = (
 
   const added = merged.length - before
   if (added === 0) {
-    return { commands: [], summary: "No room to layer", count: 0 }
+    return { commands: [], summary: ct("score.noRoomToLayer"), count: 0 }
   }
   merged.sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
   const commands: Command[] = [{ t: "setNotes", trackId, notes: merged }]
   return {
     commands,
-    summary: `+${added} note${added === 1 ? "" : "s"}`,
+    summary: added === 1
+      ? ct("score.addedNoteOne", { n: String(added) })
+      : ct("score.addedNotes", { n: String(added) }),
     count: added,
   }
 }
@@ -433,7 +436,7 @@ export const sparsifyMelody = (
   notes: readonly NoteEvent[]
 ): ScoreBuildResult => {
   if (notes.length === 0) {
-    return { commands: [], summary: "Nothing to thin", count: 0 }
+    return { commands: [], summary: ct("score.nothingToThin"), count: 0 }
   }
   // Off-beat-ness: distance (in sixteenths) from the nearest beat (a quarter).
   // A downbeat → 0; deep off-beat → up to 2. Bigger = peeled first.
@@ -460,7 +463,9 @@ export const sparsifyMelody = (
   }))
   return {
     commands,
-    summary: `−${toRemove.length} note${toRemove.length === 1 ? "" : "s"}`,
+    summary: toRemove.length === 1
+      ? ct("score.removedNoteOne", { n: String(toRemove.length) })
+      : ct("score.removedNotes", { n: String(toRemove.length) }),
     count: toRemove.length,
   }
 }

@@ -30,6 +30,7 @@ import { bankSnippets } from "../../phrase/bank"
 import type { AudioSource } from "../../phrase/audioSource"
 import { decodeFragmentBytes } from "../../phrase/decode"
 import { Glyph, prefersReducedMotion } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 import { ensureAudio } from "../../engine/ensureAudio"
 import { createScratchDeck, ensureWorkletModule, type ScratchDeck } from "./scratchEngine"
 import { padBufferToRevolution } from "./scratchPad"
@@ -289,14 +290,14 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         }
         if (!bytes) {
           console.warn(`${LOG} no audio bytes for snippet:`, text)
-          host.toast("That snippet has no audio yet — open Phrases to render it")
+          host.toast(ct("scratch.noAudioYet"))
           if (!stale()) setLoading(false)
           return
         }
         const decoded = await decodeFragmentBytes(ctx, bytes)
         if (stale()) return
         if (!decoded) {
-          host.toast("Couldn't decode that snippet")
+          host.toast(ct("scratch.cantDecode"))
           setLoading(false)
           return
         }
@@ -335,7 +336,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       } catch (err) {
         console.warn(`${LOG} load failed:`, err)
         if (!stale()) {
-          host.toast("Couldn't load that snippet")
+          host.toast(ct("scratch.cantLoad"))
           setLoading(false)
         }
       }
@@ -586,7 +587,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   const drawerTabs: DrawerTabDef[] = [
     {
       id: "fx",
-      label: "Effects",
+      label: ct("scratch.effects"),
       render: () => (
         <div className="bl-scrfx-chain">
           <FxChainView
@@ -602,7 +603,9 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             header={
               <div className="bl-fxchain-bar" data-bl-nocapture>
                 <span className="bl-fxchain-count">
-                  {fxChain.length} effect{fxChain.length === 1 ? "" : "s"} · master
+                  {fxChain.length === 1
+                    ? ct("scratch.effectCountOne", { n: String(fxChain.length) })
+                    : ct("scratch.effectCount", { n: String(fxChain.length) })}
                 </span>
               </div>
             }
@@ -612,7 +615,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     },
     {
       id: "phrases",
-      label: "Phrases",
+      label: ct("scratch.phrases"),
       render: () => (
         <ScratchPhrasePanel
           host={host}
@@ -634,14 +637,14 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
       <div className="bl-scr">
         <div className="bl-scr-empty">
           <Glyph name="wave" size={28} />
-          <p className="bl-scr-empty-title">Nothing on the deck</p>
+          <p className="bl-scr-empty-title">{ct("scratch.nothingOnDeck")}</p>
           <p className="bl-scr-empty-sub">
-            Open <strong>Phrases</strong> to load one.
+            {ct("scratch.openPhrasesToLoad")}
           </p>
         </div>
         <TrackDrawer
-          label="Scratch tools"
-          tabsLabel="Scratch tools"
+          label={ct("scratch.tools")}
+          tabsLabel={ct("scratch.tools")}
           tabs={drawerTabs}
           activeTab="phrases"
           onTab={openDrawer}
@@ -673,10 +676,10 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             aria-haspopup="listbox"
             aria-expanded={pickerFor === id}
             onClick={() => setPickerFor((v) => (v === id ? null : id))}
-            title="Choose the snippet to scratch"
+            title={ct("scratch.chooseSnippet")}
           >
             <span className="bl-scr-picker-cur" lang={selected?.language}>
-              {label || "Pick a snippet"}
+              {label || ct("scratch.pickSnippet")}
             </span>
             <Glyph name="chevron-down" size={14} />
           </button>
@@ -686,7 +689,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           <div
             className="bl-scr-picker"
             role="listbox"
-            aria-label="Bank snippets"
+            aria-label={ct("scratch.bankSnippets")}
             data-bl-nocapture
           >
             {[...bank].reverse().map((r) => {
@@ -729,7 +732,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
         </div>
         <CutFader
           value={cut}
-          label="Cut fader — fade this deck 0 to full"
+          label={ct("scratch.cutFader")}
           onChange={setCut}
         />
 
@@ -741,8 +744,8 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             className={`bl-scr-tbtn bl-scr-tbtn--rev${dir === -1 ? " is-on" : ""}`}
             onClick={setSpin(id, -1)}
             aria-pressed={dir === -1}
-            aria-label="Reverse — spin backward"
-            title="Reverse"
+            aria-label={ct("scratch.reverseAria")}
+            title={ct("scratch.reverse")}
           >
             <Glyph name="play" size={18} />
           </button>
@@ -751,15 +754,15 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             className={`bl-scr-tbtn bl-scr-tbtn--spin${dir === 1 ? " is-on" : ""}`}
             onClick={setSpin(id, 1)}
             aria-pressed={dir === 1}
-            aria-label="Spin — play at natural tempo (tap again to stop)"
-            title="Spin"
+            aria-label={ct("scratch.spinAria")}
+            title={ct("scratch.spin")}
           >
             <Glyph name="play" size={18} />
           </button>
           <div className="bl-scr-readout" aria-live="off">
             {loading ? (
               <span className="bl-scr-loading">
-                <span className="bl-scr-spin" /> loading…
+                <span className="bl-scr-spin" /> {ct("scratch.loading")}
               </span>
             ) : (
               <>
@@ -788,10 +791,10 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             className={`bl-scr-deckbtn${showDeckB ? " is-on" : ""}`}
             onClick={() => setShowDeckB((v) => !v)}
             aria-pressed={showDeckB}
-            aria-label={showDeckB ? "Hide the second deck" : "Add a second deck"}
+            aria-label={showDeckB ? ct("scratch.hideSecondDeck") : ct("scratch.addSecondDeck")}
           >
             <Glyph name="wave" size={15} />
-            <span>{showDeckB ? "1 deck" : "2 decks"}</span>
+            <span>{showDeckB ? ct("scratch.oneDeck") : ct("scratch.twoDecks")}</span>
           </button>
         </div>
       )}
@@ -814,7 +817,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
               step={0.01}
               value={crossfade}
               onChange={(e) => setCrossfade(parseFloat(e.target.value))}
-              aria-label="Crossfader (A on the left, B on the right)"
+              aria-label={ct("scratch.crossfader")}
               className="bl-scr-xfade-input"
             />
             <span className="bl-scr-xfade-end">B</span>
@@ -826,8 +829,8 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           Drums / Instruments. Effects is the FULL master rack; Phrases discovers
           from the whole catalog and loads a new phrase onto a deck. ---- */}
       <TrackDrawer
-        label="Scratch tools"
-        tabsLabel="Scratch tools"
+        label={ct("scratch.tools")}
+        tabsLabel={ct("scratch.tools")}
         tabs={drawerTabs}
         activeTab={drawerTab}
         onTab={openDrawer}

@@ -39,6 +39,7 @@ import {
   type TransitionTable,
 } from "../../music/melody"
 import { useAutoConfig, type AutoVariation } from "../../store/autoMelody"
+import { ct } from "../../i18n/strings"
 import { LaneGrid, type LaneGridLane } from "../track-studio/LaneGrid"
 import {
   buildScoreView,
@@ -63,11 +64,8 @@ const OCTAVES = 2
 
 /** The Variation seed-policy values + their short, translatable labels. */
 const VARIATIONS: readonly AutoVariation[] = ["lock", "evolve", "new"]
-const VARIATION_LABEL: Record<AutoVariation, string> = {
-  lock: "Lock",
-  evolve: "Evolve",
-  new: "New",
-}
+const variationLabel = (v: AutoVariation): string =>
+  v === "lock" ? ct("score.lock") : v === "evolve" ? ct("score.evolve") : ct("score.new")
 
 /** Density step per +/- tap (clamped 0..1 by the store). */
 const DENSITY_STEP = 0.15
@@ -113,7 +111,7 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
   }, [audio, store, trackId])
 
   if (!track || !isInstrumentTrack(track) || !view) {
-    return <div className="bl-grid-empty">No melodic track.</div>
+    return <div className="bl-grid-empty">{ct("score.noTrack")}</div>
   }
   const itrack = track
 
@@ -185,7 +183,7 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
       seed,
     })
     if (result.commands.length === 0) {
-      host.toast(result.summary || "Nothing to apply")
+      host.toast(result.summary || ct("score.nothingToApply"))
       return
     }
     store.dispatch({ t: "batch", commands: result.commands, label: `score-${op}` })
@@ -203,29 +201,29 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
         <div
           className="bl-score-dial"
           role="group"
-          aria-label="Melody layer — sparser or denser"
+          aria-label={ct("score.layerDial")}
         >
           <button
             type="button"
             className="bl-score-dial-btn"
             onClick={() => runDial("remove")}
-            aria-label="Sparser"
-            title="Sparser — peel a few notes back (off-beat first), down to nothing"
+            aria-label={ct("score.sparser")}
+            title={ct("score.sparserHint")}
           >
             <MinusGlyph />
           </button>
           <span className="bl-score-dial-label" aria-hidden="true">
-            Layer
+            {ct("score.layer")}
           </span>
           <button
             type="button"
             className="bl-score-dial-btn is-primary"
             onClick={() => runDial("add")}
-            aria-label="Denser"
+            aria-label={ct("score.denser")}
             title={
               selCount > 0
-                ? "Denser — lay one more melodic layer on the selected rows"
-                : "Denser — lay one more melodic layer across the whole range"
+                ? ct("score.denserSelectedHint")
+                : ct("score.denserAllHint")
             }
           >
             <PlusGlyph />
@@ -236,7 +234,7 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
         <div className="bl-score-picks" data-bl-nocapture>
           <select
             className="bl-select"
-            aria-label="Melodic feel"
+            aria-label={ct("score.feel")}
             value={metricId}
             onChange={(e) => auto.setOption({ metricId: e.target.value })}
           >
@@ -248,7 +246,7 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
           </select>
           <select
             className="bl-select"
-            aria-label="Melodic motion"
+            aria-label={ct("score.motion")}
             value={tableId}
             onChange={(e) => auto.setOption({ tableId: e.target.value })}
           >
@@ -264,9 +262,9 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
               className={`bl-chip${armed ? " is-armed" : ""}`}
               aria-pressed={armed}
               onClick={() => auto.arm(!armed)}
-              title="Auto — keep re-generating a flowing line each loop (rides the global transport)"
+              title={ct("score.autoHint")}
             >
-              Auto
+              {ct("score.auto")}
             </button>
           )}
 
@@ -277,7 +275,7 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
               <div
                 className="bl-seg"
                 role="group"
-                aria-label="Variation"
+                aria-label={ct("score.variation")}
                 data-bl-nocapture
               >
                 {VARIATIONS.map((v) => (
@@ -288,20 +286,20 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
                     aria-pressed={auto.variation === v}
                     onClick={() => auto.setOption({ variation: v })}
                   >
-                    {VARIATION_LABEL[v]}
+                    {variationLabel(v)}
                   </button>
                 ))}
               </div>
               <div
                 className="bl-score-dial"
                 role="group"
-                aria-label="Density"
+                aria-label={ct("score.density")}
                 data-bl-nocapture
               >
                 <button
                   type="button"
                   className="bl-score-dial-btn"
-                  aria-label="Sparser"
+                  aria-label={ct("score.sparser")}
                   onClick={() => auto.setOption({ density: auto.density - DENSITY_STEP })}
                 >
                   <MinusGlyph />
@@ -309,7 +307,7 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
                 <button
                   type="button"
                   className="bl-score-dial-btn is-primary"
-                  aria-label="Busier"
+                  aria-label={ct("score.busier")}
                   onClick={() => auto.setOption({ density: auto.density + DENSITY_STEP })}
                 >
                   <PlusGlyph />

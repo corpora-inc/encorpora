@@ -24,6 +24,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import type { EntryOut, VoiceInfo } from "../../sdk/types"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 import type { AudioSource } from "../../phrase/audioSource"
 import { auditionPhrase } from "../../phrase/audition"
 import { buildBankRef, bankHas } from "../../phrase/bank"
@@ -74,7 +75,7 @@ export const PhraseSamplerImmersive = ({ host, store, audioSource, onPlaced }: P
 
   return (
     <div className="bl-disc">
-      <div className="bl-disc-tabs" data-bl-nocapture role="tablist" aria-label="Phrase library">
+      <div className="bl-disc-tabs" data-bl-nocapture role="tablist" aria-label={ct("phrases.libraryTabs")}>
         <button
           type="button"
           role="tab"
@@ -82,7 +83,7 @@ export const PhraseSamplerImmersive = ({ host, store, audioSource, onPlaced }: P
           className={`bl-disc-tab${tab === "discover" ? " is-on" : ""}`}
           onClick={() => setTab("discover")}
         >
-          <Glyph name="drawer" size={16} /> Discover
+          <Glyph name="drawer" size={16} /> {ct("phrases.discover")}
         </button>
         <button
           type="button"
@@ -91,7 +92,7 @@ export const PhraseSamplerImmersive = ({ host, store, audioSource, onPlaced }: P
           className={`bl-disc-tab${tab === "bank" ? " is-on" : ""}`}
           onClick={() => setTab("bank")}
         >
-          <Glyph name="wave" size={16} /> Bank
+          <Glyph name="wave" size={16} /> {ct("phrases.bank")}
           {bankCount > 0 && <span className="bl-disc-tabcount">{bankCount}</span>}
         </button>
       </div>
@@ -170,7 +171,7 @@ const DiscoverView = ({
         list = await hostApi.getRandomEntries({ count: PAGE, languageCodes: langCodes })
       } else if (debounced && !hostApi.searchEntriesByText) {
         // Older host without text search: degrade to a random browse + a note.
-        host.toast("Search isn't available on this host — showing a random set")
+        host.toast(ct("phrases.searchUnavailable"))
         if (hostApi.getRandomEntries) {
           list = await hostApi.getRandomEntries({ count: PAGE, languageCodes: langCodes })
         }
@@ -180,7 +181,7 @@ const DiscoverView = ({
       console.warn(`${LOG} fetch failed:`, err)
       if (seq === reqSeq.current) {
         setEntries([])
-        host.toast("Couldn't load phrases")
+        host.toast(ct("phrases.cantLoad"))
       }
     } finally {
       if (seq === reqSeq.current) setLoading(false)
@@ -202,11 +203,11 @@ const DiscoverView = ({
         const list = await hostApi.getRandomEntries({ count: PAGE, languageCodes: langCodes })
         if (seq === reqSeq.current) setEntries(list)
       } else {
-        host.toast("Shuffle isn't available on this host")
+        host.toast(ct("phrases.shuffleUnavailable"))
       }
     } catch (err) {
       console.warn(`${LOG} shuffle failed:`, err)
-      host.toast("Couldn't shuffle")
+      host.toast(ct("phrases.cantShuffle"))
     } finally {
       if (seq === reqSeq.current) setLoading(false)
     }
@@ -225,16 +226,16 @@ const DiscoverView = ({
               className="bl-disc-input"
               type="search"
               inputMode="search"
-              placeholder="Search the corpus…"
+              placeholder={ct("phrases.searchPlaceholder")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              aria-label="Search phrases"
+              aria-label={ct("phrases.searchPhrases")}
             />
             {query && (
               <button
                 type="button"
                 className="bl-disc-clear"
-                aria-label="Clear search"
+                aria-label={ct("phrases.clearSearch")}
                 onClick={() => setQuery("")}
               >
                 ×
@@ -245,11 +246,11 @@ const DiscoverView = ({
             type="button"
             className="bl-disc-shuffle"
             onClick={() => void shuffle()}
-            aria-label="Shuffle phrases"
-            title="Shuffle"
+            aria-label={ct("phrases.shufflePhrases")}
+            title={ct("phrases.shuffle")}
           >
             <Glyph name="wave" size={16} />
-            <span>Shuffle</span>
+            <span>{ct("phrases.shuffle")}</span>
           </button>
         </div>
 
@@ -283,10 +284,9 @@ const DiscoverView = ({
             <span className="bl-disc-rest-glyph">
               <Glyph name="drawer" size={30} />
             </span>
-            <p className="bl-disc-rest-title">Pick a phrase</p>
+            <p className="bl-disc-rest-title">{ct("phrases.pickPhrase")}</p>
             <p className="bl-disc-empty-sm">
-              Choose a phrase on the left to see every language in your stack and
-              its combinatorial breakdown.
+              {ct("phrases.pickPhraseHint")}
             </p>
           </div>
         </div>
@@ -328,7 +328,7 @@ const ResultList = ({ entries, loading, languages, selectedId, onSelect }: Resul
   if (!loading && total === 0) {
     return (
       <div className="bl-disc-list is-empty" ref={scrollRef}>
-        <p className="bl-disc-empty">No phrases. Try another search, or Shuffle.</p>
+        <p className="bl-disc-empty">{ct("phrases.noPhrases")}</p>
       </div>
     )
   }
@@ -391,7 +391,9 @@ const ResultRow = ({ entry, top, languages, selected, onSelect }: ResultRowProps
           <span className="bl-disc-badge">{entry.level}</span>
           {rowCount > 0 && (
             <span className="bl-disc-langcount">
-              {rowCount} {rowCount === 1 ? "language" : "languages"}
+              {rowCount === 1
+                ? ct("phrases.languageCountOne", { n: String(rowCount) })
+                : ct("phrases.languageCount", { n: String(rowCount) })}
             </span>
           )}
           {(entry.domains ?? []).slice(0, 1).map((d) => (
@@ -444,9 +446,9 @@ const PhraseDetail = ({
   const drillRow = rows.find((r) => r.code === drillLang) ?? null
 
   return (
-    <div className="bl-disc-detail" data-bl-nocapture role="dialog" aria-label="Phrase detail">
+    <div className="bl-disc-detail" data-bl-nocapture role="dialog" aria-label={ct("phrases.phraseDetail")}>
       <div className="bl-disc-detail-head">
-        <button type="button" className="bl-disc-back" onClick={onClose} aria-label="Back to results">
+        <button type="button" className="bl-disc-back" onClick={onClose} aria-label={ct("phrases.backToResults")}>
           <Glyph name="chevron-left" size={18} />
         </button>
         <div className="bl-disc-detail-title">
@@ -462,8 +464,8 @@ const PhraseDetail = ({
       <div className="bl-disc-detail-scroll">
         {/* Every stack language present — one row each. */}
         <div className="bl-disc-langs">
-          <div className="bl-disc-section-h">All languages in your stack</div>
-          {rows.length === 0 && <p className="bl-disc-empty-sm">No translations for your stack.</p>}
+          <div className="bl-disc-section-h">{ct("phrases.allLanguages")}</div>
+          {rows.length === 0 && <p className="bl-disc-empty-sm">{ct("phrases.noTranslations")}</p>}
           {rows.map((row) => (
             <LanguageRowView
               key={row.code}
@@ -476,7 +478,7 @@ const PhraseDetail = ({
                 void auditionPhrase(host.audioContext(), audioSource, row.text, row.code).catch(
                   (err) => {
                     console.warn(`${LOG} audition row failed:`, err)
-                    host.toast("Couldn't play that")
+                    host.toast(ct("phrases.cantPlay"))
                   }
                 )
               }
@@ -521,7 +523,7 @@ const LanguageRowView = ({
     <button type="button" className="bl-disc-lang-main" onClick={onDrill} aria-pressed={isDrilled}>
       <span className="bl-disc-lang-tag">
         {languageLabel(row.code, nativeCode)}
-        {row.isNative && <span className="bl-disc-native-dot" title="Native" />}
+        {row.isNative && <span className="bl-disc-native-dot" title={ct("phrases.native")} />}
       </span>
       <span className="bl-disc-lang-text" lang={row.code}>
         {row.text}
@@ -534,8 +536,8 @@ const LanguageRowView = ({
       type="button"
       className="bl-disc-iconbtn"
       onClick={onAudition}
-      aria-label={`Hear ${languageLabel(row.code, nativeCode)}`}
-      title="Hear it"
+      aria-label={ct("phrases.hearLanguage", { lang: languageLabel(row.code, nativeCode) })}
+      title={ct("phrases.hearIt")}
     >
       <Glyph name="play" size={18} />
     </button>
@@ -576,7 +578,7 @@ const ComboBreakdownView = ({ host, store, audioSource, row, nativeCode, onSaved
       void auditionPhrase(host.audioContext(), audioSource, text, row.code, { voiceId }).catch(
         (err) => {
           console.warn(`${LOG} audition combo failed:`, err)
-          host.toast("Couldn't play that")
+          host.toast(ct("phrases.cantPlay"))
         }
       )
     },
@@ -589,16 +591,16 @@ const ComboBreakdownView = ({ host, store, audioSource, row, nativeCode, onSaved
       try {
         const built = await buildBankRef(audioSource, { text, lang: row.code, voiceId })
         if (!built) {
-          host.toast("Nothing to save")
+          host.toast(ct("phrases.nothingToSave"))
           return
         }
         store.dispatch({ t: "registerFragment", ref: built.ref })
-        const note = built.result.hasAudio ? "" : " (synth voice)"
-        host.toast(`Saved to bank: "${text}"${note}`, { undo: () => store.undo() })
-        onSaved(`Saved "${text}"`)
+        const note = built.result.hasAudio ? "" : ct("phrases.synthVoiceSuffix")
+        host.toast(ct("phrases.savedToBank", { text, note }), { undo: () => store.undo() })
+        onSaved(ct("phrases.savedShort", { text }))
       } catch (err) {
         console.warn(`${LOG} save combo failed:`, err)
-        host.toast("Couldn't save to bank")
+        host.toast(ct("phrases.cantSave"))
       } finally {
         setBusyText(null)
       }
@@ -610,22 +612,30 @@ const ComboBreakdownView = ({ host, store, audioSource, row, nativeCode, onSaved
     <div className="bl-disc-combos">
       <div className="bl-disc-section-h bl-disc-combos-h">
         <span>
-          Breakdown · <span lang={row.code}>{languageLabel(row.code, nativeCode)}</span>
+          {ct("phrases.breakdown")} · <span lang={row.code}>{languageLabel(row.code, nativeCode)}</span>
         </span>
         <VoicePicker host={host} lang={row.code} voiceId={voiceId} onPick={setVoiceId} />
       </div>
 
       {breakdown.tokens.length === 0 ? (
-        <p className="bl-disc-empty-sm">Nothing to break down.</p>
+        <p className="bl-disc-empty-sm">{ct("phrases.nothingToBreakDown")}</p>
       ) : (
         <>
           <p className="bl-disc-combos-sub">
-            {breakdown.tokens.length} {breakdown.tokens.length === 1 ? "token" : "tokens"} ·{" "}
-            {breakdown.shownCount} of {breakdown.fullCount} combos
+            {breakdown.tokens.length === 1
+              ? ct("phrases.tokenCountOne", { n: String(breakdown.tokens.length) })
+              : ct("phrases.tokenCount", { n: String(breakdown.tokens.length) })}{" "}
+            · {ct("phrases.combosOf", {
+              shown: String(breakdown.shownCount),
+              full: String(breakdown.fullCount),
+            })}
             {breakdown.cappedAtN !== undefined && (
               <span className="bl-disc-capnote">
                 {" "}
-                — capped at {breakdown.cappedAtN}-grams ({breakdown.hiddenCount} longer hidden)
+                {ct("phrases.cappedNote", {
+                  n: String(breakdown.cappedAtN),
+                  hidden: String(breakdown.hiddenCount),
+                })}
               </span>
             )}
           </p>
@@ -643,7 +653,7 @@ const ComboBreakdownView = ({ host, store, audioSource, row, nativeCode, onSaved
                   <span className="bl-disc-band-chev" aria-hidden="true">
                     <Glyph name="chevron-down" size={16} />
                   </span>
-                  <span className="bl-disc-band-n">{band.n}-gram</span>
+                  <span className="bl-disc-band-n">{ct("phrases.nGram", { n: String(band.n) })}</span>
                   <span className="bl-disc-band-count">{band.combos.length}</span>
                 </button>
                 {open && (
@@ -658,7 +668,7 @@ const ComboBreakdownView = ({ host, store, audioSource, row, nativeCode, onSaved
                             className="bl-disc-combo-text"
                             lang={row.code}
                             onClick={() => audition(c.text)}
-                            title="Audition"
+                            title={ct("phrases.audition")}
                           >
                             <Glyph name="play" size={14} />
                             <span>{c.text}</span>
@@ -668,8 +678,8 @@ const ComboBreakdownView = ({ host, store, audioSource, row, nativeCode, onSaved
                             className={`bl-disc-combo-save${saved ? " is-saved" : ""}`}
                             onClick={() => !saved && void save(c.text)}
                             disabled={busy || saved}
-                            aria-label={saved ? "Already in bank" : `Save "${c.text}" to bank`}
-                            title={saved ? "In bank" : "Save to bank"}
+                            aria-label={saved ? ct("phrases.alreadyInBank") : ct("phrases.savePhraseToBank", { text: c.text })}
+                            title={saved ? ct("phrases.inBank") : ct("phrases.saveToBank")}
                           >
                             {busy ? (
                               <span className="bl-disc-spin" />
@@ -733,14 +743,14 @@ const VoicePicker = ({ host, lang, voiceId, onPick }: VoicePickerProps) => {
 
   return (
     <label className="bl-disc-voice">
-      <span className="bl-disc-voice-label">Voice</span>
+      <span className="bl-disc-voice-label">{ct("phrases.voice")}</span>
       <select
         className="bl-disc-voice-sel"
         value={voiceId ?? ""}
         onChange={(e) => onPick(e.target.value || undefined)}
-        aria-label="Render voice"
+        aria-label={ct("phrases.renderVoice")}
       >
-        <option value="">Default</option>
+        <option value="">{ct("phrases.defaultVoice")}</option>
         {voices.map((v) => (
           <option key={v.id} value={v.id}>
             {v.name || v.id}

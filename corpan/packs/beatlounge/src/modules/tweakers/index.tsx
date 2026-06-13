@@ -22,6 +22,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { tweakersActions } from "./actions"
 import { TweakersTile } from "./TweakersTile"
 import { TweakersImmersive } from "./TweakersImmersive"
+import { ct } from "../../i18n/strings"
 import "./styles.css"
 
 export interface TweakersDeps {
@@ -37,7 +38,7 @@ export const createTweakersModule = ({ store, audio }: TweakersDeps): Beatlounge
   return {
     id: TWEAKERS_ID,
     kind: "utility",
-    title: "Players",
+    title: ct("tweakers.players"),
     glyph: "wave",
     immersive: "full",
     tileAspect: "square",

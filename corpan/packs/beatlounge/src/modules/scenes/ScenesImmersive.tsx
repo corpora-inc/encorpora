@@ -16,6 +16,7 @@ import type { Scene } from "../../store/scenesStore"
 import type { ScenesController } from "./scenesController"
 import { useScenes } from "./scenesController"
 import { SceneNameEdit } from "./SceneNameEdit"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   ctrl: ScenesController
@@ -40,18 +41,18 @@ export const ScenesImmersive = ({ ctrl, host }: Props) => {
 
   const onSave = async () => {
     const scene = await ctrl.save()
-    toast(`Saved "${scene.name}"`)
+    toast(ct("scenes.savedToast", { name: scene.name }))
   }
 
   const onLoad = (scene: Scene) => {
     if (scene.id === activeId && !dirty) return
     ctrl.load(scene.id)
-    toast(`Loaded "${scene.name}"`)
+    toast(ct("scenes.loadedToast", { name: scene.name }))
   }
 
   const onDelete = async (scene: Scene) => {
     await ctrl.remove(scene.id)
-    toast(`Deleted "${scene.name}"`)
+    toast(ct("scenes.deletedToast", { name: scene.name }))
   }
 
   return (
@@ -61,18 +62,16 @@ export const ScenesImmersive = ({ ctrl, host }: Props) => {
           <span className="bl-scenes-save-glyph" aria-hidden="true">
             <Glyph name="drawer" size={18} />
           </span>
-          <span className="bl-scenes-save-label">Save current as Scene</span>
+          <span className="bl-scenes-save-label">{ct("scenes.saveCurrent")}</span>
           {dirty && (
-            <span className="bl-scenes-save-dirty" title="Live state has changed since the last scene" />
+            <span className="bl-scenes-save-dirty" title={ct("scenes.driftedTitle")} />
           )}
         </button>
       </div>
 
       {scenes.length === 0 ? (
         <div className="bl-scenes-empty">
-          {hydrated
-            ? "Save the current state to start a collection. Evolve the loop, save again, and switch between states freely."
-            : "…"}
+          {hydrated ? ct("scenes.empty") : "…"}
         </div>
       ) : (
         <ul className="bl-scenes-list">
@@ -93,18 +92,18 @@ export const ScenesImmersive = ({ ctrl, host }: Props) => {
                 </span>
                 <span className="bl-scenes-rowend">
                   {isActive && dirty && (
-                    <span className="bl-scenes-dot" title="Unsaved changes" />
+                    <span className="bl-scenes-dot" title={ct("scenes.unsavedChanges")} />
                   )}
                   {isActive && (
-                    <span className="bl-scenes-loaded" aria-label="Loaded">
-                      Loaded
+                    <span className="bl-scenes-loaded" aria-label={ct("scenes.loaded")}>
+                      {ct("scenes.loaded")}
                     </span>
                   )}
                   <button
                     type="button"
                     className="bl-chip is-danger bl-scenes-del"
-                    title={`Delete "${scene.name}"`}
-                    aria-label={`Delete ${scene.name}`}
+                    title={ct("scenes.deleteTitle", { name: scene.name })}
+                    aria-label={ct("scenes.deleteAria", { name: scene.name })}
                     onClick={() => onDelete(scene)}
                   >
                     <Glyph name="trash" size={14} />

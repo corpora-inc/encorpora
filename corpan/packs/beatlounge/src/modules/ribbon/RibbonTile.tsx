@@ -10,6 +10,7 @@
 import { useMemo } from "react"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
+import { ct } from "../../i18n/strings"
 import { docHarmony } from "../../model/document"
 import { KEY_NAMES, midiToX, pitchClass, type RibbonWindow } from "../../music/ribbonScales"
 import { activeMidiInRange } from "../../music/resolver"
@@ -27,8 +28,8 @@ export const RibbonTile = ({ store, color }: Props) => {
   const tonicPc = ((h.tonic % 12) + 12) % 12
   const label =
     h.mode === "chordal"
-      ? `${h.progression.length} chords`
-      : h.scale.id.split(".").pop()?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "scale"
+      ? ct("harmony.chordCount", { n: String(h.progression.length) })
+      : h.scale.id.split(".").pop()?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? ct("harmony.scaleFallback")
 
   const frets = useMemo(() => {
     const notes = activeMidiInRange(doc, 0, TILE_WIN.lowMidi, TILE_WIN.lowMidi + TILE_WIN.spanSemis)
@@ -43,7 +44,7 @@ export const RibbonTile = ({ store, color }: Props) => {
     <div className="bl-ribbon-tile">
       <div className="bl-ribbon-tile-head">
         <span className="bl-dot" style={{ background: color }} />
-        <span className="bl-ribbon-tile-title">Ribbon</span>
+        <span className="bl-ribbon-tile-title">{ct("ribbon.title")}</span>
         <span className="bl-ribbon-tile-key">
           {KEY_NAMES[tonicPc]} {label}
         </span>

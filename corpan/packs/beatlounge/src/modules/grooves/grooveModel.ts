@@ -17,6 +17,7 @@
  * groove only WRITES the grid — it never plays sound ("setup, don't play").
  */
 
+import { ct } from "../../i18n/strings"
 import type { Command, TrackInit } from "../../model/command"
 import type { BeatloungeDoc, Midi, NoteEvent, FragmentEvent } from "../../model/document"
 import { isFragmentTrack, isInstrumentTrack } from "../../model/document"
@@ -466,13 +467,19 @@ const buildDrumGroove = (
   commands.push({ t: "setNotes", trackId: drumId, notes })
 
   const placed = grooveNotes.length
-  const hitWord = `${placed} hit${placed === 1 ? "" : "s"}`
-  const where =
-    selected.length > 0 ? ` across ${selected.length} row${selected.length === 1 ? "" : "s"}` : ""
-  const verb = opts.clear ? "reset · " : ""
+  const p = { name: rhythm.name, hits: String(placed) }
+  let summary: string
+  if (selected.length > 0) {
+    const withRows = { ...p, rows: String(selected.length) }
+    summary = opts.clear
+      ? ct("grooves.sumResetHitsRows", withRows)
+      : ct("grooves.sumHitsRows", withRows)
+  } else {
+    summary = opts.clear ? ct("grooves.sumResetHits", p) : ct("grooves.sumHits", p)
+  }
   return {
     commands,
-    summary: `${rhythm.name} · ${verb}${hitWord}${where}`,
+    summary,
     placedPhrases: false,
     phrasesUnavailable: false,
   }
@@ -565,12 +572,16 @@ const generateDrumGroove = (
   notes.sort((a, b) => a.tick - b.tick || a.pitch - b.pitch)
   commands.push({ t: "setNotes", trackId: drumId, notes })
 
-  const where =
-    selected.length > 0 ? ` · ${selected.length} row${selected.length === 1 ? "" : "s"}` : ""
   const summary =
     added <= 0
-      ? `${rhythm.name} · full`
-      : `${rhythm.name} · +${added} hit${added === 1 ? "" : "s"}${where}`
+      ? ct("grooves.sumFull", { name: rhythm.name })
+      : selected.length > 0
+        ? ct("grooves.sumAddedHitsRows", {
+            name: rhythm.name,
+            hits: String(added),
+            rows: String(selected.length),
+          })
+        : ct("grooves.sumAddedHits", { name: rhythm.name, hits: String(added) })
   return { commands, summary, placedPhrases: false, phrasesUnavailable: false }
 }
 
@@ -652,7 +663,7 @@ const sparsifyDrumGroove = (
   if (onRows.length === 0) {
     return {
       commands: [],
-      summary: "Nothing to thin",
+      summary: ct("grooves.nothingToThin"),
       placedPhrases: false,
       phrasesUnavailable: false,
     }
@@ -672,7 +683,7 @@ const sparsifyDrumGroove = (
   const n = toRemove.length
   return {
     commands,
-    summary: `${rhythm.name} · −${n} hit${n === 1 ? "" : "s"}`,
+    summary: ct("grooves.sumRemovedHits", { name: rhythm.name, hits: String(n) }),
     placedPhrases: false,
     phrasesUnavailable: false,
   }
@@ -701,7 +712,7 @@ const buildPhraseGroove = (
   if (!phraseId || !phraseTrack || !isFragmentTrack(phraseTrack) || bank.length === 0) {
     return {
       commands: [],
-      summary: bank.length === 0 ? "Save some phrases first" : "No phrase track yet",
+      summary: bank.length === 0 ? ct("grooves.savePhrasesFirst") : ct("grooves.noPhraseTrackYet"),
       placedPhrases: false,
       phrasesUnavailable: true,
     }
@@ -809,17 +820,18 @@ const buildPhraseGroove = (
   if (placed === 0) {
     return {
       commands: [],
-      summary: "No onsets to place phrases on",
+      summary: ct("grooves.noOnsets"),
       placedPhrases: false,
       phrasesUnavailable: false,
     }
   }
 
-  const word = `${placed} phrase${placed === 1 ? "" : "s"}`
-  const verb = opts.clear ? "reset · " : ""
+  const summary = opts.clear
+    ? ct("grooves.sumResetPhrases", { name: rhythm.name, phrases: String(placed) })
+    : ct("grooves.sumPhrases", { name: rhythm.name, phrases: String(placed) })
   return {
     commands,
-    summary: `${rhythm.name} · ${verb}${word}`,
+    summary,
     placedPhrases: true,
     phrasesUnavailable: false,
   }
@@ -847,7 +859,7 @@ const sparsifyPhraseGroove = (
   if (onRows.length === 0) {
     return {
       commands: [],
-      summary: "Nothing to thin",
+      summary: ct("grooves.nothingToThin"),
       placedPhrases: false,
       phrasesUnavailable: false,
     }
@@ -868,7 +880,7 @@ const sparsifyPhraseGroove = (
   const n = toRemove.length
   return {
     commands,
-    summary: `${rhythm.name} · −${n} phrase${n === 1 ? "" : "s"}`,
+    summary: ct("grooves.sumRemovedPhrases", { name: rhythm.name, phrases: String(n) }),
     placedPhrases: false,
     phrasesUnavailable: false,
   }

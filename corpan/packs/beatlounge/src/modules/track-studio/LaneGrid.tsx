@@ -17,6 +17,7 @@
  */
 
 import { useRef, type ReactNode } from "react"
+import { ct } from "../../i18n/strings"
 
 /** Per-step state for a cell in the lane grid. */
 export interface LaneGridCell {
@@ -114,8 +115,8 @@ export const LaneGrid = ({
               title={
                 lane.title ??
                 (isSel
-                  ? `${lane.label} selected — grooves target this row`
-                  : `Select ${lane.label} to target grooves at it`)
+                  ? ct("trackStudio.laneSelected", { label: lane.label })
+                  : ct("trackStudio.laneSelectHint", { label: lane.label }))
               }
               onClick={() => onToggleLane(lane.selectKey)}
             >
@@ -132,7 +133,7 @@ export const LaneGrid = ({
                   type="button"
                   role="gridcell"
                   aria-pressed={cell.on}
-                  aria-label={`${lane.label} step ${s + 1}`}
+                  aria-label={ct("trackStudio.laneStep", { label: lane.label, n: String(s + 1) })}
                   className={
                     "bl-cell" +
                     (cell.on ? " is-on" : "") +

@@ -8,6 +8,7 @@
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 
 export interface CurrentPhrase {
   target: string
@@ -36,7 +37,7 @@ export const PhraseSamplerTile = ({ store, current }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="wave" size={16} />
         </span>
-        <span className="bl-tile-title">Phrases</span>
+        <span className="bl-tile-title">{ct("phrases.title")}</span>
         <span className="bl-tile-meta">{bankCount}</span>
       </div>
       <div className="bl-tile-ps-body">
@@ -44,11 +45,13 @@ export const PhraseSamplerTile = ({ store, current }: Props) => {
           <>
             <div className="bl-tile-ps-target">{current?.target || lastSaved || "—"}</div>
             <div className="bl-tile-ps-gloss">
-              {bankCount} {bankCount === 1 ? "snippet" : "snippets"} in bank
+              {bankCount === 1
+                ? ct("phrases.tileInBankOne", { n: String(bankCount) })
+                : ct("phrases.tileInBank", { n: String(bankCount) })}
             </div>
           </>
         ) : (
-          <div className="bl-tile-ps-hint">Discover phrases across your stack</div>
+          <div className="bl-tile-ps-hint">{ct("phrases.tileHint")}</div>
         )}
       </div>
     </div>

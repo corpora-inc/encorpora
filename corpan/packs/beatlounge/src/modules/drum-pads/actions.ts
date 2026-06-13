@@ -9,6 +9,7 @@
  * of React so it's unit-testable in isolation.
  */
 
+import { ct } from "../../i18n/strings"
 import type { ActionContext, ActionResult, ModuleAction } from "../../contracts/module"
 import type { NoteEvent } from "../../model/document"
 import { DRUM_PITCH, findTrack, isInstrumentTrack } from "../../model/document"
@@ -50,7 +51,7 @@ const pick = (rng: () => number, lo: number, hi: number): number =>
  */
 export const randomPatternAction: ModuleAction = {
   name: "randomPattern",
-  describe: "Generate a fresh kit pattern (a Euclidean rhythm per lane).",
+  describe: ct("pads.randomPatternDescribe"),
   params: {
     density: {
       type: "number",
@@ -64,13 +65,13 @@ export const randomPatternAction: ModuleAction = {
   impact: "mutate",
   run(ctx, params): ActionResult {
     const trackId = drumTrackId(ctx)
-    if (!trackId) return { commands: [], summary: "No drum track" }
+    if (!trackId) return { commands: [], summary: ct("drums.noDrumTrackShort") }
     const track = findTrack(ctx.doc, trackId)
     if (!track || !isInstrumentTrack(track))
-      return { commands: [], summary: "No drum track" }
+      return { commands: [], summary: ct("drums.noDrumTrackShort") }
 
     const steps = stepsInLoop(ctx.doc.loopLengthTicks, track.grid)
-    if (steps <= 0) return { commands: [], summary: "Empty loop" }
+    if (steps <= 0) return { commands: [], summary: ct("pads.emptyLoop") }
 
     const density = Math.max(0, Math.min(1, Number(params.density ?? 0.5)))
     const dur = Math.round(gridTicks(track.grid) / 2)
@@ -98,7 +99,7 @@ export const randomPatternAction: ModuleAction = {
     notes.sort((a, b) => a.tick - b.tick)
     return {
       commands: [{ t: "setNotes", trackId, notes }],
-      summary: `New pattern · ${notes.length} hits`,
+      summary: ct("pads.newPattern", { n: String(notes.length) }),
     }
   },
 }

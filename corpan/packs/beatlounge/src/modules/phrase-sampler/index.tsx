@@ -31,6 +31,7 @@ import { PhraseSamplerImmersive } from "./PhraseSamplerImmersive"
 import { PhraseSamplerTile, type CurrentPhrase } from "./PhraseSamplerTile"
 import { phraseSamplerActions } from "./actions"
 import { resolvePhraseContent } from "../../phrase/pipeline"
+import { ct } from "../../i18n/strings"
 import "./phrase-sampler.css"
 
 export interface PhraseSamplerDeps {
@@ -60,7 +61,7 @@ export const createPhraseSamplerModule = ({
   return {
     id: PHRASE_SAMPLER_ID,
     kind: "browser",
-    title: "Phrases",
+    title: ct("phrases.title"),
     glyph: "wave",
     immersive: "full",
     tileAspect: "third",

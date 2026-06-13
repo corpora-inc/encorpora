@@ -22,6 +22,7 @@ import type { Modulator, ModulatorShape } from "../../model/document"
 import { applyCommands } from "../runAction"
 import { AGENT_META, AGENT_NAMES, agentCommands, type AgentName } from "../../modulation/agents"
 import { targetLabel } from "./targetLabel"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   host: BeatloungeHost
@@ -52,11 +53,11 @@ export const PlayersPanel = ({ host, store, embedded = false }: Props) => {
     const before = store.vanilla.getState().doc
     const cmds = agentCommands(name, store.vanilla.getState().doc)
     if (cmds.length === 0) {
-      host.toast("Nothing to modulate yet")
+      host.toast(ct("tweakers.nothingToModulate"))
       return
     }
     applyCommands(store, cmds, `Agent: ${name}`)
-    host.toast(`${AGENT_META[name].label} — ${cmds.length} Player${cmds.length === 1 ? "" : "s"}`, {
+    host.toast(ct("tweakers.agentSpawned", { label: AGENT_META[name].label, n: String(cmds.length) }), {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
@@ -65,7 +66,7 @@ export const PlayersPanel = ({ host, store, embedded = false }: Props) => {
     if (mods.length === 0) return
     const before = store.vanilla.getState().doc
     store.dispatch({ t: "clearModulators" })
-    host.toast("Cleared all Players", {
+    host.toast(ct("tweakers.clearedAll"), {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
@@ -74,8 +75,8 @@ export const PlayersPanel = ({ host, store, embedded = false }: Props) => {
     <div className={`bl-twk${embedded ? " is-embedded" : ""}`}>
       <div className="bl-twk-agents" data-bl-nocapture>
         <div className="bl-twk-agents-head">
-          <span className="bl-twk-agents-title">Players</span>
-          <span className="bl-twk-live">{liveCount} live</span>
+          <span className="bl-twk-agents-title">{ct("tweakers.players")}</span>
+          <span className="bl-twk-live">{ct("tweakers.liveCount", { n: String(liveCount) })}</span>
         </div>
         <div className="bl-twk-agent-row">
           {AGENT_NAMES.map((name) => (
@@ -95,9 +96,9 @@ export const PlayersPanel = ({ host, store, embedded = false }: Props) => {
             className="bl-twk-agent is-danger"
             onClick={clearAll}
             disabled={mods.length === 0}
-            title="Remove every Player"
+            title={ct("tweakers.removeEvery")}
           >
-            <span className="bl-twk-agent-label">Clear all</span>
+            <span className="bl-twk-agent-label">{ct("tweakers.clearAll")}</span>
           </button>
         </div>
       </div>
@@ -105,7 +106,7 @@ export const PlayersPanel = ({ host, store, embedded = false }: Props) => {
       <div className="bl-twk-list">
         {mods.length === 0 ? (
           <div className="bl-twk-empty">
-            No Players yet. Set an agent loose, and the loop evolves itself.
+            {ct("tweakers.empty")}
           </div>
         ) : (
           mods.map((mod) => (
@@ -137,7 +138,7 @@ const ModulatorRow = ({
   const remove = () => {
     const before = store.vanilla.getState().doc
     store.dispatch({ t: "removeModulator", modulatorId: mod.id })
-    host.toast(`Removed ${label}`, {
+    host.toast(ct("tweakers.removed", { label }), {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
@@ -149,15 +150,15 @@ const ModulatorRow = ({
           type="button"
           className={`bl-twk-power${mod.enabled ? " is-on" : ""}`}
           aria-pressed={mod.enabled}
-          aria-label={mod.enabled ? "Disable Player" : "Enable Player"}
-          title={mod.enabled ? "Disable" : "Enable"}
+          aria-label={mod.enabled ? ct("tweakers.disablePlayer") : ct("tweakers.enablePlayer")}
+          title={mod.enabled ? ct("tweakers.disable") : ct("tweakers.enable")}
           onClick={() => store.dispatch({ t: "setModulatorEnabled", modulatorId: mod.id, enabled: !mod.enabled })}
         />
         <span className="bl-twk-row-target">{label}</span>
         <button
           type="button"
           className="bl-iconbtn is-danger"
-          aria-label="Remove Player"
+          aria-label={ct("tweakers.removePlayer")}
           onClick={remove}
         >
           ✕
@@ -166,7 +167,7 @@ const ModulatorRow = ({
 
       <div className="bl-twk-row-controls" data-bl-nocapture>
         <label className="bl-twk-field">
-          <span className="bl-twk-field-label">Shape</span>
+          <span className="bl-twk-field-label">{ct("tweakers.shape")}</span>
           <select
             className="bl-twk-select"
             value={mod.shape}
@@ -181,7 +182,7 @@ const ModulatorRow = ({
         </label>
 
         <label className="bl-twk-field">
-          <span className="bl-twk-field-label">Rate</span>
+          <span className="bl-twk-field-label">{ct("tweakers.rate")}</span>
           <select
             className="bl-twk-select"
             value={String(syncBeats)}
@@ -189,14 +190,18 @@ const ModulatorRow = ({
           >
             {SYNC_CHOICES.map((b) => (
               <option key={b} value={String(b)}>
-                {b < 1 ? `1/${Math.round(1 / b)} bar` : `${b} beat${b === 1 ? "" : "s"}`}
+                {b < 1
+                  ? ct("tweakers.barFraction", { d: String(Math.round(1 / b)) })
+                  : b === 1
+                    ? ct("tweakers.beatCountOne", { n: String(b) })
+                    : ct("tweakers.beatCount", { n: String(b) })}
               </option>
             ))}
           </select>
         </label>
 
         <Knob
-          label="Depth"
+          label={ct("tweakers.depth")}
           value={mod.depth}
           min={0}
           max={1}
@@ -207,7 +212,7 @@ const ModulatorRow = ({
           size={48}
         />
         <Knob
-          label="Center"
+          label={ct("tweakers.center")}
           value={mod.center}
           min={0}
           max={1}

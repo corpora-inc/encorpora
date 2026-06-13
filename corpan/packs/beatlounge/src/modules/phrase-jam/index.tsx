@@ -27,6 +27,7 @@ import { createAudioSource, type AudioSource } from "../../phrase/audioSource"
 import { phraseJamActions } from "./actions"
 import { PhraseJamTile } from "./PhraseJamTile"
 import { PhraseJamImmersive } from "./PhraseJamImmersive"
+import { ct } from "../../i18n/strings"
 import "./phrase-jam.css"
 
 export const PHRASE_JAM_ID = "phrase-jam"
@@ -53,7 +54,7 @@ export const createPhraseJamModule = ({ store, audio, host }: ModuleDeps): Beatl
   return {
     id: PHRASE_JAM_ID,
     kind: "sequencer",
-    title: "Phrase Jam",
+    title: ct("jam.title"),
     glyph: "grid",
     immersive: "full",
     tileAspect: "third",

@@ -36,6 +36,7 @@ import {
   type Cycle,
 } from "./songMath"
 import type { TimeSignature } from "../../model/timing"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   store: BeatloungeStore
@@ -84,7 +85,11 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
     })
     onCycle?.(c.id === "custom" ? undefined : c.id)
     setAccents(new Set(plan.accents))
-    toast(`${c.name} · ${plan.beats} beats · ${formatMeter(plan.sig)}`)
+    toast(ct("song.cycleLoadedToast", {
+      name: c.name,
+      beats: String(plan.beats),
+      meter: formatMeter(plan.sig),
+    }))
   }
 
   // -------------------------------------------------------- loop editing
@@ -128,7 +133,7 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
       {/* -------- summary header -------- */}
       <div className="bl-song-summary">
         <span className="bl-song-summary-big">{beats}</span>
-        <span className="bl-song-summary-unit">beats</span>
+        <span className="bl-song-summary-unit">{ct("song.beats")}</span>
         <span className="bl-song-summary-sep">·</span>
         <span className="bl-song-summary-meter">{formatMeter(sig)}</span>
         <span className="bl-song-summary-sep">·</span>
@@ -139,23 +144,23 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
       <div className="bl-song-cols">
         {/* ============================ LOOP LENGTH ============================ */}
         <section className="bl-song-section">
-          <h3 className="bl-song-h">Loop length</h3>
+          <h3 className="bl-song-h">{ct("song.loopLength")}</h3>
           <div className="bl-song-readrow">
             <span className="bl-song-read">
-              {beats} <em>beats</em>
+              {beats} <em>{ct("song.beats")}</em>
             </span>
             <span className="bl-song-read">
               {bars}
-              {perBar && beats % perBar !== 0 ? "+" : ""} <em>bars</em>
+              {perBar && beats % perBar !== 0 ? "+" : ""} <em>{ct("song.bars")}</em>
             </span>
-            <span className="bl-song-read bl-song-read-dim">{doc.loopLengthTicks} ticks</span>
+            <span className="bl-song-read bl-song-read-dim">{ct("song.ticks", { n: String(doc.loopLengthTicks) })}</span>
           </div>
 
           <label className="bl-song-fieldlabel" htmlFor="bl-song-beats">
-            Beats (1–{maxBeats})
+            {ct("song.beatsRange", { max: String(maxBeats) })}
           </label>
           <div className="bl-song-stepper">
-            <button className="bl-chip" onClick={() => setBeats(beats - 1)} aria-label="One fewer beat">
+            <button className="bl-chip" onClick={() => setBeats(beats - 1)} aria-label={ct("song.oneFewerBeat")}>
               −
             </button>
             <input
@@ -167,7 +172,7 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
               value={beats}
               onChange={(e) => setBeats(Number(e.target.value))}
             />
-            <button className="bl-chip" onClick={() => setBeats(beats + 1)} aria-label="One more beat">
+            <button className="bl-chip" onClick={() => setBeats(beats + 1)} aria-label={ct("song.oneMoreBeat")}>
               +
             </button>
           </div>
@@ -177,11 +182,11 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
             min={1}
             max={maxBeats}
             value={beats}
-            aria-label="Loop length in beats"
+            aria-label={ct("song.loopInBeats")}
             onChange={(e) => setBeats(Number(e.target.value))}
           />
 
-          <div className="bl-song-snaplabel">Snap to bars</div>
+          <div className="bl-song-snaplabel">{ct("song.snapToBars")}</div>
           <div className="bl-song-chips">
             {BAR_SNAPS.map((n) => (
               <button
@@ -189,7 +194,7 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
                 className={"bl-chip" + (bars === n && beats % perBar === 0 ? " is-on" : "")}
                 onClick={() => setBars(n)}
               >
-                {n} {n === 1 ? "bar" : "bars"}
+                {n === 1 ? ct("song.barCount", { n: String(n) }) : ct("song.barsCount", { n: String(n) })}
               </button>
             ))}
           </div>
@@ -197,13 +202,13 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
 
         {/* ============================ TIME SIGNATURE ============================ */}
         <section className="bl-song-section">
-          <h3 className="bl-song-h">Time signature</h3>
+          <h3 className="bl-song-h">{ct("song.timeSignature")}</h3>
           <div className="bl-song-meter">
             <div className="bl-song-stepper">
               <button
                 className="bl-chip"
                 onClick={() => setNumerator(sig.numerator - 1)}
-                aria-label="Fewer beats per bar"
+                aria-label={ct("song.fewerBeatsPerBar")}
               >
                 −
               </button>
@@ -213,13 +218,13 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
                 min={1}
                 max={32}
                 value={sig.numerator}
-                aria-label="Beats per bar (numerator)"
+                aria-label={ct("song.beatsPerBarNumerator")}
                 onChange={(e) => setNumerator(Number(e.target.value))}
               />
               <button
                 className="bl-chip"
                 onClick={() => setNumerator(sig.numerator + 1)}
-                aria-label="More beats per bar"
+                aria-label={ct("song.moreBeatsPerBar")}
               >
                 +
               </button>
@@ -238,7 +243,7 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
             </div>
           </div>
 
-          <div className="bl-song-snaplabel">Presets</div>
+          <div className="bl-song-snaplabel">{ct("song.presets")}</div>
           <div className="bl-song-chips">
             {METER_PRESETS.map((p) => (
               <button
@@ -259,10 +264,10 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
 
         {/* ============================ TEMPO + SWING ============================ */}
         <section className="bl-song-section bl-song-section-knobs">
-          <h3 className="bl-song-h">Tempo &amp; swing</h3>
+          <h3 className="bl-song-h">{ct("song.tempoSwing")}</h3>
           <div className="bl-song-knobrow">
             <Knob
-              label="Tempo"
+              label={ct("song.tempo")}
               unit=""
               value={doc.bpm}
               min={20}
@@ -280,7 +285,7 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
                 min={20}
                 max={300}
                 value={Math.round(doc.bpm)}
-                aria-label="Tempo in BPM"
+                aria-label={ct("song.tempoInBpm")}
                 onChange={(e) =>
                   store.dispatch({ t: "setTempo", bpm: Math.round(Number(e.target.value)) })
                 }
@@ -288,7 +293,7 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
               <span className="bl-song-fieldlabel">BPM</span>
             </div>
             <Knob
-              label="Swing"
+              label={ct("song.swing")}
               value={doc.swing.amount}
               min={0}
               max={0.66}
@@ -299,7 +304,7 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
               onChange={(v) => store.dispatch({ t: "setSwing", amount: v })}
             />
           </div>
-          <div className="bl-song-snaplabel">Swing grid</div>
+          <div className="bl-song-snaplabel">{ct("song.swingGrid")}</div>
           <div className="bl-song-chips">
             {([8, 16] as const).map((d) => (
               <button
@@ -323,7 +328,7 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
       {/* ============================ CYCLES (TALAS) ============================ */}
       <section className="bl-song-section bl-song-cycles">
         <h3 className="bl-song-h">
-          Cycles <span className="bl-song-h-sub">world rhythms · talas</span>
+          {ct("song.cycles")} <span className="bl-song-h-sub">{ct("song.cyclesSub")}</span>
         </h3>
         <div className="bl-song-cyclegrid">
           {CYCLE_CATALOG.map((c) => {
@@ -350,24 +355,24 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
           {/* custom N-beat cycle */}
           <div className="bl-song-cycle bl-song-cycle-custom">
             <span className="bl-song-cycle-top">
-              <span className="bl-song-cycle-name">Custom</span>
+              <span className="bl-song-cycle-name">{ct("song.custom")}</span>
               <span className="bl-song-cycle-beats">{customBeats}</span>
             </span>
-            <span className="bl-song-cycle-trad">your own cycle</span>
+            <span className="bl-song-cycle-trad">{ct("song.yourOwnCycle")}</span>
             <input
               className="bl-song-range"
               type="range"
               min={1}
               max={MAX_BEATS}
               value={customBeats}
-              aria-label="Custom cycle beats"
+              aria-label={ct("song.customCycleBeats")}
               onChange={(e) => setCustomBeats(Number(e.target.value))}
             />
             <button
               className="bl-chip is-on bl-song-cycle-go"
               onClick={() => loadCycle(customCycle(customBeats))}
             >
-              Set {customBeats}-beat cycle
+              {ct("song.setNBeatCycle", { n: String(customBeats) })}
             </button>
           </div>
         </div>
@@ -376,7 +381,7 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
       {/* ============================ ACCENT MAP (visual, local) ============================ */}
       <section className="bl-song-section bl-song-accents">
         <h3 className="bl-song-h">
-          Accent map <span className="bl-song-h-sub">tap a beat to mark the sam / strong beats</span>
+          {ct("song.accentMap")} <span className="bl-song-h-sub">{ct("song.accentMapSub")}</span>
         </h3>
         <div className="bl-song-accentrow">
           {Array.from({ length: Math.min(beats, MAX_BEATS) }, (_, i) => {
@@ -389,7 +394,11 @@ export const SongSetupImmersive = ({ store, host, cycleId, onCycle }: Props) => 
                   (accents.has(i) ? " is-accent" : "") +
                   (isBarStart ? " is-barstart" : "")
                 }
-                aria-label={`Beat ${i + 1}${accents.has(i) ? ", accented" : ""}`}
+                aria-label={
+                  accents.has(i)
+                    ? ct("song.beatAccented", { n: String(i + 1) })
+                    : ct("song.beat", { n: String(i + 1) })
+                }
                 aria-pressed={accents.has(i)}
                 onClick={() => toggleAccent(i)}
               >

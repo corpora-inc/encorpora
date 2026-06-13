@@ -15,6 +15,7 @@ import type { BeatloungeHost } from "../contracts/module"
 import type { BeatloungeStore } from "../store/store"
 import type { Id } from "../model/document"
 import { Knob } from "../bl-ui"
+import { ct } from "../i18n/strings"
 
 const volFmt = (v: number): string => `${Math.round(v * 100)}`
 const panFmt = (v: number): string =>
@@ -37,7 +38,7 @@ export const TrackParamKnob = ({
   const isPan = param === "pan"
   return (
     <Knob
-      label={isPan ? "Pan" : "Volume"}
+      label={isPan ? ct("trackStudio.pan") : ct("trackStudio.volume")}
       value={live ?? value}
       min={isPan ? -1 : 0}
       max={1}

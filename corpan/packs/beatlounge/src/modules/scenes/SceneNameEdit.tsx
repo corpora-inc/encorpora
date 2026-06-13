@@ -5,6 +5,7 @@
  */
 
 import { useEffect, useRef, useState } from "react"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   name: string
@@ -53,7 +54,7 @@ export const SceneNameEdit = ({ name, onRename, onActivate }: Props) => {
           if (e.key === "Enter") commit()
           else if (e.key === "Escape") cancel()
         }}
-        aria-label="Scene name"
+        aria-label={ct("scenes.sceneName")}
         spellCheck={false}
         autoComplete="off"
       />
@@ -64,7 +65,7 @@ export const SceneNameEdit = ({ name, onRename, onActivate }: Props) => {
     <button
       type="button"
       className="bl-scenes-name"
-      title={onActivate ? `Load "${name}"` : name}
+      title={onActivate ? ct("scenes.loadTitle", { name }) : name}
       onClick={onActivate}
       onDoubleClick={() => {
         setDraft(name)

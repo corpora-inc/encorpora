@@ -7,6 +7,7 @@
  * Kept free of React so they're unit-testable in isolation.
  */
 
+import { ct } from "../../i18n/strings"
 import type { ActionContext, ActionResult, ModuleAction } from "../../contracts/module"
 import type { Command } from "../../model/command"
 import { findTrack, isInstrumentTrack, DRUM_PITCH } from "../../model/document"
@@ -24,18 +25,18 @@ const drumTrackId = (ctx: ActionContext): string | undefined => {
 /** clear — wipe every note from the bound drum track. Destructive (confirm). */
 export const clearAction: ModuleAction = {
   name: "clear",
-  describe: "Clear every step in the drum pattern.",
+  describe: ct("drums.clearDescribe"),
   params: {},
   impact: "destructive",
   run(ctx): ActionResult {
     const trackId = drumTrackId(ctx)
-    if (!trackId) return { commands: [], summary: "No drum track" }
+    if (!trackId) return { commands: [], summary: ct("drums.noDrumTrackShort") }
     const track = findTrack(ctx.doc, trackId)
     const count =
       track && isInstrumentTrack(track) ? track.notes.length : 0
     return {
       commands: [{ t: "clearTrack", trackId }],
-      summary: count ? `Cleared ${count} steps` : "Already empty",
+      summary: count ? ct("drums.clearedSteps", { n: String(count) }) : ct("drums.alreadyEmpty"),
     }
   },
 }
@@ -46,7 +47,7 @@ export const clearAction: ModuleAction = {
  */
 export const fillEveryOtherAction: ModuleAction = {
   name: "fillEveryOther",
-  describe: "Fill the hi-hat lane on every other step.",
+  describe: ct("drums.fillEveryOtherDescribe"),
   params: {
     pitch: {
       type: "int",
@@ -57,10 +58,10 @@ export const fillEveryOtherAction: ModuleAction = {
   impact: "mutate",
   run(ctx, params): ActionResult {
     const trackId = drumTrackId(ctx)
-    if (!trackId) return { commands: [], summary: "No drum track" }
+    if (!trackId) return { commands: [], summary: ct("drums.noDrumTrackShort") }
     const track = findTrack(ctx.doc, trackId)
     if (!track || !isInstrumentTrack(track))
-      return { commands: [], summary: "No drum track" }
+      return { commands: [], summary: ct("drums.noDrumTrackShort") }
 
     const pitch = Number(params.pitch ?? DRUM_PITCH.hat)
     const steps = stepsInLoop(ctx.doc.loopLengthTicks, track.grid)
@@ -76,7 +77,7 @@ export const fillEveryOtherAction: ModuleAction = {
     }
     return {
       commands: commands.length ? [{ t: "batch", commands, label: "Fill every other" }] : [],
-      summary: added ? `+${added} hits` : "Nothing to add",
+      summary: added ? ct("drums.addedHits", { n: String(added) }) : ct("drums.nothingToAdd"),
     }
   },
 }
