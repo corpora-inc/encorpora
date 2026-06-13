@@ -374,7 +374,7 @@ const buildDrumGroove = (
   // Pure: choose which existing notes to remove (off-beat/quiet first), down to
   // nothing. Removes only — never grows the loop, never lays new hits.
   if (opts.op === "remove") {
-    return sparsifyDrumGroove(doc, rhythm, drumId, drumGrid, selected)
+    return sparsifyDrumGroove(doc, rhythm, drumId, drumGrid, selected, resolveRng(opts))
   }
 
   // ---- "generate" (the +/− dial): a FRESH stochastic beat across the kit ------
@@ -641,16 +641,19 @@ const forceOneHit = (
 /**
  * "−" on DRUMS — make the targeted rows SPARSER. Remove ~SPARSIFY_FRACTION of
  * the current hits on the selected rows (or, with no selection, the groove's
- * natural voices), lowest-emphasis first (off-beat / quiet before strong onsets),
- * via the pure `chooseHitsToSparsify`. Each − thins further; the last − removes
- * the last hit. Emits `removeNote` per dropped note — one undo batch, no new hits.
+ * natural voices), via the probabilistic `chooseHitsToSparsify`: off-beat / quiet
+ * hits are far likelier to be plucked but the draw is seeded + surprising, so two
+ * − presses on the same pattern thin different spots while the downbeat backbone
+ * survives longest. STRICTLY removes — never adds. Each − thins further; the last
+ * − removes the last hit. Emits `removeNote` per dropped note — one undo batch.
  */
 const sparsifyDrumGroove = (
   _doc: BeatloungeDoc,
   rhythm: Rhythm,
   drumId: string,
   drumGrid: ReturnType<BeatloungeDoc["tracks"]["find"]>,
-  selected: number[]
+  selected: number[],
+  rng: () => number
 ): GrooveBuildResult => {
   const notes =
     drumGrid && isInstrumentTrack(drumGrid) ? drumGrid.notes : []
@@ -674,7 +677,7 @@ const sparsifyDrumGroove = (
     velocity: n.velocity,
   }))
   const cellProbOf = makeCellProbOf(rhythm)
-  const toRemove = chooseHitsToSparsify(removable, SPARSIFY_FRACTION, cellProbOf)
+  const toRemove = chooseHitsToSparsify(removable, SPARSIFY_FRACTION, cellProbOf, rng)
   const commands: Command[] = toRemove.map((h) => ({
     t: "removeNote",
     trackId: drumId,
@@ -727,7 +730,7 @@ const buildPhraseGroove = (
 
   // ---- "−" (sparser): peel a fraction of the targeted snippet rows' fragments --
   if (opts.op === "remove") {
-    return sparsifyPhraseGroove(rhythm, phraseId, phraseTrack.fragments, target, bank)
+    return sparsifyPhraseGroove(rhythm, phraseId, phraseTrack.fragments, target, bank, resolveRng(opts))
   }
 
   const commands: Command[] = []
@@ -848,7 +851,8 @@ const sparsifyPhraseGroove = (
   phraseId: string,
   fragments: readonly FragmentEvent[],
   target: Extract<GrooveTarget, { kind: "phrases" }>,
-  bank: ReturnType<typeof bankSnippets>
+  bank: ReturnType<typeof bankSnippets>,
+  rng: () => number
 ): GrooveBuildResult => {
   // Targeted snippet fragment-ids: the selection, or every saved snippet.
   const selectedIds = target.selectedSnippetIds ?? []
@@ -871,7 +875,7 @@ const sparsifyPhraseGroove = (
     velocity: f.gain,
   }))
   const cellProbOf = makeCellProbOf(rhythm)
-  const toRemove = chooseHitsToSparsify(removable, SPARSIFY_FRACTION, cellProbOf)
+  const toRemove = chooseHitsToSparsify(removable, SPARSIFY_FRACTION, cellProbOf, rng)
   const commands: Command[] = toRemove.map((h) => ({
     t: "removeFragment",
     trackId: phraseId,
