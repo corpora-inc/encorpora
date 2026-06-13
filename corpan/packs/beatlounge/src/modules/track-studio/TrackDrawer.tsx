@@ -18,6 +18,7 @@
  */
 
 import { useRef, type PointerEvent, type ReactNode } from "react"
+import { ct } from "../../i18n/strings"
 
 /** peek = handle + tabs only (grid full-height); open = working height;
  *  expanded = taller (uses the extra height on a big iPad). */
@@ -96,10 +97,10 @@ export const TrackDrawer = ({
         tabIndex={0}
         aria-label={
           state === "peek"
-            ? `Open ${label}`
+            ? ct("trackStudio.openDrawer", { label })
             : state === "open"
-              ? `Expand ${label}`
-              : `Collapse ${label}`
+              ? ct("trackStudio.expandDrawer", { label })
+              : ct("trackStudio.collapseDrawer", { label })
         }
         onPointerDown={onHandleDown}
         onPointerMove={onHandleMove}

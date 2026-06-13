@@ -11,6 +11,7 @@ import { useBeatloungeStore } from "../../store/store"
 import { Glyph } from "../../bl-ui"
 import { shapeValue } from "../../modulation/shapes"
 import type { Modulator } from "../../model/document"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   store: BeatloungeStore
@@ -43,12 +44,12 @@ export const TweakersTile = ({ store }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="wave" size={16} />
         </span>
-        <span className="bl-tile-title">Players</span>
+        <span className="bl-tile-title">{ct("tweakers.players")}</span>
         <span className="bl-tile-meta">{live.length}</span>
       </div>
       <div className="bl-twk-tile-body" aria-hidden="true">
         {live.length === 0 ? (
-          <span className="bl-twk-tile-empty">Idle — tap to bring it alive</span>
+          <span className="bl-twk-tile-empty">{ct("tweakers.tileIdle")}</span>
         ) : (
           <>
             <svg
@@ -68,7 +69,7 @@ export const TweakersTile = ({ store }: Props) => {
               ))}
             </svg>
             <span className="bl-twk-tile-count">
-              {live.length} live Player{live.length === 1 ? "" : "s"}
+              {ct("tweakers.livePlayers", { n: String(live.length) })}
             </span>
           </>
         )}

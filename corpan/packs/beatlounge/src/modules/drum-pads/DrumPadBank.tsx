@@ -13,6 +13,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from "react"
+import { ct } from "../../i18n/strings"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
@@ -57,7 +58,7 @@ export const DrumPadBank = ({ host, store, audio, trackId }: Props) => {
   )
 
   if (!track || !isInstrumentTrack(track) || view == null) {
-    return <div className="bl-grid-empty">No drum track.</div>
+    return <div className="bl-grid-empty">{ct("drums.noDrumTrackDot")}</div>
   }
 
   const count = visiblePadCount(form)
@@ -97,7 +98,7 @@ export const DrumPadBank = ({ host, store, audio, trackId }: Props) => {
           aria-pressed={record}
           onClick={() => setRecord((r) => !r)}
         >
-          {record ? "Recording" : "Record"}
+          {record ? ct("pads.recording") : ct("pads.record")}
         </button>
       </div>
       <div
@@ -155,7 +156,7 @@ const Pad = ({ label, count, live, velocity, onHit, onVelocity }: PadProps) => {
     <button
       type="button"
       className={`bl-pad${live ? " is-live" : ""}${count > 0 ? " has-hits" : ""}`}
-      aria-label={`${label}, velocity ${Math.round(velocity * 100)}`}
+      aria-label={ct("pads.padVelocity", { label, v: String(Math.round(velocity * 100)) })}
       data-bl-nocapture
       onPointerDown={drag.onPointerDown}
     >

@@ -13,6 +13,7 @@
  */
 
 import { useState } from "react"
+import { ct } from "../../i18n/strings"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
@@ -43,7 +44,7 @@ export const ComposerImmersive = ({ host, store, trackId }: Props) => {
   const [settings, setSettings] = useState<ComposerSettings>(defaultComposerSettings)
 
   // ---- jam onto the synth (performance, not harmony) -----------------------
-  const compose = (seed: number, label: string) => {
+  const compose = (seed: number, label: string, display: string) => {
     const next = { ...settings, seed }
     setSettings(next)
     const { commands, noteCount, chordCount } = composeFromHarmony(
@@ -52,21 +53,28 @@ export const ComposerImmersive = ({ host, store, trackId }: Props) => {
       trackId
     )
     if (!commands.length) {
-      host.toast("Set a mode or some chords first")
+      host.toast(ct("harmony.setModeOrChordsFirst"))
       return
     }
     const before = store.vanilla.getState().doc
     store.dispatch({ t: "batch", label, commands })
-    host.toast(`${label}: ${noteCount} notes over ${chordCount} chords`, {
-      undo: () => store.vanilla.getState().doc !== before && store.undo(),
-    })
+    host.toast(
+      ct("harmony.jamResult", {
+        label: display,
+        notes: String(noteCount),
+        chords: String(chordCount),
+      }),
+      {
+        undo: () => store.vanilla.getState().doc !== before && store.undo(),
+      }
+    )
   }
-  const onJam = () => compose(settings.seed || rollSeed(), "Jam")
-  const onReroll = () => compose(rollSeed(), "Re-roll")
-  const onEvolve = () => compose(nextEvolveSeed(settings.seed || 1), "Evolve")
+  const onJam = () => compose(settings.seed || rollSeed(), "Jam", ct("harmony.jam"))
+  const onReroll = () => compose(rollSeed(), "Re-roll", ct("harmony.reroll"))
+  const onEvolve = () => compose(nextEvolveSeed(settings.seed || 1), "Evolve", ct("harmony.evolve"))
 
   if (!track || !isInstrumentTrack(track)) {
-    return <div className="bl-grid-empty">No synth track to compose onto.</div>
+    return <div className="bl-grid-empty">{ct("harmony.noSynthToCompose")}</div>
   }
 
   return (
@@ -80,7 +88,7 @@ export const ComposerImmersive = ({ host, store, trackId }: Props) => {
       {/* ---- jam onto the synth ---- */}
       <div className="bl-hb-jam" data-bl-nocapture>
         <Knob
-          label="Density"
+          label={ct("harmony.density")}
           value={settings.density}
           min={0}
           max={1}
@@ -92,7 +100,7 @@ export const ComposerImmersive = ({ host, store, trackId }: Props) => {
         <select
           className="bl-hb-select bl-hb-feel"
           value={settings.feel}
-          aria-label="Feel"
+          aria-label={ct("harmony.feel")}
           onChange={(e) => setSettings((s) => ({ ...s, feel: e.target.value as ComposerSettings["feel"] }))}
         >
           {COMPOSER_FEELS.map((f) => (
@@ -103,13 +111,13 @@ export const ComposerImmersive = ({ host, store, trackId }: Props) => {
         </select>
         <div className="bl-hb-jam-btns">
           <button type="button" className="bl-chip is-primary" onClick={onJam}>
-            Jam
+            {ct("harmony.jam")}
           </button>
           <button type="button" className="bl-chip" onClick={onReroll}>
-            Re-roll
+            {ct("harmony.reroll")}
           </button>
           <button type="button" className="bl-chip" onClick={onEvolve}>
-            Evolve
+            {ct("harmony.evolve")}
           </button>
         </div>
       </div>

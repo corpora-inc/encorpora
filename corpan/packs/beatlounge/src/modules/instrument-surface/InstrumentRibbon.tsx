@@ -29,6 +29,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from "react"
+import { ct } from "../../i18n/strings"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade, LiveVoiceHandle } from "../../contracts/audioFacade"
@@ -131,8 +132,8 @@ export const InstrumentRibbon = ({
   // A short label of what the ribbon is following (the mode name, or "chords").
   const harmonyLabel =
     harmony.mode === "chordal"
-      ? `${harmony.progression.length} chords`
-      : harmony.scale.id.split(".").pop()?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? "scale"
+      ? ct("instrumentSurface.chordCount", { n: String(harmony.progression.length) })
+      : harmony.scale.id.split(".").pop()?.replace(/([a-z])([A-Z])/g, "$1 $2") ?? ct("instrumentSurface.scaleFallback")
 
   const surfaceRef = useRef<HTMLDivElement | null>(null)
   // The fixed pool of per-finger lit markers (positioned directly via the DOM,
@@ -385,7 +386,7 @@ export const InstrumentRibbon = ({
               aria-pressed={record}
               onClick={() => setRecordLocal((r) => !r)}
             >
-              {record ? "Recording" : "Record"}
+              {record ? ct("instrumentSurface.recording") : ct("instrumentSurface.record")}
             </button>
             <button
               type="button"
@@ -400,7 +401,7 @@ export const InstrumentRibbon = ({
                 else host.toast(r.summary)
               }}
             >
-              Clear
+              {ct("instrumentSurface.clear")}
             </button>
           </div>
         </div>
@@ -413,14 +414,14 @@ export const InstrumentRibbon = ({
            song's key/mode is shown once (the Harmony summary), never duplicated. */}
       <div className="bl-ribbon-controls" data-bl-nocapture>
         <div className="bl-ribbon-ctl-row">
-          <div className="bl-seg" role="group" aria-label="Pitch lock">
+          <div className="bl-seg" role="group" aria-label={ct("instrumentSurface.pitchLock")}>
             <button
               type="button"
               className={`bl-seg-btn${fretted ? " is-on" : ""}`}
               aria-pressed={fretted}
               onClick={() => setFretted(true)}
             >
-              Lock
+              {ct("instrumentSurface.lock")}
             </button>
             <button
               type="button"
@@ -428,7 +429,7 @@ export const InstrumentRibbon = ({
               aria-pressed={!fretted}
               onClick={() => setFretted(false)}
             >
-              Free
+              {ct("instrumentSurface.free")}
             </button>
           </div>
           {headerSlot && <div className="bl-ribbon-ctl-slot">{headerSlot}</div>}
@@ -439,7 +440,7 @@ export const InstrumentRibbon = ({
             <button
               type="button"
               className="bl-icon-btn"
-              aria-label="Shift window down an octave"
+              aria-label={ct("instrumentSurface.shiftDownOctave")}
               onClick={() => shiftOctave(-1)}
             >
               ◀
@@ -449,14 +450,14 @@ export const InstrumentRibbon = ({
             </span>
           </div>
 
-          <div className="bl-seg" role="group" aria-label="Octave span">
+          <div className="bl-seg" role="group" aria-label={ct("instrumentSurface.octaveSpan")}>
             {SPAN_OCTAVES.map((o) => (
               <button
                 key={o}
                 type="button"
                 className={`bl-seg-btn${spanOct === o ? " is-on" : ""}`}
                 aria-pressed={spanOct === o}
-                aria-label={`${o} octaves`}
+                aria-label={ct("instrumentSurface.octaves", { n: String(o) })}
                 onClick={() => setSpanOct(o)}
               >
                 {o}
@@ -471,7 +472,7 @@ export const InstrumentRibbon = ({
             <button
               type="button"
               className="bl-icon-btn"
-              aria-label="Shift window up an octave"
+              aria-label={ct("instrumentSurface.shiftUpOctave")}
               onClick={() => shiftOctave(1)}
             >
               ▶
@@ -490,7 +491,11 @@ export const InstrumentRibbon = ({
           (silent ? " is-silent" : "")
         }
         role="slider"
-        aria-label={`Ribbon · ${KEY_NAMES[tonicPc]} ${harmonyLabel} · ${fretted ? "lock" : "free"}`}
+        aria-label={ct("instrumentSurface.ribbonAria", {
+          key: KEY_NAMES[tonicPc],
+          harmony: harmonyLabel,
+          lock: fretted ? ct("instrumentSurface.lock") : ct("instrumentSurface.free"),
+        })}
         aria-valuetext={liveLabel || `${KEY_NAMES[tonicPc]} ${harmonyLabel}`}
         onPointerDown={onDown}
         onPointerMove={onMove}
@@ -536,7 +541,7 @@ export const InstrumentRibbon = ({
         </div>
         {!playing && (
           <span className="bl-ribbon-hint" aria-hidden="true">
-            Slide to play
+            {ct("instrumentSurface.slideToPlay")}
           </span>
         )}
       </div>

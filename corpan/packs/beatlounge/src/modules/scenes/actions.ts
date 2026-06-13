@@ -13,19 +13,18 @@
 import type { ActionResult, ModuleAction } from "../../contracts/module"
 import { findSceneByName } from "../../store/scenesStore"
 import type { ScenesController } from "./scenesController"
+import { ct } from "../../i18n/strings"
 
 export const createScenesActions = (
   ctrl: ScenesController
 ): ReadonlyArray<ModuleAction> => {
   const saveScene: ModuleAction = {
     name: "saveScene",
-    describe:
-      "Save the song's current complete state as a named Scene you can return to later.",
+    describe: ct("scenes.action.saveScene.describe"),
     params: {
       name: {
         type: "string",
-        describe:
-          "Optional name. Omit for a default (date · two-word) name, e.g. \"2026-06-11 · brave-canyon\".",
+        describe: ct("scenes.action.saveScene.nameParam"),
       },
     },
     impact: "tweak",
@@ -34,28 +33,30 @@ export const createScenesActions = (
       // Side-effecting persist (Scenes are not a doc field). Fire-and-forget;
       // the controller updates its reactive list when the write resolves.
       void ctrl.save(name)
-      return { commands: [], summary: name ? `Saved scene "${name}"` : "Saved scene" }
+      return {
+        commands: [],
+        summary: name ? ct("scenes.savedNamed", { name }) : ct("scenes.savedScene"),
+      }
     },
   }
 
   const loadScene: ModuleAction = {
     name: "loadScene",
-    describe:
-      "Load a saved Scene by name — replaces the live state with that snapshot (undoable).",
+    describe: ct("scenes.action.loadScene.describe"),
     params: {
       name: {
         type: "string",
-        describe: "The Scene name to load (matched case-insensitively).",
+        describe: ct("scenes.action.loadScene.nameParam"),
       },
     },
     impact: "mutate",
     run(_ctx, params): ActionResult {
       const name = typeof params.name === "string" ? params.name.trim() : ""
       const scene = findSceneByName(ctrl.vanilla.getState().scenes, name)
-      if (!scene) return { commands: [], summary: `No scene named "${name}"` }
+      if (!scene) return { commands: [], summary: ct("scenes.noSceneNamed", { name }) }
       return {
         commands: [{ t: "loadScene", snapshot: scene.snapshot }],
-        summary: `Loaded "${scene.name}"`,
+        summary: ct("scenes.loadedNamed", { name: scene.name }),
       }
     },
   }

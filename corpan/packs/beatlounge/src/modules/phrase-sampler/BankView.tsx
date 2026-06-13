@@ -14,6 +14,7 @@ import { bankSnippets } from "../../phrase/bank"
 import { auditionPhrase } from "../../phrase/audition"
 import { languageLabel } from "./langLabel"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 import type { AudioSource } from "../../phrase/audioSource"
 
 const LOG = "[beatlounge/phrase-discovery]"
@@ -37,10 +38,9 @@ export const BankView = ({ host, store, audioSource, nativeCode }: Props) => {
           <span className="bl-disc-bank-emptyglyph">
             <Glyph name="wave" size={28} />
           </span>
-          <p className="bl-disc-bank-emptytitle">Your bank is empty</p>
+          <p className="bl-disc-bank-emptytitle">{ct("phrases.bankEmpty")}</p>
           <p className="bl-disc-empty-sm">
-            Find a phrase in Discover, drill a language, and save combos here. The
-            sequencer places them on the beat.
+            {ct("phrases.bankEmptyHint")}
           </p>
         </div>
       </div>
@@ -52,21 +52,23 @@ export const BankView = ({ host, store, audioSource, nativeCode }: Props) => {
     void auditionPhrase(host.audioContext(), audioSource, text, lang, { voiceId })
       .catch((err) => {
         console.warn(`${LOG} bank audition failed:`, err)
-        host.toast("Couldn't play that")
+        host.toast(ct("phrases.cantPlay"))
       })
       .finally(() => setBusyId(null))
   }
 
   const remove = (refId: string, text: string) => {
     store.dispatch({ t: "removeFragmentRef", refId })
-    host.toast(`Removed "${text}"`, { undo: () => store.undo() })
+    host.toast(ct("phrases.removed", { text }), { undo: () => store.undo() })
   }
 
   return (
     <div className="bl-disc-body">
       <div className="bl-disc-bank-head">
         <span className="bl-disc-section-h">
-          {snippets.length} {snippets.length === 1 ? "snippet" : "snippets"} in your bank
+          {snippets.length === 1
+            ? ct("phrases.snippetsInBankOne", { n: String(snippets.length) })
+            : ct("phrases.snippetsInBank", { n: String(snippets.length) })}
         </span>
       </div>
       <div className="bl-disc-bank-list">
@@ -83,8 +85,8 @@ export const BankView = ({ host, store, audioSource, nativeCode }: Props) => {
                 type="button"
                 className="bl-disc-iconbtn"
                 onClick={() => audition(text, lang, ref.voiceId)}
-                aria-label={`Play "${text}"`}
-                title="Hear it"
+                aria-label={ct("phrases.playPhrase", { text })}
+                title={ct("phrases.hearIt")}
                 disabled={busy}
               >
                 {busy ? <span className="bl-disc-spin" /> : <Glyph name="play" size={18} />}
@@ -96,15 +98,15 @@ export const BankView = ({ host, store, audioSource, nativeCode }: Props) => {
                 <div className="bl-disc-bank-meta">
                   <span className="bl-disc-lang-tag">{languageLabel(lang, nativeCode)}</span>
                   {dur && <span className="bl-disc-bank-dur">{dur}</span>}
-                  {synth && <span className="bl-disc-tag">synth</span>}
+                  {synth && <span className="bl-disc-tag">{ct("phrases.synthTag")}</span>}
                 </div>
               </div>
               <button
                 type="button"
                 className="bl-disc-iconbtn is-danger"
                 onClick={() => remove(ref.id, text)}
-                aria-label={`Remove "${text}" from bank`}
-                title="Remove"
+                aria-label={ct("phrases.removeFromBank", { text })}
+                title={ct("phrases.remove")}
               >
                 <Trash />
               </button>

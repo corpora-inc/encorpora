@@ -16,6 +16,7 @@
 
 import { useCallback, useRef } from "react"
 import { useDrag } from "./useDrag"
+import { ct } from "../i18n/strings"
 import "./XYPad.css"
 
 export interface XYAxis {
@@ -155,8 +156,14 @@ export const XYPad = ({ x, y, onChange, onCommit, size, label }: XYPadProps) => 
         className="bl-xypad-surface"
         role="application"
         tabIndex={0}
-        aria-label={`${groupLabel}. ${x.label} ${xReadout}, ${y.label} ${yReadout}. Arrow keys to adjust.`}
-        aria-roledescription="2D control pad"
+        aria-label={ct("ui.xypadAria", {
+          group: groupLabel,
+          xLabel: x.label,
+          xVal: xReadout,
+          yLabel: y.label,
+          yVal: yReadout,
+        })}
+        aria-roledescription={ct("ui.xypadRole")}
         onPointerDown={drag.onPointerDown}
         onKeyDown={onKeyDown}
         style={size ? { width: size, height: size } : undefined}

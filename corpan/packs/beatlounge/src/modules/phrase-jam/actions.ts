@@ -17,6 +17,7 @@ import { findTrack, isFragmentTrack } from "../../model/document"
 import { stepsInLoop, tickForStep } from "../../model/timing"
 import { bankSnippets } from "../../phrase/bank"
 import { planScramble } from "./jamModel"
+import { ct } from "../../i18n/strings"
 
 /** Resolve the phrase track: the bound track, else the first fragment track. */
 export const phraseTrackId = (ctx: ActionContext): string | undefined => {
@@ -46,17 +47,17 @@ export const scrambleAction: ModuleAction = {
   impact: "mutate",
   run(ctx: ActionContext, params: Record<string, unknown>): ActionResult {
     const trackId = phraseTrackId(ctx)
-    if (!trackId) return { commands: [], summary: "No phrase track yet" }
+    if (!trackId) return { commands: [], summary: ct("jam.noPhraseTrackYet") }
     const track = findTrack(ctx.doc, trackId)
     if (!track || !isFragmentTrack(track))
-      return { commands: [], summary: "No phrase track yet" }
+      return { commands: [], summary: ct("jam.noPhraseTrackYet") }
 
     const bank = bankSnippets(ctx.doc)
     if (bank.length === 0)
-      return { commands: [], summary: "Save some phrases first" }
+      return { commands: [], summary: ct("jam.savePhrasesFirst") }
 
     const steps = stepsInLoop(ctx.doc.loopLengthTicks, track.grid)
-    if (steps <= 0) return { commands: [], summary: "Empty loop" }
+    if (steps <= 0) return { commands: [], summary: ct("jam.emptyLoop") }
 
     const density = Math.max(0, Math.min(1, Number(params.density ?? 0.6)))
     const plan = planScramble(bank.length, steps, ctx.rng, density)
@@ -78,8 +79,8 @@ export const scrambleAction: ModuleAction = {
       commands.push({ t: "placeFragment", trackId, frag })
     }
 
-    if (commands.length === 0) return { commands: [], summary: "Nothing to scramble" }
-    return { commands, summary: `Scrambled · ${plan.length} snippets` }
+    if (commands.length === 0) return { commands: [], summary: ct("jam.nothingToScramble") }
+    return { commands, summary: ct("jam.scrambled", { n: String(plan.length) }) }
   },
 }
 

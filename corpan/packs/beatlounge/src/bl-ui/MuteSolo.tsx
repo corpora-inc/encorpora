@@ -4,6 +4,8 @@
  * pressed. Pure presentational toggles — parent dispatches the command.
  */
 
+import { ct } from "../i18n/strings"
+
 export interface MuteSoloProps {
   mute: boolean
   solo: boolean
@@ -19,8 +21,8 @@ export const MuteSolo = ({ mute, solo, onMute, onSolo, compact }: MuteSoloProps)
       type="button"
       className={`bl-ms-btn bl-ms-m${mute ? " is-on" : ""}`}
       aria-pressed={mute}
-      aria-label="Mute"
-      title="Mute"
+      aria-label={ct("ui.mute")}
+      title={ct("ui.mute")}
       onClick={onMute}
     >
       M
@@ -29,8 +31,8 @@ export const MuteSolo = ({ mute, solo, onMute, onSolo, compact }: MuteSoloProps)
       type="button"
       className={`bl-ms-btn bl-ms-s${solo ? " is-on" : ""}`}
       aria-pressed={solo}
-      aria-label="Solo"
-      title="Solo"
+      aria-label={ct("ui.solo")}
+      title={ct("ui.solo")}
       onClick={onSolo}
     >
       S

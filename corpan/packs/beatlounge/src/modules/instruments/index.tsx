@@ -28,6 +28,7 @@ import { isInstrumentTrack } from "../../model/document"
 import { instrumentsActions } from "./actions"
 import { InstrumentsTile } from "./InstrumentsTile"
 import { InstrumentsBrowser } from "./InstrumentsBrowser"
+import { ct } from "../../i18n/strings"
 import "./styles.css"
 
 export interface InstrumentsDeps {
@@ -60,7 +61,7 @@ export const createInstrumentsModule = ({
   return {
     id: INSTRUMENTS_ID,
     kind: "instrument",
-    title: "Instruments",
+    title: ct("instruments.title"),
     glyph: "drawer",
     immersive: "full",
     tileAspect: "half",
@@ -71,7 +72,7 @@ export const createInstrumentsModule = ({
 
       const render = () => {
         if (!trackId) {
-          root.render(<div className="bl-grid-empty">No instrument track.</div>)
+          root.render(<div className="bl-grid-empty">{ct("instruments.noInstrumentTrack")}</div>)
           return
         }
         if (mount.surface === "tile") {

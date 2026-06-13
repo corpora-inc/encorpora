@@ -20,6 +20,7 @@
  */
 
 import { useMemo, useState } from "react"
+import { ct } from "../../i18n/strings"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
@@ -91,7 +92,7 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
       {/* ---- tonic + Mode⇄Progression toggle ---- */}
       <div className="bl-hb-bar" data-bl-nocapture>
         <label className="bl-hb-tonic">
-          <span className="bl-hb-cap">Tonic</span>
+          <span className="bl-hb-cap">{ct("harmony.tonic")}</span>
           <select
             className="bl-hb-select"
             value={h.tonic}
@@ -105,7 +106,7 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
           </select>
         </label>
 
-        <div className="bl-seg bl-hb-mode" role="group" aria-label="Harmony source">
+        <div className="bl-seg bl-hb-mode" role="group" aria-label={ct("harmony.source")}>
           <button
             type="button"
             className={`bl-seg-btn${h.mode === "modal" ? " is-on" : ""}`}
@@ -143,9 +144,9 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
       )}
 
       {/* ---- the resulting note row (the resolver's active set) ---- */}
-      <div className="bl-hb-row" data-bl-nocapture aria-label="Notes in the current harmony">
+      <div className="bl-hb-row" data-bl-nocapture aria-label={ct("harmony.notesInHarmony")}>
         {row.length === 0 ? (
-          <span className="bl-hb-rowempty">Tap a beat to place a chord.</span>
+          <span className="bl-hb-rowempty">{ct("harmony.tapBeatToPlaceChord")}</span>
         ) : (
           row.map((c, i) => (
             <span key={i} className={`bl-hb-note${c.tonic ? " is-tonic" : ""}`}>
@@ -191,7 +192,7 @@ export const HarmonyPanel = ({ host, store, snapTrackId }: HarmonyPanelProps) =>
               ],
             })
             setBrowseOpen(false)
-            host.toast(`${chords.length} chords placed`)
+            host.toast(ct("harmony.chordsPlaced", { n: String(chords.length) }))
           }}
           onClose={() => setBrowseOpen(false)}
         />
@@ -212,7 +213,7 @@ const ModePanel = ({ onChange, family, scaleId, micro }: ModePanelProps) => {
   const scales = useMemo(() => scalesForFamily(family), [family])
   return (
     <div className="bl-hb-mode-panel" data-bl-nocapture>
-      <div className="bl-seg bl-hb-fam" role="group" aria-label="Scale family">
+      <div className="bl-seg bl-hb-fam" role="group" aria-label={ct("harmony.scaleFamily")}>
         {HARMONY_FAMILIES.map((f) => (
           <button
             key={f.id}
@@ -230,7 +231,7 @@ const ModePanel = ({ onChange, family, scaleId, micro }: ModePanelProps) => {
         ))}
       </div>
       <label className="bl-hb-scale">
-        <span className="bl-hb-cap">Scale</span>
+        <span className="bl-hb-cap">{ct("harmony.scale")}</span>
         <select
           className="bl-hb-select"
           value={scaleId}
@@ -269,7 +270,7 @@ const ProgressionPanel = ({
   onBrowse,
 }: ProgressionPanelProps) => (
   <div className="bl-hb-prog" data-bl-nocapture>
-    <div className="bl-hb-grid" role="group" aria-label="Chords over the loop">
+    <div className="bl-hb-grid" role="group" aria-label={ct("harmony.chordsOverLoop")}>
       {grid.map((slot) => (
         <button
           key={slot.tick}
@@ -283,8 +284,8 @@ const ProgressionPanel = ({
           }
           aria-label={
             slot.symbol
-              ? `Beat ${slot.index + 1}: ${displayChord(slot.symbol)}`
-              : `Beat ${slot.index + 1}: empty`
+              ? ct("harmony.beatChord", { n: String(slot.index + 1), chord: displayChord(slot.symbol) })
+              : ct("harmony.beatEmpty", { n: String(slot.index + 1) })
           }
           onClick={() => onEditSlot(slot.tick)}
         >
@@ -306,7 +307,7 @@ const ProgressionPanel = ({
       ))}
     </div>
     <button type="button" className="bl-chip bl-hb-browse" onClick={onBrowse}>
-      Browse progressions
+      {ct("harmony.browseProgressions")}
     </button>
   </div>
 )
@@ -324,10 +325,10 @@ const ChordPalette = ({ doc, existing, onPick, onClear, onClose }: ChordPaletteP
   const roots = useMemo(() => paletteRoots(doc), [doc])
   const [root, setRoot] = useState<string>(() => roots[0] ?? "C")
   return (
-    <div className="bl-hb-sheet" role="dialog" aria-label="Choose a chord">
+    <div className="bl-hb-sheet" role="dialog" aria-label={ct("harmony.chooseChord")}>
       <div className="bl-hb-sheet-head">
         <span className="bl-hb-sheet-title">Chord</span>
-        <button type="button" className="bl-icon-btn" aria-label="Close" onClick={onClose}>
+        <button type="button" className="bl-icon-btn" aria-label={ct("harmony.close")} onClick={onClose}>
           ✕
         </button>
       </div>
@@ -361,7 +362,7 @@ const ChordPalette = ({ doc, existing, onPick, onClear, onClose }: ChordPaletteP
       </div>
       {existing && (
         <button type="button" className="bl-chip is-danger bl-hb-sheet-clear" onClick={onClear}>
-          Clear beat
+          {ct("harmony.clearBeat")}
         </button>
       )}
     </div>
@@ -378,11 +379,11 @@ const ProgressionBrowser = ({ onPick, onClose }: ProgressionBrowserProps) => {
   const [family, setFamily] = useState<(typeof FAMILIES)[number]>("pop-loop")
   const items = useMemo(() => listByFamily(family).slice(0, 60), [family])
   return (
-    <div className="bl-hb-sheet bl-hb-browser" role="dialog" aria-label="Browse progressions">
+    <div className="bl-hb-sheet bl-hb-browser" role="dialog" aria-label={ct("harmony.browseProgressions")}>
       <div className="bl-hb-sheet-head">
         <span className="bl-hb-sheet-title">Progressions</span>
         <span className="bl-hb-sheet-count">{CORPUS.length}</span>
-        <button type="button" className="bl-icon-btn" aria-label="Close" onClick={onClose}>
+        <button type="button" className="bl-icon-btn" aria-label={ct("harmony.close")} onClick={onClose}>
           ✕
         </button>
       </div>

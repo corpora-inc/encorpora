@@ -22,6 +22,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { pianoRollActions } from "./actions"
 import { PianoRollTile } from "./PianoRollTile"
 import { PianoRollImmersive } from "./PianoRollImmersive"
+import { ct } from "../../i18n/strings"
 import "./styles.css"
 
 export const PIANO_ROLL_ID = "piano-roll"
@@ -54,7 +55,7 @@ export const createPianoRollModule = ({ store, audio }: ModuleDeps): BeatloungeM
 
     const render = () => {
       if (!trackId) {
-        root.render(<div className="bl-grid-empty">No melodic track.</div>)
+        root.render(<div className="bl-grid-empty">{ct("roll.noTrack")}</div>)
         return
       }
       if (mount.surface === "tile") {

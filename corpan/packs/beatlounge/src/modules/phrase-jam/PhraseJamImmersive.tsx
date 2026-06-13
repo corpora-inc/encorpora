@@ -37,6 +37,7 @@ import { stepForTick, tickForStep } from "../../model/timing"
 import { bankSnippets } from "../../phrase/bank"
 import type { AudioSource } from "../../phrase/audioSource"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 import { useTransport } from "../../store/transport"
 import { ClearButton } from "../_shared/ClearButton"
 import {
@@ -129,7 +130,7 @@ export const PhraseJamImmersive = ({
   }, [])
 
   if (!track || !isFragmentTrack(track)) {
-    return <div className="bl-grid-empty">No phrase track.</div>
+    return <div className="bl-grid-empty">{ct("jam.noPhraseTrack")}</div>
   }
   const ftrack: FragmentTrack = track
   const silent = ftrack.mute || (anySolo && !ftrack.solo)
@@ -145,9 +146,9 @@ export const PhraseJamImmersive = ({
         </div>
         <div className="bl-jam-empty">
           <Glyph name="wave" size={28} />
-          <p className="bl-jam-empty-title">No snippets yet</p>
+          <p className="bl-jam-empty-title">{ct("jam.noSnippets")}</p>
           <p className="bl-jam-empty-sub">
-            Open <strong>Phrases</strong> to save some.
+            {ct("jam.openPhrasesToSave")}
           </p>
         </div>
       </div>
@@ -258,21 +259,25 @@ export const PhraseJamImmersive = ({
     if (selected.size > 0) {
       const toRemove = ftrack.fragments.filter((f) => selected.has(f.fragmentId))
       if (toRemove.length === 0) {
-        localHost.toast("Those rows are empty")
+        localHost.toast(ct("jam.rowsEmpty"))
         return
       }
       store.dispatch({
         t: "batch",
         commands: toRemove.map((f) => ({ t: "removeFragment", trackId, fragId: f.id })),
-        label: "Clear rows",
+        label: ct("jam.clearRowsLabel"),
       })
-      localHost.toast(`Cleared ${selected.size} row${selected.size === 1 ? "" : "s"}`, {
+      localHost.toast(
+        selected.size === 1
+          ? ct("jam.clearedRowsOne", { n: String(selected.size) })
+          : ct("jam.clearedRows", { n: String(selected.size) }),
+        {
         undo: () => store.vanilla.getState().doc !== before && store.undo(),
       })
       return
     }
     store.dispatch({ t: "clearTrack", trackId })
-    localHost.toast("Cleared the jam", {
+    localHost.toast(ct("jam.clearedJam"), {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
@@ -285,7 +290,7 @@ export const PhraseJamImmersive = ({
   const tabs: DrawerTabDef[] = [
     {
       id: "grooves",
-      label: "Grooves",
+      label: ct("jam.grooves"),
       render: () => (
         <GroovesPanel
           store={store}
@@ -297,12 +302,12 @@ export const PhraseJamImmersive = ({
     },
     {
       id: "fx",
-      label: "Effects",
+      label: ct("jam.effects"),
       render: () => <TrackFxChain host={localHost} store={store} trackId={trackId} />,
     },
     {
       id: "mixer",
-      label: "Mixer",
+      label: ct("jam.mixer"),
       render: () => (
         <TrackMixer
           host={localHost}
@@ -328,7 +333,7 @@ export const PhraseJamImmersive = ({
             {/* Volume/Pan/Mute/Solo live in the Mixer drawer — header keeps a tiny Clear. */}
             <ClearButton
               onClear={onClear}
-              label={selected.size ? "Clear selected rows" : "Clear"}
+              label={selected.size ? ct("jam.clearSelectedRows") : ct("jam.clear")}
             />
           </div>
         </div>
@@ -338,11 +343,11 @@ export const PhraseJamImmersive = ({
           ref={ribbonRef}
           className={`bl-jam-ribbon${silent ? " is-silent" : ""}`}
           role="slider"
-          aria-label="Pitch bend"
+          aria-label={ct("jam.pitchBend")}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={50}
-          aria-valuetext="centre"
+          aria-valuetext={ct("jam.centre")}
           onPointerDown={onRibbonDown}
           onPointerMove={onRibbonMove}
           onPointerUp={onRibbonUp}
@@ -351,7 +356,7 @@ export const PhraseJamImmersive = ({
           <span className="bl-jam-ribbon-center" aria-hidden="true" />
           <span className="bl-jam-ribbon-thumb" aria-hidden="true" />
           <span className="bl-jam-ribbon-hint" aria-hidden="true">
-            {playing ? "Slide to bend the whole phrase" : "Press play, then slide to bend"}
+            {playing ? ct("jam.slideToBend") : ct("jam.pressPlayThenSlide")}
           </span>
         </div>
 
@@ -373,8 +378,8 @@ export const PhraseJamImmersive = ({
 
       {/* ---- the PIPELINE DRAWER (Grooves / Effects / Mixer) ---- */}
       <TrackDrawer
-        label="Phrase track pipeline"
-        tabsLabel="Phrase tools"
+        label={ct("jam.trackPipeline")}
+        tabsLabel={ct("jam.phraseTools")}
         tabs={tabs}
         activeTab={tab}
         onTab={openTab}

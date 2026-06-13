@@ -11,6 +11,7 @@
  */
 
 import { createRoot, type Root } from "react-dom/client"
+import { ct } from "../../i18n/strings"
 import { makeDeferredUnmount } from "../_shared/deferUnmount"
 import type {
   BeatloungeModule,
@@ -43,7 +44,7 @@ const resolveDrumTrackId = (
 export const createDrumPadsModule = ({ store, audio }: ModuleDeps): BeatloungeModule => ({
   id: DRUM_PADS_ID,
   kind: "instrument",
-  title: "Pads",
+  title: ct("pads.title"),
   glyph: "grid",
   immersive: "full",
   tileAspect: "square",
@@ -54,12 +55,12 @@ export const createDrumPadsModule = ({ store, audio }: ModuleDeps): BeatloungeMo
 
     const render = () => {
       if (!trackId) {
-        root.render(<div className="bl-grid-empty">No drum track.</div>)
+        root.render(<div className="bl-grid-empty">{ct("drums.noDrumTrackDot")}</div>)
         return
       }
       if (mount.surface === "tile") {
         root.render(
-          <DrumPadsTile store={store} audio={audio} trackId={trackId} title="Pads" />
+          <DrumPadsTile store={store} audio={audio} trackId={trackId} title={ct("pads.title")} />
         )
       } else {
         root.render(

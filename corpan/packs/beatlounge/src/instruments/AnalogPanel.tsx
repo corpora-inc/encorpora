@@ -15,6 +15,7 @@
  */
 
 import { useReducer, useRef } from "react"
+import { ct } from "../i18n/strings"
 import type { BeatloungeHost } from "../contracts/module"
 import type { BeatloungeStore } from "../store/store"
 import { useBeatloungeStore } from "../store/store"
@@ -61,7 +62,7 @@ export const AnalogPanel = ({ host, store, trackId }: Props) => {
   const liveRef = useRef<AnalogParams>({})
 
   if (!track || !isInstrumentTrack(track)) {
-    return <div className="bl-grid-empty">No melodic track.</div>
+    return <div className="bl-grid-empty">{ct("analog.noMelodicTrack")}</div>
   }
 
   const inst = track.instrument
@@ -134,9 +135,7 @@ export const AnalogPanel = ({ host, store, trackId }: Props) => {
     return (
       <div className="bl-synth">
         <div className="bl-synth-makeanalog">
-          <p className="bl-synth-makeanalog-copy">
-            Turn <strong>{track.name}</strong> into the analog synth.
-          </p>
+          <p className="bl-synth-makeanalog-copy">{ct("analog.makeAnalogCopy", { name: track.name })}</p>
           <div className="bl-synth-presetchips">
             {ANALOG_PRESET_NAMES.map((p) => (
               <button key={p} type="button" className="bl-chip" onClick={() => makeAnalog(p)}>
@@ -153,7 +152,7 @@ export const AnalogPanel = ({ host, store, trackId }: Props) => {
     <div className="bl-synth">
       {/* ---- preset picker ---- */}
       <div className="bl-synth-presets" data-bl-nocapture>
-        <span className="bl-synth-section-label">Preset</span>
+        <span className="bl-synth-section-label">{ct("analog.preset")}</span>
         <div className="bl-synth-presetchips">
           {ANALOG_PRESET_NAMES.map((p) => (
             <button

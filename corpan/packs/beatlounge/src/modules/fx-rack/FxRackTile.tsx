@@ -14,6 +14,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import { Glyph } from "../../bl-ui"
 import { EFFECT_SPECS } from "../../effects/params"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   store: BeatloungeStore
@@ -44,12 +45,12 @@ export const FxRackTile = ({ store }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="sliders" size={16} />
         </span>
-        <span className="bl-tile-title">Effects</span>
-        <span className="bl-tile-meta">{active} active</span>
+        <span className="bl-tile-title">{ct("fx.title")}</span>
+        <span className="bl-tile-meta">{ct("fx.activeCount", { n: String(active) })}</span>
       </div>
       <div className="bl-fxtile-tracks" aria-hidden="true">
         {withFx.length === 0 ? (
-          <span className="bl-fxtile-empty">No effects yet — tap to add inserts.</span>
+          <span className="bl-fxtile-empty">{ct("fx.tileEmpty")}</span>
         ) : (
           <>
             {rows.map((t) => {
@@ -74,7 +75,7 @@ export const FxRackTile = ({ store }: Props) => {
             })}
             {moreTracks > 0 && (
               <div className="bl-fxtile-sends">
-                +{moreTracks} more track{moreTracks === 1 ? "" : "s"}
+                {ct("fx.moreTracks", { n: String(moreTracks) })}
               </div>
             )}
           </>

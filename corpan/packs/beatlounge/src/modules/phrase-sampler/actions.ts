@@ -13,6 +13,7 @@
 
 import type { ActionContext, ActionResult, ModuleAction } from "../../contracts/module"
 import { buildSynthVoxClip, clipToCommands, type ClipMode } from "../../phrase/pipeline"
+import { ct } from "../../i18n/strings"
 
 const asMode = (v: unknown): ClipMode => (v === "scatter" ? "scatter" : "stack")
 
@@ -36,7 +37,7 @@ export const placePhraseTextAction: ModuleAction = {
     const text = String(params.text ?? "").trim()
     const lang = String(params.lang ?? "").trim()
     if (!text || !lang) {
-      return { commands: [], summary: "Need phrase text and a target language" }
+      return { commands: [], summary: ct("phrases.needTextAndLang") }
     }
     const mode = asMode(params.mode)
     const clip = buildSynthVoxClip({
@@ -49,10 +50,12 @@ export const placePhraseTextAction: ModuleAction = {
     const commands = clipToCommands(clip)
     return {
       commands: commands.length
-        ? [{ t: "batch", commands, label: `Place "${text}"` }]
+        ? [{ t: "batch", commands, label: ct("phrases.placeLabel", { text }) }]
         : [],
       summary:
-        mode === "stack" ? `Riff: "${text}"` : `Phrase: "${text}" (${clip.fragments.length} words)`,
+        mode === "stack"
+          ? ct("phrases.riffSummary", { text })
+          : ct("phrases.phraseSummary", { text, n: String(clip.fragments.length) }),
     }
   },
 }

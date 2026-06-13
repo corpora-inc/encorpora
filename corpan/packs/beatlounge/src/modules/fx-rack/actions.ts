@@ -9,6 +9,7 @@ import type { Command } from "../../model/command"
 import type { EffectKind } from "../../model/document"
 import { findTrack } from "../../model/document"
 import { EFFECT_KINDS, EFFECT_SPECS, defaultEffectParams } from "../../effects/params"
+import { ct } from "../../i18n/strings"
 
 /** Resolve the track this rack is bound to (else the first track). */
 const targetTrackId = (ctx: ActionContext): string | undefined =>
@@ -17,7 +18,7 @@ const targetTrackId = (ctx: ActionContext): string | undefined =>
 /** addInsert — append an effect of `kind` to the bound track's chain. */
 export const addInsertAction: ModuleAction = {
   name: "addInsert",
-  describe: "Add an effect to the end of the track's insert chain.",
+  describe: ct("fx.action.addInsert.describe"),
   params: {
     kind: {
       type: "enum",
@@ -29,7 +30,7 @@ export const addInsertAction: ModuleAction = {
   impact: "mutate",
   run(ctx, params): ActionResult {
     const trackId = targetTrackId(ctx)
-    if (!trackId) return { commands: [], summary: "No track" }
+    if (!trackId) return { commands: [], summary: ct("fx.noTrackShort") }
     const kind = (
       EFFECT_KINDS.includes(params.kind as EffectKind) ? params.kind : "filter"
     ) as EffectKind
@@ -41,7 +42,7 @@ export const addInsertAction: ModuleAction = {
           effect: { kind, enabled: true, params: defaultEffectParams(kind) },
         },
       ],
-      summary: `+${EFFECT_SPECS[kind].label}`,
+      summary: ct("fx.addedEffect", { name: EFFECT_SPECS[kind].label }),
     }
   },
 }
@@ -49,23 +50,23 @@ export const addInsertAction: ModuleAction = {
 /** clearInserts — remove every insert from the bound track. Destructive. */
 export const clearInsertsAction: ModuleAction = {
   name: "clearInserts",
-  describe: "Remove every effect from the track's insert chain.",
+  describe: ct("fx.action.clearInserts.describe"),
   params: {},
   impact: "destructive",
   run(ctx): ActionResult {
     const trackId = targetTrackId(ctx)
-    if (!trackId) return { commands: [], summary: "No track" }
+    if (!trackId) return { commands: [], summary: ct("fx.noTrackShort") }
     const track = findTrack(ctx.doc, trackId)
     const inserts = track?.inserts ?? []
-    if (inserts.length === 0) return { commands: [], summary: "No effects" }
+    if (inserts.length === 0) return { commands: [], summary: ct("fx.noEffects") }
     const commands: Command[] = inserts.map((fx) => ({
       t: "removeInsert",
       trackId,
       insertId: fx.id,
     }))
     return {
-      commands: [{ t: "batch", commands, label: "Clear effects" }],
-      summary: `Removed ${inserts.length} effects`,
+      commands: [{ t: "batch", commands, label: ct("fx.clearEffects") }],
+      summary: ct("fx.removedEffects", { n: String(inserts.length) }),
     }
   },
 }

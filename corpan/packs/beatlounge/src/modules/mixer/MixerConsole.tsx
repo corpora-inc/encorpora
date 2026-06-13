@@ -31,6 +31,7 @@ import { TrackFxChain } from "../fx-rack/TrackFxChain"
 import { PlayersPanel } from "../tweakers/PlayersPanel"
 import { useMeterPulse } from "./useMeterPulse"
 import { resolveTrackDeeplink, deeplinkLabel } from "./trackDeeplink"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   store: BeatloungeStore
@@ -74,7 +75,7 @@ export const MixerConsole = ({ store, audio, host }: Props) => {
 
         <div className="bl-mixstrip bl-mixstrip--master" data-bl-nocapture>
           <div className="bl-mixstrip-head">
-            <span className="bl-mixstrip-name">Master</span>
+            <span className="bl-mixstrip-name">{ct("mixer.master")}</span>
           </div>
           <div className="bl-mixstrip-controls">
             <div className="bl-mixstrip-body">
@@ -84,7 +85,7 @@ export const MixerConsole = ({ store, audio, host }: Props) => {
                 orientation={phone ? "horizontal" : "vertical"}
               />
               <LiveFader
-                label="Master volume"
+                label={ct("mixer.masterVolume")}
                 value={doc.masterVolume}
                 min={0}
                 max={1}
@@ -101,7 +102,7 @@ export const MixerConsole = ({ store, audio, host }: Props) => {
         </div>
       </div>
 
-      <section className="bl-mixer-players" aria-label="Players">
+      <section className="bl-mixer-players" aria-label={ct("mixer.players")}>
         <PlayersPanel host={host} store={store} embedded />
       </section>
     </div>
@@ -157,8 +158,8 @@ const ChannelStrip = ({
         <button
           type="button"
           className="bl-mixstrip-remove"
-          aria-label={`Remove ${track.name}`}
-          title="Remove track"
+          aria-label={ct("mixer.removeNamed", { name: track.name })}
+          title={ct("mixer.removeTrack")}
           onClick={() => store.dispatch({ t: "removeTrack", trackId: track.id })}
         >
           ×
@@ -173,7 +174,7 @@ const ChannelStrip = ({
             orientation={phone ? "horizontal" : "vertical"}
           />
           <LiveFader
-            label={`${track.name} volume`}
+            label={ct("mixer.trackVolume", { name: track.name })}
             value={track.volume}
             min={0}
             max={1}
@@ -190,7 +191,7 @@ const ChannelStrip = ({
         <div className="bl-mixstrip-side">
           <div className="bl-mixstrip-pan">
             <LiveFader
-              label="Pan"
+              label={ct("mixer.pan")}
               orientation="horizontal"
               value={track.pan}
               min={-1}
@@ -222,16 +223,19 @@ const ChannelStrip = ({
           onClick={onToggleFx}
         >
           <Glyph name="sliders" size={15} />
-          <span>FX{fxCount > 0 ? ` ${fxCount}` : ""}</span>
+          <span>{ct("mixer.fx")}{fxCount > 0 ? ` ${fxCount}` : ""}</span>
         </button>
         <button
           type="button"
           className="bl-mixstrip-act bl-mixstrip-open"
           onClick={openDetail}
-          aria-label={`Open ${deeplinkLabel(target.moduleId)} for ${track.name}`}
+          aria-label={ct("mixer.openFor", {
+            target: deeplinkLabel(target.moduleId),
+            name: track.name,
+          })}
         >
           <Glyph name="grid" size={15} />
-          <span>Open</span>
+          <span>{ct("mixer.open")}</span>
         </button>
       </div>
 

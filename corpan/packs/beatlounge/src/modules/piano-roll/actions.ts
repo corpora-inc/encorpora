@@ -15,6 +15,7 @@ import { findTrack, isInstrumentTrack } from "../../model/document"
 import { gridTicks, stepsInLoop, tickForStep } from "../../model/timing"
 import { euclidIndices } from "../../music/euclid"
 import { MAJOR_SCALE } from "./pitchModel"
+import { ct } from "../../i18n/strings"
 
 /** Resolve the melodic track: the bound track, else the first non-drum synth. */
 export const melodicTrackId = (ctx: ActionContext): string | undefined => {
@@ -33,12 +34,12 @@ export const clearAction: ModuleAction = {
   impact: "destructive",
   run(ctx): ActionResult {
     const trackId = melodicTrackId(ctx)
-    if (!trackId) return { commands: [], summary: "No melodic track" }
+    if (!trackId) return { commands: [], summary: ct("roll.noTrackSummary") }
     const track = findTrack(ctx.doc, trackId)
     const count = track && isInstrumentTrack(track) ? track.notes.length : 0
     return {
       commands: [{ t: "clearTrack", trackId }],
-      summary: count ? `Cleared ${count} notes` : "Already empty",
+      summary: count ? ct("roll.clearedNotes", { n: String(count) }) : ct("roll.alreadyEmpty"),
     }
   },
 }
@@ -71,13 +72,13 @@ export const arpeggiateAction: ModuleAction = {
   impact: "mutate",
   run(ctx, params): ActionResult {
     const trackId = melodicTrackId(ctx)
-    if (!trackId) return { commands: [], summary: "No melodic track" }
+    if (!trackId) return { commands: [], summary: ct("roll.noTrackSummary") }
     const track = findTrack(ctx.doc, trackId)
     if (!track || !isInstrumentTrack(track))
-      return { commands: [], summary: "No melodic track" }
+      return { commands: [], summary: ct("roll.noTrackSummary") }
 
     const steps = stepsInLoop(ctx.doc.loopLengthTicks, track.grid)
-    if (steps <= 0) return { commands: [], summary: "Empty loop" }
+    if (steps <= 0) return { commands: [], summary: ct("roll.emptyLoop") }
 
     const pulses = Math.max(1, Math.min(steps, Math.round(Number(params.pulses ?? 8))))
     const rotate = Math.max(0, Math.round(Number(params.rotate ?? 0)))
@@ -105,7 +106,7 @@ export const arpeggiateAction: ModuleAction = {
     })
 
     const commands: Command[] = [{ t: "setNotes", trackId, notes }]
-    return { commands, summary: `Arpeggio · ${notes.length} notes` }
+    return { commands, summary: ct("roll.arpeggio", { n: String(notes.length) }) }
   },
 }
 
@@ -126,14 +127,14 @@ export const transposeAction: ModuleAction = {
   impact: "mutate",
   run(ctx, params): ActionResult {
     const trackId = melodicTrackId(ctx)
-    if (!trackId) return { commands: [], summary: "No melodic track" }
+    if (!trackId) return { commands: [], summary: ct("roll.noTrackSummary") }
     const track = findTrack(ctx.doc, trackId)
     if (!track || !isInstrumentTrack(track))
-      return { commands: [], summary: "No melodic track" }
-    if (track.notes.length === 0) return { commands: [], summary: "Nothing to transpose" }
+      return { commands: [], summary: ct("roll.noTrackSummary") }
+    if (track.notes.length === 0) return { commands: [], summary: ct("roll.nothingToTranspose") }
 
     const semis = Math.round(Number(params.semitones ?? 12))
-    if (semis === 0) return { commands: [], summary: "No shift" }
+    if (semis === 0) return { commands: [], summary: ct("roll.noShift") }
 
     const commands: Command[] = track.notes.map((n) => ({
       t: "editNote",
@@ -143,8 +144,8 @@ export const transposeAction: ModuleAction = {
     }))
     const dir = semis > 0 ? "+" : ""
     return {
-      commands: [{ t: "batch", commands, label: "Transpose" }],
-      summary: `Transposed ${dir}${semis} st`,
+      commands: [{ t: "batch", commands, label: ct("roll.transposeLabel") }],
+      summary: ct("roll.transposed", { semis: `${dir}${semis}` }),
     }
   },
 }

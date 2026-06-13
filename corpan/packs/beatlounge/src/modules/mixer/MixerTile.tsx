@@ -10,6 +10,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import { Glyph, Meter } from "../../bl-ui"
 import { useMeterPulse } from "./useMeterPulse"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   store: BeatloungeStore
@@ -27,7 +28,7 @@ export const MixerTile = ({ store, audio }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="sliders" size={16} />
         </span>
-        <span className="bl-tile-title">Mixer</span>
+        <span className="bl-tile-title">{ct("mixer.title")}</span>
         <span className="bl-tile-meta">{doc.tracks.length}</span>
       </div>
       <div className="bl-mixtile" aria-hidden="true">

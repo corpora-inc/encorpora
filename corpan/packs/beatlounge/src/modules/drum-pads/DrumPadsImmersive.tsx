@@ -13,6 +13,7 @@
  */
 
 import { useMemo } from "react"
+import { ct } from "../../i18n/strings"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
@@ -47,7 +48,7 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
   )
 
   if (!track || !isInstrumentTrack(track)) {
-    return <div className="bl-grid-empty">No drum track.</div>
+    return <div className="bl-grid-empty">{ct("drums.noDrumTrackDot")}</div>
   }
 
   return (
@@ -66,14 +67,14 @@ export const DrumPadsImmersive = ({ host, store, audio, trackId }: Props) => {
               localHost.toast(r.summary, undefined)
             }}
           >
-            Randomize
+            {ct("pads.randomize")}
           </button>
           <ClearButton
             onClear={() => {
               const before = store.vanilla.getState().doc
               if (isInstrumentTrack(track) && track.notes.length === 0) return
               store.dispatch({ t: "clearTrack", trackId })
-              localHost.toast("Cleared pattern", {
+              localHost.toast(ct("pads.clearedPattern"), {
                 undo: () => store.vanilla.getState().doc !== before && store.undo(),
               })
             }}

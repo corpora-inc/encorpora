@@ -27,6 +27,7 @@ import type { ModuleDeps } from "../allModules"
 import { createAudioSource, type AudioSource } from "../../phrase/audioSource"
 import { PhraseScratchTile } from "./PhraseScratchTile"
 import { PhraseScratchImmersive } from "./PhraseScratchImmersive"
+import { ct } from "../../i18n/strings"
 import "./phrase-scratch.css"
 
 export const PHRASE_SCRATCH_ID = "phrase-scratch"
@@ -41,7 +42,7 @@ export const createPhraseScratchModule = ({
   return {
     id: PHRASE_SCRATCH_ID,
     kind: "browser",
-    title: "Scratch",
+    title: ct("scratch.title"),
     glyph: "wave",
     immersive: "full",
     tileAspect: "third",

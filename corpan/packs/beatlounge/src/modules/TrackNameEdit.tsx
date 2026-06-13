@@ -21,6 +21,7 @@ import { useEffect, useRef, useState } from "react"
 import type { BeatloungeStore } from "../store/store"
 import type { Id } from "../model/document"
 import { LONG_PRESS_MS, isDrag, type PressStart } from "./instruments/longPress"
+import { ct } from "../i18n/strings"
 import "./TrackNameEdit.css"
 
 interface Props {
@@ -100,7 +101,7 @@ export const TrackNameEdit = ({ store, trackId, name, color, className, onTap }:
             if (e.key === "Enter") commit()
             else if (e.key === "Escape") cancel()
           }}
-          aria-label="Track name"
+          aria-label={ct("trackStudio.trackName")}
           spellCheck={false}
           autoComplete="off"
         />
@@ -116,7 +117,7 @@ export const TrackNameEdit = ({ store, trackId, name, color, className, onTap }:
         className={cls}
         data-bl-nocapture
         title={name}
-        aria-label={`Rename ${name}`}
+        aria-label={ct("trackStudio.renameNamed", { name })}
         onClick={startEdit}
       >
         {color !== undefined && <span className="bl-dot" style={{ background: color }} />}
@@ -133,7 +134,7 @@ export const TrackNameEdit = ({ store, trackId, name, color, className, onTap }:
       className={cls}
       data-bl-nocapture
       title={name}
-      aria-label={`${name} — tap to switch, hold to rename`}
+      aria-label={ct("trackStudio.tapSwitchHoldRename", { name })}
       onPointerDown={(e) => {
         pressRef.current = { x: e.clientX, y: e.clientY, t: performance.now() }
         heldRef.current = false

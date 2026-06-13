@@ -6,6 +6,7 @@
  */
 
 import { memo } from "react"
+import { ct } from "../i18n/strings"
 
 export interface MeterProps {
   level: number
@@ -38,7 +39,7 @@ export const Meter = memo(function Meter({
     <div
       className={`bl-meter bl-meter--${orientation}`}
       role="meter"
-      aria-label={label ?? "Level"}
+      aria-label={label ?? ct("ui.level")}
       aria-valuemin={0}
       aria-valuemax={1}
       aria-valuenow={Number(clamped.toFixed(2))}

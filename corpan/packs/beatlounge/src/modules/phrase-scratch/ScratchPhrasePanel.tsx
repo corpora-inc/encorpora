@@ -19,6 +19,7 @@ import type { BeatloungeStore } from "../../store/store"
 import type { AudioSource } from "../../phrase/audioSource"
 import type { EntryOut } from "../../sdk/types"
 import { PhraseSamplerImmersive } from "../phrase-sampler/PhraseSamplerImmersive"
+import { ct } from "../../i18n/strings"
 import "../phrase-sampler/phrase-sampler.css"
 
 interface Props {
@@ -59,8 +60,8 @@ export const ScratchPhrasePanel = ({
   return (
     <div className="bl-scrphrase">
       {showDeckB && (
-        <div className="bl-scrphrase-aim" data-bl-nocapture role="group" aria-label="Load onto deck">
-          <span className="bl-scrphrase-aim-label">Load onto</span>
+        <div className="bl-scrphrase-aim" data-bl-nocapture role="group" aria-label={ct("scratch.loadOntoDeck")}>
+          <span className="bl-scrphrase-aim-label">{ct("scratch.loadOnto")}</span>
           {(["a", "b"] as const).map((d) => (
             <button
               key={d}
@@ -69,7 +70,7 @@ export const ScratchPhrasePanel = ({
               aria-pressed={loadDeck === d}
               onClick={() => onAimDeck(d)}
             >
-              Deck {d.toUpperCase()}
+              {ct("scratch.deck", { id: d.toUpperCase() })}
             </button>
           ))}
         </div>

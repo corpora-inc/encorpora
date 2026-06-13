@@ -25,6 +25,7 @@
 
 import { useRef, type MutableRefObject } from "react"
 import { pointerAngle, timeToSpiral, type WordSpan } from "./scratchMath"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   /**
@@ -158,8 +159,8 @@ export const Platter = ({
       ref={setRoot}
       className={`bl-scr-platter${active ? " is-active" : ""}`}
       role="slider"
-      aria-label="Scratch platter — drag to scratch the phrase"
-      aria-valuetext={active ? "scratching" : "ready"}
+      aria-label={ct("scratch.platter")}
+      aria-valuetext={active ? ct("scratch.scratching") : ct("scratch.ready")}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={end}

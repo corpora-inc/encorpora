@@ -21,14 +21,14 @@ import {
   planForCycle,
   summarize,
 } from "./songMath"
+import { ct } from "../../i18n/strings"
 
 const cycleIds = CYCLE_CATALOG.map((c) => c.id)
 
 /** loadCycle — set up a long world cycle (tala) in one move. */
 export const loadCycleAction: ModuleAction = {
   name: "loadCycle",
-  describe:
-    "Load a world rhythmic cycle (Indian tala, Balkan aksak, clave …): sets the loop length and a fitting meter together.",
+  describe: ct("song.action.loadCycle.describe"),
   params: {
     cycle: {
       type: "enum",
@@ -41,15 +41,19 @@ export const loadCycleAction: ModuleAction = {
   run(_ctx, params): ActionResult {
     const id = String(params.cycle ?? "teental")
     const cycle = findCycle(id)
-    if (!cycle) return { commands: [], summary: `Unknown cycle "${id}"` }
+    if (!cycle) return { commands: [], summary: ct("song.unknownCycle", { id }) }
     const plan = planForCycle(cycle)
     const commands: Command[] = [
       { t: "setMeter", tick: 0, sig: plan.sig },
       { t: "setLoopLength", ticks: plan.loopTicks },
     ]
     return {
-      commands: [{ t: "batch", commands, label: `Load ${cycle.name}` }],
-      summary: `${cycle.name} · ${plan.beats} beats · ${formatMeter(plan.sig)}`,
+      commands: [{ t: "batch", commands, label: ct("song.loadCycleLabel", { name: cycle.name }) }],
+      summary: ct("song.cycleSummary", {
+        name: cycle.name,
+        beats: String(plan.beats),
+        meter: formatMeter(plan.sig),
+      }),
     }
   },
 }
@@ -57,7 +61,7 @@ export const loadCycleAction: ModuleAction = {
 /** customCycle — set up an arbitrary N-beat cycle. */
 export const customCycleAction: ModuleAction = {
   name: "customCycle",
-  describe: "Set up a custom N-beat cycle (1..128) with a fitting meter.",
+  describe: ct("song.action.customCycle.describe"),
   params: {
     beats: {
       type: "int",
@@ -78,7 +82,10 @@ export const customCycleAction: ModuleAction = {
     ]
     return {
       commands: [{ t: "batch", commands, label: cycle.name }],
-      summary: `${plan.beats}-beat cycle · ${formatMeter(plan.sig)}`,
+      summary: ct("song.customCycleSummary", {
+        beats: String(plan.beats),
+        meter: formatMeter(plan.sig),
+      }),
     }
   },
 }
@@ -86,7 +93,7 @@ export const customCycleAction: ModuleAction = {
 /** setLoopBeats — set the loop length directly in beats of the current meter. */
 export const setLoopBeatsAction: ModuleAction = {
   name: "setLoopBeats",
-  describe: "Set the loop length in beats (up to 128) at the current meter.",
+  describe: ct("song.action.setLoopBeats.describe"),
   params: {
     beats: {
       type: "int",
@@ -104,7 +111,7 @@ export const setLoopBeatsAction: ModuleAction = {
     const ticks = beatsToTicks(beats, sig)
     return {
       commands: [{ t: "setLoopLength", ticks }],
-      summary: `Loop ${beats} beats`,
+      summary: ct("song.loopSummary", { beats: String(beats) }),
     }
   },
 }
@@ -112,7 +119,7 @@ export const setLoopBeatsAction: ModuleAction = {
 /** setMeterAction — set the song's initial meter. */
 export const setMeterAction: ModuleAction = {
   name: "setMeter",
-  describe: "Set the time signature (numerator 1..32, denominator 1/2/4/8/16).",
+  describe: ct("song.action.setMeter.describe"),
   params: {
     numerator: { type: "int", min: 1, max: 32, default: 4, describe: "Beats per bar." },
     denominator: {
@@ -130,7 +137,7 @@ export const setMeterAction: ModuleAction = {
     const sig = { numerator, denominator }
     return {
       commands: [{ t: "setMeter", tick: 0, sig }],
-      summary: `Meter ${formatMeter(sig)}`,
+      summary: ct("song.meterSummary", { meter: formatMeter(sig) }),
     }
   },
 }
@@ -138,7 +145,7 @@ export const setMeterAction: ModuleAction = {
 /** setTempoAction — set the global BPM. */
 export const setTempoAction: ModuleAction = {
   name: "setTempo",
-  describe: "Set the global tempo in beats per minute (20..300).",
+  describe: ct("song.action.setTempo.describe"),
   params: {
     bpm: { type: "int", min: 20, max: 300, default: 96, unit: "bpm", describe: "Tempo." },
   },
@@ -152,7 +159,7 @@ export const setTempoAction: ModuleAction = {
 /** setSwingAction — set the swing amount (0..0.66). */
 export const setSwingAction: ModuleAction = {
   name: "setSwing",
-  describe: "Set the swing amount (0 = straight, ~0.66 = heavy shuffle).",
+  describe: ct("song.action.setSwing.describe"),
   params: {
     amount: {
       type: "number",
@@ -168,7 +175,10 @@ export const setSwingAction: ModuleAction = {
     const amount = Math.max(0, Math.min(0.66, Number(params.amount ?? 0)))
     return {
       commands: [{ t: "setSwing", amount }],
-      summary: amount <= 0 ? "Straight" : `Swing ${Math.round(amount * 100)}%`,
+      summary:
+        amount <= 0
+          ? ct("song.straight")
+          : ct("song.swingSummary", { pct: String(Math.round(amount * 100)) }),
     }
   },
 }
@@ -176,7 +186,7 @@ export const setSwingAction: ModuleAction = {
 /** describeSong — read-only: report the current song setup (no commands). */
 export const describeSongAction: ModuleAction = {
   name: "describeSong",
-  describe: "Report the current song setup (loop, meter, tempo).",
+  describe: ct("song.action.describeSong.describe"),
   params: {},
   impact: "tweak",
   run(ctx: ActionContext): ActionResult {

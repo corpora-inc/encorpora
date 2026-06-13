@@ -16,6 +16,7 @@
  */
 
 import { useEffect, useMemo, useState } from "react"
+import { ct } from "../../i18n/strings"
 import type { AudioFacade } from "../../contracts/audioFacade"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
@@ -82,7 +83,7 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
       }
     )
     if (result.commands.length === 0) {
-      host.toast(result.summary || "Nothing to apply")
+      host.toast(result.summary || ct("grooves.nothingToApply"))
       return
     }
     store.dispatch({ t: "batch", commands: result.commands, label: generateAction.name })
@@ -132,14 +133,14 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
         type="button"
         className="bl-drumwidget-open"
         onClick={openDrums}
-        aria-label="Open Drums"
-        title="Open Drums"
+        aria-label={ct("drums.openDrums")}
+        title={ct("drums.openDrums")}
       >
         <span className="bl-tile-head">
           <span className="bl-tile-glyph">
             <Glyph name="grid" size={16} />
           </span>
-          <span className="bl-tile-title">Drums</span>
+          <span className="bl-tile-title">{ct("drums.title")}</span>
           {grooveName && (
             <span className="bl-drumwidget-groove" title={grooveName}>
               {grooveName}
@@ -176,14 +177,14 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
         <div
           className="bl-drumwidget-dial"
           role="group"
-          aria-label="Groove density — sparser or denser"
+          aria-label={ct("grooves.densityGroup")}
         >
           <button
             type="button"
             className="bl-drumwidget-btn"
             onClick={sparser}
-            aria-label="Sparser"
-            title="Sparser — a new, thinner beat (down to empty)"
+            aria-label={ct("grooves.sparser")}
+            title={ct("drums.sparserHint")}
           >
             <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
               <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
@@ -193,8 +194,8 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
             type="button"
             className="bl-drumwidget-btn is-primary"
             onClick={denser}
-            aria-label="Denser"
-            title="Denser — generate a fresh, fuller beat across the kit"
+            aria-label={ct("grooves.denser")}
+            title={ct("drums.denserHint")}
           >
             <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
               <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
@@ -207,8 +208,8 @@ export const DrumGrooveWidget = ({ host, store, audio, trackId }: Props) => {
           type="button"
           className="bl-drumwidget-btn bl-drumwidget-shuffle"
           onClick={shuffle}
-          aria-label="Shuffle a world groove"
-          title="Shuffle — a fresh world rhythm onto the kit"
+          aria-label={ct("drums.shuffle")}
+          title={ct("drums.shuffleHint")}
         >
           <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
             <path

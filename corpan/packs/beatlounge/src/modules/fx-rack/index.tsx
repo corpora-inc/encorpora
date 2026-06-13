@@ -22,6 +22,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { fxRackActions } from "./actions"
 import { FxRackTile } from "./FxRackTile"
 import { FxRackImmersive } from "./FxRackImmersive"
+import { ct } from "../../i18n/strings"
 import "./styles.css"
 
 export interface FxRackDeps {
@@ -43,7 +44,7 @@ export const createFxRackModule = ({ store, audio }: FxRackDeps): BeatloungeModu
   return {
     id: FX_RACK_ID,
     kind: "effect",
-    title: "Effects",
+    title: ct("fx.title"),
     glyph: "sliders",
     immersive: "full",
     tileAspect: "wide",
@@ -54,7 +55,7 @@ export const createFxRackModule = ({ store, audio }: FxRackDeps): BeatloungeModu
 
       const render = () => {
         if (!trackId) {
-          root.render(<div className="bl-grid-empty">No track.</div>)
+          root.render(<div className="bl-grid-empty">{ct("fx.noTrack")}</div>)
           return
         }
         if (mount.surface === "tile") {

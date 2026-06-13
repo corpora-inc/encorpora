@@ -9,6 +9,7 @@
  */
 
 import { createRoot, type Root } from "react-dom/client"
+import { ct } from "../../i18n/strings"
 import { makeDeferredUnmount } from "../_shared/deferUnmount"
 import type {
   BeatloungeHost,
@@ -65,15 +66,15 @@ const DrumsRoot = ({
     if (surface === "tile") {
       return (
         <button type="button" className="bl-drums-empty bl-drums-empty--tile" onClick={createDrums}>
-          <span className="bl-drums-empty-title">Add drum track</span>
+          <span className="bl-drums-empty-title">{ct("drums.addDrumTrack")}</span>
         </button>
       )
     }
     return (
       <div className="bl-drums-empty">
-        <p className="bl-drums-empty-title">No drum track</p>
+        <p className="bl-drums-empty-title">{ct("drums.noDrumTrack")}</p>
         <button type="button" className="bl-drums-empty-btn" onClick={createDrums}>
-          Create drum track
+          {ct("drums.createDrumTrack")}
         </button>
       </div>
     )
@@ -89,7 +90,7 @@ const DrumsRoot = ({
 export const createStepGridModule = ({ store, audio }: StepGridDeps): BeatloungeModule => ({
   id: STEP_GRID_ID,
   kind: "sequencer",
-  title: "Drums",
+  title: ct("drums.title"),
   glyph: "grid",
   immersive: "full",
   tileAspect: "twothirds",

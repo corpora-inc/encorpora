@@ -27,6 +27,7 @@
  */
 
 import { useMemo } from "react"
+import { ct } from "../../i18n/strings"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { Midi } from "../../model/document"
@@ -102,8 +103,8 @@ export const GroovesPanel = ({
     if (applyDisabled) {
       host.toast(
         hasPhraseTrack
-          ? "Save some phrases to lay on a groove."
-          : "Add a phrase track and save phrases first."
+          ? ct("grooves.savePhrasesToast")
+          : ct("grooves.addPhraseTrackToast")
       )
       return
     }
@@ -129,7 +130,7 @@ export const GroovesPanel = ({
         action.name,
         result.summary
       )
-      host.toast(result.summary || "Nothing to apply")
+      host.toast(result.summary || ct("grooves.nothingToApply"))
       return
     }
     // Apply atomically (single undo step).
@@ -151,7 +152,7 @@ export const GroovesPanel = ({
   const onSparser = () => runGroove(sparserAction)
 
   if (!selected) {
-    return <div className="bl-grid-empty">No rhythms available.</div>
+    return <div className="bl-grid-empty">{ct("grooves.noRhythms")}</div>
   }
 
   return (
@@ -162,14 +163,14 @@ export const GroovesPanel = ({
             <span className="bl-grooves-title-mark">
               <GrooveMark size={18} />
             </span>
-            Grooves
+            {ct("grooves.title")}
           </div>
         </div>
       )}
 
       <div className="bl-grooves-body">
         {/* ---- the browsable picker (only ~70 rhythms — no search needed) ---- */}
-        <div className="bl-grooves-picker" role="listbox" aria-label="World rhythms">
+        <div className="bl-grooves-picker" role="listbox" aria-label={ct("grooves.worldRhythmsAria")}>
           {groups.map((group) => (
             <section className="bl-grooves-family" key={group.family}>
               <h3 className="bl-grooves-family-label">
@@ -201,8 +202,8 @@ export const GroovesPanel = ({
             role="group"
             aria-label={
               target.kind === "phrases"
-                ? "Phrase density — sparser or denser"
-                : "Groove density — sparser or denser"
+                ? ct("grooves.phraseDensityGroup")
+                : ct("grooves.densityGroup")
             }
           >
             <button
@@ -211,7 +212,7 @@ export const GroovesPanel = ({
               onClick={onSparser}
               disabled={applyDisabled}
               aria-disabled={applyDisabled}
-              aria-label="Sparser"
+              aria-label={ct("grooves.sparser")}
             >
               <MinusGlyph />
             </button>
@@ -221,7 +222,7 @@ export const GroovesPanel = ({
               onClick={onDenser}
               disabled={applyDisabled}
               aria-disabled={applyDisabled}
-              aria-label="Denser"
+              aria-label={ct("grooves.denser")}
             >
               <PlusGlyph />
             </button>
@@ -279,20 +280,15 @@ const PhraseTargetHint = ({
   if (ready) {
     return (
       <p className="bl-grooves-target is-on" role="note">
-        Lays your <strong>{bankCount}</strong> saved phrase
-        {bankCount === 1 ? "" : "s"} onto this groove's onsets.
+        {ct("grooves.phraseHintLays", { n: String(bankCount) })}
       </p>
     )
   }
   return (
     <p className="bl-grooves-target" role="note">
-      {hasPhraseTrack ? (
-        <>
-          Save some phrases in <strong>Phrases</strong> to lay them on a groove.
-        </>
-      ) : (
-        <>Add a phrase track and save phrases to lay them on a groove.</>
-      )}
+      {hasPhraseTrack
+        ? ct("grooves.phraseHintSaveSome")
+        : ct("grooves.phraseHintAddTrack")}
     </p>
   )
 }
@@ -401,7 +397,7 @@ const RhythmDetail = ({ rhythm }: { rhythm: Rhythm }) => {
 
       {approx.length > 0 && (
         <details className="bl-grooves-approx">
-          <summary>Kit voice notes ({approx.length})</summary>
+          <summary>{ct("grooves.kitVoiceNotes", { n: String(approx.length) })}</summary>
           <ul>
             {approx.map((n, i) => (
               <li key={i}>{n}</li>

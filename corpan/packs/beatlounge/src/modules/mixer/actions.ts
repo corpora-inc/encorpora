@@ -5,21 +5,22 @@
 
 import type { ActionResult, ModuleAction } from "../../contracts/module"
 import type { Command } from "../../model/command"
+import { ct } from "../../i18n/strings"
 
 /** unsoloAll — drop every solo (escape "why is everything muted?"). */
 export const unsoloAllAction: ModuleAction = {
   name: "unsoloAll",
-  describe: "Clear solo on every track.",
+  describe: ct("mixer.action.unsoloAll.describe"),
   params: {},
   impact: "tweak",
   run(ctx): ActionResult {
     const commands: Command[] = ctx.doc.tracks
       .filter((t) => t.solo)
       .map((t) => ({ t: "setTrackProp", trackId: t.id, prop: "solo", value: false }))
-    if (commands.length === 0) return { commands: [], summary: "No solos" }
+    if (commands.length === 0) return { commands: [], summary: ct("mixer.noSolos") }
     return {
-      commands: commands.length === 1 ? commands : [{ t: "batch", commands, label: "Unsolo all" }],
-      summary: `Cleared ${commands.length} solo${commands.length === 1 ? "" : "s"}`,
+      commands: commands.length === 1 ? commands : [{ t: "batch", commands, label: ct("mixer.unsoloAll") }],
+      summary: ct("mixer.clearedSolos", { n: String(commands.length) }),
     }
   },
 }
@@ -27,17 +28,17 @@ export const unsoloAllAction: ModuleAction = {
 /** unmuteAll — un-mute every track. */
 export const unmuteAllAction: ModuleAction = {
   name: "unmuteAll",
-  describe: "Un-mute every track.",
+  describe: ct("mixer.action.unmuteAll.describe"),
   params: {},
   impact: "tweak",
   run(ctx): ActionResult {
     const commands: Command[] = ctx.doc.tracks
       .filter((t) => t.mute)
       .map((t) => ({ t: "setTrackProp", trackId: t.id, prop: "mute", value: false }))
-    if (commands.length === 0) return { commands: [], summary: "Nothing muted" }
+    if (commands.length === 0) return { commands: [], summary: ct("mixer.nothingMuted") }
     return {
-      commands: commands.length === 1 ? commands : [{ t: "batch", commands, label: "Unmute all" }],
-      summary: `Un-muted ${commands.length}`,
+      commands: commands.length === 1 ? commands : [{ t: "batch", commands, label: ct("mixer.unmuteAll") }],
+      summary: ct("mixer.unmuted", { n: String(commands.length) }),
     }
   },
 }

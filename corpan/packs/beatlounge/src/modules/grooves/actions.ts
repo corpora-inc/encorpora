@@ -22,6 +22,7 @@
  * Kept free of React so they're unit-testable in isolation.
  */
 
+import { ct } from "../../i18n/strings"
 import type { ActionContext, ActionResult, ModuleAction } from "../../contracts/module"
 import { getRhythm, RHYTHMS } from "../../rhythm"
 import { buildGrooveCommands, type GrooveBuildOpts, type GrooveTarget } from "./grooveModel"
@@ -138,14 +139,13 @@ const resolveRhythmId = (params: Record<string, unknown>): string =>
  */
 export const scatterAction: ModuleAction = {
   name: "scatter",
-  describe:
-    "Scatter a world rhythm (clave, samba, reggaetón, teental…) probabilistically across the selected rows; re-rolls every press. Leaves existing notes.",
+  describe: ct("grooves.scatterDescribe"),
   params: { ...sharedParams },
   stochastic: true,
   impact: "mutate",
   run(ctx, params): ActionResult {
     const r = getRhythm(resolveRhythmId(params))
-    if (!r) return { commands: [], summary: "Unknown rhythm" }
+    if (!r) return { commands: [], summary: ct("grooves.unknownRhythm") }
     const { commands, summary } = buildGrooveCommands(ctx.doc, r, buildOpts(params, ctx, false))
     return { commands, summary }
   },
@@ -158,14 +158,13 @@ export const scatterAction: ModuleAction = {
  */
 export const clearScatterAction: ModuleAction = {
   name: "clearScatter",
-  describe:
-    "Clear the targeted rows, then scatter the world rhythm across them probabilistically. Re-rolls every press.",
+  describe: ct("grooves.clearScatterDescribe"),
   params: { ...sharedParams },
   stochastic: true,
   impact: "mutate",
   run(ctx, params): ActionResult {
     const r = getRhythm(resolveRhythmId(params))
-    if (!r) return { commands: [], summary: "Unknown rhythm" }
+    if (!r) return { commands: [], summary: ct("grooves.unknownRhythm") }
     const { commands, summary } = buildGrooveCommands(ctx.doc, r, buildOpts(params, ctx, true))
     return { commands, summary }
   },
@@ -180,14 +179,13 @@ export const clearScatterAction: ModuleAction = {
  */
 export const denserAction: ModuleAction = {
   name: "denser",
-  describe:
-    "Layer one more probabilistic pass of the world rhythm onto the targeted rows — additive, gradually denser. Phrases land far sparser than drums.",
+  describe: ct("grooves.denserDescribe"),
   params: { ...sharedParams },
   stochastic: true,
   impact: "mutate",
   run(ctx, params): ActionResult {
     const r = getRhythm(resolveRhythmId(params))
-    if (!r) return { commands: [], summary: "Unknown rhythm" }
+    if (!r) return { commands: [], summary: ct("grooves.unknownRhythm") }
     const { commands, summary } = buildGrooveCommands(ctx.doc, r, buildDialOpts(params, ctx, "add"))
     return { commands, summary }
   },
@@ -203,8 +201,7 @@ export const denserAction: ModuleAction = {
  */
 export const generateAction: ModuleAction = {
   name: "generate",
-  describe:
-    "Generate a fresh stochastic drum beat across the whole kit at a density level — a brand-new musical beat every press, flavoured by the chosen world rhythm.",
+  describe: ct("grooves.generateDescribe"),
   params: {
     ...sharedParams,
     level: {
@@ -219,7 +216,7 @@ export const generateAction: ModuleAction = {
   impact: "mutate",
   run(ctx, params): ActionResult {
     const r = getRhythm(resolveRhythmId(params))
-    if (!r) return { commands: [], summary: "Unknown rhythm" }
+    if (!r) return { commands: [], summary: ct("grooves.unknownRhythm") }
     const { commands, summary } = buildGrooveCommands(ctx.doc, r, buildDialOpts(params, ctx, "generate"))
     return { commands, summary }
   },
@@ -233,14 +230,13 @@ export const generateAction: ModuleAction = {
  */
 export const sparserAction: ModuleAction = {
   name: "sparser",
-  describe:
-    "Thin the targeted rows — remove a fraction of the current hits (off-beat/quiet first), down to nothing. Pure; smaller bite than +.",
+  describe: ct("grooves.sparserDescribe"),
   params: { ...sharedParams },
   stochastic: false,
   impact: "mutate",
   run(ctx, params): ActionResult {
     const r = getRhythm(resolveRhythmId(params))
-    if (!r) return { commands: [], summary: "Unknown rhythm" }
+    if (!r) return { commands: [], summary: ct("grooves.unknownRhythm") }
     const { commands, summary } = buildGrooveCommands(ctx.doc, r, buildDialOpts(params, ctx, "remove"))
     return { commands, summary }
   },

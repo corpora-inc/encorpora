@@ -11,6 +11,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 import type { CommandBarController, CommandBarState } from "./controller"
 import { ActionsPicker } from "./ActionsPicker"
 import { sourceLabel } from "./actionCatalog"
@@ -74,7 +75,7 @@ export const CommandBar = ({ controller, onClose, placeholderExamples }: Command
   const previewing = state.phase === "preview"
 
   return (
-    <div className="bl-cmdbar" role="dialog" aria-label="Command bar" data-bl-nocapture>
+    <div className="bl-cmdbar" role="dialog" aria-label={ct("cmd.barAria")} data-bl-nocapture>
       <div className="bl-cmdbar-row">
         <span className="bl-cmdbar-glyph" aria-hidden>
           <Glyph name="command" size={18} />
@@ -84,23 +85,23 @@ export const CommandBar = ({ controller, onClose, placeholderExamples }: Command
           className="bl-cmdbar-input"
           type="text"
           value={text}
-          placeholder="Tell the loop what to do…"
+          placeholder={ct("cmd.launcherLabel")}
           autoComplete="off"
           spellCheck={false}
           disabled={thinking}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={onKeyDown}
-          aria-label="Describe a change"
+          aria-label={ct("cmd.describeChange")}
         />
         {thinking ? (
-          <span className="bl-cmdbar-spinner" aria-label="Thinking" />
+          <span className="bl-cmdbar-spinner" aria-label={ct("cmd.thinking")} />
         ) : (
           <button
             type="button"
             className="bl-cmdbar-go"
             onClick={() => submit(text)}
             disabled={!text.trim()}
-            aria-label="Run"
+            aria-label={ct("cmd.run")}
           >
             <Glyph name="play" size={16} />
           </button>
@@ -111,40 +112,40 @@ export const CommandBar = ({ controller, onClose, placeholderExamples }: Command
             className={`bl-cmdbar-browse${browsing ? " is-on" : ""}`}
             onClick={() => setBrowsing((b) => !b)}
             aria-pressed={browsing}
-            aria-label="Browse actions"
-            title="Browse actions"
+            aria-label={ct("cmd.browseActions")}
+            title={ct("cmd.browseActions")}
           >
             <Glyph name="grid" size={18} />
           </button>
         )}
         {onClose && (
-          <button type="button" className="bl-cmdbar-close" onClick={onClose} aria-label="Close">
+          <button type="button" className="bl-cmdbar-close" onClick={onClose} aria-label={ct("cmd.close")}>
             <Glyph name="chevron-down" size={18} />
           </button>
         )}
       </div>
 
       {previewing && state.result && (
-        <div className="bl-cmdbar-preview" role="group" aria-label="Preview">
+        <div className="bl-cmdbar-preview" role="group" aria-label={ct("cmd.preview")}>
           <div className="bl-cmdbar-summary">
             <strong>{state.result.summary}</strong>
-            <span className="bl-cmdbar-via">via {sourceLabel(state.result.source)}</span>
+            <span className="bl-cmdbar-via">{ct("cmd.via", { source: sourceLabel(state.result.source) })}</span>
           </div>
           <div className="bl-cmdbar-actions">
             <button type="button" className="bl-cmdbar-keep" onClick={() => controller.keep()}>
-              Keep
+              {ct("cmd.keep")}
             </button>
             <button
               type="button"
               className="bl-cmdbar-reroll"
               onClick={() => void controller.reroll()}
-              title="Try another take"
-              aria-label="Reroll"
+              title={ct("cmd.rerollHint")}
+              aria-label={ct("cmd.reroll")}
             >
               <Glyph name="redo" size={16} />
             </button>
             <button type="button" className="bl-cmdbar-undo" onClick={() => controller.cancel()}>
-              Undo
+              {ct("shell.undo")}
             </button>
           </div>
         </div>
@@ -157,7 +158,7 @@ export const CommandBar = ({ controller, onClose, placeholderExamples }: Command
       )}
 
       {!previewing && !thinking && !browsing && (
-        <div className="bl-cmdbar-chips" aria-label="Suggestions">
+        <div className="bl-cmdbar-chips" aria-label={ct("cmd.suggestions")}>
           {(state.recent.length ? state.recent : examples).map((c) => (
             <button
               key={c}

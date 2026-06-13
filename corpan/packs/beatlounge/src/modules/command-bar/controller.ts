@@ -22,6 +22,7 @@ import type { BeatloungeStore } from "../../store/store"
 import type { HostApi } from "../../sdk/types"
 import { createLlmGridRuntime, type GridRunResult, type LlmGridRuntime } from "../../llm/runtime"
 import { defaultParams } from "./actionCatalog"
+import { ct } from "../../i18n/strings"
 
 const LOG = "[bl/cmdbar]"
 const MAX_RECENT = 6
@@ -130,7 +131,7 @@ export const createCommandBarController = (
   const applyPreview = (result: GridRunResult) => {
     dropPreview()
     if (result.commands.length === 0) {
-      set({ phase: "idle", result: null, message: result.summary || "Nothing to change" })
+      set({ phase: "idle", result: null, message: result.summary || ct("cmd.nothingToChange") })
       return
     }
     const cmd: Command =
@@ -143,7 +144,7 @@ export const createCommandBarController = (
     } catch (e) {
       console.error(`${LOG} bus.preview threw:`, e)
       preview = null
-      set({ phase: "idle", result: null, message: "Could not apply that change" })
+      set({ phase: "idle", result: null, message: ct("cmd.couldNotApply") })
     }
   }
 
@@ -156,7 +157,7 @@ export const createCommandBarController = (
     } catch (e) {
       // The runtime is designed never to throw; this is belt-and-braces.
       console.error(`${LOG} runtime.run threw:`, e)
-      if (token === runToken) set({ phase: "idle", result: null, message: "Something went wrong" })
+      if (token === runToken) set({ phase: "idle", result: null, message: ct("cmd.somethingWentWrong") })
       return
     }
     if (token !== runToken) return // superseded by a newer submit
@@ -182,7 +183,7 @@ export const createCommandBarController = (
       built = action.run({ doc: current, rng }, params)
     } catch (e) {
       console.error(`${LOG} action "${moduleId}.${action.name}" threw:`, e)
-      set({ phase: "idle", result: null, message: "Could not run that" })
+      set({ phase: "idle", result: null, message: ct("cmd.couldNotRun") })
       return
     }
     const result: GridRunResult = {
@@ -225,7 +226,7 @@ export const createCommandBarController = (
 
     keep() {
       if (!preview) return
-      const summary = state.result?.summary ?? "Applied"
+      const summary = state.result?.summary ?? ct("cmd.applied")
       try {
         preview.keep()
       } catch (e) {

@@ -6,6 +6,7 @@
 
 import { useEffect } from "react"
 import { Glyph } from "./glyphs"
+import { ct } from "../i18n/strings"
 
 export interface TransportProps {
   playing: boolean
@@ -46,8 +47,8 @@ export const Transport = ({
       className={`bl-transport bl-transport--${size}${playing ? " is-playing" : ""}`}
       onClick={onToggle}
       aria-pressed={playing}
-      aria-label={playing ? "Stop" : "Play"}
-      title={playing ? "Stop (Space)" : "Play (Space)"}
+      aria-label={playing ? ct("shell.stop") : ct("shell.play")}
+      title={playing ? ct("ui.stopHint") : ct("ui.playHint")}
     >
       <Glyph name={playing ? "stop" : "play"} size={size === "lg" ? 26 : 22} />
     </button>

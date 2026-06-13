@@ -26,6 +26,7 @@ import { INSTRUMENTS_ID } from "../instruments"
 import { ribbonActions } from "./actions"
 import { RibbonWidget } from "./RibbonWidget"
 import { RibbonImmersive } from "./RibbonImmersive"
+import { ct } from "../../i18n/strings"
 import "./styles.css"
 
 export const RIBBON_ID = "ribbon"
@@ -46,7 +47,7 @@ const resolveMelodicTrackId = (
 export const createRibbonModule = ({ store, audio }: ModuleDeps): BeatloungeModule => ({
   id: RIBBON_ID,
   kind: "instrument",
-  title: "Ribbon",
+  title: ct("ribbon.title"),
   glyph: "wave",
   immersive: "full",
   // A comfortable play strip on the Stage — a live widget, not a summary.
@@ -67,7 +68,7 @@ export const createRibbonModule = ({ store, audio }: ModuleDeps): BeatloungeModu
       }
       const trackId = resolveMelodicTrackId(store, mount.trackId)
       if (!trackId) {
-        root.render(<div className="bl-grid-empty">No melodic track.</div>)
+        root.render(<div className="bl-grid-empty">{ct("ribbon.noMelodicTrack")}</div>)
         return
       }
       root.render(

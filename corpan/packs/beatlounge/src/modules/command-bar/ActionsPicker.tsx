@@ -14,6 +14,7 @@
 
 import { useMemo, useState } from "react"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 import type { ModuleAction } from "../../contracts/module"
 import type { CommandBarController } from "./controller"
 import {
@@ -113,7 +114,7 @@ const ActionRow = ({
         <button type="button" className="bl-picker-run" onClick={run} title={action.describe}>
           <span className="bl-picker-run-label">{action.name}</span>
           {action.stochastic && (
-            <span className="bl-picker-dice" aria-label="varies each run">
+            <span className="bl-picker-dice" aria-label={ct("cmd.variesEachRun")}>
               <Glyph name="redo" size={13} />
             </span>
           )}
@@ -124,7 +125,7 @@ const ActionRow = ({
             type="button"
             className="bl-picker-toggle"
             aria-expanded={open}
-            aria-label={open ? "Hide options" : "Options"}
+            aria-label={open ? ct("cmd.hideOptions") : ct("cmd.options")}
             onClick={() => setOpen((o) => !o)}
           >
             <Glyph name="sliders" size={16} />
@@ -160,7 +161,7 @@ export const ActionsPicker = ({ controller }: ActionsPickerProps) => {
   if (!registry || groups.length === 0) return null
 
   return (
-    <div className="bl-picker" role="group" aria-label="Browse actions">
+    <div className="bl-picker" role="group" aria-label={ct("cmd.browseActions")}>
       {groups.map((g) => (
         <section key={g.key} className="bl-picker-group">
           <h3 className="bl-picker-group-label">{g.label}</h3>

@@ -20,6 +20,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { mixerActions } from "./actions"
 import { MixerTile } from "./MixerTile"
 import { MixerConsole } from "./MixerConsole"
+import { ct } from "../../i18n/strings"
 import "./styles.css"
 // The mixer is now the HOME for per-track effects (the shared rack) + Players —
 // pull in their stylesheets directly so the console renders correctly even if
@@ -37,7 +38,7 @@ export const MIXER_ID = "mixer"
 export const createMixerModule = ({ store, audio }: MixerDeps): BeatloungeModule => ({
   id: MIXER_ID,
   kind: "mixer",
-  title: "Mixer",
+  title: ct("mixer.title"),
   glyph: "sliders",
   immersive: "full",
   tileAspect: "full",

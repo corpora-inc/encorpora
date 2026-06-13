@@ -32,6 +32,7 @@ import { EFFECT_KINDS, EFFECT_SPECS, defaultEffectParams } from "../../effects/p
 import { clearInsertsAction, addInsertAction } from "./actions"
 import { runAction } from "../runAction"
 import { FxChainView, type FxForm } from "./FxChainView"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   host: BeatloungeHost
@@ -51,7 +52,7 @@ export const TrackFxChain = ({ host, store, trackId, showSends = true }: Props) 
   const doc = useBeatloungeStore(store, (s) => s.doc)
 
   const track = findTrack(doc, trackId)
-  if (!track) return <div className="bl-grid-empty">No track.</div>
+  if (!track) return <div className="bl-grid-empty">{ct("fx.noTrack")}</div>
 
   // --- add (palette menu): one addInsert command (one undo step). The phone
   // quick-add goes through addInsertAction (a default filter), matching the
@@ -70,7 +71,7 @@ export const TrackFxChain = ({ host, store, trackId, showSends = true }: Props) 
     const fx = track.inserts.find((n) => n.id === id)
     const before = store.vanilla.getState().doc
     store.dispatch({ t: "removeInsert", trackId: track.id, insertId: id })
-    host.toast(`Removed ${fx ? EFFECT_SPECS[fx.kind].label : "effect"}`, {
+    host.toast(ct("fx.removed", { name: fx ? EFFECT_SPECS[fx.kind].label : ct("fx.effect") }), {
       undo: () => store.vanilla.getState().doc !== before && store.undo(),
     })
   }
@@ -84,7 +85,7 @@ export const TrackFxChain = ({ host, store, trackId, showSends = true }: Props) 
     const fx = track.inserts[idx]
     store.dispatch({
       t: "batch",
-      label: "Reorder effect",
+      label: ct("fx.reorderEffect"),
       commands: [
         { t: "removeInsert", trackId: track.id, insertId: fx.id },
         {
@@ -140,7 +141,7 @@ export const TrackFxChain = ({ host, store, trackId, showSends = true }: Props) 
         track.inserts.length > 0 ? (
           <div className="bl-fxchain-bar" data-bl-nocapture>
             <span className="bl-fxchain-count">
-              {track.inserts.length} effect{track.inserts.length === 1 ? "" : "s"}
+              {ct("fx.effectCount", { n: String(track.inserts.length) })}
             </span>
             <button
               type="button"
@@ -158,7 +159,7 @@ export const TrackFxChain = ({ host, store, trackId, showSends = true }: Props) 
                 }
               }}
             >
-              Clear
+              {ct("fx.clear")}
             </button>
           </div>
         ) : null
@@ -194,7 +195,7 @@ const SendKnob = ({
   const [live, setLive] = useState<number | null>(null)
   return (
     <Knob
-      label="Send"
+      label={ct("fx.send")}
       value={live ?? level}
       min={0}
       max={1}
@@ -240,7 +241,7 @@ const SendsPanel = ({
         mute: false,
       },
     })
-    host.toast("Added FX bus")
+    host.toast(ct("fx.addedBus"))
   }
 
   const sendFor = (busId: Id): Send | undefined =>
@@ -259,7 +260,7 @@ const SendsPanel = ({
       // dedicated level command; remove + add is the model-correct path).
       store.dispatch({
         t: "batch",
-        label: "Send level",
+        label: ct("fx.sendLevel"),
         commands: [
           { t: "removeSend", trackId: track.id, sendId: existing.id },
           { t: "addSend", trackId: track.id, send: { busId, level, preFader: existing.preFader } },
@@ -278,13 +279,13 @@ const SendsPanel = ({
   return (
     <div className="bl-fxsends" data-bl-nocapture>
       <div className="bl-fxsends-head">
-        <span className="bl-fxsends-title">Sends</span>
+        <span className="bl-fxsends-title">{ct("fx.sends")}</span>
         <button type="button" className="bl-chip" onClick={addBus}>
-          + Bus
+          {ct("fx.addBus")}
         </button>
       </div>
       {buses.length === 0 ? (
-        <span className="bl-fxtile-empty">No buses</span>
+        <span className="bl-fxtile-empty">{ct("fx.noBuses")}</span>
       ) : (
         <div className="bl-fxsends-rows">
           {buses.map((bus) => {
@@ -303,7 +304,7 @@ const SendsPanel = ({
                   <button
                     type="button"
                     className="bl-iconbtn is-danger"
-                    aria-label={`Remove send to ${bus.name}`}
+                    aria-label={ct("fx.removeSendTo", { name: bus.name })}
                     onClick={() => removeSend(bus.id)}
                   >
                     ✕

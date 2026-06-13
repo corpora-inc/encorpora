@@ -28,6 +28,7 @@ import { createScenesController, type ScenesController } from "./scenesControlle
 import { createScenesActions } from "./actions"
 import { ScenesTile } from "./ScenesTile"
 import { ScenesImmersive } from "./ScenesImmersive"
+import { ct } from "../../i18n/strings"
 import "./scenes.css"
 
 export interface ScenesDeps {
@@ -50,7 +51,7 @@ export const createScenesModule = ({ host }: ScenesDeps): BeatloungeModule => {
   return {
     id: SCENES_ID,
     kind: "arrangement",
-    title: "Scenes",
+    title: ct("scenes.title"),
     glyph: "drawer",
     immersive: "full",
     tileAspect: "square",

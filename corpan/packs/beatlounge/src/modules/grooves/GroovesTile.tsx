@@ -7,6 +7,7 @@
  * useSyncExternalStore sees a changed snapshot every render → blank tile.
  */
 
+import { ct } from "../../i18n/strings"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import { isInstrumentTrack } from "../../model/document"
@@ -31,15 +32,15 @@ export const GroovesTile = ({ store }: Props) => {
         <span className="bl-tile-glyph">
           <GrooveMark size={16} />
         </span>
-        <span className="bl-tile-title">Grooves</span>
+        <span className="bl-tile-title">{ct("grooves.title")}</span>
         <span className="bl-tile-meta">{drumHits}</span>
       </div>
       <div className="bl-grooves-tile-body">
         <div className="bl-grooves-tile-stat">
-          <strong>{RHYTHMS.length}</strong> world rhythms
+          <strong>{RHYTHMS.length}</strong> {ct("grooves.worldRhythms")}
         </div>
         <div className="bl-grooves-tile-hint">
-          Clave · samba · reggaetón · second-line · talas — Apply, Vary, Evolve.
+          {ct("grooves.tileHint")}
         </div>
       </div>
     </div>

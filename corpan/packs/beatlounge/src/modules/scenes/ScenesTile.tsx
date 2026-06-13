@@ -8,6 +8,7 @@
 import { Glyph } from "../../bl-ui"
 import type { ScenesController } from "./scenesController"
 import { useScenes } from "./scenesController"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   ctrl: ScenesController
@@ -25,7 +26,7 @@ export const ScenesTile = ({ ctrl }: Props) => {
         <span className="bl-tile-glyph">
           <Glyph name="drawer" size={16} />
         </span>
-        <span className="bl-tile-title">Scenes</span>
+        <span className="bl-tile-title">{ct("scenes.title")}</span>
         <span className="bl-tile-meta">{scenes.length || "—"}</span>
       </div>
 
@@ -35,13 +36,13 @@ export const ScenesTile = ({ ctrl }: Props) => {
             <span className="bl-scenes-tilename" title={active.name}>
               {active.name}
             </span>
-            {dirty && <span className="bl-scenes-dot" title="Unsaved changes" />}
+            {dirty && <span className="bl-scenes-dot" title={ct("scenes.unsavedChanges")} />}
           </div>
         ) : (
           <div className="bl-scenes-tilehint">
             {scenes.length
-              ? `${scenes.length} saved`
-              : "No scenes yet"}
+              ? ct("scenes.savedCount", { n: String(scenes.length) })
+              : ct("scenes.noScenesYet")}
           </div>
         )}
       </div>

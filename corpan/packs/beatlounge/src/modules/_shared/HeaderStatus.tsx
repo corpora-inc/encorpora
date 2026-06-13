@@ -16,6 +16,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 
 interface StatusState {
   id: number
@@ -79,8 +80,8 @@ export const HeaderStatusLine = ({ ctl }: { ctl: HeaderStatusController }) => {
         <button
           type="button"
           className="bl-hstatus-undo"
-          aria-label="Undo"
-          title="Undo"
+          aria-label={ct("shell.undo")}
+          title={ct("shell.undo")}
           onClick={() => {
             status.undo?.()
             ctl.dismiss()

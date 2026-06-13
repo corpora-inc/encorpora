@@ -19,6 +19,7 @@
  */
 
 import { useEffect, useMemo, useState } from "react"
+import { ct } from "../../i18n/strings"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
@@ -123,7 +124,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
   )
 
   if (!track || !isInstrumentTrack(track) || !view) {
-    return <div className="bl-grid-empty">No drum track.</div>
+    return <div className="bl-grid-empty">{ct("drums.noDrumTrackDot")}</div>
   }
   const itrack = track
 
@@ -161,7 +162,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
     if (rows.size > 0) {
       const toRemove = cur.notes.filter((n) => rows.has(n.pitch))
       if (toRemove.length === 0) {
-        localHost.toast("Those rows are empty")
+        localHost.toast(ct("drums.rowsEmpty"))
         return
       }
       store.dispatch({
@@ -169,7 +170,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
         commands: toRemove.map((n) => ({ t: "removeNote", trackId, noteId: n.id })),
         label: "Clear rows",
       })
-      localHost.toast(`Cleared ${rows.size} row${rows.size === 1 ? "" : "s"}`, {
+      localHost.toast(ct("drums.clearedRows", { n: String(rows.size) }), {
         undo: () => store.vanilla.getState().doc !== before && store.undo(),
       })
       return
@@ -190,7 +191,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
   const tabs: DrawerTabDef[] = [
     {
       id: "grooves",
-      label: "Grooves",
+      label: ct("grooves.title"),
       render: () => (
         <GroovesPanel
           store={store}
@@ -207,7 +208,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
     },
     {
       id: "pads",
-      label: "Pads",
+      label: ct("pads.title"),
       render: () => (
         <div className="bl-trackdrawer-pad">
           <DrumPadBank host={localHost} store={store} audio={audio} trackId={trackId} />
@@ -216,7 +217,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
     },
     {
       id: "kit",
-      label: "Kit",
+      label: ct("kits.title"),
       render: () => (
         <div className="bl-trackdrawer-pad">
           <KitPicker host={localHost} store={store} trackId={trackId} />
@@ -225,12 +226,12 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
     },
     {
       id: "fx",
-      label: "Effects",
+      label: ct("drums.tabEffects"),
       render: () => <TrackFxChain host={localHost} store={store} trackId={trackId} />,
     },
     {
       id: "mixer",
-      label: "Mixer",
+      label: ct("drums.tabMixer"),
       render: () => (
         <TrackMixer
           host={localHost}
@@ -258,7 +259,7 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
                 header carries only a tiny Clear (selected rows only, if any). */}
             <ClearButton
               onClear={clearGrid}
-              label={targets.pitches.length ? "Clear selected rows" : "Clear"}
+              label={targets.pitches.length ? ct("drums.clearSelectedRows") : ct("drums.clear")}
             />
           </div>
         </div>
@@ -281,8 +282,8 @@ export const StepGridImmersive = ({ host, store, audio, trackId }: Props) => {
 
       {/* ---- the PIPELINE DRAWER (Grooves / Kit / Effects / Mixer) ---- */}
       <TrackDrawer
-        label="Drum track pipeline"
-        tabsLabel="Drum tools"
+        label={ct("drums.pipelineLabel")}
+        tabsLabel={ct("drums.toolsLabel")}
         tabs={tabs}
         activeTab={tab}
         onTab={openTab}

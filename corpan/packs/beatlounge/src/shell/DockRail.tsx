@@ -9,6 +9,7 @@
 import { useState } from "react"
 import type { FormFactor } from "../contracts/module"
 import { Glyph, Meter, Transport } from "../bl-ui"
+import { ct } from "../i18n/strings"
 
 interface Props {
   form: FormFactor
@@ -53,8 +54,8 @@ export const DockRail = ({
       <button
         type="button"
         className="bl-icon-btn bl-rail-back"
-        aria-label="Back to Corpán"
-        title="Back to Corpán"
+        aria-label={ct("shell.back")}
+        title={ct("shell.back")}
         onClick={onExit}
       >
         <Glyph name="chevron-left" size={22} />
@@ -91,8 +92,8 @@ export const DockRail = ({
               e.preventDefault()
               onBpm(clampBpm(bpm + (e.deltaY > 0 ? -1 : 1)))
             }}
-            aria-label={`Tempo ${bpm} BPM`}
-            title="Tempo — click to type, wheel to nudge"
+            aria-label={ct("shell.tempoValue", { bpm: String(bpm) })}
+            title={ct("shell.tempoHint")}
           >
             <span className="bl-bpm-num">{bpm}</span>
             <span className="bl-bpm-unit">BPM</span>
@@ -104,7 +105,7 @@ export const DockRail = ({
         level={masterLevel}
         orientation={vertical ? "vertical" : "horizontal"}
         segments={vertical ? 14 : 10}
-        label="Master"
+        label={ct("shell.master")}
       />
 
       <div className="bl-rail-spacer" />
@@ -112,8 +113,8 @@ export const DockRail = ({
       <button
         type="button"
         className="bl-icon-btn"
-        aria-label="Undo"
-        title="Undo"
+        aria-label={ct("shell.undo")}
+        title={ct("shell.undo")}
         disabled={!canUndo}
         onClick={onUndo}
       >
@@ -122,8 +123,8 @@ export const DockRail = ({
       <button
         type="button"
         className="bl-icon-btn"
-        aria-label="Redo"
-        title="Redo"
+        aria-label={ct("shell.redo")}
+        title={ct("shell.redo")}
         disabled={!canRedo}
         onClick={onRedo}
       >
@@ -134,8 +135,8 @@ export const DockRail = ({
         <button
           type="button"
           className="bl-icon-btn bl-scenes-btn"
-          aria-label="Scenes"
-          title="Scenes — save and switch between complete states"
+          aria-label={ct("shell.scenes")}
+          title={ct("shell.scenesHint")}
           onClick={onScenes}
         >
           <Glyph name="drawer" size={20} />
@@ -145,8 +146,8 @@ export const DockRail = ({
       <button
         type="button"
         className="bl-icon-btn bl-cmd-btn"
-        aria-label="Command"
-        title="Reshape the loop with a word"
+        aria-label={ct("shell.command")}
+        title={ct("shell.commandHint")}
         onClick={onCommand}
       >
         <Glyph name="command" size={20} />

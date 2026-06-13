@@ -10,6 +10,7 @@
 import type { BeatloungeDoc } from "../../model/document"
 import { docHarmony } from "../../model/document"
 import { tonicLabel, modeById, displayChord } from "../composer/harmonyView"
+import { ct } from "../../i18n/strings"
 
 export interface HarmonySummary {
   /** Tonic name (e.g. "C", "F#"). */
@@ -26,7 +27,7 @@ export const harmonySummary = (doc: BeatloungeDoc): HarmonySummary => {
     const symbols = h.progression.map((c) => displayChord(c.symbol))
     const detail =
       symbols.length === 0
-        ? "No chords yet"
+        ? ct("harmony.noChordsYet")
         : symbols.slice(0, 4).join(" ") + (symbols.length > 4 ? " …" : "")
     return { tonic, detail }
   }

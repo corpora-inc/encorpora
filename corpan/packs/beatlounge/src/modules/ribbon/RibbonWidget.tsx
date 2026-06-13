@@ -18,6 +18,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import { useSelectedInstrument } from "../../store/selectedInstrument"
 import { InstrumentRibbon } from "../instrument-surface/InstrumentRibbon"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   host: BeatloungeHost
@@ -34,7 +35,7 @@ export const RibbonWidget = ({ host, store, audio }: Props) => {
   if (!trackId) {
     return (
       <div className="bl-tile-grid bl-ribbonwidget">
-        <div className="bl-grid-empty">No melodic track.</div>
+        <div className="bl-grid-empty">{ct("ribbon.noMelodicTrack")}</div>
       </div>
     )
   }

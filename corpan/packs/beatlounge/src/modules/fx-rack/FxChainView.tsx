@@ -39,6 +39,7 @@ import {
   exceedsMaxDelay,
   MAX_DELAY_SECONDS,
 } from "../../effects/noteLengths"
+import { ct } from "../../i18n/strings"
 
 /** Form factor — drives the phone quick-add shortcut. */
 export type FxForm = "phone" | "tablet" | "desktop"
@@ -135,7 +136,7 @@ export const FxChainView = ({
                 className="bl-chip"
                 onClick={() => setAdding(false)}
               >
-                Cancel
+                {ct("fx.cancel")}
               </button>
             </div>
           ) : (
@@ -144,7 +145,7 @@ export const FxChainView = ({
               className="bl-fxrack-addbtn"
               onClick={() => setAdding(true)}
             >
-              + Add effect
+              {ct("fx.addEffect")}
             </button>
           )}
         </div>
@@ -199,8 +200,8 @@ const EffectCard = ({
           type="button"
           className={`bl-fxcard-power${fx.enabled ? " is-on" : ""}`}
           aria-pressed={fx.enabled}
-          aria-label={fx.enabled ? "Bypass effect" : "Enable effect"}
-          title={fx.enabled ? "Bypass" : "Enable"}
+          aria-label={fx.enabled ? ct("fx.bypassEffect") : ct("fx.enableEffect")}
+          title={fx.enabled ? ct("fx.bypass") : ct("fx.enable")}
           onClick={() => onToggle(fx.id)}
         />
         <span className="bl-fxcard-name">{spec.label}</span>
@@ -208,7 +209,7 @@ const EffectCard = ({
           <button
             type="button"
             className="bl-iconbtn"
-            aria-label="Move up"
+            aria-label={ct("fx.moveUp")}
             disabled={index === 0}
             onClick={() => onMove(fx.id, -1)}
           >
@@ -217,7 +218,7 @@ const EffectCard = ({
           <button
             type="button"
             className="bl-iconbtn"
-            aria-label="Move down"
+            aria-label={ct("fx.moveDown")}
             disabled={index === count - 1}
             onClick={() => onMove(fx.id, 1)}
           >
@@ -226,7 +227,7 @@ const EffectCard = ({
           <button
             type="button"
             className="bl-iconbtn is-danger"
-            aria-label="Remove effect"
+            aria-label={ct("fx.removeEffect")}
             onClick={() => onRemove(fx.id)}
           >
             ✕
@@ -293,7 +294,7 @@ const NoteLengthRow = ({
   const active = closestNoteLengthId(seconds, bpm)
   return (
     <div className="bl-fxsync" data-bl-nocapture>
-      <span className="bl-fxsync-label">Sync</span>
+      <span className="bl-fxsync-label">{ct("fx.sync")}</span>
       <div className="bl-fxsync-chips">
         {NOTE_LENGTH_PRESETS.map((p) => {
           const over = exceedsMaxDelay(p.fraction, bpm, maxSeconds)
@@ -305,7 +306,7 @@ const NoteLengthRow = ({
               onClick={() => onPick(p.fraction)}
               disabled={over}
               aria-pressed={active === p.id}
-              title={over ? "Too long at this tempo" : undefined}
+              title={over ? ct("fx.tooLongAtTempo") : undefined}
             >
               {p.label}
             </button>

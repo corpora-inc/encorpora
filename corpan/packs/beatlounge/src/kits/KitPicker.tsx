@@ -17,6 +17,7 @@
  * targets, responsive grid, and `prefers-reduced-motion` honoured via CSS.
  */
 
+import { ct } from "../i18n/strings"
 import type { BeatloungeHost } from "../contracts/module"
 import type { BeatloungeStore } from "../store/store"
 import { useBeatloungeStore } from "../store/store"
@@ -54,7 +55,7 @@ export const KitPicker = ({ host, store, trackId }: Props) => {
     )
 
   if (!target || !isInstrumentTrack(target) || target.instrument.kind !== "drumSampler") {
-    return <div className="bl-kitpicker-empty">No drum track to re-kit.</div>
+    return <div className="bl-kitpicker-empty">{ct("kits.noDrumTrack")}</div>
   }
 
   const inst = target.instrument
@@ -70,7 +71,7 @@ export const KitPicker = ({ host, store, trackId }: Props) => {
       trackId: target.id,
       config: { ...inst, kitId: kit.id },
     })
-    host.toast(`Kit · ${kit.name}`)
+    host.toast(ct("kits.selectedToast", { name: kit.name }))
   }
 
   return (
@@ -153,8 +154,8 @@ const KitCard = ({
         onSelect()
         onPreview()
       }}
-      aria-label={`Preview ${kit.name}`}
-      title={`Preview ${kit.name}`}
+      aria-label={ct("kits.preview", { name: kit.name })}
+      title={ct("kits.preview", { name: kit.name })}
     >
       <PlayGlyph />
     </button>

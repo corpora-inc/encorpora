@@ -8,6 +8,7 @@ import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
 import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
 import { Glyph } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
 
 interface Props {
   store: BeatloungeStore
@@ -48,7 +49,7 @@ export const ComposerTile = ({ store, trackId, title }: Props) => {
             }}
           />
         ))}
-        {notes.length === 0 && <span className="bl-cmp-tile-empty">Tap to compose</span>}
+        {notes.length === 0 && <span className="bl-cmp-tile-empty">{ct("harmony.tapToCompose")}</span>}
       </div>
     </div>
   )

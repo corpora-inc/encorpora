@@ -14,6 +14,7 @@
 
 import { useRef, useState } from "react"
 import { createPortal } from "react-dom"
+import { ct } from "../../i18n/strings"
 import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import { useBeatloungeStore } from "../../store/store"
@@ -51,13 +52,13 @@ export const HarmonyWidget = ({ host, store }: Props) => {
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
         aria-expanded={open}
-        aria-label="Open harmony"
+        aria-label={ct("harmony.open")}
       >
         <span className="bl-tile-head">
           <span className="bl-tile-glyph">
             <Glyph name="wave" size={16} />
           </span>
-          <span className="bl-tile-title">Harmony</span>
+          <span className="bl-tile-title">{ct("harmony.title")}</span>
         </span>
         <span className="bl-harmonywidget-summary">
           <span className="bl-harmonywidget-tonic">{summary.tonic}</span>
@@ -77,15 +78,15 @@ export const HarmonyWidget = ({ host, store }: Props) => {
           <div
             className="bl-harmonywidget-pop"
             role="dialog"
-            aria-label="Harmony"
+            aria-label={ct("harmony.title")}
             aria-modal="true"
           >
             <div className="bl-harmonywidget-pophead">
-              <span className="bl-harmonywidget-poptitle">Harmony</span>
+              <span className="bl-harmonywidget-poptitle">{ct("harmony.title")}</span>
               <button
                 type="button"
                 className="bl-icon-btn"
-                aria-label="Close"
+                aria-label={ct("harmony.close")}
                 onClick={() => setOpen(false)}
               >
                 ✕
