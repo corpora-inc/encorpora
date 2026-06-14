@@ -1,0 +1,5 @@
+*.p8
+AuthKey_*
+.venv/
+__pycache__/
+creds.json
