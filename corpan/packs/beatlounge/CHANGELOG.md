@@ -5,6 +5,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- Catalog listing: add Javanese (jv), Sundanese (su) and Tagalog (tl)
+  `descriptionLocalized` strings, the three languages added app-wide in 0.18.1.
+  Music loan-words (beatlounge, scratch, deck, offline) stay international.
+  Catalog metadata is served OTA, so this needs no version bump.
+
 ## [0.2.1] - 2026-06-13
 
 _The right-to-left release: beatlounge now flips for Arabic, Hebrew, Persian and
