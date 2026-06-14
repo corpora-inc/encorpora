@@ -1,7 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { createHostApi } from "./hostApi"
-import type { ContentPackManifest, ContentPackModule } from "./types"
+import type {
+  ContentPackManifest,
+  ContentPackModule,
+  ContentPackEntitlementSnapshot,
+} from "./types"
 import { useEntitlementStore } from "@/store/entitlements"
 
 type LoadState = "idle" | "loading" | "ready" | "error"
@@ -13,18 +17,8 @@ type ContentPackHostProps = {
   entry?: { entryId?: number; source?: string; route?: string }
 }
 
-type ContentPackEntitlementSnapshot = {
-  plus: boolean
-  subjectId: string | null
-  entitlementToken: string | null
-  subscription: {
-    active: boolean
-    plan: "monthly" | "annual" | null
-    expiresAt: string | null
-    autoRenew: boolean
-  }
-  checkedAt: number | null
-}
+// `ContentPackEntitlementSnapshot` now lives in ./types (shared with the typed
+// `HostApi.entitlement` seam) so the global and the typed snapshot never drift.
 
 const DEV_RELOAD_INTERVAL_MS = 20000  // Poll every 2s for faster dev iteration
 

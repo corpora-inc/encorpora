@@ -11,7 +11,10 @@ import { createVoiceTTS } from "@/util/speak"
 import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
-import { useRatingStore } from "@/store/rating"
+import { useRatingStore, RATING_CRITERIA } from "@/store/rating"
+import { useEntitlementStore } from "@/store/entitlements"
+import { usePaywallStore } from "@/store/paywall"
+import type { PaywallSurface } from "@/store/paywall"
 import { usePhrasePacksStore } from "@/store/phrasePacks"
 import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
@@ -23,6 +26,7 @@ import type {
   AsrCaptureMode,
   AsrProvider,
   AsrSession,
+  ContentPackEntitlementSnapshot,
   HostApi,
   LlmApi,
   ModelBudget,
@@ -152,6 +156,27 @@ const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
     a.baseCorpusEnabled === b.baseCorpusEnabled &&
     a.scrollNavigationEnabled === b.scrollNavigationEnabled
   )
+}
+
+/**
+ * Build the entitlement snapshot handed to packs (via `HostApi.entitlement` AND
+ * the `__CORPAN_ENTITLEMENT` global). Single source of truth for the shape so
+ * the typed seam and the back-compat global never drift.
+ */
+export const buildEntitlementSnapshot = (): ContentPackEntitlementSnapshot => {
+  const s = useEntitlementStore.getState()
+  return {
+    plus: s.subscription.active,
+    subjectId: s.subjectId,
+    entitlementToken: s.entitlementToken,
+    subscription: {
+      active: s.subscription.active,
+      plan: s.subscription.plan,
+      expiresAt: s.subscription.expiresAt,
+      autoRenew: s.subscription.autoRenew,
+    },
+    checkedAt: s.lastRefreshed,
+  }
 }
 
 export const createHostApi = (packId?: string): HostApi => {
@@ -1091,6 +1116,64 @@ export const createHostApi = (packId?: string): HostApi => {
     },
     notifyUtterance: () => {
       useRatingStore.getState().incrementUtteranceCount()
+    },
+    entitlement: {
+      isSubscribed: () => useEntitlementStore.getState().subscription.active,
+      snapshot: () => buildEntitlementSnapshot(),
+      onChange: (cb) => {
+        let prev = useEntitlementStore.getState().subscription
+        // Fire on any change to the subscription / subject / token so packs
+        // see purchases, restores, and refreshes. Compares the fields that
+        // feed the snapshot to avoid spurious callbacks on unrelated writes.
+        return useEntitlementStore.subscribe((state) => {
+          const next = state.subscription
+          if (next !== prev) {
+            prev = next
+            cb(buildEntitlementSnapshot())
+          }
+        })
+      },
+    },
+    requestPaywall: async (context) => {
+      // Reuses the paywall store's own guards (subscribed / IAP unavailable /
+      // frequency-cap) and returns whether the sheet ACTUALLY opened — the
+      // synchronous truth a hard gate needs. Pack id defaults to this pack.
+      return usePaywallStore.getState().openPaywall({
+        surface: context.surface as PaywallSurface,
+        packId: context.packId ?? packId,
+        bookTitle: context.bookTitle,
+        bookId: context.bookId,
+        language: context.language,
+        theme: context.theme as import("@/store/paywall").PaywallTheme | undefined,
+      })
+    },
+    showRatingPrompt: () => {
+      // Host owns the gating: <RatingPrompt /> only renders once the rating
+      // store's criteria (utterance counts) are met. We nudge the counters to
+      // the eligibility thresholds WITHOUT bypassing them — if the user already
+      // rated / dismissed (or has exhausted remind-laters), nothing shows. This
+      // is the documented, pack-exit-friendly trigger.
+      const r = useRatingStore.getState()
+      if (
+        r.hasRated ||
+        r.hasDismissed ||
+        r.remindMeLaterCount >= RATING_CRITERIA.MAX_REMIND_COUNT
+      ) {
+        return
+      }
+      // incrementUtteranceCount() raises BOTH counters by one, so a bounded loop
+      // of at most MIN_UTTERANCES_BEFORE_FIRST_PROMPT iterations reaches both
+      // thresholds. The component's own `show` predicate is the final gate.
+      for (let i = 0; i < RATING_CRITERIA.MIN_UTTERANCES_BEFORE_FIRST_PROMPT; i++) {
+        const s = useRatingStore.getState()
+        if (
+          s.utterancesSinceLastPrompt >= RATING_CRITERIA.UTTERANCES_BETWEEN_PROMPTS &&
+          s.totalUtteranceCount >= RATING_CRITERIA.MIN_UTTERANCES_BEFORE_FIRST_PROMPT
+        ) {
+          break
+        }
+        s.incrementUtteranceCount()
+      }
     },
     phrasePacks: {
       getInstalled: () => {

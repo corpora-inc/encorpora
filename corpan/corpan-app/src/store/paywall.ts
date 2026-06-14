@@ -23,6 +23,17 @@ export type PaywallSurface =
   | "streak_milestone"
   | "book_finished"
   | "settings"
+  // Per-pack interaction-gated surfaces. Per-pack cadence (action-count /
+  // daily quota / time-armed) is owned pack-side by the shared paywall-gate
+  // helper; the 48h engagement cap below is only a GLOBAL BACKSTOP and does
+  // NOT apply to these (they are not in ENGAGEMENT_SURFACES).
+  | "beatlounge_session"
+  | "tutomaton_daily"
+  | "parlometron_daily"
+  | "hanzipan_chars"
+  | "hover_phrases"
+  | "phrase_flips"
+  | "juice_phrases"
   | "other"
 
 /** Auto-fired moments we frequency-cap (vs. user-initiated/strong-intent). */
@@ -54,6 +65,8 @@ export type PaywallTheme = "earthgate" | "stargate"
 
 export type PaywallContext = {
   surface: PaywallSurface
+  /** Pack that requested the paywall, when a pack triggered it (analytics). */
+  packId?: string
   /** Book title to name in the subhead, if the trigger knows it. */
   bookTitle?: string
   bookId?: string

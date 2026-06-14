@@ -494,6 +494,58 @@ export type HostVoiceInfo = {
   networkRequired?: boolean
 }
 
+/**
+ * Read-only snapshot of the host's Plus / subscription entitlement, handed to
+ * packs both via the `__CORPAN_ENTITLEMENT` global (back-compat) and the new
+ * typed `HostApi.entitlement` seam. Purely informational — packs decide what to
+ * gate; the host owns the actual purchase + paywall.
+ */
+export type ContentPackEntitlementSnapshot = {
+  /** Convenience flag: an active Corpán Plus subscription. */
+  plus: boolean
+  /** Anonymous per-install subject id (for server-side attribution). */
+  subjectId: string | null
+  /** Short-lived first-party entitlement token, when minted. */
+  entitlementToken: string | null
+  subscription: {
+    active: boolean
+    plan: "monthly" | "annual" | null
+    expiresAt: string | null
+    autoRenew: boolean
+  }
+  /** When the host last refreshed entitlement, if known. */
+  checkedAt: number | null
+}
+
+/**
+ * Where a pack is asking for the paywall. The host's paywall store defines the
+ * canonical union (`PaywallSurface`); packs may pass any of those OR a free
+ * string (forwarded to analytics) without taking a dependency on the host store.
+ */
+export type ContentPackPaywallContext = {
+  surface: string
+  packId?: string
+  bookTitle?: string
+  bookId?: string
+  language?: string
+  /** Visual skin hint (e.g. a reader passing its own theme). */
+  theme?: string
+}
+
+/**
+ * Typed host monetization seam. ADDITIVE + optional: packs that still read the
+ * `__CORPAN_PLUS` / `__CORPAN_ENTITLEMENT` globals and dispatch
+ * `corpan:request-unlock` keep working unchanged.
+ */
+export type HostEntitlementApi = {
+  /** Synchronous truth: is the user a Plus subscriber right now? */
+  isSubscribed: () => boolean
+  /** Full entitlement snapshot (same shape as the `__CORPAN_ENTITLEMENT` global). */
+  snapshot: () => ContentPackEntitlementSnapshot
+  /** Subscribe to entitlement changes; returns an unsubscribe function. */
+  onChange: (cb: (snapshot: ContentPackEntitlementSnapshot) => void) => () => void
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
@@ -537,6 +589,28 @@ export type HostApi = {
   history?: HostHistoryApi
   /** Feed the host's rating-prompt counter (host owns the actual prompt). */
   notifyUtterance?: () => void
+  /**
+   * Typed entitlement seam — the documented replacement for reading the
+   * `__CORPAN_PLUS` / `__CORPAN_ENTITLEMENT` globals (which still work). A pack
+   * uses `entitlement.isSubscribed()` to hard-gate synchronously, `snapshot()`
+   * for the full state, and `onChange()` to react to purchases/restores.
+   */
+  entitlement?: HostEntitlementApi
+  /**
+   * Ask the host to surface the Corpán Plus paywall at a natural interaction
+   * boundary. The host re-applies its own guards (subscribed / IAP unavailable /
+   * frequency-cap) and resolves to whether the paywall ACTUALLY opened — the
+   * synchronous truth a hard gate needs (`false` means "stay open / let them
+   * continue"). The documented replacement for dispatching `corpan:request-unlock`
+   * (which still works).
+   */
+  requestPaywall?: (context: ContentPackPaywallContext) => Promise<boolean>
+  /**
+   * Ask the host to consider showing its in-app rating prompt. The host re-gates
+   * via its rating-store criteria / OS throttle, so this is safe to call on a
+   * natural boundary (e.g. pack exit) and will no-op when not yet eligible.
+   */
+  showRatingPrompt?: () => void
   /** Installed phrase-pack registry (for source chips + enable/disable). */
   phrasePacks?: HostPhrasePacksApi
   getRandomEntry: () => Promise<EntryOut>
