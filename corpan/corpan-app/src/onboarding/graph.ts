@@ -1,6 +1,8 @@
 import { useSettingsStore, ALL_LEVELS } from "@/store/settings"
 import { useLandingStore } from "@/store/landing"
-import { trackOnboardingCompleted } from "@/util/analytics"
+import { useGamesStore } from "@/store/games"
+import { trackOnboardingCompleted, trackOnboardingLaunch } from "@/util/analytics"
+import { bestFitExperience } from "./bestFit"
 import type { OnboardingGraph, NodeCtx } from "./types"
 
 /** The phrase experience pack id (Phase 3). Until it exists as a pack, the
@@ -26,11 +28,38 @@ function commitDraft(ctx: NodeCtx) {
     ageBand: d.ageBand ?? "adult",
   })
   if (d.interests?.length) s.setInterests(d.interests)
-  // Everyone lands in the gentle guided tour, which introduces the top-ranked
-  // experiences and drops them into their first "Try it" (skippable → Home).
-  // The per-journey `d.landing` is retained only as a fallback if the tour has
-  // nothing to show (offline cold start).
-  useLandingStore.getState().setLanding({ kind: "tour" })
+
+  // ── The "aha moment": drop the user STRAIGHT into the single best-fit
+  // experience for what they told us, instead of the choice-overloaded Home
+  // (where low-agency users freeze and bounce). Reuses Home's own ranking.
+  // Power users who hit "Explore on my own" set `skipAutoLaunch` → we honor
+  // today's gentle guided-tour landing instead.
+  const fit = d.skipAutoLaunch
+    ? null
+    : bestFitExperience({
+        userClass: d.userClass ?? "learner",
+        interests: d.interests ?? [],
+        level: d.levels,
+        languages: useSettingsStore.getState().languages,
+        installedIds: Object.keys(useGamesStore.getState().games),
+      })
+
+  if (fit?.kind === "phrase") {
+    // App-native phrase experience overlay (no pack install needed).
+    useLandingStore.getState().setLanding({ kind: "experience", packId: PHRASE_PACK_ID })
+    trackOnboardingLaunch(PHRASE_PACK_ID)
+  } else if (fit?.kind === "pack") {
+    // Installed GA pack — App's landing consumer launches it via the same
+    // path Home uses (getGame → handleLaunchGame), and exit returns to Home.
+    useLandingStore.getState().setLanding({ kind: "experience", packId: fit.packId })
+    trackOnboardingLaunch(fit.packId)
+  } else {
+    // No confident best-fit (or the user chose to explore): fall back to the
+    // gentle guided tour, which introduces the top-ranked experiences and
+    // drops them into their first "Try it" (skippable → Home).
+    useLandingStore.getState().setLanding({ kind: "tour" })
+    trackOnboardingLaunch("home")
+  }
   if (d.preloadPacks?.length) {
     // Best-effort background preload; a host listener (Home) kicks the batch.
     window.dispatchEvent(

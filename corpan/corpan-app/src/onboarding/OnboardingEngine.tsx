@@ -34,6 +34,12 @@ export function OnboardingEngine() {
           key={node.id}
           onAdvance={g.advance}
           onBack={g.canBack ? g.back : undefined}
+          // Finish screen's "Explore on my own" escape: flag the draft so
+          // commitDraft skips the best-fit auto-launch, then advance to commit.
+          onAdvanceExplore={() => {
+            g.makeCtx().patch({ skipAutoLaunch: true })
+            g.advance()
+          }}
         />
       )
     }

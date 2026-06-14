@@ -7,6 +7,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Free-trial / intro-offer framing in the subscription card.** When the
+  store attaches an introductory offer to a plan (e.g. a 7-day free trial),
+  the subscription card now surfaces it: "{period} free, then {price}/{period}"
+  with a calm "No payment due now · cancel anytime" line, a tiny start →
+  first-charge timeline, and a "Start Free Trial" CTA. Paid intro offers
+  render "{intro price} for {period}, then {recurring}". When no offer is
+  configured (or the store is unreachable/offline), the card looks exactly as
+  before. Detection is automatic from store data — the trial lights up the
+  moment an offer is configured in App Store Connect / Play Console.
+
 ## [0.18.1] - 2026-06-13
 
 ### Added

@@ -18,6 +18,12 @@ export type StoreProduct = {
   currencyCode: string
   /** Raw price in micros (e.g., 3990000 = $3.99) */
   priceMicros?: number
+  /**
+   * Normalized introductory / free-trial offer the store attached to this
+   * base plan, or `null` when none is configured. The UI lights up trial
+   * framing when present and degrades to plain pricing when absent.
+   */
+  introOffer?: IntroOffer | null
 }
 
 export type PurchaseResult = {
@@ -196,6 +202,10 @@ type RawPricingPhase = {
   formattedPrice?: string
   priceCurrencyCode?: string
   priceAmountMicros?: number
+  /** ISO-8601 period for this phase, e.g. "P7D", "P1W", "P1M". */
+  billingPeriod?: string
+  /** How many cycles this phase repeats (Play `billingCycleCount` / iOS `periodCount`). */
+  billingCycleCount?: number
   recurrenceMode?: number
 }
 
@@ -227,6 +237,149 @@ function recurringPhaseFromOffers(p: RawProduct): RawPricingPhase | undefined {
   return phases[phases.length - 1]
 }
 
+// ---------------------------------------------------------------------------
+// Introductory / free-trial offer detection
+// ---------------------------------------------------------------------------
+
+/**
+ * Normalized intro offer surfaced to the UI. `null` when the store offers no
+ * intro for this product (the common case until a trial is configured in App
+ * Store Connect / Play Console). The UI must degrade to plain pricing.
+ */
+export type IntroOffer = {
+  kind: "free_trial" | "intro_price"
+  /** Human period for one intro cycle, e.g. "7 days", "1 week", "3 months". */
+  periodLabel: string
+  /** Localized intro price for a paid intro. Absent for a free trial. */
+  priceFormatted?: string
+  /** How many billing cycles the intro lasts (StoreKit `periodCount` / Play `billingCycleCount`). */
+  cycles: number
+}
+
+/**
+ * Parse an ISO-8601 subscription period (P7D / P1W / P1M / P1Y / P3M…) into a
+ * human label. Both StoreKit (via the iOS plugin's `formatSubscriptionPeriod`)
+ * and Play Billing emit this `P<n><unit>` form. We deliberately keep this to
+ * the single-unit periods stores actually use for subscriptions.
+ */
+export function periodLabelFromIso(iso: string | undefined): string {
+  if (!iso) return ""
+  const m = /^P(\d+)([DWMY])$/.exec(iso.trim())
+  if (!m) return iso
+  const n = Number(m[1])
+  const plural = n === 1 ? "" : "s"
+  switch (m[2]) {
+    case "D":
+      return `${n} day${plural}`
+    case "W":
+      return `${n} week${plural}`
+    case "M":
+      return `${n} month${plural}`
+    case "Y":
+      return `${n} year${plural}`
+    default:
+      return iso
+  }
+}
+
+/**
+ * A display price string represents "free" when it has no digits (e.g. "Free",
+ * "Gratis", "$0.00" → has digits so excluded). Used as the iOS fallback signal
+ * because the native plugin currently hardcodes `priceAmountMicros: 0` for
+ * every phase and does NOT surface StoreKit's `introOffer.paymentMode`
+ * (`.freeTrial`/`.payAsYouGo`/`.payUpFront`) — the canonical free-trial flag.
+ * See the iOS gap note in the task report.
+ */
+function isFreeDisplayPrice(formatted: string | undefined): boolean {
+  if (!formatted) return false
+  return !/\d/.test(formatted)
+}
+
+/**
+ * Extract a normalized intro offer from a raw store product, or `null`.
+ *
+ * Two wire shapes are handled (the native plugins normalize to a shared
+ * `subscriptionOfferDetails[].pricingPhases[]` envelope):
+ *
+ *  • Android (Play Billing): ONE offer whose `pricingPhases[]` lists intro
+ *    phase(s) FIRST and the recurring phase LAST. A phase with
+ *    `priceAmountMicros === 0` is a free trial; a cheaper-than-recurring paid
+ *    phase is an intro price. `priceAmountMicros` is authoritative.
+ *
+ *  • iOS (StoreKit, via tauri-plugin-iap): the intro lands in a SEPARATE
+ *    offer object (`subscriptionOfferDetails[0]`) ahead of the regular offer.
+ *    The plugin hardcodes `priceAmountMicros: 0` everywhere, so we fall back
+ *    to the `formattedPrice` string: a no-digit price ("Free") → free_trial,
+ *    otherwise intro_price. (Heuristic; see iOS gap note.)
+ */
+export function introOfferFromProduct(p: RawProduct): IntroOffer | null {
+  const offers = p.subscriptionOfferDetails
+  if (!offers || offers.length === 0) return null
+
+  // Flatten all phases across all offers in store order. Android packs them
+  // into offers[0] (intro phases first, recurring last); iOS splits intro
+  // (offers[0]) and regular (offers[1]). In BOTH shapes the recurring phase
+  // is the LAST phase overall, so we use that as the reference — NOT
+  // `recurringPhaseFromOffers` (offers[0].last), which would mistake the iOS
+  // intro phase for the recurring one.
+  const phases = offers.flatMap((o) => o.pricingPhases ?? [])
+  if (phases.length === 0) return null
+  const recurring = phases[phases.length - 1]
+
+  const recurringMicros = recurring?.priceAmountMicros
+  const recurringFormatted = recurring?.formattedPrice
+
+  // Candidate intro phases: anything that isn't the recurring phase and looks
+  // cheaper/free. We scan every phase except the final recurring one.
+  for (const phase of phases) {
+    if (phase === recurring) continue
+
+    const microsKnown = typeof phase.priceAmountMicros === "number"
+    const micros = phase.priceAmountMicros ?? 0
+
+    // Free trial: explicit zero micros (Android) OR a no-digit display price
+    // when micros are unreliable (iOS, which sends 0 for every phase).
+    const isFreeByMicros = microsKnown && micros === 0 && isFreeDisplayPrice(phase.formattedPrice)
+    const isFreeByDisplay = isFreeDisplayPrice(phase.formattedPrice)
+    if (isFreeByMicros || isFreeByDisplay) {
+      return {
+        kind: "free_trial",
+        periodLabel: periodLabelFromIso(phase.billingPeriod),
+        cycles: phase.billingCycleCount ?? 1,
+      }
+    }
+
+    // Paid intro: a priced phase that is strictly cheaper than the recurring
+    // price. On Android this is a clean micros compare. On iOS micros are 0
+    // for everything, so we additionally accept a phase whose formatted price
+    // differs from the recurring formatted price (the intro offer object).
+    const cheaperByMicros =
+      microsKnown &&
+      typeof recurringMicros === "number" &&
+      recurringMicros > 0 &&
+      micros > 0 &&
+      micros < recurringMicros
+    const differsByDisplay =
+      !!phase.formattedPrice &&
+      !!recurringFormatted &&
+      phase.formattedPrice !== recurringFormatted &&
+      !isFreeDisplayPrice(phase.formattedPrice)
+    // iOS: an intro phase living in its own (non-last) offer object is an
+    // intro by construction; trust the display price when micros are absent.
+    const isIosIntroObject = !microsKnown || (micros === 0 && recurringMicros === 0)
+    if (cheaperByMicros || (differsByDisplay && isIosIntroObject)) {
+      return {
+        kind: "intro_price",
+        periodLabel: periodLabelFromIso(phase.billingPeriod),
+        priceFormatted: phase.formattedPrice,
+        cycles: phase.billingCycleCount ?? 1,
+      }
+    }
+  }
+
+  return null
+}
+
 function normalizeProduct(p: RawProduct): StoreProduct {
   const recurring = recurringPhaseFromOffers(p)
   return {
@@ -236,6 +389,7 @@ function normalizeProduct(p: RawProduct): StoreProduct {
     price: p.formattedPrice ?? recurring?.formattedPrice ?? "",
     currencyCode: p.priceCurrencyCode ?? recurring?.priceCurrencyCode ?? "",
     priceMicros: p.priceAmountMicros ?? recurring?.priceAmountMicros,
+    introOffer: introOfferFromProduct(p),
   }
 }
 

@@ -29,7 +29,7 @@ const LINKS = [
     { key: "website", url: "https://encorpora.io", Icon: Globe, cls: LINK_ICON_CLS },
 ] as const;
 
-export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}) {
+export function OnboardingFinish({ onAdvance, onBack, onAdvanceExplore }: OnboardingStepProps = {}) {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
     const setOnboarded = useSettingsStore((s) => s.setOnboarded);
     const openPaywall = usePaywallStore((s) => s.openPaywall);
@@ -80,15 +80,29 @@ export function OnboardingFinish({ onAdvance, onBack }: OnboardingStepProps = {}
             setOnboarded(true);
         });
 
+    // "Explore on my own" escape for power users — completes onboarding but
+    // suppresses the best-fit auto-launch, landing on Home / the guided tour.
+    // Outside the engine (no engine prop) it's the same as advancing.
+    const explore = onAdvanceExplore ?? advance;
+
     return (
         <OnboardingShell
             canBack
             onBack={onBack ?? (() => setStep(4))}
             maxWidthClass="max-w-xl"
             footer={
-                <Button className="w-full !h-12" onClick={advance}>
-                    {t("onboarding.engage.start", { defaultValue: "Start exploring" })}
-                </Button>
+                <div className="w-full space-y-2">
+                    <Button className="w-full !h-12" onClick={advance}>
+                        {t("onboarding.engage.start", { defaultValue: "Start learning" })}
+                    </Button>
+                    <button
+                        type="button"
+                        onClick={explore}
+                        className="w-full py-2 text-center text-sm font-medium text-muted-foreground transition hover:text-foreground"
+                    >
+                        {t("onboarding.engage.explore", { defaultValue: "Explore on my own" })}
+                    </button>
+                </div>
             }
         >
             <h1 className="text-center text-2xl font-bold text-foreground">

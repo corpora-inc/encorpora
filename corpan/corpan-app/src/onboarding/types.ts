@@ -32,6 +32,9 @@ export type Draft = {
   /** Interest tags from the multi-select ("What do you want to do?"), used to
    *  rank experiences. Empty/undefined = skipped (no interest signal). */
   interests?: string[]
+  /** Set by the finish screen's "Explore on my own" escape — suppresses the
+   *  best-fit auto-launch so the user lands on Home / the guided tour instead. */
+  skipAutoLaunch?: boolean
 }
 
 /** Context handed to every node callback. */
@@ -132,6 +135,9 @@ export type OnboardingGraph = Record<NodeId, OnboardingNode>
 export type OnboardingStepProps = {
   onAdvance?: () => void
   onBack?: () => void
+  /** Finish-screen only: advance to commit but suppress the best-fit
+   *  auto-launch (the "Explore on my own" escape → land on Home/tour). */
+  onAdvanceExplore?: () => void
 }
 
 export function resolveNext(spec: NextSpec, ctx: NodeCtx): NodeId {

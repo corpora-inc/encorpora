@@ -179,6 +179,17 @@ export function trackOnboardingCompleted(): void {
   }
 }
 
+/** Fired when onboarding auto-launches a best-fit experience (the "aha
+ *  moment"). `target` is the launched pack id, or "home" when the user chose
+ *  to explore / no confident best-fit was found. */
+export function trackOnboardingLaunch(target: string): void {
+  try {
+    emit("app_onboarding_launch", { target })
+  } catch {
+    /* unreachable */
+  }
+}
+
 export function trackPaidUnlockViewed(surface: string, packId?: string): void {
   try {
     emit("app_paid_unlock_viewed", {

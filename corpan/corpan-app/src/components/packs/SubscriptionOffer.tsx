@@ -20,6 +20,7 @@ import {
   SUBSCRIPTION_ANNUAL,
   type AffiliateResolveResponse,
   type StoreProduct,
+  type IntroOffer,
 } from "@/contentPacks/purchase"
 
 const TERMS_URL = "https://encorpora.io/terms"
@@ -403,6 +404,26 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   const monthlyProduct = state.products.find((p) => p.productId === SUBSCRIPTION_MONTHLY)
   const annualProduct = state.products.find((p) => p.productId === SUBSCRIPTION_ANNUAL)
 
+  // Intro / free-trial framing for the CURRENTLY SELECTED plan. `null` (no
+  // offer configured / store gave none) → the card renders exactly as before.
+  const selectedProduct = selectedPlan === "annual" ? annualProduct : monthlyProduct
+  const selectedRecurringPrice = selectedProduct?.price ?? ""
+  const selectedPeriodLabel =
+    selectedPlan === "annual"
+      ? t("subscription.perYear", "year")
+      : t("subscription.perMonth", "month")
+  const intro: IntroOffer | null = selectedProduct?.introOffer ?? null
+  const hasFreeTrial = intro?.kind === "free_trial"
+  const hasIntroPrice = intro?.kind === "intro_price"
+
+  // CTA label: a free trial gets its own affirmative label; otherwise the
+  // existing Subscribe copy. Never "Continue".
+  const ctaLabel = isPurchasing
+    ? t("subscription.subscribing", "Subscribing...")
+    : hasFreeTrial
+      ? t("subscription.startFreeTrial", "Start Free Trial")
+      : t("subscription.subscribe", "Subscribe")
+
   // Annual savings vs paying monthly × 12 — computed from raw micros so it's
   // accurate and currency-agnostic (it's a ratio). Shown as a quiet, language-
   // neutral "−N%" badge to nudge the higher-LTV annual plan. Only when the
@@ -467,6 +488,68 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
           ) : null}
         </div>
 
+        {intro && intro.periodLabel ? (
+          <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 space-y-2.5">
+            {hasFreeTrial ? (
+              <>
+                <p className="text-sm font-semibold leading-snug">
+                  {t("subscription.trialHeadline", "{{period}} free", {
+                    period: intro.periodLabel,
+                  })}
+                  {selectedRecurringPrice ? (
+                    <span className="font-normal text-muted-foreground">
+                      {t("subscription.trialThenPrice", ", then {{price}}/{{period}}", {
+                        price: selectedRecurringPrice,
+                        period: selectedPeriodLabel,
+                      })}
+                    </span>
+                  ) : null}
+                </p>
+                {/* Calm reassurance line — no payment now, cancel anytime. */}
+                <p className="text-[11px] font-medium text-muted-foreground">
+                  {t(
+                    "subscription.trialReassurance",
+                    "No payment due now · cancel anytime"
+                  )}
+                </p>
+                {/* Tiny visual timeline: start today → first charge → cancel. */}
+                <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {t("subscription.trialToday", "Today: start")}
+                  </span>
+                  <span className="h-px flex-1 bg-border" />
+                  <span className="flex items-center gap-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/50" />
+                    {t("subscription.trialFirstCharge", "{{period}}: first charge", {
+                      period: intro.periodLabel,
+                    })}
+                  </span>
+                </div>
+              </>
+            ) : hasIntroPrice ? (
+              <p className="text-sm font-semibold leading-snug">
+                {t(
+                  "subscription.introPriceHeadline",
+                  "{{introPrice}} for {{period}}",
+                  {
+                    introPrice: intro.priceFormatted ?? "",
+                    period: intro.periodLabel,
+                  }
+                )}
+                {selectedRecurringPrice ? (
+                  <span className="font-normal text-muted-foreground">
+                    {t("subscription.introPriceThen", ", then {{price}}/{{period}}", {
+                      price: selectedRecurringPrice,
+                      period: selectedPeriodLabel,
+                    })}
+                  </span>
+                ) : null}
+              </p>
+            ) : null}
+          </div>
+        ) : null}
+
         {SHOW_AFFILIATE_CODE_FIELD ? (
         <label className="block space-y-1.5">
           <span className="text-xs font-medium">
@@ -506,9 +589,7 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
           className="w-full !h-11 md:!h-14"
           size="sm"
         >
-          {isPurchasing
-            ? t("subscription.subscribing", "Subscribing...")
-            : t("subscription.subscribe", "Subscribe")}
+          {ctaLabel}
         </Button>
 
         {restoreInline}
