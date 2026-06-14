@@ -46,6 +46,10 @@ interface Props {
   host: BeatloungeHost
   /** Lets App wire the live chrome callbacks into the host it already built. */
   attachChrome: (chrome: ShellChromeApi) => void
+  /** Fired on each discrete user UI interaction (any tap inside the shell), so
+   *  the rig's time-armed paywall gate can surface on the next tap past the
+   *  interval. Optional so tests can omit it. */
+  onUserInteraction?: () => void
   skin?: "midnight" | "noir" | "aurora"
 }
 
@@ -55,6 +59,7 @@ export const Shell = ({
   registry,
   host,
   attachChrome,
+  onUserInteraction,
   skin = "midnight",
 }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
@@ -147,8 +152,28 @@ export const Shell = ({
 
   const chromeState = immersiveId ? "immersive" : "stage"
 
+  // Feed the time-armed paywall gate on each discrete user UI interaction. ONE
+  // capture-phase pointerdown listener on the shell root covers every tappable
+  // surface (transport, tile taps, dock actions) without touching individual
+  // handlers and — crucially — without ever stopping playback or interrupting
+  // an in-progress gesture. The gate's interval + session cap own the cadence.
+  const rootRef = useRef<HTMLDivElement | null>(null)
+  useEffect(() => {
+    const el = rootRef.current
+    if (!el || !onUserInteraction) return
+    const onDown = () => onUserInteraction()
+    el.addEventListener("pointerdown", onDown, { capture: true })
+    return () => el.removeEventListener("pointerdown", onDown, { capture: true })
+  }, [onUserInteraction])
+
   return (
-    <div className="bl-root bl-shell" dir={uiDir()} data-skin={skin} data-bl-chrome={chromeState}>
+    <div
+      ref={rootRef}
+      className="bl-root bl-shell"
+      dir={uiDir()}
+      data-skin={skin}
+      data-bl-chrome={chromeState}
+    >
       {/* ---- Stage: calm canvas of placed module tiles ---- */}
       <main className={`bl-stage bl-stage--${form}`}>
         <div className="bl-stage-head">

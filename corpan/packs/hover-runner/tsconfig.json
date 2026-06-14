@@ -17,6 +17,7 @@
     "paths": {
       "@shared/ui": ["../shared/ui/index.ts"],
       "@shared/state": ["../shared/state/index.ts"],
+      "@shared/monetization": ["../shared/monetization/index.ts"],
       "zustand": ["./node_modules/zustand/index.d.ts"],
       "zustand/*": ["./node_modules/zustand/*"]
     }

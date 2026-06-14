@@ -19,6 +19,7 @@
  */
 
 import "./chat.css"
+import { createPaywallGate, type PaywallGate } from "@shared/monetization"
 import {
   LanguageManager,
   type HostApi,
@@ -73,8 +74,10 @@ type ContentPackModule = {
 }
 
 const PACK_ID = "tutomaton"
+// Free daily message cap, enforced by the shared paywall gate (daily/hard mode).
+// A free user gets this many tutor messages per local day, then is BLOCKED
+// until tomorrow or subscribe — intentionally a hard cap that pulls them back.
 const FREE_DAILY_LIMIT = 20
-const QUOTA_KEY = "tutomaton.quota"
 
 type Msg = { role: "user" | "assistant"; content: string }
 
@@ -84,16 +87,6 @@ type State = {
   activeLanguage: LanguageRuntime | null
   currentStreamId: string | null
   cancelStream: (() => Promise<void>) | null
-}
-
-let memoryQuota: { day: string; count: number } | null = null
-
-function localDay(): string {
-  const now = new Date()
-  const yyyy = String(now.getFullYear())
-  const mm = String(now.getMonth() + 1).padStart(2, "0")
-  const dd = String(now.getDate()).padStart(2, "0")
-  return `${yyyy}-${mm}-${dd}`
 }
 
 function isPlus(initial?: MountInit): boolean {
@@ -109,39 +102,6 @@ function isPlus(initial?: MountInit): boolean {
       injected.__CORPAN_ENTITLEMENT?.plus ||
       injected.__CORPAN_ENTITLEMENT?.subscription?.active
   )
-}
-
-function readQuota(): { day: string; count: number } {
-  const day = localDay()
-  try {
-    const parsed = JSON.parse(localStorage.getItem(QUOTA_KEY) || "{}") as {
-      day?: string
-      count?: number
-    }
-    const storedCount = parsed.day === day ? Math.max(0, parsed.count ?? 0) : 0
-    const memoryCount = memoryQuota?.day === day ? memoryQuota.count : 0
-    return { day, count: Math.max(storedCount, memoryCount) }
-  } catch {
-    return memoryQuota?.day === day ? memoryQuota : { day, count: 0 }
-  }
-}
-
-function quotaRemaining(plus: boolean): number {
-  if (plus) return Infinity
-  const quota = readQuota()
-  return Math.max(0, FREE_DAILY_LIMIT - quota.count)
-}
-
-function consumeQuota(plus: boolean): void {
-  if (plus) return
-  const quota = readQuota()
-  const next = { day: quota.day, count: Math.min(FREE_DAILY_LIMIT, quota.count + 1) }
-  memoryQuota = next
-  try {
-    localStorage.setItem(QUOTA_KEY, JSON.stringify(next))
-  } catch {
-    /* memoryQuota carries this session if WebKit storage is unavailable/full */
-  }
 }
 
 // ============================================================
@@ -307,6 +267,23 @@ const PackModule: ContentPackModule = {
     }
     let plus = isPlus(initialState)
     const disposers: Array<() => void> = []
+
+    // Daily message quota → shared paywall gate. `daily` resets the count each
+    // local day (the DAU lever); `hard` blocks once the free limit is reached
+    // until tomorrow or subscribe. Subscriber state tracks the live `plus`
+    // (seeded from mount-time injection, updated by corpan:entitlement-changed),
+    // since the host passes Plus via initialState — not only the globals the
+    // gate default reads. Persists under corpan:gate:tutomaton:tutomaton_daily
+    // (migrated off the old `tutomaton.quota` key — a fresh day's count either way).
+    const quotaGate: PaywallGate = createPaywallGate({
+      packId: PACK_ID,
+      surface: "tutomaton_daily",
+      mode: "daily",
+      limit: FREE_DAILY_LIMIT,
+      hardness: "hard",
+      isSubscribed: () => plus,
+    })
+    disposers.push(() => quotaGate.dispose())
 
     const baseUrl = readPackBaseUrl()
     const packFetch = (rel: string) => fetch(proxied(joinUrl(baseUrl, rel)), { cache: "no-store" })
@@ -1391,19 +1368,25 @@ const PackModule: ContentPackModule = {
     let dictateStarting = false
     let dictateStopping = false
 
+    // Messages left today, for the composer's quota line. `null` (timed gates)
+    // never happens here (daily mode), so coalesce to 0 defensively.
+    const quotaLeft = (): number => quotaGate.remaining() ?? 0
+    // Free user has hit today's hard cap (subscribers never block).
+    const quotaBlocked = (): boolean => quotaGate.isBlocked()
+
     function renderQuota() {
-      const remaining = quotaRemaining(plus)
+      const remaining = quotaLeft()
       $quota.textContent = plus
         ? t("quotaPlus")
         : t("quotaFree", { count: String(remaining) })
       $quota.classList.toggle("is-plus", plus)
-      $quota.classList.toggle("is-empty", !plus && remaining <= 0)
-      $inputBar.classList.toggle("is-quota-empty", !plus && remaining <= 0)
+      $quota.classList.toggle("is-empty", quotaBlocked())
+      $inputBar.classList.toggle("is-quota-empty", quotaBlocked())
     }
 
     function syncSendEnabled() {
       const hasText = $text.value.trim().length > 0
-      const quotaOpen = quotaRemaining(plus) > 0
+      const quotaOpen = !quotaBlocked()
       $text.disabled = !quotaOpen
       $send.disabled = !modelReady || !hasText || !!state.currentStreamId || !quotaOpen
       if (!quotaOpen) {
@@ -1445,7 +1428,7 @@ const PackModule: ContentPackModule = {
       $mic.setAttribute("aria-label", on ? "Stop dictation" : "Dictate")
     }
     async function startDictation() {
-      if (dictateStarting || dictateLive || quotaRemaining(plus) <= 0) {
+      if (dictateStarting || dictateLive || quotaBlocked()) {
         syncSendEnabled()
         return
       }
@@ -1541,7 +1524,10 @@ const PackModule: ContentPackModule = {
 
     async function send(text: string) {
       if (!text.trim() || state.currentStreamId || !state.activeLanguage || !modelReady) return
-      if (quotaRemaining(plus) <= 0) {
+      if (quotaBlocked()) {
+        // Hard daily cap reached: surface the paywall (the gate fires it when
+        // armed) and don't send. Free messages return tomorrow, or with Plus.
+        quotaGate.onInteraction()
         syncSendEnabled()
         systemNote(t("quotaEmptyNote"))
         return
@@ -1550,7 +1536,7 @@ const PackModule: ContentPackModule = {
       const turnSpeechEpoch = speechEpoch
       const userText = text.trim()
       const lang = state.activeLanguage
-      consumeQuota(plus)
+      quotaGate.note()
       state.messages.push({ role: "user", content: userText })
       bubble("user", userText)
       $text.value = ""

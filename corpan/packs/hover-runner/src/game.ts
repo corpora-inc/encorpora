@@ -89,6 +89,7 @@ import { createPhraseSurfaceEffects } from "./rendering/phraseSurfaceEffects"
 import { createSuccessParticles, createFailParticles, createScreenShake, clearAllParticleTimeouts, createAmbientParticles, createStarfieldParticles, createEnergyFieldParticles, createSpeedLines } from "./systems/particles"
 import { createScoreAnimator } from "./ui/scoreAnimation"
 import { initInput } from "./systems/input"
+import { createPaywallGate } from "@shared/monetization"
 
 // Gameplay helpers
 import { buildEntryLookup, pickLanguages } from "./gameplay/entryHelpers"
@@ -99,6 +100,19 @@ export const createHoverRunner = (
   initialState?: InitialState
 ) => {
   let disposed = false
+
+  // Soft, action-mode paywall gate: every ~5 phrases completed, the NEXT tap
+  // surfaces the paywall, then play continues (never blocks). `note()` counts a
+  // completed phrase; `onInteraction()` on each tap fires the paywall once the
+  // count is past the limit. Disposed in dispose().
+  const paywallGate = createPaywallGate({
+    packId: "hover-runner",
+    surface: "hover_phrases",
+    mode: "action",
+    limit: 5,
+    hardness: "soft",
+  })
+
   // iOS detection removed - no longer needed for platform-specific hacks
   const debugFlags =
     typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null
@@ -299,8 +313,14 @@ export const createHoverRunner = (
     window.removeEventListener("pointerdown", onWakeLockGesture)
   }
 
+  // Feed the paywall gate one interaction per tap. Capture-phase so it sees
+  // every tap regardless of which handler consumes it; soft mode means this
+  // only ever surfaces the paywall (after ~5 phrases), never blocks play.
+  const onPaywallInteraction = () => paywallGate.onInteraction()
+
   document.addEventListener("visibilitychange", onVisibilityChange)
   window.addEventListener("pointerdown", onWakeLockGesture)
+  window.addEventListener("pointerdown", onPaywallInteraction, { capture: true })
   void requestWakeLock()
   const onHostDispose = () => {
     dispose()
@@ -2171,6 +2191,8 @@ export const createHoverRunner = (
           )
           scoreAnimator.showScorePopup(points)
           createSuccessParticles(scene, phrasePosition)
+          // One phrase completed — advance the soft action gate's count.
+          paywallGate.note()
           startCelebration(round)
         } else if (!current.spec.isCorrect) {
           gameStore.update((draft) => {
@@ -2518,6 +2540,8 @@ export const createHoverRunner = (
     }
     document.removeEventListener("visibilitychange", onVisibilityChange)
     window.removeEventListener("pointerdown", onWakeLockGesture)
+    window.removeEventListener("pointerdown", onPaywallInteraction, { capture: true })
+    paywallGate.dispose()
     window.removeEventListener(
       "corpan:host-dispose",
       onHostDispose as EventListener

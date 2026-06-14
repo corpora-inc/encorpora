@@ -57,6 +57,11 @@ const updateManifestPlugin = () => {
 
 export default defineConfig({
   plugins: [updateManifestPlugin()],
+  resolve: {
+    alias: {
+      "@shared/monetization": path.resolve(__dirname, "../shared/monetization/index.ts"),
+    },
+  },
   define: {
     // Embedded as JS string literals; parsed once at runtime (see chat.ts).
     __TUTOMATON_MANIFEST_JSON__: JSON.stringify(readInlinedManifest()),
