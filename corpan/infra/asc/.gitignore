@@ -3,3 +3,5 @@ AuthKey_*
 .venv/
 __pycache__/
 creds.json
+*.csv
+codes/

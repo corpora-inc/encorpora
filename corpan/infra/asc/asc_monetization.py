@@ -14,8 +14,11 @@ What this DOES (no App Store Connect web UI needed):
                     note in cmd_trial) — this iterates the territories for you.
   - code-free     : create a FREE subscriptionOfferCode + generate a one-time-use
                     code BATCH (a CSV of single-use redemption codes).
-  - code-discount : create a discounted (PAY_AS_YOU_GO) subscriptionOfferCode + a
+  - code-discount : create a REAL %-off (PAY_AS_YOU_GO) subscriptionOfferCode + a
                     custom (reusable, your-string) code for affiliate attribution.
+                    For EACH territory it reads the current base price and binds the
+                    price point nearest (1 - percent/100) x base (Apple realizes a
+                    discount only via a fixed price-point rung — there is no raw %).
   - pricepoints   : read-only helper — list a subscription's price-point ids for a
                     territory (you need a price-point id to price a paid offer/code).
 
@@ -47,8 +50,10 @@ Usage:
   python asc_monetization.py trial --product corpan.sub.monthly --days 7            # dry-run
   python asc_monetization.py trial --product corpan.sub.monthly --days 7 --yes
   python asc_monetization.py code-free --product corpan.sub.annual --count 100 --months 1 --yes
+  python asc_monetization.py code-discount --product corpan.sub.monthly \
+         --code IAN --percent-off 30 --months 1 --periods 12          # 30% off for 12 months (dry-run)
   python asc_monetization.py code-discount --product corpan.sub.annual \
-         --code LAUNCH50 --percent-off 50 --periods 3 --yes
+         --code IAN --percent-off 30 --months 12 --periods 1 --yes    # 30% off the first year
 """
 import argparse
 import csv
@@ -276,6 +281,94 @@ def _territories(c: Client) -> list:
     return [t["id"] for t in c.get_all("/territories", {"limit": 200})]
 
 
+def _price_of(pp) -> float:
+    """customerPrice of a (subscription)PricePoint resource, as a float (0.0 on miss).
+
+    Apple price points expose `attributes.customerPrice` as a STRING decimal,
+    e.g. "4.99" (USD), "490" (JPY, no minor unit). We compare these numerically.
+    Confirmed shape: a price point's `attributes.customerPrice` is the customer-
+    facing amount in the territory's currency.
+    Ref: https://developer.apple.com/documentation/appstoreconnectapi/subscriptionpricepoint
+    Working example (subscriptions/{id}/pricePoints?include=territory&filter[territory]=...):
+      https://gist.github.com/astashov/79dd4ef4e91ea012710145623bfe0984
+    """
+    try:
+        return float((pp.get("attributes") or {}).get("customerPrice") or 0)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def subscription_prices(c: Client, subscription_id: str) -> dict:
+    """Return {territoryId: base_customer_price (float)} — the sub's CURRENT price ladder.
+
+    GET /v1/subscriptions/{id}/prices?include=subscriptionPricePoint,territory&limit=200
+    Each `subscriptionPrices` resource links to ONE subscriptionPricePoint (the
+    current price) and ONE territory. We read the price from the *included*
+    subscriptionPricePoints (their `attributes.customerPrice`), keyed by the
+    territory on the price relationship. This is the per-territory BASE that we
+    discount against.
+    Ref: https://developer.apple.com/documentation/appstoreconnectapi/get-v1-subscriptions-_id_-prices
+    (Background on the per-territory pricing model + equalizations:
+     https://developer.apple.com/forums/thread/718915)
+    """
+    # We need the included resources too, so call .get (not get_all) and walk pages
+    # ourselves, accumulating BOTH data and included.
+    out, included = {}, {}
+    page = c.get(
+        f"/subscriptions/{subscription_id}/prices",
+        {"include": "subscriptionPricePoint,territory", "limit": 200},
+    )
+    while True:
+        for inc in page.get("included", []):
+            included[(inc.get("type"), inc.get("id"))] = inc
+        for price in page.get("data", []):
+            rels = price.get("relationships") or {}
+            terr = (((rels.get("territory") or {}).get("data")) or {}).get("id")
+            pp_ref = ((rels.get("subscriptionPricePoint") or {}).get("data")) or {}
+            pp = included.get((pp_ref.get("type"), pp_ref.get("id")))
+            if terr and pp is not None:
+                out[terr] = _price_of(pp)
+        nxt = (page.get("links") or {}).get("next")
+        if not nxt:
+            break
+        page = c.get(nxt)
+    return out
+
+
+def price_points(c: Client, subscription_id: str, territory: str) -> list:
+    """The price-point LADDER for one territory: [{"id":..., "price": float}, ...].
+
+    Thin typed wrapper over list_price_points (GET .../pricePoints?filter[territory]=T,
+    paginated). Apple REQUIRES filter[territory] here, and the ladder is returned
+    per-territory (you cannot fetch all territories' points at once).
+    """
+    return [{"id": pp["id"], "price": _price_of(pp)} for pp in list_price_points(c, subscription_id, territory)]
+
+
+def nearest_point(points: list, target: float) -> dict:
+    """Pick the price point closest to `target` (prefer the largest point <= target).
+
+    `points` = [{"id":..., "price": float}, ...]. Strategy:
+      - Among points whose price is <= target (a real discount that doesn't UNDERcut
+        the intended amount upward), take the HIGHEST — the best-value point at/under
+        the target.
+      - If none are <= target (target below the cheapest rung), fall back to the
+        globally nearest point by absolute distance.
+    Returns the chosen {"id","price"} dict (or {} if `points` is empty).
+
+    Rationale: Apple realizes discounts only by binding to a fixed price point; "30%
+    off" therefore means "the rung nearest 0.70 x base", an approximation bounded by
+    the ladder granularity (Apple has ~800 rungs/currency, so it's usually very close).
+    """
+    priced = [p for p in points if p.get("price", 0) > 0]
+    if not priced:
+        return {}
+    at_or_below = [p for p in priced if p["price"] <= target + 1e-9]
+    if at_or_below:
+        return max(at_or_below, key=lambda p: p["price"])
+    return min(priced, key=lambda p: abs(p["price"] - target))
+
+
 # --------------------------------------------------------------------------- list
 
 
@@ -459,13 +552,16 @@ def _offer_code_prices_included(territory_price_points):
     included, rel_data = [], []
     for territory_id, price_point_id in territory_price_points:
         local_id = f"${{price-{territory_id}}}"  # placeholder id linking included<->relationship
+        rels = {"territory": {"data": {"type": "territories", "id": territory_id}}}
+        # FREE_TRIAL codes must NOT bind a price point (Apple 409s:
+        # "For FREE_TRIAL offerMode, subscriptionPricePoint must be null").
+        # PAY_AS_YOU_GO / PAY_UP_FRONT bind the resolved point.
+        if price_point_id is not None:
+            rels["subscriptionPricePoint"] = {"data": {"type": "subscriptionPricePoints", "id": price_point_id}}
         included.append({
             "type": "subscriptionOfferCodePrices",
             "id": local_id,
-            "relationships": {
-                "territory": {"data": {"type": "territories", "id": territory_id}},
-                "subscriptionPricePoint": {"data": {"type": "subscriptionPricePoints", "id": price_point_id}},
-            },
+            "relationships": rels,
         })
         rel_data.append({"type": "subscriptionOfferCodePrices", "id": local_id})
     return included, rel_data
@@ -578,7 +674,9 @@ def cmd_code_free(args):
     name = args.name or f"free-{args.months}mo"
     territories = list(args.territories) if args.territories else _territories(c)
 
-    tpp = _resolve_price_points(c, sid, territories)
+    # A FREE code carries no price, so it binds NO price point — just the
+    # territories it's offered in (each with a null price point).
+    tpp = [(terr, None) for terr in territories]
     included, rel_data = _offer_code_prices_included(tpp)
     code_body = _offer_code_body(
         sid, name, customer_eligibilities=["NEW", "EXPIRED"], offer_mode="FREE_TRIAL",
@@ -623,8 +721,55 @@ def _download_one_time_codes(c: Client, batch_id, out_path):
     print(f"wrote {max(rows, 0)} codes -> {out_path}")
 
 
+def _resolve_discount_points(c: Client, subscription_id, territories, percent_off, single_price_point=None):
+    """For each territory, pick the price-point id nearest (1 - percent/100) x base.
+
+    Returns (resolved, skipped, rows) where:
+      resolved : [(territoryId, pricePointId), ...]  — for the offer-code `prices`
+      skipped  : [(territoryId, reason), ...]        — territories we couldn't price
+      rows     : [(territoryId, base, target, chosenId, chosenPrice), ...] for printing
+    Per-territory failures (no current price / no ladder / no rung) SKIP, never abort
+    (mirrors cmd_trial). `single_price_point` (only valid for a single territory) is an
+    explicit override that bypasses resolution and is reported as base==chosen.
+    """
+    frac = 1.0 - (percent_off / 100.0)
+
+    # One read of the CURRENT base price per territory (single paginated call).
+    base_by_terr = subscription_prices(c, subscription_id)
+
+    resolved, skipped, rows = [], [], []
+    for terr in territories:
+        if single_price_point and len(territories) == 1:
+            resolved.append((terr, single_price_point))
+            base = base_by_terr.get(terr, 0.0)
+            rows.append((terr, base, base * frac, single_price_point, None))
+            continue
+        base = base_by_terr.get(terr)
+        if not base:
+            skipped.append((terr, "no current base price (sub not priced here)"))
+            continue
+        ladder = price_points(c, subscription_id, terr)
+        if not ladder:
+            skipped.append((terr, "no price-point ladder"))
+            continue
+        target = base * frac
+        chosen = nearest_point(ladder, target)
+        if not chosen:
+            skipped.append((terr, "no usable price point"))
+            continue
+        resolved.append((terr, chosen["id"]))
+        rows.append((terr, base, target, chosen["id"], chosen["price"]))
+    return resolved, skipped, rows
+
+
 def cmd_code_discount(args):
-    """Create a discounted (PAY_AS_YOU_GO) offer code + a custom reusable code."""
+    """Create a discounted (PAY_AS_YOU_GO) offer code + a custom reusable code.
+
+    The discount is REAL and per-territory: for each territory we read the current
+    base price and bind the price point nearest (1 - percent/100) x base. Apple has
+    no raw "% off" — a discount is always one of Apple's fixed price-point rungs — so
+    "30% off" = the rung nearest 0.70 x base in THAT territory (a close approximation).
+    """
     duration = _duration_from_months(args.months) if args.months else "ONE_MONTH"
     c = Client(_load_creds(args))
     sub = _resolve_subscription(c, args.product)
@@ -632,28 +777,44 @@ def cmd_code_discount(args):
     name = args.name or f"discount-{args.percent_off}off-{args.code}"
     territories = list(args.territories) if args.territories else _territories(c)
 
-    # NOTE on the discount AMOUNT: the ASC offer-code price model does NOT take a raw
-    # "percent off". The discounted price is whatever subscriptionPricePoint you wire
-    # per territory. To realize "~N% off", resolve (via `pricepoints`) the price point
-    # whose customerPrice is closest to base*(1 - percent/100) and pass it. Here we
-    # default to the BASE price point so the call is well-formed; OVERRIDE per territory
-    # with --price-point <id> (single-territory) to bind an actual discounted point.
-    # The integrator should verify this live — see README "Things to verify live".
-    if args.price_point and len(territories) == 1:
-        tpp = [(territories[0], args.price_point)]
-    else:
-        tpp = _resolve_price_points(c, sid, territories)
+    if args.price_point and len(territories) != 1:
+        sys.exit("--price-point is an explicit single-territory override; pass exactly one --territories with it.")
 
-    included, rel_data = _offer_code_prices_included(tpp)
+    resolved, skipped, rows = _resolve_discount_points(
+        c, sid, territories, args.percent_off, single_price_point=args.price_point
+    )
+    if not resolved:
+        sys.exit("Could not resolve a discounted price point in ANY territory. "
+                 "Run `pricepoints --territory USA` and check the subscription is priced.")
+
+    # READ-ONLY sanity check: show the resolution table. Always print USA first (the
+    # integrator's reference), then a couple more so dry-run shows REAL resolved ids.
+    rows_sorted = sorted(rows, key=lambda r: (r[0] != "USA", r[0]))
+    print(f"DISCOUNT offer code '{name}' on {args.product}: PAY_AS_YOU_GO {duration} x{args.periods}; "
+          f"~{args.percent_off}% off, REAL per-territory price points.")
+    print(f"resolved {len(resolved)}/{len(territories)} territories ({len(skipped)} skipped).")
+    print("\nprice-point resolution (territory: base -> target(~{}% off) -> chosen point):".format(args.percent_off))
+    for terr, base, target, chosen_id, chosen_price in rows_sorted[:6]:
+        if chosen_price is None:  # explicit --price-point override
+            print(f"  {terr}: base={base}  (override) point={chosen_id}")
+        else:
+            eff = (1 - chosen_price / base) * 100 if base else 0
+            print(f"  {terr}: base={base}  target={target:.2f}  ->  point={chosen_id}  price={chosen_price}  (actual -{eff:.0f}%)")
+    if len(rows_sorted) > 6:
+        print(f"  ... ({len(rows_sorted) - 6} more territories resolved)")
+    if skipped:
+        print(f"\nskipped {len(skipped)} territories (not priced / no rung):")
+        for terr, why in skipped[:10]:
+            print(f"  {terr}: {why}")
+
+    included, rel_data = _offer_code_prices_included(resolved)
     code_body = _offer_code_body(
         sid, name, customer_eligibilities=["NEW", "EXISTING", "EXPIRED"], offer_mode="PAY_AS_YOU_GO",
         duration=duration, number_of_periods=args.periods, included=included, rel_data=rel_data,
     )
     custom_body = _custom_code_body("<offerCodeId>", args.code, args.max_uses, args.expires)
-    print(f"DISCOUNT offer code '{name}' on {args.product}: PAY_AS_YOU_GO {duration} x{args.periods}; "
-          f"~{args.percent_off}% off intent over {len(tpp)} territories; custom code '{args.code}' (max {args.max_uses} uses)")
-    print("\n1) POST /v1/subscriptionOfferCodes:")
-    print(json.dumps(code_body, indent=2))
+    print("\n1) POST /v1/subscriptionOfferCodes (showing first 3 territories' resolved price points):")
+    print(json.dumps(_truncate_offer_body_for_print(code_body, 3), indent=2))
     print("\n2) POST /v1/subscriptionOfferCodeCustomCodes (after the code id is known):")
     print(json.dumps(custom_body, indent=2))
 
@@ -663,9 +824,23 @@ def cmd_code_discount(args):
 
     created = c.post("/subscriptionOfferCodes", code_body)
     oc_id = created["data"]["id"]
-    print(f"\ncreated offer code id={oc_id}")
+    print(f"\ncreated offer code id={oc_id} ({len(resolved)} territories priced)")
     custom = c.post("/subscriptionOfferCodeCustomCodes", _custom_code_body(oc_id, args.code, args.max_uses, args.expires))
     print(f"created custom code '{args.code}' id={custom['data']['id']} (in-app redemption only)")
+
+
+def _truncate_offer_body_for_print(body, n):
+    """A copy of the offer-code body showing only the first n territories' inline
+    prices (the full body can be ~175 entries). Resolved ids are REAL, not redacted."""
+    import copy
+    b = copy.deepcopy(body)
+    inc = b.get("included", [])
+    rel = (((b.get("data") or {}).get("relationships") or {}).get("prices") or {}).get("data", [])
+    if len(inc) > n:
+        b["included"] = inc[:n] + [f"... (+{len(inc) - n} more territories)"]
+    if len(rel) > n:
+        b["data"]["relationships"]["prices"]["data"] = rel[:n] + [f"... (+{len(rel) - n} more)"]
+    return b
 
 
 # ---------------------------------------------------------------------------- main
@@ -711,16 +886,38 @@ def main():
     sp.add_argument("--yes", action="store_true", help="actually POST (default dry-run)")
     sp.set_defaults(func=cmd_code_free)
 
-    sp = sub.add_parser("code-discount", help="create a PAY_AS_YOU_GO discount offer code + a custom reusable code")
-    sp.add_argument("--product", required=True)
-    sp.add_argument("--code", required=True, help="the custom code string (e.g. LAUNCH50) for affiliate attribution")
-    sp.add_argument("--percent-off", type=int, required=True, help="intended discount %% (see README: realized via price point)")
-    sp.add_argument("--periods", type=int, default=1, help="numberOfPeriods the discount applies (default 1)")
-    sp.add_argument("--months", type=int, help=f"discount duration in months {sorted(DURATION_BY_MONTHS)} (default 1 month)")
+    sp = sub.add_parser(
+        "code-discount",
+        help="create a REAL %%-off PAY_AS_YOU_GO offer code (per-territory price point) + a custom reusable code",
+        description=(
+            "Create a custom (reusable) offer code that gives a REAL percentage discount in EVERY\n"
+            "territory. Apple has no raw '% off': a discount is one of Apple's fixed price-point rungs.\n"
+            "So for each territory we read the CURRENT base price and bind the rung nearest\n"
+            "(1 - percent/100) x base (a close approximation, ~800 rungs/currency).\n\n"
+            "offerMode = PAY_AS_YOU_GO: the discounted price is charged each period for --periods periods,\n"
+            "where each period is --months long. So shape the deal with --months (period length) and\n"
+            "--periods (how many periods):\n"
+            "  '30% off for 12 months'  (monthly sub) -> --months 1  --periods 12  (12 monthly periods)\n"
+            "  '30% off the first year' (annual sub)   -> --months 12 --periods 1   (one 1-year period)\n"
+            "  '50% off first 3 months' (monthly sub)  -> --months 1  --periods 3\n"
+            "customerEligibilities defaults to NEW,EXISTING,EXPIRED (affiliate codes work for everyone)."
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    sp.add_argument("--product", required=True, help="subscription productId, e.g. corpan.sub.monthly")
+    sp.add_argument("--code", required=True, help="the custom code string (e.g. IAN) for affiliate attribution")
+    sp.add_argument("--percent-off", type=int, required=True,
+                    help="REAL discount %% off the per-territory base (realized via the nearest price-point rung)")
+    sp.add_argument("--periods", type=int, default=1,
+                    help="numberOfPeriods the discounted price is charged (PAY_AS_YOU_GO). E.g. 12 for '30%% off 12 months'")
+    sp.add_argument("--months", type=int,
+                    help=f"LENGTH of each billing period in months {sorted(DURATION_BY_MONTHS)} "
+                         f"(default 1). Use --months 1 --periods 12 for a monthly sub; --months 12 --periods 1 for annual")
     sp.add_argument("--max-uses", type=int, default=2000, help="max redemptions for the custom code (default 2000)")
-    sp.add_argument("--price-point", help="explicit subscriptionPricePoint id (single-territory; binds the discounted price)")
+    sp.add_argument("--price-point",
+                    help="explicit subscriptionPricePoint id override; ONLY valid with a single --territories")
     sp.add_argument("--name", help="internal reference name")
-    sp.add_argument("--territories", nargs="*", help="territory ids (default: ALL)")
+    sp.add_argument("--territories", nargs="*", help="territory ids (default: ALL territories)")
     sp.add_argument("--expires", help="custom code expiration YYYY-MM-DD (optional)")
     sp.add_argument("--yes", action="store_true", help="actually POST (default dry-run)")
     sp.set_defaults(func=cmd_code_discount)

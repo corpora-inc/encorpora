@@ -12,7 +12,7 @@ Bundle id `com.corpora.corpan`; subscriptions `corpan.sub.monthly`, `corpan.sub.
 | Inspect price points (need ids for paid offers) | `pricepoints` | `GET /v1/subscriptions/{id}/pricePoints?filter[territory]=USA` |
 | **Free trial** (StoreKit *introductory offer*) | `trial` | `POST /v1/subscriptionIntroductoryOffers` (one per territory) |
 | **Free promo codes** (one-time-use batch, CSV) | `code-free` | `POST /v1/subscriptionOfferCodes` + `POST /v1/subscriptionOfferCodeOneTimeUseCodes` |
-| **Discount affiliate code** (your custom string) | `code-discount` | `POST /v1/subscriptionOfferCodes` + `POST /v1/subscriptionOfferCodeCustomCodes` |
+| **% off affiliate code** (your custom string) | `code-discount` | `GET /v1/subscriptions/{id}/prices` + `…/pricePoints?filter[territory]=…` → `POST /v1/subscriptionOfferCodes` + `POST /v1/subscriptionOfferCodeCustomCodes` |
 
 Free trials apply automatically to eligible (never-/expired-subscriber) users — StoreKit
 renders "7 days free, then $X". Offer/promo codes redeem **through the App Store**
@@ -74,10 +74,41 @@ python asc_monetization.py trial --product corpan.sub.annual  --days 7 --yes
 # 4. 100 free one-month codes (writes <name>-codes.csv)
 python asc_monetization.py code-free --product corpan.sub.annual --count 100 --months 1 --yes
 
-# 5. A reusable affiliate discount code
+# 5. A reusable affiliate code with a REAL % discount in every territory
+#    "30% off for 12 months" on the MONTHLY sub: --months 1 (period length) --periods 12 (count)
+python asc_monetization.py code-discount --product corpan.sub.monthly \
+       --code IAN --percent-off 30 --months 1 --periods 12 --max-uses 5000 --yes
+#    "30% off the first year" on the ANNUAL sub: --months 12 --periods 1
 python asc_monetization.py code-discount --product corpan.sub.annual \
-       --code LAUNCH50 --percent-off 50 --periods 3 --max-uses 5000 --yes
+       --code IAN --percent-off 30 --months 12 --periods 1 --yes
 ```
+
+### How `code-discount` realizes a real percentage discount
+
+Apple has **no raw "% off"** — a discount is always one of Apple's fixed
+**price-point rungs** (~800 per currency). So `code-discount`, for **each
+territory**:
+
+1. reads the **current base price** (`GET /v1/subscriptions/{id}/prices?include=
+   subscriptionPricePoint,territory`), then
+2. reads that territory's **price-point ladder**
+   (`GET /v1/subscriptions/{id}/pricePoints?filter[territory]=<T>`, paginated), and
+3. binds the rung **nearest `(1 - percent/100) × base`** (prefer the highest rung
+   ≤ target; else the globally nearest) as that territory's
+   `subscriptionOfferCodePrice`.
+
+This is an **approximation bounded by the ladder** (usually within a cent or two of
+the exact percentage). Territories the sub isn't priced in are **skipped, not fatal**
+(like `trial`). A dry-run prints the resolution table (`base → target → chosen point
++ actual −%`) and the request body with **real resolved price-point ids** for the
+first few territories — verify USA before adding `--yes`.
+
+**`--months` vs `--periods`** (`PAY_AS_YOU_GO`): `--months` is the **length of each
+billing period**; `--periods` is **how many periods** the discount is charged.
+"30% off 12 months" on a monthly sub = `--months 1 --periods 12`; "30% off the first
+year" on an annual sub = `--months 12 --periods 1`. `customerEligibilities` defaults
+to `NEW,EXISTING,EXPIRED` so affiliate codes work for everyone.
+`--price-point <id>` is an explicit override, valid only with a single `--territories`.
 
 `--days` / `--months` must map to an Apple **SubscriptionOfferDuration**
 (`THREE_DAYS, ONE_WEEK, TWO_WEEKS, ONE_MONTH, TWO_MONTHS, THREE_MONTHS, SIX_MONTHS,
@@ -113,13 +144,17 @@ real API. Verify and adjust:
    (<https://developer.apple.com/forums/thread/759596>). `trial` enumerates
    `/v1/territories` and POSTs one offer each. Confirm whether a single all-territory
    call has since been enabled (it would simplify this a lot).
-2. **Offer-code price points.** Offer codes reference real `subscriptionPricePoints`
-   per territory. `_resolve_price_points` picks the **highest (base) price point** per
-   territory as the anchor; for `code-discount` the realized discount is whatever
-   price point you bind, **not a literal `--percent-off`** (Apple has no raw-percent
-   field here). To realize "~N% off", use `pricepoints` to find the point closest to
-   `base*(1-percent/100)` and pass `--price-point <id>` (single-territory). Verify
-   how `PAY_AS_YOU_GO` + the bound price point renders to the customer.
+2. **Offer-code price points.** `code-discount` now resolves a **real** per-territory
+   discount: read base (`/prices`) → pick the rung nearest `base*(1-percent/100)` in
+   that territory's ladder (`/pricePoints`) → bind it. Confirm against the live API
+   that (a) `/subscriptions/{id}/prices` returns the current base via the *included*
+   `subscriptionPricePoints[].attributes.customerPrice` keyed by the price's
+   `territory` relationship (the shape this code reads), (b) the inline `included`
+   `subscriptionOfferCodePrices` array DOES batch across territories for OFFER CODES
+   (it's documented to, unlike intro offers), and (c) how `PAY_AS_YOU_GO` + the bound
+   rung renders to the customer. `--price-point <id>` still overrides for a single
+   territory. (`code-free` keeps `_resolve_price_points`, which anchors to the base
+   rung — a FREE code derives $0 from offerMode, so the anchor choice is moot.)
 3. **`customerEligibilities` / `offerEligibility`** defaults (free → `[NEW, EXPIRED]`
    `STACK_WITH_INTRO_OFFERS`; discount → all three) match the marketing intent.
 4. **JWT claim shape** assumes a **team** (Issuer-ID) key. An *individual* API key
@@ -133,6 +168,10 @@ real API. Verify and adjust:
 - Generating JWTs: <https://developer.apple.com/documentation/appstoreconnectapi/generating-tokens-for-api-requests>
 - Subscription Introductory Offers: <https://developer.apple.com/documentation/appstoreconnectapi/subscription-introductory-offers>
 - Subscription Offer Codes: <https://developer.apple.com/documentation/appstoreconnectapi/subscription-offer-codes>
+- Subscription price points (per-territory ladder): <https://developer.apple.com/documentation/appstoreconnectapi/get-v1-subscriptions-_id_-pricepoints>
+- Subscription current prices: <https://developer.apple.com/documentation/appstoreconnectapi/get-v1-subscriptions-_id_-prices>
+- Per-territory pricing + equalizations workflow: <https://developer.apple.com/forums/thread/718915>
+- Working pricePoints read example (`include=territory&filter[territory]=…`): <https://gist.github.com/astashov/79dd4ef4e91ea012710145623bfe0984>
 
 ## Google Play twin
 
