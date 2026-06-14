@@ -116,10 +116,24 @@ def cmd_list(args):
                 print(f"      offer: {off.get('offerId')}  [{off.get('state')}]  phases={kinds}")
 
 
-def _trial_body(product_id, base_plan_id, offer_id, days):
-    # A 7-day free trial = one offer phase, duration P{days}D, price override `free`.
-    # `otherRegionsConfig.otherRegionsPrices.free` marks $0 across all regions; the
-    # acquisitionRule scopes it to people who never had this subscription (new-user trial).
+def _base_plan_regions(svc, product_id, base_plan_id):
+    """The region codes a base plan is sold in — an offer must target >=1 of them."""
+    sub = svc.monetization().subscriptions().get(
+        packageName=PACKAGE_NAME, productId=product_id).execute()
+    for bp in sub.get("basePlans", []):
+        if bp.get("basePlanId") == base_plan_id:
+            return [rc["regionCode"] for rc in bp.get("regionalConfigs", []) if rc.get("regionCode")]
+    sys.exit(f"base plan {base_plan_id} not found on {product_id}. Run `list`.")
+
+
+def _trial_body(product_id, base_plan_id, offer_id, days, anchor_region):
+    # A free trial = one offer phase, duration P{days}D, price override `free`.
+    # Play requires the offer to explicitly target >=1 region, but enumerating ALL
+    # base-plan regions trips per-region billability validation (e.g. MN isn't
+    # billable at regions version 2022/02). So we anchor ONE reliably-billable region
+    # explicitly and let `otherRegionsConfig.free` cover every other region the base
+    # plan sells in — the catch-all is NOT subject to the per-region billability check.
+    # acquisitionRule scopes the trial to people who never had this subscription.
     return {
         "packageName": PACKAGE_NAME,
         "productId": product_id,
@@ -129,29 +143,42 @@ def _trial_body(product_id, base_plan_id, offer_id, days):
             {
                 "duration": f"P{days}D",
                 "recurrenceCount": 1,
-                # `free` is a direct member of the otherRegions phase config (the
-                # all-other-regions catch-all), a sibling of otherRegionsPrices/
-                # relativeDiscount/absoluteDiscounts — not nested under prices.
+                # Per-phase PRICING: free in the anchor region + all other regions.
+                "regionalConfigs": [{"regionCode": anchor_region, "free": {}}],
                 "otherRegionsConfig": {"free": {}},
             }
         ],
         "targeting": {
             "acquisitionRule": {
-                "scope": {"specificSubscriptionInApp": product_id}
+                # New-subscriber trial: eligible for users who have never had THIS
+                # subscription. (Acquisition scope must be thisSubscription or
+                # anySubscriptionInApp — specificSubscriptionInApp is rejected here.)
+                "scope": {"thisSubscription": {}}
             }
         },
+        # Offer-level AVAILABILITY (distinct from phase pricing): make the offer
+        # available to new subscribers in the anchor region + every other region
+        # (incl. future Play launches), so the trial is effectively global without
+        # enumerating non-billable regions.
+        "regionalConfigs": [
+            {"regionCode": anchor_region, "newSubscriberAvailability": True}
+        ],
+        "otherRegionsConfig": {"otherRegionsNewSubscriberAvailability": True},
     }
 
 
 def cmd_trial(args):
     offer_id = args.offer_id or f"free-trial-{args.days}d"
-    body = _trial_body(args.product, args.base_plan, offer_id, args.days)
-    print(f"create offer {offer_id} on {args.product}/{args.base_plan} ({args.days}-day free trial):")
+    svc = _client(args)
+    regions = _base_plan_regions(svc, args.product, args.base_plan)
+    anchor = args.anchor_region if args.anchor_region in regions else ("US" if "US" in regions else (regions[0] if regions else "US"))
+    body = _trial_body(args.product, args.base_plan, offer_id, args.days, anchor)
+    print(f"create offer {offer_id} on {args.product}/{args.base_plan} "
+          f"({args.days}-day free trial; anchor region {anchor} + all other regions):")
     print(json.dumps(body, indent=2))
     if not args.yes:
         print("\n[dry-run] add --yes to create. (then --activate to make it live)")
         return
-    svc = _client(args)
     created = (
         svc.monetization().subscriptions().basePlans().offers()
         .create(
@@ -216,6 +243,9 @@ def main():
     sp.add_argument("--product", required=True, help="subscription productId, e.g. corpan.sub.monthly")
     sp.add_argument("--base-plan", required=True, help="base plan id (from `list`)")
     sp.add_argument("--days", type=int, default=7)
+    sp.add_argument("--anchor-region", default="US",
+                    help="the one explicitly-targeted region (must be billable & sold); "
+                         "all other base-plan regions are covered by the free catch-all")
     sp.add_argument("--offer-id", help="default: free-trial-<days>d")
     sp.add_argument("--activate", action="store_true", help="activate immediately (else stays DRAFT)")
     sp.add_argument("--yes", action="store_true", help="actually call the API (default dry-run)")
