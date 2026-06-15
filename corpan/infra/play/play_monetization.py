@@ -65,8 +65,11 @@ import sys
 PACKAGE_NAME = os.environ.get("PLAY_PACKAGE_NAME", "com.corpora.corpan")
 DEFAULT_SECRET_ID = os.environ.get("PLAY_SECRET_ID", "corpan/content-packs/verify")
 SCOPE = "https://www.googleapis.com/auth/androidpublisher"
-# Required on subscription/offer create+patch. Bump if Google deprecates it.
-REGIONS_VERSION = "2022/02"
+# Required on subscription/offer create+patch. Use the LATEST published regions
+# version (the API rejects older ones with "latest value is ...") so currencies match
+# Google's live catalog (BG->EUR, CI->XOF migrations); the frozen 2022/02 conflicts.
+# Overridable via env; bump when Google publishes a newer one.
+REGIONS_VERSION = os.environ.get("PLAY_REGIONS_VERSION", "2025/03")
 
 
 def _load_service_account_info(args) -> dict:
@@ -581,6 +584,10 @@ def cmd_set_prices(args):
 
     rconfigs = target_bp.setdefault("regionalConfigs", [])
     by_region = {rc.get("regionCode"): rc for rc in rconfigs}
+    # Snapshot each region's ORIGINAL price so a store-rejected region can be reverted
+    # and the patch retried (the patch is atomic — one bad region fails all).
+    orig_price = {rc.get("regionCode"): json.loads(json.dumps(rc.get("price"))) if rc.get("price") else None
+                  for rc in rconfigs}
     changes = 0
     cur_skips = []
     for country, info in plan.items():
@@ -621,10 +628,60 @@ def cmd_set_prices(args):
         print("\n[dry-run] add --yes to patch.")
         return
 
-    updated = svc.monetization().subscriptions().patch(
-        packageName=PACKAGE_NAME, productId=args.product, updateMask="basePlans",
-        **{"regionsVersion_version": REGIONS_VERSION}, body=sub,
-    ).execute()
+    # The patch is atomic: a single region the store rejects (e.g. a currency the
+    # 2022/02 regions version disallows, like BG=EUR/BGN) fails ALL of them. So retry,
+    # dropping the offending region each time (reverting it to its original price),
+    # until the patch succeeds or we run out of droppable regions.
+    import re as _re
+    # Currencies fixed-pegged to EUR — the 2022/02 regions version still expects the
+    # legacy currency for these even though Google's live catalog moved them to EUR
+    # (Bulgaria adopted the euro 2025-01 but BGN stays pegged at 1.95583/EUR). We can
+    # therefore reprice deterministically instead of dropping the region.
+    EUR_PEGS = {"BGN": 1.95583}
+    dropped, repriced, tried = [], [], set()
+    for _ in range(len(by_region) + 5):
+        try:
+            updated = svc.monetization().subscriptions().patch(
+                packageName=PACKAGE_NAME, productId=args.product, updateMask="basePlans",
+                **{"regionsVersion_version": REGIONS_VERSION}, body=sub,
+            ).execute()
+            break
+        except Exception as e:
+            em = _re.search(r"region code (\w+).*?Expected (\w+) but got (\w+)", str(e))
+            rm = _re.search(r"region code (\w+)", str(e))
+            bad = (em.group(1) if em else (rm.group(1) if rm else None))
+            if not bad or bad not in by_region or bad in dropped:
+                raise
+            rc = by_region[bad]
+            cur = (plan.get(bad) or {}).get("money") or rc.get("price") or {}
+            expected = em.group(2) if em else None
+            usd_target = (plan.get(bad) or {}).get("usd")
+            if expected == "USD" and usd_target is not None and bad not in tried:
+                # 2022/02 prices this region in USD (e.g. CFA-franc countries); set the
+                # USD target directly.
+                rc["price"] = _usd_money(float(usd_target))
+                tried.add(bad)
+                repriced.append((bad, f"${usd_target} USD"))
+                continue
+            if expected in EUR_PEGS and cur.get("currencyCode") == "EUR" and bad not in tried:
+                eur = int(cur.get("units", "0")) + cur.get("nanos", 0) / 1e9
+                amt = eur * EUR_PEGS[expected]
+                rc["price"] = {"currencyCode": expected, "units": str(int(round(amt))), "nanos": 0}
+                tried.add(bad)
+                repriced.append((bad, f"{rc['price']['units']} {expected}"))
+                continue  # retry with the pegged-currency price
+            # Not repricable (e.g. 'not billable' at this version) — exclude this region
+            # from the patch entirely so the rest applies; it keeps its current state.
+            rconfigs[:] = [r for r in rconfigs if r.get("regionCode") != bad]
+            by_region.pop(bad, None)
+            dropped.append(bad)
+    else:
+        raise SystemExit("set-prices: too many rejected regions; aborting (no patch applied).")
+    if repriced:
+        print(f"\nrepriced {len(repriced)} EUR-peg region(s) to expected currency: " +
+              ", ".join(f"{r}={p}" for r, p in repriced))
+    if dropped:
+        print(f"skipped {len(dropped)} store-rejected region(s) (kept current price): {', '.join(dropped)}")
     for bp in updated.get("basePlans", []):
         if bp.get("basePlanId") != args.base_plan:
             continue
