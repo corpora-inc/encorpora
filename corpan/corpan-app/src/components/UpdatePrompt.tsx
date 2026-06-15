@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next"
 import { openUrl } from "@tauri-apps/plugin-opener"
 
 import { Button } from "@/components/ui/button"
+import { glass } from "@/util/browser"
 import { useLatestVersion } from "@/hooks/useLatestVersion"
 import {
   selectShouldShowPrompt,
@@ -44,7 +45,7 @@ export function UpdatePrompt() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/25 backdrop-blur-sm z-100"
+            className={`fixed inset-0 z-100 ${glass("bg-black/25 backdrop-blur-sm", "bg-black/45")}`}
             onClick={remindLater}
           />
 
