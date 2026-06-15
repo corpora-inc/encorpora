@@ -1,0 +1,25 @@
+series_id: biomes_of_the_world
+title: Biomes of the World
+description: Short, simple tours of Earth's great biomes — the land, the weather, the plants, the animals, and the people who live there.
+author: Skylar Saveland
+audience: language learners and curious readers of any age
+voice: warm, plainspoken, third-person tour-guide
+target_runtime_minutes: 8
+language_learning: true
+books:
+  - { id: book_biomes_tropical_rainforest, slug: 01-tropical-rainforest, title: "The Tropical Rainforest" }
+  - { id: book_biomes_tropical_savanna,    slug: 02-tropical-savanna,    title: "The Tropical Savanna" }
+  - { id: book_biomes_hot_desert,          slug: 03-hot-desert,          title: "The Hot Desert" }
+  - { id: book_biomes_temperate_forest,    slug: 04-temperate-forest,    title: "The Temperate Forest" }
+  - { id: book_biomes_temperate_grassland, slug: 05-temperate-grassland, title: "The Temperate Grassland" }
+  - { id: book_biomes_mediterranean,       slug: 06-mediterranean,       title: "The Mediterranean Biome" }
+  - { id: book_biomes_boreal_forest,       slug: 07-boreal-forest,       title: "The Boreal Forest" }
+  - { id: book_biomes_tundra,              slug: 08-tundra,              title: "The Tundra" }
+  - { id: book_biomes_mountain,            slug: 09-mountain,            title: "The Mountains" }
+  - { id: book_biomes_river_and_lake,      slug: 10-river-and-lake,      title: "Rivers and Lakes" }
+  - { id: book_biomes_wetland,             slug: 11-wetland,             title: "Wetlands" }
+  - { id: book_biomes_coast_and_mangrove,  slug: 12-coast-and-mangrove,  title: "Coasts and Mangroves" }
+  - { id: book_biomes_coral_reef,          slug: 13-coral-reef,          title: "The Coral Reef" }
+  - { id: book_biomes_open_ocean,          slug: 14-open-ocean,          title: "The Open Ocean" }
+  - { id: book_biomes_cold_desert,         slug: 15-cold-desert,         title: "The Cold Desert" }
+  - { id: book_biomes_polar_ice,           slug: 16-polar-ice,           title: "The Polar Ice" }

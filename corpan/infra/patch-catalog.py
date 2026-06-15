@@ -579,6 +579,15 @@ BOOK_META = {
         ),
         "tags": ["kids", "sports", "cheerleading", "language-learning"],
     },
+    "book_biomes_tropical_rainforest": {
+        "description": (
+            "A short, plain-spoken tour of the tropical rainforest — where "
+            "it grows, the weather, the layered forest, the plants, the "
+            "animals, and the people who have always lived in it. The first "
+            "book of the Biomes of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+    },
 }
 
 

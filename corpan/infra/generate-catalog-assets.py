@@ -802,6 +802,26 @@ BOOKS: list[BookSpec] = [
             "kids 7–10. No team logos, no text on the uniform. " + COMMON_TAIL
         ),
     ),
+    BookSpec(
+        book_id="book_biomes_tropical_rainforest",
+        title="The Tropical Rainforest",
+        description=(
+            "A short, plain-spoken tour of the tropical rainforest — where it "
+            "grows, the weather, the layered forest, the plants, the animals, "
+            "and the people who have always lived in it. The first book of "
+            "the Biomes of the World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a tall, slow river curving through dense "
+            "tropical rainforest at first light. A layered canopy of greens "
+            "stretches to a low mist over the trees. The water is mirror-still "
+            "and reflects the forest. A single warm shaft of amber sunlight "
+            "breaks through the canopy onto the river. Painterly digital art, "
+            "restrained moss-green and soft jade palette with a thread of warm "
+            "amber light, contemplative and quiet, no people, no clearly "
+            "rendered animals, no text. " + COMMON_TAIL
+        ),
+    ),
 ]
 
 
