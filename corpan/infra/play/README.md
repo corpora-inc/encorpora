@@ -11,6 +11,7 @@ same Google service account the verify lambda uses (AWS Secrets Manager
 | **7-day free trial** (lights up the in-app trial UI) | `play_monetization.py trial` — a base-plan *offer*; needs neither backward-compat nor the Console |
 | **Per-affiliate-code discount** (IAN30 → 30% off, applied in-app after the typed code is validated) | `play_monetization.py affiliate-offer` — a base-plan *offer* with `relativeDiscount` + **empty targeting** (developer-determined, never auto-shown) |
 | **Backward-compatible flag** (Play demands it before promo codes) | `play_monetization.py backcompat` — `legacyCompatible=true` patch |
+| **Regional per-country base-plan prices** (from a pricing matrix) | `play_monetization.py set-prices` — converts USD targets → tax-adjusted local prices and patches `basePlans[].regionalConfigs[].price` |
 | **Promo-code generation** | **Console-only** (no API). Click path below. |
 
 ## Setup
@@ -62,6 +63,52 @@ Attribution flows back via `purchases.subscriptionsv2.get` →
 `code-<lowercased-code>`). Because eligibility is developer-determined, an offer is
 only ever charged when the app passes its token — there's no risk of Play showing a
 30%-off price to everyone.
+
+## Regional prices — `set-prices`
+
+Applies **per-country base-plan prices** from a frozen pricing matrix
+(`corpan/infra/pricing/pricing-matrix.json`; another team fills the values). For each
+country in `countryTier` it resolves the country's tier, reads that tier's
+**`android.monthly`** or **`android.annual`** USD target (per `--period`), converts the
+USD to a sensible **tax-adjusted local price**, and patches that price onto the base
+plan's `regionalConfigs[].price`.
+
+```bash
+# Dry-run prints a table (region → target USD → local price) + the exact patch body.
+python play_monetization.py set-prices --product corpan.sub.monthly --base-plan corpan-sub-monthly --period monthly --matrix ../pricing/pricing-matrix.json
+python play_monetization.py set-prices --product corpan.sub.annual  --base-plan corpan-sub-anual  --period annual  --matrix ../pricing/pricing-matrix.json
+# Apply (gated). --only limits to a subset of ISO-2 countries.
+python play_monetization.py set-prices --product corpan.sub.monthly --base-plan corpan-sub-monthly --period monthly --matrix ../pricing/pricing-matrix.json --only US,ID,IN --yes
+```
+
+**How the price is computed.** Play region codes are already ISO 3166-1 alpha-2, so
+`countryTier` keys map 1:1 to regions. The tool groups countries by their USD target and
+makes **one** [`monetization.convertRegionPrices`][cvt] call per distinct USD amount —
+that endpoint returns Google's exchange-rate + **tax-adjusted** local `Money` for every
+region at once (`convertedRegionPrices[<REGION>].price` is tax-inclusive). Each local
+`Money` is then **rounded to a clean shelf price**: zero-decimal currencies (JPY, KRW,
+IDR, VND…) round to a whole unit and to a tidy step for large amounts (nearest 100 ≥1000,
+nearest 10 ≥100, e.g. ¥1500 / Rp149000); 2-decimal currencies round to the cent. (We
+deliberately don't do per-currency psychological `.99` pricing — that needs rules we don't
+want to own.) Countries the base plan doesn't sell in, or that `convertRegionPrices`
+returns no price for (non-billable at `regionsVersion 2022/02`, like MN), are **skipped
+and logged** — same dodge as the trial/affiliate tools.
+
+**How it writes.** Read-modify-write: it GETs the whole subscription, sets `price` on
+**only** the targeted regions of the target base plan's `regionalConfigs[]` (leaving every
+other region, field, and base plan untouched), then [`subscriptions.patch`][patch] with
+`updateMask=basePlans` and `regionsVersion.version=2022/02`. `--only` countries not listed
+in the matrix fall back to the `DEFAULT` tier.
+
+[cvt]: https://developers.google.com/android-publisher/api-ref/rest/v3/monetization/convertRegionPrices
+[patch]: https://developers.google.com/android-publisher/api-ref/rest/v3/monetization.subscriptions/patch
+
+> ⚠️ **Existing subscribers are NOT migrated.** A base-plan price change affects **new
+> purchases only**; existing subscribers keep their current price until you run a Play
+> **price-change cohort** (Console → Subscriptions → *Change price*, or the dedicated price
+> change flow). `set-prices` never silently migrates anyone. **Decreases** are low-risk and
+> take effect for new buyers immediately; for **increases**, run the opt-in/notify cohort
+> separately so existing subscribers are handled per Play policy.
 
 ## Promo codes (Console-only fallback)
 After `backcompat`, the subscription becomes eligible. Then:

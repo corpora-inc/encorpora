@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "unit": "USD-equivalent target; tools resolve to local App Store / Play price points and local currency. Values are the intended shelf price BEFORE local VAT/GST where stores add it on top.",
+  "annualMonthlyRatio": "~7.5x monthly (annual is priced at roughly 7.0-7.7x the monthly rate, i.e. a ~36-42% discount vs paying 12x monthly). iOS annual sits slightly above Android annual within each tier.",
+  "notes": "Corpan is offline-first with ~$0 marginal cost per subscriber, so the strategy is volume via localized willingness-to-pay capture. Prices target at or slightly below Duolingo Super (individual) in each market. iOS >= Android within every tier; the iOS premium widens in mid/low tiers because the iPhone installed base there skews much wealthier than the Android base. Tiers ordered T1 (richest) -> T8 (lowest).",
+  "tiers": [
+    {
+      "id": "T1",
+      "label": "Top wealth (US, CH, NO, SG, AU, DK, IS, LU, IE, QA, AE-iOS-skew, ...)",
+      "android": { "monthly": 9.99, "annual": 79.99 },
+      "ios":     { "monthly": 12.99, "annual": 99.99 }
+    },
+    {
+      "id": "T2",
+      "label": "High income - core Western Europe / wealthy Asia-Pacific (UK, DE, FR, CA, JP, KR, NL, SE, FI, BE, AT, NZ, IL, ...)",
+      "android": { "monthly": 8.99, "annual": 69.99 },
+      "ios":     { "monthly": 10.99, "annual": 84.99 }
+    },
+    {
+      "id": "T3",
+      "label": "High income - peripheral / Southern + Central Europe, Gulf (ES, IT, PT, GR, CZ, PL, EE, SA, KW, BH, ...)",
+      "android": { "monthly": 6.99, "annual": 54.99 },
+      "ios":     { "monthly": 8.99, "annual": 67.99 }
+    },
+    {
+      "id": "T4",
+      "label": "Upper-middle income - wealthier emerging (CL, UY, CR, PA, MY, CN, RU, RO, HR, HU, ...)",
+      "android": { "monthly": 4.99, "annual": 39.99 },
+      "ios":     { "monthly": 6.99, "annual": 49.99 }
+    },
+    {
+      "id": "T5",
+      "label": "Upper-middle income - large emerging (BR, MX, TR, ZA, CO, TH, AR, PE, RS, ...)",
+      "android": { "monthly": 3.49, "annual": 27.99 },
+      "ios":     { "monthly": 4.99, "annual": 35.99 }
+    },
+    {
+      "id": "T6",
+      "label": "Lower-middle income - SEA / MENA / LATAM mass market (ID, PH, VN, EG, MA, UA, IQ, BO, ...)",
+      "android": { "monthly": 1.99, "annual": 14.99 },
+      "ios":     { "monthly": 2.99, "annual": 22.99 }
+    },
+    {
+      "id": "T7",
+      "label": "Lower-middle income - South Asia + frontier (IN, PK, BD, LK, NP, KE, GH, NG-iOS, ...)",
+      "android": { "monthly": 0.99, "annual": 9.99 },
+      "ios":     { "monthly": 1.99, "annual": 14.99 }
+    },
+    {
+      "id": "T8",
+      "label": "Low income / deepest discount floor (NG, ET, TZ, UG, AF, MM, KH, LA, ...)",
+      "android": { "monthly": 0.99, "annual": 6.99 },
+      "ios":     { "monthly": 1.49, "annual": 11.99 }
+    }
+  ],
+  "countryTier": {
+    "US": "T1", "CH": "T1", "NO": "T1", "SG": "T1", "AU": "T1", "DK": "T1",
+    "IS": "T1", "LU": "T1", "IE": "T1", "QA": "T1", "HK": "T1", "MO": "T1",
+
+    "GB": "T2", "DE": "T2", "FR": "T2", "CA": "T2", "JP": "T2", "KR": "T2",
+    "NL": "T2", "SE": "T2", "FI": "T2", "BE": "T2", "AT": "T2", "NZ": "T2",
+    "IL": "T2", "AE": "T2", "TW": "T2",
+
+    "ES": "T3", "IT": "T3", "PT": "T3", "GR": "T3", "CY": "T3", "MT": "T3",
+    "SI": "T3", "CZ": "T3", "EE": "T3", "LT": "T3", "LV": "T3", "SK": "T3",
+    "PL": "T3", "SA": "T3", "KW": "T3", "BH": "T3", "OM": "T3", "BN": "T3",
+
+    "CL": "T4", "UY": "T4", "CR": "T4", "PA": "T4", "MY": "T4", "CN": "T4",
+    "RU": "T4", "RO": "T4", "HR": "T4", "HU": "T4", "BG": "T4", "TT": "T4",
+    "BS": "T4", "BB": "T4", "KZ": "T4", "GE": "T4", "AM": "T4", "AZ": "T4",
+    "MU": "T4", "SC": "T4", "MV": "T4",
+
+    "BR": "T5", "MX": "T5", "TR": "T5", "ZA": "T5", "CO": "T5", "TH": "T5",
+    "AR": "T5", "PE": "T5", "RS": "T5", "DO": "T5", "EC": "T5", "PY": "T5",
+    "GT": "T5", "JM": "T5", "BW": "T5", "NA": "T5", "AL": "T5", "MK": "T5",
+    "ME": "T5", "BA": "T5", "MD": "T5", "JO": "T5", "LB": "T5", "BY": "T5",
+    "FJ": "T5",
+
+    "ID": "T6", "PH": "T6", "VN": "T6", "EG": "T6", "MA": "T6", "UA": "T6",
+    "IQ": "T6", "BO": "T6", "SV": "T6", "HN": "T6", "NI": "T6", "TN": "T6",
+    "DZ": "T6", "UZ": "T6", "KG": "T6", "MN": "T6", "VE": "T6", "PS": "T6",
+    "SZ": "T6", "AO": "T6", "ZW": "T6", "CV": "T6", "PG": "T6",
+
+    "IN": "T7", "PK": "T7", "BD": "T7", "LK": "T7", "NP": "T7", "KE": "T7",
+    "GH": "T7", "CI": "T7", "SN": "T7", "CM": "T7", "ZM": "T7", "BT": "T7",
+    "KH": "T7", "LA": "T7", "MM": "T7", "BJ": "T7", "GA": "T7",
+
+    "NG": "T8", "ET": "T8", "TZ": "T8", "UG": "T8", "AF": "T8", "RW": "T8",
+    "MZ": "T8", "MW": "T8", "ML": "T8", "BF": "T8", "NE": "T8", "TD": "T8",
+    "CD": "T8", "MG": "T8", "SL": "T8", "LR": "T8", "GN": "T8", "TG": "T8",
+    "SS": "T8", "SO": "T8", "YE": "T8", "SD": "T8", "TJ": "T8", "TM": "T8",
+    "HT": "T8", "GM": "T8", "GW": "T8", "MR": "T8", "BI": "T8", "CF": "T8",
+    "LS": "T8", "BZ": "T8", "GY": "T8", "SR": "T8",
+
+    "DEFAULT": "T5"
+  }
+}

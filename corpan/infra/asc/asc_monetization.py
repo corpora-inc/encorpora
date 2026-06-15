@@ -21,6 +21,12 @@ What this DOES (no App Store Connect web UI needed):
                     discount only via a fixed price-point rung — there is no raw %).
   - pricepoints   : read-only helper — list a subscription's price-point ids for a
                     territory (you need a price-point id to price a paid offer/code).
+  - set-prices    : apply REGIONAL per-territory subscription prices from a pricing
+                    matrix. Maps matrix country (ISO-2) -> ASC territory (ISO-3), picks
+                    the USA rung nearest the tier's USD target as the anchor, asks
+                    Apple's `equalizations` for the equivalent rung per territory, and
+                    POSTs /v1/subscriptionPrices (one per territory) with
+                    preserveCurrentPrice ON by default (current subs unaffected).
 
 Auth — App Store Connect API (ES256 JWT):
   We sign a short-lived (<=20 min) ES256 JWT with an ASC API .p8 private key.
@@ -111,6 +117,119 @@ def _duration_from_months(months: int) -> str:
             f"Allowed months: {sorted(DURATION_BY_MONTHS)}. Offer codes max out at 6 months."
         )
     return DURATION_BY_MONTHS[months]
+
+
+# ------------------------------------------------------- pricing matrix + ISO map
+
+# ISO 3166-1 alpha-2 -> alpha-3. App Store Connect TERRITORY ids are ISO-3 (e.g.
+# US->USA, ID->IDN, IN->IND), while the pricing matrix keys countries by ISO-2.
+# This covers every App Store territory (Apple ships in ~175); a country missing
+# here is simply skipped with a clear reason (never guessed). Apple uses a couple
+# of non-ISO ids for sub-regions; those are added explicitly below the ISO block.
+ISO2_TO_ISO3 = {
+    "AD": "AND", "AE": "ARE", "AF": "AFG", "AG": "ATG", "AI": "AIA", "AL": "ALB",
+    "AM": "ARM", "AO": "AGO", "AR": "ARG", "AT": "AUT", "AU": "AUS", "AW": "ABW",
+    "AZ": "AZE", "BA": "BIH", "BB": "BRB", "BD": "BGD", "BE": "BEL", "BF": "BFA",
+    "BG": "BGR", "BH": "BHR", "BI": "BDI", "BJ": "BEN", "BM": "BMU", "BN": "BRN",
+    "BO": "BOL", "BR": "BRA", "BS": "BHS", "BT": "BTN", "BW": "BWA", "BY": "BLR",
+    "BZ": "BLZ", "CA": "CAN", "CD": "COD", "CG": "COG", "CH": "CHE", "CI": "CIV",
+    "CL": "CHL", "CM": "CMR", "CN": "CHN", "CO": "COL", "CR": "CRI", "CV": "CPV",
+    "CY": "CYP", "CZ": "CZE", "DE": "DEU", "DK": "DNK", "DM": "DMA", "DO": "DOM",
+    "DZ": "DZA", "EC": "ECU", "EE": "EST", "EG": "EGY", "ES": "ESP", "ET": "ETH",
+    "FI": "FIN", "FJ": "FJI", "FM": "FSM", "FR": "FRA", "GA": "GAB", "GB": "GBR",
+    "GD": "GRD", "GE": "GEO", "GH": "GHA", "GM": "GMB", "GR": "GRC", "GT": "GTM",
+    "GW": "GNB", "GY": "GUY", "HK": "HKG", "HN": "HND", "HR": "HRV", "HU": "HUN",
+    "ID": "IDN", "IE": "IRL", "IL": "ISR", "IN": "IND", "IQ": "IRQ", "IS": "ISL",
+    "IT": "ITA", "JM": "JAM", "JO": "JOR", "JP": "JPN", "KE": "KEN", "KG": "KGZ",
+    "KH": "KHM", "KN": "KNA", "KR": "KOR", "KW": "KWT", "KY": "CYM", "KZ": "KAZ",
+    "LA": "LAO", "LB": "LBN", "LC": "LCA", "LI": "LIE", "LK": "LKA", "LR": "LBR",
+    "LT": "LTU", "LU": "LUX", "LV": "LVA", "LY": "LBY", "MA": "MAR", "MD": "MDA",
+    "ME": "MNE", "MG": "MDG", "MK": "MKD", "ML": "MLI", "MM": "MMR", "MN": "MNG",
+    "MO": "MAC", "MR": "MRT", "MS": "MSR", "MT": "MLT", "MU": "MUS", "MW": "MWI",
+    "MX": "MEX", "MY": "MYS", "MZ": "MOZ", "NA": "NAM", "NE": "NER", "NG": "NGA",
+    "NI": "NIC", "NL": "NLD", "NO": "NOR", "NP": "NPL", "NR": "NRU", "NZ": "NZL",
+    "OM": "OMN", "PA": "PAN", "PE": "PER", "PG": "PNG", "PH": "PHL", "PK": "PAK",
+    "PL": "POL", "PT": "PRT", "PW": "PLW", "PY": "PRY", "QA": "QAT", "RO": "ROU",
+    "RS": "SRB", "RU": "RUS", "RW": "RWA", "SA": "SAU", "SB": "SLB", "SC": "SYC",
+    "SE": "SWE", "SG": "SGP", "SI": "SVN", "SK": "SVK", "SL": "SLE", "SN": "SEN",
+    "SR": "SUR", "ST": "STP", "SV": "SLV", "SZ": "SWZ", "TC": "TCA", "TD": "TCD",
+    "TH": "THA", "TJ": "TJK", "TM": "TKM", "TN": "TUN", "TO": "TON", "TR": "TUR",
+    "TT": "TTO", "TW": "TWN", "TZ": "TZA", "UA": "UKR", "UG": "UGA", "US": "USA",
+    "UY": "URY", "UZ": "UZB", "VC": "VCT", "VE": "VEN", "VG": "VGB", "VN": "VNM",
+    "VU": "VUT", "YE": "YEM", "ZA": "ZAF", "ZM": "ZMB", "ZW": "ZWE",
+    "CF": "CAF", "GN": "GIN", "HT": "HTI", "LS": "LSO", "MV": "MDV",
+    "PS": "PSE", "SD": "SDN", "SO": "SOM", "SS": "SSD", "TG": "TGO",
+}
+
+
+def _matrix_country_to_territory(iso2: str) -> str | None:
+    """Map a pricing-matrix country (ISO 3166-1 alpha-2) -> ASC territory (ISO-3)."""
+    return ISO2_TO_ISO3.get((iso2 or "").strip().upper())
+
+
+def _load_pricing_matrix(path: str) -> dict:
+    """Load + minimally validate the frozen pricing matrix.
+
+    Schema (corpan/infra/pricing/pricing-matrix.json):
+      { "version": 1,
+        "tiers": [ {"id":"T1","label":"Top",
+                    "ios":{"monthly":12.99,"annual":99.99},"android":{...}}, ... ],
+        "countryTier": { "US":"T1", "ID":"T6", "DEFAULT":"T3", ... } }
+    The values are filled by another team; we only read `ios.<period>` (USD-equiv).
+    A missing FILE is a clean, friendly exit (it may not exist yet).
+    """
+    if not os.path.exists(path):
+        sys.exit(
+            f"Pricing matrix not found: {path}\n"
+            f"Expected the frozen schema "
+            f'{{ "version":1, "tiers":[{{"id":"T1","ios":{{"monthly":..,"annual":..}}}}], '
+            f'"countryTier":{{"US":"T1","DEFAULT":"T3"}} }}.\n'
+            f"(Another team fills the values; build the prices once it exists.)"
+        )
+    try:
+        with open(path, "r") as f:
+            m = json.load(f)
+    except (OSError, json.JSONDecodeError) as e:
+        sys.exit(f"Could not read pricing matrix {path}: {e}")
+    if not isinstance(m.get("tiers"), list) or not m["tiers"]:
+        sys.exit(f"Pricing matrix {path} has no 'tiers' array.")
+    if not isinstance(m.get("countryTier"), dict) or not m["countryTier"]:
+        sys.exit(f"Pricing matrix {path} has no 'countryTier' map.")
+    return m
+
+
+def _tier_targets_by_country(matrix: dict, period: str) -> dict:
+    """Resolve {ISO2_country: ios_<period>_usd_target} for every mapped country.
+
+    Walks `countryTier` (ISO2 -> tierId), looks up the tier's `ios.<period>` USD
+    target, and folds in a DEFAULT tier for unlisted countries IF the matrix
+    supplies one (countryTier["DEFAULT"]). Returns ONLY countries with a resolvable
+    numeric target (a tier id with no matching tier, or a missing ios.<period>, is
+    dropped — never priced from a guess).
+    """
+    tiers = {t.get("id"): t for t in matrix["tiers"] if isinstance(t, dict)}
+
+    def target_for_tier(tier_id):
+        tier = tiers.get(tier_id)
+        if not tier:
+            return None
+        ios = tier.get("ios") or {}
+        val = ios.get(period)
+        try:
+            val = float(val)
+        except (TypeError, ValueError):
+            return None
+        return val if val > 0 else None
+
+    out = {}
+    for country, tier_id in matrix["countryTier"].items():
+        if country == "DEFAULT":
+            continue
+        tgt = target_for_tier(tier_id)
+        if tgt is not None:
+            out[country.strip().upper()] = tgt
+    # DEFAULT only seeds countries we otherwise know how to map (see set-prices).
+    return out
 
 
 # --------------------------------------------------------------------------- auth
@@ -367,6 +486,41 @@ def nearest_point(points: list, target: float) -> dict:
     if at_or_below:
         return max(at_or_below, key=lambda p: p["price"])
     return min(priced, key=lambda p: abs(p["price"] - target))
+
+
+def equalized_points(c: Client, subscription_id: str, source_point_id: str) -> dict:
+    """Apple's EQUALIZED price point in every territory for one source point.
+
+    GET /v1/subscriptionPricePoints/{id}/equalizations?include=territory&limit=8000
+    Returns {territoryId: {"id": pricePointId, "price": localCustomerPrice}}.
+
+    This is the ROBUST USD->local anchor: we pick ONE USA rung (USD) as the anchor,
+    then ask Apple for the equivalent rung in every territory. Apple has already done
+    the FX + perceived-price rounding (its own currency conversion + .99 endings), so
+    we never hand-roll exchange rates. Each equalization is itself a
+    subscriptionPricePoint, so its id is exactly what `subscriptionPrices` references
+    and its `attributes.customerPrice` is the LOCAL amount.
+    Ref: https://developer.apple.com/documentation/appstoreconnectapi/get-v1-subscriptionpricepoints-_id_-equalizations
+    Workflow background: https://developer.apple.com/forums/thread/718915
+    """
+    out, included = {}, {}
+    page = c.get(
+        f"/subscriptionPricePoints/{source_point_id}/equalizations",
+        {"include": "territory", "limit": 200},
+    )
+    while True:
+        for inc in page.get("included", []):
+            included[(inc.get("type"), inc.get("id"))] = inc
+        for pp in page.get("data", []):
+            rels = pp.get("relationships") or {}
+            terr = (((rels.get("territory") or {}).get("data")) or {}).get("id")
+            if terr:
+                out[terr] = {"id": pp["id"], "price": _price_of(pp)}
+        nxt = (page.get("links") or {}).get("next")
+        if not nxt:
+            break
+        page = c.get(nxt)
+    return out
 
 
 # --------------------------------------------------------------------------- list
@@ -850,6 +1004,207 @@ def _truncate_offer_body_for_print(body, n):
     return b
 
 
+# --------------------------------------------------------------------- set-prices
+
+
+def _subscription_price_body(subscription_id, territory_id, price_point_id,
+                             preserve_existing=True, start_date=None):
+    """One `subscriptionPrices` (price CHANGE) create body, scoped to ONE territory.
+
+    Apple sets a subscription's recurring price by binding it to a fixed price-point
+    rung (you cannot send an arbitrary number). One POST per territory — there is no
+    all-territory batch for `subscriptionPrices` (confirmed shape:
+      https://developer.apple.com/forums/thread/773452 ,
+      https://gist.github.com/astashov/79dd4ef4e91ea012710145623bfe0984 ).
+
+    Ref: https://developer.apple.com/documentation/appstoreconnectapi/post-v1-subscriptionprices
+    Schema: SubscriptionPriceCreateRequest
+      data.type = "subscriptionPrices"
+      data.attributes:
+        preserveCurrentPrice (Bool) — when TRUE, CURRENT subscribers keep their
+          existing price; only NEW purchases get this new price. When FALSE, the
+          change applies to everyone (an INCREASE then needs Apple/consumer consent).
+        startDate (Date "YYYY-MM-DD", optional) — schedule the change; omit = ASAP.
+      data.relationships (ALL required):
+        subscription -> subscriptions
+        territory    -> territories
+        subscriptionPricePoint -> subscriptionPricePoints (the chosen rung)
+    """
+    attrs = {"preserveCurrentPrice": bool(preserve_existing)}
+    if start_date:
+        attrs["startDate"] = start_date  # "YYYY-MM-DD"
+    return {
+        "data": {
+            "type": "subscriptionPrices",
+            "attributes": attrs,
+            "relationships": {
+                "subscription": {"data": {"type": "subscriptions", "id": subscription_id}},
+                "territory": {"data": {"type": "territories", "id": territory_id}},
+                "subscriptionPricePoint": {
+                    "data": {"type": "subscriptionPricePoints", "id": price_point_id}
+                },
+            },
+        }
+    }
+
+
+def _resolve_anchor_point(c: Client, subscription_id, usd_target):
+    """Pick the USA price-point rung (USD) nearest `usd_target` — the equalization anchor.
+
+    USA price points expose customerPrice in USD, so the matrix's `ios.<period>`
+    (USD-equivalent) target maps directly here. `nearest_point` prefers the highest
+    rung <= target (don't overshoot the intended price upward).
+    Returns {"id","price"} or {} if USA has no ladder.
+    """
+    usa_ladder = price_points(c, subscription_id, "USA")
+    return nearest_point(usa_ladder, usd_target)
+
+
+def cmd_set_prices(args):
+    """Apply REGIONAL per-territory subscription prices from the pricing matrix.
+
+    For the chosen --period, for each targeted territory:
+      1. matrix country (ISO2) -> ASC territory (ISO3) via ISO2_TO_ISO3.
+      2. matrix `ios.<period>` USD target -> USA anchor rung (USD) -> Apple's
+         EQUALIZED rung in that territory (Apple's own FX + perceived-price rounding;
+         we never hand-roll exchange rates). One equalizations call per DISTINCT USD
+         target, cached, so a 175-territory run makes only as many equalization
+         lookups as there are distinct tier prices (~a handful).
+      3. POST /v1/subscriptionPrices binding that rung, with preserveCurrentPrice
+         (=--preserve-existing, ON by default: current subscribers unaffected, only
+         new purchases get the new price). One POST per territory.
+    Per-territory failures SKIP + log (like `trial`). Dry-run until --yes.
+    """
+    period = args.period  # "monthly" | "annual"
+    product = args.product
+    matrix = _load_pricing_matrix(args.matrix)
+    targets_by_country = _tier_targets_by_country(matrix, period)
+    default_tier = (matrix.get("countryTier") or {}).get("DEFAULT")
+
+    c = Client(_load_creds(args))
+    sub = _resolve_subscription(c, product)
+    sid = sub["id"]
+
+    # Build the per-territory USD target table, mapping ISO2 -> ISO3.
+    # Optionally seed DEFAULT for any KNOWN territory the matrix didn't list
+    # explicitly, so a partial matrix still prices the whole world deterministically.
+    default_usd = None
+    if default_tier:
+        tier = next((t for t in matrix["tiers"] if t.get("id") == default_tier), None)
+        if tier:
+            try:
+                v = float((tier.get("ios") or {}).get(period))
+                default_usd = v if v > 0 else None
+            except (TypeError, ValueError):
+                default_usd = None
+
+    # territory(ISO3) -> (usd_target, source_country)
+    terr_target, unmapped = {}, []
+    for country, usd in targets_by_country.items():
+        terr = _matrix_country_to_territory(country)
+        if not terr:
+            unmapped.append(country)
+            continue
+        terr_target[terr] = (usd, country)
+    if default_usd is not None:
+        for iso2, terr in ISO2_TO_ISO3.items():
+            terr_target.setdefault(terr, (default_usd, "DEFAULT"))
+
+    # --only filters to explicit ASC territory ids (ISO-3, e.g. USA,IDN).
+    only = set()
+    if args.only:
+        only = {t.strip().upper() for chunk in args.only for t in chunk.split(",") if t.strip()}
+        terr_target = {t: v for t, v in terr_target.items() if t in only}
+        missing = only - set(terr_target)
+        if missing:
+            print(f"(note: --only territories not resolvable from the matrix, skipped: {', '.join(sorted(missing))})")
+
+    if not terr_target:
+        sys.exit("No territories to price (matrix produced no mapped targets; check countryTier / ios."
+                 + period + " / --only).")
+
+    # Resolve the equalized rung per territory, caching one equalizations call per
+    # DISTINCT USD anchor (tiers share prices, so this is a few calls, not 175).
+    eq_cache = {}  # usd_target -> {territoryId: {"id","price"}}
+    anchor_cache = {}  # usd_target -> anchor {"id","price"}
+
+    def equalized_for(usd):
+        if usd not in anchor_cache:
+            anchor_cache[usd] = _resolve_anchor_point(c, sid, usd)
+        anchor = anchor_cache[usd]
+        if not anchor:
+            return None, {}
+        if usd not in eq_cache:
+            eq_cache[usd] = equalized_points(c, sid, anchor["id"])
+        return anchor, eq_cache[usd]
+
+    resolved, skipped, rows = [], [], []
+    for terr in sorted(terr_target):
+        usd, country = terr_target[terr]
+        anchor, eq = equalized_for(usd)
+        if not anchor:
+            skipped.append((terr, f"USA anchor for ${usd} not found (sub not priced in USA?)"))
+            continue
+        chosen = eq.get(terr)
+        if not chosen or not chosen.get("id"):
+            skipped.append((terr, f"no equalized rung (sub not sold in {terr}?)"))
+            continue
+        resolved.append((terr, chosen["id"]))
+        rows.append((terr, country, usd, chosen["price"], chosen["id"]))
+
+    if not resolved:
+        sys.exit("Could not resolve an equalized price point in ANY targeted territory. "
+                 "Check the sub is priced in USA (the anchor) and sold in the targets.")
+
+    # Resolution table (always show USA first — the integrator's reference).
+    rows_sorted = sorted(rows, key=lambda r: (r[0] != "USA", r[0]))
+    print(f"set-prices on {product} (id {sid}) period={period}: "
+          f"resolved {len(resolved)}/{len(terr_target)} territories ({len(skipped)} skipped).")
+    print(f"preserve-existing={'ON (current subs keep their price)' if args.preserve_existing else 'OFF (applies to everyone)'}"
+          + (f"  startDate={args.start_date}" if args.start_date else ""))
+    print("\nterritory: USD target -> chosen rung (local customerPrice) [source country]:")
+    for terr, country, usd, local_price, pp_id in rows_sorted[:12]:
+        print(f"  {terr}: ${usd:.2f}  ->  {local_price}  point={pp_id}  [{country}]")
+    if len(rows_sorted) > 12:
+        print(f"  ... ({len(rows_sorted) - 12} more territories resolved)")
+    if unmapped:
+        print(f"\nunmapped matrix countries (no ISO2->ISO3 entry, skipped): {', '.join(sorted(unmapped))}")
+    if skipped:
+        print(f"\nskipped {len(skipped)} territories:")
+        for terr, why in skipped[:12]:
+            print(f"  {terr}: {why}")
+
+    # Show a couple of real request bodies (with resolved rung ids).
+    print("\nrepresentative request bodies (POST /v1/subscriptionPrices — one per territory):")
+    for terr, _country, _usd, _lp, pp_id in rows_sorted[:2]:
+        print(json.dumps(
+            _subscription_price_body(sid, terr, pp_id,
+                                     preserve_existing=args.preserve_existing,
+                                     start_date=args.start_date),
+            indent=2,
+        ))
+
+    if not args.yes:
+        print(f"\n[dry-run] add --yes to POST {len(resolved)} per-territory price changes.")
+        return
+
+    applied, failed = 0, []
+    for terr, pp_id in resolved:
+        body = _subscription_price_body(sid, terr, pp_id,
+                                        preserve_existing=args.preserve_existing,
+                                        start_date=args.start_date)
+        try:
+            c.post("/subscriptionPrices", body)
+            applied += 1
+        except SystemExit as e:
+            failed.append((terr, str(e)))
+    print(f"\napplied {applied}/{len(resolved)} territory price changes.")
+    if failed:
+        print(f"{len(failed)} failed (often: sub in review / not sold there):")
+        for terr, msg in failed[:12]:
+            print(f"  {terr}: {msg}")
+
+
 # ---------------------------------------------------------------------------- main
 
 
@@ -928,6 +1283,40 @@ def main():
     sp.add_argument("--expires", help="custom code expiration YYYY-MM-DD (optional)")
     sp.add_argument("--yes", action="store_true", help="actually POST (default dry-run)")
     sp.set_defaults(func=cmd_code_discount)
+
+    sp = sub.add_parser(
+        "set-prices",
+        help="apply REGIONAL per-territory subscription prices from a pricing matrix",
+        description=(
+            "Apply REGIONAL per-territory recurring prices to a subscription from the frozen\n"
+            "pricing matrix (corpan/infra/pricing/pricing-matrix.json). For each targeted\n"
+            "territory we map the matrix country (ISO-2) -> ASC territory (ISO-3), take the\n"
+            "tier's `ios.<period>` USD-equivalent target, pick the USA rung nearest it (USD\n"
+            "anchor), then ask Apple's `equalizations` endpoint for the EQUIVALENT rung in that\n"
+            "territory (Apple's own FX + perceived-price rounding — no hand-rolled exchange\n"
+            "rates), and POST /v1/subscriptionPrices binding it (one POST per territory).\n\n"
+            "preserveCurrentPrice defaults ON: CURRENT subscribers keep their price; only NEW\n"
+            "purchases get the new price (low-risk, esp. for our mostly-DECREASE poorer-market\n"
+            "moves). Pass --no-preserve-existing to apply to everyone (an INCREASE then needs\n"
+            "Apple/consumer consent). Dry-run prints the resolution table + sample bodies; --yes\n"
+            "applies. Per-territory failures skip + log."
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    sp.add_argument("--product", required=True, help="subscription productId, e.g. corpan.sub.monthly")
+    sp.add_argument("--period", required=True, choices=["monthly", "annual"],
+                    help="which matrix `ios.<period>` USD target to apply")
+    sp.add_argument("--matrix", default="../pricing/pricing-matrix.json",
+                    help="path to pricing-matrix.json (default ../pricing/pricing-matrix.json)")
+    sp.add_argument("--only", nargs="*",
+                    help="limit to these ASC territory ids (ISO-3), e.g. --only USA,IDN,IND (default: ALL mapped)")
+    sp.add_argument("--preserve-existing", dest="preserve_existing", action="store_true", default=True,
+                    help="current subscribers keep their price; only new purchases get the new price (DEFAULT)")
+    sp.add_argument("--no-preserve-existing", dest="preserve_existing", action="store_false",
+                    help="apply the new price to EVERYONE (an increase needs Apple/consumer consent)")
+    sp.add_argument("--start-date", help="schedule the change YYYY-MM-DD (optional; omit = ASAP)")
+    sp.add_argument("--yes", action="store_true", help="actually POST (default dry-run)")
+    sp.set_defaults(func=cmd_set_prices)
 
     args = p.parse_args()
     args.func(args)

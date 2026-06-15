@@ -19,6 +19,15 @@ What this DOES (no Console UI needed):
   - backcompat  : set a base plan's autoRenewingBasePlanType.legacyCompatible = true
                   (read-modify-write patch). This is the flag Play demands before it
                   will let you create a PROMO CODE for the subscription.
+  - set-prices  : apply REGIONAL per-country base-plan prices from a pricing matrix
+                  (corpan/infra/pricing/pricing-matrix.json). For each country it
+                  resolves its tier's android target (USD), converts that USD to a
+                  sensible tax-adjusted LOCAL price via monetization.convertRegionPrices,
+                  rounds to a clean local price, and read-modify-writes ONLY the targeted
+                  regions' price on basePlans[].regionalConfigs[] (updateMask=basePlans).
+                  AFFECTS NEW PURCHASES ONLY — existing subscribers keep their price
+                  unless you run a price-change cohort (see README); this tool never
+                  silently migrates existing subscribers.
 
 What this CANNOT do (Google has no API for it):
   - Generating PROMO CODES / "Promotions" is Console-only. After `backcompat`,
@@ -45,6 +54,8 @@ Usage:
   python play_monetization.py backcompat --product corpan.sub.monthly --base-plan <id> --yes
   python play_monetization.py affiliate-offer --product corpan.sub.monthly --base-plan corpan-sub-monthly --code IAN30
   python play_monetization.py affiliate-offer --product corpan.sub.annual --base-plan corpan-sub-anual --code IAN30 --activate --yes
+  python play_monetization.py set-prices --product corpan.sub.monthly --base-plan corpan-sub-monthly --period monthly --matrix ../pricing/pricing-matrix.json
+  python play_monetization.py set-prices --product corpan.sub.annual  --base-plan corpan-sub-anual  --period annual  --matrix ../pricing/pricing-matrix.json --only US,ID,IN --yes
 """
 import argparse
 import json
@@ -352,6 +363,262 @@ def cmd_backcompat(args):
     print("\nDone. Promo codes can now be created in: Play Console > Monetize with Play > Promo codes.")
 
 
+# ---------------------------------------------------------------------------
+# set-prices : apply REGIONAL per-country base-plan prices from a pricing matrix.
+# ---------------------------------------------------------------------------
+#
+# API mechanics (androidpublisher v3, verified against the docs):
+#
+#   USD target -> local Money:  monetization.convertRegionPrices
+#     POST .../applications/{packageName}/pricing:convertRegionPrices
+#     body = {"price": {currencyCode:"USD", units, nanos}}   # tax-EXCLUSIVE input
+#     -> { "convertedRegionPrices": { "<REGION>": { "regionCode", "price"<-tax-INCLUSIVE Money,
+#                                                    "taxAmount" }, ... },
+#          "convertedOtherRegionsPrice": { "usdPrice", "eurPrice" },
+#          "regionVersion": {...} }
+#     One call returns Google's exchange-rate + tax-adjusted local Money for EVERY region,
+#     so we make ONE call per distinct USD target (not per country) and index the result.
+#     https://developers.google.com/android-publisher/api-ref/rest/v3/monetization/convertRegionPrices
+#
+#   Apply the local price:  read-modify-write monetization.subscriptions.patch
+#     We GET the whole subscription, locate the target base plan, and set
+#     basePlans[].regionalConfigs[].price (a Money) ONLY on the regions we're targeting,
+#     leaving every other region / field untouched, then patch with
+#     updateMask="basePlans" and regionsVersion.version=2022/02. RegionalBasePlanConfig =
+#     { regionCode, newSubscriberAvailability, price:{currencyCode,units,nanos} }.
+#     https://developers.google.com/android-publisher/api-ref/rest/v3/monetization.subscriptions/patch
+#
+# Money: { currencyCode (ISO 4217), units (string whole units), nanos (int, 10^-9, 0..1e9) }.
+# https://developers.google.com/android-publisher/api-ref/rest/v3/Money
+#
+# Existing subscribers: a base-plan price change affects NEW purchases only. Existing
+# subscribers keep their current price until you run a Play "price change" cohort
+# (Console / dedicated API), which we deliberately do NOT do here. Decreases are
+# low-risk; increases need an opt-in/notify cohort. See README.
+
+
+def _money_to_float(money) -> float:
+    if not money:
+        return 0.0
+    return int(money.get("units") or 0) + (int(money.get("nanos") or 0) / 1e9)
+
+
+def _money_str(money) -> str:
+    if not money:
+        return "—"
+    return f"{_money_to_float(money):.2f} {money.get('currencyCode', '?')}"
+
+
+# Currencies conventionally quoted WITHOUT minor units (no decimals). Rounding to a clean
+# price for these means whole units (nanos=0); a stray fractional unit looks broken.
+_ZERO_DECIMAL_CCY = {
+    "JPY", "KRW", "VND", "IDR", "CLP", "ISK", "HUF", "PYG", "UGX", "RWF", "VUV",
+    "XAF", "XOF", "XPF", "DJF", "GNF", "KMF", "MGA", "BIF",
+}
+
+
+def _clean_local_money(money) -> dict:
+    """Round Google's converted Money to a clean human price in its own currency.
+
+    Strategy (keep it boring & predictable — not psychological .99 pricing, which
+    would need per-currency rules we don't want to own):
+      - zero-decimal currencies (JPY/KRW/IDR/…): round to a whole unit (nanos=0).
+        For larger amounts, round to a tidy step (nearest 100 >=1000, nearest 10 >=100)
+        so we get e.g. ¥1500 / Rp149000, not ¥1487.
+      - everything else: round to 2 decimals (nanos to the nearest 10,000,000 = 0.01).
+    Returns a fresh Money dict; never mutates the input.
+    """
+    ccy = (money or {}).get("currencyCode", "")
+    amount = _money_to_float(money)
+    if ccy in _ZERO_DECIMAL_CCY:
+        if amount >= 1000:
+            amount = round(amount / 100.0) * 100
+        elif amount >= 100:
+            amount = round(amount / 10.0) * 10
+        else:
+            amount = round(amount)
+        return {"currencyCode": ccy, "units": str(int(amount)), "nanos": 0}
+    # 2-decimal currency: round to the cent.
+    cents = round(amount * 100)
+    units = cents // 100
+    nanos = (cents % 100) * 10_000_000  # 0.01 == 10,000,000 nanos
+    return {"currencyCode": ccy, "units": str(int(units)), "nanos": int(nanos)}
+
+
+def _load_matrix(path):
+    if not os.path.exists(path):
+        sys.exit(
+            f"pricing matrix not found: {path}\n"
+            f"Expected corpan/infra/pricing/pricing-matrix.json (schema: version, unit, "
+            f"tiers[].android.{{monthly,annual}}, countryTier{{ISO2->tierId}}).\n"
+            f"Another team fills the values — create it (with at least a DEFAULT tier) first."
+        )
+    with open(path, "r") as f:
+        try:
+            matrix = json.load(f)
+        except json.JSONDecodeError as e:
+            sys.exit(f"pricing matrix {path} is not valid JSON: {e}")
+    tiers = {t["id"]: t for t in matrix.get("tiers", []) if t.get("id")}
+    if not tiers:
+        sys.exit(f"pricing matrix {path} has no tiers[].")
+    country_tier = matrix.get("countryTier") or {}
+    if not country_tier:
+        sys.exit(f"pricing matrix {path} has no countryTier{{}} map.")
+    return matrix, tiers, country_tier
+
+
+def _target_usd(tiers, country_tier, country, period, default_tier):
+    """Resolve a country's android target USD for the given period, falling back to DEFAULT."""
+    tier_id = country_tier.get(country) or default_tier
+    tier = tiers.get(tier_id)
+    if not tier:
+        return None, tier_id
+    target = ((tier.get("android") or {}).get(period))
+    return target, tier_id
+
+
+def _usd_money(usd: float) -> dict:
+    units = int(usd)
+    nanos = int(round((usd - units) * 1e9))
+    return {"currencyCode": "USD", "units": str(units), "nanos": nanos}
+
+
+def cmd_set_prices(args):
+    period = args.period
+    if period not in ("monthly", "annual"):
+        sys.exit("--period must be 'monthly' or 'annual'.")
+    matrix, tiers, country_tier = _load_matrix(args.matrix)
+    default_tier = country_tier.get("DEFAULT")
+
+    only = None
+    if args.only:
+        only = {c.strip().upper() for c in args.only.split(",") if c.strip()}
+
+    # Countries to price = every entry in countryTier (excluding the DEFAULT sentinel),
+    # optionally filtered by --only. Play region codes ARE ISO 3166-1 alpha-2 already.
+    countries = sorted(
+        c.upper() for c in country_tier.keys()
+        if c.upper() != "DEFAULT" and (only is None or c.upper() in only)
+    )
+    if only:
+        missing = only - set(countries)
+        if missing:
+            # --only countries not explicitly in the matrix still get the DEFAULT tier.
+            for c in sorted(missing):
+                if default_tier:
+                    countries.append(c)
+            countries = sorted(set(countries))
+    if not countries:
+        sys.exit("no countries to price (countryTier empty or --only matched nothing).")
+
+    svc = _client(args)
+
+    # The set of regions this base plan actually sells in. We can only price regions the
+    # base plan covers; others are skipped (logged), like the trial tool skips non-billable.
+    sellable = set(_base_plan_regions(svc, args.product, args.base_plan))
+
+    # Group target countries by their USD target so we make ONE convertRegionPrices call
+    # per distinct USD amount (it returns local Money for ALL regions at once).
+    usd_by_country = {}
+    skipped = []
+    for country in countries:
+        target, tier_id = _target_usd(tiers, country_tier, country, period, default_tier)
+        if target is None:
+            skipped.append((country, f"no {period} android target (tier {tier_id})"))
+            continue
+        if sellable and country not in sellable:
+            skipped.append((country, "region not sold by this base plan"))
+            continue
+        usd_by_country[country] = float(target)
+
+    # Convert each distinct USD target once.
+    converted_cache = {}  # usd(float) -> convertedRegionPrices map {region: {price,...}}
+    for usd in sorted(set(usd_by_country.values())):
+        body = {"price": _usd_money(usd)}
+        try:
+            resp = svc.monetization().convertRegionPrices(
+                packageName=PACKAGE_NAME, body=body).execute()
+        except Exception as e:
+            sys.exit(f"convertRegionPrices failed for ${usd:.2f}: {e}")
+        converted_cache[usd] = resp.get("convertedRegionPrices", {}) or {}
+
+    # Build the per-region price plan: region -> clean local Money.
+    plan = {}  # regionCode -> {"usd": float, "money": Money}
+    for country, usd in usd_by_country.items():
+        crp = converted_cache.get(usd, {})
+        entry = crp.get(country)
+        if not entry or not entry.get("price"):
+            skipped.append((country, f"convertRegionPrices returned no price (non-billable @ {REGIONS_VERSION}?)"))
+            continue
+        clean = _clean_local_money(entry["price"])  # tax-inclusive local Money, rounded clean
+        plan[country] = {"usd": usd, "money": clean}
+
+    # Print the table.
+    print(f"set-prices: {args.product}/{args.base_plan} period={period} "
+          f"matrix={args.matrix} (v{matrix.get('version','?')})")
+    print(f"  {'REGION':<7} {'TIER':<5} {'TARGET USD':<11} LOCAL PRICE")
+    for country in sorted(plan):
+        usd = plan[country]["usd"]
+        tier_id = country_tier.get(country, default_tier)
+        print(f"  {country:<7} {str(tier_id):<5} ${usd:<10.2f} {_money_str(plan[country]['money'])}")
+    for country, why in sorted(skipped):
+        print(f"  {country:<7} SKIP  -           ({why})")
+
+    if not plan:
+        sys.exit("\nnothing to price (all targets skipped). Nothing patched.")
+
+    # Read-modify-write: GET the subscription, set ONLY the targeted regions' price on the
+    # target base plan's regionalConfigs[], preserving every other region/field.
+    sub = svc.monetization().subscriptions().get(
+        packageName=PACKAGE_NAME, productId=args.product).execute()
+    target_bp = None
+    for bp in sub.get("basePlans", []):
+        if bp.get("basePlanId") == args.base_plan:
+            target_bp = bp
+            break
+    if target_bp is None:
+        sys.exit(f"base plan {args.base_plan} not found on {args.product}. Run `list`.")
+
+    rconfigs = target_bp.setdefault("regionalConfigs", [])
+    by_region = {rc.get("regionCode"): rc for rc in rconfigs}
+    changes = 0
+    for country, info in plan.items():
+        rc = by_region.get(country)
+        if rc is None:
+            # Region sold by the base plan but absent from regionalConfigs (shouldn't
+            # happen since `sellable` is derived from it) — add a config rather than
+            # silently dropping the price.
+            rc = {"regionCode": country, "newSubscriberAvailability": True}
+            rconfigs.append(rc)
+            by_region[country] = rc
+        rc["price"] = info["money"]  # set ONLY price; leave newSubscriberAvailability etc.
+        changes += 1
+
+    print(f"\npatch updateMask=basePlans (regionsVersion {REGIONS_VERSION}); "
+          f"changing price on {changes} region(s) of {args.base_plan}; "
+          f"all other regions/base-plans untouched.")
+    print("NOTE: affects NEW purchases only — existing subscribers keep their price "
+          "(no cohort price-change is run). Decreases are low-risk; for INCREASES, run a "
+          "Play price-change cohort separately (see README).")
+    print("patch body basePlans (target base plan regionalConfigs shown):")
+    print(json.dumps(target_bp.get("regionalConfigs"), indent=2))
+
+    if not args.yes:
+        print("\n[dry-run] add --yes to patch.")
+        return
+
+    updated = svc.monetization().subscriptions().patch(
+        packageName=PACKAGE_NAME, productId=args.product, updateMask="basePlans",
+        **{"regionsVersion_version": REGIONS_VERSION}, body=sub,
+    ).execute()
+    for bp in updated.get("basePlans", []):
+        if bp.get("basePlanId") != args.base_plan:
+            continue
+        priced = sum(1 for rc in bp.get("regionalConfigs", []) if rc.get("price"))
+        print(f"  {bp.get('basePlanId')}: {priced} region(s) now have an explicit price.")
+    print("\nDone. Verify in Play Console > Monetize > Subscriptions > base plan prices.")
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--key", help="local service-account JSON (default: pull from AWS Secrets Manager)")
@@ -397,6 +664,18 @@ def main():
     sp.add_argument("--base-plan", required=True)
     sp.add_argument("--yes", action="store_true", help="actually call the API (default dry-run)")
     sp.set_defaults(func=cmd_backcompat)
+
+    sp = sub.add_parser("set-prices",
+                        help="apply per-country regional base-plan prices from a pricing matrix")
+    sp.add_argument("--product", required=True, help="subscription productId, e.g. corpan.sub.monthly")
+    sp.add_argument("--base-plan", required=True, help="base plan id (from `list`), e.g. corpan-sub-monthly")
+    sp.add_argument("--period", required=True, choices=["monthly", "annual"],
+                    help="which android target to read per tier (android.monthly / android.annual)")
+    sp.add_argument("--matrix", required=True,
+                    help="path to pricing-matrix.json (e.g. ../pricing/pricing-matrix.json)")
+    sp.add_argument("--only", help="comma-separated ISO-2 countries to limit to, e.g. US,ID,IN")
+    sp.add_argument("--yes", action="store_true", help="actually call the API (default dry-run)")
+    sp.set_defaults(func=cmd_set_prices)
 
     args = p.parse_args()
     args.func(args)

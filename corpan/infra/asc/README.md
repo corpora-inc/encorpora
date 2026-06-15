@@ -13,6 +13,7 @@ Bundle id `com.corpora.corpan`; subscriptions `corpan.sub.monthly`, `corpan.sub.
 | **Free trial** (StoreKit *introductory offer*) | `trial` | `POST /v1/subscriptionIntroductoryOffers` (one per territory) |
 | **Free promo codes** (one-time-use batch, CSV) | `code-free` | `POST /v1/subscriptionOfferCodes` + `POST /v1/subscriptionOfferCodeOneTimeUseCodes` |
 | **% off affiliate code** (your custom string) | `code-discount` | `GET /v1/subscriptions/{id}/prices` + `…/pricePoints?filter[territory]=…` → `POST /v1/subscriptionOfferCodes` + `POST /v1/subscriptionOfferCodeCustomCodes` |
+| **Regional per-territory prices** (from the pricing matrix) | `set-prices` | `…/pricePoints?filter[territory]=USA` (USD anchor) → `GET /v1/subscriptionPricePoints/{id}/equalizations` → `POST /v1/subscriptionPrices` (one per territory) |
 
 Free trials apply automatically to eligible (never-/expired-subscriber) users — StoreKit
 renders "7 days free, then $X". Offer/promo codes redeem **through the App Store**
@@ -81,7 +82,45 @@ python asc_monetization.py code-discount --product corpan.sub.monthly \
 #    "30% off the first year" on the ANNUAL sub: --months 12 --periods 1
 python asc_monetization.py code-discount --product corpan.sub.annual \
        --code IAN --percent-off 30 --months 12 --periods 1 --yes
+
+# 6. Apply REGIONAL per-territory prices from the pricing matrix (dry-run, then --yes)
+python asc_monetization.py set-prices --product corpan.sub.monthly --period monthly \
+       --matrix ../pricing/pricing-matrix.json
+python asc_monetization.py set-prices --product corpan.sub.annual  --period annual \
+       --matrix ../pricing/pricing-matrix.json --yes
+#    just a few territories: --only USA,IDN,IND     |   schedule it: --start-date 2026-07-01
+#    apply to EVERYONE (not just new buyers): --no-preserve-existing  (an increase needs consent)
 ```
+
+### How `set-prices` maps USD → local → nearest rung (the anchoring)
+
+The frozen `pricing-matrix.json` carries USD-equivalent targets per tier
+(`tiers[].ios.{monthly,annual}`) and an ISO-2 `countryTier` map. Apple sets a
+subscription's recurring price by binding it to a **fixed price-point rung** per
+territory — you can't send an arbitrary number — and each territory's rungs are in
+**local currency**, so we need a USD→local bridge. We use **Apple's own
+equalizations** rather than hand-rolled FX:
+
+1. **Map** the matrix country (ISO-2) → ASC territory (ISO-3) via `ISO2_TO_ISO3`
+   (`US→USA`, `ID→IDN`, `IN→IND`, …). Unmapped countries are listed + skipped.
+2. **Anchor in USD**: USA price points are in USD, so pick the USA rung **nearest the
+   tier's `ios.<period>` target** (`nearest_point`, prefers the highest rung ≤ target).
+3. **Equalize**: `GET /v1/subscriptionPricePoints/{usaPointId}/equalizations` returns
+   the **equivalent rung in every territory** — Apple has already applied its currency
+   conversion + perceived-price rounding (the `.99` endings), so we never compute
+   exchange rates. We take that territory's equalized rung directly (one equalizations
+   call per *distinct* USD target, cached → a 175-territory run is a few lookups).
+4. **Apply**: `POST /v1/subscriptionPrices` (one per territory) binding the rung.
+
+**`preserveCurrentPrice` (= `--preserve-existing`, default ON):** current subscribers
+**keep their existing price**; only **new purchases** get the new price. This is the
+safe default and matches our intent (we mostly **decrease** in poorer markets). Apple
+requires consent for **increases** that hit existing subscribers — pass
+`--no-preserve-existing` only when you've handled that. We **only POST the targeted
+territories** — untargeted territories are left untouched (never blanked). Per-territory
+failures (sub in review / not sold there) **skip + log**, never abort. The matrix file
+may not exist yet → a clean "matrix not found" exit. Dry-run prints the resolution
+table (`territory: USD target → local rung`) + two real request bodies; `--yes` applies.
 
 ### How `code-discount` realizes a real percentage discount
 
@@ -161,6 +200,20 @@ real API. Verify and adjust:
    needs `sub: "user"` instead of `iss` — see the note in `_make_jwt`.
 5. **`expirationDate` format** — the tool sends `YYYY-MM-DD`; Apple rejects timestamps
    with milliseconds (<https://developer.apple.com/forums/thread/731643>).
+6. **`set-prices` equalizations + create body.** Confirm against the live API that (a)
+   `GET /v1/subscriptionPricePoints/{id}/equalizations?include=territory` returns the
+   equivalent rung in every territory, each as a `subscriptionPricePoint` with
+   `attributes.customerPrice` (local) and a `territory` relationship (the shape this
+   code reads); (b) `POST /v1/subscriptionPrices` accepts the body
+   `{data:{type:subscriptionPrices, attributes:{preserveCurrentPrice, startDate?},
+   relationships:{subscription, territory, subscriptionPricePoint}}}` — **one POST per
+   territory** (no all-territory batch, unlike offer codes); (c) the **subscription
+   isn't "In Review"** — price changes are rejected mid-review
+   (<https://developer.apple.com/forums/thread/773452>); (d) `preserveCurrentPrice:true`
+   behaves as "current subs keep their price, new buyers get the new one." The
+   equalizations result already encodes Apple's FX, so the USD→local mapping needs no
+   exchange-rate config — but eyeball USA + one cheap market (e.g. IDN/IND) in the
+   dry-run table before `--yes`.
 
 ## Reference
 
@@ -171,6 +224,9 @@ real API. Verify and adjust:
 - Subscription price points (per-territory ladder): <https://developer.apple.com/documentation/appstoreconnectapi/get-v1-subscriptions-_id_-pricepoints>
 - Subscription current prices: <https://developer.apple.com/documentation/appstoreconnectapi/get-v1-subscriptions-_id_-prices>
 - Per-territory pricing + equalizations workflow: <https://developer.apple.com/forums/thread/718915>
+- Create a subscription price change (`POST /v1/subscriptionPrices`): <https://developer.apple.com/documentation/appstoreconnectapi/post-v1-subscriptionprices>
+- List subscription price-point equalizations: <https://developer.apple.com/documentation/appstoreconnectapi/get-v1-subscriptionpricepoints-_id_-equalizations>
+- Confirmed `subscriptionPrices` create body (one POST per territory): <https://developer.apple.com/forums/thread/773452>
 - Working pricePoints read example (`include=territory&filter[territory]=…`): <https://gist.github.com/astashov/79dd4ef4e91ea012710145623bfe0984>
 
 ## Google Play twin
