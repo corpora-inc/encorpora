@@ -2,6 +2,7 @@ const { SecretsManagerClient, GetSecretValueCommand } = require("@aws-sdk/client
 const { getSignedUrl } = require("@aws-sdk/cloudfront-signer");
 const { AppStoreServerAPIClient, Environment, SignedDataVerifier, VerificationStatus } = require("@apple/app-store-server-library");
 const { google } = require("googleapis");
+const codes = require("./codes");
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -158,6 +159,13 @@ async function tryVerifyAppleWith(body, appleSecrets, environment) {
         ? new Date(decoded.expiresDate).toISOString()
         : null,
       environment: decoded.environment || (environment === Environment.PRODUCTION ? "Production" : "Sandbox"),
+      // §5.2 — offer/attribution fields decoded from the signed JWS.
+      appAccountToken: decoded.appAccountToken ?? null,
+      offerType: decoded.offerType ?? null,
+      offerIdentifier: decoded.offerIdentifier ?? null,
+      offerDiscountType: decoded.offerDiscountType ?? null,
+      price: decoded.price ?? null,
+      currency: decoded.currency ?? null,
     };
   } catch (err) {
     const errDetail = err.message || err.errorMessage || err.toString();
@@ -194,52 +202,77 @@ async function verifyGoogle(body, secrets) {
     const androidPublisher = google.androidpublisher({ version: "v3", auth });
 
     if (productType === "subs") {
-      // Subscription verification
-      const res = await androidPublisher.purchases.subscriptions.get({
+      // §5.3 — Subscription verification via subscriptionsv2.get (was v1
+      // purchases.subscriptions.get). v2 exposes obfuscatedExternalAccountId
+      // (for renewal reverse-map) and per-line-item offer details.
+      const res = await androidPublisher.purchases.subscriptionsv2.get({
         packageName,
-        subscriptionId: productId,
         token: purchaseToken,
       });
 
       const sub = res.data;
-      const expiryMs = parseInt(sub.expiryTimeMillis ?? "0", 10);
       const now = Date.now();
-      // paymentState===0 means "payment pending" — the grace-period state when
-      // expiryTime has passed but Google is still trying to renew the card.
-      // cancelReason undefined means user didn't actively cancel — just billing.
-      // Without this, Android subscribers in the 3-7 day grace window get denied.
-      const inGrace = expiryMs <= now && sub.paymentState === 0 && !sub.cancelReason;
-      const subscriptionActive = expiryMs > now || inGrace;
 
-      if (inGrace) {
-        console.log(`[google] Subscription in grace period: orderId=${sub.orderId}, expired=${new Date(expiryMs).toISOString()}, paymentState=${sub.paymentState}`);
+      // v2: state on the subscription; expiry on each line item.
+      const lineItems = Array.isArray(sub.lineItems) ? sub.lineItems : [];
+      // Pick the latest expiry across line items.
+      let expiryMs = 0;
+      let lineProductId = null;
+      let offerId = null;
+      let offerTags = [];
+      for (const li of lineItems) {
+        const exp = li.expiryTime ? Date.parse(li.expiryTime) : 0;
+        if (exp > expiryMs) expiryMs = exp;
+        if (!lineProductId && li.productId) lineProductId = li.productId;
+        const od = li.offerDetails || {};
+        if (!offerId && od.offerId) offerId = od.offerId;
+        if (od.offerTags && od.offerTags.length) offerTags = od.offerTags;
       }
 
-      // Acknowledge subscription if not yet acknowledged — Google auto-refunds
-      // unacknowledged purchases after 3 days.
-      if (sub.paymentState !== undefined && sub.acknowledgementState !== 1) {
+      const state = sub.subscriptionState; // e.g. SUBSCRIPTION_STATE_ACTIVE / _IN_GRACE_PERIOD
+      const inGrace =
+        state === "SUBSCRIPTION_STATE_IN_GRACE_PERIOD" ||
+        (expiryMs <= now && state === "SUBSCRIPTION_STATE_ACTIVE");
+      const subscriptionActive = expiryMs > now || inGrace;
+      // v2 reports active states explicitly; treat any resolvable state as verified.
+      const verifiedSub = !!state;
+
+      const obfHash =
+        sub.externalAccountIdentifiers?.obfuscatedExternalAccountId ?? null;
+
+      if (inGrace) {
+        console.log(`[google] Subscription in grace period: order=${sub.latestOrderId}, state=${state}`);
+      }
+
+      // Acknowledge if needed (v2 ackState lives on the subscription).
+      if (verifiedSub && sub.acknowledgementState !== "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED") {
         try {
           await androidPublisher.purchases.subscriptions.acknowledge({
             packageName,
-            subscriptionId: productId,
+            subscriptionId: lineProductId || productId,
             token: purchaseToken,
           });
-          console.log(`[google] Acknowledged subscription: ${productId}, order=${sub.orderId}`);
+          console.log(`[google] Acknowledged subscription: ${lineProductId || productId}, order=${sub.latestOrderId}`);
         } catch (ackErr) {
           console.warn(`[google] Acknowledge sub failed (non-fatal): ${ackErr.message}`);
         }
       }
 
       return {
-        verified: sub.paymentState !== undefined,
-        transactionId: sub.orderId,
-        productId,
+        verified: verifiedSub,
+        transactionId: sub.latestOrderId,
+        // §5.3 — use the line-item product, NOT the echoed client productId.
+        productId: lineProductId || productId,
         isSubscription: true,
         subscriptionActive,
         inGracePeriod: inGrace,
         expiresAt: expiryMs ? new Date(expiryMs).toISOString() : null,
-        autoRenewing: sub.autoRenewing || false,
+        autoRenewing: !!lineItems.find((li) => li.autoRenewingPlan?.autoRenewEnabled),
         acknowledged: true,
+        // §5.3 attribution/offer fields.
+        obfHash,
+        offerId,
+        offerTags,
       };
     } else {
       // One-time product verification
@@ -324,6 +357,72 @@ async function handleVerifyPurchase(body, secrets) {
     expiresAt: result.expiresAt || null,
   };
 
+  // --- §5: affiliate attribution + entitlement token (best-effort, NEVER
+  // blocks entitlement, §1.1). All wrapped so a codes/Dynamo failure can't
+  // turn a verified purchase into a failure. ---
+  if (body.subjectId) {
+    response.subjectId = body.subjectId;
+    response.plus = !!result.subscriptionActive;
+    try {
+      const hmac = secrets?.codeSigning?.hmacKey;
+      const kid = secrets?.codeSigning?.kid || "v1";
+      if (hmac && result.subscriptionActive) {
+        response.entitlementToken = codes.mintEntitlementToken(
+          { subjectId: body.subjectId, plus: true, expiresAt: result.expiresAt || null },
+          hmac,
+          kid
+        );
+      }
+
+      // §3 validate the resolutionToken (attribution only proceeds if valid).
+      const tokenCheck = codes.validateResolutionToken(
+        body.resolutionToken,
+        { subjectId: body.subjectId, affiliateCode: body.affiliateCode },
+        hmac
+      );
+
+      if (tokenCheck.valid) {
+        const claims = tokenCheck.claims;
+        const isApple = platform === "ios" || platform === "macos";
+        // §5.2/§5.3 confirm the offer applied matches the token.
+        const offerApplied = isApple
+          ? result.offerType != null
+          : result.offerId != null;
+        const offerMatches = isApple
+          ? !claims.appleOfferId || result.offerIdentifier === claims.appleOfferId
+          : !claims.googleOfferId || result.offerId === claims.googleOfferId;
+
+        const txnOrOriginalId = isApple
+          ? result.originalTransactionId || result.transactionId
+          : result.transactionId; // Android orderId
+
+        const attribution = await codes.attributePurchase({
+          claims,
+          subjectId: body.subjectId,
+          partnerName: claims.partnerId
+            ? claims.partnerId.charAt(0).toUpperCase() + claims.partnerId.slice(1)
+            : null,
+          platform: isApple ? "apple" : "android",
+          txnOrOriginalId,
+          productId: result.productId,
+          price: result.price ?? null,
+          currency: result.currency ?? null,
+          offerApplied: offerApplied && offerMatches,
+          offerType: isApple ? result.offerType : result.offerId,
+          offerIdentifier: isApple ? result.offerIdentifier : result.offerId,
+          environment: result.environment ?? null,
+          appAccountToken: isApple ? result.appAccountToken : result.obfHash,
+        });
+        if (attribution) {
+          response.affiliateAttribution = attribution;
+        }
+      }
+    } catch (err) {
+      // §5.5 non-fatal: omit affiliateAttribution, keep status verified.
+      console.warn("[codes] attribution non-fatal failure:", err.message);
+    }
+  }
+
   // Generate signed URL if a specific pack was requested.
   // Accept downloadPath from the client (derived from catalog's downloadUrl)
   // since filenames include the version (e.g. "pack-id-0.1.0.zip").
@@ -384,7 +483,7 @@ async function handleSubscriptionStatus(body, secrets) {
 // Route: POST /apple-notifications (App Store Server Notifications V2)
 // ---------------------------------------------------------------------------
 
-async function handleAppleNotification(body) {
+async function handleAppleNotification(body, secrets) {
   // Apple sends { signedPayload: "..." } — a JWS signed notification
   const { signedPayload } = body;
 
@@ -392,22 +491,71 @@ async function handleAppleNotification(body) {
     return json(400, { error: "Missing signedPayload" });
   }
 
-  // Log for analytics/audit — decode without full verification for now
   try {
-    const parts = signedPayload.split(".");
-    if (parts.length === 3) {
-      const payload = JSON.parse(Buffer.from(parts[1], "base64url").toString());
-      console.log("[apple-notification]", JSON.stringify({
-        notificationType: payload.notificationType,
-        subtype: payload.subtype,
-        notificationUUID: payload.notificationUUID,
-      }));
+    // §6.1 — Verify the ASSN V2 JWS signature with SignedDataVerifier.
+    const appleSecrets = secrets?.apple || {};
+    const bundleId = appleSecrets.bundleId || "com.corpora.corpan";
+    let payload;
+    try {
+      const appleRootCerts = (appleSecrets.rootCerts || []).map((c) =>
+        Buffer.from(c, "base64")
+      );
+      const env = appleSecrets.notificationEnvironment === "Sandbox"
+        ? Environment.SANDBOX
+        : Environment.PRODUCTION;
+      const verifier = new SignedDataVerifier(
+        appleRootCerts,
+        appleSecrets.appAppleId ? true : appleRootCerts.length > 0, // enableOnlineChecks when certs present
+        env,
+        bundleId,
+        appleSecrets.appAppleId
+      );
+      payload = await verifier.verifyAndDecodeNotification(signedPayload);
+    } catch (verErr) {
+      console.error("[apple-notification] signature verify failed:", verErr.message);
+      // Reject unverified notifications (§6.1). 200 so Apple stops retrying a
+      // permanently-unverifiable payload, but DO NOT credit.
+      return json(200, { received: true, verified: false });
+    }
+
+    const notificationType = payload.notificationType;
+    const subtype = payload.subtype;
+    console.log("[apple-notification]", JSON.stringify({
+      notificationType, subtype, notificationUUID: payload.notificationUUID,
+    }));
+
+    // §6.1 — On DID_RENEW / SUBSCRIBED, credit a renewal by appAccountToken.
+    if (notificationType === "DID_RENEW" || notificationType === "SUBSCRIBED") {
+      const signedTxn = payload.data?.signedTransactionInfo;
+      if (signedTxn) {
+        const txn = JSON.parse(
+          Buffer.from(signedTxn.split(".")[1], "base64url").toString()
+        );
+        const appAccountToken = txn.appAccountToken;
+        const renewalTxnId = txn.transactionId;
+        if (appAccountToken && renewalTxnId) {
+          // appAccountToken IS the subjectId (Apple uses it as PK directly, §7.3).
+          const attr = await codes.getAttribution(appAccountToken);
+          if (attr && attr.partnerId) {
+            await codes.creditRenewal({
+              partnerId: attr.partnerId,
+              subjectId: appAccountToken,
+              platform: "apple",
+              renewalTxnId,
+              productId: txn.productId || null,
+              price: txn.price ?? null,
+              currency: txn.currency ?? null,
+              notificationType,
+            });
+          }
+        }
+      }
     }
   } catch (err) {
-    console.error("[apple-notification] Parse error:", err.message);
+    console.error("[apple-notification] handler error (non-fatal):", err.message);
   }
 
-  // Apple expects 200 OK to acknowledge receipt
+  // Apple expects 200 OK to acknowledge receipt (so it stops retrying).
   return json(200, { received: true });
 }
 
@@ -415,7 +563,7 @@ async function handleAppleNotification(body) {
 // Route: POST /google-notifications (Google RTDN via Cloud Pub/Sub)
 // ---------------------------------------------------------------------------
 
-async function handleGoogleNotification(body) {
+async function handleGoogleNotification(body, secrets, authHeader) {
   // Google sends { message: { data: "<base64>", messageId: "..." }, subscription: "..." }
   const { message } = body;
 
@@ -423,20 +571,81 @@ async function handleGoogleNotification(body) {
     return json(400, { error: "Missing message.data" });
   }
 
+  // §6.2 — Validate the Pub/Sub push OIDC token before trusting the payload.
+  const googleSecrets = secrets?.google || {};
+  const expectedAudience = googleSecrets.pubsubAudience; // configured push audience
+  const expectedEmail = googleSecrets.pubsubServiceAccount; // push SA email
+  if (expectedAudience || expectedEmail) {
+    const ok = await verifyPubSubOidc(authHeader, expectedAudience, expectedEmail);
+    if (!ok) {
+      console.error("[google-notification] OIDC validation failed — rejecting");
+      return json(401, { error: "unauthorized" });
+    }
+  }
+
   try {
     const decoded = JSON.parse(Buffer.from(message.data, "base64").toString());
+    const subNotif = decoded.subscriptionNotification;
     console.log("[google-notification]", JSON.stringify({
       packageName: decoded.packageName,
       eventTimeMillis: decoded.eventTimeMillis,
-      subscriptionNotification: decoded.subscriptionNotification,
+      subscriptionNotification: subNotif,
       oneTimeProductNotification: decoded.oneTimeProductNotification,
     }));
+
+    // §6.2 — On SUBSCRIPTION_RENEWED (2), reverse-map via GSI1 and credit.
+    if (subNotif && subNotif.notificationType === 2) {
+      const verify = await verifyGoogle(
+        { purchaseToken: subNotif.purchaseToken, productId: subNotif.subscriptionId, productType: "subs" },
+        secrets
+      );
+      const obfHash = verify.obfHash;
+      const orderId = verify.transactionId;
+      if (obfHash && orderId) {
+        const attr = await codes.findSubjectByObfHash(obfHash);
+        if (attr && attr.partnerId) {
+          await codes.creditRenewal({
+            partnerId: attr.partnerId,
+            subjectId: attr.subjectId || null,
+            platform: "android",
+            renewalTxnId: orderId,
+            productId: verify.productId || null,
+            price: verify.price ?? null,
+            currency: verify.currency ?? null,
+            notificationType: "SUBSCRIPTION_RENEWED",
+          });
+        }
+      }
+    }
   } catch (err) {
-    console.error("[google-notification] Parse error:", err.message);
+    console.error("[google-notification] handler error (non-fatal):", err.message);
   }
 
   // Google expects 200 OK to acknowledge
   return json(200, { received: true });
+}
+
+// Validate a Pub/Sub push OIDC bearer token (§6.2 / §7).
+async function verifyPubSubOidc(authHeader, expectedAudience, expectedEmail) {
+  try {
+    if (!authHeader) return false;
+    const m = /^Bearer\s+(.+)$/i.exec(authHeader);
+    if (!m) return false;
+    const idToken = m[1];
+    const client = new google.auth.OAuth2();
+    const ticket = await client.verifyIdToken({
+      idToken,
+      audience: expectedAudience || undefined,
+    });
+    const payload = ticket.getPayload();
+    if (!payload) return false;
+    if (expectedEmail && payload.email !== expectedEmail) return false;
+    if (expectedEmail && payload.email_verified !== true) return false;
+    return true;
+  } catch (err) {
+    console.error("[google-notification] OIDC verify error:", err.message);
+    return false;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -502,10 +711,27 @@ exports.handler = async (event) => {
       const secrets = await getSecrets();
       return handleSubscriptionStatus(body, secrets);
     }
-    case "/apple-notifications":
-      return handleAppleNotification(body);
-    case "/google-notifications":
-      return handleGoogleNotification(body);
+    case "/code/resolve": {
+      const secrets = await getSecrets();
+      return codes.handleCodeResolve(body, {
+        secrets,
+        json,
+        acceptLanguage: getHeader(event, "accept-language"),
+        sourceIp: event.requestContext?.http?.sourceIp,
+      });
+    }
+    case "/entitlement-token": {
+      const secrets = await getSecrets();
+      return codes.handleEntitlementToken(body, { secrets, json });
+    }
+    case "/apple-notifications": {
+      const secrets = await getSecrets();
+      return handleAppleNotification(body, secrets);
+    }
+    case "/google-notifications": {
+      const secrets = await getSecrets();
+      return handleGoogleNotification(body, secrets, getHeader(event, "authorization"));
+    }
     default:
       return json(404, { error: `Unknown route: ${route}` });
   }
