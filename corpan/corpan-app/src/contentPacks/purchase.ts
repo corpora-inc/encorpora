@@ -49,20 +49,79 @@ export type PurchaseVerificationResponse = {
   affiliateAttribution?: {
     code?: string
     locked?: boolean
+    verified?: boolean
+    partnerName?: string
     message?: string
   }
   error?: string
 }
 
-export type AffiliateResolveResponse =
+// ---------------------------------------------------------------------------
+// Code resolution (POST /code/resolve) — Phase 3 codes backend (contract §2)
+// ---------------------------------------------------------------------------
+
+/**
+ * How the server classifies a code (contract §2.2). The server is the ONLY
+ * classifier — the open-source client never decides this.
+ */
+export type CodeClassification =
+  | "discount"
+  | "affiliate"
+  | "discount+affiliate"
+  | "unknown"
+
+/**
+ * Platform mechanic the client must drive for this code (contract §2.2).
+ *  • REDEEM_APPLE_SHEET    — present the StoreKit offer-code redeem sheet
+ *  • USE_OFFER_TOKEN       — re-read the live Play offerToken + purchase with it
+ *  • ATTRIBUTE_ONLY        — registry affiliate, no platform offer; plain buy
+ *  • ATTRIBUTE_UNVERIFIED  — unknown code; plain buy, tracked unverified
+ */
+export type CodePurchaseAction =
+  | "REDEEM_APPLE_SHEET"
+  | "USE_OFFER_TOKEN"
+  | "ATTRIBUTE_ONLY"
+  | "ATTRIBUTE_UNVERIFIED"
+
+/**
+ * Hint the client uses to re-read the SESSION-BOUND Play `offerToken` from
+ * `getProducts()`. Tokens are never returned by the backend — the client
+ * matches `subscriptionOfferDetails[].offerId === googleOfferId`.
+ */
+export type OfferTokenHint = {
+  googleOfferId: string
+  basePlanId?: string
+  offerTags?: string[]
+}
+
+/**
+ * Response from `POST /code/resolve` (contract §2.3). There is NO fail-open:
+ * an HTTP error, a network failure, or `status:"error"` surfaces as
+ * `status:"error"` — NEVER as `"ok"`.
+ */
+export type CodeResolveResponse =
   | {
       status: "ok"
       code: string
-      partnerName?: string
-      discountTier?: "none" | "pct10" | "pct20" | "pct50" | string
-      message?: string
+      classification: CodeClassification
+      purchaseAction: CodePurchaseAction
+      /** null when classification is `discount` or `unknown`. */
+      partnerName: string | null
+      /** Localized server-side; null when there's no discount. */
+      discountLabel: string | null
+      /** = registry googleOfferId (Android USE_OFFER_TOKEN); null otherwise. */
+      offerId: string | null
+      /** Android USE_OFFER_TOKEN only; null otherwise. */
+      offerTokenHint: OfferTokenHint | null
+      /** = registry appleOfferIdentifier (Apple REDEEM_APPLE_SHEET); null otherwise. */
+      appleOfferId: string | null
+      /** Pre-iOS16 fallback deep link for the Apple redeem path. */
+      appleRedeemUrl?: string | null
+      /** Subject-bound JWT that gates the attribution write at verify time. */
+      resolutionToken: string
+      expiresInSec: number
     }
-  | { status: "invalid"; code?: string; error: string }
+  | { status: "error"; code?: string; error: string }
 
 export type EntitlementTokenResponse = {
   status: "ok" | "failed"
@@ -211,6 +270,10 @@ type RawPricingPhase = {
 
 type RawSubscriptionOffer = {
   offerToken?: string
+  /** Play: the per-code offer id, e.g. "code-ian30". Empty on iOS/macOS. */
+  offerId?: string
+  /** Play: the base plan this offer attaches to, e.g. "annual". */
+  basePlanId?: string
   pricingPhases?: RawPricingPhase[]
 }
 
@@ -775,7 +838,7 @@ const getVerifyUrl = () => {
 export async function verifyPurchase(
   purchase: PurchaseResult,
   packId?: string,
-  options: { subjectId?: string; affiliateCode?: string } = {}
+  options: { subjectId?: string; affiliateCode?: string; resolutionToken?: string } = {}
 ): Promise<PurchaseVerificationResponse> {
   const urlBase = getVerifyUrl()
   if (!urlBase) {
@@ -804,6 +867,12 @@ export async function verifyPurchase(
       : ""
     if (affiliateCode && isAffiliateCodeFormatValid(affiliateCode)) {
       body.affiliateCode = affiliateCode
+    }
+    // The resolutionToken (minted by /code/resolve) gates the server-side
+    // attribution write. Best-effort: omit it and the purchase still verifies,
+    // attribution is simply skipped (contract §5.1, §3).
+    if (options.resolutionToken) {
+      body.resolutionToken = options.resolutionToken
     }
 
     const res = await fetch(url, {
@@ -836,42 +905,157 @@ export async function verifyPurchase(
   }
 }
 
-export async function resolveAffiliateCode(raw: string): Promise<AffiliateResolveResponse> {
+/**
+ * Resolve an offer/affiliate code against the server (contract §2.1, §2.3).
+ *
+ * The server is the only classifier and authority. There is **NO fail-open**:
+ * a format-invalid code, an HTTP error, or a network failure returns
+ * `status:"error"` — it must NEVER surface as `"ok"` (contract §0.2). The only
+ * `"ok"` result is one the server explicitly returned with a `resolutionToken`.
+ *
+ * @param raw       the raw code as typed by the user
+ * @param productId optional — lets the server pick the right platform offer
+ */
+export async function resolveCode(
+  raw: string,
+  productId?: string
+): Promise<CodeResolveResponse> {
   const code = normalizeAffiliateCode(raw)
-  if (!code) return { status: "invalid", error: "Enter a code." }
-  if (!isAffiliateCodeFormatValid(code)) {
-    return { status: "invalid", code, error: "Use letters, numbers, dashes, or underscores." }
+  if (!code) {
+    return { status: "error", error: "Enter a code." }
   }
+  if (!isAffiliateCodeFormatValid(code)) {
+    return {
+      status: "error",
+      code,
+      error: "Use letters, numbers, dashes, or underscores.",
+    }
+  }
+
   const urlBase = getVerifyUrl()
+  if (!urlBase) {
+    return { status: "error", code, error: "Code check unavailable." }
+  }
+
   try {
-    const res = await fetch(urlBase.replace(/\/+$/, "") + "/affiliate/resolve", {
+    const platform = await getPlatform()
+    // "macos" resolves against the Apple ("ios") branch (contract §2.1).
+    const resolvePlatform = platform === "android" ? "android" : "ios"
+
+    const res = await fetch(urlBase.replace(/\/+$/, "") + "/code/resolve", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ code, subjectId: getCorpanSubjectId() }),
+      body: JSON.stringify({
+        code,
+        subjectId: getCorpanSubjectId(),
+        platform: resolvePlatform,
+        ...(productId ? { productId } : {}),
+      }),
     })
+
     if (!res.ok) {
+      // NO fail-open — any non-2xx (incl. 404 / 502 / 429) is an error.
       const data = await res.json().catch(() => ({}))
-      if (res.status === 404) {
-        return {
-          status: "ok",
-          code,
-          message: "Code will be sent with your purchase when affiliate lookup is available.",
-        }
-      }
       return {
-        status: "invalid",
+        status: "error",
         code,
         error: (data as any).error ?? `Code check failed (${res.status})`,
       }
     }
-    return (await res.json()) as AffiliateResolveResponse
-  } catch {
+
+    const data = (await res.json()) as CodeResolveResponse
+    // Trust the server's own status field; a malformed body without a token is
+    // treated as an error rather than silently accepted.
+    if (data.status === "ok" && typeof data.resolutionToken === "string") {
+      return data
+    }
+    if (data.status === "error") return data
+    return { status: "error", code, error: "Code check failed." }
+  } catch (err) {
     return {
-      status: "ok",
+      status: "error",
       code,
-      message: "Code will be sent with your purchase when the server is available.",
+      error: err instanceof Error ? err.message : "Code check failed.",
     }
   }
+}
+
+/**
+ * Re-read the live, session-bound Play `offerToken` for a resolved code
+ * (contract §2.3 branch B). Offer tokens are NEVER returned by the backend —
+ * the client matches the per-code `offerId` (and base plan, when present)
+ * inside the freshly fetched `getProducts()` envelope.
+ *
+ * Returns `undefined` when no matching live offer is found (e.g. the Play
+ * offer hasn't been created yet) — the caller then falls back to a plain
+ * attributed purchase.
+ */
+export async function resolveOfferToken(
+  productId: string,
+  hint: OfferTokenHint
+): Promise<string | undefined> {
+  if (!isTauriRuntime()) return undefined
+  try {
+    const result = await invoke<{ products: RawProduct[] }>(
+      "plugin:iap|get_products",
+      { payload: { productIds: [productId], productType: "subs" } }
+    )
+    const product = (result.products ?? []).find(
+      (p) => p.productId === productId
+    )
+    const offers = product?.subscriptionOfferDetails ?? []
+    const match =
+      offers.find(
+        (o) =>
+          o.offerId === hint.googleOfferId &&
+          (!hint.basePlanId || o.basePlanId === hint.basePlanId)
+      ) ?? offers.find((o) => o.offerId === hint.googleOfferId)
+    return match?.offerToken || undefined
+  } catch (err) {
+    console.warn("[purchase] resolveOfferToken failed:", err)
+    return undefined
+  }
+}
+
+/**
+ * Present the StoreKit offer-code redeem sheet (contract §9.3). The command
+ * itself is owned by the iOS plugin (WS-D) and may not exist yet — guard the
+ * invoke and fall back to opening the `appleRedeemUrl` deep link.
+ *
+ * After the sheet, the redeemed transaction is delivered through the plugin's
+ * existing `Transaction.updates` listener; the caller verifies the resulting
+ * purchase carrying the `resolutionToken`.
+ *
+ * @returns true if the sheet (or the URL fallback) was presented.
+ */
+export async function presentAppleOfferRedeemSheet(opts: {
+  appleOfferId?: string | null
+  appleRedeemUrl?: string | null
+}): Promise<boolean> {
+  if (isTauriRuntime()) {
+    try {
+      // FROZEN command name + arg shape (contract §9.3).
+      await invoke("plugin:iap|present_offer_code_redeem_sheet", {
+        payload: { appleOfferId: opts.appleOfferId ?? undefined },
+      })
+      return true
+    } catch (err) {
+      console.warn(
+        "[purchase] present_offer_code_redeem_sheet unavailable, falling back to redeem URL:",
+        err
+      )
+    }
+  }
+  // Fallback: open the App Store redeem deep link (pre-iOS16 / command absent).
+  if (opts.appleRedeemUrl) {
+    try {
+      await openUrl(opts.appleRedeemUrl)
+      return true
+    } catch (err) {
+      console.error("[purchase] openUrl(appleRedeemUrl) failed:", err)
+    }
+  }
+  return false
 }
 
 export async function refreshEntitlementToken(): Promise<EntitlementTokenResponse> {
@@ -926,7 +1110,7 @@ export async function purchaseAndVerify(
   productId: string,
   packId?: string,
   productType: "subs" | "inapp" = "inapp",
-  options: { affiliateCode?: string; offerToken?: string } = {}
+  options: { affiliateCode?: string; offerToken?: string; resolutionToken?: string } = {}
 ): Promise<{
   signedUrl?: string
   error?: { code: PurchaseFailureKind; message: string }
@@ -978,6 +1162,7 @@ export async function purchaseAndVerify(
   const verification = await verifyPurchase(purchase, packId, {
     subjectId,
     affiliateCode: options.affiliateCode,
+    resolutionToken: options.resolutionToken,
   })
   if (verification.status !== "verified") {
     console.warn(
