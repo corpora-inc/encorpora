@@ -1145,7 +1145,9 @@ def cmd_set_prices(args):
         if not anchor:
             skipped.append((terr, f"USA anchor for ${usd} not found (sub not priced in USA?)"))
             continue
-        chosen = eq.get(terr)
+        # The anchor territory (USA) is NOT in its own equalizations response —
+        # it IS the anchor, so use the anchor rung directly.
+        chosen = anchor if terr == "USA" else eq.get(terr)
         if not chosen or not chosen.get("id"):
             skipped.append((terr, f"no equalized rung (sub not sold in {terr}?)"))
             continue
