@@ -9,6 +9,13 @@ What this DOES (no Console UI needed):
   - trial       : create + (optionally) activate a free-trial OFFER on a base plan.
                   A free trial is a base-plan offer, NOT a promo code — it needs
                   neither backward-compatibility nor the Console.
+  - affiliate-offer : create + (optionally) activate a per-affiliate-code DISCOUNT
+                  OFFER on a base plan (e.g. IAN30 -> 30% off). Like `trial` it's a
+                  base-plan offer, NOT a promo code, but it's deliberately
+                  developer-determined (empty targeting) so Play will NEVER auto-show
+                  it. The app applies it by passing the matching offerToken only after
+                  the typed code is validated by the backend; attribution flows back via
+                  subscriptionsv2.get -> lineItems[].offerDetails.offerId/offerTags.
   - backcompat  : set a base plan's autoRenewingBasePlanType.legacyCompatible = true
                   (read-modify-write patch). This is the flag Play demands before it
                   will let you create a PROMO CODE for the subscription.
@@ -36,6 +43,8 @@ Usage:
   python play_monetization.py trial --product corpan.sub.monthly --base-plan <id> --days 7
   python play_monetization.py trial --product corpan.sub.monthly --base-plan <id> --days 7 --activate --yes
   python play_monetization.py backcompat --product corpan.sub.monthly --base-plan <id> --yes
+  python play_monetization.py affiliate-offer --product corpan.sub.monthly --base-plan corpan-sub-monthly --code IAN30
+  python play_monetization.py affiliate-offer --product corpan.sub.annual --base-plan corpan-sub-anual --code IAN30 --activate --yes
 """
 import argparse
 import json
@@ -200,6 +209,119 @@ def cmd_trial(args):
         print("offer is DRAFT — re-run with --activate (or activate in Console) to go live.")
 
 
+def _affiliate_body(product_id, base_plan_id, offer_id, code_tag, relative_discount,
+                    months, anchor_region):
+    # A per-affiliate-code discount = ONE offer phase whose price is overridden by a
+    # `relativeDiscount` (the FRACTION the user PAYS, in the open interval (0,1)). So
+    # "30% off" = relativeDiscount 0.70. This mirrors `_trial_body` exactly, but swaps
+    # the per-region `free: {}` override for `relativeDiscount: <0..1>`.
+    #
+    # Field shapes (androidpublisher v3, verified):
+    #   - RegionalSubscriptionOfferPhaseConfig: { regionCode, price|relativeDiscount|
+    #       absoluteDiscount|free }. `relativeDiscount` is a number.
+    #       https://developers.google.com/android-publisher/api-ref/rest/v3/monetization.subscriptions.basePlans.offers#RegionalSubscriptionOfferPhaseConfig
+    #   - OtherRegionsSubscriptionOfferPhaseConfig: { otherRegionsPrices|relativeDiscount|
+    #       absoluteDiscounts|free }. SAME field name `relativeDiscount` for the catch-all.
+    #       https://developers.google.com/android-publisher/api-ref/rest/v3/monetization.subscriptions.basePlans.offers#OtherRegionsSubscriptionOfferPhaseConfig
+    #   - OfferTag: { tag } — RFC-1034: lower-case a-z, 0-9, hyphens; <=20 chars. We use
+    #       `code-<lowercased-code>` (e.g. "code-ian30") for backend attribution via
+    #       subscriptionsv2.get -> lineItems[].offerDetails.offerTags.
+    #       https://developers.google.com/android-publisher/api-ref/rest/v3/monetization.subscriptions.basePlans.offers#OfferTag
+    #
+    # We anchor ONE reliably-billable region explicitly (Play requires >=1 targeted
+    # region) and let `otherRegionsConfig.relativeDiscount` cover every other region the
+    # base plan sells in — same non-billable-region dodge as the trial (MN etc. at
+    # regions version 2022/02 fail the per-region billability check; the catch-all does
+    # not). recurrenceCount = months: the discount applies for that many billing cycles,
+    # then renews at full price. (Monthly base plan -> ~`months` months; annual base
+    # plan -> recurrenceCount 1 = the first year discounted; see --months default note.)
+    return {
+        "packageName": PACKAGE_NAME,
+        "productId": product_id,
+        "basePlanId": base_plan_id,
+        "offerId": offer_id,
+        "offerTags": [{"tag": code_tag}],
+        "phases": [
+            {
+                # The discount recurs for `months` billing cycles of the base plan.
+                "recurrenceCount": months,
+                # Per-phase PRICING: relativeDiscount in the anchor region + all others.
+                # relativeDiscount is the FRACTION PAID, so 0.70 == 30% off.
+                "regionalConfigs": [
+                    {"regionCode": anchor_region, "relativeDiscount": relative_discount}
+                ],
+                "otherRegionsConfig": {"relativeDiscount": relative_discount},
+            }
+        ],
+        # DEVELOPER-DETERMINED eligibility: omit `targeting` entirely (no acquisitionRule,
+        # no upgradeRule). Per the androidpublisher docs, an empty/omitted
+        # SubscriptionOfferTargeting means "developer-determined offer eligibility" — Play
+        # will NOT auto-surface this offer; it is only redeemable when the app explicitly
+        # passes its offerToken (which we do after the backend validates the typed code).
+        # (No "targeting" key here on purpose.)
+        #
+        # Offer-level AVAILABILITY (distinct from phase pricing): make the offer available
+        # to new subscribers in the anchor region + every other region (incl. future Play
+        # launches), so the code works globally without enumerating non-billable regions.
+        "regionalConfigs": [
+            {"regionCode": anchor_region, "newSubscriberAvailability": True}
+        ],
+        "otherRegionsConfig": {"otherRegionsNewSubscriberAvailability": True},
+    }
+
+
+def cmd_affiliate_offer(args):
+    code = args.code.strip()
+    if not code:
+        sys.exit("--code is required (e.g. IAN30).")
+    code_tag = f"code-{code.lower()}"
+    # RFC-1034 sanity: offerId / OfferTag.tag allow only a-z 0-9 '-', <=20 chars.
+    if not all(c.isalnum() or c == "-" for c in code_tag) or len(code_tag) > 20:
+        sys.exit(f"derived offer tag '{code_tag}' is not RFC-1034-safe (<=20 chars, "
+                 f"lower-case letters/digits/hyphens only). Pick a shorter/cleaner code.")
+    offer_id = args.offer_id or code_tag
+    percent = args.percent_off
+    if not (0 < percent < 100):
+        sys.exit(f"--percent-off must be in (0,100); got {percent}.")
+    # relativeDiscount is the FRACTION THE USER PAYS, range (0,1). 30% off -> 0.70.
+    relative_discount = round(1 - percent / 100.0, 6)
+
+    svc = _client(args)
+    regions = _base_plan_regions(svc, args.product, args.base_plan)
+    anchor = args.anchor_region if args.anchor_region in regions else (
+        "US" if "US" in regions else (regions[0] if regions else "US"))
+    body = _affiliate_body(args.product, args.base_plan, offer_id, code_tag,
+                           relative_discount, args.months, anchor)
+    print(f"create affiliate-discount offer {offer_id} (tag {code_tag}) on "
+          f"{args.product}/{args.base_plan}: {percent:g}% off "
+          f"(relativeDiscount={relative_discount}) for {args.months} billing cycle(s); "
+          f"developer-determined eligibility (NOT auto-shown); anchor region {anchor} + "
+          f"all other regions:")
+    print(json.dumps(body, indent=2))
+    if not args.yes:
+        print("\n[dry-run] add --yes to create. (then --activate to make it live)")
+        return
+    created = (
+        svc.monetization().subscriptions().basePlans().offers()
+        .create(
+            packageName=PACKAGE_NAME, productId=args.product, basePlanId=args.base_plan,
+            offerId=offer_id, **{"regionsVersion_version": REGIONS_VERSION}, body=body,
+        )
+        .execute()
+    )
+    print("created (DRAFT):", created.get("offerId"), created.get("state"))
+    if args.activate:
+        active = (
+            svc.monetization().subscriptions().basePlans().offers()
+            .activate(packageName=PACKAGE_NAME, productId=args.product,
+                      basePlanId=args.base_plan, offerId=offer_id)
+            .execute()
+        )
+        print("activated:", active.get("offerId"), active.get("state"))
+    else:
+        print("offer is DRAFT — re-run with --activate (or activate in Console) to go live.")
+
+
 def cmd_backcompat(args):
     svc = _client(args)
     sub = svc.monetization().subscriptions().get(
@@ -250,6 +372,25 @@ def main():
     sp.add_argument("--activate", action="store_true", help="activate immediately (else stays DRAFT)")
     sp.add_argument("--yes", action="store_true", help="actually call the API (default dry-run)")
     sp.set_defaults(func=cmd_trial)
+
+    sp = sub.add_parser("affiliate-offer",
+                        help="create a per-affiliate-code discount offer (dev-determined, not auto-shown)")
+    sp.add_argument("--product", required=True, help="subscription productId, e.g. corpan.sub.monthly")
+    sp.add_argument("--base-plan", required=True, help="base plan id (from `list`), e.g. corpan-sub-monthly")
+    sp.add_argument("--code", required=True, help="affiliate code, e.g. IAN30 (offer id/tag = code-<lowercased>)")
+    sp.add_argument("--percent-off", type=float, default=30.0,
+                    help="discount percent (default 30 -> relativeDiscount 0.70, the fraction paid)")
+    sp.add_argument("--months", type=int, default=12,
+                    help="billing cycles the discount recurs for (recurrenceCount). Default 12: "
+                         "~12 months on a monthly base plan, or the first 12 years on an annual one "
+                         "(so for annual base plans pass --months 1 to discount just the first year)")
+    sp.add_argument("--anchor-region", default="US",
+                    help="the one explicitly-targeted region (must be billable & sold); "
+                         "all other base-plan regions are covered by the relativeDiscount catch-all")
+    sp.add_argument("--offer-id", help="default: code-<lowercased-code>")
+    sp.add_argument("--activate", action="store_true", help="activate immediately (else stays DRAFT)")
+    sp.add_argument("--yes", action="store_true", help="actually call the API (default dry-run)")
+    sp.set_defaults(func=cmd_affiliate_offer)
 
     sp = sub.add_parser("backcompat", help="mark a base plan backward compatible (unblocks promo codes)")
     sp.add_argument("--product", required=True)
