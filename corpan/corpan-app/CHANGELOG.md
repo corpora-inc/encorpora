@@ -8,6 +8,38 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Fixed
+- **Daily wall now engages for the core phrase-flip.** The host-capability
+  marker (`__CORPAN_HOST_CAPS.dailyLock`) was only set inside `ContentPackHost`,
+  which mounts for content packs — not the core app — so the phrase-flip daily
+  cap silently degraded to "soft" even on a current host. It's now set app-wide
+  at startup. (Subscribers still never see a wall.)
+- **No more double rating prompt.** Exiting an experience fired BOTH the OS
+  native review and the in-app "Enjoying Corpán?" card. The in-app card is now
+  the single rating surface, and its 5-star button pops the OS-native review
+  widget (StoreKit / Play In-App Review) instead of bouncing to the store
+  listing; desktop still falls back to the store URL.
+- **Catalog fetching can no longer brick the app (the "zombie" bug).** Catalog
+  requests had no timeout, so a hung connection (seen on a ChromeOS/ARC
+  WebView) left the in-flight flag stuck and blocked every retry — the app sat
+  wedged for ~10 minutes and even uninstall/reinstall didn't help (the dead
+  connection lives in the shared system WebView, not app storage). Every
+  catalog fetch is now timeout-bounded, retried with jittered backoff, and the
+  in-flight flag always clears. A failed fetch keeps the cached catalog instead
+  of clobbering it with the built-in defaults.
+- **Onboarding never traps the user offline.** The "Pick your topics" step
+  gated its Continue button on the phrase-pack catalog loading; when that fetch
+  failed while online, Continue stayed disabled forever and the user could
+  never reach the offline-capable app. Continue is now always enabled — the
+  embedded corpus works with zero network.
+
+### Changed
+- **Catalogs refresh efficiently at fleet scale.** Background catalog refreshes
+  now use a conditional request (ETag / `If-None-Match`), so an unchanged
+  catalog comes back as a 0-byte `304` straight off the CDN edge instead of a
+  full re-download. The refresh poll is jittered per device and skips while
+  hidden/offline, so millions of clients pick up new packs within minutes
+  without a synchronized stampede on the catalog hosts.
+
 - **Apple offer-code redemptions now attribute the purchase.** Redeeming an
   affiliate/offer code through the Apple "Redeem Code" sheet delivers its
   transaction asynchronously (StoreKit `Transaction.updates`), which the app

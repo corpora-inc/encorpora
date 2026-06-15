@@ -25,6 +25,7 @@ import { useRecentNativeStore } from "@/store/recentNative";
 import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
+import { jitter } from "@/contentPacks/catalogFetch";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId, installPurchaseUpdatedListener } from "@/contentPacks/purchase";
 import { useEntitlementStore } from "@/store/entitlements";
@@ -206,20 +207,32 @@ export default function App() {
     })();
   }, [fetchCatalog, fetchPhrasePackCatalog]);
 
-  // Keep the Home/discovery catalogs fresh while the app stays open. Each
-  // store enforces its own TTL and online checks, so this is usually a cheap
-  // no-op and becomes a real network fetch only after the catalog is stale.
+  // Keep the Home/discovery catalogs fresh while the app stays open. The
+  // stores enforce their own TTL + online checks and now revalidate with a
+  // cheap conditional GET (a 0-byte 304 when nothing changed), so this is
+  // almost always free and a real download happens only when the catalog
+  // actually changed. We also poll on focus / foreground and skip while
+  // hidden or offline.
+  //
+  // The interval is JITTERED per device (recursive setTimeout, not a fixed
+  // setInterval) so a fleet of millions never hits the catalog hosts in a
+  // synchronized wave when an update lands.
   useEffect(() => {
     const refreshStaleCatalogs = () => {
       if (document.visibilityState === "hidden") return;
+      if (!navigator.onLine) return;
       void fetchCatalog();
       void fetchPhrasePackCatalog();
     };
 
-    const intervalId = window.setInterval(
-      refreshStaleCatalogs,
-      CATALOG_REFRESH_CHECK_INTERVAL_MS,
-    );
+    let timer = 0;
+    const scheduleNext = () => {
+      timer = window.setTimeout(() => {
+        refreshStaleCatalogs();
+        scheduleNext();
+      }, jitter(CATALOG_REFRESH_CHECK_INTERVAL_MS));
+    };
+    scheduleNext();
 
     const onVisibilityChange = () => {
       if (document.visibilityState === "visible") {
@@ -231,7 +244,7 @@ export default function App() {
     document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
-      window.clearInterval(intervalId);
+      window.clearTimeout(timer);
       window.removeEventListener("focus", refreshStaleCatalogs);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
@@ -482,16 +495,12 @@ export default function App() {
     // Exiting any experience returns to the Home hub (which is always mounted
     // underneath the overlay). No more dumping the user into Settings.
     const onExit = () => {
-      // Normal, user-initiated pack exit is a natural boundary to nudge the
-      // OS-native review prompt. Best-effort + fire-and-forget: we do NOT await
-      // it and it never gates the navigation. The rating store applies a soft
-      // local backstop (minimum engagement + long cooldown); the OS is the real
-      // throttle and may show nothing. This fires only on `corpan:exit` (a clean
-      // exit) — never on a paywall dismissal, an error exit, or pack teardown.
-      // `setActiveGame(null)` runs first so the prompt never races the UI.
+      // Exiting any experience returns to Home. We deliberately do NOT fire the
+      // OS-native review here — the in-app "Enjoying Corpán?" prompt
+      // (<RatingPrompt/>) is the single rating surface, and its 5-star button
+      // pops the native review widget. Firing both produced a double prompt.
       setActiveGame(null);
       updateGameParam(null);
-      useRatingStore.getState().maybeRequestNativeReview();
     };
     window.addEventListener("corpan:exit", onExit as EventListener);
     return () => window.removeEventListener("corpan:exit", onExit as EventListener);

@@ -8,6 +8,15 @@ import { getVoices, getVoicesCached } from "@/util/tts-voices";
 import { initAnalytics } from "@/util/analytics";
 import { installDevKeepAwake } from "@/util/devKeepAwake";
 
+// Advertise host capabilities to the paywall gate APP-WIDE (not just inside
+// ContentPackHost, which only mounts for content packs). `dailyLock` tells the
+// gate this host (>=0.18.1) can render the DailyLockOverlay, so the daily HARD
+// cap may engage — including for the core phrase-flip experience. Older hosts
+// never set this, so OTA packs degrade to the soft nag there.
+;(globalThis as { __CORPAN_HOST_CAPS?: { dailyLock?: boolean } }).__CORPAN_HOST_CAPS = {
+  dailyLock: true,
+}
+
 // DEV-only: hold a screen wake lock so the iPad debug loop survives the idle
 // timer. No-op in production builds.
 if (import.meta.env.DEV) installDevKeepAwake();
