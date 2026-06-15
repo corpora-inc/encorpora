@@ -280,9 +280,15 @@ export default function ContentPackHost({
     const scope = globalThis as typeof globalThis & {
       __CORPAN_PLUS?: boolean
       __CORPAN_ENTITLEMENT?: ContentPackEntitlementSnapshot
+      __CORPAN_HOST_CAPS?: { dailyLock?: boolean }
     }
     scope.__CORPAN_PLUS = entitlementSnapshot.plus
     scope.__CORPAN_ENTITLEMENT = entitlementSnapshot
+    // Advertise host capabilities to OTA packs (which may run in older apps).
+    // `dailyLock` = this host renders the gate-v2 DailyLockOverlay, so packs may
+    // hard-block at the daily cap. Absent in pre-0.18.1 hosts → packs degrade to
+    // the soft nag instead of freezing behind an overlay that won't appear.
+    scope.__CORPAN_HOST_CAPS = { ...scope.__CORPAN_HOST_CAPS, dailyLock: true }
     window.dispatchEvent(
       new CustomEvent("corpan:entitlement-changed", {
         detail: entitlementSnapshot,

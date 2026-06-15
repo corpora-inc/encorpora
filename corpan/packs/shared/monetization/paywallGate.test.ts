@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import { createPaywallGate } from "./index"
 import type {
   DailyLockedDetail,
@@ -68,6 +68,18 @@ function setup(overrides: Partial<GateConfig> = {}) {
 }
 
 describe("createPaywallGate", () => {
+  // Default test host = the NEW Corpán host (≥0.18.1): it renders the
+  // DailyLockOverlay, so the gate-v2 hard cap is active. The backwards-compat
+  // block below clears this marker to simulate an older host.
+  beforeEach(() => {
+    ;(
+      globalThis as { __CORPAN_HOST_CAPS?: { dailyLock?: boolean } }
+    ).__CORPAN_HOST_CAPS = { dailyLock: true }
+  })
+  afterEach(() => {
+    delete (globalThis as { __CORPAN_HOST_CAPS?: unknown }).__CORPAN_HOST_CAPS
+  })
+
   describe("subscriber no-op", () => {
     it("never fires, never blocks, remaining is Infinity", () => {
       const { gate, fires } = setup({ isSubscribed: () => true, hardness: "hard" })
@@ -90,6 +102,45 @@ describe("createPaywallGate", () => {
       gate.onInteraction()
       expect(fires).toHaveLength(0)
       expect(gate.remaining()).toBe(Infinity)
+    })
+  })
+
+  describe("backwards compatibility — host without daily-lock support", () => {
+    // Simulate an OLDER Corpán app (an OTA pack running in a pre-0.18.1 host):
+    // no __CORPAN_HOST_CAPS, so it cannot render the daily-lock overlay. The
+    // gate must NOT hard-block — that would freeze the user behind an invisible
+    // wall — it degrades to the soft `corpan:request-unlock` nag.
+    beforeEach(() => {
+      delete (globalThis as { __CORPAN_HOST_CAPS?: unknown }).__CORPAN_HOST_CAPS
+    })
+
+    it("does NOT hard-block at the daily cap (degrades to soft)", () => {
+      const { gate } = setup({ mode: "action", limit: undefined, dailyLimit: 2 })
+      gate.note()
+      gate.note() // at the cap
+      gate.note() // past the cap
+      expect(gate.isBlocked()).toBe(false) // would be true in a >=0.18.1 host
+    })
+
+    it("still fires the soft corpan:request-unlock nag", () => {
+      const { gate, fires } = setup({
+        mode: "action",
+        limit: undefined,
+        dailyLimit: 5,
+        softNagEvery: 1,
+      })
+      gate.note()
+      expect(fires.length).toBeGreaterThan(0) // soft nags render on every host
+    })
+
+    it("a >=0.18.1 host (marker present) DOES hard-block at the cap", () => {
+      ;(
+        globalThis as { __CORPAN_HOST_CAPS?: { dailyLock?: boolean } }
+      ).__CORPAN_HOST_CAPS = { dailyLock: true }
+      const { gate } = setup({ mode: "action", limit: undefined, dailyLimit: 2 })
+      gate.note()
+      gate.note()
+      expect(gate.isBlocked()).toBe(true)
     })
   })
 

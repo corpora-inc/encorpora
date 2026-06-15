@@ -27,6 +27,12 @@ Conventions: `corpan/CHANGELOGS.md`.
   pronunciation rounds). A few soft nudges lead up to it; at the cap a calm
   "you did your N today" lock shows your streak and a countdown to tomorrow,
   with the option to continue now with Plus. Subscribers never see it.
+  Backwards-compatible by design: packs ship over-the-air to *older* app
+  versions too, so the daily wall only hard-blocks where the host advertises
+  it can render the lock overlay (`__CORPAN_HOST_CAPS.dailyLock`, set by
+  ≥0.18.1). In an older host the same pack degrades to the dismissible soft
+  nag every host already renders — never a frozen, unexplained wall, and no
+  pack is version-gated.
 - **Affiliate / discount codes.** A single code field (shown after the paywall)
   validates a typed code server-side and applies the matching store offer — the
   Apple offer-redeem sheet on iOS, a Play offer token on Android — never a

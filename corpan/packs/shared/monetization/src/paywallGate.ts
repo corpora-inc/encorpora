@@ -75,6 +75,24 @@ function defaultIsSubscribed(): boolean {
   )
 }
 
+/**
+ * Whether the host can render the gate-v2 daily-lock overlay.
+ *
+ * Backwards compatibility: packs ship over-the-air and run inside OLDER Corpán
+ * apps (pre-0.18.1) that have no `DailyLockOverlay` and don't listen for
+ * `corpan:daily-locked`. Hard-blocking there would freeze the user with no
+ * explanation and no upgrade path. So the NEW host advertises support via
+ * `__CORPAN_HOST_CAPS.dailyLock`; when that's absent the gate must NOT hard-block
+ * — it degrades to the legacy, dismissible `corpan:request-unlock` soft nag,
+ * which every host (old and new) already renders. Graceful degradation over
+ * gating packs to a minimum app version.
+ */
+function hostSupportsDailyLock(): boolean {
+  const caps = (globalThis as { __CORPAN_HOST_CAPS?: { dailyLock?: boolean } })
+    .__CORPAN_HOST_CAPS
+  return Boolean(caps?.dailyLock)
+}
+
 /** Dispatches the `corpan:request-unlock` window event the host listens for. */
 function defaultRequestPaywall(detail: PaywallRequestDetail): void {
   try {
@@ -342,9 +360,14 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
       if (disposed || isSubscribed()) return false
       if (mode === "timed") return false
       const state = readState()
-      // gate-v2: the daily HARD cap blocks unconditionally (it IS a hard cap,
-      // regardless of the `hardness` field, which only governs the legacy limit).
-      if (typeof dailyLimit === "number") return dailyLocked(state)
+      // gate-v2: the daily HARD cap blocks at the cap — but ONLY when the host
+      // can render the daily-lock overlay. In an older host (OTA pack in a
+      // pre-0.18.1 app) there's no overlay, so we degrade to soft (the
+      // `corpan:request-unlock` nags still fired in `note()`) rather than freeze
+      // the user behind an invisible wall. See `hostSupportsDailyLock`.
+      if (typeof dailyLimit === "number") {
+        return hostSupportsDailyLock() && dailyLocked(state)
+      }
       // Legacy: only a `hardness:"hard"` gate blocks at its `limit`.
       if (hardness !== "hard") return false
       return countArmed(state)
