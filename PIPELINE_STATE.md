@@ -135,3 +135,6 @@ Realignment script: `~/bin/realign-catalog.py`
 - `~/projects/ttsctl/PLAN_pronunciation_test.md` — pre-generation pronunciation testing
 - `~/bin/realign-catalog.py` — catalog-wide realignment script
 - `~/encorpora/books/literature/tolstoy-short-stories/scripts/validate_segments.py` — pre-generation segment validation
+
+## AITW Episode 5 — June 14, 2026 — Sundays, and Who We Are
+2026-06-13T23:19:30Z — 9 langs shipped at v0.1.0 (en, zh, ar, fr, es, de, pt, it, ru). Batch3 in flight (nl, tr, pl, id, hi). DROPPED: ja (Claude translator left Arabic digits in tts.text → raw_digits validator loop), ko (Vertex Gemini silently passed 30 segs byte-equal in 4 attempts). Remaining batches 4-10 (~30 langs) not yet launched.

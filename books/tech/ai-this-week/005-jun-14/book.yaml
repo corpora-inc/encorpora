@@ -1,0 +1,37 @@
+book:
+  issue: 5
+  title: "AI This Week — June 14, 2026"
+  subtitle: "Sundays, and Who We Are"
+  date: 2026-06-14
+  target_segments: 110
+
+  audience: "Listeners following the open-weights / DIY / on-device thread. Episode 5 doubles as the show's first on-mic introduction of Corpora Inc. and the new Sunday release cadence."
+  primary_language: en
+  pack_id: ai_this_week_2026_06_14
+
+  cast:
+    host: vindy
+    analyst: ron
+
+  episode_shape: ep2_open_first  # Cold open → schedule + Corpora reveal → Top Story (beatlounge) → Open weights → Headlines → Small lab / DIY → Concept → Sign-off
+
+  # SPECIAL EPISODE: first to introduce Corpora Inc. on-mic + announce the
+  # Sunday release schedule. NO absolute marketing claims — see
+  # ~/.claude/projects/-home-skyl/memory/feedback_no_absolutes_in_marketing.md.
+  spine:
+    schedule_move: "Wednesday → Sunday release; rollout Saturday-through-Monday across ~50 langs"
+    company_reveal: "Corpora Inc. + Corpán app — on-device-first stack (Qwen3-4B + Whisper large-v3 + Chatterbox + SD3.5 + LoRA), small independent team, no big capital, ad-free in app today + generous free tier + optional premium"
+    top_story: "beatlounge — new music-meets-language pack launching in Corpán 0.18.0. Tick-addressed sequencer, multi-mode harmony engine, 10M+ phrases in 50+ languages, playable offline once installed"
+    open_weights: "DiffusionGemma (Apache 2.0, diffusion-text LM at 26B / 3.8B active), dots.tts (Apache 2.0, RedNote hilab, fully-continuous 2B TTS), Higgs Audio v3 (4B, 102 langs, non-commercial), Nemotron 3 Ultra (550B + training recipes under OpenMDW)"
+    headlines: "Kimi K2.7-Code (with benchmark-skepticism framing), Cohere North Mini Code (Apache 2.0, runs on one H100), Apple WWDC on-device + Gemini-distillation footnote, Qwen 3.7-Plus API-only"
+    small_lab_diy: "Kog (11 people, Paris, AMD MI300X contrarian inference bet) + Raspberry Pi AI HAT+ 2 (40 TOPS) + Jetson Orin Nano Super (67 TOPS)"
+    concept: "Diffusion vs autoregressive — the trick under DiffusionGemma's throughput"
+
+  pacing:
+    - Special-episode structure: cold open → Sunday move → Corpora reveal → top story (beatlounge) → open weights → headlines → small lab + DIY → concept → sign-off
+    - ~110 segments, ~12 minutes
+    - One sentence per segment (Ep 2+ rule of the road)
+    - Multiple consecutive ANALYST segments are expected when Ron has a multi-sentence thought
+    - Numbers spelled as words in tts.text everywhere; display field uses numerals
+    - Bare dialog text, no Style: prefix (director_prompt layer applies at generate time)
+    - NO absolute marketing claims (see editorial note above)
