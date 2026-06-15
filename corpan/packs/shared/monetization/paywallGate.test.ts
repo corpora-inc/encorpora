@@ -1,6 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 import { createPaywallGate } from "./index"
-import type { GateConfig, PaywallRequestDetail, StorageLike } from "./index"
+import type {
+  DailyLockedDetail,
+  GateConfig,
+  PaywallRequestDetail,
+  StorageLike,
+} from "./index"
 
 // ── deterministic harness ────────────────────────────────────────
 
@@ -41,6 +46,10 @@ function setup(overrides: Partial<GateConfig> = {}) {
   const requestPaywall = vi.fn((d: PaywallRequestDetail) => {
     fires.push(d)
   })
+  const locks: DailyLockedDetail[] = []
+  const requestDailyLock = vi.fn((d: DailyLockedDetail) => {
+    locks.push(d)
+  })
   const isSubscribed = vi.fn(() => false)
   const base: GateConfig = {
     packId: "testpack",
@@ -50,11 +59,12 @@ function setup(overrides: Partial<GateConfig> = {}) {
     now: clock.now,
     storage,
     requestPaywall,
+    requestDailyLock,
     isSubscribed,
     ...overrides,
   }
   const gate = createPaywallGate(base)
-  return { gate, clock, storage, fires, requestPaywall, isSubscribed }
+  return { gate, clock, storage, fires, locks, requestPaywall, requestDailyLock, isSubscribed }
 }
 
 describe("createPaywallGate", () => {
@@ -342,6 +352,155 @@ describe("createPaywallGate", () => {
         surface: "reader_eof_free",
         packId: "reader",
       })
+    })
+  })
+
+  // ── gate v2: daily hard cap + accomplishment lock ─────────────────
+  describe("gate v2 — dailyLimit / softNagEvery", () => {
+    it("fires a soft nag every softNagEvery actions BEFORE the cap", () => {
+      const { gate, fires, locks } = setup({
+        mode: "action",
+        limit: undefined,
+        dailyLimit: 20,
+        softNagEvery: 5,
+        unitLabel: "phrases",
+      })
+      for (let i = 0; i < 4; i++) gate.note()
+      expect(fires).toHaveLength(0)
+      gate.note() // 5th
+      expect(fires).toHaveLength(1)
+      expect(fires[0]).toMatchObject({ surface: "test_surface", packId: "testpack" })
+      for (let i = 0; i < 4; i++) gate.note() // 6..9
+      expect(fires).toHaveLength(1)
+      gate.note() // 10th
+      expect(fires).toHaveLength(2)
+      expect(locks).toHaveLength(0) // not yet at the cap
+    })
+
+    it("dispatches corpan:daily-locked once at the cap with a correct resetAt", () => {
+      const { gate, locks, clock } = setup({
+        mode: "action",
+        limit: undefined,
+        dailyLimit: 3,
+        softNagEvery: 10, // high enough it never fires before the cap
+        unitLabel: "messages",
+      })
+      gate.note()
+      gate.note()
+      expect(locks).toHaveLength(0)
+      gate.note() // reaches cap (3)
+      expect(locks).toHaveLength(1)
+      expect(locks[0]).toMatchObject({
+        packId: "testpack",
+        surface: "test_surface",
+        doneToday: 3,
+        limit: 3,
+        unitLabel: "messages",
+      })
+      // resetAt is the NEXT local midnight, strictly after now.
+      const resetMs = new Date(locks[0].resetAt).getTime()
+      expect(resetMs).toBeGreaterThan(clock.now())
+      const d = new Date(resetMs)
+      expect(d.getHours()).toBe(0)
+      expect(d.getMinutes()).toBe(0)
+      // and within the next 24h.
+      expect(resetMs - clock.now()).toBeLessThanOrEqual(24 * 60 * 60 * 1000)
+    })
+
+    it("blocks once at the cap and does not re-dispatch the lock on further notes", () => {
+      const { gate, locks } = setup({
+        mode: "action",
+        limit: undefined,
+        dailyLimit: 2,
+      })
+      expect(gate.isBlocked()).toBe(false)
+      gate.note()
+      expect(gate.isBlocked()).toBe(false)
+      gate.note() // cap
+      expect(gate.isBlocked()).toBe(true)
+      expect(locks).toHaveLength(1)
+      // further notes while blocked: no count inflation, no re-spam
+      gate.note()
+      gate.note()
+      expect(locks).toHaveLength(1)
+      expect(gate.remaining()).toBe(0)
+    })
+
+    it("the hard cap blocks even with hardness 'soft' (it IS a hard cap)", () => {
+      const { gate } = setup({ mode: "action", limit: undefined, dailyLimit: 1, hardness: "soft" })
+      gate.note()
+      expect(gate.isBlocked()).toBe(true)
+    })
+
+    it("resets at the next local day: unblocks + can lock again", () => {
+      const { gate, locks, clock } = setup({
+        mode: "action",
+        limit: undefined,
+        dailyLimit: 2,
+      })
+      gate.note()
+      gate.note()
+      expect(gate.isBlocked()).toBe(true)
+      expect(locks).toHaveLength(1)
+      // cross a local-day boundary
+      clock.advance(26 * 60 * 60 * 1000)
+      expect(gate.isBlocked()).toBe(false)
+      expect(gate.remaining()).toBe(2)
+      gate.note()
+      gate.note()
+      expect(gate.isBlocked()).toBe(true)
+      expect(locks).toHaveLength(2) // a fresh lock for the new day
+    })
+
+    it("remaining() honors dailyLimit and resetAt() is the next local midnight", () => {
+      const { gate, clock } = setup({ mode: "action", limit: undefined, dailyLimit: 5 })
+      expect(gate.remaining()).toBe(5)
+      gate.note()
+      gate.note()
+      expect(gate.remaining()).toBe(3)
+      const resetMs = new Date(gate.resetAt()).getTime()
+      expect(resetMs).toBeGreaterThan(clock.now())
+      expect(new Date(resetMs).getHours()).toBe(0)
+    })
+
+    it("onFire observes the daily lock with the DailyLockedDetail", () => {
+      const observed: Array<PaywallRequestDetail | DailyLockedDetail> = []
+      const { gate } = setup({
+        mode: "action",
+        limit: undefined,
+        dailyLimit: 1,
+        unitLabel: "characters",
+        onFire: (d) => observed.push(d),
+      })
+      gate.note()
+      const lock = observed.find((d) => "doneToday" in d) as DailyLockedDetail | undefined
+      expect(lock).toBeTruthy()
+      expect(lock).toMatchObject({ doneToday: 1, limit: 1, unitLabel: "characters" })
+    })
+
+    it("subscriber bypasses the daily cap entirely", () => {
+      const { gate, locks } = setup({
+        mode: "action",
+        limit: undefined,
+        dailyLimit: 1,
+        isSubscribed: () => true,
+      })
+      gate.note()
+      gate.note()
+      expect(locks).toHaveLength(0)
+      expect(gate.isBlocked()).toBe(false)
+      expect(gate.remaining()).toBe(Infinity)
+    })
+
+    it("merges config.detail into the daily-locked event", () => {
+      const { gate, locks } = setup({
+        mode: "action",
+        limit: undefined,
+        dailyLimit: 1,
+        detail: { theme: "stargate", language: "es" },
+      })
+      gate.note()
+      expect(locks[0]).toMatchObject({ theme: "stargate", language: "es" })
     })
   })
 })

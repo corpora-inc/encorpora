@@ -30,10 +30,12 @@ import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId } 
 import { useEntitlementStore } from "@/store/entitlements";
 import { InstallProvider } from "@/contentPacks/InstallContext";
 import { PaywallSheet } from "@/components/paywall/PaywallSheet";
+import { DailyLockOverlay, type DailyLockContext } from "@/components/paywall/DailyLockOverlay";
 import { usePaywallStore, type PaywallSurface, type PaywallContext } from "@/store/paywall";
 import { useProgressStore } from "@/store/progress";
 import { SystemPackInstaller } from "@/components/SystemPackInstaller";
 import { useLandingStore } from "@/store/landing";
+import { trackGateHit } from "@/util/analytics";
 
 const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
 
@@ -133,6 +135,10 @@ export default function App() {
   useThemeEffect();
   const [showSettings, setShowSettings] = useState(false);
   const [showTour, setShowTour] = useState(false);
+  // gate v2: the universal "you did your N today" accomplishment lock. One
+  // instance, host-rendered, driven by the `corpan:daily-locked` event the
+  // shared monetization gate dispatches when a pack hits its hard daily cap.
+  const [dailyLock, setDailyLock] = useState<DailyLockContext | null>(null);
   const [activeGame, setActiveGame] = useState<{
     id: string;
     manifestUrl?: string;
@@ -294,7 +300,17 @@ export default function App() {
         bookId?: string;
         language?: string;
         theme?: string;
+        // Present only when the SHARED paywall gate (packs/shared/monetization)
+        // fired the request — user-initiated dispatches (Library "Unlock",
+        // reader EOF) omit these.
+        packId?: string;
+        reason?: string;
       }>).detail;
+      // Funnel: gate_hit — emit ONLY for genuine shared-gate fires (carry both
+      // packId + reason). Host owns this so packs need no analytics dependency.
+      if (detail?.packId && detail?.reason) {
+        trackGateHit(detail.packId, detail.surface ?? "other", detail.reason);
+      }
       usePaywallStore.getState().openPaywall({
         surface: (detail?.surface as PaywallSurface) ?? "other",
         bookTitle: detail?.bookTitle,
@@ -303,11 +319,38 @@ export default function App() {
         theme: detail?.theme as PaywallContext["theme"],
       });
     };
+    /**
+     * gate v2: a pack hit its HARD daily cap. The shared monetization gate
+     * dispatches this with the accomplishment + countdown payload. We render
+     * the ONE universal lock overlay (positive "you did your N today ✓"). Never
+     * shown to subscribers — the gate suppresses it for them, but we also guard
+     * here so a stale event can't surface a lock over a paid session.
+     */
+    const onDailyLocked = (e: Event) => {
+      const detail = (e as CustomEvent<{
+        packId?: string;
+        surface?: string;
+        doneToday?: number;
+        limit?: number;
+        resetAt?: string;
+        unitLabel?: string;
+      }>).detail;
+      if (useEntitlementStore.getState().subscription.active) return;
+      if (!detail?.packId || !detail?.resetAt) return;
+      setDailyLock({
+        packId: detail.packId,
+        surface: (detail.surface as PaywallSurface) ?? "other",
+        doneToday: typeof detail.doneToday === "number" ? detail.doneToday : detail.limit ?? 0,
+        resetAt: detail.resetAt,
+        unitLabel: detail.unitLabel ?? "actions",
+      });
+    };
     window.addEventListener("corpan:purchase-recorded", onPurchaseRecorded);
     window.addEventListener(
       "corpan:subscription-recorded",
       onSubscriptionRecorded
     );
+    window.addEventListener("corpan:daily-locked", onDailyLocked);
     window.addEventListener(
       "corpan:restore-purchases-requested",
       onRestoreRequested
@@ -360,6 +403,7 @@ export default function App() {
       );
       window.removeEventListener("corpan:request-unlock", onRequestUnlock);
       window.removeEventListener("corpan:segment-progress", onSegmentProgress);
+      window.removeEventListener("corpan:daily-locked", onDailyLocked);
     };
   }, []);
 
@@ -540,6 +584,9 @@ export default function App() {
       <RatingPrompt />
       <UpdatePrompt />
       <PaywallSheet />
+      {dailyLock ? (
+        <DailyLockOverlay context={dailyLock} onClose={() => setDailyLock(null)} />
+      ) : null}
       <SystemPackInstaller />
 
       {/* Experience overlay. A pack (has manifestUrl) → ContentPackHost;

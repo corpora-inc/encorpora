@@ -9,12 +9,21 @@
 // Subscribers are a total no-op. A per-session in-memory backstop caps fires so
 // even a long session is never spammed.
 //
+// "gate v2" (monetization daily quota): set `dailyLimit` for a HARD per-local-day
+// cap that resets at local midnight (the DAU lever). Optional `softNagEvery`
+// fires a dismissible `corpan:request-unlock` every N actions BEFORE the cap
+// ("soft, soft, hard"); at the cap `note()` dispatches the NEW
+// `corpan:daily-locked` event (with doneToday/limit/resetAt/unitLabel) for the
+// host's positive "you did your N today ✓" accomplishment-lock overlay, and
+// `isBlocked()` stays true until the next local day.
+//
 // Folds in the per-pack quota patterns previously duplicated in
 // tutomaton (`tutomaton.quota`) and teletron (`teletron.quota`): localStorage
 // JSON `{ day, count }`, local-midnight reset, robust to malformed/missing
 // storage (an in-memory mirror carries the session if WebKit storage is full).
 
 import type {
+  DailyLockedDetail,
   EntitlementSnapshot,
   GateConfig,
   PaywallGate,
@@ -45,6 +54,14 @@ function localDay(now: number): string {
   return `${yyyy}-${mm}-${dd}`
 }
 
+/** Next local midnight (start of the next local day) as epoch ms — when the
+ *  daily counter resets. The gate-v2 lock counts down to this. */
+function nextLocalMidnight(now: number): number {
+  const d = new Date(now)
+  // setHours with the LOCAL components rolls to the next local day's 00:00:00.
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1, 0, 0, 0, 0).getTime()
+}
+
 /** Reads the host-injected entitlement globals (matches tutomaton's isPlus). */
 function defaultIsSubscribed(): boolean {
   const injected = globalThis as {
@@ -69,6 +86,17 @@ function defaultRequestPaywall(detail: PaywallRequestDetail): void {
   }
 }
 
+/** Dispatches the NEW `corpan:daily-locked` window event (gate-v2 hard cap). */
+function defaultRequestDailyLock(detail: DailyLockedDetail): void {
+  try {
+    const w = globalThis as { dispatchEvent?: (e: Event) => boolean }
+    if (typeof w.dispatchEvent !== "function" || typeof CustomEvent === "undefined") return
+    w.dispatchEvent(new CustomEvent("corpan:daily-locked", { detail }))
+  } catch {
+    /* host not present (e.g. SSR/standalone) — silently skip */
+  }
+}
+
 /** localStorage, guarded — undefined in non-DOM contexts. */
 function defaultStorage(): StorageLike | undefined {
   try {
@@ -86,14 +114,24 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
     mode,
     limit,
     intervalMs,
+    dailyLimit,
+    softNagEvery,
+    unitLabel = "actions",
     hardness = "soft",
     sessionCap = DEFAULT_SESSION_CAP,
     detail: extraDetail,
     isSubscribed = defaultIsSubscribed,
     requestPaywall = defaultRequestPaywall,
+    requestDailyLock = defaultRequestDailyLock,
+    onFire,
     now = Date.now,
     storage = defaultStorage(),
   } = config
+
+  // gate-v2: a `dailyLimit` makes this a per-local-day counter even if the
+  // caller left `mode:"action"` — so the count resets at local midnight like
+  // `mode:"daily"` does. (Soft-nags below also key off this counter.)
+  const isDailyCounter = mode === "daily" || typeof dailyLimit === "number"
 
   const storageKey = `corpan:gate:${packId}:${surface}`
 
@@ -105,6 +143,9 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
   const mountedAt = now()
   // Session backstop — counted in memory, never persisted.
   let sessionFires = 0
+  // gate-v2: the local-day stamp we last dispatched a `corpan:daily-locked` for,
+  // so the hard-lock event fires once per day (not on every subsequent note()).
+  let lockDay = ""
   let disposed = false
 
   function readState(): GateState {
@@ -135,10 +176,11 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
       }
     }
 
-    // Daily mode: a new local day zeroes the count.
-    if (mode === "daily" && state.day !== today) {
+    // Daily counter (mode:"daily" OR a gate-v2 dailyLimit): a new local day
+    // zeroes the count.
+    if (isDailyCounter && state.day !== today) {
       state = { day: today, count: 0, lastFireAt: state.lastFireAt }
-    } else if (mode === "daily") {
+    } else if (isDailyCounter) {
       state.day = today
     }
 
@@ -159,11 +201,18 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
     }
   }
 
-  /** action/daily: count has crossed the free limit. */
+  /** action/daily: count has crossed the free limit (legacy `limit`). */
   function countArmed(state: GateState): boolean {
     if (mode === "timed") return false
     if (typeof limit !== "number") return false
     return state.count >= limit
+  }
+
+  /** gate-v2: count has reached the hard daily cap. */
+  function dailyLocked(state: GateState): boolean {
+    if (mode === "timed") return false
+    if (typeof dailyLimit !== "number") return false
+    return state.count >= dailyLimit
   }
 
   /** timed: enough wall-clock has elapsed since the last fire/mount. */
@@ -184,6 +233,43 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
       hardness,
     }
     requestPaywall(payload)
+    // Optional analytics observation — never let it break the paywall flow.
+    if (onFire) {
+      try {
+        onFire(payload)
+      } catch {
+        /* analytics must never affect gating */
+      }
+    }
+  }
+
+  /**
+   * gate-v2 hard cap reached → dispatch `corpan:daily-locked` for the host's
+   * accomplishment-lock overlay. One-shot per local day (`lockDay`) so a
+   * still-locked pack re-`note()`-ing doesn't re-spam the overlay; the per-day
+   * guard auto-clears on the next local day (a fresh `state.day`).
+   */
+  function fireDailyLock(state: GateState): void {
+    if (typeof dailyLimit !== "number") return
+    if (lockDay === state.day) return // already announced today
+    lockDay = state.day
+    const payload: DailyLockedDetail = {
+      ...(extraDetail ?? {}),
+      packId,
+      surface,
+      doneToday: state.count,
+      limit: dailyLimit,
+      resetAt: new Date(nextLocalMidnight(now())).toISOString(),
+      unitLabel,
+    }
+    requestDailyLock(payload)
+    if (onFire) {
+      try {
+        onFire(payload)
+      } catch {
+        /* analytics must never affect gating */
+      }
+    }
   }
 
   return {
@@ -191,14 +277,38 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
       if (disposed || isSubscribed()) return
       if (mode === "timed") return // timed gates don't count actions
       const state = readState()
-      // Cap the stored count at limit+1 so we don't grow unboundedly; once past
-      // the limit, subsequent notes don't change armed-ness.
-      const ceiling = typeof limit === "number" ? limit + 1 : state.count + 1
+      // Don't keep counting once already at the hard daily cap — the pack is
+      // blocked; further taps shouldn't inflate `doneToday`.
+      if (dailyLocked(state)) return
+      // Cap the stored count so it doesn't grow unboundedly. With a gate-v2
+      // dailyLimit the ceiling is the cap itself; otherwise limit+1 (legacy).
+      const ceiling =
+        typeof dailyLimit === "number"
+          ? dailyLimit
+          : typeof limit === "number"
+            ? limit + 1
+            : state.count + 1
       const next: GateState = {
         ...state,
         count: Math.min(ceiling, state.count + 1),
       }
       writeState(next)
+
+      // gate-v2 "soft, soft, hard": the soft-nag + hard-lock both fire at the
+      // action boundary (inside note()), not on the next discrete interaction.
+      if (typeof dailyLimit === "number") {
+        if (dailyLocked(next)) {
+          fireDailyLock(next)
+        } else if (
+          typeof softNagEvery === "number" &&
+          softNagEvery > 0 &&
+          next.count > 0 &&
+          next.count % softNagEvery === 0
+        ) {
+          // Dismissible soft paywall before the cap.
+          fire(isDailyCounter ? "daily" : "action")
+        }
+      }
     },
 
     onInteraction() {
@@ -223,21 +333,35 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
     },
 
     isBlocked() {
-      if (disposed || hardness !== "hard" || isSubscribed()) return false
+      if (disposed || isSubscribed()) return false
       if (mode === "timed") return false
-      return countArmed(readState())
+      const state = readState()
+      // gate-v2: the daily HARD cap blocks unconditionally (it IS a hard cap,
+      // regardless of the `hardness` field, which only governs the legacy limit).
+      if (typeof dailyLimit === "number") return dailyLocked(state)
+      // Legacy: only a `hardness:"hard"` gate blocks at its `limit`.
+      if (hardness !== "hard") return false
+      return countArmed(state)
     },
 
     remaining() {
       if (isSubscribed()) return Infinity
-      if (mode === "timed" || typeof limit !== "number") return null
+      if (mode === "timed") return null
+      // gate-v2 dailyLimit takes precedence over the legacy `limit`.
+      const cap = typeof dailyLimit === "number" ? dailyLimit : limit
+      if (typeof cap !== "number") return null
       const state = readState()
-      return Math.max(0, limit - state.count)
+      return Math.max(0, cap - state.count)
+    },
+
+    resetAt() {
+      return new Date(nextLocalMidnight(now())).toISOString()
     },
 
     reset() {
       memory = null
       sessionFires = 0
+      lockDay = ""
       if (storage) {
         try {
           storage.removeItem(storageKey)

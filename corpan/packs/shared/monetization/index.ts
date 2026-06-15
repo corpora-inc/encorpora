@@ -13,5 +13,6 @@ export type {
   GateConfig,
   PaywallGate,
   PaywallRequestDetail,
+  DailyLockedDetail,
   StorageLike,
 } from "./src/types"

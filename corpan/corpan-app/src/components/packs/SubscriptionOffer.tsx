@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import { CheckCircle2 } from "lucide-react"
 import { openUrl } from "@tauri-apps/plugin-opener"
@@ -6,7 +6,12 @@ import { Button } from "@/components/ui/button"
 import { OfflineNotice } from "@/components/OfflineNotice"
 import { useOnlineStatus } from "@/hooks/useOnlineStatus"
 import { useEntitlementStore } from "@/store/entitlements"
-import { trackPaidUnlockViewed } from "@/util/analytics"
+import { usePaywallStore } from "@/store/paywall"
+import {
+  trackPaidUnlockViewed,
+  trackPaywallCtaTapped,
+  trackCodeFieldOpened,
+} from "@/util/analytics"
 import {
   fetchProducts,
   purchaseAndVerify,
@@ -57,10 +62,30 @@ type PaywallState =
 // the middle of empty space.
 const CARD_WRAPPER = "w-full max-w-md md:max-w-xl mx-auto"
 
-export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: string } = {}) {
+export function SubscriptionOffer({
+  wrapperClassName,
+  chromeless = false,
+}: {
+  wrapperClassName?: string
+  /**
+   * Drop the light card chrome (rounded border + gradient fill + padding) for
+   * the "checking" / "ready" purchase states so the offer sits FLUSH inside a
+   * host shell that supplies its own surface — e.g. the universal dark paywall.
+   * Purely presentational: every purchase state, CTA, code field, restore, and
+   * analytics call is identical. The other states (subscribed / unreachable /
+   * offline / pending) keep their semantic color cards — they read fine on the
+   * dark shell and carry meaning, so we don't flatten them.
+   */
+  chromeless?: boolean
+} = {}) {
   // Width override for contexts (e.g. the Home hub) where the card should span
   // the surrounding grid instead of the default centered cap.
   const wrapper = wrapperClassName ?? CARD_WRAPPER
+  // The offer "card" surface. Chromeless → a bare flush container (the dark
+  // paywall shell owns the surface); otherwise the original light card.
+  const cardClass = chromeless
+    ? "space-y-3"
+    : "rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3"
   const { t } = useTranslation()
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const platform = useEntitlementStore((s) => s.platform)
@@ -143,11 +168,20 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   const selectedProductId =
     selectedPlan === "annual" ? SUBSCRIPTION_ANNUAL : SUBSCRIPTION_MONTHLY
 
+  // Funnel: code_field_opened — fire once, the first time the user actually
+  // engages the always-visible code field (first non-empty input). A ref keeps
+  // it a one-shot per mount without adding JSX/markup.
+  const codeFieldOpenedRef = useRef(false)
+
   useEffect(() => {
     const code = normalizeAffiliateCode(affiliateCode)
     if (!code) {
       setCodeStatus({ kind: "idle" })
       return
+    }
+    if (!codeFieldOpenedRef.current) {
+      codeFieldOpenedRef.current = true
+      trackCodeFieldOpened()
     }
     if (!isAffiliateCodeFormatValid(code)) {
       setCodeStatus({
@@ -179,6 +213,12 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   const handleSubscribe = async () => {
     if (state.kind !== "ready") return
     const productId = selectedProductId
+    // Funnel: paywall_cta_tapped — purchase INTENT, before the store sheet.
+    // Surface comes from the active paywall context, or "subscription_offer"
+    // when the offer is shown inline (Home hub / Settings).
+    const ctaSurface =
+      usePaywallStore.getState().context?.surface ?? "subscription_offer"
+    trackPaywallCtaTapped(ctaSurface, selectedPlan)
     setIsPurchasing(true)
     try {
       const code = normalizeAffiliateCode(affiliateCode)
@@ -321,7 +361,7 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   if (state.kind === "checking") {
     return (
       <div className={wrapper}>
-        <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
+        <div className={cardClass}>
           {/* Heading + description (~50px) */}
           <div className="space-y-2">
             <div className="h-4 w-32 rounded bg-muted/60 animate-pulse" />
@@ -498,18 +538,22 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
 
   return (
     <div className={wrapper}>
-      <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
-        <div>
-          <h3 className="font-semibold text-sm">
-            {t("subscription.title", "Unlock everything")}
-          </h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            {t(
-              "subscription.description",
-              "Unlimited access to every narrated book and premium pack with a subscription."
-            )}
-          </p>
-        </div>
+      <div className={cardClass}>
+        {/* In the dark paywall the shell already carries the value line +
+            headline, so we omit this duplicate heading; standalone it stays. */}
+        {chromeless ? null : (
+          <div>
+            <h3 className="font-semibold text-sm">
+              {t("subscription.title", "Unlock everything")}
+            </h3>
+            <p className="text-xs text-muted-foreground mt-1">
+              {t(
+                "subscription.description",
+                "Unlimited access to every narrated book and premium pack with a subscription."
+              )}
+            </p>
+          </div>
+        )}
 
         <div className="flex gap-2">
           {annualProduct ? (
