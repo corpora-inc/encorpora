@@ -12,15 +12,36 @@ export interface InitializeResponse {
 }
 
 /**
+ * Payment mode for an introductory offer phase (iOS/macOS only).
+ * Mirrors StoreKit's `Product.SubscriptionOffer.PaymentMode`.
+ */
+export type IntroOfferPaymentMode = "freeTrial" | "payAsYouGo" | "payUpFront";
+
+/**
  * Represents a pricing phase for subscription products
  */
 export interface PricingPhase {
   formattedPrice: string;
   priceCurrencyCode: string;
+  /** Intro price in micros (price × 1,000,000). 0 for a free trial. */
   priceAmountMicros: number;
+  /**
+   * ISO 8601 billing period for the phase (e.g. "P1W", "P1M", "P1Y").
+   * For an iOS intro offer this is the intro offer's period.
+   */
   billingPeriod: string;
+  /**
+   * Number of billing cycles the phase repeats. For an iOS intro offer this
+   * is the offer's `periodCount` (e.g. 3 months of pay-as-you-go).
+   */
   billingCycleCount: number;
   recurrenceMode: number;
+  /**
+   * Payment mode for an introductory offer phase (iOS/macOS only).
+   * Present only on the intro-offer pricing phase; absent on Android phases
+   * and on the regular (non-intro) phase.
+   */
+  paymentMode?: IntroOfferPaymentMode;
 }
 
 /**
@@ -377,6 +398,33 @@ export async function getProductStatus(
       productType,
     },
   });
+}
+
+/**
+ * Present the App Store offer-code redemption sheet (iOS only).
+ *
+ * On iOS this opens StoreKit's "Redeem Code" sheet
+ * (`AppStore.presentOfferCodeRedeemSheet`, falling back to
+ * `SKPaymentQueue.presentCodeRedemptionSheet`). The resulting transaction is
+ * delivered through the `onPurchaseUpdated` listener — this call only presents
+ * the sheet and resolves once it has been shown.
+ *
+ * Not supported on Android (offer codes are entered via an in-app code field +
+ * offer token) or desktop; the promise rejects with an "unsupported" error on
+ * those platforms.
+ *
+ * @returns Promise that resolves once the sheet is presented
+ * @example
+ * ```typescript
+ * try {
+ *   await presentOfferCodeRedeemSheet();
+ * } catch (e) {
+ *   // unsupported platform, or sheet could not be presented
+ * }
+ * ```
+ */
+export async function presentOfferCodeRedeemSheet(): Promise<void> {
+  return await invoke<void>("plugin:iap|present_offer_code_redeem_sheet");
 }
 
 /**

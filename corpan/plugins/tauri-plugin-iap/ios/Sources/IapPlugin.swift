@@ -207,18 +207,24 @@ class IapPlugin: Plugin {
                     var subscriptionOffers: [JsonObject] = []
 
                     if let introOffer = subscription.introductoryOffer {
+                        // Surface StoreKit's intro-offer payment mode + real
+                        // price/period so the app can detect free trials
+                        // robustly (issue #16) instead of price-string
+                        // heuristics.
+                        let introPhase: JsonObject = [
+                            "formattedPrice": introOffer.displayPrice,
+                            "priceCurrencyCode": getCurrencyCode(for: product),
+                            "priceAmountMicros": microsFromDecimal(introOffer.price),
+                            "billingPeriod": formatSubscriptionPeriod(introOffer.period),
+                            "billingCycleCount": introOffer.periodCount,
+                            "recurrenceMode": 0,
+                            "paymentMode": paymentModeString(introOffer.paymentMode),
+                        ]
                         let offer: JsonObject = [
                             "offerToken": "",
                             "basePlanId": "",
                             "offerId": introOffer.id ?? "",
-                            "pricingPhases": [[
-                                "formattedPrice": introOffer.displayPrice,
-                                "priceCurrencyCode": getCurrencyCode(for: product),
-                                "priceAmountMicros": 0,
-                                "billingPeriod": formatSubscriptionPeriod(introOffer.period),
-                                "billingCycleCount": introOffer.periodCount,
-                                "recurrenceMode": 0,
-                            ]],
+                            "pricingPhases": [introPhase],
                         ]
                         subscriptionOffers.append(offer)
                     }
@@ -522,6 +528,51 @@ class IapPlugin: Plugin {
         invoke.resolve(statusResult)
     }
 
+    // MARK: - presentOfferCodeRedeemSheet
+
+    /// Present the App Store "Redeem Code" sheet for subscription offer codes.
+    ///
+    /// Prefers the StoreKit 2 `AppStore.presentOfferCodeRedeemSheet(in:)`
+    /// (iOS 16+) and falls back to the StoreKit 1
+    /// `SKPaymentQueue.presentCodeRedemptionSheet()` (iOS 14+) when the SK2
+    /// API is unavailable. The redeemed transaction is delivered through the
+    /// existing `Transaction.updates` listener (set up in `load`) — we do NOT
+    /// re-implement transaction handling here.
+    @objc public func presentOfferCodeRedeemSheet(_ invoke: Invoke) async throws {
+        // The sheet must be presented from the active window scene on the
+        // main actor.
+        await MainActor.run {
+            if #available(iOS 16.0, *),
+               let scene = Self.activeWindowScene() {
+                AppStore.presentOfferCodeRedeemSheet(in: scene)
+                invoke.resolve()
+                return
+            }
+
+            if #available(iOS 14.0, *) {
+                SKPaymentQueue.default().presentCodeRedemptionSheet()
+                invoke.resolve()
+                return
+            }
+
+            self.reject(invoke, code: "NOT_ENTITLED",
+                        message: "Offer code redemption requires iOS 14.0 or later")
+        }
+    }
+
+    /// Find the foreground-active `UIWindowScene` to present StoreKit sheets in.
+    @MainActor
+    private static func activeWindowScene() -> UIWindowScene? {
+        let scenes = UIApplication.shared.connectedScenes
+        // Prefer the foreground-active scene; fall back to any window scene.
+        if let active = scenes.first(where: {
+            $0.activationState == .foregroundActive
+        }) as? UIWindowScene {
+            return active
+        }
+        return scenes.compactMap { $0 as? UIWindowScene }.first
+    }
+
     // MARK: - Transaction.updates handler
 
     private func handleTransactionUpdate(_ result: VerificationResult<Transaction>) async {
@@ -618,6 +669,25 @@ class IapPlugin: Plugin {
         }
     }
 
+    /// Convert a StoreKit `Decimal` price into integer micros
+    /// (price × 1,000,000), matching the Android `priceAmountMicros`
+    /// convention. Uses NSDecimalNumber to avoid binary-float rounding.
+    private func microsFromDecimal(_ price: Decimal) -> Int {
+        let micros = price * Decimal(1_000_000)
+        return NSDecimalNumber(decimal: micros).intValue
+    }
+
+    /// Map StoreKit's intro-offer payment mode to a stable string understood
+    /// by the JS layer: "freeTrial" / "payAsYouGo" / "payUpFront".
+    private func paymentModeString(_ mode: Product.SubscriptionOffer.PaymentMode) -> String {
+        switch mode {
+        case .freeTrial: return "freeTrial"
+        case .payAsYouGo: return "payAsYouGo"
+        case .payUpFront: return "payUpFront"
+        default: return "payUpFront"
+        }
+    }
+
     private func getCurrencyCode(for product: Product) -> String {
         if #available(iOS 16.0, *) {
             return product.priceFormatStyle.locale.currency?.identifier ?? ""
@@ -649,6 +719,9 @@ func initPlugin() -> Plugin {
                 invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
             }
             @objc func getProductStatus(_ invoke: Invoke) {
+                invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
+            }
+            @objc func presentOfferCodeRedeemSheet(_ invoke: Invoke) {
                 invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
             }
         }

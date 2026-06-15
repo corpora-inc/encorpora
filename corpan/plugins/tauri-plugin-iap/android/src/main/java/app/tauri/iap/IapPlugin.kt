@@ -372,7 +372,16 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
             }
         }
     }
-    
+
+    @Command
+    fun presentOfferCodeRedeemSheet(invoke: Invoke) {
+        // Google Play has no equivalent "redeem code sheet" launched from the
+        // app for this flow. Promo/offer codes are entered in the Play Store
+        // app, and offer codes flow through the in-app code field + offer
+        // token (handled elsewhere). Surface a clear unsupported error.
+        invoke.reject("NOT_ENTITLED: Offer code redemption sheet is not supported on Android")
+    }
+
     override fun onPurchasesUpdated(billingResult: BillingResult, purchases: List<Purchase>?) {
         when (billingResult.responseCode) {
             BillingClient.BillingResponseCode.OK -> {

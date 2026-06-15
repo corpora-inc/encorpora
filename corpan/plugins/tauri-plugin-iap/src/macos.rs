@@ -176,4 +176,17 @@ impl<R: Runtime> Iap<R> {
             .await
             .parse()
     }
+
+    pub async fn present_offer_code_redeem_sheet(&self) -> crate::Result<()> {
+        // The offer-code redeem sheet is an iOS-only StoreKit affordance.
+        // On macOS, users redeem offer codes via the App Store app.
+        Err(crate::error::PluginInvokeError::InvokeRejected(
+            crate::error::ErrorResponse {
+                code: None,
+                message: Some("Offer code redemption is not supported on macOS.".to_string()),
+                data: (),
+            },
+        )
+        .into())
+    }
 }
