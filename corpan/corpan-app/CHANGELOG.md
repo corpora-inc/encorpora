@@ -7,7 +7,28 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.18.1] - 2026-06-15
+
 ### Added
+- **Corpán Plus paywall, rebuilt.** One universal, dark, immersive paywall is
+  used everywhere (Corpán mark, free-trial hero, plan selector, restore),
+  replacing the per-pack themed sheets so the upgrade moment is consistent.
+- **Daily free quotas across the experiences.** Each experience now has a
+  generous daily allowance (e.g. ~20 phrases / 20 tutor messages / 15
+  pronunciation rounds). A few soft nudges lead up to it; at the cap a calm
+  "you did your N today" lock shows your streak and a countdown to tomorrow,
+  with the option to continue now with Plus. Subscribers never see it.
+- **Affiliate / discount codes.** A single code field (shown after the paywall)
+  validates a typed code server-side and applies the matching store offer — the
+  Apple offer-redeem sheet on iOS, a Play offer token on Android — never a
+  client-side price override. An unknown or unverifiable code never grants
+  anything.
+- **Onboarding opens your best-fit experience.** After setup the app launches
+  the single most-fitting experience for what you told us, instead of dropping
+  you onto a full Home to choose from everything at once.
+- **Anonymous, opt-in usage analytics.** Aggregate, no-PII events (experience
+  opens, paywall views, conversions) buffered on-device and sent only with
+  consent, so we can learn what actually helps people learn.
 - **Per-pack visit streaks (retention, not a gate).** A new shared module
   `packs/shared/streak` tracks consecutive local days each pack is opened,
   persisted per pack in `localStorage` (`corpan.streak.v1.<packId>`) and
@@ -66,8 +87,6 @@ Conventions: `corpan/CHANGELOGS.md`.
   configured (or the store is unreachable/offline), the card looks exactly as
   before. Detection is automatic from store data — the trial lights up the
   moment an offer is configured in App Store Connect / Play Console.
-
-## [0.18.1] - 2026-06-13
 
 ### Added
 - **Three more languages: Tagalog, Javanese, Sundanese.** Added across the
