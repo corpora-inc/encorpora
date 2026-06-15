@@ -582,6 +582,7 @@ def cmd_set_prices(args):
     rconfigs = target_bp.setdefault("regionalConfigs", [])
     by_region = {rc.get("regionCode"): rc for rc in rconfigs}
     changes = 0
+    cur_skips = []
     for country, info in plan.items():
         rc = by_region.get(country)
         if rc is None:
@@ -591,8 +592,21 @@ def cmd_set_prices(args):
             rc = {"regionCode": country, "newSubscriberAvailability": True}
             rconfigs.append(rc)
             by_region[country] = rc
+        # convertRegionPrices can return a currency the base plan does NOT expect for
+        # this region at regionsVersion 2022/02 (e.g. Bulgaria moved to EUR in Google's
+        # newer catalog, but 2022/02 still expects BGN). The patch is ATOMIC — one
+        # mismatched region rejects ALL of them — so skip it (keep its current price).
+        existing_cur = (rc.get("price") or {}).get("currencyCode")
+        new_cur = (info["money"] or {}).get("currencyCode")
+        if existing_cur and new_cur and existing_cur != new_cur:
+            cur_skips.append((country, existing_cur, new_cur))
+            continue
         rc["price"] = info["money"]  # set ONLY price; leave newSubscriberAvailability etc.
         changes += 1
+    if cur_skips:
+        print("\ncurrency-mismatch regions skipped (kept current price — set manually if needed):")
+        for country, exp, got in sorted(cur_skips):
+            print(f"  {country}: base plan expects {exp}, convertRegionPrices returned {got}")
 
     print(f"\npatch updateMask=basePlans (regionsVersion {REGIONS_VERSION}); "
           f"changing price on {changes} region(s) of {args.base_plan}; "
