@@ -74,10 +74,12 @@ type ContentPackModule = {
 }
 
 const PACK_ID = "tutomaton"
-// Free daily message cap, enforced by the shared paywall gate (daily/hard mode).
-// A free user gets this many tutor messages per local day, then is BLOCKED
-// until tomorrow or subscribe — intentionally a hard cap that pulls them back.
+// gate v2 daily quota (per-pack, release-tunable). A free user gets this many
+// tutor messages per local day, with a dismissible soft nag every
+// FREE_DAILY_NAG_EVERY before the hard cap ("soft, soft, hard"); at the cap the
+// pack is BLOCKED until tomorrow or subscribe and drives the accomplishment lock.
 const FREE_DAILY_LIMIT = 20
+const FREE_DAILY_NAG_EVERY = 5
 
 type Msg = { role: "user" | "assistant"; content: string }
 
@@ -268,19 +270,21 @@ const PackModule: ContentPackModule = {
     let plus = isPlus(initialState)
     const disposers: Array<() => void> = []
 
-    // Daily message quota → shared paywall gate. `daily` resets the count each
-    // local day (the DAU lever); `hard` blocks once the free limit is reached
-    // until tomorrow or subscribe. Subscriber state tracks the live `plus`
-    // (seeded from mount-time injection, updated by corpan:entitlement-changed),
-    // since the host passes Plus via initialState — not only the globals the
-    // gate default reads. Persists under corpan:gate:tutomaton:tutomaton_daily
-    // (migrated off the old `tutomaton.quota` key — a fresh day's count either way).
+    // Daily message quota → shared paywall gate (gate v2). `dailyLimit` resets
+    // the count each local day (the DAU lever) and hard-BLOCKS at the cap until
+    // tomorrow or subscribe, dispatching `corpan:daily-locked` for the host's
+    // accomplishment-lock overlay; `softNagEvery` shows two dismissible nags
+    // before the cap. Subscriber state tracks the live `plus` (seeded from
+    // mount-time injection, updated by corpan:entitlement-changed), since the
+    // host passes Plus via initialState — not only the globals the gate default
+    // reads. Persists under corpan:gate:tutomaton:tutomaton_daily.
     const quotaGate: PaywallGate = createPaywallGate({
       packId: PACK_ID,
       surface: "tutomaton_daily",
       mode: "daily",
-      limit: FREE_DAILY_LIMIT,
-      hardness: "hard",
+      dailyLimit: FREE_DAILY_LIMIT,
+      softNagEvery: FREE_DAILY_NAG_EVERY,
+      unitLabel: "messages",
       isSubscribed: () => plus,
     })
     disposers.push(() => quotaGate.dispose())

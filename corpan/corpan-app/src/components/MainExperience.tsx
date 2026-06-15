@@ -16,12 +16,25 @@ import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore } from "@/store/history";
 import { useRatingStore } from "@/store/rating";
 import { usePhrasePacksStore } from "@/store/phrasePacks";
+import { useEntitlementStore } from "@/store/entitlements";
+import { createPaywallGate, type PaywallGate } from "@shared/monetization";
 import { resolveLocalized } from "@/contentPacks/localized";
 
 import { isRTL } from "@/util/convert";
 import { getPlatformBottomPadding } from "@/util/browser";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
+
+/* ----------------------------- Monetization ----------------------------- */
+
+// gate v2 daily quota for the CORE phrase experience (release-tunable). A free
+// user advances PHRASE_DAILY_LIMIT phrases per local day, with a dismissible
+// soft nag every PHRASE_DAILY_NAG_EVERY before the hard cap ("soft, soft,
+// hard"); at the cap the gate dispatches `corpan:daily-locked` (App.tsx renders
+// the accomplishment-lock overlay) and stays blocked until local midnight or
+// subscribe. Subscribers are a no-op (gate reads live entitlement state).
+const PHRASE_DAILY_LIMIT = 20;
+const PHRASE_DAILY_NAG_EVERY = 5;
 
 /* -------------------------------- Types -------------------------------- */
 
@@ -240,6 +253,27 @@ export function MainExperience() {
     const scrollNavigationEnabled = useSettingsStore((s) => s.scrollNavigationEnabled);
 
     const incrementUtteranceCount = useRatingStore((s) => s.incrementUtteranceCount);
+
+    // Daily phrase quota → shared paywall gate (gate v2). One instance per mount;
+    // `note()` (per forward phrase advance) fires the soft nag / accomplishment
+    // lock internally. Subscribers are a no-op — `isSubscribed` reads the live
+    // entitlement store, so a mid-session subscribe immediately stops gating.
+    const phraseGateRef = useRef<PaywallGate | null>(null);
+    if (phraseGateRef.current === null) {
+        phraseGateRef.current = createPaywallGate({
+            packId: "corpan_app",
+            surface: "phrase_flips",
+            mode: "daily",
+            dailyLimit: PHRASE_DAILY_LIMIT,
+            softNagEvery: PHRASE_DAILY_NAG_EVERY,
+            unitLabel: "phrases",
+            isSubscribed: () => useEntitlementStore.getState().subscription.active,
+        });
+    }
+    useEffect(() => {
+        const gate = phraseGateRef.current;
+        return () => gate?.dispose();
+    }, []);
 
     // History
     const activeHistory = useHistoryStore((s) => s.byStack[activeStackId]);
@@ -496,6 +530,10 @@ export function MainExperience() {
     };
 
     const handleNext = () => {
+        // One forward phrase advance — count it toward the daily quota (fires the
+        // soft nag / accomplishment lock internally; no-op for subscribers).
+        // Backward review (handlePrev) is never counted.
+        phraseGateRef.current?.note();
         if (index < ids.length - 1) {
             const target = ids[index + 1];
             if (typeof target !== "number") return;

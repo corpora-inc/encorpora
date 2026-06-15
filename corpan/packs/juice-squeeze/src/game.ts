@@ -27,6 +27,7 @@ import { useGameStore, LEVEL_FRUIT_COLORS, BOTTLES_PER_LEVEL, getAllFruits, type
 import { createJuiceGlass, type JuiceGlass } from "./juiceAnimation"
 import { createBottle3D, type Bottle3D } from "./bottle3D"
 import { t } from "./translations"
+import { createPaywallGate } from "@shared/monetization"
 import successSoundUrl from "./sounds/success.mp3"
 import corpanLogoUrl from "./assets/corpan-logo.png"
 
@@ -179,6 +180,23 @@ export const createJuiceSqueeze = (
   }
 
   let disposed = false
+
+  // gate v2 daily quota (per-pack, release-tunable). A free user gets
+  // JUICE_DAILY_LIMIT phrases per local day, with a dismissible soft nag every
+  // JUICE_DAILY_NAG_EVERY before the hard cap ("soft, soft, hard"); at the cap
+  // the gate dispatches `corpan:daily-locked` for the host's accomplishment-lock
+  // overlay. `note()` (per completed phrase) fires the nag/lock internally.
+  // Subscribers are a no-op (the gate reads the host-injected Plus globals).
+  const JUICE_DAILY_LIMIT = 20
+  const JUICE_DAILY_NAG_EVERY = 5
+  const paywallGate = createPaywallGate({
+    packId: "juice_squeeze",
+    surface: "juice_phrases",
+    mode: "daily",
+    dailyLimit: JUICE_DAILY_LIMIT,
+    softNagEvery: JUICE_DAILY_NAG_EVERY,
+    unitLabel: "phrases",
+  })
 
   // Track rotation index for multi-language stacks (3+ languages)
   let targetLangRotationIndex = 0
@@ -1453,6 +1471,9 @@ export const createJuiceSqueeze = (
         useGameStore.getState().setWon(true)
         useGameStore.getState().incrementCompletedPhrases()
         useGameStore.getState().incrementScore()
+        // One phrase completed — advance the daily gate (fires the soft nag /
+        // accomplishment lock internally; no-op for subscribers).
+        paywallGate.note()
 
         // Record completed phrase with word count for all-time score
         // Pass the current visual color level and gradient so bottles show correct color in collection
@@ -2939,6 +2960,7 @@ export const createJuiceSqueeze = (
       return
     }
     disposed = true
+    paywallGate.dispose()
 
     // Clear pending TTS timeout to prevent phantom phrases
     if (ttsTimeoutId !== null) {

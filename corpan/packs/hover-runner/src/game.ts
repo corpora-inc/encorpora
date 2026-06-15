@@ -101,16 +101,22 @@ export const createHoverRunner = (
 ) => {
   let disposed = false
 
-  // Soft, action-mode paywall gate: every ~5 phrases completed, the NEXT tap
-  // surfaces the paywall, then play continues (never blocks). `note()` counts a
-  // completed phrase; `onInteraction()` on each tap fires the paywall once the
-  // count is past the limit. Disposed in dispose().
+  // gate v2 daily quota (per-pack, release-tunable). A free user gets
+  // HOVER_DAILY_LIMIT phrases per local day, with a dismissible soft nag every
+  // HOVER_DAILY_NAG_EVERY before the hard cap ("soft, soft, hard"); at the cap
+  // the gate is BLOCKED until tomorrow or subscribe and dispatches
+  // `corpan:daily-locked` for the host's accomplishment-lock overlay. `note()`
+  // counts a completed phrase (and fires the nag/lock internally). Disposed in
+  // dispose().
+  const HOVER_DAILY_LIMIT = 20
+  const HOVER_DAILY_NAG_EVERY = 5
   const paywallGate = createPaywallGate({
     packId: "hover-runner",
     surface: "hover_phrases",
-    mode: "action",
-    limit: 5,
-    hardness: "soft",
+    mode: "daily",
+    dailyLimit: HOVER_DAILY_LIMIT,
+    softNagEvery: HOVER_DAILY_NAG_EVERY,
+    unitLabel: "phrases",
   })
 
   // iOS detection removed - no longer needed for platform-specific hacks
@@ -314,8 +320,9 @@ export const createHoverRunner = (
   }
 
   // Feed the paywall gate one interaction per tap. Capture-phase so it sees
-  // every tap regardless of which handler consumes it; soft mode means this
-  // only ever surfaces the paywall (after ~5 phrases), never blocks play.
+  // every tap regardless of which handler consumes it. Under gate v2 the daily
+  // nag/lock fire from `note()` (per completed phrase); this keeps the tap-driven
+  // interaction seam in place (no-op unless a legacy `limit` is reintroduced).
   const onPaywallInteraction = () => paywallGate.onInteraction()
 
   document.addEventListener("visibilitychange", onVisibilityChange)

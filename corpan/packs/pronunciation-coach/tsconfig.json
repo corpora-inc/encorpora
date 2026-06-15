@@ -12,7 +12,10 @@
     "noEmit": true,
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "paths": {
+      "@shared/monetization": ["../shared/monetization/index.ts"]
+    }
   },
-  "include": ["src", "../shared/ui/offlineNotice.ts"]
+  "include": ["src", "../shared/ui/offlineNotice.ts", "../shared/monetization/index.ts"]
 }

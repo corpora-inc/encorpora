@@ -1,4 +1,14 @@
 import "./styles.css"
+import { createPaywallGate } from "@shared/monetization"
+
+// gate v2 daily quota (per-pack, release-tunable). A free user practices
+// HANZI_DAILY_LIMIT characters per local day, with a dismissible soft nag every
+// HANZI_DAILY_NAG_EVERY before the hard cap ("soft, soft, hard"); at the cap the
+// gate dispatches `corpan:daily-locked` for the host's accomplishment-lock
+// overlay. Subscribers are a no-op (the gate reads the host-injected Plus
+// globals).
+const HANZI_DAILY_LIMIT = 20
+const HANZI_DAILY_NAG_EVERY = 5
 
 ;(() => {
   const GAME_ID = "hanzipan";
@@ -1722,6 +1732,14 @@ import "./styles.css"
   };
 
   const mount = (container, hostApi, initialState = {}) => {
+    const paywallGate = createPaywallGate({
+      packId: "hanzipan",
+      surface: "hanzipan_chars",
+      mode: "daily",
+      dailyLimit: HANZI_DAILY_LIMIT,
+      softNagEvery: HANZI_DAILY_NAG_EVERY,
+      unitLabel: "characters",
+    });
     const root = document.createElement("div");
     root.className = "hanzi-root";
     root.innerHTML = template;
@@ -2042,6 +2060,9 @@ import "./styles.css"
           state.completedCount += 1;
           renderTotals();
           persistState();
+          // One character completed — advance the daily gate (fires the soft
+          // nag / accomplishment lock internally; no-op for subscribers).
+          paywallGate.note();
         }
       }
       if (state.mode === "guided") {
@@ -2772,6 +2793,7 @@ import "./styles.css"
 
     return {
       unmount: () => {
+        paywallGate.dispose();
         resizeObserver.disconnect();
         window.removeEventListener("resize", handleResize);
         if (resizeRaf) {

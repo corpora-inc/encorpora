@@ -11,6 +11,7 @@ import {
 import { mergeForLang } from "./whisperTuning"
 import { mergeScoringForLangModel } from "./scoringTuning"
 import { openTuner } from "./whisperTunerUI"
+import { paywallGate } from "./paywall"
 import { t as i18n, type I18nKey } from "./i18n"
 // Direct file import (not the @shared/ui barrel) so we don't pull in
 // commandDrawer/drawerStore and their zustand dep. The offline notice is
@@ -1911,6 +1912,9 @@ export const mountGame = (
       )
       if (disposed) return
       renderResult(result)
+      // One solo round completed — advance the daily gate (fires the soft nag /
+      // accomplishment lock internally; no-op for subscribers).
+      paywallGate.note()
       setUiState("idle")
     } catch (err) {
       const msg = formatErr(err)

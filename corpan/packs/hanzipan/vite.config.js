@@ -55,6 +55,12 @@ export default defineConfig({
     "process.env": {},
   },
   plugins: [updateManifestPlugin(), inlineHanziwriterPlugin()],
+  resolve: {
+    alias: {
+      // Vite/esbuild transpiles the shared TS gate into the IIFE bundle.
+      "@shared/monetization": path.resolve(__dirname, "../shared/monetization/index.ts"),
+    },
+  },
   build: {
     outDir: "dist",
     emptyOutDir: true,
