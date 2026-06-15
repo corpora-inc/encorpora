@@ -107,7 +107,7 @@ export function PaywallSheet() {
         })
       : t(
           "paywall.subhead",
-          "Every book in every language. No ads. Your data stays on your device."
+          "The full catalog — every book, every language, ad-free."
         )
 
   const fade = reduceMotion
