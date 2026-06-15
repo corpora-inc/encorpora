@@ -2,6 +2,10 @@ import {
   type LocalizedString,
   parseLocalizedString,
 } from "./localized"
+import {
+  fetchJsonFresh,
+  type Validators,
+} from "./catalogFetch"
 
 export type PurchaseInfo = {
   type: "free" | "iap" | "code"
@@ -350,7 +354,7 @@ const parsePurchase = (value: unknown): PurchaseInfo | undefined => {
   }
 }
 
-const getDefaultCatalog = () =>
+export const getDefaultCatalog = () =>
   import.meta.env.DEV ? DEV_CATALOG : DEFAULT_CATALOG
 
 const parseCatalog = (data: unknown): CatalogGame[] | null => {
@@ -619,16 +623,15 @@ export const filterCatalogForApp = (
     }))
 }
 
-const fetchCatalogV3Raw = async (): Promise<CatalogV3 | null> => {
-  try {
-    const res = await fetch(CATALOG_V3_URL, { cache: "no-store" })
-    if (!res.ok) return null
-    const data = (await res.json()) as unknown
-    return parseCatalogV3(data)
-  } catch {
-    return null
-  }
-}
+/** Result of a freshness-aware game-catalog fetch. `unchanged` means the
+ *  server returned 304 against our stored validators — the caller keeps its
+ *  current catalog. `error` means nothing could be fetched live; the caller
+ *  decides whether to keep its cache or fall back to the built-in defaults
+ *  (we never silently clobber a good cache with the tiny default set here). */
+export type GameCatalogResult =
+  | { status: "unchanged"; validators: Validators }
+  | { status: "ok"; catalog: CatalogGame[]; validators: Validators }
+  | { status: "error" }
 
 /** Best-effort host detection via @tauri-apps/plugin-os. Outside Tauri
  *  (e.g. web preview) returns an empty object so platform / minOSVersion
@@ -655,56 +658,70 @@ const detectHost = async (): Promise<{
   }
 }
 
-export const fetchGameCatalog = async (
+/**
+ * Freshness-aware game/reader catalog fetch used by the store. Sends the
+ * stored validators so an unchanged catalog returns `unchanged` (a 0-byte
+ * 304 straight off the CDN edge). Falls back V3 → V1 and reports `error` if
+ * nothing could be fetched, leaving the cache-vs-defaults decision to the
+ * caller. The underlying `fetchJsonFresh` is timeout-bounded and retried, so
+ * a hung socket can never wedge this call.
+ */
+export const fetchGameCatalogFresh = async (
   appVersion?: string,
   devMode?: boolean,
-): Promise<CatalogGame[]> => {
+  validators?: Validators,
+): Promise<GameCatalogResult> => {
   // Try V3 catalog when app version is 0.10.0+
   if (appVersion && compareVersions(appVersion, "0.10.0") >= 0) {
     try {
-      console.log("[catalog] App version", appVersion, ">= 0.10.0, trying V3 catalog")
-      const v3 = await fetchCatalogV3Raw()
-      if (v3) {
-        const host = await detectHost()
-        const filtered = filterCatalogForApp(
-          v3, appVersion, devMode ?? false, host)
-        console.log(
-          "[catalog] V3 catalog:", v3.packs.length, "total,",
-          filtered.length, "after filtering",
-          "(host:", host.platform ?? "?", host.osVersion ?? "?", ")")
-        if (filtered.length > 0) return filtered
+      const r = await fetchJsonFresh<CatalogV3>(CATALOG_V3_URL, {
+        parse: parseCatalogV3,
+        validators,
+      })
+      if (r.status === "unchanged") {
+        return { status: "unchanged", validators: r.validators }
       }
+      const host = await detectHost()
+      const filtered = filterCatalogForApp(
+        r.data, appVersion, devMode ?? false, host)
+      console.log(
+        "[catalog] V3 catalog:", r.data.packs.length, "total,",
+        filtered.length, "after filtering",
+        "(host:", host.platform ?? "?", host.osVersion ?? "?", ")")
+      if (filtered.length > 0) {
+        return { status: "ok", catalog: filtered, validators: r.validators }
+      }
+      // Filtered to empty — fall through to V1 rather than show nothing.
     } catch (error) {
       console.warn("[catalog] V3 fetch failed, falling back to V1:", error)
     }
   }
 
-  // V1 fallback
+  // V1 fallback. A different URL with its own ETag, so we never forward the
+  // V3 validators here and we return empty validators (the store's persisted
+  // validators are conceptually the V3 catalog's).
   const urlValue = getCatalogUrl()
   if (!urlValue) {
-    console.log("[catalog] No catalog URL, using defaults")
-    return getDefaultCatalog()
+    console.log("[catalog] No catalog URL")
+    return { status: "error" }
   }
   try {
     const url = new URL(urlValue, window.location.href).toString()
-    console.log("[catalog] Fetching from:", url)
-    const res = await fetch(url, { cache: "no-store" })
-    if (!res.ok) {
-      console.log("[catalog] Fetch failed with status:", res.status)
-      return getDefaultCatalog()
-    }
-    const data = (await res.json()) as unknown
+    const r = await fetchJsonFresh<unknown>(url, { parse: (d) => d ?? null })
+    if (r.status === "unchanged") return { status: "error" }
+    const data = r.data
     // v1 format is a plain array — parse directly to preserve all fields
     // (imageUrl, description, name). Routing through parseCatalogV2 is lossy.
     if (Array.isArray(data)) {
       const parsed = parseCatalog(data)
-      console.log("[catalog] Parsed v1 catalog:", parsed?.length, "games")
-      return parsed ?? getDefaultCatalog()
+      if (parsed && parsed.length > 0) {
+        return { status: "ok", catalog: parsed, validators: {} }
+      }
+      return { status: "error" }
     }
     // v2 format is an object with narrations + gamePacks
     const v2 = parseCatalogV2(data)
     if (v2) {
-      console.log("[catalog] Parsed v2 catalog:", v2.narrations.length, "narrations,", v2.gamePacks.length, "game packs")
       const games: CatalogGame[] = v2.gamePacks.map((gp) => ({
         id: gp.id,
         name: gp.id,
@@ -712,16 +729,26 @@ export const fetchGameCatalog = async (
         manifestUrl: gp.downloadUrl,
         purchase: gp.purchase,
       }))
-      if (games.length === 0) {
-        return getDefaultCatalog()
-      }
-      return games
+      if (games.length > 0) return { status: "ok", catalog: games, validators: {} }
     }
-    return getDefaultCatalog()
+    return { status: "error" }
   } catch (error) {
-    console.error("[catalog] Fetch error:", error)
-    return getDefaultCatalog()
+    console.error("[catalog] V1 fetch error:", error)
+    return { status: "error" }
   }
+}
+
+/**
+ * Back-compat wrapper returning just the catalog array, substituting the
+ * built-in defaults on any failure. Used by call sites that don't track
+ * freshness (e.g. GamesPanel's manual refresh button).
+ */
+export const fetchGameCatalog = async (
+  appVersion?: string,
+  devMode?: boolean,
+): Promise<CatalogGame[]> => {
+  const r = await fetchGameCatalogFresh(appVersion, devMode)
+  return r.status === "ok" ? r.catalog : getDefaultCatalog()
 }
 
 /**
