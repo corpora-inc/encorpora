@@ -19,6 +19,7 @@ import { usePhrasePacksStore } from "@/store/phrasePacks"
 import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
 import { rankProviders } from "@shared/asr"
+import { getPackStreak } from "@shared/streak"
 import type { StackConfigPatch } from "./types"
 import type {
   AsrApi,
@@ -1139,6 +1140,13 @@ export const createHostApi = (packId?: string): HostApi => {
     notifyUtterance: () => {
       useRatingStore.getState().incrementUtteranceCount()
     },
+    // The CURRENT pack's visit streak (the host already recorded the visit at
+    // the pack-enter boundary; this is a read-only retention read). Falls back to
+    // an all-zero state when this host was created without a pack id.
+    getStreak: () =>
+      packId
+        ? getPackStreak(packId)
+        : { current: 0, longest: 0, lastDay: "" },
     entitlement: {
       isSubscribed: () => useEntitlementStore.getState().subscription.active,
       snapshot: () => buildEntitlementSnapshot(),

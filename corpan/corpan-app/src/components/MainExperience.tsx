@@ -18,6 +18,7 @@ import { useRatingStore } from "@/store/rating";
 import { usePhrasePacksStore } from "@/store/phrasePacks";
 import { useEntitlementStore } from "@/store/entitlements";
 import { createPaywallGate, type PaywallGate } from "@shared/monetization";
+import { recordPackVisit } from "@shared/streak";
 import { resolveLocalized } from "@/contentPacks/localized";
 
 import { isRTL } from "@/util/convert";
@@ -35,6 +36,12 @@ import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
 // subscribe. Subscribers are a no-op (gate reads live entitlement state).
 const PHRASE_DAILY_LIMIT = 20;
 const PHRASE_DAILY_NAG_EVERY = 5;
+
+// The core phrase-flip experience isn't an overlay pack, but it gets a visit
+// streak like every pack. This is the SAME id the phrase gate uses as its packId
+// (so the `corpan:daily-locked` event carries it and the lock overlay reads the
+// matching streak). Retention only — never a gate.
+const PHRASE_FLIP_PACK_ID = "corpan_app";
 
 /* -------------------------------- Types -------------------------------- */
 
@@ -261,7 +268,7 @@ export function MainExperience() {
     const phraseGateRef = useRef<PaywallGate | null>(null);
     if (phraseGateRef.current === null) {
         phraseGateRef.current = createPaywallGate({
-            packId: "corpan_app",
+            packId: PHRASE_FLIP_PACK_ID,
             surface: "phrase_flips",
             mode: "daily",
             dailyLimit: PHRASE_DAILY_LIMIT,
@@ -272,6 +279,9 @@ export function MainExperience() {
     }
     useEffect(() => {
         const gate = phraseGateRef.current;
+        // The user showed up to phrase-flip today → record one visit (idempotent
+        // within a local day). Retention streak only; not gated.
+        recordPackVisit(PHRASE_FLIP_PACK_ID);
         return () => gate?.dispose();
     }, []);
 

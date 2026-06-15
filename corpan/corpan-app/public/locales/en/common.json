@@ -819,5 +819,20 @@
   },
   "streak": {
     "title": "{{count}}-day streak"
+  },
+  "streakBadge": {
+    "label": "{{days}}-day streak"
+  },
+  "dailyLock": {
+    "title": "Your {{count}} {{unit}} for today",
+    "streakActive": "{{days}}-day streak — come back tomorrow to keep it going.",
+    "streakStart": "Come back tomorrow to start a streak.",
+    "resetIn": "Resets in {{time}}",
+    "cta": "Continue now with Corpán Plus",
+    "dismiss": "Maybe later",
+    "closeAria": "Dismiss",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "any moment"
   }
 }

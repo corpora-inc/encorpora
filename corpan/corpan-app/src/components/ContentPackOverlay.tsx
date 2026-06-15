@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import ContentPackHost from "@/contentPacks/ContentPackHost"
 import { useSettingsStore } from "@/store/settings"
+import { recordPackVisit } from "@shared/streak"
 import {
   trackPackEntered,
   trackPackHeartbeat,
@@ -44,6 +45,10 @@ export function ContentPackOverlay({
     trackPackEntered(id, enterLang)
     // Funnel: pack_enter (top of the monetization funnel).
     trackPackEnter(id)
+    // Retention: record one visit for this pack (consecutive-day streak). Shown
+    // to all users, never a gate — see packs/shared/streak. `id` is the stable
+    // pack id used everywhere (analytics, gate keys, catalog).
+    recordPackVisit(id)
 
     const interval = window.setInterval(() => {
       const currentSegments = getSessionSegmentCount()

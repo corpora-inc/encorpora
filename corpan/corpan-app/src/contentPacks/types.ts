@@ -546,6 +546,20 @@ export type HostEntitlementApi = {
   onChange: (cb: (snapshot: ContentPackEntitlementSnapshot) => void) => () => void
 }
 
+/**
+ * A pack's per-pack visit streak (consecutive local days opened). Mirrors
+ * `StreakState` from packs/shared/streak — a retention signal shown to every
+ * user, never a gate.
+ */
+export type HostStreakState = {
+  /** Consecutive local days visited, ending today (or the last visit day). */
+  current: number
+  /** The longest `current` ever reached for this pack. */
+  longest: number
+  /** Local `YYYY-MM-DD` of the most recent recorded visit ("" if never). */
+  lastDay: string
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
@@ -596,6 +610,14 @@ export type HostApi = {
    * for the full state, and `onChange()` to react to purchases/restores.
    */
   entitlement?: HostEntitlementApi
+  /**
+   * The CURRENT pack's visit streak (consecutive local days it was opened). A
+   * retention signal a pack can surface (e.g. "{{n}}-day streak") — read-only and
+   * never a gate. The host records the visit itself at the pack-enter boundary;
+   * this just reads the persisted state. Subscribe to the `corpan:streak-changed`
+   * window event to react live.
+   */
+  getStreak?: () => HostStreakState
   /**
    * Ask the host to surface the Corpán Plus paywall at a natural interaction
    * boundary. The host re-applies its own guards (subscribed / IAP unavailable /

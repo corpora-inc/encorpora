@@ -7,6 +7,22 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Per-pack visit streaks (retention, not a gate).** A new shared module
+  `packs/shared/streak` tracks consecutive local days each pack is opened,
+  persisted per pack in `localStorage` (`corpan.streak.v1.<packId>`) and
+  independent of the global reading-segment streak. The host records a visit at
+  the pack-enter boundary (every overlay pack) and on the core phrase-flip
+  experience, and exposes the current pack's streak to packs via a new optional
+  `hostApi.getStreak()`. A small, dignified `StreakBadge` (squared 8px, subtle
+  spark glyph + day count, hidden below 2 days) renders on installed-pack tiles
+  on Home and updates live off the `corpan:streak-changed` event. Shown to all
+  users, subscribed or not — never paywalls anything.
+- The daily-lock overlay now references the pack's visit streak ("{{n}}-day
+  streak — come back tomorrow to keep it going" / "come back tomorrow to start a
+  streak") and reframes the headline to the accomplishment ("Your N phrases for
+  today"). Existing open/close, live countdown, and analytics are unchanged.
+
 ### Fixed
 - **Core phrase-flip now HARD-enforces the daily cap.** The daily quota counted
   forward advances but never blocked at the limit, so the accomplishment-lock

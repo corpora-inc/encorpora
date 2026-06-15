@@ -341,6 +341,7 @@ export default function App() {
         packId: detail.packId,
         surface: (detail.surface as PaywallSurface) ?? "other",
         doneToday: typeof detail.doneToday === "number" ? detail.doneToday : detail.limit ?? 0,
+        limit: typeof detail.limit === "number" ? detail.limit : detail.doneToday ?? 0,
         resetAt: detail.resetAt,
         unitLabel: detail.unitLabel ?? "actions",
       });

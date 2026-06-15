@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { usePaywallStore, type PaywallSurface } from "@/store/paywall"
 import { useSettingsStore } from "@/store/settings"
 import { trackDailyLockShown, trackDailyLockUpgradeTapped } from "@/util/analytics"
+import { getPackStreak } from "@shared/streak"
 import corpanMark from "@/assets/corpan-mark-trim.png"
 
 /**
@@ -25,6 +26,8 @@ export type DailyLockContext = {
   packId: string
   surface: PaywallSurface
   doneToday: number
+  /** The configured daily cap (the "N {{unit}} for today" count). */
+  limit: number
   /** Next local-midnight ISO string (from the gate). */
   resetAt: string
   unitLabel: string
@@ -69,6 +72,14 @@ export function DailyLockOverlay({
     return Number.isFinite(ts) ? ts : Date.now()
   }, [context.resetAt])
 
+  // The CURRENT pack's visit streak (consecutive days opened) — recorded at the
+  // pack-enter boundary, so by the time the cap is hit today's visit is counted.
+  // Drives the "come back tomorrow to keep it going" framing.
+  const streakDays = useMemo(
+    () => getPackStreak(context.packId).current,
+    [context.packId],
+  )
+
   // Live countdown — tick once a minute (we only render h/m, so per-second is
   // wasteful and battery-hostile). Seed `now` immediately so the first paint is
   // correct.
@@ -110,6 +121,16 @@ export function DailyLockOverlay({
         ? t("dailyLock.countdownM", { defaultValue: "{{m}}m", m })
         : t("dailyLock.countdownSoon", { defaultValue: "any moment" })
 
+  const streakLine =
+    streakDays >= 2
+      ? t("dailyLock.streakActive", {
+          defaultValue: "{{days}}-day streak — come back tomorrow to keep it going.",
+          days: streakDays,
+        })
+      : t("dailyLock.streakStart", {
+          defaultValue: "Come back tomorrow to start a streak.",
+        })
+
   const upgrade = () => {
     trackDailyLockUpgradeTapped(context.packId)
     // Hand off to the ONE universal paywall.
@@ -145,8 +166,8 @@ export function DailyLockOverlay({
         role="dialog"
         aria-modal="true"
         aria-label={t("dailyLock.title", {
-          defaultValue: "You did your {{count}} {{unit}} today",
-          count: context.doneToday,
+          defaultValue: "Your {{count}} {{unit}} for today",
+          count: context.limit,
           unit: context.unitLabel,
         })}
         dir={dir()}
@@ -161,7 +182,7 @@ export function DailyLockOverlay({
             the same near-black well as the paywall. Tap the surround = dismiss. */}
         <button
           type="button"
-          aria-label={t("dailyLock.dismiss", { defaultValue: "Dismiss" })}
+          aria-label={t("dailyLock.closeAria", { defaultValue: "Dismiss" })}
           onClick={onClose}
           className="fixed inset-0 -z-10 cursor-default"
           style={{
@@ -213,8 +234,8 @@ export function DailyLockOverlay({
                 }}
               >
                 {t("dailyLock.title", {
-                  defaultValue: "You did your {{count}} {{unit}} today",
-                  count: context.doneToday,
+                  defaultValue: "Your {{count}} {{unit}} for today",
+                  count: context.limit,
                   unit: context.unitLabel,
                 })}
               </h2>
@@ -222,7 +243,7 @@ export function DailyLockOverlay({
                 className="mt-2.5 text-[color:var(--muted-foreground)]"
                 style={{ fontSize: "clamp(13px, 3.4vw, 15px)", lineHeight: 1.5, maxWidth: "32ch" }}
               >
-                {t("dailyLock.subtitle", { defaultValue: "Nice work today." })}
+                {streakLine}
               </p>
 
               {/* Live countdown to reset — scarcity, calmly stated. */}
@@ -242,8 +263,8 @@ export function DailyLockOverlay({
                   className="tabular-nums"
                   style={{ fontSize: "clamp(13px, 3.4vw, 15px)", color: "var(--foreground)" }}
                 >
-                  {t("dailyLock.unlocksIn", {
-                    defaultValue: "Unlocks in {{time}}",
+                  {t("dailyLock.resetIn", {
+                    defaultValue: "Resets in {{time}}",
                     time: countdownText,
                   })}
                 </span>
@@ -253,8 +274,8 @@ export function DailyLockOverlay({
             {/* Upsell → the universal paywall, then a quiet dismiss. */}
             <div className="mt-8">
               <Button className="w-full !h-12" onClick={upgrade}>
-                {t("dailyLock.upgradeCta", {
-                  defaultValue: "Go further, faster with Corpán Plus",
+                {t("dailyLock.cta", {
+                  defaultValue: "Continue now with Corpán Plus",
                 })}
               </Button>
               <button
@@ -262,7 +283,7 @@ export function DailyLockOverlay({
                 onClick={onClose}
                 className="mx-auto mt-4 block text-xs text-[color:var(--muted-foreground)] underline underline-offset-2 transition-colors hover:text-[color:var(--foreground)]"
               >
-                {t("dailyLock.maybeLater", { defaultValue: "Maybe later" })}
+                {t("dailyLock.dismiss", { defaultValue: "Maybe later" })}
               </button>
             </div>
 

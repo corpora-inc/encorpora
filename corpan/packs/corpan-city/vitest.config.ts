@@ -15,6 +15,7 @@ export default defineConfig({
       "**/*.test.ts",
       "../shared/moderation/**/*.test.ts",
       "../shared/monetization/**/*.test.ts",
+      "../shared/streak/**/*.test.ts",
       "../shared/net/**/*.test.ts",
     ],
   },
