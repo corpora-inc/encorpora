@@ -149,6 +149,23 @@ def _base_plan_regions(svc, product_id, base_plan_id):
     sys.exit(f"base plan {base_plan_id} not found on {product_id}. Run `list`.")
 
 
+def _base_plan_period(svc, product_id, base_plan_id):
+    """ISO-8601 billing period of a base plan (e.g. 'P1Y' / 'P1M').
+
+    A subscription-offer phase requires an explicit `duration`; the discount
+    phase lasts one base-plan billing cycle, repeated `recurrenceCount` times.
+    """
+    sub = svc.monetization().subscriptions().get(
+        packageName=PACKAGE_NAME, productId=product_id).execute()
+    for bp in sub.get("basePlans", []):
+        if bp.get("basePlanId") == base_plan_id:
+            art = bp.get("autoRenewingBasePlanType") or {}
+            period = art.get("billingPeriodDuration")
+            if period:
+                return period
+    sys.exit(f"could not resolve billing period for base plan {base_plan_id}. Run `list`.")
+
+
 def _trial_body(product_id, base_plan_id, offer_id, days, anchor_region):
     # A free trial = one offer phase, duration P{days}D, price override `free`.
     # Play requires the offer to explicitly target >=1 region, but enumerating ALL
@@ -224,7 +241,7 @@ def cmd_trial(args):
 
 
 def _affiliate_body(product_id, base_plan_id, offer_id, code_tag, relative_discount,
-                    months, anchor_region):
+                    months, anchor_region, duration):
     # A per-affiliate-code discount = ONE offer phase whose price is overridden by a
     # `relativeDiscount` (the FRACTION the user PAYS, in the open interval (0,1)). So
     # "30% off" = relativeDiscount 0.70. This mirrors `_trial_body` exactly, but swaps
@@ -257,6 +274,9 @@ def _affiliate_body(product_id, base_plan_id, offer_id, code_tag, relative_disco
         "offerTags": [{"tag": code_tag}],
         "phases": [
             {
+                # Each phase needs an explicit ISO-8601 duration = one base-plan
+                # billing cycle; recurrenceCount repeats it that many times.
+                "duration": duration,
                 # The discount recurs for `months` billing cycles of the base plan.
                 "recurrenceCount": months,
                 # Per-phase PRICING: relativeDiscount in the anchor region + all others.
@@ -302,10 +322,11 @@ def cmd_affiliate_offer(args):
 
     svc = _client(args)
     regions = _base_plan_regions(svc, args.product, args.base_plan)
+    period = _base_plan_period(svc, args.product, args.base_plan)
     anchor = args.anchor_region if args.anchor_region in regions else (
         "US" if "US" in regions else (regions[0] if regions else "US"))
     body = _affiliate_body(args.product, args.base_plan, offer_id, code_tag,
-                           relative_discount, args.months, anchor)
+                           relative_discount, args.months, anchor, period)
     print(f"create affiliate-discount offer {offer_id} (tag {code_tag}) on "
           f"{args.product}/{args.base_plan}: {percent:g}% off "
           f"(relativeDiscount={relative_discount}) for {args.months} billing cycle(s); "
