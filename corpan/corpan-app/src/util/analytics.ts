@@ -351,6 +351,18 @@ export function trackCodeRedeemed(partner: string): void {
   emit("app_funnel_code_redeemed", { partner })
 }
 
+/* ── gate v2: daily accomplishment lock ── */
+
+/** The universal "you did your N today" daily-cap lock overlay was shown. */
+export function trackDailyLockShown(packId: string, surface: string): void {
+  emit("daily_lock_shown", { pack_id: packId, surface })
+}
+
+/** The "Go further with Corpán Plus" CTA on the daily-cap lock was tapped. */
+export function trackDailyLockUpgradeTapped(packId: string): void {
+  emit("daily_lock_upgrade_tapped", { pack_id: packId })
+}
+
 /* ── Recommendation / ratings (on-device, no identifiers) ── */
 
 /** An experience was surfaced to the user. `surface`: "tour" | "home" | "cycle". */

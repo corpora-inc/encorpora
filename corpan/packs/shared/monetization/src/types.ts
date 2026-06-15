@@ -28,6 +28,28 @@ export type Hardness = "soft" | "hard"
  */
 export type GateMode = "action" | "daily" | "timed"
 
+/**
+ * Detail carried in the NEW `corpan:daily-locked` CustomEvent — the "gate v2"
+ * hard daily cap. The host listens for this to render the universal
+ * accomplishment-lock overlay (positive "you did your N today ✓" + countdown to
+ * reset + upsell). Distinct from `corpan:request-unlock` (the soft paywall).
+ */
+export type DailyLockedDetail = {
+  packId: string
+  /** The PaywallSurface string the host uses to route the upsell paywall. */
+  surface: string
+  /** Actions completed today (== the cap at lock time). */
+  doneToday: number
+  /** The configured daily cap. */
+  limit: number
+  /** Next local-midnight as an ISO string — the lock's live countdown target. */
+  resetAt: string
+  /** Human unit label for the copy ("phrases", "characters", "messages"). */
+  unitLabel: string
+  /** Arbitrary per-pack extras merged from `config.detail`. */
+  [key: string]: unknown
+}
+
 /** Detail carried in the `corpan:request-unlock` CustomEvent. */
 export type PaywallRequestDetail = {
   /** The PaywallSurface string the host uses to skin/route the paywall. */
@@ -51,6 +73,28 @@ export interface GateConfig {
   limit?: number
   /** timed: arm the gate after this much elapsed wall-clock (ms). */
   intervalMs?: number
+  /**
+   * "gate v2" daily HARD cap (counted per local day, resets at local midnight —
+   * the same reset logic as `mode:"daily"`). When set, the gate is implicitly a
+   * daily counter: at `count >= dailyLimit` the gate is BLOCKED and dispatches
+   * the `corpan:daily-locked` event for the host's accomplishment-lock overlay.
+   * Independent of `mode`/`limit` (you can run a soft-nag `dailyLimit` without a
+   * legacy `limit`). Ignored in `timed` mode.
+   */
+  dailyLimit?: number
+  /**
+   * "gate v2" soft-nag cadence. BEFORE the hard `dailyLimit` is reached, fire a
+   * dismissible `corpan:request-unlock` paywall every N counted actions
+   * (`count % softNagEvery === 0`, while `count < dailyLimit`). "soft, soft,
+   * hard." Requires `dailyLimit`. Omit for no soft nags.
+   */
+  softNagEvery?: number
+  /**
+   * Human label for the counted unit ("phrases", "characters", "messages"),
+   * carried in the `corpan:daily-locked` detail so the lock overlay copy reads
+   * naturally ("You did your 20 phrases today"). Default "actions".
+   */
+  unitLabel?: string
   /** Default "soft". */
   hardness?: Hardness
   /**
@@ -70,9 +114,16 @@ export interface GateConfig {
    * app emits `gate_hit` from its `corpan:request-unlock` listener (so packs need
    * no analytics dep), but standalone/embedded hosts can observe fires here
    * without parsing the window event. Optional + fully back-compat. Must not
-   * throw (the gate ignores any error).
+   * throw (the gate ignores any error). Also fires for the gate-v2 daily HARD
+   * lock — with the `DailyLockedDetail` (carries `doneToday`/`limit`/`resetAt`/
+   * `unitLabel` instead of `reason`/`hardness`).
    */
-  onFire?: (detail: PaywallRequestDetail) => void
+  onFire?: (detail: PaywallRequestDetail | DailyLockedDetail) => void
+  /**
+   * Injected; default dispatches the NEW `corpan:daily-locked` window event for
+   * the gate-v2 accomplishment lock. The host's universal lock overlay listens.
+   */
+  requestDailyLock?: (detail: DailyLockedDetail) => void
   /** Injected clock for tests. Default `Date.now`. */
   now?: () => number
   /** Injected storage for tests. Default `localStorage` (guarded). */
@@ -106,10 +157,17 @@ export interface PaywallGate {
    */
   isBlocked(): boolean
   /**
-   * Free actions left (action/daily). `Infinity` for subscribers. `null` for
-   * timed gates or when no `limit` is configured.
+   * Free actions left today. Honors `dailyLimit` (gate-v2) when set, else the
+   * legacy `limit`. `Infinity` for subscribers. `null` for timed gates or when
+   * neither cap is configured.
    */
   remaining(): number | null
+  /**
+   * Next local-midnight as an ISO string — when the daily counter resets. Lets
+   * a pack show "N left today" + a countdown without re-deriving the boundary.
+   * Always returns the next local midnight (independent of mode/limit).
+   */
+  resetAt(): string
   /** Reset persisted + in-memory counters (e.g. on subscribe or manual clear). */
   reset(): void
   /** Detach listeners / drop references. Safe to call multiple times. */
