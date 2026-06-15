@@ -1,7 +1,7 @@
 {
   "id": "tutomaton",
   "name": "Tutomaton",
-  "version": "0.5.4",
+  "version": "0.6.0",
   "entry": "dist/chat.js",
   "entryType": "module",
   "styles": [
@@ -362,30 +362,6 @@
       "sha256": ""
     },
     {
-      "code": "jv",
-      "displayName": {
-        "en": "Javanese",
-        "jv": "Basa Jawa"
-      },
-      "voiceLanguageCode": "jv-ID",
-      "contentVersion": "0.1.0",
-      "sizeMb": 1,
-      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/jv-0.1.0.zip",
-      "sha256": ""
-    },
-    {
-      "code": "su",
-      "displayName": {
-        "en": "Sundanese",
-        "su": "Basa Sunda"
-      },
-      "voiceLanguageCode": "su-ID",
-      "contentVersion": "0.1.0",
-      "sizeMb": 1,
-      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/su-0.1.0.zip",
-      "sha256": ""
-    },
-    {
       "code": "it",
       "displayName": {
         "en": "Italian",
@@ -522,18 +498,6 @@
       "sha256": ""
     },
     {
-      "code": "pa-Arab",
-      "displayName": {
-        "en": "Punjabi (Shahmukhi)",
-        "pa-Arab": "پنجابی"
-      },
-      "voiceLanguageCode": "pa-PK",
-      "contentVersion": "0.1.0",
-      "sizeMb": 1,
-      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/pa-Arab-0.1.0.zip",
-      "sha256": ""
-    },
-    {
       "code": "pa-Guru",
       "displayName": {
         "en": "Punjabi (Gurmukhi)",
@@ -654,18 +618,6 @@
       "sha256": ""
     },
     {
-      "code": "sw",
-      "displayName": {
-        "en": "Swahili",
-        "sw": "Kiswahili"
-      },
-      "voiceLanguageCode": "sw-KE",
-      "contentVersion": "0.1.0",
-      "sizeMb": 1,
-      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/sw-0.1.0.zip",
-      "sha256": ""
-    },
-    {
       "code": "ta",
       "displayName": {
         "en": "Tamil",
@@ -675,18 +627,6 @@
       "contentVersion": "0.1.0",
       "sizeMb": 1,
       "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/ta-0.1.0.zip",
-      "sha256": ""
-    },
-    {
-      "code": "te",
-      "displayName": {
-        "en": "Telugu",
-        "te": "తెలుగు"
-      },
-      "voiceLanguageCode": "te-IN",
-      "contentVersion": "0.1.0",
-      "sizeMb": 1,
-      "moduleUrl": "https://d38iwc9748jekz.cloudfront.net/corpan/tutomaton-languages/te-0.1.0.zip",
       "sha256": ""
     },
     {
@@ -823,7 +763,7 @@
     "supportsLanguageDownload": true,
     "supportsVoiceMode": true
   },
-  "devRevision": "2026-06-13T08:52:20.412Z",
+  "devRevision": "2026-06-15T05:55:14.804Z",
   "databases": {
     "tutomaton-es": "languages/es/data/spanish.sqlite3",
     "tutomaton-zh": "languages/zh/data/mandarin.sqlite3"

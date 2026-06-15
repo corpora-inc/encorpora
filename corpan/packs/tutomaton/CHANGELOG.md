@@ -5,6 +5,26 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-06-15 — Honest language list + model defaults calibrated to Qwen3-4B
+
+### Changed
+- Retuned the on-device model defaults for the shipped Qwen3-4B (Q4_K_M) model:
+  temperature 0.6 → 0.3, topP 0.95 → 0.9, minP 0 → 0.05, repeatPenalty 1.0 → 1.1
+  (topK 20, maxTokens 700 unchanged). Calibrated with A/B testing in
+  `infra/tutomaton-eval`; the lower-temperature/tightened sampling measurably
+  reduced fabricated vocabulary and repetition loops in weaker languages and was
+  neutral-to-positive on strong ones. A single global default generalised better
+  than per-language overrides.
+
+### Removed
+- Stopped advertising 5 languages the on-device model cannot teach acceptably,
+  verified by native-level fluency judging at the best parameters: **Telugu**
+  (fabricates vocabulary), **Swahili** (broken word-salad / repetition loops),
+  **Sundanese** and **Javanese** (the model answers in Indonesian, not the
+  target language), and **Punjabi (Shahmukhi)** (answers in an Urdu creole, not
+  Punjabi). Tutomaton now offers 50 teaching languages (was 55). Existing
+  installs of these modules are unaffected; they are simply no longer offered.
+
 ## [0.5.4] - 2026-06-09 — Localized model-lab/voice chrome + centered quota line
 
 ### Changed

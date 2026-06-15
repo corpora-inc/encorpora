@@ -9,12 +9,17 @@ export type ModelTuning = {
   maxTokens: number
 }
 
+// Calibrated against the shipped on-device model (Qwen3-4B Q4_K_M) on
+// 2026-06-15 via infra/tutomaton-eval. Lower temperature + light min_p / repeat
+// penalty measurably cut fabrication and repetition loops in weaker languages
+// (e.g. rescued Marathi) and were neutral-to-positive on strong ones. A single
+// global default generalised better than per-language numeric overrides.
 export const DEFAULT_MODEL_OPTIONS = {
-  temperature: 0.6,
-  topP: 0.95,
+  temperature: 0.3,
+  topP: 0.9,
   topK: 20,
-  minP: 0,
-  repeatPenalty: 1,
+  minP: 0.05,
+  repeatPenalty: 1.1,
   presencePenalty: 0,
   maxTokens: 700,
 } as const
