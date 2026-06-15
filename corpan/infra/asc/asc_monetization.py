@@ -770,6 +770,13 @@ def cmd_code_discount(args):
     no raw "% off" — a discount is always one of Apple's fixed price-point rungs — so
     "30% off" = the rung nearest 0.70 x base in THAT territory (a close approximation).
     """
+    # Apple custom codes: UPPERCASE alphanumeric only, minimum 4 characters.
+    # Normalize + validate up front so we don't create the offer-code config and
+    # then 409 on the custom-code attach (leaving a dangling empty config).
+    args.code = args.code.strip().upper()
+    if len(args.code) < 4 or not all(ch.isascii() and ch.isalnum() for ch in args.code):
+        sys.exit(f"Apple custom code '{args.code}' is invalid: must be UPPERCASE "
+                 f"alphanumeric, minimum 4 characters.")
     duration = _duration_from_months(args.months) if args.months else "ONE_MONTH"
     c = Client(_load_creds(args))
     sub = _resolve_subscription(c, args.product)
