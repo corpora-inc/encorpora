@@ -314,7 +314,8 @@
       "joinTitle": "Prisijunkite prie Corpanistas",
       "start": "Pradėti tyrinėti",
       "subtitle": "Corpán kuria maža atvirojo kodo komanda. Ateikite pasisveikinti – ir jei jums patinka, galite mus paremti.",
-      "title": "Viskas paruošta"
+      "title": "Viskas paruošta",
+      "explore": "Naršyti savarankiškai"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Naudokite raides, skaičius, brūkšnelius arba pabraukimus.",
     "affiliateChecking": "Tikrinamas kodas...",
     "affiliateApplied": "Kodas bus susietas su šia prenumerata.",
-    "affiliateCodeHelp": "Jei kas nors jus čia atsiuntė, prieš prenumeruodami įveskite jo kodą."
+    "affiliateCodeHelp": "Jei kas nors jus čia atsiuntė, prieš prenumeruodami įveskite jo kodą.",
+    "introPriceHeadline": "{{introPrice}} už {{period}}",
+    "introPriceThen": ", tada {{price}}/{{period}}",
+    "perMonth": "mėnuo",
+    "perYear": "metai",
+    "startFreeTrial": "Pradėti nemokamą bandomąjį laikotarpį",
+    "trialFirstCharge": "{{period}}: pirmas mokestis",
+    "trialHeadline": "{{period}} nemokamai",
+    "trialReassurance": "Dabar mokėti nereikia · atšaukti galite bet kada",
+    "trialThenPrice": ", tada {{price}}/{{period}}",
+    "trialToday": "Šiandien: pradžia"
   },
   "restore": {
     "button": "Atkurti pirkimus",
@@ -715,7 +726,8 @@
     "subhead": "Atrakinkite visas knygas visomis kalbomis. Jokių reklamų. Jūsų duomenys lieka jūsų įrenginyje.",
     "pitch": "Esame maža komanda ir kiekvieną centą investuojame atgal į Corpán. Corpanistas palaiko programą be reklamų ir padeda jai augti.",
     "maybeLater": "Galbūt vėliau",
-    "continue": "Tęsti"
+    "continue": "Tęsti",
+    "dismiss": "Uždaryti"
   },
   "streak": {
     "title": "{{count}} dienų serija"
@@ -819,5 +831,33 @@
     "update": "Atnaujinti",
     "updateNow": "Atnaujinti dabar",
     "versionLine": "Versija {{version}} paruošta diegimui."
+  },
+  "streakBadge": {
+    "label": "{{days}} dienų serija"
+  },
+  "dailyLock": {
+    "title": "Jūsų {{count}} {{unit}} šiandienai",
+    "streakActive": "{{days}} dienų serija — grįžkite rytoj, kad tęstumėte.",
+    "streakStart": "Grįžkite rytoj, kad pradėtumėte seriją.",
+    "resetIn": "Atnaujinama po {{time}}",
+    "cta": "Tęskite dabar su Corpán Plus",
+    "dismiss": "Gal vėliau",
+    "closeAria": "Atmesti",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "bet kurią akimirką"
+  },
+  "code": {
+    "attributedUnverified": "Kodas bus priskirtas jūsų prenumeratai.",
+    "checkFailed": "Nepavyko patikrinti",
+    "checking": "Tikrinamas kodas…",
+    "creditedTo": "priskirta {{partner}}",
+    "fieldLabel": "Pasiūlymo arba partnerio kodas",
+    "help": "Turite kodą? Įveskite jį, kad pritaikytumėte pasiūlymą.",
+    "redeemUnavailable": "Nepavyko atidaryti išpirkimo ekrano. Bandykite dar kartą.",
+    "redeemWithApple": "Išpirkti su Apple",
+    "redeeming": "Atidaromas išpirkimas…",
+    "retry": "Bandyti dar kartą",
+    "subscribeWithDiscount": "Prenumeruoti ({{discount}})"
   }
 }

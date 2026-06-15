@@ -314,7 +314,8 @@
       "joinTitle": "Rejoignez les Corpanistas",
       "start": "Commencer à explorer",
       "subtitle": "Corpán est développé par une petite équipe open source. Venez nous saluer — et si vous aimez l'app, vous pouvez nous soutenir.",
-      "title": "Tout est prêt"
+      "title": "Tout est prêt",
+      "explore": "Explorer par moi-même"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Utilisez des lettres, des chiffres, des tirets ou des traits de soulignement.",
     "affiliateChecking": "Vérification du code...",
     "affiliateApplied": "Le code sera associé à cet abonnement.",
-    "affiliateCodeHelp": "Si quelqu’un vous a envoyé ici, saisissez son code avant de vous abonner."
+    "affiliateCodeHelp": "Si quelqu’un vous a envoyé ici, saisissez son code avant de vous abonner.",
+    "introPriceHeadline": "{{introPrice}} pour {{period}}",
+    "introPriceThen": ", puis {{price}}/{{period}}",
+    "perMonth": "mois",
+    "perYear": "an",
+    "startFreeTrial": "Commencer l'essai gratuit",
+    "trialFirstCharge": "{{period}} : premier prélèvement",
+    "trialHeadline": "{{period}} gratuit",
+    "trialReassurance": "Aucun paiement maintenant · annulez à tout moment",
+    "trialThenPrice": ", puis {{price}}/{{period}}",
+    "trialToday": "Aujourd'hui : commencer"
   },
   "restore": {
     "button": "Restaurer les achats",
@@ -715,7 +726,8 @@
     "subhead": "Débloquez tous les livres dans toutes les langues. Pas de pubs. Vos données restent sur votre appareil.",
     "pitch": "Nous sommes une petite équipe et réinvestissons chaque centime dans Corpán. Les Corpanistas nous aident à rester sans pub et à nous développer.",
     "maybeLater": "Peut-être plus tard",
-    "continue": "Continuer"
+    "continue": "Continuer",
+    "dismiss": "Ignorer"
   },
   "streak": {
     "title": "Série de {{count}} jours"
@@ -819,5 +831,33 @@
     "update": "Mettre à jour",
     "updateNow": "Mettre à jour maintenant",
     "versionLine": "La version {{version}} est prête à être installée."
+  },
+  "streakBadge": {
+    "label": "Série de {{days}} jours"
+  },
+  "dailyLock": {
+    "title": "Votre {{count}} {{unit}} pour aujourd'hui",
+    "streakActive": "Série de {{days}} jours — revenez demain pour la continuer.",
+    "streakStart": "Revenez demain pour commencer une série.",
+    "resetIn": "Se réinitialise dans {{time}}",
+    "cta": "Continuez maintenant avec Corpán Plus",
+    "dismiss": "Peut-être plus tard",
+    "closeAria": "Fermer",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "à tout moment"
+  },
+  "code": {
+    "attributedUnverified": "Le code sera attaché à votre abonnement.",
+    "checkFailed": "Vérification impossible",
+    "checking": "Vérification du code…",
+    "creditedTo": "crédité à {{partner}}",
+    "fieldLabel": "Code d'offre ou d'affiliation",
+    "help": "Vous avez un code ? Entrez-le pour appliquer votre offre.",
+    "redeemUnavailable": "Impossible d'ouvrir l'écran de réclamation. Veuillez réessayer.",
+    "redeemWithApple": "Réclamer avec Apple",
+    "redeeming": "Ouverture de la réclamation…",
+    "retry": "Réessayer",
+    "subscribeWithDiscount": "S'abonner ({{discount}})"
   }
 }

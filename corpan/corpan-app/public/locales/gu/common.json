@@ -314,7 +314,8 @@
       "joinTitle": "Corpanistas માં જોડાઓ",
       "start": "અન્વેષણ શરૂ કરો",
       "subtitle": "Corpán એક નાની ઓપન-સોર્સ ટીમ દ્વારા બનાવવામાં આવ્યું છે. આવો અને હાય કહો — અને જો તમને તે ગમે છે, તો તમે અમને સપોર્ટ કરી શકો છો.",
-      "title": "તમે તૈયાર છો"
+      "title": "તમે તૈયાર છો",
+      "explore": "મારી રીતે શોધો"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "અક્ષરો, અંકો, હાઇફન અથવા અન્ડરસ્કોર વાપરો.",
     "affiliateChecking": "કોડ ચકાસી રહ્યા છીએ...",
     "affiliateApplied": "કોડ આ સબ્સ્ક્રિપ્શન સાથે જોડાશે.",
-    "affiliateCodeHelp": "જો કોઈએ તમને અહીં મોકલ્યા હોય, તો સબ્સ્ક્રાઇબ કરતા પહેલાં તેમનો કોડ દાખલ કરો."
+    "affiliateCodeHelp": "જો કોઈએ તમને અહીં મોકલ્યા હોય, તો સબ્સ્ક્રાઇબ કરતા પહેલાં તેમનો કોડ દાખલ કરો.",
+    "introPriceHeadline": "{{period}} માટે {{introPrice}}",
+    "introPriceThen": ", પછી {{price}}/{{period}}",
+    "perMonth": "મહિનો",
+    "perYear": "વર્ષ",
+    "startFreeTrial": "મફત ટ્રાયલ શરૂ કરો",
+    "trialFirstCharge": "{{period}}: પ્રથમ ચાર્જ",
+    "trialHeadline": "{{period}} મફત",
+    "trialReassurance": "હવે કોઈ ચુકવણી નથી · ક્યારે પણ રદ કરો",
+    "trialThenPrice": ", પછી {{price}}/{{period}}",
+    "trialToday": "આજે: શરૂ કરો"
   },
   "restore": {
     "button": "ખરીદીઓ પુનઃસ્થાપિત કરો",
@@ -715,7 +726,8 @@
     "subhead": "દરેક ભાષામાં દરેક પુસ્તક અનલૉક કરો. કોઈ જાહેરાત નહીં. તમારો ડેટા તમારા ડિવાઇસ પર જ રહે છે.",
     "pitch": "અમે એક નાની ટીમ છીએ અને દરેક પૈસો Corpán માં પાછો રોકીએ છીએ. Corpanistas તેને જાહેરાત-મુક્ત અને વિકસતું રાખે છે.",
     "maybeLater": "કદાચ પછી",
-    "continue": "ચાલુ રાખો"
+    "continue": "ચાલુ રાખો",
+    "dismiss": "રદ કરો"
   },
   "streak": {
     "title": "{{count}} દિવસની સ્ટ્રીક"
@@ -819,5 +831,33 @@
     "update": "અપડેટ કરો",
     "updateNow": "હવે અપડેટ કરો",
     "versionLine": "સંસ્કરણ {{version}} ઇન્સ્ટોલ કરવા માટે તૈયાર છે."
+  },
+  "streakBadge": {
+    "label": "{{days}}-દિવસની શ્રેણી"
+  },
+  "dailyLock": {
+    "title": "આજના માટે તમારું {{count}} {{unit}}",
+    "streakActive": "{{days}}-દિવસની શ્રેણી — તેને ચાલુ રાખવા માટે કાલે પાછા આવો.",
+    "streakStart": "શ્રેણી શરૂ કરવા માટે કાલે પાછા આવો.",
+    "resetIn": "{{time}} માં ફરીથી શરૂ થશે",
+    "cta": "હવે Corpán Plus સાથે ચાલુ રાખો",
+    "dismiss": "કદાચ પછી",
+    "closeAria": "રદ કરો",
+    "countdownHm": "{{h}}ક {{m}}મ",
+    "countdownM": "{{m}}મ",
+    "countdownSoon": "કોઈ પણ ક્ષણે"
+  },
+  "code": {
+    "attributedUnverified": "કોડ તમારી સબ્સ્ક્રિપ્શન સાથે જોડાશે.",
+    "checkFailed": "ચકાસી શક્યા નહીં",
+    "checking": "કોડ ચકાસી રહ્યા છે…",
+    "creditedTo": "{{partner}} ને ક્રેડિટેડ",
+    "fieldLabel": "ઓફર અથવા સહયોગી કોડ",
+    "help": "કોડ છે? તમારી ઓફર લાગુ કરવા માટે દાખલ કરો.",
+    "redeemUnavailable": "રીડીમ સ્ક્રીન ખોલી શક્યા નહીં. કૃપા કરીને ફરી પ્રયાસ કરો.",
+    "redeemWithApple": "Apple સાથે રીડીમ કરો",
+    "redeeming": "રીડીમ ખોલી રહ્યા છે…",
+    "retry": "ફરી પ્રયાસ કરો",
+    "subscribeWithDiscount": "ડિસ્કાઉન્ટ સાથે સબ્સ્ક્રાઇબ કરો ({{discount}})"
   }
 }

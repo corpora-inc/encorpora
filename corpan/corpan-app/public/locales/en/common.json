@@ -230,7 +230,8 @@
       "joinDesc": "Support Corpán and unlock everything. Optional, anytime.",
       "subscribedTitle": "You're a Corpanista",
       "subscribedDesc": "Thank you for keeping Corpán ad-free and growing.",
-      "start": "Start exploring"
+      "start": "Start exploring",
+      "explore": "Explore on my own"
     },
     "welcomePact": {
       "title": "Corpán Evolves",
@@ -751,7 +752,17 @@
     "affiliateInvalidFormat": "Use letters, numbers, dashes, or underscores.",
     "affiliateChecking": "Checking code...",
     "affiliateApplied": "Code will be attached to this subscription.",
-    "affiliateCodeHelp": "If someone sent you here, enter their code before subscribing."
+    "affiliateCodeHelp": "If someone sent you here, enter their code before subscribing.",
+    "introPriceHeadline": "{{introPrice}} for {{period}}",
+    "introPriceThen": ", then {{price}}/{{period}}",
+    "perMonth": "month",
+    "perYear": "year",
+    "startFreeTrial": "Start Free Trial",
+    "trialFirstCharge": "{{period}}: first charge",
+    "trialHeadline": "{{period}} free",
+    "trialReassurance": "No payment due now · cancel anytime",
+    "trialThenPrice": ", then {{price}}/{{period}}",
+    "trialToday": "Today: start"
   },
   "restore": {
     "button": "Restore Purchases",
@@ -815,7 +826,8 @@
     "subhead": "Unlock every book in every language. No ads. Your data stays on your device.",
     "pitch": "We're a small team and put every cent back into Corpán. Corpanistas keep it ad-free and growing.",
     "maybeLater": "Maybe later",
-    "continue": "Continue"
+    "continue": "Continue",
+    "dismiss": "Dismiss"
   },
   "streak": {
     "title": "{{count}}-day streak"
@@ -834,5 +846,18 @@
     "countdownHm": "{{h}}h {{m}}m",
     "countdownM": "{{m}}m",
     "countdownSoon": "any moment"
+  },
+  "code": {
+    "attributedUnverified": "Code will be attached to your subscription.",
+    "checkFailed": "Couldn't check",
+    "checking": "Checking code…",
+    "creditedTo": "credited to {{partner}}",
+    "fieldLabel": "Offer or affiliate code",
+    "help": "Have a code? Enter it to apply your offer.",
+    "redeemUnavailable": "Couldn't open the redeem screen. Please try again.",
+    "redeemWithApple": "Redeem with Apple",
+    "redeeming": "Opening redeem…",
+    "retry": "Retry",
+    "subscribeWithDiscount": "Subscribe ({{discount}})"
   }
 }

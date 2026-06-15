@@ -314,7 +314,8 @@
       "joinTitle": "Pridružite se Corpanistas",
       "start": "Začnite raziskovati",
       "subtitle": "Corpán je ustvarila majhna ekipa odprtokodnih razvijalcev. Pozdravite nas — in če vam je všeč, nas lahko podprete.",
-      "title": "Vse je pripravljeno"
+      "title": "Vse je pripravljeno",
+      "explore": "Raziščem sam"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Uporabite črke, številke, vezaje ali podčrtaje.",
     "affiliateChecking": "Preverjanje kode...",
     "affiliateApplied": "Koda bo povezana s to naročnino.",
-    "affiliateCodeHelp": "Če vas je sem poslal nekdo drug, pred naročilom vnesite njegovo kodo."
+    "affiliateCodeHelp": "Če vas je sem poslal nekdo drug, pred naročilom vnesite njegovo kodo.",
+    "introPriceHeadline": "{{introPrice}} za {{period}}",
+    "introPriceThen": ", nato {{price}}/{{period}}",
+    "perMonth": "mesec",
+    "perYear": "leto",
+    "startFreeTrial": "Začni brezplačno preizkusno obdobje",
+    "trialFirstCharge": "{{period}}: prvi obračun",
+    "trialHeadline": "{{period}} brezplačno",
+    "trialReassurance": "Plačilo ni potrebno zdaj · prekliči kadarkoli",
+    "trialThenPrice": ", nato {{price}}/{{period}}",
+    "trialToday": "Danes: začetek"
   },
   "restore": {
     "button": "Obnovi nakupe",
@@ -715,7 +726,8 @@
     "subhead": "Odklenite vsako knjigo v vsakem jeziku. Brez oglasov. Vaši podatki ostanejo na vaši napravi.",
     "pitch": "Smo majhna ekipa in vsak cent vložimo nazaj v Corpán. Corpanistas ohranjajo aplikacijo brez oglasov in jo pomagajo razvijati.",
     "maybeLater": "Morda pozneje",
-    "continue": "Nadaljuj"
+    "continue": "Nadaljuj",
+    "dismiss": "Opusti"
   },
   "streak": {
     "title": "{{count}}-dnevni niz"
@@ -819,5 +831,33 @@
     "update": "Posodobi",
     "updateNow": "Posodobi zdaj",
     "versionLine": "Različica {{version}} je pripravljena za namestitev."
+  },
+  "streakBadge": {
+    "label": "{{days}}-dnevni niz"
+  },
+  "dailyLock": {
+    "title": "Vaših {{count}} {{unit}} za danes",
+    "streakActive": "{{days}}-dnevni niz — vrnite se jutri, da ga ohranite.",
+    "streakStart": "Vrnite se jutri, da začnete niz.",
+    "resetIn": "Ponastavi se čez {{time}}",
+    "cta": "Nadaljujte zdaj s Corpán Plus",
+    "dismiss": "Morda kasneje",
+    "closeAria": "Opusti",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "kmalu"
+  },
+  "code": {
+    "attributedUnverified": "Koda bo dodana vaši naročnini.",
+    "checkFailed": "Preverjanje ni uspelo",
+    "checking": "Preverjanje kode…",
+    "creditedTo": "pripisano {{partner}}",
+    "fieldLabel": "Ponudbena ali partnerska koda",
+    "help": "Imate kodo? Vnesite jo za uveljavitev ponudbe.",
+    "redeemUnavailable": "Ni bilo mogoče odpreti zaslona za unovčenje. Poskusite znova.",
+    "redeemWithApple": "Unovči z Apple",
+    "redeeming": "Odpiranje unovčenja…",
+    "retry": "Poskusi znova",
+    "subscribeWithDiscount": "Naroči se ({{discount}})"
   }
 }

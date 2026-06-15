@@ -314,7 +314,8 @@
       "joinTitle": "Jiunge na Corpanistas",
       "start": "Anza kuchunguza",
       "subtitle": "Corpán imeundwa na timu ndogo ya chanzo huria. Njoo useme salamu — na kama unaipenda, unaweza kutuunga mkono.",
-      "title": "Uko tayari"
+      "title": "Uko tayari",
+      "explore": "Gundua mwenyewe"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Tumia herufi, nambari, vistari au mistari ya chini.",
     "affiliateChecking": "Inakagua msimbo...",
     "affiliateApplied": "Msimbo utaambatishwa kwenye usajili huu.",
-    "affiliateCodeHelp": "Ikiwa mtu alikutuma hapa, weka msimbo wake kabla ya kujisajili."
+    "affiliateCodeHelp": "Ikiwa mtu alikutuma hapa, weka msimbo wake kabla ya kujisajili.",
+    "introPriceHeadline": "{{introPrice}} kwa {{period}}",
+    "introPriceThen": ", kisha {{price}}/{{period}}",
+    "perMonth": "mwezi",
+    "perYear": "mwaka",
+    "startFreeTrial": "Anza Jaribio la Bure",
+    "trialFirstCharge": "{{period}}: malipo ya kwanza",
+    "trialHeadline": "{{period}} bure",
+    "trialReassurance": "Hakuna malipo sasa · unaweza kughairi wakati wowote",
+    "trialThenPrice": ", kisha {{price}}/{{period}}",
+    "trialToday": "Leo: anza"
   },
   "restore": {
     "button": "Rejesha Manunuzi",
@@ -715,7 +726,8 @@
     "subhead": "Fungua kila kitabu katika kila lugha. Hakuna matangazo. Data yako inabaki kwenye kifaa chako.",
     "pitch": "Sisi ni timu ndogo na tunawekeza kila senti tena kwenye Corpán. Corpanistas wanaiweka bila matangazo na inakua.",
     "maybeLater": "Labda baadaye",
-    "continue": "Endelea"
+    "continue": "Endelea",
+    "dismiss": "Ondoa"
   },
   "streak": {
     "title": "Mfululizo wa siku {{count}}"
@@ -819,5 +831,33 @@
     "update": "Sasisha",
     "updateNow": "Sasisha sasa",
     "versionLine": "Toleo {{version}} liko tayari kusakinishwa."
+  },
+  "streakBadge": {
+    "label": "Mfululizo wa siku {{days}}"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} yako ya leo",
+    "streakActive": "Mfululizo wa siku {{days}} — rudi kesho kuendelea.",
+    "streakStart": "Rudi kesho kuanza mfululizo.",
+    "resetIn": "Inaanza upya baada ya {{time}}",
+    "cta": "Endelea sasa na Corpán Plus",
+    "dismiss": "Labda baadaye",
+    "closeAria": "Funga",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "wakati wowote"
+  },
+  "code": {
+    "attributedUnverified": "Msimbo utaambatishwa kwenye usajili wako.",
+    "checkFailed": "Imeshindikana kukagua",
+    "checking": "Inakagua msimbo…",
+    "creditedTo": "imewekwa kwa {{partner}}",
+    "fieldLabel": "Msimbo wa ofa au ushirika",
+    "help": "Una msimbo? Ingiza ili kutumia ofa yako.",
+    "redeemUnavailable": "Imeshindikana kufungua skrini ya kukomboa. Tafadhali jaribu tena.",
+    "redeemWithApple": "Komboa na Apple",
+    "redeeming": "Inafungua kukomboa…",
+    "retry": "Jaribu tena",
+    "subscribeWithDiscount": "Jisajili ({{discount}})"
   }
 }

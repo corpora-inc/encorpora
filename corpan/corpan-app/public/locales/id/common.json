@@ -314,7 +314,8 @@
       "joinTitle": "Gabung dengan Corpanistas",
       "start": "Mulai menjelajah",
       "subtitle": "Corpán dibuat oleh tim open-source kecil. Sapa kami — dan jika Anda menyukainya, Anda bisa mendukung kami.",
-      "title": "Anda siap"
+      "title": "Anda siap",
+      "explore": "Jelajahi sendiri"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Gunakan huruf, angka, tanda hubung, atau garis bawah.",
     "affiliateChecking": "Memeriksa kode...",
     "affiliateApplied": "Kode akan dilampirkan ke langganan ini.",
-    "affiliateCodeHelp": "Jika seseorang mengirimmu ke sini, masukkan kodenya sebelum berlangganan."
+    "affiliateCodeHelp": "Jika seseorang mengirimmu ke sini, masukkan kodenya sebelum berlangganan.",
+    "introPriceHeadline": "{{introPrice}} untuk {{period}}",
+    "introPriceThen": ", lalu {{price}}/{{period}}",
+    "perMonth": "bulan",
+    "perYear": "tahun",
+    "startFreeTrial": "Mulai Uji Coba Gratis",
+    "trialFirstCharge": "{{period}}: tagihan pertama",
+    "trialHeadline": "{{period}} gratis",
+    "trialReassurance": "Tidak ada pembayaran sekarang · batalkan kapan saja",
+    "trialThenPrice": ", lalu {{price}}/{{period}}",
+    "trialToday": "Hari ini: mulai"
   },
   "restore": {
     "button": "Pulihkan pembelian",
@@ -715,7 +726,8 @@
     "subhead": "Buka semua buku dalam semua bahasa. Tanpa iklan. Data Anda tetap di perangkat Anda.",
     "pitch": "Kami tim kecil dan setiap sen kami gunakan kembali untuk Corpán. Corpanistas menjaganya tetap bebas iklan dan terus berkembang.",
     "maybeLater": "Mungkin nanti",
-    "continue": "Lanjutkan"
+    "continue": "Lanjutkan",
+    "dismiss": "Tutup"
   },
   "streak": {
     "title": "Rentetan {{count}} hari"
@@ -819,5 +831,33 @@
     "update": "Perbarui",
     "updateNow": "Perbarui sekarang",
     "versionLine": "Versi {{version}} siap diinstal."
+  },
+  "streakBadge": {
+    "label": "Rentetan {{days}} hari"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} Anda hari ini",
+    "streakActive": "Rentetan {{days}} hari — kembali besok untuk melanjutkan.",
+    "streakStart": "Kembali besok untuk memulai rentetan.",
+    "resetIn": "Reset dalam {{time}}",
+    "cta": "Lanjutkan sekarang dengan Corpán Plus",
+    "dismiss": "Mungkin nanti",
+    "closeAria": "Tutup",
+    "countdownHm": "{{h}}j {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "sebentar lagi"
+  },
+  "code": {
+    "attributedUnverified": "Kode akan terlampir pada langganan Anda.",
+    "checkFailed": "Tidak dapat memeriksa",
+    "checking": "Memeriksa kode…",
+    "creditedTo": "dikreditkan ke {{partner}}",
+    "fieldLabel": "Kode penawaran atau afiliasi",
+    "help": "Punya kode? Masukkan untuk menerapkan penawaran Anda.",
+    "redeemUnavailable": "Tidak dapat membuka layar penukaran. Silakan coba lagi.",
+    "redeemWithApple": "Tukarkan dengan Apple",
+    "redeeming": "Membuka penukaran…",
+    "retry": "Coba Lagi",
+    "subscribeWithDiscount": "Langganan ({{discount}})"
   }
 }

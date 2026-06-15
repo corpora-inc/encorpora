@@ -314,7 +314,8 @@
       "joinTitle": "Corpanistas'a katılın",
       "start": "Keşfetmeye başla",
       "subtitle": "Corpán, küçük bir açık kaynak ekibi tarafından yapıldı. Merhaba deyin — ve eğer beğenirseniz, bize destek olabilirsiniz.",
-      "title": "Her şey hazır"
+      "title": "Her şey hazır",
+      "explore": "Kendim keşfedeceğim"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Harf, sayı, kısa çizgi veya alt çizgi kullanın.",
     "affiliateChecking": "Kod kontrol ediliyor...",
     "affiliateApplied": "Kod bu aboneliğe eklenecek.",
-    "affiliateCodeHelp": "Biri sizi buraya yönlendirdiyse abone olmadan önce kodunu girin."
+    "affiliateCodeHelp": "Biri sizi buraya yönlendirdiyse abone olmadan önce kodunu girin.",
+    "introPriceHeadline": "{{period}} için {{introPrice}}",
+    "introPriceThen": ", ardından {{price}}/{{period}}",
+    "perMonth": "ay",
+    "perYear": "yıl",
+    "startFreeTrial": "Ücretsiz Denemeyi Başlat",
+    "trialFirstCharge": "{{period}}: ilk ücret",
+    "trialHeadline": "{{period}} ücretsiz",
+    "trialReassurance": "Şu an ödeme yok · istediğiniz zaman iptal edin",
+    "trialThenPrice": ", ardından {{price}}/{{period}}",
+    "trialToday": "Bugün: başla"
   },
   "restore": {
     "button": "Satın alımları geri yükle",
@@ -715,7 +726,8 @@
     "subhead": "Tüm dillerdeki tüm kitapların kilidini açın. Reklamsız. Verileriniz cihazınızda kalır.",
     "pitch": "Küçük bir ekibiz ve her kuruşu Corpán'a geri yatırıyoruz. Corpanistas sayesinde reklamsız kalıyor ve büyüyor.",
     "maybeLater": "Belki sonra",
-    "continue": "Devam"
+    "continue": "Devam",
+    "dismiss": "Kapat"
   },
   "streak": {
     "title": "{{count}} günlük seri"
@@ -819,5 +831,33 @@
     "update": "Güncelle",
     "updateNow": "Şimdi güncelle",
     "versionLine": "Sürüm {{version}} yüklenmeye hazır."
+  },
+  "streakBadge": {
+    "label": "{{days}} günlük seri"
+  },
+  "dailyLock": {
+    "title": "Bugünkü {{count}} {{unit}}",
+    "streakActive": "{{days}} günlük seri — devam etmek için yarın tekrar gelin.",
+    "streakStart": "Bir seri başlatmak için yarın tekrar gelin.",
+    "resetIn": "{{time}} içinde sıfırlanır",
+    "cta": "Şimdi Corpán Plus ile devam edin",
+    "dismiss": "Belki sonra",
+    "closeAria": "Kapat",
+    "countdownHm": "{{h}}s {{m}}d",
+    "countdownM": "{{m}}d",
+    "countdownSoon": "her an"
+  },
+  "code": {
+    "attributedUnverified": "Kod aboneliğinize eklenecek.",
+    "checkFailed": "Kontrol edilemedi",
+    "checking": "Kod kontrol ediliyor…",
+    "creditedTo": "{{partner}}'a kredilendirildi",
+    "fieldLabel": "Teklif veya ortaklık kodu",
+    "help": "Bir kodunuz mu var? Teklifinizi uygulamak için girin.",
+    "redeemUnavailable": "Kodu kullanma ekranı açılamadı. Lütfen tekrar deneyin.",
+    "redeemWithApple": "Apple ile Kullan",
+    "redeeming": "Kod kullanılıyor…",
+    "retry": "Tekrar Dene",
+    "subscribeWithDiscount": "Abone Ol ({{discount}})"
   }
 }

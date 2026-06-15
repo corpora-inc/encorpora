@@ -314,7 +314,8 @@
       "joinTitle": "Bliv Corpanista",
       "start": "Begynd at udforske",
       "subtitle": "Corpán er lavet af et lille open source-team. Sig hej – og hvis du elsker det, kan du støtte os.",
-      "title": "Du er klar"
+      "title": "Du er klar",
+      "explore": "Udforsk på egen hånd"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Brug bogstaver, tal, bindestreger eller understregninger.",
     "affiliateChecking": "Kontrollerer kode...",
     "affiliateApplied": "Koden knyttes til dette abonnement.",
-    "affiliateCodeHelp": "Hvis nogen sendte dig hertil, skal du indtaste deres kode, før du abonnerer."
+    "affiliateCodeHelp": "Hvis nogen sendte dig hertil, skal du indtaste deres kode, før du abonnerer.",
+    "introPriceHeadline": "{{introPrice}} for {{period}}",
+    "introPriceThen": ", derefter {{price}}/{{period}}",
+    "perMonth": "måned",
+    "perYear": "år",
+    "startFreeTrial": "Start gratis prøveperiode",
+    "trialFirstCharge": "{{period}}: første betaling",
+    "trialHeadline": "{{period}} gratis",
+    "trialReassurance": "Ingen betaling nu · annuller når som helst",
+    "trialThenPrice": ", derefter {{price}}/{{period}}",
+    "trialToday": "I dag: start"
   },
   "restore": {
     "button": "Gendan køb",
@@ -715,7 +726,8 @@
     "subhead": "Lås op for alle bøger på alle sprog. Ingen reklamer. Dine data forbliver på din enhed.",
     "pitch": "Vi er et lille team og geninvesterer hver en krone i Corpán. Corpanistas holder det reklamefrit og i vækst.",
     "maybeLater": "Måske senere",
-    "continue": "Fortsæt"
+    "continue": "Fortsæt",
+    "dismiss": "Luk"
   },
   "streak": {
     "title": "{{count}} dages stribe"
@@ -819,5 +831,33 @@
     "update": "Opdater",
     "updateNow": "Opdater nu",
     "versionLine": "Version {{version}} er klar til installation."
+  },
+  "streakBadge": {
+    "label": "{{days}}-dages streak"
+  },
+  "dailyLock": {
+    "title": "Dine {{count}} {{unit}} for i dag",
+    "streakActive": "{{days}}-dages streak — kom tilbage i morgen for at fortsætte.",
+    "streakStart": "Kom tilbage i morgen for at starte en streak.",
+    "resetIn": "Nulstilles om {{time}}",
+    "cta": "Fortsæt nu med Corpán Plus",
+    "dismiss": "Måske senere",
+    "closeAria": "Afvis",
+    "countdownHm": "{{h}}t {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "når som helst"
+  },
+  "code": {
+    "attributedUnverified": "Koden vil blive tilknyttet dit abonnement.",
+    "checkFailed": "Kunne ikke tjekke",
+    "checking": "Tjekker kode…",
+    "creditedTo": "krediteret til {{partner}}",
+    "fieldLabel": "Tilbud eller affiliate kode",
+    "help": "Har du en kode? Indtast den for at anvende dit tilbud.",
+    "redeemUnavailable": "Kunne ikke åbne indløsningsskærmen. Prøv venligst igen.",
+    "redeemWithApple": "Indløs med Apple",
+    "redeeming": "Åbner indløsning…",
+    "retry": "Prøv igen",
+    "subscribeWithDiscount": "Abonner ({{discount}})"
   }
 }

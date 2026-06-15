@@ -314,7 +314,8 @@
       "joinTitle": "Dołącz do Corpanistas",
       "start": "Rozpocznij odkrywanie",
       "subtitle": "Corpán jest tworzony przez mały zespół open-source. Przywitaj się — a jeśli Ci się spodoba, możesz nas wesprzeć.",
-      "title": "Wszystko gotowe"
+      "title": "Wszystko gotowe",
+      "explore": "Odkrywam samodzielnie"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Użyj liter, cyfr, myślników lub podkreśleń.",
     "affiliateChecking": "Sprawdzanie kodu...",
     "affiliateApplied": "Kod zostanie przypisany do tej subskrypcji.",
-    "affiliateCodeHelp": "Jeśli ktoś Cię tu skierował, wpisz jego kod przed subskrypcją."
+    "affiliateCodeHelp": "Jeśli ktoś Cię tu skierował, wpisz jego kod przed subskrypcją.",
+    "introPriceHeadline": "{{introPrice}} za {{period}}",
+    "introPriceThen": ", potem {{price}}/{{period}}",
+    "perMonth": "miesiąc",
+    "perYear": "rok",
+    "startFreeTrial": "Rozpocznij bezpłatny okres próbny",
+    "trialFirstCharge": "{{period}}: pierwsza opłata",
+    "trialHeadline": "{{period}} za darmo",
+    "trialReassurance": "Brak płatności teraz · anuluj w dowolnym momencie",
+    "trialThenPrice": ", potem {{price}}/{{period}}",
+    "trialToday": "Dziś: start"
   },
   "restore": {
     "button": "Przywróć zakupy",
@@ -715,7 +726,8 @@
     "subhead": "Odblokuj każdą książkę w każdym języku. Bez reklam. Twoje dane pozostają na Twoim urządzeniu.",
     "pitch": "Jesteśmy małym zespołem i każdy cent inwestujemy z powrotem w Corpán. Corpanistas sprawiają, że aplikacja jest wolna od reklam i stale się rozwija.",
     "maybeLater": "Może później",
-    "continue": "Kontynuuj"
+    "continue": "Kontynuuj",
+    "dismiss": "Zamknij"
   },
   "streak": {
     "title": "Seria {{count}} dni"
@@ -819,5 +831,33 @@
     "update": "Aktualizuj",
     "updateNow": "Aktualizuj teraz",
     "versionLine": "Wersja {{version}} jest gotowa do instalacji."
+  },
+  "streakBadge": {
+    "label": "Seria {{days}} dni"
+  },
+  "dailyLock": {
+    "title": "Twoje {{count}} {{unit}} na dziś",
+    "streakActive": "Seria {{days}} dni — wróć jutro, aby ją kontynuować.",
+    "streakStart": "Wróć jutro, aby rozpocząć serię.",
+    "resetIn": "Reset za {{time}}",
+    "cta": "Kontynuuj teraz z Corpán Plus",
+    "dismiss": "Może później",
+    "closeAria": "Zamknij",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "w każdej chwili"
+  },
+  "code": {
+    "attributedUnverified": "Kod zostanie przypisany do Twojej subskrypcji.",
+    "checkFailed": "Nie można sprawdzić",
+    "checking": "Sprawdzanie kodu…",
+    "creditedTo": "przypisano do {{partner}}",
+    "fieldLabel": "Kod oferty lub afiliacyjny",
+    "help": "Masz kod? Wprowadź go, aby zastosować ofertę.",
+    "redeemUnavailable": "Nie można otworzyć ekranu realizacji. Spróbuj ponownie.",
+    "redeemWithApple": "Zrealizuj z Apple",
+    "redeeming": "Otwieranie realizacji…",
+    "retry": "Ponów próbę",
+    "subscribeWithDiscount": "Subskrybuj ({{discount}})"
   }
 }

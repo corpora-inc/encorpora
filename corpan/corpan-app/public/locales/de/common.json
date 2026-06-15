@@ -314,7 +314,8 @@
       "joinTitle": "Werde Teil der Corpanistas",
       "start": "Erkundung starten",
       "subtitle": "Corpán wird von einem kleinen Open-Source-Team entwickelt. Sag Hallo – und wenn es dir gefällt, kannst du uns unterstützen.",
-      "title": "Alles bereit"
+      "title": "Alles bereit",
+      "explore": "Auf eigene Faust erkunden"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Verwende Buchstaben, Zahlen, Bindestriche oder Unterstriche.",
     "affiliateChecking": "Code wird geprüft...",
     "affiliateApplied": "Der Code wird diesem Abonnement zugeordnet.",
-    "affiliateCodeHelp": "Wenn dich jemand hierher geschickt hat, gib den Code vor dem Abonnieren ein."
+    "affiliateCodeHelp": "Wenn dich jemand hierher geschickt hat, gib den Code vor dem Abonnieren ein.",
+    "introPriceHeadline": "{{introPrice}} für {{period}}",
+    "introPriceThen": ", dann {{price}}/{{period}}",
+    "perMonth": "Monat",
+    "perYear": "Jahr",
+    "startFreeTrial": "Kostenlose Testphase starten",
+    "trialFirstCharge": "{{period}}: erste Abbuchung",
+    "trialHeadline": "{{period}} kostenlos",
+    "trialReassurance": "Keine Zahlung jetzt · jederzeit kündbar",
+    "trialThenPrice": ", dann {{price}}/{{period}}",
+    "trialToday": "Heute: Start"
   },
   "restore": {
     "button": "Käufe wiederherstellen",
@@ -715,7 +726,8 @@
     "subhead": "Schalte jedes Buch in jeder Sprache frei. Keine Werbung. Deine Daten bleiben auf deinem Gerät.",
     "pitch": "Wir sind ein kleines Team und investieren jeden Cent zurück in Corpán. Corpanistas halten die App werbefrei und fördern ihr Wachstum.",
     "maybeLater": "Vielleicht später",
-    "continue": "Weiter"
+    "continue": "Weiter",
+    "dismiss": "Schließen"
   },
   "streak": {
     "title": "{{count}}-Tage-Serie"
@@ -819,5 +831,33 @@
     "update": "Aktualisieren",
     "updateNow": "Jetzt aktualisieren",
     "versionLine": "Version {{version}} ist zur Installation bereit."
+  },
+  "streakBadge": {
+    "label": "{{days}}-Tage-Serie"
+  },
+  "dailyLock": {
+    "title": "Deine {{count}} {{unit}} für heute",
+    "streakActive": "{{days}}-Tage-Serie — komm morgen wieder, um sie fortzusetzen.",
+    "streakStart": "Komm morgen wieder, um eine Serie zu starten.",
+    "resetIn": "Zurücksetzen in {{time}}",
+    "cta": "Jetzt mit Corpán Plus weitermachen",
+    "dismiss": "Vielleicht später",
+    "closeAria": "Schließen",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "jeden Moment"
+  },
+  "code": {
+    "attributedUnverified": "Code wird Ihrem Abonnement hinzugefügt.",
+    "checkFailed": "Überprüfung nicht möglich",
+    "checking": "Code wird überprüft…",
+    "creditedTo": "gutgeschrieben auf {{partner}}",
+    "fieldLabel": "Angebots- oder Partnercode",
+    "help": "Haben Sie einen Code? Geben Sie ihn ein, um Ihr Angebot zu nutzen.",
+    "redeemUnavailable": "Einlösen-Bildschirm konnte nicht geöffnet werden. Bitte versuchen Sie es erneut.",
+    "redeemWithApple": "Mit Apple einlösen",
+    "redeeming": "Einlösen wird geöffnet…",
+    "retry": "Erneut versuchen",
+    "subscribeWithDiscount": "Abonnieren ({{discount}})"
   }
 }

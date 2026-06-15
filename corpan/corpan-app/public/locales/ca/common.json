@@ -314,7 +314,8 @@
       "joinTitle": "Uneix-te als Corpanistas",
       "start": "Comença a explorar",
       "subtitle": "Corpán és creat per un petit equip de codi obert. Saluda'ns — i si t'encanta, pots donar-nos suport.",
-      "title": "Tot a punt"
+      "title": "Tot a punt",
+      "explore": "Explorar pel meu compte"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Fes servir lletres, números, guions o guions baixos.",
     "affiliateChecking": "S’està comprovant el codi...",
     "affiliateApplied": "El codi s’adjuntarà a aquesta subscripció.",
-    "affiliateCodeHelp": "Si algú t’ha enviat aquí, introdueix el seu codi abans de subscriure’t."
+    "affiliateCodeHelp": "Si algú t’ha enviat aquí, introdueix el seu codi abans de subscriure’t.",
+    "introPriceHeadline": "{{introPrice}} durant {{period}}",
+    "introPriceThen": ", després {{price}}/{{period}}",
+    "perMonth": "mes",
+    "perYear": "any",
+    "startFreeTrial": "Inicia la prova gratuïta",
+    "trialFirstCharge": "{{period}}: primer càrrec",
+    "trialHeadline": "{{period}} gratuïts",
+    "trialReassurance": "No es cobra ara · cancel·la quan vulguis",
+    "trialThenPrice": ", després {{price}}/{{period}}",
+    "trialToday": "Avui: començar"
   },
   "restore": {
     "button": "Restaura compres",
@@ -715,7 +726,8 @@
     "subhead": "Desbloqueja tots els llibres en tots els idiomes. Sense anuncis. Les teves dades es queden al teu dispositiu.",
     "pitch": "Som un equip petit i invertim cada cèntim de nou a Corpán. Els Corpanistas el mantenen sense anuncis i en creixement.",
     "maybeLater": "Potser més tard",
-    "continue": "Continua"
+    "continue": "Continua",
+    "dismiss": "Descartar"
   },
   "streak": {
     "title": "Ratxa de {{count}} dies"
@@ -819,5 +831,33 @@
     "update": "Actualitza",
     "updateNow": "Actualitza ara",
     "versionLine": "La versió {{version}} està a punt per instal·lar."
+  },
+  "streakBadge": {
+    "label": "Ratxa de {{days}} dies"
+  },
+  "dailyLock": {
+    "title": "Els teus {{count}} {{unit}} d'avui",
+    "streakActive": "Ratxa de {{days}} dies — torna demà per continuar-la.",
+    "streakStart": "Torna demà per començar una ratxa.",
+    "resetIn": "Es reinicia en {{time}}",
+    "cta": "Continua ara amb Corpán Plus",
+    "dismiss": "Potser més tard",
+    "closeAria": "Descartar",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "en qualsevol moment"
+  },
+  "code": {
+    "attributedUnverified": "El codi s'adjuntarà a la teva subscripció.",
+    "checkFailed": "No s'ha pogut comprovar",
+    "checking": "Comprovant el codi…",
+    "creditedTo": "acreditat a {{partner}}",
+    "fieldLabel": "Codi d'oferta o afiliat",
+    "help": "Tens un codi? Introdueix-lo per aplicar la teva oferta.",
+    "redeemUnavailable": "No s'ha pogut obrir la pantalla de redempció. Torna-ho a provar.",
+    "redeemWithApple": "Redimeix amb Apple",
+    "redeeming": "Obrint redempció…",
+    "retry": "Reintentar",
+    "subscribeWithDiscount": "Subscriu-te ({{discount}})"
   }
 }

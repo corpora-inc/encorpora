@@ -314,7 +314,8 @@
       "joinTitle": "Pridružite se Corpanistas",
       "start": "Počnite sa istraživanjem",
       "subtitle": "Corpán je kreirao mali tim otvorenog koda. Pozdravite nas — a ako vam se dopada, možete nas podržati.",
-      "title": "Sve je spremno"
+      "title": "Sve je spremno",
+      "explore": "Istražujem samostalno"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Koristite slova, brojeve, crtice ili donje crte.",
     "affiliateChecking": "Provera koda...",
     "affiliateApplied": "Kod će biti povezan sa ovom pretplatom.",
-    "affiliateCodeHelp": "Ako vas je neko poslao ovde, unesite njegov kod pre pretplate."
+    "affiliateCodeHelp": "Ako vas je neko poslao ovde, unesite njegov kod pre pretplate.",
+    "introPriceHeadline": "{{introPrice}} za {{period}}",
+    "introPriceThen": ", zatim {{price}}/{{period}}",
+    "perMonth": "mesec",
+    "perYear": "godina",
+    "startFreeTrial": "Započni besplatno probno",
+    "trialFirstCharge": "{{period}}: prva naplata",
+    "trialHeadline": "{{period}} besplatno",
+    "trialReassurance": "Plaćanje nije potrebno sada · otkaži bilo kada",
+    "trialThenPrice": ", zatim {{price}}/{{period}}",
+    "trialToday": "Danas: početak"
   },
   "restore": {
     "button": "Vrati kupovine",
@@ -715,7 +726,8 @@
     "subhead": "Otključajte svaku knjigu na svakom jeziku. Bez reklama. Vaši podaci ostaju na uređaju.",
     "pitch": "Mi smo mali tim i svaki cent ulažemo nazad u Corpán. Corpanistas ga čine bez reklama i pomažu mu da raste.",
     "maybeLater": "Možda kasnije",
-    "continue": "Nastavi"
+    "continue": "Nastavi",
+    "dismiss": "Odbaci"
   },
   "streak": {
     "title": "{{count}}-dnevni niz"
@@ -819,5 +831,33 @@
     "update": "Ažuriraj",
     "updateNow": "Ažuriraj sada",
     "versionLine": "Verzija {{version}} je spremna za instalaciju."
+  },
+  "streakBadge": {
+    "label": "Серија од {{days}} дана"
+  },
+  "dailyLock": {
+    "title": "Твојих {{count}} {{unit}} за данас",
+    "streakActive": "Серија од {{days}} дана — врати се сутра да наставиш.",
+    "streakStart": "Врати се сутра да започнеш серију.",
+    "resetIn": "Ресетује се за {{time}}",
+    "cta": "Настави сада уз Corpán Plus",
+    "dismiss": "Можда касније",
+    "closeAria": "Одбаци",
+    "countdownHm": "{{h}}ч {{m}}м",
+    "countdownM": "{{m}}м",
+    "countdownSoon": "ускоро"
+  },
+  "code": {
+    "attributedUnverified": "Kod će biti pridodat vašoj pretplati.",
+    "checkFailed": "Provera nije uspela",
+    "checking": "Provera koda…",
+    "creditedTo": "pripisano {{partner}}",
+    "fieldLabel": "Ponuda ili partnerski kod",
+    "help": "Imate kod? Unesite ga da primenite ponudu.",
+    "redeemUnavailable": "Nije moguće otvoriti ekran za iskorišćavanje. Pokušajte ponovo.",
+    "redeemWithApple": "Iskoristi sa Apple",
+    "redeeming": "Otvaranje iskorišćavanja…",
+    "retry": "Pokušaj ponovo",
+    "subscribeWithDiscount": "Pretplati se ({{discount}})"
   }
 }

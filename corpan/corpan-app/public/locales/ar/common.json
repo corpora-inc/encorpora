@@ -298,7 +298,8 @@
       "joinTitle": "انضم إلى Corpanistas",
       "start": "ابدأ الاستكشاف",
       "subtitle": "Corpán تم تطويره بواسطة فريق صغير مفتوح المصدر. تعال وقل مرحباً — وإذا أحببته، يمكنك دعمنا.",
-      "title": "أنت جاهز تمامًا"
+      "title": "أنت جاهز تمامًا",
+      "explore": "استكشاف بنفسي"
     },
     "welcomePact": {
       "title": "Corpán تتطور",
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "استخدم أحرفًا أو أرقامًا أو شرطات أو شرطات سفلية.",
     "affiliateChecking": "جارٍ التحقق من الرمز...",
     "affiliateApplied": "سيتم إرفاق الرمز بهذا الاشتراك.",
-    "affiliateCodeHelp": "إذا أرسلك شخص ما إلى هنا، فأدخل رمزه قبل الاشتراك."
+    "affiliateCodeHelp": "إذا أرسلك شخص ما إلى هنا، فأدخل رمزه قبل الاشتراك.",
+    "introPriceHeadline": "{{introPrice}} لمدة {{period}}",
+    "introPriceThen": "، ثم {{price}}/{{period}}",
+    "perMonth": "شهر",
+    "perYear": "سنة",
+    "startFreeTrial": "ابدأ النسخة التجريبية المجانية",
+    "trialFirstCharge": "{{period}}: أول دفعة",
+    "trialHeadline": "{{period}} مجانًا",
+    "trialReassurance": "لا يوجد دفع الآن · يمكنك الإلغاء في أي وقت",
+    "trialThenPrice": "، ثم {{price}}/{{period}}",
+    "trialToday": "اليوم: البدء"
   },
   "restore": {
     "button": "استعادة المشتريات",
@@ -715,7 +726,8 @@
     "subhead": "افتح كل كتاب بكل لغة. لا إعلانات. تبقى بياناتك على جهازك.",
     "pitch": "نحن فريق صغير ونعيد كل قرش إلى Corpán. يحافظ Corpanistas على التطبيق خاليًا من الإعلانات ومتناميًا.",
     "maybeLater": "ربما لاحقًا",
-    "continue": "متابعة"
+    "continue": "متابعة",
+    "dismiss": "تجاهل"
   },
   "streak": {
     "title": "سلسلة {{count}} يومًا"
@@ -819,5 +831,33 @@
     "update": "تحديث",
     "updateNow": "تحديث الآن",
     "versionLine": "الإصدار {{version}} جاهز للتثبيت."
+  },
+  "streakBadge": {
+    "label": "سلسلة {{days}} أيام"
+  },
+  "dailyLock": {
+    "title": "الـ {{count}} {{unit}} الخاصة بك لليوم",
+    "streakActive": "سلسلة {{days}} أيام — عد غدًا للحفاظ عليها.",
+    "streakStart": "عد غدًا لبدء سلسلة.",
+    "resetIn": "يعاد التعيين في {{time}}",
+    "cta": "تابع الآن مع Corpán Plus",
+    "dismiss": "ربما لاحقًا",
+    "closeAria": "تجاهل",
+    "countdownHm": "{{h}}س {{m}}د",
+    "countdownM": "{{m}}د",
+    "countdownSoon": "في أي لحظة"
+  },
+  "code": {
+    "attributedUnverified": "سيتم إرفاق الرمز باشتراكك.",
+    "checkFailed": "تعذر التحقق",
+    "checking": "جارٍ التحقق من الرمز…",
+    "creditedTo": "مخصص لـ {{partner}}",
+    "fieldLabel": "رمز العرض أو الشريك",
+    "help": "هل لديك رمز؟ أدخله لتطبيق العرض.",
+    "redeemUnavailable": "تعذر فتح شاشة الاسترداد. يرجى المحاولة مرة أخرى.",
+    "redeemWithApple": "استرداد مع Apple",
+    "redeeming": "جارٍ فتح الاسترداد…",
+    "retry": "إعادة المحاولة",
+    "subscribeWithDiscount": "اشترك ({{discount}})"
   }
 }

@@ -314,7 +314,8 @@
       "joinTitle": "Alătură-te Corpanistas",
       "start": "Începe explorarea",
       "subtitle": "Corpán este creat de o mică echipă open-source. Vino să ne saluți — și dacă îți place, ne poți susține.",
-      "title": "Totul e pregătit"
+      "title": "Totul e pregătit",
+      "explore": "Explorează pe cont propriu"
     },
     "fork": {
       "child": {
@@ -669,7 +670,17 @@
     "affiliateInvalidFormat": "Folosește litere, cifre, cratime sau liniuțe de subliniere.",
     "affiliateChecking": "Se verifică codul...",
     "affiliateApplied": "Codul va fi atașat acestui abonament.",
-    "affiliateCodeHelp": "Dacă cineva te-a trimis aici, introdu codul înainte de abonare."
+    "affiliateCodeHelp": "Dacă cineva te-a trimis aici, introdu codul înainte de abonare.",
+    "introPriceHeadline": "{{introPrice}} pentru {{period}}",
+    "introPriceThen": ", apoi {{price}}/{{period}}",
+    "perMonth": "lună",
+    "perYear": "an",
+    "startFreeTrial": "Începe perioada de încercare gratuită",
+    "trialFirstCharge": "{{period}}: prima plată",
+    "trialHeadline": "{{period}} gratuit",
+    "trialReassurance": "Nicio plată acum · anulează oricând",
+    "trialThenPrice": ", apoi {{price}}/{{period}}",
+    "trialToday": "Astăzi: începe"
   },
   "restore": {
     "button": "Restaurare achiziții",
@@ -715,7 +726,8 @@
     "subhead": "Deblochează fiecare carte, în fiecare limbă. Fără reclame. Datele tale rămân pe dispozitiv.",
     "pitch": "Suntem o echipă mică și reinvestim fiecare bănuț în Corpán. Corpanistas mențin aplicația fără reclame și în creștere.",
     "maybeLater": "Poate mai târziu",
-    "continue": "Continuă"
+    "continue": "Continuă",
+    "dismiss": "Închide"
   },
   "streak": {
     "title": "Serie de {{count}} zile"
@@ -819,5 +831,33 @@
     "update": "Actualizează",
     "updateNow": "Actualizează acum",
     "versionLine": "Versiunea {{version}} este gata de instalare."
+  },
+  "streakBadge": {
+    "label": "Seria de {{days}} zile"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} pentru astăzi",
+    "streakActive": "Seria de {{days}} zile — revino mâine pentru a continua.",
+    "streakStart": "Revino mâine pentru a începe o serie.",
+    "resetIn": "Se resetează în {{time}}",
+    "cta": "Continuă acum cu Corpán Plus",
+    "dismiss": "Poate mai târziu",
+    "closeAria": "Închide",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "în orice moment"
+  },
+  "code": {
+    "attributedUnverified": "Codul va fi atașat abonamentului tău.",
+    "checkFailed": "Nu s-a putut verifica",
+    "checking": "Verificare cod…",
+    "creditedTo": "creditat la {{partner}}",
+    "fieldLabel": "Cod ofertă sau afiliat",
+    "help": "Ai un cod? Introdu-l pentru a aplica oferta.",
+    "redeemUnavailable": "Nu s-a putut deschide ecranul de răscumpărare. Te rugăm să încerci din nou.",
+    "redeemWithApple": "Răscumpără cu Apple",
+    "redeeming": "Deschidere răscumpărare…",
+    "retry": "Reîncearcă",
+    "subscribeWithDiscount": "Abonează-te ({{discount}})"
   }
 }
