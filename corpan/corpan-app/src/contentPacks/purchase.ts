@@ -1,4 +1,4 @@
-import { invoke } from "@tauri-apps/api/core"
+import { invoke, addPluginListener, type PluginListener } from "@tauri-apps/api/core"
 import { type as osType } from "@tauri-apps/plugin-os"
 import { openUrl } from "@tauri-apps/plugin-opener"
 import { useEntitlementStore } from "@/store/entitlements"
@@ -1066,6 +1066,188 @@ export async function presentAppleOfferRedeemSheet(opts: {
     }
   }
   return false
+}
+
+// ---------------------------------------------------------------------------
+// Apple offer-code redemption attribution (contract §5)
+//
+// The Apple offer-code redeem sheet (and renewals, restores, Ask-to-Buy
+// approvals) deliver the resulting StoreKit transaction ASYNCHRONOUSLY via the
+// iOS plugin's `Transaction.updates` → `purchaseUpdated` event — NOT as the
+// return value of an `invoke`. So unlike the synchronous `purchaseProduct`
+// flow, the redeem path has no transaction to POST to /verify-purchase inline.
+//
+// Without a listener, an Apple offer-code conversion unlocks locally (the
+// platform owns entitlement) but NO `PURCHASE#` / `ATTRIBUTION` / initial
+// `LEDGER` rows are ever written — the partner is never credited and
+// /entitlement-token can't see the sub. This listener closes that gap: it
+// forwards every delivered transaction to /verify-purchase, carrying the
+// pending resolutionToken from the redeem the user just performed.
+//
+// Mirrors the Android/synchronous path (purchaseAndVerify → verifyPurchase
+// with the resolutionToken). All best-effort + idempotent (the backend ledger
+// writes are conditional), so duplicate deliveries never double-credit.
+// ---------------------------------------------------------------------------
+
+type PendingResolution = {
+  resolutionToken?: string
+  affiliateCode?: string
+  /** When the pending token was stashed (ms). Discarded after a TTL. */
+  at: number
+}
+
+// The resolutionToken (~15 min server TTL) the user is mid-redeeming. Stashed
+// when the redeem sheet is presented, consumed by the next delivered
+// transaction. Module-level (one redeem flow at a time on a device).
+let _pendingResolution: PendingResolution | null = null
+const PENDING_RESOLUTION_TTL_MS = 15 * 60 * 1000
+
+/**
+ * Stash the resolutionToken for an in-flight Apple offer-code redemption so the
+ * async `purchaseUpdated` listener can attach it to the verify-purchase call.
+ */
+export function setPendingResolution(opts: {
+  resolutionToken?: string
+  affiliateCode?: string
+}): void {
+  if (!opts.resolutionToken) {
+    _pendingResolution = null
+    return
+  }
+  _pendingResolution = { ...opts, at: Date.now() }
+}
+
+function takePendingResolution(): PendingResolution | null {
+  const p = _pendingResolution
+  if (!p) return null
+  if (Date.now() - p.at > PENDING_RESOLUTION_TTL_MS) {
+    _pendingResolution = null
+    return null
+  }
+  return p
+}
+
+let _purchaseUpdatedListener: PluginListener | null = null
+
+/**
+ * Wire the plugin's `purchaseUpdated` event to backend verification +
+ * entitlement sync. Install ONCE at app start (idempotent — re-calling is a
+ * no-op while a listener is already registered). Returns a disposer.
+ *
+ * On every delivered transaction we POST it to /verify-purchase carrying the
+ * pending resolutionToken (if any), so Apple offer-code redemptions write the
+ * attribution + ledger rows the synchronous path already writes. We then
+ * refresh entitlements so any open paywall reflects the new sub.
+ */
+export async function installPurchaseUpdatedListener(): Promise<() => void> {
+  if (!isTauriRuntime()) return () => {}
+  if (_purchaseUpdatedListener) return () => {}
+
+  try {
+    const platform = await getPlatform()
+    // Android forwards its purchases synchronously through purchaseAndVerify;
+    // the async listener is the iOS/macOS (StoreKit Transaction.updates) seam.
+    if (platform !== "ios" && platform !== "macos") return () => {}
+
+    _purchaseUpdatedListener = await addPluginListener(
+      "iap",
+      "purchaseUpdated",
+      (raw: {
+        id?: string
+        orderId?: string
+        productId?: string
+        jwsRepresentation?: string
+        purchaseToken?: string
+        originalJson?: string
+        environment?: string
+      }) => {
+        void handlePurchaseUpdated(raw, platform)
+      }
+    )
+    console.info("[purchase] purchaseUpdated listener installed")
+  } catch (err) {
+    console.warn("[purchase] failed to install purchaseUpdated listener:", err)
+    return () => {}
+  }
+
+  return () => {
+    try {
+      void _purchaseUpdatedListener?.unregister()
+    } catch {
+      /* ignore */
+    }
+    _purchaseUpdatedListener = null
+  }
+}
+
+async function handlePurchaseUpdated(
+  raw: {
+    id?: string
+    orderId?: string
+    productId?: string
+    jwsRepresentation?: string
+    purchaseToken?: string
+    originalJson?: string
+    environment?: string
+  },
+  platform: PurchasePlatform
+): Promise<void> {
+  try {
+    const transactionId = raw.id ?? raw.orderId ?? ""
+    const productId = raw.productId ?? ""
+    const receipt =
+      raw.jwsRepresentation ?? raw.purchaseToken ?? raw.originalJson ?? ""
+    if (!transactionId || !productId) {
+      console.warn("[purchase] purchaseUpdated missing txn/product — skipping verify")
+      return
+    }
+
+    const result: PurchaseResult = {
+      transactionId,
+      productId,
+      receipt,
+      platform,
+      environment: raw.environment,
+    }
+
+    // Reflect the platform-confirmed sub locally right away (mirrors the
+    // synchronous path), then verify in the background. Entitlement is owned by
+    // the platform; verification is for attribution + the signed-URL/token.
+    const store = useEntitlementStore.getState()
+    if (productId === SUBSCRIPTION_MONTHLY || productId === SUBSCRIPTION_ANNUAL) {
+      store.setSubscription({
+        active: true,
+        plan: productId === SUBSCRIPTION_ANNUAL ? "annual" : "monthly",
+        expiresAt: null,
+        autoRenew: true,
+      })
+    }
+
+    const pending = takePendingResolution()
+    const verification = await verifyPurchase(result, undefined, {
+      affiliateCode: pending?.affiliateCode,
+      resolutionToken: pending?.resolutionToken,
+    })
+    // One-shot: a token is bound to a single redeemed transaction.
+    if (pending) setPendingResolution({})
+
+    if (verification.status === "verified") {
+      const attribution = verification.affiliateAttribution
+      if (attribution && (attribution.verified || attribution.locked)) {
+        trackCodeRedeemed(attribution.partnerName ?? "")
+      }
+    } else {
+      console.warn(
+        "[purchase] purchaseUpdated verify failed (entitlement still set locally):",
+        verification.error
+      )
+    }
+
+    // Re-query the plugin so any open paywall renders authoritative state.
+    await refreshEntitlements()
+  } catch (err) {
+    console.warn("[purchase] handlePurchaseUpdated error (non-fatal):", err)
+  }
 }
 
 /**

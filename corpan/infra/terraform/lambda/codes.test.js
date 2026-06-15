@@ -317,21 +317,41 @@ test("handleCodeResolve: rate-limit → 429 status:error", async () => {
 // attributePurchase — idempotency + first-verified-touch lock + ledger
 // ===========================================================================
 
+// REAL token claims — mint via mintResolutionToken + validateResolutionToken so
+// the tests exercise the actual on-the-wire claim shape (NOT a hand-built object
+// that injects fields the real token never carries). This is what masked BUG 4:
+// a hand-injected `revenueSharePct` hid that the minted token omitted it.
 function verifiedClaims(over = {}) {
-  return {
-    v: 1,
-    iss: "corpan-codes",
-    sub: "sub-A",
-    code: "IAN30",
-    partnerId: "ian",
-    classification: "discount+affiliate",
-    purchaseAction: "REDEEM_APPLE_SHEET",
-    appleOfferId: "IAN30",
-    googleOfferId: "code-ian30",
-    revenueSharePct: 0.3,
-    registryVersion: 1,
-    ...over,
-  };
+  const {
+    subjectId = "sub-A",
+    code = "IAN30",
+    partnerId = "ian",
+    classification = "discount+affiliate",
+    purchaseAction = "REDEEM_APPLE_SHEET",
+    appleOfferId = "IAN30",
+    googleOfferId = "code-ian30",
+    revenueSharePct = 0.3,
+    registryVersion = 1,
+    // back-compat with callers that override the bound subject via `sub`.
+    sub,
+  } = over;
+  const token = codes.mintResolutionToken(
+    {
+      subjectId: sub ?? subjectId,
+      code,
+      partnerId,
+      classification,
+      purchaseAction,
+      appleOfferId,
+      googleOfferId,
+      registryVersion,
+      revenueSharePct,
+    },
+    HMAC_KEY
+  );
+  const v = codes.validateResolutionToken(token, {}, HMAC_KEY);
+  assert.equal(v.valid, true);
+  return v.claims;
 }
 
 test("attributePurchase: first verified write creates purchase + lock + ledger", async () => {
@@ -360,6 +380,8 @@ test("attributePurchase: first verified write creates purchase + lock + ledger",
   const ledgerKeys = [...doc.store.keys()].filter((k) => k.startsWith("LEDGER#ian#"));
   assert.equal(ledgerKeys.length, 1);
   assert.equal(doc.store.get(ledgerKeys[0]).kind, "initial");
+  // The ledger credit must carry the real payout pct from the token claims.
+  assert.equal(doc.store.get(ledgerKeys[0]).revenueSharePct, 0.3);
 });
 
 test("attributePurchase: replayed txn → no double credit", async () => {
@@ -459,6 +481,159 @@ test("attributePurchase: unknown classification writes lock but NO ledger", asyn
   assert.equal(out.verified, false);
   const ledgerKeys = [...doc.store.keys()].filter((k) => k.startsWith("LEDGER#"));
   assert.equal(ledgerKeys.length, 0);
+});
+
+// ===========================================================================
+// BUG 4 — initial ledger rows must carry the real payout pct (end-to-end)
+// ===========================================================================
+
+test("mintResolutionToken: token carries revenueSharePct claim", () => {
+  const token = codes.mintResolutionToken(
+    { subjectId: "sub-p", code: "IAN30", partnerId: "ian", classification: "discount+affiliate", purchaseAction: "REDEEM_APPLE_SHEET", revenueSharePct: 0.3 },
+    HMAC_KEY
+  );
+  const v = codes.validateResolutionToken(token, { subjectId: "sub-p" }, HMAC_KEY);
+  assert.equal(v.valid, true);
+  // The real token MUST carry the payout share (not undefined/null) — this is
+  // what attributePurchase reads to credit the ledger.
+  assert.equal(v.claims.revenueSharePct, 0.3);
+});
+
+test("/code/resolve mints a token whose claims carry revenueSharePct", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#IAN30|META", IAN_META);
+  const { json, calls } = jsonResponder();
+  await codes.handleCodeResolve(
+    { code: "IAN30", subjectId: "sub-rs", platform: "ios" },
+    { secrets: SECRETS, json }
+  );
+  const token = calls[0].payload.resolutionToken;
+  const v = codes.validateResolutionToken(token, { subjectId: "sub-rs" }, HMAC_KEY);
+  assert.equal(v.claims.revenueSharePct, 0.3);
+});
+
+test("end-to-end /code/resolve → attributePurchase: ledger row carries non-null pct", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#IAN30|META", IAN_META);
+
+  // 1) Resolve (server is the only classifier; token is the wire artifact).
+  const { json, calls } = jsonResponder();
+  await codes.handleCodeResolve(
+    { code: "IAN30", subjectId: "sub-e2e", platform: "ios" },
+    { secrets: SECRETS, json }
+  );
+  const token = calls[0].payload.resolutionToken;
+
+  // 2) Validate the token exactly as verify-purchase does, then attribute.
+  const check = codes.validateResolutionToken(
+    token,
+    { subjectId: "sub-e2e", affiliateCode: "IAN30" },
+    HMAC_KEY
+  );
+  assert.equal(check.valid, true);
+  await codes.attributePurchase({
+    claims: check.claims,
+    subjectId: "sub-e2e",
+    partnerName: "Ian",
+    platform: "apple",
+    txnOrOriginalId: "orig-e2e",
+    productId: "corpan.sub.annual",
+    price: 1999,
+    currency: "USD",
+    offerApplied: true,
+    expiresAt: new Date(Date.now() + 86400000).toISOString(),
+    appAccountToken: "sub-e2e",
+  });
+
+  const ledgerKey = [...doc.store.keys()].find((k) => k.startsWith("LEDGER#ian#"));
+  assert.ok(ledgerKey, "ledger row written");
+  const ledger = doc.store.get(ledgerKey);
+  // The regression this guards: the minted token dropped revenueSharePct, so
+  // the real ledger row got null even though the registry said 0.30.
+  assert.equal(ledger.revenueSharePct, 0.3);
+  assert.notEqual(ledger.revenueSharePct, null);
+});
+
+// ===========================================================================
+// BUG 3 — PURCHASE# row must carry expiresAt so /entitlement-token works
+// ===========================================================================
+
+test("attributePurchase: PURCHASE# row persists expiresAt (drives entitlement)", async () => {
+  const doc = freshDoc();
+  const exp = new Date(Date.now() + 86400000).toISOString();
+  await codes.attributePurchase({
+    claims: verifiedClaims({ subjectId: "sub-exp" }),
+    subjectId: "sub-exp",
+    partnerName: "Ian",
+    platform: "apple",
+    txnOrOriginalId: "orig-exp",
+    productId: "corpan.sub.annual",
+    expiresAt: exp,
+    appAccountToken: "sub-exp",
+  });
+  const row = doc.store.get("SUBJECT#sub-exp|PURCHASE#apple#orig-exp");
+  assert.ok(row);
+  assert.equal(row.expiresAt, exp);
+
+  // …and /entitlement-token now reflects the active sub (was broken: the row
+  // had no expiresAt → readLatestEntitlement treated it as inactive).
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({ subjectId: "sub-exp" }, { secrets: SECRETS, json });
+  assert.equal(calls[0].payload.status, "ok");
+  assert.equal(calls[0].payload.plus, true);
+});
+
+test("recordEntitlementPurchase: NORMAL (no-code) sub → /entitlement-token ok", async () => {
+  const doc = freshDoc();
+  const exp = new Date(Date.now() + 86400000).toISOString();
+  // No resolutionToken/claims at all — a plain verified subscription.
+  const written = await codes.recordEntitlementPurchase({
+    subjectId: "sub-nc",
+    platform: "apple",
+    txnOrOriginalId: "orig-nc",
+    productId: "corpan.sub.annual",
+    expiresAt: exp,
+    appAccountToken: "sub-nc",
+  });
+  assert.equal(written, true);
+  const row = doc.store.get("SUBJECT#sub-nc|PURCHASE#apple#orig-nc");
+  assert.ok(row, "entitlement row written without a code");
+  assert.equal(row.expiresAt, exp);
+  assert.equal(row.partnerId, null);
+
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({ subjectId: "sub-nc" }, { secrets: SECRETS, json });
+  assert.equal(calls[0].payload.status, "ok");
+  assert.equal(calls[0].payload.plus, true);
+  assert.equal(calls[0].payload.expiresAt, exp);
+});
+
+test("recordEntitlementPurchase: idempotent, never clobbers a richer code row", async () => {
+  const doc = freshDoc();
+  const exp = new Date(Date.now() + 86400000).toISOString();
+  // Code path writes first (carries partnerId + code).
+  await codes.attributePurchase({
+    claims: verifiedClaims({ subjectId: "sub-idem" }),
+    subjectId: "sub-idem",
+    partnerName: "Ian",
+    platform: "apple",
+    txnOrOriginalId: "orig-idem",
+    productId: "corpan.sub.annual",
+    expiresAt: exp,
+    appAccountToken: "sub-idem",
+  });
+  // A later entitlement-only write for the SAME txn must not overwrite it.
+  const written = await codes.recordEntitlementPurchase({
+    subjectId: "sub-idem",
+    platform: "apple",
+    txnOrOriginalId: "orig-idem",
+    productId: "corpan.sub.annual",
+    expiresAt: exp,
+  });
+  assert.equal(written, false); // conditional fail → left the code row intact
+  const row = doc.store.get("SUBJECT#sub-idem|PURCHASE#apple#orig-idem");
+  assert.equal(row.partnerId, "ian");
+  assert.equal(row.code, "IAN30");
 });
 
 // ===========================================================================

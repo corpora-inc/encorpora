@@ -374,6 +374,11 @@ async function handleVerifyPurchase(body, secrets) {
         );
       }
 
+      const isApple = platform === "ios" || platform === "macos";
+      const txnOrOriginalId = isApple
+        ? result.originalTransactionId || result.transactionId
+        : result.transactionId; // Android orderId
+
       // §3 validate the resolutionToken (attribution only proceeds if valid).
       const tokenCheck = codes.validateResolutionToken(
         body.resolutionToken,
@@ -383,7 +388,6 @@ async function handleVerifyPurchase(body, secrets) {
 
       if (tokenCheck.valid) {
         const claims = tokenCheck.claims;
-        const isApple = platform === "ios" || platform === "macos";
         // §5.2/§5.3 confirm the offer applied matches the token.
         const offerApplied = isApple
           ? result.offerType != null
@@ -391,10 +395,6 @@ async function handleVerifyPurchase(body, secrets) {
         const offerMatches = isApple
           ? !claims.appleOfferId || result.offerIdentifier === claims.appleOfferId
           : !claims.googleOfferId || result.offerId === claims.googleOfferId;
-
-        const txnOrOriginalId = isApple
-          ? result.originalTransactionId || result.transactionId
-          : result.transactionId; // Android orderId
 
         const attribution = await codes.attributePurchase({
           claims,
@@ -412,10 +412,25 @@ async function handleVerifyPurchase(body, secrets) {
           offerIdentifier: isApple ? result.offerIdentifier : result.offerId,
           environment: result.environment ?? null,
           appAccountToken: isApple ? result.appAccountToken : result.obfHash,
+          expiresAt: result.expiresAt ?? null,
         });
         if (attribution) {
           response.affiliateAttribution = attribution;
         }
+      } else if (result.subscriptionActive) {
+        // §4 — NO valid code, but a verified active sub. attributePurchase
+        // never ran (it's gated on a resolutionToken), so persist the
+        // entitlement PURCHASE# row here so /entitlement-token reflects a real
+        // active subscription. Idempotent + best-effort; never blocks status.
+        await codes.recordEntitlementPurchase({
+          subjectId: body.subjectId,
+          platform: isApple ? "apple" : "android",
+          txnOrOriginalId,
+          productId: result.productId,
+          expiresAt: result.expiresAt ?? null,
+          environment: result.environment ?? null,
+          appAccountToken: isApple ? result.appAccountToken : result.obfHash,
+        });
       }
     } catch (err) {
       // §5.5 non-fatal: omit affiliateAttribution, keep status verified.

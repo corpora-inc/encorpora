@@ -26,7 +26,7 @@ import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
-import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId } from "@/contentPacks/purchase";
+import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId, installPurchaseUpdatedListener } from "@/contentPacks/purchase";
 import { useEntitlementStore } from "@/store/entitlements";
 import { InstallProvider } from "@/contentPacks/InstallContext";
 import { PaywallSheet } from "@/components/paywall/PaywallSheet";
@@ -185,6 +185,11 @@ export default function App() {
     void fetchPhrasePackCatalog();
     // Detect platform then refresh IAP entitlements (local, no network)
     getPlatform().then(() => refreshEntitlements()).catch(() => {});
+    // Wire the StoreKit Transaction.updates → purchaseUpdated seam so Apple
+    // offer-code redemptions (delivered asynchronously, with no inline invoke
+    // result) get POSTed to /verify-purchase with their pending resolutionToken
+    // — that's what writes the attribution + ledger rows for a redeemed code.
+    void installPurchaseUpdatedListener();
     // Reconcile the in-memory phrase-pack registry with what's actually on
     // disk. Catches manual sideloads, stale persisted entries from prior
     // installs that were since removed, version bumps, etc. No-op if no

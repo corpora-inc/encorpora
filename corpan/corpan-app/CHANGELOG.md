@@ -7,6 +7,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Apple offer-code redemptions now attribute the purchase.** Redeeming an
+  affiliate/offer code through the Apple "Redeem Code" sheet delivers its
+  transaction asynchronously (StoreKit `Transaction.updates`), which the app
+  was not listening for — so the redemption unlocked locally but the partner
+  attribution / ledger was never written. The app now wires that event to
+  backend verification, carrying the pending resolution token from the redeem,
+  mirroring the Android/inline path. Idempotent and best-effort.
+
 ## [0.18.1] - 2026-06-15
 
 ### Added

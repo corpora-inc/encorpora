@@ -22,6 +22,7 @@ import {
   resolveCode,
   resolveOfferToken,
   presentAppleOfferRedeemSheet,
+  setPendingResolution,
   restoreAndSync,
   SUBSCRIPTION_MONTHLY,
   SUBSCRIPTION_ANNUAL,
@@ -231,16 +232,21 @@ export function SubscriptionOffer({
       const action = resolved?.purchaseAction
 
       // Apple offer-code redemption: present the StoreKit sheet (or fall back
-      // to the redeem URL). The redeemed transaction flows back through the
-      // plugin's transaction listener; we then refresh so verification (which
-      // carries the resolutionToken on the next verify) and entitlement sync
-      // pick it up.
+      // to the redeem URL). The redeemed transaction flows back ASYNCHRONOUSLY
+      // through the plugin's `purchaseUpdated` listener (installed app-wide),
+      // which POSTs it to /verify-purchase carrying the resolutionToken we stash
+      // here — that's what writes the attribution + ledger rows. Without this
+      // stash the redemption would unlock locally but never attribute.
       if (action === "REDEEM_APPLE_SHEET") {
+        setPendingResolution({ resolutionToken, affiliateCode: validCode })
         const presented = await presentAppleOfferRedeemSheet({
           appleOfferId: resolved?.appleOfferId,
           appleRedeemUrl: resolved?.appleRedeemUrl,
         })
         if (!presented) {
+          // Sheet never opened — drop the pending token so a later unrelated
+          // transaction can't pick up a stale attribution.
+          setPendingResolution({})
           setState({
             kind: "store_unreachable",
             error: t(

@@ -153,7 +153,7 @@ const ENTITLEMENT_TTL_SEC = 24 * 60 * 60; // §4 ~24h
 
 // Mint a resolutionToken (§3).
 function mintResolutionToken(
-  { subjectId, code, partnerId, classification, purchaseAction, appleOfferId, googleOfferId, registryVersion },
+  { subjectId, code, partnerId, classification, purchaseAction, appleOfferId, googleOfferId, registryVersion, revenueSharePct },
   hmacKey,
   kid = "v1"
 ) {
@@ -169,6 +169,13 @@ function mintResolutionToken(
     appleOfferId: appleOfferId ?? null,
     googleOfferId: googleOfferId ?? null,
     registryVersion: registryVersion ?? null,
+    // §7.1 payout share, echoed from the registry at resolve time so the
+    // ledger credit carries the correct pct without a second registry read
+    // (the registry remains the source of truth — see handleCodeResolve).
+    revenueSharePct:
+      revenueSharePct == null || Number.isNaN(Number(revenueSharePct))
+        ? null
+        : Number(revenueSharePct),
     iat,
     exp: iat + RESOLUTION_TTL_SEC,
   };
@@ -433,6 +440,7 @@ async function attributePurchase({
   offerIdentifier,
   environment,
   appAccountToken,
+  expiresAt,
 }) {
   try {
     if (!claims) return null; // no valid token → no attribution write
@@ -461,6 +469,9 @@ async function attributePurchase({
       environment: environment ?? null,
       obfHash,
       appAccountToken: appAccountToken ?? null,
+      // §4 — the verified subscription expiry, so /entitlement-token's
+      // readLatestEntitlement can reflect a real active sub.
+      expiresAt: expiresAt ?? null,
       verifiedAt: nowIso,
     };
     const purchaseRes = await putPurchase(purchaseRow);
@@ -528,6 +539,53 @@ async function attributePurchase({
 
 function replayMessage(verified, partnerName) {
   return verified ? `Credited to ${partnerName || "partner"}` : "Tracked";
+}
+
+// Record the PURCHASE# entitlement row for a verified subscription, independent
+// of affiliate attribution. attributePurchase only writes a PURCHASE# row when
+// a valid resolutionToken (a code) is present; a NORMAL (non-code) sub would
+// otherwise persist nothing, so /entitlement-token (readLatestEntitlement)
+// could never reflect it. This is the idempotent, attribution-agnostic write
+// for the entitlement read path (§4). Best-effort: never throws to the caller.
+//
+// Idempotent on SK. If attributePurchase already wrote a richer row for the
+// same txn (code path), the conditional fails and we leave that row intact.
+async function recordEntitlementPurchase({
+  subjectId,
+  platform,
+  txnOrOriginalId,
+  productId,
+  expiresAt,
+  environment,
+  appAccountToken,
+}) {
+  try {
+    if (!subjectId || !txnOrOriginalId) return false;
+    const obfHash = sha256Hex(subjectId);
+    const res = await putPurchase({
+      PK: `SUBJECT#${subjectId}`,
+      SK: `PURCHASE#${platform}#${txnOrOriginalId}`,
+      GSI1PK: obfHash,
+      GSI1SK: `PURCHASE#${platform}#${txnOrOriginalId}`,
+      productId: productId ?? null,
+      code: null,
+      partnerId: null,
+      offerApplied: false,
+      offerType: null,
+      offerIdentifier: null,
+      price: null,
+      currency: null,
+      environment: environment ?? null,
+      obfHash,
+      appAccountToken: appAccountToken ?? null,
+      expiresAt: expiresAt ?? null,
+      verifiedAt: new Date().toISOString(),
+    });
+    return res.written === true;
+  } catch (err) {
+    console.error("[codes] recordEntitlementPurchase failed (non-fatal):", err.message);
+    return false;
+  }
 }
 
 // Renewal ledger credit. Best-effort, idempotent. Returns true if a row was
@@ -689,7 +747,10 @@ async function handleCodeResolve(body, { secrets, json, acceptLanguage, sourceIp
     const appleOfferId = meta.appleOfferIdentifier || null;
     const googleOfferId = meta.googleOfferId || null;
 
-    // 5) Mint token.
+    // 5) Mint token. The registry is the source of truth for payout share;
+    // echo it into the token only for affiliate-class codes (a pure discount
+    // has no revenue share), so attributePurchase can credit the ledger
+    // without re-reading the registry.
     const token = mintResolutionToken(
       {
         subjectId,
@@ -700,6 +761,7 @@ async function handleCodeResolve(body, { secrets, json, acceptLanguage, sourceIp
         appleOfferId,
         googleOfferId,
         registryVersion: meta.registryVersion ?? null,
+        revenueSharePct: isAffiliate ? meta.revenueSharePct ?? null : null,
       },
       hmac,
       kid
@@ -860,6 +922,7 @@ module.exports = {
   readLatestEntitlement,
   // flows
   attributePurchase,
+  recordEntitlementPurchase,
   creditRenewal,
   // rate limit
   rateLimitAllow,
