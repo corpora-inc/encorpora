@@ -476,8 +476,16 @@ export default function App() {
     // Exiting any experience returns to the Home hub (which is always mounted
     // underneath the overlay). No more dumping the user into Settings.
     const onExit = () => {
+      // Normal, user-initiated pack exit is a natural boundary to nudge the
+      // OS-native review prompt. Best-effort + fire-and-forget: we do NOT await
+      // it and it never gates the navigation. The rating store applies a soft
+      // local backstop (minimum engagement + long cooldown); the OS is the real
+      // throttle and may show nothing. This fires only on `corpan:exit` (a clean
+      // exit) — never on a paywall dismissal, an error exit, or pack teardown.
+      // `setActiveGame(null)` runs first so the prompt never races the UI.
       setActiveGame(null);
       updateGameParam(null);
+      useRatingStore.getState().maybeRequestNativeReview();
     };
     window.addEventListener("corpan:exit", onExit as EventListener);
     return () => window.removeEventListener("corpan:exit", onExit as EventListener);

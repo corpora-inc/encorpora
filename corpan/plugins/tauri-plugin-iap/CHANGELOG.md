@@ -10,6 +10,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **`request_review` command — OS-native in-app review prompt.** Routes
+  through the same plugin seam as the rest of the store integration. iOS calls
+  StoreKit `SKStoreReviewController.requestReview(in:)` (scene-based, with the
+  legacy `requestReview()` fallback); Android runs the Google Play In-App
+  Review flow (`ReviewManager.requestReviewFlow` → `launchReviewFlow`, new
+  `com.google.android.play:review` dependency). macOS / Windows / Linux resolve
+  as a clean no-op. The OS is the throttle (iOS ~3×/year) and may show nothing;
+  the call is fire-and-forget and never gates anything. Exposed in `guest-js`
+  as `requestReview()`.
+
 ## [0.8.2] - 2026-03 — IAP rewrite for App Review (Corpán 0.11.7)
 
 ### Changed

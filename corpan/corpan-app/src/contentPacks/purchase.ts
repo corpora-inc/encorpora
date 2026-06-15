@@ -1068,6 +1068,30 @@ export async function presentAppleOfferRedeemSheet(opts: {
   return false
 }
 
+/**
+ * Ask the OS to surface its native in-app review prompt — iOS StoreKit
+ * `SKStoreReviewController.requestReview(in:)` / Android Google Play In-App
+ * Review (`ReviewManager`). Routed through the same `tauri-plugin-iap` seam as
+ * the rest of our store integration.
+ *
+ * The OS is the throttle: iOS shows the prompt at most ~3×/year, Play shows its
+ * card on its own cadence, and neither tells us whether anything was actually
+ * displayed. So this is intentionally fire-and-forget — it NEVER gates any
+ * functionality, never shows our own "rate us?" modal as a precondition, and
+ * never throws into the caller. Safe to call on a natural boundary (pack exit).
+ */
+export async function requestNativeReview(): Promise<void> {
+  if (!isTauriRuntime()) return
+  try {
+    // FROZEN command name + (empty) arg shape — mirrors the redeem-sheet seam.
+    await invoke("plugin:iap|request_review")
+  } catch (err) {
+    // Desktop/dev builds without the command, or a transient native failure.
+    // Never surface to the user — the review prompt is always best-effort.
+    console.debug("[purchase] request_review unavailable:", err)
+  }
+}
+
 export async function refreshEntitlementToken(): Promise<EntitlementTokenResponse> {
   const urlBase = getVerifyUrl()
   const subjectId = getCorpanSubjectId()

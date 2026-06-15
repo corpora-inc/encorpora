@@ -189,4 +189,13 @@ impl<R: Runtime> Iap<R> {
         )
         .into())
     }
+
+    pub async fn request_review(&self) -> crate::Result<()> {
+        // The native in-app review sheet is wired for iOS + Android (the App
+        // Store / Play targets). On macOS there is no equivalent in-app sheet
+        // we present today, so this resolves as a clean no-op rather than an
+        // error — the host fires it best-effort on pack exit and must never see
+        // a rejection bubble up as a console error in dev/desktop builds.
+        Ok(())
+    }
 }

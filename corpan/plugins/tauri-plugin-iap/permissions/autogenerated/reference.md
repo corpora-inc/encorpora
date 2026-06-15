@@ -14,6 +14,7 @@ Default permissions for the plugin
 - `allow-acknowledge-purchase`
 - `allow-get-product-status`
 - `allow-present-offer-code-redeem-sheet`
+- `allow-request-review`
 
 ## Permission Table
 
@@ -254,6 +255,32 @@ Enables the remove_listener command without any pre-configured scope.
 <td>
 
 Denies the remove_listener command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`iap:allow-request-review`
+
+</td>
+<td>
+
+Enables the request_review command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`iap:deny-request-review`
+
+</td>
+<td>
+
+Denies the request_review command without any pre-configured scope.
 
 </td>
 </tr>

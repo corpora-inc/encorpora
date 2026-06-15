@@ -560,6 +560,27 @@ class IapPlugin: Plugin {
         }
     }
 
+    // MARK: - requestReview
+
+    /// Request the OS-native in-app review prompt (StoreKit
+    /// `SKStoreReviewController`). The OS itself throttles how often this is
+    /// actually shown (~3×/year) and may show nothing — the call is always a
+    /// best-effort nudge, never gated and never guaranteed to display. We
+    /// resolve as soon as the request has been made.
+    ///
+    /// Prefers the scene-based `requestReview(in:)` (iOS 14+), falling back to
+    /// the deprecated `requestReview()` when no active window scene is found.
+    @objc public func requestReview(_ invoke: Invoke) async throws {
+        await MainActor.run {
+            if #available(iOS 14.0, *), let scene = Self.activeWindowScene() {
+                SKStoreReviewController.requestReview(in: scene)
+            } else {
+                SKStoreReviewController.requestReview()
+            }
+            invoke.resolve()
+        }
+    }
+
     /// Find the foreground-active `UIWindowScene` to present StoreKit sheets in.
     @MainActor
     private static func activeWindowScene() -> UIWindowScene? {
@@ -723,6 +744,11 @@ func initPlugin() -> Plugin {
             }
             @objc func presentOfferCodeRedeemSheet(_ invoke: Invoke) {
                 invoke.reject("NOT_ENTITLED: IAP requires iOS 15.0 or later")
+            }
+            @objc func requestReview(_ invoke: Invoke) {
+                // The review prompt is best-effort; on a pre-iOS-15 device we
+                // simply resolve without showing anything.
+                invoke.resolve()
             }
         }
         return DummyPlugin()

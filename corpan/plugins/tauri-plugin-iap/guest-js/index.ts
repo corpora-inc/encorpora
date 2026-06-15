@@ -428,6 +428,31 @@ export async function presentOfferCodeRedeemSheet(): Promise<void> {
 }
 
 /**
+ * Request the OS-native in-app review prompt.
+ *
+ * On iOS this calls StoreKit's `SKStoreReviewController.requestReview(in:)`;
+ * on Android it runs the Google Play In-App Review flow
+ * (`ReviewManager.requestReviewFlow` → `launchReviewFlow`). On macOS / Windows /
+ * Linux / desktop dev builds it resolves as a clean no-op.
+ *
+ * The OS is the real throttle: iOS shows the prompt at most ~3×/year, and Play
+ * shows its card on its own cadence (and may show nothing). Neither platform
+ * tells the app whether a prompt was actually displayed, so this resolves once
+ * the request has been made — treat it as a fire-and-forget best-effort nudge,
+ * never gate any functionality on it, and never await-block UI/navigation on it.
+ *
+ * @returns Promise that resolves once the review request has been made
+ * @example
+ * ```typescript
+ * // Best-effort, fire-and-forget on a natural boundary (e.g. pack exit):
+ * void requestReview().catch(() => {});
+ * ```
+ */
+export async function requestReview(): Promise<void> {
+  return await invoke<void>("plugin:iap|request_review");
+}
+
+/**
  * Listen for purchase updates.
  * This event is triggered when a purchase state changes.
  *

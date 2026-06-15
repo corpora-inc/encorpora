@@ -5,6 +5,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Low-RAM OOM crash hardening (native `ggml_graph_compute_thread` SIGSEGV).**
+  Allocating the ~2.5 GB model plus a 4096-token KV/compute buffer could OOM
+  *inside* ggml's CPU matmul on memory-constrained devices — an uncatchable
+  native segfault that kills the app. Three guards now prevent it: (1) `load`
+  refuses below ~4 GB total RAM (`physical_total_mb()` from `/proc/meminfo`
+  MemTotal on Android; `None` ⇒ no gate elsewhere) → `InsufficientMemory`;
+  (2) the context length scales to headroom — `ctx_for_memory()` drops `n_ctx`
+  from 4096 to 2048 when under ~2 GB is allocatable at session creation,
+  halving the KV/compute footprint; (3) Android `device_memory_mb()` now reports
+  real MemAvailable (was `None`), so `status()` and the ctx sizing have a true
+  signal. iOS keeps its existing jetsam preflight; desktop is unchanged.
+
 ### Changed
 - **Token streaming is coalesced (Android ANR fix).** The actor emitted one
   `llm-token` IPC event per token; on Android every event marshals to the WebView

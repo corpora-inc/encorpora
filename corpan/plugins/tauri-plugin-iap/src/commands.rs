@@ -58,3 +58,8 @@ pub(crate) async fn present_offer_code_redeem_sheet<R: Runtime>(
 ) -> Result<()> {
     app.iap().present_offer_code_redeem_sheet().await
 }
+
+#[command]
+pub(crate) async fn request_review<R: Runtime>(app: AppHandle<R>) -> Result<()> {
+    app.iap().request_review().await
+}

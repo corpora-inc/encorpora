@@ -10,6 +10,7 @@ import app.tauri.plugin.JSObject
 import app.tauri.plugin.Plugin
 import app.tauri.plugin.Invoke
 import com.android.billingclient.api.*
+import com.google.android.play.core.review.ReviewManagerFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -380,6 +381,37 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
         // app, and offer codes flow through the in-app code field + offer
         // token (handled elsewhere). Surface a clear unsupported error.
         invoke.reject("NOT_ENTITLED: Offer code redemption sheet is not supported on Android")
+    }
+
+    @Command
+    fun requestReview(invoke: Invoke) {
+        // Google Play In-App Review. Play itself throttles how often the card
+        // is actually shown (and may show nothing) — this is a best-effort
+        // nudge, never gated. We resolve as soon as the flow has completed
+        // (or fails), regardless of whether a card was displayed; the API
+        // intentionally gives no signal about that.
+        try {
+            val manager = ReviewManagerFactory.create(activity)
+            manager.requestReviewFlow().addOnCompleteListener { request ->
+                if (request.isSuccessful) {
+                    manager.launchReviewFlow(activity, request.result)
+                        .addOnCompleteListener {
+                            // Always resolve: Play never tells us if a card was
+                            // shown, and the user must never be blocked on it.
+                            invoke.resolve()
+                        }
+                } else {
+                    // No review flow available (e.g. not installed from Play,
+                    // quota exhausted). Resolve quietly — the host fires this
+                    // best-effort on pack exit.
+                    Logger.debug(TAG, "requestReviewFlow not available: ${request.exception?.message}")
+                    invoke.resolve()
+                }
+            }
+        } catch (e: Exception) {
+            Logger.debug(TAG, "requestReview threw: ${e.message}")
+            invoke.resolve()
+        }
     }
 
     override fun onPurchasesUpdated(billingResult: BillingResult, purchases: List<Purchase>?) {

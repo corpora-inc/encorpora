@@ -588,6 +588,12 @@ impl<R: Runtime> Iap<R> {
             }),
         ))
     }
+
+    pub async fn request_review(&self) -> crate::Result<()> {
+        // No native in-app review sheet wired on Windows — resolve cleanly so
+        // the host's best-effort pack-exit trigger never surfaces an error.
+        Ok(())
+    }
 }
 
 #[cfg(test)]

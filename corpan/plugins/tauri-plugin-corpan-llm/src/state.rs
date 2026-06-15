@@ -116,6 +116,19 @@ impl LlmState {
 
     /// Resolve the GGUF from the installed base pack and ask the actor to load it.
     pub async fn load_model(&self, app: AppHandle<tauri::Wry>, args: LoadArgs) -> Result<()> {
+        // Device-capability floor. The host (hostApi.ts) already gates load on
+        // total RAM, but a pack could call the command directly — and a failed
+        // allocation inside ggml is an uncatchable native SIGSEGV, so we refuse
+        // here too. `physical_total_mb()` is Android-only (MemTotal); `None`
+        // elsewhere means "can't measure → don't block" (iOS keeps its own
+        // jetsam preflight in the load path below).
+        const MIN_PHYSICAL_MB: u64 = 4000; // ~4 GB total RAM for the 4B model.
+        if let Some(total) = physical_total_mb() {
+            if total < MIN_PHYSICAL_MB {
+                return Err(Error::InsufficientMemory);
+            }
+        }
+
         let app_data = app
             .path()
             .app_data_dir()
@@ -271,8 +284,9 @@ struct ChatSession {
 /// is dropped before `model`.
 fn new_session(backend: &LlamaBackend, model: &LlamaModel) -> Result<ChatSession> {
     let threads = perf_core_count();
+    let n_ctx = ctx_for_memory();
     let ctx_params = LlamaContextParams::default()
-        .with_n_ctx(Some(NonZeroU32::new(DEFAULT_CTX).unwrap()))
+        .with_n_ctx(Some(NonZeroU32::new(n_ctx).unwrap()))
         .with_n_threads(threads)
         .with_n_threads_batch(threads);
     let ctx = model
@@ -286,6 +300,20 @@ fn new_session(backend: &LlamaBackend, model: &LlamaModel) -> Result<ChatSession
         cached: Vec::new(),
         threads,
     })
+}
+
+/// Pick the KV-cache context length for THIS device. The KV cache and compute
+/// buffers scale with `n_ctx`; a full 4096 on top of the ~2.5 GB model is what
+/// tips memory-constrained devices into the OOM-inside-ggml segfault. We size it
+/// off the headroom available at session-creation time (the model is already
+/// resident by then, so this reflects what's truly left). Falls back to the full
+/// context where we can't measure (desktop/`None`).
+fn ctx_for_memory() -> u32 {
+    match device_memory_mb() {
+        // < ~2 GB allocatable left → halve the KV/compute footprint.
+        Some(mb) if mb < 2000 => 2048,
+        _ => DEFAULT_CTX,
+    }
 }
 
 /// Length of the longest common prefix of two token slices.
@@ -881,5 +909,33 @@ fn device_memory_mb() -> Option<u64> {
 
 #[cfg(target_os = "android")]
 fn device_memory_mb() -> Option<u64> {
+    // MemAvailable = the kernel's estimate of how much can be allocated right now
+    // without swapping — the Android analog of iOS `os_proc_available_memory`, and
+    // what actually predicts an OOM when we allocate the KV/compute buffers.
+    meminfo_mb("MemAvailable:")
+}
+
+/// Total physical RAM in MB (Android: `/proc/meminfo` MemTotal). Used as the
+/// stable device-capability floor for the load self-guard; `None` elsewhere.
+#[cfg(target_os = "android")]
+fn physical_total_mb() -> Option<u64> {
+    meminfo_mb("MemTotal:")
+}
+#[cfg(not(target_os = "android"))]
+fn physical_total_mb() -> Option<u64> {
+    None
+}
+
+/// Parse a `kB` field out of `/proc/meminfo` and return it in MB.
+#[cfg(target_os = "android")]
+fn meminfo_mb(key: &str) -> Option<u64> {
+    let s = std::fs::read_to_string("/proc/meminfo").ok()?;
+    for line in s.lines() {
+        if let Some(rest) = line.strip_prefix(key) {
+            // e.g. "MemAvailable:    1234567 kB"
+            let kb: u64 = rest.split_whitespace().next()?.parse().ok()?;
+            return Some(kb / 1024);
+        }
+    }
     None
 }

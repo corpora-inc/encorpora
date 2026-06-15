@@ -11,7 +11,7 @@ import { createVoiceTTS } from "@/util/speak"
 import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
-import { useRatingStore, RATING_CRITERIA } from "@/store/rating"
+import { useRatingStore } from "@/store/rating"
 import { useEntitlementStore } from "@/store/entitlements"
 import { usePaywallStore } from "@/store/paywall"
 import type { PaywallSurface } from "@/store/paywall"
@@ -391,6 +391,28 @@ export const createHostApi = (packId?: string): HostApi => {
       }
     },
     load: async (args) => {
+      // RAM preflight. The on-device tutor is a ~2.5 GB GGUF + a multi-hundred-MB
+      // KV/compute buffer. On sub-4 GB Android devices that allocation OOMs
+      // *inside* ggml's CPU matmul, which surfaces as a native SIGSEGV in
+      // `ggml_graph_compute_thread` — uncatchable from Rust, it kills the whole
+      // app. So refuse up front on low-RAM devices; the pack then degrades to
+      // "no tutor" rather than crashing. The stt plugin is the device-memory
+      // oracle (physicalMemoryMB = total RAM); if it's absent (desktop dev) we
+      // read 0 and DON'T gate. iOS keeps its own jetsam preflight in the plugin.
+      const MIN_LLM_PHYSICAL_MB = 4000 // ~4 GB total RAM floor for the 4B model.
+      let physicalMB = 0
+      try {
+        const s = await invoke<SttStatus>("plugin:stt|get_status")
+        physicalMB = s.physicalMemoryMB ?? 0
+      } catch {
+        // Oracle absent (e.g. desktop dev) → can't measure, proceed.
+      }
+      if (physicalMB > 0 && physicalMB < MIN_LLM_PHYSICAL_MB) {
+        throw llmError({
+          code: "device-unsupported",
+          message: `on-device tutor needs ~${MIN_LLM_PHYSICAL_MB} MB RAM; device has ${physicalMB} MB`,
+        })
+      }
       // Tauri wraps command params under the param name (`args: LoadArgs`),
       // so the payload must be `{ args: {...} }` (same convention as stt).
       try {
@@ -1148,32 +1170,13 @@ export const createHostApi = (packId?: string): HostApi => {
       })
     },
     showRatingPrompt: () => {
-      // Host owns the gating: <RatingPrompt /> only renders once the rating
-      // store's criteria (utterance counts) are met. We nudge the counters to
-      // the eligibility thresholds WITHOUT bypassing them — if the user already
-      // rated / dismissed (or has exhausted remind-laters), nothing shows. This
-      // is the documented, pack-exit-friendly trigger.
-      const r = useRatingStore.getState()
-      if (
-        r.hasRated ||
-        r.hasDismissed ||
-        r.remindMeLaterCount >= RATING_CRITERIA.MAX_REMIND_COUNT
-      ) {
-        return
-      }
-      // incrementUtteranceCount() raises BOTH counters by one, so a bounded loop
-      // of at most MIN_UTTERANCES_BEFORE_FIRST_PROMPT iterations reaches both
-      // thresholds. The component's own `show` predicate is the final gate.
-      for (let i = 0; i < RATING_CRITERIA.MIN_UTTERANCES_BEFORE_FIRST_PROMPT; i++) {
-        const s = useRatingStore.getState()
-        if (
-          s.utterancesSinceLastPrompt >= RATING_CRITERIA.UTTERANCES_BETWEEN_PROMPTS &&
-          s.totalUtteranceCount >= RATING_CRITERIA.MIN_UTTERANCES_BEFORE_FIRST_PROMPT
-        ) {
-          break
-        }
-        s.incrementUtteranceCount()
-      }
+      // The OS-native in-app review sheet (iOS StoreKit / Android Play In-App
+      // Review) is the canonical "rate us" surface — never our own modal as a
+      // precondition, never gating any functionality. The OS is the real
+      // throttle (iOS ~3×/year, and it may show nothing); the rating store adds
+      // only a soft local backstop (minimum engagement + a long cooldown).
+      // Fire-and-forget; this returns immediately.
+      useRatingStore.getState().maybeRequestNativeReview()
     },
     phrasePacks: {
       getInstalled: () => {

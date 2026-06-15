@@ -7,7 +7,31 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **GPU-blur ANRs on budget Android (frosted glass gated by platform).**
+  `backdrop-filter: blur` is a per-frame GPU render pass; on the Mali drivers
+  common to low-end Android it compiles/runs shaders on the frame critical path,
+  blocking the WebView RenderThread and, through it, the main thread — a
+  documented "Unresponsive GPU" ANR. The frosted-glass surfaces (home + settings
+  sticky headers, the update/rating scrims) now fall back to a solid translucent
+  background on Android only, via a new `glass()` helper. iPad / iPhone / macOS /
+  Windows keep the blur unchanged (those GPUs render it cheaply), so there is no
+  visual change on Apple or desktop.
+- **On-device tutor no longer crashes low-RAM Android (OOM → native SIGSEGV).**
+  Loading the ~2.5 GB tutor model plus its KV/compute buffers could OOM *inside*
+  ggml's CPU matmul, surfacing as an uncatchable native crash in
+  `ggml_graph_compute_thread`. `host.llm.load` now refuses on devices below
+  ~4 GB total RAM (read from the stt memory oracle), so the pack degrades to
+  "no tutor" instead of crashing. iOS/desktop are unaffected.
+
 ### Added
+- **Native in-app ratings on pack exit.** When you leave a pack the app now
+  asks the OS to surface its own review prompt (iOS App Store / Android Play
+  In-App Review) via `tauri-plugin-iap`. It is best-effort and fire-and-forget:
+  the OS throttles it (iOS shows it at most a few times a year and may show
+  nothing), nothing is ever gated on rating, and we never show our own "rate
+  us?" modal as a precondition. A soft local backstop (minimum engagement plus
+  a long cooldown) keeps us from asking the OS too often.
 - **Free-trial / intro-offer framing in the subscription card.** When the
   store attaches an introductory offer to a plan (e.g. a 7-day free trial),
   the subscription card now surfaces it: "{period} free, then {price}/{period}"

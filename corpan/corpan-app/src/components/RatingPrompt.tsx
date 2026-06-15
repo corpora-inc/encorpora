@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useRatingStore, RATING_CRITERIA as CRITERIA } from "@/store/rating";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { detectPlatform } from "@/lib/getPlatform";
+import { glass } from "@/util/browser";
 
 const FALLBACK = "https://github.com/corpora-inc/encorpora";
 const GITHUB_ISSUES = "https://github.com/corpora-inc/encorpora/issues";
@@ -94,7 +95,7 @@ export function RatingPrompt() {
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className="fixed inset-0 bg-black/25 backdrop-blur-sm z-100"
+						className={`fixed inset-0 z-100 ${glass("bg-black/25 backdrop-blur-sm", "bg-black/45")}`}
 						onClick={handleRemindLater}
 					/>
 
