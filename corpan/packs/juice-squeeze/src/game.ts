@@ -2183,7 +2183,16 @@ export const createJuiceSqueeze = (
   }
 
   // Create word blocks from loaded utterance
-  const createWordBlocks = async () => {
+  const createWordBlocks = async (opts?: { initial?: boolean }) => {
+    // Hard daily cap: loading a NEW phrase to solve is the metered action.
+    // Once the free user has reached JUICE_DAILY_LIMIT completed phrases they
+    // get EXACTLY that many — re-show the accomplishment-lock overlay instead
+    // of loading another. The initial mount load is exempt (so a returning,
+    // already-capped user still sees the board), and subscribers never block.
+    if (!opts?.initial && paywallGate.isBlocked()) {
+      paywallGate.requestDailyLock()
+      return
+    }
     // Clear existing blocks
     clearWordBlocks()
     useGameStore.getState().setWon(false)
@@ -2859,8 +2868,8 @@ export const createJuiceSqueeze = (
     updateAllBlockTexts()
   }
 
-  // Load and create word blocks
-  createWordBlocks().catch((err) => {
+  // Load and create word blocks (initial mount — never gated by the daily cap)
+  createWordBlocks({ initial: true }).catch((err) => {
     console.error("[juice-squeeze] Failed to load utterances:", err)
   })
 

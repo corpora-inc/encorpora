@@ -2640,7 +2640,17 @@ const HANZI_DAILY_NAG_EVERY = 5
       wheelState.accumulator = 0;
       logNav("next");
       if (state.historyIndex >= 0 && state.historyIndex < state.history.length - 1) {
+        // Forward within existing history is review — never gated.
         await goToHistoryIndex(state.historyIndex + 1);
+        return;
+      }
+      // Hard daily cap: loading a brand-new character is the metered action.
+      // Once the free user has reached HANZI_DAILY_LIMIT completed characters
+      // they get EXACTLY that many — re-show the accomplishment-lock overlay
+      // instead of loading another. Subscribers never block (isBlocked reads
+      // the host-injected Plus globals).
+      if (paywallGate.isBlocked()) {
+        paywallGate.requestDailyLock();
         return;
       }
       await loadCharacter();

@@ -530,6 +530,14 @@ export function MainExperience() {
     };
 
     const handleNext = () => {
+        // Hard daily cap: a blocked free user gets EXACTLY the daily limit of
+        // forward advances, then is stopped. Re-show the accomplishment-lock
+        // overlay and do NOT advance. Subscribers never block (isBlocked reads
+        // the live entitlement). Backward review (handlePrev) is never gated.
+        if (phraseGateRef.current?.isBlocked()) {
+            phraseGateRef.current.requestDailyLock();
+            return;
+        }
         // One forward phrase advance — count it toward the daily quota (fires the
         // soft nag / accomplishment lock internally; no-op for subscribers).
         // Backward review (handlePrev) is never counted.
@@ -541,6 +549,18 @@ export function MainExperience() {
             void resolveCurrent(target, sources[index + 1] ?? "base");
             return;
         }
+        void fetchRandomEntry();
+    };
+
+    // The "Random sentence" button is also a forward advance to a NEW phrase —
+    // gate + count it exactly like handleNext, so the daily wall can't be
+    // side-stepped by tapping Random instead of Next.
+    const handleRandom = () => {
+        if (phraseGateRef.current?.isBlocked()) {
+            phraseGateRef.current.requestDailyLock();
+            return;
+        }
+        phraseGateRef.current?.note();
         void fetchRandomEntry();
     };
 
@@ -665,7 +685,7 @@ export function MainExperience() {
                         <Button onClick={handlePrev} variant="ghost" size="lg" aria-label="Previous sentence" disabled={index <= 0}>
                             <ChevronLeftIcon />
                         </Button>
-                        <Button onClick={fetchRandomEntry} variant="outline" size="lg" aria-label="Random sentence">
+                        <Button onClick={handleRandom} variant="outline" size="lg" aria-label="Random sentence">
                             <RefreshIcon />
                         </Button>
                         <Button onClick={handleNext} variant="ghost" size="lg" aria-label="Next sentence" disabled={ids.length === 0}>

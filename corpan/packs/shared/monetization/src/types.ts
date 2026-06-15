@@ -168,6 +168,14 @@ export interface PaywallGate {
    * Always returns the next local midnight (independent of mode/limit).
    */
   resetAt(): string
+  /**
+   * Re-show the gate-v2 daily-lock overlay (re-dispatch `corpan:daily-locked`).
+   * For tap/advance surfaces: when a blocked free user tries the metered action
+   * again, call this to bring the accomplishment-lock overlay back. Bypasses the
+   * once-per-day re-spam guard that `note()` uses. No-op for subscribers, timed
+   * gates, and gates without a `dailyLimit`.
+   */
+  requestDailyLock(): void
   /** Reset persisted + in-memory counters (e.g. on subscribe or manual clear). */
   reset(): void
   /** Detach listeners / drop references. Safe to call multiple times. */

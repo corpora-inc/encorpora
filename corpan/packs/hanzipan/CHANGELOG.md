@@ -10,6 +10,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Daily cap now HARD-enforces.** The gate counted completed characters but
+  never blocked at the cap. Advancing to a brand-new character now checks
+  `isBlocked()` first: at the cap it re-shows the daily-lock overlay
+  (`requestDailyLock()`) instead of loading another — a hard wall until local
+  midnight or subscribe. Reviewing earlier characters (history nav) is never
+  gated; subscribers never block.
+
 ## [0.6.2] - 2026-06-12 — Fix iPad: HanziWriter "Invalid color" + viewport-fit
 
 ### Fixed

@@ -1054,8 +1054,16 @@ export const mountGame = (
     micBtn.disabled = false
     if (next === "idle") {
       micIcon.innerHTML = "●"
-      micLabel.textContent = modelReady ? tt("holdToSpeak") : tt("loadingModel")
-      micBtn.disabled = !modelReady || !currentPhrase
+      // Reflect the hard daily cap in the idle control (mirrors tutomaton's
+      // disabled composer): when blocked, the mic is disabled — tapping it
+      // re-shows the lock via startRecording's guard. Subscribers never block.
+      const capped = paywallGate.isBlocked()
+      micLabel.textContent = capped
+        ? tt("dailyDone")
+        : modelReady
+          ? tt("holdToSpeak")
+          : tt("loadingModel")
+      micBtn.disabled = !modelReady || !currentPhrase || capped
     } else if (next === "recording") {
       micBtn.classList.add("recording")
       micIcon.innerHTML = "■"
@@ -1769,6 +1777,15 @@ export const mountGame = (
 
   const startRecording = async () => {
     if (!currentPhrase || !modelReady) return
+    // Hard daily cap: starting a new round is the metered action. Once the free
+    // user has reached PARLO_DAILY_LIMIT scored rounds they get EXACTLY that
+    // many — re-show the accomplishment-lock overlay and refuse to record
+    // another. Subscribers never block (isBlocked reads the host-injected Plus).
+    if (paywallGate.isBlocked()) {
+      paywallGate.requestDailyLock()
+      setUiState("idle")
+      return
+    }
     clearError()
     clearResult()
     const sessionId = newSessionId()

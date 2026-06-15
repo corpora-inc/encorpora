@@ -24,6 +24,7 @@ export type I18nKey =
   | "scoring"
   | "bootLoading"
   | "swipeHint"
+  | "dailyDone"
   // ── Practice results / feedback chips ──
   | "resultTryAgain"
   | "resultCouldntHear"
@@ -131,6 +132,7 @@ const en: Dict = {
   scoring: "Scoring…",
   bootLoading: "Loading…",
   swipeHint: "← swipe to navigate →",
+  dailyDone: "Done for today",
   resultTryAgain: "Try again",
   resultCouldntHear: "🎙️ Couldn't hear you",
   resultPerfect: "✨ Perfect!",

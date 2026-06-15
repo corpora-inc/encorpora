@@ -14,6 +14,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Daily cap now HARD-enforces (solo + multiplayer).** The shared daily gate
+  counted scored rounds but never blocked at the cap. Starting a new round now
+  checks `isBlocked()` first: at the cap it re-shows the daily-lock overlay
+  (`requestDailyLock()`), refuses to record, and disables the mic with a "Done
+  for today" label — a hard wall until local midnight or subscribe. Solo and
+  multiplayer share one per-day count; subscribers never block.
+
 ## [0.7.0] - 2026-05-20 — Scoring overlay + phrase-pack sourcing
 
 Requires `tauri-plugin-stt >= 0.5.0` and Corpán app `>= 0.15.3`.

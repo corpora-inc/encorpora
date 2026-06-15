@@ -9,6 +9,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Daily cap now HARD-enforces.** The gate counted completed phrases but never
+  blocked at the cap. Loading a new phrase to solve now checks `isBlocked()`
+  first: at the cap it re-shows the daily-lock overlay (`requestDailyLock()`)
+  instead of dealing another phrase — a hard wall until local midnight or
+  subscribe. Initial mount is exempt; subscribers never block.
+
 ### Changed
 - Upgraded Babylon.js **6.48 → 9.11** (latest stable). No source changes
   required; typecheck + build clean.

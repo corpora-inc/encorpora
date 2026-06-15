@@ -1933,6 +1933,14 @@ export const createHoverRunner = (
       answerDuration + speakGapMs + promptDuration + 250
     )
     setTransitionTimeout(() => {
+      // Hard daily cap: the phrase just celebrated was the last one counted by
+      // note(). If the free user has now reached the cap, do NOT start the next
+      // round — re-show the accomplishment-lock overlay instead. Subscribers
+      // never block. They got EXACTLY HOVER_DAILY_LIMIT completed phrases.
+      if (paywallGate.isBlocked()) {
+        paywallGate.requestDailyLock()
+        return
+      }
       startNewRound()
     }, celebrationDelay + getSettings().postCelebrateMs)
   }

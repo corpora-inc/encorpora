@@ -8,6 +8,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Fixed
+- **Core phrase-flip now HARD-enforces the daily cap.** The daily quota counted
+  forward advances but never blocked at the limit, so the accomplishment-lock
+  overlay showed once and the user kept flipping unbounded. The "next phrase"
+  handler now checks `isBlocked()` before advancing: at the cap it re-shows the
+  daily-lock overlay (`requestDailyLock()`) and refuses to advance — a free user
+  gets exactly the daily limit of forward flips, then a hard wall until local
+  midnight or subscribe. The "Random sentence" button is also a forward advance,
+  so it is now gated + counted the same way (it previously bypassed the quota
+  entirely). Backward review is never gated; subscribers never block.
 - **GPU-blur ANRs on budget Android (frosted glass gated by platform).**
   `backdrop-filter: blur` is a per-frame GPU render pass; on the Mali drivers
   common to low-end Android it compiles/runs shaders on the frame critical path,

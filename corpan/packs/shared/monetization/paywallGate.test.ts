@@ -492,6 +492,33 @@ describe("createPaywallGate", () => {
       expect(gate.remaining()).toBe(Infinity)
     })
 
+    it("requestDailyLock() re-dispatches the overlay even after the per-day note() guard", () => {
+      const { gate, locks } = setup({
+        mode: "action",
+        limit: undefined,
+        dailyLimit: 2,
+        unitLabel: "phrases",
+      })
+      gate.note()
+      gate.note() // reaches cap → one lock
+      expect(locks).toHaveLength(1)
+      expect(gate.isBlocked()).toBe(true)
+      // A blocked user taps again: the surface calls requestDailyLock() to
+      // re-show the overlay. The note() per-day guard must NOT suppress this.
+      gate.requestDailyLock()
+      expect(locks).toHaveLength(2)
+      expect(locks[1]).toMatchObject({ doneToday: 2, limit: 2, unitLabel: "phrases" })
+    })
+
+    it("requestDailyLock() is a no-op for subscribers and non-daily gates", () => {
+      const sub = setup({ mode: "action", limit: undefined, dailyLimit: 1, isSubscribed: () => true })
+      sub.gate.requestDailyLock()
+      expect(sub.locks).toHaveLength(0)
+      const legacy = setup({ mode: "action", limit: 3 })
+      legacy.gate.requestDailyLock()
+      expect(legacy.locks).toHaveLength(0)
+    })
+
     it("merges config.detail into the daily-locked event", () => {
       const { gate, locks } = setup({
         mode: "action",

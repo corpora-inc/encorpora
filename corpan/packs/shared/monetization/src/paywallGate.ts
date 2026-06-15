@@ -253,6 +253,12 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
     if (typeof dailyLimit !== "number") return
     if (lockDay === state.day) return // already announced today
     lockDay = state.day
+    emitDailyLock(state)
+  }
+
+  /** Build + dispatch the daily-lock payload (no per-day guard). */
+  function emitDailyLock(state: GateState): void {
+    if (typeof dailyLimit !== "number") return
     const payload: DailyLockedDetail = {
       ...(extraDetail ?? {}),
       packId,
@@ -356,6 +362,17 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
 
     resetAt() {
       return new Date(nextLocalMidnight(now())).toISOString()
+    },
+
+    requestDailyLock() {
+      // Explicit re-show: a blocked free user tapped again. Re-dispatch the
+      // `corpan:daily-locked` overlay event regardless of the once-per-day
+      // `note()` guard (that guard only suppresses re-spam from the metering
+      // path, not a deliberate re-show on a blocked interaction). No-op for
+      // subscribers / non-daily gates.
+      if (disposed || isSubscribed()) return
+      if (typeof dailyLimit !== "number") return
+      emitDailyLock(readState())
     },
 
     reset() {
