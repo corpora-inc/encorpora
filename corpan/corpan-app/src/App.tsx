@@ -34,6 +34,7 @@ import { usePaywallStore, type PaywallSurface, type PaywallContext } from "@/sto
 import { useProgressStore } from "@/store/progress";
 import { SystemPackInstaller } from "@/components/SystemPackInstaller";
 import { useLandingStore } from "@/store/landing";
+import { trackGateHit } from "@/util/analytics";
 
 const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
 
@@ -294,7 +295,17 @@ export default function App() {
         bookId?: string;
         language?: string;
         theme?: string;
+        // Present only when the SHARED paywall gate (packs/shared/monetization)
+        // fired the request — user-initiated dispatches (Library "Unlock",
+        // reader EOF) omit these.
+        packId?: string;
+        reason?: string;
       }>).detail;
+      // Funnel: gate_hit — emit ONLY for genuine shared-gate fires (carry both
+      // packId + reason). Host owns this so packs need no analytics dependency.
+      if (detail?.packId && detail?.reason) {
+        trackGateHit(detail.packId, detail.surface ?? "other", detail.reason);
+      }
       usePaywallStore.getState().openPaywall({
         surface: (detail?.surface as PaywallSurface) ?? "other",
         bookTitle: detail?.bookTitle,

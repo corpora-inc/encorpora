@@ -3,6 +3,13 @@ import { type as osType } from "@tauri-apps/plugin-os"
 import { openUrl } from "@tauri-apps/plugin-opener"
 import { useEntitlementStore } from "@/store/entitlements"
 import type { SubscriptionPlan } from "@/store/entitlements"
+import {
+  trackSubscriptionPurchased,
+  trackTrialStarted,
+  trackSubscriptionRestored,
+  trackCodeResolved,
+  trackCodeRedeemed,
+} from "@/util/analytics"
 
 // ---------------------------------------------------------------------------
 // Types
@@ -967,6 +974,9 @@ export async function resolveCode(
     // Trust the server's own status field; a malformed body without a token is
     // treated as an error rather than silently accepted.
     if (data.status === "ok" && typeof data.resolutionToken === "string") {
+      // Funnel: code_resolved — the server (the only classifier) accepted the
+      // code. Low-cardinality classification + the platform mechanic to drive.
+      trackCodeResolved(data.classification, data.purchaseAction)
       return data
     }
     if (data.status === "error") return data
@@ -1150,6 +1160,17 @@ export async function purchaseAndVerify(
       expiresAt: null,
       autoRenew: true,
     })
+    // Funnel: subscription_purchased (+ trial_started when an explicit intro/
+    // offer path was used — Android offerToken signals the per-offer purchase).
+    // Emitted on PLATFORM confirmation (the source of truth), so it fires even
+    // if backend verification later fails. Code is the applied offer/affiliate.
+    const validCode =
+      options.affiliateCode &&
+      isAffiliateCodeFormatValid(normalizeAffiliateCode(options.affiliateCode))
+        ? normalizeAffiliateCode(options.affiliateCode)
+        : undefined
+    trackSubscriptionPurchased(plan, purchase.platform, validCode)
+    if (options.offerToken) trackTrialStarted(plan)
   } else {
     store.addPurchasedProduct(productId)
   }
@@ -1170,6 +1191,13 @@ export async function purchaseAndVerify(
       verification.error
     )
     return { verifyFailed: true }
+  }
+
+  // Funnel: code_redeemed — the server confirmed an affiliate/offer
+  // attribution write for this purchase (the authoritative redemption signal).
+  const attribution = verification.affiliateAttribution
+  if (attribution && (attribution.verified || attribution.locked)) {
+    trackCodeRedeemed(attribution.partnerName ?? "")
   }
 
   if (productType === "subs" && verification.expiresAt) {
@@ -1334,6 +1362,8 @@ export async function restoreAndSync(): Promise<{
           expiresAt: verification.expiresAt ?? null,
           autoRenew: true,
         })
+        // Funnel: subscription_restored — a prior subscription was re-verified.
+        trackSubscriptionRestored()
       } else if (verification.productId) {
         store.addPurchasedProduct(verification.productId)
       }

@@ -91,6 +91,7 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
     detail: extraDetail,
     isSubscribed = defaultIsSubscribed,
     requestPaywall = defaultRequestPaywall,
+    onFire,
     now = Date.now,
     storage = defaultStorage(),
   } = config
@@ -184,6 +185,14 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
       hardness,
     }
     requestPaywall(payload)
+    // Optional analytics observation — never let it break the paywall flow.
+    if (onFire) {
+      try {
+        onFire(payload)
+      } catch {
+        /* analytics must never affect gating */
+      }
+    }
   }
 
   return {

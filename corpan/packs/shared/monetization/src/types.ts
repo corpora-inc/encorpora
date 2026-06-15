@@ -64,6 +64,15 @@ export interface GateConfig {
   isSubscribed?: () => boolean
   /** Injected; default dispatches the `corpan:request-unlock` window event. */
   requestPaywall?: (detail: PaywallRequestDetail) => void
+  /**
+   * Optional analytics hook — called every time the gate fires the paywall,
+   * with the same detail that goes to `requestPaywall`. Host-agnostic: the main
+   * app emits `gate_hit` from its `corpan:request-unlock` listener (so packs need
+   * no analytics dep), but standalone/embedded hosts can observe fires here
+   * without parsing the window event. Optional + fully back-compat. Must not
+   * throw (the gate ignores any error).
+   */
+  onFire?: (detail: PaywallRequestDetail) => void
   /** Injected clock for tests. Default `Date.now`. */
   now?: () => number
   /** Injected storage for tests. Default `localStorage` (guarded). */

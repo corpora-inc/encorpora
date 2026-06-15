@@ -5,6 +5,8 @@ import {
   trackPackEntered,
   trackPackHeartbeat,
   trackPackExited,
+  trackPackEnter,
+  trackPackExit,
   getSessionSegmentCount,
 } from "@/util/analytics"
 
@@ -40,6 +42,8 @@ export function ContentPackOverlay({
     const enterLang = useSettingsStore.getState().languages[0] || ""
 
     trackPackEntered(id, enterLang)
+    // Funnel: pack_enter (top of the monetization funnel).
+    trackPackEnter(id)
 
     const interval = window.setInterval(() => {
       const currentSegments = getSessionSegmentCount()
@@ -55,6 +59,8 @@ export function ContentPackOverlay({
       const segmentsInPack = getSessionSegmentCount() - initialSegments
       const exitLang = useSettingsStore.getState().languages[0] || ""
       trackPackExited(id, exitLang, durationMs, segmentsInPack)
+      // Funnel: pack_exit with dwell time.
+      trackPackExit(id, durationMs)
     }
   }, [id])
 
