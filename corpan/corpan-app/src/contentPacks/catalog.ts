@@ -573,34 +573,71 @@ export const filterCatalogForApp = (
 ): CatalogGame[] => {
   const hostPlatform = host?.platform
   const hostOsVersion = host?.osVersion
-  return v3.packs
-    .filter((entry) => {
-      if (compareVersions(appVersion, entry.minAppVersion) < 0) return false
-      if (
-        entry.maxAppVersion &&
-        compareVersions(appVersion, entry.maxAppVersion) > 0
-      ) {
+  const passing = v3.packs.filter((entry) => {
+    if (compareVersions(appVersion, entry.minAppVersion) < 0) return false
+    if (
+      entry.maxAppVersion &&
+      compareVersions(appVersion, entry.maxAppVersion) > 0
+    ) {
+      return false
+    }
+    if (!devMode && entry.channel === "preview") return false
+    // Platform restriction. If a pack declares `platforms`, the host's
+    // platform must be in the list (e.g. Pronunciation Coach is iOS-
+    // only because it depends on WhisperKit / ANE). When the host
+    // platform is unknown (older app, web preview), be permissive
+    // rather than hide everything.
+    if (entry.platforms && entry.platforms.length > 0 && hostPlatform) {
+      if (!entry.platforms.includes(hostPlatform)) return false
+    }
+    // OS version gate — keeps users on too-old iOS / Android from
+    // installing packs that won't run. Skipped when host OS version
+    // isn't known.
+    if (entry.minOSVersion && hostOsVersion) {
+      if (compareVersions(hostOsVersion, entry.minOSVersion) < 0) {
         return false
       }
-      if (!devMode && entry.channel === "preview") return false
-      // Platform restriction. If a pack declares `platforms`, the host's
-      // platform must be in the list (e.g. Pronunciation Coach is iOS-
-      // only because it depends on WhisperKit / ANE). When the host
-      // platform is unknown (older app, web preview), be permissive
-      // rather than hide everything.
-      if (entry.platforms && entry.platforms.length > 0 && hostPlatform) {
-        if (!entry.platforms.includes(hostPlatform)) return false
-      }
-      // OS version gate — keeps users on too-old iOS / Android from
-      // installing packs that won't run. Skipped when host OS version
-      // isn't known.
-      if (entry.minOSVersion && hostOsVersion) {
-        if (compareVersions(hostOsVersion, entry.minOSVersion) < 0) {
-          return false
-        }
-      }
-      return true
-    })
+    }
+    return true
+  })
+
+  // De-duplicate by stable pack id. The catalog intentionally carries
+  // multiple entries with the SAME id for compatibility routing — e.g.
+  // pronunciation_coach ships a legacy iOS build (≤ 0.12.5), a current iOS
+  // build, and a current Android build. Disjoint [min, max] version ranges
+  // mean exactly one passes per app version, BUT per-platform variants
+  // overlap on version and are only separated by `platforms`. When the host
+  // platform is unknown (web preview, older Tauri, any host where
+  // `detectHost()` can't resolve it) the platform gate above is skipped, so
+  // BOTH the iOS and Android entries pass and the pack shows up two/three
+  // times in the listing. Collapse to one entry per id here — prefer an
+  // entry that explicitly targets the known host platform, then the highest
+  // pack version, so the chosen variant is the most specific + newest.
+  const bestById = new Map<string, CatalogV3Entry>()
+  for (const entry of passing) {
+    const current = bestById.get(entry.id)
+    if (!current) {
+      bestById.set(entry.id, entry)
+      continue
+    }
+    const matchesHost = (e: CatalogV3Entry) =>
+      !!hostPlatform &&
+      !!e.platforms?.length &&
+      e.platforms.includes(hostPlatform)
+    const entryMatches = matchesHost(entry)
+    const currentMatches = matchesHost(current)
+    if (entryMatches !== currentMatches) {
+      // A platform-specific match for the known host always wins.
+      if (entryMatches) bestById.set(entry.id, entry)
+      continue
+    }
+    // Otherwise keep the higher pack version (stable, deterministic tiebreak).
+    if (compareVersions(entry.version, current.version) > 0) {
+      bestById.set(entry.id, entry)
+    }
+  }
+
+  return [...bestById.values()]
     .map((entry) => ({
       id: entry.id,
       name: entry.name,

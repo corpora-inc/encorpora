@@ -18,12 +18,12 @@ config (`packId`, `dailyLimit`, `softNagEvery`, `unitLabel`, optional
 
 | surface             | packId               | dailyLimit | softNagEvery | unitLabel    | legacyKey         |
 | ------------------- | -------------------- | ---------- | ------------ | ------------ | ----------------- |
-| `phrase_flips`      | `corpan_app`         | 20         | 5            | `phrases`    | —                 |
-| `parlometron_daily` | `pronunciation_coach`| 15         | 5            | `rounds`     | —                 |
-| `hover_phrases`     | `hover-runner`       | 20         | 5            | `phrases`    | —                 |
-| `juice_phrases`     | `juice_squeeze`      | 20         | 5            | `phrases`    | —                 |
-| `hanzipan_chars`    | `hanzipan`           | 20         | 5            | `characters` | —                 |
-| `tutomaton_daily`   | `tutomaton`          | 20         | 5            | `messages`   | `tutomaton.quota` |
+| `phrase_flips`      | `corpan_app`         | 20         | 10           | `phrases`    | —                 |
+| `parlometron_daily` | `pronunciation_coach`| 10         | 0            | `phrases`    | —                 |
+| `hover_phrases`     | `hover-runner`       | 20         | 10           | `phrases`    | —                 |
+| `juice_phrases`     | `juice_squeeze`      | 20         | 10           | `phrases`    | —                 |
+| `hanzipan_chars`    | `hanzipan`           | 20         | 10           | `characters` | —                 |
+| `tutomaton_daily`   | `tutomaton`          | 20         | 10           | `messages`   | `tutomaton.quota` |
 
 **Remote config (built):** these are the baked defaults; a remote-config layer
 overrides them live without an app build. `getQuota` is the merge point. See

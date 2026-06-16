@@ -7,7 +7,28 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Soft-nag cadence relaxed 5 → 10.** Every daily-quota surface (phrase-flip,
+  hover-runner, juice-squeeze, hanzipan, tutomaton) now nags every 10 instead of
+  every 5 — so a free user gets a gentle reminder at 10 and the hard wall at 20,
+  rather than feeling poked too early. Parlometron keeps its no-nag model.
+  One-line change in the central `quotas.ts` registry.
+
 ### Fixed
+- **Paywall CTA reflects an entered code.** With a valid discount/redemption
+  code the primary button now reads "Redeem code" (routing through the
+  offer/redeem path) instead of always "Start Free Trial"; an unknown code keeps
+  the trial CTA and shows a gentle, muted inline note ("That code doesn't unlock
+  a discount.") rather than a harsh red error. Label is driven by the
+  `/code/resolve` result, so it reacts even on a dev build where the native
+  purchase can't complete. (Two new EN strings — `code.redeemCode`,
+  `code.notApplied` — pending the ×88 localization pass.)
+- **No more duplicate pack cards (e.g. ~3 Parlometrons).** `filterCatalogForApp`
+  mapped every surviving catalog entry to a card with no de-dup by pack id; the
+  published catalog intentionally carries multiple `pronunciation_coach` entries
+  (per-platform + a legacy build), and on a host with an unknown platform the
+  platform gate was skipped so several passed. The listing now de-dupes by stable
+  pack id (preferring the platform-matched entry, then highest version).
 - **Offline subscribers are never blocked.** Subscription state used to be
   in-memory only, so a Plus user opening the app offline (no way to live-verify)
   started as non-Plus and could hit a daily wall until they reconnected. The

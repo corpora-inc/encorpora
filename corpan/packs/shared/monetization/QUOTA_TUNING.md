@@ -15,12 +15,12 @@ retunes a live gate instantly (both directions, no reload).
 
 | Experience | Trigger | Free allowance / day | Wall |
 |---|---|---|---|
-| **Phrase Flip** (core app) | daily quota — only **new** phrases (Random / Next past the newest); back/forward review + TTS are unlimited | **20** new phrases · soft nag @5/10/15 | green-check lock |
-| **Tutomaton** | daily quota — messages sent | **20** messages · nag @5 | green-check lock |
+| **Phrase Flip** (core app) | daily quota — only **new** phrases (Random / Next past the newest); back/forward review + TTS are unlimited | **20** new phrases · soft nag @10 | green-check lock |
+| **Tutomaton** | daily quota — messages sent | **20** messages · nag @10 | green-check lock |
 | **Parlometron** (pronunciation-coach) | daily quota — only **new** phrases (re-practice/scoring of seen phrases is unlimited; back/forward is free) | **10** new phrases · **no nag** | green-check lock |
-| **Hover Runner** | daily quota — phrases played | **20** · nag @5 | green-check lock |
-| **Juice Squeeze** | daily quota — phrases built | **20** · nag @5 | green-check lock |
-| **Hanzipan** | daily quota — new characters | **20** · nag @5 | green-check lock |
+| **Hover Runner** | daily quota — phrases played | **20** · nag @10 | green-check lock |
+| **Juice Squeeze** | daily quota — phrases built | **20** · nag @10 | green-check lock |
+| **Hanzipan** | daily quota — new characters | **20** · nag @10 | green-check lock |
 | **Beatlounge** | **timed** — soft nag on the next tap after **~5 min** of use (no hard cap — never interrupts the music) | unlimited, gentle nag | dismissible paywall sheet |
 | **Earthgate / Stargate Readers** | **end-of-preview** — `corpan:request-unlock` at the preview boundary | first **~⅓** of each book (server-truncated, `min(floor(total/3), 100)` segments) | paywall sheet |
 | **World Radio** | **free**, ungated (ad-free recitations) | unlimited | — |
@@ -28,7 +28,7 @@ retunes a live gate instantly (both directions, no reload).
 
 Surfaces/limits live in `quotas.ts`:
 `phrase_flips` 20 · `tutomaton_daily` 20 · `parlometron_daily` 10 (no nag) ·
-`hover_phrases` 20 · `juice_phrases` 20 · `hanzipan_chars` 20 (rest nag every 5).
+`hover_phrases` 20 · `juice_phrases` 20 · `hanzipan_chars` 20 (rest nag every 10).
 Beatlounge is `mode:"timed"`, `intervalMs: 5·60·1000` (not in the daily registry).
 
 ---

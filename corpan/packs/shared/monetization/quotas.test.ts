@@ -61,7 +61,7 @@ describe("QUOTAS registry", () => {
     expect(QUOTAS.phrase_flips).toMatchObject({
       packId: "corpan_app",
       dailyLimit: 20,
-      softNagEvery: 5,
+      softNagEvery: 10,
       unitLabel: "phrases",
     })
     expect(QUOTAS.parlometron_daily).toMatchObject({
@@ -123,7 +123,7 @@ describe("getQuota remote-config override", () => {
     setRemoteConfig({ version: 1, quotas: { phrase_flips: { dailyLimit: 12 } } })
     const q = getQuota("phrase_flips")
     expect(q.dailyLimit).toBe(12)
-    expect(q.softNagEvery).toBe(QUOTAS.phrase_flips.softNagEvery) // baked 5
+    expect(q.softNagEvery).toBe(QUOTAS.phrase_flips.softNagEvery) // baked 10
   })
 
   it("a partial override touches only the provided field (nag only)", () => {
@@ -173,7 +173,7 @@ describe("getQuota remote-config override", () => {
     })
     const q = getQuota("hover_phrases")
     expect(q.dailyLimit).toBe(20)
-    expect(q.softNagEvery).toBe(5)
+    expect(q.softNagEvery).toBe(10)
   })
 
   it("clamps softNagEvery to the (overridden) dailyLimit", () => {
@@ -261,9 +261,9 @@ describe("createDailyQuota", () => {
       isSubscribed: () => false,
       requestPaywall: (d) => fires.push(d),
     })
-    for (let i = 0; i < 4; i++) gate.note()
+    for (let i = 0; i < 9; i++) gate.note()
     expect(fires).toHaveLength(0)
-    gate.note() // 5th → first soft nag
+    gate.note() // 10th → first soft nag
     expect(fires).toHaveLength(1)
   })
 

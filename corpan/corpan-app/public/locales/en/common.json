@@ -854,6 +854,8 @@
     "creditedTo": "credited to {{partner}}",
     "fieldLabel": "Offer or affiliate code",
     "help": "Have a code? Enter it to apply your offer.",
+    "notApplied": "That code doesn't unlock a discount.",
+    "redeemCode": "Redeem code",
     "redeemUnavailable": "Couldn't open the redeem screen. Please try again.",
     "redeemWithApple": "Redeem with Apple",
     "redeeming": "Opening redeem…",

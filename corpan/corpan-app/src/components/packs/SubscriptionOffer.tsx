@@ -27,7 +27,6 @@ import {
   SUBSCRIPTION_MONTHLY,
   SUBSCRIPTION_ANNUAL,
   type CodeResolveResponse,
-  type CodePurchaseAction,
   type StoreProduct,
   type IntroOffer,
 } from "@/contentPacks/purchase"
@@ -511,27 +510,26 @@ export function SubscriptionOffer({
     codeStatus.code === normalizeAffiliateCode(affiliateCode)
       ? codeStatus.response
       : null
-  const resolvedAction: CodePurchaseAction | null =
-    resolvedCode?.purchaseAction ?? null
-  const resolvedDiscountLabel = resolvedCode?.discountLabel ?? null
+  // A code "redeems" when the server classified it as anything other than
+  // `unknown` — i.e. a real discount, a one-time redemption ("free year"), or a
+  // partner offer (discount / affiliate / discount+affiliate). The `unknown`
+  // path is attribute-only: it just attaches the code, so it keeps the plain
+  // trial CTA. This is driven SOLELY by the /code/resolve result, so the label
+  // flips even on a device that can't complete the native purchase (e.g.
+  // `tauri android dev`, which needs an internal-testing build to transact).
+  const codeRedeems = !!resolvedCode && resolvedCode.classification !== "unknown"
 
-  // CTA label: branch by the resolved code's purchaseAction (contract §9), then
-  // fall back to free-trial / plain Subscribe copy. Never "Continue".
+  // CTA label. A usable resolved code → one universal "Redeem code". Otherwise
+  // the free-trial / plain Subscribe copy. Never "Continue".
   const ctaLabel = isPurchasing
-    ? resolvedAction === "REDEEM_APPLE_SHEET"
+    ? codeRedeems
       ? t("code.redeeming", "Opening redeem…")
       : t("subscription.subscribing", "Subscribing...")
-    : resolvedAction === "REDEEM_APPLE_SHEET"
-      ? t("code.redeemWithApple", "Redeem with Apple")
-      : resolvedAction === "USE_OFFER_TOKEN"
-        ? resolvedDiscountLabel
-          ? t("code.subscribeWithDiscount", "Subscribe ({{discount}})", {
-              discount: resolvedDiscountLabel,
-            })
-          : t("subscription.subscribe", "Subscribe")
-        : hasFreeTrial
-          ? t("subscription.startFreeTrial", "Start Free Trial")
-          : t("subscription.subscribe", "Subscribe")
+    : codeRedeems
+      ? t("code.redeemCode", "Redeem code")
+      : hasFreeTrial
+        ? t("subscription.startFreeTrial", "Start Free Trial")
+        : t("subscription.subscribe", "Subscribe")
 
   // Annual savings vs paying monthly × 12 — computed from raw micros so it's
   // accurate and currency-agnostic (it's a ratio). Shown as a quiet, language-
@@ -691,9 +689,11 @@ export function SubscriptionOffer({
               className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm uppercase placeholder:normal-case placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary"
             />
             {codeStatus.kind === "error" ? (
-              // NEVER show "valid" on error — offer a retry instead.
-              <span className="flex items-center gap-2 text-[11px] text-destructive">
-                {t("code.checkFailed", "Couldn't check")}
+              // Gentle, muted — NOT a harsh red error. The code didn't unlock a
+              // discount, but the trial CTA above stays fully usable; we just
+              // offer a quiet retry in case it was a transient check failure.
+              <span className="flex items-center gap-2 text-[11px] text-muted-foreground">
+                {t("code.notApplied", "That code doesn't unlock a discount.")}
                 <button
                   type="button"
                   onClick={() => setAffiliateCode((c) => c.trim())}

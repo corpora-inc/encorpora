@@ -42,7 +42,7 @@ export const QUOTAS = {
     packId: "corpan_app",
     surface: "phrase_flips",
     dailyLimit: 20,
-    softNagEvery: 5,
+    softNagEvery: 10,
     unitLabel: "phrases",
   },
   // pronunciation-coach (Parlometron) — solo + multiplayer share this count.
@@ -62,7 +62,7 @@ export const QUOTAS = {
     packId: "hover-runner",
     surface: "hover_phrases",
     dailyLimit: 20,
-    softNagEvery: 5,
+    softNagEvery: 10,
     unitLabel: "phrases",
   },
   // juice-squeeze
@@ -70,7 +70,7 @@ export const QUOTAS = {
     packId: "juice_squeeze",
     surface: "juice_phrases",
     dailyLimit: 20,
-    softNagEvery: 5,
+    softNagEvery: 10,
     unitLabel: "phrases",
   },
   // hanzipan
@@ -78,7 +78,7 @@ export const QUOTAS = {
     packId: "hanzipan",
     surface: "hanzipan_chars",
     dailyLimit: 20,
-    softNagEvery: 5,
+    softNagEvery: 10,
     unitLabel: "characters",
   },
   // tutomaton — converted by the tutomaton agent (see QUOTA_STANDARD.md). Its
@@ -88,7 +88,7 @@ export const QUOTAS = {
     packId: "tutomaton",
     surface: "tutomaton_daily",
     dailyLimit: 20,
-    softNagEvery: 5,
+    softNagEvery: 10,
     unitLabel: "messages",
     legacyKey: "tutomaton.quota",
   },

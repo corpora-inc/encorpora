@@ -587,6 +587,7 @@ BOOK_META = {
             "book of the Biomes of the World series."
         ),
         "tags": ["nature", "biomes", "science", "language-learning"],
+        "published": "2026-06-14",
     },
 }
 
