@@ -171,7 +171,7 @@ export function DailyLockOverlay({
           unit: context.unitLabel,
         })}
         dir={dir()}
-        className="fixed inset-0 z-[60] overflow-y-auto no-scrollbar"
+        className="fixed inset-0 z-[1400] overflow-y-auto no-scrollbar"
         style={{ ...LOCK_PALETTE, WebkitOverflowScrolling: "touch" }}
         initial={fade.initial}
         animate={fade.animate}
