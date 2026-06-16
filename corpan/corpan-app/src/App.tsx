@@ -499,6 +499,11 @@ export default function App() {
       // OS-native review here — the in-app "Enjoying Corpán?" prompt
       // (<RatingPrompt/>) is the single rating surface, and its 5-star button
       // pops the native review widget. Firing both produced a double prompt.
+      //
+      // Exiting is NOT a paywall moment. If the daily-cap accomplishment lock is
+      // open (e.g. the user hit it in phrase-flip then tapped Home), dismiss it
+      // here so it can't linger over the Home hub — just let them get home.
+      setDailyLock(null);
       setActiveGame(null);
       updateGameParam(null);
     };

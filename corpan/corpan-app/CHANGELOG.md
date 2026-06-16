@@ -8,6 +8,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Fixed
+- **Phrase-flip daily cap now gates only NEW phrases — review stays free.** At
+  the cap, asking for a brand-new phrase (the Random button, or Next/forward
+  scroll when you're already on the newest phrase) surfaces the accomplishment
+  lock instead of doing nothing, and does not advance. Going back and forward
+  through phrases you've already seen is always free and never counted — only a
+  genuinely new phrase counts toward the daily limit. After dismissing the lock
+  you can still review your seen phrases; only another new-phrase request
+  re-shows it. Exiting phrase-flip just goes Home (and dismisses an open lock) —
+  never the paywall.
 - **Phrase-flip daily wall / nag now actually fires.** Two bugs hid it: (1) the
   host-capability marker (`__CORPAN_HOST_CAPS.dailyLock`) was only set inside
   `ContentPackHost` (content packs), not the core app — now set app-wide at

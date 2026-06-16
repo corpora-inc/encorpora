@@ -547,19 +547,26 @@ export function MainExperience() {
         void resolveCurrent(target, sources[index - 1] ?? "base");
     };
 
-    const handleNext = () => {
-        // Hard daily cap: a blocked free user gets EXACTLY the daily limit of
-        // forward advances, then is stopped. Re-show the accomplishment-lock
-        // overlay and do NOT advance. Subscribers never block (isBlocked reads
-        // the live entitlement). Backward review (handlePrev) is never gated.
+    // Single chokepoint for acquiring a NEW phrase (the ONLY thing the daily cap
+    // gates). A blocked free user gets EXACTLY the daily limit of NEW phrases,
+    // then is stopped: re-show the accomplishment-lock overlay and do NOT fetch
+    // (stay on the current newest phrase — they can still review back/forward
+    // through seen history). Subscribers never block (isBlocked reads the live
+    // entitlement). `note()` counts ONE new phrase and fires the soft nag /
+    // accomplishment lock internally; it runs ONLY when a new phrase is pulled.
+    const acquireNewPhrase = () => {
         if (phraseGateRef.current?.isBlocked()) {
             phraseGateRef.current.requestDailyLock();
             return;
         }
-        // One forward phrase advance — count it toward the daily quota (fires the
-        // soft nag / accomplishment lock internally; no-op for subscribers).
-        // Backward review (handlePrev) is never counted.
         phraseGateRef.current?.note();
+        void fetchRandomEntry();
+    };
+
+    const handleNext = () => {
+        // Forward review through ALREADY-SEEN phrases is ALWAYS free — never
+        // gated, never counted. Check the in-history case FIRST and short-circuit;
+        // only the "pull a brand-new phrase" branch below is metered.
         if (index < ids.length - 1) {
             const target = ids[index + 1];
             if (typeof target !== "number") return;
@@ -567,19 +574,16 @@ export function MainExperience() {
             void resolveCurrent(target, sources[index + 1] ?? "base");
             return;
         }
-        void fetchRandomEntry();
+        // We're on the newest phrase → Next pulls a BRAND-NEW phrase. That is the
+        // only metered action: gate + count it like Random.
+        acquireNewPhrase();
     };
 
-    // The "Random sentence" button is also a forward advance to a NEW phrase —
-    // gate + count it exactly like handleNext, so the daily wall can't be
-    // side-stepped by tapping Random instead of Next.
+    // The "Random sentence" button always pulls a NEW phrase — the same metered
+    // action as Next-on-newest. Route both through one seam so the daily wall
+    // can't be side-stepped by tapping Random instead of Next.
     const handleRandom = () => {
-        if (phraseGateRef.current?.isBlocked()) {
-            phraseGateRef.current.requestDailyLock();
-            return;
-        }
-        phraseGateRef.current?.note();
-        void fetchRandomEntry();
+        acquireNewPhrase();
     };
 
     // Scroll navigation - use the hook
