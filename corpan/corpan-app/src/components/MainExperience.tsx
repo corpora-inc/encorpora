@@ -266,8 +266,15 @@ export function MainExperience() {
     // lock internally. Subscribers are a no-op — `isSubscribed` reads the live
     // entitlement store, so a mid-session subscribe immediately stops gating.
     const phraseGateRef = useRef<PaywallGate | null>(null);
-    if (phraseGateRef.current === null) {
-        phraseGateRef.current = createPaywallGate({
+    useEffect(() => {
+        // Construct the gate INSIDE the effect (not in render). React StrictMode
+        // runs mount→cleanup→mount, and the cleanup `dispose()`s the gate; if we
+        // built it in render behind a `ref === null` guard, the guard would
+        // refuse to rebuild and the ref would hold a DISPOSED gate forever —
+        // silently no-op'ing note()/isBlocked() (the daily wall never fires in
+        // dev, and ANY remount kills it). Building here means every effect run
+        // gets a fresh, non-disposed gate; cleanup disposes it and clears the ref.
+        const gate = createPaywallGate({
             packId: PHRASE_FLIP_PACK_ID,
             surface: "phrase_flips",
             mode: "daily",
@@ -276,13 +283,14 @@ export function MainExperience() {
             unitLabel: "phrases",
             isSubscribed: () => useEntitlementStore.getState().subscription.active,
         });
-    }
-    useEffect(() => {
-        const gate = phraseGateRef.current;
+        phraseGateRef.current = gate;
         // The user showed up to phrase-flip today → record one visit (idempotent
         // within a local day). Retention streak only; not gated.
         recordPackVisit(PHRASE_FLIP_PACK_ID);
-        return () => gate?.dispose();
+        return () => {
+            gate.dispose();
+            phraseGateRef.current = null;
+        };
     }, []);
 
     // History

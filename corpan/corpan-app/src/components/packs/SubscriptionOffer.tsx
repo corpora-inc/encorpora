@@ -434,7 +434,7 @@ export function SubscriptionOffer({
         <div className="rounded-xl border border-amber-200 bg-amber-50 dark:bg-amber-950/30 dark:border-amber-900 p-4 space-y-3">
           <div>
             <h3 className="font-semibold text-sm text-amber-900 dark:text-amber-100">
-              {t("subscription.storeUnreachable", "We couldn't reach the App Store right now.")}
+              {t("subscription.storeUnreachable", "We couldn't reach the store right now.")}
             </h3>
             <p className="text-xs text-amber-800/80 dark:text-amber-200/80 mt-1 break-words">
               {state.error}
