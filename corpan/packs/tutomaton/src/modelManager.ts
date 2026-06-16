@@ -93,6 +93,33 @@ export class ModelManager {
     return this.activeId ? modelById(this.activeId) : null
   }
 
+  /** Which sizes are already downloaded on disk (for the picker UI). */
+  async installStates(): Promise<Record<ModelId, boolean>> {
+    const llm = this.hostApi.llm
+    const out = {} as Record<ModelId, boolean>
+    await Promise.all(
+      MODELS.map(async (m) => {
+        out[m.id] = llm ? await llm.isInstalled(m.id).catch(() => false) : false
+      }),
+    )
+    return out
+  }
+
+  /**
+   * One-tap "use this size" for the picker: persist the choice, then drive all
+   * the way to `ready` — downloading + installing first if the size isn't on
+   * disk, otherwise just loading it (which swaps out the current model). A no-op
+   * for a disabled size or the already-active one.
+   */
+  async useModel(id: ModelId): Promise<ModelPhase> {
+    const tier = await this.ensureTier()
+    if (tier.stateById[id] === "disabled") return this.phase
+    if (this.activeId === id && this.phase.kind === "ready") return this.phase
+    await this.choose(id) // persists + re-runs check() → ready | needs-install | unsupported
+    if (this.phase.kind === "needs-install") return await this.installAndLoad()
+    return this.phase
+  }
+
   /**
    * Change the chosen model size (from the picker). Persists the pick and
    * re-runs `check()` so the UI advances to the new size's phase. A no-op if
@@ -243,6 +270,23 @@ export class ModelManager {
     } finally {
       this.busy = false
     }
+  }
+
+  /**
+   * Free the resident model when the app is backgrounded so a low-RAM device
+   * can't OOMKill the whole app under memory pressure. Sets a non-ready phase so
+   * the composer disables until `check()` reloads it on resume. No-op if not
+   * currently loaded or already busy.
+   */
+  async unloadForBackground(): Promise<void> {
+    if (this.busy || this.phase.kind !== "ready") return
+    try {
+      await this.hostApi.llm?.unload()
+    } catch (e) {
+      console.error("[tutomaton/model] background unload failed:", e)
+      return
+    }
+    this.set({ kind: "loading" }) // resume → check() reloads → ready
   }
 
   /** Load an already-installed model into memory (mmap; a few seconds cold). */

@@ -29,6 +29,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `<think></think>` block (the canonical Qwen3 non-thinking prefill) so hybrid
   models (0.6B/1.7B) answer directly instead of reasoning aloud. No effect on
   the non-thinking Instruct 4B.
+- **Quantized KV cache (Q8_0) on Apple/Metal** — ~halves KV memory at negligible
+  quality cost, backed by flash attention (AUTO, on by default). Android/desktop
+  CPU keep F16 (FA may not engage on CPU, and quantized KV depends on it).
+  Verified on Metal via llama-server.
 
 ### Changed
 - **Token streaming is coalesced (Android ANR fix).** The actor emitted one

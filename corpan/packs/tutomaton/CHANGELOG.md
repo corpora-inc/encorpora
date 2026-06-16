@@ -14,14 +14,23 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     *recommended* size and each size's state (recommended / available /
     try-anyway / disabled). 4B is recommended ≥7 GB, "try-anyway" (with a
     warning) at 6 GB, disabled below ~5.5 GB.
-  - **Model-size picker** in the setup gate: every size is shown with its
-    per-device state — recommended badge, disabled+greyed (“needs a device with
-    more memory”, so it reads as the device's limit, not us withholding),
-    try-anyway, and a “smaller — may be less accurate” hint. The pick is
-    persisted and user-overridable. New strings localized into 46 languages.
+  - **Premium "Tutor model" sheet** to choose / download / switch sizes: a card
+    per size with its per-device state — Active, Recommended, a one-tap Use
+    (switch) or Download · {size}, inline download/install/load progress, and
+    disabled+greyed sizes ("needs a device with more memory", so it reads as the
+    device's limit, not us withholding). Reachable any time from the action menu;
+    the first-run setup gate carries the same picker. Pick persisted +
+    user-overridable. New strings localized into 46 languages.
   - The 0.6B and 1.7B GGUFs are **hosted in production** (CloudFront);
-    `ModelManager` reads total RAM from the plugin and loads with a model-aware
-    context length.
+    `ModelManager` reads total RAM from the plugin, switches the loaded model on
+    demand, and loads with a model-aware context length.
+  - **Background unload on low-RAM devices** (< 6 GB): the resident model is
+    freed when the app is backgrounded so the OS can't OOMKill the whole app
+    under memory pressure, and reloaded on return (debounced; capable devices
+    keep it resident for instant resume).
+  - **Per-size language gating** (mechanism): a smaller model only offers the
+    languages it teaches well; the rest are shown disabled ("needs a larger
+    model"). Activates once each size's evaluated language list is set.
 - **Non-thinking output for the small (hybrid) models.** Qwen3 0.6B/1.7B are
   hybrid reasoning models; the tutor sends the canonical non-thinking prefill
   (`noThink`) and a streaming `thinkFilter` strips any `<think>…</think>` from

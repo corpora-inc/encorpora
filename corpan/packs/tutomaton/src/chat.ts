@@ -205,6 +205,7 @@ const ICON = {
   back: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>`,
   search: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
   tune: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h2"/><path d="M10 12h10"/><circle cx="8" cy="12" r="2"/><path d="M4 18h8"/><path d="M16 18h4"/><circle cx="14" cy="18" r="2"/></svg>`,
+  model: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M9.5 1.5v3M14.5 1.5v3M9.5 19.5v3M14.5 19.5v3M1.5 9.5h3M1.5 14.5h3M19.5 9.5h3M19.5 14.5h3"/></svg>`,
   voice: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="7.5"/><path d="M6.8 10h0"/><path d="M11.2 10h0"/><ellipse cx="9" cy="14.6" rx="2" ry="1.3"/><path d="M18 9.6a4 4 0 0 1 0 4.8"/><path d="M20.6 7.5a7.5 7.5 0 0 1 0 9"/></svg>`,
 } as const
 
@@ -439,6 +440,10 @@ const PackModule: ContentPackModule = {
         <div class="lt-actionmenu" hidden>
           <div class="lt-actionmenu-scrim"></div>
           <div class="lt-actionmenu-popover" role="menu" aria-label="${t("moreOptions")}">
+            <button class="lt-actionmenu-item" role="menuitem" data-action="model">
+              <span class="lt-actionmenu-icon" aria-hidden="true">${ICON.model}</span>
+              <span class="lt-actionmenu-label">${t("tutorModel")}</span>
+            </button>
             <button class="lt-actionmenu-item" role="menuitem" data-action="tune">
               <span class="lt-actionmenu-icon" aria-hidden="true">${ICON.tune}</span>
               <span class="lt-actionmenu-label">${t("modelLab")}</span>
@@ -563,7 +568,23 @@ const PackModule: ContentPackModule = {
 
         <!-- Floating action cluster: translucent, out of the way, easy to reach.
              Mute toggle (TTS, defaults on) + new-conversation. -->
+        <div class="lt-msheet" hidden role="dialog" aria-modal="true" aria-label="${t("tutorModel")}">
+          <div class="lt-msheet-scrim"></div>
+          <div class="lt-msheet-panel" role="document">
+            <div class="lt-msheet-grip-zone" aria-hidden="true"><div class="lt-msheet-grip"></div></div>
+            <header class="lt-msheet-head">
+              <h2 class="lt-msheet-title">${t("tutorModel")}</h2>
+              <button class="lt-msheet-close" aria-label="${t("close")}">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.3 19.71 2.88 18.3 9.17 12 2.88 5.71 4.3 4.29l6.29 6.3 6.3-6.3z"/></svg>
+              </button>
+            </header>
+            <p class="lt-msheet-intro">${t("tutorModelIntro")}</p>
+            <div class="lt-msheet-list" role="radiogroup" aria-label="${t("tutorModel")}"></div>
+          </div>
+        </div>
+
         <div class="lt-fabs">
+          <button class="lt-fab lt-model" aria-label="${t("tutorModel")}" title="${t("tutorModel")}">${ICON.model}</button>
           <button class="lt-fab lt-tune" aria-label="${t("modelLab")}" title="${t("modelLab")}">${ICON.tune}</button>
           <button class="lt-fab lt-voice" aria-label="${t("chooseVoice")}" title="${t("chooseVoice")}">${ICON.voice}</button>
           <button class="lt-fab lt-tts active" aria-label="${t("muteVoice")}" aria-pressed="true" title="${t("voiceReplies")}">${ICON.speaker}</button>
@@ -624,6 +645,11 @@ const PackModule: ContentPackModule = {
     const $jump = container.querySelector<HTMLButtonElement>(".lt-jump")!
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
     const $tune = container.querySelector<HTMLButtonElement>(".lt-tune")!
+    const $model = container.querySelector<HTMLButtonElement>(".lt-model")!
+    const $msheet = container.querySelector<HTMLDivElement>(".lt-msheet")!
+    const $msheetScrim = container.querySelector<HTMLDivElement>(".lt-msheet-scrim")!
+    const $msheetClose = container.querySelector<HTMLButtonElement>(".lt-msheet-close")!
+    const $msheetList = container.querySelector<HTMLDivElement>(".lt-msheet-list")!
     const $voice = container.querySelector<HTMLButtonElement>(".lt-voice")!
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
     const $back = container.querySelector<HTMLButtonElement>(".lt-back")!
@@ -661,6 +687,10 @@ const PackModule: ContentPackModule = {
     const $setupPct = container.querySelector<HTMLDivElement>(".lt-setup-pct")!
     const $setupAction = container.querySelector<HTMLButtonElement>(".lt-setup-action")!
     $voice.hidden = !hostApi.listVoices || !hostApi.speakVoice
+    // The model picker is meaningless without the on-device LLM runtime.
+    $model.hidden = !hostApi.llm
+    const modelItem = container.querySelector<HTMLButtonElement>('[data-action="model"]')
+    if (modelItem) modelItem.hidden = !hostApi.llm
 
     // ---------- header overflow menu (narrow screens) ----------
     // The kebab + popover mirror the four floating fabs. Each item forwards its
@@ -691,6 +721,7 @@ const PackModule: ContentPackModule = {
       item.addEventListener("click", () => {
         const action = item.dataset.action
         const target =
+          action === "model" ? $model :
           action === "tune" ? $tune :
           action === "voice" ? $voice :
           action === "tts" ? $ttsBtn :
@@ -862,8 +893,166 @@ const PackModule: ContentPackModule = {
           break
       }
     }
-    const modelMgr = new ModelManager(hostApi, renderModelPhase)
+    // ---------- premium "Tutor model" picker (choose / download / switch) ----------
+    const fmtMb = (mb: number) => (mb >= 1024 ? `${(mb / 1024).toFixed(1)} GB` : `${mb} MB`)
+    const MCHECK = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`
+    let installCache: Record<string, boolean> = {}
+    function renderModelPicker() {
+      const tier = modelMgr.deviceTier()
+      if (!tier) {
+        $msheetList.replaceChildren()
+        return
+      }
+      const phase = modelMgr.current()
+      const activeId = phase.kind === "ready" ? modelMgr.activeModel()?.id ?? null : null
+      const busy =
+        phase.kind === "downloading" || phase.kind === "installing" || phase.kind === "loading"
+      const busyId = busy ? tier.chosenId : null
+      const frag = document.createDocumentFragment()
+      for (const m of modelMgr.models()) {
+        const st = tier.stateById[m.id]
+        const installed = !!installCache[m.id]
+        const isActive = activeId === m.id
+        const isBusy = busyId === m.id
+        const disabled = st === "disabled"
+        const tappable = !disabled && !isBusy && !isActive
+
+        const card = document.createElement(tappable ? "button" : "div")
+        if (tappable) (card as HTMLButtonElement).type = "button"
+        card.className =
+          "lt-mcard" +
+          (isActive ? " is-active" : "") +
+          (st === "recommended" && !isActive ? " is-rec" : "") +
+          (disabled ? " is-disabled" : "") +
+          (isBusy ? " is-busy" : "")
+        card.setAttribute("role", "radio")
+        card.setAttribute("aria-checked", String(isActive))
+
+        const size = document.createElement("div")
+        size.className = "lt-mcard-size"
+        size.textContent = m.paramLabel
+
+        const meta = document.createElement("div")
+        meta.className = "lt-mcard-meta"
+        const name = document.createElement("div")
+        name.className = "lt-mcard-name"
+        name.textContent = m.displayName
+        const sub = document.createElement("div")
+        sub.className = "lt-mcard-sub"
+        sub.textContent = isActive
+          ? t("modelActive")
+          : disabled
+            ? t("sizeNeedsMore")
+            : st === "try-anyway"
+              ? t("sizeMaySlow")
+              : st === "recommended"
+                ? t("recommendedSize")
+                : t("sizeSmallerQuality")
+        meta.append(name, sub)
+
+        const right = document.createElement("div")
+        right.className = "lt-mcard-right"
+        if (isBusy) {
+          const prog = document.createElement("div")
+          prog.className = "lt-mcard-prog"
+          if (phase.kind === "downloading") {
+            const bar = document.createElement("div")
+            bar.className = "lt-mcard-bar"
+            const fill = document.createElement("div")
+            fill.className = "lt-mcard-fill"
+            fill.style.width = `${phase.pct}%`
+            bar.appendChild(fill)
+            const pct = document.createElement("div")
+            pct.className = "lt-mcard-pct"
+            pct.textContent = `${phase.pct}%`
+            prog.append(bar, pct)
+          } else {
+            const lbl = document.createElement("div")
+            lbl.className = "lt-mcard-pct"
+            lbl.textContent = phase.kind === "installing" ? t("installingModel") : t("wakingTutor")
+            prog.append(lbl)
+          }
+          right.append(prog)
+        } else if (isActive) {
+          const chk = document.createElement("span")
+          chk.className = "lt-mcard-check"
+          chk.innerHTML = MCHECK
+          right.append(chk)
+        } else if (!disabled) {
+          const act = document.createElement("span")
+          act.className = "lt-mcard-act"
+          act.textContent = installed ? t("modelUse") : t("downloadSize", { size: fmtMb(m.sizeMb) })
+          right.append(act)
+        }
+
+        card.append(size, meta, right)
+        if (tappable) card.addEventListener("click", () => void modelMgr.useModel(m.id))
+        frag.appendChild(card)
+      }
+      $msheetList.replaceChildren(frag)
+    }
+    async function refreshModelPicker() {
+      installCache = await modelMgr.installStates()
+      renderModelPicker()
+    }
+    function openModelPicker() {
+      void refreshModelPicker()
+      $msheet.hidden = false
+      requestAnimationFrame(() => $msheet.classList.add("open"))
+    }
+    function closeModelPicker() {
+      $msheet.classList.remove("open")
+      window.setTimeout(() => {
+        if (!$msheet.classList.contains("open")) $msheet.hidden = true
+      }, 180)
+    }
+
+    const modelMgr = new ModelManager(hostApi, (phase) => {
+      renderModelPhase(phase)
+      if (!$msheet.hidden) {
+        // A finished install means a new size is now on disk — refresh the cache.
+        if (phase.kind === "ready") void refreshModelPicker()
+        else renderModelPicker()
+      }
+    })
     $setupAction.addEventListener("click", () => void modelMgr.installAndLoad())
+    $model.addEventListener("click", openModelPicker)
+    $msheetClose.addEventListener("click", closeModelPicker)
+    $msheetScrim.addEventListener("click", closeModelPicker)
+
+    // Low-RAM lifecycle: free the resident model when the app is backgrounded so
+    // the OS can't OOMKill the whole app under memory pressure; reload on return.
+    // Only on memory-tight devices (capable devices keep it resident for instant
+    // resume), and debounced so a quick app-switch doesn't thrash unload/reload.
+    const LOW_RAM_UNLOAD_MB = 6000
+    let bgTimer: number | undefined
+    let unloadedForBg = false
+    const onVisibility = () => {
+      const ram = modelMgr.deviceTier()?.totalRamMb ?? 0
+      const lowRam = ram > 0 && ram < LOW_RAM_UNLOAD_MB
+      if (document.hidden) {
+        if (lowRam && modelMgr.isReady()) {
+          bgTimer = window.setTimeout(() => {
+            unloadedForBg = true
+            void modelMgr.unloadForBackground()
+          }, 4000)
+        }
+      } else {
+        if (bgTimer !== undefined) {
+          clearTimeout(bgTimer)
+          bgTimer = undefined
+        }
+        if (unloadedForBg) {
+          unloadedForBg = false
+          void modelMgr.check() // reload the chosen installed model → ready
+        }
+      }
+    }
+    document.addEventListener("visibilitychange", onVisibility)
+    disposers.push(() => {
+      document.removeEventListener("visibilitychange", onVisibility)
+      if (bgTimer !== undefined) clearTimeout(bgTimer)
+    })
 
     // ---------- per-language on-device model lab ----------
     let modelSheetTuning: ModelTuning | null = null
@@ -1074,6 +1263,15 @@ const PackModule: ContentPackModule = {
       return hay.includes(q)
     }
 
+    // Phase-5 gate: a smaller model only teaches the languages it handles well
+    // (set per size in modelTiering once eval lands). `undefined` = all languages
+    // (the 4B / not-yet-evaluated), so this is a no-op until the lists are baked.
+    function modelSupportsLang(code: string): boolean {
+      const supp = modelMgr.activeModel()?.supportedLanguages
+      if (!supp) return true
+      return supp.includes(code) || supp.includes(code.split("-")[0])
+    }
+
     function makeLangCard(entry: LanguageRegistryEntry, active: string | undefined): HTMLButtonElement {
       const card = document.createElement("button")
       card.className = "lt-langcard"
@@ -1082,6 +1280,14 @@ const PackModule: ContentPackModule = {
       const isActive = entry.code === active
       card.classList.toggle("active", isActive)
       card.setAttribute("aria-selected", isActive ? "true" : "false")
+      // Disable (don't hide) languages the active small model can't teach well —
+      // it reads as the model's limit, and the user can pick a bigger model.
+      const supported = isActive || modelSupportsLang(entry.code)
+      if (!supported) {
+        card.disabled = true
+        card.classList.add("lt-langcard-locked")
+        card.setAttribute("aria-disabled", "true")
+      }
       const flag = LANG_FLAG[entry.code] || "✦"
       const sub = entry.displayName[uiLocale] && entry.displayName[uiLocale] !== nativeName(entry)
         ? `<span class="lt-langcard-sub">${entry.displayName[uiLocale]}</span>`
@@ -1095,7 +1301,14 @@ const PackModule: ContentPackModule = {
         <span class="lt-langcard-check" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
         </span>`
+      if (!supported) {
+        const note = document.createElement("span")
+        note.className = "lt-langcard-note"
+        note.textContent = t("langNeedsBiggerModel")
+        card.querySelector(".lt-langcard-text")?.appendChild(note)
+      }
       card.addEventListener("click", () => {
+        if (card.disabled) return
         if (entry.code === state.activeLanguage?.code) {
           closeLangSheet()
           return
@@ -1491,7 +1704,11 @@ const PackModule: ContentPackModule = {
       if (nextPlus === plus) return
       plus = nextPlus
       syncSendEnabled()
-      if (plus) systemNote(t("quotaPlusActivated"))
+      if (plus) {
+        systemNote(t("quotaPlusActivated"))
+        // Capped-on-entry skipped the model load — now that they're Plus, load it.
+        if (!modelReady) void modelMgr.check()
+      }
     }
     window.addEventListener("corpan:entitlement-changed", onEntitlementChanged)
     disposers.push(() => window.removeEventListener("corpan:entitlement-changed", onEntitlementChanged))
@@ -1861,7 +2078,15 @@ const PackModule: ContentPackModule = {
     // Restore the last tutor first; else first installed; else first in registry.
     const initialCode = loadLastLang() || installedCodes[0] || registry[0]?.code
     if (initialCode) await switchLanguage(initialCode)
-    void modelMgr.check()
+    // Out of free quota on entry → DON'T wake the on-device model (wasted: they
+    // can't send). Pop the accomplishment lock straight away; the setup screen
+    // ($setup) stays hidden because renderModelPhase never runs. The model loads
+    // later only if they go Plus (see onEntitlementChanged).
+    if (quotaGate.isBlocked()) {
+      quotaGate.requestDailyLock()
+    } else {
+      void modelMgr.check()
+    }
     syncSendEnabled()
 
     return {

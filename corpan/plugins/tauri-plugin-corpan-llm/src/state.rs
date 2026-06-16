@@ -296,6 +296,15 @@ fn new_session(backend: &LlamaBackend, model: &LlamaModel) -> Result<ChatSession
         .with_n_ctx(Some(NonZeroU32::new(n_ctx).unwrap()))
         .with_n_threads(threads)
         .with_n_threads_batch(threads);
+    // Quantized KV cache (Q8_0) ~halves KV memory at negligible quality cost.
+    // Gated to Apple/Metal, where flash attention (AUTO — on by default in
+    // llama.cpp) reliably backs quantized KV; Android/desktop CPU keep the
+    // default F16 (FA may not engage on CPU, and quantized KV depends on it).
+    // Verified on Metal via llama-server (--cache-type-k/v q8_0, default FA).
+    #[cfg(any(target_os = "macos", target_os = "ios"))]
+    let ctx_params = ctx_params
+        .with_type_k(llama_cpp_2::context::params::KvCacheType::Q8_0)
+        .with_type_v(llama_cpp_2::context::params::KvCacheType::Q8_0);
     let ctx = model
         .new_context(backend, ctx_params)
         .map_err(|e| Error::LlamaCpp(format!("context: {e}")))?;
