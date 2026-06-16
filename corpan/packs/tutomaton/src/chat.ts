@@ -27,7 +27,7 @@ import {
   type LanguageRegistryEntry,
   type LanguageRuntime,
 } from "./languageManager"
-import { ModelManager, BASE_MODEL, type ModelPhase } from "./modelManager"
+import { ModelManager, type ModelPhase } from "./modelManager"
 import { t as i18n, type I18nKey } from "./i18n"
 import {
   loadModelTuning,
@@ -38,6 +38,7 @@ import {
 } from "./modelTuning"
 import { OrderedSpeechQueue, StreamingSentenceBuffer } from "./streamingTts"
 import { scrubForSpeech, scrubOutput } from "./textScrub"
+import { makeThinkFilter } from "./thinkFilter"
 import {
   chooseTutorVoice,
   loadTutorVoiceId,
@@ -162,7 +163,8 @@ async function llmChat(
   hostApi: HostApi,
   systemPrompt: string,
   messages: Msg[],
-  options: Omit<ModelTuning, "systemPrompt">,
+  options: Omit<ModelTuning, "systemPrompt" | "think">,
+  noThink: boolean,
   onToken: (token: string) => void,
   onDone: (full: string) => void,
   onError: (err: string) => void
@@ -171,7 +173,7 @@ async function llmChat(
   return hostApi.llm.chat(
     {
       messages: [{ role: "system", content: systemPrompt }, ...messages],
-      options,
+      options: { ...options, noThink },
     },
     { onToken, onDone: (full) => onDone(full), onError: (err) => onError(err) }
   )
@@ -526,6 +528,11 @@ const PackModule: ContentPackModule = {
                 <small>Caps the length of each new reply.</small>
                 <input data-tuning="maxTokens" type="range" min="${MODEL_LIMITS.maxTokens.min}" max="${MODEL_LIMITS.maxTokens.max}" step="${MODEL_LIMITS.maxTokens.step}" />
               </label>
+              <label class="lt-model-control lt-model-think" hidden>
+                <span><strong>Thinking</strong></span>
+                <small>Let the model reason first (slower; smaller models only).</small>
+                <input id="lt-model-think" type="checkbox" />
+              </label>
             </div>
             <div class="lt-modelsheet-actions">
               <button class="lt-model-reset" type="button">Reset this language</button>
@@ -637,6 +644,8 @@ const PackModule: ContentPackModule = {
     const $modelLanguage = container.querySelector<HTMLParagraphElement>(".lt-modelsheet-language")!
     const $modelPrompt = container.querySelector<HTMLTextAreaElement>(".lt-model-prompt")!
     const $modelInputs = Array.from(container.querySelectorAll<HTMLInputElement>("[data-tuning]"))
+    const $modelThink = container.querySelector<HTMLInputElement>("#lt-model-think")!
+    const $modelThinkRow = container.querySelector<HTMLElement>(".lt-model-think")!
     const $voiceSheet = container.querySelector<HTMLDivElement>(".lt-voicesheet")!
     const $voiceSheetScrim = container.querySelector<HTMLDivElement>(".lt-voicesheet-scrim")!
     const $voiceSheetClose = container.querySelector<HTMLButtonElement>(".lt-voicesheet-close")!
@@ -781,10 +790,14 @@ const PackModule: ContentPackModule = {
           break
         case "needs-install": {
           const gb = (phase.sizeMb / 1024).toFixed(1)
-          $setupBody.textContent = t("needsInstall", { model: BASE_MODEL.displayName, size: gb })
+          $setupBody.textContent = t("needsInstall", { model: phase.displayName, size: gb })
           $setupAction.textContent = t("downloadTutor", { size: gb })
           break
         }
+        case "unsupported":
+          $setupBody.textContent = phase.message
+          $setupAction.hidden = true
+          break
         case "downloading":
           $setupBody.textContent = t("downloadingTutor")
           $setupFill.style.width = `${phase.pct}%`
@@ -813,25 +826,30 @@ const PackModule: ContentPackModule = {
       const lang = state.activeLanguage
       if (!lang) return
       modelSheetTuning = tuningFor(lang)
-      $modelLanguage.textContent = `${nativeName(registry.find((e) => e.code === lang.code) ?? registry[0])} · Qwen3-4B`
+      const activeModel = modelMgr.activeModel()
+      $modelLanguage.textContent = `${nativeName(registry.find((e) => e.code === lang.code) ?? registry[0])} · ${activeModel?.displayName ?? "Qwen3"}`
       $modelPrompt.value = modelSheetTuning.systemPrompt
       for (const input of $modelInputs) {
-        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt">
+        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt" | "think">
         input.value = String(modelSheetTuning[key])
         const output = container.querySelector<HTMLOutputElement>(`[data-output="${key}"]`)
         if (output) output.value = String(modelSheetTuning[key])
       }
+      // Thinking only applies to hybrid models (0.6B/1.7B); hide it otherwise.
+      $modelThinkRow.hidden = activeModel?.reasoning !== "hybrid"
+      $modelThink.checked = modelSheetTuning.think
     }
     function saveModelSheet() {
       const lang = state.activeLanguage
       if (!lang || !modelSheetTuning) return
       const next: ModelTuning = { ...modelSheetTuning, systemPrompt: $modelPrompt.value.trim() || defaultPromptFor(lang) }
       for (const input of $modelInputs) {
-        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt">
+        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt" | "think">
         next[key] = Number(input.value)
         const output = container.querySelector<HTMLOutputElement>(`[data-output="${key}"]`)
         if (output) output.value = input.value
       }
+      next.think = $modelThink.checked
       modelSheetTuning = next
       saveModelTuning(lang.code, next)
     }
@@ -1529,9 +1547,12 @@ const PackModule: ContentPackModule = {
     async function send(text: string) {
       if (!text.trim() || state.currentStreamId || !state.activeLanguage || !modelReady) return
       if (quotaBlocked()) {
-        // Hard daily cap reached: surface the paywall (the gate fires it when
-        // armed) and don't send. Free messages return tomorrow, or with Plus.
-        quotaGate.onInteraction()
+        // Hard daily cap reached → re-show the accomplishment lock and don't
+        // send. A gate-v2 daily gate's onInteraction() is a no-op (it only fires
+        // the legacy countArmed paywall), so a maxed-out RE-send needs an
+        // explicit requestDailyLock() — otherwise only note() crossing the cap
+        // shows the lock. Free messages return tomorrow, or with Plus.
+        quotaGate.requestDailyLock()
         syncSendEnabled()
         systemNote(t("quotaEmptyNote"))
         return
@@ -1593,6 +1614,11 @@ const PackModule: ContentPackModule = {
           : tuning.systemPrompt
         let buf = ""
         const speechStream = new StreamingSentenceBuffer(lang.code)
+        // Strip any leading <think>…</think> from the live stream so a hybrid
+        // model's reasoning never reaches the transcript OR the speech queue.
+        const think = makeThinkFilter()
+        const activeModel = modelMgr.activeModel()
+        const noThink = activeModel?.reasoning === "hybrid" && !tuning.think
         const queueSpeech = (parts: string[]) => {
           if (!state.ttsEnabled || speechEpoch !== turnSpeechEpoch) return
           for (const part of parts) {
@@ -1613,18 +1639,24 @@ const PackModule: ContentPackModule = {
             presencePenalty: tuning.presencePenalty,
             maxTokens: tuning.maxTokens,
           },
+          noThink,
           (tok) => {
-            buf += tok
-            queueSpeech(speechStream.push(tok))
+            const vis = think.push(tok)
+            if (!vis) return
+            buf += vis
+            queueSpeech(speechStream.push(vis))
             caret.remove()
             dest.textContent = scrubOutput(buf)
             dest.appendChild(caret)
             scrollDown()
           },
-          (full) => {
-            const cleaned = scrubOutput(full)
+          () => {
+            const tail = think.flush()
+            if (tail) buf += tail
+            const cleaned = scrubOutput(buf)
             dest.textContent = cleaned
             state.messages.push({ role: "assistant", content: cleaned })
+            if (tail) queueSpeech(speechStream.push(tail))
             queueSpeech(speechStream.finish())
             finish()
             scrollDown()
