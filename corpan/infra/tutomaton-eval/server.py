@@ -126,10 +126,27 @@ class Server:
             "stream": False,
         }
         data = json.dumps(body).encode()
-        req = urllib.request.Request(
-            f"{BASE}/completion", data=data,
-            headers={"Content-Type": "application/json"},
-        )
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            out = json.loads(r.read())
-        return out.get("content", "")
+        # Resilience for the unattended multi-hour run: retry transient failures,
+        # and from the 2nd attempt restart the server (recovers a wedged/dead
+        # llama-server). A persistent per-request 500 (e.g. a poison prompt) is
+        # raised after the retries so the caller can record an empty row and move
+        # on instead of aborting the whole sweep.
+        last_err: Exception | None = None
+        for attempt in range(4):
+            try:
+                req = urllib.request.Request(
+                    f"{BASE}/completion", data=data,
+                    headers={"Content-Type": "application/json"},
+                )
+                with urllib.request.urlopen(req, timeout=timeout) as r:
+                    return json.loads(r.read()).get("content", "")
+            except Exception as e:  # noqa: BLE001 — any error is retryable here
+                last_err = e
+                if attempt >= 1:
+                    try:
+                        self.stop()
+                        self.start()
+                    except Exception:
+                        pass
+                time.sleep(1.5 * (attempt + 1))
+        raise last_err if last_err else RuntimeError("complete failed")
