@@ -1,4 +1,8 @@
-import { create } from "zustand"
+// This pack is a vanilla DOM game (no React). Import from `zustand/vanilla`
+// so the bundle never pulls in `react` — the root `zustand` entry's React
+// binding made the IIFE build throw "Could not resolve 'react'" at init,
+// which silently prevented registerGame() from ever running.
+import { createStore as create } from "zustand/vanilla"
 import { persist, createJSONStorage } from "zustand/middleware"
 
 // Fruit definition type
