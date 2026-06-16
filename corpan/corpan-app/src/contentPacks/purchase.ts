@@ -1337,6 +1337,9 @@ export async function purchaseAndVerify(
   verifyFailed?: boolean
 }> {
   const subjectId = getCorpanSubjectId()
+  // Pre-purchase state for trial-start detection below: a free trial is granted
+  // once per subscription group, so it only "starts" for a NEW subscriber.
+  const wasSubscribed = useEntitlementStore.getState().subscription.active
   const outcome = await purchaseProduct(productId, productType, {
     subjectId,
     offerToken: options.offerToken,
@@ -1376,7 +1379,24 @@ export async function purchaseAndVerify(
         ? normalizeAffiliateCode(options.affiliateCode)
         : undefined
     trackSubscriptionPurchased(plan, purchase.platform, validCode)
-    if (options.offerToken) trackTrialStarted(plan)
+    // Funnel: trial_started fires when this purchase actually STARTS a free
+    // trial — the product carries a free-trial intro offer AND this is a NEW
+    // subscription (the intro is granted once per group). Derived from the
+    // product's normalized `introOffer.kind`, NOT `offerToken` (that's the
+    // affiliate DISCOUNT token: unrelated to trials, and absent on the standard
+    // iOS StoreKit / Play base-plan trial flow). Best-effort, non-blocking.
+    if (!wasSubscribed) {
+      void fetchProducts([productId], productType)
+        .then((res) => {
+          const prod = res.ok
+            ? res.products.find((p) => p.productId === productId)
+            : undefined
+          if (prod?.introOffer?.kind === "free_trial") trackTrialStarted(plan)
+        })
+        .catch(() => {
+          /* analytics best-effort */
+        })
+    }
   } else {
     store.addPurchasedProduct(productId)
   }
