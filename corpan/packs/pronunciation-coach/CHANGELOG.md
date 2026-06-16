@@ -15,24 +15,37 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Graceful gate for languages whisper can't score.** Pronunciation scoring
+  only covers whisper's recognized languages. The pack now mirrors that set
+  (`src/whisperLangs.ts`) and gates BEFORE recording: unscorable target
+  languages are silently skipped when picking a phrase, and a stack with
+  nothing scorable shows a calm "not available for this language yet" card
+  with the mic disabled — instead of letting the user record into a red
+  `[UNSUPPORTED_LANGUAGE]` error. The native guard remains as a backstop and
+  now also renders the calm state rather than the raw error.
 - **Subtle quota readout (lower-right).** A small, transparent badge pinned to
-  the lower-right safe corner shows new rounds left today in the free tier —
+  the lower-right safe corner shows new phrases left today in the free tier —
   so the cap is visible before you hit it, not a surprise. Hidden entirely for
   subscribers (unlimited); tints a touch warm in the last few to read as
   "nearly done", never an alarm. Refreshes on every UI transition + on boot.
 
 ### Fixed
-- **Daily cap now HARD-enforces (solo + multiplayer).** The shared daily gate
-  counted scored rounds but never blocked at the cap. Starting a new round now
-  checks `isBlocked()` first: at the cap it re-shows the daily-lock overlay
-  (`requestDailyLock()`), refuses to record, and disables the mic with a "Done
-  for today" label — a hard wall until local midnight or subscribe. Solo and
-  multiplayer share one per-day count; subscribers never block.
-- **Tapping the capped mic now re-pops the daily-lock.** The solo "Done for
-  today" mic is `disabled`, which swallowed its own pointer events, so a re-tap
-  did nothing; a capture-phase listener on the mic wrap now re-shows the shared
-  green-check lock (matching the first cap-cross and the multiplayer path). The
-  calm "Done for today" label stays — no red/error cap state.
+- **Javanese pronunciation scoring now works.** Whisper supports Javanese under
+  the code `jw`, but the pack sent `jv` and the native guard rejected it as
+  unsupported. Added a `jv → jw` alias so Javanese scores. (Cantonese
+  `yue-Hant-HK` stays unsupported on purpose — whisper has no Cantonese code
+  and folds it into Mandarin, which would give misleading feedback.)
+### Changed
+- **Meter NEW phrases, not scoring (phrase-flip model).** The daily cap now
+  bites only when a free user reaches for a *fresh* phrase — recording and
+  scoring any phrase already in their history is unlimited and free, so they can
+  drill their on-device model all day. `goNext` is the single metered seam:
+  forward/back through seen phrases never counts; acquiring a new phrase past
+  the end of history does, and at the cap re-pops the shared green-check lock
+  while leaving the current phrase fully usable. The mic is never disabled by
+  the cap. Cap lowered to **10 new phrases/day** with **no soft nag** — just the
+  daily accomplishment-lock at the ceiling. Solo + multiplayer share one per-day
+  count (each multiplayer round is itself a new phrase); subscribers never block.
 
 ## [0.7.0] - 2026-05-20 — Scoring overlay + phrase-pack sourcing
 

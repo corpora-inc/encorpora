@@ -17,7 +17,7 @@ retunes a live gate instantly (both directions, no reload).
 |---|---|---|---|
 | **Phrase Flip** (core app) | daily quota — only **new** phrases (Random / Next past the newest); back/forward review + TTS are unlimited | **20** new phrases · soft nag @5/10/15 | green-check lock |
 | **Tutomaton** | daily quota — messages sent | **20** messages · nag @5 | green-check lock |
-| **Parlometron** (pronunciation-coach) | daily quota — scored rounds | **15** rounds · nag @5 | green-check lock |
+| **Parlometron** (pronunciation-coach) | daily quota — only **new** phrases (re-practice/scoring of seen phrases is unlimited; back/forward is free) | **10** new phrases · **no nag** | green-check lock |
 | **Hover Runner** | daily quota — phrases played | **20** · nag @5 | green-check lock |
 | **Juice Squeeze** | daily quota — phrases built | **20** · nag @5 | green-check lock |
 | **Hanzipan** | daily quota — new characters | **20** · nag @5 | green-check lock |
@@ -27,8 +27,8 @@ retunes a live gate instantly (both directions, no reload).
 | **Corpán City / Teletron** | excluded for now (preview) | — | — |
 
 Surfaces/limits live in `quotas.ts`:
-`phrase_flips` 20 · `tutomaton_daily` 20 · `parlometron_daily` 15 ·
-`hover_phrases` 20 · `juice_phrases` 20 · `hanzipan_chars` 20 (all nag every 5).
+`phrase_flips` 20 · `tutomaton_daily` 20 · `parlometron_daily` 10 (no nag) ·
+`hover_phrases` 20 · `juice_phrases` 20 · `hanzipan_chars` 20 (rest nag every 5).
 Beatlounge is `mode:"timed"`, `intervalMs: 5·60·1000` (not in the daily registry).
 
 ---
@@ -72,7 +72,7 @@ On-device inference ≈ $0, so this is about **value perception**, not compute.
 |---|---|---|---|
 | Tutomaton | 20 msgs | keep tight (15–20) | highest-value (on-device tutor) → strongest upgrade pull |
 | Phrase Flip | 20 new | test 15–25 | core loop; generous for casual, blown through by the keen |
-| Parlometron | 15 rounds | hold | speaking is effortful; 15 is a real session |
+| Parlometron | 10 new phrases (re-practice free) | hold | new phrases are the scarce unit; drilling seen phrases on-device is unlimited, so 10/day is generous |
 | Hover / Juice / Hanzipan | 20 | **more generous (25–30)** | fun, convert indirectly — don't frustrate for little conversion |
 | Beatlounge | ~5 min soft | stretch to ~7–10 min | creative flow; a hard cap would kill it |
 | Readers | ~⅓ preview | hold | proven hook |

@@ -66,9 +66,9 @@ describe("QUOTAS registry", () => {
     })
     expect(QUOTAS.parlometron_daily).toMatchObject({
       packId: "pronunciation_coach",
-      dailyLimit: 15,
-      softNagEvery: 5,
-      unitLabel: "rounds",
+      dailyLimit: 10,
+      softNagEvery: 0,
+      unitLabel: "phrases",
     })
     expect(QUOTAS.hover_phrases).toMatchObject({ packId: "hover-runner", dailyLimit: 20 })
     expect(QUOTAS.juice_phrases).toMatchObject({ packId: "juice_squeeze", dailyLimit: 20 })
@@ -241,12 +241,12 @@ describe("createDailyQuota", () => {
       isSubscribed: () => false,
       requestDailyLock: (d) => locks.push(d),
     })
-    // 15 free rounds (the registry value), then a hard lock.
-    expect(gate.remaining()).toBe(15)
-    for (let i = 0; i < 15; i++) gate.note()
+    // 10 free new phrases (the registry value), no soft nag, then a hard lock.
+    expect(gate.remaining()).toBe(10)
+    for (let i = 0; i < 10; i++) gate.note()
     expect(gate.remaining()).toBe(0)
     expect(gate.isBlocked()).toBe(true)
-    expect(locks.at(-1)).toMatchObject({ doneToday: 15, limit: 15, unitLabel: "rounds" })
+    expect(locks.at(-1)).toMatchObject({ doneToday: 10, limit: 10, unitLabel: "phrases" })
     // persisted under the standard key
     expect(storage.dump["corpan:gate:pronunciation_coach:parlometron_daily"]).toBeTruthy()
   })

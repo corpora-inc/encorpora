@@ -45,13 +45,17 @@ export const QUOTAS = {
     softNagEvery: 5,
     unitLabel: "phrases",
   },
-  // pronunciation-coach (Parlometron) — solo + multiplayer share this count
+  // pronunciation-coach (Parlometron) — solo + multiplayer share this count.
+  // Gated like phrase-flip: only acquiring a NEW phrase counts. Re-practicing
+  // (scoring) any phrase already in history is unlimited and free, so a free
+  // user can drill their on-device model all day. 10 new phrases/day, NO soft
+  // nag (softNagEvery 0) — just the daily accomplishment-lock at the cap.
   parlometron_daily: {
     packId: "pronunciation_coach",
     surface: "parlometron_daily",
-    dailyLimit: 15,
-    softNagEvery: 5,
-    unitLabel: "rounds",
+    dailyLimit: 10,
+    softNagEvery: 0,
+    unitLabel: "phrases",
   },
   // hover-runner
   hover_phrases: {
