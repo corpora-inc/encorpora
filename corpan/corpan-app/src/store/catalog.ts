@@ -3,6 +3,7 @@ import { createJSONStorage, persist } from "zustand/middleware"
 import {
   fetchGameCatalogFresh,
   getDefaultCatalog,
+  withDevReaders,
   type CatalogGame,
 } from "../contentPacks/catalog"
 import { getNetworkStatus, listenToNetworkChanges } from "../utils/network"
@@ -109,7 +110,9 @@ export const useCatalogStore = create<CatalogState>()(
             set({ lastFetched: now, lastChecked: now })
           } else if (result.status === "ok") {
             set({
-              catalog: result.catalog,
+              // DEV: keep the locally-served reader builds over the remote ones
+              // (no-op in prod) so a dev device tests the in-development reader.
+              catalog: withDevReaders(result.catalog),
               etag: result.validators.etag ?? null,
               lastModified: result.validators.lastModified ?? null,
               lastFetched: now,

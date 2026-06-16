@@ -388,6 +388,23 @@ const parsePurchase = (value: unknown): PurchaseInfo | undefined => {
 export const getDefaultCatalog = () =>
   import.meta.env.DEV ? DEV_CATALOG : DEFAULT_CATALOG
 
+/** Reader pack ids the dev catalog serves locally (the in-development build). */
+const DEV_LOCAL_READER_IDS = new Set(["earthgate_reader", "stargate_reader"])
+
+/**
+ * In DEV, ensure the locally-served reader packs (`DEV_CATALOG`, pointing at the
+ * vite `/packs` middleware) are present and take precedence over any remote
+ * entry of the same id — so a dev device installs + tests the LOCAL reader build
+ * (with the first-run seed) instead of the published one. No-op in production.
+ */
+export function withDevReaders(catalog: CatalogGame[]): CatalogGame[] {
+  if (!import.meta.env.DEV) return catalog
+  const devReaders = DEV_CATALOG.filter((g) => DEV_LOCAL_READER_IDS.has(g.id))
+  if (devReaders.length === 0) return catalog
+  const rest = catalog.filter((g) => !DEV_LOCAL_READER_IDS.has(g.id))
+  return [...devReaders, ...rest]
+}
+
 const parseCatalog = (data: unknown): CatalogGame[] | null => {
   if (!Array.isArray(data)) return null
   const parsed: CatalogGame[] = []

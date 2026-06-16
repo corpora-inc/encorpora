@@ -580,17 +580,26 @@ export default function App() {
         .find((g) => g.id === packId);
     let entry = findEntry();
     // The game catalog fetches asynchronously; on a cold first run it may not be
-    // loaded yet when onboarding seeds this install. Await one fetch before
+    // loaded yet when onboarding seeds this install. Force a fresh fetch before
     // giving up so the reader/pack is actually found + installs in time.
     if (!entry?.manifestUrl) {
       try {
-        await useCatalogStore.getState().fetchCatalog();
+        await useCatalogStore.getState().fetchCatalog(true);
       } catch (err) {
         console.warn("[razzle] catalog fetch for quiet install failed:", err);
       }
       entry = findEntry();
     }
-    if (!entry?.manifestUrl) return;
+    if (!entry?.manifestUrl) {
+      console.warn(
+        "[razzle] quietInstall: no catalog entry for",
+        packId,
+        "— catalog ids:",
+        useCatalogStore.getState().getCatalog().map((g) => g.id),
+      );
+      return;
+    }
+    console.log("[razzle] quietInstall", packId, "→", entry.manifestUrl);
     try {
       const { installPack } = await import("@/contentPacks/install");
       const result = await installPack({
@@ -607,6 +616,7 @@ export default function App() {
         imageUrl: entry.imageUrl,
         source: result.source,
       });
+      console.log("[razzle] quietInstall DONE", packId, result.version);
     } catch (err) {
       console.warn("[razzle] quiet install failed for", packId, err);
     }

@@ -144,6 +144,13 @@ export async function fetchJsonFresh<T>(
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     if (attempt > 0) await sleep(backoffDelayMs(attempt - 1))
     try {
+      // Conditional-GET headers (If-None-Match / If-Modified-Since) are NOT
+      // CORS-safelisted, so they trigger a preflight OPTIONS. A CDN that doesn't
+      // answer preflight (observed on CloudFront from the Tauri WebView origin)
+      // makes the request fail outright. So we only send the conditional headers
+      // on the FIRST attempt (304 fast-path where the CDN supports it); every
+      // retry is a plain GET, which always works. Net: the optimization stays
+      // where it's supported and we never get stuck unable to fetch at all.
       const res = await fetchWithTimeout(
         url,
         {
@@ -151,7 +158,7 @@ export async function fetchJsonFresh<T>(
           // manage freshness explicitly via the validators below, which dodges
           // the stale-cache class of bugs entirely.
           cache: "no-store",
-          headers: conditionalHeaders(opts.validators),
+          headers: attempt === 0 ? conditionalHeaders(opts.validators) : {},
         },
         timeoutMs,
       )

@@ -88,6 +88,11 @@ function tt(key: string, defaultValue: string, params?: Record<string, unknown>)
 const DEFAULT_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog-v2.json"
 const FALLBACK_CDN_URL = "https://d38iwc9748jekz.cloudfront.net/catalog.json"
 
+/** The book a brand-new reader user is seeded into when their library is empty:
+ *  the Tropical Rainforest (Biomes) — free preview narrations in 20+ languages,
+ *  so any reasonable stack gets content. Overridable via the host's `seedBookId`. */
+const DEFAULT_SEED_BOOK = "book_biomes_tropical_rainforest"
+
 // Anonymous analytics endpoint — CloudFront in front of API Gateway in front
 // of the analytics ingest Lambda. CloudFront enriches the request with the
 // viewer's country header before it reaches the Lambda. The IP itself is
@@ -731,19 +736,16 @@ export function createAppShell(
     // Pick most recently installed
     switchToNarration(installed[0].narrationId)
   } else {
-    // Nothing installed. A brand-new user who landed here from onboarding carries
-    // a `seedBookId` → auto-download the FREE preview narrations of that book for
-    // their stack and open their primary language ready to play (the instant
-    // "wow"). Otherwise fall back to the browse onboarding.
+    // Nothing installed → the first-run "instant wow": auto-download the FREE
+    // preview narrations of a default book for the user's stack and open it
+    // ready to play. Self-sufficient on PURPOSE — we seed whenever the library
+    // is empty, whether or not onboarding passed a `seedBookId` (so opening a
+    // freshly-installed reader from anywhere still gets content). The host param
+    // only overrides WHICH book. On any failure we degrade to browse.
     const seedBookId =
-      typeof opts.initialState?.seedBookId === "string"
-        ? (opts.initialState.seedBookId as string)
-        : null
-    if (seedBookId) {
-      void seedFirstBook(seedBookId)
-    } else {
-      showBrowseOnboarding()
-    }
+      (typeof opts.initialState?.seedBookId === "string" && opts.initialState.seedBookId) ||
+      DEFAULT_SEED_BOOK
+    void seedFirstBook(seedBookId)
   }
 
   function showBrowseOnboarding(): void {
@@ -755,43 +757,114 @@ export function createAppShell(
     })
   }
 
+  /** Resilient catalog fetch for the seed — a couple of attempts before we give
+   *  up (the resilient layer already retries per call; this rides out a longer
+   *  outage on a cold launch). */
+  async function fetchCatalogForSeed(): Promise<CatalogNarrationEntry[] | null> {
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const catalog = await fetchCatalog(cdnUrl, { fallbackUrl: FALLBACK_CDN_URL })
+        if (catalog?.narrations?.length) return catalog.narrations
+      } catch (err) {
+        console.warn(`[appShell] seed catalog fetch attempt ${attempt} failed:`, err)
+      }
+      await new Promise((r) => setTimeout(r, 600 * attempt))
+    }
+    return null
+  }
+
   /**
-   * First-run "instant wow": a brand-new reader user, seeded from onboarding with
-   * a default book. Download the FREE preview narrations of that book for the
-   * user's stack languages — the PRIMARY (languages[0]) FIRST so we can open it
-   * ready to play immediately, then the rest of the stack in the BACKGROUND (the
-   * narration switcher refreshes as each lands, so the user can flip languages
-   * the moment each is ready). Free for everyone — preview ZIPs are public, no
-   * auth. Falls back to the normal browse onboarding if anything's unavailable.
+   * First-run "instant wow": auto-download the FREE preview narrations of the
+   * seed book for the user's stack languages — the PRIMARY first (opens ready to
+   * play), the rest in the BACKGROUND (the switcher refreshes as each lands).
+   * Free for everyone (preview ZIPs are public). Resilient: retries the catalog,
+   * falls back across languages (stack → English → any), and only degrades to
+   * the browse screen when there's genuinely nothing to install.
    */
   async function seedFirstBook(bookId: string): Promise<void> {
     const base = (t: string) => (t.split("-")[0] || t).toLowerCase()
     try {
-      const stack = (stackHost.getStackConfig?.()?.languages ?? []).filter(Boolean)
-      const primary = stack[0]
-      if (!primary) return showBrowseOnboarding()
-      const catalog = await fetchCatalog(cdnUrl, { fallbackUrl: FALLBACK_CDN_URL })
-      allNarrations = catalog.narrations
-      // One free-preview narration per stack language for the seed book.
-      const byLang = new Map<string, CatalogNarrationEntry>()
-      for (const n of catalog.narrations) {
+      const rawStack = (stackHost.getStackConfig?.()?.languages ?? []).filter(Boolean)
+      // Never bail on an empty stack — default to English so the user always
+      // gets a book to open.
+      const stack = rawStack.length ? rawStack : ["en"]
+      console.log("[appShell] seedFirstBook start", { bookId, stack })
+
+      const narrations = await fetchCatalogForSeed()
+      if (!narrations) {
+        console.warn("[appShell] seedFirstBook: catalog unavailable → browse")
+        return showBrowseOnboarding()
+      }
+      allNarrations = narrations
+
+      // Free-preview narrations of the seed book, indexed by base language.
+      const previewByLang = new Map<string, CatalogNarrationEntry>()
+      for (const n of narrations) {
         if (n.bookId !== bookId || !n.preview) continue
         const b = base(n.language)
-        if (stack.some((l) => base(l) === b) && !byLang.has(b)) byLang.set(b, n)
+        if (!previewByLang.has(b)) previewByLang.set(b, n)
       }
-      const primaryEntry = byLang.get(base(primary))
-      if (!primaryEntry) return showBrowseOnboarding()
-      // Primary first → open it ready to play.
-      const res = await installNarration(primaryEntry)
-      if (!res.ok || !isInstalled(primaryEntry.id)) return showBrowseOnboarding()
+      console.log("[appShell] seedFirstBook previews", {
+        book: bookId,
+        langs: [...previewByLang.keys()],
+      })
+      if (previewByLang.size === 0) {
+        console.warn("[appShell] seedFirstBook: no preview narrations for", bookId, "→ browse")
+        return showBrowseOnboarding()
+      }
+
+      // The narrations to install = the user's STACK languages that have a free
+      // preview (in stack order), deduped. We install ONLY the stack — not every
+      // language the book offers — so the switcher mirrors the user's stack.
+      const stackEntries: CatalogNarrationEntry[] = []
+      const seen = new Set<string>()
+      for (const l of stack) {
+        const b = base(l)
+        const e = previewByLang.get(b)
+        if (e && !seen.has(b)) { seen.add(b); stackEntries.push(e) }
+      }
+      // Primary = first stack language with a preview; if the stack has none,
+      // fall back to English, then any available preview, so we ALWAYS open a
+      // book (the instant "wow" never degrades to an empty screen).
+      const primaryEntry =
+        stackEntries[0] ?? previewByLang.get("en") ?? [...previewByLang.values()][0]
+      if (!primaryEntry) {
+        console.warn("[appShell] seedFirstBook: no installable narration → browse")
+        return showBrowseOnboarding()
+      }
+      // Background = the rest of the stack (never the off-stack extras).
+      const background = stackEntries.filter((e) => e.id !== primaryEntry.id)
+      console.log("[appShell] seedFirstBook installing primary", primaryEntry?.language, primaryEntry?.id)
+      let res = await installNarration(primaryEntry)
+      if (!res.ok) {
+        res = await installNarration(primaryEntry) // one retry
+      }
+      if (!res.ok || !isInstalled(primaryEntry.id)) {
+        console.warn("[appShell] seedFirstBook: primary install failed → browse", res)
+        return showBrowseOnboarding()
+      }
+      console.log("[appShell] seedFirstBook primary installed → opening", primaryEntry.language)
       switchToNarration(primaryEntry.id)
-      // Background: install the rest of the stack; refresh the switcher per land.
-      for (const [b, entry] of byLang) {
-        if (b === base(primary)) continue
-        void installNarration(entry)
-          .then((r) => { if (r.ok) refreshSwitchers() })
-          .catch(() => {})
-      }
+
+      // Background: install the rest of the stack SEQUENTIALLY — concurrent native
+      // installs (content_packs_install_from_url) can collide on shared temp/lock
+      // state, so we queue them one at a time. The switcher refreshes as each
+      // lands, so the user can flip languages the moment each is ready.
+      void (async () => {
+        for (const entry of background) {
+          try {
+            const r = await installNarration(entry)
+            if (r.ok) {
+              console.log("[appShell] seedFirstBook bg installed", entry.language)
+              refreshSwitchers()
+            } else {
+              console.warn("[appShell] seedFirstBook bg failed", entry.language, r)
+            }
+          } catch (e) {
+            console.warn("[appShell] seedFirstBook bg error", entry.language, e)
+          }
+        }
+      })()
     } catch (err) {
       console.warn("[appShell] seedFirstBook failed:", err)
       showBrowseOnboarding()

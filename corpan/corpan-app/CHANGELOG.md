@@ -7,6 +7,26 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Catalog/network fetches no longer fail under CORS preflight.** The resilient
+  catalog fetch sent conditional-GET headers (`If-None-Match` / `If-Modified-
+  Since`) on every request; those aren't CORS-safelisted, so they trigger a
+  preflight `OPTIONS` the CDN doesn't answer — once an ETag was cached, *every*
+  catalog fetch failed (game catalog, phrase-pack catalog, AND the reader
+  narration catalog). The game catalog then fell back to the built-in default
+  set, which is why a brand-new "Read" user landed in Phrase Flip and the reader
+  seed found nothing. Now the conditional headers are sent only on the FIRST
+  attempt (304 fast-path where supported); every retry is a plain GET, which
+  always works.
+- **Onboarding "Read" reliably lands in the reader (not Phrase Flip).**
+  `resolveLanding` no longer gates routing on the async-loaded catalog (a cold
+  first run hadn't fetched it yet); it routes on a static known-pack set, the
+  razzle holds until the chosen pack is installed, and `quietInstall` forces a
+  catalog fetch before giving up. The reader seed is now self-sufficient
+  (seeds whenever the library is empty), retries the catalog, installs the stack
+  languages sequentially (concurrent native installs collided), and falls back
+  across languages so it always opens a book.
+
 ### Added
 - **Onboarding "where should we begin?" + a first-launch razzle-dazzle.** The
   final onboarding step is now a single deterministic question — Read / Study /
