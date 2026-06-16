@@ -8,11 +8,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Fixed
-- **Daily wall now engages for the core phrase-flip.** The host-capability
-  marker (`__CORPAN_HOST_CAPS.dailyLock`) was only set inside `ContentPackHost`,
-  which mounts for content packs — not the core app — so the phrase-flip daily
-  cap silently degraded to "soft" even on a current host. It's now set app-wide
-  at startup. (Subscribers still never see a wall.)
+- **Phrase-flip daily wall / nag now actually fires.** Two bugs hid it: (1) the
+  host-capability marker (`__CORPAN_HOST_CAPS.dailyLock`) was only set inside
+  `ContentPackHost` (content packs), not the core app — now set app-wide at
+  startup; and (2) the gate was constructed in render behind a `ref === null`
+  guard while the effect cleanup `dispose()`d it, so React StrictMode's
+  mount→cleanup→mount left a permanently-disposed gate (every `note()` a no-op —
+  no nag/lock no matter how many phrases you flipped). The gate is now built
+  inside the effect, so each mount gets a fresh one. (Subscribers never see a wall.)
 - **No more double rating prompt.** Exiting an experience fired BOTH the OS
   native review and the in-app "Enjoying Corpán?" card. The in-app card is now
   the single rating surface, and its 5-star button pops the OS-native review
