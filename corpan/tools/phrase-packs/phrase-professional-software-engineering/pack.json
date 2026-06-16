@@ -1,0 +1,14 @@
+{
+  "id": "phrase-professional-software-engineering",
+  "version": "0.1.0",
+  "name": "Software Engineering",
+  "description": "Professional language for code reviews, incidents, releases, architecture, product requirements, and technical tradeoffs.",
+  "category": "professional",
+  "topic": "Software Engineering",
+  "icon": "code-2",
+  "accent_color": "#4f7cff",
+  "purchase": {"type": "free"},
+  "tags": ["professional", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

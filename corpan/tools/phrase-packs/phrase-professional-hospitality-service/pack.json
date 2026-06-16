@@ -1,0 +1,14 @@
+{
+  "id": "phrase-professional-hospitality-service",
+  "version": "0.1.0",
+  "name": "Hospitality Service",
+  "description": "Professional language for front desk work, restaurant service, housekeeping, guest recovery, and daily operations.",
+  "category": "professional",
+  "topic": "Hospitality Service",
+  "icon": "concierge-bell",
+  "accent_color": "#c2410c",
+  "purchase": {"type": "free"},
+  "tags": ["professional", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

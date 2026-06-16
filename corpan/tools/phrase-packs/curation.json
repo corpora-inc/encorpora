@@ -1467,6 +1467,29 @@
         "zh-Hans": "电脑与现代数字生活。",
         "zh-Hant": "電腦與現代數位生活"
       }
+    },
+    {
+      "id": "professional",
+      "label": "Professional",
+      "description": "Field-specific packs for workplace vocabulary and professional communication.",
+      "packIds": [
+        "phrase-professional-healthcare-clinical",
+        "phrase-professional-software-engineering",
+        "phrase-professional-education-teaching",
+        "phrase-professional-legal-services",
+        "phrase-professional-finance-accounting",
+        "phrase-professional-sales-customer-success",
+        "phrase-professional-hospitality-service",
+        "phrase-professional-construction-trades",
+        "phrase-professional-logistics-supply-chain",
+        "phrase-professional-lab-research"
+      ],
+      "label_localized": {
+        "en": "Professional"
+      },
+      "description_localized": {
+        "en": "Field-specific packs for workplace vocabulary and professional communication."
+      }
     }
   ]
 }

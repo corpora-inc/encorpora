@@ -40,6 +40,15 @@ em = {s['id']: s for s in en['segments']}
 xm = {s['id']: s for s in xx['segments']}
 assert sorted(em) == sorted(xm), f"id mismatch: en={len(em)} ${LANG}={len(xm)}"
 digit_hits, dash_hits, passthrough, mismatch = [], [], [], []
+_NIKKUD_RE = re.compile(r'[ְ-ׇֽֿׁׂׅׄ]')
+def _norm(s):
+    # Documented hyphen→space divergence (feedback_tts_text_divergence.md):
+    # display keeps language-mandatory hyphens + em/en-dashes (' — '), tts.text strips them.
+    # Hebrew nikkud (feedback_hebrew_use_gemini_tts.md): display has no nikkud,
+    # tts.text adds full nikkud — strip for comparison.
+    s = s.replace('—','-').replace('–','-').replace('־','-')
+    s = _NIKKUD_RE.sub('', s)
+    return ' '.join(s.replace('-',' ').split())
 for sid, x in xm.items():
     tts = (x.get('tts') or {}).get('text', '')
     if re.search(r'\d', tts): digit_hits.append(sid)
@@ -47,13 +56,15 @@ for sid, x in xm.items():
     e_text = em[sid].get('text', '')
     if x.get('text','') == e_text and len(e_text.split()) > 2 and x.get('block_type') == 'text':
         passthrough.append(sid)
-    if x.get('block_type') == 'text' and x.get('text','') != tts:
+    # Allow ONLY hyphen-strip divergence between text and tts.text. Any other
+    # divergence is a creative rephrase and breaks reader alignment.
+    if x.get('block_type') == 'text' and _norm(x.get('text','')) != _norm(tts):
         mismatch.append(sid)
 fail = []
 if digit_hits:  fail.append(f"digits in tts.text: {digit_hits[:5]}")
 if dash_hits:   fail.append(f"dashes in tts.text: {dash_hits[:5]}")
 if passthrough: fail.append(f"untranslated passthrough: {passthrough[:5]}")
-if mismatch:    fail.append(f"text != tts.text: {mismatch[:5]}")
+if mismatch:    fail.append(f"text/tts.text divergence beyond hyphen-strip: {mismatch[:5]}")
 if fail:
     print("VALIDATION FAILED:")
     for f in fail: print("  ", f)

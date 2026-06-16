@@ -822,6 +822,46 @@ BOOKS: list[BookSpec] = [
             "rendered animals, no text. " + COMMON_TAIL
         ),
     ),
+    BookSpec(
+        book_id="book_biomes_tropical_savanna",
+        title="The Tropical Savanna",
+        description=(
+            "A short, plain-spoken tour of the tropical savanna — wide "
+            "grasslands with scattered trees, a long dry season and a short "
+            "wet one, the huge herds and the quiet hunters, and the people "
+            "who have always lived alongside them. Book two of the Biomes of "
+            "the World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a wide tropical savanna at golden hour. "
+            "A single flat-topped acacia tree stands alone in tall pale-gold "
+            "grass, with a low horizon and a vast warm sky behind it. A line "
+            "of distant low hills in soft haze. Painterly digital art, "
+            "restrained palette of pale gold, warm sandy ochre, and dusty "
+            "sage green, contemplative and spacious, deep horizon, no people, "
+            "no clearly rendered animals, no text. " + COMMON_TAIL
+        ),
+    ),
+    BookSpec(
+        book_id="book_biomes_hot_desert",
+        title="The Hot Desert",
+        description=(
+            "A short, plain-spoken tour of the hot desert — burning days "
+            "and cold nights, rock and sand, the clever plants and animals "
+            "that have learned to wait out the dry, and the people who "
+            "travel with the wind across these great open lands. Book "
+            "three of the Biomes of the World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a vast hot desert at late afternoon. "
+            "Tall sand dunes sweep across the frame, with a low warm sun "
+            "casting long shadows across the ridges. Distant rocky hills "
+            "in soft haze on the horizon. Painterly digital art, restrained "
+            "palette of warm peach, pale ochre, terracotta, and dusty rose "
+            "in the sky, contemplative and spacious, deep horizon, no "
+            "people, no clearly rendered animals, no text. " + COMMON_TAIL
+        ),
+    ),
 ]
 
 

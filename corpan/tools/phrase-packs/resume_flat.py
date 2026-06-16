@@ -210,7 +210,7 @@ def main() -> int:
     for round_n in range(1, ns.max_rounds + 1):
         work = audit()
         if not work:
-            print(f"\n[round {round_n}] CONVERGED — 0 packs short, all 24 at 51/51 langs")
+            print(f"\n[round {round_n}] CONVERGED — 0 packs short, all 24 at 54/54 langs")
             return 0
         print(f"\n[round {round_n}] {len(work)} (pack,lang) units to fill, "
               f"{ns.workers} workers")

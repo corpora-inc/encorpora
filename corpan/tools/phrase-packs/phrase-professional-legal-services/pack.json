@@ -1,0 +1,14 @@
+{
+  "id": "phrase-professional-legal-services",
+  "version": "0.1.0",
+  "name": "Legal Services",
+  "description": "Professional language for intake, contracts, filings, client advice, negotiation, privilege, and legal deadlines.",
+  "category": "professional",
+  "topic": "Legal Services",
+  "icon": "scale",
+  "accent_color": "#6d5dfc",
+  "purchase": {"type": "free"},
+  "tags": ["professional", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

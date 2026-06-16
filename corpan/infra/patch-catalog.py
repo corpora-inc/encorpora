@@ -588,6 +588,26 @@ BOOK_META = {
         ),
         "tags": ["nature", "biomes", "science", "language-learning"],
     },
+    "book_biomes_tropical_savanna": {
+        "description": (
+            "A short, plain-spoken tour of the tropical savanna — wide "
+            "grasslands with scattered trees, a long dry season and a short "
+            "wet one, the huge herds and the quiet hunters, and the people "
+            "who have always lived alongside them. Book two of the Biomes "
+            "of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+    },
+    "book_biomes_hot_desert": {
+        "description": (
+            "A short, plain-spoken tour of the hot desert — burning days "
+            "and cold nights, rock and sand, the clever plants and animals "
+            "that have learned to wait out the dry, and the people who "
+            "travel with the wind across these great open lands. Book "
+            "three of the Biomes of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+    },
 }
 
 

@@ -252,7 +252,7 @@ def translate_one(lang: str, pack_dir: Path, topic: str, phrases: list[dict],
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("pack_dir", help="Path to the pack input directory")
-    p.add_argument("--langs", help="Comma-separated codes (default: all 51 minus en)")
+    p.add_argument("--langs", help="Comma-separated codes (default: all 54 minus en)")
     p.add_argument("--workers", type=int, default=12)
     p.add_argument("--model", help="Codex model override (-c model=...)")
     p.add_argument("--effort", default="low", choices=["minimal", "low", "medium", "high", "xhigh"])

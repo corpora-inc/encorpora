@@ -8,7 +8,7 @@ Order of operations (per pack):
   2. Append PATCHES[id] to phrases.json (in-place)
   3. Bump pack.json version 0.1.0 -> 0.1.1
   4. Prepend a [0.1.1] section to CHANGELOG.md
-  5. Run incremental_translate.py (51 langs, parallel)
+  5. Run incremental_translate.py (54 langs, parallel)
   6. Build SQLite
   7. Publish (sequential at the orchestrator level — catalog isn't parallel-safe)
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Localize pack + curation-group metadata into all 51 ALL_LANGUAGES locales.
+Localize pack + curation-group metadata into all 54 ALL_LANGUAGES locales.
 
 For each pack.json: translate name, description, topic → fill
   name_localized, description_localized, topic_localized maps.

@@ -1,0 +1,14 @@
+{
+  "id": "phrase-professional-healthcare-clinical",
+  "version": "0.1.0",
+  "name": "Clinical Healthcare",
+  "description": "Professional language for patient care, clinical notes, handoffs, triage, medication safety, and discharge planning.",
+  "category": "professional",
+  "topic": "Clinical Healthcare",
+  "icon": "stethoscope",
+  "accent_color": "#2f9e8f",
+  "purchase": {"type": "free"},
+  "tags": ["professional", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

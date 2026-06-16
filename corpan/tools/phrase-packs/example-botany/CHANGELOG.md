@@ -1,8 +1,8 @@
 # Changelog — Botany Basics phrase pack
 
 `phrase-botany-basics`. The reference example phrase pack — also a real,
-shippable pack. 80 phrases on everyday plant-life (flowers, leaves,
-photosynthesis, gardens), translated into the full 51-language
+shippable pack. 505 phrases on everyday plant-life (flowers, leaves,
+photosynthesis, gardens), translated into the full 54-language
 ALL_LANGUAGES set.
 
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
@@ -10,6 +10,12 @@ Versioning: [SemVer](https://semver.org/spec/v2.0.0.html).
 Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
+
+## [0.2.1] - 2026-06-15
+### Added
+- Added Tagalog (`tl`), Javanese (`jv`), and Sundanese (`su`) phrase
+  translations, bringing the pack to the current 54-language
+  ALL_LANGUAGES set.
 
 ## [0.2.0] - 2026-05-20
 ### Added

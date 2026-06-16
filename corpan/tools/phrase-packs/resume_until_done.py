@@ -85,7 +85,7 @@ def main() -> int:
     for round_n in range(1, ns.max_rounds + 1):
         gaps = audit()
         if not gaps:
-            print(f"\n[round {round_n}] CONVERGED: all 24 packs at 51/51 langs")
+            print(f"\n[round {round_n}] CONVERGED: all 24 packs at 54/54 langs")
             return 0
         total_lang_slots = sum(len(v) for v in gaps.values())
         print(f"\n[round {round_n}] {len(gaps)} packs short; {total_lang_slots} lang-slots to fill")
