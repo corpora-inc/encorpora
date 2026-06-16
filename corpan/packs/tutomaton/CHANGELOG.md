@@ -35,6 +35,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     the 4B all 50. (The small models reliably do the major Romance/Germanic/
     Slavic/CJK languages and dodge or garble most Indic, Japanese, Korean, etc.)
 
+- **Concise-by-default replies, in the target language.** A tiny brevity
+  directive is appended to every tutor's (localized) system prompt so it doesn't
+  bury a learner in hundreds of words — and a stronger "short, simple sentences,
+  basic words" variant kicks in when the stack's CEFR level is beginner (A0/A1).
+  Authored natively in all 50 target languages so the system message stays in
+  one language.
 - **Non-thinking output for the small (hybrid) models.** Qwen3 0.6B/1.7B are
   hybrid reasoning models; the tutor sends the canonical non-thinking prefill
   (`noThink`) and a streaming `thinkFilter` strips any `<think>…</think>` from
@@ -52,6 +58,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   machine-generated like the rest; a native pass is welcome.)
 
 ### Fixed
+- **Opens on the language you're learning, not Arabic.** With no prior tutor
+  choice, Tutomaton now defaults to the user's first learning language
+  (`stackConfig.languages[1]`; `[0]` is native) instead of the alphabetically
+  first registry entry. Falls back to an installed module, then the first entry.
 - **No more dead dictation mic on Android.** The in-app mic is hidden on Android,
   where native dictation (`tauri-plugin-asr-native`) isn't device-validated yet
   and silently fails (the plugin checks but never *requests* `RECORD_AUDIO`, and

@@ -39,6 +39,7 @@ import {
 import { OrderedSpeechQueue, StreamingSentenceBuffer } from "./streamingTts"
 import { scrubForSpeech, scrubOutput } from "./textScrub"
 import { makeThinkFilter } from "./thinkFilter"
+import { brevityDirective } from "./brevity"
 import {
   chooseTutorVoice,
   loadTutorVoiceId,
@@ -62,7 +63,7 @@ type EntitlementSnapshot = {
 // languages[0] is their NATIVE language and languages[1..] are the ones they're
 // learning. We use it to float the user's own languages to the top of the picker.
 type MountInit = {
-  stackConfig?: { languages?: string[] }
+  stackConfig?: { languages?: string[]; levels?: string[] }
   isPlus?: boolean
   entitlement?: EntitlementSnapshot
 }
@@ -257,6 +258,12 @@ const PackModule: ContentPackModule = {
     const stackLangs: string[] = Array.isArray(initialState?.stackConfig?.languages)
       ? initialState!.stackConfig!.languages!.filter((c) => typeof c === "string")
       : []
+    // CEFR levels from the active stack (default A0–A2 → beginner). Used to keep
+    // tutor replies extra-simple for beginners so a newcomer isn't overwhelmed.
+    const stackLevels: string[] = Array.isArray(initialState?.stackConfig?.levels)
+      ? initialState!.stackConfig!.levels!.filter((c) => typeof c === "string")
+      : []
+    const isBeginner = stackLevels.length === 0 || stackLevels.some((l) => l === "A0" || l === "A1")
     // Chrome is localized into the user's NATIVE language (stack languages[0]),
     // falling back to the device locale, then English. `t()` localizes a key.
     const uiLang = stackLangs[0] || (navigator.language || "en").split("-")[0]
@@ -790,6 +797,9 @@ const PackModule: ContentPackModule = {
     const learnerName = learnerEntry ? nativeName(learnerEntry) : learnerCode
     const defaultPromptFor = (lang: LanguageRuntime): string => [
       lang.systemPrompt.trim(),
+      // Tiny, target-language brevity directive so the tutor stays concise and
+      // doesn't overwhelm a learner (stronger for beginners per the CEFR stack).
+      brevityDirective(lang.code, isBeginner),
       learnerName ? `Learner's native language: ${learnerName}.` : "",
     ].filter(Boolean).join("\n")
     const tuningFor = (lang: LanguageRuntime): ModelTuning =>
@@ -2093,8 +2103,15 @@ const PackModule: ContentPackModule = {
     const installedCodes = await langMgr.installed()
     installedSet = new Set(installedCodes)
     renderLangs()
-    // Restore the last tutor first; else first installed; else first in registry.
-    const initialCode = loadLastLang() || installedCodes[0] || registry[0]?.code
+    // Default tutor: the user's last choice, else their FIRST LEARNING language
+    // (stackLangs[1..]; [0] is native) so we open on what they're actually
+    // learning — not whatever sorts first in the registry (it was defaulting to
+    // Arabic). Fall back to an installed module, then the first registry entry.
+    const inRegistry = (c: string): string | undefined =>
+      registry.find((r) => r.code === c || r.code.split("-")[0] === c.split("-")[0])?.code
+    const firstLearningTutor = stackLangs.slice(1).map(inRegistry).find(Boolean)
+    const initialCode =
+      loadLastLang() || firstLearningTutor || installedCodes[0] || registry[0]?.code
     if (initialCode) await switchLanguage(initialCode)
     // Out of free quota on entry → DON'T wake the on-device model (wasted: they
     // can't send). Pop the accomplishment lock straight away; the setup screen
