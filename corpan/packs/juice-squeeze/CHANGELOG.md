@@ -9,6 +9,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.5] - 2026-06-16 — Daily-cap enforcement
+
+### Fixed
+- **Daily cap now HARD-enforces.** The gate counted completed phrases but never
+  blocked at the cap. Loading a new phrase to solve now checks `isBlocked()`
+  first: at the cap it re-shows the daily-lock overlay (`requestDailyLock()`)
+  instead of dealing another phrase — a hard wall until local midnight or
+  subscribe. Initial mount is exempt; subscribers never block.
+
 ## [0.1.4] - 2026-06-16 — Fix: pack never registered (blank/failed load)
 
 ### Fixed
@@ -20,11 +29,6 @@ Conventions: `corpan/CHANGELOGS.md`.
   juice_squeeze". Switched to `zustand/vanilla`'s `createStore` (the pack is a
   vanilla DOM game; all call sites use `.getState()`/`.subscribe()`). Rebuilt
   bundle contains the registry and no resolve-throw.
-- **Daily cap now HARD-enforces.** The gate counted completed phrases but never
-  blocked at the cap. Loading a new phrase to solve now checks `isBlocked()`
-  first: at the cap it re-shows the daily-lock overlay (`requestDailyLock()`)
-  instead of dealing another phrase — a hard wall until local midnight or
-  subscribe. Initial mount is exempt; subscribers never block.
 
 ### Changed
 - Upgraded Babylon.js **6.48 → 9.11** (latest stable). No source changes

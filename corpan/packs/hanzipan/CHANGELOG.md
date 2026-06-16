@@ -10,6 +10,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.3] - 2026-06-16 — Phone layout fixes + daily-cap enforcement
+
 ### Fixed
 - **Phones no longer crush the examples panel, in either orientation.** The
   viewport-fit layout (shell nails the screen, examples list scrolls inside its

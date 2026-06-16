@@ -14,6 +14,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-06-16 — Whisper-language gate, new-phrase metering, quota readout
+
 ### Added
 - **Graceful gate for languages whisper can't score.** Pronunciation scoring
   only covers whisper's recognized languages. The pack now mirrors that set

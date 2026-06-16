@@ -2,7 +2,7 @@
   "id": "corpan_city",
   "channel": "preview",
   "name": "Corpan City",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"

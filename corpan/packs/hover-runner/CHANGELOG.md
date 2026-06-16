@@ -10,6 +10,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-16 — Daily-cap enforcement + Babylon 9
+
 ### Fixed
 - **Daily cap now HARD-enforces.** The gate counted completed phrases but never
   blocked at the cap. After a free user completes the daily limit of phrases the

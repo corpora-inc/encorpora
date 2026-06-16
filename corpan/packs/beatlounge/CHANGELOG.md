@@ -5,6 +5,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-16 — Start fresh: Clear, Randomize, Demos
+
 ### Added
 - **Start fresh — Clear, Randomize, and Demos.** The Scenes drawer gains a
   "Start fresh" block for drastic change after you've saved. **Clear** wipes the
