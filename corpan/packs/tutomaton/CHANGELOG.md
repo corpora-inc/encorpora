@@ -5,6 +5,42 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **RAM-tiered model sizes — the tutor never OOM-crashes a device again.** It was
+  shipping one model (Qwen3-4B) that silently killed low-RAM phones (and even
+  crashed a 6 GB Android phone). Now it ships **three sizes — Qwen3 0.6B / 1.7B /
+  4B** — and picks the biggest that runs *safely* for the device's RAM:
+  - `modelTiering.ts` registry + pure `selectTier(totalRamMb)` → the
+    *recommended* size and each size's state (recommended / available /
+    try-anyway / disabled). 4B is recommended ≥7 GB, "try-anyway" (with a
+    warning) at 6 GB, disabled below ~5.5 GB.
+  - **Model-size picker** in the setup gate: every size is shown with its
+    per-device state — recommended badge, disabled+greyed (“needs a device with
+    more memory”, so it reads as the device's limit, not us withholding),
+    try-anyway, and a “smaller — may be less accurate” hint. The pick is
+    persisted and user-overridable. New strings localized into 46 languages.
+  - The 0.6B and 1.7B GGUFs are **hosted in production** (CloudFront);
+    `ModelManager` reads total RAM from the plugin and loads with a model-aware
+    context length.
+- **Non-thinking output for the small (hybrid) models.** Qwen3 0.6B/1.7B are
+  hybrid reasoning models; the tutor sends the canonical non-thinking prefill
+  (`noThink`) and a streaming `thinkFilter` strips any `<think>…</think>` from
+  the transcript *and* speech. A per-language **Thinking** toggle in the model
+  lab lets you switch reasoning on to A/B it.
+
+### Fixed
+- **Daily-cap composer no longer reads as an error.** Hitting the free tutor
+  cap previously turned the composer red (red field border + red "0 free
+  messages" placeholder, which truncated to "…user for"). The capped composer is
+  now calm/neutral — quietly inert, never alarming — so the shared green-check
+  accomplishment lock is the single cap surface. Tapping the capped composer now
+  re-pops that lock. Copy rewritten to warm/on-brand ("That's your free tutoring
+  for today") and "Corpan" corrected to "Corpán".
+
+### Note
+- Per-size language eval-gating (offering only the languages each small model
+  handles well) is the remaining quality step; until it lands, every size offers
+  all languages.
 ## [0.6.0] - 2026-06-15 — Honest language list + model defaults calibrated to Qwen3-4B
 
 ### Changed

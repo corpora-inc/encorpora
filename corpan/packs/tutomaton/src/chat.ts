@@ -604,6 +604,7 @@ const PackModule: ContentPackModule = {
             <div class="lt-setup-glyph" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></div>
             <h2 class="lt-setup-title">${t("setUpTutor")}</h2>
             <p class="lt-setup-body"></p>
+            <div class="lt-setup-sizes" role="radiogroup" aria-label="${t("modelSize")}" hidden></div>
             <div class="lt-setup-progress" hidden>
               <div class="lt-setup-bar"><div class="lt-setup-fill"></div></div>
               <div class="lt-setup-pct"></div>
@@ -654,6 +655,7 @@ const PackModule: ContentPackModule = {
     const $voiceList = container.querySelector<HTMLDivElement>(".lt-voice-list")!
     const $setup = container.querySelector<HTMLDivElement>(".lt-setup")!
     const $setupBody = container.querySelector<HTMLParagraphElement>(".lt-setup-body")!
+    const $setupSizes = container.querySelector<HTMLDivElement>(".lt-setup-sizes")!
     const $setupProgress = container.querySelector<HTMLDivElement>(".lt-setup-progress")!
     const $setupFill = container.querySelector<HTMLDivElement>(".lt-setup-fill")!
     const $setupPct = container.querySelector<HTMLDivElement>(".lt-setup-pct")!
@@ -770,6 +772,44 @@ const PackModule: ContentPackModule = {
 
     // ---------- model setup gate ----------
     let modelReady = false
+    // Render the size chips (0.6B/1.7B/4B) with their per-device state. Tapping a
+    // selectable size persists it and re-runs the setup gate for that size.
+    function renderSizePicker(show: boolean) {
+      const tier = modelMgr.deviceTier()
+      $setupSizes.hidden = !show || !tier || modelMgr.models().length < 2
+      if ($setupSizes.hidden || !tier) {
+        $setupSizes.replaceChildren()
+        return
+      }
+      const frag = document.createDocumentFragment()
+      for (const m of modelMgr.models()) {
+        const st = tier.stateById[m.id]
+        const chosen = tier.chosenId === m.id
+        const btn = document.createElement("button")
+        btn.type = "button"
+        btn.className =
+          `lt-size${chosen ? " is-chosen" : ""}` +
+          `${st === "disabled" ? " is-disabled" : ""}${st === "recommended" ? " is-rec" : ""}`
+        btn.setAttribute("role", "radio")
+        btn.setAttribute("aria-checked", String(chosen))
+        btn.disabled = st === "disabled"
+        const note =
+          st === "recommended" ? t("recommendedSize")
+          : st === "disabled" ? t("sizeNeedsMore")
+          : st === "try-anyway" ? t("sizeMaySlow")
+          : t("sizeSmallerQuality")
+        const name = document.createElement("span")
+        name.className = "lt-size-name"
+        name.textContent = m.paramLabel
+        const noteEl = document.createElement("span")
+        noteEl.className = "lt-size-note"
+        noteEl.textContent = note
+        btn.append(name, noteEl)
+        if (st !== "disabled") btn.addEventListener("click", () => void modelMgr.choose(m.id))
+        frag.appendChild(btn)
+      }
+      $setupSizes.replaceChildren(frag)
+    }
     function renderModelPhase(phase: ModelPhase) {
       modelReady = phase.kind === "ready"
       $setup.hidden = modelReady
@@ -783,6 +823,7 @@ const PackModule: ContentPackModule = {
         phase.kind === "installing" || phase.kind === "loading"
       $setupAction.hidden = busy
       $setupAction.disabled = busy
+      renderSizePicker(phase.kind === "needs-install" || phase.kind === "unsupported")
 
       switch (phase.kind) {
         case "checking":
@@ -794,10 +835,14 @@ const PackModule: ContentPackModule = {
           $setupAction.textContent = t("downloadTutor", { size: gb })
           break
         }
-        case "unsupported":
-          $setupBody.textContent = phase.message
+        case "unsupported": {
+          const ram = modelMgr.deviceTier()?.totalRamMb
+          $setupBody.textContent = ram
+            ? t("unsupportedDevice", { ram: `${Math.round(ram / 1024)} GB` })
+            : phase.message
           $setupAction.hidden = true
           break
+        }
         case "downloading":
           $setupBody.textContent = t("downloadingTutor")
           $setupFill.style.width = `${phase.pct}%`
@@ -1385,6 +1430,18 @@ const PackModule: ContentPackModule = {
 
     // ---------- send a turn ----------
     const $inputBar = container.querySelector<HTMLElement>(".lt-input")!
+    // When the daily cap is reached the composer is calm-but-inert (NOT a red
+    // error). Tapping it re-pops the shared green-check accomplishment lock —
+    // the lock is the ONE cap surface, so the capped composer hands off to it
+    // rather than sitting there doing nothing. Capture phase so it fires even
+    // though the field/send are disabled.
+    $inputBar.addEventListener(
+      "pointerdown",
+      () => {
+        if (quotaBlocked()) quotaGate.requestDailyLock()
+      },
+      true,
+    )
     let dictateSession: import("./languageManager").HostAsrSession | null = null
     let dictateLive = false
     let dictateStarting = false

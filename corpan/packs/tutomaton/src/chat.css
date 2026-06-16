@@ -578,13 +578,18 @@
   color: var(--lt-accent-2);
 }
 .lt-quota.is-empty {
-  color: #fca5a5;
+  /* Calm/neutral at the cap — NOT an error. The green-check accomplishment
+     lock is the communication; the composer just reads as gently unavailable. */
+  color: var(--lt-muted);
 }
 .lt-input.is-quota-empty .lt-field {
-  border-color: rgba(239, 68, 68, 0.42);
+  /* Quietly inert (slightly recessed), never an alarming red error border. */
+  border-color: var(--lt-border);
+  opacity: 0.6;
+  cursor: pointer;
 }
 .lt-input.is-quota-empty .lt-text::placeholder {
-  color: #fca5a5;
+  color: var(--lt-muted);
   opacity: 0.9;
 }
 .lt-field {
@@ -1211,3 +1216,42 @@
 .lt-setup-action[hidden] { display: none; }
 .lt-setup-action:disabled { opacity: 0.5; cursor: default; box-shadow: none; }
 .lt-setup-note { margin: 4px 0 0; font-size: 12px; color: var(--lt-muted); }
+
+/* Model-size picker (0.6B / 1.7B / 4B) */
+.lt-setup-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  margin: 12px 0 2px;
+}
+.lt-setup-sizes[hidden] { display: none; }
+.lt-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 96px;
+  padding: 9px 12px;
+  border: 1.5px solid var(--lt-border);
+  border-radius: 8px;
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+.lt-size:hover:not(:disabled) { border-color: var(--lt-user-bg); }
+.lt-size.is-chosen {
+  border-color: var(--lt-user-bg);
+  box-shadow: inset 0 0 0 1px var(--lt-user-bg);
+}
+.lt-size.is-disabled { opacity: 0.45; cursor: default; }
+.lt-size-name { font-size: 16px; font-weight: 700; line-height: 1; }
+.lt-size-note {
+  font-size: 11px;
+  color: var(--lt-muted);
+  text-align: center;
+  line-height: 1.2;
+}
+.lt-size.is-rec .lt-size-note { color: var(--lt-user-bg); font-weight: 650; }

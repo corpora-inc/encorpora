@@ -7,6 +7,19 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Daily-lock headline now affirms the accomplishment.** The shared
+  `DailyLockOverlay` title warmed from "Your N {{unit}} for today" to "That's
+  your N {{unit}} for today — nicely done", so the cap reads as a small win
+  rather than a flat stop. Only the EN `dailyLock.title` changed — the ~50
+  locales need a re-gen.
+- **Removed the blanket 4 GB RAM floor on the on-device tutor.** The host
+  `llm.load` no longer refuses every device under 4 GB total RAM — that gate
+  blocked the very low-RAM phones we now serve with smaller Qwen3 sizes. The
+  per-model footprint backstop in the LLM plugin (footprint vs total RAM) remains
+  the hard, uncatchable-crash guard; the Tutomaton pack disables sizes a device
+  can't run. `llm.status()` now also surfaces `totalMemoryMb` for size selection.
+
 ### Fixed
 - **Phrase-flip daily cap now gates only NEW phrases — review stays free.** At
   the cap, asking for a brand-new phrase (the Random button, or Next/forward

@@ -52,6 +52,10 @@ export function stripMarkdown(s: string): string {
 /** Clean a reply for on-screen display. */
 export function scrubOutput(s: string): string {
   s = s.replace(EMOJI_RE, "")
+  // Defensive: drop a complete <think>…</think> reasoning block (hybrid models).
+  // The streaming path filters these live (thinkFilter); this catches any
+  // non-streamed scrub of a full reply.
+  s = s.replace(/<think>[\s\S]*?<\/think>/gi, "")
   s = stripMarkdown(s)
   s = s.replace(/<\/?reference\b[^>]*>/gi, "")
   // Orphaned combining marks → the "dotted-circle" artifact. A combining mark
