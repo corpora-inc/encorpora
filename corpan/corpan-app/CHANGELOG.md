@@ -16,8 +16,10 @@ Conventions: `corpan/CHANGELOGS.md`.
   Plus from the first frame — before (and even without) any refresh.
   `refreshEntitlements` only ever downgrades on a DEFINITIVE, ONLINE "not owned"
   from the OS receipt cache (StoreKit `currentEntitlements` / Play
-  `queryPurchases`); anything inconclusive or offline keeps the snapshot. We'd
-  rather a fraudulent client keep a stale Plus flag than ever block a real
+  `queryPurchases`), and even then only after a **48h grace window** past the
+  last confirmed verification — to ride out transient store flakiness and
+  billing-grace renewals. Anything inconclusive or offline keeps the snapshot.
+  We'd rather a fraudulent client keep a stale Plus flag than ever block a real
   subscriber with no signal (the app is open source regardless). New
   `forgetSubscription()` is the only path that clears the durable snapshot.
 

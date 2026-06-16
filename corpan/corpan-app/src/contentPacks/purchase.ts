@@ -1453,6 +1453,17 @@ function isOnline(): boolean {
 }
 
 /**
+ * Grace window after the last CONFIRMED Plus verification during which an online
+ * "not owned" does NOT yet downgrade. Rides out (a) transient store flakiness —
+ * a StoreKit/Play query that momentarily reports not-owned then recovers — and
+ * (b) billing-grace renewals, where a card retry is in flight. The stores
+ * usually report the sub as still owned during their own grace, so this is a
+ * belt-and-suspenders buffer; 48h keeps a real subscriber comfortable without
+ * meaningful leakage.
+ */
+const SUBSCRIPTION_GRACE_MS = 48 * 60 * 60 * 1000
+
+/**
  * Refresh entitlements from the IAP plugin (local query — no network on iOS
  * via Transaction.currentEntitlements).
  *
@@ -1492,16 +1503,30 @@ export async function refreshEntitlements(): Promise<void> {
     })
     void refreshEntitlementToken()
   } else if (!anyStatusUnknown && isOnline()) {
-    // Definitive, ONLINE "not owned" — every product reported a real
-    // not-owned from the platform's local receipt cache (StoreKit
-    // currentEntitlements / Play queryPurchases), and we have connectivity. This
-    // is a genuine downgrade (cancelled / expired): forget BOTH the live and the
-    // durable offline snapshot so we stop granting Plus.
-    if (store.subscription.active || store.lastKnownSubscription) {
-      console.info("[purchase] refreshEntitlements: confirmed not-owned (online) — forgetting subscription")
-      store.forgetSubscription()
+    // Definitive, ONLINE "not owned" — every product reported a real not-owned
+    // from the platform's local receipt cache (StoreKit currentEntitlements /
+    // Play queryPurchases), and we have connectivity. Normally a genuine
+    // downgrade (cancelled / expired) — BUT ride out a short grace window
+    // anchored to the last confirmed verification, to absorb transient store
+    // flakiness and billing-grace renewals before we actually drop Plus.
+    const verifiedAt = store.lastVerifiedAt
+    const withinGrace =
+      Boolean(store.lastKnownSubscription?.active) &&
+      typeof verifiedAt === "number" &&
+      Date.now() - verifiedAt < SUBSCRIPTION_GRACE_MS
+
+    if (withinGrace) {
+      console.warn(
+        "[purchase] refreshEntitlements: not-owned but within grace window — keeping subscription",
+        { msSinceVerified: typeof verifiedAt === "number" ? Date.now() - verifiedAt : null }
+      )
+    } else {
+      if (store.subscription.active || store.lastKnownSubscription) {
+        console.info("[purchase] refreshEntitlements: confirmed not-owned past grace — forgetting subscription")
+        store.forgetSubscription()
+      }
+      store.setEntitlementToken(null)
     }
-    store.setEntitlementToken(null)
   } else {
     // Inconclusive (a query returned "unknown") OR we're offline. We CANNOT
     // live-check, so we must not lock out a real subscriber: keep whatever the
