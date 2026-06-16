@@ -372,7 +372,31 @@
     "voicePreviewAria": "תצוגה מקדימה של {{name}}",
     "voicePreviewSelected": "תצוגה מקדימה נבחרה",
     "voiceRecommended": "מומלץ",
-    "voiceSelectedCount": "{{count}} מתוך {{total}}"
+    "voiceSelectedCount": "{{count}} מתוך {{total}}",
+    "whatToStart": {
+      "title": "מאיפה נתחיל?",
+      "subtitle": "בחר אחת כדי לצלול פנימה — השאר במרחק נגיעה.",
+      "read": {
+        "label": "קריאה",
+        "desc": "צלול אל תוך סיפורים וספרים."
+      },
+      "study": {
+        "label": "לימוד",
+        "desc": "הרחב את אוצר המילים בתרגול ממוקד."
+      },
+      "playMusic": {
+        "label": "נגינה",
+        "desc": "התנסה בשפה שלך מאחורי הפלטות."
+      },
+      "playGames": {
+        "label": "משחקים",
+        "desc": "למד דרך אתגרים משחקיים."
+      },
+      "surprise": {
+        "label": "הפתע אותי!",
+        "desc": "קח אותי למקום כיפי."
+      }
+    }
   },
   "socials": {
     "youtube": {

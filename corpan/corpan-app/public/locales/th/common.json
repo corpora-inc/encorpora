@@ -372,7 +372,31 @@
     "voicePreviewAria": "ดูตัวอย่าง {{name}}",
     "voicePreviewSelected": "ดูตัวอย่างที่เลือก",
     "voiceRecommended": "แนะนำ",
-    "voiceSelectedCount": "{{count}} จาก {{total}}"
+    "voiceSelectedCount": "{{count}} จาก {{total}}",
+    "whatToStart": {
+      "title": "เราจะเริ่มจากตรงไหนดี?",
+      "subtitle": "เลือกหนึ่งอย่างเพื่อเริ่มเลย — ที่เหลืออยู่แค่แตะเดียว",
+      "read": {
+        "label": "อ่าน",
+        "desc": "ดำดิ่งไปกับเรื่องราวและหนังสือ"
+      },
+      "study": {
+        "label": "เรียน",
+        "desc": "สะสมคำศัพท์ด้วยการฝึกแบบเจาะจง"
+      },
+      "playMusic": {
+        "label": "เล่นดนตรี",
+        "desc": "ลองสัมผัสภาษาของคุณบนแท่นดีเจ"
+      },
+      "playGames": {
+        "label": "เล่นเกม",
+        "desc": "เรียนรู้ผ่านความท้าทายสนุก ๆ"
+      },
+      "surprise": {
+        "label": "เซอร์ไพรส์ฉันสิ!",
+        "desc": "พาฉันไปที่สนุก ๆ สักที่"
+      }
+    }
   },
   "socials": {
     "youtube": {

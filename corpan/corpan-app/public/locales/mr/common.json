@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}} चे पूर्वावलोकन करा",
     "voicePreviewSelected": "पूर्वावलोकन निवडले",
     "voiceRecommended": "शिफारस केलेले",
-    "voiceSelectedCount": "{{total}} पैकी {{count}}"
+    "voiceSelectedCount": "{{total}} पैकी {{count}}",
+    "whatToStart": {
+      "title": "आपण कुठून सुरुवात करूया?",
+      "subtitle": "सुरू करण्यासाठी एक निवडा — बाकीचं फक्त एका टॅपवर आहे.",
+      "read": {
+        "label": "वाचा",
+        "desc": "गोष्टी आणि पुस्तकांत बुडून जा."
+      },
+      "study": {
+        "label": "अभ्यास करा",
+        "desc": "केंद्रित सरावाने शब्दसंग्रह वाढवा."
+      },
+      "playMusic": {
+        "label": "संगीत वाजवा",
+        "desc": "डेकवर तुमची भाषा अनुभवा."
+      },
+      "playGames": {
+        "label": "खेळा",
+        "desc": "मजेशीर आव्हानांतून शिका."
+      },
+      "surprise": {
+        "label": "मला आश्चर्यचकित करा!",
+        "desc": "मला कुठेतरी मजेदार ठिकाणी न्या."
+      }
+    }
   },
   "socials": {
     "youtube": {

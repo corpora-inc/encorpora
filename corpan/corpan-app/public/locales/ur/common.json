@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}} کا پیش منظر",
     "voicePreviewSelected": "منتخب کا پیش منظر",
     "voiceRecommended": "تجویز کردہ",
-    "voiceSelectedCount": "{{total}} میں سے {{count}}"
+    "voiceSelectedCount": "{{total}} میں سے {{count}}",
+    "whatToStart": {
+      "title": "ہم کہاں سے شروع کریں؟",
+      "subtitle": "شروع کرنے کے لیے ایک منتخب کریں — باقی صرف ایک ٹیپ کی دوری پر ہے۔",
+      "read": {
+        "label": "پڑھیں",
+        "desc": "کہانیوں اور کتابوں میں ڈوب جائیں۔"
+      },
+      "study": {
+        "label": "مطالعہ کریں",
+        "desc": "مرتکز مشق سے اپنے الفاظ بڑھائیں۔"
+      },
+      "playMusic": {
+        "label": "موسیقی بجائیں",
+        "desc": "ڈیکس پر اپنی زبان آزمائیں۔"
+      },
+      "playGames": {
+        "label": "کھیلیں",
+        "desc": "تفریحی چیلنجز کے ذریعے سیکھیں۔"
+      },
+      "surprise": {
+        "label": "مجھے حیران کریں!",
+        "desc": "مجھے کسی مزے دار جگہ لے چلیں۔"
+      }
+    }
   },
   "socials": {
     "youtube": {

@@ -7,7 +7,27 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Onboarding "where should we begin?" + a first-launch razzle-dazzle.** The
+  final onboarding step is now a single deterministic question — Read / Study /
+  Play music / Play games / Surprise me — that makes the exact landing call
+  (Read→Library, Study→Phrase Flip [Chinese→Hanzipan], Music→beatlounge,
+  Games→Juice Squeeze, Surprise→a lightly-random pick across what's launchable).
+  The multi-select "What do you want to do?" stays and still powers Home's "For
+  you" recommendations. On the way in, a ~5s premium collage of every experience
+  shuffles, the chosen one pops to center with a **native haptic**, then its
+  colour washes over the screen as the experience boots underneath — only on the
+  post-onboarding landing (normal Home→pack launches stay instant). The chosen
+  content pack quiet-installs while the question screen + transition play; if it
+  isn't ready in time we land in Phrase Flip and it finishes in the background.
+  New `tauri-plugin-haptics` (iOS `UIImpactFeedbackGenerator` / Android
+  `Vibrator`; `navigator.vibrate` fallback) — needs a native rebuild to fire.
+
 ### Changed
+- **Hanzipan is a study experience, not a game.** Re-classified in the
+  recommendation registry (`categories: study, wild`; featured for study) so it
+  surfaces under Study (and, for Chinese learners, is the Study landing) and no
+  longer appears in the games lane.
 - **Soft-nag cadence relaxed 5 → 10.** Every daily-quota surface (phrase-flip,
   hover-runner, juice-squeeze, hanzipan, tutomaton) now nags every 10 instead of
   every 5 — so a free user gets a gentle reminder at 10 and the hard wall at 20,

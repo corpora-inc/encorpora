@@ -1600,6 +1600,7 @@ pub fn run() {
         .plugin(tauri_plugin_safe_area_insets_css::init())
         .plugin(tauri_plugin_tts::init())
         .plugin(tauri_plugin_audio_keepalive::init())
+        .plugin(tauri_plugin_haptics::init())
         .plugin(tauri_plugin_radio_stream::init())
         .plugin(tauri_plugin_iap::init())
         .plugin(tauri_plugin_subscriptions::init())

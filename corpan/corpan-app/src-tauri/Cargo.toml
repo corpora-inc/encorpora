@@ -36,6 +36,7 @@ sha2 = "0.10"
 zip = "2.2.2"
 tauri-plugin-tts = { path = "../../plugins/tauri-plugin-tts" }
 tauri-plugin-audio-keepalive = { path = "../../plugins/tauri-plugin-audio-keepalive" }
+tauri-plugin-haptics = { path = "../../plugins/tauri-plugin-haptics" }
 tauri-plugin-radio-stream = { path = "../../plugins/tauri-plugin-radio-stream" }
 tauri-plugin-subscriptions = { path = "../../plugins/tauri-plugin-subscriptions" }
 tauri-plugin-iap = { path = "../../plugins/tauri-plugin-iap" }

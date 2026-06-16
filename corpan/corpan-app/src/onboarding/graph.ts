@@ -1,8 +1,10 @@
 import { useSettingsStore, ALL_LEVELS } from "@/store/settings"
 import { useLandingStore } from "@/store/landing"
 import { useGamesStore } from "@/store/games"
+import { useCatalogStore } from "@/store/catalog"
 import { trackOnboardingCompleted, trackOnboardingLaunch } from "@/util/analytics"
 import { bestFitExperience } from "./bestFit"
+import { resolveLanding, WHAT_TO_START_INTEREST, type WhatToStart } from "./resolveLanding"
 import type { OnboardingGraph, NodeCtx } from "./types"
 
 /** The phrase experience pack id (Phase 3). Until it exists as a pack, the
@@ -16,6 +18,30 @@ export const ENTRY_NODE = "welcome"
 
 const ALL = [...ALL_LEVELS]
 
+/**
+ * When the user picks their final answer, start downloading the pack we'll land
+ * them in — so it's ready (or close) by the time they finish the last screen +
+ * watch the razzle transition. Best-effort; the App listens for this event and
+ * installs quietly. No-op for native/Library landings (nothing to install).
+ */
+function preinstallForChoice(choice: WhatToStart) {
+  try {
+    const res = resolveLanding({
+      choice,
+      languages: useSettingsStore.getState().languages,
+      catalogIds: useCatalogStore.getState().getCatalog().map((g) => g.id),
+      installedIds: Object.keys(useGamesStore.getState().games),
+    })
+    if (res.installPackId && typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("corpan:preinstall-pack", { detail: { packId: res.installPackId } }),
+      )
+    }
+  } catch {
+    /* best-effort preinstall — the landing re-checks + re-kicks install anyway */
+  }
+}
+
 /** Flush the accumulated draft to the stores and complete onboarding. */
 function commitDraft(ctx: NodeCtx) {
   const d = ctx.draft
@@ -27,38 +53,54 @@ function commitDraft(ctx: NodeCtx) {
     goalIntensity: d.goalIntensity ?? "daily",
     ageBand: d.ageBand ?? "adult",
   })
-  if (d.interests?.length) s.setInterests(d.interests)
+  // The single-choice final question seeds Home's "For you" recs too, so a user
+  // who skipped the multi-select still gets sensible recommendations.
+  const seededInterest = d.whatToStart ? WHAT_TO_START_INTEREST[d.whatToStart] : null
+  const interests =
+    d.interests?.length
+      ? d.interests
+      : seededInterest
+        ? [seededInterest]
+        : []
+  if (interests.length) s.setInterests(interests)
 
-  // ── The "aha moment": drop the user STRAIGHT into the single best-fit
-  // experience for what they told us, instead of the choice-overloaded Home
-  // (where low-agency users freeze and bounce). Reuses Home's own ranking.
-  // Power users who hit "Explore on my own" set `skipAutoLaunch` → we honor
-  // today's gentle guided-tour landing instead.
-  const fit = d.skipAutoLaunch
-    ? null
-    : bestFitExperience({
-        userClass: d.userClass ?? "learner",
-        interests: d.interests ?? [],
-        level: d.levels,
-        languages: useSettingsStore.getState().languages,
-        installedIds: Object.keys(useGamesStore.getState().games),
-      })
-
-  if (fit?.kind === "phrase") {
-    // App-native phrase experience overlay (no pack install needed).
-    useLandingStore.getState().setLanding({ kind: "experience", packId: PHRASE_PACK_ID })
-    trackOnboardingLaunch(PHRASE_PACK_ID)
-  } else if (fit?.kind === "pack") {
-    // Installed GA pack — App's landing consumer launches it via the same
-    // path Home uses (getGame → handleLaunchGame), and exit returns to Home.
-    useLandingStore.getState().setLanding({ kind: "experience", packId: fit.packId })
-    trackOnboardingLaunch(fit.packId)
-  } else {
-    // No confident best-fit (or the user chose to explore): fall back to the
-    // gentle guided tour, which introduces the top-ranked experiences and
-    // drops them into their first "Try it" (skippable → Home).
+  // ── The "aha moment": drop the user STRAIGHT into a chosen experience and
+  // play the razzle-dazzle collage transition on the way in. The final question
+  // (whatToStart) makes a DETERMINISTIC landing call (resolveLanding); if it was
+  // somehow not answered we fall back to Home's best-fit ranking. Power users
+  // who hit "Explore on my own" set `skipAutoLaunch` → gentle guided tour.
+  if (d.skipAutoLaunch) {
     useLandingStore.getState().setLanding({ kind: "tour" })
     trackOnboardingLaunch("home")
+  } else if (d.whatToStart) {
+    const res = resolveLanding({
+      choice: d.whatToStart as WhatToStart,
+      languages: useSettingsStore.getState().languages,
+      catalogIds: useCatalogStore.getState().getCatalog().map((g) => g.id),
+      installedIds: Object.keys(useGamesStore.getState().games),
+    })
+    useLandingStore.getState().setLanding(res.intent)
+    trackOnboardingLaunch(res.chosenId)
+  } else {
+    // Defensive fallback (final question not answered): the old best-fit path,
+    // now also razzled for a consistent first landing.
+    const fit = bestFitExperience({
+      userClass: d.userClass ?? "learner",
+      interests,
+      level: d.levels,
+      languages: useSettingsStore.getState().languages,
+      installedIds: Object.keys(useGamesStore.getState().games),
+    })
+    if (fit?.kind === "phrase") {
+      useLandingStore.getState().setLanding({ kind: "experience", packId: PHRASE_PACK_ID, razzle: true })
+      trackOnboardingLaunch(PHRASE_PACK_ID)
+    } else if (fit?.kind === "pack") {
+      useLandingStore.getState().setLanding({ kind: "experience", packId: fit.packId, razzle: true })
+      trackOnboardingLaunch(fit.packId)
+    } else {
+      useLandingStore.getState().setLanding({ kind: "tour" })
+      trackOnboardingLaunch("home")
+    }
   }
   if (d.preloadPacks?.length) {
     // Best-effort background preload; a host listener (Home) kicks the batch.
@@ -248,7 +290,54 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
       { id: "wild", labelKey: "onboarding.interests.wild", descKey: "onboarding.interests.wildDesc", icon: "Sparkles" },
     ],
     apply: (c, ids) => c.patch({ interests: ids }),
-    next: "finish",
+    next: "whatToStart",
+  },
+
+  // The DETERMINISTIC final question — one tap tells us exactly where to drop
+  // the user. Interests (above) still power the broader Home "For you" list;
+  // this makes the single landing call (see resolveLanding). Immediate-advance.
+  whatToStart: {
+    kind: "question",
+    id: "whatToStart",
+    titleKey: "onboarding.whatToStart.title",
+    subtitleKey: "onboarding.whatToStart.subtitle",
+    options: [
+      {
+        id: "read",
+        labelKey: "onboarding.whatToStart.read.label",
+        descKey: "onboarding.whatToStart.read.desc",
+        apply: (c) => { c.patch({ whatToStart: "read" }); preinstallForChoice("read") },
+        next: "finish",
+      },
+      {
+        id: "study",
+        labelKey: "onboarding.whatToStart.study.label",
+        descKey: "onboarding.whatToStart.study.desc",
+        apply: (c) => { c.patch({ whatToStart: "study" }); preinstallForChoice("study") },
+        next: "finish",
+      },
+      {
+        id: "playMusic",
+        labelKey: "onboarding.whatToStart.playMusic.label",
+        descKey: "onboarding.whatToStart.playMusic.desc",
+        apply: (c) => { c.patch({ whatToStart: "playMusic" }); preinstallForChoice("playMusic") },
+        next: "finish",
+      },
+      {
+        id: "playGames",
+        labelKey: "onboarding.whatToStart.playGames.label",
+        descKey: "onboarding.whatToStart.playGames.desc",
+        apply: (c) => { c.patch({ whatToStart: "playGames" }); preinstallForChoice("playGames") },
+        next: "finish",
+      },
+      {
+        id: "surprise",
+        labelKey: "onboarding.whatToStart.surprise.label",
+        descKey: "onboarding.whatToStart.surprise.desc",
+        apply: (c) => { c.patch({ whatToStart: "surprise" }); preinstallForChoice("surprise") },
+        next: "finish",
+      },
+    ],
   },
 
   finish: { kind: "adapter", id: "finish", component: "finish", next: "commit" },

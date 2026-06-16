@@ -372,7 +372,31 @@
     "voicePreviewAria": "Esikatsele {{name}}",
     "voicePreviewSelected": "Esikatsele valittua",
     "voiceRecommended": "Suositeltu",
-    "voiceSelectedCount": "{{count}} / {{total}}"
+    "voiceSelectedCount": "{{count}} / {{total}}",
+    "whatToStart": {
+      "title": "Mistä aloitamme?",
+      "subtitle": "Valitse yksi ja sukella mukaan — loput ovat napautuksen päässä.",
+      "read": {
+        "label": "Lue",
+        "desc": "Sukella tarinoihin ja kirjoihin."
+      },
+      "study": {
+        "label": "Opiskele",
+        "desc": "Kartuta sanavarastoa kohdennetulla harjoittelulla."
+      },
+      "playMusic": {
+        "label": "Soita musiikkia",
+        "desc": "Kokeile kieltäsi mikserin ääressä."
+      },
+      "playGames": {
+        "label": "Pelaa",
+        "desc": "Opi leikkisien haasteiden kautta."
+      },
+      "surprise": {
+        "label": "Yllätä minut!",
+        "desc": "Vie minut jonnekin hauskaan."
+      }
+    }
   },
   "socials": {
     "youtube": {

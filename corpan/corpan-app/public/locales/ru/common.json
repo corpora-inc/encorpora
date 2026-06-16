@@ -372,7 +372,31 @@
     "voicePreviewAria": "Предпросмотр {{name}}",
     "voicePreviewSelected": "Предпросмотр выбранного",
     "voiceRecommended": "Рекомендуется",
-    "voiceSelectedCount": "{{count}} из {{total}}"
+    "voiceSelectedCount": "{{count}} из {{total}}",
+    "whatToStart": {
+      "title": "С чего начнём?",
+      "subtitle": "Выбери одно, чтобы начать — остальное в одном касании.",
+      "read": {
+        "label": "Читать",
+        "desc": "Погрузись в истории и книги."
+      },
+      "study": {
+        "label": "Учиться",
+        "desc": "Расширяй словарный запас в целенаправленной практике."
+      },
+      "playMusic": {
+        "label": "Играть музыку",
+        "desc": "Попробуй свой язык за пультами."
+      },
+      "playGames": {
+        "label": "Играть",
+        "desc": "Учись через весёлые задания."
+      },
+      "surprise": {
+        "label": "Удиви меня!",
+        "desc": "Отправь меня куда-нибудь весёлое."
+      }
+    }
   },
   "socials": {
     "youtube": {

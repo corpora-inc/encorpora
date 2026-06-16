@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}} 미리 듣기",
     "voicePreviewSelected": "선택된 항목 미리 듣기",
     "voiceRecommended": "추천",
-    "voiceSelectedCount": "{{total}}개 중 {{count}}개"
+    "voiceSelectedCount": "{{total}}개 중 {{count}}개",
+    "whatToStart": {
+      "title": "어디서부터 시작할까요?",
+      "subtitle": "하나를 골라 바로 시작하세요. 나머지는 한 번만 누르면 됩니다.",
+      "read": {
+        "label": "읽기",
+        "desc": "이야기와 책에 푹 빠져 보세요."
+      },
+      "study": {
+        "label": "공부하기",
+        "desc": "집중 연습으로 어휘를 쌓아 보세요."
+      },
+      "playMusic": {
+        "label": "음악 만들기",
+        "desc": "데크에서 당신의 언어를 즐겨 보세요."
+      },
+      "playGames": {
+        "label": "게임하기",
+        "desc": "즐거운 도전으로 배워 보세요."
+      },
+      "surprise": {
+        "label": "깜짝 추천해 주세요!",
+        "desc": "재미있는 곳으로 데려가 주세요."
+      }
+    }
   },
   "socials": {
     "youtube": {

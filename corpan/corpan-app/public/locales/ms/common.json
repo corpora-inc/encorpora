@@ -372,7 +372,31 @@
     "voicePreviewAria": "Pratonton {{name}}",
     "voicePreviewSelected": "Pratonton dipilih",
     "voiceRecommended": "Disyorkan",
-    "voiceSelectedCount": "{{count}} daripada {{total}}"
+    "voiceSelectedCount": "{{count}} daripada {{total}}",
+    "whatToStart": {
+      "title": "Di mana kita nak mula?",
+      "subtitle": "Pilih satu untuk mula — yang lain hanya seketuk jauhnya.",
+      "read": {
+        "label": "Baca",
+        "desc": "Selami cerita dan buku."
+      },
+      "study": {
+        "label": "Belajar",
+        "desc": "Bina perbendaharaan kata dengan latihan fokus."
+      },
+      "playMusic": {
+        "label": "Main muzik",
+        "desc": "Cuba bahasa anda di belakang dek."
+      },
+      "playGames": {
+        "label": "Main permainan",
+        "desc": "Belajar melalui cabaran yang seronok."
+      },
+      "surprise": {
+        "label": "Kejutkan saya!",
+        "desc": "Bawa saya ke tempat yang seronok."
+      }
+    }
   },
   "socials": {
     "youtube": {

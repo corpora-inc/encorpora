@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}} এর পূর্বরূপ দেখুন",
     "voicePreviewSelected": "নির্বাচিত পূর্বরূপ",
     "voiceRecommended": "প্রস্তাবিত",
-    "voiceSelectedCount": "{{total}} এর মধ্যে {{count}}"
+    "voiceSelectedCount": "{{total}} এর মধ্যে {{count}}",
+    "whatToStart": {
+      "title": "আমরা কোথা থেকে শুরু করব?",
+      "subtitle": "শুরু করতে একটি বেছে নিন — বাকিটা মাত্র এক টোকা দূরে।",
+      "read": {
+        "label": "পড়ুন",
+        "desc": "গল্প আর বইয়ে ডুব দিন।"
+      },
+      "study": {
+        "label": "পড়াশোনা",
+        "desc": "মনোযোগী অনুশীলনে শব্দভাণ্ডার গড়ুন।"
+      },
+      "playMusic": {
+        "label": "গান বাজান",
+        "desc": "ডেকে আপনার ভাষাটা চেখে দেখুন।"
+      },
+      "playGames": {
+        "label": "খেলুন",
+        "desc": "মজার চ্যালেঞ্জে শিখুন।"
+      },
+      "surprise": {
+        "label": "চমকে দিন!",
+        "desc": "আমাকে মজার কোথাও নিয়ে চলুন।"
+      }
+    }
   },
   "socials": {
     "youtube": {

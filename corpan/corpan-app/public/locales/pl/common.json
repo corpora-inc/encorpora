@@ -372,7 +372,31 @@
     "voicePreviewAria": "Podgląd {{name}}",
     "voicePreviewSelected": "Wybrano podgląd",
     "voiceRecommended": "Polecane",
-    "voiceSelectedCount": "{{count}} z {{total}}"
+    "voiceSelectedCount": "{{count}} z {{total}}",
+    "whatToStart": {
+      "title": "Od czego zaczniemy?",
+      "subtitle": "Wybierz jedno, by zacząć — reszta jest na wyciągnięcie ręki.",
+      "read": {
+        "label": "Czytaj",
+        "desc": "Zanurz się w opowieściach i książkach."
+      },
+      "study": {
+        "label": "Ucz się",
+        "desc": "Buduj słownictwo dzięki ukierunkowanym ćwiczeniom."
+      },
+      "playMusic": {
+        "label": "Twórz muzykę",
+        "desc": "Wypróbuj swój język przy konsolecie."
+      },
+      "playGames": {
+        "label": "Graj",
+        "desc": "Ucz się przez zabawne wyzwania."
+      },
+      "surprise": {
+        "label": "Zaskocz mnie!",
+        "desc": "Zabierz mnie w fajne miejsce."
+      }
+    }
   },
   "socials": {
     "youtube": {

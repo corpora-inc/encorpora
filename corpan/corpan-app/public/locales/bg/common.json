@@ -372,7 +372,31 @@
     "voicePreviewAria": "Преглед на {{name}}",
     "voicePreviewSelected": "Преглед на избраното",
     "voiceRecommended": "Препоръчано",
-    "voiceSelectedCount": "{{count}} от {{total}}"
+    "voiceSelectedCount": "{{count}} от {{total}}",
+    "whatToStart": {
+      "title": "Откъде да започнем?",
+      "subtitle": "Избери едно, за да започнеш — останалото е на едно докосване.",
+      "read": {
+        "label": "Чети",
+        "desc": "Потопи се в истории и книги."
+      },
+      "study": {
+        "label": "Учи",
+        "desc": "Изгради речника си с целенасочена практика."
+      },
+      "playMusic": {
+        "label": "Свири",
+        "desc": "Опитай езика си на пулта."
+      },
+      "playGames": {
+        "label": "Играй",
+        "desc": "Учи чрез забавни предизвикателства."
+      },
+      "surprise": {
+        "label": "Изненадай ме!",
+        "desc": "Заведи ме някъде забавно."
+      }
+    }
   },
   "socials": {
     "youtube": {

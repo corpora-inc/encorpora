@@ -372,7 +372,31 @@
     "voicePreviewAria": "Förhandsgranska {{name}}",
     "voicePreviewSelected": "Förhandsgranskning vald",
     "voiceRecommended": "Rekommenderas",
-    "voiceSelectedCount": "{{count}} av {{total}}"
+    "voiceSelectedCount": "{{count}} av {{total}}",
+    "whatToStart": {
+      "title": "Var ska vi börja?",
+      "subtitle": "Välj en för att komma igång — resten är ett tryck bort.",
+      "read": {
+        "label": "Läs",
+        "desc": "Dyk ner i berättelser och böcker."
+      },
+      "study": {
+        "label": "Plugga",
+        "desc": "Bygg ordförråd med fokuserad träning."
+      },
+      "playMusic": {
+        "label": "Spela musik",
+        "desc": "Testa ditt språk vid spakarna."
+      },
+      "playGames": {
+        "label": "Spela",
+        "desc": "Lär dig genom lekfulla utmaningar."
+      },
+      "surprise": {
+        "label": "Överraska mig!",
+        "desc": "Ta mig någonstans kul."
+      }
+    }
   },
   "socials": {
     "youtube": {

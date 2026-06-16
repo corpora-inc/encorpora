@@ -372,7 +372,31 @@
     "voicePreviewAria": "Pregled {{name}}",
     "voicePreviewSelected": "Pregled izabranog",
     "voiceRecommended": "Preporučeno",
-    "voiceSelectedCount": "{{count}} od {{total}}"
+    "voiceSelectedCount": "{{count}} od {{total}}",
+    "whatToStart": {
+      "title": "Где да почнемо?",
+      "subtitle": "Изабери једно да почнеш — остало је на додир.",
+      "read": {
+        "label": "Читај",
+        "desc": "Зарони у приче и књиге."
+      },
+      "study": {
+        "label": "Учи",
+        "desc": "Гради речник усмереним вежбањем."
+      },
+      "playMusic": {
+        "label": "Свирај",
+        "desc": "Испробај свој језик за пултом."
+      },
+      "playGames": {
+        "label": "Играј",
+        "desc": "Учи кроз забавне изазове."
+      },
+      "surprise": {
+        "label": "Изненади ме!",
+        "desc": "Одведи ме негде забавно."
+      }
+    }
   },
   "socials": {
     "youtube": {

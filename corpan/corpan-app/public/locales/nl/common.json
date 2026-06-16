@@ -372,7 +372,31 @@
     "voicePreviewAria": "Voorbeeld van {{name}}",
     "voicePreviewSelected": "Voorbeeld geselecteerd",
     "voiceRecommended": "Aanbevolen",
-    "voiceSelectedCount": "{{count}} van {{total}}"
+    "voiceSelectedCount": "{{count}} van {{total}}",
+    "whatToStart": {
+      "title": "Waar zullen we beginnen?",
+      "subtitle": "Kies er een om te starten; de rest is één tik verder.",
+      "read": {
+        "label": "Lezen",
+        "desc": "Duik in verhalen en boeken."
+      },
+      "study": {
+        "label": "Studeren",
+        "desc": "Breid je woordenschat uit met gerichte oefening."
+      },
+      "playMusic": {
+        "label": "Muziek maken",
+        "desc": "Probeer je taal uit achter de draaitafels."
+      },
+      "playGames": {
+        "label": "Spelen",
+        "desc": "Leer met speelse uitdagingen."
+      },
+      "surprise": {
+        "label": "Verras me!",
+        "desc": "Breng me ergens leuks naartoe."
+      }
+    }
   },
   "socials": {
     "youtube": {

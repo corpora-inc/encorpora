@@ -372,7 +372,31 @@
     "voicePreviewAria": "Náhled {{name}}",
     "voicePreviewSelected": "Náhled vybrán",
     "voiceRecommended": "Doporučeno",
-    "voiceSelectedCount": "{{count}} z {{total}}"
+    "voiceSelectedCount": "{{count}} z {{total}}",
+    "whatToStart": {
+      "title": "Kde začneme?",
+      "subtitle": "Vyber si jedno a začni — zbytek máš na dosah.",
+      "read": {
+        "label": "Číst",
+        "desc": "Ponoř se do příběhů a knih."
+      },
+      "study": {
+        "label": "Studovat",
+        "desc": "Rozšiř si slovní zásobu cíleným procvičováním."
+      },
+      "playMusic": {
+        "label": "Hrát hudbu",
+        "desc": "Vyzkoušej svůj jazyk za mixáky."
+      },
+      "playGames": {
+        "label": "Hrát hry",
+        "desc": "Uč se zábavnými výzvami."
+      },
+      "surprise": {
+        "label": "Překvap mě!",
+        "desc": "Vezmi mě někam zábavného."
+      }
+    }
   },
   "socials": {
     "youtube": {

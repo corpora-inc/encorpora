@@ -372,7 +372,31 @@
     "voicePreviewAria": "Попередній перегляд {{name}}",
     "voicePreviewSelected": "Вибраний попередній перегляд",
     "voiceRecommended": "Рекомендовано",
-    "voiceSelectedCount": "{{count}} з {{total}}"
+    "voiceSelectedCount": "{{count}} з {{total}}",
+    "whatToStart": {
+      "title": "Із чого почнемо?",
+      "subtitle": "Обери одне, щоб почати — решта за один дотик.",
+      "read": {
+        "label": "Читати",
+        "desc": "Поринь у історії та книжки."
+      },
+      "study": {
+        "label": "Вчитися",
+        "desc": "Розширюй словниковий запас цілеспрямованою практикою."
+      },
+      "playMusic": {
+        "label": "Грати музику",
+        "desc": "Спробуй свою мову за пультами."
+      },
+      "playGames": {
+        "label": "Грати",
+        "desc": "Навчайся через веселі завдання."
+      },
+      "surprise": {
+        "label": "Здивуй мене!",
+        "desc": "Відправ мене кудись цікаво."
+      }
+    }
   },
   "socials": {
     "youtube": {

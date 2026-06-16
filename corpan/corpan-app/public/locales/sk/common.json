@@ -372,7 +372,31 @@
     "voicePreviewAria": "Náhľad {{name}}",
     "voicePreviewSelected": "Náhľad vybraného",
     "voiceRecommended": "Odporúčané",
-    "voiceSelectedCount": "{{count}} z {{total}}"
+    "voiceSelectedCount": "{{count}} z {{total}}",
+    "whatToStart": {
+      "title": "Kde začneme?",
+      "subtitle": "Vyber si jedno a začni — zvyšok máš na dosah.",
+      "read": {
+        "label": "Čítať",
+        "desc": "Ponor sa do príbehov a kníh."
+      },
+      "study": {
+        "label": "Študovať",
+        "desc": "Rozšír si slovnú zásobu cieleným precvičovaním."
+      },
+      "playMusic": {
+        "label": "Hrať hudbu",
+        "desc": "Vyskúšaj svoj jazyk za mixákmi."
+      },
+      "playGames": {
+        "label": "Hrať hry",
+        "desc": "Uč sa zábavnými výzvami."
+      },
+      "surprise": {
+        "label": "Prekvap ma!",
+        "desc": "Zaveď ma niekam zábavného."
+      }
+    }
   },
   "socials": {
     "youtube": {

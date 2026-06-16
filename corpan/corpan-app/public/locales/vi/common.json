@@ -372,7 +372,31 @@
     "voicePreviewAria": "Xem trước {{name}}",
     "voicePreviewSelected": "Xem trước đã chọn",
     "voiceRecommended": "Đề xuất",
-    "voiceSelectedCount": "{{count}} trên {{total}}"
+    "voiceSelectedCount": "{{count}} trên {{total}}",
+    "whatToStart": {
+      "title": "Chúng ta bắt đầu từ đâu nhỉ?",
+      "subtitle": "Chọn một để bắt đầu — phần còn lại chỉ cách một chạm.",
+      "read": {
+        "label": "Đọc",
+        "desc": "Đắm mình vào truyện và sách."
+      },
+      "study": {
+        "label": "Học",
+        "desc": "Mở rộng vốn từ bằng luyện tập tập trung."
+      },
+      "playMusic": {
+        "label": "Chơi nhạc",
+        "desc": "Thử ngôn ngữ của bạn trên bàn đĩa."
+      },
+      "playGames": {
+        "label": "Chơi game",
+        "desc": "Học qua những thử thách vui nhộn."
+      },
+      "surprise": {
+        "label": "Gây bất ngờ cho tôi!",
+        "desc": "Đưa tôi đến một nơi thật vui."
+      }
+    }
   },
   "socials": {
     "youtube": {

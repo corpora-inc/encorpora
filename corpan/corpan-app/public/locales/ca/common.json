@@ -372,7 +372,31 @@
     "voicePreviewAria": "Previsualitza {{name}}",
     "voicePreviewSelected": "Previsualització seleccionada",
     "voiceRecommended": "Recomanada",
-    "voiceSelectedCount": "{{count}} de {{total}}"
+    "voiceSelectedCount": "{{count}} de {{total}}",
+    "whatToStart": {
+      "title": "Per on comencem?",
+      "subtitle": "Tria'n una per començar; la resta és a un toc.",
+      "read": {
+        "label": "Llegir",
+        "desc": "Submergeix-te en històries i llibres."
+      },
+      "study": {
+        "label": "Estudiar",
+        "desc": "Amplia el vocabulari amb pràctica enfocada."
+      },
+      "playMusic": {
+        "label": "Fer música",
+        "desc": "Prova la teva llengua a les taules de mescles."
+      },
+      "playGames": {
+        "label": "Jugar",
+        "desc": "Aprèn amb reptes divertits."
+      },
+      "surprise": {
+        "label": "Sorprèn-me!",
+        "desc": "Porta'm a un lloc divertit."
+      }
+    }
   },
   "socials": {
     "youtube": {

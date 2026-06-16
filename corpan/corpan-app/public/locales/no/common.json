@@ -372,7 +372,31 @@
     "voicePreviewAria": "Forhåndsvis {{name}}",
     "voicePreviewSelected": "Forhåndsvis valgt",
     "voiceRecommended": "Anbefalt",
-    "voiceSelectedCount": "{{count}} av {{total}}"
+    "voiceSelectedCount": "{{count}} av {{total}}",
+    "whatToStart": {
+      "title": "Hvor skal vi begynne?",
+      "subtitle": "Velg en for å komme i gang — resten er bare et trykk unna.",
+      "read": {
+        "label": "Les",
+        "desc": "Dykk ned i historier og bøker."
+      },
+      "study": {
+        "label": "Studer",
+        "desc": "Bygg ordforråd med fokusert øving."
+      },
+      "playMusic": {
+        "label": "Spill musikk",
+        "desc": "Prøv språket ditt bak platene."
+      },
+      "playGames": {
+        "label": "Spill",
+        "desc": "Lær gjennom leken moro."
+      },
+      "surprise": {
+        "label": "Overrask meg!",
+        "desc": "Ta meg et morsomt sted."
+      }
+    }
   },
   "socials": {
     "youtube": {

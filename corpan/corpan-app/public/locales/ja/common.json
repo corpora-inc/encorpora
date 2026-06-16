@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}}をプレビュー",
     "voicePreviewSelected": "選択をプレビュー",
     "voiceRecommended": "おすすめ",
-    "voiceSelectedCount": "{{total}}個中{{count}}個"
+    "voiceSelectedCount": "{{total}}個中{{count}}個",
+    "whatToStart": {
+      "title": "どこから始めましょう？",
+      "subtitle": "ひとつ選んで飛び込もう。あとはタップひとつ。",
+      "read": {
+        "label": "読む",
+        "desc": "物語や本に飛び込もう。"
+      },
+      "study": {
+        "label": "学ぶ",
+        "desc": "集中した練習で語彙を増やそう。"
+      },
+      "playMusic": {
+        "label": "音楽を奏でる",
+        "desc": "デッキで自分の言語を試してみよう。"
+      },
+      "playGames": {
+        "label": "ゲームで遊ぶ",
+        "desc": "楽しい挑戦で学ぼう。"
+      },
+      "surprise": {
+        "label": "おまかせで！",
+        "desc": "どこか楽しい場所へ連れて行って。"
+      }
+    }
   },
   "socials": {
     "youtube": {

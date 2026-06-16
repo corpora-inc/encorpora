@@ -12,10 +12,18 @@ import { createJSONStorage, persist } from "zustand/middleware"
  * writes intent; the shell interprets it.
  */
 export type LandingIntent =
-  | { kind: "home"; tab?: "roll" | "library" | "recommended" }
-  | { kind: "experience"; packId: string }
+  | { kind: "home"; tab?: "roll" | "library" | "recommended"; razzle?: boolean }
+  | { kind: "experience"; packId: string; razzle?: boolean }
   | { kind: "discover" }
   | { kind: "tour" }
+
+/**
+ * `razzle` (on `home`/`experience` intents) asks the post-onboarding shell to
+ * play the ~5s "razzle-dazzle" collage transition before revealing the landing
+ * — the celebratory hand-off that drops a brand-new user into their first
+ * experience. Only set by the onboarding commit; normal Home→pack launches
+ * never set it (they stay instant).
+ */
 
 type LandingState = {
   landing: LandingIntent | null

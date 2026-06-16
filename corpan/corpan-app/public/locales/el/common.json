@@ -372,7 +372,31 @@
     "voicePreviewAria": "Προεπισκόπηση {{name}}",
     "voicePreviewSelected": "Επιλεγμένη προεπισκόπηση",
     "voiceRecommended": "Προτεινόμενη",
-    "voiceSelectedCount": "{{count}} από {{total}}"
+    "voiceSelectedCount": "{{count}} από {{total}}",
+    "whatToStart": {
+      "title": "Από πού να ξεκινήσουμε;",
+      "subtitle": "Διάλεξε ένα για να ξεκινήσεις — τα υπόλοιπα είναι ένα άγγιγμα μακριά.",
+      "read": {
+        "label": "Διάβασε",
+        "desc": "Βούτηξε σε ιστορίες και βιβλία."
+      },
+      "study": {
+        "label": "Μελέτησε",
+        "desc": "Χτίσε το λεξιλόγιό σου με στοχευμένη εξάσκηση."
+      },
+      "playMusic": {
+        "label": "Παίξε μουσική",
+        "desc": "Δοκίμασε τη γλώσσα σου στα ντεκ."
+      },
+      "playGames": {
+        "label": "Παίξε",
+        "desc": "Μάθε μέσα από παιχνιδιάρικες προκλήσεις."
+      },
+      "surprise": {
+        "label": "Έκπληξέ με!",
+        "desc": "Πήγαινέ με κάπου διασκεδαστικά."
+      }
+    }
   },
   "socials": {
     "youtube": {

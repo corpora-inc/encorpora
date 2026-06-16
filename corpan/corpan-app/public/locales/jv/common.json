@@ -443,6 +443,30 @@
       "noVoiceFor": "Durung ana swara {{lang}} — ayo tambah siji supaya Corpán bisa maca banter.",
       "addBetter": "Bukak swara sing luwih apik",
       "chooseVoices": "Pilih swara"
+    },
+    "whatToStart": {
+      "title": "Arep miwiti saka ngendi?",
+      "subtitle": "Pilih siji kanggo miwiti — liyane mung sak tutuk adohe.",
+      "read": {
+        "label": "Maca",
+        "desc": "Nyelem ing crita lan buku."
+      },
+      "study": {
+        "label": "Sinau",
+        "desc": "Tambahi kosakata kanthi latihan sing fokus."
+      },
+      "playMusic": {
+        "label": "Main musik",
+        "desc": "Coba basamu ing mburi dek."
+      },
+      "playGames": {
+        "label": "Main game",
+        "desc": "Sinau lewat tantangan sing nyenengake."
+      },
+      "surprise": {
+        "label": "Kejutna aku!",
+        "desc": "Gawanen aku menyang panggonan sing nyenengake."
+      }
     }
   },
   "socials": {

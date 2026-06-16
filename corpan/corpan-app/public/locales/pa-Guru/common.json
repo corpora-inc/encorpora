@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}} ਦਾ ਪੂਰਵਦਰਸ਼ਨ ਕਰੋ",
     "voicePreviewSelected": "ਪੂਰਵਦਰਸ਼ਨ ਚੁਣਿਆ ਗਿਆ",
     "voiceRecommended": "ਸਿਫ਼ਾਰਿਸ਼ ਕੀਤਾ ਗਿਆ",
-    "voiceSelectedCount": "{{total}} ਵਿੱਚੋਂ {{count}}"
+    "voiceSelectedCount": "{{total}} ਵਿੱਚੋਂ {{count}}",
+    "whatToStart": {
+      "title": "ਅਸੀਂ ਕਿੱਥੋਂ ਸ਼ੁਰੂ ਕਰੀਏ?",
+      "subtitle": "ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਚੁਣੋ — ਬਾਕੀ ਬੱਸ ਇੱਕ ਟੈਪ ਦੂਰ ਹੈ।",
+      "read": {
+        "label": "ਪੜ੍ਹੋ",
+        "desc": "ਕਹਾਣੀਆਂ ਤੇ ਕਿਤਾਬਾਂ ਵਿੱਚ ਡੁੱਬ ਜਾਓ।"
+      },
+      "study": {
+        "label": "ਪੜ੍ਹਾਈ ਕਰੋ",
+        "desc": "ਕੇਂਦਰਿਤ ਅਭਿਆਸ ਨਾਲ ਆਪਣੇ ਸ਼ਬਦ ਵਧਾਓ।"
+      },
+      "playMusic": {
+        "label": "ਸੰਗੀਤ ਵਜਾਓ",
+        "desc": "ਡੈੱਕ 'ਤੇ ਆਪਣੀ ਬੋਲੀ ਅਜ਼ਮਾਓ।"
+      },
+      "playGames": {
+        "label": "ਖੇਡੋ",
+        "desc": "ਮਜ਼ੇਦਾਰ ਚੁਣੌਤੀਆਂ ਰਾਹੀਂ ਸਿੱਖੋ।"
+      },
+      "surprise": {
+        "label": "ਮੈਨੂੰ ਹੈਰਾਨ ਕਰੋ!",
+        "desc": "ਮੈਨੂੰ ਕਿਤੇ ਮਜ਼ੇਦਾਰ ਥਾਂ ਲੈ ਚੱਲੋ।"
+      }
+    }
   },
   "socials": {
     "youtube": {

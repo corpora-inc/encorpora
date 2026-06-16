@@ -372,7 +372,31 @@
     "voicePreviewAria": "Pré-visualizar {{name}}",
     "voicePreviewSelected": "Pré-visualização selecionada",
     "voiceRecommended": "Recomendado",
-    "voiceSelectedCount": "{{count}} de {{total}}"
+    "voiceSelectedCount": "{{count}} de {{total}}",
+    "whatToStart": {
+      "title": "Por onde começamos?",
+      "subtitle": "Escolhe uma para começar; o resto está a um toque.",
+      "read": {
+        "label": "Ler",
+        "desc": "Mergulha em histórias e livros."
+      },
+      "study": {
+        "label": "Estudar",
+        "desc": "Amplia o teu vocabulário com prática focada."
+      },
+      "playMusic": {
+        "label": "Tocar música",
+        "desc": "Experimenta a tua língua nas mesas de mistura."
+      },
+      "playGames": {
+        "label": "Jogar",
+        "desc": "Aprende com desafios divertidos."
+      },
+      "surprise": {
+        "label": "Surpreende-me!",
+        "desc": "Leva-me para um sítio divertido."
+      }
+    }
   },
   "socials": {
     "youtube": {

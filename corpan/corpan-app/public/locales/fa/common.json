@@ -372,7 +372,31 @@
     "voicePreviewAria": "پیش‌نمایش {{name}}",
     "voicePreviewSelected": "پیش‌نمایش انتخاب شده",
     "voiceRecommended": "توصیه شده",
-    "voiceSelectedCount": "{{count}} از {{total}}"
+    "voiceSelectedCount": "{{count}} از {{total}}",
+    "whatToStart": {
+      "title": "از کجا شروع کنیم؟",
+      "subtitle": "یکی را انتخاب کن تا شروع کنی — بقیه فقط یک لمس فاصله دارند.",
+      "read": {
+        "label": "بخوان",
+        "desc": "در داستان‌ها و کتاب‌ها غرق شو."
+      },
+      "study": {
+        "label": "مطالعه کن",
+        "desc": "واژگانت را با تمرین متمرکز بساز."
+      },
+      "playMusic": {
+        "label": "موسیقی بنواز",
+        "desc": "زبانت را پشت دستگاه‌ها امتحان کن."
+      },
+      "playGames": {
+        "label": "بازی کن",
+        "desc": "با چالش‌های سرگرم‌کننده یاد بگیر."
+      },
+      "surprise": {
+        "label": "غافلگیرم کن!",
+        "desc": "مرا به جایی جذاب ببر."
+      }
+    }
   },
   "socials": {
     "youtube": {

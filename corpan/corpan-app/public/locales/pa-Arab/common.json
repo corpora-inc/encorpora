@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}} دا پیش نظارہ کرو",
     "voicePreviewSelected": "چُنیا گیا پیش نظارہ",
     "voiceRecommended": "تجویز کردہ",
-    "voiceSelectedCount": "{{total}} وچوں {{count}}"
+    "voiceSelectedCount": "{{total}} وچوں {{count}}",
+    "whatToStart": {
+      "title": "اسیں کِتھوں شروع کریے؟",
+      "subtitle": "شروع کرن لئی اک چُنو — باقی صرف اک ٹَیپ دی دوری تے اے۔",
+      "read": {
+        "label": "پڑھو",
+        "desc": "کہانیاں تے کتاباں وچ ڈُب جاؤ۔"
+      },
+      "study": {
+        "label": "پڑھائی کرو",
+        "desc": "مرتکز مشق نال اپنے لفظ ودھاؤ۔"
+      },
+      "playMusic": {
+        "label": "موسیقی وجاؤ",
+        "desc": "ڈیکاں تے اپنی بولی اَزماؤ۔"
+      },
+      "playGames": {
+        "label": "کھیڈو",
+        "desc": "مزیدار چیلنجاں راہیں سِکھو۔"
+      },
+      "surprise": {
+        "label": "مینوں حیران کرو!",
+        "desc": "مینوں کسے مزیدار تھاں لے چلو۔"
+      }
+    }
   },
   "socials": {
     "youtube": {
