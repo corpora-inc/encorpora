@@ -2295,10 +2295,13 @@ import { createDailyQuota } from "@shared/monetization"
       updateExampleCount();
       await loadExamplesTotal();
       await loadExamples(true);
-      // Reset scroll position for new character
+      // Reset scroll position for new character: the list (wide-screen
+      // internal scroll) and the root (phone page scroll) are different
+      // scrollers depending on layout, so reset both.
       if (elExamples) {
         elExamples.scrollTop = 0;
       }
+      root.scrollTop = 0;
       if (push) {
         pushHistory(state.character);
       }
@@ -2740,14 +2743,26 @@ import { createDailyQuota } from "@shared/monetization"
       });
     });
 
-    const onScroll = () => {
-      if (state.loadingExamples) return;
-      const threshold = 200;
-      if (elExamples.scrollTop + elExamples.clientHeight >= elExamples.scrollHeight - threshold) {
-        loadExamples(false);
-      }
-    };
-    elExamples.addEventListener("scroll", onScroll);
+    // Infinite load via the footer sentinel rather than a scroll listener on
+    // the list: on a wide screen the `.examples-list` scrolls internally, but
+    // on a phone the list expands and the whole page (`.hanzi-root`) scrolls.
+    // An IntersectionObserver against the viewport handles both — it accounts
+    // for clipping by whichever ancestor is the actual scroller — so "Scroll
+    // for more" keeps loading in every layout. `loadExamples` is self-guarded
+    // (loadingExamples / noMoreExamples), so firing while visible is safe and
+    // also auto-fills a tall panel that hasn't overflowed yet.
+    let examplesObserver = null;
+    if (typeof IntersectionObserver !== "undefined" && elExamplesFooter) {
+      examplesObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            loadExamples(false);
+          }
+        },
+        { rootMargin: "200px" },
+      );
+      examplesObserver.observe(elExamplesFooter);
+    }
 
     root.addEventListener("pointerdown", onSwipeStart);
     root.addEventListener("pointermove", onSwipeMove);
@@ -2809,7 +2824,10 @@ import { createDailyQuota } from "@shared/monetization"
           clearTimeout(wheelEndTimer);
           wheelEndTimer = 0;
         }
-        elExamples.removeEventListener("scroll", onScroll);
+        if (examplesObserver) {
+          examplesObserver.disconnect();
+          examplesObserver = null;
+        }
         root.removeEventListener("pointerdown", onSwipeStart);
         root.removeEventListener("pointermove", onSwipeMove);
         root.removeEventListener("pointerup", onSwipeEnd);
