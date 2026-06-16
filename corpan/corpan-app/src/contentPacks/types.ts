@@ -30,6 +30,27 @@ export type StackConfigPatch = Partial<{
   baseCorpusEnabled: boolean
 }>
 
+/**
+ * The optional launch payload threaded host → pack at mount (App → ContentPack
+ * Overlay → ContentPackHost → the pack's `mount(..., initialState)`). Single
+ * source of truth for the shape so the host seam never drifts. All fields are
+ * optional addressability hints; a pack reads only what it understands.
+ */
+export interface PackLaunchEntry {
+  /** Deep-link to a specific entry id within the pack. */
+  entryId?: number
+  /** Source/corpus hint for the deep-linked entry. */
+  source?: string
+  /** Initial route within the pack. */
+  route?: string
+  /**
+   * Ask a freshly-launched reader to seed a default book's FREE preview
+   * narrations for the user's stack (the first-run "instant wow"). The reader
+   * acts on this only when its library is empty.
+   */
+  seedBookId?: string
+}
+
 /** A (entryId, source) pair the sampler uses for anti-repetition. */
 export type HostHistoryRef = { entryId: number; source: string }
 

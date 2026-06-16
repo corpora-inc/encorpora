@@ -5,6 +5,7 @@ import type {
   ContentPackManifest,
   ContentPackModule,
   ContentPackEntitlementSnapshot,
+  PackLaunchEntry,
 } from "./types"
 import { useEntitlementStore } from "@/store/entitlements"
 
@@ -14,7 +15,7 @@ type ContentPackHostProps = {
   id: string
   manifestUrl?: string
   /** Optional deep-link target passed into the pack's mount initialState. */
-  entry?: { entryId?: number; source?: string; route?: string; seedBookId?: string }
+  entry?: PackLaunchEntry
 }
 
 // `ContentPackEntitlementSnapshot` now lives in ./types (shared with the typed

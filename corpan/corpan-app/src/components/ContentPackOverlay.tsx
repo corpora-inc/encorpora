@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import ContentPackHost from "@/contentPacks/ContentPackHost"
+import type { PackLaunchEntry } from "@/contentPacks/types"
 import { useSettingsStore } from "@/store/settings"
 import { recordPackVisit } from "@shared/streak"
 import {
@@ -18,7 +19,7 @@ export function ContentPackOverlay({
 }: {
   id: string
   manifestUrl?: string
-  entry?: { entryId?: number; source?: string; route?: string; seedBookId?: string }
+  entry?: PackLaunchEntry
 }) {
   useEffect(() => {
     const meta = document.querySelector<HTMLMetaElement>('meta[name="viewport"]')

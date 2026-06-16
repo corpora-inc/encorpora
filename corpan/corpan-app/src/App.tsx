@@ -42,6 +42,7 @@ import { PackLaunchTransition, type RazzleCard } from "@/components/PackLaunchTr
 import { buildRazzleRoster, resolveRazzleCard } from "@/components/razzleRoster";
 import { PHRASE_PACK_ID } from "@/onboarding/bestFit";
 import { isReaderPack, DEFAULT_READER_SEED_BOOK } from "@/onboarding/resolveLanding";
+import type { PackLaunchEntry } from "@/contentPacks/types";
 
 const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
 
@@ -161,10 +162,7 @@ export default function App() {
   const [activeGame, setActiveGame] = useState<{
     id: string;
     manifestUrl?: string;
-    /** Addressability groundwork: deep-link a pack to a specific entry/route.
-     *  `seedBookId` asks a freshly-launched reader to auto-download a default
-     *  book's preview narrations for the user's stack (the first-run "wow"). */
-    entry?: { entryId?: number; source?: string; route?: string; seedBookId?: string };
+    entry?: PackLaunchEntry;
   } | null>(() => {
     if (typeof window === "undefined") return null;
     const params = new URLSearchParams(window.location.search);
@@ -494,10 +492,7 @@ export default function App() {
   );
 
   const handleLaunchGame = useCallback(
-    (
-      game: InstalledGame,
-      entry?: { entryId?: number; source?: string; route?: string; seedBookId?: string },
-    ) => {
+    (game: InstalledGame, entry?: PackLaunchEntry) => {
       setShowSettings(false);
       setActiveGame({ id: game.id, manifestUrl: game.manifestUrl, entry });
       updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });

@@ -167,7 +167,7 @@ export function PackLaunchTransition({
   const doReveal = () => {
     if (firedReveal.current) return
     firedReveal.current = true
-    triggerHaptic("medium")
+    triggerHaptic("heavy")
     onReveal()
   }
   const doComplete = () => {

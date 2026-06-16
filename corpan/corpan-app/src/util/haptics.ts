@@ -34,9 +34,11 @@ function webVibrate(style: HapticStyle): void {
  */
 export function triggerHaptic(style: HapticStyle = "medium"): void {
   try {
-    // The native command resolves immediately and never rejects on a supported
-    // device; on the web/dev shell `invoke` rejects → fall back to vibrate.
-    void invoke("plugin:haptics|impact", { style }).catch(() => webVibrate(style))
+    // The native command takes a single `args` struct ({ style }); Tauri maps the
+    // JS payload keys to the Rust fn params, so it must be wrapped as `{ args }`.
+    // Resolves immediately on a supported device; on web/dev `invoke` rejects →
+    // fall back to navigator.vibrate.
+    void invoke("plugin:haptics|impact", { args: { style } }).catch(() => webVibrate(style))
   } catch {
     webVibrate(style)
   }

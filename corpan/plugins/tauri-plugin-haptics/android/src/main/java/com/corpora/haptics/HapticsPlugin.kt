@@ -55,13 +55,19 @@ class HapticsPlugin(private val activity: Activity) : Plugin(activity) {
         }
 
         try {
+            // Use a real one-shot with strong amplitude rather than the
+            // predefined EFFECT_* tokens — on many phones (notably Samsung) the
+            // predefined "click/tick" effects are barely perceptible and respect
+            // a system touch-feedback toggle that's often off, so a deliberate
+            // reveal haptic goes unfelt. A duration + amplitude one-shot is
+            // reliably felt across devices.
             when (args.style) {
-                "light" -> oneShot(vib, predefined = effectTick(), fallbackMs = 20L)
-                "heavy" -> oneShot(vib, predefined = effectHeavyClick(), fallbackMs = 50L)
-                "success" -> waveform(vib, longArrayOf(0, 20, 60, 20))
-                "warning" -> waveform(vib, longArrayOf(0, 30, 80, 30))
+                "light" -> strongOneShot(vib, ms = 18L, amplitude = 110)
+                "heavy" -> strongOneShot(vib, ms = 55L, amplitude = 255)
+                "success" -> waveform(vib, longArrayOf(0, 35, 60, 55))
+                "warning" -> waveform(vib, longArrayOf(0, 45, 80, 70))
                 // "medium" and any unknown value
-                else -> oneShot(vib, predefined = effectClick(), fallbackMs = 35L)
+                else -> strongOneShot(vib, ms = 32L, amplitude = 190)
             }
         } catch (t: Throwable) {
             android.util.Log.w("Haptics", "Vibrate failed: ${t.message}")
@@ -71,26 +77,17 @@ class HapticsPlugin(private val activity: Activity) : Plugin(activity) {
         invoke.resolve()
     }
 
-    private fun effectTick(): Int? =
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) VibrationEffect.EFFECT_TICK else null
-
-    private fun effectClick(): Int? =
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) VibrationEffect.EFFECT_CLICK else null
-
-    private fun effectHeavyClick(): Int? =
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) VibrationEffect.EFFECT_HEAVY_CLICK else null
-
-    /** Prefer a predefined effect (API 29+); otherwise a one-shot of [fallbackMs]. */
-    private fun oneShot(vib: Vibrator, predefined: Int?, fallbackMs: Long) {
-        if (predefined != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            vib.vibrate(VibrationEffect.createPredefined(predefined))
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vib.vibrate(
-                VibrationEffect.createOneShot(fallbackMs, VibrationEffect.DEFAULT_AMPLITUDE)
-            )
+    /** A deliberately-felt one-shot: [ms] long at [amplitude] (1..255), honoring
+     *  amplitude control where the device supports it. */
+    private fun strongOneShot(vib: Vibrator, ms: Long, amplitude: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val amp =
+                if (vib.hasAmplitudeControl()) amplitude.coerceIn(1, 255)
+                else VibrationEffect.DEFAULT_AMPLITUDE
+            vib.vibrate(VibrationEffect.createOneShot(ms, amp))
         } else {
             @Suppress("DEPRECATION")
-            vib.vibrate(fallbackMs)
+            vib.vibrate(ms)
         }
     }
 

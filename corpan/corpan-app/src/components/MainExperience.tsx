@@ -440,6 +440,19 @@ export function MainExperience() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeStackId]);
 
+    // Self-heal the FIRST load. When the user drops in straight from onboarding
+    // (the razzle reveals Phrase Flip while the just-committed phrase source is
+    // still settling), the initial fetch above can no-op — `fetchRandomEntry`
+    // bails when base is off AND no phrase packs are active yet, and the effect
+    // above won't re-run because it only depends on `activeStackId`. So when the
+    // source becomes ready (base re-enabled / phrase packs registered) and we
+    // STILL have nothing shown, fetch. Guarded so it never loops once a phrase
+    // is on screen or the user has history.
+    useEffect(() => {
+        if (!currEntry && ids.length === 0) void fetchRandomEntry();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [phrasePackIds, baseCorpusEnabled, currEntry]);
+
     // Re-fetch same entry when language list changes
     useEffect(() => {
         if (index >= 0 && index < ids.length) {
