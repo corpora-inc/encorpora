@@ -7,7 +7,6 @@
 
 import {
   useEntitlementStore,
-  EMPTY_SUBSCRIPTION,
   type SubscriptionPlan,
 } from "@/store/entitlements"
 import { usePaywallStore, type PaywallSurface } from "@/store/paywall"
@@ -65,8 +64,9 @@ export function installDevDebug() {
       useEntitlementStore
         .getState()
         .setSubscription({ active, plan, expiresAt: null, autoRenew: true }),
-    /** Drop the subscription so the paywall / daily wall engage again. */
-    clearSub: () => useEntitlementStore.getState().setSubscription(EMPTY_SUBSCRIPTION),
+    /** Drop the subscription so the paywall / daily wall engage again. Forgets
+     *  the durable offline snapshot too, else it'd re-seed Plus on next reload. */
+    clearSub: () => useEntitlementStore.getState().forgetSubscription(),
     /** Force-open the universal paywall for a surface. */
     openPaywall: (surface: PaywallSurface = "phrase_flips") =>
       usePaywallStore.getState().openPaywall({ surface, packId: "corpan_app" }),

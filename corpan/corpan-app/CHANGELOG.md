@@ -7,6 +7,20 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Offline subscribers are never blocked.** Subscription state used to be
+  in-memory only, so a Plus user opening the app offline (no way to live-verify)
+  started as non-Plus and could hit a daily wall until they reconnected. The
+  entitlement store now persists a durable "last verified Plus" snapshot and
+  seeds it onto the live session at launch, so a known subscriber is treated as
+  Plus from the first frame — before (and even without) any refresh.
+  `refreshEntitlements` only ever downgrades on a DEFINITIVE, ONLINE "not owned"
+  from the OS receipt cache (StoreKit `currentEntitlements` / Play
+  `queryPurchases`); anything inconclusive or offline keeps the snapshot. We'd
+  rather a fraudulent client keep a stale Plus flag than ever block a real
+  subscriber with no signal (the app is open source regardless). New
+  `forgetSubscription()` is the only path that clears the durable snapshot.
+
 ### Changed
 - **Daily-lock headline now affirms the accomplishment.** The shared
   `DailyLockOverlay` title warmed from "Your N {{unit}} for today" to "That's

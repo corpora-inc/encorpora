@@ -1442,8 +1442,25 @@ export async function purchaseAndVerify(
 }
 
 /**
+ * Best-effort connectivity check. `navigator.onLine === false` is the only
+ * reliably-actionable signal (the browser/WebView knows when the radio is off);
+ * a `true`/absent value we treat as "online". Used to make entitlement
+ * downgrades conservative: we only ever drop a known subscriber when we're
+ * confident we could actually reach the store to verify.
+ */
+function isOnline(): boolean {
+  return typeof navigator === "undefined" || navigator.onLine !== false
+}
+
+/**
  * Refresh entitlements from the IAP plugin (local query — no network on iOS
  * via Transaction.currentEntitlements).
+ *
+ * Offline-subscriber rule: this NEVER downgrades a known subscriber unless it
+ * gets a definitive "not owned" from the OS *and* we're online. Inconclusive or
+ * offline → keep the durable `lastKnownSubscription` (seeded onto live state at
+ * launch). A real subscriber must never be blocked just because we can't reach
+ * the store.
  */
 export async function refreshEntitlements(): Promise<void> {
   if (!isTauriRuntime()) return
@@ -1474,14 +1491,28 @@ export async function refreshEntitlements(): Promise<void> {
       autoRenew: true,
     })
     void refreshEntitlementToken()
-  } else if (!anyStatusUnknown) {
-    if (store.subscription.active) {
-      console.info("[purchase] refreshEntitlements: clearing stale local sub state")
-      store.clearSubscription()
+  } else if (!anyStatusUnknown && isOnline()) {
+    // Definitive, ONLINE "not owned" — every product reported a real
+    // not-owned from the platform's local receipt cache (StoreKit
+    // currentEntitlements / Play queryPurchases), and we have connectivity. This
+    // is a genuine downgrade (cancelled / expired): forget BOTH the live and the
+    // durable offline snapshot so we stop granting Plus.
+    if (store.subscription.active || store.lastKnownSubscription) {
+      console.info("[purchase] refreshEntitlements: confirmed not-owned (online) — forgetting subscription")
+      store.forgetSubscription()
     }
     store.setEntitlementToken(null)
   } else {
-    console.warn("[purchase] refreshEntitlements: subscription status unknown — keeping in-memory state")
+    // Inconclusive (a query returned "unknown") OR we're offline. We CANNOT
+    // live-check, so we must not lock out a real subscriber: keep whatever the
+    // durable `lastKnownSubscription` seeded onto live state at launch. We'd
+    // rather a fraudulent client keep a stale Plus flag than ever block a
+    // subscriber in the jungle with no signal. The next online refresh with a
+    // definitive answer reconciles it.
+    console.warn(
+      "[purchase] refreshEntitlements: inconclusive/offline — keeping last-known subscription",
+      { anyStatusUnknown, online: isOnline(), hasSnapshot: !!store.lastKnownSubscription }
+    )
   }
 
   // Android: silent restore so we can ack any unack'd purchases (Google
