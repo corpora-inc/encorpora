@@ -7,7 +7,6 @@
 
 import type { CatalogGame } from "@/contentPacks/catalog"
 import { EXPERIENCES } from "@/experiences/registry"
-import { LIBRARY_CARD_ID } from "@/onboarding/resolveLanding"
 import type { RazzleCard } from "./PackLaunchTransition"
 
 /** lucide icon NAME per experience (matches PackLaunchTransition's registry). */
@@ -22,7 +21,6 @@ const ICON_BY_ID: Record<string, string> = {
   hanzipan: "PenTool",
   phrase_main: "Brain",
   tutomaton: "Mic",
-  [LIBRARY_CARD_ID]: "BookOpen",
 }
 
 /** A distinct accent per experience (tile tint + the chosen-card wash colour). */
@@ -37,7 +35,6 @@ const COLOR_BY_ID: Record<string, string> = {
   hanzipan: "#ef4444",
   phrase_main: "#a879f7",
   tutomaton: "#a78bfa",
-  [LIBRARY_CARD_ID]: "#60a5fa",
 }
 
 export type RosterDeps = {
@@ -45,14 +42,9 @@ export type RosterDeps = {
   catalog: CatalogGame[]
   /** Localized experience-name resolver: (id, fallback) → display name. */
   name: (id: string, fallback: string) => string
-  /** Localized label for the read→Library card. */
-  libraryName: string
 }
 
 function cardFor(id: string, deps: RosterDeps): RazzleCard {
-  if (id === LIBRARY_CARD_ID) {
-    return { id, name: deps.libraryName, icon: ICON_BY_ID[id], color: COLOR_BY_ID[id] }
-  }
   const cg = deps.catalog.find((g) => g.id === id)
   return {
     id,
@@ -63,10 +55,9 @@ function cardFor(id: string, deps: RosterDeps): RazzleCard {
   }
 }
 
-/** The full collage roster — every experience (breadth) + the Library card. */
+/** The full collage roster — every experience (hints at the breadth). */
 export function buildRazzleRoster(deps: RosterDeps): RazzleCard[] {
-  const ids = [...EXPERIENCES.map((e) => e.id), LIBRARY_CARD_ID]
-  return ids.map((id) => cardFor(id, deps))
+  return EXPERIENCES.map((e) => cardFor(e.id, deps))
 }
 
 /** Resolve one card by chosen id (a pack id, "phrase_main", or "library"). */

@@ -5,7 +5,7 @@
 // from the multi-select interests (those still feed Home's "For you" list).
 //
 // Routes (see the route audit in the plan):
-//   read       → Library (books live there; no game-pack install)
+//   read       → Earthgate Reader (→ Stargate Reader → Phrase Flip)
 //   study      → Phrase Flip  — UNLESS the target is Chinese → Hanzipan (a STUDY
 //                experience, character/handwriting drill)
 //   playMusic  → beatlounge
@@ -50,15 +50,12 @@ export type LandingResolution = {
   /** The landing intent to set (always carries `razzle: true`). */
   intent: LandingIntent
   /** Experience id to FEATURE in the razzle collage (the card that centers +
-   *  washes). For a Library landing this is the sentinel `"library"`. */
+   *  washes) — the resolved pack id, or `phrase_main`. */
   chosenId: string
   /** Content game pack to quiet-install during the transition, or `null` when
-   *  the landing needs no install (native phrase / Library / already installed). */
+   *  the landing needs no install (native phrase / already installed). */
   installPackId: string | null
 }
-
-/** Sentinel "experience" id for the read→Library landing's collage card. */
-export const LIBRARY_CARD_ID = "library"
 
 const CHINESE_BASES = new Set(["zh", "yue"])
 
@@ -74,14 +71,6 @@ function phraseResolution(): LandingResolution {
   return {
     intent: { kind: "experience", packId: PHRASE_PACK_ID, razzle: true },
     chosenId: PHRASE_PACK_ID,
-    installPackId: null,
-  }
-}
-
-function libraryResolution(): LandingResolution {
-  return {
-    intent: { kind: "home", tab: "library", razzle: true },
-    chosenId: LIBRARY_CARD_ID,
     installPackId: null,
   }
 }
@@ -107,8 +96,10 @@ export function resolveLanding(input: ResolveLandingInput): LandingResolution {
 
   switch (choice) {
     case "read":
-      // Books live in the Library — land there (no game-pack install).
-      return libraryResolution()
+      // Land in a reader (Earthgate, then Stargate); fall back to Phrase Flip.
+      if (canPack("earthgate_reader")) return packResolution("earthgate_reader", installedIds)
+      if (canPack("stargate_reader")) return packResolution("stargate_reader", installedIds)
+      return phraseResolution()
 
     case "study":
       // Chinese learners get the character/handwriting studio (a STUDY pack);
@@ -129,16 +120,20 @@ export function resolveLanding(input: ResolveLandingInput): LandingResolution {
     case "surprise": {
       // A (lightly) random landing across what's actually launchable — shows off
       // the breadth on the way in. Pool is curated to reachable, non-preview
-      // experiences; Phrase Flip + Library are always in it.
-      const packPool = ["beatlounge", "juice_squeeze", "hover_runner", "pronunciation_coach"].filter(
-        canPack,
-      )
+      // experiences; Phrase Flip is always in it.
+      const packPool = [
+        "earthgate_reader",
+        "stargate_reader",
+        "beatlounge",
+        "juice_squeeze",
+        "hover_runner",
+        "pronunciation_coach",
+      ].filter(canPack)
       if (chinese && canPack("hanzipan")) packPool.push("hanzipan")
-      // Kinds: "phrase", "library", or a specific pack id.
-      const pool: string[] = ["phrase", "library", ...packPool]
+      // Kinds: "phrase" or a specific pack id.
+      const pool: string[] = ["phrase", ...packPool]
       const pick = pool[Math.floor(Math.min(0.999999, Math.max(0, rng())) * pool.length)] ?? "phrase"
       if (pick === "phrase") return phraseResolution()
-      if (pick === "library") return libraryResolution()
       return packResolution(pick, installedIds)
     }
 

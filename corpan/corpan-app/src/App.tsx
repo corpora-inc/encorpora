@@ -40,7 +40,6 @@ import { trackGateHit } from "@/util/analytics";
 import { useTranslation } from "react-i18next";
 import { PackLaunchTransition, type RazzleCard } from "@/components/PackLaunchTransition";
 import { buildRazzleRoster, resolveRazzleCard } from "@/components/razzleRoster";
-import { LIBRARY_CARD_ID } from "@/onboarding/resolveLanding";
 import { PHRASE_PACK_ID } from "@/onboarding/bestFit";
 
 const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
@@ -617,39 +616,31 @@ export default function App() {
     const intent = useLandingStore.getState().consumeLanding();
     if (!intent) return;
 
-    // The "razzle" intents (set by onboarding) play the first-launch collage,
-    // then drop the user into the chosen experience at the reveal beat. The
-    // chosen card is the pack (experience intent) or the Library (home intent).
-    const wantsRazzle =
-      (intent.kind === "experience" || intent.kind === "home") && intent.razzle;
-    if (wantsRazzle) {
-      const chosenId =
-        intent.kind === "experience" ? intent.packId : LIBRARY_CARD_ID;
+    // The "razzle" intent (set by onboarding) plays the first-launch collage,
+    // then drops the user into the chosen experience at the reveal beat.
+    if (intent.kind === "experience" && intent.razzle) {
+      const packId = intent.packId;
       const deps = {
         catalog: useCatalogStore.getState().getCatalog(),
         name: (id: string, fallback: string) =>
           t(`experiences.${id}.name`, { defaultValue: fallback }),
-        libraryName: t("home.library", { defaultValue: "Library" }),
       };
       // Kick the install now (backstops onboarding's earlier preinstall) so the
       // pack is as ready as possible by the reveal.
-      if (intent.kind === "experience" && intent.packId !== PHRASE_PACK_ID) {
-        void quietInstall(intent.packId);
-      }
+      if (packId !== PHRASE_PACK_ID) void quietInstall(packId);
       // What actually runs UNDER the overlay at the reveal beat:
       const launch = () => {
-        if (intent.kind === "home") return; // Library → Home (already mounted)
-        if (intent.packId === PHRASE_PACK_ID) {
+        if (packId === PHRASE_PACK_ID) {
           openPhrase();
           return;
         }
-        const g = useGamesStore.getState().getGame(intent.packId);
+        const g = useGamesStore.getState().getGame(packId);
         if (g) handleLaunchGame(g);
         else openPhrase(); // not ready in time → graceful fallback
       };
       setRazzle({
         roster: buildRazzleRoster(deps),
-        chosen: resolveRazzleCard(chosenId, deps),
+        chosen: resolveRazzleCard(packId, deps),
         launch,
       });
       return;

@@ -45,15 +45,28 @@ before(async () => {
   resolveLanding = mod.resolveLanding
 })
 
-const ALL_CATALOG = ["beatlounge", "juice_squeeze", "hover_runner", "hanzipan", "pronunciation_coach"]
+const ALL_CATALOG = [
+  "earthgate_reader",
+  "stargate_reader",
+  "beatlounge",
+  "juice_squeeze",
+  "hover_runner",
+  "hanzipan",
+  "pronunciation_coach",
+]
 
-test("read → Library (home intent, razzle, no install)", () => {
+test("read → Earthgate Reader (install needed)", () => {
   const r = resolveLanding({ choice: "read", languages: ["en", "es"], catalogIds: ALL_CATALOG, installedIds: [] })
-  assert.equal(r.intent.kind, "home")
-  assert.equal(r.intent.tab, "library")
+  assert.equal(r.intent.kind, "experience")
+  assert.equal(r.intent.packId, "earthgate_reader")
   assert.equal(r.intent.razzle, true)
-  assert.equal(r.chosenId, "library")
-  assert.equal(r.installPackId, null)
+  assert.equal(r.chosenId, "earthgate_reader")
+  assert.equal(r.installPackId, "earthgate_reader")
+})
+
+test("read → Stargate Reader when Earthgate absent, else Phrase Flip", () => {
+  assert.equal(resolveLanding({ choice: "read", languages: ["en"], catalogIds: ["stargate_reader"], installedIds: [] }).intent.packId, "stargate_reader")
+  assert.equal(resolveLanding({ choice: "read", languages: ["en"], catalogIds: [], installedIds: [] }).intent.packId, "phrase_main")
 })
 
 test("study (non-Chinese) → Phrase Flip", () => {

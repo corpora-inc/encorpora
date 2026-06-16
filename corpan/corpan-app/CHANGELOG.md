@@ -11,7 +11,7 @@ Conventions: `corpan/CHANGELOGS.md`.
 - **Onboarding "where should we begin?" + a first-launch razzle-dazzle.** The
   final onboarding step is now a single deterministic question — Read / Study /
   Play music / Play games / Surprise me — that makes the exact landing call
-  (Read→Library, Study→Phrase Flip [Chinese→Hanzipan], Music→beatlounge,
+  (Read→Earthgate Reader, Study→Phrase Flip [Chinese→Hanzipan], Music→beatlounge,
   Games→Juice Squeeze, Surprise→a lightly-random pick across what's launchable).
   The multi-select "What do you want to do?" stays and still powers Home's "For
   you" recommendations. On the way in, a ~5s premium collage of every experience
