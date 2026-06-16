@@ -1311,24 +1311,6 @@ export function createAppShell(
 
     const active = getActive()
 
-    // Collect every premium book product ID so we can batch one platform-store
-    // request for all card prices instead of N. Cached for 5 min by purchaseManager.
-    const premiumProductIds = new Set<string>()
-    const cardMetaByProductId = new Map<string, HTMLElement>()
-
-    // Capture the meta element for a book so the batched price fetch can fill in
-    // the platform-localized price once it lands.
-    function registerPriceMeta(book: BookGroup, meta: HTMLElement): void {
-      const firstNarr = book.narrations[0]
-      meta.textContent =
-        firstNarr?.purchase?.priceLabel ||
-        (firstNarr?.tier === "premium" ? "Premium" : "Free")
-      if (firstNarr?.purchase?.type === "iap" && firstNarr.purchase.productId) {
-        premiumProductIds.add(firstNarr.purchase.productId)
-        cardMetaByProductId.set(firstNarr.purchase.productId, meta)
-      }
-    }
-
     if (browseView === "compact") {
       // Dense, flat, scannable list (Apple Books / Audible list rows). Series
       // grouping is dropped in favor of packing rows; the "Series" sort still
@@ -1338,7 +1320,7 @@ export function createAppShell(
       const list = document.createElement("div")
       list.className = "catalog-list"
       for (const book of books) {
-        list.appendChild(buildBookRow(book, active, registerPriceMeta))
+        list.appendChild(buildBookRow(book, active))
       }
       results.appendChild(list)
     } else if (browseSort === "series") {
@@ -1353,7 +1335,7 @@ export function createAppShell(
         const grid = document.createElement("div")
         grid.className = "catalog-grid"
         for (const book of sg.books) {
-          grid.appendChild(buildBookCard(book, active, registerPriceMeta))
+          grid.appendChild(buildBookCard(book, active))
         }
         results.appendChild(grid)
       }
@@ -1364,19 +1346,9 @@ export function createAppShell(
       const grid = document.createElement("div")
       grid.className = "catalog-grid"
       for (const book of books) {
-        grid.appendChild(buildBookCard(book, active, registerPriceMeta))
+        grid.appendChild(buildBookCard(book, active))
       }
       results.appendChild(grid)
-    }
-
-    if (premiumProductIds.size > 0) {
-      void fetchStoreProducts([...premiumProductIds], "inapp").then((res) => {
-        if (!res.ok) return
-        for (const p of res.products) {
-          const meta = cardMetaByProductId.get(p.productId)
-          if (meta && p.price) meta.textContent = p.price
-        }
-      })
     }
   }
 
@@ -1384,7 +1356,6 @@ export function createAppShell(
   function buildBookCard(
     book: BookGroup,
     active: string,
-    registerPriceMeta: (book: BookGroup, meta: HTMLElement) => void,
   ): HTMLElement {
     const card = document.createElement("div")
     card.className = "catalog-card"
@@ -1420,11 +1391,7 @@ export function createAppShell(
 
     const langs = renderStackFirstLangBadges(book.languages, { variant: "card" })
 
-    const meta = document.createElement("div")
-    meta.className = "catalog-card-meta"
-    registerPriceMeta(book, meta)
-
-    card.append(title, langs, meta)
+    card.append(title, langs)
 
     if (book.narrations.some(n => n.id === active)) {
       card.classList.add("catalog-card--active")
@@ -1436,7 +1403,6 @@ export function createAppShell(
   function buildBookRow(
     book: BookGroup,
     active: string,
-    registerPriceMeta: (book: BookGroup, meta: HTMLElement) => void,
   ): HTMLElement {
     const row = document.createElement("button")
     row.type = "button"
@@ -1492,12 +1458,6 @@ export function createAppShell(
     info.appendChild(langs)
 
     row.appendChild(info)
-
-    // Trailing price/tier chip — same batched localization as the cards.
-    const meta = document.createElement("div")
-    meta.className = "catalog-card-meta catalog-list-price"
-    registerPriceMeta(book, meta)
-    row.appendChild(meta)
 
     return row
   }

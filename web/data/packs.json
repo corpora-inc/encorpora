@@ -264,7 +264,7 @@
     "manifestUrl": "/corpan/packs/juice-squeeze/manifest.json",
     "zipUrl": "/corpan/packs/juice-squeeze.zip",
     "landingUrl": "/corpan/packs/juice-squeeze/",
-    "avatarSource": "corpan/packs/juice-squeeze/juice-squeeze-avatar.svg",
+    "avatarSource": "corpan/packs/juice-squeeze/juice-squeeze-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/juice-squeeze",
     "minAppVersion": "0.9.0",
     "channel": "stable",
