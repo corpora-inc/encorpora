@@ -679,7 +679,7 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
     const player = currentPlayer(opts.game)
     if (!player) return
     // Hard daily cap (shared with solo practice via the same gate key): once the
-    // free user has reached PARLO_DAILY_LIMIT scored rounds for the day, re-show
+    // free user has reached the daily cap (QUOTAS.parlometron_daily) for the day, re-show
     // the accomplishment-lock overlay and refuse to record another round.
     // Subscribers never block (isBlocked reads the host-injected Plus globals).
     if (paywallGate.isBlocked()) {

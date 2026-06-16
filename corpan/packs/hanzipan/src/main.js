@@ -1,14 +1,11 @@
 import "./styles.css"
-import { createPaywallGate } from "@shared/monetization"
+import { createDailyQuota } from "@shared/monetization"
 
-// gate v2 daily quota (per-pack, release-tunable). A free user practices
-// HANZI_DAILY_LIMIT characters per local day, with a dismissible soft nag every
-// HANZI_DAILY_NAG_EVERY before the hard cap ("soft, soft, hard"); at the cap the
-// gate dispatches `corpan:daily-locked` for the host's accomplishment-lock
-// overlay. Subscribers are a no-op (the gate reads the host-injected Plus
-// globals).
-const HANZI_DAILY_LIMIT = 20
-const HANZI_DAILY_NAG_EVERY = 5
+// gate v2 daily quota. Limit/nag/unit live in the central registry
+// (QUOTAS.hanzipan_chars — 20 characters/local day, soft nag every 5, "soft,
+// soft, hard"). At the cap the gate dispatches `corpan:daily-locked` for the
+// host's accomplishment-lock overlay. Subscribers are a no-op (the gate reads
+// the host-injected Plus globals).
 
 ;(() => {
   const GAME_ID = "hanzipan";
@@ -1732,14 +1729,7 @@ const HANZI_DAILY_NAG_EVERY = 5
   };
 
   const mount = (container, hostApi, initialState = {}) => {
-    const paywallGate = createPaywallGate({
-      packId: "hanzipan",
-      surface: "hanzipan_chars",
-      mode: "daily",
-      dailyLimit: HANZI_DAILY_LIMIT,
-      softNagEvery: HANZI_DAILY_NAG_EVERY,
-      unitLabel: "characters",
-    });
+    const paywallGate = createDailyQuota("hanzipan_chars");
     const root = document.createElement("div");
     root.className = "hanzi-root";
     root.innerHTML = template;
@@ -2645,7 +2635,7 @@ const HANZI_DAILY_NAG_EVERY = 5
         return;
       }
       // Hard daily cap: loading a brand-new character is the metered action.
-      // Once the free user has reached HANZI_DAILY_LIMIT completed characters
+      // Once the free user has reached the daily cap (QUOTAS.hanzipan_chars)
       // they get EXACTLY that many — re-show the accomplishment-lock overlay
       // instead of loading another. Subscribers never block (isBlocked reads
       // the host-injected Plus globals).

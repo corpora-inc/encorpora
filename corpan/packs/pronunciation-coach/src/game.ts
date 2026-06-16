@@ -1778,7 +1778,7 @@ export const mountGame = (
   const startRecording = async () => {
     if (!currentPhrase || !modelReady) return
     // Hard daily cap: starting a new round is the metered action. Once the free
-    // user has reached PARLO_DAILY_LIMIT scored rounds they get EXACTLY that
+    // user has reached the daily cap (QUOTAS.parlometron_daily) they get EXACTLY that
     // many — re-show the accomplishment-lock overlay and refuse to record
     // another. Subscribers never block (isBlocked reads the host-injected Plus).
     if (paywallGate.isBlocked()) {

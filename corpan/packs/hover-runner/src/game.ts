@@ -89,7 +89,7 @@ import { createPhraseSurfaceEffects } from "./rendering/phraseSurfaceEffects"
 import { createSuccessParticles, createFailParticles, createScreenShake, clearAllParticleTimeouts, createAmbientParticles, createStarfieldParticles, createEnergyFieldParticles, createSpeedLines } from "./systems/particles"
 import { createScoreAnimator } from "./ui/scoreAnimation"
 import { initInput } from "./systems/input"
-import { createPaywallGate } from "@shared/monetization"
+import { createDailyQuota } from "@shared/monetization"
 
 // Gameplay helpers
 import { buildEntryLookup, pickLanguages } from "./gameplay/entryHelpers"
@@ -101,23 +101,13 @@ export const createHoverRunner = (
 ) => {
   let disposed = false
 
-  // gate v2 daily quota (per-pack, release-tunable). A free user gets
-  // HOVER_DAILY_LIMIT phrases per local day, with a dismissible soft nag every
-  // HOVER_DAILY_NAG_EVERY before the hard cap ("soft, soft, hard"); at the cap
-  // the gate is BLOCKED until tomorrow or subscribe and dispatches
-  // `corpan:daily-locked` for the host's accomplishment-lock overlay. `note()`
-  // counts a completed phrase (and fires the nag/lock internally). Disposed in
-  // dispose().
-  const HOVER_DAILY_LIMIT = 20
-  const HOVER_DAILY_NAG_EVERY = 5
-  const paywallGate = createPaywallGate({
-    packId: "hover-runner",
-    surface: "hover_phrases",
-    mode: "daily",
-    dailyLimit: HOVER_DAILY_LIMIT,
-    softNagEvery: HOVER_DAILY_NAG_EVERY,
-    unitLabel: "phrases",
-  })
+  // gate v2 daily quota. Limit/nag/unit live in the central registry
+  // (QUOTAS.hover_phrases — 20 phrases/local day, soft nag every 5, "soft, soft,
+  // hard"). At the cap the gate is BLOCKED until tomorrow or subscribe and
+  // dispatches `corpan:daily-locked` for the host's accomplishment-lock overlay.
+  // `note()` counts a completed phrase (and fires the nag/lock internally).
+  // Disposed in dispose().
+  const paywallGate = createDailyQuota("hover_phrases")
 
   // iOS detection removed - no longer needed for platform-specific hacks
   const debugFlags =
@@ -1936,7 +1926,7 @@ export const createHoverRunner = (
       // Hard daily cap: the phrase just celebrated was the last one counted by
       // note(). If the free user has now reached the cap, do NOT start the next
       // round — re-show the accomplishment-lock overlay instead. Subscribers
-      // never block. They got EXACTLY HOVER_DAILY_LIMIT completed phrases.
+      // never block. They got EXACTLY the daily cap (QUOTAS.hover_phrases).
       if (paywallGate.isBlocked()) {
         paywallGate.requestDailyLock()
         return

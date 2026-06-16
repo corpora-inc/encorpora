@@ -27,7 +27,7 @@ import { useGameStore, LEVEL_FRUIT_COLORS, BOTTLES_PER_LEVEL, getAllFruits, type
 import { createJuiceGlass, type JuiceGlass } from "./juiceAnimation"
 import { createBottle3D, type Bottle3D } from "./bottle3D"
 import { t } from "./translations"
-import { createPaywallGate } from "@shared/monetization"
+import { createDailyQuota } from "@shared/monetization"
 import successSoundUrl from "./sounds/success.mp3"
 import corpanLogoUrl from "./assets/corpan-logo.png"
 
@@ -181,22 +181,13 @@ export const createJuiceSqueeze = (
 
   let disposed = false
 
-  // gate v2 daily quota (per-pack, release-tunable). A free user gets
-  // JUICE_DAILY_LIMIT phrases per local day, with a dismissible soft nag every
-  // JUICE_DAILY_NAG_EVERY before the hard cap ("soft, soft, hard"); at the cap
-  // the gate dispatches `corpan:daily-locked` for the host's accomplishment-lock
-  // overlay. `note()` (per completed phrase) fires the nag/lock internally.
-  // Subscribers are a no-op (the gate reads the host-injected Plus globals).
-  const JUICE_DAILY_LIMIT = 20
-  const JUICE_DAILY_NAG_EVERY = 5
-  const paywallGate = createPaywallGate({
-    packId: "juice_squeeze",
-    surface: "juice_phrases",
-    mode: "daily",
-    dailyLimit: JUICE_DAILY_LIMIT,
-    softNagEvery: JUICE_DAILY_NAG_EVERY,
-    unitLabel: "phrases",
-  })
+  // gate v2 daily quota. Limit/nag/unit live in the central registry
+  // (QUOTAS.juice_phrases — 20 phrases/local day, soft nag every 5, "soft, soft,
+  // hard"). At the cap the gate dispatches `corpan:daily-locked` for the host's
+  // accomplishment-lock overlay. `note()` (per completed phrase) fires the
+  // nag/lock internally. Subscribers are a no-op (the gate reads the
+  // host-injected Plus globals).
+  const paywallGate = createDailyQuota("juice_phrases")
 
   // Track rotation index for multi-language stacks (3+ languages)
   let targetLangRotationIndex = 0
@@ -2185,7 +2176,7 @@ export const createJuiceSqueeze = (
   // Create word blocks from loaded utterance
   const createWordBlocks = async (opts?: { initial?: boolean }) => {
     // Hard daily cap: loading a NEW phrase to solve is the metered action.
-    // Once the free user has reached JUICE_DAILY_LIMIT completed phrases they
+    // Once the free user has reached the daily cap (QUOTAS.juice_phrases) they
     // get EXACTLY that many — re-show the accomplishment-lock overlay instead
     // of loading another. The initial mount load is exempt (so a returning,
     // already-capped user still sees the board), and subscribers never block.

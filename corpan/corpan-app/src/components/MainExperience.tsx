@@ -17,7 +17,7 @@ import { useHistoryStore } from "@/store/history";
 import { useRatingStore } from "@/store/rating";
 import { usePhrasePacksStore } from "@/store/phrasePacks";
 import { useEntitlementStore } from "@/store/entitlements";
-import { createPaywallGate, type PaywallGate } from "@shared/monetization";
+import { createDailyQuota, type PaywallGate } from "@shared/monetization";
 import { recordPackVisit } from "@shared/streak";
 import { resolveLocalized } from "@/contentPacks/localized";
 
@@ -28,14 +28,12 @@ import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
 
 /* ----------------------------- Monetization ----------------------------- */
 
-// gate v2 daily quota for the CORE phrase experience (release-tunable). A free
-// user advances PHRASE_DAILY_LIMIT phrases per local day, with a dismissible
-// soft nag every PHRASE_DAILY_NAG_EVERY before the hard cap ("soft, soft,
-// hard"); at the cap the gate dispatches `corpan:daily-locked` (App.tsx renders
-// the accomplishment-lock overlay) and stays blocked until local midnight or
-// subscribe. Subscribers are a no-op (gate reads live entitlement state).
-const PHRASE_DAILY_LIMIT = 20;
-const PHRASE_DAILY_NAG_EVERY = 5;
+// gate v2 daily quota for the CORE phrase experience. Limit/nag/unit live in the
+// central registry (QUOTAS.phrase_flips — 20 phrases/local day, soft nag every
+// 5, "soft, soft, hard"). At the cap the gate dispatches `corpan:daily-locked`
+// (App.tsx renders the accomplishment-lock overlay) and stays blocked until
+// local midnight or subscribe. Subscribers are a no-op (gate reads live
+// entitlement state).
 
 // The core phrase-flip experience isn't an overlay pack, but it gets a visit
 // streak like every pack. This is the SAME id the phrase gate uses as its packId
@@ -274,13 +272,7 @@ export function MainExperience() {
         // silently no-op'ing note()/isBlocked() (the daily wall never fires in
         // dev, and ANY remount kills it). Building here means every effect run
         // gets a fresh, non-disposed gate; cleanup disposes it and clears the ref.
-        const gate = createPaywallGate({
-            packId: PHRASE_FLIP_PACK_ID,
-            surface: "phrase_flips",
-            mode: "daily",
-            dailyLimit: PHRASE_DAILY_LIMIT,
-            softNagEvery: PHRASE_DAILY_NAG_EVERY,
-            unitLabel: "phrases",
+        const gate = createDailyQuota("phrase_flips", {
             isSubscribed: () => useEntitlementStore.getState().subscription.active,
         });
         phraseGateRef.current = gate;

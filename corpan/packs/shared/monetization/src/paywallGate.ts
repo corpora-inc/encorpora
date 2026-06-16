@@ -26,6 +26,7 @@ import type {
   DailyLockedDetail,
   EntitlementSnapshot,
   GateConfig,
+  GateRegistry,
   PaywallGate,
   PaywallRequestDetail,
   StorageLike,
@@ -125,6 +126,12 @@ function defaultStorage(): StorageLike | undefined {
   }
 }
 
+/** The live-gate registry on globalThis (lazily created). DEV debug API reads it. */
+function gateRegistry(): GateRegistry {
+  const g = globalThis as { __corpanGates?: GateRegistry }
+  return (g.__corpanGates ??= {})
+}
+
 export function createPaywallGate(config: GateConfig): PaywallGate {
   const {
     packId,
@@ -138,6 +145,7 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
     hardness = "soft",
     sessionCap = DEFAULT_SESSION_CAP,
     detail: extraDetail,
+    legacyKey,
     isSubscribed = defaultIsSubscribed,
     requestPaywall = defaultRequestPaywall,
     requestDailyLock = defaultRequestDailyLock,
@@ -152,6 +160,26 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
   const isDailyCounter = mode === "daily" || typeof dailyLimit === "number"
 
   const storageKey = `corpan:gate:${packId}:${surface}`
+
+  // Legacy-key migration: a pre-gate build wrote a `<packId>.quota` { day, count }
+  // key (e.g. `tutomaton.quota`). If the standard key is ABSENT but the legacy key
+  // is present, import its count ONCE into the standard key so the upgrade
+  // preserves today's progress and the old inconsistent key dies. Tiny + fully
+  // storage-failure-safe (any throw is swallowed → no migration, no crash).
+  if (legacyKey && storage) {
+    try {
+      const hasStandard = storage.getItem(storageKey) != null
+      const rawLegacy = storage.getItem(legacyKey)
+      if (!hasStandard && rawLegacy) {
+        const parsed = JSON.parse(rawLegacy) as { day?: unknown; count?: unknown }
+        const day = typeof parsed.day === "string" ? parsed.day : localDay(now())
+        const count = Math.max(0, Number(parsed.count) || 0)
+        storage.setItem(storageKey, JSON.stringify({ day, count, lastFireAt: 0 }))
+      }
+    } catch {
+      /* malformed/unavailable legacy storage — skip migration, start fresh */
+    }
+  }
 
   // In-memory mirror so the gate survives WebKit storage being full/unavailable,
   // and so the timed anchor works even with no storage at all.
@@ -296,7 +324,9 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
     }
   }
 
-  return {
+  const registryKey = `${packId}:${surface}`
+
+  const api: PaywallGate = {
     note() {
       if (disposed || isSubscribed()) return
       if (mode === "timed") return // timed gates don't count actions
@@ -414,6 +444,24 @@ export function createPaywallGate(config: GateConfig): PaywallGate {
     dispose() {
       disposed = true
       memory = null
+      // Unregister from the live-gate registry (no leak across remounts).
+      try {
+        const reg = gateRegistry()
+        if (reg[registryKey]?.gate === api) delete reg[registryKey]
+      } catch {
+        /* no globalThis registry available — nothing to clean up */
+      }
     },
   }
+
+  // Register on the live-gate registry so the host's DEV debug API can inspect
+  // and live-set ANY pack's gate (including OTA packs) without a reload. Cheap
+  // and harmless in prod (just a globalThis map entry); dropped on dispose().
+  try {
+    gateRegistry()[registryKey] = { packId, surface, gate: api }
+  } catch {
+    /* no globalThis — skip registration (SSR/unusual host) */
+  }
+
+  return api
 }
