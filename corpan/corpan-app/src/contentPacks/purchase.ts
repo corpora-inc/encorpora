@@ -1337,6 +1337,9 @@ export async function purchaseAndVerify(
   verifyFailed?: boolean
 }> {
   const subjectId = getCorpanSubjectId()
+  // Pre-purchase state for trial-start detection below: a free trial is granted
+  // once per subscription group, so it only "starts" for a NEW subscriber.
+  const wasSubscribed = useEntitlementStore.getState().subscription.active
   const outcome = await purchaseProduct(productId, productType, {
     subjectId,
     offerToken: options.offerToken,
@@ -1376,7 +1379,24 @@ export async function purchaseAndVerify(
         ? normalizeAffiliateCode(options.affiliateCode)
         : undefined
     trackSubscriptionPurchased(plan, purchase.platform, validCode)
-    if (options.offerToken) trackTrialStarted(plan)
+    // Funnel: trial_started fires when this purchase actually STARTS a free
+    // trial — the product carries a free-trial intro offer AND this is a NEW
+    // subscription (the intro is granted once per group). Derived from the
+    // product's normalized `introOffer.kind`, NOT `offerToken` (that's the
+    // affiliate DISCOUNT token: unrelated to trials, and absent on the standard
+    // iOS StoreKit / Play base-plan trial flow). Best-effort, non-blocking.
+    if (!wasSubscribed) {
+      void fetchProducts([productId], productType)
+        .then((res) => {
+          const prod = res.ok
+            ? res.products.find((p) => p.productId === productId)
+            : undefined
+          if (prod?.introOffer?.kind === "free_trial") trackTrialStarted(plan)
+        })
+        .catch(() => {
+          /* analytics best-effort */
+        })
+    }
   } else {
     store.addPurchasedProduct(productId)
   }
@@ -1422,8 +1442,36 @@ export async function purchaseAndVerify(
 }
 
 /**
+ * Best-effort connectivity check. `navigator.onLine === false` is the only
+ * reliably-actionable signal (the browser/WebView knows when the radio is off);
+ * a `true`/absent value we treat as "online". Used to make entitlement
+ * downgrades conservative: we only ever drop a known subscriber when we're
+ * confident we could actually reach the store to verify.
+ */
+function isOnline(): boolean {
+  return typeof navigator === "undefined" || navigator.onLine !== false
+}
+
+/**
+ * Grace window after the last CONFIRMED Plus verification during which an online
+ * "not owned" does NOT yet downgrade. Rides out (a) transient store flakiness —
+ * a StoreKit/Play query that momentarily reports not-owned then recovers — and
+ * (b) billing-grace renewals, where a card retry is in flight. The stores
+ * usually report the sub as still owned during their own grace, so this is a
+ * belt-and-suspenders buffer; 48h keeps a real subscriber comfortable without
+ * meaningful leakage.
+ */
+const SUBSCRIPTION_GRACE_MS = 48 * 60 * 60 * 1000
+
+/**
  * Refresh entitlements from the IAP plugin (local query — no network on iOS
  * via Transaction.currentEntitlements).
+ *
+ * Offline-subscriber rule: this NEVER downgrades a known subscriber unless it
+ * gets a definitive "not owned" from the OS *and* we're online. Inconclusive or
+ * offline → keep the durable `lastKnownSubscription` (seeded onto live state at
+ * launch). A real subscriber must never be blocked just because we can't reach
+ * the store.
  */
 export async function refreshEntitlements(): Promise<void> {
   if (!isTauriRuntime()) return
@@ -1454,14 +1502,42 @@ export async function refreshEntitlements(): Promise<void> {
       autoRenew: true,
     })
     void refreshEntitlementToken()
-  } else if (!anyStatusUnknown) {
-    if (store.subscription.active) {
-      console.info("[purchase] refreshEntitlements: clearing stale local sub state")
-      store.clearSubscription()
+  } else if (!anyStatusUnknown && isOnline()) {
+    // Definitive, ONLINE "not owned" — every product reported a real not-owned
+    // from the platform's local receipt cache (StoreKit currentEntitlements /
+    // Play queryPurchases), and we have connectivity. Normally a genuine
+    // downgrade (cancelled / expired) — BUT ride out a short grace window
+    // anchored to the last confirmed verification, to absorb transient store
+    // flakiness and billing-grace renewals before we actually drop Plus.
+    const verifiedAt = store.lastVerifiedAt
+    const withinGrace =
+      Boolean(store.lastKnownSubscription?.active) &&
+      typeof verifiedAt === "number" &&
+      Date.now() - verifiedAt < SUBSCRIPTION_GRACE_MS
+
+    if (withinGrace) {
+      console.warn(
+        "[purchase] refreshEntitlements: not-owned but within grace window — keeping subscription",
+        { msSinceVerified: typeof verifiedAt === "number" ? Date.now() - verifiedAt : null }
+      )
+    } else {
+      if (store.subscription.active || store.lastKnownSubscription) {
+        console.info("[purchase] refreshEntitlements: confirmed not-owned past grace — forgetting subscription")
+        store.forgetSubscription()
+      }
+      store.setEntitlementToken(null)
     }
-    store.setEntitlementToken(null)
   } else {
-    console.warn("[purchase] refreshEntitlements: subscription status unknown — keeping in-memory state")
+    // Inconclusive (a query returned "unknown") OR we're offline. We CANNOT
+    // live-check, so we must not lock out a real subscriber: keep whatever the
+    // durable `lastKnownSubscription` seeded onto live state at launch. We'd
+    // rather a fraudulent client keep a stale Plus flag than ever block a
+    // subscriber in the jungle with no signal. The next online refresh with a
+    // definitive answer reconciles it.
+    console.warn(
+      "[purchase] refreshEntitlements: inconclusive/offline — keeping last-known subscription",
+      { anyStatusUnknown, online: isOnline(), hasSnapshot: !!store.lastKnownSubscription }
+    )
   }
 
   // Android: silent restore so we can ack any unack'd purchases (Google

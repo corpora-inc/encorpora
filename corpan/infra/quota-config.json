@@ -1,0 +1,12 @@
+{
+  "_comment": "Remote-config override for the daily-quota caps. The Corpán app fetches this from https://d38iwc9748jekz.cloudfront.net/quota-config.json at launch and merges any per-surface override OVER the baked defaults in packs/shared/monetization/src/quotas.ts (only dailyLimit + softNagEvery; packId/surface/unitLabel always stay baked). To re-tune a cap WITHOUT shipping an app build: edit the values below, upload to s3://corpan-prod/quota-config.json, invalidate the CDN path. Takes effect on the next app launch. An ABSENT file (404) or any malformed value is harmless — the app falls back to the baked defaults. dailyLimit is clamped to 1..1000; softNagEvery to 1..dailyLimit. The values below are the CURRENT baked defaults (a no-op seed); change them to start an experiment. Bump `version` on each change for your own tracking (the client does not gate on it).",
+  "version": 1,
+  "quotas": {
+    "phrase_flips": { "dailyLimit": 20, "softNagEvery": 5 },
+    "parlometron_daily": { "dailyLimit": 15, "softNagEvery": 5 },
+    "hover_phrases": { "dailyLimit": 20, "softNagEvery": 5 },
+    "juice_phrases": { "dailyLimit": 20, "softNagEvery": 5 },
+    "hanzipan_chars": { "dailyLimit": 20, "softNagEvery": 5 },
+    "tutomaton_daily": { "dailyLimit": 20, "softNagEvery": 5 }
+  }
+}

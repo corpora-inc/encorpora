@@ -1,14 +1,11 @@
 import "./styles.css"
-import { createPaywallGate } from "@shared/monetization"
+import { createDailyQuota } from "@shared/monetization"
 
-// gate v2 daily quota (per-pack, release-tunable). A free user practices
-// HANZI_DAILY_LIMIT characters per local day, with a dismissible soft nag every
-// HANZI_DAILY_NAG_EVERY before the hard cap ("soft, soft, hard"); at the cap the
-// gate dispatches `corpan:daily-locked` for the host's accomplishment-lock
-// overlay. Subscribers are a no-op (the gate reads the host-injected Plus
-// globals).
-const HANZI_DAILY_LIMIT = 20
-const HANZI_DAILY_NAG_EVERY = 5
+// gate v2 daily quota. Limit/nag/unit live in the central registry
+// (QUOTAS.hanzipan_chars — 20 characters/local day, soft nag every 5, "soft,
+// soft, hard"). At the cap the gate dispatches `corpan:daily-locked` for the
+// host's accomplishment-lock overlay. Subscribers are a no-op (the gate reads
+// the host-injected Plus globals).
 
 ;(() => {
   const GAME_ID = "hanzipan";
@@ -1732,14 +1729,7 @@ const HANZI_DAILY_NAG_EVERY = 5
   };
 
   const mount = (container, hostApi, initialState = {}) => {
-    const paywallGate = createPaywallGate({
-      packId: "hanzipan",
-      surface: "hanzipan_chars",
-      mode: "daily",
-      dailyLimit: HANZI_DAILY_LIMIT,
-      softNagEvery: HANZI_DAILY_NAG_EVERY,
-      unitLabel: "characters",
-    });
+    const paywallGate = createDailyQuota("hanzipan_chars");
     const root = document.createElement("div");
     root.className = "hanzi-root";
     root.innerHTML = template;
@@ -2305,10 +2295,13 @@ const HANZI_DAILY_NAG_EVERY = 5
       updateExampleCount();
       await loadExamplesTotal();
       await loadExamples(true);
-      // Reset scroll position for new character
+      // Reset scroll position for new character: the list (wide-screen
+      // internal scroll) and the root (phone page scroll) are different
+      // scrollers depending on layout, so reset both.
       if (elExamples) {
         elExamples.scrollTop = 0;
       }
+      root.scrollTop = 0;
       if (push) {
         pushHistory(state.character);
       }
@@ -2645,7 +2638,7 @@ const HANZI_DAILY_NAG_EVERY = 5
         return;
       }
       // Hard daily cap: loading a brand-new character is the metered action.
-      // Once the free user has reached HANZI_DAILY_LIMIT completed characters
+      // Once the free user has reached the daily cap (QUOTAS.hanzipan_chars)
       // they get EXACTLY that many — re-show the accomplishment-lock overlay
       // instead of loading another. Subscribers never block (isBlocked reads
       // the host-injected Plus globals).
@@ -2750,14 +2743,26 @@ const HANZI_DAILY_NAG_EVERY = 5
       });
     });
 
-    const onScroll = () => {
-      if (state.loadingExamples) return;
-      const threshold = 200;
-      if (elExamples.scrollTop + elExamples.clientHeight >= elExamples.scrollHeight - threshold) {
-        loadExamples(false);
-      }
-    };
-    elExamples.addEventListener("scroll", onScroll);
+    // Infinite load via the footer sentinel rather than a scroll listener on
+    // the list: on a wide screen the `.examples-list` scrolls internally, but
+    // on a phone the list expands and the whole page (`.hanzi-root`) scrolls.
+    // An IntersectionObserver against the viewport handles both — it accounts
+    // for clipping by whichever ancestor is the actual scroller — so "Scroll
+    // for more" keeps loading in every layout. `loadExamples` is self-guarded
+    // (loadingExamples / noMoreExamples), so firing while visible is safe and
+    // also auto-fills a tall panel that hasn't overflowed yet.
+    let examplesObserver = null;
+    if (typeof IntersectionObserver !== "undefined" && elExamplesFooter) {
+      examplesObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            loadExamples(false);
+          }
+        },
+        { rootMargin: "200px" },
+      );
+      examplesObserver.observe(elExamplesFooter);
+    }
 
     root.addEventListener("pointerdown", onSwipeStart);
     root.addEventListener("pointermove", onSwipeMove);
@@ -2819,7 +2824,10 @@ const HANZI_DAILY_NAG_EVERY = 5
           clearTimeout(wheelEndTimer);
           wheelEndTimer = 0;
         }
-        elExamples.removeEventListener("scroll", onScroll);
+        if (examplesObserver) {
+          examplesObserver.disconnect();
+          examplesObserver = null;
+        }
         root.removeEventListener("pointerdown", onSwipeStart);
         root.removeEventListener("pointermove", onSwipeMove);
         root.removeEventListener("pointerup", onSwipeEnd);

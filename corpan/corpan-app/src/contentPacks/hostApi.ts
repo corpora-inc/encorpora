@@ -392,28 +392,12 @@ export const createHostApi = (packId?: string): HostApi => {
       }
     },
     load: async (args) => {
-      // RAM preflight. The on-device tutor is a ~2.5 GB GGUF + a multi-hundred-MB
-      // KV/compute buffer. On sub-4 GB Android devices that allocation OOMs
-      // *inside* ggml's CPU matmul, which surfaces as a native SIGSEGV in
-      // `ggml_graph_compute_thread` — uncatchable from Rust, it kills the whole
-      // app. So refuse up front on low-RAM devices; the pack then degrades to
-      // "no tutor" rather than crashing. The stt plugin is the device-memory
-      // oracle (physicalMemoryMB = total RAM); if it's absent (desktop dev) we
-      // read 0 and DON'T gate. iOS keeps its own jetsam preflight in the plugin.
-      const MIN_LLM_PHYSICAL_MB = 4000 // ~4 GB total RAM floor for the 4B model.
-      let physicalMB = 0
-      try {
-        const s = await invoke<SttStatus>("plugin:stt|get_status")
-        physicalMB = s.physicalMemoryMB ?? 0
-      } catch {
-        // Oracle absent (e.g. desktop dev) → can't measure, proceed.
-      }
-      if (physicalMB > 0 && physicalMB < MIN_LLM_PHYSICAL_MB) {
-        throw llmError({
-          code: "device-unsupported",
-          message: `on-device tutor needs ~${MIN_LLM_PHYSICAL_MB} MB RAM; device has ${physicalMB} MB`,
-        })
-      }
+      // No blanket RAM floor here anymore: the tutor now ships a range of model
+      // sizes and the pack picks one to fit the device (see modelTiering.ts),
+      // disabling sizes that won't run and gating "try-anyway" picks behind a
+      // warning. The hard backstop against the uncatchable native SIGSEGV from a
+      // failed ggml allocation lives in the plugin (per-model footprint vs total
+      // RAM in `load_model`), which is authoritative even for direct callers.
       // Tauri wraps command params under the param name (`args: LoadArgs`),
       // so the payload must be `{ args: {...} }` (same convention as stt).
       try {

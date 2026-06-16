@@ -372,7 +372,31 @@
     "voicePreviewAria": "Peržiūrėti {{name}}",
     "voicePreviewSelected": "Pasirinkta peržiūra",
     "voiceRecommended": "Rekomenduojama",
-    "voiceSelectedCount": "{{count}} iš {{total}}"
+    "voiceSelectedCount": "{{count}} iš {{total}}",
+    "whatToStart": {
+      "title": "Nuo ko pradėsime?",
+      "subtitle": "Pasirink vieną ir pradėk — likusi dalis vos per prisilietimą.",
+      "read": {
+        "label": "Skaityk",
+        "desc": "Pasinerk į istorijas ir knygas."
+      },
+      "study": {
+        "label": "Mokykis",
+        "desc": "Plėsk žodyną tikslingu lavinimusi."
+      },
+      "playMusic": {
+        "label": "Groti muziką",
+        "desc": "Išmėgink savo kalbą prie pultų."
+      },
+      "playGames": {
+        "label": "Žaisk",
+        "desc": "Mokykis per žaismingus iššūkius."
+      },
+      "surprise": {
+        "label": "Nustebink mane!",
+        "desc": "Nuvesk mane kur nors smagaus."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Išpirkti su Apple",
     "redeeming": "Atidaromas išpirkimas…",
     "retry": "Bandyti dar kartą",
-    "subscribeWithDiscount": "Prenumeruoti ({{discount}})"
+    "subscribeWithDiscount": "Prenumeruoti ({{discount}})",
+    "redeemCode": "Išpirkti kodą",
+    "notApplied": "Šis kodas nesuteikia nuolaidos."
   }
 }

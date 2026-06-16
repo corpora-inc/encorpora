@@ -10,7 +10,22 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.3] - 2026-06-16 — Phone layout fixes + daily-cap enforcement
+
 ### Fixed
+- **Phones no longer crush the examples panel, in either orientation.** The
+  viewport-fit layout (shell nails the screen, examples list scrolls inside its
+  own panel) is kept for iPad portrait/landscape, but a phone — narrow in
+  portrait (≤767px wide) or short in landscape (≤600px tall) — now lets the
+  whole page grow past the bottom and scroll: the drawing panel keeps a
+  generous canvas and the examples panel expands to its full natural height.
+  Fixes landscape-phone being unusable (it previously fell into the iPad
+  fit-layout and crammed everything into ~400px of height).
+- **"Scroll for more" examples now load on phones.** Infinite-load was bound to
+  a `scroll` event on the examples list, which only scrolls internally on wide
+  screens; on a phone the page scrolls instead, so more examples never loaded.
+  Replaced with an IntersectionObserver on the footer sentinel that fires in
+  both layouts.
 - **Daily cap now HARD-enforces.** The gate counted completed characters but
   never blocked at the cap. Advancing to a brand-new character now checks
   `isBlocked()` first: at the cap it re-shows the daily-lock overlay

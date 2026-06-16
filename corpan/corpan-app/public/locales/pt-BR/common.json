@@ -372,7 +372,31 @@
     "voicePreviewAria": "Pré-visualizar {{name}}",
     "voicePreviewSelected": "Pré-visualização selecionada",
     "voiceRecommended": "Recomendado",
-    "voiceSelectedCount": "{{count}} de {{total}}"
+    "voiceSelectedCount": "{{count}} de {{total}}",
+    "whatToStart": {
+      "title": "Por onde começamos?",
+      "subtitle": "Escolha uma para começar; o resto está a um toque.",
+      "read": {
+        "label": "Ler",
+        "desc": "Mergulhe em histórias e livros."
+      },
+      "study": {
+        "label": "Estudar",
+        "desc": "Amplie seu vocabulário com prática focada."
+      },
+      "playMusic": {
+        "label": "Tocar música",
+        "desc": "Experimente seu idioma nas pickups."
+      },
+      "playGames": {
+        "label": "Jogar",
+        "desc": "Aprenda com desafios divertidos."
+      },
+      "surprise": {
+        "label": "Me surpreenda!",
+        "desc": "Me leve para um lugar divertido."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Resgatar com Apple",
     "redeeming": "Abrindo resgate…",
     "retry": "Tentar novamente",
-    "subscribeWithDiscount": "Assinar ({{discount}})"
+    "subscribeWithDiscount": "Assinar ({{discount}})",
+    "redeemCode": "Resgatar código",
+    "notApplied": "Esse código não dá nenhum desconto."
   }
 }

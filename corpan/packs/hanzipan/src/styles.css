@@ -933,6 +933,48 @@
   }
 }
 
+/* Phone (either orientation): drop the viewport-fit contract. An iPad keeps
+   both dimensions >=768px in portrait AND landscape, so it still nails the
+   screen exactly with the examples list scrolling inside its own panel. A
+   phone is either narrow (portrait, <768px wide) or short (landscape, <=600px
+   tall) — in both cases there isn't enough room to fit without crushing the
+   examples or frying the landscape layout, so we let the whole page grow past
+   the bottom and scroll: the root becomes the scroll container, the app sizes
+   to its content, and the examples panel expands to its natural height instead
+   of scrolling internally. The drawing panel keeps a generous, viewport-
+   relative height so the canvas stays usable. */
+@media (max-width: 767px), (max-height: 600px) {
+  .hanzi-root {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .hanzi-app {
+    height: auto;
+    min-height: 100%;
+    overflow: visible;
+  }
+
+  .workspace {
+    /* Natural, content-sized rows — no longer split a fixed viewport height. */
+    grid-template-rows: auto auto;
+    flex: 0 0 auto;
+  }
+
+  .draw-panel {
+    /* Generous canvas relative to the viewport; examples flow below it. */
+    min-height: clamp(360px, 60vh, 520px);
+  }
+
+  .examples-list {
+    /* Expand fully instead of scrolling inside the panel. */
+    flex: 0 0 auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+}
+
 /* ============================================
    Brush Configuration Widget
    Mirrors Earthgate's catalog drawer surface:

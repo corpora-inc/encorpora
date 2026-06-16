@@ -7,12 +7,94 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Onboarding "where should we begin?" + a first-launch razzle-dazzle.** The
+  final onboarding step is now a single deterministic question — Read / Study /
+  Play music / Play games / Surprise me — that makes the exact landing call
+  (Read→Earthgate Reader, Study→Phrase Flip [Chinese→Hanzipan], Music→beatlounge,
+  Games→Juice Squeeze, Surprise→a lightly-random pick across what's launchable).
+  The multi-select "What do you want to do?" stays and still powers Home's "For
+  you" recommendations. On the way in, a ~5s premium collage of every experience
+  shuffles, the chosen one pops to center with a **native haptic**, then its
+  colour washes over the screen as the experience boots underneath — only on the
+  post-onboarding landing (normal Home→pack launches stay instant). The chosen
+  content pack quiet-installs while the question screen + transition play; if it
+  isn't ready in time we land in Phrase Flip and it finishes in the background.
+  New `tauri-plugin-haptics` (iOS `UIImpactFeedbackGenerator` / Android
+  `Vibrator`; `navigator.vibrate` fallback) — needs a native rebuild to fire.
+
+### Changed
+- **Hanzipan is a study experience, not a game.** Re-classified in the
+  recommendation registry (`categories: study, wild`; featured for study) so it
+  surfaces under Study (and, for Chinese learners, is the Study landing) and no
+  longer appears in the games lane.
+- **Soft-nag cadence relaxed 5 → 10.** Every daily-quota surface (phrase-flip,
+  hover-runner, juice-squeeze, hanzipan, tutomaton) now nags every 10 instead of
+  every 5 — so a free user gets a gentle reminder at 10 and the hard wall at 20,
+  rather than feeling poked too early. Parlometron keeps its no-nag model.
+  One-line change in the central `quotas.ts` registry.
+
 ### Fixed
-- **Daily wall now engages for the core phrase-flip.** The host-capability
-  marker (`__CORPAN_HOST_CAPS.dailyLock`) was only set inside `ContentPackHost`,
-  which mounts for content packs — not the core app — so the phrase-flip daily
-  cap silently degraded to "soft" even on a current host. It's now set app-wide
-  at startup. (Subscribers still never see a wall.)
+- **Paywall CTA reflects an entered code.** With a valid discount/redemption
+  code the primary button now reads "Redeem code" (routing through the
+  offer/redeem path) instead of always "Start Free Trial"; an unknown code keeps
+  the trial CTA and shows a gentle, muted inline note ("That code doesn't unlock
+  a discount.") rather than a harsh red error. Label is driven by the
+  `/code/resolve` result, so it reacts even on a dev build where the native
+  purchase can't complete. (Two new EN strings — `code.redeemCode`,
+  `code.notApplied` — pending the ×88 localization pass.)
+- **No more duplicate pack cards (e.g. ~3 Parlometrons).** `filterCatalogForApp`
+  mapped every surviving catalog entry to a card with no de-dup by pack id; the
+  published catalog intentionally carries multiple `pronunciation_coach` entries
+  (per-platform + a legacy build), and on a host with an unknown platform the
+  platform gate was skipped so several passed. The listing now de-dupes by stable
+  pack id (preferring the platform-matched entry, then highest version).
+- **Offline subscribers are never blocked.** Subscription state used to be
+  in-memory only, so a Plus user opening the app offline (no way to live-verify)
+  started as non-Plus and could hit a daily wall until they reconnected. The
+  entitlement store now persists a durable "last verified Plus" snapshot and
+  seeds it onto the live session at launch, so a known subscriber is treated as
+  Plus from the first frame — before (and even without) any refresh.
+  `refreshEntitlements` only ever downgrades on a DEFINITIVE, ONLINE "not owned"
+  from the OS receipt cache (StoreKit `currentEntitlements` / Play
+  `queryPurchases`), and even then only after a **48h grace window** past the
+  last confirmed verification — to ride out transient store flakiness and
+  billing-grace renewals. Anything inconclusive or offline keeps the snapshot.
+  We'd rather a fraudulent client keep a stale Plus flag than ever block a real
+  subscriber with no signal (the app is open source regardless). New
+  `forgetSubscription()` is the only path that clears the durable snapshot.
+
+### Changed
+- **Daily-lock headline now affirms the accomplishment.** The shared
+  `DailyLockOverlay` title warmed from "Your N {{unit}} for today" to "That's
+  your N {{unit}} for today — nicely done", so the cap reads as a small win
+  rather than a flat stop. Only the EN `dailyLock.title` changed — the ~50
+  locales need a re-gen.
+- **Removed the blanket 4 GB RAM floor on the on-device tutor.** The host
+  `llm.load` no longer refuses every device under 4 GB total RAM — that gate
+  blocked the very low-RAM phones we now serve with smaller Qwen3 sizes. The
+  per-model footprint backstop in the LLM plugin (footprint vs total RAM) remains
+  the hard, uncatchable-crash guard; the Tutomaton pack disables sizes a device
+  can't run. `llm.status()` now also surfaces `totalMemoryMb` for size selection.
+
+### Fixed
+- **Phrase-flip daily cap now gates only NEW phrases — review stays free.** At
+  the cap, asking for a brand-new phrase (the Random button, or Next/forward
+  scroll when you're already on the newest phrase) surfaces the accomplishment
+  lock instead of doing nothing, and does not advance. Going back and forward
+  through phrases you've already seen is always free and never counted — only a
+  genuinely new phrase counts toward the daily limit. After dismissing the lock
+  you can still review your seen phrases; only another new-phrase request
+  re-shows it. Exiting phrase-flip just goes Home (and dismisses an open lock) —
+  never the paywall.
+- **Phrase-flip daily wall / nag now actually fires.** Two bugs hid it: (1) the
+  host-capability marker (`__CORPAN_HOST_CAPS.dailyLock`) was only set inside
+  `ContentPackHost` (content packs), not the core app — now set app-wide at
+  startup; and (2) the gate was constructed in render behind a `ref === null`
+  guard while the effect cleanup `dispose()`d it, so React StrictMode's
+  mount→cleanup→mount left a permanently-disposed gate (every `note()` a no-op —
+  no nag/lock no matter how many phrases you flipped). The gate is now built
+  inside the effect, so each mount gets a fresh one. (Subscribers never see a wall.)
 - **No more double rating prompt.** Exiting an experience fired BOTH the OS
   native review and the in-app "Enjoying Corpán?" card. The in-app card is now
   the single rating surface, and its 5-star button pops the OS-native review

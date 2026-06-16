@@ -443,6 +443,30 @@
       "noVoiceFor": "Can aya sora {{lang}} — hayu urang tambahkeun hiji supados Corpán tiasa maca tarik.",
       "addBetter": "Buka sora anu langkung beunghar",
       "chooseVoices": "Pilih sora"
+    },
+    "whatToStart": {
+      "title": "Urang ngamimitian ti mana?",
+      "subtitle": "Pilih hiji pikeun ngamimitian — nu séjén ngan sakeudeung deui.",
+      "read": {
+        "label": "Maca",
+        "desc": "Teuleum kana carita jeung buku."
+      },
+      "study": {
+        "label": "Diajar",
+        "desc": "Wewegan kekecapan ku latihan anu fokus."
+      },
+      "playMusic": {
+        "label": "Maén musik",
+        "desc": "Cobian basa anjeun di tukangeun dek."
+      },
+      "playGames": {
+        "label": "Maén kaulinan",
+        "desc": "Diajar ngaliwatan tangtangan anu pikaresepeun."
+      },
+      "surprise": {
+        "label": "Kageteun kuring!",
+        "desc": "Bawa kuring ka tempat anu pikaresepeun."
+      }
     }
   },
   "socials": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Tebus sareng Apple",
     "redeeming": "Muka tebusan…",
     "retry": "Cobian deui",
-    "subscribeWithDiscount": "Langganan ({{discount}})"
+    "subscribeWithDiscount": "Langganan ({{discount}})",
+    "redeemCode": "Anggo kode",
+    "notApplied": "Kode ieu teu masihan diskon."
   }
 }

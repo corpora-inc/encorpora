@@ -372,7 +372,31 @@
     "voicePreviewAria": "معاينة {{name}}",
     "voicePreviewSelected": "معاينة المحدد",
     "voiceRecommended": "موصى به",
-    "voiceSelectedCount": "{{count}} من {{total}}"
+    "voiceSelectedCount": "{{count}} من {{total}}",
+    "whatToStart": {
+      "title": "من أين نبدأ؟",
+      "subtitle": "اختر واحدة للانطلاق — والبقية على بُعد نقرة.",
+      "read": {
+        "label": "اقرأ",
+        "desc": "انغمس في القصص والكتب."
+      },
+      "study": {
+        "label": "ادرس",
+        "desc": "وسّع مفرداتك بتمرين مركّز."
+      },
+      "playMusic": {
+        "label": "اعزف الموسيقى",
+        "desc": "جرّب لغتك على منصّات التشغيل."
+      },
+      "playGames": {
+        "label": "العب",
+        "desc": "تعلّم عبر تحدّيات ممتعة."
+      },
+      "surprise": {
+        "label": "فاجئني!",
+        "desc": "خذني إلى مكان ممتع."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "استرداد مع Apple",
     "redeeming": "جارٍ فتح الاسترداد…",
     "retry": "إعادة المحاولة",
-    "subscribeWithDiscount": "اشترك ({{discount}})"
+    "subscribeWithDiscount": "اشترك ({{discount}})",
+    "redeemCode": "استرداد الرمز",
+    "notApplied": "هذا الرمز لا يمنح خصمًا."
   }
 }

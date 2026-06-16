@@ -372,7 +372,31 @@
     "voicePreviewAria": "Previzualizează {{name}}",
     "voicePreviewSelected": "Previzualizare selectată",
     "voiceRecommended": "Recomandat",
-    "voiceSelectedCount": "{{count}} din {{total}}"
+    "voiceSelectedCount": "{{count}} din {{total}}",
+    "whatToStart": {
+      "title": "De unde începem?",
+      "subtitle": "Alege una ca să începi; restul e la un singur tap.",
+      "read": {
+        "label": "Citește",
+        "desc": "Cufundă-te în povești și cărți."
+      },
+      "study": {
+        "label": "Studiază",
+        "desc": "Îți construiești vocabularul cu exerciții bine țintite."
+      },
+      "playMusic": {
+        "label": "Fă muzică",
+        "desc": "Încearcă-ți limba la pupitre."
+      },
+      "playGames": {
+        "label": "Joacă",
+        "desc": "Învață prin provocări jucăușe."
+      },
+      "surprise": {
+        "label": "Surprinde-mă!",
+        "desc": "Du-mă undeva distractiv."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Răscumpără cu Apple",
     "redeeming": "Deschidere răscumpărare…",
     "retry": "Reîncearcă",
-    "subscribeWithDiscount": "Abonează-te ({{discount}})"
+    "subscribeWithDiscount": "Abonează-te ({{discount}})",
+    "redeemCode": "Valorifică codul",
+    "notApplied": "Acest cod nu oferă nicio reducere."
   }
 }

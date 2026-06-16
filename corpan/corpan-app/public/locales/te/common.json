@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}} ప్రివ్యూ",
     "voicePreviewSelected": "ప్రివ్యూ ఎంచుకోబడింది",
     "voiceRecommended": "సిఫార్సు చేయబడింది",
-    "voiceSelectedCount": "{{total}} లో {{count}}"
+    "voiceSelectedCount": "{{total}} లో {{count}}",
+    "whatToStart": {
+      "title": "మనం ఎక్కడ నుండి మొదలుపెడదాం?",
+      "subtitle": "మొదలుపెట్టడానికి ఒకటి ఎంచుకోండి — మిగతావి ఒక్క నొక్కు దూరంలో ఉన్నాయి.",
+      "read": {
+        "label": "చదవండి",
+        "desc": "కథలు, పుస్తకాల్లో మునిగిపోండి."
+      },
+      "study": {
+        "label": "అధ్యయనం",
+        "desc": "కేంద్రీకృత సాధనతో పదజాలాన్ని పెంచుకోండి."
+      },
+      "playMusic": {
+        "label": "సంగీతం వాయించండి",
+        "desc": "డెక్‌లపై మీ భాషను రుచి చూడండి."
+      },
+      "playGames": {
+        "label": "ఆడండి",
+        "desc": "సరదా సవాళ్ల ద్వారా నేర్చుకోండి."
+      },
+      "surprise": {
+        "label": "నన్ను ఆశ్చర్యపరచండి!",
+        "desc": "నన్ను ఎక్కడైనా సరదా చోటుకు తీసుకెళ్లండి."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "ఆపిల్‌తో రిడీమ్ చేయండి",
     "redeeming": "రిడీమ్ తెరవడం…",
     "retry": "మళ్లీ ప్రయత్నించండి",
-    "subscribeWithDiscount": "డిస్కౌంట్‌తో సబ్‌స్క్రైబ్ చేయండి ({{discount}})"
+    "subscribeWithDiscount": "డిస్కౌంట్‌తో సబ్‌స్క్రైబ్ చేయండి ({{discount}})",
+    "redeemCode": "కోడ్‌ను ఉపయోగించండి",
+    "notApplied": "ఈ కోడ్ ఏ తగ్గింపునూ ఇవ్వదు."
   }
 }

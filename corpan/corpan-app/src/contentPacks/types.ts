@@ -212,13 +212,19 @@ export type LlmChatOptions = {
   presencePenalty?: number
   maxTokens?: number
   stop?: string[]
+  /** Suppress reasoning on hybrid Qwen3 models via the non-thinking prefill. */
+  noThink?: boolean
 }
 
 export type LlmStatus = {
   loaded: boolean
   modelId?: string | null
   backend?: string | null
+  /** Available device memory in MB (fluctuates). */
   availableMemoryMb?: number | null
+  /** Total physical RAM in MB — the stable device-class signal for model-size
+   *  selection. `null` where the platform can't be measured (e.g. Windows). */
+  totalMemoryMb?: number | null
 }
 
 /** Callbacks for a streaming generation. */

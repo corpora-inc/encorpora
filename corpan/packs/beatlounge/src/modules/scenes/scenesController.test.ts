@@ -104,3 +104,49 @@ describe("scenesController — rename / delete", () => {
     expect(ctrl.vanilla.getState().activeSceneId).toBeNull()
   })
 })
+
+describe("scenesController — start fresh (clear / randomize / loadDemo)", () => {
+  const noteCount = (bus: ReturnType<typeof createCommandBus>) =>
+    bus.snapshot().tracks.reduce(
+      (n, t) => n + (t.kind === "instrument" ? t.notes.length : 0),
+      0
+    )
+
+  it("clear() wipes to an empty grid and drops scene context (undoable)", async () => {
+    const { bus, ctrl } = make()
+    // Save a scene so there is active context to clear.
+    const s = await ctrl.save("A")
+    expect(ctrl.vanilla.getState().activeSceneId).toBe(s.id)
+    ctrl.clear()
+    expect(noteCount(bus)).toBe(0)
+    expect(ctrl.vanilla.getState().activeSceneId).toBeNull()
+    expect(ctrl.vanilla.getState().dirty).toBe(false)
+    // One undoable step.
+    expect(bus.canUndo()).toBe(true)
+  })
+
+  it("randomize() yields an empty grid with 3 synth voices + drums", () => {
+    const bus = createCommandBus(createDefaultDoc(1000))
+    let seed = 0
+    // A simple deterministic-ish stream for the test.
+    const ctrl = createScenesController(bus, {
+      now: () => 1,
+      seed: () => 1,
+      rng: () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff), seed / 0x7fffffff),
+    })
+    ctrl.randomize()
+    const tracks = bus.snapshot().tracks
+    const notes = tracks.reduce((n, t) => n + (t.kind === "instrument" ? t.notes.length : 0), 0)
+    expect(notes).toBe(0)
+    expect(tracks.filter((t) => t.kind === "instrument").length).toBe(4)
+    expect(ctrl.vanilla.getState().activeSceneId).toBeNull()
+  })
+
+  it("loadDemo() loads a known demo and returns true; false for unknown", () => {
+    const { bus, ctrl } = make()
+    expect(ctrl.loadDemo("ode-to-joy")).toBe(true)
+    expect(noteCount(bus)).toBeGreaterThan(0)
+    expect(ctrl.vanilla.getState().activeSceneId).toBeNull()
+    expect(ctrl.loadDemo("does-not-exist")).toBe(false)
+  })
+})

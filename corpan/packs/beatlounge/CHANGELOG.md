@@ -5,6 +5,63 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-16 — Start fresh: Clear, Randomize, Demos
+
+### Added
+- **Start fresh — Clear, Randomize, and Demos.** The Scenes drawer gains a
+  "Start fresh" block for drastic change after you've saved. **Clear** wipes the
+  song to an empty blank slate (default key, kit and tempo, no notes). **Randomize**
+  sets up a whole new world — three synth voices (a bass, a mid, a lead, each
+  random within its class), a random drum kit, a random key/scale/progression,
+  and a time signature borrowed from a random world groove (odd meters like 13/8
+  included) — but leaves the grid empty, so pressing play is silence until you
+  start writing. **Demos** drops a shipped starter song onto the grid: 21
+  public-domain pieces spanning classical, folk, blues/early-jazz/spirituals, and
+  world/Latin (Ode to Joy, Greensleeves, a 12-bar blues, Hava Nagila, and more).
+  All three are one undoable step and reachable by voice via the command bar
+  (`clearSong` / `randomizeSong` / `loadDemo`). Every new string is localized
+  into all 50 shipped languages (with placeholders + RTL preserved).
+
+### Changed
+- **The default song is now an empty blank slate** instead of the old rising
+  C–E–G–C riff over a four-on-the-floor beat. A fresh open is a calm, silent
+  canvas — add your own content, randomize a world, or load a demo.
+- Catalog listing: add Javanese (jv), Sundanese (su) and Tagalog (tl)
+  `descriptionLocalized` strings, the three languages added app-wide in 0.18.1.
+  Music loan-words (beatlounge, scratch, deck, offline) stay international.
+  Catalog metadata is served OTA, so this needs no version bump.
+
+## [0.2.1] - 2026-06-13
+
+_The right-to-left release: beatlounge now flips for Arabic, Hebrew, Persian and
+Urdu, plus two phone fixes._
+
+### Added
+- **Right-to-left layout (Arabic, Hebrew, Persian, Urdu).** The interface now
+  flips properly under an RTL language, not just translates. Panel copy
+  right-aligns (the rhythmic-cycle "Teental · 4/4 · 96 bpm" line, the instrument
+  name box, the phrase picker); the performance ribbon mirrors so high pitches
+  sit on the left and low on the right, with its octave arrows and expand button
+  following suit; and directional glyphs flip — the play button points left, the
+  exit chevron points right. Built on CSS logical properties so left-to-right
+  stays pixel-identical. Script subtags decide direction independently of region,
+  so an Arabic-script regional tag (e.g. `pa-Arab-PK`) reads RTL while Gurmukhi
+  stays LTR. (The piano-roll and track timeline keep their physical left-to-right
+  orientation on purpose.)
+
+### Fixed
+- **The drums "−" now actually thins the beat.** On the drums home widget, "−"
+  was wired to the additive generator, so it layered a new beat on top and could
+  *add* hits. It now removes hits with a weighted-random thinning that plucks
+  off-beat and quieter notes first and spares the downbeat — surprising each
+  press, but always strictly fewer hits, never more. (The displayed density level
+  only drops when hits were actually removed.)
+- **The mixer pan slider is grabbable again.** On the phone drawer mixer the
+  per-track pan had collapsed to a ~5px nub with no track (its wrapper was never
+  stretched, only the inner track), so it was almost impossible to use. It now
+  spans the row like the level fader above it. (The level fader and the iPad
+  console were unaffected.)
+
 ## [0.2.0] - 2026-06-13
 
 _GA + the calling card: beatlounge goes stable and the entire interface ships in
@@ -17,16 +74,6 @@ _GA + the calling card: beatlounge goes stable and the entire interface ships in
   `tools/gen_i18n.py` (codex-cli, one call per locale). Music loan-words stay
   international on purpose — Reverb/Delay/EQ, BPM, note/mode/raga names, the proper
   names of kits and world rhythms. A freshness-gate test keeps every locale in sync.
-- **Right-to-left layout (Arabic, Hebrew, Persian, Urdu).** The interface now
-  flips properly under an RTL language, not just translates. Panel copy
-  right-aligns (the rhythmic-cycle "Teental · 4/4 · 96 bpm" line, the instrument
-  name box, the phrase picker); the performance ribbon mirrors so high pitches
-  sit on the left and low on the right, with its octave arrows and expand button
-  following suit; and directional glyphs flip — the play button points left, the
-  exit chevron points right. Built on CSS logical properties so left-to-right
-  stays pixel-identical. (The piano-roll and track timeline keep their physical
-  left-to-right orientation on purpose.)
-
 - **Auto melody expansion — per-track, persisted, always-on.** The Score editor's
   Auto is now a per-track generative conductor that keeps re-walking a flowing
   line each loop wrap, and keeps going after you leave the Instruments screen
@@ -65,18 +112,6 @@ _GA + the calling card: beatlounge goes stable and the entire interface ships in
   the Mix page…" paragraph under the drawer mixer, a dev-status note on the
   Rhythmic Cycle accent map, and trimmed empty-state / home-tile copy to terse
   fragments. The UI shows what to do by how it looks, not by a sentence to read.
-
-### Fixed
-- **The drums "−" now actually thins the beat.** On the drums home widget, "−"
-  was wired to the additive generator, so it layered a new beat on top and could
-  *add* hits. It now removes hits with a weighted-random thinning that plucks
-  off-beat and quieter notes first and spares the downbeat — surprising each
-  press, but always strictly fewer hits, never more.
-- **The mixer pan slider is grabbable again.** On the phone drawer mixer the
-  per-track pan had collapsed to a ~5px nub with no track (its wrapper was never
-  stretched, only the inner track), so it was almost impossible to use. It now
-  spans the row like the level fader above it. (The level fader and the iPad
-  console were unaffected.)
 
 ### Performance
 - **No more first-entry scratch hitch.** The scratch AudioWorklet compiles once per

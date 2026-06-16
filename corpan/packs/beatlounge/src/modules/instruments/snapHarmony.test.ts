@@ -12,8 +12,9 @@ import { reduce } from "../../model/reduce"
 import { inHarmony } from "../../music/resolver"
 import { snapTrackToHarmony, snapAllMelodicTracksToHarmony } from "./snapHarmony"
 import { newInstrumentTrackInit } from "./addTrack"
+import { withStockRiff } from "../../testing/stockLoop"
 
-const doc = (): BeatloungeDoc => createDefaultDoc(0)
+const doc = (): BeatloungeDoc => withStockRiff(createDefaultDoc(0))
 
 const melodic = (d: BeatloungeDoc) => {
   const t = d.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind !== "drumSampler")

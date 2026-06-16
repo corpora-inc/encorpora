@@ -6,3 +6,5 @@ __pycache__/
 results/*
 !results/REPORT.md
 !results/recommendations.json
+# Per-model eval runs (0.6B/1.7B) — bulky regenerable generations.
+results-*/

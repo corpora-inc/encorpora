@@ -17,7 +17,12 @@ import prompts
 from langs import Lang
 from server import Params, Server
 
-RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
+# Override with TUTO_EVAL_RESULTS=results-0.6b to isolate a run from the 4B's
+# cached rows.jsonl (the rid is not keyed by model, so a shared dir would reuse
+# the wrong model's cached generations).
+RESULTS_DIR = os.environ.get(
+    "TUTO_EVAL_RESULTS", os.path.join(os.path.dirname(__file__), "results")
+)
 ROWS_PATH = os.path.join(RESULTS_DIR, "rows.jsonl")
 
 DEFAULT_SEEDS = [11, 23, 37, 53, 71]
@@ -134,7 +139,14 @@ def eval_config(
             rid = f"{lang.code}|{prompt_tag}|{params.key()}|u{ui}|s{seed}"
             row = log.get(rid) if log.has(rid) else None
             if row is None:
-                raw = server.complete(prompt, params, seed)
+                try:
+                    raw = server.complete(prompt, params, seed)
+                except Exception as e:  # noqa: BLE001
+                    # Persistent failure after retries+restart (e.g. a prompt the
+                    # server keeps 500ing on). Record an empty reply so the sweep
+                    # continues and resume won't re-hit it; it scores as a fail.
+                    print(f"  ! gen failed {lang.code}/{prompt_tag}/u{ui}/s{seed}: {e}")
+                    raw = ""
                 sc = metrics.score_reply(raw, lang)
                 row = {
                     "rid": rid,

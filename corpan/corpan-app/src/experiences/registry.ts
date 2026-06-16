@@ -114,11 +114,16 @@ export const EXPERIENCES: ExperienceMeta[] = [
   },
   {
     id: "hanzipan",
-    categories: ["games", "study", "wild"],
+    // Hanzipan is a STUDY experience (character/handwriting drill), NOT a game —
+    // so it surfaces under "study" (and "wild"), never the games lane. For a
+    // Chinese learner who picks Study, onboarding routes here over Phrase Flip
+    // (see resolveLanding); the language gate below keeps it off everyone else's list.
+    categories: ["study", "wild"],
     goodForClass: ["polyglot", "learner"],
     nameKey: "experiences.hanzipan.name",
     blurbKey: "experiences.hanzipan.blurb",
     order: 7,
+    featuredFor: ["study"],
     // Mandarin/Cantonese character studio — only relevant if the user has a
     // Chinese language; otherwise it must NOT top the list (e.g. English learner).
     languages: ["zh-Hans", "zh-Hant", "yue-Hant-HK"],

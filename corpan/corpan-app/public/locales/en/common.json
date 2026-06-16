@@ -443,6 +443,30 @@
       "noVoiceFor": "No {{lang}} voice yet — let's add one so Corpán can read aloud.",
       "addBetter": "Unlock a richer voice",
       "chooseVoices": "Choose voices"
+    },
+    "whatToStart": {
+      "title": "Where should we begin?",
+      "subtitle": "Pick one to jump in — the rest is a tap away.",
+      "read": {
+        "label": "Read",
+        "desc": "Dive into stories and books."
+      },
+      "study": {
+        "label": "Study",
+        "desc": "Build words with focused practice."
+      },
+      "playMusic": {
+        "label": "Play music",
+        "desc": "Sample your language on the decks."
+      },
+      "playGames": {
+        "label": "Play games",
+        "desc": "Learn through playful challenges."
+      },
+      "surprise": {
+        "label": "Surprise me",
+        "desc": "Drop me somewhere fun."
+      }
     }
   },
   "socials": {
@@ -836,7 +860,7 @@
     "label": "{{days}}-day streak"
   },
   "dailyLock": {
-    "title": "Your {{count}} {{unit}} for today",
+    "title": "That's your {{count}} {{unit}} for today — nicely done",
     "streakActive": "{{days}}-day streak — come back tomorrow to keep it going.",
     "streakStart": "Come back tomorrow to start a streak.",
     "resetIn": "Resets in {{time}}",
@@ -854,6 +878,8 @@
     "creditedTo": "credited to {{partner}}",
     "fieldLabel": "Offer or affiliate code",
     "help": "Have a code? Enter it to apply your offer.",
+    "notApplied": "That code doesn't unlock a discount.",
+    "redeemCode": "Redeem code",
     "redeemUnavailable": "Couldn't open the redeem screen. Please try again.",
     "redeemWithApple": "Redeem with Apple",
     "redeeming": "Opening redeem…",

@@ -372,7 +372,31 @@
     "voicePreviewAria": "Predogled {{name}}",
     "voicePreviewSelected": "Izbran predogled",
     "voiceRecommended": "Priporočeno",
-    "voiceSelectedCount": "{{count}} od {{total}}"
+    "voiceSelectedCount": "{{count}} od {{total}}",
+    "whatToStart": {
+      "title": "Kje naj začnemo?",
+      "subtitle": "Izberi eno za začetek — drugo je le dotik stran.",
+      "read": {
+        "label": "Beri",
+        "desc": "Potopi se v zgodbe in knjige."
+      },
+      "study": {
+        "label": "Uči se",
+        "desc": "Gradi besedišče z osredotočeno vajo."
+      },
+      "playMusic": {
+        "label": "Ustvarjaj glasbo",
+        "desc": "Preizkusi svoj jezik za mešalnimi pulti."
+      },
+      "playGames": {
+        "label": "Igraj",
+        "desc": "Uči se z igrivimi izzivi."
+      },
+      "surprise": {
+        "label": "Preseneti me!",
+        "desc": "Popelji me nekam zabavnega."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Unovči z Apple",
     "redeeming": "Odpiranje unovčenja…",
     "retry": "Poskusi znova",
-    "subscribeWithDiscount": "Naroči se ({{discount}})"
+    "subscribeWithDiscount": "Naroči se ({{discount}})",
+    "redeemCode": "Unovči kodo",
+    "notApplied": "Ta koda ne prinese popusta."
   }
 }

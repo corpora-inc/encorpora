@@ -372,7 +372,31 @@
     "voicePreviewAria": "Forhåndsvis {{name}}",
     "voicePreviewSelected": "Valgt forhåndsvisning",
     "voiceRecommended": "Anbefalet",
-    "voiceSelectedCount": "{{count}} af {{total}}"
+    "voiceSelectedCount": "{{count}} af {{total}}",
+    "whatToStart": {
+      "title": "Hvor skal vi begynde?",
+      "subtitle": "Vælg en for at komme i gang — resten er kun et tryk væk.",
+      "read": {
+        "label": "Læs",
+        "desc": "Dyk ned i historier og bøger."
+      },
+      "study": {
+        "label": "Studér",
+        "desc": "Opbyg ordforråd med fokuseret træning."
+      },
+      "playMusic": {
+        "label": "Spil musik",
+        "desc": "Prøv dit sprog ved pladespillerne."
+      },
+      "playGames": {
+        "label": "Spil",
+        "desc": "Lær gennem legende udfordringer."
+      },
+      "surprise": {
+        "label": "Overrask mig!",
+        "desc": "Tag mig et sjovt sted hen."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Indløs med Apple",
     "redeeming": "Åbner indløsning…",
     "retry": "Prøv igen",
-    "subscribeWithDiscount": "Abonner ({{discount}})"
+    "subscribeWithDiscount": "Abonner ({{discount}})",
+    "redeemCode": "Indløs kode",
+    "notApplied": "Denne kode giver ingen rabat."
   }
 }

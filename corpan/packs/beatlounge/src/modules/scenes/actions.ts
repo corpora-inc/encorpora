@@ -13,6 +13,7 @@
 import type { ActionResult, ModuleAction } from "../../contracts/module"
 import { findSceneByName } from "../../store/scenesStore"
 import type { ScenesController } from "./scenesController"
+import { DEMO_SONGS } from "./demos"
 import { ct } from "../../i18n/strings"
 
 export const createScenesActions = (
@@ -61,5 +62,51 @@ export const createScenesActions = (
     },
   }
 
-  return [saveScene, loadScene]
+  // The "start fresh" trio dispatch through the controller (which also resets
+  // the loaded-scene context + the off-doc groove), so — like saveScene — they
+  // side-effect and return no extra commands. Each is ONE undoable bus step.
+  const clearSong: ModuleAction = {
+    name: "clearSong",
+    describe: ct("scenes.action.clearSong.describe"),
+    params: {},
+    impact: "mutate",
+    run(): ActionResult {
+      ctrl.clear()
+      return { commands: [], summary: ct("scenes.clearedToast") }
+    },
+  }
+
+  const randomizeSong: ModuleAction = {
+    name: "randomizeSong",
+    describe: ct("scenes.action.randomizeSong.describe"),
+    params: {},
+    stochastic: true,
+    impact: "mutate",
+    run(): ActionResult {
+      ctrl.randomize()
+      return { commands: [], summary: ct("scenes.randomizedToast") }
+    },
+  }
+
+  const loadDemo: ModuleAction = {
+    name: "loadDemo",
+    describe: ct("scenes.action.loadDemo.describe"),
+    params: {
+      name: {
+        type: "string",
+        describe: ct("scenes.action.loadDemo.nameParam"),
+      },
+    },
+    impact: "mutate",
+    run(_ctx, params): ActionResult {
+      const name = typeof params.name === "string" ? params.name.trim().toLowerCase() : ""
+      const demo = DEMO_SONGS.find((d) => d.name.toLowerCase() === name)
+      if (!demo || !ctrl.loadDemo(demo.id)) {
+        return { commands: [], summary: ct("scenes.noSceneNamed", { name }) }
+      }
+      return { commands: [], summary: ct("scenes.demoToast", { name: demo.name }) }
+    },
+  }
+
+  return [saveScene, loadScene, clearSong, randomizeSong, loadDemo]
 }

@@ -372,7 +372,31 @@
     "voicePreviewAria": "预览{{name}}",
     "voicePreviewSelected": "预览已选",
     "voiceRecommended": "推荐",
-    "voiceSelectedCount": "已选{{count}}/{{total}}"
+    "voiceSelectedCount": "已选{{count}}/{{total}}",
+    "whatToStart": {
+      "title": "我们从哪里开始？",
+      "subtitle": "选一个直接开始，其余的轻轻一点即可。",
+      "read": {
+        "label": "阅读",
+        "desc": "沉浸在故事和书籍中。"
+      },
+      "study": {
+        "label": "学习",
+        "desc": "通过专注练习积累词汇。"
+      },
+      "playMusic": {
+        "label": "玩音乐",
+        "desc": "在打碟台上试试你的语言。"
+      },
+      "playGames": {
+        "label": "玩游戏",
+        "desc": "在趣味挑战中学习。"
+      },
+      "surprise": {
+        "label": "给我惊喜！",
+        "desc": "带我去个好玩的地方。"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "通过Apple兑换",
     "redeeming": "正在打开兑换…",
     "retry": "重试",
-    "subscribeWithDiscount": "订阅（{{discount}}）"
+    "subscribeWithDiscount": "订阅（{{discount}}）",
+    "redeemCode": "兑换代码",
+    "notApplied": "此代码不提供折扣。"
   }
 }

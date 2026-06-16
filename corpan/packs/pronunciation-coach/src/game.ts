@@ -10,6 +10,11 @@ import {
 } from "./modelRegistry"
 import { mergeForLang } from "./whisperTuning"
 import { mergeScoringForLangModel } from "./scoringTuning"
+import {
+  isWhisperSupported,
+  stackHasScorableLang,
+  toWhisperLang,
+} from "./whisperLangs"
 import { openTuner } from "./whisperTunerUI"
 import { paywallGate } from "./paywall"
 import { t as i18n, type I18nKey } from "./i18n"
@@ -51,6 +56,11 @@ type SttErrorCode =
   // model would ever load. Route to a "Speech recognition not
   // supported on this device" screen instead of offering download.
   | "STT_UNAVAILABLE"
+  // Native guard rejected the language: whisper can't score it. Should be
+  // unreachable from normal flow (we gate unscorable targets before
+  // recording — see whisperLangs.ts), but kept so the backstop renders the
+  // calm "not available yet" message instead of a raw red error.
+  | "UNSUPPORTED_LANGUAGE"
   | "UNKNOWN"
 type SttPrepareResult = {
   ready: boolean
@@ -643,10 +653,11 @@ const newSessionId = (): string => {
   return `pc-${Date.now()}-${Math.floor(Math.random() * 1e9)}`
 }
 
-const whisperLang = (lang: string): string => {
-  if (!lang) return "en"
-  return lang.split("-")[0].toLowerCase()
-}
+// Corpán code → the whisper code that scores it (e.g. Javanese `jv` → `jw`,
+// `pt-BR` → `pt`). Callers only reach this for languages already filtered to
+// `isWhisperSupported`; the `"en"` fallback is a degenerate guard for an empty
+// code and never scores a real unsupported language (those are gated upstream).
+const whisperLang = (lang: string): string => toWhisperLang(lang) ?? "en"
 
 const shuffle = <T>(items: T[]): T[] => {
   const arr = [...items]
@@ -664,11 +675,15 @@ const pickTranslations = (
   // Single-language stack (immersion / native practice): practice the one
   // language directly, with no native gloss. Every pack must work with a
   // one-language stack — there is no requirement to add a target language.
+  // If that one language isn't whisper-scorable, serve nothing so the caller
+  // falls through to the calm "not available yet" state instead of recording
+  // into a hard error.
   if (languages.length <= 1) {
     const only = languages[0]
-    const target = only
-      ? entry.translations.find((t) => t.language_code === only) ?? null
-      : null
+    const target =
+      only && isWhisperSupported(only)
+        ? entry.translations.find((t) => t.language_code === only) ?? null
+        : null
     return { target, native: null }
   }
 
@@ -682,9 +697,11 @@ const pickTranslations = (
   // Randomly mix across target slots, so a stack of FR/ES/DE/EN (with EN
   // as king) cycles through FR, ES, DE on every phrase. Falls through to
   // the next shuffled slot if a given language has no translation for
-  // this entry.
+  // this entry. Only whisper-scorable languages are eligible — an
+  // unscorable target (e.g. Cantonese) is silently skipped so the user
+  // never records a phrase that can't be scored.
   let target: TranslationOut | null = null
-  const targetSlots = shuffle(languages.slice(1))
+  const targetSlots = shuffle(languages.slice(1).filter(isWhisperSupported))
   for (const lang of targetSlots) {
     const t = entry.translations.find((tr) => tr.language_code === lang)
     if (t) {
@@ -693,11 +710,14 @@ const pickTranslations = (
     }
   }
 
-  // Last-resort fallback: any non-native translation present on the entry.
+  // Last-resort fallback: any non-native, whisper-scorable translation on
+  // the entry.
   if (!target) {
     target =
       entry.translations.find(
-        (t) => !native || t.language_code !== native.language_code
+        (t) =>
+          isWhisperSupported(t.language_code) &&
+          (!native || t.language_code !== native.language_code)
       ) ?? null
   }
   return { target, native }
@@ -900,10 +920,15 @@ export const mountGame = (
       <div class="pc-footer">
         Powered by whisper.cpp · <span id="pc-footer-model">Standard</span> · on-device
       </div>
+
+      <!-- Subtle, transparent quota readout pinned lower-right: new rounds
+           left today (free tier). Hidden for subscribers (remaining = ∞). -->
+      <div class="pc-quota" id="pc-quota" hidden></div>
     </div>
   `
 
   const closeBtn = container.querySelector<HTMLButtonElement>("#pc-close")!
+  const quotaEl = container.querySelector<HTMLDivElement>("#pc-quota")!
   const streakEl = container.querySelector<HTMLSpanElement>("#pc-streak")!
   const streakN = container.querySelector<HTMLSpanElement>("#pc-streak-n")!
   const modeBtn = container.querySelector<HTMLButtonElement>("#pc-mode")!
@@ -1048,22 +1073,36 @@ export const mountGame = (
     }
   }
 
+  // Lower-right quota readout — new rounds left today in the free tier. The
+  // gate returns Infinity for subscribers and null for an unmetered surface;
+  // both hide the badge entirely (no chrome for people who paid). Goes faint-
+  // urgent in the last few so it reads as "nearly done", never a red warning.
+  const updateQuotaBadge = () => {
+    const left = paywallGate.remaining()
+    if (left === null || !isFinite(left)) {
+      quotaEl.hidden = true
+      return
+    }
+    quotaEl.hidden = false
+    quotaEl.textContent = String(left)
+    quotaEl.setAttribute("aria-label", `${left} left today`)
+    quotaEl.classList.toggle("pc-quota-low", left <= 3)
+  }
+
   const setUiState = (next: UiState) => {
     uiState = next
+    updateQuotaBadge()
     micBtn.classList.remove("recording", "scoring")
     micBtn.disabled = false
     if (next === "idle") {
       micIcon.innerHTML = "●"
-      // Reflect the hard daily cap in the idle control (mirrors tutomaton's
-      // disabled composer): when blocked, the mic is disabled — tapping it
-      // re-shows the lock via startRecording's guard. Subscribers never block.
-      const capped = paywallGate.isBlocked()
-      micLabel.textContent = capped
-        ? tt("dailyDone")
-        : modelReady
-          ? tt("holdToSpeak")
-          : tt("loadingModel")
-      micBtn.disabled = !modelReady || !currentPhrase || capped
+      // The mic is never gated — re-practicing any phrase already in history is
+      // free. The cap only blocks reaching for a NEW phrase (goNext), so the mic
+      // stays live whether or not the user is capped for the day.
+      micLabel.textContent = modelReady
+        ? tt("holdToSpeak")
+        : tt("loadingModel")
+      micBtn.disabled = !modelReady || !currentPhrase
     } else if (next === "recording") {
       micBtn.classList.add("recording")
       micIcon.innerHTML = "■"
@@ -1156,6 +1195,17 @@ export const mountGame = (
     updateLangBadge(null)
   }
 
+  // Calm dead-end state: no phrase to record. Clears the current phrase,
+  // shows a designed message, and disables the mic so the user can't reach
+  // the red scoring error. Used for both "nothing selected" and "selected
+  // language(s) aren't whisper-scorable yet".
+  const renderUnavailableCard = (headline: string, sub: string) => {
+    currentPhrase = null
+    renderEmptyCard(cardEl, headline, sub)
+    micBtn.disabled = true
+    micLabel.textContent = "—"
+  }
+
   const renderCurrentPhrase = () => {
     if (!currentPhrase) return
     fillCard(cardEl, currentPhrase)
@@ -1231,18 +1281,22 @@ export const mountGame = (
 
     const cfg = hostApi.getStackConfig()
     if (!cfg.languages || cfg.languages.length < 1) {
-      currentPhrase = null
-      renderEmptyCard(
-        cardEl,
+      renderUnavailableCard(
         tt("noLanguageSelected"),
         tt("chooseLanguageToStudy")
       )
-      micBtn.disabled = true
-      micLabel.textContent = "—"
+      return
+    }
+    if (!stackHasScorableLang(cfg.languages)) {
+      renderUnavailableCard(
+        tt("scoringUnavailableTitle"),
+        tt("scoringUnavailableSub")
+      )
       return
     }
 
-    // Forward through history if we previously went back; otherwise fetch.
+    // Forward through history if we previously went back — always FREE. Moving
+    // back and forth through phrases already seen never touches the daily gate.
     if (historyIdx >= 0 && historyIdx < history.length - 1) {
       const next = history[historyIdx + 1]
       historyIdx += 1
@@ -1250,6 +1304,15 @@ export const mountGame = (
       currentPhrase = next
       setUiState("idle")
       persist()
+      return
+    }
+
+    // Past the end of history → acquiring a NEW phrase. THIS is the metered
+    // action (phrase-flip model). At the daily cap, re-show the accomplishment
+    // lock and stay on the current phrase — the user keeps full free access to
+    // everything they've already seen. Subscribers never block.
+    if (paywallGate.isBlocked()) {
+      paywallGate.requestDailyLock()
       return
     }
 
@@ -1273,6 +1336,10 @@ export const mountGame = (
 
     history.push(next)
     historyIdx = history.length - 1
+    // A brand-new phrase was acquired — meter it (the ONE metered seam). Fires
+    // the daily accomplishment-lock internally when this tips over the cap; no
+    // soft nag (softNagEvery 0); no-op for subscribers.
+    paywallGate.note()
     await slideTo("left", (c) => fillCard(c, next!))
     currentPhrase = next
     setUiState("idle")
@@ -1777,15 +1844,10 @@ export const mountGame = (
 
   const startRecording = async () => {
     if (!currentPhrase || !modelReady) return
-    // Hard daily cap: starting a new round is the metered action. Once the free
-    // user has reached PARLO_DAILY_LIMIT scored rounds they get EXACTLY that
-    // many — re-show the accomplishment-lock overlay and refuse to record
-    // another. Subscribers never block (isBlocked reads the host-injected Plus).
-    if (paywallGate.isBlocked()) {
-      paywallGate.requestDailyLock()
-      setUiState("idle")
-      return
-    }
+    // Recording/scoring is ALWAYS free — like phrase-flip, only acquiring a NEW
+    // phrase is metered (see goNext / loadFirstPhrase). A free user can re-drill
+    // any phrase already in their history on the on-device model as much as they
+    // want; the daily cap only bites when they reach for a fresh phrase.
     clearError()
     clearResult()
     const sessionId = newSessionId()
@@ -1929,9 +1991,8 @@ export const mountGame = (
       )
       if (disposed) return
       renderResult(result)
-      // One solo round completed — advance the daily gate (fires the soft nag /
-      // accomplishment lock internally; no-op for subscribers).
-      paywallGate.note()
+      // Scoring is free + unlimited (metering moved to NEW-phrase acquisition in
+      // goNext). Re-recording the same phrase never touches the daily gate.
       setUiState("idle")
     } catch (err) {
       const msg = formatErr(err)
@@ -1963,6 +2024,17 @@ export const mountGame = (
       if (code === "NETWORK") {
         showError(
           tt("errNetworkBlip")
+        )
+        return
+      }
+      // Backstop: the native guard rejected the language. We gate unscorable
+      // targets before recording, so this should be unreachable — but if it
+      // fires (iOS sends numeric code 60; Android the string code), show the
+      // calm dead-end card instead of a raw red error.
+      if (code === "UNSUPPORTED_LANGUAGE" || /support language/i.test(msg)) {
+        renderUnavailableCard(
+          tt("scoringUnavailableTitle"),
+          tt("scoringUnavailableSub")
         )
         return
       }
@@ -2006,6 +2078,9 @@ export const mountGame = (
   micBtn.addEventListener("pointerdown", beginMicHold)
   micBtn.addEventListener("pointerup", endMicHold)
   micBtn.addEventListener("pointercancel", endMicHold)
+  // (No cap guard on the mic — re-practicing any phrase already in history is
+  // free even when capped. The cap is enforced only at NEW-phrase acquisition
+  // in goNext, which re-pops the shared green-check lock.)
 
   // Skip button removed from the header — swipe ←/→ already covers
   // skip-to-next, and removing the redundant button cleans up the
@@ -2585,14 +2660,17 @@ export const mountGame = (
   const loadFirstPhrase = async () => {
     const cfg = hostApi.getStackConfig()
     if (!cfg.languages || cfg.languages.length < 1) {
-      currentPhrase = null
-      renderEmptyCard(
-        cardEl,
+      renderUnavailableCard(
         tt("noLanguageSelected"),
         tt("chooseLanguageToStudy")
       )
-      micBtn.disabled = true
-      micLabel.textContent = "—"
+      return
+    }
+    if (!stackHasScorableLang(cfg.languages)) {
+      renderUnavailableCard(
+        tt("scoringUnavailableTitle"),
+        tt("scoringUnavailableSub")
+      )
       return
     }
 
@@ -2616,6 +2694,11 @@ export const mountGame = (
       history.push(phrase)
       historyIdx = 0
       currentPhrase = phrase
+      // The first phrase of a fresh session (no restorable history) is itself a
+      // new acquisition — meter it so the boot phrase counts toward the daily
+      // cap, same as any Next. Returning users restore history above and never
+      // reach here, so reopening doesn't re-spend.
+      paywallGate.note()
       renderCurrentPhrase()
       persist()
       prefetchInBackground()
@@ -3214,6 +3297,10 @@ export const mountGame = (
     }
 
     renderModeButton()
+    // Paint the lower-right quota readout immediately at boot, before the
+    // model finishes loading (setUiState refreshes it on every transition
+    // thereafter). No-op for subscribers.
+    updateQuotaBadge()
     // Larger models can spend real time on first native initialization.
     // Surface the wait honestly so users don't think the app froze.
     // Threshold (~300 MB) chosen so Standard / Small skip the warning

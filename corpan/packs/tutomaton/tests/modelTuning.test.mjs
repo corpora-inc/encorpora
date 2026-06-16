@@ -31,6 +31,7 @@ test("sanitizes persisted tuning and clamps unsupported values", () => {
     repeatPenalty: 1.27,
     presencePenalty: 2,
     maxTokens: 2048,
+    think: false,
   })
 })
 

@@ -37,6 +37,10 @@ import { useProgressStore } from "@/store/progress";
 import { SystemPackInstaller } from "@/components/SystemPackInstaller";
 import { useLandingStore } from "@/store/landing";
 import { trackGateHit } from "@/util/analytics";
+import { useTranslation } from "react-i18next";
+import { PackLaunchTransition, type RazzleCard } from "@/components/PackLaunchTransition";
+import { buildRazzleRoster, resolveRazzleCard } from "@/components/razzleRoster";
+import { PHRASE_PACK_ID } from "@/onboarding/bestFit";
 
 const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
 
@@ -134,8 +138,18 @@ function PhraseFlipChrome() {
 
 export default function App() {
   useThemeEffect();
+  const { t } = useTranslation();
   const [showSettings, setShowSettings] = useState(false);
   const [showTour, setShowTour] = useState(false);
+  // The first-launch "razzle-dazzle" collage. Set ONLY by the onboarding landing
+  // (razzle intent) — its `launch` runs the chosen experience UNDER the overlay
+  // at the reveal beat, then `onComplete` clears it. Never set for normal
+  // Home→pack launches.
+  const [razzle, setRazzle] = useState<{
+    roster: RazzleCard[];
+    chosen: RazzleCard;
+    launch: () => void;
+  } | null>(null);
   // gate v2: the universal "you did your N today" accomplishment lock. One
   // instance, host-rendered, driven by the `corpan:daily-locked` event the
   // shared monetization gate dispatches when a pack hits its hard daily cap.
@@ -499,6 +513,11 @@ export default function App() {
       // OS-native review here — the in-app "Enjoying Corpán?" prompt
       // (<RatingPrompt/>) is the single rating surface, and its 5-star button
       // pops the native review widget. Firing both produced a double prompt.
+      //
+      // Exiting is NOT a paywall moment. If the daily-cap accomplishment lock is
+      // open (e.g. the user hit it in phrase-flip then tapped Home), dismiss it
+      // here so it can't linger over the Home hub — just let them get home.
+      setDailyLock(null);
       setActiveGame(null);
       updateGameParam(null);
     };
@@ -539,6 +558,51 @@ export default function App() {
     updateGameParam({ id: "phrase_main" });
   }, [updateGameParam]);
 
+  // Quietly install a catalog game pack (no InstallProgressDialog) so the
+  // razzle-dazzle landing can drop the user straight into it. Idempotent +
+  // best-effort: a slow/failed download just means the landing falls back to
+  // Phrase Flip and the pack still finishes installing → appears on Home.
+  const quietInstall = useCallback(async (packId: string) => {
+    if (useGamesStore.getState().getGame(packId)) return;
+    const entry = useCatalogStore
+      .getState()
+      .getCatalog()
+      .find((g) => g.id === packId);
+    if (!entry?.manifestUrl) return;
+    try {
+      const { installPack } = await import("@/contentPacks/install");
+      const result = await installPack({
+        manifestUrl: entry.manifestUrl,
+        source: "catalog",
+        expectedVersion: entry.version,
+      });
+      useGamesStore.getState().addGame({
+        id: result.packId,
+        name: result.name ?? entry.name,
+        manifestUrl: result.manifestUrl,
+        version: result.version,
+        description: entry.description ?? result.description,
+        imageUrl: entry.imageUrl,
+        source: result.source,
+      });
+    } catch (err) {
+      console.warn("[razzle] quiet install failed for", packId, err);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Onboarding fires this the moment the user picks their final answer, so the
+    // chosen pack starts downloading while they finish the last screen + watch
+    // the transition (maximizes the chance it's ready to land into).
+    const onPreinstall = (e: Event) => {
+      const id = (e as CustomEvent<{ packId?: string }>).detail?.packId;
+      if (id) void quietInstall(id);
+    };
+    window.addEventListener("corpan:preinstall-pack", onPreinstall as EventListener);
+    return () =>
+      window.removeEventListener("corpan:preinstall-pack", onPreinstall as EventListener);
+  }, [quietInstall]);
+
   // Consume the one-shot landing intent from onboarding, once, on the
   // false→true transition. A URL deep-link (?game=) always wins.
   // useLayoutEffect (not useEffect) so the tour/phrase overlay mounts BEFORE
@@ -551,6 +615,37 @@ export default function App() {
     if (activeGame) return; // deep-link present — honor it, skip intent
     const intent = useLandingStore.getState().consumeLanding();
     if (!intent) return;
+
+    // The "razzle" intent (set by onboarding) plays the first-launch collage,
+    // then drops the user into the chosen experience at the reveal beat.
+    if (intent.kind === "experience" && intent.razzle) {
+      const packId = intent.packId;
+      const deps = {
+        catalog: useCatalogStore.getState().getCatalog(),
+        name: (id: string, fallback: string) =>
+          t(`experiences.${id}.name`, { defaultValue: fallback }),
+      };
+      // Kick the install now (backstops onboarding's earlier preinstall) so the
+      // pack is as ready as possible by the reveal.
+      if (packId !== PHRASE_PACK_ID) void quietInstall(packId);
+      // What actually runs UNDER the overlay at the reveal beat:
+      const launch = () => {
+        if (packId === PHRASE_PACK_ID) {
+          openPhrase();
+          return;
+        }
+        const g = useGamesStore.getState().getGame(packId);
+        if (g) handleLaunchGame(g);
+        else openPhrase(); // not ready in time → graceful fallback
+      };
+      setRazzle({
+        roster: buildRazzleRoster(deps),
+        chosen: resolveRazzleCard(packId, deps),
+        launch,
+      });
+      return;
+    }
+
     if (intent.kind === "experience") {
       if (intent.packId === "phrase_main") {
         openPhrase();
@@ -629,6 +724,18 @@ export default function App() {
             <PhraseFlipChrome />
           </div>
         )
+      ) : null}
+
+      {/* First-launch razzle-dazzle collage (z-1200, above the experience it
+          reveals). Plays once on the onboarding landing; its `launch` mounts the
+          chosen experience underneath at the reveal beat, then it washes away. */}
+      {razzle ? (
+        <PackLaunchTransition
+          roster={razzle.roster}
+          chosen={razzle.chosen}
+          onReveal={() => razzle.launch()}
+          onComplete={() => setRazzle(null)}
+        />
       ) : null}
 
       {/* Quick Settings sheet — opened by Phrase Flip's gear or hostApi. */}

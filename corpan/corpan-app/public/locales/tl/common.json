@@ -443,6 +443,30 @@
       "noVoiceFor": "Walang {{lang}} na boses pa — magdagdag tayo ng isa upang makabasa nang malakas ang Corpán.",
       "addBetter": "I-unlock ang mas mayamang boses",
       "chooseVoices": "Pumili ng mga boses"
+    },
+    "whatToStart": {
+      "title": "Saan tayo magsisimula?",
+      "subtitle": "Pumili ng isa para magsimula — isang tap na lang ang iba.",
+      "read": {
+        "label": "Magbasa",
+        "desc": "Sumisid sa mga kuwento at libro."
+      },
+      "study": {
+        "label": "Mag-aral",
+        "desc": "Palawakin ang bokabularyo sa pokus na pagsasanay."
+      },
+      "playMusic": {
+        "label": "Tumugtog",
+        "desc": "Subukan ang wika mo sa mga deck."
+      },
+      "playGames": {
+        "label": "Maglaro",
+        "desc": "Matuto sa masasayang hamon."
+      },
+      "surprise": {
+        "label": "Gulatin mo ako!",
+        "desc": "Dalhin mo ako sa kung saang masaya."
+      }
     }
   },
   "socials": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Tubusin gamit ang Apple",
     "redeeming": "Binubuksan ang pagtubos…",
     "retry": "Subukang Muli",
-    "subscribeWithDiscount": "Mag-subscribe ({{discount}})"
+    "subscribeWithDiscount": "Mag-subscribe ({{discount}})",
+    "redeemCode": "Tubusin ang code",
+    "notApplied": "Walang diskwento ang code na ito."
   }
 }

@@ -12,6 +12,7 @@
     "tts:allow-speak",
     "tts:default",
     "audio-keepalive:default",
+    "haptics:default",
     "radio-stream:default",
     "iap:default",
     "subscriptions:allow-show-manage-subscriptions",

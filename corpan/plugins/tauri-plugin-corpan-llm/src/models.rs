@@ -11,8 +11,11 @@ pub struct StatusResponse {
     pub model_id: Option<String>,
     /// Backend in use: `"metal"`, `"vulkan"`, `"cpu"`, or `null` when unloaded.
     pub backend: Option<String>,
-    /// Available device memory in MB at last probe.
+    /// Available device memory in MB at last probe (fluctuates).
     pub available_memory_mb: Option<u64>,
+    /// Total physical RAM in MB — the stable device-class signal the host uses
+    /// to pick a model size. `None` on platforms we can't measure.
+    pub total_memory_mb: Option<u64>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -53,6 +56,11 @@ pub struct ChatOptions {
     /// Stop sequences to terminate generation early.
     #[serde(default)]
     pub stop: Vec<String>,
+    /// Suppress reasoning on Qwen3 *hybrid* models (0.6B/1.7B) by seeding the
+    /// assistant turn with an empty `<think></think>` block — the canonical
+    /// non-thinking prefill. No effect on non-thinking Instruct models.
+    #[serde(default)]
+    pub no_think: Option<bool>,
 }
 
 impl Default for ChatOptions {
@@ -66,6 +74,7 @@ impl Default for ChatOptions {
             presence_penalty: Some(0.0),
             max_tokens: Some(1500),
             stop: vec![],
+            no_think: None,
         }
     }
 }

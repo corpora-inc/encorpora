@@ -27,6 +27,40 @@ Feature flags:
 - Store-based purchase flow (Apple/Google) + verify endpoint.
 - Hidden in the UI for now until billing setup is released.
 
+## Publishing — how a pack reaches encorpora.io (READ THIS)
+
+**A merge to `main` IS the deploy. Nobody builds or uploads pack zips by hand —
+there is no SSH/rsync/manual-upload step, and an agent cannot push to the host.**
+Do not ask whether you should "build the zip and put it on encorpora.io"; that
+is not a thing.
+
+- **Code / game packs** (beatlounge, corpan-city, hover-runner, hanzipan,
+  juice-squeeze, world-radio, the readers, …) ship via GitHub Actions →
+  GitHub Pages. On every push to `main` that touches `corpan/packs/**`,
+  [`.github/workflows/deploy-pages.yml`](../../.github/workflows/deploy-pages.yml)
+  installs deps, `npm run build`s each pack, zips it, and publishes it to
+  `https://encorpora.io/corpan/packs/<id>.zip` (the `manifestUrl`/`zipUrl` the
+  catalog points at). **To ship a new version: bump the manifest `version`
+  (and the matching `catalog.ts` entry), merge to `main`. Done.** The next
+  Pages run rebuilds and publishes the zip automatically.
+- **Catalog metadata is OTA, no app release.** `catalog-v3.json` (including each
+  pack's localized name/description) is *regenerated from the manifests* on every
+  Pages build and served from the same Pages host, so metadata/translation
+  changes reach clients without an app store release.
+- **Hard localization gate.** The Pages build runs
+  `assertCompleteCatalogLocalization` (`web/pages/build.js`): any catalog pack
+  with `requireCompleteLocalization: true` (currently only **`corpan_city`**)
+  MUST carry `nameLocalized` + `descriptionLocalized` for **every** locale under
+  `corpan-app/public/locales/`. One missing locale throws and fails the WHOLE
+  deploy (so a stale gate can silently block unrelated pack releases). When you
+  add a new app language, backfill that pack's manifest in the same change.
+
+> Narration packs (books) and phrase packs are the exception — those do NOT go
+> through GitHub Pages. They publish to S3 / CloudFront via
+> `corpan/infra/patch-catalog.py` and the phrase-pack `publish.py`. That S3/CDN
+> path is the only place "pushing content" is a real step, and it's for book
+> audio / phrase data, not code packs.
+
 ## Reference pack
 - `hover-runner` is the reference implementation.
 - `hanzipan` is the Mandarin character pack (pack-owned DB + handwriting surface).

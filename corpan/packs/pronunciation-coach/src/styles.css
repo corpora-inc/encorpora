@@ -926,6 +926,47 @@ body,
   flex: 0 0 auto;
 }
 
+/* ---- Quota readout ----
+   A subtle, transparent count of new rounds left today, pinned to the lower-
+   right safe corner. Free tier only — hidden for subscribers. Squared-off,
+   muted, low-opacity so it informs without competing with the mic. Tints a
+   touch warm in the last few (".pc-quota-low") to read as "nearly done",
+   never an alarm. */
+.pc-quota {
+  position: absolute;
+  right: calc(10px + var(--pc-safe-right));
+  bottom: calc(10px + var(--pc-safe-bottom));
+  z-index: 6;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--pc-muted);
+  background: var(--pc-accent-soft);
+  border: 1px solid color-mix(in srgb, var(--pc-muted) 22%, transparent);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.pc-quota[hidden] { display: none; }
+.pc-quota.pc-quota-low {
+  color: #b45309;
+  background: color-mix(in srgb, #f59e0b 16%, transparent);
+  border-color: color-mix(in srgb, #f59e0b 35%, transparent);
+  opacity: 0.7;
+}
+@media (prefers-color-scheme: dark) {
+  .pc-quota.pc-quota-low { color: #fbbf24; }
+}
+
 /* ---- Loading overlay ---- */
 .pc-overlay {
   position: fixed;

@@ -104,6 +104,16 @@ export interface GateConfig {
   sessionCap?: number
   /** Extra detail merged into every paywall request (theme, language, …). */
   detail?: Record<string, unknown>
+  /**
+   * Optional legacy storage key (e.g. `"tutomaton.quota"`) that PRE-gate builds
+   * wrote as `{ day, count }`. If the standard key
+   * `corpan:gate:<packId>:<surface>` is ABSENT but this legacy key is present
+   * with a `{ day, count }`, its count is imported ONCE into the standard key on
+   * first read — so an upgrade from a pre-gate build preserves the count and the
+   * old key-name inconsistency dies. Storage-failure-safe (a thrown read/write
+   * is swallowed). Omit if the surface never had a legacy key.
+   */
+  legacyKey?: string
   /** Injected; default reads `__CORPAN_PLUS` / `__CORPAN_ENTITLEMENT`. */
   isSubscribed?: () => boolean
   /** Injected; default dispatches the `corpan:request-unlock` window event. */
@@ -129,6 +139,20 @@ export interface GateConfig {
   /** Injected storage for tests. Default `localStorage` (guarded). */
   storage?: StorageLike
 }
+
+/**
+ * The live-gate registry the host's DEV debug API reads. Each `createPaywallGate`
+ * registers its api on `globalThis.__corpanGates["<packId>:<surface>"]` at
+ * construct and deletes it on dispose, so the host can `list()` / live-`set()` /
+ * `reset()` ANY pack's gate (including OTA packs) without a reload. The entry
+ * carries the packId/surface so the debug API can write the correct standard key.
+ */
+export interface RegisteredGate {
+  packId: string
+  surface: string
+  gate: PaywallGate
+}
+export type GateRegistry = Record<string, RegisteredGate>
 
 /** The slice of the Web Storage API the gate uses (so tests can inject a stub). */
 export interface StorageLike {

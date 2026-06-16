@@ -372,7 +372,31 @@
     "voicePreviewAria": "Pregledaj {{name}}",
     "voicePreviewSelected": "Odabrani pregled",
     "voiceRecommended": "Preporučeno",
-    "voiceSelectedCount": "{{count}} od {{total}}"
+    "voiceSelectedCount": "{{count}} od {{total}}",
+    "whatToStart": {
+      "title": "Gdje da počnemo?",
+      "subtitle": "Odaberi jedno za početak — ostalo je na dodir.",
+      "read": {
+        "label": "Čitaj",
+        "desc": "Uroni u priče i knjige."
+      },
+      "study": {
+        "label": "Uči",
+        "desc": "Gradi vokabular usmjerenim vježbanjem."
+      },
+      "playMusic": {
+        "label": "Sviraj",
+        "desc": "Isprobaj svoj jezik za pultom."
+      },
+      "playGames": {
+        "label": "Igraj",
+        "desc": "Uči kroz zaigrane izazove."
+      },
+      "surprise": {
+        "label": "Iznenadi me!",
+        "desc": "Odvedi me negdje zabavno."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Otkupi s Appleom",
     "redeeming": "Otvaranje otkupa…",
     "retry": "Pokušaj ponovno",
-    "subscribeWithDiscount": "Pretplati se ({{discount}})"
+    "subscribeWithDiscount": "Pretplati se ({{discount}})",
+    "redeemCode": "Iskoristi kôd",
+    "notApplied": "Ovaj kôd ne donosi popust."
   }
 }

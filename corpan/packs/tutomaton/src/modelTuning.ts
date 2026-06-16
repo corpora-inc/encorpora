@@ -7,6 +7,10 @@ export type ModelTuning = {
   repeatPenalty: number
   presencePenalty: number
   maxTokens: number
+  /** Let a Qwen3 *hybrid* model (0.6B/1.7B) reason before answering. Default off
+   *  (fast, non-thinking). No effect on the non-thinking Instruct 4B. The tutor
+   *  reply never shows the reasoning either way — the host strips it. */
+  think: boolean
 }
 
 // Calibrated against the shipped on-device model (Qwen3-4B Q4_K_M) on
@@ -22,6 +26,7 @@ export const DEFAULT_MODEL_OPTIONS = {
   repeatPenalty: 1.1,
   presencePenalty: 0,
   maxTokens: 700,
+  think: false,
 } as const
 
 export const MODEL_LIMITS = {
@@ -89,6 +94,7 @@ export function sanitizeModelTuning(value: unknown, systemPrompt: string): Model
       MODEL_LIMITS.maxTokens.min,
       MODEL_LIMITS.maxTokens.max
     )),
+    think: typeof input.think === "boolean" ? input.think : DEFAULT_MODEL_OPTIONS.think,
   }
 }
 

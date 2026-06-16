@@ -372,7 +372,31 @@
     "voicePreviewAria": "Hakiki {{name}}",
     "voicePreviewSelected": "Hakiki iliyochaguliwa",
     "voiceRecommended": "Inayopendekezwa",
-    "voiceSelectedCount": "{{count}} kati ya {{total}}"
+    "voiceSelectedCount": "{{count}} kati ya {{total}}",
+    "whatToStart": {
+      "title": "Tuanzie wapi?",
+      "subtitle": "Chagua moja ili kuanza — yaliyobaki yako gusa moja tu.",
+      "read": {
+        "label": "Soma",
+        "desc": "Zama katika hadithi na vitabu."
+      },
+      "study": {
+        "label": "Jifunze",
+        "desc": "Jenga msamiati kwa mazoezi yaliyolengwa."
+      },
+      "playMusic": {
+        "label": "Piga muziki",
+        "desc": "Onja lugha yako kwenye deki."
+      },
+      "playGames": {
+        "label": "Cheza",
+        "desc": "Jifunze kupitia changamoto za kufurahisha."
+      },
+      "surprise": {
+        "label": "Nishangaze!",
+        "desc": "Nipeleke mahali pa kufurahisha."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Komboa na Apple",
     "redeeming": "Inafungua kukomboa…",
     "retry": "Jaribu tena",
-    "subscribeWithDiscount": "Jisajili ({{discount}})"
+    "subscribeWithDiscount": "Jisajili ({{discount}})",
+    "redeemCode": "Tumia msimbo",
+    "notApplied": "Msimbo huu hautoi punguzo lolote."
   }
 }

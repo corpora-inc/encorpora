@@ -13,9 +13,10 @@ import {
   recordStep,
   visiblePadCount,
 } from "./padModel"
+import { withStockDrums } from "../../testing/stockLoop"
 
 const drumTrack = (): { doc: BeatloungeDoc; track: InstrumentTrack } => {
-  const doc = createDefaultDoc(0)
+  const doc = withStockDrums(createDefaultDoc(0))
   const track = doc.tracks.find(
     (t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler"
   )

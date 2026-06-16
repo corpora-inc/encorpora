@@ -372,7 +372,31 @@
     "voicePreviewAria": "預覽 {{name}}",
     "voicePreviewSelected": "預覽已選",
     "voiceRecommended": "推薦",
-    "voiceSelectedCount": "{{total}} 個中的 {{count}} 個"
+    "voiceSelectedCount": "{{total}} 個中的 {{count}} 個",
+    "whatToStart": {
+      "title": "我們從哪裡開始？",
+      "subtitle": "選一個直接開始，其餘的輕輕一點就好。",
+      "read": {
+        "label": "閱讀",
+        "desc": "沉浸在故事與書籍中。"
+      },
+      "study": {
+        "label": "學習",
+        "desc": "透過專注練習累積詞彙。"
+      },
+      "playMusic": {
+        "label": "玩音樂",
+        "desc": "在打碟台上試試你的語言。"
+      },
+      "playGames": {
+        "label": "玩遊戲",
+        "desc": "在趣味挑戰中學習。"
+      },
+      "surprise": {
+        "label": "給我驚喜！",
+        "desc": "帶我去個好玩的地方。"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "通過 Apple 兌換",
     "redeeming": "正在開啟兌換…",
     "retry": "重試",
-    "subscribeWithDiscount": "訂閱（{{discount}}）"
+    "subscribeWithDiscount": "訂閱（{{discount}}）",
+    "redeemCode": "兌換代碼",
+    "notApplied": "此代碼不提供折扣。"
   }
 }

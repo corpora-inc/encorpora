@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest"
 import { clearAction, ribbonActions, ribbonTrackId } from "./actions"
 import { createDefaultDoc, isInstrumentTrack } from "../../model/document"
+import { withStockRiff } from "../../testing/stockLoop"
 import type { ActionContext } from "../../contracts/module"
 
 const ctx = (overrides: Partial<ActionContext> = {}): ActionContext => ({
@@ -29,7 +30,7 @@ describe("ribbon actions", () => {
   })
 
   it("clears a non-empty melodic track", () => {
-    const c = ctx()
+    const c = ctx({ doc: withStockRiff(createDefaultDoc(0)) })
     const r = clearAction.run(c, {})
     expect(r.commands).toHaveLength(1)
     expect(r.commands[0]).toMatchObject({ t: "clearTrack" })

@@ -372,7 +372,31 @@
     "voicePreviewAria": "Pratinjau {{name}}",
     "voicePreviewSelected": "Pratinjau yang dipilih",
     "voiceRecommended": "Direkomendasikan",
-    "voiceSelectedCount": "{{count}} dari {{total}}"
+    "voiceSelectedCount": "{{count}} dari {{total}}",
+    "whatToStart": {
+      "title": "Mulai dari mana, ya?",
+      "subtitle": "Pilih satu untuk mulai — sisanya cuma sekali ketuk.",
+      "read": {
+        "label": "Baca",
+        "desc": "Selami cerita dan buku."
+      },
+      "study": {
+        "label": "Belajar",
+        "desc": "Bangun kosakata dengan latihan terfokus."
+      },
+      "playMusic": {
+        "label": "Mainkan musik",
+        "desc": "Cicipi bahasamu di balik dek."
+      },
+      "playGames": {
+        "label": "Main game",
+        "desc": "Belajar lewat tantangan seru."
+      },
+      "surprise": {
+        "label": "Kejutkan aku!",
+        "desc": "Bawa aku ke tempat yang seru."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Tukarkan dengan Apple",
     "redeeming": "Membuka penukaran…",
     "retry": "Coba Lagi",
-    "subscribeWithDiscount": "Langganan ({{discount}})"
+    "subscribeWithDiscount": "Langganan ({{discount}})",
+    "redeemCode": "Tukarkan kode",
+    "notApplied": "Kode ini tidak memberi diskon."
   }
 }

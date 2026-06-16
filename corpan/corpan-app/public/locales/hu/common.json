@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}} előnézete",
     "voicePreviewSelected": "Kiválasztott előnézete",
     "voiceRecommended": "Ajánlott",
-    "voiceSelectedCount": "{{count}} / {{total}}"
+    "voiceSelectedCount": "{{count}} / {{total}}",
+    "whatToStart": {
+      "title": "Hol kezdjük?",
+      "subtitle": "Válassz egyet, és vágj bele — a többi egy érintésnyire van.",
+      "read": {
+        "label": "Olvasás",
+        "desc": "Merülj el történetekben és könyvekben."
+      },
+      "study": {
+        "label": "Tanulás",
+        "desc": "Építsd a szókincsed célzott gyakorlással."
+      },
+      "playMusic": {
+        "label": "Zenélj",
+        "desc": "Próbáld ki a nyelvedet a keverőpultnál."
+      },
+      "playGames": {
+        "label": "Játssz",
+        "desc": "Tanulj játékos kihívásokkal."
+      },
+      "surprise": {
+        "label": "Lepj meg!",
+        "desc": "Vigyél valami jó helyre."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Beváltás Apple-lel",
     "redeeming": "Beváltás megnyitása…",
     "retry": "Újra",
-    "subscribeWithDiscount": "Előfizetés ({{discount}})"
+    "subscribeWithDiscount": "Előfizetés ({{discount}})",
+    "redeemCode": "Kód beváltása",
+    "notApplied": "Ez a kód nem ad kedvezményt."
   }
 }

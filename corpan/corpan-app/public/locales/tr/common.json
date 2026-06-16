@@ -372,7 +372,31 @@
     "voicePreviewAria": "{{name}} önizlemesi",
     "voicePreviewSelected": "Seçili önizle",
     "voiceRecommended": "Önerilen",
-    "voiceSelectedCount": "{{total}} tanesinden {{count}} seçili"
+    "voiceSelectedCount": "{{total}} tanesinden {{count}} seçili",
+    "whatToStart": {
+      "title": "Nereden başlayalım?",
+      "subtitle": "Başlamak için birini seç — gerisi bir dokunuş ötede.",
+      "read": {
+        "label": "Oku",
+        "desc": "Hikâyelere ve kitaplara dal."
+      },
+      "study": {
+        "label": "Çalış",
+        "desc": "Odaklı pratikle kelime dağarcığını geliştir."
+      },
+      "playMusic": {
+        "label": "Müzik yap",
+        "desc": "Dilini deck'lerde dene."
+      },
+      "playGames": {
+        "label": "Oyna",
+        "desc": "Eğlenceli zorluklarla öğren."
+      },
+      "surprise": {
+        "label": "Şaşırt beni!",
+        "desc": "Beni eğlenceli bir yere götür."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -858,6 +882,8 @@
     "redeemWithApple": "Apple ile Kullan",
     "redeeming": "Kod kullanılıyor…",
     "retry": "Tekrar Dene",
-    "subscribeWithDiscount": "Abone Ol ({{discount}})"
+    "subscribeWithDiscount": "Abone Ol ({{discount}})",
+    "redeemCode": "Kodu kullan",
+    "notApplied": "Bu kod indirim sağlamıyor."
   }
 }

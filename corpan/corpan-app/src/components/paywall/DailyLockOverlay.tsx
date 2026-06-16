@@ -166,12 +166,12 @@ export function DailyLockOverlay({
         role="dialog"
         aria-modal="true"
         aria-label={t("dailyLock.title", {
-          defaultValue: "Your {{count}} {{unit}} for today",
+          defaultValue: "That's your {{count}} {{unit}} for today — nicely done",
           count: context.limit,
           unit: context.unitLabel,
         })}
         dir={dir()}
-        className="fixed inset-0 z-[60] overflow-y-auto no-scrollbar"
+        className="fixed inset-0 z-[1400] overflow-y-auto no-scrollbar"
         style={{ ...LOCK_PALETTE, WebkitOverflowScrolling: "touch" }}
         initial={fade.initial}
         animate={fade.animate}
@@ -234,7 +234,7 @@ export function DailyLockOverlay({
                 }}
               >
                 {t("dailyLock.title", {
-                  defaultValue: "Your {{count}} {{unit}} for today",
+                  defaultValue: "That's your {{count}} {{unit}} for today — nicely done",
                   count: context.limit,
                   unit: context.unitLabel,
                 })}

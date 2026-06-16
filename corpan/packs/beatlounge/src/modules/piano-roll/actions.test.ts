@@ -14,6 +14,7 @@ import {
   pianoRollActions,
   transposeAction,
 } from "./actions"
+import { withStockRiff } from "../../testing/stockLoop"
 
 const seedDoc = (): { doc: BeatloungeDoc; trackId: string } => {
   const doc = createDefaultDoc(0)
@@ -109,7 +110,8 @@ describe("arpeggiate action", () => {
 
 describe("transpose action", () => {
   it("shifts every note by the given semitones (clamped to MIDI)", () => {
-    const { doc, trackId } = seedDoc()
+    const { doc: empty, trackId } = seedDoc()
+    const doc = withStockRiff(empty)
     const before = findTrack(doc, trackId)!
     if (!isInstrumentTrack(before)) throw new Error("not instrument")
     const original = before.notes.map((n) => n.pitch)

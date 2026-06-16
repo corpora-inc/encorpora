@@ -24,6 +24,7 @@ import {
   workingTonicMidi,
   sparsifyMelody,
 } from "./scoreModel"
+import { withStockRiff } from "../../testing/stockLoop"
 
 const doc = (): BeatloungeDoc => createDefaultDoc(0)
 
@@ -191,12 +192,12 @@ describe("− sparser (remove)", () => {
 
 describe("grid view", () => {
   it("lights cells where the track has a note at (row midi, step tick)", () => {
-    const d = doc()
+    const d = withStockRiff(doc())
     const id = melodicTrackId(d)
     const track = d.tracks.find((t) => t.id === id)!
     if (!isInstrumentTrack(track)) throw new Error("not instrument")
     const view = fillScoreCells(buildScoreView(d, track.grid, { octaves: 2 }), track.notes, track.grid)
-    // At least one cell is lit (the default lead melody).
+    // At least one cell is lit (the seeded lead melody).
     const lit = view.rows.some((r) => r.cells.some((c) => c.on))
     expect(lit).toBe(true)
   })
