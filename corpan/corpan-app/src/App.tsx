@@ -150,6 +150,9 @@ export default function App() {
     roster: RazzleCard[];
     chosen: RazzleCard;
     launch: () => void;
+    /** Is the chosen experience installed/launchable yet? The transition holds
+     *  the collage until this is true (or it times out) so we land IN the pack. */
+    isReady: () => boolean;
   } | null>(null);
   // gate v2: the universal "you did your N today" accomplishment lock. One
   // instance, host-rendered, driven by the `corpan:daily-locked` event the
@@ -570,10 +573,23 @@ export default function App() {
   // Phrase Flip and the pack still finishes installing → appears on Home.
   const quietInstall = useCallback(async (packId: string) => {
     if (useGamesStore.getState().getGame(packId)) return;
-    const entry = useCatalogStore
-      .getState()
-      .getCatalog()
-      .find((g) => g.id === packId);
+    const findEntry = () =>
+      useCatalogStore
+        .getState()
+        .getCatalog()
+        .find((g) => g.id === packId);
+    let entry = findEntry();
+    // The game catalog fetches asynchronously; on a cold first run it may not be
+    // loaded yet when onboarding seeds this install. Await one fetch before
+    // giving up so the reader/pack is actually found + installs in time.
+    if (!entry?.manifestUrl) {
+      try {
+        await useCatalogStore.getState().fetchCatalog();
+      } catch (err) {
+        console.warn("[razzle] catalog fetch for quiet install failed:", err);
+      }
+      entry = findEntry();
+    }
     if (!entry?.manifestUrl) return;
     try {
       const { installPack } = await import("@/contentPacks/install");
@@ -655,6 +671,8 @@ export default function App() {
         roster: buildRazzleRoster(deps),
         chosen: resolveRazzleCard(packId, deps),
         launch,
+        isReady: () =>
+          packId === PHRASE_PACK_ID || !!useGamesStore.getState().getGame(packId),
       });
       return;
     }
@@ -748,6 +766,7 @@ export default function App() {
           chosen={razzle.chosen}
           onReveal={() => razzle.launch()}
           onComplete={() => setRazzle(null)}
+          waitUntilReady={razzle.isReady}
         />
       ) : null}
 

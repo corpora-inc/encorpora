@@ -73,6 +73,26 @@ export type LandingResolution = {
 
 const CHINESE_BASES = new Set(["zh", "yue"])
 
+/**
+ * GA content packs we can deterministically route a new user into. Static on
+ * PURPOSE: the runtime game catalog fetches asynchronously, so at onboarding-
+ * commit it may not be loaded yet — gating the routing DECISION on the live
+ * catalog snapshot made "read" fall back to Phrase Flip on a cold first run.
+ * These ids are stable + always published, so we route to them regardless and
+ * let the install (which awaits the catalog) + the reveal-time fallback handle
+ * the rare genuinely-unavailable case. corpan_city/teletron are intentionally
+ * excluded (preview).
+ */
+const LAUNCHABLE_CONTENT_PACKS = new Set<string>([
+  "earthgate_reader",
+  "stargate_reader",
+  "beatlounge",
+  "juice_squeeze",
+  "hover_runner",
+  "pronunciation_coach",
+  "hanzipan",
+])
+
 function baseLang(tag: string): string {
   return (tag.split("-")[0] || tag).toLowerCase()
 }
@@ -104,8 +124,11 @@ function packResolution(packId: string, installedIds: string[]): LandingResoluti
 export function resolveLanding(input: ResolveLandingInput): LandingResolution {
   const { choice, languages, catalogIds, installedIds } = input
   const rng = input.rng ?? Math.random
-  const available = new Set<string>([...catalogIds, ...installedIds])
-  const canPack = (id: string) => available.has(id)
+  // A pack is routable if it's a known GA content pack OR present in the live
+  // catalog OR already installed. The static set is what makes routing immune to
+  // the async catalog load (the bug behind "read → Phrase Flip" on a cold run).
+  const canPack = (id: string) =>
+    LAUNCHABLE_CONTENT_PACKS.has(id) || catalogIds.includes(id) || installedIds.includes(id)
   const chinese = hasChinese(languages)
 
   switch (choice) {

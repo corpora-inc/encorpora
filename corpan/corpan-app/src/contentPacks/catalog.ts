@@ -225,6 +225,37 @@ const DEFAULT_CATALOG: CatalogGame[] = [
 ]
 
 const DEV_CATALOG: CatalogGame[] = [
+  // Readers (dev only): served from the local `/packs` middleware so the new
+  // reader build (with the first-run seed) is installable on a dev device.
+  // Production gets these from the remote catalog. categories/goodForClass mirror
+  // the experiences registry so Home ranking + the read landing resolve them.
+  {
+    id: "earthgate_reader",
+    name: "Earthgate Reader",
+    version: "0.7.0",
+    manifestUrl: "/packs/earthgate-reader/manifest.json",
+    description:
+      "Calm, earth-toned audiobook reader with word-by-word highlighting synced to narrated audio.",
+    imageUrl: "https://encorpora.io/assets/earthgate_reader-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["read", "audio"],
+    goodForClass: ["enjoyer", "kid_native", "learner", "polyglot"],
+    kidFriendly: true,
+    recommendOrder: 1,
+  },
+  {
+    id: "stargate_reader",
+    name: "Stargate Reader",
+    version: "0.7.0",
+    manifestUrl: "/packs/stargate-reader/manifest.json",
+    description:
+      "Immersive 3D audiobook: words stream through space in sync with narrated audio.",
+    imageUrl: "https://encorpora.io/assets/stargate_reader-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["read", "audio", "wild"],
+    goodForClass: ["enjoyer", "polyglot"],
+    recommendOrder: 2,
+  },
   {
     id: "hover_runner",
     name: "Hover Runner",

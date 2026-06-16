@@ -64,9 +64,12 @@ test("read → Earthgate Reader (install needed)", () => {
   assert.equal(r.installPackId, "earthgate_reader")
 })
 
-test("read → Stargate Reader when Earthgate absent, else Phrase Flip", () => {
-  assert.equal(resolveLanding({ choice: "read", languages: ["en"], catalogIds: ["stargate_reader"], installedIds: [] }).intent.packId, "stargate_reader")
-  assert.equal(resolveLanding({ choice: "read", languages: ["en"], catalogIds: [], installedIds: [] }).intent.packId, "phrase_main")
+test("read → Earthgate even with an EMPTY catalog (no async-load race)", () => {
+  // THE regression: earthgate is a known GA pack, so routing must NOT depend on
+  // the live catalog snapshot (which may not be fetched yet at onboarding-commit).
+  const r = resolveLanding({ choice: "read", languages: ["en"], catalogIds: [], installedIds: [] })
+  assert.equal(r.intent.packId, "earthgate_reader")
+  assert.equal(r.installPackId, "earthgate_reader")
 })
 
 test("study (non-Chinese) → Phrase Flip", () => {
@@ -83,12 +86,13 @@ test("study + Chinese target (hanzipan available) → Hanzipan", () => {
   assert.equal(r.installPackId, "hanzipan") // needs install (not in installedIds)
 })
 
-test("study + Chinese but hanzipan NOT in catalog → Phrase Flip fallback", () => {
-  const r = resolveLanding({ choice: "study", languages: ["zh-Hant"], catalogIds: ["beatlounge"], installedIds: [] })
-  assert.equal(r.intent.packId, "phrase_main")
+test("study + Chinese → Hanzipan even with empty catalog (static route)", () => {
+  const r = resolveLanding({ choice: "study", languages: ["zh-Hant"], catalogIds: [], installedIds: [] })
+  assert.equal(r.intent.packId, "hanzipan")
 })
 
-test("playMusic → beatlounge (install needed)", () => {
+test("playMusic → beatlounge (static; install needed when not installed)", () => {
+  assert.equal(resolveLanding({ choice: "playMusic", languages: ["en"], catalogIds: [], installedIds: [] }).installPackId, "beatlounge")
   const r = resolveLanding({ choice: "playMusic", languages: ["en"], catalogIds: ALL_CATALOG, installedIds: [] })
   assert.equal(r.intent.packId, "beatlounge")
   assert.equal(r.installPackId, "beatlounge")
@@ -100,15 +104,9 @@ test("playMusic → already installed beatlounge needs no install", () => {
   assert.equal(r.installPackId, null)
 })
 
-test("playMusic with no beatlounge → Phrase Flip", () => {
-  const r = resolveLanding({ choice: "playMusic", languages: ["en"], catalogIds: ["juice_squeeze"], installedIds: [] })
-  assert.equal(r.intent.packId, "phrase_main")
-})
-
-test("playGames → juice_squeeze, else hover_runner, else phrase", () => {
-  assert.equal(resolveLanding({ choice: "playGames", languages: ["en"], catalogIds: ["juice_squeeze", "hover_runner"], installedIds: [] }).intent.packId, "juice_squeeze")
-  assert.equal(resolveLanding({ choice: "playGames", languages: ["en"], catalogIds: ["hover_runner"], installedIds: [] }).intent.packId, "hover_runner")
-  assert.equal(resolveLanding({ choice: "playGames", languages: ["en"], catalogIds: [], installedIds: [] }).intent.packId, "phrase_main")
+test("playGames → juice_squeeze (static, even with empty catalog)", () => {
+  assert.equal(resolveLanding({ choice: "playGames", languages: ["en"], catalogIds: [], installedIds: [] }).intent.packId, "juice_squeeze")
+  assert.equal(resolveLanding({ choice: "playGames", languages: ["en"], catalogIds: ALL_CATALOG, installedIds: ["juice_squeeze"] }).installPackId, null)
 })
 
 test("surprise picks from the launchable pool (rng-controlled, always reachable)", () => {

@@ -133,16 +133,31 @@ function seeded(n: number): number {
   return x - Math.floor(x)
 }
 
+// The chosen pack may still be downloading when the collage would otherwise
+// reveal. Keep the lively shuffle going (looping) until it's ready — but never
+// longer than this, so a slow/offline install still resolves (the caller's
+// launch falls back to Phrase Flip).
+const MAX_READY_WAIT = 9000 // ms from mount before we reveal regardless
+const READY_POLL_MS = 220
+const WASH_AFTER_POP = T_WASH_START - T_POP // keep the original relative beats
+const DONE_AFTER_POP = T_DONE - T_POP
+
 export function PackLaunchTransition({
   roster,
   chosen,
   onReveal,
   onComplete,
+  waitUntilReady,
 }: {
   roster: RazzleCard[]
   chosen: RazzleCard
   onReveal: () => void
   onComplete: () => void
+  /** Optional readiness gate — the chosen experience is installed/launchable.
+   *  The collage holds (looping) until this returns true or MAX_READY_WAIT, so
+   *  we actually land IN the pack instead of a premature fallback. Default: ready
+   *  immediately (preserves the plain fixed-timeline behavior). */
+  waitUntilReady?: () => boolean
 }): JSX.Element {
   const reduceMotion = useReducedMotion()
 
@@ -207,6 +222,8 @@ export function PackLaunchTransition({
   useEffect(() => {
     if (reduceMotion) return
     const timers: number[] = []
+    const mountedAt = Date.now()
+    let revealed = false
 
     // Re-sort the deck a few times during the lively phase.
     const passGap = T_SHUFFLE_END / (SHUFFLE_PASSES + 1)
@@ -214,24 +231,41 @@ export function PackLaunchTransition({
       timers.push(window.setTimeout(() => setPass(p), passGap * p))
     }
 
-    // Chosen pops to center → haptic + onReveal.
-    timers.push(
-      window.setTimeout(() => {
-        setPhase("pop")
-        doReveal()
-      }, T_POP),
-    )
-    // Colour wash begins covering the screen.
-    timers.push(window.setTimeout(() => setPhase("wash"), T_WASH_START))
-    // Overlay fades out → onComplete.
-    timers.push(
-      window.setTimeout(() => {
-        setPhase("done")
-        doComplete()
-      }, T_DONE),
-    )
-    // Hard safety: guarantee onComplete even if a frame is dropped.
-    timers.push(window.setTimeout(doComplete, SAFETY))
+    // Run the pop → wash → done finale (once the pack is ready).
+    const runFinale = () => {
+      if (revealed) return
+      revealed = true
+      setPhase("pop")
+      doReveal()
+      timers.push(window.setTimeout(() => setPhase("wash"), WASH_AFTER_POP))
+      timers.push(
+        window.setTimeout(() => {
+          setPhase("done")
+          doComplete()
+        }, DONE_AFTER_POP),
+      )
+    }
+
+    // At the pop beat, gate on readiness: if the chosen experience is installed
+    // (or no gate given), reveal now; otherwise keep the collage alive and poll
+    // until ready or MAX_READY_WAIT. A `shuffle`-phase pass cycles so it stays
+    // lively while a slow pack downloads behind the curtain.
+    const tryReveal = () => {
+      if (revealed) return
+      const ready = waitUntilReady ? waitUntilReady() : true
+      const waited = Date.now() - mountedAt
+      if (ready || waited >= MAX_READY_WAIT) {
+        runFinale()
+      } else {
+        // keep shuffling while we wait
+        setPass((p) => (p % SHUFFLE_PASSES) + 1)
+        timers.push(window.setTimeout(tryReveal, READY_POLL_MS))
+      }
+    }
+    timers.push(window.setTimeout(tryReveal, T_POP))
+
+    // Hard safety: guarantee onComplete even if something stalls.
+    timers.push(window.setTimeout(doComplete, MAX_READY_WAIT + SAFETY))
 
     return () => timers.forEach(window.clearTimeout)
     // eslint-disable-next-line react-hooks/exhaustive-deps
