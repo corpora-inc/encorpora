@@ -34,6 +34,33 @@ test("registry: three sizes, smallest→largest, all published", () => {
   assert.throws(() => modelById("nope"))
 })
 
+test("supportedLanguages: small sizes gated, 4B inherits all, en always supported", () => {
+  const m06 = modelById(ID_06)
+  const m17 = modelById(ID_17)
+  const m4b = modelById(ID_4B)
+  // 4B teaches the full pack list → no per-size restriction.
+  assert.equal(m4b.supportedLanguages, undefined)
+  // Small sizes carry an evaluated subset (fewer than the 4B's 50).
+  assert.ok(Array.isArray(m06.supportedLanguages) && m06.supportedLanguages.length < 50)
+  assert.ok(Array.isArray(m17.supportedLanguages) && m17.supportedLanguages.length < 50)
+  // 1.7B clears more languages than the 0.6B.
+  assert.ok(m17.supportedLanguages.length > m06.supportedLanguages.length)
+  // Monotonic: the larger model supports a superset of the smaller one.
+  for (const code of m06.supportedLanguages) {
+    assert.ok(m17.supportedLanguages.includes(code), `1.7B missing 0.6B lang ${code}`)
+  }
+  // Core languages a learner expects are supported on both.
+  for (const code of ["en", "es", "fr", "it", "ru", "ar"]) {
+    assert.ok(m06.supportedLanguages.includes(code), `0.6B missing ${code}`)
+    assert.ok(m17.supportedLanguages.includes(code), `1.7B missing ${code}`)
+  }
+  // The genuinely-hard set the small models garble is excluded.
+  for (const code of ["ta", "ne", "ko-polite", "hi", "ja"]) {
+    assert.ok(!m06.supportedLanguages.includes(code), `0.6B should not include ${code}`)
+    assert.ok(!m17.supportedLanguages.includes(code), `1.7B should not include ${code}`)
+  }
+})
+
 // Exactly one size is "recommended" on any device.
 function recommendedCount(stateById) {
   return Object.values(stateById).filter((s) => s === "recommended").length

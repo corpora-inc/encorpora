@@ -28,9 +28,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     freed when the app is backgrounded so the OS can't OOMKill the whole app
     under memory pressure, and reloaded on return (debounced; capable devices
     keep it resident for instant resume).
-  - **Per-size language gating** (mechanism): a smaller model only offers the
-    languages it teaches well; the rest are shown disabled ("needs a larger
-    model"). Activates once each size's evaluated language list is set.
+  - **Per-size language gating, now active.** A smaller model only offers the
+    languages it actually teaches well; the rest are shown disabled ("needs a
+    larger model"). The lists were judged by reading each model's real shipped
+    (temp-0.3) output — Qwen3-0.6B teaches 11 languages, Qwen3-1.7B teaches 24,
+    the 4B all 50. (The small models reliably do the major Romance/Germanic/
+    Slavic/CJK languages and dodge or garble most Indic, Japanese, Korean, etc.)
+
 - **Non-thinking output for the small (hybrid) models.** Qwen3 0.6B/1.7B are
   hybrid reasoning models; the tutor sends the canonical non-thinking prefill
   (`noThink`) and a streaming `thinkFilter` strips any `<think>…</think>` from
@@ -38,6 +42,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   lab lets you switch reasoning on to A/B it.
 
 ### Fixed
+- Re-localized the daily-cap quota strings (`quotaEmpty`, `quotaEmptyNote`,
+  `quotaPlus`, `quotaPlusActivated`) across all 46 locales — they had drifted to
+  stale English after the warmer rewrite; brand ("Corpán Plus") preserved.
 - **Daily-cap composer no longer reads as an error.** Hitting the free tutor
   cap previously turned the composer red (red field border + red "0 free
   messages" placeholder, which truncated to "…user for"). The capped composer is
