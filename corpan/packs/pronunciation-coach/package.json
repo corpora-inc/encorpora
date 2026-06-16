@@ -6,6 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
+    "test": "node --test --experimental-strip-types tests/*.test.mjs",
     "dev:corpan": "node scripts/dev-corpan.mjs"
   },
   "devDependencies": {

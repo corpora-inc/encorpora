@@ -45,6 +45,8 @@ export type I18nKey =
   // ── Practice errors / empty states ──
   | "noLanguageSelected"
   | "chooseLanguageToStudy"
+  | "scoringUnavailableTitle"
+  | "scoringUnavailableSub"
   | "noPhrasesAvailable"
   | "errLoadPhrase"
   | "errStartRecording"
@@ -151,6 +153,8 @@ const en: Dict = {
   hintMoveCloser: "Move the device closer or speak louder.",
   noLanguageSelected: "No language selected",
   chooseLanguageToStudy: "Open Corpán settings and choose a language to practise.",
+  scoringUnavailableTitle: "Not available for this language yet",
+  scoringUnavailableSub: "Pronunciation scoring doesn't cover this language. Add another in Corpán settings to practise.",
   noPhrasesAvailable: "No phrases available — check your stack config.",
   errLoadPhrase: "Could not load a phrase: {error}",
   errStartRecording: "Could not start recording: {error}",
