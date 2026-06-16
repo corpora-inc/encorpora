@@ -209,7 +209,7 @@ const DEFAULT_CATALOG: CatalogGame[] = [
   {
     id: "beatlounge",
     name: "beatlounge",
-    version: "0.2.0",
+    version: "0.2.1",
     minAppVersion: "0.18.0",
     manifestUrl: "https://encorpora.io/corpan/packs/beatlounge.zip",
     description:
@@ -262,7 +262,7 @@ const DEV_CATALOG: CatalogGame[] = [
   {
     id: "beatlounge",
     name: "beatlounge",
-    version: "0.2.0",
+    version: "0.2.1",
     minAppVersion: "0.18.0",
     manifestUrl: "/packs/beatlounge/manifest.json",
     description:

@@ -12,14 +12,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [0.1.4] - 2026-06-16 — Fix: pack never registered (blank/failed load)
 
 ### Fixed
-- **Pack now registers.** The store imported `create` from the root `zustand`
-  entry, which pulls in `react`. The pack declares no React, so the IIFE build
-  emitted a bundle that *threw* `Could not resolve "react" imported by
-  "zustand"` at module-init — before `registerGame()` ran — so the host's
-  `waitForGameModule` timed out with "Content pack did not register:
+- **Pack now registers in production.** The store imported `create` from the
+  root `zustand` entry, which pulls in `react`. This pack declares no React, so
+  the IIFE build emitted a bundle that *threw* `Could not resolve "react"
+  imported by "zustand"` at module-init — before `registerGame()` ran — so the
+  host's `waitForGameModule` timed out with "Content pack did not register:
   juice_squeeze". Switched to `zustand/vanilla`'s `createStore` (the pack is a
-  vanilla DOM game; all call sites use `.getState()`/`.subscribe()`). Bundle now
-  contains the registry and no resolve-throw.
+  vanilla DOM game; all call sites use `.getState()`/`.subscribe()`). Rebuilt
+  bundle contains the registry and no resolve-throw.
 - **Daily cap now HARD-enforces.** The gate counted completed phrases but never
   blocked at the cap. Loading a new phrase to solve now checks `isBlocked()`
   first: at the cap it re-shows the daily-lock overlay (`requestDailyLock()`)
