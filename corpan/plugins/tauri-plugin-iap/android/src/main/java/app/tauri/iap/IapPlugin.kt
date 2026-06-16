@@ -203,9 +203,19 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && productDetailsResult.productDetailsList.isNotEmpty()) {
                 val productDetails = productDetailsResult.productDetailsList[0]
 
-                // Get offer token from args or from first available subscription offer
-                val offerToken = args.offerToken ?: 
-                    productDetails.subscriptionOfferDetails?.firstOrNull()?.offerToken
+                // Pick the offer. An explicit token (affiliate/code path) wins.
+                // Otherwise PREFER the offer that grants a FREE TRIAL — one whose
+                // pricing has a zero-price phase — so a trial-eligible user reliably
+                // gets the 7-day trial instead of whichever offer is first (which
+                // may be the bare base plan). queryProductDetails only returns offers
+                // the user is ELIGIBLE for, so selecting a present trial offer is
+                // safe. Falls back to the first available offer when there's no trial.
+                val offers = productDetails.subscriptionOfferDetails
+                val offerToken = args.offerToken
+                    ?: offers?.firstOrNull { offer ->
+                        offer.pricingPhases.pricingPhaseList.any { it.priceAmountMicros == 0L }
+                    }?.offerToken
+                    ?: offers?.firstOrNull()?.offerToken
                 
                 val productDetailsParamsBuilder = BillingFlowParams.ProductDetailsParams.newBuilder()
                     .setProductDetails(productDetails)

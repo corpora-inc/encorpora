@@ -10,6 +10,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Android free-trial offer selection.** With no explicit `offerToken` (the plain
+  "Start Free Trial", no affiliate code), the purchase now PREFERS the subscription
+  offer whose pricing has a zero-price phase (the free trial) instead of
+  `subscriptionOfferDetails.firstOrNull()` — which could land on the bare base plan
+  and silently deny a trial-eligible user their 7 days. `queryProductDetails` only
+  returns eligible offers, so a present trial offer is safe; falls back to the first
+  offer when there's no trial.
+
 ### Added
 - **`request_review` command — OS-native in-app review prompt.** Routes
   through the same plugin seam as the rest of the store integration. iOS calls
