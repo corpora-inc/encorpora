@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest"
 import { collectTriggers, occurrencesInWindow, trackLength } from "./scheduler"
-import { createDefaultDoc, DRUM_PITCH, type InstrumentTrack } from "../model/document"
+import { DRUM_PITCH, type InstrumentTrack } from "../model/document"
 import { reduce } from "../model/reduce"
 import { PPQ } from "../model/timing"
+import { stockLoopDoc } from "../testing/stockLoop"
 
 describe("occurrencesInWindow", () => {
   it("finds the in-window occurrence of a once-per-loop event", () => {
@@ -23,8 +24,8 @@ describe("occurrencesInWindow", () => {
 })
 
 describe("collectTriggers — the pure scheduling core", () => {
-  it("schedules the default loop's kicks on the beats", () => {
-    const doc = createDefaultDoc(0)
+  it("schedules the stock loop's kicks on the beats", () => {
+    const doc = stockLoopDoc()
     const bar = PPQ * 4
     const planned = collectTriggers(doc, 0, bar)
     const kicks = planned
@@ -35,14 +36,14 @@ describe("collectTriggers — the pure scheduling core", () => {
   })
 
   it("is sorted by scheduled tick", () => {
-    const doc = createDefaultDoc(0)
+    const doc = stockLoopDoc()
     const planned = collectTriggers(doc, 0, PPQ * 4)
     const ticks = planned.map((p) => p.scheduledTick)
     expect(ticks).toEqual([...ticks].sort((a, b) => a - b))
   })
 
   it("repeats the loop across multiple bars", () => {
-    const doc = createDefaultDoc(0)
+    const doc = stockLoopDoc()
     const bar = PPQ * 4
     const oneBar = collectTriggers(doc, 0, bar).length
     const twoBars = collectTriggers(doc, 0, bar * 2).length
@@ -50,7 +51,7 @@ describe("collectTriggers — the pure scheduling core", () => {
   })
 
   it("applies swing as a positive offset to off-cells only", () => {
-    const doc = reduce(createDefaultDoc(0), { t: "setSwing", amount: 0.5, grid: { denominator: 8 } })
+    const doc = reduce(stockLoopDoc(), { t: "setSwing", amount: 0.5, grid: { denominator: 8 } })
     const planned = collectTriggers(doc, 0, PPQ * 4)
     // The hat on the off-eighth (tick 480) should be pushed later than 480.
     const offHat = planned.find((p) => p.baseTick === 480 && p.note.pitch === DRUM_PITCH.hat)
@@ -62,7 +63,7 @@ describe("collectTriggers — the pure scheduling core", () => {
   })
 
   it("respects per-track length for polymeter", () => {
-    let doc = createDefaultDoc(0)
+    let doc = stockLoopDoc()
     // Give the synth track a 3-beat loop against the 4-beat song loop.
     const synth = doc.tracks[1] as InstrumentTrack
     doc = reduce(doc, { t: "setTrackProp", trackId: synth.id, prop: "lengthTicks", value: PPQ * 3 })
@@ -75,8 +76,9 @@ describe("collectTriggers — the pure scheduling core", () => {
   })
 
   it("velocity and duration ride along", () => {
-    const doc = createDefaultDoc(0)
+    const doc = stockLoopDoc()
     const planned = collectTriggers(doc, 0, PPQ * 4)
+    expect(planned.length).toBeGreaterThan(0)
     expect(planned.every((p) => p.note.velocity > 0 && p.note.durationSec > 0)).toBe(true)
   })
 })

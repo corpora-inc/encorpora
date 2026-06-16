@@ -83,8 +83,17 @@ describe("reduce — notes", () => {
   it("editNote re-sorts when tick changes", () => {
     const a = doc0()
     const t = drumTrack(a)
-    const first = t.notes[0]
-    const b = reduce(a, {
+    // The default doc ships an empty grid, so seed a couple of notes first.
+    const seeded = reduce(a, {
+      t: "setNotes",
+      trackId: t.id,
+      notes: [
+        { tick: 0, duration: 120, pitch: DRUM_PITCH.kick, velocity: 0.9 },
+        { tick: 480, duration: 120, pitch: DRUM_PITCH.snare, velocity: 0.9 },
+      ],
+    })
+    const first = (seeded.tracks[0] as InstrumentTrack).notes[0]
+    const b = reduce(seeded, {
       t: "editNote",
       trackId: t.id,
       noteId: first.id,
@@ -231,18 +240,18 @@ describe("reduce — modulators (autonomous knob-tweakers)", () => {
 })
 
 describe("default doc", () => {
-  it("is musically alive and valid", () => {
+  it("ships an EMPTY, valid blank slate (no stock notes)", () => {
     const d = doc0()
     expect(d.schema).toBe(1)
     expect(d.tracks.length).toBeGreaterThanOrEqual(2)
     expect(d.tracks.every((t) => t.id)).toBe(true)
     const drums = d.tracks.find((t) => t.name === "Drums") as InstrumentTrack
     expect(isInstrumentTrack(drums)).toBe(true)
-    // four kicks
-    expect(drums.notes.filter((n) => n.pitch === DRUM_PITCH.kick).length).toBe(4)
-    // notes are tick-sorted
-    const ticks = drums.notes.map((n) => n.tick)
-    expect(ticks).toEqual([...ticks].sort((x, y) => x - y))
+    // The default boot is a calm blank slate: every instrument track is empty,
+    // so pressing play does nothing until the user adds content.
+    for (const t of d.tracks) {
+      if (isInstrumentTrack(t)) expect(t.notes.length).toBe(0)
+    }
   })
 
   it("ships a singular, kind-named phrase track (the mixer's Phrases strip)", () => {

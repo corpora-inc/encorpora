@@ -15,6 +15,7 @@ import {
 } from "./tools"
 import { reduce } from "../model/reduce"
 import { createDefaultDoc, DRUM_PITCH, isInstrumentTrack } from "../model/document"
+import { withStockDrums, withStockRiff } from "../testing/stockLoop"
 import type { BeatloungeDoc, InstrumentTrack } from "../model/document"
 import type { Command } from "../model/command"
 import { toPc } from "../music/harmony"
@@ -82,7 +83,7 @@ describe("density", () => {
     expect(after).toBeGreaterThan(before)
   })
   it("removes hits on 'less'", () => {
-    const doc = createDefaultDoc(0)
+    const doc = withStockDrums(createDefaultDoc(0))
     const before = drumTrack(doc).notes.filter((n) => n.pitch === DRUM_PITCH.hat).length
     const r = TOOL_BY_NAME.density.build({ dir: "less", drum: "hat", amount: 2 }, doc, seededRng(7))
     const next = apply(doc, r.commands)
@@ -129,7 +130,7 @@ describe("euclid", () => {
 
 describe("humanize", () => {
   it("applies micro + velocity edits to every note", () => {
-    const doc = createDefaultDoc(0)
+    const doc = withStockRiff(createDefaultDoc(0))
     const synth = doc.tracks.find((t) => isInstrumentTrack(t) && t.instrument.kind === "synth")!
     const r = TOOL_BY_NAME.humanize.build({ amount: 0.6, trackId: synth.id }, doc, seededRng(9))
     const next = apply(doc, r.commands)

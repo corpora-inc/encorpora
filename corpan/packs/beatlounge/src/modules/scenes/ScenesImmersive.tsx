@@ -16,6 +16,7 @@ import type { Scene } from "../../store/scenesStore"
 import type { ScenesController } from "./scenesController"
 import { useScenes } from "./scenesController"
 import { SceneNameEdit } from "./SceneNameEdit"
+import { DEMO_SONGS } from "./demos"
 import { ct } from "../../i18n/strings"
 
 interface Props {
@@ -55,8 +56,54 @@ export const ScenesImmersive = ({ ctrl, host }: Props) => {
     toast(ct("scenes.deletedToast", { name: scene.name }))
   }
 
+  const onClear = () => {
+    ctrl.clear()
+    toast(ct("scenes.clearedToast"))
+  }
+
+  const onRandomize = () => {
+    ctrl.randomize()
+    toast(ct("scenes.randomizedToast"))
+  }
+
+  const onLoadDemo = (id: string, name: string) => {
+    if (ctrl.loadDemo(id)) toast(ct("scenes.demoToast", { name }))
+  }
+
   return (
     <div className="bl-scenes">
+      {/* Start fresh: drastic change after you've saved. Clear → blank slate;
+          Randomize → empty grid w/ random world; Demos → a shipped starter. */}
+      <div className="bl-fresh">
+        <span className="bl-fresh-title">{ct("scenes.freshTitle")}</span>
+        <div className="bl-fresh-actions">
+          <button type="button" className="bl-chip bl-fresh-btn" onClick={onClear}>
+            <Glyph name="trash" size={14} />
+            <span>{ct("scenes.clear")}</span>
+          </button>
+          <button type="button" className="bl-chip bl-fresh-btn" onClick={onRandomize}>
+            <Glyph name="dice" size={14} />
+            <span>{ct("scenes.randomize")}</span>
+          </button>
+        </div>
+        {DEMO_SONGS.length > 0 && (
+          <div className="bl-fresh-demos" role="list" aria-label={ct("scenes.demos")}>
+            {DEMO_SONGS.map((d) => (
+              <button
+                key={d.id}
+                type="button"
+                role="listitem"
+                className="bl-chip bl-fresh-demo"
+                title={d.blurb}
+                onClick={() => onLoadDemo(d.id, d.name)}
+              >
+                {d.name}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
       <div className="bl-scenes-bar">
         <button type="button" className="bl-scenes-save" onClick={onSave}>
           <span className="bl-scenes-save-glyph" aria-hidden="true">

@@ -5,6 +5,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Start fresh — Clear, Randomize, and Demos.** The Scenes drawer gains a
+  "Start fresh" block for drastic change after you've saved. **Clear** wipes the
+  song to an empty blank slate (default key, kit and tempo, no notes). **Randomize**
+  sets up a whole new world — three synth voices (a bass, a mid, a lead, each
+  random within its class), a random drum kit, a random key/scale/progression,
+  and a time signature borrowed from a random world groove (odd meters like 13/8
+  included) — but leaves the grid empty, so pressing play is silence until you
+  start writing. **Demos** drops a shipped starter song onto the grid: 21
+  public-domain pieces spanning classical, folk, blues/early-jazz/spirituals, and
+  world/Latin (Ode to Joy, Greensleeves, a 12-bar blues, Hava Nagila, and more).
+  All three are one undoable step and reachable by voice via the command bar
+  (`clearSong` / `randomizeSong` / `loadDemo`). Every new string is localized
+  into all 50 shipped languages (with placeholders + RTL preserved).
+
+### Changed
+- **The default song is now an empty blank slate** instead of the old rising
+  C–E–G–C riff over a four-on-the-floor beat. A fresh open is a calm, silent
+  canvas — add your own content, randomize a world, or load a demo.
+
 ## [0.2.0] - 2026-06-13
 
 _GA + the calling card: beatlounge goes stable and the entire interface ships in

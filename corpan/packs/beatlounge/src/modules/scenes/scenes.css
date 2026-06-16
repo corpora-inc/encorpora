@@ -51,6 +51,47 @@
   padding: var(--bl-s4);
 }
 
+/* ---------------------------------------------------------- start fresh
+   Drastic-change block: Clear / Randomize + a horizontally-scrolling row of
+   demo chips. Squared-off, compact; the demos row is a SINGLE fixed-height
+   scroller (flex:0 0 auto chips) so it never accumulates rows on a phone. */
+.bl-fresh {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+.bl-fresh-title {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-fresh-actions {
+  display: flex;
+  gap: var(--bl-s2);
+}
+.bl-fresh-btn {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s2);
+}
+.bl-fresh-demos {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--bl-s2);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px; /* room for the scrollbar without clipping focus rings */
+  scrollbar-width: thin;
+}
+.bl-fresh-demo {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
 /* ---------------------------------------------------------- save bar */
 .bl-scenes-bar {
   display: flex;

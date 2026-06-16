@@ -19,9 +19,10 @@ import {
 } from "./pitchModel"
 import { reduce } from "../../model/reduce"
 import { activePitches } from "../../music/resolver"
+import { withStockRiff } from "../../testing/stockLoop"
 
 const synthTrack = (): { doc: BeatloungeDoc; track: InstrumentTrack } => {
-  const doc = createDefaultDoc(0)
+  const doc = withStockRiff(createDefaultDoc(0))
   const track = doc.tracks.find(
     (t) => isInstrumentTrack(t) && t.instrument.kind !== "drumSampler"
   )
@@ -83,10 +84,10 @@ describe("buildRollView — pitch↔row/step mapping", () => {
     expect(view.steps).toBe(stepsInLoop(doc.loopLengthTicks, track.grid))
   })
 
-  it("lights the cell where a note sits (default riff C-E-G-C)", () => {
+  it("lights the cell where a note sits (seeded riff C-E-G-C)", () => {
     const { doc, track } = synthTrack()
     const view = buildRollView(doc, track, { low: 60, span: ROW_SPAN })
-    // The default synth riff starts on C4 (60) at step 0.
+    // The seeded synth riff starts on C4 (60) at step 0.
     const rowC4 = view.rows.findIndex((r) => r.pitch === 60)
     expect(rowC4).toBeGreaterThanOrEqual(0)
     expect(view.cells[rowC4][0].on).toBe(true)
@@ -115,7 +116,7 @@ describe("autoWindow — frames the existing melody", () => {
     const view = buildRollView(doc, track, { low })
     for (const n of track.notes) {
       const inWindow = n.pitch >= low && n.pitch < low + ROW_SPAN
-      // The default riff spans C4..C5 which fits a 2-octave window.
+      // The seeded riff spans C4..C5 which fits a 2-octave window.
       if (inWindow) {
         const rowIdx = view.rows.findIndex((r) => r.pitch === n.pitch)
         const step = Math.round(n.tick / tickForStep(1, track.grid))

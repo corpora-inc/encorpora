@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest"
 import { createCommandBus } from "./commandBus"
 import { createDefaultDoc, type InstrumentTrack } from "./document"
+import { withStockDrums } from "../testing/stockLoop"
 
 const bus = () => createCommandBus(createDefaultDoc(0))
 
@@ -92,7 +93,7 @@ describe("commandBus — subscribe + load", () => {
   })
 
   it("bumps updatedAt on change", () => {
-    const b = bus()
+    const b = createCommandBus(withStockDrums(createDefaultDoc(0)))
     const out = b.dispatch({ t: "renameSong", name: "x" })
     expect(out.name).toBe("x")
     const drums = out.tracks[0] as InstrumentTrack

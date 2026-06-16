@@ -457,7 +457,7 @@ export const analogSynthPreset = (): Extract<InstrumentConfig, { kind: "analogSy
   },
 })
 
-const newInstrumentTrack = (
+export const newInstrumentTrack = (
   name: string,
   instrument: InstrumentTrack["instrument"],
   notes: NoteEvent[] = [],
@@ -506,58 +506,35 @@ export const newFragmentTrack = (patch: Partial<TrackBase> = {}): FragmentTrack 
   fragments: [],
 })
 
-const drumNote = (tick: Tick, pitch: Midi, velocity = 0.9): NoteEvent => ({
-  id: newId("n"),
-  tick,
-  duration: PPQ / 8,
-  pitch,
-  velocity,
-})
-
 /** General-MIDI-ish drum pad pitches we use as a convention. */
 export const DRUM_PITCH = { kick: 36, snare: 38, hat: 42, clap: 39 } as const
 
 /**
- * A fresh, musically-alive default: four-on-the-floor kick, backbeat snare,
- * eighth hats, on a single drum-sampler track (synth-kit fallback), plus a
- * polysynth track with a short C–E–G–C riff. Loop = one 4/4 bar.
+ * A fresh, EMPTY default: the canonical track layout (one Drums track, one
+ * Synth track, one Phrases track) with NO notes on the grid. Pressing play does
+ * nothing until you add content — by design, so "new" is a calm blank slate
+ * rather than a stock loop. The "Start fresh" affordances build on this:
+ *   - Clear     → this exact empty default (fixed C-Ionian, studio kit),
+ *   - Randomize → empty grid but randomized instruments / kit / harmony / meter,
+ *   - Demos     → a shipped starter song dropped onto the grid.
+ * (We deliberately dropped the old four-on-the-floor + rising C–E–G–C default.)
+ * Loop = one 4/4 bar so the empty grid still has sensible dimensions.
  */
 export const createDefaultDoc = (now: number): BeatloungeDoc => {
   const bar = PPQ * 4
-  const q = PPQ // quarter
-  const e = PPQ / 2 // eighth
-  const s16 = PPQ / 4 // sixteenth
-
-  const drumNotes: NoteEvent[] = []
-  // kick: beats 1..4
-  for (let i = 0; i < 4; i++) drumNotes.push(drumNote(i * q, DRUM_PITCH.kick))
-  // snare: beats 2 & 4
-  drumNotes.push(drumNote(1 * q, DRUM_PITCH.snare, 0.85))
-  drumNotes.push(drumNote(3 * q, DRUM_PITCH.snare, 0.85))
-  // hats: every eighth
-  for (let t = 0; t < bar; t += e) drumNotes.push(drumNote(t, DRUM_PITCH.hat, 0.5))
-  drumNotes.sort((a, b) => a.tick - b.tick)
 
   const drumTrack = newInstrumentTrack(
     "Drums",
     { kind: "drumSampler", pads: [], fallback: "synthKit" },
-    drumNotes,
+    [],
     { color: "#39e0ff", grid: sixteenth }
   )
 
-  const lead: NoteEvent[] = [
-    { id: newId("n"), tick: 0, duration: q, pitch: 60, velocity: 0.7 },
-    { id: newId("n"), tick: q, duration: q, pitch: 64, velocity: 0.7 },
-    { id: newId("n"), tick: 2 * q, duration: q, pitch: 67, velocity: 0.7 },
-    { id: newId("n"), tick: 3 * q, duration: q, pitch: 72, velocity: 0.7 },
-  ]
-  const synthTrack = newInstrumentTrack("Synth", synthPreset("triangle"), lead, {
+  const synthTrack = newInstrumentTrack("Synth", synthPreset("triangle"), [], {
     color: "#c66bff",
     volume: 0.7,
     grid: { denominator: 8 },
   })
-  // suppress unused-var lint for s16 in environments that tree-shake aggressively
-  void s16
 
   return {
     schema: SCHEMA,

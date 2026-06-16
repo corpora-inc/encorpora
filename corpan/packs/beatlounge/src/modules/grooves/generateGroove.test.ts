@@ -13,6 +13,7 @@ import { kitPitches } from "../../rhythm"
 import { buildGrooveCommands, findDrumTrackId } from "./grooveModel"
 import { generateAction } from "./actions"
 import { reduce } from "../../model/reduce"
+import { withStockDrums } from "../../testing/stockLoop"
 
 const rngFrom = (seed: number): (() => number) => {
   let a = seed >>> 0
@@ -98,7 +99,7 @@ describe("generate path (the +/− dial)", () => {
 
   it("generate is ADDITIVE — never clears; level 0 adds nothing but keeps existing", () => {
     const r = getRhythm("son-clave-3-2")!
-    const d = doc() // default doc has kick/snare/hat notes
+    const d = withStockDrums(doc()) // stock doc has kick/snare/hat notes
     const before = drumNotes(d).length
     expect(before).toBeGreaterThan(0)
     // "+" strictly adds — it must NEVER remove existing hits (clearing/sparsing is
@@ -118,11 +119,11 @@ describe("generate path (the +/− dial)", () => {
 
   it("with a selection, regenerates ONLY those rows and keeps the rest", () => {
     const r = getRhythm("son-clave-3-2")!
-    const d = doc()
+    const d = withStockDrums(doc())
     const before = drumNotes(d)
     const hatPitch = 42
     const hatsBefore = before.filter((n) => n.pitch === hatPitch).length
-    expect(hatsBefore).toBeGreaterThan(0) // default doc has hats
+    expect(hatsBefore).toBeGreaterThan(0) // stock doc has hats
     const { commands } = buildGrooveCommands(d, r, {
       op: "generate",
       level: 4,
