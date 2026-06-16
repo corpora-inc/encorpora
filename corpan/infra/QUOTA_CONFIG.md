@@ -11,7 +11,7 @@ fetches it at launch and merges any override OVER the baked defaults in
 |---|---|
 | **Seed (this repo)** | `corpan/infra/quota-config.json` |
 | **CDN URL the app fetches** | `https://d38iwc9748jekz.cloudfront.net/quota-config.json` |
-| **S3 object** | `s3://corpan-prod/quota-config.json` (bucket root — same place as `app-version.json`) |
+| **S3 object** | `s3://corpan-prod/artifacts/quota-config.json` (the CloudFront OriginPath is `/artifacts`, so the CDN root maps there — same place as `catalog-v2.json`) |
 | **Client** | `corpan-app/src/util/remoteQuotaConfig.ts` (fetch + validate + cache) |
 | **Read seam** | `getQuota(surface)` in `packs/shared/monetization/src/quotas.ts` |
 
@@ -27,7 +27,7 @@ bucket is referenced by name, not managed in `terraform/`).
 2. Upload it to the bucket root:
    ```bash
    aws s3 cp corpan/infra/quota-config.json \
-     s3://corpan-prod/quota-config.json \
+     s3://corpan-prod/artifacts/quota-config.json \
      --content-type application/json --region us-east-2
    ```
 3. Invalidate the CDN path so devices see it promptly:
