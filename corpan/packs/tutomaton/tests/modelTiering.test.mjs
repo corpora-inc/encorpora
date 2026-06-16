@@ -43,19 +43,24 @@ test("supportedLanguages: small sizes gated, 4B inherits all, en always supporte
   // Small sizes carry an evaluated subset (fewer than the 4B's 50).
   assert.ok(Array.isArray(m06.supportedLanguages) && m06.supportedLanguages.length < 50)
   assert.ok(Array.isArray(m17.supportedLanguages) && m17.supportedLanguages.length < 50)
-  // 1.7B clears more languages than the 0.6B.
+  // 1.7B clears more languages than the 0.6B (≈34 vs ≈12).
   assert.ok(m17.supportedLanguages.length > m06.supportedLanguages.length)
   // Monotonic: the larger model supports a superset of the smaller one.
   for (const code of m06.supportedLanguages) {
     assert.ok(m17.supportedLanguages.includes(code), `1.7B missing 0.6B lang ${code}`)
   }
-  // Core languages a learner expects are supported on both.
-  for (const code of ["en", "es", "fr", "it", "ru", "ar"]) {
+  // Languages both small models reliably produce.
+  for (const code of ["en", "es", "fr", "ru", "pt-BR", "zh-Hans"]) {
     assert.ok(m06.supportedLanguages.includes(code), `0.6B missing ${code}`)
     assert.ok(m17.supportedLanguages.includes(code), `1.7B missing ${code}`)
   }
-  // The genuinely-hard set the small models garble is excluded.
-  for (const code of ["ta", "ne", "ko-polite", "hi", "ja"]) {
+  // The 1.7B clears much of what the 0.6B can't (e.g. Arabic, German, Japanese).
+  for (const code of ["ar", "de", "ja", "pl"]) {
+    assert.ok(!m06.supportedLanguages.includes(code), `0.6B should not include ${code}`)
+    assert.ok(m17.supportedLanguages.includes(code), `1.7B should include ${code}`)
+  }
+  // The genuinely-hard set both small models garble is excluded from both.
+  for (const code of ["ta", "ne", "ko-polite", "hi"]) {
     assert.ok(!m06.supportedLanguages.includes(code), `0.6B should not include ${code}`)
     assert.ok(!m17.supportedLanguages.includes(code), `1.7B should not include ${code}`)
   }

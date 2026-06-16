@@ -79,13 +79,14 @@ export const MODELS: readonly ModelSpec[] = [
     sizeMb: 378,
     footprintMb: 900,
     published: true,
-    // Judged by Claude subagents reading the 0.6B's actual shipped (temp-0.3)
-    // tutor replies (infra/tutomaton-eval, 2026-06-16): KEEP only where it is
-    // consistently fluent + correct + in the right script. The tiny model often
-    // dodges into English or garbles, so the list is small — but every major
-    // language a learner expects is here.
+    // Judged by reading the 0.6B's actual shipped (temp-0.3) tutor replies
+    // (infra/tutomaton-eval, 2026-06-16), one consistent bar: KEEP only where it
+    // reliably produces fluent, in-script target language. The tiny model dodges
+    // into English or garbles most languages, so the list is small (12) — but
+    // the ones it does (major Romance/Germanic/Chinese/Thai/Indonesian) are solid.
     supportedLanguages: [
-      "ar", "en", "es", "fr", "it", "nl", "pt-PT", "ru", "th", "zh-Hans", "zh-Hant",
+      "en", "es", "fr", "id", "nl", "pt-BR", "pt-PT", "ru", "th",
+      "yue-Hant-HK", "zh-Hans", "zh-Hant",
     ],
   },
   {
@@ -98,15 +99,18 @@ export const MODELS: readonly ModelSpec[] = [
     sizeMb: 1056,
     footprintMb: 1600,
     published: true,
-    // Judged by Claude subagents on the 1.7B's actual shipped replies
-    // (infra/tutomaton-eval, 2026-06-16), same KEEP bar as the 0.6B + the prior
-    // that the larger model is a superset of the smaller. It clears far more of
-    // the hard set (Cantonese, Chinese, Malay, Indonesian, Slavic) but still
-    // can't reliably teach most Indic, Japanese, Korean, Hebrew, Farsi, Turkish.
+    // Judged by reading the 1.7B's actual shipped replies (same bar as the 0.6B).
+    // It teaches 34 well — all the European (Romance/Germanic/Slavic incl. Polish,
+    // Swedish, Czech, Catalan, Serbian, Ukrainian), plus Arabic, Hebrew, Farsi,
+    // Japanese, Turkish, Thai, Vietnamese, Malay, Indonesian, Chinese/Cantonese.
+    // It still loops/garbles/English-dodges the harder Indic (Tamil, Hindi,
+    // Gujarati, Kannada, Marathi, Nepali, Punjabi, Bengali), Korean, Greek,
+    // Bulgarian, Finnish, Slovak, Tagalog, Urdu.
     supportedLanguages: [
-      "ar", "da", "de", "en", "es", "fr", "hr", "hu", "id", "it", "ms", "nl",
-      "no", "pt-BR", "pt-PT", "ro", "ru", "sr", "th", "vi", "yue-Hant-HK", "zh",
-      "zh-Hans", "zh-Hant",
+      "ar", "ca", "cs", "da", "de", "en", "es", "fa", "fr", "he", "hr", "hu",
+      "id", "it", "ja", "ms", "nl", "no", "pl", "pt-BR", "pt-PT", "ro", "ru",
+      "sl", "sr", "sv", "th", "tr", "uk", "vi", "yue-Hant-HK", "zh", "zh-Hans",
+      "zh-Hant",
     ],
   },
   {

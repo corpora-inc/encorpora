@@ -30,10 +30,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     keep it resident for instant resume).
   - **Per-size language gating, now active.** A smaller model only offers the
     languages it actually teaches well; the rest are shown disabled ("needs a
-    larger model"). The lists were judged by reading each model's real shipped
-    (temp-0.3) output — Qwen3-0.6B teaches 11 languages, Qwen3-1.7B teaches 24,
-    the 4B all 50. (The small models reliably do the major Romance/Germanic/
-    Slavic/CJK languages and dodge or garble most Indic, Japanese, Korean, etc.)
+    larger model"). The lists were set by reading each model's real shipped
+    (temp-0.3) output with one consistent bar — **Qwen3-0.6B teaches 12**
+    (major Romance/Germanic + Chinese/Cantonese/Thai/Indonesian), **Qwen3-1.7B
+    teaches 34** (adds all the European Slavic/Nordic + Arabic/Hebrew/Farsi/
+    Japanese/Turkish/Vietnamese/Malay), and the **4B all 50**. The small models
+    loop/garble/English-dodge the harder Indic (Tamil, Hindi, Gujarati, Kannada,
+    Marathi, Nepali, Punjabi, Bengali), Korean, and a few others.
 
 - **Concise-by-default replies, in the target language.** A tiny brevity
   directive is appended to every tutor's (localized) system prompt so it doesn't
