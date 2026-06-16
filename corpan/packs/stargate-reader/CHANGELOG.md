@@ -10,7 +10,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-## [0.6.8] - 2026-06-09
+## [0.7.0] - 2026-06-16 — First-run seed: instant book in your stack languages
+
+### Added
+- **First-run "instant wow" seed.** When a brand-new user lands here from
+  onboarding (the host passes a `seedBookId` on launch) and has nothing
+  installed, the reader auto-downloads the FREE preview narrations of that book
+  (the Biomes "Tropical Rainforest") for every language in the user's stack —
+  the **primary (languages[0]) FIRST** so it opens ready to play, then the rest
+  in the **background** (the language switcher refreshes as each lands). Preview
+  ZIPs are public, so this works for non-subscribers. Falls back to the normal
+  browse onboarding if the seed book/narrations aren't available. (Implemented in
+  the shared reader shell, `@shared/catalog` `appShell` `seedFirstBook`.)
 ### Added
 - Catalog browse now has **compact and expanded views** with a clean
   toggle. Compact (the new default) is a dense, scannable list — small

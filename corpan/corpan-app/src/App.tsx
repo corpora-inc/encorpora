@@ -41,6 +41,7 @@ import { useTranslation } from "react-i18next";
 import { PackLaunchTransition, type RazzleCard } from "@/components/PackLaunchTransition";
 import { buildRazzleRoster, resolveRazzleCard } from "@/components/razzleRoster";
 import { PHRASE_PACK_ID } from "@/onboarding/bestFit";
+import { isReaderPack, DEFAULT_READER_SEED_BOOK } from "@/onboarding/resolveLanding";
 
 const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
 
@@ -157,8 +158,10 @@ export default function App() {
   const [activeGame, setActiveGame] = useState<{
     id: string;
     manifestUrl?: string;
-    /** Addressability groundwork: deep-link a pack to a specific entry/route. */
-    entry?: { entryId?: number; source?: string; route?: string };
+    /** Addressability groundwork: deep-link a pack to a specific entry/route.
+     *  `seedBookId` asks a freshly-launched reader to auto-download a default
+     *  book's preview narrations for the user's stack (the first-run "wow"). */
+    entry?: { entryId?: number; source?: string; route?: string; seedBookId?: string };
   } | null>(() => {
     if (typeof window === "undefined") return null;
     const params = new URLSearchParams(window.location.search);
@@ -488,9 +491,12 @@ export default function App() {
   );
 
   const handleLaunchGame = useCallback(
-    (game: InstalledGame) => {
+    (
+      game: InstalledGame,
+      entry?: { entryId?: number; source?: string; route?: string; seedBookId?: string },
+    ) => {
       setShowSettings(false);
-      setActiveGame({ id: game.id, manifestUrl: game.manifestUrl });
+      setActiveGame({ id: game.id, manifestUrl: game.manifestUrl, entry });
       updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });
       // Record the launch so Recents (in PacksListing) can sort by it.
       // Single chokepoint — every code path that opens a pack goes
@@ -635,8 +641,15 @@ export default function App() {
           return;
         }
         const g = useGamesStore.getState().getGame(packId);
-        if (g) handleLaunchGame(g);
-        else openPhrase(); // not ready in time → graceful fallback
+        if (g) {
+          // A brand-new reader user gets seeded into the default book — the
+          // reader auto-downloads its preview narrations for their stack and
+          // opens their primary language ready to play.
+          handleLaunchGame(
+            g,
+            isReaderPack(packId) ? { seedBookId: DEFAULT_READER_SEED_BOOK } : undefined,
+          );
+        } else openPhrase(); // not ready in time → graceful fallback
       };
       setRazzle({
         roster: buildRazzleRoster(deps),

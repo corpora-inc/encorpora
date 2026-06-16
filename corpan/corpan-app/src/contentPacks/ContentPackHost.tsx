@@ -14,7 +14,7 @@ type ContentPackHostProps = {
   id: string
   manifestUrl?: string
   /** Optional deep-link target passed into the pack's mount initialState. */
-  entry?: { entryId?: number; source?: string; route?: string }
+  entry?: { entryId?: number; source?: string; route?: string; seedBookId?: string }
 }
 
 // `ContentPackEntitlementSnapshot` now lives in ./types (shared with the typed
@@ -544,6 +544,9 @@ export default function ContentPackHost({
           entitlement: entitlementSnapshotRef.current,
           // Addressability groundwork: a deep-linked entry/route, when present.
           ...(entry ? { entryId: entry.entryId, source: entry.source, route: entry.route } : {}),
+          // First-run reader seed: auto-download a default book's preview
+          // narrations for the user's stack (the instant "wow").
+          ...(entry?.seedBookId ? { seedBookId: entry.seedBookId } : {}),
         })
 
         if (!cancelled) {
@@ -588,7 +591,7 @@ export default function ContentPackHost({
       cancelled = true
       cleanup()
     }
-  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route])
+  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route, entry?.seedBookId])
 
   return (
     <div className="relative h-full w-full bg-black text-white">

@@ -731,13 +731,71 @@ export function createAppShell(
     // Pick most recently installed
     switchToNarration(installed[0].narrationId)
   } else {
-    // Nothing installed — onboard to browse screen
+    // Nothing installed. A brand-new user who landed here from onboarding carries
+    // a `seedBookId` → auto-download the FREE preview narrations of that book for
+    // their stack and open their primary language ready to play (the instant
+    // "wow"). Otherwise fall back to the browse onboarding.
+    const seedBookId =
+      typeof opts.initialState?.seedBookId === "string"
+        ? (opts.initialState.seedBookId as string)
+        : null
+    if (seedBookId) {
+      void seedFirstBook(seedBookId)
+    } else {
+      showBrowseOnboarding()
+    }
+  }
+
+  function showBrowseOnboarding(): void {
     drawerStore.setState({ activeScreen: "browse" })
     drawer.open()
     void fetchCatalog(cdnUrl, { fallbackUrl: FALLBACK_CDN_URL }).then((catalog) => {
       allNarrations = catalog.narrations
       refreshBrowseSection()
     })
+  }
+
+  /**
+   * First-run "instant wow": a brand-new reader user, seeded from onboarding with
+   * a default book. Download the FREE preview narrations of that book for the
+   * user's stack languages — the PRIMARY (languages[0]) FIRST so we can open it
+   * ready to play immediately, then the rest of the stack in the BACKGROUND (the
+   * narration switcher refreshes as each lands, so the user can flip languages
+   * the moment each is ready). Free for everyone — preview ZIPs are public, no
+   * auth. Falls back to the normal browse onboarding if anything's unavailable.
+   */
+  async function seedFirstBook(bookId: string): Promise<void> {
+    const base = (t: string) => (t.split("-")[0] || t).toLowerCase()
+    try {
+      const stack = (stackHost.getStackConfig?.()?.languages ?? []).filter(Boolean)
+      const primary = stack[0]
+      if (!primary) return showBrowseOnboarding()
+      const catalog = await fetchCatalog(cdnUrl, { fallbackUrl: FALLBACK_CDN_URL })
+      allNarrations = catalog.narrations
+      // One free-preview narration per stack language for the seed book.
+      const byLang = new Map<string, CatalogNarrationEntry>()
+      for (const n of catalog.narrations) {
+        if (n.bookId !== bookId || !n.preview) continue
+        const b = base(n.language)
+        if (stack.some((l) => base(l) === b) && !byLang.has(b)) byLang.set(b, n)
+      }
+      const primaryEntry = byLang.get(base(primary))
+      if (!primaryEntry) return showBrowseOnboarding()
+      // Primary first → open it ready to play.
+      const res = await installNarration(primaryEntry)
+      if (!res.ok || !isInstalled(primaryEntry.id)) return showBrowseOnboarding()
+      switchToNarration(primaryEntry.id)
+      // Background: install the rest of the stack; refresh the switcher per land.
+      for (const [b, entry] of byLang) {
+        if (b === base(primary)) continue
+        void installNarration(entry)
+          .then((r) => { if (r.ok) refreshSwitchers() })
+          .catch(() => {})
+      }
+    } catch (err) {
+      console.warn("[appShell] seedFirstBook failed:", err)
+      showBrowseOnboarding()
+    }
   }
 
   // --- Reader management ---

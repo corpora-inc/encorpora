@@ -18,7 +18,7 @@ export function ContentPackOverlay({
 }: {
   id: string
   manifestUrl?: string
-  entry?: { entryId?: number; source?: string; route?: string }
+  entry?: { entryId?: number; source?: string; route?: string; seedBookId?: string }
 }) {
   useEffect(() => {
     const meta = document.querySelector<HTMLMetaElement>('meta[name="viewport"]')

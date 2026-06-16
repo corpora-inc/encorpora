@@ -22,6 +22,13 @@ Conventions: `corpan/CHANGELOGS.md`.
   isn't ready in time we land in Phrase Flip and it finishes in the background.
   New `tauri-plugin-haptics` (iOS `UIImpactFeedbackGenerator` / Android
   `Vibrator`; `navigator.vibrate` fallback) — needs a native rebuild to fire.
+- **Reader "instant wow" seed.** When the landing is a reader (Read → Earthgate),
+  the host passes a `seedBookId` on launch (through the existing pack
+  `entry`/`initialState` seam). A brand-new user with no books then gets the
+  default book (Biomes "Tropical Rainforest") auto-downloaded — free preview
+  narrations for their whole stack, primary language first (ready to play),
+  rest in the background — so they open into real content and can flip languages
+  instantly. (Reader side: `earthgate-reader`/`stargate-reader` 0.7.0.)
 
 ### Changed
 - **Hanzipan is a study experience, not a game.** Re-classified in the

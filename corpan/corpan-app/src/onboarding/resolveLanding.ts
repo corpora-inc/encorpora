@@ -23,6 +23,20 @@ import { PHRASE_PACK_ID } from "./bestFit"
 
 export type WhatToStart = "read" | "study" | "playMusic" | "playGames" | "surprise"
 
+/** Reader pack ids (share the reader app shell). */
+export const READER_PACK_IDS = ["earthgate_reader", "stargate_reader"]
+
+/** Default book a brand-new reader user is seeded into (the instant-wow): the
+ *  Tropical Rainforest from the Biomes series — preview narrations exist in 25+
+ *  languages, so a new user's whole stack can be auto-downloaded for free. The
+ *  reader installs the preview narrations on first launch (see appShell
+ *  `seedFirstBook`); the host passes this id as the launch `seedBookId`. */
+export const DEFAULT_READER_SEED_BOOK = "book_biomes_tropical_rainforest"
+
+export function isReaderPack(id: string): boolean {
+  return READER_PACK_IDS.includes(id)
+}
+
 /** Map the single-choice answer to an interest tag (seeds Home recs when the
  *  multi-select was skipped). "surprise" carries no interest signal. */
 export const WHAT_TO_START_INTEREST: Record<WhatToStart, string | null> = {
