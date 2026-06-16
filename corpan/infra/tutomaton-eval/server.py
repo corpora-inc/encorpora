@@ -19,9 +19,15 @@ import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
 
-MODEL = os.path.expanduser(
-    "~/Library/Application Support/com.corpora.corpan/corpan-packs/"
-    "llm-base-qwen3-4b-v1/model/base.gguf"
+# Default = the installed 4B base; override with TUTO_EVAL_MODEL=/path/to.gguf to
+# evaluate the smaller tiers (0.6B/1.7B). Pair with TUTO_EVAL_NOTHINK=1 for the
+# hybrid models so the eval matches their real non-thinking shipping config.
+MODEL = os.environ.get(
+    "TUTO_EVAL_MODEL",
+    os.path.expanduser(
+        "~/Library/Application Support/com.corpora.corpan/corpan-packs/"
+        "llm-base-qwen3-4b-v1/model/base.gguf"
+    ),
 )
 LLAMA_SERVER = "/opt/homebrew/bin/llama-server"
 HOST = "127.0.0.1"

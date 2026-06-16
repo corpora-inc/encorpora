@@ -20,11 +20,18 @@ LANG_DIR = os.path.join(PACK, "languages")
 
 
 def format_chatml(messages: list[dict]) -> str:
-    """messages: [{"role","content"}, ...]  (system already included by caller)."""
+    """messages: [{"role","content"}, ...]  (system already included by caller).
+
+    With TUTO_EVAL_NOTHINK=1 we seed the empty `<think></think>` prefill exactly
+    as the plugin does for hybrid models (state.rs format_chatml no_think), so the
+    eval scores the small Qwen3 tiers in their real non-thinking shipping config.
+    """
     s = ""
     for m in messages:
         s += "<|im_start|>" + m["role"] + "\n" + m["content"] + "<|im_end|>\n"
     s += "<|im_start|>assistant\n"
+    if os.environ.get("TUTO_EVAL_NOTHINK") == "1":
+        s += "<think>\n\n</think>\n\n"
     return s
 
 
