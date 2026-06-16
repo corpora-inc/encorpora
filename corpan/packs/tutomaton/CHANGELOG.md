@@ -52,6 +52,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   machine-generated like the rest; a native pass is welcome.)
 
 ### Fixed
+- **No more dead dictation mic on Android.** The in-app mic is hidden on Android,
+  where native dictation (`tauri-plugin-asr-native`) isn't device-validated yet
+  and silently fails (the plugin checks but never *requests* `RECORD_AUDIO`, and
+  on-device recognizers are OEM-dependent). Android users dictate via their
+  keyboard's own mic (the documented fallback, ~50 languages, zero RAM). iOS
+  keeps its working native path. Finishing + device-testing native Android
+  dictation (permission request + visible error UX) is a fast-follow.
 - Re-localized the daily-cap quota strings (`quotaEmpty`, `quotaEmptyNote`,
   `quotaPlus`, `quotaPlusActivated`) across all 46 locales — they had drifted to
   stale English after the warmer rewrite; brand ("Corpán Plus") preserved.

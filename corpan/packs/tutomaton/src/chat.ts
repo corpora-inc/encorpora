@@ -1810,7 +1810,14 @@ const PackModule: ContentPackModule = {
     /** Probe the active language; reveal the mic only where a provider exists. */
     function refreshDictation() {
       const lang = state.activeLanguage?.code
-      if (!lang || !hostApi.asr) {
+      // Native Android dictation (tauri-plugin-asr-native) isn't validated yet:
+      // it silently fails on devices (the plugin never *requests* RECORD_AUDIO,
+      // only checks it, and OEM on-device recognizers vary). Until that ships +
+      // is device-tested, don't surface a dead in-app mic on Android — the
+      // keyboard's own dictation mic still covers voice input. iOS keeps its
+      // working native path.
+      const isAndroid = typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent)
+      if (!lang || !hostApi.asr || isAndroid) {
         $mic.hidden = true
         return
       }
