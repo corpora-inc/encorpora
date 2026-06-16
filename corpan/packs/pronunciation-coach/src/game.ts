@@ -2006,6 +2006,19 @@ export const mountGame = (
   micBtn.addEventListener("pointerdown", beginMicHold)
   micBtn.addEventListener("pointerup", endMicHold)
   micBtn.addEventListener("pointercancel", endMicHold)
+  // At the daily cap the mic is calmly disabled ("Done for today") — a disabled
+  // button swallows its own pointer events, so a re-tap would do nothing. Listen
+  // on the wrap in the CAPTURE phase to re-pop the shared green-check lock (the
+  // ONE cap surface), matching the first cap-cross via note(). Subscribers never
+  // block, so this only ever fires for a capped free user.
+  const micWrap = micBtn.closest(".pc-mic-wrap")
+  micWrap?.addEventListener(
+    "pointerdown",
+    () => {
+      if (paywallGate.isBlocked()) paywallGate.requestDailyLock()
+    },
+    true,
+  )
 
   // Skip button removed from the header — swipe ←/→ already covers
   // skip-to-next, and removing the redundant button cleans up the

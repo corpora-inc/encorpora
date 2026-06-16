@@ -166,7 +166,7 @@ export function DailyLockOverlay({
         role="dialog"
         aria-modal="true"
         aria-label={t("dailyLock.title", {
-          defaultValue: "Your {{count}} {{unit}} for today",
+          defaultValue: "That's your {{count}} {{unit}} for today — nicely done",
           count: context.limit,
           unit: context.unitLabel,
         })}
@@ -234,7 +234,7 @@ export function DailyLockOverlay({
                 }}
               >
                 {t("dailyLock.title", {
-                  defaultValue: "Your {{count}} {{unit}} for today",
+                  defaultValue: "That's your {{count}} {{unit}} for today — nicely done",
                   count: context.limit,
                   unit: context.unitLabel,
                 })}

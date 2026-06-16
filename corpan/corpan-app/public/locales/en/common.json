@@ -836,7 +836,7 @@
     "label": "{{days}}-day streak"
   },
   "dailyLock": {
-    "title": "Your {{count}} {{unit}} for today",
+    "title": "That's your {{count}} {{unit}} for today — nicely done",
     "streakActive": "{{days}}-day streak — come back tomorrow to keep it going.",
     "streakStart": "Come back tomorrow to start a streak.",
     "resetIn": "Resets in {{time}}",

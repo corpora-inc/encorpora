@@ -21,6 +21,11 @@ Conventions: `corpan/CHANGELOGS.md`.
   (`requestDailyLock()`), refuses to record, and disables the mic with a "Done
   for today" label — a hard wall until local midnight or subscribe. Solo and
   multiplayer share one per-day count; subscribers never block.
+- **Tapping the capped mic now re-pops the daily-lock.** The solo "Done for
+  today" mic is `disabled`, which swallowed its own pointer events, so a re-tap
+  did nothing; a capture-phase listener on the mic wrap now re-shows the shared
+  green-check lock (matching the first cap-cross and the multiplayer path). The
+  calm "Done for today" label stays — no red/error cap state.
 
 ## [0.7.0] - 2026-05-20 — Scoring overlay + phrase-pack sourcing
 
