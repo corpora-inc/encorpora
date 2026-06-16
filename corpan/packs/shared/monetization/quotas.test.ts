@@ -45,7 +45,14 @@ beforeEach(() => {
 afterEach(() => {
   delete (globalThis as { __CORPAN_HOST_CAPS?: unknown }).__CORPAN_HOST_CAPS
   delete (globalThis as { __corpanGates?: unknown }).__corpanGates
+  // Always clear any remote override the test installed.
+  delete (globalThis as { __corpanQuotaConfig?: unknown }).__corpanQuotaConfig
 })
+
+/** Install a remote-config override on the global `getQuota` reads. */
+function setRemoteConfig(cfg: unknown): void {
+  ;(globalThis as { __corpanQuotaConfig?: unknown }).__corpanQuotaConfig = cfg
+}
 
 // ── registry ─────────────────────────────────────────────────────
 
@@ -88,6 +95,136 @@ describe("QUOTAS registry", () => {
     expect(getQuota("hover_phrases").packId).toBe("hover-runner")
     // @ts-expect-error — intentionally invalid surface
     expect(() => getQuota("nope_surface")).toThrow()
+  })
+})
+
+// ── remote-config override (getQuota merge seam) ─────────────────
+
+describe("getQuota remote-config override", () => {
+  it("no config → returns the baked row unchanged", () => {
+    expect(getQuota("hover_phrases")).toEqual(QUOTAS.hover_phrases)
+  })
+
+  it("merges dailyLimit AND softNagEvery OVER the baked row", () => {
+    setRemoteConfig({
+      version: 3,
+      quotas: { hover_phrases: { dailyLimit: 30, softNagEvery: 10 } },
+    })
+    const q = getQuota("hover_phrases")
+    expect(q.dailyLimit).toBe(30)
+    expect(q.softNagEvery).toBe(10)
+    // identity fields always stay baked
+    expect(q.packId).toBe("hover-runner")
+    expect(q.surface).toBe("hover_phrases")
+    expect(q.unitLabel).toBe("phrases")
+  })
+
+  it("a partial override touches only the provided field (limit only)", () => {
+    setRemoteConfig({ version: 1, quotas: { phrase_flips: { dailyLimit: 12 } } })
+    const q = getQuota("phrase_flips")
+    expect(q.dailyLimit).toBe(12)
+    expect(q.softNagEvery).toBe(QUOTAS.phrase_flips.softNagEvery) // baked 5
+  })
+
+  it("a partial override touches only the provided field (nag only)", () => {
+    setRemoteConfig({ version: 1, quotas: { phrase_flips: { softNagEvery: 3 } } })
+    const q = getQuota("phrase_flips")
+    expect(q.dailyLimit).toBe(QUOTAS.phrase_flips.dailyLimit) // baked 20
+    expect(q.softNagEvery).toBe(3)
+  })
+
+  it("does NOT mutate the baked QUOTAS row (returns a copy when overriding)", () => {
+    setRemoteConfig({ version: 1, quotas: { hover_phrases: { dailyLimit: 50 } } })
+    const q = getQuota("hover_phrases")
+    expect(q.dailyLimit).toBe(50)
+    expect(QUOTAS.hover_phrases.dailyLimit).toBe(20) // baked untouched
+  })
+
+  // ── clamping ──
+  it("clamps an over-range dailyLimit to the max (1000)", () => {
+    setRemoteConfig({ version: 1, quotas: { hover_phrases: { dailyLimit: 99999 } } })
+    expect(getQuota("hover_phrases").dailyLimit).toBe(1000)
+  })
+
+  it("clamps a below-range / zero dailyLimit to the min (1)", () => {
+    setRemoteConfig({ version: 1, quotas: { hover_phrases: { dailyLimit: 0 } } })
+    expect(getQuota("hover_phrases").dailyLimit).toBe(1)
+  })
+
+  it("ignores a negative dailyLimit by clamping to the min (1)", () => {
+    setRemoteConfig({ version: 1, quotas: { hover_phrases: { dailyLimit: -5 } } })
+    expect(getQuota("hover_phrases").dailyLimit).toBe(1)
+  })
+
+  it("drops a non-number dailyLimit → keeps baked", () => {
+    setRemoteConfig({
+      version: 1,
+      quotas: { hover_phrases: { dailyLimit: "30" as unknown as number } },
+    })
+    expect(getQuota("hover_phrases").dailyLimit).toBe(20)
+  })
+
+  it("drops NaN / Infinity values → keeps baked", () => {
+    setRemoteConfig({
+      version: 1,
+      quotas: {
+        hover_phrases: { dailyLimit: NaN, softNagEvery: Infinity },
+      },
+    })
+    const q = getQuota("hover_phrases")
+    expect(q.dailyLimit).toBe(20)
+    expect(q.softNagEvery).toBe(5)
+  })
+
+  it("clamps softNagEvery to the (overridden) dailyLimit", () => {
+    setRemoteConfig({
+      version: 1,
+      quotas: { hover_phrases: { dailyLimit: 8, softNagEvery: 99 } },
+    })
+    const q = getQuota("hover_phrases")
+    expect(q.dailyLimit).toBe(8)
+    expect(q.softNagEvery).toBe(8) // capped at the new limit, not 99
+  })
+
+  it("rounds fractional values to ints", () => {
+    setRemoteConfig({
+      version: 1,
+      quotas: { hover_phrases: { dailyLimit: 24.7 } },
+    })
+    expect(getQuota("hover_phrases").dailyLimit).toBe(25)
+  })
+
+  // ── unknown / malformed ──
+  it("ignores an unknown surface in the override (doesn't affect known ones)", () => {
+    setRemoteConfig({
+      version: 1,
+      quotas: { some_unknown_surface: { dailyLimit: 5 } },
+    })
+    expect(getQuota("hover_phrases")).toEqual(QUOTAS.hover_phrases)
+  })
+
+  it("malformed config (quotas not an object) → baked defaults", () => {
+    setRemoteConfig({ version: 1, quotas: "nope" })
+    expect(getQuota("hover_phrases")).toEqual(QUOTAS.hover_phrases)
+  })
+
+  it("malformed config (null / wrong shape) → baked defaults, no throw", () => {
+    setRemoteConfig(null)
+    expect(getQuota("hover_phrases")).toEqual(QUOTAS.hover_phrases)
+    setRemoteConfig(42)
+    expect(getQuota("hover_phrases")).toEqual(QUOTAS.hover_phrases)
+    setRemoteConfig({ quotas: { hover_phrases: null } })
+    expect(getQuota("hover_phrases")).toEqual(QUOTAS.hover_phrases)
+  })
+
+  it("the override flows through createDailyQuota → the live gate's remaining()", () => {
+    setRemoteConfig({ version: 1, quotas: { juice_phrases: { dailyLimit: 7 } } })
+    const gate = createDailyQuota("juice_phrases", {
+      storage: makeStorage(),
+      now: makeClock().now,
+      isSubscribed: () => false,
+    })
+    expect(gate.remaining()).toBe(7) // overridden cap, not baked 20
   })
 })
 

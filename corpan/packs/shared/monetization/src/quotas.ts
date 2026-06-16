@@ -6,11 +6,14 @@
 // reads the row below and forwards it to `createPaywallGate`. To change a
 // limit, edit this map — nothing else.
 //
-// REMOTE-CONFIG READY: these are the baked defaults. A future remote-config
-// fetch could deliver a partial `{ [surface]: { dailyLimit, softNagEvery } }`
-// JSON and override the baked values at runtime — `getQuota` is the single
-// read seam where such an override would be merged in. (Not built here; the
-// fetch/cache belongs to the host, not this pure module.)
+// REMOTE-CONFIG: these are the baked defaults. A remote-config fetch (owned by
+// the HOST — see `corpan-app/src/util/remoteQuotaConfig.ts`) may deliver a
+// partial `{ [surface]: { dailyLimit?, softNagEvery? } }` JSON and publish it on
+// `globalThis.__corpanQuotaConfig`. `getQuota` is the single read seam where
+// that override is merged OVER the baked values (only `dailyLimit` /
+// `softNagEvery` — `packId` / `surface` / `unitLabel` always stay baked). This
+// module stays PURE + SYNCHRONOUS: it only READS the global, never fetches.
+// Absent / malformed config → the baked row is returned unchanged.
 
 import type { Hardness } from "./types"
 
@@ -90,15 +93,70 @@ export const QUOTAS = {
 /** Known metered-surface keys (literal union of `QUOTAS`). */
 export type QuotaSurface = keyof typeof QUOTAS
 
+/** Hard bounds for any remote-config override (defence-in-depth — the client
+ *  validator clamps too, but `getQuota` must NEVER trust the global blindly). */
+const MIN_DAILY_LIMIT = 1
+const MAX_DAILY_LIMIT = 1000
+
+/** The remote-override shape `getQuota` reads off `globalThis.__corpanQuotaConfig`.
+ *  Intentionally narrow: ONLY the two tunable numbers per surface. */
+interface QuotaOverrideEntry {
+  dailyLimit?: number
+  softNagEvery?: number
+}
+interface QuotaRemoteConfig {
+  version?: number
+  quotas?: Record<string, QuotaOverrideEntry | undefined>
+}
+
+/** A finite number within [min,max], else undefined (rejects NaN/Infinity/non-number). */
+function clampInt(value: unknown, min: number, max: number): number | undefined {
+  if (typeof value !== "number" || !Number.isFinite(value)) return undefined
+  const n = Math.round(value)
+  if (n < min) return min
+  if (n > max) return max
+  return n
+}
+
 /**
- * Read a surface's quota config. The single read seam — a future remote-config
- * override would be merged here. Throws on an unknown surface (a typo'd key is
- * a bug, not a silent free-for-all).
+ * Read a surface's quota config — the SINGLE read seam every pack hits at gate
+ * construct time. Merges any host-published remote override
+ * (`globalThis.__corpanQuotaConfig.quotas[surface]`) OVER the baked `QUOTAS` row,
+ * accepting ONLY `dailyLimit` / `softNagEvery` and clamping both to sane ranges.
+ * `packId` / `surface` / `unitLabel` / `legacyKey` / `hardness` always stay
+ * baked. Pure + synchronous; FAIL-SAFE — any absent/malformed/out-of-range
+ * override is dropped and the baked row is returned unchanged. Throws only on an
+ * unknown surface (a typo'd key is a bug, not a silent free-for-all).
  */
 export function getQuota(surface: QuotaSurface): QuotaConfig {
-  const q = QUOTAS[surface]
-  if (!q) {
+  const baked = QUOTAS[surface]
+  if (!baked) {
     throw new Error(`[monetization] unknown quota surface: ${String(surface)}`)
   }
-  return q
+
+  // Everything below is best-effort: a bad global must degrade to `baked`.
+  try {
+    const cfg = (globalThis as { __corpanQuotaConfig?: QuotaRemoteConfig })
+      .__corpanQuotaConfig
+    const override = cfg?.quotas?.[surface]
+    if (!override || typeof override !== "object") return baked
+
+    let dailyLimit = baked.dailyLimit
+    let softNagEvery = baked.softNagEvery
+
+    const ol = clampInt(override.dailyLimit, MIN_DAILY_LIMIT, MAX_DAILY_LIMIT)
+    if (ol !== undefined) dailyLimit = ol
+
+    // softNagEvery is bounded by the (possibly overridden) dailyLimit so the
+    // nag cadence can never exceed the cap.
+    const on = clampInt(override.softNagEvery, 1, dailyLimit)
+    if (on !== undefined) softNagEvery = on
+
+    if (dailyLimit === baked.dailyLimit && softNagEvery === baked.softNagEvery) {
+      return baked
+    }
+    return { ...baked, dailyLimit, softNagEvery }
+  } catch {
+    return baked
+  }
 }

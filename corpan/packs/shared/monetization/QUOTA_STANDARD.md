@@ -25,11 +25,50 @@ config (`packId`, `dailyLimit`, `softNagEvery`, `unitLabel`, optional
 | `hanzipan_chars`    | `hanzipan`           | 20         | 5            | `characters` | —                 |
 | `tutomaton_daily`   | `tutomaton`          | 20         | 5            | `messages`   | `tutomaton.quota` |
 
-**Remote-config ready:** these are the baked defaults. A future remote-config
-fetch could deliver a partial `{ [surface]: { dailyLimit, softNagEvery } }` JSON
-and override the baked values; `getQuota` is the single point where such an
-override would be merged. The fetch/cache is NOT built here — it belongs to the
-host, not this pure module.
+**Remote config (built):** these are the baked defaults; a remote-config layer
+overrides them live without an app build. `getQuota` is the merge point. See
+"Remote config" below.
+
+### Remote config — re-tune caps without an app build
+
+The caps are A/B-tunable at runtime. The HOST fetches a small JSON at launch and
+publishes a validated override on `globalThis.__corpanQuotaConfig`; `getQuota`
+merges it OVER the baked row.
+
+**URL.** `https://d38iwc9748jekz.cloudfront.net/quota-config.json` — the same
+CloudFront distribution that serves `catalog-v2.json` / `app-version.json` (no
+new infra). Overridable at build time via `VITE_QUOTA_CONFIG_URL`. Ops uploads
+to `s3://corpan-prod/quota-config.json`; the repo seed +
+how-to-push-a-change live in `corpan/infra/quota-config.json` +
+`corpan/infra/QUOTA_CONFIG.md`.
+
+**Shape.**
+
+```json
+{ "version": 1, "quotas": { "<surface>": { "dailyLimit": 20, "softNagEvery": 5 } } }
+```
+
+Only `dailyLimit` / `softNagEvery` are honored — `packId` / `surface` /
+`unitLabel` always stay baked and can't be changed remotely. `dailyLimit` is
+clamped **1..1000**, `softNagEvery` **1..dailyLimit**. Unknown surfaces ignored;
+partial overrides fine; omitted surfaces keep baked values.
+
+**Client.** `corpan-app/src/util/remoteQuotaConfig.ts`, wired early in
+`main.tsx` (`initRemoteQuotaConfig()` — before packs mount). Anonymous GET (no
+PII, no identifiers), best-effort, never blocks launch.
+
+**Fail-safe.** Absent file (404) / network error / malformed or out-of-range
+value → baked defaults. The client validates + clamps before caching;
+`getQuota` clamps again defensively. A bad config can never crash the app or
+escape the bounds.
+
+**Timing (stale-while-revalidate).** The last-good cached config is applied
+**synchronously** at launch (so an early-mounting pack sees it), then refreshed
+in the background (TTL ~6h) for next launch. A **live gate caches its config at
+construct time**, so a mid-session change takes effect on the **next gate
+construction** (re-entering a pack) and reliably on the **next launch** — by
+design. Packs need NO change: they already read the registry via
+`createDailyQuota` → `getQuota`.
 
 ---
 

@@ -81,11 +81,18 @@ On-device inference ≈ $0, so this is about **value perception**, not compute.
 
 ## The #1 lever: experiment cadence
 
-The registry is built to accept a **remote-config override** (`getQuota` is the
-single override point). Standing up that small endpoint (the Phase-4 fast-follow)
-lets you A/B caps per pack **without shipping**, tuned against
-wall→trial→convert and D7/D30 retention + uninstall signal. That iteration
-compounds far past any single starting number.
+**This is now live.** The registry accepts a remote-config override at
+`getQuota` (the single override point), fed by a CDN JSON the host fetches at
+launch — so you can A/B caps per pack **without shipping an app build**, tuned
+against wall→trial→convert and D7/D30 retention + uninstall signal. That
+iteration compounds far past any single starting number.
+
+To run an experiment: edit `corpan/infra/quota-config.json`, upload it to
+`s3://corpan-prod/quota-config.json`, invalidate the CDN path — the new caps
+take effect on each device's next launch. Only `dailyLimit` / `softNagEvery` are
+tunable (clamped 1..1000 / 1..dailyLimit); a bad/absent file fails safe to the
+baked defaults. Full mechanics + timing: `QUOTA_STANDARD.md` "Remote config" +
+`corpan/infra/QUOTA_CONFIG.md`.
 
 ## Frustration guardrails (keep these)
 
