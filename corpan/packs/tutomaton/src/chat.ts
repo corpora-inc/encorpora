@@ -937,18 +937,29 @@ const PackModule: ContentPackModule = {
         const name = document.createElement("div")
         name.className = "lt-mcard-name"
         name.textContent = m.displayName
-        const sub = document.createElement("div")
-        sub.className = "lt-mcard-sub"
-        sub.textContent = isActive
-          ? t("modelActive")
-          : disabled
-            ? t("sizeNeedsMore")
-            : st === "try-anyway"
-              ? t("sizeMaySlow")
-              : st === "recommended"
-                ? t("recommendedSize")
-                : t("sizeSmallerQuality")
-        meta.append(name, sub)
+        if (st === "recommended" && !isActive) {
+          const chip = document.createElement("span")
+          chip.className = "lt-mcard-rec"
+          chip.textContent = t("recommendedSize")
+          name.appendChild(chip)
+        }
+        // Concise, premium detail line: how many languages + which devices.
+        const langCount = m.supportedLanguages ? m.supportedLanguages.length : registry.length
+        const ramFit =
+          m.id === "llm-base-qwen3-0.6b-v1" ? t("ramAny")
+          : m.id === "llm-base-qwen3-1.7b-v1" ? "4 GB+"
+          : "8 GB+"
+        const detail = document.createElement("div")
+        detail.className = "lt-mcard-sub"
+        detail.textContent = `${t("modelLangs", { count: String(langCount) })} · ${ramFit}`
+        meta.append(name, detail)
+        // A short reason only where the size is constrained on THIS device.
+        if (disabled || (st === "try-anyway" && !isActive)) {
+          const reason = document.createElement("div")
+          reason.className = "lt-mcard-reason"
+          reason.textContent = disabled ? t("sizeNeedsMore") : t("sizeMaySlow")
+          meta.append(reason)
+        }
 
         const right = document.createElement("div")
         right.className = "lt-mcard-right"

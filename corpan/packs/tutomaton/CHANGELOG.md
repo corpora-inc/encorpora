@@ -41,6 +41,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   the transcript *and* speech. A per-language **Thinking** toggle in the model
   lab lets you switch reasoning on to A/B it.
 
+- **Up-front size/RAM/language framing in the model sheet.** Each size card now
+  shows a concise detail line — "{N} languages · {device fit}" (e.g. "24
+  languages · 4 GB+", "11 languages · Any device") — with a Recommended chip and
+  a one-line reason only where a size is constrained on the device. So the
+  size↔smartness↔reach tradeoff is legible at a glance.
+- **Full ~54-locale coverage of the tutor chrome.** Added Javanese (jv) and
+  Sundanese (su) localizations — the two native UI languages the pack was missing
+  — so every locale the app ships now has localized Tutomaton chrome. (jv/su were
+  machine-generated like the rest; a native pass is welcome.)
+
 ### Fixed
 - Re-localized the daily-cap quota strings (`quotaEmpty`, `quotaEmptyNote`,
   `quotaPlus`, `quotaPlusActivated`) across all 46 locales — they had drifted to
