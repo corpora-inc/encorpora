@@ -858,6 +858,8 @@
     "redeemWithApple": "Réclamer avec Apple",
     "redeeming": "Ouverture de la réclamation…",
     "retry": "Réessayer",
-    "subscribeWithDiscount": "S'abonner ({{discount}})"
+    "subscribeWithDiscount": "S'abonner ({{discount}})",
+    "redeemCode": "Utiliser le code",
+    "notApplied": "Ce code ne donne aucune remise."
   }
 }

@@ -858,6 +858,8 @@
     "redeemWithApple": "用 Apple 兌換",
     "redeeming": "正在打開兌換…",
     "retry": "重試",
-    "subscribeWithDiscount": "訂閱（{{discount}}）"
+    "subscribeWithDiscount": "訂閱（{{discount}}）",
+    "redeemCode": "使用代碼",
+    "notApplied": "呢個代碼冇折扣優惠。"
   }
 }

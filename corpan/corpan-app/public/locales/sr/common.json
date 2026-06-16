@@ -858,6 +858,8 @@
     "redeemWithApple": "Iskoristi sa Apple",
     "redeeming": "Otvaranje iskorišćavanja…",
     "retry": "Pokušaj ponovo",
-    "subscribeWithDiscount": "Pretplati se ({{discount}})"
+    "subscribeWithDiscount": "Pretplati se ({{discount}})",
+    "redeemCode": "Искористи код",
+    "notApplied": "Овај код не доноси попуст."
   }
 }

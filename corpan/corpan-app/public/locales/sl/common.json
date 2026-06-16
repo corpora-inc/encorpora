@@ -858,6 +858,8 @@
     "redeemWithApple": "Unovči z Apple",
     "redeeming": "Odpiranje unovčenja…",
     "retry": "Poskusi znova",
-    "subscribeWithDiscount": "Naroči se ({{discount}})"
+    "subscribeWithDiscount": "Naroči se ({{discount}})",
+    "redeemCode": "Unovči kodo",
+    "notApplied": "Ta koda ne prinese popusta."
   }
 }

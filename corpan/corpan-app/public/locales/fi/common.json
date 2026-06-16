@@ -858,6 +858,8 @@
     "redeemWithApple": "Lunasta Applen kanssa",
     "redeeming": "Avataan lunastus…",
     "retry": "Yritä uudelleen",
-    "subscribeWithDiscount": "Tilaa ({{discount}})"
+    "subscribeWithDiscount": "Tilaa ({{discount}})",
+    "redeemCode": "Lunasta koodi",
+    "notApplied": "Tämä koodi ei anna alennusta."
   }
 }

@@ -858,6 +858,8 @@
     "redeemWithApple": "Apple સાથે રીડીમ કરો",
     "redeeming": "રીડીમ ખોલી રહ્યા છે…",
     "retry": "ફરી પ્રયાસ કરો",
-    "subscribeWithDiscount": "ડિસ્કાઉન્ટ સાથે સબ્સ્ક્રાઇબ કરો ({{discount}})"
+    "subscribeWithDiscount": "ડિસ્કાઉન્ટ સાથે સબ્સ્ક્રાઇબ કરો ({{discount}})",
+    "redeemCode": "કોડ રિડીમ કરો",
+    "notApplied": "આ કોડથી કોઈ ડિસ્કાઉન્ટ મળતું નથી."
   }
 }

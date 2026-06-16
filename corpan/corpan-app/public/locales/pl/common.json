@@ -858,6 +858,8 @@
     "redeemWithApple": "Zrealizuj z Apple",
     "redeeming": "Otwieranie realizacji…",
     "retry": "Ponów próbę",
-    "subscribeWithDiscount": "Subskrybuj ({{discount}})"
+    "subscribeWithDiscount": "Subskrybuj ({{discount}})",
+    "redeemCode": "Zrealizuj kod",
+    "notApplied": "Ten kod nie daje zniżki."
   }
 }

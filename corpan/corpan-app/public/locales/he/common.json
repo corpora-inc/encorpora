@@ -858,6 +858,8 @@
     "redeemWithApple": "מימוש עם Apple",
     "redeeming": "פותח מימוש…",
     "retry": "נסה שוב",
-    "subscribeWithDiscount": "הירשם ({{discount}})"
+    "subscribeWithDiscount": "הירשם ({{discount}})",
+    "redeemCode": "מימוש קוד",
+    "notApplied": "הקוד הזה לא מקנה הנחה."
   }
 }

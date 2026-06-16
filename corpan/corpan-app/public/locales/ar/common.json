@@ -858,6 +858,8 @@
     "redeemWithApple": "استرداد مع Apple",
     "redeeming": "جارٍ فتح الاسترداد…",
     "retry": "إعادة المحاولة",
-    "subscribeWithDiscount": "اشترك ({{discount}})"
+    "subscribeWithDiscount": "اشترك ({{discount}})",
+    "redeemCode": "استرداد الرمز",
+    "notApplied": "هذا الرمز لا يمنح خصمًا."
   }
 }

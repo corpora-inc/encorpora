@@ -858,6 +858,8 @@
     "redeemWithApple": "অ্যাপলের মাধ্যমে রিডিম করুন",
     "redeeming": "রিডিম খোলা হচ্ছে…",
     "retry": "আবার চেষ্টা করুন",
-    "subscribeWithDiscount": "সাবস্ক্রাইব করুন ({{discount}})"
+    "subscribeWithDiscount": "সাবস্ক্রাইব করুন ({{discount}})",
+    "redeemCode": "কোড রিডিম করুন",
+    "notApplied": "এই কোডে কোনো ছাড় পাওয়া যায় না।"
   }
 }

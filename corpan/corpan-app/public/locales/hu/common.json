@@ -858,6 +858,8 @@
     "redeemWithApple": "Beváltás Apple-lel",
     "redeeming": "Beváltás megnyitása…",
     "retry": "Újra",
-    "subscribeWithDiscount": "Előfizetés ({{discount}})"
+    "subscribeWithDiscount": "Előfizetés ({{discount}})",
+    "redeemCode": "Kód beváltása",
+    "notApplied": "Ez a kód nem ad kedvezményt."
   }
 }

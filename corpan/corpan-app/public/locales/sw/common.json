@@ -858,6 +858,8 @@
     "redeemWithApple": "Komboa na Apple",
     "redeeming": "Inafungua kukomboa…",
     "retry": "Jaribu tena",
-    "subscribeWithDiscount": "Jisajili ({{discount}})"
+    "subscribeWithDiscount": "Jisajili ({{discount}})",
+    "redeemCode": "Tumia msimbo",
+    "notApplied": "Msimbo huu hautoi punguzo lolote."
   }
 }

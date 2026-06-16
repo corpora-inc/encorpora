@@ -858,6 +858,8 @@
     "redeemWithApple": "Погасить через Apple",
     "redeeming": "Открытие погашения…",
     "retry": "Повторить",
-    "subscribeWithDiscount": "Подписаться ({{discount}})"
+    "subscribeWithDiscount": "Подписаться ({{discount}})",
+    "redeemCode": "Активировать код",
+    "notApplied": "Этот код не даёт скидки."
   }
 }

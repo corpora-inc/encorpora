@@ -858,6 +858,8 @@
     "redeemWithApple": "Inwisselen met Apple",
     "redeeming": "Inwisselen openen…",
     "retry": "Opnieuw proberen",
-    "subscribeWithDiscount": "Abonneren ({{discount}})"
+    "subscribeWithDiscount": "Abonneren ({{discount}})",
+    "redeemCode": "Code inwisselen",
+    "notApplied": "Deze code geeft geen korting."
   }
 }

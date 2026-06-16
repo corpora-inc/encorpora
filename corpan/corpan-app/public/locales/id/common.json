@@ -858,6 +858,8 @@
     "redeemWithApple": "Tukarkan dengan Apple",
     "redeeming": "Membuka penukaran…",
     "retry": "Coba Lagi",
-    "subscribeWithDiscount": "Langganan ({{discount}})"
+    "subscribeWithDiscount": "Langganan ({{discount}})",
+    "redeemCode": "Tukarkan kode",
+    "notApplied": "Kode ini tidak memberi diskon."
   }
 }

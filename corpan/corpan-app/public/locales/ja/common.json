@@ -858,6 +858,8 @@
     "redeemWithApple": "Appleで引き換え",
     "redeeming": "引き換えを開いています…",
     "retry": "再試行",
-    "subscribeWithDiscount": "割引で購読 ({{discount}})"
+    "subscribeWithDiscount": "割引で購読 ({{discount}})",
+    "redeemCode": "コードを使う",
+    "notApplied": "このコードでは割引を利用できません。"
   }
 }

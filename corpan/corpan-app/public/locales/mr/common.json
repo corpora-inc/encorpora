@@ -858,6 +858,8 @@
     "redeemWithApple": "Apple सह रिडीम करा",
     "redeeming": "रिडीम उघडत आहे…",
     "retry": "पुन्हा प्रयत्न करा",
-    "subscribeWithDiscount": "सदस्यता घ्या ({{discount}})"
+    "subscribeWithDiscount": "सदस्यता घ्या ({{discount}})",
+    "redeemCode": "कोड रिडीम करा",
+    "notApplied": "या कोडने कोणतीही सूट मिळत नाही."
   }
 }

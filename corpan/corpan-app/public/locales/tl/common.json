@@ -858,6 +858,8 @@
     "redeemWithApple": "Tubusin gamit ang Apple",
     "redeeming": "Binubuksan ang pagtubos…",
     "retry": "Subukang Muli",
-    "subscribeWithDiscount": "Mag-subscribe ({{discount}})"
+    "subscribeWithDiscount": "Mag-subscribe ({{discount}})",
+    "redeemCode": "Tubusin ang code",
+    "notApplied": "Walang diskwento ang code na ito."
   }
 }

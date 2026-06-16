@@ -858,6 +858,8 @@
     "redeemWithApple": "Uplatniť s Apple",
     "redeeming": "Otváranie uplatnenia…",
     "retry": "Skúsiť znova",
-    "subscribeWithDiscount": "Predplatiť ({{discount}})"
+    "subscribeWithDiscount": "Predplatiť ({{discount}})",
+    "redeemCode": "Uplatniť kód",
+    "notApplied": "Tento kód neposkytuje zľavu."
   }
 }

@@ -858,6 +858,8 @@
     "redeemWithApple": "Išpirkti su Apple",
     "redeeming": "Atidaromas išpirkimas…",
     "retry": "Bandyti dar kartą",
-    "subscribeWithDiscount": "Prenumeruoti ({{discount}})"
+    "subscribeWithDiscount": "Prenumeruoti ({{discount}})",
+    "redeemCode": "Išpirkti kodą",
+    "notApplied": "Šis kodas nesuteikia nuolaidos."
   }
 }

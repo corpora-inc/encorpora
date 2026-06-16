@@ -858,6 +858,8 @@
     "redeemWithApple": "แลกกับ Apple",
     "redeeming": "กำลังเปิดการแลก…",
     "retry": "ลองใหม่",
-    "subscribeWithDiscount": "สมัครสมาชิก ({{discount}})"
+    "subscribeWithDiscount": "สมัครสมาชิก ({{discount}})",
+    "redeemCode": "ใช้โค้ด",
+    "notApplied": "โค้ดนี้ไม่ได้ให้ส่วนลด"
   }
 }

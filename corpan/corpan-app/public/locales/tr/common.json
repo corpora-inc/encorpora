@@ -858,6 +858,8 @@
     "redeemWithApple": "Apple ile Kullan",
     "redeeming": "Kod kullanılıyor…",
     "retry": "Tekrar Dene",
-    "subscribeWithDiscount": "Abone Ol ({{discount}})"
+    "subscribeWithDiscount": "Abone Ol ({{discount}})",
+    "redeemCode": "Kodu kullan",
+    "notApplied": "Bu kod indirim sağlamıyor."
   }
 }

@@ -858,6 +858,8 @@
     "redeemWithApple": "بازخرید با Apple",
     "redeeming": "در حال باز کردن بازخرید…",
     "retry": "تلاش مجدد",
-    "subscribeWithDiscount": "اشتراک ({{discount}})"
+    "subscribeWithDiscount": "اشتراک ({{discount}})",
+    "redeemCode": "استفاده از کد",
+    "notApplied": "این کد تخفیفی اعمال نمی‌کند."
   }
 }

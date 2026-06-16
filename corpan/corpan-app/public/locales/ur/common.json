@@ -858,6 +858,8 @@
     "redeemWithApple": "ایپل کے ساتھ ریڈیم کریں",
     "redeeming": "ریڈیم کھول رہا ہے…",
     "retry": "دوبارہ کوشش کریں",
-    "subscribeWithDiscount": "سبسکرائب کریں ({{discount}})"
+    "subscribeWithDiscount": "سبسکرائب کریں ({{discount}})",
+    "redeemCode": "کوڈ استعمال کریں",
+    "notApplied": "یہ کوڈ کوئی رعایت نہیں دیتا۔"
   }
 }

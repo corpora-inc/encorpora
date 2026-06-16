@@ -858,6 +858,8 @@
     "redeemWithApple": "ایپل کے ساتھ ریڈیم کرو",
     "redeeming": "ریڈیم کھول رہے ہیں…",
     "retry": "دوبارہ کوشش کرو",
-    "subscribeWithDiscount": "سبسکرائب کرو ({{discount}})"
+    "subscribeWithDiscount": "سبسکرائب کرو ({{discount}})",
+    "redeemCode": "کوڈ ورتو",
+    "notApplied": "ایہہ کوڈ کوئی رعایت نہیں دیندا۔"
   }
 }

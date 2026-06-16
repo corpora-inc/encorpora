@@ -858,6 +858,8 @@
     "redeemWithApple": "Tebus nganggo Apple",
     "redeeming": "Mbukak tebusan…",
     "retry": "Coba maneh",
-    "subscribeWithDiscount": "Langganan ({{discount}})"
+    "subscribeWithDiscount": "Langganan ({{discount}})",
+    "redeemCode": "Gunakake kode",
+    "notApplied": "Kode iki ora menehi diskon."
   }
 }

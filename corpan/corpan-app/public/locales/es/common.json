@@ -858,6 +858,8 @@
     "redeemWithApple": "Canjear con Apple",
     "redeeming": "Abriendo canje…",
     "retry": "Reintentar",
-    "subscribeWithDiscount": "Suscribirse ({{discount}})"
+    "subscribeWithDiscount": "Suscribirse ({{discount}})",
+    "redeemCode": "Canjear código",
+    "notApplied": "Ese código no da ningún descuento."
   }
 }

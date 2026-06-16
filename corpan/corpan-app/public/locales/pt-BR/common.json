@@ -858,6 +858,8 @@
     "redeemWithApple": "Resgatar com Apple",
     "redeeming": "Abrindo resgate…",
     "retry": "Tentar novamente",
-    "subscribeWithDiscount": "Assinar ({{discount}})"
+    "subscribeWithDiscount": "Assinar ({{discount}})",
+    "redeemCode": "Resgatar código",
+    "notApplied": "Esse código não dá nenhum desconto."
   }
 }

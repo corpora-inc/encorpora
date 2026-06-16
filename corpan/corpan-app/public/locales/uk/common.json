@@ -858,6 +858,8 @@
     "redeemWithApple": "Активувати через Apple",
     "redeeming": "Відкриття активації…",
     "retry": "Повторити",
-    "subscribeWithDiscount": "Підписатися ({{discount}})"
+    "subscribeWithDiscount": "Підписатися ({{discount}})",
+    "redeemCode": "Активувати код",
+    "notApplied": "Цей код не дає знижки."
   }
 }

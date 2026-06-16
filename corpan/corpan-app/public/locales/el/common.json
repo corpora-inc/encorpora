@@ -858,6 +858,8 @@
     "redeemWithApple": "Εξαργύρωση με Apple",
     "redeeming": "Άνοιγμα εξαργύρωσης…",
     "retry": "Δοκιμή ξανά",
-    "subscribeWithDiscount": "Εγγραφή ({{discount}})"
+    "subscribeWithDiscount": "Εγγραφή ({{discount}})",
+    "redeemCode": "Εξαργύρωση κωδικού",
+    "notApplied": "Αυτός ο κωδικός δεν δίνει έκπτωση."
   }
 }

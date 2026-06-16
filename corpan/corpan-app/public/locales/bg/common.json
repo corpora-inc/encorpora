@@ -858,6 +858,8 @@
     "redeemWithApple": "Осребряване с Apple",
     "redeeming": "Отваряне на осребряване…",
     "retry": "Опитайте отново",
-    "subscribeWithDiscount": "Абонирайте се ({{discount}})"
+    "subscribeWithDiscount": "Абонирайте се ({{discount}})",
+    "redeemCode": "Активиране на кода",
+    "notApplied": "Този код не дава отстъпка."
   }
 }

@@ -858,6 +858,8 @@
     "redeemWithApple": "Đổi mã với Apple",
     "redeeming": "Đang mở đổi mã…",
     "retry": "Thử lại",
-    "subscribeWithDiscount": "Đăng ký ({{discount}})"
+    "subscribeWithDiscount": "Đăng ký ({{discount}})",
+    "redeemCode": "Đổi mã",
+    "notApplied": "Mã này không áp dụng giảm giá."
   }
 }

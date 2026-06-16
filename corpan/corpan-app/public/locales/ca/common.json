@@ -858,6 +858,8 @@
     "redeemWithApple": "Redimeix amb Apple",
     "redeeming": "Obrint redempció…",
     "retry": "Reintentar",
-    "subscribeWithDiscount": "Subscriu-te ({{discount}})"
+    "subscribeWithDiscount": "Subscriu-te ({{discount}})",
+    "redeemCode": "Bescanvia el codi",
+    "notApplied": "Aquest codi no dóna cap descompte."
   }
 }

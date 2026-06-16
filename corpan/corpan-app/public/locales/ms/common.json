@@ -858,6 +858,8 @@
     "redeemWithApple": "Tebus dengan Apple",
     "redeeming": "Membuka tebusan…",
     "retry": "Cuba lagi",
-    "subscribeWithDiscount": "Langgan ({{discount}})"
+    "subscribeWithDiscount": "Langgan ({{discount}})",
+    "redeemCode": "Tebus kod",
+    "notApplied": "Kod ini tidak memberi diskaun."
   }
 }

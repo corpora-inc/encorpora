@@ -858,6 +858,8 @@
     "redeemWithApple": "Răscumpără cu Apple",
     "redeeming": "Deschidere răscumpărare…",
     "retry": "Reîncearcă",
-    "subscribeWithDiscount": "Abonează-te ({{discount}})"
+    "subscribeWithDiscount": "Abonează-te ({{discount}})",
+    "redeemCode": "Valorifică codul",
+    "notApplied": "Acest cod nu oferă nicio reducere."
   }
 }

@@ -858,6 +858,8 @@
     "redeemWithApple": "Mit Apple einlösen",
     "redeeming": "Einlösen wird geöffnet…",
     "retry": "Erneut versuchen",
-    "subscribeWithDiscount": "Abonnieren ({{discount}})"
+    "subscribeWithDiscount": "Abonnieren ({{discount}})",
+    "redeemCode": "Code einlösen",
+    "notApplied": "Dieser Code gewährt keinen Rabatt."
   }
 }

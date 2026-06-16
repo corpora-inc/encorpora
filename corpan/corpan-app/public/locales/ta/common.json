@@ -858,6 +858,8 @@
     "redeemWithApple": "ஆப்பிள் மூலம் மீட்டெடுக்கவும்",
     "redeeming": "மீட்டெடுக்கும் திரை திறக்கப்படுகிறது…",
     "retry": "மீண்டும் முயற்சிக்கவும்",
-    "subscribeWithDiscount": "சந்தா ({{discount}})"
+    "subscribeWithDiscount": "சந்தா ({{discount}})",
+    "redeemCode": "குறியீட்டைப் பயன்படுத்து",
+    "notApplied": "இந்தக் குறியீடு தள்ளுபடி எதையும் தராது."
   }
 }

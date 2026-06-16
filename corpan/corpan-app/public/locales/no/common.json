@@ -858,6 +858,8 @@
     "redeemWithApple": "Løs inn med Apple",
     "redeeming": "Åpner innløsning…",
     "retry": "Prøv igjen",
-    "subscribeWithDiscount": "Abonner ({{discount}})"
+    "subscribeWithDiscount": "Abonner ({{discount}})",
+    "redeemCode": "Løs inn kode",
+    "notApplied": "Denne koden gir ingen rabatt."
   }
 }
