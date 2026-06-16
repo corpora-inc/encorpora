@@ -900,10 +900,15 @@ export const mountGame = (
       <div class="pc-footer">
         Powered by whisper.cpp · <span id="pc-footer-model">Standard</span> · on-device
       </div>
+
+      <!-- Subtle, transparent quota readout pinned lower-right: new rounds
+           left today (free tier). Hidden for subscribers (remaining = ∞). -->
+      <div class="pc-quota" id="pc-quota" hidden></div>
     </div>
   `
 
   const closeBtn = container.querySelector<HTMLButtonElement>("#pc-close")!
+  const quotaEl = container.querySelector<HTMLDivElement>("#pc-quota")!
   const streakEl = container.querySelector<HTMLSpanElement>("#pc-streak")!
   const streakN = container.querySelector<HTMLSpanElement>("#pc-streak-n")!
   const modeBtn = container.querySelector<HTMLButtonElement>("#pc-mode")!
@@ -1048,8 +1053,25 @@ export const mountGame = (
     }
   }
 
+  // Lower-right quota readout — new rounds left today in the free tier. The
+  // gate returns Infinity for subscribers and null for an unmetered surface;
+  // both hide the badge entirely (no chrome for people who paid). Goes faint-
+  // urgent in the last few so it reads as "nearly done", never a red warning.
+  const updateQuotaBadge = () => {
+    const left = paywallGate.remaining()
+    if (left === null || !isFinite(left)) {
+      quotaEl.hidden = true
+      return
+    }
+    quotaEl.hidden = false
+    quotaEl.textContent = String(left)
+    quotaEl.setAttribute("aria-label", `${left} left today`)
+    quotaEl.classList.toggle("pc-quota-low", left <= 3)
+  }
+
   const setUiState = (next: UiState) => {
     uiState = next
+    updateQuotaBadge()
     micBtn.classList.remove("recording", "scoring")
     micBtn.disabled = false
     if (next === "idle") {
@@ -3227,6 +3249,10 @@ export const mountGame = (
     }
 
     renderModeButton()
+    // Paint the lower-right quota readout immediately at boot, before the
+    // model finishes loading (setUiState refreshes it on every transition
+    // thereafter). No-op for subscribers.
+    updateQuotaBadge()
     // Larger models can spend real time on first native initialization.
     // Surface the wait honestly so users don't think the app froze.
     // Threshold (~300 MB) chosen so Standard / Small skip the warning

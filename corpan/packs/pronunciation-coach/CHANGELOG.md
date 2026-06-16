@@ -14,6 +14,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Subtle quota readout (lower-right).** A small, transparent badge pinned to
+  the lower-right safe corner shows new rounds left today in the free tier —
+  so the cap is visible before you hit it, not a surprise. Hidden entirely for
+  subscribers (unlimited); tints a touch warm in the last few to read as
+  "nearly done", never an alarm. Refreshes on every UI transition + on boot.
+
 ### Fixed
 - **Daily cap now HARD-enforces (solo + multiplayer).** The shared daily gate
   counted scored rounds but never blocked at the cap. Starting a new round now
