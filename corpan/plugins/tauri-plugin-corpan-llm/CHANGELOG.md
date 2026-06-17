@@ -5,6 +5,48 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-06-16
+
+### Fixed
+- **Low-RAM OOM crash hardening (native `ggml_graph_compute_thread` SIGSEGV).**
+  Allocating the ~2.5 GB model plus a 4096-token KV/compute buffer could OOM
+  *inside* ggml's CPU matmul on memory-constrained devices — an uncatchable
+  native segfault that kills the app. Three guards now prevent it: (1) `load`
+  refuses any model whose estimated footprint (GGUF size + ~15% buffers +
+  ~400 MB KV/runtime) exceeds ~70% of total physical RAM → `InsufficientMemory`
+  — this is *per-model*, so a small model still loads on a small device while
+  the 4B is refused on a 4 GB phone (supersedes the old blunt 4 GB floor, which
+  blocked the very low-RAM devices we now serve with smaller models);
+  (2) the context length scales to headroom — `ctx_for_memory()` drops `n_ctx`
+  from 4096 to 2048 when under ~2 GB is allocatable at session creation,
+  halving the KV/compute footprint; (3) Android `device_memory_mb()` now reports
+  real MemAvailable (was `None`), so `status()` and the ctx sizing have a true
+  signal. iOS keeps its existing jetsam preflight; desktop is unchanged.
+
+### Added
+- **Total physical RAM on `status()`** (`totalMemoryMb`) so the host can pick a
+  model size to fit the device. Measured cross-platform: `/proc/meminfo`
+  MemTotal (Android/Linux), `sysctl hw.memsize` (macOS/iOS), `None` on Windows.
+- **`noThink` chat option** — seeds the assistant turn with an empty
+  `<think></think>` block (the canonical Qwen3 non-thinking prefill) so hybrid
+  models (0.6B/1.7B) answer directly instead of reasoning aloud. No effect on
+  the non-thinking Instruct 4B.
+- **Quantized KV cache (Q8_0) on Apple/Metal** — ~halves KV memory at negligible
+  quality cost, backed by flash attention (AUTO, on by default). Android/desktop
+  CPU keep F16 (FA may not engage on CPU, and quantized KV depends on it).
+  Verified on Metal via llama-server.
+
+### Changed
+- **Token streaming is coalesced (Android ANR fix).** The actor emitted one
+  `llm-token` IPC event per token; on Android every event marshals to the WebView
+  on the UI thread as a JS eval result (a `Handler.post` onto the main looper per
+  token), flooding it on fast decode — a confirmed Play-vitals ANR
+  (`onEvaluateJavaScriptResult`) and a drag on the WebView's own frame/input
+  servicing. Pieces are now flushed at most every ~40 ms (or per 256 bytes),
+  capping event rate at ~25/s regardless of decode speed. First token flushes
+  immediately (time-to-first-token preserved); the tail flushes before
+  `llm-done`. Byte-identical to the frontend, which concatenates `token` strings.
+
 ### Added
 - **Live system-prompt override** for on-device A/B with no rebuild: env
   `CORPAN_LLM_SYSPROMPT` or `adb shell setprop debug.corpan.sysprompt "..."`.

@@ -39,6 +39,7 @@ export default defineConfig({
     alias: {
       "@shared/ui": path.resolve(__dirname, "../shared/ui"),
       "@shared/state": path.resolve(__dirname, "../shared/state"),
+      "@shared/monetization": path.resolve(__dirname, "../shared/monetization/index.ts"),
       "zustand/vanilla": path.resolve(__dirname, "node_modules/zustand/esm/vanilla.mjs"),
     },
   },

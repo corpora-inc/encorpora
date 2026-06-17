@@ -51,7 +51,10 @@
     "cs": "چیک",
     "lt": "لتھوانیائی",
     "sk": "سلوواکی",
-    "sl": "سلووینیائی"
+    "sl": "سلووینیائی",
+    "jv": "جاوانی",
+    "su": "سوندانی",
+    "tl": "تاگالوگ"
   },
   "categories": {
     "travel": "سفر",
@@ -94,8 +97,8 @@
     "testTts": "نیچے والے بٹنوں سے TTS آزمائیں:",
     "showRomanization": "رومنائزیشن دکھائیں",
     "scrollNavigation": "سکرول نیویگیشن",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "پیک",
+    "stacks": "سٹیکس",
     "theme": "تھیم",
     "themeLight": "ہلکا",
     "themeDark": "گوڑھا",
@@ -308,10 +311,11 @@
       "joinDesc": "Corpán دی حمایت کرو تے سب کُجھ انلاک کرو۔ اختیاری، کدی وی۔",
       "subscribedTitle": "تُسی اِک Corpanista او",
       "subscribedDesc": "Corpán نوں اشتہار-مفت تے ودھدا رکھن لئی تہاڈا شکریہ۔",
-      "joinTitle": "Join the Corpanistas",
+      "joinTitle": "Corpanistas وچ شامل ہوو",
       "start": "کھوجنا شروع کرو",
       "subtitle": "Corpán اک نِکی اوپن سورس ٹیم نے بنایا اے۔ آؤ سلام کرو — تے جے تُسی ایہنوں پسند کردے او، تُسی ساڈی حمایت کر سکدے او۔",
-      "title": "تُسی تیار او"
+      "title": "تُسی تیار او",
+      "explore": "خود دریافت کرو"
     },
     "fork": {
       "child": {
@@ -368,7 +372,31 @@
     "voicePreviewAria": "{{name}} دا پیش نظارہ کرو",
     "voicePreviewSelected": "چُنیا گیا پیش نظارہ",
     "voiceRecommended": "تجویز کردہ",
-    "voiceSelectedCount": "{{total}} وچوں {{count}}"
+    "voiceSelectedCount": "{{total}} وچوں {{count}}",
+    "whatToStart": {
+      "title": "اسیں کِتھوں شروع کریے؟",
+      "subtitle": "شروع کرن لئی اک چُنو — باقی صرف اک ٹَیپ دی دوری تے اے۔",
+      "read": {
+        "label": "پڑھو",
+        "desc": "کہانیاں تے کتاباں وچ ڈُب جاؤ۔"
+      },
+      "study": {
+        "label": "پڑھائی کرو",
+        "desc": "مرتکز مشق نال اپنے لفظ ودھاؤ۔"
+      },
+      "playMusic": {
+        "label": "موسیقی وجاؤ",
+        "desc": "ڈیکاں تے اپنی بولی اَزماؤ۔"
+      },
+      "playGames": {
+        "label": "کھیڈو",
+        "desc": "مزیدار چیلنجاں راہیں سِکھو۔"
+      },
+      "surprise": {
+        "label": "مینوں حیران کرو!",
+        "desc": "مینوں کسے مزیدار تھاں لے چلو۔"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -565,7 +593,7 @@
     "feedbackButton": "GitHub تے فیڈبیک شیئر کرو"
   },
   "packs": {
-    "title": "Packs",
+    "title": "پیک",
     "available": "دستیاب",
     "emptyAvailable": "ہنوز کچھ دستیاب نہیں۔",
     "installed": "انسٹال شدہ",
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "حروف، نمبر، ڈیش یا انڈر سکور استعمال کرو۔",
     "affiliateChecking": "کوڈ چیک ہو رہا ہے...",
     "affiliateApplied": "کوڈ اس سبسکرپشن نال جڑ جائے گا۔",
-    "affiliateCodeHelp": "جے کسے نے تہانوں ایتھے بھیجیا اے، سبسکرائب کرن توں پہلاں اوہدا کوڈ درج کرو۔"
+    "affiliateCodeHelp": "جے کسے نے تہانوں ایتھے بھیجیا اے، سبسکرائب کرن توں پہلاں اوہدا کوڈ درج کرو۔",
+    "introPriceHeadline": "{{introPrice}} لئی {{period}}",
+    "introPriceThen": ", پھر {{price}}/{{period}}",
+    "perMonth": "مہینہ",
+    "perYear": "سال",
+    "startFreeTrial": "مفت آزمائش شروع کرو",
+    "trialFirstCharge": "{{period}}: پہلا چارج",
+    "trialHeadline": "{{period}} مفت",
+    "trialReassurance": "اس وقت کوئی ادائیگی نہیں · کسی وقت منسوخ کرو",
+    "trialThenPrice": ", پھر {{price}}/{{period}}",
+    "trialToday": "آج: شروع کرو"
   },
   "restore": {
     "button": "خریداریاں بحال کرو",
@@ -712,7 +750,8 @@
     "subhead": "ہر زبان وچ ہر کتاب نوں اَنلاک کرو۔ کوئی اشتہار نہیں۔ تہاڈا ڈیٹا تہاڈی ڈیوائس اُتے رہندا اے۔",
     "pitch": "اسیں اِک نِکی ٹیم آں تے ہر پیسہ Corpán وچ واپس لاندے آں۔ Corpanistas ایہنوں اشتہار-مفت تے ودھدا رکھدے نیں۔",
     "maybeLater": "شاید بعد وچ",
-    "continue": "جاری رکھو"
+    "continue": "جاری رکھو",
+    "dismiss": "ختم کرو"
   },
   "streak": {
     "title": "{{count}} دِناں دی لڑی"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "ایک زندہ شہر جو ہر ملاقات کو سبق بنا دیتا ہے۔"
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "جیہڑی زبان تسی سکھ رہے او، اوہنوں سیمپل کرو۔ سکریچ کرو جد تک دل دماغ وچ نہ بیٹھ جائے۔"
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "اپ ڈیٹ کرو",
     "updateNow": "ہن اپ ڈیٹ کرو",
     "versionLine": "ورژن {{version}} انسٹال کرن لئی تیار اے۔"
+  },
+  "streakBadge": {
+    "label": "{{days}}-روزہ سلسلہ"
+  },
+  "dailyLock": {
+    "title": "آج لئی {{count}} {{unit}}",
+    "streakActive": "{{days}}-روزہ سلسلہ — سلسلہ جاری رکھنے لئی کل واپس آؤ۔",
+    "streakStart": "سلسلہ جاری رکھنے لئی کل واپس آؤ۔",
+    "resetIn": "{{time}} وچ ری سیٹ ہووے گا",
+    "cta": "ہن Corpán Plus نال جاری رکھو",
+    "dismiss": "شاید بعد وچ",
+    "closeAria": "ختم کرو",
+    "countdownHm": "{{h}}گھنٹے {{m}}منٹ",
+    "countdownM": "{{m}}منٹ",
+    "countdownSoon": "کسی وی لمحے"
+  },
+  "code": {
+    "attributedUnverified": "کوڈ آپکی سبسکرپشن کے ساتھ منسلک ہو جائے گا۔",
+    "checkFailed": "چیک نہیں ہو سکا",
+    "checking": "کوڈ چیک ہو رہا ہے…",
+    "creditedTo": "{{partner}} کو جمع کر دیا گیا",
+    "fieldLabel": "آفر یا افیلیئیٹ کوڈ",
+    "help": "کوڈ ہے؟ اپنی آفر لاگو کرنے کے لئے داخل کرو۔",
+    "redeemUnavailable": "ریڈیم سکرین نہیں کھل سکی۔ دوبارہ کوشش کریں۔",
+    "redeemWithApple": "ایپل کے ساتھ ریڈیم کرو",
+    "redeeming": "ریڈیم کھول رہے ہیں…",
+    "retry": "دوبارہ کوشش کرو",
+    "subscribeWithDiscount": "سبسکرائب کرو ({{discount}})",
+    "redeemCode": "کوڈ ورتو",
+    "notApplied": "ایہہ کوڈ کوئی رعایت نہیں دیندا۔"
   }
 }

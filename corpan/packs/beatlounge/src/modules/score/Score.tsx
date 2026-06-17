@@ -1,0 +1,360 @@
+/**
+ * beatlounge — the SCORE editor: the melody-creation centerpiece. It edits the
+ * BOUND track's `notes` two ways without tapping every note:
+ *
+ *   • ROWS = SCALE DEGREES across ~2 octaves, resolved IN KEY via the resolver
+ *     (`scoreModel.degreeRows`). The shared <LaneGrid> renders them (one head +
+ *     a row of step cells you can still paint by hand). The head SELECTION (a
+ *     range or individual rows) targets the +/− layer dial, exactly like the
+ *     drum grid's lane selection targets a groove.
+ *
+ *   • THE +/− "LAYER" DIAL — the heart, mirroring the Grooves density dial:
+ *       − (sparser) thins the current melody (lowest-weight / off-beat first),
+ *       + (layer)   lays one more probabilistic melodic pass into the selected
+ *                   rows from the melody corpus (metric profile + transition
+ *                   table), additive, re-rolled each tap. Each tap is ONE undo
+ *                   step and only WRITES the grid (never auto-starts transport).
+ *
+ *   • ENDLESS auto-play (optional) — when ON and the global transport is playing,
+ *     re-generate a continuous, non-repeating melodic line filling the loop on
+ *     each loop wrap. Reuses the global transport (no second play button); OFF by
+ *     default. No LLM.
+ *
+ * Every placed note resolves through `degreeToPitch` against live harmony, so
+ * changing the song's mode/chords keeps the score in key.
+ */
+
+import { useEffect, useMemo, useRef, useState } from "react"
+import type { BeatloungeHost } from "../../contracts/module"
+import type { BeatloungeStore } from "../../store/store"
+import type { AudioFacade } from "../../contracts/audioFacade"
+import type { Id } from "../../model/document"
+import { useBeatloungeStore } from "../../store/store"
+import { findTrack, isInstrumentTrack } from "../../model/document"
+import { stepForTick, tickForStep } from "../../model/timing"
+import {
+  METRIC_PROFILES,
+  TRANSITION_TABLES,
+  type MetricProfile,
+  type TransitionTable,
+} from "../../music/melody"
+import { useAutoConfig, type AutoVariation } from "../../store/autoMelody"
+import { ct } from "../../i18n/strings"
+import { LaneGrid, type LaneGridLane } from "../track-studio/LaneGrid"
+import {
+  buildScoreView,
+  fillScoreCells,
+  buildScoreCommands,
+  type ScoreView,
+} from "./scoreModel"
+import "./score.css"
+
+export interface ScoreProps {
+  host: BeatloungeHost
+  store: BeatloungeStore
+  trackId: Id
+  /** The shared transport/playhead facade — supplied by the Instruments page so
+   *  auto-play can ride the GLOBAL transport. Optional: without it the editor
+   *  still layers + paints; only auto-play is unavailable. */
+  audio?: AudioFacade
+}
+
+/** ~2 octaves around the working tonic — singable, mostly-ascending register. */
+const OCTAVES = 2
+
+/** The Variation seed-policy values + their short, translatable labels. */
+const VARIATIONS: readonly AutoVariation[] = ["lock", "evolve", "new"]
+const variationLabel = (v: AutoVariation): string =>
+  v === "lock" ? ct("score.lock") : v === "evolve" ? ct("score.evolve") : ct("score.new")
+
+/** Density step per +/- tap (clamped 0..1 by the store). */
+const DENSITY_STEP = 0.15
+
+export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
+  const doc = useBeatloungeStore(store, (s) => s.doc)
+  const track = findTrack(doc, trackId)
+
+  // Local UI: the head selection (degree-row keys) + the live playhead step.
+  const [selected, setSelected] = useState<ReadonlySet<string>>(new Set())
+  const [playStep, setPlayStep] = useState(-1)
+
+  // Per-track Auto config (Feel/Motion/Density/Variation + the arm flag) lives in
+  // the persisted store — so the line keeps regenerating after you leave this
+  // screen, and the rig-level conductor (not this component) drives generation.
+  const auto = useAutoConfig(trackId)
+  const metricId = auto.metricId
+  const tableId = auto.tableId
+  const armed = auto.on
+
+  const metric: MetricProfile =
+    METRIC_PROFILES.find((m) => m.id === metricId) ?? METRIC_PROFILES[0]
+  const table: TransitionTable =
+    TRANSITION_TABLES.find((t) => t.id === tableId) ?? TRANSITION_TABLES[0]
+
+  // The grid view (rows = degrees, columns = steps), cells filled from the track.
+  const view: ScoreView | null = useMemo(() => {
+    if (!track || !isInstrumentTrack(track)) return null
+    const base = buildScoreView(doc, track.grid, { octaves: OCTAVES })
+    return fillScoreCells(base, track.notes, track.grid)
+  }, [doc, track])
+
+  // Live playhead → current step on this track's grid. (Auto generation now runs
+  // in the rig-level AutoConductor, not here, so it survives leaving the screen.)
+  const lastTick = useRef(-1)
+  useEffect(() => {
+    if (!audio) return
+    return audio.onPlayhead((tick) => {
+      const t = findTrack(store.vanilla.getState().doc, trackId)
+      setPlayStep(tick < 0 || !t ? -1 : stepForTick(tick, t.grid))
+      lastTick.current = tick
+    })
+  }, [audio, store, trackId])
+
+  if (!track || !isInstrumentTrack(track) || !view) {
+    return <div className="bl-grid-empty">{ct("score.noTrack")}</div>
+  }
+  const itrack = track
+
+  const anySolo = doc.tracks.some((t) => t.solo)
+  const silent = itrack.mute || (anySolo && !itrack.solo)
+
+  // ---- the shared LaneGrid's lane shape (degree rows keyed by degree index) --
+  const lanes: LaneGridLane[] = view.rows.map((r) => ({
+    key: r.key,
+    selectKey: r.key,
+    label: r.label,
+    cells: r.cells.map((c) => ({ on: c.on, velocity: c.velocity })),
+  }))
+
+  const isCellOn = (rowIndex: number, step: number): boolean => {
+    const row = view.rows[rowIndex]
+    if (!row) return false
+    const cur = findTrack(store.vanilla.getState().doc, trackId)
+    if (!cur || !isInstrumentTrack(cur)) return false
+    const tick = tickForStep(step, cur.grid)
+    return cur.notes.some((n) => n.tick === tick && n.pitch === row.midi)
+  }
+
+  const setCell = (rowIndex: number, step: number, on: boolean) => {
+    const row = view.rows[rowIndex]
+    if (!row) return
+    // A hand edit on an armed track wins: disarm first so the conductor doesn't
+    // overwrite the manual touch next wrap. The last previewed line stays put;
+    // this edit lands on top as a normal, undoable dispatch.
+    if (auto.on) auto.arm(false)
+    const cur = findTrack(store.vanilla.getState().doc, trackId)
+    if (!cur || !isInstrumentTrack(cur)) return
+    const tick = tickForStep(step, cur.grid)
+    const existing = cur.notes.find((n) => n.tick === tick && n.pitch === row.midi)
+    if (on && !existing) {
+      store.dispatch({
+        t: "addNote",
+        trackId,
+        note: { tick, duration: gridStepTicks(cur.grid), pitch: row.midi, velocity: 0.85 },
+      })
+    } else if (!on && existing) {
+      store.dispatch({ t: "removeNote", trackId, noteId: existing.id })
+    }
+  }
+
+  const toggleLane = (selectKey: string) => {
+    setSelected((cur) => {
+      const next = new Set(cur)
+      if (next.has(selectKey)) next.delete(selectKey)
+      else next.add(selectKey)
+      return next
+    })
+  }
+
+  // ---- the +/− layer dial — one undo batch per tap --------------------------
+  const runDial = (op: "add" | "remove") => {
+    // A manual layer tap on an armed track wins: disarm so the conductor stops
+    // overwriting it. The +/- batch below stays a single undoable edit + toast.
+    if (auto.on) auto.arm(false)
+    const before = store.vanilla.getState().doc
+    const seed = (Math.floor(Math.random() * 0x7fffffff) ^ Date.now()) >>> 0
+    const result = buildScoreCommands(store.vanilla.getState().doc, {
+      trackId,
+      op,
+      selectedRows: selected,
+      metric,
+      table,
+      octaves: OCTAVES,
+      seed,
+    })
+    if (result.commands.length === 0) {
+      host.toast(result.summary || ct("score.nothingToApply"))
+      return
+    }
+    store.dispatch({ t: "batch", commands: result.commands, label: `score-${op}` })
+    host.toast(result.summary, {
+      undo: () => store.vanilla.getState().doc !== before && store.undo(),
+    })
+  }
+
+  const selCount = selected.size
+
+  return (
+    <div className="bl-score">
+      {/* ---- the +/− layer dial (primary) ---- */}
+      <div className="bl-score-bar" data-bl-nocapture>
+        <div
+          className="bl-score-dial"
+          role="group"
+          aria-label={ct("score.layerDial")}
+        >
+          <button
+            type="button"
+            className="bl-score-dial-btn"
+            onClick={() => runDial("remove")}
+            aria-label={ct("score.sparser")}
+            title={ct("score.sparserHint")}
+          >
+            <MinusGlyph />
+          </button>
+          <span className="bl-score-dial-label" aria-hidden="true">
+            {ct("score.layer")}
+          </span>
+          <button
+            type="button"
+            className="bl-score-dial-btn is-primary"
+            onClick={() => runDial("add")}
+            aria-label={ct("score.denser")}
+            title={
+              selCount > 0
+                ? ct("score.denserSelectedHint")
+                : ct("score.denserAllHint")
+            }
+          >
+            <PlusGlyph />
+          </button>
+        </div>
+
+        {/* corpus picks — feel (metric) + motion (transition). Icon-light. */}
+        <div className="bl-score-picks" data-bl-nocapture>
+          <select
+            className="bl-select"
+            aria-label={ct("score.feel")}
+            value={metricId}
+            onChange={(e) => auto.setOption({ metricId: e.target.value })}
+          >
+            {METRIC_PROFILES.map((m) => (
+              <option key={m.id} value={m.id}>
+                {shortName(m.id)}
+              </option>
+            ))}
+          </select>
+          <select
+            className="bl-select"
+            aria-label={ct("score.motion")}
+            value={tableId}
+            onChange={(e) => auto.setOption({ tableId: e.target.value })}
+          >
+            {TRANSITION_TABLES.map((t) => (
+              <option key={t.id} value={t.id}>
+                {shortName(t.id)}
+              </option>
+            ))}
+          </select>
+          {audio && (
+            <button
+              type="button"
+              className={`bl-chip${armed ? " is-armed" : ""}`}
+              aria-pressed={armed}
+              onClick={() => auto.arm(!armed)}
+              title={ct("score.autoHint")}
+            >
+              {ct("score.auto")}
+            </button>
+          )}
+
+          {/* Armed-only: the headline Variation policy + a Density stepper. Shown
+              only when it matters; no transient/status text that reflows the grid. */}
+          {audio && armed && (
+            <>
+              <div
+                className="bl-seg"
+                role="group"
+                aria-label={ct("score.variation")}
+                data-bl-nocapture
+              >
+                {VARIATIONS.map((v) => (
+                  <button
+                    key={v}
+                    type="button"
+                    className={`bl-seg-btn${auto.variation === v ? " is-on" : ""}`}
+                    aria-pressed={auto.variation === v}
+                    onClick={() => auto.setOption({ variation: v })}
+                  >
+                    {variationLabel(v)}
+                  </button>
+                ))}
+              </div>
+              <div
+                className="bl-score-dial"
+                role="group"
+                aria-label={ct("score.density")}
+                data-bl-nocapture
+              >
+                <button
+                  type="button"
+                  className="bl-score-dial-btn"
+                  aria-label={ct("score.sparser")}
+                  onClick={() => auto.setOption({ density: auto.density - DENSITY_STEP })}
+                >
+                  <MinusGlyph />
+                </button>
+                <button
+                  type="button"
+                  className="bl-score-dial-btn is-primary"
+                  aria-label={ct("score.busier")}
+                  onClick={() => auto.setOption({ density: auto.density + DENSITY_STEP })}
+                >
+                  <PlusGlyph />
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* ---- the degree grid (rows = scale degrees, in key) ---- */}
+      <div className="bl-grid-scroll bl-score-scroll">
+        <LaneGrid
+          lanes={lanes}
+          steps={view.steps}
+          stepsPerBeat={view.stepsPerBeat}
+          playStep={playStep}
+          silent={silent}
+          selected={selected}
+          onToggleLane={toggleLane}
+          setCell={setCell}
+          isCellOn={isCellOn}
+        />
+      </div>
+    </div>
+  )
+}
+
+/** One grid cell's ticks (note duration when painting a cell by hand). */
+const gridStepTicks = (grid: Parameters<typeof tickForStep>[1]): number =>
+  tickForStep(1, grid)
+
+/** Strip the "metric:" / "transition:" prefix for a compact, humane option. */
+const shortName = (id: string): string => {
+  const tail = id.split(":").pop() ?? id
+  return tail.replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase())
+}
+
+// ---------------------------------------------------------------- glyphs
+const MinusGlyph = () => (
+  <svg className="bl-score-dial-glyph" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+    <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+  </svg>
+)
+const PlusGlyph = () => (
+  <svg className="bl-score-dial-glyph" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+    <line x1="5" y1="10" x2="15" y2="10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+    <line x1="10" y1="5" x2="10" y2="15" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+  </svg>
+)

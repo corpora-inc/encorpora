@@ -28,12 +28,13 @@ import { useTranslation } from "react-i18next";
 import StacksManager from "./StacksManager";
 import { DismissableTip } from "./DismissableTip";
 import { JumpToTTSButton } from "./JumpToTTSButton";
+import { TTSSettingsDrawer } from "./TTSSettingsDrawer";
 import { usePaywallStore } from "@/store/paywall";
 import { useEntitlementStore } from "@/store/entitlements";
 import { manageSubscription } from "@/contentPacks/purchase";
 import { useCatalogStore } from "@/store/catalog";
 import { useInstallContext } from "@/contentPacks/InstallContext";
-import { getTopBarPaddingTop } from "@/util/browser";
+import { getTopBarPaddingTop, glass } from "@/util/browser";
 
 /** Developer manifest-URL install (revealed after the 7-tap unlock). Lifted
  *  out of the retired Packs tab. */
@@ -157,7 +158,7 @@ export function SettingsModal({
 
         {/* Sticky header: title + close (tabs removed with the Packs tab). */}
         <div
-          className="sticky top-0 z-[1001] -mx-4 md:-mx-8 px-4 md:px-8 pb-2 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          className={`sticky top-0 z-[1001] -mx-4 md:-mx-8 px-4 md:px-8 pb-2 ${glass("bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60", "bg-background/90")}`}
           style={{ paddingTop: getTopBarPaddingTop() }}
         >
           <div className="flex items-center justify-between gap-2">
@@ -277,6 +278,8 @@ export function SettingsModal({
             )
           ) : null}
 
+          {/* About Corpán — version + a single unified list of links (channels,
+              share, support). The old onboarding "Aloha" socials live here now. */}
           <About />
         </div>
 
@@ -287,6 +290,11 @@ export function SettingsModal({
             </div>
           </div>
         ) : null}
+
+        {/* Voice tuning, in place. Opened by JumpToTTSButton; vaul drawer sits
+            above this Radix dialog so it stays interactive (the old full-screen
+            overlay was trapped by the dialog's pointer-events lock). */}
+        <TTSSettingsDrawer />
       </DialogContent>
     </Dialog>
   );

@@ -40,7 +40,6 @@ import { useInstallContext } from "@/contentPacks/InstallContext";
 import { usePhrasePackCatalog } from "@/hooks/usePhrasePackCatalog";
 import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 import { useCatalogStore } from "@/store/catalog";
-import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { useEntitlementStore } from "@/store/entitlements";
 import { useSettingsStore } from "@/store/settings";
 import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
@@ -55,12 +54,6 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
 
     const lastFetched = useCatalogStore((s) => s.lastFetched);
     const isFetching = useCatalogStore((s) => s.isFetching);
-    // The phrase-pack catalog is its own store (Phase B′ moved phrase
-    // packs off the v3 catalog onto a dedicated S3 catalog). Both have
-    // to be considered when gating the Continue button so we don't
-    // stealth-skip the user past starter selection during a slow first
-    // online load.
-    const ppLastFetched = usePhrasePackCatalogStore((s) => s.lastFetched);
     const isOnline = useOnlineStatus();
     const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
 
@@ -173,10 +166,17 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
             footer={
                 // No Skip: Continue with nothing selected installs nothing (==
                 // skip). One button matches the rest of the onboarding footers.
+                //
+                // Continue is ALWAYS enabled. It used to be gated on the
+                // phrase-pack catalog having loaded — but when that fetch hung
+                // or failed while online, the button stayed disabled forever
+                // and trapped the user mid-onboarding, unable to reach the
+                // offline-capable app (the embedded corpus works with zero
+                // network). Onboarding must never depend on a network request
+                // to make forward progress.
                 <Button
                     className="w-full !h-12"
                     aria-label="Continue"
-                    disabled={!(!isOnline || !!ppLastFetched || hasStarter)}
                     onClick={handleContinue}
                 >
                     {t("onboarding.continue")}

@@ -1,17 +1,25 @@
 import { addPluginListener, invoke } from "@tauri-apps/api/core"
 import { listen } from "@tauri-apps/api/event"
 
-import { speakWithStackPrefs, speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs"
+import {
+  speakWithStackPrefs,
+  speakConcurrentWithStackPrefs,
+  getPreferredVoiceId,
+} from "@/util/speakWithStackPrefs"
 import { getVoicesCached, langMatchScore, sortVoicesWithLangBias } from "@/util/tts-voices"
 import { createVoiceTTS } from "@/util/speak"
 import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
 import { useRatingStore } from "@/store/rating"
+import { useEntitlementStore } from "@/store/entitlements"
+import { usePaywallStore } from "@/store/paywall"
+import type { PaywallSurface } from "@/store/paywall"
 import { usePhrasePacksStore } from "@/store/phrasePacks"
 import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
 import { rankProviders } from "@shared/asr"
+import { getPackStreak } from "@shared/streak"
 import type { StackConfigPatch } from "./types"
 import type {
   AsrApi,
@@ -19,6 +27,7 @@ import type {
   AsrCaptureMode,
   AsrProvider,
   AsrSession,
+  ContentPackEntitlementSnapshot,
   HostApi,
   LlmApi,
   ModelBudget,
@@ -150,6 +159,27 @@ const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
   )
 }
 
+/**
+ * Build the entitlement snapshot handed to packs (via `HostApi.entitlement` AND
+ * the `__CORPAN_ENTITLEMENT` global). Single source of truth for the shape so
+ * the typed seam and the back-compat global never drift.
+ */
+export const buildEntitlementSnapshot = (): ContentPackEntitlementSnapshot => {
+  const s = useEntitlementStore.getState()
+  return {
+    plus: s.subscription.active,
+    subjectId: s.subjectId,
+    entitlementToken: s.entitlementToken,
+    subscription: {
+      active: s.subscription.active,
+      plan: s.subscription.plan,
+      expiresAt: s.subscription.expiresAt,
+      autoRenew: s.subscription.autoRenew,
+    },
+    checkedAt: s.lastRefreshed,
+  }
+}
+
 export const createHostApi = (packId?: string): HostApi => {
   let disposed = false
 
@@ -182,6 +212,70 @@ export const createHostApi = (packId?: string): HostApi => {
     }
     const { rate } = useSettingsStore.getState()
     return await speakConcurrentWithStackPrefs(uiCode, text, rate)
+  }
+
+  // Render TTS to a RAW AUDIO buffer instead of speaking it (the music-pack
+  // capture path — no speaker playback ⇒ no ducking). Bridges to the native
+  // `synthesize_to_buffer` command (iOS AVSpeechSynthesizer.write / Android
+  // synthesizeToFile); the native side returns base64 PCM/WAV + metadata, which
+  // we decode to an ArrayBuffer for the pack. Rejects on hosts/platforms that
+  // don't support it (desktop) — packs feature-detect + degrade.
+  const synthesizeToBuffer = async (
+    text: string,
+    lang: string,
+    voiceId?: string,
+  ): Promise<{
+    pcm: ArrayBuffer
+    sampleRate: number
+    channels: number
+    durationMs: number
+    voiceId: string
+    codec: "wav" | "pcm-i16" | "pcm-f32"
+  }> => {
+    const { rate } = useSettingsStore.getState()
+    // If the pack didn't pin a voice, reuse the stack's preferred voice so the
+    // rendered audio matches what `speak()` would have sounded like.
+    const resolvedVoiceId = voiceId ?? (await getPreferredVoiceId(lang))
+
+    const res = await invoke<{
+      pcmBase64: string
+      sampleRate: number
+      channels: number
+      durationMs: number
+      codec: string
+      voiceId: string
+    }>("plugin:tts|synthesize_to_buffer", {
+      args: {
+        text,
+        language: lang,
+        rate,
+        voiceId: resolvedVoiceId,
+      },
+    })
+
+    // base64 → ArrayBuffer (atob is available in the WKWebView/WebView context).
+    const binary = atob(res.pcmBase64)
+    const len = binary.length
+    const bytes = new Uint8Array(len)
+    for (let i = 0; i < len; i++) {
+      bytes[i] = binary.charCodeAt(i)
+    }
+
+    const codec: "wav" | "pcm-i16" | "pcm-f32" =
+      res.codec === "pcm-i16"
+        ? "pcm-i16"
+        : res.codec === "pcm-f32"
+          ? "pcm-f32"
+          : "wav"
+
+    return {
+      pcm: bytes.buffer,
+      sampleRate: res.sampleRate,
+      channels: res.channels,
+      durationMs: res.durationMs,
+      voiceId: res.voiceId || resolvedVoiceId || "",
+      codec,
+    }
   }
 
   const dispose = () => {
@@ -298,6 +392,12 @@ export const createHostApi = (packId?: string): HostApi => {
       }
     },
     load: async (args) => {
+      // No blanket RAM floor here anymore: the tutor now ships a range of model
+      // sizes and the pack picks one to fit the device (see modelTiering.ts),
+      // disabling sizes that won't run and gating "try-anyway" picks behind a
+      // warning. The hard backstop against the uncatchable native SIGSEGV from a
+      // failed ggml allocation lives in the plugin (per-model footprint vs total
+      // RAM in `load_model`), which is authoritative even for direct callers.
       // Tauri wraps command params under the param name (`args: LoadArgs`),
       // so the payload must be `{ args: {...} }` (same convention as stt).
       try {
@@ -845,6 +945,9 @@ export const createHostApi = (packId?: string): HostApi => {
       const { rate } = useSettingsStore.getState()
       await createVoiceTTS(uiCode)(text, rate, voiceId)
     },
+    synthesizeToBuffer: async (text: string, lang: string, voiceId?: string) => {
+      return await synthesizeToBuffer(text, lang, voiceId)
+    },
     // Native clipboard via tauri-plugin-clipboard-manager — the web
     // `navigator.clipboard` API is blocked in the WKWebView (NotAllowedError),
     // so packs route copy through here.
@@ -1020,6 +1123,52 @@ export const createHostApi = (packId?: string): HostApi => {
     },
     notifyUtterance: () => {
       useRatingStore.getState().incrementUtteranceCount()
+    },
+    // The CURRENT pack's visit streak (the host already recorded the visit at
+    // the pack-enter boundary; this is a read-only retention read). Falls back to
+    // an all-zero state when this host was created without a pack id.
+    getStreak: () =>
+      packId
+        ? getPackStreak(packId)
+        : { current: 0, longest: 0, lastDay: "" },
+    entitlement: {
+      isSubscribed: () => useEntitlementStore.getState().subscription.active,
+      snapshot: () => buildEntitlementSnapshot(),
+      onChange: (cb) => {
+        let prev = useEntitlementStore.getState().subscription
+        // Fire on any change to the subscription / subject / token so packs
+        // see purchases, restores, and refreshes. Compares the fields that
+        // feed the snapshot to avoid spurious callbacks on unrelated writes.
+        return useEntitlementStore.subscribe((state) => {
+          const next = state.subscription
+          if (next !== prev) {
+            prev = next
+            cb(buildEntitlementSnapshot())
+          }
+        })
+      },
+    },
+    requestPaywall: async (context) => {
+      // Reuses the paywall store's own guards (subscribed / IAP unavailable /
+      // frequency-cap) and returns whether the sheet ACTUALLY opened — the
+      // synchronous truth a hard gate needs. Pack id defaults to this pack.
+      return usePaywallStore.getState().openPaywall({
+        surface: context.surface as PaywallSurface,
+        packId: context.packId ?? packId,
+        bookTitle: context.bookTitle,
+        bookId: context.bookId,
+        language: context.language,
+        theme: context.theme as import("@/store/paywall").PaywallTheme | undefined,
+      })
+    },
+    showRatingPrompt: () => {
+      // The OS-native in-app review sheet (iOS StoreKit / Android Play In-App
+      // Review) is the canonical "rate us" surface — never our own modal as a
+      // precondition, never gating any functionality. The OS is the real
+      // throttle (iOS ~3×/year, and it may show nothing); the rating store adds
+      // only a soft local backstop (minimum engagement + a long cooldown).
+      // Fire-and-forget; this returns immediately.
+      useRatingStore.getState().maybeRequestNativeReview()
     },
     phrasePacks: {
       getInstalled: () => {

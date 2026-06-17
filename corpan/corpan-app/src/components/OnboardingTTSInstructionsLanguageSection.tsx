@@ -76,6 +76,8 @@ export function OnboardingTTSInstructionsLanguageSection({
 
     const trDial = (key: string) =>
         (t(`dialects.${key}`, { defaultValue: "" }) as unknown as string) || "";
+    const trLang = (key: string) =>
+        (t(`languages.${key}`, { defaultValue: "" }) as unknown as string) || "";
 
     const voicesUnique = useMemo(
         () => uniqBy(voices, (v) => `${v.id}|${v.language}`),
@@ -94,12 +96,12 @@ export function OnboardingTTSInstructionsLanguageSection({
         });
     }, [voicesUnique]);
 
-    const sectionLabel = resolveDialectLabel(code, trDial);
+    const sectionLabel = resolveDialectLabel(code, trDial, trLang);
     const voicesWithPretty = useMemo(
         () =>
             voicesSorted.map((v) => ({
                 ...v,
-                __prettyLang: resolveDialectLabel(v.language || code, trDial),
+                __prettyLang: resolveDialectLabel(v.language || code, trDial, trLang),
             })),
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [voicesSorted, code]

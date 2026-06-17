@@ -1,0 +1,435 @@
+/**
+ * beatlounge — the piano-roll IMMERSIVE view: a full melodic note editor.
+ *
+ * One row per MIDI pitch across a two-octave window (scale-highlighted, C-major
+ * by default; accidentals are dimmer but always reachable). Columns are the
+ * steps of `stepsInLoop(loopLengthTicks, track.grid)`. A single pointer stroke
+ * paints / erases notes (the stroke's first cell sets add-vs-erase, exactly
+ * like the step grid). The live playhead column lights from `audio.onPlayhead`.
+ *
+ * Velocity: long-press a lit cell opens a row velocity control; while a note is
+ * selected the foot exposes a velocity Knob that edits it live. The window can
+ * be shifted by an octave to reach the whole keyboard.
+ *
+ * Header wires the registry actions (clear / arpeggiate / transpose).
+ */
+
+import { useEffect, useMemo, useRef, useState } from "react"
+import type { BeatloungeHost } from "../../contracts/module"
+import type { BeatloungeStore } from "../../store/store"
+import type { AudioFacade } from "../../contracts/audioFacade"
+import { useBeatloungeStore } from "../../store/store"
+import {
+  findTrack,
+  isInstrumentTrack,
+  type Id,
+  type InstrumentTrack,
+  type Track,
+} from "../../model/document"
+import { stepForTick, tickForStep } from "../../model/timing"
+import { activePitches } from "../../music/resolver"
+import { Glyph, Knob } from "../../bl-ui"
+import { ct } from "../../i18n/strings"
+import { ClearButton } from "../_shared/ClearButton"
+import {
+  HeaderStatusLine,
+  useHeaderStatus,
+  withHeaderToast,
+} from "../_shared/HeaderStatus"
+import { TrackNameEdit } from "../TrackNameEdit"
+import {
+  getStoredInstrumentTrackId,
+  seedSelectionOnMount,
+  useSelectedInstrument,
+} from "../../store/selectedInstrument"
+import { newInstrumentTrackInit } from "../instruments/addTrack"
+import {
+  autoWindow,
+  buildRollView,
+  ROW_SPAN,
+  pitchLabel,
+  type RollCell,
+} from "./pitchModel"
+import { clearAction } from "./actions"
+import { runAction } from "../runAction"
+
+interface Props {
+  host: BeatloungeHost
+  store: BeatloungeStore
+  audio: AudioFacade
+  /** The melodic track to open initially; the in-view switcher can change it. */
+  trackId: Id
+}
+
+const LONG_PRESS_MS = 360
+
+/** A melodic (non-drum) instrument track — the only tracks the roll edits. */
+const isMelodicTrack = (t: Track): boolean =>
+  isInstrumentTrack(t) && t.instrument.kind !== "drumSampler"
+
+export const PianoRollImmersive = ({ host, store, audio, trackId: initialTrackId }: Props) => {
+  const doc = useBeatloungeStore(store, (s) => s.doc)
+  // The roll targets ONE melodic track at a time; the switcher (chips) below
+  // moves between the N synth tracks. The binding is the SHARED, persisted
+  // selection (same slice the Instruments page / ribbon / FX use) so switching to
+  // Synth 3 here, leaving, and coming back returns to Synth 3 — not Synth 1. The
+  // resolver keeps it valid (falls back to the first melodic track if it vanished).
+  const { trackId: selectedTrackId, select } = useSelectedInstrument(doc)
+  const seededRef = useRef(false)
+  if (!seededRef.current) {
+    seededRef.current = true
+    const seed = seedSelectionOnMount(
+      doc,
+      getStoredInstrumentTrackId(doc.id),
+      initialTrackId
+    )
+    if (seed) select(seed)
+  }
+  // selectedTrackId is undefined only when the doc has NO melodic track — fall
+  // back to the mount's id (always defined); the early return below handles the
+  // genuinely-empty case. Keeps `trackId` a plain Id for the editor.
+  const trackId = selectedTrackId ?? initialTrackId
+  const setTrackId = select
+  const melodicTracks = useMemo(() => doc.tracks.filter(isMelodicTrack), [doc.tracks])
+
+  // Inline streaming status — toasts type out in the header by the track light.
+  const status = useHeaderStatus()
+  const localHost = useMemo(
+    () => withHeaderToast(host, status.notify),
+    [host, status.notify]
+  )
+
+  const addMelodicTrack = () => {
+    // Existing names → a unique "Synth N"; bind the roll to the new track.
+    const init = newInstrumentTrackInit(doc.tracks.map((t) => t.name))
+    store.dispatch({ t: "addTrack", track: init })
+    if (init.id) setTrackId(init.id)
+  }
+
+  const track = findTrack(doc, trackId)
+  const [playStep, setPlayStep] = useState(-1)
+  // The bottom pitch of the visible window; framed on the melody initially.
+  const [low, setLow] = useState<number | null>(null)
+  // The currently-selected note (for the velocity control), by id.
+  const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null)
+
+  const paintMode = useRef<null | "add" | "remove">(null)
+  const touched = useRef(new Set<string>())
+  const longTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Frame the window on the bound track's melody — initially and whenever the
+  // switcher moves to a different track (so each synth opens in view).
+  useEffect(() => {
+    const t = findTrack(store.vanilla.getState().doc, trackId)
+    if (t && isInstrumentTrack(t)) setLow(autoWindow(t))
+    setSelectedNoteId(null)
+  }, [store, trackId])
+
+  // Live playhead → current step on this track's grid.
+  useEffect(() => {
+    return audio.onPlayhead((tick) => {
+      const t = findTrack(store.vanilla.getState().doc, trackId)
+      setPlayStep(tick < 0 || !t ? -1 : stepForTick(tick, t.grid))
+    })
+  }, [audio, store, trackId])
+
+  useEffect(
+    () => () => {
+      if (longTimer.current) clearTimeout(longTimer.current)
+    },
+    []
+  )
+
+  // The active pitch SET from the GLOBAL harmony — the piano-roll highlights
+  // these rows, so changing the song's mode/chords moves the highlight live.
+  const harmony = useMemo(() => {
+    const ap = activePitches(doc, 0)
+    return { pcSet: new Set(ap.pcs), tonicPc: ap.tonicPc }
+  }, [doc])
+
+  const view = useMemo(
+    () =>
+      track && isInstrumentTrack(track) && low != null
+        ? buildRollView(doc, track, {
+            low,
+            span: ROW_SPAN,
+            pcSet: harmony.pcSet,
+            tonicPc: harmony.tonicPc,
+          })
+        : null,
+    [doc, track, low, harmony]
+  )
+
+  if (!track || !isInstrumentTrack(track) || view == null || low == null) {
+    return <div className="bl-grid-empty">{ct("roll.noTrack")}</div>
+  }
+
+  const cellOf = (pitch: number, step: number): RollCell | null => {
+    const cur = findTrack(store.vanilla.getState().doc, trackId)
+    if (!cur || !isInstrumentTrack(cur)) return null
+    const tick = tickForStep(step, cur.grid)
+    const note = cur.notes.find((n) => n.tick === tick && n.pitch === pitch)
+    return note
+      ? { on: true, velocity: note.velocity, noteId: note.id }
+      : { on: false, velocity: 0.7 }
+  }
+
+  const setCell = (pitch: number, step: number, on: boolean) => {
+    const cur = cellOf(pitch, step)
+    if (!cur || cur.on === on) return // already in target state — no churn
+    store.dispatch({ t: "toggleStep", trackId, step, pitch, velocity: 0.78 })
+  }
+
+  const clearLongTimer = () => {
+    if (longTimer.current) {
+      clearTimeout(longTimer.current)
+      longTimer.current = null
+    }
+  }
+
+  const onCellDown = (pitch: number, step: number) => {
+    const cur = cellOf(pitch, step)
+    const isOn = !!cur?.on
+    paintMode.current = isOn ? "remove" : "add"
+    touched.current = new Set([`${pitch}:${step}`])
+    setCell(pitch, step, !isOn)
+    host.previewTrack(trackId, 0.85)
+
+    // Long-press an existing note ⇒ select it for velocity editing instead of
+    // toggling it off. We pre-armed "remove"; if the long-press fires we undo
+    // the (not-yet-applied) erase by re-adding and selecting.
+    if (isOn && cur?.noteId) {
+      const noteId = cur.noteId
+      clearLongTimer()
+      longTimer.current = setTimeout(() => {
+        paintMode.current = null
+        // Re-light the note we just removed and select it.
+        const exists = findTrack(store.vanilla.getState().doc, trackId)
+        if (exists && isInstrumentTrack(exists)) {
+          const tick = tickForStep(step, exists.grid)
+          if (!exists.notes.some((n) => n.tick === tick && n.pitch === pitch)) {
+            store.dispatch({ t: "toggleStep", trackId, step, pitch, velocity: cur.velocity })
+          }
+        }
+        const reAdded = findTrack(store.vanilla.getState().doc, trackId)
+        const tick = tickForStep(step, exists?.grid ?? track.grid)
+        const note =
+          reAdded && isInstrumentTrack(reAdded)
+            ? reAdded.notes.find((n) => n.tick === tick && n.pitch === pitch)
+            : undefined
+        setSelectedNoteId(note?.id ?? noteId)
+        localHost.toast(ct("roll.noteSelected", { note: pitchLabel(pitch) }), undefined)
+      }, LONG_PRESS_MS)
+    }
+  }
+
+  const onCellEnter = (pitch: number, step: number) => {
+    if (!paintMode.current) return
+    clearLongTimer()
+    const key = `${pitch}:${step}`
+    if (touched.current.has(key)) return
+    touched.current.add(key)
+    setCell(pitch, step, paintMode.current === "add")
+  }
+
+  const endStroke = () => {
+    clearLongTimer()
+    paintMode.current = null
+    touched.current.clear()
+  }
+
+  const stepsPerBeat = view.stepsPerBeat
+  const anySolo = doc.tracks.some((t) => t.solo)
+  const silent = track.mute || (anySolo && !track.solo)
+
+  const shiftWindow = (delta: number) => {
+    setLow((prev) => {
+      const base = prev ?? low
+      return Math.max(0, Math.min(127 - (ROW_SPAN - 1), base + delta))
+    })
+  }
+
+  const selectedNote =
+    selectedNoteId != null ? track.notes.find((n) => n.id === selectedNoteId) : undefined
+
+  return (
+    <div className="bl-roll" onPointerUp={endStroke} onPointerLeave={endStroke}>
+      <div className="bl-grid-toolbar" data-bl-nocapture>
+        <TrackSwitcher
+          tracks={melodicTracks}
+          activeId={trackId}
+          onPick={setTrackId}
+          onAdd={addMelodicTrack}
+        />
+        <div className="bl-grid-actions">
+          <TrackNameEdit
+            store={store}
+            trackId={track.id}
+            name={track.name}
+            color={track.color}
+            className="bl-grid-title"
+          />
+          <HeaderStatusLine ctl={status} />
+          <ClearButton
+            onClear={() => {
+              const before = store.vanilla.getState().doc
+              const r = runAction(store, clearAction, { doc, targetTrackId: trackId })
+              if (r.commands.length) {
+                setSelectedNoteId(null)
+                localHost.toast(r.summary, {
+                  undo: () => store.vanilla.getState().doc !== before && store.undo(),
+                })
+              }
+            }}
+          />
+        </div>
+      </div>
+
+      <div className="bl-roll-frame">
+        <div className="bl-roll-octave" data-bl-nocapture>
+          <button
+            type="button"
+            className="bl-icon-btn"
+            aria-label={ct("roll.shiftUpOctave")}
+            onClick={() => shiftWindow(12)}
+          >
+            ▲
+          </button>
+          <button
+            type="button"
+            className="bl-icon-btn"
+            aria-label={ct("roll.shiftDownOctave")}
+            onClick={() => shiftWindow(-12)}
+          >
+            ▼
+          </button>
+        </div>
+
+        <div
+          className={`bl-roll-grid${silent ? " is-silent" : ""}`}
+          style={{ ["--bl-steps" as string]: String(view.steps) }}
+        >
+          {view.rows.map((row, r) => (
+            <div
+              className={
+                "bl-roll-row" +
+                (row.inScale ? " is-scale" : "") +
+                (row.accidental ? " is-accidental" : "") +
+                (row.tonic ? " is-tonic" : "")
+              }
+              key={row.pitch}
+              role="row"
+            >
+              <span className="bl-roll-key" data-bl-nocapture aria-hidden="true">
+                {row.tonic ? row.label : ""}
+              </span>
+              <div className="bl-roll-cells">
+                {view.cells[r].map((cell, s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    role="gridcell"
+                    aria-pressed={cell.on}
+                    aria-label={ct("roll.cellLabel", { note: row.label, step: String(s + 1) })}
+                    className={
+                      "bl-roll-cell" +
+                      (cell.on ? " is-on" : "") +
+                      (s === playStep ? " is-active" : "") +
+                      (s % stepsPerBeat === 0 ? " is-beat" : "") +
+                      (cell.noteId === selectedNoteId && cell.on ? " is-selected" : "")
+                    }
+                    data-bl-nocapture
+                    style={
+                      cell.on
+                        ? ({ "--bl-cell-vel": String(0.4 + cell.velocity * 0.6) } as React.CSSProperties)
+                        : undefined
+                    }
+                    onPointerDown={(e) => {
+                      if (e.button != null && e.button > 0) return
+                      onCellDown(row.pitch, s)
+                    }}
+                    onPointerEnter={(e) => {
+                      if (e.buttons & 1) onCellEnter(row.pitch, s)
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bl-grid-foot" data-bl-nocapture>
+        {selectedNote ? (
+          <Knob
+            label={ct("roll.velocity")}
+            value={selectedNote.velocity}
+            min={0.05}
+            max={1}
+            step={0.01}
+            defaultValue={0.78}
+            format={(v) => `${Math.round(v * 100)}`}
+            onChange={(v) =>
+              store.dispatch({
+                t: "editNote",
+                trackId,
+                noteId: selectedNote.id,
+                patch: { velocity: v },
+              })
+            }
+          />
+        ) : (
+          <span className="bl-roll-hint">{ct("roll.velocityHint")}</span>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ----------------------------------------------------------- track switcher
+/**
+ * Chips of the N melodic (synth) tracks + an Add affordance. The active track is
+ * marked; tapping a chip switches the roll to it. This is the missing "how do I
+ * get to my other synth tracks" — the same shape as the instruments/analog bars.
+ */
+const TrackSwitcher = ({
+  tracks,
+  activeId,
+  onPick,
+  onAdd,
+}: {
+  tracks: Track[]
+  activeId: Id
+  onPick: (id: Id) => void
+  onAdd: () => void
+}) => (
+  <div className="bl-roll-tracks" data-bl-nocapture>
+    {tracks.map((t) => (
+      <button
+        key={t.id}
+        type="button"
+        className={`bl-chip${t.id === activeId ? " is-on" : ""}`}
+        onClick={() => onPick(t.id)}
+      >
+        <span className="bl-dot" style={{ background: t.color ?? "var(--bl-accent)" }} />
+        {t.name}
+      </button>
+    ))}
+    <button
+      type="button"
+      className="bl-roll-add"
+      onClick={onAdd}
+      aria-label={ct("roll.addSynthTrack")}
+      title={ct("roll.addSynthTrack")}
+    >
+      <Glyph name="wave" size={14} />
+      <span>{ct("roll.add")}</span>
+    </button>
+  </div>
+)
+
+/** Read whether the (pitch, step) cell is lit — used by tests/inspection. */
+export const rollCellOn = (track: InstrumentTrack, pitch: number, step: number): boolean => {
+  const tick = tickForStep(step, track.grid)
+  return track.notes.some((n) => n.tick === tick && n.pitch === pitch)
+}

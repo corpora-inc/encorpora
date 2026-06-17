@@ -51,7 +51,10 @@
     "cs": "Češki",
     "lt": "Litvanski",
     "sk": "Slovački",
-    "sl": "Slovenski"
+    "sl": "Slovenski",
+    "jv": "Javanski",
+    "su": "Sundanski",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Putovanje",
@@ -66,7 +69,7 @@
     "environment": "Okoliš",
     "emergency": "Hitno",
     "culture": "Kultura",
-    "everyday": "Sv everyday"
+    "everyday": "Svakodnevno"
   },
   "settings": {
     "addMoreLanguages": "Dodaj više jezika",
@@ -311,7 +314,8 @@
       "joinTitle": "Pridružite se Corpanistima",
       "start": "Počnite istraživati",
       "subtitle": "Corpán je stvorio mali tim otvorenog koda. Pozdravite nas — a ako vam se sviđa, možete nas podržati.",
-      "title": "Sve je spremno"
+      "title": "Sve je spremno",
+      "explore": "Istraživat ću samostalno"
     },
     "fork": {
       "child": {
@@ -368,7 +372,31 @@
     "voicePreviewAria": "Pregledaj {{name}}",
     "voicePreviewSelected": "Odabrani pregled",
     "voiceRecommended": "Preporučeno",
-    "voiceSelectedCount": "{{count}} od {{total}}"
+    "voiceSelectedCount": "{{count}} od {{total}}",
+    "whatToStart": {
+      "title": "Gdje da počnemo?",
+      "subtitle": "Odaberi jedno za početak — ostalo je na dodir.",
+      "read": {
+        "label": "Čitaj",
+        "desc": "Uroni u priče i knjige."
+      },
+      "study": {
+        "label": "Uči",
+        "desc": "Gradi vokabular usmjerenim vježbanjem."
+      },
+      "playMusic": {
+        "label": "Sviraj",
+        "desc": "Isprobaj svoj jezik za pultom."
+      },
+      "playGames": {
+        "label": "Igraj",
+        "desc": "Uči kroz zaigrane izazove."
+      },
+      "surprise": {
+        "label": "Iznenadi me!",
+        "desc": "Odvedi me negdje zabavno."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "Upotrijebite slova, brojeve, crtice ili podvlake.",
     "affiliateChecking": "Provjera koda...",
     "affiliateApplied": "Kod će biti povezan s ovom pretplatom.",
-    "affiliateCodeHelp": "Ako vas je netko poslao ovamo, unesite njegov kod prije pretplate."
+    "affiliateCodeHelp": "Ako vas je netko poslao ovamo, unesite njegov kod prije pretplate.",
+    "introPriceHeadline": "{{introPrice}} za {{period}}",
+    "introPriceThen": ", zatim {{price}}/{{period}}",
+    "perMonth": "mjesec",
+    "perYear": "godina",
+    "startFreeTrial": "Započni besplatno probno razdoblje",
+    "trialFirstCharge": "{{period}}: prva naplata",
+    "trialHeadline": "{{period}} besplatno",
+    "trialReassurance": "Plaćanje nije potrebno sada · otkaži u bilo kojem trenutku",
+    "trialThenPrice": ", zatim {{price}}/{{period}}",
+    "trialToday": "Danas: početak"
   },
   "restore": {
     "button": "Obnovi kupnje",
@@ -712,7 +750,8 @@
     "subhead": "Otključajte svaku knjigu na svakom jeziku. Bez oglasa. Vaši podaci ostaju na vašem uređaju.",
     "pitch": "Mi smo mali tim i svaki cent ulažemo natrag u Corpán. Corpanisti ga održavaju bez oglasa i pomažu mu rasti.",
     "maybeLater": "Možda kasnije",
-    "continue": "Nastavi"
+    "continue": "Nastavi",
+    "dismiss": "Zatvori"
   },
   "streak": {
     "title": "{{count}}-dnevni niz"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Živi grad koji svaki susret pretvara u lekciju."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Samplaj jezik koji učiš. Scratchaj ga dok ne ostane u glavi."
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "Ažuriraj",
     "updateNow": "Ažuriraj sada",
     "versionLine": "Verzija {{version}} je spremna za instalaciju."
+  },
+  "streakBadge": {
+    "label": "Niz od {{days}} dana"
+  },
+  "dailyLock": {
+    "title": "Tvojih {{count}} {{unit}} za danas",
+    "streakActive": "Niz od {{days}} dana — vrati se sutra da ga nastaviš.",
+    "streakStart": "Vrati se sutra da ga nastaviš.",
+    "resetIn": "Ponovno postavljanje za {{time}}",
+    "cta": "Nastavi sada uz Corpán Plus",
+    "dismiss": "Možda kasnije",
+    "closeAria": "Zatvori",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "bilo kojeg trenutka"
+  },
+  "code": {
+    "attributedUnverified": "Kod će biti pridružen vašoj pretplati.",
+    "checkFailed": "Provjera nije uspjela",
+    "checking": "Provjera koda…",
+    "creditedTo": "pripisano {{partner}}",
+    "fieldLabel": "Ponuda ili partnerski kod",
+    "help": "Imate kod? Unesite ga za primjenu ponude.",
+    "redeemUnavailable": "Nije moguće otvoriti zaslon za otkup. Molimo pokušajte ponovno.",
+    "redeemWithApple": "Otkupi s Appleom",
+    "redeeming": "Otvaranje otkupa…",
+    "retry": "Pokušaj ponovno",
+    "subscribeWithDiscount": "Pretplati se ({{discount}})",
+    "redeemCode": "Iskoristi kôd",
+    "notApplied": "Ovaj kôd ne donosi popust."
   }
 }

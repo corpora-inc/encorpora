@@ -20,5 +20,5 @@ test("all shipped languages have compact prompts without correction directives",
     assert.equal(grounding, expectedGrounding, `${code} grounding instruction drifted`)
     assert.doesNotMatch(system, /\b(?:correct|correction|mistake|errors?)\b/i, `${code} mentions correction`)
   }
-  assert.equal(prompts.length, 53)
+  assert.equal(prompts.length, 51)
 })

@@ -51,7 +51,10 @@
     "cs": "Checo",
     "lt": "Lituano",
     "sk": "Eslovaco",
-    "sl": "Esloveno"
+    "sl": "Esloveno",
+    "jv": "Javanês",
+    "su": "Sundanês",
+    "tl": "Tagalo"
   },
   "categories": {
     "travel": "Viagem",
@@ -311,7 +314,8 @@
       "joinTitle": "Junte-se aos Corpanistas",
       "start": "Começar a explorar",
       "subtitle": "O Corpán é feito por uma pequena equipa de código aberto. Venha dizer olá — e se gostar, pode apoiar-nos.",
-      "title": "Está tudo pronto"
+      "title": "Está tudo pronto",
+      "explore": "Explorar por conta própria"
     },
     "fork": {
       "child": {
@@ -368,7 +372,31 @@
     "voicePreviewAria": "Pré-visualizar {{name}}",
     "voicePreviewSelected": "Pré-visualização selecionada",
     "voiceRecommended": "Recomendado",
-    "voiceSelectedCount": "{{count}} de {{total}}"
+    "voiceSelectedCount": "{{count}} de {{total}}",
+    "whatToStart": {
+      "title": "Por onde começamos?",
+      "subtitle": "Escolhe uma para começar; o resto está a um toque.",
+      "read": {
+        "label": "Ler",
+        "desc": "Mergulha em histórias e livros."
+      },
+      "study": {
+        "label": "Estudar",
+        "desc": "Amplia o teu vocabulário com prática focada."
+      },
+      "playMusic": {
+        "label": "Tocar música",
+        "desc": "Experimenta a tua língua nas mesas de mistura."
+      },
+      "playGames": {
+        "label": "Jogar",
+        "desc": "Aprende com desafios divertidos."
+      },
+      "surprise": {
+        "label": "Surpreende-me!",
+        "desc": "Leva-me para um sítio divertido."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "Use letras, números, hífenes ou sublinhados.",
     "affiliateChecking": "A verificar o código...",
     "affiliateApplied": "O código será associado a esta subscrição.",
-    "affiliateCodeHelp": "Se alguém o enviou para aqui, introduza o código antes de subscrever."
+    "affiliateCodeHelp": "Se alguém o enviou para aqui, introduza o código antes de subscrever.",
+    "introPriceHeadline": "{{introPrice}} por {{period}}",
+    "introPriceThen": ", depois {{price}}/{{period}}",
+    "perMonth": "mês",
+    "perYear": "ano",
+    "startFreeTrial": "Iniciar Teste Gratuito",
+    "trialFirstCharge": "{{period}}: primeiro pagamento",
+    "trialHeadline": "{{period}} grátis",
+    "trialReassurance": "Sem pagamento agora · cancelar a qualquer momento",
+    "trialThenPrice": ", depois {{price}}/{{period}}",
+    "trialToday": "Hoje: começar"
   },
   "restore": {
     "button": "Restaurar Compras",
@@ -712,7 +750,8 @@
     "subhead": "Desbloqueie todos os livros em todos os idiomas. Sem anúncios. Os seus dados ficam no seu dispositivo.",
     "pitch": "Somos uma equipa pequena e investimos cada cêntimo de volta no Corpán. Os Corpanistas mantêm-no sem anúncios e em crescimento.",
     "maybeLater": "Talvez mais tarde",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "dismiss": "Fechar"
   },
   "streak": {
     "title": "Sequência de {{count}} dias"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Uma cidade viva que transforma cada encontro numa lição."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Faz sampling da língua que estás a aprender. Faz scratch até ficar na cabeça."
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "Atualizar",
     "updateNow": "Atualizar agora",
     "versionLine": "A versão {{version}} está pronta a instalar."
+  },
+  "streakBadge": {
+    "label": "Sequência de {{days}} dias"
+  },
+  "dailyLock": {
+    "title": "Os teus {{count}} {{unit}} de hoje",
+    "streakActive": "Sequência de {{days}} dias — volta amanhã para continuar.",
+    "streakStart": "Volta amanhã para continuar.",
+    "resetIn": "Reinicia em {{time}}",
+    "cta": "Continua agora com Corpán Plus",
+    "dismiss": "Talvez mais tarde",
+    "closeAria": "Dispensar",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "a qualquer momento"
+  },
+  "code": {
+    "attributedUnverified": "O código será associado à sua subscrição.",
+    "checkFailed": "Não foi possível verificar",
+    "checking": "A verificar código…",
+    "creditedTo": "creditado a {{partner}}",
+    "fieldLabel": "Código de oferta ou afiliado",
+    "help": "Tem um código? Insira-o para aplicar a sua oferta.",
+    "redeemUnavailable": "Não foi possível abrir o ecrã de resgate. Por favor, tente novamente.",
+    "redeemWithApple": "Resgatar com Apple",
+    "redeeming": "A abrir resgate…",
+    "retry": "Tentar novamente",
+    "subscribeWithDiscount": "Subscrever ({{discount}})",
+    "redeemCode": "Resgatar código",
+    "notApplied": "Este código não dá qualquer desconto."
   }
 }

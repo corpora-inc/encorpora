@@ -30,6 +30,27 @@ export type StackConfigPatch = Partial<{
   baseCorpusEnabled: boolean
 }>
 
+/**
+ * The optional launch payload threaded host → pack at mount (App → ContentPack
+ * Overlay → ContentPackHost → the pack's `mount(..., initialState)`). Single
+ * source of truth for the shape so the host seam never drifts. All fields are
+ * optional addressability hints; a pack reads only what it understands.
+ */
+export interface PackLaunchEntry {
+  /** Deep-link to a specific entry id within the pack. */
+  entryId?: number
+  /** Source/corpus hint for the deep-linked entry. */
+  source?: string
+  /** Initial route within the pack. */
+  route?: string
+  /**
+   * Ask a freshly-launched reader to seed a default book's FREE preview
+   * narrations for the user's stack (the first-run "instant wow"). The reader
+   * acts on this only when its library is empty.
+   */
+  seedBookId?: string
+}
+
 /** A (entryId, source) pair the sampler uses for anti-repetition. */
 export type HostHistoryRef = { entryId: number; source: string }
 
@@ -212,13 +233,19 @@ export type LlmChatOptions = {
   presencePenalty?: number
   maxTokens?: number
   stop?: string[]
+  /** Suppress reasoning on hybrid Qwen3 models via the non-thinking prefill. */
+  noThink?: boolean
 }
 
 export type LlmStatus = {
   loaded: boolean
   modelId?: string | null
   backend?: string | null
+  /** Available device memory in MB (fluctuates). */
   availableMemoryMb?: number | null
+  /** Total physical RAM in MB — the stable device-class signal for model-size
+   *  selection. `null` where the platform can't be measured (e.g. Windows). */
+  totalMemoryMb?: number | null
 }
 
 /** Callbacks for a streaming generation. */
@@ -494,6 +521,72 @@ export type HostVoiceInfo = {
   networkRequired?: boolean
 }
 
+/**
+ * Read-only snapshot of the host's Plus / subscription entitlement, handed to
+ * packs both via the `__CORPAN_ENTITLEMENT` global (back-compat) and the new
+ * typed `HostApi.entitlement` seam. Purely informational — packs decide what to
+ * gate; the host owns the actual purchase + paywall.
+ */
+export type ContentPackEntitlementSnapshot = {
+  /** Convenience flag: an active Corpán Plus subscription. */
+  plus: boolean
+  /** Anonymous per-install subject id (for server-side attribution). */
+  subjectId: string | null
+  /** Short-lived first-party entitlement token, when minted. */
+  entitlementToken: string | null
+  subscription: {
+    active: boolean
+    plan: "monthly" | "annual" | null
+    expiresAt: string | null
+    autoRenew: boolean
+  }
+  /** When the host last refreshed entitlement, if known. */
+  checkedAt: number | null
+}
+
+/**
+ * Where a pack is asking for the paywall. The host's paywall store defines the
+ * canonical union (`PaywallSurface`); packs may pass any of those OR a free
+ * string (forwarded to analytics) without taking a dependency on the host store.
+ */
+export type ContentPackPaywallContext = {
+  surface: string
+  packId?: string
+  bookTitle?: string
+  bookId?: string
+  language?: string
+  /** Visual skin hint (e.g. a reader passing its own theme). */
+  theme?: string
+}
+
+/**
+ * Typed host monetization seam. ADDITIVE + optional: packs that still read the
+ * `__CORPAN_PLUS` / `__CORPAN_ENTITLEMENT` globals and dispatch
+ * `corpan:request-unlock` keep working unchanged.
+ */
+export type HostEntitlementApi = {
+  /** Synchronous truth: is the user a Plus subscriber right now? */
+  isSubscribed: () => boolean
+  /** Full entitlement snapshot (same shape as the `__CORPAN_ENTITLEMENT` global). */
+  snapshot: () => ContentPackEntitlementSnapshot
+  /** Subscribe to entitlement changes; returns an unsubscribe function. */
+  onChange: (cb: (snapshot: ContentPackEntitlementSnapshot) => void) => () => void
+}
+
+/**
+ * A pack's per-pack visit streak (consecutive local days opened). Mirrors
+ * `StreakState` from packs/shared/streak — a retention signal shown to every
+ * user, never a gate.
+ */
+export type HostStreakState = {
+  /** Consecutive local days visited, ending today (or the last visit day). */
+  current: number
+  /** The longest `current` ever reached for this pack. */
+  longest: number
+  /** Local `YYYY-MM-DD` of the most recent recorded visit ("" if never). */
+  lastDay: string
+}
+
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
   /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
@@ -505,6 +598,24 @@ export type HostApi = {
   /** Speak `text` with a SPECIFIC voice id (from `listVoices`), not just a
    *  language — the mechanism behind a pack's per-NPC sticky voice. */
   speakVoice?: (uiCode: string, text: string, voiceId: string) => Promise<void>
+  /** Render TTS to a RAW AUDIO buffer instead of speaking it — the capture path
+   *  music packs need (OS `speak()` ducks other audio and never restores, so a
+   *  music app plays captured TTS through its own Web Audio graph). Optional &
+   *  feature-detected: backed by native `synthesize_to_buffer` (iOS
+   *  AVSpeechSynthesizer.write / Android synthesizeToFile); rejects on desktop
+   *  and older hosts without the command. */
+  synthesizeToBuffer?: (
+    text: string,
+    lang: string,
+    voiceId?: string,
+  ) => Promise<{
+    pcm: ArrayBuffer
+    sampleRate: number
+    channels: number
+    durationMs: number
+    voiceId: string
+    codec: "wav" | "pcm-i16" | "pcm-f32"
+  }>
   /** Copy text to the system clipboard (native — WKWebView blocks the web API). */
   copyText?: (text: string) => Promise<void>
   dispose?: () => void
@@ -519,6 +630,36 @@ export type HostApi = {
   history?: HostHistoryApi
   /** Feed the host's rating-prompt counter (host owns the actual prompt). */
   notifyUtterance?: () => void
+  /**
+   * Typed entitlement seam — the documented replacement for reading the
+   * `__CORPAN_PLUS` / `__CORPAN_ENTITLEMENT` globals (which still work). A pack
+   * uses `entitlement.isSubscribed()` to hard-gate synchronously, `snapshot()`
+   * for the full state, and `onChange()` to react to purchases/restores.
+   */
+  entitlement?: HostEntitlementApi
+  /**
+   * The CURRENT pack's visit streak (consecutive local days it was opened). A
+   * retention signal a pack can surface (e.g. "{{n}}-day streak") — read-only and
+   * never a gate. The host records the visit itself at the pack-enter boundary;
+   * this just reads the persisted state. Subscribe to the `corpan:streak-changed`
+   * window event to react live.
+   */
+  getStreak?: () => HostStreakState
+  /**
+   * Ask the host to surface the Corpán Plus paywall at a natural interaction
+   * boundary. The host re-applies its own guards (subscribed / IAP unavailable /
+   * frequency-cap) and resolves to whether the paywall ACTUALLY opened — the
+   * synchronous truth a hard gate needs (`false` means "stay open / let them
+   * continue"). The documented replacement for dispatching `corpan:request-unlock`
+   * (which still works).
+   */
+  requestPaywall?: (context: ContentPackPaywallContext) => Promise<boolean>
+  /**
+   * Ask the host to consider showing its in-app rating prompt. The host re-gates
+   * via its rating-store criteria / OS throttle, so this is safe to call on a
+   * natural boundary (e.g. pack exit) and will no-op when not yet eligible.
+   */
+  showRatingPrompt?: () => void
   /** Installed phrase-pack registry (for source chips + enable/disable). */
   phrasePacks?: HostPhrasePacksApi
   getRandomEntry: () => Promise<EntryOut>

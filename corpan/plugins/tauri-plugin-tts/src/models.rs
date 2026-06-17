@@ -148,3 +148,37 @@ pub struct InstallVoiceDataResult {
     /// "already_installed" | "launched_install_flow" | "not_supported" | "engine_not_ready"
     pub status: String,
 }
+
+/// Arguments for `synthesize_to_buffer` — render TTS to RAW AUDIO without playing
+/// it through the speaker (so it never ducks the music). Mirrors `SpeakArgs`.
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SynthesizeArgs {
+    pub text: String,
+    pub language: Option<String>,
+    pub rate: Option<f32>,
+    // Accept either "voice_id" (from callers) or "voiceId" (canonical),
+    // and serialize *as* "voiceId" when forwarding to the native plugin.
+    #[serde(rename = "voiceId", alias = "voice_id")]
+    pub voice_id: Option<String>,
+}
+
+/// Result of `synthesize_to_buffer`: base64-encoded raw audio + decode metadata.
+///
+/// The PCM bytes ride the IPC as base64 (pragmatic transport — the pack caches
+/// the decoded bytes in IndexedDB). `codec` disambiguates the byte layout:
+///   - "wav"     ⇒ a complete 16-bit PCM WAV container (header + samples)
+///   - "pcm-i16" ⇒ raw little-endian signed 16-bit samples (use sample_rate/channels)
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct SynthesizeResult {
+    /// Base64-encoded audio bytes (a WAV container or raw PCM, per `codec`).
+    pub pcm_base64: String,
+    pub sample_rate: u32,
+    pub channels: u8,
+    pub duration_ms: u32,
+    /// "wav" | "pcm-i16"
+    pub codec: String,
+    /// The voice that actually rendered the audio (resolved native identifier).
+    pub voice_id: String,
+}

@@ -3,6 +3,9 @@ export type {
   TranslationOut,
   EntryOut,
   HostApi,
+  HostEntitlementApi,
+  ContentPackEntitlementSnapshot,
+  ContentPackPaywallContext,
   GameModule,
 } from "./types"
 

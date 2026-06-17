@@ -111,6 +111,7 @@ impl LlmState {
             model_id: s.model_id.clone(),
             backend: s.backend.clone(),
             available_memory_mb: device_memory_mb(),
+            total_memory_mb: physical_total_mb(),
         }
     }
 
@@ -152,6 +153,25 @@ impl LlmState {
             return Err(Error::ModelCorrupt(format!(
                 "size={size} bytes, magic={magic:?} (expected GGUF)"
             )));
+        }
+
+        // Per-model memory backstop. The host (modelTiering.ts) is the policy
+        // owner — it disables sizes that won't fit and gates "try-anyway" behind
+        // a warning. But a pack could call load directly, and a failed ggml
+        // allocation is an uncatchable native SIGSEGV, so we refuse the
+        // *catastrophic* case here too. Footprint ≈ weights (the GGUF, faulted in
+        // via mmap) + ~15% activation/buffers + ~400 MB KV+runtime. We compare
+        // against ~70% of total RAM (the OS + other apps hold the rest on Android
+        // — nominal capacity is never all usable), which refuses e.g. the 4B on a
+        // 4 GB phone while still allowing the host's legitimate try-anyway picks
+        // (4B on 6 GB, 1.7B on 3 GB). `physical_total_mb()` is `None` where we
+        // can't measure → don't block.
+        let size_mb = size / 1_048_576;
+        let est_footprint_mb = (size_mb as f64 * 1.15) as u64 + 400;
+        if let Some(total) = physical_total_mb() {
+            if est_footprint_mb * 10 > total * 7 {
+                return Err(Error::InsufficientMemory);
+            }
         }
 
         let (resp_tx, resp_rx) = std::sync::mpsc::channel();
@@ -271,10 +291,20 @@ struct ChatSession {
 /// is dropped before `model`.
 fn new_session(backend: &LlamaBackend, model: &LlamaModel) -> Result<ChatSession> {
     let threads = perf_core_count();
+    let n_ctx = ctx_for_memory();
     let ctx_params = LlamaContextParams::default()
-        .with_n_ctx(Some(NonZeroU32::new(DEFAULT_CTX).unwrap()))
+        .with_n_ctx(Some(NonZeroU32::new(n_ctx).unwrap()))
         .with_n_threads(threads)
         .with_n_threads_batch(threads);
+    // Quantized KV cache (Q8_0) ~halves KV memory at negligible quality cost.
+    // Gated to Apple/Metal, where flash attention (AUTO — on by default in
+    // llama.cpp) reliably backs quantized KV; Android/desktop CPU keep the
+    // default F16 (FA may not engage on CPU, and quantized KV depends on it).
+    // Verified on Metal via llama-server (--cache-type-k/v q8_0, default FA).
+    #[cfg(any(target_os = "macos", target_os = "ios"))]
+    let ctx_params = ctx_params
+        .with_type_k(llama_cpp_2::context::params::KvCacheType::Q8_0)
+        .with_type_v(llama_cpp_2::context::params::KvCacheType::Q8_0);
     let ctx = model
         .new_context(backend, ctx_params)
         .map_err(|e| Error::LlamaCpp(format!("context: {e}")))?;
@@ -286,6 +316,20 @@ fn new_session(backend: &LlamaBackend, model: &LlamaModel) -> Result<ChatSession
         cached: Vec::new(),
         threads,
     })
+}
+
+/// Pick the KV-cache context length for THIS device. The KV cache and compute
+/// buffers scale with `n_ctx`; a full 4096 on top of the ~2.5 GB model is what
+/// tips memory-constrained devices into the OOM-inside-ggml segfault. We size it
+/// off the headroom available at session-creation time (the model is already
+/// resident by then, so this reflects what's truly left). Falls back to the full
+/// context where we can't measure (desktop/`None`).
+fn ctx_for_memory() -> u32 {
+    match device_memory_mb() {
+        // < ~2 GB allocatable left → halve the KV/compute footprint.
+        Some(mb) if mb < 2000 => 2048,
+        _ => DEFAULT_CTX,
+    }
 }
 
 /// Length of the longest common prefix of two token slices.
@@ -481,7 +525,8 @@ fn run_turn(
     // fit a token budget that RESERVES room for the reply; drop oldest turns.
     let reserve = max_tokens.clamp(128, 512);
     let budget = (n_ctx_i - reserve).max(256);
-    let (_kept_msgs, tokens, dropped) = window_messages(model, messages, budget)?;
+    let no_think = options.no_think.unwrap_or(false);
+    let (_kept_msgs, tokens, dropped) = window_messages(model, messages, budget, no_think)?;
     if dropped > 0 {
         #[cfg(debug_assertions)]
         eprintln!(
@@ -561,6 +606,22 @@ fn run_turn(
     let mut produced: u32 = 0;
     let gen_limit = (n_prompt + max_tokens).min(n_ctx_i);
 
+    // Coalesce streamed pieces. Emitting one IPC event per token marshals to the
+    // WebView on the UI thread as a JS eval result — a `Handler.post` onto the
+    // main looper PER TOKEN. On a fast decode that floods the main thread (a
+    // confirmed Play-vitals ANR: main stuck in `onEvaluateJavaScriptResult`) and
+    // also starves the WebView of looper time it needs to draw/handle input.
+    // Buffering and flushing at most every FLUSH_MS caps that at ~25 events/sec
+    // regardless of decode speed. The frontend concatenates `token` strings
+    // (hostApi.ts: `buf += tok`), so a multi-piece chunk is byte-identical to the
+    // per-token stream; and the incremental UTF-8 decoder above already keeps
+    // multi-byte chars whole, so a coalesced chunk never splits a codepoint.
+    const FLUSH_MS: u128 = 40;
+    const FLUSH_BYTES: usize = 256;
+    let mut pending = String::new();
+    let mut last_flush = std::time::Instant::now();
+    let mut first_emit = true;
+
     while n_cur < gen_limit {
         if cancel.load(Ordering::SeqCst) {
             break;
@@ -578,13 +639,23 @@ fn run_turn(
             .token_to_piece(token, &mut decoder, false, None)
             .map_err(|e| Error::LlamaCpp(format!("detok: {e}")))?;
         if !piece.is_empty() {
-            let _ = app.emit(
-                &format!("llm-token:{session_id}"),
-                TokenEvent {
-                    session_id: session_id.to_string(),
-                    token: piece,
-                },
-            );
+            pending.push_str(&piece);
+            // Flush the first piece immediately (time-to-first-token is the
+            // perceived-latency metric a learner feels); coalesce the rest.
+            if first_emit
+                || pending.len() >= FLUSH_BYTES
+                || last_flush.elapsed().as_millis() >= FLUSH_MS
+            {
+                let _ = app.emit(
+                    &format!("llm-token:{session_id}"),
+                    TokenEvent {
+                        session_id: session_id.to_string(),
+                        token: std::mem::take(&mut pending),
+                    },
+                );
+                last_flush = std::time::Instant::now();
+                first_emit = false;
+            }
         }
         produced += 1;
 
@@ -611,6 +682,20 @@ fn run_turn(
             "[corpan-llm] PERF decode: {produced} tok in {:.0}ms = {:.1} tok/s",
             decode_ms,
             (produced as f64) * 1000.0 / decode_ms,
+        );
+    }
+
+    // Flush the tail accumulated since the last interval flush so the closing
+    // words of the reply land before `llm-done` (which hands the pack the full
+    // buffer). Covers every loop-exit path (EOG, cancel, gen_limit); the `?`
+    // error paths intentionally drop it — that turn emits `llm-error`, not done.
+    if !pending.is_empty() {
+        let _ = app.emit(
+            &format!("llm-token:{session_id}"),
+            TokenEvent {
+                session_id: session_id.to_string(),
+                token: std::mem::take(&mut pending),
+            },
         );
     }
 
@@ -739,6 +824,7 @@ fn window_messages(
     model: &LlamaModel,
     messages: Vec<ChatMessage>,
     budget: i32,
+    no_think: bool,
 ) -> Result<(Vec<ChatMessage>, Vec<LlamaToken>, usize)> {
     let sys_end = messages.iter().take_while(|m| m.role == "system").count();
     let total = messages.len();
@@ -749,7 +835,7 @@ fn window_messages(
             .chain(messages[sys_end + drop..].iter())
             .cloned()
             .collect();
-        let prompt = format_chatml(&kept);
+        let prompt = format_chatml(&kept, no_think);
         let tokens = model
             .str_to_token(&prompt, AddBos::Always)
             .map_err(|e| Error::LlamaCpp(format!("tokenize: {e}")))?;
@@ -764,7 +850,7 @@ fn window_messages(
     }
 }
 
-fn format_chatml(messages: &[ChatMessage]) -> String {
+fn format_chatml(messages: &[ChatMessage], no_think: bool) -> String {
     let mut s = String::new();
     for m in messages {
         s.push_str("<|im_start|>");
@@ -774,6 +860,14 @@ fn format_chatml(messages: &[ChatMessage]) -> String {
         s.push_str("<|im_end|>\n");
     }
     s.push_str("<|im_start|>assistant\n");
+    if no_think {
+        // Canonical Qwen3 non-thinking prefill: seed an empty reasoning block so
+        // a hybrid model goes straight to the answer (the same thing the model's
+        // own chat template emits for enable_thinking=false). Honoured when the
+        // tokenizer parses these as special tokens; the host's thinkFilter is the
+        // belt-and-suspenders that strips any reasoning that still slips through.
+        s.push_str("<think>\n\n</think>\n\n");
+    }
     s
 }
 
@@ -841,5 +935,67 @@ fn device_memory_mb() -> Option<u64> {
 
 #[cfg(target_os = "android")]
 fn device_memory_mb() -> Option<u64> {
+    // MemAvailable = the kernel's estimate of how much can be allocated right now
+    // without swapping — the Android analog of iOS `os_proc_available_memory`, and
+    // what actually predicts an OOM when we allocate the KV/compute buffers.
+    meminfo_mb("MemAvailable:")
+}
+
+/// Total physical RAM in MB — the stable device-class signal the host uses to
+/// pick a model size, and the basis for the load backstop. Android/Linux read
+/// `/proc/meminfo` MemTotal; macOS/iOS read `hw.memsize`; `None` on Windows
+/// (can't measure → don't block).
+#[cfg(all(unix, not(target_os = "macos"), not(target_os = "ios")))]
+fn physical_total_mb() -> Option<u64> {
+    meminfo_mb("MemTotal:")
+}
+#[cfg(any(target_os = "macos", target_os = "ios"))]
+fn physical_total_mb() -> Option<u64> {
+    // hw.memsize = total physical RAM in bytes (the device-class signal). This is
+    // distinct from `device_memory_mb()`, which on iOS reports the jetsam budget.
+    use std::os::raw::{c_char, c_int, c_void};
+    extern "C" {
+        fn sysctlbyname(
+            name: *const c_char,
+            oldp: *mut c_void,
+            oldlenp: *mut usize,
+            newp: *mut c_void,
+            newlen: usize,
+        ) -> c_int;
+    }
+    let name = b"hw.memsize\0";
+    let mut value: u64 = 0;
+    let mut len = std::mem::size_of::<u64>();
+    let rc = unsafe {
+        sysctlbyname(
+            name.as_ptr() as *const c_char,
+            &mut value as *mut u64 as *mut c_void,
+            &mut len as *mut usize,
+            std::ptr::null_mut(),
+            0,
+        )
+    };
+    if rc == 0 && value > 0 {
+        Some(value / 1_048_576)
+    } else {
+        None
+    }
+}
+#[cfg(not(any(unix, target_os = "macos", target_os = "ios")))]
+fn physical_total_mb() -> Option<u64> {
+    None
+}
+
+/// Parse a `kB` field out of `/proc/meminfo` and return it in MB.
+#[cfg(all(unix, not(target_os = "macos"), not(target_os = "ios")))]
+fn meminfo_mb(key: &str) -> Option<u64> {
+    let s = std::fs::read_to_string("/proc/meminfo").ok()?;
+    for line in s.lines() {
+        if let Some(rest) = line.strip_prefix(key) {
+            // e.g. "MemAvailable:    1234567 kB"
+            let kb: u64 = rest.split_whitespace().next()?.parse().ok()?;
+            return Some(kb / 1024);
+        }
+    }
     None
 }

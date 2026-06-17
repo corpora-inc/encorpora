@@ -7,10 +7,35 @@ import LanguageSynchronizer from "./components/LanguageSynchronizer";
 import { getVoices, getVoicesCached } from "@/util/tts-voices";
 import { initAnalytics } from "@/util/analytics";
 import { installDevKeepAwake } from "@/util/devKeepAwake";
+import { installDevDebug } from "@/util/devDebug";
+import { initRemoteQuotaConfig } from "@/util/remoteQuotaConfig";
+
+// Advertise host capabilities to the paywall gate APP-WIDE (not just inside
+// ContentPackHost, which only mounts for content packs). `dailyLock` tells the
+// gate this host (>=0.18.1) can render the DailyLockOverlay, so the daily HARD
+// cap may engage — including for the core phrase-flip experience. Older hosts
+// never set this, so OTA packs degrade to the soft nag there.
+;(globalThis as { __CORPAN_HOST_CAPS?: { dailyLock?: boolean } }).__CORPAN_HOST_CAPS = {
+  dailyLock: true,
+}
+
+// Remote-config layer for the daily-quota caps. Runs EARLY (before packs mount)
+// and best-effort: applies the last-good cached override SYNCHRONOUSLY onto
+// `globalThis.__corpanQuotaConfig` (so a pack constructing its gate during the
+// first render already sees it), then kicks off a non-blocking background
+// refresh for next launch. Never blocks; fails safe to the baked defaults in
+// `packs/shared/monetization/src/quotas.ts`. See ./util/remoteQuotaConfig.ts for
+// the validation + timing semantics. A live gate caches its config at construct
+// time, so a mid-session config change takes effect next gate construction /
+// next launch (documented + intentional).
+initRemoteQuotaConfig();
 
 // DEV-only: hold a screen wake lock so the iPad debug loop survives the idle
 // timer. No-op in production builds.
 if (import.meta.env.DEV) installDevKeepAwake();
+// DEV-only: monetization debug surface on window.__corpanDebug (entitlement /
+// paywall / streak inspect + drive). Tree-shaken from production.
+if (import.meta.env.DEV) installDevDebug();
 
 // Ad-hoc debug surface — reachable from the Safari Web Inspector console
 // even on builds where `window.__TAURI__` isn't exposed. Examples:

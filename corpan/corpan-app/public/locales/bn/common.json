@@ -51,7 +51,10 @@
     "cs": "চেক",
     "lt": "লিথুয়ানিয়ান",
     "sk": "স্লোভাক",
-    "sl": "স্লোভেনিয়ান"
+    "sl": "স্লোভেনিয়ান",
+    "jv": "জাভানিজ",
+    "su": "সুন্দানিজ",
+    "tl": "টাগালগ"
   },
   "categories": {
     "travel": "ভ্রমণ",
@@ -94,8 +97,8 @@
     "testTts": "নিচের বোতাম দিয়ে টিটিএস পরীক্ষা করুন:",
     "showRomanization": "রোমানাইজেশন দেখান",
     "scrollNavigation": "স্ক্রল নেভিগেশন",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "প্যাকসমূহ",
+    "stacks": "স্ট্যাকসমূহ",
     "theme": "থিম",
     "themeLight": "লাইট",
     "themeDark": "ডার্ক",
@@ -311,7 +314,8 @@
       "joinTitle": "Corpanistas-এ যোগ দিন",
       "start": "অন্বেষণ শুরু করুন",
       "subtitle": "Corpán একটি ছোট ওপেন-সোর্স দল দ্বারা তৈরি করা হয়েছে। এসে হ্যালো বলুন — এবং যদি আপনি এটি পছন্দ করেন, আপনি আমাদের সমর্থন করতে পারেন।",
-      "title": "আপনি প্রস্তুত"
+      "title": "আপনি প্রস্তুত",
+      "explore": "নিজে নিজে অন্বেষণ করুন"
     },
     "fork": {
       "child": {
@@ -358,7 +362,7 @@
       "macStep3": "System Voice-এর অধীনে, Manage Voices খুলুন।",
       "macStep4": "আপনার ভাষার জন্য একটি Premium বা Enhanced ভয়েস ডাউনলোড করুন।",
       "macStep5": "Corpán-এ ফিরে আসুন — এটি এখানে স্বয়ংক্রিয়ভাবে প্রদর্শিত হবে।",
-      "step1": "নিচে Open Settings-এ ট্যাপ করুন।",
+      "step1": "নিচে “সেটিংস খুলুন”-এ ট্যাপ করুন।",
       "step2": "Accessibility → Spoken Content → Voices-এ যান।",
       "step3": "আপনার ভাষায় ট্যাপ করুন।",
       "step4": "একটি Premium বা Enhanced ভয়েস ডাউনলোড করুন।",
@@ -368,7 +372,31 @@
     "voicePreviewAria": "{{name}} এর পূর্বরূপ দেখুন",
     "voicePreviewSelected": "নির্বাচিত পূর্বরূপ",
     "voiceRecommended": "প্রস্তাবিত",
-    "voiceSelectedCount": "{{total}} এর মধ্যে {{count}}"
+    "voiceSelectedCount": "{{total}} এর মধ্যে {{count}}",
+    "whatToStart": {
+      "title": "আমরা কোথা থেকে শুরু করব?",
+      "subtitle": "শুরু করতে একটি বেছে নিন — বাকিটা মাত্র এক টোকা দূরে।",
+      "read": {
+        "label": "পড়ুন",
+        "desc": "গল্প আর বইয়ে ডুব দিন।"
+      },
+      "study": {
+        "label": "পড়াশোনা",
+        "desc": "মনোযোগী অনুশীলনে শব্দভাণ্ডার গড়ুন।"
+      },
+      "playMusic": {
+        "label": "গান বাজান",
+        "desc": "ডেকে আপনার ভাষাটা চেখে দেখুন।"
+      },
+      "playGames": {
+        "label": "খেলুন",
+        "desc": "মজার চ্যালেঞ্জে শিখুন।"
+      },
+      "surprise": {
+        "label": "চমকে দিন!",
+        "desc": "আমাকে মজার কোথাও নিয়ে চলুন।"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -565,7 +593,7 @@
     "close": "বন্ধ করুন"
   },
   "packs": {
-    "title": "Packs",
+    "title": "প্যাকসমূহ",
     "available": "উপলব্ধ",
     "emptyAvailable": "এখনও কিছু উপলব্ধ নেই।",
     "installed": "ইনস্টল করা",
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "অক্ষর, সংখ্যা, হাইফেন বা আন্ডারস্কোর ব্যবহার করুন।",
     "affiliateChecking": "কোড যাচাই করা হচ্ছে...",
     "affiliateApplied": "কোডটি এই সাবস্ক্রিপশনের সাথে যুক্ত হবে।",
-    "affiliateCodeHelp": "কেউ আপনাকে এখানে পাঠালে, সাবস্ক্রাইব করার আগে তার কোড লিখুন।"
+    "affiliateCodeHelp": "কেউ আপনাকে এখানে পাঠালে, সাবস্ক্রাইব করার আগে তার কোড লিখুন।",
+    "introPriceHeadline": "{{introPrice}} {{period}} এর জন্য",
+    "introPriceThen": ", তারপর {{price}}/{{period}}",
+    "perMonth": "মাস",
+    "perYear": "বছর",
+    "startFreeTrial": "বিনামূল্যে ট্রায়াল শুরু করুন",
+    "trialFirstCharge": "{{period}}: প্রথম চার্জ",
+    "trialHeadline": "{{period}} বিনামূল্যে",
+    "trialReassurance": "এখন কোনো পেমেন্ট প্রয়োজন নেই · যেকোনো সময় বাতিল করুন",
+    "trialThenPrice": ", তারপর {{price}}/{{period}}",
+    "trialToday": "আজ: শুরু করুন"
   },
   "restore": {
     "button": "ক্রয় পুনরুদ্ধার",
@@ -712,7 +750,8 @@
     "subhead": "প্রতিটি ভাষার প্রতিটি বই আনলক করুন। কোনো বিজ্ঞাপন নেই। আপনার ডেটা আপনার ডিভাইসেই থাকে।",
     "pitch": "আমরা একটি ছোট দল এবং প্রতিটি পয়সা Corpán-এর পেছনে ব্যয় করি। Corpanistas এটিকে বিজ্ঞাপন-মুক্ত এবং ক্রমবর্ধমান রাখে।",
     "maybeLater": "পরে করি",
-    "continue": "চালিয়ে যান"
+    "continue": "চালিয়ে যান",
+    "dismiss": "বাতিল করুন"
   },
   "streak": {
     "title": "{{count}} দিনের স্ট্রিক"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "প্রতিটি সাক্ষাৎকে শিক্ষায় পরিণত করে জীবন্ত শহর।"
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "যে ভাষা শিখছ, সেটাই স্যাম্পল করো। স্ক্র্যাচ করো, যতক্ষণ না মাথায় গেঁথে যায়।"
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "আপডেট করুন",
     "updateNow": "এখনই আপডেট করুন",
     "versionLine": "সংস্করণ {{version}} ইনস্টল করার জন্য প্রস্তুত।"
+  },
+  "streakBadge": {
+    "label": "{{days}}-দিনের ধারাবাহিকতা"
+  },
+  "dailyLock": {
+    "title": "আজকের জন্য আপনার {{count}} {{unit}}",
+    "streakActive": "{{days}}-দিনের ধারাবাহিকতা — এটি বজায় রাখতে আগামীকাল ফিরে আসুন।",
+    "streakStart": "এটি বজায় রাখতে আগামীকাল ফিরে আসুন।",
+    "resetIn": "{{time}} পর পুনরায় শুরু হবে",
+    "cta": "এখনই Corpán Plus দিয়ে চালিয়ে যান",
+    "dismiss": "হয়তো পরে",
+    "closeAria": "বাতিল করুন",
+    "countdownHm": "{{h}}ঘ {{m}}মি",
+    "countdownM": "{{m}}মি",
+    "countdownSoon": "যেকোনো মুহূর্তে"
+  },
+  "code": {
+    "attributedUnverified": "কোড আপনার সাবস্ক্রিপশনে সংযুক্ত হবে।",
+    "checkFailed": "চেক করা যায়নি",
+    "checking": "কোড যাচাই হচ্ছে…",
+    "creditedTo": "{{partner}} এর কাছে জমা হয়েছে",
+    "fieldLabel": "অফার বা অ্যাফিলিয়েট কোড",
+    "help": "কোড আছে? আপনার অফার প্রয়োগ করতে এটি প্রবেশ করুন।",
+    "redeemUnavailable": "রিডিম স্ক্রিন খোলা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।",
+    "redeemWithApple": "অ্যাপলের মাধ্যমে রিডিম করুন",
+    "redeeming": "রিডিম খোলা হচ্ছে…",
+    "retry": "আবার চেষ্টা করুন",
+    "subscribeWithDiscount": "সাবস্ক্রাইব করুন ({{discount}})",
+    "redeemCode": "কোড রিডিম করুন",
+    "notApplied": "এই কোডে কোনো ছাড় পাওয়া যায় না।"
   }
 }

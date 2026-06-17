@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import { useOnboardingGraph } from "./useOnboardingGraph"
 import { QuestionNodeView } from "./QuestionNodeView"
 import { MultiQuestionNodeView } from "./MultiQuestionNodeView"
@@ -15,9 +15,13 @@ export function OnboardingEngine() {
   const node = g.node
   const committed = useRef(false)
 
-  // Terminal: flush the draft + mark onboarded (App then swaps to Home).
-  // Guard against StrictMode's double effect invocation.
-  useEffect(() => {
+  // Terminal: flush the draft + mark onboarded (App then swaps to Home). A
+  // LAYOUT effect (not a passive one) so `setOnboarded(true)` + the landing
+  // intent are flushed BEFORE the browser paints the empty terminal — App swaps
+  // straight to Home + the razzle overlay in the same frame, with no blank/Home
+  // flash between the final question and the animation. Guard against
+  // StrictMode's double invocation.
+  useLayoutEffect(() => {
     if (node?.kind === "terminal" && !committed.current) {
       committed.current = true
       node.commit(g.makeCtx())
@@ -34,6 +38,12 @@ export function OnboardingEngine() {
           key={node.id}
           onAdvance={g.advance}
           onBack={g.canBack ? g.back : undefined}
+          // Finish screen's "Explore on my own" escape: flag the draft so
+          // commitDraft skips the best-fit auto-launch, then advance to commit.
+          onAdvanceExplore={() => {
+            g.makeCtx().patch({ skipAutoLaunch: true })
+            g.advance()
+          }}
         />
       )
     }

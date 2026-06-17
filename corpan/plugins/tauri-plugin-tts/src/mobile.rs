@@ -1,7 +1,7 @@
 // src/mobile.rs
 use crate::models::{
     BindEngineResult, InstallVoiceDataResult, RecoverResult, SpeakArgs, SpeakConcurrentArgs,
-    SpeakResult, TtsEngineStatus, TtsHealthProbe, VoiceInfo,
+    SpeakResult, SynthesizeArgs, SynthesizeResult, TtsEngineStatus, TtsHealthProbe, VoiceInfo,
 };
 use serde::de::DeserializeOwned;
 use tauri::{
@@ -75,6 +75,31 @@ impl<R: Runtime> Tts<R> {
             .run_mobile_plugin::<SpeakResult>("speakConcurrent", Some(args))
             .map_err(|e| {
                 println!("[MOBILE_TTS] speak_concurrent error: {:?}", e);
+                e.into()
+            })
+    }
+
+    /// Render text to a RAW AUDIO buffer (base64) WITHOUT speaker playback.
+    /// iOS: `AVSpeechSynthesizer.write(_:toBufferCallback:)`; Android:
+    /// `TextToSpeech.synthesizeToFile(...)`. The native side base64-encodes the
+    /// bytes and returns `SynthesizeResult`.
+    pub fn synthesize_to_buffer(
+        &self,
+        text: String,
+        language: Option<String>,
+        rate: Option<f32>,
+        voice_id: Option<String>,
+    ) -> crate::Result<SynthesizeResult> {
+        let args = SynthesizeArgs {
+            text,
+            language,
+            rate,
+            voice_id,
+        };
+        self.0
+            .run_mobile_plugin::<SynthesizeResult>("synthesizeToBuffer", Some(args))
+            .map_err(|e| {
+                println!("[MOBILE_TTS] synthesize_to_buffer error: {:?}", e);
                 e.into()
             })
     }
@@ -308,7 +333,10 @@ impl<R: Runtime> Tts<R> {
                     Some(args),
                 )
                 .map_err(|e| {
-                    println!("[MOBILE_TTS] install_voice_data_for_language error: {:?}", e);
+                    println!(
+                        "[MOBILE_TTS] install_voice_data_for_language error: {:?}",
+                        e
+                    );
                     e.into()
                 })
         }

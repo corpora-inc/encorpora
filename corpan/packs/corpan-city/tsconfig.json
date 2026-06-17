@@ -18,7 +18,8 @@
       "@corpan-city/contracts": ["./contracts/src/index.ts"],
       "@corpan-city/contracts/*": ["./contracts/src/*"],
       "@shared/audio/*": ["../shared/audio/*"],
-      "@shared/moderation": ["../shared/moderation/index.ts"]
+      "@shared/moderation": ["../shared/moderation/index.ts"],
+      "@shared/monetization": ["../shared/monetization/index.ts"]
     }
   },
   "include": ["src", "contracts/src"],

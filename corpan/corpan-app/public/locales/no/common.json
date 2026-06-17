@@ -51,7 +51,10 @@
     "cs": "Tsjekkisk",
     "lt": "Litauisk",
     "sk": "Slovakisk",
-    "sl": "Slovensk"
+    "sl": "Slovensk",
+    "jv": "Javanesisk",
+    "su": "Sundanesisk",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Reise",
@@ -311,7 +314,8 @@
       "joinTitle": "Bli med i Corpanistas",
       "start": "Begynn å utforske",
       "subtitle": "Corpán er laget av et lite åpen kildekode-team. Kom og si hei – og hvis du elsker det, kan du støtte oss.",
-      "title": "Du er klar"
+      "title": "Du er klar",
+      "explore": "Utforsk på egen hånd"
     },
     "fork": {
       "child": {
@@ -368,7 +372,31 @@
     "voicePreviewAria": "Forhåndsvis {{name}}",
     "voicePreviewSelected": "Forhåndsvis valgt",
     "voiceRecommended": "Anbefalt",
-    "voiceSelectedCount": "{{count}} av {{total}}"
+    "voiceSelectedCount": "{{count}} av {{total}}",
+    "whatToStart": {
+      "title": "Hvor skal vi begynne?",
+      "subtitle": "Velg en for å komme i gang — resten er bare et trykk unna.",
+      "read": {
+        "label": "Les",
+        "desc": "Dykk ned i historier og bøker."
+      },
+      "study": {
+        "label": "Studer",
+        "desc": "Bygg ordforråd med fokusert øving."
+      },
+      "playMusic": {
+        "label": "Spill musikk",
+        "desc": "Prøv språket ditt bak platene."
+      },
+      "playGames": {
+        "label": "Spill",
+        "desc": "Lær gjennom leken moro."
+      },
+      "surprise": {
+        "label": "Overrask meg!",
+        "desc": "Ta meg et morsomt sted."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -551,7 +579,7 @@
     "renameLabel": "Nytt navn på stabelen",
     "selectAria": "Velg en stabel",
     "selectPlaceholder": "Velg…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "Stabler",
     "introTipBody": "Stacks lagrer ulike læringsoppsett — ett for reise, et annet for jobb. Trykk på + for å lage en ny stack."
   },
   "rating": {
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "Bruk bokstaver, tall, bindestreker eller understreker.",
     "affiliateChecking": "Sjekker kode...",
     "affiliateApplied": "Koden knyttes til dette abonnementet.",
-    "affiliateCodeHelp": "Hvis noen sendte deg hit, skriv inn koden deres før du abonnerer."
+    "affiliateCodeHelp": "Hvis noen sendte deg hit, skriv inn koden deres før du abonnerer.",
+    "introPriceHeadline": "{{introPrice}} for {{period}}",
+    "introPriceThen": ", deretter {{price}}/{{period}}",
+    "perMonth": "måned",
+    "perYear": "år",
+    "startFreeTrial": "Start gratis prøveperiode",
+    "trialFirstCharge": "{{period}}: første belastning",
+    "trialHeadline": "{{period}} gratis",
+    "trialReassurance": "Ingen betaling nå · kan avbestilles når som helst",
+    "trialThenPrice": ", deretter {{price}}/{{period}}",
+    "trialToday": "I dag: start"
   },
   "restore": {
     "button": "Gjenopprett kjøp",
@@ -712,7 +750,8 @@
     "subhead": "Lås opp alle bøker på alle språk. Ingen annonser. Dataene dine forblir på enheten din.",
     "pitch": "Vi er et lite team og legger hver krone tilbake i Corpán. Corpanistas holder den annonsefri og i vekst.",
     "maybeLater": "Kanskje senere",
-    "continue": "Fortsett"
+    "continue": "Fortsett",
+    "dismiss": "Lukk"
   },
   "streak": {
     "title": "{{count}} dagers rekke"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "En levende by som gjør hvert møte til en leksjon."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sample språket du lærer. Scratch det til det sitter."
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "Oppdater",
     "updateNow": "Oppdater nå",
     "versionLine": "Versjon {{version}} er klar til å installeres."
+  },
+  "streakBadge": {
+    "label": "{{days}}-dagers rekke"
+  },
+  "dailyLock": {
+    "title": "Dine {{count}} {{unit}} for i dag",
+    "streakActive": "{{days}}-dagers rekke — kom tilbake i morgen for å fortsette.",
+    "streakStart": "Kom tilbake i morgen for å fortsette.",
+    "resetIn": "Tilbakestilles om {{time}}",
+    "cta": "Fortsett nå med Corpán Plus",
+    "dismiss": "Kanskje senere",
+    "closeAria": "Avvis",
+    "countdownHm": "{{h}}t {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "når som helst"
+  },
+  "code": {
+    "attributedUnverified": "Koden vil bli knyttet til abonnementet ditt.",
+    "checkFailed": "Kunne ikke sjekke",
+    "checking": "Sjekker kode…",
+    "creditedTo": "kreditert til {{partner}}",
+    "fieldLabel": "Tilbuds- eller affiliatekode",
+    "help": "Har du en kode? Skriv den inn for å bruke tilbudet ditt.",
+    "redeemUnavailable": "Kunne ikke åpne innløsningsskjermen. Vennligst prøv igjen.",
+    "redeemWithApple": "Løs inn med Apple",
+    "redeeming": "Åpner innløsning…",
+    "retry": "Prøv igjen",
+    "subscribeWithDiscount": "Abonner ({{discount}})",
+    "redeemCode": "Løs inn kode",
+    "notApplied": "Denne koden gir ingen rabatt."
   }
 }

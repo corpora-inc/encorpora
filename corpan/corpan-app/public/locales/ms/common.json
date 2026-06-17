@@ -51,7 +51,10 @@
     "cs": "Bahasa Czech",
     "lt": "Lithuania",
     "sk": "Bahasa Slovakia",
-    "sl": "Slovenia"
+    "sl": "Slovenia",
+    "jv": "Jawa",
+    "su": "Sunda",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Perjalanan",
@@ -311,7 +314,8 @@
       "joinTitle": "Sertai Corpanistas",
       "start": "Mula meneroka",
       "subtitle": "Corpán dibangunkan oleh pasukan sumber terbuka yang kecil. Mari bertegur sapa — dan jika anda menyukainya, anda boleh menyokong kami.",
-      "title": "Anda sudah bersedia"
+      "title": "Anda sudah bersedia",
+      "explore": "Teroka sendiri"
     },
     "fork": {
       "child": {
@@ -368,7 +372,31 @@
     "voicePreviewAria": "Pratonton {{name}}",
     "voicePreviewSelected": "Pratonton dipilih",
     "voiceRecommended": "Disyorkan",
-    "voiceSelectedCount": "{{count}} daripada {{total}}"
+    "voiceSelectedCount": "{{count}} daripada {{total}}",
+    "whatToStart": {
+      "title": "Di mana kita nak mula?",
+      "subtitle": "Pilih satu untuk mula — yang lain hanya seketuk jauhnya.",
+      "read": {
+        "label": "Baca",
+        "desc": "Selami cerita dan buku."
+      },
+      "study": {
+        "label": "Belajar",
+        "desc": "Bina perbendaharaan kata dengan latihan fokus."
+      },
+      "playMusic": {
+        "label": "Main muzik",
+        "desc": "Cuba bahasa anda di belakang dek."
+      },
+      "playGames": {
+        "label": "Main permainan",
+        "desc": "Belajar melalui cabaran yang seronok."
+      },
+      "surprise": {
+        "label": "Kejutkan saya!",
+        "desc": "Bawa saya ke tempat yang seronok."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "Gunakan huruf, nombor, tanda sempang atau garis bawah.",
     "affiliateChecking": "Menyemak kod...",
     "affiliateApplied": "Kod akan dilampirkan pada langganan ini.",
-    "affiliateCodeHelp": "Jika seseorang menghantar anda ke sini, masukkan kod mereka sebelum melanggan."
+    "affiliateCodeHelp": "Jika seseorang menghantar anda ke sini, masukkan kod mereka sebelum melanggan.",
+    "introPriceHeadline": "{{introPrice}} untuk {{period}}",
+    "introPriceThen": ", kemudian {{price}}/{{period}}",
+    "perMonth": "bulan",
+    "perYear": "tahun",
+    "startFreeTrial": "Mulakan Percubaan Percuma",
+    "trialFirstCharge": "{{period}}: caj pertama",
+    "trialHeadline": "{{period}} percuma",
+    "trialReassurance": "Tiada bayaran sekarang · batal bila-bila masa",
+    "trialThenPrice": ", kemudian {{price}}/{{period}}",
+    "trialToday": "Hari ini: mula"
   },
   "restore": {
     "button": "Pulihkan Pembelian",
@@ -712,7 +750,8 @@
     "subhead": "Buka kunci setiap buku dalam setiap bahasa. Tiada iklan. Data anda kekal pada peranti anda.",
     "pitch": "Kami pasukan kecil dan setiap sen dilaburkan semula ke dalam Corpán. Corpanistas memastikan ia bebas iklan dan terus berkembang.",
     "maybeLater": "Mungkin nanti",
-    "continue": "Teruskan"
+    "continue": "Teruskan",
+    "dismiss": "Tutup"
   },
   "streak": {
     "title": "Siri {{count}} hari"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Sebuah bandar hidup yang menjadikan setiap pertemuan sebagai pelajaran."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sample bahasa yang anda pelajari. Scratch sampai melekat."
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "Kemas kini",
     "updateNow": "Kemas kini sekarang",
     "versionLine": "Versi {{version}} sedia untuk dipasang."
+  },
+  "streakBadge": {
+    "label": "Rentetan {{days}} hari"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} anda untuk hari ini",
+    "streakActive": "Rentetan {{days}} hari — kembali esok untuk meneruskannya.",
+    "streakStart": "Kembali esok untuk meneruskannya.",
+    "resetIn": "Tetapkan semula dalam {{time}}",
+    "cta": "Teruskan sekarang dengan Corpán Plus",
+    "dismiss": "Mungkin nanti",
+    "closeAria": "Tutup",
+    "countdownHm": "{{h}}j {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "sebentar lagi"
+  },
+  "code": {
+    "attributedUnverified": "Kod akan dilampirkan pada langganan anda.",
+    "checkFailed": "Tidak dapat periksa",
+    "checking": "Memeriksa kod…",
+    "creditedTo": "dikreditkan kepada {{partner}}",
+    "fieldLabel": "Kod tawaran atau afiliasi",
+    "help": "Ada kod? Masukkan untuk memohon tawaran anda.",
+    "redeemUnavailable": "Tidak dapat buka skrin tebus. Sila cuba lagi.",
+    "redeemWithApple": "Tebus dengan Apple",
+    "redeeming": "Membuka tebusan…",
+    "retry": "Cuba lagi",
+    "subscribeWithDiscount": "Langgan ({{discount}})",
+    "redeemCode": "Tebus kod",
+    "notApplied": "Kod ini tidak memberi diskaun."
   }
 }

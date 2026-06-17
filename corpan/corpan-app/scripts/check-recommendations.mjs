@@ -26,7 +26,9 @@ const topFor = (interests, ratings) =>
   rankExperiences({ ...learner, interests, ratings })[0]?.id
 
 assert.equal(topFor(["games"]), "corpan_city")
-assert.equal(topFor(["study"]), "tutomaton")
+// Phrase Flip leads pure STUDY (the core study tool); the conversational tutor
+// leads SPEAK and study+speak.
+assert.equal(topFor(["study"]), "phrase_main")
 assert.equal(topFor(["speak"]), "tutomaton")
 assert.equal(topFor(["study", "speak"]), "tutomaton")
 

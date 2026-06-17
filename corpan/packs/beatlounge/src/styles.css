@@ -1,0 +1,1724 @@
+/* ============================================================
+   beatlounge — design-system foundation (FROZEN tokens).
+   Dark-only skin family. No Tailwind, no CSS-in-JS — CSS variables
+   keyed off [data-skin], matching the Corpán pack convention.
+   Namespace: .bl-* classes, --bl-* tokens, --bl-z-* z-scale.
+   Team SHELL + bl-ui build on these; modules ship scoped styles.
+   ============================================================ */
+
+:root {
+  /* One z-scale source of truth — contiguous bands, never document.body. */
+  --bl-z-stage: 10;
+  --bl-z-rail: 40;
+  --bl-z-immersive: 60;
+  --bl-z-palette: 80;
+  --bl-z-toast: 90;
+  --bl-z-confirm: 100;
+
+  /* Safe-area insets (notch / home indicator) — used everywhere. */
+  --bl-safe-top: env(safe-area-inset-top, 0px);
+  --bl-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --bl-safe-left: env(safe-area-inset-left, 0px);
+  --bl-safe-right: env(safe-area-inset-right, 0px);
+
+  /* Spacing & radius (4px base). FAB non-overlap becomes math. */
+  --bl-s1: 4px;
+  --bl-s2: 8px;
+  --bl-s3: 12px;
+  --bl-s4: 16px;
+  --bl-s5: 24px;
+  --bl-s6: 32px;
+  /* Radius scale — iOS "continuous corner" feel: a tight, consistent, SQUARED
+     scale, NOT pills everywhere. Cards land ~11px, controls ~8px; the full pill
+     (999px) is reserved for genuinely pill things (status chips, circular icon
+     buttons). --bl-radius-lg sizes large sheets/popovers; --bl-radius-tab gives
+     tab bars a squared, app-segment look (shared .bl-tabbar uses it). */
+  --bl-radius: 11px;
+  --bl-radius-sm: 8px;
+  --bl-radius-lg: 14px;
+  --bl-radius-tab: 9px;
+  --bl-radius-pill: 999px;
+  --bl-fab: 56px;
+  --bl-hit: 44px;
+
+  /* Type scale. Mono for numbers/labels (DAW feel); sans for prose. */
+  --bl-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bl-font-mono: "SFMono-Regular", ui-monospace, "Space Mono", monospace;
+  --bl-fs-micro: 11px;
+  --bl-fs-label: 13px;
+  --bl-fs-body: 15px;
+  --bl-fs-value: 18px;
+  --bl-fs-title: 22px;
+  --bl-fs-display: 30px;
+
+  /* Motion. */
+  --bl-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --bl-dur-fast: 130ms;
+  --bl-dur: 180ms;
+  --bl-dur-immersive: 220ms;
+}
+
+/* ---- midnight (default): ink + electric cyan ---- */
+.bl-root[data-skin="midnight"],
+.bl-root:not([data-skin]) {
+  --bl-bg: #06080d;
+  --bl-bg-grad: radial-gradient(circle at 50% -10%, #0c1424, #06080d 70%);
+  --bl-surface: rgba(16, 22, 36, 0.72);
+  --bl-surface-2: rgba(26, 34, 54, 0.72);
+  --bl-text: #cdd8ec;
+  --bl-text-dim: #5d6f8c;
+  --bl-accent: #39e0ff;
+  --bl-accent-2: #d56a1a;
+  --bl-accent-hot: #7af0ff;
+  --bl-success: #46f0a8;
+  --bl-warn: #ffb24d;
+  --bl-error: #ff5d6c;
+  --bl-cell-off: rgba(57, 224, 255, 0.06);
+  --bl-cell-on: var(--bl-accent);
+  --bl-playhead: rgba(57, 224, 255, 0.16);
+  --bl-border: rgba(57, 224, 255, 0.16);
+  --bl-glow: 0 0 18px;
+}
+
+/* ---- noir: graphite + warm amber, no neon ---- */
+.bl-root[data-skin="noir"] {
+  --bl-bg: #0b0b0c;
+  --bl-bg-grad: radial-gradient(circle at 50% -10%, #161616, #0b0b0c 70%);
+  --bl-surface: rgba(24, 24, 26, 0.74);
+  --bl-surface-2: rgba(34, 34, 38, 0.74);
+  --bl-text: #e6e2d8;
+  --bl-text-dim: #8a8478;
+  --bl-accent: #ffb454;
+  --bl-accent-2: #7a8aff;
+  --bl-accent-hot: #ffd089;
+  --bl-success: #8fd66a;
+  --bl-warn: #ffb24d;
+  --bl-error: #ff6b6b;
+  --bl-cell-off: rgba(255, 180, 84, 0.07);
+  --bl-cell-on: var(--bl-accent);
+  --bl-playhead: rgba(255, 180, 84, 0.16);
+  --bl-border: rgba(255, 180, 84, 0.14);
+  --bl-glow: 0 0 16px;
+}
+
+/* ---- aurora: deep indigo + magenta→teal ---- */
+.bl-root[data-skin="aurora"] {
+  --bl-bg: #080612;
+  --bl-bg-grad: radial-gradient(circle at 50% -10%, #1a1030, #080612 70%);
+  --bl-surface: rgba(26, 18, 44, 0.72);
+  --bl-surface-2: rgba(40, 26, 64, 0.72);
+  --bl-text: #e0d6f4;
+  --bl-text-dim: #7a6c9c;
+  --bl-accent: #c66bff;
+  --bl-accent-2: #39e0ff;
+  --bl-accent-hot: #e09bff;
+  --bl-success: #5cf0c0;
+  --bl-warn: #ffc24d;
+  --bl-error: #ff6b8c;
+  --bl-cell-off: rgba(198, 107, 255, 0.07);
+  --bl-cell-on: var(--bl-accent);
+  --bl-playhead: rgba(198, 107, 255, 0.18);
+  --bl-border: rgba(198, 107, 255, 0.16);
+  --bl-glow: 0 0 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bl-root {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-body);
+  color: var(--bl-text);
+  background: var(--bl-bg);
+  background-image: var(--bl-bg-grad);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ---- RTL (right-to-left) ------------------------------------------------------
+   The native UI language sets `dir="rtl"` on the pack root (Shell) — and the host
+   app also flips `dir` near <html>. Layout flips for free off CSS logical
+   properties + the cascade; only the bits that CAN'T flip logically live here:
+   intrinsically-directional GLYPHS (the play triangle, the back chevron) are
+   mirrored, since a shape can't be flipped by `text-align` / logical insets. */
+[dir="rtl"] .bl-glyph--dir {
+  transform: scaleX(-1);
+}
+
+/* beatlounge is a PERFORMANCE surface, not a document: a long-press while jamming
+   (e.g. on the ribbon) must NEVER pop the OS text-selection / copy-paste callout.
+   The bare `user-select: none` above is ignored by WebKit (iOS) and Android WebView
+   without the `-webkit-` prefixes, so suppress selection + the touch callout on
+   EVERY element. Form fields opt back in so typing (BPM, rename, command bar) works. */
+.bl-root,
+.bl-root * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.bl-root input,
+.bl-root textarea,
+.bl-root [contenteditable="true"] {
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Boot / Stage placeholder (Wave 0). Real shell lands in Wave 1. */
+.bl-boot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--bl-safe-top) + var(--bl-s5)) var(--bl-s5)
+    calc(var(--bl-safe-bottom) + var(--bl-s5));
+  gap: var(--bl-s4);
+}
+.bl-wordmark {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-title);
+  letter-spacing: 0.18em;
+  color: var(--bl-text-dim);
+  text-transform: lowercase;
+}
+.bl-boot-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  margin-top: var(--bl-s4);
+}
+.bl-boot-track {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  padding: var(--bl-s3) var(--bl-s4);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+}
+.bl-boot-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bl-cell-on);
+  box-shadow: var(--bl-glow) var(--bl-cell-on);
+}
+.bl-boot-name {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+}
+.bl-boot-meta {
+  margin-inline-start: auto;
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+}
+
+/* ============================================================
+   WAVE 1 — Stage + Dock-Rail + Immersive shell, bl-ui primitives,
+   step-grid module. Built on the frozen --bl-* tokens above.
+   ============================================================ */
+
+.bl-shell {
+  display: grid;
+}
+
+/* Phone: Stage fills, Rail is a bottom bar. The single column MUST be
+   minmax(0, 1fr): without an explicit column, grid-template-areas creates an
+   `auto` column that sizes to the tiles' MAX-content and pushes the stage WIDER
+   than the viewport (the right-overflow bug — the stage measured 514px in a 390px
+   phone). minmax(0,1fr) constrains it to the viewport so the stage clips/shrinks. */
+.bl-shell {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "stage" "rail";
+}
+/* Tablet / desktop: Rail becomes a left column. The stage column is minmax(0,1fr)
+   (not a bare 1fr) for the same reason — it must shrink below tile content. */
+@media (min-width: 600px) {
+  .bl-shell {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: "rail stage";
+  }
+}
+
+/* ---------------------------------------------------------- Stage */
+.bl-stage {
+  grid-area: stage;
+  position: relative;
+  overflow: hidden auto;
+  /* min-width:0 lets the stage shrink inside the shell grid so a wide child
+     (e.g. a tile's mini step-grid) can never push the column past the viewport
+     and clip horizontally at the ~320px floor. */
+  min-width: 0;
+  padding: calc(var(--bl-safe-top) + var(--bl-s5)) calc(var(--bl-safe-right) + var(--bl-s5))
+    var(--bl-s5) calc(var(--bl-safe-left) + var(--bl-s5));
+  -webkit-overflow-scrolling: touch;
+}
+/* Small-phone floor (~320px): trim the stage gutter so the single-column bento
+   keeps comfortable tile width and nothing clips horizontally. */
+@media (max-width: 400px) {
+  .bl-stage {
+    padding: calc(var(--bl-safe-top) + var(--bl-s4)) calc(var(--bl-safe-right) + var(--bl-s4))
+      var(--bl-s4) calc(var(--bl-safe-left) + var(--bl-s4));
+  }
+}
+.bl-stage-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bl-s4);
+  margin-bottom: var(--bl-s5);
+}
+.bl-song-name {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ----------------------------------------------------------
+   Stage bento grid.
+
+   ONE deliberate, responsive foundation from ~300px to large desktop:
+   a fixed-column-count bento (NOT auto-fill) so spans are predictable, with
+   `grid-auto-flow: dense` back-filling the gaps wide/tall tiles leave — no
+   dead right column, no giant holes. Tiles map their `tileAspect` to spans:
+     • square → 1 col × 1 row   (compact, text-forward)
+     • wide   → 2 cols × 1 row  (visually-rich feature tiles)
+     • tall   → 1 col × 2 rows  (vertical lists, e.g. Phrases)
+   `grid-auto-rows` + `min-height` give every tile a comfortable, tappable
+   minimum so a near-empty tile never collapses to nothing.
+
+   Column counts by width — each step keeps spans in range (a 2-col "wide"
+   needs ≥2 cols, which the single-column phone band collapses to 1 below):
+     <520px   → 1 column   (phone, ~300–520px: a clean single stack)
+     520px    → 2 columns  (large phone / small tablet)
+     900px    → 3 columns  (tablet / portrait iPad)
+     1240px   → 4 columns  (landscape iPad / desktop)
+   ---------------------------------------------------------- */
+.bl-stage-grid {
+  display: grid;
+  gap: var(--bl-s4);
+  /* minmax(0, 1fr) — NOT a bare 1fr — so the column can shrink BELOW a tile's
+     intrinsic content width. A bare 1fr is minmax(auto, 1fr): WebKit (iOS WKWebView)
+     sizes the `auto` floor from a tile's min-content (e.g. the 16-col Drums mini-
+     grid), pushing the grid wider than a slim phone viewport → right overflow. */
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: minmax(116px, auto);
+  /* ORDERED flow (not dense) so the IA groups read top-to-bottom in order and a
+     tile never jumps a row to backfill a gap. The aspects are chosen to tile the
+     groups cleanly, so there are no gaps to fill. */
+  grid-auto-flow: row;
+  align-content: start;
+  max-width: 1180px;
+}
+@media (min-width: 720px) {
+  /* Tablet+: the 6-column IA grid (same in portrait + landscape). */
+  .bl-stage-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--bl-s5);
+    grid-auto-rows: minmax(132px, auto);
+  }
+}
+
+/* ---------------------------------------------------------- Tiles */
+.bl-tile {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* Let the tile shrink to its grid track — without this a wide mini-grid
+     (e.g. the 16-step Drums preview) forces the tile past its column and
+     pushes neighbours (Pads) off-screen. */
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  /* Logical start so tile copy (groove/instrument/phrase summaries) right-aligns
+     in RTL — a hardcoded `left` here kept every tile's info line on the left. */
+  text-align: start;
+  padding: var(--bl-s4);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform var(--bl-dur) var(--bl-ease),
+    border-color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+  backdrop-filter: blur(8px);
+}
+.bl-tile:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 38%, transparent);
+  background: var(--bl-surface-2);
+}
+.bl-tile:active {
+  transform: scale(0.985);
+}
+.bl-tile:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+/* ---- bento spans by aspect ----
+   Phone (<520px, single column): EVERY tile is one full-width row — wide/tall
+   collapse so nothing overflows the 1-col track at ~300px. From 2 columns up,
+   wide spans 2 columns and tall spans 2 rows. */
+.bl-tile {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+@media (min-width: 720px) {
+  /* 6-column IA grid: third=2 (3-up rows), half=3 (2-up rows),
+     twothirds=4 (the drums lead), full=the whole row (ribbon, mixer). */
+  .bl-tile--third,
+  .bl-tile--square {
+    grid-column: span 2;
+  }
+  .bl-tile--half {
+    grid-column: span 3;
+  }
+  .bl-tile--twothirds,
+  .bl-tile--wide {
+    grid-column: span 4;
+  }
+  .bl-tile--full {
+    grid-column: 1 / -1;
+  }
+  /* A full-width BAND that's also tall — the Ribbon play strip (the hero). */
+  .bl-tile--band {
+    grid-column: 1 / -1;
+    grid-row: span 2;
+  }
+  .bl-tile--tall {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+/* The mounted content fills the bento cell (tall tiles get the extra height;
+   rich tiles align to the top via the tile's flex column). */
+.bl-tile-mount {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ---- live (interactive) tiles ----
+   Rendered as a plain container (not a button) so the widget's own controls
+   work. The shell pins ONE consistent corner "expand" control that opens the
+   full page; the tile body otherwise behaves like its own little surface. */
+.bl-tile--live {
+  position: relative;
+  cursor: default;
+}
+/* A live tile is a control surface, not a button: it must never depress as a
+   whole (its own controls give press feedback). Suppress the tile-level :active
+   scale so e.g. the Ribbon plays as a flat surface, not a clickable button. */
+.bl-tile--live:active {
+  transform: none;
+}
+/* The Ribbon home widget is a PLAY surface — you play on it directly. Keep it
+   completely flat: no hover background-depress / border highlight that would
+   read as "this tile is a button". (Other live tiles keep the subtle hover.) */
+.bl-tile--live:has(.bl-ribbonwidget):hover {
+  background: var(--bl-surface);
+  border-color: var(--bl-border);
+}
+.bl-tile-expand {
+  position: absolute;
+  top: var(--bl-s3);
+  /* Logical end edge: upper-right in LTR, upper-LEFT in RTL. */
+  inset-inline-end: var(--bl-s3);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--bl-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bl-surface) 78%, transparent);
+  color: var(--bl-text-dim);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition:
+    color var(--bl-dur) var(--bl-ease),
+    border-color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-tile-expand:hover {
+  color: var(--bl-text);
+  border-color: color-mix(in srgb, var(--bl-accent) 48%, transparent);
+  background: var(--bl-surface-2);
+}
+.bl-tile-expand:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+
+.bl-tile-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.bl-tile-head {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  color: var(--bl-text-dim);
+}
+.bl-tile-glyph {
+  display: inline-flex;
+  color: var(--bl-accent);
+}
+.bl-tile-title {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.06em;
+  color: var(--bl-text);
+}
+.bl-tile-meta {
+  margin-inline-start: auto;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+
+/* Tile mini read-only grid. */
+.bl-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  /* shrink below the cells' intrinsic width (WebKit min-content safety) */
+  min-width: 0;
+}
+.bl-mini-row {
+  display: grid;
+  /* minmax(0, …) so the 16 cells shrink to share the tile width instead of
+     forcing an intrinsic min that overflows the slim-phone column (WebKit). */
+  grid-template-columns: repeat(var(--bl-steps, 16), minmax(0, 1fr));
+  gap: 3px;
+  min-width: 0;
+}
+.bl-mini-cell {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: var(--bl-cell-off);
+  transition: background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-mini-cell.is-on {
+  background: var(--bl-cell-on);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--bl-cell-on) 60%, transparent);
+}
+.bl-mini-cell.is-active {
+  background: color-mix(in srgb, var(--bl-cell-on) 30%, var(--bl-playhead));
+}
+.bl-mini-cell.is-on.is-active {
+  background: var(--bl-accent-hot);
+}
+
+/* ---------------------------------------------------------- Drums live widget */
+.bl-drumwidget {
+  min-width: 0;
+}
+/* The expand control floats over the top END corner (top-right in LTR, top-left
+   in RTL; y≈12–40) — so ONLY the head row (which carries the groove name at that
+   corner) needs to clear it; the mini-grid + the +/- controls below span the FULL
+   width. Logical padding so RTL clears the (now upper-left) expand. */
+.bl-drumwidget .bl-tile-head {
+  padding-inline-end: 30px;
+}
+/* The head + mini-grid form a flat, full-bleed "open Drums" affordance. It is a
+   <button> for a11y/keyboard, but renders as a plain surface — no chrome, no
+   depress — so the tile body just feels tappable, not button-y. */
+.bl-drumwidget-open {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.bl-drumwidget-open:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+  border-radius: var(--bl-radius-sm);
+}
+.bl-drumwidget-groove {
+  margin-inline-start: auto;
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+.bl-drumwidget-mini {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+.bl-drumwidget-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-drumwidget-dial {
+  display: inline-flex;
+  gap: var(--bl-s2);
+}
+.bl-drumwidget-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--bl-border);
+  border-radius: 9px;
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  cursor: pointer;
+  transition:
+    transform var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-drumwidget-btn:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 48%, transparent);
+}
+.bl-drumwidget-btn:active {
+  transform: scale(0.94);
+}
+.bl-drumwidget-btn:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+.bl-drumwidget-btn.is-primary {
+  background: color-mix(in srgb, var(--bl-accent) 22%, var(--bl-surface-2));
+  border-color: color-mix(in srgb, var(--bl-accent) 50%, transparent);
+  color: var(--bl-accent-hot, var(--bl-accent));
+}
+.bl-drumwidget-shuffle {
+  margin-inline-start: auto;
+  color: var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- Ribbon live widget */
+.bl-ribbonwidget {
+  /* No reserved right column — the ribbon strip + surface span the FULL width
+     (all the way right). The shell's small floating expand control just sits over
+     the empty top-right of the control row (Lock/Free is left-aligned), so the
+     layout reads: [Lock│Free   ⤢] / [octave] / [ribbon] — no wasted column. */
+  min-width: 0;
+}
+.bl-ribbonwidget .bl-ribbon {
+  flex: 1 1 auto;
+  min-height: 0;
+  /* the tile already pads 16px; drop the ribbon's OWN horizontal padding so the
+     strip + surface sit flush at the tile content edge — SAME width/inset as every
+     other widget (Harmony, Synth, …), not double-padded. */
+  padding-left: 0;
+  padding-right: 0;
+}
+/* The tile is a compact play strip — keep the ribbon surface a comfortable,
+   bounded height (the full page gets the room; the tile stays glanceable). */
+.bl-ribbonwidget .bl-ribbon-surface {
+  min-height: 84px;
+}
+.bl-ribbonwidget .bl-ribbon-foot {
+  display: none;
+}
+
+/* ---------------------------------------------------------- Harmony widget + popover */
+.bl-harmonywidget {
+  position: relative;
+}
+.bl-harmonywidget-open {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  flex: 1 1 auto;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.bl-harmonywidget-summary {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+}
+.bl-harmonywidget-tonic {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-xl, 1.4rem);
+  font-weight: 600;
+  color: var(--bl-text);
+}
+.bl-harmonywidget-detail {
+  font-size: var(--bl-fs-body, 0.9rem);
+  color: var(--bl-text-dim);
+}
+
+/* The popover floats above the Stage; fixed so it escapes the tile/grid clip. */
+.bl-harmonywidget-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--bl-z-palette);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: calc(var(--bl-safe-top) + var(--bl-s5)) calc(var(--bl-safe-right) + var(--bl-s4))
+    calc(var(--bl-safe-bottom) + var(--bl-s5)) calc(var(--bl-safe-left) + var(--bl-s4));
+  background: rgba(2, 4, 9, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: bl-overlay-in var(--bl-dur) var(--bl-ease);
+}
+@media (min-width: 600px) {
+  .bl-harmonywidget-scrim {
+    align-items: center;
+  }
+}
+/* The full-size Harmony sheet — large + premium + OPAQUE so the COMPLETE
+   HarmonyPanel (tonic · Mode⇄Progression · chord grid · 994-browser · note row)
+   renders at a comfortable size. Opaque: an opaque --bl-bg base under the
+   translucent surface tint (the surface tokens are semi-transparent on purpose
+   for tiles, so we layer them over solid bg here). Resize-clean 320px→iPad. */
+.bl-harmonywidget-pop {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: min(880px, 96vw);
+  height: min(86vh, 880px);
+  max-height: 86vh;
+  background:
+    linear-gradient(var(--bl-surface), var(--bl-surface)),
+    var(--bl-bg);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-lg);
+  box-shadow: var(--bl-shadow, 0 28px 80px rgba(0, 0, 0, 0.6));
+  overflow: hidden;
+}
+.bl-harmonywidget-pophead {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s3) var(--bl-s4);
+  border-bottom: 1px solid var(--bl-border);
+}
+.bl-harmonywidget-poptitle {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.06em;
+  color: var(--bl-text);
+}
+.bl-harmonywidget-pophead .bl-icon-btn {
+  margin-inline-start: auto;
+}
+.bl-harmonywidget-popbody {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+  padding: var(--bl-s4);
+}
+
+/* ---------------------------------------------------------- Dock-Rail */
+.bl-rail {
+  grid-area: rail;
+  z-index: var(--bl-z-rail);
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  background: var(--bl-surface);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--bl-border);
+}
+.bl-rail--horizontal {
+  flex-direction: row;
+  padding: var(--bl-s3) calc(var(--bl-safe-right) + var(--bl-s4)) calc(var(--bl-safe-bottom) + var(--bl-s3))
+    calc(var(--bl-safe-left) + var(--bl-s4));
+  border-width: 1px 0 0 0;
+}
+/* Slim phones: the horizontal rail's transport + undo/redo + scenes + command
+   must fit the viewport. Drop the discretionary master meter (it stays on the
+   vertical desktop rail), tighten the gap, and — as a hard safety so the rail can
+   NEVER push the page right — let it scroll horizontally within itself. */
+@media (max-width: 460px) {
+  .bl-rail--horizontal {
+    gap: var(--bl-s2);
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .bl-rail--horizontal::-webkit-scrollbar {
+    display: none;
+  }
+  .bl-rail--horizontal .bl-meter {
+    display: none;
+  }
+}
+/* Tighter still on small phones (≤400px): smaller (still ≥40px) buttons, a tighter
+   gutter, and the BPM number without its "BPM" unit — so all controls fit ~360px
+   without scrolling. */
+@media (max-width: 400px) {
+  .bl-rail--horizontal {
+    gap: var(--bl-s1);
+    padding-left: calc(var(--bl-safe-left) + var(--bl-s2));
+    padding-right: calc(var(--bl-safe-right) + var(--bl-s2));
+  }
+  .bl-rail--horizontal .bl-icon-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .bl-rail--horizontal .bl-bpm-unit {
+    display: none;
+  }
+}
+.bl-rail--vertical {
+  flex-direction: column;
+  padding: calc(var(--bl-safe-top) + var(--bl-s4)) var(--bl-s3) calc(var(--bl-safe-bottom) + var(--bl-s4)) var(--bl-s3);
+  border-width: 0 1px 0 0;
+  width: 84px;
+}
+.bl-rail-spacer {
+  flex: 1;
+}
+
+/* ---------------------------------------------------------- Transport */
+.bl-transport {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--bl-hit);
+  min-height: var(--bl-hit);
+  width: var(--bl-hit);
+  height: var(--bl-hit);
+  /* squared-off, like every other control — the new standard (not a circle) */
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-accent);
+  cursor: pointer;
+  transition:
+    transform var(--bl-dur-fast) var(--bl-ease),
+    box-shadow var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-transport--lg {
+  width: 52px;
+  height: 52px;
+}
+.bl-transport:hover {
+  background: var(--bl-surface);
+}
+.bl-transport:active {
+  transform: scale(0.92);
+}
+.bl-transport.is-playing {
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 70%, transparent);
+}
+.bl-transport:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------- BPM */
+.bl-bpm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bl-bpm-readout {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: var(--bl-s1) var(--bl-s2);
+  min-height: var(--bl-hit);
+  border: none;
+  background: transparent;
+  color: var(--bl-text);
+  cursor: ns-resize;
+  border-radius: var(--bl-radius-sm);
+}
+.bl-bpm-readout:hover {
+  background: var(--bl-surface-2);
+}
+.bl-bpm-num {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  font-variant-numeric: tabular-nums;
+  color: var(--bl-accent);
+}
+.bl-bpm-unit {
+  font-family: var(--bl-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--bl-text-dim);
+}
+.bl-bpm-input {
+  width: 56px;
+  text-align: center;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  color: var(--bl-accent);
+  background: var(--bl-surface-2);
+  border: 1px solid var(--bl-accent);
+  border-radius: var(--bl-radius-sm);
+  padding: var(--bl-s2);
+}
+
+/* ---------------------------------------------------------- icon button */
+.bl-icon-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--bl-hit);
+  min-height: var(--bl-hit);
+  border: none;
+  background: transparent;
+  color: var(--bl-text-dim);
+  cursor: pointer;
+  border-radius: var(--bl-radius-sm);
+  transition:
+    color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-icon-btn:hover:not(:disabled) {
+  color: var(--bl-text);
+  background: var(--bl-surface-2);
+}
+.bl-icon-btn:active:not(:disabled) {
+  transform: scale(0.9);
+}
+.bl-icon-btn:disabled {
+  opacity: 0.32;
+  cursor: default;
+}
+.bl-icon-btn:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+/* the shared tiny Clear (trash) — reads destructive on hover */
+.bl-clear-btn {
+  color: var(--bl-text-dim);
+}
+.bl-clear-btn:hover:not(:disabled) {
+  color: var(--bl-error);
+  border-color: color-mix(in srgb, var(--bl-error) 55%, var(--bl-border));
+  background: color-mix(in srgb, var(--bl-error) 14%, transparent);
+}
+.bl-cmd-btn {
+  color: var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- Meter */
+.bl-meter {
+  display: flex;
+  gap: 2px;
+}
+.bl-meter--vertical {
+  flex-direction: column;
+  width: 12px;
+  height: 84px;
+}
+.bl-meter--horizontal {
+  flex-direction: row;
+  height: 8px;
+  width: 84px;
+}
+.bl-meter-seg {
+  flex: 1;
+  border-radius: 2px;
+  background: var(--bl-cell-off);
+  transition: background var(--bl-dur-fast) linear;
+}
+.bl-meter-seg.is-on {
+  background: var(--bl-success);
+}
+.bl-meter-seg.is-on.is-hot {
+  background: var(--bl-warn);
+}
+
+/* ---------------------------------------------------------- Immersive */
+.bl-immersive {
+  position: absolute;
+  inset: 0;
+  z-index: var(--bl-z-immersive);
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  background: color-mix(in srgb, var(--bl-bg) 72%, transparent);
+  backdrop-filter: blur(10px);
+  animation: bl-fade var(--bl-dur-immersive) var(--bl-ease);
+}
+.bl-immersive-sheet {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: calc(var(--bl-safe-top) + var(--bl-s3)) calc(var(--bl-safe-right) + var(--bl-s3))
+    calc(var(--bl-safe-bottom) + var(--bl-s3)) calc(var(--bl-safe-left) + var(--bl-s3));
+  background: var(--bl-bg);
+  background-image: var(--bl-bg-grad);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  animation: bl-rise var(--bl-dur-immersive) var(--bl-ease);
+  transition: transform var(--bl-dur) var(--bl-ease);
+}
+.bl-immersive-header {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  padding: var(--bl-s2) var(--bl-s3);
+  border-bottom: 1px solid var(--bl-border);
+  touch-action: none;
+  cursor: grab;
+}
+.bl-immersive-title {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.08em;
+  color: var(--bl-text);
+}
+.bl-immersive-grabber {
+  margin-inline-start: auto;
+  width: 36px;
+  height: 4px;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-border);
+}
+.bl-immersive-body,
+.bl-immersive-mount {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden auto;
+}
+.bl-immersive-body {
+  /* Flex COLUMN so the module mount (flex:1) actually fills the sheet height.
+   * Without this, .bl-immersive-body was a plain block, the mount's flex:1 was
+   * ignored, and the mount (→ the drums drawer's container) only grew to its
+   * content — floating short of the bottom with dead space below it. */
+  display: flex;
+  flex-direction: column;
+}
+.bl-immersive-mount {
+  display: flex;
+}
+
+@keyframes bl-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes bl-rise {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------- step grid */
+.bl-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--bl-s4);
+  gap: var(--bl-s4);
+}
+.bl-grid-empty {
+  padding: var(--bl-s6);
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font-mono);
+}
+.bl-grid-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+}
+.bl-grid-title {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  /* take the width so the inline status streams along the header; actions pin
+     right. min-width:0 lets the status clip instead of pushing the layout. */
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text);
+}
+
+/* ---- the inline streaming header status (replaces the floating toast on the
+   track-editor panes — never overlaps a control, never reflows) ---- */
+.bl-hstatus {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-width: 0;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+}
+.bl-hstatus-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-hstatus-caret {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 1.05em;
+  background: var(--bl-accent);
+  box-shadow: 0 0 8px var(--bl-accent);
+  animation: bl-hstatus-blink 1s steps(2, start) infinite;
+}
+@keyframes bl-hstatus-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.bl-hstatus-undo {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--bl-radius-sm);
+  background: transparent;
+  color: var(--bl-accent);
+  cursor: pointer;
+}
+.bl-hstatus-undo:hover {
+  background: color-mix(in srgb, var(--bl-accent) 16%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-hstatus-caret {
+    animation: none;
+  }
+}
+.bl-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+.bl-grid-actions {
+  margin-inline-start: auto;
+  display: flex;
+  gap: var(--bl-s2);
+}
+.bl-chip {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 36px;
+  padding: 0 var(--bl-s3);
+  /* squared-off aesthetic — not a fully-rounded pill */
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    background var(--bl-dur) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur) var(--bl-ease);
+}
+.bl-chip:hover {
+  border-color: color-mix(in srgb, var(--bl-accent) 40%, transparent);
+}
+.bl-chip:active {
+  transform: scale(0.95);
+}
+.bl-chip.is-danger:hover {
+  border-color: color-mix(in srgb, var(--bl-error) 50%, transparent);
+  color: var(--bl-error);
+}
+
+/* ---------------------------------------------------------- Tab bar (shared)
+   A squared, roomy SEGMENT bar — reads as real app tabs, not rounded pills.
+   Used by switchers that are semantically tab bars (the Drums drawer header, the
+   Instruments synth-track switcher, voice banks). One squared track holds the
+   segments; the active segment lifts to a solid accent fill. Token-only, scrolls
+   horizontally on a narrow phone, ≥44px hit targets. */
+.bl-tabbar {
+  display: flex;
+  align-items: stretch;
+  gap: var(--bl-s1);
+  padding: 3px;
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-tab);
+  background: color-mix(in srgb, var(--bl-bg) 55%, var(--bl-surface));
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.bl-tabbar::-webkit-scrollbar {
+  display: none;
+}
+.bl-tab {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s4);
+  border: 1px solid transparent;
+  /* slightly tighter than the track so the segment nests cleanly inside it */
+  border-radius: calc(var(--bl-radius-tab) - 3px);
+  background: transparent;
+  color: var(--bl-text-dim);
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease),
+    box-shadow var(--bl-dur) var(--bl-ease);
+}
+.bl-tab:hover {
+  color: var(--bl-text);
+}
+.bl-tab.is-on {
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  box-shadow: 0 1px 6px color-mix(in srgb, var(--bl-accent) 45%, transparent);
+}
+.bl-tab:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+
+.bl-grid-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+.bl-lane {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  align-items: center;
+  gap: var(--bl-s3);
+}
+.bl-lane-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+}
+.bl-lane-name {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  color: var(--bl-text-dim);
+}
+.bl-lane-cells {
+  display: grid;
+  grid-template-columns: repeat(var(--bl-steps, 16), minmax(0, 1fr));
+  gap: var(--bl-s1);
+  transition: opacity var(--bl-dur) var(--bl-ease);
+}
+.bl-lane-cells.is-silent {
+  opacity: 0.4;
+}
+
+/* ---------------------------------------------------------- StepCell */
+.bl-cell {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  aspect-ratio: 1;
+  min-width: 0;
+  min-height: 26px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-cell-off);
+  cursor: pointer;
+  touch-action: none;
+  transition:
+    background var(--bl-dur-fast) var(--bl-ease),
+    box-shadow var(--bl-dur-fast) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-cell.is-beat {
+  background: color-mix(in srgb, var(--bl-cell-off) 60%, var(--bl-surface-2));
+  border-color: color-mix(in srgb, var(--bl-border) 70%, transparent);
+}
+.bl-cell-core {
+  position: absolute;
+  inset: 22%;
+  border-radius: 4px;
+  background: transparent;
+  transition:
+    background var(--bl-dur-fast) var(--bl-ease),
+    box-shadow var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-cell.is-on {
+  background: color-mix(in srgb, var(--bl-cell-on) 18%, var(--bl-cell-off));
+  border-color: color-mix(in srgb, var(--bl-cell-on) 40%, transparent);
+}
+.bl-cell.is-on .bl-cell-core {
+  inset: 14%;
+  background: var(--bl-cell-on);
+  opacity: var(--bl-cell-vel, 0.9);
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-cell-on) 70%, transparent);
+}
+.bl-cell.is-active {
+  background: var(--bl-playhead);
+}
+.bl-cell.is-on.is-active .bl-cell-core {
+  background: var(--bl-accent-hot);
+  box-shadow: 0 0 22px var(--bl-accent-hot);
+}
+.bl-cell:active {
+  transform: scale(0.9);
+}
+.bl-cell:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+
+.bl-grid-foot {
+  display: flex;
+  gap: var(--bl-s5);
+  padding-top: var(--bl-s2);
+}
+
+/* ---------------------------------------------------------- Knob */
+.bl-knob {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.bl-knob-dial {
+  touch-action: none;
+  cursor: ns-resize;
+  border-radius: 50%;
+  outline: none;
+}
+.bl-knob-dial:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 3px;
+}
+.bl-knob-track {
+  stroke: var(--bl-cell-off);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.bl-knob-fill {
+  stroke: var(--bl-accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--bl-accent) 60%, transparent));
+}
+.bl-knob-needle {
+  stroke: var(--bl-text);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.bl-knob-readout {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  font-variant-numeric: tabular-nums;
+  color: var(--bl-text);
+}
+.bl-knob-label {
+  font-family: var(--bl-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+
+/* ---------------------------------------------------------- Fader */
+.bl-fader {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-fader--vertical {
+  flex-direction: column;
+}
+.bl-fader-track {
+  position: relative;
+  background: var(--bl-cell-off);
+  border-radius: var(--bl-radius-pill);
+  touch-action: none;
+  cursor: pointer;
+  outline: none;
+}
+.bl-fader--vertical .bl-fader-track {
+  width: 8px;
+}
+.bl-fader--horizontal .bl-fader-track {
+  height: 8px;
+}
+.bl-fader-track:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 3px;
+}
+.bl-fader-fill {
+  position: absolute;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-accent);
+  opacity: 0.55;
+}
+.bl-fader--vertical .bl-fader-fill {
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.bl-fader--horizontal .bl-fader-fill {
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+.bl-fader-cap {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bl-text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), var(--bl-glow) color-mix(in srgb, var(--bl-accent) 40%, transparent);
+}
+.bl-fader--vertical .bl-fader-cap {
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+.bl-fader--horizontal .bl-fader-cap {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.bl-fader-readout {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+
+/* ---------------------------------------------------------- MuteSolo */
+.bl-mutesolo {
+  display: inline-flex;
+  gap: var(--bl-s1);
+}
+.bl-ms-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: var(--bl-hit);
+  min-height: var(--bl-hit);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+  transition:
+    background var(--bl-dur) var(--bl-ease),
+    color var(--bl-dur) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-mutesolo.is-compact .bl-ms-btn {
+  min-width: 26px;
+  min-height: 26px;
+  font-size: var(--bl-fs-micro);
+}
+.bl-ms-btn:active {
+  transform: scale(0.92);
+}
+.bl-ms-btn:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+.bl-ms-m.is-on {
+  background: color-mix(in srgb, var(--bl-error) 26%, var(--bl-surface-2));
+  border-color: var(--bl-error);
+  color: var(--bl-error);
+}
+.bl-ms-s.is-on {
+  background: color-mix(in srgb, var(--bl-accent) 26%, var(--bl-surface-2));
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- Toast */
+.bl-toast-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--bl-safe-bottom) + var(--bl-s6));
+  z-index: var(--bl-z-toast);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 var(--bl-s4);
+}
+.bl-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  max-width: 420px;
+  padding: var(--bl-s3) var(--bl-s4);
+  background: var(--bl-surface-2);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  animation: bl-toast-in var(--bl-dur) var(--bl-ease);
+}
+.bl-toast-close {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin: -4px var(--bl-s1) -4px calc(-1 * var(--bl-s1));
+  padding: 0;
+  border: none;
+  border-radius: var(--bl-radius-pill);
+  background: transparent;
+  color: var(--bl-text-dim);
+  cursor: pointer;
+  transition: color var(--bl-dur-fast) var(--bl-ease), background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-toast-close:hover { color: var(--bl-text); background: var(--bl-surface); }
+.bl-toast-close:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+.bl-toast-msg {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text);
+}
+.bl-toast-undo {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--bl-accent);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  padding: var(--bl-s1) var(--bl-s2);
+  border-radius: var(--bl-radius-sm);
+}
+.bl-toast-undo:hover {
+  background: var(--bl-surface);
+}
+@keyframes bl-toast-in {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+/* ---- Command bar overlay (the headline natural-language surface) ---- */
+.bl-command-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--bl-z-palette);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: calc(var(--bl-safe-top) + var(--bl-s5)) calc(var(--bl-safe-right) + var(--bl-s4))
+    calc(var(--bl-safe-bottom) + var(--bl-s5)) calc(var(--bl-safe-left) + var(--bl-s4));
+  background: rgba(2, 4, 9, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: bl-overlay-in var(--bl-dur) var(--bl-ease);
+}
+@media (min-width: 600px) {
+  .bl-command-overlay {
+    align-items: center;
+  }
+}
+@keyframes bl-overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ----------------------------------------------------------------- KitPicker */
+.bl-kitpicker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s5);
+  padding: var(--bl-s4);
+  width: 100%;
+}
+.bl-kitpicker-empty {
+  padding: var(--bl-s6);
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font-mono);
+}
+.bl-kitpicker-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+.bl-kitpicker-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+}
+.bl-kitpicker-family {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bl-accent);
+}
+.bl-kitpicker-blurb {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+.bl-kitpicker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--bl-s3);
+}
+.bl-kitcard {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--bl-radius);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  overflow: hidden;
+  transition:
+    border-color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-kitcard.is-active {
+  border-color: var(--bl-accent);
+  background: var(--bl-surface-2);
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 26%, transparent);
+}
+.bl-kitcard-main {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1 1 auto;
+  min-height: var(--bl-hit);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+  align-items: flex-start;
+  text-align: start;
+  padding: var(--bl-s3) var(--bl-s3);
+  background: transparent;
+  border: 0;
+  color: var(--bl-text);
+  cursor: pointer;
+}
+.bl-kitcard-name {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-body);
+  letter-spacing: 0.02em;
+}
+.bl-kitcard.is-active .bl-kitcard-name {
+  color: var(--bl-accent);
+}
+.bl-kitcard-check {
+  color: var(--bl-accent);
+  flex: none;
+}
+.bl-kitcard-desc {
+  font-size: var(--bl-fs-micro);
+  line-height: 1.35;
+  color: var(--bl-text-dim);
+}
+.bl-kitcard-preview {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  width: var(--bl-hit);
+  min-height: var(--bl-hit);
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-inline-start: 1px solid var(--bl-border);
+  background: transparent;
+  color: var(--bl-text-dim);
+  cursor: pointer;
+  transition:
+    color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-kitcard-preview:hover {
+  color: var(--bl-accent);
+  background: color-mix(in srgb, var(--bl-accent) 10%, transparent);
+}
+.bl-kitcard-preview:active {
+  transform: scale(0.92);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

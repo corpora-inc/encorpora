@@ -45,6 +45,16 @@ output "premium_public_key_id" {
   description = "CloudFront public key ID used in signed URL generation."
 }
 
+output "iap_table_name" {
+  value       = aws_dynamodb_table.corpan_iap.name
+  description = "DynamoDB single-table name for the IAP / affiliate-codes backend."
+}
+
+output "iap_table_arn" {
+  value       = aws_dynamodb_table.corpan_iap.arn
+  description = "ARN of the corpan-iap DynamoDB table."
+}
+
 output "analytics_endpoint" {
   value       = "https://${aws_cloudfront_distribution.analytics.domain_name}/v1/events"
   description = "Analytics POST endpoint (CloudFront → Lambda Function URL)."

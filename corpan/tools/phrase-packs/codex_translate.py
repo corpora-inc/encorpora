@@ -47,7 +47,7 @@ ALL_LANGS = (
     "el", "tr",
     "he", "ar", "fa", "ur", "pa-Arab",
     "pa-Guru", "hi", "ne", "bn", "mr", "gu", "kn", "te", "ta",
-    "th", "vi", "id", "ms",
+    "th", "vi", "id", "jv", "su", "ms", "tl",
     "sw",
     "zh-Hans", "zh-Hant", "yue-Hant-HK", "ko-polite", "ja",
 )
@@ -67,7 +67,10 @@ LANG_NAME = {
     "bn": "Bengali", "mr": "Marathi", "gu": "Gujarati", "kn": "Kannada",
     "te": "Telugu", "ta": "Tamil",
     "th": "Thai", "vi": "Vietnamese", "id": "Indonesian (Bahasa Indonesia)",
-    "ms": "Malay (Bahasa Malaysia)", "sw": "Swahili (Kiswahili)",
+    "jv": "Javanese (Basa Jawa, Latin script)",
+    "su": "Sundanese (Basa Sunda, Latin script)",
+    "ms": "Malay (Bahasa Malaysia)", "tl": "Tagalog (Filipino, Latin script)",
+    "sw": "Swahili (Kiswahili)",
     "zh-Hans": "Simplified Mandarin Chinese", "zh-Hant": "Traditional Mandarin Chinese (Taiwan)",
     "yue-Hant-HK": "Hong Kong written Cantonese (Traditional script)",
     "ko-polite": "Korean (polite forms only)", "ja": "Japanese",
@@ -117,7 +120,10 @@ LANG_NOTES = {
     "pa-Guru": "Indian Punjabi in Gurmukhi. NOT Hindi-in-Gurmukhi.",
     "hi": "Modern conversational Hindi. Use tum for second person.",
     "id": "Standard Bahasa Indonesia. Distinct from Bahasa Malaysia.",
+    "jv": "Modern conversational Javanese in Latin script. Use Ngoko alus / broadly understandable polite-neutral wording; avoid Indonesian calques and avoid Javanese script.",
+    "su": "Modern conversational Sundanese in Latin script. Use polite-neutral standard Basa Sunda; avoid Indonesian calques and avoid Sundanese script.",
     "ms": "Standard Bahasa Malaysia. Distinct from Bahasa Indonesia.",
+    "tl": "Modern conversational Tagalog/Filipino in Latin script, natural Manila-standard usage. Avoid over-Spanish or overly formal register unless the English demands it.",
     "zh-Hans": "Simplified characters, Mainland Mandarin. NOT Cantonese.",
     "zh-Hant": "Traditional characters, Taiwan Mandarin (影片 not 视频, 軟體 not 软件). NOT Cantonese.",
     "yue-Hant-HK": (
@@ -246,7 +252,7 @@ def translate_one(lang: str, pack_dir: Path, topic: str, phrases: list[dict],
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("pack_dir", help="Path to the pack input directory")
-    p.add_argument("--langs", help="Comma-separated codes (default: all 51 minus en)")
+    p.add_argument("--langs", help="Comma-separated codes (default: all 54 minus en)")
     p.add_argument("--workers", type=int, default=12)
     p.add_argument("--model", help="Codex model override (-c model=...)")
     p.add_argument("--effort", default="low", choices=["minimal", "low", "medium", "high", "xhigh"])

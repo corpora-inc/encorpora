@@ -32,7 +32,7 @@ CLI
         [--out <output-dir>]            # default: <input-dir>/build
         [--placeholder | --strict]      # how to handle missing translations
         [--langs en,es,fr,...]          # override target language coverage
-                                          (default: full 51-language set)
+                                          (default: full 54-language set)
         [--quiet]
 """
 
@@ -53,7 +53,7 @@ SCHEMA_VERSION = 2  # v2 (2026-05-31): adds entries_fts (FTS5 over english).
                    # the dual-mode consumer pattern.
 APPLICATION_ID = 0x434F5250  # "CORP"
 
-# Mirrors corpan-app/src/store/settings.ts :: ALL_LANGUAGES (51 shipping codes).
+# Mirrors corpan-app/src/store/settings.ts :: ALL_LANGUAGES.
 # If that list grows, update here too — `--langs` overrides for one-off packs.
 DEFAULT_LANGS: tuple[str, ...] = (
     "en", "es", "ca", "fr", "it", "ro", "pt-PT", "pt-BR",
@@ -62,7 +62,7 @@ DEFAULT_LANGS: tuple[str, ...] = (
     "el", "tr",
     "he", "ar", "fa", "ur", "pa-Arab",
     "pa-Guru", "hi", "ne", "bn", "mr", "gu", "kn", "te", "ta",
-    "th", "vi", "id", "ms",
+    "th", "vi", "id", "jv", "su", "ms", "tl",
     "sw",
     "zh-Hans", "zh-Hant", "yue-Hant-HK", "ko-polite", "ja",
 )
@@ -390,7 +390,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     g = parser.add_mutually_exclusive_group()
     g.add_argument("--placeholder", action="store_true", help="Fill missing translations with [<lang>] <english> marker (debug only)")
     g.add_argument("--strict", action="store_true", help="Hard-fail on any missing translation")
-    parser.add_argument("--langs", help="Comma-separated target language codes (default: full 51-language set)")
+    parser.add_argument("--langs", help="Comma-separated target language codes (default: full 54-language set)")
     parser.add_argument("--quiet", action="store_true")
     ns = parser.parse_args(argv)
 

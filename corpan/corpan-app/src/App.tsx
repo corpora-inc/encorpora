@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { useDrawerStore } from "@/store/drawer";
 import { QuickSettingsSheet } from "@/components/QuickSettingsSheet";
 import { OnboardingTour } from "@/components/tour/OnboardingTour";
-import { OnboardingTTSInstructions } from "@/components/OnboardingTTSInstructions";
 import { useState, useEffect, useLayoutEffect, useCallback, useRef } from "react";
 import { MainExperience } from "./components/MainExperience";
 import { HomeHub } from "@/components/home/HomeHub";
@@ -26,15 +25,25 @@ import { useRecentNativeStore } from "@/store/recentNative";
 import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
 import { usePackUpdates } from "@/hooks/usePackUpdates";
+import { jitter } from "@/contentPacks/catalogFetch";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
-import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId } from "@/contentPacks/purchase";
+import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId, installPurchaseUpdatedListener } from "@/contentPacks/purchase";
 import { useEntitlementStore } from "@/store/entitlements";
 import { InstallProvider } from "@/contentPacks/InstallContext";
 import { PaywallSheet } from "@/components/paywall/PaywallSheet";
+import { DailyLockOverlay, type DailyLockContext } from "@/components/paywall/DailyLockOverlay";
 import { usePaywallStore, type PaywallSurface, type PaywallContext } from "@/store/paywall";
 import { useProgressStore } from "@/store/progress";
 import { SystemPackInstaller } from "@/components/SystemPackInstaller";
 import { useLandingStore } from "@/store/landing";
+import { trackGateHit } from "@/util/analytics";
+import { useTranslation } from "react-i18next";
+import { PackLaunchTransition, type RazzleCard } from "@/components/PackLaunchTransition";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { buildRazzleRoster, resolveRazzleCard } from "@/components/razzleRoster";
+import { PHRASE_PACK_ID } from "@/onboarding/bestFit";
+import { isReaderPack, DEFAULT_READER_SEED_BOOK } from "@/onboarding/resolveLanding";
+import type { PackLaunchEntry } from "@/contentPacks/types";
 
 const CATALOG_REFRESH_CHECK_INTERVAL_MS = 60_000;
 
@@ -132,14 +141,29 @@ function PhraseFlipChrome() {
 
 export default function App() {
   useThemeEffect();
+  const { t } = useTranslation();
   const [showSettings, setShowSettings] = useState(false);
-  const [showTTS, setShowTTS] = useState(false);
   const [showTour, setShowTour] = useState(false);
+  // The first-launch "razzle-dazzle" collage. Set ONLY by the onboarding landing
+  // (razzle intent) — its `launch` runs the chosen experience UNDER the overlay
+  // at the reveal beat, then `onComplete` clears it. Never set for normal
+  // Home→pack launches.
+  const [razzle, setRazzle] = useState<{
+    roster: RazzleCard[];
+    chosen: RazzleCard;
+    launch: () => void;
+    /** Is the chosen experience installed/launchable yet? The transition holds
+     *  the collage until this is true (or it times out) so we land IN the pack. */
+    isReady: () => boolean;
+  } | null>(null);
+  // gate v2: the universal "you did your N today" accomplishment lock. One
+  // instance, host-rendered, driven by the `corpan:daily-locked` event the
+  // shared monetization gate dispatches when a pack hits its hard daily cap.
+  const [dailyLock, setDailyLock] = useState<DailyLockContext | null>(null);
   const [activeGame, setActiveGame] = useState<{
     id: string;
     manifestUrl?: string;
-    /** Addressability groundwork: deep-link a pack to a specific entry/route. */
-    entry?: { entryId?: number; source?: string; route?: string };
+    entry?: PackLaunchEntry;
   } | null>(() => {
     if (typeof window === "undefined") return null;
     const params = new URLSearchParams(window.location.search);
@@ -181,6 +205,11 @@ export default function App() {
     void fetchPhrasePackCatalog();
     // Detect platform then refresh IAP entitlements (local, no network)
     getPlatform().then(() => refreshEntitlements()).catch(() => {});
+    // Wire the StoreKit Transaction.updates → purchaseUpdated seam so Apple
+    // offer-code redemptions (delivered asynchronously, with no inline invoke
+    // result) get POSTed to /verify-purchase with their pending resolutionToken
+    // — that's what writes the attribution + ledger rows for a redeemed code.
+    void installPurchaseUpdatedListener();
     // Reconcile the in-memory phrase-pack registry with what's actually on
     // disk. Catches manual sideloads, stale persisted entries from prior
     // installs that were since removed, version bumps, etc. No-op if no
@@ -197,20 +226,32 @@ export default function App() {
     })();
   }, [fetchCatalog, fetchPhrasePackCatalog]);
 
-  // Keep the Home/discovery catalogs fresh while the app stays open. Each
-  // store enforces its own TTL and online checks, so this is usually a cheap
-  // no-op and becomes a real network fetch only after the catalog is stale.
+  // Keep the Home/discovery catalogs fresh while the app stays open. The
+  // stores enforce their own TTL + online checks and now revalidate with a
+  // cheap conditional GET (a 0-byte 304 when nothing changed), so this is
+  // almost always free and a real download happens only when the catalog
+  // actually changed. We also poll on focus / foreground and skip while
+  // hidden or offline.
+  //
+  // The interval is JITTERED per device (recursive setTimeout, not a fixed
+  // setInterval) so a fleet of millions never hits the catalog hosts in a
+  // synchronized wave when an update lands.
   useEffect(() => {
     const refreshStaleCatalogs = () => {
       if (document.visibilityState === "hidden") return;
+      if (!navigator.onLine) return;
       void fetchCatalog();
       void fetchPhrasePackCatalog();
     };
 
-    const intervalId = window.setInterval(
-      refreshStaleCatalogs,
-      CATALOG_REFRESH_CHECK_INTERVAL_MS,
-    );
+    let timer = 0;
+    const scheduleNext = () => {
+      timer = window.setTimeout(() => {
+        refreshStaleCatalogs();
+        scheduleNext();
+      }, jitter(CATALOG_REFRESH_CHECK_INTERVAL_MS));
+    };
+    scheduleNext();
 
     const onVisibilityChange = () => {
       if (document.visibilityState === "visible") {
@@ -222,7 +263,7 @@ export default function App() {
     document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
-      window.clearInterval(intervalId);
+      window.clearTimeout(timer);
       window.removeEventListener("focus", refreshStaleCatalogs);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
@@ -296,7 +337,17 @@ export default function App() {
         bookId?: string;
         language?: string;
         theme?: string;
+        // Present only when the SHARED paywall gate (packs/shared/monetization)
+        // fired the request — user-initiated dispatches (Library "Unlock",
+        // reader EOF) omit these.
+        packId?: string;
+        reason?: string;
       }>).detail;
+      // Funnel: gate_hit — emit ONLY for genuine shared-gate fires (carry both
+      // packId + reason). Host owns this so packs need no analytics dependency.
+      if (detail?.packId && detail?.reason) {
+        trackGateHit(detail.packId, detail.surface ?? "other", detail.reason);
+      }
       usePaywallStore.getState().openPaywall({
         surface: (detail?.surface as PaywallSurface) ?? "other",
         bookTitle: detail?.bookTitle,
@@ -305,11 +356,39 @@ export default function App() {
         theme: detail?.theme as PaywallContext["theme"],
       });
     };
+    /**
+     * gate v2: a pack hit its HARD daily cap. The shared monetization gate
+     * dispatches this with the accomplishment + countdown payload. We render
+     * the ONE universal lock overlay (positive "you did your N today ✓"). Never
+     * shown to subscribers — the gate suppresses it for them, but we also guard
+     * here so a stale event can't surface a lock over a paid session.
+     */
+    const onDailyLocked = (e: Event) => {
+      const detail = (e as CustomEvent<{
+        packId?: string;
+        surface?: string;
+        doneToday?: number;
+        limit?: number;
+        resetAt?: string;
+        unitLabel?: string;
+      }>).detail;
+      if (useEntitlementStore.getState().subscription.active) return;
+      if (!detail?.packId || !detail?.resetAt) return;
+      setDailyLock({
+        packId: detail.packId,
+        surface: (detail.surface as PaywallSurface) ?? "other",
+        doneToday: typeof detail.doneToday === "number" ? detail.doneToday : detail.limit ?? 0,
+        limit: typeof detail.limit === "number" ? detail.limit : detail.doneToday ?? 0,
+        resetAt: detail.resetAt,
+        unitLabel: detail.unitLabel ?? "actions",
+      });
+    };
     window.addEventListener("corpan:purchase-recorded", onPurchaseRecorded);
     window.addEventListener(
       "corpan:subscription-recorded",
       onSubscriptionRecorded
     );
+    window.addEventListener("corpan:daily-locked", onDailyLocked);
     window.addEventListener(
       "corpan:restore-purchases-requested",
       onRestoreRequested
@@ -362,6 +441,7 @@ export default function App() {
       );
       window.removeEventListener("corpan:request-unlock", onRequestUnlock);
       window.removeEventListener("corpan:segment-progress", onSegmentProgress);
+      window.removeEventListener("corpan:daily-locked", onDailyLocked);
     };
   }, []);
 
@@ -413,9 +493,9 @@ export default function App() {
   );
 
   const handleLaunchGame = useCallback(
-    (game: InstalledGame) => {
+    (game: InstalledGame, entry?: PackLaunchEntry) => {
       setShowSettings(false);
-      setActiveGame({ id: game.id, manifestUrl: game.manifestUrl });
+      setActiveGame({ id: game.id, manifestUrl: game.manifestUrl, entry });
       updateGameParam({ id: game.id, manifestUrl: game.manifestUrl });
       // Record the launch so Recents (in PacksListing) can sort by it.
       // Single chokepoint — every code path that opens a pack goes
@@ -434,6 +514,15 @@ export default function App() {
     // Exiting any experience returns to the Home hub (which is always mounted
     // underneath the overlay). No more dumping the user into Settings.
     const onExit = () => {
+      // Exiting any experience returns to Home. We deliberately do NOT fire the
+      // OS-native review here — the in-app "Enjoying Corpán?" prompt
+      // (<RatingPrompt/>) is the single rating surface, and its 5-star button
+      // pops the native review widget. Firing both produced a double prompt.
+      //
+      // Exiting is NOT a paywall moment. If the daily-cap accomplishment lock is
+      // open (e.g. the user hit it in phrase-flip then tapped Home), dismiss it
+      // here so it can't linger over the Home hub — just let them get home.
+      setDailyLock(null);
       setActiveGame(null);
       updateGameParam(null);
     };
@@ -447,15 +536,6 @@ export default function App() {
     const onOpenSettings = () => setShowSettings(true);
     window.addEventListener("corpan:open-settings", onOpenSettings as EventListener);
     return () => window.removeEventListener("corpan:open-settings", onOpenSettings as EventListener);
-  }, []);
-
-  useEffect(() => {
-    // The standalone Text-to-speech / voice configurator, opened from Settings
-    // (JumpToTTSButton). Onboarding is a decision graph now, so we render the
-    // TTS screen directly rather than re-entering onboarding at a step index.
-    const onOpenTTS = () => setShowTTS(true);
-    window.addEventListener("corpan:open-tts", onOpenTTS as EventListener);
-    return () => window.removeEventListener("corpan:open-tts", onOpenTTS as EventListener);
   }, []);
 
   useEffect(() => {
@@ -483,6 +563,74 @@ export default function App() {
     updateGameParam({ id: "phrase_main" });
   }, [updateGameParam]);
 
+  // Quietly install a catalog game pack (no InstallProgressDialog) so the
+  // razzle-dazzle landing can drop the user straight into it. Idempotent +
+  // best-effort: a slow/failed download just means the landing falls back to
+  // Phrase Flip and the pack still finishes installing → appears on Home.
+  const quietInstall = useCallback(async (packId: string) => {
+    if (useGamesStore.getState().getGame(packId)) return;
+    const findEntry = () =>
+      useCatalogStore
+        .getState()
+        .getCatalog()
+        .find((g) => g.id === packId);
+    let entry = findEntry();
+    // The game catalog fetches asynchronously; on a cold first run it may not be
+    // loaded yet when onboarding seeds this install. Force a fresh fetch before
+    // giving up so the reader/pack is actually found + installs in time.
+    if (!entry?.manifestUrl) {
+      try {
+        await useCatalogStore.getState().fetchCatalog(true);
+      } catch (err) {
+        console.warn("[razzle] catalog fetch for quiet install failed:", err);
+      }
+      entry = findEntry();
+    }
+    if (!entry?.manifestUrl) {
+      console.warn(
+        "[razzle] quietInstall: no catalog entry for",
+        packId,
+        "— catalog ids:",
+        useCatalogStore.getState().getCatalog().map((g) => g.id),
+      );
+      return;
+    }
+    console.log("[razzle] quietInstall", packId, "→", entry.manifestUrl);
+    try {
+      const { installPack } = await import("@/contentPacks/install");
+      const result = await installPack({
+        manifestUrl: entry.manifestUrl,
+        source: "catalog",
+        expectedVersion: entry.version,
+      });
+      useGamesStore.getState().addGame({
+        id: result.packId,
+        name: result.name ?? entry.name,
+        manifestUrl: result.manifestUrl,
+        version: result.version,
+        description: entry.description ?? result.description,
+        imageUrl: entry.imageUrl,
+        source: result.source,
+      });
+      console.log("[razzle] quietInstall DONE", packId, result.version);
+    } catch (err) {
+      console.warn("[razzle] quiet install failed for", packId, err);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Onboarding fires this the moment the user picks their final answer, so the
+    // chosen pack starts downloading while they finish the last screen + watch
+    // the transition (maximizes the chance it's ready to land into).
+    const onPreinstall = (e: Event) => {
+      const id = (e as CustomEvent<{ packId?: string }>).detail?.packId;
+      if (id) void quietInstall(id);
+    };
+    window.addEventListener("corpan:preinstall-pack", onPreinstall as EventListener);
+    return () =>
+      window.removeEventListener("corpan:preinstall-pack", onPreinstall as EventListener);
+  }, [quietInstall]);
+
   // Consume the one-shot landing intent from onboarding, once, on the
   // false→true transition. A URL deep-link (?game=) always wins.
   // useLayoutEffect (not useEffect) so the tour/phrase overlay mounts BEFORE
@@ -490,11 +638,59 @@ export default function App() {
   // a flash (FOUC) right as the tour appears.
   const landingConsumed = useRef(false);
   useLayoutEffect(() => {
-    if (!onboarded || landingConsumed.current) return;
+    // Re-arm the one-shot whenever we drop back to onboarding (e.g. Settings →
+    // "Reconfigure stack", which sets onboarded=false and returns to Welcome).
+    // Without this the razzle landing would fire only on the very first
+    // onboarding of the app session and silently skip on every re-run.
+    if (!onboarded) {
+      landingConsumed.current = false;
+      return;
+    }
+    if (landingConsumed.current) return;
     landingConsumed.current = true;
     if (activeGame) return; // deep-link present — honor it, skip intent
     const intent = useLandingStore.getState().consumeLanding();
     if (!intent) return;
+
+    // The "razzle" intent (set by onboarding) plays the first-launch collage,
+    // then drops the user into the chosen experience at the reveal beat.
+    if (intent.kind === "experience" && intent.razzle) {
+      const packId = intent.packId;
+      const deps = {
+        catalog: useCatalogStore.getState().getCatalog(),
+        name: (id: string, fallback: string) =>
+          t(`experiences.${id}.name`, { defaultValue: fallback }),
+      };
+      // Kick the install now (backstops onboarding's earlier preinstall) so the
+      // pack is as ready as possible by the reveal.
+      if (packId !== PHRASE_PACK_ID) void quietInstall(packId);
+      // What actually runs UNDER the overlay at the reveal beat:
+      const launch = () => {
+        if (packId === PHRASE_PACK_ID) {
+          openPhrase();
+          return;
+        }
+        const g = useGamesStore.getState().getGame(packId);
+        if (g) {
+          // A brand-new reader user gets seeded into the default book — the
+          // reader auto-downloads its preview narrations for their stack and
+          // opens their primary language ready to play.
+          handleLaunchGame(
+            g,
+            isReaderPack(packId) ? { seedBookId: DEFAULT_READER_SEED_BOOK } : undefined,
+          );
+        } else openPhrase(); // not ready in time → graceful fallback
+      };
+      setRazzle({
+        roster: buildRazzleRoster(deps),
+        chosen: resolveRazzleCard(packId, deps),
+        launch,
+        isReady: () =>
+          packId === PHRASE_PACK_ID || !!useGamesStore.getState().getGame(packId),
+      });
+      return;
+    }
+
     if (intent.kind === "experience") {
       if (intent.packId === "phrase_main") {
         openPhrase();
@@ -551,41 +747,64 @@ export default function App() {
       <RatingPrompt />
       <UpdatePrompt />
       <PaywallSheet />
+      {dailyLock ? (
+        <DailyLockOverlay context={dailyLock} onClose={() => setDailyLock(null)} />
+      ) : null}
       <SystemPackInstaller />
 
       {/* Experience overlay. A pack (has manifestUrl) → ContentPackHost;
           the native phrase experience (no manifestUrl) → MainExperience.
           Both full-screen over Home; both exit via corpan:exit. */}
       {activeGame ? (
-        activeGame.manifestUrl ? (
-          /* Content pack: rendered bare. The pack owns its own chrome and
-             exits via `corpan:exit` (through hostApi) — we do NOT stamp our
-             own floating buttons over a pack's layout. */
-          <ContentPackOverlay id={activeGame.id} manifestUrl={activeGame.manifestUrl} entry={activeGame.entry} />
-        ) : (
-          /* Native Phrase Flip overlay — app-owned, stack-driven; gets the
-             tailored Home + Quick Settings chrome. */
-          <div className="fixed inset-0 z-[1100] flex flex-col bg-background animate-in fade-in duration-200">
-            <MainExperience />
-            <PhraseFlipChrome />
-          </div>
-        )
+        <ErrorBoundary
+          // A crash inside an experience must never strand the user on a dead,
+          // unclickable overlay — drop back to Home (always interactive).
+          onError={() => {
+            setActiveGame(null)
+            updateGameParam(null)
+          }}
+        >
+          {activeGame.manifestUrl ? (
+            /* Content pack: rendered bare. The pack owns its own chrome and
+               exits via `corpan:exit` (through hostApi) — we do NOT stamp our
+               own floating buttons over a pack's layout. */
+            <ContentPackOverlay id={activeGame.id} manifestUrl={activeGame.manifestUrl} entry={activeGame.entry} />
+          ) : (
+            /* Native Phrase Flip overlay — app-owned, stack-driven; gets the
+               tailored Home + Quick Settings chrome. */
+            <div className="fixed inset-0 z-[1100] flex flex-col bg-background animate-in fade-in duration-200">
+              <MainExperience />
+              <PhraseFlipChrome />
+            </div>
+          )}
+        </ErrorBoundary>
+      ) : null}
+
+      {/* First-launch razzle-dazzle collage (z-1200, above the experience it
+          reveals). Plays once on the onboarding landing; its `launch` mounts the
+          chosen experience underneath at the reveal beat, then it washes away. */}
+      {razzle ? (
+        <ErrorBoundary
+          // Belt-and-suspenders: if the transition ever throws (a framer-motion
+          // invariant, etc.), DON'T leave a dead full-screen overlay trapping
+          // the user — launch the chosen experience and tear the overlay down.
+          onError={() => {
+            razzle.launch()
+            setRazzle(null)
+          }}
+        >
+          <PackLaunchTransition
+            roster={razzle.roster}
+            chosen={razzle.chosen}
+            onReveal={() => razzle.launch()}
+            onComplete={() => setRazzle(null)}
+            waitUntilReady={razzle.isReady}
+          />
+        </ErrorBoundary>
       ) : null}
 
       {/* Quick Settings sheet — opened by Phrase Flip's gear or hostApi. */}
       <QuickSettingsSheet />
-
-      {/* Standalone Text-to-speech / voice configurator, opened from Settings.
-          z above SettingsModal (Radix dialog) so it overlays it; Back/Continue
-          both just close it (voice selections persist live to the store). */}
-      {showTTS ? (
-        <div className="fixed inset-0 z-[1200]">
-          <OnboardingTTSInstructions
-            onAdvance={() => setShowTTS(false)}
-            onBack={() => setShowTTS(false)}
-          />
-        </div>
-      ) : null}
 
       {/* Post-onboarding guided tour (over Home; launching a pack closes it). */}
       {showTour ? (

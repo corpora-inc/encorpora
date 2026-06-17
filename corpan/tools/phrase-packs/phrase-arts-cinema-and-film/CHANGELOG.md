@@ -9,6 +9,10 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-15
+### Added
+- Added Tagalog (`tl`), Javanese (`jv`), and Sundanese (`su`) phrase translations, bringing the pack to the current 54-language ALL_LANGUAGES set.
+
 
 ## [0.3.0] - 2026-05-31
 ### Added

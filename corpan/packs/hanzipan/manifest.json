@@ -1,7 +1,7 @@
 {
   "id": "hanzipan",
   "name": "Hanzipan",
-  "version": "0.6.1",
+  "version": "0.6.3",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
@@ -11,7 +11,7 @@
   "databases": {
     "main": "data/hanzi.sqlite3"
   },
-  "devRevision": "2026-06-05T06:19:08.308Z",
+  "devRevision": "2026-06-16T04:11:51.117Z",
   "nameLocalized": {
     "ar": "هانزيبان",
     "bg": "Ханзипан",

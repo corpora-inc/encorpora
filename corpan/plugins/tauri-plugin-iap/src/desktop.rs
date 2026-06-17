@@ -63,4 +63,17 @@ impl<R: Runtime> Iap<R> {
             "IAP is not supported on this platform",
         )))
     }
+
+    pub async fn present_offer_code_redeem_sheet(&self) -> crate::Result<()> {
+        Err(crate::Error::from(std::io::Error::other(
+            "Offer code redemption is not supported on this platform",
+        )))
+    }
+
+    pub async fn request_review(&self) -> crate::Result<()> {
+        // No native in-app review sheet on Linux/desktop dev builds — resolve
+        // cleanly so the host's best-effort pack-exit trigger never surfaces an
+        // error.
+        Ok(())
+    }
 }

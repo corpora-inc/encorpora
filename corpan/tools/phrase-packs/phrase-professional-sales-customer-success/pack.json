@@ -1,0 +1,14 @@
+{
+  "id": "phrase-professional-sales-customer-success",
+  "version": "0.1.0",
+  "name": "Sales and Customer Success",
+  "description": "Professional language for discovery, demos, proposals, renewals, adoption, support handoffs, and account health.",
+  "category": "professional",
+  "topic": "Sales and Customer Success",
+  "icon": "handshake",
+  "accent_color": "#e4572e",
+  "purchase": {"type": "free"},
+  "tags": ["professional", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

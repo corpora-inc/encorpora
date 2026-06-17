@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-impact"
+description = "Enables the impact command without any pre-configured scope."
+commands.allow = ["impact"]
+
+[[permission]]
+identifier = "deny-impact"
+description = "Denies the impact command without any pre-configured scope."
+commands.deny = ["impact"]

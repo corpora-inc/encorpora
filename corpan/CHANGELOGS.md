@@ -80,6 +80,14 @@ When an agent or human bumps the version (e.g. `package.json`,
 If the change crosses units (e.g. a Corpán app feature that requires a
 plugin bump), add the entry to *each* affected unit's changelog.
 
+## Publish a Free2z page for big releases
+
+For notable releases (and whenever we ship a batch of new videos), publish a
+public announcement/marketing page on Free2z as part of the release. It is a
+durable, linkable page we control, with embeddable video. See
+`corpan/infra/free2z/README.md` for the Free2z-flavored Markdown reference, the
+`post_zpage.py` helper, and the step-by-step checklist.
+
 ## What does NOT belong in a changelog
 
 - Internal refactors with no observable effect.

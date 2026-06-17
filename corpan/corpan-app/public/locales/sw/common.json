@@ -51,7 +51,10 @@
     "cs": "Kicheki",
     "lt": "Kilithuania",
     "sk": "Kislovakia",
-    "sl": "Kislovenia"
+    "sl": "Kislovenia",
+    "jv": "Kijavan",
+    "su": "Kiswahili",
+    "tl": "Kitaliano"
   },
   "categories": {
     "travel": "Usafiri",
@@ -311,7 +314,8 @@
       "joinTitle": "Jiunge na Corpanistas",
       "start": "Anza kuchunguza",
       "subtitle": "Corpán imeundwa na timu ndogo ya chanzo huria. Njoo useme salamu — na kama unaipenda, unaweza kutuunga mkono.",
-      "title": "Uko tayari"
+      "title": "Uko tayari",
+      "explore": "Gundua mwenyewe"
     },
     "fork": {
       "child": {
@@ -368,7 +372,31 @@
     "voicePreviewAria": "Hakiki {{name}}",
     "voicePreviewSelected": "Hakiki iliyochaguliwa",
     "voiceRecommended": "Inayopendekezwa",
-    "voiceSelectedCount": "{{count}} kati ya {{total}}"
+    "voiceSelectedCount": "{{count}} kati ya {{total}}",
+    "whatToStart": {
+      "title": "Tuanzie wapi?",
+      "subtitle": "Chagua moja ili kuanza — yaliyobaki yako gusa moja tu.",
+      "read": {
+        "label": "Soma",
+        "desc": "Zama katika hadithi na vitabu."
+      },
+      "study": {
+        "label": "Jifunze",
+        "desc": "Jenga msamiati kwa mazoezi yaliyolengwa."
+      },
+      "playMusic": {
+        "label": "Piga muziki",
+        "desc": "Onja lugha yako kwenye deki."
+      },
+      "playGames": {
+        "label": "Cheza",
+        "desc": "Jifunze kupitia changamoto za kufurahisha."
+      },
+      "surprise": {
+        "label": "Nishangaze!",
+        "desc": "Nipeleke mahali pa kufurahisha."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -551,7 +579,7 @@
     "renameLabel": "Jina jipya la mfumo",
     "selectAria": "Chagua mfumo",
     "selectPlaceholder": "Chagua…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "Rundo",
     "introTipBody": "Stacks huhifadhi mipangilio tofauti ya kujifunza — moja kwa safari, nyingine kwa kazi. Gusa + kuunda stack mpya."
   },
   "rating": {
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "Tumia herufi, nambari, vistari au mistari ya chini.",
     "affiliateChecking": "Inakagua msimbo...",
     "affiliateApplied": "Msimbo utaambatishwa kwenye usajili huu.",
-    "affiliateCodeHelp": "Ikiwa mtu alikutuma hapa, weka msimbo wake kabla ya kujisajili."
+    "affiliateCodeHelp": "Ikiwa mtu alikutuma hapa, weka msimbo wake kabla ya kujisajili.",
+    "introPriceHeadline": "{{introPrice}} kwa {{period}}",
+    "introPriceThen": ", kisha {{price}}/{{period}}",
+    "perMonth": "mwezi",
+    "perYear": "mwaka",
+    "startFreeTrial": "Anza Jaribio la Bure",
+    "trialFirstCharge": "{{period}}: malipo ya kwanza",
+    "trialHeadline": "{{period}} bure",
+    "trialReassurance": "Hakuna malipo sasa · unaweza kughairi wakati wowote",
+    "trialThenPrice": ", kisha {{price}}/{{period}}",
+    "trialToday": "Leo: anza"
   },
   "restore": {
     "button": "Rejesha Manunuzi",
@@ -712,7 +750,8 @@
     "subhead": "Fungua kila kitabu katika kila lugha. Hakuna matangazo. Data yako inabaki kwenye kifaa chako.",
     "pitch": "Sisi ni timu ndogo na tunawekeza kila senti tena kwenye Corpán. Corpanistas wanaiweka bila matangazo na inakua.",
     "maybeLater": "Labda baadaye",
-    "continue": "Endelea"
+    "continue": "Endelea",
+    "dismiss": "Ondoa"
   },
   "streak": {
     "title": "Mfululizo wa siku {{count}}"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Mji hai unaogeuza kila mkutano kuwa somo."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sampuli lugha unayojifunza. Iscratch mpaka iingie kichwani."
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "Sasisha",
     "updateNow": "Sasisha sasa",
     "versionLine": "Toleo {{version}} liko tayari kusakinishwa."
+  },
+  "streakBadge": {
+    "label": "Mfululizo wa siku {{days}}"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} yako ya leo",
+    "streakActive": "Mfululizo wa siku {{days}} — rudi kesho kuendelea.",
+    "streakStart": "Rudi kesho kuendelea.",
+    "resetIn": "Inaanza upya baada ya {{time}}",
+    "cta": "Endelea sasa na Corpán Plus",
+    "dismiss": "Labda baadaye",
+    "closeAria": "Funga",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "wakati wowote"
+  },
+  "code": {
+    "attributedUnverified": "Msimbo utaambatishwa kwenye usajili wako.",
+    "checkFailed": "Imeshindikana kukagua",
+    "checking": "Inakagua msimbo…",
+    "creditedTo": "imewekwa kwa {{partner}}",
+    "fieldLabel": "Msimbo wa ofa au ushirika",
+    "help": "Una msimbo? Ingiza ili kutumia ofa yako.",
+    "redeemUnavailable": "Imeshindikana kufungua skrini ya kukomboa. Tafadhali jaribu tena.",
+    "redeemWithApple": "Komboa na Apple",
+    "redeeming": "Inafungua kukomboa…",
+    "retry": "Jaribu tena",
+    "subscribeWithDiscount": "Jisajili ({{discount}})",
+    "redeemCode": "Tumia msimbo",
+    "notApplied": "Msimbo huu hautoi punguzo lolote."
   }
 }

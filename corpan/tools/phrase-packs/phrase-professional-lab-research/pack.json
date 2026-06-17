@@ -1,0 +1,14 @@
+{
+  "id": "phrase-professional-lab-research",
+  "version": "0.1.0",
+  "name": "Lab and Research",
+  "description": "Professional language for experiments, protocols, samples, lab safety, data quality, peer review, and research meetings.",
+  "category": "professional",
+  "topic": "Lab and Research",
+  "icon": "microscope",
+  "accent_color": "#7c3aed",
+  "purchase": {"type": "free"},
+  "tags": ["professional", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

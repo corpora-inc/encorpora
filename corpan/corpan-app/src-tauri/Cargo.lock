@@ -751,9 +751,10 @@ dependencies = [
 
 [[package]]
 name = "corpan"
-version = "0.17.3"
+version = "0.19.0"
 dependencies = [
  "futures-util",
+ "libc",
  "reqwest 0.12.28",
  "rusqlite",
  "serde",
@@ -766,6 +767,7 @@ dependencies = [
  "tauri-plugin-clipboard-manager",
  "tauri-plugin-corpan-llm",
  "tauri-plugin-game-packs",
+ "tauri-plugin-haptics",
  "tauri-plugin-iap",
  "tauri-plugin-opener",
  "tauri-plugin-os",
@@ -4881,8 +4883,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "tauri-plugin-haptics"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin",
+ "thiserror 2.0.18",
+]
+
+[[package]]
 name = "tauri-plugin-iap"
-version = "0.8.2"
+version = "0.9.0"
 dependencies = [
  "log",
  "serde",
@@ -4986,7 +5000,7 @@ dependencies = [
 
 [[package]]
 name = "tauri-plugin-tts"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "cocoa",
  "objc",

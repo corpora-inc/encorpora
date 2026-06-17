@@ -14,7 +14,7 @@ do not need to read it. **Everything you need to ship is in this file.**
 ## What a phrase pack is
 
 One self-contained SQLite file (`data.sqlite3`) of ~50–2500 English phrases
-with translations into the app's supported languages (default 51), plus a
+with translations into the app's supported languages (default 54), plus a
 small `manifest.json` mirror of its metadata. Packed into a zip and served
 from S3 / CloudFront. Users install one or many; the app's query layer
 samples uniformly per entry across the user's active set, including the
@@ -88,6 +88,24 @@ phrase-<category-or-topic>-<sub-or-variant>
    `web/data/packs.json` (or wherever the v3 phrase-pack catalog source
    lives — see "Catalog" below).
 
+## Corpus quality rule: no templated phrase generation
+
+Do not author phrase packs by cycling through fixed vocabulary lists,
+sentence templates, Cartesian products, or deterministic loops. That method
+creates repetition, unnatural collocations, and hollow coverage that looks
+large while teaching almost nothing.
+
+English source phrases must be written directly, using the author's actual
+domain knowledge and language judgment. Scripts are appropriate for validation,
+formatting, building SQLite databases, deriving `translations/en.json` from
+already-authored English, and checking word-frequency problems. They are not
+appropriate for creating the corpus content itself.
+
+Before a professional or specialist pack is accepted, run a vocabulary sanity
+check and inspect the most common domain words. If a narrow technical noun or
+artifact dominates the pack without a real pedagogical reason, rewrite the
+source rather than padding around it.
+
 ## Input layout
 
 ```
@@ -115,7 +133,7 @@ example-botany/
   "accent_color": "#a5d6a7",
 
   // OPTIONAL per-language overrides for the human-facing strings.
-  // Keys are BCP-47 codes from the canonical 51-locale list. Partial
+  // Keys are BCP-47 codes from the canonical 54-locale list. Partial
   // coverage is fine — any locale not present falls back through the
   // resolver chain (base language → script siblings for zh/yue →
   // English → the bare `name` / `description` / `topic` field above).
@@ -158,7 +176,7 @@ inferred from `phrases.json` unless overridden.
 
 - `name_localized`, `description_localized`, `topic_localized` —
   `{ "<bcp-47>": "<translation>" }` maps. Keys come from the canonical
-  51-locale list (see `corpan-app/src/store/settings.ts ::
+  54-locale list (see `corpan-app/src/store/settings.ts ::
   ALL_LANGUAGES`). Partial coverage falls back gracefully — the
   resolver tries exact match → base language (`pt-BR` → `pt`) →
   Chinese-script siblings (`zh-Hans` ↔ `zh-Hant`, plus `yue-Hant-HK`)
@@ -223,7 +241,7 @@ Keyed by the phrase index (as a JSON string). `text` required;
 language, named with the BCP-47 code used by the app (see canonical list
 below).
 
-### Canonical target language list (51 codes)
+### Canonical target language list (54 codes)
 
 ```
 en, es, ca, fr, it, ro, pt-PT, pt-BR,
@@ -232,7 +250,7 @@ lt, pl, cs, sk, sl, hr, sr, bg, uk, ru,
 el, tr,
 he, ar, fa, ur, pa-Arab,
 pa-Guru, hi, ne, bn, mr, gu, kn, te, ta,
-th, vi, id, ms,
+th, vi, id, jv, su, ms, tl,
 sw,
 zh-Hans, zh-Hant, yue-Hant-HK, ko-polite, ja
 ```
@@ -315,7 +333,7 @@ Produces `<pack-id>-<version>.zip` (manifest.json + data.sqlite3) and
 - Warn at >5 MB compressed (likely too many languages or too long entries).
 - Hard-fail at >25 MB.
 
-The size of a typical 500-entry × 51-language pack is ~2 MB compressed.
+The size of a typical 500-entry × 54-language pack is ~2 MB compressed.
 Botany Basics at 80 entries is 40 KB.
 
 ## Publish: zip + catalog, direct to S3
@@ -407,7 +425,7 @@ version's URL on the next `--update-catalog`.
   "sha256": "e5b1de97c0ba…",
   "sizeMb": 0.04,
   "entryCount": 80,
-  "languageCount": 51,
+  "languageCount": 54,
   "levelMin": "A1",
   "levelMax": "C1",
   "purchase": { "type": "free" },
@@ -515,7 +533,7 @@ python3 tools/phrase-packs/publish.py \
 
 Group `labelLocalized` and `descriptionLocalized` follow the same
 optional / fallback contract as the pack fields. Same resolver, same
-51-locale list. Render sites: the category pill row in the Packs-tab
+54-locale list. Render sites: the category pill row in the Packs-tab
 drawer + any group header on the Stacks-tab toggle section.
 
 Without these fields the onboarding step renders its "no phrase packs
@@ -551,7 +569,7 @@ on the wire.
 
 Per-pack `pack.json` additions (publisher input):
 
-- `name_localized` — `{ "<bcp-47>": "..." }` map keyed by the 51
+- `name_localized` — `{ "<bcp-47>": "..." }` map keyed by the 54
   canonical locale codes (see `corpan-app/src/store/settings.ts ::
   ALL_LANGUAGES` and the canonical list earlier in this doc).
 - `description_localized` — same shape.
@@ -595,7 +613,7 @@ Tooling changes (`tools/phrase-packs/`):
 
 5. Translation generation is out of scope of this contract — use
    whatever pipeline you prefer (LLM batch, professional, mix).
-   The canonical 51-locale list is mirrored in
+   The canonical 54-locale list is mirrored in
    `tools/phrase-packs/build_phrase_pack.py :: DEFAULT_LANGS`.
 
 Rollout order:

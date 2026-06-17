@@ -2,11 +2,11 @@
   {
     "id": "tutomaton",
     "name": "Tutomaton",
-    "description": "A patient on-device language tutor for every language you're learning \u2014 grounded by your installed phrase packs. Runs entirely on your device.",
+    "description": "A patient on-device language tutor for every language you're learning — grounded by your installed phrase packs. Runs entirely on your device.",
     "status": "active",
     "listed": true,
     "manifestUrl": "/corpan/packs/tutomaton/manifest.json",
-    "zipUrl": "/corpan/packs/tutomaton/0.5.4/tutomaton.zip",
+    "zipUrl": "/corpan/packs/tutomaton/0.6.0/tutomaton.zip",
     "landingUrl": "/corpan/packs/tutomaton/",
     "avatarSource": "corpan/packs/tutomaton/tutomaton-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/tutomaton",
@@ -42,7 +42,7 @@
   {
     "id": "tutomaton",
     "name": "Tutomaton",
-    "description": "A patient on-device language tutor for every language you're learning \u2014 grounded by your installed phrase packs. Runs entirely on your device.",
+    "description": "A patient on-device language tutor for every language you're learning — grounded by your installed phrase packs. Runs entirely on your device.",
     "status": "active",
     "listed": true,
     "webListed": false,
@@ -112,7 +112,7 @@
     ],
     "recommendOrder": 4,
     "kidFriendly": true,
-    "tagline": "Hear a phrase, steer to match it \u2014 learn by playing."
+    "tagline": "Hear a phrase, steer to match it — learn by playing."
   },
   {
     "id": "corpan_city",
@@ -189,6 +189,40 @@
     "tagline": "Talk to someone new. Local AI keeps the conversation safe."
   },
   {
+    "id": "beatlounge",
+    "name": "beatlounge",
+    "description": "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/beatlounge/manifest.json",
+    "zipUrl": "/corpan/packs/beatlounge.zip",
+    "landingUrl": "/corpan/packs/beatlounge/",
+    "avatarSource": "corpan/packs/beatlounge/beatlounge-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/beatlounge",
+    "minAppVersion": "0.18.0",
+    "v1Listed": false,
+    "channel": "stable",
+    "packType": "game",
+    "purchase": {
+      "type": "free",
+      "priceLabel": "Free"
+    },
+    "categories": [
+      "wild",
+      "games",
+      "study"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "learner"
+    ],
+    "recommendOrder": 6,
+    "featuredFor": [
+      "wild"
+    ],
+    "tagline": "Sample the language you're learning. Scratch it till it sticks."
+  },
+  {
     "id": "hanzipan",
     "name": "Hanzipan",
     "description": "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples",
@@ -230,7 +264,7 @@
     "manifestUrl": "/corpan/packs/juice-squeeze/manifest.json",
     "zipUrl": "/corpan/packs/juice-squeeze.zip",
     "landingUrl": "/corpan/packs/juice-squeeze/",
-    "avatarSource": "corpan/packs/juice-squeeze/juice-squeeze-avatar.svg",
+    "avatarSource": "corpan/packs/juice-squeeze/juice-squeeze-avatar.png",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/juice-squeeze",
     "minAppVersion": "0.9.0",
     "channel": "stable",
@@ -281,7 +315,7 @@
     ],
     "recommendOrder": 1,
     "kidFriendly": true,
-    "tagline": "Read along to narrated audiobooks \u2014 calm, with word-by-word highlighting."
+    "tagline": "Read along to narrated audiobooks — calm, with word-by-word highlighting."
   },
   {
     "id": "stargate_reader",
@@ -311,12 +345,12 @@
       "polyglot"
     ],
     "recommendOrder": 2,
-    "tagline": "The same audiobooks in immersive 3D \u2014 words stream through space as they're read."
+    "tagline": "The same audiobooks in immersive 3D — words stream through space as they're read."
   },
   {
     "id": "world_radio",
     "name": "World Radio",
-    "description": "Tune into live internet radio in any of Corpan's languages \u2014 your stack first, the world right after",
+    "description": "Tune into live internet radio in any of Corpan's languages — your stack first, the world right after",
     "status": "active",
     "listed": true,
     "manifestUrl": "/corpan/packs/world-radio/manifest.json",
@@ -347,7 +381,7 @@
   {
     "id": "world_radio",
     "name": "World Radio",
-    "description": "Tune into live internet radio in any of Corpan's languages \u2014 your stack first, the world right after",
+    "description": "Tune into live internet radio in any of Corpan's languages — your stack first, the world right after",
     "status": "active",
     "listed": false,
     "manifestUrl": "/corpan/packs/world-radio-legacy/manifest.json",
@@ -379,7 +413,7 @@
   {
     "id": "pronunciation_coach",
     "name": "Parlometron",
-    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels \u2014 Whisper-powered scoring with per-word feedback and TTS playback",
+    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels — Whisper-powered scoring with per-word feedback and TTS playback",
     "status": "active",
     "listed": true,
     "webListed": false,
@@ -414,7 +448,7 @@
   {
     "id": "pronunciation_coach",
     "name": "Parlometron",
-    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels \u2014 Whisper-powered scoring with per-word feedback and TTS playback",
+    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels — Whisper-powered scoring with per-word feedback and TTS playback",
     "status": "active",
     "listed": true,
     "manifestUrl": "/corpan/packs/pronunciation-coach/manifest.json",
@@ -447,7 +481,7 @@
   {
     "id": "pronunciation_coach",
     "name": "Parlometron",
-    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels \u2014 Whisper-powered scoring with per-word feedback and TTS playback",
+    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels — Whisper-powered scoring with per-word feedback and TTS playback",
     "status": "active",
     "listed": true,
     "webListed": false,

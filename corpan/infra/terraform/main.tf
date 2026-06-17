@@ -50,8 +50,73 @@ resource "aws_secretsmanager_secret_version" "verify" {
     },
     cloudfront = {
       signingPrivateKey = ""
+    },
+    # codeSigning.hmacKey signs/validates the resolutionToken + entitlementToken
+    # (Phase 3 codes backend, JWT HS256). This is a DOCUMENTATION placeholder —
+    # the REAL key is set OUT OF BAND by the integrator (like appStoreConnect),
+    # and `lifecycle.ignore_changes` below ensures `terraform apply` NEVER
+    # overwrites the live value with this empty placeholder.
+    codeSigning = {
+      hmacKey = "",
+      kid     = "v1"
     }
   })
+
+  # CRITICAL: the live secret holds REAL values (google/apple/cloudfront/
+  # appStoreConnect/codeSigning.hmacKey) set OUT OF BAND. Terraform must NOT
+  # manage secret_string drift, or an apply would reset every live value to the
+  # empty placeholders above and break the live verify lambda + codes backend.
+  lifecycle {
+    ignore_changes = [secret_string]
+  }
+}
+
+# ---------------------------------------------------------------------------
+# DynamoDB single-table store for the IAP / affiliate-codes backend (Phase 3).
+# Single-table design (see PHASE3_CODES_CONTRACT.md §7): code registry,
+# attribution locks, purchase idempotency rows, ledger events, partner rows.
+# GSI1 reverse-maps a Google obfuscatedExternalAccountId (= sha256Hex(subjectId))
+# back to the locked subject without reversing the hash (contract §7.3).
+# ---------------------------------------------------------------------------
+
+resource "aws_dynamodb_table" "corpan_iap" {
+  name         = "${var.project_name}-iap"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "PK"
+  range_key    = "SK"
+
+  attribute {
+    name = "PK"
+    type = "S"
+  }
+
+  attribute {
+    name = "SK"
+    type = "S"
+  }
+
+  attribute {
+    name = "GSI1PK"
+    type = "S"
+  }
+
+  # GSI1: Google renewal reverse-map. GSI1PK = obfHash, GSI1SK = SK.
+  # SK is already a top-level table attribute, so it is reused as GSI1SK.
+  global_secondary_index {
+    name            = "GSI1"
+    hash_key        = "GSI1PK"
+    range_key       = "SK"
+    projection_type = "INCLUDE"
+    non_key_attributes = [
+      "partnerId",
+      "subjectId",
+      "status"
+    ]
+  }
+
+  point_in_time_recovery {
+    enabled = true
+  }
 }
 
 resource "aws_iam_role" "verify_lambda" {
@@ -87,6 +152,19 @@ resource "aws_iam_role_policy" "verify_lambda" {
         Effect   = "Allow"
         Action   = ["secretsmanager:GetSecretValue"]
         Resource = aws_secretsmanager_secret.verify.arn
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:UpdateItem",
+          "dynamodb:Query"
+        ]
+        Resource = [
+          aws_dynamodb_table.corpan_iap.arn,
+          "${aws_dynamodb_table.corpan_iap.arn}/index/GSI1"
+        ]
       },
       {
         Effect   = "Allow"
@@ -126,6 +204,7 @@ resource "aws_lambda_function" "verify" {
     variables = {
       PACK_BUCKET            = aws_s3_bucket.packs.bucket
       SECRETS_ARN            = aws_secretsmanager_secret.verify.arn
+      DYNAMO_TABLE           = aws_dynamodb_table.corpan_iap.name
       DEV_BYPASS_TOKEN       = var.dev_bypass_token
       CLOUDFRONT_DOMAIN      = var.enable_cdn ? (var.cdn_domain_name != "" ? var.cdn_domain_name : aws_cloudfront_distribution.packs[0].domain_name) : ""
       CLOUDFRONT_KEY_PAIR_ID = var.enable_cdn && var.enable_premium_content ? aws_cloudfront_public_key.premium[0].id : ""
@@ -194,6 +273,20 @@ resource "aws_apigatewayv2_route" "apple_notifications" {
 resource "aws_apigatewayv2_route" "google_notifications" {
   api_id    = aws_apigatewayv2_api.verify.id
   route_key = "POST /google-notifications"
+  target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
+}
+
+# Phase 3 codes backend — both routed to the SAME existing verify lambda,
+# which dispatches by event.routeKey (no new lambda; contract §2, §4).
+resource "aws_apigatewayv2_route" "code_resolve" {
+  api_id    = aws_apigatewayv2_api.verify.id
+  route_key = "POST /code/resolve"
+  target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
+}
+
+resource "aws_apigatewayv2_route" "entitlement_token" {
+  api_id    = aws_apigatewayv2_api.verify.id
+  route_key = "POST /entitlement-token"
   target    = "integrations/${aws_apigatewayv2_integration.verify.id}"
 }
 

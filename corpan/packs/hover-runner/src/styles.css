@@ -153,28 +153,91 @@ body {
 
 /* --- Status HUD (score/streak top-left) --- */
 
-.status-hud {
+/* ── Scorecard: a compact glass card, top-left — the exact mirror of the
+      command-drawer hamburger (top-right). Big SCORE on the left, a 2×2 grid of
+      mini-stats on the right (combo·best / 🔥 days / ⚡ quota / ✓ net). Card
+      height is LOCKED to the hamburger across the same breakpoints. ────────── */
+.scorecard {
   position: absolute;
   left: calc(16px + var(--safe-left));
-  top: calc(16px + var(--safe-top));
+  top: calc(15px + var(--safe-top));
+  height: 48px;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 8px 12px;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  padding: 0 13px;
   border-radius: 12px;
-  background: rgba(8, 12, 24, 0.72);
-  border: 1px solid rgba(234, 242, 255, 0.15);
-  color: #eaf2ff;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  background: linear-gradient(180deg, rgba(14, 20, 36, 0.82), rgba(8, 11, 22, 0.8));
+  border: 1px solid rgba(170, 200, 255, 0.16);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: #eef4ff;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-variant-numeric: tabular-nums;
   z-index: 10;
 }
-
-.status-score,
-.status-streak {
-  opacity: 0.85;
+/* Match the hamburger's responsive heights (see commandDrawer.css). */
+@media (max-width: 480px) {
+  .scorecard { height: 42px; padding: 0 12px; gap: 10px; }
 }
+@media (max-height: 520px) {
+  .scorecard { height: 38px; top: calc(10px + var(--safe-top)); padding: 0 11px; }
+}
+@media (max-height: 380px) {
+  .scorecard { height: 34px; top: calc(8px + var(--safe-top)); }
+}
+
+.sc-score {
+  font: 800 22px/1 "Trebuchet MS", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 10px rgba(120, 180, 255, 0.25);
+}
+@media (max-width: 480px) { .sc-score { font-size: 20px; } }
+@media (max-height: 380px) { .sc-score { font-size: 18px; } }
+
+.sc-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 11px;
+  row-gap: 1px;
+  align-content: center;
+}
+
+.sc-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+/* Hidden cells keep their slot so the 2×2 never reflows. */
+.sc-stat.is-hidden { visibility: hidden; }
+
+.sc-ic { display: inline-flex; }
+.sc-ic svg { width: 12px; height: 12px; display: block; }
+.sc-stat.is-combo .sc-ic { color: #7fd6ff; }
+.sc-stat.is-days .sc-ic { color: #ffb27a; }
+.sc-stat.is-quota .sc-ic { color: #c0a9ff; }
+.sc-stat.is-net .sc-ic { color: #9aa7c2; }
+.sc-stat.is-net.is-pos .sc-ic,
+.sc-stat.is-net.is-pos .sc-val { color: #7ef0b0; }
+.sc-stat.is-net.is-neg .sc-ic,
+.sc-stat.is-net.is-neg .sc-val { color: #ff9aa6; }
+
+.sc-val { color: #eef4ff; }
+.sc-sub {
+  color: #aebbd6;
+  opacity: 0.65;
+  font-size: 10px;
+  font-weight: 500;
+}
+.sc-stat.is-combo .sc-sub::before { content: "·"; margin-right: 1px; }
+.sc-stat.is-quota .sc-sub::before { content: "/"; }
+.sc-sub:empty { display: none; }
+.sc-sub:empty::before { content: none; }
 
 /* --- Show-Prompt toggle (rendered inside the drawer's Display section) --- */
 

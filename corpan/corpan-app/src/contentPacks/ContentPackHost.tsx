@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { createHostApi } from "./hostApi"
-import type { ContentPackManifest, ContentPackModule } from "./types"
+import type {
+  ContentPackManifest,
+  ContentPackModule,
+  ContentPackEntitlementSnapshot,
+  PackLaunchEntry,
+} from "./types"
 import { useEntitlementStore } from "@/store/entitlements"
 
 type LoadState = "idle" | "loading" | "ready" | "error"
@@ -10,21 +15,11 @@ type ContentPackHostProps = {
   id: string
   manifestUrl?: string
   /** Optional deep-link target passed into the pack's mount initialState. */
-  entry?: { entryId?: number; source?: string; route?: string }
+  entry?: PackLaunchEntry
 }
 
-type ContentPackEntitlementSnapshot = {
-  plus: boolean
-  subjectId: string | null
-  entitlementToken: string | null
-  subscription: {
-    active: boolean
-    plan: "monthly" | "annual" | null
-    expiresAt: string | null
-    autoRenew: boolean
-  }
-  checkedAt: number | null
-}
+// `ContentPackEntitlementSnapshot` now lives in ./types (shared with the typed
+// `HostApi.entitlement` seam) so the global and the typed snapshot never drift.
 
 const DEV_RELOAD_INTERVAL_MS = 20000  // Poll every 2s for faster dev iteration
 
@@ -122,13 +117,12 @@ const loadStyle = async (href: string, id: string, inline?: boolean) => {
   return link
 }
 
-const clearInjectedAssets = (id: string) => {
-  document
-    .querySelectorAll(
+const injectedAssetNodes = (id: string) =>
+  Array.from(
+    document.querySelectorAll(
       `script[data-corp-game-id="${id}"], link[data-corp-game-id="${id}"], style[data-corp-game-id="${id}"]`
     )
-    .forEach((node) => node.remove())
-}
+  )
 
 /**
  * A URL that targets the `corpan-pack` custom URI-scheme protocol handler —
@@ -287,9 +281,15 @@ export default function ContentPackHost({
     const scope = globalThis as typeof globalThis & {
       __CORPAN_PLUS?: boolean
       __CORPAN_ENTITLEMENT?: ContentPackEntitlementSnapshot
+      __CORPAN_HOST_CAPS?: { dailyLock?: boolean }
     }
     scope.__CORPAN_PLUS = entitlementSnapshot.plus
     scope.__CORPAN_ENTITLEMENT = entitlementSnapshot
+    // Advertise host capabilities to OTA packs (which may run in older apps).
+    // `dailyLock` = this host renders the gate-v2 DailyLockOverlay, so packs may
+    // hard-block at the daily cap. Absent in pre-0.18.1 hosts → packs degrade to
+    // the soft nag instead of freezing behind an overlay that won't appear.
+    scope.__CORPAN_HOST_CAPS = { ...scope.__CORPAN_HOST_CAPS, dailyLock: true }
     window.dispatchEvent(
       new CustomEvent("corpan:entitlement-changed", {
         detail: entitlementSnapshot,
@@ -396,6 +396,9 @@ export default function ContentPackHost({
         window.clearTimeout(retryTimer)
         retryTimer = null
       }
+      // Idempotent: snapshot the instance and clear our handle up front so a
+      // second cleanup() (StrictMode double-invoke / overlapping reload) is a
+      // no-op rather than unmounting/clearing assets twice.
       const instanceToUnmount = activeInstance
       activeModule = null
       activeInstance = undefined
@@ -406,15 +409,6 @@ export default function ContentPackHost({
       } catch {
         // Ignore host-dispose dispatch failures.
       }
-      if (instanceToUnmount && typeof instanceToUnmount.unmount === "function") {
-        queueMicrotask(() => {
-          try {
-            instanceToUnmount.unmount?.()
-          } catch {
-            // Avoid unmount errors from crashing the host UI.
-          }
-        })
-      }
       if (hasLoadedRef.current) {
         hostApi.stopSpeech?.()
         hostApi.dispose?.()
@@ -423,7 +417,37 @@ export default function ContentPackHost({
       if (shouldDevReload) {
         ; (globalThis as { __corpanPerf?: boolean }).__corpanPerf = false
       }
-      clearInjectedAssets(id)
+      // ORDERING + TIMING are the whole point of this teardown:
+      //   1. DEFER the pack's React-root unmount past the current render. A bare
+      //      queueMicrotask runs before the next frame while React may still be
+      //      committing → "synchronously unmount a root while React was already
+      //      rendering" → detached DOM → NotFoundError → black screen on reload.
+      //      requestAnimationFrame waits until the current render/commit unwinds.
+      //   2. Only AFTER the pack has unmounted do we remove its injected scripts/
+      //      styles. Clearing them first would yank stylesheets out from under a
+      //      still-mounted tree (flash/half-rendered teardown). The pack root is
+      //      detached together with the host container by React, so the unmount
+      //      itself is the safe moment to drop the orphaned <script>/<style>.
+      // Snapshot the CURRENT injected nodes now, so the deferred clear removes
+      // exactly THIS pack instance's assets and never the fresh ones a
+      // subsequent load() (which runs concurrently after this synchronous
+      // cleanup) may have injected by the time the frame fires.
+      const staleAssets = injectedAssetNodes(id)
+      const finishTeardown = () => {
+        try {
+          instanceToUnmount?.unmount?.()
+        } catch {
+          // Avoid unmount errors from crashing the host UI.
+        }
+        staleAssets.forEach((node) => node.remove())
+      }
+      if (instanceToUnmount && typeof instanceToUnmount.unmount === "function") {
+        // Past the current render, then clear assets once the unmount has run.
+        requestAnimationFrame(finishTeardown)
+      } else {
+        // Nothing to unmount — still clear this instance's injected assets.
+        staleAssets.forEach((node) => node.remove())
+      }
     }
 
     const updateManifestSignature = (manifest: ContentPackManifest) => {
@@ -521,6 +545,9 @@ export default function ContentPackHost({
           entitlement: entitlementSnapshotRef.current,
           // Addressability groundwork: a deep-linked entry/route, when present.
           ...(entry ? { entryId: entry.entryId, source: entry.source, route: entry.route } : {}),
+          // First-run reader seed: auto-download a default book's preview
+          // narrations for the user's stack (the instant "wow").
+          ...(entry?.seedBookId ? { seedBookId: entry.seedBookId } : {}),
         })
 
         if (!cancelled) {
@@ -565,7 +592,7 @@ export default function ContentPackHost({
       cancelled = true
       cleanup()
     }
-  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route])
+  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route, entry?.seedBookId])
 
   return (
     <div className="relative h-full w-full bg-black text-white">

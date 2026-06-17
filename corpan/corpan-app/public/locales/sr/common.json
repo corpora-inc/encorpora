@@ -8,7 +8,7 @@
     "de": "Nemački",
     "pt-BR": "Portugalski (BR)",
     "ja": "Japanski",
-    "zh-Hans": "Kineski ( pojednostavljeni)",
+    "zh-Hans": "Kineski (pojednostavljeni)",
     "zh-Hant": "Kineski (tradicionalni)",
     "ar": "Arapski",
     "ru": "Ruski",
@@ -26,7 +26,7 @@
     "te": "Telugu",
     "kn": "Kannada",
     "mr": "Marathi",
-    "gu": "Gujarat",
+    "gu": "Gudžarati",
     "ur": "Urdu",
     "pa-Guru": "Pandžabi (Gurmukhi)",
     "pa-Arab": "Pandžabi (Shahmukhi)",
@@ -51,7 +51,10 @@
     "cs": "Češki",
     "lt": "Litvanski",
     "sk": "Slovački",
-    "sl": "Slovenački"
+    "sl": "Slovenački",
+    "jv": "Javanski",
+    "su": "Sundanski",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Putovanje",
@@ -66,7 +69,7 @@
     "environment": "Okruženje",
     "emergency": "Hitna pomoć",
     "culture": "Kultura",
-    "everyday": "Sv everyday"
+    "everyday": "Svakodnevno"
   },
   "settings": {
     "addMoreLanguages": "Dodaj više jezika",
@@ -308,10 +311,11 @@
       "joinDesc": "Podržite Corpán i otključajte sve. Opciono, bilo kada.",
       "subscribedTitle": "Vi ste Corpanista",
       "subscribedDesc": "Hvala što održavate Corpán bez reklama i pomažete mu da raste.",
-      "joinTitle": "Join the Corpanistas",
+      "joinTitle": "Pridružite se Corpanistas",
       "start": "Počnite sa istraživanjem",
       "subtitle": "Corpán je kreirao mali tim otvorenog koda. Pozdravite nas — a ako vam se dopada, možete nas podržati.",
-      "title": "Sve je spremno"
+      "title": "Sve je spremno",
+      "explore": "Istražujem samostalno"
     },
     "fork": {
       "child": {
@@ -368,7 +372,31 @@
     "voicePreviewAria": "Pregled {{name}}",
     "voicePreviewSelected": "Pregled izabranog",
     "voiceRecommended": "Preporučeno",
-    "voiceSelectedCount": "{{count}} od {{total}}"
+    "voiceSelectedCount": "{{count}} od {{total}}",
+    "whatToStart": {
+      "title": "Где да почнемо?",
+      "subtitle": "Изабери једно да почнеш — остало је на додир.",
+      "read": {
+        "label": "Читај",
+        "desc": "Зарони у приче и књиге."
+      },
+      "study": {
+        "label": "Учи",
+        "desc": "Гради речник усмереним вежбањем."
+      },
+      "playMusic": {
+        "label": "Свирај",
+        "desc": "Испробај свој језик за пултом."
+      },
+      "playGames": {
+        "label": "Играј",
+        "desc": "Учи кроз забавне изазове."
+      },
+      "surprise": {
+        "label": "Изненади ме!",
+        "desc": "Одведи ме негде забавно."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -423,7 +451,7 @@
     "pt": "Portugalski",
     "ru": "Ruski",
     "zh": "Kineski",
-    "zh-Hans": "Kineski ( pojednostavljeni)",
+    "zh-Hans": "Kineski (pojednostavljeni)",
     "zh-Hant": "Kineski (tradicionalni)",
     "vi": "Vijetnamski",
     "hi": "Hindi",
@@ -498,7 +526,7 @@
     "kn-IN": "Kannada (Indija)",
     "mr": "Marathi",
     "mr-IN": "Marathi (Indija)",
-    "gu": "Gujarat",
+    "gu": "Gudžarati",
     "gu-IN": "Gujarat (Indija)",
     "pa": "Pandžabi",
     "pa-IN": "Pandžabi (Indija)",
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "Koristite slova, brojeve, crtice ili donje crte.",
     "affiliateChecking": "Provera koda...",
     "affiliateApplied": "Kod će biti povezan sa ovom pretplatom.",
-    "affiliateCodeHelp": "Ako vas je neko poslao ovde, unesite njegov kod pre pretplate."
+    "affiliateCodeHelp": "Ako vas je neko poslao ovde, unesite njegov kod pre pretplate.",
+    "introPriceHeadline": "{{introPrice}} za {{period}}",
+    "introPriceThen": ", zatim {{price}}/{{period}}",
+    "perMonth": "mesec",
+    "perYear": "godina",
+    "startFreeTrial": "Započni besplatno probno",
+    "trialFirstCharge": "{{period}}: prva naplata",
+    "trialHeadline": "{{period}} besplatno",
+    "trialReassurance": "Plaćanje nije potrebno sada · otkaži bilo kada",
+    "trialThenPrice": ", zatim {{price}}/{{period}}",
+    "trialToday": "Danas: početak"
   },
   "restore": {
     "button": "Vrati kupovine",
@@ -712,7 +750,8 @@
     "subhead": "Otključajte svaku knjigu na svakom jeziku. Bez reklama. Vaši podaci ostaju na uređaju.",
     "pitch": "Mi smo mali tim i svaki cent ulažemo nazad u Corpán. Corpanistas ga čine bez reklama i pomažu mu da raste.",
     "maybeLater": "Možda kasnije",
-    "continue": "Nastavi"
+    "continue": "Nastavi",
+    "dismiss": "Odbaci"
   },
   "streak": {
     "title": "{{count}}-dnevni niz"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Живи град који сваки сусрет претвара у лекцију."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sempluj jezik koji učiš. Skrečuj ga dok ne ostane u glavi."
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "Ažuriraj",
     "updateNow": "Ažuriraj sada",
     "versionLine": "Verzija {{version}} je spremna za instalaciju."
+  },
+  "streakBadge": {
+    "label": "Серија од {{days}} дана"
+  },
+  "dailyLock": {
+    "title": "Твојих {{count}} {{unit}} за данас",
+    "streakActive": "Серија од {{days}} дана — врати се сутра да наставиш.",
+    "streakStart": "Врати се сутра да наставиш.",
+    "resetIn": "Ресетује се за {{time}}",
+    "cta": "Настави сада уз Corpán Plus",
+    "dismiss": "Можда касније",
+    "closeAria": "Одбаци",
+    "countdownHm": "{{h}}ч {{m}}м",
+    "countdownM": "{{m}}м",
+    "countdownSoon": "ускоро"
+  },
+  "code": {
+    "attributedUnverified": "Kod će biti pridodat vašoj pretplati.",
+    "checkFailed": "Provera nije uspela",
+    "checking": "Provera koda…",
+    "creditedTo": "pripisano {{partner}}",
+    "fieldLabel": "Ponuda ili partnerski kod",
+    "help": "Imate kod? Unesite ga da primenite ponudu.",
+    "redeemUnavailable": "Nije moguće otvoriti ekran za iskorišćavanje. Pokušajte ponovo.",
+    "redeemWithApple": "Iskoristi sa Apple",
+    "redeeming": "Otvaranje iskorišćavanja…",
+    "retry": "Pokušaj ponovo",
+    "subscribeWithDiscount": "Pretplati se ({{discount}})",
+    "redeemCode": "Искористи код",
+    "notApplied": "Овај код не доноси попуст."
   }
 }

@@ -51,7 +51,10 @@
     "cs": "Tšekki",
     "lt": "Liettua",
     "sk": "Slovakki",
-    "sl": "Sloveeni"
+    "sl": "Sloveeni",
+    "jv": "javanilainen",
+    "su": "sundalainen",
+    "tl": "tagalog"
   },
   "categories": {
     "travel": "Matkailu",
@@ -311,7 +314,8 @@
       "joinTitle": "Liity Corpanistas-yhteisöön",
       "start": "Aloita tutkiminen",
       "subtitle": "Corpánin on luonut pieni avoimen lähdekoodin tiimi. Tule tervehtimään – ja jos pidät siitä, voit tukea meitä.",
-      "title": "Kaikki valmista"
+      "title": "Kaikki valmista",
+      "explore": "Tutki itse"
     },
     "fork": {
       "child": {
@@ -368,7 +372,31 @@
     "voicePreviewAria": "Esikatsele {{name}}",
     "voicePreviewSelected": "Esikatsele valittua",
     "voiceRecommended": "Suositeltu",
-    "voiceSelectedCount": "{{count}} / {{total}}"
+    "voiceSelectedCount": "{{count}} / {{total}}",
+    "whatToStart": {
+      "title": "Mistä aloitamme?",
+      "subtitle": "Valitse yksi ja sukella mukaan — loput ovat napautuksen päässä.",
+      "read": {
+        "label": "Lue",
+        "desc": "Sukella tarinoihin ja kirjoihin."
+      },
+      "study": {
+        "label": "Opiskele",
+        "desc": "Kartuta sanavarastoa kohdennetulla harjoittelulla."
+      },
+      "playMusic": {
+        "label": "Soita musiikkia",
+        "desc": "Kokeile kieltäsi mikserin ääressä."
+      },
+      "playGames": {
+        "label": "Pelaa",
+        "desc": "Opi leikkisien haasteiden kautta."
+      },
+      "surprise": {
+        "label": "Yllätä minut!",
+        "desc": "Vie minut jonnekin hauskaan."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "Käytä kirjaimia, numeroita, yhdysmerkkejä tai alaviivoja.",
     "affiliateChecking": "Tarkistetaan koodia...",
     "affiliateApplied": "Koodi liitetään tähän tilaukseen.",
-    "affiliateCodeHelp": "Jos joku lähetti sinut tänne, syötä hänen koodinsa ennen tilaamista."
+    "affiliateCodeHelp": "Jos joku lähetti sinut tänne, syötä hänen koodinsa ennen tilaamista.",
+    "introPriceHeadline": "{{introPrice}} {{period}} ajaksi",
+    "introPriceThen": ", sitten {{price}}/{{period}}",
+    "perMonth": "kuukausi",
+    "perYear": "vuosi",
+    "startFreeTrial": "Aloita ilmainen kokeilu",
+    "trialFirstCharge": "{{period}}: ensimmäinen veloitus",
+    "trialHeadline": "{{period}} ilmainen",
+    "trialReassurance": "Ei maksua nyt · peruuta milloin tahansa",
+    "trialThenPrice": ", sitten {{price}}/{{period}}",
+    "trialToday": "Tänään: aloitus"
   },
   "restore": {
     "button": "Palauta ostokset",
@@ -712,7 +750,8 @@
     "subhead": "Avaa kaikki kirjat kaikilla kielillä. Ei mainoksia. Tietosi pysyvät laitteellasi.",
     "pitch": "Olemme pieni tiimi ja sijoitamme jokaisen sentin takaisin Corpániin. Corpanistas-jäsenet pitävät sen mainoksettomana ja kehittyvänä.",
     "maybeLater": "Ehkä myöhemmin",
-    "continue": "Jatka"
+    "continue": "Jatka",
+    "dismiss": "Ohita"
   },
   "streak": {
     "title": "{{count}} päivän putki"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Elävä kaupunki, jossa jokainen kohtaaminen on oppitunti."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Samplaa kieltä, jota opettelet. Scratchaa, kunnes se jää päähän."
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "Päivitä",
     "updateNow": "Päivitä nyt",
     "versionLine": "Versio {{version}} on valmis asennettavaksi."
+  },
+  "streakBadge": {
+    "label": "{{days}} päivän putki"
+  },
+  "dailyLock": {
+    "title": "Päivän {{count}} {{unit}}",
+    "streakActive": "{{days}} päivän putki — palaa huomenna jatkaaksesi.",
+    "streakStart": "Palaa huomenna jatkaaksesi.",
+    "resetIn": "Nollautuu {{time}} kuluttua",
+    "cta": "Jatka nyt Corpán Plus -palvelulla",
+    "dismiss": "Ehkä myöhemmin",
+    "closeAria": "Hylkää",
+    "countdownHm": "{{h}}t {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "hetkenä minä hyvänsä"
+  },
+  "code": {
+    "attributedUnverified": "Koodi liitetään tilaukseesi.",
+    "checkFailed": "Ei voitu tarkistaa",
+    "checking": "Tarkistetaan koodia…",
+    "creditedTo": "hyvitetty {{partner}}",
+    "fieldLabel": "Tarjous- tai kumppanikoodi",
+    "help": "Onko sinulla koodi? Syötä se aktivoidaksesi tarjouksesi.",
+    "redeemUnavailable": "Ei voitu avata lunastusnäyttöä. Yritä uudelleen.",
+    "redeemWithApple": "Lunasta Applen kanssa",
+    "redeeming": "Avataan lunastus…",
+    "retry": "Yritä uudelleen",
+    "subscribeWithDiscount": "Tilaa ({{discount}})",
+    "redeemCode": "Lunasta koodi",
+    "notApplied": "Tämä koodi ei anna alennusta."
   }
 }

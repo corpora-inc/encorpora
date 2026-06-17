@@ -1,0 +1,505 @@
+/**
+ * beatlounge — Grooves module styles. Dark, premium, token-only (--bl-*).
+ * Responsive ~300px → big iPad; safe-area aware; ≥44px hit targets;
+ * prefers-reduced-motion honored.
+ */
+
+/* ---------------------------------------------------------------- tile */
+.bl-grooves-tile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: var(--bl-s2);
+  padding: var(--bl-s3);
+  box-sizing: border-box;
+}
+.bl-grooves-tile-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+  justify-content: center;
+  flex: 1;
+}
+.bl-grooves-tile-stat {
+  font-size: var(--bl-fs-body);
+  color: var(--bl-text);
+}
+.bl-grooves-tile-stat strong {
+  font-size: var(--bl-fs-title);
+  color: var(--bl-accent);
+}
+.bl-grooves-tile-hint {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  line-height: 1.4;
+}
+
+/* ---------------------------------------------------------------- immersive */
+.bl-grooves {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--bl-bg-grad, var(--bl-bg));
+  color: var(--bl-text);
+  padding-top: var(--bl-safe-top, 0);
+  padding-left: var(--bl-safe-left, 0);
+  padding-right: var(--bl-safe-right, 0);
+  box-sizing: border-box;
+}
+
+/* The reusable panel — the single source of truth, embedded standalone (full
+ * screen) and inside the Drums page. It fills its host region; inner regions
+ * scroll within fixed heights so nothing clips. */
+.bl-grooves-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+}
+.bl-grooves-panel * { box-sizing: border-box; }
+/* Embedded in the Drums page: the panel's container (a fixed-height tab body)
+ * owns scroll; the body becomes a single scrolling column on phone and a
+ * picker+detail split on wide. No big title (the panel chrome owns it). */
+.bl-grooves-panel--embedded {
+  background: transparent;
+}
+
+.bl-grooves-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  padding: var(--bl-s3) var(--bl-s4);
+  border-bottom: 1px solid var(--bl-border);
+  flex: 0 0 auto;
+}
+.bl-grooves-title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  font-size: var(--bl-fs-title);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.bl-grooves-title-mark {
+  display: inline-flex;
+  color: var(--bl-accent);
+}
+.bl-grooves-search {
+  margin-inline-start: auto;
+  min-height: 44px;
+  min-width: 0;
+  flex: 1 1 160px;
+  max-width: 320px;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  font-size: var(--bl-fs-body);
+  font-family: var(--bl-font);
+}
+.bl-grooves-search::placeholder { color: var(--bl-text-dim); }
+.bl-grooves-search:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+
+/* two-pane on wide: picker | detail. On phone: the picker FILLS + scrolls and a
+   slim density bar pins to the bottom (rows = 1fr picker, auto bar). */
+.bl-grooves-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+@media (min-width: 720px) {
+  .bl-grooves-body {
+    grid-template-columns: minmax(0, 1fr) clamp(280px, 34%, 420px);
+    grid-template-rows: 1fr;
+  }
+}
+
+.bl-grooves-picker {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--bl-s3) var(--bl-s4) calc(var(--bl-s5) + var(--bl-safe-bottom, 0));
+  min-height: 0;
+  min-width: 0;
+}
+.bl-grooves-family { margin-bottom: var(--bl-s4); }
+.bl-grooves-family-label {
+  margin: 0 0 var(--bl-s2);
+  font-size: var(--bl-fs-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bl-text-dim);
+}
+.bl-grooves-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: var(--bl-s2);
+}
+
+.bl-grooves-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 44px;
+  padding: var(--bl-s2) var(--bl-s3);
+  text-align: start;
+  border-radius: var(--bl-radius-sm, var(--bl-radius));
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast, 120ms) var(--bl-ease),
+    background var(--bl-dur-fast, 120ms) var(--bl-ease),
+    transform var(--bl-dur-fast, 120ms) var(--bl-ease);
+}
+.bl-grooves-card:hover { border-color: var(--bl-accent-2, var(--bl-accent)); }
+.bl-grooves-card:active { transform: scale(0.985); }
+.bl-grooves-card.is-selected {
+  border-color: var(--bl-accent);
+  background: var(--bl-surface-2, var(--bl-surface));
+  box-shadow: 0 0 0 1px var(--bl-accent) inset, var(--bl-glow, none);
+}
+.bl-grooves-card:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 1px;
+}
+.bl-grooves-card-name {
+  font-size: var(--bl-fs-body);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.bl-grooves-card-origin {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+
+/* mini-pattern thumbnail (rows of cells) */
+.bl-grooves-card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+}
+.bl-grooves-prow {
+  display: grid;
+  grid-template-columns: repeat(var(--bl-grooves-cells, 16), 1fr);
+  gap: 1px;
+  height: 5px;
+}
+.bl-grooves-pcell {
+  border-radius: 1px;
+  background: var(--bl-cell-off, rgba(255, 255, 255, 0.06));
+}
+.bl-grooves-pcell.is-on { background: var(--bl-text-dim); }
+.bl-grooves-pcell.is-on.is-sig { background: var(--bl-accent); }
+.bl-grooves-pcell.is-accent { background: var(--bl-accent); }
+.bl-grooves-pcell.is-ghost { background: var(--bl-text-dim); opacity: 0.45; }
+
+/* ---- detail pane ---- */
+/* PHONE: a slim bottom bar holding just the +/- dial (extras hidden). Tight inset
+   — the buttons fill the bar so it doesn't read as two tiny buttons floating in a
+   big padded strip. */
+.bl-grooves-detail {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  border-top: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  /* NO safe-area here — the drawer body (`.bl-trackdrawer-body`) already reserves
+     `safe-area-inset-bottom`, so adding it again double-counted it and left a huge
+     dead strip (~18% of the screen) below the +/- on devices with a gesture bar. */
+  padding: var(--bl-s2);
+  gap: var(--bl-s2);
+  flex: 0 0 auto;
+}
+/* the secondary detail/preview — gone on phone (the picker gets the room), back
+   on iPad where the detail pane has space. */
+.bl-grooves-extras {
+  display: none;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+@media (min-width: 720px) {
+  .bl-grooves-detail {
+    border-top: none;
+    border-inline-start: 1px solid var(--bl-border);
+    padding: var(--bl-s4);
+    gap: var(--bl-s3);
+    overflow: auto;
+  }
+  .bl-grooves-extras {
+    display: flex;
+  }
+}
+.bl-grooves-detail-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-grooves-detail-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+}
+.bl-grooves-detail-name {
+  margin: 0;
+  font-size: var(--bl-fs-title);
+  font-weight: 700;
+}
+.bl-grooves-detail-tag {
+  font-size: var(--bl-fs-micro);
+  font-family: var(--bl-font-mono);
+  color: var(--bl-text-dim);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: 1px var(--bl-s2);
+}
+.bl-grooves-detail-blurb {
+  margin: 0;
+  font-size: var(--bl-fs-body);
+  color: var(--bl-text-dim);
+  line-height: 1.45;
+}
+
+/* full lane preview */
+.bl-grooves-detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: var(--bl-s2) 0;
+}
+.bl-grooves-drow {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-grooves-drow-label {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-grooves-drow-label.is-sig { color: var(--bl-accent); font-weight: 600; }
+.bl-grooves-drow-cells {
+  display: grid;
+  grid-template-columns: repeat(var(--bl-grooves-cells, 16), 1fr);
+  gap: 2px;
+  height: 12px;
+}
+.bl-grooves-dcell {
+  border-radius: 2px;
+  background: var(--bl-cell-off, rgba(255, 255, 255, 0.06));
+}
+.bl-grooves-dcell.is-beat { background: rgba(255, 255, 255, 0.1); }
+.bl-grooves-dcell.is-on { background: var(--bl-text-dim); }
+.bl-grooves-dcell.is-on.is-sig { background: var(--bl-accent); }
+.bl-grooves-dcell.is-accent { background: var(--bl-accent); box-shadow: var(--bl-glow, none); }
+.bl-grooves-dcell.is-ghost { opacity: 0.5; }
+
+.bl-grooves-approx {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+.bl-grooves-approx summary {
+  cursor: pointer;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+}
+.bl-grooves-approx ul {
+  margin: var(--bl-s1) 0 0;
+  padding-inline-start: var(--bl-s4);
+  line-height: 1.4;
+}
+
+/* ---- options ---- */
+.bl-grooves-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  padding-top: var(--bl-s2);
+  border-top: 1px solid var(--bl-border);
+}
+.bl-grooves-opt {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: 44px;
+}
+.bl-grooves-opt-label {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+}
+.bl-grooves-opt input[type="range"] { width: 100%; accent-color: var(--bl-accent); }
+.bl-grooves-opt-val {
+  font-size: var(--bl-fs-micro);
+  font-family: var(--bl-font-mono);
+  color: var(--bl-text);
+  min-width: 3ch;
+  text-align: right;
+}
+.bl-grooves-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: 44px;
+  font-size: var(--bl-fs-body);
+  cursor: pointer;
+}
+.bl-grooves-toggle input { accent-color: var(--bl-accent); width: 18px; height: 18px; }
+.bl-grooves-toggle.is-disabled {
+  color: var(--bl-text-dim);
+  cursor: not-allowed;
+}
+.bl-grooves-toggle.is-disabled input { cursor: not-allowed; }
+/* Visible hint when the phrase toggle is unavailable (never a silent no-op). */
+.bl-grooves-hint {
+  margin: 0;
+  font-size: var(--bl-fs-micro);
+  line-height: 1.4;
+  color: var(--bl-text-dim);
+}
+
+/* ---- targeting hint (the live drum-lane selection drives 0/1/N) ---- */
+.bl-grooves-target {
+  margin: 0;
+  font-size: var(--bl-fs-micro);
+  line-height: 1.4;
+  color: var(--bl-text-dim);
+  padding: var(--bl-s2) var(--bl-s3);
+  border-radius: var(--bl-radius-sm, var(--bl-radius));
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+}
+.bl-grooves-target.is-on {
+  color: var(--bl-text);
+  border-color: var(--bl-accent);
+  box-shadow: 0 0 0 1px var(--bl-accent) inset;
+}
+.bl-grooves-target strong { color: var(--bl-accent); font-weight: 700; }
+
+/* ---- action buttons (Apply · Layer · Vary · Evolve · Randomize) ---- */
+/* TWO actions, primary first + reachable with NO scroll: pin them to the top of
+ * the (scrollable) detail pane so the Scatter button is always visible. */
+.bl-grooves-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  /* Sit on the pane surface so scrolled content doesn't bleed under it. */
+  background: var(--bl-surface);
+  padding-bottom: var(--bl-s2);
+}
+.bl-grooves-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s2);
+  min-height: 44px;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius, 10px);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2, var(--bl-surface));
+  color: var(--bl-text);
+  font-size: var(--bl-fs-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--bl-dur-fast, 120ms) var(--bl-ease),
+    border-color var(--bl-dur-fast, 120ms) var(--bl-ease);
+}
+.bl-grooves-btn:hover { border-color: var(--bl-accent); }
+.bl-grooves-btn:active { transform: scale(0.97); }
+.bl-grooves-btn:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+.bl-grooves-btn[disabled] { opacity: 0.5; cursor: default; }
+.bl-grooves-btn.is-primary {
+  /* The star action — bigger + filled. */
+  min-height: 52px;
+  font-size: var(--bl-fs-title);
+  font-weight: 700;
+  background: var(--bl-accent);
+  border-color: var(--bl-accent);
+  color: var(--bl-bg);
+}
+.bl-grooves-btn.is-primary:hover { filter: brightness(1.08); }
+.bl-grooves-btn-glyph { flex: 0 0 auto; }
+
+/* ---- the +/− DENSITY DIAL (replaces the Scatter buttons) ----
+ * Compact, icon-forward, minimal copy: "−" sparser, "+" denser. Pinned to the
+ * top of the detail pane (no scroll), generous ≥44px round hit targets. */
+/* the +/- buttons FILL the bar (each half) — no big empty inset around two tiny
+   centred buttons. A max-width keeps them sane on a wide iPad detail pane. */
+.bl-grooves-dial {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  flex: 0 0 auto;
+  width: 100%;
+}
+.bl-grooves-dial-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2, var(--bl-surface));
+  color: var(--bl-text);
+  cursor: pointer;
+  transition: transform var(--bl-dur-fast, 120ms) var(--bl-ease),
+    border-color var(--bl-dur-fast, 120ms) var(--bl-ease),
+    filter var(--bl-dur-fast, 120ms) var(--bl-ease);
+}
+/* "−" sits on the left, "+" on the right (grid order). */
+.bl-grooves-dial-btn:first-child { justify-self: start; }
+.bl-grooves-dial-btn:last-child { justify-self: end; }
+.bl-grooves-dial-btn:hover { border-color: var(--bl-accent); }
+.bl-grooves-dial-btn:active { transform: scale(0.95); }
+.bl-grooves-dial-btn:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 1px; }
+.bl-grooves-dial-btn[disabled] { opacity: 0.4; cursor: default; }
+.bl-grooves-dial-btn.is-primary {
+  /* "+" — the denser, additive star: filled accent. */
+  background: var(--bl-accent);
+  border-color: var(--bl-accent);
+  color: var(--bl-bg);
+}
+.bl-grooves-dial-btn.is-primary:hover { filter: brightness(1.08); }
+.bl-grooves-dial-glyph { flex: 0 0 auto; }
+
+.bl-grooves-empty {
+  padding: var(--bl-s5);
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-body);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-grooves-card,
+  .bl-grooves-btn,
+  .bl-grooves-dial-btn { transition: none; }
+  .bl-grooves-card:active,
+  .bl-grooves-btn:active,
+  .bl-grooves-dial-btn:active { transform: none; }
+}

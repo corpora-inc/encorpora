@@ -278,6 +278,8 @@ export const createMockHostApi = (
       })
       return () => {}
     },
+    // Standalone dev: a sample visit streak so the HUD's days readout renders.
+    getStreak: () => ({ current: 3, longest: 7, lastDay: "" }),
     getRandomEntry: async () => {
       const phrases = pickRandomPhrases(1)
       return phrases[0] || mockPhrases[0]

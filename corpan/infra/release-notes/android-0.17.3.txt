@@ -1,0 +1,174 @@
+<en-US>
+• AI lessons free their memory on exit, so the app stays fast.
+• Large AI and voice models now download reliably.
+• Fixed a crash for users with many phrase packs.
+• Full right-to-left support and major Arabic fixes.
+</en-US>
+<ar>
+• دروس الذكاء الاصطناعي تُحرّر ذاكرتها عند الخروج، فيبقى التطبيق سريعًا.
+• نماذج الذكاء الاصطناعي والأصوات الكبيرة تُنزَّل الآن بثبات.
+• إصلاح تعطّل لدى مستخدمي حُزم العبارات الكثيرة.
+• دعم كامل للكتابة من اليمين إلى اليسار وإصلاحات مهمة للعربية.
+</ar>
+<cs-CZ>
+• AI lekce při ukončení uvolní paměť, aplikace tak zůstává rychlá.
+• Velké AI a hlasové modely se nyní stahují spolehlivě.
+• Opraven pád u uživatelů s mnoha balíčky frází.
+• Plné rozložení zprava doleva a zásadní opravy arabštiny.
+</cs-CZ>
+<da-DK>
+• AI-lektioner frigør hukommelsen, når du forlader dem, så appen forbliver hurtig.
+• Store AI- og stemmemodeller downloades nu pålideligt.
+• Rettede et nedbrud for brugere med mange frasepakker.
+• Fuldt højre-mod-venstre-layout og store rettelser til arabisk.
+</da-DK>
+<de-DE>
+• KI-Lektionen geben beim Verlassen ihren Speicher frei, die App bleibt schnell.
+• Große KI- und Stimmmodelle laden jetzt zuverlässig herunter.
+• Absturz bei Nutzern mit vielen Phrasenpaketen behoben.
+• Vollständiges Rechts-nach-links-Layout und wichtige Korrekturen für Arabisch.
+</de-DE>
+<es-419>
+• Las lecciones con IA liberan su memoria al salir, así la app sigue rápida.
+• Los modelos grandes de IA y de voz ahora se descargan sin fallar.
+• Se corrigió un cierre inesperado con muchos paquetes de frases.
+• Diseño completo de derecha a izquierda y correcciones importantes en árabe.
+</es-419>
+<es-ES>
+• Las lecciones con IA liberan su memoria al salir, así la app sigue rápida.
+• Los modelos grandes de IA y de voz ahora se descargan sin fallos.
+• Se ha corregido un fallo con muchos paquetes de frases instalados.
+• Diseño completo de derecha a izquierda y correcciones importantes en árabe.
+</es-ES>
+<fi-FI>
+• Tekoälytunnit vapauttavat muistinsa poistuttaessa, joten sovellus pysyy nopeana.
+• Suuret tekoäly- ja äänimallit latautuvat nyt luotettavasti.
+• Korjattu kaatuminen käyttäjillä, joilla on paljon fraasipaketteja.
+• Täysi oikealta vasemmalle -asettelu ja merkittäviä korjauksia arabiaan.
+</fi-FI>
+<fr-FR>
+• Les leçons avec IA libèrent leur mémoire à la sortie : l'appli reste rapide.
+• Les gros modèles d'IA et de voix se téléchargent maintenant de façon fiable.
+• Correction d'un plantage chez les utilisateurs ayant beaucoup de packs de phrases.
+• Mise en page complète de droite à gauche et corrections majeures en arabe.
+</fr-FR>
+<hi-IN>
+• AI पाठ बंद करते ही मेमोरी खाली हो जाती है, इसलिए ऐप तेज़ रहता है।
+• बड़े AI और आवाज़ मॉडल अब भरोसेमंद तरीके से डाउनलोड होते हैं।
+• कई फ़्रेज़ पैक वाले उपयोगकर्ताओं का क्रैश ठीक किया गया।
+• पूर्ण दाएँ-से-बाएँ समर्थन और अरबी में बड़े सुधार।
+</hi-IN>
+<hu-HU>
+• Az MI-leckék kilépéskor felszabadítják a memóriájukat, így az app gyors marad.
+• A nagy MI- és hangmodellek mostantól megbízhatóan letöltődnek.
+• Javítottunk egy összeomlást sok kifejezéscsomag esetén.
+• Teljes jobbról balra elrendezés és jelentős arab javítások.
+</hu-HU>
+<id>
+• Pelajaran AI membebaskan memorinya saat ditutup, jadi aplikasi tetap cepat.
+• Model AI dan suara besar kini terunduh dengan andal.
+• Memperbaiki kerusakan bagi pengguna dengan banyak paket frasa.
+• Tata letak kanan-ke-kiri penuh dan perbaikan besar untuk bahasa Arab.
+</id>
+<it-IT>
+• Le lezioni con IA liberano la memoria all'uscita, così l'app resta veloce.
+• I grandi modelli di IA e voce ora si scaricano in modo affidabile.
+• Corretto un arresto anomalo con molti pacchetti di frasi.
+• Layout completo da destra a sinistra e correzioni importanti per l'arabo.
+</it-IT>
+<iw-IL>
+• שיעורי בינה מלאכותית משחררים את הזיכרון ביציאה, כך שהאפליקציה נשארת מהירה.
+• מודלים גדולים של בינה מלאכותית וקול יורדים כעת באופן אמין.
+• תוקנה קריסה אצל משתמשים עם חבילות ביטויים רבות.
+• פריסה מלאה מימין לשמאל ותיקונים משמעותיים בערבית.
+</iw-IL>
+<ja-JP>
+• AIレッスンは終了時にメモリを解放するので、アプリは軽快なままです。
+• 大きなAI・音声モデルが確実にダウンロードできるようになりました。
+• フレーズパックを多数入れたユーザーのクラッシュを修正しました。
+• 右から左へのレイアウトに完全対応し、アラビア語を大幅に改善しました。
+</ja-JP>
+<ko-KR>
+• AI 레슨은 나갈 때 메모리를 해제해 앱이 빠르게 유지됩니다.
+• 대용량 AI·음성 모델이 이제 안정적으로 다운로드됩니다.
+• 표현 팩이 많은 사용자의 비정상 종료를 수정했습니다.
+• 오른쪽에서 왼쪽 레이아웃을 완전 지원하고 아랍어를 크게 개선했습니다.
+</ko-KR>
+<nl-NL>
+• AI-lessen geven hun geheugen vrij bij het afsluiten, zo blijft de app snel.
+• Grote AI- en stemmodellen downloaden nu betrouwbaar.
+• Een crash opgelost bij gebruikers met veel zinspakketten.
+• Volledige rechts-naar-links-lay-out en belangrijke verbeteringen voor Arabisch.
+</nl-NL>
+<no-NO>
+• AI-leksjoner frigjør minnet når du forlater dem, så appen holder seg rask.
+• Store AI- og stemmemodeller lastes nå ned pålitelig.
+• Fikset en krasj for brukere med mange frasepakker.
+• Full høyre-til-venstre-layout og store rettelser for arabisk.
+</no-NO>
+<pl-PL>
+• Lekcje AI zwalniają pamięć przy wyjściu, więc aplikacja pozostaje szybka.
+• Duże modele AI i głosu pobierają się teraz niezawodnie.
+• Naprawiono awarię u użytkowników z wieloma pakietami zwrotów.
+• Pełny układ od prawej do lewej i ważne poprawki dla języka arabskiego.
+</pl-PL>
+<pt-BR>
+• As lições com IA liberam a memória ao sair, então o app continua rápido.
+• Modelos grandes de IA e de voz agora baixam de forma confiável.
+• Corrigida uma falha para usuários com muitos pacotes de frases.
+• Layout completo da direita para a esquerda e correções importantes em árabe.
+</pt-BR>
+<ro>
+• Lecțiile cu IA eliberează memoria la ieșire, așa că aplicația rămâne rapidă.
+• Modelele mari de IA și de voce se descarcă acum fiabil.
+• S-a remediat o blocare pentru utilizatorii cu multe pachete de expresii.
+• Aspect complet de la dreapta la stânga și corecturi importante pentru arabă.
+</ro>
+<ru-RU>
+• Уроки с ИИ освобождают память при выходе, поэтому приложение остаётся быстрым.
+• Большие модели ИИ и голоса теперь загружаются надёжно.
+• Исправлен сбой у пользователей с множеством наборов фраз.
+• Полная раскладка справа налево и важные исправления для арабского.
+</ru-RU>
+<sk>
+• Lekcie s AI pri ukončení uvoľnia pamäť, aplikácia tak zostáva rýchla.
+• Veľké AI a hlasové modely sa teraz sťahujú spoľahlivo.
+• Opravený pád u používateľov s mnohými balíkmi fráz.
+• Plné rozloženie sprava doľava a zásadné opravy arabčiny.
+</sk>
+<sv-SE>
+• AI-lektioner frigör sitt minne när du lämnar dem, så appen förblir snabb.
+• Stora AI- och röstmodeller laddas nu ner tillförlitligt.
+• Åtgärdade en krasch för användare med många fraspaket.
+• Fullständig höger-till-vänster-layout och stora rättelser för arabiska.
+</sv-SE>
+<th>
+• บทเรียน AI จะคืนหน่วยความจำเมื่อออก แอปจึงยังเร็วอยู่
+• โมเดล AI และเสียงขนาดใหญ่ดาวน์โหลดได้อย่างเสถียรแล้ว
+• แก้ปัญหาแอปขัดข้องสำหรับผู้ใช้ที่มีชุดวลีจำนวนมาก
+• รองรับเลย์เอาต์จากขวาไปซ้ายเต็มรูปแบบ และแก้ไขภาษาอาหรับครั้งใหญ่
+</th>
+<tr-TR>
+• Yapay zekâ dersleri çıkışta belleğini boşaltır, böylece uygulama hızlı kalır.
+• Büyük yapay zekâ ve ses modelleri artık güvenilir şekilde iniyor.
+• Çok sayıda ifade paketi olan kullanıcılardaki çökme giderildi.
+• Tam sağdan sola düzen ve Arapça için önemli düzeltmeler.
+</tr-TR>
+<uk>
+• Уроки зі ШІ звільняють пам'ять при виході, тож застосунок лишається швидким.
+• Великі моделі ШІ та голосу тепер завантажуються надійно.
+• Виправлено збій у користувачів із багатьма наборами фраз.
+• Повне розкладання справа наліво та важливі виправлення для арабської.
+</uk>
+<vi>
+• Bài học AI giải phóng bộ nhớ khi thoát, nên ứng dụng vẫn nhanh.
+• Các mô hình AI và giọng nói lớn giờ tải về ổn định.
+• Đã sửa lỗi treo với người dùng có nhiều gói cụm từ.
+• Bố cục phải-sang-trái đầy đủ và nhiều chỉnh sửa lớn cho tiếng Ả Rập.
+</vi>
+<zh-CN>
+• AI 课程退出时释放内存，应用保持流畅。
+• 大型 AI 和语音模型现在下载稳定。
+• 修复了短语包众多用户的崩溃问题。
+• 完整支持从右到左布局，并对阿拉伯语进行了重要修正。
+</zh-CN>

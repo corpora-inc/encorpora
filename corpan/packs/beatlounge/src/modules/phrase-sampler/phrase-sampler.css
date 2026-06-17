@@ -1,0 +1,863 @@
+/* beatlounge — phrase DISCOVERY / LIBRARY styles (co-located; imported by
+ * index.tsx). Uses ONLY global --bl-* tokens from styles.css; dark + premium.
+ * No emoji (inline SVG glyphs only). ≥44px hit targets. Safe-area + reduced-
+ * motion aware. Fixed-height scroll regions use `overflow: hidden auto`.
+ * Works at phone, tablet, and desktop widths (first-class all three). */
+
+/* Root fills the immersive mount (which is `display:flex`, so without an
+   explicit grow the column would collapse to its content width — that was the
+   "slim column, empty around it" bug at iPad/desktop widths). We grow to fill,
+   then cap + center the content so huge screens look designed, not stretched. */
+.bl-disc {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  gap: var(--bl-s3);
+  color: var(--bl-text);
+  /* Cap matches the Stage grid (1280) so the two screens feel coherent. */
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+/* ---- tabs ---- */
+.bl-disc-tabs {
+  display: flex;
+  gap: var(--bl-s2);
+  flex: 0 0 auto;
+}
+.bl-disc-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s4);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-body);
+  cursor: pointer;
+  transition: color var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-disc-tab.is-on {
+  color: var(--bl-text);
+  border-color: var(--bl-accent);
+  background: var(--bl-surface-2);
+}
+.bl-disc-tab.is-on :first-child {
+  color: var(--bl-accent);
+}
+.bl-disc-tabcount {
+  min-width: 20px;
+  padding: 0 6px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-accent);
+  color: var(--bl-bg);
+  font-size: var(--bl-fs-micro);
+  font-family: var(--bl-font-mono);
+}
+
+/* ---- body ----
+   Phone: single column. The master (toolbar + list) flows; the detail is an
+   absolute slide-over (inset:0) — `position:relative` here anchors it.
+   Wide (≥900px): a two-pane master/detail grid (list | persistent detail). */
+.bl-disc-body {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+
+/* Master pane: toolbar + scrolling list. Fills the body on phone; the left
+   column on wide screens. Always a fixed-height flex column so the list owns
+   the scroll (overflow: hidden auto) rather than the sheet growing. */
+.bl-disc-master {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+
+/* ---- toolbar: search + shuffle ---- */
+.bl-disc-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  flex: 0 0 auto;
+}
+.bl-disc-search {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s3);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  color: var(--bl-text-dim);
+}
+.bl-disc-searchicon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+.bl-disc-input {
+  flex: 1 1 auto;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--bl-text);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-body);
+  min-width: 0;
+}
+.bl-disc-input::placeholder {
+  color: var(--bl-text-dim);
+}
+.bl-disc-clear {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  color: var(--bl-text-dim);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--bl-radius-sm);
+}
+.bl-disc-clear:hover {
+  color: var(--bl-text);
+}
+.bl-disc-shuffle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s4);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.bl-disc-shuffle:hover {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+}
+
+/* ---- result list (virtualized) ---- */
+.bl-disc-list {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid var(--bl-border);
+}
+.bl-disc-spacer {
+  position: relative;
+  width: 100%;
+}
+.bl-disc-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2);
+  border: none;
+  border-bottom: 1px solid var(--bl-border);
+  background: transparent;
+  color: var(--bl-text);
+  text-align: start;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-disc-row:hover {
+  background: var(--bl-surface);
+}
+.bl-disc-row.is-sel {
+  background: var(--bl-surface-2);
+}
+.bl-disc-rowtext {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.bl-disc-rowhead {
+  font-size: var(--bl-fs-title);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--bl-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-disc-rowgloss {
+  font-size: var(--bl-fs-body);
+  color: var(--bl-text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-disc-rowmeta {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  margin-top: 2px;
+}
+.bl-disc-rowchevron {
+  flex: 0 0 auto;
+  color: var(--bl-text-dim);
+  display: inline-flex;
+}
+.bl-disc-badge {
+  font-size: var(--bl-fs-micro);
+  font-family: var(--bl-font-mono);
+  color: var(--bl-bg);
+  background: var(--bl-text-dim);
+  border-radius: var(--bl-radius-sm);
+  padding: 1px 6px;
+}
+.bl-disc-langcount {
+  font-size: var(--bl-fs-micro);
+  font-family: var(--bl-font-mono);
+  color: var(--bl-accent);
+}
+.bl-disc-tag {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: 1px 6px;
+}
+.bl-disc-list.is-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bl-disc-empty {
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-body);
+  text-align: center;
+  padding: var(--bl-s5);
+}
+.bl-disc-empty-sm {
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-label);
+  line-height: 1.4;
+  margin: var(--bl-s2) 0;
+}
+
+/* ---- detail (slide-in over the list) ---- */
+.bl-disc-detail {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bl-bg);
+  background-image: var(--bl-bg-grad);
+  border-radius: var(--bl-radius);
+  border: 1px solid var(--bl-border);
+  overflow: hidden;
+  animation: bl-disc-slide var(--bl-dur-immersive) var(--bl-ease);
+}
+@keyframes bl-disc-slide {
+  from {
+    transform: translateX(14px);
+    opacity: 0.4;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-disc-detail {
+    animation: none;
+  }
+}
+.bl-disc-detail-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2) var(--bl-s3);
+  border-bottom: 1px solid var(--bl-border);
+}
+.bl-disc-back {
+  width: var(--bl-hit);
+  height: var(--bl-hit);
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  cursor: pointer;
+}
+.bl-disc-back:hover {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+}
+.bl-disc-detail-title {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  flex-wrap: wrap;
+}
+.bl-disc-detail-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--bl-s3) var(--bl-s3) calc(var(--bl-safe-bottom) + var(--bl-s5));
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+}
+
+.bl-disc-section-h {
+  font-size: var(--bl-fs-label);
+  font-weight: 600;
+  color: var(--bl-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---- per-language rows ---- */
+.bl-disc-langs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-disc-lang {
+  display: flex;
+  align-items: stretch;
+  gap: var(--bl-s2);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  background: var(--bl-surface);
+  overflow: hidden;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-disc-lang.is-drilled {
+  border-color: var(--bl-accent);
+  background: var(--bl-surface-2);
+}
+.bl-disc-lang-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--bl-s3);
+  border: none;
+  background: transparent;
+  color: var(--bl-text);
+  text-align: start;
+  cursor: pointer;
+}
+.bl-disc-lang-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  font-size: var(--bl-fs-micro);
+  font-family: var(--bl-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bl-text-dim);
+}
+.bl-disc-lang.is-drilled .bl-disc-lang-tag {
+  color: var(--bl-accent);
+}
+.bl-disc-native-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bl-success);
+  display: inline-block;
+}
+.bl-disc-lang-text {
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--bl-text);
+}
+.bl-disc-lang-roman {
+  font-size: var(--bl-fs-label);
+  font-family: var(--bl-font-mono);
+  color: var(--bl-accent);
+}
+
+/* generic round icon button (audition / remove) */
+.bl-disc-iconbtn {
+  flex: 0 0 auto;
+  width: var(--bl-hit);
+  height: var(--bl-hit);
+  align-self: center;
+  margin-inline-end: var(--bl-s2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-disc-iconbtn:hover {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+}
+.bl-disc-iconbtn.is-danger:hover {
+  border-color: var(--bl-error);
+  color: var(--bl-error);
+}
+.bl-disc-iconbtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ---- combinatorial breakdown ---- */
+.bl-disc-combos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-disc-combos-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+}
+.bl-disc-combos-h > span:first-child {
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--bl-text);
+  font-size: var(--bl-fs-body);
+}
+.bl-disc-combos-sub {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  margin: 0 0 var(--bl-s1);
+}
+.bl-disc-capnote {
+  color: var(--bl-warn);
+}
+
+.bl-disc-band {
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  background: var(--bl-surface);
+  overflow: hidden;
+}
+.bl-disc-band-h {
+  width: 100%;
+  min-height: var(--bl-hit);
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  padding: 0 var(--bl-s3);
+  border: none;
+  background: transparent;
+  color: var(--bl-text);
+  cursor: pointer;
+  font-family: var(--bl-font);
+}
+.bl-disc-band-chev {
+  display: inline-flex;
+  color: var(--bl-text-dim);
+  transition: transform var(--bl-dur-fast) var(--bl-ease);
+  transform: rotate(-90deg);
+}
+.bl-disc-band.is-open .bl-disc-band-chev {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-disc-band-chev {
+    transition: none;
+  }
+}
+.bl-disc-band-n {
+  flex: 1 1 auto;
+  text-align: start;
+  font-size: var(--bl-fs-body);
+  font-weight: 600;
+}
+.bl-disc-band-count {
+  font-size: var(--bl-fs-micro);
+  font-family: var(--bl-font-mono);
+  color: var(--bl-text-dim);
+}
+.bl-disc-band-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+  padding: 0 var(--bl-s3) var(--bl-s3);
+}
+
+.bl-disc-combo {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface-2);
+  overflow: hidden;
+  max-width: 100%;
+}
+.bl-disc-combo-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  min-height: 38px;
+  padding: 0 var(--bl-s2) 0 var(--bl-s3);
+  border: none;
+  background: transparent;
+  color: var(--bl-text);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-body);
+  cursor: pointer;
+  min-width: 0;
+}
+.bl-disc-combo-text > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60vw;
+}
+.bl-disc-combo-text > svg {
+  flex: 0 0 auto;
+  color: var(--bl-text-dim);
+}
+.bl-disc-combo-text:hover {
+  color: var(--bl-accent);
+}
+.bl-disc-combo-text:hover > svg {
+  color: var(--bl-accent);
+}
+.bl-disc-combo-save {
+  flex: 0 0 auto;
+  width: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-inline-start: 1px solid var(--bl-border);
+  background: transparent;
+  color: var(--bl-text-dim);
+  cursor: pointer;
+  transition: color var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-disc-combo-save:hover:not(:disabled) {
+  color: var(--bl-success);
+  background: rgba(127, 255, 191, 0.08);
+}
+.bl-disc-combo-save.is-saved {
+  color: var(--bl-success);
+  cursor: default;
+}
+.bl-disc-combo-save:disabled:not(.is-saved) {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* ---- voice picker ---- */
+.bl-disc-voice {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-disc-voice-label {
+  font-size: var(--bl-fs-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bl-text-dim);
+}
+.bl-disc-voice-sel {
+  min-height: 34px;
+  max-width: 44vw;
+  padding: 0 var(--bl-s2);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+}
+
+/* ---- bank (library) ---- */
+.bl-disc-bank-head {
+  flex: 0 0 auto;
+  padding-top: var(--bl-s1);
+}
+.bl-disc-bank-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  padding-bottom: calc(var(--bl-safe-bottom) + var(--bl-s4));
+}
+.bl-disc-bank-row {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  background: var(--bl-surface);
+}
+.bl-disc-bank-row .bl-disc-iconbtn {
+  margin-inline-end: 0;
+}
+.bl-disc-bank-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.bl-disc-bank-phrase {
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  color: var(--bl-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-disc-bank-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-disc-bank-dur {
+  font-size: var(--bl-fs-micro);
+  font-family: var(--bl-font-mono);
+  color: var(--bl-text-dim);
+}
+.bl-disc-bank-empty {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s5);
+}
+.bl-disc-bank-emptyglyph {
+  color: var(--bl-text-dim);
+  opacity: 0.7;
+}
+.bl-disc-bank-emptytitle {
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  color: var(--bl-text);
+  margin: 0;
+}
+
+/* ---- spinner ---- */
+.bl-disc-spin {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--bl-border);
+  border-top-color: var(--bl-accent);
+  animation: bl-disc-spin 0.7s linear infinite;
+}
+@keyframes bl-disc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-disc-spin {
+    animation-duration: 1.6s;
+  }
+}
+
+/* ---- resting detail pane (wide screens only) ---- */
+/* Hidden on phone — there the detail is an on-demand absolute slide-over. */
+.bl-disc-detail-rest {
+  display: none;
+}
+.bl-disc-rest-inner {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s5);
+}
+.bl-disc-rest-glyph {
+  color: var(--bl-text-dim);
+  opacity: 0.6;
+}
+.bl-disc-rest-title {
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  color: var(--bl-text);
+  margin: 0;
+}
+.bl-disc-rest-inner .bl-disc-empty-sm {
+  max-width: 36ch;
+}
+
+/* ============================================================ WIDE SCREENS
+   Mirrors the Stage breakpoints (900 = tablet/portrait iPad, 1240 = landscape
+   iPad/desktop). The Discover body becomes a master/detail split: the list on
+   the left, the selected phrase's detail given room to breathe on the right.
+   The Bank becomes a multi-column grid. Phone keeps its single-column flow. */
+@media (min-width: 900px) {
+  /* roomier combo text once the detail has its own pane */
+  .bl-disc-combo-text > span {
+    max-width: 320px;
+  }
+  .bl-disc-voice-sel {
+    max-width: 220px;
+  }
+
+  /* Two-pane master/detail (Discover only — the Bank body stays a flow column).
+     The body becomes a grid; the detail leaves the overlay flow and sits in the
+     second column with room to breathe. */
+  .bl-disc-body--split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: var(--bl-s4);
+    align-items: stretch;
+  }
+  .bl-disc-master {
+    min-height: 0;
+    height: 100%;
+  }
+  /* Detail (both the real one and the resting placeholder) becomes a static
+     right-hand pane — no longer an absolute overlay, no slide-in transform. */
+  .bl-disc-detail {
+    position: static;
+    inset: auto;
+    height: 100%;
+    min-height: 0;
+    animation: none;
+  }
+  .bl-disc-detail-rest {
+    display: flex;
+  }
+  /* The phone "Back to results" affordance is meaningless beside the list. */
+  .bl-disc-back {
+    display: none;
+  }
+  /* When the detail head has nothing but the (now-hidden) back button + meta,
+     keep it left-padded for alignment with the scroll body. */
+  .bl-disc-detail-head {
+    padding-inline-start: var(--bl-s3);
+  }
+
+  /* Two-up the per-language rows so the wide detail pane fills nicely. The
+     section header spans the full width above the grid of rows. */
+  .bl-disc-langs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--bl-s2);
+  }
+  .bl-disc-langs > .bl-disc-section-h {
+    grid-column: 1 / -1;
+  }
+  .bl-disc-langs > .bl-disc-empty-sm {
+    grid-column: 1 / -1;
+  }
+
+  /* ---- Bank: multi-column grid of saved snippets ---- */
+  .bl-disc-bank-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    gap: var(--bl-s3);
+  }
+}
+
+@media (min-width: 1240px) {
+  /* Even more room for the detail at desktop / landscape iPad. */
+  .bl-disc-body--split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: var(--bl-s5);
+  }
+  .bl-disc-langs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .bl-disc-bank-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---- tile (unchanged surface; Discovery summary) ---- */
+.bl-tile-ps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  height: 100%;
+}
+.bl-tile-ps-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 0;
+}
+.bl-tile-ps-target {
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  color: var(--bl-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-tile-ps-gloss {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-tile-ps-hint {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  line-height: 1.3;
+}

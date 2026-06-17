@@ -8,6 +8,10 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.4] - 2026-06-16
+### Changed
+- Refreshed the pack avatar artwork.
+
 ## [0.6.3] - 2026-05-19
 ### Changed
 - Cold-start in airplane mode now shows a calm "World Radio needs

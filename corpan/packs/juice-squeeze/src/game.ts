@@ -27,6 +27,7 @@ import { useGameStore, LEVEL_FRUIT_COLORS, BOTTLES_PER_LEVEL, getAllFruits, type
 import { createJuiceGlass, type JuiceGlass } from "./juiceAnimation"
 import { createBottle3D, type Bottle3D } from "./bottle3D"
 import { t } from "./translations"
+import { createDailyQuota } from "@shared/monetization"
 import successSoundUrl from "./sounds/success.mp3"
 import corpanLogoUrl from "./assets/corpan-logo.png"
 
@@ -179,6 +180,14 @@ export const createJuiceSqueeze = (
   }
 
   let disposed = false
+
+  // gate v2 daily quota. Limit/nag/unit live in the central registry
+  // (QUOTAS.juice_phrases — 20 phrases/local day, soft nag every 5, "soft, soft,
+  // hard"). At the cap the gate dispatches `corpan:daily-locked` for the host's
+  // accomplishment-lock overlay. `note()` (per completed phrase) fires the
+  // nag/lock internally. Subscribers are a no-op (the gate reads the
+  // host-injected Plus globals).
+  const paywallGate = createDailyQuota("juice_phrases")
 
   // Track rotation index for multi-language stacks (3+ languages)
   let targetLangRotationIndex = 0
@@ -1453,6 +1462,9 @@ export const createJuiceSqueeze = (
         useGameStore.getState().setWon(true)
         useGameStore.getState().incrementCompletedPhrases()
         useGameStore.getState().incrementScore()
+        // One phrase completed — advance the daily gate (fires the soft nag /
+        // accomplishment lock internally; no-op for subscribers).
+        paywallGate.note()
 
         // Record completed phrase with word count for all-time score
         // Pass the current visual color level and gradient so bottles show correct color in collection
@@ -2162,7 +2174,21 @@ export const createJuiceSqueeze = (
   }
 
   // Create word blocks from loaded utterance
-  const createWordBlocks = async () => {
+  const createWordBlocks = async (opts?: { initial?: boolean }) => {
+    // Hard daily cap: loading a NEW phrase to solve is the metered action.
+    // Once the free user has reached the daily cap (QUOTAS.juice_phrases) they
+    // get EXACTLY that many — re-show the accomplishment-lock overlay instead
+    // of loading another. The initial mount load is GATED TOO: juice-squeeze
+    // does not persist/restore the current utterance, so `initial` always loads
+    // a brand-new phrase. Exempting it let an already-capped free user mint one
+    // fresh phrase per exit/re-enter. `initial` may only bypass the gate when it
+    // restores already-seen content (which this pack never does). Subscribers
+    // never block (isBlocked() is always false for them).
+    void opts
+    if (paywallGate.isBlocked()) {
+      paywallGate.requestDailyLock()
+      return
+    }
     // Clear existing blocks
     clearWordBlocks()
     useGameStore.getState().setWon(false)
@@ -2838,8 +2864,8 @@ export const createJuiceSqueeze = (
     updateAllBlockTexts()
   }
 
-  // Load and create word blocks
-  createWordBlocks().catch((err) => {
+  // Load and create word blocks (initial mount — never gated by the daily cap)
+  createWordBlocks({ initial: true }).catch((err) => {
     console.error("[juice-squeeze] Failed to load utterances:", err)
   })
 
@@ -2939,6 +2965,7 @@ export const createJuiceSqueeze = (
       return
     }
     disposed = true
+    paywallGate.dispose()
 
     // Clear pending TTS timeout to prevent phantom phrases
     if (ttsTimeoutId !== null) {

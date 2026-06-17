@@ -451,6 +451,18 @@
           "markdownDescription": "Denies the stop command without any pre-configured scope."
         },
         {
+          "description": "Enables the synthesize_to_buffer command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-synthesize-to-buffer",
+          "markdownDescription": "Enables the synthesize_to_buffer command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the synthesize_to_buffer command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-synthesize-to-buffer",
+          "markdownDescription": "Denies the synthesize_to_buffer command without any pre-configured scope."
+        },
+        {
           "description": "Enables the try_auto_recover command without any pre-configured scope.",
           "type": "string",
           "const": "allow-try-auto-recover",
@@ -463,10 +475,10 @@
           "markdownDescription": "Denies the try_auto_recover command without any pre-configured scope."
         },
         {
-          "description": "Default permissions for the TTS plugin\n#### This default permission set includes:\n\n- `allow-speak`\n- `allow-speak-concurrent`\n- `allow-stop`\n- `allow-open-tts-settings`\n- `allow-install-tts-data-if-supported`\n- `allow-list-voices`\n- `allow-get-tts-engine-status`\n- `allow-open-tts-engine-store`\n- `allow-probe-tts-health`\n- `allow-try-auto-recover`\n- `allow-bind-engine`\n- `allow-open-app-details`\n- `allow-install-voice-data-for-language`",
+          "description": "Default permissions for the TTS plugin\n#### This default permission set includes:\n\n- `allow-speak`\n- `allow-speak-concurrent`\n- `allow-synthesize-to-buffer`\n- `allow-stop`\n- `allow-open-tts-settings`\n- `allow-install-tts-data-if-supported`\n- `allow-list-voices`\n- `allow-get-tts-engine-status`\n- `allow-open-tts-engine-store`\n- `allow-probe-tts-health`\n- `allow-try-auto-recover`\n- `allow-bind-engine`\n- `allow-open-app-details`\n- `allow-install-voice-data-for-language`",
           "type": "string",
           "const": "default",
-          "markdownDescription": "Default permissions for the TTS plugin\n#### This default permission set includes:\n\n- `allow-speak`\n- `allow-speak-concurrent`\n- `allow-stop`\n- `allow-open-tts-settings`\n- `allow-install-tts-data-if-supported`\n- `allow-list-voices`\n- `allow-get-tts-engine-status`\n- `allow-open-tts-engine-store`\n- `allow-probe-tts-health`\n- `allow-try-auto-recover`\n- `allow-bind-engine`\n- `allow-open-app-details`\n- `allow-install-voice-data-for-language`"
+          "markdownDescription": "Default permissions for the TTS plugin\n#### This default permission set includes:\n\n- `allow-speak`\n- `allow-speak-concurrent`\n- `allow-synthesize-to-buffer`\n- `allow-stop`\n- `allow-open-tts-settings`\n- `allow-install-tts-data-if-supported`\n- `allow-list-voices`\n- `allow-get-tts-engine-status`\n- `allow-open-tts-engine-store`\n- `allow-probe-tts-health`\n- `allow-try-auto-recover`\n- `allow-bind-engine`\n- `allow-open-app-details`\n- `allow-install-voice-data-for-language`"
         }
       ]
     }

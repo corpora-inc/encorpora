@@ -447,6 +447,33 @@ def translate_entry_batch(
             "Gender: jika teks sumber netral dan tidak menyebutkan gender, jangan menambahkan unsur bergender (mis. dia laki-laki/perempuan, suami/istri) tanpa alasan. "
             "Keluaran: hanya teks terjemahan, tanpa tanda kutip atau catatan."
         ),
+        "jv": (
+            "Sampeyan penerjemah profesional EN→Javanese lan panutur asli Basa Jawa. "
+            "Terjemahake saben ukara nganggo Basa Jawa aksara Latin sing alami, cetha, lan migunani kanggo pamelajar. "
+            "Gunakake ragam Ngoko alus / sopan-netral sing umum dingerteni; aja nganti kaku banget nganggo Krama inggil yen konteks ora mbutuhake, lan aja nganggo aksara Jawa. "
+            "Jaga teges asli, nanging aja nerjemahake tembung-per-tembung utawa nganggo pola Indonesia/Inggris sing kaku. "
+            "Pilih tetembungan Jawa sing lumrah; yen istilah modern luwih alami nganggo serapan, gunakake kanthi wajar. "
+            "Ukara cekak lan gampang diwaca. Yen teks Inggris netral babagan gender, aja nambah informasi gender. "
+            "Output mung teks terjemahan Basa Jawa, tanpa tanda petik utawa cathetan."
+        ),
+        "su": (
+            "Anjeun penerjemah profesional EN→Sundanese sareng panutur asli Basa Sunda. "
+            "Tarjamahkeun unggal kalimah kana Basa Sunda aksara Latin anu alami, écés, sopan-netral, sareng gampang kaharti ku pamelajar. "
+            "Ulah narjamahkeun kecap-per-kecap; jaga harti aslina bari milih susunan kalimah jeung kecap anu karasa Sunda. "
+            "Hindarkeun kalke basa Inggris atawa basa Indonesia lamun aya ungkara Sunda anu leuwih lumrah. "
+            "Pikeun paréntah, patunjuk, atawa labél, frasa pondok ogé meunang lamun alami. "
+            "Lamun sumberna henteu netepkeun gender, ulah nambihan informasi gender. "
+            "Kaluaran: ukur téks tarjamahan Basa Sunda, tanpa tanda kutip atawa catetan."
+        ),
+        "tl": (
+            "Isa kang propesyonal na tagasalin mula English papuntang Tagalog/Filipino at katutubong tagapagsalita. "
+            "Isalin ang bawat pangungusap sa natural, malinaw, moderno, at magalang-neutral na Tagalog/Filipino. "
+            "Unahin ang kahulugan at daloy, hindi salin-salita; iwasan ang matigas na English word order at hindi kailangang panghihiram. "
+            "Gamitin ang karaniwang anyo sa Pilipinas; panatilihing maikli at madaling basahin ang mga pangungusap. "
+            "Para sa labels, utos, at maikling pahiwatig, puwedeng gumamit ng natural na parirala. "
+            "Kung walang gender sa English, huwag magdagdag ng gender sa salin. "
+            "Output: ang salin lang sa Tagalog/Filipino, walang panipi o paliwanag."
+        ),
         "tr": (
             "Profesyonel bir İngilizceden Türkçeye çevirmenisiniz. "
             "Her cümleyi modern, doğal ve akıcı standart Türkçe ile çevirin; katı kelime kelime çeviriden ve İngilizce kalıpların kopyasından kaçının. "

@@ -1,0 +1,86 @@
+/**
+ * beatlounge — the SCORE editor styles. The +/− layer dial mirrors the Grooves
+ * dial's look; the degree grid reuses the shared LaneGrid chrome. Tokens only.
+ */
+
+.bl-score {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  min-height: 160px;
+}
+
+/* the dial + corpus picks bar */
+.bl-score-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2);
+}
+
+/* the +/− layer dial */
+.bl-score-dial {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-score-dial-label {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-score-dial-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  /* single-glyph button — line-height centering, not flex text (WebKit). */
+  line-height: 36px;
+  padding: 0;
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  cursor: pointer;
+}
+.bl-score-dial-btn:hover {
+  border-color: var(--bl-accent);
+}
+.bl-score-dial-btn.is-primary {
+  background: var(--bl-accent);
+  color: var(--bl-on-accent, #04141a);
+  border-color: var(--bl-accent);
+}
+.bl-score-dial-glyph {
+  display: block;
+}
+
+.bl-score-picks {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+}
+
+.bl-score-scroll {
+  flex: 1 1 auto;
+}
+
+/* Armed Auto chip — the score module's bar had no local is-armed rule, so the
+   armed highlight never showed. A solid accent fill reads as "live". */
+.bl-score .bl-chip.is-armed {
+  background: var(--bl-accent);
+  color: var(--bl-on-accent, #04141a);
+  border-color: var(--bl-accent);
+}
+
+/* The Variation control (Lock | Evolve | New) reuses the SHARED .bl-seg /
+   .bl-seg-btn segmented control (defined in ribbon/styles.css, also used by the
+   Harmony panel + instrument surface) — no local redefinition, so every
+   segmented control in the pack stays visually identical. */

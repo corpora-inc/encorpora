@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.8] - 2026-06-16 — Catalog localization (jv/su/tl) unblocks Pages deploy
+
+- Catalog listing: add the Javanese (jv), Sundanese (su) and Tagalog (tl)
+  `nameLocalized` + `descriptionLocalized` strings introduced as supported
+  languages in 0.18.1. Corpan City is the only catalog pack with
+  `requireCompleteLocalization`, so these three gaps were failing the
+  GitHub Pages build (`assertCompleteCatalogLocalization`) and blocking every
+  deploy since #294 — including the beatlounge 0.2.1 publish.
+
 ## [0.1.7] - 2026-06-09
 
 - Adopt Teletron's two-step mediated-chat moderation (binary safety classifier +

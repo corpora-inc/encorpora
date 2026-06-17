@@ -1,6 +1,6 @@
 [package]
 name = "corpan"
-version = "0.17.3"
+version = "0.19.0"
 description = "Language learning app"
 authors = ["you"]
 edition = "2021"
@@ -36,6 +36,7 @@ sha2 = "0.10"
 zip = "2.2.2"
 tauri-plugin-tts = { path = "../../plugins/tauri-plugin-tts" }
 tauri-plugin-audio-keepalive = { path = "../../plugins/tauri-plugin-audio-keepalive" }
+tauri-plugin-haptics = { path = "../../plugins/tauri-plugin-haptics" }
 tauri-plugin-radio-stream = { path = "../../plugins/tauri-plugin-radio-stream" }
 tauri-plugin-subscriptions = { path = "../../plugins/tauri-plugin-subscriptions" }
 tauri-plugin-iap = { path = "../../plugins/tauri-plugin-iap" }
@@ -45,6 +46,14 @@ tauri-plugin-corpan-llm = { path = "../../plugins/tauri-plugin-corpan-llm" }
 # SFSpeechRecognizer + Android SpeechRecognizer). Out-of-process, zero download.
 tauri-plugin-asr-native = { path = "../../plugins/tauri-plugin-asr-native" }
 futures-util = "0.3"
+
+# Android-only: raw POSIX signal handling for the native-crash breadcrumb
+# (install_native_crash_breadcrumb in lib.rs). A SIGSEGV/SIGABRT in a
+# statically-linked native lib (llama/ggml/whisper) leaves no Rust panic and an
+# unsymbolicated, unattributable tombstone in the Play Console; the handler
+# records the faulting thread name + signal before chaining to debuggerd.
+[target.'cfg(target_os = "android")'.dependencies]
+libc = "0.2"
 
 # Production optimizations for release builds
 [profile.release]

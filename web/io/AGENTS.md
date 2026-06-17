@@ -24,7 +24,7 @@ Each app has its own logo. Do NOT reuse the Corpan logo for other apps.
 - Yijing: `/web/io/public/logos/iching-logo.webp`
 - PaKO: `/web/io/public/logos/pako-logo.webp`
 - Hanzipan: `/web/io/public/logos/hanzipan-avatar.png`
-- Juice Squeeze: `/web/io/public/logos/juice-squeeze-avatar.svg`
+- Juice Squeeze: `/web/io/public/logos/juice-squeeze-avatar.png`
 
 ### YouTube
 The YouTube channel features original music videos with AI-generated cinematography. It is NOT a tutorials/demos channel. The heading is "Original Media."

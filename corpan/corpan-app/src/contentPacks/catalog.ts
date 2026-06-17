@@ -2,6 +2,10 @@ import {
   type LocalizedString,
   parseLocalizedString,
 } from "./localized"
+import {
+  fetchJsonFresh,
+  type Validators,
+} from "./catalogFetch"
 
 export type PurchaseInfo = {
   type: "free" | "iap" | "code"
@@ -30,6 +34,10 @@ export type CatalogGame = {
   descriptionLocalized?: LocalizedString
   imageUrl?: string
   purchase?: PurchaseInfo
+  /** Minimum Corpán app version required to run this pack (e.g. beatlounge needs
+   *  the 0.18.0 host seams). The live V3 catalog filters on it; carried here on
+   *  the in-app fallback for parity (this binary only ships to compatible hosts). */
+  minAppVersion?: string
   /** System packs (Library, readers) auto-install on launch — no user action.
    * Lets us ship Library/reader UX updates without an app-store release. */
   systemPack?: boolean
@@ -198,9 +206,56 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     imageUrl: "https://encorpora.io/assets/hanzipan-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
   },
+  {
+    id: "beatlounge",
+    name: "beatlounge",
+    version: "0.2.1",
+    minAppVersion: "0.18.0",
+    manifestUrl: "https://encorpora.io/corpan/packs/beatlounge.zip",
+    description:
+      "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
+    tagline: "Sample the language you're learning. Scratch it till it sticks.",
+    imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["wild", "games", "study"],
+    goodForClass: ["enjoyer", "learner"],
+    featuredFor: ["wild"],
+    recommendOrder: 6,
+  },
 ]
 
 const DEV_CATALOG: CatalogGame[] = [
+  // Readers (dev only): served from the local `/packs` middleware so the new
+  // reader build (with the first-run seed) is installable on a dev device.
+  // Production gets these from the remote catalog. categories/goodForClass mirror
+  // the experiences registry so Home ranking + the read landing resolve them.
+  {
+    id: "earthgate_reader",
+    name: "Earthgate Reader",
+    version: "0.7.0",
+    manifestUrl: "/packs/earthgate-reader/manifest.json",
+    description:
+      "Calm, earth-toned audiobook reader with word-by-word highlighting synced to narrated audio.",
+    imageUrl: "https://encorpora.io/assets/earthgate_reader-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["read", "audio"],
+    goodForClass: ["enjoyer", "kid_native", "learner", "polyglot"],
+    kidFriendly: true,
+    recommendOrder: 1,
+  },
+  {
+    id: "stargate_reader",
+    name: "Stargate Reader",
+    version: "0.7.0",
+    manifestUrl: "/packs/stargate-reader/manifest.json",
+    description:
+      "Immersive 3D audiobook: words stream through space in sync with narrated audio.",
+    imageUrl: "https://encorpora.io/assets/stargate_reader-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["read", "audio", "wild"],
+    goodForClass: ["enjoyer", "polyglot"],
+    recommendOrder: 2,
+  },
   {
     id: "hover_runner",
     name: "Hover Runner",
@@ -234,6 +289,22 @@ const DEV_CATALOG: CatalogGame[] = [
     kidFriendly: true,
     recommendOrder: 5,
     tagline: "A living city that turns every encounter into a lesson.",
+  },
+  {
+    id: "beatlounge",
+    name: "beatlounge",
+    version: "0.2.1",
+    minAppVersion: "0.18.0",
+    manifestUrl: "/packs/beatlounge/manifest.json",
+    description:
+      "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
+    tagline: "Sample the language you're learning. Scratch it till it sticks.",
+    imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
+    purchase: { type: "free", priceLabel: "Free" },
+    categories: ["wild", "games", "study"],
+    goodForClass: ["enjoyer", "learner"],
+    featuredFor: ["wild"],
+    recommendOrder: 6,
   },
 ]
 
@@ -314,8 +385,25 @@ const parsePurchase = (value: unknown): PurchaseInfo | undefined => {
   }
 }
 
-const getDefaultCatalog = () =>
+export const getDefaultCatalog = () =>
   import.meta.env.DEV ? DEV_CATALOG : DEFAULT_CATALOG
+
+/** Reader pack ids the dev catalog serves locally (the in-development build). */
+const DEV_LOCAL_READER_IDS = new Set(["earthgate_reader", "stargate_reader"])
+
+/**
+ * In DEV, ensure the locally-served reader packs (`DEV_CATALOG`, pointing at the
+ * vite `/packs` middleware) are present and take precedence over any remote
+ * entry of the same id — so a dev device installs + tests the LOCAL reader build
+ * (with the first-run seed) instead of the published one. No-op in production.
+ */
+export function withDevReaders(catalog: CatalogGame[]): CatalogGame[] {
+  if (!import.meta.env.DEV) return catalog
+  const devReaders = DEV_CATALOG.filter((g) => DEV_LOCAL_READER_IDS.has(g.id))
+  if (devReaders.length === 0) return catalog
+  const rest = catalog.filter((g) => !DEV_LOCAL_READER_IDS.has(g.id))
+  return [...devReaders, ...rest]
+}
 
 const parseCatalog = (data: unknown): CatalogGame[] | null => {
   if (!Array.isArray(data)) return null
@@ -533,34 +621,71 @@ export const filterCatalogForApp = (
 ): CatalogGame[] => {
   const hostPlatform = host?.platform
   const hostOsVersion = host?.osVersion
-  return v3.packs
-    .filter((entry) => {
-      if (compareVersions(appVersion, entry.minAppVersion) < 0) return false
-      if (
-        entry.maxAppVersion &&
-        compareVersions(appVersion, entry.maxAppVersion) > 0
-      ) {
+  const passing = v3.packs.filter((entry) => {
+    if (compareVersions(appVersion, entry.minAppVersion) < 0) return false
+    if (
+      entry.maxAppVersion &&
+      compareVersions(appVersion, entry.maxAppVersion) > 0
+    ) {
+      return false
+    }
+    if (!devMode && entry.channel === "preview") return false
+    // Platform restriction. If a pack declares `platforms`, the host's
+    // platform must be in the list (e.g. Pronunciation Coach is iOS-
+    // only because it depends on WhisperKit / ANE). When the host
+    // platform is unknown (older app, web preview), be permissive
+    // rather than hide everything.
+    if (entry.platforms && entry.platforms.length > 0 && hostPlatform) {
+      if (!entry.platforms.includes(hostPlatform)) return false
+    }
+    // OS version gate — keeps users on too-old iOS / Android from
+    // installing packs that won't run. Skipped when host OS version
+    // isn't known.
+    if (entry.minOSVersion && hostOsVersion) {
+      if (compareVersions(hostOsVersion, entry.minOSVersion) < 0) {
         return false
       }
-      if (!devMode && entry.channel === "preview") return false
-      // Platform restriction. If a pack declares `platforms`, the host's
-      // platform must be in the list (e.g. Pronunciation Coach is iOS-
-      // only because it depends on WhisperKit / ANE). When the host
-      // platform is unknown (older app, web preview), be permissive
-      // rather than hide everything.
-      if (entry.platforms && entry.platforms.length > 0 && hostPlatform) {
-        if (!entry.platforms.includes(hostPlatform)) return false
-      }
-      // OS version gate — keeps users on too-old iOS / Android from
-      // installing packs that won't run. Skipped when host OS version
-      // isn't known.
-      if (entry.minOSVersion && hostOsVersion) {
-        if (compareVersions(hostOsVersion, entry.minOSVersion) < 0) {
-          return false
-        }
-      }
-      return true
-    })
+    }
+    return true
+  })
+
+  // De-duplicate by stable pack id. The catalog intentionally carries
+  // multiple entries with the SAME id for compatibility routing — e.g.
+  // pronunciation_coach ships a legacy iOS build (≤ 0.12.5), a current iOS
+  // build, and a current Android build. Disjoint [min, max] version ranges
+  // mean exactly one passes per app version, BUT per-platform variants
+  // overlap on version and are only separated by `platforms`. When the host
+  // platform is unknown (web preview, older Tauri, any host where
+  // `detectHost()` can't resolve it) the platform gate above is skipped, so
+  // BOTH the iOS and Android entries pass and the pack shows up two/three
+  // times in the listing. Collapse to one entry per id here — prefer an
+  // entry that explicitly targets the known host platform, then the highest
+  // pack version, so the chosen variant is the most specific + newest.
+  const bestById = new Map<string, CatalogV3Entry>()
+  for (const entry of passing) {
+    const current = bestById.get(entry.id)
+    if (!current) {
+      bestById.set(entry.id, entry)
+      continue
+    }
+    const matchesHost = (e: CatalogV3Entry) =>
+      !!hostPlatform &&
+      !!e.platforms?.length &&
+      e.platforms.includes(hostPlatform)
+    const entryMatches = matchesHost(entry)
+    const currentMatches = matchesHost(current)
+    if (entryMatches !== currentMatches) {
+      // A platform-specific match for the known host always wins.
+      if (entryMatches) bestById.set(entry.id, entry)
+      continue
+    }
+    // Otherwise keep the higher pack version (stable, deterministic tiebreak).
+    if (compareVersions(entry.version, current.version) > 0) {
+      bestById.set(entry.id, entry)
+    }
+  }
+
+  return [...bestById.values()]
     .map((entry) => ({
       id: entry.id,
       name: entry.name,
@@ -583,16 +708,15 @@ export const filterCatalogForApp = (
     }))
 }
 
-const fetchCatalogV3Raw = async (): Promise<CatalogV3 | null> => {
-  try {
-    const res = await fetch(CATALOG_V3_URL, { cache: "no-store" })
-    if (!res.ok) return null
-    const data = (await res.json()) as unknown
-    return parseCatalogV3(data)
-  } catch {
-    return null
-  }
-}
+/** Result of a freshness-aware game-catalog fetch. `unchanged` means the
+ *  server returned 304 against our stored validators — the caller keeps its
+ *  current catalog. `error` means nothing could be fetched live; the caller
+ *  decides whether to keep its cache or fall back to the built-in defaults
+ *  (we never silently clobber a good cache with the tiny default set here). */
+export type GameCatalogResult =
+  | { status: "unchanged"; validators: Validators }
+  | { status: "ok"; catalog: CatalogGame[]; validators: Validators }
+  | { status: "error" }
 
 /** Best-effort host detection via @tauri-apps/plugin-os. Outside Tauri
  *  (e.g. web preview) returns an empty object so platform / minOSVersion
@@ -619,56 +743,70 @@ const detectHost = async (): Promise<{
   }
 }
 
-export const fetchGameCatalog = async (
+/**
+ * Freshness-aware game/reader catalog fetch used by the store. Sends the
+ * stored validators so an unchanged catalog returns `unchanged` (a 0-byte
+ * 304 straight off the CDN edge). Falls back V3 → V1 and reports `error` if
+ * nothing could be fetched, leaving the cache-vs-defaults decision to the
+ * caller. The underlying `fetchJsonFresh` is timeout-bounded and retried, so
+ * a hung socket can never wedge this call.
+ */
+export const fetchGameCatalogFresh = async (
   appVersion?: string,
   devMode?: boolean,
-): Promise<CatalogGame[]> => {
+  validators?: Validators,
+): Promise<GameCatalogResult> => {
   // Try V3 catalog when app version is 0.10.0+
   if (appVersion && compareVersions(appVersion, "0.10.0") >= 0) {
     try {
-      console.log("[catalog] App version", appVersion, ">= 0.10.0, trying V3 catalog")
-      const v3 = await fetchCatalogV3Raw()
-      if (v3) {
-        const host = await detectHost()
-        const filtered = filterCatalogForApp(
-          v3, appVersion, devMode ?? false, host)
-        console.log(
-          "[catalog] V3 catalog:", v3.packs.length, "total,",
-          filtered.length, "after filtering",
-          "(host:", host.platform ?? "?", host.osVersion ?? "?", ")")
-        if (filtered.length > 0) return filtered
+      const r = await fetchJsonFresh<CatalogV3>(CATALOG_V3_URL, {
+        parse: parseCatalogV3,
+        validators,
+      })
+      if (r.status === "unchanged") {
+        return { status: "unchanged", validators: r.validators }
       }
+      const host = await detectHost()
+      const filtered = filterCatalogForApp(
+        r.data, appVersion, devMode ?? false, host)
+      console.log(
+        "[catalog] V3 catalog:", r.data.packs.length, "total,",
+        filtered.length, "after filtering",
+        "(host:", host.platform ?? "?", host.osVersion ?? "?", ")")
+      if (filtered.length > 0) {
+        return { status: "ok", catalog: filtered, validators: r.validators }
+      }
+      // Filtered to empty — fall through to V1 rather than show nothing.
     } catch (error) {
       console.warn("[catalog] V3 fetch failed, falling back to V1:", error)
     }
   }
 
-  // V1 fallback
+  // V1 fallback. A different URL with its own ETag, so we never forward the
+  // V3 validators here and we return empty validators (the store's persisted
+  // validators are conceptually the V3 catalog's).
   const urlValue = getCatalogUrl()
   if (!urlValue) {
-    console.log("[catalog] No catalog URL, using defaults")
-    return getDefaultCatalog()
+    console.log("[catalog] No catalog URL")
+    return { status: "error" }
   }
   try {
     const url = new URL(urlValue, window.location.href).toString()
-    console.log("[catalog] Fetching from:", url)
-    const res = await fetch(url, { cache: "no-store" })
-    if (!res.ok) {
-      console.log("[catalog] Fetch failed with status:", res.status)
-      return getDefaultCatalog()
-    }
-    const data = (await res.json()) as unknown
+    const r = await fetchJsonFresh<unknown>(url, { parse: (d) => d ?? null })
+    if (r.status === "unchanged") return { status: "error" }
+    const data = r.data
     // v1 format is a plain array — parse directly to preserve all fields
     // (imageUrl, description, name). Routing through parseCatalogV2 is lossy.
     if (Array.isArray(data)) {
       const parsed = parseCatalog(data)
-      console.log("[catalog] Parsed v1 catalog:", parsed?.length, "games")
-      return parsed ?? getDefaultCatalog()
+      if (parsed && parsed.length > 0) {
+        return { status: "ok", catalog: parsed, validators: {} }
+      }
+      return { status: "error" }
     }
     // v2 format is an object with narrations + gamePacks
     const v2 = parseCatalogV2(data)
     if (v2) {
-      console.log("[catalog] Parsed v2 catalog:", v2.narrations.length, "narrations,", v2.gamePacks.length, "game packs")
       const games: CatalogGame[] = v2.gamePacks.map((gp) => ({
         id: gp.id,
         name: gp.id,
@@ -676,16 +814,26 @@ export const fetchGameCatalog = async (
         manifestUrl: gp.downloadUrl,
         purchase: gp.purchase,
       }))
-      if (games.length === 0) {
-        return getDefaultCatalog()
-      }
-      return games
+      if (games.length > 0) return { status: "ok", catalog: games, validators: {} }
     }
-    return getDefaultCatalog()
+    return { status: "error" }
   } catch (error) {
-    console.error("[catalog] Fetch error:", error)
-    return getDefaultCatalog()
+    console.error("[catalog] V1 fetch error:", error)
+    return { status: "error" }
   }
+}
+
+/**
+ * Back-compat wrapper returning just the catalog array, substituting the
+ * built-in defaults on any failure. Used by call sites that don't track
+ * freshness (e.g. GamesPanel's manual refresh button).
+ */
+export const fetchGameCatalog = async (
+  appVersion?: string,
+  devMode?: boolean,
+): Promise<CatalogGame[]> => {
+  const r = await fetchGameCatalogFresh(appVersion, devMode)
+  return r.status === "ok" ? r.catalog : getDefaultCatalog()
 }
 
 /**

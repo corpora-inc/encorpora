@@ -25,6 +25,9 @@ export const APPLE_IOS_VOICE_GAPS: ReadonlySet<string> = new Set([
     "gu",        // Gujarati
     "ur",        // Urdu
     "sw",        // Swahili
+    "jv",        // Javanese
+    "su",        // Sundanese
+    "tl",        // Tagalog
     "pa-Arab",   // Punjabi (Shahmukhi)
     "pa-Guru",   // Punjabi (Gurmukhi)
 ]);

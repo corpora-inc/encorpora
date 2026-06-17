@@ -51,7 +51,10 @@
     "cs": "Tschechisch",
     "lt": "Litauisch",
     "sk": "Slowakisch",
-    "sl": "Slowenisch"
+    "sl": "Slowenisch",
+    "jv": "Javanesisch",
+    "su": "Sundanesisch",
+    "tl": "Tagalog"
   },
   "categories": {
     "travel": "Reise",
@@ -94,8 +97,8 @@
     "testTts": "Testen Sie Ihre TTS-Einstellungen, indem Sie auf die Schaltflächen unten klicken:",
     "showRomanization": "Romanisierung anzeigen",
     "scrollNavigation": "Scrollnavigation",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "Pakete",
+    "stacks": "Stapel",
     "theme": "Design",
     "themeLight": "Hell",
     "themeDark": "Dunkel",
@@ -311,7 +314,8 @@
       "joinTitle": "Werde Teil der Corpanistas",
       "start": "Erkundung starten",
       "subtitle": "Corpán wird von einem kleinen Open-Source-Team entwickelt. Sag Hallo – und wenn es dir gefällt, kannst du uns unterstützen.",
-      "title": "Alles bereit"
+      "title": "Alles bereit",
+      "explore": "Auf eigene Faust erkunden"
     },
     "fork": {
       "child": {
@@ -368,7 +372,31 @@
     "voicePreviewAria": "Vorschau von {{name}}",
     "voicePreviewSelected": "Vorschau ausgewählt",
     "voiceRecommended": "Empfohlen",
-    "voiceSelectedCount": "{{count}} von {{total}}"
+    "voiceSelectedCount": "{{count}} von {{total}}",
+    "whatToStart": {
+      "title": "Wo fangen wir an?",
+      "subtitle": "Wähl eines aus, um loszulegen – der Rest ist nur einen Tipp entfernt.",
+      "read": {
+        "label": "Lesen",
+        "desc": "Tauch ein in Geschichten und Bücher."
+      },
+      "study": {
+        "label": "Lernen",
+        "desc": "Bau deinen Wortschatz mit gezieltem Üben auf."
+      },
+      "playMusic": {
+        "label": "Musik machen",
+        "desc": "Probier deine Sprache an den Decks aus."
+      },
+      "playGames": {
+        "label": "Spielen",
+        "desc": "Lern mit spielerischen Aufgaben."
+      },
+      "surprise": {
+        "label": "Überrasch mich!",
+        "desc": "Bring mich an einen schönen Ort."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -551,7 +579,7 @@
     "renameLabel": "Neuer Name für Stapel",
     "selectAria": "Profil auswählen",
     "selectPlaceholder": "Auswählen…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "Stapel",
     "introTipBody": "Stacks speichern verschiedene Lern-Setups — eines für die Reise, ein anderes für die Arbeit. Tippe auf +, um einen neuen Stack zu erstellen."
   },
   "rating": {
@@ -565,7 +593,7 @@
     "feedbackButton": "Feedback auf GitHub geben"
   },
   "packs": {
-    "title": "Packs",
+    "title": "Pakete",
     "available": "Verfügbar",
     "emptyAvailable": "Noch nichts verfügbar.",
     "installed": "Installiert",
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "Verwende Buchstaben, Zahlen, Bindestriche oder Unterstriche.",
     "affiliateChecking": "Code wird geprüft...",
     "affiliateApplied": "Der Code wird diesem Abonnement zugeordnet.",
-    "affiliateCodeHelp": "Wenn dich jemand hierher geschickt hat, gib den Code vor dem Abonnieren ein."
+    "affiliateCodeHelp": "Wenn dich jemand hierher geschickt hat, gib den Code vor dem Abonnieren ein.",
+    "introPriceHeadline": "{{introPrice}} für {{period}}",
+    "introPriceThen": ", dann {{price}}/{{period}}",
+    "perMonth": "Monat",
+    "perYear": "Jahr",
+    "startFreeTrial": "Kostenlose Testphase starten",
+    "trialFirstCharge": "{{period}}: erste Abbuchung",
+    "trialHeadline": "{{period}} kostenlos",
+    "trialReassurance": "Keine Zahlung jetzt · jederzeit kündbar",
+    "trialThenPrice": ", dann {{price}}/{{period}}",
+    "trialToday": "Heute: Start"
   },
   "restore": {
     "button": "Käufe wiederherstellen",
@@ -712,7 +750,8 @@
     "subhead": "Schalte jedes Buch in jeder Sprache frei. Keine Werbung. Deine Daten bleiben auf deinem Gerät.",
     "pitch": "Wir sind ein kleines Team und investieren jeden Cent zurück in Corpán. Corpanistas halten die App werbefrei und fördern ihr Wachstum.",
     "maybeLater": "Vielleicht später",
-    "continue": "Weiter"
+    "continue": "Weiter",
+    "dismiss": "Schließen"
   },
   "streak": {
     "title": "{{count}}-Tage-Serie"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "Eine lebendige Stadt, die jede Begegnung zur Lektion macht."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sample die Sprache, die du lernst. Scratch sie, bis sie hängen bleibt."
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "Aktualisieren",
     "updateNow": "Jetzt aktualisieren",
     "versionLine": "Version {{version}} ist zur Installation bereit."
+  },
+  "streakBadge": {
+    "label": "{{days}}-Tage-Serie"
+  },
+  "dailyLock": {
+    "title": "Deine {{count}} {{unit}} für heute",
+    "streakActive": "{{days}}-Tage-Serie — komm morgen wieder, um sie fortzusetzen.",
+    "streakStart": "Komm morgen wieder, um sie fortzusetzen.",
+    "resetIn": "Zurücksetzen in {{time}}",
+    "cta": "Jetzt mit Corpán Plus weitermachen",
+    "dismiss": "Vielleicht später",
+    "closeAria": "Schließen",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "jeden Moment"
+  },
+  "code": {
+    "attributedUnverified": "Code wird Ihrem Abonnement hinzugefügt.",
+    "checkFailed": "Überprüfung nicht möglich",
+    "checking": "Code wird überprüft…",
+    "creditedTo": "gutgeschrieben auf {{partner}}",
+    "fieldLabel": "Angebots- oder Partnercode",
+    "help": "Haben Sie einen Code? Geben Sie ihn ein, um Ihr Angebot zu nutzen.",
+    "redeemUnavailable": "Einlösen-Bildschirm konnte nicht geöffnet werden. Bitte versuchen Sie es erneut.",
+    "redeemWithApple": "Mit Apple einlösen",
+    "redeeming": "Einlösen wird geöffnet…",
+    "retry": "Erneut versuchen",
+    "subscribeWithDiscount": "Abonnieren ({{discount}})",
+    "redeemCode": "Code einlösen",
+    "notApplied": "Dieser Code gewährt keinen Rabatt."
   }
 }

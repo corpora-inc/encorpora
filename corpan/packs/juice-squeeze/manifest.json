@@ -1,14 +1,14 @@
 {
   "id": "juice_squeeze",
   "name": "Juice Squeeze",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-06-05T06:19:04.251Z",
+  "devRevision": "2026-06-16T15:59:44.508Z",
   "nameLocalized": {
     "ar": "عصر العصير",
     "bg": "Изстискай сока",
@@ -60,7 +60,10 @@
     "vi": "Ép Nước Trái Cây",
     "yue-Hant-HK": "榨汁機",
     "zh-Hans": "果汁挤压",
-    "zh-Hant": "果汁擠壓"
+    "zh-Hant": "果汁擠壓",
+    "jv": "Jus Jempol",
+    "su": "Jus Jempol",
+    "tl": "Squeeze ng Juice"
   },
   "descriptionLocalized": {
     "ar": "بناء عبارات سريع مع مكافآت عصير منعشة وصوت ناطق أصلي",
@@ -113,6 +116,9 @@
     "vi": "Xây câu nhanh, nhận nước ép tươi mát và âm thanh bản ngữ",
     "yue-Hant-HK": "快節奏造句，攞汁爆獎同母語發音回饋",
     "zh-Hans": "快节奏短语构建，伴随鲜活果汁奖励和地道语音反馈",
-    "zh-Hant": "快節奏造句，搭配鮮活果汁獎勵與母語發音回饋"
+    "zh-Hant": "快節奏造句，搭配鮮活果汁獎勵與母語發音回饋",
+    "jv": "Bangun frasa kanthi cepet karo ganjaran jus sing nyenengake lan umpan balik audio asli",
+    "su": "Ngawangun frasa kalayan gancang sareng ganjaran jus anu nyugemakeun sareng umpan balik audio asli",
+    "tl": "Mabilis na pagbuo ng mga parirala na may masayang gantimpala ng juice at katutubong audio na tugon"
   }
 }

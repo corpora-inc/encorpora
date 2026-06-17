@@ -1,0 +1,269 @@
+/**
+ * beatlounge — Scenes module styles (co-located; Vite bundles into app.css).
+ * Only --bl-* tokens. Dark, premium, calm. WebKit line-height centering for
+ * <button> text. Resize-clean 320px → iPad.
+ */
+
+/* ---------------------------------------------------------- tile */
+.bl-scenes-tilebody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.bl-scenes-tileactive {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-width: 0;
+}
+.bl-scenes-tilename {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  color: var(--bl-text);
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-scenes-tilehint {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  letter-spacing: 0.02em;
+}
+.bl-scenes-dot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bl-warn);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--bl-warn) 70%, transparent);
+}
+
+/* ---------------------------------------------------------- immersive shell */
+.bl-scenes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  width: 100%;
+  padding: var(--bl-s4);
+}
+
+/* ---------------------------------------------------------- start fresh
+   Drastic-change block: Clear / Randomize + a horizontally-scrolling row of
+   demo chips. Squared-off, compact; the demos row is a SINGLE fixed-height
+   scroller (flex:0 0 auto chips) so it never accumulates rows on a phone. */
+.bl-fresh {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+.bl-fresh-title {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-fresh-actions {
+  display: flex;
+  gap: var(--bl-s2);
+}
+.bl-fresh-btn {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s2);
+}
+.bl-fresh-demos {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--bl-s2);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px; /* room for the scrollbar without clipping focus rings */
+  scrollbar-width: thin;
+}
+.bl-fresh-demo {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------- save bar */
+.bl-scenes-bar {
+  display: flex;
+}
+.bl-scenes-save {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  width: 100%;
+  min-height: var(--bl-hit);
+  padding: var(--bl-s3) var(--bl-s4);
+  border-radius: var(--bl-radius);
+  border: 1px solid color-mix(in srgb, var(--bl-accent) 45%, var(--bl-border));
+  background: color-mix(in srgb, var(--bl-accent) 14%, var(--bl-surface));
+  color: var(--bl-text);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  letter-spacing: 0.03em;
+  line-height: 1; /* WebKit: vertically center button text */
+  cursor: pointer;
+  transition:
+    background var(--bl-dur) var(--bl-ease),
+    border-color var(--bl-dur) var(--bl-ease),
+    transform var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scenes-save:hover {
+  background: color-mix(in srgb, var(--bl-accent) 22%, var(--bl-surface));
+  border-color: var(--bl-accent);
+}
+.bl-scenes-save:active {
+  transform: scale(0.99);
+}
+.bl-scenes-save:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+.bl-scenes-save-glyph {
+  display: inline-flex;
+  color: var(--bl-accent);
+}
+.bl-scenes-save-label {
+  flex: 1 1 auto;
+  text-align: start;
+}
+.bl-scenes-save-dirty {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bl-warn);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--bl-warn) 70%, transparent);
+}
+
+/* ---------------------------------------------------------- empty */
+.bl-scenes-empty {
+  padding: var(--bl-s5) var(--bl-s4);
+  border: 1px dashed var(--bl-border);
+  border-radius: var(--bl-radius);
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-body);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------- list */
+.bl-scenes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-scenes-row {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  padding: var(--bl-s2) var(--bl-s3);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  transition:
+    border-color var(--bl-dur) var(--bl-ease),
+    background var(--bl-dur) var(--bl-ease);
+}
+.bl-scenes-row.is-active {
+  border-color: var(--bl-accent);
+  background: color-mix(in srgb, var(--bl-accent) 10%, var(--bl-surface));
+  box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-accent) 24%, transparent);
+}
+.bl-scenes-rowmain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.bl-scenes-rowend {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  flex: 0 0 auto;
+}
+
+/* name (tap to load) */
+.bl-scenes-name {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  border: 1px solid transparent;
+  border-radius: var(--bl-radius-sm);
+  background: transparent;
+  color: var(--bl-text);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: start;
+  cursor: pointer;
+  transition:
+    background var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scenes-name:hover,
+.bl-scenes-name:focus-visible {
+  background: var(--bl-surface-2);
+  border-color: var(--bl-border);
+  outline: none;
+}
+.bl-scenes-nametext {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-scenes-nameinput {
+  width: 100%;
+  min-width: 0;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  border: 1px solid var(--bl-accent);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  letter-spacing: 0.02em;
+  outline: none;
+}
+.bl-scenes-when {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  letter-spacing: 0.04em;
+}
+.bl-scenes-loaded {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bl-accent);
+}
+.bl-scenes-del {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  padding: 0;
+  line-height: 1;
+}

@@ -179,6 +179,17 @@ export function trackOnboardingCompleted(): void {
   }
 }
 
+/** Fired when onboarding auto-launches a best-fit experience (the "aha
+ *  moment"). `target` is the launched pack id, or "home" when the user chose
+ *  to explore / no confident best-fit was found. */
+export function trackOnboardingLaunch(target: string): void {
+  try {
+    emit("app_onboarding_launch", { target })
+  } catch {
+    /* unreachable */
+  }
+}
+
 export function trackPaidUnlockViewed(surface: string, packId?: string): void {
   try {
     emit("app_paid_unlock_viewed", {
@@ -227,6 +238,129 @@ export function trackPaywallConverted(
   } catch {
     /* unreachable */
   }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Monetization funnel taxonomy (app_funnel_*)                                */
+/* -------------------------------------------------------------------------- */
+//
+// One consistent, low-cardinality event set to measure the whole funnel:
+//   pack_enter → pack_exit
+//   gate_hit (shared paywall gate surfaces the paywall)
+//   paywall_shown → {paywall_dismissed | paywall_cta_tapped → paywall_converted}
+//   trial_started / subscription_purchased / subscription_restored
+//   code_field_opened → code_resolved → code_redeemed
+//   onboarding_launch (already wired; see trackOnboardingLaunch)
+//
+// These are ADDITIVE — the legacy `app_pack_entered` / `app_paywall_shown` etc.
+// wrappers above keep firing unchanged. The funnel events use the `funnel_`
+// namespace so the warehouse can build the funnel from a single, coherent set
+// without untangling historical naming. All flow through the same `emit()`
+// chokepoint → cloud queue + durable on-device log, opt-out-gated. No PII; the
+// only identifier is the in-memory session UUID (shared module).
+//
+// Property conventions: lowercase_snake names, low-cardinality string/number/
+// boolean values, no free text. `surface` ∈ the PaywallSurface union; `plan` ∈
+// {"monthly","annual"}; `mode` ∈ the gate's {"action","daily","timed"}.
+
+/** A pack/experience was opened. Mirrors `trackPackEntered` for the funnel. */
+export function trackPackEnter(packId: string): void {
+  emit("app_funnel_pack_enter", { pack_id: packId })
+}
+
+/** A pack/experience was torn down. `durationMs` = dwell time in the pack. */
+export function trackPackExit(packId: string, durationMs: number): void {
+  emit("app_funnel_pack_exit", { pack_id: packId, duration_ms: durationMs })
+}
+
+/** The shared paywall gate fired (dispatched `corpan:request-unlock`). `mode`
+ *  is the gate reason (action/daily/timed); `surface` is the PaywallSurface. */
+export function trackGateHit(packId: string, surface: string, mode: string): void {
+  emit("app_funnel_gate_hit", { pack_id: packId, surface, mode })
+}
+
+/** The paywall sheet became visible. `packId` present when a pack triggered it. */
+export function trackPaywallShownFunnel(surface: string, packId?: string): void {
+  emit("app_funnel_paywall_shown", {
+    surface,
+    ...(packId ? { pack_id: packId } : {}),
+  })
+}
+
+/** The paywall sheet was dismissed without converting. */
+export function trackPaywallDismissedFunnel(surface: string): void {
+  emit("app_funnel_paywall_dismissed", { surface })
+}
+
+/** The user tapped a buy/subscribe CTA on the paywall (intent, pre-store). */
+export function trackPaywallCtaTapped(surface: string, plan: string): void {
+  emit("app_funnel_paywall_cta_tapped", { surface, plan })
+}
+
+/** A purchase completed off the paywall. `hadCode` = a code was applied. */
+export function trackPaywallConvertedFunnel(
+  surface: string,
+  plan: string,
+  hadCode: boolean,
+): void {
+  emit("app_funnel_paywall_converted", { surface, plan, had_code: hadCode })
+}
+
+/** A free trial / intro offer was started (vs. a straight paid purchase). */
+export function trackTrialStarted(plan: string): void {
+  emit("app_funnel_trial_started", { plan })
+}
+
+/** A subscription was purchased. `code` = the applied offer/affiliate code. */
+export function trackSubscriptionPurchased(
+  plan: string,
+  platform: string,
+  code?: string,
+): void {
+  emit("app_funnel_subscription_purchased", {
+    plan,
+    platform,
+    ...(code ? { code } : {}),
+  })
+}
+
+/** A prior subscription was restored (Restore Purchases succeeded). */
+export function trackSubscriptionRestored(): void {
+  emit("app_funnel_subscription_restored")
+}
+
+/** The code/affiliate field was opened/focused by the user. */
+export function trackCodeFieldOpened(): void {
+  emit("app_funnel_code_field_opened")
+}
+
+/** A typed code was resolved by the server. `classification` + `purchaseAction`
+ *  come straight from the /code/resolve response (server is the classifier). */
+export function trackCodeResolved(
+  classification: string,
+  purchaseAction: string,
+): void {
+  emit("app_funnel_code_resolved", {
+    classification,
+    purchase_action: purchaseAction,
+  })
+}
+
+/** A code was actually redeemed (attribution/offer applied to a purchase). */
+export function trackCodeRedeemed(partner: string): void {
+  emit("app_funnel_code_redeemed", { partner })
+}
+
+/* ── gate v2: daily accomplishment lock ── */
+
+/** The universal "you did your N today" daily-cap lock overlay was shown. */
+export function trackDailyLockShown(packId: string, surface: string): void {
+  emit("daily_lock_shown", { pack_id: packId, surface })
+}
+
+/** The "Go further with Corpán Plus" CTA on the daily-cap lock was tapped. */
+export function trackDailyLockUpgradeTapped(packId: string): void {
+  emit("daily_lock_upgrade_tapped", { pack_id: packId })
 }
 
 /* ── Recommendation / ratings (on-device, no identifiers) ── */

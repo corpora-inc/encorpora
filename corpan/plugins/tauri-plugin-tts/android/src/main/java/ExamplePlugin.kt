@@ -19,8 +19,10 @@ import app.tauri.annotation.TauriPlugin
 import app.tauri.plugin.Invoke
 import app.tauri.plugin.JSObject
 import app.tauri.plugin.Plugin
+import android.util.Base64
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.File
 import java.util.Locale
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicLong
@@ -115,6 +117,15 @@ internal class InstallVoiceDataArgs {
 
 @InvokeArg
 internal class SpeakConcurrentArgs {
+  lateinit var text: String
+  var language: String? = null    // BCP-47, e.g. "fa-IR"
+  var rate: Float? = null         // 0.1–1.5
+  var voiceId: String? = null     // Voice.name (camel)
+  var voice_id: String? = null    // Voice.name (snake)
+}
+
+@InvokeArg
+internal class SynthesizeArgs {
   lateinit var text: String
   var language: String? = null    // BCP-47, e.g. "fa-IR"
   var rate: Float? = null         // 0.1–1.5
@@ -514,6 +525,146 @@ class ExamplePlugin(private val activity: Activity) : Plugin(activity) {
       } catch (e: Exception) {
         invoke.reject(e.message ?: "Unknown error in speakConcurrent")
       }
+    }
+  }
+
+  /**
+   * Render text to a RAW AUDIO buffer WITHOUT playing through the speaker.
+   *
+   * This is the music-pack capture path: `TextToSpeech.synthesizeToFile` writes
+   * a WAV file offline (no AudioTrack playback ⇒ nothing to duck). We await the
+   * UtteranceProgressListener's onDone, read the WAV bytes, parse its header for
+   * sampleRate/channels, base64-encode the whole container, and resolve with the
+   * SynthesizeResult shape (codec "wav"). The temp file is deleted after read.
+   */
+  @Command
+  fun synthesizeToBuffer(invoke: Invoke) {
+    val args = try {
+      invoke.parseArgs(SynthesizeArgs::class.java)
+    } catch (e: Exception) {
+      invoke.reject("Invalid args: ${e.message}")
+      return
+    }
+
+    ensureReady {
+      val t = tts
+      if (t == null) {
+        invoke.reject("TTS not initialized")
+        return@ensureReady
+      }
+
+      try {
+        val resolvedVoiceId = args.voiceId ?: args.voice_id
+        val chosenVoice: Voice? = when {
+          !resolvedVoiceId.isNullOrBlank() -> findVoiceById(t, resolvedVoiceId)
+          !args.language.isNullOrBlank() -> chooseBestVoiceForLanguage(t, args.language!!)
+          else -> null
+        }
+
+        if (chosenVoice != null) {
+          t.setVoice(chosenVoice)
+        } else if (!args.language.isNullOrBlank()) {
+          val res = t.setLanguage(Locale.forLanguageTag(args.language))
+          if (res == TextToSpeech.LANG_MISSING_DATA || res == TextToSpeech.LANG_NOT_SUPPORTED) {
+            invoke.reject("Language not supported or missing data: ${args.language}")
+            return@ensureReady
+          }
+        }
+
+        val androidRate = mapWebRateToAndroid(args.rate ?: 1.0f, targetMax = 3.0f)
+        t.setSpeechRate(androidRate)
+
+        val effectiveVoiceId = chosenVoice?.name ?: resolvedVoiceId ?: ""
+        val utteranceId = "syn_${UUID.randomUUID()}"
+        val outFile = File.createTempFile("corpan_tts_", ".wav", activity.cacheDir)
+
+        // One-shot listener scoped to THIS render. We resolve/reject exactly once.
+        val handled = java.util.concurrent.atomic.AtomicBoolean(false)
+
+        t.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+          override fun onStart(id: String?) { /* no-op */ }
+
+          override fun onDone(id: String?) {
+            if (id != utteranceId) return
+            if (!handled.compareAndSet(false, true)) return
+            try {
+              val bytes = outFile.readBytes()
+              val (sampleRate, channels) = parseWavHeader(bytes)
+              val dataBytes = (bytes.size - 44).coerceAtLeast(0)
+              val frames = if (channels > 0) dataBytes / (2 * channels) else 0
+              val durationMs = if (sampleRate > 0) (frames * 1000L) / sampleRate else 0L
+              val b64 = Base64.encodeToString(bytes, Base64.NO_WRAP)
+              val result = JSObject().apply {
+                put("pcmBase64", b64)
+                put("sampleRate", sampleRate)
+                put("channels", channels)
+                put("durationMs", durationMs.toInt())
+                put("codec", "wav")
+                put("voiceId", effectiveVoiceId)
+              }
+              invoke.resolve(result)
+            } catch (e: Exception) {
+              Log.w(TAG, "synthesizeToBuffer read failed: ${e.message}")
+              invoke.reject("Failed to read synthesized audio: ${e.message}")
+            } finally {
+              try { outFile.delete() } catch (_: Throwable) {}
+            }
+          }
+
+          @Suppress("DEPRECATION")
+          override fun onError(id: String?) {
+            if (id != utteranceId) return
+            if (!handled.compareAndSet(false, true)) return
+            try { outFile.delete() } catch (_: Throwable) {}
+            invoke.reject("Synthesis failed")
+          }
+
+          override fun onError(id: String?, errorCode: Int) {
+            if (id != utteranceId) return
+            if (!handled.compareAndSet(false, true)) return
+            try { outFile.delete() } catch (_: Throwable) {}
+            invoke.reject("Synthesis failed (code $errorCode)")
+          }
+        })
+
+        val res = t.synthesizeToFile(args.text, null, outFile, utteranceId)
+        if (res == TextToSpeech.ERROR) {
+          if (handled.compareAndSet(false, true)) {
+            try { outFile.delete() } catch (_: Throwable) {}
+            invoke.reject("Failed to start synthesis")
+          }
+        }
+      } catch (e: Exception) {
+        invoke.reject(e.message ?: "Unknown error in synthesizeToBuffer")
+      }
+    }
+  }
+
+  /**
+   * Parse a minimal RIFF/WAVE header for (sampleRate, channels). The Android TTS
+   * engine writes canonical 16-bit PCM WAV; we read the `fmt ` chunk fields at
+   * their standard offsets. Falls back to (22050, 1) if the header is unexpected.
+   */
+  private fun parseWavHeader(bytes: ByteArray): Pair<Int, Int> {
+    return try {
+      if (bytes.size < 44 ||
+        bytes[0] != 'R'.code.toByte() || bytes[1] != 'I'.code.toByte() ||
+        bytes[2] != 'F'.code.toByte() || bytes[3] != 'F'.code.toByte()
+      ) {
+        return Pair(22050, 1)
+      }
+      fun u16(off: Int): Int =
+        (bytes[off].toInt() and 0xFF) or ((bytes[off + 1].toInt() and 0xFF) shl 8)
+      fun u32(off: Int): Int =
+        (bytes[off].toInt() and 0xFF) or
+          ((bytes[off + 1].toInt() and 0xFF) shl 8) or
+          ((bytes[off + 2].toInt() and 0xFF) shl 16) or
+          ((bytes[off + 3].toInt() and 0xFF) shl 24)
+      val channels = u16(22).coerceIn(1, 2)
+      val sampleRate = u32(24).let { if (it in 1..192000) it else 22050 }
+      Pair(sampleRate, channels)
+    } catch (_: Throwable) {
+      Pair(22050, 1)
     }
   }
 

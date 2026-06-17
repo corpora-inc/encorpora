@@ -1,4 +1,11 @@
 import "./styles.css"
+import { createDailyQuota } from "@shared/monetization"
+
+// gate v2 daily quota. Limit/nag/unit live in the central registry
+// (QUOTAS.hanzipan_chars — 20 characters/local day, soft nag every 5, "soft,
+// soft, hard"). At the cap the gate dispatches `corpan:daily-locked` for the
+// host's accomplishment-lock overlay. Subscribers are a no-op (the gate reads
+// the host-injected Plus globals).
 
 ;(() => {
   const GAME_ID = "hanzipan";
@@ -296,6 +303,34 @@ import "./styles.css"
   const unique = (items) => Array.from(new Set(items.filter(Boolean)));
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+  // HanziWriter's color parser only understands #RGB, #RRGGBB, and rgb()/rgba().
+  // iOS/WebKit serializes an rgba() custom property read via getComputedStyle as
+  // 8-digit hex (e.g. #6b4c2a38), which HanziWriter rejects with "Invalid color"
+  // — that crash kills the outline, autoplay, and quiz/tutor rendering. Normalize
+  // any #RRGGBBAA / #RGBA value back into rgba() so the parser accepts it.
+  const normalizeHanziColor = (value) => {
+    const color = (value || "").trim();
+    const hex = color.replace(/^#/, "");
+    let r;
+    let g;
+    let b;
+    let a;
+    if (/^[0-9a-fA-F]{8}$/.test(hex)) {
+      r = parseInt(hex.slice(0, 2), 16);
+      g = parseInt(hex.slice(2, 4), 16);
+      b = parseInt(hex.slice(4, 6), 16);
+      a = parseInt(hex.slice(6, 8), 16) / 255;
+    } else if (/^[0-9a-fA-F]{4}$/.test(hex)) {
+      r = parseInt(hex[0] + hex[0], 16);
+      g = parseInt(hex[1] + hex[1], 16);
+      b = parseInt(hex[2] + hex[2], 16);
+      a = parseInt(hex[3] + hex[3], 16) / 255;
+    } else {
+      return color;
+    }
+    return `rgba(${r}, ${g}, ${b}, ${Math.round(a * 1000) / 1000})`;
+  };
 
   const lerp = (a, b, t) => a + (b - a) * t;
 
@@ -1694,6 +1729,7 @@ import "./styles.css"
   };
 
   const mount = (container, hostApi, initialState = {}) => {
+    const paywallGate = createDailyQuota("hanzipan_chars");
     const root = document.createElement("div");
     root.className = "hanzi-root";
     root.innerHTML = template;
@@ -2014,6 +2050,9 @@ import "./styles.css"
           state.completedCount += 1;
           renderTotals();
           persistState();
+          // One character completed — advance the daily gate (fires the soft
+          // nag / accomplishment lock internally; no-op for subscribers).
+          paywallGate.note();
         }
       }
       if (state.mode === "guided") {
@@ -2026,9 +2065,15 @@ import "./styles.css"
       ? new HanziWriterLayer(writerLayerEl, () => {
         const styles = getComputedStyle(root);
         return {
-          ghost: styles.getPropertyValue("--stroke-ghost").trim() || "rgba(107,76,42,0.22)",
-          accent: styles.getPropertyValue("--accent").trim() || "#8b6914",
-          user: styles.getPropertyValue("--stroke-user").trim() || "#1a1410",
+          ghost: normalizeHanziColor(
+            styles.getPropertyValue("--stroke-ghost").trim() || "rgba(107,76,42,0.22)"
+          ),
+          accent: normalizeHanziColor(
+            styles.getPropertyValue("--accent").trim() || "#8b6914"
+          ),
+          user: normalizeHanziColor(
+            styles.getPropertyValue("--stroke-user").trim() || "#1a1410"
+          ),
         };
       })
       : null;
@@ -2250,10 +2295,13 @@ import "./styles.css"
       updateExampleCount();
       await loadExamplesTotal();
       await loadExamples(true);
-      // Reset scroll position for new character
+      // Reset scroll position for new character: the list (wide-screen
+      // internal scroll) and the root (phone page scroll) are different
+      // scrollers depending on layout, so reset both.
       if (elExamples) {
         elExamples.scrollTop = 0;
       }
+      root.scrollTop = 0;
       if (push) {
         pushHistory(state.character);
       }
@@ -2585,7 +2633,17 @@ import "./styles.css"
       wheelState.accumulator = 0;
       logNav("next");
       if (state.historyIndex >= 0 && state.historyIndex < state.history.length - 1) {
+        // Forward within existing history is review — never gated.
         await goToHistoryIndex(state.historyIndex + 1);
+        return;
+      }
+      // Hard daily cap: loading a brand-new character is the metered action.
+      // Once the free user has reached the daily cap (QUOTAS.hanzipan_chars)
+      // they get EXACTLY that many — re-show the accomplishment-lock overlay
+      // instead of loading another. Subscribers never block (isBlocked reads
+      // the host-injected Plus globals).
+      if (paywallGate.isBlocked()) {
+        paywallGate.requestDailyLock();
         return;
       }
       await loadCharacter();
@@ -2685,14 +2743,26 @@ import "./styles.css"
       });
     });
 
-    const onScroll = () => {
-      if (state.loadingExamples) return;
-      const threshold = 200;
-      if (elExamples.scrollTop + elExamples.clientHeight >= elExamples.scrollHeight - threshold) {
-        loadExamples(false);
-      }
-    };
-    elExamples.addEventListener("scroll", onScroll);
+    // Infinite load via the footer sentinel rather than a scroll listener on
+    // the list: on a wide screen the `.examples-list` scrolls internally, but
+    // on a phone the list expands and the whole page (`.hanzi-root`) scrolls.
+    // An IntersectionObserver against the viewport handles both — it accounts
+    // for clipping by whichever ancestor is the actual scroller — so "Scroll
+    // for more" keeps loading in every layout. `loadExamples` is self-guarded
+    // (loadingExamples / noMoreExamples), so firing while visible is safe and
+    // also auto-fills a tall panel that hasn't overflowed yet.
+    let examplesObserver = null;
+    if (typeof IntersectionObserver !== "undefined" && elExamplesFooter) {
+      examplesObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            loadExamples(false);
+          }
+        },
+        { rootMargin: "200px" },
+      );
+      examplesObserver.observe(elExamplesFooter);
+    }
 
     root.addEventListener("pointerdown", onSwipeStart);
     root.addEventListener("pointermove", onSwipeMove);
@@ -2738,6 +2808,7 @@ import "./styles.css"
 
     return {
       unmount: () => {
+        paywallGate.dispose();
         resizeObserver.disconnect();
         window.removeEventListener("resize", handleResize);
         if (resizeRaf) {
@@ -2753,7 +2824,10 @@ import "./styles.css"
           clearTimeout(wheelEndTimer);
           wheelEndTimer = 0;
         }
-        elExamples.removeEventListener("scroll", onScroll);
+        if (examplesObserver) {
+          examplesObserver.disconnect();
+          examplesObserver = null;
+        }
         root.removeEventListener("pointerdown", onSwipeStart);
         root.removeEventListener("pointermove", onSwipeMove);
         root.removeEventListener("pointerup", onSwipeEnd);

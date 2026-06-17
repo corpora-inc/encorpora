@@ -10,6 +10,26 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Status HUD shows today's phrase quota + days-in-a-row streak.** The top-left
+  readout now lays out four numbers in a compact 2-column grid: 🔥 visit streak
+  (consecutive local days, via `hostApi.getStreak`) and ⚡ today's phrases toward
+  the daily cap (`done/limit`) on top, score + combo streak beneath. Both new
+  readouts are icon+number (no new translated strings); the quota hides for
+  subscribers (unlimited) and the streak hides until day one.
+
+## [0.3.1] - 2026-06-16 — Daily-cap enforcement + Babylon 9
+
+### Fixed
+- **Daily cap now HARD-enforces — including on remount.** The gate counted
+  completed phrases but never blocked at the cap. `startNewRound()` now checks
+  `isBlocked()` before building a round, covering BOTH the post-celebration next
+  round AND the initial mount — every round generates a fresh phrase (no
+  restore), so a capped free user could previously mint one by exiting and
+  re-entering. At the cap it re-shows the daily-lock overlay
+  (`requestDailyLock()`) instead — a hard wall until local midnight or subscribe.
+  Subscribers never block.
+
 ### Changed
 - Upgraded Babylon.js **6.48 → 9.11** (latest stable). Modular import
   paths held with no source changes; 16/16 tests green, build clean.

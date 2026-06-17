@@ -41,9 +41,12 @@ export type ExperienceMeta = {
 }
 
 /**
- * The experience metadata. `phrase_main` (Phrase Flip) is intentionally
- * `order: 8` with narrow categories so it is NOT the default star — it only
- * rises when the user signals study/speak interest or is a learner/polyglot.
+ * The experience metadata. `phrase_main` (Phrase Flip) is a STRONG language-
+ * learning pick: narrow `study`/`speak` categories (no wild/game) and
+ * `featuredFor: ["study"]`, so it leads when a user signals STUDY — while the
+ * conversational tutor (`tutomaton`) stays the star for SPEAK (and study+speak).
+ * Its categories keep it out of the games/wild lanes, and the readers (lower
+ * `order` + kidFriendly) still lead a no-interest cold start.
  */
 export const EXPERIENCES: ExperienceMeta[] = [
   {
@@ -111,11 +114,16 @@ export const EXPERIENCES: ExperienceMeta[] = [
   },
   {
     id: "hanzipan",
-    categories: ["games", "study", "wild"],
+    // Hanzipan is a STUDY experience (character/handwriting drill), NOT a game —
+    // so it surfaces under "study" (and "wild"), never the games lane. For a
+    // Chinese learner who picks Study, onboarding routes here over Phrase Flip
+    // (see resolveLanding); the language gate below keeps it off everyone else's list.
+    categories: ["study", "wild"],
     goodForClass: ["polyglot", "learner"],
     nameKey: "experiences.hanzipan.name",
     blurbKey: "experiences.hanzipan.blurb",
     order: 7,
+    featuredFor: ["study"],
     // Mandarin/Cantonese character studio — only relevant if the user has a
     // Chinese language; otherwise it must NOT top the list (e.g. English learner).
     languages: ["zh-Hans", "zh-Hant", "yue-Hant-HK"],
@@ -126,7 +134,11 @@ export const EXPERIENCES: ExperienceMeta[] = [
     goodForClass: ["learner", "polyglot"],
     nameKey: "experiences.phrase_main.name",
     blurbKey: "experiences.phrase_main.blurb",
-    order: 8,
+    order: 4,
+    // A core language-learning experience — featured for STUDY so Phrase Flip leads
+    // when the user wants to study (was under-ranked at order 8, unfeatured). The
+    // conversational tutor (tutomaton) stays the star for SPEAK / study+speak.
+    featuredFor: ["study"],
   },
   {
     // On-device multilingual LLM tutor (Plus). Strong fit for learners/polyglots

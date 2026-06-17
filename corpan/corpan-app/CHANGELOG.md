@@ -7,6 +7,338 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.19.0] - 2026-06-16
+
+### Changed
+- **One unified "About Corpán" list at the bottom of Settings.** The socials
+  (moved here from onboarding) and About's own links were two stacked lists in
+  clashing styles with a duplicate encorpora.io. They're now a single ordered
+  row list — version, then channels (website, YouTube, Instagram, GitHub,
+  Free2z) + Share, then Support (report an issue, email) — one consistent style,
+  deduped. `SocialsLinks` folded into `About`.
+- **Onboarding ends on the final question — no "Aloha"/socials interlude.**
+  Picking Read / Study / Play music / Play games / Surprise now commits
+  immediately and goes straight into the razzle transition. The Corpán channels
+  (YouTube, Instagram, GitHub, Free2z, website) + Share moved to the bottom of
+  Settings (extracted into a shared `SocialsLinks` component), their permanent
+  home; the Plus pitch already lives at real engagement moments (reader EOF,
+  Settings), not as an onboarding step.
+
+### Fixed
+- **"Reconfigure stack" replays the full onboarding + landing animation.** The
+  razzle landing was a one-shot guarded by a ref that was never re-armed, so
+  re-running onboarding from Settings dropped back to Welcome but silently
+  skipped the animation. The guard now re-arms whenever onboarding restarts.
+- **Razzle no longer crashes the app into a dead, unclickable screen.** The
+  chosen card's pop used a 3-keyframe `scale` with a `spring` transition;
+  framer-motion only allows two keyframes with a spring and threw an *uncaught*
+  invariant at the reveal beat — with no error boundary that tore down the React
+  tree, leaving a blank, scrollable, click-dead overlay (you couldn't even
+  Exit). The pop wiggle is now a back-eased tween, and both the transition and
+  every experience overlay are wrapped in an `ErrorBoundary` that drops you into
+  the pack / back to Home instead of stranding you.
+- **First-launch animation is longer, lingers, and names the packs.** ~7.5s now:
+  a longer shuffle during which the chosen card **rises through the deck** (starts
+  behind every shuffling card, climbs to the front and grows as it nears), then
+  holds center-stage with its **name** for ~2.6s before the colour wash; collage
+  tiles show their names too.
+- **Premium wash, not a pixelated colour blob.** The final reveal animated a
+  `clip-path` circle (stair-steps / looks pixelated on Android WebView) that also
+  rendered *over* the chosen card. It's now a GPU-composited scaling colour disc
+  BEHIND the card, with the crisp card zooming on top; the whole overlay then
+  dissolves to the booted pack. Games default landing is now **Hover Runner**.
+- **No "flash of Home" before the first-launch animation.** The razzle overlay
+  faded in from transparent and the onboarding commit ran in a passive effect,
+  so Home (or the blank terminal) painted for a frame before the collage. The
+  backdrop is now opaque from the first frame and the commit runs in a layout
+  effect, so the swap to the animation happens in a single paint.
+- **Catalog/network fetches no longer fail under CORS preflight.** The resilient
+  catalog fetch sent conditional-GET headers (`If-None-Match` / `If-Modified-
+  Since`) on every request; those aren't CORS-safelisted, so they trigger a
+  preflight `OPTIONS` the CDN doesn't answer — once an ETag was cached, *every*
+  catalog fetch failed (game catalog, phrase-pack catalog, AND the reader
+  narration catalog). The game catalog then fell back to the built-in default
+  set, which is why a brand-new "Read" user landed in Phrase Flip and the reader
+  seed found nothing. Now the conditional headers are sent only on the FIRST
+  attempt (304 fast-path where supported); every retry is a plain GET, which
+  always works.
+- **Onboarding "Read" reliably lands in the reader (not Phrase Flip).**
+  `resolveLanding` no longer gates routing on the async-loaded catalog (a cold
+  first run hadn't fetched it yet); it routes on a static known-pack set, the
+  razzle holds until the chosen pack is installed, and `quietInstall` forces a
+  catalog fetch before giving up. The reader seed is now self-sufficient
+  (seeds whenever the library is empty), retries the catalog, installs the stack
+  languages sequentially (concurrent native installs collided), and falls back
+  across languages so it always opens a book.
+
+### Added
+- **Onboarding "where should we begin?" + a first-launch razzle-dazzle.** The
+  final onboarding step is now a single deterministic question — Read / Study /
+  Play music / Play games / Surprise me — that makes the exact landing call
+  (Read→Earthgate Reader, Study→Phrase Flip [Chinese→Hanzipan], Music→beatlounge,
+  Games→Hover Runner, Surprise→a lightly-random pick across what's launchable).
+  The multi-select "What do you want to do?" stays and still powers Home's "For
+  you" recommendations. On the way in, a ~5s premium collage of every experience
+  shuffles, the chosen one pops to center with a **native haptic**, then its
+  colour washes over the screen as the experience boots underneath — only on the
+  post-onboarding landing (normal Home→pack launches stay instant). The chosen
+  content pack quiet-installs while the question screen + transition play; if it
+  isn't ready in time we land in Phrase Flip and it finishes in the background.
+  New `tauri-plugin-haptics` (iOS `UIImpactFeedbackGenerator` / Android
+  `Vibrator`; `navigator.vibrate` fallback) — needs a native rebuild to fire.
+- **Reader "instant wow" seed.** When the landing is a reader (Read → Earthgate),
+  the host passes a `seedBookId` on launch (through the existing pack
+  `entry`/`initialState` seam). A brand-new user with no books then gets the
+  default book (Biomes "Tropical Rainforest") auto-downloaded — free preview
+  narrations for their whole stack, primary language first (ready to play),
+  rest in the background — so they open into real content and can flip languages
+  instantly. (Reader side: `earthgate-reader`/`stargate-reader` 0.7.0.)
+
+### Changed
+- **Hanzipan is a study experience, not a game.** Re-classified in the
+  recommendation registry (`categories: study, wild`; featured for study) so it
+  surfaces under Study (and, for Chinese learners, is the Study landing) and no
+  longer appears in the games lane.
+- **Soft-nag cadence relaxed 5 → 10.** Every daily-quota surface (phrase-flip,
+  hover-runner, juice-squeeze, hanzipan, tutomaton) now nags every 10 instead of
+  every 5 — so a free user gets a gentle reminder at 10 and the hard wall at 20,
+  rather than feeling poked too early. Parlometron keeps its no-nag model.
+  One-line change in the central `quotas.ts` registry.
+
+### Fixed
+- **Paywall CTA reflects an entered code.** With a valid discount/redemption
+  code the primary button now reads "Redeem code" (routing through the
+  offer/redeem path) instead of always "Start Free Trial"; an unknown code keeps
+  the trial CTA and shows a gentle, muted inline note ("That code doesn't unlock
+  a discount.") rather than a harsh red error. Label is driven by the
+  `/code/resolve` result, so it reacts even on a dev build where the native
+  purchase can't complete. (Two new EN strings — `code.redeemCode`,
+  `code.notApplied` — pending the ×88 localization pass.)
+- **No more duplicate pack cards (e.g. ~3 Parlometrons).** `filterCatalogForApp`
+  mapped every surviving catalog entry to a card with no de-dup by pack id; the
+  published catalog intentionally carries multiple `pronunciation_coach` entries
+  (per-platform + a legacy build), and on a host with an unknown platform the
+  platform gate was skipped so several passed. The listing now de-dupes by stable
+  pack id (preferring the platform-matched entry, then highest version).
+- **Offline subscribers are never blocked.** Subscription state used to be
+  in-memory only, so a Plus user opening the app offline (no way to live-verify)
+  started as non-Plus and could hit a daily wall until they reconnected. The
+  entitlement store now persists a durable "last verified Plus" snapshot and
+  seeds it onto the live session at launch, so a known subscriber is treated as
+  Plus from the first frame — before (and even without) any refresh.
+  `refreshEntitlements` only ever downgrades on a DEFINITIVE, ONLINE "not owned"
+  from the OS receipt cache (StoreKit `currentEntitlements` / Play
+  `queryPurchases`), and even then only after a **48h grace window** past the
+  last confirmed verification — to ride out transient store flakiness and
+  billing-grace renewals. Anything inconclusive or offline keeps the snapshot.
+  We'd rather a fraudulent client keep a stale Plus flag than ever block a real
+  subscriber with no signal (the app is open source regardless). New
+  `forgetSubscription()` is the only path that clears the durable snapshot.
+
+### Changed
+- **Daily-lock headline now affirms the accomplishment.** The shared
+  `DailyLockOverlay` title warmed from "Your N {{unit}} for today" to "That's
+  your N {{unit}} for today — nicely done", so the cap reads as a small win
+  rather than a flat stop. Only the EN `dailyLock.title` changed — the ~50
+  locales need a re-gen.
+- **Removed the blanket 4 GB RAM floor on the on-device tutor.** The host
+  `llm.load` no longer refuses every device under 4 GB total RAM — that gate
+  blocked the very low-RAM phones we now serve with smaller Qwen3 sizes. The
+  per-model footprint backstop in the LLM plugin (footprint vs total RAM) remains
+  the hard, uncatchable-crash guard; the Tutomaton pack disables sizes a device
+  can't run. `llm.status()` now also surfaces `totalMemoryMb` for size selection.
+
+### Fixed
+- **Phrase-flip daily cap now gates only NEW phrases — review stays free.** At
+  the cap, asking for a brand-new phrase (the Random button, or Next/forward
+  scroll when you're already on the newest phrase) surfaces the accomplishment
+  lock instead of doing nothing, and does not advance. Going back and forward
+  through phrases you've already seen is always free and never counted — only a
+  genuinely new phrase counts toward the daily limit. After dismissing the lock
+  you can still review your seen phrases; only another new-phrase request
+  re-shows it. Exiting phrase-flip just goes Home (and dismisses an open lock) —
+  never the paywall.
+- **Phrase-flip daily wall / nag now actually fires.** Two bugs hid it: (1) the
+  host-capability marker (`__CORPAN_HOST_CAPS.dailyLock`) was only set inside
+  `ContentPackHost` (content packs), not the core app — now set app-wide at
+  startup; and (2) the gate was constructed in render behind a `ref === null`
+  guard while the effect cleanup `dispose()`d it, so React StrictMode's
+  mount→cleanup→mount left a permanently-disposed gate (every `note()` a no-op —
+  no nag/lock no matter how many phrases you flipped). The gate is now built
+  inside the effect, so each mount gets a fresh one. (Subscribers never see a wall.)
+- **No more double rating prompt.** Exiting an experience fired BOTH the OS
+  native review and the in-app "Enjoying Corpán?" card. The in-app card is now
+  the single rating surface, and its 5-star button pops the OS-native review
+  widget (StoreKit / Play In-App Review) instead of bouncing to the store
+  listing; desktop still falls back to the store URL.
+- **Catalog fetching can no longer brick the app (the "zombie" bug).** Catalog
+  requests had no timeout, so a hung connection (seen on a ChromeOS/ARC
+  WebView) left the in-flight flag stuck and blocked every retry — the app sat
+  wedged for ~10 minutes and even uninstall/reinstall didn't help (the dead
+  connection lives in the shared system WebView, not app storage). Every
+  catalog fetch is now timeout-bounded, retried with jittered backoff, and the
+  in-flight flag always clears. A failed fetch keeps the cached catalog instead
+  of clobbering it with the built-in defaults.
+- **Onboarding never traps the user offline.** The "Pick your topics" step
+  gated its Continue button on the phrase-pack catalog loading; when that fetch
+  failed while online, Continue stayed disabled forever and the user could
+  never reach the offline-capable app. Continue is now always enabled — the
+  embedded corpus works with zero network.
+
+### Changed
+- **Catalogs refresh efficiently at fleet scale.** Background catalog refreshes
+  now use a conditional request (ETag / `If-None-Match`), so an unchanged
+  catalog comes back as a 0-byte `304` straight off the CDN edge instead of a
+  full re-download. The refresh poll is jittered per device and skips while
+  hidden/offline, so millions of clients pick up new packs within minutes
+  without a synchronized stampede on the catalog hosts.
+
+- **Apple offer-code redemptions now attribute the purchase.** Redeeming an
+  affiliate/offer code through the Apple "Redeem Code" sheet delivers its
+  transaction asynchronously (StoreKit `Transaction.updates`), which the app
+  was not listening for — so the redemption unlocked locally but the partner
+  attribution / ledger was never written. The app now wires that event to
+  backend verification, carrying the pending resolution token from the redeem,
+  mirroring the Android/inline path. Idempotent and best-effort.
+
+## [0.18.1] - 2026-06-15
+
+### Added
+- **Corpán Plus paywall, rebuilt.** One universal, dark, immersive paywall is
+  used everywhere (Corpán mark, free-trial hero, plan selector, restore),
+  replacing the per-pack themed sheets so the upgrade moment is consistent.
+- **Daily free quotas across the experiences.** Each experience now has a
+  generous daily allowance (e.g. ~20 phrases / 20 tutor messages / 15
+  pronunciation rounds). A few soft nudges lead up to it; at the cap a calm
+  "you did your N today" lock shows your streak and a countdown to tomorrow,
+  with the option to continue now with Plus. Subscribers never see it.
+  Backwards-compatible by design: packs ship over-the-air to *older* app
+  versions too, so the daily wall only hard-blocks where the host advertises
+  it can render the lock overlay (`__CORPAN_HOST_CAPS.dailyLock`, set by
+  ≥0.18.1). In an older host the same pack degrades to the dismissible soft
+  nag every host already renders — never a frozen, unexplained wall, and no
+  pack is version-gated.
+- **Affiliate / discount codes.** A single code field (shown after the paywall)
+  validates a typed code server-side and applies the matching store offer — the
+  Apple offer-redeem sheet on iOS, a Play offer token on Android — never a
+  client-side price override. An unknown or unverifiable code never grants
+  anything.
+- **Onboarding opens your best-fit experience.** After setup the app launches
+  the single most-fitting experience for what you told us, instead of dropping
+  you onto a full Home to choose from everything at once.
+- **Anonymous, opt-in usage analytics.** Aggregate, no-PII events (experience
+  opens, paywall views, conversions) buffered on-device and sent only with
+  consent, so we can learn what actually helps people learn.
+- **Per-pack visit streaks (retention, not a gate).** A new shared module
+  `packs/shared/streak` tracks consecutive local days each pack is opened,
+  persisted per pack in `localStorage` (`corpan.streak.v1.<packId>`) and
+  independent of the global reading-segment streak. The host records a visit at
+  the pack-enter boundary (every overlay pack) and on the core phrase-flip
+  experience, and exposes the current pack's streak to packs via a new optional
+  `hostApi.getStreak()`. A small, dignified `StreakBadge` (squared 8px, subtle
+  spark glyph + day count, hidden below 2 days) renders on installed-pack tiles
+  on Home and updates live off the `corpan:streak-changed` event. Shown to all
+  users, subscribed or not — never paywalls anything.
+- The daily-lock overlay now references the pack's visit streak ("{{n}}-day
+  streak — come back tomorrow to keep it going" / "come back tomorrow to start a
+  streak") and reframes the headline to the accomplishment ("Your N phrases for
+  today"). Existing open/close, live countdown, and analytics are unchanged.
+
+### Fixed
+- **Core phrase-flip now HARD-enforces the daily cap.** The daily quota counted
+  forward advances but never blocked at the limit, so the accomplishment-lock
+  overlay showed once and the user kept flipping unbounded. The "next phrase"
+  handler now checks `isBlocked()` before advancing: at the cap it re-shows the
+  daily-lock overlay (`requestDailyLock()`) and refuses to advance — a free user
+  gets exactly the daily limit of forward flips, then a hard wall until local
+  midnight or subscribe. The "Random sentence" button is also a forward advance,
+  so it is now gated + counted the same way (it previously bypassed the quota
+  entirely). Backward review is never gated; subscribers never block.
+- **GPU-blur ANRs on budget Android (frosted glass gated by platform).**
+  `backdrop-filter: blur` is a per-frame GPU render pass; on the Mali drivers
+  common to low-end Android it compiles/runs shaders on the frame critical path,
+  blocking the WebView RenderThread and, through it, the main thread — a
+  documented "Unresponsive GPU" ANR. The frosted-glass surfaces (home + settings
+  sticky headers, the update/rating scrims) now fall back to a solid translucent
+  background on Android only, via a new `glass()` helper. iPad / iPhone / macOS /
+  Windows keep the blur unchanged (those GPUs render it cheaply), so there is no
+  visual change on Apple or desktop.
+- **On-device tutor no longer crashes low-RAM Android (OOM → native SIGSEGV).**
+  Loading the ~2.5 GB tutor model plus its KV/compute buffers could OOM *inside*
+  ggml's CPU matmul, surfacing as an uncatchable native crash in
+  `ggml_graph_compute_thread`. `host.llm.load` now refuses on devices below
+  ~4 GB total RAM (read from the stt memory oracle), so the pack degrades to
+  "no tutor" instead of crashing. iOS/desktop are unaffected.
+
+### Added
+- **Native in-app ratings on pack exit.** When you leave a pack the app now
+  asks the OS to surface its own review prompt (iOS App Store / Android Play
+  In-App Review) via `tauri-plugin-iap`. It is best-effort and fire-and-forget:
+  the OS throttles it (iOS shows it at most a few times a year and may show
+  nothing), nothing is ever gated on rating, and we never show our own "rate
+  us?" modal as a precondition. A soft local backstop (minimum engagement plus
+  a long cooldown) keeps us from asking the OS too often.
+- **Free-trial / intro-offer framing in the subscription card.** When the
+  store attaches an introductory offer to a plan (e.g. a 7-day free trial),
+  the subscription card now surfaces it: "{period} free, then {price}/{period}"
+  with a calm "No payment due now · cancel anytime" line, a tiny start →
+  first-charge timeline, and a "Start Free Trial" CTA. Paid intro offers
+  render "{intro price} for {period}, then {recurring}". When no offer is
+  configured (or the store is unreachable/offline), the card looks exactly as
+  before. Detection is automatic from store data — the trial lights up the
+  moment an offer is configured in App Store Connect / Play Console.
+
+### Added
+- **Three more languages: Tagalog, Javanese, Sundanese.** Added across the
+  app and packs. They now appear on the first onboarding screen labeled in
+  their own language (Tagalog, Basa Jawa, Basa Sunda) rather than falling back
+  to an unlabeled English row.
+
+### Changed
+- **Voice settings open in place.** "Text-to-speech setup" in Settings now
+  opens a drawer with the same voice pickers, instead of re-entering the
+  onboarding flow. The voice-picker UI is shared between onboarding and
+  Settings, so the two never drift.
+- **Tighter onboarding language list on small screens.** Nudged the
+  language-pick row sizing down at the smallest widths so the longer list
+  fits without horizontal overflow on a 320–360px phone; tablet/desktop
+  sizing is unchanged.
+
+### Fixed
+- **"Open TTS Settings" no longer traps the app.** Opened from Settings, the
+  old full-screen voice setup rendered over the open Settings dialog, whose
+  pointer-events lock made its Back/Continue unclickable — the only escape was
+  to force-quit. It's now a dismissable drawer (scrim, swipe, or ×).
+- **Tagalog finds the on-device voice.** We ship Tagalog as `tl`, but Android
+  publishes the voice as `fil`/`fil-PH`; a two-way `tl`↔`fil` alias now lets a
+  Tagalog stack use that voice instead of falling back to a generic one.
+
+## [0.18.0] - 2026-06-12
+
+### Added
+- **beatlounge pack — 0.1.0.** A dark, AI-driven beat lounge ships in the catalog:
+  a premium tick-addressed sequencer + harmony engine + ribbon/phrase performance
+  that doubles as language practice. Host seams (`hostApi`/`ContentPackHost`) land
+  here; the pack is added to the in-app catalog with its one-color line-art avatar.
+- **Native-fault crash breadcrumb (Android).** The existing breadcrumb only
+  caught Rust panics; a SIGSEGV/SIGABRT/SIGBUS/SIGILL/SIGFPE in a statically
+  linked native lib (llama/ggml/whisper) bypassed it and left an unsymbolicated,
+  single-frame, wild-PC tombstone in the Play Console we couldn't attribute. An
+  async-signal-safe handler now records the signal, the faulting thread name, and
+  the fault address to `native-crash-last.json` before chaining to debuggerd (so
+  the real tombstone still uploads), runs on an alternate signal stack (survives
+  stack-overflow), and is harvested by `take_last_crash_report` on next launch.
+  The thread name survives a corrupt PC, so we learn which subsystem faulted.
+
+### Fixed
+- **Content-pack teardown ordering — fewer reload black screens.**
+  `ContentPackHost` now defers the pack's React-root unmount past the current
+  render (`requestAnimationFrame`, not a bare microtask that races the container
+  removal) and only clears the pack's injected `<script>`/`<style>` assets AFTER
+  that unmount runs — and only the snapshot of the assets that pack injected, so
+  a concurrent reload's fresh assets aren't yanked. Teardown is idempotent.
+  (Needs an iOS/Android redeploy to ship to devices.)
+
 ## [0.17.3] - 2026-06-09
 
 ### Fixed

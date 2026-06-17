@@ -22,6 +22,7 @@ import type { EntryOut, HostApi, TranslationOut } from "../sdk/types"
 import { mergeForLang } from "../whisperTuning"
 import { mergeScoringForLangModel } from "../scoringTuning"
 import { pmConfirm } from "./confirm"
+import { paywallGate } from "../paywall"
 import { tt } from "../i18n"
 // Silence auto-stop disabled in 0.6.1 — the native `audio_level`
 // stream + `silenceWatcher.ts` state machine stay intact for a
@@ -677,6 +678,16 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
     if (disposed) return
     const player = currentPlayer(opts.game)
     if (!player) return
+    // Hard daily cap (shared with solo practice via the same gate key): once the
+    // free user has reached the daily cap (QUOTAS.parlometron_daily) for the day, re-show
+    // the accomplishment-lock overlay and refuse to record another round.
+    // Subscribers never block (isBlocked reads the host-injected Plus globals).
+    if (paywallGate.isBlocked()) {
+      paywallGate.requestDailyLock()
+      uiState = "ready"
+      refresh()
+      return
+    }
     const sessionId = newSessionId()
     activeSessionId = sessionId
     lastResult = null
@@ -724,6 +735,10 @@ export const mountRound = (opts: RoundOpts): RoundHandle => {
       )
       const heardText = result.text || result.freeText || ""
       recordAttempt(opts.game, pct, heardText)
+      // One round/utterance completed — advance the daily gate (fires the soft
+      // nag / accomplishment lock internally; no-op for subscribers). Shares the
+      // per-day count with solo practice via the same persisted gate key.
+      paywallGate.note()
       saveState(opts.game)
       lastResult = result
       uiState = "result"

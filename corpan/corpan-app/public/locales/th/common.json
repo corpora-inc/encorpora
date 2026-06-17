@@ -51,7 +51,10 @@
     "cs": "เช็ก",
     "lt": "ลิทัวเนีย",
     "sk": "สโลวัก",
-    "sl": "สโลวีเนีย"
+    "sl": "สโลวีเนีย",
+    "jv": "ชวา",
+    "su": "ซุนดา",
+    "tl": "ตากาล็อก"
   },
   "categories": {
     "travel": "การท่องเที่ยว",
@@ -94,8 +97,8 @@
     "testTts": "ทดสอบ TTS ด้วยปุ่มด้านล่าง:",
     "showRomanization": "แสดงถอดเสียง",
     "scrollNavigation": "การนำทางด้วยการเลื่อน",
-    "packs": "Packs",
-    "stacks": "Stacks",
+    "packs": "แพ็ก",
+    "stacks": "สแต็ก",
     "theme": "ธีม",
     "themeLight": "สว่าง",
     "themeDark": "มืด",
@@ -311,7 +314,8 @@
       "joinTitle": "เข้าร่วม Corpanistas",
       "start": "เริ่มสำรวจ",
       "subtitle": "Corpán สร้างขึ้นโดยทีมโอเพนซอร์สขนาดเล็ก มาทักทายกันสิ — และถ้าคุณชอบ คุณสามารถสนับสนุนเราได้",
-      "title": "คุณพร้อมแล้ว"
+      "title": "คุณพร้อมแล้ว",
+      "explore": "สำรวจด้วยตัวเอง"
     },
     "fork": {
       "child": {
@@ -358,7 +362,7 @@
       "macStep3": "ใต้ เสียงระบบ (System Voice) เปิด จัดการเสียง (Manage Voices)",
       "macStep4": "ดาวน์โหลดเสียง Premium หรือ Enhanced สำหรับภาษาของคุณ",
       "macStep5": "กลับมาที่ Corpán — เสียงจะปรากฏขึ้นที่นี่โดยอัตโนมัติ",
-      "step1": "แตะ เปิดการตั้งค่า (Open Settings) ด้านล่าง",
+      "step1": "แตะ “เปิดการตั้งค่า” ด้านล่าง",
       "step2": "ไปที่ การช่วยการเข้าถึง (Accessibility) → เนื้อหาเสียงพูด (Spoken Content) → เสียง (Voices)",
       "step3": "แตะภาษาของคุณ",
       "step4": "ดาวน์โหลดเสียง Premium หรือ Enhanced",
@@ -368,7 +372,31 @@
     "voicePreviewAria": "ดูตัวอย่าง {{name}}",
     "voicePreviewSelected": "ดูตัวอย่างที่เลือก",
     "voiceRecommended": "แนะนำ",
-    "voiceSelectedCount": "{{count}} จาก {{total}}"
+    "voiceSelectedCount": "{{count}} จาก {{total}}",
+    "whatToStart": {
+      "title": "เราจะเริ่มจากตรงไหนดี?",
+      "subtitle": "เลือกหนึ่งอย่างเพื่อเริ่มเลย — ที่เหลืออยู่แค่แตะเดียว",
+      "read": {
+        "label": "อ่าน",
+        "desc": "ดำดิ่งไปกับเรื่องราวและหนังสือ"
+      },
+      "study": {
+        "label": "เรียน",
+        "desc": "สะสมคำศัพท์ด้วยการฝึกแบบเจาะจง"
+      },
+      "playMusic": {
+        "label": "เล่นดนตรี",
+        "desc": "ลองสัมผัสภาษาของคุณบนแท่นดีเจ"
+      },
+      "playGames": {
+        "label": "เล่นเกม",
+        "desc": "เรียนรู้ผ่านความท้าทายสนุก ๆ"
+      },
+      "surprise": {
+        "label": "เซอร์ไพรส์ฉันสิ!",
+        "desc": "พาฉันไปที่สนุก ๆ สักที่"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -551,7 +579,7 @@
     "renameLabel": "ชื่อใหม่สำหรับสแต็ก",
     "selectAria": "เลือกสแต็ก",
     "selectPlaceholder": "เลือก…",
-    "introTipTitle": "Stacks",
+    "introTipTitle": "สแต็ก",
     "introTipBody": "Stacks เก็บการตั้งค่าการเรียนรู้ที่แตกต่างกัน — อันหนึ่งสำหรับท่องเที่ยว อีกอันสำหรับงาน แตะ + เพื่อสร้าง stack ใหม่"
   },
   "rating": {
@@ -565,7 +593,7 @@
     "close": "ปิด"
   },
   "packs": {
-    "title": "Packs",
+    "title": "แพ็ก",
     "available": "พร้อมใช้งาน",
     "emptyAvailable": "ยังไม่มีรายการที่พร้อมใช้งาน",
     "installed": "ติดตั้งแล้ว",
@@ -666,7 +694,17 @@
     "affiliateInvalidFormat": "ใช้ตัวอักษร ตัวเลข ขีดกลาง หรือขีดล่าง",
     "affiliateChecking": "กำลังตรวจสอบรหัส...",
     "affiliateApplied": "รหัสจะถูกแนบกับการสมัครสมาชิกนี้",
-    "affiliateCodeHelp": "ถ้ามีคนส่งคุณมาที่นี่ ให้ป้อนรหัสของเขาก่อนสมัครสมาชิก"
+    "affiliateCodeHelp": "ถ้ามีคนส่งคุณมาที่นี่ ให้ป้อนรหัสของเขาก่อนสมัครสมาชิก",
+    "introPriceHeadline": "{{introPrice}} สำหรับ {{period}}",
+    "introPriceThen": ", จากนั้น {{price}}/{{period}}",
+    "perMonth": "เดือน",
+    "perYear": "ปี",
+    "startFreeTrial": "เริ่มทดลองใช้งานฟรี",
+    "trialFirstCharge": "{{period}}: คิดเงินครั้งแรก",
+    "trialHeadline": "{{period}} ฟรี",
+    "trialReassurance": "ไม่ต้องชำระเงินตอนนี้ · ยกเลิกได้ตลอดเวลา",
+    "trialThenPrice": ", จากนั้น {{price}}/{{period}}",
+    "trialToday": "วันนี้: เริ่มต้น"
   },
   "restore": {
     "button": "กู้คืนการซื้อ",
@@ -712,7 +750,8 @@
     "subhead": "ปลดล็อกหนังสือทุกเล่มในทุกภาษา ไม่มีโฆษณา ข้อมูลของคุณจะอยู่ในอุปกรณ์ของคุณเท่านั้น",
     "pitch": "เราเป็นทีมเล็กๆ และนำเงินทุกบาทกลับไปพัฒนา Corpán Corpanistas ช่วยให้แอปไม่มีโฆษณาและเติบโตต่อไป",
     "maybeLater": "ไว้ทีหลัง",
-    "continue": "ต่อไป"
+    "continue": "ต่อไป",
+    "dismiss": "ปิด"
   },
   "streak": {
     "title": "สถิติต่อเนื่อง {{count}} วัน"
@@ -757,6 +796,10 @@
     "corpan_city": {
       "name": "Corpan City",
       "blurb": "เมืองมีชีวิตที่เปลี่ยนทุกการพบเจอเป็นบทเรียน"
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "แซมเปิลภาษาที่คุณกำลังเรียน สแครชซ้ำจนจำติดหัว"
     }
   },
   "home": {
@@ -812,5 +855,35 @@
     "update": "อัปเดต",
     "updateNow": "อัปเดตตอนนี้",
     "versionLine": "เวอร์ชัน {{version}} พร้อมติดตั้งแล้ว"
+  },
+  "streakBadge": {
+    "label": "สตรีค {{days}} วัน"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} ของคุณสำหรับวันนี้",
+    "streakActive": "สตรีค {{days}} วัน — กลับมาพรุ่งนี้เพื่อรักษาสตรีค",
+    "streakStart": "กลับมาพรุ่งนี้เพื่อรักษาสตรีค",
+    "resetIn": "รีเซ็ตใน {{time}}",
+    "cta": "ใช้งานต่อด้วย Corpán Plus",
+    "dismiss": "อาจจะทีหลัง",
+    "closeAria": "ปิด",
+    "countdownHm": "{{h}}ชม {{m}}นาที",
+    "countdownM": "{{m}}นาที",
+    "countdownSoon": "ทุกเมื่อ"
+  },
+  "code": {
+    "attributedUnverified": "โค้ดจะถูกแนบไปกับการสมัครของคุณ",
+    "checkFailed": "ไม่สามารถตรวจสอบได้",
+    "checking": "กำลังตรวจสอบโค้ด…",
+    "creditedTo": "เครดิตไปยัง {{partner}}",
+    "fieldLabel": "โค้ดข้อเสนอหรือพันธมิตร",
+    "help": "มีโค้ดหรือไม่? ป้อนเพื่อใช้ข้อเสนอของคุณ",
+    "redeemUnavailable": "ไม่สามารถเปิดหน้าจอแลกได้ กรุณาลองใหม่",
+    "redeemWithApple": "แลกกับ Apple",
+    "redeeming": "กำลังเปิดการแลก…",
+    "retry": "ลองใหม่",
+    "subscribeWithDiscount": "สมัครสมาชิก ({{discount}})",
+    "redeemCode": "ใช้โค้ด",
+    "notApplied": "โค้ดนี้ไม่ได้ให้ส่วนลด"
   }
 }

@@ -35,6 +35,11 @@ export default defineConfig({
     "process.env": {},
   },
   plugins: [updateManifestPlugin()],
+  resolve: {
+    alias: {
+      "@shared/monetization": path.resolve(__dirname, "../shared/monetization/index.ts"),
+    },
+  },
   build: {
     outDir: "dist",
     emptyOutDir: true,
