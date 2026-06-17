@@ -314,7 +314,8 @@
       "joinTitle": "加入Corpanistas",
       "start": "开始探索",
       "subtitle": "Corpán由一个小型开源团队制作。来打个招呼吧 — 如果您喜欢它，可以支持我们。",
-      "title": "您已准备就绪"
+      "title": "您已准备就绪",
+      "explore": "自己探索"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "预览{{name}}",
     "voicePreviewSelected": "预览已选",
     "voiceRecommended": "推荐",
-    "voiceSelectedCount": "已选{{count}}/{{total}}"
+    "voiceSelectedCount": "已选{{count}}/{{total}}",
+    "whatToStart": {
+      "title": "我们从哪里开始？",
+      "subtitle": "选一个直接开始，其余的轻轻一点即可。",
+      "read": {
+        "label": "阅读",
+        "desc": "沉浸在故事和书籍中。"
+      },
+      "study": {
+        "label": "学习",
+        "desc": "通过专注练习积累词汇。"
+      },
+      "playMusic": {
+        "label": "玩音乐",
+        "desc": "在打碟台上试试你的语言。"
+      },
+      "playGames": {
+        "label": "玩游戏",
+        "desc": "在趣味挑战中学习。"
+      },
+      "surprise": {
+        "label": "给我惊喜！",
+        "desc": "带我去个好玩的地方。"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "请使用字母、数字、连字符或下划线。",
     "affiliateChecking": "正在检查代码...",
     "affiliateApplied": "该代码将关联到此订阅。",
-    "affiliateCodeHelp": "如果有人推荐你来到这里，请在订阅前输入他们的代码。"
+    "affiliateCodeHelp": "如果有人推荐你来到这里，请在订阅前输入他们的代码。",
+    "introPriceHeadline": "{{introPrice}}，{{period}}",
+    "introPriceThen": "，之后{{price}}/{{period}}",
+    "perMonth": "月",
+    "perYear": "年",
+    "startFreeTrial": "开始免费试用",
+    "trialFirstCharge": "{{period}}：首次收费",
+    "trialHeadline": "{{period}}免费",
+    "trialReassurance": "现在无需付款 · 随时取消",
+    "trialThenPrice": "，之后{{price}}/{{period}}",
+    "trialToday": "今天：开始"
   },
   "restore": {
     "button": "恢复购买",
@@ -715,7 +750,8 @@
     "subhead": "解锁所有语言的所有书籍。无广告。您的数据保留在设备上。",
     "pitch": "我们是一个小团队，将所有收入都投入到 Corpán 的发展中。Corpanistas 让它保持无广告并持续成长。",
     "maybeLater": "稍后考虑",
-    "continue": "继续"
+    "continue": "继续",
+    "dismiss": "关闭"
   },
   "streak": {
     "title": "{{count}}天学习打卡"
@@ -819,5 +855,35 @@
     "update": "更新",
     "updateNow": "立即更新",
     "versionLine": "版本{{version}}已准备好安装。"
+  },
+  "streakBadge": {
+    "label": "{{days}}天连胜"
+  },
+  "dailyLock": {
+    "title": "今天的{{count}}{{unit}}",
+    "streakActive": "{{days}}天连胜——明天再来保持进度。",
+    "streakStart": "明天再来保持进度。",
+    "resetIn": "{{time}}后重置",
+    "cta": "立即使用Corpán Plus继续",
+    "dismiss": "稍后再说",
+    "closeAria": "关闭",
+    "countdownHm": "{{h}}小时{{m}}分钟",
+    "countdownM": "{{m}}分钟",
+    "countdownSoon": "随时"
+  },
+  "code": {
+    "attributedUnverified": "代码将附加到您的订阅。",
+    "checkFailed": "无法检查",
+    "checking": "正在检查代码…",
+    "creditedTo": "记入{{partner}}",
+    "fieldLabel": "优惠或联盟代码",
+    "help": "有代码？输入以应用您的优惠。",
+    "redeemUnavailable": "无法打开兑换屏幕。请重试。",
+    "redeemWithApple": "通过Apple兑换",
+    "redeeming": "正在打开兑换…",
+    "retry": "重试",
+    "subscribeWithDiscount": "订阅（{{discount}}）",
+    "redeemCode": "兑换代码",
+    "notApplied": "此代码不提供折扣。"
   }
 }

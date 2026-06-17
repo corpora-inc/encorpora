@@ -1,8 +1,15 @@
-import { invoke } from "@tauri-apps/api/core"
+import { invoke, addPluginListener, type PluginListener } from "@tauri-apps/api/core"
 import { type as osType } from "@tauri-apps/plugin-os"
 import { openUrl } from "@tauri-apps/plugin-opener"
 import { useEntitlementStore } from "@/store/entitlements"
 import type { SubscriptionPlan } from "@/store/entitlements"
+import {
+  trackSubscriptionPurchased,
+  trackTrialStarted,
+  trackSubscriptionRestored,
+  trackCodeResolved,
+  trackCodeRedeemed,
+} from "@/util/analytics"
 
 // ---------------------------------------------------------------------------
 // Types
@@ -18,6 +25,12 @@ export type StoreProduct = {
   currencyCode: string
   /** Raw price in micros (e.g., 3990000 = $3.99) */
   priceMicros?: number
+  /**
+   * Normalized introductory / free-trial offer the store attached to this
+   * base plan, or `null` when none is configured. The UI lights up trial
+   * framing when present and degrades to plain pricing when absent.
+   */
+  introOffer?: IntroOffer | null
 }
 
 export type PurchaseResult = {
@@ -43,20 +56,79 @@ export type PurchaseVerificationResponse = {
   affiliateAttribution?: {
     code?: string
     locked?: boolean
+    verified?: boolean
+    partnerName?: string
     message?: string
   }
   error?: string
 }
 
-export type AffiliateResolveResponse =
+// ---------------------------------------------------------------------------
+// Code resolution (POST /code/resolve) — Phase 3 codes backend (contract §2)
+// ---------------------------------------------------------------------------
+
+/**
+ * How the server classifies a code (contract §2.2). The server is the ONLY
+ * classifier — the open-source client never decides this.
+ */
+export type CodeClassification =
+  | "discount"
+  | "affiliate"
+  | "discount+affiliate"
+  | "unknown"
+
+/**
+ * Platform mechanic the client must drive for this code (contract §2.2).
+ *  • REDEEM_APPLE_SHEET    — present the StoreKit offer-code redeem sheet
+ *  • USE_OFFER_TOKEN       — re-read the live Play offerToken + purchase with it
+ *  • ATTRIBUTE_ONLY        — registry affiliate, no platform offer; plain buy
+ *  • ATTRIBUTE_UNVERIFIED  — unknown code; plain buy, tracked unverified
+ */
+export type CodePurchaseAction =
+  | "REDEEM_APPLE_SHEET"
+  | "USE_OFFER_TOKEN"
+  | "ATTRIBUTE_ONLY"
+  | "ATTRIBUTE_UNVERIFIED"
+
+/**
+ * Hint the client uses to re-read the SESSION-BOUND Play `offerToken` from
+ * `getProducts()`. Tokens are never returned by the backend — the client
+ * matches `subscriptionOfferDetails[].offerId === googleOfferId`.
+ */
+export type OfferTokenHint = {
+  googleOfferId: string
+  basePlanId?: string
+  offerTags?: string[]
+}
+
+/**
+ * Response from `POST /code/resolve` (contract §2.3). There is NO fail-open:
+ * an HTTP error, a network failure, or `status:"error"` surfaces as
+ * `status:"error"` — NEVER as `"ok"`.
+ */
+export type CodeResolveResponse =
   | {
       status: "ok"
       code: string
-      partnerName?: string
-      discountTier?: "none" | "pct10" | "pct20" | "pct50" | string
-      message?: string
+      classification: CodeClassification
+      purchaseAction: CodePurchaseAction
+      /** null when classification is `discount` or `unknown`. */
+      partnerName: string | null
+      /** Localized server-side; null when there's no discount. */
+      discountLabel: string | null
+      /** = registry googleOfferId (Android USE_OFFER_TOKEN); null otherwise. */
+      offerId: string | null
+      /** Android USE_OFFER_TOKEN only; null otherwise. */
+      offerTokenHint: OfferTokenHint | null
+      /** = registry appleOfferIdentifier (Apple REDEEM_APPLE_SHEET); null otherwise. */
+      appleOfferId: string | null
+      /** Pre-iOS16 fallback deep link for the Apple redeem path. */
+      appleRedeemUrl?: string | null
+      /** Subject-bound JWT that gates the attribution write at verify time. */
+      resolutionToken: string
+      expiresInSec: number
     }
-  | { status: "invalid"; code?: string; error: string }
+  | { status: "error"; code?: string; error: string }
 
 export type EntitlementTokenResponse = {
   status: "ok" | "failed"
@@ -196,11 +268,19 @@ type RawPricingPhase = {
   formattedPrice?: string
   priceCurrencyCode?: string
   priceAmountMicros?: number
+  /** ISO-8601 period for this phase, e.g. "P7D", "P1W", "P1M". */
+  billingPeriod?: string
+  /** How many cycles this phase repeats (Play `billingCycleCount` / iOS `periodCount`). */
+  billingCycleCount?: number
   recurrenceMode?: number
 }
 
 type RawSubscriptionOffer = {
   offerToken?: string
+  /** Play: the per-code offer id, e.g. "code-ian30". Empty on iOS/macOS. */
+  offerId?: string
+  /** Play: the base plan this offer attaches to, e.g. "annual". */
+  basePlanId?: string
   pricingPhases?: RawPricingPhase[]
 }
 
@@ -227,6 +307,149 @@ function recurringPhaseFromOffers(p: RawProduct): RawPricingPhase | undefined {
   return phases[phases.length - 1]
 }
 
+// ---------------------------------------------------------------------------
+// Introductory / free-trial offer detection
+// ---------------------------------------------------------------------------
+
+/**
+ * Normalized intro offer surfaced to the UI. `null` when the store offers no
+ * intro for this product (the common case until a trial is configured in App
+ * Store Connect / Play Console). The UI must degrade to plain pricing.
+ */
+export type IntroOffer = {
+  kind: "free_trial" | "intro_price"
+  /** Human period for one intro cycle, e.g. "7 days", "1 week", "3 months". */
+  periodLabel: string
+  /** Localized intro price for a paid intro. Absent for a free trial. */
+  priceFormatted?: string
+  /** How many billing cycles the intro lasts (StoreKit `periodCount` / Play `billingCycleCount`). */
+  cycles: number
+}
+
+/**
+ * Parse an ISO-8601 subscription period (P7D / P1W / P1M / P1Y / P3M…) into a
+ * human label. Both StoreKit (via the iOS plugin's `formatSubscriptionPeriod`)
+ * and Play Billing emit this `P<n><unit>` form. We deliberately keep this to
+ * the single-unit periods stores actually use for subscriptions.
+ */
+export function periodLabelFromIso(iso: string | undefined): string {
+  if (!iso) return ""
+  const m = /^P(\d+)([DWMY])$/.exec(iso.trim())
+  if (!m) return iso
+  const n = Number(m[1])
+  const plural = n === 1 ? "" : "s"
+  switch (m[2]) {
+    case "D":
+      return `${n} day${plural}`
+    case "W":
+      return `${n} week${plural}`
+    case "M":
+      return `${n} month${plural}`
+    case "Y":
+      return `${n} year${plural}`
+    default:
+      return iso
+  }
+}
+
+/**
+ * A display price string represents "free" when it has no digits (e.g. "Free",
+ * "Gratis", "$0.00" → has digits so excluded). Used as the iOS fallback signal
+ * because the native plugin currently hardcodes `priceAmountMicros: 0` for
+ * every phase and does NOT surface StoreKit's `introOffer.paymentMode`
+ * (`.freeTrial`/`.payAsYouGo`/`.payUpFront`) — the canonical free-trial flag.
+ * See the iOS gap note in the task report.
+ */
+function isFreeDisplayPrice(formatted: string | undefined): boolean {
+  if (!formatted) return false
+  return !/\d/.test(formatted)
+}
+
+/**
+ * Extract a normalized intro offer from a raw store product, or `null`.
+ *
+ * Two wire shapes are handled (the native plugins normalize to a shared
+ * `subscriptionOfferDetails[].pricingPhases[]` envelope):
+ *
+ *  • Android (Play Billing): ONE offer whose `pricingPhases[]` lists intro
+ *    phase(s) FIRST and the recurring phase LAST. A phase with
+ *    `priceAmountMicros === 0` is a free trial; a cheaper-than-recurring paid
+ *    phase is an intro price. `priceAmountMicros` is authoritative.
+ *
+ *  • iOS (StoreKit, via tauri-plugin-iap): the intro lands in a SEPARATE
+ *    offer object (`subscriptionOfferDetails[0]`) ahead of the regular offer.
+ *    The plugin hardcodes `priceAmountMicros: 0` everywhere, so we fall back
+ *    to the `formattedPrice` string: a no-digit price ("Free") → free_trial,
+ *    otherwise intro_price. (Heuristic; see iOS gap note.)
+ */
+export function introOfferFromProduct(p: RawProduct): IntroOffer | null {
+  const offers = p.subscriptionOfferDetails
+  if (!offers || offers.length === 0) return null
+
+  // Flatten all phases across all offers in store order. Android packs them
+  // into offers[0] (intro phases first, recurring last); iOS splits intro
+  // (offers[0]) and regular (offers[1]). In BOTH shapes the recurring phase
+  // is the LAST phase overall, so we use that as the reference — NOT
+  // `recurringPhaseFromOffers` (offers[0].last), which would mistake the iOS
+  // intro phase for the recurring one.
+  const phases = offers.flatMap((o) => o.pricingPhases ?? [])
+  if (phases.length === 0) return null
+  const recurring = phases[phases.length - 1]
+
+  const recurringMicros = recurring?.priceAmountMicros
+  const recurringFormatted = recurring?.formattedPrice
+
+  // Candidate intro phases: anything that isn't the recurring phase and looks
+  // cheaper/free. We scan every phase except the final recurring one.
+  for (const phase of phases) {
+    if (phase === recurring) continue
+
+    const microsKnown = typeof phase.priceAmountMicros === "number"
+    const micros = phase.priceAmountMicros ?? 0
+
+    // Free trial: explicit zero micros (Android) OR a no-digit display price
+    // when micros are unreliable (iOS, which sends 0 for every phase).
+    const isFreeByMicros = microsKnown && micros === 0 && isFreeDisplayPrice(phase.formattedPrice)
+    const isFreeByDisplay = isFreeDisplayPrice(phase.formattedPrice)
+    if (isFreeByMicros || isFreeByDisplay) {
+      return {
+        kind: "free_trial",
+        periodLabel: periodLabelFromIso(phase.billingPeriod),
+        cycles: phase.billingCycleCount ?? 1,
+      }
+    }
+
+    // Paid intro: a priced phase that is strictly cheaper than the recurring
+    // price. On Android this is a clean micros compare. On iOS micros are 0
+    // for everything, so we additionally accept a phase whose formatted price
+    // differs from the recurring formatted price (the intro offer object).
+    const cheaperByMicros =
+      microsKnown &&
+      typeof recurringMicros === "number" &&
+      recurringMicros > 0 &&
+      micros > 0 &&
+      micros < recurringMicros
+    const differsByDisplay =
+      !!phase.formattedPrice &&
+      !!recurringFormatted &&
+      phase.formattedPrice !== recurringFormatted &&
+      !isFreeDisplayPrice(phase.formattedPrice)
+    // iOS: an intro phase living in its own (non-last) offer object is an
+    // intro by construction; trust the display price when micros are absent.
+    const isIosIntroObject = !microsKnown || (micros === 0 && recurringMicros === 0)
+    if (cheaperByMicros || (differsByDisplay && isIosIntroObject)) {
+      return {
+        kind: "intro_price",
+        periodLabel: periodLabelFromIso(phase.billingPeriod),
+        priceFormatted: phase.formattedPrice,
+        cycles: phase.billingCycleCount ?? 1,
+      }
+    }
+  }
+
+  return null
+}
+
 function normalizeProduct(p: RawProduct): StoreProduct {
   const recurring = recurringPhaseFromOffers(p)
   return {
@@ -236,6 +459,7 @@ function normalizeProduct(p: RawProduct): StoreProduct {
     price: p.formattedPrice ?? recurring?.formattedPrice ?? "",
     currencyCode: p.priceCurrencyCode ?? recurring?.priceCurrencyCode ?? "",
     priceMicros: p.priceAmountMicros ?? recurring?.priceAmountMicros,
+    introOffer: introOfferFromProduct(p),
   }
 }
 
@@ -621,7 +845,7 @@ const getVerifyUrl = () => {
 export async function verifyPurchase(
   purchase: PurchaseResult,
   packId?: string,
-  options: { subjectId?: string; affiliateCode?: string } = {}
+  options: { subjectId?: string; affiliateCode?: string; resolutionToken?: string } = {}
 ): Promise<PurchaseVerificationResponse> {
   const urlBase = getVerifyUrl()
   if (!urlBase) {
@@ -650,6 +874,12 @@ export async function verifyPurchase(
       : ""
     if (affiliateCode && isAffiliateCodeFormatValid(affiliateCode)) {
       body.affiliateCode = affiliateCode
+    }
+    // The resolutionToken (minted by /code/resolve) gates the server-side
+    // attribution write. Best-effort: omit it and the purchase still verifies,
+    // attribution is simply skipped (contract §5.1, §3).
+    if (options.resolutionToken) {
+      body.resolutionToken = options.resolutionToken
     }
 
     const res = await fetch(url, {
@@ -682,41 +912,365 @@ export async function verifyPurchase(
   }
 }
 
-export async function resolveAffiliateCode(raw: string): Promise<AffiliateResolveResponse> {
+/**
+ * Resolve an offer/affiliate code against the server (contract §2.1, §2.3).
+ *
+ * The server is the only classifier and authority. There is **NO fail-open**:
+ * a format-invalid code, an HTTP error, or a network failure returns
+ * `status:"error"` — it must NEVER surface as `"ok"` (contract §0.2). The only
+ * `"ok"` result is one the server explicitly returned with a `resolutionToken`.
+ *
+ * @param raw       the raw code as typed by the user
+ * @param productId optional — lets the server pick the right platform offer
+ */
+export async function resolveCode(
+  raw: string,
+  productId?: string
+): Promise<CodeResolveResponse> {
   const code = normalizeAffiliateCode(raw)
-  if (!code) return { status: "invalid", error: "Enter a code." }
-  if (!isAffiliateCodeFormatValid(code)) {
-    return { status: "invalid", code, error: "Use letters, numbers, dashes, or underscores." }
+  if (!code) {
+    return { status: "error", error: "Enter a code." }
   }
+  if (!isAffiliateCodeFormatValid(code)) {
+    return {
+      status: "error",
+      code,
+      error: "Use letters, numbers, dashes, or underscores.",
+    }
+  }
+
   const urlBase = getVerifyUrl()
+  if (!urlBase) {
+    return { status: "error", code, error: "Code check unavailable." }
+  }
+
   try {
-    const res = await fetch(urlBase.replace(/\/+$/, "") + "/affiliate/resolve", {
+    const platform = await getPlatform()
+    // "macos" resolves against the Apple ("ios") branch (contract §2.1).
+    const resolvePlatform = platform === "android" ? "android" : "ios"
+
+    const res = await fetch(urlBase.replace(/\/+$/, "") + "/code/resolve", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ code, subjectId: getCorpanSubjectId() }),
+      body: JSON.stringify({
+        code,
+        subjectId: getCorpanSubjectId(),
+        platform: resolvePlatform,
+        ...(productId ? { productId } : {}),
+      }),
     })
+
     if (!res.ok) {
+      // NO fail-open — any non-2xx (incl. 404 / 502 / 429) is an error.
       const data = await res.json().catch(() => ({}))
-      if (res.status === 404) {
-        return {
-          status: "ok",
-          code,
-          message: "Code will be sent with your purchase when affiliate lookup is available.",
-        }
-      }
       return {
-        status: "invalid",
+        status: "error",
         code,
         error: (data as any).error ?? `Code check failed (${res.status})`,
       }
     }
-    return (await res.json()) as AffiliateResolveResponse
-  } catch {
-    return {
-      status: "ok",
-      code,
-      message: "Code will be sent with your purchase when the server is available.",
+
+    const data = (await res.json()) as CodeResolveResponse
+    // Trust the server's own status field; a malformed body without a token is
+    // treated as an error rather than silently accepted.
+    if (data.status === "ok" && typeof data.resolutionToken === "string") {
+      // Funnel: code_resolved — the server (the only classifier) accepted the
+      // code. Low-cardinality classification + the platform mechanic to drive.
+      trackCodeResolved(data.classification, data.purchaseAction)
+      return data
     }
+    if (data.status === "error") return data
+    return { status: "error", code, error: "Code check failed." }
+  } catch (err) {
+    return {
+      status: "error",
+      code,
+      error: err instanceof Error ? err.message : "Code check failed.",
+    }
+  }
+}
+
+/**
+ * Re-read the live, session-bound Play `offerToken` for a resolved code
+ * (contract §2.3 branch B). Offer tokens are NEVER returned by the backend —
+ * the client matches the per-code `offerId` (and base plan, when present)
+ * inside the freshly fetched `getProducts()` envelope.
+ *
+ * Returns `undefined` when no matching live offer is found (e.g. the Play
+ * offer hasn't been created yet) — the caller then falls back to a plain
+ * attributed purchase.
+ */
+export async function resolveOfferToken(
+  productId: string,
+  hint: OfferTokenHint
+): Promise<string | undefined> {
+  if (!isTauriRuntime()) return undefined
+  try {
+    const result = await invoke<{ products: RawProduct[] }>(
+      "plugin:iap|get_products",
+      { payload: { productIds: [productId], productType: "subs" } }
+    )
+    const product = (result.products ?? []).find(
+      (p) => p.productId === productId
+    )
+    const offers = product?.subscriptionOfferDetails ?? []
+    const match =
+      offers.find(
+        (o) =>
+          o.offerId === hint.googleOfferId &&
+          (!hint.basePlanId || o.basePlanId === hint.basePlanId)
+      ) ?? offers.find((o) => o.offerId === hint.googleOfferId)
+    return match?.offerToken || undefined
+  } catch (err) {
+    console.warn("[purchase] resolveOfferToken failed:", err)
+    return undefined
+  }
+}
+
+/**
+ * Present the StoreKit offer-code redeem sheet (contract §9.3). The command
+ * itself is owned by the iOS plugin (WS-D) and may not exist yet — guard the
+ * invoke and fall back to opening the `appleRedeemUrl` deep link.
+ *
+ * After the sheet, the redeemed transaction is delivered through the plugin's
+ * existing `Transaction.updates` listener; the caller verifies the resulting
+ * purchase carrying the `resolutionToken`.
+ *
+ * @returns true if the sheet (or the URL fallback) was presented.
+ */
+export async function presentAppleOfferRedeemSheet(opts: {
+  appleOfferId?: string | null
+  appleRedeemUrl?: string | null
+}): Promise<boolean> {
+  if (isTauriRuntime()) {
+    try {
+      // FROZEN command name + arg shape (contract §9.3).
+      await invoke("plugin:iap|present_offer_code_redeem_sheet", {
+        payload: { appleOfferId: opts.appleOfferId ?? undefined },
+      })
+      return true
+    } catch (err) {
+      console.warn(
+        "[purchase] present_offer_code_redeem_sheet unavailable, falling back to redeem URL:",
+        err
+      )
+    }
+  }
+  // Fallback: open the App Store redeem deep link (pre-iOS16 / command absent).
+  if (opts.appleRedeemUrl) {
+    try {
+      await openUrl(opts.appleRedeemUrl)
+      return true
+    } catch (err) {
+      console.error("[purchase] openUrl(appleRedeemUrl) failed:", err)
+    }
+  }
+  return false
+}
+
+// ---------------------------------------------------------------------------
+// Apple offer-code redemption attribution (contract §5)
+//
+// The Apple offer-code redeem sheet (and renewals, restores, Ask-to-Buy
+// approvals) deliver the resulting StoreKit transaction ASYNCHRONOUSLY via the
+// iOS plugin's `Transaction.updates` → `purchaseUpdated` event — NOT as the
+// return value of an `invoke`. So unlike the synchronous `purchaseProduct`
+// flow, the redeem path has no transaction to POST to /verify-purchase inline.
+//
+// Without a listener, an Apple offer-code conversion unlocks locally (the
+// platform owns entitlement) but NO `PURCHASE#` / `ATTRIBUTION` / initial
+// `LEDGER` rows are ever written — the partner is never credited and
+// /entitlement-token can't see the sub. This listener closes that gap: it
+// forwards every delivered transaction to /verify-purchase, carrying the
+// pending resolutionToken from the redeem the user just performed.
+//
+// Mirrors the Android/synchronous path (purchaseAndVerify → verifyPurchase
+// with the resolutionToken). All best-effort + idempotent (the backend ledger
+// writes are conditional), so duplicate deliveries never double-credit.
+// ---------------------------------------------------------------------------
+
+type PendingResolution = {
+  resolutionToken?: string
+  affiliateCode?: string
+  /** When the pending token was stashed (ms). Discarded after a TTL. */
+  at: number
+}
+
+// The resolutionToken (~15 min server TTL) the user is mid-redeeming. Stashed
+// when the redeem sheet is presented, consumed by the next delivered
+// transaction. Module-level (one redeem flow at a time on a device).
+let _pendingResolution: PendingResolution | null = null
+const PENDING_RESOLUTION_TTL_MS = 15 * 60 * 1000
+
+/**
+ * Stash the resolutionToken for an in-flight Apple offer-code redemption so the
+ * async `purchaseUpdated` listener can attach it to the verify-purchase call.
+ */
+export function setPendingResolution(opts: {
+  resolutionToken?: string
+  affiliateCode?: string
+}): void {
+  if (!opts.resolutionToken) {
+    _pendingResolution = null
+    return
+  }
+  _pendingResolution = { ...opts, at: Date.now() }
+}
+
+function takePendingResolution(): PendingResolution | null {
+  const p = _pendingResolution
+  if (!p) return null
+  if (Date.now() - p.at > PENDING_RESOLUTION_TTL_MS) {
+    _pendingResolution = null
+    return null
+  }
+  return p
+}
+
+let _purchaseUpdatedListener: PluginListener | null = null
+
+/**
+ * Wire the plugin's `purchaseUpdated` event to backend verification +
+ * entitlement sync. Install ONCE at app start (idempotent — re-calling is a
+ * no-op while a listener is already registered). Returns a disposer.
+ *
+ * On every delivered transaction we POST it to /verify-purchase carrying the
+ * pending resolutionToken (if any), so Apple offer-code redemptions write the
+ * attribution + ledger rows the synchronous path already writes. We then
+ * refresh entitlements so any open paywall reflects the new sub.
+ */
+export async function installPurchaseUpdatedListener(): Promise<() => void> {
+  if (!isTauriRuntime()) return () => {}
+  if (_purchaseUpdatedListener) return () => {}
+
+  try {
+    const platform = await getPlatform()
+    // Android forwards its purchases synchronously through purchaseAndVerify;
+    // the async listener is the iOS/macOS (StoreKit Transaction.updates) seam.
+    if (platform !== "ios" && platform !== "macos") return () => {}
+
+    _purchaseUpdatedListener = await addPluginListener(
+      "iap",
+      "purchaseUpdated",
+      (raw: {
+        id?: string
+        orderId?: string
+        productId?: string
+        jwsRepresentation?: string
+        purchaseToken?: string
+        originalJson?: string
+        environment?: string
+      }) => {
+        void handlePurchaseUpdated(raw, platform)
+      }
+    )
+    console.info("[purchase] purchaseUpdated listener installed")
+  } catch (err) {
+    console.warn("[purchase] failed to install purchaseUpdated listener:", err)
+    return () => {}
+  }
+
+  return () => {
+    try {
+      void _purchaseUpdatedListener?.unregister()
+    } catch {
+      /* ignore */
+    }
+    _purchaseUpdatedListener = null
+  }
+}
+
+async function handlePurchaseUpdated(
+  raw: {
+    id?: string
+    orderId?: string
+    productId?: string
+    jwsRepresentation?: string
+    purchaseToken?: string
+    originalJson?: string
+    environment?: string
+  },
+  platform: PurchasePlatform
+): Promise<void> {
+  try {
+    const transactionId = raw.id ?? raw.orderId ?? ""
+    const productId = raw.productId ?? ""
+    const receipt =
+      raw.jwsRepresentation ?? raw.purchaseToken ?? raw.originalJson ?? ""
+    if (!transactionId || !productId) {
+      console.warn("[purchase] purchaseUpdated missing txn/product — skipping verify")
+      return
+    }
+
+    const result: PurchaseResult = {
+      transactionId,
+      productId,
+      receipt,
+      platform,
+      environment: raw.environment,
+    }
+
+    // Reflect the platform-confirmed sub locally right away (mirrors the
+    // synchronous path), then verify in the background. Entitlement is owned by
+    // the platform; verification is for attribution + the signed-URL/token.
+    const store = useEntitlementStore.getState()
+    if (productId === SUBSCRIPTION_MONTHLY || productId === SUBSCRIPTION_ANNUAL) {
+      store.setSubscription({
+        active: true,
+        plan: productId === SUBSCRIPTION_ANNUAL ? "annual" : "monthly",
+        expiresAt: null,
+        autoRenew: true,
+      })
+    }
+
+    const pending = takePendingResolution()
+    const verification = await verifyPurchase(result, undefined, {
+      affiliateCode: pending?.affiliateCode,
+      resolutionToken: pending?.resolutionToken,
+    })
+    // One-shot: a token is bound to a single redeemed transaction.
+    if (pending) setPendingResolution({})
+
+    if (verification.status === "verified") {
+      const attribution = verification.affiliateAttribution
+      if (attribution && (attribution.verified || attribution.locked)) {
+        trackCodeRedeemed(attribution.partnerName ?? "")
+      }
+    } else {
+      console.warn(
+        "[purchase] purchaseUpdated verify failed (entitlement still set locally):",
+        verification.error
+      )
+    }
+
+    // Re-query the plugin so any open paywall renders authoritative state.
+    await refreshEntitlements()
+  } catch (err) {
+    console.warn("[purchase] handlePurchaseUpdated error (non-fatal):", err)
+  }
+}
+
+/**
+ * Ask the OS to surface its native in-app review prompt — iOS StoreKit
+ * `SKStoreReviewController.requestReview(in:)` / Android Google Play In-App
+ * Review (`ReviewManager`). Routed through the same `tauri-plugin-iap` seam as
+ * the rest of our store integration.
+ *
+ * The OS is the throttle: iOS shows the prompt at most ~3×/year, Play shows its
+ * card on its own cadence, and neither tells us whether anything was actually
+ * displayed. So this is intentionally fire-and-forget — it NEVER gates any
+ * functionality, never shows our own "rate us?" modal as a precondition, and
+ * never throws into the caller. Safe to call on a natural boundary (pack exit).
+ */
+export async function requestNativeReview(): Promise<void> {
+  if (!isTauriRuntime()) return
+  try {
+    // FROZEN command name + (empty) arg shape — mirrors the redeem-sheet seam.
+    await invoke("plugin:iap|request_review")
+  } catch (err) {
+    // Desktop/dev builds without the command, or a transient native failure.
+    // Never surface to the user — the review prompt is always best-effort.
+    console.debug("[purchase] request_review unavailable:", err)
   }
 }
 
@@ -772,7 +1326,7 @@ export async function purchaseAndVerify(
   productId: string,
   packId?: string,
   productType: "subs" | "inapp" = "inapp",
-  options: { affiliateCode?: string; offerToken?: string } = {}
+  options: { affiliateCode?: string; offerToken?: string; resolutionToken?: string } = {}
 ): Promise<{
   signedUrl?: string
   error?: { code: PurchaseFailureKind; message: string }
@@ -783,6 +1337,9 @@ export async function purchaseAndVerify(
   verifyFailed?: boolean
 }> {
   const subjectId = getCorpanSubjectId()
+  // Pre-purchase state for trial-start detection below: a free trial is granted
+  // once per subscription group, so it only "starts" for a NEW subscriber.
+  const wasSubscribed = useEntitlementStore.getState().subscription.active
   const outcome = await purchaseProduct(productId, productType, {
     subjectId,
     offerToken: options.offerToken,
@@ -812,6 +1369,34 @@ export async function purchaseAndVerify(
       expiresAt: null,
       autoRenew: true,
     })
+    // Funnel: subscription_purchased (+ trial_started when an explicit intro/
+    // offer path was used — Android offerToken signals the per-offer purchase).
+    // Emitted on PLATFORM confirmation (the source of truth), so it fires even
+    // if backend verification later fails. Code is the applied offer/affiliate.
+    const validCode =
+      options.affiliateCode &&
+      isAffiliateCodeFormatValid(normalizeAffiliateCode(options.affiliateCode))
+        ? normalizeAffiliateCode(options.affiliateCode)
+        : undefined
+    trackSubscriptionPurchased(plan, purchase.platform, validCode)
+    // Funnel: trial_started fires when this purchase actually STARTS a free
+    // trial — the product carries a free-trial intro offer AND this is a NEW
+    // subscription (the intro is granted once per group). Derived from the
+    // product's normalized `introOffer.kind`, NOT `offerToken` (that's the
+    // affiliate DISCOUNT token: unrelated to trials, and absent on the standard
+    // iOS StoreKit / Play base-plan trial flow). Best-effort, non-blocking.
+    if (!wasSubscribed) {
+      void fetchProducts([productId], productType)
+        .then((res) => {
+          const prod = res.ok
+            ? res.products.find((p) => p.productId === productId)
+            : undefined
+          if (prod?.introOffer?.kind === "free_trial") trackTrialStarted(plan)
+        })
+        .catch(() => {
+          /* analytics best-effort */
+        })
+    }
   } else {
     store.addPurchasedProduct(productId)
   }
@@ -824,6 +1409,7 @@ export async function purchaseAndVerify(
   const verification = await verifyPurchase(purchase, packId, {
     subjectId,
     affiliateCode: options.affiliateCode,
+    resolutionToken: options.resolutionToken,
   })
   if (verification.status !== "verified") {
     console.warn(
@@ -831,6 +1417,13 @@ export async function purchaseAndVerify(
       verification.error
     )
     return { verifyFailed: true }
+  }
+
+  // Funnel: code_redeemed — the server confirmed an affiliate/offer
+  // attribution write for this purchase (the authoritative redemption signal).
+  const attribution = verification.affiliateAttribution
+  if (attribution && (attribution.verified || attribution.locked)) {
+    trackCodeRedeemed(attribution.partnerName ?? "")
   }
 
   if (productType === "subs" && verification.expiresAt) {
@@ -849,8 +1442,36 @@ export async function purchaseAndVerify(
 }
 
 /**
+ * Best-effort connectivity check. `navigator.onLine === false` is the only
+ * reliably-actionable signal (the browser/WebView knows when the radio is off);
+ * a `true`/absent value we treat as "online". Used to make entitlement
+ * downgrades conservative: we only ever drop a known subscriber when we're
+ * confident we could actually reach the store to verify.
+ */
+function isOnline(): boolean {
+  return typeof navigator === "undefined" || navigator.onLine !== false
+}
+
+/**
+ * Grace window after the last CONFIRMED Plus verification during which an online
+ * "not owned" does NOT yet downgrade. Rides out (a) transient store flakiness —
+ * a StoreKit/Play query that momentarily reports not-owned then recovers — and
+ * (b) billing-grace renewals, where a card retry is in flight. The stores
+ * usually report the sub as still owned during their own grace, so this is a
+ * belt-and-suspenders buffer; 48h keeps a real subscriber comfortable without
+ * meaningful leakage.
+ */
+const SUBSCRIPTION_GRACE_MS = 48 * 60 * 60 * 1000
+
+/**
  * Refresh entitlements from the IAP plugin (local query — no network on iOS
  * via Transaction.currentEntitlements).
+ *
+ * Offline-subscriber rule: this NEVER downgrades a known subscriber unless it
+ * gets a definitive "not owned" from the OS *and* we're online. Inconclusive or
+ * offline → keep the durable `lastKnownSubscription` (seeded onto live state at
+ * launch). A real subscriber must never be blocked just because we can't reach
+ * the store.
  */
 export async function refreshEntitlements(): Promise<void> {
   if (!isTauriRuntime()) return
@@ -881,14 +1502,42 @@ export async function refreshEntitlements(): Promise<void> {
       autoRenew: true,
     })
     void refreshEntitlementToken()
-  } else if (!anyStatusUnknown) {
-    if (store.subscription.active) {
-      console.info("[purchase] refreshEntitlements: clearing stale local sub state")
-      store.clearSubscription()
+  } else if (!anyStatusUnknown && isOnline()) {
+    // Definitive, ONLINE "not owned" — every product reported a real not-owned
+    // from the platform's local receipt cache (StoreKit currentEntitlements /
+    // Play queryPurchases), and we have connectivity. Normally a genuine
+    // downgrade (cancelled / expired) — BUT ride out a short grace window
+    // anchored to the last confirmed verification, to absorb transient store
+    // flakiness and billing-grace renewals before we actually drop Plus.
+    const verifiedAt = store.lastVerifiedAt
+    const withinGrace =
+      Boolean(store.lastKnownSubscription?.active) &&
+      typeof verifiedAt === "number" &&
+      Date.now() - verifiedAt < SUBSCRIPTION_GRACE_MS
+
+    if (withinGrace) {
+      console.warn(
+        "[purchase] refreshEntitlements: not-owned but within grace window — keeping subscription",
+        { msSinceVerified: typeof verifiedAt === "number" ? Date.now() - verifiedAt : null }
+      )
+    } else {
+      if (store.subscription.active || store.lastKnownSubscription) {
+        console.info("[purchase] refreshEntitlements: confirmed not-owned past grace — forgetting subscription")
+        store.forgetSubscription()
+      }
+      store.setEntitlementToken(null)
     }
-    store.setEntitlementToken(null)
   } else {
-    console.warn("[purchase] refreshEntitlements: subscription status unknown — keeping in-memory state")
+    // Inconclusive (a query returned "unknown") OR we're offline. We CANNOT
+    // live-check, so we must not lock out a real subscriber: keep whatever the
+    // durable `lastKnownSubscription` seeded onto live state at launch. We'd
+    // rather a fraudulent client keep a stale Plus flag than ever block a
+    // subscriber in the jungle with no signal. The next online refresh with a
+    // definitive answer reconciles it.
+    console.warn(
+      "[purchase] refreshEntitlements: inconclusive/offline — keeping last-known subscription",
+      { anyStatusUnknown, online: isOnline(), hasSnapshot: !!store.lastKnownSubscription }
+    )
   }
 
   // Android: silent restore so we can ack any unack'd purchases (Google
@@ -995,6 +1644,8 @@ export async function restoreAndSync(): Promise<{
           expiresAt: verification.expiresAt ?? null,
           autoRenew: true,
         })
+        // Funnel: subscription_restored — a prior subscription was re-verified.
+        trackSubscriptionRestored()
       } else if (verification.productId) {
         store.addPurchasedProduct(verification.productId)
       }

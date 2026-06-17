@@ -13,6 +13,8 @@ Default permissions for the plugin
 - `allow-get-purchase-history`
 - `allow-acknowledge-purchase`
 - `allow-get-product-status`
+- `allow-present-offer-code-redeem-sheet`
+- `allow-request-review`
 
 ## Permission Table
 
@@ -156,6 +158,32 @@ Denies the initialize command without any pre-configured scope.
 <tr>
 <td>
 
+`iap:allow-present-offer-code-redeem-sheet`
+
+</td>
+<td>
+
+Enables the present_offer_code_redeem_sheet command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`iap:deny-present-offer-code-redeem-sheet`
+
+</td>
+<td>
+
+Denies the present_offer_code_redeem_sheet command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `iap:allow-purchase`
 
 </td>
@@ -227,6 +255,32 @@ Enables the remove_listener command without any pre-configured scope.
 <td>
 
 Denies the remove_listener command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`iap:allow-request-review`
+
+</td>
+<td>
+
+Enables the request_review command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`iap:deny-request-review`
+
+</td>
+<td>
+
+Denies the request_review command without any pre-configured scope.
 
 </td>
 </tr>

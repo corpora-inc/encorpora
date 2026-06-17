@@ -38,7 +38,15 @@ export type LlmInstallProgress = {
 }
 
 export type LlmApi = {
-  status: () => Promise<{ loaded: boolean; modelId?: string | null; backend?: string | null }>
+  status: () => Promise<{
+    loaded: boolean
+    modelId?: string | null
+    backend?: string | null
+    /** Total physical RAM in MB — drives model-size selection. Null/absent on
+     *  platforms we can't measure (treated as "assume capable"). */
+    totalMemoryMb?: number | null
+    availableMemoryMb?: number | null
+  }>
   isInstalled: (packId: string) => Promise<boolean>
   install: (
     args: { packId: string; url: string; sha256?: string },
@@ -58,6 +66,8 @@ export type LlmApi = {
         presencePenalty?: number
         maxTokens?: number
         stop?: string[]
+        /** Suppress reasoning on hybrid Qwen3 models (non-thinking prefill). */
+        noThink?: boolean
       }
     },
     handlers: LlmChatHandlers

@@ -34,8 +34,6 @@ import {
 } from "../../effects/params"
 import {
   NOTE_LENGTH_PRESETS,
-  noteLengthSeconds,
-  closestNoteLengthId,
   exceedsMaxDelay,
   MAX_DELAY_SECONDS,
 } from "../../effects/noteLengths"
@@ -186,6 +184,17 @@ const EffectCard = ({
   // `delayTime` (a 1–20ms modulation delay) — that is NOT a note length, so the
   // preset row is delay-only.
   const showNoteLengths = fx.kind === "delay" && !!timeSpec
+  // The delay's tempo-sync intent: a note-length id, or "free" (raw seconds).
+  // DEFAULT (missing) = dotted quarter. When synced, the engine derives the time
+  // from BPM, so the raw seconds knob is hidden (the chips own the time); only
+  // "free" exposes the seconds knob.
+  const delaySync =
+    fx.kind === "delay"
+      ? typeof fx.params.sync === "string"
+        ? fx.params.sync
+        : "1/4."
+      : "free"
+  const delayFree = delaySync === "free"
 
   const setParam = (key: string, value: number | string) =>
     onParamCommit(fx.id, { [key]: value })
@@ -238,14 +247,9 @@ const EffectCard = ({
       {showNoteLengths && timeSpec && (
         <NoteLengthRow
           bpm={bpm}
-          seconds={numParam(fx.params, timeSpec)}
+          activeId={delaySync}
           maxSeconds={timeSpec.max ?? MAX_DELAY_SECONDS}
-          onPick={(fraction) =>
-            setParam(
-              "delayTime",
-              Math.min(timeSpec.max ?? MAX_DELAY_SECONDS, noteLengthSeconds(fraction, bpm))
-            )
-          }
+          onPick={(id) => setParam("sync", id)}
         />
       )}
 
@@ -254,7 +258,13 @@ const EffectCard = ({
       )}
 
       <div className="bl-fxcard-params" data-bl-nocapture>
-        {spec.params.map((p) =>
+        {spec.params
+          // The delay's `sync` is driven by the note-length chips above (not a
+          // raw dropdown); its raw `delayTime` knob shows ONLY in free mode (when
+          // synced, the chips + tempo define the time).
+          .filter((p) => !(fx.kind === "delay" && p.key === "sync"))
+          .filter((p) => !(fx.kind === "delay" && p.key === "delayTime" && !delayFree))
+          .map((p) =>
           p.type === "enum" ? (
             <EnumParam key={p.key} spec={p} fx={fx} onChange={(v) => setParam(p.key, v)} />
           ) : (
@@ -281,31 +291,39 @@ const EffectCard = ({
  */
 const NoteLengthRow = ({
   bpm,
-  seconds,
+  activeId,
   maxSeconds,
   onPick,
 }: {
   bpm: number
-  seconds: number
+  /** The delay's current `sync` value: a note-length id, or "free". */
+  activeId: string
   /** The delay's maxDelay; longer note lengths are dimmed at slow tempos. */
   maxSeconds: number
-  onPick: (fraction: number) => void
+  onPick: (id: string) => void
 }) => {
-  const active = closestNoteLengthId(seconds, bpm)
   return (
     <div className="bl-fxsync" data-bl-nocapture>
       <span className="bl-fxsync-label">{ct("fx.sync")}</span>
       <div className="bl-fxsync-chips">
+        <button
+          type="button"
+          className={`bl-fxsync-chip${activeId === "free" ? " is-on" : ""}`}
+          onClick={() => onPick("free")}
+          aria-pressed={activeId === "free"}
+        >
+          {ct("fx.free")}
+        </button>
         {NOTE_LENGTH_PRESETS.map((p) => {
           const over = exceedsMaxDelay(p.fraction, bpm, maxSeconds)
           return (
             <button
               key={p.id}
               type="button"
-              className={`bl-fxsync-chip${active === p.id ? " is-on" : ""}${over ? " is-over" : ""}`}
-              onClick={() => onPick(p.fraction)}
+              className={`bl-fxsync-chip${activeId === p.id ? " is-on" : ""}${over ? " is-over" : ""}`}
+              onClick={() => onPick(p.id)}
               disabled={over}
-              aria-pressed={active === p.id}
+              aria-pressed={activeId === p.id}
               title={over ? ct("fx.tooLongAtTempo") : undefined}
             >
               {p.label}

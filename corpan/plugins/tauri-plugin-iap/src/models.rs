@@ -28,6 +28,11 @@ pub struct PricingPhase {
     pub billing_period: String,
     pub billing_cycle_count: i32,
     pub recurrence_mode: i32,
+    /// Payment mode for an introductory offer phase (iOS/macOS only).
+    /// One of `"freeTrial"`, `"payAsYouGo"`, or `"payUpFront"`.
+    /// Absent for Android pricing phases and for the regular (non-intro) phase.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub payment_mode: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -396,15 +401,52 @@ mod tests {
             billing_period: "P1M".to_string(),
             billing_cycle_count: 1,
             recurrence_mode: 1,
+            payment_mode: None,
         };
 
         let json = serde_json::to_string(&phase).expect("Failed to serialize PricingPhase");
         assert!(json.contains(r#""formattedPrice":"$4.99""#));
         assert!(json.contains(r#""billingPeriod":"P1M""#));
 
+        // payment_mode is None here, so it must be omitted (keeps the Android
+        // pricing-phase shape unchanged).
+        assert!(!json.contains("paymentMode"));
+
         let deserialized: PricingPhase =
             serde_json::from_str(&json).expect("Failed to deserialize PricingPhase");
         assert_eq!(deserialized.price_amount_micros, 4990000);
+        assert_eq!(deserialized.payment_mode, None);
+    }
+
+    #[test]
+    fn test_pricing_phase_intro_offer_payment_mode() {
+        // An iOS introductory free-trial phase carries paymentMode + real
+        // priceAmountMicros / period fields.
+        let phase = PricingPhase {
+            formatted_price: "$0.00".to_string(),
+            price_currency_code: "USD".to_string(),
+            price_amount_micros: 0,
+            billing_period: "P1W".to_string(),
+            billing_cycle_count: 1,
+            recurrence_mode: 2,
+            payment_mode: Some("freeTrial".to_string()),
+        };
+
+        let json = serde_json::to_string(&phase).expect("Failed to serialize PricingPhase");
+        assert!(json.contains(r#""paymentMode":"freeTrial""#));
+
+        let deserialized: PricingPhase =
+            serde_json::from_str(&json).expect("Failed to deserialize PricingPhase");
+        assert_eq!(deserialized.payment_mode, Some("freeTrial".to_string()));
+    }
+
+    #[test]
+    fn test_pricing_phase_deserialize_without_payment_mode() {
+        // Android payloads omit paymentMode entirely; must still deserialize.
+        let json = r#"{"formattedPrice":"$4.99","priceCurrencyCode":"USD","priceAmountMicros":4990000,"billingPeriod":"P1M","billingCycleCount":0,"recurrenceMode":1}"#;
+        let phase: PricingPhase =
+            serde_json::from_str(json).expect("Failed to deserialize PricingPhase");
+        assert_eq!(phase.payment_mode, None);
     }
 
     #[test]
@@ -420,6 +462,7 @@ mod tests {
                 billing_period: "P1M".to_string(),
                 billing_cycle_count: 0,
                 recurrence_mode: 1,
+                payment_mode: None,
             }],
         };
 

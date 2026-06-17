@@ -314,7 +314,8 @@
       "joinTitle": "Corpanistas में शामिल हों",
       "start": "खोज शुरू करें",
       "subtitle": "Corpán एक छोटी ओपन-सोर्स टीम द्वारा बनाया गया है। नमस्ते कहने आएँ — और अगर आपको यह पसंद है, तो आप हमारा समर्थन कर सकते हैं।",
-      "title": "आप पूरी तरह तैयार हैं"
+      "title": "आप पूरी तरह तैयार हैं",
+      "explore": "स्वयं से खोजें"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "{{name}} का पूर्वावलोकन करें",
     "voicePreviewSelected": "पूर्वावलोकन चुना गया",
     "voiceRecommended": "अनुशंसित",
-    "voiceSelectedCount": "{{total}} में से {{count}}"
+    "voiceSelectedCount": "{{total}} में से {{count}}",
+    "whatToStart": {
+      "title": "हम कहाँ से शुरू करें?",
+      "subtitle": "शुरू करने के लिए एक चुनें — बाकी बस एक टैप दूर है।",
+      "read": {
+        "label": "पढ़ें",
+        "desc": "कहानियों और किताबों में डूब जाएँ।"
+      },
+      "study": {
+        "label": "अध्ययन करें",
+        "desc": "केंद्रित अभ्यास से अपने शब्द बढ़ाएँ।"
+      },
+      "playMusic": {
+        "label": "संगीत बजाएँ",
+        "desc": "डेक पर अपनी भाषा आज़माएँ।"
+      },
+      "playGames": {
+        "label": "खेलें",
+        "desc": "मज़ेदार चुनौतियों से सीखें।"
+      },
+      "surprise": {
+        "label": "मुझे चौंका दें!",
+        "desc": "मुझे कहीं मज़ेदार ले चलें।"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "अक्षर, अंक, हाइफ़न या अंडरस्कोर का उपयोग करें।",
     "affiliateChecking": "कोड जाँचा जा रहा है...",
     "affiliateApplied": "कोड इस सदस्यता से जोड़ा जाएगा।",
-    "affiliateCodeHelp": "अगर किसी ने आपको यहाँ भेजा है, तो सदस्यता लेने से पहले उसका कोड दर्ज करें।"
+    "affiliateCodeHelp": "अगर किसी ने आपको यहाँ भेजा है, तो सदस्यता लेने से पहले उसका कोड दर्ज करें।",
+    "introPriceHeadline": "{{introPrice}} के लिए {{period}}",
+    "introPriceThen": ", फिर {{price}}/{{period}}",
+    "perMonth": "महीना",
+    "perYear": "साल",
+    "startFreeTrial": "नि:शुल्क परीक्षण शुरू करें",
+    "trialFirstCharge": "{{period}}: पहला शुल्क",
+    "trialHeadline": "{{period}} नि:शुल्क",
+    "trialReassurance": "अभी कोई भुगतान नहीं · कभी भी रद्द करें",
+    "trialThenPrice": ", फिर {{price}}/{{period}}",
+    "trialToday": "आज: शुरू करें"
   },
   "restore": {
     "button": "खरीदारी पुनर्स्थापित करें",
@@ -715,7 +750,8 @@
     "subhead": "हर भाषा में हर किताब अनलॉक करें। कोई विज्ञापन नहीं। आपका डेटा आपके डिवाइस पर रहता है।",
     "pitch": "हम एक छोटी टीम हैं और हर पैसा Corpán में वापस लगाते हैं। Corpanistas इसे विज्ञापन-मुक्त और विकसित रखते हैं।",
     "maybeLater": "शायद बाद में",
-    "continue": "जारी रखें"
+    "continue": "जारी रखें",
+    "dismiss": "खारिज करें"
   },
   "streak": {
     "title": "{{count}}-दिन की स्ट्रीक"
@@ -819,5 +855,35 @@
     "update": "अपडेट करें",
     "updateNow": "अभी अपडेट करें",
     "versionLine": "संस्करण {{version}} इंस्टॉल होने के लिए तैयार है।"
+  },
+  "streakBadge": {
+    "label": "{{days}}-दिन की लकीर"
+  },
+  "dailyLock": {
+    "title": "आपका आज का {{count}} {{unit}}",
+    "streakActive": "{{days}}-दिन की लकीर — इसे जारी रखने के लिए कल वापस आएं।",
+    "streakStart": "इसे जारी रखने के लिए कल वापस आएं।",
+    "resetIn": "{{time}} में रीसेट होगा",
+    "cta": "अब Corpán Plus के साथ जारी रखें",
+    "dismiss": "शायद बाद में",
+    "closeAria": "खारिज करें",
+    "countdownHm": "{{h}}घं {{m}}मि",
+    "countdownM": "{{m}}मि",
+    "countdownSoon": "किसी भी क्षण"
+  },
+  "code": {
+    "attributedUnverified": "कोड आपकी सदस्यता से जुड़ा होगा।",
+    "checkFailed": "जांच नहीं कर सके",
+    "checking": "कोड की जांच हो रही है…",
+    "creditedTo": "{{partner}} को श्रेय दिया गया",
+    "fieldLabel": "ऑफ़र या सहबद्ध कोड",
+    "help": "क्या आपके पास कोड है? अपना ऑफ़र लागू करने के लिए इसे दर्ज करें।",
+    "redeemUnavailable": "रिडीम स्क्रीन नहीं खोल सके। कृपया पुनः प्रयास करें।",
+    "redeemWithApple": "Apple के साथ रिडीम करें",
+    "redeeming": "रिडीम खोल रहे हैं…",
+    "retry": "पुनः प्रयास करें",
+    "subscribeWithDiscount": "सदस्यता लें ({{discount}})",
+    "redeemCode": "कोड रिडीम करें",
+    "notApplied": "इस कोड से कोई छूट नहीं मिलती।"
   }
 }

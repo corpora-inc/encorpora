@@ -35,7 +35,7 @@ const PACKS = [
     id: "juice-squeeze",
     name: "Juice Squeeze",
     description: "Fast-paced phrase building with splashy juice rewards and native audio feedback.",
-    avatar: "/logos/juice-squeeze-avatar.svg",
+    avatar: "/logos/juice-squeeze-avatar.png",
     landingUrl: "/corpan/packs/juice-squeeze/",
     status: "prototype",
     packType: "game",

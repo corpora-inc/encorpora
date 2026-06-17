@@ -34,7 +34,7 @@ import { RecentsSection } from "@/components/packs/RecentsSection"
 import { PhrasePackDrawerTrigger } from "@/components/packs/PhrasePackDrawerTrigger"
 import { PacksSection } from "./PacksSection"
 import { Button } from "@/components/ui/button"
-import { getTopBarPaddingTop } from "@/util/browser"
+import { getTopBarPaddingTop, glass } from "@/util/browser"
 import corpanMark from "@/assets/corpan-mark-trim.png"
 import { rankHomeExperiences } from "./recommend"
 
@@ -216,7 +216,7 @@ export function HomeHub({
     >
       {/* Chrome */}
       <header
-        className="sticky top-0 z-30 flex items-center justify-between px-4 md:px-8 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+        className={`sticky top-0 z-30 flex items-center justify-between px-4 md:px-8 ${glass("bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60", "bg-background/90")}`}
         style={{
           // Push the WHOLE header row down together so the mark + the gear
           // both clear the window "stoplight" controls (Stage Manager / macOS)

@@ -314,7 +314,8 @@
       "joinTitle": "Word lid van de Corpanistas",
       "start": "Begin met verkennen",
       "subtitle": "Corpán is gemaakt door een klein open-source team. Zeg hallo — en als je het geweldig vindt, kun je ons steunen.",
-      "title": "Je bent er helemaal klaar voor"
+      "title": "Je bent er helemaal klaar voor",
+      "explore": "Zelf ontdekken"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "Voorbeeld van {{name}}",
     "voicePreviewSelected": "Voorbeeld geselecteerd",
     "voiceRecommended": "Aanbevolen",
-    "voiceSelectedCount": "{{count}} van {{total}}"
+    "voiceSelectedCount": "{{count}} van {{total}}",
+    "whatToStart": {
+      "title": "Waar zullen we beginnen?",
+      "subtitle": "Kies er een om te starten; de rest is één tik verder.",
+      "read": {
+        "label": "Lezen",
+        "desc": "Duik in verhalen en boeken."
+      },
+      "study": {
+        "label": "Studeren",
+        "desc": "Breid je woordenschat uit met gerichte oefening."
+      },
+      "playMusic": {
+        "label": "Muziek maken",
+        "desc": "Probeer je taal uit achter de draaitafels."
+      },
+      "playGames": {
+        "label": "Spelen",
+        "desc": "Leer met speelse uitdagingen."
+      },
+      "surprise": {
+        "label": "Verras me!",
+        "desc": "Breng me ergens leuks naartoe."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "Gebruik letters, cijfers, koppeltekens of underscores.",
     "affiliateChecking": "Code controleren...",
     "affiliateApplied": "De code wordt aan dit abonnement gekoppeld.",
-    "affiliateCodeHelp": "Als iemand je hierheen heeft gestuurd, voer dan hun code in voordat je je abonneert."
+    "affiliateCodeHelp": "Als iemand je hierheen heeft gestuurd, voer dan hun code in voordat je je abonneert.",
+    "introPriceHeadline": "{{introPrice}} voor {{period}}",
+    "introPriceThen": ", daarna {{price}}/{{period}}",
+    "perMonth": "maand",
+    "perYear": "jaar",
+    "startFreeTrial": "Start Gratis Proefperiode",
+    "trialFirstCharge": "{{period}}: eerste betaling",
+    "trialHeadline": "{{period}} gratis",
+    "trialReassurance": "Nu geen betaling verschuldigd · op elk moment annuleren",
+    "trialThenPrice": ", daarna {{price}}/{{period}}",
+    "trialToday": "Vandaag: start"
   },
   "restore": {
     "button": "Aankopen herstellen",
@@ -715,7 +750,8 @@
     "subhead": "Ontgrendel elk boek in elke taal. Geen advertenties. Je gegevens blijven op je apparaat.",
     "pitch": "We zijn een klein team en steken elke cent terug in Corpán. Corpanistas houden het advertentievrij en groeiend.",
     "maybeLater": "Misschien later",
-    "continue": "Verder"
+    "continue": "Verder",
+    "dismiss": "Sluiten"
   },
   "streak": {
     "title": "{{count}} dagen op rij"
@@ -819,5 +855,35 @@
     "update": "Bijwerken",
     "updateNow": "Nu bijwerken",
     "versionLine": "Versie {{version}} is klaar om te installeren."
+  },
+  "streakBadge": {
+    "label": "{{days}}-dagen reeks"
+  },
+  "dailyLock": {
+    "title": "Je {{count}} {{unit}} voor vandaag",
+    "streakActive": "{{days}}-dagen reeks — kom morgen terug om door te gaan.",
+    "streakStart": "Kom morgen terug om door te gaan.",
+    "resetIn": "Herstelt in {{time}}",
+    "cta": "Ga nu verder met Corpán Plus",
+    "dismiss": "Misschien later",
+    "closeAria": "Sluiten",
+    "countdownHm": "{{h}}u {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "elk moment"
+  },
+  "code": {
+    "attributedUnverified": "Code wordt aan je abonnement gekoppeld.",
+    "checkFailed": "Kon niet controleren",
+    "checking": "Code controleren…",
+    "creditedTo": "toegekend aan {{partner}}",
+    "fieldLabel": "Aanbiedings- of affiliatiecode",
+    "help": "Heb je een code? Voer deze in om je aanbieding toe te passen.",
+    "redeemUnavailable": "Kon het inwisselscherm niet openen. Probeer het opnieuw.",
+    "redeemWithApple": "Inwisselen met Apple",
+    "redeeming": "Inwisselen openen…",
+    "retry": "Opnieuw proberen",
+    "subscribeWithDiscount": "Abonneren ({{discount}})",
+    "redeemCode": "Code inwisselen",
+    "notApplied": "Deze code geeft geen korting."
   }
 }

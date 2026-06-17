@@ -314,7 +314,8 @@
       "joinTitle": "Corpanistasに参加する",
       "start": "探索を開始",
       "subtitle": "Corpánは小さなオープンソースチームによって作られています。ぜひお声がけください — 気に入っていただけたら、私たちをサポートできます。",
-      "title": "準備完了です"
+      "title": "準備完了です",
+      "explore": "自分で探検する"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "{{name}}をプレビュー",
     "voicePreviewSelected": "選択をプレビュー",
     "voiceRecommended": "おすすめ",
-    "voiceSelectedCount": "{{total}}個中{{count}}個"
+    "voiceSelectedCount": "{{total}}個中{{count}}個",
+    "whatToStart": {
+      "title": "どこから始めましょう？",
+      "subtitle": "ひとつ選んで飛び込もう。あとはタップひとつ。",
+      "read": {
+        "label": "読む",
+        "desc": "物語や本に飛び込もう。"
+      },
+      "study": {
+        "label": "学ぶ",
+        "desc": "集中した練習で語彙を増やそう。"
+      },
+      "playMusic": {
+        "label": "音楽を奏でる",
+        "desc": "デッキで自分の言語を試してみよう。"
+      },
+      "playGames": {
+        "label": "ゲームで遊ぶ",
+        "desc": "楽しい挑戦で学ぼう。"
+      },
+      "surprise": {
+        "label": "おまかせで！",
+        "desc": "どこか楽しい場所へ連れて行って。"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "英字、数字、ハイフン、アンダースコアを使用してください。",
     "affiliateChecking": "コードを確認中...",
     "affiliateApplied": "このコードはこのサブスクリプションに関連付けられます。",
-    "affiliateCodeHelp": "紹介された場合は、登録前にそのコードを入力してください。"
+    "affiliateCodeHelp": "紹介された場合は、登録前にそのコードを入力してください。",
+    "introPriceHeadline": "{{period}}の{{introPrice}}",
+    "introPriceThen": "、その後{{price}}/{{period}}",
+    "perMonth": "月",
+    "perYear": "年",
+    "startFreeTrial": "無料トライアルを始める",
+    "trialFirstCharge": "{{period}}: 初回請求",
+    "trialHeadline": "{{period}}無料",
+    "trialReassurance": "今は支払い不要 · いつでもキャンセル可能",
+    "trialThenPrice": "、その後{{price}}/{{period}}",
+    "trialToday": "今日: 開始"
   },
   "restore": {
     "button": "購入を復元",
@@ -715,7 +750,8 @@
     "subhead": "すべての本、すべての言語を解放。広告なし。データはデバイスに保存されます。",
     "pitch": "私たちは小さなチームで、収益はすべてCorpánの改善に充てています。Corpanistasの皆様が、広告なしのCorpánの成長を支えています。",
     "maybeLater": "後で",
-    "continue": "続ける"
+    "continue": "続ける",
+    "dismiss": "閉じる"
   },
   "streak": {
     "title": "{{count}}日連続"
@@ -819,5 +855,35 @@
     "update": "アップデート",
     "updateNow": "今すぐアップデート",
     "versionLine": "バージョン{{version}}をインストールできます。"
+  },
+  "streakBadge": {
+    "label": "{{days}}日連続"
+  },
+  "dailyLock": {
+    "title": "今日の{{count}}{{unit}}",
+    "streakActive": "{{days}}日連続 — 続けるには明日も来てください。",
+    "streakStart": "続けるには明日も来てください。",
+    "resetIn": "{{time}}後にリセット",
+    "cta": "今すぐCorpán Plusで続ける",
+    "dismiss": "また後で",
+    "closeAria": "閉じる",
+    "countdownHm": "{{h}}時間{{m}}分",
+    "countdownM": "{{m}}分",
+    "countdownSoon": "もうすぐ"
+  },
+  "code": {
+    "attributedUnverified": "コードはあなたのサブスクリプションに添付されます。",
+    "checkFailed": "確認できませんでした",
+    "checking": "コードを確認中…",
+    "creditedTo": "{{partner}}にクレジットされました",
+    "fieldLabel": "オファーまたはアフィリエイトコード",
+    "help": "コードをお持ちですか？オファーを適用するには入力してください。",
+    "redeemUnavailable": "引き換え画面を開けませんでした。もう一度お試しください。",
+    "redeemWithApple": "Appleで引き換え",
+    "redeeming": "引き換えを開いています…",
+    "retry": "再試行",
+    "subscribeWithDiscount": "割引で購読 ({{discount}})",
+    "redeemCode": "コードを使う",
+    "notApplied": "このコードでは割引を利用できません。"
   }
 }

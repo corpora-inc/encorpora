@@ -32,7 +32,7 @@ CLI
         [--out <output-dir>]            # default: <input-dir>/build
         [--placeholder | --strict]      # how to handle missing translations
         [--langs en,es,fr,...]          # override target language coverage
-                                          (default: full 51-language set)
+                                          (default: full 54-language set)
         [--quiet]
 """
 
@@ -390,7 +390,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     g = parser.add_mutually_exclusive_group()
     g.add_argument("--placeholder", action="store_true", help="Fill missing translations with [<lang>] <english> marker (debug only)")
     g.add_argument("--strict", action="store_true", help="Hard-fail on any missing translation")
-    parser.add_argument("--langs", help="Comma-separated target language codes (default: full 51-language set)")
+    parser.add_argument("--langs", help="Comma-separated target language codes (default: full 54-language set)")
     parser.add_argument("--quiet", action="store_true")
     ns = parser.parse_args(argv)
 

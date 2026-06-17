@@ -37,6 +37,11 @@ export default defineConfig({
     "process.env": {},
   },
   plugins: [updateManifestPlugin()],
+  resolve: {
+    alias: {
+      "@shared/monetization": path.resolve(__dirname, "../shared/monetization/index.ts"),
+    },
+  },
   server: {
     port: 5173,
     open: false,

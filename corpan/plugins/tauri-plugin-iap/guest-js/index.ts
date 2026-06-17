@@ -12,15 +12,36 @@ export interface InitializeResponse {
 }
 
 /**
+ * Payment mode for an introductory offer phase (iOS/macOS only).
+ * Mirrors StoreKit's `Product.SubscriptionOffer.PaymentMode`.
+ */
+export type IntroOfferPaymentMode = "freeTrial" | "payAsYouGo" | "payUpFront";
+
+/**
  * Represents a pricing phase for subscription products
  */
 export interface PricingPhase {
   formattedPrice: string;
   priceCurrencyCode: string;
+  /** Intro price in micros (price × 1,000,000). 0 for a free trial. */
   priceAmountMicros: number;
+  /**
+   * ISO 8601 billing period for the phase (e.g. "P1W", "P1M", "P1Y").
+   * For an iOS intro offer this is the intro offer's period.
+   */
   billingPeriod: string;
+  /**
+   * Number of billing cycles the phase repeats. For an iOS intro offer this
+   * is the offer's `periodCount` (e.g. 3 months of pay-as-you-go).
+   */
   billingCycleCount: number;
   recurrenceMode: number;
+  /**
+   * Payment mode for an introductory offer phase (iOS/macOS only).
+   * Present only on the intro-offer pricing phase; absent on Android phases
+   * and on the regular (non-intro) phase.
+   */
+  paymentMode?: IntroOfferPaymentMode;
 }
 
 /**
@@ -377,6 +398,58 @@ export async function getProductStatus(
       productType,
     },
   });
+}
+
+/**
+ * Present the App Store offer-code redemption sheet (iOS only).
+ *
+ * On iOS this opens StoreKit's "Redeem Code" sheet
+ * (`AppStore.presentOfferCodeRedeemSheet`, falling back to
+ * `SKPaymentQueue.presentCodeRedemptionSheet`). The resulting transaction is
+ * delivered through the `onPurchaseUpdated` listener — this call only presents
+ * the sheet and resolves once it has been shown.
+ *
+ * Not supported on Android (offer codes are entered via an in-app code field +
+ * offer token) or desktop; the promise rejects with an "unsupported" error on
+ * those platforms.
+ *
+ * @returns Promise that resolves once the sheet is presented
+ * @example
+ * ```typescript
+ * try {
+ *   await presentOfferCodeRedeemSheet();
+ * } catch (e) {
+ *   // unsupported platform, or sheet could not be presented
+ * }
+ * ```
+ */
+export async function presentOfferCodeRedeemSheet(): Promise<void> {
+  return await invoke<void>("plugin:iap|present_offer_code_redeem_sheet");
+}
+
+/**
+ * Request the OS-native in-app review prompt.
+ *
+ * On iOS this calls StoreKit's `SKStoreReviewController.requestReview(in:)`;
+ * on Android it runs the Google Play In-App Review flow
+ * (`ReviewManager.requestReviewFlow` → `launchReviewFlow`). On macOS / Windows /
+ * Linux / desktop dev builds it resolves as a clean no-op.
+ *
+ * The OS is the real throttle: iOS shows the prompt at most ~3×/year, and Play
+ * shows its card on its own cadence (and may show nothing). Neither platform
+ * tells the app whether a prompt was actually displayed, so this resolves once
+ * the request has been made — treat it as a fire-and-forget best-effort nudge,
+ * never gate any functionality on it, and never await-block UI/navigation on it.
+ *
+ * @returns Promise that resolves once the review request has been made
+ * @example
+ * ```typescript
+ * // Best-effort, fire-and-forget on a natural boundary (e.g. pack exit):
+ * void requestReview().catch(() => {});
+ * ```
+ */
+export async function requestReview(): Promise<void> {
+  return await invoke<void>("plugin:iap|request_review");
 }
 
 /**

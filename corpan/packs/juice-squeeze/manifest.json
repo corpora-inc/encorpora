@@ -1,7 +1,7 @@
 {
   "id": "juice_squeeze",
   "name": "Juice Squeeze",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"

@@ -32,6 +32,10 @@ import {
   sortScenes,
   type Scene,
 } from "../../store/scenesStore"
+import { selectGroove } from "../../store/selectedGroove"
+import { disarmAllRecord } from "../../store/recordArm"
+import { buildEmptySnapshot, buildRandomSnapshot } from "./startFresh"
+import { compileDemo, getDemo } from "./demos"
 
 export interface ScenesState {
   /** Newest-first saved scenes for the active song. */
@@ -50,6 +54,13 @@ export interface ScenesController {
   save(name?: string): Promise<Scene>
   /** Load a scene into the live doc (atomic + undoable via the bus). */
   load(sceneId: Id): void
+  /** Start fresh: wipe to the EMPTY default (Clear). One undoable step. */
+  clear(): void
+  /** Start fresh: an empty grid with randomized instruments / kit / harmony /
+   *  meter (Randomize). One undoable step; also re-rolls the selected groove. */
+  randomize(): void
+  /** Start fresh: load a shipped demo song by id (no-op if unknown). Undoable. */
+  loadDemo(demoId: string): boolean
   /** Rename a scene (ignored if blank). */
   rename(sceneId: Id, name: string): Promise<void>
   /** Delete a scene. */
@@ -69,6 +80,8 @@ export interface ScenesControllerOpts {
   now?: () => number
   /** Inject the name seed — tests pass a fixed seed for deterministic names. */
   seed?: () => number
+  /** Inject the 0..1 RNG used by Randomize — tests pass a seeded stream. */
+  rng?: () => number
 }
 
 export const createScenesController = (
@@ -77,6 +90,7 @@ export const createScenesController = (
 ): ScenesController => {
   const now = opts.now ?? (() => Date.now())
   const seed = opts.seed ?? seedNow
+  const rng = opts.rng ?? Math.random
 
   const vanilla = createStore<ScenesState>(() => ({
     scenes: [],
@@ -151,6 +165,37 @@ export const createScenesController = (
       bus.dispatch({ t: "loadScene", snapshot: scene.snapshot })
       baseSnapshot = scene.snapshot
       vanilla.setState({ activeSceneId: scene.id, dirty: false })
+    },
+
+    // ----- Start fresh: clear / randomize / load a demo -----
+    // All three replace the musical state via ONE undoable `loadScene` command
+    // (a mis-tap is one undo away) and drop any "loaded scene" context — these
+    // are fresh starts, not saved scenes. Persisted via the store's debounce.
+    clear(): void {
+      bus.dispatch({ t: "loadScene", snapshot: buildEmptySnapshot() })
+      disarmAllRecord() // the old tracks are gone — never come up armed
+      baseSnapshot = null
+      vanilla.setState({ activeSceneId: null, dirty: false })
+    },
+
+    randomize(): void {
+      const { snapshot, grooveId } = buildRandomSnapshot(rng)
+      bus.dispatch({ t: "loadScene", snapshot })
+      selectGroove(grooveId) // the selected-groove slice lives outside the doc
+      disarmAllRecord()
+      baseSnapshot = null
+      vanilla.setState({ activeSceneId: null, dirty: false })
+    },
+
+    loadDemo(demoId: string): boolean {
+      const demo = getDemo(demoId)
+      if (!demo) return false
+      bus.dispatch({ t: "loadScene", snapshot: compileDemo(demo) })
+      if (demo.grooveId) selectGroove(demo.grooveId)
+      disarmAllRecord()
+      baseSnapshot = null
+      vanilla.setState({ activeSceneId: null, dirty: false })
+      return true
     },
 
     async rename(sceneId: Id, name: string): Promise<void> {

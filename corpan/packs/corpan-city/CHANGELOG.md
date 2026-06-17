@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.8] - 2026-06-16 — Catalog localization (jv/su/tl) unblocks Pages deploy
+
 - Catalog listing: add the Javanese (jv), Sundanese (su) and Tagalog (tl)
   `nameLocalized` + `descriptionLocalized` strings introduced as supported
   languages in 0.18.1. Corpan City is the only catalog pack with

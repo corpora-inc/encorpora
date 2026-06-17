@@ -9,6 +9,11 @@ export default defineConfig({
   define: {
     "process.env": {},
   },
+  resolve: {
+    alias: {
+      "@shared/monetization": path.resolve(__dirname, "../shared/monetization/index.ts"),
+    },
+  },
   plugins: [react(), devManifestPlugin()],
   build: {
     outDir: "dist",

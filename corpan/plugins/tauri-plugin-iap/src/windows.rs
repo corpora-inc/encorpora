@@ -242,6 +242,7 @@ impl<R: Runtime> Iap<R> {
                         billing_period: billing_period_str,
                         billing_cycle_count: 0, // Windows doesn't provide this directly
                         recurrence_mode: 1,     // Infinite recurring
+                        payment_mode: None,     // iOS/macOS-only field
                     };
 
                     let offer = SubscriptionOffer {
@@ -573,6 +574,25 @@ impl<R: Runtime> Iap<R> {
                 purchase_token: None,
             })
         }
+    }
+
+    pub async fn present_offer_code_redeem_sheet(&self) -> crate::Result<()> {
+        // The offer-code redeem sheet is an iOS-only StoreKit affordance.
+        Err(crate::Error::PluginInvoke(
+            PluginInvokeError::InvokeRejected(ErrorResponse {
+                code: Some("unsupported".to_string()),
+                message: Some(
+                    "Offer code redemption is not supported on this platform.".to_string(),
+                ),
+                data: (),
+            }),
+        ))
+    }
+
+    pub async fn request_review(&self) -> crate::Result<()> {
+        // No native in-app review sheet wired on Windows — resolve cleanly so
+        // the host's best-effort pack-exit trigger never surfaces an error.
+        Ok(())
     }
 }
 

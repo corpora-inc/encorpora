@@ -20,6 +20,7 @@ import { TOOL_CLOSE, TOOL_OPEN } from "./protocol"
 import { createCommandBus } from "../model/commandBus"
 import { createBeatloungeStore } from "../store/store"
 import { createDefaultDoc } from "../model/document"
+import { stockLoopDoc } from "../testing/stockLoop"
 import { reduce } from "../model/reduce"
 import type { HostApi, LlmChatHandlers } from "../sdk/types"
 import type { BeatloungeDoc } from "../model/document"
@@ -215,7 +216,8 @@ describe("runtime — the headline guarantee (≈100% success)", () => {
   })
 
   it("MOST utterances actually mutate the loop (no-ops are the exception)", async () => {
-    const store = makeStore()
+    // Seed the stock loop so density/euclid edits have hits to work on.
+    const store = createBeatloungeStore(createCommandBus(stockLoopDoc()))
     const rt = createLlmGridRuntime({ hostApi: fakeHost(), store })
     let mutated = 0
     for (const u of utterances) {

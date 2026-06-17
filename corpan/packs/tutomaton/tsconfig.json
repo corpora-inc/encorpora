@@ -14,7 +14,8 @@
     "useDefineForClassFields": true,
     "allowImportingTsExtensions": false,
     "paths": {
-      "@corpan/sdk": ["../sdk/src/index.ts"]
+      "@corpan/sdk": ["../sdk/src/index.ts"],
+      "@shared/monetization": ["../shared/monetization/index.ts"]
     }
   },
   "include": ["src/**/*", "languages/**/retrieval/*.ts"]

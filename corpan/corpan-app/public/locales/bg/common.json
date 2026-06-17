@@ -314,7 +314,8 @@
       "joinTitle": "Присъединете се към Corpanistas",
       "start": "Започнете да изследвате",
       "subtitle": "Corpán е създаден от малък екип с отворен код. Елате да ни поздравите — и ако ви харесва, можете да ни подкрепите.",
-      "title": "Всичко е готово"
+      "title": "Всичко е готово",
+      "explore": "Разглеждам самостоятелно"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "Преглед на {{name}}",
     "voicePreviewSelected": "Преглед на избраното",
     "voiceRecommended": "Препоръчано",
-    "voiceSelectedCount": "{{count}} от {{total}}"
+    "voiceSelectedCount": "{{count}} от {{total}}",
+    "whatToStart": {
+      "title": "Откъде да започнем?",
+      "subtitle": "Избери едно, за да започнеш — останалото е на едно докосване.",
+      "read": {
+        "label": "Чети",
+        "desc": "Потопи се в истории и книги."
+      },
+      "study": {
+        "label": "Учи",
+        "desc": "Изгради речника си с целенасочена практика."
+      },
+      "playMusic": {
+        "label": "Свири",
+        "desc": "Опитай езика си на пулта."
+      },
+      "playGames": {
+        "label": "Играй",
+        "desc": "Учи чрез забавни предизвикателства."
+      },
+      "surprise": {
+        "label": "Изненадай ме!",
+        "desc": "Заведи ме някъде забавно."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "Използвайте букви, цифри, тирета или долни черти.",
     "affiliateChecking": "Проверка на кода...",
     "affiliateApplied": "Кодът ще бъде прикачен към този абонамент.",
-    "affiliateCodeHelp": "Ако някой ви е изпратил тук, въведете кода му преди абониране."
+    "affiliateCodeHelp": "Ако някой ви е изпратил тук, въведете кода му преди абониране.",
+    "introPriceHeadline": "{{introPrice}} за {{period}}",
+    "introPriceThen": ", след това {{price}}/{{period}}",
+    "perMonth": "месец",
+    "perYear": "година",
+    "startFreeTrial": "Започнете безплатен пробен период",
+    "trialFirstCharge": "{{period}}: първо плащане",
+    "trialHeadline": "{{period}} безплатно",
+    "trialReassurance": "Без плащане сега · отмяна по всяко време",
+    "trialThenPrice": ", след това {{price}}/{{period}}",
+    "trialToday": "Днес: начало"
   },
   "restore": {
     "button": "Възстановяване на покупки",
@@ -715,7 +750,8 @@
     "subhead": "Отключете всяка книга на всеки език. Без реклами. Данните ви остават на устройството.",
     "pitch": "Ние сме малък екип и влагаме всеки цент обратно в Corpán. Corpanistas го поддържат без реклами и го развиват.",
     "maybeLater": "Може би по-късно",
-    "continue": "Продължи"
+    "continue": "Продължи",
+    "dismiss": "Отхвърляне"
   },
   "streak": {
     "title": "{{count}}-дневен низ"
@@ -819,5 +855,35 @@
     "update": "Актуализирай",
     "updateNow": "Актуализирай сега",
     "versionLine": "Версия {{version}} е готова за инсталиране."
+  },
+  "streakBadge": {
+    "label": "{{days}}-дневна серия"
+  },
+  "dailyLock": {
+    "title": "Вашите {{count}} {{unit}} за днес",
+    "streakActive": "{{days}}-дневна серия — върнете се утре, за да я продължите.",
+    "streakStart": "Върнете се утре, за да я продължите.",
+    "resetIn": "Нулира се след {{time}}",
+    "cta": "Продължете сега с Corpán Plus",
+    "dismiss": "Може би по-късно",
+    "closeAria": "Отхвърляне",
+    "countdownHm": "{{h}}ч {{m}}м",
+    "countdownM": "{{m}}м",
+    "countdownSoon": "всеки момент"
+  },
+  "code": {
+    "attributedUnverified": "Кодът ще бъде добавен към вашия абонамент.",
+    "checkFailed": "Неуспешна проверка",
+    "checking": "Проверка на кода…",
+    "creditedTo": "кредитиран към {{partner}}",
+    "fieldLabel": "Код за оферта или партньор",
+    "help": "Имате код? Въведете го, за да приложите офертата си.",
+    "redeemUnavailable": "Неуспешно отваряне на екрана за осребряване. Моля, опитайте отново.",
+    "redeemWithApple": "Осребряване с Apple",
+    "redeeming": "Отваряне на осребряване…",
+    "retry": "Опитайте отново",
+    "subscribeWithDiscount": "Абонирайте се ({{discount}})",
+    "redeemCode": "Активиране на кода",
+    "notApplied": "Този код не дава отстъпка."
   }
 }

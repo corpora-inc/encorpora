@@ -1,7 +1,7 @@
 {
   "name": "corpan",
   "private": true,
-  "version": "0.18.1",
+  "version": "0.19.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +10,7 @@
     "tauri": "bash scripts/ios-privacy-preflight.sh && tauri",
     "tailwind:init": "tailwindcss init -p",
     "tsc": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test 'src/**/*.test.ts'",
     "check:i18n": "node scripts/check-i18n.mjs",
     "check:recommendations": "node scripts/check-recommendations.mjs",
     "ios:redeploy": "npm run tauri ios dev",

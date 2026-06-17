@@ -314,7 +314,8 @@
       "joinTitle": "הצטרפו ל-Corpanistas",
       "start": "התחל לחקור",
       "subtitle": "Corpán נוצר על ידי צוות קוד פתוח קטן. בוא לומר שלום — ואם אתה אוהב את זה, תוכל לתמוך בנו.",
-      "title": "הכל מוכן"
+      "title": "הכל מוכן",
+      "explore": "לחקור בעצמי"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "תצוגה מקדימה של {{name}}",
     "voicePreviewSelected": "תצוגה מקדימה נבחרה",
     "voiceRecommended": "מומלץ",
-    "voiceSelectedCount": "{{count}} מתוך {{total}}"
+    "voiceSelectedCount": "{{count}} מתוך {{total}}",
+    "whatToStart": {
+      "title": "מאיפה נתחיל?",
+      "subtitle": "בחר אחת כדי לצלול פנימה — השאר במרחק נגיעה.",
+      "read": {
+        "label": "קריאה",
+        "desc": "צלול אל תוך סיפורים וספרים."
+      },
+      "study": {
+        "label": "לימוד",
+        "desc": "הרחב את אוצר המילים בתרגול ממוקד."
+      },
+      "playMusic": {
+        "label": "נגינה",
+        "desc": "התנסה בשפה שלך מאחורי הפלטות."
+      },
+      "playGames": {
+        "label": "משחקים",
+        "desc": "למד דרך אתגרים משחקיים."
+      },
+      "surprise": {
+        "label": "הפתע אותי!",
+        "desc": "קח אותי למקום כיפי."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "השתמשו באותיות, מספרים, מקפים או קווים תחתונים.",
     "affiliateChecking": "בודקים את הקוד...",
     "affiliateApplied": "הקוד יצורף למינוי הזה.",
-    "affiliateCodeHelp": "אם מישהו שלח אותך לכאן, הזן את הקוד שלו לפני ההרשמה."
+    "affiliateCodeHelp": "אם מישהו שלח אותך לכאן, הזן את הקוד שלו לפני ההרשמה.",
+    "introPriceHeadline": "{{introPrice}} עבור {{period}}",
+    "introPriceThen": ", לאחר מכן {{price}}/{{period}}",
+    "perMonth": "חודש",
+    "perYear": "שנה",
+    "startFreeTrial": "התחל תקופת ניסיון חינם",
+    "trialFirstCharge": "{{period}}: חיוב ראשון",
+    "trialHeadline": "{{period}} חינם",
+    "trialReassurance": "אין תשלום כעת · ניתן לבטל בכל עת",
+    "trialThenPrice": ", לאחר מכן {{price}}/{{period}}",
+    "trialToday": "היום: התחלה"
   },
   "restore": {
     "button": "שַׁחְזֵר רְכִישׁוֹת",
@@ -715,7 +750,8 @@
     "subhead": "פתחו כל ספר בכל שפה. ללא פרסומות. הנתונים שלכם נשארים במכשיר.",
     "pitch": "אנחנו צוות קטן ומשקיעים כל אגורה בחזרה ב-Corpán. ה-Corpanistas שומרים על האפליקציה ללא פרסומות וממשיכים לפתח אותה.",
     "maybeLater": "אולי אחר כך",
-    "continue": "המשך"
+    "continue": "המשך",
+    "dismiss": "התעלם"
   },
   "streak": {
     "title": "רצף של {{count}} ימים"
@@ -819,5 +855,35 @@
     "update": "עדכן",
     "updateNow": "עדכן עכשיו",
     "versionLine": "גרסה {{version}} מוכנה להתקנה."
+  },
+  "streakBadge": {
+    "label": "רצף של {{days}} ימים"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} שלך להיום",
+    "streakActive": "רצף של {{days}} ימים — חזור מחר כדי להמשיך.",
+    "streakStart": "חזור מחר כדי להמשיך.",
+    "resetIn": "מתאפס בעוד {{time}}",
+    "cta": "המשך עכשיו עם Corpán Plus",
+    "dismiss": "אולי מאוחר יותר",
+    "closeAria": "סגור",
+    "countdownHm": "{{h}}ש {{m}}ד",
+    "countdownM": "{{m}}ד",
+    "countdownSoon": "בכל רגע"
+  },
+  "code": {
+    "attributedUnverified": "הקוד יצורף למנוי שלך.",
+    "checkFailed": "לא ניתן לבדוק",
+    "checking": "בודק קוד…",
+    "creditedTo": "זוכה ל{{partner}}",
+    "fieldLabel": "קוד הצעה או שותף",
+    "help": "יש לך קוד? הזן אותו כדי להחיל את ההצעה שלך.",
+    "redeemUnavailable": "לא ניתן לפתוח את מסך המימוש. אנא נסה שוב.",
+    "redeemWithApple": "מימוש עם Apple",
+    "redeeming": "פותח מימוש…",
+    "retry": "נסה שוב",
+    "subscribeWithDiscount": "הירשם ({{discount}})",
+    "redeemCode": "מימוש קוד",
+    "notApplied": "הקוד הזה לא מקנה הנחה."
   }
 }

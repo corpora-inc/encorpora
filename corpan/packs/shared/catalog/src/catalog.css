@@ -1740,15 +1740,6 @@
   max-height: 20px;
 }
 
-.catalog-list-price.catalog-card-meta {
-  flex-shrink: 0;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--catalog-text-dim);
-  white-space: nowrap;
-  align-self: center;
-}
-
 /* On wide screens the compact list reads better as two columns — the rows are
    short, so a single column wastes the iPad/desktop width. */
 @media (min-width: 768px) {

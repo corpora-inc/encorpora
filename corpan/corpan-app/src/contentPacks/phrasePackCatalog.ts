@@ -12,6 +12,11 @@
 
 import { type PurchaseInfo } from "./catalog";
 import {
+    fetchJsonFresh,
+    type FreshnessResult,
+    type Validators,
+} from "./catalogFetch";
+import {
     type LocalizedString,
     parseLocalizedString,
     resolveLocalized,
@@ -244,20 +249,29 @@ function getCatalogUrl(): string {
     return DEFAULT_PHRASE_PACK_CATALOG_URL;
 }
 
+/**
+ * Freshness-aware phrase-pack catalog fetch used by the store. Sends the
+ * stored validators for conditional revalidation (304 = a 0-byte poll) and is
+ * timeout-bounded + retried, so a hung socket can't wedge the caller. Throws
+ * only after exhausting retries — the store treats a throw as "keep cache".
+ */
+export async function fetchPhrasePackCatalogFresh(
+    validators?: Validators,
+): Promise<FreshnessResult<PhrasePackCatalog>> {
+    return fetchJsonFresh<PhrasePackCatalog>(getCatalogUrl(), {
+        parse: parsePhrasePackCatalog,
+        validators,
+    });
+}
+
+/**
+ * Back-compat wrapper returning the parsed catalog or null on any failure.
+ * Kept for call sites that don't track freshness.
+ */
 export async function fetchPhrasePackCatalog(): Promise<PhrasePackCatalog | null> {
-    const url = getCatalogUrl();
     try {
-        const res = await fetch(url, { cache: "no-store" });
-        if (!res.ok) {
-            console.warn(
-                "[phrase-pack catalog] fetch returned non-OK:",
-                res.status,
-                url,
-            );
-            return null;
-        }
-        const data = (await res.json()) as unknown;
-        return parsePhrasePackCatalog(data);
+        const r = await fetchPhrasePackCatalogFresh();
+        return r.status === "ok" ? r.data : null;
     } catch (err) {
         console.warn("[phrase-pack catalog] fetch failed:", err);
         return null;

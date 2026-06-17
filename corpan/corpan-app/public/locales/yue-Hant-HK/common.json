@@ -314,7 +314,8 @@
       "joinTitle": "加入 Corpanistas",
       "start": "開始探索",
       "subtitle": "Corpán 由一個小型開源團隊製作。歡迎打招呼 — 如果您喜歡，可以支持我們。",
-      "title": "您已準備就緒"
+      "title": "您已準備就緒",
+      "explore": "自己探索"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "預覽 {{name}}",
     "voicePreviewSelected": "已選預覽",
     "voiceRecommended": "推薦",
-    "voiceSelectedCount": "{{total}} 個中的 {{count}} 個"
+    "voiceSelectedCount": "{{total}} 個中的 {{count}} 個",
+    "whatToStart": {
+      "title": "我哋由邊度開始好？",
+      "subtitle": "揀一個即刻開始，其餘嘅撳一下就得。",
+      "read": {
+        "label": "閱讀",
+        "desc": "潛入故事同書本入面。"
+      },
+      "study": {
+        "label": "學習",
+        "desc": "靠專注練習儲多啲詞彙。"
+      },
+      "playMusic": {
+        "label": "玩音樂",
+        "desc": "喺打碟枱度試吓你嘅語言。"
+      },
+      "playGames": {
+        "label": "玩遊戲",
+        "desc": "喺得意嘅挑戰入面學嘢。"
+      },
+      "surprise": {
+        "label": "畀個驚喜我！",
+        "desc": "帶我去個好玩嘅地方。"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "請使用字母、數字、連字符或底線。",
     "affiliateChecking": "正在檢查代碼...",
     "affiliateApplied": "代碼會連結到呢個訂閱。",
-    "affiliateCodeHelp": "如果有人介紹你嚟呢度，訂閱前請輸入佢嘅代碼。"
+    "affiliateCodeHelp": "如果有人介紹你嚟呢度，訂閱前請輸入佢嘅代碼。",
+    "introPriceHeadline": "{{introPrice}}／{{period}}",
+    "introPriceThen": "，然後{{price}}／{{period}}",
+    "perMonth": "月",
+    "perYear": "年",
+    "startFreeTrial": "開始免費試用",
+    "trialFirstCharge": "{{period}}：首次收費",
+    "trialHeadline": "{{period}}免費",
+    "trialReassurance": "現在無需付款 · 隨時取消",
+    "trialThenPrice": "，然後{{price}}／{{period}}",
+    "trialToday": "今日：開始"
   },
   "restore": {
     "button": "恢復購買",
@@ -715,7 +750,8 @@
     "subhead": "解鎖所有語言的書籍。無廣告。你的資料只會儲存在你的裝置。",
     "pitch": "我們是小團隊，將每分錢都投入到 Corpán 的發展中。Corpanistas 讓它保持無廣告並持續成長。",
     "maybeLater": "稍後再說",
-    "continue": "繼續"
+    "continue": "繼續",
+    "dismiss": "關閉"
   },
   "streak": {
     "title": "{{count}}日連續學習"
@@ -819,5 +855,35 @@
     "update": "更新",
     "updateNow": "立即更新",
     "versionLine": "版本 {{version}} 已準備好安裝。"
+  },
+  "streakBadge": {
+    "label": "{{days}} 日連續"
+  },
+  "dailyLock": {
+    "title": "你今日的 {{count}} {{unit}}",
+    "streakActive": "{{days}} 日連續 — 明日再嚟保持進度。",
+    "streakStart": "明日再嚟保持進度。",
+    "resetIn": "{{time}} 後重設",
+    "cta": "立即用 Corpán Plus 繼續",
+    "dismiss": "稍後再說",
+    "closeAria": "關閉",
+    "countdownHm": "{{h}} 小時 {{m}} 分鐘",
+    "countdownM": "{{m}} 分鐘",
+    "countdownSoon": "隨時"
+  },
+  "code": {
+    "attributedUnverified": "代碼將附加到您的訂閱。",
+    "checkFailed": "無法檢查",
+    "checking": "正在檢查代碼…",
+    "creditedTo": "已記入{{partner}}",
+    "fieldLabel": "優惠或聯盟代碼",
+    "help": "有代碼嗎？輸入以應用您的優惠。",
+    "redeemUnavailable": "無法打開兌換畫面。請再試一次。",
+    "redeemWithApple": "用 Apple 兌換",
+    "redeeming": "正在打開兌換…",
+    "retry": "重試",
+    "subscribeWithDiscount": "訂閱（{{discount}}）",
+    "redeemCode": "使用代碼",
+    "notApplied": "呢個代碼冇折扣優惠。"
   }
 }

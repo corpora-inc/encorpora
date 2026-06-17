@@ -6,6 +6,7 @@ export default defineConfig({
     alias: {
       "@corpan-city/contracts": path.resolve(__dirname, "contracts/src/index.ts"),
       "@shared/moderation": path.resolve(__dirname, "../shared/moderation/index.ts"),
+      "@shared/monetization": path.resolve(__dirname, "../shared/monetization/index.ts"),
     },
   },
   test: {
@@ -13,6 +14,8 @@ export default defineConfig({
     include: [
       "**/*.test.ts",
       "../shared/moderation/**/*.test.ts",
+      "../shared/monetization/**/*.test.ts",
+      "../shared/streak/**/*.test.ts",
       "../shared/net/**/*.test.ts",
     ],
   },

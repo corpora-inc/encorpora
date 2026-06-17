@@ -314,7 +314,8 @@
       "joinTitle": "Pridajte sa ku Corpanistas",
       "start": "Začať objavovať",
       "subtitle": "Corpán tvorí malý open-source tím. Pozdravte nás — a ak sa vám páči, môžete nás podporiť.",
-      "title": "Všetko je pripravené"
+      "title": "Všetko je pripravené",
+      "explore": "Preskúmať sám"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "Náhľad {{name}}",
     "voicePreviewSelected": "Náhľad vybraného",
     "voiceRecommended": "Odporúčané",
-    "voiceSelectedCount": "{{count}} z {{total}}"
+    "voiceSelectedCount": "{{count}} z {{total}}",
+    "whatToStart": {
+      "title": "Kde začneme?",
+      "subtitle": "Vyber si jedno a začni — zvyšok máš na dosah.",
+      "read": {
+        "label": "Čítať",
+        "desc": "Ponor sa do príbehov a kníh."
+      },
+      "study": {
+        "label": "Študovať",
+        "desc": "Rozšír si slovnú zásobu cieleným precvičovaním."
+      },
+      "playMusic": {
+        "label": "Hrať hudbu",
+        "desc": "Vyskúšaj svoj jazyk za mixákmi."
+      },
+      "playGames": {
+        "label": "Hrať hry",
+        "desc": "Uč sa zábavnými výzvami."
+      },
+      "surprise": {
+        "label": "Prekvap ma!",
+        "desc": "Zaveď ma niekam zábavného."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "Použite písmená, čísla, spojovníky alebo podčiarkovníky.",
     "affiliateChecking": "Kontroluje sa kód...",
     "affiliateApplied": "Kód bude pripojený k tomuto predplatnému.",
-    "affiliateCodeHelp": "Ak vás sem niekto poslal, zadajte jeho kód pred predplatením."
+    "affiliateCodeHelp": "Ak vás sem niekto poslal, zadajte jeho kód pred predplatením.",
+    "introPriceHeadline": "{{introPrice}} na {{period}}",
+    "introPriceThen": ", potom {{price}}/{{period}}",
+    "perMonth": "mesiac",
+    "perYear": "rok",
+    "startFreeTrial": "Začať bezplatnú skúšobnú verziu",
+    "trialFirstCharge": "{{period}}: prvé účtovanie",
+    "trialHeadline": "{{period}} zadarmo",
+    "trialReassurance": "Žiadna platba teraz · zrušiť kedykoľvek",
+    "trialThenPrice": ", potom {{price}}/{{period}}",
+    "trialToday": "Dnes: začiatok"
   },
   "restore": {
     "button": "Obnoviť nákupy",
@@ -715,7 +750,8 @@
     "subhead": "Odomknite každú knihu v každom jazyku. Žiadne reklamy. Vaše údaje zostávajú vo vašom zariadení.",
     "pitch": "Sme malý tím a každý cent vraciame späť do Corpánu. Corpanistas ho udržujú bez reklám a rozvíjajú.",
     "maybeLater": "Možno neskôr",
-    "continue": "Pokračovať"
+    "continue": "Pokračovať",
+    "dismiss": "Zavrieť"
   },
   "streak": {
     "title": "{{count}}-dňová séria"
@@ -819,5 +855,35 @@
     "update": "Aktualizovať",
     "updateNow": "Aktualizovať teraz",
     "versionLine": "Verzia {{version}} je pripravená na inštaláciu."
+  },
+  "streakBadge": {
+    "label": "{{days}}-dňová séria"
+  },
+  "dailyLock": {
+    "title": "Vaša {{count}} {{unit}} na dnes",
+    "streakActive": "{{days}}-dňová séria — vráťte sa zajtra, aby ste ju udržali.",
+    "streakStart": "Vráťte sa zajtra, aby ste ju udržali.",
+    "resetIn": "Obnoví sa za {{time}}",
+    "cta": "Pokračujte teraz s Corpán Plus",
+    "dismiss": "Možno neskôr",
+    "closeAria": "Zavrieť",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "každú chvíľu"
+  },
+  "code": {
+    "attributedUnverified": "Kód bude pripojený k vášmu predplatnému.",
+    "checkFailed": "Nemožno overiť",
+    "checking": "Overovanie kódu…",
+    "creditedTo": "pripísané na {{partner}}",
+    "fieldLabel": "Ponukový alebo partnerský kód",
+    "help": "Máte kód? Zadajte ho na uplatnenie ponuky.",
+    "redeemUnavailable": "Nemožno otvoriť obrazovku uplatnenia. Skúste to znova.",
+    "redeemWithApple": "Uplatniť s Apple",
+    "redeeming": "Otváranie uplatnenia…",
+    "retry": "Skúsiť znova",
+    "subscribeWithDiscount": "Predplatiť ({{discount}})",
+    "redeemCode": "Uplatniť kód",
+    "notApplied": "Tento kód neposkytuje zľavu."
   }
 }

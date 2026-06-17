@@ -1,5 +1,10 @@
 import { create } from "zustand"
 import { useEntitlementStore } from "@/store/entitlements"
+import {
+  trackPaywallShownFunnel,
+  trackPaywallDismissedFunnel,
+  trackPaywallConvertedFunnel,
+} from "@/util/analytics"
 
 /**
  * Corpán Plus paywall sheet state. Opened by:
@@ -23,6 +28,17 @@ export type PaywallSurface =
   | "streak_milestone"
   | "book_finished"
   | "settings"
+  // Per-pack interaction-gated surfaces. Per-pack cadence (action-count /
+  // daily quota / time-armed) is owned pack-side by the shared paywall-gate
+  // helper; the 48h engagement cap below is only a GLOBAL BACKSTOP and does
+  // NOT apply to these (they are not in ENGAGEMENT_SURFACES).
+  | "beatlounge_session"
+  | "tutomaton_daily"
+  | "parlometron_daily"
+  | "hanzipan_chars"
+  | "hover_phrases"
+  | "phrase_flips"
+  | "juice_phrases"
   | "other"
 
 /** Auto-fired moments we frequency-cap (vs. user-initiated/strong-intent). */
@@ -47,13 +63,16 @@ function stampEngagement(now: number) {
   }
 }
 
-/** Visual skin for the paywall sheet. Readers pass their own so the sheet that
- *  overlays a running reader feels like part of it (earth-toned vs. space).
- *  Absent / unknown → the default Corpán (purple) treatment. */
+/** Legacy per-reader skin hint. Readers still pass this on `request-unlock`,
+ *  but the universal paywall IGNORES it — there is ONE dark, brand-defining
+ *  paywall everywhere now (no per-pack theming). Kept only so existing callers
+ *  type-check; safe to drop once readers stop sending it. */
 export type PaywallTheme = "earthgate" | "stargate"
 
 export type PaywallContext = {
   surface: PaywallSurface
+  /** Pack that requested the paywall, when a pack triggered it (analytics). */
+  packId?: string
   /** Book title to name in the subhead, if the trigger knows it. */
   bookTitle?: string
   bookId?: string
@@ -71,7 +90,7 @@ type PaywallState = {
   closePaywall: () => void
 }
 
-export const usePaywallStore = create<PaywallState>((set) => ({
+export const usePaywallStore = create<PaywallState>((set, get) => ({
   open: false,
   context: null,
   openPaywall: (context) => {
@@ -85,7 +104,26 @@ export const usePaywallStore = create<PaywallState>((set) => ({
       stampEngagement(now)
     }
     set({ open: true, context })
+    // Funnel: paywall_shown — fired at the single open chokepoint so it can
+    // never drift from the visual component the paywall team owns.
+    trackPaywallShownFunnel(context.surface, context.packId)
     return true
   },
-  closePaywall: () => set({ open: false, context: null }),
+  closePaywall: () => {
+    // Funnel: at the close chokepoint, classify by entitlement state. If the
+    // user is now subscribed, the sheet closed AFTER a successful purchase →
+    // paywall_converted; otherwise it was dismissed without converting. (The
+    // store-level converted event is a backstop; the authoritative plan/code/
+    // platform conversion is emitted from purchase.ts.)
+    const ctx = get().context
+    if (ctx) {
+      const sub = useEntitlementStore.getState().subscription
+      if (sub.active) {
+        trackPaywallConvertedFunnel(ctx.surface, sub.plan ?? "monthly", false)
+      } else {
+        trackPaywallDismissedFunnel(ctx.surface)
+      }
+    }
+    set({ open: false, context: null })
+  },
 }))

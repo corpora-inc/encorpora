@@ -51,3 +51,15 @@ pub(crate) async fn get_product_status<R: Runtime>(
         .get_product_status(payload.product_id, payload.product_type)
         .await
 }
+
+#[command]
+pub(crate) async fn present_offer_code_redeem_sheet<R: Runtime>(
+    app: AppHandle<R>,
+) -> Result<()> {
+    app.iap().present_offer_code_redeem_sheet().await
+}
+
+#[command]
+pub(crate) async fn request_review<R: Runtime>(app: AppHandle<R>) -> Result<()> {
+    app.iap().request_review().await
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import { CheckCircle2 } from "lucide-react"
 import { openUrl } from "@tauri-apps/plugin-opener"
@@ -6,7 +6,12 @@ import { Button } from "@/components/ui/button"
 import { OfflineNotice } from "@/components/OfflineNotice"
 import { useOnlineStatus } from "@/hooks/useOnlineStatus"
 import { useEntitlementStore } from "@/store/entitlements"
-import { trackPaidUnlockViewed } from "@/util/analytics"
+import { usePaywallStore } from "@/store/paywall"
+import {
+  trackPaidUnlockViewed,
+  trackPaywallCtaTapped,
+  trackCodeFieldOpened,
+} from "@/util/analytics"
 import {
   fetchProducts,
   purchaseAndVerify,
@@ -14,12 +19,16 @@ import {
   getProductStatus,
   isAffiliateCodeFormatValid,
   normalizeAffiliateCode,
-  resolveAffiliateCode,
+  resolveCode,
+  resolveOfferToken,
+  presentAppleOfferRedeemSheet,
+  setPendingResolution,
   restoreAndSync,
   SUBSCRIPTION_MONTHLY,
   SUBSCRIPTION_ANNUAL,
-  type AffiliateResolveResponse,
+  type CodeResolveResponse,
   type StoreProduct,
+  type IntroOffer,
 } from "@/contentPacks/purchase"
 
 const TERMS_URL = "https://encorpora.io/terms"
@@ -53,10 +62,30 @@ type PaywallState =
 // the middle of empty space.
 const CARD_WRAPPER = "w-full max-w-md md:max-w-xl mx-auto"
 
-export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: string } = {}) {
+export function SubscriptionOffer({
+  wrapperClassName,
+  chromeless = false,
+}: {
+  wrapperClassName?: string
+  /**
+   * Drop the light card chrome (rounded border + gradient fill + padding) for
+   * the "checking" / "ready" purchase states so the offer sits FLUSH inside a
+   * host shell that supplies its own surface — e.g. the universal dark paywall.
+   * Purely presentational: every purchase state, CTA, code field, restore, and
+   * analytics call is identical. The other states (subscribed / unreachable /
+   * offline / pending) keep their semantic color cards — they read fine on the
+   * dark shell and carry meaning, so we don't flatten them.
+   */
+  chromeless?: boolean
+} = {}) {
   // Width override for contexts (e.g. the Home hub) where the card should span
   // the surrounding grid instead of the default centered cap.
   const wrapper = wrapperClassName ?? CARD_WRAPPER
+  // The offer "card" surface. Chromeless → a bare flush container (the dark
+  // paywall shell owns the surface); otherwise the original light card.
+  const cardClass = chromeless
+    ? "space-y-3"
+    : "rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3"
   const { t } = useTranslation()
   const iapAvailable = useEntitlementStore((s) => s.iapAvailable)
   const platform = useEntitlementStore((s) => s.platform)
@@ -67,17 +96,17 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   const [isPurchasing, setIsPurchasing] = useState(false)
   const [isRestoring, setIsRestoring] = useState(false)
   const [restoreMessage, setRestoreMessage] = useState<string | null>(null)
-  // Affiliate / offer code entry is HIDDEN until the 0.17.4 codes feature
-  // (backend server-side resolve + in-app StoreKit/Billing redemption) lands —
-  // shipping a field that only records an unverified string is worse than no
-  // field. See corpan/infra/AFFILIATE_CODES_PLAN.md. Flip true to re-enable.
-  const SHOW_AFFILIATE_CODE_FIELD = false
+  // Offer / affiliate code entry. The server is the only authority (Phase 3
+  // codes backend) — the field resolves against /code/resolve and branches the
+  // CTA by the returned purchaseAction. It sits AFTER the plan + primary CTA as
+  // a secondary affordance, so we don't train discount expectation.
+  const SHOW_AFFILIATE_CODE_FIELD = true
   const [affiliateCode, setAffiliateCode] = useState("")
-  const [affiliateStatus, setAffiliateStatus] = useState<
+  const [codeStatus, setCodeStatus] = useState<
     | { kind: "idle" }
     | { kind: "checking"; code: string }
-    | { kind: "valid"; code: string; message?: string }
-    | { kind: "invalid"; code: string; error: string }
+    | { kind: "resolved"; code: string; response: Extract<CodeResolveResponse, { status: "ok" }> }
+    | { kind: "error"; code: string; error: string }
   >({ kind: "idle" })
 
   const storeLabel =
@@ -136,33 +165,42 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
     trackPaidUnlockViewed("subscription_offer")
   }, [iapAvailable])
 
+  const selectedProductId =
+    selectedPlan === "annual" ? SUBSCRIPTION_ANNUAL : SUBSCRIPTION_MONTHLY
+
+  // Funnel: code_field_opened — fire once, the first time the user actually
+  // engages the always-visible code field (first non-empty input). A ref keeps
+  // it a one-shot per mount without adding JSX/markup.
+  const codeFieldOpenedRef = useRef(false)
+
   useEffect(() => {
     const code = normalizeAffiliateCode(affiliateCode)
     if (!code) {
-      setAffiliateStatus({ kind: "idle" })
+      setCodeStatus({ kind: "idle" })
       return
     }
+    if (!codeFieldOpenedRef.current) {
+      codeFieldOpenedRef.current = true
+      trackCodeFieldOpened()
+    }
     if (!isAffiliateCodeFormatValid(code)) {
-      setAffiliateStatus({
-        kind: "invalid",
+      setCodeStatus({
+        kind: "error",
         code,
         error: t("subscription.affiliateInvalidFormat", "Use letters, numbers, dashes, or underscores."),
       })
       return
     }
-    setAffiliateStatus({ kind: "checking", code })
+    setCodeStatus({ kind: "checking", code })
     const timer = window.setTimeout(() => {
-      void resolveAffiliateCode(code).then((result: AffiliateResolveResponse) => {
+      void resolveCode(code, selectedProductId).then((result) => {
         if (normalizeAffiliateCode(affiliateCode) !== code) return
         if (result.status === "ok") {
-          setAffiliateStatus({
-            kind: "valid",
-            code: result.code,
-            message: result.message,
-          })
+          setCodeStatus({ kind: "resolved", code: result.code, response: result })
         } else {
-          setAffiliateStatus({
-            kind: "invalid",
+          // NEVER surface an error as "valid" (contract §0.2).
+          setCodeStatus({
+            kind: "error",
             code,
             error: result.error,
           })
@@ -170,17 +208,68 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
       })
     }, 450)
     return () => window.clearTimeout(timer)
-  }, [affiliateCode, t])
+  }, [affiliateCode, selectedProductId, t])
 
   const handleSubscribe = async () => {
     if (state.kind !== "ready") return
-    const productId =
-      selectedPlan === "annual" ? SUBSCRIPTION_ANNUAL : SUBSCRIPTION_MONTHLY
+    const productId = selectedProductId
+    // Funnel: paywall_cta_tapped — purchase INTENT, before the store sheet.
+    // Surface comes from the active paywall context, or "subscription_offer"
+    // when the offer is shown inline (Home hub / Settings).
+    const ctaSurface =
+      usePaywallStore.getState().context?.surface ?? "subscription_offer"
+    trackPaywallCtaTapped(ctaSurface, selectedPlan)
     setIsPurchasing(true)
     try {
       const code = normalizeAffiliateCode(affiliateCode)
+      const validCode = isAffiliateCodeFormatValid(code) ? code : undefined
+      const resolved =
+        codeStatus.kind === "resolved" && codeStatus.code === code
+          ? codeStatus.response
+          : null
+      const resolutionToken = resolved?.resolutionToken
+      const action = resolved?.purchaseAction
+
+      // Apple offer-code redemption: present the StoreKit sheet (or fall back
+      // to the redeem URL). The redeemed transaction flows back ASYNCHRONOUSLY
+      // through the plugin's `purchaseUpdated` listener (installed app-wide),
+      // which POSTs it to /verify-purchase carrying the resolutionToken we stash
+      // here — that's what writes the attribution + ledger rows. Without this
+      // stash the redemption would unlock locally but never attribute.
+      if (action === "REDEEM_APPLE_SHEET") {
+        setPendingResolution({ resolutionToken, affiliateCode: validCode })
+        const presented = await presentAppleOfferRedeemSheet({
+          appleOfferId: resolved?.appleOfferId,
+          appleRedeemUrl: resolved?.appleRedeemUrl,
+        })
+        if (!presented) {
+          // Sheet never opened — drop the pending token so a later unrelated
+          // transaction can't pick up a stale attribution.
+          setPendingResolution({})
+          setState({
+            kind: "store_unreachable",
+            error: t(
+              "code.redeemUnavailable",
+              "Couldn't open the redeem screen. Please try again."
+            ),
+          })
+          return
+        }
+        await refresh()
+        return
+      }
+
+      // Android per-code offer: re-read the live, session-bound offerToken from
+      // the store by matching the resolved offerId; never trust a backend token.
+      let offerToken: string | undefined
+      if (action === "USE_OFFER_TOKEN" && resolved?.offerTokenHint) {
+        offerToken = await resolveOfferToken(productId, resolved.offerTokenHint)
+      }
+
       const result = await purchaseAndVerify(productId, undefined, "subs", {
-        affiliateCode: isAffiliateCodeFormatValid(code) ? code : undefined,
+        affiliateCode: validCode,
+        offerToken,
+        resolutionToken,
       })
       if (result.cancelled) return
       if (result.alreadyOwned) {
@@ -277,7 +366,7 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   if (state.kind === "checking") {
     return (
       <div className={wrapper}>
-        <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
+        <div className={cardClass}>
           {/* Heading + description (~50px) */}
           <div className="space-y-2">
             <div className="h-4 w-32 rounded bg-muted/60 animate-pulse" />
@@ -344,7 +433,7 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
         <div className="rounded-xl border border-amber-200 bg-amber-50 dark:bg-amber-950/30 dark:border-amber-900 p-4 space-y-3">
           <div>
             <h3 className="font-semibold text-sm text-amber-900 dark:text-amber-100">
-              {t("subscription.storeUnreachable", "We couldn't reach the App Store right now.")}
+              {t("subscription.storeUnreachable", "We couldn't reach the store right now.")}
             </h3>
             <p className="text-xs text-amber-800/80 dark:text-amber-200/80 mt-1 break-words">
               {state.error}
@@ -403,6 +492,45 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
   const monthlyProduct = state.products.find((p) => p.productId === SUBSCRIPTION_MONTHLY)
   const annualProduct = state.products.find((p) => p.productId === SUBSCRIPTION_ANNUAL)
 
+  // Intro / free-trial framing for the CURRENTLY SELECTED plan. `null` (no
+  // offer configured / store gave none) → the card renders exactly as before.
+  const selectedProduct = selectedPlan === "annual" ? annualProduct : monthlyProduct
+  const selectedRecurringPrice = selectedProduct?.price ?? ""
+  const selectedPeriodLabel =
+    selectedPlan === "annual"
+      ? t("subscription.perYear", "year")
+      : t("subscription.perMonth", "month")
+  const intro: IntroOffer | null = selectedProduct?.introOffer ?? null
+  const hasFreeTrial = intro?.kind === "free_trial"
+  const hasIntroPrice = intro?.kind === "intro_price"
+
+  // A resolved code (matching the typed code) drives the discount UI + the CTA.
+  const resolvedCode =
+    codeStatus.kind === "resolved" &&
+    codeStatus.code === normalizeAffiliateCode(affiliateCode)
+      ? codeStatus.response
+      : null
+  // A code "redeems" when the server classified it as anything other than
+  // `unknown` — i.e. a real discount, a one-time redemption ("free year"), or a
+  // partner offer (discount / affiliate / discount+affiliate). The `unknown`
+  // path is attribute-only: it just attaches the code, so it keeps the plain
+  // trial CTA. This is driven SOLELY by the /code/resolve result, so the label
+  // flips even on a device that can't complete the native purchase (e.g.
+  // `tauri android dev`, which needs an internal-testing build to transact).
+  const codeRedeems = !!resolvedCode && resolvedCode.classification !== "unknown"
+
+  // CTA label. A usable resolved code → one universal "Redeem code". Otherwise
+  // the free-trial / plain Subscribe copy. Never "Continue".
+  const ctaLabel = isPurchasing
+    ? codeRedeems
+      ? t("code.redeeming", "Opening redeem…")
+      : t("subscription.subscribing", "Subscribing...")
+    : codeRedeems
+      ? t("code.redeemCode", "Redeem code")
+      : hasFreeTrial
+        ? t("subscription.startFreeTrial", "Start Free Trial")
+        : t("subscription.subscribe", "Subscribe")
+
   // Annual savings vs paying monthly × 12 — computed from raw micros so it's
   // accurate and currency-agnostic (it's a ratio). Shown as a quiet, language-
   // neutral "−N%" badge to nudge the higher-LTV annual plan. Only when the
@@ -414,18 +542,22 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
 
   return (
     <div className={wrapper}>
-      <div className="rounded-xl border bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
-        <div>
-          <h3 className="font-semibold text-sm">
-            {t("subscription.title", "Unlock everything")}
-          </h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            {t(
-              "subscription.description",
-              "Unlimited access to every narrated book and premium pack with a subscription."
-            )}
-          </p>
-        </div>
+      <div className={cardClass}>
+        {/* In the dark paywall the shell already carries the value line +
+            headline, so we omit this duplicate heading; standalone it stays. */}
+        {chromeless ? null : (
+          <div>
+            <h3 className="font-semibold text-sm">
+              {t("subscription.title", "Unlock everything")}
+            </h3>
+            <p className="text-xs text-muted-foreground mt-1">
+              {t(
+                "subscription.description",
+                "Unlimited access to every narrated book and premium pack with a subscription."
+              )}
+            </p>
+          </div>
+        )}
 
         <div className="flex gap-2">
           {annualProduct ? (
@@ -467,49 +599,141 @@ export function SubscriptionOffer({ wrapperClassName }: { wrapperClassName?: str
           ) : null}
         </div>
 
-        {SHOW_AFFILIATE_CODE_FIELD ? (
-        <label className="block space-y-1.5">
-          <span className="text-xs font-medium">
-            {t("subscription.affiliateCodeLabel", "Affiliate code")}
-          </span>
-          <input
-            value={affiliateCode}
-            onChange={(event) => setAffiliateCode(event.target.value)}
-            autoCapitalize="characters"
-            autoCorrect="off"
-            spellCheck={false}
-            maxLength={32}
-            placeholder={t("subscription.affiliateCodePlaceholder", "Optional")}
-            className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm uppercase placeholder:normal-case placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary"
-          />
-          <span
-            className={`block min-h-4 text-[11px] ${
-              affiliateStatus.kind === "invalid"
-                ? "text-destructive"
-                : "text-muted-foreground"
-            }`}
-          >
-            {affiliateStatus.kind === "checking"
-              ? t("subscription.affiliateChecking", "Checking code...")
-              : affiliateStatus.kind === "valid"
-                ? affiliateStatus.message ?? t("subscription.affiliateApplied", "Code will be attached to this subscription.")
-                : affiliateStatus.kind === "invalid"
-                  ? affiliateStatus.error
-                  : t("subscription.affiliateCodeHelp", "If someone sent you here, enter their code before subscribing.")}
-          </span>
-        </label>
+        {intro && intro.periodLabel ? (
+          <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 space-y-2.5">
+            {hasFreeTrial ? (
+              <>
+                <p className="text-sm font-semibold leading-snug">
+                  {t("subscription.trialHeadline", "{{period}} free", {
+                    period: intro.periodLabel,
+                  })}
+                  {selectedRecurringPrice ? (
+                    <span className="font-normal text-muted-foreground">
+                      {t("subscription.trialThenPrice", ", then {{price}}/{{period}}", {
+                        price: selectedRecurringPrice,
+                        period: selectedPeriodLabel,
+                      })}
+                    </span>
+                  ) : null}
+                </p>
+                {/* Calm reassurance line — no payment now, cancel anytime. */}
+                <p className="text-[11px] font-medium text-muted-foreground">
+                  {t(
+                    "subscription.trialReassurance",
+                    "No payment due now · cancel anytime"
+                  )}
+                </p>
+                {/* Tiny visual timeline: start today → first charge → cancel. */}
+                <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    {t("subscription.trialToday", "Today: start")}
+                  </span>
+                  <span className="h-px flex-1 bg-border" />
+                  <span className="flex items-center gap-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/50" />
+                    {t("subscription.trialFirstCharge", "{{period}}: first charge", {
+                      period: intro.periodLabel,
+                    })}
+                  </span>
+                </div>
+              </>
+            ) : hasIntroPrice ? (
+              <p className="text-sm font-semibold leading-snug">
+                {t(
+                  "subscription.introPriceHeadline",
+                  "{{introPrice}} for {{period}}",
+                  {
+                    introPrice: intro.priceFormatted ?? "",
+                    period: intro.periodLabel,
+                  }
+                )}
+                {selectedRecurringPrice ? (
+                  <span className="font-normal text-muted-foreground">
+                    {t("subscription.introPriceThen", ", then {{price}}/{{period}}", {
+                      price: selectedRecurringPrice,
+                      period: selectedPeriodLabel,
+                    })}
+                  </span>
+                ) : null}
+              </p>
+            ) : null}
+          </div>
         ) : null}
 
         <Button
           onClick={() => void handleSubscribe()}
-          disabled={isPurchasing || affiliateStatus.kind === "checking"}
+          disabled={isPurchasing || codeStatus.kind === "checking"}
           className="w-full !h-11 md:!h-14"
           size="sm"
         >
-          {isPurchasing
-            ? t("subscription.subscribing", "Subscribing...")
-            : t("subscription.subscribe", "Subscribe")}
+          {ctaLabel}
         </Button>
+
+        {/* Offer / affiliate code — a SECONDARY affordance placed AFTER the
+            plan + primary CTA so we don't train discount expectation. The
+            server is the only authority (Phase 3 codes backend). */}
+        {SHOW_AFFILIATE_CODE_FIELD ? (
+          <label className="block space-y-1.5">
+            <span className="text-xs font-medium text-muted-foreground">
+              {t("code.fieldLabel", "Offer or affiliate code")}
+            </span>
+            <input
+              value={affiliateCode}
+              onChange={(event) => setAffiliateCode(event.target.value)}
+              autoCapitalize="characters"
+              autoCorrect="off"
+              spellCheck={false}
+              maxLength={32}
+              placeholder={t("subscription.affiliateCodePlaceholder", "Optional")}
+              className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm uppercase placeholder:normal-case placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary"
+            />
+            {codeStatus.kind === "error" ? (
+              // Gentle, muted — NOT a harsh red error. The code didn't unlock a
+              // discount, but the trial CTA above stays fully usable; we just
+              // offer a quiet retry in case it was a transient check failure.
+              <span className="flex items-center gap-2 text-[11px] text-muted-foreground">
+                {t("code.notApplied", "That code doesn't unlock a discount.")}
+                <button
+                  type="button"
+                  onClick={() => setAffiliateCode((c) => c.trim())}
+                  className="underline underline-offset-2 hover:text-foreground"
+                >
+                  {t("code.retry", "Retry")}
+                </button>
+              </span>
+            ) : codeStatus.kind === "checking" ? (
+              <span className="block min-h-4 text-[11px] text-muted-foreground">
+                {t("code.checking", "Checking code…")}
+              </span>
+            ) : resolvedCode ? (
+              resolvedCode.classification === "unknown" ? (
+                // Attributed but unverified — no discount claim, may proceed.
+                <span className="block min-h-4 text-[11px] text-muted-foreground">
+                  {t("code.attributedUnverified", "Code will be attached to your subscription.")}
+                </span>
+              ) : (
+                // Verified — show the discount + partner credit, never "valid".
+                <span className="block min-h-4 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+                  {[
+                    resolvedCode.discountLabel,
+                    resolvedCode.partnerName
+                      ? t("code.creditedTo", "credited to {{partner}}", {
+                          partner: resolvedCode.partnerName,
+                        })
+                      : null,
+                  ]
+                    .filter(Boolean)
+                    .join(" · ")}
+                </span>
+              )
+            ) : (
+              <span className="block min-h-4 text-[11px] text-muted-foreground">
+                {t("code.help", "Have a code? Enter it to apply your offer.")}
+              </span>
+            )}
+          </label>
+        ) : null}
 
         {restoreInline}
 

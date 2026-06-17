@@ -166,6 +166,12 @@ resource "aws_instance" "presence" {
   # must not replace the always-warm presence host and disconnect every socket.
   user_data_replace_on_change = false
 
+  # The presence host is replaced only on purpose (DNS encodes its IP, sockets
+  # are long-lived). AL2023 AMI rolls would otherwise force-replace it.
+  lifecycle {
+    ignore_changes = [ami]
+  }
+
   credit_specification {
     cpu_credits = "standard"
   }

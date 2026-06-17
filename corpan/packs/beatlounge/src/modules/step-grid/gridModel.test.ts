@@ -3,9 +3,10 @@ import { createDefaultDoc, findTrack, isInstrumentTrack, DRUM_PITCH } from "../.
 import { stepForTick, tickForStep, stepsInLoop } from "../../model/timing"
 import { buildGridView, buildMiniView, DRUM_LANES, MINI_LANE_COUNT } from "./gridModel"
 import { KIT_PITCHES } from "../../rhythm"
+import { withStockDrums } from "../../testing/stockLoop"
 
 const drumTrack = () => {
-  const doc = createDefaultDoc(0)
+  const doc = withStockDrums(createDefaultDoc(0))
   const track = doc.tracks.find(
     (t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler"
   )

@@ -28,6 +28,7 @@ import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
 import { useBeatloungeStore } from "../../store/store"
+import { useRecordArm } from "../../store/recordArm"
 import {
   findTrack,
   isInstrumentTrack,
@@ -124,7 +125,9 @@ export const InstrumentsBrowser = ({
   // Start with the drawer DOWN (peek) so the header (harmony + switcher + Record)
   // and the full ribbon are both visible; raise it to work the FX/Mixer/Score.
   const [drawer, setDrawer] = useState<DrawerState>("peek")
-  const [record, setRecord] = useState(false)
+  // Record arm is PER-TRACK + persisted (never a shared transient flag): each
+  // voice remembers its own arm, default OFF, and turning it off sticks.
+  const { armed: record, setArmed: setRecord } = useRecordArm(selectedTrackId)
   // The open browser bank: a preset family, or "raw" (the bare-oscillator bank).
   const [openBank, setOpenBank] = useState<PresetFamily | "raw" | null>(null)
   const [oscWave, setOscWave] = useState<OscWave>("triangle")
@@ -461,14 +464,13 @@ export const InstrumentsBrowser = ({
             store={store}
             audio={audio}
             trackId={itrack.id}
-            record={record}
             showRecord={false}
             headerSlot={
               <button
                 type="button"
                 className={`bl-chip bl-instr-record${record ? " is-armed" : ""}`}
                 aria-pressed={record}
-                onClick={() => setRecord((r) => !r)}
+                onClick={() => setRecord(!record)}
               >
                 {record ? ct("instrumentSurface.recording") : ct("instrumentSurface.record")}
               </button>

@@ -14,6 +14,7 @@
  */
 
 import { useEffect, useState } from "react"
+import { createPaywallGate, type PaywallGate } from "@shared/monetization"
 import type { HostApi } from "./sdk/types"
 import { createCommandBus } from "./model/commandBus"
 import { createDefaultDoc, type BeatloungeDoc } from "./model/document"
@@ -56,6 +57,10 @@ interface Rig {
   /** The always-on Auto melody conductor — rig-level so an armed line keeps
    *  regenerating after you leave Instruments / go to the Stage. */
   conductor: ReturnType<typeof createAutoConductor>
+  /** Time-armed paywall gate. After ~5 min of session use, the NEXT discrete
+   *  user UI tap surfaces the paywall (soft — dismiss and keep going). Never
+   *  fires on a bare timer, never interrupts an in-progress action. */
+  paywall: PaywallGate
 }
 
 const buildRig = (hostApi: HostApi, doc: BeatloungeDoc): Rig => {
@@ -77,7 +82,18 @@ const buildRig = (hostApi: HostApi, doc: BeatloungeDoc): Rig => {
   // once per rig and immune to Score remount / screen nav. Generation is gated
   // on the global transport, so this is silent until the user presses play.
   const conductor = createAutoConductor({ store, audio })
-  return { store, audio, formObs, bridge, host, registry, conductor }
+  // Time-armed, soft session gate. The gate's interval + per-session cap handle
+  // cadence; we just feed it discrete user UI interactions (see Shell). Built
+  // once per rig and disposed with it (the idempotent mount guarantees a single
+  // live rig, so no duplicate gates).
+  const paywall = createPaywallGate({
+    packId: "beatlounge",
+    surface: "beatlounge_session",
+    mode: "timed",
+    intervalMs: 5 * 60 * 1000,
+    hardness: "soft",
+  })
+  return { store, audio, formObs, bridge, host, registry, conductor, paywall }
 }
 
 /** Dispose every rig subsystem, each guarded so one failure can't abort the
@@ -89,6 +105,7 @@ const disposeRig = (rig: Rig | null): void => {
     rig.store.dispose,
     rig.audio.dispose,
     rig.formObs.dispose,
+    rig.paywall.dispose,
   ]) {
     try {
       dispose()
@@ -142,6 +159,7 @@ export const App = ({ hostApi }: { hostApi: HostApi }) => {
         registry={rig.registry}
         host={rig.host}
         attachChrome={(chrome) => rig.bridge.set(chrome)}
+        onUserInteraction={() => rig.paywall.onInteraction()}
         skin="midnight"
       />
     </ErrorBoundary>

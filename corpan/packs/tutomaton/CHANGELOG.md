@@ -5,6 +5,108 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **RAM-tiered model sizes — the tutor never OOM-crashes a device again.** It was
+  shipping one model (Qwen3-4B) that silently killed low-RAM phones (and even
+  crashed a 6 GB Android phone). Now it ships **three sizes — Qwen3 0.6B / 1.7B /
+  4B** — and picks the biggest that runs *safely* for the device's RAM:
+  - `modelTiering.ts` registry + pure `selectTier(totalRamMb)` → the
+    *recommended* size and each size's state (recommended / available /
+    try-anyway / disabled). 4B is recommended ≥7 GB, "try-anyway" (with a
+    warning) at 6 GB, disabled below ~5.5 GB.
+  - **Premium "Tutor model" sheet** to choose / download / switch sizes: a card
+    per size with its per-device state — Active, Recommended, a one-tap Use
+    (switch) or Download · {size}, inline download/install/load progress, and
+    disabled+greyed sizes ("needs a device with more memory", so it reads as the
+    device's limit, not us withholding). Reachable any time from the action menu;
+    the first-run setup gate carries the same picker. Pick persisted +
+    user-overridable. New strings localized into 46 languages.
+  - The 0.6B and 1.7B GGUFs are **hosted in production** (CloudFront);
+    `ModelManager` reads total RAM from the plugin, switches the loaded model on
+    demand, and loads with a model-aware context length.
+  - **Background unload on low-RAM devices** (< 6 GB): the resident model is
+    freed when the app is backgrounded so the OS can't OOMKill the whole app
+    under memory pressure, and reloaded on return (debounced; capable devices
+    keep it resident for instant resume).
+  - **Per-size language gating, now active.** A smaller model only offers the
+    languages it actually teaches well; the rest are shown disabled ("needs a
+    larger model"). The lists were set by reading each model's real shipped
+    (temp-0.3) output with one consistent bar — **Qwen3-0.6B teaches 12**
+    (major Romance/Germanic + Chinese/Cantonese/Thai/Indonesian), **Qwen3-1.7B
+    teaches 34** (adds all the European Slavic/Nordic + Arabic/Hebrew/Farsi/
+    Japanese/Turkish/Vietnamese/Malay), and the **4B all 50**. The small models
+    loop/garble/English-dodge the harder Indic (Tamil, Hindi, Gujarati, Kannada,
+    Marathi, Nepali, Punjabi, Bengali), Korean, and a few others.
+
+- **Concise-by-default replies, in the target language.** A tiny brevity
+  directive is appended to every tutor's (localized) system prompt so it doesn't
+  bury a learner in hundreds of words — and a stronger "short, simple sentences,
+  basic words" variant kicks in when the stack's CEFR level is beginner (A0/A1).
+  Authored natively in all 50 target languages so the system message stays in
+  one language.
+- **Non-thinking output for the small (hybrid) models.** Qwen3 0.6B/1.7B are
+  hybrid reasoning models; the tutor sends the canonical non-thinking prefill
+  (`noThink`) and a streaming `thinkFilter` strips any `<think>…</think>` from
+  the transcript *and* speech. A per-language **Thinking** toggle in the model
+  lab lets you switch reasoning on to A/B it.
+
+- **Up-front size/RAM/language framing in the model sheet.** Each size card now
+  shows a concise detail line — "{N} languages · {device fit}" (e.g. "24
+  languages · 4 GB+", "11 languages · Any device") — with a Recommended chip and
+  a one-line reason only where a size is constrained on the device. So the
+  size↔smartness↔reach tradeoff is legible at a glance.
+- **Full ~54-locale coverage of the tutor chrome.** Added Javanese (jv) and
+  Sundanese (su) localizations — the two native UI languages the pack was missing
+  — so every locale the app ships now has localized Tutomaton chrome. (jv/su were
+  machine-generated like the rest; a native pass is welcome.)
+
+### Fixed
+- **Opens on the language you're learning, not Arabic.** With no prior tutor
+  choice, Tutomaton now defaults to the user's first learning language
+  (`stackConfig.languages[1]`; `[0]` is native) instead of the alphabetically
+  first registry entry. Falls back to an installed module, then the first entry.
+- **No more dead dictation mic on Android.** The in-app mic is hidden on Android,
+  where native dictation (`tauri-plugin-asr-native`) isn't device-validated yet
+  and silently fails (the plugin checks but never *requests* `RECORD_AUDIO`, and
+  on-device recognizers are OEM-dependent). Android users dictate via their
+  keyboard's own mic (the documented fallback, ~50 languages, zero RAM). iOS
+  keeps its working native path. Finishing + device-testing native Android
+  dictation (permission request + visible error UX) is a fast-follow.
+- Re-localized the daily-cap quota strings (`quotaEmpty`, `quotaEmptyNote`,
+  `quotaPlus`, `quotaPlusActivated`) across all 46 locales — they had drifted to
+  stale English after the warmer rewrite; brand ("Corpán Plus") preserved.
+- **Daily-cap composer no longer reads as an error.** Hitting the free tutor
+  cap previously turned the composer red (red field border + red "0 free
+  messages" placeholder, which truncated to "…user for"). The capped composer is
+  now calm/neutral — quietly inert, never alarming — so the shared green-check
+  accomplishment lock is the single cap surface. Tapping the capped composer now
+  re-pops that lock. Copy rewritten to warm/on-brand ("That's your free tutoring
+  for today") and "Corpan" corrected to "Corpán".
+
+### Note
+- Per-size language eval-gating (offering only the languages each small model
+  handles well) is the remaining quality step; until it lands, every size offers
+  all languages.
+## [0.6.0] - 2026-06-15 — Honest language list + model defaults calibrated to Qwen3-4B
+
+### Changed
+- Retuned the on-device model defaults for the shipped Qwen3-4B (Q4_K_M) model:
+  temperature 0.6 → 0.3, topP 0.95 → 0.9, minP 0 → 0.05, repeatPenalty 1.0 → 1.1
+  (topK 20, maxTokens 700 unchanged). Calibrated with A/B testing in
+  `infra/tutomaton-eval`; the lower-temperature/tightened sampling measurably
+  reduced fabricated vocabulary and repetition loops in weaker languages and was
+  neutral-to-positive on strong ones. A single global default generalised better
+  than per-language overrides.
+
+### Removed
+- Stopped advertising 5 languages the on-device model cannot teach acceptably,
+  verified by native-level fluency judging at the best parameters: **Telugu**
+  (fabricates vocabulary), **Swahili** (broken word-salad / repetition loops),
+  **Sundanese** and **Javanese** (the model answers in Indonesian, not the
+  target language), and **Punjabi (Shahmukhi)** (answers in an Urdu creole, not
+  Punjabi). Tutomaton now offers 50 teaching languages (was 55). Existing
+  installs of these modules are unaffected; they are simply no longer offered.
+
 ## [0.5.4] - 2026-06-09 — Localized model-lab/voice chrome + centered quota line
 
 ### Changed

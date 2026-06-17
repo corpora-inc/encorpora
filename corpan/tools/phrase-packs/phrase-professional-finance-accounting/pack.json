@@ -1,0 +1,14 @@
+{
+  "id": "phrase-professional-finance-accounting",
+  "version": "0.1.0",
+  "name": "Finance and Accounting",
+  "description": "Professional language for budgets, invoices, close cycles, audit controls, forecasting, and financial reporting.",
+  "category": "professional",
+  "topic": "Finance and Accounting",
+  "icon": "calculator",
+  "accent_color": "#22863a",
+  "purchase": {"type": "free"},
+  "tags": ["professional", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

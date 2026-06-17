@@ -57,7 +57,7 @@ const STARGATE_PREFS_DEFAULTS: DisplayPrefs = {
   oscilloscopeConfig: { amplitude: 5, width: 2, alpha: 0.35 },
   waveformConfig: { maxRadius: 1, alpha: 0.005, minRadius: 0, reversed: false },
   pulseRingConfig: { maxRadius: 0.2, fadeMs: 200 },
-  wordHoldConfig: { holdY: 0, zPull: 0.4 },
+  wordHoldConfig: { holdY: 0, zPull: 1.5 },
 }
 
 const bookmarks = createBookmarkStore("stargate-reader")

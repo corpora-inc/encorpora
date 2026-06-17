@@ -3,7 +3,7 @@
 Incremental Gemini translation: translate ONLY the new phrases appended
 to a pack and splice them into existing per-language translation files.
 
-Use case: a pack at v0.1.0 has 100 phrases translated into 51 langs.
+Use case: a pack at v0.1.0 has 100 phrases translated into 54 langs.
 You append 1-4 new phrases for v0.1.1. Re-running the full translator
 re-translates everything; this script translates only the new indices.
 

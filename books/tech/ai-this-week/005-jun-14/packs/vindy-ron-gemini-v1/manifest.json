@@ -1,0 +1,23 @@
+{
+  "id": "book_ai_this_week_2026_06_14",
+  "name": "AI This Week — June 14, 2026 — Sundays, and Who We Are",
+  "version": "0.1.0",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "format": "dialog",
+  "metadata": {
+    "series": "AI This Week",
+    "issue": 5,
+    "issue_date": "2026-06-14",
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Listeners following the open-weights / DIY / on-device thread. Episode 5 doubles as the show's first on-mic introduction of Corpora Inc. and the new Sunday release cadence.",
+    "estimatedListenTime": "12 minutes"
+  }
+}

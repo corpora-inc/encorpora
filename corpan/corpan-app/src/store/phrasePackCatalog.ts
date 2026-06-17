@@ -14,7 +14,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 import {
-    fetchPhrasePackCatalog,
+    fetchPhrasePackCatalogFresh,
     type PhrasePackCatalog,
 } from "@/contentPacks/phrasePackCatalog";
 import { getNetworkStatus, listenToNetworkChanges } from "@/utils/network";
@@ -29,6 +29,12 @@ const CACHE_DURATION = 5 * 60 * 1000;
 type PhrasePackCatalogState = {
     catalog: PhrasePackCatalog | null;
     lastFetched: number | null;
+    /** Last freshness check (304/error included); distinct from a successful
+     *  refresh (`lastFetched`). */
+    lastChecked: number | null;
+    /** HTTP validators for conditional revalidation (cheap 304 polls). */
+    etag: string | null;
+    lastModified: string | null;
     isOnline: boolean;
     isFetching: boolean;
 
@@ -42,6 +48,9 @@ export const usePhrasePackCatalogStore = create<PhrasePackCatalogState>()(
         (set, get) => ({
             catalog: null,
             lastFetched: null,
+            lastChecked: null,
+            etag: null,
+            lastModified: null,
             isOnline: getNetworkStatus(),
             isFetching: false,
 
@@ -63,14 +72,34 @@ export const usePhrasePackCatalogStore = create<PhrasePackCatalogState>()(
                 }
                 set({ isFetching: true });
                 try {
-                    const catalog = await fetchPhrasePackCatalog();
-                    set({
-                        catalog: catalog ?? state.catalog,
-                        lastFetched: catalog ? now : state.lastFetched,
-                        isFetching: false,
-                    });
+                    // Only revalidate conditionally when we have a cached
+                    // catalog to keep; never let a stray ETag 304 against an
+                    // empty cache.
+                    const haveCache = !!get().catalog;
+                    const validators =
+                        force || !haveCache
+                            ? undefined
+                            : { etag: get().etag, lastModified: get().lastModified };
+                    const r = await fetchPhrasePackCatalogFresh(validators);
+                    if (r.status === "unchanged") {
+                        // 304 — cached catalog still current.
+                        set({ lastFetched: now, lastChecked: now });
+                    } else {
+                        set({
+                            catalog: r.data,
+                            etag: r.validators.etag ?? null,
+                            lastModified: r.validators.lastModified ?? null,
+                            lastFetched: now,
+                            lastChecked: now,
+                        });
+                    }
                 } catch (err) {
-                    console.error("[phrase-pack catalog] fetch failed:", err);
+                    console.warn("[phrase-pack catalog] fetch failed:", err);
+                    // Keep the existing cached catalog; just record the attempt.
+                    set({ lastChecked: now });
+                } finally {
+                    // ALWAYS clear the in-flight flag so a failed/timed-out
+                    // fetch can never wedge `isFetching` true and block retries.
                     set({ isFetching: false });
                 }
             },
@@ -90,7 +119,13 @@ export const usePhrasePackCatalogStore = create<PhrasePackCatalogState>()(
             },
 
             clearCache: () => {
-                set({ catalog: null, lastFetched: null });
+                set({
+                    catalog: null,
+                    lastFetched: null,
+                    lastChecked: null,
+                    etag: null,
+                    lastModified: null,
+                });
                 void get().fetchCatalog(true);
             },
         }),
@@ -114,6 +149,9 @@ export const usePhrasePackCatalogStore = create<PhrasePackCatalogState>()(
             partialize: (state) => ({
                 catalog: state.catalog,
                 lastFetched: state.lastFetched,
+                lastChecked: state.lastChecked,
+                etag: state.etag,
+                lastModified: state.lastModified,
             }),
         },
     ),

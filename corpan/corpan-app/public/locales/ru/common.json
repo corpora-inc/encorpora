@@ -314,7 +314,8 @@
       "joinTitle": "Присоединяйтесь к Corpanistas",
       "start": "Начать исследование",
       "subtitle": "Corpán создан небольшой командой разработчиков с открытым исходным кодом. Приветствуйте нас — и если вам нравится, вы можете нас поддержать.",
-      "title": "Всё готово"
+      "title": "Всё готово",
+      "explore": "Изучать самостоятельно"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "Предпросмотр {{name}}",
     "voicePreviewSelected": "Предпросмотр выбранного",
     "voiceRecommended": "Рекомендуется",
-    "voiceSelectedCount": "{{count}} из {{total}}"
+    "voiceSelectedCount": "{{count}} из {{total}}",
+    "whatToStart": {
+      "title": "С чего начнём?",
+      "subtitle": "Выбери одно, чтобы начать — остальное в одном касании.",
+      "read": {
+        "label": "Читать",
+        "desc": "Погрузись в истории и книги."
+      },
+      "study": {
+        "label": "Учиться",
+        "desc": "Расширяй словарный запас в целенаправленной практике."
+      },
+      "playMusic": {
+        "label": "Играть музыку",
+        "desc": "Попробуй свой язык за пультами."
+      },
+      "playGames": {
+        "label": "Играть",
+        "desc": "Учись через весёлые задания."
+      },
+      "surprise": {
+        "label": "Удиви меня!",
+        "desc": "Отправь меня куда-нибудь весёлое."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "Используйте буквы, цифры, дефисы или подчёркивания.",
     "affiliateChecking": "Проверяем код...",
     "affiliateApplied": "Код будет привязан к этой подписке.",
-    "affiliateCodeHelp": "Если кто-то направил вас сюда, введите его код перед оформлением подписки."
+    "affiliateCodeHelp": "Если кто-то направил вас сюда, введите его код перед оформлением подписки.",
+    "introPriceHeadline": "{{introPrice}} за {{period}}",
+    "introPriceThen": ", затем {{price}}/{{period}}",
+    "perMonth": "месяц",
+    "perYear": "год",
+    "startFreeTrial": "Начать бесплатный пробный период",
+    "trialFirstCharge": "{{period}}: первый платеж",
+    "trialHeadline": "{{period}} бесплатно",
+    "trialReassurance": "Оплата не требуется · отмена в любое время",
+    "trialThenPrice": ", затем {{price}}/{{period}}",
+    "trialToday": "Сегодня: начало"
   },
   "restore": {
     "button": "Восстановить покупки",
@@ -715,7 +750,8 @@
     "subhead": "Разблокируйте все книги на всех языках. Без рекламы. Ваши данные остаются на устройстве.",
     "pitch": "Мы небольшая команда и вкладываем каждую копейку обратно в Corpán. Corpanistas помогают нам оставаться без рекламы и развиваться.",
     "maybeLater": "Позже",
-    "continue": "Продолжить"
+    "continue": "Продолжить",
+    "dismiss": "Закрыть"
   },
   "streak": {
     "title": "{{count}}-дневная серия"
@@ -819,5 +855,35 @@
     "update": "Обновить",
     "updateNow": "Обновить сейчас",
     "versionLine": "Версия {{version}} готова к установке."
+  },
+  "streakBadge": {
+    "label": "Серия {{days}} дней"
+  },
+  "dailyLock": {
+    "title": "Ваши {{count}} {{unit}} на сегодня",
+    "streakActive": "Серия {{days}} дней — возвращайтесь завтра, чтобы продолжить.",
+    "streakStart": "Возвращайтесь завтра, чтобы продолжить.",
+    "resetIn": "Сброс через {{time}}",
+    "cta": "Продолжить сейчас с Corpán Plus",
+    "dismiss": "Может быть, позже",
+    "closeAria": "Закрыть",
+    "countdownHm": "{{h}}ч {{m}}м",
+    "countdownM": "{{m}}м",
+    "countdownSoon": "в любой момент"
+  },
+  "code": {
+    "attributedUnverified": "Код будет прикреплен к вашей подписке.",
+    "checkFailed": "Не удалось проверить",
+    "checking": "Проверка кода…",
+    "creditedTo": "зачислено на {{partner}}",
+    "fieldLabel": "Код предложения или партнера",
+    "help": "Есть код? Введите его, чтобы применить предложение.",
+    "redeemUnavailable": "Не удалось открыть экран погашения. Пожалуйста, попробуйте снова.",
+    "redeemWithApple": "Погасить через Apple",
+    "redeeming": "Открытие погашения…",
+    "retry": "Повторить",
+    "subscribeWithDiscount": "Подписаться ({{discount}})",
+    "redeemCode": "Активировать код",
+    "notApplied": "Этот код не даёт скидки."
   }
 }

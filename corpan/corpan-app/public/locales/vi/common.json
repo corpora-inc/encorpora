@@ -314,7 +314,8 @@
       "joinTitle": "Tham gia Corpanistas",
       "start": "Bắt đầu khám phá",
       "subtitle": "Corpán được tạo ra bởi một nhóm mã nguồn mở nhỏ. Hãy ghé thăm — và nếu bạn yêu thích, bạn có thể ủng hộ chúng tôi.",
-      "title": "Bạn đã sẵn sàng"
+      "title": "Bạn đã sẵn sàng",
+      "explore": "Khám phá theo cách của tôi"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "Xem trước {{name}}",
     "voicePreviewSelected": "Xem trước đã chọn",
     "voiceRecommended": "Đề xuất",
-    "voiceSelectedCount": "{{count}} trên {{total}}"
+    "voiceSelectedCount": "{{count}} trên {{total}}",
+    "whatToStart": {
+      "title": "Chúng ta bắt đầu từ đâu nhỉ?",
+      "subtitle": "Chọn một để bắt đầu — phần còn lại chỉ cách một chạm.",
+      "read": {
+        "label": "Đọc",
+        "desc": "Đắm mình vào truyện và sách."
+      },
+      "study": {
+        "label": "Học",
+        "desc": "Mở rộng vốn từ bằng luyện tập tập trung."
+      },
+      "playMusic": {
+        "label": "Chơi nhạc",
+        "desc": "Thử ngôn ngữ của bạn trên bàn đĩa."
+      },
+      "playGames": {
+        "label": "Chơi game",
+        "desc": "Học qua những thử thách vui nhộn."
+      },
+      "surprise": {
+        "label": "Gây bất ngờ cho tôi!",
+        "desc": "Đưa tôi đến một nơi thật vui."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "Dùng chữ cái, số, dấu gạch ngang hoặc gạch dưới.",
     "affiliateChecking": "Đang kiểm tra mã...",
     "affiliateApplied": "Mã sẽ được gắn với gói đăng ký này.",
-    "affiliateCodeHelp": "Nếu có người giới thiệu bạn đến đây, hãy nhập mã của họ trước khi đăng ký."
+    "affiliateCodeHelp": "Nếu có người giới thiệu bạn đến đây, hãy nhập mã của họ trước khi đăng ký.",
+    "introPriceHeadline": "{{introPrice}} cho {{period}}",
+    "introPriceThen": ", sau đó {{price}}/{{period}}",
+    "perMonth": "tháng",
+    "perYear": "năm",
+    "startFreeTrial": "Bắt đầu dùng thử miễn phí",
+    "trialFirstCharge": "{{period}}: lần tính phí đầu tiên",
+    "trialHeadline": "{{period}} miễn phí",
+    "trialReassurance": "Chưa cần thanh toán · hủy bất kỳ lúc nào",
+    "trialThenPrice": ", sau đó {{price}}/{{period}}",
+    "trialToday": "Hôm nay: bắt đầu"
   },
   "restore": {
     "button": "Khôi phục mua hàng",
@@ -715,7 +750,8 @@
     "subhead": "Mở khóa mọi cuốn sách bằng mọi ngôn ngữ. Không quảng cáo. Dữ liệu của bạn luôn nằm trên thiết bị.",
     "pitch": "Chúng tôi là một nhóm nhỏ và dành mọi khoản thu để phát triển Corpán. Corpanistas giúp ứng dụng không có quảng cáo và ngày càng phát triển.",
     "maybeLater": "Để sau",
-    "continue": "Tiếp tục"
+    "continue": "Tiếp tục",
+    "dismiss": "Bỏ qua"
   },
   "streak": {
     "title": "Chuỗi {{count}} ngày"
@@ -819,5 +855,35 @@
     "update": "Cập nhật",
     "updateNow": "Cập nhật ngay",
     "versionLine": "Phiên bản {{version}} đã sẵn sàng để cài đặt."
+  },
+  "streakBadge": {
+    "label": "Chuỗi {{days}} ngày"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} của bạn hôm nay",
+    "streakActive": "Chuỗi {{days}} ngày — quay lại vào ngày mai để tiếp tục.",
+    "streakStart": "Quay lại vào ngày mai để tiếp tục.",
+    "resetIn": "Đặt lại sau {{time}}",
+    "cta": "Tiếp tục ngay với Corpán Plus",
+    "dismiss": "Có thể sau",
+    "closeAria": "Bỏ qua",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "bất cứ lúc nào"
+  },
+  "code": {
+    "attributedUnverified": "Mã sẽ được gắn vào gói đăng ký của bạn.",
+    "checkFailed": "Không thể kiểm tra",
+    "checking": "Đang kiểm tra mã…",
+    "creditedTo": "được ghi nhận cho {{partner}}",
+    "fieldLabel": "Mã ưu đãi hoặc mã liên kết",
+    "help": "Có mã? Nhập mã để áp dụng ưu đãi của bạn.",
+    "redeemUnavailable": "Không thể mở màn hình đổi mã. Vui lòng thử lại.",
+    "redeemWithApple": "Đổi mã với Apple",
+    "redeeming": "Đang mở đổi mã…",
+    "retry": "Thử lại",
+    "subscribeWithDiscount": "Đăng ký ({{discount}})",
+    "redeemCode": "Đổi mã",
+    "notApplied": "Mã này không áp dụng giảm giá."
   }
 }

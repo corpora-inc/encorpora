@@ -10,6 +10,7 @@ import app.tauri.plugin.JSObject
 import app.tauri.plugin.Plugin
 import app.tauri.plugin.Invoke
 import com.android.billingclient.api.*
+import com.google.android.play.core.review.ReviewManagerFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -202,9 +203,19 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && productDetailsResult.productDetailsList.isNotEmpty()) {
                 val productDetails = productDetailsResult.productDetailsList[0]
 
-                // Get offer token from args or from first available subscription offer
-                val offerToken = args.offerToken ?: 
-                    productDetails.subscriptionOfferDetails?.firstOrNull()?.offerToken
+                // Pick the offer. An explicit token (affiliate/code path) wins.
+                // Otherwise PREFER the offer that grants a FREE TRIAL — one whose
+                // pricing has a zero-price phase — so a trial-eligible user reliably
+                // gets the 7-day trial instead of whichever offer is first (which
+                // may be the bare base plan). queryProductDetails only returns offers
+                // the user is ELIGIBLE for, so selecting a present trial offer is
+                // safe. Falls back to the first available offer when there's no trial.
+                val offers = productDetails.subscriptionOfferDetails
+                val offerToken = args.offerToken
+                    ?: offers?.firstOrNull { offer ->
+                        offer.pricingPhases.pricingPhaseList.any { it.priceAmountMicros == 0L }
+                    }?.offerToken
+                    ?: offers?.firstOrNull()?.offerToken
                 
                 val productDetailsParamsBuilder = BillingFlowParams.ProductDetailsParams.newBuilder()
                     .setProductDetails(productDetails)
@@ -372,7 +383,47 @@ class IapPlugin(private val activity: Activity): Plugin(activity), PurchasesUpda
             }
         }
     }
-    
+
+    @Command
+    fun presentOfferCodeRedeemSheet(invoke: Invoke) {
+        // Google Play has no equivalent "redeem code sheet" launched from the
+        // app for this flow. Promo/offer codes are entered in the Play Store
+        // app, and offer codes flow through the in-app code field + offer
+        // token (handled elsewhere). Surface a clear unsupported error.
+        invoke.reject("NOT_ENTITLED: Offer code redemption sheet is not supported on Android")
+    }
+
+    @Command
+    fun requestReview(invoke: Invoke) {
+        // Google Play In-App Review. Play itself throttles how often the card
+        // is actually shown (and may show nothing) — this is a best-effort
+        // nudge, never gated. We resolve as soon as the flow has completed
+        // (or fails), regardless of whether a card was displayed; the API
+        // intentionally gives no signal about that.
+        try {
+            val manager = ReviewManagerFactory.create(activity)
+            manager.requestReviewFlow().addOnCompleteListener { request ->
+                if (request.isSuccessful) {
+                    manager.launchReviewFlow(activity, request.result)
+                        .addOnCompleteListener {
+                            // Always resolve: Play never tells us if a card was
+                            // shown, and the user must never be blocked on it.
+                            invoke.resolve()
+                        }
+                } else {
+                    // No review flow available (e.g. not installed from Play,
+                    // quota exhausted). Resolve quietly — the host fires this
+                    // best-effort on pack exit.
+                    Logger.debug(TAG, "requestReviewFlow not available: ${request.exception?.message}")
+                    invoke.resolve()
+                }
+            }
+        } catch (e: Exception) {
+            Logger.debug(TAG, "requestReview threw: ${e.message}")
+            invoke.resolve()
+        }
+    }
+
     override fun onPurchasesUpdated(billingResult: BillingResult, purchases: List<Purchase>?) {
         when (billingResult.responseCode) {
             BillingClient.BillingResponseCode.OK -> {

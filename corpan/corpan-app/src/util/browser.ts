@@ -95,6 +95,23 @@ export function getPlatform(): "ios" | "android" | "macos" | "windows" | "chrome
 }
 
 /**
+ * `backdrop-filter: blur` is a per-frame GPU render pass that, on the Mali
+ * drivers common to budget Android devices, compiles/runs shaders on the frame
+ * critical path — a documented source of "Unresponsive GPU" ANRs (the WebView's
+ * RenderThread blocks the main thread waiting on shader compilation). Apple
+ * GPUs (iPad/iPhone/Mac) and desktop handle it cheaply, so we keep the frosted
+ * glass there and only fall back to a solid surface on Android.
+ *
+ * Usage: `className={glass("bg-background/80 backdrop-blur", "bg-background/90")}`
+ * — first arg is the glassy class string (capable GPUs), second is the solid
+ * fallback (Android). Evaluated once at module load.
+ */
+const PREFER_NO_GPU_BLUR = isAndroid();
+export function glass(glassClasses: string, solidClasses: string): string {
+    return PREFER_NO_GPU_BLUR ? solidClasses : glassClasses;
+}
+
+/**
  * Platform-specific padding utilities
  * Use the robust detection functions above
  */

@@ -15,8 +15,24 @@ import * as Tone from "tone"
 import type { Effect } from "../contracts/engine"
 import type { EffectKind, EffectNode } from "../model/document"
 import { EFFECT_SPECS, numParam, strParam, type EffectParamSpec } from "./params"
+import { NOTE_LENGTH_PRESETS, noteLengthSeconds, MAX_DELAY_SECONDS } from "./noteLengths"
+import { getBpm } from "./tempo"
 
 type Params = Record<string, number | string | boolean>
+
+/** The delay's effective time (seconds): tempo-synced to the `sync` note length
+ *  at `bpm`, unless `sync` is "free" (then the raw `delayTime` seconds). Synced
+ *  values are clamped to the delay's max headroom so a long note at a slow tempo
+ *  can't exceed `maxDelay`. Pure (bpm injected) so it unit-tests; the live engine
+ *  passes `getBpm()` from the ambient tempo source at the call site. */
+export const delaySeconds = (params: Params, bpm: number): number => {
+  const sync = str("delay", params, "sync")
+  if (sync && sync !== "free") {
+    const preset = NOTE_LENGTH_PRESETS.find((p) => p.id === sync)
+    if (preset) return Math.min(MAX_DELAY_SECONDS, noteLengthSeconds(preset.fraction, bpm))
+  }
+  return num("delay", params, "delayTime")
+}
 
 const RAMP = 0.01 // 10ms — click-free param moves
 
@@ -257,7 +273,10 @@ const createDelay = (): Effect => {
     "delay",
     node,
     (params) => {
-      node.delayTime.value = num("delay", params, "delayTime")
+      // Tempo-synced unless Sync = "free": read the live BPM from the ambient
+      // tempo source so a tempo change / Randomize re-fires update() and the
+      // delay time tracks it — no bpm threaded through the graph.
+      node.delayTime.value = delaySeconds(params, getBpm())
       node.feedback.value = num("delay", params, "feedback")
     },
     (param, value, when) => {

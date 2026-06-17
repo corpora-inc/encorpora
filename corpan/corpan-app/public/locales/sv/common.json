@@ -314,7 +314,8 @@
       "joinTitle": "Gå med i Corpanistas",
       "start": "Börja utforska",
       "subtitle": "Corpán är skapat av ett litet öppen källkod-team. Kom och säg hej — och om du älskar det kan du stödja oss.",
-      "title": "Allt är klart"
+      "title": "Allt är klart",
+      "explore": "Utforska själv"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "Förhandsgranska {{name}}",
     "voicePreviewSelected": "Förhandsgranskning vald",
     "voiceRecommended": "Rekommenderas",
-    "voiceSelectedCount": "{{count}} av {{total}}"
+    "voiceSelectedCount": "{{count}} av {{total}}",
+    "whatToStart": {
+      "title": "Var ska vi börja?",
+      "subtitle": "Välj en för att komma igång — resten är ett tryck bort.",
+      "read": {
+        "label": "Läs",
+        "desc": "Dyk ner i berättelser och böcker."
+      },
+      "study": {
+        "label": "Plugga",
+        "desc": "Bygg ordförråd med fokuserad träning."
+      },
+      "playMusic": {
+        "label": "Spela musik",
+        "desc": "Testa ditt språk vid spakarna."
+      },
+      "playGames": {
+        "label": "Spela",
+        "desc": "Lär dig genom lekfulla utmaningar."
+      },
+      "surprise": {
+        "label": "Överraska mig!",
+        "desc": "Ta mig någonstans kul."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "Använd bokstäver, siffror, bindestreck eller understreck.",
     "affiliateChecking": "Kontrollerar kod...",
     "affiliateApplied": "Koden kopplas till den här prenumerationen.",
-    "affiliateCodeHelp": "Om någon skickade dig hit, ange deras kod innan du prenumererar."
+    "affiliateCodeHelp": "Om någon skickade dig hit, ange deras kod innan du prenumererar.",
+    "introPriceHeadline": "{{introPrice}} för {{period}}",
+    "introPriceThen": ", sedan {{price}}/{{period}}",
+    "perMonth": "månad",
+    "perYear": "år",
+    "startFreeTrial": "Starta gratis provperiod",
+    "trialFirstCharge": "{{period}}: första debitering",
+    "trialHeadline": "{{period}} gratis",
+    "trialReassurance": "Ingen betalning nu · avbryt när som helst",
+    "trialThenPrice": ", sedan {{price}}/{{period}}",
+    "trialToday": "Idag: starta"
   },
   "restore": {
     "button": "Återställ köp",
@@ -715,7 +750,8 @@
     "subhead": "Lås upp alla böcker på alla språk. Inga annonser. Din data stannar på din enhet.",
     "pitch": "Vi är ett litet team och lägger varje krona tillbaka i Corpán. Corpanistas håller den annonsfri och växande.",
     "maybeLater": "Kanske senare",
-    "continue": "Fortsätt"
+    "continue": "Fortsätt",
+    "dismiss": "Avvisa"
   },
   "streak": {
     "title": "{{count}} dagars svit"
@@ -819,5 +855,35 @@
     "update": "Uppdatera",
     "updateNow": "Uppdatera nu",
     "versionLine": "Version {{version}} är redo att installeras."
+  },
+  "streakBadge": {
+    "label": "{{days}}-dagars svit"
+  },
+  "dailyLock": {
+    "title": "Dina {{count}} {{unit}} för idag",
+    "streakActive": "{{days}}-dagars svit — kom tillbaka imorgon för att fortsätta.",
+    "streakStart": "Kom tillbaka imorgon för att fortsätta.",
+    "resetIn": "Återställs om {{time}}",
+    "cta": "Fortsätt nu med Corpán Plus",
+    "dismiss": "Kanske senare",
+    "closeAria": "Avvisa",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "när som helst"
+  },
+  "code": {
+    "attributedUnverified": "Koden kommer att kopplas till ditt abonnemang.",
+    "checkFailed": "Kunde inte kontrollera",
+    "checking": "Kontrollerar kod…",
+    "creditedTo": "krediterad till {{partner}}",
+    "fieldLabel": "Erbjudande- eller affiliatekod",
+    "help": "Har du en kod? Ange den för att använda ditt erbjudande.",
+    "redeemUnavailable": "Kunde inte öppna inlösningsskärmen. Försök igen.",
+    "redeemWithApple": "Lös in med Apple",
+    "redeeming": "Öppnar inlösen…",
+    "retry": "Försök igen",
+    "subscribeWithDiscount": "Prenumerera ({{discount}})",
+    "redeemCode": "Lös in kod",
+    "notApplied": "Den här koden ger ingen rabatt."
   }
 }

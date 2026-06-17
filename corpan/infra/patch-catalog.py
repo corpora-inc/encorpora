@@ -579,6 +579,46 @@ BOOK_META = {
         ),
         "tags": ["kids", "sports", "cheerleading", "language-learning"],
     },
+    "book_biomes_tropical_rainforest": {
+        "description": (
+            "A short, plain-spoken tour of the tropical rainforest — where "
+            "it grows, the weather, the layered forest, the plants, the "
+            "animals, and the people who have always lived in it. The first "
+            "book of the Biomes of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+        "published": "2026-06-14",
+    },
+    "book_biomes_tropical_savanna": {
+        "description": (
+            "A short, plain-spoken tour of the tropical savanna — wide "
+            "grasslands with scattered trees, a long dry season and a short "
+            "wet one, the huge herds and the quiet hunters, and the people "
+            "who have always lived alongside them. Book two of the Biomes "
+            "of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+    },
+    "book_biomes_hot_desert": {
+        "description": (
+            "A short, plain-spoken tour of the hot desert — burning days "
+            "and cold nights, rock and sand, the clever plants and animals "
+            "that have learned to wait out the dry, and the people who "
+            "travel with the wind across these great open lands. Book "
+            "three of the Biomes of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+    },
+    "book_biomes_temperate_forest": {
+        "description": (
+            "A short, plain-spoken tour of the temperate forest — oak, "
+            "maple, and birch standing through four very different seasons, "
+            "the deer and bears that know each one, and the people whose "
+            "languages, songs, and cities grew up among these trees. Book "
+            "four of the Biomes of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+    },
 }
 
 

@@ -314,7 +314,8 @@
       "joinTitle": "Csatlakozz a Corpanistas-hoz",
       "start": "Kezdd el a felfedezést",
       "subtitle": "A Corpánt egy apró, nyílt forráskódú csapat készíti. Gyere, köszönj be – és ha szereted, támogathatsz minket.",
-      "title": "Minden készen áll"
+      "title": "Minden készen áll",
+      "explore": "Felfedezem egyedül"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "{{name}} előnézete",
     "voicePreviewSelected": "Kiválasztott előnézete",
     "voiceRecommended": "Ajánlott",
-    "voiceSelectedCount": "{{count}} / {{total}}"
+    "voiceSelectedCount": "{{count}} / {{total}}",
+    "whatToStart": {
+      "title": "Hol kezdjük?",
+      "subtitle": "Válassz egyet, és vágj bele — a többi egy érintésnyire van.",
+      "read": {
+        "label": "Olvasás",
+        "desc": "Merülj el történetekben és könyvekben."
+      },
+      "study": {
+        "label": "Tanulás",
+        "desc": "Építsd a szókincsed célzott gyakorlással."
+      },
+      "playMusic": {
+        "label": "Zenélj",
+        "desc": "Próbáld ki a nyelvedet a keverőpultnál."
+      },
+      "playGames": {
+        "label": "Játssz",
+        "desc": "Tanulj játékos kihívásokkal."
+      },
+      "surprise": {
+        "label": "Lepj meg!",
+        "desc": "Vigyél valami jó helyre."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "Használj betűket, számokat, kötőjelet vagy aláhúzást.",
     "affiliateChecking": "Kód ellenőrzése...",
     "affiliateApplied": "A kód ehhez az előfizetéshez lesz kapcsolva.",
-    "affiliateCodeHelp": "Ha valaki ide küldött, add meg a kódját az előfizetés előtt."
+    "affiliateCodeHelp": "Ha valaki ide küldött, add meg a kódját az előfizetés előtt.",
+    "introPriceHeadline": "{{introPrice}} {{period}}-ra",
+    "introPriceThen": ", majd {{price}}/{{period}}",
+    "perMonth": "hónap",
+    "perYear": "év",
+    "startFreeTrial": "Ingyenes próba indítása",
+    "trialFirstCharge": "{{period}}: első díj",
+    "trialHeadline": "{{period}} ingyenes",
+    "trialReassurance": "Most nincs fizetés · bármikor lemondható",
+    "trialThenPrice": ", majd {{price}}/{{period}}",
+    "trialToday": "Ma: kezdés"
   },
   "restore": {
     "button": "Vásárlások visszaállítása",
@@ -715,7 +750,8 @@
     "subhead": "Oldj fel minden könyvet, minden nyelven. Nincsenek hirdetések. Az adataid az eszközödön maradnak.",
     "pitch": "Kis csapat vagyunk, és minden fillért visszaforgatunk a Corpán-ba. A Corpanisták tartják hirdetésmentesen és fejlesztik tovább.",
     "maybeLater": "Talán később",
-    "continue": "Tovább"
+    "continue": "Tovább",
+    "dismiss": "Bezárás"
   },
   "streak": {
     "title": "{{count}} napos sorozat"
@@ -819,5 +855,35 @@
     "update": "Frissítés",
     "updateNow": "Frissítés most",
     "versionLine": "A {{version}} verzió készen áll a telepítésre."
+  },
+  "streakBadge": {
+    "label": "{{days}} napos sorozat"
+  },
+  "dailyLock": {
+    "title": "A mai {{count}} {{unit}}",
+    "streakActive": "{{days}} napos sorozat — gyere vissza holnap, hogy folytasd.",
+    "streakStart": "Gyere vissza holnap, hogy folytasd.",
+    "resetIn": "Újraindul {{time}} múlva",
+    "cta": "Folytasd most a Corpán Plus segítségével",
+    "dismiss": "Talán később",
+    "closeAria": "Bezárás",
+    "countdownHm": "{{h}} óra {{m}} perc",
+    "countdownM": "{{m}} perc",
+    "countdownSoon": "bármelyik pillanatban"
+  },
+  "code": {
+    "attributedUnverified": "A kód hozzá lesz adva az előfizetésedhez.",
+    "checkFailed": "Nem sikerült ellenőrizni",
+    "checking": "Kód ellenőrzése…",
+    "creditedTo": "jóváírva: {{partner}}",
+    "fieldLabel": "Ajánlat- vagy partnerkód",
+    "help": "Van kódod? Írd be, hogy érvényesítsd az ajánlatot.",
+    "redeemUnavailable": "Nem sikerült megnyitni a beváltási képernyőt. Kérlek, próbáld újra.",
+    "redeemWithApple": "Beváltás Apple-lel",
+    "redeeming": "Beváltás megnyitása…",
+    "retry": "Újra",
+    "subscribeWithDiscount": "Előfizetés ({{discount}})",
+    "redeemCode": "Kód beváltása",
+    "notApplied": "Ez a kód nem ad kedvezményt."
   }
 }

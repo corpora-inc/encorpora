@@ -314,7 +314,8 @@
       "joinTitle": "Corpanistas میں شامل ہوں",
       "start": "دریافت کرنا شروع کریں",
       "subtitle": "Corpán ایک چھوٹی اوپن سورس ٹیم نے بنایا ہے۔ آ کر سلام کریں — اور اگر آپ کو یہ پسند ہے، تو آپ ہماری حمایت کر سکتے ہیں۔",
-      "title": "آپ سب تیار ہیں"
+      "title": "آپ سب تیار ہیں",
+      "explore": "خود دریافت کریں"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "{{name}} کا پیش منظر",
     "voicePreviewSelected": "منتخب کا پیش منظر",
     "voiceRecommended": "تجویز کردہ",
-    "voiceSelectedCount": "{{total}} میں سے {{count}}"
+    "voiceSelectedCount": "{{total}} میں سے {{count}}",
+    "whatToStart": {
+      "title": "ہم کہاں سے شروع کریں؟",
+      "subtitle": "شروع کرنے کے لیے ایک منتخب کریں — باقی صرف ایک ٹیپ کی دوری پر ہے۔",
+      "read": {
+        "label": "پڑھیں",
+        "desc": "کہانیوں اور کتابوں میں ڈوب جائیں۔"
+      },
+      "study": {
+        "label": "مطالعہ کریں",
+        "desc": "مرتکز مشق سے اپنے الفاظ بڑھائیں۔"
+      },
+      "playMusic": {
+        "label": "موسیقی بجائیں",
+        "desc": "ڈیکس پر اپنی زبان آزمائیں۔"
+      },
+      "playGames": {
+        "label": "کھیلیں",
+        "desc": "تفریحی چیلنجز کے ذریعے سیکھیں۔"
+      },
+      "surprise": {
+        "label": "مجھے حیران کریں!",
+        "desc": "مجھے کسی مزے دار جگہ لے چلیں۔"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "حروف، اعداد، ڈیش یا انڈر اسکور استعمال کریں۔",
     "affiliateChecking": "کوڈ چیک کیا جا رہا ہے...",
     "affiliateApplied": "کوڈ اس سبسکرپشن کے ساتھ منسلک ہو جائے گا۔",
-    "affiliateCodeHelp": "اگر کسی نے آپ کو یہاں بھیجا ہے تو سبسکرائب کرنے سے پہلے اس کا کوڈ درج کریں۔"
+    "affiliateCodeHelp": "اگر کسی نے آپ کو یہاں بھیجا ہے تو سبسکرائب کرنے سے پہلے اس کا کوڈ درج کریں۔",
+    "introPriceHeadline": "{{introPrice}} کے لئے {{period}}",
+    "introPriceThen": ", پھر {{price}}/{{period}}",
+    "perMonth": "مہینہ",
+    "perYear": "سال",
+    "startFreeTrial": "مفت آزمائش شروع کریں",
+    "trialFirstCharge": "{{period}}: پہلا چارج",
+    "trialHeadline": "{{period}} مفت",
+    "trialReassurance": "ابھی کوئی ادائیگی نہیں · کسی بھی وقت منسوخ کریں",
+    "trialThenPrice": ", پھر {{price}}/{{period}}",
+    "trialToday": "آج: شروع کریں"
   },
   "restore": {
     "button": "خریداریاں بحال کریں",
@@ -715,7 +750,8 @@
     "subhead": "ہر زبان میں ہر کتاب کو غیر مقفل کریں۔ کوئی اشتہار نہیں۔ آپ کا ڈیٹا آپ کے آلے پر رہتا ہے۔",
     "pitch": "ہم ایک چھوٹی ٹیم ہیں اور ہر پیسہ Corpán میں واپس لگاتے ہیں۔ Corpanistas اسے اشتہار سے پاک اور ترقی پذیر رکھتے ہیں۔",
     "maybeLater": "شاید بعد میں",
-    "continue": "جاری رکھیں"
+    "continue": "جاری رکھیں",
+    "dismiss": "خارج کریں"
   },
   "streak": {
     "title": "مسلسل {{count}} دن"
@@ -819,5 +855,35 @@
     "update": "اپ ڈیٹ کریں",
     "updateNow": "ابھی اپ ڈیٹ کریں",
     "versionLine": "ورژن {{version}} انسٹال ہونے کے لیے تیار ہے۔"
+  },
+  "streakBadge": {
+    "label": "{{days}} دن کی لڑی"
+  },
+  "dailyLock": {
+    "title": "آج کے لئے آپ کے {{count}} {{unit}}",
+    "streakActive": "{{days}} دن کی لڑی — اسے جاری رکھنے کے لئے کل واپس آئیں۔",
+    "streakStart": "اسے جاری رکھنے کے لئے کل واپس آئیں۔",
+    "resetIn": "{{time}} میں دوبارہ شروع ہوگا",
+    "cta": "ابھی Corpán Plus کے ساتھ جاری رکھیں",
+    "dismiss": "شاید بعد میں",
+    "closeAria": "ختم کریں",
+    "countdownHm": "{{h}}گھنٹے {{m}}منٹ",
+    "countdownM": "{{m}}منٹ",
+    "countdownSoon": "کسی بھی لمحے"
+  },
+  "code": {
+    "attributedUnverified": "کوڈ آپ کی سبسکرپشن سے منسلک ہو جائے گا۔",
+    "checkFailed": "چیک نہیں کر سکے",
+    "checking": "کوڈ چیک ہو رہا ہے…",
+    "creditedTo": "{{partner}} کے لئے کریڈٹ کیا گیا",
+    "fieldLabel": "آفر یا الحاقی کوڈ",
+    "help": "کوڈ ہے؟ اپنی آفر کو لاگو کرنے کے لئے داخل کریں۔",
+    "redeemUnavailable": "ریڈیم اسکرین نہیں کھول سکے۔ براہ کرم دوبارہ کوشش کریں۔",
+    "redeemWithApple": "ایپل کے ساتھ ریڈیم کریں",
+    "redeeming": "ریڈیم کھول رہا ہے…",
+    "retry": "دوبارہ کوشش کریں",
+    "subscribeWithDiscount": "سبسکرائب کریں ({{discount}})",
+    "redeemCode": "کوڈ استعمال کریں",
+    "notApplied": "یہ کوڈ کوئی رعایت نہیں دیتا۔"
   }
 }

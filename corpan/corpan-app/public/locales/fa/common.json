@@ -314,7 +314,8 @@
       "joinTitle": "به Corpanistas بپیوندید",
       "start": "شروع به کاوش کنید",
       "subtitle": "Corpán توسط یک تیم کوچک متن‌باز ساخته شده است. بیایید سلام کنید — و اگر آن را دوست دارید، می‌توانید از ما حمایت کنید.",
-      "title": "همه چیز آماده است"
+      "title": "همه چیز آماده است",
+      "explore": "خودم کشف می‌کنم"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "پیش‌نمایش {{name}}",
     "voicePreviewSelected": "پیش‌نمایش انتخاب شده",
     "voiceRecommended": "توصیه شده",
-    "voiceSelectedCount": "{{count}} از {{total}}"
+    "voiceSelectedCount": "{{count}} از {{total}}",
+    "whatToStart": {
+      "title": "از کجا شروع کنیم؟",
+      "subtitle": "یکی را انتخاب کن تا شروع کنی — بقیه فقط یک لمس فاصله دارند.",
+      "read": {
+        "label": "بخوان",
+        "desc": "در داستان‌ها و کتاب‌ها غرق شو."
+      },
+      "study": {
+        "label": "مطالعه کن",
+        "desc": "واژگانت را با تمرین متمرکز بساز."
+      },
+      "playMusic": {
+        "label": "موسیقی بنواز",
+        "desc": "زبانت را پشت دستگاه‌ها امتحان کن."
+      },
+      "playGames": {
+        "label": "بازی کن",
+        "desc": "با چالش‌های سرگرم‌کننده یاد بگیر."
+      },
+      "surprise": {
+        "label": "غافلگیرم کن!",
+        "desc": "مرا به جایی جذاب ببر."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "از حروف، اعداد، خط تیره یا زیرخط استفاده کنید.",
     "affiliateChecking": "در حال بررسی کد...",
     "affiliateApplied": "کد به این اشتراک پیوست می‌شود.",
-    "affiliateCodeHelp": "اگر کسی شما را به اینجا فرستاده، پیش از اشتراک کد او را وارد کنید."
+    "affiliateCodeHelp": "اگر کسی شما را به اینجا فرستاده، پیش از اشتراک کد او را وارد کنید.",
+    "introPriceHeadline": "{{introPrice}} برای {{period}}",
+    "introPriceThen": "، سپس {{price}}/{{period}}",
+    "perMonth": "ماه",
+    "perYear": "سال",
+    "startFreeTrial": "شروع دوره آزمایشی رایگان",
+    "trialFirstCharge": "{{period}}: اولین پرداخت",
+    "trialHeadline": "{{period}} رایگان",
+    "trialReassurance": "اکنون پرداختی لازم نیست · هر زمان لغو کنید",
+    "trialThenPrice": "، سپس {{price}}/{{period}}",
+    "trialToday": "امروز: شروع"
   },
   "restore": {
     "button": "بازیابی خریدها",
@@ -715,7 +750,8 @@
     "subhead": "همه کتاب‌ها را در هر زبان باز کنید. بدون تبلیغات. اطلاعات شما روی دستگاهتان می‌ماند.",
     "pitch": "ما یک تیم کوچک هستیم و هر سنت را دوباره صرف Corpán می‌کنیم. Corpanistas آن را بدون تبلیغات و در حال رشد نگه می‌دارند.",
     "maybeLater": "شاید بعداً",
-    "continue": "ادامه"
+    "continue": "ادامه",
+    "dismiss": "رد کردن"
   },
   "streak": {
     "title": "استریک {{count}} روزه"
@@ -819,5 +855,35 @@
     "update": "به‌روزرسانی",
     "updateNow": "اکنون به‌روزرسانی کنید",
     "versionLine": "نسخه {{version}} آماده نصب است."
+  },
+  "streakBadge": {
+    "label": "رکورد {{days}}-روزه"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} امروز شما",
+    "streakActive": "رکورد {{days}}-روزه — فردا برگردید تا ادامه یابد.",
+    "streakStart": "فردا برگردید تا ادامه یابد.",
+    "resetIn": "بازنشانی در {{time}}",
+    "cta": "اکنون با Corpán Plus ادامه دهید",
+    "dismiss": "شاید بعداً",
+    "closeAria": "رد کردن",
+    "countdownHm": "{{h}}ساعت {{m}}دقیقه",
+    "countdownM": "{{m}}دقیقه",
+    "countdownSoon": "هر لحظه"
+  },
+  "code": {
+    "attributedUnverified": "کد به اشتراک شما اضافه خواهد شد.",
+    "checkFailed": "بررسی نشد",
+    "checking": "در حال بررسی کد…",
+    "creditedTo": "به حساب {{partner}} اضافه شد",
+    "fieldLabel": "کد پیشنهاد یا همکاری",
+    "help": "کد دارید؟ وارد کنید تا پیشنهاد خود را اعمال کنید.",
+    "redeemUnavailable": "صفحه بازخرید باز نشد. لطفاً دوباره تلاش کنید.",
+    "redeemWithApple": "بازخرید با Apple",
+    "redeeming": "در حال باز کردن بازخرید…",
+    "retry": "تلاش مجدد",
+    "subscribeWithDiscount": "اشتراک ({{discount}})",
+    "redeemCode": "استفاده از کد",
+    "notApplied": "این کد تخفیفی اعمال نمی‌کند."
   }
 }

@@ -314,7 +314,8 @@
       "joinTitle": "Corpanistas मध्ये सामील व्हा",
       "start": "शोधणे सुरू करा",
       "subtitle": "Corpán एका लहान ओपन-सोर्स टीमने बनवले आहे. येऊन भेटा — आणि जर तुम्हाला ते आवडले, तर तुम्ही आम्हाला समर्थन देऊ शकता.",
-      "title": "तुम्ही तयार आहात"
+      "title": "तुम्ही तयार आहात",
+      "explore": "स्वतःहून शोधा"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "{{name}} चे पूर्वावलोकन करा",
     "voicePreviewSelected": "पूर्वावलोकन निवडले",
     "voiceRecommended": "शिफारस केलेले",
-    "voiceSelectedCount": "{{total}} पैकी {{count}}"
+    "voiceSelectedCount": "{{total}} पैकी {{count}}",
+    "whatToStart": {
+      "title": "आपण कुठून सुरुवात करूया?",
+      "subtitle": "सुरू करण्यासाठी एक निवडा — बाकीचं फक्त एका टॅपवर आहे.",
+      "read": {
+        "label": "वाचा",
+        "desc": "गोष्टी आणि पुस्तकांत बुडून जा."
+      },
+      "study": {
+        "label": "अभ्यास करा",
+        "desc": "केंद्रित सरावाने शब्दसंग्रह वाढवा."
+      },
+      "playMusic": {
+        "label": "संगीत वाजवा",
+        "desc": "डेकवर तुमची भाषा अनुभवा."
+      },
+      "playGames": {
+        "label": "खेळा",
+        "desc": "मजेशीर आव्हानांतून शिका."
+      },
+      "surprise": {
+        "label": "मला आश्चर्यचकित करा!",
+        "desc": "मला कुठेतरी मजेदार ठिकाणी न्या."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "अक्षरे, अंक, हायफन किंवा अंडरस्कोर वापरा.",
     "affiliateChecking": "कोड तपासत आहे...",
     "affiliateApplied": "हा कोड या सदस्यतेशी जोडला जाईल.",
-    "affiliateCodeHelp": "कोणी तुम्हाला येथे पाठवले असल्यास, सदस्यता घेण्यापूर्वी त्यांचा कोड प्रविष्ट करा."
+    "affiliateCodeHelp": "कोणी तुम्हाला येथे पाठवले असल्यास, सदस्यता घेण्यापूर्वी त्यांचा कोड प्रविष्ट करा.",
+    "introPriceHeadline": "{{introPrice}} {{period}} साठी",
+    "introPriceThen": ", नंतर {{price}}/{{period}}",
+    "perMonth": "महिना",
+    "perYear": "वर्ष",
+    "startFreeTrial": "मोफत चाचणी सुरू करा",
+    "trialFirstCharge": "{{period}}: पहिला शुल्क",
+    "trialHeadline": "{{period}} मोफत",
+    "trialReassurance": "आता कोणतेही पेमेंट नाही · कधीही रद्द करा",
+    "trialThenPrice": ", नंतर {{price}}/{{period}}",
+    "trialToday": "आज: सुरू करा"
   },
   "restore": {
     "button": "खरेदी पुनर्संचयित करा",
@@ -715,7 +750,8 @@
     "subhead": "प्रत्येक भाषेतील प्रत्येक पुस्तक अनलॉक करा. जाहिराती नाहीत. तुमचा डेटा तुमच्या डिव्हाइसवरच राहतो.",
     "pitch": "आम्ही एक लहान संघ आहोत आणि प्रत्येक पैसा Corpán मध्ये परत गुंतवतो. Corpanistas ते जाहिरातमुक्त आणि वाढत ठेवतात.",
     "maybeLater": "कदाचित नंतर",
-    "continue": "पुढे जा"
+    "continue": "पुढे जा",
+    "dismiss": "रद्द करा"
   },
   "streak": {
     "title": "{{count}} दिवसांची सलगता"
@@ -819,5 +855,35 @@
     "update": "अपडेट करा",
     "updateNow": "आत्ता अपडेट करा",
     "versionLine": "आवृत्ती {{version}} स्थापित करण्यासाठी तयार आहे."
+  },
+  "streakBadge": {
+    "label": "{{days}}-दिवसांची मालिका"
+  },
+  "dailyLock": {
+    "title": "आजचे तुमचे {{count}} {{unit}}",
+    "streakActive": "{{days}}-दिवसांची मालिका — सुरू ठेवण्यासाठी उद्या परत या.",
+    "streakStart": "सुरू ठेवण्यासाठी उद्या परत या.",
+    "resetIn": "{{time}} मध्ये रीसेट होईल",
+    "cta": "आता Corpán Plus सह सुरू ठेवा",
+    "dismiss": "कदाचित नंतर",
+    "closeAria": "रद्द करा",
+    "countdownHm": "{{h}}त {{m}}म",
+    "countdownM": "{{m}}म",
+    "countdownSoon": "कधीही"
+  },
+  "code": {
+    "attributedUnverified": "कोड तुमच्या सदस्यतेला जोडला जाईल.",
+    "checkFailed": "तपासू शकलो नाही",
+    "checking": "कोड तपासत आहे…",
+    "creditedTo": "{{partner}} कडे जमा केले",
+    "fieldLabel": "ऑफर किंवा भागीदारी कोड",
+    "help": "कोड आहे का? तुमची ऑफर लागू करण्यासाठी ते प्रविष्ट करा.",
+    "redeemUnavailable": "रिडीम स्क्रीन उघडू शकलो नाही. कृपया पुन्हा प्रयत्न करा.",
+    "redeemWithApple": "Apple सह रिडीम करा",
+    "redeeming": "रिडीम उघडत आहे…",
+    "retry": "पुन्हा प्रयत्न करा",
+    "subscribeWithDiscount": "सदस्यता घ्या ({{discount}})",
+    "redeemCode": "कोड रिडीम करा",
+    "notApplied": "या कोडने कोणतीही सूट मिळत नाही."
   }
 }

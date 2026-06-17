@@ -12,10 +12,14 @@ import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
 import { useRatingStore } from "@/store/rating"
+import { useEntitlementStore } from "@/store/entitlements"
+import { usePaywallStore } from "@/store/paywall"
+import type { PaywallSurface } from "@/store/paywall"
 import { usePhrasePacksStore } from "@/store/phrasePacks"
 import { useDrawerStore } from "@/store/drawer"
 import type { TextSizeType } from "@/store/settings"
 import { rankProviders } from "@shared/asr"
+import { getPackStreak } from "@shared/streak"
 import type { StackConfigPatch } from "./types"
 import type {
   AsrApi,
@@ -23,6 +27,7 @@ import type {
   AsrCaptureMode,
   AsrProvider,
   AsrSession,
+  ContentPackEntitlementSnapshot,
   HostApi,
   LlmApi,
   ModelBudget,
@@ -152,6 +157,27 @@ const isSameStackSlice = (a: StackSlice, b: StackSlice) => {
     a.baseCorpusEnabled === b.baseCorpusEnabled &&
     a.scrollNavigationEnabled === b.scrollNavigationEnabled
   )
+}
+
+/**
+ * Build the entitlement snapshot handed to packs (via `HostApi.entitlement` AND
+ * the `__CORPAN_ENTITLEMENT` global). Single source of truth for the shape so
+ * the typed seam and the back-compat global never drift.
+ */
+export const buildEntitlementSnapshot = (): ContentPackEntitlementSnapshot => {
+  const s = useEntitlementStore.getState()
+  return {
+    plus: s.subscription.active,
+    subjectId: s.subjectId,
+    entitlementToken: s.entitlementToken,
+    subscription: {
+      active: s.subscription.active,
+      plan: s.subscription.plan,
+      expiresAt: s.subscription.expiresAt,
+      autoRenew: s.subscription.autoRenew,
+    },
+    checkedAt: s.lastRefreshed,
+  }
 }
 
 export const createHostApi = (packId?: string): HostApi => {
@@ -366,6 +392,12 @@ export const createHostApi = (packId?: string): HostApi => {
       }
     },
     load: async (args) => {
+      // No blanket RAM floor here anymore: the tutor now ships a range of model
+      // sizes and the pack picks one to fit the device (see modelTiering.ts),
+      // disabling sizes that won't run and gating "try-anyway" picks behind a
+      // warning. The hard backstop against the uncatchable native SIGSEGV from a
+      // failed ggml allocation lives in the plugin (per-model footprint vs total
+      // RAM in `load_model`), which is authoritative even for direct callers.
       // Tauri wraps command params under the param name (`args: LoadArgs`),
       // so the payload must be `{ args: {...} }` (same convention as stt).
       try {
@@ -1091,6 +1123,52 @@ export const createHostApi = (packId?: string): HostApi => {
     },
     notifyUtterance: () => {
       useRatingStore.getState().incrementUtteranceCount()
+    },
+    // The CURRENT pack's visit streak (the host already recorded the visit at
+    // the pack-enter boundary; this is a read-only retention read). Falls back to
+    // an all-zero state when this host was created without a pack id.
+    getStreak: () =>
+      packId
+        ? getPackStreak(packId)
+        : { current: 0, longest: 0, lastDay: "" },
+    entitlement: {
+      isSubscribed: () => useEntitlementStore.getState().subscription.active,
+      snapshot: () => buildEntitlementSnapshot(),
+      onChange: (cb) => {
+        let prev = useEntitlementStore.getState().subscription
+        // Fire on any change to the subscription / subject / token so packs
+        // see purchases, restores, and refreshes. Compares the fields that
+        // feed the snapshot to avoid spurious callbacks on unrelated writes.
+        return useEntitlementStore.subscribe((state) => {
+          const next = state.subscription
+          if (next !== prev) {
+            prev = next
+            cb(buildEntitlementSnapshot())
+          }
+        })
+      },
+    },
+    requestPaywall: async (context) => {
+      // Reuses the paywall store's own guards (subscribed / IAP unavailable /
+      // frequency-cap) and returns whether the sheet ACTUALLY opened — the
+      // synchronous truth a hard gate needs. Pack id defaults to this pack.
+      return usePaywallStore.getState().openPaywall({
+        surface: context.surface as PaywallSurface,
+        packId: context.packId ?? packId,
+        bookTitle: context.bookTitle,
+        bookId: context.bookId,
+        language: context.language,
+        theme: context.theme as import("@/store/paywall").PaywallTheme | undefined,
+      })
+    },
+    showRatingPrompt: () => {
+      // The OS-native in-app review sheet (iOS StoreKit / Android Play In-App
+      // Review) is the canonical "rate us" surface — never our own modal as a
+      // precondition, never gating any functionality. The OS is the real
+      // throttle (iOS ~3×/year, and it may show nothing); the rating store adds
+      // only a soft local backstop (minimum engagement + a long cooldown).
+      // Fire-and-forget; this returns immediately.
+      useRatingStore.getState().maybeRequestNativeReview()
     },
     phrasePacks: {
       getInstalled: () => {

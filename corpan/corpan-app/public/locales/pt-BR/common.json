@@ -314,7 +314,8 @@
       "joinTitle": "Junte-se aos Corpanistas",
       "start": "Começar a explorar",
       "subtitle": "Corpán é feito por uma pequena equipe de código aberto. Venha nos cumprimentar — e se você amar, pode nos apoiar.",
-      "title": "Tudo pronto"
+      "title": "Tudo pronto",
+      "explore": "Explorar por conta própria"
     },
     "fork": {
       "child": {
@@ -371,7 +372,31 @@
     "voicePreviewAria": "Pré-visualizar {{name}}",
     "voicePreviewSelected": "Pré-visualização selecionada",
     "voiceRecommended": "Recomendado",
-    "voiceSelectedCount": "{{count}} de {{total}}"
+    "voiceSelectedCount": "{{count}} de {{total}}",
+    "whatToStart": {
+      "title": "Por onde começamos?",
+      "subtitle": "Escolha uma para começar; o resto está a um toque.",
+      "read": {
+        "label": "Ler",
+        "desc": "Mergulhe em histórias e livros."
+      },
+      "study": {
+        "label": "Estudar",
+        "desc": "Amplie seu vocabulário com prática focada."
+      },
+      "playMusic": {
+        "label": "Tocar música",
+        "desc": "Experimente seu idioma nas pickups."
+      },
+      "playGames": {
+        "label": "Jogar",
+        "desc": "Aprenda com desafios divertidos."
+      },
+      "surprise": {
+        "label": "Me surpreenda!",
+        "desc": "Me leve para um lugar divertido."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -669,7 +694,17 @@
     "affiliateInvalidFormat": "Use letras, números, hífens ou sublinhados.",
     "affiliateChecking": "Verificando código...",
     "affiliateApplied": "O código será vinculado a esta assinatura.",
-    "affiliateCodeHelp": "Se alguém te enviou para cá, insira o código antes de assinar."
+    "affiliateCodeHelp": "Se alguém te enviou para cá, insira o código antes de assinar.",
+    "introPriceHeadline": "{{introPrice}} por {{period}}",
+    "introPriceThen": ", depois {{price}}/{{period}}",
+    "perMonth": "mês",
+    "perYear": "ano",
+    "startFreeTrial": "Iniciar Teste Gratuito",
+    "trialFirstCharge": "{{period}}: primeira cobrança",
+    "trialHeadline": "{{period}} grátis",
+    "trialReassurance": "Nenhum pagamento agora · cancele a qualquer momento",
+    "trialThenPrice": ", depois {{price}}/{{period}}",
+    "trialToday": "Hoje: começar"
   },
   "restore": {
     "button": "Restaurar compras",
@@ -715,7 +750,8 @@
     "subhead": "Desbloqueie todos os livros em todos os idiomas. Sem anúncios. Seus dados ficam no seu aparelho.",
     "pitch": "Somos uma equipe pequena e investimos cada centavo de volta no Corpán. Os Corpanistas o mantêm sem anúncios e em crescimento.",
     "maybeLater": "Talvez mais tarde",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "dismiss": "Fechar"
   },
   "streak": {
     "title": "Sequência de {{count}} dias"
@@ -819,5 +855,35 @@
     "update": "Atualizar",
     "updateNow": "Atualizar agora",
     "versionLine": "A versão {{version}} está pronta para ser instalada."
+  },
+  "streakBadge": {
+    "label": "Sequência de {{days}} dias"
+  },
+  "dailyLock": {
+    "title": "Seu {{count}} {{unit}} de hoje",
+    "streakActive": "Sequência de {{days}} dias — volte amanhã para continuar.",
+    "streakStart": "Volte amanhã para continuar.",
+    "resetIn": "Reinicia em {{time}}",
+    "cta": "Continue agora com Corpán Plus",
+    "dismiss": "Talvez mais tarde",
+    "closeAria": "Dispensar",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "a qualquer momento"
+  },
+  "code": {
+    "attributedUnverified": "Código será vinculado à sua assinatura.",
+    "checkFailed": "Não foi possível verificar",
+    "checking": "Verificando código…",
+    "creditedTo": "creditado a {{partner}}",
+    "fieldLabel": "Código de oferta ou afiliado",
+    "help": "Tem um código? Insira-o para aplicar sua oferta.",
+    "redeemUnavailable": "Não foi possível abrir a tela de resgate. Tente novamente.",
+    "redeemWithApple": "Resgatar com Apple",
+    "redeeming": "Abrindo resgate…",
+    "retry": "Tentar novamente",
+    "subscribeWithDiscount": "Assinar ({{discount}})",
+    "redeemCode": "Resgatar código",
+    "notApplied": "Esse código não dá nenhum desconto."
   }
 }

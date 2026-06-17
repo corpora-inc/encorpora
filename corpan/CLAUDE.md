@@ -266,6 +266,10 @@ intentionally "soft" until legacy publishing is ever sunset.
   `corpan:segment-progress` window event from readers. `StreakChip` is opt-in.
 - Backfill existing catalog: `infra/scripts/backfill_two_zip.py` (dry-run first).
 
-**Principles (non-negotiable):** no ads ever; no login (Apple/Google = identity);
-on-device analytics only; the free tier is generous + permanent; localize every
-new string in ~50 langs; no Duolingo dark patterns (streak is opt-in/dignified).
+**Principles (strongly held design intent — NOT absolutes to ship in copy):**
+ad-free in the app today and working to stay that way; no Corpán-specific login
+(Apple/Google IAP identity only); on-device analytics; generous free tier;
+localize every new string in ~50 langs; no Duolingo dark patterns (streak is
+opt-in/dignified). These are direction, not user-facing promises. Don't ship
+marketing copy that says "forever / never / no X ever / 100% / entirely / always"
+— see `~/.claude/projects/-home-skyl/memory/feedback_no_absolutes_in_marketing.md`.

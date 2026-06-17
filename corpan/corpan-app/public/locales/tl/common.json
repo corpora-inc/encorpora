@@ -230,7 +230,8 @@
       "joinDesc": "Suportahan ang Corpán at i-unlock ang lahat. Opsyonal, anumang oras.",
       "subscribedTitle": "Corpanista ka na",
       "subscribedDesc": "Salamat sa pagtulong na panatilihing walang ads at patuloy na lumalago ang Corpán.",
-      "start": "Simulan ang pag-explore"
+      "start": "Simulan ang pag-explore",
+      "explore": "Mag-explore nang mag-isa"
     },
     "welcomePact": {
       "title": "Nag-e-evolve ang Corpán",
@@ -290,7 +291,7 @@
     "ttsPoorQualityNote": "Kung ang audio ay mukhang mahina, mag-install ng mataas na kalidad na mga boses sa mga setting ng TTS ng iyong device.",
     "howToSetupTtsOn": "Paano i-set up ang TTS sa",
     "welcomeTitle": "Maligayang pagdating sa pamilya ng Corpán!",
-      "welcomeBody": "Ang Corpán ay isang open-source app mula sa maliit na team, hindi malaking kumpanya. Mahalaga sa amin ang wika at edukasyon, at maaga pa kami, kaya may makikita ka pang kulang, magaspang, o hindi pa tapos. Kung may hindi gumagana, sabihin sa amin sa GitHub o email. Malaking tulong ang feedback mo para mas mapaganda namin ang language learning para sa lahat.",
+    "welcomeBody": "Ang Corpán ay isang open-source app mula sa maliit na team, hindi malaking kumpanya. Mahalaga sa amin ang wika at edukasyon, at maaga pa kami, kaya may makikita ka pang kulang, magaspang, o hindi pa tapos. Kung may hindi gumagana, sabihin sa amin sa GitHub o email. Malaking tulong ang feedback mo para mas mapaganda namin ang language learning para sa lahat.",
     "welcomeVisit": "Bisitahin ang encorpora.io",
     "linkCopied": "Link na kopya. Buksan sa iyong browser:",
     "reconfigureStack": "I-reconfigure ang stack",
@@ -442,6 +443,30 @@
       "noVoiceFor": "Walang {{lang}} na boses pa — magdagdag tayo ng isa upang makabasa nang malakas ang Corpán.",
       "addBetter": "I-unlock ang mas mayamang boses",
       "chooseVoices": "Pumili ng mga boses"
+    },
+    "whatToStart": {
+      "title": "Saan tayo magsisimula?",
+      "subtitle": "Pumili ng isa para magsimula — isang tap na lang ang iba.",
+      "read": {
+        "label": "Magbasa",
+        "desc": "Sumisid sa mga kuwento at libro."
+      },
+      "study": {
+        "label": "Mag-aral",
+        "desc": "Palawakin ang bokabularyo sa pokus na pagsasanay."
+      },
+      "playMusic": {
+        "label": "Tumugtog",
+        "desc": "Subukan ang wika mo sa mga deck."
+      },
+      "playGames": {
+        "label": "Maglaro",
+        "desc": "Matuto sa masasayang hamon."
+      },
+      "surprise": {
+        "label": "Gulatin mo ako!",
+        "desc": "Dalhin mo ako sa kung saang masaya."
+      }
     }
   },
   "socials": {
@@ -751,7 +776,17 @@
     "affiliateInvalidFormat": "Gumamit ng mga titik, numero, gitling, o underscore.",
     "affiliateChecking": "Nagsusuri ng code...",
     "affiliateApplied": "Ikakabit ang code na ito sa subscription na ito.",
-    "affiliateCodeHelp": "Kung may nagpadala sa iyo dito, ilagay ang kanilang code bago mag-subscribe."
+    "affiliateCodeHelp": "Kung may nagpadala sa iyo dito, ilagay ang kanilang code bago mag-subscribe.",
+    "introPriceHeadline": "{{introPrice}} para sa {{period}}",
+    "introPriceThen": ", pagkatapos ay {{price}}/{{period}}",
+    "perMonth": "buwan",
+    "perYear": "taon",
+    "startFreeTrial": "Simulan ang Libreng Pagsubok",
+    "trialFirstCharge": "{{period}}: unang bayad",
+    "trialHeadline": "{{period}} libre",
+    "trialReassurance": "Walang bayad ngayon · maaaring kanselahin anumang oras",
+    "trialThenPrice": ", pagkatapos ay {{price}}/{{period}}",
+    "trialToday": "Ngayon: simulan"
   },
   "restore": {
     "button": "Ibalik ang mga Pagbili",
@@ -815,9 +850,40 @@
     "subhead": "I-unlock ang bawat libro sa bawat wika. Walang mga ad. Mananatili ang iyong data sa iyong device.",
     "pitch": "Kami ay isang maliit na koponan at ibinabalik ang bawat sentimo sa Corpán. Ang mga Corpanista ay nagpapanatili nitong walang ad at lumalaki.",
     "maybeLater": "Marahil mamaya",
-    "continue": "Magpatuloy"
+    "continue": "Magpatuloy",
+    "dismiss": "Isara"
   },
   "streak": {
     "title": "{{count}}-araw na streak"
+  },
+  "streakBadge": {
+    "label": "{{days}}-araw na sunod-sunod"
+  },
+  "dailyLock": {
+    "title": "Ang iyong {{count}} {{unit}} para sa araw na ito",
+    "streakActive": "{{days}}-araw na sunod-sunod — bumalik bukas para ipagpatuloy ito.",
+    "streakStart": "Bumalik bukas para ipagpatuloy ito.",
+    "resetIn": "Magsisimula muli sa {{time}}",
+    "cta": "Magpatuloy ngayon gamit ang Corpán Plus",
+    "dismiss": "Siguro mamaya",
+    "closeAria": "Isara",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "anumang sandali"
+  },
+  "code": {
+    "attributedUnverified": "Ikakabit ang code sa iyong subscription.",
+    "checkFailed": "Hindi masuri",
+    "checking": "Sinusuri ang code…",
+    "creditedTo": "na-kredito sa {{partner}}",
+    "fieldLabel": "Alok o affiliate code",
+    "help": "May code? Ipasok ito para ilapat ang iyong alok.",
+    "redeemUnavailable": "Hindi mabuksan ang screen ng pagtubos. Pakisubukang muli.",
+    "redeemWithApple": "Tubusin gamit ang Apple",
+    "redeeming": "Binubuksan ang pagtubos…",
+    "retry": "Subukang Muli",
+    "subscribeWithDiscount": "Mag-subscribe ({{discount}})",
+    "redeemCode": "Tubusin ang code",
+    "notApplied": "Walang diskwento ang code na ito."
   }
 }

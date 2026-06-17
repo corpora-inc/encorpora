@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+# Keep the deliverable + machine-readable recs; ignore bulky regenerable data
+# (raw generations, per-language sample bundles, individual verdict files).
+results/*
+!results/REPORT.md
+!results/recommendations.json
+# Per-model eval runs (0.6B/1.7B) — bulky regenerable generations.
+results-*/

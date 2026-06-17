@@ -16,12 +16,30 @@ import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore } from "@/store/history";
 import { useRatingStore } from "@/store/rating";
 import { usePhrasePacksStore } from "@/store/phrasePacks";
+import { useEntitlementStore } from "@/store/entitlements";
+import { createDailyQuota, type PaywallGate } from "@shared/monetization";
+import { recordPackVisit } from "@shared/streak";
 import { resolveLocalized } from "@/contentPacks/localized";
 
 import { isRTL } from "@/util/convert";
 import { getPlatformBottomPadding } from "@/util/browser";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
+
+/* ----------------------------- Monetization ----------------------------- */
+
+// gate v2 daily quota for the CORE phrase experience. Limit/nag/unit live in the
+// central registry (QUOTAS.phrase_flips — 20 phrases/local day, soft nag every
+// 5, "soft, soft, hard"). At the cap the gate dispatches `corpan:daily-locked`
+// (App.tsx renders the accomplishment-lock overlay) and stays blocked until
+// local midnight or subscribe. Subscribers are a no-op (gate reads live
+// entitlement state).
+
+// The core phrase-flip experience isn't an overlay pack, but it gets a visit
+// streak like every pack. This is the SAME id the phrase gate uses as its packId
+// (so the `corpan:daily-locked` event carries it and the lock overlay reads the
+// matching streak). Retention only — never a gate.
+const PHRASE_FLIP_PACK_ID = "corpan_app";
 
 /* -------------------------------- Types -------------------------------- */
 
@@ -241,6 +259,32 @@ export function MainExperience() {
 
     const incrementUtteranceCount = useRatingStore((s) => s.incrementUtteranceCount);
 
+    // Daily phrase quota → shared paywall gate (gate v2). One instance per mount;
+    // `note()` (per forward phrase advance) fires the soft nag / accomplishment
+    // lock internally. Subscribers are a no-op — `isSubscribed` reads the live
+    // entitlement store, so a mid-session subscribe immediately stops gating.
+    const phraseGateRef = useRef<PaywallGate | null>(null);
+    useEffect(() => {
+        // Construct the gate INSIDE the effect (not in render). React StrictMode
+        // runs mount→cleanup→mount, and the cleanup `dispose()`s the gate; if we
+        // built it in render behind a `ref === null` guard, the guard would
+        // refuse to rebuild and the ref would hold a DISPOSED gate forever —
+        // silently no-op'ing note()/isBlocked() (the daily wall never fires in
+        // dev, and ANY remount kills it). Building here means every effect run
+        // gets a fresh, non-disposed gate; cleanup disposes it and clears the ref.
+        const gate = createDailyQuota("phrase_flips", {
+            isSubscribed: () => useEntitlementStore.getState().subscription.active,
+        });
+        phraseGateRef.current = gate;
+        // The user showed up to phrase-flip today → record one visit (idempotent
+        // within a local day). Retention streak only; not gated.
+        recordPackVisit(PHRASE_FLIP_PACK_ID);
+        return () => {
+            gate.dispose();
+            phraseGateRef.current = null;
+        };
+    }, []);
+
     // History
     const activeHistory = useHistoryStore((s) => s.byStack[activeStackId]);
     const ids = activeHistory?.ids ?? [];
@@ -396,6 +440,19 @@ export function MainExperience() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeStackId]);
 
+    // Self-heal the FIRST load. When the user drops in straight from onboarding
+    // (the razzle reveals Phrase Flip while the just-committed phrase source is
+    // still settling), the initial fetch above can no-op — `fetchRandomEntry`
+    // bails when base is off AND no phrase packs are active yet, and the effect
+    // above won't re-run because it only depends on `activeStackId`. So when the
+    // source becomes ready (base re-enabled / phrase packs registered) and we
+    // STILL have nothing shown, fetch. Guarded so it never loops once a phrase
+    // is on screen or the user has history.
+    useEffect(() => {
+        if (!currEntry && ids.length === 0) void fetchRandomEntry();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [phrasePackIds, baseCorpusEnabled, currEntry]);
+
     // Re-fetch same entry when language list changes
     useEffect(() => {
         if (index >= 0 && index < ids.length) {
@@ -495,7 +552,26 @@ export function MainExperience() {
         void resolveCurrent(target, sources[index - 1] ?? "base");
     };
 
+    // Single chokepoint for acquiring a NEW phrase (the ONLY thing the daily cap
+    // gates). A blocked free user gets EXACTLY the daily limit of NEW phrases,
+    // then is stopped: re-show the accomplishment-lock overlay and do NOT fetch
+    // (stay on the current newest phrase — they can still review back/forward
+    // through seen history). Subscribers never block (isBlocked reads the live
+    // entitlement). `note()` counts ONE new phrase and fires the soft nag /
+    // accomplishment lock internally; it runs ONLY when a new phrase is pulled.
+    const acquireNewPhrase = () => {
+        if (phraseGateRef.current?.isBlocked()) {
+            phraseGateRef.current.requestDailyLock();
+            return;
+        }
+        phraseGateRef.current?.note();
+        void fetchRandomEntry();
+    };
+
     const handleNext = () => {
+        // Forward review through ALREADY-SEEN phrases is ALWAYS free — never
+        // gated, never counted. Check the in-history case FIRST and short-circuit;
+        // only the "pull a brand-new phrase" branch below is metered.
         if (index < ids.length - 1) {
             const target = ids[index + 1];
             if (typeof target !== "number") return;
@@ -503,7 +579,16 @@ export function MainExperience() {
             void resolveCurrent(target, sources[index + 1] ?? "base");
             return;
         }
-        void fetchRandomEntry();
+        // We're on the newest phrase → Next pulls a BRAND-NEW phrase. That is the
+        // only metered action: gate + count it like Random.
+        acquireNewPhrase();
+    };
+
+    // The "Random sentence" button always pulls a NEW phrase — the same metered
+    // action as Next-on-newest. Route both through one seam so the daily wall
+    // can't be side-stepped by tapping Random instead of Next.
+    const handleRandom = () => {
+        acquireNewPhrase();
     };
 
     // Scroll navigation - use the hook
@@ -627,7 +712,7 @@ export function MainExperience() {
                         <Button onClick={handlePrev} variant="ghost" size="lg" aria-label="Previous sentence" disabled={index <= 0}>
                             <ChevronLeftIcon />
                         </Button>
-                        <Button onClick={fetchRandomEntry} variant="outline" size="lg" aria-label="Random sentence">
+                        <Button onClick={handleRandom} variant="outline" size="lg" aria-label="Random sentence">
                             <RefreshIcon />
                         </Button>
                         <Button onClick={handleNext} variant="ghost" size="lg" aria-label="Next sentence" disabled={ids.length === 0}>

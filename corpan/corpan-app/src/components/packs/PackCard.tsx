@@ -5,6 +5,7 @@ import type { InstalledGame } from "@/store/games"
 import { PackBadge, type BadgeVariant } from "./PackBadge"
 import { PackScreenshot } from "./PackScreenshot"
 import { PackActions, type PackActionState } from "./PackActions"
+import { StreakBadge } from "@/components/StreakBadge"
 
 export function PackCard({
   pack: rawPack,
@@ -41,7 +42,12 @@ export function PackCard({
               </p>
             )}
           </div>
-          {badge && <PackBadge variant={badge} />}
+          <div className="flex items-center gap-1.5">
+            {/* Per-pack visit streak (installed packs only) — retention, never a
+                gate. Hidden below 2 days so it never clutters. */}
+            {installedGame && <StreakBadge packId={installedGame.id} />}
+            {badge && <PackBadge variant={badge} />}
+          </div>
         </div>
 
         {/* Description */}

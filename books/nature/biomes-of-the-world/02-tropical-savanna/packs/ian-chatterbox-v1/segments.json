@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Tropical Savanna",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Tropical Savanna",
+      "text_markdown": "The Tropical Savanna"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Where Savannas Grow",
+      "text_markdown": "Where Savannas Grow"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welcome to the tropical savanna.",
+      "text_markdown": "Welcome to the tropical savanna.",
+      "tts": {
+        "text": "Welcome to the tropical savanna.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is one of the great biomes of the world.",
+      "text_markdown": "This is one of the great biomes of the world.",
+      "tts": {
+        "text": "This is one of the great biomes of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "text_markdown": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "tts": {
+        "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The savanna is a wide grassland with scattered trees.",
+      "text_markdown": "The savanna is a wide grassland with scattered trees.",
+      "tts": {
+        "text": "The savanna is a wide grassland with scattered trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is warm all year.",
+      "text_markdown": "It is warm all year.",
+      "tts": {
+        "text": "It is warm all year.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It has one long dry time and one shorter wet time.",
+      "text_markdown": "It has one long dry time and one shorter wet time.",
+      "tts": {
+        "text": "It has one long dry time and one shorter wet time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The biggest savannas in the world are in Africa.",
+      "text_markdown": "The biggest savannas in the world are in Africa.",
+      "tts": {
+        "text": "The biggest savannas in the world are in Africa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They stretch across much of the middle of the continent.",
+      "text_markdown": "They stretch across much of the middle of the continent.",
+      "tts": {
+        "text": "They stretch across much of the middle of the continent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are large savannas in South America too, called the cerrado.",
+      "text_markdown": "There are large savannas in South America too, called the cerrado.",
+      "tts": {
+        "text": "There are large savannas in South America too, called the cerrado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are tropical savannas across the north of Australia.",
+      "text_markdown": "There are tropical savannas across the north of Australia.",
+      "tts": {
+        "text": "There are tropical savannas across the north of Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are smaller savannas in India and in Southeast Asia.",
+      "text_markdown": "There are smaller savannas in India and in Southeast Asia.",
+      "tts": {
+        "text": "There are smaller savannas in India and in Southeast Asia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each of these grew up on its own, far from the others.",
+      "text_markdown": "Each of these grew up on its own, far from the others.",
+      "tts": {
+        "text": "Each of these grew up on its own, far from the others.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So the plants and animals are different in each part of the world.",
+      "text_markdown": "So the plants and animals are different in each part of the world.",
+      "tts": {
+        "text": "So the plants and animals are different in each part of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A grazing animal in Africa is not the same as one in South America or Australia.",
+      "text_markdown": "A grazing animal in Africa is not the same as one in South America or Australia.",
+      "tts": {
+        "text": "A grazing animal in Africa is not the same as one in South America or Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But they are all part of the same biome.",
+      "text_markdown": "But they are all part of the same biome.",
+      "tts": {
+        "text": "But they are all part of the same biome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you stand in a savanna, you can see for a long way.",
+      "text_markdown": "When you stand in a savanna, you can see for a long way.",
+      "tts": {
+        "text": "When you stand in a savanna, you can see for a long way.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grass reaches your waist or higher.",
+      "text_markdown": "The grass reaches your waist or higher.",
+      "tts": {
+        "text": "The grass reaches your waist or higher.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A few flat-topped trees rise above the grass.",
+      "text_markdown": "A few flat-topped trees rise above the grass.",
+      "tts": {
+        "text": "A few flat-topped trees rise above the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The sky is huge.",
+      "text_markdown": "The sky is huge.",
+      "tts": {
+        "text": "The sky is huge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The light is golden.",
+      "text_markdown": "The light is golden.",
+      "tts": {
+        "text": "The light is golden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You hear the wind moving through the grass.",
+      "text_markdown": "You hear the wind moving through the grass.",
+      "tts": {
+        "text": "You hear the wind moving through the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You hear birds calling in the distance.",
+      "text_markdown": "You hear birds calling in the distance.",
+      "tts": {
+        "text": "You hear birds calling in the distance.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the savanna.",
+      "text_markdown": "That is the savanna.",
+      "tts": {
+        "text": "That is the savanna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Where Savannas Grow",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A great open land of grass, scattered trees, and big skies.",
+      "text_markdown": "A great open land of grass, scattered trees, and big skies.",
+      "tts": {
+        "text": "A great open land of grass, scattered trees, and big skies.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Weather",
+      "text_markdown": "The Weather"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The weather in the tropical savanna is simple.",
+      "text_markdown": "The weather in the tropical savanna is simple.",
+      "tts": {
+        "text": "The weather in the tropical savanna is simple.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is warm all year.",
+      "text_markdown": "It is warm all year.",
+      "tts": {
+        "text": "It is warm all year.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But unlike the rainforest, the savanna has two very different seasons.",
+      "text_markdown": "But unlike the rainforest, the savanna has two very different seasons.",
+      "tts": {
+        "text": "But unlike the rainforest, the savanna has two very different seasons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There is a long dry time and a shorter wet time.",
+      "text_markdown": "There is a long dry time and a shorter wet time.",
+      "tts": {
+        "text": "There is a long dry time and a shorter wet time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the dry time, the sky is clear for many months.",
+      "text_markdown": "In the dry time, the sky is clear for many months.",
+      "tts": {
+        "text": "In the dry time, the sky is clear for many months.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grass turns golden and brittle.",
+      "text_markdown": "The grass turns golden and brittle.",
+      "tts": {
+        "text": "The grass turns golden and brittle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The rivers shrink, and many small ponds dry up completely.",
+      "text_markdown": "The rivers shrink, and many small ponds dry up completely.",
+      "tts": {
+        "text": "The rivers shrink, and many small ponds dry up completely.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The trees lose their leaves to save water.",
+      "text_markdown": "The trees lose their leaves to save water.",
+      "tts": {
+        "text": "The trees lose their leaves to save water.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wet time begins with great clouds piling up on the horizon.",
+      "text_markdown": "The wet time begins with great clouds piling up on the horizon.",
+      "tts": {
+        "text": "The wet time begins with great clouds piling up on the horizon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first rains fall in heavy storms with thunder and lightning.",
+      "text_markdown": "The first rains fall in heavy storms with thunder and lightning.",
+      "tts": {
+        "text": "The first rains fall in heavy storms with thunder and lightning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the rain comes, the savanna changes overnight.",
+      "text_markdown": "When the rain comes, the savanna changes overnight.",
+      "tts": {
+        "text": "When the rain comes, the savanna changes overnight.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "New grass shoots up from the dry earth.",
+      "text_markdown": "New grass shoots up from the dry earth.",
+      "tts": {
+        "text": "New grass shoots up from the dry earth.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trees grow fresh green leaves.",
+      "text_markdown": "Trees grow fresh green leaves.",
+      "tts": {
+        "text": "Trees grow fresh green leaves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Flowers bloom in waves of color.",
+      "text_markdown": "Flowers bloom in waves of color.",
+      "tts": {
+        "text": "Flowers bloom in waves of color.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wet time is short, but it is when most of the life happens.",
+      "text_markdown": "The wet time is short, but it is when most of the life happens.",
+      "tts": {
+        "text": "The wet time is short, but it is when most of the life happens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The dry time is long, but the savanna is built for it.",
+      "text_markdown": "The dry time is long, but the savanna is built for it.",
+      "tts": {
+        "text": "The dry time is long, but the savanna is built for it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every plant and every animal here knows how to wait for the rain.",
+      "text_markdown": "Every plant and every animal here knows how to wait for the rain.",
+      "tts": {
+        "text": "Every plant and every animal here knows how to wait for the rain.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Land and the Water",
+      "text_markdown": "The Land and the Water"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The land of the savanna is mostly flat and wide.",
+      "text_markdown": "The land of the savanna is mostly flat and wide.",
+      "tts": {
+        "text": "The land of the savanna is mostly flat and wide.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In some places, low rolling hills rise out of the grass.",
+      "text_markdown": "In some places, low rolling hills rise out of the grass.",
+      "tts": {
+        "text": "In some places, low rolling hills rise out of the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Now and then a great rocky outcrop stands alone on the plain.",
+      "text_markdown": "Now and then a great rocky outcrop stands alone on the plain.",
+      "tts": {
+        "text": "Now and then a great rocky outcrop stands alone on the plain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The soil under the grass is different in different parts of the savanna.",
+      "text_markdown": "The soil under the grass is different in different parts of the savanna.",
+      "tts": {
+        "text": "The soil under the grass is different in different parts of the savanna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In some places it is dark and rich.",
+      "text_markdown": "In some places it is dark and rich.",
+      "tts": {
+        "text": "In some places it is dark and rich.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In other places it is sandy or thin.",
+      "text_markdown": "In other places it is sandy or thin.",
+      "tts": {
+        "text": "In other places it is sandy or thin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grasses have learned to grow in all of them.",
+      "text_markdown": "The grasses have learned to grow in all of them.",
+      "tts": {
+        "text": "The grasses have learned to grow in all of them.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the rains come, water gathers in low places to make ponds and shallow lakes.",
+      "text_markdown": "When the rains come, water gathers in low places to make ponds and shallow lakes.",
+      "tts": {
+        "text": "When the rains come, water gathers in low places to make ponds and shallow lakes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some of these last for months, and some dry up in a few weeks.",
+      "text_markdown": "Some of these last for months, and some dry up in a few weeks.",
+      "tts": {
+        "text": "Some of these last for months, and some dry up in a few weeks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rivers wind across the savanna in long, slow curves.",
+      "text_markdown": "Rivers wind across the savanna in long, slow curves.",
+      "tts": {
+        "text": "Rivers wind across the savanna in long, slow curves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the wet time they are wide and full.",
+      "text_markdown": "In the wet time they are wide and full.",
+      "tts": {
+        "text": "In the wet time they are wide and full.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the dry time they shrink to a thin trickle in the sand, or to a string of quiet pools.",
+      "text_markdown": "In the dry time they shrink to a thin trickle in the sand, or to a string of quiet pools.",
+      "tts": {
+        "text": "In the dry time they shrink to a thin trickle in the sand, or to a string of quiet pools.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of the animals of the savanna gather at these rivers and ponds to drink.",
+      "text_markdown": "Many of the animals of the savanna gather at these rivers and ponds to drink.",
+      "tts": {
+        "text": "Many of the animals of the savanna gather at these rivers and ponds to drink.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A pond in the dry time is a busy place.",
+      "text_markdown": "A pond in the dry time is a busy place.",
+      "tts": {
+        "text": "A pond in the dry time is a busy place.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Animals that do not usually meet stand near each other to drink.",
+      "text_markdown": "Animals that do not usually meet stand near each other to drink.",
+      "tts": {
+        "text": "Animals that do not usually meet stand near each other to drink.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The rivers also bring a strip of taller trees with them.",
+      "text_markdown": "The rivers also bring a strip of taller trees with them.",
+      "tts": {
+        "text": "The rivers also bring a strip of taller trees with them.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Along the banks, the trees grow thick and green even in the dry time.",
+      "text_markdown": "Along the banks, the trees grow thick and green even in the dry time.",
+      "tts": {
+        "text": "Along the banks, the trees grow thick and green even in the dry time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "These ribbons of forest cross the open savanna like green roads.",
+      "text_markdown": "These ribbons of forest cross the open savanna like green roads.",
+      "tts": {
+        "text": "These ribbons of forest cross the open savanna like green roads.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They are home to animals that need shade and water year round.",
+      "text_markdown": "They are home to animals that need shade and water year round.",
+      "tts": {
+        "text": "They are home to animals that need shade and water year round.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Plants",
+      "text_markdown": "The Plants"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The heart of the savanna is the grass.",
+      "text_markdown": "The heart of the savanna is the grass.",
+      "tts": {
+        "text": "The heart of the savanna is the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tall grasses cover the land in every direction.",
+      "text_markdown": "Tall grasses cover the land in every direction.",
+      "tts": {
+        "text": "Tall grasses cover the land in every direction.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some grasses grow as high as a person.",
+      "text_markdown": "Some grasses grow as high as a person.",
+      "tts": {
+        "text": "Some grasses grow as high as a person.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Their roots reach deep into the soil to find water.",
+      "text_markdown": "Their roots reach deep into the soil to find water.",
+      "tts": {
+        "text": "Their roots reach deep into the soil to find water.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When fire sweeps through the savanna, the tops of the grasses burn.",
+      "text_markdown": "When fire sweeps through the savanna, the tops of the grasses burn.",
+      "tts": {
+        "text": "When fire sweeps through the savanna, the tops of the grasses burn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the roots stay alive underground.",
+      "text_markdown": "But the roots stay alive underground.",
+      "tts": {
+        "text": "But the roots stay alive underground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After the next rain, the grasses grow back, fresh and green.",
+      "text_markdown": "After the next rain, the grasses grow back, fresh and green.",
+      "tts": {
+        "text": "After the next rain, the grasses grow back, fresh and green.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fire is a natural part of this biome.",
+      "text_markdown": "Fire is a natural part of this biome.",
+      "tts": {
+        "text": "Fire is a natural part of this biome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of the plants here need fire to stay healthy.",
+      "text_markdown": "Many of the plants here need fire to stay healthy.",
+      "tts": {
+        "text": "Many of the plants here need fire to stay healthy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trees grow across the savanna too, but they are scattered.",
+      "text_markdown": "Trees grow across the savanna too, but they are scattered.",
+      "tts": {
+        "text": "Trees grow across the savanna too, but they are scattered.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They stand far apart, with grass between them.",
+      "text_markdown": "They stand far apart, with grass between them.",
+      "tts": {
+        "text": "They stand far apart, with grass between them.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most savanna trees are short, with wide, flat tops.",
+      "text_markdown": "Most savanna trees are short, with wide, flat tops.",
+      "tts": {
+        "text": "Most savanna trees are short, with wide, flat tops.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The flat top is a wide umbrella of leaves that catches every drop of light.",
+      "text_markdown": "The flat top is a wide umbrella of leaves that catches every drop of light.",
+      "tts": {
+        "text": "The flat top is a wide umbrella of leaves that catches every drop of light.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many savanna trees have thorns to keep big animals from eating them.",
+      "text_markdown": "Many savanna trees have thorns to keep big animals from eating them.",
+      "tts": {
+        "text": "Many savanna trees have thorns to keep big animals from eating them.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The famous baobab is a giant savanna tree with a thick, strong trunk.",
+      "text_markdown": "The famous baobab is a giant savanna tree with a thick, strong trunk.",
+      "tts": {
+        "text": "The famous baobab is a giant savanna tree with a thick, strong trunk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It can store water inside its trunk for the long dry time.",
+      "text_markdown": "It can store water inside its trunk for the long dry time.",
+      "tts": {
+        "text": "It can store water inside its trunk for the long dry time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some baobabs live for more than a thousand years.",
+      "text_markdown": "Some baobabs live for more than a thousand years.",
+      "tts": {
+        "text": "Some baobabs live for more than a thousand years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Along the rivers, taller trees grow in a thin green band.",
+      "text_markdown": "Along the rivers, taller trees grow in a thin green band.",
+      "tts": {
+        "text": "Along the rivers, taller trees grow in a thin green band.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Out on the open plain, the grass and a few scattered trees are all you see for miles.",
+      "text_markdown": "Out on the open plain, the grass and a few scattered trees are all you see for miles.",
+      "tts": {
+        "text": "Out on the open plain, the grass and a few scattered trees are all you see for miles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the wet time, small flowers bloom between the grasses.",
+      "text_markdown": "In the wet time, small flowers bloom between the grasses.",
+      "tts": {
+        "text": "In the wet time, small flowers bloom between the grasses.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They open quickly and last only a few weeks.",
+      "text_markdown": "They open quickly and last only a few weeks.",
+      "tts": {
+        "text": "They open quickly and last only a few weeks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The savanna is a quiet machine, made of grass, scattered trees, sun, and patient roots.",
+      "text_markdown": "The savanna is a quiet machine, made of grass, scattered trees, sun, and patient roots.",
+      "tts": {
+        "text": "The savanna is a quiet machine, made of grass, scattered trees, sun, and patient roots.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Animals",
+      "text_markdown": "The Animals"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The tropical savanna is famous all around the world for its animals.",
+      "text_markdown": "The tropical savanna is famous all around the world for its animals.",
+      "tts": {
+        "text": "The tropical savanna is famous all around the world for its animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grasses feed huge herds of grazing animals.",
+      "text_markdown": "The grasses feed huge herds of grazing animals.",
+      "tts": {
+        "text": "The grasses feed huge herds of grazing animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Africa, great herds of zebras, antelopes, and buffalo move across the plains.",
+      "text_markdown": "In Africa, great herds of zebras, antelopes, and buffalo move across the plains.",
+      "tts": {
+        "text": "In Africa, great herds of zebras, antelopes, and buffalo move across the plains.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They follow the rains from one part of the savanna to another.",
+      "text_markdown": "They follow the rains from one part of the savanna to another.",
+      "tts": {
+        "text": "They follow the rains from one part of the savanna to another.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The largest land animal on Earth, the elephant, lives in the African savanna.",
+      "text_markdown": "The largest land animal on Earth, the elephant, lives in the African savanna.",
+      "tts": {
+        "text": "The largest land animal on Earth, the elephant, lives in the African savanna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A family of elephants walks slowly across the grass, led by an old mother.",
+      "text_markdown": "A family of elephants walks slowly across the grass, led by an old mother.",
+      "tts": {
+        "text": "A family of elephants walks slowly across the grass, led by an old mother.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The giraffe walks alongside, reaching with its long neck to eat the leaves of trees.",
+      "text_markdown": "The giraffe walks alongside, reaching with its long neck to eat the leaves of trees.",
+      "tts": {
+        "text": "The giraffe walks alongside, reaching with its long neck to eat the leaves of trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Where there are many grazing animals, there are also hunters.",
+      "text_markdown": "Where there are many grazing animals, there are also hunters.",
+      "tts": {
+        "text": "Where there are many grazing animals, there are also hunters.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The lion is the great hunter of the African savanna.",
+      "text_markdown": "The lion is the great hunter of the African savanna.",
+      "tts": {
+        "text": "The lion is the great hunter of the African savanna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lions live together in family groups called prides.",
+      "text_markdown": "Lions live together in family groups called prides.",
+      "tts": {
+        "text": "Lions live together in family groups called prides.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The cheetah is the fastest animal on land.",
+      "text_markdown": "The cheetah is the fastest animal on land.",
+      "tts": {
+        "text": "The cheetah is the fastest animal on land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It runs in short bursts to catch the antelopes that graze the plains.",
+      "text_markdown": "It runs in short bursts to catch the antelopes that graze the plains.",
+      "tts": {
+        "text": "It runs in short bursts to catch the antelopes that graze the plains.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The leopard is a quiet hunter that climbs trees and pulls its meals up into the branches.",
+      "text_markdown": "The leopard is a quiet hunter that climbs trees and pulls its meals up into the branches.",
+      "tts": {
+        "text": "The leopard is a quiet hunter that climbs trees and pulls its meals up into the branches.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hyenas hunt in groups and clean up what the bigger hunters leave behind.",
+      "text_markdown": "Hyenas hunt in groups and clean up what the bigger hunters leave behind.",
+      "tts": {
+        "text": "Hyenas hunt in groups and clean up what the bigger hunters leave behind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Smaller animals are everywhere too.",
+      "text_markdown": "Smaller animals are everywhere too.",
+      "tts": {
+        "text": "Smaller animals are everywhere too.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baboons travel in noisy groups across the grass and through the trees.",
+      "text_markdown": "Baboons travel in noisy groups across the grass and through the trees.",
+      "tts": {
+        "text": "Baboons travel in noisy groups across the grass and through the trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Big birds called ostriches run across the open plain on long legs.",
+      "text_markdown": "Big birds called ostriches run across the open plain on long legs.",
+      "tts": {
+        "text": "Big birds called ostriches run across the open plain on long legs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vultures circle high above, watching for animals that have died.",
+      "text_markdown": "Vultures circle high above, watching for animals that have died.",
+      "tts": {
+        "text": "Vultures circle high above, watching for animals that have died.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the wet time, frogs sing every night around the new ponds.",
+      "text_markdown": "In the wet time, frogs sing every night around the new ponds.",
+      "tts": {
+        "text": "In the wet time, frogs sing every night around the new ponds.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Insects fill the warm air, and butterflies float between the flowers.",
+      "text_markdown": "Insects fill the warm air, and butterflies float between the flowers.",
+      "tts": {
+        "text": "Insects fill the warm air, and butterflies float between the flowers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the rivers, hippos rest in the water all day, and come out to graze the grass at night.",
+      "text_markdown": "In the rivers, hippos rest in the water all day, and come out to graze the grass at night.",
+      "tts": {
+        "text": "In the rivers, hippos rest in the water all day, and come out to graze the grass at night.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the South American savanna, big rodents and large birds take the place of the African ones.",
+      "text_markdown": "In the South American savanna, big rodents and large birds take the place of the African ones.",
+      "tts": {
+        "text": "In the South American savanna, big rodents and large birds take the place of the African ones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the Australian savanna, kangaroos hop across the grass instead of antelopes running across it.",
+      "text_markdown": "In the Australian savanna, kangaroos hop across the grass instead of antelopes running across it.",
+      "tts": {
+        "text": "In the Australian savanna, kangaroos hop across the grass instead of antelopes running across it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In each of these lands, the animals look different.",
+      "text_markdown": "In each of these lands, the animals look different.",
+      "tts": {
+        "text": "In each of these lands, the animals look different.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the pattern is the same.",
+      "text_markdown": "But the pattern is the same.",
+      "tts": {
+        "text": "But the pattern is the same.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huge herds of grazers, quiet hunters in the grass, and great flocks of birds in the sky.",
+      "text_markdown": "Huge herds of grazers, quiet hunters in the grass, and great flocks of birds in the sky.",
+      "tts": {
+        "text": "Huge herds of grazers, quiet hunters in the grass, and great flocks of birds in the sky.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the savanna.",
+      "text_markdown": "That is the savanna.",
+      "tts": {
+        "text": "That is the savanna.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The People",
+      "text_markdown": "The People"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People have lived in the tropical savanna for a very long time.",
+      "text_markdown": "People have lived in the tropical savanna for a very long time.",
+      "tts": {
+        "text": "People have lived in the tropical savanna for a very long time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In fact, our own ancestors first stood up and walked across savannas like these.",
+      "text_markdown": "In fact, our own ancestors first stood up and walked across savannas like these.",
+      "tts": {
+        "text": "In fact, our own ancestors first stood up and walked across savannas like these.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The open grass and scattered trees shaped the way our bodies move.",
+      "text_markdown": "The open grass and scattered trees shaped the way our bodies move.",
+      "tts": {
+        "text": "The open grass and scattered trees shaped the way our bodies move.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many people of the savanna keep herds of animals.",
+      "text_markdown": "Many people of the savanna keep herds of animals.",
+      "tts": {
+        "text": "Many people of the savanna keep herds of animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Africa, families herd cattle, goats, and sheep across the grasslands.",
+      "text_markdown": "In Africa, families herd cattle, goats, and sheep across the grasslands.",
+      "tts": {
+        "text": "In Africa, families herd cattle, goats, and sheep across the grasslands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The animals eat the grass and turn it into milk and meat for the people.",
+      "text_markdown": "The animals eat the grass and turn it into milk and meat for the people.",
+      "tts": {
+        "text": "The animals eat the grass and turn it into milk and meat for the people.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The herders move with their animals to follow the rains.",
+      "text_markdown": "The herders move with their animals to follow the rains.",
+      "tts": {
+        "text": "The herders move with their animals to follow the rains.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the dry time they travel toward the rivers.",
+      "text_markdown": "In the dry time they travel toward the rivers.",
+      "tts": {
+        "text": "In the dry time they travel toward the rivers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the wet time they spread out across the green plains.",
+      "text_markdown": "In the wet time they spread out across the green plains.",
+      "tts": {
+        "text": "In the wet time they spread out across the green plains.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Their homes are often easy to take apart and carry to a new place.",
+      "text_markdown": "Their homes are often easy to take apart and carry to a new place.",
+      "tts": {
+        "text": "Their homes are often easy to take apart and carry to a new place.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Other people of the savanna grow food in small fields.",
+      "text_markdown": "Other people of the savanna grow food in small fields.",
+      "tts": {
+        "text": "Other people of the savanna grow food in small fields.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Where the soil is rich, they plant grains and beans.",
+      "text_markdown": "Where the soil is rich, they plant grains and beans.",
+      "tts": {
+        "text": "Where the soil is rich, they plant grains and beans.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They use fire carefully to clear new fields and to keep the grass fresh for their animals.",
+      "text_markdown": "They use fire carefully to clear new fields and to keep the grass fresh for their animals.",
+      "tts": {
+        "text": "They use fire carefully to clear new fields and to keep the grass fresh for their animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The people of the savanna know the land in great detail.",
+      "text_markdown": "The people of the savanna know the land in great detail.",
+      "tts": {
+        "text": "The people of the savanna know the land in great detail.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They know which plants are safe to eat and which are good for medicine.",
+      "text_markdown": "They know which plants are safe to eat and which are good for medicine.",
+      "tts": {
+        "text": "They know which plants are safe to eat and which are good for medicine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They know the tracks of every animal in the dust.",
+      "text_markdown": "They know the tracks of every animal in the dust.",
+      "tts": {
+        "text": "They know the tracks of every animal in the dust.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They know the meaning of every kind of cloud in the sky.",
+      "text_markdown": "They know the meaning of every kind of cloud in the sky.",
+      "tts": {
+        "text": "They know the meaning of every kind of cloud in the sky.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This knowledge is passed down from parents to children, year after year.",
+      "text_markdown": "This knowledge is passed down from parents to children, year after year.",
+      "tts": {
+        "text": "This knowledge is passed down from parents to children, year after year.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In every savanna, this kind of life has its own languages, its own songs, and its own stories.",
+      "text_markdown": "In every savanna, this kind of life has its own languages, its own songs, and its own stories.",
+      "tts": {
+        "text": "In every savanna, this kind of life has its own languages, its own songs, and its own stories.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Savanna Today",
+      "text_markdown": "The Savanna Today"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The tropical savanna is one of the great wild lands of Earth.",
+      "text_markdown": "The tropical savanna is one of the great wild lands of Earth.",
+      "tts": {
+        "text": "The tropical savanna is one of the great wild lands of Earth.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It feeds enormous herds of animals.",
+      "text_markdown": "It feeds enormous herds of animals.",
+      "tts": {
+        "text": "It feeds enormous herds of animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It supports the herders and farmers who have lived here for thousands of years.",
+      "text_markdown": "It supports the herders and farmers who have lived here for thousands of years.",
+      "tts": {
+        "text": "It supports the herders and farmers who have lived here for thousands of years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grasslands also store a lot of water and food in their deep roots.",
+      "text_markdown": "The grasslands also store a lot of water and food in their deep roots.",
+      "tts": {
+        "text": "The grasslands also store a lot of water and food in their deep roots.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the savanna is in trouble too.",
+      "text_markdown": "But the savanna is in trouble too.",
+      "tts": {
+        "text": "But the savanna is in trouble too.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In many places, people have plowed up the grass to plant crops, or fenced it off for cattle.",
+      "text_markdown": "In many places, people have plowed up the grass to plant crops, or fenced it off for cattle.",
+      "tts": {
+        "text": "In many places, people have plowed up the grass to plant crops, or fenced it off for cattle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the grass is broken up, the herds of wild animals lose their open path.",
+      "text_markdown": "When the grass is broken up, the herds of wild animals lose their open path.",
+      "tts": {
+        "text": "When the grass is broken up, the herds of wild animals lose their open path.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roads and fences cut across the routes that elephants and antelopes have followed for ages.",
+      "text_markdown": "Roads and fences cut across the routes that elephants and antelopes have followed for ages.",
+      "tts": {
+        "text": "Roads and fences cut across the routes that elephants and antelopes have followed for ages.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some savanna animals, like the rhinoceros and the cheetah, have become very rare.",
+      "text_markdown": "Some savanna animals, like the rhinoceros and the cheetah, have become very rare.",
+      "tts": {
+        "text": "Some savanna animals, like the rhinoceros and the cheetah, have become very rare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many groups around the world are working to protect what is left.",
+      "text_markdown": "Many groups around the world are working to protect what is left.",
+      "tts": {
+        "text": "Many groups around the world are working to protect what is left.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They set aside large parks where the wild animals can still move freely.",
+      "text_markdown": "They set aside large parks where the wild animals can still move freely.",
+      "tts": {
+        "text": "They set aside large parks where the wild animals can still move freely.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They work with the people who live near the parks to share the land.",
+      "text_markdown": "They work with the people who live near the parks to share the land.",
+      "tts": {
+        "text": "They work with the people who live near the parks to share the land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They study the grass, the trees, and the herds so we understand it better.",
+      "text_markdown": "They study the grass, the trees, and the herds so we understand it better.",
+      "tts": {
+        "text": "They study the grass, the trees, and the herds so we understand it better.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A healthy savanna can support more life than almost any other land biome.",
+      "text_markdown": "A healthy savanna can support more life than almost any other land biome.",
+      "tts": {
+        "text": "A healthy savanna can support more life than almost any other land biome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "The Savanna Today",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is worth our care.",
+      "text_markdown": "It is worth our care.",
+      "tts": {
+        "text": "It is worth our care.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Closing",
+      "text_markdown": "Closing"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the tropical savanna.",
+      "text_markdown": "That is the tropical savanna.",
+      "tts": {
+        "text": "That is the tropical savanna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A wide, warm land of grass, scattered trees, and great herds of animals.",
+      "text_markdown": "A wide, warm land of grass, scattered trees, and great herds of animals.",
+      "tts": {
+        "text": "A wide, warm land of grass, scattered trees, and great herds of animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you ever stand in one, be still for a minute.",
+      "text_markdown": "If you ever stand in one, be still for a minute.",
+      "tts": {
+        "text": "If you ever stand in one, be still for a minute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Listen to the wind in the grass and the birds in the distance.",
+      "text_markdown": "Listen to the wind in the grass and the birds in the distance.",
+      "tts": {
+        "text": "Listen to the wind in the grass and the birds in the distance.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Look out at the long horizon.",
+      "text_markdown": "Look out at the long horizon.",
+      "tts": {
+        "text": "Look out at the long horizon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You will feel the heart of the biome beating around you.",
+      "text_markdown": "You will feel the heart of the biome beating around you.",
+      "tts": {
+        "text": "You will feel the heart of the biome beating around you.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

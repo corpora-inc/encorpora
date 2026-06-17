@@ -34,6 +34,7 @@ import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade, LiveVoiceHandle } from "../../contracts/audioFacade"
 import { useBeatloungeStore } from "../../store/store"
+import { useRecordArm, isRecordArmed } from "../../store/recordArm"
 import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
 import { stepForTick } from "../../model/timing"
 import {
@@ -62,9 +63,6 @@ interface Props {
   audio: AudioFacade
   /** The melodic track the ribbon plays + records into. */
   trackId: Id
-  /** When supplied, the parent OWNS the Record arm (the page lifts it up). When
-   *  undefined the surface owns its own internal Record toggle + chip. */
-  record?: boolean
   /** Quantize recorded notes to the track grid (true, default) or place at the
    *  raw playhead tick (false). */
   quantizeRecord?: boolean
@@ -107,7 +105,6 @@ export const InstrumentRibbon = ({
   store,
   audio,
   trackId,
-  record: recordProp,
   quantizeRecord = true,
   showRecord = true,
   headerSlot,
@@ -126,9 +123,12 @@ export const InstrumentRibbon = ({
   const [fretted, setFretted] = useState(true)
   const [spanOct, setSpanOct] = useState<number>(5)
   const [lowMidi, setLowMidi] = useState(36) // C2 — a comfy default left edge
-  // Internal Record arm — used only when the parent doesn't own it.
-  const [recordLocal, setRecordLocal] = useState(false)
-  const record = recordProp ?? recordLocal
+  // Record arm = ONE global, persisted, per-track store (recordArm). The ribbon
+  // ALWAYS reads it keyed by the track it records INTO — no prop, no ref mirror.
+  // Display subscribes (re-renders on change); the live capture path reads the
+  // store DIRECTLY at the moment a note would be written (see recordIntoTrack),
+  // so the chip and the actual recording behaviour can never disagree.
+  const { armed: record, setArmed } = useRecordArm(trackId)
   const [playing, setPlaying] = useState(false)
   const [liveLabel, setLiveLabel] = useState<string>("")
   const [playStep, setPlayStep] = useState(-1)
@@ -152,7 +152,7 @@ export const InstrumentRibbon = ({
   // Per-pointer live voices — POLYPHONY (ported from PlaySurface's touch map).
   const touches = useRef<Map<number, Touch>>(new Map())
   // Latest control values for the pointer closures (avoid stale captures @60fps).
-  const live = useRef({ fretted, lowMidi, spanOct, record, quantizeRecord })
+  const live = useRef({ fretted, lowMidi, spanOct, quantizeRecord })
   // Live playhead step, mirrored for the (closure-bound) record path.
   const playStepRef = useRef(playStep)
   // Live RAW playhead tick (for non-quantized record placement).
@@ -188,8 +188,8 @@ export const InstrumentRibbon = ({
 
   // Mirror the latest control values for the pointer handlers.
   useEffect(() => {
-    live.current = { fretted, lowMidi, spanOct, record, quantizeRecord }
-  }, [fretted, lowMidi, spanOct, record, quantizeRecord])
+    live.current = { fretted, lowMidi, spanOct, quantizeRecord }
+  }, [fretted, lowMidi, spanOct, quantizeRecord])
 
   // Live playhead → current step on this track's grid (for record placement).
   useEffect(() => {
@@ -280,8 +280,10 @@ export const InstrumentRibbon = ({
    *  step dedupe so two fingers can both lay notes without clobbering. The
    *  placement rules (dedupe + quantize on/off + duplicate-cell) are pure. */
   const recordIntoTrack = (t: Touch, midi: number) => {
+    // Source of truth, read at the instant a note would be written — never a
+    // ref/prop mirror that can lag the toggle. Disarm => this returns at once.
+    if (!isRecordArmed(trackId)) return
     const st = live.current
-    if (!st.record) return
     const cur = findTrack(store.vanilla.getState().doc, trackId)
     if (!cur || !isInstrumentTrack(cur)) return
     const result = placeRecordedNote({
@@ -392,7 +394,7 @@ export const InstrumentRibbon = ({
               type="button"
               className={`bl-chip${record ? " is-armed" : ""}`}
               aria-pressed={record}
-              onClick={() => setRecordLocal((r) => !r)}
+              onClick={() => setArmed(!record)}
             >
               {record ? ct("instrumentSurface.recording") : ct("instrumentSurface.record")}
             </button>

@@ -90,6 +90,9 @@ export interface Instrument {
 export interface Effect {
   readonly input: ToneAudioNode
   readonly output: ToneAudioNode
+  /** Reconcile to the JSON params. Tempo-synced effects (delay) read the song
+   *  BPM from the ambient tempo source (see effects/tempo), so a tempo change
+   *  re-fires this and the time recomputes — no bpm parameter to thread. */
   update(params: Record<string, number | string | boolean>, enabled: boolean): void
   setParam(param: string, value: number, when: number): void
   dispose(): void

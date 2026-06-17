@@ -46,7 +46,7 @@ def compute_new_from(pack_id: str) -> tuple[int, int, int]:
 
     Marker = MIN coverage across en + sentinel langs. en alone is a bad
     marker because --write-en writes en eagerly before the rest of the
-    51 langs finish — so a killed run leaves en at full count while most
+    54 langs finish — so a killed run leaves en at full count while most
     langs are still empty. We take the min across en + a few sentinel
     langs to detect this incomplete state."""
     pdir = pack_dir_for(pack_id)
@@ -79,14 +79,14 @@ def run(cmd: list[str], log_path: Path, timeout: int | None = None) -> int:
 def translate_pack(pack_id: str, new_from: int) -> tuple[str, int]:
     pdir = pack_dir_for(pack_id)
     log = LOG_DIR / f"{pack_id}.translate.log"
-    # Tuned for the v0.2.0 data volume: 800 phrases × 51 langs per pack.
-    # Pass 1: 51 workers (one per lang) so all 51 langs run in parallel.
+    # Tuned for the v0.2.0 data volume: 800 phrases × 54 langs per pack.
+    # Pass 1: 54 workers (one per lang) so all 54 langs run in parallel.
     #   Each lang sequentially walks its chunks (8 × ~45s for romanized
     #   scripts at 800 phrases). One round ≈ 6 min per pack.
     # Pass 2/3: lower concurrency to ride out 429s with extra headroom.
     rc = run([PY, str(HERE / "incremental_translate.py"), str(pdir),
               "--new-from", str(new_from), "--vertex", "--write-en",
-              "--workers", "51"], log, timeout=3600)
+              "--workers", "54"], log, timeout=3600)
     rc = run([PY, str(HERE / "incremental_translate.py"), str(pdir),
               "--new-from", str(new_from), "--vertex", "--write-en",
               "--workers", "17"], log, timeout=1800)

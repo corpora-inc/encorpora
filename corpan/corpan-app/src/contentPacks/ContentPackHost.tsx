@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { createHostApi } from "./hostApi"
-import type { ContentPackManifest, ContentPackModule } from "./types"
+import type {
+  ContentPackManifest,
+  ContentPackModule,
+  ContentPackEntitlementSnapshot,
+  PackLaunchEntry,
+} from "./types"
 import { useEntitlementStore } from "@/store/entitlements"
 
 type LoadState = "idle" | "loading" | "ready" | "error"
@@ -10,21 +15,11 @@ type ContentPackHostProps = {
   id: string
   manifestUrl?: string
   /** Optional deep-link target passed into the pack's mount initialState. */
-  entry?: { entryId?: number; source?: string; route?: string }
+  entry?: PackLaunchEntry
 }
 
-type ContentPackEntitlementSnapshot = {
-  plus: boolean
-  subjectId: string | null
-  entitlementToken: string | null
-  subscription: {
-    active: boolean
-    plan: "monthly" | "annual" | null
-    expiresAt: string | null
-    autoRenew: boolean
-  }
-  checkedAt: number | null
-}
+// `ContentPackEntitlementSnapshot` now lives in ./types (shared with the typed
+// `HostApi.entitlement` seam) so the global and the typed snapshot never drift.
 
 const DEV_RELOAD_INTERVAL_MS = 20000  // Poll every 2s for faster dev iteration
 
@@ -286,9 +281,15 @@ export default function ContentPackHost({
     const scope = globalThis as typeof globalThis & {
       __CORPAN_PLUS?: boolean
       __CORPAN_ENTITLEMENT?: ContentPackEntitlementSnapshot
+      __CORPAN_HOST_CAPS?: { dailyLock?: boolean }
     }
     scope.__CORPAN_PLUS = entitlementSnapshot.plus
     scope.__CORPAN_ENTITLEMENT = entitlementSnapshot
+    // Advertise host capabilities to OTA packs (which may run in older apps).
+    // `dailyLock` = this host renders the gate-v2 DailyLockOverlay, so packs may
+    // hard-block at the daily cap. Absent in pre-0.18.1 hosts → packs degrade to
+    // the soft nag instead of freezing behind an overlay that won't appear.
+    scope.__CORPAN_HOST_CAPS = { ...scope.__CORPAN_HOST_CAPS, dailyLock: true }
     window.dispatchEvent(
       new CustomEvent("corpan:entitlement-changed", {
         detail: entitlementSnapshot,
@@ -544,6 +545,9 @@ export default function ContentPackHost({
           entitlement: entitlementSnapshotRef.current,
           // Addressability groundwork: a deep-linked entry/route, when present.
           ...(entry ? { entryId: entry.entryId, source: entry.source, route: entry.route } : {}),
+          // First-run reader seed: auto-download a default book's preview
+          // narrations for the user's stack (the instant "wow").
+          ...(entry?.seedBookId ? { seedBookId: entry.seedBookId } : {}),
         })
 
         if (!cancelled) {
@@ -588,7 +592,7 @@ export default function ContentPackHost({
       cancelled = true
       cleanup()
     }
-  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route])
+  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route, entry?.seedBookId])
 
   return (
     <div className="relative h-full w-full bg-black text-white">

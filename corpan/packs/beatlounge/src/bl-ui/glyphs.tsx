@@ -23,6 +23,7 @@ export type GlyphName =
   | "metronome"
   | "wave"
   | "trash"
+  | "dice"
 
 const PATHS: Record<GlyphName, JSX.Element> = {
   play: <path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none" />,
@@ -53,6 +54,16 @@ const PATHS: Record<GlyphName, JSX.Element> = {
       <rect x="4" y="5" width="16" height="14" rx="2.4" />
       <path d="M4 10h16" />
       <path d="M9.5 14.5h5" />
+    </>
+  ),
+  dice: (
+    <>
+      <rect x="4.5" y="4.5" width="15" height="15" rx="3" />
+      <circle cx="9" cy="9" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="9" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="9" cy="15" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="15" r="1.1" fill="currentColor" stroke="none" />
     </>
   ),
   "chevron-down": <path d="M6 9.5l6 6 6-6" />,

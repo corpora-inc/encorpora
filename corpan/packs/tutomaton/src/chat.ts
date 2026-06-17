@@ -19,6 +19,7 @@
  */
 
 import "./chat.css"
+import { createPaywallGate, type PaywallGate } from "@shared/monetization"
 import {
   LanguageManager,
   type HostApi,
@@ -26,7 +27,7 @@ import {
   type LanguageRegistryEntry,
   type LanguageRuntime,
 } from "./languageManager"
-import { ModelManager, BASE_MODEL, type ModelPhase } from "./modelManager"
+import { ModelManager, type ModelPhase } from "./modelManager"
 import { t as i18n, type I18nKey } from "./i18n"
 import {
   loadModelTuning,
@@ -37,6 +38,8 @@ import {
 } from "./modelTuning"
 import { OrderedSpeechQueue, StreamingSentenceBuffer } from "./streamingTts"
 import { scrubForSpeech, scrubOutput } from "./textScrub"
+import { makeThinkFilter } from "./thinkFilter"
+import { brevityDirective } from "./brevity"
 import {
   chooseTutorVoice,
   loadTutorVoiceId,
@@ -60,7 +63,7 @@ type EntitlementSnapshot = {
 // languages[0] is their NATIVE language and languages[1..] are the ones they're
 // learning. We use it to float the user's own languages to the top of the picker.
 type MountInit = {
-  stackConfig?: { languages?: string[] }
+  stackConfig?: { languages?: string[]; levels?: string[] }
   isPlus?: boolean
   entitlement?: EntitlementSnapshot
 }
@@ -73,8 +76,12 @@ type ContentPackModule = {
 }
 
 const PACK_ID = "tutomaton"
+// gate v2 daily quota (per-pack, release-tunable). A free user gets this many
+// tutor messages per local day, with a dismissible soft nag every
+// FREE_DAILY_NAG_EVERY before the hard cap ("soft, soft, hard"); at the cap the
+// pack is BLOCKED until tomorrow or subscribe and drives the accomplishment lock.
 const FREE_DAILY_LIMIT = 20
-const QUOTA_KEY = "tutomaton.quota"
+const FREE_DAILY_NAG_EVERY = 5
 
 type Msg = { role: "user" | "assistant"; content: string }
 
@@ -84,16 +91,6 @@ type State = {
   activeLanguage: LanguageRuntime | null
   currentStreamId: string | null
   cancelStream: (() => Promise<void>) | null
-}
-
-let memoryQuota: { day: string; count: number } | null = null
-
-function localDay(): string {
-  const now = new Date()
-  const yyyy = String(now.getFullYear())
-  const mm = String(now.getMonth() + 1).padStart(2, "0")
-  const dd = String(now.getDate()).padStart(2, "0")
-  return `${yyyy}-${mm}-${dd}`
 }
 
 function isPlus(initial?: MountInit): boolean {
@@ -109,39 +106,6 @@ function isPlus(initial?: MountInit): boolean {
       injected.__CORPAN_ENTITLEMENT?.plus ||
       injected.__CORPAN_ENTITLEMENT?.subscription?.active
   )
-}
-
-function readQuota(): { day: string; count: number } {
-  const day = localDay()
-  try {
-    const parsed = JSON.parse(localStorage.getItem(QUOTA_KEY) || "{}") as {
-      day?: string
-      count?: number
-    }
-    const storedCount = parsed.day === day ? Math.max(0, parsed.count ?? 0) : 0
-    const memoryCount = memoryQuota?.day === day ? memoryQuota.count : 0
-    return { day, count: Math.max(storedCount, memoryCount) }
-  } catch {
-    return memoryQuota?.day === day ? memoryQuota : { day, count: 0 }
-  }
-}
-
-function quotaRemaining(plus: boolean): number {
-  if (plus) return Infinity
-  const quota = readQuota()
-  return Math.max(0, FREE_DAILY_LIMIT - quota.count)
-}
-
-function consumeQuota(plus: boolean): void {
-  if (plus) return
-  const quota = readQuota()
-  const next = { day: quota.day, count: Math.min(FREE_DAILY_LIMIT, quota.count + 1) }
-  memoryQuota = next
-  try {
-    localStorage.setItem(QUOTA_KEY, JSON.stringify(next))
-  } catch {
-    /* memoryQuota carries this session if WebKit storage is unavailable/full */
-  }
 }
 
 // ============================================================
@@ -200,7 +164,8 @@ async function llmChat(
   hostApi: HostApi,
   systemPrompt: string,
   messages: Msg[],
-  options: Omit<ModelTuning, "systemPrompt">,
+  options: Omit<ModelTuning, "systemPrompt" | "think">,
+  noThink: boolean,
   onToken: (token: string) => void,
   onDone: (full: string) => void,
   onError: (err: string) => void
@@ -209,7 +174,7 @@ async function llmChat(
   return hostApi.llm.chat(
     {
       messages: [{ role: "system", content: systemPrompt }, ...messages],
-      options,
+      options: { ...options, noThink },
     },
     { onToken, onDone: (full) => onDone(full), onError: (err) => onError(err) }
   )
@@ -241,6 +206,7 @@ const ICON = {
   back: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>`,
   search: `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
   tune: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h2"/><path d="M10 12h10"/><circle cx="8" cy="12" r="2"/><path d="M4 18h8"/><path d="M16 18h4"/><circle cx="14" cy="18" r="2"/></svg>`,
+  model: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M9.5 1.5v3M14.5 1.5v3M9.5 19.5v3M14.5 19.5v3M1.5 9.5h3M1.5 14.5h3M19.5 9.5h3M19.5 14.5h3"/></svg>`,
   voice: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="7.5"/><path d="M6.8 10h0"/><path d="M11.2 10h0"/><ellipse cx="9" cy="14.6" rx="2" ry="1.3"/><path d="M18 9.6a4 4 0 0 1 0 4.8"/><path d="M20.6 7.5a7.5 7.5 0 0 1 0 9"/></svg>`,
 } as const
 
@@ -270,7 +236,8 @@ const LANG_FLAG: Record<string, string> = {
   el: "🇬🇷", tr: "🇹🇷",
   zh: "🇨🇳", "zh-Hans": "🇨🇳", "zh-Hant": "繁", "yue-Hant-HK": "粵",
   ja: "🇯🇵", "ko-polite": "🇰🇷",
-  vi: "🇻🇳", th: "🇹🇭", id: "🇮🇩", ms: "🇲🇾", sw: "🇰🇪",
+  vi: "🇻🇳", th: "🇹🇭", id: "🇮🇩", ms: "🇲🇾", tl: "🇵🇭", sw: "🇰🇪",
+  jv: "🇮🇩", su: "🇮🇩",
   hi: "🇮🇳", bn: "🇧🇩", ta: "🇮🇳", te: "🇮🇳", gu: "🇮🇳",
   kn: "🇮🇳", mr: "🇮🇳", ne: "🇳🇵", "pa-Guru": "🇮🇳", "pa-Arab": " پ",
   ur: "🇵🇰", ar: "🇸🇦", fa: "🇮🇷", he: "🇮🇱",
@@ -292,6 +259,12 @@ const PackModule: ContentPackModule = {
     const stackLangs: string[] = Array.isArray(initialState?.stackConfig?.languages)
       ? initialState!.stackConfig!.languages!.filter((c) => typeof c === "string")
       : []
+    // CEFR levels from the active stack (default A0–A2 → beginner). Used to keep
+    // tutor replies extra-simple for beginners so a newcomer isn't overwhelmed.
+    const stackLevels: string[] = Array.isArray(initialState?.stackConfig?.levels)
+      ? initialState!.stackConfig!.levels!.filter((c) => typeof c === "string")
+      : []
+    const isBeginner = stackLevels.length === 0 || stackLevels.some((l) => l === "A0" || l === "A1")
     // Chrome is localized into the user's NATIVE language (stack languages[0]),
     // falling back to the device locale, then English. `t()` localizes a key.
     const uiLang = stackLangs[0] || (navigator.language || "en").split("-")[0]
@@ -307,6 +280,25 @@ const PackModule: ContentPackModule = {
     }
     let plus = isPlus(initialState)
     const disposers: Array<() => void> = []
+
+    // Daily message quota → shared paywall gate (gate v2). `dailyLimit` resets
+    // the count each local day (the DAU lever) and hard-BLOCKS at the cap until
+    // tomorrow or subscribe, dispatching `corpan:daily-locked` for the host's
+    // accomplishment-lock overlay; `softNagEvery` shows two dismissible nags
+    // before the cap. Subscriber state tracks the live `plus` (seeded from
+    // mount-time injection, updated by corpan:entitlement-changed), since the
+    // host passes Plus via initialState — not only the globals the gate default
+    // reads. Persists under corpan:gate:tutomaton:tutomaton_daily.
+    const quotaGate: PaywallGate = createPaywallGate({
+      packId: PACK_ID,
+      surface: "tutomaton_daily",
+      mode: "daily",
+      dailyLimit: FREE_DAILY_LIMIT,
+      softNagEvery: FREE_DAILY_NAG_EVERY,
+      unitLabel: "messages",
+      isSubscribed: () => plus,
+    })
+    disposers.push(() => quotaGate.dispose())
 
     const baseUrl = readPackBaseUrl()
     const packFetch = (rel: string) => fetch(proxied(joinUrl(baseUrl, rel)), { cache: "no-store" })
@@ -456,6 +448,10 @@ const PackModule: ContentPackModule = {
         <div class="lt-actionmenu" hidden>
           <div class="lt-actionmenu-scrim"></div>
           <div class="lt-actionmenu-popover" role="menu" aria-label="${t("moreOptions")}">
+            <button class="lt-actionmenu-item" role="menuitem" data-action="model">
+              <span class="lt-actionmenu-icon" aria-hidden="true">${ICON.model}</span>
+              <span class="lt-actionmenu-label">${t("tutorModel")}</span>
+            </button>
             <button class="lt-actionmenu-item" role="menuitem" data-action="tune">
               <span class="lt-actionmenu-icon" aria-hidden="true">${ICON.tune}</span>
               <span class="lt-actionmenu-label">${t("modelLab")}</span>
@@ -545,6 +541,11 @@ const PackModule: ContentPackModule = {
                 <small>Caps the length of each new reply.</small>
                 <input data-tuning="maxTokens" type="range" min="${MODEL_LIMITS.maxTokens.min}" max="${MODEL_LIMITS.maxTokens.max}" step="${MODEL_LIMITS.maxTokens.step}" />
               </label>
+              <label class="lt-model-control lt-model-think" hidden>
+                <span><strong>Thinking</strong></span>
+                <small>Let the model reason first (slower; smaller models only).</small>
+                <input id="lt-model-think" type="checkbox" />
+              </label>
             </div>
             <div class="lt-modelsheet-actions">
               <button class="lt-model-reset" type="button">Reset this language</button>
@@ -575,7 +576,23 @@ const PackModule: ContentPackModule = {
 
         <!-- Floating action cluster: translucent, out of the way, easy to reach.
              Mute toggle (TTS, defaults on) + new-conversation. -->
+        <div class="lt-msheet" hidden role="dialog" aria-modal="true" aria-label="${t("tutorModel")}">
+          <div class="lt-msheet-scrim"></div>
+          <div class="lt-msheet-panel" role="document">
+            <div class="lt-msheet-grip-zone" aria-hidden="true"><div class="lt-msheet-grip"></div></div>
+            <header class="lt-msheet-head">
+              <h2 class="lt-msheet-title">${t("tutorModel")}</h2>
+              <button class="lt-msheet-close" aria-label="${t("close")}">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.3 19.71 2.88 18.3 9.17 12 2.88 5.71 4.3 4.29l6.29 6.3 6.3-6.3z"/></svg>
+              </button>
+            </header>
+            <p class="lt-msheet-intro">${t("tutorModelIntro")}</p>
+            <div class="lt-msheet-list" role="radiogroup" aria-label="${t("tutorModel")}"></div>
+          </div>
+        </div>
+
         <div class="lt-fabs">
+          <button class="lt-fab lt-model" aria-label="${t("tutorModel")}" title="${t("tutorModel")}">${ICON.model}</button>
           <button class="lt-fab lt-tune" aria-label="${t("modelLab")}" title="${t("modelLab")}">${ICON.tune}</button>
           <button class="lt-fab lt-voice" aria-label="${t("chooseVoice")}" title="${t("chooseVoice")}">${ICON.voice}</button>
           <button class="lt-fab lt-tts active" aria-label="${t("muteVoice")}" aria-pressed="true" title="${t("voiceReplies")}">${ICON.speaker}</button>
@@ -616,6 +633,7 @@ const PackModule: ContentPackModule = {
             <div class="lt-setup-glyph" aria-hidden="true"><img src="${LOGO_DATA_URL}" alt="" draggable="false" /></div>
             <h2 class="lt-setup-title">${t("setUpTutor")}</h2>
             <p class="lt-setup-body"></p>
+            <div class="lt-setup-sizes" role="radiogroup" aria-label="${t("modelSize")}" hidden></div>
             <div class="lt-setup-progress" hidden>
               <div class="lt-setup-bar"><div class="lt-setup-fill"></div></div>
               <div class="lt-setup-pct"></div>
@@ -635,6 +653,11 @@ const PackModule: ContentPackModule = {
     const $jump = container.querySelector<HTMLButtonElement>(".lt-jump")!
     const $clear = container.querySelector<HTMLButtonElement>(".lt-clear")!
     const $tune = container.querySelector<HTMLButtonElement>(".lt-tune")!
+    const $model = container.querySelector<HTMLButtonElement>(".lt-model")!
+    const $msheet = container.querySelector<HTMLDivElement>(".lt-msheet")!
+    const $msheetScrim = container.querySelector<HTMLDivElement>(".lt-msheet-scrim")!
+    const $msheetClose = container.querySelector<HTMLButtonElement>(".lt-msheet-close")!
+    const $msheetList = container.querySelector<HTMLDivElement>(".lt-msheet-list")!
     const $voice = container.querySelector<HTMLButtonElement>(".lt-voice")!
     const $ttsBtn = container.querySelector<HTMLButtonElement>(".lt-tts")!
     const $back = container.querySelector<HTMLButtonElement>(".lt-back")!
@@ -656,6 +679,8 @@ const PackModule: ContentPackModule = {
     const $modelLanguage = container.querySelector<HTMLParagraphElement>(".lt-modelsheet-language")!
     const $modelPrompt = container.querySelector<HTMLTextAreaElement>(".lt-model-prompt")!
     const $modelInputs = Array.from(container.querySelectorAll<HTMLInputElement>("[data-tuning]"))
+    const $modelThink = container.querySelector<HTMLInputElement>("#lt-model-think")!
+    const $modelThinkRow = container.querySelector<HTMLElement>(".lt-model-think")!
     const $voiceSheet = container.querySelector<HTMLDivElement>(".lt-voicesheet")!
     const $voiceSheetScrim = container.querySelector<HTMLDivElement>(".lt-voicesheet-scrim")!
     const $voiceSheetClose = container.querySelector<HTMLButtonElement>(".lt-voicesheet-close")!
@@ -664,11 +689,16 @@ const PackModule: ContentPackModule = {
     const $voiceList = container.querySelector<HTMLDivElement>(".lt-voice-list")!
     const $setup = container.querySelector<HTMLDivElement>(".lt-setup")!
     const $setupBody = container.querySelector<HTMLParagraphElement>(".lt-setup-body")!
+    const $setupSizes = container.querySelector<HTMLDivElement>(".lt-setup-sizes")!
     const $setupProgress = container.querySelector<HTMLDivElement>(".lt-setup-progress")!
     const $setupFill = container.querySelector<HTMLDivElement>(".lt-setup-fill")!
     const $setupPct = container.querySelector<HTMLDivElement>(".lt-setup-pct")!
     const $setupAction = container.querySelector<HTMLButtonElement>(".lt-setup-action")!
     $voice.hidden = !hostApi.listVoices || !hostApi.speakVoice
+    // The model picker is meaningless without the on-device LLM runtime.
+    $model.hidden = !hostApi.llm
+    const modelItem = container.querySelector<HTMLButtonElement>('[data-action="model"]')
+    if (modelItem) modelItem.hidden = !hostApi.llm
 
     // ---------- header overflow menu (narrow screens) ----------
     // The kebab + popover mirror the four floating fabs. Each item forwards its
@@ -699,6 +729,7 @@ const PackModule: ContentPackModule = {
       item.addEventListener("click", () => {
         const action = item.dataset.action
         const target =
+          action === "model" ? $model :
           action === "tune" ? $tune :
           action === "voice" ? $voice :
           action === "tts" ? $ttsBtn :
@@ -767,6 +798,9 @@ const PackModule: ContentPackModule = {
     const learnerName = learnerEntry ? nativeName(learnerEntry) : learnerCode
     const defaultPromptFor = (lang: LanguageRuntime): string => [
       lang.systemPrompt.trim(),
+      // Tiny, target-language brevity directive so the tutor stays concise and
+      // doesn't overwhelm a learner (stronger for beginners per the CEFR stack).
+      brevityDirective(lang.code, isBeginner),
       learnerName ? `Learner's native language: ${learnerName}.` : "",
     ].filter(Boolean).join("\n")
     const tuningFor = (lang: LanguageRuntime): ModelTuning =>
@@ -780,6 +814,44 @@ const PackModule: ContentPackModule = {
 
     // ---------- model setup gate ----------
     let modelReady = false
+    // Render the size chips (0.6B/1.7B/4B) with their per-device state. Tapping a
+    // selectable size persists it and re-runs the setup gate for that size.
+    function renderSizePicker(show: boolean) {
+      const tier = modelMgr.deviceTier()
+      $setupSizes.hidden = !show || !tier || modelMgr.models().length < 2
+      if ($setupSizes.hidden || !tier) {
+        $setupSizes.replaceChildren()
+        return
+      }
+      const frag = document.createDocumentFragment()
+      for (const m of modelMgr.models()) {
+        const st = tier.stateById[m.id]
+        const chosen = tier.chosenId === m.id
+        const btn = document.createElement("button")
+        btn.type = "button"
+        btn.className =
+          `lt-size${chosen ? " is-chosen" : ""}` +
+          `${st === "disabled" ? " is-disabled" : ""}${st === "recommended" ? " is-rec" : ""}`
+        btn.setAttribute("role", "radio")
+        btn.setAttribute("aria-checked", String(chosen))
+        btn.disabled = st === "disabled"
+        const note =
+          st === "recommended" ? t("recommendedSize")
+          : st === "disabled" ? t("sizeNeedsMore")
+          : st === "try-anyway" ? t("sizeMaySlow")
+          : t("sizeSmallerQuality")
+        const name = document.createElement("span")
+        name.className = "lt-size-name"
+        name.textContent = m.paramLabel
+        const noteEl = document.createElement("span")
+        noteEl.className = "lt-size-note"
+        noteEl.textContent = note
+        btn.append(name, noteEl)
+        if (st !== "disabled") btn.addEventListener("click", () => void modelMgr.choose(m.id))
+        frag.appendChild(btn)
+      }
+      $setupSizes.replaceChildren(frag)
+    }
     function renderModelPhase(phase: ModelPhase) {
       modelReady = phase.kind === "ready"
       $setup.hidden = modelReady
@@ -793,6 +865,7 @@ const PackModule: ContentPackModule = {
         phase.kind === "installing" || phase.kind === "loading"
       $setupAction.hidden = busy
       $setupAction.disabled = busy
+      renderSizePicker(phase.kind === "needs-install" || phase.kind === "unsupported")
 
       switch (phase.kind) {
         case "checking":
@@ -800,8 +873,16 @@ const PackModule: ContentPackModule = {
           break
         case "needs-install": {
           const gb = (phase.sizeMb / 1024).toFixed(1)
-          $setupBody.textContent = t("needsInstall", { model: BASE_MODEL.displayName, size: gb })
+          $setupBody.textContent = t("needsInstall", { model: phase.displayName, size: gb })
           $setupAction.textContent = t("downloadTutor", { size: gb })
+          break
+        }
+        case "unsupported": {
+          const ram = modelMgr.deviceTier()?.totalRamMb
+          $setupBody.textContent = ram
+            ? t("unsupportedDevice", { ram: `${Math.round(ram / 1024)} GB` })
+            : phase.message
+          $setupAction.hidden = true
           break
         }
         case "downloading":
@@ -823,8 +904,177 @@ const PackModule: ContentPackModule = {
           break
       }
     }
-    const modelMgr = new ModelManager(hostApi, renderModelPhase)
+    // ---------- premium "Tutor model" picker (choose / download / switch) ----------
+    const fmtMb = (mb: number) => (mb >= 1024 ? `${(mb / 1024).toFixed(1)} GB` : `${mb} MB`)
+    const MCHECK = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`
+    let installCache: Record<string, boolean> = {}
+    function renderModelPicker() {
+      const tier = modelMgr.deviceTier()
+      if (!tier) {
+        $msheetList.replaceChildren()
+        return
+      }
+      const phase = modelMgr.current()
+      const activeId = phase.kind === "ready" ? modelMgr.activeModel()?.id ?? null : null
+      const busy =
+        phase.kind === "downloading" || phase.kind === "installing" || phase.kind === "loading"
+      const busyId = busy ? tier.chosenId : null
+      const frag = document.createDocumentFragment()
+      for (const m of modelMgr.models()) {
+        const st = tier.stateById[m.id]
+        const installed = !!installCache[m.id]
+        const isActive = activeId === m.id
+        const isBusy = busyId === m.id
+        const disabled = st === "disabled"
+        const tappable = !disabled && !isBusy && !isActive
+
+        const card = document.createElement(tappable ? "button" : "div")
+        if (tappable) (card as HTMLButtonElement).type = "button"
+        card.className =
+          "lt-mcard" +
+          (isActive ? " is-active" : "") +
+          (st === "recommended" && !isActive ? " is-rec" : "") +
+          (disabled ? " is-disabled" : "") +
+          (isBusy ? " is-busy" : "")
+        card.setAttribute("role", "radio")
+        card.setAttribute("aria-checked", String(isActive))
+
+        const size = document.createElement("div")
+        size.className = "lt-mcard-size"
+        size.textContent = m.paramLabel
+
+        const meta = document.createElement("div")
+        meta.className = "lt-mcard-meta"
+        const name = document.createElement("div")
+        name.className = "lt-mcard-name"
+        name.textContent = m.displayName
+        if (st === "recommended" && !isActive) {
+          const chip = document.createElement("span")
+          chip.className = "lt-mcard-rec"
+          chip.textContent = t("recommendedSize")
+          name.appendChild(chip)
+        }
+        // Concise, premium detail line: how many languages + which devices.
+        const langCount = m.supportedLanguages ? m.supportedLanguages.length : registry.length
+        const ramFit =
+          m.id === "llm-base-qwen3-0.6b-v1" ? t("ramAny")
+          : m.id === "llm-base-qwen3-1.7b-v1" ? "4 GB+"
+          : "8 GB+"
+        const detail = document.createElement("div")
+        detail.className = "lt-mcard-sub"
+        detail.textContent = `${t("modelLangs", { count: String(langCount) })} · ${ramFit}`
+        meta.append(name, detail)
+        // A short reason only where the size is constrained on THIS device.
+        if (disabled || (st === "try-anyway" && !isActive)) {
+          const reason = document.createElement("div")
+          reason.className = "lt-mcard-reason"
+          reason.textContent = disabled ? t("sizeNeedsMore") : t("sizeMaySlow")
+          meta.append(reason)
+        }
+
+        const right = document.createElement("div")
+        right.className = "lt-mcard-right"
+        if (isBusy) {
+          const prog = document.createElement("div")
+          prog.className = "lt-mcard-prog"
+          if (phase.kind === "downloading") {
+            const bar = document.createElement("div")
+            bar.className = "lt-mcard-bar"
+            const fill = document.createElement("div")
+            fill.className = "lt-mcard-fill"
+            fill.style.width = `${phase.pct}%`
+            bar.appendChild(fill)
+            const pct = document.createElement("div")
+            pct.className = "lt-mcard-pct"
+            pct.textContent = `${phase.pct}%`
+            prog.append(bar, pct)
+          } else {
+            const lbl = document.createElement("div")
+            lbl.className = "lt-mcard-pct"
+            lbl.textContent = phase.kind === "installing" ? t("installingModel") : t("wakingTutor")
+            prog.append(lbl)
+          }
+          right.append(prog)
+        } else if (isActive) {
+          const chk = document.createElement("span")
+          chk.className = "lt-mcard-check"
+          chk.innerHTML = MCHECK
+          right.append(chk)
+        } else if (!disabled) {
+          const act = document.createElement("span")
+          act.className = "lt-mcard-act"
+          act.textContent = installed ? t("modelUse") : t("downloadSize", { size: fmtMb(m.sizeMb) })
+          right.append(act)
+        }
+
+        card.append(size, meta, right)
+        if (tappable) card.addEventListener("click", () => void modelMgr.useModel(m.id))
+        frag.appendChild(card)
+      }
+      $msheetList.replaceChildren(frag)
+    }
+    async function refreshModelPicker() {
+      installCache = await modelMgr.installStates()
+      renderModelPicker()
+    }
+    function openModelPicker() {
+      void refreshModelPicker()
+      $msheet.hidden = false
+      requestAnimationFrame(() => $msheet.classList.add("open"))
+    }
+    function closeModelPicker() {
+      $msheet.classList.remove("open")
+      window.setTimeout(() => {
+        if (!$msheet.classList.contains("open")) $msheet.hidden = true
+      }, 180)
+    }
+
+    const modelMgr = new ModelManager(hostApi, (phase) => {
+      renderModelPhase(phase)
+      if (!$msheet.hidden) {
+        // A finished install means a new size is now on disk — refresh the cache.
+        if (phase.kind === "ready") void refreshModelPicker()
+        else renderModelPicker()
+      }
+    })
     $setupAction.addEventListener("click", () => void modelMgr.installAndLoad())
+    $model.addEventListener("click", openModelPicker)
+    $msheetClose.addEventListener("click", closeModelPicker)
+    $msheetScrim.addEventListener("click", closeModelPicker)
+
+    // Low-RAM lifecycle: free the resident model when the app is backgrounded so
+    // the OS can't OOMKill the whole app under memory pressure; reload on return.
+    // Only on memory-tight devices (capable devices keep it resident for instant
+    // resume), and debounced so a quick app-switch doesn't thrash unload/reload.
+    const LOW_RAM_UNLOAD_MB = 6000
+    let bgTimer: number | undefined
+    let unloadedForBg = false
+    const onVisibility = () => {
+      const ram = modelMgr.deviceTier()?.totalRamMb ?? 0
+      const lowRam = ram > 0 && ram < LOW_RAM_UNLOAD_MB
+      if (document.hidden) {
+        if (lowRam && modelMgr.isReady()) {
+          bgTimer = window.setTimeout(() => {
+            unloadedForBg = true
+            void modelMgr.unloadForBackground()
+          }, 4000)
+        }
+      } else {
+        if (bgTimer !== undefined) {
+          clearTimeout(bgTimer)
+          bgTimer = undefined
+        }
+        if (unloadedForBg) {
+          unloadedForBg = false
+          void modelMgr.check() // reload the chosen installed model → ready
+        }
+      }
+    }
+    document.addEventListener("visibilitychange", onVisibility)
+    disposers.push(() => {
+      document.removeEventListener("visibilitychange", onVisibility)
+      if (bgTimer !== undefined) clearTimeout(bgTimer)
+    })
 
     // ---------- per-language on-device model lab ----------
     let modelSheetTuning: ModelTuning | null = null
@@ -832,25 +1082,30 @@ const PackModule: ContentPackModule = {
       const lang = state.activeLanguage
       if (!lang) return
       modelSheetTuning = tuningFor(lang)
-      $modelLanguage.textContent = `${nativeName(registry.find((e) => e.code === lang.code) ?? registry[0])} · Qwen3-4B`
+      const activeModel = modelMgr.activeModel()
+      $modelLanguage.textContent = `${nativeName(registry.find((e) => e.code === lang.code) ?? registry[0])} · ${activeModel?.displayName ?? "Qwen3"}`
       $modelPrompt.value = modelSheetTuning.systemPrompt
       for (const input of $modelInputs) {
-        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt">
+        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt" | "think">
         input.value = String(modelSheetTuning[key])
         const output = container.querySelector<HTMLOutputElement>(`[data-output="${key}"]`)
         if (output) output.value = String(modelSheetTuning[key])
       }
+      // Thinking only applies to hybrid models (0.6B/1.7B); hide it otherwise.
+      $modelThinkRow.hidden = activeModel?.reasoning !== "hybrid"
+      $modelThink.checked = modelSheetTuning.think
     }
     function saveModelSheet() {
       const lang = state.activeLanguage
       if (!lang || !modelSheetTuning) return
       const next: ModelTuning = { ...modelSheetTuning, systemPrompt: $modelPrompt.value.trim() || defaultPromptFor(lang) }
       for (const input of $modelInputs) {
-        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt">
+        const key = input.dataset.tuning as keyof Omit<ModelTuning, "systemPrompt" | "think">
         next[key] = Number(input.value)
         const output = container.querySelector<HTMLOutputElement>(`[data-output="${key}"]`)
         if (output) output.value = input.value
       }
+      next.think = $modelThink.checked
       modelSheetTuning = next
       saveModelTuning(lang.code, next)
     }
@@ -1030,6 +1285,15 @@ const PackModule: ContentPackModule = {
       return hay.includes(q)
     }
 
+    // Phase-5 gate: a smaller model only teaches the languages it handles well
+    // (set per size in modelTiering once eval lands). `undefined` = all languages
+    // (the 4B / not-yet-evaluated), so this is a no-op until the lists are baked.
+    function modelSupportsLang(code: string): boolean {
+      const supp = modelMgr.activeModel()?.supportedLanguages
+      if (!supp) return true
+      return supp.includes(code) || supp.includes(code.split("-")[0])
+    }
+
     function makeLangCard(entry: LanguageRegistryEntry, active: string | undefined): HTMLButtonElement {
       const card = document.createElement("button")
       card.className = "lt-langcard"
@@ -1038,6 +1302,14 @@ const PackModule: ContentPackModule = {
       const isActive = entry.code === active
       card.classList.toggle("active", isActive)
       card.setAttribute("aria-selected", isActive ? "true" : "false")
+      // Disable (don't hide) languages the active small model can't teach well —
+      // it reads as the model's limit, and the user can pick a bigger model.
+      const supported = isActive || modelSupportsLang(entry.code)
+      if (!supported) {
+        card.disabled = true
+        card.classList.add("lt-langcard-locked")
+        card.setAttribute("aria-disabled", "true")
+      }
       const flag = LANG_FLAG[entry.code] || "✦"
       const sub = entry.displayName[uiLocale] && entry.displayName[uiLocale] !== nativeName(entry)
         ? `<span class="lt-langcard-sub">${entry.displayName[uiLocale]}</span>`
@@ -1051,7 +1323,14 @@ const PackModule: ContentPackModule = {
         <span class="lt-langcard-check" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
         </span>`
+      if (!supported) {
+        const note = document.createElement("span")
+        note.className = "lt-langcard-note"
+        note.textContent = t("langNeedsBiggerModel")
+        card.querySelector(".lt-langcard-text")?.appendChild(note)
+      }
       card.addEventListener("click", () => {
+        if (card.disabled) return
         if (entry.code === state.activeLanguage?.code) {
           closeLangSheet()
           return
@@ -1386,24 +1665,42 @@ const PackModule: ContentPackModule = {
 
     // ---------- send a turn ----------
     const $inputBar = container.querySelector<HTMLElement>(".lt-input")!
+    // When the daily cap is reached the composer is calm-but-inert (NOT a red
+    // error). Tapping it re-pops the shared green-check accomplishment lock —
+    // the lock is the ONE cap surface, so the capped composer hands off to it
+    // rather than sitting there doing nothing. Capture phase so it fires even
+    // though the field/send are disabled.
+    $inputBar.addEventListener(
+      "pointerdown",
+      () => {
+        if (quotaBlocked()) quotaGate.requestDailyLock()
+      },
+      true,
+    )
     let dictateSession: import("./languageManager").HostAsrSession | null = null
     let dictateLive = false
     let dictateStarting = false
     let dictateStopping = false
 
+    // Messages left today, for the composer's quota line. `null` (timed gates)
+    // never happens here (daily mode), so coalesce to 0 defensively.
+    const quotaLeft = (): number => quotaGate.remaining() ?? 0
+    // Free user has hit today's hard cap (subscribers never block).
+    const quotaBlocked = (): boolean => quotaGate.isBlocked()
+
     function renderQuota() {
-      const remaining = quotaRemaining(plus)
+      const remaining = quotaLeft()
       $quota.textContent = plus
         ? t("quotaPlus")
         : t("quotaFree", { count: String(remaining) })
       $quota.classList.toggle("is-plus", plus)
-      $quota.classList.toggle("is-empty", !plus && remaining <= 0)
-      $inputBar.classList.toggle("is-quota-empty", !plus && remaining <= 0)
+      $quota.classList.toggle("is-empty", quotaBlocked())
+      $inputBar.classList.toggle("is-quota-empty", quotaBlocked())
     }
 
     function syncSendEnabled() {
       const hasText = $text.value.trim().length > 0
-      const quotaOpen = quotaRemaining(plus) > 0
+      const quotaOpen = !quotaBlocked()
       $text.disabled = !quotaOpen
       $send.disabled = !modelReady || !hasText || !!state.currentStreamId || !quotaOpen
       if (!quotaOpen) {
@@ -1429,7 +1726,11 @@ const PackModule: ContentPackModule = {
       if (nextPlus === plus) return
       plus = nextPlus
       syncSendEnabled()
-      if (plus) systemNote(t("quotaPlusActivated"))
+      if (plus) {
+        systemNote(t("quotaPlusActivated"))
+        // Capped-on-entry skipped the model load — now that they're Plus, load it.
+        if (!modelReady) void modelMgr.check()
+      }
     }
     window.addEventListener("corpan:entitlement-changed", onEntitlementChanged)
     disposers.push(() => window.removeEventListener("corpan:entitlement-changed", onEntitlementChanged))
@@ -1445,7 +1746,7 @@ const PackModule: ContentPackModule = {
       $mic.setAttribute("aria-label", on ? "Stop dictation" : "Dictate")
     }
     async function startDictation() {
-      if (dictateStarting || dictateLive || quotaRemaining(plus) <= 0) {
+      if (dictateStarting || dictateLive || quotaBlocked()) {
         syncSendEnabled()
         return
       }
@@ -1520,7 +1821,14 @@ const PackModule: ContentPackModule = {
     /** Probe the active language; reveal the mic only where a provider exists. */
     function refreshDictation() {
       const lang = state.activeLanguage?.code
-      if (!lang || !hostApi.asr) {
+      // Native Android dictation (tauri-plugin-asr-native) isn't validated yet:
+      // it silently fails on devices (the plugin never *requests* RECORD_AUDIO,
+      // only checks it, and OEM on-device recognizers vary). Until that ships +
+      // is device-tested, don't surface a dead in-app mic on Android — the
+      // keyboard's own dictation mic still covers voice input. iOS keeps its
+      // working native path.
+      const isAndroid = typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent)
+      if (!lang || !hostApi.asr || isAndroid) {
         $mic.hidden = true
         return
       }
@@ -1541,7 +1849,13 @@ const PackModule: ContentPackModule = {
 
     async function send(text: string) {
       if (!text.trim() || state.currentStreamId || !state.activeLanguage || !modelReady) return
-      if (quotaRemaining(plus) <= 0) {
+      if (quotaBlocked()) {
+        // Hard daily cap reached → re-show the accomplishment lock and don't
+        // send. A gate-v2 daily gate's onInteraction() is a no-op (it only fires
+        // the legacy countArmed paywall), so a maxed-out RE-send needs an
+        // explicit requestDailyLock() — otherwise only note() crossing the cap
+        // shows the lock. Free messages return tomorrow, or with Plus.
+        quotaGate.requestDailyLock()
         syncSendEnabled()
         systemNote(t("quotaEmptyNote"))
         return
@@ -1550,7 +1864,7 @@ const PackModule: ContentPackModule = {
       const turnSpeechEpoch = speechEpoch
       const userText = text.trim()
       const lang = state.activeLanguage
-      consumeQuota(plus)
+      quotaGate.note()
       state.messages.push({ role: "user", content: userText })
       bubble("user", userText)
       $text.value = ""
@@ -1603,6 +1917,11 @@ const PackModule: ContentPackModule = {
           : tuning.systemPrompt
         let buf = ""
         const speechStream = new StreamingSentenceBuffer(lang.code)
+        // Strip any leading <think>…</think> from the live stream so a hybrid
+        // model's reasoning never reaches the transcript OR the speech queue.
+        const think = makeThinkFilter()
+        const activeModel = modelMgr.activeModel()
+        const noThink = activeModel?.reasoning === "hybrid" && !tuning.think
         const queueSpeech = (parts: string[]) => {
           if (!state.ttsEnabled || speechEpoch !== turnSpeechEpoch) return
           for (const part of parts) {
@@ -1623,18 +1942,24 @@ const PackModule: ContentPackModule = {
             presencePenalty: tuning.presencePenalty,
             maxTokens: tuning.maxTokens,
           },
+          noThink,
           (tok) => {
-            buf += tok
-            queueSpeech(speechStream.push(tok))
+            const vis = think.push(tok)
+            if (!vis) return
+            buf += vis
+            queueSpeech(speechStream.push(vis))
             caret.remove()
             dest.textContent = scrubOutput(buf)
             dest.appendChild(caret)
             scrollDown()
           },
-          (full) => {
-            const cleaned = scrubOutput(full)
+          () => {
+            const tail = think.flush()
+            if (tail) buf += tail
+            const cleaned = scrubOutput(buf)
             dest.textContent = cleaned
             state.messages.push({ role: "assistant", content: cleaned })
+            if (tail) queueSpeech(speechStream.push(tail))
             queueSpeech(speechStream.finish())
             finish()
             scrollDown()
@@ -1779,10 +2104,25 @@ const PackModule: ContentPackModule = {
     const installedCodes = await langMgr.installed()
     installedSet = new Set(installedCodes)
     renderLangs()
-    // Restore the last tutor first; else first installed; else first in registry.
-    const initialCode = loadLastLang() || installedCodes[0] || registry[0]?.code
+    // Default tutor: the user's last choice, else their FIRST LEARNING language
+    // (stackLangs[1..]; [0] is native) so we open on what they're actually
+    // learning — not whatever sorts first in the registry (it was defaulting to
+    // Arabic). Fall back to an installed module, then the first registry entry.
+    const inRegistry = (c: string): string | undefined =>
+      registry.find((r) => r.code === c || r.code.split("-")[0] === c.split("-")[0])?.code
+    const firstLearningTutor = stackLangs.slice(1).map(inRegistry).find(Boolean)
+    const initialCode =
+      loadLastLang() || firstLearningTutor || installedCodes[0] || registry[0]?.code
     if (initialCode) await switchLanguage(initialCode)
-    void modelMgr.check()
+    // Out of free quota on entry → DON'T wake the on-device model (wasted: they
+    // can't send). Pop the accomplishment lock straight away; the setup screen
+    // ($setup) stays hidden because renderModelPhase never runs. The model loads
+    // later only if they go Plus (see onEntitlementChanged).
+    if (quotaGate.isBlocked()) {
+      quotaGate.requestDailyLock()
+    } else {
+      void modelMgr.check()
+    }
     syncSendEnabled()
 
     return {

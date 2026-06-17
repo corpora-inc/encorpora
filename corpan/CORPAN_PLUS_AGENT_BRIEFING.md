@@ -21,9 +21,11 @@ Corpán gave everything away free and asked people to pay out of goodwill →
   drew zero buyers; per-book SKUs are operationally expensive). Product is
   **"Corpán Plus"**; members are **"Corpanistas"**. Existing per-book owners
   stay entitled forever; we just never show a per-book buy button again.
-- **Generous, permanent free tier.** The first `min(floor(total/3), 100)`
-  segments of EVERY book in EVERY language are free forever. The paywall lands
-  at the moment of engagement: you finished the free preview and want more.
+- **Generous free tier (design intent: keep it generous, indefinitely).** The
+  first `min(floor(total/3), 100)` segments of EVERY book in EVERY language are
+  free in current builds. The paywall lands at the moment of engagement: you
+  finished the free preview and want more. Don't ship user-facing copy that
+  promises "free forever" — this is direction, not a contractual absolute.
 - **The free cut MUST be enforced server-side, not client-side.** Corpán is
   open source. A client-side `if (segment < freeN)` is trivially patched out of
   a fork. So the publisher emits a *physically truncated* preview ZIP — the free
@@ -32,10 +34,13 @@ Corpán gave everything away free and asked people to pay out of goodwill →
   for?") tailors the landing experience and lets the Plus pitch speak to the
   user. Primary-language-FIRST so every later screen (and the pitch) is
   localized.
-- **Principles (non-negotiable, enforced in code review):** no ads ever; no
-  login (Apple/Google account = identity); on-device analytics only (no
-  persistent device ID); localize everything; no Duolingo dark patterns (streak
-  is opt-in + silent).
+- **Principles (strongly held design intent — NOT absolutes to ship in copy):**
+  ad-free in the app today and working to stay that way; no Corpán-specific
+  login (Apple/Google IAP identity only); on-device analytics (no persistent
+  device ID); localize everything; no Duolingo dark patterns (streak is opt-in
+  + silent). These are direction, not user-facing promises — don't write copy
+  that says "no ads ever" or "free forever," see
+  `~/.claude/projects/-home-skyl/memory/feedback_no_absolutes_in_marketing.md`.
 
 ---
 
