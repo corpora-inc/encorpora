@@ -1,0 +1,69 @@
+name: iOS native
+
+# Catch Swift / Rust compile breakage in the iOS native layer BEFORE it reaches
+# a device build. Each Tauri plugin's Swift is compiled by swift-rs from the
+# plugin's own build script when building for an Apple target — so a plain
+# `cargo build --target aarch64-apple-ios` of each plugin that ships an `ios/`
+# Swift package reproduces errors like the offer-code redeem sheet's
+# `async`-call-in-sync-context break, with no Xcode signing/archive needed.
+#
+# We build the PLUGINS (not the whole app) so the gate stays fast — it skips the
+# heavy app + llama.cpp iOS compile while still exercising every plugin's Swift.
+
+on:
+  pull_request:
+    paths:
+      - "corpan/plugins/**/ios/**"
+      - "corpan/plugins/**/src/**"
+      - "corpan/plugins/**/Cargo.toml"
+      - "corpan/plugins/**/build.rs"
+      - ".github/workflows/ios-native.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "corpan/plugins/**/ios/**"
+      - "corpan/plugins/**/src/**"
+      - "corpan/plugins/**/Cargo.toml"
+      - "corpan/plugins/**/build.rs"
+      - ".github/workflows/ios-native.yml"
+  workflow_dispatch: {}
+
+concurrency:
+  group: ios-native-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  plugins-ios:
+    name: Tauri plugins · Swift compile (aarch64-apple-ios)
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add iOS Rust target
+        run: rustup target add aarch64-apple-ios
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            corpan/plugins/tauri-plugin-iap
+            corpan/plugins/tauri-plugin-haptics
+
+      - name: Build every plugin that ships an ios/ Swift package
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          built=0
+          for ios_dir in corpan/plugins/*/ios; do
+            plugin_dir="$(dirname "$ios_dir")"
+            name="$(basename "$plugin_dir")"
+            # Only Cargo plugins (the Swift is compiled by the crate's build script).
+            [ -f "$plugin_dir/Cargo.toml" ] || { echo "skip $name (no Cargo.toml)"; continue; }
+            echo "::group::$name → cargo build --target aarch64-apple-ios"
+            ( cd "$plugin_dir" && cargo build --target aarch64-apple-ios )
+            echo "::endgroup::"
+            built=$((built + 1))
+          done
+          echo "Compiled $built plugin(s) for iOS."
+          if [ "$built" -eq 0 ]; then
+            echo "::warning::No iOS plugins found to build."
+          fi

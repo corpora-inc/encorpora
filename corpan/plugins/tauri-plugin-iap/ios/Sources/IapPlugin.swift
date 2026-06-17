@@ -538,26 +538,30 @@ class IapPlugin: Plugin {
     /// API is unavailable. The redeemed transaction is delivered through the
     /// existing `Transaction.updates` listener (set up in `load`) — we do NOT
     /// re-implement transaction handling here.
+    // @MainActor: the sheet must be presented from the active window scene on
+    // the main actor, AND the SK2 `AppStore.presentOfferCodeRedeemSheet(in:)` is
+    // an `async throws` @MainActor API — so we can't call it inside a synchronous
+    // `MainActor.run { }` closure (that was the build error). Isolating the whole
+    // method to the main actor lets us `try await` it directly with no actor hop.
+    @MainActor
     @objc public func presentOfferCodeRedeemSheet(_ invoke: Invoke) async throws {
-        // The sheet must be presented from the active window scene on the
-        // main actor.
-        await MainActor.run {
-            if #available(iOS 16.0, *),
-               let scene = Self.activeWindowScene() {
-                AppStore.presentOfferCodeRedeemSheet(in: scene)
-                invoke.resolve()
-                return
-            }
-
-            if #available(iOS 14.0, *) {
-                SKPaymentQueue.default().presentCodeRedemptionSheet()
-                invoke.resolve()
-                return
-            }
-
-            self.reject(invoke, code: "NOT_ENTITLED",
-                        message: "Offer code redemption requires iOS 14.0 or later")
+        if #available(iOS 16.0, *),
+           let scene = Self.activeWindowScene() {
+            // SK2 (iOS 16+): async + throwing — await it.
+            try await AppStore.presentOfferCodeRedeemSheet(in: scene)
+            invoke.resolve()
+            return
         }
+
+        if #available(iOS 14.0, *) {
+            // SK1 fallback: synchronous.
+            SKPaymentQueue.default().presentCodeRedemptionSheet()
+            invoke.resolve()
+            return
+        }
+
+        self.reject(invoke, code: "NOT_ENTITLED",
+                    message: "Offer code redemption requires iOS 14.0 or later")
     }
 
     // MARK: - requestReview

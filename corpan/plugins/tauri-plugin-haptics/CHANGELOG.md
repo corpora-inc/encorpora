@@ -11,6 +11,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-06-16
+
 ### Added
 - Initial plugin. One command — `impact(style)` where `style` is one of
   `light`, `medium`, `heavy`, `success`, `warning`. iOS uses the haptic

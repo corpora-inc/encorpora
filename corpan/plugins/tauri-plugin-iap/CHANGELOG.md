@@ -10,7 +10,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-06-16
+
 ### Fixed
+- **iOS build break in `presentOfferCodeRedeemSheet`.** The command wrapped its
+  body in a synchronous `MainActor.run { }`, so the iOS 16+ `async throws`
+  `AppStore.presentOfferCodeRedeemSheet(in:)` failed to compile ("'async' call in
+  a function that does not support concurrency"). The method is now `@MainActor`
+  and `try await`s the SK2 call directly; the SK1 fallback is unchanged.
 - **Android free-trial offer selection.** With no explicit `offerToken` (the plain
   "Start Free Trial", no affiliate code), the purchase now PREFERS the subscription
   offer whose pricing has a zero-price phase (the free trial) instead of

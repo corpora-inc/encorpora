@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.19.0] - 2026-06-16
+
 ### Changed
 - **One unified "About Corpán" list at the bottom of Settings.** The socials
   (moved here from onboarding) and About's own links were two stacked lists in

@@ -5,6 +5,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-06-16
+
 ### Fixed
 - **Low-RAM OOM crash hardening (native `ggml_graph_compute_thread` SIGSEGV).**
   Allocating the ~2.5 GB model plus a 4096-token KV/compute buffer could OOM
