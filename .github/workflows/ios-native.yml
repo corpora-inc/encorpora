@@ -50,20 +50,37 @@ jobs:
 
       - name: Build every plugin that ships an ios/ Swift package
         run: |
-          set -euo pipefail
+          set -uo pipefail
           shopt -s nullglob
+          # Plugins whose ios/ Swift package links a PREBUILT binary xcframework
+          # that is NOT committed (gitignored / fetched out-of-band) — a clean CI
+          # checkout has no binary, so swift-rs can't compile them. The pure-Swift
+          # plugins (iap, haptics, tts, subscriptions, …) are what this gate
+          # exists to protect; skip only the binary-dependent ones.
+          SKIP="tauri-plugin-stt"
           built=0
+          failed=()
           for ios_dir in corpan/plugins/*/ios; do
             plugin_dir="$(dirname "$ios_dir")"
             name="$(basename "$plugin_dir")"
             # Only Cargo plugins (the Swift is compiled by the crate's build script).
             [ -f "$plugin_dir/Cargo.toml" ] || { echo "skip $name (no Cargo.toml)"; continue; }
+            case " $SKIP " in
+              *" $name "*) echo "::notice::skipping $name (needs an out-of-repo binary xcframework)"; continue;;
+            esac
             echo "::group::$name → cargo build --target aarch64-apple-ios"
-            ( cd "$plugin_dir" && cargo build --target aarch64-apple-ios )
+            if ( cd "$plugin_dir" && cargo build --target aarch64-apple-ios ); then
+              built=$((built + 1))
+            else
+              failed+=("$name")
+            fi
             echo "::endgroup::"
-            built=$((built + 1))
           done
-          echo "Compiled $built plugin(s) for iOS."
+          echo "Compiled $built plugin(s) for iOS; ${#failed[@]} failed."
+          if [ "${#failed[@]}" -gt 0 ]; then
+            echo "::error::iOS Swift compile failed for: ${failed[*]}"
+            exit 1
+          fi
           if [ "$built" -eq 0 ]; then
             echo "::warning::No iOS plugins found to build."
           fi
