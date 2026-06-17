@@ -2178,9 +2178,14 @@ export const createJuiceSqueeze = (
     // Hard daily cap: loading a NEW phrase to solve is the metered action.
     // Once the free user has reached the daily cap (QUOTAS.juice_phrases) they
     // get EXACTLY that many — re-show the accomplishment-lock overlay instead
-    // of loading another. The initial mount load is exempt (so a returning,
-    // already-capped user still sees the board), and subscribers never block.
-    if (!opts?.initial && paywallGate.isBlocked()) {
+    // of loading another. The initial mount load is GATED TOO: juice-squeeze
+    // does not persist/restore the current utterance, so `initial` always loads
+    // a brand-new phrase. Exempting it let an already-capped free user mint one
+    // fresh phrase per exit/re-enter. `initial` may only bypass the gate when it
+    // restores already-seen content (which this pack never does). Subscribers
+    // never block (isBlocked() is always false for them).
+    void opts
+    if (paywallGate.isBlocked()) {
       paywallGate.requestDailyLock()
       return
     }

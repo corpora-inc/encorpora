@@ -1632,6 +1632,18 @@ export const createHoverRunner = (
   }
 
   const startNewRound = () => {
+    // Hard daily cap. Every round acquires a NEW phrase (buildRound always
+    // generates fresh content — hover-runner never restores a seen/persisted
+    // utterance), so building one counts toward the cap. A capped free user must
+    // NOT be able to mint a fresh phrase by exiting and re-entering the pack:
+    // mount calls startNewRound() unconditionally, which previously bypassed the
+    // in-session post-celebration check. Gate it HERE so every entry point
+    // (mount + next-round) is covered — show the accomplishment lock instead.
+    // Subscribers never block (isBlocked() is always false for them).
+    if (paywallGate.isBlocked()) {
+      paywallGate.requestDailyLock()
+      return
+    }
     gameStore.update((draft) => {
       draft.roundGeneration += 1
       draft.round = null

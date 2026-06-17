@@ -636,6 +636,50 @@ test("recordEntitlementPurchase: idempotent, never clobbers a richer code row", 
   assert.equal(row.code, "IAN30");
 });
 
+test("renewal extends entitlement: a renewal row's later expiry wins after the original lapses", async () => {
+  freshDoc();
+  const past = new Date(Date.now() - 86400000).toISOString(); // original already lapsed
+  const future = new Date(Date.now() + 30 * 86400000).toISOString(); // renewed expiry
+
+  // Original purchase, now expired.
+  await codes.recordEntitlementPurchase({
+    subjectId: "sub-renew",
+    platform: "apple",
+    txnOrOriginalId: "orig-1",
+    productId: "corpan.sub.monthly",
+    expiresAt: past,
+    appAccountToken: "sub-renew",
+  });
+
+  // BEFORE the renewal row exists, entitlement is failed — exactly the bug
+  // (a renewing subscriber would be denied once the original expiry passed).
+  {
+    const { json, calls } = jsonResponder();
+    await codes.handleEntitlementToken({ subjectId: "sub-renew" }, { secrets: SECRETS, json });
+    assert.equal(calls[0].payload.status, "failed");
+    assert.equal(calls[0].payload.plus, false);
+  }
+
+  // A DID_RENEW / SUBSCRIPTION_RENEWED notification writes a NEW PURCHASE row
+  // (keyed by the renewal txn id) carrying the renewed expiry.
+  const written = await codes.recordEntitlementPurchase({
+    subjectId: "sub-renew",
+    platform: "apple",
+    txnOrOriginalId: "renew-2",
+    productId: "corpan.sub.monthly",
+    expiresAt: future,
+    appAccountToken: "sub-renew",
+  });
+  assert.equal(written, true);
+
+  // Now entitlement is active again with the RENEWED expiry (newest row wins).
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({ subjectId: "sub-renew" }, { secrets: SECRETS, json });
+  assert.equal(calls[0].payload.status, "ok");
+  assert.equal(calls[0].payload.plus, true);
+  assert.equal(calls[0].payload.expiresAt, future);
+});
+
 // ===========================================================================
 // creditRenewal + GSI reverse-map
 // ===========================================================================

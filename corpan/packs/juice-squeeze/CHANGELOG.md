@@ -12,11 +12,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [0.1.5] - 2026-06-16 — Daily-cap enforcement
 
 ### Fixed
-- **Daily cap now HARD-enforces.** The gate counted completed phrases but never
-  blocked at the cap. Loading a new phrase to solve now checks `isBlocked()`
-  first: at the cap it re-shows the daily-lock overlay (`requestDailyLock()`)
-  instead of dealing another phrase — a hard wall until local midnight or
-  subscribe. Initial mount is exempt; subscribers never block.
+- **Daily cap now HARD-enforces — including on remount.** The gate counted
+  completed phrases but never blocked at the cap. Loading a new phrase to solve
+  now checks `isBlocked()` first, *including the initial mount load*: the pack
+  does not persist/restore the current utterance, so the old mount exemption let
+  an already-capped free user mint one fresh phrase per exit/re-enter. At the cap
+  it re-shows the daily-lock overlay (`requestDailyLock()`) instead of dealing
+  another phrase — a hard wall until local midnight or subscribe. Subscribers
+  never block.
 
 ## [0.1.4] - 2026-06-16 — Fix: pack never registered (blank/failed load)
 

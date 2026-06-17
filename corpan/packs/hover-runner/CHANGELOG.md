@@ -21,11 +21,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [0.3.1] - 2026-06-16 — Daily-cap enforcement + Babylon 9
 
 ### Fixed
-- **Daily cap now HARD-enforces.** The gate counted completed phrases but never
-  blocked at the cap. After a free user completes the daily limit of phrases the
-  post-celebration transition now re-shows the daily-lock overlay
-  (`requestDailyLock()`) instead of starting the next round — a hard wall until
-  local midnight or subscribe. Initial mount is exempt; subscribers never block.
+- **Daily cap now HARD-enforces — including on remount.** The gate counted
+  completed phrases but never blocked at the cap. `startNewRound()` now checks
+  `isBlocked()` before building a round, covering BOTH the post-celebration next
+  round AND the initial mount — every round generates a fresh phrase (no
+  restore), so a capped free user could previously mint one by exiting and
+  re-entering. At the cap it re-shows the daily-lock overlay
+  (`requestDailyLock()`) instead — a hard wall until local midnight or subscribe.
+  Subscribers never block.
 
 ### Changed
 - Upgraded Babylon.js **6.48 → 9.11** (latest stable). Modular import

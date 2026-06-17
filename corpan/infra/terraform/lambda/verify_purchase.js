@@ -550,6 +550,29 @@ async function handleAppleNotification(body, secrets) {
         const renewalTxnId = txn.transactionId;
         if (appAccountToken && renewalTxnId) {
           // appAccountToken IS the subjectId (Apple uses it as PK directly, §7.3).
+          // (1) Extend the SUBSCRIBER ENTITLEMENT — the PURCHASE# row that backs
+          // /entitlement-token — with the renewed expiry, REGARDLESS of affiliate
+          // attribution. Without this a renewing subscriber's entitlement lapses
+          // once the ORIGINAL purchase row's expiresAt passes (renewals only
+          // credited the affiliate ledger before, and skipped non-affiliate subs
+          // entirely). Idempotent per renewal transaction; readLatestEntitlement
+          // then picks the row with the newest expiry.
+          const renewedExpiresAt = txn.expiresDate
+            ? new Date(txn.expiresDate).toISOString()
+            : null;
+          if (renewedExpiresAt) {
+            await codes.recordEntitlementPurchase({
+              subjectId: appAccountToken,
+              platform: "apple",
+              txnOrOriginalId: renewalTxnId,
+              productId: txn.productId || null,
+              expiresAt: renewedExpiresAt,
+              environment: txn.environment || null,
+              appAccountToken,
+            });
+          }
+          // (2) Affiliate ledger credit — only when this subject was attributed
+          // to a partner via a code.
           const attr = await codes.getAttribution(appAccountToken);
           if (attr && attr.partnerId) {
             await codes.creditRenewal({
@@ -618,6 +641,22 @@ async function handleGoogleNotification(body, secrets, authHeader) {
       const orderId = verify.transactionId;
       if (obfHash && orderId) {
         const attr = await codes.findSubjectByObfHash(obfHash);
+        const subjectId = attr && attr.subjectId ? attr.subjectId : null;
+        // (1) Extend the subscriber entitlement with the renewed expiry,
+        // REGARDLESS of affiliate attribution. Every verified sub (code or not)
+        // has a PURCHASE# row, so findSubjectByObfHash resolves the subject.
+        if (subjectId && verify.expiresAt) {
+          await codes.recordEntitlementPurchase({
+            subjectId,
+            platform: "android",
+            txnOrOriginalId: orderId,
+            productId: verify.productId || null,
+            expiresAt: verify.expiresAt,
+            environment: null,
+            appAccountToken: null,
+          });
+        }
+        // (2) Affiliate ledger credit — only for partner-attributed subjects.
         if (attr && attr.partnerId) {
           await codes.creditRenewal({
             partnerId: attr.partnerId,
