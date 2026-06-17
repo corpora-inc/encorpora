@@ -609,6 +609,16 @@ BOOK_META = {
         ),
         "tags": ["nature", "biomes", "science", "language-learning"],
     },
+    "book_biomes_temperate_forest": {
+        "description": (
+            "A short, plain-spoken tour of the temperate forest — oak, "
+            "maple, and birch standing through four very different seasons, "
+            "the deer and bears that know each one, and the people whose "
+            "languages, songs, and cities grew up among these trees. Book "
+            "four of the Biomes of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+    },
 }
 
 

@@ -862,6 +862,27 @@ BOOKS: list[BookSpec] = [
             "people, no clearly rendered animals, no text. " + COMMON_TAIL
         ),
     ),
+    BookSpec(
+        book_id="book_biomes_temperate_forest",
+        title="The Temperate Forest",
+        description=(
+            "A short, plain-spoken tour of the temperate forest — oak, "
+            "maple, and birch standing through four very different seasons, "
+            "the deer and bears that know each one, and the people whose "
+            "languages, songs, and cities grew up among these trees. Book "
+            "four of the Biomes of the World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a temperate deciduous forest in "
+            "early autumn. Tall broad-leaved trees with leaves turning "
+            "gold, amber, and deep red. Shafts of soft afternoon sunlight "
+            "fall through the canopy onto a forest floor scattered with "
+            "fallen leaves. A small clear stream winds between the trees. "
+            "Painterly digital art, restrained palette of warm gold, "
+            "russet, and forest green, contemplative and quiet, no people, "
+            "no clearly rendered animals, no text. " + COMMON_TAIL
+        ),
+    ),
 ]
 
 
