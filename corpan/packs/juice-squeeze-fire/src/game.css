@@ -1,0 +1,641 @@
+/*
+ * Juice Squeeze (Fire rebuild) — gameplay UI styles.
+ * Plain, functional, mobile-first. Clean cards, readable text, obvious drop
+ * zones. No shaders/particles — that's a later phase. Honors safe-area insets.
+ */
+
+.jsf-app {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: calc(var(--jsf-safe-top) + 8px) 10px calc(var(--jsf-safe-bottom) + 10px);
+  /* Soft, cool light neutral so the colored juice (orange/red/purple/etc.) POPS
+     against it instead of blending into a warm orange wash. Dark target text +
+     colored chip pills still read fine on this. */
+  background: linear-gradient(180deg, #f6f7fb 0%, #eef0f6 100%);
+  color: #3a2410;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.jsf-swipe {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---- Liquid background (Pixi full-screen layer) ---- */
+/* The liquid is a FULL-VIEWPORT BACKGROUND: it fills the whole screen from the
+ * bottom up, BEHIND all the DOM UI. Its canvas is pointer-events:none so all
+ * taps/drags pass straight through to the floating UI above it. The LiquidStage
+ * sizes itself to this layer (the whole .jsf-app). */
+.jsf-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Keep the interactive UI above the full-screen liquid canvas. */
+.jsf-app > .jsf-header {
+  position: relative;
+  z-index: 1;
+}
+.jsf-app > .jsf-main {
+  position: relative;
+  z-index: 1;
+}
+/* Interactive rows float ABOVE the liquid background (z-index 0); lifted clear. */
+.jsf-main > .jsf-target,
+.jsf-main > .jsf-sentence,
+.jsf-main > .jsf-nav,
+.jsf-main > .jsf-controls-bar,
+.jsf-main > .jsf-bank {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Header ---- */
+.jsf-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 56px;
+}
+.jsf-header__left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.jsf-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-weight: 800;
+  font-size: 18px;
+  color: #c0392b;
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.jsf-score__value { line-height: 1; }
+
+.jsf-collection {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  min-height: 8px;
+}
+/* Each completed bottle is a small CAPPED-JAR icon: a lid band on top + a glass
+ * body filled with that bottle's fruit gradient. The jar-fly celebration lands a
+ * matching jar here so it visually "joins" the collection. */
+.jsf-jar-icon {
+  width: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+}
+.jsf-jar-icon__lid {
+  width: 15px;
+  height: 5px;
+  border-radius: 3px 3px 2px 2px;
+  background: linear-gradient(180deg, #d8a04a 0%, #b9792c 60%, #9c641f 100%);
+  border: 1px solid rgba(80, 48, 12, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  margin-bottom: -1px;
+  z-index: 1;
+}
+.jsf-jar-icon__body {
+  width: 14px;
+  height: 20px;
+  border-radius: 3px 3px 5px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+.jsf-collection__overflow {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8a5a2b;
+}
+
+/* ---- Current-fruit header indicator ---- */
+/* The full-screen juice IS the bottle fill now, so the header just shows the
+ * CURRENT fruit (a bit bigger, with a gentle bob) instead of a redundant
+ * mini-bottle. Shifted left of the absolute exit ✕ (right: 10px, 38px wide) via
+ * the margin-right so they never overlap. The fruit cycles with the bottle
+ * color (BottleGauge reads currentColorIndex). */
+.jsf-gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-right: 44px;
+}
+.jsf-gauge__fruit {
+  font-size: 38px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
+  /* Gentle bob/pulse so the current fruit feels alive without distracting. */
+  animation: jsf-fruit-bob 2.5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes jsf-fruit-bob {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.06); }
+}
+/* Respect reduced-motion: hold the fruit still. */
+@media (prefers-reduced-motion: reduce) {
+  .jsf-gauge__fruit { animation: none; }
+}
+
+/* ---- Main column ---- */
+/* With the central jar gone, the main column reclaims the full height:
+ * header → target → sentence → nav → controls → bank, stacked with comfortable
+ * spacing. The bank (flex: 1 1 auto) takes the remaining space and SCROLLS when
+ * a long phrase needs many chip rows. */
+.jsf-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+  padding-top: 6px;
+}
+
+/* ---- Target phrase ---- */
+.jsf-target {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.jsf-target__text {
+  font-size: clamp(20px, 6vw, 30px);
+  font-weight: 800;
+  color: #2c1a08;
+  /* Tasteful frosted scrim (not a heavy white box): a soft pill that hugs the
+     phrase so it stays legible as the colored liquid rises behind it. A soft
+     white halo (text-shadow) reinforces contrast at high fill. */
+  background: rgba(255, 255, 255, 0.46);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+  line-height: 1.25;
+  padding: 8px 18px;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85),
+    0 0 12px rgba(255, 255, 255, 0.75);
+  /* Very long target phrases wrap instead of overflowing (FIX 4). */
+  overflow-wrap: break-word;
+  max-width: 92vw;
+  align-self: center;
+}
+.jsf-target__build {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #b5793c;
+}
+
+/* ---- Sentence build area ---- */
+/* Wraps to multiple chip rows; capped so a very long built sentence scrolls
+ * instead of pushing the bank off-screen. */
+.jsf-sentence {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* Size to CONTENT: a short built sentence stays compact; only a very long
+     one hits the cap and scrolls (it never pushes the bank off-screen). */
+  flex: 0 0 auto;
+  max-height: 32vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.jsf-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 58px;
+  padding: 9px 10px;
+  border-radius: 16px;
+  border: 2px dashed rgba(192, 57, 43, 0.38);
+  background: rgba(255, 255, 255, 0.38);
+  transition: background 0.15s, border-color 0.15s;
+}
+.jsf-row--rtl { flex-direction: row-reverse; }
+.jsf-row--over {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: #c0392b;
+}
+.jsf-row__placeholder {
+  flex: 1;
+  min-height: 40px;
+}
+
+/* ---- Word bank ---- */
+.jsf-bank {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* Size to CONTENT, not the column: a short (e.g. A0, 4-word) phrase leaves a
+     compact bank, and the freed vertical space becomes visible background juice
+     instead of an oversized empty bank. Only a long phrase reaches the cap and
+     scrolls; the bank never balloons. */
+  flex: 0 0 auto;
+  min-height: 64px;
+  max-height: 42vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 11px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.32);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: background 0.15s;
+}
+.jsf-bank--over { background: rgba(255, 255, 255, 0.58); }
+.jsf-bank__empty { min-height: 40px; width: 100%; }
+
+/* ---- Word block ---- */
+/*
+ * Glossy fruit pill. Each block sets --blk (its palette color) via inline
+ * style; the pill builds depth from it: lightened top → base → darkened bottom,
+ * a subtle white top highlight, a slightly darker border, and a soft drop
+ * shadow. Text is white with a dark shadow so it stays legible even on the
+ * golden-yellow (#FFCE00) block.
+ */
+.jsf-block {
+  --blk: #ff6b35; /* fallback if no inline --blk */
+  /* Default font (overridden inline by the auto-fit size from blockSizing). */
+  font-size: clamp(16px, 4.6vw, 20px);
+  font-weight: 800;
+  color: #fff;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--blk) 62%, white) 0%,
+      color-mix(in srgb, var(--blk) 92%, white) 32%,
+      var(--blk) 58%,
+      color-mix(in srgb, var(--blk) 72%, black) 100%
+    );
+  border: 1px solid color-mix(in srgb, var(--blk) 66%, black);
+  border-radius: 16px;
+  /* Content-sized: padding in `em` scales with the chip's font, so the pill
+     grows to fit its text at any shared font size (no forced width/height). */
+  padding: 0.5em 0.9em;
+  min-height: 2.25em;
+  cursor: grab;
+  /* Crisp but light drop shadow tinted in the block's OWN color (premium,
+     tactile), a soft white top gloss, and an inner bottom shadow for depth. */
+  box-shadow:
+    0 4px 10px color-mix(in srgb, var(--blk) 45%, transparent),
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px color-mix(in srgb, var(--blk) 60%, black);
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.5),
+    0 0 3px rgba(0, 0, 0, 0.25);
+  /* Keep each chip on one line; NEVER clip — the chip grows to fit its text.
+     Only a giant single word shrinks (via fontForWord) and is capped here. */
+  white-space: nowrap;
+  max-width: 80vw;
+  touch-action: none;
+  line-height: 1.1;
+  position: relative;
+}
+/* Glossy white top highlight — a crisp curved sheen across the upper third. */
+.jsf-block::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 2px;
+  height: 42%;
+  border-radius: 12px 12px 16px 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.18) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.jsf-block:active { cursor: grabbing; }
+.jsf-block--over {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.jsf-block--ghost {
+  opacity: 0.95;
+  transform: scale(1.06);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  cursor: grabbing;
+}
+
+/* ---- History nav ---- */
+.jsf-nav {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+.jsf-nav__btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.78);
+  color: #c0392b;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.1s ease-out, background 0.15s;
+}
+.jsf-nav__btn:active:not(:disabled) { transform: scale(0.92); }
+.jsf-nav__btn:disabled { opacity: 0.32; cursor: default; }
+
+/* ---- Icon controls ---- */
+.jsf-icon-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.88);
+  font-size: 23px;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease-out, background 0.15s, box-shadow 0.15s;
+}
+.jsf-icon-btn:active { transform: scale(0.92); }
+.jsf-icon-btn--active {
+  background: #ffd54f;
+  box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.5), 0 3px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* Exit stays absolute in the very top-right corner; nothing overlaps it. */
+.jsf-exit {
+  position: absolute;
+  top: calc(var(--jsf-safe-top) + 8px);
+  right: 10px;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #c0392b;
+  z-index: 30;
+}
+
+/* In-flow controls bar: a full-width row JUST ABOVE the bank, buttons evenly
+ * spaced. Never overlaps the vessel (which is behind it) OR the word bank. */
+.jsf-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  width: 100%;
+  padding: 2px 8px;
+}
+
+/* ---- Overlays / modals ---- */
+.jsf-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 10, 4, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 20;
+}
+.jsf-answer,
+.jsf-levelcomplete,
+.jsf-review {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+.jsf-answer__icon {
+  font-size: 36px;
+  color: #2ecc71;
+  font-weight: 800;
+}
+.jsf-answer__text {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 14px 0 20px;
+  color: #2c1a08;
+}
+
+.jsf-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #f0e6da;
+  color: #6b4423;
+}
+.jsf-btn--primary {
+  background: linear-gradient(180deg, #ff8a5b 0%, #ee5253 100%);
+  color: #fff;
+}
+
+.jsf-levelcomplete__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #c0392b;
+}
+.jsf-levelcomplete__fruit { font-size: 64px; margin: 12px 0; }
+.jsf-levelcomplete__stat { font-size: 18px; font-weight: 700; }
+.jsf-levelcomplete__hint,
+.jsf-levelcomplete__max {
+  margin: 14px 0;
+  font-size: 14px;
+  color: #6b4423;
+}
+.jsf-levelcomplete__buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.jsf-review { text-align: left; max-height: 80vh; display: flex; flex-direction: column; }
+.jsf-review__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.jsf-review__header h2 { font-size: 18px; margin: 0; }
+.jsf-review__list { overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.jsf-review__item {
+  background: #faf3ea;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+.jsf-review__target { font-weight: 800; }
+.jsf-review__block { color: #6b4423; margin-top: 2px; }
+.jsf-review__empty { color: #8a5a2b; text-align: center; padding: 20px; }
+
+/* ---- Win confirmation pop ---- */
+/* A satisfying, BOUNCY "pop" (~1080ms) so every correct phrase reads as a
+ * celebratory beat, not a blink. The badge springs up with an overshoot, holds,
+ * then fades; the green wash blooms underneath. Pointer-events:none; sits above
+ * the play UI but below give-up / level-complete modals (z 20). Re-mounted on
+ * each win (keyed on winFlash) so the animation always replays. Paired with the
+ * liquid triggerWin surge for a coherent celebratory moment. */
+.jsf-winflash {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* A soft, clean green bloom under the badge — a gentle wash, never a harsh
+     full-screen flash over the light background. */
+  background: radial-gradient(
+    58% 50% at 50% 46%,
+    rgba(46, 204, 113, 0.28) 0%,
+    rgba(46, 204, 113, 0.1) 42%,
+    rgba(46, 204, 113, 0) 72%
+  );
+  animation: jsf-winflash-bg 1040ms ease-out forwards;
+}
+.jsf-winflash__badge {
+  font-size: 96px;
+  color: #2ecc71;
+  font-weight: 900;
+  /* Soft green glow + a clean drop shadow so the check pops off the background
+     without a hard edge. */
+  text-shadow:
+    0 0 18px rgba(46, 204, 113, 0.45),
+    0 6px 18px rgba(0, 0, 0, 0.22);
+  /* Springy overshoot then a clean settle + fade. The bezier gives the up-pop
+     its bounce; the tail lets the badge linger so it reads as a juicy pop. */
+  animation: jsf-winflash-badge 1040ms cubic-bezier(0.16, 1.45, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+@keyframes jsf-winflash-bg {
+  0% { opacity: 0; }
+  14% { opacity: 1; }
+  58% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes jsf-winflash-badge {
+  0% { transform: scale(0.35) rotate(-7deg); opacity: 0; }
+  26% { transform: scale(1.24) rotate(3deg); opacity: 1; }
+  44% { transform: scale(0.96) rotate(-1.5deg); opacity: 1; }
+  58% { transform: scale(1.05) rotate(0deg); opacity: 1; }
+  70% { transform: scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.12) rotate(0deg); opacity: 0; }
+}
+/* Reduced-motion: keep the confirmation but drop the bounce/rotation. */
+@media (prefers-reduced-motion: reduce) {
+  .jsf-winflash__badge {
+    animation: jsf-winflash-bg 1040ms ease-out forwards;
+  }
+}
+
+/* ---- Jar-fly celebration ---- */
+/* On bottle-complete a small CAPPED jar (the completed bottle's fruit gradient)
+ * appears center-screen, caps + scales up, then flies UP into the header
+ * BottleCollection (positions injected via --jf-sx/sy → --jf-tx/ty by jarFly.ts).
+ * It removes itself on animationend. pointer-events:none; above the play UI but
+ * below modals. ~900ms total: a short cap/grow beat, then the translate-up fly
+ * that shrinks as it docks into the collection. */
+.jsf-jarfly {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 18;
+  pointer-events: none;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.28));
+  animation: jsf-jarfly-move 900ms cubic-bezier(0.42, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+.jsf-jarfly__lid {
+  width: 34px;
+  height: 10px;
+  border-radius: 5px 5px 3px 3px;
+  background: linear-gradient(180deg, #d8a04a 0%, #b9792c 58%, #9c641f 100%);
+  border: 1px solid rgba(80, 48, 12, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  margin-bottom: -2px;
+  z-index: 1;
+}
+.jsf-jarfly__body {
+  width: 32px;
+  height: 42px;
+  border-radius: 4px 4px 9px 9px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 -3px 7px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+@keyframes jsf-jarfly-move {
+  /* Cap + pop up at the center. */
+  0% {
+    transform: translate(var(--jf-sx), var(--jf-sy)) translate(-50%, -50%) scale(0.4);
+    opacity: 0;
+  }
+  18% {
+    transform: translate(var(--jf-sx), var(--jf-sy)) translate(-50%, -50%) scale(1.12);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(var(--jf-sx), var(--jf-sy)) translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  /* Fly up to the header collection, shrinking as it docks. */
+  100% {
+    transform: translate(var(--jf-tx), var(--jf-ty)) translate(-50%, -50%) scale(0.32);
+    opacity: 0.25;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-jarfly { animation-duration: 600ms; }
+}
+
+.jsf-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: #c0392b;
+  z-index: 10;
+}

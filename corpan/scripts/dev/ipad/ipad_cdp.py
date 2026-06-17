@@ -137,7 +137,7 @@ async def eval_js(expr: str, return_by_value: bool = True) -> Any:
 
     inspector = WebinspectorService(lockdown=rsd)
     _trace("inspector.connect")
-    await inspector.connect(DEFAULT_TIMEOUT)
+    await inspector.connect()
     _trace("connected")
     try:
         _trace("pick page")
@@ -250,7 +250,7 @@ async def cmd_pages() -> None:
     if rsd is None:
         raise SystemExit("no tunneld-connected device.")
     inspector = WebinspectorService(lockdown=rsd)
-    await inspector.connect(DEFAULT_TIMEOUT)
+    await inspector.connect()
     try:
         pages = await inspector.get_open_application_pages(timeout=DEFAULT_TIMEOUT)
         for p in pages:
