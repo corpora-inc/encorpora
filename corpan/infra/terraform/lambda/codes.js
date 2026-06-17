@@ -391,8 +391,17 @@ async function putLedgerEvent(item) {
   }
 }
 
-// Reverse-map a Google obfuscatedExternalAccountId → locked subject via GSI1
-// (§7.3). Returns the first ATTRIBUTION item found with a partner lock, or null.
+// Reverse-map a Google obfuscatedExternalAccountId → subject via GSI1 (§7.3).
+// Returns `{ subjectId, partnerId }` or null.
+//
+// IMPORTANT: the subject id is encoded ONLY in `PK = SUBJECT#<id>` on every row
+// (ATTRIBUTION + PURCHASE#) — there is NO `subjectId` attribute. And a NORMAL
+// (no-code) subscription's only GSI1 row is a `partnerId: null` PURCHASE# row.
+// The previous version returned the raw row AND filtered to partner-bearing rows
+// only, so (a) callers reading `.subjectId` got undefined and (b) non-affiliate
+// Google renewals mapped to null and never extended /entitlement-token. We now
+// derive the subject from PK and resolve ANY matching row (partner or not),
+// reporting partnerId separately for the affiliate ledger branch.
 async function findSubjectByObfHash(obfHash) {
   const out = await getDoc().send(
     new QueryCommand({
@@ -403,10 +412,20 @@ async function findSubjectByObfHash(obfHash) {
     })
   );
   const items = out.Items || [];
-  // Prefer the ATTRIBUTION row with a partnerId lock.
-  const attr = items.find((it) => it.SK === "ATTRIBUTION" && it.partnerId);
-  if (attr) return attr;
-  return items.find((it) => it.partnerId) || null;
+  if (items.length === 0) return null;
+  const subjectOf = (it) => {
+    const pk = it && typeof it.PK === "string" ? it.PK : "";
+    return pk.startsWith("SUBJECT#") ? pk.slice("SUBJECT#".length) : null;
+  };
+  // Prefer a partner-locked row (for the affiliate credit); fall back to any
+  // row to resolve the subject for the entitlement extension.
+  const partnerRow =
+    items.find((it) => it.SK === "ATTRIBUTION" && it.partnerId) ||
+    items.find((it) => it.partnerId) ||
+    null;
+  const subjectId = subjectOf(partnerRow) || subjectOf(items[0]);
+  if (!subjectId) return null;
+  return { subjectId, partnerId: partnerRow ? partnerRow.partnerId : null };
 }
 
 function isConditionalFail(err) {

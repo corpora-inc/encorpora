@@ -710,6 +710,27 @@ test("findSubjectByObfHash: GSI1 reverse-map finds the attribution lock", async 
   const found = await codes.findSubjectByObfHash(obfHash);
   assert.ok(found);
   assert.equal(found.partnerId, "ian");
+  assert.equal(found.subjectId, "sub-G"); // derived from PK, not a row attribute
+});
+
+test("findSubjectByObfHash: resolves a NORMAL no-code sub (no partner lock)", async () => {
+  freshDoc();
+  const exp = new Date(Date.now() + 86400000).toISOString();
+  // A plain verified Google sub: only a partnerId:null PURCHASE# row exists.
+  await codes.recordEntitlementPurchase({
+    subjectId: "sub-nc-g",
+    platform: "android",
+    txnOrOriginalId: "order-nc-g",
+    productId: "corpan.sub.monthly",
+    expiresAt: exp,
+  });
+  // recordEntitlementPurchase keys GSI1PK = sha256Hex(subjectId).
+  const found = await codes.findSubjectByObfHash(codes.sha256Hex("sub-nc-g"));
+  // Previously returned null (only partner-bearing rows were considered), so a
+  // non-affiliate Google renewal could never extend /entitlement-token.
+  assert.ok(found, "non-affiliate sub now resolves");
+  assert.equal(found.subjectId, "sub-nc-g");
+  assert.equal(found.partnerId, null);
 });
 
 // ===========================================================================
