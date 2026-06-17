@@ -7,7 +7,49 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **One unified "About Corpán" list at the bottom of Settings.** The socials
+  (moved here from onboarding) and About's own links were two stacked lists in
+  clashing styles with a duplicate encorpora.io. They're now a single ordered
+  row list — version, then channels (website, YouTube, Instagram, GitHub,
+  Free2z) + Share, then Support (report an issue, email) — one consistent style,
+  deduped. `SocialsLinks` folded into `About`.
+- **Onboarding ends on the final question — no "Aloha"/socials interlude.**
+  Picking Read / Study / Play music / Play games / Surprise now commits
+  immediately and goes straight into the razzle transition. The Corpán channels
+  (YouTube, Instagram, GitHub, Free2z, website) + Share moved to the bottom of
+  Settings (extracted into a shared `SocialsLinks` component), their permanent
+  home; the Plus pitch already lives at real engagement moments (reader EOF,
+  Settings), not as an onboarding step.
+
 ### Fixed
+- **"Reconfigure stack" replays the full onboarding + landing animation.** The
+  razzle landing was a one-shot guarded by a ref that was never re-armed, so
+  re-running onboarding from Settings dropped back to Welcome but silently
+  skipped the animation. The guard now re-arms whenever onboarding restarts.
+- **Razzle no longer crashes the app into a dead, unclickable screen.** The
+  chosen card's pop used a 3-keyframe `scale` with a `spring` transition;
+  framer-motion only allows two keyframes with a spring and threw an *uncaught*
+  invariant at the reveal beat — with no error boundary that tore down the React
+  tree, leaving a blank, scrollable, click-dead overlay (you couldn't even
+  Exit). The pop wiggle is now a back-eased tween, and both the transition and
+  every experience overlay are wrapped in an `ErrorBoundary` that drops you into
+  the pack / back to Home instead of stranding you.
+- **First-launch animation is longer, lingers, and names the packs.** ~7.5s now:
+  a longer shuffle during which the chosen card **rises through the deck** (starts
+  behind every shuffling card, climbs to the front and grows as it nears), then
+  holds center-stage with its **name** for ~2.6s before the colour wash; collage
+  tiles show their names too.
+- **Premium wash, not a pixelated colour blob.** The final reveal animated a
+  `clip-path` circle (stair-steps / looks pixelated on Android WebView) that also
+  rendered *over* the chosen card. It's now a GPU-composited scaling colour disc
+  BEHIND the card, with the crisp card zooming on top; the whole overlay then
+  dissolves to the booted pack. Games default landing is now **Hover Runner**.
+- **No "flash of Home" before the first-launch animation.** The razzle overlay
+  faded in from transparent and the onboarding commit ran in a passive effect,
+  so Home (or the blank terminal) painted for a frame before the collage. The
+  backdrop is now opaque from the first frame and the commit runs in a layout
+  effect, so the swap to the animation happens in a single paint.
 - **Catalog/network fetches no longer fail under CORS preflight.** The resilient
   catalog fetch sent conditional-GET headers (`If-None-Match` / `If-Modified-
   Since`) on every request; those aren't CORS-safelisted, so they trigger a
@@ -32,7 +74,7 @@ Conventions: `corpan/CHANGELOGS.md`.
   final onboarding step is now a single deterministic question — Read / Study /
   Play music / Play games / Surprise me — that makes the exact landing call
   (Read→Earthgate Reader, Study→Phrase Flip [Chinese→Hanzipan], Music→beatlounge,
-  Games→Juice Squeeze, Surprise→a lightly-random pick across what's launchable).
+  Games→Hover Runner, Surprise→a lightly-random pick across what's launchable).
   The multi-select "What do you want to do?" stays and still powers Home's "For
   you" recommendations. On the way in, a ~5s premium collage of every experience
   shuffles, the chosen one pops to center with a **native haptic**, then its

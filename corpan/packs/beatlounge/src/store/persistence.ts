@@ -11,6 +11,7 @@
 
 import type { BeatloungeDoc } from "../model/document"
 import { migrateDoc } from "../model/document"
+import { migrateDelaySync } from "../effects/delaySyncMigration"
 import { getBeatloungeDb, SONGS_STORE as STORE } from "./db"
 
 const ACTIVE_KEY = "active"
@@ -23,8 +24,9 @@ export const loadActiveDoc = async (): Promise<BeatloungeDoc | null> => {
     const db = await getDb()
     if (!db) return null
     const doc = (await db.get(STORE, ACTIVE_KEY)) as BeatloungeDoc | undefined
-    // Migrate persisted pre-harmony docs (fills doc.harmony additively).
-    return doc ? migrateDoc(doc) : null
+    // Migrate persisted docs: fill doc.harmony (additive) + infer a tempo `sync`
+    // for pre-sync delays so they stay locked to their note length (one-time).
+    return doc ? migrateDelaySync(migrateDoc(doc)) : null
   } catch (err) {
     console.warn("[beatlounge/persistence] load failed:", err)
     return null

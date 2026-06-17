@@ -269,9 +269,9 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
     ],
   },
 
-  // ── Shared tail: voices → interests → engagement page → commit ──
-  // (The Plus pitch is folded SOFTLY into the engagement page now — no
-  //  standalone paywall interlude mid-onboarding.)
+  // ── Shared tail: voices → interests → final question → commit ──
+  // (The Plus pitch lives at real engagement moments — reader EOF, Settings —
+  //  not as an onboarding interlude.)
   tts: { kind: "adapter", id: "tts", component: "tts", next: "interests" },
 
   // "What do you want to do?" — a skippable multi-select that seeds the
@@ -307,40 +307,42 @@ export const ONBOARDING_GRAPH: OnboardingGraph = {
         labelKey: "onboarding.whatToStart.read.label",
         descKey: "onboarding.whatToStart.read.desc",
         apply: (c) => { c.patch({ whatToStart: "read" }); preinstallForChoice("read") },
-        next: "finish",
+        next: "commit",
       },
       {
         id: "study",
         labelKey: "onboarding.whatToStart.study.label",
         descKey: "onboarding.whatToStart.study.desc",
         apply: (c) => { c.patch({ whatToStart: "study" }); preinstallForChoice("study") },
-        next: "finish",
+        next: "commit",
       },
       {
         id: "playMusic",
         labelKey: "onboarding.whatToStart.playMusic.label",
         descKey: "onboarding.whatToStart.playMusic.desc",
         apply: (c) => { c.patch({ whatToStart: "playMusic" }); preinstallForChoice("playMusic") },
-        next: "finish",
+        next: "commit",
       },
       {
         id: "playGames",
         labelKey: "onboarding.whatToStart.playGames.label",
         descKey: "onboarding.whatToStart.playGames.desc",
         apply: (c) => { c.patch({ whatToStart: "playGames" }); preinstallForChoice("playGames") },
-        next: "finish",
+        next: "commit",
       },
       {
         id: "surprise",
         labelKey: "onboarding.whatToStart.surprise.label",
         descKey: "onboarding.whatToStart.surprise.desc",
         apply: (c) => { c.patch({ whatToStart: "surprise" }); preinstallForChoice("surprise") },
-        next: "finish",
+        next: "commit",
       },
     ],
   },
 
-  finish: { kind: "adapter", id: "finish", component: "finish", next: "commit" },
+  // The final question commits DIRECTLY — no engagement/socials interlude. Its
+  // channels + Share moved to the bottom of Settings, so onboarding drops the
+  // user straight into the chosen experience (with the razzle transition).
   commit: { kind: "terminal", id: "commit", commit: commitDraft },
 }
 

@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "今天的{{count}}{{unit}}",
     "streakActive": "{{days}}天连胜——明天再来保持进度。",
-    "streakStart": "明天再来开始连胜。",
+    "streakStart": "明天再来保持进度。",
     "resetIn": "{{time}}后重置",
     "cta": "立即使用Corpán Plus继续",
     "dismiss": "稍后再说",

@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "{{count}} {{unit}} của bạn hôm nay",
     "streakActive": "Chuỗi {{days}} ngày — quay lại vào ngày mai để tiếp tục.",
-    "streakStart": "Quay lại vào ngày mai để bắt đầu một chuỗi.",
+    "streakStart": "Quay lại vào ngày mai để tiếp tục.",
     "resetIn": "Đặt lại sau {{time}}",
     "cta": "Tiếp tục ngay với Corpán Plus",
     "dismiss": "Có thể sau",

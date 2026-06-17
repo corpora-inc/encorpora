@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "Els teus {{count}} {{unit}} d'avui",
     "streakActive": "Ratxa de {{days}} dies — torna demà per continuar-la.",
-    "streakStart": "Torna demà per començar una ratxa.",
+    "streakStart": "Torna demà per continuar-la.",
     "resetIn": "Es reinicia en {{time}}",
     "cta": "Continua ara amb Corpán Plus",
     "dismiss": "Potser més tard",

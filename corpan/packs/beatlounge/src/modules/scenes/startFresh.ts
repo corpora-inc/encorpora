@@ -49,13 +49,16 @@ import { pickRandomRhythmId } from "../grooves/randomRhythm"
 export const buildEmptySnapshot = (): SceneSnapshot =>
   captureSnapshot(createDefaultDoc(0))
 
-/** Parse a corpus time-signature label ("13/8", "4/4") into a TimeSignature. */
-const parseTimeSig = (label: string): TimeSignature => {
-  const [n, d] = label.split("/").map((x) => Number.parseInt(x, 10))
-  const numerator = Number.isFinite(n) && n > 0 ? n : 4
-  const denominator = Number.isFinite(d) && d > 0 ? d : 4
-  return { numerator, denominator }
-}
+// A fresh random world shouldn't always be 4/4 — randomize the TIME SIGNATURE
+// and the beat count directly, surfacing odd meters (5/4, 7/8, 13/8…) too. The
+// common meters are weighted up so it stays musical, not pure chaos.
+const METER_NUMERATORS = [2, 3, 4, 4, 4, 5, 6, 6, 7, 9, 11, 12, 13] as const
+const METER_DENOMINATORS = [4, 4, 8] as const
+
+const pickRandomMeter = (rng: Rng): TimeSignature => ({
+  numerator: METER_NUMERATORS[Math.min(METER_NUMERATORS.length - 1, Math.floor(rng() * METER_NUMERATORS.length))],
+  denominator: METER_DENOMINATORS[Math.min(METER_DENOMINATORS.length - 1, Math.floor(rng() * METER_DENOMINATORS.length))],
+})
 
 /** Ticks in one cycle of `beats` beats at the given meter denominator. */
 const cycleTicks = (beats: number, denominator: number): number => {
@@ -82,12 +85,15 @@ export const buildRandomSnapshot = (
   const rng: Rng = typeof rngOrSeed === "number" ? makeRng(rngOrSeed) : rngOrSeed
   const base = createDefaultDoc(0)
 
-  // --- groove → meter, tempo, loop length (the "random N beats / 13/8" knob) ---
+  // --- random time signature + beat count, tempo, loop length ---
+  // Meter is randomized OUTRIGHT (not inherited from the groove, which is almost
+  // always 4/4) so a fresh world genuinely varies — 5/4, 7/8, 13/8 and friends.
+  // The groove is still rolled to seed the +/− dial and suggest a tempo.
   const grooveId = pickRandomRhythmId(rng)
   const rhythm = getRhythm(grooveId)
-  const sig = rhythm ? parseTimeSig(rhythm.timeSig) : { numerator: 4, denominator: 4 }
-  const loopTicks = rhythm ? cycleTicks(rhythm.beats, sig.denominator) : base.loopLengthTicks
-  const bpm = rhythm?.bpm && rhythm.bpm > 0 ? rhythm.bpm : base.bpm
+  const sig = pickRandomMeter(rng)
+  const loopTicks = cycleTicks(sig.numerator, sig.denominator) // one bar of the meter
+  const bpm = rhythm?.bpm && rhythm.bpm > 0 ? rhythm.bpm : 80 + Math.floor(rng() * 50)
   const meterMap: MeterEvent[] = [{ id: newId("m"), tick: 0, sig }]
 
   // --- drums: keep the kind-named drum track, swap to a random kit, no notes ---

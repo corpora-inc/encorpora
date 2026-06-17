@@ -5,7 +5,6 @@ import { OnboardingWelcomePact } from "@/components/OnboardingWelcomePact"
 import { OnboardingPickLearning } from "@/components/OnboardingPickLearning"
 import { OnboardingPickPhrasePacks } from "@/components/OnboardingPickPhrasePacks"
 import { OnboardingTTSInstructions } from "@/components/OnboardingTTSInstructions"
-import { OnboardingFinish } from "@/components/OnboardingFinish"
 import type { ComponentKey, OnboardingStepProps } from "./types"
 
 /** Maps graph `adapter` component keys to the actual screens. Each accepts
@@ -17,5 +16,4 @@ export const ONBOARDING_COMPONENTS: Record<ComponentKey, ComponentType<Onboardin
   pickLearning: OnboardingPickLearning,
   pickPhrasePacks: OnboardingPickPhrasePacks,
   tts: OnboardingTTSInstructions,
-  finish: OnboardingFinish,
 }

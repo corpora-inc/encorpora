@@ -33,6 +33,7 @@ import {
   type Scene,
 } from "../../store/scenesStore"
 import { selectGroove } from "../../store/selectedGroove"
+import { disarmAllRecord } from "../../store/recordArm"
 import { buildEmptySnapshot, buildRandomSnapshot } from "./startFresh"
 import { compileDemo, getDemo } from "./demos"
 
@@ -172,6 +173,7 @@ export const createScenesController = (
     // are fresh starts, not saved scenes. Persisted via the store's debounce.
     clear(): void {
       bus.dispatch({ t: "loadScene", snapshot: buildEmptySnapshot() })
+      disarmAllRecord() // the old tracks are gone — never come up armed
       baseSnapshot = null
       vanilla.setState({ activeSceneId: null, dirty: false })
     },
@@ -180,6 +182,7 @@ export const createScenesController = (
       const { snapshot, grooveId } = buildRandomSnapshot(rng)
       bus.dispatch({ t: "loadScene", snapshot })
       selectGroove(grooveId) // the selected-groove slice lives outside the doc
+      disarmAllRecord()
       baseSnapshot = null
       vanilla.setState({ activeSceneId: null, dirty: false })
     },
@@ -189,6 +192,7 @@ export const createScenesController = (
       if (!demo) return false
       bus.dispatch({ t: "loadScene", snapshot: compileDemo(demo) })
       if (demo.grooveId) selectGroove(demo.grooveId)
+      disarmAllRecord()
       baseSnapshot = null
       vanilla.setState({ activeSceneId: null, dirty: false })
       return true

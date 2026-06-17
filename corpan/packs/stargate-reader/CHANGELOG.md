@@ -10,6 +10,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-06-16
+
+### Changed
+- Default **Word Hold "Depth"** (the z-pull that floats the current word
+  toward the viewer when it holds) raised from 0.4 to 1.5 for a stronger,
+  more legible hold. Adjustable in Settings → Word Hold → Depth.
+
 ## [0.7.0] - 2026-06-16 — First-run seed: instant book in your stack languages
 
 ### Added

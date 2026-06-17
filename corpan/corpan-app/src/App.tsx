@@ -39,6 +39,7 @@ import { useLandingStore } from "@/store/landing";
 import { trackGateHit } from "@/util/analytics";
 import { useTranslation } from "react-i18next";
 import { PackLaunchTransition, type RazzleCard } from "@/components/PackLaunchTransition";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { buildRazzleRoster, resolveRazzleCard } from "@/components/razzleRoster";
 import { PHRASE_PACK_ID } from "@/onboarding/bestFit";
 import { isReaderPack, DEFAULT_READER_SEED_BOOK } from "@/onboarding/resolveLanding";
@@ -637,7 +638,15 @@ export default function App() {
   // a flash (FOUC) right as the tour appears.
   const landingConsumed = useRef(false);
   useLayoutEffect(() => {
-    if (!onboarded || landingConsumed.current) return;
+    // Re-arm the one-shot whenever we drop back to onboarding (e.g. Settings →
+    // "Reconfigure stack", which sets onboarded=false and returns to Welcome).
+    // Without this the razzle landing would fire only on the very first
+    // onboarding of the app session and silently skip on every re-run.
+    if (!onboarded) {
+      landingConsumed.current = false;
+      return;
+    }
+    if (landingConsumed.current) return;
     landingConsumed.current = true;
     if (activeGame) return; // deep-link present — honor it, skip intent
     const intent = useLandingStore.getState().consumeLanding();
@@ -747,32 +756,51 @@ export default function App() {
           the native phrase experience (no manifestUrl) → MainExperience.
           Both full-screen over Home; both exit via corpan:exit. */}
       {activeGame ? (
-        activeGame.manifestUrl ? (
-          /* Content pack: rendered bare. The pack owns its own chrome and
-             exits via `corpan:exit` (through hostApi) — we do NOT stamp our
-             own floating buttons over a pack's layout. */
-          <ContentPackOverlay id={activeGame.id} manifestUrl={activeGame.manifestUrl} entry={activeGame.entry} />
-        ) : (
-          /* Native Phrase Flip overlay — app-owned, stack-driven; gets the
-             tailored Home + Quick Settings chrome. */
-          <div className="fixed inset-0 z-[1100] flex flex-col bg-background animate-in fade-in duration-200">
-            <MainExperience />
-            <PhraseFlipChrome />
-          </div>
-        )
+        <ErrorBoundary
+          // A crash inside an experience must never strand the user on a dead,
+          // unclickable overlay — drop back to Home (always interactive).
+          onError={() => {
+            setActiveGame(null)
+            updateGameParam(null)
+          }}
+        >
+          {activeGame.manifestUrl ? (
+            /* Content pack: rendered bare. The pack owns its own chrome and
+               exits via `corpan:exit` (through hostApi) — we do NOT stamp our
+               own floating buttons over a pack's layout. */
+            <ContentPackOverlay id={activeGame.id} manifestUrl={activeGame.manifestUrl} entry={activeGame.entry} />
+          ) : (
+            /* Native Phrase Flip overlay — app-owned, stack-driven; gets the
+               tailored Home + Quick Settings chrome. */
+            <div className="fixed inset-0 z-[1100] flex flex-col bg-background animate-in fade-in duration-200">
+              <MainExperience />
+              <PhraseFlipChrome />
+            </div>
+          )}
+        </ErrorBoundary>
       ) : null}
 
       {/* First-launch razzle-dazzle collage (z-1200, above the experience it
           reveals). Plays once on the onboarding landing; its `launch` mounts the
           chosen experience underneath at the reveal beat, then it washes away. */}
       {razzle ? (
-        <PackLaunchTransition
-          roster={razzle.roster}
-          chosen={razzle.chosen}
-          onReveal={() => razzle.launch()}
-          onComplete={() => setRazzle(null)}
-          waitUntilReady={razzle.isReady}
-        />
+        <ErrorBoundary
+          // Belt-and-suspenders: if the transition ever throws (a framer-motion
+          // invariant, etc.), DON'T leave a dead full-screen overlay trapping
+          // the user — launch the chosen experience and tear the overlay down.
+          onError={() => {
+            razzle.launch()
+            setRazzle(null)
+          }}
+        >
+          <PackLaunchTransition
+            roster={razzle.roster}
+            chosen={razzle.chosen}
+            onReveal={() => razzle.launch()}
+            onComplete={() => setRazzle(null)}
+            waitUntilReady={razzle.isReady}
+          />
+        </ErrorBoundary>
       ) : null}
 
       {/* Quick Settings sheet — opened by Phrase Flip's gear or hostApi. */}

@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "Vaša {{count}} {{unit}} na dnes",
     "streakActive": "{{days}}-dňová séria — vráťte sa zajtra, aby ste ju udržali.",
-    "streakStart": "Vráťte sa zajtra, aby ste začali sériu.",
+    "streakStart": "Vráťte sa zajtra, aby ste ju udržali.",
     "resetIn": "Obnoví sa za {{time}}",
     "cta": "Pokračujte teraz s Corpán Plus",
     "dismiss": "Možno neskôr",

@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "Jūsų {{count}} {{unit}} šiandienai",
     "streakActive": "{{days}} dienų serija — grįžkite rytoj, kad tęstumėte.",
-    "streakStart": "Grįžkite rytoj, kad pradėtumėte seriją.",
+    "streakStart": "Grįžkite rytoj, kad tęstumėte.",
     "resetIn": "Atnaujinama po {{time}}",
     "cta": "Tęskite dabar su Corpán Plus",
     "dismiss": "Gal vėliau",

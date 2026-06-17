@@ -55,23 +55,25 @@ export type RazzleCard = {
 const BRAND_PURPLE = "#A879F7"
 
 // ── Timeline (ms) ──────────────────────────────────────────────────────────
-// Full razzle is ~5s end to end. Phase boundaries:
-//   0 ──────── shuffle ──────── 2200 ── recede + pop ── 3200 ── zoom + wash ── 4800 ── done
-const T_SHUFFLE_END = 2200 // roster scatters + re-sorts a couple of passes
-const T_POP = 2200 // chosen begins center/pop → onReveal + haptic fire here
-const T_WASH_START = 3200 // chosen zooms toward viewer; colour begins covering
-const T_WASH_FULL = 4500 // colour fully covers the screen
-const T_DONE = 4800 // overlay fades out → onComplete
+// Full razzle is ~7.5s end to end — a lively shuffle, then the chosen card
+// LINGERS center-stage with its name for a beat (the "this is where you're
+// going" moment) before the colour wash. Phase boundaries:
+//   0 ──── shuffle ──── 3000 ── recede + pop ── (linger w/ name) ── 5600 ── wash ── 7100 ── 7500 done
+const T_SHUFFLE_END = 3000 // roster scatters + re-sorts several passes
+const T_POP = 3000 // chosen centers/pops → onReveal + haptic + name appear here
+const T_WASH_START = 5600 // after a ~2.6s linger, chosen zooms + colour covers
+const T_WASH_FULL = 7100 // colour fully covers the screen
+const T_DONE = 7500 // overlay fades out → onComplete
 
-// Reduced-motion: a single calm cross-fade.
-const RM_REVEAL = 220 // haptic + onReveal fire just after the chosen fades in
-const RM_DONE = 1000 // gentle ~1s fade then onComplete
+// Reduced-motion: a calm cross-fade that still lingers on the named chosen card.
+const RM_REVEAL = 260 // haptic + onReveal fire just after the chosen fades in
+const RM_DONE = 2200 // hold the named card, then a gentle fade → onComplete
 
 // Hard safety backstop — no matter what, we unmount by here.
 const SAFETY = T_DONE + 1200
 
 // Shuffle passes: how many times the deck re-sorts during the lively phase.
-const SHUFFLE_PASSES = 3
+const SHUFFLE_PASSES = 4
 
 /** Lucide icon registry by name — the few experience glyphs Home ships, by their
  *  component name so a catalog `icon` string resolves to a real component. */
@@ -94,34 +96,58 @@ function resolveIcon(name?: string): LucideIcon {
 type ThemeStyle = CSSProperties & Record<`--${string}`, string>
 
 /** A single collage tile — catalog art (rounded, object-cover) or a colour
- *  tile with the lucide glyph. Matches Home's `Glyph`. */
-function CardFace({ card, size }: { card: RazzleCard; size: number }) {
+ *  tile with the lucide glyph. Matches Home's `Glyph`. With `label`, the pack's
+ *  name sits beneath it so the user sees the breadth of experiences by name. */
+function CardFace({
+  card,
+  size,
+  label,
+}: {
+  card: RazzleCard
+  size: number
+  /** "none" hides the name; "small" = collage caption; "hero" = big chosen name. */
+  label?: "none" | "small" | "hero"
+}) {
   const tint = card.color || BRAND_PURPLE
   const Icon = resolveIcon(card.icon)
+  const show = label ?? "none"
   return (
-    <div
-      className="overflow-hidden rounded-2xl"
-      style={{
-        height: size,
-        width: size,
-        backgroundColor: card.imageUrl ? "transparent" : `${tint}26`, // ~15% tint
-        boxShadow: `0 8px 30px rgba(0,0,0,0.35), 0 0 0 1px ${tint}40`,
-      }}
-      aria-hidden="true"
-    >
-      {card.imageUrl ? (
-        <img
-          src={card.imageUrl}
-          alt=""
-          aria-hidden="true"
-          draggable={false}
-          className="h-full w-full object-cover"
-        />
-      ) : (
-        <div className="flex h-full w-full items-center justify-center">
-          <Icon style={{ height: size * 0.42, width: size * 0.42, color: tint }} />
+    <div className="flex flex-col items-center" style={{ width: size }} aria-hidden="true">
+      <div
+        className="overflow-hidden rounded-2xl"
+        style={{
+          height: size,
+          width: size,
+          backgroundColor: card.imageUrl ? "transparent" : `${tint}26`, // ~15% tint
+          boxShadow: `0 8px 30px rgba(0,0,0,0.35), 0 0 0 1px ${tint}40`,
+        }}
+      >
+        {card.imageUrl ? (
+          <img
+            src={card.imageUrl}
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <Icon style={{ height: size * 0.42, width: size * 0.42, color: tint }} />
+          </div>
+        )}
+      </div>
+      {show !== "none" && card.name ? (
+        <div
+          className={
+            show === "hero"
+              ? "mt-3 text-center text-xl font-bold tracking-tight"
+              : "mt-1.5 max-w-full truncate text-center text-[11px] font-medium opacity-80"
+          }
+          style={{ color: "#ECEAF6", width: show === "hero" ? "min(80vw, 320px)" : size + 24 }}
+        >
+          {card.name}
         </div>
-      )}
+      ) : null}
     </div>
   )
 }
@@ -291,9 +317,14 @@ export function PackLaunchTransition({
       aria-hidden="true"
       className="fixed inset-0 z-[1200] overflow-hidden"
       style={backdropStyle}
-      initial={{ opacity: 0 }}
+      // Opaque from the FIRST frame — App mounts this in a useLayoutEffect (before
+      // paint), so a transparent fade-in would let Home show through for ~180ms
+      // ("flash of Home before the animation"). The dark backdrop covers Home
+      // instantly; the collage cards do their own fade-in over it. Only the
+      // end-of-show wash fades the whole overlay out.
+      initial={{ opacity: 1 }}
       animate={{ opacity: phase === "done" ? 0 : 1 }}
-      transition={{ duration: phase === "done" ? 0.3 : 0.18, ease: "easeOut" }}
+      transition={{ duration: phase === "done" ? 0.3 : 0, ease: "easeOut" }}
     >
       {/* Centered stage — the collage and the chosen card share this anchor so
           the chosen flies smoothly from its scatter slot to dead center. */}
@@ -327,6 +358,15 @@ export function PackLaunchTransition({
                   : (seeded(i * 9.2 + pass * 2.3) - 0.5) * 26
               const tileSize = isChosen ? 150 : 88
 
+              // The chosen card RISES THROUGH the deck: it starts behind every
+              // shuffling card (low z) and climbs to the front over the passes,
+              // growing from ~tile-size toward hero-size as it nears — so it
+              // emerges from the pack, then pops to center. Non-chosen sit at a
+              // fixed mid layer. `p` is the clamped pass progression (0..1).
+              const p = Math.min(pass, SHUFFLE_PASSES) / SHUFFLE_PASSES
+              const chosenShuffleScale = 0.62 + p * 0.46 // 0.62 → 1.08 across passes
+              const chosenShuffleZ = Math.round(2 + p * SHUFFLE_PASSES * 5) // 2 → ~22, passing others (z10)
+
               // Non-chosen recede + blur + fade as the chosen pops.
               const recede = phase === "pop" && !isChosen
               return (
@@ -339,7 +379,7 @@ export function PackLaunchTransition({
                     // size is set on CardFace; center the tile on its slot.
                     marginTop: -(tileSize / 2),
                     marginLeft: -(tileSize / 2),
-                    zIndex: isChosen ? 30 : 10,
+                    zIndex: isChosen ? (phase === "pop" ? 40 : chosenShuffleZ) : 10,
                     filter: recede ? "blur(6px)" : "none",
                   }}
                   initial={{ opacity: 0, scale: 0.5 }}
@@ -350,16 +390,22 @@ export function PackLaunchTransition({
                     rotate: rot,
                     scale:
                       isChosen && phase === "pop"
-                        ? [1, 1.16, 1.08] // spring "wiggle" overshoot at the apex
+                        ? [1, 1.16, 1.08] // "wiggle" overshoot, then settle at the apex
                         : isChosen
-                          ? 1.04
+                          ? chosenShuffleScale // grows as it climbs to the front
                           : recede
                             ? 0.7
                             : 1,
                   }}
+                  // NOTE: a multi-keyframe (`[1, 1.16, 1.08]`) scale CANNOT use a
+                  // spring — framer-motion throws "Only two keyframes supported
+                  // with spring", an UNCAUGHT error that took down the whole tree
+                  // (blank, unclickable screen) right at the reveal. Use a tween
+                  // with a back-ease for the pop wiggle; springs only where the
+                  // animated values are single targets.
                   transition={
                     isChosen && phase === "pop"
-                      ? { type: "spring", stiffness: 360, damping: 14, mass: 0.7 }
+                      ? { type: "tween", duration: 0.6, times: [0, 0.55, 1], ease: [0.34, 1.56, 0.64, 1] }
                       : recede
                         ? { duration: 0.5, ease: "easeIn" }
                         : {
@@ -370,52 +416,59 @@ export function PackLaunchTransition({
                           }
                   }
                 >
-                  <CardFace card={card} size={tileSize} />
+                  <CardFace
+                    card={card}
+                    size={tileSize}
+                    label={isChosen ? (phase === "pop" ? "hero" : "none") : "small"}
+                  />
                 </motion.div>
               )
             })}
 
-          {/* ── Wash phase: the chosen card zooms toward the viewer and its
-                colour expands from its center to cover everything. ── */}
-          {phase === "wash" && (
-            <>
-              {/* The chosen, blown up + fading as the colour takes over. */}
-              <motion.div
-                className="absolute"
-                style={{
-                  top: "50%",
-                  left: "50%",
-                  marginTop: -75,
-                  marginLeft: -75,
-                  zIndex: 30,
-                }}
-                initial={{ scale: 1.08, opacity: 1 }}
-                animate={{ scale: 2.6, opacity: 0 }}
-                transition={{ duration: 1.0, ease: [0.4, 0, 0.2, 1] }}
-              >
-                <CardFace card={chosen} size={150} />
-              </motion.div>
-            </>
-          )}
         </div>
       </div>
 
-      {/* Full-bleed colour wash — a circle expanding from center to cover the
-          viewport. Lives outside the bounded stage so it can reach the corners
-          even on iPad. Mounts only in wash/done so it never blocks the collage. */}
+      {/* ── Wash phase. Two layers, composited so the CARD reads as the hero
+            flying at you, NOT a flat colour blob:
+            1) a solid-colour "blast" disc BEHIND the card (zIndex 5) that scales
+               up from a point — a transform scale is GPU-composited and buttery,
+               unlike an animated `clip-path` circle (which stair-steps / looks
+               pixelated on Android WebView).
+            2) the chosen card ON TOP (zIndex 30), crisp, zooming toward the
+               viewer over the blast — never covered by it.
+            Both live at the overlay root (outside the bounded stage) so the
+            blast reaches every corner; the whole overlay then fades on `done`,
+            dissolving card + colour together to reveal the booted pack. ── */}
       {(phase === "wash" || phase === "done") && (
         <motion.div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute left-1/2 top-1/2 rounded-full"
           style={{
-            background: `radial-gradient(circle at center, ${washColor}, ${washColor})`,
+            width: "260vmax",
+            height: "260vmax",
+            marginLeft: "-130vmax",
+            marginTop: "-130vmax",
+            background: washColor,
+            zIndex: 5,
+            willChange: "transform",
           }}
-          initial={{ clipPath: "circle(8% at 50% 50%)", opacity: 0.95 }}
-          animate={{ clipPath: "circle(75% at 50% 50%)", opacity: 1 }}
+          initial={{ scale: 0.04, opacity: 0.96 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{
             duration: (T_WASH_FULL - T_WASH_START) / 1000,
             ease: [0.22, 1, 0.36, 1],
           }}
         />
+      )}
+      {phase === "wash" && (
+        <motion.div
+          className="absolute left-1/2 top-1/2"
+          style={{ marginLeft: -75, marginTop: -110, zIndex: 30, willChange: "transform" }}
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1.55 }}
+          transition={{ duration: (T_DONE - T_WASH_START) / 1000, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <CardFace card={chosen} size={150} label="hero" />
+        </motion.div>
       )}
     </motion.div>
   )

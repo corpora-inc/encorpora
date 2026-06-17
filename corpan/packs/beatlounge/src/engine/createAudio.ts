@@ -14,6 +14,7 @@ import { findTrack, isInstrumentTrack, DRUM_PITCH } from "../model/document"
 import { createAudioGraph } from "./audioGraph"
 import { createScheduler } from "./scheduler"
 import { createModulationEngine } from "../modulation/engine"
+import { bindTempoSource } from "../effects/tempo"
 
 const makeContext = (): AudioContext =>
   new (globalThis.AudioContext ||
@@ -25,6 +26,10 @@ export const createBeatloungeAudio: CreateBeatloungeAudio = (bus, opts): AudioFa
   const scheduler = createScheduler({ context })
 
   let current: BeatloungeDoc = bus.snapshot()
+  // Bind the ambient tempo source to the live doc ONCE — tempo-synced effects
+  // (delay) read it directly, so BPM is never threaded through the graph. The
+  // closure tracks `current`, which is reassigned on every bus update below.
+  bindTempoSource(() => current.bpm)
   void graph.reconcile(null, current)
   scheduler.setDoc(current)
 

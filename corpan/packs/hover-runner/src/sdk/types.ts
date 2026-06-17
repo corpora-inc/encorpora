@@ -29,6 +29,9 @@ export type HostApi = {
   getRandomEntry?: () => Promise<EntryOut>
   getRandomEntries?: (count: number) => Promise<EntryOut[]>
   getEntryById?: (entryId: number) => Promise<EntryOut>
+  /** This pack's visit streak (consecutive local days opened) — recorded by the
+   *  host at the pack-enter boundary; read-only retention signal. */
+  getStreak?: () => { current: number; longest: number; lastDay: string }
   isMock?: boolean
 }
 

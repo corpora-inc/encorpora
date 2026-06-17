@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "Dina {{count}} {{unit}} för idag",
     "streakActive": "{{days}}-dagars svit — kom tillbaka imorgon för att fortsätta.",
-    "streakStart": "Kom tillbaka imorgon för att starta en svit.",
+    "streakStart": "Kom tillbaka imorgon för att fortsätta.",
     "resetIn": "Återställs om {{time}}",
     "cta": "Fortsätt nu med Corpán Plus",
     "dismiss": "Kanske senare",

@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "{{count}} {{unit}} kanggo dina iki",
     "streakActive": "Runtut {{days}} dina — bali maneh sesuk kanggo nerusake.",
-    "streakStart": "Bali maneh sesuk kanggo miwiti runtut.",
+    "streakStart": "Bali maneh sesuk kanggo nerusake.",
     "resetIn": "Mbaleni ing {{time}}",
     "cta": "Terusake saiki nganggo Corpán Plus",
     "dismiss": "Mungkin mengko",

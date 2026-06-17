@@ -9,7 +9,7 @@
 //   study      → Phrase Flip  — UNLESS the target is Chinese → Hanzipan (a STUDY
 //                experience, character/handwriting drill)
 //   playMusic  → beatlounge
-//   playGames  → Juice Squeeze (→ Hover Runner → Phrase Flip fallback)
+//   playGames  → Hover Runner (→ Juice Squeeze → Phrase Flip fallback)
 //   surprise   → a (lightly) random pick across the launchable experiences —
 //                surfaces Corpán's breadth on the way in.
 //
@@ -150,8 +150,8 @@ export function resolveLanding(input: ResolveLandingInput): LandingResolution {
         : phraseResolution()
 
     case "playGames":
-      if (canPack("juice_squeeze")) return packResolution("juice_squeeze", installedIds)
       if (canPack("hover_runner")) return packResolution("hover_runner", installedIds)
+      if (canPack("juice_squeeze")) return packResolution("juice_squeeze", installedIds)
       return phraseResolution()
 
     case "surprise": {

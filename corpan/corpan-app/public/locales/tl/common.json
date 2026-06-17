@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "Ang iyong {{count}} {{unit}} para sa araw na ito",
     "streakActive": "{{days}}-araw na sunod-sunod — bumalik bukas para ipagpatuloy ito.",
-    "streakStart": "Bumalik bukas para magsimula ng sunod-sunod.",
+    "streakStart": "Bumalik bukas para ipagpatuloy ito.",
     "resetIn": "Magsisimula muli sa {{time}}",
     "cta": "Magpatuloy ngayon gamit ang Corpán Plus",
     "dismiss": "Siguro mamaya",

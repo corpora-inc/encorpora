@@ -104,9 +104,9 @@ test("playMusic → already installed beatlounge needs no install", () => {
   assert.equal(r.installPackId, null)
 })
 
-test("playGames → juice_squeeze (static, even with empty catalog)", () => {
-  assert.equal(resolveLanding({ choice: "playGames", languages: ["en"], catalogIds: [], installedIds: [] }).intent.packId, "juice_squeeze")
-  assert.equal(resolveLanding({ choice: "playGames", languages: ["en"], catalogIds: ALL_CATALOG, installedIds: ["juice_squeeze"] }).installPackId, null)
+test("playGames → hover_runner (static, even with empty catalog)", () => {
+  assert.equal(resolveLanding({ choice: "playGames", languages: ["en"], catalogIds: [], installedIds: [] }).intent.packId, "hover_runner")
+  assert.equal(resolveLanding({ choice: "playGames", languages: ["en"], catalogIds: ALL_CATALOG, installedIds: ["hover_runner"] }).installPackId, null)
 })
 
 test("surprise picks from the launchable pool (rng-controlled, always reachable)", () => {

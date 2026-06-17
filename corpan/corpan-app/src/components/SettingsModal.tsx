@@ -278,6 +278,8 @@ export function SettingsModal({
             )
           ) : null}
 
+          {/* About Corpán — version + a single unified list of links (channels,
+              share, support). The old onboarding "Aloha" socials live here now. */}
           <About />
         </div>
 

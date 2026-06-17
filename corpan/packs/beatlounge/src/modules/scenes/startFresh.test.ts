@@ -81,4 +81,17 @@ describe("buildRandomSnapshot — the randomized world", () => {
     expect(snapshot.bpm).toBeGreaterThan(0)
     expect(snapshot.loopLengthTicks).toBeGreaterThan(0)
   })
+
+  it("randomizes the time signature — not always 4/4", () => {
+    const sigs = Array.from({ length: 40 }, (_, i) => {
+      const s = buildRandomSnapshot(i + 1).snapshot.meterMap[0].sig
+      return `${s.numerator}/${s.denominator}`
+    })
+    const distinct = new Set(sigs)
+    // Many distinct meters, and at least one that isn't 4/4.
+    expect(distinct.size).toBeGreaterThan(3)
+    expect(sigs.some((s) => s !== "4/4")).toBe(true)
+    // The loop length tracks the meter (one bar), so it varies too.
+    expect(new Set(Array.from({ length: 40 }, (_, i) => buildRandomSnapshot(i + 1).snapshot.loopLengthTicks)).size).toBeGreaterThan(2)
+  })
 })

@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "오늘의 {{count}} {{unit}}",
     "streakActive": "{{days}}일 연속 중입니다 — 내일도 계속하세요.",
-    "streakStart": "내일 다시 오셔서 연속 학습을 시작하세요.",
+    "streakStart": "내일도 계속하세요.",
     "resetIn": "{{time}} 후 초기화",
     "cta": "Corpán Plus로 지금 계속하기",
     "dismiss": "나중에 할게요",

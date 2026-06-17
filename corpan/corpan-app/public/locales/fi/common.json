@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "Päivän {{count}} {{unit}}",
     "streakActive": "{{days}} päivän putki — palaa huomenna jatkaaksesi.",
-    "streakStart": "Palaa huomenna aloittaaksesi putken.",
+    "streakStart": "Palaa huomenna jatkaaksesi.",
     "resetIn": "Nollautuu {{time}} kuluttua",
     "cta": "Jatka nyt Corpán Plus -palvelulla",
     "dismiss": "Ehkä myöhemmin",

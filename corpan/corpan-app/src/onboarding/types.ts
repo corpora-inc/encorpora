@@ -15,7 +15,6 @@ export type ComponentKey =
   | "pickLearning"
   | "pickPhrasePacks"
   | "tts"
-  | "finish"
 
 /** Accumulated, non-persisted decisions. Flushed to the stores only at a
  *  terminal node (Back stays non-destructive). Things existing components

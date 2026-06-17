@@ -18,6 +18,7 @@ import type { BeatloungeHost } from "../../contracts/module"
 import type { BeatloungeStore } from "../../store/store"
 import type { AudioFacade } from "../../contracts/audioFacade"
 import { useBeatloungeStore } from "../../store/store"
+import { useRecordArm, isRecordArmed } from "../../store/recordArm"
 import { findTrack, isInstrumentTrack, type Id } from "../../model/document"
 import { stepForTick } from "../../model/timing"
 import { useDrag } from "../../bl-ui/useDrag"
@@ -36,7 +37,9 @@ export const DrumPadBank = ({ host, store, audio, trackId }: Props) => {
   const doc = useBeatloungeStore(store, (s) => s.doc)
   const track = findTrack(doc, trackId)
   const [playStep, setPlayStep] = useState(-1)
-  const [record, setRecord] = useState(false)
+  // STEP-RECORD arm = the SAME global, persisted, per-track store the ribbon
+  // uses (keyed by this drum track's id) — sticky, never a transient flag.
+  const { armed: record, setArmed: setRecord } = useRecordArm(trackId)
   // Per-pad velocity the next hit/record uses, by pitch (0.05..1).
   const [velocities, setVelocities] = useState<Record<number, number>>({})
 
@@ -68,10 +71,13 @@ export const DrumPadBank = ({ host, store, audio, trackId }: Props) => {
 
   const hitPad = (pitch: number) => {
     const velocity = velOf(pitch)
+    // Read the arm from the store at the instant of the tap (single source of
+    // truth) — not a stale render closure.
+    const armed = isRecordArmed(trackId)
     // Auditioning a pad is live performance — but when STEP-RECORD is armed
     // we're setting up the grid, not playing, so stay silent and just write.
-    if (!record) host.previewTrack(trackId, velocity, pitch)
-    if (record) {
+    if (!armed) host.previewTrack(trackId, velocity, pitch)
+    if (armed) {
       const step = recordStep(playStep, view.steps)
       const cur = findTrack(store.vanilla.getState().doc, trackId)
       if (cur && isInstrumentTrack(cur)) {
@@ -96,7 +102,7 @@ export const DrumPadBank = ({ host, store, audio, trackId }: Props) => {
           type="button"
           className={`bl-chip${record ? " is-armed" : ""}`}
           aria-pressed={record}
-          onClick={() => setRecord((r) => !r)}
+          onClick={() => setRecord(!record)}
         >
           {record ? ct("pads.recording") : ct("pads.record")}
         </button>

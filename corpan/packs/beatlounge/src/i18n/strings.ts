@@ -105,6 +105,7 @@ const en: Record<string, string> = {
   "fx.removeSendTo": "Remove send to {name}",
   "fx.removed": "Removed {name}",
   "fx.removedEffects": "Removed {n} effects",
+  "fx.free": "Free",
   "fx.reorderEffect": "Reorder effect",
   "fx.send": "Send",
   "fx.sendLevel": "Send level",
@@ -579,6 +580,7 @@ type Dict = Record<I18nKey, string>
 const LOCALES: Record<string, Partial<Dict>> = {
   en,
   "ar": {
+    "fx.free": "حر",
     "scenes.clear": "مسح",
     "scenes.clearedToast": "تم المسح",
     "scenes.demoToast": "تم تحميل {name}",
@@ -1128,6 +1130,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "لوحة تحكم ثنائية الأبعاد",
   },
   "bg": {
+    "fx.free": "Свободно",
     "scenes.clear": "Изчисти",
     "scenes.clearedToast": "Изчистено",
     "scenes.demoToast": "Заредено: {name}",
@@ -1677,6 +1680,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D контролен пад",
   },
   "bn": {
+    "fx.free": "ফ্রি",
     "scenes.clear": "মুছুন",
     "scenes.clearedToast": "মুছে ফেলা হয়েছে",
     "scenes.demoToast": "{name} লোড হয়েছে",
@@ -2226,6 +2230,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D control pad",
   },
   "ca": {
+    "fx.free": "Lliure",
     "scenes.clear": "Esborra",
     "scenes.clearedToast": "Esborrat",
     "scenes.demoToast": "S'ha carregat {name}",
@@ -2775,6 +2780,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad de control 2D",
   },
   "cs": {
+    "fx.free": "Volně",
     "scenes.clear": "Vymazat",
     "scenes.clearedToast": "Vymazáno",
     "scenes.demoToast": "Načteno: {name}",
@@ -3324,6 +3330,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D ovládací pad",
   },
   "da": {
+    "fx.free": "Fri",
     "scenes.clear": "Ryd",
     "scenes.clearedToast": "Ryddet",
     "scenes.demoToast": "{name} indlæst",
@@ -3873,6 +3880,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D-kontrolpad",
   },
   "de": {
+    "fx.free": "Frei",
     "scenes.clear": "Leeren",
     "scenes.clearedToast": "Geleert",
     "scenes.demoToast": "{name} geladen",
@@ -4422,6 +4430,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D-Steuerpad",
   },
   "el": {
+    "fx.free": "Ελεύθερο",
     "scenes.clear": "Καθαρισμός",
     "scenes.clearedToast": "Καθαρίστηκε",
     "scenes.demoToast": "Φορτώθηκε: {name}",
@@ -4971,6 +4980,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D pad ελέγχου",
   },
   "es": {
+    "fx.free": "Libre",
     "scenes.clear": "Borrar",
     "scenes.clearedToast": "Borrado",
     "scenes.demoToast": "Cargado {name}",
@@ -5520,6 +5530,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad de control 2D",
   },
   "fa": {
+    "fx.free": "آزاد",
     "scenes.clear": "پاک کردن",
     "scenes.clearedToast": "پاک شد",
     "scenes.demoToast": "{name} بارگذاری شد",
@@ -6069,6 +6080,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "پد کنترل دوبعدی",
   },
   "fi": {
+    "fx.free": "Vapaa",
     "scenes.clear": "Tyhjennä",
     "scenes.clearedToast": "Tyhjennetty",
     "scenes.demoToast": "Ladattu: {name}",
@@ -6618,6 +6630,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D-ohjauspad",
   },
   "fr": {
+    "fx.free": "Libre",
     "scenes.clear": "Effacer",
     "scenes.clearedToast": "Effacé",
     "scenes.demoToast": "{name} chargé",
@@ -7167,6 +7180,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad de contrôle 2D",
   },
   "gu": {
+    "fx.free": "ફ્રી",
     "scenes.clear": "સાફ કરો",
     "scenes.clearedToast": "સાફ થઈ ગયું",
     "scenes.demoToast": "{name} લોડ થયું",
@@ -7716,6 +7730,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D control pad",
   },
   "he": {
+    "fx.free": "חופשי",
     "scenes.clear": "ניקוי",
     "scenes.clearedToast": "נוקה",
     "scenes.demoToast": "{name} נטען",
@@ -8265,6 +8280,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "משטח שליטה דו-ממדי",
   },
   "hi": {
+    "fx.free": "फ्री",
     "scenes.clear": "साफ़ करें",
     "scenes.clearedToast": "साफ़ हो गया",
     "scenes.demoToast": "{name} लोड हुआ",
@@ -8814,6 +8830,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D control pad",
   },
   "hr": {
+    "fx.free": "Slobodno",
     "scenes.clear": "Očisti",
     "scenes.clearedToast": "Očišćeno",
     "scenes.demoToast": "Učitano: {name}",
@@ -9363,6 +9380,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D kontrolni pad",
   },
   "hu": {
+    "fx.free": "Szabad",
     "scenes.clear": "Törlés",
     "scenes.clearedToast": "Törölve",
     "scenes.demoToast": "Betöltve: {name}",
@@ -9912,6 +9930,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D vezérlőpad",
   },
   "id": {
+    "fx.free": "Bebas",
     "scenes.clear": "Hapus",
     "scenes.clearedToast": "Dihapus",
     "scenes.demoToast": "{name} dimuat",
@@ -10461,6 +10480,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad kontrol 2D",
   },
   "it": {
+    "fx.free": "Libero",
     "scenes.clear": "Cancella",
     "scenes.clearedToast": "Cancellato",
     "scenes.demoToast": "Caricato {name}",
@@ -11010,6 +11030,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad di controllo 2D",
   },
   "ja": {
+    "fx.free": "フリー",
     "scenes.clear": "クリア",
     "scenes.clearedToast": "クリアしました",
     "scenes.demoToast": "{name} を読み込みました",
@@ -11559,6 +11580,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2Dコントロールパッド",
   },
   "kn": {
+    "fx.free": "ಫ್ರೀ",
     "scenes.clear": "ತೆರವುಗೊಳಿಸಿ",
     "scenes.clearedToast": "ತೆರವುಗೊಳಿಸಲಾಗಿದೆ",
     "scenes.demoToast": "{name} ಲೋಡ್ ಆಗಿದೆ",
@@ -12108,6 +12130,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D control pad",
   },
   "ko-polite": {
+    "fx.free": "프리",
     "scenes.clear": "지우기",
     "scenes.clearedToast": "지웠어요",
     "scenes.demoToast": "{name} 을(를) 불러왔어요",
@@ -12657,6 +12680,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D 컨트롤 패드",
   },
   "lt": {
+    "fx.free": "Laisvai",
     "scenes.clear": "Išvalyti",
     "scenes.clearedToast": "Išvalyta",
     "scenes.demoToast": "Įkelta: {name}",
@@ -13206,6 +13230,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D valdymo padas",
   },
   "mr": {
+    "fx.free": "फ्री",
     "scenes.clear": "साफ करा",
     "scenes.clearedToast": "साफ झाले",
     "scenes.demoToast": "{name} लोड झाले",
@@ -13755,6 +13780,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D कंट्रोल पॅड",
   },
   "ms": {
+    "fx.free": "Bebas",
     "scenes.clear": "Kosongkan",
     "scenes.clearedToast": "Dikosongkan",
     "scenes.demoToast": "{name} dimuatkan",
@@ -14304,6 +14330,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad kawalan 2D",
   },
   "ne": {
+    "fx.free": "फ्री",
     "scenes.clear": "खाली गर्नुहोस्",
     "scenes.clearedToast": "खाली गरियो",
     "scenes.demoToast": "{name} लोड भयो",
@@ -14853,6 +14880,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D control pad",
   },
   "nl": {
+    "fx.free": "Vrij",
     "scenes.clear": "Wissen",
     "scenes.clearedToast": "Gewist",
     "scenes.demoToast": "{name} geladen",
@@ -15402,6 +15430,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D-bedieningspad",
   },
   "no": {
+    "fx.free": "Fri",
     "scenes.clear": "Tøm",
     "scenes.clearedToast": "Tømt",
     "scenes.demoToast": "{name} lastet inn",
@@ -15951,6 +15980,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D-kontrollflate",
   },
   "pa-Arab": {
+    "fx.free": "آزاد",
     "scenes.clear": "صاف کرو",
     "scenes.clearedToast": "صاف ہو گیا",
     "scenes.demoToast": "{name} لوڈ ہو گیا",
@@ -16500,6 +16530,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D control pad",
   },
   "pa-Guru": {
+    "fx.free": "ਫ੍ਰੀ",
     "scenes.clear": "ਸਾਫ਼ ਕਰੋ",
     "scenes.clearedToast": "ਸਾਫ਼ ਹੋ ਗਿਆ",
     "scenes.demoToast": "{name} ਲੋਡ ਹੋਇਆ",
@@ -17049,6 +17080,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D ਕੰਟਰੋਲ ਪੈਡ",
   },
   "pl": {
+    "fx.free": "Dowolnie",
     "scenes.clear": "Wyczyść",
     "scenes.clearedToast": "Wyczyszczono",
     "scenes.demoToast": "Wczytano: {name}",
@@ -17598,6 +17630,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad sterowania 2D",
   },
   "pt-BR": {
+    "fx.free": "Livre",
     "scenes.clear": "Limpar",
     "scenes.clearedToast": "Limpo",
     "scenes.demoToast": "{name} carregada",
@@ -18147,6 +18180,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad de controle 2D",
   },
   "pt-PT": {
+    "fx.free": "Livre",
     "scenes.clear": "Limpar",
     "scenes.clearedToast": "Limpo",
     "scenes.demoToast": "{name} carregada",
@@ -18696,6 +18730,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad de controlo 2D",
   },
   "ro": {
+    "fx.free": "Liber",
     "scenes.clear": "Șterge",
     "scenes.clearedToast": "Șters",
     "scenes.demoToast": "{name} încărcat",
@@ -19245,6 +19280,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad de control 2D",
   },
   "ru": {
+    "fx.free": "Свободно",
     "scenes.clear": "Очистить",
     "scenes.clearedToast": "Очищено",
     "scenes.demoToast": "Загружено: {name}",
@@ -19794,6 +19830,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D-пэд управления",
   },
   "sk": {
+    "fx.free": "Voľne",
     "scenes.clear": "Vymazať",
     "scenes.clearedToast": "Vymazané",
     "scenes.demoToast": "Načítané: {name}",
@@ -20343,6 +20380,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D ovládací pad",
   },
   "sl": {
+    "fx.free": "Prosto",
     "scenes.clear": "Počisti",
     "scenes.clearedToast": "Počiščeno",
     "scenes.demoToast": "Naloženo: {name}",
@@ -20892,6 +20930,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D kontrolna ploščica",
   },
   "sr": {
+    "fx.free": "Slobodno",
     "scenes.clear": "Obriši",
     "scenes.clearedToast": "Obrisano",
     "scenes.demoToast": "Učitano: {name}",
@@ -21441,6 +21480,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D контролни пад",
   },
   "sv": {
+    "fx.free": "Fri",
     "scenes.clear": "Rensa",
     "scenes.clearedToast": "Rensad",
     "scenes.demoToast": "{name} inläst",
@@ -21990,6 +22030,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D-kontrollplatta",
   },
   "sw": {
+    "fx.free": "Huru",
     "scenes.clear": "Futa",
     "scenes.clearedToast": "Imefutwa",
     "scenes.demoToast": "Imepakia {name}",
@@ -22539,6 +22580,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Padi ya udhibiti ya 2D",
   },
   "ta": {
+    "fx.free": "ஃப்ரீ",
     "scenes.clear": "அழி",
     "scenes.clearedToast": "அழிக்கப்பட்டது",
     "scenes.demoToast": "{name} ஏற்றப்பட்டது",
@@ -23088,6 +23130,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D control pad",
   },
   "te": {
+    "fx.free": "ఫ్రీ",
     "scenes.clear": "క్లియర్ చేయి",
     "scenes.clearedToast": "క్లియర్ అయింది",
     "scenes.demoToast": "{name} లోడ్ అయింది",
@@ -23637,6 +23680,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D కంట్రోల్ ప్యాడ్",
   },
   "th": {
+    "fx.free": "อิสระ",
     "scenes.clear": "ล้าง",
     "scenes.clearedToast": "ล้างแล้ว",
     "scenes.demoToast": "โหลด {name} แล้ว",
@@ -24186,6 +24230,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "แพดควบคุม 2D",
   },
   "tr": {
+    "fx.free": "Serbest",
     "scenes.clear": "Temizle",
     "scenes.clearedToast": "Temizlendi",
     "scenes.demoToast": "{name} yüklendi",
@@ -24735,6 +24780,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D kontrol pad'i",
   },
   "uk": {
+    "fx.free": "Вільно",
     "scenes.clear": "Очистити",
     "scenes.clearedToast": "Очищено",
     "scenes.demoToast": "Завантажено: {name}",
@@ -25284,6 +25330,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D-пад керування",
   },
   "ur": {
+    "fx.free": "آزاد",
     "scenes.clear": "صاف کریں",
     "scenes.clearedToast": "صاف ہو گیا",
     "scenes.demoToast": "{name} لوڈ ہو گیا",
@@ -25833,6 +25880,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D control pad",
   },
   "vi": {
+    "fx.free": "Tự do",
     "scenes.clear": "Xóa",
     "scenes.clearedToast": "Đã xóa",
     "scenes.demoToast": "Đã tải {name}",
@@ -26382,6 +26430,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "Pad điều khiển 2D",
   },
   "yue-Hant-HK": {
+    "fx.free": "自由",
     "scenes.clear": "清空",
     "scenes.clearedToast": "清咗喇",
     "scenes.demoToast": "載入咗 {name}",
@@ -26931,6 +26980,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "2D 控制 pad",
   },
   "zh-Hans": {
+    "fx.free": "自由",
     "scenes.clear": "清空",
     "scenes.clearedToast": "已清空",
     "scenes.demoToast": "已加载 {name}",
@@ -27480,6 +27530,7 @@ const LOCALES: Record<string, Partial<Dict>> = {
     "ui.xypadRole": "二维控制板",
   },
   "zh-Hant": {
+    "fx.free": "自由",
     "scenes.clear": "清空",
     "scenes.clearedToast": "已清空",
     "scenes.demoToast": "已載入 {name}",

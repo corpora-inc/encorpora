@@ -89,7 +89,7 @@ import { createPhraseSurfaceEffects } from "./rendering/phraseSurfaceEffects"
 import { createSuccessParticles, createFailParticles, createScreenShake, clearAllParticleTimeouts, createAmbientParticles, createStarfieldParticles, createEnergyFieldParticles, createSpeedLines } from "./systems/particles"
 import { createScoreAnimator } from "./ui/scoreAnimation"
 import { initInput } from "./systems/input"
-import { createDailyQuota } from "@shared/monetization"
+import { createDailyQuota, getQuota } from "@shared/monetization"
 
 // Gameplay helpers
 import { buildEntryLookup, pickLanguages } from "./gameplay/entryHelpers"
@@ -206,15 +206,57 @@ export const createHoverRunner = (
   )
   root.appendChild(phraseHud)
 
+  // ── Scorecard: a tight glass card. A hero SCORE with a coloured net-delta
+  //    chip, over a compact icon-stat row — combo·best, 🔥 day-streak, ⚡ today's
+  //    quota. All numbers (no word labels, lucide-style mono SVG icons) so it's
+  //    narrow + language-neutral (zero translated strings). ───────────────────
+  const svgIcon = (inner: string) =>
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ` +
+    `stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`
+  const ICON_CHEVS = svgIcon('<polyline points="17 11 12 6 7 11"/><polyline points="17 18 12 13 7 18"/>')
+  const ICON_FLAME = svgIcon(
+    '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 ' +
+      '.5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+  )
+  const ICON_ZAP = svgIcon('<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="currentColor" stroke="none"/>')
+  const ICON_CHECK = svgIcon('<circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5.5"/>')
+
+  /** One icon+value stat cell. Returns the cell + its value/sub spans for live
+   *  updates. Hidden cells keep their grid slot (visibility) so the 2×2 holds. */
+  const makeStat = (icon: string, mod: string) => {
+    const el = document.createElement("div")
+    el.className = `sc-stat ${mod}`
+    const ic = document.createElement("span")
+    ic.className = "sc-ic"
+    ic.innerHTML = icon
+    const val = document.createElement("span")
+    val.className = "sc-val"
+    const sub = document.createElement("span")
+    sub.className = "sc-sub"
+    el.append(ic, val, sub)
+    return { el, val, sub }
+  }
+
+  // Layout: big SCORE on the left, a 2×2 grid of mini-stats on the right, the
+  // whole card locked to the hamburger's height. 2×2 order (row-major):
+  //   combo·best   🔥 days
+  //   ⚡ quota      ✓ net
   const statusHud = document.createElement("div")
-  statusHud.className = "status-hud"
+  statusHud.className = "scorecard"
+
   const hudScore = document.createElement("div")
-  hudScore.className = "status-score"
-  hudScore.textContent = t("hud.score", { n: 0 })
-  const hudStreak = document.createElement("div")
-  hudStreak.className = "status-streak"
-  hudStreak.textContent = t("hud.streak", { n: 0 })
-  statusHud.append(hudScore, hudStreak)
+  hudScore.className = "sc-score"
+  hudScore.textContent = "0"
+
+  const scGrid = document.createElement("div")
+  scGrid.className = "sc-grid"
+  const statCombo = makeStat(ICON_CHEVS, "is-combo")
+  const statDays = makeStat(ICON_FLAME, "is-days")
+  const statQuota = makeStat(ICON_ZAP, "is-quota")
+  const statNet = makeStat(ICON_CHECK, "is-net")
+  scGrid.append(statCombo.el, statDays.el, statQuota.el, statNet.el)
+
+  statusHud.append(hudScore, scGrid)
   root.appendChild(statusHud)
 
   // promptToggle (Show Prompt) — DOM created here, attached into the
@@ -1820,13 +1862,57 @@ export const createHoverRunner = (
 
   const updateStatsHud = () => {
     const { score, streak, bestStreak, netCorrect } = tuningStore.getState().stats
-    const netStr = `${netCorrect >= 0 ? "+" : ""}${netCorrect}`
-    hudScore.textContent = t("hud.score_with_net", { n: score, net: netStr })
-    hudStreak.textContent = t("hud.streak_with_best", { n: streak, best: bestStreak })
+    hudScore.textContent = score.toLocaleString()
+    // Net correct — green when ahead, red when behind, blank at 0 (cell holds).
+    statNet.el.classList.remove("is-pos", "is-neg")
+    if (netCorrect === 0) {
+      statNet.val.textContent = ""
+      statNet.el.classList.add("is-hidden")
+    } else {
+      statNet.el.classList.remove("is-hidden")
+      statNet.val.textContent = netCorrect > 0 ? `+${netCorrect}` : `−${Math.abs(netCorrect)}`
+      statNet.el.classList.add(netCorrect > 0 ? "is-pos" : "is-neg")
+    }
+    // Combo: current correct-in-a-row, with the session best as a faint sub.
+    statCombo.val.textContent = `${streak}`
+    statCombo.sub.textContent = bestStreak > 0 ? `${bestStreak}` : ""
   }
+
+  // Days-in-a-row visit streak + today's phrase quota, in the top-left status
+  // HUD. Language-neutral (🔥 N / ⚡ done/limit) so no new translated strings.
+  const updateRetentionHud = () => {
+    // Visit streak (consecutive local days) read through the host. Hidden until
+    // day one so day-zero play isn't cluttered.
+    const days = hostApi.getStreak?.().current ?? 0
+    if (days >= 1) {
+      statDays.val.textContent = `${days}`
+      statDays.el.classList.remove("is-hidden")
+    } else {
+      statDays.el.classList.add("is-hidden")
+    }
+    // Today's phrases toward the daily cap. `remaining()` is Infinity for
+    // subscribers and null when no cap — hide it (an unlimited player shouldn't
+    // see a counter).
+    const remaining = paywallGate.remaining()
+    const limit = getQuota("hover_phrases").dailyLimit ?? 0
+    if (remaining != null && Number.isFinite(remaining) && limit > 0) {
+      const done = Math.max(0, Math.min(limit, limit - remaining))
+      statQuota.val.textContent = `${done}`
+      statQuota.sub.textContent = `${limit}`
+      statQuota.el.classList.remove("is-hidden")
+    } else {
+      statQuota.el.classList.add("is-hidden")
+    }
+  }
+
+  // The host re-records the visit + bumps the streak at pack-enter and dispatches
+  // this; refresh the days readout live (e.g. crossing local midnight in-session).
+  const onStreakChanged = () => updateRetentionHud()
+  window.addEventListener("corpan:streak-changed", onStreakChanged)
 
   syncTuningControls()
   updateStatsHud()
+  updateRetentionHud()
   tuningUnsubscribe = tuningStore.subscribe(() => {
     syncTuningControls()
     updateStatsHud()
@@ -2196,8 +2282,10 @@ export const createHoverRunner = (
           )
           scoreAnimator.showScorePopup(points)
           createSuccessParticles(scene, phrasePosition)
-          // One phrase completed — advance the soft action gate's count.
+          // One phrase completed — advance the soft action gate's count, then
+          // refresh the quota readout in the HUD (done/limit ticks up).
           paywallGate.note()
+          updateRetentionHud()
           startCelebration(round)
         } else if (!current.spec.isCorrect) {
           gameStore.update((draft) => {
@@ -2526,6 +2614,7 @@ export const createHoverRunner = (
     hostApi.stopSpeech?.()
     input.dispose()
     window.removeEventListener("keydown", onKeyDownGlobal)
+    window.removeEventListener("corpan:streak-changed", onStreakChanged)
     if (resizeFrame) {
       window.cancelAnimationFrame(resizeFrame)
       resizeFrame = 0

@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "Bugünkü {{count}} {{unit}}",
     "streakActive": "{{days}} günlük seri — devam etmek için yarın tekrar gelin.",
-    "streakStart": "Bir seri başlatmak için yarın tekrar gelin.",
+    "streakStart": "Devam etmek için yarın tekrar gelin.",
     "resetIn": "{{time}} içinde sıfırlanır",
     "cta": "Şimdi Corpán Plus ile devam edin",
     "dismiss": "Belki sonra",

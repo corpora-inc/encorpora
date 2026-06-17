@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "{{count}} {{unit}} anda untuk hari ini",
     "streakActive": "Rentetan {{days}} hari — kembali esok untuk meneruskannya.",
-    "streakStart": "Kembali esok untuk memulakan rentetan.",
+    "streakStart": "Kembali esok untuk meneruskannya.",
     "resetIn": "Tetapkan semula dalam {{time}}",
     "cta": "Teruskan sekarang dengan Corpán Plus",
     "dismiss": "Mungkin nanti",

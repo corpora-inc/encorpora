@@ -120,11 +120,11 @@ export function renderStargateDisplaySettings(
   })
   container.appendChild(holdRow.row)
 
-  const wordHoldConfig = options.initialWordHoldConfig ?? { holdY: 0, zPull: 0.4 }
+  const wordHoldConfig = options.initialWordHoldConfig ?? { holdY: 0, zPull: 1.5 }
   createAdvancedSection(container, {
     sliders: [
       { key: "holdY", label: "Height", min: -0.2, max: 0.2, step: 0.02, initial: 0 },
-      { key: "zPull", label: "Depth", min: 0, max: 2, step: 0.1, initial: 0.4 },
+      { key: "zPull", label: "Depth", min: 0, max: 2, step: 0.1, initial: 1.5 },
     ],
     currentValues: wordHoldConfig as Record<string, number>,
     onChange: (key, value) => cbs.onWordHoldConfig(key, value),

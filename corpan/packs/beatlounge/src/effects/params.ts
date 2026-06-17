@@ -9,6 +9,7 @@
  */
 
 import type { EffectKind } from "../model/document"
+import { NOTE_LENGTH_PRESETS } from "./noteLengths"
 
 export type EffectParamType = "number" | "enum" | "boolean"
 
@@ -252,17 +253,30 @@ export const EFFECT_SPECS: Record<EffectKind, EffectSpec> = {
     label: "Delay",
     params: [
       {
+        // Tempo SYNC: the note-length id (see effects/noteLengths) the delay
+        // locks to, recomputed from the song BPM at the engine — so changing
+        // tempo (or Randomize) re-derives the time. "free" = use the raw
+        // `delayTime` seconds. DEFAULT = dotted quarter ("1/4."), the echo.
+        key: "sync",
+        label: "Sync",
+        type: "enum",
+        default: "1/4.",
+        options: ["free", ...NOTE_LENGTH_PRESETS.map((p) => p.id)],
+        describe: "Lock the delay to a note length at the song tempo (or 'free' seconds).",
+      },
+      {
         key: "delayTime",
         label: "Time",
         type: "number",
         min: 0,
         max: 3,
         step: 0.001,
-        // A dotted quarter at the 96 BPM default (60/96 × 1.5 = 0.9375s) — the
-        // musical default for an echo; freely adjustable in seconds from there.
+        // The FREE-mode fallback time (seconds), used when Sync = free. The synced
+        // default (dotted quarter) is derived from BPM at the engine; this mirrors
+        // a dotted quarter at the 96 BPM default (60/96 × 1.5 = 0.9375s).
         default: 0.9375,
         unit: "s",
-        describe: "Delay time (seconds; maxDelay 3).",
+        describe: "Delay time in seconds (used when Sync = free; maxDelay 3).",
       },
       unit01("feedback", "Feedback", 0.35, "Regeneration amount."),
       unit01("wet", "Mix", 0.3, "Dry/wet blend."),

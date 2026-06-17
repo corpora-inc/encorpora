@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "I tuoi {{count}} {{unit}} di oggi",
     "streakActive": "Serie di {{days}} giorni — torna domani per continuare.",
-    "streakStart": "Torna domani per iniziare una serie.",
+    "streakStart": "Torna domani per continuare.",
     "resetIn": "Si azzera tra {{time}}",
     "cta": "Continua ora con Corpán Plus",
     "dismiss": "Forse più tardi",

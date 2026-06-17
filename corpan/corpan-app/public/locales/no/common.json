@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "Dine {{count}} {{unit}} for i dag",
     "streakActive": "{{days}}-dagers rekke — kom tilbake i morgen for å fortsette.",
-    "streakStart": "Kom tilbake i morgen for å starte en rekke.",
+    "streakStart": "Kom tilbake i morgen for å fortsette.",
     "resetIn": "Tilbakestilles om {{time}}",
     "cta": "Fortsett nå med Corpán Plus",
     "dismiss": "Kanskje senere",

@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "A mai {{count}} {{unit}}",
     "streakActive": "{{days}} napos sorozat — gyere vissza holnap, hogy folytasd.",
-    "streakStart": "Gyere vissza holnap, hogy elkezdj egy sorozatot.",
+    "streakStart": "Gyere vissza holnap, hogy folytasd.",
     "resetIn": "Újraindul {{time}} múlva",
     "cta": "Folytasd most a Corpán Plus segítségével",
     "dismiss": "Talán később",

@@ -128,7 +128,7 @@ export function DailyLockOverlay({
           days: streakDays,
         })
       : t("dailyLock.streakStart", {
-          defaultValue: "Come back tomorrow to start a streak.",
+          defaultValue: "Come back tomorrow to keep your streak going.",
         })
 
   const upgrade = () => {

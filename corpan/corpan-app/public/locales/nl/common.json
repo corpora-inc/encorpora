@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "Je {{count}} {{unit}} voor vandaag",
     "streakActive": "{{days}}-dagen reeks — kom morgen terug om door te gaan.",
-    "streakStart": "Kom morgen terug om een reeks te starten.",
+    "streakStart": "Kom morgen terug om door te gaan.",
     "resetIn": "Herstelt in {{time}}",
     "cta": "Ga nu verder met Corpán Plus",
     "dismiss": "Misschien later",

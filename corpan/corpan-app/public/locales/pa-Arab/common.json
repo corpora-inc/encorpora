@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "آج لئی {{count}} {{unit}}",
     "streakActive": "{{days}}-روزہ سلسلہ — سلسلہ جاری رکھنے لئی کل واپس آؤ۔",
-    "streakStart": "سلسلہ شروع کرنے لئی کل واپس آؤ۔",
+    "streakStart": "سلسلہ جاری رکھنے لئی کل واپس آؤ۔",
     "resetIn": "{{time}} وچ ری سیٹ ہووے گا",
     "cta": "ہن Corpán Plus نال جاری رکھو",
     "dismiss": "شاید بعد وچ",

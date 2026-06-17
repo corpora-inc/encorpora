@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "{{count}} {{unit}} pentru astăzi",
     "streakActive": "Seria de {{days}} zile — revino mâine pentru a continua.",
-    "streakStart": "Revino mâine pentru a începe o serie.",
+    "streakStart": "Revino mâine pentru a continua.",
     "resetIn": "Se resetează în {{time}}",
     "cta": "Continuă acum cu Corpán Plus",
     "dismiss": "Poate mai târziu",

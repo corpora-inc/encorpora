@@ -862,7 +862,7 @@
   "dailyLock": {
     "title": "{{count}} {{unit}} yako ya leo",
     "streakActive": "Mfululizo wa siku {{days}} — rudi kesho kuendelea.",
-    "streakStart": "Rudi kesho kuanza mfululizo.",
+    "streakStart": "Rudi kesho kuendelea.",
     "resetIn": "Inaanza upya baada ya {{time}}",
     "cta": "Endelea sasa na Corpán Plus",
     "dismiss": "Labda baadaye",

@@ -10,6 +10,14 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Status HUD shows today's phrase quota + days-in-a-row streak.** The top-left
+  readout now lays out four numbers in a compact 2-column grid: 🔥 visit streak
+  (consecutive local days, via `hostApi.getStreak`) and ⚡ today's phrases toward
+  the daily cap (`done/limit`) on top, score + combo streak beneath. Both new
+  readouts are icon+number (no new translated strings); the quota hides for
+  subscribers (unlimited) and the streak hides until day one.
+
 ## [0.3.1] - 2026-06-16 — Daily-cap enforcement + Babylon 9
 
 ### Fixed

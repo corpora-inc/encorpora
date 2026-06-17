@@ -13,14 +13,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   song to an empty blank slate (default key, kit and tempo, no notes). **Randomize**
   sets up a whole new world — three synth voices (a bass, a mid, a lead, each
   random within its class), a random drum kit, a random key/scale/progression,
-  and a time signature borrowed from a random world groove (odd meters like 13/8
-  included) — but leaves the grid empty, so pressing play is silence until you
-  start writing. **Demos** drops a shipped starter song onto the grid: 21
+  and a genuinely randomized time signature + beat count (odd meters like 5/4,
+  7/8 and 13/8 included — not just 4/4) — but leaves the grid empty, so pressing
+  play is silence until you start writing. **Demos** drops a shipped starter song onto the grid: 21
   public-domain pieces spanning classical, folk, blues/early-jazz/spirituals, and
   world/Latin (Ode to Joy, Greensleeves, a 12-bar blues, Hava Nagila, and more).
   All three are one undoable step and reachable by voice via the command bar
   (`clearSong` / `randomizeSong` / `loadDemo`). Every new string is localized
   into all 50 shipped languages (with placeholders + RTL preserved).
+- **Tempo-synced delay.** The delay now locks to a note length (default a dotted
+  quarter) and derives its time from the song tempo, so changing the BPM — or
+  hitting Randomize — re-computes the echo to stay in time. A "Free" chip drops
+  back to a raw-seconds delay. Implemented with an ambient tempo source
+  (`effects/tempo.ts`) the engine binds to the live doc once, so tempo-aware
+  nodes read it directly instead of threading BPM through the graph. Existing
+  delays are migrated once on load — their saved time is matched to the nearest
+  note length so they stay locked to it (a dotted 1/16 stays a dotted 1/16 as the
+  tempo changes); an off-grid time becomes "Free" and keeps its raw seconds.
 
 ### Changed
 - **The default song is now an empty blank slate** instead of the old rising
@@ -30,6 +39,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `descriptionLocalized` strings, the three languages added app-wide in 0.18.1.
   Music loan-words (beatlounge, scratch, deck, offline) stay international.
   Catalog metadata is served OTA, so this needs no version bump.
+
+### Fixed
+- **Record arm is now per-track, sticky and persisted** — it was a single
+  transient flag shared across every synth (so arming one voice bled onto the
+  others, and turning it off never reliably stuck). Each voice now remembers its
+  own arm in a persisted store (`store/recordArm.ts`), shared by the Instruments
+  page and the Ribbon; default is OFF, turning it off sticks, and switching
+  voices shows that voice's own arm. Record a loop, disarm, and keep playing /
+  evolving without laying more notes. A whole-song replace (Clear / Randomize /
+  Demo) disarms everything.
 
 ## [0.2.1] - 2026-06-13
 
