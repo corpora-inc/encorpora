@@ -150,7 +150,9 @@
     "like": "Like",
     "notForMe": "Not for me",
     "plusChip": "Corpán Plus — unlock everything",
-    "installing": "Installing…"
+    "installing": "Installing…",
+    "packUpdates": "You have pack updates",
+    "updateAll": "Update all"
   },
   "tour": {
     "progress": "{{n}} of {{total}}",

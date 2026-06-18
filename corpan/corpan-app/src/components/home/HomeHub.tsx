@@ -13,6 +13,7 @@ import {
   Citrus,
   Package,
   ArrowRight,
+  ArrowUpCircle,
   Download,
   RefreshCw,
   Heart,
@@ -23,7 +24,7 @@ import { useCatalogStore } from "@/store/catalog"
 import { useGamesStore, type InstalledGame } from "@/store/games"
 import { useRecentNativeStore } from "@/store/recentNative"
 import { useInstallContext } from "@/contentPacks/InstallContext"
-import { usePackUpdates } from "@/hooks/usePackUpdates"
+import { useUpdateAll } from "@/hooks/useUpdateAll"
 import { useOnlineStatus } from "@/hooks/useOnlineStatus"
 import { usePaywallStore } from "@/store/paywall"
 import { useEntitlementStore } from "@/store/entitlements"
@@ -88,12 +89,10 @@ export function HomeHub({
   onSettings,
   onLaunchPhrase,
   onLaunchGame,
-  updateCount = 0,
 }: {
   onSettings: () => void
   onLaunchPhrase: () => void
   onLaunchGame?: (game: InstalledGame) => void
-  updateCount?: number
 }) {
   const { t, i18n } = useTranslation()
   const dir = useSettingsStore((s) => s.dir)
@@ -138,7 +137,7 @@ export function HomeHub({
     if (game.id === "phrase_main") onLaunchPhrase()
     else onLaunchGame?.(game)
   }
-  const updates = usePackUpdates(installedGames, catalog)
+  const { updates, updateAll } = useUpdateAll()
 
   // Resolve a localized catalog string (exact locale → base language → bare).
   const loc = (m: Record<string, string> | undefined, fallback: string | undefined) =>
@@ -180,6 +179,19 @@ export function HomeHub({
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [catalog, catalogById, games, installedIds, interests, userClass, ageBand, languages, i18n.language, ratingSig])
+
+  // Top-level "pack updates" CTA — in-flight guard so a double-tap can't fire
+  // two update-all passes; the CTA self-hides once `updates` empties.
+  const [updating, setUpdating] = useState(false)
+  const runUpdateAll = async () => {
+    if (updating) return
+    setUpdating(true)
+    try {
+      await updateAll()
+    } finally {
+      setUpdating(false)
+    }
+  }
 
   // The cycling recommendation index (the "star"). Clamp if the list shrinks.
   const [heroIdx, setHeroIdx] = useState(0)
@@ -234,26 +246,40 @@ export function HomeHub({
         </div>
         <div className="flex items-center gap-2">
           <StreakChip />
-          <div className="relative">
-            <Button
-              variant="default"
-              size="lg"
-              className="h-10 w-12 rounded-md shadow-sm bg-background border border-border hover:bg-accent transition"
-              aria-label="Settings"
-              onClick={onSettings}
-            >
-              <SettingsIcon className="text-muted-foreground h-5 w-5" />
-            </Button>
-            {updateCount > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-xs font-semibold text-white">
-                {updateCount}
-              </span>
-            )}
-          </div>
+          <Button
+            variant="default"
+            size="lg"
+            className="h-10 w-12 rounded-md shadow-sm bg-background border border-border hover:bg-accent transition"
+            aria-label="Settings"
+            onClick={onSettings}
+          >
+            <SettingsIcon className="text-muted-foreground h-5 w-5" />
+          </Button>
         </div>
       </header>
 
       <main className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 pb-24 pt-3 animate-in fade-in slide-in-from-bottom-1 duration-300">
+        {/* Pack updates — a single quiet line, above everything. Exists ONLY
+            when an installed pack has an update; renders nothing otherwise
+            (no reserved space, no layout jolt). */}
+        {updates.length > 0 ? (
+          <div className="mb-6 flex items-center justify-between gap-3 rounded-lg border border-purple-400/40 bg-purple-500/[0.06] px-4 py-3 animate-in fade-in slide-in-from-top-1 duration-200">
+            <span className="min-w-0 truncate text-sm font-medium text-foreground">
+              {t("home.packUpdates", { defaultValue: "You have pack updates" })}
+            </span>
+            <Button
+              size="sm"
+              className="h-9 shrink-0 rounded-md"
+              data-testid="home-update-all"
+              onClick={() => void runUpdateAll()}
+              disabled={updating}
+            >
+              <ArrowUpCircle className={`mr-1.5 h-4 w-4${updating ? " animate-spin" : ""}`} />
+              {t("home.updateAll", { defaultValue: "Update all" })}
+            </Button>
+          </div>
+        ) : null}
+
         {/* "For you" — the cycling recommendation star. */}
         {hero ? (
           <section>
