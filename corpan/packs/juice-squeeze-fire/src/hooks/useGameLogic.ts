@@ -14,10 +14,14 @@
  *    with visualLevel = allFruits[colorIndex].level and fruitGradient =
  *    allFruits[colorIndex].gradient. On bottle-complete, cycle colorIndex via
  *    (idx+1) % allFruits.length then setColorIndex; then maybe show LevelComplete.
- *  - win TTS: speak(blockLang, joinForTTS(correctWords)) after ~400ms.
- *  - NO auto-advance (parity with shipped): after a win the player stays on the
- *    completed phrase; they advance manually via next/swipe/give-up. If a level
- *    completes, the LevelComplete modal shows and its Continue loads the next.
+ *  - win TTS: speak(blockLang, joinForTTS(correctWords)) after ~VOICE_DELAY.
+ *  - AUTO-ADVANCE is INTENTIONAL (a deliberate change from shipped, NOT a parity
+ *    miss): after the win celebration (chime -> pour -> voice) the game advances
+ *    to the next phrase, delay scaled to sentence length so long ones are heard.
+ *    The shipped pack stays on the completed phrase; we advance instead because
+ *    it keeps the fast-paced ASMR flow — the player can review a previous phrase
+ *    via the prev/swipe history. On bottle-complete the LevelComplete modal shows
+ *    first and its Continue loads the next.
  */
 import { useCallback, useEffect, useRef, useState } from "react"
 import type { HostApi } from "../sdk/types"

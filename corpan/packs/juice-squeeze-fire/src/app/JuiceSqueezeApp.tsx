@@ -213,6 +213,12 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
       // immediately, not after the tap-vs-drag resolves on release.
       sfx.play("snap")
       haptics.fire("light")
+      // Skip the per-word voice on the tap that places the LAST bank word: it
+      // completes the phrase and the win-sentence TTS reads the whole sentence
+      // (including this word) a moment later. On Android (single-utterance TTS)
+      // the two collided and the final word felt clipped (Skylar's Android note);
+      // the snap + haptic still give instant feedback.
+      if (useGameStore.getState().bankOrder.length <= 1) return
       speak(blockLang, word)
     },
     [blockLang, speak, sfx, haptics]

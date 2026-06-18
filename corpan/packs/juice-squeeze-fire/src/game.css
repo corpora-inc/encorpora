@@ -10,10 +10,12 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  /* Bottom: the OS safe inset only (+2px hairline), no extra cushion — the area
-     just above the home indicator is still tappable, so we reclaim it for the
+  /* Top: a generous cushion BELOW the OS status area so the header cluster
+     (score/coin/jar + exit) never crowds the clock/battery/notch. Sides: a touch
+     wider. Bottom: the OS safe inset only (+2px hairline), no extra cushion — the
+     area just above the home indicator is still tappable, so we reclaim it for the
      word bank's last row on dense phrases. */
-  padding: calc(var(--jsf-safe-top) + 8px) 10px calc(var(--jsf-safe-bottom) + 2px);
+  padding: calc(var(--jsf-safe-top) + 18px) 12px calc(var(--jsf-safe-bottom) + 2px);
   /* Soft, cool light neutral so the colored juice (orange/red/purple/etc.) POPS
      against it instead of blending into a warm orange wash. Dark target text +
      colored chip pills still read fine on this. */
@@ -65,13 +67,18 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
+  /* Wider gap between the left tally column and the current-fruit lens so the two
+     header clusters read as distinct, unhurried groups. */
+  gap: 14px;
   min-height: 56px;
+  /* A little air below the header before the play column begins. */
+  padding-bottom: 4px;
 }
 .jsf-header__left {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  /* More vertical separation between the tallies row and the jar collection. */
+  gap: 9px;
   flex: 1;
   min-width: 0;
 }
@@ -80,7 +87,8 @@
 .jsf-header__tallies {
   display: flex;
   align-items: center;
-  gap: 7px;
+  /* Looser spacing between the score + coin chips so they don't crowd. */
+  gap: 10px;
 }
 
 /* Gold coin tally — the meta-loop reward, glossy to match the score chip. */
@@ -495,13 +503,41 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  /* Comfortable, premium rhythm between stacked rows. The deliberate band split
+     is done with auto-margins below (NOT a fixed height), so the auto-fit/scroll
+     behavior is untouched. */
+  gap: 14px;
   min-height: 0;
   /* NO overflow:hidden here — that CLIPPED the bottom bank rows. The bank stays
      within the safe area because (a) the phrase auto-shrinks (useFitText) to free
      room so the whole bank fits, and (b) the bank itself can shrink + scroll as a
      last resort. The screen boundary / safe-bottom is guarded by .jsf-app. */
-  padding-top: 6px;
+  padding-top: 8px;
+}
+
+/* ---- Vertical band rhythm ----
+ * The reviewer wanted the screen used deliberately: target/sentence as a clear
+ * MIDDLE band, with the controls + word bank given comfortable room toward the
+ * BOTTOM — no large dead zone on short phrases.
+ *
+ * We achieve this with AUTO-MARGINS only — never a fixed height — so the
+ * auto-fit (useFitText), the bank's shrink+scroll, and the empty-bank collapse
+ * all keep working exactly as before:
+ *   • A flexible cushion ABOVE the target nudges the target/sentence off the
+ *     header into the middle band.
+ *   • A flexible cushion ABOVE the controls bar pushes the controls + bank down
+ *     to sit toward the bottom.
+ * On a DENSE phrase these auto-margins simply collapse to 0 (no free space to
+ * distribute), so nothing is ever pushed off-screen and the bank still owns all
+ * remaining room. The cushions are unequal (smaller on top, larger toward the
+ * bottom group) so the layout reads as a settled lower-third, not dead-centered. */
+.jsf-main > .jsf-target {
+  margin-top: auto;
+}
+.jsf-main > .jsf-controls-bar {
+  /* The stronger push: send the controls + bank toward the bottom. The 2:3 weight
+     vs. the target's top cushion keeps the middle band slightly high-of-center. */
+  margin-top: auto;
 }
 
 /* ---- Target phrase ---- */
@@ -996,8 +1032,10 @@
 /* Exit stays absolute in the very top-right corner; nothing overlaps it. */
 .jsf-exit {
   position: absolute;
-  top: calc(var(--jsf-safe-top) + 8px);
-  right: 10px;
+  /* Matches the .jsf-app top cushion so the ✕ sits level with the header cluster
+     and stays well clear of the status area. */
+  top: calc(var(--jsf-safe-top) + 18px);
+  right: 12px;
   width: 38px;
   height: 38px;
   font-size: 18px;
@@ -1012,9 +1050,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 22px;
+  gap: 26px;
   width: 100%;
-  padding: 2px 8px;
+  /* A little more vertical room around the pucks so the bottom group feels
+     unhurried rather than pinched against the bank. */
+  padding: 4px 8px;
 }
 
 /* ---- Overlays / modals ---- */

@@ -47,9 +47,15 @@ beforeEach(() => {
 })
 
 describe("pickLanguagePair", () => {
-  it("follows the verified rotation", () => {
+  it("follows the rotation and never returns an identical pair when avoidable", () => {
+    // A single stack language pairs with English (the corpus base) so the prompt
+    // and the blocks DIFFER — never the same language on both sides (EN→EN bug).
+    expect(pickLanguagePair(["es"])).toEqual(["en", "es"])
+    // English-only is the one case we can't make distinct.
+    expect(pickLanguagePair(["en"])).toEqual(["en", "en"])
     expect(pickLanguagePair([])).toEqual(["en", "en"])
-    expect(pickLanguagePair(["es"])).toEqual(["es", "es"])
+    // Duplicates are deduped before pairing.
+    expect(pickLanguagePair(["en", "en"])).toEqual(["en", "en"])
     expect(pickLanguagePair(["es", "en"])).toEqual(["es", "en"])
     // 3+: display fixed = languages[0], block rotates through the rest
     expect(pickLanguagePair(["es", "en", "fr"])).toEqual(["es", "en"])

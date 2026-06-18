@@ -41,7 +41,10 @@ export const pickByLang = (
   const baseMatch = translations.find((t) => normalizeLang(t.language_code).split("-")[0] === base)
   if (baseMatch) return baseMatch.text
 
-  return translations[0]?.text
+  // STRICT (Skylar review): NO silent fallback to translations[0]. Falling back
+  // to a different language let a requested target/block silently become the same
+  // language as the other (e.g. both English) → EN→EN. Missing language ⇒ skip.
+  return undefined
 }
 
 /**
@@ -114,6 +117,14 @@ export const loadUtterance = async (
     // Extract text for TARGET language (the language to show at top)
     const targetText = pickByLang(entry.translations, targetLanguage)
     if (!targetText) {
+      continue
+    }
+
+    // Distinct languages are REQUIRED for this game mode — you translate the
+    // target into the block language. Reject an entry whose block + target text
+    // are identical (a same-language pair, or two codes that resolve to the same
+    // translation) so the prompt and the blocks are never the same (Skylar: EN→EN).
+    if (blockText.trim() === targetText.trim()) {
       continue
     }
 
