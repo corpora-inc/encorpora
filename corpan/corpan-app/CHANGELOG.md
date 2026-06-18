@@ -18,6 +18,32 @@ Conventions: `corpan/CHANGELOGS.md`.
   `PackCard`/`PackActions` hides the Remove action for built-in experiences.
 
 ### Changed
+- **Settings is now premium and continuous with Home.** The header mirrors Home
+  — the all-hearing-ear mark + title at the top-left — and the top-right close is
+  now a Home button (like Phrase Flip) instead of an X, so flipping Home↔Settings
+  feels seamless. Dev Mode moved to the very bottom under a quiet "Developer"
+  label and its install form was restyled to the app's squared, premium look. The
+  About Corpán section gained a small all-hearing-ear mark at its top and a "Rate
+  Corpán" button beside the Corpán Plus block. (`SettingsModal.tsx`)
+- **The rating prompt no longer pops up on its own.** The "Enjoying Corpán?" card
+  used to auto-appear once a usage counter tripped — including right when a free
+  user was bounced out of a pack on hitting their daily quota (the worst moment).
+  All auto-triggers were removed (the main-loop utterance counter, the eligibility
+  gate, and the `notifyUtterance`/`showRatingPrompt` host-API hooks are now
+  no-ops). Rating is manual-only via the new About → "Rate Corpán" button, backed
+  by a `promptManualReview()` store action that opens it unconditionally; the
+  5-star tap still fires the OS-native review. (`store/rating.ts`,
+  `RatingPrompt.tsx`, `MainExperience.tsx`, `hostApi.ts`)
+- **Pack updates are surfaced on Home, not behind the Settings gear.** The purple
+  "updates available" badge on the gear is gone; instead a premium, minimal CTA
+  sits above everything on Home — "You have pack updates" + an "Update all"
+  button — shown only when updates exist (no layout jolt otherwise). The update
+  logic is now a shared `useUpdateAll` hook reused by both the CTA and the packs
+  listing. (`home/HomeHub.tsx`, `home/PacksSection.tsx`, `hooks/useUpdateAll.ts`)
+- **Phrase Flip avatar reworked to the house style.** Replaced the earlier
+  flip-card SVG with a thin Corpán-orange rounded card frame + purple lucide
+  brain on a near-black backdrop, matching the single-color, glowing line-art of
+  the other pack marks. (`assets/phrase-flip.svg`)
 - **Onboarding finale is now a little fireworks show, not a flat colour blob.**
   The end-of-onboarding razzle used to settle by scaling a single flat disc of
   the pack's accent up over the screen — for EarthGate that read as "just a

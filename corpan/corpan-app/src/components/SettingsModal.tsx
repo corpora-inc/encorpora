@@ -294,16 +294,9 @@ export function SettingsModal({
             <Button
               type="button"
               variant="outline"
-              onClick={() => {
-                // `promptManualReview` opens the rating dialog unconditionally.
-                // It's added to the rating store by a parallel change; cast keeps
-                // this call site honest about the action name until it lands.
-                (
-                  useRatingStore.getState() as {
-                    promptManualReview?: () => void;
-                  }
-                ).promptManualReview?.();
-              }}
+              // Opens the rating dialog unconditionally (manual-only — the
+              // auto-popup was retired).
+              onClick={() => useRatingStore.getState().promptManualReview()}
               className="gap-2 rounded-md"
             >
               <Star size={16} />
