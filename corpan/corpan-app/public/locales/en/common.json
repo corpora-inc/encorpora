@@ -721,9 +721,12 @@
     "perMonth": "month",
     "perYear": "year",
     "startFreeTrial": "Start Free Trial",
+    "startTrialPeriod": "Start {{period}} free trial",
     "trialFirstCharge": "{{period}}: first charge",
+    "trialFree": "Free for {{period}}",
     "trialHeadline": "{{period}} free",
     "trialReassurance": "No payment due now · cancel anytime",
+    "trialThenCancel": "Then {{price}}/{{period}} · cancel anytime. No payment today.",
     "trialThenPrice": ", then {{price}}/{{period}}",
     "trialToday": "Today: start",
     "rate": "Rate Corpán"

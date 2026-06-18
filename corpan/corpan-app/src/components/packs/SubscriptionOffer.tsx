@@ -528,7 +528,11 @@ export function SubscriptionOffer({
     : codeRedeems
       ? t("code.redeemCode", "Redeem code")
       : hasFreeTrial
-        ? t("subscription.startFreeTrial", "Start Free Trial")
+        ? intro?.periodLabel
+          ? t("subscription.startTrialPeriod", "Start {{period}} free trial", {
+              period: intro.periodLabel,
+            })
+          : t("subscription.startFreeTrial", "Start Free Trial")
         : t("subscription.subscribe", "Subscribe")
 
   // Annual savings vs paying monthly × 12 — computed from raw micros so it's
@@ -599,44 +603,27 @@ export function SubscriptionOffer({
           ) : null}
         </div>
 
-        {intro && intro.periodLabel ? (
-          <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 space-y-2.5">
+        {/* The deal, sold simply — centered to match the rest of the card.
+            Hidden when a code redeems: an offer code and the free trial are
+            mutually exclusive, so we don't stack two value stories. */}
+        {intro && intro.periodLabel && !codeRedeems ? (
+          <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 text-center space-y-1">
             {hasFreeTrial ? (
               <>
                 <p className="text-sm font-semibold leading-snug">
-                  {t("subscription.trialHeadline", "{{period}} free", {
+                  {t("subscription.trialFree", "Free for {{period}}", {
                     period: intro.periodLabel,
                   })}
-                  {selectedRecurringPrice ? (
-                    <span className="font-normal text-muted-foreground">
-                      {t("subscription.trialThenPrice", ", then {{price}}/{{period}}", {
-                        price: selectedRecurringPrice,
-                        period: selectedPeriodLabel,
-                      })}
-                    </span>
-                  ) : null}
                 </p>
-                {/* Calm reassurance line — no payment now, cancel anytime. */}
-                <p className="text-[11px] font-medium text-muted-foreground">
-                  {t(
-                    "subscription.trialReassurance",
-                    "No payment due now · cancel anytime"
-                  )}
+                <p className="text-[11px] text-muted-foreground">
+                  {selectedRecurringPrice
+                    ? t(
+                        "subscription.trialThenCancel",
+                        "Then {{price}}/{{period}} · cancel anytime. No payment today.",
+                        { price: selectedRecurringPrice, period: selectedPeriodLabel }
+                      )
+                    : t("subscription.trialReassurance", "No payment due now · cancel anytime")}
                 </p>
-                {/* Tiny visual timeline: start today → first charge → cancel. */}
-                <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-                  <span className="flex items-center gap-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                    {t("subscription.trialToday", "Today: start")}
-                  </span>
-                  <span className="h-px flex-1 bg-border" />
-                  <span className="flex items-center gap-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/50" />
-                    {t("subscription.trialFirstCharge", "{{period}}: first charge", {
-                      period: intro.periodLabel,
-                    })}
-                  </span>
-                </div>
               </>
             ) : hasIntroPrice ? (
               <p className="text-sm font-semibold leading-snug">
@@ -674,7 +661,7 @@ export function SubscriptionOffer({
             plan + primary CTA so we don't train discount expectation. The
             server is the only authority (Phase 3 codes backend). */}
         {SHOW_AFFILIATE_CODE_FIELD ? (
-          <label className="block space-y-1.5">
+          <label className="mx-auto flex w-full max-w-[280px] flex-col items-center gap-1.5 text-center">
             <span className="text-xs font-medium text-muted-foreground">
               {t("code.fieldLabel", "Offer or affiliate code")}
             </span>
@@ -686,7 +673,7 @@ export function SubscriptionOffer({
               spellCheck={false}
               maxLength={32}
               placeholder={t("subscription.affiliateCodePlaceholder", "Optional")}
-              className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm uppercase placeholder:normal-case placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary"
+              className="h-10 w-full rounded-md border border-input bg-background px-3 text-center text-sm uppercase tracking-wider placeholder:tracking-normal placeholder:normal-case placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary"
             />
             {codeStatus.kind === "error" ? (
               // Gentle, muted — NOT a harsh red error. The code didn't unlock a

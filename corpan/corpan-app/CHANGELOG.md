@@ -18,6 +18,20 @@ Conventions: `corpan/CHANGELOGS.md`.
   `PackCard`/`PackActions` hides the Remove action for built-in experiences.
 
 ### Changed
+- **Paywall free-trial framing sells the trial instead of reciting it.** A
+  `$0.00` introductory price is now correctly recognized as a free trial (it was
+  mis-classified as a paid intro price, so the CTA said "Subscribe" and the panel
+  read the robotic "$0.00 for 7 days, then …"). The CTA now reads "Start 7-day
+  free trial"; the trial panel is centered like the rest of the card, warmer
+  ("Free for 7 days" / "Then $99.99/year · cancel anytime. No payment today."),
+  and drops the timeline dots. The offer/affiliate code field and its help/status
+  text are centered in a narrow column under the CTA (codes are short), and the
+  trial panel is hidden when a code redeems (offer code and free trial are
+  mutually exclusive). (`SubscriptionOffer.tsx`, `purchase.ts`)
+- **iOS offer-code redemption can skip the typing.** When the backend provides a
+  prefilled App Store redeem link for a resolved code, we now open *that* (code
+  already entered) instead of the empty generic StoreKit redeem sheet.
+  (`purchase.ts`)
 - **Settings is now premium and continuous with Home.** The header mirrors Home
   — the all-hearing-ear mark + title at the top-left — and the top-right close is
   now a Home button (like Phrase Flip) instead of an X, so flipping Home↔Settings

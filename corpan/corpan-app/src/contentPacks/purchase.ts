@@ -362,7 +362,11 @@ export function periodLabelFromIso(iso: string | undefined): string {
  */
 function isFreeDisplayPrice(formatted: string | undefined): boolean {
   if (!formatted) return false
-  return !/\d/.test(formatted)
+  // Free when there is no non-zero digit: a no-digit label ("Free") OR a
+  // zero-valued price ("$0.00", "0 ₩", "0,00 €"). A $0 intro IS a free trial —
+  // without this, "$0.00" (which has digits) was mis-classified as a paid intro
+  // price, so the CTA said "Subscribe" instead of starting the free trial.
+  return !/[1-9]/.test(formatted)
 }
 
 /**
@@ -1042,27 +1046,33 @@ export async function presentAppleOfferRedeemSheet(opts: {
   appleOfferId?: string | null
   appleRedeemUrl?: string | null
 }): Promise<boolean> {
+  // PREFER the prefilled redeem deep link when the backend gave us one — it
+  // lands the user on the App Store redeem screen with the code ALREADY ENTERED
+  // (one tap to confirm, no retyping). The generic StoreKit sheet below opens
+  // with an EMPTY field, so only use it when we have no code-specific URL.
+  if (opts.appleRedeemUrl) {
+    try {
+      await openUrl(opts.appleRedeemUrl)
+      return true
+    } catch (err) {
+      console.warn(
+        "[purchase] openUrl(appleRedeemUrl) failed, falling back to redeem sheet:",
+        err
+      )
+    }
+  }
   if (isTauriRuntime()) {
     try {
-      // FROZEN command name + arg shape (contract §9.3).
+      // FROZEN command name + arg shape (contract §9.3). Generic sheet (empty).
       await invoke("plugin:iap|present_offer_code_redeem_sheet", {
         payload: { appleOfferId: opts.appleOfferId ?? undefined },
       })
       return true
     } catch (err) {
       console.warn(
-        "[purchase] present_offer_code_redeem_sheet unavailable, falling back to redeem URL:",
+        "[purchase] present_offer_code_redeem_sheet unavailable:",
         err
       )
-    }
-  }
-  // Fallback: open the App Store redeem deep link (pre-iOS16 / command absent).
-  if (opts.appleRedeemUrl) {
-    try {
-      await openUrl(opts.appleRedeemUrl)
-      return true
-    } catch (err) {
-      console.error("[purchase] openUrl(appleRedeemUrl) failed:", err)
     }
   }
   return false
