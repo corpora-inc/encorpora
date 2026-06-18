@@ -183,15 +183,18 @@ export function SettingsModal({
             </div>
             {/* Home button (returns to the Home hub) — matches Phrase Flip's
                 home affordance; performs the existing close action. */}
-            <button
-              type="button"
-              onClick={onClose}
+            {/* Identical markup to Phrase Flip's chrome button (same Button
+                component, variant, size, classes) so they render pixel-for-pixel
+                the same — size="lg" carries the h-10 md:h-12 the others get. */}
+            <Button
+              variant="default"
+              size="lg"
               aria-label={t("settings.home", { defaultValue: "Home" })}
-              className="inline-flex h-10 w-12 items-center justify-center rounded-md border border-border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0"
+              onClick={onClose}
+              className="h-10 w-12 rounded-md shadow-sm bg-background border border-border hover:bg-accent transition shrink-0"
             >
-              <HomeIcon className="h-4 w-4 text-muted-foreground" />
-              <span className="sr-only">{t("settings.home", { defaultValue: "Home" })}</span>
-            </button>
+              <HomeIcon className="text-muted-foreground h-5 w-5" />
+            </Button>
           </div>
         </div>
 
