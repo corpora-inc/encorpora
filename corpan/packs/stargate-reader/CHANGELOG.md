@@ -10,6 +10,12 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- Browse → Latest|Title|Series tabs: the selected tab now stays
+  high-contrast when it also has keyboard focus (previously the text could
+  render low-contrast against the accent fill), and its focus ring is drawn
+  in the page colour so it remains visible over the accent background.
+
 ## [0.7.1] - 2026-06-16
 
 ### Changed
