@@ -687,6 +687,22 @@
   gap: 4px;
   padding: 7px;
 }
+/* Empty bank (all words placed): collapse to a thin drop strip — no void, no
+   chrome, no label — so the completion zone reclaims the space. Still a drop
+   target so a word can be returned (tapping a placed block also returns it). */
+.jsf-bank--empty {
+  padding: 0;
+  min-height: 0;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.jsf-bank--empty .jsf-bank__lang {
+  display: none;
+}
+.jsf-bank--empty .jsf-bank__empty {
+  min-height: 12px;
+}
 .jsf-bank--over { background: rgba(255, 255, 255, 0.58); }
 .jsf-bank__empty { min-height: 40px; width: 100%; }
 /* Build-language tag at the top of the bank — full-width so it sits as a header

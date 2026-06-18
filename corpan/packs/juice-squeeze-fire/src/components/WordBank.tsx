@@ -40,13 +40,17 @@ export function WordBank({
   // need to shrink the chips themselves.
   const wordCount = useGameStore((s) => s.correctWords.length)
   const dense = wordCount >= 16
+  // As words are moved out into the completion zone the bank empties. An empty
+  // bank must NOT reserve vertical space — it collapses to a thin drop strip so
+  // the (growing) completion zone gets the room. The two trade space automatically.
+  const empty = bankOrder.length === 0
   const { setNodeRef, isOver } = useDroppable({ id: "bank", data: { type: "bank" } })
   const langRtl = isRTL(blockLang)
 
   return (
     <div
       ref={setNodeRef}
-      className={`jsf-bank${isOver ? " jsf-bank--over" : ""}${dense ? " jsf-bank--dense" : ""}`}
+      className={`jsf-bank${isOver ? " jsf-bank--over" : ""}${dense ? " jsf-bank--dense" : ""}${empty ? " jsf-bank--empty" : ""}`}
       data-testid="word-bank"
     >
       {/* Build-language tag: the language you ASSEMBLE the sentence in, shown in
