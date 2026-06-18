@@ -29,7 +29,7 @@ export function ExitButton() {
       title="Exit"
       onClick={exit}
     >
-      ✕
+      <span className="jsf-icon-btn__glyph">✕</span>
     </button>
   )
 }
@@ -41,30 +41,30 @@ export function Controls({ onFruit, onGiveUp, onEar }: Props) {
     <div className="jsf-controls-bar" data-testid="controls-bar">
       <button
         type="button"
-        className={`jsf-icon-btn${fruitsEnabled ? " jsf-icon-btn--active" : ""}`}
+        className={`jsf-icon-btn jsf-icon-btn--fruit${fruitsEnabled ? " jsf-icon-btn--active" : ""}`}
         data-testid="fruit-flip"
         title="Flip to fruits"
         onClick={onFruit}
       >
-        🍊
+        <span className="jsf-icon-btn__glyph">🍊</span>
       </button>
       <button
         type="button"
-        className="jsf-icon-btn"
+        className="jsf-icon-btn jsf-icon-btn--ear"
         data-testid="ear"
         title="Listen to answer"
         onClick={onEar}
       >
-        🎧
+        <span className="jsf-icon-btn__glyph">🎧</span>
       </button>
       <button
         type="button"
-        className="jsf-icon-btn"
+        className="jsf-icon-btn jsf-icon-btn--eye"
         data-testid="give-up"
         title="Show answer"
         onClick={onGiveUp}
       >
-        👁
+        <span className="jsf-icon-btn__glyph">👁</span>
       </button>
     </div>
   )

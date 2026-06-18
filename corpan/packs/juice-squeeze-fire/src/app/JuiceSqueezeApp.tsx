@@ -20,6 +20,7 @@ import { TargetPhrase } from "../components/TargetPhrase"
 import { SentenceArea } from "../components/SentenceArea"
 import { WordBank } from "../components/WordBank"
 import { ScoreBar } from "../components/ScoreBar"
+import { CoinCounter } from "../components/CoinCounter"
 import { BottleCollection } from "../components/BottleCollection"
 import { BottleGauge } from "../components/BottleGauge"
 import { HeroVessel } from "../components/HeroVessel"
@@ -108,9 +109,16 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
   )
 
   // ---- Drag/drop placement ------------------------------------------------
+  // Survives the activeId clear in onDragEnd: dnd-kit clears activeId BEFORE the
+  // browser's onTouchEnd fires, so a reorder-drag would otherwise leak through
+  // the `if (activeId)` guard and trigger a phrase swipe. This ref is set on
+  // drag start, reset on each new touch start, and checked in onTouchEnd.
+  const dragOccurredRef = useRef(false)
+
   const onDragStart = (e: DragStartEvent) => {
     setActiveId(String(e.active.id))
     setPressedId(null) // a drag took over; drop the pressed scale
+    dragOccurredRef.current = true
   }
 
   const onDragEnd = (e: DragEndEvent) => {
@@ -160,6 +168,7 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
   const SWIPE_VERTICAL_LIMIT = 100
 
   const onTouchStart = useCallback((e: React.TouchEvent) => {
+    dragOccurredRef.current = false // fresh touch; no drag yet
     touch.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
   }, [])
 
@@ -168,7 +177,10 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
       const start = touch.current
       touch.current = null
       if (!start) return
-      if (activeId) return // don't treat a drag as a swipe
+      // A reorder-drag must never count as a swipe. dragOccurredRef survives the
+      // activeId clear in onDragEnd (which fires before this), so it's the
+      // reliable guard; activeId stays as a belt-and-suspenders check.
+      if (dragOccurredRef.current || activeId) return
       const dx = e.changedTouches[0].clientX - start.x
       const dy = e.changedTouches[0].clientY - start.y
       if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dy) < SWIPE_VERTICAL_LIMIT) {
@@ -194,8 +206,13 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
   }, [hostApi])
 
   const onTapSpeak = useCallback(
-    (word: string) => speak(blockLang, word),
-    [blockLang, speak]
+    (word: string) => {
+      // Instant tactile "snap" on TOUCH (pointer-down) so it hits immediately,
+      // not after the tap-vs-drag resolves on release.
+      sfx.play("snap")
+      speak(blockLang, word)
+    },
+    [blockLang, speak, sfx]
   )
 
   // Tap (no drag): a bank block goes to the END of the sentence; a sentence
@@ -241,7 +258,10 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
           header={
             <>
               <div className="jsf-header__left">
-                <ScoreBar />
+                <div className="jsf-header__tallies">
+                  <ScoreBar />
+                  <CoinCounter />
+                </div>
                 <BottleCollection />
               </div>
               <BottleGauge />

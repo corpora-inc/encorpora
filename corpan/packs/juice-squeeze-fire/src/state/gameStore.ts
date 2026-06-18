@@ -118,10 +118,14 @@ export type PhraseInput = {
   source?: string
 }
 
+// Jars per basket: 6 collected jars → the basket is carried off + mints 1 coin.
+export const BASKET_SIZE = 6
+
 // Game statistics
 export type GameStats = {
   score: number // Session score (resets)
   allTimeScore: number // Persistent all-time score
+  coins: number // Persistent gold coins (1 per carried basket)
   completedPhrases: number // Session completed phrases (resets)
   allTimeCompletedPhrases: number // Persistent completed phrases count
   currentStreak: number
@@ -182,6 +186,10 @@ export type GameState = {
     fruitGradient?: [string, string, string]
   ) => void
 
+  // --- Basket → coins meta-loop ---
+  removeBasketJars: (count: number) => void // pull the carried jars off the shelf
+  addCoins: (n?: number) => void // mint coins (1 per basket)
+
   // --- Settings / level ---
   toggleFruits: () => void
   updateSettings: (settings: Partial<GameSettings>) => void
@@ -227,6 +235,7 @@ const initialState = {
   stats: {
     score: 0,
     allTimeScore: 0,
+    coins: 0,
     completedPhrases: 0,
     allTimeCompletedPhrases: 0,
     currentStreak: 0,
@@ -492,6 +501,23 @@ export const useGameStore = create<GameState>()(
         })
       },
 
+      // Carry a basket off the shelf: drop the oldest `count` collected jars.
+      removeBasketJars: (count) => {
+        set((state) => ({
+          bottleProgress: {
+            ...state.bottleProgress,
+            bottleCollection: state.bottleProgress.bottleCollection.slice(count),
+          },
+        }))
+      },
+
+      // Mint coins (1 per carried basket) onto the persistent gold total.
+      addCoins: (n = 1) => {
+        set((state) => ({
+          stats: { ...state.stats, coins: (state.stats.coins || 0) + n },
+        }))
+      },
+
       toggleFruits: () => {
         set((state) => ({
           settings: {
@@ -585,6 +611,7 @@ export const useGameStore = create<GameState>()(
       partialize: (state) => ({
         stats: {
           allTimeScore: state.stats.allTimeScore,
+          coins: state.stats.coins,
           allTimeCompletedPhrases: state.stats.allTimeCompletedPhrases,
           bestStreak: state.stats.bestStreak,
           totalPhrases: state.stats.totalPhrases,

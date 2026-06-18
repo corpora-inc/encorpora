@@ -57,8 +57,6 @@ type Props = {
   onTap: (blockId: string) => void
 }
 
-const TAP_MOVE_TOLERANCE = 6
-
 export function WordBlock({
   blockId,
   word,
@@ -134,18 +132,15 @@ export function WordBlock({
     }
   }
 
-  const handlePointerUp = (e: React.PointerEvent) => {
-    const start = downPos.current
+  const handlePointerUp = () => {
     downPos.current = null
     onPressChange?.(null)
+    // If dnd-kit's 8px distance sensor never activated a drag, this IS a tap —
+    // place/remove the block. (A 6px tap-tolerance previously left a 6–8px dead
+    // zone where a slight touch neither dragged nor tapped — "barely touched but
+    // it didn't move". Any non-drag now counts as a tap.)
     if (isDragging) return
-    if (!start) return
-    const dx = Math.abs(e.clientX - start.x)
-    const dy = Math.abs(e.clientY - start.y)
-    if (dx <= TAP_MOVE_TOLERANCE && dy <= TAP_MOVE_TOLERANCE) {
-      // Tap (no meaningful drag): place/remove the block.
-      onTap(blockId)
-    }
+    onTap(blockId)
   }
 
   // If a drag starts, clear the pressed scale so it doesn't fight the drag.

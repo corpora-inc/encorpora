@@ -22,13 +22,18 @@ export function BottleCollection() {
         const grad = b.gradient || LEVEL_FRUIT_COLORS[b.level].gradient
         return (
           <div key={b.id} className="jsf-jar-icon" title={b.level}>
-            <div className="jsf-jar-icon__lid" />
-            <div
-              className="jsf-jar-icon__body"
-              style={{
-                background: `linear-gradient(to bottom, ${grad[0]}, ${grad[1]}, ${grad[2]})`,
-              }}
-            />
+            <div className="jsf-jar-icon__lid">
+              <span className="jsf-jar-icon__band" />
+            </div>
+            <div className="jsf-jar-icon__body">
+              <span
+                className="jsf-jar-icon__fill"
+                style={{
+                  background: `linear-gradient(180deg, ${grad[0]} 0%, ${grad[1]} 52%, ${grad[2]} 100%)`,
+                }}
+              />
+              <span className="jsf-jar-icon__shine" />
+            </div>
           </div>
         )
       })}

@@ -8,6 +8,9 @@ export function ScoreBar() {
   const score = useGameStore((s) => s.stats.allTimeScore)
   return (
     <div className="jsf-score" data-testid="score">
+      <span className="jsf-score__badge" aria-hidden="true">
+        <span className="jsf-score__star">★</span>
+      </span>
       <span className="jsf-score__value">{score ?? 0}</span>
     </div>
   )

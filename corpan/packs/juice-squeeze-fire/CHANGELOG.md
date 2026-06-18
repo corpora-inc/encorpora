@@ -4,10 +4,56 @@ All notable changes to the **Juice Squeeze ✨** pack (`juice_squeeze_fire`) are
 documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 This is a ground-up rebuild of Juice Squeeze: React + dnd-kit UI with a
-Pixi.js shader-driven liquid hero, layered sound, and native haptics. It ships
+Canvas-2D liquid hero, layered sound, and (coming) native haptics. It ships
 preview-gated alongside the original `juice_squeeze` until promoted.
 
 ## [Unreleased]
+
+### Basket → coins meta-loop + juice-block phrase (2026-06-17)
+- **Basket → coins meta-loop (Ian's idea)** — every `BASKET_SIZE` (6) collected
+  jars, a basket appears centered, the jars fly INTO it, it's carried off-screen,
+  and 1 gold coin drops into a new header coin counter. Pack-side only: store gains
+  a persisted `coins` + `addCoins`/`removeBasketJars`; `basketCarry.ts` is a
+  bulletproof DOM/Web-Animations overlay (clones the real jars, clears the shelf,
+  flies the coin to the counter); `CoinCounter` shows the gold tally (pops on
+  change), separate from the word score. Wired into the bottle-complete dock beat.
+- **Phrase = one big juice block** — the phrase-to-translate is now a single large
+  word-block styled like the bank chips, filled with the CURRENT juice's fruit
+  gradient (set inline from the active fruit), white ink + emboss. Replaces the
+  hard-to-read gradient-clipped frosted plaque. Language caption neutralized to
+  slate so it works under any juice color.
+- **Single-click snap** — re-cut to a tight 15.5 ms single transient (was reading
+  as a double); normalized to −1 dB.
+- **Elevated icons** — score chip (gold star medallion + traveling sheen), header
+  fruit gauge (tinted to the current fruit + rotating ring + name caption, reads
+  as "the juice you're on"), and control buttons (per-function accent tints,
+  glyphs that lift/press independently).
+
+### Audio-timing + glossy polish batch (2026-06-17)
+- **Locked audio timing (pure Web Audio)** — every SFX is now inlined as base64
+  (`src/audio/audioData.ts`), decoded once into `AudioBuffer`s, and played via a
+  fresh `AudioBufferSourceNode` on the audio clock. This removes the
+  `HTMLAudioElement.play()` startup jitter that made the completion/pour/jar
+  sounds drift against the visuals — onset is now sample-accurate. The HTMLAudio
+  fallback path + cross-origin asset resolution were removed (no fetch → no CORS).
+- **Strong, crisp volumes** — pour, win chime, bottle-complete, jar-close, and
+  snap all play at full gain; only the accent `ping` sits a hair under (0.9).
+- **Single, punchy snap** — `snap.wav` re-isolated to the loud transient (the
+  prior trim kept the soft first click) and normalized to −1 dB; a real tap click.
+- **Softer pour** — pour glug swapped to "glass fill 3 lite".
+- **Jar-fly upgrade** — the flying jar now docks onto the NEWEST collected jar in
+  the header (was aiming at the collection's far-right edge → flew the wrong way),
+  pops bigger, and lands fully visible so it "stays" home. Adds a visible LID-ON
+  moment (the lid drops + seats) with `jar-close.wav` fired exactly on the seat
+  via an `onLidSeat` callback; whole move slowed to 1650 ms so the cap + travel
+  read clearly.
+- **Out-of-the-box tap response** — removed a 6–8 px dead zone (a tap counted only
+  under 6 px but a drag activated at 8 px, so a ~7 px touch did nothing): any
+  non-drag now places the word.
+- **Glossy UI** — collected bottles rebuilt as chunky ~30 px glossy mason jars
+  (domed lid, screw-band, glass body, inset fruit fill, specular highlight);
+  control/exit/nav buttons restyled as glossy glass pucks; glossy score chip and
+  header fruit-gauge disc.
 
 ### Added
 - **Jar-fly bottle-complete celebration (Ian's jar idea)** — on a full bottle,

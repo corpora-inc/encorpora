@@ -1,26 +1,15 @@
 /**
- * SfxEngine — sound-effects via HTMLAudioElement (NOT Web Audio fetch+decode).
+ * SfxEngine — pure Web Audio. Every sound is decoded ONCE (from inlined base64,
+ * src/audio/audioData.ts) into an AudioBuffer and played via a fresh
+ * AudioBufferSourceNode straight on the audio hardware clock. That makes onset
+ * sample-accurate and LOCKED to the visuals — no scheduling jitter, no fetch, no
+ * CORS, fully offline/native. Overlap-safe (a new sound never cuts the previous).
  *
- * Why HTMLAudioElement: the pack is served from the dev server (or, when
- * installed, the host's pack scheme) which is a DIFFERENT ORIGIN than the
- * webview the pack runs in. A Web Audio `fetch()` of the WAV is therefore a
- * cross-origin request and is BLOCKED by CORS (the dev server sends no CORS
- * headers) → the buffer never loads → silence. Media elements (`<audio>`/`Audio`)
- * load cross-origin media WITHOUT CORS (same as <img>/<video>), so this path
- * works both on the dev manifest and when installed.
- *
- * Design (mobile-first, fail-safe):
- *  - Preload one base `Audio` per sound (resolved relative to the pack script).
- *  - iOS needs a user gesture before the FIRST playback; we "unlock" by doing a
- *    muted play()/pause() on the first pointerdown/touchend/click.
- *  - play(name) clones the base element so repeats/overlaps don't cut each other.
- *  - EVERY path is wrapped so a missing file / blocked play / no-Audio env is a
- *    silent no-op — it must NEVER throw into the game loop.
- *
- * Asset resolution: the host injects the pack SCRIPT URL as `data-corp-game-src`
- * (= the built `dist/app.js`); the WAVs are copied to `dist/audio/` beside it, so
- * we resolve `audio/<file>` RELATIVE TO THAT SRC.
+ * iOS requires a user gesture before audio plays, so we resume the shared
+ * AudioContext on the first pointerdown/touchend/click. play() is wrapped so a
+ * stray error can never throw into the game loop.
  */
+import { SFX_WAV_BASE64 } from "./audioData"
 
 export type SfxName =
   | "win"
@@ -32,139 +21,109 @@ export type SfxName =
   | "snap"
   | "ping"
 
-// ---- Pack script URL capture (module-load, while currentScript is the pack) --
-const PACK_SCRIPT_SRC: string | null = (() => {
-  if (typeof document === "undefined") return null
-  try {
-    const fromScript =
-      (document.currentScript as HTMLScriptElement | null)?.dataset?.corpGameSrc ?? null
-    if (fromScript) return fromScript
-    const tagged = document.querySelector<HTMLScriptElement>("script[data-corp-game-src]")
-    return tagged?.dataset?.corpGameSrc ?? null
-  } catch {
-    return null
-  }
-})()
-
-function audioUrl(file: string): string {
-  const rel = `audio/${file}`
-  if (PACK_SCRIPT_SRC) {
-    try {
-      return new URL(rel, PACK_SCRIPT_SRC.split("?")[0]).toString()
-    } catch {
-      /* fall through */
-    }
-  }
-  return `./${rel}`
-}
-
-const FILES: Record<SfxName, string | null> = {
-  win: "win.wav",
-  fill: "fill.wav",
-  bottleComplete: "level-complete.wav",
-  jarClose: "jar-close.wav",
-  snap: "snap.wav",
-  ping: "ping-h-1.wav",
-  place: null,
-  pick: null,
-}
-
-// Per-event playback gain (HTMLAudioElement volume 0..1). Full volume on the
-// chime + level-complete so they stay clean; the glug a touch under; the
-// tap-snap + accent ping sit well UNDER the voice so they never compete with it.
+// Per-event playback gain (0..1). STRONG + crisp across the board: pour, win
+// chime, bottle-complete, jar-close, and snap all at full; only the accent ping
+// sits a hair under so it layers on the win without clipping.
 const VOLUME: Partial<Record<SfxName, number>> = {
   win: 1.0,
-  fill: 0.85,
+  fill: 1.0,
   bottleComplete: 1.0,
-  jarClose: 0.9,
-  snap: 0.5,
-  ping: 0.5,
+  jarClose: 1.0,
+  snap: 1.0,
+  ping: 0.9,
+}
+
+type AudioCtxCtor = typeof AudioContext
+function getAudioContextCtor(): AudioCtxCtor | null {
+  if (typeof window === "undefined") return null
+  const w = window as unknown as {
+    AudioContext?: AudioCtxCtor
+    webkitAudioContext?: AudioCtxCtor
+  }
+  return w.AudioContext ?? w.webkitAudioContext ?? null
+}
+
+function base64ToArrayBuffer(b64: string): ArrayBuffer {
+  const bin = atob(b64)
+  const len = bin.length
+  const bytes = new Uint8Array(len)
+  for (let i = 0; i < len; i++) bytes[i] = bin.charCodeAt(i)
+  return bytes.buffer
 }
 
 class SfxEngineImpl {
-  private base = new Map<SfxName, HTMLAudioElement>()
-  private unlocked = false
+  private ctx: AudioContext | null = null
+  private buffers = new Map<SfxName, AudioBuffer>()
+  private ready = false
   private unlockBound = false
-  private unsupported = typeof Audio === "undefined"
 
-  /** Preload one base element per known sound. Safe to call repeatedly. */
+  /** Create the context, decode every sound once, and arm the gesture unlock. */
   preload(): void {
-    if (this.unsupported) return
-    this.ensure("win")
-    this.ensure("fill")
-    this.ensure("bottleComplete")
-    this.ensure("jarClose")
-    this.ensure("snap")
-    this.ensure("ping")
+    if (this.ready) return
+    this.ready = true
+    const Ctor = getAudioContextCtor()
+    if (!Ctor) return
+    try {
+      this.ctx = new Ctor()
+    } catch {
+      this.ctx = null
+      return
+    }
+    const ctx = this.ctx
+    for (const key of Object.keys(SFX_WAV_BASE64) as SfxName[]) {
+      const b64 = SFX_WAV_BASE64[key]
+      if (!b64) continue
+      try {
+        // Callback form so older WebKit (no promise return) works. Decoding runs
+        // fine while the context is suspended; the gesture only gates playback.
+        ctx.decodeAudioData(
+          base64ToArrayBuffer(b64),
+          (decoded) => this.buffers.set(key, decoded),
+          () => undefined
+        )
+      } catch {
+        /* this sound stays silent rather than crashing the load */
+      }
+    }
     this.bindUnlock()
   }
 
-  private ensure(name: SfxName): HTMLAudioElement | null {
-    if (this.unsupported) return null
-    const cached = this.base.get(name)
-    if (cached) return cached
-    const file = FILES[name]
-    if (!file) return null
-    try {
-      const a = new Audio()
-      a.src = audioUrl(file)
-      a.preload = "auto"
-      a.crossOrigin = null // media playback does NOT need CORS; keep it unset
-      a.load()
-      this.base.set(name, a)
-      return a
-    } catch {
-      return null
-    }
-  }
-
-  /** iOS unlocks media after the first gesture-initiated play(). */
-  private bindUnlock() {
+  /** iOS starts the context suspended; resume it on the first gesture. */
+  private bindUnlock(): void {
     if (this.unlockBound || typeof window === "undefined") return
     this.unlockBound = true
-    const unlock = () => {
-      if (this.unlocked) return
-      this.unlocked = true
-      for (const a of this.base.values()) {
-        try {
-          a.muted = true
-          const p = a.play()
-          if (p && typeof p.then === "function") {
-            p.then(() => {
-              a.pause()
-              a.currentTime = 0
-              a.muted = false
-            }).catch(() => {
-              a.muted = false
-            })
-          } else {
-            a.pause()
-            a.currentTime = 0
-            a.muted = false
-          }
-        } catch {
-          a.muted = false
+    const resume = () => {
+      const ctx = this.ctx
+      if (!ctx) return
+      try {
+        if (ctx.state === "suspended" && typeof ctx.resume === "function") {
+          const p = ctx.resume()
+          if (p && typeof p.then === "function") p.catch(() => undefined)
         }
+      } catch {
+        /* noop */
       }
     }
     const opts = { passive: true } as AddEventListenerOptions
-    window.addEventListener("pointerdown", unlock, opts)
-    window.addEventListener("touchend", unlock, opts)
-    window.addEventListener("click", unlock, opts)
+    window.addEventListener("pointerdown", resume, opts)
+    window.addEventListener("touchend", resume, opts)
+    window.addEventListener("click", resume, opts)
   }
 
-  /** Play a sound. Clones the base element so repeats/overlaps don't clip. */
+  /** Play a sound: fresh source on the audio clock — instant, overlap-safe. */
   play(name: SfxName): void {
+    const ctx = this.ctx
+    const buffer = this.buffers.get(name)
+    if (!ctx || !buffer) return
     try {
-      const baseEl = this.ensure(name)
-      if (!baseEl) return
-      // Clone so a new completion doesn't cut off the previous one (and so the
-      // fill + win can overlap). Cloned nodes share the cached media resource.
-      const el = baseEl.cloneNode(true) as HTMLAudioElement
-      el.volume = VOLUME[name] ?? 1
-      el.muted = false
-      const p = el.play()
-      if (p && typeof p.then === "function") p.catch(() => undefined)
+      if (ctx.state === "suspended" && typeof ctx.resume === "function") ctx.resume()
+      const src = ctx.createBufferSource()
+      src.buffer = buffer
+      const gain = ctx.createGain()
+      gain.gain.value = VOLUME[name] ?? 1
+      src.connect(gain)
+      gain.connect(ctx.destination)
+      src.start(0)
     } catch {
       /* never throw into the game loop */
     }

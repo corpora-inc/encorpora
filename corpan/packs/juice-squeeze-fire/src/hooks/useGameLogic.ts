@@ -21,7 +21,7 @@
  */
 import { useCallback, useEffect, useRef, useState } from "react"
 import type { HostApi } from "../sdk/types"
-import { useGameStore } from "../state/gameStore"
+import { useGameStore, BASKET_SIZE } from "../state/gameStore"
 import { getAllFruits, type CEFRLevel, type FruitDef } from "../state/fruits"
 import { loadUtterance, type Utterance } from "../util/phraseLoader"
 import { pickLanguagePair } from "../util/languagePair"
@@ -32,7 +32,8 @@ import { useTTS } from "./useTTS"
 import { useHistory, type HistoryEntry } from "./useHistory"
 import { useSfx } from "./useSfx"
 import { useHaptics } from "./useHaptics"
-import { launchJarFly } from "../components/jarFly"
+import { launchJarFly, JAR_FLY_MS } from "../components/jarFly"
+import { launchBasketCarry, BASKET_CARRY_MS } from "../components/basketCarry"
 import type { LiquidController } from "../liquid/LiquidController"
 
 // ---- Completion choreography timing (tunable) ----------------------------
@@ -93,7 +94,11 @@ export function useGameLogic(hostApi: HostApi) {
   const advanceTimer = useRef<number | null>(null)
   // Removes an in-flight jar-fly overlay if we unmount / advance mid-celebration.
   const jarFlyCleanup = useRef<(() => void) | null>(null)
+  const basketCleanup = useRef<(() => void) | null>(null)
   const mounted = useRef(true)
+  // Next bottle's color, stashed during a bottle-complete so the level modal's
+  // Continue (dismissLevelComplete) can apply it AFTER the juice has drained.
+  const pendingColorRef = useRef<number | null>(null)
 
   const clearWinTimers = useCallback(() => {
     winTimers.current.forEach((t) => window.clearTimeout(t))
@@ -105,6 +110,10 @@ export function useGameLogic(hostApi: HostApi) {
     if (jarFlyCleanup.current) {
       jarFlyCleanup.current()
       jarFlyCleanup.current = null
+    }
+    if (basketCleanup.current) {
+      basketCleanup.current()
+      basketCleanup.current = null
     }
   }, [])
 
@@ -257,6 +266,9 @@ export function useGameLogic(hostApi: HostApi) {
     const pbBefore = store.bottleProgress.phrasesInCurrentBottle
     const willComplete = pbBefore + 1 >= 10
     const pourTarget = willComplete ? 1.0 : (pbBefore + 1) / 10
+    // Next bottle's color — computed now but applied only AFTER the current juice
+    // fills/caps/drains, so the full pour shows the CURRENT color, not the next.
+    const nextColor = (colorIndex + 1) % allFruits.length
 
     // Scoring / bottle bookkeeping — runs NOW so progress is never lost.
     store.incrementCompletedPhrases()
@@ -300,82 +312,85 @@ export function useGameLogic(hostApi: HostApi) {
 
     updateDebug({ hasWon: true })
 
-    // ---- Bottle-complete branch: color cycle + maybe level-complete modal --
-    let levelCompleting = false
-    if (willComplete) {
-      const after = useGameStore.getState().bottleProgress
-      console.log("[juice-squeeze-fire] bottle complete", {
-        bottles: after.bottleCollection.length,
-        level: after.currentLevel,
-      })
-      // ---- Jar-fly celebration (Ian's jar idea) --------------------------
-      // After the fill-to-100% + the celebration beat and BEFORE the drain, a
-      // small CAPPED jar (the just-completed bottle's fruit gradient) appears
-      // center-screen and flies UP into the header BottleCollection. The
-      // jar-close sound plays at the moment the lid caps (start of the fly),
-      // and the screen drains as the jar flies. Same instant as the
-      // drain/modal below so they read as one coordinated beat.
-      const completedGradient = currentFruit.gradient
-      const tJar = window.setTimeout(() => {
-        if (!mounted.current) return
-        sfx.play("jarClose") // lid caps → fly up
-        jarFlyCleanup.current = launchJarFly(completedGradient)
-      }, VOICE_DELAY + CELEBRATION_BEAT)
-      winTimers.current.push(tJar)
-
-      // Cycle the bottle color for variety + persist (shipped game.ts ~1515).
-      const nextColor = (colorIndex + 1) % allFruits.length
-      useGameStore.getState().setColorIndex(nextColor)
-
-      // Level-complete check (shipped ~1527): bottlesNeeded for level, or 99 cap.
-      const bp = useGameStore.getState().bottleProgress
-      if (useGameStore.getState().isLevelComplete() || bp.bottlesCompletedThisLevel >= 99) {
-        levelCompleting = true
-        const fruit = allFruits[nextColor]
-        console.log("[juice-squeeze-fire] level complete", {
-          level: bp.currentLevel,
-          bottles: bp.bottlesCompletedThisLevel,
-        })
-        // Show the modal after the voice + a celebration beat; its Continue
-        // (dismissLevelComplete) resets the glass + loads the next phrase.
-        const tLvl = window.setTimeout(() => {
-          if (!mounted.current) return
-          setLevelComplete({
-            fruit,
-            bottlesCompleted: bp.bottlesCompletedThisLevel,
-            nextLevel: getNextLevelSuggestion(hostApi),
-          })
-        }, VOICE_DELAY + CELEBRATION_BEAT)
-        winTimers.current.push(tLvl)
-      }
-    }
-
-    // ---- Auto-advance ------------------------------------------------------
-    // When a level completed, the modal's Continue drives the next load (and the
-    // reset), so we don't auto-advance here.
-    if (levelCompleting) return
-
-    if (willComplete) {
-      // Bottle full but no level modal: hold the full glass for a celebration
-      // beat, RESET to empty, then advance to a fresh empty card.
-      const tComplete = window.setTimeout(() => {
-        if (!mounted.current) return
-        liquidRef.current?.setFill(0, { animate: true }) // drain to empty
-        advanceTimer.current = window.setTimeout(() => {
-          advanceTimer.current = null
-          if (mounted.current) void loadNext()
-        }, ADVANCE_BUFFER)
-      }, VOICE_DELAY + CELEBRATION_BEAT)
-      winTimers.current.push(tComplete)
-    } else {
-      // Normal win: glass stays at pourTarget; advance after the voice (scaled
-      // to sentence length). The next load re-sets the same level with
-      // animate:false → no pour on the fresh card.
+    // ---- NORMAL win: advance after the voice (scaled to sentence length) -----
+    if (!willComplete) {
       advanceTimer.current = window.setTimeout(() => {
         advanceTimer.current = null
         if (mounted.current) void loadNext()
       }, advanceDelayFor(wordCount))
+      return
     }
+
+    // ---- BOTTLE COMPLETE -----------------------------------------------------
+    // The pour above already targets 1.0, so the glass fills to the TOP in its
+    // OWN color — the color is NOT changed yet (that was the bug: it switched at
+    // t=0 so you watched the NEXT color fill). Sequence:
+    //   t≈VOICE_DELAY+BEAT      cap → jar-fly → drain  (still current color)
+    //   t≈…+JAR_FLY_MS          switch to next color (glass now empty) → advance
+    const after = useGameStore.getState().bottleProgress
+    console.log("[juice-squeeze-fire] bottle complete", {
+      bottles: after.bottleCollection.length,
+      level: after.currentLevel,
+    })
+    const completedGradient = currentFruit.gradient
+    const bp = useGameStore.getState().bottleProgress
+    const isLevelDone =
+      useGameStore.getState().isLevelComplete() || bp.bottlesCompletedThisLevel >= 99
+
+    // Cap + jar-fly + drain — all in the CURRENT color, at the celebration beat.
+    const tCap = window.setTimeout(() => {
+      if (!mounted.current) return
+      // The jar pops up, the lid drops on, then it flies home. The jar-close
+      // sound fires exactly when the lid SEATS (onLidSeat), so cap + clunk land
+      // together instead of guessing at a delay.
+      jarFlyCleanup.current = launchJarFly(completedGradient, {
+        onLidSeat: () => sfx.play("jarClose"),
+      })
+      liquidRef.current?.setFill(0, { animate: true }) // drain the current juice
+    }, VOICE_DELAY + CELEBRATION_BEAT)
+    winTimers.current.push(tCap)
+
+    // At the dock moment: if the shelf just hit a full basket, carry it off +
+    // mint a coin FIRST (its own beat), then show the level modal / advance.
+    const tDock = window.setTimeout(() => {
+      if (!mounted.current) return
+      const shelf = useGameStore.getState().bottleProgress.bottleCollection
+      let basketDelay = 0
+      if (shelf.length >= BASKET_SIZE) {
+        basketDelay = BASKET_CARRY_MS
+        basketCleanup.current = launchBasketCarry({
+          // Jars cloned → clear the real shelf so they don't double up.
+          onStart: () => useGameStore.getState().removeBasketJars(BASKET_SIZE),
+          // Coin lands in the header counter → mint it + a bright ding.
+          onCoin: () => {
+            useGameStore.getState().addCoins(1)
+            sfx.play("ping")
+          },
+        })
+      }
+
+      const finish = window.setTimeout(() => {
+        if (!mounted.current) return
+        if (isLevelDone) {
+          // Stash next color so dismissLevelComplete applies it on Continue.
+          pendingColorRef.current = nextColor
+          setLevelComplete({
+            fruit: currentFruit,
+            bottlesCompleted: bp.bottlesCompletedThisLevel,
+            nextLevel: getNextLevelSuggestion(hostApi),
+          })
+        } else {
+          // Switch the now-empty glass to the next bottle's color, then advance.
+          useGameStore.getState().setColorIndex(nextColor)
+          advanceTimer.current = window.setTimeout(() => {
+            advanceTimer.current = null
+            if (mounted.current) void loadNext()
+          }, ADVANCE_BUFFER)
+        }
+      }, basketDelay)
+      winTimers.current.push(finish)
+    }, VOICE_DELAY + CELEBRATION_BEAT + JAR_FLY_MS)
+    winTimers.current.push(tDock)
   }, [allFruits, getColorIndex, haptics, hostApi, loadNext, sfx, speak, updateDebug])
 
   // Called by the DnD layer after every placement/reorder that changes the
@@ -431,11 +446,12 @@ export function useGameLogic(hostApi: HostApi) {
 
   const dismissLevelComplete = useCallback(() => {
     setLevelComplete(null)
-    // The bottle filled to full while the modal was up; drain it to empty
-    // (animated) so the next card starts on a fresh empty glass. loadNext()'s
-    // applyUtterance re-sets fill to the current (now 0) level with no pour.
-    liquidRef.current?.setFill(0, { animate: true })
-    // Resume the loop after the modal (shipped just hides it; user advances).
+    // The glass already drained during the jar-fly (before this modal showed),
+    // so just apply the NEXT bottle's color (deferred until now so the completed
+    // juice showed in its OWN color) and load a fresh empty card.
+    const next = pendingColorRef.current
+    pendingColorRef.current = null
+    if (next != null) useGameStore.getState().setColorIndex(next)
     void loadNext()
   }, [loadNext])
 

@@ -73,59 +73,289 @@
   min-width: 0;
 }
 
-.jsf-score {
+/* Score (words) + coins (rewards) sit together as the two tally chips. */
+.jsf-header__tallies {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* Gold coin tally — the meta-loop reward, glossy to match the score chip. */
+.jsf-coins {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.7);
+  gap: 5px;
+  background: linear-gradient(180deg, #fff7d2 0%, #ffe79a 48%, #ffd768 100%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 999px;
-  padding: 4px 12px;
+  padding: 5px 12px;
+  font-weight: 800;
+  font-size: 16px;
+  color: #8a5a12;
+  box-shadow:
+    0 3px 9px rgba(150, 100, 10, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 4px rgba(150, 100, 10, 0.12);
+  overflow: hidden;
+}
+.jsf-coins::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 1px;
+  height: 45%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+.jsf-coins__icon {
+  font-size: 14px;
+  line-height: 1;
+  color: #f4b423;
+  text-shadow:
+    0 1px 1px rgba(140, 90, 10, 0.5),
+    0 0 6px rgba(255, 210, 80, 0.6);
+}
+.jsf-coins__count {
+  position: relative;
+  display: inline-block;
+  min-width: 0.7em;
+  text-align: center;
+  animation: jsf-coin-pop 0.42s cubic-bezier(0.34, 1.56, 0.5, 1);
+}
+@keyframes jsf-coin-pop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.55); color: #f59e00; }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-coins__count { animation: none; }
+}
+
+.jsf-score {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  /* Frosted glass capsule with a faint warm core, a crisp white rim, and a
+     hairline outer ring of light — reads as a polished premium token. */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(255, 255, 255, 0.72) 46%,
+      rgba(252, 246, 240, 0.86) 100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  padding: 4px 13px 4px 5px;
   font-weight: 800;
   font-size: 18px;
   color: #c0392b;
   align-self: flex-start;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95),
+    0 4px 12px rgba(40, 24, 8, 0.14),
+    0 8px 20px rgba(192, 57, 43, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 5px rgba(140, 40, 30, 0.07);
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
-.jsf-score__value { line-height: 1; }
+/* Glossy top sheen across the chip. */
+.jsf-score::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 1px;
+  height: 46%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+/* A slow specular streak that travels across the capsule — the "expensive
+   glass catching light" touch. Pure transform; honors reduced-motion below. */
+.jsf-score::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40%;
+  width: 28%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-18deg);
+  pointer-events: none;
+  animation: jsf-score-sheen 5.5s ease-in-out 1.2s infinite;
+}
+/* The star medallion — a tiny domed golden coin that anchors the chip and
+   echoes the coins tally without copying it. */
+.jsf-score__badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    120% 120% at 34% 26%,
+    #fff3c4 0%,
+    #ffdd6e 38%,
+    #ffc23c 68%,
+    #f59a17 100%
+  );
+  box-shadow:
+    0 1px 3px rgba(150, 90, 10, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 3px rgba(150, 90, 10, 0.32);
+}
+.jsf-score__star {
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  text-shadow:
+    0 1px 0 rgba(170, 100, 12, 0.55),
+    0 0 4px rgba(255, 220, 120, 0.7);
+}
+.jsf-score__value {
+  position: relative;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  /* Crisp embossed numerals: white top-light + tight warm shade. */
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85),
+    0 1px 2px rgba(140, 40, 30, 0.18);
+}
+@keyframes jsf-score-sheen {
+  0% { transform: translateX(0) skewX(-18deg); }
+  18% { transform: translateX(640%) skewX(-18deg); }
+  100% { transform: translateX(640%) skewX(-18deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-score::after { animation: none; opacity: 0; }
+}
 
 .jsf-collection {
   display: flex;
-  align-items: center;
-  gap: 4px;
+  align-items: flex-end;
+  gap: 6px;
   flex-wrap: wrap;
   min-height: 8px;
 }
-/* Each completed bottle is a small CAPPED-JAR icon: a lid band on top + a glass
- * body filled with that bottle's fruit gradient. The jar-fly celebration lands a
+/* Each completed bottle is a chunky, glossy little MASON/JUICE JAR: a metal lid
+ * with a screw-band, rounded glass shoulders, a vivid fruit fill, and a vertical
+ * specular highlight running down the glass. The jar-fly celebration lands a
  * matching jar here so it visually "joins" the collection. */
 .jsf-jar-icon {
-  width: 16px;
+  width: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+  filter: drop-shadow(0 2px 3px rgba(40, 24, 8, 0.28));
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.4, 1);
 }
+.jsf-jar-icon:hover { transform: translateY(-1px) scale(1.05); }
+/* Metal lid: domed, with a bright specular streak and a subtle bottom shade. */
 .jsf-jar-icon__lid {
-  width: 15px;
-  height: 5px;
-  border-radius: 3px 3px 2px 2px;
-  background: linear-gradient(180deg, #d8a04a 0%, #b9792c 60%, #9c641f 100%);
-  border: 1px solid rgba(80, 48, 12, 0.5);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  margin-bottom: -1px;
-  z-index: 1;
+  position: relative;
+  width: 26px;
+  height: 8px;
+  border-radius: 5px 5px 3px 3px;
+  background: linear-gradient(
+    180deg,
+    #f4d488 0%,
+    #d8a04a 34%,
+    #b9792c 70%,
+    #9c641f 100%
+  );
+  border: 1px solid rgba(80, 48, 12, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1.5px 2px rgba(80, 48, 12, 0.4);
+  margin-bottom: -2px;
+  z-index: 2;
+  overflow: hidden;
 }
+/* Screw-band: a thin embossed ring across the lid for the "mason jar" read. */
+.jsf-jar-icon__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1.5px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 22%,
+    rgba(120, 72, 22, 0.5) 50%,
+    rgba(255, 255, 255, 0.55) 78%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+/* Glass body: clear shell with rounded shoulders; the colored fill + shine sit
+ * inside it so the glass edge stays visible all around the juice. */
 .jsf-jar-icon__body {
-  width: 14px;
-  height: 20px;
-  border-radius: 3px 3px 5px 5px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  position: relative;
+  width: 26px;
+  height: 32px;
+  border-radius: 6px 6px 9px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 -3px 5px rgba(0, 0, 0, 0.22),
+    inset 0 2px 3px rgba(255, 255, 255, 0.5),
+    inset 1px 0 1px rgba(255, 255, 255, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+/* The juice fill — inset slightly so a glass rim shows around it. */
+.jsf-jar-icon__fill {
+  position: absolute;
+  left: 1.5px;
+  right: 1.5px;
+  top: 2px;
+  bottom: 1.5px;
+  border-radius: 4px 4px 7px 7px;
+  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.28);
+}
+/* Vertical specular highlight down the left of the glass — the gloss key. */
+.jsf-jar-icon__shine {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 5px;
+  height: 70%;
+  border-radius: 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.32) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
 }
 .jsf-collection__overflow {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 800;
   color: #8a5a2b;
+  align-self: center;
+  padding-bottom: 2px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 /* ---- Current-fruit header indicator ---- */
@@ -135,27 +365,122 @@
  * the margin-right so they never overlap. The fruit cycles with the bottle
  * color (BottleGauge reads currentColorIndex). */
 .jsf-gauge {
+  --jsf-gauge-tint: #ff8c2b;
+  --jsf-gauge-tint-lo: #ffb84d;
+  --jsf-gauge-tint-hi: #e65100;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
   margin-right: 44px;
 }
 .jsf-gauge__fruit {
-  font-size: 38px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
   line-height: 1;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
+  isolation: isolate;
+  /* Premium "juice lens": a clear glass disc tinted with the CURRENT fruit's
+     color so it reads unmistakably as the juice being filled now. Light keys
+     from the upper-left; a tinted floor pools at the bottom; a colored halo
+     bleeds beyond the rim. */
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      130% 110% at 30% 20%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.62) 22%,
+      color-mix(in srgb, var(--jsf-gauge-tint) 22%, transparent) 56%,
+      color-mix(in srgb, var(--jsf-gauge-tint-hi) 46%, transparent) 100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--jsf-gauge-tint) 30%, transparent),
+    0 5px 14px rgba(40, 24, 8, 0.2),
+    0 6px 22px color-mix(in srgb, var(--jsf-gauge-tint) 38%, transparent),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -6px 11px color-mix(in srgb, var(--jsf-gauge-tint-hi) 36%, transparent);
   /* Gentle bob/pulse so the current fruit feels alive without distracting. */
   animation: jsf-fruit-bob 2.5s ease-in-out infinite;
   will-change: transform;
+}
+/* Rotating tinted conic ring just outside the glass — a refined "active /
+   filling now" indicator that orbits slowly. */
+.jsf-gauge__ring {
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    color-mix(in srgb, var(--jsf-gauge-tint) 75%, white) 0%,
+    color-mix(in srgb, var(--jsf-gauge-tint-hi) 70%, transparent) 28%,
+    transparent 52%,
+    color-mix(in srgb, var(--jsf-gauge-tint) 65%, white) 78%,
+    color-mix(in srgb, var(--jsf-gauge-tint) 75%, white) 100%
+  );
+  -webkit-mask: radial-gradient(closest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+  mask: radial-gradient(closest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+  opacity: 0.9;
+  animation: jsf-gauge-spin 6s linear infinite;
+  pointer-events: none;
+}
+/* A soft tinted glow pooled in the lower half — the juice "body" inside. */
+.jsf-gauge__glow {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 6%;
+  height: 52%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    100% 100% at 50% 100%,
+    color-mix(in srgb, var(--jsf-gauge-tint) 55%, transparent) 0%,
+    transparent 72%
+  );
+  filter: blur(1px);
+  pointer-events: none;
+}
+.jsf-gauge__emoji {
+  position: relative;
+  font-size: 34px;
+  line-height: 1;
+  text-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.24),
+    0 0 10px color-mix(in srgb, var(--jsf-gauge-tint) 40%, transparent);
+}
+/* Bright crescent specular on the disc's upper-left. */
+.jsf-gauge__fruit::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 6px;
+  width: 22px;
+  height: 13px;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(-18deg);
+  pointer-events: none;
 }
 @keyframes jsf-fruit-bob {
   0%, 100% { transform: translateY(0) scale(1); }
   50% { transform: translateY(-3px) scale(1.06); }
 }
-/* Respect reduced-motion: hold the fruit still. */
+@keyframes jsf-gauge-spin {
+  to { transform: rotate(360deg); }
+}
+/* Respect reduced-motion: hold the fruit + ring still. */
 @media (prefers-reduced-motion: reduce) {
   .jsf-gauge__fruit { animation: none; }
+  .jsf-gauge__ring { animation: none; }
 }
 
 /* ---- Main column ---- */
@@ -173,42 +498,104 @@
 }
 
 /* ---- Target phrase ---- */
+/* The display title — the phrase the player must translate. Treated as a
+ * high-end glossy headline to match the glass chrome around it: a frosted glass
+ * plaque, a refined display type stack, considered weight/tracking/leading, and
+ * layered DEPTH (a soft emboss/lift below + a faint top sheen above) so it reads
+ * embossed and lifted. The depth is built from TEXT-SHADOWS only (cheap, no
+ * filters) and stays subtle enough to keep every script crisply legible. */
 .jsf-target {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 7px;
+  align-items: center;
 }
 .jsf-target__text {
-  font-size: clamp(20px, 6vw, 30px);
+  font-family:
+    "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Helvetica Neue", "Hiragino Sans", "Noto Sans", Roboto,
+    system-ui, sans-serif;
+  font-size: clamp(21px, 6.2vw, 32px);
   font-weight: 800;
-  color: #2c1a08;
-  /* Tasteful frosted scrim (not a heavy white box): a soft pill that hugs the
-     phrase so it stays legible as the colored liquid rises behind it. A soft
-     white halo (text-shadow) reinforces contrast at high fill. */
-  background: rgba(255, 255, 255, 0.46);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 18px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
+  letter-spacing: -0.006em;
+  line-height: 1.2;
+  text-wrap: balance;
+  /* ONE BIG JUICE BLOCK: the same glossy pill language as the word-blocks below,
+     filled with the CURRENT juice gradient (--jc-1 light → --jc-3 dark, set
+     inline from the active fruit). White ink with a tight dark emboss reads
+     cleanly + punchy on the saturated color. */
+  color: #fff;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--jc-1, #ffb84d) 86%, white) 0%,
+    var(--jc-2, #ff9800) 48%,
+    var(--jc-3, #e65100) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--jc-3, #e65100) 70%, black);
+  border-radius: 20px;
   cursor: pointer;
-  line-height: 1.25;
-  padding: 8px 18px;
+  padding: 12px 24px;
+  box-shadow:
+    0 7px 18px color-mix(in srgb, var(--jc-2, #ff9800) 45%, transparent),
+    0 2px 4px rgba(0, 0, 0, 0.16),
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -4px 9px color-mix(in srgb, var(--jc-3, #e65100) 72%, black);
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.85),
-    0 0 12px rgba(255, 255, 255, 0.75);
-  /* Very long target phrases wrap instead of overflowing (FIX 4). */
+    0 1px 1px rgba(0, 0, 0, 0.42),
+    0 1px 6px rgba(0, 0, 0, 0.22);
+  /* Very long target phrases wrap instead of overflowing. */
   overflow-wrap: break-word;
+  word-break: break-word;
   max-width: 92vw;
   align-self: center;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  transition: transform 0.12s cubic-bezier(0.34, 1.5, 0.5, 1), box-shadow 0.15s;
+}
+/* Glossy white top sheen across the block — the word-block ::before gloss. */
+.jsf-target__text::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 2px;
+  height: 42%;
+  border-radius: 16px 16px 28px 28px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.jsf-target__text:active {
+  transform: scale(0.975) translateY(0.5px);
+  box-shadow:
+    0 3px 9px color-mix(in srgb, var(--jc-2, #ff9800) 40%, transparent),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -3px 7px color-mix(in srgb, var(--jc-3, #e65100) 72%, black);
 }
 .jsf-target__build {
-  font-size: 12px;
+  /* A quiet, refined caption: the target language's own native name. Widely
+     letterspaced small-caps-feel, hushed warm-bronze, gentle white lift — it
+     supports the headline without competing with it. */
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #b5793c;
+  color: #5f6675; /* neutral slate — harmonizes under any juice color */
+  opacity: 0.92;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+/* RTL / CJK native names don't take uppercase or wide Latin tracking well —
+ * relax both so e.g. "العربية" and "日本語" read naturally. */
+.jsf-target__build[dir="rtl"] {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-target__text { transition: none; }
 }
 
 /* ---- Sentence build area ---- */
@@ -273,6 +660,18 @@
 }
 .jsf-bank--over { background: rgba(255, 255, 255, 0.58); }
 .jsf-bank__empty { min-height: 40px; width: 100%; }
+/* Build-language tag at the top of the bank — full-width so it sits as a header
+   above the wrapped blocks. Subtle, matching the target label tone. */
+.jsf-bank__lang {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #b5793c;
+  opacity: 0.85;
+}
 
 /* ---- Word block ---- */
 /*
@@ -361,40 +760,192 @@
   gap: 18px;
 }
 .jsf-nav__btn {
+  position: relative;
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.78) 48%,
+    rgba(236, 240, 248, 0.9) 100%
+  );
   color: #c0392b;
   font-size: 20px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  transition: transform 0.1s ease-out, background 0.15s;
+  box-shadow:
+    0 3px 9px rgba(40, 24, 8, 0.14),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.06);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: transform 0.12s cubic-bezier(0.34, 1.5, 0.5, 1), box-shadow 0.15s, opacity 0.15s;
 }
-.jsf-nav__btn:active:not(:disabled) { transform: scale(0.92); }
+.jsf-nav__btn::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 3px;
+  height: 42%;
+  border-radius: 50% 50% 46% 46% / 60% 60% 40% 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.jsf-nav__btn:active:not(:disabled) {
+  transform: scale(0.9) translateY(1px);
+  box-shadow:
+    0 1px 4px rgba(40, 24, 8, 0.18),
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.09);
+}
 .jsf-nav__btn:disabled { opacity: 0.32; cursor: default; }
 
 /* ---- Icon controls ---- */
+/* Glossy glass pucks: a light-to-cool vertical gradient, a crisp white rim, a
+ * specular top sheen (::before), a soft outer drop + inner highlights, and a
+ * springy press that sinks the button and tightens its shadow. */
 .jsf-icon-btn {
+  --jsf-btn-accent: #c0392b;
+  position: relative;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  /* Dimensional glass puck: a top-lit dome (radial) over a cool vertical body,
+     so it reads as a rounded physical button, not a flat disc. */
+  background:
+    radial-gradient(
+      125% 95% at 32% 16%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.5) 32%,
+      rgba(255, 255, 255, 0) 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(244, 247, 252, 0.86) 48%,
+      rgba(228, 234, 244, 0.94) 100%
+    );
   font-size: 23px;
   cursor: pointer;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
+  /* Layered depth: a tinted accent halo, a soft contact shadow, a long ambient
+     shadow, plus inner top-light and bottom-shade for the dome. */
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--jsf-btn-accent) 14%, transparent),
+    0 2px 4px rgba(40, 24, 8, 0.12),
+    0 6px 16px rgba(40, 24, 8, 0.16),
+    0 10px 22px color-mix(in srgb, var(--jsf-btn-accent) 16%, transparent),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.98),
+    inset 0 -4px 8px rgba(40, 24, 8, 0.09);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.1s ease-out, background 0.15s, box-shadow 0.15s;
+  transition:
+    transform 0.13s cubic-bezier(0.34, 1.5, 0.5, 1),
+    box-shadow 0.16s ease,
+    background 0.16s ease;
 }
-.jsf-icon-btn:active { transform: scale(0.92); }
+/* Curved specular sheen across the upper half. */
+.jsf-icon-btn::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 4px;
+  height: 42%;
+  border-radius: 50% 50% 46% 46% / 60% 60% 40% 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.28) 58%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+/* The glyph rides on its own layer so it can lift/shadow independently of the
+   glass — gives the icon real dimension and a premium micro-interaction. */
+.jsf-icon-btn__glyph {
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  display: inline-flex;
+  filter: drop-shadow(0 1px 1.5px rgba(40, 24, 8, 0.28));
+  transition: transform 0.16s cubic-bezier(0.34, 1.5, 0.5, 1), filter 0.16s ease;
+}
+@media (hover: hover) {
+  .jsf-icon-btn:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--jsf-btn-accent) 26%, transparent),
+      0 4px 8px rgba(40, 24, 8, 0.14),
+      0 9px 22px rgba(40, 24, 8, 0.18),
+      0 14px 28px color-mix(in srgb, var(--jsf-btn-accent) 24%, transparent),
+      inset 0 1.5px 1px rgba(255, 255, 255, 0.98),
+      inset 0 -4px 8px rgba(40, 24, 8, 0.09);
+  }
+  .jsf-icon-btn:hover .jsf-icon-btn__glyph {
+    transform: translateY(-1px) scale(1.06);
+    filter: drop-shadow(0 3px 4px rgba(40, 24, 8, 0.3));
+  }
+}
+.jsf-icon-btn:active {
+  transform: scale(0.9) translateY(1px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--jsf-btn-accent) 20%, transparent),
+    0 2px 6px rgba(40, 24, 8, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.75),
+    inset 0 -2px 5px rgba(40, 24, 8, 0.12),
+    inset 0 3px 7px color-mix(in srgb, var(--jsf-btn-accent) 18%, transparent);
+}
+.jsf-icon-btn:active .jsf-icon-btn__glyph {
+  transform: scale(0.94) translateY(0.5px);
+  filter: drop-shadow(0 1px 1px rgba(40, 24, 8, 0.22));
+}
+
+/* Per-button accent tints — each picks a palette hue so its halo + press glow
+   reads as its own affordance (fruit = orange, ear = cyan, eye = purple). */
+.jsf-icon-btn--fruit { --jsf-btn-accent: #ff6b35; }
+.jsf-icon-btn--ear { --jsf-btn-accent: #00bbf9; }
+.jsf-icon-btn--eye { --jsf-btn-accent: #9b5de5; }
+
+/* Active (fruit-flip on): warm amber glass with a glowing ring + a brighter,
+   slightly larger glyph so the "on" state is unmistakable. */
 .jsf-icon-btn--active {
-  background: #ffd54f;
-  box-shadow: 0 0 0 3px rgba(255, 167, 38, 0.5), 0 3px 12px rgba(0, 0, 0, 0.18);
+  background:
+    radial-gradient(
+      125% 95% at 32% 16%,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 245, 200, 0.4) 34%,
+      rgba(255, 245, 200, 0) 62%
+    ),
+    linear-gradient(
+      180deg,
+      #ffe9a0 0%,
+      #ffd54f 48%,
+      #ffbf2e 100%
+    );
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(255, 167, 38, 0.5),
+    0 4px 12px rgba(180, 110, 10, 0.3),
+    0 8px 20px rgba(255, 167, 38, 0.28),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 6px rgba(160, 100, 8, 0.24);
+}
+.jsf-icon-btn--active .jsf-icon-btn__glyph {
+  transform: scale(1.04);
+  filter: drop-shadow(0 1px 2px rgba(150, 90, 10, 0.4));
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-icon-btn,
+  .jsf-icon-btn__glyph { transition: none; }
 }
 
 /* Exit stays absolute in the very top-right corner; nothing overlaps it. */
@@ -581,28 +1132,28 @@
   top: 0;
   z-index: 18;
   pointer-events: none;
-  width: 40px;
+  width: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.28));
-  animation: jsf-jarfly-move 900ms cubic-bezier(0.42, 0, 0.2, 1) forwards;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.32));
+  animation: jsf-jarfly-move 1300ms cubic-bezier(0.34, 0, 0.2, 1) forwards;
   will-change: transform, opacity;
 }
 .jsf-jarfly__lid {
-  width: 34px;
-  height: 10px;
-  border-radius: 5px 5px 3px 3px;
+  width: 56px;
+  height: 16px;
+  border-radius: 7px 7px 4px 4px;
   background: linear-gradient(180deg, #d8a04a 0%, #b9792c 58%, #9c641f 100%);
-  border: 1px solid rgba(80, 48, 12, 0.55);
+  border: 1.5px solid rgba(80, 48, 12, 0.55);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
   margin-bottom: -2px;
   z-index: 1;
 }
 .jsf-jarfly__body {
-  width: 32px;
-  height: 42px;
-  border-radius: 4px 4px 9px 9px;
+  width: 52px;
+  height: 66px;
+  border-radius: 5px 5px 12px 12px;
   border: 1.5px solid rgba(255, 255, 255, 0.8);
   box-shadow: inset 0 -3px 7px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.4);
 }

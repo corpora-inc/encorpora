@@ -8,6 +8,8 @@
 import { useDroppable } from "@dnd-kit/core"
 import { WordBlock } from "./WordBlock"
 import { useGameStore } from "../state/gameStore"
+import { getNativeLanguageName } from "../util/languageNames"
+import { isRTL } from "../util/rtl"
 import type { BlockSize } from "../hooks/useBlockSizing"
 
 type Props = {
@@ -34,6 +36,7 @@ export function WordBank({
   const bankOrder = useGameStore((s) => s.bankOrder)
   const blocks = useGameStore((s) => s.blocks)
   const { setNodeRef, isOver } = useDroppable({ id: "bank", data: { type: "bank" } })
+  const langRtl = isRTL(blockLang)
 
   return (
     <div
@@ -41,6 +44,12 @@ export function WordBank({
       className={`jsf-bank${isOver ? " jsf-bank--over" : ""}`}
       data-testid="word-bank"
     >
+      {/* Build-language tag: the language you ASSEMBLE the sentence in, shown in
+          its own native name (e.g. "español") so it's clear + correct in every
+          language with no hardcoded English. */}
+      <div className="jsf-bank__lang" dir={langRtl ? "rtl" : "ltr"}>
+        {getNativeLanguageName(blockLang)}
+      </div>
       {bankOrder.length === 0 ? (
         <div className="jsf-bank__empty" aria-hidden />
       ) : (
