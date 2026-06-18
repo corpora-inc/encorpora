@@ -24,7 +24,6 @@ import { useGamesStore, type InstalledGame } from "@/store/games";
 import { useRecentNativeStore } from "@/store/recentNative";
 import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
-import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { jitter } from "@/contentPacks/catalogFetch";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId, installPurchaseUpdatedListener } from "@/contentPacks/purchase";
@@ -184,15 +183,10 @@ export default function App() {
   const onboarded = useSettingsStore((s) => s.onboarded);
   const textSize = useSettingsStore((s) => s.textSize);
 
-  // Track pack updates for badge
-  const gamesMap = useGamesStore((s) => s.games);
-  const catalog = useCatalogStore((s) => s.getCatalog());
   const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
   const fetchPhrasePackCatalog = usePhrasePackCatalogStore(
     (s) => s.fetchCatalog,
   );
-  const installedGames = Object.values(gamesMap);
-  const updates = usePackUpdates(installedGames, catalog);
 
   // Fetch catalog and refresh entitlements on mount
   useEffect(() => {
@@ -729,7 +723,6 @@ export default function App() {
         onSettings={() => setShowSettings(true)}
         onLaunchPhrase={openPhrase}
         onLaunchGame={handleLaunchGame}
-        updateCount={updates.length}
       />
 
       <SettingsModal
