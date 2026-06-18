@@ -19,7 +19,26 @@ export type EntryOut = {
   level: string
   domains: string[]
   translations: TranslationOut[]
+  /** "base" or a phrase-pack id; lets us tag history entries by source. */
+  source?: string
 }
+
+export type GetRandomEntriesOptions = {
+  count: number
+  domains?: string[]
+  levels?: string[]
+  languageCodes?: string[]
+}
+
+/** Haptic feedback types mapped to native generators (iOS/Android). */
+export type HapticType =
+  | "selection"
+  | "light"
+  | "medium"
+  | "heavy"
+  | "success"
+  | "warning"
+  | "error"
 
 export type HostApi = {
   speak: (lang: string, text: string) => void
@@ -29,8 +48,13 @@ export type HostApi = {
   getStackConfig: () => StackConfig
   onStackConfigChange?: (listener: (next: StackConfig) => void) => () => void
   getRandomEntry?: () => Promise<EntryOut>
-  getRandomEntries?: (count: number) => Promise<EntryOut[]>
-  getEntryById?: (entryId: number) => Promise<EntryOut>
+  getRandomEntries?: (q: number | GetRandomEntriesOptions) => Promise<EntryOut[]>
+  getEntryById?: (entryId: number, source?: string) => Promise<EntryOut>
+  /**
+   * Optional native haptics. Absent on older hosts and on desktop/mock —
+   * always call as `hostApi.haptic?.({ type })` so the pack degrades silently.
+   */
+  haptic?: (opts: { type: HapticType }) => void
 }
 
 export type GameModule = {
@@ -40,4 +64,3 @@ export type GameModule = {
     initialState?: { stackConfig?: StackConfig }
   ) => { unmount?: () => void } | void
 }
-

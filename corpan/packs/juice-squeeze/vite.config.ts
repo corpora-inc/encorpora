@@ -2,20 +2,17 @@ import { defineConfig } from "vite"
 import path from "node:path"
 import { readFileSync, writeFileSync } from "node:fs"
 
-// Plugin to update manifest devRevision on production builds only
-// (dev mode uses the watcher in dev-corpan.mjs)
+// Update manifest devRevision on production builds only.
+// (dev mode uses the watcher in scripts/dev-corpan.mjs)
 const updateManifestPlugin = () => {
   let isProduction = false
-
   return {
     name: "update-manifest",
-    configResolved(config) {
+    configResolved(config: { command: string; build: { watch?: unknown } }) {
       isProduction = config.command === "build" && !config.build.watch
     },
     closeBundle() {
-      // Only update manifest for production builds, not watch mode
       if (!isProduction) return
-
       try {
         const manifestPath = path.resolve(__dirname, "manifest.json")
         const manifest = JSON.parse(readFileSync(manifestPath, "utf8"))
@@ -32,41 +29,37 @@ const updateManifestPlugin = () => {
 export default defineConfig({
   root: "./",
   publicDir: "public",
-  assetsInclude: ["**/*.glb", "**/*.mp3"],
   define: {
     "process.env": {},
   },
-  plugins: [updateManifestPlugin()],
-  resolve: {
-    alias: {
-      "@shared/monetization": path.resolve(__dirname, "../shared/monetization/index.ts"),
-    },
+  // Use esbuild's automatic JSX runtime so we don't depend on a Vite React
+  // plugin (keeps us compatible with any Vite version).
+  esbuild: {
+    jsx: "automatic",
+    jsxImportSource: "react",
   },
+  plugins: [updateManifestPlugin()],
   server: {
-    port: 5173,
+    port: 5177,
     open: false,
   },
   build: {
     outDir: "dist",
     emptyOutDir: true,
     copyPublicDir: true,
+    target: "es2020",
     lib: {
-      entry: path.resolve(__dirname, "src/main.ts"),
+      entry: path.resolve(__dirname, "src/main.tsx"),
       name: "JuiceSqueeze",
       formats: ["iife"],
       fileName: () => "app.js",
     },
     rollupOptions: {
       output: {
-        banner: "globalThis.process = globalThis.process || { env: {} }; var require$$0 = require$$0 || {};",
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith(".css")) {
-            return "app.css"
-          }
-          return "assets/[name][extname]"
-        },
+        banner: "globalThis.process = globalThis.process || { env: {} };",
+        assetFileNames: (asset: { name?: string }) =>
+          asset.name?.endsWith(".css") ? "app.css" : "assets/[name][extname]",
       },
     },
   },
 })
-

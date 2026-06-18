@@ -25,7 +25,7 @@ const scheduleManifestUpdate = () => {
       manifest.devRevision = new Date().toISOString()
       await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
     } catch (err) {
-      console.error("[juice-squeeze] Failed to update dev manifest:", err)
+      console.error("[juice-squeeze-fire] Failed to update dev manifest:", err)
     }
   }, 150)
 }
@@ -41,7 +41,7 @@ const watchDist = () => {
       }
     })
   } catch (err) {
-    console.warn("[juice-squeeze] Dist watcher unavailable:", err)
+    console.warn("[juice-squeeze-fire] Dist watcher unavailable:", err)
   }
 }
 
@@ -49,7 +49,7 @@ const run = (cmd, args, cwd, name) => {
   const child = spawn(cmd, args, { cwd, stdio: "inherit" })
   child.on("exit", (code) => {
     if (code && code !== 0) {
-      console.error(`[juice-squeeze] ${name} exited with ${code}`)
+      console.error(`[juice-squeeze-fire] ${name} exited with ${code}`)
     }
     process.exit(code ?? 0)
   })
@@ -63,9 +63,11 @@ const buildWatcher = run(
   "build:watch"
 )
 
+// CORS-enabled static server (not `python -m http.server`) so the pack can
+// fetch() its own audio cross-origin in dev. Serves packsRoot, same as before.
 const server = run(
   "python3",
-  ["-m", "http.server", "8989", "--bind", "0.0.0.0"],
+  [path.join(__dirname, "cors-server.py"), "8989", "0.0.0.0"],
   packsRoot,
   "server"
 )
