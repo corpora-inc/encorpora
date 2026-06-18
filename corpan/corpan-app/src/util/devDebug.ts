@@ -70,15 +70,8 @@ export function installDevDebug() {
     /** Force-open the universal paywall for a surface. */
     openPaywall: (surface: PaywallSurface = "phrase_flips") =>
       usePaywallStore.getState().openPaywall({ surface, packId: "corpan_app" }),
-    /** Make the in-app "Enjoying Corpán?" rating card eligible to show again. */
-    showRating: () =>
-      useRatingStore.setState({
-        hasRated: false,
-        hasDismissed: false,
-        remindMeLaterCount: 0,
-        totalUtteranceCount: 9999,
-        utterancesSinceLastPrompt: 9999,
-      } as never),
+    /** Open the in-app "Enjoying Corpán?" rating card (manual-only surface). */
+    showRating: () => useRatingStore.getState().promptManualReview(),
     /** Clear a daily gate counter (re-test the cap without waiting a day). */
     resetGate: () => {
       Object.keys(localStorage)

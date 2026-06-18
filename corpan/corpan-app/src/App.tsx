@@ -514,10 +514,10 @@ export default function App() {
     // Exiting any experience returns to the Home hub (which is always mounted
     // underneath the overlay). No more dumping the user into Settings.
     const onExit = () => {
-      // Exiting any experience returns to Home. We deliberately do NOT fire the
-      // OS-native review here — the in-app "Enjoying Corpán?" prompt
-      // (<RatingPrompt/>) is the single rating surface, and its 5-star button
-      // pops the native review widget. Firing both produced a double prompt.
+      // Exiting any experience returns to Home. Rating is manual-only: we never
+      // fire any review prompt on exit (the old auto-prompt could pop right after
+      // a user hit their daily quota — the worst moment). The "Enjoying Corpán?"
+      // card is opened deliberately from Settings → About.
       //
       // Exiting is NOT a paywall moment. If the daily-cap accomplishment lock is
       // open (e.g. the user hit it in phrase-flip then tapped Home), dismiss it
