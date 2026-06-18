@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none" role="img" aria-label="Phrase Flip">
+  <!-- Phrase Flip — house-style mark: a thin Corpán-orange rounded card frame
+       with a purple lucide "brain" centered on a near-black backdrop. Matches the
+       single-color, round-capped, softly-glowing line art of the other pack avatars. -->
+  <defs>
+    <linearGradient id="pf-bg" x1="0" y1="0" x2="0" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0C111B"/>
+      <stop offset="1" stop-color="#05070B"/>
+    </linearGradient>
+    <filter id="pf-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#pf-bg)"/>
+
+  <g fill="none" stroke="#E07A2E" stroke-linecap="round" stroke-linejoin="round" filter="url(#pf-glow)">
+    <rect x="70" y="70" width="372" height="372" rx="94" stroke-width="14"/>
+  </g>
+
+  <g transform="translate(146 146) scale(9.1667)" fill="none" stroke="#A879F7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" filter="url(#pf-glow)">
+    <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+    <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+    <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
+    <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/>
+    <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/>
+    <path d="M3.477 10.896a4 4 0 0 1 .585-.396"/>
+    <path d="M19.938 10.5a4 4 0 0 1 .585.396"/>
+    <path d="M6 18a4 4 0 0 1-1.967-.516"/>
+    <path d="M19.967 17.484A4 4 0 0 1 18 18"/>
+  </g>
+</svg>

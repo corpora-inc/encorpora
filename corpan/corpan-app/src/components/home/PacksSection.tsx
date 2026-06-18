@@ -18,6 +18,7 @@ import { usePackUpdates } from "@/hooks/usePackUpdates"
 import { useInstallContext } from "@/contentPacks/InstallContext"
 import { PackCard } from "@/components/packs/PackCard"
 import type { CatalogGame } from "@/contentPacks/catalog"
+import { PHRASE_PACK_ID, PHRASE_FLIP_IMAGE } from "@/experiences/phraseFlip"
 
 export function PacksSection({
   onLaunchGame,
@@ -38,6 +39,23 @@ export function PacksSection({
     [gamesMap],
   )
   const updates = usePackUpdates(installedGames, catalog)
+
+  // Phrase Flip is the built-in, pre-installed core experience — not a catalog
+  // pack, so it lives in no store. Synthesize a card for it and sort it in with
+  // the downloaded packs so it sits alongside them as a first-class experience.
+  const phraseName = t("experiences.phrase_main.name", { defaultValue: "Phrase Flip" })
+  const phraseBlurb = t("experiences.phrase_main.blurb", { defaultValue: "" })
+  const installedForDisplay = useMemo<InstalledGame[]>(() => {
+    const phrase: InstalledGame = {
+      id: PHRASE_PACK_ID,
+      name: phraseName,
+      manifestUrl: "",
+      installedAt: 0,
+      description: phraseBlurb,
+      imageUrl: PHRASE_FLIP_IMAGE,
+    }
+    return [phrase, ...installedGames].sort((a, b) => a.name.localeCompare(b.name))
+  }, [installedGames, phraseName, phraseBlurb])
   const availablePacks = useMemo(
     () => catalog.filter((pack) => !gamesMap[pack.id]),
     [catalog, gamesMap],
@@ -86,50 +104,46 @@ export function PacksSection({
             </Button>
           ) : null}
         </div>
-        {installedGames.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-border bg-muted/30 p-6 text-center">
-            <p className="text-sm text-muted-foreground">{t("packs.emptyInstalled")}</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {installedGames.map((game) => {
-              const catalogEntry = catalog.find((c) => c.id === game.id)
-              const hasUpdate = updates.some((u) => u.game.id === game.id)
-              const packForCard: CatalogGame = catalogEntry
-                ? {
-                    ...catalogEntry,
-                    id: game.id,
-                    version: game.version ?? catalogEntry.version,
-                    manifestUrl: catalogEntry.manifestUrl ?? game.manifestUrl,
-                    imageUrl: game.imageUrl ?? catalogEntry.imageUrl,
-                  }
-                : {
-                    id: game.id,
-                    name: game.name,
-                    version: game.version ?? "",
-                    manifestUrl: game.manifestUrl,
-                    description: game.description,
-                    imageUrl: game.imageUrl,
-                  }
-              return (
-                <PackCard
-                  key={game.id}
-                  pack={packForCard}
-                  installedGame={game}
-                  badge={hasUpdate ? "update" : "installed"}
-                  state={hasUpdate ? "update" : "installed"}
-                  isOffline={!isOnline}
-                  onLaunch={onLaunchGame}
-                  updateVersion={
-                    hasUpdate
-                      ? updates.find((u) => u.game.id === game.id)?.update.version
-                      : undefined
-                  }
-                />
-              )
-            })}
-          </div>
-        )}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {installedForDisplay.map((game) => {
+            const isPhrase = game.id === PHRASE_PACK_ID
+            const catalogEntry = isPhrase ? undefined : catalog.find((c) => c.id === game.id)
+            const hasUpdate = !isPhrase && updates.some((u) => u.game.id === game.id)
+            const packForCard: CatalogGame = catalogEntry
+              ? {
+                  ...catalogEntry,
+                  id: game.id,
+                  version: game.version ?? catalogEntry.version,
+                  manifestUrl: catalogEntry.manifestUrl ?? game.manifestUrl,
+                  imageUrl: game.imageUrl ?? catalogEntry.imageUrl,
+                }
+              : {
+                  id: game.id,
+                  name: game.name,
+                  version: game.version ?? "",
+                  manifestUrl: game.manifestUrl,
+                  description: game.description,
+                  imageUrl: game.imageUrl,
+                }
+            return (
+              <PackCard
+                key={game.id}
+                pack={packForCard}
+                installedGame={game}
+                badge={hasUpdate ? "update" : "installed"}
+                state={hasUpdate ? "update" : "installed"}
+                isOffline={!isOnline}
+                onLaunch={onLaunchGame}
+                removable={!isPhrase}
+                updateVersion={
+                  hasUpdate
+                    ? updates.find((u) => u.game.id === game.id)?.update.version
+                    : undefined
+                }
+              />
+            )
+          })}
+        </div>
       </div>
 
       {/* Available packs */}

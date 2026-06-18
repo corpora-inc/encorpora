@@ -714,9 +714,8 @@ export default function App() {
     return (
       <InstallProvider>
         <OnboardingEngine />
-        {/* Mounted during onboarding too, so the engagement page's "Join the
-            Corpanistas" CTA actually opens the paywall in-place (previously it
-            only appeared after commit, because the sheet lived post-onboarding). */}
+        {/* Mounted during onboarding too, so any onboarding upgrade CTA opens
+            the paywall in-place instead of waiting for the post-onboarding tree. */}
         <PaywallSheet />
       </InstallProvider>
     );

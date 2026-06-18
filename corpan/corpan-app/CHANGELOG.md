@@ -7,6 +7,34 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Phrase Flip now has its own artwork and a card in the "Installed" grid.**
+  The built-in core experience was previously only reachable from the For You
+  carousel / Recent and showed a bare lucide icon everywhere. It now ships with
+  bundled 16:9 card art (`assets/phrase-flip.svg`) and appears as a first-class
+  card alongside downloaded packs in Home → Installed (sorted in by name,
+  launches via the existing `openPhrase` path, no Remove since it's built in).
+  The same art is used in the For You carousel. A `removable` prop on
+  `PackCard`/`PackActions` hides the Remove action for built-in experiences.
+
+### Changed
+- **Onboarding finale is now a little fireworks show, not a flat colour blob.**
+  The end-of-onboarding razzle used to settle by scaling a single flat disc of
+  the pack's accent up over the screen — for EarthGate that read as "just a
+  light blue." The chosen card now lights the fuse: staggered shells of sparks
+  (pack accent → white-hot → warm gold) burst past it, shockwave rings ripple
+  out, and a luminous radial **bloom** (bright core, deep saturated rim) swells
+  up from behind the card and washes over to reveal the booted experience. The
+  card carries its own glow halo so it reads as the light source. The card's
+  arrival is now perfectly smooth — the chosen card rises straight up the center
+  of the deck, pinned dead center and upright, calmly growing toward the viewer
+  through the shuffling cards (rather than bending in from a side slot), on one
+  continuous spring (no keyframe snap, no spring→tween velocity cut). The
+  collage→wash handoff mounts at the exact transform the card settled into, so
+  it's invisible. The finale runs a touch longer (~8.4s) to breathe. All
+  motion is GPU-composited transform/opacity (smooth on Android WebView).
+  Reduced motion keeps the calm bloom + glow, no sparks. (`PackLaunchTransition.tsx`)
+
 ## [0.19.0] - 2026-06-16
 
 ### Changed

@@ -205,7 +205,6 @@
     }
   },
   "onboarding": {
-    "settingUp": "Nyetel barang…",
     "ttsIntro": "Corpán bisa maca banter. Tutul swara kanggo ngrungokake nganggo kacepetan sing cocog karo sampeyan.",
     "interests": {
       "title": "Apa sing pengin sampeyan lakoni?",
@@ -223,25 +222,13 @@
       "wild": "Coba sing ora biasa",
       "wildDesc": "Pengalaman eksperimen sing bisa ngagetake."
     },
-    "engage": {
-      "title": "Sampeyan wis siap",
-      "subtitle": "Corpán digawe dening tim open-source cilik. Ayo nyapa — lan yen sampeyan seneng, sampeyan bisa ndhukung kita.",
-      "joinTitle": "Gabung karo Corpanistas",
-      "joinDesc": "Dukung Corpán lan bukak kabeh. Opsional, kapan wae.",
-      "subscribedTitle": "Sampeyan minangka Corpanista",
-      "subscribedDesc": "Matur nuwun wis mbantu njaga Corpán tanpa iklan lan terus ngrembaka.",
-      "start": "Mulai jelajahi",
-      "explore": "Jelajah dhewe"
-    },
     "welcomePact": {
       "title": "Corpán terus ngrembaka",
       "subtitle": "Sampeyan kalebu sing nyoba luwih dhisik",
-      "tinyTeamTitle": "Tim cilik sing tresna marang basa",
-      "tinyTeamDesc": "Mandhiri, tanpa iklan, lan digawe kanthi ngajeni wong sing nggunakake — tim cilik sing mbangun aplikasi basa sing suwe kita karepake.",
       "bleedingEdgeTitle": "Sengaja nganggo teknologi paling anyar",
-      "bleedingEdgeDesc": "Corpán nyoba nggedhekake apa sing bisa ditindakake piranti sampeyan: donya imersif, pangenalan wicara, swara alami, lan model AI paling anyar, kabeh digandhengake kanggo nggawe cara anyar sinau. Akeh sing mlaku langsung ing piranti sampeyan, supaya sinau luwih pribadi lan bisa luwih dhisik offline. Amarga teknologi iki isih anyar, kadhang bisa tumindak aneh, alon, utawa kakehan kanggo piranti sampeyan. Nanging imbalane, sampeyan bisa nyoba pengalaman sinau anyar luwih awal.",
+      "bleedingEdgeDesc": "Corpán nggawa AI anyar, pangenalan wicara, swara, lan jagad imersif menyang piranti sampeyan kanggo sinau pribadi sing luwih dhisik bisa offline. Kita nerbitake teknologi nalika isih mentah, mula bisa tumindak aneh, mlaku alon, utawa luwih abot tinimbang sing bisa ditangani piranti sampeyan. Minangka gantine, sampeyan entuk cara anyar kanggo sinau nalika wis bisa diwujudake.",
       "yourLangTitle": "Ora kabeh basa sing didhukung wis kita kuwasani dhewe",
-      "yourLangDesc": "Iki sing sejatine. Kita mbangun kanggo puluhan basa amarga saben wong pantes nduweni piranti sinau sing kuat, dudu amarga tim cilik kita wis ngerti kabeh basa kasebut. Sampeyan bisa wae nemokake sing salah utawa kurang alami. Yen sampeyan luwih ngerti {{lang}} tinimbang kita, tulung critakake supaya Corpán luwih becik ing kene.",
+      "yourLangDesc": "Kita mbangun kanggo akeh basa amarga para sing sinau pantes entuk piranti sing luwih apik, dudu amarga kita ngerti kabeh basa kuwi. Yen ana sing salah saka kita, muga-muga para panutur gelem mbantu mbenerake.",
       "plea": "Duwe ide, koreksi, utawa pengalaman sinau anyar sing pengin sampeyan deleng? Kabari kita. Saben pesen kita waca lan kita pikirake tenanan kanggo masa depan Corpán lan sinau basa.",
       "emailCta": "Kirim email",
       "githubCta": "Gawe GitHub issue",
@@ -283,17 +270,8 @@
       "childUnder13": "Ngisor 13 taun",
       "childTeen": "13–17"
     },
-    "welcome": "Sugeng rawuh",
-    "makePrimaryLanguage": "Jadikan Basa Inggris minangka basa utama aku",
-    "canChangeLater": "Sampeyan bisa ngganti iki kapan wae.",
     "pickLanguagesToLearn": "Pilih basa kanggo sinau",
     "textToSpeechSetup": "Setelan teks-ke-ucapan",
-    "ttsPoorQualityNote": "Yen audio krasa kurang apik, instal swara berkualitas tinggi ing setelan TTS piranti sampeyan.",
-    "howToSetupTtsOn": "Carane nyetel TTS ing",
-    "welcomeTitle": "Sugeng rawuh ing kulawarga Corpán!",
-    "welcomeBody": "Corpán iku aplikasi open-source saka tim cilik, dudu perusahaan gedhe. Kita nggatekake banget basa lan pendidikan, lan iki isih tahap awal, mula sampeyan bisa nemokake bagean sing durung rapi utawa fitur lan basa sing durung lengkap. Yen ana sing ora mlaku, tulung kabari liwat GitHub utawa email. Masukan sampeyan mbantu kita luwih kerep nganyari lan nggawe sinau basa luwih apik kanggo kabeh wong.",
-    "welcomeVisit": "Kunjungi encorpora.io",
-    "linkCopied": "Tautan disalin. Buka ing browser sampeyan:",
     "reconfigureStack": "Konfigurasi ulang tumpukan",
     "openVoiceSettings": "Buka Setelan",
     "voiceGuide": {
@@ -311,16 +289,8 @@
       "macStep5": "Bali menyang Corpán — bakal muncul ing kene kanthi otomatis."
     },
     "openTTSSetup": "Buka setelan TTS",
-    "welcomeFollowUp": "Matur nuwun wis gabung—ketemu ing komunitas!",
-    "learning": "Sinau basa",
-    "learningStepTitle": "Sinau",
-    "tts": "Teks-ke-ucapan",
-    "ttsStepTitle": "Teks-ke-ucapan",
-    "socials": "Tindak lan sambung",
-    "socialsStepTitle": "Sosial",
     "noVoices": "Ora ana swara",
     "noVoicesHint": "Instal swara kanggo ngaktifake basa iki.",
-    "notOnAppleIOS": "Ora ing iOS",
     "appleNoVoiceTitle": "Apple durung ngirim swara {{lang}}",
     "appleNoVoiceBody": "Cathetan cepet kanggo tim aksesibilitas Apple mbantu nggawe kasus. {{lang}} bisa digunakake sacara asli ing Android ing wektu iki.",
     "voiceRecommended": "Disaranake",
@@ -388,53 +358,19 @@
         "notInstalled": "Ora diinstal"
       }
     },
-    "packs": "Paket frasa",
     "phrasePacks": {
-      "title": "Paket frasa",
-      "stepTitle": "Paket frasa",
       "hero": "Pilih topik sampeyan",
-      "subtitle": "Tambah paket frasa fokus menyang tumpukan sampeyan. Ganti aktif utawa ora kapan wae ing Setelan.",
       "loading": "Ngundhuh paket…",
       "selectAll": "Pilih kabeh ({{count}})",
       "clearAll": "Bersihkan pilihan",
-      "selectedSuffix": "dipilih",
-      "noneSelected": "Ora ana sing dipilih — Terusake bakal dilewati",
-      "skip": "Lewati kanggo saiki",
-      "subscriptionNudge": "Sawetara paket minangka bagian saka langganan — sampeyan bisa langganan mengko ing Setelan → Paket.",
+      "subscriptionNudge": "Sawetara pak kalebu ing Corpán Plus — sampeyan bisa upgrade mengko ing Setelan → Pak.",
       "entryCount": "{{n}} frasa",
       "paid": "Dibayar",
       "emptyHero": "Durung ana paket frasa sing kasedhiya.",
-      "emptySub": "Topik anyar dikirim kanthi rutin — priksa Setelan → Paket kapan wae.",
-      "offlineHero": "Sampeyan offline.",
-      "offlineSub": "Paket frasa butuh internet — coba mengko saka Setelan → Paket.",
-      "offlineBanner": "Offline — pilihan diinstal nalika nyambung maneh."
+      "emptySub": "Topik anyar dikirim kanthi rutin — priksa Setelan → Paket kapan wae."
     },
     "back": "Mundur",
     "continue": "Terusake",
-    "class": {
-      "title": "Kanggo sapa iki?",
-      "subtitle": "Kita bakal nyetel Corpán kanggo sampeyan. Iki tetep ing piranti sampeyan — kita ora nate ngirim menyang ngendi wae.",
-      "learner": "Aku sinau basa",
-      "learnerDesc": "Waca lan rungokake ing basa sing sampeyan sinau.",
-      "enjoyer": "Aku pengin nikmati konten",
-      "enjoyerDesc": "Buku, crita, lan game nganggo basa sampeyan.",
-      "polyglot": "Loro-lorone — aku pengin kabeh",
-      "polyglotDesc": "Sawetara basa bareng, plus kabeh liyane.",
-      "kid": "Iki kanggo anak",
-      "kidDesc": "Buku lan game sinau sing dipilih kanggo sing isih enom.",
-      "ageTitle": "Pira umure sing maca?",
-      "ageUnder13": "Ngisor 13 taun",
-      "ageTeen": "13–17"
-    },
-    "pitch": {
-      "title": "Gabung karo Corpanistas",
-      "subtitle": "Corpán Plus mbukak kabeh perpustakaan. Coba bagian pertama saka buku apa wae gratis, selamanya.",
-      "everything": "Saben buku, saben basa — dibukak.",
-      "private": "Ora ana iklan. Data sampeyan tetep ing piranti sampeyan.",
-      "team": "Kita tim cilik lan ngasilake saben sen kanggo Corpán.",
-      "tryPlus": "Coba Corpán Plus",
-      "continueFree": "Terusake nganggo tingkat gratis"
-    },
     "confident": {
       "yourVoiceFor": "Swara {{lang}} sampeyan",
       "voiceCountOne": "1 swara siap",
@@ -665,14 +601,15 @@
     "close": "Tutup"
   },
   "rating": {
-    "title": "Seneng Corpán?",
-    "description": "Corpán digawe dening tim open-source cilik sing lagi miwiti. Yen kaya aplikasi 5-bintang, rating cepet mbantu kita banget.",
-    "rateNow": "⭐ Rate 5 bintang",
+    "title": "Seneng banget karo Corpán?",
+    "description": "Yen sampeyan tresna karo Corpán, wenehana 5 lintang. Ing toko app, rating kurang saka 5 lintang ngrugèkaké Corpán.",
+    "rateNow": "⭐ Wenehi 5 lintang",
     "remindLater": "Mungkin mengko",
     "noThanks": "Ora, matur nuwun",
     "close": "Tutup",
-    "feedbackHint": "Durung 5 bintang? Tutul 'Wenehi masukan' lan critakake carane supaya luwih apik.",
-    "feedbackButton": "Wenehi masukan ing GitHub"
+    "feedbackHint": "Yen durung dadi app 5 lintang kanggo sampeyan, kirimi email utawa bukak issue ing GitHub lan kandhani apa sing kudu didandani. Kita pengin nggawe luwih apik.",
+    "emailButton": "Kirim email",
+    "githubButton": "Issue GitHub"
   },
   "packs": {
     "title": "Paket",
@@ -731,7 +668,7 @@
       "paid": "Dibayar",
       "free": "Gratis",
       "install": "Instal",
-      "unlockSub": "Mbukak nganggo langganan",
+      "unlockSub": "Mbukak nganggo Corpán Plus",
       "entryCount": "{{n}} frasa",
       "offlineEmpty": "Sampeyan offline. Sambung kanggo jelajahi paket frasa.",
       "showAll": "Tampilake kabeh ({{count}})",
@@ -753,14 +690,14 @@
     "includedWithPlus": "Kalebu karo Plus"
   },
   "subscription": {
-    "title": "Mbukak kabeh",
-    "description": "Akses tanpa wates kanggo saben buku narasi lan paket premium kanthi langganan.",
+    "title": "Mbukak Corpán Plus",
+    "description": "Akses tanpa wates menyang saben fitur, basa, pak, lan nganyari.",
     "annual": "Tahunan",
     "monthly": "Bulanan",
     "subscribe": "Langganan",
     "subscribing": "Langganan...",
-    "subscribed": "Sampeyan wis langganan",
-    "subscribedDescription": "Rencana {{plan}} aktif. Matur nuwun kanggo ndhukung Corpán.",
+    "subscribed": "Corpán Plus aktif",
+    "subscribedDescription": "Rencana {{plan}} aktif. Kabeh wis kabuka.",
     "manage": "Kelola langganan",
     "termsOfUse": "Syarat Penggunaan",
     "privacyPolicy": "Kebijakan Privasi",
@@ -843,12 +780,12 @@
     "packCatalogSubtitle": "Paket sing diinstal isih bisa digunakake. Sambung maneh kanggo jelajahi luwih akeh."
   },
   "paywall": {
-    "title": "Terusake nganggo Corpán Plus",
-    "thanksTitle": "Sampeyan minangka Corpanista",
-    "thanksBody": "Matur nuwun kanggo ndhukung Corpán. Kabeh wis dibukak.",
-    "bookSubhead": "Sampeyan wis tekan pungkasan pratayang gratis {{title}}.",
-    "subhead": "Mbukak saben buku ing saben basa. Ora ana iklan. Data sampeyan tetep ing piranti sampeyan.",
-    "pitch": "Kita tim cilik lan ngasilake saben sen kanggo Corpán. Corpanistas njaga supaya ora ana iklan lan berkembang.",
+    "title": "Mbukak Corpán Plus",
+    "thanksTitle": "Corpán Plus aktif",
+    "thanksBody": "Kabeh wis kabuka.",
+    "bookSubhead": "Terusna {{title}} lan bukak saben fitur.",
+    "subhead": "Akses tanpa wates menyang saben fitur, basa, lan nganyari. Ora ana iklan. Data sampeyan tetep ana ing piranti sampeyan.",
+    "pitch": "Buku, pak, game, piranti wicara, lan pengalaman sinau anyar kabeh kalebu.",
     "maybeLater": "Mungkin mengko",
     "continue": "Terusake",
     "dismiss": "Tutup"

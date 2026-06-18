@@ -253,7 +253,7 @@ export function SettingsModal({
               <div className="flex items-center justify-center gap-2 text-sm">
                 <Sparkles size={15} className="text-purple-500" aria-hidden />
                 <span className="font-medium text-purple-600 dark:text-purple-300">
-                  {t("subscription.subscribed", { defaultValue: "You're subscribed" })}
+                  {t("subscription.subscribed", { defaultValue: "Corpán Plus is active" })}
                 </span>
                 <button
                   type="button"

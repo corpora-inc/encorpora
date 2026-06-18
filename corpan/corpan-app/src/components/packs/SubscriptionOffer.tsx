@@ -408,7 +408,7 @@ export function SubscriptionOffer({
                 {t("subscription.subscribed", "You're subscribed")}
               </h3>
               <p className="text-xs text-emerald-800/80 dark:text-emerald-200/80 mt-1">
-                {t("subscription.subscribedDescription", "{{plan}} plan active. Thanks for supporting Corpán.", { plan: planLabel })}
+                {t("subscription.subscribedDescription", "{{plan}} plan active. Everything is unlocked.", { plan: planLabel })}
               </p>
             </div>
           </div>
@@ -548,12 +548,12 @@ export function SubscriptionOffer({
         {chromeless ? null : (
           <div>
             <h3 className="font-semibold text-sm">
-              {t("subscription.title", "Unlock everything")}
+              {t("subscription.title", "Unlock Corpán Plus")}
             </h3>
             <p className="text-xs text-muted-foreground mt-1">
               {t(
                 "subscription.description",
-                "Unlimited access to every narrated book and premium pack with a subscription."
+                "Unlimited access to every feature, language, pack, and update."
               )}
             </p>
           </div>

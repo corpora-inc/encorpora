@@ -137,12 +137,10 @@
     "welcomePact": {
       "title": "Corpán gelişiyor",
       "subtitle": "İlk kullanıcılarımızdansınız",
-      "tinyTeamTitle": "Küçük bir meraklılar ekibi",
-      "tinyTeamDesc": "Bağımsız, reklamsız ve kullanan insanlara saygıyla geliştiriliyor — küçük bir ekip, hep istediğimiz dil uygulamasını yapıyor.",
       "bleedingEdgeTitle": "Bilerek en ileri teknoloji",
-      "bleedingEdgeDesc": "Corpán, cihazınızın yapabileceklerinin sınırlarını zorluyor: sürükleyici dünyalar, konuşma tanıma, doğal sesler ve en yeni AI modelleri birlikte çalışarak öğrenmenin yeni yollarını oluşturuyor. Büyük bölümü doğrudan cihazınızda çalışır; böylece bir veri merkezine bağımlı olmadan özel ve çevrimdışı kullanıma öncelik veren öğrenme sunar. Yeni teknolojileri henüz hamken yayımlıyoruz; bu yüzden bazen tuhaf davranabilir, yavaş çalışabilir veya cihazınızın kaldırabileceğinden fazlası olabilir. Karşılığında, güçlü yeni öğrenme deneyimlerine mümkün olur olmaz erişirsiniz.",
+      "bleedingEdgeDesc": "Corpán, yeni yapay zekayı, konuşma tanımayı, sesleri ve sürükleyici dünyaları özel ve çevrimdışı öncelikli öğrenme için cihazına getirir. Teknolojiyi hâlâ hamken yayımlıyoruz; bu yüzden garip davranabilir, yavaş çalışabilir veya cihazının kaldırabileceğinden fazla olabilir. Karşılığında, yeni öğrenme yolları mümkün olur olmaz sana ulaşır.",
       "yourLangTitle": "Desteklediğimiz her dili konuşmuyoruz",
-      "yourLangDesc": "Dürüst gerçek bu. Onlarca dil için geliştiriyoruz, çünkü küçük ekibimiz hepsini zaten bildiği için değil, herkes güçlü öğrenme araçlarını hak ettiği için. Yanlış yaptığımız şeylerle karşılaşabilirsiniz. {{lang}} dilini bizden daha iyi biliyorsanız, bize söylemenizi ve Corpán'ı o dile layık hâle getirmemize yardım etmenizi umuyoruz.",
+      "yourLangDesc": "Birçok dil için geliştiriyoruz çünkü öğrenenler daha iyi araçları hak ediyor; hepsini bildiğimiz için değil. Bir şeyi yanlış yaptığımızda, o dili konuşanların düzeltmemize yardım etmesini umuyoruz.",
       "plea": "Bir fikriniz, düzeltmeniz veya görmek istediğiniz sıra dışı bir öğrenme deneyimi mi var? Bize anlatın. Her mesajı okuyor ve Corpán ile dil öğrenimi için nelerin önünü açabileceğini derinlemesine düşünüyoruz.",
       "emailCta": "Bize e-posta gönder",
       "githubCta": "GitHub issue aç",
@@ -150,23 +148,11 @@
       "pact": "Öğrenmeye başlamak ve bizimle birlikte gelişmek için aşağıya dokunun. 🤝",
       "cta": "Varım — hadi başlayalım"
     },
-    "welcome": "Hoş geldiniz",
-    "makePrimaryLanguage": "İngilizceyi birincil dilim yap",
-    "canChangeLater": "Bunu istediğiniz zaman değiştirebilirsiniz.",
     "pickLanguagesToLearn": "Öğrenilecek dilleri seçin",
     "textToSpeechSetup": "Metin-konuşma (TTS) kurulumu",
-    "ttsPoorQualityNote": "Ses kalitesi düşük geliyorsa, cihazınızın TTS ayarlarından yüksek kaliteli sesler yükleyin.",
-    "howToSetupTtsOn": "TTS kurulumu",
-    "welcomeTitle": "Corpán ailesine hoş geldiniz!",
-    "welcomeBody": "Corpán, büyük bir şirketin değil, dilleri ve eğitimi gerçekten önemseyen küçücük bir ekibin geliştirdiği açık kaynaklı bir uygulamadır. Proje hâlâ erken aşamada, bu yüzden tamamlanmamış bölgeler, eksik özellikler veya henüz eklenmemiş dillerle karşılaşabilirsiniz. Sizin için bir şey iyi çalışmıyorsa, lütfen sessizce sinirlenmek yerine GitHub ya da e-posta üzerinden bize yazın. Geri bildirimleriniz sık güncelleme yapmamıza ve dil öğrenimini herkes için daha iyi hale getirmemize yardımcı olur.",
-    "welcomeVisit": "encorpora.io adresini ziyaret edin",
-    "linkCopied": "Bağlantı kopyalandı. Tarayıcınızda açın:",
     "reconfigureStack": "Yığını yeniden yapılandır",
     "openVoiceSettings": "Ayarları Aç",
     "openTTSSetup": "TTS ayarlarını açın",
-    "welcomeFollowUp": "Katıldığınız için teşekkürler — toplulukta görüşmek üzere!",
-    "learningStepTitle": "Öğrenme",
-    "tts": "Metinden konuşmaya",
     "languageOrderTipTitle": "İpucu",
     "languageOrderTipBody": "Listenin en altındaki dil, uygulamanın arayüz dilidir. Arayüz dilini değiştirmek için başka bir dili en alta sürükleyin.",
     "ttsOsTipTitle": "İpucu",
@@ -176,10 +162,6 @@
     "ttsOsTipWindows": "Ayarlar’dan sesleri yükleyin, sonra buraya dönün.",
     "ttsOsTipOther": "Cihaz ayarlarından sesleri yükleyin, sonra buraya dönün.",
     "installVoicesAndroid": "Sesleri yükle",
-    "learning": "Dil öğrenme",
-    "ttsStepTitle": "Metinden konuşmaya",
-    "socials": "Takip et ve bağlantı kur",
-    "socialsStepTitle": "Sosyal medya",
     "noVoices": "Ses yok",
     "noVoicesHint": "Bu dili etkinleştirmek için sesleri yükleyin.",
     "sendAppleFeedback": "Apple geri bildirimi gönder",
@@ -234,56 +216,21 @@
         "notInstalled": "Yüklü değil"
       }
     },
-    "packs": "İfade paketleri",
     "phrasePacks": {
-      "title": "İfade paketleri",
-      "stepTitle": "İfade paketleri",
       "hero": "Konularını seç",
       "loading": "Yükleniyor…",
       "selectAll": "Tümünü seç ({{count}})",
       "clearAll": "Temizle",
-      "subscriptionNudge": "Tüm paketlerin kilidini açmak için abone ol.",
+      "subscriptionNudge": "Bazı paketler Corpán Plus’a dahildir — daha sonra Ayarlar → Paketler bölümünden yükseltebilirsiniz.",
       "entryCount": "{{n}} ifade",
       "paid": "Ücretli",
       "emptyHero": "Henüz paket yok.",
-      "emptySub": "Yakında tekrar bak.",
-      "offlineHero": "Çevrimdışısın.",
-      "offlineSub": "Paketler internet gerektirir — Ayarlar → Paketler'den sonra dene.",
-      "offlineBanner": "Çevrimdışı — seçim bağlanınca yüklenir.",
-      "noneSelected": "Hiçbiri seçilmedi — Devam et atlayacak",
-      "selectedSuffix": "seçili",
-      "skip": "Şimdilik atla",
-      "subtitle": "Odaklanmış ifade paketlerini yığınıza ekleyin. Bunları Ayarlar'dan istediğiniz zaman açıp kapatabilirsiniz."
+      "emptySub": "Yakında tekrar bak."
     },
-    "notOnAppleIOS": "iOS'ta değil",
     "appleNoVoiceTitle": "Apple henüz {{lang}} sesi sunmuyor",
     "appleNoVoiceBody": "Apple'ın erişilebilirlik ekibine kısa bir not, bunun önemini göstermeye yardımcı olur. Bu arada {{lang}}, Android'de yerel olarak çalışıyor.",
     "back": "Geri",
     "continue": "Devam",
-    "class": {
-      "title": "Kimler için?",
-      "subtitle": "Corpán'ı size göre kişiselleştireceğiz. Bilgileriniz cihazınızda kalır, asla paylaşılmaz.",
-      "learner": "Dil öğreniyorum",
-      "learnerDesc": "Öğrendiğiniz dillerde okuyun ve dinleyin.",
-      "enjoyer": "İçeriğin tadını çıkarmak istiyorum",
-      "enjoyerDesc": "Kendi dilinizde kitaplar, hikayeler ve oyunlar.",
-      "polyglot": "İkisi de — hepsini istiyorum",
-      "polyglotDesc": "Aynı anda birçok dil, artı diğer her şey.",
-      "kid": "Bir çocuk için",
-      "kidDesc": "Küçük okuyucular için özenle seçilmiş kitaplar ve eğitici oyunlar.",
-      "ageTitle": "Okuyucu kaç yaşında?",
-      "ageUnder13": "13 yaş altı",
-      "ageTeen": "13–17 yaş"
-    },
-    "pitch": {
-      "title": "Corpanistas'a katılın",
-      "subtitle": "Corpán Plus tüm kütüphaneyi açar. Herhangi bir kitabın ilk bölümünü sonsuza dek ücretsiz deneyin.",
-      "everything": "Tüm kitaplar, tüm diller — kilitsiz.",
-      "private": "Reklamsız. Verileriniz cihazınızda kalır.",
-      "team": "Küçük bir ekibiz ve her kuruşu Corpán'a geri yatırıyoruz.",
-      "tryPlus": "Corpán Plus'ı deneyin",
-      "continueFree": "Ücretsiz sürümle devam et"
-    },
     "calibrate": {
       "childAgeTitle": "Okuyucu kaç yaşında?",
       "childTeen": "13–17",
@@ -306,16 +253,6 @@
       "voiceCountMany": "{{count}} ses hazır",
       "voiceCountOne": "1 ses hazır",
       "yourVoiceFor": "{{lang}} sesiniz"
-    },
-    "engage": {
-      "joinDesc": "Corpán'ı destekleyin ve her şeyin kilidini açın. İsteğe bağlı, dilediğiniz zaman.",
-      "subscribedTitle": "Bir Corpanista'sınız",
-      "subscribedDesc": "Corpán'ı reklamsız tutup büyümesine yardımcı olduğunuz için teşekkürler.",
-      "joinTitle": "Corpanistas'a katılın",
-      "start": "Keşfetmeye başla",
-      "subtitle": "Corpán, küçük bir açık kaynak ekibi tarafından yapıldı. Merhaba deyin — ve eğer beğenirseniz, bize destek olabilirsiniz.",
-      "title": "Her şey hazır",
-      "explore": "Kendim keşfedeceğim"
     },
     "fork": {
       "child": {
@@ -353,7 +290,6 @@
       "wild": "İlginç şeyler keşfet",
       "wildDesc": "Şaşırtıcı, deneysel deneyimler."
     },
-    "settingUp": "Ayarlanıyor…",
     "ttsIntro": "Corpán yüksek sesle okur. Kendi hızınızda dinlemek için bir sese dokunun.",
     "voiceGuide": {
       "intro": "Cihazınızda zengin, doğal sesler yerleşik olarak bulunur — ücretsizdir ve varsayılandan çok daha iyidir. Üretici bunları kapalı bırakır. Hadi açalım; sadece birkaç dokunuş yeterli:",
@@ -583,14 +519,15 @@
     "introTipBody": "Stack'ler farklı öğrenme kurulumlarını kaydeder — biri seyahat için, diğeri iş için. Yeni bir stack oluşturmak için +'ya dokun."
   },
   "rating": {
-    "title": "Corpán hoşunuza gidiyor mu?",
-    "description": "Corpán küçük bir açık kaynak ekibi tarafından geliştiriliyor ve daha yolun başındayız. Sizce 5 yıldızı hak ediyorsa, kısa bir oy bize gerçekten çok yardımcı olur.",
-    "feedbackHint": "Sizce henüz tam 5 yıldız değil mi? Daha düşük puan vermek yerine lütfen “Geri bildirim gönder”e tıklayıp neleri geliştirebileceğimizi yazın.",
-    "feedbackButton": "GitHub üzerinden geri bildirim gönder",
-    "rateNow": "⭐ 5 yıldızla oy ver",
+    "title": "Corpán'ı seviyor musunuz?",
+    "description": "Corpán'ı seviyorsanız 5 yıldız verin. Uygulama mağazalarında 5 yıldızdan azı Corpán'a zarar verir.",
+    "feedbackHint": "Sizin için henüz 5 yıldızlık bir uygulama değilse, bize e-posta gönderin veya GitHub'da issue açıp neyi düzeltmemiz gerektiğini söyleyin. Daha iyi yapmak istiyoruz.",
+    "rateNow": "⭐ 5 yıldız ver",
     "remindLater": "Belki sonra",
     "noThanks": "Hayır, teşekkürler",
-    "close": "Kapat"
+    "close": "Kapat",
+    "emailButton": "E-posta gönder",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "Paketler",
@@ -640,7 +577,7 @@
       "subBadge": "Abonelik",
       "paid": "Ücretli",
       "free": "Ücretsiz",
-      "unlockSub": "Abonelikle aç",
+      "unlockSub": "Corpán Plus ile kilidi açın",
       "entryCount": "{{n}} ifade",
       "allInstalled": {
         "title": "Tüm cümle paketlerine sahipsin.",
@@ -671,14 +608,14 @@
     "updateAvailable": "Güncelleme mevcut"
   },
   "subscription": {
-    "title": "Hepsini aç",
-    "description": "Abonelikle tüm sesli kitaplara ve premium paketlere sınırsız erişim.",
+    "title": "Corpán Plus kilidini açın",
+    "description": "Her özelliğe, dile, pakete ve güncellemeye sınırsız erişim.",
     "annual": "Yıllık",
     "monthly": "Aylık",
     "subscribe": "Abone ol",
     "subscribing": "Abone olunuyor...",
-    "subscribed": "Abonesiniz",
-    "subscribedDescription": "{{plan}} planı etkin. Corpán'ı desteklediğiniz için teşekkürler.",
+    "subscribed": "Corpán Plus etkin",
+    "subscribedDescription": "{{plan}} planı etkin. Her şeyin kilidi açıldı.",
     "manage": "Aboneliği yönet",
     "termsOfUse": "Kullanım Koşulları",
     "privacyPolicy": "Gizlilik Politikası",
@@ -743,12 +680,12 @@
     "offlineEmpty": "Paketleri keşfetmek için internete bağlan — ya da şimdilik atla."
   },
   "paywall": {
-    "title": "Corpán Plus ile devam edin",
-    "thanksTitle": "Bir Corpanista'sınız",
-    "thanksBody": "Corpán'ı desteklediğiniz için teşekkür ederiz. Her şeyin kilidi açıldı.",
-    "bookSubhead": "{{title}} adlı kitabın ücretsiz önizlemesinin sonuna geldiniz.",
-    "subhead": "Tüm dillerdeki tüm kitapların kilidini açın. Reklamsız. Verileriniz cihazınızda kalır.",
-    "pitch": "Küçük bir ekibiz ve her kuruşu Corpán'a geri yatırıyoruz. Corpanistas sayesinde reklamsız kalıyor ve büyüyor.",
+    "title": "Corpán Plus kilidini açın",
+    "thanksTitle": "Corpán Plus etkin",
+    "thanksBody": "Her şeyin kilidi açıldı.",
+    "bookSubhead": "{{title}} ile devam edin ve her özelliğin kilidini açın.",
+    "subhead": "Her özelliğe, dile ve güncellemeye sınırsız erişim. Reklam yok. Verileriniz cihazınızda kalır.",
+    "pitch": "Kitaplar, paketler, oyunlar, konuşma araçları ve yeni öğrenme deneyimlerinin hepsi dahil.",
     "maybeLater": "Belki sonra",
     "continue": "Devam",
     "dismiss": "Kapat"

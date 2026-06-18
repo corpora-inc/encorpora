@@ -137,12 +137,10 @@
     "welcomePact": {
       "title": "Corpán się rozwija",
       "subtitle": "Jesteś wśród pierwszych",
-      "tinyTeamTitle": "Mały zespół entuzjastów",
-      "tinyTeamDesc": "Niezależna, bez reklam i tworzona z szacunkiem dla osób, które z niej korzystają — mały zespół buduje aplikację językową, jakiej zawsze chcieliśmy.",
       "bleedingEdgeTitle": "Celowo na czele technologii",
-      "bleedingEdgeDesc": "Corpán przesuwa granice możliwości Twojego urządzenia: wciągające światy, rozpoznawanie mowy, naturalne głosy i najnowsze modele AI współpracują, tworząc nowe sposoby nauki. Duża część działa bezpośrednio na Twoim urządzeniu, zapewniając prywatną naukę zaprojektowaną przede wszystkim do działania offline, bez zależności od centrum danych. Udostępniamy nowe technologie, gdy są jeszcze surowe, dlatego czasem mogą zachowywać się dziwnie, działać wolno lub po prostu przekraczać możliwości Twojego urządzenia. W zamian otrzymujesz potężne nowe doświadczenia edukacyjne, gdy tylko stają się możliwe.",
+      "bleedingEdgeDesc": "Corpán przenosi na twoje urządzenie nową AI, rozpoznawanie mowy, głosy i immersyjne światy, aby nauka była prywatna i przede wszystkim offline. Udostępniamy technologię, gdy jest jeszcze surowa, więc może zachowywać się dziwnie, działać wolno albo być czymś, czego twoje urządzenie nie udźwignie. W zamian dostajesz nowe sposoby nauki, gdy tylko stają się możliwe.",
       "yourLangTitle": "Nie mówimy wszystkimi językami, które obsługujemy",
-      "yourLangDesc": "Taka jest szczera prawda. Tworzymy dla dziesiątek języków, ponieważ każdy zasługuje na skuteczne narzędzia do nauki, a nie dlatego, że nasz mały zespół już zna je wszystkie. Możesz znaleźć rzeczy, które zrobiliśmy źle. Jeśli znasz {{lang}} lepiej od nas, mamy nadzieję, że nam o tym powiesz i pomożesz uczynić Corpán godną tego języka.",
+      "yourLangDesc": "Tworzymy dla wielu języków, bo uczący się zasługują na lepsze narzędzia, a nie dlatego, że znamy je wszystkie. Gdy coś zrobimy źle, liczymy, że użytkownicy języka pomogą nam to poprawić.",
       "plea": "Masz pomysł, poprawkę albo odważne doświadczenie edukacyjne, które chcesz zobaczyć? Powiedz nam. Czytamy każdą wiadomość i głęboko zastanawiamy się, co może otworzyć dla Corpán i nauki języków.",
       "emailCta": "Napisz do nas",
       "githubCta": "Otwórz issue na GitHub",
@@ -150,23 +148,11 @@
       "pact": "Dotknij poniżej, aby zacząć się uczyć i rozwijać razem z nami. 🤝",
       "cta": "Wchodzę w to — lecimy"
     },
-    "welcome": "Witamy",
-    "makePrimaryLanguage": "Ustaw polski jako mój główny język",
-    "canChangeLater": "Nie martw się, możesz to zmienić później.",
     "pickLanguagesToLearn": "Wybierz języki, których chcesz się uczyć",
     "textToSpeechSetup": "Ustawienia syntezatora mowy",
-    "ttsPoorQualityNote": "Jeśli dźwięk jest słabej jakości, przejdź do ustawień TTS urządzenia i zainstaluj głosy wysokiej jakości.",
-    "howToSetupTtsOn": "Jak skonfigurować TTS na",
-    "welcomeTitle": "Witamy w rodzinie Corpán!",
-    "welcomeBody": "Corpán to aplikacja open source tworzona przez bardzo mały zespół, a nie wielką firmę. Naprawdę zależy nam na językach i edukacji, a projekt jest wciąż na wczesnym etapie, więc możesz trafić na niedopracowane elementy, brakujące funkcje lub języki. Jeśli coś nie działa, napisz do nas przez GitHuba lub e-mail. Twoje uwagi pomagają nam często wydawać aktualizacje i ulepszać naukę języków dla wszystkich.",
-    "welcomeVisit": "Odwiedź encorpora.io",
-    "linkCopied": "Link skopiowany. Otwórz w przeglądarce:",
     "reconfigureStack": "Przekonfiguruj profil",
     "openVoiceSettings": "Otwórz Ustawienia",
     "openTTSSetup": "Otwórz ustawienia TTS",
-    "welcomeFollowUp": "Dziękujemy za dołączenie — do zobaczenia w społeczności!",
-    "learningStepTitle": "Nauka",
-    "tts": "Zamiana tekstu na mowę",
     "languageOrderTipTitle": "Wskazówka",
     "languageOrderTipBody": "Język na dole listy to język interfejsu aplikacji. Aby zmienić język interfejsu, przeciągnij inny język na dół.",
     "ttsOsTipTitle": "Wskazówka",
@@ -176,10 +162,6 @@
     "ttsOsTipWindows": "Zainstaluj głosy w Ustawieniach i wróć tutaj.",
     "ttsOsTipOther": "Zainstaluj głosy w ustawieniach urządzenia i wróć tutaj.",
     "installVoicesAndroid": "Zainstaluj głosy",
-    "learning": "Nauka języków",
-    "ttsStepTitle": "Tekst na mowę",
-    "socials": "Obserwuj i łącz się",
-    "socialsStepTitle": "Media społecznościowe",
     "noVoices": "Brak głosów",
     "noVoicesHint": "Zainstaluj głosy, aby włączyć ten język.",
     "sendAppleFeedback": "Wyślij opinię do Apple",
@@ -234,56 +216,21 @@
         "notInstalled": "Nie zainstalowane"
       }
     },
-    "packs": "Pakiety fraz",
     "phrasePacks": {
-      "title": "Pakiety fraz",
-      "stepTitle": "Pakiety fraz",
       "hero": "Wybierz tematy",
       "loading": "Ładowanie…",
       "selectAll": "Zaznacz wszystko ({{count}})",
       "clearAll": "Wyczyść",
-      "subscriptionNudge": "Subskrybuj, aby odblokować wszystkie pakiety.",
+      "subscriptionNudge": "Niektóre pakiety są częścią Corpán Plus — możesz przejść na Plus później w Ustawienia → Pakiety.",
       "entryCount": "{{n}} fraz",
       "paid": "Płatne",
       "emptyHero": "Brak pakietów.",
-      "emptySub": "Wróć wkrótce.",
-      "offlineHero": "Jesteś offline.",
-      "offlineSub": "Pakiety wymagają internetu — spróbuj później w Ustawienia → Pakiety.",
-      "offlineBanner": "Offline — wybór zainstaluje się po połączeniu.",
-      "noneSelected": "Nic nie wybrano — Kontynuuj pominie",
-      "selectedSuffix": "wybrano",
-      "skip": "Pomiń na razie",
-      "subtitle": "Dodaj skoncentrowane pakiety fraz do swojej kolekcji. Możesz je włączać lub wyłączać w dowolnym momencie w Ustawieniach."
+      "emptySub": "Wróć wkrótce."
     },
-    "notOnAppleIOS": "Nie na iOS",
     "appleNoVoiceTitle": "Apple nie udostępnia jeszcze głosu dla {{lang}}",
     "appleNoVoiceBody": "Krótka wiadomość do zespołu Apple ds. dostępności pomaga pokazać zapotrzebowanie. Tymczasem {{lang}} działa natywnie na Android.",
     "back": "Wróć",
     "continue": "Dalej",
-    "class": {
-      "title": "Dla kogo?",
-      "subtitle": "Spersonalizujemy Corpán. Dane zostają na Twoim urządzeniu — nigdzie ich nie wysyłamy.",
-      "learner": "Uczę się języków",
-      "learnerDesc": "Czytaj i słuchaj w językach, których się uczysz.",
-      "enjoyer": "Chcę cieszyć się treściami",
-      "enjoyerDesc": "Książki, opowiadania i gry w Twoim języku.",
-      "polyglot": "Jedno i drugie — chcę wszystko",
-      "polyglotDesc": "Kilka języków jednocześnie i cała reszta.",
-      "kid": "To dla dziecka",
-      "kidDesc": "Wyselekcjonowane książki i gry edukacyjne dla młodszych czytelników.",
-      "ageTitle": "Ile lat ma czytelnik?",
-      "ageUnder13": "Poniżej 13 lat",
-      "ageTeen": "13–17 lat"
-    },
-    "pitch": {
-      "title": "Dołącz do Corpanistas",
-      "subtitle": "Corpán Plus otwiera całą bibliotekę. Wypróbuj pierwszą część dowolnej książki za darmo, na zawsze.",
-      "everything": "Każda książka, każdy język — odblokowane.",
-      "private": "Bez reklam. Twoje dane pozostają na Twoim urządzeniu.",
-      "team": "Jesteśmy małym zespołem i każdy cent inwestujemy z powrotem w Corpán.",
-      "tryPlus": "Wypróbuj Corpán Plus",
-      "continueFree": "Kontynuuj za darmo"
-    },
     "calibrate": {
       "childAgeTitle": "Ile lat ma czytelnik?",
       "childTeen": "13–17 lat",
@@ -306,16 +253,6 @@
       "voiceCountMany": "{{count}} głosów gotowych",
       "voiceCountOne": "1 głos gotowy",
       "yourVoiceFor": "Twój głos dla języka {{lang}}"
-    },
-    "engage": {
-      "joinDesc": "Wspieraj Corpán i odblokuj wszystko. Opcjonalnie, w dowolnym momencie.",
-      "subscribedTitle": "Jesteś Corpanistą",
-      "subscribedDesc": "Dziękujemy, że utrzymujesz Corpán bez reklam i pomagasz mu się rozwijać.",
-      "joinTitle": "Dołącz do Corpanistas",
-      "start": "Rozpocznij odkrywanie",
-      "subtitle": "Corpán jest tworzony przez mały zespół open-source. Przywitaj się — a jeśli Ci się spodoba, możesz nas wesprzeć.",
-      "title": "Wszystko gotowe",
-      "explore": "Odkrywam samodzielnie"
     },
     "fork": {
       "child": {
@@ -353,7 +290,6 @@
       "wild": "Odkrywaj niezwykłe rzeczy",
       "wildDesc": "Zaskakujące, eksperymentalne doświadczenia."
     },
-    "settingUp": "Konfiguruję…",
     "ttsIntro": "Corpán czyta na głos. Dotknij głosu, aby usłyszeć go w swoim tempie.",
     "voiceGuide": {
       "intro": "Twoje urządzenie ma wbudowane bogate, naturalne głosy — darmowe i znacznie lepsze niż domyślne. Producent po prostu je wyłącza. Włączmy je; to tylko kilka dotknięć:",
@@ -583,14 +519,15 @@
     "introTipBody": "Stacki zapisują różne ustawienia nauki — jeden do podróży, inny do pracy. Dotknij +, aby utworzyć nowy stack."
   },
   "rating": {
-    "title": "Podoba Ci się Corpán?",
-    "description": "Corpán tworzy mały zespół open-source, dopiero startujemy. Jeśli to dla Ciebie aplikacja na 5 gwiazdek, krótka ocena bardzo nam pomaga.",
-    "rateNow": "⭐ Oceń na 5 gwiazdek",
+    "title": "Kochasz Corpán?",
+    "description": "Jeśli kochasz Corpán, daj mu 5 gwiazdek. W sklepach z aplikacjami wszystko poniżej 5 gwiazdek szkodzi Corpánowi.",
+    "rateNow": "⭐ Daj 5 gwiazdek",
     "remindLater": "Może później",
     "noThanks": "Nie, dziękuję",
     "close": "Zamknij",
-    "feedbackHint": "Jeszcze nie pełne 5 gwiazdek? Kliknij „Przekaż opinię” i napisz, co możemy poprawić.",
-    "feedbackButton": "Przekaż opinię na GitHubie"
+    "feedbackHint": "Jeśli to jeszcze nie jest dla Ciebie aplikacja na 5 gwiazdek, napisz do nas e-mail albo otwórz issue na GitHubie i powiedz, co poprawić. Chcemy ją ulepszać.",
+    "emailButton": "Napisz e-mail",
+    "githubButton": "Issue na GitHubie"
   },
   "packs": {
     "title": "Pakiety",
@@ -640,7 +577,7 @@
       "subBadge": "Subskrypcja",
       "paid": "Płatne",
       "free": "Darmowe",
-      "unlockSub": "Odblokuj subskrypcją",
+      "unlockSub": "Odblokuj z Corpán Plus",
       "entryCount": "{{n}} fraz",
       "allInstalled": {
         "title": "Masz wszystkie paczki fraz.",
@@ -671,14 +608,14 @@
     "updateAvailable": "Dostępna aktualizacja"
   },
   "subscription": {
-    "title": "Odblokuj wszystko",
-    "description": "Nieograniczony dostęp do wszystkich audiobooków i pakietów premium z subskrypcją.",
+    "title": "Odblokuj Corpán Plus",
+    "description": "Nieograniczony dostęp do każdej funkcji, języka, pakietu i aktualizacji.",
     "annual": "Roczna",
     "monthly": "Miesięczna",
     "subscribe": "Subskrybuj",
     "subscribing": "Subskrybowanie...",
-    "subscribed": "Jesteś subskrybentem",
-    "subscribedDescription": "Plan {{plan}} aktywny. Dziękujemy za wsparcie Corpán.",
+    "subscribed": "Corpán Plus jest aktywny",
+    "subscribedDescription": "Plan {{plan}} jest aktywny. Wszystko jest odblokowane.",
     "manage": "Zarządzaj subskrypcją",
     "termsOfUse": "Warunki korzystania",
     "privacyPolicy": "Polityka prywatności",
@@ -743,12 +680,12 @@
     "offlineEmpty": "Połącz się z internetem, aby odkrywać paczki — lub pomiń to na razie."
   },
   "paywall": {
-    "title": "Kontynuuj z Corpán Plus",
-    "thanksTitle": "Jesteś Corpanistą",
-    "thanksBody": "Dziękujemy za wsparcie Corpán. Wszystko jest odblokowane.",
-    "bookSubhead": "Dotarłeś do końca darmowego podglądu książki {{title}}.",
-    "subhead": "Odblokuj każdą książkę w każdym języku. Bez reklam. Twoje dane pozostają na Twoim urządzeniu.",
-    "pitch": "Jesteśmy małym zespołem i każdy cent inwestujemy z powrotem w Corpán. Corpanistas sprawiają, że aplikacja jest wolna od reklam i stale się rozwija.",
+    "title": "Odblokuj Corpán Plus",
+    "thanksTitle": "Corpán Plus jest aktywny",
+    "thanksBody": "Wszystko jest odblokowane.",
+    "bookSubhead": "Kontynuuj {{title}} i odblokuj wszystkie funkcje.",
+    "subhead": "Nieograniczony dostęp do każdej funkcji, języka i aktualizacji. Bez reklam. Twoje dane zostają na Twoim urządzeniu.",
+    "pitch": "Książki, pakiety, gry, narzędzia mówienia i nowe doświadczenia nauki są wliczone.",
     "maybeLater": "Może później",
     "continue": "Kontynuuj",
     "dismiss": "Zamknij"

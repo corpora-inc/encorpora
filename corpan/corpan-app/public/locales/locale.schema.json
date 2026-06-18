@@ -370,34 +370,7 @@
     "onboarding": {
       "type": "object",
       "properties": {
-        "welcome": {
-          "type": "string"
-        },
-        "makePrimaryLanguage": {
-          "type": "string"
-        },
-        "canChangeLater": {
-          "type": "string"
-        },
         "pickLanguagesToLearn": {
-          "type": "string"
-        },
-        "learning": {
-          "type": "string"
-        },
-        "learningStepTitle": {
-          "type": "string"
-        },
-        "tts": {
-          "type": "string"
-        },
-        "ttsStepTitle": {
-          "type": "string"
-        },
-        "socials": {
-          "type": "string"
-        },
-        "socialsStepTitle": {
           "type": "string"
         },
         "noVoices": {
@@ -415,31 +388,10 @@
         "textToSpeechSetup": {
           "type": "string"
         },
-        "ttsPoorQualityNote": {
-          "type": "string"
-        },
-        "howToSetupTtsOn": {
-          "type": "string"
-        },
-        "welcomeTitle": {
-          "type": "string"
-        },
-        "welcomeBody": {
-          "type": "string"
-        },
-        "welcomeVisit": {
-          "type": "string"
-        },
-        "linkCopied": {
-          "type": "string"
-        },
         "reconfigureStack": {
           "type": "string"
         },
         "openVoiceSettings": {
-          "type": "string"
-        },
-        "welcomeFollowUp": {
           "type": "string"
         },
         "openTTSSetup": {
@@ -471,30 +423,14 @@
         }
       },
       "required": [
-        "welcome",
-        "makePrimaryLanguage",
-        "canChangeLater",
         "pickLanguagesToLearn",
-        "learning",
-        "learningStepTitle",
-        "tts",
-        "ttsStepTitle",
-        "socials",
-        "socialsStepTitle",
         "noVoices",
         "noVoicesHint",
         "languageOrderTipTitle",
         "languageOrderTipBody",
         "textToSpeechSetup",
-        "ttsPoorQualityNote",
-        "howToSetupTtsOn",
-        "welcomeTitle",
-        "welcomeBody",
-        "welcomeVisit",
-        "linkCopied",
         "reconfigureStack",
         "openVoiceSettings",
-        "welcomeFollowUp",
         "openTTSSetup",
         "ttsOsTipTitle",
         "ttsOsTipAndroid",
@@ -748,7 +684,10 @@
         "feedbackHint": {
           "type": "string"
         },
-        "feedbackButton": {
+        "emailButton": {
+          "type": "string"
+        },
+        "githubButton": {
           "type": "string"
         }
       },
@@ -760,7 +699,8 @@
         "noThanks",
         "close",
         "feedbackHint",
-        "feedbackButton"
+        "emailButton",
+        "githubButton"
       ],
       "additionalProperties": false
     },

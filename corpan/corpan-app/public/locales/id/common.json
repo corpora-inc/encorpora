@@ -137,12 +137,10 @@
     "welcomePact": {
       "title": "Corpán terus berkembang",
       "subtitle": "Anda termasuk pengguna awal",
-      "tinyTeamTitle": "Tim kecil para antusias",
-      "tinyTeamDesc": "Independen, bebas iklan, dan dibuat dengan menghormati orang-orang yang menggunakannya — tim kecil yang membangun aplikasi bahasa yang selalu kami inginkan.",
       "bleedingEdgeTitle": "Terdepan, dengan tujuan",
-      "bleedingEdgeDesc": "Corpán mendorong batas kemampuan perangkat Anda: dunia imersif, pengenalan ucapan, suara alami, dan model AI terbaru bekerja bersama untuk menciptakan cara belajar yang baru. Sebagian besar berjalan langsung di perangkat Anda, memberi Anda pembelajaran yang privat dan mengutamakan penggunaan luring tanpa bergantung pada pusat data. Kami merilis teknologi baru saat masih mentah, sehingga terkadang dapat bertingkah aneh, berjalan lambat, atau memang lebih dari yang mampu ditangani perangkat Anda. Sebagai gantinya, Anda mendapatkan pengalaman belajar baru yang kuat segera setelah hal itu menjadi mungkin.",
+      "bleedingEdgeDesc": "Corpán menghadirkan AI baru, pengenalan ucapan, suara, dan dunia imersif ke perangkatmu untuk belajar yang privat dan mengutamakan offline. Kami merilis teknologi saat masih mentah, jadi kadang bisa berperilaku aneh, berjalan lambat, atau terlalu berat untuk perangkatmu. Sebagai gantinya, kamu mendapat cara belajar baru segera setelah itu menjadi mungkin.",
       "yourLangTitle": "Kami tidak berbicara setiap bahasa yang kami dukung",
-      "yourLangDesc": "Itulah kenyataannya. Kami membangun untuk puluhan bahasa karena semua orang berhak mendapatkan alat belajar yang kuat, bukan karena tim kecil kami sudah menguasai semuanya. Anda mungkin menemukan hal-hal yang kami lakukan dengan keliru. Jika Anda mengenal {{lang}} lebih baik daripada kami, kami harap Anda akan memberi tahu kami dan membantu menjadikan Corpán layak untuk bahasa tersebut.",
+      "yourLangDesc": "Kami membangun untuk banyak bahasa karena para pelajar layak mendapat alat yang lebih baik, bukan karena kami mengetahui semuanya. Saat kami keliru, kami berharap para penutur membantu kami memperbaikinya.",
       "plea": "Punya ide, koreksi, atau pengalaman belajar liar yang ingin Anda lihat? Beri tahu kami. Kami membaca setiap pesan dan memikirkan secara mendalam apa yang dapat dibukanya bagi Corpán dan pembelajaran bahasa.",
       "emailCta": "Kirim email",
       "githubCta": "Buka issue di GitHub",
@@ -150,23 +148,11 @@
       "pact": "Ketuk di bawah untuk mulai belajar dan berkembang bersama kami. 🤝",
       "cta": "Saya ikut — ayo mulai"
     },
-    "welcome": "Selamat datang",
-    "makePrimaryLanguage": "Jadikan bahasa Inggris bahasa utama saya",
-    "canChangeLater": "Anda dapat mengubahnya kapan saja.",
     "pickLanguagesToLearn": "Pilih bahasa untuk dipelajari",
     "textToSpeechSetup": "Penyiapan Teks-ke-Ucapan (TTS)",
-    "ttsPoorQualityNote": "Jika audio terdengar buruk, instal suara berkualitas tinggi di pengaturan TTS perangkat Anda.",
-    "howToSetupTtsOn": "Cara menyiapkan TTS di",
-    "welcomeTitle": "Selamat datang di keluarga Corpán!",
-    "welcomeBody": "Corpán adalah aplikasi open source yang dibuat oleh tim kecil sekali, bukan perusahaan besar. Kami sangat peduli pada bahasa dan pendidikan, dan proyek ini masih di tahap awal, jadi kamu mungkin akan melihat bagian yang belum rapi, fitur yang belum ada, atau bahasa yang belum tersedia. Jika ada yang tidak berjalan dengan baik, kabari kami lewat GitHub atau email. Masukanmu membantu kami merilis pembaruan rutin dan membuat belajar bahasa jadi lebih baik untuk semua.",
-    "welcomeVisit": "Kunjungi encorpora.io",
-    "linkCopied": "Tautan disalin. Buka di peramban Anda:",
     "reconfigureStack": "Konfigurasi ulang stack",
     "openVoiceSettings": "Buka Pengaturan",
     "openTTSSetup": "Buka pengaturan TTS",
-    "welcomeFollowUp": "Terima kasih telah bergabung—sampai jumpa di komunitas!",
-    "learningStepTitle": "Belajar",
-    "tts": "Teks-ke-ucapan",
     "languageOrderTipTitle": "Tips",
     "languageOrderTipBody": "Bahasa paling bawah dalam daftar adalah bahasa antarmuka aplikasi. Untuk mengubah bahasa antarmuka, seret bahasa lain ke paling bawah.",
     "ttsOsTipTitle": "Tips",
@@ -176,10 +162,6 @@
     "ttsOsTipWindows": "Instal suara di Pengaturan lalu kembali ke sini.",
     "ttsOsTipOther": "Instal suara di pengaturan perangkat lalu kembali ke sini.",
     "installVoicesAndroid": "Instal suara",
-    "learning": "Belajar bahasa",
-    "ttsStepTitle": "Teks-ke-ucapan",
-    "socials": "Ikuti & terhubung",
-    "socialsStepTitle": "Sosial media",
     "noVoices": "Tidak ada suara",
     "noVoicesHint": "Pasang suara untuk mengaktifkan bahasa ini.",
     "sendAppleFeedback": "Kirim masukan Apple",
@@ -234,56 +216,21 @@
         "notInstalled": "Tidak terpasang"
       }
     },
-    "packs": "Paket frasa",
     "phrasePacks": {
-      "title": "Paket frasa",
-      "stepTitle": "Paket frasa",
       "hero": "Pilih topik kamu",
       "loading": "Memuat…",
       "selectAll": "Pilih semua ({{count}})",
       "clearAll": "Hapus",
-      "subscriptionNudge": "Berlangganan untuk membuka semua paket.",
+      "subscriptionNudge": "Beberapa paket termasuk dalam Corpán Plus — kamu bisa upgrade nanti di Pengaturan → Paket.",
       "entryCount": "{{n}} frasa",
       "paid": "Berbayar",
       "emptyHero": "Belum ada paket.",
-      "emptySub": "Kembali lagi nanti.",
-      "offlineHero": "Kamu offline.",
-      "offlineSub": "Paket butuh internet — coba lagi dari Pengaturan → Paket.",
-      "offlineBanner": "Offline — pilihan akan dipasang saat terhubung.",
-      "noneSelected": "Tidak ada yang dipilih — Lanjutkan akan melewati",
-      "selectedSuffix": "dipilih",
-      "skip": "Lewati untuk sekarang",
-      "subtitle": "Tambahkan paket frasa terfokus ke tumpukan Anda. Aktifkan atau nonaktifkan kapan saja di Pengaturan."
+      "emptySub": "Kembali lagi nanti."
     },
-    "notOnAppleIOS": "Bukan di iOS",
     "appleNoVoiceTitle": "Apple belum menyediakan suara {{lang}}",
     "appleNoVoiceBody": "Catatan singkat untuk tim aksesibilitas Apple bisa membantu menguatkan kebutuhannya. Sementara itu, {{lang}} sudah didukung secara native di Android.",
     "back": "Kembali",
     "continue": "Lanjutkan",
-    "class": {
-      "title": "Untuk siapa ini?",
-      "subtitle": "Kami akan menyesuaikan Corpán untuk Anda. Data ini tetap di perangkat Anda — kami tidak pernah mengirimkannya ke mana pun.",
-      "learner": "Saya sedang belajar bahasa",
-      "learnerDesc": "Baca dan dengarkan dalam bahasa yang Anda pelajari.",
-      "enjoyer": "Saya ingin menikmati konten",
-      "enjoyerDesc": "Buku, cerita, dan permainan dalam bahasa Anda sendiri.",
-      "polyglot": "Keduanya — saya ingin semuanya",
-      "polyglotDesc": "Beberapa bahasa sekaligus, ditambah semua fitur lainnya.",
-      "kid": "Ini untuk anak-anak",
-      "kidDesc": "Buku dan permainan edukasi pilihan untuk pembaca muda.",
-      "ageTitle": "Berapa usia pembaca?",
-      "ageUnder13": "Di bawah 13 tahun",
-      "ageTeen": "13–17 tahun"
-    },
-    "pitch": {
-      "title": "Gabung Corpanistas",
-      "subtitle": "Corpán Plus membuka seluruh perpustakaan. Coba bagian pertama buku apa pun secara gratis, selamanya.",
-      "everything": "Semua buku, semua bahasa — terbuka.",
-      "private": "Tanpa iklan. Data Anda tetap di perangkat Anda.",
-      "team": "Kami tim kecil dan setiap sen kami gunakan kembali untuk Corpán.",
-      "tryPlus": "Coba Corpán Plus",
-      "continueFree": "Lanjutkan dengan versi gratis"
-    },
     "calibrate": {
       "childAgeTitle": "Berapa usia pembaca?",
       "childTeen": "13–17 tahun",
@@ -306,16 +253,6 @@
       "voiceCountMany": "{{count}} suara siap",
       "voiceCountOne": "1 suara siap",
       "yourVoiceFor": "Suara {{lang}} Anda"
-    },
-    "engage": {
-      "joinDesc": "Dukung Corpán dan buka semua fitur. Opsional, kapan saja.",
-      "subscribedTitle": "Anda seorang Corpanista",
-      "subscribedDesc": "Terima kasih telah menjaga Corpán tetap bebas iklan dan terus berkembang.",
-      "joinTitle": "Gabung dengan Corpanistas",
-      "start": "Mulai menjelajah",
-      "subtitle": "Corpán dibuat oleh tim open-source kecil. Sapa kami — dan jika Anda menyukainya, Anda bisa mendukung kami.",
-      "title": "Anda siap",
-      "explore": "Jelajahi sendiri"
     },
     "fork": {
       "child": {
@@ -353,7 +290,6 @@
       "wild": "Jelajahi hal-hal unik",
       "wildDesc": "Pengalaman yang mengejutkan dan eksperimental."
     },
-    "settingUp": "Menyiapkan…",
     "ttsIntro": "Corpán membacakan dengan lantang. Ketuk suara untuk mendengarkannya dengan kecepatan Anda.",
     "voiceGuide": {
       "intro": "Perangkat Anda memiliki suara yang kaya dan alami bawaan — gratis, dan jauh lebih baik dari bawaan. Produsen hanya membiarkannya nonaktif. Mari kita aktifkan; hanya perlu beberapa ketukan:",
@@ -583,14 +519,15 @@
     "introTipBody": "Stack menyimpan berbagai pengaturan belajar — satu untuk perjalanan, lainnya untuk pekerjaan. Ketuk + untuk membuat stack baru."
   },
   "rating": {
-    "title": "Suka dengan Corpán?",
-    "description": "Corpán dibuat oleh tim open-source kecil yang baru mulai. Kalau menurut Anda layak 5 bintang, satu rating singkat sangat membantu kami.",
-    "feedbackHint": "Belum terasa pantas 5 bintang? Ketuk 'Kirim masukan' dan beri tahu kami apa yang perlu diperbaiki.",
-    "feedbackButton": "Kirim masukan di GitHub",
-    "rateNow": "⭐ Beri rating 5 bintang",
+    "title": "Suka banget dengan Corpán?",
+    "description": "Kalau Anda menyukai Corpán, beri 5 bintang. Di toko aplikasi, apa pun di bawah 5 bintang merugikan Corpán.",
+    "feedbackHint": "Kalau bagi Anda ini belum aplikasi 5 bintang, kirim email atau buka issue di GitHub dan beri tahu apa yang harus kami perbaiki. Kami ingin membuatnya lebih baik.",
+    "rateNow": "⭐ Beri 5 bintang",
     "remindLater": "Nanti saja",
     "noThanks": "Tidak, terima kasih",
-    "close": "Tutup"
+    "close": "Tutup",
+    "emailButton": "Email kami",
+    "githubButton": "Issue GitHub"
   },
   "packs": {
     "title": "Paket",
@@ -640,7 +577,7 @@
       "subBadge": "Langganan",
       "paid": "Berbayar",
       "free": "Gratis",
-      "unlockSub": "Buka dengan langganan",
+      "unlockSub": "Buka dengan Corpán Plus",
       "entryCount": "{{n}} frasa",
       "allInstalled": {
         "title": "Kamu sudah punya semua paket frasa.",
@@ -671,14 +608,14 @@
     "updateAvailable": "Pembaruan tersedia"
   },
   "subscription": {
-    "title": "Buka semua",
-    "description": "Akses tak terbatas ke semua buku audio dan paket premium dengan berlangganan.",
+    "title": "Buka Corpán Plus",
+    "description": "Akses tanpa batas ke setiap fitur, bahasa, paket, dan pembaruan.",
     "annual": "Tahunan",
     "monthly": "Bulanan",
     "subscribe": "Berlangganan",
     "subscribing": "Berlangganan...",
-    "subscribed": "Kamu sudah berlangganan",
-    "subscribedDescription": "Paket {{plan}} aktif. Terima kasih telah mendukung Corpán.",
+    "subscribed": "Corpán Plus aktif",
+    "subscribedDescription": "Paket {{plan}} aktif. Semuanya terbuka.",
     "manage": "Kelola langganan",
     "termsOfUse": "Ketentuan Penggunaan",
     "privacyPolicy": "Kebijakan Privasi",
@@ -743,12 +680,12 @@
     "offlineEmpty": "Sambungkan ke internet untuk menemukan pak — atau lewati untuk sekarang."
   },
   "paywall": {
-    "title": "Lanjutkan dengan Corpán Plus",
-    "thanksTitle": "Anda seorang Corpanista",
-    "thanksBody": "Terima kasih telah mendukung Corpán. Semuanya sudah terbuka.",
-    "bookSubhead": "Anda telah mencapai akhir pratinjau gratis {{title}}.",
-    "subhead": "Buka semua buku dalam semua bahasa. Tanpa iklan. Data Anda tetap di perangkat Anda.",
-    "pitch": "Kami tim kecil dan setiap sen kami gunakan kembali untuk Corpán. Corpanistas menjaganya tetap bebas iklan dan terus berkembang.",
+    "title": "Buka Corpán Plus",
+    "thanksTitle": "Corpán Plus aktif",
+    "thanksBody": "Semuanya terbuka.",
+    "bookSubhead": "Lanjutkan {{title}} dan buka setiap fitur.",
+    "subhead": "Akses tanpa batas ke setiap fitur, bahasa, dan pembaruan. Tanpa iklan. Datamu tetap berada di perangkatmu.",
+    "pitch": "Buku, paket, game, alat bicara, dan pengalaman belajar baru semuanya termasuk.",
     "maybeLater": "Mungkin nanti",
     "continue": "Lanjutkan",
     "dismiss": "Tutup"

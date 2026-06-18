@@ -137,12 +137,10 @@
     "welcomePact": {
       "title": "Corpánは進化し続けます",
       "subtitle": "あなたは初期ユーザーです",
-      "tinyTeamTitle": "熱意ある小さなチーム",
-      "tinyTeamDesc": "独立運営、広告なし、そして使う人への敬意を大切にしています。私たちは、ずっと欲しかった語学アプリを小さなチームで作っています。",
       "bleedingEdgeTitle": "意図的に最先端",
-      "bleedingEdgeDesc": "Corpánは、あなたのデバイスでできることの限界を広げます。没入できる世界、音声認識、自然な声、最新のAIモデルが連携し、新しい学び方を生み出します。その多くはデバイス上で直接動作するため、データセンターに依存せず、プライベートでオフラインを第一にした学習ができます。私たちは新しい技術をまだ荒削りな段階で届けるため、ときには不思議な動作をしたり、遅くなったり、デバイスで処理しきれないこともあります。その代わり、力強い新しい学習体験を、実現できたその時から使えます。",
+      "bleedingEdgeDesc": "Corpánは、新しいAI、音声認識、音声、没入型の世界をあなたのデバイスにもたらし、プライベートでオフライン優先の学習を可能にします。私たちは技術がまだ荒削りな段階で公開するため、奇妙に動いたり、遅くなったり、あなたのデバイスで処理しきれないことがあります。その代わり、新しい学び方が可能になった時点ですぐに使えます。",
       "yourLangTitle": "対応しているすべての言語を、私たちが話せるわけではありません",
-      "yourLangDesc": "それが正直な事実です。小さなチームがすべての言語を知っているからではなく、誰もが優れた学習ツールを使えるべきだと考え、何十もの言語に対応しています。私たちの間違いに気づくこともあるでしょう。{{lang}}を私たちよりよく知っているなら、ぜひ教えてください。Corpánがその言語にふさわしいものになるよう、力を貸してください。",
+      "yourLangDesc": "私たちは、学習者にはより良いツールが必要だと考えて多くの言語に対応しています。すべてを知っているからではありません。何かを間違えたときは、話者の皆さんに直す手助けをしてもらえることを願っています。",
       "plea": "アイデアや修正案、実現してほしい大胆な学習体験はありますか？ぜひ教えてください。すべてのメッセージを読み、それがCorpánと言語学習に何をもたらせるかを深く考えます。",
       "emailCta": "メールで知らせる",
       "githubCta": "GitHub issueを開く",
@@ -150,23 +148,11 @@
       "pact": "下をタップして学び始め、私たちと一緒に成長しましょう。🤝",
       "cta": "参加します。はじめましょう"
     },
-    "welcome": "ようこそ",
-    "makePrimaryLanguage": "日本語をメイン言語に設定",
-    "canChangeLater": "後からいつでも変更できます。",
     "pickLanguagesToLearn": "学びたい言語を選択してください",
     "textToSpeechSetup": "音声読み上げの設定",
-    "ttsPoorQualityNote": "音声の品質が低い場合は、端末のTTS設定で高品質の音声をインストールしてください。",
-    "howToSetupTtsOn": "TTSの設定方法",
-    "welcomeTitle": "Corpánファミリーへようこそ！",
-    "welcomeBody": "Corpán は大企業ではなく、とても小さなチームが開発しているオープンソースのアプリで、言語と教育を本気で大切にしています。まだ始まったばかりなので、作り込みが足りない部分や、未実装の機能・未対応の言語が残っているかもしれません。もしうまく動かないところがあれば、黙って我慢せず GitHub やメールから教えてください。皆さんのフィードバックが頻繁なアップデートと、より良い語学学習体験につながります。",
-    "welcomeVisit": "encorpora.io にアクセス",
-    "linkCopied": "リンクをコピーしました。ブラウザで開いてください：",
     "reconfigureStack": "プロフィールを再設定",
     "openVoiceSettings": "設定を開く",
     "openTTSSetup": "TTS設定を開く",
-    "welcomeFollowUp": "ご参加ありがとうございます。コミュニティでお会いしましょう！",
-    "learningStepTitle": "学習",
-    "tts": "テキスト読み上げ",
     "languageOrderTipTitle": "ヒント",
     "languageOrderTipBody": "リストの一番下にある言語がアプリの表示言語になります。表示言語を変更するには、別の言語を一番下までドラッグしてください。",
     "ttsOsTipTitle": "ヒント",
@@ -176,10 +162,6 @@
     "ttsOsTipWindows": "「設定」で音声を追加/インストールしてから戻ってください。",
     "ttsOsTipOther": "端末の設定で音声を追加/インストールしてから戻ってください。",
     "installVoicesAndroid": "音声を追加",
-    "learning": "言語学習",
-    "ttsStepTitle": "テキスト読み上げ",
-    "socials": "フォロー＆つながる",
-    "socialsStepTitle": "ソーシャル",
     "noVoices": "音声なし",
     "noVoicesHint": "この言語を有効にするには音声をインストールしてください。",
     "sendAppleFeedback": "Appleにフィードバックを送る",
@@ -234,56 +216,21 @@
         "notInstalled": "未インストール"
       }
     },
-    "packs": "フレーズパック",
     "phrasePacks": {
-      "title": "フレーズパック",
-      "stepTitle": "フレーズパック",
       "hero": "テーマを選ぼう",
       "loading": "読み込み中…",
       "selectAll": "すべて選択 ({{count}})",
       "clearAll": "クリア",
-      "subscriptionNudge": "サブスクで全パックを開放できます。",
+      "subscriptionNudge": "一部のパックはCorpán Plusに含まれています。後で設定 → パックからアップグレードできます。",
       "entryCount": "{{n}}フレーズ",
       "paid": "有料",
       "emptyHero": "まだパックはありません。",
-      "emptySub": "また見にきてください。",
-      "offlineHero": "オフラインです。",
-      "offlineSub": "パックにはインターネットが必要です — 後で「設定 → パック」からどうぞ。",
-      "offlineBanner": "オフライン — 接続後に選択分をインストールします。",
-      "noneSelected": "未選択 — 続行するとスキップされます",
-      "selectedSuffix": "選択済み",
-      "skip": "今はスキップ",
-      "subtitle": "集中フレーズパックをスタックに追加しましょう。設定でいつでもオン/オフを切り替えられます。"
+      "emptySub": "また見にきてください。"
     },
-    "notOnAppleIOS": "iOSではない場合",
     "appleNoVoiceTitle": "Apple ではまだ {{lang}} の音声が提供されていません",
     "appleNoVoiceBody": "Apple のアクセシビリティチームにひとこと送ることで、導入の後押しになります。それまでの間、{{lang}} は Android でネイティブに使えます。",
     "back": "戻る",
     "continue": "続ける",
-    "class": {
-      "title": "誰が使いますか？",
-      "subtitle": "あなたに最適なCorpánを。データはデバイス内にとどまり、外部送信はしません。",
-      "learner": "言語を学習しています",
-      "learnerDesc": "学習中の言語で読んだり聞いたりできます。",
-      "enjoyer": "コンテンツを楽しみたい",
-      "enjoyerDesc": "母国語で本や物語、ゲームを楽しめます。",
-      "polyglot": "両方 — すべて利用したい",
-      "polyglotDesc": "複数の言語を同時に、その他すべて。",
-      "kid": "子供向けです",
-      "kidDesc": "お子様向けの厳選された本と学習ゲーム。",
-      "ageTitle": "読者の年齢は？",
-      "ageUnder13": "13歳未満",
-      "ageTeen": "13〜17歳"
-    },
-    "pitch": {
-      "title": "Corpanistasに参加しましょう",
-      "subtitle": "Corpán Plusで全ライブラリが開放されます。どの本も最初の部分は永久に無料で試せます。",
-      "everything": "すべての本、すべての言語 — 解放されます。",
-      "private": "広告なし。データはデバイスに保存されます。",
-      "team": "私たちは小さなチームで、収益はすべてCorpánの改善に充てています。",
-      "tryPlus": "Corpán Plusを試す",
-      "continueFree": "無料プランで続ける"
-    },
     "calibrate": {
       "childAgeTitle": "読者の年齢は？",
       "childTeen": "13〜17歳",
@@ -306,16 +253,6 @@
       "voiceCountMany": "{{count}}個の音声が準備完了",
       "voiceCountOne": "1個の音声が準備完了",
       "yourVoiceFor": "あなたの{{lang}}音声"
-    },
-    "engage": {
-      "joinDesc": "Corpánをサポートしてすべてをアンロック。任意で、いつでも。",
-      "subscribedTitle": "あなたはCorpanistaです",
-      "subscribedDesc": "Corpánを広告なしで成長させ続けてくださり、ありがとうございます。",
-      "joinTitle": "Corpanistasに参加する",
-      "start": "探索を開始",
-      "subtitle": "Corpánは小さなオープンソースチームによって作られています。ぜひお声がけください — 気に入っていただけたら、私たちをサポートできます。",
-      "title": "準備完了です",
-      "explore": "自分で探検する"
     },
     "fork": {
       "child": {
@@ -353,7 +290,6 @@
       "wild": "ワイルドなものを探索",
       "wildDesc": "驚きと実験的な体験。"
     },
-    "settingUp": "設定中…",
     "ttsIntro": "Corpánが読み上げます。音声をタップして、あなたの速度で聞いてみましょう。",
     "voiceGuide": {
       "intro": "お使いのデバイスには、デフォルトよりもはるかに優れた、無料で豊かな自然な音声が内蔵されています。メーカーはそれらをオフにしているだけです。数タップでオンにしましょう:",
@@ -583,14 +519,15 @@
     "introTipBody": "スタックは異なる学習設定を保存します — 1つは旅行用、もう1つは仕事用。＋をタップして新しいスタックを作成。"
   },
   "rating": {
-    "title": "Corpánを楽しんでいますか？",
-    "description": "Corpán は小さなオープンソースチームが作り始めたばかりのアプリです。「星5つだ」と感じたら、ひと言レビューでとても助かります。",
-    "rateNow": "⭐ 星5つで評価する",
+    "title": "Corpánが大好きですか？",
+    "description": "Corpánが大好きなら、星5つを付けてください。アプリストアでは、星5未満の評価はCorpánにとって痛手になります。",
+    "rateNow": "⭐ 星5つを付ける",
     "remindLater": "あとで",
     "noThanks": "いいえ、結構です",
     "close": "閉じる",
-    "feedbackHint": "まだ星5つと思えない場合は、低い評価の代わりに「フィードバックを送る」から改善点を教えてください。",
-    "feedbackButton": "GitHubでフィードバックを送る"
+    "feedbackHint": "まだ星5つのアプリではないと感じる場合は、メールまたはGitHub issueで、直すべき点を教えてください。もっと良くしたいです。",
+    "emailButton": "メールする",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "パック",
@@ -640,7 +577,7 @@
       "subBadge": "サブスク",
       "paid": "有料",
       "free": "無料",
-      "unlockSub": "サブスクで開放",
+      "unlockSub": "Corpán Plusで解放",
       "entryCount": "{{n}}フレーズ",
       "allInstalled": {
         "title": "すべてのフレーズパックがそろっています。",
@@ -671,14 +608,14 @@
     "updateAvailable": "アップデート利用可能"
   },
   "subscription": {
-    "title": "すべてを解除",
-    "description": "サブスクリプションですべてのオーディオブックとプレミアムパックに無制限アクセス。",
+    "title": "Corpán Plusをアンロック",
+    "description": "すべての機能、言語、パック、アップデートに無制限アクセス。",
     "annual": "年額",
     "monthly": "月額",
     "subscribe": "購読する",
     "subscribing": "購読中...",
-    "subscribed": "購読中です",
-    "subscribedDescription": "{{plan}}プランが有効です。Corpánのサポートをありがとうございます。",
+    "subscribed": "Corpán Plusが有効です",
+    "subscribedDescription": "{{plan}}プランが有効です。すべてアンロックされています。",
     "manage": "サブスクリプションを管理",
     "termsOfUse": "利用規約",
     "privacyPolicy": "プライバシーポリシー",
@@ -743,12 +680,12 @@
     "offlineEmpty": "インターネットに接続してパックを見つけよう — または今はスキップ。"
   },
   "paywall": {
-    "title": "Corpán Plusで続けましょう",
-    "thanksTitle": "あなたはCorpanistaです",
-    "thanksBody": "Corpánをサポートしていただきありがとうございます。すべての機能が解放されました。",
-    "bookSubhead": "{{title}}の無料プレビューはここまでです。",
-    "subhead": "すべての本、すべての言語を解放。広告なし。データはデバイスに保存されます。",
-    "pitch": "私たちは小さなチームで、収益はすべてCorpánの改善に充てています。Corpanistasの皆様が、広告なしのCorpánの成長を支えています。",
+    "title": "Corpán Plusをアンロック",
+    "thanksTitle": "Corpán Plusが有効です",
+    "thanksBody": "すべてアンロックされています。",
+    "bookSubhead": "{{title}}を続けて、すべての機能をアンロックしましょう。",
+    "subhead": "すべての機能、言語、アップデートに無制限アクセス。広告なし。あなたのデータはデバイス上に残ります。",
+    "pitch": "本、パック、ゲーム、発話ツール、新しい学習体験がすべて含まれます。",
     "maybeLater": "後で",
     "continue": "続ける",
     "dismiss": "閉じる"

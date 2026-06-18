@@ -1,7 +1,7 @@
 // src/components/RatingPrompt.tsx
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, X, Heart, Github } from "lucide-react";
+import { Star, X, Heart, Github, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { useRatingStore, RATING_CRITERIA as CRITERIA } from "@/store/rating";
@@ -12,6 +12,7 @@ import { glass } from "@/util/browser";
 
 const FALLBACK = "https://github.com/corpora-inc/encorpora";
 const GITHUB_ISSUES = "https://github.com/corpora-inc/encorpora/issues";
+const SUPPORT_EMAIL = "team@encorpora.io";
 
 const platforms = [
 	{
@@ -80,9 +81,23 @@ export function RatingPrompt() {
 		remindLater();
 	};
 
-	const handleFeedback = async () => {
+	const dismissForFeedback = () => {
 		// Treat giving feedback as "I've engaged, don't nag me again"
 		dismissPrompt();
+	};
+
+	const handleEmailFeedback = async () => {
+		dismissForFeedback();
+
+		try {
+			await openUrl(`mailto:${SUPPORT_EMAIL}?subject=Corp%C3%A1n%20feedback`);
+		} catch (error) {
+			await openUrl(FALLBACK);
+		}
+	};
+
+	const handleGithubFeedback = async () => {
+		dismissForFeedback();
 
 		try {
 			await openUrl(GITHUB_ISSUES);
@@ -207,7 +222,7 @@ export function RatingPrompt() {
 								))}
 							</motion.div>
 
-							{/* Primary actions: Feedback + 5-star rating */}
+							{/* Primary action first; feedback paths are for anything short of 5 stars. */}
 							<motion.div
 								initial={{ opacity: 0, y: 6 }}
 								animate={{ opacity: 1, y: 0 }}
@@ -215,21 +230,31 @@ export function RatingPrompt() {
 								className="flex flex-col gap-2 mb-3"
 							>
 								<Button
-									onClick={handleFeedback}
-									variant="outline"
-									size="lg"
-									className="w-full justify-center gap-2 border-border text-foreground hover:bg-accent rounded-xl"
-								>
-									<Github className="h-4 w-4" />
-									{t("rating.feedbackButton" as any)}
-								</Button>
-
-								<Button
 									onClick={handleRate}
 									size="lg"
 									className="w-full justify-center rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-medium shadow-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 								>
 									{t("rating.rateNow" as any)}
+								</Button>
+
+								<Button
+									onClick={handleEmailFeedback}
+									variant="outline"
+									size="lg"
+									className="w-full justify-center gap-2 border-border text-foreground hover:bg-accent rounded-xl"
+								>
+									<Mail className="h-4 w-4" />
+									{t("rating.emailButton" as any)}
+								</Button>
+
+								<Button
+									onClick={handleGithubFeedback}
+									variant="outline"
+									size="lg"
+									className="w-full justify-center gap-2 border-border text-foreground hover:bg-accent rounded-xl"
+								>
+									<Github className="h-4 w-4" />
+									{t("rating.githubButton" as any)}
 								</Button>
 							</motion.div>
 

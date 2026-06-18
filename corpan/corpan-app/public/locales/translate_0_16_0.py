@@ -106,7 +106,7 @@ def build_prompt(name: str, payload: dict[str, str]) -> str:
     return f"""You are a senior app localizer. Translate the following UI strings from English into {name} for a privacy-first language-learning app called Corpán.
 
 HARD RULES:
-- Keep the brand names EXACTLY as-is, never translate or transliterate: "Corpán", "Corpán Plus", "Corpanista", "Corpanistas", "Parlometron", "Hanzipan", "Earthgate Reader", "Stargate Reader", "World Radio", "Hover Runner", "Juice Squeeze", "Phrase Flip".
+- Keep the brand names EXACTLY as-is, never translate or transliterate: "Corpán", "Corpán Plus", "Parlometron", "Hanzipan", "Earthgate Reader", "Stargate Reader", "World Radio", "Hover Runner", "Juice Squeeze", "Phrase Flip".
 - Preserve every placeholder EXACTLY, including the double braces: {{{{title}}}}, {{{{count}}}}, {{{{lang}}}}, {{{{n}}}}, {{{{total}}}}, {{{{active}}}}, {{{{version}}}}, {{{{name}}}}. Do not translate text inside braces.
 - Apple product / setting names: keep platform-canonical wording for {name} ("Settings", "Accessibility", "Spoken Content", "Voices", "System Settings", "Manage Voices", "System Voice", "Premium", "Enhanced"). If the OS uses localized names in {name}, use those.
 - Keep it concise and natural for a mobile UI in {name} — match length/tone, not word-for-word.

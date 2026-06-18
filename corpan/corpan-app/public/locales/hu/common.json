@@ -137,12 +137,10 @@
     "welcomePact": {
       "title": "A Corpán fejlődik",
       "subtitle": "A legelsők között vagy",
-      "tinyTeamTitle": "Egy apró, lelkes csapat",
-      "tinyTeamDesc": "Független, reklámmentes, és a használói iránti tisztelettel készül — egy kis csapat építi azt a nyelvi alkalmazást, amelyre mindig is vágytunk.",
       "bleedingEdgeTitle": "Tudatosan a legmodernebb",
-      "bleedingEdgeDesc": "A Corpán kitolja annak határait, amire az eszközöd képes: magával ragadó világok, beszédfelismerés, természetes hangok és a legújabb AI-modellek együtt teremtenek új tanulási módokat. Sok minden közvetlenül az eszközödön fut, így privát, elsősorban offline tanulást kapsz adatközpont nélkül. Az új technológiát még nyers állapotában adjuk ki, ezért néha furcsán viselkedhet, lassan működhet, vagy egyszerűen több lehet annál, mint amit az eszközöd elbír. Cserébe azonnal hozzáférsz az erőteljes új tanulási élményekhez, amint lehetővé válnak.",
+      "bleedingEdgeDesc": "A Corpán új mesterséges intelligenciát, beszédfelismerést, hangokat és immerzív világokat hoz az eszközödre, privát, elsősorban offline tanuláshoz. A technológiát akkor adjuk ki, amikor még nyers, ezért viselkedhet furcsán, futhat lassan, vagy lehet több annál, mint amit az eszközöd elbír. Cserébe új tanulási módokat kapsz, amint lehetővé válnak.",
       "yourLangTitle": "Nem beszélünk minden nyelven, amelyet támogatunk",
-      "yourLangDesc": "Ez az őszinte igazság. Több tucat nyelvre fejlesztünk, mert mindenki megérdemel hatékony tanulási eszközöket — nem azért, mert kis csapatunk már mindegyiket ismeri. Találhatsz dolgokat, amelyeket elrontottunk. Ha nálunk jobban ismered a(z) {{lang}} nyelvet, reméljük, szólsz, és segítesz, hogy a Corpán méltó legyen hozzá.",
+      "yourLangDesc": "Sok nyelvre építünk, mert a tanulók jobb eszközöket érdemelnek, nem azért, mert mindet ismerjük. Ha valamit elrontunk, reméljük, hogy a beszélők segítenek kijavítani.",
       "plea": "Van ötleted, javításod vagy egy merész tanulási élmény, amelyet szívesen látnál? Mondd el nekünk. Minden üzenetet elolvasunk, és alaposan átgondoljuk, mit nyithat meg a Corpán és a nyelvtanulás számára.",
       "emailCta": "Írj nekünk emailt",
       "githubCta": "Nyiss egy GitHub issue-t",
@@ -150,23 +148,11 @@
       "pact": "Koppints alább, kezdd el a tanulást, és fejlődj velünk. 🤝",
       "cta": "Benne vagyok — menjünk"
     },
-    "welcome": "Üdvözöljük",
-    "makePrimaryLanguage": "Állítsa be a magyart elsődleges nyelvként",
-    "canChangeLater": "Később bármikor megváltoztathatja.",
     "pickLanguagesToLearn": "Válassza ki, mely nyelveket szeretné tanulni",
     "textToSpeechSetup": "Szövegfelolvasás beállítása",
-    "ttsPoorQualityNote": "Ha a hangminőség gyenge, telepítsen magas minőségű hangokat a készülék TTS beállításaiban.",
-    "howToSetupTtsOn": "A TTS beállítása",
-    "welcomeTitle": "Üdvözöljük a Corpán családban!",
-    "welcomeBody": "A Corpán egy nyílt forráskódú alkalmazás, amelyet egy apró csapat fejleszt, nem egy nagy vállalat. Nagyon fontosnak tartjuk a nyelveket és az oktatást, és a projekt még korai szakaszban van, ezért előfordulhatnak félkész részek, hiányzó funkciók vagy nyelvek. Ha valami nem működik jól, kérjük, jelezd GitHubon vagy e-mailben. A visszajelzések segítenek nekünk gyakori frissítéseket kiadni és jobbá tenni a nyelvtanulást mindenki számára.",
-    "welcomeVisit": "Látogasson el az encorpora.io oldalra",
-    "linkCopied": "A hivatkozás kimásolva. Nyissa meg a böngészőjében:",
     "reconfigureStack": "Profil újrakonfigurálása",
     "openVoiceSettings": "Beállítások megnyitása",
     "openTTSSetup": "TTS-beállítások megnyitása",
-    "welcomeFollowUp": "Köszönjük, hogy csatlakozott — találkozunk a közösségben!",
-    "learningStepTitle": "Tanulás",
-    "tts": "Szövegfelolvasás",
     "languageOrderTipTitle": "Tipp",
     "languageOrderTipBody": "A lista alján lévő nyelv az alkalmazás felületének nyelve. A felület nyelvének megváltoztatásához húzz egy másik nyelvet legalulra.",
     "ttsOsTipTitle": "Tipp",
@@ -176,10 +162,6 @@
     "ttsOsTipWindows": "Telepíts hangokat a Beállításokban, majd térj vissza ide.",
     "ttsOsTipOther": "Telepíts hangokat az eszköz beállításaiban, majd térj vissza ide.",
     "installVoicesAndroid": "Hangok telepítése",
-    "learning": "Nyelvtanulás",
-    "ttsStepTitle": "Szövegfelolvasás",
-    "socials": "Kövess és kapcsolódj",
-    "socialsStepTitle": "Közösségi média",
     "noVoices": "Nincs hang",
     "noVoicesHint": "A nyelv engedélyezéséhez telepíts hangokat.",
     "sendAppleFeedback": "Apple-visszajelzés küldése",
@@ -234,56 +216,21 @@
         "notInstalled": "Nincs telepítve"
       }
     },
-    "packs": "Mondatcsomagok",
     "phrasePacks": {
-      "title": "Mondatcsomagok",
-      "stepTitle": "Mondatcsomagok",
       "hero": "Válassz témákat",
       "loading": "Betöltés…",
       "selectAll": "Mindet kijelölni ({{count}})",
       "clearAll": "Törlés",
-      "subscriptionNudge": "Fizess elő az összes csomag feloldásához.",
+      "subscriptionNudge": "Néhány csomag a Corpán Plus része — később a Beállítások → Csomagok alatt frissíthetsz.",
       "entryCount": "{{n}} mondat",
       "paid": "Fizetős",
       "emptyHero": "Még nincsenek csomagok.",
-      "emptySub": "Nézz vissza hamarosan.",
-      "offlineHero": "Offline vagy.",
-      "offlineSub": "A csomagokhoz internet kell — próbáld meg később a Beállítások → Csomagok alatt.",
-      "offlineBanner": "Offline — a kijelölés telepítődik újracsatlakozáskor.",
-      "noneSelected": "Nincs kiválasztva – a Folytatás kihagyja",
-      "selectedSuffix": "kiválasztva",
-      "skip": "Kihagyás most",
-      "subtitle": "Adj hozzá fókuszált kifejezéscsomagokat a gyűjteményedhez. Bármikor be- vagy kikapcsolhatod őket a Beállításokban."
+      "emptySub": "Nézz vissza hamarosan."
     },
-    "notOnAppleIOS": "Nem iOS-en",
     "appleNoVoiceTitle": "Az Apple még nem kínál {{lang}} hangot",
     "appleNoVoiceBody": "Egy rövid üzenet az Apple akadálymentesítési csapatának segíthet. Addig is a {{lang}} natívan működik Androidon.",
     "back": "Vissza",
     "continue": "Tovább",
-    "class": {
-      "title": "Kinek szól?",
-      "subtitle": "A Corpán-t rád szabjuk. Ez az eszközödön marad – nem küldjük el sehova.",
-      "learner": "Nyelvet tanulok",
-      "learnerDesc": "Olvass és hallgass a tanult nyelveken.",
-      "enjoyer": "Élvezni szeretném a tartalmat",
-      "enjoyerDesc": "Könyvek, történetek és játékok a saját nyelveden.",
-      "polyglot": "Mindkettő – mindent szeretnék",
-      "polyglotDesc": "Több nyelv egyszerre, plusz minden más.",
-      "kid": "Gyereknek szól",
-      "kidDesc": "Válogatott könyvek és tanulójátékok fiatalabb olvasóknak.",
-      "ageTitle": "Hány éves az olvasó?",
-      "ageUnder13": "13 év alatt",
-      "ageTeen": "13–17 év"
-    },
-    "pitch": {
-      "title": "Csatlakozz a Corpanistákhoz",
-      "subtitle": "A Corpán Plus megnyitja a teljes könyvtárat. Bármely könyv első részét ingyen kipróbálhatod, örökre.",
-      "everything": "Minden könyv, minden nyelv – feloldva.",
-      "private": "Nincsenek hirdetések. Az adataid az eszközödön maradnak.",
-      "team": "Kis csapat vagyunk, és minden fillért visszaforgatunk a Corpán-ba.",
-      "tryPlus": "Próbáld ki a Corpán Plus-t",
-      "continueFree": "Folytatás az ingyenes verzióval"
-    },
     "calibrate": {
       "childAgeTitle": "Hány éves az olvasó?",
       "childTeen": "13–17",
@@ -306,16 +253,6 @@
       "voiceCountMany": "{{count}} hang készen áll",
       "voiceCountOne": "1 hang készen áll",
       "yourVoiceFor": "A {{lang}} hangod"
-    },
-    "engage": {
-      "joinDesc": "Támogasd a Corpánt és oldj fel mindent. Opcionális, bármikor.",
-      "subscribedTitle": "Corpanista vagy",
-      "subscribedDesc": "Köszönjük, hogy hirdetésmentesen tartod a Corpán-t, és segíted a fejlődését.",
-      "joinTitle": "Csatlakozz a Corpanistas-hoz",
-      "start": "Kezdd el a felfedezést",
-      "subtitle": "A Corpánt egy apró, nyílt forráskódú csapat készíti. Gyere, köszönj be – és ha szereted, támogathatsz minket.",
-      "title": "Minden készen áll",
-      "explore": "Felfedezem egyedül"
     },
     "fork": {
       "child": {
@@ -353,7 +290,6 @@
       "wild": "Fedezz fel különleges dolgokat",
       "wildDesc": "Meglepő, kísérleti élmények."
     },
-    "settingUp": "Beállítás folyamatban…",
     "ttsIntro": "A Corpán felolvas. Koppints egy hangra, hogy meghallgasd a saját tempódban.",
     "voiceGuide": {
       "intro": "Az eszközöd gazdag, természetes hangokat tartalmaz – ingyenesen, és sokkal jobban, mint az alapértelmezett. A gyártó csak kikapcsolva hagyja őket. Kapcsoljuk be őket; csak néhány koppintás:",
@@ -583,14 +519,15 @@
     "introTipBody": "A stack-ek különböző tanulási beállításokat mentenek — egyet utazáshoz, egy másikat munkához. Koppints a +-ra új stack létrehozásához."
   },
   "rating": {
-    "title": "Tetszik a Corpán?",
-    "description": "A Corpánt egy kicsi, nyílt forráskódú csapat készíti, most indulunk. Ha szerinted 5 csillagot ér, egy gyors értékelés rengeteget segít.",
-    "rateNow": "⭐ Értékelem 5 csillagra",
+    "title": "Szereted a Corpánt?",
+    "description": "Ha szereted a Corpánt, adj neki 5 csillagot. Az appáruházakban minden 5 csillag alatti értékelés árt a Corpánnak.",
+    "rateNow": "⭐ Adj 5 csillagot",
     "remindLater": "Talán később",
     "noThanks": "Nem, köszönöm",
     "close": "Bezárás",
-    "feedbackHint": "Még nem éri el nálad az 5 csillagot? Kattints a „Visszajelzés küldése” gombra, és írd meg, min javítsunk.",
-    "feedbackButton": "Visszajelzés GitHubon"
+    "feedbackHint": "Ha számodra még nem 5 csillagos app, írj nekünk e-mailt vagy nyiss egy GitHub issue-t, és mondd el, mit javítsunk. Jobbá akarjuk tenni.",
+    "emailButton": "Írj e-mailt",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "Csomagok",
@@ -640,7 +577,7 @@
       "subBadge": "Előfizetés",
       "paid": "Fizetős",
       "free": "Ingyenes",
-      "unlockSub": "Feloldás előfizetéssel",
+      "unlockSub": "Feloldás Corpán Plus-szal",
       "entryCount": "{{n}} mondat",
       "allInstalled": {
         "title": "Megvan minden kifejezéscsomag.",
@@ -671,14 +608,14 @@
     "updateAvailable": "Frissítés elérhető"
   },
   "subscription": {
-    "title": "Mindent feloldás",
-    "description": "Korlátlan hozzáférés minden hangoskönyvhöz és prémium csomaghoz előfizetéssel.",
+    "title": "Corpán Plus feloldása",
+    "description": "Korlátlan hozzáférés minden funkcióhoz, nyelvhez, csomaghoz és frissítéshez.",
     "annual": "Éves",
     "monthly": "Havi",
     "subscribe": "Feliratkozás",
     "subscribing": "Feliratkozás...",
-    "subscribed": "Előfizetőnk vagy",
-    "subscribedDescription": "{{plan}} csomag aktív. Köszönjük, hogy támogatod a Corpánt.",
+    "subscribed": "A Corpán Plus aktív",
+    "subscribedDescription": "A(z) {{plan}} csomag aktív. Minden fel van oldva.",
     "manage": "Előfizetés kezelése",
     "termsOfUse": "Felhasználási feltételek",
     "privacyPolicy": "Adatvédelmi szabályzat",
@@ -743,12 +680,12 @@
     "offlineEmpty": "Csatlakozz az internethez, hogy felfedezz csomagokat — vagy hagyd ki most."
   },
   "paywall": {
-    "title": "Folytasd a Corpán Plus-szal",
-    "thanksTitle": "Corpanista vagy",
-    "thanksBody": "Köszönjük, hogy támogatod a Corpán-t. Minden fel van oldva.",
-    "bookSubhead": "Elérted a(z) {{title}} ingyenes előnézetének végét.",
-    "subhead": "Oldj fel minden könyvet, minden nyelven. Nincsenek hirdetések. Az adataid az eszközödön maradnak.",
-    "pitch": "Kis csapat vagyunk, és minden fillért visszaforgatunk a Corpán-ba. A Corpanisták tartják hirdetésmentesen és fejlesztik tovább.",
+    "title": "Corpán Plus feloldása",
+    "thanksTitle": "A Corpán Plus aktív",
+    "thanksBody": "Minden fel van oldva.",
+    "bookSubhead": "Folytasd ezt: {{title}}, és oldj fel minden funkciót.",
+    "subhead": "Korlátlan hozzáférés minden funkcióhoz, nyelvhez és frissítéshez. Nincsenek hirdetések. Az adataid az eszközödön maradnak.",
+    "pitch": "Könyvek, csomagok, játékok, beszédeszközök és új tanulási élmények mind benne vannak.",
     "maybeLater": "Talán később",
     "continue": "Tovább",
     "dismiss": "Bezárás"

@@ -19,14 +19,14 @@ import json, os, sys
 TRANSLATIONS = {
     "en": {
         "subscription": {
-            "title": "Unlock everything",
-            "description": "Unlimited access to every narrated book and premium pack with a subscription.",
+            "title": "Unlock Corpán Plus",
+            "description": "Unlimited access to every feature, language, pack, and update.",
             "annual": "Annual",
             "monthly": "Monthly",
             "subscribe": "Subscribe",
             "subscribing": "Subscribing...",
-            "subscribed": "You're subscribed",
-            "subscribedDescription": "{{plan}} plan active. Thanks for supporting Corpán.",
+            "subscribed": "Corpán Plus is active",
+            "subscribedDescription": "{{plan}} plan active. Everything is unlocked.",
             "manage": "Manage subscription",
         },
         "restore": {

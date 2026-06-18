@@ -137,12 +137,10 @@
     "welcomePact": {
       "title": "„Corpán“ tobulėja",
       "subtitle": "Esate vieni pirmųjų",
-      "tinyTeamTitle": "Maža entuziastų komanda",
-      "tinyTeamDesc": "Nepriklausoma, be reklamų ir kuriama gerbiant ją naudojančius žmones — maža komanda kuria tokią kalbų programėlę, kokios visada norėjome.",
       "bleedingEdgeTitle": "Pažangiausia, sąmoningai",
-      "bleedingEdgeDesc": "„Corpán“ plečia jūsų įrenginio galimybių ribas: įtraukiantys pasauliai, kalbos atpažinimas, natūralūs balsai ir naujausi AI modeliai kartu kuria naujus mokymosi būdus. Daug kas veikia tiesiogiai jūsų įrenginyje, todėl galite mokytis privačiai, pirmiausia neprisijungę ir nepriklausydami nuo duomenų centro. Naujas technologijas išleidžiame dar nevisiškai nugludintas, todėl kartais jos gali elgtis keistai, veikti lėtai ar tiesiog pranokti jūsų įrenginio galimybes. Už tai gaunate galingas naujas mokymosi patirtis vos joms tapus įmanomoms.",
+      "bleedingEdgeDesc": "Corpán atneša į tavo įrenginį naują DI, kalbos atpažinimą, balsus ir įtraukiančius pasaulius privačiam mokymuisi, pirmiausia veikiančiam neprisijungus. Technologiją išleidžiame, kai ji dar žalia, todėl ji gali elgtis keistai, veikti lėtai arba būti daugiau, nei tavo įrenginys pajėgia. Už tai gauni naujų būdų mokytis vos tik jie tampa įmanomi.",
       "yourLangTitle": "Mes nekalbame visomis palaikomomis kalbomis",
-      "yourLangDesc": "Tokia yra sąžininga tiesa. Kuriame dešimtims kalbų, nes visi nusipelno galingų mokymosi priemonių, o ne todėl, kad mūsų maža komanda jas visas jau moka. Galite rasti dalykų, kuriuos padarėme neteisingai. Jei {{lang}} žinote geriau už mus, tikimės, kad pasakysite ir padėsite „Corpán“ tapti verta šios kalbos.",
+      "yourLangDesc": "Kuriame daugeliui kalbų, nes besimokantieji nusipelno geresnių įrankių, o ne todėl, kad jas visas mokame. Kai ką nors padarome neteisingai, tikimės, kad kalbėtojai padės mums tai ištaisyti.",
       "plea": "Turite idėją, pataisymą ar drąsią mokymosi patirtį, kurią norėtumėte išvysti? Parašykite mums. Skaitome kiekvieną žinutę ir giliai svarstome, ką ji galėtų atverti „Corpán“ ir kalbų mokymuisi.",
       "emailCta": "Parašykite mums",
       "githubCta": "Atidaryti GitHub issue",
@@ -150,27 +148,11 @@
       "pact": "Palieskite žemiau, pradėkite mokytis ir augti kartu su mumis. 🤝",
       "cta": "Aš prisijungiu — pirmyn"
     },
-    "welcome": "Sveiki atvykę",
-    "makePrimaryLanguage": "Padaryti anglų kalbą mano pagrindine kalba",
-    "canChangeLater": "Tai galite pakeisti bet kada.",
     "pickLanguagesToLearn": "Pasirinkite kalbas, kurias norite išmokti",
     "textToSpeechSetup": "Teksto į kalbą nustatymas",
-    "ttsPoorQualityNote": "Jei garsas skamba prastai, įdiekite aukštos kokybės balsus savo įrenginio TTS nustatymuose.",
-    "howToSetupTtsOn": "Kaip nustatyti TTS",
-    "welcomeTitle": "Sveiki atvykę į Corpán šeimą!",
-    "welcomeBody": "Corpán yra atvirojo kodo programa iš mažos komandos, o ne didelės įmonės. Mes labai rūpinamės kalba ir išsilavinimu, ir dar esame ankstyvoje stadijoje, todėl galite pastebėti šiurkščius kraštus ar trūkstamas funkcijas ir kalbas. Jei kas nors neveikia, prašome pranešti mums GitHub'e arba el. paštu. Jūsų atsiliepimai padeda mums dažnai atnaujinti ir pagerinti kalbų mokymą visiems.",
-    "welcomeVisit": "Apsilankykite encorpora.io",
-    "linkCopied": "Nuoroda nukopijuota. Atidarykite savo naršyklėje:",
     "reconfigureStack": "Perkonfigūruoti kaupiklį",
     "openVoiceSettings": "Atidaryti Nustatymus",
     "openTTSSetup": "Atidaryti TTS nustatymus",
-    "welcomeFollowUp": "Ačiū, kad prisijungėte — iki pasimatymo bendruomenėje!",
-    "learning": "Kalbų mokymasis",
-    "learningStepTitle": "Mokymasis",
-    "tts": "Tekstas į kalbą",
-    "ttsStepTitle": "Tekstas į kalbą",
-    "socials": "Sekite ir susisiekite",
-    "socialsStepTitle": "Socialiniai",
     "noVoices": "Nėra balsų",
     "noVoicesHint": "Įdiekite balsus, kad įgalintumėte šią kalbą.",
     "languageOrderTipTitle": "Patarimas",
@@ -234,56 +216,21 @@
         "notInstalled": "Neįdiegta"
       }
     },
-    "packs": "Frazių paketai",
     "phrasePacks": {
-      "title": "Frazių paketai",
-      "stepTitle": "Frazių paketai",
       "hero": "Pasirink temas",
       "loading": "Įkeliama…",
       "selectAll": "Pažymėti viską ({{count}})",
       "clearAll": "Išvalyti",
-      "subscriptionNudge": "Užsiprenumeruok, kad atrakintum visus paketus.",
+      "subscriptionNudge": "Kai kurie paketai įtraukti į Corpán Plus — atnaujinti galėsite vėliau per Nustatymai → Paketai.",
       "entryCount": "{{n}} frazių",
       "paid": "Mokama",
       "emptyHero": "Paketų dar nėra.",
-      "emptySub": "Užsuk vėliau.",
-      "offlineHero": "Esi neprisijungęs.",
-      "offlineSub": "Paketams reikia interneto — bandyk vėliau iš Nustatymai → Paketai.",
-      "offlineBanner": "Neprisijungta — pasirinkimai bus įdiegti prisijungus.",
-      "noneSelected": "Nepasirinkta – Tęsti praleis",
-      "selectedSuffix": "pasirinkta",
-      "skip": "Praleisti kol kas",
-      "subtitle": "Pridėkite sutelktų frazių paketų į savo rinkinį. Įjunkite arba išjunkite juos bet kada Nustatymuose."
+      "emptySub": "Užsuk vėliau."
     },
-    "notOnAppleIOS": "Ne iOS",
     "appleNoVoiceTitle": "Apple dar nesiūlo {{lang}} balso",
     "appleNoVoiceBody": "Trumpa žinutė Apple prieinamumo komandai padeda parodyti poreikį. Tuo tarpu {{lang}} natūraliai veikia Android.",
     "back": "Atgal",
     "continue": "Tęsti",
-    "class": {
-      "title": "Kam skirta?",
-      "subtitle": "Pritaikysime Corpán jums. Viskas lieka jūsų įrenginyje – niekur nesiunčiame.",
-      "learner": "Mokausi kalbų",
-      "learnerDesc": "Skaitykite ir klausykite besimokomomis kalbomis.",
-      "enjoyer": "Noriu mėgautis turiniu",
-      "enjoyerDesc": "Knygos, istorijos ir žaidimai jūsų kalba.",
-      "polyglot": "Abu – noriu visko",
-      "polyglotDesc": "Kelios kalbos vienu metu ir visa kita.",
-      "kid": "Skirta vaikui",
-      "kidDesc": "Atrinktos knygos ir mokomieji žaidimai jaunesniems skaitytojams.",
-      "ageTitle": "Kiek metų skaitytojui?",
-      "ageUnder13": "Iki 13 metų",
-      "ageTeen": "13–17 metų"
-    },
-    "pitch": {
-      "title": "Prisijunkite prie Corpanistas",
-      "subtitle": "Corpán Plus atveria visą biblioteką. Išbandykite bet kurios knygos pirmąją dalį nemokamai, visam laikui.",
-      "everything": "Visos knygos, visos kalbos – atrakintos.",
-      "private": "Jokių reklamų. Jūsų duomenys lieka jūsų įrenginyje.",
-      "team": "Esame maža komanda ir kiekvieną centą investuojame atgal į Corpán.",
-      "tryPlus": "Išbandyti Corpán Plus",
-      "continueFree": "Tęsti su nemokama versija"
-    },
     "calibrate": {
       "childAgeTitle": "Kiek metų skaitytojui?",
       "childTeen": "13–17 metų",
@@ -306,16 +253,6 @@
       "voiceCountMany": "Paruošta {{count}} balsų",
       "voiceCountOne": "Paruoštas 1 balsas",
       "yourVoiceFor": "Jūsų {{lang}} balsas"
-    },
-    "engage": {
-      "joinDesc": "Palaikykite Corpán ir atrakinkite viską. Neprivaloma, bet kada.",
-      "subscribedTitle": "Jūs esate Corpanista",
-      "subscribedDesc": "Ačiū, kad išlaikote Corpán be reklamų ir padedate jam augti.",
-      "joinTitle": "Prisijunkite prie Corpanistas",
-      "start": "Pradėti tyrinėti",
-      "subtitle": "Corpán kuria maža atvirojo kodo komanda. Ateikite pasisveikinti – ir jei jums patinka, galite mus paremti.",
-      "title": "Viskas paruošta",
-      "explore": "Naršyti savarankiškai"
     },
     "fork": {
       "child": {
@@ -353,7 +290,6 @@
       "wild": "Tyrinėti netikėtus dalykus",
       "wildDesc": "Netikėtos, eksperimentinės patirtys."
     },
-    "settingUp": "Nustatoma…",
     "ttsIntro": "Corpán skaito garsiai. Palieskite balsą, kad išgirstumėte jį savo greičiu.",
     "voiceGuide": {
       "intro": "Jūsų įrenginyje yra sodrūs, natūralūs balsai – nemokami ir daug geresni nei numatytieji. Gamintojas juos tiesiog palieka išjungtus. Įjunkime juos; tai užtruks tik kelis palietimus:",
@@ -583,14 +519,15 @@
     "introTipBody": "Kaupikliai išsaugo skirtingus mokymosi nustatymus — vienas kelionėms, kitas darbui. Paspauskite +, kad sukurtumėte naują kaupiklį."
   },
   "rating": {
-    "title": "Ar jums patinka Corpán?",
-    "description": "Corpán sukūrė maža atvirojo kodo komanda, kuri tik pradeda. Jei tai atrodo kaip 5 žvaigždučių programa, greitas įvertinimas labai padeda.",
-    "rateNow": "⭐ Įvertinkite 5 žvaigždėmis",
+    "title": "Patinka Corpán?",
+    "description": "Jei mylite Corpán, skirkite 5 žvaigždutes. Programėlių parduotuvėse bet kas mažiau nei 5 žvaigždutės kenkia Corpán.",
+    "rateNow": "⭐ Skirti 5 žvaigždutes",
     "remindLater": "Galbūt vėliau",
     "noThanks": "Ne, ačiū",
     "close": "Uždaryti",
-    "feedbackHint": "Dar ne 5 žvaigždės? Paspauskite 'Pasidalinti atsiliepimais' ir pasakykite, kaip galime tai pagerinti.",
-    "feedbackButton": "Pasidalinti atsiliepimais GitHub'e"
+    "feedbackHint": "Jei jums tai dar nėra 5 žvaigždučių programėlė, parašykite el. paštu arba atidarykite GitHub issue ir pasakykite, ką pataisyti. Norime ją pagerinti.",
+    "emailButton": "Rašyti el. paštu",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "Paketai",
@@ -640,7 +577,7 @@
       "subBadge": "Prenumerata",
       "paid": "Mokama",
       "free": "Nemokama",
-      "unlockSub": "Atrakinti su prenumerata",
+      "unlockSub": "Atrakinti su Corpán Plus",
       "entryCount": "{{n}} frazių",
       "allInstalled": {
         "title": "Turi visus frazių paketus.",
@@ -671,14 +608,14 @@
     "updateAvailable": "Yra naujinys"
   },
   "subscription": {
-    "title": "Atrakinkite viską",
-    "description": "Neribotas prieiga prie kiekvienos pasakojamos knygos ir premium paketo su prenumerata.",
+    "title": "Atrakinti Corpán Plus",
+    "description": "Neribota prieiga prie kiekvienos funkcijos, kalbos, paketo ir atnaujinimo.",
     "annual": "Metinė",
     "monthly": "Mėnesinė",
     "subscribe": "Prenumeruoti",
     "subscribing": "Prenumeruojama...",
-    "subscribed": "Esate prenumeruojamas",
-    "subscribedDescription": "{{plan}} planas aktyvus. Ačiū, kad palaikote Corpán.",
+    "subscribed": "Corpán Plus aktyvus",
+    "subscribedDescription": "{{plan}} planas aktyvus. Viskas atrakinta.",
     "manage": "Valdyti prenumeratą",
     "termsOfUse": "Naudojimo sąlygos",
     "privacyPolicy": "Privatumo politika",
@@ -743,12 +680,12 @@
     "offlineEmpty": "Prisijunkite prie interneto, kad atrastumėte paketus — arba praleiskite tai dabar."
   },
   "paywall": {
-    "title": "Tęskite su Corpán Plus",
-    "thanksTitle": "Jūs esate Corpanista",
-    "thanksBody": "Dėkojame, kad palaikote Corpán. Viskas atrakinta.",
-    "bookSubhead": "Pasiekėte nemokamos {{title}} peržiūros pabaigą.",
-    "subhead": "Atrakinkite visas knygas visomis kalbomis. Jokių reklamų. Jūsų duomenys lieka jūsų įrenginyje.",
-    "pitch": "Esame maža komanda ir kiekvieną centą investuojame atgal į Corpán. Corpanistas palaiko programą be reklamų ir padeda jai augti.",
+    "title": "Atrakinti Corpán Plus",
+    "thanksTitle": "Corpán Plus aktyvus",
+    "thanksBody": "Viskas atrakinta.",
+    "bookSubhead": "Tęskite {{title}} ir atrakinkite visas funkcijas.",
+    "subhead": "Neribota prieiga prie kiekvienos funkcijos, kalbos ir atnaujinimo. Be reklamų. Jūsų duomenys lieka jūsų įrenginyje.",
+    "pitch": "Knygos, paketai, žaidimai, kalbėjimo įrankiai ir naujos mokymosi patirtys yra įtraukti.",
     "maybeLater": "Galbūt vėliau",
     "continue": "Tęsti",
     "dismiss": "Uždaryti"

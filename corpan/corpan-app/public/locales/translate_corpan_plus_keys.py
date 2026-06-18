@@ -26,37 +26,17 @@ HERE = Path(__file__).parent
 MODEL = "gemini-2.5-flash"
 
 # The canonical EN strings to translate (path -> English). Brand terms
-# "Corpán", "Corpán Plus", "Corpanista(s)" MUST stay verbatim. {{...}}
-# placeholders MUST be preserved exactly.
+# "Corpán" and "Corpán Plus" MUST stay verbatim. {{...}} placeholders MUST be
+# preserved exactly.
 EN_FLAT: dict[str, str] = {
     "onboarding.back": "Back",
     "onboarding.continue": "Continue",
-    "onboarding.class.title": "Who's this for?",
-    "onboarding.class.subtitle": "We'll tailor Corpán to you. This stays on your device — we never send it anywhere.",
-    "onboarding.class.learner": "I'm learning languages",
-    "onboarding.class.learnerDesc": "Read and listen in the languages you're studying.",
-    "onboarding.class.enjoyer": "I want to enjoy the content",
-    "onboarding.class.enjoyerDesc": "Books, stories and games in your own language.",
-    "onboarding.class.polyglot": "Both — I want it all",
-    "onboarding.class.polyglotDesc": "Several languages at once, plus everything else.",
-    "onboarding.class.kid": "It's for a kid",
-    "onboarding.class.kidDesc": "Curated books and learning games for younger readers.",
-    "onboarding.class.ageTitle": "How old is the reader?",
-    "onboarding.class.ageUnder13": "Under 13",
-    "onboarding.class.ageTeen": "13–17",
-    "onboarding.pitch.title": "Join the Corpanistas",
-    "onboarding.pitch.subtitle": "Corpán Plus opens the whole library. Try the first part of any book free, forever.",
-    "onboarding.pitch.everything": "Every book, every language — unlocked.",
-    "onboarding.pitch.private": "No ads. Your data stays on your device.",
-    "onboarding.pitch.team": "We're a small team and put every cent back into Corpán.",
-    "onboarding.pitch.tryPlus": "Try Corpán Plus",
-    "onboarding.pitch.continueFree": "Continue with the free tier",
-    "paywall.title": "Keep going with Corpán Plus",
-    "paywall.thanksTitle": "You're a Corpanista",
-    "paywall.thanksBody": "Thank you for supporting Corpán. Everything is unlocked.",
-    "paywall.bookSubhead": "You've reached the end of the free preview of {{title}}.",
-    "paywall.subhead": "Unlock every book in every language. No ads. Your data stays on your device.",
-    "paywall.pitch": "We're a small team and put every cent back into Corpán. Corpanistas keep it ad-free and growing.",
+    "paywall.title": "Unlock Corpán Plus",
+    "paywall.thanksTitle": "Corpán Plus is active",
+    "paywall.thanksBody": "Everything is unlocked.",
+    "paywall.bookSubhead": "Continue {{title}} and unlock every feature.",
+    "paywall.subhead": "Unlimited access to every feature, language, and update. No ads. Your data stays on your device.",
+    "paywall.pitch": "Books, packs, games, speech tools, and new learning experiences are all included.",
     "paywall.maybeLater": "Maybe later",
     "paywall.continue": "Continue",
     "packs.unlockWithPlus": "Unlock with Corpán Plus",
@@ -66,7 +46,6 @@ EN_FLAT: dict[str, str] = {
     "settings.showStreak": "Show reading streak",
     "settings.showStreakHint": "A small day-count in the header. On-device only, no reminders or notifications.",
     # 0.16.0 decision-graph onboarding + Home hub
-    "onboarding.settingUp": "Setting things up…",
     "onboarding.fork.title": "What brings you to Corpán?",
     "onboarding.fork.subtitle": "We'll set everything up for you. You can change it later.",
     "onboarding.fork.enjoy.label": "Enjoy Corpán in {{lang}}",
@@ -83,11 +62,6 @@ EN_FLAT: dict[str, str] = {
     "onboarding.calibrate.enjoyImproving": "I'm still learning to read it",
     "onboarding.calibrate.enjoyJustStarting": "Just starting — I'm new to reading it",
     "onboarding.ttsIntro": "Corpán reads aloud. Tap a voice to hear it at your speed.",
-    "onboarding.engage.title": "You're all set",
-    "onboarding.engage.subtitle": "Corpán is made by a tiny open-source team. Come say hi — and if you love it, you can support us.",
-    "onboarding.engage.joinTitle": "Join the Corpanistas",
-    "onboarding.engage.joinDesc": "Support Corpán and unlock everything. Optional, anytime.",
-    "onboarding.engage.start": "Start exploring",
     "socials.instagram.cta": "Follow",
     "socials.instagram.title": "Follow on Instagram",
     "socials.instagram.desc": "@corpanapp",
@@ -204,7 +178,7 @@ def build_prompt(name: str) -> str:
     return f"""You are a senior app localizer. Translate the following UI strings from English into {name} for a privacy-first language-learning app called Corpán.
 
 HARD RULES:
-- Keep the brand names EXACTLY as-is, never translate or transliterate: "Corpán", "Corpán Plus", "Corpanista", "Corpanistas".
+- Keep the brand names EXACTLY as-is, never translate or transliterate: "Corpán", "Corpán Plus".
 - Preserve every placeholder EXACTLY, including the double braces: {{{{title}}}}, {{{{count}}}}. Do not translate text inside braces.
 - Keep it concise and natural for a mobile UI in {name} — match length/tone, not word-for-word.
 - Warm, calm, non-pushy register (this is an ad-free indie app, not a hard-sell).

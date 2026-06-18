@@ -205,7 +205,6 @@
     }
   },
   "onboarding": {
-    "settingUp": "Setting things up…",
     "ttsIntro": "Corpán reads aloud. Tap a voice to hear it at your speed.",
     "interests": {
       "title": "What do you want to do?",
@@ -223,25 +222,13 @@
       "wild": "Explore wild stuff",
       "wildDesc": "Surprising, experimental experiences."
     },
-    "engage": {
-      "title": "You're all set",
-      "subtitle": "Corpán is made by a tiny open-source team. Come say hi — and if you love it, you can support us.",
-      "joinTitle": "Join the Corpanistas",
-      "joinDesc": "Support Corpán and unlock everything. Optional, anytime.",
-      "subscribedTitle": "You're a Corpanista",
-      "subscribedDesc": "Thank you for keeping Corpán ad-free and growing.",
-      "start": "Start exploring",
-      "explore": "Explore on my own"
-    },
     "welcomePact": {
       "title": "Corpán Evolves",
       "subtitle": "You're an early adopter",
-      "tinyTeamTitle": "A tiny team of enthusiasts",
-      "tinyTeamDesc": "Independent, ad-free, and built with respect for the people who use it — a small crew making the language app we always wanted.",
       "bleedingEdgeTitle": "Cutting-edge, on purpose",
-      "bleedingEdgeDesc": "Corpán pushes the limits of what your device can do: immersive worlds, speech recognition, natural voices, and the latest AI models, all working together to create new ways to learn. Much of it runs directly on your device, giving you private, offline-first learning without depending on a data center. We release new technology while it is still raw, which means it may occasionally behave strangely, run slowly, or simply be more than your device can handle. In return, you get powerful new learning experiences as soon as they become possible.",
+      "bleedingEdgeDesc": "Corpán brings new AI, speech, voices, and immersive worlds to your device for private, offline-first learning. We release technology while it is still raw, so it may behave strangely, run slowly, or be more than your device can handle. In return, you get new ways to learn as soon as they become possible.",
       "yourLangTitle": "We don't speak every language we support",
-      "yourLangDesc": "That's the honest truth. We're building for dozens of languages because everyone deserves powerful learning tools, not because our tiny team already knows them all. You may find things we got wrong. If you know {{lang}} better than we do, we hope you'll tell us and help make Corpán worthy of it.",
+      "yourLangDesc": "We build for many languages because learners deserve better tools, not because we know them all. When we get something wrong, we hope speakers will help us make it right.",
       "plea": "Have an idea, a correction, or a wild learning experience you want to see? Tell us. We read every message and think deeply about what it could unlock for Corpán and language learning.",
       "emailCta": "Email us",
       "githubCta": "Open a GitHub issue",
@@ -283,17 +270,8 @@
       "childUnder13": "Under 13",
       "childTeen": "13–17"
     },
-    "welcome": "Welcome",
-    "makePrimaryLanguage": "Make English my primary language",
-    "canChangeLater": "You can change this anytime.",
     "pickLanguagesToLearn": "Pick languages to learn",
     "textToSpeechSetup": "Text-to-speech setup",
-    "ttsPoorQualityNote": "If audio sounds poor, install high-quality voices in your device TTS settings.",
-    "howToSetupTtsOn": "How to set up TTS on",
-    "welcomeTitle": "Welcome to the Corpán family!",
-    "welcomeBody": "Corpán is an open-source app from a tiny team, not a big company. We care deeply about language and education and we are still early, so you may see rough edges or missing features and languages. If something does not work, please tell us on GitHub or by email. Your feedback helps us ship frequent updates and make language learning better for everyone.",
-    "welcomeVisit": "Visit encorpora.io",
-    "linkCopied": "Link copied. Open in your browser:",
     "reconfigureStack": "Reconfigure stack",
     "openVoiceSettings": "Open Settings",
     "voiceGuide": {
@@ -311,16 +289,8 @@
       "macStep5": "Come back to Corpán — it appears here automatically."
     },
     "openTTSSetup": "Open TTS settings",
-    "welcomeFollowUp": "Thanks for joining—see you in the community!",
-    "learning": "Learning languages",
-    "learningStepTitle": "Learning",
-    "tts": "Text-to-speech",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Follow & connect",
-    "socialsStepTitle": "Socials",
     "noVoices": "No voices",
     "noVoicesHint": "Install voices to enable this language.",
-    "notOnAppleIOS": "Not on iOS",
     "appleNoVoiceTitle": "Apple doesn't ship a {{lang}} voice yet",
     "appleNoVoiceBody": "A quick note to Apple's accessibility team helps make the case. {{lang}} works natively on Android in the meantime.",
     "voiceRecommended": "Recommended",
@@ -388,53 +358,19 @@
         "notInstalled": "Not installed"
       }
     },
-    "packs": "Phrase packs",
     "phrasePacks": {
-      "title": "Phrase packs",
-      "stepTitle": "Phrase packs",
       "hero": "Pick your topics",
-      "subtitle": "Add focused phrase packs to your stack. Toggle them on or off any time in Settings.",
       "loading": "Loading packs…",
       "selectAll": "Select all ({{count}})",
       "clearAll": "Clear selection",
-      "selectedSuffix": "selected",
-      "noneSelected": "None selected — Continue will skip",
-      "skip": "Skip for now",
-      "subscriptionNudge": "Some packs are part of the subscription — you can subscribe later in Settings → Packs.",
+      "subscriptionNudge": "Some packs are included with Corpán Plus — you can upgrade later in Settings → Packs.",
       "entryCount": "{{n}} phrases",
       "paid": "Paid",
       "emptyHero": "No phrase packs available yet.",
-      "emptySub": "New topics ship regularly — check Settings → Packs anytime.",
-      "offlineHero": "You're offline.",
-      "offlineSub": "Phrase packs need internet — try later from Settings → Packs.",
-      "offlineBanner": "Offline — selections install when reconnected."
+      "emptySub": "New topics ship regularly — check Settings → Packs anytime."
     },
     "back": "Back",
     "continue": "Continue",
-    "class": {
-      "title": "Who's this for?",
-      "subtitle": "We'll tailor Corpán to you. This stays on your device — we never send it anywhere.",
-      "learner": "I'm learning languages",
-      "learnerDesc": "Read and listen in the languages you're studying.",
-      "enjoyer": "I want to enjoy the content",
-      "enjoyerDesc": "Books, stories and games in your own language.",
-      "polyglot": "Both — I want it all",
-      "polyglotDesc": "Several languages at once, plus everything else.",
-      "kid": "It's for a kid",
-      "kidDesc": "Curated books and learning games for younger readers.",
-      "ageTitle": "How old is the reader?",
-      "ageUnder13": "Under 13",
-      "ageTeen": "13–17"
-    },
-    "pitch": {
-      "title": "Join the Corpanistas",
-      "subtitle": "Corpán Plus opens the whole library. Try the first part of any book free, forever.",
-      "everything": "Every book, every language — unlocked.",
-      "private": "No ads. Your data stays on your device.",
-      "team": "We're a small team and put every cent back into Corpán.",
-      "tryPlus": "Try Corpán Plus",
-      "continueFree": "Continue with the free tier"
-    },
     "confident": {
       "yourVoiceFor": "Your {{lang}} voice",
       "voiceCountOne": "1 voice ready",
@@ -665,14 +601,15 @@
     "close": "Close"
   },
   "rating": {
-    "title": "Enjoying Corpán?",
-    "description": "Corpán is made by a tiny open-source team just getting started. If it feels like a 5-star app, a quick rating helps us a lot.",
-    "rateNow": "⭐ Rate 5 stars",
+    "title": "Love Corpán?",
+    "description": "If you love Corpán, give it 5 stars. In the app stores, anything less than 5 stars hurts Corpán.",
+    "rateNow": "⭐ Give 5 stars",
     "remindLater": "Maybe later",
     "noThanks": "No, thanks",
     "close": "Close",
-    "feedbackHint": "Not 5 stars yet? Tap 'Share feedback' and tell us how we can make it better.",
-    "feedbackButton": "Share feedback on GitHub"
+    "feedbackHint": "If it is not a 5-star app for you yet, email us or open GitHub and tell us what to fix. We want to make it better.",
+    "emailButton": "Email us",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "Packs",
@@ -731,7 +668,7 @@
       "paid": "Paid",
       "free": "Free",
       "install": "Install",
-      "unlockSub": "Unlock with subscription",
+      "unlockSub": "Unlock with Corpán Plus",
       "entryCount": "{{n}} phrases",
       "offlineEmpty": "You're offline. Connect to browse phrase packs.",
       "showAll": "Show all ({{count}})",
@@ -753,14 +690,14 @@
     "includedWithPlus": "Included with Plus"
   },
   "subscription": {
-    "title": "Unlock everything",
-    "description": "Unlimited access to every narrated book and premium pack with a subscription.",
+    "title": "Unlock Corpán Plus",
+    "description": "Unlimited access to every feature, language, pack, and update.",
     "annual": "Annual",
     "monthly": "Monthly",
     "subscribe": "Subscribe",
     "subscribing": "Subscribing...",
-    "subscribed": "You're subscribed",
-    "subscribedDescription": "{{plan}} plan active. Thanks for supporting Corpán.",
+    "subscribed": "Corpán Plus is active",
+    "subscribedDescription": "{{plan}} plan active. Everything is unlocked.",
     "manage": "Manage subscription",
     "termsOfUse": "Terms of Use",
     "privacyPolicy": "Privacy Policy",
@@ -843,12 +780,12 @@
     "packCatalogSubtitle": "Your installed packs still work. Reconnect to browse more."
   },
   "paywall": {
-    "title": "Keep going with Corpán Plus",
-    "thanksTitle": "You're a Corpanista",
-    "thanksBody": "Thank you for supporting Corpán. Everything is unlocked.",
-    "bookSubhead": "You've reached the end of the free preview of {{title}}.",
-    "subhead": "Unlock every book in every language. No ads. Your data stays on your device.",
-    "pitch": "We're a small team and put every cent back into Corpán. Corpanistas keep it ad-free and growing.",
+    "title": "Unlock Corpán Plus",
+    "thanksTitle": "Corpán Plus is active",
+    "thanksBody": "Everything is unlocked.",
+    "bookSubhead": "Continue {{title}} and unlock every feature.",
+    "subhead": "Unlimited access to every feature, language, and update. No ads. Your data stays on your device.",
+    "pitch": "Books, packs, games, speech tools, and new learning experiences are all included.",
     "maybeLater": "Maybe later",
     "continue": "Continue",
     "dismiss": "Dismiss"

@@ -94,20 +94,20 @@ export function PaywallSheet() {
   }, [open])
 
   const headline = subscribed
-    ? t("paywall.thanksTitle", "You're a Corpanista")
-    : t("paywall.title", "Keep going with Corpán Plus")
+    ? t("paywall.thanksTitle", "Corpán Plus is active")
+    : t("paywall.title", "Unlock Corpán Plus")
 
   // Outcome-framed value line — brand voice (understated, honest), not a
   // feature list. The book subhead names the title at the moment it's relevant.
   const valueLine = subscribed
-    ? t("paywall.thanksBody", "Thank you for supporting Corpán. Everything is unlocked.")
+    ? t("paywall.thanksBody", "Everything is unlocked.")
     : context?.bookTitle
-      ? t("paywall.bookSubhead", "You've reached the end of the free preview of {{title}}.", {
+      ? t("paywall.bookSubhead", "Continue {{title}} and unlock every feature.", {
           title: context.bookTitle,
         })
       : t(
           "paywall.subhead",
-          "The full catalog — every book, every language, ad-free."
+          "Unlimited access to every feature, language, and update. No ads. Your data stays on your device."
         )
 
   const fade = reduceMotion
@@ -220,11 +220,11 @@ export function PaywallSheet() {
                 ) : (
                   <>
                     <SubscriptionOffer chromeless wrapperClassName="w-full" />
-                    {/* Humble, honest close — small team, every cent reinvested. */}
+                    {/* Compact value reminder under the purchase controls. */}
                     <p className="mt-4 text-center text-[11px] leading-relaxed text-[color:var(--muted-foreground)]">
                       {t(
                         "paywall.pitch",
-                        "We're a small team and put every cent back into Corpán. Corpanistas keep it ad-free and growing."
+                        "Books, packs, games, speech tools, and new learning experiences are all included."
                       )}
                     </p>
                     <button

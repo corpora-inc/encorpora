@@ -37,6 +37,7 @@ import { Button } from "@/components/ui/button"
 import { getTopBarPaddingTop, glass } from "@/util/browser"
 import corpanMark from "@/assets/corpan-mark-trim.png"
 import { rankHomeExperiences } from "./recommend"
+import { PHRASE_PACK_ID, PHRASE_FLIP_IMAGE } from "@/experiences/phraseFlip"
 
 /** Per-experience icon — fallback when the catalog has no artwork. */
 const EXP_ICON: Record<string, LucideIcon> = {
@@ -174,7 +175,8 @@ export function HomeHub({
             : cg
               ? () => void installCatalogPack(cg)
               : () => {}
-      return { id: meta.id, name, blurb, imageUrl: cg?.imageUrl, Icon: EXP_ICON[meta.id] ?? Package, installed, onClick }
+      const imageUrl = cg?.imageUrl ?? (meta.id === PHRASE_PACK_ID ? PHRASE_FLIP_IMAGE : undefined)
+      return { id: meta.id, name, blurb, imageUrl, Icon: EXP_ICON[meta.id] ?? Package, installed, onClick }
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [catalog, catalogById, games, installedIds, interests, userClass, ageBand, languages, i18n.language, ratingSig])
@@ -369,7 +371,9 @@ export function HomeHub({
         {/* All packs — spacious listing: manage installed (update/remove) +
             discover available. */}
         <section className="mt-8">
-          <PacksSection onLaunchGame={onLaunchGame} />
+          {/* `launchRecent` (not the raw onLaunchGame) so the built-in Phrase
+              Flip card routes to onLaunchPhrase, like the Recent tile does. */}
+          <PacksSection onLaunchGame={launchRecent} />
         </section>
 
         {/* Tiny Plus chip — no drab card; self-hides when subscribed / no IAP. */}
