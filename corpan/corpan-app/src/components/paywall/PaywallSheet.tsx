@@ -9,6 +9,7 @@ import { useEntitlementStore } from "@/store/entitlements"
 import { useSettingsStore } from "@/store/settings"
 import { trackPaywallShown, trackPaywallDismissed } from "@/util/analytics"
 import corpanMark from "@/assets/corpan-mark-trim.png"
+import { getTopBarPaddingTop } from "@/util/browser"
 
 /**
  * The ONE universal Corpán Plus paywall — identical on every surface (reader
@@ -154,13 +155,15 @@ export function PaywallSheet() {
             }}
           />
 
-          {/* Dismiss control — top, end-aligned (RTL-correct via logical inset). */}
+          {/* Dismiss control — same place + shape as the Home gear / Settings
+              home button (top-end, getTopBarPaddingTop, h-10 w-12 rounded-md),
+              tuned for the dark surface so the three surfaces feel like one. */}
           <button
             type="button"
             onClick={dismiss}
             aria-label={t("paywall.dismiss", "Dismiss")}
-            className="absolute end-3 z-10 flex h-9 w-9 items-center justify-center rounded-lg text-[color:var(--muted-foreground)] transition-colors hover:bg-white/10 hover:text-[color:var(--foreground)]"
-            style={{ top: "max(env(safe-area-inset-top), 0.75rem)" }}
+            className="absolute end-4 md:end-8 z-10 flex h-10 w-12 items-center justify-center rounded-md border border-[color:var(--border)] bg-white/5 shadow-sm text-[color:var(--muted-foreground)] transition-colors hover:bg-white/10 hover:text-[color:var(--foreground)]"
+            style={{ top: getTopBarPaddingTop() }}
           >
             <X className="h-5 w-5" />
           </button>
@@ -170,7 +173,9 @@ export function PaywallSheet() {
           <div
             className="relative flex min-h-full flex-col items-center justify-center px-6"
             style={{
-              paddingTop: "max(env(safe-area-inset-top), 3.5rem)",
+              // Clear the standardized top-end dismiss button (button height +
+              // gap below its getTopBarPaddingTop offset).
+              paddingTop: getTopBarPaddingTop() + 56,
               paddingBottom: "max(env(safe-area-inset-bottom), 2rem)",
               paddingInlineStart: "max(env(safe-area-inset-left), 1.5rem)",
               paddingInlineEnd: "max(env(safe-area-inset-right), 1.5rem)",
@@ -222,17 +227,10 @@ export function PaywallSheet() {
                 ) : (
                   <>
                     <SubscriptionOffer chromeless wrapperClassName="w-full" />
-                    {/* Compact value reminder under the purchase controls. */}
-                    <p className="mt-4 text-center text-[11px] leading-relaxed text-[color:var(--muted-foreground)]">
-                      {t(
-                        "paywall.pitch",
-                        "Books, packs, games, speech tools, and new learning experiences are all included."
-                      )}
-                    </p>
                     <button
                       type="button"
                       onClick={dismiss}
-                      className="mx-auto mt-3 block text-xs text-[color:var(--muted-foreground)] underline underline-offset-2 transition-colors hover:text-[color:var(--foreground)]"
+                      className="mx-auto mt-4 block text-xs text-[color:var(--muted-foreground)] underline underline-offset-2 transition-colors hover:text-[color:var(--foreground)]"
                     >
                       {t("paywall.maybeLater", "Maybe later")}
                     </button>
