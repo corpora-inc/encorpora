@@ -22,6 +22,7 @@ import {
   groupBySeries,
   sortBooks,
   type BookSort,
+  chooseNextBook,
   filterByLanguage,
   searchByTitle,
   getAvailableLanguages,
@@ -557,6 +558,111 @@ export function createAppShell(
     return true
   }
 
+  // --- End-of-book "read next" suggestion ---
+  // A tasteful overlay shown when a full book finishes. Reuses the catalog
+  // theming vars + .catalog-btn styles so it inherits each reader's look.
+  let endOfBookEl: HTMLElement | null = null
+
+  function dismissEndOfBookSuggestion(): void {
+    if (!endOfBookEl) return
+    endOfBookEl.classList.remove("catalog-eob--open")
+    const el = endOfBookEl
+    endOfBookEl = null
+    // Let the fade-out finish before removing.
+    window.setTimeout(() => el.remove(), 250)
+  }
+
+  /** Show the next-book suggestion for the book that just finished. */
+  function showEndOfBookSuggestion(finishedBookId: string, language: string): void {
+    if (disposed) return
+    // Only meaningful once the catalog is loaded.
+    if (allNarrations.length === 0) return
+    const next = chooseNextBook(allNarrations, finishedBookId, language)
+    if (!next) return // nothing sensible to suggest — stay out of the way
+
+    // Replace any prior suggestion (e.g. user re-finished a book).
+    dismissEndOfBookSuggestion()
+
+    const overlay = document.createElement("div")
+    overlay.className = "catalog-eob"
+    overlay.setAttribute("dir", "auto")
+
+    const card = document.createElement("div")
+    card.className = "catalog-eob-card"
+
+    // Close (×) — dismiss without leaving the finished book.
+    const closeBtn = document.createElement("button")
+    closeBtn.type = "button"
+    closeBtn.className = "catalog-eob-close"
+    closeBtn.setAttribute("aria-label", tt("reader.eob.dismiss", "Dismiss"))
+    closeBtn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>`
+    closeBtn.addEventListener("click", dismissEndOfBookSuggestion)
+    card.appendChild(closeBtn)
+
+    const kicker = document.createElement("div")
+    kicker.className = "catalog-eob-kicker"
+    kicker.textContent = tt("reader.eob.finished", "End of book")
+    card.appendChild(kicker)
+
+    // Cover (if we have one) + next title.
+    const coverUrl = catalogIndex?.getCoverUrl(next.book.bookId, next.narration) ?? ""
+    if (coverUrl) {
+      const cover = document.createElement("div")
+      cover.className = "catalog-eob-cover"
+      cover.style.backgroundImage = `url(${cssUrl(coverUrl)})`
+      card.appendChild(cover)
+    }
+
+    const lead = document.createElement("div")
+    lead.className = "catalog-eob-lead"
+    lead.textContent = tt("reader.eob.upNext", "Up next")
+    card.appendChild(lead)
+
+    const title = document.createElement("div")
+    title.className = "catalog-eob-title"
+    title.textContent = next.book.bookTitle
+    card.appendChild(title)
+
+    if (next.book.series) {
+      const series = document.createElement("div")
+      series.className = "catalog-eob-series"
+      series.textContent =
+        next.book.series + (next.book.volume ? ` · Vol. ${next.book.volume}` : "")
+      card.appendChild(series)
+    }
+
+    const actions = document.createElement("div")
+    actions.className = "catalog-eob-actions"
+
+    const readBtn = document.createElement("button")
+    readBtn.type = "button"
+    readBtn.className = "catalog-btn catalog-btn--primary"
+    readBtn.textContent = tt("reader.eob.readNext", "Read next")
+    readBtn.addEventListener("click", () => {
+      dismissEndOfBookSuggestion()
+      void installAndSwitchNarration(next.narration)
+    })
+
+    const browseBtn = document.createElement("button")
+    browseBtn.type = "button"
+    browseBtn.className = "catalog-btn"
+    browseBtn.textContent = tt("reader.eob.browse", "Browse books")
+    browseBtn.addEventListener("click", () => {
+      dismissEndOfBookSuggestion()
+      drawer.open()
+      drawer.navigateTo("browse")
+    })
+
+    actions.append(readBtn, browseBtn)
+    card.appendChild(actions)
+    overlay.appendChild(card)
+
+    container.appendChild(overlay)
+    endOfBookEl = overlay
+    // Next frame → trigger the fade/translate-in transition.
+    requestAnimationFrame(() => overlay.classList.add("catalog-eob--open"))
+  }
+
   const switcherCallbacks = {
     getActiveId: () => getActive(),
     getActiveBookId,
@@ -713,6 +819,18 @@ export function createAppShell(
   window.addEventListener("corpan:purchase-recorded", onPurchaseEvent)
   window.addEventListener("corpan:subscription-recorded", onPurchaseEvent)
   window.addEventListener("corpan:restore-purchases-completed", onPurchaseEvent)
+
+  // End of a full book → suggest the next one to read (subscriber/owned path).
+  // The reader signals `corpan:book-finished`; we own the catalog, so we pick
+  // the next title and present it.
+  const onBookFinished = (e: Event): void => {
+    const detail = (e as CustomEvent).detail as
+      | { bookId?: string; language?: string }
+      | undefined
+    if (!detail?.bookId) return
+    showEndOfBookSuggestion(detail.bookId, detail.language || drawerStore.getState().currentLanguage)
+  }
+  window.addEventListener("corpan:book-finished", onBookFinished)
 
   // Persist scoped drawer state on change
   const persistUnsub = drawerStore.subscribe(() => {
@@ -2973,6 +3091,8 @@ export function createAppShell(
     window.removeEventListener("corpan:purchase-recorded", onPurchaseEvent)
     window.removeEventListener("corpan:subscription-recorded", onPurchaseEvent)
     window.removeEventListener("corpan:restore-purchases-completed", onPurchaseEvent)
+    window.removeEventListener("corpan:book-finished", onBookFinished)
+    dismissEndOfBookSuggestion()
     if (narratorDetailInstance) {
       narratorDetailInstance.dispose()
       narratorDetailInstance = null

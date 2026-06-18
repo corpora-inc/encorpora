@@ -10,6 +10,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **End-of-book "read next" suggestion.** When a full book reaches its end
+  (subscriber/owned path — a truncated free preview still offers Plus instead),
+  a tasteful overlay suggests the next book to read: the next volume in the same
+  series when available, otherwise the newest other title you can play in the
+  current language. "Read next" installs + opens it; "Browse books" opens the
+  catalog; × dismisses. The reader signals end-of-book via a new
+  `corpan:book-finished` window event; the app shell (which owns the catalog)
+  picks the next book and renders the suggestion. Next-book selection lives in
+  the shared catalog module (`chooseNextBook`).
+
 ### Fixed
 - **Pulse Ring trail/fade regression.** Visualization rings lingered at full
   opacity and only vanished when their slot was reused by a new ring; the

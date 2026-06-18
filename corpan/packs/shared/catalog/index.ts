@@ -59,6 +59,7 @@ export {
   sortBooksWithinSeries,
   sortBooks,
   type BookSort,
+  chooseNextBook,
   groupByCharacter,
   filterByLanguage,
   filterByCharacter,

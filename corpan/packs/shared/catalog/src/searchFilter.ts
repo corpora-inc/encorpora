@@ -156,6 +156,70 @@ export function sortBooks(books: BookGroup[], sort: BookSort): BookGroup[] {
   return out
 }
 
+/**
+ * Pick the book to suggest when the reader finishes `finishedBookId`.
+ *
+ * Preference order, all pure off the catalog:
+ *   1. The next volume in the SAME series (series reading order — see
+ *      `sortBooksWithinSeries`): the first book after the finished one that the
+ *      reader can play in `language`.
+ *   2. Otherwise the newest other book (by `sortBooks(..., "latest")`) the
+ *      reader can play in `language`.
+ *
+ * "Can play in `language`" means the book has a narration in that language.
+ * The finished book is never suggested. Returns the chosen book plus the
+ * concrete narration to launch (the one matching `language`). Returns null when
+ * nothing suitable exists (e.g. the only book in the catalog just finished, or
+ * no other book is narrated in `language`).
+ */
+export function chooseNextBook(
+  narrations: CatalogNarrationEntry[],
+  finishedBookId: string,
+  language: string
+): { book: BookGroup; narration: CatalogNarrationEntry } | null {
+  const books = groupByBook(narrations)
+  const finished = books.find((b) => b.bookId === finishedBookId)
+
+  // A book is playable when it has a narration in the reader's current language
+  // (so "Read next" actually plays rather than dead-ending).
+  const playableIn = (book: BookGroup): CatalogNarrationEntry | undefined =>
+    book.narrations.find((n) => n.language === language)
+
+  const pick = (
+    book: BookGroup | undefined
+  ): { book: BookGroup; narration: CatalogNarrationEntry } | null => {
+    if (!book) return null
+    const narration = playableIn(book)
+    return narration ? { book, narration } : null
+  }
+
+  // 1. Next volume in the same series.
+  if (finished?.series) {
+    const seriesBooks = sortBooksWithinSeries(
+      books.filter((b) => b.series === finished.series)
+    )
+    const idx = seriesBooks.findIndex((b) => b.bookId === finishedBookId)
+    if (idx >= 0) {
+      for (let i = idx + 1; i < seriesBooks.length; i++) {
+        const chosen = pick(seriesBooks[i])
+        if (chosen) return chosen
+      }
+    }
+  }
+
+  // 2. Fall back to the newest other playable book.
+  const others = sortBooks(
+    books.filter((b) => b.bookId !== finishedBookId),
+    "latest"
+  )
+  for (const book of others) {
+    const chosen = pick(book)
+    if (chosen) return chosen
+  }
+
+  return null
+}
+
 /** Filter narrations by language (empty string = all) */
 export function filterByLanguage(
   narrations: CatalogNarrationEntry[],
