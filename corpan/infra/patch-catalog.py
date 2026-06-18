@@ -540,6 +540,22 @@ BOOK_META = {
         "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device", "diy", "hardware"],
         "published": "2026-06-03",
     },
+    "book_ai_this_week_2026_06_14": {
+        "description": (
+            "AI This Week for June 14, 2026 — Sundays, and Who We Are. A "
+            "special episode: the show moves to Sundays and, for the first "
+            "time on-mic, says who makes it — Corpora, the small "
+            "independent team behind the Corpán app. Open weights run deep: "
+            "DiffusionGemma, dots.tts, Higgs Audio v3, and Nemotron 3 Ultra. "
+            "Headlines on Kimi K2.7-Code, Cohere's North Mini Code, Apple's "
+            "WWDC on-device pitch, and Qwen 3.7-Plus. Top story is beatlounge "
+            "in Corpán — a sequencer where the samples are sentences. Concept "
+            "of the week is diffusion versus autoregressive. About twelve "
+            "minutes."
+        ),
+        "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device"],
+        "published": "2026-06-14",
+    },
     "book_ai_this_week_2026_05_20": {
         "description": (
             "AI This Week for May 20, 2026 — Magnifica Humanitas. Two hosts on "
@@ -598,6 +614,7 @@ BOOK_META = {
             "of the World series."
         ),
         "tags": ["nature", "biomes", "science", "language-learning"],
+        "published": "2026-06-15",
     },
     "book_biomes_hot_desert": {
         "description": (
@@ -608,6 +625,7 @@ BOOK_META = {
             "three of the Biomes of the World series."
         ),
         "tags": ["nature", "biomes", "science", "language-learning"],
+        "published": "2026-06-16",
     },
     "book_biomes_temperate_forest": {
         "description": (
@@ -618,6 +636,7 @@ BOOK_META = {
             "four of the Biomes of the World series."
         ),
         "tags": ["nature", "biomes", "science", "language-learning"],
+        "published": "2026-06-17",
     },
 }
 

@@ -1598,6 +1598,15 @@
   outline-offset: 2px;
 }
 
+/* Focused AND selected: keep the dark-on-accent label high-contrast (a focus
+   ring must never recolor the text to white-on-accent), and draw the ring in
+   the page colour so it stays visible against the accent fill instead of an
+   invisible accent-on-accent ring. */
+.catalog-sort-opt--active:focus-visible {
+  color: var(--catalog-bg);
+  outline-color: var(--catalog-bg);
+}
+
 /* Density toggle (compact ↔ expanded) */
 .catalog-view-toggle {
   display: inline-flex;

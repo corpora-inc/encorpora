@@ -20,6 +20,10 @@ Conventions: `corpan/CHANGELOGS.md`.
   correct all along) never showed. The ring meshes are now created with
   `useVertexAlpha: true`, so rings fade smoothly and the Trail setting again
   controls how long they persist (low = quick fade, high = long trail).
+- Browse → Latest|Title|Series tabs: the selected tab now stays
+  high-contrast when it also has keyboard focus (previously the text could
+  render low-contrast against the accent fill), and its focus ring is drawn
+  in the page colour so it remains visible over the accent background.
 
 ## [0.7.1] - 2026-06-16
 
