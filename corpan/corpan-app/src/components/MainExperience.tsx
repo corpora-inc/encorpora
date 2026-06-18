@@ -14,7 +14,6 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { useHistoryStore } from "@/store/history";
-import { useRatingStore } from "@/store/rating";
 import { usePhrasePacksStore } from "@/store/phrasePacks";
 import { useEntitlementStore } from "@/store/entitlements";
 import { createDailyQuota, type PaywallGate } from "@shared/monetization";
@@ -257,8 +256,6 @@ export function MainExperience() {
     const showRomanization = useSettingsStore((s) => s.showRomanization);
     const scrollNavigationEnabled = useSettingsStore((s) => s.scrollNavigationEnabled);
 
-    const incrementUtteranceCount = useRatingStore((s) => s.incrementUtteranceCount);
-
     // Daily phrase quota → shared paywall gate (gate v2). One instance per mount;
     // `note()` (per forward phrase advance) fires the soft nag / accomplishment
     // lock internally. Subscribers are a no-op — `isSubscribed` reads the live
@@ -414,7 +411,6 @@ export function MainExperience() {
             if (!entry) return;
             pushEntry(entry.entry_id, entry.source);
             setCurrEntry(entry);
-            incrementUtteranceCount();
         } catch (err) {
             const msg = typeof err === "string" ? err : (err as Error)?.message || "";
             if (/No active sources/i.test(msg)) {
@@ -425,7 +421,7 @@ export function MainExperience() {
             }
             throw err;
         }
-    }, [levels, phrasePackIds, baseCorpusEnabled, pushEntry, incrementUtteranceCount]);
+    }, [levels, phrasePackIds, baseCorpusEnabled, pushEntry]);
 
     // --- Effects ---------------------------------------------------------------
 

@@ -8,6 +8,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.5] - 2026-06-18
+
+### Added
+- **Global station list** — a list counterpart to the world map: browse the
+  global station dataset (not tied to a Corpán language) with search, tag
+  filters, sort, favorites, country flags, and a calm offline notice.
+
 ## [0.6.4] - 2026-06-16
 ### Changed
 - Refreshed the pack avatar artwork.

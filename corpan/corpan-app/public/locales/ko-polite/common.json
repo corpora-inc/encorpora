@@ -131,18 +131,18 @@
     "readPrivacyPromise": "개인정보 보호 약속 읽기",
     "showStreak": "연속 학습 기록 표시",
     "showStreakHint": "헤더에 작은 일수 표시. 기기에만 저장되며, 알림은 없습니다.",
-    "primaryLanguage": "기본 (UI) 언어"
+    "primaryLanguage": "기본 (UI) 언어",
+    "home": "홈",
+    "developer": "개발자"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán은 계속 진화합니다",
       "subtitle": "여러분은 초기 사용자입니다",
-      "tinyTeamTitle": "열정적인 소규모 팀",
-      "tinyTeamDesc": "독립적으로, 광고 없이, 사용하는 분들을 존중하며 만들고 있습니다. 작은 팀이 우리가 늘 원했던 언어 앱을 만들고 있습니다.",
       "bleedingEdgeTitle": "의도적으로 최첨단",
-      "bleedingEdgeDesc": "Corpán은 기기가 할 수 있는 일의 한계를 넓힙니다. 몰입형 세계, 음성 인식, 자연스러운 목소리, 최신 AI 모델이 함께 작동해 새로운 학습 방식을 만듭니다. 많은 기능이 기기에서 직접 실행되어 데이터 센터에 의존하지 않고도 개인정보를 지키며 오프라인을 우선한 학습을 할 수 있습니다. 새로운 기술이 아직 다듬어지지 않은 단계에서도 빠르게 제공하기 때문에 가끔 이상하게 작동하거나 느려지거나, 기기가 감당하기 어려울 수도 있습니다. 대신 강력하고 새로운 학습 경험을 가능해지는 즉시 만나실 수 있습니다.",
+      "bleedingEdgeDesc": "Corpán은 새로운 AI, 음성 인식, 목소리와 몰입형 세계를 기기로 가져와, 개인정보를 지키며 오프라인을 우선하는 학습을 가능하게 합니다. 저희는 기술이 아직 날것일 때 공개하기 때문에, 이상하게 동작하거나 느리게 실행되거나 기기가 감당하기 어려울 수 있습니다. 그 대신, 새로운 학습 방식이 가능해지는 즉시 경험하실 수 있습니다.",
       "yourLangTitle": "저희는 지원하는 모든 언어를 구사하지 못합니다",
-      "yourLangDesc": "그것이 솔직한 사실입니다. 작은 팀이 모든 언어를 이미 알고 있어서가 아니라, 누구나 강력한 학습 도구를 누릴 자격이 있다고 믿기에 수십 개 언어를 위해 만들고 있습니다. 저희가 잘못한 부분을 발견하실 수도 있습니다. 저희보다 {{lang}}을 더 잘 아신다면 알려 주세요. Corpán이 그 언어에 걸맞은 앱이 되도록 도와주시길 바랍니다.",
+      "yourLangDesc": "저희는 학습자에게 더 나은 도구가 필요하다고 믿기 때문에 많은 언어를 지원합니다. 저희가 그 언어들을 모두 알아서가 아닙니다. 잘못된 부분이 있다면, 해당 언어의 사용자들이 바로잡는 데 도움을 주시길 바랍니다.",
       "plea": "아이디어나 수정할 점, 또는 꼭 보고 싶은 대담한 학습 경험이 있으신가요? 알려 주세요. 모든 메시지를 읽고 그것이 Corpán과 언어 학습에 어떤 가능성을 열 수 있을지 깊이 고민합니다.",
       "emailCta": "이메일 보내기",
       "githubCta": "GitHub 이슈 열기",
@@ -150,23 +150,11 @@
       "pact": "아래를 눌러 학습을 시작하고 저희와 함께 성장해 주세요. 🤝",
       "cta": "좋아요, 함께할게요"
     },
-    "welcome": "환영합니다",
-    "makePrimaryLanguage": "한국어를 기본 언어로 설정하기",
-    "canChangeLater": "언제든지 변경할 수 있으니 걱정하지 마세요.",
     "pickLanguagesToLearn": "배우고 싶은 언어를 선택하세요",
     "textToSpeechSetup": "TTS 설정",
-    "ttsPoorQualityNote": "음질이 좋지 않다면 기기의 TTS 설정에서 고품질 음성을 설치하세요.",
-    "howToSetupTtsOn": "TTS 설정 방법",
-    "welcomeTitle": "Corpán 가족이 되어 주셔서 감사합니다!",
-    "welcomeBody": "Corpán 은 대기업이 아니라, 언어와 교육을 진심으로 아끼는 아주 작은 팀이 만드는 오픈 소스 앱입니다. 아직 초기 단계라 다듬어지지 않은 부분이나 빠진 기능, 지원되지 않는 언어들이 있을 수 있습니다. 사용하시다가 문제가 보이면 조용히 불편해하시기보다 GitHub 이나 이메일로 알려 주세요. 여러분의 피드백 덕분에 자주 업데이트하고, 더 나은 언어 학습 경험을 만들어 갈 수 있습니다.",
-    "welcomeVisit": "encorpora.io 방문하기",
-    "linkCopied": "링크가 복사되었습니다. 브라우저에서 열어보세요:",
     "reconfigureStack": "프로필 재설정",
     "openVoiceSettings": "설정 열기",
     "openTTSSetup": "TTS 설정 열기",
-    "welcomeFollowUp": "참여해 주셔서 감사합니다! 커뮤니티에서 뵙겠습니다.",
-    "learningStepTitle": "학습",
-    "tts": "텍스트 음성 변환",
     "languageOrderTipTitle": "팁",
     "languageOrderTipBody": "목록 맨 아래의 언어가 앱의 UI 언어입니다. UI 언어를 바꾸려면 다른 언어를 맨 아래로 끌어다 놓으세요.",
     "ttsOsTipTitle": "팁",
@@ -176,10 +164,6 @@
     "ttsOsTipWindows": "설정에서 음성을 설치한 뒤 여기로 돌아오세요.",
     "ttsOsTipOther": "기기 설정에서 음성을 설치한 뒤 여기로 돌아오세요.",
     "installVoicesAndroid": "음성 설치",
-    "learning": "언어 학습",
-    "ttsStepTitle": "텍스트 음성 변환",
-    "socials": "팔로우하고 연결하기",
-    "socialsStepTitle": "소셜 미디어",
     "noVoices": "음성 없음",
     "noVoicesHint": "이 언어를 사용하려면 음성을 설치하세요.",
     "sendAppleFeedback": "Apple 피드백 보내기",
@@ -234,56 +218,21 @@
         "notInstalled": "설치되지 않음"
       }
     },
-    "packs": "어구 팩",
     "phrasePacks": {
-      "title": "어구 팩",
-      "stepTitle": "어구 팩",
       "hero": "주제를 골라 보세요",
       "loading": "불러오는 중…",
       "selectAll": "전체 선택 ({{count}})",
       "clearAll": "지우기",
-      "subscriptionNudge": "구독하시면 모든 팩이 열립니다.",
+      "subscriptionNudge": "일부 팩은 Corpán Plus에 포함되어 있습니다. 나중에 설정 → 팩에서 업그레이드하실 수 있습니다.",
       "entryCount": "{{n}}개 어구",
       "paid": "유료",
       "emptyHero": "아직 팩이 없어요.",
-      "emptySub": "곧 다시 와 보세요.",
-      "offlineHero": "오프라인 상태예요.",
-      "offlineSub": "팩은 인터넷이 필요해요 — 나중에 설정 → 팩에서 시도하세요.",
-      "offlineBanner": "오프라인 — 다시 연결되면 선택한 팩이 설치돼요.",
-      "noneSelected": "선택된 항목 없음 — 계속하면 건너뜁니다",
-      "selectedSuffix": "선택됨",
-      "skip": "지금은 건너뛰기",
-      "subtitle": "집중적인 문장 팩을 추가하세요. 설정에서 언제든지 켜거나 끌 수 있습니다."
+      "emptySub": "곧 다시 와 보세요."
     },
-    "notOnAppleIOS": "iOS가 아니신가요",
     "appleNoVoiceTitle": "Apple에서는 아직 {{lang}} 음성을 제공하지 않습니다",
     "appleNoVoiceBody": "Apple의 손쉬운 사용 팀에 간단한 의견을 보내 주시면 도입에 도움이 됩니다. 그동안 Android에서는 {{lang}}가 기본으로 지원됩니다.",
     "back": "뒤로",
     "continue": "계속",
-    "class": {
-      "title": "누구를 위한 앱인가요?",
-      "subtitle": "Corpán이 사용자님께 맞춰집니다. 이 정보는 기기에만 저장되며, 외부로 전송되지 않습니다.",
-      "learner": "언어를 배우고 있어요",
-      "learnerDesc": "학습 중인 언어로 읽고 들어보세요.",
-      "enjoyer": "콘텐츠를 즐기고 싶어요",
-      "enjoyerDesc": "모국어로 된 책, 이야기, 게임을 즐겨보세요.",
-      "polyglot": "둘 다요 — 모든 것을 원해요",
-      "polyglotDesc": "여러 언어를 동시에, 그리고 모든 콘텐츠를 이용하세요.",
-      "kid": "어린이를 위한 앱이에요",
-      "kidDesc": "어린 독자를 위한 엄선된 책과 학습 게임입니다.",
-      "ageTitle": "독자의 연령은 어떻게 되나요?",
-      "ageUnder13": "13세 미만",
-      "ageTeen": "13–17세"
-    },
-    "pitch": {
-      "title": "Corpanistas에 참여하세요",
-      "subtitle": "Corpán Plus로 전체 라이브러리를 이용하세요. 어떤 책이든 첫 부분은 영원히 무료로 체험할 수 있습니다.",
-      "everything": "모든 책, 모든 언어 — 잠금 해제.",
-      "private": "광고 없음. 사용자님의 데이터는 기기에만 저장됩니다.",
-      "team": "저희는 작은 팀이며, 모든 수익을 Corpán에 재투자합니다.",
-      "tryPlus": "Corpán Plus 체험하기",
-      "continueFree": "무료 버전으로 계속하기"
-    },
     "calibrate": {
       "childAgeTitle": "독자의 나이는 어떻게 되나요?",
       "childTeen": "13–17세",
@@ -306,16 +255,6 @@
       "voiceCountMany": "{{count}}개 음성 준비 완료",
       "voiceCountOne": "1개 음성 준비 완료",
       "yourVoiceFor": "사용자의 {{lang}} 음성"
-    },
-    "engage": {
-      "joinDesc": "Corpán을 지원하고 모든 기능을 잠금 해제하세요. 선택 사항이며 언제든지 가능합니다.",
-      "subscribedTitle": "Corpanista가 되셨습니다",
-      "subscribedDesc": "Corpán을 광고 없이 성장시켜 주셔서 감사합니다.",
-      "joinTitle": "Corpanistas에 참여하세요",
-      "start": "탐색 시작하기",
-      "subtitle": "Corpán은 작은 오픈소스 팀이 만들었습니다. 인사해 주세요 — 마음에 드신다면 저희를 지원할 수 있습니다.",
-      "title": "모든 준비가 완료되었습니다",
-      "explore": "직접 탐색하기"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "흥미로운 것 탐색하기",
       "wildDesc": "놀랍고 실험적인 경험."
     },
-    "settingUp": "설정 중…",
     "ttsIntro": "Corpán이 소리 내어 읽어줍니다. 음성을 탭하여 원하는 속도로 들어보세요.",
     "voiceGuide": {
       "intro": "기기에는 기본 음성보다 훨씬 뛰어난 풍부하고 자연스러운 음성이 무료로 내장되어 있습니다. 제조사에서 비활성화해 두었을 뿐입니다. 몇 번의 탭으로 활성화해 보세요.",
@@ -583,14 +521,13 @@
     "introTipBody": "스택은 서로 다른 학습 설정을 저장합니다 — 하나는 여행용, 다른 하나는 업무용으로요. + 를 눌러 새 스택을 만드세요."
   },
   "rating": {
-    "title": "Corpán이 마음에 드시나요?",
-    "description": "Corpán은 아주 작은 오픈 소스 팀이 이제 막 시작한 앱입니다. 별 5개짜리 앱이라고 느껴지신다면, 잠깐의 별점 평가만으로도 큰 도움이 됩니다.",
-    "rateNow": "⭐ 별 5개로 평가하기",
-    "remindLater": "나중에",
-    "noThanks": "괜찮아요",
+    "title": "Corpán이 정말 마음에 드시나요?",
+    "description": "Corpán이 정말 마음에 드신다면 별 5개를 주세요. 앱 스토어에서는 별 5개보다 낮은 평점이 Corpán에 타격이 됩니다.",
+    "rateNow": "⭐ 별 5개 주기",
     "close": "닫기",
-    "feedbackHint": "아직 별 5개까지는 아니다 싶으시면, 낮은 평점 대신 ‘피드백 보내기’를 눌러 개선점을 알려 주세요.",
-    "feedbackButton": "GitHub에서 피드백 보내기"
+    "feedbackHint": "아직 별 5개짜리 앱이 아니라고 느끼시면 이메일을 보내시거나 GitHub issue를 열어 무엇을 고쳐야 할지 알려 주세요. 더 좋게 만들고 싶습니다.",
+    "emailButton": "이메일 보내기",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "팩",
@@ -640,7 +577,7 @@
       "subBadge": "구독",
       "paid": "유료",
       "free": "무료",
-      "unlockSub": "구독으로 해제",
+      "unlockSub": "Corpán Plus로 잠금 해제",
       "entryCount": "{{n}}개 어구",
       "allInstalled": {
         "title": "모든 구문 팩을 가지고 계세요.",
@@ -671,14 +608,17 @@
     "updateAvailable": "업데이트 가능"
   },
   "subscription": {
-    "title": "전체 잠금 해제",
-    "description": "구독으로 모든 오디오북과 프리미엄 팩에 무제한 접근하세요.",
+    "startTrialPeriod": "{{period}} 무료 체험 시작하기",
+    "trialFree": "{{period}} 동안 무료",
+    "trialThenCancel": "이후 {{price}}/{{period}} · 언제든지 취소하실 수 있어요. 오늘은 결제되지 않아요.",
+    "title": "Corpán Plus 잠금 해제",
+    "description": "모든 기능, 언어, 팩, 업데이트를 무제한으로 이용할 수 있습니다.",
     "annual": "연간",
     "monthly": "월간",
     "subscribe": "구독하기",
     "subscribing": "구독 중...",
-    "subscribed": "구독 중입니다",
-    "subscribedDescription": "{{plan}} 플랜이 활성 상태입니다. Corpán을 지원해 주셔서 감사합니다.",
+    "subscribed": "Corpán Plus가 활성화되었습니다",
+    "subscribedDescription": "{{plan}} 플랜이 활성화되었습니다. 모든 것이 잠금 해제되었습니다.",
     "manage": "구독 관리",
     "termsOfUse": "이용약관",
     "privacyPolicy": "개인정보 처리방침",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} 무료",
     "trialReassurance": "지금 결제 없음 · 언제든 취소 가능",
     "trialThenPrice": ", 이후 {{price}}/{{period}}",
-    "trialToday": "오늘: 시작"
+    "trialToday": "오늘: 시작",
+    "rate": "Corpán 평가하기"
   },
   "restore": {
     "button": "구매 복원",
@@ -743,12 +684,12 @@
     "offlineEmpty": "인터넷에 연결하여 팩을 찾아보세요 — 아니면 지금은 건너뛰세요."
   },
   "paywall": {
-    "title": "Corpán Plus로 계속 이용하세요",
-    "thanksTitle": "Corpanista가 되셨습니다",
-    "thanksBody": "Corpán을 지원해 주셔서 감사합니다. 모든 콘텐츠가 잠금 해제되었습니다.",
-    "bookSubhead": "{{title}}의 무료 미리보기가 끝났습니다.",
-    "subhead": "모든 언어의 모든 책을 잠금 해제하세요. 광고 없음. 사용자님의 데이터는 기기에만 저장됩니다.",
-    "pitch": "저희는 작은 팀이며, 모든 수익을 Corpán에 재투자합니다. Corpanistas 덕분에 광고 없이 성장할 수 있습니다.",
+    "title": "Corpán Plus 잠금 해제",
+    "thanksTitle": "Corpán Plus가 활성화되었습니다",
+    "thanksBody": "모든 것이 잠금 해제되었습니다.",
+    "bookSubhead": "{{title}}을 계속하고 모든 기능을 잠금 해제하세요.",
+    "subhead": "모든 기능, 언어, 업데이트를 무제한으로 이용하세요. 광고는 없습니다. 데이터는 기기에 그대로 남습니다.",
+    "pitch": "책, 팩, 게임, 말하기 도구, 새로운 학습 경험이 모두 포함됩니다.",
     "maybeLater": "나중에 할게요",
     "continue": "계속",
     "dismiss": "닫기"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — 모든 기능 잠금 해제",
     "recommended": "추천",
     "showAnother": "다른 것 보기",
-    "tryIt": "사용해 보기"
+    "tryIt": "사용해 보기",
+    "packUpdates": "팩 업데이트가 있습니다",
+    "updateAll": "모두 업데이트"
   },
   "offline": {
     "cachedSubtitle": "마지막으로 캐시된 결과를 표시합니다.",

@@ -131,18 +131,18 @@
     "readPrivacyPromise": "Lue tietosuojalupauksemme",
     "showStreak": "Näytä lukemisen putki",
     "showStreakHint": "Pieni päivälaskuri otsikossa. Vain laitteella, ei muistutuksia tai ilmoituksia.",
-    "primaryLanguage": "Ensisijainen (käyttöliittymä) kieli"
+    "primaryLanguage": "Ensisijainen (käyttöliittymä) kieli",
+    "home": "Koti",
+    "developer": "Kehittäjä"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán kehittyy",
       "subtitle": "Olet mukana ensimmäisten joukossa",
-      "tinyTeamTitle": "Pieni tiimi intohimoisia",
-      "tinyTeamDesc": "Itsenäinen, mainokseton ja käyttäjiään kunnioittaen rakennettu — pieni tiimi tekee kielisovellusta, jonka olemme aina halunneet.",
       "bleedingEdgeTitle": "Tarkoituksella edistyksellinen",
-      "bleedingEdgeDesc": "Corpán koettelee laitteesi mahdollisuuksien rajoja: mukaansatempaavat maailmat, puheentunnistus, luonnolliset äänet ja uusimmat tekoälymallit luovat yhdessä uusia tapoja oppia. Suuri osa toimii suoraan laitteellasi, joten oppiminen on yksityistä ja ensisijaisesti offline-käyttöön suunniteltua ilman riippuvuutta palvelinkeskuksesta. Julkaisemme uutta teknologiaa sen ollessa vielä raakaa, joten se saattaa joskus toimia oudosti, hitaasti tai yksinkertaisesti vaatia laitteeltasi enemmän kuin se pystyy tarjoamaan. Vastineeksi saat käyttöösi tehokkaita uusia oppimiskokemuksia heti, kun ne tulevat mahdollisiksi.",
+      "bleedingEdgeDesc": "Corpán tuo laitteellesi uutta tekoälyä, puheentunnistusta, ääniä ja mukaansatempaavia maailmoja yksityiseen, ensisijaisesti offline-oppimiseen. Julkaisemme teknologiaa, kun se on vielä raakaa, joten se voi käyttäytyä oudosti, toimia hitaasti tai olla enemmän kuin laitteesi pystyy käsittelemään. Vastineeksi saat uusia tapoja oppia heti, kun ne tulevat mahdollisiksi.",
       "yourLangTitle": "Emme puhu kaikkia tukemiamme kieliä",
-      "yourLangDesc": "Se on rehellinen totuus. Rakennamme kymmenille kielille, koska jokainen ansaitsee tehokkaita oppimistyökaluja — emme siksi, että pieni tiimimme osaisi ne jo kaikki. Saatat löytää asioita, joissa olemme erehtyneet. Jos osaat {{lang}} paremmin kuin me, toivomme, että kerrot siitä ja autat tekemään Corpánista kielen arvoisen.",
+      "yourLangDesc": "Rakennamme monille kielille, koska oppijat ansaitsevat parempia työkaluja, emme siksi, että osaisimme ne kaikki. Kun jokin menee väärin, toivomme puhujien auttavan meitä korjaamaan sen.",
       "plea": "Onko sinulla idea, korjaus tai rohkea oppimiskokemus, jonka haluaisit nähdä? Kerro meille. Luemme jokaisen viestin ja pohdimme syvällisesti, mitä se voisi avata Corpánille ja kielten oppimiselle.",
       "emailCta": "Lähetä meille sähköpostia",
       "githubCta": "Avaa issue GitHubissa",
@@ -150,27 +150,11 @@
       "pact": "Napauta alta, aloita oppiminen ja kasva kanssamme. 🤝",
       "cta": "Olen mukana — mennään"
     },
-    "welcome": "Tervetuloa",
-    "makePrimaryLanguage": "Aseta suomi ensisijaiseksi kielekseni",
-    "canChangeLater": "Voit muuttaa tätä milloin tahansa.",
     "pickLanguagesToLearn": "Valitse opeteltavat kielet",
     "textToSpeechSetup": "Tekstistä puheeksi -asetukset",
-    "ttsPoorQualityNote": "Jos ääni kuulostaa huonolaatuiselta, asenna laadukkaampia ääniä laitteen tekstistä puheeksi -asetuksista.",
-    "howToSetupTtsOn": "Tekstistä puheeksi -asetukset:",
-    "welcomeTitle": "Tervetuloa Corpán-perheeseen!",
-    "welcomeBody": "Corpán on avoimen lähdekoodin sovellus pieneltä tiimiltä, ei suurelta yritykseltä. Välitämme syvästi kielestä ja koulutuksesta ja olemme vasta alkuvaiheessa, joten saatat huomata karheita reunoja tai puuttuvia ominaisuuksia ja kieliä. Jos jokin ei toimi, kerro meille GitHubissa tai sähköpostitse. Palautteesi auttaa meitä julkaisemaan päivityksiä usein ja tekemään kielenoppimisesta parempaa kaikille.",
-    "welcomeVisit": "Vieraile encorpora.io",
-    "linkCopied": "Linkki kopioitu. Avaa selaimessasi:",
     "reconfigureStack": "Määritä pino uudelleen",
     "openVoiceSettings": "Avaa asetukset",
     "openTTSSetup": "Avaa tekstistä puheeksi -asetukset",
-    "welcomeFollowUp": "Kiitos liittymisestä — nähdään yhteisössä!",
-    "learning": "Kielten opiskelu",
-    "learningStepTitle": "Opiskelu",
-    "tts": "Tekstistä puheeksi",
-    "ttsStepTitle": "Tekstistä puheeksi",
-    "socials": "Seuraa ja yhdisty",
-    "socialsStepTitle": "Sosiaalinen media",
     "noVoices": "Ei ääniä",
     "noVoicesHint": "Asenna ääniä ottaaksesi tämän kielen käyttöön.",
     "languageOrderTipTitle": "Vinkki",
@@ -234,56 +218,21 @@
         "notInstalled": "Ei asennettu"
       }
     },
-    "packs": "Lausepaketit",
     "phrasePacks": {
-      "title": "Lausepaketit",
-      "stepTitle": "Lausepaketit",
       "hero": "Valitse aiheesi",
       "loading": "Ladataan…",
       "selectAll": "Valitse kaikki ({{count}})",
       "clearAll": "Tyhjennä",
-      "subscriptionNudge": "Tilaa avataksesi kaikki paketit.",
+      "subscriptionNudge": "Jotkin paketit sisältyvät Corpán Plusiin — voit päivittää myöhemmin kohdassa Asetukset → Paket.",
       "entryCount": "{{n}} lausetta",
       "paid": "Maksullinen",
       "emptyHero": "Ei vielä paketteja.",
-      "emptySub": "Palaa pian.",
-      "offlineHero": "Olet offline.",
-      "offlineSub": "Paketit tarvitsevat internetin — yritä myöhemmin kohdasta Asetukset → Paketit.",
-      "offlineBanner": "Offline — valinnat asentuvat yhdistettäessä.",
-      "noneSelected": "Ei valittuna – Jatka ohittaa",
-      "selectedSuffix": "valittu",
-      "skip": "Ohita toistaiseksi",
-      "subtitle": "Lisää kohdennettuja lausepaketteja kokoelmaasi. Voit kytkeä ne päälle tai pois päältä milloin tahansa Asetuksista."
+      "emptySub": "Palaa pian."
     },
-    "notOnAppleIOS": "Ei iOS:llä",
     "appleNoVoiceTitle": "Apple ei vielä tarjoa {{lang}}-ääntä",
     "appleNoVoiceBody": "Lyhyt viesti Applen saavutettavuustiimille auttaa perustelemaan asian. {{lang}} toimii sillä välin natiivisti Androidilla.",
     "back": "Takaisin",
     "continue": "Jatka",
-    "class": {
-      "title": "Kenelle tämä on?",
-      "subtitle": "Räätälöimme Corpánin sinulle. Tiedot pysyvät laitteellasi – emme koskaan lähetä niitä minnekään.",
-      "learner": "Opiskelen kieliä",
-      "learnerDesc": "Lue ja kuuntele opiskelemillasi kielillä.",
-      "enjoyer": "Haluan nauttia sisällöstä",
-      "enjoyerDesc": "Kirjoja, tarinoita ja pelejä omalla kielelläsi.",
-      "polyglot": "Molemmat – haluan kaiken",
-      "polyglotDesc": "Useita kieliä samanaikaisesti ja kaikki muu.",
-      "kid": "Lapselle",
-      "kidDesc": "Kuratoituja kirjoja ja oppimispelejä nuoremmille lukijoille.",
-      "ageTitle": "Kuinka vanha lukija on?",
-      "ageUnder13": "Alle 13",
-      "ageTeen": "13–17"
-    },
-    "pitch": {
-      "title": "Liity Corpanistas-yhteisöön",
-      "subtitle": "Corpán Plus avaa koko kirjaston. Kokeile minkä tahansa kirjan ensimmäistä osaa ilmaiseksi, ikuisesti.",
-      "everything": "Kaikki kirjat, kaikki kielet – avattu.",
-      "private": "Ei mainoksia. Tietosi pysyvät laitteellasi.",
-      "team": "Olemme pieni tiimi ja sijoitamme jokaisen sentin takaisin Corpániin.",
-      "tryPlus": "Kokeile Corpán Plus",
-      "continueFree": "Jatka ilmaisversiolla"
-    },
     "calibrate": {
       "childAgeTitle": "Kuinka vanha lukija on?",
       "childTeen": "13–17",
@@ -306,16 +255,6 @@
       "voiceCountMany": "{{count}} ääntä valmiina",
       "voiceCountOne": "1 ääni valmiina",
       "yourVoiceFor": "Äänesi kielelle {{lang}}"
-    },
-    "engage": {
-      "joinDesc": "Tue Corpánia ja avaa kaikki. Vapaaehtoista, milloin tahansa.",
-      "subscribedTitle": "Olet Corpanista",
-      "subscribedDesc": "Kiitos, että pidät Corpánin mainoksettomana ja kasvavana.",
-      "joinTitle": "Liity Corpanistas-yhteisöön",
-      "start": "Aloita tutkiminen",
-      "subtitle": "Corpánin on luonut pieni avoimen lähdekoodin tiimi. Tule tervehtimään – ja jos pidät siitä, voit tukea meitä.",
-      "title": "Kaikki valmista",
-      "explore": "Tutki itse"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "Tutustu yllättäviin asioihin",
       "wildDesc": "Yllättäviä, kokeellisia kokemuksia."
     },
-    "settingUp": "Määritetään asetuksia…",
     "ttsIntro": "Corpán lukee ääneen. Napauta ääntä kuullaksesi sen omalla nopeudellasi.",
     "voiceGuide": {
       "intro": "Laitteessasi on sisäänrakennettuja täyteläisiä, luonnollisia ääniä – ilmaisia ja paljon oletusääniä parempia. Valmistaja jättää ne vain pois päältä. Kytketään ne päälle; se vie vain muutaman napautuksen:",
@@ -583,14 +521,13 @@
     "introTipBody": "Stackit tallentavat erilaisia oppimisasetuksia — yhden matkailuun, toisen työhön. Napauta + luodaksesi uuden stackin."
   },
   "rating": {
-    "title": "Pidätkö Corpánista?",
-    "description": "Corpánin tekee pieni avoimen lähdekoodin tiimi, joka on vasta aloittanut. Jos se tuntuu viiden tähden sovellukselta, nopea arvostelu auttaa meitä paljon.",
+    "title": "Rakastatko Corpánia?",
+    "description": "Jos rakastat Corpánia, anna sille 5 tähteä. Sovelluskaupoissa kaikki alle 5 tähden arviot satuttavat Corpánia.",
     "rateNow": "⭐ Anna 5 tähteä",
-    "remindLater": "Ehkä myöhemmin",
-    "noThanks": "Ei kiitos",
     "close": "Sulje",
-    "feedbackHint": "Ei vielä viisi tähteä? Napauta 'Jaa palautetta' ja kerro, miten voimme parantaa.",
-    "feedbackButton": "Jaa palautetta GitHubissa"
+    "feedbackHint": "Jos se ei ole sinulle vielä 5 tähden sovellus, lähetä meille sähköpostia tai avaa GitHub-issue ja kerro, mitä korjata. Haluamme tehdä siitä paremman.",
+    "emailButton": "Lähetä sähköpostia",
+    "githubButton": "GitHub-issue"
   },
   "packs": {
     "title": "Paketit",
@@ -640,7 +577,7 @@
       "subBadge": "Tilaus",
       "paid": "Maksullinen",
       "free": "Ilmainen",
-      "unlockSub": "Avaa tilauksella",
+      "unlockSub": "Avaa Corpán Plus -palvelulla",
       "entryCount": "{{n}} lausetta",
       "allInstalled": {
         "title": "Sinulla on kaikki fraasipaketit.",
@@ -671,14 +608,17 @@
     "updateAvailable": "Päivitys saatavilla"
   },
   "subscription": {
-    "title": "Avaa kaikki",
-    "description": "Rajoittamaton pääsy kaikkiin äänitettyihin kirjoihin ja premium-paketteihin tilauksella.",
+    "startTrialPeriod": "Aloita {{period}} ilmainen kokeilu",
+    "trialFree": "Ilmainen {{period}}",
+    "trialThenCancel": "Sitten {{price}}/{{period}} · peru milloin tahansa. Ei maksua tänään.",
+    "title": "Avaa Corpán Plus",
+    "description": "Rajaton pääsy kaikkiin ominaisuuksiin, kieliin, paketteihin ja päivityksiin.",
     "annual": "Vuosittainen",
     "monthly": "Kuukausittainen",
     "subscribe": "Tilaa",
     "subscribing": "Tilataan...",
-    "subscribed": "Olet tilaaja",
-    "subscribedDescription": "{{plan}}-tilaus aktiivinen. Kiitos Corpánin tukemisesta.",
+    "subscribed": "Corpán Plus on aktiivinen",
+    "subscribedDescription": "{{plan}}-tilaus on aktiivinen. Kaikki on avattu.",
     "manage": "Hallinnoi tilausta",
     "termsOfUse": "Käyttöehdot",
     "privacyPolicy": "Tietosuojakäytäntö",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} ilmainen",
     "trialReassurance": "Ei maksua nyt · peruuta milloin tahansa",
     "trialThenPrice": ", sitten {{price}}/{{period}}",
-    "trialToday": "Tänään: aloitus"
+    "trialToday": "Tänään: aloitus",
+    "rate": "Arvioi Corpán"
   },
   "restore": {
     "button": "Palauta ostokset",
@@ -743,12 +684,12 @@
     "offlineEmpty": "Yhdistä internetiin löytääksesi paketteja — tai ohita toistaiseksi."
   },
   "paywall": {
-    "title": "Jatka Corpán Plus -palvelun parissa",
-    "thanksTitle": "Olet Corpanista",
-    "thanksBody": "Kiitos tuestasi Corpánille. Kaikki on avattu.",
-    "bookSubhead": "Olet saavuttanut kirjan {{title}} ilmaisen esikatselun lopun.",
-    "subhead": "Avaa kaikki kirjat kaikilla kielillä. Ei mainoksia. Tietosi pysyvät laitteellasi.",
-    "pitch": "Olemme pieni tiimi ja sijoitamme jokaisen sentin takaisin Corpániin. Corpanistas-jäsenet pitävät sen mainoksettomana ja kehittyvänä.",
+    "title": "Avaa Corpán Plus",
+    "thanksTitle": "Corpán Plus on aktiivinen",
+    "thanksBody": "Kaikki on avattu.",
+    "bookSubhead": "Jatka {{title}} ja avaa kaikki ominaisuudet.",
+    "subhead": "Rajaton pääsy kaikkiin ominaisuuksiin, kieliin ja päivityksiin. Ei mainoksia. Tietosi pysyvät laitteellasi.",
+    "pitch": "Kirjat, paketit, pelit, puhetyökalut ja uudet oppimiskokemukset sisältyvät kaikki.",
     "maybeLater": "Ehkä myöhemmin",
     "continue": "Jatka",
     "dismiss": "Ohita"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus – avaa kaikki",
     "recommended": "Suositeltu",
     "showAnother": "Näytä toinen",
-    "tryIt": "Kokeile"
+    "tryIt": "Kokeile",
+    "packUpdates": "Pakettipäivityksiä saatavilla",
+    "updateAll": "Päivitä kaikki"
   },
   "offline": {
     "cachedSubtitle": "Näytetään viimeisimmät välimuistiin tallennetut tulokset.",

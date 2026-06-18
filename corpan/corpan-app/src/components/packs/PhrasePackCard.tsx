@@ -332,7 +332,7 @@ export function PhrasePackCard({
                 {!isInstalled && isSubscriptionGated && !subscriptionActive && (
                     <Button onClick={handleSubscribeNudge} className="w-full" size="sm">
                         {t("packs.phrasePack.unlockSub", {
-                            defaultValue: "Unlock with subscription",
+                            defaultValue: "Unlock with Corpán Plus",
                         })}
                     </Button>
                 )}

@@ -131,18 +131,18 @@
     "sendAnonUsageHint": "匿名、以工作階段為範圍。無帳戶、無裝置 ID、唔會儲存 IP。你可以隨時關閉。",
     "readPrivacyPromise": "閱讀我哋嘅私隱承諾",
     "showStreak": "顯示閱讀日數",
-    "showStreakHint": "喺標題顯示細小嘅閱讀日數。只會儲存喺裝置，無提醒或通知。"
+    "showStreakHint": "喺標題顯示細小嘅閱讀日數。只會儲存喺裝置，無提醒或通知。",
+    "home": "主頁",
+    "developer": "開發者"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán 不斷進化",
       "subtitle": "你係最早加入嘅一群",
-      "tinyTeamTitle": "一隊熱情嘅小團隊",
-      "tinyTeamDesc": "獨立、無廣告，亦尊重每一位用家——一個小團隊，努力整出我哋一直想要嘅語言學習程式。",
       "bleedingEdgeTitle": "刻意領先，走在尖端",
-      "bleedingEdgeDesc": "Corpán 會盡量發揮你部裝置嘅能力：沉浸式世界、語音識別、自然語音同最新 AI 模型一齊運作，創造全新學習方法。好多功能直接喺你部裝置上運行，唔使依賴數據中心，都可以私密、以離線為先咁學習。我哋會喺新技術仲未完全打磨好嘅時候就推出，所以偶爾可能表現古怪、運行得慢，甚至超出你部裝置可以處理嘅能力。作為回報，一有可能，你就可以即刻體驗強大嘅全新學習方式。",
+      "bleedingEdgeDesc": "Corpán 將新 AI、語音辨識、聲音同沉浸式世界帶到你部裝置，畀你私密、離線優先咁學習。我哋會喺技術仲未完全成熟時推出，所以佢可能會有怪異表現、行得慢，或者超出你部裝置負荷。作為交換，你可以喺新學習方式一成為可能時就用到。",
       "yourLangTitle": "我哋唔識講晒所有支援嘅語言",
-      "yourLangDesc": "呢個係坦白嘅事實。我哋為幾十種語言開發，係因為每個人都值得擁有強大嘅學習工具，唔係因為我哋呢個小團隊已經識晒所有語言。你可能會發現我哋有啲地方做錯咗。如果你比我哋更熟悉{{lang}}，希望你可以話畀我哋知，幫 Corpán 做到真正配得上呢種語言。",
+      "yourLangDesc": "我哋支援好多語言，係因為學習者值得有更好嘅工具，唔係因為我哋全部都識。當我哋有錯，希望講嗰種語言嘅人幫我哋改正。",
       "plea": "你有新點子、修正，或者好想見到嘅大膽學習體驗？話畀我哋知。我哋會睇每一個訊息，認真思考佢可以為 Corpán 同語言學習開啟咩可能。",
       "emailCta": "電郵我哋",
       "githubCta": "去 GitHub 開個 issue",
@@ -150,27 +150,11 @@
       "pact": "撳下面開始學習，同我哋一齊成長。🤝",
       "cta": "我加入——開始啦"
     },
-    "welcome": "歡迎",
-    "makePrimaryLanguage": "將英文設為我嘅主要語言",
-    "canChangeLater": "你可以隨時更改這個。",
     "pickLanguagesToLearn": "選擇要學習的語言",
     "textToSpeechSetup": "文字轉語音設置",
-    "ttsPoorQualityNote": "如果音頻質量差，請在你的設備 TTS 設置中安裝高質量的語音。",
-    "howToSetupTtsOn": "如何在上設置 TTS",
-    "welcomeTitle": "歡迎來到 Corpán 家族！",
-    "welcomeBody": "Corpán 是一個來自小團隊的開源應用，而不是大公司。我們非常關心語言和教育，並且我們仍然處於早期階段，所以你可能會看到一些粗糙的地方或缺少的功能和語言。如果有什麼不正常，請在 GitHub 或通過電子郵件告訴我們。你的反饋幫助我們頻繁更新，讓語言學習對每個人來說更好。",
-    "welcomeVisit": "訪問 encorpora.io",
-    "linkCopied": "鏈接已複製。請在你的瀏覽器中打開：",
     "reconfigureStack": "重新配置堆疊",
     "openVoiceSettings": "開啟設定",
     "openTTSSetup": "打開 TTS 設置",
-    "welcomeFollowUp": "謝謝你的加入—在社區見！",
-    "learning": "學習語言",
-    "learningStepTitle": "學習",
-    "tts": "文字轉語音",
-    "ttsStepTitle": "文字轉語音",
-    "socials": "關注及連接",
-    "socialsStepTitle": "社交",
     "noVoices": "沒有語音",
     "noVoicesHint": "安裝語音以啟用這種語言。",
     "languageOrderTipTitle": "提示",
@@ -234,56 +218,21 @@
         "notInstalled": "未安裝"
       }
     },
-    "packs": "短語包",
     "phrasePacks": {
-      "title": "短語包",
-      "stepTitle": "短語包",
       "hero": "揀你嘅主題",
       "loading": "載入緊…",
       "selectAll": "全選 ({{count}})",
       "clearAll": "清除",
-      "subscriptionNudge": "訂閱解鎖所有短語包。",
+      "subscriptionNudge": "部分套件已包括喺 Corpán Plus 入面 — 你可以之後喺設定 → 套件升級。",
       "entryCount": "{{n}} 句短語",
       "paid": "付費",
       "emptyHero": "暫時冇短語包。",
-      "emptySub": "遲啲再嚟。",
-      "offlineHero": "你而家離線。",
-      "offlineSub": "短語包需要網絡 — 遲啲喺「設定 → 包」再試。",
-      "offlineBanner": "離線 — 重新連線後安裝所揀。",
-      "noneSelected": "未選擇 — 繼續將跳過",
-      "selectedSuffix": "已選擇",
-      "skip": "暫時跳過",
-      "subtitle": "將專注短語套件新增到您的堆疊。隨時在「設定」中開啟或關閉它們。"
+      "emptySub": "遲啲再嚟。"
     },
-    "notOnAppleIOS": "唔喺 iOS",
     "appleNoVoiceTitle": "Apple 暫時未提供 {{lang}} 語音",
     "appleNoVoiceBody": "向 Apple 嘅無障礙團隊發個簡短意見，可以幫手反映需要。與此同時，{{lang}} 喺 Android 可原生使用。",
     "back": "返回",
     "continue": "繼續",
-    "class": {
-      "title": "為誰而設？",
-      "subtitle": "我們會為你度身訂造 Corpán。所有資料只會儲存在你的裝置，絕不外傳。",
-      "learner": "我正在學習語言",
-      "learnerDesc": "閱讀及聆聽你正在學習的語言內容。",
-      "enjoyer": "我想享受內容",
-      "enjoyerDesc": "以你的母語閱讀書籍、故事和玩遊戲。",
-      "polyglot": "兩者皆是 — 我全都要",
-      "polyglotDesc": "同時學習多種語言，並享受所有其他內容。",
-      "kid": "這是給小朋友用的",
-      "kidDesc": "為年幼讀者精選書籍和學習遊戲。",
-      "ageTitle": "讀者年齡？",
-      "ageUnder13": "13歲以下",
-      "ageTeen": "13–17歲"
-    },
-    "pitch": {
-      "title": "加入 Corpanistas",
-      "subtitle": "Corpán Plus 解鎖整個圖書館。任何書籍的首部分均可永久免費試閱。",
-      "everything": "所有書籍、所有語言 — 全部解鎖。",
-      "private": "無廣告。你的資料只會儲存在你的裝置。",
-      "team": "我們是小團隊，將每分錢都投入到 Corpán 的發展中。",
-      "tryPlus": "試用 Corpán Plus",
-      "continueFree": "繼續使用免費版本"
-    },
     "calibrate": {
       "childAgeTitle": "讀者年齡？",
       "childTeen": "13–17 歲",
@@ -306,16 +255,6 @@
       "voiceCountMany": "已有 {{count}} 個語音",
       "voiceCountOne": "已有 1 個語音",
       "yourVoiceFor": "您的 {{lang}} 語音"
-    },
-    "engage": {
-      "joinDesc": "支持 Corpán 並解鎖所有功能。可選，隨時。",
-      "subscribedTitle": "你是一位 Corpanista",
-      "subscribedDesc": "多謝你令 Corpán 保持無廣告並持續成長。",
-      "joinTitle": "加入 Corpanistas",
-      "start": "開始探索",
-      "subtitle": "Corpán 由一個小型開源團隊製作。歡迎打招呼 — 如果您喜歡，可以支持我們。",
-      "title": "您已準備就緒",
-      "explore": "自己探索"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "探索奇趣內容",
       "wildDesc": "令人驚訝的實驗性體驗。"
     },
-    "settingUp": "正在設定…",
     "ttsIntro": "Corpán 會朗讀。輕點語音以您的速度聆聽。",
     "voiceGuide": {
       "intro": "您的裝置內置豐富、自然的語音 — 免費，且遠優於預設語音。製造商只是預設關閉。讓我們開啟它們；只需輕點幾下：",
@@ -583,14 +521,13 @@
     "introTipBody": "堆疊保存不同的學習設置——一個用於旅遊，另一個用於工作。輕觸 + 創建一個新堆疊。"
   },
   "rating": {
-    "title": "喜歡 Corpán 嗎？",
-    "description": "Corpán 是一個剛起步的小型開源團隊製作的應用。如果你覺得這是一個 5 星應用，快速評分對我們幫助很大。",
-    "rateNow": "⭐ 評分 5 星",
-    "remindLater": "也許稍後",
-    "noThanks": "不，謝謝",
+    "title": "鍾意 Corpán 嗎？",
+    "description": "如果你鍾意 Corpán，請畀 5 粒星。喺 app store 入面，低過 5 星嘅評分都會傷害 Corpán。",
+    "rateNow": "⭐ 畀 5 粒星",
     "close": "關閉",
-    "feedbackHint": "還不是 5 星？輕觸「分享反饋」告訴我們如何改進。",
-    "feedbackButton": "在 GitHub 上分享反饋"
+    "feedbackHint": "如果佢對你嚟講仲未係 5 星 app，請 email 我哋或者喺 GitHub 開 issue，話畀我哋知要改咩。我哋想令佢更好。",
+    "emailButton": "Email 我哋",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "包",
@@ -640,7 +577,7 @@
       "subBadge": "訂閱",
       "paid": "付費",
       "free": "免費",
-      "unlockSub": "用訂閱解鎖",
+      "unlockSub": "使用 Corpán Plus 解鎖",
       "entryCount": "{{n}} 句短語",
       "allInstalled": {
         "title": "你已經有齊所有片語包。",
@@ -671,14 +608,17 @@
     "updateAvailable": "有可用的更新"
   },
   "subscription": {
-    "title": "解鎖所有內容",
-    "description": "訂閱後可無限制訪問每本有聲書和高級包。",
+    "startTrialPeriod": "開始 {{period}} 免費試用",
+    "trialFree": "{{period}}內免費",
+    "trialThenCancel": "之後 {{price}}/{{period}} · 隨時取消。今日唔使付款。",
+    "title": "解鎖 Corpán Plus",
+    "description": "無限使用所有功能、語言、套件同更新。",
     "annual": "年度",
     "monthly": "每月",
     "subscribe": "訂閱",
     "subscribing": "正在訂閱中...",
-    "subscribed": "你已訂閱",
-    "subscribedDescription": "{{plan}} 計劃已啟用。感謝你支持 Corpán。",
+    "subscribed": "Corpán Plus 已啟用",
+    "subscribedDescription": "{{plan}} 方案已啟用。所有嘢都已解鎖。",
     "manage": "管理訂閱",
     "termsOfUse": "使用條款",
     "privacyPolicy": "隱私政策",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}}免費",
     "trialReassurance": "現在無需付款 · 隨時取消",
     "trialThenPrice": "，然後{{price}}／{{period}}",
-    "trialToday": "今日：開始"
+    "trialToday": "今日：開始",
+    "rate": "評價 Corpán"
   },
   "restore": {
     "button": "恢復購買",
@@ -743,12 +684,12 @@
     "offlineEmpty": "連接到互聯網以發現包——或暫時跳過這一步。"
   },
   "paywall": {
-    "title": "繼續使用 Corpán Plus",
-    "thanksTitle": "你是一位 Corpanista",
-    "thanksBody": "感謝你支持 Corpán。所有內容已解鎖。",
-    "bookSubhead": "你已讀完《{{title}}》的免費預覽部分。",
-    "subhead": "解鎖所有語言的書籍。無廣告。你的資料只會儲存在你的裝置。",
-    "pitch": "我們是小團隊，將每分錢都投入到 Corpán 的發展中。Corpanistas 讓它保持無廣告並持續成長。",
+    "title": "解鎖 Corpán Plus",
+    "thanksTitle": "Corpán Plus 已啟用",
+    "thanksBody": "所有嘢都已解鎖。",
+    "bookSubhead": "繼續 {{title}}，解鎖所有功能。",
+    "subhead": "無限使用所有功能、語言同更新。冇廣告。你嘅資料留喺你部裝置。",
+    "pitch": "書、套件、遊戲、語音工具同新學習體驗全部包括。",
     "maybeLater": "稍後再說",
     "continue": "繼續",
     "dismiss": "關閉"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — 解鎖所有功能",
     "recommended": "推薦",
     "showAnother": "顯示另一個",
-    "tryIt": "試用"
+    "tryIt": "試用",
+    "packUpdates": "你有套件更新",
+    "updateAll": "全部更新"
   },
   "offline": {
     "cachedSubtitle": "顯示您上次的快取結果。",

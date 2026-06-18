@@ -11,13 +11,16 @@ import type { HostApi, StackConfig } from "./sdk/types"
 import {
   corpanToRadioLanguage,
   displayName,
-  resolveCorpanCodeForStation,
 } from "./api/languageMap"
 import type { RadioStation } from "./api/radioBrowser"
 import { createRadioPlayer } from "./audio/radioPlayer"
 import type { PlayerState } from "./audio/radioPlayer"
 import { attachMediaSession } from "./audio/mediaSessionGlue"
 import { createBrowseShellView, type BrowseShellView } from "./views/browseShell"
+import {
+  createGlobalStationListView,
+  type GlobalStationListView,
+} from "./views/globalStationList"
 import { createStationListView, type StationListView } from "./views/stationList"
 import { createPlayerBar } from "./views/playerBar"
 import { prefsStore, recentsStore, toLite } from "./state/stores"
@@ -55,6 +58,7 @@ export async function mountApp(
   initAnalytics()
 
   container.classList.add("wr-root")
+  container.style.setProperty("--wr-topbar-padding-top", `${getTopBarPaddingTop()}px`)
 
   const main = el("main", { class: "wr-main" })
   container.appendChild(main)
@@ -82,7 +86,7 @@ export async function mountApp(
   const mediaGlue = attachMediaSession(player)
   void mediaGlue
 
-  let currentStationListView: StationListView | null = null
+  let currentStationListView: StationListView | GlobalStationListView | null = null
 
   const playerBar = createPlayerBar(player, {
     onMetaTap: (station) => {
@@ -207,25 +211,7 @@ export async function mountApp(
       void playStation(station)
     },
     onShowInList: (station) => {
-      const corpanCode = resolveCorpanCodeForStation(station, currentStack)
-      if (!corpanCode) {
-        console.warn(
-          "[world-radio] no Corpan language for station",
-          station.stationuuid,
-          station.language,
-          station.languagecodes
-        )
-        return
-      }
-      const hasGeo =
-        typeof station.geo_lat === "number" &&
-        typeof station.geo_long === "number" &&
-        Number.isFinite(station.geo_lat as number) &&
-        Number.isFinite(station.geo_long as number)
-      openStationList(corpanCode, {
-        focusUuid: station.stationuuid,
-        initialView: hasGeo ? "map" : "list",
-      })
+      openGlobalStationList(station)
     },
     onMapTabActivated: () => {
       trackGlobalMapOpened()
@@ -327,6 +313,39 @@ export async function mountApp(
     main.scrollTop = 0
   }
 
+  function openGlobalStationList(focusStation: RadioStation) {
+    closeBtn.style.display = "none"
+    activeCorpanCode = null
+
+    const view = createGlobalStationListView({
+      onBack: () => {
+        view.dispose()
+        activeStationListDispose = null
+        currentStationListView = null
+        showBrowse()
+      },
+      onPlay: (station) => {
+        void playStation(station)
+        view.setActiveStation(station.stationuuid)
+      },
+      focusStation,
+    })
+    activeStationListDispose?.()
+    activeStationListDispose = () => view.dispose()
+    currentStationListView = view
+    clear(main)
+    main.appendChild(view.root)
+
+    const state = player.getState()
+    if (state.kind === "playing" || state.kind === "paused" || state.kind === "loading") {
+      view.setActiveStation(state.station.stationuuid)
+      view.setPlayerKind(state.kind)
+    }
+    document.title = "All stations · World Radio"
+    container.classList.remove("is-scrolled")
+    main.scrollTop = 0
+  }
+
   async function playStation(station: RadioStation) {
     recentsStore.push(toLite(station))
     prefsStore.save({ ...prefsStore.load(), lastStationUuid: station.stationuuid })
@@ -413,7 +432,29 @@ export async function mountApp(
       // may have re-added them.
       if (container.children.length === 0) {
         container.classList.remove("wr-root", "has-player", "is-scrolled", "is-mapview")
+        container.style.removeProperty("--wr-topbar-padding-top")
       }
     },
   }
+}
+
+function getTopBarPaddingTop(): number {
+  return getPlatformTopPaddingButtons() + 15
+}
+
+function getPlatformTopPaddingButtons(): number {
+  if (isIOS()) return 35
+  if (isAndroid()) return 30
+  return 10
+}
+
+function isIOS(): boolean {
+  const ua = navigator.userAgent || ""
+  const platform = navigator.platform || ""
+  const maxTouchPoints = navigator.maxTouchPoints || 0
+  return /iPhone|iPad|iPod/i.test(ua) || (platform === "MacIntel" && maxTouchPoints > 1)
+}
+
+function isAndroid(): boolean {
+  return /Android/i.test(navigator.userAgent || "")
 }

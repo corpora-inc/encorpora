@@ -5,6 +5,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-18
+
+### Changed
+- Updated the pack avatar artwork (regenerated PNG + added an SVG source).
+
 ## [0.3.0] - 2026-06-16 — Start fresh: Clear, Randomize, Demos
 
 ### Added

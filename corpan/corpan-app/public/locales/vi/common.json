@@ -131,18 +131,18 @@
     "readPrivacyPromise": "Đọc Cam kết quyền riêng tư của chúng tôi",
     "showStreak": "Hiển thị chuỗi đọc sách",
     "showStreakHint": "Số ngày nhỏ ở tiêu đề. Chỉ trên thiết bị, không có lời nhắc hay thông báo.",
-    "primaryLanguage": "Ngôn ngữ chính (giao diện)"
+    "primaryLanguage": "Ngôn ngữ chính (giao diện)",
+    "home": "Trang chủ",
+    "developer": "Nhà phát triển"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán không ngừng tiến hóa",
       "subtitle": "Bạn là một trong những người dùng đầu tiên",
-      "tinyTeamTitle": "Một đội ngũ nhỏ đầy nhiệt huyết",
-      "tinyTeamDesc": "Độc lập, không quảng cáo và được xây dựng với sự tôn trọng dành cho người sử dụng — một nhóm nhỏ đang làm nên ứng dụng ngôn ngữ mà chúng tôi luôn mong muốn.",
       "bleedingEdgeTitle": "Tiên tiến, có chủ đích",
-      "bleedingEdgeDesc": "Corpán đẩy giới hạn khả năng của thiết bị: những thế giới nhập vai, nhận dạng giọng nói, giọng đọc tự nhiên và các mô hình AI mới nhất cùng phối hợp để tạo ra những cách học mới. Phần lớn hoạt động trực tiếp trên thiết bị của bạn, mang đến việc học riêng tư, ưu tiên ngoại tuyến mà không phụ thuộc vào trung tâm dữ liệu. Chúng tôi phát hành công nghệ mới khi nó vẫn còn thô, vì vậy đôi lúc nó có thể hoạt động lạ, chạy chậm hoặc đơn giản là vượt quá khả năng xử lý của thiết bị. Đổi lại, bạn được trải nghiệm những phương pháp học mới đầy sức mạnh ngay khi chúng trở nên khả thi.",
+      "bleedingEdgeDesc": "Corpán mang AI mới, nhận dạng giọng nói, các giọng đọc và những thế giới nhập vai lên thiết bị của bạn để học riêng tư, ưu tiên ngoại tuyến. Chúng tôi phát hành công nghệ khi nó vẫn còn thô, nên đôi khi nó có thể hoạt động kỳ lạ, chạy chậm hoặc vượt quá khả năng thiết bị của bạn. Đổi lại, bạn có những cách học mới ngay khi chúng trở nên khả thi.",
       "yourLangTitle": "Chúng tôi không nói được mọi ngôn ngữ mình hỗ trợ",
-      "yourLangDesc": "Đó là sự thật chân thành. Chúng tôi xây dựng cho hàng chục ngôn ngữ vì ai cũng xứng đáng có những công cụ học tập mạnh mẽ, không phải vì nhóm nhỏ của chúng tôi đã biết hết tất cả. Bạn có thể phát hiện những điều chúng tôi làm sai. Nếu bạn hiểu {{lang}} hơn chúng tôi, mong bạn hãy cho chúng tôi biết và giúp Corpán trở nên xứng đáng với ngôn ngữ ấy.",
+      "yourLangDesc": "Chúng tôi xây dựng cho nhiều ngôn ngữ vì người học xứng đáng có công cụ tốt hơn, không phải vì chúng tôi biết hết chúng. Khi chúng tôi làm sai điều gì, chúng tôi hy vọng người bản ngữ sẽ giúp chúng tôi sửa lại.",
       "plea": "Bạn có ý tưởng, chỉnh sửa hay một trải nghiệm học tập táo bạo muốn được thấy không? Hãy kể cho chúng tôi. Chúng tôi đọc mọi tin nhắn và suy nghĩ thật sâu về những điều nó có thể mở ra cho Corpán và việc học ngôn ngữ.",
       "emailCta": "Gửi email cho bọn mình",
       "githubCta": "Mở issue trên GitHub",
@@ -150,23 +150,11 @@
       "pact": "Chạm bên dưới để bắt đầu học và cùng chúng tôi trưởng thành. 🤝",
       "cta": "Tôi tham gia — bắt đầu thôi"
     },
-    "welcome": "Chào mừng",
-    "makePrimaryLanguage": "Đặt tiếng Việt làm ngôn ngữ chính của tôi",
-    "canChangeLater": "Đừng lo, bạn có thể thay đổi điều này sau.",
     "pickLanguagesToLearn": "Chọn các ngôn ngữ bạn muốn học",
     "textToSpeechSetup": "Cài đặt chuyển văn bản thành giọng nói (TTS)",
-    "ttsPoorQualityNote": "Nếu âm thanh kém, hãy vào cài đặt TTS của thiết bị và cài đặt giọng nói chất lượng cao.",
-    "howToSetupTtsOn": "Cách cài đặt TTS trên",
-    "welcomeTitle": "Chào mừng bạn đến với gia đình Corpán!",
-    "welcomeBody": "Corpán là một ứng dụng mã nguồn mở do một nhóm rất nhỏ phát triển, chứ không phải một công ty lớn. Chúng tôi thực sự quan tâm đến ngôn ngữ và giáo dục, và dự án vẫn còn ở giai đoạn đầu, nên có thể bạn sẽ thấy vài chỗ chưa hoàn thiện, tính năng còn thiếu hoặc ngôn ngữ chưa được hỗ trợ. Nếu có điều gì không hoạt động tốt, hãy báo cho chúng tôi qua GitHub hoặc email. Phản hồi của bạn giúp chúng tôi ra bản cập nhật thường xuyên và cải thiện việc học ngôn ngữ cho mọi người.",
-    "welcomeVisit": "Truy cập encorpora.io",
-    "linkCopied": "Đã sao chép liên kết! Mở trong trình duyệt của bạn:",
     "reconfigureStack": "Cấu hình lại hồ sơ",
     "openVoiceSettings": "Mở Cài đặt",
     "openTTSSetup": "Mở cài đặt TTS",
-    "welcomeFollowUp": "Cảm ơn bạn đã tham gia — hẹn gặp lại trong cộng đồng!",
-    "learningStepTitle": "Học",
-    "tts": "Chuyển văn bản thành giọng nói",
     "languageOrderTipTitle": "Mẹo",
     "languageOrderTipBody": "Ngôn ngữ ở cuối danh sách là ngôn ngữ giao diện của ứng dụng. Để đổi ngôn ngữ giao diện, hãy kéo một ngôn ngữ khác xuống cuối.",
     "ttsOsTipTitle": "Mẹo",
@@ -176,10 +164,6 @@
     "ttsOsTipWindows": "Cài giọng nói trong Cài đặt rồi quay lại đây.",
     "ttsOsTipOther": "Cài giọng nói trong cài đặt thiết bị rồi quay lại đây.",
     "installVoicesAndroid": "Cài giọng",
-    "learning": "Học ngôn ngữ",
-    "ttsStepTitle": "Chuyển văn bản thành giọng nói",
-    "socials": "Theo dõi & kết nối",
-    "socialsStepTitle": "Mạng xã hội",
     "noVoices": "Không có giọng nói",
     "noVoicesHint": "Cài đặt giọng nói để bật ngôn ngữ này.",
     "sendAppleFeedback": "Gửi phản hồi cho Apple",
@@ -234,56 +218,21 @@
         "notInstalled": "Chưa cài đặt"
       }
     },
-    "packs": "Gói cụm từ",
     "phrasePacks": {
-      "title": "Gói cụm từ",
-      "stepTitle": "Gói cụm từ",
       "hero": "Chọn chủ đề",
       "loading": "Đang tải…",
       "selectAll": "Chọn tất cả ({{count}})",
       "clearAll": "Xóa",
-      "subscriptionNudge": "Đăng ký để mở khóa mọi gói.",
+      "subscriptionNudge": "Một số gói được bao gồm trong Corpán Plus — bạn có thể nâng cấp sau trong Cài đặt → Gói.",
       "entryCount": "{{n}} cụm từ",
       "paid": "Trả phí",
       "emptyHero": "Chưa có gói nào.",
-      "emptySub": "Quay lại sau nhé.",
-      "offlineHero": "Bạn đang ngoại tuyến.",
-      "offlineSub": "Gói cần internet — thử lại từ Cài đặt → Gói.",
-      "offlineBanner": "Ngoại tuyến — lựa chọn sẽ cài khi kết nối lại.",
-      "noneSelected": "Chưa chọn gì — Tiếp tục sẽ bỏ qua",
-      "selectedSuffix": "đã chọn",
-      "skip": "Bỏ qua bây giờ",
-      "subtitle": "Thêm các gói cụm từ tập trung vào bộ sưu tập của bạn. Bật hoặc tắt chúng bất cứ lúc nào trong Cài đặt."
+      "emptySub": "Quay lại sau nhé."
     },
-    "notOnAppleIOS": "Không dùng iOS",
     "appleNoVoiceTitle": "Apple chưa cung cấp giọng {{lang}}",
     "appleNoVoiceBody": "Một ghi chú ngắn gửi đến nhóm hỗ trợ tiếp cận của Apple sẽ giúp củng cố đề xuất này. Trong lúc đó, {{lang}} vẫn hoạt động gốc trên Android.",
     "back": "Quay lại",
     "continue": "Tiếp tục",
-    "class": {
-      "title": "Dành cho ai?",
-      "subtitle": "Corpán sẽ được tùy chỉnh cho bạn. Dữ liệu luôn nằm trên thiết bị của bạn, không bao giờ được gửi đi nơi khác.",
-      "learner": "Tôi đang học ngôn ngữ",
-      "learnerDesc": "Đọc và nghe bằng các ngôn ngữ bạn đang học.",
-      "enjoyer": "Tôi muốn thưởng thức nội dung",
-      "enjoyerDesc": "Sách, truyện và trò chơi bằng ngôn ngữ của bạn.",
-      "polyglot": "Cả hai — tôi muốn tất cả",
-      "polyglotDesc": "Nhiều ngôn ngữ cùng lúc, cộng với mọi thứ khác.",
-      "kid": "Dành cho trẻ em",
-      "kidDesc": "Sách và trò chơi giáo dục được tuyển chọn cho độc giả nhỏ tuổi.",
-      "ageTitle": "Độc giả bao nhiêu tuổi?",
-      "ageUnder13": "Dưới 13 tuổi",
-      "ageTeen": "13–17 tuổi"
-    },
-    "pitch": {
-      "title": "Tham gia cộng đồng Corpanistas",
-      "subtitle": "Corpán Plus mở khóa toàn bộ thư viện. Bạn có thể đọc miễn phí phần đầu của bất kỳ cuốn sách nào, mãi mãi.",
-      "everything": "Mọi cuốn sách, mọi ngôn ngữ — đã được mở khóa.",
-      "private": "Không quảng cáo. Dữ liệu của bạn luôn nằm trên thiết bị.",
-      "team": "Chúng tôi là một nhóm nhỏ và dành mọi khoản thu để phát triển Corpán.",
-      "tryPlus": "Dùng thử Corpán Plus",
-      "continueFree": "Tiếp tục với phiên bản miễn phí"
-    },
     "calibrate": {
       "childAgeTitle": "Người đọc bao nhiêu tuổi?",
       "childTeen": "13–17 tuổi",
@@ -306,16 +255,6 @@
       "voiceCountMany": "{{count}} giọng nói đã sẵn sàng",
       "voiceCountOne": "1 giọng nói đã sẵn sàng",
       "yourVoiceFor": "Giọng nói {{lang}} của bạn"
-    },
-    "engage": {
-      "joinDesc": "Hỗ trợ Corpán và mở khóa mọi thứ. Tùy chọn, bất cứ lúc nào.",
-      "subscribedTitle": "Bạn là một Corpanista",
-      "subscribedDesc": "Cảm ơn bạn đã giúp Corpán không có quảng cáo và ngày càng phát triển.",
-      "joinTitle": "Tham gia Corpanistas",
-      "start": "Bắt đầu khám phá",
-      "subtitle": "Corpán được tạo ra bởi một nhóm mã nguồn mở nhỏ. Hãy ghé thăm — và nếu bạn yêu thích, bạn có thể ủng hộ chúng tôi.",
-      "title": "Bạn đã sẵn sàng",
-      "explore": "Khám phá theo cách của tôi"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "Khám phá những điều độc đáo",
       "wildDesc": "Những trải nghiệm bất ngờ, mang tính thử nghiệm."
     },
-    "settingUp": "Đang thiết lập…",
     "ttsIntro": "Corpán đọc to. Chạm vào một giọng nói để nghe với tốc độ của bạn.",
     "voiceGuide": {
       "intro": "Thiết bị của bạn có sẵn các giọng nói phong phú, tự nhiên — miễn phí và tốt hơn nhiều so với mặc định. Nhà sản xuất chỉ để chúng tắt. Hãy bật chúng lên; chỉ cần vài thao tác:",
@@ -583,14 +521,13 @@
     "introTipBody": "Stacks lưu các thiết lập học tập khác nhau — một cho du lịch, một cho công việc. Nhấn + để tạo stack mới."
   },
   "rating": {
-    "title": "Bạn có thích Corpán không?",
-    "description": "Corpán được xây dựng bởi một nhóm mã nguồn mở nhỏ, mới bắt đầu. Nếu với bạn ứng dụng xứng đáng 5 sao, một đánh giá nhanh giúp chúng tôi rất nhiều.",
-    "rateNow": "⭐ Đánh giá 5 sao",
-    "remindLater": "Để sau",
-    "noThanks": "Không, cảm ơn",
+    "title": "Bạn có yêu thích Corpán không?",
+    "description": "Nếu bạn yêu thích Corpán, hãy cho ứng dụng 5 sao. Trên các cửa hàng ứng dụng, bất cứ điểm nào dưới 5 sao đều làm hại Corpán.",
+    "rateNow": "⭐ Cho 5 sao",
     "close": "Đóng",
-    "feedbackHint": "Chưa thực sự là 5 sao trong mắt bạn? Hãy bấm “Góp ý” và cho chúng tôi biết cần cải thiện gì.",
-    "feedbackButton": "Góp ý trên GitHub"
+    "feedbackHint": "Nếu với bạn đây chưa phải là ứng dụng 5 sao, hãy gửi email cho chúng tôi hoặc mở issue trên GitHub và nói cần sửa gì. Chúng tôi muốn làm nó tốt hơn.",
+    "emailButton": "Gửi email",
+    "githubButton": "Issue GitHub"
   },
   "packs": {
     "title": "Gói",
@@ -640,7 +577,7 @@
       "subBadge": "Đăng ký",
       "paid": "Trả phí",
       "free": "Miễn phí",
-      "unlockSub": "Mở khóa bằng đăng ký",
+      "unlockSub": "Mở khóa bằng Corpán Plus",
       "entryCount": "{{n}} cụm từ",
       "allInstalled": {
         "title": "Bạn đã có mọi gói cụm từ.",
@@ -671,14 +608,17 @@
     "updateAvailable": "Có bản cập nhật"
   },
   "subscription": {
-    "title": "Mở khóa tất cả",
-    "description": "Truy cập không giới hạn mọi sách nói và gói cao cấp với đăng ký.",
+    "startTrialPeriod": "Bắt đầu dùng thử miễn phí {{period}}",
+    "trialFree": "Miễn phí trong {{period}}",
+    "trialThenCancel": "Sau đó {{price}}/{{period}} · hủy bất cứ lúc nào. Hôm nay chưa thanh toán.",
+    "title": "Mở khóa Corpán Plus",
+    "description": "Truy cập không giới hạn vào mọi tính năng, ngôn ngữ, gói và bản cập nhật.",
     "annual": "Hàng năm",
     "monthly": "Hàng tháng",
     "subscribe": "Đăng ký",
     "subscribing": "Đang đăng ký...",
-    "subscribed": "Bạn đã đăng ký",
-    "subscribedDescription": "Gói {{plan}} đang hoạt động. Cảm ơn bạn đã ủng hộ Corpán.",
+    "subscribed": "Corpán Plus đang hoạt động",
+    "subscribedDescription": "Gói {{plan}} đang hoạt động. Mọi thứ đã được mở khóa.",
     "manage": "Quản lý đăng ký",
     "termsOfUse": "Điều khoản sử dụng",
     "privacyPolicy": "Chính sách bảo mật",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} miễn phí",
     "trialReassurance": "Chưa cần thanh toán · hủy bất kỳ lúc nào",
     "trialThenPrice": ", sau đó {{price}}/{{period}}",
-    "trialToday": "Hôm nay: bắt đầu"
+    "trialToday": "Hôm nay: bắt đầu",
+    "rate": "Đánh giá Corpán"
   },
   "restore": {
     "button": "Khôi phục mua hàng",
@@ -743,12 +684,12 @@
     "offlineEmpty": "Kết nối internet để khám phá các gói — hoặc bỏ qua ngay bây giờ."
   },
   "paywall": {
-    "title": "Tiếp tục với Corpán Plus",
-    "thanksTitle": "Bạn là một Corpanista",
-    "thanksBody": "Cảm ơn bạn đã ủng hộ Corpán. Mọi thứ đã được mở khóa.",
-    "bookSubhead": "Bạn đã đọc hết phần xem trước miễn phí của {{title}}.",
-    "subhead": "Mở khóa mọi cuốn sách bằng mọi ngôn ngữ. Không quảng cáo. Dữ liệu của bạn luôn nằm trên thiết bị.",
-    "pitch": "Chúng tôi là một nhóm nhỏ và dành mọi khoản thu để phát triển Corpán. Corpanistas giúp ứng dụng không có quảng cáo và ngày càng phát triển.",
+    "title": "Mở khóa Corpán Plus",
+    "thanksTitle": "Corpán Plus đang hoạt động",
+    "thanksBody": "Mọi thứ đã được mở khóa.",
+    "bookSubhead": "Tiếp tục {{title}} và mở khóa mọi tính năng.",
+    "subhead": "Truy cập không giới hạn vào mọi tính năng, ngôn ngữ và bản cập nhật. Không quảng cáo. Dữ liệu của bạn vẫn ở trên thiết bị của bạn.",
+    "pitch": "Sách, gói, trò chơi, công cụ luyện nói và trải nghiệm học mới đều được bao gồm.",
     "maybeLater": "Để sau",
     "continue": "Tiếp tục",
     "dismiss": "Bỏ qua"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — mở khóa mọi thứ",
     "recommended": "Đề xuất",
     "showAnother": "Hiển thị cái khác",
-    "tryIt": "Dùng thử"
+    "tryIt": "Dùng thử",
+    "packUpdates": "Bạn có bản cập nhật gói",
+    "updateAll": "Cập nhật tất cả"
   },
   "offline": {
     "cachedSubtitle": "Hiển thị kết quả được lưu vào bộ nhớ đệm gần đây nhất của bạn.",

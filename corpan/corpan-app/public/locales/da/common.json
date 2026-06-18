@@ -131,18 +131,18 @@
     "readPrivacyPromise": "Læs vores løfte om privatliv",
     "showStreak": "Vis læsestribe",
     "showStreakHint": "Et lille dagstal i overskriften. Kun på enheden, ingen påmindelser eller notifikationer.",
-    "primaryLanguage": "Primært (brugerflade) sprog"
+    "primaryLanguage": "Primært (brugerflade) sprog",
+    "home": "Hjem",
+    "developer": "Udvikler"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán udvikler sig",
       "subtitle": "Du er blandt de første",
-      "tinyTeamTitle": "Et lille team af entusiaster",
-      "tinyTeamDesc": "Uafhængig, reklamefri og bygget med respekt for dem, der bruger den — et lille hold, der skaber den sprogapp, vi altid har ønsket os.",
       "bleedingEdgeTitle": "Avanceret, med vilje",
-      "bleedingEdgeDesc": "Corpán skubber til grænserne for, hvad din enhed kan: medrivende verdener, talegenkendelse, naturlige stemmer og de nyeste AI-modeller arbejder sammen om at skabe nye måder at lære på. Meget af det kører direkte på din enhed, så du får privat læring, der først og fremmest virker offline, uden at være afhængig af et datacenter. Vi udgiver ny teknologi, mens den stadig er rå, så den kan indimellem opføre sig mærkeligt, køre langsomt eller simpelthen være mere, end din enhed kan klare. Til gengæld får du stærke nye læringsoplevelser, så snart de bliver mulige.",
+      "bleedingEdgeDesc": "Corpán bringer ny AI, talegenkendelse, stemmer og opslugende verdener til din enhed til privat læring, der først og fremmest fungerer offline. Vi udgiver teknologi, mens den stadig er rå, så den kan opføre sig mærkeligt, køre langsomt eller være mere, end din enhed kan klare. Til gengæld får du nye måder at lære på, så snart de bliver mulige.",
       "yourLangTitle": "Vi taler ikke alle de sprog, vi understøtter",
-      "yourLangDesc": "Det er den ærlige sandhed. Vi bygger til dusinvis af sprog, fordi alle fortjener stærke læringsværktøjer, ikke fordi vores lille hold allerede kan dem alle. Du kan finde ting, vi har taget fejl af. Hvis du kan {{lang}} bedre end os, håber vi, at du vil fortælle os det og hjælpe med at gøre Corpán værdig til sproget.",
+      "yourLangDesc": "Vi bygger til mange sprog, fordi elever fortjener bedre værktøjer, ikke fordi vi kan dem alle. Når vi tager fejl, håber vi, at talere vil hjælpe os med at rette det.",
       "plea": "Har du en idé, en rettelse eller en vild læringsoplevelse, du gerne vil se? Fortæl os det. Vi læser hver besked og tænker grundigt over, hvad den kan åbne for Corpán og sprogindlæring.",
       "emailCta": "Skriv til os",
       "githubCta": "Åbn et GitHub issue",
@@ -150,27 +150,11 @@
       "pact": "Tryk nedenfor for at begynde at lære og udvikle dig sammen med os. 🤝",
       "cta": "Jeg er med — lad os komme i gang"
     },
-    "welcome": "Velkommen",
-    "makePrimaryLanguage": "Gør dansk til mit primære sprog",
-    "canChangeLater": "Du kan ændre dette til enhver tid.",
     "pickLanguagesToLearn": "Vælg sprog at lære",
     "textToSpeechSetup": "Opsætning af tekst-til-tale",
-    "ttsPoorQualityNote": "Hvis lyden er dårlig, skal du installere stemmer i høj kvalitet i enhedens tekst-til-tale-indstillinger.",
-    "howToSetupTtsOn": "Sådan opsætter du tekst-til-tale på",
-    "welcomeTitle": "Velkommen til Corpán-familien!",
-    "welcomeBody": "Corpán er en open source-app fra et lille hold – ikke et stort firma. Vi brænder for sprog og uddannelse, og vi er stadig i gang med at bygge den op, så du kan opleve mangler eller ufærdige funktioner og sprog. Hvis noget ikke virker, er du velkommen til at fortælle os det på GitHub eller via e-mail. Din feedback hjælper os med at udgive hyppige opdateringer og gøre sprogindlæring bedre for alle.",
-    "welcomeVisit": "Besøg encorpora.io",
-    "linkCopied": "Linket er kopieret. Åbn det i din browser:",
     "reconfigureStack": "Rekonfigurer stak",
     "openVoiceSettings": "Åbn Indstillinger",
     "openTTSSetup": "Åbn tekst-til-tale-indstillinger",
-    "welcomeFollowUp": "Tak fordi du er med – vi ses i fællesskabet!",
-    "learning": "Indlær sprog",
-    "learningStepTitle": "Indlæring",
-    "tts": "Tekst-til-tale",
-    "ttsStepTitle": "Tekst-til-tale",
-    "socials": "Følg og forbind",
-    "socialsStepTitle": "Sociale medier",
     "noVoices": "Ingen stemmer",
     "noVoicesHint": "Installér stemmer for at aktivere dette sprog.",
     "languageOrderTipTitle": "Tip",
@@ -234,56 +218,21 @@
         "notInstalled": "Ikke installeret"
       }
     },
-    "packs": "Frasepakker",
     "phrasePacks": {
-      "title": "Frasepakker",
-      "stepTitle": "Frasepakker",
       "hero": "Vælg dine emner",
       "loading": "Indlæser…",
       "selectAll": "Vælg alle ({{count}})",
       "clearAll": "Ryd",
-      "subscriptionNudge": "Abonner for at låse alle pakker op.",
+      "subscriptionNudge": "Nogle pakker er inkluderet med Corpán Plus — du kan opgradere senere i Indstillinger → Pakker.",
       "entryCount": "{{n}} fraser",
       "paid": "Betalt",
       "emptyHero": "Ingen pakker endnu.",
-      "emptySub": "Kom tilbage snart.",
-      "offlineHero": "Du er offline.",
-      "offlineSub": "Pakker kræver internet — prøv senere fra Indstillinger → Pakker.",
-      "offlineBanner": "Offline — valgene installeres ved gentilslutning.",
-      "noneSelected": "Intet valgt – Fortsæt vil springe over",
-      "selectedSuffix": "valgt",
-      "skip": "Spring over for nu",
-      "subtitle": "Tilføj fokuserede sætningspakker til din samling. Slå dem til eller fra når som helst i Indstillinger."
+      "emptySub": "Kom tilbage snart."
     },
-    "notOnAppleIOS": "Ikke på iOS",
     "appleNoVoiceTitle": "Apple tilbyder endnu ikke en {{lang}}-stemme",
     "appleNoVoiceBody": "En kort besked til Apples tilgængelighedsteam hjælper med at understøtte sagen. {{lang}} fungerer indbygget på Android i mellemtiden.",
     "back": "Tilbage",
     "continue": "Fortsæt",
-    "class": {
-      "title": "Hvem er det til?",
-      "subtitle": "Vi tilpasser Corpán til dig. Dette forbliver på din enhed – vi sender det aldrig andre steder hen.",
-      "learner": "Jeg lærer sprog",
-      "learnerDesc": "Læs og lyt på de sprog, du studerer.",
-      "enjoyer": "Jeg vil nyde indholdet",
-      "enjoyerDesc": "Bøger, historier og spil på dit eget sprog.",
-      "polyglot": "Begge dele – jeg vil have det hele",
-      "polyglotDesc": "Flere sprog på én gang, plus alt det andet.",
-      "kid": "Det er til et barn",
-      "kidDesc": "Udvalgte bøger og læringsspil til yngre læsere.",
-      "ageTitle": "Hvor gammel er læseren?",
-      "ageUnder13": "Under 13",
-      "ageTeen": "13–17"
-    },
-    "pitch": {
-      "title": "Bliv en del af Corpanistas",
-      "subtitle": "Corpán Plus åbner hele biblioteket. Prøv den første del af enhver bog gratis, for altid.",
-      "everything": "Hver bog, hvert sprog – låst op.",
-      "private": "Ingen reklamer. Dine data forbliver på din enhed.",
-      "team": "Vi er et lille team og geninvesterer hver en krone i Corpán.",
-      "tryPlus": "Prøv Corpán Plus",
-      "continueFree": "Fortsæt med gratisversionen"
-    },
     "calibrate": {
       "childAgeTitle": "Hvor gammel er læseren?",
       "childTeen": "13–17 år",
@@ -306,16 +255,6 @@
       "voiceCountMany": "{{count}} stemmer klar",
       "voiceCountOne": "1 stemme klar",
       "yourVoiceFor": "Din {{lang}}-stemme"
-    },
-    "engage": {
-      "joinDesc": "Støt Corpán og lås op for alt. Valgfrit, når som helst.",
-      "subscribedTitle": "Du er en Corpanista",
-      "subscribedDesc": "Tak, fordi du holder Corpán reklamefrit og i vækst.",
-      "joinTitle": "Bliv Corpanista",
-      "start": "Begynd at udforske",
-      "subtitle": "Corpán er lavet af et lille open source-team. Sig hej – og hvis du elsker det, kan du støtte os.",
-      "title": "Du er klar",
-      "explore": "Udforsk på egen hånd"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "Udforsk vilde ting",
       "wildDesc": "Overraskende, eksperimenterende oplevelser."
     },
-    "settingUp": "Opsætter ting…",
     "ttsIntro": "Corpán læser højt. Tryk på en stemme for at høre den i dit tempo.",
     "voiceGuide": {
       "intro": "Din enhed har rige, naturlige stemmer indbygget – gratis og langt bedre end standard. Producenten lader dem bare være slået fra. Lad os slå dem til; det tager kun et par tryk:",
@@ -583,14 +521,13 @@
     "introTipBody": "Stacks gemmer forskellige læringsopsætninger — én til rejser, en anden til arbejde. Tryk på + for at oprette en ny stack."
   },
   "rating": {
-    "title": "Nyder du Corpán?",
-    "description": "Corpán er lavet af et lille open source-hold, der lige er startet. Hvis appen føles som en 5-stjernet app, hjælper en hurtig bedømmelse os meget.",
+    "title": "Elsker du Corpán?",
+    "description": "Hvis du elsker Corpán, så giv den 5 stjerner. I app-butikkerne skader alt under 5 stjerner Corpán.",
     "rateNow": "⭐ Giv 5 stjerner",
-    "remindLater": "Måske senere",
-    "noThanks": "Nej tak",
     "close": "Luk",
-    "feedbackHint": "Ikke 5 stjerner endnu? Tryk på 'Del feedback' og fortæl os, hvordan vi kan gøre det bedre.",
-    "feedbackButton": "Del feedback på GitHub"
+    "feedbackHint": "Hvis den endnu ikke er en 5-stjernet app for dig, så send os en mail eller åbn en sag på GitHub og fortæl, hvad vi skal rette. Vi vil gøre den bedre.",
+    "emailButton": "Send mail",
+    "githubButton": "GitHub-sag"
   },
   "packs": {
     "title": "Pakker",
@@ -640,7 +577,7 @@
       "subBadge": "Abonnement",
       "paid": "Betalt",
       "free": "Gratis",
-      "unlockSub": "Lås op med abonnement",
+      "unlockSub": "Lås op med Corpán Plus",
       "entryCount": "{{n}} fraser",
       "allInstalled": {
         "title": "Du har alle frasepakker.",
@@ -671,14 +608,17 @@
     "updateAvailable": "Opdatering tilgængelig"
   },
   "subscription": {
-    "title": "Lås alt op",
-    "description": "Ubegrænset adgang til alle kommenterede bøger og premium-pakker med et abonnement.",
+    "startTrialPeriod": "Start {{period}} gratis prøveperiode",
+    "trialFree": "Gratis i {{period}}",
+    "trialThenCancel": "Derefter {{price}}/{{period}} · annuller når som helst. Ingen betaling i dag.",
+    "title": "Lås Corpán Plus op",
+    "description": "Ubegrænset adgang til alle funktioner, sprog, pakker og opdateringer.",
     "annual": "Årligt",
     "monthly": "Månedligt",
     "subscribe": "Abonnér",
     "subscribing": "Abonnerer...",
-    "subscribed": "Du har abonnement",
-    "subscribedDescription": "{{plan}}-abonnement er aktivt. Tak fordi du støtter Corpán.",
+    "subscribed": "Corpán Plus er aktivt",
+    "subscribedDescription": "{{plan}}-abonnement er aktivt. Alt er låst op.",
     "manage": "Administrer abonnement",
     "termsOfUse": "Brugsbetingelser",
     "privacyPolicy": "Privatlivspolitik",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} gratis",
     "trialReassurance": "Ingen betaling nu · annuller når som helst",
     "trialThenPrice": ", derefter {{price}}/{{period}}",
-    "trialToday": "I dag: start"
+    "trialToday": "I dag: start",
+    "rate": "Bedøm Corpán"
   },
   "restore": {
     "button": "Gendan køb",
@@ -743,12 +684,12 @@
     "offlineEmpty": "Opret forbindelse til internettet for at opdage pakker — eller spring over for nu."
   },
   "paywall": {
-    "title": "Fortsæt med Corpán Plus",
-    "thanksTitle": "Du er en Corpanista",
-    "thanksBody": "Tak for din støtte til Corpán. Alt er låst op.",
-    "bookSubhead": "Du har nået slutningen af den gratis forhåndsvisning af {{title}}.",
-    "subhead": "Lås op for alle bøger på alle sprog. Ingen reklamer. Dine data forbliver på din enhed.",
-    "pitch": "Vi er et lille team og geninvesterer hver en krone i Corpán. Corpanistas holder det reklamefrit og i vækst.",
+    "title": "Lås Corpán Plus op",
+    "thanksTitle": "Corpán Plus er aktivt",
+    "thanksBody": "Alt er låst op.",
+    "bookSubhead": "Fortsæt {{title}} og lås alle funktioner op.",
+    "subhead": "Ubegrænset adgang til alle funktioner, sprog og opdateringer. Ingen reklamer. Dine data bliver på din enhed.",
+    "pitch": "Bøger, pakker, spil, taleværktøjer og nye læringsoplevelser er inkluderet.",
     "maybeLater": "Måske senere",
     "continue": "Fortsæt",
     "dismiss": "Luk"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — lås op for alt",
     "recommended": "Anbefalet",
     "showAnother": "Vis mig en anden",
-    "tryIt": "Prøv det"
+    "tryIt": "Prøv det",
+    "packUpdates": "Du har pakkeopdateringer",
+    "updateAll": "Opdater alle"
   },
   "offline": {
     "cachedSubtitle": "Viser dine senest cachelagrede resultater.",

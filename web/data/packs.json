@@ -510,5 +510,32 @@
     ],
     "recommendOrder": 6,
     "tagline": "Say phrases aloud and get pronunciation feedback."
+  },
+  {
+    "id": "phrase_main",
+    "name": "Phrase Flip",
+    "description": "Flip through phrases in the languages you're learning — quick, focused practice that's always a tap away. Built into Corpán, ready the moment you open the app.",
+    "status": "active",
+    "builtin": true,
+    "landingUrl": "/corpan/packs/phrase-flip/",
+    "avatarSource": "corpan/corpan-app/src/assets/phrase-flip.svg",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/corpan-app/src",
+    "v1Listed": false,
+    "channel": "stable",
+    "packType": "core",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "study",
+      "speak"
+    ],
+    "goodForClass": [
+      "learner",
+      "polyglot"
+    ],
+    "recommendOrder": 4,
+    "tagline": "Quick, focused phrase practice — built into Corpán."
   }
 ]

@@ -33,7 +33,11 @@ function firstLetter(name: string): string {
   return String.fromCodePoint(cp).toUpperCase()
 }
 
-export function createStationArt(station: StationArtInput, sizePx: number): HTMLElement {
+export function createStationArt(
+  station: StationArtInput,
+  sizePx: number,
+  opts: { loadRemote?: boolean } = {}
+): HTMLElement {
   const root = el("div", {
     class: "wr-art",
     style: `width:${sizePx}px;height:${sizePx}px`,
@@ -49,7 +53,7 @@ export function createStationArt(station: StationArtInput, sizePx: number): HTML
   fallback.textContent = firstLetter(station.name)
   root.appendChild(fallback)
 
-  if (station.favicon) {
+  if (opts.loadRemote !== false && station.favicon) {
     const img = el("img", {
       class: "wr-art-img",
       src: station.favicon,

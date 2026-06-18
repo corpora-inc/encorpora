@@ -324,7 +324,7 @@ export function OnboardingPickPhrasePacks({ onAdvance, onBack }: OnboardingStepP
                                         "onboarding.phrasePacks.subscriptionNudge",
                                         {
                                             defaultValue:
-                                                "Subscribe to unlock every pack.",
+                                                "Some packs are included with Corpán Plus — you can upgrade later in Settings → Packs.",
                                         },
                                     )}
                                 </div>

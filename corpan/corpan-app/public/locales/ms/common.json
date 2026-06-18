@@ -131,18 +131,18 @@
     "readPrivacyPromise": "Baca Janji Privasi kami",
     "showStreak": "Tunjukkan siri bacaan",
     "showStreakHint": "Kiraan hari kecil di pengepala. Pada peranti sahaja, tiada peringatan atau pemberitahuan.",
-    "primaryLanguage": "Bahasa utama (UI)"
+    "primaryLanguage": "Bahasa utama (UI)",
+    "home": "Laman utama",
+    "developer": "Pembangun"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán terus berkembang",
       "subtitle": "Anda antara pengguna terawal",
-      "tinyTeamTitle": "Pasukan kecil yang bersemangat",
-      "tinyTeamDesc": "Bebas, tanpa iklan, dan dibina dengan menghormati orang yang menggunakannya — sebuah pasukan kecil menghasilkan aplikasi bahasa yang sentiasa kami inginkan.",
       "bleedingEdgeTitle": "Termaju, dengan sengaja",
-      "bleedingEdgeDesc": "Corpán menolak batas kemampuan peranti anda: dunia imersif, pengecaman pertuturan, suara semula jadi dan model AI terkini bekerjasama untuk mencipta cara pembelajaran baharu. Sebahagian besarnya berjalan terus pada peranti anda, memberikan pembelajaran peribadi yang mengutamakan penggunaan luar talian tanpa bergantung pada pusat data. Kami mengeluarkan teknologi baharu ketika ia masih mentah, jadi kadangkala ia mungkin bertindak pelik, berjalan perlahan atau sememangnya lebih daripada yang mampu ditangani peranti anda. Sebagai balasan, anda mendapat pengalaman pembelajaran baharu yang hebat sebaik sahaja ia menjadi mungkin.",
+      "bleedingEdgeDesc": "Corpán membawa AI baharu, pengecaman pertuturan, suara dan dunia imersif ke peranti anda untuk pembelajaran peribadi yang mengutamakan luar talian. Kami mengeluarkan teknologi ketika ia masih mentah, jadi ia mungkin berkelakuan pelik, berjalan perlahan atau melebihi kemampuan peranti anda. Sebagai balasan, anda mendapat cara baharu untuk belajar sebaik sahaja ia menjadi mungkin.",
       "yourLangTitle": "Kami tidak bertutur dalam setiap bahasa yang kami sokong",
-      "yourLangDesc": "Itulah kebenaran yang jujur. Kami membina untuk berpuluh-puluh bahasa kerana semua orang layak mendapat alat pembelajaran yang hebat, bukan kerana pasukan kecil kami sudah mengetahui semuanya. Anda mungkin menemui perkara yang kami tersilap. Jika anda lebih mengenali {{lang}} daripada kami, kami berharap anda akan memberitahu kami dan membantu menjadikan Corpán layak untuk bahasa itu.",
+      "yourLangDesc": "Kami membina untuk banyak bahasa kerana pelajar berhak mendapat alat yang lebih baik, bukan kerana kami tahu semuanya. Apabila kami tersilap, kami berharap penutur membantu kami membetulkannya.",
       "plea": "Ada idea, pembetulan atau pengalaman pembelajaran luar biasa yang anda mahu lihat? Beritahu kami. Kami membaca setiap mesej dan memikirkan secara mendalam apa yang boleh dibukanya untuk Corpán dan pembelajaran bahasa.",
       "emailCta": "E-mel kami",
       "githubCta": "Buka isu di GitHub",
@@ -150,27 +150,11 @@
       "pact": "Ketik di bawah untuk mula belajar dan berkembang bersama kami. 🤝",
       "cta": "Saya ikut serta — jom"
     },
-    "welcome": "Selamat datang",
-    "makePrimaryLanguage": "Jadikan Bahasa Melayu bahasa utama saya",
-    "canChangeLater": "Anda boleh mengubahnya pada bila-bila masa.",
     "pickLanguagesToLearn": "Pilih bahasa untuk dipelajari",
     "textToSpeechSetup": "Persediaan teks-ke-pertuturan",
-    "ttsPoorQualityNote": "Jika audio berbunyi kurang jelas, pasang suara berkualiti tinggi dalam tetapan TTS peranti anda.",
-    "howToSetupTtsOn": "Cara menyediakan TTS pada",
-    "welcomeTitle": "Selamat datang ke keluarga Corpán!",
-    "welcomeBody": "Corpán ialah aplikasi sumber terbuka daripada pasukan kecil, bukan syarikat besar. Kami sangat mengambil berat tentang bahasa dan pendidikan, dan kami masih baru bermula — jadi anda mungkin menjumpai kekurangan atau ciri yang belum lengkap. Jika sesuatu tidak berfungsi, sila maklumkan kami di GitHub atau melalui e-mel. Maklum balas anda membantu kami menghantar kemas kini yang kerap dan menjadikan pembelajaran bahasa lebih baik untuk semua orang.",
-    "welcomeVisit": "Lawati encorpora.io",
-    "linkCopied": "Pautan disalin. Buka dalam pelayar anda:",
     "reconfigureStack": "Konfigurasi semula susunan",
     "openVoiceSettings": "Buka Tetapan",
     "openTTSSetup": "Buka tetapan TTS",
-    "welcomeFollowUp": "Terima kasih kerana bergabung — jumpa di komuniti!",
-    "learning": "Mempelajari bahasa",
-    "learningStepTitle": "Pembelajaran",
-    "tts": "Teks-ke-pertuturan",
-    "ttsStepTitle": "Teks-ke-pertuturan",
-    "socials": "Ikuti & berhubung",
-    "socialsStepTitle": "Media sosial",
     "noVoices": "Tiada suara",
     "noVoicesHint": "Pasang suara untuk mengaktifkan bahasa ini.",
     "languageOrderTipTitle": "Petua",
@@ -234,56 +218,21 @@
         "notInstalled": "Tidak dipasang"
       }
     },
-    "packs": "Pek frasa",
     "phrasePacks": {
-      "title": "Pek frasa",
-      "stepTitle": "Pek frasa",
       "hero": "Pilih topik anda",
       "loading": "Memuat…",
       "selectAll": "Pilih semua ({{count}})",
       "clearAll": "Padam",
-      "subscriptionNudge": "Langgan untuk membuka semua pek.",
+      "subscriptionNudge": "Sesetengah pek disertakan dengan Corpán Plus — anda boleh menaik taraf kemudian di Tetapan → Pek.",
       "entryCount": "{{n}} frasa",
       "paid": "Berbayar",
       "emptyHero": "Belum ada pek.",
-      "emptySub": "Kembali tidak lama lagi.",
-      "offlineHero": "Anda di luar talian.",
-      "offlineSub": "Pek perlukan internet — cuba dari Tetapan → Pek.",
-      "offlineBanner": "Luar talian — pilihan akan dipasang apabila disambung.",
-      "noneSelected": "Tiada yang dipilih — Teruskan akan melangkau",
-      "selectedSuffix": "dipilih",
-      "skip": "Langkau buat masa ini",
-      "subtitle": "Tambah pek frasa fokus ke timbunan anda. Hidupkan atau matikannya bila-bila masa dalam Tetapan."
+      "emptySub": "Kembali tidak lama lagi."
     },
-    "notOnAppleIOS": "Bukan di iOS",
     "appleNoVoiceTitle": "Apple belum menyediakan suara {{lang}} lagi",
     "appleNoVoiceBody": "Sedikit maklum balas kepada pasukan kebolehcapaian Apple membantu menguatkan kes ini. Sementara itu, {{lang}} berfungsi secara asli di Android.",
     "back": "Kembali",
     "continue": "Teruskan",
-    "class": {
-      "title": "Untuk siapa ini?",
-      "subtitle": "Kami akan sesuaikan Corpán untuk anda. Maklumat ini kekal pada peranti anda — kami tidak akan menghantarnya ke mana-mana.",
-      "learner": "Saya sedang belajar bahasa",
-      "learnerDesc": "Baca dan dengar dalam bahasa yang anda pelajari.",
-      "enjoyer": "Saya ingin menikmati kandungan",
-      "enjoyerDesc": "Buku, cerita dan permainan dalam bahasa anda sendiri.",
-      "polyglot": "Kedua-duanya — saya mahukan semuanya",
-      "polyglotDesc": "Beberapa bahasa serentak, ditambah semua yang lain.",
-      "kid": "Untuk kanak-kanak",
-      "kidDesc": "Buku dan permainan pembelajaran terpilih untuk pembaca muda.",
-      "ageTitle": "Berapakah umur pembaca?",
-      "ageUnder13": "Bawah 13 tahun",
-      "ageTeen": "13–17 tahun"
-    },
-    "pitch": {
-      "title": "Sertai Corpanistas",
-      "subtitle": "Corpán Plus membuka seluruh perpustakaan. Cuba bahagian pertama mana-mana buku secara percuma, selama-lamanya.",
-      "everything": "Setiap buku, setiap bahasa — dibuka kuncinya.",
-      "private": "Tiada iklan. Data anda kekal pada peranti anda.",
-      "team": "Kami pasukan kecil dan setiap sen dilaburkan semula ke dalam Corpán.",
-      "tryPlus": "Cuba Corpán Plus",
-      "continueFree": "Teruskan dengan versi percuma"
-    },
     "calibrate": {
       "childAgeTitle": "Berapakah umur pembaca?",
       "childTeen": "13–17",
@@ -306,16 +255,6 @@
       "voiceCountMany": "{{count}} suara sedia",
       "voiceCountOne": "1 suara sedia",
       "yourVoiceFor": "Suara {{lang}} anda"
-    },
-    "engage": {
-      "joinDesc": "Sokong Corpán dan buka kunci segala-galanya. Pilihan, bila-bila masa.",
-      "subscribedTitle": "Anda seorang Corpanista",
-      "subscribedDesc": "Terima kasih kerana memastikan Corpán bebas iklan dan terus berkembang.",
-      "joinTitle": "Sertai Corpanistas",
-      "start": "Mula meneroka",
-      "subtitle": "Corpán dibangunkan oleh pasukan sumber terbuka yang kecil. Mari bertegur sapa — dan jika anda menyukainya, anda boleh menyokong kami.",
-      "title": "Anda sudah bersedia",
-      "explore": "Teroka sendiri"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "Terokai perkara menarik",
       "wildDesc": "Pengalaman yang mengejutkan, eksperimental."
     },
-    "settingUp": "Menyediakan…",
     "ttsIntro": "Corpán membaca dengan kuat. Ketik suara untuk mendengarnya pada kelajuan anda.",
     "voiceGuide": {
       "intro": "Peranti anda mempunyai suara yang kaya, semula jadi terbina dalam — percuma, dan jauh lebih baik daripada lalai. Pengeluar hanya membiarkannya tidak diaktifkan. Mari aktifkannya; ia hanya memerlukan beberapa ketikan:",
@@ -583,14 +521,13 @@
     "introTipBody": "Stack menyimpan persediaan pembelajaran berbeza — satu untuk perjalanan, satu lagi untuk kerja. Ketik + untuk mencipta stack baharu."
   },
   "rating": {
-    "title": "Seronok menggunakan Corpán?",
-    "description": "Corpán dibuat oleh pasukan sumber terbuka kecil yang baru bermula. Jika rasanya seperti aplikasi 5 bintang, penilaian ringkas membantu kami banyak.",
-    "rateNow": "⭐ Beri penilaian 5 bintang",
-    "remindLater": "Mungkin kemudian",
-    "noThanks": "Tidak, terima kasih",
+    "title": "Suka Corpán?",
+    "description": "Jika anda menyukai Corpán, beri 5 bintang. Di gedung aplikasi, apa-apa kurang daripada 5 bintang merugikan Corpán.",
+    "rateNow": "⭐ Beri 5 bintang",
     "close": "Tutup",
-    "feedbackHint": "Belum 5 bintang? Ketik 'Kongsikan maklum balas' dan beritahu kami cara untuk memperbaikinya.",
-    "feedbackButton": "Kongsikan maklum balas di GitHub"
+    "feedbackHint": "Jika ia belum menjadi aplikasi 5 bintang untuk anda, e-mel kami atau buka issue di GitHub dan beritahu apa yang perlu dibaiki. Kami mahu menjadikannya lebih baik.",
+    "emailButton": "E-mel kami",
+    "githubButton": "Issue GitHub"
   },
   "packs": {
     "title": "Pek",
@@ -640,7 +577,7 @@
       "subBadge": "Langganan",
       "paid": "Berbayar",
       "free": "Percuma",
-      "unlockSub": "Buka dengan langganan",
+      "unlockSub": "Buka kunci dengan Corpán Plus",
       "entryCount": "{{n}} frasa",
       "allInstalled": {
         "title": "Anda sudah memiliki semua pek frasa.",
@@ -671,14 +608,17 @@
     "updateAvailable": "Kemas kini tersedia"
   },
   "subscription": {
-    "title": "Buka kunci semua",
-    "description": "Akses tanpa had ke setiap buku bernaras dan pek premium dengan langganan.",
+    "startTrialPeriod": "Mulakan percubaan percuma {{period}}",
+    "trialFree": "Percuma selama {{period}}",
+    "trialThenCancel": "Kemudian {{price}}/{{period}} · batal bila-bila masa. Tiada bayaran hari ini.",
+    "title": "Buka Corpán Plus",
+    "description": "Akses tanpa had kepada setiap ciri, bahasa, pek dan kemas kini.",
     "annual": "Tahunan",
     "monthly": "Bulanan",
     "subscribe": "Langgan",
     "subscribing": "Sedang melanggan...",
-    "subscribed": "Anda sudah melanggan",
-    "subscribedDescription": "Pelan {{plan}} aktif. Terima kasih kerana menyokong Corpán.",
+    "subscribed": "Corpán Plus aktif",
+    "subscribedDescription": "Pelan {{plan}} aktif. Semuanya telah dibuka.",
     "manage": "Urus langganan",
     "termsOfUse": "Terma Penggunaan",
     "privacyPolicy": "Dasar Privasi",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} percuma",
     "trialReassurance": "Tiada bayaran sekarang · batal bila-bila masa",
     "trialThenPrice": ", kemudian {{price}}/{{period}}",
-    "trialToday": "Hari ini: mula"
+    "trialToday": "Hari ini: mula",
+    "rate": "Nilai Corpán"
   },
   "restore": {
     "button": "Pulihkan Pembelian",
@@ -743,12 +684,12 @@
     "offlineEmpty": "Sambung ke internet untuk menemui pek — atau langkau buat masa ini."
   },
   "paywall": {
-    "title": "Teruskan dengan Corpán Plus",
-    "thanksTitle": "Anda seorang Corpanista",
-    "thanksBody": "Terima kasih kerana menyokong Corpán. Semuanya telah dibuka kuncinya.",
-    "bookSubhead": "Anda telah mencapai penghujung pratonton percuma {{title}}.",
-    "subhead": "Buka kunci setiap buku dalam setiap bahasa. Tiada iklan. Data anda kekal pada peranti anda.",
-    "pitch": "Kami pasukan kecil dan setiap sen dilaburkan semula ke dalam Corpán. Corpanistas memastikan ia bebas iklan dan terus berkembang.",
+    "title": "Buka Corpán Plus",
+    "thanksTitle": "Corpán Plus aktif",
+    "thanksBody": "Semuanya telah dibuka.",
+    "bookSubhead": "Teruskan {{title}} dan buka setiap ciri.",
+    "subhead": "Akses tanpa had kepada setiap ciri, bahasa dan kemas kini. Tiada iklan. Data anda kekal pada peranti anda.",
+    "pitch": "Buku, pek, permainan, alat pertuturan dan pengalaman pembelajaran baharu semuanya disertakan.",
     "maybeLater": "Mungkin nanti",
     "continue": "Teruskan",
     "dismiss": "Tutup"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — buka kunci segala-galanya",
     "recommended": "Disyorkan",
     "showAnother": "Tunjukkan yang lain",
-    "tryIt": "Cuba"
+    "tryIt": "Cuba",
+    "packUpdates": "Anda mempunyai kemas kini pek",
+    "updateAll": "Kemas kini semua"
   },
   "offline": {
     "cachedSubtitle": "Menunjukkan hasil terakhir yang disimpan dalam cache anda.",

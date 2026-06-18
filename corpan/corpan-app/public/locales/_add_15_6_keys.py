@@ -37,7 +37,6 @@ NEW_KEYS: list[tuple[str, str]] = [
      "Your subscription is awaiting approval (Ask to Buy or bank verification). It will activate automatically once approved."),
     ("subscription.storeUnreachable", "We couldn't reach the App Store right now."),
     ("subscription.tryAgain", "Try again"),
-    ("onboarding.notOnAppleIOS", "Not on iOS"),
     ("onboarding.appleNoVoiceTitle", "Apple doesn't ship a {{lang}} voice yet"),
     ("onboarding.appleNoVoiceBody",
      "A quick note to Apple's accessibility team helps make the case. {{lang}} works natively on Android in the meantime."),

@@ -1,7 +1,7 @@
 {
   "id": "world_radio",
   "name": "World Radio",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Tune into live internet radio in any of Corpan's languages — your stack first, the world right after",
   "entry": "dist/app.js",
   "styles": [
@@ -9,7 +9,7 @@
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-06-05T06:19:11.689Z",
+  "devRevision": "2026-06-18T04:52:00.844Z",
   "nameLocalized": {
     "ar": "راديو العالم",
     "bg": "Световно радио",

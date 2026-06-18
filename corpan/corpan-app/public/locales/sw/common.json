@@ -131,18 +131,18 @@
     "readPrivacyPromise": "Soma Ahadi yetu ya Faragha",
     "showStreak": "Onyesha mfululizo wa kusoma",
     "showStreakHint": "Hesabu ndogo ya siku kwenye kichwa. Kwenye kifaa pekee, hakuna vikumbusho au arifa.",
-    "primaryLanguage": "Lugha kuu (ya kiolesura)"
+    "primaryLanguage": "Lugha kuu (ya kiolesura)",
+    "home": "Nyumbani",
+    "developer": "Msanidi programu"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán inaendelea kubadilika",
       "subtitle": "Wewe ni miongoni mwa watumiaji wa mwanzo",
-      "tinyTeamTitle": "Timu ndogo ya wapenda mambo",
-      "tinyTeamDesc": "Huru, bila matangazo, na imejengwa kwa heshima kwa watu wanaoitumia — timu ndogo inatengeneza programu ya lugha tuliyoitaka siku zote.",
       "bleedingEdgeTitle": "Teknolojia ya kisasa kabisa, kwa makusudi",
-      "bleedingEdgeDesc": "Corpán inasukuma mipaka ya kile kifaa chako kinaweza kufanya: dunia zinazokuvutia kabisa, utambuzi wa matamshi, sauti za asili na miundo ya hivi karibuni ya AI hufanya kazi pamoja kuunda njia mpya za kujifunza. Mengi yanaendeshwa moja kwa moja kwenye kifaa chako, yakikupa ujifunzaji wa faragha unaotanguliza matumizi bila intaneti bila kutegemea kituo cha data. Tunatoa teknolojia mpya ikiwa bado haijakamilika kabisa, hivyo wakati mwingine inaweza kufanya mambo ya ajabu, kwenda polepole au kuwa zaidi ya uwezo wa kifaa chako. Kwa malipo, unapata uzoefu mpya wenye nguvu wa kujifunza mara tu unapowezekana.",
+      "bleedingEdgeDesc": "Corpán huleta AI mpya, utambuzi wa usemi, sauti na ulimwengu shirikishi kwenye kifaa chako kwa ajili ya kujifunza kwa faragha, kwanza nje ya mtandao. Tunatoa teknolojia ikiwa bado mbichi, kwa hiyo inaweza kutenda kwa ajabu, kwenda polepole, au kuwa zaidi ya uwezo wa kifaa chako. Kwa kubadilishana, unapata njia mpya za kujifunza mara tu zinapowezekana.",
       "yourLangTitle": "Hatuzungumzi kila lugha tunayounga mkono",
-      "yourLangDesc": "Huo ndio ukweli wa wazi. Tunajenga kwa lugha nyingi kwa sababu kila mtu anastahili zana bora za kujifunza, si kwa sababu timu yetu ndogo tayari inazijua zote. Unaweza kugundua mambo tuliyokosea. Ikiwa unajua {{lang}} kuliko sisi, tunatumaini utatuambia na kutusaidia kuifanya Corpán iistahili lugha hiyo.",
+      "yourLangDesc": "Tunajenga kwa ajili ya lugha nyingi kwa sababu wanaojifunza wanastahili zana bora, si kwa sababu tunazijua zote. Tukikosea jambo, tunatumaini wazungumzaji watatusaidia kulirekebisha.",
       "plea": "Una wazo, marekebisho au uzoefu wa kipekee wa kujifunza ambao ungependa kuuona? Tuambie. Tunasoma kila ujumbe na kufikiria kwa kina kuhusu kile unachoweza kufungua kwa Corpán na ujifunzaji wa lugha.",
       "emailCta": "Tutumie barua pepe",
       "githubCta": "Fungua issue kwenye GitHub",
@@ -150,27 +150,11 @@
       "pact": "Gusa hapa chini ili uanze kujifunza na kukua pamoja nasi. 🤝",
       "cta": "Nimo — twende"
     },
-    "welcome": "Karibu",
-    "makePrimaryLanguage": "Fanya Kiswahili lugha yangu kuu",
-    "canChangeLater": "Unaweza kubadilisha hili wakati wowote.",
     "pickLanguagesToLearn": "Chagua lugha za kujifunza",
     "textToSpeechSetup": "Usanidi wa maandishi-kwa-sauti",
-    "ttsPoorQualityNote": "Ikiwa sauti inasikika vibaya, sakinisha sauti za ubora wa juu katika mipangilio ya TTS ya kifaa chako.",
-    "howToSetupTtsOn": "Jinsi ya kusanidi TTS kwenye",
-    "welcomeTitle": "Karibu katika familia ya Corpán!",
-    "welcomeBody": "Corpán ni programu ya chanzo wazi kutoka kwa timu ndogo, si kampuni kubwa. Tunajali sana lugha na elimu na bado tuko mwanzo, kwa hivyo unaweza kuona kasoro au vipengele na lugha zinazokosekana. Ikiwa kitu hakifanyi kazi, tafadhali tuambie kwenye GitHub au kwa barua pepe. Maoni yako yatusaidia kutoa masasisho ya mara kwa mara na kuboresha ujifunzaji wa lugha kwa wote.",
-    "welcomeVisit": "Tembelea encorpora.io",
-    "linkCopied": "Kiungo kименakili. Fungua katika kivinjari chako:",
     "reconfigureStack": "Sanidi upya mfumo",
     "openVoiceSettings": "Fungua Mipangilio",
     "openTTSSetup": "Fungua mipangilio ya TTS",
-    "welcomeFollowUp": "Asante kwa kujiunga — tutaonana katika jamii!",
-    "learning": "Kujifunza lugha",
-    "learningStepTitle": "Kujifunza",
-    "tts": "Maandishi-kwa-sauti",
-    "ttsStepTitle": "Maandishi-kwa-sauti",
-    "socials": "Fuata na unganika",
-    "socialsStepTitle": "Mitandao ya kijamii",
     "noVoices": "Hakuna sauti",
     "noVoicesHint": "Sakinisha sauti ili kuwezesha lugha hii.",
     "languageOrderTipTitle": "Kidokezo",
@@ -234,56 +218,21 @@
         "notInstalled": "Haijasakinishwa"
       }
     },
-    "packs": "Pakiti za misemo",
     "phrasePacks": {
-      "title": "Pakiti za misemo",
-      "stepTitle": "Pakiti za misemo",
       "hero": "Chagua mada zako",
       "loading": "Inapakia…",
       "selectAll": "Chagua zote ({{count}})",
       "clearAll": "Futa",
-      "subscriptionNudge": "Jisajili kufungua pakiti zote.",
+      "subscriptionNudge": "Baadhi ya vifurushi vimejumuishwa na Corpán Plus — unaweza kupandisha daraja baadaye kwenye Mipangilio → Vifurushi.",
       "entryCount": "{{n}} misemo",
       "paid": "Yenye malipo",
       "emptyHero": "Hakuna pakiti bado.",
-      "emptySub": "Rudi hivi karibuni.",
-      "offlineHero": "Uko nje ya mtandao.",
-      "offlineSub": "Pakiti zinahitaji intaneti — jaribu baadaye kutoka Mipangilio → Pakiti.",
-      "offlineBanner": "Nje ya mtandao — chaguo zitasakinishwa ukiunganishwa.",
-      "noneSelected": "Hakuna kilichochaguliwa — Endelea kutaruka",
-      "selectedSuffix": "imechaguliwa",
-      "skip": "Ruka kwa sasa",
-      "subtitle": "Ongeza pakiti za vifungu vya maneno zenye umakini kwenye orodha yako. Ziwasha au zizime wakati wowote kwenye Mipangilio."
+      "emptySub": "Rudi hivi karibuni."
     },
-    "notOnAppleIOS": "Hutumii iOS",
     "appleNoVoiceTitle": "Apple bado haina sauti ya {{lang}}",
     "appleNoVoiceBody": "Ujumbe mfupi kwa timu ya ufikivu ya Apple husaidia kuonyesha hitaji hilo. Kwa sasa, {{lang}} inafanya kazi moja kwa moja kwenye Android.",
     "back": "Rudi",
     "continue": "Endelea",
-    "class": {
-      "title": "Kwa nani?",
-      "subtitle": "Tutakubinafsishia Corpán. Hii itabaki kwenye kifaa chako — hatuitumi popote.",
-      "learner": "Ninajifunza lugha",
-      "learnerDesc": "Soma na usikilize katika lugha unazojifunza.",
-      "enjoyer": "Nataka kufurahia maudhui",
-      "enjoyerDesc": "Vitabu, hadithi na michezo katika lugha yako mwenyewe.",
-      "polyglot": "Zote mbili — nataka kila kitu",
-      "polyglotDesc": "Lugha kadhaa kwa wakati mmoja, pamoja na kila kitu kingine.",
-      "kid": "Ni kwa ajili ya mtoto",
-      "kidDesc": "Vitabu vilivyochaguliwa na michezo ya kujifunza kwa wasomaji wadogo.",
-      "ageTitle": "Umri wa msomaji?",
-      "ageUnder13": "Chini ya miaka 13",
-      "ageTeen": "13–17"
-    },
-    "pitch": {
-      "title": "Jiunge na Corpanistas",
-      "subtitle": "Corpán Plus inafungua maktaba yote. Jaribu sehemu ya kwanza ya kitabu chochote bure, milele.",
-      "everything": "Kila kitabu, kila lugha — imefunguliwa.",
-      "private": "Hakuna matangazo. Data yako inabaki kwenye kifaa chako.",
-      "team": "Sisi ni timu ndogo na tunawekeza kila senti tena kwenye Corpán.",
-      "tryPlus": "Jaribu Corpán Plus",
-      "continueFree": "Endelea na toleo la bure"
-    },
     "calibrate": {
       "childAgeTitle": "Msomaji ana umri gani?",
       "childTeen": "Miaka 13–17",
@@ -306,16 +255,6 @@
       "voiceCountMany": "Sauti {{count}} ziko tayari",
       "voiceCountOne": "Sauti 1 iko tayari",
       "yourVoiceFor": "Sauti yako ya {{lang}}"
-    },
-    "engage": {
-      "joinDesc": "Saidia Corpán na ufungue kila kitu. Si lazima, wakati wowote.",
-      "subscribedTitle": "Wewe ni Corpanista",
-      "subscribedDesc": "Asante kwa kuiweka Corpán bila matangazo na ikikua.",
-      "joinTitle": "Jiunge na Corpanistas",
-      "start": "Anza kuchunguza",
-      "subtitle": "Corpán imeundwa na timu ndogo ya chanzo huria. Njoo useme salamu — na kama unaipenda, unaweza kutuunga mkono.",
-      "title": "Uko tayari",
-      "explore": "Gundua mwenyewe"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "Chunguza mambo ya ajabu",
       "wildDesc": "Uzoefu wa kushangaza, wa majaribio."
     },
-    "settingUp": "Inaweka mambo sawa…",
     "ttsIntro": "Corpán inasoma kwa sauti. Gonga sauti ili kuisikia kwa kasi yako.",
     "voiceGuide": {
       "intro": "Kifaa chako kina sauti tajiri, asilia zilizojengwa ndani — zisizolipishwa, na bora zaidi kuliko zile za kawaida. Mtengenezaji huziwacha zimezimwa. Hebu tuziwashe; inachukua kugonga mara chache tu:",
@@ -583,14 +521,13 @@
     "introTipBody": "Stacks huhifadhi mipangilio tofauti ya kujifunza — moja kwa safari, nyingine kwa kazi. Gusa + kuunda stack mpya."
   },
   "rating": {
-    "title": "Unafurahia Corpán?",
-    "description": "Corpán imeundwa na timu ndogo ya chanzo wazi inayoanza tu. Ikiwa inaonekana kama programu ya nyota 5, ukadiriaji wa haraka unatusaidia sana.",
-    "rateNow": "⭐ Kadiria nyota 5",
-    "remindLater": "Labda baadaye",
-    "noThanks": "Hapana, asante",
+    "title": "Unapenda Corpán?",
+    "description": "Ikiwa unapenda Corpán, ipe nyota 5. Kwenye maduka ya programu, chochote chini ya nyota 5 kinaidhuru Corpán.",
+    "rateNow": "⭐ Toa nyota 5",
     "close": "Funga",
-    "feedbackHint": "Bado si nyota 5? Gusa 'Shiriki maoni' na utuambie jinsi tunavyoweza kuboresha.",
-    "feedbackButton": "Shiriki maoni kwenye GitHub"
+    "feedbackHint": "Ikiwa bado si programu ya nyota 5 kwako, tutumie barua pepe au fungua issue kwenye GitHub na utuambie cha kurekebisha. Tunataka kuifanya iwe bora.",
+    "emailButton": "Tutumie barua pepe",
+    "githubButton": "Issue ya GitHub"
   },
   "packs": {
     "title": "Vifurushi",
@@ -640,7 +577,7 @@
       "subBadge": "Usajili",
       "paid": "Yenye malipo",
       "free": "Bure",
-      "unlockSub": "Fungua kwa usajili",
+      "unlockSub": "Fungua na Corpán Plus",
       "entryCount": "{{n}} misemo",
       "allInstalled": {
         "title": "Una pakiti zote za misemo.",
@@ -671,14 +608,17 @@
     "updateAvailable": "Sasisho linapatikana"
   },
   "subscription": {
-    "title": "Fungua kila kitu",
-    "description": "Ufikiaji usio na kikomo kwa kila kitabu kilichosimuliwa na kifurushi cha premium kwa usajili.",
+    "startTrialPeriod": "Anza majaribio ya bure ya {{period}}",
+    "trialFree": "Bila malipo kwa {{period}}",
+    "trialThenCancel": "Kisha {{price}}/{{period}} · ghairi wakati wowote. Hakuna malipo leo.",
+    "title": "Fungua Corpán Plus",
+    "description": "Ufikiaji usio na kikomo wa kila kipengele, lugha, kifurushi na sasisho.",
     "annual": "Kila mwaka",
     "monthly": "Kila mwezi",
     "subscribe": "Jisajili",
     "subscribing": "Inajisajili...",
-    "subscribed": "Umejisajili",
-    "subscribedDescription": "Mpango wa {{plan}} unaendelea. Asante kwa kusaidia Corpán.",
+    "subscribed": "Corpán Plus inatumika",
+    "subscribedDescription": "Mpango wa {{plan}} unatumika. Kila kitu kimefunguliwa.",
     "manage": "Simamia usajili",
     "termsOfUse": "Masharti ya Matumizi",
     "privacyPolicy": "Sera ya Faragha",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} bure",
     "trialReassurance": "Hakuna malipo sasa · unaweza kughairi wakati wowote",
     "trialThenPrice": ", kisha {{price}}/{{period}}",
-    "trialToday": "Leo: anza"
+    "trialToday": "Leo: anza",
+    "rate": "Kadiria Corpán"
   },
   "restore": {
     "button": "Rejesha Manunuzi",
@@ -743,12 +684,12 @@
     "offlineEmpty": "Unganisha mtandaoni ili kugundua vifurushi — au ruka kwa sasa."
   },
   "paywall": {
-    "title": "Endelea na Corpán Plus",
-    "thanksTitle": "Wewe ni Corpanista",
-    "thanksBody": "Asante kwa kuunga mkono Corpán. Kila kitu kimefunguliwa.",
-    "bookSubhead": "Umekamilisha onyesho la bure la {{title}}.",
-    "subhead": "Fungua kila kitabu katika kila lugha. Hakuna matangazo. Data yako inabaki kwenye kifaa chako.",
-    "pitch": "Sisi ni timu ndogo na tunawekeza kila senti tena kwenye Corpán. Corpanistas wanaiweka bila matangazo na inakua.",
+    "title": "Fungua Corpán Plus",
+    "thanksTitle": "Corpán Plus inatumika",
+    "thanksBody": "Kila kitu kimefunguliwa.",
+    "bookSubhead": "Endelea na {{title}} na ufungue kila kipengele.",
+    "subhead": "Ufikiaji usio na kikomo wa kila kipengele, lugha na sasisho. Hakuna matangazo. Data yako hubaki kwenye kifaa chako.",
+    "pitch": "Vitabu, vifurushi, michezo, zana za usemi na uzoefu mpya wa kujifunza vyote vimejumuishwa.",
     "maybeLater": "Labda baadaye",
     "continue": "Endelea",
     "dismiss": "Ondoa"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — fungua kila kitu",
     "recommended": "Inayopendekezwa",
     "showAnother": "Nionyeshe kingine",
-    "tryIt": "Jaribu"
+    "tryIt": "Jaribu",
+    "packUpdates": "Una masasisho ya vifurushi",
+    "updateAll": "Sasisha vyote"
   },
   "offline": {
     "cachedSubtitle": "Inaonyesha matokeo yako ya mwisho yaliyohifadhiwa.",

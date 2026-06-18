@@ -9,6 +9,7 @@ import { useEntitlementStore } from "@/store/entitlements"
 import { useSettingsStore } from "@/store/settings"
 import { trackPaywallShown, trackPaywallDismissed } from "@/util/analytics"
 import corpanMark from "@/assets/corpan-mark-trim.png"
+import { getTopBarPaddingTop } from "@/util/browser"
 
 /**
  * The ONE universal Corpán Plus paywall — identical on every surface (reader
@@ -94,20 +95,20 @@ export function PaywallSheet() {
   }, [open])
 
   const headline = subscribed
-    ? t("paywall.thanksTitle", "You're a Corpanista")
-    : t("paywall.title", "Keep going with Corpán Plus")
+    ? t("paywall.thanksTitle", "Corpán Plus is active")
+    : t("paywall.title", "Unlock Corpán Plus")
 
   // Outcome-framed value line — brand voice (understated, honest), not a
   // feature list. The book subhead names the title at the moment it's relevant.
   const valueLine = subscribed
-    ? t("paywall.thanksBody", "Thank you for supporting Corpán. Everything is unlocked.")
+    ? t("paywall.thanksBody", "Everything is unlocked.")
     : context?.bookTitle
-      ? t("paywall.bookSubhead", "You've reached the end of the free preview of {{title}}.", {
+      ? t("paywall.bookSubhead", "Continue {{title}} and unlock every feature.", {
           title: context.bookTitle,
         })
       : t(
           "paywall.subhead",
-          "The full catalog — every book, every language, ad-free."
+          "Unlimited access to every feature, language, and update. No ads. Your data stays on your device."
         )
 
   const fade = reduceMotion
@@ -128,7 +129,9 @@ export function PaywallSheet() {
           aria-modal="true"
           aria-label={headline}
           dir={dir()}
-          className="fixed inset-0 z-[1400] overflow-y-auto no-scrollbar"
+          // pointer-events-auto: stay interactive even if launched over a Radix
+          // modal (which locks body pointer-events on its siblings).
+          className="pointer-events-auto fixed inset-0 z-[1400] overflow-y-auto no-scrollbar"
           style={{ ...PAYWALL_PALETTE, WebkitOverflowScrolling: "touch" }}
           initial={fade.initial}
           animate={fade.animate}
@@ -152,13 +155,15 @@ export function PaywallSheet() {
             }}
           />
 
-          {/* Dismiss control — top, end-aligned (RTL-correct via logical inset). */}
+          {/* Dismiss control — same place + shape as the Home gear / Settings
+              home button (top-end, getTopBarPaddingTop, h-10 w-12 rounded-md),
+              tuned for the dark surface so the three surfaces feel like one. */}
           <button
             type="button"
             onClick={dismiss}
             aria-label={t("paywall.dismiss", "Dismiss")}
-            className="absolute end-3 z-10 flex h-9 w-9 items-center justify-center rounded-lg text-[color:var(--muted-foreground)] transition-colors hover:bg-white/10 hover:text-[color:var(--foreground)]"
-            style={{ top: "max(env(safe-area-inset-top), 0.75rem)" }}
+            className="absolute end-4 md:end-8 z-10 flex h-10 w-12 items-center justify-center rounded-md bg-transparent text-[color:var(--muted-foreground)] opacity-60 transition hover:opacity-100 hover:text-[color:var(--foreground)] focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--border)]"
+            style={{ top: getTopBarPaddingTop() }}
           >
             <X className="h-5 w-5" />
           </button>
@@ -168,7 +173,9 @@ export function PaywallSheet() {
           <div
             className="relative flex min-h-full flex-col items-center justify-center px-6"
             style={{
-              paddingTop: "max(env(safe-area-inset-top), 3.5rem)",
+              // Clear the standardized top-end dismiss button (button height +
+              // gap below its getTopBarPaddingTop offset).
+              paddingTop: getTopBarPaddingTop() + 56,
               paddingBottom: "max(env(safe-area-inset-bottom), 2rem)",
               paddingInlineStart: "max(env(safe-area-inset-left), 1.5rem)",
               paddingInlineEnd: "max(env(safe-area-inset-right), 1.5rem)",
@@ -220,17 +227,10 @@ export function PaywallSheet() {
                 ) : (
                   <>
                     <SubscriptionOffer chromeless wrapperClassName="w-full" />
-                    {/* Humble, honest close — small team, every cent reinvested. */}
-                    <p className="mt-4 text-center text-[11px] leading-relaxed text-[color:var(--muted-foreground)]">
-                      {t(
-                        "paywall.pitch",
-                        "We're a small team and put every cent back into Corpán. Corpanistas keep it ad-free and growing."
-                      )}
-                    </p>
                     <button
                       type="button"
                       onClick={dismiss}
-                      className="mx-auto mt-3 block text-xs text-[color:var(--muted-foreground)] underline underline-offset-2 transition-colors hover:text-[color:var(--foreground)]"
+                      className="mx-auto mt-4 block text-xs text-[color:var(--muted-foreground)] underline underline-offset-2 transition-colors hover:text-[color:var(--foreground)]"
                     >
                       {t("paywall.maybeLater", "Maybe later")}
                     </button>

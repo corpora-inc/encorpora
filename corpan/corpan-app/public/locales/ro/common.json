@@ -131,18 +131,18 @@
     "sendAnonUsageHint": "Anonime, valabile doar pe durata sesiunii. Fără conturi, fără ID-uri de dispozitiv, fără stocare IP. Poți dezactiva oricând.",
     "readPrivacyPromise": "Citește Promisiunea noastră de confidențialitate",
     "showStreak": "Afișează seria de lectură",
-    "showStreakHint": "Un mic contor de zile în antet. Doar pe dispozitiv, fără mementouri sau notificări."
+    "showStreakHint": "Un mic contor de zile în antet. Doar pe dispozitiv, fără mementouri sau notificări.",
+    "home": "Acasă",
+    "developer": "Dezvoltator"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán evoluează",
       "subtitle": "Ești printre primii",
-      "tinyTeamTitle": "O echipă mică de entuziaști",
-      "tinyTeamDesc": "Independentă, fără reclame și construită cu respect pentru oamenii care o folosesc — o echipă mică realizează aplicația de limbi pe care ne-am dorit-o mereu.",
       "bleedingEdgeTitle": "De ultimă generație, cu un scop",
-      "bleedingEdgeDesc": "Corpán împinge limitele posibilităților dispozitivului tău: lumi captivante, recunoaștere vocală, voci naturale și cele mai noi modele AI lucrează împreună pentru a crea noi moduri de a învăța. O mare parte rulează direct pe dispozitivul tău, oferindu-ți învățare privată, gândită în primul rând pentru utilizare offline, fără dependență de un centru de date. Lansăm tehnologii noi cât timp sunt încă nefinisate, așa că uneori se pot comporta ciudat, pot rula lent sau pot fi pur și simplu mai mult decât poate gestiona dispozitivul tău. În schimb, primești experiențe noi și puternice de învățare imediat ce devin posibile.",
+      "bleedingEdgeDesc": "Corpán aduce pe dispozitivul tău AI nou, recunoaștere vocală, voci și lumi imersive pentru învățare privată, gândită mai întâi pentru offline. Lansăm tehnologia cât încă este brută, așa că se poate comporta ciudat, poate rula încet sau poate fi mai mult decât poate duce dispozitivul tău. În schimb, primești noi moduri de a învăța imediat ce devin posibile.",
       "yourLangTitle": "Nu vorbim toate limbile pe care le oferim",
-      "yourLangDesc": "Acesta este adevărul sincer. Construim pentru zeci de limbi fiindcă toată lumea merită instrumente puternice de învățare, nu fiindcă mica noastră echipă le cunoaște deja pe toate. Este posibil să găsești lucruri pe care le-am greșit. Dacă știi {{lang}} mai bine decât noi, sperăm să ne spui și să ne ajuți să facem Corpán demnă de această limbă.",
+      "yourLangDesc": "Construim pentru multe limbi deoarece cei care învață merită instrumente mai bune, nu pentru că le știm pe toate. Când greșim ceva, sperăm ca vorbitorii să ne ajute să îndreptăm lucrurile.",
       "plea": "Ai o idee, o corectură sau o experiență îndrăzneață de învățare pe care ai vrea să o vezi? Spune-ne. Citim fiecare mesaj și ne gândim în profunzime la ceea ce ar putea deschide pentru Corpán și învățarea limbilor.",
       "emailCta": "Scrie-ne pe email",
       "githubCta": "Deschide un issue pe GitHub",
@@ -150,27 +150,11 @@
       "pact": "Atinge mai jos pentru a începe să înveți și să crești alături de noi. 🤝",
       "cta": "Sunt cu voi — hai să-i dăm drumul"
     },
-    "welcome": "Bine ai venit",
-    "makePrimaryLanguage": "Fă din engleză limba mea principală",
-    "canChangeLater": "Poți schimba asta oricând.",
     "pickLanguagesToLearn": "Alege limbile pe care vrei să le înveți",
     "textToSpeechSetup": "Configurare text-la-vorbire",
-    "ttsPoorQualityNote": "Dacă audio-ul sună prost, instalează voci de înaltă calitate în setările TTS ale dispozitivului tău.",
-    "howToSetupTtsOn": "Cum să configurezi TTS pe",
-    "welcomeTitle": "Bine ai venit în familia Corpán!",
-    "welcomeBody": "Corpán este o aplicație open-source realizată de o echipă mică, nu de o companie mare. Ne pasă profund de limbă și educație și suntem încă la început, așa că s-ar putea să vezi margini aspre sau funcții și limbi lipsă. Dacă ceva nu funcționează, te rugăm să ne spui pe GitHub sau prin email. Feedback-ul tău ne ajută să lansăm actualizări frecvente și să îmbunătățim învățarea limbilor pentru toată lumea.",
-    "welcomeVisit": "Vizitează encorpora.io",
-    "linkCopied": "Link copiat. Deschide în browserul tău:",
     "reconfigureStack": "Reconfigurează stiva",
     "openVoiceSettings": "Deschide Setări",
     "openTTSSetup": "Deschide setările TTS",
-    "welcomeFollowUp": "Mulțumim că te-ai alăturat — ne vedem în comunitate!",
-    "learning": "Învățarea limbilor",
-    "learningStepTitle": "Învățare",
-    "tts": "Text-la-vorbire",
-    "ttsStepTitle": "Text-la-vorbire",
-    "socials": "Urmărește și conectează-te",
-    "socialsStepTitle": "Sociale",
     "noVoices": "Fără voci",
     "noVoicesHint": "Instalează voci pentru a activa această limbă.",
     "languageOrderTipTitle": "Sfat",
@@ -234,56 +218,21 @@
         "notInstalled": "Nu este instalat"
       }
     },
-    "packs": "Pachete de fraze",
     "phrasePacks": {
-      "title": "Pachete de fraze",
-      "stepTitle": "Pachete de fraze",
       "hero": "Alege-ți subiectele",
       "loading": "Se încarcă…",
       "selectAll": "Selectează tot ({{count}})",
       "clearAll": "Șterge",
-      "subscriptionNudge": "Abonează-te pentru a debloca toate pachetele.",
+      "subscriptionNudge": "Unele pachete sunt incluse cu Corpán Plus — poți face upgrade mai târziu din Setări → Pachete.",
       "entryCount": "{{n}} fraze",
       "paid": "Cu plată",
       "emptyHero": "Niciun pachet încă.",
-      "emptySub": "Revino curând.",
-      "offlineHero": "Ești offline.",
-      "offlineSub": "Pachetele au nevoie de internet — încearcă mai târziu din Setări → Pachete.",
-      "offlineBanner": "Offline — selecțiile se instalează la reconectare.",
-      "noneSelected": "Nimic selectat — Continuă va sări peste",
-      "selectedSuffix": "selectate",
-      "skip": "Sari peste pentru moment",
-      "subtitle": "Adaugă pachete de fraze concentrate la colecția ta. Activează-le sau dezactivează-le oricând în Setări."
+      "emptySub": "Revino curând."
     },
-    "notOnAppleIOS": "Nu ești pe iOS",
     "appleNoVoiceTitle": "Apple nu oferă încă o voce în {{lang}}",
     "appleNoVoiceBody": "Un mesaj scurt către echipa de accesibilitate Apple ajută la susținerea cererii. Între timp, {{lang}} funcționează nativ pe Android.",
     "back": "Înapoi",
     "continue": "Continuă",
-    "class": {
-      "title": "Pentru cine este?",
-      "subtitle": "Vom adapta Corpán pentru tine. Aceste date rămân pe dispozitivul tău — nu le trimitem nicăieri.",
-      "learner": "Învăț limbi străine",
-      "learnerDesc": "Citește și ascultă în limbile pe care le studiezi.",
-      "enjoyer": "Vreau să mă bucur de conținut",
-      "enjoyerDesc": "Cărți, povești și jocuri în limba ta.",
-      "polyglot": "Ambele — le vreau pe toate",
-      "polyglotDesc": "Mai multe limbi simultan, plus tot restul.",
-      "kid": "Este pentru un copil",
-      "kidDesc": "Cărți și jocuri educative selectate pentru cititorii mai tineri.",
-      "ageTitle": "Câți ani are cititorul?",
-      "ageUnder13": "Sub 13 ani",
-      "ageTeen": "13–17 ani"
-    },
-    "pitch": {
-      "title": "Alătură-te Corpanistas",
-      "subtitle": "Corpán Plus îți deschide întreaga bibliotecă. Încearcă gratuit, pentru totdeauna, prima parte a oricărei cărți.",
-      "everything": "Fiecare carte, fiecare limbă — deblocată.",
-      "private": "Fără reclame. Datele tale rămân pe dispozitiv.",
-      "team": "Suntem o echipă mică și reinvestim fiecare bănuț în Corpán.",
-      "tryPlus": "Încearcă Corpán Plus",
-      "continueFree": "Continuă cu versiunea gratuită"
-    },
     "calibrate": {
       "childAgeTitle": "Câți ani are cititorul?",
       "childTeen": "13–17 ani",
@@ -306,16 +255,6 @@
       "voiceCountMany": "{{count}} voci pregătite",
       "voiceCountOne": "1 voce pregătită",
       "yourVoiceFor": "Vocea ta pentru {{lang}}"
-    },
-    "engage": {
-      "joinDesc": "Susține Corpán și deblochează totul. Opțional, oricând.",
-      "subscribedTitle": "Ești un Corpanista",
-      "subscribedDesc": "Mulțumim că menții Corpán fără reclame și în creștere.",
-      "joinTitle": "Alătură-te Corpanistas",
-      "start": "Începe explorarea",
-      "subtitle": "Corpán este creat de o mică echipă open-source. Vino să ne saluți — și dacă îți place, ne poți susține.",
-      "title": "Totul e pregătit",
-      "explore": "Explorează pe cont propriu"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "Explorează lucruri inedite",
       "wildDesc": "Experiențe surprinzătoare, experimentale."
     },
-    "settingUp": "Se configurează…",
     "ttsIntro": "Corpán citește cu voce tare. Atinge o voce pentru a o auzi la viteza ta.",
     "voiceGuide": {
       "intro": "Dispozitivul tău are voci bogate, naturale, încorporate — gratuite și mult mai bune decât cele implicite. Producătorul pur și simplu le lasă dezactivate. Hai să le activăm; durează doar câteva atingeri:",
@@ -583,14 +521,13 @@
     "introTipBody": "Stivele salvează diferite setări de învățare — una pentru călătorie, alta pentru muncă. Apasă + pentru a crea o stivă nouă."
   },
   "rating": {
-    "title": "Îți place Corpán?",
-    "description": "Corpán este realizat de o mică echipă open-source care abia începe. Dacă simți că este o aplicație de 5 stele, o evaluare rapidă ne ajută foarte mult.",
-    "rateNow": "⭐ Evaluează 5 stele",
-    "remindLater": "Poate mai târziu",
-    "noThanks": "Nu, mulțumesc",
+    "title": "Iubești Corpán?",
+    "description": "Dacă iubești Corpán, dă-i 5 stele. În magazinele de aplicații, orice sub 5 stele afectează Corpán.",
+    "rateNow": "⭐ Dă 5 stele",
     "close": "Închide",
-    "feedbackHint": "Nu ai 5 stele încă? Apasă 'Împărtășește feedback' și spune-ne cum putem îmbunătăți.",
-    "feedbackButton": "Împărtășește feedback pe GitHub"
+    "feedbackHint": "Dacă pentru tine nu este încă o aplicație de 5 stele, trimite-ne un e-mail sau deschide un issue pe GitHub și spune-ne ce să reparăm. Vrem să o facem mai bună.",
+    "emailButton": "Trimite e-mail",
+    "githubButton": "Issue pe GitHub"
   },
   "packs": {
     "title": "Pachete",
@@ -640,7 +577,7 @@
       "subBadge": "Abonament",
       "paid": "Cu plată",
       "free": "Gratuit",
-      "unlockSub": "Deblochează cu abonament",
+      "unlockSub": "Deblochează cu Corpán Plus",
       "entryCount": "{{n}} fraze",
       "allInstalled": {
         "title": "Ai toate pachetele de fraze.",
@@ -671,14 +608,17 @@
     "updateAvailable": "Actualizare disponibilă"
   },
   "subscription": {
-    "title": "Deblochează tot",
-    "description": "Acces nelimitat la fiecare carte narată și pachet premium cu un abonament.",
+    "startTrialPeriod": "Începe perioada de probă gratuită de {{period}}",
+    "trialFree": "Gratuit timp de {{period}}",
+    "trialThenCancel": "Apoi {{price}}/{{period}} · anulează oricând. Niciun cost astăzi.",
+    "title": "Deblochează Corpán Plus",
+    "description": "Acces nelimitat la fiecare funcție, limbă, pachet și actualizare.",
     "annual": "Anual",
     "monthly": "Lunar",
     "subscribe": "Abonează-te",
     "subscribing": "Te abonezi...",
-    "subscribed": "Ești abonat",
-    "subscribedDescription": "Planul {{plan}} activ. Mulțumim că susții Corpán.",
+    "subscribed": "Corpán Plus este activ",
+    "subscribedDescription": "Planul {{plan}} este activ. Totul este deblocat.",
     "manage": "Gestionează abonamentul",
     "termsOfUse": "Termeni de utilizare",
     "privacyPolicy": "Politica de confidențialitate",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} gratuit",
     "trialReassurance": "Nicio plată acum · anulează oricând",
     "trialThenPrice": ", apoi {{price}}/{{period}}",
-    "trialToday": "Astăzi: începe"
+    "trialToday": "Astăzi: începe",
+    "rate": "Evaluează Corpán"
   },
   "restore": {
     "button": "Restaurare achiziții",
@@ -743,12 +684,12 @@
     "offlineEmpty": "Conectează-te la internet pentru a descoperi pachete — sau sari peste asta pentru acum."
   },
   "paywall": {
-    "title": "Continuă cu Corpán Plus",
-    "thanksTitle": "Ești un Corpanista",
-    "thanksBody": "Îți mulțumim pentru susținerea Corpán. Totul este deblocat.",
-    "bookSubhead": "Ai ajuns la finalul previzualizării gratuite a cărții {{title}}.",
-    "subhead": "Deblochează fiecare carte, în fiecare limbă. Fără reclame. Datele tale rămân pe dispozitiv.",
-    "pitch": "Suntem o echipă mică și reinvestim fiecare bănuț în Corpán. Corpanistas mențin aplicația fără reclame și în creștere.",
+    "title": "Deblochează Corpán Plus",
+    "thanksTitle": "Corpán Plus este activ",
+    "thanksBody": "Totul este deblocat.",
+    "bookSubhead": "Continuă {{title}} și deblochează fiecare funcție.",
+    "subhead": "Acces nelimitat la fiecare funcție, limbă și actualizare. Fără reclame. Datele tale rămân pe dispozitivul tău.",
+    "pitch": "Cărțile, pachetele, jocurile, instrumentele de vorbire și noile experiențe de învățare sunt toate incluse.",
     "maybeLater": "Poate mai târziu",
     "continue": "Continuă",
     "dismiss": "Închide"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — deblochează totul",
     "recommended": "Recomandat",
     "showAnother": "Arată altul",
-    "tryIt": "Încearcă"
+    "tryIt": "Încearcă",
+    "packUpdates": "Ai actualizări de pachete",
+    "updateAll": "Actualizează tot"
   },
   "offline": {
     "cachedSubtitle": "Se afișează ultimele rezultate memorate.",

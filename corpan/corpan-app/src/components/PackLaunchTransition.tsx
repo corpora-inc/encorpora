@@ -54,16 +54,35 @@ export type RazzleCard = {
 // The brand purple the chosen card washes to when it has no own colour.
 const BRAND_PURPLE = "#A879F7"
 
+// ── Colour helpers (no dep) — mix a hex toward white/black so the finale's
+// bloom has a luminous core and a deep, saturated rim instead of a flat fill,
+// and the sparks carry light-accent + white-hot + warm-gold tints. ──
+function hexToRgb(hex: string): [number, number, number] {
+  const h = hex.replace("#", "")
+  const full = h.length === 3 ? h.split("").map((c) => c + c).join("") : h
+  const n = parseInt(full, 16)
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255]
+}
+function mix(hex: string, toward: string, t: number): string {
+  const a = hexToRgb(hex)
+  const b = hexToRgb(toward)
+  const c = a.map((v, i) => Math.round(v + (b[i] - v) * t))
+  return `rgb(${c[0]}, ${c[1]}, ${c[2]})`
+}
+const lighten = (hex: string, t: number): string => mix(hex, "#FFFFFF", t)
+const darken = (hex: string, t: number): string => mix(hex, "#000000", t)
+
 // ── Timeline (ms) ──────────────────────────────────────────────────────────
-// Full razzle is ~7.5s end to end — a lively shuffle, then the chosen card
+// Full razzle is ~8.4s end to end — a lively shuffle, then the chosen card
 // LINGERS center-stage with its name for a beat (the "this is where you're
-// going" moment) before the colour wash. Phase boundaries:
-//   0 ──── shuffle ──── 3000 ── recede + pop ── (linger w/ name) ── 5600 ── wash ── 7100 ── 7500 done
+// going" moment), then an unrushed little FIREWORKS show bursts from it as a
+// warm colour bloom swells up and washes over the screen. Phase boundaries:
+//   0 ── shuffle ── 3000 ── recede + pop ── (linger w/ name) ── 5200 ── fireworks + bloom ── 7900 ── 8400 done
 const T_SHUFFLE_END = 3000 // roster scatters + re-sorts several passes
 const T_POP = 3000 // chosen centers/pops → onReveal + haptic + name appear here
-const T_WASH_START = 5600 // after a ~2.6s linger, chosen zooms + colour covers
-const T_WASH_FULL = 7100 // colour fully covers the screen
-const T_DONE = 7500 // overlay fades out → onComplete
+const T_WASH_START = 5200 // after a ~2.2s linger, fireworks ignite + colour blooms
+const T_WASH_FULL = 7900 // colour bloom fully covers the screen
+const T_DONE = 8400 // overlay fades out → onComplete
 
 // Reduced-motion: a calm cross-fade that still lingers on the named chosen card.
 const RM_REVEAL = 260 // haptic + onReveal fire just after the chosen fades in
@@ -300,6 +319,47 @@ export function PackLaunchTransition({
   const washColor = chosen.color || BRAND_PURPLE
   const showCollage = phase === "shuffle" || phase === "pop"
 
+  // 1 vmax in px — sparks travel in viewport units so the burst reaches the
+  // edges on any screen. Captured once (the show is ~3s; no resize mid-flight).
+  const vmax = useMemo(
+    () => (typeof window !== "undefined" ? Math.max(window.innerWidth, window.innerHeight) / 100 : 8),
+    [],
+  )
+
+  // The fireworks: three staggered shells of sparks bursting outward from the
+  // card. Deterministic (seeded) so they don't re-roll on re-render. Each shell
+  // fires a beat later and reaches farther — a patient, building "show" rather
+  // than one flat pop. Palette = pack accent → light accent → white-hot → warm
+  // gold for that classic firework sparkle.
+  const sparks = useMemo(() => {
+    const palette = [washColor, lighten(washColor, 0.5), "#FFFFFF", "#FFE7A6"]
+    const shells = [
+      { count: 14, delay: 0.0, reach: 34 },
+      { count: 18, delay: 0.55, reach: 54 },
+      { count: 22, delay: 1.15, reach: 74 },
+    ]
+    const out: { x: number; y: number; size: number; color: string; delay: number; dur: number }[] = []
+    let k = 0
+    for (const sh of shells) {
+      for (let i = 0; i < sh.count; i++, k++) {
+        const ang = (i / sh.count) * Math.PI * 2 + seeded(k * 5.3) * 0.5
+        const dist = sh.reach * (0.7 + seeded(k * 2.1) * 0.5) * vmax
+        out.push({
+          x: Math.cos(ang) * dist,
+          y: Math.sin(ang) * dist,
+          size: 4 + seeded(k * 1.7) * 7,
+          color: palette[k % palette.length],
+          delay: sh.delay + seeded(k * 3.9) * 0.16,
+          dur: 1.0 + seeded(k * 0.7) * 0.6,
+        })
+      }
+    }
+    return out
+  }, [washColor, vmax])
+
+  // Shockwave rings ripple out at the same staggered beats as the shells.
+  const rings = [0, 0.55, 1.15]
+
   // Immersive near-black backdrop with a brand aura — same vocabulary as the
   // paywall/lock surfaces so the brand reads as one.
   const backdropStyle: ThemeStyle = {
@@ -345,26 +405,25 @@ export function PackLaunchTransition({
           {showCollage &&
             deck.map((card, i) => {
               const isChosen = i === chosenIndex
-              // Per-pass scattered slot (deterministic). Spread around the stage
-              // center, biased outward; the chosen rides the same field then
-              // snaps to center on "pop".
+              // `p` = clamped pass progression (0..1). The chosen RISES STRAIGHT
+              // UP THE CENTER of the deck — pinned dead center and upright the
+              // whole time, climbing from behind (low z) and GROWING toward the
+              // viewer as the passes go by. It calmly comes straight forward
+              // through the shuffling cards rather than bending in from a side
+              // slot. Non-chosen stay scattered.
+              const p = Math.min(pass, SHUFFLE_PASSES) / SHUFFLE_PASSES
+
+              // Per-pass scattered slot for the NON-chosen (deterministic).
+              // Pushed outward so they ring the stage and leave the center lane
+              // clear for the chosen to rise straight up through them.
               const a = seeded(i * 7.13 + pass * 3.7) * Math.PI * 2
-              const r = 26 + seeded(i * 4.1 + pass * 1.9) * 40 // % of half-stage
-              const x = isChosen && phase === "pop" ? 0 : Math.cos(a) * r
-              const y = isChosen && phase === "pop" ? 0 : Math.sin(a) * r
-              const rot =
-                isChosen && phase === "pop"
-                  ? 0
-                  : (seeded(i * 9.2 + pass * 2.3) - 0.5) * 26
+              const r = 42 + seeded(i * 4.1 + pass * 1.9) * 46 // % of half-stage
+              const x = isChosen ? 0 : Math.cos(a) * r
+              const y = isChosen ? 0 : Math.sin(a) * r
+              const rot = isChosen ? 0 : (seeded(i * 9.2 + pass * 2.3) - 0.5) * 26
               const tileSize = isChosen ? 150 : 88
 
-              // The chosen card RISES THROUGH the deck: it starts behind every
-              // shuffling card (low z) and climbs to the front over the passes,
-              // growing from ~tile-size toward hero-size as it nears — so it
-              // emerges from the pack, then pops to center. Non-chosen sit at a
-              // fixed mid layer. `p` is the clamped pass progression (0..1).
-              const p = Math.min(pass, SHUFFLE_PASSES) / SHUFFLE_PASSES
-              const chosenShuffleScale = 0.62 + p * 0.46 // 0.62 → 1.08 across passes
+              const chosenShuffleScale = 0.72 + p * 0.36 // 0.72 → 1.08 (present from the start, still grows forward)
               const chosenShuffleZ = Math.round(2 + p * SHUFFLE_PASSES * 5) // 2 → ~22, passing others (z10)
 
               // Non-chosen recede + blur + fade as the chosen pops.
@@ -384,35 +443,45 @@ export function PackLaunchTransition({
                   }}
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{
-                    opacity: recede ? 0 : 1,
+                    // Non-chosen ride at reduced opacity so they read as an
+                    // ambient backing deck and the rising chosen shows through
+                    // them even before it climbs to the front.
+                    opacity: recede ? 0 : isChosen ? 1 : 0.5,
                     x: `${x}%`,
                     y: `${y}%`,
                     rotate: rot,
                     scale:
                       isChosen && phase === "pop"
-                        ? [1, 1.16, 1.08] // "wiggle" overshoot, then settle at the apex
+                        ? 1.08 // settle at hero size — exactly the wash card's start (seamless handoff)
                         : isChosen
                           ? chosenShuffleScale // grows as it climbs to the front
                           : recede
                             ? 0.7
                             : 1,
                   }}
-                  // NOTE: a multi-keyframe (`[1, 1.16, 1.08]`) scale CANNOT use a
-                  // spring — framer-motion throws "Only two keyframes supported
-                  // with spring", an UNCAUGHT error that took down the whole tree
-                  // (blank, unclickable screen) right at the reveal. Use a tween
-                  // with a back-ease for the pop wiggle; springs only where the
-                  // animated values are single targets.
+                  // NOTE: a spring needs SINGLE-TARGET values — a multi-keyframe
+                  // array (e.g. `[1, 1.1, 1.07]`) throws "Only two keyframes
+                  // supported with spring", an UNCAUGHT error that blanks the
+                  // whole tree. And a keyframe array also restarts from
+                  // keyframe[0], jump-cutting from the card's live scale (the
+                  // old "click"). So the pop uses a single-target scale and rides
+                  // a spring that CONTINUES the shuffle spring — framer carries
+                  // position + velocity across the phase change, so there's no
+                  // type switch, no keyframe snap, and no reversal hitch. That's
+                  // what makes the seat into center perfectly smooth.
                   transition={
-                    isChosen && phase === "pop"
-                      ? { type: "tween", duration: 0.6, times: [0, 0.55, 1], ease: [0.34, 1.56, 0.64, 1] }
-                      : recede
-                        ? { duration: 0.5, ease: "easeIn" }
+                    recede
+                      ? // non-chosen melt away gently rather than snapping out.
+                        { duration: 0.8, ease: [0.4, 0, 0.2, 1] }
+                      : isChosen && phase === "pop"
+                        ? // a soft, well-damped landing into center (little overshoot).
+                          { type: "spring", stiffness: 120, damping: 20, mass: 1 }
                         : {
+                            // a calm, well-damped settle for the shuffle (less jitter).
                             type: "spring",
-                            stiffness: 90,
-                            damping: 14,
-                            mass: 0.9,
+                            stiffness: 70,
+                            damping: 16,
+                            mass: 1,
                           }
                   }
                 >
@@ -428,17 +497,21 @@ export function PackLaunchTransition({
         </div>
       </div>
 
-      {/* ── Wash phase. Two layers, composited so the CARD reads as the hero
-            flying at you, NOT a flat colour blob:
-            1) a solid-colour "blast" disc BEHIND the card (zIndex 5) that scales
-               up from a point — a transform scale is GPU-composited and buttery,
-               unlike an animated `clip-path` circle (which stair-steps / looks
-               pixelated on Android WebView).
-            2) the chosen card ON TOP (zIndex 30), crisp, zooming toward the
-               viewer over the blast — never covered by it.
-            Both live at the overlay root (outside the bounded stage) so the
-            blast reaches every corner; the whole overlay then fades on `done`,
-            dissolving card + colour together to reveal the booted pack. ── */}
+      {/* ── Finale — a patient little fireworks show, composited so the CARD
+            stays the hero and never a flat colour blob. Layered back-to-front:
+            1) a radial-gradient BLOOM disc (zIndex 5) — luminous core, deep
+               saturated rim — swelling up from behind the card. A transform
+               scale is GPU-composited and buttery (unlike an animated clip-path,
+               which stair-steps on Android WebView).
+            2) shockwave RINGS (zIndex 8) rippling out at each shell's beat.
+            3) a soft GLOW halo behind the card (zIndex 29) so the card reads as
+               the light source the bloom pours from.
+            4) the chosen CARD (zIndex 30), crisp, zooming gently toward you.
+            5) SPARK shells (zIndex 35) bursting past the card in staggered waves.
+            All live at the overlay root so the burst reaches every corner; the
+            whole overlay then fades on `done`, dissolving everything together to
+            reveal the booted pack. Reduced motion: just the gentle bloom + glow,
+            no sparks/rings/flash. ── */}
       {(phase === "wash" || phase === "done") && (
         <motion.div
           className="pointer-events-none absolute left-1/2 top-1/2 rounded-full"
@@ -447,28 +520,113 @@ export function PackLaunchTransition({
             height: "260vmax",
             marginLeft: "-130vmax",
             marginTop: "-130vmax",
-            background: washColor,
+            background: `radial-gradient(circle at 50% 48%, ${lighten(washColor, 0.55)} 0%, ${washColor} 38%, ${darken(washColor, 0.42)} 100%)`,
             zIndex: 5,
             willChange: "transform",
           }}
-          initial={{ scale: 0.04, opacity: 0.96 }}
+          initial={{ scale: 0.03, opacity: 0.96 }}
           animate={{ scale: 1, opacity: 1 }}
+          // A long, gentle ease-out so the colour swells up patiently and settles
+          // rather than snapping into place.
           transition={{
             duration: (T_WASH_FULL - T_WASH_START) / 1000,
-            ease: [0.22, 1, 0.36, 1],
+            ease: [0.16, 1, 0.3, 1],
           }}
         />
       )}
       {phase === "wash" && (
-        <motion.div
-          className="absolute left-1/2 top-1/2"
-          style={{ marginLeft: -75, marginTop: -110, zIndex: 30, willChange: "transform" }}
-          initial={{ scale: 1.08 }}
-          animate={{ scale: 1.55 }}
-          transition={{ duration: (T_DONE - T_WASH_START) / 1000, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <CardFace card={chosen} size={150} label="hero" />
-        </motion.div>
+        <>
+          {!reduceMotion && (
+            <>
+              {/* ignition flash — a single quick breath of light as the first
+                  shell fires; never a harsh strobe. */}
+              <motion.div
+                className="pointer-events-none absolute inset-0"
+                style={{ background: lighten(washColor, 0.72), zIndex: 40, willChange: "opacity" }}
+                initial={{ opacity: 0.42 }}
+                animate={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+              {/* shockwave rings */}
+              {rings.map((d, i) => (
+                <motion.div
+                  key={`ring-${i}`}
+                  className="pointer-events-none absolute left-1/2 top-1/2 rounded-full"
+                  style={{
+                    width: "44vmax",
+                    height: "44vmax",
+                    marginLeft: "-22vmax",
+                    marginTop: "-22vmax",
+                    border: `2px solid ${lighten(washColor, 0.45)}`,
+                    zIndex: 8,
+                    willChange: "transform, opacity",
+                  }}
+                  initial={{ scale: 0.04, opacity: 0.55 }}
+                  animate={{ scale: 1.8, opacity: 0 }}
+                  transition={{ duration: 1.5, delay: d, ease: [0.16, 1, 0.3, 1] }}
+                />
+              ))}
+              {/* spark shells */}
+              {sparks.map((s, i) => (
+                <motion.div
+                  key={`spark-${i}`}
+                  className="pointer-events-none absolute left-1/2 top-1/2 rounded-full"
+                  style={{
+                    width: s.size,
+                    height: s.size,
+                    marginLeft: -s.size / 2,
+                    marginTop: -s.size / 2,
+                    background: s.color,
+                    boxShadow: `0 0 ${s.size * 2.4}px ${s.size * 0.7}px ${s.color}`,
+                    zIndex: 35,
+                    willChange: "transform, opacity",
+                  }}
+                  initial={{ x: 0, y: 0, scale: 0.3, opacity: 0 }}
+                  animate={{ x: s.x, y: s.y, scale: [0.3, 1, 0.4], opacity: [0, 1, 0] }}
+                  transition={{
+                    default: { duration: s.dur, delay: s.delay, ease: [0.12, 0.78, 0.24, 1] },
+                    scale: { duration: s.dur, delay: s.delay, times: [0, 0.22, 1], ease: "easeOut" },
+                    opacity: { duration: s.dur, delay: s.delay, times: [0, 0.16, 1], ease: "easeOut" },
+                  }}
+                />
+              ))}
+            </>
+          )}
+
+          {/* glow halo behind the card — the card as the light source. */}
+          <motion.div
+            className="pointer-events-none absolute left-1/2 top-1/2 rounded-full"
+            style={{
+              width: 360,
+              height: 360,
+              marginLeft: -180,
+              marginTop: -180,
+              background: `radial-gradient(circle, ${lighten(washColor, 0.65)} 0%, transparent 68%)`,
+              zIndex: 29,
+              willChange: "transform, opacity",
+            }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: [0, 0.9, 0.7], scale: 1.5 }}
+            transition={{
+              duration: (T_DONE - T_WASH_START) / 1000,
+              times: [0, 0.28, 1],
+              ease: "easeOut",
+            }}
+          />
+
+          {/* the chosen card, drifting gently toward the viewer. Mounts at the
+              EXACT transform the popped card settled into (center, scale 1.08)
+              so the collage→wash handoff is invisible — then it zooms. */}
+          <motion.div
+            className="absolute left-1/2 top-1/2"
+            style={{ marginLeft: -75, marginTop: -75, zIndex: 30, willChange: "transform" }}
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1.5 }}
+            transition={{ duration: (T_DONE - T_WASH_START) / 1000, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <CardFace card={chosen} size={150} label="hero" />
+          </motion.div>
+        </>
       )}
     </motion.div>
   )

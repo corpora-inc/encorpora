@@ -4,9 +4,6 @@ import json, sys, os, glob
 # Onboarding translations
 ONBOARDING_KEYS = {
     "en": {
-        "learning": "Learning languages",
-        "ttsStepTitle": "Text-to-speech",
-        "socials": "Follow & connect",
         "noVoices": "No voices",
         "noVoicesHint": "Install voices to enable this language."
     },

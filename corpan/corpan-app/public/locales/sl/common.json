@@ -131,18 +131,18 @@
     "sendAnonUsageHint": "Anonimno, omejeno na sejo. Brez računov, brez ID-jev naprav, brez shranjevanja naslovov IP. Kadar koli lahko izklopite.",
     "readPrivacyPromise": "Preberite našo obljubo o zasebnosti",
     "showStreak": "Prikaži bralni niz",
-    "showStreakHint": "Majhno število dni v glavi. Samo na napravi, brez opomnikov ali obvestil."
+    "showStreakHint": "Majhno število dni v glavi. Samo na napravi, brez opomnikov ali obvestil.",
+    "home": "Domov",
+    "developer": "Razvijalec"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán se razvija",
       "subtitle": "Med prvimi ste",
-      "tinyTeamTitle": "Majhna ekipa navdušencev",
-      "tinyTeamDesc": "Neodvisna, brez oglasov in ustvarjena s spoštovanjem do ljudi, ki jo uporabljajo — majhna ekipa izdeluje jezikovno aplikacijo, ki smo si jo vedno želeli.",
       "bleedingEdgeTitle": "Najnaprednejše, z namenom",
-      "bleedingEdgeDesc": "Corpán premika meje tega, kar zmore vaša naprava: poglobljeni svetovi, prepoznavanje govora, naravni glasovi in najnovejši modeli AI skupaj ustvarjajo nove načine učenja. Velik del deluje neposredno v vaši napravi, zato se lahko učite zasebno in predvsem brez povezave, brez odvisnosti od podatkovnega centra. Novo tehnologijo objavimo, ko je še surova, zato se lahko občasno vede nenavadno, deluje počasi ali preprosto presega zmogljivosti vaše naprave. V zameno dobite zmogljive nove učne izkušnje takoj, ko postanejo mogoče.",
+      "bleedingEdgeDesc": "Corpán prinaša novo umetno inteligenco, prepoznavanje govora, glasove in poglobljene svetove na tvojo napravo za zasebno učenje, ki najprej deluje brez povezave. Tehnologijo objavljamo, ko je še surova, zato se lahko vede čudno, deluje počasi ali je več, kot zmore tvoja naprava. V zameno dobiš nove načine učenja takoj, ko postanejo mogoči.",
       "yourLangTitle": "Ne govorimo vseh jezikov, ki jih podpiramo",
-      "yourLangDesc": "To je iskrena resnica. Gradimo za desetine jezikov, ker si vsak zasluži zmogljiva učna orodja, ne zato, ker bi jih naša majhna ekipa že vse znala. Morda boste našli stvari, pri katerih smo se zmotili. Če poznate {{lang}} bolje kot mi, upamo, da nam boste povedali in pomagali, da bo Corpán vreden tega jezika.",
+      "yourLangDesc": "Gradimo za veliko jezikov, ker si učenci zaslužijo boljša orodja, ne zato, ker jih vse poznamo. Ko se pri čem zmotimo, upamo, da nam bodo govorci pomagali to popraviti.",
       "plea": "Imate zamisel, popravek ali drzno učno izkušnjo, ki bi jo radi videli? Povejte nam. Preberemo vsako sporočilo in globoko premislimo, kaj bi lahko odprlo za Corpán in učenje jezikov.",
       "emailCta": "Piši nama",
       "githubCta": "Odpri GitHub issue",
@@ -150,27 +150,11 @@
       "pact": "Tapnite spodaj, da se začnete učiti in rastete z nami. 🤝",
       "cta": "Sem za — gremo"
     },
-    "welcome": "Dobrodošli",
-    "makePrimaryLanguage": "Nastavi angleščino kot moj primarni jezik",
-    "canChangeLater": "To lahko spremeniš kadarkoli.",
     "pickLanguagesToLearn": "Izberi jezike za učenje",
     "textToSpeechSetup": "Nastavitev pretvorbe besedila v govor",
-    "ttsPoorQualityNote": "Če zvok ni dober, namesti visokokakovostne glasove v nastavitvah TTS naprave.",
-    "howToSetupTtsOn": "Kako nastaviti TTS na",
-    "welcomeTitle": "Dobrodošli v družino Corpán!",
-    "welcomeBody": "Corpán je aplikacija z odprto kodo, ki jo razvija majhna ekipa, ne velika podjetja. Zelo nam je mar za jezike in izobraževanje, še smo v zgodnji fazi, zato lahko opaziš nepopolnosti ali manjkajoče funkcije in jezike. Če kaj ne deluje, nam prosim sporoči na GitHubu ali po e-pošti. Tvoja povratna informacija nam pomaga, da pogosto posodabljamo in izboljšamo učenje jezikov za vse.",
-    "welcomeVisit": "Obišči encorpora.io",
-    "linkCopied": "Povezava kopirana. Odpri v svojem brskalniku:",
     "reconfigureStack": "Ponovno konfiguriraj kopico",
     "openVoiceSettings": "Odpri Nastavitve",
     "openTTSSetup": "Odpri nastavitve TTS",
-    "welcomeFollowUp": "Hvala, da si se pridružil—se vidimo v skupnosti!",
-    "learning": "Učenje jezikov",
-    "learningStepTitle": "Učenje",
-    "tts": "Pretvorba besedila v govor",
-    "ttsStepTitle": "Pretvorba besedila v govor",
-    "socials": "Sledi in poveži se",
-    "socialsStepTitle": "Družbena omrežja",
     "noVoices": "Brez glasov",
     "noVoicesHint": "Namesti glasove, da omogočiš ta jezik.",
     "languageOrderTipTitle": "Nasvet",
@@ -234,56 +218,21 @@
         "notInstalled": "Ni nameščeno"
       }
     },
-    "packs": "Paketi besednih zvez",
     "phrasePacks": {
-      "title": "Paketi besednih zvez",
-      "stepTitle": "Paketi besednih zvez",
       "hero": "Izberi svoje teme",
       "loading": "Nalaganje…",
       "selectAll": "Izberi vse ({{count}})",
       "clearAll": "Počisti",
-      "subscriptionNudge": "Naroči se, da odkleneš vse pakete.",
+      "subscriptionNudge": "Nekateri paketi so vključeni v Corpán Plus — pozneje lahko nadgradiš v Nastavitve → Paketi.",
       "entryCount": "{{n}} fraz",
       "paid": "Plačljivo",
       "emptyHero": "Ni paketov.",
-      "emptySub": "Vrni se kmalu.",
-      "offlineHero": "Si brez povezave.",
-      "offlineSub": "Paketi potrebujejo internet — poskusi pozneje v Nastavitve → Paketi.",
-      "offlineBanner": "Brez povezave — izbor se namesti ob ponovni povezavi.",
-      "noneSelected": "Nič izbranega — nadaljevanje bo preskočilo",
-      "selectedSuffix": "izbrano",
-      "skip": "Preskoči za zdaj",
-      "subtitle": "Dodajte osredotočene pakete fraz v svoj sklad. Vklopite ali izklopite jih lahko kadarkoli v Nastavitvah."
+      "emptySub": "Vrni se kmalu."
     },
-    "notOnAppleIOS": "Ni na iOS",
     "appleNoVoiceTitle": "Apple še nima glasu za {{lang}}",
     "appleNoVoiceBody": "Kratek zapis Applovi ekipi za dostopnost pomaga podpreti ta primer. Medtem pa {{lang}} v Android deluje izvorno.",
     "back": "Nazaj",
     "continue": "Nadaljuj",
-    "class": {
-      "title": "Za koga je Corpán?",
-      "subtitle": "Corpán bomo prilagodili vam. Podatki ostanejo na vaši napravi – nikoli jih ne pošiljamo drugam.",
-      "learner": "Učim se jezike",
-      "learnerDesc": "Berite in poslušajte v jezikih, ki se jih učite.",
-      "enjoyer": "Želim uživati v vsebini",
-      "enjoyerDesc": "Knjige, zgodbe in igre v vašem jeziku.",
-      "polyglot": "Oboje – želim vse",
-      "polyglotDesc": "Več jezikov hkrati, plus vse ostalo.",
-      "kid": "Je za otroka",
-      "kidDesc": "Izbrane knjige in učne igre za mlajše bralce.",
-      "ageTitle": "Koliko je star bralec?",
-      "ageUnder13": "Pod 13 let",
-      "ageTeen": "13–17 let"
-    },
-    "pitch": {
-      "title": "Pridružite se Corpanistas",
-      "subtitle": "Corpán Plus odklene celotno knjižnico. Prvi del katere koli knjige preizkusite brezplačno, za vedno.",
-      "everything": "Vsaka knjiga, vsak jezik – odklenjeno.",
-      "private": "Brez oglasov. Vaši podatki ostanejo na vaši napravi.",
-      "team": "Smo majhna ekipa in vsak cent vložimo nazaj v Corpán.",
-      "tryPlus": "Preizkusite Corpán Plus",
-      "continueFree": "Nadaljujte z brezplačno različico"
-    },
     "calibrate": {
       "childAgeTitle": "Koliko je star bralec?",
       "childTeen": "13–17 let",
@@ -306,16 +255,6 @@
       "voiceCountMany": "{{count}} glasov pripravljenih",
       "voiceCountOne": "1 glas pripravljen",
       "yourVoiceFor": "Vaš glas za {{lang}}"
-    },
-    "engage": {
-      "joinDesc": "Podprite Corpán in odklenite vse. Neobvezno, kadarkoli.",
-      "subscribedTitle": "Ste Corpanista",
-      "subscribedDesc": "Hvala, ker ohranjate Corpán brez oglasov in mu pomagate rasti.",
-      "joinTitle": "Pridružite se Corpanistas",
-      "start": "Začnite raziskovati",
-      "subtitle": "Corpán je ustvarila majhna ekipa odprtokodnih razvijalcev. Pozdravite nas — in če vam je všeč, nas lahko podprete.",
-      "title": "Vse je pripravljeno",
-      "explore": "Raziščem sam"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "Raziščite nenavadne stvari",
       "wildDesc": "Presenetljive, eksperimentalne izkušnje."
     },
-    "settingUp": "Nastavljanje stvari…",
     "ttsIntro": "Corpán bere na glas. Tapnite glas, da ga slišite s svojo hitrostjo.",
     "voiceGuide": {
       "intro": "Vaša naprava ima vgrajene bogate, naravne glasove — brezplačne in veliko boljše od privzetih. Proizvajalec jih preprosto pusti izklopljene. Vklopimo jih; potrebnih je le nekaj dotikov:",
@@ -583,14 +521,13 @@
     "introTipBody": "Kopice shranijo različne nastavitve učenja — ena za potovanje, druga za delo. Tapni + za ustvarjanje nove kopice."
   },
   "rating": {
-    "title": "Uživanje v Corpánu?",
-    "description": "Corpán je ustvarjen s strani majhne ekipe z odprto kodo, ki šele začenja. Če se ti zdi, da je to aplikacija s 5 zvezdicami, hitra ocena nam zelo pomaga.",
-    "rateNow": "⭐ Ocenite 5 zvezdic",
-    "remindLater": "Morda kasneje",
-    "noThanks": "Ne, hvala",
+    "title": "Vam je Corpán zelo všeč?",
+    "description": "Če vam je Corpán všeč, mu dajte 5 zvezdic. V trgovinah z aplikacijami vse pod 5 zvezdic škodi Corpánu.",
+    "rateNow": "⭐ Dajte 5 zvezdic",
     "close": "Zapri",
-    "feedbackHint": "Še ni 5 zvezdic? Tapni 'Daj povratne informacije' in povej nam, kako lahko izboljšamo.",
-    "feedbackButton": "Deli povratne informacije na GitHubu"
+    "feedbackHint": "Če za vas še ni aplikacija za 5 zvezdic, nam pišite po e-pošti ali odprite issue na GitHubu in povejte, kaj popraviti. Želimo jo izboljšati.",
+    "emailButton": "Pošljite e-pošto",
+    "githubButton": "Issue na GitHubu"
   },
   "packs": {
     "title": "Paketi",
@@ -640,7 +577,7 @@
       "subBadge": "Naročnina",
       "paid": "Plačljivo",
       "free": "Brezplačno",
-      "unlockSub": "Odkleni z naročnino",
+      "unlockSub": "Odklenite s Corpán Plus",
       "entryCount": "{{n}} fraz",
       "allInstalled": {
         "title": "Imaš vse pakete fraz.",
@@ -671,14 +608,17 @@
     "updateAvailable": "Posodobitev na voljo"
   },
   "subscription": {
-    "title": "Odkleni vse",
-    "description": "Neomejen dostop do vseh pripovedovanih knjig in premium paketov s naročnino.",
+    "startTrialPeriod": "Začni brezplačno preizkusno obdobje za {{period}}",
+    "trialFree": "Brezplačno za {{period}}",
+    "trialThenCancel": "Nato {{price}}/{{period}} · prekliči kadar koli. Danes brez plačila.",
+    "title": "Odkleni Corpán Plus",
+    "description": "Neomejen dostop do vseh funkcij, jezikov, paketov in posodobitev.",
     "annual": "Letno",
     "monthly": "Mesečno",
     "subscribe": "Naroči se",
     "subscribing": "Naročam se...",
-    "subscribed": "Naročen si",
-    "subscribedDescription": "{{plan}} načrt aktiven. Hvala, da podpiraš Corpán.",
+    "subscribed": "Corpán Plus je aktiven",
+    "subscribedDescription": "Paket {{plan}} je aktiven. Vse je odklenjeno.",
     "manage": "Upravljaj naročnino",
     "termsOfUse": "Pogoji uporabe",
     "privacyPolicy": "Politika zasebnosti",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} brezplačno",
     "trialReassurance": "Plačilo ni potrebno zdaj · prekliči kadarkoli",
     "trialThenPrice": ", nato {{price}}/{{period}}",
-    "trialToday": "Danes: začetek"
+    "trialToday": "Danes: začetek",
+    "rate": "Oceni Corpán"
   },
   "restore": {
     "button": "Obnovi nakupe",
@@ -743,12 +684,12 @@
     "offlineEmpty": "Poveži se z internetom, da odkriješ pakete — ali to preskoči za zdaj."
   },
   "paywall": {
-    "title": "Nadaljujte s Corpán Plus",
-    "thanksTitle": "Ste Corpanista",
-    "thanksBody": "Hvala za podporo Corpánu. Vse je odklenjeno.",
-    "bookSubhead": "Dosegli ste konec brezplačnega predogleda knjige {{title}}.",
-    "subhead": "Odklenite vsako knjigo v vsakem jeziku. Brez oglasov. Vaši podatki ostanejo na vaši napravi.",
-    "pitch": "Smo majhna ekipa in vsak cent vložimo nazaj v Corpán. Corpanistas ohranjajo aplikacijo brez oglasov in jo pomagajo razvijati.",
+    "title": "Odkleni Corpán Plus",
+    "thanksTitle": "Corpán Plus je aktiven",
+    "thanksBody": "Vse je odklenjeno.",
+    "bookSubhead": "Nadaljuj {{title}} in odkleni vse funkcije.",
+    "subhead": "Neomejen dostop do vseh funkcij, jezikov in posodobitev. Brez oglasov. Tvoji podatki ostanejo v tvoji napravi.",
+    "pitch": "Knjige, paketi, igre, govorna orodja in nove učne izkušnje so vključeni.",
     "maybeLater": "Morda pozneje",
     "continue": "Nadaljuj",
     "dismiss": "Opusti"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — odklenite vse",
     "recommended": "Priporočeno",
     "showAnother": "Pokaži mi drugo",
-    "tryIt": "Preizkusi"
+    "tryIt": "Preizkusi",
+    "packUpdates": "Na voljo so posodobitve paketov",
+    "updateAll": "Posodobi vse"
   },
   "offline": {
     "cachedSubtitle": "Prikazovanje zadnjih shranjenih rezultatov.",

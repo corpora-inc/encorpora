@@ -1,10 +1,10 @@
 // src/components/RatingPrompt.tsx
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, X, Heart, Github } from "lucide-react";
+import { Star, X, Heart, Github, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import { useRatingStore, RATING_CRITERIA as CRITERIA } from "@/store/rating";
+import { useRatingStore } from "@/store/rating";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { detectPlatform } from "@/lib/getPlatform";
 import { requestNativeReview } from "@/contentPacks/purchase";
@@ -12,6 +12,7 @@ import { glass } from "@/util/browser";
 
 const FALLBACK = "https://github.com/corpora-inc/encorpora";
 const GITHUB_ISSUES = "https://github.com/corpora-inc/encorpora/issues";
+const SUPPORT_EMAIL = "team@encorpora.io";
 
 const platforms = [
 	{
@@ -31,25 +32,12 @@ const platforms = [
 export function RatingPrompt() {
 	const { t } = useTranslation();
 
-	// One primitive per selector to keep useSyncExternalStore happy
-	const totalUtteranceCount = useRatingStore((s) => s.totalUtteranceCount);
-	const utterancesSinceLastPrompt = useRatingStore(
-		(s) => s.utterancesSinceLastPrompt
-	);
-	const hasRated = useRatingStore((s) => s.hasRated);
-	const hasDismissed = useRatingStore((s) => s.hasDismissed);
-	const remindMeLaterCount = useRatingStore((s) => s.remindMeLaterCount);
+	// Manual-only: the card shows solely when promptManualReview() has opened it
+	// (Settings → About "Rate Corpán"). It never auto-appears.
+	const show = useRatingStore((s) => s.isOpen);
 
 	const dismissPrompt = useRatingStore((s) => s.dismissPrompt);
 	const rateApp = useRatingStore((s) => s.rateApp);
-	const remindLater = useRatingStore((s) => s.remindLater);
-
-	const show =
-		!hasRated &&
-		!hasDismissed &&
-		remindMeLaterCount < CRITERIA.MAX_REMIND_COUNT &&
-		totalUtteranceCount >= CRITERIA.MIN_UTTERANCES_BEFORE_FIRST_PROMPT &&
-		utterancesSinceLastPrompt >= CRITERIA.UTTERANCES_BETWEEN_PROMPTS;
 
 	const handleRate = async () => {
 		rateApp();
@@ -76,13 +64,23 @@ export function RatingPrompt() {
 		dismissPrompt();
 	};
 
-	const handleRemindLater = () => {
-		remindLater();
-	};
-
-	const handleFeedback = async () => {
+	const dismissForFeedback = () => {
 		// Treat giving feedback as "I've engaged, don't nag me again"
 		dismissPrompt();
+	};
+
+	const handleEmailFeedback = async () => {
+		dismissForFeedback();
+
+		try {
+			await openUrl(`mailto:${SUPPORT_EMAIL}?subject=Corp%C3%A1n%20feedback`);
+		} catch (error) {
+			await openUrl(FALLBACK);
+		}
+	};
+
+	const handleGithubFeedback = async () => {
+		dismissForFeedback();
 
 		try {
 			await openUrl(GITHUB_ISSUES);
@@ -102,8 +100,8 @@ export function RatingPrompt() {
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className={`fixed inset-0 z-100 ${glass("bg-black/25 backdrop-blur-sm", "bg-black/45")}`}
-						onClick={handleRemindLater}
+						className={`pointer-events-auto fixed inset-0 z-[1300] ${glass("bg-black/25 backdrop-blur-sm", "bg-black/45")}`}
+						onClick={handleDismiss}
 					/>
 
 					{/* Prompt Card */}
@@ -116,12 +114,12 @@ export function RatingPrompt() {
 							stiffness: 260,
 							damping: 24,
 						}}
-						className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-101 w-[90%] max-w-md"
+						className="pointer-events-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1301] w-[90%] max-w-md"
 					>
 						<div className="bg-background rounded-3xl shadow-2xl p-6 sm:p-7 relative overflow-hidden border border-black/5">
 							{/* Close button */}
 							<button
-								onClick={handleRemindLater}
+								onClick={handleDismiss}
 								className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
 								aria-label={t("rating.close" as any)}
 							>
@@ -207,7 +205,7 @@ export function RatingPrompt() {
 								))}
 							</motion.div>
 
-							{/* Primary actions: Feedback + 5-star rating */}
+							{/* Primary action first; feedback paths are for anything short of 5 stars. */}
 							<motion.div
 								initial={{ opacity: 0, y: 6 }}
 								animate={{ opacity: 1, y: 0 }}
@@ -215,43 +213,46 @@ export function RatingPrompt() {
 								className="flex flex-col gap-2 mb-3"
 							>
 								<Button
-									onClick={handleFeedback}
-									variant="outline"
-									size="lg"
-									className="w-full justify-center gap-2 border-border text-foreground hover:bg-accent rounded-xl"
-								>
-									<Github className="h-4 w-4" />
-									{t("rating.feedbackButton" as any)}
-								</Button>
-
-								<Button
 									onClick={handleRate}
 									size="lg"
 									className="w-full justify-center rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-medium shadow-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 								>
 									{t("rating.rateNow" as any)}
 								</Button>
+
+								<Button
+									onClick={handleEmailFeedback}
+									variant="outline"
+									size="lg"
+									className="w-full justify-center gap-2 border-border text-foreground hover:bg-accent rounded-xl"
+								>
+									<Mail className="h-4 w-4" />
+									{t("rating.emailButton" as any)}
+								</Button>
+
+								<Button
+									onClick={handleGithubFeedback}
+									variant="outline"
+									size="lg"
+									className="w-full justify-center gap-2 border-border text-foreground hover:bg-accent rounded-xl"
+								>
+									<Github className="h-4 w-4" />
+									{t("rating.githubButton" as any)}
+								</Button>
 							</motion.div>
 
-							{/* Secondary actions: later / no thanks */}
+							{/* Secondary action: close */}
 							<motion.div
 								initial={{ opacity: 0, y: 4 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 0.4 }}
-								className="mt-3 flex items-center justify-between gap-2 text-xs text-muted-foreground"
+								className="mt-3 flex items-center justify-center text-xs text-muted-foreground"
 							>
-								<button
-									onClick={handleRemindLater}
-									className="underline-offset-2 hover:underline cursor-pointer"
-								>
-									{t("rating.remindLater" as any)}
-								</button>
-
 								<button
 									onClick={handleDismiss}
 									className="underline-offset-2 hover:underline cursor-pointer"
 								>
-									{t("rating.noThanks" as any)}
+									{t("rating.close" as any)}
 								</button>
 							</motion.div>
 						</div>

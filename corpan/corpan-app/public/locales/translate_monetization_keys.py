@@ -68,7 +68,7 @@ def build_prompt(name: str, payload: dict[str, str]) -> str:
     return f"""You are a senior app localizer. Translate the following UI strings from English into {name} for a privacy-first language-learning app called Corpán.
 
 HARD RULES:
-- Keep these brand names EXACTLY as-is, never translate or transliterate: "Corpán", "Corpán Plus", "Corpanista", "Corpanistas", "Plus".
+- Keep these brand names EXACTLY as-is, never translate or transliterate: "Corpán", "Corpán Plus", "Plus".
 - Preserve EVERY placeholder EXACTLY, including double braces and the name inside: {{{{count}}}}, {{{{unit}}}}, {{{{days}}}}, {{{{time}}}}, {{{{price}}}}, {{{{period}}}}, {{{{title}}}}. Never translate text inside braces.
 - Concise and natural for a mobile UI in {name} — match length/tone, not word-for-word.
 - Warm, calm, dignified register (an ad-free indie app, never a hard sell). No exclamation-mark hype.

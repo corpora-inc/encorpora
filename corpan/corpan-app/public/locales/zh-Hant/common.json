@@ -131,18 +131,18 @@
     "readPrivacyPromise": "閱讀我們的隱私承諾",
     "showStreak": "顯示連續閱讀天數",
     "showStreakHint": "標題中顯示連續閱讀天數。僅限裝置內，無提醒或通知。",
-    "primaryLanguage": "主要（使用者介面）語言"
+    "primaryLanguage": "主要（使用者介面）語言",
+    "home": "首頁",
+    "developer": "開發者"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán 不斷進化",
       "subtitle": "您是最早加入的一批使用者",
-      "tinyTeamTitle": "一支由熱情愛好者組成的小團隊",
-      "tinyTeamDesc": "獨立、無廣告，並尊重每一位使用者——一個小團隊，正在打造我們一直想要的語言學習應用程式。",
       "bleedingEdgeTitle": "刻意追求尖端技術",
-      "bleedingEdgeDesc": "Corpán 不斷拓展您的裝置所能做到的事：沉浸式世界、語音辨識、自然語音和最新 AI 模型協同運作，創造全新的學習方式。許多功能直接在您的裝置上執行，無需依賴資料中心，也能獲得私密、離線優先的學習體驗。我們會在新技術尚未完全打磨時就交到您手中，因此偶爾可能表現異常、執行緩慢，或超出您的裝置所能處理的範圍。作為回報，只要強大的新學習體驗成為可能，您就能第一時間使用。",
+      "bleedingEdgeDesc": "Corpán 把新的 AI、語音辨識、聲音和沉浸式世界帶到你的裝置上，讓學習更私密，並優先支援離線使用。我們會在技術仍然原始時發布它，所以它可能表現古怪、執行緩慢，或超出你的裝置承受能力。作為交換，你可以在新的學習方式一成為可能時就用上。",
       "yourLangTitle": "我們不會說所有支援的語言",
-      "yourLangDesc": "這是坦誠的事實。我們為數十種語言開發，是因為每個人都值得擁有強大的學習工具，而不是因為我們的小團隊已經懂得所有語言。您可能會發現我們做錯的地方。如果您比我們更了解{{lang}}，希望您能告訴我們，並幫助 Corpán 真正配得上這門語言。",
+      "yourLangDesc": "我們為許多語言而開發，是因為學習者值得擁有更好的工具，而不是因為我們全都會。我們出錯時，希望說這些語言的人幫助我們改正。",
       "plea": "您有想法、修正意見，或希望看到的大膽學習體驗嗎？請告訴我們。我們會閱讀每一則訊息，並認真思考它能為 Corpán 和語言學習開啟哪些可能。",
       "emailCta": "寄 email 給我們",
       "githubCta": "到 GitHub 開 issue",
@@ -150,23 +150,11 @@
       "pact": "點按下方開始學習，與我們共同成長。🤝",
       "cta": "我加入，開始吧"
     },
-    "welcome": "歡迎",
-    "makePrimaryLanguage": "將繁體中文設為主要語言",
-    "canChangeLater": "別擔心，您可隨時變更此設定。",
     "pickLanguagesToLearn": "選擇您想學習的語言",
     "textToSpeechSetup": "文字轉語音（TTS）設定",
-    "ttsPoorQualityNote": "若音質不佳，請前往裝置的 TTS 設定中安裝高品質語音。",
-    "howToSetupTtsOn": "如何在各裝置上設定 TTS",
-    "welcomeTitle": "歡迎加入 Corpán 大家庭！",
-    "welcomeBody": "Corpán 是由小型團隊開發的開源應用，而不是大型公司的產品，我們非常重視語言與教育。專案仍在早期階段，因此你可能會看到尚未打磨好的地方、缺少的功能或尚未支援的語言。如果有任何功能對你來說不好用，請透過 GitHub 或電子郵件告訴我們。你的回饋能幫助我們頻繁更新，也讓所有人的語言學習體驗變得更好。",
-    "welcomeVisit": "造訪 encorpora.io",
-    "linkCopied": "連結已複製！請在瀏覽器中開啟：",
     "reconfigureStack": "重新設定個人檔案",
     "openVoiceSettings": "開啟「設定」",
     "openTTSSetup": "開啟 TTS 設定",
-    "welcomeFollowUp": "感謝您的加入！期待在社群中與您相見。",
-    "learningStepTitle": "學習",
-    "tts": "文字轉語音",
     "languageOrderTipTitle": "提示",
     "languageOrderTipBody": "列表最下方的語言就是應用的介面語言。要更改介面語言，請將其他語言拖到最下方。",
     "ttsOsTipTitle": "提示",
@@ -176,10 +164,6 @@
     "ttsOsTipWindows": "在「設定」安裝語音後回到這裡。",
     "ttsOsTipOther": "在裝置設定安裝語音後回到這裡。",
     "installVoicesAndroid": "安裝語音",
-    "learning": "學習語言",
-    "ttsStepTitle": "文字轉語音",
-    "socials": "追蹤並連結",
-    "socialsStepTitle": "社群媒體",
     "noVoices": "沒有語音",
     "noVoicesHint": "安裝語音以啟用此語言。",
     "sendAppleFeedback": "送出 Apple 意見回饋",
@@ -234,56 +218,21 @@
         "notInstalled": "未安裝"
       }
     },
-    "packs": "短語包",
     "phrasePacks": {
-      "title": "短語包",
-      "stepTitle": "短語包",
       "hero": "選擇你的主題",
       "loading": "載入中…",
       "selectAll": "全選 ({{count}})",
       "clearAll": "清除",
-      "subscriptionNudge": "訂閱以解鎖所有短語包。",
+      "subscriptionNudge": "部分套件已包含在 Corpán Plus 中 — 你稍後可以在設定 → 套件中升級。",
       "entryCount": "{{n}} 條短語",
       "paid": "付費",
       "emptyHero": "尚無短語包。",
-      "emptySub": "稍後再來。",
-      "offlineHero": "你目前離線。",
-      "offlineSub": "短語包需要網路 — 稍後從「設定 → 包」再試。",
-      "offlineBanner": "離線 — 重新連線後將安裝所選項。",
-      "noneSelected": "未選擇 — 繼續將跳過",
-      "selectedSuffix": "已選擇",
-      "skip": "暫時跳過",
-      "subtitle": "將專注詞句套件新增至您的堆疊。您可以隨時在「設定」中開啟或關閉它們。"
+      "emptySub": "稍後再來。"
     },
-    "notOnAppleIOS": "不是 iOS",
     "appleNoVoiceTitle": "Apple 目前尚未提供 {{lang}} 語音",
     "appleNoVoiceBody": "只要向 Apple 的無障礙團隊簡短反映，就能幫助推動這件事。在此之前，{{lang}} 已可在 Android 原生使用。",
     "back": "返回",
     "continue": "繼續",
-    "class": {
-      "title": "這是為誰準備的？",
-      "subtitle": "我們會為您量身打造 Corpán。這些資料會留在您的裝置上，絕不會傳送至任何地方。",
-      "learner": "我正在學習語言",
-      "learnerDesc": "閱讀並聆聽您正在學習的語言內容。",
-      "enjoyer": "我想享受內容",
-      "enjoyerDesc": "以您的語言享受書籍、故事和遊戲。",
-      "polyglot": "兩者皆是 — 我全都要",
-      "polyglotDesc": "同時學習多種語言，並享有所有其他功能。",
-      "kid": "這是為兒童準備的",
-      "kidDesc": "為年幼讀者精選的書籍和學習遊戲。",
-      "ageTitle": "讀者的年齡是？",
-      "ageUnder13": "13 歲以下",
-      "ageTeen": "13–17 歲"
-    },
-    "pitch": {
-      "title": "加入 Corpanistas",
-      "subtitle": "Corpán Plus 讓您暢讀整個圖書館。任何書籍的第一部分皆可永久免費試閱。",
-      "everything": "所有書籍、所有語言 — 全部解鎖。",
-      "private": "無廣告。您的資料會留在裝置上。",
-      "team": "我們是一個小團隊，並將每一分錢都投入 Corpán 的發展。",
-      "tryPlus": "試用 Corpán Plus",
-      "continueFree": "繼續使用免費方案"
-    },
     "calibrate": {
       "childAgeTitle": "讀者年齡？",
       "childTeen": "13–17 歲",
@@ -306,16 +255,6 @@
       "voiceCountMany": "已有 {{count}} 個聲音",
       "voiceCountOne": "已有 1 個聲音",
       "yourVoiceFor": "您的 {{lang}} 聲音"
-    },
-    "engage": {
-      "joinDesc": "支持 Corpán 並解鎖所有內容。可選，隨時。",
-      "subscribedTitle": "您是 Corpanista",
-      "subscribedDesc": "感謝您讓 Corpán 保持無廣告並持續成長。",
-      "joinTitle": "加入 Corpanistas",
-      "start": "開始探索",
-      "subtitle": "Corpán 由一個小型開源團隊打造。歡迎打聲招呼 — 如果您喜歡，可以支持我們。",
-      "title": "您已準備就緒",
-      "explore": "自行探索"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "探索新奇事物",
       "wildDesc": "令人驚訝的實驗性體驗。"
     },
-    "settingUp": "正在設定…",
     "ttsIntro": "Corpán 會朗讀。輕點一個聲音，以您的速度聆聽。",
     "voiceGuide": {
       "intro": "您的裝置內建豐富、自然的聲音 — 免費，且遠優於預設。製造商只是將它們關閉了。讓我們開啟它們；只需輕點幾下：",
@@ -584,13 +522,12 @@
   },
   "rating": {
     "title": "喜歡 Corpán 嗎？",
-    "description": "Corpán 由一個剛起步的小型開源團隊製作。如果你覺得值得 5 星，花幾秒評分對我們幫助很大。",
-    "rateNow": "⭐ 給 5 星評分",
-    "remindLater": "稍後再說",
-    "noThanks": "不用了，謝謝",
+    "description": "如果你喜歡 Corpán，請給它 5 星。在應用商店裡，任何低於 5 星的評分都會傷害 Corpán。",
+    "rateNow": "⭐ 給 5 星",
     "close": "關閉",
-    "feedbackHint": "還沒到你心中的 5 星嗎？請點「提供回饋」，告訴我們可以怎麼改進。",
-    "feedbackButton": "在 GitHub 提供回饋"
+    "feedbackHint": "如果它對你來說還不是 5 星應用，請寄信給我們或在 GitHub 開 issue，告訴我們該修什麼。我們想把它做得更好。",
+    "emailButton": "寄信給我們",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "套件",
@@ -640,7 +577,7 @@
       "subBadge": "訂閱",
       "paid": "付費",
       "free": "免費",
-      "unlockSub": "以訂閱解鎖",
+      "unlockSub": "使用 Corpán Plus 解鎖",
       "entryCount": "{{n}} 條短語",
       "allInstalled": {
         "title": "你已擁有所有片語包。",
@@ -671,14 +608,17 @@
     "updateAvailable": "有可用的更新"
   },
   "subscription": {
-    "title": "解鎖全部",
-    "description": "訂閱即可無限存取所有有聲書和進階套件。",
+    "startTrialPeriod": "開始 {{period}} 免費試用",
+    "trialFree": "{{period}}內免費",
+    "trialThenCancel": "之後 {{price}}/{{period}} · 隨時取消。今日無需付款。",
+    "title": "解鎖 Corpán Plus",
+    "description": "無限使用所有功能、語言、套件和更新。",
     "annual": "年付",
     "monthly": "月付",
     "subscribe": "訂閱",
     "subscribing": "訂閱中...",
-    "subscribed": "您已訂閱",
-    "subscribedDescription": "{{plan}}方案已啟用。感謝支持Corpán。",
+    "subscribed": "Corpán Plus 已啟用",
+    "subscribedDescription": "{{plan}} 方案已啟用。所有內容都已解鎖。",
     "manage": "管理訂閱",
     "termsOfUse": "使用條款",
     "privacyPolicy": "隱私權政策",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} 免費",
     "trialReassurance": "現在無需付款 · 隨時取消",
     "trialThenPrice": "，然後 {{price}}/{{period}}",
-    "trialToday": "今天：開始"
+    "trialToday": "今天：開始",
+    "rate": "評價 Corpán"
   },
   "restore": {
     "button": "恢復購買",
@@ -743,12 +684,12 @@
     "offlineEmpty": "連接網際網路以發現包——或暫時跳過。"
   },
   "paywall": {
-    "title": "透過 Corpán Plus 繼續學習",
-    "thanksTitle": "您是 Corpanista",
-    "thanksBody": "感謝您支持 Corpán。所有內容皆已解鎖。",
-    "bookSubhead": "您已讀完 {{title}} 的免費預覽內容。",
-    "subhead": "解鎖所有語言的書籍。無廣告。您的資料會留在裝置上。",
-    "pitch": "我們是一個小團隊，並將每一分錢都投入 Corpán 的發展。Corpanistas 讓應用程式保持無廣告並持續成長。",
+    "title": "解鎖 Corpán Plus",
+    "thanksTitle": "Corpán Plus 已啟用",
+    "thanksBody": "所有內容都已解鎖。",
+    "bookSubhead": "繼續 {{title}}，解鎖所有功能。",
+    "subhead": "無限使用所有功能、語言和更新。沒有廣告。你的資料留在你的裝置上。",
+    "pitch": "書籍、套件、遊戲、語音工具和新的學習體驗全都包含。",
     "maybeLater": "稍後再說",
     "continue": "繼續",
     "dismiss": "關閉"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — 解鎖所有內容",
     "recommended": "推薦",
     "showAnother": "顯示其他",
-    "tryIt": "試用"
+    "tryIt": "試用",
+    "packUpdates": "你有套件更新",
+    "updateAll": "全部更新"
   },
   "offline": {
     "cachedSubtitle": "顯示您上次的快取結果。",

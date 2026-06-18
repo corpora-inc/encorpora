@@ -131,18 +131,18 @@
     "sendAnonUsageHint": "Anonymní, jen pro toto sezení. Žádné účty, žádná ID zařízení, žádné ukládání IP adres. Kdykoli můžete vypnout.",
     "readPrivacyPromise": "Přečíst si náš slib ochrany soukromí",
     "showStreak": "Zobrazit sérii čtení",
-    "showStreakHint": "Malý počet dní v záhlaví. Pouze v zařízení, bez připomenutí nebo oznámení."
+    "showStreakHint": "Malý počet dní v záhlaví. Pouze v zařízení, bez připomenutí nebo oznámení.",
+    "home": "Domů",
+    "developer": "Vývojář"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán se vyvíjí",
       "subtitle": "Jste mezi prvními",
-      "tinyTeamTitle": "Malý tým nadšenců",
-      "tinyTeamDesc": "Nezávislá, bez reklam a tvořená s úctou k lidem, kteří ji používají — malý tým vytváří jazykovou aplikaci, jakou jsme vždy chtěli.",
       "bleedingEdgeTitle": "Špičková technologie, záměrně",
-      "bleedingEdgeDesc": "Corpán posouvá hranice toho, co vaše zařízení dokáže: pohlcující světy, rozpoznávání řeči, přirozené hlasy a nejnovější modely AI společně vytvářejí nové způsoby učení. Velká část běží přímo ve vašem zařízení, takže můžete studovat soukromě a především offline, bez závislosti na datovém centru. Nové technologie vydáváme, dokud jsou ještě syrové, takže se někdy mohou chovat zvláštně, běžet pomalu nebo být jednoduše nad možnosti vašeho zařízení. Na oplátku získáváte nové a účinné studijní zážitky hned, jakmile jsou možné.",
+      "bleedingEdgeDesc": "Corpán přináší do tvého zařízení novou AI, rozpoznávání řeči, hlasy a pohlcující světy pro soukromé učení, které funguje především offline. Technologie vydáváme ještě syrové, takže se mohou chovat zvláštně, běžet pomalu nebo být nad možnosti tvého zařízení. Na oplátku dostáváš nové způsoby učení hned, jakmile jsou možné.",
       "yourLangTitle": "Nemluvíme všemi jazyky, které podporujeme",
-      "yourLangDesc": "To je upřímná pravda. Tvoříme pro desítky jazyků, protože každý si zaslouží účinné nástroje k učení, ne proto, že by je náš malý tým už všechny znal. Můžete narazit na věci, které jsme udělali špatně. Pokud znáte {{lang}} lépe než my, řekněte nám to prosím a pomozte nám, aby si Corpán tento jazyk zasloužila.",
+      "yourLangDesc": "Vytváříme nástroje pro mnoho jazyků, protože studenti si zaslouží lepší pomůcky, ne proto, že je všechny známe. Když se v něčem spleteme, doufáme, že nám mluvčí pomohou to opravit.",
       "plea": "Máte nápad, opravu nebo odvážný studijní zážitek, který byste chtěli vidět? Napište nám. Čteme každou zprávu a důkladně přemýšlíme, co by mohla otevřít pro Corpán a výuku jazyků.",
       "emailCta": "Napište nám e-mail",
       "githubCta": "Otevřít issue na GitHub",
@@ -150,27 +150,11 @@
       "pact": "Klepněte níže, začněte se učit a růst s námi. 🤝",
       "cta": "Jdu do toho — pojďme na to"
     },
-    "welcome": "Vítejte",
-    "makePrimaryLanguage": "Nastavit angličtinu jako můj primární jazyk",
-    "canChangeLater": "Toto můžete změnit kdykoliv.",
     "pickLanguagesToLearn": "Vyberte jazyky k učení",
     "textToSpeechSetup": "Nastavení text-to-speech",
-    "ttsPoorQualityNote": "Pokud zvuk zní špatně, nainstalujte vysoce kvalitní hlasy v nastavení TTS vašeho zařízení.",
-    "howToSetupTtsOn": "Jak nastavit TTS na",
-    "welcomeTitle": "Vítejte v rodině Corpán!",
-    "welcomeBody": "Corpán je open-source aplikace od malého týmu, nikoli velké společnosti. Velmi nám záleží na jazyce a vzdělání a jsme stále na začátku, takže můžete vidět nedokonalosti nebo chybějící funkce a jazyky. Pokud něco nefunguje, prosím, řekněte nám to na GitHubu nebo e-mailem. Vaše zpětná vazba nám pomáhá pravidelně vydávat aktualizace a zlepšovat učení jazyků pro všechny.",
-    "welcomeVisit": "Navštivte encorpora.io",
-    "linkCopied": "Odkaz zkopírován. Otevřete ve svém prohlížeči:",
     "reconfigureStack": "Znovu nakonfigurovat hromadu",
     "openVoiceSettings": "Otevřít Nastavení",
     "openTTSSetup": "Otevřete nastavení TTS",
-    "welcomeFollowUp": "Děkujeme, že jste se připojili — uvidíme se v komunitě!",
-    "learning": "Učení jazyků",
-    "learningStepTitle": "Učení",
-    "tts": "Převod textu na řeč",
-    "ttsStepTitle": "Převod textu na řeč",
-    "socials": "Sledujte a spojte se",
-    "socialsStepTitle": "Sociální sítě",
     "noVoices": "Žádné hlasy",
     "noVoicesHint": "Nainstalujte hlasy, abyste povolili tento jazyk.",
     "languageOrderTipTitle": "Tip",
@@ -234,56 +218,21 @@
         "notInstalled": "Není nainstalováno"
       }
     },
-    "packs": "Balíčky frází",
     "phrasePacks": {
-      "title": "Balíčky frází",
-      "stepTitle": "Balíčky frází",
       "hero": "Vyber si témata",
       "loading": "Načítání…",
       "selectAll": "Vybrat vše ({{count}})",
       "clearAll": "Vymazat",
-      "subscriptionNudge": "Předplaťte si, abyste odemkli všechny balíčky.",
+      "subscriptionNudge": "Některé balíčky jsou součástí Corpán Plus — upgradovat můžete později v Nastavení → Balíčky.",
       "entryCount": "{{n}} frází",
       "paid": "Placené",
       "emptyHero": "Zatím žádné balíčky.",
-      "emptySub": "Brzy se vrať.",
-      "offlineHero": "Jsi offline.",
-      "offlineSub": "Balíčky potřebují internet — zkus to později v Nastavení → Balíčky.",
-      "offlineBanner": "Offline — výběr se nainstaluje po připojení.",
-      "noneSelected": "Nic nevybráno — Pokračovat přeskočí",
-      "selectedSuffix": "vybráno",
-      "skip": "Přeskočit prozatím",
-      "subtitle": "Přidejte soustředěné balíčky frází do svého zásobníku. Můžete je kdykoli zapnout nebo vypnout v Nastavení."
+      "emptySub": "Brzy se vrať."
     },
-    "notOnAppleIOS": "Ne na iOS",
     "appleNoVoiceTitle": "Apple zatím nenabízí hlas pro {{lang}}",
     "appleNoVoiceBody": "Krátká zpráva týmu přístupnosti v Apple pomáhá podpořit jeho přidání. Mezitím {{lang}} funguje nativně na Androidu.",
     "back": "Zpět",
     "continue": "Pokračovat",
-    "class": {
-      "title": "Pro koho je Corpán?",
-      "subtitle": "Corpán vám přizpůsobíme. Vše zůstává ve vašem zařízení – nikam nic neposíláme.",
-      "learner": "Učím se jazyky",
-      "learnerDesc": "Čtěte a poslouchejte v jazycích, které studujete.",
-      "enjoyer": "Chci si užít obsah",
-      "enjoyerDesc": "Knihy, příběhy a hry ve vašem jazyce.",
-      "polyglot": "Obojí – chci vše",
-      "polyglotDesc": "Několik jazyků najednou a k tomu vše ostatní.",
-      "kid": "Je to pro dítě",
-      "kidDesc": "Vybrané knihy a výukové hry pro mladší čtenáře.",
-      "ageTitle": "Kolik je čtenáři let?",
-      "ageUnder13": "Do 13 let",
-      "ageTeen": "13–17 let"
-    },
-    "pitch": {
-      "title": "Připojte se ke Corpanistas",
-      "subtitle": "Corpán Plus otevírá celou knihovnu. První část jakékoli knihy si můžete vyzkoušet zdarma, navždy.",
-      "everything": "Každá kniha, každý jazyk – odemčeno.",
-      "private": "Žádné reklamy. Vaše data zůstávají ve vašem zařízení.",
-      "team": "Jsme malý tým a každý cent vracíme zpět do Corpánu.",
-      "tryPlus": "Vyzkoušejte Corpán Plus",
-      "continueFree": "Pokračovat zdarma"
-    },
     "calibrate": {
       "childAgeTitle": "Kolik let je čtenáři?",
       "childTeen": "13–17 let",
@@ -306,16 +255,6 @@
       "voiceCountMany": "{{count}} hlasů připraveno",
       "voiceCountOne": "1 hlas připraven",
       "yourVoiceFor": "Váš hlas pro {{lang}}"
-    },
-    "engage": {
-      "joinDesc": "Podpořte Corpán a odemkněte vše. Volitelné, kdykoli.",
-      "subscribedTitle": "Jste Corpanista",
-      "subscribedDesc": "Děkujeme, že udržujete Corpán bez reklam a pomáháte mu růst.",
-      "joinTitle": "Připojte se ke Corpanistas",
-      "start": "Začít objevovat",
-      "subtitle": "Corpán je tvořen malým open-source týmem. Přijďte pozdravit — a pokud se vám líbí, můžete nás podpořit.",
-      "title": "Vše je připraveno",
-      "explore": "Prozkoumat sám"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "Prozkoumat experimentální zážitky",
       "wildDesc": "Překvapivé, experimentální zážitky."
     },
-    "settingUp": "Nastavuji…",
     "ttsIntro": "Corpán čte nahlas. Klepněte na hlas, abyste ho slyšeli ve své rychlosti.",
     "voiceGuide": {
       "intro": "Vaše zařízení má vestavěné bohaté, přirozené hlasy — zdarma a mnohem lepší než výchozí. Výrobce je jen nechává vypnuté. Pojďme je zapnout; stačí pár klepnutí:",
@@ -583,14 +521,13 @@
     "introTipBody": "Hromady ukládají různé nastavení učení — jedno pro cestování, další pro práci. Klepněte na + pro vytvoření nové hromady."
   },
   "rating": {
-    "title": "Líbí se vám Corpán?",
-    "description": "Corpán je vytvořen malým open-source týmem, který teprve začíná. Pokud to vypadá jako aplikace na 5 hvězdiček, rychlé hodnocení nám velmi pomůže.",
-    "rateNow": "⭐ Ohodnoťte 5 hvězd",
-    "remindLater": "Možná později",
-    "noThanks": "Ne, děkuji",
+    "title": "Milujete Corpán?",
+    "description": "Pokud Corpán milujete, dejte mu 5 hvězdiček. V obchodech s aplikacemi cokoli pod 5 hvězdiček Corpánu škodí.",
+    "rateNow": "⭐ Dejte 5 hvězdiček",
     "close": "Zavřít",
-    "feedbackHint": "Ještě to není 5 hvězd? Klepněte na 'Sdílet zpětnou vazbu' a řekněte nám, jak to můžeme zlepšit.",
-    "feedbackButton": "Sdílet zpětnou vazbu na GitHubu"
+    "feedbackHint": "Pokud to pro vás ještě není aplikace na 5 hvězdiček, napište nám e-mail nebo otevřete issue na GitHubu a řekněte, co opravit. Chceme ji zlepšit.",
+    "emailButton": "Napište nám",
+    "githubButton": "Issue na GitHubu"
   },
   "packs": {
     "title": "Balíčky",
@@ -640,7 +577,7 @@
       "subBadge": "Předplatné",
       "paid": "Placené",
       "free": "Zdarma",
-      "unlockSub": "Odemknout předplatným",
+      "unlockSub": "Odemknout s Corpán Plus",
       "entryCount": "{{n}} frází",
       "allInstalled": {
         "title": "Máš všechny balíčky frází.",
@@ -671,14 +608,17 @@
     "updateAvailable": "Aktualizace k dispozici"
   },
   "subscription": {
-    "title": "Odemkněte vše",
-    "description": "Neomezený přístup ke každé vyprávěné knize a prémiovému balíčku s předplatným.",
+    "startTrialPeriod": "Začít bezplatnou zkušební verzi na {{period}}",
+    "trialFree": "Zdarma na {{period}}",
+    "trialThenCancel": "Poté {{price}}/{{period}} · kdykoli zrušit. Dnes žádná platba.",
+    "title": "Odemknout Corpán Plus",
+    "description": "Neomezený přístup ke každé funkci, jazyku, balíčku a aktualizaci.",
     "annual": "Roční",
     "monthly": "Měsíční",
     "subscribe": "Předplatit",
     "subscribing": "Předplácím...",
-    "subscribed": "Jste předplatiteli",
-    "subscribedDescription": "Aktivní plán {{plan}}. Děkujeme za podporu Corpánu.",
+    "subscribed": "Corpán Plus je aktivní",
+    "subscribedDescription": "Plán {{plan}} je aktivní. Všechno je odemčeno.",
     "manage": "Spravovat předplatné",
     "termsOfUse": "Podmínky použití",
     "privacyPolicy": "Zásady ochrany osobních údajů",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} zdarma",
     "trialReassurance": "Nyní žádná platba · kdykoli zrušit",
     "trialThenPrice": ", poté {{price}}/{{period}}",
-    "trialToday": "Dnes: začátek"
+    "trialToday": "Dnes: začátek",
+    "rate": "Ohodnotit Corpán"
   },
   "restore": {
     "button": "Obnovit nákupy",
@@ -743,12 +684,12 @@
     "offlineEmpty": "Připojte se k internetu, abyste objevili balíčky — nebo to nyní přeskočte."
   },
   "paywall": {
-    "title": "Pokračujte s Corpán Plus",
-    "thanksTitle": "Jste Corpanista",
-    "thanksBody": "Děkujeme za podporu Corpánu. Vše je odemčeno.",
-    "bookSubhead": "Dosáhli jste konce bezplatné ukázky knihy {{title}}.",
-    "subhead": "Odemkněte každou knihu v každém jazyce. Žádné reklamy. Vaše data zůstávají ve vašem zařízení.",
-    "pitch": "Jsme malý tým a každý cent vracíme zpět do Corpánu. Corpanistas udržují aplikaci bez reklam a pomáhají ji rozvíjet.",
+    "title": "Odemknout Corpán Plus",
+    "thanksTitle": "Corpán Plus je aktivní",
+    "thanksBody": "Všechno je odemčeno.",
+    "bookSubhead": "Pokračujte v {{title}} a odemkněte všechny funkce.",
+    "subhead": "Neomezený přístup ke každé funkci, jazyku a aktualizaci. Bez reklam. Vaše data zůstávají ve vašem zařízení.",
+    "pitch": "Knihy, balíčky, hry, řečové nástroje i nové výukové zážitky jsou zahrnuté.",
     "maybeLater": "Možná později",
     "continue": "Pokračovat",
     "dismiss": "Zavřít"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — odemkněte vše",
     "recommended": "Doporučeno",
     "showAnother": "Ukázat další",
-    "tryIt": "Vyzkoušet"
+    "tryIt": "Vyzkoušet",
+    "packUpdates": "Máte aktualizace balíčků",
+    "updateAll": "Aktualizovat vše"
   },
   "offline": {
     "cachedSubtitle": "Zobrazuji vaše poslední uložené výsledky.",

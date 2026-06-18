@@ -7,6 +7,79 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.19.1] - 2026-06-18
+
+### Added
+- **Phrase Flip now has its own artwork and a card in the "Installed" grid.**
+  The built-in core experience was previously only reachable from the For You
+  carousel / Recent and showed a bare lucide icon everywhere. It now ships with
+  bundled 16:9 card art (`assets/phrase-flip.svg`) and appears as a first-class
+  card alongside downloaded packs in Home → Installed (sorted in by name,
+  launches via the existing `openPhrase` path, no Remove since it's built in).
+  The same art is used in the For You carousel. A `removable` prop on
+  `PackCard`/`PackActions` hides the Remove action for built-in experiences.
+
+### Changed
+- **Paywall free-trial framing sells the trial instead of reciting it.** A
+  `$0.00` introductory price is now correctly recognized as a free trial (it was
+  mis-classified as a paid intro price, so the CTA said "Subscribe" and the panel
+  read the robotic "$0.00 for 7 days, then …"). The CTA now reads "Start 7-day
+  free trial"; the trial panel is centered like the rest of the card, warmer
+  ("Free for 7 days" / "Then $99.99/year · cancel anytime. No payment today."),
+  and drops the timeline dots. The offer/affiliate code field and its help/status
+  text are centered in a narrow column under the CTA (codes are short), and the
+  trial panel is hidden when a code redeems (offer code and free trial are
+  mutually exclusive). (`SubscriptionOffer.tsx`, `purchase.ts`)
+- **iOS offer-code redemption can skip the typing.** When the backend provides a
+  prefilled App Store redeem link for a resolved code, we now open *that* (code
+  already entered) instead of the empty generic StoreKit redeem sheet.
+  (`purchase.ts`)
+- **Settings is now premium and continuous with Home.** The header mirrors Home
+  — the all-hearing-ear mark + title at the top-left — and the top-right close is
+  now a Home button (like Phrase Flip) instead of an X, so flipping Home↔Settings
+  feels seamless. Dev Mode moved to the very bottom under a quiet "Developer"
+  label and its install form was restyled to the app's squared, premium look. The
+  About Corpán section gained a small all-hearing-ear mark at its top and a "Rate
+  Corpán" button beside the Corpán Plus block. (`SettingsModal.tsx`)
+- **The rating prompt no longer pops up on its own.** The "Enjoying Corpán?" card
+  used to auto-appear once a usage counter tripped — including right when a free
+  user was bounced out of a pack on hitting their daily quota (the worst moment).
+  All auto-triggers were removed (the main-loop utterance counter, the eligibility
+  gate, and the `notifyUtterance`/`showRatingPrompt` host-API hooks are now
+  no-ops). Rating is manual-only via the new About → "Rate Corpán" button, backed
+  by a `promptManualReview()` store action that opens it unconditionally; the
+  5-star tap still fires the OS-native review. (`store/rating.ts`,
+  `RatingPrompt.tsx`, `MainExperience.tsx`, `hostApi.ts`)
+- **Pack updates are surfaced on Home, not behind the Settings gear.** The purple
+  "updates available" badge on the gear is gone; instead a premium, minimal CTA
+  sits above everything on Home — "You have pack updates" + an "Update all"
+  button — shown only when updates exist (no layout jolt otherwise). The update
+  logic is now a shared `useUpdateAll` hook reused by both the CTA and the packs
+  listing. (`home/HomeHub.tsx`, `home/PacksSection.tsx`, `hooks/useUpdateAll.ts`)
+- **Phrase Flip avatar reworked to the house style.** Replaced the earlier
+  flip-card SVG with a thin Corpán-orange rounded card frame + purple lucide
+  brain on a near-black backdrop, matching the single-color, glowing line-art of
+  the other pack marks. (`assets/phrase-flip.svg`)
+- **Onboarding finale is now a little fireworks show, not a flat colour blob.**
+  The end-of-onboarding razzle used to settle by scaling a single flat disc of
+  the pack's accent up over the screen — for EarthGate that read as "just a
+  light blue." The chosen card now lights the fuse: staggered shells of sparks
+  (pack accent → white-hot → warm gold) burst past it, shockwave rings ripple
+  out, and a luminous radial **bloom** (bright core, deep saturated rim) swells
+  up from behind the card and washes over to reveal the booted experience. The
+  card carries its own glow halo so it reads as the light source. The card's
+  arrival is now perfectly smooth — the chosen card rises straight up the center
+  of the deck, pinned dead center and upright, calmly growing toward the viewer
+  through the shuffling cards (rather than bending in from a side slot), on one
+  continuous spring (no keyframe snap, no spring→tween velocity cut). The
+  collage→wash handoff mounts at the exact transform the card settled into, so
+  it's invisible. The finale runs a touch longer (~8.4s) to breathe. All
+  motion is GPU-composited transform/opacity (smooth on Android WebView).
+  Reduced motion keeps the calm bloom + glow, no sparks. (`PackLaunchTransition.tsx`)
+- **Onboarding welcome copy tightened.** Dropped the "tiny team of enthusiasts"
+  row and shortened the cutting-edge / language-honesty text on the welcome pact
+  step so it reads faster. (`OnboardingWelcomePact.tsx`)
+
 ## [0.19.0] - 2026-06-16
 
 ### Changed

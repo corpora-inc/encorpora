@@ -17,14 +17,13 @@ import { ContentPackOverlay } from "./components/ContentPackOverlay";
 import { PhrasePackDrawer } from "./components/packs/PhrasePackDrawer";
 import { TTSFailureBanner } from "./components/TTSFailureBanner";
 import "./index.css";
-import { getPlatformTopPaddingButtons } from "./util/browser";
+import { getTopBarPaddingTop } from "./util/browser";
 
 import { useRatingStore } from "@/store/rating";
 import { useGamesStore, type InstalledGame } from "@/store/games";
 import { useRecentNativeStore } from "@/store/recentNative";
 import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
-import { usePackUpdates } from "@/hooks/usePackUpdates";
 import { jitter } from "@/contentPacks/catalogFetch";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId, installPurchaseUpdatedListener } from "@/contentPacks/purchase";
@@ -108,7 +107,9 @@ function PhraseFlipChrome() {
   const btnClass =
     "fixed z-[1110] h-10 w-12 rounded-md shadow-sm bg-background border border-border hover:bg-accent transition";
   const topStyle = {
-    top: `calc(env(safe-area-inset-top) + ${getPlatformTopPaddingButtons()}px)`,
+    // Same vertical offset as the Home/Settings top buttons (getTopBarPaddingTop)
+    // so the gear + Home chips line up across all surfaces.
+    top: getTopBarPaddingTop(),
   };
   // Gear at the leading corner, Home opposite it at the trailing corner.
   const gearSide = rtl ? "right-4 md:right-8" : "left-4 md:left-8";
@@ -184,15 +185,10 @@ export default function App() {
   const onboarded = useSettingsStore((s) => s.onboarded);
   const textSize = useSettingsStore((s) => s.textSize);
 
-  // Track pack updates for badge
-  const gamesMap = useGamesStore((s) => s.games);
-  const catalog = useCatalogStore((s) => s.getCatalog());
   const fetchCatalog = useCatalogStore((s) => s.fetchCatalog);
   const fetchPhrasePackCatalog = usePhrasePackCatalogStore(
     (s) => s.fetchCatalog,
   );
-  const installedGames = Object.values(gamesMap);
-  const updates = usePackUpdates(installedGames, catalog);
 
   // Fetch catalog and refresh entitlements on mount
   useEffect(() => {
@@ -514,10 +510,10 @@ export default function App() {
     // Exiting any experience returns to the Home hub (which is always mounted
     // underneath the overlay). No more dumping the user into Settings.
     const onExit = () => {
-      // Exiting any experience returns to Home. We deliberately do NOT fire the
-      // OS-native review here — the in-app "Enjoying Corpán?" prompt
-      // (<RatingPrompt/>) is the single rating surface, and its 5-star button
-      // pops the native review widget. Firing both produced a double prompt.
+      // Exiting any experience returns to Home. Rating is manual-only: we never
+      // fire any review prompt on exit (the old auto-prompt could pop right after
+      // a user hit their daily quota — the worst moment). The "Enjoying Corpán?"
+      // card is opened deliberately from Settings → About.
       //
       // Exiting is NOT a paywall moment. If the daily-cap accomplishment lock is
       // open (e.g. the user hit it in phrase-flip then tapped Home), dismiss it
@@ -714,9 +710,8 @@ export default function App() {
     return (
       <InstallProvider>
         <OnboardingEngine />
-        {/* Mounted during onboarding too, so the engagement page's "Join the
-            Corpanistas" CTA actually opens the paywall in-place (previously it
-            only appeared after commit, because the sheet lived post-onboarding). */}
+        {/* Mounted during onboarding too, so any onboarding upgrade CTA opens
+            the paywall in-place instead of waiting for the post-onboarding tree. */}
         <PaywallSheet />
       </InstallProvider>
     );
@@ -730,7 +725,6 @@ export default function App() {
         onSettings={() => setShowSettings(true)}
         onLaunchPhrase={openPhrase}
         onLaunchGame={handleLaunchGame}
-        updateCount={updates.length}
       />
 
       <SettingsModal

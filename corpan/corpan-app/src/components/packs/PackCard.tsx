@@ -15,6 +15,7 @@ export function PackCard({
   isOffline,
   onLaunch,
   updateVersion,
+  removable = true,
 }: {
   pack: CatalogGame
   installedGame?: InstalledGame
@@ -23,6 +24,7 @@ export function PackCard({
   isOffline: boolean
   onLaunch?: (game: InstalledGame) => void
   updateVersion?: string
+  removable?: boolean
 }) {
   const { t, i18n } = useTranslation()
   const pack = localizePack(rawPack, i18n.language || "en")
@@ -70,6 +72,7 @@ export function PackCard({
           isOffline={isOffline}
           onLaunch={onLaunch}
           updateVersion={updateVersion}
+          removable={removable}
         />
       </div>
     </div>

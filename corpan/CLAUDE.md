@@ -231,6 +231,24 @@ Native delivery:
 - **i18next**: Internationalization
 - **framer-motion**: Animations
 
+## Internationalization (i18n)
+
+Locales live in `corpan-app/public/locales/<code>/common.json` (~54 locales).
+The build gate `npm run check:i18n` (part of `npm run build`) requires **every
+locale to carry every `en` key** — a missing key **fails the build**, it is not a
+soft warning. So any new `t()` key must be filled into all locales before a PR
+can go green.
+
+**How we translate: agents do it directly.** When you add or change locale keys,
+**translate them yourself using your own language skills and edit each
+`common.json` directly.** Do NOT author or run the OpenAI/python translate
+scripts (`public/locales/translate_*.py` / `add_*.py`) — that pattern is
+retired. Fan out across subagents (each locale is an independent file, so
+disjoint edits never conflict). Preserve `{{placeholders}}` and separators (e.g.
+`·`) exactly; give point-of-sale/paywall copy real translations, not English
+fallback; keep RTL scripts (ar, he, fa, ur, pa-Arab) intact. Verify with
+`npm run check:i18n`.
+
 ## Corpán Plus (monetization) — architecture decisions
 
 Subscription-only. **Per-book IAP is retired** (a month of à-la-carte books drew

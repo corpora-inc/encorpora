@@ -317,14 +317,58 @@ function resolveLandingDir(pack, outputDir) {
   return path.join(outputDir, 'corpan', 'packs', pack.id);
 }
 
+// The Developer Install block — copy-the-URL section for downloadable packs.
+// Built-in experiences (Phrase Flip) ship inside the app and have no
+// manifest/zip, so they omit this entirely.
+function devInstallSectionHtml() {
+  return `<div class="dev-section">
+                <h3>Developer Install</h3>
+                <p id="install-hint">
+                    Install this pack in Corpán: Open Settings, tap the "Developer packs" button 7 times, then paste one of these URLs in the Install from URL section:
+                </p>
+
+                <div class="install-options">
+                    <div class="install-option" data-install="manifest">
+                        <div class="install-option-header">
+                            <h4>Web Play</h4>
+                            <span class="install-badge">Always Latest</span>
+                        </div>
+                        <p>Loads from the web each time. Always gets updates automatically.</p>
+                        <button class="copy-button" onclick="copyUrl('manifest')">Copy Install URL</button>
+                    </div>
+
+                    <div class="install-option" data-install="zip">
+                        <div class="install-option-header">
+                            <h4>Offline Download</h4>
+                            <span class="install-badge">Works Offline</span>
+                        </div>
+                        <p>Downloads once and works 100% offline after installation.</p>
+                        <button class="copy-button" onclick="copyUrl('zip')">Copy Install URL</button>
+                    </div>
+                </div>
+            </div>`;
+}
+
 function buildPackLandingPage(pack, outputDir) {
   const gameLandingTemplate = applyBasePath(readTemplate('game-landing'));
-  const urls = {
-    zip: pack.zipUrl || `${basePathWithSlash}corpan/packs/${pack.id}.zip`
-  };
-  if (pack.manifestUrl) {
+  // Built-in core experiences (e.g. Phrase Flip) have no downloadable artifact —
+  // no zip/manifest, no dev-install, no version number.
+  const builtin = pack.builtin === true;
+  const urls = builtin
+    ? {}
+    : {
+        zip: pack.zipUrl || `${basePathWithSlash}corpan/packs/${pack.id}.zip`,
+      };
+  if (!builtin && pack.manifestUrl) {
     urls.manifest = pack.manifestUrl;
   }
+  const versionBlock = builtin
+    ? '<p class="version">Included with Corpán</p>'
+    : `<p class="version">Version ${pack.version}</p>`;
+  const playNote = builtin
+    ? 'Built into the Corpán app'
+    : 'Play this pack inside the Corpán app';
+  const devSection = builtin ? '' : devInstallSectionHtml();
   const githubUrl =
     pack.github ||
     `https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/${pack.id}`;
@@ -369,7 +413,9 @@ function buildPackLandingPage(pack, outputDir) {
     .replace(/\{\{GAME_ID\}\}/g, pack.id)
     .replace(/\{\{GAME_NAME\}\}/g, pack.name)
     .replace(/\{\{GAME_DESCRIPTION\}\}/g, pack.description)
-    .replace(/\{\{GAME_VERSION\}\}/g, pack.version)
+    .replace(/\{\{GAME_VERSION_BLOCK\}\}/g, versionBlock)
+    .replace(/\{\{GAME_PLAY_NOTE\}\}/g, playNote)
+    .replace('{{DEV_SECTION}}', devSection)
     .replace(/\{\{GAME_AVATAR\}\}/g, pack.avatarUrl || `${basePathWithSlash}assets/${pack.id}-avatar.png`)
     .replace(/\{\{GAME_GITHUB\}\}/g, githubUrl)
     .replace('{{VIDEO_SECTION}}', videoSectionHtml)
@@ -466,7 +512,10 @@ function buildPages(outputDir) {
   // minAppVersion, so packs requiring newer hosts must opt out explicitly.
   console.log('Generating catalog.json...');
   const isV1Pack = (pack) =>
-    isListed(pack) && pack.v1Listed !== false && pack.packType !== 'reader';
+    isListed(pack) &&
+    pack.v1Listed !== false &&
+    pack.packType !== 'reader' &&
+    pack.builtin !== true;
   const catalogData = packsData.filter(isV1Pack).map(pack => {
     // Use zipUrl if available, otherwise fallback to manifest
     const manifestUrl = pack.zipUrl
@@ -500,7 +549,10 @@ function buildPages(outputDir) {
 
   // Generate catalog-v3.json — includes ALL packs (filtering is client-side)
   console.log('Generating catalog-v3.json...');
-  const catalogV3Packs = packsWithAssets.map(pack => {
+  // Built-in experiences (Phrase Flip) ship inside the app — they get a website
+  // landing page but must NEVER appear in the in-app catalog, or the Home picker
+  // would offer to "download" a pack that has no artifact.
+  const catalogV3Packs = packsWithAssets.filter((pack) => pack.builtin !== true).map(pack => {
     const zipUrl = pack.zipUrl
       ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
       : `https://encorpora.io/corpan/packs/${pack.id}.zip`;

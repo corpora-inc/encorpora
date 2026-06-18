@@ -131,18 +131,18 @@
     "readPrivacyPromise": "Lees onze Privacybelofte",
     "showStreak": "Leesreeks weergeven",
     "showStreakHint": "Een kleine dagteller in de header. Alleen op je apparaat, geen herinneringen of meldingen.",
-    "primaryLanguage": "Primaire (UI) taal"
+    "primaryLanguage": "Primaire (UI) taal",
+    "home": "Home",
+    "developer": "Ontwikkelaar"
   },
   "onboarding": {
     "welcomePact": {
       "title": "Corpán evolueert",
       "subtitle": "Je bent er vroeg bij",
-      "tinyTeamTitle": "Een klein team van enthousiastelingen",
-      "tinyTeamDesc": "Onafhankelijk, zonder advertenties en gebouwd met respect voor de mensen die het gebruiken — een klein team maakt de taalapp die we altijd al wilden.",
       "bleedingEdgeTitle": "Opzettelijk grensverleggend",
-      "bleedingEdgeDesc": "Corpán verlegt de grenzen van wat je apparaat kan: meeslepende werelden, spraakherkenning, natuurlijke stemmen en de nieuwste AI-modellen werken samen om nieuwe manieren van leren te creëren. Veel ervan draait rechtstreeks op je apparaat, zodat je privé en vooral offline kunt leren zonder afhankelijk te zijn van een datacenter. We brengen nieuwe technologie uit terwijl die nog ruw is. Daardoor kan ze zich soms vreemd gedragen, traag werken of simpelweg meer zijn dan je apparaat aankan. Daarvoor krijg je krachtige nieuwe leerervaringen zodra ze mogelijk worden.",
+      "bleedingEdgeDesc": "Corpán brengt nieuwe AI, spraakherkenning, stemmen en meeslepende werelden naar je apparaat voor privé leren dat eerst offline werkt. We brengen technologie uit terwijl die nog ruw is, dus ze kan zich vreemd gedragen, traag lopen of meer zijn dan je apparaat aankan. Daarvoor krijg je nieuwe manieren om te leren zodra ze mogelijk worden.",
       "yourLangTitle": "We spreken niet elke taal die we ondersteunen",
-      "yourLangDesc": "Dat is de eerlijke waarheid. We bouwen voor tientallen talen omdat iedereen krachtige leermiddelen verdient, niet omdat ons kleine team ze allemaal al kent. Misschien kom je dingen tegen die we verkeerd hebben gedaan. Als je {{lang}} beter kent dan wij, hopen we dat je het ons vertelt en helpt Corpán die taal waardig te maken.",
+      "yourLangDesc": "We bouwen voor veel talen omdat leerlingen betere hulpmiddelen verdienen, niet omdat we ze allemaal kennen. Als we iets fout doen, hopen we dat sprekers ons helpen het recht te zetten.",
       "plea": "Heb je een idee, een correctie of een avontuurlijke leerervaring die je graag zou zien? Vertel het ons. We lezen elk bericht en denken grondig na over wat het mogelijk kan maken voor Corpán en taalonderwijs.",
       "emailCta": "Mail ons",
       "githubCta": "Open een GitHub-issue",
@@ -150,27 +150,11 @@
       "pact": "Tik hieronder om te beginnen met leren en met ons mee te groeien. 🤝",
       "cta": "Ik doe mee — kom maar op"
     },
-    "welcome": "Welkom",
-    "makePrimaryLanguage": "Maak Nederlands mijn primaire taal",
-    "canChangeLater": "U kunt dit op elk moment wijzigen.",
     "pickLanguagesToLearn": "Kies talen om te leren",
     "textToSpeechSetup": "Tekst-naar-spraak instellen",
-    "ttsPoorQualityNote": "Als het geluid van slechte kwaliteit is, installeer dan hoogwaardige stemmen in de TTS-instellingen van uw apparaat.",
-    "howToSetupTtsOn": "Hoe u TTS instelt op",
-    "welcomeTitle": "Welkom in de Corpán-familie!",
-    "welcomeBody": "Corpán is een open-sourceapp van een klein team, geen groot bedrijf. We geven echt om taal en onderwijs en staan nog aan het begin, dus u kunt onvolkomenheden of ontbrekende functies en talen tegenkomen. Als iets niet werkt, laat het ons weten via GitHub of e-mail. Uw feedback helpt ons om regelmatig updates uit te brengen en het taalleren voor iedereen te verbeteren.",
-    "welcomeVisit": "Bezoek encorpora.io",
-    "linkCopied": "Link gekopieerd. Open in uw browser:",
     "reconfigureStack": "Stapel opnieuw configureren",
     "openVoiceSettings": "Open Instellingen",
     "openTTSSetup": "Open TTS-instellingen",
-    "welcomeFollowUp": "Bedankt voor het aansluiten — tot ziens in de community!",
-    "learning": "Talen leren",
-    "learningStepTitle": "Leren",
-    "tts": "Tekst-naar-spraak",
-    "ttsStepTitle": "Tekst-naar-spraak",
-    "socials": "Volgen & verbinden",
-    "socialsStepTitle": "Sociale media",
     "noVoices": "Geen stemmen",
     "noVoicesHint": "Installeer stemmen om deze taal in te schakelen.",
     "languageOrderTipTitle": "Tip",
@@ -234,56 +218,21 @@
         "notInstalled": "Niet geïnstalleerd"
       }
     },
-    "packs": "Zinnenpakketten",
     "phrasePacks": {
-      "title": "Zinnenpakketten",
-      "stepTitle": "Zinnenpakketten",
       "hero": "Kies je onderwerpen",
       "loading": "Laden…",
       "selectAll": "Alles selecteren ({{count}})",
       "clearAll": "Wissen",
-      "subscriptionNudge": "Abonneer om alle pakketten te ontgrendelen.",
+      "subscriptionNudge": "Sommige pakketten zijn inbegrepen bij Corpán Plus — je kunt later upgraden via Instellingen → Pakketten.",
       "entryCount": "{{n}} zinnen",
       "paid": "Betaald",
       "emptyHero": "Nog geen pakketten.",
-      "emptySub": "Kom snel terug.",
-      "offlineHero": "Je bent offline.",
-      "offlineSub": "Pakketten hebben internet nodig — probeer later via Instellingen → Pakketten.",
-      "offlineBanner": "Offline — selectie installeert na verbinden.",
-      "noneSelected": "Geen geselecteerd — Doorgaan zal overslaan",
-      "selectedSuffix": "geselecteerd",
-      "skip": "Sla voor nu over",
-      "subtitle": "Voeg gerichte zinnenpakketten toe aan je verzameling. Schakel ze op elk moment in of uit via Instellingen."
+      "emptySub": "Kom snel terug."
     },
-    "notOnAppleIOS": "Niet op iOS",
     "appleNoVoiceTitle": "Apple biedt nog geen {{lang}}-stem",
     "appleNoVoiceBody": "Een korte melding aan het toegankelijkheidsteam van Apple helpt om dat te versnellen. Ondertussen werkt {{lang}} standaard op Android.",
     "back": "Terug",
     "continue": "Verder",
-    "class": {
-      "title": "Voor wie is dit?",
-      "subtitle": "We stemmen Corpán op jou af. Dit blijft op je apparaat — we sturen het nooit ergens heen.",
-      "learner": "Ik leer talen",
-      "learnerDesc": "Lees en luister in de talen die je leert.",
-      "enjoyer": "Ik wil van de content genieten",
-      "enjoyerDesc": "Boeken, verhalen en spellen in je eigen taal.",
-      "polyglot": "Beide — ik wil alles",
-      "polyglotDesc": "Meerdere talen tegelijk, plus al het andere.",
-      "kid": "Het is voor een kind",
-      "kidDesc": "Samengestelde boeken en leerspellen voor jonge lezers.",
-      "ageTitle": "Hoe oud is de lezer?",
-      "ageUnder13": "Jonger dan 13",
-      "ageTeen": "13–17"
-    },
-    "pitch": {
-      "title": "Sluit je aan bij de Corpanistas",
-      "subtitle": "Corpán Plus opent de hele bibliotheek. Probeer het eerste deel van elk boek gratis, voor altijd.",
-      "everything": "Elk boek, elke taal — ontgrendeld.",
-      "private": "Geen advertenties. Je gegevens blijven op je apparaat.",
-      "team": "We zijn een klein team en steken elke cent terug in Corpán.",
-      "tryPlus": "Probeer Corpán Plus",
-      "continueFree": "Ga verder met de gratis versie"
-    },
     "calibrate": {
       "childAgeTitle": "Hoe oud is de lezer?",
       "childTeen": "13–17 jaar",
@@ -306,16 +255,6 @@
       "voiceCountMany": "{{count}} stemmen klaar",
       "voiceCountOne": "1 stem klaar",
       "yourVoiceFor": "Jouw {{lang}} stem"
-    },
-    "engage": {
-      "joinDesc": "Steun Corpán en ontgrendel alles. Optioneel, op elk moment.",
-      "subscribedTitle": "Je bent een Corpanista",
-      "subscribedDesc": "Bedankt dat je Corpán advertentievrij en groeiend houdt.",
-      "joinTitle": "Word lid van de Corpanistas",
-      "start": "Begin met verkennen",
-      "subtitle": "Corpán is gemaakt door een klein open-source team. Zeg hallo — en als je het geweldig vindt, kun je ons steunen.",
-      "title": "Je bent er helemaal klaar voor",
-      "explore": "Zelf ontdekken"
     },
     "fork": {
       "child": {
@@ -353,7 +292,6 @@
       "wild": "Verken onverwachte dingen",
       "wildDesc": "Verrassende, experimentele ervaringen."
     },
-    "settingUp": "Alles instellen…",
     "ttsIntro": "Corpán leest voor. Tik op een stem om deze op jouw snelheid te horen.",
     "voiceGuide": {
       "intro": "Je apparaat heeft rijke, natuurlijke stemmen ingebouwd — gratis, en veel beter dan de standaard. De fabrikant laat ze alleen uitgeschakeld. Laten we ze inschakelen; het kost slechts een paar tikken:",
@@ -583,14 +521,13 @@
     "introTipBody": "Stacks bewaren verschillende leeropstellingen — een voor reizen, een ander voor werk. Tik op + om een nieuwe stack aan te maken."
   },
   "rating": {
-    "title": "Bevalt Corpán u?",
-    "description": "Corpán is gemaakt door een klein open-sourceteam dat net begonnen is. Als het aanvoelt als een 5-sterrenapp, helpt een snelle beoordeling ons enorm.",
+    "title": "Hou je van Corpán?",
+    "description": "Als je van Corpán houdt, geef de app 5 sterren. In de app stores schaadt alles onder 5 sterren Corpán.",
     "rateNow": "⭐ Geef 5 sterren",
-    "remindLater": "Misschien later",
-    "noThanks": "Nee, bedankt",
     "close": "Sluiten",
-    "feedbackHint": "Nog geen 5 sterren? Tik op 'Feedback delen' en vertel ons hoe we het beter kunnen maken.",
-    "feedbackButton": "Feedback delen op GitHub"
+    "feedbackHint": "Als het voor jou nog geen 5-sterrenapp is, mail ons of open een GitHub-issue en vertel wat we moeten verbeteren. We willen het beter maken.",
+    "emailButton": "Mail ons",
+    "githubButton": "GitHub-issue"
   },
   "packs": {
     "title": "Pakketten",
@@ -640,7 +577,7 @@
       "subBadge": "Abonnement",
       "paid": "Betaald",
       "free": "Gratis",
-      "unlockSub": "Ontgrendel met abonnement",
+      "unlockSub": "Ontgrendel met Corpán Plus",
       "entryCount": "{{n}} zinnen",
       "allInstalled": {
         "title": "Je hebt alle frasenpakketten.",
@@ -671,14 +608,17 @@
     "updateAvailable": "Update beschikbaar"
   },
   "subscription": {
-    "title": "Alles ontgrendelen",
-    "description": "Onbeperkte toegang tot elk ingesproken boek en premium pakket met een abonnement.",
+    "startTrialPeriod": "Start gratis proefperiode van {{period}}",
+    "trialFree": "{{period}} gratis",
+    "trialThenCancel": "Daarna {{price}}/{{period}} · op elk moment opzegbaar. Vandaag geen betaling.",
+    "title": "Ontgrendel Corpán Plus",
+    "description": "Onbeperkte toegang tot elke functie, taal, elk pakket en elke update.",
     "annual": "Jaarlijks",
     "monthly": "Maandelijks",
     "subscribe": "Abonneren",
     "subscribing": "Abonneren...",
-    "subscribed": "U bent geabonneerd",
-    "subscribedDescription": "{{plan}}-abonnement actief. Bedankt voor uw steun aan Corpán.",
+    "subscribed": "Corpán Plus is actief",
+    "subscribedDescription": "{{plan}}-abonnement actief. Alles is ontgrendeld.",
     "manage": "Abonnement beheren",
     "termsOfUse": "Gebruiksvoorwaarden",
     "privacyPolicy": "Privacybeleid",
@@ -704,7 +644,8 @@
     "trialHeadline": "{{period}} gratis",
     "trialReassurance": "Nu geen betaling verschuldigd · op elk moment annuleren",
     "trialThenPrice": ", daarna {{price}}/{{period}}",
-    "trialToday": "Vandaag: start"
+    "trialToday": "Vandaag: start",
+    "rate": "Beoordeel Corpán"
   },
   "restore": {
     "button": "Aankopen herstellen",
@@ -743,12 +684,12 @@
     "offlineEmpty": "Maak verbinding met internet om packs te ontdekken — of sla dit voor nu over."
   },
   "paywall": {
-    "title": "Ga verder met Corpán Plus",
-    "thanksTitle": "Je bent een Corpanista",
-    "thanksBody": "Bedankt voor je steun aan Corpán. Alles is ontgrendeld.",
-    "bookSubhead": "Je hebt het einde bereikt van de gratis preview van {{title}}.",
-    "subhead": "Ontgrendel elk boek in elke taal. Geen advertenties. Je gegevens blijven op je apparaat.",
-    "pitch": "We zijn een klein team en steken elke cent terug in Corpán. Corpanistas houden het advertentievrij en groeiend.",
+    "title": "Ontgrendel Corpán Plus",
+    "thanksTitle": "Corpán Plus is actief",
+    "thanksBody": "Alles is ontgrendeld.",
+    "bookSubhead": "Ga verder met {{title}} en ontgrendel elke functie.",
+    "subhead": "Onbeperkte toegang tot elke functie, taal en update. Geen advertenties. Je gegevens blijven op je apparaat.",
+    "pitch": "Boeken, pakketten, games, spraakhulpmiddelen en nieuwe leerervaringen zijn allemaal inbegrepen.",
     "maybeLater": "Misschien later",
     "continue": "Verder",
     "dismiss": "Sluiten"
@@ -817,7 +758,9 @@
     "plusChip": "Corpán Plus — ontgrendel alles",
     "recommended": "Aanbevolen",
     "showAnother": "Toon een andere",
-    "tryIt": "Probeer het"
+    "tryIt": "Probeer het",
+    "packUpdates": "Je hebt pakketupdates",
+    "updateAll": "Alles bijwerken"
   },
   "offline": {
     "cachedSubtitle": "Toont je laatst opgeslagen resultaten.",

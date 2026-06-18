@@ -9,7 +9,7 @@
 // language knowledge and ideas can help shape where it goes.
 import { useTranslation } from "react-i18next";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { Sparkles, FlaskConical, Languages, MessageCircleHeart, Users } from "lucide-react";
+import { FlaskConical, Languages, MessageCircleHeart, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSettingsStore } from "@/store/settings";
 import { OnboardingShell } from "@/onboarding/OnboardingShell";
@@ -20,12 +20,7 @@ const GITHUB_ISSUES = "https://github.com/corpora-inc/encorpora/issues";
 
 export function OnboardingWelcomePact({ onAdvance, onBack }: OnboardingStepProps = {}) {
     const setStep = useSettingsStore((s) => s.setOnboardingStep);
-    const primary = useSettingsStore((s) => s.languages[0]) || "en";
     const { t } = useTranslation();
-
-    // The chosen language's name, IN that language (e.g. "العربية"), so the
-    // personal lines read natively. Falls back to the code if unmapped.
-    const lang = t(`languages.${primary}`, { defaultValue: primary });
 
     async function openExternal(url: string) {
         try {
@@ -39,25 +34,17 @@ export function OnboardingWelcomePact({ onAdvance, onBack }: OnboardingStepProps
 
     const ROWS = [
         {
-            Icon: Sparkles,
-            title: t("onboarding.welcomePact.tinyTeamTitle", { defaultValue: "A tiny team of enthusiasts" }),
-            desc: t("onboarding.welcomePact.tinyTeamDesc", {
-                defaultValue: "Independent, ad-free, and built with respect for the people who use it — a small crew making the language app we always wanted.",
-            }),
-        },
-        {
             Icon: FlaskConical,
             title: t("onboarding.welcomePact.bleedingEdgeTitle", { defaultValue: "Cutting-edge, on purpose" }),
             desc: t("onboarding.welcomePact.bleedingEdgeDesc", {
-                defaultValue: "Corpán pushes the limits of what your device can do: immersive worlds, speech recognition, natural voices, and the latest AI models, all working together to create new ways to learn. Much of it runs directly on your device, giving you private, offline-first learning without depending on a data center. We release new technology while it is still raw, which means it may occasionally behave strangely, run slowly, or simply be more than your device can handle. In return, you get powerful new learning experiences as soon as they become possible.",
+                defaultValue: "Corpán brings new AI, speech, voices, and immersive worlds to your device for private, offline-first learning. We release technology while it is still raw, so it may behave strangely, run slowly, or be more than your device can handle. In return, you get new ways to learn as soon as they become possible.",
             }),
         },
         {
             Icon: Languages,
             title: t("onboarding.welcomePact.yourLangTitle", { defaultValue: "We don't speak every language we support" }),
             desc: t("onboarding.welcomePact.yourLangDesc", {
-                defaultValue: "That's the honest truth. We're building for dozens of languages because everyone deserves powerful learning tools, not because our tiny team already knows them all. You may find things we got wrong. If you know {{lang}} better than we do, we hope you'll tell us and help make Corpán worthy of it.",
-                lang,
+                defaultValue: "We build for many languages because learners deserve better tools, not because we know them all. When we get something wrong, we hope speakers will help us make it right.",
             }),
         },
     ];

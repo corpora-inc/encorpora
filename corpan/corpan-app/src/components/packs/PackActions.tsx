@@ -17,6 +17,7 @@ export function PackActions({
   isOffline,
   onLaunch,
   updateVersion,
+  removable = true,
 }: {
   pack: CatalogGame
   state: PackActionState
@@ -24,6 +25,8 @@ export function PackActions({
   isOffline: boolean
   onLaunch?: (game: InstalledGame) => void
   updateVersion?: string
+  /** Built-in/pre-installed experiences (e.g. Phrase Flip) can't be removed. */
+  removable?: boolean
 }) {
   const { t } = useTranslation()
   const removeGame = useGamesStore((s) => s.removeGame)
@@ -121,14 +124,16 @@ export function PackActions({
           >
             {t("packs.open")}
           </Button>
-          <Button
-            variant="ghost"
-            onClick={handleRemove}
-            className="!h-11 md:!h-14"
-            size="sm"
-          >
-            {t("packs.remove")}
-          </Button>
+          {removable && (
+            <Button
+              variant="ghost"
+              onClick={handleRemove}
+              className="!h-11 md:!h-14"
+              size="sm"
+            >
+              {t("packs.remove")}
+            </Button>
+          )}
         </div>
         {isOffline ? (
           <p className="text-xs text-muted-foreground">
@@ -151,14 +156,16 @@ export function PackActions({
         >
           {t("packs.open")}
         </Button>
-        <Button
-          variant="ghost"
-          onClick={handleRemove}
-          className="!h-11 md:!h-14"
-          size="sm"
-        >
-          {t("packs.remove")}
-        </Button>
+        {removable && (
+          <Button
+            variant="ghost"
+            onClick={handleRemove}
+            className="!h-11 md:!h-14"
+            size="sm"
+          >
+            {t("packs.remove")}
+          </Button>
+        )}
       </div>
     )
   }

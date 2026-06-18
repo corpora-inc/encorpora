@@ -131,7 +131,9 @@
       "noFiltered": "Walang nandito ngayon.",
       "stackTotalPhrases": "~{{count}} parirala ang tumutugma",
       "stackTotalNudge": "Magdagdag ng mga packs o palawakin ang mga antas para sa iba't ibang."
-    }
+    },
+    "home": "Home",
+    "developer": "Developer"
   },
   "home": {
     "continueLearning": "Magpatuloy sa pag-aaral",
@@ -148,7 +150,9 @@
     "like": "Gusto",
     "notForMe": "Hindi para sa akin",
     "plusChip": "Corpán Plus — i-unlock ang lahat",
-    "installing": "Nag-i-install…"
+    "installing": "Nag-i-install…",
+    "packUpdates": "May mga update sa pack",
+    "updateAll": "I-update lahat"
   },
   "tour": {
     "progress": "{{n}} sa {{total}}",
@@ -205,7 +209,6 @@
     }
   },
   "onboarding": {
-    "settingUp": "Nagsasaayos…",
     "ttsIntro": "Nagbabasa nang malakas ang Corpán. I-tap ang isang boses para marinig ito sa bilis na komportable sa iyo.",
     "interests": {
       "title": "Ano ang gusto mong gawin?",
@@ -223,25 +226,13 @@
       "wild": "Subukan ang kakaiba",
       "wildDesc": "Mga nakakagulat at experimental na karanasan."
     },
-    "engage": {
-      "title": "Naka-set ka na",
-      "subtitle": "Ginawa ang Corpán ng maliit na open-source team. Kumustahin kami — at kung nagustuhan mo ito, puwede mo kaming suportahan.",
-      "joinTitle": "Sumali sa mga Corpanista",
-      "joinDesc": "Suportahan ang Corpán at i-unlock ang lahat. Opsyonal, anumang oras.",
-      "subscribedTitle": "Corpanista ka na",
-      "subscribedDesc": "Salamat sa pagtulong na panatilihing walang ads at patuloy na lumalago ang Corpán.",
-      "start": "Simulan ang pag-explore",
-      "explore": "Mag-explore nang mag-isa"
-    },
     "welcomePact": {
       "title": "Nag-e-evolve ang Corpán",
       "subtitle": "Isa ka sa mga unang sumubok",
-      "tinyTeamTitle": "Maliit na koponan na mahilig sa wika",
-      "tinyTeamDesc": "Independent, walang ads, at ginawa nang may respeto sa mga gumagamit nito — maliit lang kami, pero ginagawa namin ang language app na matagal na naming hinahanap.",
       "bleedingEdgeTitle": "Sadyang cutting-edge",
-      "bleedingEdgeDesc": "Sinusubukan ng Corpán ang mga bagong kayang gawin ng device mo: immersive worlds, speech recognition, natural voices, at pinakabagong AI models na nagtutulungan para gumawa ng bagong paraan ng pag-aaral. Marami rito ang tumatakbo mismo sa device mo, kaya mas private at offline-first ang learning. Dahil maaga naming inilalabas ang bagong teknolohiya, minsan puwede itong kumilos nang kakaiba, bumagal, o hindi kayanin ng device. Kapalit nito, mas maaga mong nasusubukan ang malalakas na bagong paraan ng pagkatuto.",
+      "bleedingEdgeDesc": "Dinadala ng Corpán sa device mo ang bagong AI, pagkilala sa pagsasalita, mga boses, at mga mundong nakalulubog, para sa pribadong pagkatuto na inuuna ang offline. Inilalabas namin ang teknolohiya habang hilaw pa ito, kaya maaaring kumilos ito nang kakaiba, bumagal, o maging higit sa kayang kayanin ng device mo. Kapalit nito, nakukuha mo ang mga bagong paraan ng pagkatuto sa sandaling maging posible ang mga ito.",
       "yourLangTitle": "Hindi namin personal na alam ang lahat ng wikang sinusuportahan namin",
-      "yourLangDesc": "Iyan ang totoo. Gumagawa kami para sa maraming wika dahil lahat ay deserve ng makapangyarihang learning tools, hindi dahil kabisado na ng maliit naming team ang lahat ng ito. Maaaring may makita kang mali o hindi natural. Kung mas alam mo ang {{lang}} kaysa sa amin, sana sabihin mo sa amin at tulungan kaming pagandahin ang Corpán dito.",
+      "yourLangDesc": "Gumagawa kami para sa maraming wika dahil karapat-dapat ang mga nag-aaral sa mas magagandang kasangkapan, hindi dahil alam namin ang lahat ng ito. Kapag may mali kami, umaasa kaming tutulungan kami ng mga nagsasalita na itama ito.",
       "plea": "May ideya, correction, o bagong uri ng learning experience na gusto mong makita? Sabihin sa amin. Binabasa namin ang bawat message at pinag-iisipan nang mabuti kung ano ang puwede nitong buksan para sa Corpán at sa language learning.",
       "emailCta": "I-email kami",
       "githubCta": "Magbukas ng GitHub issue",
@@ -283,17 +274,8 @@
       "childUnder13": "Sa ilalim ng 13",
       "childTeen": "13–17"
     },
-    "welcome": "Maligayang pagdating",
-    "makePrimaryLanguage": "Gawing Ingles ang aking pangunahing wika",
-    "canChangeLater": "Maaari mong baguhin ito anumang oras.",
     "pickLanguagesToLearn": "Pumili ng mga wika na pag-aaralan",
     "textToSpeechSetup": "Setup ng text-to-speech",
-    "ttsPoorQualityNote": "Kung ang audio ay mukhang mahina, mag-install ng mataas na kalidad na mga boses sa mga setting ng TTS ng iyong device.",
-    "howToSetupTtsOn": "Paano i-set up ang TTS sa",
-    "welcomeTitle": "Maligayang pagdating sa pamilya ng Corpán!",
-    "welcomeBody": "Ang Corpán ay isang open-source app mula sa maliit na team, hindi malaking kumpanya. Mahalaga sa amin ang wika at edukasyon, at maaga pa kami, kaya may makikita ka pang kulang, magaspang, o hindi pa tapos. Kung may hindi gumagana, sabihin sa amin sa GitHub o email. Malaking tulong ang feedback mo para mas mapaganda namin ang language learning para sa lahat.",
-    "welcomeVisit": "Bisitahin ang encorpora.io",
-    "linkCopied": "Link na kopya. Buksan sa iyong browser:",
     "reconfigureStack": "I-reconfigure ang stack",
     "openVoiceSettings": "Buksan ang Mga Setting",
     "voiceGuide": {
@@ -311,16 +293,8 @@
       "macStep5": "Bumalik sa Corpán — awtomatikong lilitaw ito dito."
     },
     "openTTSSetup": "Buksan ang mga setting ng TTS",
-    "welcomeFollowUp": "Salamat sa pagsali—makikita kita sa komunidad!",
-    "learning": "Pag-aaral ng mga wika",
-    "learningStepTitle": "Pag-aaral",
-    "tts": "Text-to-speech",
-    "ttsStepTitle": "Text-to-speech",
-    "socials": "Sundan at kumonekta",
-    "socialsStepTitle": "Socials",
     "noVoices": "Walang mga boses",
     "noVoicesHint": "Mag-install ng mga boses upang paganahin ang wika na ito.",
-    "notOnAppleIOS": "Hindi sa iOS",
     "appleNoVoiceTitle": "Walang {{lang}} na boses ang Apple",
     "appleNoVoiceBody": "Isang mabilis na tala sa koponan ng accessibility ng Apple ay tumutulong na gawing kaso. Ang {{lang}} ay gumagana nang katutubong sa Android sa ngayon.",
     "voiceRecommended": "Inirerekomenda",
@@ -388,53 +362,19 @@
         "notInstalled": "Hindi naka-install"
       }
     },
-    "packs": "Mga pack ng parirala",
     "phrasePacks": {
-      "title": "Mga pack ng parirala",
-      "stepTitle": "Mga pack ng parirala",
       "hero": "Pumili ng iyong mga paksa",
-      "subtitle": "Magdagdag ng mga nakatuon na pack ng parirala sa iyong stack. I-toggle ang mga ito on o off anumang oras sa Mga Setting.",
       "loading": "Naglo-load ng mga pack…",
       "selectAll": "Pumili ng lahat ({{count}})",
       "clearAll": "I-clear ang pagpili",
-      "selectedSuffix": "napili",
-      "noneSelected": "Walang napili — Laktawan ang magpapatuloy",
-      "skip": "Laktawan sa ngayon",
-      "subscriptionNudge": "Ang ilang mga pack ay bahagi ng subscription — maaari kang mag-subscribe mamaya sa Mga Setting → Packs.",
+      "subscriptionNudge": "Kasama sa Corpán Plus ang ilang pack — puwede kang mag-upgrade mamaya sa Settings → Packs.",
       "entryCount": "{{n}} parirala",
       "paid": "Bayad",
       "emptyHero": "Walang available na pack ng parirala.",
-      "emptySub": "Regular na naglalabas ng mga bagong paksa — tingnan ang Mga Setting → Packs anumang oras.",
-      "offlineHero": "Wala kang koneksyon.",
-      "offlineSub": "Kailangan ng mga pack ng parirala ng internet — subukan mamaya mula sa Mga Setting → Packs.",
-      "offlineBanner": "Offline — ang mga pagpili ay mai-install kapag nakakonekta muli."
+      "emptySub": "Regular na naglalabas ng mga bagong paksa — tingnan ang Mga Setting → Packs anumang oras."
     },
     "back": "Bumalik",
     "continue": "Magpatuloy",
-    "class": {
-      "title": "Para kanino ito?",
-      "subtitle": "Ita-tailor namin ang Corpán para sa iyo. Mananatili ito sa iyong device — hindi namin ito ipinapadala kahit saan.",
-      "learner": "Natututo ako ng mga wika",
-      "learnerDesc": "Magbasa at makinig sa mga wika na iyong pinag-aaralan.",
-      "enjoyer": "Gusto kong tamasahin ang nilalaman",
-      "enjoyerDesc": "Mga libro, kwento at laro sa iyong sariling wika.",
-      "polyglot": "Pareho — gusto ko ang lahat",
-      "polyglotDesc": "Maraming wika nang sabay-sabay, kasama ang lahat ng iba pa.",
-      "kid": "Para ito sa isang bata",
-      "kidDesc": "Mga curated na libro at mga laro sa pag-aaral para sa mga mas batang mambabasa.",
-      "ageTitle": "Ilang taon na ang mambabasa?",
-      "ageUnder13": "Sa ilalim ng 13",
-      "ageTeen": "13–17"
-    },
-    "pitch": {
-      "title": "Sumali sa mga Corpanista",
-      "subtitle": "Ang Corpán Plus ay nagbubukas ng buong aklatan. Subukan ang unang bahagi ng anumang libro nang libre, magpakailanman.",
-      "everything": "Bawat libro, bawat wika — naka-unlock.",
-      "private": "Walang mga ad. Mananatili ang iyong data sa iyong device.",
-      "team": "Kami ay isang maliit na koponan at ibinabalik ang bawat sentimo sa Corpán.",
-      "tryPlus": "Subukan ang Corpán Plus",
-      "continueFree": "Magpatuloy sa libreng tier"
-    },
     "confident": {
       "yourVoiceFor": "Ang iyong {{lang}} na boses",
       "voiceCountOne": "1 boses na handa",
@@ -665,14 +605,13 @@
     "close": "Isara"
   },
   "rating": {
-    "title": "Nasiyahan ka ba sa Corpán?",
-    "description": "Ang Corpán ay ginawa ng isang maliit na open-source na koponan na nagsisimula pa lamang. Kung ito ay parang 5-star na app, ang mabilis na rating ay tumutulong sa amin ng malaki.",
-    "rateNow": "⭐ I-rate ng 5 stars",
-    "remindLater": "Marahil mamaya",
-    "noThanks": "Hindi, salamat",
+    "title": "Mahal mo ba ang Corpán?",
+    "description": "Kung mahal mo ang Corpán, bigyan ito ng 5 bituin. Sa mga app store, anumang mas mababa sa 5 bituin ay nakakasama sa Corpán.",
+    "rateNow": "⭐ Magbigay ng 5 bituin",
     "close": "Isara",
-    "feedbackHint": "Hindi pa 5 stars? I-tap ang 'Ibahagi ang feedback' at sabihin sa amin kung paano namin ito mapapabuti.",
-    "feedbackButton": "Ibahagi ang feedback sa GitHub"
+    "feedbackHint": "Kung hindi pa ito 5-star app para sa iyo, mag-email sa amin o magbukas ng issue sa GitHub at sabihin kung ano ang aayusin. Gusto naming pagandahin pa ito.",
+    "emailButton": "Mag-email sa amin",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "Mga Pack",
@@ -731,7 +670,7 @@
       "paid": "Bayad",
       "free": "Libre",
       "install": "I-install",
-      "unlockSub": "I-unlock gamit ang subscription",
+      "unlockSub": "I-unlock gamit ang Corpán Plus",
       "entryCount": "{{n}} parirala",
       "offlineEmpty": "Wala kang koneksyon. Kumonekta upang mag-browse ng mga pack ng parirala.",
       "showAll": "Ipakita ang lahat ({{count}})",
@@ -753,14 +692,17 @@
     "includedWithPlus": "Kasama sa Plus"
   },
   "subscription": {
-    "title": "I-unlock ang lahat",
-    "description": "Walang limitasyong access sa bawat na-narrate na libro at premium pack sa pamamagitan ng subscription.",
+    "startTrialPeriod": "Simulan ang {{period}} libreng trial",
+    "trialFree": "Libre nang {{period}}",
+    "trialThenCancel": "Pagkatapos {{price}}/{{period}} · kanselahin anumang oras. Walang babayaran ngayon.",
+    "title": "I-unlock ang Corpán Plus",
+    "description": "Walang limitasyong access sa bawat feature, wika, pack, at update.",
     "annual": "Taunan",
     "monthly": "Buwanang",
     "subscribe": "Mag-subscribe",
     "subscribing": "Nagsasubscribe...",
-    "subscribed": "Ikaw ay naka-subscribe",
-    "subscribedDescription": "{{plan}} na plano ay aktibo. Salamat sa pagsuporta sa Corpán.",
+    "subscribed": "Aktibo ang Corpán Plus",
+    "subscribedDescription": "Aktibo ang {{plan}} plan. Naka-unlock na ang lahat.",
     "manage": "Pamahalaan ang subscription",
     "termsOfUse": "Mga Tuntunin ng Paggamit",
     "privacyPolicy": "Patakaran sa Privacy",
@@ -786,7 +728,8 @@
     "trialHeadline": "{{period}} libre",
     "trialReassurance": "Walang bayad ngayon · maaaring kanselahin anumang oras",
     "trialThenPrice": ", pagkatapos ay {{price}}/{{period}}",
-    "trialToday": "Ngayon: simulan"
+    "trialToday": "Ngayon: simulan",
+    "rate": "I-rate ang Corpán"
   },
   "restore": {
     "button": "Ibalik ang mga Pagbili",
@@ -843,12 +786,12 @@
     "packCatalogSubtitle": "Ang iyong mga naka-install na pack ay patuloy na gumagana. Kumonekta muli upang mag-browse ng higit pa."
   },
   "paywall": {
-    "title": "Magpatuloy sa Corpán Plus",
-    "thanksTitle": "Ikaw ay isang Corpanista",
-    "thanksBody": "Salamat sa pagsuporta sa Corpán. Lahat ay naka-unlock.",
-    "bookSubhead": "Naabot mo na ang dulo ng libreng preview ng {{title}}.",
-    "subhead": "I-unlock ang bawat libro sa bawat wika. Walang mga ad. Mananatili ang iyong data sa iyong device.",
-    "pitch": "Kami ay isang maliit na koponan at ibinabalik ang bawat sentimo sa Corpán. Ang mga Corpanista ay nagpapanatili nitong walang ad at lumalaki.",
+    "title": "I-unlock ang Corpán Plus",
+    "thanksTitle": "Aktibo ang Corpán Plus",
+    "thanksBody": "Naka-unlock na ang lahat.",
+    "bookSubhead": "Ipagpatuloy ang {{title}} at i-unlock ang bawat feature.",
+    "subhead": "Walang limitasyong access sa bawat feature, wika, at update. Walang ads. Nananatili sa device mo ang data mo.",
+    "pitch": "Kasama ang mga libro, pack, laro, speech tools, at bagong learning experiences.",
     "maybeLater": "Marahil mamaya",
     "continue": "Magpatuloy",
     "dismiss": "Isara"
