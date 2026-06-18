@@ -10,6 +10,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Pulse Ring trail/fade regression.** Visualization rings lingered at full
+  opacity and only vanished when their slot was reused by a new ring; the
+  Settings → Pulse Ring → "Trail" slider had no visible effect. Cause: the
+  Babylon 9 upgrade (deps bump from `@babylonjs/core` 6.x → 9.x) made
+  `LinesMesh` alpha blending opt-in — without `useVertexAlpha` the per-ring
+  `alpha` is ignored at the blend stage, so the time-based fade math (which was
+  correct all along) never showed. The ring meshes are now created with
+  `useVertexAlpha: true`, so rings fade smoothly and the Trail setting again
+  controls how long they persist (low = quick fade, high = long trail).
+
 ## [0.7.1] - 2026-06-16
 
 ### Changed
