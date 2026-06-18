@@ -608,6 +608,9 @@
     "updateAvailable": "Frissítés elérhető"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}} ingyenes próbaidőszak indítása",
+    "trialFree": "{{period}} ingyenes",
+    "trialThenCancel": "Utána {{price}}/{{period}} · bármikor lemondható. Ma nincs fizetés.",
     "title": "Corpán Plus feloldása",
     "description": "Korlátlan hozzáférés minden funkcióhoz, nyelvhez, csomaghoz és frissítéshez.",
     "annual": "Éves",

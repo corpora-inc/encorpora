@@ -608,6 +608,9 @@
     "updateAvailable": "আপডেট উপলব্ধ"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}}-এর বিনামূল্যে ট্রায়াল শুরু করুন",
+    "trialFree": "{{period}} বিনামূল্যে",
+    "trialThenCancel": "তারপর {{price}}/{{period}} · যেকোনো সময় বাতিল করুন। আজ কোনো পেমেন্ট নেই।",
     "title": "Corpán Plus আনলক করুন",
     "description": "প্রতিটি ফিচার, ভাষা, প্যাক ও আপডেটে সীমাহীন অ্যাক্সেস।",
     "annual": "বার্ষিক",

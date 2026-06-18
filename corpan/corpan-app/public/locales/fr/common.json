@@ -608,6 +608,9 @@
     "updateAvailable": "Mise à jour disponible"
   },
   "subscription": {
+    "startTrialPeriod": "Commencer l'essai gratuit de {{period}}",
+    "trialFree": "Gratuit pendant {{period}}",
+    "trialThenCancel": "Puis {{price}}/{{period}} · annulez à tout moment. Aucun paiement aujourd'hui.",
     "title": "Déverrouiller Corpán Plus",
     "description": "Accès illimité à chaque fonctionnalité, langue, pack et mise à jour.",
     "annual": "Annuel",

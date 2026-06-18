@@ -692,6 +692,9 @@
     "includedWithPlus": "Kasama sa Plus"
   },
   "subscription": {
+    "startTrialPeriod": "Simulan ang {{period}} libreng trial",
+    "trialFree": "Libre nang {{period}}",
+    "trialThenCancel": "Pagkatapos {{price}}/{{period}} · kanselahin anumang oras. Walang babayaran ngayon.",
     "title": "I-unlock ang Corpán Plus",
     "description": "Walang limitasyong access sa bawat feature, wika, pack, at update.",
     "annual": "Taunan",

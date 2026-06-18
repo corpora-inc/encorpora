@@ -608,6 +608,9 @@
     "updateAvailable": "Actualizare disponibilă"
   },
   "subscription": {
+    "startTrialPeriod": "Începe perioada de probă gratuită de {{period}}",
+    "trialFree": "Gratuit timp de {{period}}",
+    "trialThenCancel": "Apoi {{price}}/{{period}} · anulează oricând. Niciun cost astăzi.",
     "title": "Deblochează Corpán Plus",
     "description": "Acces nelimitat la fiecare funcție, limbă, pachet și actualizare.",
     "annual": "Anual",

@@ -608,6 +608,9 @@
     "updateAvailable": "Update verfügbar"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}} kostenlos testen",
+    "trialFree": "Kostenlos für {{period}}",
+    "trialThenCancel": "Danach {{price}}/{{period}} · jederzeit kündbar. Heute keine Zahlung.",
     "title": "Corpán Plus freischalten",
     "description": "Unbegrenzter Zugriff auf jede Funktion, Sprache, jedes Paket und jedes Update.",
     "annual": "Jährlich",

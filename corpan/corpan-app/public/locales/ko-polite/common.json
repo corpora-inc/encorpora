@@ -608,6 +608,9 @@
     "updateAvailable": "업데이트 가능"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}} 무료 체험 시작하기",
+    "trialFree": "{{period}} 동안 무료",
+    "trialThenCancel": "이후 {{price}}/{{period}} · 언제든지 취소하실 수 있어요. 오늘은 결제되지 않아요.",
     "title": "Corpán Plus 잠금 해제",
     "description": "모든 기능, 언어, 팩, 업데이트를 무제한으로 이용할 수 있습니다.",
     "annual": "연간",

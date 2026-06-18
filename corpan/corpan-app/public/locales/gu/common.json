@@ -608,6 +608,9 @@
     "updateAvailable": "અપડેટ ઉપલબ્ધ છે"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}} ની મફત અજમાયશ શરૂ કરો",
+    "trialFree": "{{period}} માટે મફત",
+    "trialThenCancel": "પછી {{price}}/{{period}} · ગમે ત્યારે રદ કરો. આજે કોઈ ચુકવણી નહીં.",
     "title": "Corpán Plus અનલૉક કરો",
     "description": "દરેક સુવિધા, ભાષા, પૅક અને અપડેટની અમર્યાદિત ઍક્સેસ.",
     "annual": "વાર્ષિક",

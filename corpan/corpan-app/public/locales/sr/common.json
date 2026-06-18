@@ -608,6 +608,9 @@
     "updateAvailable": "Dostupno ažuriranje"
   },
   "subscription": {
+    "startTrialPeriod": "Започни бесплатан пробни период од {{period}}",
+    "trialFree": "Бесплатно током {{period}}",
+    "trialThenCancel": "Затим {{price}}/{{period}} · откажи било кад. Данас без наплате.",
     "title": "Откључај Corpán Plus",
     "description": "Неограничен приступ свакој функцији, језику, пакету и ажурирању.",
     "annual": "Godišnje",

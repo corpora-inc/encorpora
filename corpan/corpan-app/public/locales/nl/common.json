@@ -608,6 +608,9 @@
     "updateAvailable": "Update beschikbaar"
   },
   "subscription": {
+    "startTrialPeriod": "Start gratis proefperiode van {{period}}",
+    "trialFree": "{{period}} gratis",
+    "trialThenCancel": "Daarna {{price}}/{{period}} · op elk moment opzegbaar. Vandaag geen betaling.",
     "title": "Ontgrendel Corpán Plus",
     "description": "Onbeperkte toegang tot elke functie, taal, elk pakket en elke update.",
     "annual": "Jaarlijks",

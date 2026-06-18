@@ -692,6 +692,9 @@
     "includedWithPlus": "Kalebet sareng Plus"
   },
   "subscription": {
+    "startTrialPeriod": "Mimitian uji coba gratis {{period}}",
+    "trialFree": "Gratis salami {{period}}",
+    "trialThenCancel": "Teras {{price}}/{{period}} · bisa dibatalkeun iraha waé. Teu aya pamayaran ayeuna.",
     "title": "Buka Corpán Plus",
     "description": "Aksés taya wates ka unggal fitur, basa, pak, jeung apdet.",
     "annual": "Tahunan",

@@ -608,6 +608,9 @@
     "updateAvailable": "Yra naujinys"
   },
   "subscription": {
+    "startTrialPeriod": "Pradėti nemokamą {{period}} bandymą",
+    "trialFree": "Nemokama {{period}}",
+    "trialThenCancel": "Vėliau {{price}}/{{period}} · atšaukite bet kada. Šiandien mokėti nereikia.",
     "title": "Atrakinti Corpán Plus",
     "description": "Neribota prieiga prie kiekvienos funkcijos, kalbos, paketo ir atnaujinimo.",
     "annual": "Metinė",

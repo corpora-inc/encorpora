@@ -608,6 +608,9 @@
     "updateAvailable": "Güncelleme mevcut"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}} ücretsiz denemeyi başlat",
+    "trialFree": "{{period}} boyunca ücretsiz",
+    "trialThenCancel": "Ardından {{price}}/{{period}} · istediğiniz zaman iptal edin. Bugün ödeme yok.",
     "title": "Corpán Plus kilidini açın",
     "description": "Her özelliğe, dile, pakete ve güncellemeye sınırsız erişim.",
     "annual": "Yıllık",

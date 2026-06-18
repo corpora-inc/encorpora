@@ -608,6 +608,9 @@
     "updateAvailable": "Posodobitev na voljo"
   },
   "subscription": {
+    "startTrialPeriod": "Začni brezplačno preizkusno obdobje za {{period}}",
+    "trialFree": "Brezplačno za {{period}}",
+    "trialThenCancel": "Nato {{price}}/{{period}} · prekliči kadar koli. Danes brez plačila.",
     "title": "Odkleni Corpán Plus",
     "description": "Neomejen dostop do vseh funkcij, jezikov, paketov in posodobitev.",
     "annual": "Letno",

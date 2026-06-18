@@ -608,6 +608,9 @@
     "updateAvailable": "అప్‌డేట్ అందుబాటులో ఉంది"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}} ఉచిత ట్రయల్‌ను ప్రారంభించండి",
+    "trialFree": "{{period}} పాటు ఉచితం",
+    "trialThenCancel": "ఆ తర్వాత {{price}}/{{period}} · ఎప్పుడైనా రద్దు చేయవచ్చు. ఈరోజు ఎలాంటి చెల్లింపు లేదు.",
     "title": "Corpán Plus ను అన్లాక్ చేయండి",
     "description": "ప్రతి ఫీచర్, భాష, ప్యాక్ మరియు అప్‌డేట్‌కు అపరిమిత యాక్సెస్.",
     "annual": "వార్షిక",

@@ -608,6 +608,9 @@
     "updateAvailable": "Pembaruan tersedia"
   },
   "subscription": {
+    "startTrialPeriod": "Mulai uji coba gratis {{period}}",
+    "trialFree": "Gratis selama {{period}}",
+    "trialThenCancel": "Lalu {{price}}/{{period}} · batalkan kapan saja. Tidak ada pembayaran hari ini.",
     "title": "Buka Corpán Plus",
     "description": "Akses tanpa batas ke setiap fitur, bahasa, paket, dan pembaruan.",
     "annual": "Tahunan",

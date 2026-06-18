@@ -608,6 +608,9 @@
     "updateAvailable": "Atualização disponível"
   },
   "subscription": {
+    "startTrialPeriod": "Iniciar teste gratuito de {{period}}",
+    "trialFree": "Grátis durante {{period}}",
+    "trialThenCancel": "Depois {{price}}/{{period}} · cancele quando quiser. Sem pagamento hoje.",
     "title": "Desbloquear o Corpán Plus",
     "description": "Acesso ilimitado a todas as funcionalidades, línguas, pacotes e atualizações.",
     "annual": "Anual",

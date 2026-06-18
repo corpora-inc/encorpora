@@ -608,6 +608,9 @@
     "updateAvailable": "اپ ڈیٹ دستیاب ہے"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}} کا مفت ٹرائل شروع کریں",
+    "trialFree": "{{period}} کے لیے مفت",
+    "trialThenCancel": "پھر {{price}}/{{period}} · جب چاہیں منسوخ کریں۔ آج کوئی ادائیگی نہیں۔",
     "title": "Corpán Plus کھولیں",
     "description": "ہر فیچر، زبان، پیک اور اپ ڈیٹ تک لا محدود رسائی۔",
     "annual": "سالانہ",

@@ -608,6 +608,9 @@
     "updateAvailable": "עדכון זמין"
   },
   "subscription": {
+    "startTrialPeriod": "התחל תקופת ניסיון חינם של {{period}}",
+    "trialFree": "חינם למשך {{period}}",
+    "trialThenCancel": "לאחר מכן {{price}}/{{period}} · ניתן לבטל בכל עת. ללא תשלום היום.",
     "title": "בטל נעילה של Corpán Plus",
     "description": "גישה בלתי מוגבלת לכל תכונה, שפה, חבילה ועדכון.",
     "annual": "שָׁנָתִי",

@@ -608,6 +608,9 @@
     "updateAvailable": "Uppdatering tillgänglig"
   },
   "subscription": {
+    "startTrialPeriod": "Starta {{period}} gratis provperiod",
+    "trialFree": "Gratis i {{period}}",
+    "trialThenCancel": "Sedan {{price}}/{{period}} · avbryt när som helst. Ingen betalning idag.",
     "title": "Lås upp Corpán Plus",
     "description": "Obegränsad tillgång till alla funktioner, språk, paket och uppdateringar.",
     "annual": "Årlig",

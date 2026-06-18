@@ -608,6 +608,9 @@
     "updateAvailable": "به‌روزرسانی موجود است"
   },
   "subscription": {
+    "startTrialPeriod": "شروع آزمایش رایگان {{period}}",
+    "trialFree": "رایگان به مدت {{period}}",
+    "trialThenCancel": "سپس {{price}}/{{period}} · لغو در هر زمان. امروز پرداختی ندارید.",
     "title": "Corpán Plus را باز کنید",
     "description": "دسترسی نامحدود به هر قابلیت، زبان، بسته و به‌روزرسانی.",
     "annual": "سالانه",

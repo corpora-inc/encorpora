@@ -608,6 +608,9 @@
     "updateAvailable": "Có bản cập nhật"
   },
   "subscription": {
+    "startTrialPeriod": "Bắt đầu dùng thử miễn phí {{period}}",
+    "trialFree": "Miễn phí trong {{period}}",
+    "trialThenCancel": "Sau đó {{price}}/{{period}} · hủy bất cứ lúc nào. Hôm nay chưa thanh toán.",
     "title": "Mở khóa Corpán Plus",
     "description": "Truy cập không giới hạn vào mọi tính năng, ngôn ngữ, gói và bản cập nhật.",
     "annual": "Hàng năm",

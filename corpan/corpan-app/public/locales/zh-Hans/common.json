@@ -608,6 +608,9 @@
     "updateAvailable": "有可用更新"
   },
   "subscription": {
+    "startTrialPeriod": "开始 {{period}} 免费试用",
+    "trialFree": "{{period}}内免费",
+    "trialThenCancel": "之后 {{price}}/{{period}} · 随时取消。今日无需付款。",
     "title": "解锁 Corpán Plus",
     "description": "无限使用所有功能、语言、包和更新。",
     "annual": "年付",

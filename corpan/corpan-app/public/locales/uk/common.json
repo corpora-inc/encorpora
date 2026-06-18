@@ -608,6 +608,9 @@
     "updateAvailable": "Доступне оновлення"
   },
   "subscription": {
+    "startTrialPeriod": "Почати безкоштовний пробний період на {{period}}",
+    "trialFree": "Безкоштовно протягом {{period}}",
+    "trialThenCancel": "Потім {{price}}/{{period}} · скасуйте будь-коли. Сьогодні без оплати.",
     "title": "Розблокувати Corpán Plus",
     "description": "Необмежений доступ до кожної функції, мови, пакета й оновлення.",
     "annual": "Щорічно",

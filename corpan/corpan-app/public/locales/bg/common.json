@@ -608,6 +608,9 @@
     "updateAvailable": "Налична актуализация"
   },
   "subscription": {
+    "startTrialPeriod": "Започнете {{period}} безплатен пробен период",
+    "trialFree": "Безплатно за {{period}}",
+    "trialThenCancel": "След това {{price}}/{{period}} · отмяна по всяко време. Без плащане днес.",
     "title": "Отключете Corpán Plus",
     "description": "Неограничен достъп до всяка функция, език, пакет и актуализация.",
     "annual": "Годишен",

@@ -608,6 +608,9 @@
     "updateAvailable": "Διαθέσιμη ενημέρωση"
   },
   "subscription": {
+    "startTrialPeriod": "Ξεκινήστε δωρεάν δοκιμή {{period}}",
+    "trialFree": "Δωρεάν για {{period}}",
+    "trialThenCancel": "Έπειτα {{price}}/{{period}} · ακύρωση οποιαδήποτε στιγμή. Καμία πληρωμή σήμερα.",
     "title": "Ξεκλειδώστε το Corpán Plus",
     "description": "Απεριόριστη πρόσβαση σε κάθε λειτουργία, γλώσσα, πακέτο και ενημέρωση.",
     "annual": "Ετήσια",

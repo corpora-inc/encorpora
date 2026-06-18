@@ -608,6 +608,9 @@
     "updateAvailable": "アップデート利用可能"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}}間の無料トライアルを始める",
+    "trialFree": "{{period}}間無料",
+    "trialThenCancel": "その後{{price}}/{{period}} · いつでも解約可能。本日のお支払いはありません。",
     "title": "Corpán Plusをアンロック",
     "description": "すべての機能、言語、パック、アップデートに無制限アクセス。",
     "annual": "年額",

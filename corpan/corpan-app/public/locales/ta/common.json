@@ -608,6 +608,9 @@
     "updateAvailable": "புதுப்பிப்பு உள்ளது"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}} இலவச சோதனையைத் தொடங்கவும்",
+    "trialFree": "{{period}} இலவசம்",
+    "trialThenCancel": "அதன் பிறகு {{price}}/{{period}} · எப்போது வேண்டுமானாலும் ரத்து செய்யலாம். இன்று கட்டணம் இல்லை.",
     "title": "Corpán Plus-ஐ திறக்கவும்",
     "description": "ஒவ்வொரு அம்சம், மொழி, தொகுப்பு மற்றும் புதுப்பிப்பிற்கும் வரம்பற்ற அணுகல்.",
     "annual": "ஆண்டு",

@@ -692,6 +692,9 @@
     "includedWithPlus": "Kalebu karo Plus"
   },
   "subscription": {
+    "startTrialPeriod": "Wiwiti nyoba gratis {{period}}",
+    "trialFree": "Gratis sajrone {{period}}",
+    "trialThenCancel": "Banjur {{price}}/{{period}} · bisa dibatalake kapan wae. Ora ana pembayaran dina iki.",
     "title": "Mbukak Corpán Plus",
     "description": "Akses tanpa wates menyang saben fitur, basa, pak, lan nganyari.",
     "annual": "Tahunan",

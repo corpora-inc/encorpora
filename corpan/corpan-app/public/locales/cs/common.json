@@ -608,6 +608,9 @@
     "updateAvailable": "Aktualizace k dispozici"
   },
   "subscription": {
+    "startTrialPeriod": "Začít bezplatnou zkušební verzi na {{period}}",
+    "trialFree": "Zdarma na {{period}}",
+    "trialThenCancel": "Poté {{price}}/{{period}} · kdykoli zrušit. Dnes žádná platba.",
     "title": "Odemknout Corpán Plus",
     "description": "Neomezený přístup ke každé funkci, jazyku, balíčku a aktualizaci.",
     "annual": "Roční",

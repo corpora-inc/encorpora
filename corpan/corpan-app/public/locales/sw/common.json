@@ -608,6 +608,9 @@
     "updateAvailable": "Sasisho linapatikana"
   },
   "subscription": {
+    "startTrialPeriod": "Anza majaribio ya bure ya {{period}}",
+    "trialFree": "Bila malipo kwa {{period}}",
+    "trialThenCancel": "Kisha {{price}}/{{period}} · ghairi wakati wowote. Hakuna malipo leo.",
     "title": "Fungua Corpán Plus",
     "description": "Ufikiaji usio na kikomo wa kila kipengele, lugha, kifurushi na sasisho.",
     "annual": "Kila mwaka",

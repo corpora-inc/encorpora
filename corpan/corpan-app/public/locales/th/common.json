@@ -608,6 +608,9 @@
     "updateAvailable": "มีการอัปเดต"
   },
   "subscription": {
+    "startTrialPeriod": "เริ่มทดลองใช้ฟรี {{period}}",
+    "trialFree": "ฟรี {{period}}",
+    "trialThenCancel": "จากนั้น {{price}}/{{period}} · ยกเลิกได้ทุกเมื่อ ไม่มีการเรียกเก็บเงินวันนี้",
     "title": "ปลดล็อก Corpán Plus",
     "description": "เข้าถึงทุกฟีเจอร์ ภาษา แพ็ก และอัปเดตได้ไม่จำกัด",
     "annual": "รายปี",

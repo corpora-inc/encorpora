@@ -608,6 +608,9 @@
     "updateAvailable": "Päivitys saatavilla"
   },
   "subscription": {
+    "startTrialPeriod": "Aloita {{period}} ilmainen kokeilu",
+    "trialFree": "Ilmainen {{period}}",
+    "trialThenCancel": "Sitten {{price}}/{{period}} · peru milloin tahansa. Ei maksua tänään.",
     "title": "Avaa Corpán Plus",
     "description": "Rajaton pääsy kaikkiin ominaisuuksiin, kieliin, paketteihin ja päivityksiin.",
     "annual": "Vuosittainen",

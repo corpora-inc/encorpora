@@ -608,6 +608,9 @@
     "updateAvailable": "Доступно обновление"
   },
   "subscription": {
+    "startTrialPeriod": "Начать бесплатный период на {{period}}",
+    "trialFree": "Бесплатно в течение {{period}}",
+    "trialThenCancel": "Затем {{price}}/{{period}} · отмена в любое время. Сегодня оплаты нет.",
     "title": "Открыть Corpán Plus",
     "description": "Неограниченный доступ ко всем функциям, языкам, пакетам и обновлениям.",
     "annual": "Годовая",

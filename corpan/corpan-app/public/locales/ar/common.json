@@ -608,6 +608,9 @@
     "updateAvailable": "تحديث متاح"
   },
   "subscription": {
+    "startTrialPeriod": "ابدأ تجربة مجانية لمدة {{period}}",
+    "trialFree": "مجانًا لمدة {{period}}",
+    "trialThenCancel": "ثم {{price}}/{{period}} · يمكنك الإلغاء في أي وقت. لا دفع اليوم.",
     "title": "افتح Corpán Plus",
     "description": "وصول غير محدود إلى كل ميزة ولغة وحزمة وتحديث.",
     "annual": "سنوي",

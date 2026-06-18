@@ -608,6 +608,9 @@
     "updateAvailable": "अपडेट उपलब्ध है"
   },
   "subscription": {
+    "startTrialPeriod": "{{period}} का मुफ़्त ट्रायल शुरू करें",
+    "trialFree": "{{period}} के लिए मुफ़्त",
+    "trialThenCancel": "फिर {{price}}/{{period}} · कभी भी रद्द करें। आज कोई भुगतान नहीं।",
     "title": "Corpán Plus अनलॉक करें",
     "description": "हर सुविधा, भाषा, पैक और अपडेट तक असीमित पहुंच।",
     "annual": "वार्षिक",
