@@ -21,7 +21,7 @@
  */
 import { useCallback, useEffect, useRef, useState } from "react"
 import type { HostApi } from "../sdk/types"
-import { useGameStore, BASKET_SIZE } from "../state/gameStore"
+import { useGameStore, BASKET_SIZE, type CompletedPhrase } from "../state/gameStore"
 import { getAllFruits, type CEFRLevel, type FruitDef } from "../state/fruits"
 import { loadUtterance, type Utterance } from "../util/phraseLoader"
 import { pickLanguagePair } from "../util/languagePair"
@@ -64,6 +64,10 @@ export type LevelCompleteInfo = {
   fruit: FruitDef
   bottlesCompleted: number
   nextLevel: CEFRLevel | null
+  // The just-completed bottle's phrases, captured for the review BEFORE a basket
+  // can clear the shelf (a level finishing on a 6-jar basket boundary would
+  // otherwise leave the modal reading an emptied collection → "noPhrases").
+  phrases: CompletedPhrase[]
 }
 
 export function useGameLogic(hostApi: HostApi) {
@@ -356,6 +360,9 @@ export function useGameLogic(hostApi: HostApi) {
     const tDock = window.setTimeout(() => {
       if (!mounted.current) return
       const shelf = useGameStore.getState().bottleProgress.bottleCollection
+      // Capture the just-completed bottle's phrases NOW, before a basket carry can
+      // clear the shelf — the level-complete review renders from this snapshot.
+      const completedPhrases: CompletedPhrase[] = shelf[shelf.length - 1]?.phrases ?? []
       let basketDelay = 0
       if (shelf.length >= BASKET_SIZE) {
         basketDelay = BASKET_CARRY_MS
@@ -380,6 +387,7 @@ export function useGameLogic(hostApi: HostApi) {
             fruit: currentFruit,
             bottlesCompleted: bp.bottlesCompletedThisLevel,
             nextLevel: getNextLevelSuggestion(hostApi),
+            phrases: completedPhrases,
           })
         } else {
           // Switch the now-empty glass to the next bottle's color, then advance.

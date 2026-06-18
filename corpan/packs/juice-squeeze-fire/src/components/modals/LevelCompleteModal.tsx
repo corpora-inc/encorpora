@@ -10,7 +10,6 @@
  */
 import { useState } from "react"
 import type { LevelCompleteInfo } from "../../hooks/useGameLogic"
-import { useGameStore } from "../../state/gameStore"
 import { t } from "../../util/i18n"
 
 type Props = {
@@ -31,9 +30,9 @@ const flag = (lang: string) => LANG_FLAGS[lang.split("-")[0]] || "🌐"
 
 export function LevelCompleteModal({ info, uiLang, onContinue }: Props) {
   const [reviewing, setReviewing] = useState(false)
-  const bottles = useGameStore((s) => s.bottleProgress.bottleCollection)
-  const lastBottle = bottles[bottles.length - 1]
-  const phrases = lastBottle?.phrases || []
+  // Render the review from the snapshot captured at level-complete time — NOT the
+  // live shelf, which a basket carry may have cleared (Skylar's review).
+  const phrases = info.phrases
 
   if (reviewing) {
     return (
