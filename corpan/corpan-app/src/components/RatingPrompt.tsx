@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star, X, Heart, Github, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import { useRatingStore, RATING_CRITERIA as CRITERIA } from "@/store/rating";
+import { useRatingStore } from "@/store/rating";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { detectPlatform } from "@/lib/getPlatform";
 import { requestNativeReview } from "@/contentPacks/purchase";
@@ -32,25 +32,12 @@ const platforms = [
 export function RatingPrompt() {
 	const { t } = useTranslation();
 
-	// One primitive per selector to keep useSyncExternalStore happy
-	const totalUtteranceCount = useRatingStore((s) => s.totalUtteranceCount);
-	const utterancesSinceLastPrompt = useRatingStore(
-		(s) => s.utterancesSinceLastPrompt
-	);
-	const hasRated = useRatingStore((s) => s.hasRated);
-	const hasDismissed = useRatingStore((s) => s.hasDismissed);
-	const remindMeLaterCount = useRatingStore((s) => s.remindMeLaterCount);
+	// Manual-only: the card shows solely when promptManualReview() has opened it
+	// (Settings → About "Rate Corpán"). It never auto-appears.
+	const show = useRatingStore((s) => s.isOpen);
 
 	const dismissPrompt = useRatingStore((s) => s.dismissPrompt);
 	const rateApp = useRatingStore((s) => s.rateApp);
-	const remindLater = useRatingStore((s) => s.remindLater);
-
-	const show =
-		!hasRated &&
-		!hasDismissed &&
-		remindMeLaterCount < CRITERIA.MAX_REMIND_COUNT &&
-		totalUtteranceCount >= CRITERIA.MIN_UTTERANCES_BEFORE_FIRST_PROMPT &&
-		utterancesSinceLastPrompt >= CRITERIA.UTTERANCES_BETWEEN_PROMPTS;
 
 	const handleRate = async () => {
 		rateApp();
@@ -75,10 +62,6 @@ export function RatingPrompt() {
 
 	const handleDismiss = () => {
 		dismissPrompt();
-	};
-
-	const handleRemindLater = () => {
-		remindLater();
 	};
 
 	const dismissForFeedback = () => {
@@ -118,7 +101,7 @@ export function RatingPrompt() {
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
 						className={`fixed inset-0 z-100 ${glass("bg-black/25 backdrop-blur-sm", "bg-black/45")}`}
-						onClick={handleRemindLater}
+						onClick={handleDismiss}
 					/>
 
 					{/* Prompt Card */}
@@ -136,7 +119,7 @@ export function RatingPrompt() {
 						<div className="bg-background rounded-3xl shadow-2xl p-6 sm:p-7 relative overflow-hidden border border-black/5">
 							{/* Close button */}
 							<button
-								onClick={handleRemindLater}
+								onClick={handleDismiss}
 								className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
 								aria-label={t("rating.close" as any)}
 							>
@@ -258,25 +241,18 @@ export function RatingPrompt() {
 								</Button>
 							</motion.div>
 
-							{/* Secondary actions: later / no thanks */}
+							{/* Secondary action: close */}
 							<motion.div
 								initial={{ opacity: 0, y: 4 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 0.4 }}
-								className="mt-3 flex items-center justify-between gap-2 text-xs text-muted-foreground"
+								className="mt-3 flex items-center justify-center text-xs text-muted-foreground"
 							>
-								<button
-									onClick={handleRemindLater}
-									className="underline-offset-2 hover:underline cursor-pointer"
-								>
-									{t("rating.remindLater" as any)}
-								</button>
-
 								<button
 									onClick={handleDismiss}
 									className="underline-offset-2 hover:underline cursor-pointer"
 								>
-									{t("rating.noThanks" as any)}
+									{t("rating.close" as any)}
 								</button>
 							</motion.div>
 						</div>

@@ -11,7 +11,6 @@ import { createVoiceTTS } from "@/util/speak"
 import { trackEvent } from "@/util/analytics"
 import { useHistoryStore } from "@/store/history"
 import { useSettingsStore } from "@/store/settings"
-import { useRatingStore } from "@/store/rating"
 import { useEntitlementStore } from "@/store/entitlements"
 import { usePaywallStore } from "@/store/paywall"
 import type { PaywallSurface } from "@/store/paywall"
@@ -1122,7 +1121,8 @@ export const createHostApi = (packId?: string): HostApi => {
       },
     },
     notifyUtterance: () => {
-      useRatingStore.getState().incrementUtteranceCount()
+      // No-op: rating is now manual-only (Settings → About). We no longer track
+      // utterance counts to auto-trigger the prompt. Kept for pack API compat.
     },
     // The CURRENT pack's visit streak (the host already recorded the visit at
     // the pack-enter boundary; this is a read-only retention read). Falls back to
@@ -1162,13 +1162,9 @@ export const createHostApi = (packId?: string): HostApi => {
       })
     },
     showRatingPrompt: () => {
-      // The OS-native in-app review sheet (iOS StoreKit / Android Play In-App
-      // Review) is the canonical "rate us" surface — never our own modal as a
-      // precondition, never gating any functionality. The OS is the real
-      // throttle (iOS ~3×/year, and it may show nothing); the rating store adds
-      // only a soft local backstop (minimum engagement + a long cooldown).
-      // Fire-and-forget; this returns immediately.
-      useRatingStore.getState().maybeRequestNativeReview()
+      // No-op: rating is manual-only. Packs can no longer auto-trigger the
+      // rating prompt (e.g. on pack exit / daily-quota exit) — the user opens it
+      // deliberately via Settings → About. Kept for pack API compat.
     },
     phrasePacks: {
       getInstalled: () => {
