@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Đọc Cam kết quyền riêng tư của chúng tôi",
     "showStreak": "Hiển thị chuỗi đọc sách",
     "showStreakHint": "Số ngày nhỏ ở tiêu đề. Chỉ trên thiết bị, không có lời nhắc hay thông báo.",
-    "primaryLanguage": "Ngôn ngữ chính (giao diện)"
+    "primaryLanguage": "Ngôn ngữ chính (giao diện)",
+    "home": "Trang chủ",
+    "developer": "Nhà phát triển"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Bạn có yêu thích Corpán không?",
     "description": "Nếu bạn yêu thích Corpán, hãy cho ứng dụng 5 sao. Trên các cửa hàng ứng dụng, bất cứ điểm nào dưới 5 sao đều làm hại Corpán.",
     "rateNow": "⭐ Cho 5 sao",
-    "remindLater": "Để sau",
-    "noThanks": "Không, cảm ơn",
     "close": "Đóng",
     "feedbackHint": "Nếu với bạn đây chưa phải là ứng dụng 5 sao, hãy gửi email cho chúng tôi hoặc mở issue trên GitHub và nói cần sửa gì. Chúng tôi muốn làm nó tốt hơn.",
     "emailButton": "Gửi email",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} miễn phí",
     "trialReassurance": "Chưa cần thanh toán · hủy bất kỳ lúc nào",
     "trialThenPrice": ", sau đó {{price}}/{{period}}",
-    "trialToday": "Hôm nay: bắt đầu"
+    "trialToday": "Hôm nay: bắt đầu",
+    "rate": "Đánh giá Corpán"
   },
   "restore": {
     "button": "Khôi phục mua hàng",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — mở khóa mọi thứ",
     "recommended": "Đề xuất",
     "showAnother": "Hiển thị cái khác",
-    "tryIt": "Dùng thử"
+    "tryIt": "Dùng thử",
+    "packUpdates": "Bạn có bản cập nhật gói",
+    "updateAll": "Cập nhật tất cả"
   },
   "offline": {
     "cachedSubtitle": "Hiển thị kết quả được lưu vào bộ nhớ đệm gần đây nhất của bạn.",

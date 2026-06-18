@@ -131,7 +131,9 @@
     "readPrivacyPromise": "閱讀我們的隱私承諾",
     "showStreak": "顯示連續閱讀天數",
     "showStreakHint": "標題中顯示連續閱讀天數。僅限裝置內，無提醒或通知。",
-    "primaryLanguage": "主要（使用者介面）語言"
+    "primaryLanguage": "主要（使用者介面）語言",
+    "home": "首頁",
+    "developer": "開發者"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "喜歡 Corpán 嗎？",
     "description": "如果你喜歡 Corpán，請給它 5 星。在應用商店裡，任何低於 5 星的評分都會傷害 Corpán。",
     "rateNow": "⭐ 給 5 星",
-    "remindLater": "稍後再說",
-    "noThanks": "不用了，謝謝",
     "close": "關閉",
     "feedbackHint": "如果它對你來說還不是 5 星應用，請寄信給我們或在 GitHub 開 issue，告訴我們該修什麼。我們想把它做得更好。",
     "emailButton": "寄信給我們",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} 免費",
     "trialReassurance": "現在無需付款 · 隨時取消",
     "trialThenPrice": "，然後 {{price}}/{{period}}",
-    "trialToday": "今天：開始"
+    "trialToday": "今天：開始",
+    "rate": "評價 Corpán"
   },
   "restore": {
     "button": "恢復購買",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — 解鎖所有內容",
     "recommended": "推薦",
     "showAnother": "顯示其他",
-    "tryIt": "試用"
+    "tryIt": "試用",
+    "packUpdates": "你有套件更新",
+    "updateAll": "全部更新"
   },
   "offline": {
     "cachedSubtitle": "顯示您上次的快取結果。",

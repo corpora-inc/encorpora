@@ -131,7 +131,9 @@
     "readPrivacyPromise": "اقرأ تعهّدنا بالخصوصية",
     "showStreak": "إظهار سلسلة القراءة",
     "showStreakHint": "عدد أيام صغير في الرأس. على الجهاز فقط، بدون تذكيرات أو إشعارات.",
-    "primaryLanguage": "اللغة الأساسية (واجهة المستخدم)"
+    "primaryLanguage": "اللغة الأساسية (واجهة المستخدم)",
+    "home": "الرئيسية",
+    "developer": "المطور"
   },
   "onboarding": {
     "pickLanguagesToLearn": "اختر اللغات التي تريد تعلمها",
@@ -522,8 +524,6 @@
     "title": "هل تحب Corpán؟",
     "description": "إذا كنت تحب Corpán، فامنحه 5 نجوم. في متاجر التطبيقات، أي شيء أقل من 5 نجوم يضرّ بـ Corpán.",
     "rateNow": "⭐ امنحه 5 نجوم",
-    "remindLater": "ربما لاحقًا",
-    "noThanks": "لا، شكرًا",
     "close": "إغلاق",
     "feedbackHint": "إذا لم يكن تطبيق 5 نجوم بالنسبة لك بعد، راسلنا بالبريد الإلكتروني أو افتح مشكلة على GitHub وأخبرنا بما يجب إصلاحه. نريد أن نجعله أفضل.",
     "emailButton": "راسلنا",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} مجانًا",
     "trialReassurance": "لا يوجد دفع الآن · يمكنك الإلغاء في أي وقت",
     "trialThenPrice": "، ثم {{price}}/{{period}}",
-    "trialToday": "اليوم: البدء"
+    "trialToday": "اليوم: البدء",
+    "rate": "قيّم Corpán"
   },
   "restore": {
     "button": "استعادة المشتريات",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — افتح كل شيء",
     "recommended": "موصى به",
     "showAnother": "أظهر لي آخر",
-    "tryIt": "جربه"
+    "tryIt": "جربه",
+    "packUpdates": "توجد تحديثات للحِزم",
+    "updateAll": "تحديث الكل"
   },
   "offline": {
     "cachedSubtitle": "عرض آخر نتائجك المخزنة مؤقتًا.",

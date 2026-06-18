@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Læs vores løfte om privatliv",
     "showStreak": "Vis læsestribe",
     "showStreakHint": "Et lille dagstal i overskriften. Kun på enheden, ingen påmindelser eller notifikationer.",
-    "primaryLanguage": "Primært (brugerflade) sprog"
+    "primaryLanguage": "Primært (brugerflade) sprog",
+    "home": "Hjem",
+    "developer": "Udvikler"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Elsker du Corpán?",
     "description": "Hvis du elsker Corpán, så giv den 5 stjerner. I app-butikkerne skader alt under 5 stjerner Corpán.",
     "rateNow": "⭐ Giv 5 stjerner",
-    "remindLater": "Måske senere",
-    "noThanks": "Nej tak",
     "close": "Luk",
     "feedbackHint": "Hvis den endnu ikke er en 5-stjernet app for dig, så send os en mail eller åbn en sag på GitHub og fortæl, hvad vi skal rette. Vi vil gøre den bedre.",
     "emailButton": "Send mail",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} gratis",
     "trialReassurance": "Ingen betaling nu · annuller når som helst",
     "trialThenPrice": ", derefter {{price}}/{{period}}",
-    "trialToday": "I dag: start"
+    "trialToday": "I dag: start",
+    "rate": "Bedøm Corpán"
   },
   "restore": {
     "button": "Gendan køb",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — lås op for alt",
     "recommended": "Anbefalet",
     "showAnother": "Vis mig en anden",
-    "tryIt": "Prøv det"
+    "tryIt": "Prøv det",
+    "packUpdates": "Du har pakkeopdateringer",
+    "updateAll": "Opdater alle"
   },
   "offline": {
     "cachedSubtitle": "Viser dine senest cachelagrede resultater.",

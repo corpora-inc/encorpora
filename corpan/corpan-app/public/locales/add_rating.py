@@ -13,8 +13,6 @@ RATING = {
         "emailButton": "Email us",
         "githubButton": "GitHub issue",
         "rateNow": "⭐ Give 5 stars",
-        "remindLater": "Maybe later",
-        "noThanks": "No, thanks",
         "close": "Close",
     },
     "es": {
@@ -24,8 +22,6 @@ RATING = {
         "emailButton": "Escríbenos",
         "githubButton": "Issue en GitHub",
         "rateNow": "⭐ Dale 5 estrellas",
-        "remindLater": "Quizás más tarde",
-        "noThanks": "No, gracias",
         "close": "Cerrar",
     },
     "fr": {
@@ -35,8 +31,6 @@ RATING = {
         "emailButton": "Nous écrire",
         "githubButton": "Issue GitHub",
         "rateNow": "⭐ Mettre 5 étoiles",
-        "remindLater": "Plus tard peut-être",
-        "noThanks": "Non, merci",
         "close": "Fermer",
     },
     "de": {
@@ -46,8 +40,6 @@ RATING = {
         "emailButton": "E-Mail senden",
         "githubButton": "GitHub-Issue",
         "rateNow": "⭐ 5 Sterne geben",
-        "remindLater": "Vielleicht später",
-        "noThanks": "Nein, danke",
         "close": "Schließen",
     },
     "pt-BR": {
@@ -57,8 +49,6 @@ RATING = {
         "emailButton": "Enviar e-mail",
         "githubButton": "Issue no GitHub",
         "rateNow": "⭐ Dê 5 estrelas",
-        "remindLater": "Talvez mais tarde",
-        "noThanks": "Não, obrigado",
         "close": "Fechar",
     },
     "it": {
@@ -68,8 +58,6 @@ RATING = {
         "emailButton": "Scrivici",
         "githubButton": "Issue GitHub",
         "rateNow": "⭐ Dai 5 stelle",
-        "remindLater": "Forse più tardi",
-        "noThanks": "No, grazie",
         "close": "Chiudi",
     },
     "ja": {
@@ -79,8 +67,6 @@ RATING = {
         "emailButton": "メールする",
         "githubButton": "GitHub issue",
         "rateNow": "⭐ 星5つを付ける",
-        "remindLater": "あとで",
-        "noThanks": "いいえ、結構です",
         "close": "閉じる",
     },
     "zh-Hans": {
@@ -90,8 +76,6 @@ RATING = {
         "emailButton": "给我们发邮件",
         "githubButton": "GitHub issue",
         "rateNow": "⭐ 给 5 星",
-        "remindLater": "稍后再说",
-        "noThanks": "不了，谢谢",
         "close": "关闭",
     },
     "zh-Hant": {
@@ -101,8 +85,6 @@ RATING = {
         "emailButton": "寄信給我們",
         "githubButton": "GitHub issue",
         "rateNow": "⭐ 給 5 星",
-        "remindLater": "稍後再說",
-        "noThanks": "不用了，謝謝",
         "close": "關閉",
     },
     "ar": {
@@ -112,8 +94,6 @@ RATING = {
         "emailButton": "راسلنا",
         "githubButton": "مشكلة على GitHub",
         "rateNow": "⭐ امنحه 5 نجوم",
-        "remindLater": "ربما لاحقًا",
-        "noThanks": "لا، شكرًا",
         "close": "إغلاق",
     },
     "ru": {
@@ -123,8 +103,6 @@ RATING = {
         "emailButton": "Написать нам",
         "githubButton": "Issue на GitHub",
         "rateNow": "⭐ Поставить 5 звезд",
-        "remindLater": "Может быть, позже",
-        "noThanks": "Нет, спасибо",
         "close": "Закрыть",
     },
     "hi": {
@@ -134,8 +112,6 @@ RATING = {
         "emailButton": "हमें ईमेल करें",
         "githubButton": "GitHub issue",
         "rateNow": "⭐ 5 स्टार दें",
-        "remindLater": "शायद बाद में",
-        "noThanks": "नहीं, धन्यवाद",
         "close": "बंद करें",
     },
     "vi": {
@@ -145,8 +121,6 @@ RATING = {
         "emailButton": "Gửi email",
         "githubButton": "Issue GitHub",
         "rateNow": "⭐ Cho 5 sao",
-        "remindLater": "Để sau",
-        "noThanks": "Không, cảm ơn",
         "close": "Đóng",
     },
     "pl": {
@@ -156,8 +130,6 @@ RATING = {
         "emailButton": "Napisz e-mail",
         "githubButton": "Issue na GitHubie",
         "rateNow": "⭐ Daj 5 gwiazdek",
-        "remindLater": "Może później",
-        "noThanks": "Nie, dziękuję",
         "close": "Zamknij",
     },
     "hu": {
@@ -167,8 +139,6 @@ RATING = {
         "emailButton": "Írj e-mailt",
         "githubButton": "GitHub issue",
         "rateNow": "⭐ Adj 5 csillagot",
-        "remindLater": "Talán később",
-        "noThanks": "Nem, köszönöm",
         "close": "Bezárás",
     },
     "fa": {
@@ -178,8 +148,6 @@ RATING = {
         "emailButton": "به ما ایمیل بزنید",
         "githubButton": "issue در GitHub",
         "rateNow": "⭐ ۵ ستاره بدهید",
-        "remindLater": "بعداً شاید",
-        "noThanks": "نه، متشکرم",
         "close": "بستن",
     },
     "ko-polite": {
@@ -189,8 +157,6 @@ RATING = {
         "emailButton": "이메일 보내기",
         "githubButton": "GitHub issue",
         "rateNow": "⭐ 별 5개 주기",
-        "remindLater": "나중에",
-        "noThanks": "괜찮아요",
         "close": "닫기",
     },
     "bn": {
@@ -200,8 +166,6 @@ RATING = {
         "emailButton": "আমাদের ইমেইল করুন",
         "githubButton": "GitHub ইস্যু",
         "rateNow": "⭐ ৫ তারকা দিন",
-        "remindLater": "পরে হয়তো",
-        "noThanks": "না, ধন্যবাদ",
         "close": "বন্ধ করুন",
     },
     "id": {
@@ -211,8 +175,6 @@ RATING = {
         "emailButton": "Email kami",
         "githubButton": "Issue GitHub",
         "rateNow": "⭐ Beri 5 bintang",
-        "remindLater": "Nanti saja",
-        "noThanks": "Tidak, terima kasih",
         "close": "Tutup",
     },
     "th": {
@@ -222,8 +184,6 @@ RATING = {
         "emailButton": "ส่งอีเมลหาเรา",
         "githubButton": "GitHub issue",
         "rateNow": "⭐ ให้ 5 ดาว",
-        "remindLater": "ไว้ทีหลัง",
-        "noThanks": "ไม่ล่ะ ขอบคุณ",
         "close": "ปิด",
     },
     "tr": {
@@ -233,8 +193,6 @@ RATING = {
         "emailButton": "E-posta gönder",
         "githubButton": "GitHub issue",
         "rateNow": "⭐ 5 yıldız ver",
-        "remindLater": "Belki sonra",
-        "noThanks": "Hayır, teşekkürler",
         "close": "Kapat",
     },
 }

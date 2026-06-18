@@ -131,7 +131,9 @@
       "noFiltered": "Walang nandito ngayon.",
       "stackTotalPhrases": "~{{count}} parirala ang tumutugma",
       "stackTotalNudge": "Magdagdag ng mga packs o palawakin ang mga antas para sa iba't ibang."
-    }
+    },
+    "home": "Home",
+    "developer": "Developer"
   },
   "home": {
     "continueLearning": "Magpatuloy sa pag-aaral",
@@ -148,7 +150,9 @@
     "like": "Gusto",
     "notForMe": "Hindi para sa akin",
     "plusChip": "Corpán Plus — i-unlock ang lahat",
-    "installing": "Nag-i-install…"
+    "installing": "Nag-i-install…",
+    "packUpdates": "May mga update sa pack",
+    "updateAll": "I-update lahat"
   },
   "tour": {
     "progress": "{{n}} sa {{total}}",
@@ -604,8 +608,6 @@
     "title": "Mahal mo ba ang Corpán?",
     "description": "Kung mahal mo ang Corpán, bigyan ito ng 5 bituin. Sa mga app store, anumang mas mababa sa 5 bituin ay nakakasama sa Corpán.",
     "rateNow": "⭐ Magbigay ng 5 bituin",
-    "remindLater": "Marahil mamaya",
-    "noThanks": "Hindi, salamat",
     "close": "Isara",
     "feedbackHint": "Kung hindi pa ito 5-star app para sa iyo, mag-email sa amin o magbukas ng issue sa GitHub at sabihin kung ano ang aayusin. Gusto naming pagandahin pa ito.",
     "emailButton": "Mag-email sa amin",
@@ -723,7 +725,8 @@
     "trialHeadline": "{{period}} libre",
     "trialReassurance": "Walang bayad ngayon · maaaring kanselahin anumang oras",
     "trialThenPrice": ", pagkatapos ay {{price}}/{{period}}",
-    "trialToday": "Ngayon: simulan"
+    "trialToday": "Ngayon: simulan",
+    "rate": "I-rate ang Corpán"
   },
   "restore": {
     "button": "Ibalik ang mga Pagbili",

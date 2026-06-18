@@ -100,7 +100,7 @@ export function RatingPrompt() {
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.2 }}
-						className={`fixed inset-0 z-100 ${glass("bg-black/25 backdrop-blur-sm", "bg-black/45")}`}
+						className={`pointer-events-auto fixed inset-0 z-[1300] ${glass("bg-black/25 backdrop-blur-sm", "bg-black/45")}`}
 						onClick={handleDismiss}
 					/>
 
@@ -114,7 +114,7 @@ export function RatingPrompt() {
 							stiffness: 260,
 							damping: 24,
 						}}
-						className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-101 w-[90%] max-w-md"
+						className="pointer-events-auto fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1301] w-[90%] max-w-md"
 					>
 						<div className="bg-background rounded-3xl shadow-2xl p-6 sm:p-7 relative overflow-hidden border border-black/5">
 							{/* Close button */}

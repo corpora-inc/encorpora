@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Lue tietosuojalupauksemme",
     "showStreak": "Näytä lukemisen putki",
     "showStreakHint": "Pieni päivälaskuri otsikossa. Vain laitteella, ei muistutuksia tai ilmoituksia.",
-    "primaryLanguage": "Ensisijainen (käyttöliittymä) kieli"
+    "primaryLanguage": "Ensisijainen (käyttöliittymä) kieli",
+    "home": "Koti",
+    "developer": "Kehittäjä"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Rakastatko Corpánia?",
     "description": "Jos rakastat Corpánia, anna sille 5 tähteä. Sovelluskaupoissa kaikki alle 5 tähden arviot satuttavat Corpánia.",
     "rateNow": "⭐ Anna 5 tähteä",
-    "remindLater": "Ehkä myöhemmin",
-    "noThanks": "Ei kiitos",
     "close": "Sulje",
     "feedbackHint": "Jos se ei ole sinulle vielä 5 tähden sovellus, lähetä meille sähköpostia tai avaa GitHub-issue ja kerro, mitä korjata. Haluamme tehdä siitä paremman.",
     "emailButton": "Lähetä sähköpostia",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} ilmainen",
     "trialReassurance": "Ei maksua nyt · peruuta milloin tahansa",
     "trialThenPrice": ", sitten {{price}}/{{period}}",
-    "trialToday": "Tänään: aloitus"
+    "trialToday": "Tänään: aloitus",
+    "rate": "Arvioi Corpán"
   },
   "restore": {
     "button": "Palauta ostokset",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus – avaa kaikki",
     "recommended": "Suositeltu",
     "showAnother": "Näytä toinen",
-    "tryIt": "Kokeile"
+    "tryIt": "Kokeile",
+    "packUpdates": "Pakettipäivityksiä saatavilla",
+    "updateAll": "Päivitä kaikki"
   },
   "offline": {
     "cachedSubtitle": "Näytetään viimeisimmät välimuistiin tallennetut tulokset.",

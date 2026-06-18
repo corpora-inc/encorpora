@@ -131,7 +131,9 @@
     "readPrivacyPromise": "プライバシーに関する約束を読む",
     "showStreak": "読書連続日数を表示",
     "showStreakHint": "ヘッダーに小さな日数表示。デバイス内のみで、リマインダーや通知はありません。",
-    "primaryLanguage": "プライマリ (UI) 言語"
+    "primaryLanguage": "プライマリ (UI) 言語",
+    "home": "ホーム",
+    "developer": "開発者"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Corpánが大好きですか？",
     "description": "Corpánが大好きなら、星5つを付けてください。アプリストアでは、星5未満の評価はCorpánにとって痛手になります。",
     "rateNow": "⭐ 星5つを付ける",
-    "remindLater": "あとで",
-    "noThanks": "いいえ、結構です",
     "close": "閉じる",
     "feedbackHint": "まだ星5つのアプリではないと感じる場合は、メールまたはGitHub issueで、直すべき点を教えてください。もっと良くしたいです。",
     "emailButton": "メールする",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}}無料",
     "trialReassurance": "今は支払い不要 · いつでもキャンセル可能",
     "trialThenPrice": "、その後{{price}}/{{period}}",
-    "trialToday": "今日: 開始"
+    "trialToday": "今日: 開始",
+    "rate": "Corpánを評価"
   },
   "restore": {
     "button": "購入を復元",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — すべてをアンロック",
     "recommended": "おすすめ",
     "showAnother": "他のものを表示",
-    "tryIt": "試す"
+    "tryIt": "試す",
+    "packUpdates": "パックのアップデートがあります",
+    "updateAll": "すべて更新"
   },
   "offline": {
     "cachedSubtitle": "最後にキャッシュされた結果を表示しています。",

@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Gizlilik Taahhüdümüzü okuyun",
     "showStreak": "Okuma serisini göster",
     "showStreakHint": "Başlıkta küçük bir gün sayacı. Yalnızca cihazda, hatırlatıcı veya bildirim yok.",
-    "primaryLanguage": "Birincil (arayüz) dil"
+    "primaryLanguage": "Birincil (arayüz) dil",
+    "home": "Ana sayfa",
+    "developer": "Geliştirici"
   },
   "onboarding": {
     "welcomePact": {
@@ -523,8 +525,6 @@
     "description": "Corpán'ı seviyorsanız 5 yıldız verin. Uygulama mağazalarında 5 yıldızdan azı Corpán'a zarar verir.",
     "feedbackHint": "Sizin için henüz 5 yıldızlık bir uygulama değilse, bize e-posta gönderin veya GitHub'da issue açıp neyi düzeltmemiz gerektiğini söyleyin. Daha iyi yapmak istiyoruz.",
     "rateNow": "⭐ 5 yıldız ver",
-    "remindLater": "Belki sonra",
-    "noThanks": "Hayır, teşekkürler",
     "close": "Kapat",
     "emailButton": "E-posta gönder",
     "githubButton": "GitHub issue"
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} ücretsiz",
     "trialReassurance": "Şu an ödeme yok · istediğiniz zaman iptal edin",
     "trialThenPrice": ", ardından {{price}}/{{period}}",
-    "trialToday": "Bugün: başla"
+    "trialToday": "Bugün: başla",
+    "rate": "Corpán’ı değerlendir"
   },
   "restore": {
     "button": "Satın alımları geri yükle",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — her şeyin kilidini açın",
     "recommended": "Önerilen",
     "showAnother": "Başka bir tane göster",
-    "tryIt": "Dene"
+    "tryIt": "Dene",
+    "packUpdates": "Paket güncellemeleriniz var",
+    "updateAll": "Tümünü güncelle"
   },
   "offline": {
     "cachedSubtitle": "Son önbelleğe alınmış sonuçlarınız gösteriliyor.",

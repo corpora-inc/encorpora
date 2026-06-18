@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Läs vårt integritetslöfte",
     "showStreak": "Visa lässvit",
     "showStreakHint": "En liten dagräknare i sidhuvudet. Endast på enheten, inga påminnelser eller notiser.",
-    "primaryLanguage": "Primärt (UI) språk"
+    "primaryLanguage": "Primärt (UI) språk",
+    "home": "Hem",
+    "developer": "Utvecklare"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Älskar du Corpán?",
     "description": "Om du älskar Corpán, ge appen 5 stjärnor. I appbutikerna skadar allt under 5 stjärnor Corpán.",
     "rateNow": "⭐ Ge 5 stjärnor",
-    "remindLater": "Kanske senare",
-    "noThanks": "Nej tack",
     "close": "Stäng",
     "feedbackHint": "Om den inte är en 5-stjärnig app för dig än, mejla oss eller öppna ett GitHub-issue och berätta vad vi ska fixa. Vi vill göra den bättre.",
     "emailButton": "Mejla oss",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} gratis",
     "trialReassurance": "Ingen betalning nu · avbryt när som helst",
     "trialThenPrice": ", sedan {{price}}/{{period}}",
-    "trialToday": "Idag: starta"
+    "trialToday": "Idag: starta",
+    "rate": "Betygsätt Corpán"
   },
   "restore": {
     "button": "Återställ köp",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — lås upp allt",
     "recommended": "Rekommenderas",
     "showAnother": "Visa en annan",
-    "tryIt": "Prova"
+    "tryIt": "Prova",
+    "packUpdates": "Du har paketuppdateringar",
+    "updateAll": "Uppdatera alla"
   },
   "offline": {
     "cachedSubtitle": "Visar dina senast cachade resultat.",

@@ -131,7 +131,9 @@
       "noFiltered": "Ora ana ing kene saiki.",
       "stackTotalPhrases": "~{{count}} frasa cocog",
       "stackTotalNudge": "Tambah paket utawa wenehi tingkat kanggo variasi."
-    }
+    },
+    "home": "Ngarep",
+    "developer": "Pangembang"
   },
   "home": {
     "continueLearning": "Terus sinau",
@@ -148,7 +150,9 @@
     "like": "Seneng",
     "notForMe": "Ora kanggo aku",
     "plusChip": "Corpán Plus — mbukak kabeh",
-    "installing": "Nginstal…"
+    "installing": "Nginstal…",
+    "packUpdates": "Ana nganyari pak",
+    "updateAll": "Nganyari kabeh"
   },
   "tour": {
     "progress": "{{n}} saka {{total}}",
@@ -604,8 +608,6 @@
     "title": "Seneng banget karo Corpán?",
     "description": "Yen sampeyan tresna karo Corpán, wenehana 5 lintang. Ing toko app, rating kurang saka 5 lintang ngrugèkaké Corpán.",
     "rateNow": "⭐ Wenehi 5 lintang",
-    "remindLater": "Mungkin mengko",
-    "noThanks": "Ora, matur nuwun",
     "close": "Tutup",
     "feedbackHint": "Yen durung dadi app 5 lintang kanggo sampeyan, kirimi email utawa bukak issue ing GitHub lan kandhani apa sing kudu didandani. Kita pengin nggawe luwih apik.",
     "emailButton": "Kirim email",
@@ -723,7 +725,8 @@
     "trialHeadline": "{{period}} gratis",
     "trialReassurance": "Ora ana pambayaran saiki · bisa batal kapan wae",
     "trialThenPrice": ", banjur {{price}}/{{period}}",
-    "trialToday": "Dina iki: mulai"
+    "trialToday": "Dina iki: mulai",
+    "rate": "Rating Corpán"
   },
   "restore": {
     "button": "Pulihake Pembelian",

@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Soma Ahadi yetu ya Faragha",
     "showStreak": "Onyesha mfululizo wa kusoma",
     "showStreakHint": "Hesabu ndogo ya siku kwenye kichwa. Kwenye kifaa pekee, hakuna vikumbusho au arifa.",
-    "primaryLanguage": "Lugha kuu (ya kiolesura)"
+    "primaryLanguage": "Lugha kuu (ya kiolesura)",
+    "home": "Nyumbani",
+    "developer": "Msanidi programu"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Unapenda Corpán?",
     "description": "Ikiwa unapenda Corpán, ipe nyota 5. Kwenye maduka ya programu, chochote chini ya nyota 5 kinaidhuru Corpán.",
     "rateNow": "⭐ Toa nyota 5",
-    "remindLater": "Labda baadaye",
-    "noThanks": "Hapana, asante",
     "close": "Funga",
     "feedbackHint": "Ikiwa bado si programu ya nyota 5 kwako, tutumie barua pepe au fungua issue kwenye GitHub na utuambie cha kurekebisha. Tunataka kuifanya iwe bora.",
     "emailButton": "Tutumie barua pepe",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} bure",
     "trialReassurance": "Hakuna malipo sasa · unaweza kughairi wakati wowote",
     "trialThenPrice": ", kisha {{price}}/{{period}}",
-    "trialToday": "Leo: anza"
+    "trialToday": "Leo: anza",
+    "rate": "Kadiria Corpán"
   },
   "restore": {
     "button": "Rejesha Manunuzi",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — fungua kila kitu",
     "recommended": "Inayopendekezwa",
     "showAnother": "Nionyeshe kingine",
-    "tryIt": "Jaribu"
+    "tryIt": "Jaribu",
+    "packUpdates": "Una masasisho ya vifurushi",
+    "updateAll": "Sasisha vyote"
   },
   "offline": {
     "cachedSubtitle": "Inaonyesha matokeo yako ya mwisho yaliyohifadhiwa.",

@@ -131,7 +131,9 @@
     "readPrivacyPromise": "อ่านคำมั่นด้านความเป็นส่วนตัวของเรา",
     "showStreak": "แสดงสถิติการอ่านต่อเนื่อง",
     "showStreakHint": "แสดงจำนวนวันต่อเนื่องเล็กๆ ในส่วนหัว อยู่ในอุปกรณ์เท่านั้น ไม่มีแจ้งเตือน",
-    "primaryLanguage": "ภาษาหลัก (UI)"
+    "primaryLanguage": "ภาษาหลัก (UI)",
+    "home": "หน้าแรก",
+    "developer": "นักพัฒนา"
   },
   "onboarding": {
     "welcomePact": {
@@ -523,8 +525,6 @@
     "description": "ถ้าคุณรัก Corpán ให้คะแนน 5 ดาว ในร้านแอป คะแนนใดก็ตามที่ต่ำกว่า 5 ดาวทำร้าย Corpán",
     "feedbackHint": "ถ้ายังไม่ใช่แอป 5 ดาวสำหรับคุณ โปรดส่งอีเมลหาเราหรือเปิด issue บน GitHub แล้วบอกเราว่าต้องแก้อะไร เราอยากทำให้ดีขึ้น",
     "rateNow": "⭐ ให้ 5 ดาว",
-    "remindLater": "ไว้ทีหลัง",
-    "noThanks": "ไม่ล่ะ ขอบคุณ",
     "close": "ปิด",
     "emailButton": "ส่งอีเมลหาเรา",
     "githubButton": "GitHub issue"
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} ฟรี",
     "trialReassurance": "ไม่ต้องชำระเงินตอนนี้ · ยกเลิกได้ตลอดเวลา",
     "trialThenPrice": ", จากนั้น {{price}}/{{period}}",
-    "trialToday": "วันนี้: เริ่มต้น"
+    "trialToday": "วันนี้: เริ่มต้น",
+    "rate": "ให้คะแนน Corpán"
   },
   "restore": {
     "button": "กู้คืนการซื้อ",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — ปลดล็อกทุกอย่าง",
     "recommended": "แนะนำ",
     "showAnother": "แสดงรายการอื่น",
-    "tryIt": "ลองเลย"
+    "tryIt": "ลองเลย",
+    "packUpdates": "คุณมีอัปเดตแพ็ก",
+    "updateAll": "อัปเดตทั้งหมด"
   },
   "offline": {
     "cachedSubtitle": "แสดงผลลัพธ์ที่แคชไว้ล่าสุดของคุณ",

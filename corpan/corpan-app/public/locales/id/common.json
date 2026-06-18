@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Baca Janji Privasi kami",
     "showStreak": "Tampilkan rentetan membaca",
     "showStreakHint": "Penghitung hari kecil di header. Hanya di perangkat, tanpa pengingat atau notifikasi.",
-    "primaryLanguage": "Bahasa utama (UI)"
+    "primaryLanguage": "Bahasa utama (UI)",
+    "home": "Beranda",
+    "developer": "Pengembang"
   },
   "onboarding": {
     "welcomePact": {
@@ -523,8 +525,6 @@
     "description": "Kalau Anda menyukai Corpán, beri 5 bintang. Di toko aplikasi, apa pun di bawah 5 bintang merugikan Corpán.",
     "feedbackHint": "Kalau bagi Anda ini belum aplikasi 5 bintang, kirim email atau buka issue di GitHub dan beri tahu apa yang harus kami perbaiki. Kami ingin membuatnya lebih baik.",
     "rateNow": "⭐ Beri 5 bintang",
-    "remindLater": "Nanti saja",
-    "noThanks": "Tidak, terima kasih",
     "close": "Tutup",
     "emailButton": "Email kami",
     "githubButton": "Issue GitHub"
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} gratis",
     "trialReassurance": "Tidak ada pembayaran sekarang · batalkan kapan saja",
     "trialThenPrice": ", lalu {{price}}/{{period}}",
-    "trialToday": "Hari ini: mulai"
+    "trialToday": "Hari ini: mulai",
+    "rate": "Nilai Corpán"
   },
   "restore": {
     "button": "Pulihkan pembelian",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — buka semua fitur",
     "recommended": "Direkomendasikan",
     "showAnother": "Tampilkan yang lain",
-    "tryIt": "Coba"
+    "tryIt": "Coba",
+    "packUpdates": "Ada pembaruan paket",
+    "updateAll": "Perbarui semua"
   },
   "offline": {
     "cachedSubtitle": "Menampilkan hasil cache terakhir Anda.",

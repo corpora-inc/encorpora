@@ -128,7 +128,9 @@ export function PaywallSheet() {
           aria-modal="true"
           aria-label={headline}
           dir={dir()}
-          className="fixed inset-0 z-[1400] overflow-y-auto no-scrollbar"
+          // pointer-events-auto: stay interactive even if launched over a Radix
+          // modal (which locks body pointer-events on its siblings).
+          className="pointer-events-auto fixed inset-0 z-[1400] overflow-y-auto no-scrollbar"
           style={{ ...PAYWALL_PALETTE, WebkitOverflowScrolling: "touch" }}
           initial={fade.initial}
           animate={fade.animate}

@@ -131,7 +131,9 @@
     "sendAnonUsageHint": "Anonimiška, tik sesijos metu. Jokių paskyrų, jokių įrenginio ID, jokio IP saugojimo. Galite bet kada išjungti.",
     "readPrivacyPromise": "Skaityti mūsų privatumo pažadą",
     "showStreak": "Rodyti skaitymo seriją",
-    "showStreakHint": "Mažas dienų skaičius antraštėje. Tik įrenginyje, jokių priminimų ar pranešimų."
+    "showStreakHint": "Mažas dienų skaičius antraštėje. Tik įrenginyje, jokių priminimų ar pranešimų.",
+    "home": "Pradžia",
+    "developer": "Kūrėjas"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Patinka Corpán?",
     "description": "Jei mylite Corpán, skirkite 5 žvaigždutes. Programėlių parduotuvėse bet kas mažiau nei 5 žvaigždutės kenkia Corpán.",
     "rateNow": "⭐ Skirti 5 žvaigždutes",
-    "remindLater": "Galbūt vėliau",
-    "noThanks": "Ne, ačiū",
     "close": "Uždaryti",
     "feedbackHint": "Jei jums tai dar nėra 5 žvaigždučių programėlė, parašykite el. paštu arba atidarykite GitHub issue ir pasakykite, ką pataisyti. Norime ją pagerinti.",
     "emailButton": "Rašyti el. paštu",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} nemokamai",
     "trialReassurance": "Dabar mokėti nereikia · atšaukti galite bet kada",
     "trialThenPrice": ", tada {{price}}/{{period}}",
-    "trialToday": "Šiandien: pradžia"
+    "trialToday": "Šiandien: pradžia",
+    "rate": "Įvertinti Corpán"
   },
   "restore": {
     "button": "Atkurti pirkimus",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus – atrakinkite viską",
     "recommended": "Rekomenduojama",
     "showAnother": "Rodyti kitą",
-    "tryIt": "Išbandyti"
+    "tryIt": "Išbandyti",
+    "packUpdates": "Yra paketų naujinių",
+    "updateAll": "Atnaujinti viską"
   },
   "offline": {
     "cachedSubtitle": "Rodomi paskutiniai išsaugoti rezultatai.",

@@ -131,7 +131,9 @@
     "readPrivacyPromise": "개인정보 보호 약속 읽기",
     "showStreak": "연속 학습 기록 표시",
     "showStreakHint": "헤더에 작은 일수 표시. 기기에만 저장되며, 알림은 없습니다.",
-    "primaryLanguage": "기본 (UI) 언어"
+    "primaryLanguage": "기본 (UI) 언어",
+    "home": "홈",
+    "developer": "개발자"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Corpán이 정말 마음에 드시나요?",
     "description": "Corpán이 정말 마음에 드신다면 별 5개를 주세요. 앱 스토어에서는 별 5개보다 낮은 평점이 Corpán에 타격이 됩니다.",
     "rateNow": "⭐ 별 5개 주기",
-    "remindLater": "나중에",
-    "noThanks": "괜찮아요",
     "close": "닫기",
     "feedbackHint": "아직 별 5개짜리 앱이 아니라고 느끼시면 이메일을 보내시거나 GitHub issue를 열어 무엇을 고쳐야 할지 알려 주세요. 더 좋게 만들고 싶습니다.",
     "emailButton": "이메일 보내기",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} 무료",
     "trialReassurance": "지금 결제 없음 · 언제든 취소 가능",
     "trialThenPrice": ", 이후 {{price}}/{{period}}",
-    "trialToday": "오늘: 시작"
+    "trialToday": "오늘: 시작",
+    "rate": "Corpán 평가하기"
   },
   "restore": {
     "button": "구매 복원",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — 모든 기능 잠금 해제",
     "recommended": "추천",
     "showAnother": "다른 것 보기",
-    "tryIt": "사용해 보기"
+    "tryIt": "사용해 보기",
+    "packUpdates": "팩 업데이트가 있습니다",
+    "updateAll": "모두 업데이트"
   },
   "offline": {
     "cachedSubtitle": "마지막으로 캐시된 결과를 표시합니다.",

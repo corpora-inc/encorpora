@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Lees onze Privacybelofte",
     "showStreak": "Leesreeks weergeven",
     "showStreakHint": "Een kleine dagteller in de header. Alleen op je apparaat, geen herinneringen of meldingen.",
-    "primaryLanguage": "Primaire (UI) taal"
+    "primaryLanguage": "Primaire (UI) taal",
+    "home": "Home",
+    "developer": "Ontwikkelaar"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Hou je van Corpán?",
     "description": "Als je van Corpán houdt, geef de app 5 sterren. In de app stores schaadt alles onder 5 sterren Corpán.",
     "rateNow": "⭐ Geef 5 sterren",
-    "remindLater": "Misschien later",
-    "noThanks": "Nee, bedankt",
     "close": "Sluiten",
     "feedbackHint": "Als het voor jou nog geen 5-sterrenapp is, mail ons of open een GitHub-issue en vertel wat we moeten verbeteren. We willen het beter maken.",
     "emailButton": "Mail ons",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} gratis",
     "trialReassurance": "Nu geen betaling verschuldigd · op elk moment annuleren",
     "trialThenPrice": ", daarna {{price}}/{{period}}",
-    "trialToday": "Vandaag: start"
+    "trialToday": "Vandaag: start",
+    "rate": "Beoordeel Corpán"
   },
   "restore": {
     "button": "Aankopen herstellen",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — ontgrendel alles",
     "recommended": "Aanbevolen",
     "showAnother": "Toon een andere",
-    "tryIt": "Probeer het"
+    "tryIt": "Probeer het",
+    "packUpdates": "Je hebt pakketupdates",
+    "updateAll": "Alles bijwerken"
   },
   "offline": {
     "cachedSubtitle": "Toont je laatst opgeslagen resultaten.",

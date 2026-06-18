@@ -131,7 +131,9 @@
     "readPrivacyPromise": "हमारा गोपनीयता वादा पढ़ें",
     "showStreak": "रीडिंग स्ट्रीक दिखाएँ",
     "showStreakHint": "हेडर में एक छोटी दिन-गणना। केवल डिवाइस पर, कोई रिमाइंडर या सूचनाएँ नहीं।",
-    "primaryLanguage": "प्राथमिक (UI) भाषा"
+    "primaryLanguage": "प्राथमिक (UI) भाषा",
+    "home": "होम",
+    "developer": "डेवलपर"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Corpán से प्यार है?",
     "description": "अगर आपको Corpán सच में पसंद है, तो इसे 5 स्टार दें। ऐप स्टोर में 5 स्टार से कम कुछ भी Corpán को नुकसान पहुँचाता है।",
     "rateNow": "⭐ 5 स्टार दें",
-    "remindLater": "शायद बाद में",
-    "noThanks": "नहीं, धन्यवाद",
     "close": "बंद करें",
     "feedbackHint": "अगर यह अभी आपके लिए 5-स्टार ऐप नहीं है, तो हमें ईमेल करें या GitHub पर issue खोलकर बताएं कि क्या ठीक करना है। हम इसे बेहतर बनाना चाहते हैं।",
     "emailButton": "हमें ईमेल करें",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} नि:शुल्क",
     "trialReassurance": "अभी कोई भुगतान नहीं · कभी भी रद्द करें",
     "trialThenPrice": ", फिर {{price}}/{{period}}",
-    "trialToday": "आज: शुरू करें"
+    "trialToday": "आज: शुरू करें",
+    "rate": "Corpán को रेट करें"
   },
   "restore": {
     "button": "खरीदारी पुनर्स्थापित करें",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — सब कुछ अनलॉक करें",
     "recommended": "अनुशंसित",
     "showAnother": "मुझे दूसरा दिखाएँ",
-    "tryIt": "इसे आज़माएँ"
+    "tryIt": "इसे आज़माएँ",
+    "packUpdates": "आपके पैक अपडेट उपलब्ध हैं",
+    "updateAll": "सब अपडेट करें"
   },
   "offline": {
     "cachedSubtitle": "आपके अंतिम कैश किए गए परिणाम दिखाए जा रहे हैं।",

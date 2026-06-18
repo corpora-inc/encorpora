@@ -131,7 +131,9 @@
     "readPrivacyPromise": "ساڈا رازداری دا وعدہ پڑھو",
     "showStreak": "پڑھن دی سٹریک وکھائو",
     "showStreakHint": "ہیڈر وچ دِناں دی اک نِکّی گِݨتی۔ صرف ڈیوائس تے، کوئی یاد دہانی یا نوٹیفکیشن نہیں۔",
-    "primaryLanguage": "پرائمری (UI) بولی"
+    "primaryLanguage": "پرائمری (UI) بولی",
+    "home": "ہوم",
+    "developer": "ڈیولپر"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "کیا تہانوں Corpán پسند اے؟",
     "description": "جے تہانوں Corpán پسند اے، تے اس نوں 5 ستارے دیو۔ ایپ سٹوراں وچ 5 ستاریاں توں گھٹ کوئی وی ریٹنگ Corpán نوں نقصان دیندی اے۔",
     "rateNow": "⭐ 5 ستارے دیو",
-    "remindLater": "بعد وچ",
-    "noThanks": "نہیں، شکریہ",
     "close": "بند کرو",
     "feedbackHint": "جے ایہ ہجے تہاڈے لئی 5-ستارہ ایپ نہیں، تے سانوں ای میل کرو یا GitHub تے issue کھولو تے دسو کی ٹھیک کرنا اے۔ اسی ایہنوں بہتر بنانا چاہندے آں۔",
     "emailButton": "سانوں ای میل کرو",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} مفت",
     "trialReassurance": "اس وقت کوئی ادائیگی نہیں · کسی وقت منسوخ کرو",
     "trialThenPrice": ", پھر {{price}}/{{period}}",
-    "trialToday": "آج: شروع کرو"
+    "trialToday": "آج: شروع کرو",
+    "rate": "Corpán نوں ریٹ کرو"
   },
   "restore": {
     "button": "خریداریاں بحال کرو",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — سب کُجھ انلاک کرو",
     "recommended": "تجویز کردہ",
     "showAnother": "مینوں اک ہور وکھاؤ",
-    "tryIt": "ایہنوں آزماؤ"
+    "tryIt": "ایہنوں آزماؤ",
+    "packUpdates": "تہاڈے کول پیک اپ ڈیٹس نیں",
+    "updateAll": "سارے اپ ڈیٹ کرو"
   },
   "offline": {
     "cachedSubtitle": "تہاڈے آخری کیش کیتے نتائج وکھائے جا رہے نیں۔",

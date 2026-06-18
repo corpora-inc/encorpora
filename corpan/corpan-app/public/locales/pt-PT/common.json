@@ -131,7 +131,9 @@
     "sendAnonUsageHint": "Anónimos e limitados à sessão. Sem contas, sem IDs do dispositivo, sem armazenamento de IP. Pode desativar quando quiser.",
     "readPrivacyPromise": "Ler a nossa Promessa de Privacidade",
     "showStreak": "Mostrar sequência de leitura",
-    "showStreakHint": "Uma pequena contagem de dias no cabeçalho. Apenas no dispositivo, sem lembretes ou notificações."
+    "showStreakHint": "Uma pequena contagem de dias no cabeçalho. Apenas no dispositivo, sem lembretes ou notificações.",
+    "home": "Início",
+    "developer": "Programador"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Adoras o Corpán?",
     "description": "Se adoras o Corpán, dá-lhe 5 estrelas. Nas lojas de apps, qualquer coisa abaixo de 5 estrelas prejudica o Corpán.",
     "rateNow": "⭐ Dar 5 estrelas",
-    "remindLater": "Talvez mais tarde",
-    "noThanks": "Não, obrigado",
     "close": "Fechar",
     "feedbackHint": "Se ainda não é uma app de 5 estrelas para ti, envia-nos um e-mail ou abre uma issue no GitHub e diz-nos o que corrigir. Queremos melhorá-la.",
     "emailButton": "Enviar e-mail",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} grátis",
     "trialReassurance": "Sem pagamento agora · cancelar a qualquer momento",
     "trialThenPrice": ", depois {{price}}/{{period}}",
-    "trialToday": "Hoje: começar"
+    "trialToday": "Hoje: começar",
+    "rate": "Avaliar Corpán"
   },
   "restore": {
     "button": "Restaurar Compras",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — desbloqueie tudo",
     "recommended": "Recomendado",
     "showAnother": "Mostrar outro",
-    "tryIt": "Experimentar"
+    "tryIt": "Experimentar",
+    "packUpdates": "Tens atualizações de pacotes",
+    "updateAll": "Atualizar tudo"
   },
   "offline": {
     "cachedSubtitle": "A mostrar os seus últimos resultados em cache.",

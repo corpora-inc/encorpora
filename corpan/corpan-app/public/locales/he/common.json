@@ -131,7 +131,9 @@
     "readPrivacyPromise": "קראו את הבטחת הפרטיות שלנו",
     "showStreak": "הצג רצף קריאה",
     "showStreakHint": "ספירת ימים קטנה בכותרת. רק במכשיר, ללא תזכורות או התראות.",
-    "primaryLanguage": "שפה ראשית (ממשק משתמש)"
+    "primaryLanguage": "שפה ראשית (ממשק משתמש)",
+    "home": "בית",
+    "developer": "מפתח"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "אוהבים את Corpán?",
     "description": "אם אתם אוהבים את Corpán, תנו לו 5 כוכבים. בחנויות האפליקציות, כל דבר מתחת ל-5 כוכבים פוגע ב-Corpán.",
     "rateNow": "⭐ תנו 5 כוכבים",
-    "remindLater": "אוּלַי מַאוּחַר יוֹתֵר",
-    "noThanks": "לֹא, תּוֹדָה",
     "close": "סְגֹר",
     "feedbackHint": "אם זו עדיין לא אפליקציית 5 כוכבים בשבילכם, שלחו לנו אימייל או פתחו issue ב-GitHub וספרו מה לתקן. אנחנו רוצים לשפר אותה.",
     "emailButton": "שלחו אימייל",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} חינם",
     "trialReassurance": "אין תשלום כעת · ניתן לבטל בכל עת",
     "trialThenPrice": ", לאחר מכן {{price}}/{{period}}",
-    "trialToday": "היום: התחלה"
+    "trialToday": "היום: התחלה",
+    "rate": "דרגו את Corpán"
   },
   "restore": {
     "button": "שַׁחְזֵר רְכִישׁוֹת",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — פתח את הכל",
     "recommended": "מומלץ",
     "showAnother": "הראה לי אחר",
-    "tryIt": "נסה זאת"
+    "tryIt": "נסה זאת",
+    "packUpdates": "יש עדכונים לחבילות",
+    "updateAll": "לעדכן הכול"
   },
   "offline": {
     "cachedSubtitle": "מציג את התוצאות האחרונות שנשמרו במטמון.",

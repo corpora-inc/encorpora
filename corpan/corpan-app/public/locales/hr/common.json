@@ -131,7 +131,9 @@
     "sendAnonUsageHint": "Anonimno, samo za ovu sesiju. Nema računa, nema ID-jeva uređaja, nema pohrane IP adresa. Isključite kad god želite.",
     "readPrivacyPromise": "Pročitajte naše obećanje o privatnosti",
     "showStreak": "Prikaži niz čitanja",
-    "showStreakHint": "Mali brojač dana u zaglavlju. Samo na uređaju, bez podsjetnika ili obavijesti."
+    "showStreakHint": "Mali brojač dana u zaglavlju. Samo na uređaju, bez podsjetnika ili obavijesti.",
+    "home": "Početna",
+    "developer": "Razvojni programer"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Volite Corpán?",
     "description": "Ako volite Corpán, dajte mu 5 zvjezdica. U trgovinama aplikacija sve ispod 5 zvjezdica šteti Corpánu.",
     "rateNow": "⭐ Dajte 5 zvjezdica",
-    "remindLater": "Možda kasnije",
-    "noThanks": "Ne, hvala",
     "close": "Zatvori",
     "feedbackHint": "Ako to za vas još nije aplikacija za 5 zvjezdica, pošaljite nam e-mail ili otvorite issue na GitHubu i recite što trebamo popraviti. Želimo je učiniti boljom.",
     "emailButton": "Pošaljite e-mail",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} besplatno",
     "trialReassurance": "Plaćanje nije potrebno sada · otkaži u bilo kojem trenutku",
     "trialThenPrice": ", zatim {{price}}/{{period}}",
-    "trialToday": "Danas: početak"
+    "trialToday": "Danas: početak",
+    "rate": "Ocijeni Corpán"
   },
   "restore": {
     "button": "Obnovi kupnje",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — otključajte sve",
     "recommended": "Preporučeno",
     "showAnother": "Pokaži mi drugo",
-    "tryIt": "Isprobaj"
+    "tryIt": "Isprobaj",
+    "packUpdates": "Imate ažuriranja paketa",
+    "updateAll": "Ažuriraj sve"
   },
   "offline": {
     "cachedSubtitle": "Prikazuju se vaši zadnji spremljeni rezultati.",

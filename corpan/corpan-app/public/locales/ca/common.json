@@ -131,7 +131,9 @@
     "sendAnonUsageHint": "Anònimes i limitades a la sessió. Sense comptes, sense identificadors del dispositiu i sense emmagatzemar IP. Pots desactivar-ho en qualsevol moment.",
     "readPrivacyPromise": "Llegeix la nostra promesa de privacitat",
     "showStreak": "Mostra la ratxa de lectura",
-    "showStreakHint": "Un petit comptador de dies a la capçalera. Només al dispositiu, sense recordatoris ni notificacions."
+    "showStreakHint": "Un petit comptador de dies a la capçalera. Només al dispositiu, sense recordatoris ni notificacions.",
+    "home": "Inici",
+    "developer": "Desenvolupador"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "T'encanta Corpán?",
     "description": "Si t'encanta Corpán, dona-li 5 estrelles. A les botigues d'apps, qualsevol cosa per sota de 5 estrelles perjudica Corpán.",
     "rateNow": "⭐ Dona 5 estrelles",
-    "remindLater": "Potser més tard",
-    "noThanks": "No, gràcies",
     "close": "Tancar",
     "feedbackHint": "Si encara no és una app de 5 estrelles per a tu, escriu-nos per correu o obre una incidència a GitHub i digues-nos què cal arreglar. Volem millorar-la.",
     "emailButton": "Escriu-nos",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} gratuïts",
     "trialReassurance": "No es cobra ara · cancel·la quan vulguis",
     "trialThenPrice": ", després {{price}}/{{period}}",
-    "trialToday": "Avui: començar"
+    "trialToday": "Avui: començar",
+    "rate": "Valora Corpán"
   },
   "restore": {
     "button": "Restaura compres",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — desbloqueja-ho tot",
     "recommended": "Recomanat",
     "showAnother": "Mostra'm un altre",
-    "tryIt": "Prova-ho"
+    "tryIt": "Prova-ho",
+    "packUpdates": "Tens actualitzacions de packs",
+    "updateAll": "Actualitza-ho tot"
   },
   "offline": {
     "cachedSubtitle": "Mostrant els teus últims resultats en memòria cau.",

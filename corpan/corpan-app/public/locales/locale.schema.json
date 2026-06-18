@@ -329,6 +329,12 @@
         },
         "scrollNavigation": {
           "type": "string"
+        },
+        "home": {
+          "type": "string"
+        },
+        "developer": {
+          "type": "string"
         }
       },
       "required": [
@@ -356,7 +362,9 @@
         "extra-large",
         "testTts",
         "showRomanization",
-        "scrollNavigation"
+        "scrollNavigation",
+        "home",
+        "developer"
       ],
       "additionalProperties": false
     },
@@ -672,12 +680,6 @@
         "rateNow": {
           "type": "string"
         },
-        "remindLater": {
-          "type": "string"
-        },
-        "noThanks": {
-          "type": "string"
-        },
         "close": {
           "type": "string"
         },
@@ -695,8 +697,6 @@
         "title",
         "description",
         "rateNow",
-        "remindLater",
-        "noThanks",
         "close",
         "feedbackHint",
         "emailButton",

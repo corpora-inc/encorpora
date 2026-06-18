@@ -131,7 +131,9 @@
     "sendAnonUsageHint": "匿名、以工作階段為範圍。無帳戶、無裝置 ID、唔會儲存 IP。你可以隨時關閉。",
     "readPrivacyPromise": "閱讀我哋嘅私隱承諾",
     "showStreak": "顯示閱讀日數",
-    "showStreakHint": "喺標題顯示細小嘅閱讀日數。只會儲存喺裝置，無提醒或通知。"
+    "showStreakHint": "喺標題顯示細小嘅閱讀日數。只會儲存喺裝置，無提醒或通知。",
+    "home": "主頁",
+    "developer": "開發者"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "鍾意 Corpán 嗎？",
     "description": "如果你鍾意 Corpán，請畀 5 粒星。喺 app store 入面，低過 5 星嘅評分都會傷害 Corpán。",
     "rateNow": "⭐ 畀 5 粒星",
-    "remindLater": "也許稍後",
-    "noThanks": "不，謝謝",
     "close": "關閉",
     "feedbackHint": "如果佢對你嚟講仲未係 5 星 app，請 email 我哋或者喺 GitHub 開 issue，話畀我哋知要改咩。我哋想令佢更好。",
     "emailButton": "Email 我哋",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}}免費",
     "trialReassurance": "現在無需付款 · 隨時取消",
     "trialThenPrice": "，然後{{price}}／{{period}}",
-    "trialToday": "今日：開始"
+    "trialToday": "今日：開始",
+    "rate": "評價 Corpán"
   },
   "restore": {
     "button": "恢復購買",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — 解鎖所有功能",
     "recommended": "推薦",
     "showAnother": "顯示另一個",
-    "tryIt": "試用"
+    "tryIt": "試用",
+    "packUpdates": "你有套件更新",
+    "updateAll": "全部更新"
   },
   "offline": {
     "cachedSubtitle": "顯示您上次的快取結果。",

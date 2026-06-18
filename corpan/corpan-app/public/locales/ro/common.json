@@ -131,7 +131,9 @@
     "sendAnonUsageHint": "Anonime, valabile doar pe durata sesiunii. Fără conturi, fără ID-uri de dispozitiv, fără stocare IP. Poți dezactiva oricând.",
     "readPrivacyPromise": "Citește Promisiunea noastră de confidențialitate",
     "showStreak": "Afișează seria de lectură",
-    "showStreakHint": "Un mic contor de zile în antet. Doar pe dispozitiv, fără mementouri sau notificări."
+    "showStreakHint": "Un mic contor de zile în antet. Doar pe dispozitiv, fără mementouri sau notificări.",
+    "home": "Acasă",
+    "developer": "Dezvoltator"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Iubești Corpán?",
     "description": "Dacă iubești Corpán, dă-i 5 stele. În magazinele de aplicații, orice sub 5 stele afectează Corpán.",
     "rateNow": "⭐ Dă 5 stele",
-    "remindLater": "Poate mai târziu",
-    "noThanks": "Nu, mulțumesc",
     "close": "Închide",
     "feedbackHint": "Dacă pentru tine nu este încă o aplicație de 5 stele, trimite-ne un e-mail sau deschide un issue pe GitHub și spune-ne ce să reparăm. Vrem să o facem mai bună.",
     "emailButton": "Trimite e-mail",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} gratuit",
     "trialReassurance": "Nicio plată acum · anulează oricând",
     "trialThenPrice": ", apoi {{price}}/{{period}}",
-    "trialToday": "Astăzi: începe"
+    "trialToday": "Astăzi: începe",
+    "rate": "Evaluează Corpán"
   },
   "restore": {
     "button": "Restaurare achiziții",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — deblochează totul",
     "recommended": "Recomandat",
     "showAnother": "Arată altul",
-    "tryIt": "Încearcă"
+    "tryIt": "Încearcă",
+    "packUpdates": "Ai actualizări de pachete",
+    "updateAll": "Actualizează tot"
   },
   "offline": {
     "cachedSubtitle": "Se afișează ultimele rezultate memorate.",

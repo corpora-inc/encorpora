@@ -131,7 +131,9 @@
     "readPrivacyPromise": "مطالعهٔ تعهد ما به حریم خصوصی",
     "showStreak": "نمایش استریک مطالعه",
     "showStreakHint": "یک شمارش روز کوچک در هدر. فقط روی دستگاه، بدون یادآوری یا اعلان.",
-    "primaryLanguage": "زبان اصلی (رابط کاربری)"
+    "primaryLanguage": "زبان اصلی (رابط کاربری)",
+    "home": "خانه",
+    "developer": "توسعه‌دهنده"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Corpán را دوست دارید؟",
     "description": "اگر Corpán را دوست دارید، به آن ۵ ستاره بدهید. در فروشگاه‌های اپ، هر امتیازی کمتر از ۵ ستاره به Corpán آسیب می‌زند.",
     "rateNow": "⭐ ۵ ستاره بدهید",
-    "remindLater": "بعداً شاید",
-    "noThanks": "نه، متشکرم",
     "close": "بستن",
     "feedbackHint": "اگر هنوز برای شما یک برنامهٔ ۵ ستاره نیست، به ما ایمیل بزنید یا در GitHub یک issue باز کنید و بگویید چه چیزی را درست کنیم. می‌خواهیم بهترش کنیم.",
     "emailButton": "به ما ایمیل بزنید",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} رایگان",
     "trialReassurance": "اکنون پرداختی لازم نیست · هر زمان لغو کنید",
     "trialThenPrice": "، سپس {{price}}/{{period}}",
-    "trialToday": "امروز: شروع"
+    "trialToday": "امروز: شروع",
+    "rate": "به Corpán امتیاز دهید"
   },
   "restore": {
     "button": "بازیابی خریدها",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — همه چیز را باز کنید",
     "recommended": "توصیه شده",
     "showAnother": "یکی دیگر نشان بده",
-    "tryIt": "امتحان کنید"
+    "tryIt": "امتحان کنید",
+    "packUpdates": "به‌روزرسانی بسته‌ها موجود است",
+    "updateAll": "به‌روزرسانی همه"
   },
   "offline": {
     "cachedSubtitle": "نمایش آخرین نتایج ذخیره‌شده شما.",

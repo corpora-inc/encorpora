@@ -131,7 +131,9 @@
     "sendAnonUsageHint": "Anonymné, viazané len na reláciu. Žiadne účty, žiadne ID zariadenia, žiadne ukladanie IP. Kedykoľvek môžete vypnúť.",
     "readPrivacyPromise": "Prečítať si náš prísľub ochrany súkromia",
     "showStreak": "Zobraziť sériu čítania",
-    "showStreakHint": "Malý počet dní v hlavičke. Len vo vašom zariadení, žiadne pripomienky ani upozornenia."
+    "showStreakHint": "Malý počet dní v hlavičke. Len vo vašom zariadení, žiadne pripomienky ani upozornenia.",
+    "home": "Domov",
+    "developer": "Vývojár"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Máte radi Corpán?",
     "description": "Ak máte Corpán radi, dajte mu 5 hviezdičiek. V obchodoch s aplikáciami všetko pod 5 hviezdičiek Corpánu škodí.",
     "rateNow": "⭐ Dajte 5 hviezdičiek",
-    "remindLater": "Možno neskôr",
-    "noThanks": "Nie, ďakujem",
     "close": "Zavrieť",
     "feedbackHint": "Ak to pre vás ešte nie je 5-hviezdičková aplikácia, napíšte nám e-mail alebo otvorte issue na GitHube a povedzte, čo opraviť. Chceme ju zlepšiť.",
     "emailButton": "Napíšte e-mail",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} zadarmo",
     "trialReassurance": "Žiadna platba teraz · zrušiť kedykoľvek",
     "trialThenPrice": ", potom {{price}}/{{period}}",
-    "trialToday": "Dnes: začiatok"
+    "trialToday": "Dnes: začiatok",
+    "rate": "Ohodnotiť Corpán"
   },
   "restore": {
     "button": "Obnoviť nákupy",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — odomknite všetko",
     "recommended": "Odporúčané",
     "showAnother": "Ukážte mi ďalšie",
-    "tryIt": "Vyskúšať"
+    "tryIt": "Vyskúšať",
+    "packUpdates": "Máte aktualizácie balíčkov",
+    "updateAll": "Aktualizovať všetko"
   },
   "offline": {
     "cachedSubtitle": "Zobrazujú sa vaše posledné uložené výsledky.",

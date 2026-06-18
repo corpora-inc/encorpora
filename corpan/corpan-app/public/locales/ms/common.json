@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Baca Janji Privasi kami",
     "showStreak": "Tunjukkan siri bacaan",
     "showStreakHint": "Kiraan hari kecil di pengepala. Pada peranti sahaja, tiada peringatan atau pemberitahuan.",
-    "primaryLanguage": "Bahasa utama (UI)"
+    "primaryLanguage": "Bahasa utama (UI)",
+    "home": "Laman utama",
+    "developer": "Pembangun"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Suka Corpán?",
     "description": "Jika anda menyukai Corpán, beri 5 bintang. Di gedung aplikasi, apa-apa kurang daripada 5 bintang merugikan Corpán.",
     "rateNow": "⭐ Beri 5 bintang",
-    "remindLater": "Mungkin kemudian",
-    "noThanks": "Tidak, terima kasih",
     "close": "Tutup",
     "feedbackHint": "Jika ia belum menjadi aplikasi 5 bintang untuk anda, e-mel kami atau buka issue di GitHub dan beritahu apa yang perlu dibaiki. Kami mahu menjadikannya lebih baik.",
     "emailButton": "E-mel kami",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} percuma",
     "trialReassurance": "Tiada bayaran sekarang · batal bila-bila masa",
     "trialThenPrice": ", kemudian {{price}}/{{period}}",
-    "trialToday": "Hari ini: mula"
+    "trialToday": "Hari ini: mula",
+    "rate": "Nilai Corpán"
   },
   "restore": {
     "button": "Pulihkan Pembelian",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — buka kunci segala-galanya",
     "recommended": "Disyorkan",
     "showAnother": "Tunjukkan yang lain",
-    "tryIt": "Cuba"
+    "tryIt": "Cuba",
+    "packUpdates": "Anda mempunyai kemas kini pek",
+    "updateAll": "Kemas kini semua"
   },
   "offline": {
     "cachedSubtitle": "Menunjukkan hasil terakhir yang disimpan dalam cache anda.",

@@ -131,7 +131,9 @@
     "readPrivacyPromise": "Olvasd el az Adatvédelmi ígéretünket",
     "showStreak": "Olvasási sorozat megjelenítése",
     "showStreakHint": "Egy kis napi számláló a fejlécben. Csak az eszközön, emlékeztetők és értesítések nélkül.",
-    "primaryLanguage": "Elsődleges (felhasználói felület) nyelv"
+    "primaryLanguage": "Elsődleges (felhasználói felület) nyelv",
+    "home": "Kezdőlap",
+    "developer": "Fejlesztő"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "Szereted a Corpánt?",
     "description": "Ha szereted a Corpánt, adj neki 5 csillagot. Az appáruházakban minden 5 csillag alatti értékelés árt a Corpánnak.",
     "rateNow": "⭐ Adj 5 csillagot",
-    "remindLater": "Talán később",
-    "noThanks": "Nem, köszönöm",
     "close": "Bezárás",
     "feedbackHint": "Ha számodra még nem 5 csillagos app, írj nekünk e-mailt vagy nyiss egy GitHub issue-t, és mondd el, mit javítsunk. Jobbá akarjuk tenni.",
     "emailButton": "Írj e-mailt",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} ingyenes",
     "trialReassurance": "Most nincs fizetés · bármikor lemondható",
     "trialThenPrice": ", majd {{price}}/{{period}}",
-    "trialToday": "Ma: kezdés"
+    "trialToday": "Ma: kezdés",
+    "rate": "Corpán értékelése"
   },
   "restore": {
     "button": "Vásárlások visszaállítása",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus – oldj fel mindent",
     "recommended": "Ajánlott",
     "showAnother": "Mutass másikat",
-    "tryIt": "Próbáld ki"
+    "tryIt": "Próbáld ki",
+    "packUpdates": "Csomagfrissítések érhetők el",
+    "updateAll": "Összes frissítése"
   },
   "offline": {
     "cachedSubtitle": "Az utolsó gyorsítótárazott eredmények megjelenítése.",

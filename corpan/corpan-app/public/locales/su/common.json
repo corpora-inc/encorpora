@@ -131,7 +131,9 @@
       "noFiltered": "Teu aya di dieu ayeuna.",
       "stackTotalPhrases": "~{{count}} frasa cocog",
       "stackTotalNudge": "Tambah paket atanapi lebar tingkat pikeun variasi."
-    }
+    },
+    "home": "Imah",
+    "developer": "Pangembang"
   },
   "home": {
     "continueLearning": "Terus diajar",
@@ -148,7 +150,9 @@
     "like": "Suka",
     "notForMe": "Teu kanggo kuring",
     "plusChip": "Corpán Plus — buka sadayana",
-    "installing": "Masang…"
+    "installing": "Masang…",
+    "packUpdates": "Aya apdet pak",
+    "updateAll": "Apdet sadayana"
   },
   "tour": {
     "progress": "{{n}} tina {{total}}",
@@ -604,8 +608,6 @@
     "title": "Resep pisan ka Corpán?",
     "description": "Lamun anjeun resep pisan ka Corpán, pasihan 5 béntang. Di toko aplikasi, naon waé di handap 5 béntang ngarusak Corpán.",
     "rateNow": "⭐ Pasihan 5 béntang",
-    "remindLater": "Meureun engké",
-    "noThanks": "Teu, hatur nuhun",
     "close": "Tutup",
     "feedbackHint": "Lamun keur anjeun ieu can jadi aplikasi 5 béntang, kirim email ka kami atawa buka issue di GitHub jeung wartosan naon anu kudu dibenerkeun. Kami hayang ngajadikeunana leuwih hadé.",
     "emailButton": "Kirim email",
@@ -723,7 +725,8 @@
     "trialHeadline": "{{period}} gratis",
     "trialReassurance": "Teu aya pamayaran ayeuna · tiasa ngabatalkeun iraha waé",
     "trialThenPrice": ", teras {{price}}/{{period}}",
-    "trialToday": "Dinten: mimitian"
+    "trialToday": "Dinten: mimitian",
+    "rate": "Peunteun Corpán"
   },
   "restore": {
     "button": "Pulihkan Pembelian",

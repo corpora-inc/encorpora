@@ -1,12 +1,5 @@
 // src/components/SettingsModal.tsx
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogClose,
-} from "@/components/ui/dialog";
 import { Home as HomeIcon, Sparkles, Star } from "lucide-react";
 import corpanMark from "@/assets/corpan-mark-trim.png";
 import { LanguageSelectOrder } from "./LanguageSelectOrder";
@@ -142,26 +135,31 @@ export function SettingsModal({
     }
   };
 
+  // Settings is a full-screen PAGE, not a Radix modal dialog. A modal Dialog
+  // locked body pointer-events + trapped focus, so anything opened FROM settings
+  // (paywall, rating, the TTS drawer) sat behind it and was unclickable. As a
+  // plain view in the z-ladder, top-level overlays (paywall z-1400, rating
+  // z-1300) pop cleanly OVER it and stay interactive — no bouncing back Home.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
   return (
-    <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent
-        className="
-          !w-[100vw] !max-w-[100vw]
-          !h-[100dvh] !max-h-[100dvh]
-          overflow-y-auto rounded-none border-0 bg-background pb-6
-          px-4 md:px-8
-          flex flex-col
-          [&>div:first-child]:hidden
-        "
-        id="settings-modal-content"
-        style={{ paddingTop: 0 }}
-      >
-        <DialogTitle className="sr-only" dir={dir()}>
-          {t("settings.settings")}
-        </DialogTitle>
-        <DialogDescription className="sr-only" dir={dir()}>
-          {t("settings.adjustToYourPreferences")}
-        </DialogDescription>
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={t("settings.settings")}
+      dir={dir()}
+      id="settings-modal-content"
+      className="fixed inset-0 z-[var(--z-modal)] flex flex-col overflow-y-auto overscroll-contain bg-background px-4 md:px-8 pb-6 animate-in fade-in duration-200"
+    >
 
         {/* Sticky header: title + close (tabs removed with the Packs tab). */}
         <div
@@ -185,13 +183,15 @@ export function SettingsModal({
             </div>
             {/* Home button (returns to the Home hub) — matches Phrase Flip's
                 home affordance; performs the existing close action. */}
-            <DialogClose
+            <button
+              type="button"
+              onClick={onClose}
               aria-label={t("settings.home", { defaultValue: "Home" })}
               className="inline-flex h-10 md:h-12 w-12 items-center justify-center rounded-md border border-border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0"
             >
               <HomeIcon className="h-5 w-5 text-muted-foreground" />
               <span className="sr-only">{t("settings.home", { defaultValue: "Home" })}</span>
-            </DialogClose>
+            </button>
           </div>
         </div>
 
@@ -282,6 +282,8 @@ export function SettingsModal({
                 <Button
                   type="button"
                   variant="outline"
+                  // Pops over Settings (Settings is a plain view now, not a
+                  // pointer-locking Radix modal), so it stays open behind it.
                   onClick={() => openPaywall({ surface: "settings" })}
                   className="gap-2 rounded-md border-purple-400/50 text-purple-600 hover:bg-purple-500/10 dark:text-purple-300 dark:border-purple-700/60"
                 >
@@ -294,8 +296,8 @@ export function SettingsModal({
             <Button
               type="button"
               variant="outline"
-              // Opens the rating dialog unconditionally (manual-only — the
-              // auto-popup was retired).
+              // Opens unconditionally (manual-only — auto-popup retired). Pops
+              // over Settings and stays interactive.
               onClick={() => useRatingStore.getState().promptManualReview()}
               className="gap-2 rounded-md"
             >
@@ -348,7 +350,6 @@ export function SettingsModal({
             above this Radix dialog so it stays interactive (the old full-screen
             overlay was trapped by the dialog's pointer-events lock). */}
         <TTSSettingsDrawer />
-      </DialogContent>
-    </Dialog>
+    </div>
   );
 }

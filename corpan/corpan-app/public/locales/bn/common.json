@@ -131,7 +131,9 @@
     "readPrivacyPromise": "আমাদের গোপনীয়তা প্রতিশ্রুতি পড়ুন",
     "showStreak": "পড়ার স্ট্রিক দেখান",
     "showStreakHint": "হেডারে একটি ছোট দিনের সংখ্যা। শুধুমাত্র ডিভাইসে, কোনো অনুস্মারক বা বিজ্ঞপ্তি নেই।",
-    "primaryLanguage": "প্রাথমিক (UI) ভাষা"
+    "primaryLanguage": "প্রাথমিক (UI) ভাষা",
+    "home": "হোম",
+    "developer": "ডেভেলপার"
   },
   "onboarding": {
     "welcomePact": {
@@ -523,8 +525,6 @@
     "description": "যদি আপনি Corpán ভালোবাসেন, ৫ তারকা দিন। অ্যাপ স্টোরে ৫ তারকার কম যেকোনো রেটিং Corpán-এর ক্ষতি করে।",
     "feedbackHint": "আপনার কাছে এটি এখনও ৫-তারকার অ্যাপ না হলে, আমাদের ইমেইল করুন বা GitHub-এ একটি ইস্যু খুলে কী ঠিক করতে হবে বলুন। আমরা এটিকে আরও ভালো করতে চাই।",
     "rateNow": "⭐ ৫ তারকা দিন",
-    "remindLater": "পরে হয়তো",
-    "noThanks": "না, ধন্যবাদ",
     "close": "বন্ধ করুন",
     "emailButton": "আমাদের ইমেইল করুন",
     "githubButton": "GitHub ইস্যু"
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}} বিনামূল্যে",
     "trialReassurance": "এখন কোনো পেমেন্ট প্রয়োজন নেই · যেকোনো সময় বাতিল করুন",
     "trialThenPrice": ", তারপর {{price}}/{{period}}",
-    "trialToday": "আজ: শুরু করুন"
+    "trialToday": "আজ: শুরু করুন",
+    "rate": "Corpán রেট করুন"
   },
   "restore": {
     "button": "ক্রয় পুনরুদ্ধার",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — সবকিছু আনলক করুন",
     "recommended": "প্রস্তাবিত",
     "showAnother": "আমাকে অন্য একটি দেখান",
-    "tryIt": "চেষ্টা করুন"
+    "tryIt": "চেষ্টা করুন",
+    "packUpdates": "আপনার প্যাক আপডেট আছে",
+    "updateAll": "সব আপডেট করুন"
   },
   "offline": {
     "cachedSubtitle": "আপনার শেষ ক্যাশ করা ফলাফল দেখানো হচ্ছে।",

@@ -131,7 +131,9 @@
     "readPrivacyPromise": "阅读我们的隐私承诺",
     "showStreak": "显示阅读连读天数",
     "showStreakHint": "在顶部显示一个小小的天数计数。仅限设备本地，无提醒或通知。",
-    "primaryLanguage": "主要（UI）语言"
+    "primaryLanguage": "主要（UI）语言",
+    "home": "主页",
+    "developer": "开发者"
   },
   "onboarding": {
     "welcomePact": {
@@ -522,8 +524,6 @@
     "title": "喜欢 Corpán 吗？",
     "description": "如果你喜欢 Corpán，请给它 5 星。在应用商店里，任何低于 5 星的评分都会伤害 Corpán。",
     "rateNow": "⭐ 给 5 星",
-    "remindLater": "稍后再说",
-    "noThanks": "不了，谢谢",
     "close": "关闭",
     "feedbackHint": "如果它对你来说还不是 5 星应用，请给我们发邮件或在 GitHub 开 issue，告诉我们该修什么。我们想把它做得更好。",
     "emailButton": "给我们发邮件",
@@ -641,7 +641,8 @@
     "trialHeadline": "{{period}}免费",
     "trialReassurance": "现在无需付款 · 随时取消",
     "trialThenPrice": "，之后{{price}}/{{period}}",
-    "trialToday": "今天：开始"
+    "trialToday": "今天：开始",
+    "rate": "评价 Corpán"
   },
   "restore": {
     "button": "恢复购买",
@@ -754,7 +755,9 @@
     "plusChip": "Corpán Plus — 解锁全部内容",
     "recommended": "推荐",
     "showAnother": "再看一个",
-    "tryIt": "试用"
+    "tryIt": "试用",
+    "packUpdates": "你有包更新",
+    "updateAll": "全部更新"
   },
   "offline": {
     "cachedSubtitle": "显示您上次缓存的结果。",
