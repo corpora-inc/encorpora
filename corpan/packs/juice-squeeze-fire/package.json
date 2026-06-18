@@ -10,7 +10,9 @@
     "test": "vitest",
     "test:run": "vitest run",
     "dev:corpan": "node scripts/dev-corpan.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pack": "node scripts/pack.mjs",
+    "pack:all": "npm run build && node scripts/pack.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
