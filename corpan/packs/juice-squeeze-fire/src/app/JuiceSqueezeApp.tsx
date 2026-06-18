@@ -224,17 +224,15 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
       const inBank = store.bankOrder.includes(blockId)
       if (inBank) {
         store.moveToSentence(blockId)
-        // Soft tactile "snap" on a tap-to-place (UNDER the voice). Only on the
-        // place-into-sentence tap; returning a block to the bank stays silent so
-        // we don't over-sound. The win chime (if this tap completes the phrase)
-        // layers cleanly on top via the engine's per-play clone.
-        sfx.play("snap")
       } else {
         store.moveToBank(blockId)
       }
+      // NOTE: no snap here. The snap already fired on pointer-DOWN (onTapSpeak),
+      // so playing it again on the pointer-UP place made every tap a DOUBLE click
+      // ~150ms apart. One snap per tap, on touch-down.
       logic.onSentenceChanged()
     },
-    [logic, sfx]
+    [logic]
   )
 
   const activeBlock = activeId ? blocks[activeId] : null
