@@ -14,6 +14,7 @@ import { useGameStore } from "../state/gameStore"
 import { useGameLogic, FRUIT_EMOJIS } from "../hooks/useGameLogic"
 import { useTTS } from "../hooks/useTTS"
 import { useSfx } from "../hooks/useSfx"
+import { useHaptics } from "../hooks/useHaptics"
 import { useBlockSizing } from "../hooks/useBlockSizing"
 import { GameLayout } from "../components/GameLayout"
 import { TargetPhrase } from "../components/TargetPhrase"
@@ -96,6 +97,7 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
 
   const { speak } = useTTS(hostApi)
   const sfx = useSfx()
+  const haptics = useHaptics(hostApi)
   const logic = useGameLogic(hostApi)
 
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -207,12 +209,13 @@ export function JuiceSqueezeApp({ hostApi, initialStackConfig }: Props) {
 
   const onTapSpeak = useCallback(
     (word: string) => {
-      // Instant tactile "snap" on TOUCH (pointer-down) so it hits immediately,
-      // not after the tap-vs-drag resolves on release.
+      // Instant tactile "snap" + light haptic on TOUCH (pointer-down) so it hits
+      // immediately, not after the tap-vs-drag resolves on release.
       sfx.play("snap")
+      haptics.fire("light")
       speak(blockLang, word)
     },
-    [blockLang, speak, sfx]
+    [blockLang, speak, sfx, haptics]
   )
 
   // Tap (no drag): a bank block goes to the END of the sentence; a sentence

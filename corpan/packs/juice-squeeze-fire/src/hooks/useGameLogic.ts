@@ -343,6 +343,7 @@ export function useGameLogic(hostApi: HostApi) {
       // The jar pops up, the lid drops on, then it flies home. The jar-close
       // sound fires exactly when the lid SEATS (onLidSeat), so cap + clunk land
       // together instead of guessing at a delay.
+      haptics.fire("heavy") // a satisfying THUMP as the bottle caps
       jarFlyCleanup.current = launchJarFly(completedGradient, {
         onLidSeat: () => sfx.play("jarClose"),
       })
@@ -361,10 +362,11 @@ export function useGameLogic(hostApi: HostApi) {
         basketCleanup.current = launchBasketCarry({
           // Jars cloned → clear the real shelf so they don't double up.
           onStart: () => useGameStore.getState().removeBasketJars(BASKET_SIZE),
-          // Coin lands in the header counter → mint it + a bright ding.
+          // Coin lands in the header counter → mint it + a bright ding + buzz.
           onCoin: () => {
             useGameStore.getState().addCoins(1)
             sfx.play("ping")
+            haptics.fire("success")
           },
         })
       }
