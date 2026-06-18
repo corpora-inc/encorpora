@@ -51,6 +51,7 @@
 
   /* Layout */
   --wr-player-h: 80px;
+  --wr-topbar-padding-top: 25px;
 
   position: fixed;
   inset: 0;
@@ -64,15 +65,7 @@
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  /* Make the inset-0 box include padding inside the viewport. Without this,
-     the safe-area padding below would expand the box past the screen edges. */
   box-sizing: border-box;
-  /* Push everything (sticky header, scrollable content, close-pack X) below
-     the device status bar / camera notch on Android and iOS. The player bar
-     is `position: absolute; bottom: 0` and handles its own
-     `padding-bottom: env(safe-area-inset-bottom)`, so it stays anchored to
-     the actual screen bottom either way. */
-  padding-top: env(safe-area-inset-top);
 }
 
 @media (prefers-color-scheme: light) {
@@ -216,9 +209,7 @@
 }
 
 .wr-header {
-  /* Vertical padding shrinks on phones (less wasted space in the sticky
-     region), opens up on desktop where there's more room to breathe. */
-  padding: clamp(8px, 1.4vw, 16px) var(--wr-edge) clamp(4px, 0.6vw, 12px);
+  padding: var(--wr-topbar-padding-top) var(--wr-edge) 8px;
 }
 
 .wr-header-row {
@@ -1358,11 +1349,7 @@
 
 .wr-close-pack {
   position: absolute;
-  /* Absolutely positioned children are placed against the *outer* padding
-     edge of the containing block, which on `.wr-root` is the viewport top —
-     not below its `padding-top`. So the inset from `.wr-root` doesn't push
-     this button down; it has to add the safe-area inset itself. */
-  top: calc(env(safe-area-inset-top) + var(--wr-sp-2));
+  top: var(--wr-topbar-padding-top);
   right: var(--wr-sp-3);
   z-index: 10;
   width: 36px;
@@ -1453,7 +1440,7 @@
 .wr-browse-tabs {
   display: flex;
   justify-content: center;
-  padding: clamp(14px, 2.2vw, 22px) var(--wr-edge) clamp(10px, 1.6vw, 16px);
+  padding: var(--wr-topbar-padding-top) var(--wr-edge) 8px;
   position: sticky;
   top: 0;
   z-index: 5;

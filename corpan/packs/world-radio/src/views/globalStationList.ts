@@ -43,6 +43,7 @@ const DEFAULT_PREFS: GlobalListPrefs = {
   sort: "popular",
   tags: [],
 }
+const RENDER_LIMIT = 80
 
 export type GlobalStationListView = {
   root: HTMLElement
@@ -59,9 +60,11 @@ export function createGlobalStationListView(opts: {
   onSearch?: (query: string, resultCount: number) => void
   onSortChanged?: (sortKey: string) => void
   onTagFilter?: (tag: string, applied: boolean) => void
+  focusStation?: RadioStation
   focusUuid?: string
 }): GlobalStationListView {
   const root = el("section", { class: "wr-stationlist", "data-view": "list" })
+  const focusUuid = opts.focusStation?.stationuuid ?? opts.focusUuid
 
   const prefs = loadGlobalListPrefs()
   type RowEqState = "idle" | "loading" | "playing" | "paused"
@@ -89,7 +92,7 @@ export function createGlobalStationListView(opts: {
   back.addEventListener("click", () => opts.onBack())
   headerRow.appendChild(back)
 
-  headerRow.appendChild(el("h1", { class: "wr-title" }, ["All stations"]))
+  headerRow.appendChild(el("h1", { class: "wr-title" }, ["Global stations"]))
   header.appendChild(headerRow)
 
   const subtitle = el("p", { class: "wr-subtitle" }, ["Loading..."])
@@ -122,6 +125,7 @@ export function createGlobalStationListView(opts: {
   body.appendChild(createSkeletonRows(5))
 
   let allStations: RadioStation[] = []
+  let focusStation: RadioStation | null = opts.focusStation ?? null
   let popularThreshold = 0
   let disposed = false
   let activeGlyph: EqGlyph | null = null
@@ -136,40 +140,67 @@ export function createGlobalStationListView(opts: {
     return applyFilters(allStations, filterRail.getState())
   }
 
-  function updateSubtitle(filtered: RadioStation[]) {
+  function filterActive(): boolean {
+    const f = filterRail.getState()
+    return f.query !== "" || f.tags.length > 0
+  }
+
+  function updateSubtitle(filtered: RadioStation[], visible: RadioStation[]) {
     const total = allStations.length
     if (total === 0) {
       subtitle.textContent = "No stations found"
       return
     }
-    const filterActive =
-      filterRail.getState().query !== "" || filterRail.getState().tags.length > 0
-    subtitle.textContent = filterActive
-      ? `Showing ${filtered.length.toLocaleString()} of ${total.toLocaleString()}`
-      : `${total.toLocaleString()} stations`
+    const shown = visible.length.toLocaleString()
+    const matched = filtered.length.toLocaleString()
+    const all = total.toLocaleString()
+    subtitle.textContent = filterActive()
+      ? `Showing ${shown} of ${matched} matches`
+      : `Showing ${shown} of ${all} stations`
   }
 
   function ensureFocusIsVisible() {
-    if (!opts.focusUuid) return
+    if (!focusUuid) return
     const filtered = getFilteredStations()
-    if (filtered.some((s) => s.stationuuid === opts.focusUuid)) return
+    if (filtered.some((s) => s.stationuuid === focusUuid)) return
     const current = filterRail.getState()
     const cleared: FilterState = { query: "", sort: current.sort, tags: [] }
     filterRail.setState(cleared)
     saveGlobalListPrefs({ sort: cleared.sort, tags: [] })
   }
 
-  function scrollToStation(uuid: string) {
-    requestAnimationFrame(() => {
-      const node = root.querySelector(`[data-uuid="${CSS.escape(uuid)}"]`)
-      if (node) node.scrollIntoView({ behavior: "smooth", block: "center" })
-    })
+  function getVisibleStations(filtered: RadioStation[]): RadioStation[] {
+    if (filtered.length <= RENDER_LIMIT) return filtered
+    const focus = focusUuid
+      ? filtered.find((s) => s.stationuuid === focusUuid) ?? null
+      : null
+    if (!focus) return filtered.slice(0, RENDER_LIMIT)
+
+    const visible: RadioStation[] = [focus]
+    const seen = new Set<string>([focus.stationuuid])
+
+    if (!filterActive()) {
+      for (const station of filtered) {
+        if (seen.has(station.stationuuid)) continue
+        if (!isRelatedStation(focus, station)) continue
+        visible.push(station)
+        seen.add(station.stationuuid)
+        if (visible.length >= RENDER_LIMIT) return visible
+      }
+    }
+
+    for (const station of filtered) {
+      if (seen.has(station.stationuuid)) continue
+      visible.push(station)
+      if (visible.length >= RENDER_LIMIT) break
+    }
+    return visible
   }
 
-  function renderListBody(filtered: RadioStation[]) {
+  function renderListBody(visible: RadioStation[]) {
     disposeActiveGlyph()
     clear(body)
-    if (filtered.length === 0) {
+    if (visible.length === 0) {
       const empty = el("div", { class: "wr-empty" }, ["No stations match your filters."])
       const action = el("button", {
         class: "wr-empty-action",
@@ -188,7 +219,7 @@ export function createGlobalStationListView(opts: {
 
     const favoriteUuids = new Set(favoritesStore.load().map((s) => s.uuid))
     const list = el("ul", { class: "wr-list" })
-    for (const station of filtered) {
+    for (const station of visible) {
       list.appendChild(stationRow(station, favoriteUuids))
     }
     body.appendChild(list)
@@ -207,7 +238,7 @@ export function createGlobalStationListView(opts: {
       "aria-label": `Play ${station.name}`,
     })
 
-    const art = createStationArt(station, 36)
+    const art = createStationArt(station, 36, { loadRemote: false })
     art.classList.add("wr-station-art")
     main.appendChild(art)
 
@@ -300,8 +331,9 @@ export function createGlobalStationListView(opts: {
 
   function renderResults() {
     const filtered = getFilteredStations()
-    updateSubtitle(filtered)
-    renderListBody(filtered)
+    const visible = getVisibleStations(filtered)
+    updateSubtitle(filtered, visible)
+    renderListBody(visible)
   }
 
   function loadStations() {
@@ -317,13 +349,15 @@ export function createGlobalStationListView(opts: {
         }
 
         filterRail.setAvailableTags(computeTopTags(stations, 14))
-        if (opts.focusUuid && stations.some((s) => s.stationuuid === opts.focusUuid)) {
-          activeUuid = opts.focusUuid
+        if (focusUuid) {
+          focusStation =
+            stations.find((s) => s.stationuuid === focusUuid) ??
+            focusStation
+          if (focusStation) activeUuid = focusUuid
         }
         ensureFocusIsVisible()
         opts.onStationsLoaded?.(stations.length)
         renderResults()
-        if (opts.focusUuid) scrollToStation(opts.focusUuid)
       } catch (err) {
         console.error("[world-radio] global station list load failed:", err)
         if (disposed) return
@@ -414,4 +448,33 @@ function saveGlobalListPrefs(prefs: GlobalListPrefs): void {
   } catch (err) {
     console.error("[world-radio] saveGlobalListPrefs failed:", err)
   }
+}
+
+function isRelatedStation(focus: RadioStation, station: RadioStation): boolean {
+  if (focus.countrycode && station.countrycode === focus.countrycode) return true
+  if (focus.country && station.country === focus.country) return true
+
+  const focusLanguages = new Set(
+    focus.language
+      .toLowerCase()
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+  )
+  for (const language of station.language.toLowerCase().split(",")) {
+    if (focusLanguages.has(language.trim())) return true
+  }
+
+  const focusCodes = new Set(
+    focus.languagecodes
+      .toLowerCase()
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+  )
+  for (const code of station.languagecodes.toLowerCase().split(",")) {
+    if (focusCodes.has(code.trim())) return true
+  }
+
+  return false
 }
