@@ -11,6 +11,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+tmp
 *.local
 
 # env files — all gitignored. Endpoints + secrets should not leak to git.
