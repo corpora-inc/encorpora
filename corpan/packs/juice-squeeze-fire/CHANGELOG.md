@@ -9,6 +9,26 @@ preview-gated alongside the original `juice_squeeze` until promoted.
 
 ## [Unreleased]
 
+### Native haptics, robust long-phrase layout, audio slim (2026-06-18)
+- **Native haptics** — wired the `tauri-plugin-haptics` that shipped in Corpán
+  0.19.0 (no host rebuild needed; the pack calls `plugin:haptics|impact` directly
+  through the webview IPC). Light tick on word tap, success on phrase complete,
+  heavy thump on bottle cap, success on basket coin; maps to the plugin's
+  light/medium/heavy/success/warning. Best-effort no-op where unavailable.
+- **Robust safe-zone layout for long phrases (C2 / verbose languages)** — the top
+  phrase auto-fits BANK-DRIVEN (tightens leading, then font to a 14px floor) only
+  as much as needed for the whole word bank to fit; reclaimed the over-conservative
+  bottom safe-area padding; dense phrases (≥16 words) tighten the gap between chips;
+  the completion zone grows naturally to show all placed blocks (no internal scroll,
+  never clips); and an empty word bank collapses (no reserved void) so the
+  completion zone reclaims the space. Nothing clips off-screen on any device.
+- **Uniform Web Audio (slim, no base64 blob)** — every SFX fetches its WAV from the
+  pack origin and `decodeAudioData`s it once into an AudioBuffer at startup, then
+  plays via `AudioBufferSourceNode.start(0)` — uniform low latency for all sounds,
+  iOS + Android. Dropped the inlined base64: `app.js` 2.37 MB → 565 KB, sideload zip
+  3.7 MB → 0.77 MB. Dev server gains CORS (`scripts/cors-server.py`) so the
+  cross-origin dev fetch works; prod is same-origin via `corpan-pack://`.
+
 ### Basket → coins meta-loop + juice-block phrase (2026-06-17)
 - **Basket → coins meta-loop (Ian's idea)** — every `BASKET_SIZE` (6) collected
   jars, a basket appears centered, the jars fly INTO it, it's carried off-screen,
