@@ -189,7 +189,7 @@ export function SettingsModal({
               aria-label={t("settings.home", { defaultValue: "Home" })}
               className="inline-flex h-10 w-12 items-center justify-center rounded-md border border-border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0"
             >
-              <HomeIcon className="h-5 w-5 text-muted-foreground" />
+              <HomeIcon className="h-4 w-4 text-muted-foreground" />
               <span className="sr-only">{t("settings.home", { defaultValue: "Home" })}</span>
             </button>
           </div>

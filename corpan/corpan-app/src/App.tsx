@@ -17,7 +17,7 @@ import { ContentPackOverlay } from "./components/ContentPackOverlay";
 import { PhrasePackDrawer } from "./components/packs/PhrasePackDrawer";
 import { TTSFailureBanner } from "./components/TTSFailureBanner";
 import "./index.css";
-import { getPlatformTopPaddingButtons } from "./util/browser";
+import { getTopBarPaddingTop } from "./util/browser";
 
 import { useRatingStore } from "@/store/rating";
 import { useGamesStore, type InstalledGame } from "@/store/games";
@@ -107,7 +107,9 @@ function PhraseFlipChrome() {
   const btnClass =
     "fixed z-[1110] h-10 w-12 rounded-md shadow-sm bg-background border border-border hover:bg-accent transition";
   const topStyle = {
-    top: `calc(env(safe-area-inset-top) + ${getPlatformTopPaddingButtons()}px)`,
+    // Same vertical offset as the Home/Settings top buttons (getTopBarPaddingTop)
+    // so the gear + Home chips line up across all surfaces.
+    top: getTopBarPaddingTop(),
   };
   // Gear at the leading corner, Home opposite it at the trailing corner.
   const gearSide = rtl ? "right-4 md:right-8" : "left-4 md:left-8";
