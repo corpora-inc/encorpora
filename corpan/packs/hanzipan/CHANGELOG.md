@@ -10,6 +10,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.4] - 2026-06-18
+
 ### Changed
 - New pack avatar: 鼎 (dǐng) in the 0.19.0 pack-family treatment — deep-navy
   radial ground, orange glyph, concentric orange + cinnabar-seal-red rings.

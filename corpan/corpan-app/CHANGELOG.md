@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.19.1] - 2026-06-18
+
 ### Added
 - **Phrase Flip now has its own artwork and a card in the "Installed" grid.**
   The built-in core experience was previously only reachable from the For You
@@ -74,6 +76,9 @@ Conventions: `corpan/CHANGELOGS.md`.
   it's invisible. The finale runs a touch longer (~8.4s) to breathe. All
   motion is GPU-composited transform/opacity (smooth on Android WebView).
   Reduced motion keeps the calm bloom + glow, no sparks. (`PackLaunchTransition.tsx`)
+- **Onboarding welcome copy tightened.** Dropped the "tiny team of enthusiasts"
+  row and shortened the cutting-edge / language-honesty text on the welcome pact
+  step so it reads faster. (`OnboardingWelcomePact.tsx`)
 
 ## [0.19.0] - 2026-06-16
 
