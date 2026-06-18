@@ -1,14 +1,14 @@
 {
   "id": "juice_squeeze_fire",
   "name": "Juice Squeeze ✨",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "entry": "dist/app.js",
   "styles": [
     "dist/app.css"
   ],
   "entryType": "script",
   "sdkVersion": "0.1.0",
-  "devRevision": "2026-06-18T04:43:28.523Z",
+  "devRevision": "2026-06-18T15:52:02.035Z",
   "nameLocalized": {
     "ar": "عصر العصير",
     "bg": "Изстискай сока",

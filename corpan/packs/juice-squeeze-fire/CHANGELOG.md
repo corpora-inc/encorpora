@@ -9,6 +9,14 @@ preview-gated alongside the original `juice_squeeze` until promoted.
 
 ## [Unreleased]
 
+### Fixed
+- **Audio in the INSTALLED pack (0.1.1)** — `fetch()`/XHR is blocked against the
+  `corpan-pack://` scheme on iOS WebKit, so the slimmed fetch+decode engine loaded
+  no SFX in the sideloaded pack (it worked over the http dev server, which is why
+  it passed there). Now WAV bytes are read via the host's `content_packs_fetch_bytes`
+  command for `corpan-pack://` URLs (fetch is kept for the http dev server) — the
+  proven pattern from `melopan/src/sdk/packAssets.ts`. Haptics were unaffected.
+
 ### Native haptics, robust long-phrase layout, audio slim (2026-06-18)
 - **Native haptics** — wired the `tauri-plugin-haptics` that shipped in Corpán
   0.19.0 (no host rebuild needed; the pack calls `plugin:haptics|impact` directly
