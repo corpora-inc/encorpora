@@ -568,6 +568,7 @@
       "noMatches": "Ei tuloksia.",
       "filter": {
         "all": "Kaikki",
+        "available": "Saatavilla",
         "free": "Ilmainen",
         "paid": "Maksullinen",
         "installed": "Asennettu"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Selaa fraasipaketteja",
       "inactiveBadge": "Ei käytössä",
       "moreActionsLabel": "Lisää toimintoja",
-      "install": "Asenna"
+      "install": "Asenna",
+      "downloadAll": "Lataa kaikki",
+      "downloadAllSummary": "{{count}} saatavilla · ~{{size}} MB",
+      "installingBatch": "Asennetaan {{current}}/{{total}}…",
+      "batchFailed": "{{count}} ei voitu asentaa — yritä uudelleen napauttamalla"
     },
     "unlockWithPlus": "Avaa Corpán Plus -palvelulla",
     "plus": "Corpán Plus",

@@ -568,10 +568,15 @@
       "noMatches": "Không có kết quả.",
       "filter": {
         "all": "Tất cả",
+        "available": "Có sẵn",
         "free": "Miễn phí",
         "paid": "Trả phí",
         "installed": "Đã cài đặt"
       },
+      "downloadAll": "Tải tất cả",
+      "downloadAllSummary": "{{count}} có sẵn · ~{{size}} MB",
+      "installingBatch": "Đang cài đặt {{current}} trên {{total}}…",
+      "batchFailed": "{{count}} không cài được — chạm để thử lại",
       "activeInStack": "Đang dùng",
       "activeBadge": "Đang dùng",
       "subBadge": "Đăng ký",

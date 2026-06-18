@@ -7,6 +7,25 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Smoother pack-launch transition.** In the first-run launch animation, the
+  chosen card no longer snaps to full opacity the instant it climbs to the front
+  of the shuffling deck (which abruptly hid the still-advancing shuffle). It now
+  rises translucent — so the live shuffle reads through it — and only firms to
+  fully solid as it settles dead center.
+
+### Added
+- **Phrase packs drawer: "Download all" and an "Available" lens.** The browser
+  gains an **Available** filter chip (not-installed packs you can grab without
+  paying — free packs plus anything unlocked by an active Plus subscription), so
+  the existing **All** chip can stay a mix of installed and not. Every
+  price/install chip now carries a live count badge that respects the active
+  search + category facets. A sticky **Download all** bar batch-installs every
+  installable pack in the current view (so "filter to a category, grab the lot"
+  works), showing total count + approximate download size, a live
+  "Installing N of M…" progress bar, and a tap-to-retry line if any pack fails.
+  New strings localized across all ~54 locales.
+
 ## [0.19.1] - 2026-06-18
 
 ### Added

@@ -568,6 +568,7 @@
       "noMatches": "Tiada hasil.",
       "filter": {
         "all": "Semua",
+        "available": "Tersedia",
         "free": "Percuma",
         "paid": "Berbayar",
         "installed": "Dipasang"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Lihat pek frasa",
       "inactiveBadge": "Tidak aktif",
       "moreActionsLabel": "Lagi tindakan",
-      "install": "Pasang"
+      "install": "Pasang",
+      "downloadAll": "Muat turun semua",
+      "downloadAllSummary": "{{count}} tersedia · ~{{size}} MB",
+      "installingBatch": "Memasang {{current}} daripada {{total}}…",
+      "batchFailed": "{{count}} tidak dapat dipasang — ketik untuk cuba lagi"
     },
     "unlockWithPlus": "Buka kunci dengan Corpán Plus",
     "plus": "Corpán Plus",

@@ -568,6 +568,7 @@
       "noMatches": "Hakuna matokeo.",
       "filter": {
         "all": "Zote",
+        "available": "Inapatikana",
         "free": "Bure",
         "paid": "Yenye malipo",
         "installed": "Imesakinishwa"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Vinjari pakiti za misemo",
       "inactiveBadge": "Haijawashwa",
       "moreActionsLabel": "Vitendo zaidi",
-      "install": "Sakinisha"
+      "install": "Sakinisha",
+      "downloadAll": "Pakua zote",
+      "downloadAllSummary": "{{count}} zinapatikana · ~{{size}} MB",
+      "installingBatch": "Inasakinisha {{current}} kati ya {{total}}…",
+      "batchFailed": "{{count}} hazikuweza kusakinishwa — gusa ili kujaribu tena"
     },
     "unlockWithPlus": "Fungua na Corpán Plus",
     "plus": "Corpán Plus",

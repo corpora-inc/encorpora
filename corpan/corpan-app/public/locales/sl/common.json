@@ -568,6 +568,7 @@
       "noMatches": "Ni zadetkov.",
       "filter": {
         "all": "Vse",
+        "available": "Na voljo",
         "free": "Brezplačno",
         "paid": "Plačljivo",
         "installed": "Nameščeno"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Brskaj po paketih fraz",
       "inactiveBadge": "Neaktivno",
       "moreActionsLabel": "Več dejanj",
-      "install": "Namesti"
+      "install": "Namesti",
+      "downloadAll": "Prenesi vse",
+      "downloadAllSummary": "{{count}} na voljo · ~{{size}} MB",
+      "installingBatch": "Nameščanje {{current}} od {{total}}…",
+      "batchFailed": "{{count}} ni bilo mogoče namestiti — tapnite za ponovni poskus"
     },
     "unlockWithPlus": "Odklenite s Corpán Plus",
     "plus": "Corpán Plus",

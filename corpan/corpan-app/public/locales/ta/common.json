@@ -568,6 +568,7 @@
       "noMatches": "பொருத்தங்கள் இல்லை.",
       "filter": {
         "all": "அனைத்தும்",
+        "available": "கிடைக்கிறது",
         "free": "இலவசம்",
         "paid": "கட்டண",
         "installed": "நிறுவப்பட்டது"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "சொற்றொடர் தொகுப்புகளைப் பார்க்க",
       "inactiveBadge": "செயலில் இல்லை",
       "moreActionsLabel": "மேலும் செயல்கள்",
-      "install": "நிறுவு"
+      "install": "நிறுவு",
+      "downloadAll": "அனைத்தையும் பதிவிறக்கு",
+      "downloadAllSummary": "{{count}} கிடைக்கிறது · ~{{size}} MB",
+      "installingBatch": "{{total}} இல் {{current}} நிறுவப்படுகிறது…",
+      "batchFailed": "{{count}} நிறுவ முடியவில்லை — மீண்டும் முயல தட்டவும்"
     },
     "unlockWithPlus": "Corpán Plus உடன் திறக்கவும்",
     "plus": "Corpán Plus",

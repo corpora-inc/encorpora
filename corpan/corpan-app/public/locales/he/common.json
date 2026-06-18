@@ -568,10 +568,15 @@
       "noMatches": "אין תוצאות.",
       "filter": {
         "all": "הכל",
+        "available": "זמינים",
         "free": "חינם",
         "paid": "בתשלום",
         "installed": "מותקן"
       },
+      "downloadAll": "הורד הכל",
+      "downloadAllSummary": "{{count}} זמינים · ~{{size}} MB",
+      "installingBatch": "מתקין {{current}} מתוך {{total}}…",
+      "batchFailed": "{{count}} לא הותקנו — הקש כדי לנסות שוב",
       "activeInStack": "פעיל",
       "activeBadge": "פעיל",
       "subBadge": "מנוי",

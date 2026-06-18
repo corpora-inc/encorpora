@@ -568,6 +568,7 @@
       "noMatches": "কোনো ফলাফল নেই।",
       "filter": {
         "all": "সব",
+        "available": "উপলব্ধ",
         "free": "ফ্রি",
         "paid": "পেইড",
         "installed": "ইনস্টল করা"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "ফ্রেজ প্যাক ব্রাউজ করুন",
       "inactiveBadge": "নিষ্ক্রিয়",
       "moreActionsLabel": "আরও কাজ",
-      "install": "ইনস্টল করুন"
+      "install": "ইনস্টল করুন",
+      "downloadAll": "সব ডাউনলোড করুন",
+      "downloadAllSummary": "{{count}}টি উপলব্ধ · ~{{size}} MB",
+      "installingBatch": "{{total}}টির মধ্যে {{current}}টি ইনস্টল হচ্ছে…",
+      "batchFailed": "{{count}}টি ইনস্টল করা যায়নি — আবার চেষ্টা করতে ট্যাপ করুন"
     },
     "unlockWithPlus": "Corpán Plus দিয়ে আনলক করুন",
     "plus": "Corpán Plus",

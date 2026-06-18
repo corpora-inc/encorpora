@@ -658,10 +658,15 @@
       "noMatches": "Ora ana sing cocog karo telusuran kasebut.",
       "filter": {
         "all": "Kabeh",
+        "available": "Kasedhiya",
         "free": "Gratis",
         "paid": "Dibayar",
         "installed": "Diinstal"
       },
+      "downloadAll": "Undhuh kabeh",
+      "downloadAllSummary": "{{count}} kasedhiya · ~{{size}} MB",
+      "installingBatch": "Nginstal {{current}} saka {{total}}…",
+      "batchFailed": "{{count}} ora bisa diinstal — tutul kanggo nyoba maneh",
       "activeInStack": "Aktif ing tumpukan",
       "activeBadge": "Aktif",
       "inactiveBadge": "Ora aktif",

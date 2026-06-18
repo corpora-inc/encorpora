@@ -568,10 +568,15 @@
       "noMatches": "कोई परिणाम नहीं।",
       "filter": {
         "all": "सभी",
+        "available": "उपलब्ध",
         "free": "मुफ़्त",
         "paid": "सशुल्क",
         "installed": "इंस्टॉल किया गया"
       },
+      "downloadAll": "सभी डाउनलोड करें",
+      "downloadAllSummary": "{{count}} उपलब्ध · ~{{size}} MB",
+      "installingBatch": "{{total}} में से {{current}} इंस्टॉल हो रहा है…",
+      "batchFailed": "{{count}} इंस्टॉल नहीं हो सके — फिर से प्रयास करने के लिए टैप करें",
       "activeInStack": "सक्रिय",
       "activeBadge": "सक्रिय",
       "subBadge": "सदस्यता",

@@ -568,6 +568,7 @@
       "noMatches": "نتیجه‌ای نیست.",
       "filter": {
         "all": "همه",
+        "available": "در دسترس",
         "free": "رایگان",
         "paid": "پولی",
         "installed": "نصب‌شده"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "مرور بسته‌های عبارات",
       "inactiveBadge": "غیرفعال",
       "moreActionsLabel": "اقدام‌های بیشتر",
-      "install": "نصب"
+      "install": "نصب",
+      "downloadAll": "دانلود همه",
+      "downloadAllSummary": "{{count}} در دسترس · ~{{size}} MB",
+      "installingBatch": "در حال نصب {{current}} از {{total}}…",
+      "batchFailed": "{{count}} نصب نشد — برای تلاش دوباره ضربه بزنید"
     },
     "unlockWithPlus": "با Corpán Plus باز کنید",
     "plus": "Corpán Plus",

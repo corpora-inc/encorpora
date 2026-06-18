@@ -568,6 +568,7 @@
       "noMatches": "Žádné výsledky.",
       "filter": {
         "all": "Vše",
+        "available": "Dostupné",
         "free": "Zdarma",
         "paid": "Placené",
         "installed": "Nainstalováno"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Procházet balíčky frází",
       "inactiveBadge": "Neaktivní",
       "moreActionsLabel": "Další akce",
-      "install": "Nainstalovat"
+      "install": "Nainstalovat",
+      "downloadAll": "Stáhnout vše",
+      "downloadAllSummary": "{{count}} dostupných · ~{{size}} MB",
+      "installingBatch": "Instaluje se {{current}} z {{total}}…",
+      "batchFailed": "{{count}} se nepodařilo nainstalovat — klepnutím opakujte"
     },
     "unlockWithPlus": "Odemknout s Corpán Plus",
     "plus": "Corpán Plus",

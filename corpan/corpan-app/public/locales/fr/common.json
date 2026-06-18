@@ -568,10 +568,15 @@
       "noMatches": "Aucun résultat.",
       "filter": {
         "all": "Tous",
+        "available": "Disponibles",
         "free": "Gratuit",
         "paid": "Payant",
         "installed": "Installé"
       },
+      "downloadAll": "Tout télécharger",
+      "downloadAllSummary": "{{count}} disponibles · ~{{size}} MB",
+      "installingBatch": "Installation de {{current}} sur {{total}}…",
+      "batchFailed": "{{count}} n'ont pas pu s'installer — appuyez pour réessayer",
       "activeInStack": "Actif",
       "activeBadge": "Actif",
       "subBadge": "Abonnement",

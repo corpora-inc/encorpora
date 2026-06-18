@@ -568,6 +568,7 @@
       "noMatches": "Ingen resultater.",
       "filter": {
         "all": "Alle",
+        "available": "Tilgængelige",
         "free": "Gratis",
         "paid": "Betalt",
         "installed": "Installeret"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Gennemse frasepakker",
       "inactiveBadge": "Inaktiv",
       "moreActionsLabel": "Flere handlinger",
-      "install": "Installer"
+      "install": "Installer",
+      "downloadAll": "Hent alle",
+      "downloadAllSummary": "{{count}} tilgængelige · ~{{size}} MB",
+      "installingBatch": "Installerer {{current}} af {{total}}…",
+      "batchFailed": "{{count}} kunne ikke installeres — tryk for at prøve igen"
     },
     "unlockWithPlus": "Lås op med Corpán Plus",
     "plus": "Corpán Plus",

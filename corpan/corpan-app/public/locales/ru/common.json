@@ -568,6 +568,7 @@
       "noMatches": "Ничего не найдено.",
       "filter": {
         "all": "Все",
+        "available": "Доступно",
         "free": "Бесплатно",
         "paid": "Платно",
         "installed": "Установлено"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Обзор пакетов фраз",
       "inactiveBadge": "Неактивен",
       "moreActionsLabel": "Другие действия",
-      "install": "Установить"
+      "install": "Установить",
+      "downloadAll": "Скачать все",
+      "downloadAllSummary": "{{count}} доступно · ~{{size}} МБ",
+      "installingBatch": "Установка {{current}} из {{total}}…",
+      "batchFailed": "{{count}} не удалось установить — нажмите, чтобы повторить"
     },
     "unlockWithPlus": "Разблокировать с Corpán Plus",
     "plus": "Corpán Plus",

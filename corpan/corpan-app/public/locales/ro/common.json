@@ -568,6 +568,7 @@
       "noMatches": "Niciun rezultat.",
       "filter": {
         "all": "Toate",
+        "available": "Disponibil",
         "free": "Gratuit",
         "paid": "Cu plată",
         "installed": "Instalat"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Răsfoiește pachete de fraze",
       "inactiveBadge": "Inactiv",
       "moreActionsLabel": "Mai multe acțiuni",
-      "install": "Instalează"
+      "install": "Instalează",
+      "downloadAll": "Descarcă toate",
+      "downloadAllSummary": "{{count}} disponibile · ~{{size}} MB",
+      "installingBatch": "Se instalează {{current}} din {{total}}…",
+      "batchFailed": "{{count}} nu s-au putut instala — atinge pentru reîncercare"
     },
     "unlockWithPlus": "Deblochează cu Corpán Plus",
     "plus": "Corpán Plus",

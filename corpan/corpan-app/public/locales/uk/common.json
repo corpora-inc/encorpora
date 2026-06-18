@@ -568,10 +568,15 @@
       "noMatches": "Немає результатів.",
       "filter": {
         "all": "Усі",
+        "available": "Доступні",
         "free": "Безкоштовно",
         "paid": "Платно",
         "installed": "Встановлено"
       },
+      "downloadAll": "Завантажити всі",
+      "downloadAllSummary": "{{count}} доступно · ~{{size}} MB",
+      "installingBatch": "Встановлення {{current}} з {{total}}…",
+      "batchFailed": "{{count}} не вдалося встановити — торкніться, щоб повторити",
       "activeInStack": "Активно",
       "activeBadge": "Активно",
       "subBadge": "Підписка",

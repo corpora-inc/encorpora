@@ -658,10 +658,15 @@
       "noMatches": "Walang tugma sa paghahanap na iyon.",
       "filter": {
         "all": "Lahat",
+        "available": "Available",
         "free": "Libre",
         "paid": "Bayad",
         "installed": "Naka-install"
       },
+      "downloadAll": "I-download lahat",
+      "downloadAllSummary": "{{count}} available · ~{{size}} MB",
+      "installingBatch": "Ini-install ang {{current}} ng {{total}}…",
+      "batchFailed": "{{count}} ang hindi na-install — i-tap para subukan ulit",
       "activeInStack": "Aktibo sa stack",
       "activeBadge": "Aktibo",
       "inactiveBadge": "Hindi aktibo",

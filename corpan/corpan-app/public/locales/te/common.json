@@ -568,10 +568,15 @@
       "noMatches": "సరిపోలికలు లేవు.",
       "filter": {
         "all": "అన్నీ",
+        "available": "అందుబాటులో",
         "free": "ఉచితం",
         "paid": "చెల్లింపు",
         "installed": "ఇన్‌స్టాల్ చేయబడింది"
       },
+      "downloadAll": "అన్నీ డౌన్‌లోడ్ చేయి",
+      "downloadAllSummary": "{{count}} అందుబాటులో · ~{{size}} MB",
+      "installingBatch": "{{total}}లో {{current}} ఇన్‌స్టాల్ అవుతోంది…",
+      "batchFailed": "{{count}} ఇన్‌స్టాల్ కాలేదు — మళ్లీ ప్రయత్నించడానికి నొక్కండి",
       "activeInStack": "క్రియాశీలంగా",
       "activeBadge": "క్రియాశీలంగా",
       "subBadge": "సబ్‌స్క్రిప్షన్",

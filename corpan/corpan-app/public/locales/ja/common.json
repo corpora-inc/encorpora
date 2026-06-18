@@ -568,10 +568,15 @@
       "noMatches": "該当なし。",
       "filter": {
         "all": "すべて",
+        "available": "入手可能",
         "free": "無料",
         "paid": "有料",
         "installed": "インストール済み"
       },
+      "downloadAll": "すべてダウンロード",
+      "downloadAllSummary": "{{count}}件が入手可能 · 約{{size}} MB",
+      "installingBatch": "{{total}}件中{{current}}件をインストール中…",
+      "batchFailed": "{{count}}件をインストールできませんでした — タップして再試行",
       "activeInStack": "使用中",
       "activeBadge": "使用中",
       "subBadge": "サブスク",

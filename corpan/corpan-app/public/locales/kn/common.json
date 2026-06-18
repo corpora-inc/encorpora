@@ -568,10 +568,15 @@
       "noMatches": "ಯಾವುದೂ ಹೊಂದಿಕೆಯಾಗಲಿಲ್ಲ.",
       "filter": {
         "all": "ಎಲ್ಲ",
+        "available": "ಲಭ್ಯ",
         "free": "ಉಚಿತ",
         "paid": "ಪಾವತಿಸಿದ",
         "installed": "ಸ್ಥಾಪಿತ"
       },
+      "downloadAll": "ಎಲ್ಲವನ್ನೂ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+      "downloadAllSummary": "{{count}} ಲಭ್ಯ · ~{{size}} MB",
+      "installingBatch": "{{total}} ರಲ್ಲಿ {{current}} ಸ್ಥಾಪಿಸಲಾಗುತ್ತಿದೆ…",
+      "batchFailed": "{{count}} ಸ್ಥಾಪಿಸಲಾಗಲಿಲ್ಲ — ಮರುಪ್ರಯತ್ನಕ್ಕೆ ಟ್ಯಾಪ್ ಮಾಡಿ",
       "activeInStack": "ಸಕ್ರಿಯ",
       "activeBadge": "ಸಕ್ರಿಯ",
       "subBadge": "ಚಂದಾದಾರಿಕೆ",

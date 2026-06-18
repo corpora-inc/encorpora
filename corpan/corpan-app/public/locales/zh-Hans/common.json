@@ -568,10 +568,15 @@
       "noMatches": "无匹配。",
       "filter": {
         "all": "全部",
+        "available": "可下载",
         "free": "免费",
         "paid": "付费",
         "installed": "已安装"
       },
+      "downloadAll": "全部下载",
+      "downloadAllSummary": "{{count}} 个可下载 · ~{{size}} MB",
+      "installingBatch": "正在安装第 {{current}}/{{total}} 个…",
+      "batchFailed": "{{count}} 个未能安装 — 点按重试",
       "activeInStack": "已启用",
       "activeBadge": "已启用",
       "subBadge": "订阅",

@@ -568,10 +568,15 @@
       "noMatches": "Nincs találat.",
       "filter": {
         "all": "Mind",
+        "available": "Elérhető",
         "free": "Ingyenes",
         "paid": "Fizetős",
         "installed": "Telepítve"
       },
+      "downloadAll": "Összes letöltése",
+      "downloadAllSummary": "{{count}} elérhető · ~{{size}} MB",
+      "installingBatch": "{{current}}/{{total}} telepítése…",
+      "batchFailed": "{{count}} nem telepíthető — koppints az újrapróbáláshoz",
       "activeInStack": "Aktív",
       "activeBadge": "Aktív",
       "subBadge": "Előfizetés",

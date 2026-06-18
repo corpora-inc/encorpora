@@ -568,6 +568,7 @@
       "noMatches": "Brak wyników.",
       "filter": {
         "all": "Wszystkie",
+        "available": "Dostępne",
         "free": "Darmowe",
         "paid": "Płatne",
         "installed": "Zainstalowane"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Przeglądaj paczki fraz",
       "inactiveBadge": "Nieaktywne",
       "moreActionsLabel": "Więcej działań",
-      "install": "Zainstaluj"
+      "install": "Zainstaluj",
+      "downloadAll": "Pobierz wszystkie",
+      "downloadAllSummary": "{{count}} dostępnych · ~{{size}} MB",
+      "installingBatch": "Instalowanie {{current}} z {{total}}…",
+      "batchFailed": "{{count}} nie udało się zainstalować — dotknij, aby ponowić"
     },
     "unlockWithPlus": "Odblokuj z Corpán Plus",
     "plus": "Corpán Plus",
