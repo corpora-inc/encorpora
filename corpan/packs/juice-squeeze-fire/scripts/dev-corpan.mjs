@@ -63,9 +63,11 @@ const buildWatcher = run(
   "build:watch"
 )
 
+// CORS-enabled static server (not `python -m http.server`) so the pack can
+// fetch() its own audio cross-origin in dev. Serves packsRoot, same as before.
 const server = run(
   "python3",
-  ["-m", "http.server", "8989", "--bind", "0.0.0.0"],
+  [path.join(__dirname, "cors-server.py"), "8989", "0.0.0.0"],
   packsRoot,
   "server"
 )

@@ -1,15 +1,23 @@
 /**
- * SfxEngine — pure Web Audio. Every sound is decoded ONCE (from inlined base64,
- * src/audio/audioData.ts) into an AudioBuffer and played via a fresh
- * AudioBufferSourceNode straight on the audio hardware clock. That makes onset
- * sample-accurate and LOCKED to the visuals — no scheduling jitter, no fetch, no
- * CORS, fully offline/native. Overlap-safe (a new sound never cuts the previous).
+ * SfxEngine — uniform low-latency Web Audio for EVERY sound.
  *
- * iOS requires a user gesture before audio plays, so we resume the shared
- * AudioContext on the first pointerdown/touchend/click. play() is wrapped so a
- * stray error can never throw into the game loop.
+ * At startup we fetch each WAV from the installed pack and `decodeAudioData` it
+ * ONCE into an in-memory AudioBuffer. Every play is then a fresh
+ * `AudioBufferSourceNode → gain → destination → start(0)` on the shared
+ * AudioContext — sample-accurate, instant, overlap-safe, identical for the snap
+ * and every other sound. Decoding happens up front (during the load beat), so by
+ * the time the first phrase is on screen all buffers are armed; in gameplay there
+ * is zero per-play latency difference between sounds.
+ *
+ * No inlining, no base64, no duplicate assets — the WAVs live once in dist/audio/
+ * and are fetched from the pack's own origin (`corpan-pack://…` when installed,
+ * the dev server in dev). Same code on iOS and Android (Web Audio + decodeAudioData
+ * + the custom-scheme fetch are standard in both webviews; the AudioContext is
+ * resumed on the first gesture for both platforms' autoplay policies).
+ *
+ * Every path is fail-safe — a missing file / failed fetch / decode error / no-Web-
+ * Audio env is a silent no-op and never throws into the game loop.
  */
-import { SFX_WAV_BASE64 } from "./audioData"
 
 export type SfxName =
   | "win"
@@ -21,9 +29,47 @@ export type SfxName =
   | "snap"
   | "ping"
 
-// Per-event playback gain (0..1). STRONG + crisp across the board: pour, win
-// chime, bottle-complete, jar-close, and snap all at full; only the accent ping
-// sits a hair under so it layers on the win without clipping.
+// ---- Pack script URL capture (module-load, while currentScript is the pack) --
+const PACK_SCRIPT_SRC: string | null = (() => {
+  if (typeof document === "undefined") return null
+  try {
+    const fromScript =
+      (document.currentScript as HTMLScriptElement | null)?.dataset?.corpGameSrc ?? null
+    if (fromScript) return fromScript
+    const tagged = document.querySelector<HTMLScriptElement>("script[data-corp-game-src]")
+    return tagged?.dataset?.corpGameSrc ?? null
+  } catch {
+    return null
+  }
+})()
+
+/** Resolve `audio/<file>` next to the built dist/app.js (same origin as the pack). */
+function audioUrl(file: string): string {
+  const rel = `audio/${file}`
+  if (PACK_SCRIPT_SRC) {
+    try {
+      return new URL(rel, PACK_SCRIPT_SRC.split("?")[0]).toString()
+    } catch {
+      /* fall through */
+    }
+  }
+  return `./${rel}`
+}
+
+const FILES: Record<SfxName, string | null> = {
+  win: "win.wav",
+  fill: "fill.wav",
+  bottleComplete: "level-complete.wav",
+  jarClose: "jar-close.wav",
+  snap: "snap.wav",
+  ping: "ping-h-1.wav",
+  place: null,
+  pick: null,
+}
+
+// Per-event playback gain (0..1). STRONG + crisp: pour, win chime, bottle-complete,
+// jar-close, and snap at full; only the accent ping a hair under so it layers
+// cleanly on the win.
 const VOLUME: Partial<Record<SfxName, number>> = {
   win: 1.0,
   fill: 1.0,
@@ -43,24 +89,16 @@ function getAudioContextCtor(): AudioCtxCtor | null {
   return w.AudioContext ?? w.webkitAudioContext ?? null
 }
 
-function base64ToArrayBuffer(b64: string): ArrayBuffer {
-  const bin = atob(b64)
-  const len = bin.length
-  const bytes = new Uint8Array(len)
-  for (let i = 0; i < len; i++) bytes[i] = bin.charCodeAt(i)
-  return bytes.buffer
-}
-
 class SfxEngineImpl {
   private ctx: AudioContext | null = null
   private buffers = new Map<SfxName, AudioBuffer>()
-  private ready = false
+  private started = false
   private unlockBound = false
 
-  /** Create the context, decode every sound once, and arm the gesture unlock. */
+  /** Create the context, fetch + decode every sound once, arm the gesture unlock. */
   preload(): void {
-    if (this.ready) return
-    this.ready = true
+    if (this.started) return
+    this.started = true
     const Ctor = getAudioContextCtor()
     if (!Ctor) return
     try {
@@ -70,25 +108,31 @@ class SfxEngineImpl {
       return
     }
     const ctx = this.ctx
-    for (const key of Object.keys(SFX_WAV_BASE64) as SfxName[]) {
-      const b64 = SFX_WAV_BASE64[key]
-      if (!b64) continue
-      try {
-        // Callback form so older WebKit (no promise return) works. Decoding runs
-        // fine while the context is suspended; the gesture only gates playback.
-        ctx.decodeAudioData(
-          base64ToArrayBuffer(b64),
-          (decoded) => this.buffers.set(key, decoded),
-          () => undefined
-        )
-      } catch {
-        /* this sound stays silent rather than crashing the load */
-      }
+    for (const key of Object.keys(FILES) as SfxName[]) {
+      const file = FILES[key]
+      if (file) void this.loadOne(ctx, key, file)
     }
     this.bindUnlock()
   }
 
-  /** iOS starts the context suspended; resume it on the first gesture. */
+  /** Fetch one WAV from the pack origin + decode it into an AudioBuffer. */
+  private async loadOne(ctx: AudioContext, name: SfxName, file: string): Promise<void> {
+    try {
+      const res = await fetch(audioUrl(file))
+      if (!res.ok) return
+      const arr = await res.arrayBuffer()
+      // Callback form so older WebKit (no-promise decode) works on every webview.
+      ctx.decodeAudioData(
+        arr,
+        (decoded) => this.buffers.set(name, decoded),
+        () => undefined
+      )
+    } catch {
+      // Network/CORS/decode failure → this sound stays silent; never crashes.
+    }
+  }
+
+  /** iOS + Android start the context suspended; resume it on the first gesture. */
   private bindUnlock(): void {
     if (this.unlockBound || typeof window === "undefined") return
     this.unlockBound = true
