@@ -35,13 +35,18 @@ export function WordBank({
 }: Props) {
   const bankOrder = useGameStore((s) => s.bankOrder)
   const blocks = useGameStore((s) => s.blocks)
+  // Total phrase word count (the worst case: all chips in the bank at the start).
+  // Dense phrases pull the gap between chips in so more rows fit before we ever
+  // need to shrink the chips themselves.
+  const wordCount = useGameStore((s) => s.correctWords.length)
+  const dense = wordCount >= 16
   const { setNodeRef, isOver } = useDroppable({ id: "bank", data: { type: "bank" } })
   const langRtl = isRTL(blockLang)
 
   return (
     <div
       ref={setNodeRef}
-      className={`jsf-bank${isOver ? " jsf-bank--over" : ""}`}
+      className={`jsf-bank${isOver ? " jsf-bank--over" : ""}${dense ? " jsf-bank--dense" : ""}`}
       data-testid="word-bank"
     >
       {/* Build-language tag: the language you ASSEMBLE the sentence in, shown in

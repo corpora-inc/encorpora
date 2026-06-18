@@ -8,6 +8,7 @@
  */
 import { useGameStore } from "../state/gameStore"
 import { getAllFruits } from "../state/fruits"
+import { useFitText } from "../hooks/useFitText"
 import { isRTL } from "../util/rtl"
 import { getNativeLanguageName } from "../util/languageNames"
 
@@ -25,12 +26,16 @@ export function TargetPhrase({ onSpeakTarget }: Props) {
   const colorIndex = useGameStore((s) => s.bottleProgress.currentColorIndex)
   const fruit = FRUITS[((colorIndex % FRUITS.length) + FRUITS.length) % FRUITS.length] || FRUITS[0]
   const [jc1, jc2, jc3] = fruit?.gradient ?? ["#FFB84D", "#FF9800", "#E65100"]
+  // Auto-fit: long phrases tighten + shrink to a height budget so they never
+  // push the bank off-screen; short/normal phrases are left untouched.
+  const fitRef = useFitText<HTMLButtonElement>(phrase.targetText)
   if (!phrase.targetText) return null
   const targetRtl = phrase.targetLang ? isRTL(phrase.targetLang) : false
 
   return (
     <div className="jsf-target">
       <button
+        ref={fitRef}
         type="button"
         className="jsf-target__text"
         dir={targetRtl ? "rtl" : "ltr"}
