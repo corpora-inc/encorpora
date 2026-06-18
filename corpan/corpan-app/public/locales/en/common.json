@@ -77,6 +77,8 @@
     "removeLanguage": "Remove language",
     "settings": "Settings",
     "adjustToYourPreferences": "Adjust to your preferences",
+    "home": "Home",
+    "developer": "Developer",
     "speechRate": "Speech rate",
     "slow": "Slow",
     "normal": "Normal",
@@ -723,7 +725,8 @@
     "trialHeadline": "{{period}} free",
     "trialReassurance": "No payment due now · cancel anytime",
     "trialThenPrice": ", then {{price}}/{{period}}",
-    "trialToday": "Today: start"
+    "trialToday": "Today: start",
+    "rate": "Rate Corpán"
   },
   "restore": {
     "button": "Restore Purchases",
