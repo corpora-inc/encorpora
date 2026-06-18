@@ -162,7 +162,7 @@ export function PaywallSheet() {
             type="button"
             onClick={dismiss}
             aria-label={t("paywall.dismiss", "Dismiss")}
-            className="absolute end-4 md:end-8 z-10 flex h-10 w-12 items-center justify-center rounded-md border border-[color:var(--border)] bg-transparent text-[color:var(--muted-foreground)] transition-colors hover:bg-white/10 hover:text-[color:var(--foreground)]"
+            className="absolute end-4 md:end-8 z-10 flex h-10 w-12 items-center justify-center rounded-md bg-transparent text-[color:var(--muted-foreground)] opacity-60 transition hover:opacity-100 hover:text-[color:var(--foreground)] focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--border)]"
             style={{ top: getTopBarPaddingTop() }}
           >
             <X className="h-5 w-5" />
