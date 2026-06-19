@@ -10,6 +10,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.2] - 2026-06-19
+
 ### Added
 - **End-of-book "read next" suggestion.** When a full book reaches its end
   (subscriber/owned path — a truncated free preview still offers Plus instead),

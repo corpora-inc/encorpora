@@ -7,6 +7,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.19.2] - 2026-06-19
+
 ### Changed
 - **Smoother pack-launch transition.** In the first-run launch animation, the
   chosen card no longer snaps to full opacity the instant it climbs to the front

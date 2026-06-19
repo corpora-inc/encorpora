@@ -10,6 +10,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.5] - 2026-06-19
+
 ### Added
 - **"Show hint" button** on the canvas toolbar. Reveals the next stroke once, on
   demand, regardless of the guided auto-hint toggle — the affordance you

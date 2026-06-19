@@ -10,6 +10,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-06-19
+
 ### Added
 - **Seamless preview→full upgrade after subscribing to Corpán Plus.** The app
   shell now upgrades installed preview narrations to the full versions in place
