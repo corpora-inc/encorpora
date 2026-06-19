@@ -20,6 +20,7 @@ The tagline is the brand pun and stays English by default:
 from __future__ import annotations
 
 import argparse
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -203,31 +204,160 @@ def endcard_clip(out: Path, w: int, h: int, dur: float = 3.5, lang: str = "en",
         still.unlink(missing_ok=True)
 
 
-def corner_badge(src: Path, out: Path, corner: str = "br", text: str = "SKY30  -  30% off") -> None:
-    """Composite a small squared "SKY30 · 30% off" chip in a corner of `src`,
-    keeping source audio. corner in {tl,tr,bl,br}. Inset to a safe area."""
-    # probe dims
+# Premium "glass" SKY30 badge: a rounded translucent plate with a hairline
+# lilac outline, soft drop shadow, Helvetica Neue with letter-spacing, and an
+# orange accent on the discount. Rendered once with ImageMagick and reused.
+BADGE_PNG = HERE / "branding" / "sky30-badge.png"
+HELV_NEUE = "/System/Library/Fonts/HelveticaNeue.ttc"
+
+
+def build_badge_png(out: Path = BADGE_PNG, fill: str = "rgba(14,9,28,0.52)",
+                    force: bool = False, shadow: bool = True) -> Path:
+    """Render the glass SKY30 badge (transparent PNG). Idempotent — only builds
+    if missing (unless force). Composites letter-spaced 'SKY30 · 30% OFF' onto a
+    rounded glass plate with hairline border + soft shadow. `fill` sets the plate
+    alpha — use a low alpha for a 'glass face' that lets a lens blur show through."""
+    if out.exists() and not force:
+        return out
+    import tempfile as _tf
+    work = Path(_tf.mkdtemp(prefix="sky30badge-"))
+    try:
+        def mg(*a):
+            subprocess.run(["magick", *a], check=True, cwd=work)
+        # text segments
+        mg("-background", "none", "-font", HELV_NEUE, "-fill", "white",
+           "-pointsize", "60", "-kerning", "6", "label:SKY30", "s1.png")
+        mg("-background", "none", "-font", HELV_NEUE, "-fill", "#8f7fc8",
+           "-pointsize", "50", "label:·", "s2.png")
+        mg("-background", "none", "-font", HELV_NEUE, "-fill", "#f0973a",
+           "-pointsize", "40", "-kerning", "3", "label:30% OFF", "s3.png")
+        hs = subprocess.run(["magick", "identify", "-format", "%h\n", "s1.png", "s2.png", "s3.png"],
+                            capture_output=True, text=True, cwd=work).stdout.split()
+        H = max(int(x) for x in hs)
+        # spacer must be FULL height + transparent, and `-background none` MUST
+        # precede `+append` — otherwise +append vertically pads the thin spacers
+        # with the default BLACK background → dark bars flanking the dot.
+        mg("-size", f"22x{H}", "xc:none", "sp.png")
+        for f in ("s1", "s2", "s3"):
+            mg(f"{f}.png", "-background", "none", "-gravity", "center", "-extent", f"x{H}", f"{f}e.png")
+        mg("-background", "none", "s1e.png", "sp.png", "s2e.png", "sp.png", "s3e.png", "+append", "txt.png")
+        tw, th = (int(x) for x in subprocess.run(["magick", "identify", "-format", "%w %h", "txt.png"],
+                  capture_output=True, text=True, cwd=work).stdout.split())
+        padx, pady = 48, 30
+        W, Hp = tw + 2 * padx, th + 2 * pady
+        R = Hp // 2
+        mg("-size", f"{W}x{Hp}", "xc:none",
+           "-fill", fill, "-draw", f"roundrectangle 2,2,{W-3},{Hp-3},{R},{R}",
+           "-fill", "none", "-stroke", "rgba(214,200,255,0.38)", "-strokewidth", "2",
+           "-draw", f"roundrectangle 2,2,{W-3},{Hp-3},{R},{R}", "plate.png")
+        mg("plate.png", "txt.png", "-gravity", "center", "-composite", "chip.png")
+        # 8-bit RGBA (PNG32) + strip — `-layers merge` defaults to 16-bit, which
+        # ffmpeg's PNG decoder rejects ("chunk too big"). Shadow is optional: the
+        # floating-lens face skips it so nothing bleeds past the border.
+        if shadow:
+            mg("chip.png", "(", "+clone", "-background", "black", "-shadow", "55x14+0+7", ")",
+               "+swap", "-background", "none", "-layers", "merge", "+repage",
+               "-depth", "8", "-strip", f"PNG32:{out}")
+        else:
+            mg("chip.png", "-depth", "8", "-strip", f"PNG32:{out}")
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+    return out
+
+
+def corner_badge(src: Path, out: Path, corner: str = "br") -> None:
+    """Overlay the premium glass SKY30 badge in a corner of `src` (keeps audio).
+    corner in {tl,tr,bl,br}. Badge scales with the short edge; fades in 0.5s."""
+    build_badge_png()
     r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v",
                         "-show_entries", "stream=width,height", "-of", "csv=p=0", str(src)],
                        capture_output=True, text=True)
     w, h = (int(x) for x in r.stdout.strip().split(","))
     base = min(w, h)
-    fs = max(16, int(base * 0.032))
-    bb = max(8, int(base * 0.014))
+    bw = int(base * 0.30)            # badge width ~30% of short edge (consistent size)
     inset = int(base * 0.045)
-    xexpr = f"{inset}" if corner in ("tl", "bl") else f"w-text_w-{inset}-{bb}*2"
-    yexpr = f"{inset}" if corner in ("tl", "tr") else f"h-text_h-{inset}-{bb}*2"
-    dt = (
-        f"drawtext=fontfile='{F_BOLD}':text={_esc(text)}:fontcolor=white:fontsize={fs}"
-        f":x={xexpr}+{bb}:y={yexpr}+{bb}:box=1:boxcolor={PURPLE}@0.82:boxborderw={bb}:expansion=none"
+    xexpr = f"{inset}" if corner in ("tl", "bl") else f"W-w-{inset}"
+    yexpr = f"{inset}" if corner in ("tl", "tr") else f"H-h-{inset}"
+    fc = (
+        f"[1:v]scale={bw}:-1,format=rgba,fade=t=in:st=0:d=0.5:alpha=1[bdg];"
+        f"[0:v][bdg]overlay=x={xexpr}:y={yexpr}:format=auto,format=yuv420p[v]"
     )
     subprocess.run([
         "ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-stats",
-        "-i", str(src), "-vf", f"{dt},format=yuv420p",
+        "-i", str(src), "-loop", "1", "-framerate", "30", "-i", str(BADGE_PNG),
+        "-filter_complex", fc, "-map", "[v]", "-map", "0:a?", "-shortest",
         "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-profile:v", "high",
         "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
         "-c:a", "copy", "-movflags", "+faststart", str(out),
     ], check=True)
+
+
+LENS_CACHE = HERE / "branding" / "_lens"   # generated masks + glass face
+
+
+def _lens_mask(cw: int, ch: int) -> Path:
+    """Sharp-edged rounded-rect alpha (white on transparent) at cw×ch — clips the
+    blurred patch crisply to the pill so the blur never bleeds past the border."""
+    LENS_CACHE.mkdir(exist_ok=True)
+    out = LENS_CACHE / f"mask_{cw}x{ch}.png"
+    if out.exists():
+        return out
+    r = ch // 2
+    subprocess.run(["magick", "-size", f"{cw}x{ch}", "xc:none", "-fill", "white",
+                    "-draw", f"roundrectangle 0,0,{cw - 1},{ch - 1},{r},{r}",
+                    "-depth", "8", "-strip", f"PNG32:{out}"], check=True)
+    return out
+
+
+def _lens_face() -> Path:
+    """Faint-fill, no-shadow glass face (border + text) so the lens shows through
+    and nothing extends past the border."""
+    return build_badge_png(LENS_CACHE / "face.png", fill="rgba(14,9,28,0.14)", shadow=False)
+
+
+def floating_lens(src: Path, out: Path, blur: float = 10.0, zoom: float = 1.16) -> None:
+    """Float a SKY30 glass lens slowly around the center: the content behind the
+    pill is magnified (zoom) + blurred, hard-clipped to the pill border, with the
+    glass face (SKY30 · 30% OFF) on top. Drift = two slow out-of-phase sines, so
+    it roams without repeating. Fast crop-based path (no per-pixel geq). Keeps audio."""
+    LENS_CACHE.mkdir(exist_ok=True)
+    w, h = (int(x) for x in subprocess.run(
+        ["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries",
+         "stream=width,height", "-of", "csv=p=0", str(src)],
+        capture_output=True, text=True).stdout.strip().split(","))
+    base = min(w, h)
+    cw = int(base * 0.42) & ~1
+    ch = round(cw * 188 / 614) & ~1
+    mask, face = _lens_mask(cw, ch), _lens_face()
+    ax, ay = round(0.12 * w), round(0.16 * h)
+    zw, zh = round(w * zoom) & ~1, round(h * zoom) & ~1
+
+    def center(wv, hv):  # crop uses in_w/in_h; overlay uses W/H — same numbers
+        return (f"({wv}/2+{ax}*sin(2*PI*t/11))", f"({hv}/2+{ay}*sin(2*PI*t/8.5+1.6))")
+    ccx, ccy = center("in_w", "in_h")
+    ocx, ocy = center("W", "H")
+    cpx, cpy = f"'{ccx}-{cw}/2'", f"'{ccy}-{ch}/2'"
+    opx, opy = f"'{ocx}-{cw}/2'", f"'{ocy}-{ch}/2'"
+    graph = (
+        f"[0:v]split=2[base][bg];"
+        f"[bg]scale={zw}:{zh},crop={w}:{h},gblur=sigma={blur}[bz];"
+        f"[bz]crop={cw}:{ch}:x={cpx}:y={cpy}[patch];"
+        f"[patch][1:v]alphamerge[lp];"
+        f"[base][lp]overlay=x={opx}:y={opy}:shortest=1[c1];"
+        f"[2:v]scale={cw}:{ch}[face];"
+        f"[c1][face]overlay=x={opx}:y={opy}:shortest=1,format=yuv420p[v]"
+    )
+    gf = out.with_suffix(".lens.filter")
+    gf.write_text(graph)
+    subprocess.run([
+        "ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-stats",
+        "-i", str(src), "-loop", "1", "-i", str(mask), "-loop", "1", "-i", str(face),
+        "-filter_complex_script", str(gf), "-map", "[v]", "-map", "0:a?", "-shortest",
+        "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-profile:v", "high",
+        "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
+        "-c:a", "copy", "-movflags", "+faststart", str(out),
+    ], check=True)
+    gf.unlink(missing_ok=True)
 
 
 def concat_endcard(body: Path, endcard: Path, out: Path, fps: int = 30) -> None:

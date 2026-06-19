@@ -24,7 +24,10 @@ Reuses studio.py (blur_pad_to / build_horizontal / music_*) and sky30.py.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import os
+import random
 import subprocess
 import sys
 import tempfile
@@ -74,14 +77,89 @@ def eprint(*a):
     print(*a, file=sys.stderr, flush=True)
 
 
-def pick_music(slug: str, spec: str) -> Path | None:
+# Music pool for per-variant randomization: the committed beds + the S3-pulled
+# instrumental pool on the Desktop (LOCAL_CAPTURES_DIR/music-pool). Each aspect
+# ratio of a capture gets a DISTINCT track; the shuffle is seeded by slug so a
+# given video is reproducible but different videos draw different sets.
+CAPTURES_LOCAL = Path(os.environ.get("LOCAL_CAPTURES_DIR",
+                                     Path.home() / "Desktop" / "Corpan Captures"))
+AUDIO_EXT = {".m4a", ".mp3", ".wav", ".aac", ".ogg", ".flac"}
+# Corpán ORIGINALS ONLY for public ad creatives. Two safe sources:
+#   1. the S3 `corpan-beats` pool (every track is a Corpán original) mirrored to
+#      LOCAL_CAPTURES_DIR/music-pool, and
+#   2. the committed beds whose name carries the `corpan-original` marker.
+# Everything else in branding/music (tanpuras = ragajunglism/user, tanz-a-bissel
+# = Rose Gross, the pre-1929 PD restorations) is NOT ours — excluded.
+BEATS_POOL = CAPTURES_LOCAL / "music-pool"        # corpan-beats mirror (all originals)
+COMMITTED_MUSIC = HERE / "branding" / "music"     # only *corpan-original* qualify
+ORIGINAL_MARKER = "corpan-original"
+
+
+def gather_pool() -> list[Path]:
+    seen: dict[str, Path] = {}
+    if BEATS_POOL.exists():
+        for p in sorted(BEATS_POOL.iterdir()):
+            if p.suffix.lower() in AUDIO_EXT:
+                seen.setdefault(p.stem.lower(), p)
+    if COMMITTED_MUSIC.exists():
+        for p in sorted(COMMITTED_MUSIC.iterdir()):
+            if p.suffix.lower() in AUDIO_EXT and ORIGINAL_MARKER in p.stem.lower():
+                seen.setdefault(p.stem.lower(), p)
+    return list(seen.values())
+
+
+# Tracks pulled from the auto-pool because the source bed itself has audible
+# white noise / hiss (not a mix artifact). Kept OUT of shipped creatives.
+BLOCKED_TRACKS = {"scholar-acoustic-inst", "competence-instrumental-184"}
+
+
+def assign_music(slug: str, names: list[str], spec: str) -> dict:
+    """Map each variant name -> a track. spec=='auto' shuffles the pool seeded by
+    slug and hands each variant a distinct track. Otherwise pin one track to all.
+    Blocked (hissy) tracks are swapped for a clean alternate WITHOUT disturbing
+    any other variant's pick (so prior music choices stay stable)."""
     if spec and spec != "auto":
-        return studio.resolve_music(spec)
-    low = slug.lower()
-    for key, track in MUSIC_BY_VIBE.items():
-        if key in low:
-            return studio.resolve_music(track)
-    return studio.resolve_music(MUSIC_DEFAULT)
+        one = studio.resolve_music(spec)
+        return {n: one for n in names}
+    pool = gather_pool()
+    if not pool:
+        return {n: studio.resolve_music(MUSIC_DEFAULT) for n in names}
+    seed = int(hashlib.md5(slug.encode()).hexdigest()[:8], 16)
+    rng = random.Random(seed)
+    rng.shuffle(pool)                       # full pool → indices stay stable
+    amap = {n: pool[i % len(pool)] for i, n in enumerate(names)}
+
+    def blocked(p):
+        return p.stem.lower() in BLOCKED_TRACKS
+
+    if any(blocked(p) for p in amap.values()):
+        used = {p.stem.lower() for p in amap.values() if not blocked(p)}
+        alts = [p for p in pool if not blocked(p) and p.stem.lower() not in used]
+        ai = 0
+        for n in names:
+            if blocked(amap[n]):
+                pick = alts[ai] if ai < len(alts) else next(p for p in pool if not blocked(p))
+                amap[n] = pick
+                used.add(pick.stem.lower())
+                ai += 1
+    return amap
+
+
+# Badge techniques to A/B across the campaign. "lens" = floating glass lens
+# (blur+magnify, roams center); "glass" = the static premium glass corner chip.
+BADGE_STYLES = ["lens", "glass"]
+
+
+def assign_badge(slug: str, names: list[str], style: str) -> dict:
+    """Per-variant badge technique. style in {auto,mix} → balanced shuffle seeded
+    by slug (every video a different spread); else pin one style to all."""
+    if style and style not in ("auto", "mix"):
+        return {n: style for n in names}
+    seed = int(hashlib.md5((slug + "|badge").encode()).hexdigest()[:8], 16)
+    rng = random.Random(seed)
+    deck = (BADGE_STYLES * (len(names) // len(BADGE_STYLES) + 1))[:max(len(names), len(BADGE_STYLES))]
+    rng.shuffle(deck)
+    return {n: deck[i % len(deck)] for i, n in enumerate(names)}
 
 
 def probe_dims(p: Path) -> tuple[int, int]:
@@ -106,30 +184,79 @@ def make_thumb(raw: Path, out: Path) -> None:
                     "-filter_complex", fc, "-q:v", "2", str(out)], check=True)
 
 
+def lay_music(video: Path, bgm: Path, out: Path,
+              src_fade: float = 0.25, music_fade_in: float = 1.3) -> None:
+    """Mix a looped bed under the source (unducked, both full), then -14 LUFS.
+    The bed FADES IN (no abrupt slam) and the source gets a short fade-in so a
+    trimmed cut never starts mid-word. Falls back to music-only if no src audio."""
+    dur = studio.ffprobe_duration(video)
+    fo = max(0.0, dur - 2.5)
+    if studio.ffprobe_has_audio(video):
+        fc = (f"[1:a]afade=t=in:st=0:d={music_fade_in},afade=t=out:st={fo:.2f}:d=2.5[m];"
+              f"[0:a]afade=t=in:st=0:d={src_fade}[s];"
+              f"[s][m]amix=inputs=2:duration=first:normalize=0[mix];"
+              f"[mix]loudnorm=I=-14:LRA=11:TP=-1.5[a]")
+    else:
+        fc = (f"[1:a]afade=t=in:st=0:d={music_fade_in},afade=t=out:st={fo:.2f}:d=2.5,"
+              f"loudnorm=I=-14:LRA=11:TP=-1.5[a]")
+    subprocess.run([
+        "ffmpeg", "-y", "-hide_banner", "-loglevel", "warning",
+        "-i", str(video), "-stream_loop", "-1", "-i", str(bgm),
+        "-filter_complex", fc, "-map", "0:v", "-map", "[a]",
+        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+        "-dn", "-map_chapters", "-1", "-shortest", "-movflags", "+faststart", str(out),
+    ], check=True)
+
+
+def clean_trim(src: Path, out: Path, ss: float, dur: float | None) -> None:
+    """Accurate sub-clip: `-ss`/`-t` AFTER `-i` (output seek) decodes from the
+    start so there is NO input-seek audio priming burst. Re-aligns audio PTS and
+    re-encodes both streams to a clean full clip starting at 0."""
+    cmd = ["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-stats",
+           "-i", str(src), "-ss", str(ss)]
+    if dur is not None:
+        cmd += ["-t", str(dur)]
+    cmd += [
+        "-af", "aresample=48000:async=1:first_pts=0",
+        "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-profile:v", "high",
+        "-pix_fmt", "yuv420p",
+        "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
+        "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+        "-avoid_negative_ts", "make_zero", "-movflags", "+faststart", str(out),
+    ]
+    subprocess.run(cmd, check=True)
+
+
 def build_variant(raw: Path, name: str, w: int | None, h: int | None, geom: str,
                   top_bias: float, lang: str, badge: bool, endcard: bool,
                   bgm: Path | None, headline: str, subs: list[str],
                   ss: float | None, dur: float | None, tmp: Path,
-                  ec_cache: dict) -> Path:
+                  ec_cache: dict, badge_style: str = "glass") -> Path:
     """Run geometry -> badge -> endcard -> music for one variant, return final path."""
+    # A trimmed cut MUST be made with an accurate (output) seek + audio resample,
+    # or input-seeking leaves a priming/garbage audio burst at t=0 (the cut15 pop).
+    # Pre-trim cleanly once, then geometry runs on a normal full sub-clip.
+    src = raw
+    if ss is not None or dur is not None:
+        src = tmp / f"{name}.pretrim.mp4"
+        clean_trim(raw, src, ss or 0.0, dur)
+
     body = tmp / f"{name}.body.mp4"
     if geom == "horizontal":
-        # build_horizontal can't sub-clip; pre-trim if a window was asked.
-        src = raw
-        if ss is not None or dur is not None:
-            src = tmp / f"{name}.pretrim.mp4"
-            studio.blur_pad_to(raw, src, *probe_dims(raw), top_bias=0.5, ss=ss, dur=dur)
         studio.build_horizontal(src, body, headline, subs)
         vw, vh = 1920, 1080
     else:
-        vw, vh = (w, h) if w else probe_dims(raw)
-        studio.blur_pad_to(raw, body, vw, vh, top_bias=top_bias, ss=ss, dur=dur)
+        vw, vh = (w, h) if w else probe_dims(src)
+        studio.blur_pad_to(src, body, vw, vh, top_bias=top_bias)
 
     stage = body
     if badge:
         badged = tmp / f"{name}.badge.mp4"
-        corner = "tl" if name in BADGE_TL else "br"
-        sky30.corner_badge(stage, badged, corner=corner)
+        if badge_style == "lens":
+            sky30.floating_lens(stage, badged)
+        else:
+            corner = "tl" if name in BADGE_TL else "br"
+            sky30.corner_badge(stage, badged, corner=corner)
         stage = badged
 
     if endcard:
@@ -145,10 +272,7 @@ def build_variant(raw: Path, name: str, w: int | None, h: int | None, geom: str,
 
     final = tmp.parent / f"{name}.mp4"   # tmp is <built>/.tmp ; final in <built>
     if bgm:
-        if studio.ffprobe_has_audio(stage):
-            studio.music_blend_full(stage, bgm, final)
-        else:
-            studio.music_overlay_silent(stage, bgm, final)
+        lay_music(stage, bgm, final)     # fades in (no slam), unducked, -14 LUFS
     else:
         final.write_bytes(stage.read_bytes())
     return final
@@ -165,6 +289,8 @@ def main() -> int:
     ap.add_argument("--no-badge", dest="badge", action="store_false")
     ap.add_argument("--endcard", action="store_true", default=True)
     ap.add_argument("--no-endcard", dest="endcard", action="store_false")
+    ap.add_argument("--badge-style", default="mix",
+                    help="mix|lens|glass — per-variant badge technique (mix = seeded spread)")
     ap.add_argument("--headline", default="Corpán")
     ap.add_argument("--subs", default="Pure learning.;The Sky is the limit.")
     ap.add_argument("--keep-tmp", action="store_true", help="keep build intermediates")
@@ -182,50 +308,61 @@ def main() -> int:
     tmp = built / ".tmp"
     tmp.mkdir(parents=True, exist_ok=True)
 
-    bgm = pick_music(slug, args.music)
-    eprint(f"==> slug={slug}  built={built}")
-    eprint(f"    music={bgm.name if bgm else 'none'}  lang={args.lang}  badge={args.badge}  endcard={args.endcard}")
-
     subs = [s for s in args.subs.split(";")]
     sw = None
     if args.short_window:
         ss_s, dur_s = args.short_window.split(":")
         sw = (float(ss_s), float(dur_s))
 
-    want = [f.strip() for f in args.formats.split(",") if f.strip()]
+    want = [f.strip() for f in args.formats.split(",") if f.strip() and f.strip() in FORMATS]
     src_w, src_h = probe_dims(raw)
     is_portrait = src_h > src_w
+
+    build_list = list(want)
+    music_map = assign_music(slug, build_list, args.music)
+    badge_map = assign_badge(slug, build_list, args.badge_style)
+    eprint(f"==> slug={slug}  built={built}")
+    eprint(f"    lang={args.lang} badge={args.badge} endcard={args.endcard} | per-variant style · music:")
+    for n in build_list:
+        eprint(f"      {n:9s} {badge_map[n]:6s} -> {music_map[n].name if music_map[n] else 'none'}")
+
     ec_cache: dict = {}
     variants: dict = {}
 
-    for name in want:
-        if name not in FORMATS:
-            eprint(f"warn: unknown format '{name}', skipping"); continue
-        w, h, geom, tb = FORMATS[name]
+    for name in build_list:
+        w, h, geom, tb = FORMATS[name] if name in FORMATS else (1080, 1920, "padfit", 0.25)
+        ss = dur = None
         # The branded split assumes a portrait app on the left; a landscape
         # source would overrun the panel — blur-pad it into 16:9 instead.
         if name == "wide" and not is_portrait:
             w, h, geom, tb = 1920, 1080, "padfit", 0.5
-        eprint(f"==> {name}{'  (landscape blur-pad)' if name == 'wide' and not is_portrait else ''}")
+        # A roaming lens over the branded 16:9 split would drift across the
+        # "Corpán" panel/headline — pin that one to the static glass corner.
+        if geom == "horizontal" and badge_map[name] == "lens":
+            badge_map[name] = "glass"
+        tag = "  (landscape blur-pad)" if name == "wide" and not is_portrait else ""
+        eprint(f"==> {name}{tag}  [{badge_map[name]} · {music_map[name].name if music_map[name] else 'none'}]")
         final = build_variant(raw, name, w, h, geom, tb, args.lang, args.badge,
-                              args.endcard, bgm, args.headline, subs, None, None, tmp, ec_cache)
-        variants[name] = {"path": final.name, "duration": studio.ffprobe_duration(final)}
-
-    # 15s punchy cut (9:16) when a window is given
-    if sw and ("shorts" in want or "cut15" in want):
-        eprint("==> cut15 (9:16 ~15s)")
-        final = build_variant(raw, "cut15", 1080, 1920, "padfit", 0.25, args.lang,
-                              args.badge, args.endcard, bgm, args.headline, subs,
-                              sw[0], sw[1], tmp, ec_cache)
-        variants["cut15"] = {"path": final.name, "duration": studio.ffprobe_duration(final)}
+                              args.endcard, music_map[name], args.headline, subs,
+                              ss, dur, tmp, ec_cache, badge_map[name])
+        variants[name] = {"path": final.name, "duration": studio.ffprobe_duration(final),
+                          "music": music_map[name].name if music_map[name] else None,
+                          "badge": badge_map[name]}
 
     make_thumb(raw, built / "thumb.jpg")
 
-    # meta.json — merge sidecar if present, else write a stub youtube section
+    # meta.json — start from any prior BUILT meta (so a subset re-render keeps
+    # the other variants' records), then overlay the sidecar if present.
     sidecar = raw_dir / f"{slug}.meta.json"
+    built_meta = built / "meta.json"
     meta = {}
+    if built_meta.exists():
+        try:
+            meta = json.loads(built_meta.read_text())
+        except Exception:
+            meta = {}
     if sidecar.exists():
-        meta = json.loads(sidecar.read_text())
+        meta.update(json.loads(sidecar.read_text()))
     meta.setdefault("slug", slug)
     meta.setdefault("app", "corpan")
     meta.setdefault("captured_at", date_dir)
@@ -236,10 +373,11 @@ def main() -> int:
     yt.setdefault("category_id", 27)
     yt.setdefault("privacy", "public")
     yt.setdefault("made_for_kids", False)
-    yt.setdefault("playlist", "Corpán — Indonesia")
+    yt.setdefault("playlist", "Corpán — Indonesia series")  # match the "<Country> series" convention
     yt.setdefault("variant_to_upload", "shorts")
-    meta["variants"] = variants
-    meta["sky30"] = {"code": "SKY30", "lang": args.lang, "music": bgm.name if bgm else None}
+    meta["variants"] = {**meta.get("variants", {}), **variants}  # merge: subset re-renders keep other entries
+    meta["sky30"] = {"code": "SKY30", "lang": args.lang,
+                     "music": {n: v.get("music") for n, v in variants.items()}}
     (built / "meta.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False))
 
     if not args.keep_tmp:
