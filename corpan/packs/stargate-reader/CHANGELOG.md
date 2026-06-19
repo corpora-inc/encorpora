@@ -35,6 +35,17 @@ Conventions: `corpan/CHANGELOGS.md`.
   high-contrast when it also has keyboard focus (previously the text could
   render low-contrast against the accent fill), and its focus ring is drawn
   in the page colour so it remains visible over the accent background.
+- **Word-stream micro-jitter when a new word/phrase enters view.** Glyph
+  rasterization (drawing text onto a 512×384 DynamicTexture and uploading it to
+  the GPU) is the heaviest synchronous step in the renderer. When several words
+  crossed into the look-ahead range in the same frame (dense phrase, or right
+  after a seek/swipe) they were all rasterized at once, occasionally causing a
+  one-frame hitch. New words are now prepared with a small per-frame budget
+  while they are still fully transparent in the far approach zone (they have a
+  long invisible runway before they must be legible); words at/inside the
+  fade-in zone still rasterize immediately. Output is visually identical — only
+  fully-transparent far words are deferred, and never shown stale. No change to
+  audio timing or sync. (`src/rendering/wordStream.ts`)
 
 ## [0.7.1] - 2026-06-16
 
