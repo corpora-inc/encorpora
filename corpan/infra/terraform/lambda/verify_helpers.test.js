@@ -52,3 +52,28 @@ test("milliunitsToNumber: 4990 -> 4.99, null stays null", () => {
   assert.equal(v.milliunitsToNumber(null), null);
   assert.equal(v.milliunitsToNumber(undefined), null);
 });
+
+// --- notification lifecycle routers -----------------------------------------
+test("appleNotificationAction: maps types to lifecycle actions", () => {
+  assert.equal(v.appleNotificationAction("SUBSCRIBED"), "initial");
+  assert.equal(v.appleNotificationAction("OFFER_REDEEMED"), "initial");
+  assert.equal(v.appleNotificationAction("DID_RENEW"), "renewal");
+  assert.equal(v.appleNotificationAction("REFUND"), "clawback");
+  assert.equal(v.appleNotificationAction("REVOKE"), "clawback");
+  assert.equal(v.appleNotificationAction("REFUND_REVERSED"), "reinstate");
+  assert.equal(v.appleNotificationAction("EXPIRED"), "extend");
+  assert.equal(v.appleNotificationAction("DID_CHANGE_RENEWAL_STATUS"), "ignore");
+  assert.equal(v.appleNotificationAction("PRICE_INCREASE"), "ignore");
+});
+
+test("googleNotificationAction: maps RTDN ints to lifecycle actions", () => {
+  assert.equal(v.googleNotificationAction(4), "initial");  // PURCHASED
+  assert.equal(v.googleNotificationAction(2), "renewal");  // RENEWED
+  assert.equal(v.googleNotificationAction(1), "extend");   // RECOVERED
+  assert.equal(v.googleNotificationAction(7), "extend");   // RESTARTED
+  assert.equal(v.googleNotificationAction(3), "extend");   // CANCELED (entitled til expiry)
+  assert.equal(v.googleNotificationAction(13), "extend");  // EXPIRED
+  assert.equal(v.googleNotificationAction(12), "clawback");// REVOKED
+  assert.equal(v.googleNotificationAction(8), "ignore");   // PRICE_CHANGE_CONFIRMED (deprecated)
+  assert.equal(v.googleNotificationAction(999), "ignore"); // unknown -> safe no-op
+});

@@ -644,6 +644,157 @@ async function creditRenewal({
 }
 
 // ---------------------------------------------------------------------------
+// Notification-driven attribution + lifecycle (§6 — ASSN / RTDN)
+// ---------------------------------------------------------------------------
+
+// Map a STORE offer identifier back to a registry code META.
+//  - Apple `offerIdentifier` IS the code (e.g. "SKY30").
+//  - Google `offerId` is "code-<code>" (e.g. "code-sky30").
+// Returns the CODE# META item or null. (Registry is tiny; two point reads.)
+async function findCodeByOffer(offerId) {
+  if (!offerId) return null;
+  const direct = await getCode(normalizeCode(offerId));
+  if (direct) return direct;
+  const m = /^code-(.+)$/i.exec(offerId);
+  if (m) {
+    const stripped = await getCode(normalizeCode(m[1]));
+    if (stripped) return stripped;
+  }
+  return null;
+}
+
+// Idempotent event de-duplication. ASSN/RTDN are at-least-once and may
+// duplicate/reorder/retry. Returns true the FIRST time an id is seen, false on
+// every replay. `ttl` is an epoch-seconds attribute for DynamoDB TTL cleanup
+// (enabling TTL on the table is optional; dedupe is correct without it).
+async function markEventProcessed(eventId, ttlSeconds = 30 * 24 * 3600) {
+  if (!eventId) return true; // can't dedupe without an id — process it
+  try {
+    await getDoc().send(
+      new PutCommand({
+        TableName: TABLE,
+        Item: { PK: `DEDUPE#${eventId}`, SK: "SEEN", ttl: nowSec() + ttlSeconds, seenAt: new Date().toISOString() },
+        ConditionExpression: "attribute_not_exists(PK)",
+      })
+    );
+    return true;
+  } catch (err) {
+    if (isConditionalFail(err)) return false;
+    throw err;
+  }
+}
+
+// Attribute an INITIAL purchase discovered via a store notification (no
+// resolutionToken) by mapping its offer → partner. Used for Google
+// SUBSCRIPTION_PURCHASED and Apple SUBSCRIBED/OFFER_REDEEMED (incl. out-of-app
+// offer-code redemptions where no in-app verify ever ran). Idempotent on
+// (subjectKey, platform, txn). Skips when no partner offer matches or isTest.
+async function attributeFromOffer({
+  offerId,
+  subjectKey,
+  obfHash,
+  platform,
+  txnOrOriginalId,
+  productId,
+  price,
+  currency,
+  expiresAt,
+  environment,
+  isTest,
+}) {
+  try {
+    const meta = await findCodeByOffer(offerId);
+    if (!meta || !meta.partnerId) return null; // not a partner offer
+    if (!subjectKey) subjectKey = obfHash || txnOrOriginalId; // best-effort key
+    if (!subjectKey || !txnOrOriginalId) return null;
+    const gsi = obfHash || sha256Hex(subjectKey);
+    const nowIso = new Date().toISOString();
+
+    const purchaseRes = await putPurchase({
+      PK: `SUBJECT#${subjectKey}`,
+      SK: `PURCHASE#${platform}#${txnOrOriginalId}`,
+      GSI1PK: gsi,
+      GSI1SK: `PURCHASE#${platform}#${txnOrOriginalId}`,
+      productId: productId ?? null,
+      code: meta.code,
+      partnerId: meta.partnerId,
+      offerApplied: true,
+      offerIdentifier: offerId ?? null,
+      price: price ?? null,
+      currency: currency ?? null,
+      environment: environment ?? null,
+      obfHash: gsi,
+      appAccountToken: subjectKey,
+      expiresAt: expiresAt ?? null,
+      verifiedAt: nowIso,
+      source: "notification",
+    });
+    // Replay → already credited; do not double-write.
+    if (!purchaseRes.written) return { code: meta.code, partnerId: meta.partnerId, replay: true };
+
+    await putAttribution({
+      PK: `SUBJECT#${subjectKey}`,
+      SK: "ATTRIBUTION",
+      GSI1PK: gsi,
+      GSI1SK: "ATTRIBUTION",
+      code: meta.code,
+      partnerId: meta.partnerId,
+      status: "verified",
+      lockedAt: nowIso,
+      lockSource: "notification",
+      obfHash: gsi,
+      appAccountToken: subjectKey,
+    });
+
+    if (!isTest) {
+      await putLedgerEvent({
+        PK: `LEDGER#${meta.partnerId}#${yyyymm(nowIso)}`,
+        SK: `EVENT#${platform}#${txnOrOriginalId}`,
+        subjectId: subjectKey,
+        code: meta.code,
+        productId: productId ?? null,
+        price: price ?? null,
+        currency: currency ?? null,
+        kind: "initial",
+        revenueSharePct: meta.revenueSharePct ?? null,
+        eventTime: nowIso,
+        notificationType: null,
+        source: "notification",
+      });
+    }
+    return { code: meta.code, partnerId: meta.partnerId, credited: !isTest };
+  } catch (err) {
+    console.error("[codes] attributeFromOffer failed (non-fatal):", err.message);
+    return null;
+  }
+}
+
+// Reverse an affiliate credit on refund / revoke / chargeback (§7). Writes a
+// distinct `kind:"reversal"` ledger row keyed to the same txn so payouts net
+// out; idempotent (separate SK suffix). Best-effort.
+async function reverseCredit({ partnerId, platform, txnOrOriginalId, productId, price, currency, reason }) {
+  try {
+    if (!partnerId || !txnOrOriginalId) return false;
+    const nowIso = new Date().toISOString();
+    const res = await putLedgerEvent({
+      PK: `LEDGER#${partnerId}#${yyyymm(nowIso)}`,
+      SK: `EVENT#${platform}#${txnOrOriginalId}#reversal`,
+      subjectId: null,
+      productId: productId ?? null,
+      price: price != null ? -Math.abs(price) : null,
+      currency: currency ?? null,
+      kind: "reversal",
+      reversalReason: reason ?? null,
+      eventTime: nowIso,
+    });
+    return res.written || res.conditional === true;
+  } catch (err) {
+    console.error("[codes] reverseCredit failed (non-fatal):", err.message);
+    return false;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Rate-limit — per subjectId + IP token bucket (§2.4.6)
 // ---------------------------------------------------------------------------
 
@@ -943,6 +1094,11 @@ module.exports = {
   attributePurchase,
   recordEntitlementPurchase,
   creditRenewal,
+  // notification-driven attribution + lifecycle
+  findCodeByOffer,
+  markEventProcessed,
+  attributeFromOffer,
+  reverseCredit,
   // rate limit
   rateLimitAllow,
   _resetRateLimit,

@@ -53,10 +53,45 @@ const googleProductTypeFor = (productId, explicit) => {
   return "subs";
 };
 
+// Map an Apple ASSN V2 notificationType to a lifecycle action. "initial" =
+// new paid sub (attribute offer + extend), "renewal" = credit renewal + extend,
+// "extend" = refresh entitlement from authoritative state, "clawback" = reverse
+// credit on refund/revoke, "reinstate" = refund reversed, "ignore" = no-op.
+const appleNotificationAction = (t) =>
+  ({
+    SUBSCRIBED: "initial",
+    OFFER_REDEEMED: "initial",
+    DID_RENEW: "renewal",
+    DID_FAIL_TO_RENEW: "extend",
+    GRACE_PERIOD_EXPIRED: "extend",
+    EXPIRED: "extend",
+    REFUND: "clawback",
+    REVOKE: "clawback",
+    REFUND_REVERSED: "reinstate",
+  })[t] || "ignore";
+
+// Map a Google RTDN subscriptionNotification.notificationType (int) to an
+// action. Ints per developer.android.com/google/play/billing/rtdn-reference.
+const googleNotificationAction = (t) =>
+  ({
+    4: "initial", // SUBSCRIPTION_PURCHASED
+    2: "renewal", // SUBSCRIPTION_RENEWED
+    1: "extend", // SUBSCRIPTION_RECOVERED
+    7: "extend", // SUBSCRIPTION_RESTARTED
+    3: "extend", // SUBSCRIPTION_CANCELED (entitled until expiry)
+    5: "extend", // SUBSCRIPTION_ON_HOLD
+    6: "extend", // SUBSCRIPTION_IN_GRACE_PERIOD
+    10: "extend", // SUBSCRIPTION_PAUSED
+    13: "extend", // SUBSCRIPTION_EXPIRED
+    12: "clawback", // SUBSCRIPTION_REVOKED
+  })[t] || "ignore";
+
 // Exported for unit tests (pure helpers, no I/O).
 exports.moneyToNumber = moneyToNumber;
 exports.milliunitsToNumber = milliunitsToNumber;
 exports.googleProductTypeFor = googleProductTypeFor;
+exports.appleNotificationAction = appleNotificationAction;
+exports.googleNotificationAction = googleNotificationAction;
 
 const getHeader = (event, key) => {
   const headers = event.headers || {};
@@ -635,59 +670,79 @@ async function handleAppleNotification(body, secrets) {
 
     const notificationType = payload.notificationType;
     const subtype = payload.subtype;
+    const action = appleNotificationAction(notificationType);
     console.log("[apple-notification]", JSON.stringify({
-      notificationType, subtype, notificationUUID: payload.notificationUUID,
+      notificationType, subtype, action, notificationUUID: payload.notificationUUID,
     }));
 
-    // §6.1 — On DID_RENEW / SUBSCRIBED, credit a renewal by appAccountToken.
-    if (notificationType === "DID_RENEW" || notificationType === "SUBSCRIBED") {
-      const signedTxn = payload.data?.signedTransactionInfo;
-      if (signedTxn) {
-        const txn = JSON.parse(
-          Buffer.from(signedTxn.split(".")[1], "base64url").toString()
-        );
-        const appAccountToken = txn.appAccountToken;
-        const renewalTxnId = txn.transactionId;
-        if (appAccountToken && renewalTxnId) {
-          // appAccountToken IS the subjectId (Apple uses it as PK directly, §7.3).
-          // (1) Extend the SUBSCRIBER ENTITLEMENT — the PURCHASE# row that backs
-          // /entitlement-token — with the renewed expiry, REGARDLESS of affiliate
-          // attribution. Without this a renewing subscriber's entitlement lapses
-          // once the ORIGINAL purchase row's expiresAt passes (renewals only
-          // credited the affiliate ledger before, and skipped non-affiliate subs
-          // entirely). Idempotent per renewal transaction; readLatestEntitlement
-          // then picks the row with the newest expiry.
-          const renewedExpiresAt = txn.expiresDate
-            ? new Date(txn.expiresDate).toISOString()
-            : null;
-          if (renewedExpiresAt) {
-            await codes.recordEntitlementPurchase({
-              subjectId: appAccountToken,
-              platform: "apple",
-              txnOrOriginalId: renewalTxnId,
-              productId: txn.productId || null,
-              expiresAt: renewedExpiresAt,
-              environment: txn.environment || null,
-              appAccountToken,
-            });
-          }
-          // (2) Affiliate ledger credit — only when this subject was attributed
-          // to a partner via a code.
-          const attr = await codes.getAttribution(appAccountToken);
-          if (attr && attr.partnerId) {
-            await codes.creditRenewal({
-              partnerId: attr.partnerId,
-              subjectId: appAccountToken,
-              platform: "apple",
-              renewalTxnId,
-              productId: txn.productId || null,
-              price: txn.price ?? null,
-              currency: txn.currency ?? null,
-              notificationType,
-            });
-          }
+    // §6 — Dedupe: ASSN is at-least-once and may duplicate/reorder. Process
+    // each notificationUUID at most once.
+    if (payload.notificationUUID) {
+      const first = await codes.markEventProcessed(`apple#${payload.notificationUUID}`);
+      if (!first) {
+        console.log(`[apple-notification] duplicate ${payload.notificationUUID} — skipped`);
+        return json(200, { received: true, duplicate: true });
+      }
+    }
+
+    const signedTxn = payload.data?.signedTransactionInfo;
+    const txn = signedTxn
+      ? JSON.parse(Buffer.from(signedTxn.split(".")[1], "base64url").toString())
+      : null;
+
+    if (txn && action !== "ignore") {
+      const subjectKey = txn.appAccountToken || null;
+      const txnId = txn.transactionId;
+      const origId = txn.originalTransactionId || txnId;
+      const productId = txn.productId || null;
+      const price = milliunitsToNumber(txn.price);
+      const currency = txn.currency ?? null;
+      const environment = txn.environment || null;
+      const isTest = environment === "Sandbox";
+      const expiresAt = txn.expiresDate ? new Date(txn.expiresDate).toISOString() : null;
+      // Apple offerType 3 = offer code (the partner attribution hook, §3).
+      const isOfferCode = txn.offerType === 3 && !!txn.offerIdentifier;
+
+      // Extend the subscriber entitlement (PURCHASE# row behind /entitlement-token)
+      // for any live txn with a known subject + expiry.
+      if (subjectKey && expiresAt) {
+        await codes.recordEntitlementPurchase({
+          subjectId: subjectKey, platform: "apple", txnOrOriginalId: txnId,
+          productId, expiresAt, environment, appAccountToken: subjectKey,
+        });
+      }
+
+      if (action === "initial" && isOfferCode) {
+        // Offer-code redemption (incl. OUT-OF-APP, where appAccountToken is
+        // absent) → attribute the partner straight from the offer id. §3.4.
+        const r = await codes.attributeFromOffer({
+          offerId: txn.offerIdentifier, subjectKey, platform: "apple",
+          txnOrOriginalId: origId, productId, price, currency, expiresAt, environment, isTest,
+        });
+        if (r) console.log(`[apple-notification] offer-code attribution: ${JSON.stringify(r)}`);
+      } else if (action === "renewal" && subjectKey && !isTest) {
+        const attr = await codes.getAttribution(subjectKey);
+        if (attr && attr.partnerId) {
+          const meta = attr.code ? await codes.getCode(attr.code) : null;
+          await codes.creditRenewal({
+            partnerId: attr.partnerId, subjectId: subjectKey, platform: "apple",
+            renewalTxnId: txnId, productId, price, currency,
+            revenueSharePct: meta?.revenueSharePct ?? null, notificationType,
+          });
+        }
+      } else if (action === "clawback") {
+        // Refund / revoke → reverse affiliate credit for this txn (§7).
+        const attr = subjectKey ? await codes.getAttribution(subjectKey) : null;
+        const partnerId = attr?.partnerId
+          || (isOfferCode ? (await codes.findCodeByOffer(txn.offerIdentifier))?.partnerId : null);
+        if (partnerId) {
+          await codes.reverseCredit({
+            partnerId, platform: "apple", txnOrOriginalId: origId, price, currency,
+            reason: notificationType,
+          });
         }
       }
+      // "extend"/"reinstate" handled by the entitlement refresh above.
     }
   } catch (err) {
     console.error("[apple-notification] handler error (non-fatal):", err.message);
@@ -710,65 +765,111 @@ async function handleGoogleNotification(body, secrets, authHeader) {
   }
 
   // §6.2 — Validate the Pub/Sub push OIDC token before trusting the payload.
+  // Fail-closed when configured. When NOT configured we process but log loudly:
+  // every event re-fetches authoritative state from Google (the notification
+  // body is never trusted), so a forged body can't inject state — but the topic
+  // SHOULD be locked down. Set google.pubsubAudience + google.pubsubServiceAccount.
   const googleSecrets = secrets?.google || {};
-  const expectedAudience = googleSecrets.pubsubAudience; // configured push audience
-  const expectedEmail = googleSecrets.pubsubServiceAccount; // push SA email
+  const expectedAudience = googleSecrets.pubsubAudience;
+  const expectedEmail = googleSecrets.pubsubServiceAccount;
   if (expectedAudience || expectedEmail) {
     const ok = await verifyPubSubOidc(authHeader, expectedAudience, expectedEmail);
     if (!ok) {
       console.error("[google-notification] OIDC validation failed — rejecting");
       return json(401, { error: "unauthorized" });
     }
+  } else {
+    console.error("[google-notification] CRITICAL: Pub/Sub OIDC NOT configured (no google.pubsubAudience/pubsubServiceAccount) — accepting unauthenticated push");
   }
 
   try {
     const decoded = JSON.parse(Buffer.from(message.data, "base64").toString());
     const subNotif = decoded.subscriptionNotification;
+    const voided = decoded.voidedPurchaseNotification;
+    const action = subNotif ? googleNotificationAction(subNotif.notificationType) : null;
     console.log("[google-notification]", JSON.stringify({
       packageName: decoded.packageName,
       eventTimeMillis: decoded.eventTimeMillis,
-      subscriptionNotification: subNotif,
-      oneTimeProductNotification: decoded.oneTimeProductNotification,
+      notificationType: subNotif?.notificationType,
+      action,
+      voided: voided ? { orderId: voided.orderId, refundType: voided.refundType } : undefined,
+      test: !!decoded.testNotification,
     }));
 
-    // §6.2 — On SUBSCRIPTION_RENEWED (2), reverse-map via GSI1 and credit.
-    if (subNotif && subNotif.notificationType === 2) {
+    // Dedupe at-least-once Pub/Sub delivery by messageId.
+    if (message.messageId) {
+      const first = await codes.markEventProcessed(`google#${message.messageId}`);
+      if (!first) {
+        console.log(`[google-notification] duplicate ${message.messageId} — skipped`);
+        return json(200, { received: true, duplicate: true });
+      }
+    }
+
+    if (decoded.testNotification) {
+      console.log("[google-notification] test notification OK");
+      return json(200, { received: true, test: true });
+    }
+
+    // §7 — Refund / chargeback → reverse affiliate credit for that order.
+    if (voided && voided.purchaseToken) {
+      const verify = await verifyGoogle(
+        { purchaseToken: voided.purchaseToken, productId: voided.subscriptionId, productType: "subs" },
+        secrets
+      );
+      const attr = verify.obfHash ? await codes.findSubjectByObfHash(verify.obfHash) : null;
+      if (attr && attr.partnerId) {
+        await codes.reverseCredit({
+          partnerId: attr.partnerId, platform: "android",
+          txnOrOriginalId: voided.orderId || verify.transactionId, reason: "VOIDED",
+        });
+      }
+      return json(200, { received: true });
+    }
+
+    if (subNotif && action !== "ignore") {
+      // §5 — Never trust the notification body: re-fetch authoritative state.
       const verify = await verifyGoogle(
         { purchaseToken: subNotif.purchaseToken, productId: subNotif.subscriptionId, productType: "subs" },
         secrets
       );
       const obfHash = verify.obfHash;
       const orderId = verify.transactionId;
-      if (obfHash && orderId) {
-        const attr = await codes.findSubjectByObfHash(obfHash);
-        const subjectId = attr && attr.subjectId ? attr.subjectId : null;
-        // (1) Extend the subscriber entitlement with the renewed expiry,
-        // REGARDLESS of affiliate attribution. Every verified sub (code or not)
-        // has a PURCHASE# row, so findSubjectByObfHash resolves the subject.
-        if (subjectId && verify.expiresAt) {
-          await codes.recordEntitlementPurchase({
-            subjectId,
-            platform: "android",
-            txnOrOriginalId: orderId,
-            productId: verify.productId || null,
-            expiresAt: verify.expiresAt,
-            environment: null,
-            appAccountToken: null,
-          });
-        }
-        // (2) Affiliate ledger credit — only for partner-attributed subjects.
-        if (attr && attr.partnerId) {
-          await codes.creditRenewal({
-            partnerId: attr.partnerId,
-            subjectId: attr.subjectId || null,
-            platform: "android",
-            renewalTxnId: orderId,
-            productId: verify.productId || null,
-            price: verify.price ?? null,
-            currency: verify.currency ?? null,
-            notificationType: "SUBSCRIPTION_RENEWED",
-          });
-        }
+      const isTest = !!verify.isTestPurchase;
+      const attr = obfHash ? await codes.findSubjectByObfHash(obfHash) : null;
+      const subjectId = attr?.subjectId || null;
+
+      // Extend the subscriber entitlement with the authoritative expiry for any
+      // live action (purchase/renew/recover/restart/cancel-still-active/grace).
+      if (subjectId && verify.expiresAt && action !== "clawback") {
+        await codes.recordEntitlementPurchase({
+          subjectId, platform: "android", txnOrOriginalId: orderId,
+          productId: verify.productId || null, expiresAt: verify.expiresAt,
+          environment: null, appAccountToken: null,
+        });
+      }
+
+      if (action === "initial") {
+        // First server-side sighting of a paid sub (e.g. out-of-app or a missed
+        // in-app verify) → attribute the partner from the offer id.
+        const r = await codes.attributeFromOffer({
+          offerId: verify.offerId, subjectKey: subjectId, obfHash, platform: "android",
+          txnOrOriginalId: orderId, productId: verify.productId || null,
+          price: verify.price ?? null, currency: verify.currency ?? null,
+          expiresAt: verify.expiresAt, isTest,
+        });
+        if (r) console.log(`[google-notification] offer attribution: ${JSON.stringify(r)}`);
+      } else if (action === "renewal" && attr?.partnerId && !isTest) {
+        const meta = attr.code ? await codes.getCode(attr.code) : null;
+        await codes.creditRenewal({
+          partnerId: attr.partnerId, subjectId, platform: "android",
+          renewalTxnId: orderId, productId: verify.productId || null,
+          price: verify.price ?? null, currency: verify.currency ?? null,
+          revenueSharePct: meta?.revenueSharePct ?? null, notificationType: "SUBSCRIPTION_RENEWED",
+        });
+      } else if (action === "clawback" && attr?.partnerId) {
+        await codes.reverseCredit({
+          partnerId: attr.partnerId, platform: "android", txnOrOriginalId: orderId, reason: "REVOKED",
+        });
       }
     }
   } catch (err) {

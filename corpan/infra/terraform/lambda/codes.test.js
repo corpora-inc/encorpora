@@ -32,6 +32,13 @@ function makeMockDoc() {
         const it = input.Item;
         const existing = store.get(key(it));
         const cond = input.ConditionExpression || "";
+        if (cond.includes("attribute_not_exists(PK)")) {
+          if (existing) {
+            const e = new Error("conditional failed");
+            e.name = "ConditionalCheckFailedException";
+            throw e;
+          }
+        }
         if (cond.includes("attribute_not_exists(SK)")) {
           if (existing) {
             // allow upgrade-once form: OR #status = :unverified
@@ -781,4 +788,70 @@ test("handleEntitlementToken: missing subjectId → 400", async () => {
   const { json, calls } = jsonResponder();
   await codes.handleEntitlementToken({}, { secrets: SECRETS, json });
   assert.equal(calls[0].statusCode, 400);
+});
+
+// ===========================================================================
+// Notification-driven attribution + lifecycle (Stage 2)
+// ===========================================================================
+
+test("findCodeByOffer: resolves Apple (code) and Google (code-*) offer ids", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#IAN30|META", { ...IAN_META });
+  assert.equal((await codes.findCodeByOffer("IAN30"))?.partnerId, "ian"); // Apple
+  assert.equal((await codes.findCodeByOffer("code-ian30"))?.partnerId, "ian"); // Google
+  assert.equal((await codes.findCodeByOffer("nope")), null);
+  assert.equal((await codes.findCodeByOffer("")), null);
+});
+
+test("markEventProcessed: first-seen true, replays false (dedupe)", async () => {
+  freshDoc();
+  assert.equal(await codes.markEventProcessed("uuid-1"), true);
+  assert.equal(await codes.markEventProcessed("uuid-1"), false);
+  assert.equal(await codes.markEventProcessed("uuid-2"), true);
+  // no id => cannot dedupe => process
+  assert.equal(await codes.markEventProcessed(null), true);
+});
+
+test("attributeFromOffer: credits partner + writes ledger; idempotent on txn", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#IAN30|META", { ...IAN_META });
+  const r1 = await codes.attributeFromOffer({
+    offerId: "code-ian30", subjectKey: "subjA", platform: "android",
+    txnOrOriginalId: "ORDER1", productId: "corpan.sub.annual",
+    price: 55.99, currency: "USD", expiresAt: "2027-01-01T00:00:00Z",
+  });
+  assert.equal(r1.partnerId, "ian");
+  assert.equal(r1.credited, true);
+  const ledger = doc.store.get("LEDGER#ian#" + codes.yyyymm(new Date().toISOString()) + "|EVENT#android#ORDER1");
+  assert.ok(ledger, "ledger initial event written");
+  assert.equal(ledger.kind, "initial");
+  assert.equal(ledger.price, 55.99);
+  assert.ok(doc.store.get("SUBJECT#subjA|ATTRIBUTION"), "attribution row written");
+  // replay: same txn => no double credit
+  const r2 = await codes.attributeFromOffer({
+    offerId: "code-ian30", subjectKey: "subjA", platform: "android", txnOrOriginalId: "ORDER1",
+  });
+  assert.equal(r2.replay, true);
+});
+
+test("attributeFromOffer: non-partner offer => null; test purchase => no ledger", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#IAN30|META", { ...IAN_META });
+  assert.equal(await codes.attributeFromOffer({ offerId: "free-trial-7d", subjectKey: "s", platform: "android", txnOrOriginalId: "T" }), null);
+  const r = await codes.attributeFromOffer({
+    offerId: "IAN30", subjectKey: "subjB", platform: "apple", txnOrOriginalId: "TXN2", isTest: true,
+  });
+  assert.equal(r.credited, false);
+  const mm = codes.yyyymm(new Date().toISOString());
+  assert.equal(doc.store.get("LEDGER#ian#" + mm + "|EVENT#apple#TXN2"), undefined, "no ledger for test purchase");
+});
+
+test("reverseCredit: writes a negative reversal ledger row", async () => {
+  const doc = freshDoc();
+  const ok = await codes.reverseCredit({ partnerId: "ian", platform: "android", txnOrOriginalId: "ORDER1", price: 55.99, currency: "USD", reason: "REFUND" });
+  assert.equal(ok, true);
+  const row = doc.store.get("LEDGER#ian#" + codes.yyyymm(new Date().toISOString()) + "|EVENT#android#ORDER1#reversal");
+  assert.ok(row, "reversal row written");
+  assert.equal(row.kind, "reversal");
+  assert.equal(row.price, -55.99);
 });
