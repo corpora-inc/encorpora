@@ -8,6 +8,12 @@ import type {
   PackLaunchEntry,
 } from "./types"
 import { useEntitlementStore } from "@/store/entitlements"
+import {
+  isContentPackProtocolUrl,
+  isLocalhostUrl,
+  isPrivateNetworkUrl,
+  shouldDevReloadManifest,
+} from "./devReload"
 
 type LoadState = "idle" | "loading" | "ready" | "error"
 
@@ -124,21 +130,14 @@ const injectedAssetNodes = (id: string) =>
     )
   )
 
-/**
- * A URL that targets the `corpan-pack` custom URI-scheme protocol handler —
- * in EITHER platform form. The handler (registered by tauri-plugin-game-packs)
- * is reachable at `corpan-pack://localhost/...` on macOS/iOS/Linux but at
- * `http://corpan-pack.localhost/...` on Android/Windows (per Tauri's
- * register_uri_scheme_protocol docs). Installed-pack URLs are emitted in the
- * platform-correct form by the native `content_packs_*` commands, so the host
- * must recognize both: these must be command-fetched + inlined (the WebView
- * can't `fetch()` the scheme, but `<img>`/CSS/font URLs resolve against it
- * natively via the same handler).
- */
-const isContentPackProtocolUrl = (rawUrl: string) =>
-  rawUrl.startsWith("corpan-pack://") ||
-  rawUrl.startsWith("http://corpan-pack.localhost/") ||
-  rawUrl.startsWith("https://corpan-pack.localhost/")
+// `isContentPackProtocolUrl` documents the `corpan-pack` custom URI-scheme
+// protocol handler (reachable at `corpan-pack://localhost/...` on
+// macOS/iOS/Linux and `http://corpan-pack.localhost/...` on Android/Windows).
+// Installed-pack URLs are emitted in the platform-correct form by the native
+// `content_packs_*` commands; these must be command-fetched + inlined (the
+// WebView can't `fetch()` the scheme). It now lives in ./devReload alongside
+// the URL classifiers so the dev-reload scoping that depends on it is
+// unit-testable without React. Re-exported here as it is used throughout.
 
 const proxyUrlIfNeeded = (rawUrl: string) => {
   try {
@@ -161,44 +160,6 @@ const proxyUrlIfNeeded = (rawUrl: string) => {
     return `/game-proxy?url=${encodeURIComponent(resolved.toString())}`
   } catch {
     return rawUrl
-  }
-}
-
-const isLocalhostUrl = (rawUrl: string) => {
-  try {
-    const resolved = new URL(rawUrl, window.location.href)
-    return (
-      resolved.hostname === "localhost" ||
-      resolved.hostname === "127.0.0.1" ||
-      resolved.hostname.endsWith(".localhost")
-    )
-  } catch {
-    return false
-  }
-}
-
-const isPrivateNetworkUrl = (rawUrl: string) => {
-  try {
-    const resolved = new URL(rawUrl, window.location.href)
-    const host = resolved.hostname
-    if (host === "localhost" || host === "127.0.0.1" || host === "::1") {
-      return true
-    }
-    if (host.endsWith(".localhost") || host.endsWith(".local")) {
-      return true
-    }
-    const ipv4 = host.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/)
-    if (ipv4) {
-      const [a, b] = [Number(ipv4[1]), Number(ipv4[2])]
-      if (a === 10 || a === 127) return true
-      if (a === 192 && b === 168) return true
-      if (a === 172 && b >= 16 && b <= 31) return true
-      if (a === 169 && b === 254) return true
-      return false
-    }
-    return host.startsWith("fe80:") || host.startsWith("fd") || host.startsWith("fc")
-  } catch {
-    return false
   }
 }
 
@@ -312,8 +273,17 @@ export default function ContentPackHost({
       manifestRequestUrl,
       window.location.href
     ).toString()
-    const shouldDevReload =
-      isLocalhostUrl(resolvedManifestUrl) || isPrivateNetworkUrl(resolvedManifestUrl)
+    // Dev-reload polling is ONLY for packs served from the local Vite `/packs`
+    // dev middleware — never for an installed `corpan-pack://` catalog pack
+    // (its `localhost`/`*.localhost` host LOOKS local but it's immutable on
+    // disk). Polling an installed pack is what raced the deferred React-root
+    // teardown against a fresh mount on `tauri ios dev` over LAN → the
+    // "createRoot already called" + detached-node NotFoundError crash. See
+    // ./devReload for the full root cause.
+    const shouldDevReload = shouldDevReloadManifest(
+      resolvedManifestUrl,
+      import.meta.env.DEV
+    )
     let activeManifestSourceUrl = resolvedManifestUrl
 
     const getManifestSourceUrls = () => {
@@ -387,7 +357,12 @@ export default function ContentPackHost({
       throw lastError ?? new Error(`Missing content pack: ${id}`)
     }
 
-    const cleanup = () => {
+    // Resolves once the previous pack instance has been FULLY torn down
+    // (React root unmounted + injected assets removed). `load()` awaits this
+    // before mounting a fresh instance so a deferred (rAF) unmount can never
+    // overlap a new `mount()`/`createRoot()` on the same container. Plain
+    // component-unmount callers ignore the promise — they just fire-and-forget.
+    const cleanup = (): Promise<void> => {
       if (devReloadTimer) {
         window.clearInterval(devReloadTimer)
         devReloadTimer = null
@@ -443,11 +418,20 @@ export default function ContentPackHost({
       }
       if (instanceToUnmount && typeof instanceToUnmount.unmount === "function") {
         // Past the current render, then clear assets once the unmount has run.
-        requestAnimationFrame(finishTeardown)
-      } else {
-        // Nothing to unmount — still clear this instance's injected assets.
-        staleAssets.forEach((node) => node.remove())
+        // The returned promise resolves AFTER finishTeardown runs so a reloading
+        // load() can await the unmount before mounting a fresh instance — this
+        // is what closes the deferred-unmount-vs-fresh-mount race that caused
+        // "createRoot() already called" + NotFoundError on `tauri ios dev`.
+        return new Promise<void>((resolve) => {
+          requestAnimationFrame(() => {
+            finishTeardown()
+            resolve()
+          })
+        })
       }
+      // Nothing to unmount — still clear this instance's injected assets.
+      staleAssets.forEach((node) => node.remove())
+      return Promise.resolve()
     }
 
     const updateManifestSignature = (manifest: ContentPackManifest) => {
@@ -480,7 +464,18 @@ export default function ContentPackHost({
       isLoading = true
       setLoadState("loading")
       setError(null)
-      cleanup()
+      // AWAIT the prior instance's teardown before we mount a fresh one. cleanup()
+      // defers the React-root unmount to a requestAnimationFrame (so we never
+      // unmount mid-render → NotFoundError); awaiting its promise guarantees that
+      // deferred unmount has actually run before this load reaches `mount()`/
+      // `createRoot()`, eliminating the window where two roots share the
+      // container. `isLoading` is already true, so any concurrent load()/
+      // checkForUpdate() is a no-op while we wait — the loads serialize.
+      await cleanup()
+      if (cancelled) {
+        isLoading = false
+        return
+      }
         ; (globalThis as { __corpanHostActive?: boolean }).__corpanHostActive = true
       if (shouldDevReload) {
         ; (globalThis as { __corpanPerf?: boolean }).__corpanPerf = true
@@ -537,6 +532,18 @@ export default function ContentPackHost({
 
         if (!containerRef.current) {
           throw new Error("Content pack container missing")
+        }
+
+        // Belt-and-suspenders: the awaited cleanup() above has already unmounted
+        // any prior pack root, but if a previous teardown left DOM behind (a
+        // pack whose unmount threw, an async chunk that committed late) the new
+        // pack's `createRoot(container)` would hit React's "container already
+        // passed to createRoot" warning + a detached-node NotFoundError. Start
+        // every fresh mount from an empty container so createRoot always sees a
+        // pristine node. Safe because we only reach here once the prior instance
+        // is fully torn down (or there was none).
+        if (containerRef.current.firstChild) {
+          containerRef.current.replaceChildren()
         }
 
         activeInstance = activeModule.mount(containerRef.current, hostApi, {
