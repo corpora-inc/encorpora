@@ -29,9 +29,11 @@ import { triggerHaptic } from "@/util/haptics"
  * the real experience boots underneath.
  *
  * PURELY VISUAL. App.tsx owns all logic and timing handoff — this component only
- * animates and fires one haptic; it reports its two beats via `onReveal`
- * (chosen begins its center/wash → caller launches the experience under us) and
- * `onComplete` (the wash has covered + the overlay should unmount). It ALWAYS
+ * animates and fires two haptics (a heavy impact when the chosen card lands at
+ * the pop, and a success notification as the wash completes and the pack boots);
+ * it reports its two beats via `onReveal` (chosen begins its center/wash → caller
+ * launches the experience under us) and `onComplete` (the wash has covered + the
+ * overlay should unmount). It ALWAYS
  * reaches `onComplete` (a hard safety timeout backstops the animation), so it can
  * never trap the user. Honors reduced motion: skips the shuffle for a gentle
  * ~1s cross-fade, still firing the haptic + both callbacks.
@@ -218,6 +220,12 @@ export function PackLaunchTransition({
   const doComplete = () => {
     if (firedComplete.current) return
     firedComplete.current = true
+    // A success notification haptic seals the handoff as the colour wash finishes
+    // and the chosen experience boots underneath — the "you're in" confirmation
+    // that was missing on iOS after the animation completes. Guarded by
+    // `firedComplete`, so it fires exactly once per onboarding completion
+    // (incl. under StrictMode double-effects and the hard safety backstop).
+    triggerHaptic("success")
     onComplete()
   }
 

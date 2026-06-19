@@ -7,6 +7,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Onboarding launch animation now ends with a success haptic on iOS.** The
+  first-launch razzle already gave a heavy impact when the chosen card lands;
+  the completion handoff — when the colour wash finishes and the chosen
+  experience boots underneath — now also fires a success notification haptic to
+  confirm the selection. Reuses the existing `triggerHaptic` seam
+  (`util/haptics.ts`), fires once per completion, and is a safe no-op on
+  Android/web/dev.
+
 ## [0.19.1] - 2026-06-18
 
 ### Added
