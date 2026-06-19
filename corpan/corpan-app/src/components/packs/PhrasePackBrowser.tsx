@@ -41,6 +41,7 @@ import {
     SUBSCRIPTION_MONTHLY,
 } from "@/contentPacks/purchase";
 import { PhrasePackCard } from "./PhrasePackCard";
+import { resolveFailedPacks } from "./resolveFailedPacks";
 import { type PhrasePackCatalogEntry } from "@/contentPacks/phrasePackCatalog";
 
 type FilterKind = "all" | "available" | "installed" | "free" | "paid";
@@ -138,7 +139,7 @@ function PillButton({
 
 export function PhrasePackBrowser() {
     const { t } = useTranslation();
-    const { allPhrasePacks, groups } = usePhrasePackCatalog();
+    const { allPhrasePacks, groups, byId } = usePhrasePackCatalog();
     const installedById = usePhrasePacksStore((s) => s.installed);
     const subscriptionActive = useEntitlementStore(
         (s) => s.subscription?.active ?? false,
@@ -153,7 +154,12 @@ export function PhrasePackBrowser() {
         new Set(),
     );
     const [bulkInstalling, setBulkInstalling] = useState(false);
-    const [bulkFailed, setBulkFailed] = useState(0);
+    // Failed-install state is tracked by pack ID — NOT a bare count and
+    // NOT scoped to the current view. Retry must work regardless of the
+    // filter/category/search the user has since switched to, so we hold
+    // the actual ids and resolve them back to pack objects from the full
+    // catalog at retry time.
+    const [bulkFailedIds, setBulkFailedIds] = useState<string[]>([]);
 
     const toggleCategory = (groupId: string) => {
         setSelectedCategories((prev) => {
@@ -303,14 +309,49 @@ export function PhrasePackBrowser() {
         [installablePacks],
     );
 
+    // Resolve the stored failed IDs back to live pack objects from the
+    // FULL catalog (not the current view), dropping any that have since
+    // been installed (by Download all elsewhere, a single-card install,
+    // etc.) or vanished from the catalog. This is the set retry acts on,
+    // and what keeps the affordance honest: if it resolves to nothing the
+    // bar disappears instead of offering a dead tap.
+    const resolvedFailedPacks = useMemo(
+        () =>
+            resolveFailedPacks(
+                bulkFailedIds,
+                byId,
+                (id) => Boolean(installedById[id]),
+            ),
+        [bulkFailedIds, byId, installedById],
+    );
+
     const handleDownloadAll = async () => {
         if (!isOnline || installablePacks.length === 0 || bulkInstalling)
             return;
-        setBulkFailed(0);
+        setBulkFailedIds([]);
         setBulkInstalling(true);
         try {
             const res = await installPackBatch(installablePacks);
-            setBulkFailed(res.failed.length);
+            setBulkFailedIds(res.failed.map((f) => f.id));
+        } finally {
+            setBulkInstalling(false);
+        }
+    };
+
+    // Retry ONLY the packs that failed last time, resolved from the full
+    // catalog — independent of the current filter/category/search. If the
+    // failures have all been resolved (installed elsewhere or gone), clear
+    // the stale state so the dead affordance disappears.
+    const handleRetryFailed = async () => {
+        if (!isOnline || bulkInstalling) return;
+        if (resolvedFailedPacks.length === 0) {
+            setBulkFailedIds([]);
+            return;
+        }
+        setBulkInstalling(true);
+        try {
+            const res = await installPackBatch(resolvedFailedPacks);
+            setBulkFailedIds(res.failed.map((f) => f.id));
         } finally {
             setBulkInstalling(false);
         }
@@ -335,8 +376,15 @@ export function PhrasePackBrowser() {
         query.trim().length === 0;
     const showAllInstalledHero = allInstalled && noFilterActive;
 
+    // Failures that still resolve to a retryable pack. Derived (not the
+    // raw id count) so a failure that's since been installed/removed
+    // stops driving the bar — no dead affordance.
+    const retryableFailedCount = resolvedFailedPacks.length;
+
     const showDownloadAllBar =
-        bulkInstalling || bulkFailed > 0 || installablePacks.length > 0;
+        bulkInstalling ||
+        retryableFailedCount > 0 ||
+        installablePacks.length > 0;
 
     // Catalog empty + truly offline (no cached payload) — show the
     // offline notice and bail. Other paths render the full chrome.
@@ -437,8 +485,9 @@ export function PhrasePackBrowser() {
                         isOnline={isOnline}
                         bulkInstalling={bulkInstalling}
                         progress={bulkInstalling ? batchProgress : null}
-                        failedCount={bulkFailed}
+                        failedCount={retryableFailedCount}
                         onDownloadAll={handleDownloadAll}
+                        onRetryFailed={handleRetryFailed}
                     />
                 )}
             </div>
@@ -540,6 +589,7 @@ function DownloadAllBar({
     progress,
     failedCount,
     onDownloadAll,
+    onRetryFailed,
 }: {
     count: number;
     sizeMb: number;
@@ -552,6 +602,10 @@ function DownloadAllBar({
     } | null;
     failedCount: number;
     onDownloadAll: () => void;
+    /** Retry ONLY the packs that failed last time, resolved from the full
+     *  catalog — works regardless of the current view. Distinct from
+     *  `onDownloadAll`, which grabs the current view's installable packs. */
+    onRetryFailed: () => void;
 }) {
     const { t } = useTranslation();
 
@@ -589,12 +643,13 @@ function DownloadAllBar({
         );
     }
 
-    // Nothing left to grab, but the last run left failures — offer retry.
+    // Nothing left to grab in this view, but the last run left failures —
+    // offer retry. Retries the stored failed packs (by id), not the view.
     if (count === 0 && failedCount > 0) {
         return (
             <button
                 type="button"
-                onClick={onDownloadAll}
+                onClick={onRetryFailed}
                 disabled={!isOnline}
                 className="
                     w-full rounded-lg border border-amber-400/50 bg-amber-500/[0.06]
@@ -624,13 +679,18 @@ function DownloadAllBar({
                     })}
                 </p>
                 {failedCount > 0 && (
-                    <p className="mt-0.5 text-[11px] text-amber-600">
+                    <button
+                        type="button"
+                        onClick={onRetryFailed}
+                        disabled={!isOnline}
+                        className="mt-0.5 text-left text-[11px] text-amber-600 underline-offset-2 hover:underline disabled:cursor-not-allowed disabled:opacity-60"
+                    >
                         {t("packs.phrasePack.batchFailed", {
                             defaultValue:
                                 "{{count}} couldn't install — tap to retry",
                             count: failedCount,
                         })}
-                    </p>
+                    </button>
                 )}
             </div>
             <Button
