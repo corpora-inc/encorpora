@@ -10,6 +10,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Seamless preview→full upgrade after subscribing to Corpán Plus.** The app
+  shell now upgrades installed preview narrations to the full versions in place
+  (no manual reinstall). The book open at the end-of-preview paywall upgrades the
+  instant you subscribe and the reader reloads + resumes from where the preview
+  cut off, auto-continuing into the full audio; other previews upgrade in the
+  background on Wi-Fi; opening any preview while Plus upgrades it on access. The
+  reader exposes `persistBookmark` so the reload resumes at the exact position.
+
 ## [0.7.0] - 2026-06-16 — First-run seed: instant book in your stack languages
 
 ### Added

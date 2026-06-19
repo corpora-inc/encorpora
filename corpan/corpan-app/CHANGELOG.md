@@ -7,6 +7,19 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **Seamless Corpán Plus narration upgrade after subscribing.** When a user
+  subscribes (or restores Plus, or launches already-Plus), the app dispatches a
+  `corpan:entitlements-changed` `{plus:true}` signal that the reader/catalog
+  layer uses to upgrade installed preview narrations to the full versions in
+  place — no manual uninstall/reinstall. The book the user is reading at the
+  end-of-preview paywall upgrades first (any connection) and the reader resumes
+  straight into the full content; the rest sweep in the background (Wi-Fi-gated);
+  a JIT self-heal upgrades any preview opened while Plus. The decoupled trigger
+  fires on the inactive→active edge of the live subscription, so every
+  activation path is covered without touching the offline-subscriber durability
+  logic.
+
 ## [0.19.1] - 2026-06-18
 
 ### Added

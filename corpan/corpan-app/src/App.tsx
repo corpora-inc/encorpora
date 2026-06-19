@@ -441,6 +441,42 @@ export default function App() {
     };
   }, []);
 
+  // Corpán Plus narration upgrade trigger. The single decoupled chokepoint:
+  // whenever the live subscription flips inactive → active (via purchase,
+  // restore, async StoreKit delivery, or a launch/refresh that confirms a
+  // durable sub), dispatch `corpan:entitlements-changed` {plus:true}. The
+  // catalog layer (appShell, possibly in a reader's own mount) listens for it
+  // and upgrades the active book + sweeps the rest. Edge-triggered + idempotent:
+  // the appShell guards its own kick, so a duplicate event is harmless.
+  useEffect(() => {
+    let wasActive = useEntitlementStore.getState().subscription.active;
+    // Cover the launch case: if we boot already-Plus (durable snapshot seeded),
+    // announce it once so a fresh-device / interrupted-sweep reader self-heals.
+    if (wasActive) {
+      try {
+        window.dispatchEvent(
+          new CustomEvent("corpan:entitlements-changed", { detail: { plus: true } })
+        );
+      } catch (err) {
+        console.warn("[App] initial entitlements-changed dispatch failed:", err);
+      }
+    }
+    const unsub = useEntitlementStore.subscribe((state) => {
+      const nowActive = state.subscription.active;
+      if (nowActive && !wasActive) {
+        try {
+          window.dispatchEvent(
+            new CustomEvent("corpan:entitlements-changed", { detail: { plus: true } })
+          );
+        } catch (err) {
+          console.warn("[App] entitlements-changed dispatch failed:", err);
+        }
+      }
+      wasActive = nowActive;
+    });
+    return () => unsub();
+  }, []);
+
   useEffect(() => {
     const onPop = () => {
       const params = new URLSearchParams(window.location.search);

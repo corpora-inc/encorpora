@@ -361,7 +361,9 @@ export async function installNarration(
           downloadUrl: signed.url,
           expectedSha256: entry.full.sha256 || null,
         })
-        addInstalled(entry)
+        // Full ZIP landed — record fullness so the upgrade layers treat this
+        // as complete (idempotent no-op) and never re-download it.
+        addInstalled(entry, true)
         return { ok: true }
       } catch (err) {
         const msg = err instanceof Error ? err.message : String(err)
@@ -377,7 +379,9 @@ export async function installNarration(
         downloadUrl: entry.preview.url,
         expectedSha256: entry.preview.sha256 || null,
       })
-      addInstalled(entry)
+      // Preview ZIP landed — mark it as a preview so the post-subscribe sweep /
+      // JIT self-heal can find and upgrade it once the user goes Plus.
+      addInstalled(entry, false)
       return { ok: true }
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err)
@@ -432,7 +436,9 @@ export async function installNarration(
       downloadUrl,
       expectedSha256: entry.sha256 || null,
     })
-    addInstalled(entry)
+    // Legacy single-ZIP (or free) entry — always the complete narration, never
+    // a truncated preview.
+    addInstalled(entry, true)
     return { ok: true }
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err)
