@@ -18,6 +18,14 @@ import { stopPreview } from "./voicePreview"
 import { libraryStore, isInstalled, getInstalled, listInstalled } from "./libraryStore"
 import { getPackUrl, isTauriAvailable, installNarration, deleteNarration, isTwoZipEntry } from "./installManager"
 import {
+  upgradeActiveNarration,
+  runUpgradeSweep,
+  maybeUpgradeOnOpen,
+  setUpgradeCatalogProvider,
+  NARRATION_UPGRADED_EVENT,
+  ENTITLEMENTS_CHANGED_EVENT,
+} from "./upgradeManager"
+import {
   groupByBook,
   groupBySeries,
   sortBooks,
@@ -100,11 +108,19 @@ const DEFAULT_SEED_BOOK = "book_biomes_tropical_rainforest"
 // never persisted. See `~/encorpora/corpan/infra/PUBLISHING.md` § Analytics.
 const ANALYTICS_ENDPOINT = "https://d1xp3xghrx3jfa.cloudfront.net/v1/events"
 
+export type ReaderInstance = {
+  dispose: () => void
+  isPlaying?: () => boolean
+  /** Persist the current playback bookmark on demand. Used before an upgrade
+   *  reload so the new (full) pack resumes exactly where the preview was. */
+  persistBookmark?: () => void
+}
+
 export type ReaderFactory = (
   container: HTMLElement,
   hostApi: unknown,
   initialState?: Record<string, unknown>
-) => { dispose: () => void; isPlaying?: () => boolean }
+) => ReaderInstance
 
 export type AppShellOptions = {
   /** Unique ID for this reader (e.g. "earthgate", "stargate"). Scopes persisted state so readers don't share narration selection. */
@@ -368,7 +384,7 @@ export function createAppShell(
   }
 
   let disposed = false
-  let readerInstance: { dispose: () => void; isPlaying?: () => boolean } | null = null
+  let readerInstance: ReaderInstance | null = null
 
   // Re-entrancy guard — prevents store subscription from re-triggering
   // switchToNarration while we're already inside it.
@@ -832,6 +848,67 @@ export function createAppShell(
   }
   window.addEventListener("corpan:book-finished", onBookFinished)
 
+  // -----------------------------------------------------------------------
+  // Corpán Plus preview → full upgrade (3 layers).
+  //
+  // The upgrade manager reuses OUR in-memory catalog so it never double-fetches.
+  setUpgradeCatalogProvider(() => allNarrations)
+
+  // Layer 1 + 2 trigger: the app dispatches `corpan:entitlements-changed`
+  // {plus:true} the moment Plus becomes active (purchase / restore / async
+  // StoreKit delivery). First upgrade the ACTIVE book on ANY connection (the
+  // one they just paid to finish), then kick the background sweep for the rest
+  // (gated to Wi-Fi inside runUpgradeSweep).
+  let upgradeKickInFlight = false
+  const onEntitlementsChanged = (e: Event): void => {
+    const detail = (e as CustomEvent<{ plus?: boolean }>).detail
+    if (!detail?.plus) return
+    if (upgradeKickInFlight) return
+    upgradeKickInFlight = true
+    void (async () => {
+      try {
+        // Make sure our entitlement snapshot reflects Plus before we rebuild UI.
+        await refreshEntitlements("event:entitlements-changed")
+        const active = getActive()
+        if (active) {
+          // High priority: the active book first, any connection.
+          await upgradeActiveNarration(active)
+        }
+        // Then everything else, best-effort + Wi-Fi-gated.
+        await runUpgradeSweep()
+      } catch (err) {
+        console.warn("[appShell] upgrade kick failed:", err)
+      } finally {
+        upgradeKickInFlight = false
+      }
+    })()
+  }
+  window.addEventListener(ENTITLEMENTS_CHANGED_EVENT, onEntitlementsChanged)
+
+  // Layer D: when a narration finishes upgrading preview → full, if it's the
+  // one currently open, reload it so the reader picks up the now-full
+  // segments.json and AUTO-CONTINUES from the saved bookmark (seamless — the
+  // preview cut off at its last segment; the full pack flows on from there).
+  const onNarrationUpgraded = (e: Event): void => {
+    const detail = (e as CustomEvent<{ narrationId?: string }>).detail
+    const upgradedId = detail?.narrationId
+    if (!upgradedId) return
+    // Refresh library/now-playing chrome so size/labels reflect the full pack.
+    refreshLibrarySection()
+    refreshNowPlayingSection()
+    refreshSwitchers()
+    if (upgradedId !== getActive()) return
+    // Persist the live position before tearing down, so the reload resumes from
+    // exactly where the preview ended, then auto-continue into the full content.
+    try {
+      readerInstance?.persistBookmark?.()
+    } catch (err) {
+      console.warn("[appShell] persistBookmark before upgrade reload failed:", err)
+    }
+    switchToNarration(upgradedId, false, true)
+  }
+  window.addEventListener(NARRATION_UPGRADED_EVENT, onNarrationUpgraded)
+
   // Persist scoped drawer state on change
   const persistUnsub = drawerStore.subscribe(() => {
     const { currentLanguage, currentNarrationId } = drawerStore.getState()
@@ -1021,8 +1098,17 @@ export function createAppShell(
   }
 
   /** THE one function for activating a narration. Sets the canonical store,
-   *  mounts the reader, and updates pills. Nothing else writes narration state. */
-  function switchToNarration(narrationId: string, closeDrawer = false): void {
+   *  mounts the reader, and updates pills. Nothing else writes narration state.
+   *
+   *  `forcePlay` makes the new instance auto-continue playback even when the
+   *  outgoing reader wasn't playing — used for the post-purchase upgrade reload,
+   *  where the preview's playback had just ENDED at the paywall but we want to
+   *  flow straight into the now-full content from the saved bookmark. */
+  function switchToNarration(
+    narrationId: string,
+    closeDrawer = false,
+    forcePlay = false
+  ): void {
     if (!isInstalled(narrationId)) return
     const info = getInstalled(narrationId)
     if (!info) return
@@ -1043,7 +1129,7 @@ export function createAppShell(
       bookId: info.bookId,
       bookTitle: info.bookTitle,
       language: info.language,
-      autoPlay: wasPlaying,
+      autoPlay: forcePlay || wasPlaying,
       startAtSegmentStart: true,
     }
 
@@ -1063,6 +1149,16 @@ export function createAppShell(
       language: info.language,
       voiceId: info.voiceId,
     })
+
+    // Layer 3 (JIT self-heal): opening a preview while Plus upgrades it in the
+    // background. Fire-and-forget — on success it dispatches
+    // `corpan:narration-upgraded`, which reloads this same book into the full
+    // content (auto-continuing). `forcePlay` here would just be the reload's
+    // job, so we DON'T re-open with play; we let the upgraded event drive it
+    // (and only if it's still the active book). No-op when already full / not Plus.
+    if (!forcePlay) {
+      void maybeUpgradeOnOpen(narrationId)
+    }
   }
 
   // --- Now Playing section rendering ---
@@ -3093,6 +3189,9 @@ export function createAppShell(
     window.removeEventListener("corpan:restore-purchases-completed", onPurchaseEvent)
     window.removeEventListener("corpan:book-finished", onBookFinished)
     dismissEndOfBookSuggestion()
+    window.removeEventListener(ENTITLEMENTS_CHANGED_EVENT, onEntitlementsChanged)
+    window.removeEventListener(NARRATION_UPGRADED_EVENT, onNarrationUpgraded)
+    setUpgradeCatalogProvider(null)
     if (narratorDetailInstance) {
       narratorDetailInstance.dispose()
       narratorDetailInstance = null

@@ -20,6 +20,13 @@ Conventions: `corpan/CHANGELOGS.md`.
   `corpan:book-finished` window event; the app shell (which owns the catalog)
   picks the next book and renders the suggestion. Next-book selection lives in
   the shared catalog module (`chooseNextBook`).
+- **Seamless preview→full upgrade after subscribing to Corpán Plus.** The app
+  shell now upgrades installed preview narrations to the full versions in place
+  (no manual reinstall). The book open at the end-of-preview paywall upgrades the
+  instant you subscribe and the reader reloads + resumes from where the preview
+  cut off, auto-continuing into the full audio; other previews upgrade in the
+  background on Wi-Fi; opening any preview while Plus upgrades it on access. The
+  reader exposes `persistBookmark` so the reload resumes at the exact position.
 
 ### Fixed
 - **Pulse Ring trail/fade regression.** Visualization rings lingered at full

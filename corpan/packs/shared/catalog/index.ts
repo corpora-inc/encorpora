@@ -51,7 +51,22 @@ export {
   listInstalled,
   listInstalledForBook,
   totalInstalledSizeMb,
+  setNarrationFullness,
+  isPreviewInstalled,
+  listPreviewNarrationIds,
 } from "./src/libraryStore"
+
+export {
+  upgradeNarration,
+  upgradeActiveNarration,
+  runUpgradeSweep,
+  maybeUpgradeOnOpen,
+  isLikelyUnmetered,
+  canRunSweep,
+  setUpgradeCatalogProvider,
+  NARRATION_UPGRADED_EVENT,
+  ENTITLEMENTS_CHANGED_EVENT,
+} from "./src/upgradeManager"
 
 export {
   groupByBook,
