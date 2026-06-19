@@ -233,7 +233,9 @@ export function createAppShell(
     narration: CatalogNarrationEntry
   ): { sizeMb: number; isPreview: boolean } {
     if (isTwoZipEntry(narration)) {
-      if (isSubscriberSync()) return { sizeMb: narration.full.sizeMb, isPreview: false }
+      // Full ZIP if entitled — a subscriber OR a one-time owner of this book.
+      // (Don't advertise the free-preview size to someone who's already paid.)
+      if (isEntitledToNarrationSync(narration)) return { sizeMb: narration.full.sizeMb, isPreview: false }
       return { sizeMb: narration.preview.sizeMb, isPreview: true }
     }
     return { sizeMb: narration.sizeMb, isPreview: false }
@@ -844,7 +846,23 @@ export function createAppShell(
       | { bookId?: string; language?: string }
       | undefined
     if (!detail?.bookId) return
-    showEndOfBookSuggestion(detail.bookId, detail.language || drawerStore.getState().currentLanguage)
+    const bookId = detail.bookId
+    const language = detail.language || drawerStore.getState().currentLanguage
+    // A returning user can open an installed book straight from the restored
+    // library and finish it without ever opening the drawer — so the catalog
+    // was never fetched and `showEndOfBookSuggestion` would no-op. Lazy-hydrate
+    // it here, then suggest the next book.
+    if (allNarrations.length === 0) {
+      void fetchCatalog(cdnUrl, { fallbackUrl: FALLBACK_CDN_URL })
+        .then((catalog) => {
+          if (disposed) return
+          allNarrations = catalog.narrations
+          showEndOfBookSuggestion(bookId, language)
+        })
+        .catch(() => {})
+      return
+    }
+    showEndOfBookSuggestion(bookId, language)
   }
   window.addEventListener("corpan:book-finished", onBookFinished)
 

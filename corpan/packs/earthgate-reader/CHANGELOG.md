@@ -10,6 +10,19 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Book owners now download the full narration, not the preview.** Two-ZIP
+  premium entries signed the full ZIP only for Corpán Plus subscribers; a
+  one-time book owner without Plus got the truncated preview and the upgrade
+  layer never replaced it. The two-ZIP install now resolves a book-purchase
+  receipt (then falls back to a subscription) and signs the full ZIP under the
+  owned book's product id; the row also advertises the full size to owners.
+- **End-of-book "read next" suggestion now appears for restored-library
+  readers.** Opening an installed book from the restored library and finishing
+  it without ever opening the drawer left the catalog unfetched, so the
+  suggestion silently no-op'd; the `corpan:book-finished` handler now
+  lazy-hydrates the catalog before choosing the next book.
+
 ## [0.7.1] - 2026-06-19
 
 ### Added

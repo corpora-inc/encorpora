@@ -2,6 +2,7 @@ import type { CatalogNarrationEntry, NarrationArtifact } from "./types"
 import { addInstalled, removeInstalled } from "./libraryStore"
 import {
   resolveReceiptForEntry,
+  resolveBookReceipt,
   resolveSubscriptionReceipt,
   isCurrentlySubscribed,
 } from "./purchaseManager"
@@ -327,30 +328,46 @@ export async function installNarration(
 
   // ── Corpán Plus two-ZIP model ──
   // New-shape entries carry preview (public) + full (Plus-gated). The new
-  // runtime reads ONLY these: subscribers get the full ZIP via signed URL;
-  // everyone else gets the public preview ZIP. The legacy downloadUrl is
-  // ignored here.
+  // runtime reads ONLY these. Who gets the FULL ZIP (via signed URL):
+  //   • a Corpán Plus subscriber              → signed as corpan.plus
+  //   • a one-time OWNER of this premium book  → signed as its corpan.book.* id
+  // Anyone else gets the public preview ZIP. The legacy downloadUrl is ignored.
   if (isTwoZipEntry(entry)) {
-    const sub = await isCurrentlySubscribed()
-    const wantFull = sub.ok && sub.entitled
+    // Resolve an authorizing receipt + the product id to sign the full ZIP
+    // under. Prefer a book purchase (so owners who never subscribed still get
+    // the full book), then fall back to an active subscription. A freshly
+    // passed `purchaseInfo` (just bought the book) short-circuits the restore.
+    const bookProductId = entry.purchase.type === "iap" ? entry.purchase.productId : undefined
+    let auth: { transactionId: string; receipt: string; platform: string; productId: string } | null = null
 
-    if (wantFull) {
-      const receipt = await resolveSubscriptionReceipt()
-      if (!receipt) {
-        return {
-          ok: false,
-          code: "NO_RECEIPT",
-          message: "We couldn't find your Corpán Plus subscription",
-          detail: "resolveSubscriptionReceipt returned nothing. Try Restore Purchases.",
+    if (bookProductId) {
+      const owned = purchaseInfo ?? (await resolveBookReceipt(entry))
+      if (owned) auth = { ...owned, productId: bookProductId }
+    }
+    if (!auth) {
+      const sub = await isCurrentlySubscribed()
+      if (sub.ok && sub.entitled) {
+        const receipt = await resolveSubscriptionReceipt()
+        if (!receipt) {
+          return {
+            ok: false,
+            code: "NO_RECEIPT",
+            message: "We couldn't find your Corpán Plus subscription",
+            detail: "resolveSubscriptionReceipt returned nothing. Try Restore Purchases.",
+          }
         }
+        auth = { ...receipt, productId: "corpan.plus" }
       }
+    }
+
+    if (auth) {
       const signed = await requestSignedUrl(
         entry.full.url,
-        "corpan.plus",
+        auth.productId,
         entry.id,
-        receipt.transactionId,
-        receipt.receipt,
-        receipt.platform
+        auth.transactionId,
+        auth.receipt,
+        auth.platform
       )
       if (!signed.ok) {
         return { ok: false, code: signed.code, message: signed.message, detail: signed.detail }
@@ -372,7 +389,7 @@ export async function installNarration(
       }
     }
 
-    // Non-subscriber → public preview ZIP, no auth.
+    // Neither a subscriber nor an owner → public preview ZIP, no auth.
     try {
       await invoke("content_packs_install_from_url", {
         packId: entry.id,
