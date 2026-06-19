@@ -51,6 +51,15 @@ Conventions: `corpan/CHANGELOGS.md`.
   logic.
 
 ### Fixed
+- **Phrase packs "Download all" retry no longer becomes a dead tap.** The
+  failed-batch retry tracked failures as a global count and re-ran against the
+  *current view's* installable packs, so after a failure you could switch to a
+  filter/category with nothing installable and still see "tap to retry" while
+  the tap did nothing. Failures are now tracked by pack **ID** and retry
+  re-installs exactly those packs, resolved from the full catalog independent of
+  the active filter/search — and the retry affordance clears automatically once
+  every failed pack has installed (here or elsewhere) so it never offers a tap
+  that can't act. (`PhrasePackBrowser.tsx`, `resolveFailedPacks.ts`)
 - **Reordering a language no longer wobbles the drawer.** Dragging a chip in
   the re-orderable language stack (in the Quick Settings drawer and anywhere
   else the stack appears) is a dnd-kit drag; the enclosing vaul drawer was also
