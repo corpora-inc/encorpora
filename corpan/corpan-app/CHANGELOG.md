@@ -7,6 +7,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Android subscription verification was failing for every subscriber.** The
+  `/verify-purchase` call now sends `productType`, and the server verifies
+  Google subscriptions via `subscriptionsv2` instead of the one-time-products
+  endpoint (which Google rejects for a subscription token). Previously every
+  Android subscription — including affiliate/discount code redemptions — failed
+  server verification, so no affiliate partner was credited and no entitlement
+  token was minted (blocking Plus-gated content downloads). iOS/macOS unaffected.
+
 ## [0.19.2] - 2026-06-19
 
 ### Changed

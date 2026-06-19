@@ -328,6 +328,11 @@ async function handleVerifyPurchase(body, secrets) {
     return json(400, { status: "failed", error: "Missing platform or productId" });
   }
 
+  console.log(
+    `[verify] in platform=${platform} productId=${productId} packId=${packId || "-"} ` +
+      `hasCode=${!!body.affiliateCode} hasResToken=${!!body.resolutionToken} hasSubject=${!!body.subjectId}`
+  );
+
   // Verify the receipt with the platform
   let result;
   if (platform === "ios" || platform === "macos") {
@@ -339,14 +344,30 @@ async function handleVerifyPurchase(body, secrets) {
     if (!body.purchaseToken) {
       return json(400, { status: "failed", error: "Missing purchaseToken for Google" });
     }
-    result = await verifyGoogle(body, secrets);
+    // Subscriptions MUST be verified via subscriptionsv2. Without productType,
+    // verifyGoogle falls through to purchases.products.get, which Google rejects
+    // for a subscription token ("The document type is not supported") — failing
+    // EVERY Android subscription verify (no attribution, no entitlement token).
+    // Per-book IAP is retired, so default to "subs"; honor an explicit
+    // body.productType for any legacy one-time product.
+    const productType =
+      body.productType || (productId.includes(".sub.") ? "subs" : "inapp");
+    result = await verifyGoogle({ ...body, productType }, secrets);
   } else {
     return json(400, { status: "failed", error: `Unsupported platform: ${platform}` });
   }
 
   if (!result.verified) {
+    console.warn(
+      `[verify] FAILED platform=${platform} productId=${productId} error=${result.error || "unknown"}`
+    );
     return json(403, { status: "failed", error: result.error || "Verification failed" });
   }
+
+  console.log(
+    `[verify] OK platform=${platform} txn=${result.transactionId} isSub=${!!result.isSubscription} ` +
+      `active=${!!result.subscriptionActive} offer=${result.offerId || result.offerIdentifier || "none"}`
+  );
 
   // For subscription or individual purchase, generate a signed download URL
   const response = {
@@ -396,6 +417,12 @@ async function handleVerifyPurchase(body, secrets) {
           ? !claims.appleOfferId || result.offerIdentifier === claims.appleOfferId
           : !claims.googleOfferId || result.offerId === claims.googleOfferId;
 
+        console.log(
+          `[codes] attributing partner=${claims.partnerId} code=${claims.code} ` +
+            `platform=${isApple ? "apple" : "android"} txn=${txnOrOriginalId} ` +
+            `offerApplied=${offerApplied} offerMatches=${offerMatches}`
+        );
+
         const attribution = await codes.attributePurchase({
           claims,
           subjectId: body.subjectId,
@@ -416,8 +443,12 @@ async function handleVerifyPurchase(body, secrets) {
         });
         if (attribution) {
           response.affiliateAttribution = attribution;
+          console.log(`[codes] attribution: ${JSON.stringify(attribution)}`);
         }
       } else if (result.subscriptionActive) {
+        console.log(
+          `[codes] no valid resolutionToken (${tokenCheck.reason || "none"}); recording entitlement-only sub`
+        );
         // §4 — NO valid code, but a verified active sub. attributePurchase
         // never ran (it's gated on a resolutionToken), so persist the
         // entitlement PURCHASE# row here so /entitlement-token reflects a real
