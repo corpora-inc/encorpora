@@ -30,10 +30,18 @@ Conventions: `corpan/CHANGELOGS.md`.
   the completion handoff — when the colour wash finishes and the chosen
   experience boots underneath — now also fires a success notification haptic to
   confirm the selection. Reuses the existing `triggerHaptic` seam
-  (`util/haptics.ts`), fires once per completion, and is a safe no-op on
-  Android/web/dev.
+  (`util/haptics.ts`), fires once per completion. Works on both iOS
+  (UIImpactFeedbackGenerator) and Android (native Vibrator, with a
+  `navigator.vibrate` fallback in the WebView); a safe no-op only on
+  unsupported web/desktop.
 
 ### Fixed
+- **Quick Settings drawer scrolls across its full width.** The scroll
+  container was capped + centered, so on a wide iPad the scrollbar floated in
+  from the right and the generous padded sides weren't a scroll surface. The
+  full drawer width is now the scroll region (scrollbar flush right, swipe
+  anywhere) while the controls stay width-capped and centered via an inner
+  wrapper. (`QuickSettingsSheet.tsx`)
 - **Installed packs are no longer dev-reloaded, fixing a pack-launch crash on
   `tauri ios dev` over LAN.** A downloaded catalog pack (e.g. beatlounge) is
   served from a `corpan-pack://localhost/…` (iOS/desktop) or

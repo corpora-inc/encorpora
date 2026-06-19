@@ -213,7 +213,7 @@ const DEFAULT_CATALOG: CatalogGame[] = [
     minAppVersion: "0.18.0",
     manifestUrl: "https://encorpora.io/corpan/packs/beatlounge.zip",
     description:
-      "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
+      "Make music with the language you're learning. Scratch real phrases from 50+ languages, all offline. No music theory needed.",
     tagline: "Sample the language you're learning. Scratch it till it sticks.",
     imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },
@@ -297,7 +297,7 @@ const DEV_CATALOG: CatalogGame[] = [
     minAppVersion: "0.18.0",
     manifestUrl: "/packs/beatlounge/manifest.json",
     description:
-      "You never forget a song. beatlounge is a real music studio where your samples are the language you're learning — pull real phrases across 50+ languages and scratch them on the deck, over ten million to play with, all offline. No music theory needed; it teaches you as you go.",
+      "Make music with the language you're learning. Scratch real phrases from 50+ languages, all offline. No music theory needed.",
     tagline: "Sample the language you're learning. Scratch it till it sticks.",
     imageUrl: "https://encorpora.io/assets/beatlounge-avatar.png",
     purchase: { type: "free", priceLabel: "Free" },

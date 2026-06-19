@@ -44,20 +44,24 @@ export function QuickSettingsSheet() {
           </DrawerTitle>
         </DrawerHeader>
 
-        {/* Center + cap width at >= md so the controls don't stretch
-            edge-to-edge on the full-width iPad/desktop drawer; roomier
-            spacing/padding there, compact on phones. */}
-        <div className="flex-1 space-y-4 md:space-y-6 overflow-y-auto px-4 md:px-6 pb-10 w-full md:max-w-2xl md:mx-auto">
-          <RateAdjuster />
-          <TextSizeAdjuster />
-          <LanguageSelectOrder />
-          <LevelsPicker />
-          <PhrasePackToggleSection />
+        {/* The scroll container spans the FULL drawer width so the scrollbar
+            sits flush right and the whole padded area (generous on a big
+            iPad) is a scroll surface. Width is capped + centered on the
+            INNER content wrapper so the controls don't stretch edge-to-edge;
+            roomier spacing/padding at >= md, compact on phones. */}
+        <div className="flex-1 overflow-y-auto w-full">
+          <div className="space-y-4 md:space-y-6 px-4 md:px-6 pb-10 w-full md:max-w-2xl md:mx-auto">
+            <RateAdjuster />
+            <TextSizeAdjuster />
+            <LanguageSelectOrder />
+            <LevelsPicker />
+            <PhrasePackToggleSection />
 
-          <Button variant="outline" className="w-full" data-testid="quick-full-settings" onClick={openFullSettings}>
-            <ExternalLink className="mr-2 h-4 w-4" />
-            {t("quickSettings.fullSettings", { defaultValue: "Full settings" })}
-          </Button>
+            <Button variant="outline" className="w-full" data-testid="quick-full-settings" onClick={openFullSettings}>
+              <ExternalLink className="mr-2 h-4 w-4" />
+              {t("quickSettings.fullSettings", { defaultValue: "Full settings" })}
+            </Button>
+          </div>
         </div>
       </DrawerContent>
     </Drawer>
