@@ -36,6 +36,13 @@ Conventions: `corpan/CHANGELOGS.md`.
   unsupported web/desktop.
 
 ### Fixed
+- **Reordering a language no longer wobbles the drawer.** Dragging a chip in
+  the re-orderable language stack (in the Quick Settings drawer and anywhere
+  else the stack appears) is a dnd-kit drag; the enclosing vaul drawer was also
+  grabbing the vertical gesture and drifting toward closing. The chips are now
+  marked `data-vaul-no-drag`, so the drawer ignores touches that begin on a
+  chip while still closing normally from its handle/overlay.
+  (`LanguageSelectOrder.tsx`)
 - **Quick Settings drawer scrolls across its full width.** The scroll
   container was capped + centered, so on a wide iPad the scrollbar floated in
   from the right and the generous padded sides weren't a scroll surface. The

@@ -265,6 +265,11 @@ function SortableLangChip({
   return (
     <div
       ref={setNodeRef}
+      // Reordering a chip is a dnd-kit drag; without this the enclosing vaul
+      // drawer also grabs the vertical gesture and wobbles toward closing as
+      // you drag a language down. data-vaul-no-drag makes vaul ignore touches
+      // that start on a chip (the drawer still closes via its handle/overlay).
+      data-vaul-no-drag
       style={{
         transform: CSS.Transform.toString(transform),
         transition,

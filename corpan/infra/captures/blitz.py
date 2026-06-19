@@ -193,6 +193,8 @@ def main() -> int:
         sw = (float(ss_s), float(dur_s))
 
     want = [f.strip() for f in args.formats.split(",") if f.strip()]
+    src_w, src_h = probe_dims(raw)
+    is_portrait = src_h > src_w
     ec_cache: dict = {}
     variants: dict = {}
 
@@ -200,7 +202,11 @@ def main() -> int:
         if name not in FORMATS:
             eprint(f"warn: unknown format '{name}', skipping"); continue
         w, h, geom, tb = FORMATS[name]
-        eprint(f"==> {name}")
+        # The branded split assumes a portrait app on the left; a landscape
+        # source would overrun the panel — blur-pad it into 16:9 instead.
+        if name == "wide" and not is_portrait:
+            w, h, geom, tb = 1920, 1080, "padfit", 0.5
+        eprint(f"==> {name}{'  (landscape blur-pad)' if name == 'wide' and not is_portrait else ''}")
         final = build_variant(raw, name, w, h, geom, tb, args.lang, args.badge,
                               args.endcard, bgm, args.headline, subs, None, None, tmp, ec_cache)
         variants[name] = {"path": final.name, "duration": studio.ffprobe_duration(final)}
