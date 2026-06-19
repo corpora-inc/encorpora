@@ -42,8 +42,10 @@ Conventions: `corpan/CHANGELOGS.md`.
   layer uses to upgrade installed preview narrations to the full versions in
   place — no manual uninstall/reinstall. The book the user is reading at the
   end-of-preview paywall upgrades first (any connection) and the reader resumes
-  straight into the full content; the rest sweep in the background (Wi-Fi-gated);
-  a JIT self-heal upgrades any preview opened while Plus. The decoupled trigger
+  straight into the full content; the background sweep of the rest runs only on
+  confirmed-unmetered connections (when metering can't be confirmed — e.g. iOS —
+  it defers and the just-in-time on-open upgrade covers it); a JIT self-heal
+  upgrades any preview opened while Plus. The decoupled trigger
   fires on the inactive→active edge of the live subscription, so every
   activation path is covered without touching the offline-subscriber durability
   logic.

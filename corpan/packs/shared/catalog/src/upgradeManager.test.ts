@@ -94,9 +94,11 @@ mock.module("./catalogFetch.ts", {
 
 const {
   upgradeNarration,
+  upgradeActiveNarration,
   runUpgradeSweep,
   maybeUpgradeOnOpen,
   isLikelyUnmetered,
+  isConfirmedUnmetered,
   canRunSweep,
   setUpgradeCatalogProvider,
   __resetUpgradeGuardsForTest,
@@ -136,8 +138,11 @@ beforeEach(() => {
 })
 
 // --- unmetered detection ----------------------------------------------------
+// `isLikelyUnmetered` is the OPTIMISTIC read (unknown → true). It is NOT the
+// sweep gate — the sweep gate is `isConfirmedUnmetered` (positive confirmation
+// required; unknown → false → defer).
 
-test("isLikelyUnmetered: API unavailable (iOS) proceeds best-effort", () => {
+test("isLikelyUnmetered: API unavailable is optimistically true (not the sweep gate)", () => {
   navState.connection = undefined
   assert.equal(isLikelyUnmetered(), true)
 })
@@ -158,9 +163,55 @@ test("isLikelyUnmetered: true on wifi / 4g", () => {
   assert.equal(isLikelyUnmetered(), true)
 })
 
-test("canRunSweep: false when offline even on wifi", () => {
+// --- positive-confirmation sweep gate ---------------------------------------
+
+test("isConfirmedUnmetered: UNKNOWN link (connection undefined, e.g. iOS) → false (defer)", () => {
+  navState.connection = undefined
+  assert.equal(isConfirmedUnmetered(), false)
+})
+
+test("isConfirmedUnmetered: true only on a present, unmetered link (wifi/4g)", () => {
+  navState.connection = { type: "wifi", effectiveType: "4g" }
+  assert.equal(isConfirmedUnmetered(), true)
+  navState.connection = { effectiveType: "4g" }
+  assert.equal(isConfirmedUnmetered(), true)
+})
+
+test("isConfirmedUnmetered: false on saveData / cellular / 2g / slow-2g / 3g", () => {
+  navState.connection = { saveData: true }
+  assert.equal(isConfirmedUnmetered(), false)
+  navState.connection = { type: "cellular" }
+  assert.equal(isConfirmedUnmetered(), false)
+  navState.connection = { effectiveType: "2g" }
+  assert.equal(isConfirmedUnmetered(), false)
+  navState.connection = { effectiveType: "slow-2g" }
+  assert.equal(isConfirmedUnmetered(), false)
+  navState.connection = { effectiveType: "3g" }
+  assert.equal(isConfirmedUnmetered(), false)
+})
+
+test("canRunSweep matrix: run only when online + confirmed unmetered", () => {
+  // confirmed unmetered + online → run
+  navState.online = true
+  navState.connection = { type: "wifi", effectiveType: "4g" }
+  assert.equal(canRunSweep(), true)
+  // cellular → defer
+  navState.connection = { type: "cellular" }
+  assert.equal(canRunSweep(), false)
+  // saveData → defer
+  navState.connection = { saveData: true }
+  assert.equal(canRunSweep(), false)
+  // 2g / 3g → defer
+  navState.connection = { effectiveType: "2g" }
+  assert.equal(canRunSweep(), false)
+  navState.connection = { effectiveType: "3g" }
+  assert.equal(canRunSweep(), false)
+  // UNKNOWN link (no Network Info API) → defer (was the bug: used to run)
+  navState.connection = undefined
+  assert.equal(canRunSweep(), false)
+  // offline even on confirmed wifi → defer
   navState.online = false
-  navState.connection = { type: "wifi" }
+  navState.connection = { type: "wifi", effectiveType: "4g" }
   assert.equal(canRunSweep(), false)
 })
 
@@ -230,12 +281,42 @@ test("runUpgradeSweep: upgrades all previews when Plus + wifi", async () => {
   assert.deepEqual(installCalls.sort(), ["a", "b"])
 })
 
-test("runUpgradeSweep: defers (no installs, no throw) when metered", async () => {
+test("runUpgradeSweep: defers (no installs, no throw) when cellular", async () => {
   seedPreview("a")
   mockSubscribed = true
   navState.connection = { type: "cellular" }
   await runUpgradeSweep()
-  assert.deepEqual(installCalls, [], "metered → deferred")
+  assert.deepEqual(installCalls, [], "cellular → deferred")
+})
+
+test("runUpgradeSweep: defers when saveData (Data Saver) is on", async () => {
+  seedPreview("a")
+  mockSubscribed = true
+  navState.connection = { saveData: true }
+  await runUpgradeSweep()
+  assert.deepEqual(installCalls, [], "saveData → deferred")
+})
+
+test("runUpgradeSweep: defers on 2g / 3g", async () => {
+  seedPreview("a")
+  mockSubscribed = true
+  navState.connection = { effectiveType: "2g" }
+  await runUpgradeSweep()
+  assert.deepEqual(installCalls, [], "2g → deferred")
+  navState.connection = { effectiveType: "3g" }
+  await runUpgradeSweep()
+  assert.deepEqual(installCalls, [], "3g → deferred")
+})
+
+test("runUpgradeSweep: DEFERS when metering unknown (connection undefined, e.g. iOS)", async () => {
+  // The reviewer bug: previously the sweep PROCEEDED here, bulk-downloading
+  // every preview on iOS even on cellular. It must now defer to the JIT layer.
+  seedPreview("a")
+  seedPreview("b")
+  mockSubscribed = true
+  navState.connection = undefined
+  await runUpgradeSweep()
+  assert.deepEqual(installCalls, [], "unknown link → deferred (no background pre-fetch)")
 })
 
 test("runUpgradeSweep: defers when offline", async () => {
@@ -262,7 +343,27 @@ test("runUpgradeSweep: concurrent runs don't double-download", async () => {
   assert.deepEqual(installCalls.sort(), ["a", "b"], "each upgraded exactly once")
 })
 
-// --- JIT --------------------------------------------------------------------
+// --- Layer 1: active-book upgrade (any connection, no sweep gate) -----------
+
+test("upgradeActiveNarration: upgrades the active book even on cellular (any connection)", async () => {
+  seedPreview("a")
+  mockSubscribed = true
+  navState.connection = { type: "cellular" } // the sweep gate would defer here
+  const r = await upgradeActiveNarration("a")
+  assert.equal(r, true, "active book upgrades regardless of metering")
+  assert.deepEqual(installCalls, ["a"])
+})
+
+test("upgradeActiveNarration: upgrades when metering is unknown (iOS)", async () => {
+  seedPreview("a")
+  mockSubscribed = true
+  navState.connection = undefined
+  const r = await upgradeActiveNarration("a")
+  assert.equal(r, true)
+  assert.deepEqual(installCalls, ["a"])
+})
+
+// --- Layer 3: JIT on open (any connection, no sweep gate) -------------------
 
 test("maybeUpgradeOnOpen: upgrades a just-opened preview when Plus", async () => {
   seedPreview("a")
@@ -270,6 +371,21 @@ test("maybeUpgradeOnOpen: upgrades a just-opened preview when Plus", async () =>
   const r = await maybeUpgradeOnOpen("a")
   assert.equal(r, true)
   assert.deepEqual(installCalls, ["a"])
+})
+
+test("maybeUpgradeOnOpen: upgrades on cellular / unknown link (any connection)", async () => {
+  seedPreview("a")
+  mockSubscribed = true
+  navState.connection = { type: "cellular" }
+  assert.equal(await maybeUpgradeOnOpen("a"), true, "JIT ignores the sweep gate")
+  assert.deepEqual(installCalls, ["a"])
+
+  // and on an unknown link (iOS) too
+  installCalls = []
+  seedPreview("b")
+  navState.connection = undefined
+  assert.equal(await maybeUpgradeOnOpen("b"), true)
+  assert.deepEqual(installCalls, ["b"])
 })
 
 test("maybeUpgradeOnOpen: no-op for a full narration", async () => {

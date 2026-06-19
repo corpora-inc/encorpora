@@ -62,6 +62,7 @@ export {
   runUpgradeSweep,
   maybeUpgradeOnOpen,
   isLikelyUnmetered,
+  isConfirmedUnmetered,
   canRunSweep,
   setUpgradeCatalogProvider,
   NARRATION_UPGRADED_EVENT,

@@ -15,7 +15,10 @@
  *      ANY connection. (appShell reloads + resumes on `corpan:narration-upgraded`.)
  *   2. Background sweep — `runUpgradeSweep()`: every OTHER installed preview,
  *      best-effort, sequential, guarded against concurrent runs, GATED to
- *      online + likely-unmetered (Wi-Fi).
+ *      online + CONFIRMED-unmetered (Wi-Fi). When the link type is UNKNOWN
+ *      (Network Information API absent — notably iOS WKWebView) the sweep
+ *      DEFERS; layers 1 + 3 still deliver full narrations, so we just don't
+ *      pre-fetch in the background when we can't confirm Wi-Fi.
  *   3. JIT self-heal — `maybeUpgradeOnOpen(id)`: any preview opened while Plus is
  *      upgraded on access, guaranteeing eventual correctness regardless of (2).
  *
@@ -206,21 +209,29 @@ type NavigatorConnection = {
   effectiveType?: string
 }
 
+function readConnection(): NavigatorConnection | undefined {
+  try {
+    if (typeof navigator === "undefined") return undefined
+    return (navigator as Navigator & { connection?: NavigatorConnection })
+      .connection
+  } catch {
+    // Some embedded WebViews throw on property access — treat as unavailable.
+    return undefined
+  }
+}
+
 /**
- * Heuristic: is the current connection likely UNMETERED (safe for bulk
- * downloads)? Conservative — only returns false when we have a positive signal
- * the link is metered/constrained:
- *   - Data Saver is on
- *   - the connection type is cellular
- *   - the effective type is 2g/3g
- * When the Network Information API is UNAVAILABLE (notably iOS WKWebView, which
- * doesn't implement `navigator.connection`), we proceed best-effort rather than
- * permanently skipping the sweep — the JIT layer is the backstop either way.
+ * Heuristic: is the current connection likely UNMETERED? OPTIMISTIC — returns
+ * false only on a positive metered signal (Data Saver, cellular, 2g/3g) and
+ * treats an UNKNOWN link (Network Information API absent) as likely unmetered.
+ *
+ * NOTE: this is NOT the sweep gate. The background sweep uses
+ * `isConfirmedUnmetered()` (positive confirmation required); `isLikelyUnmetered`
+ * is retained for any caller that wants the optimistic read.
  */
 export function isLikelyUnmetered(): boolean {
-  const conn = (navigator as Navigator & { connection?: NavigatorConnection })
-    .connection
-  if (!conn) return true // API unavailable (iOS) — proceed best-effort.
+  const conn = readConnection()
+  if (!conn) return true // API unavailable — optimistic.
   if (conn.saveData === true) return false
   if (conn.type === "cellular") return false
   const eff = conn.effectiveType
@@ -228,10 +239,33 @@ export function isLikelyUnmetered(): boolean {
   return true
 }
 
-/** True when we're online AND the link is likely unmetered. */
+/**
+ * Strict, POSITIVE check used to gate the background sweep: true ONLY when the
+ * Network Information API exists AND positively reports an unmetered link —
+ * not Data Saver, not cellular, not effective 2g/3g. When the API is absent
+ * (iOS WKWebView) or detection throws, the link type is UNKNOWN and we return
+ * `false` (DEFER the sweep) rather than risk a background bulk download over
+ * cellular. Layers 1 + 3 still deliver the full narrations.
+ */
+export function isConfirmedUnmetered(): boolean {
+  const conn = readConnection()
+  if (!conn) return false // Unknown link (e.g. iOS) — cannot confirm → defer.
+  try {
+    if (conn.saveData === true) return false
+    if (conn.type === "cellular") return false
+    const eff = conn.effectiveType
+    if (eff === "2g" || eff === "slow-2g" || eff === "3g") return false
+    return true
+  } catch {
+    return false // Anything thrown during detection → not confirmed → defer.
+  }
+}
+
+/** True when we're online AND the link is POSITIVELY CONFIRMED unmetered.
+ *  Unknown metering (no Network Info API) → false, so the sweep defers. */
 export function canRunSweep(): boolean {
   const online = typeof navigator === "undefined" || navigator.onLine !== false
-  return online && isLikelyUnmetered()
+  return online && isConfirmedUnmetered()
 }
 
 // Module-level guard against concurrent / re-entrant sweeps.
@@ -257,8 +291,9 @@ async function collectPreviewIds(): Promise<string[]> {
 /**
  * Layer 2 — upgrade ALL OTHER installed preview narrations after subscribing.
  * Best-effort, sequential (native installs can collide on shared temp/lock
- * state), low priority. GATED to online + likely-unmetered; when gated off it
- * DEFERS silently (no error) — the JIT layer self-heals each on next open.
+ * state), low priority. GATED to online + CONFIRMED-unmetered; an unknown link
+ * (no Network Info API, e.g. iOS) DEFERS too. When gated off it defers silently
+ * (no error) — the JIT layer self-heals each on next open.
  * Re-entrant safe via a module-level in-flight flag.
  */
 export async function runUpgradeSweep(): Promise<void> {
@@ -269,7 +304,7 @@ export async function runUpgradeSweep(): Promise<void> {
   if (!(await isPlus())) return
   if (!canRunSweep()) {
     console.info(
-      "[upgradeManager] sweep deferred — offline or metered (JIT will self-heal)"
+      "[upgradeManager] sweep deferred — offline or not confirmed unmetered (JIT will self-heal)"
     )
     return
   }
