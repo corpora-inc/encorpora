@@ -51,6 +51,7 @@ FORMATS = {
     "square":   (1080, 1080, "padfit", 0.5),
     "portrait": (1080, 1350, "padfit", 0.5),
     "wide":     (1920, 1080, "horizontal", 0.5),
+    "cut15":    (1080, 1920, "padfit", 0.25),   # ~15s punchy 9:16 cut; needs --short-window
 }
 SOCIAL = {"shorts", "square", "portrait"}          # eligible for a 15s cut
 BADGE_TL = {"shorts", "cut15", "portrait"}         # top-left (avoid bottom social UI / right rail)
@@ -211,17 +212,26 @@ def lay_music(video: Path, bgm: Path, out: Path,
 def clean_trim(src: Path, out: Path, ss: float, dur: float | None) -> None:
     """Accurate sub-clip: `-ss`/`-t` AFTER `-i` (output seek) decodes from the
     start so there is NO input-seek audio priming burst. Re-aligns audio PTS and
-    re-encodes both streams to a clean full clip starting at 0."""
+    re-encodes both streams to a clean full clip starting at 0. Silent sources
+    (screen recordings with no audio stream) trim video-only — applying `-af` to
+    a missing stream would otherwise fail."""
+    has_audio = studio.ffprobe_has_audio(src)
     cmd = ["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-stats",
            "-i", str(src), "-ss", str(ss)]
     if dur is not None:
         cmd += ["-t", str(dur)]
+    if has_audio:
+        cmd += ["-af", "aresample=48000:async=1:first_pts=0"]
     cmd += [
-        "-af", "aresample=48000:async=1:first_pts=0",
         "-c:v", "libx264", "-crf", "18", "-preset", "medium", "-profile:v", "high",
         "-pix_fmt", "yuv420p",
         "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
-        "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+    ]
+    if has_audio:
+        cmd += ["-c:a", "aac", "-b:a", "192k", "-ar", "48000"]
+    else:
+        cmd += ["-an"]
+    cmd += [
         "-avoid_negative_ts", "make_zero", "-movflags", "+faststart", str(out),
     ]
     subprocess.run(cmd, check=True)
@@ -315,6 +325,9 @@ def main() -> int:
         sw = (float(ss_s), float(dur_s))
 
     want = [f.strip() for f in args.formats.split(",") if f.strip() and f.strip() in FORMATS]
+    if "cut15" in want and sw is None:
+        eprint("error: 'cut15' requires --short-window SS:DUR (e.g. --short-window 8:15)")
+        return 2
     src_w, src_h = probe_dims(raw)
     is_portrait = src_h > src_w
 
@@ -332,6 +345,9 @@ def main() -> int:
     for name in build_list:
         w, h, geom, tb = FORMATS[name] if name in FORMATS else (1080, 1920, "padfit", 0.25)
         ss = dur = None
+        # The short cut is the only variant trimmed to the requested window.
+        if name == "cut15" and sw is not None:
+            ss, dur = sw
         # The branded split assumes a portrait app on the left; a landscape
         # source would overrun the panel — blur-pad it into 16:9 instead.
         if name == "wide" and not is_portrait:

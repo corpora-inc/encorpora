@@ -77,6 +77,24 @@ def eprint(*a):
     print(*a, file=sys.stderr, flush=True)
 
 
+def _has_audio(path: Path) -> bool:
+    """True if `path` carries at least one audio stream."""
+    r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a",
+                        "-show_entries", "stream=index", "-of", "csv=p=0", str(path)],
+                       capture_output=True, text=True)
+    return bool(r.stdout.strip())
+
+
+def _duration(path: Path) -> float:
+    """Container duration in seconds (0.0 if unknown)."""
+    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                        "-of", "csv=p=0", str(path)], capture_output=True, text=True)
+    try:
+        return float(r.stdout.strip())
+    except ValueError:
+        return 0.0
+
+
 def _esc(s: str) -> str:
     """Escape text for ffmpeg drawtext (we render with expansion=none)."""
     s = s.replace("\\", "\\\\")
@@ -362,21 +380,34 @@ def floating_lens(src: Path, out: Path, blur: float = 10.0, zoom: float = 1.16) 
 
 def concat_endcard(body: Path, endcard: Path, out: Path, fps: int = 30) -> None:
     """Concat body then endcard. Normalizes fps/SAR/format + audio (48k stereo)
-    so concat is clean even if the body has odd timebase/SAR."""
+    so concat is clean even if the body has odd timebase/SAR. If the body has no
+    audio stream (e.g. a silent screen recording), synthesize a matched silent
+    track so the concat audio graph stays valid."""
     r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v",
                         "-show_entries", "stream=width,height", "-of", "csv=p=0", str(body)],
                        capture_output=True, text=True)
     w, h = (int(x) for x in r.stdout.strip().split(","))
+    body_has_audio = _has_audio(body)
+    inputs = ["-i", str(body), "-i", str(endcard)]
+    if body_has_audio:
+        body_a = "[0:a]"
+    else:
+        # anullsrc as a 3rd input ([2:a]), bounded to the body duration so the
+        # concat segment lengths stay aligned with the (silent) body video.
+        body_dur = _duration(body)
+        inputs += ["-f", "lavfi", "-t", f"{max(0.1, body_dur):.3f}",
+                   "-i", "anullsrc=channel_layout=stereo:sample_rate=48000"]
+        body_a = "[2:a]"
     fc = (
         f"[0:v]fps={fps},scale={w}:{h},setsar=1,format=yuv420p[v0];"
         f"[1:v]fps={fps},scale={w}:{h},setsar=1,format=yuv420p[v1];"
-        "[0:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo[a0];"
+        f"{body_a}aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo[a0];"
         "[1:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo[a1];"
         "[v0][a0][v1][a1]concat=n=2:v=1:a=1[v][a]"
     )
     subprocess.run([
         "ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-stats",
-        "-i", str(body), "-i", str(endcard), "-filter_complex", fc,
+        *inputs, "-filter_complex", fc,
         "-map", "[v]", "-map", "[a]",
         "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-profile:v", "high",
         "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
