@@ -29,6 +29,35 @@ const json = (statusCode, payload) => ({
   body: JSON.stringify(payload),
 });
 
+// Convert a Google Play `Money` ({units, nanos, currencyCode}) to a decimal
+// number. units = whole currency units, nanos = billionths of a unit (can be
+// negative). Returns null for absent input. Rounded to 6dp to kill float noise.
+const moneyToNumber = (m) => {
+  if (!m || (m.units == null && m.nanos == null)) return null;
+  const v = Number(m.units || 0) + Number(m.nanos || 0) / 1e9;
+  return Math.round(v * 1e6) / 1e6;
+};
+
+// Apple records `price` in milliunits (e.g. 4990 = $4.99). Normalize to a
+// decimal number so the ledger stores comparable amounts across stores.
+const milliunitsToNumber = (p) => (p == null ? null : Number(p) / 1000);
+
+// Pick the Google product type for verification. A subscription token MUST be
+// verified via subscriptionsv2; using the products endpoint yields Google's
+// "The document type is not supported" (the bug that dropped every Android
+// sub). Honor an explicit client value; else infer from the `*.sub.*` id
+// convention; default to "subs" (per-book one-time IAP is retired).
+const googleProductTypeFor = (productId, explicit) => {
+  if (explicit) return explicit;
+  if (typeof productId === "string" && !productId.includes(".sub.")) return "inapp";
+  return "subs";
+};
+
+// Exported for unit tests (pure helpers, no I/O).
+exports.moneyToNumber = moneyToNumber;
+exports.milliunitsToNumber = milliunitsToNumber;
+exports.googleProductTypeFor = googleProductTypeFor;
+
 const getHeader = (event, key) => {
   const headers = event.headers || {};
   const match = Object.keys(headers).find(
@@ -164,8 +193,13 @@ async function tryVerifyAppleWith(body, appleSecrets, environment) {
       offerType: decoded.offerType ?? null,
       offerIdentifier: decoded.offerIdentifier ?? null,
       offerDiscountType: decoded.offerDiscountType ?? null,
-      price: decoded.price ?? null,
+      // Apple `price` is milliunits (4990 = $4.99); normalize to a decimal so
+      // the ledger stores comparable amounts across stores.
+      price: milliunitsToNumber(decoded.price),
       currency: decoded.currency ?? null,
+      // TestFlight / Xcode purchases verify in the Sandbox environment; flag so
+      // the caller can exclude them from revenue/affiliate crediting.
+      isTestPurchase: (decoded.environment || "") === "Sandbox",
     };
   } catch (err) {
     const errDetail = err.message || err.errorMessage || err.toString();
@@ -220,6 +254,8 @@ async function verifyGoogle(body, secrets) {
       let lineProductId = null;
       let offerId = null;
       let offerTags = [];
+      let renewalMoney = null;
+      let lineOrderId = null;
       for (const li of lineItems) {
         const exp = li.expiryTime ? Date.parse(li.expiryTime) : 0;
         if (exp > expiryMs) expiryMs = exp;
@@ -227,6 +263,10 @@ async function verifyGoogle(body, secrets) {
         const od = li.offerDetails || {};
         if (!offerId && od.offerId) offerId = od.offerId;
         if (od.offerTags && od.offerTags.length) offerTags = od.offerTags;
+        if (!renewalMoney && li.autoRenewingPlan?.recurringPrice)
+          renewalMoney = li.autoRenewingPlan.recurringPrice;
+        if (!lineOrderId && li.latestSuccessfulOrderId)
+          lineOrderId = li.latestSuccessfulOrderId;
       }
 
       const state = sub.subscriptionState; // e.g. SUBSCRIPTION_STATE_ACTIVE / _IN_GRACE_PERIOD
@@ -240,8 +280,34 @@ async function verifyGoogle(body, secrets) {
       const obfHash =
         sub.externalAccountIdentifiers?.obfuscatedExternalAccountId ?? null;
 
+      // §8 — presence of `testPurchase` marks a license-tester purchase; never
+      // count it as revenue / credit affiliates (it still gets entitlement).
+      const isTestPurchase = !!sub.testPurchase;
+      const orderId = lineOrderId || sub.latestOrderId || null;
+
+      // The ACTUAL amount charged (incl. intro/offer discount + tax) lives in
+      // the Orders API — subscriptionsv2 only exposes `recurringPrice` (the
+      // NEXT renewal price), not what was paid this period. Best-effort: an
+      // orders.get miss must never fail an otherwise-valid verification.
+      let price = null;
+      let currency = null;
+      if (orderId) {
+        try {
+          const ord = await androidPublisher.orders.get({ packageName, orderId });
+          const total = ord?.data?.total;
+          if (total) {
+            price = moneyToNumber(total);
+            currency = total.currencyCode || null;
+          }
+        } catch (ordErr) {
+          console.warn(`[google] orders.get failed (non-fatal) order=${orderId}: ${ordErr.message}`);
+        }
+      }
+      const renewalPrice = moneyToNumber(renewalMoney);
+      const renewalCurrency = renewalMoney?.currencyCode || null;
+
       if (inGrace) {
-        console.log(`[google] Subscription in grace period: order=${sub.latestOrderId}, state=${state}`);
+        console.log(`[google] Subscription in grace period: order=${orderId}, state=${state}`);
       }
 
       // Acknowledge if needed (v2 ackState lives on the subscription).
@@ -260,7 +326,7 @@ async function verifyGoogle(body, secrets) {
 
       return {
         verified: verifiedSub,
-        transactionId: sub.latestOrderId,
+        transactionId: orderId,
         // §5.3 — use the line-item product, NOT the echoed client productId.
         productId: lineProductId || productId,
         isSubscription: true,
@@ -269,10 +335,16 @@ async function verifyGoogle(body, secrets) {
         expiresAt: expiryMs ? new Date(expiryMs).toISOString() : null,
         autoRenewing: !!lineItems.find((li) => li.autoRenewingPlan?.autoRenewEnabled),
         acknowledged: true,
+        isTestPurchase,
         // §5.3 attribution/offer fields.
         obfHash,
         offerId,
         offerTags,
+        // Real charged amount (this period) + the next renewal price.
+        price,
+        currency,
+        renewalPrice,
+        renewalCurrency,
       };
     } else {
       // One-time product verification
@@ -344,14 +416,8 @@ async function handleVerifyPurchase(body, secrets) {
     if (!body.purchaseToken) {
       return json(400, { status: "failed", error: "Missing purchaseToken for Google" });
     }
-    // Subscriptions MUST be verified via subscriptionsv2. Without productType,
-    // verifyGoogle falls through to purchases.products.get, which Google rejects
-    // for a subscription token ("The document type is not supported") — failing
-    // EVERY Android subscription verify (no attribution, no entitlement token).
-    // Per-book IAP is retired, so default to "subs"; honor an explicit
-    // body.productType for any legacy one-time product.
-    const productType =
-      body.productType || (productId.includes(".sub.") ? "subs" : "inapp");
+    // Subscriptions MUST be verified via subscriptionsv2 (see googleProductTypeFor).
+    const productType = googleProductTypeFor(productId, body.productType);
     result = await verifyGoogle({ ...body, productType }, secrets);
   } else {
     return json(400, { status: "failed", error: `Unsupported platform: ${platform}` });
@@ -407,7 +473,10 @@ async function handleVerifyPurchase(body, secrets) {
         hmac
       );
 
-      if (tokenCheck.valid) {
+      // Never credit affiliate revenue for test/sandbox purchases (TestFlight,
+      // Xcode, Play license testers) — they still get entitlement below.
+      const isNonProd = !!result.isTestPurchase || result.environment === "Sandbox";
+      if (tokenCheck.valid && !isNonProd) {
         const claims = tokenCheck.claims;
         // §5.2/§5.3 confirm the offer applied matches the token.
         const offerApplied = isApple
