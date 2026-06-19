@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
 """
-Download s3://corpan-prod/artifacts/catalog-v2.json, merge in the
-narrator-first model fields (characters, voiceProfiles, books) plus
-characterId/coverImageUrl on each narration, and upload the result back.
+⛔⛔⛔ DO NOT RUN THIS AGAINST PROD. ⛔⛔⛔
 
-Then issue a CloudFront invalidation so readers see the new fields.
+This script REBUILDS the entire `books` array from the in-repo BOOK_META +
+asset-urls.json and uploads it over the live catalog. The backend `ttsctl
+publish` has since become the source of truth and writes richer book data
+(covers, descriptions) that is NOT in this file. Running this now WIPES cover
+art + descriptions for every book not hand-listed in BOOK_META — verified on
+2026-06-19 it would drop 23 of 36 covers. It is dead bootstrap code.
 
-CAUTION: ttsctl publish on the backend machine will overwrite this catalog
-unless ttsctl has been updated to preserve the new fields. Treat this as
-bootstrap data — once the backend pipeline learns the schema, this script
-becomes unnecessary.
+To stamp `publishedAt` on new books (the only reason anyone reaches for this),
+use the surgical, non-destructive tool instead:
+
+    corpan/infra/patch-published-dates.py        # see CATALOG_DATES_RUNBOOK.md
+
+Original purpose (historical): download catalog-v2.json, merge narrator-first
+model fields (characters, voiceProfiles, books) + characterId/coverImageUrl,
+upload back, invalidate CloudFront.
 """
 from __future__ import annotations
 
