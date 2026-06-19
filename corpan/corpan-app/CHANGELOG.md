@@ -7,6 +7,23 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Installed packs are no longer dev-reloaded, fixing a pack-launch crash on
+  `tauri ios dev` over LAN.** A downloaded catalog pack (e.g. beatlounge) is
+  served from a `corpan-pack://localhost/…` (iOS/desktop) or
+  `http://corpan-pack.localhost/…` (Android) URL — both parse to a `localhost`
+  host, so the dev-reload poller wrongly treated every installed pack as a
+  hot-reload target. The poller then re-ran the pack's mount while the prior
+  React root was still mid-teardown (teardown is deferred to a
+  `requestAnimationFrame`), producing "createRoot() on a container that has
+  already been passed to createRoot()" + a detached-node `NotFoundError` and a
+  failed launch. Dev-reload polling is now scoped to packs actually served from
+  the local Vite `/packs` dev middleware in a DEV build; installed
+  `corpan-pack://` packs are never polled. Remount is also hardened: `load()`
+  now awaits the prior instance's deferred teardown before mounting a fresh one,
+  and clears the container before `mount()`, so a reload can never overlap two
+  roots. (`contentPacks/devReload.ts`, `ContentPackHost.tsx`.)
+
 ## [0.19.1] - 2026-06-18
 
 ### Added
