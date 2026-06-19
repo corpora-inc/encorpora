@@ -29,7 +29,12 @@
 
 import type { CatalogNarrationEntry, CatalogV2 } from "./types.ts"
 import { fetchCatalog } from "./catalogFetch.ts"
-import { installNarration, isTwoZipEntry } from "./installManager.ts"
+import {
+  installNarration,
+  installNarrationPreview,
+  isTwoZipEntry,
+  type InstallResult,
+} from "./installManager.ts"
 import {
   getInstalled,
   isInstalled,
@@ -351,6 +356,46 @@ export async function maybeUpgradeOnOpen(narrationId: string): Promise<boolean> 
     console.warn("[upgradeManager] maybeUpgradeOnOpen error (non-fatal):", err)
     return false
   }
+}
+
+// ---------------------------------------------------------------------------
+// QA / DEV debug helpers.
+//
+// On a device with a REAL active subscription, every install fetches the FULL
+// ZIP (installManager queries StoreKit/Play directly), so a preview can never
+// be installed naturally and the JIT upgrade path has nothing to upgrade.
+// These helpers let QA force the preview condition and then exercise the real
+// on-device upgrade path (native in-place install + disk reclassification +
+// reader reload/resume). They are capability-safe — `debugInstallPreview` only
+// installs the PUBLIC preview ZIP, and the upgrade path still uses the device's
+// REAL subscription to fetch the full ZIP, so nothing here grants unearned
+// entitlement. appShell exposes them under `window.__corpanUpgradeDebug`.
+// ---------------------------------------------------------------------------
+
+/** QA: resolve the catalog entry then force-install its public preview ZIP
+ *  (ignores subscription). Returns the install result, or `null` when no
+ *  catalog entry resolves. */
+export async function debugInstallPreview(
+  narrationId: string
+): Promise<InstallResult | null> {
+  const entry = await resolveCatalogEntry(narrationId)
+  if (!entry) {
+    console.warn("[upgradeManager] debugInstallPreview: no catalog entry for", narrationId)
+    return null
+  }
+  return installNarrationPreview(entry)
+}
+
+/** QA: classify an installed narration as a preview / full / unknown, or report
+ *  it's not installed. Mirrors what the upgrade layers see. */
+export async function debugInstallStatus(
+  narrationId: string
+): Promise<"preview" | "full" | "unknown" | "not-installed"> {
+  if (!isInstalled(narrationId)) return "not-installed"
+  const preview = await isPreviewInstalled(narrationId)
+  if (preview === true) return "preview"
+  if (preview === false) return "full"
+  return "unknown"
 }
 
 // ---------------------------------------------------------------------------

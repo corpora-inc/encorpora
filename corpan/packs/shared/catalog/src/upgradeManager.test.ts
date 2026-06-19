@@ -62,6 +62,7 @@ mock.module("./libraryStore.ts", {
   },
 })
 
+let previewInstallCalls: string[] = []
 mock.module("./installManager.ts", {
   namedExports: {
     isTwoZipEntry: (e: CatalogNarrationEntry) => twoZipIds.has(e.id),
@@ -71,6 +72,15 @@ mock.module("./installManager.ts", {
       // Simulate the atomic full install: flip the fullness flag like the real
       // installManager (addInstalled(entry, true)) does on the full path.
       lib.setNarrationFullness(e.id, true)
+      return { ok: true }
+    },
+    async installNarrationPreview(e: CatalogNarrationEntry) {
+      previewInstallCalls.push(e.id)
+      if (!twoZipIds.has(e.id)) {
+        return { ok: false, code: "DOWNLOAD_FAILED", message: "not two-zip" }
+      }
+      // Mirror the real preview path: record the library record as a preview.
+      lib.addInstalled(e, false)
       return { ok: true }
     },
   },
@@ -101,6 +111,8 @@ const {
   isConfirmedUnmetered,
   canRunSweep,
   setUpgradeCatalogProvider,
+  debugInstallPreview,
+  debugInstallStatus,
   __resetUpgradeGuardsForTest,
 } = await import("./upgradeManager.ts")
 
@@ -128,6 +140,7 @@ beforeEach(() => {
   lib.clear()
   mockSubscribed = false
   installCalls = []
+  previewInstallCalls = []
   installOk = true
   twoZipIds = new Set()
   catalogEntries = []
@@ -395,4 +408,30 @@ test("maybeUpgradeOnOpen: no-op for a full narration", async () => {
   mockSubscribed = true
   assert.equal(await maybeUpgradeOnOpen("a"), false)
   assert.deepEqual(installCalls, [])
+})
+
+// --- QA debug helpers -------------------------------------------------------
+
+test("debugInstallPreview: resolves the catalog entry then force-installs the preview", async () => {
+  // Not installed, NOT seeded as a preview — just present in the catalog.
+  twoZipIds.add("a")
+  catalogEntries.push(entry("a"))
+  const r = await debugInstallPreview("a")
+  assert.equal(r?.ok, true)
+  assert.deepEqual(previewInstallCalls, ["a"])
+  assert.equal(lib.getInstalled("a")?.full, false, "recorded as a preview")
+})
+
+test("debugInstallPreview: returns null when no catalog entry resolves", async () => {
+  const r = await debugInstallPreview("ghost")
+  assert.equal(r, null)
+  assert.deepEqual(previewInstallCalls, [])
+})
+
+test("debugInstallStatus: reports not-installed / preview / full", async () => {
+  assert.equal(await debugInstallStatus("ghost"), "not-installed")
+  lib.addInstalled(entry("prev"), false)
+  assert.equal(await debugInstallStatus("prev"), "preview")
+  lib.addInstalled(entry("full"), true)
+  assert.equal(await debugInstallStatus("full"), "full")
 })

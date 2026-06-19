@@ -308,6 +308,58 @@ function truncate(s: string, n: number): string {
  * Returns a structured result so callers can surface the failure reason to
  * the user. Old `boolean` callers can check `.ok`.
  */
+/**
+ * Force-install the PUBLIC preview ZIP for a two-ZIP entry, recording the
+ * library record as a preview (`full:false`) — IGNORING subscription state.
+ *
+ * This is the shared implementation of the non-subscriber preview path (the
+ * normal `installNarration` flow calls it), AND the seam the JIT/QA harness
+ * uses to force the preview condition on a really-subscribed device (where
+ * every natural install would otherwise fetch the FULL ZIP, leaving the
+ * preview→full upgrade path untestable). It is capability-safe: it only ever
+ * downloads the public, unauthenticated preview ZIP — it cannot grant any
+ * entitlement the device hasn't earned.
+ *
+ * Only valid for two-ZIP entries (a legacy single-ZIP entry has no preview /
+ * is never a preview) — returns a clear failure otherwise.
+ */
+export async function installNarrationPreview(
+  entry: CatalogNarrationEntry
+): Promise<InstallResult> {
+  const invoke = getTauriInvoke()
+  if (!invoke) {
+    console.log("[reader-catalog] No Tauri runtime — skipping preview install for", entry.id)
+    return {
+      ok: false,
+      code: "NO_TAURI",
+      message: "Downloads aren't available in this environment",
+    }
+  }
+  if (!isTwoZipEntry(entry)) {
+    return {
+      ok: false,
+      code: "DOWNLOAD_FAILED",
+      message: "Preview install is only available for two-ZIP narrations",
+      detail: `entry ${entry.id} has no preview/full artifacts`,
+    }
+  }
+  try {
+    await invoke("content_packs_install_from_url", {
+      packId: entry.id,
+      downloadUrl: entry.preview.url,
+      expectedSha256: entry.preview.sha256 || null,
+    })
+    // Preview ZIP landed — mark it as a preview so the post-subscribe sweep /
+    // JIT self-heal can find and upgrade it once the user goes Plus.
+    addInstalled(entry, false)
+    return { ok: true }
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error("[reader-catalog] Preview install failed:", entry.id, err)
+    return { ok: false, code: "DOWNLOAD_FAILED", message: "Download or install failed", detail: msg }
+  }
+}
+
 export async function installNarration(
   entry: CatalogNarrationEntry,
   purchaseInfo?: {
@@ -390,21 +442,10 @@ export async function installNarration(
     }
 
     // Neither a subscriber nor an owner → public preview ZIP, no auth.
-    try {
-      await invoke("content_packs_install_from_url", {
-        packId: entry.id,
-        downloadUrl: entry.preview.url,
-        expectedSha256: entry.preview.sha256 || null,
-      })
-      // Preview ZIP landed — mark it as a preview so the post-subscribe sweep /
-      // JIT self-heal can find and upgrade it once the user goes Plus.
-      addInstalled(entry, false)
-      return { ok: true }
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err)
-      console.error("[reader-catalog] Preview install failed:", entry.id, err)
-      return { ok: false, code: "DOWNLOAD_FAILED", message: "Download or install failed", detail: msg }
-    }
+    // (Shared with the QA harness's force-preview path so the "mark it as a
+    // preview so the post-subscribe sweep / JIT self-heal can upgrade it" logic
+    // lives in one place.)
+    return installNarrationPreview(entry)
   }
 
   let downloadUrl = entry.downloadUrl

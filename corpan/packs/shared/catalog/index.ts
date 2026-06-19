@@ -65,6 +65,8 @@ export {
   isConfirmedUnmetered,
   canRunSweep,
   setUpgradeCatalogProvider,
+  debugInstallPreview,
+  debugInstallStatus,
   NARRATION_UPGRADED_EVENT,
   ENTITLEMENTS_CHANGED_EVENT,
 } from "./src/upgradeManager"
@@ -87,6 +89,7 @@ export {
 
 export {
   installNarration,
+  installNarrationPreview,
   deleteNarration,
   isTauriAvailable,
   getPackUrl,

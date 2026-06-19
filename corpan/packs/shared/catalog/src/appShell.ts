@@ -22,6 +22,8 @@ import {
   runUpgradeSweep,
   maybeUpgradeOnOpen,
   setUpgradeCatalogProvider,
+  debugInstallPreview,
+  debugInstallStatus,
   NARRATION_UPGRADED_EVENT,
   ENTITLEMENTS_CHANGED_EVENT,
 } from "./upgradeManager"
@@ -926,6 +928,25 @@ export function createAppShell(
     switchToNarration(upgradedId, false, true)
   }
   window.addEventListener(NARRATION_UPGRADED_EVENT, onNarrationUpgraded)
+
+  // QA harness for the Corpán Plus preview → full JIT upgrade. Reachable from
+  // the Safari Web Inspector / Chrome DevTools console on a REAL subscribed
+  // device, where every natural install fetches the full ZIP and so the preview
+  // condition can never occur organically (leaving the JIT path untestable).
+  //
+  // NOT gated on `import.meta.env.DEV`: packs are built in PRODUCTION mode even
+  // when loaded by a dev app, so a DEV gate would tree-shake this away exactly
+  // when QA needs it. It's capability-safe — `installPreview` only downloads the
+  // PUBLIC preview ZIP, and the upgrade path still uses the device's REAL
+  // subscription to fetch the full ZIP, so it cannot grant unearned entitlement.
+  // Namespaced under one global, matching the `window.__corpanDebug` convention.
+  ;(window as unknown as { __corpanUpgradeDebug?: unknown }).__corpanUpgradeDebug = {
+    list: () => listInstalled(), // installed narrations (+ full flag)
+    status: (id: string) => debugInstallStatus(id), // 'preview' | 'full' | 'unknown' | 'not-installed'
+    installPreview: (id: string) => debugInstallPreview(id), // force-install the public preview ZIP
+    jit: (id: string) => maybeUpgradeOnOpen(id), // trigger the JIT upgrade directly
+    sweep: () => runUpgradeSweep(), // trigger the background sweep
+  }
 
   // Persist scoped drawer state on change
   const persistUnsub = drawerStore.subscribe(() => {
@@ -3210,6 +3231,9 @@ export function createAppShell(
     window.removeEventListener(ENTITLEMENTS_CHANGED_EVENT, onEntitlementsChanged)
     window.removeEventListener(NARRATION_UPGRADED_EVENT, onNarrationUpgraded)
     setUpgradeCatalogProvider(null)
+    try {
+      delete (window as unknown as { __corpanUpgradeDebug?: unknown }).__corpanUpgradeDebug
+    } catch { /* non-configurable in some envs — ignore */ }
     if (narratorDetailInstance) {
       narratorDetailInstance.dispose()
       narratorDetailInstance = null
