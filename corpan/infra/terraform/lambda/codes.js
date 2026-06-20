@@ -419,6 +419,14 @@ async function findSubjectByObfHash(obfHash) {
   };
   // Prefer a partner-locked row (for the affiliate credit); fall back to any
   // row to resolve the subject for the entitlement extension.
+  //
+  // ASSUMPTION (finding #5): one obfHash → one subject. If two distinct
+  // subjects ever share the same obfuscatedExternalAccountId (hash collision or
+  // a reused account-token across reinstalls), this "pick the first matching
+  // partner row, else the first row" heuristic resolves to ONE of them
+  // arbitrarily — it does not disambiguate. In practice the obfHash is a SHA-256
+  // of the subject id (effectively unique), so collisions are not expected; this
+  // note flags the multi-subject-collision case as out of scope here.
   const partnerRow =
     items.find((it) => it.SK === "ATTRIBUTION" && it.partnerId) ||
     items.find((it) => it.partnerId) ||
@@ -681,6 +689,26 @@ async function markEventProcessed(eventId, ttlSeconds = 30 * 24 * 3600) {
   } catch (err) {
     if (isConditionalFail(err)) return false;
     throw err;
+  }
+}
+
+// Read-only dedupe probe: has this event id already been fully processed (the
+// DEDUPE# row written by markEventProcessed)? Used to cheaply short-circuit
+// replays at the TOP of a handler WITHOUT committing the dedupe row before the
+// side-effect work runs. The authoritative commit (markEventProcessed) happens
+// AFTER the work succeeds, so a transient post-read failure leaves the event
+// reprocessable on redelivery (all writes are idempotent). Returns true if the
+// row exists, false otherwise / on a read error (fail toward processing).
+async function isEventProcessed(eventId) {
+  if (!eventId) return false;
+  try {
+    const out = await getDoc().send(
+      new GetCommand({ TableName: TABLE, Key: { PK: `DEDUPE#${eventId}`, SK: "SEEN" } })
+    );
+    return !!out.Item;
+  } catch (err) {
+    console.error("[codes] isEventProcessed read failed (treating as unseen):", err.message);
+    return false;
   }
 }
 
@@ -1097,6 +1125,7 @@ module.exports = {
   // notification-driven attribution + lifecycle
   findCodeByOffer,
   markEventProcessed,
+  isEventProcessed,
   attributeFromOffer,
   reverseCredit,
   // rate limit
