@@ -95,6 +95,7 @@ exports.googleNotificationAction = googleNotificationAction;
 // Notification route handlers + a test seam for the Apple JWS verify step.
 exports.handleAppleNotification = handleAppleNotification;
 exports.handleGoogleNotification = handleGoogleNotification;
+exports.handleVerifyPurchase = handleVerifyPurchase;
 exports._setAppleVerifyForTest = _setAppleVerifyForTest;
 
 const getHeader = (event, key) => {

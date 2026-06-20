@@ -855,3 +855,80 @@ test("reverseCredit: writes a negative reversal ledger row", async () => {
   assert.equal(row.kind, "reversal");
   assert.equal(row.price, -55.99);
 });
+
+// Fix B [P1] — the reversal MUST snapshot the original credit's revenueSharePct,
+// or the payout report (payout += net × rate, rate defaults to 0) never claws the
+// partner payout back and partners stay overpaid after a refund.
+test("reverseCredit: snapshots original credit's revenueSharePct (same month)", async () => {
+  const doc = freshDoc();
+  const mm = codes.yyyymm(new Date().toISOString());
+  // Seed the original affiliate credit (e.g. attributeFromOffer wrote this).
+  doc.store.set(`LEDGER#demo#${mm}|EVENT#android#ORDER1`, {
+    PK: `LEDGER#demo#${mm}`, SK: "EVENT#android#ORDER1",
+    subjectId: "subjA", code: "DEMO30", productId: "corpan.sub.annual",
+    price: 24, currency: "USD", kind: "initial", revenueSharePct: 0.3,
+    eventTime: new Date().toISOString(),
+  });
+
+  const ok = await codes.reverseCredit({
+    partnerId: "demo", platform: "android", txnOrOriginalId: "ORDER1",
+    price: 24, currency: "USD", reason: "VOIDED",
+  });
+  assert.equal(ok, true);
+  const row = doc.store.get(`LEDGER#demo#${mm}|EVENT#android#ORDER1#reversal`);
+  assert.ok(row, "reversal row written");
+  assert.equal(row.kind, "reversal");
+  assert.equal(row.price, -24);
+  assert.equal(row.revenueSharePct, 0.3, "rev-share snapshotted from original credit");
+  assert.equal(row.code, "DEMO30", "code carried over for the report");
+});
+
+test("reverseCredit: finds an original credit in a PRIOR month partition", async () => {
+  const doc = freshDoc();
+  const now = new Date();
+  const prevMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 1, 1));
+  const prevMm = codes.yyyymm(prevMonth);
+  const nowMm = codes.yyyymm(now.toISOString());
+  // Credit landed last month; refund arrives this month (cross-partition).
+  doc.store.set(`LEDGER#demo#${prevMm}|EVENT#apple#TXN9`, {
+    PK: `LEDGER#demo#${prevMm}`, SK: "EVENT#apple#TXN9",
+    kind: "initial", revenueSharePct: 0.25, price: 60, currency: "USD",
+    eventTime: prevMonth.toISOString(),
+  });
+  const ok = await codes.reverseCredit({
+    partnerId: "demo", platform: "apple", txnOrOriginalId: "TXN9",
+    price: 60, currency: "USD", reason: "REFUND",
+  });
+  assert.equal(ok, true);
+  const row = doc.store.get(`LEDGER#demo#${nowMm}|EVENT#apple#TXN9#reversal`);
+  assert.ok(row, "reversal row written this month");
+  assert.equal(row.revenueSharePct, 0.25, "rev-share found across partitions");
+});
+
+// End-to-end payout math: an affiliate purchase at 30% then a refund nets the
+// partner payout back to ~0 (user example: $24 @30%, net basis ≈ $6.12 → ~0).
+test("reverseCredit: refund nets payout back to ~0 (report math)", async () => {
+  const doc = freshDoc();
+  const mm = codes.yyyymm(new Date().toISOString());
+  doc.store.set(`LEDGER#demo#${mm}|EVENT#android#ORDER1`, {
+    PK: `LEDGER#demo#${mm}`, SK: "EVENT#android#ORDER1",
+    kind: "initial", revenueSharePct: 0.3, price: 24, currency: "USD",
+    eventTime: new Date().toISOString(),
+  });
+  await codes.reverseCredit({
+    partnerId: "demo", platform: "android", txnOrOriginalId: "ORDER1",
+    price: 24, currency: "USD", reason: "VOIDED",
+  });
+
+  // Mirror revenue_report.py: net = gross × (1 − fee); payout += net × rate.
+  const fee = 0.15;
+  let payout = 0;
+  for (const it of doc.store.values()) {
+    if (!String(it.PK).startsWith("LEDGER#")) continue;
+    const gross = Number(it.price || 0);
+    const net = gross * (1 - fee);
+    const rate = Number(it.revenueSharePct || 0);
+    payout += net * rate;
+  }
+  assert.ok(Math.abs(payout) < 1e-9, `payout nets to ~0 after refund, got ${payout}`);
+});

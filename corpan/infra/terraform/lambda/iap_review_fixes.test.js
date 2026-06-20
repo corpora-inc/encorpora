@@ -366,3 +366,69 @@ test("FIX4: Google notification with OIDC configured still runs OIDC validation 
   const res = await v.handleGoogleNotification(body, secrets, "Bearer not-a-real-jwt");
   assert.equal(res.statusCode, 401, "configured-but-invalid token → 401");
 });
+
+// ===========================================================================
+// FIX A [P1] — Android Plus full-ZIP signed-URL download must verify as a
+// SUBSCRIPTION. The client now sends productType:"subs" for the corpan.plus
+// full-ZIP path; without it the Lambda infers `inapp` (corpan.plus has no
+// ".sub.") and POSTs the SUBSCRIPTION token to Google's products endpoint →
+// "document type is not supported".
+// ===========================================================================
+const { google } = require("googleapis");
+
+test("FIXA: googleProductTypeFor honors explicit subs for corpan.plus; defaults inapp without it", () => {
+  // The Plus full-ZIP path: corpan.plus (no ".sub.") + explicit productType.
+  assert.equal(v.googleProductTypeFor("corpan.plus", "subs"), "subs",
+    "explicit subs routes corpan.plus to subscriptionsv2");
+  // GUARD (unchanged default): a ".sub."-less id WITHOUT productType still infers inapp.
+  assert.equal(v.googleProductTypeFor("corpan.book.foo", undefined), "inapp",
+    "no productType + no .sub. → inapp (legacy per-book IAP, unchanged)");
+  assert.equal(v.googleProductTypeFor("corpan.plus", undefined), "inapp",
+    "regression baseline: corpan.plus WITHOUT productType would have inferred inapp");
+});
+
+test("FIXA: corpan.plus + productType:subs routes Android to subscriptionsv2 (not products.get)", async () => {
+  freshDoc();
+  const hits = [];
+  const orig = google.androidpublisher;
+  google.androidpublisher = () => ({
+    purchases: {
+      subscriptionsv2: {
+        get: async () => {
+          hits.push("subscriptionsv2");
+          return {
+            data: {
+              subscriptionState: "SUBSCRIPTION_STATE_ACTIVE",
+              lineItems: [{
+                productId: "corpan.sub.annual",
+                expiryTime: new Date(Date.now() + 86400000).toISOString(),
+                latestSuccessfulOrderId: "ORDER-PLUS",
+              }],
+              externalAccountIdentifiers: { obfuscatedExternalAccountId: "obf-1" },
+            },
+          };
+        },
+      },
+      products: {
+        get: async () => { hits.push("products"); return { data: {} }; },
+      },
+    },
+  });
+  try {
+    const secrets = { google: { serviceAccountJson: { client_email: "x@y", private_key: "k", project_id: "p" }, packageName: "com.corpora.corpan" } };
+    const res = await v.handleVerifyPurchase({
+      platform: "android",
+      productId: "corpan.plus",
+      productType: "subs",
+      packId: "narration-es-foo",
+      purchaseToken: "TOKEN-XYZ",
+    }, secrets);
+    // The routing decision is what FIX A asserts: a subscription token went to
+    // the subscriptions endpoint, never the products endpoint.
+    assert.ok(hits.includes("subscriptionsv2"), "verified via subscriptionsv2");
+    assert.ok(!hits.includes("products"), "did NOT hit the products endpoint");
+    assert.equal(JSON.parse(res.body).status, "verified");
+  } finally {
+    google.androidpublisher = orig;
+  }
+});

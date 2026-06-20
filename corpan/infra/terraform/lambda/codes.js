@@ -797,21 +797,57 @@ async function attributeFromOffer({
   }
 }
 
+// Find the ORIGINAL credit ledger row that a reversal offsets, so the reversal
+// can snapshot its rev-share. The original credit (initial/renewal) is keyed
+// `EVENT#<platform>#<txn>` under `LEDGER#<partner>#<yyyymm>`. The reversal lands
+// in the REFUND month, which may differ from the credit month, so we probe the
+// partner's monthly partitions backwards from now (covers an annual-sub refund
+// window). Returns the matching credit row or null. Best-effort (read-only).
+async function findOriginalCredit({ partnerId, platform, txnOrOriginalId, monthsBack = 14 }) {
+  const sk = `EVENT#${platform}#${txnOrOriginalId}`;
+  const now = new Date();
+  for (let i = 0; i < monthsBack; i++) {
+    const probe = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - i, 1));
+    try {
+      const out = await getDoc().send(
+        new GetCommand({
+          TableName: TABLE,
+          Key: { PK: `LEDGER#${partnerId}#${yyyymm(probe)}`, SK: sk },
+        })
+      );
+      if (out.Item) return out.Item;
+    } catch (err) {
+      // A single-partition read miss/throw must not derail the reversal.
+      console.error("[codes] findOriginalCredit probe failed (non-fatal):", err.message);
+    }
+  }
+  return null;
+}
+
 // Reverse an affiliate credit on refund / revoke / chargeback (§7). Writes a
 // distinct `kind:"reversal"` ledger row keyed to the same txn so payouts net
 // out; idempotent (separate SK suffix). Best-effort.
+//
+// The reversal row SNAPSHOTS the original credit's `revenueSharePct` so the
+// payout report (payout += net × rate) actually claws the partner payout back:
+// without it the reversal nets gross/net to zero but rate defaults to 0, so the
+// payout was never reduced and partners were overpaid after refunds.
 async function reverseCredit({ partnerId, platform, txnOrOriginalId, productId, price, currency, reason }) {
   try {
     if (!partnerId || !txnOrOriginalId) return false;
     const nowIso = new Date().toISOString();
+    const original = await findOriginalCredit({ partnerId, platform, txnOrOriginalId });
     const res = await putLedgerEvent({
       PK: `LEDGER#${partnerId}#${yyyymm(nowIso)}`,
       SK: `EVENT#${platform}#${txnOrOriginalId}#reversal`,
-      subjectId: null,
-      productId: productId ?? null,
+      subjectId: original?.subjectId ?? null,
+      code: original?.code ?? null,
+      productId: productId ?? original?.productId ?? null,
       price: price != null ? -Math.abs(price) : null,
-      currency: currency ?? null,
+      currency: currency ?? original?.currency ?? null,
       kind: "reversal",
+      // Snapshot the original rev-share so the report claws the payout back.
+      revenueSharePct: original?.revenueSharePct ?? null,
       reversalReason: reason ?? null,
       eventTime: nowIso,
     });

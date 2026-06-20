@@ -15,6 +15,12 @@ Conventions: `corpan/CHANGELOGS.md`.
   Android subscription — including affiliate/discount code redemptions — failed
   server verification, so no affiliate partner was credited and no entitlement
   token was minted (blocking Plus-gated content downloads). iOS/macOS unaffected.
+- **Android Plus full-narration download was verifying as a one-time product.**
+  The signed-URL request for the gated full ZIP now sends `productType: "subs"`
+  (it authorizes under `corpan.plus`, which carries no `.sub.` marker, so the
+  server would otherwise verify it as an in-app product and reject the
+  subscription token — "document type is not supported"). The legacy per-book
+  download is pinned to `inapp` (unchanged behavior).
 
 ## [0.19.2] - 2026-06-19
 

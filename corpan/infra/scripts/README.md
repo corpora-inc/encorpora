@@ -2,9 +2,10 @@
 
 ## revenue_report.py — affiliate revenue & payout report
 
-Per partner code, over any timeframe: conversions / renewals / refunds, gross
-revenue, and the partner payout (gross × revenueSharePct, net of refunds), by
-currency. This is the routine report that drives partner payouts.
+Per partner code, over any timeframe: conversions / renewals / refunds, gross +
+net revenue, and the partner payout (**net × revenueSharePct**, where net = gross
+less the platform fee, and refunds claw the payout back via negative reversal
+rows), by currency. This is the routine report that drives partner payouts.
 
 ```bash
 /home/skyl/tts_venv/bin/python corpan/infra/scripts/revenue_report.py            # last 28d
@@ -17,9 +18,11 @@ Reads DynamoDB `corpan-iap` (loads admin creds from `~/.env`, else default AWS
 chain). `$0` sandbox/test events are excluded by default (`--include-test` to show).
 
 ### Before paying anyone — three things to settle
-1. **Basis: gross vs net.** The report pays `gross × revShare`. If partners are
-   owed a share of NET developer proceeds (after the ~15–30% store fee + taxes),
-   the number is lower (e.g. SKY30 $24 gross → $7.20; net ≈ $20.40 → $6.12).
+1. **Basis: net (not gross).** The report pays `net × revShare`, where
+   `net = gross × (1 − fee)` (default fee 0.15; `--fee` to override) less refunds.
+   This is a share of NET developer proceeds after the store fee, so it is lower
+   than a gross basis (e.g. SKY30 $24 gross, net ≈ $20.40 → $6.12 at 30%; the
+   gross basis would have been $7.20). Confirm the agreed basis per partner.
 2. **Currency / FX.** Amounts are per buyer currency. To pay in one currency,
    FX-convert or use the store payout reports.
 3. **Accounting truth = store financial reports.** This ledger is the

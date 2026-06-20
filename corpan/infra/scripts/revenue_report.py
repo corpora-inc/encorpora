@@ -94,6 +94,21 @@ def main():
             break
         kw["ExclusiveStartKey"] = r["LastEvaluatedKey"]
 
+    # Defensive: a reversal row written before reverseCredit snapshotted the
+    # original rev-share carries no revenueSharePct → its payout clawback would
+    # be 0 and partners stay overpaid. Resolve a missing pct from the matching
+    # original credit row (same partner + EVENT#<platform>#<txn>, sans the
+    # `#reversal` suffix). The row-write fix is primary; this rescues legacy rows.
+    pct_by_credit = {}
+    for it in items:
+        pk, sk = str(it.get("PK", "")), str(it.get("SK", ""))
+        if not pk.startswith("LEDGER#") or not sk.startswith("EVENT#"):
+            continue
+        if sk.endswith("#reversal") or it.get("revenueSharePct") is None:
+            continue
+        partner = pk.split("#")[1]
+        pct_by_credit[(partner, sk)] = it.get("revenueSharePct")
+
     agg = defaultdict(lambda: defaultdict(lambda: {"gross": Decimal(0), "net": Decimal(0),
           "payout": Decimal(0), "initial": 0, "renewal": 0, "reversal": 0}))
     skipped = 0
@@ -112,7 +127,13 @@ def main():
             continue
         # exact net if present (e.g. Google developerRevenue), else estimate
         net = Decimal(str(it["developerRevenue"])) if it.get("developerRevenue") is not None else gross * (1 - fee)
-        rate = Decimal(str(a.rate)) if a.rate is not None else Decimal(str(it.get("revenueSharePct") or 0))
+        # Per-row rev-share, snapshotted on each event; for a reversal missing it,
+        # fall back to the matching original credit's pct (see pct_by_credit).
+        row_pct = it.get("revenueSharePct")
+        if row_pct is None and sk.endswith("#reversal"):
+            credit_partner = pk.split("#")[1]
+            row_pct = pct_by_credit.get((credit_partner, sk[: -len("#reversal")]))
+        rate = Decimal(str(a.rate)) if a.rate is not None else Decimal(str(row_pct or 0))
         cur = it.get("currency") or "?"
         kind = it.get("kind") or "initial"
         b = agg[partner][cur]

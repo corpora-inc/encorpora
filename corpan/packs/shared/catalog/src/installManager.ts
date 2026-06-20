@@ -75,7 +75,8 @@ async function requestSignedUrl(
   packId: string,
   transactionId: string,
   receipt: string,
-  platform: string
+  platform: string,
+  productType?: "subs" | "inapp"
 ): Promise<SignedUrlResult> {
   if (typeof navigator !== "undefined" && !navigator.onLine) {
     return {
@@ -109,6 +110,7 @@ async function requestSignedUrl(
         productId,
         packId,
         transactionId,
+        ...(productType ? { productType } : {}),
         ...(downloadPath ? { downloadPath } : {}),
         ...(platform === "android" ? { purchaseToken: receipt } : { receipt }),
       }),
@@ -226,6 +228,10 @@ async function getSignedDownloadUrl(
         productId: entry.purchase.productId,
         packId: entry.id,
         transactionId,
+        // Legacy per-book purchase is a one-time IAP. Explicit so the Lambda
+        // verifies via Google's products endpoint (the default for a ".sub."-less
+        // id, but pinned here for clarity / future-proofing).
+        productType: "inapp",
         ...(downloadPath ? { downloadPath } : {}),
         ...(platform === "android" ? { purchaseToken: receipt } : { receipt }),
       }),
@@ -413,13 +419,21 @@ export async function installNarration(
     }
 
     if (auth) {
+      // The full ZIP is authorized either by a one-time book IAP (corpan.book.*)
+      // or by a Corpán Plus subscription (corpan.plus). The subscription id has
+      // no ".sub." marker, so the Lambda would otherwise infer `inapp` and POST
+      // the SUBSCRIPTION token to Google's products endpoint → "document type not
+      // supported". Pin the productType explicitly per auth source.
+      const productType: "subs" | "inapp" =
+        auth.productId === "corpan.plus" ? "subs" : "inapp"
       const signed = await requestSignedUrl(
         entry.full.url,
         auth.productId,
         entry.id,
         auth.transactionId,
         auth.receipt,
-        auth.platform
+        auth.platform,
+        productType
       )
       if (!signed.ok) {
         return { ok: false, code: signed.code, message: signed.message, detail: signed.detail }
