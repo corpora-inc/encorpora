@@ -7,6 +7,34 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Security
+- **Content-pack installer path-traversal hardening (native).** `pack_id` is
+  now strictly validated (`validate_pack_id`: `[A-Za-z0-9._-]` only; rejects
+  empty, `.`/`..`, path separators, NUL) at the top of every native path that
+  interpolates it into a filesystem path — full-pack install
+  (`download_and_install`), module install (`install_module`),
+  `module_file_exists`, and `get_manifest_url`. A belt-and-suspenders
+  canonical-containment check (`assert_within_root`) additionally asserts the
+  tmp/staging/final/backup and module destination paths resolve inside the
+  `corpan-packs` root before any write/remove. Previously `pack_id` from the
+  catalog/module payload was interpolated raw, and the only id check happened
+  *after* the paths were built.
+
+### Reliability
+- **Download stall watchdog (native).** Pack and module downloads now use a
+  shared client with a 30s connect timeout and a 120s per-read (idle/stall)
+  timeout instead of a bare `reqwest::Client::new()` that could hang forever on
+  a wedged CDN socket. The per-read deadline resets as bytes arrive, so it does
+  not break slow-but-progressing multi-GB model-pack downloads — only a stalled
+  stream is failed (surfaced via the existing `pack-install-progress` error
+  stage).
+
+### Changed
+- **Unverified-install visibility (native).** When the catalog provides no
+  `expected_sha256`, the installer now logs a clear warning (full pack and
+  module) instead of silently skipping integrity. Provided hashes are still
+  enforced (mismatch hard-fails); free packs without a sha are not blocked.
+
 ## [0.19.2] - 2026-06-19
 
 ### Fixed
