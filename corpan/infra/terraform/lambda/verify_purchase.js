@@ -650,7 +650,10 @@ async function handleAppleNotification(body, secrets) {
       const appleRootCerts = (appleSecrets.rootCerts || []).map((c) =>
         Buffer.from(c, "base64")
       );
-      if (!appleRootCerts.length || !appleSecrets.appAppleId) {
+      // appAppleId MUST be a number — SignedDataVerifier compares it to the
+      // payload's numeric appAppleId; a string fails as INVALID_APP_IDENTIFIER.
+      const appAppleId = Number(appleSecrets.appAppleId);
+      if (!appleRootCerts.length || !appAppleId) {
         console.error("[apple-notification] CRITICAL: apple.rootCerts / apple.appAppleId not configured — cannot verify");
         return json(200, { received: true, verified: false });
       }
@@ -663,7 +666,7 @@ async function handleAppleNotification(body, secrets) {
       for (const env of [Environment.PRODUCTION, Environment.SANDBOX]) {
         try {
           const verifier = new SignedDataVerifier(
-            appleRootCerts, false, env, bundleId, appleSecrets.appAppleId
+            appleRootCerts, false, env, bundleId, appAppleId
           );
           payload = await verifier.verifyAndDecodeNotification(signedPayload);
           break;
@@ -672,7 +675,7 @@ async function handleAppleNotification(body, secrets) {
         }
       }
       if (!payload) {
-        console.error("[apple-notification] signature verify failed (both envs):", verErr && verErr.message);
+        console.error("[apple-notification] signature verify failed (both envs): status=" + (verErr && (verErr.status ?? verErr.message)));
         return json(200, { received: true, verified: false });
       }
     }
