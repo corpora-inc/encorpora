@@ -1,23 +1,32 @@
 {
+  "_note": "TEMPLATE ONLY \u2014 no real partner names/terms in version control. The live roster is in DynamoDB (corpan-iap); the real seed is the gitignored seed.local.json. load_seed.py prefers seed.local.json. Do NOT add real partner names here.",
   "registryVersion": 1,
   "partners": [
-    { "partnerId": "ian",     "name": "Ian",     "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "sky",     "name": "Sky",     "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "august",  "name": "August",  "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "ac",      "name": "AC",      "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "flo",     "name": "Flo",     "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "monica",  "name": "Monica",  "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "dwalker", "name": "D. Walker","defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "agus",    "name": "Agus",    "defaultRevenueSharePct": 0.30, "status": "active" }
+    {
+      "partnerId": "examplepartner",
+      "name": "Example Partner",
+      "defaultRevenueSharePct": 0.2,
+      "status": "active"
+    }
   ],
   "codes": [
-    { "code": "IAN30",     "partnerId": "ian",     "classification": "discount+affiliate", "appleOfferIdentifier": "IAN30",     "googleOfferId": "code-ian30",     "googleOfferTags": ["code-ian30"],     "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "SKY30",     "partnerId": "sky",     "classification": "discount+affiliate", "appleOfferIdentifier": "SKY30",     "googleOfferId": "code-sky30",     "googleOfferTags": ["code-sky30"],     "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "AUGUST30",  "partnerId": "august",  "classification": "discount+affiliate", "appleOfferIdentifier": "AUGUST30",  "googleOfferId": "code-august30",  "googleOfferTags": ["code-august30"],  "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "AC30",      "partnerId": "ac",      "classification": "discount+affiliate", "appleOfferIdentifier": "AC30",      "googleOfferId": "code-ac30",      "googleOfferTags": ["code-ac30"],      "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "FLO30",     "partnerId": "flo",     "classification": "discount+affiliate", "appleOfferIdentifier": "FLO30",     "googleOfferId": "code-flo30",     "googleOfferTags": ["code-flo30"],     "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "MONICA30",  "partnerId": "monica",  "classification": "discount+affiliate", "appleOfferIdentifier": "MONICA30",  "googleOfferId": "code-monica30",  "googleOfferTags": ["code-monica30"],  "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "DWALKER30", "partnerId": "dwalker", "classification": "discount+affiliate", "appleOfferIdentifier": "DWALKER30", "googleOfferId": "code-dwalker30", "googleOfferTags": ["code-dwalker30"], "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "AGUS30",    "partnerId": "agus",    "classification": "discount+affiliate", "appleOfferIdentifier": "AGUS30",    "googleOfferId": "code-agus30",    "googleOfferTags": ["code-agus30"],    "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null }
+    {
+      "code": "EXAMPLE20",
+      "partnerId": "examplepartner",
+      "classification": "discount+affiliate",
+      "appleOfferIdentifier": "EXAMPLE20",
+      "googleOfferId": "code-example20",
+      "googleOfferTags": [
+        "code-example20"
+      ],
+      "googleBasePlanId": "annual",
+      "discountLabelKey": "code.discount.first_year_30",
+      "discountLabelEn": "30% off your first year",
+      "revenueSharePct": 0.2,
+      "active": true,
+      "registryVersion": 1,
+      "validFrom": "2026-01-01T00:00:00Z",
+      "validTo": null
+    }
   ]
 }
