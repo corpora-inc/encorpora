@@ -903,6 +903,29 @@ BOOKS: list[BookSpec] = [
             "people, no clearly rendered animals, no text. " + COMMON_TAIL
         ),
     ),
+    BookSpec(
+        book_id="book_biomes_mediterranean",
+        title="The Mediterranean Biome",
+        description=(
+            "A short, plain-spoken tour of the Mediterranean biome — "
+            "hot dry summers and mild wet winters, the fragrant low "
+            "shrublands and silver-leaved olive trees, and the people "
+            "whose food and farming grew up with the long blue summer. "
+            "Found in five small corners of the Earth. Book six of the "
+            "Biomes of the World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a Mediterranean hillside in late "
+            "afternoon. An old olive grove with silver-grey leaves on "
+            "thick, twisted trunks, low fragrant herb shrubs scattered "
+            "between them, and a distant view of a calm blue sea below. "
+            "Soft warm light, a few terracotta rooftops just visible in "
+            "the distance. Painterly digital art, restrained palette of "
+            "silver-green, ochre, warm white, and pale Mediterranean "
+            "blue, contemplative and warm, no people, no clearly "
+            "rendered animals, no text. " + COMMON_TAIL
+        ),
+    ),
 ]
 
 
