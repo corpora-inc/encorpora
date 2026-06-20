@@ -303,7 +303,9 @@ test("FIX3: a thrown post-work dedupe write leaves the event reprocessable (Appl
   const res = await v.handleAppleNotification({ signedPayload: "p" }, APPLE_SECRETS);
   v._setAppleVerifyForTest(null);
 
-  assert.equal(res.statusCode, 200, "still returns 200 to Apple");
+  // P1-A: a caught post-work failure now returns a RETRYABLE non-2xx (500) so
+  // Apple redelivers — a 200 would have permanently lost the event.
+  assert.equal(res.statusCode, 500, "returns retryable 500 on caught failure");
   // The dedupe row was NOT committed (the mark threw) → event is reprocessable.
   assert.equal(doc.store.get("DEDUPE#apple#uuid-repro|SEEN"), undefined, "dedupe NOT set");
   // But the side-effect work DID happen.

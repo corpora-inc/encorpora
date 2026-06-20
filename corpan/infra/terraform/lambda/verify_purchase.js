@@ -97,6 +97,8 @@ exports.handleAppleNotification = handleAppleNotification;
 exports.handleGoogleNotification = handleGoogleNotification;
 exports.handleVerifyPurchase = handleVerifyPurchase;
 exports._setAppleVerifyForTest = _setAppleVerifyForTest;
+exports._setCatalogFetchForTest = _setCatalogFetchForTest;
+exports._setVerifyForTest = _setVerifyForTest;
 
 const getHeader = (event, key) => {
   const headers = event.headers || {};
@@ -148,6 +150,106 @@ function generateSignedDownloadUrl(packDownloadPath, signingPrivateKey) {
     privateKey: signingPrivateKey,
     dateLessThan: expires.toISOString(),
   });
+}
+
+// ---------------------------------------------------------------------------
+// Catalog (product → premium-ZIP binding)
+// ---------------------------------------------------------------------------
+//
+// The public catalog is the source of truth that binds a one-time book product
+// (corpan.book.*) to BOTH the narration packId and the exact premium ZIP path.
+// We use it to enforce that a verified one-time receipt may only sign the ZIP it
+// actually paid for (see handleVerifyPurchase). Fetch is cached in the warm
+// container; a `_setCatalogFetchForTest` seam lets tests inject a fixture so the
+// suite makes no real network calls. FAIL CLOSED: if the catalog can't be
+// fetched (or the pack/product doesn't match) we deny signing.
+
+const CATALOG_URL = "https://d38iwc9748jekz.cloudfront.net/catalog-v2.json";
+const CATALOG_TTL_MS = 10 * 60 * 1000; // 10 min — premium paths rarely change
+const CATALOG_TIMEOUT_MS = 4000;
+
+let _catalogCache = null; // { fetchedAt, narrations: [...] }
+
+// Default catalog fetcher (Node 18+/22 global fetch + AbortController timeout).
+async function _defaultCatalogFetch() {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), CATALOG_TIMEOUT_MS);
+  try {
+    const res = await fetch(CATALOG_URL, { signal: ctrl.signal });
+    if (!res.ok) throw new Error(`catalog HTTP ${res.status}`);
+    return await res.json();
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+let _catalogFetch = _defaultCatalogFetch;
+function _setCatalogFetchForTest(fn) {
+  _catalogFetch = fn || _defaultCatalogFetch;
+  _catalogCache = null; // drop any warm cache so the injected fixture is used
+}
+
+// Return the catalog narrations array (cached). Returns null on any failure —
+// callers MUST fail closed (deny signing) when this is null.
+async function getCatalogNarrations() {
+  const now = Date.now();
+  if (_catalogCache && now - _catalogCache.fetchedAt < CATALOG_TTL_MS) {
+    return _catalogCache.narrations;
+  }
+  try {
+    const data = await _catalogFetch();
+    const narrations = Array.isArray(data?.narrations) ? data.narrations : [];
+    _catalogCache = { fetchedAt: now, narrations };
+    return narrations;
+  } catch (err) {
+    console.error("[catalog] fetch failed (fail-closed for one-time downloads):", err.message);
+    // If we have a stale cache, prefer it over denying (still authoritative
+    // enough for a path/product binding — paths only change on a version bump).
+    if (_catalogCache) return _catalogCache.narrations;
+    return null;
+  }
+}
+
+// Normalize a catalog full.url (absolute) to the path we compare against the
+// client downloadPath (no leading slash, no scheme/host).
+function _pathOf(urlOrPath) {
+  if (typeof urlOrPath !== "string" || !urlOrPath) return null;
+  try {
+    return new URL(urlOrPath).pathname.replace(/^\/+/, "");
+  } catch {
+    return urlOrPath.replace(/^\/+/, "");
+  }
+}
+
+// Bind a verified one-time product to the requested pack + download path via the
+// catalog. Returns { ok:true } only if the narration identified by `packId`
+// (a) has purchase.productId === verifiedProductId AND (b) its premium full.url
+// path equals the requested downloadPath. Fail closed on any miss / no catalog.
+async function bindOneTimeDownload({ packId, verifiedProductId, downloadPath }) {
+  if (!verifiedProductId) return { ok: false, reason: "no verified product" };
+  const narrations = await getCatalogNarrations();
+  if (!narrations) return { ok: false, reason: "catalog unavailable" };
+
+  // Prefer matching by packId (the narration id the client sends); also accept a
+  // match by the requested downloadPath if packId is absent/ambiguous.
+  let n = packId ? narrations.find((x) => x && x.id === packId) : null;
+  if (!n && downloadPath) {
+    n = narrations.find((x) => x && _pathOf(x.full?.url) === downloadPath);
+  }
+  if (!n) return { ok: false, reason: "pack not in catalog" };
+
+  const pid = n.purchase?.productId || null;
+  if (!pid || pid !== verifiedProductId) {
+    return { ok: false, reason: `product mismatch (catalog=${pid} verified=${verifiedProductId})` };
+  }
+
+  // The requested path must be THIS narration's premium full ZIP.
+  const fullPath = _pathOf(n.full?.url);
+  if (!fullPath) return { ok: false, reason: "no premium ZIP for pack" };
+  if (downloadPath && downloadPath !== fullPath) {
+    return { ok: false, reason: "downloadPath does not match purchased pack" };
+  }
+  return { ok: true, downloadPath: fullPath };
 }
 
 // ---------------------------------------------------------------------------
@@ -433,6 +535,16 @@ async function verifyGoogle(body, secrets) {
 // Route: POST /verify-purchase
 // ---------------------------------------------------------------------------
 
+// Swappable receipt-verify references (default = the real implementations).
+// Tests inject a deterministic verified result via _setVerifyForTest so the
+// entitlement-gate logic can be exercised without a live Apple/Play call.
+let _verifyApple = verifyApple;
+let _verifyGoogle = verifyGoogle;
+function _setVerifyForTest({ apple, google } = {}) {
+  _verifyApple = apple || verifyApple;
+  _verifyGoogle = google || verifyGoogle;
+}
+
 async function handleVerifyPurchase(body, secrets) {
   const { platform, productId, packId } = body;
 
@@ -445,20 +557,21 @@ async function handleVerifyPurchase(body, secrets) {
       `hasCode=${!!body.affiliateCode} hasResToken=${!!body.resolutionToken} hasSubject=${!!body.subjectId}`
   );
 
-  // Verify the receipt with the platform
+  // Verify the receipt with the platform (via swappable refs so tests can inject
+  // a verified result without a real Apple/Play call — see _setVerifyForTest).
   let result;
   if (platform === "ios" || platform === "macos") {
     if (!body.transactionId) {
       return json(400, { status: "failed", error: "Missing transactionId for Apple" });
     }
-    result = await verifyApple(body, secrets);
+    result = await _verifyApple(body, secrets);
   } else if (platform === "android") {
     if (!body.purchaseToken) {
       return json(400, { status: "failed", error: "Missing purchaseToken for Google" });
     }
     // Subscriptions MUST be verified via subscriptionsv2 (see googleProductTypeFor).
     const productType = googleProductTypeFor(productId, body.productType);
-    result = await verifyGoogle({ ...body, productType }, secrets);
+    result = await _verifyGoogle({ ...body, productType }, secrets);
   } else {
     return json(400, { status: "failed", error: `Unsupported platform: ${platform}` });
   }
@@ -583,24 +696,72 @@ async function handleVerifyPurchase(body, secrets) {
   // since filenames include the version (e.g. "pack-id-0.1.0.zip").
   // Fall back to packId-only path for backwards compatibility.
   if (packId || body.downloadPath) {
+    let downloadPath;
+    if (typeof body.downloadPath === "string" && body.downloadPath.length > 0) {
+      // Client sends the path from the catalog's downloadUrl
+      downloadPath = body.downloadPath.replace(/^\/+/, "");
+    } else {
+      downloadPath = `narrations/premium/${packId}.zip`;
+    }
+    // Only sign paths under narrations/premium/ to prevent signing arbitrary URLs.
+    if (!downloadPath.startsWith("narrations/premium/")) {
+      return json(400, { status: "failed", error: "Invalid downloadPath" });
+    }
+
+    // --- §B entitlement gate: "verified" alone is NOT enough to issue a
+    // premium download. The client is open-source/bypassable, so THIS Lambda is
+    // the gate. Two cases:
+    //
+    //   (1) Subscription-backed request (Plus, all-access): require an ACTIVE
+    //       subscription. A verified-but-inactive (expired/lapsed) sub must get
+    //       403, not a signed URL. (Note: never-block-a-subscriber is about
+    //       PLAYBACK of already-installed content — gating fresh DOWNLOAD URLs on
+    //       active state is correct and does not violate it.)
+    //   (2) One-time book request (legacy per-book ownership): the verified
+    //       receipt must actually entitle the requested ZIP — bind the verified
+    //       product to the requested pack + path via the public catalog.
+    const isSubscriptionRequest =
+      body.productType === "subs" ||
+      productId === "corpan.plus" ||
+      !!result.isSubscription;
+
+    if (isSubscriptionRequest) {
+      if (!result.subscriptionActive) {
+        console.warn(`[signed-url] DENY: subscription not active (productId=${productId})`);
+        return json(403, { status: "failed", error: "Subscription not active" });
+      }
+      // Active Plus is all-access: any premium narration ZIP is allowed.
+    } else {
+      // One-time path. For Apple the verified receipt must be FOR the claimed
+      // product (verifyApple returns any found transaction's productId without
+      // binding it to body.productId).
+      const isApple = platform === "ios" || platform === "macos";
+      if (isApple && result.productId && productId && result.productId !== productId) {
+        console.warn(`[signed-url] DENY: Apple receipt product mismatch (receipt=${result.productId} requested=${productId})`);
+        return json(403, { status: "failed", error: "Receipt does not match requested product" });
+      }
+      // Bind the verified product to the requested pack + premium ZIP via the
+      // catalog (fail closed if the catalog is unavailable or doesn't match).
+      const bound = await bindOneTimeDownload({
+        packId,
+        verifiedProductId: result.productId || productId,
+        downloadPath,
+      });
+      if (!bound.ok) {
+        console.warn(`[signed-url] DENY: one-time binding failed: ${bound.reason}`);
+        return json(403, { status: "failed", error: "Not entitled to this download" });
+      }
+      // Trust the catalog-derived path over the client-supplied one.
+      downloadPath = bound.downloadPath;
+    }
+
     try {
       const signingKey = secrets.cloudfront?.signingPrivateKey;
-      let downloadPath;
-      if (typeof body.downloadPath === "string" && body.downloadPath.length > 0) {
-        // Client sends the path from the catalog's downloadUrl
-        downloadPath = body.downloadPath.replace(/^\/+/, "");
-      } else {
-        downloadPath = `narrations/premium/${packId}.zip`;
-      }
-      // Only sign paths under narrations/premium/ to prevent signing arbitrary URLs
-      if (!downloadPath.startsWith("narrations/premium/")) {
-        return json(400, { status: "failed", error: "Invalid downloadPath" });
-      }
       response.signedUrl = generateSignedDownloadUrl(downloadPath, signingKey);
       console.log(`[signed-url] Signed: ${downloadPath}`);
     } catch (err) {
       console.warn("[signed-url] Could not generate signed URL:", err.message);
-      // Non-fatal: verification succeeded, signed URL is a bonus
+      // Non-fatal: verification succeeded, signed URL is a bonus.
     }
   }
 
@@ -797,7 +958,14 @@ async function handleAppleNotification(body, secrets) {
       await codes.markEventProcessed(`apple#${payload.notificationUUID}`);
     }
   } catch (err) {
-    console.error("[apple-notification] handler error (non-fatal):", err.message);
+    // A CAUGHT processing error (a transient DynamoDB write failure in the
+    // side-effect work or the post-work mark) must NOT be ACK'd. Returning a
+    // retryable 500 makes Apple redeliver the notification; the dedupe-after-work
+    // ordering means a redelivery safely reprocesses (idempotent conditional puts
+    // + the isEventProcessed probe short-circuits a genuinely-completed one). A
+    // 200 here would permanently lose the event (no redelivery).
+    console.error("[apple-notification] handler error (retryable):", err.message);
+    return json(500, { received: false, error: "retryable processing error" });
   }
 
   // Apple expects 200 OK to acknowledge receipt (so it stops retrying).
@@ -873,6 +1041,14 @@ async function handleGoogleNotification(body, secrets, authHeader) {
         { purchaseToken: voided.purchaseToken, productId: voided.subscriptionId, productType: "subs" },
         secrets
       );
+      // Never trust an unverified authoritative re-fetch: a transient Play API
+      // outage returns { verified:false } with no fields. Doing the clawback +
+      // markEventProcessed here would burn the event on a transient failure.
+      // Return a retryable 500 so Pub/Sub redelivers (no partial work, no mark).
+      if (!verify.verified) {
+        console.error("[google-notification] voided re-fetch unverified — retryable, not marking");
+        return json(500, { received: false, error: "retryable verify failure" });
+      }
       const attr = verify.obfHash ? await codes.findSubjectByObfHash(verify.obfHash) : null;
       if (attr && attr.partnerId) {
         await codes.reverseCredit({
@@ -890,6 +1066,15 @@ async function handleGoogleNotification(body, secrets, authHeader) {
         { purchaseToken: subNotif.purchaseToken, productId: subNotif.subscriptionId, productType: "subs" },
         secrets
       );
+      // verifyGoogle swallows Play API failures and returns { verified:false }
+      // with missing fields. Proceeding would do NO real work (no entitlement /
+      // renewal / clawback) and then markEventProcessed — burning the event on a
+      // transient Play outage. Return a retryable 500 so it redelivers; do NOT do
+      // partial work and do NOT mark the event processed.
+      if (!verify.verified) {
+        console.error("[google-notification] subscription re-fetch unverified — retryable, not marking");
+        return json(500, { received: false, error: "retryable verify failure" });
+      }
       const obfHash = verify.obfHash;
       const orderId = verify.transactionId;
       const isTest = !!verify.isTestPurchase;
@@ -936,7 +1121,13 @@ async function handleGoogleNotification(body, secrets, authHeader) {
     // a redelivery safely reprocesses (every write is an idempotent put).
     if (eventId) await codes.markEventProcessed(eventId);
   } catch (err) {
-    console.error("[google-notification] handler error (non-fatal):", err.message);
+    // A CAUGHT processing error (transient DynamoDB write in the side-effect work
+    // or the post-work mark) must NOT be ACK'd. For Pub/Sub push a 200 ACKs the
+    // message and permanently loses it; a retryable 500 makes Pub/Sub redeliver,
+    // and the dedupe-after-work ordering reprocesses safely (idempotent
+    // conditional puts + isEventProcessed short-circuit).
+    console.error("[google-notification] handler error (retryable):", err.message);
+    return json(500, { received: false, error: "retryable processing error" });
   }
 
   // Google expects 200 OK to acknowledge
