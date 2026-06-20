@@ -610,8 +610,14 @@ async function recordEntitlementPurchase({
     });
     return res.written === true;
   } catch (err) {
-    console.error("[codes] recordEntitlementPurchase failed (non-fatal):", err.message);
-    return false;
+    // A genuine DynamoDB write failure must be DISTINGUISHABLE from a no-op
+    // (`return false` above when there is nothing to record). RE-THROW so a
+    // NOTIFICATION handler's outer try/catch turns it into a retryable 500 (the
+    // store redelivers; reprocessing is idempotent). The synchronous
+    // /verify-purchase path wraps its call in its own best-effort try/catch, so
+    // a throw there is still swallowed and never blocks the waiting buyer.
+    console.error("[codes] recordEntitlementPurchase write failed (retryable):", err.message);
+    throw err;
   }
 }
 
@@ -646,8 +652,11 @@ async function creditRenewal({
     });
     return res.written || res.conditional === true;
   } catch (err) {
-    console.error("[codes] creditRenewal failed (non-fatal):", err.message);
-    return false;
+    // RE-THROW a real write failure (vs. the no-op `return false` above) so a
+    // notification handler can return a retryable 500 and NOT mark the event
+    // processed. /verify-purchase callers (best-effort) catch this themselves.
+    console.error("[codes] creditRenewal write failed (retryable):", err.message);
+    throw err;
   }
 }
 
@@ -863,8 +872,11 @@ async function reverseCredit({ partnerId, platform, txnOrOriginalId, productId, 
     });
     return res.written || res.conditional === true;
   } catch (err) {
-    console.error("[codes] reverseCredit failed (non-fatal):", err.message);
-    return false;
+    // RE-THROW a real write failure (vs. the no-op `return false` above) so a
+    // notification clawback can return a retryable 500 and NOT mark the event
+    // processed. /verify-purchase callers (best-effort) catch this themselves.
+    console.error("[codes] reverseCredit write failed (retryable):", err.message);
+    throw err;
   }
 }
 

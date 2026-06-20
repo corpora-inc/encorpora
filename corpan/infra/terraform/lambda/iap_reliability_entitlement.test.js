@@ -548,6 +548,61 @@ test("P1-B(b): verified active Plus → signedUrl issued for any premium ZIP", a
   }
 });
 
+// --- never-block invariant: a best-effort §5 ledger write that THROWS on the
+// SYNCHRONOUS /verify-purchase path must NOT turn a verified active sub into a
+// failure for the waiting buyer. (The notification handlers propagate the same
+// throw → 500/retry; this path swallows it.) ---
+test("verify-purchase: entitlement PUT failure still issues Plus + signedUrl (never-block)", async () => {
+  // Make the entitlement PURCHASE# write throw — the same write the notification
+  // P1-A(1b/1c) tests make fail to force a 500. Here the buyer must STILL get 200.
+  const doc = freshDoc({
+    failPut: (it) => String(it.SK || "").startsWith("PURCHASE#android#"),
+  });
+  const restorePub = withFakeAndroidPublisher(() => ({
+    purchases: {
+      subscriptionsv2: {
+        get: async () => ({
+          data: {
+            subscriptionState: "SUBSCRIPTION_STATE_ACTIVE",
+            lineItems: [{
+              productId: "corpan.sub.monthly",
+              expiryTime: new Date(Date.now() + 30 * 86400000).toISOString(),
+              latestSuccessfulOrderId: "ORDER-NEVERBLOCK",
+            }],
+            externalAccountIdentifiers: { obfuscatedExternalAccountId: "obf-nb" },
+            acknowledgementState: "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED",
+          },
+        }),
+      },
+    },
+  }));
+  try {
+    const secrets = {
+      ...CF_SECRETS,
+      google: { serviceAccountJson: { client_email: "x@y", private_key: "k", project_id: "p" }, packageName: "com.corpora.corpan" },
+    };
+    const res = await withCfEnv(() => v.handleVerifyPurchase({
+      platform: "android",
+      productId: "corpan.plus",
+      productType: "subs",
+      subjectId: "subj-neverblock",
+      packId: "pack-Y",
+      downloadPath: "narrations/premium/pack-Y-1.0.0.zip",
+      purchaseToken: "TOK",
+    }, secrets));
+    assert.equal(res.statusCode, 200, "ledger blip must never block a verified buyer");
+    const out = JSON.parse(res.body);
+    assert.equal(out.plus, true, "verified active sub still reports Plus");
+    assert.ok(out.signedUrl, "active Plus still gets the signed download");
+    // Proof the entitlement write was actually attempted and threw (not silently
+    // skipped) — the PURCHASE# row is absent because the put failed.
+    assert.equal(doc.store.get("SUBJECT#subj-neverblock|PURCHASE#android#ORDER-NEVERBLOCK"), undefined,
+      "entitlement write failed (was swallowed, not blocking)");
+  } finally {
+    restorePub();
+  }
+});
+
 // Inject a verifyApple that returns a verified one-time receipt for `productId`.
 function appleVerifiesAs(productId) {
   v._setVerifyForTest({
