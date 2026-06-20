@@ -9,6 +9,26 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [0.19.2] - 2026-06-19
 
+### Fixed
+- **Store-notification reliability (server-side).** The receipt-verify Lambda's
+  Apple ASSN and Google RTDN handlers no longer acknowledge a notification with
+  HTTP 200 when a transient backend error occurs while processing it (a 200 ACKs
+  the message and permanently loses it). A caught processing error — or a Google
+  authoritative re-fetch that comes back unverified during a Play API outage —
+  now returns a retryable 500 so the store redelivers; no partial work is done
+  and the dedupe row is not committed, so the redelivery reprocesses cleanly
+  (every write is an idempotent conditional put). Prevents silently dropped
+  renewals/refunds/entitlement updates on transient failures.
+- **Premium download entitlement gate (server-side).** `/verify-purchase` now
+  issues a CloudFront-signed premium-narration download only when the requester
+  is actually entitled to that ZIP, not merely because a receipt verified. An
+  expired/lapsed subscription is denied (403) instead of getting the full ZIP;
+  an active Corpán Plus subscription remains all-access. One-time book downloads
+  are bound to the purchased product via the public catalog (the requested pack
+  and ZIP path must match the verified product), closing a cross-product hole
+  where any valid receipt could sign any premium ZIP. Active Plus subscribers and
+  legacy book owners downloading their own content are unaffected.
+
 ### Changed
 - **Smoother pack-launch transition.** In the first-run launch animation, the
   chosen card no longer snaps to full opacity the instant it climbs to the front
