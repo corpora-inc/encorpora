@@ -94,7 +94,7 @@ jobs:
           set_output web '^(web/(io|data|pages|scripts)/|\.github/workflows/(ci|deploy-pages)\.yml$)'
 
   corpan-app:
-    name: corpan-app · test + tsc + build
+    name: corpan-app · tsc + build
     needs: changes
     if: needs.changes.outputs.corpan_app == 'true'
     runs-on: ubuntu-latest
