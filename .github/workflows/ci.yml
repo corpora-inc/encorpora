@@ -34,8 +34,69 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  changes:
+    name: changes
+    runs-on: ubuntu-latest
+    outputs:
+      corpan_app: ${{ steps.filter.outputs.corpan_app }}
+      lambda: ${{ steps.filter.outputs.lambda }}
+      packs: ${{ steps.filter.outputs.packs }}
+      terraform: ${{ steps.filter.outputs.terraform }}
+      web: ${{ steps.filter.outputs.web }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: filter
+        name: Detect changed areas
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+
+          base="${BASE_SHA}"
+          head="${HEAD_SHA}"
+          if [ -z "${base}" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            base="$(git rev-parse "${head}^" 2>/dev/null || true)"
+          fi
+
+          changed="$(mktemp)"
+          if [ -n "${base}" ]; then
+            git diff --name-only "${base}" "${head}" > "${changed}"
+          else
+            git diff-tree --no-commit-id --name-only -r "${head}" > "${changed}"
+          fi
+
+          echo "Changed files:"
+          sed 's/^/  /' "${changed}"
+
+          run_all=false
+          if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
+            run_all=true
+          fi
+
+          set_output() {
+            local name="$1"
+            local pattern="$2"
+            if [ "${run_all}" = "true" ] || grep -Eq "${pattern}" "${changed}"; then
+              echo "${name}=true" >> "${GITHUB_OUTPUT}"
+            else
+              echo "${name}=false" >> "${GITHUB_OUTPUT}"
+            fi
+          }
+
+          set_output corpan_app '^(corpan/corpan-app/|\.github/workflows/ci\.yml$)'
+          set_output lambda '^(corpan/infra/terraform/lambda/|\.github/workflows/ci\.yml$)'
+          set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+          set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
+          set_output web '^(web/(io|data|pages|scripts)/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+
   corpan-app:
     name: corpan-app · tsc + build
+    needs: changes
+    if: needs.changes.outputs.corpan_app == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -47,6 +108,9 @@ jobs:
       - name: Install
         working-directory: corpan/corpan-app
         run: npm ci
+      - name: Test
+        working-directory: corpan/corpan-app
+        run: npm test
       - name: Typecheck
         working-directory: corpan/corpan-app
         run: npm run tsc
@@ -54,8 +118,29 @@ jobs:
         working-directory: corpan/corpan-app
         run: npm run build
 
+  lambda:
+    name: lambda · tests
+    needs: changes
+    if: needs.changes.outputs.lambda == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: corpan/infra/terraform/lambda/package-lock.json
+      - name: Install
+        working-directory: corpan/infra/terraform/lambda
+        run: npm ci
+      - name: Test
+        working-directory: corpan/infra/terraform/lambda
+        run: npm test
+
   web-io:
     name: web/io · build
+    needs: changes
+    if: needs.changes.outputs.web == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -73,6 +158,8 @@ jobs:
 
   changed-packs:
     name: changed packs · build
+    needs: changes
+    if: needs.changes.outputs.packs == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -118,6 +205,8 @@ jobs:
 
   terraform:
     name: terraform · fmt + validate
+    needs: changes
+    if: needs.changes.outputs.terraform == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
