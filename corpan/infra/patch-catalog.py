@@ -645,6 +645,16 @@ BOOK_META = {
         "tags": ["nature", "biomes", "science", "language-learning"],
         "published": "2026-06-17",
     },
+    "book_biomes_temperate_grassland": {
+        "description": (
+            "A short, plain-spoken tour of the temperate grassland — a "
+            "wide sea of grass under a huge sky, prairie, steppe, and "
+            "pampas; the herds and burrowers that depend on the grass, "
+            "and the horse-riding peoples whose lives grew up with the "
+            "wind. Book five of the Biomes of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+    },
 }
 
 

@@ -883,6 +883,26 @@ BOOKS: list[BookSpec] = [
             "no clearly rendered animals, no text. " + COMMON_TAIL
         ),
     ),
+    BookSpec(
+        book_id="book_biomes_temperate_grassland",
+        title="The Temperate Grassland",
+        description=(
+            "A short, plain-spoken tour of the temperate grassland — a "
+            "wide sea of grass under a huge sky, prairie, steppe, and "
+            "pampas; the herds and burrowers that depend on the grass, "
+            "and the horse-riding peoples whose lives grew up with the "
+            "wind. Book five of the Biomes of the World series."
+        ),
+        cover_prompt=(
+            "Editorial illustration of a vast temperate grassland under "
+            "an enormous summer sky. Tall pale-gold and green grasses "
+            "sweep to a far horizon, with a few distant low hills in soft "
+            "haze. High thin clouds and a strong feeling of open wind. "
+            "Painterly digital art, restrained palette of warm gold, "
+            "sage, and pale sky blue, contemplative and spacious, no "
+            "people, no clearly rendered animals, no text. " + COMMON_TAIL
+        ),
+    ),
 ]
 
 

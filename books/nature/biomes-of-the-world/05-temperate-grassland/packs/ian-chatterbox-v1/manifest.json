@@ -1,0 +1,13 @@
+{
+  "id": "book_biomes_temperate_grassland",
+  "name": "The Temperate Grassland",
+  "version": "0.1.1",
+  "type": "book",
+  "primary_language": "en",
+  "metadata": {
+    "series": "Biomes of the World",
+    "author": "Skylar Saveland",
+    "tts": true,
+    "estimatedListenTime": "10 minutes"
+  }
+}
