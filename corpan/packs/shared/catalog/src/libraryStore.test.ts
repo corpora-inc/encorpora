@@ -1,6 +1,12 @@
 // Tests for the preview/full classifier + preview enumeration in libraryStore.
 //
-//   node --experimental-strip-types --test corpan/packs/shared/catalog/src/libraryStore.test.ts
+// libraryStore imports `zustand`, which has no node_modules under shared/ — so
+// (like the sibling catalog tests) run with zustand resolvable, e.g. symlink a
+// reader pack's deps first:
+//   ln -sfn ../../stargate-reader/node_modules corpan/packs/shared/catalog/node_modules
+//   node --experimental-strip-types --experimental-test-module-mocks --test \
+//     corpan/packs/shared/catalog/src/libraryStore.test.ts
+//   rm corpan/packs/shared/catalog/node_modules
 //
 // libraryStore persists via zustand + localStorage, so we install a minimal
 // in-memory localStorage shim before importing the module.

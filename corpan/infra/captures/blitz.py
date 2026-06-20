@@ -139,7 +139,9 @@ def assign_music(slug: str, names: list[str], spec: str) -> dict:
         ai = 0
         for n in names:
             if blocked(amap[n]):
-                pick = alts[ai] if ai < len(alts) else next(p for p in pool if not blocked(p))
+                # Fall back to any unblocked track; if the whole pool is
+                # blocked, keep the original pick rather than raising StopIteration.
+                pick = alts[ai] if ai < len(alts) else next((p for p in pool if not blocked(p)), amap[n])
                 amap[n] = pick
                 used.add(pick.stem.lower())
                 ai += 1
