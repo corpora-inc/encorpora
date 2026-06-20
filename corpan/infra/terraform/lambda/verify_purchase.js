@@ -92,6 +92,10 @@ exports.milliunitsToNumber = milliunitsToNumber;
 exports.googleProductTypeFor = googleProductTypeFor;
 exports.appleNotificationAction = appleNotificationAction;
 exports.googleNotificationAction = googleNotificationAction;
+// Notification route handlers + a test seam for the Apple JWS verify step.
+exports.handleAppleNotification = handleAppleNotification;
+exports.handleGoogleNotification = handleGoogleNotification;
+exports._setAppleVerifyForTest = _setAppleVerifyForTest;
 
 const getHeader = (event, key) => {
   const headers = event.headers || {};
@@ -633,6 +637,48 @@ async function handleSubscriptionStatus(body, secrets) {
 // Route: POST /apple-notifications (App Store Server Notifications V2)
 // ---------------------------------------------------------------------------
 
+// Verify + decode an ASSN V2 signed payload, returning the decoded notification
+// payload or null on failure/misconfiguration. Extracted to a swappable
+// module-level reference so tests can drive the handler's post-verify logic
+// without a real JWS / Apple root chain (see _setAppleVerifyForTest). Default
+// implementation does the real signature verification.
+async function _defaultAppleVerify(signedPayload, appleSecrets) {
+  const bundleId = appleSecrets.bundleId || "com.corpora.corpan";
+  const appleRootCerts = (appleSecrets.rootCerts || []).map((c) =>
+    Buffer.from(c, "base64")
+  );
+  // appAppleId MUST be a number — SignedDataVerifier compares it to the
+  // payload's numeric appAppleId; a string fails as INVALID_APP_IDENTIFIER.
+  const appAppleId = Number(appleSecrets.appAppleId);
+  if (!appleRootCerts.length || !appAppleId) {
+    console.error("[apple-notification] CRITICAL: apple.rootCerts / apple.appAppleId not configured — cannot verify");
+    return null;
+  }
+  // ASSN V2 arrive from BOTH Sandbox and Production senders; the JWS only
+  // verifies against the matching-environment verifier. Try both (chain is
+  // validated to the Apple root either way). enableOnlineChecks=false avoids
+  // OCSP network flakiness in Lambda — the x5c chain + signature still prove
+  // authenticity. §6.1.
+  let verErr;
+  for (const env of [Environment.PRODUCTION, Environment.SANDBOX]) {
+    try {
+      const verifier = new SignedDataVerifier(
+        appleRootCerts, false, env, bundleId, appAppleId
+      );
+      return await verifier.verifyAndDecodeNotification(signedPayload);
+    } catch (e) {
+      verErr = e;
+    }
+  }
+  console.error("[apple-notification] signature verify failed (both envs): status=" + (verErr && (verErr.status ?? verErr.message)));
+  return null;
+}
+
+let _appleVerify = _defaultAppleVerify;
+function _setAppleVerifyForTest(fn) {
+  _appleVerify = fn || _defaultAppleVerify;
+}
+
 async function handleAppleNotification(body, secrets) {
   // Apple sends { signedPayload: "..." } — a JWS signed notification
   const { signedPayload } = body;
@@ -644,40 +690,10 @@ async function handleAppleNotification(body, secrets) {
   try {
     // §6.1 — Verify the ASSN V2 JWS signature with SignedDataVerifier.
     const appleSecrets = secrets?.apple || {};
-    const bundleId = appleSecrets.bundleId || "com.corpora.corpan";
-    let payload;
-    {
-      const appleRootCerts = (appleSecrets.rootCerts || []).map((c) =>
-        Buffer.from(c, "base64")
-      );
-      // appAppleId MUST be a number — SignedDataVerifier compares it to the
-      // payload's numeric appAppleId; a string fails as INVALID_APP_IDENTIFIER.
-      const appAppleId = Number(appleSecrets.appAppleId);
-      if (!appleRootCerts.length || !appAppleId) {
-        console.error("[apple-notification] CRITICAL: apple.rootCerts / apple.appAppleId not configured — cannot verify");
-        return json(200, { received: true, verified: false });
-      }
-      // ASSN V2 arrive from BOTH Sandbox and Production senders; the JWS only
-      // verifies against the matching-environment verifier. Try both (chain is
-      // validated to the Apple root either way). enableOnlineChecks=false avoids
-      // OCSP network flakiness in Lambda — the x5c chain + signature still prove
-      // authenticity. §6.1.
-      let verErr;
-      for (const env of [Environment.PRODUCTION, Environment.SANDBOX]) {
-        try {
-          const verifier = new SignedDataVerifier(
-            appleRootCerts, false, env, bundleId, appAppleId
-          );
-          payload = await verifier.verifyAndDecodeNotification(signedPayload);
-          break;
-        } catch (e) {
-          verErr = e;
-        }
-      }
-      if (!payload) {
-        console.error("[apple-notification] signature verify failed (both envs): status=" + (verErr && (verErr.status ?? verErr.message)));
-        return json(200, { received: true, verified: false });
-      }
+    const payload = await _appleVerify(signedPayload, appleSecrets);
+    if (!payload) {
+      // _appleVerify already logged the reason (unconfigured or verify failure).
+      return json(200, { received: true, verified: false });
     }
 
     const notificationType = payload.notificationType;
@@ -688,10 +704,13 @@ async function handleAppleNotification(body, secrets) {
     }));
 
     // §6 — Dedupe: ASSN is at-least-once and may duplicate/reorder. Process
-    // each notificationUUID at most once.
+    // each notificationUUID at most once. Use a READ-only probe here to skip
+    // obvious replays; the authoritative dedupe row is committed AFTER the
+    // side-effect work succeeds (see below) so a transient post-read failure
+    // leaves the event reprocessable on redelivery (all writes are idempotent).
     if (payload.notificationUUID) {
-      const first = await codes.markEventProcessed(`apple#${payload.notificationUUID}`);
-      if (!first) {
+      const seen = await codes.isEventProcessed(`apple#${payload.notificationUUID}`);
+      if (seen) {
         console.log(`[apple-notification] duplicate ${payload.notificationUUID} — skipped`);
         return json(200, { received: true, duplicate: true });
       }
@@ -716,8 +735,12 @@ async function handleAppleNotification(body, secrets) {
       const isOfferCode = txn.offerType === 3 && !!txn.offerIdentifier;
 
       // Extend the subscriber entitlement (PURCHASE# row behind /entitlement-token)
-      // for any live txn with a known subject + expiry.
-      if (subjectKey && expiresAt) {
+      // for any live txn with a known subject + expiry. A clawback (REFUND /
+      // REVOKE) usually still carries a future expiresDate, so guard it out —
+      // mirroring the Google path — to avoid refreshing entitlement on a revoked
+      // txn. Per the never-block-a-subscriber priority we do NOT write a negative
+      // / expire row here; existing entitlement simply lapses at natural expiry.
+      if (subjectKey && expiresAt && action !== "clawback") {
         await codes.recordEntitlementPurchase({
           subjectId: subjectKey, platform: "apple", txnOrOriginalId: txnId,
           productId, expiresAt, environment, appAccountToken: subjectKey,
@@ -744,17 +767,33 @@ async function handleAppleNotification(body, secrets) {
         }
       } else if (action === "clawback") {
         // Refund / revoke → reverse affiliate credit for this txn (§7).
+        // Reverse against the SPECIFIC refunded transaction id (`txnId`), NOT
+        // the original id: a renewal credit is keyed on its OWN renewal txn id
+        // (creditRenewal → EVENT#apple#<renewalTxnId>), so reversing on origId
+        // would never offset it. For the INITIAL purchase txnId === origId
+        // (Apple's first transaction is its own original), so the initial credit
+        // (keyed on origId) still nets out. Apple gives us the refunded
+        // transactionId in the notification, so it matches whatever id the
+        // matching credit row used for that period.
         const attr = subjectKey ? await codes.getAttribution(subjectKey) : null;
         const partnerId = attr?.partnerId
           || (isOfferCode ? (await codes.findCodeByOffer(txn.offerIdentifier))?.partnerId : null);
         if (partnerId) {
           await codes.reverseCredit({
-            partnerId, platform: "apple", txnOrOriginalId: origId, price, currency,
+            partnerId, platform: "apple", txnOrOriginalId: txnId, price, currency,
             reason: notificationType,
           });
         }
       }
       // "extend"/"reinstate" handled by the entitlement refresh above.
+    }
+
+    // §6 — Commit the dedupe row only AFTER all side-effect work above has
+    // succeeded. A crash/throw before this point leaves the event unmarked so a
+    // redelivery safely reprocesses (every write is an idempotent conditional
+    // put). If the throw happens, control jumps to catch and we do NOT mark.
+    if (payload.notificationUUID) {
+      await codes.markEventProcessed(`apple#${payload.notificationUUID}`);
     }
   } catch (err) {
     console.error("[apple-notification] handler error (non-fatal):", err.message);
@@ -777,21 +816,23 @@ async function handleGoogleNotification(body, secrets, authHeader) {
   }
 
   // §6.2 — Validate the Pub/Sub push OIDC token before trusting the payload.
-  // Fail-closed when configured. When NOT configured we process but log loudly:
-  // every event re-fetches authoritative state from Google (the notification
-  // body is never trusted), so a forged body can't inject state — but the topic
-  // SHOULD be locked down. Set google.pubsubAudience + google.pubsubServiceAccount.
+  // Fail-CLOSED: if the OIDC config (google.pubsubAudience /
+  // pubsubServiceAccount) is absent we REJECT and do NOT process the body (and
+  // do NOT burn a dedupe id) — never accept an unauthenticated push. Prod has
+  // these set, so this only removes a dangerous fallback.
   const googleSecrets = secrets?.google || {};
   const expectedAudience = googleSecrets.pubsubAudience;
   const expectedEmail = googleSecrets.pubsubServiceAccount;
-  if (expectedAudience || expectedEmail) {
+  if (!expectedAudience && !expectedEmail) {
+    console.error("[google-notification] CRITICAL: Pub/Sub OIDC NOT configured (no google.pubsubAudience/pubsubServiceAccount) — rejecting unauthenticated push");
+    return json(403, { error: "forbidden" });
+  }
+  {
     const ok = await verifyPubSubOidc(authHeader, expectedAudience, expectedEmail);
     if (!ok) {
       console.error("[google-notification] OIDC validation failed — rejecting");
       return json(401, { error: "unauthorized" });
     }
-  } else {
-    console.error("[google-notification] CRITICAL: Pub/Sub OIDC NOT configured (no google.pubsubAudience/pubsubServiceAccount) — accepting unauthenticated push");
   }
 
   try {
@@ -808,17 +849,20 @@ async function handleGoogleNotification(body, secrets, authHeader) {
       test: !!decoded.testNotification,
     }));
 
-    // Dedupe at-least-once Pub/Sub delivery by messageId.
-    if (message.messageId) {
-      const first = await codes.markEventProcessed(`google#${message.messageId}`);
-      if (!first) {
-        console.log(`[google-notification] duplicate ${message.messageId} — skipped`);
-        return json(200, { received: true, duplicate: true });
-      }
+    // Dedupe at-least-once Pub/Sub delivery by messageId. READ-only probe at the
+    // top to skip replays; the authoritative dedupe row is committed AFTER the
+    // side-effect work succeeds (see the markEventProcessed calls in each exit
+    // path below) so a transient post-probe failure leaves the event
+    // reprocessable on redelivery (all writes are idempotent).
+    const eventId = message.messageId ? `google#${message.messageId}` : null;
+    if (eventId && (await codes.isEventProcessed(eventId))) {
+      console.log(`[google-notification] duplicate ${message.messageId} — skipped`);
+      return json(200, { received: true, duplicate: true });
     }
 
     if (decoded.testNotification) {
       console.log("[google-notification] test notification OK");
+      if (eventId) await codes.markEventProcessed(eventId);
       return json(200, { received: true, test: true });
     }
 
@@ -835,6 +879,7 @@ async function handleGoogleNotification(body, secrets, authHeader) {
           txnOrOriginalId: voided.orderId || verify.transactionId, reason: "VOIDED",
         });
       }
+      if (eventId) await codes.markEventProcessed(eventId);
       return json(200, { received: true });
     }
 
@@ -884,6 +929,11 @@ async function handleGoogleNotification(body, secrets, authHeader) {
         });
       }
     }
+
+    // Commit the dedupe row only AFTER all side-effect work above has succeeded.
+    // A throw before this point jumps to catch and leaves the event unmarked so
+    // a redelivery safely reprocesses (every write is an idempotent put).
+    if (eventId) await codes.markEventProcessed(eventId);
   } catch (err) {
     console.error("[google-notification] handler error (non-fatal):", err.message);
   }
