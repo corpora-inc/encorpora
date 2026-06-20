@@ -13,6 +13,33 @@ use tauri::{AppHandle, Emitter, Manager, Runtime};
 /// with headroom while still bounding a malicious/misconfigured runaway stream.
 const DOWNLOAD_MAX_BYTES: u64 = 8 * 1024 * 1024 * 1024;
 
+/// Max time to establish the TCP/TLS connection to the CDN before giving up.
+/// A dead/unroutable host should fail here in seconds, not hang the install
+/// command forever.
+const DOWNLOAD_CONNECT_TIMEOUT_SECS: u64 = 30;
+
+/// Per-read (idle/stall) deadline on the streamed body. This is NOT an overall
+/// timeout — it resets every time bytes arrive — so a slow-but-progressing
+/// multi-GB model-pack download is fine; only a wedged socket that stops
+/// delivering bytes for this long is killed. A fixed overall timeout would have
+/// broken large legitimate downloads, which is why we use a stall watchdog.
+const DOWNLOAD_STALL_TIMEOUT_SECS: u64 = 120;
+
+/// Build the reqwest client used for every pack/module download with a connect
+/// timeout and an idle/stall (per-read) timeout. Centralized so both the
+/// full-pack and module download paths get the same watchdog and we don't have
+/// a bare `reqwest::Client::new()` (no timeouts → hangs forever on a dead CDN
+/// socket) anywhere in the install path.
+fn download_client() -> Result<reqwest::Client, String> {
+    reqwest::Client::builder()
+        .connect_timeout(std::time::Duration::from_secs(
+            DOWNLOAD_CONNECT_TIMEOUT_SECS,
+        ))
+        .read_timeout(std::time::Duration::from_secs(DOWNLOAD_STALL_TIMEOUT_SECS))
+        .build()
+        .map_err(|e| format!("Failed to build HTTP client: {e}"))
+}
+
 #[derive(Debug, Clone, Serialize)]
 pub struct InstallProgressEvent {
     pub pack_id: String,
@@ -178,11 +205,10 @@ async fn stream_body_to_file<F: Fn(&str, u64, u64, &str)>(
     use std::io::Write;
 
     if let Some(parent) = tmp_path.parent() {
-        fs::create_dir_all(parent)
-            .map_err(|e| format!("Failed to create download dir: {e}"))?;
+        fs::create_dir_all(parent).map_err(|e| format!("Failed to create download dir: {e}"))?;
     }
-    let file = fs::File::create(tmp_path)
-        .map_err(|e| format!("Failed to create download file: {e}"))?;
+    let file =
+        fs::File::create(tmp_path).map_err(|e| format!("Failed to create download file: {e}"))?;
     let mut writer = std::io::BufWriter::new(file);
     let mut hasher = sha2::Sha256::new();
     let mut downloaded: u64 = 0;
@@ -190,7 +216,12 @@ async fn stream_body_to_file<F: Fn(&str, u64, u64, &str)>(
 
     while let Some(chunk_result) = stream.next().await {
         let chunk = chunk_result.map_err(|e| {
-            emit_progress("error", downloaded, total, &format!("Download read failed: {e}"));
+            emit_progress(
+                "error",
+                downloaded,
+                total,
+                &format!("Download read failed: {e}"),
+            );
             format!("Download read failed: {e}")
         })?;
         downloaded += chunk.len() as u64;
@@ -202,7 +233,12 @@ async fn stream_body_to_file<F: Fn(&str, u64, u64, &str)>(
         }
         hasher.update(&chunk);
         writer.write_all(&chunk).map_err(|e| {
-            emit_progress("error", downloaded, total, &format!("Disk write failed: {e}"));
+            emit_progress(
+                "error",
+                downloaded,
+                total,
+                &format!("Disk write failed: {e}"),
+            );
             format!("Disk write failed: {e}")
         })?;
         emit_progress("downloading", downloaded, total, "Downloading");
@@ -250,7 +286,10 @@ fn read_manifest_info(path: &Path) -> Result<(String, Option<String>, Option<Str
         .and_then(|v| v.as_str())
         .ok_or("Manifest missing id")?
         .to_string();
-    let name = json.get("name").and_then(|v| v.as_str()).map(|s| s.to_string());
+    let name = json
+        .get("name")
+        .and_then(|v| v.as_str())
+        .map(|s| s.to_string());
     let version = json
         .get("version")
         .and_then(|v| v.as_str())
@@ -283,14 +322,14 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
         // Parse: corpan-pack://localhost/pack_id/path  OR
         //        http://corpan-pack.localhost/pack_id/path (Android/Windows).
         // Query parameters (e.g. ?dev=timestamp) are stripped by the parser.
-        let (pack_id, rel_path) =
-            parse_pack_url(&url).ok_or("Invalid corpan-pack URL format")?;
+        let (pack_id, rel_path) = parse_pack_url(&url).ok_or("Invalid corpan-pack URL format")?;
 
         #[cfg(debug_assertions)]
         eprintln!("[fetch_text] Pack ID: {}, Rel path: {}", pack_id, rel_path);
 
         // Use Tauri's proper API to get app data directory - works across all platforms
-        let pack_root = app.path()
+        let pack_root = app
+            .path()
             .app_data_dir()
             .map(|dir| dir.join("corpan-packs"))
             .map_err(|e| format!("Failed to get app data dir: {}", e))?;
@@ -318,7 +357,10 @@ pub async fn fetch_text<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<S
         let content = fs::read_to_string(&file_canon)
             .map_err(|e| format!("Failed to read file {:?}: {}", file_canon, e))?;
         #[cfg(debug_assertions)]
-        eprintln!("[fetch_text] Successfully read {} bytes from disk", content.len());
+        eprintln!(
+            "[fetch_text] Successfully read {} bytes from disk",
+            content.len()
+        );
         return Ok(content);
     }
 
@@ -369,6 +411,12 @@ pub async fn download_and_install<R: Runtime>(
         pack_id, download_url
     );
 
+    // SECURITY: reject any pack_id that could escape the pack root BEFORE it is
+    // ever interpolated into a tmp/staging/final/backup path. The later
+    // `manifest_id != pack_id` check happens after those paths are built, so it
+    // does not protect path construction — this is the gate that does.
+    validate_pack_id(&pack_id)?;
+
     let emit_progress = |stage: &str, progress: u64, total: u64, message: &str| {
         let _ = app.emit(
             "pack-install-progress",
@@ -384,15 +432,14 @@ pub async fn download_and_install<R: Runtime>(
 
     emit_progress("downloading", 0, 0, "Starting download");
 
-    let client = reqwest::Client::new();
-    let res = client
-        .get(&download_url)
-        .send()
-        .await
-        .map_err(|e| {
-            emit_progress("error", 0, 0, &format!("Download request failed: {e}"));
-            format!("Download request failed: {e}")
-        })?;
+    let client = download_client().map_err(|e| {
+        emit_progress("error", 0, 0, &e);
+        e
+    })?;
+    let res = client.get(&download_url).send().await.map_err(|e| {
+        emit_progress("error", 0, 0, &format!("Download request failed: {e}"));
+        format!("Download request failed: {e}")
+    })?;
     let status = res.status();
     if !status.is_success() {
         let msg = format!("Download failed ({status})");
@@ -408,6 +455,20 @@ pub async fn download_and_install<R: Runtime>(
         format!("Failed to create pack root: {e}")
     })?;
 
+    // Belt-and-suspenders: even with a validated id, assert every path we build
+    // resolves inside the (now-created) pack root before any write/remove.
+    for sub in [
+        format!(".{pack_id}.download.zip"),
+        format!(".{pack_id}.staging"),
+        pack_id.clone(),
+        format!(".{pack_id}.backup"),
+    ] {
+        if let Err(e) = assert_within_root(&root, &root.join(&sub)) {
+            emit_progress("error", 0, 0, &e);
+            return Err(e);
+        }
+    }
+
     // Stream straight to a temp file on disk (never buffer the whole archive in
     // RAM — a multi-GB model pack would OOM/jetsam the app). Hash is computed
     // incrementally as bytes arrive; the size ceiling is enforced in the helper.
@@ -420,14 +481,29 @@ pub async fn download_and_install<R: Runtime>(
         }
     };
     #[cfg(debug_assertions)]
-    eprintln!("[pack-install] Downloaded archive to {:?} for {}", tmp_zip, pack_id);
+    eprintln!(
+        "[pack-install] Downloaded archive to {:?} for {}",
+        tmp_zip, pack_id
+    );
 
     emit_progress("verifying", total, total, "Verifying integrity");
-    if let Some(expected) = expected_sha256 {
-        if actual_sha256 != expected {
-            let _ = fs::remove_file(&tmp_zip);
-            emit_progress("error", 0, 0, "Pack hash mismatch");
-            return Err("Pack hash mismatch".to_string());
+    // INTEGRITY: when the catalog carries a sha (production premium / two-ZIP
+    // installs always do via `entry.full.sha256` / preview sha) it MUST match.
+    // When it is absent we do NOT hard-fail — many free packs legitimately have
+    // no sha yet — but we log a clear warning so unverified installs are
+    // observable; catalog-side SHA coverage is a separate follow-up.
+    match &expected_sha256 {
+        Some(expected) => {
+            if &actual_sha256 != expected {
+                let _ = fs::remove_file(&tmp_zip);
+                emit_progress("error", 0, 0, "Pack hash mismatch");
+                return Err("Pack hash mismatch".to_string());
+            }
+        }
+        None => {
+            eprintln!(
+                "[pack-install] WARNING: installing pack {pack_id} WITHOUT an expected sha256 (unverified download; actual sha256={actual_sha256})"
+            );
         }
     }
 
@@ -458,11 +534,10 @@ pub async fn download_and_install<R: Runtime>(
         "Manifest not found in pack".to_string()
     })?;
     let manifest_path = pack_root_dir.join("manifest.json");
-    let (manifest_id, name, version) =
-        read_manifest_info(&manifest_path).map_err(|e| {
-            emit_progress("error", 0, 0, &format!("Invalid manifest: {e}"));
-            format!("Invalid manifest: {e}")
-        })?;
+    let (manifest_id, name, version) = read_manifest_info(&manifest_path).map_err(|e| {
+        emit_progress("error", 0, 0, &format!("Invalid manifest: {e}"));
+        format!("Invalid manifest: {e}")
+    })?;
     if manifest_id != pack_id {
         emit_progress("error", 0, 0, "Pack id mismatch");
         return Err("Pack id mismatch".to_string());
@@ -476,11 +551,15 @@ pub async fn download_and_install<R: Runtime>(
         let _ = fs::remove_dir_all(&backup_dir);
     }
     if final_dir.exists() {
-        fs::rename(&final_dir, &backup_dir)
-            .map_err(|e| {
-                emit_progress("error", 0, 0, &format!("Failed to backup existing pack: {e}"));
-                format!("Failed to backup existing pack: {e}")
-            })?;
+        fs::rename(&final_dir, &backup_dir).map_err(|e| {
+            emit_progress(
+                "error",
+                0,
+                0,
+                &format!("Failed to backup existing pack: {e}"),
+            );
+            format!("Failed to backup existing pack: {e}")
+        })?;
     }
 
     // The source dir to move into place (staging itself, or the nested pack root).
@@ -500,11 +579,18 @@ pub async fn download_and_install<R: Runtime>(
                     "[pack-install] CRITICAL: finalize failed ({e}) AND backup restore failed ({re}); pack {pack_id} left at {backup_dir:?}"
                 );
             } else {
-                eprintln!("[pack-install] finalize failed ({e}); restored previous pack from backup");
+                eprintln!(
+                    "[pack-install] finalize failed ({e}); restored previous pack from backup"
+                );
             }
         }
         let _ = fs::remove_dir_all(&staging);
-        emit_progress("error", 0, 0, &format!("Failed to finalize pack install: {e}"));
+        emit_progress(
+            "error",
+            0,
+            0,
+            &format!("Failed to finalize pack install: {e}"),
+        );
         return Err(format!("Failed to finalize pack install: {e}"));
     }
     if pack_root_dir != staging {
@@ -527,10 +613,7 @@ pub async fn download_and_install<R: Runtime>(
     index.packs.insert(info.id.clone(), info.clone());
     save_index(&root, &index)?;
     #[cfg(debug_assertions)]
-    eprintln!(
-        "[pack-install] Installed {} ({:?})",
-        info.id, info.version
-    );
+    eprintln!("[pack-install] Installed {} ({:?})", info.id, info.version);
 
     emit_progress("complete", 0, 0, "Installation complete");
 
@@ -576,8 +659,7 @@ pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<
 
     // Handle corpan-pack URLs (either platform form) by reading from disk.
     if is_pack_url(&url) {
-        let (pack_id, rel_path) =
-            parse_pack_url(&url).ok_or("Invalid corpan-pack URL format")?;
+        let (pack_id, rel_path) = parse_pack_url(&url).ok_or("Invalid corpan-pack URL format")?;
 
         #[cfg(debug_assertions)]
         eprintln!("[fetch_bytes] Pack ID: {}, Rel path: {}", pack_id, rel_path);
@@ -608,7 +690,10 @@ pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<
         let content = fs::read(&file_canon)
             .map_err(|e| format!("Failed to read file {:?}: {}", file_canon, e))?;
         #[cfg(debug_assertions)]
-        eprintln!("[fetch_bytes] Successfully read {} bytes from disk", content.len());
+        eprintln!(
+            "[fetch_bytes] Successfully read {} bytes from disk",
+            content.len()
+        );
         return Ok(content);
     }
 
@@ -648,16 +733,78 @@ pub async fn fetch_bytes<R: Runtime>(app: &AppHandle<R>, url: String) -> Result<
     Ok(bytes.to_vec())
 }
 
-pub fn get_manifest_url<R: Runtime>(
-    app: &AppHandle<R>,
-    pack_id: String,
-) -> Result<String, String> {
+pub fn get_manifest_url<R: Runtime>(app: &AppHandle<R>, pack_id: String) -> Result<String, String> {
+    validate_pack_id(&pack_id)?;
     let root = pack_root(app)?;
     let manifest_path = root.join(&pack_id).join("manifest.json");
     if !manifest_path.exists() {
         return Err("Pack not installed".to_string());
     }
     Ok(manifest_url_for(&pack_id))
+}
+
+/// Strictly validate a caller-supplied `pack_id` before it is interpolated into
+/// ANY filesystem path (tmp/staging/final/backup dirs, module dirs, manifest
+/// paths). The catalog/module payload is attacker-influenced data, so a value
+/// like `../../evil`, `a/b`, `a\b`, `.`, `..`, an empty string, or one carrying
+/// a NUL must never be allowed to steer a write or remove outside the
+/// `corpan-packs` root. We allow only a conservative id charset; this is
+/// deliberately tighter than `sanitize_rel` (which permits nested rel paths)
+/// because a pack id is a single, flat directory name.
+///
+/// Allowed: non-empty, `[A-Za-z0-9._-]` only, and not exactly `.` or `..`.
+/// Returns the id unchanged on success, a non-leaky error otherwise.
+fn validate_pack_id(pack_id: &str) -> Result<&str, String> {
+    if pack_id.is_empty() {
+        return Err("Invalid pack id".to_string());
+    }
+    if pack_id == "." || pack_id == ".." {
+        return Err("Invalid pack id".to_string());
+    }
+    if !pack_id
+        .chars()
+        .all(|c| c.is_ascii_alphanumeric() || c == '.' || c == '-' || c == '_')
+    {
+        return Err("Invalid pack id".to_string());
+    }
+    Ok(pack_id)
+}
+
+/// Belt-and-suspenders containment check: assert that `child` (which may not yet
+/// exist) resolves inside `root` once the existing portion of its ancestry is
+/// canonicalized. This catches symlink/`..` escapes that a pure-string id check
+/// could miss. `root` is expected to exist (we create the pack root first).
+fn assert_within_root(root: &Path, child: &Path) -> Result<(), String> {
+    let root_canon = root
+        .canonicalize()
+        .map_err(|_| "Pack root unavailable".to_string())?;
+    // The child itself usually doesn't exist yet (we're about to create it), so
+    // canonicalize the nearest existing ancestor and re-append the remainder,
+    // then verify the result is still under the canonical root.
+    let mut existing = child;
+    let mut tail: Vec<std::ffi::OsString> = Vec::new();
+    let resolved = loop {
+        if let Ok(c) = existing.canonicalize() {
+            let mut full = c;
+            for part in tail.iter().rev() {
+                full.push(part);
+            }
+            break full;
+        }
+        match (existing.parent(), existing.file_name()) {
+            (Some(parent), Some(name)) => {
+                tail.push(name.to_os_string());
+                existing = parent;
+            }
+            // Walked off the top without finding an existing ancestor.
+            _ => return Err("Path escapes pack root".to_string()),
+        }
+    };
+    if resolved.starts_with(&root_canon) {
+        Ok(())
+    } else {
+        Err("Path escapes pack root".to_string())
+    }
 }
 
 /// Sanitize a caller-supplied relative path before joining it onto a pack
@@ -673,9 +820,7 @@ fn sanitize_rel(rel: &str) -> Result<PathBuf, String> {
             // Drop redundant `.` segments.
             Component::CurDir => {}
             // Anything that could escape the pack root is a hard error.
-            Component::ParentDir
-            | Component::RootDir
-            | Component::Prefix(_) => {
+            Component::ParentDir | Component::RootDir | Component::Prefix(_) => {
                 return Err(format!("Unsafe relative path: {rel}"));
             }
         }
@@ -721,25 +866,41 @@ pub async fn install_module<R: Runtime>(
     };
 
     // Resolve (and validate) the destination before any network work so a
-    // traversal attempt fails fast and loud.
+    // traversal attempt fails fast and loud. The pack_id is attacker-influenced
+    // catalog data, so validate it BEFORE building the pack dir path.
+    validate_pack_id(&pack_id).map_err(|e| {
+        emit_progress("error", 0, 0, &e);
+        e
+    })?;
     let rel = sanitize_rel(&sub_path).map_err(|e| {
         emit_progress("error", 0, 0, &e);
         e
     })?;
-    let pack_dir = pack_root(app)?.join(&pack_id);
+    let root = pack_root(app)?;
+    let pack_dir = root.join(&pack_id);
     let dest = pack_dir.join(&rel);
+    // Belt-and-suspenders containment: the pack dir must be created (or already
+    // exist) for canonicalization; ensure it, then assert both it and the module
+    // dest resolve inside the pack root.
+    fs::create_dir_all(&pack_dir).map_err(|e| {
+        emit_progress("error", 0, 0, &format!("Failed to create pack dir: {e}"));
+        format!("Failed to create pack dir: {e}")
+    })?;
+    if let Err(e) = assert_within_root(&root, &dest) {
+        emit_progress("error", 0, 0, &e);
+        return Err(e);
+    }
 
     emit_progress("downloading", 0, 0, "Starting download");
 
-    let client = reqwest::Client::new();
-    let res = client
-        .get(&download_url)
-        .send()
-        .await
-        .map_err(|e| {
-            emit_progress("error", 0, 0, &format!("Download request failed: {e}"));
-            format!("Download request failed: {e}")
-        })?;
+    let client = download_client().map_err(|e| {
+        emit_progress("error", 0, 0, &e);
+        e
+    })?;
+    let res = client.get(&download_url).send().await.map_err(|e| {
+        emit_progress("error", 0, 0, &format!("Download request failed: {e}"));
+        format!("Download request failed: {e}")
+    })?;
     let status = res.status();
     if !status.is_success() {
         let msg = format!("Download failed ({status})");
@@ -766,11 +927,20 @@ pub async fn install_module<R: Runtime>(
     );
 
     emit_progress("verifying", total, total, "Verifying integrity");
-    if let Some(expected) = expected_sha256 {
-        if actual_sha256 != expected {
-            let _ = fs::remove_file(&tmp_zip);
-            emit_progress("error", 0, 0, "Module hash mismatch");
-            return Err("Module hash mismatch".to_string());
+    // INTEGRITY: enforce sha when provided; otherwise warn so unverified module
+    // installs are observable (same policy as full-pack installs).
+    match &expected_sha256 {
+        Some(expected) => {
+            if &actual_sha256 != expected {
+                let _ = fs::remove_file(&tmp_zip);
+                emit_progress("error", 0, 0, "Module hash mismatch");
+                return Err("Module hash mismatch".to_string());
+            }
+        }
+        None => {
+            eprintln!(
+                "[pack-module] WARNING: installing module {pack_id}/{sub_path} WITHOUT an expected sha256 (unverified download; actual sha256={actual_sha256})"
+            );
         }
     }
 
@@ -808,10 +978,7 @@ pub async fn install_module<R: Runtime>(
     }
 
     #[cfg(debug_assertions)]
-    eprintln!(
-        "[pack-module] Installed module {} into {:?}",
-        pack_id, dest
-    );
+    eprintln!("[pack-module] Installed module {} into {:?}", pack_id, dest);
 
     emit_progress("complete", 0, 0, "Module installation complete");
 
@@ -824,7 +991,101 @@ pub fn module_file_exists<R: Runtime>(
     pack_id: String,
     rel_path: String,
 ) -> Result<bool, String> {
+    validate_pack_id(&pack_id)?;
     let rel = sanitize_rel(&rel_path)?;
     let path = pack_root(app)?.join(&pack_id).join(rel);
     Ok(path.is_file())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{assert_within_root, validate_pack_id};
+    use std::path::PathBuf;
+
+    #[test]
+    fn validate_pack_id_accepts_real_ids() {
+        for id in [
+            "beatlounge",
+            "science-volcanoes-ian-chill-clear-en",
+            "book_biomes_tropical_savanna",
+            "llm-base-qwen3-4b-v1",
+            "corpan_city",
+            "a",
+            "A1.b2_c-3",
+        ] {
+            assert!(validate_pack_id(id).is_ok(), "should accept {id:?}");
+        }
+    }
+
+    #[test]
+    fn validate_pack_id_rejects_traversal_and_separators() {
+        for id in [
+            "",     // empty
+            ".",    // current dir
+            "..",   // parent dir
+            "../x", // traversal
+            "../../evil",
+            "a/b",  // forward slash
+            "a\\b", // backslash (Windows separator)
+            "/abs", // absolute
+            "a/../b",
+            "pack id", // space
+            "pack:id", // colon (Windows drive / NTFS stream)
+            "pack*id", // glob
+            "..\\..\\evil",
+        ] {
+            assert!(validate_pack_id(id).is_err(), "should reject {id:?}");
+        }
+    }
+
+    #[test]
+    fn validate_pack_id_rejects_nul() {
+        assert!(validate_pack_id("evil\0pack").is_err());
+        assert!(validate_pack_id("\0").is_err());
+    }
+
+    #[test]
+    fn validate_pack_id_error_is_non_leaky() {
+        // Error message must not echo the (possibly hostile) input back.
+        let err = validate_pack_id("../../etc/passwd").unwrap_err();
+        assert_eq!(err, "Invalid pack id");
+    }
+
+    #[test]
+    fn assert_within_root_allows_child_under_root() {
+        let dir = std::env::temp_dir().join(format!(
+            "cp-test-root-{}-{}",
+            std::process::id(),
+            now_nanos()
+        ));
+        std::fs::create_dir_all(&dir).unwrap();
+        // A not-yet-existing child directly under the root must pass.
+        let child = dir.join("beatlounge");
+        assert!(assert_within_root(&dir, &child).is_ok());
+        // A nested not-yet-existing child also passes.
+        let nested = dir.join(".beatlounge.staging").join("inner");
+        assert!(assert_within_root(&dir, &nested).is_ok());
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn assert_within_root_rejects_escape() {
+        let dir = std::env::temp_dir().join(format!(
+            "cp-test-escape-{}-{}",
+            std::process::id(),
+            now_nanos()
+        ));
+        std::fs::create_dir_all(&dir).unwrap();
+        // A path that climbs out of the root must be rejected once resolved.
+        let escape: PathBuf = dir.join("..").join("..").join("evil");
+        assert!(assert_within_root(&dir, &escape).is_err());
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    fn now_nanos() -> u128 {
+        std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .map(|d| d.as_nanos())
+            .unwrap_or(0)
+    }
 }
