@@ -112,6 +112,19 @@ function pubsubBody(decoded, messageId) {
   };
 }
 
+function applePayload({ notificationType, uuid, txn }) {
+  const body = Buffer.from(JSON.stringify(txn)).toString("base64url");
+  return {
+    notificationType,
+    notificationUUID: uuid,
+    data: { signedTransactionInfo: `h.${body}.s` },
+  };
+}
+
+const APPLE_SECRETS = {
+  apple: { bundleId: "com.corpora.corpan", appAppleId: 123, rootCerts: ["x"] },
+};
+
 // Swap google.androidpublisher with a fake; returns a restore fn.
 function withFakeAndroidPublisher(impl) {
   const orig = google.androidpublisher;
@@ -185,6 +198,164 @@ test("P1-A(1): Google handler returns 500 (not 200) on a thrown side-effect writ
     // The side-effect work DID happen (entitlement extended) — redelivery is
     // safe because all writes are idempotent conditional puts.
     assert.ok(doc.store.get("SUBJECT#subj-a1|PURCHASE#android#ORDER-1"), "entitlement work happened");
+  } finally {
+    restorePub();
+    restores.forEach((r) => r());
+  }
+});
+
+test("P1-A(1b): Apple renewal entitlement-write failure → 500, event NOT marked", async () => {
+  const subjectId = "subj-apple-side-effect-fail";
+  const txnId = "TXN-APPLE-SIDE-EFFECT-FAIL";
+  const uuid = "uuid-apple-side-effect-fail";
+  const doc = freshDoc({
+    failPut: (it) => it.PK === `SUBJECT#${subjectId}` && it.SK === `PURCHASE#apple#${txnId}`,
+  });
+
+  v._setAppleVerifyForTest(async () =>
+    applePayload({
+      notificationType: "DID_RENEW",
+      uuid,
+      txn: {
+        transactionId: txnId,
+        originalTransactionId: "TXN-APPLE-ORIG",
+        appAccountToken: subjectId,
+        productId: "corpan.sub.monthly",
+        environment: "Production",
+        expiresDate: Date.now() + 30 * 86400000,
+      },
+    })
+  );
+
+  try {
+    const res = await v.handleAppleNotification({ signedPayload: "p" }, APPLE_SECRETS);
+    assert.equal(res.statusCode, 500, "failed entitlement write must be retryable");
+    assert.equal(doc.store.get(`DEDUPE#apple#${uuid}|SEEN`), undefined, "event NOT marked");
+  } finally {
+    v._setAppleVerifyForTest(null);
+  }
+});
+
+test("P1-A(1c): Google renewal entitlement-write failure → 500, event NOT marked", async () => {
+  const subjectId = "subj-google-side-effect-fail";
+  const orderId = "ORDER-GOOGLE-SIDE-EFFECT-FAIL";
+  const doc = freshDoc({
+    failPut: (it) => it.PK === `SUBJECT#${subjectId}` && it.SK === `PURCHASE#android#${orderId}`,
+  });
+  const restores = [];
+  withOidcPass(restores);
+  const restorePub = withFakeAndroidPublisher(() => ({
+    purchases: {
+      subscriptionsv2: {
+        get: async () => ({
+          data: {
+            subscriptionState: "SUBSCRIPTION_STATE_ACTIVE",
+            lineItems: [{
+              productId: "corpan.sub.monthly",
+              expiryTime: new Date(Date.now() + 30 * 86400000).toISOString(),
+              latestSuccessfulOrderId: orderId,
+            }],
+            externalAccountIdentifiers: { obfuscatedExternalAccountId: "obf-side-effect-fail" },
+            acknowledgementState: "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED",
+          },
+        }),
+      },
+    },
+  }));
+  await codes.putAttribution({
+    PK: `SUBJECT#${subjectId}`,
+    SK: "ATTRIBUTION",
+    GSI1PK: "obf-side-effect-fail",
+    GSI1SK: "ATTRIBUTION",
+    code: null,
+    partnerId: "demo",
+    status: "verified",
+  });
+
+  try {
+    const secrets = {
+      google: { ...OIDC_SECRETS_BASE, serviceAccountJson: { client_email: "x@y", private_key: "k", project_id: "p" } },
+    };
+    const decoded = {
+      packageName: "com.corpora.corpan",
+      subscriptionNotification: { notificationType: 2, purchaseToken: "T-side", subscriptionId: "corpan.sub.monthly" },
+    };
+    const res = await v.handleGoogleNotification(pubsubBody(decoded, "msg-side-effect-fail"), secrets, "Bearer tok");
+    assert.equal(res.statusCode, 500, "failed entitlement write must be retryable");
+    assert.equal(doc.store.get("DEDUPE#google#msg-side-effect-fail|SEEN"), undefined, "event NOT marked");
+  } finally {
+    restorePub();
+    restores.forEach((r) => r());
+  }
+});
+
+test("P1-A(1d): Google voided reversal-write failure → 500, event NOT marked", async () => {
+  const subjectId = "subj-google-reversal-fail";
+  const partnerId = "demo";
+  const orderId = "ORDER-GOOGLE-VOIDED-FAIL";
+  const doc = freshDoc({
+    failPut: (it) =>
+      String(it.PK).startsWith(`LEDGER#${partnerId}#`) &&
+      it.SK === `EVENT#android#${orderId}#reversal`,
+  });
+  const restores = [];
+  withOidcPass(restores);
+  const restorePub = withFakeAndroidPublisher(() => ({
+    purchases: {
+      subscriptionsv2: {
+        get: async () => ({
+          data: {
+            subscriptionState: "SUBSCRIPTION_STATE_ACTIVE",
+            lineItems: [{
+              productId: "corpan.sub.monthly",
+              expiryTime: new Date(Date.now() + 30 * 86400000).toISOString(),
+              latestSuccessfulOrderId: orderId,
+            }],
+            externalAccountIdentifiers: { obfuscatedExternalAccountId: "obf-reversal-fail" },
+            acknowledgementState: "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED",
+          },
+        }),
+      },
+    },
+  }));
+  await codes.putAttribution({
+    PK: `SUBJECT#${subjectId}`,
+    SK: "ATTRIBUTION",
+    GSI1PK: "obf-reversal-fail",
+    GSI1SK: "ATTRIBUTION",
+    code: "DEMO30",
+    partnerId,
+    status: "verified",
+  });
+  await codes.putLedgerEvent({
+    PK: `LEDGER#${partnerId}#${codes.yyyymm(new Date().toISOString())}`,
+    SK: `EVENT#android#${orderId}`,
+    subjectId,
+    code: "DEMO30",
+    productId: "corpan.sub.monthly",
+    price: 24,
+    currency: "USD",
+    kind: "renewal",
+    revenueSharePct: 0.3,
+    eventTime: new Date().toISOString(),
+  });
+
+  try {
+    const secrets = {
+      google: { ...OIDC_SECRETS_BASE, serviceAccountJson: { client_email: "x@y", private_key: "k", project_id: "p" } },
+    };
+    const decoded = {
+      packageName: "com.corpora.corpan",
+      voidedPurchaseNotification: {
+        purchaseToken: "T-void",
+        orderId,
+        subscriptionId: "corpan.sub.monthly",
+        refundType: 1,
+      },
+    };
+    const res = await v.handleGoogleNotification(pubsubBody(decoded, "msg-reversal-fail"), secrets, "Bearer tok");
+    assert.equal(res.statusCode, 500, "failed reversal write must be retryable");
+    assert.equal(doc.store.get("DEDUPE#google#msg-reversal-fail|SEEN"), undefined, "event NOT marked");
   } finally {
     restorePub();
     restores.forEach((r) => r());
