@@ -864,6 +864,11 @@ export async function verifyPurchase(
       productId: purchase.productId,
       transactionId: purchase.transactionId,
       subjectId: options.subjectId ?? getCorpanSubjectId(),
+      // Tell the server this is a subscription so Google verification uses
+      // subscriptionsv2 (not the one-time products endpoint, which rejects a
+      // subscription token). Per-book IAP is retired; sub product ids are
+      // `corpan.sub.*`. Server also defaults to "subs" when this is absent.
+      productType: purchase.productId.includes(".sub.") ? "subs" : "inapp",
     }
 
     if (purchase.platform === "ios" || purchase.platform === "macos") {

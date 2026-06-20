@@ -568,6 +568,7 @@
       "noMatches": "Sense resultats.",
       "filter": {
         "all": "Tots",
+        "available": "Disponibles",
         "free": "Gratuït",
         "paid": "De pagament",
         "installed": "Instal·lat"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Explora paquets de frases",
       "inactiveBadge": "Inactiu",
       "moreActionsLabel": "Més accions",
-      "install": "Instal·la"
+      "install": "Instal·la",
+      "downloadAll": "Baixa-ho tot",
+      "downloadAllSummary": "{{count}} disponibles · ~{{size}} MB",
+      "installingBatch": "Instal·lant {{current}} de {{total}}…",
+      "batchFailed": "No s'han pogut instal·lar {{count}} — toca per reintentar"
     },
     "unlockWithPlus": "Desbloqueja amb Corpán Plus",
     "plus": "Corpán Plus",

@@ -18,10 +18,21 @@ import { stopPreview } from "./voicePreview"
 import { libraryStore, isInstalled, getInstalled, listInstalled } from "./libraryStore"
 import { getPackUrl, isTauriAvailable, installNarration, deleteNarration, isTwoZipEntry } from "./installManager"
 import {
+  upgradeActiveNarration,
+  runUpgradeSweep,
+  maybeUpgradeOnOpen,
+  setUpgradeCatalogProvider,
+  debugInstallPreview,
+  debugInstallStatus,
+  NARRATION_UPGRADED_EVENT,
+  ENTITLEMENTS_CHANGED_EVENT,
+} from "./upgradeManager"
+import {
   groupByBook,
   groupBySeries,
   sortBooks,
   type BookSort,
+  chooseNextBook,
   filterByLanguage,
   searchByTitle,
   getAvailableLanguages,
@@ -99,11 +110,19 @@ const DEFAULT_SEED_BOOK = "book_biomes_tropical_rainforest"
 // never persisted. See `~/encorpora/corpan/infra/PUBLISHING.md` § Analytics.
 const ANALYTICS_ENDPOINT = "https://d1xp3xghrx3jfa.cloudfront.net/v1/events"
 
+export type ReaderInstance = {
+  dispose: () => void
+  isPlaying?: () => boolean
+  /** Persist the current playback bookmark on demand. Used before an upgrade
+   *  reload so the new (full) pack resumes exactly where the preview was. */
+  persistBookmark?: () => void
+}
+
 export type ReaderFactory = (
   container: HTMLElement,
   hostApi: unknown,
   initialState?: Record<string, unknown>
-) => { dispose: () => void; isPlaying?: () => boolean }
+) => ReaderInstance
 
 export type AppShellOptions = {
   /** Unique ID for this reader (e.g. "earthgate", "stargate"). Scopes persisted state so readers don't share narration selection. */
@@ -216,7 +235,9 @@ export function createAppShell(
     narration: CatalogNarrationEntry
   ): { sizeMb: number; isPreview: boolean } {
     if (isTwoZipEntry(narration)) {
-      if (isSubscriberSync()) return { sizeMb: narration.full.sizeMb, isPreview: false }
+      // Full ZIP if entitled — a subscriber OR a one-time owner of this book.
+      // (Don't advertise the free-preview size to someone who's already paid.)
+      if (isEntitledToNarrationSync(narration)) return { sizeMb: narration.full.sizeMb, isPreview: false }
       return { sizeMb: narration.preview.sizeMb, isPreview: true }
     }
     return { sizeMb: narration.sizeMb, isPreview: false }
@@ -367,7 +388,7 @@ export function createAppShell(
   }
 
   let disposed = false
-  let readerInstance: { dispose: () => void; isPlaying?: () => boolean } | null = null
+  let readerInstance: ReaderInstance | null = null
 
   // Re-entrancy guard — prevents store subscription from re-triggering
   // switchToNarration while we're already inside it.
@@ -557,6 +578,111 @@ export function createAppShell(
     return true
   }
 
+  // --- End-of-book "read next" suggestion ---
+  // A tasteful overlay shown when a full book finishes. Reuses the catalog
+  // theming vars + .catalog-btn styles so it inherits each reader's look.
+  let endOfBookEl: HTMLElement | null = null
+
+  function dismissEndOfBookSuggestion(): void {
+    if (!endOfBookEl) return
+    endOfBookEl.classList.remove("catalog-eob--open")
+    const el = endOfBookEl
+    endOfBookEl = null
+    // Let the fade-out finish before removing.
+    window.setTimeout(() => el.remove(), 250)
+  }
+
+  /** Show the next-book suggestion for the book that just finished. */
+  function showEndOfBookSuggestion(finishedBookId: string, language: string): void {
+    if (disposed) return
+    // Only meaningful once the catalog is loaded.
+    if (allNarrations.length === 0) return
+    const next = chooseNextBook(allNarrations, finishedBookId, language)
+    if (!next) return // nothing sensible to suggest — stay out of the way
+
+    // Replace any prior suggestion (e.g. user re-finished a book).
+    dismissEndOfBookSuggestion()
+
+    const overlay = document.createElement("div")
+    overlay.className = "catalog-eob"
+    overlay.setAttribute("dir", "auto")
+
+    const card = document.createElement("div")
+    card.className = "catalog-eob-card"
+
+    // Close (×) — dismiss without leaving the finished book.
+    const closeBtn = document.createElement("button")
+    closeBtn.type = "button"
+    closeBtn.className = "catalog-eob-close"
+    closeBtn.setAttribute("aria-label", tt("reader.eob.dismiss", "Dismiss"))
+    closeBtn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>`
+    closeBtn.addEventListener("click", dismissEndOfBookSuggestion)
+    card.appendChild(closeBtn)
+
+    const kicker = document.createElement("div")
+    kicker.className = "catalog-eob-kicker"
+    kicker.textContent = tt("reader.eob.finished", "End of book")
+    card.appendChild(kicker)
+
+    // Cover (if we have one) + next title.
+    const coverUrl = catalogIndex?.getCoverUrl(next.book.bookId, next.narration) ?? ""
+    if (coverUrl) {
+      const cover = document.createElement("div")
+      cover.className = "catalog-eob-cover"
+      cover.style.backgroundImage = `url(${cssUrl(coverUrl)})`
+      card.appendChild(cover)
+    }
+
+    const lead = document.createElement("div")
+    lead.className = "catalog-eob-lead"
+    lead.textContent = tt("reader.eob.upNext", "Up next")
+    card.appendChild(lead)
+
+    const title = document.createElement("div")
+    title.className = "catalog-eob-title"
+    title.textContent = next.book.bookTitle
+    card.appendChild(title)
+
+    if (next.book.series) {
+      const series = document.createElement("div")
+      series.className = "catalog-eob-series"
+      series.textContent =
+        next.book.series + (next.book.volume ? ` · Vol. ${next.book.volume}` : "")
+      card.appendChild(series)
+    }
+
+    const actions = document.createElement("div")
+    actions.className = "catalog-eob-actions"
+
+    const readBtn = document.createElement("button")
+    readBtn.type = "button"
+    readBtn.className = "catalog-btn catalog-btn--primary"
+    readBtn.textContent = tt("reader.eob.readNext", "Read next")
+    readBtn.addEventListener("click", () => {
+      dismissEndOfBookSuggestion()
+      void installAndSwitchNarration(next.narration)
+    })
+
+    const browseBtn = document.createElement("button")
+    browseBtn.type = "button"
+    browseBtn.className = "catalog-btn"
+    browseBtn.textContent = tt("reader.eob.browse", "Browse books")
+    browseBtn.addEventListener("click", () => {
+      dismissEndOfBookSuggestion()
+      drawer.open()
+      drawer.navigateTo("browse")
+    })
+
+    actions.append(readBtn, browseBtn)
+    card.appendChild(actions)
+    overlay.appendChild(card)
+
+    container.appendChild(overlay)
+    endOfBookEl = overlay
+    // Next frame → trigger the fade/translate-in transition.
+    requestAnimationFrame(() => overlay.classList.add("catalog-eob--open"))
+  }
+
   const switcherCallbacks = {
     getActiveId: () => getActive(),
     getActiveBookId,
@@ -713,6 +839,114 @@ export function createAppShell(
   window.addEventListener("corpan:purchase-recorded", onPurchaseEvent)
   window.addEventListener("corpan:subscription-recorded", onPurchaseEvent)
   window.addEventListener("corpan:restore-purchases-completed", onPurchaseEvent)
+
+  // End of a full book → suggest the next one to read (subscriber/owned path).
+  // The reader signals `corpan:book-finished`; we own the catalog, so we pick
+  // the next title and present it.
+  const onBookFinished = (e: Event): void => {
+    const detail = (e as CustomEvent).detail as
+      | { bookId?: string; language?: string }
+      | undefined
+    if (!detail?.bookId) return
+    const bookId = detail.bookId
+    const language = detail.language || drawerStore.getState().currentLanguage
+    // A returning user can open an installed book straight from the restored
+    // library and finish it without ever opening the drawer — so the catalog
+    // was never fetched and `showEndOfBookSuggestion` would no-op. Lazy-hydrate
+    // it here, then suggest the next book.
+    if (allNarrations.length === 0) {
+      void fetchCatalog(cdnUrl, { fallbackUrl: FALLBACK_CDN_URL })
+        .then((catalog) => {
+          if (disposed) return
+          allNarrations = catalog.narrations
+          showEndOfBookSuggestion(bookId, language)
+        })
+        .catch(() => {})
+      return
+    }
+    showEndOfBookSuggestion(bookId, language)
+  }
+  window.addEventListener("corpan:book-finished", onBookFinished)
+
+  // -----------------------------------------------------------------------
+  // Corpán Plus preview → full upgrade (3 layers).
+  //
+  // The upgrade manager reuses OUR in-memory catalog so it never double-fetches.
+  setUpgradeCatalogProvider(() => allNarrations)
+
+  // Layer 1 + 2 trigger: the app dispatches `corpan:entitlements-changed`
+  // {plus:true} the moment Plus becomes active (purchase / restore / async
+  // StoreKit delivery). First upgrade the ACTIVE book on ANY connection (the
+  // one they just paid to finish), then kick the background sweep for the rest
+  // (gated to Wi-Fi inside runUpgradeSweep).
+  let upgradeKickInFlight = false
+  const onEntitlementsChanged = (e: Event): void => {
+    const detail = (e as CustomEvent<{ plus?: boolean }>).detail
+    if (!detail?.plus) return
+    if (upgradeKickInFlight) return
+    upgradeKickInFlight = true
+    void (async () => {
+      try {
+        // Make sure our entitlement snapshot reflects Plus before we rebuild UI.
+        await refreshEntitlements("event:entitlements-changed")
+        const active = getActive()
+        if (active) {
+          // High priority: the active book first, any connection.
+          await upgradeActiveNarration(active)
+        }
+        // Then everything else, best-effort + Wi-Fi-gated.
+        await runUpgradeSweep()
+      } catch (err) {
+        console.warn("[appShell] upgrade kick failed:", err)
+      } finally {
+        upgradeKickInFlight = false
+      }
+    })()
+  }
+  window.addEventListener(ENTITLEMENTS_CHANGED_EVENT, onEntitlementsChanged)
+
+  // Layer D: when a narration finishes upgrading preview → full, if it's the
+  // one currently open, reload it so the reader picks up the now-full
+  // segments.json and AUTO-CONTINUES from the saved bookmark (seamless — the
+  // preview cut off at its last segment; the full pack flows on from there).
+  const onNarrationUpgraded = (e: Event): void => {
+    const detail = (e as CustomEvent<{ narrationId?: string }>).detail
+    const upgradedId = detail?.narrationId
+    if (!upgradedId) return
+    // Refresh library/now-playing chrome so size/labels reflect the full pack.
+    refreshLibrarySection()
+    refreshNowPlayingSection()
+    refreshSwitchers()
+    if (upgradedId !== getActive()) return
+    // Persist the live position before tearing down, so the reload resumes from
+    // exactly where the preview ended, then auto-continue into the full content.
+    try {
+      readerInstance?.persistBookmark?.()
+    } catch (err) {
+      console.warn("[appShell] persistBookmark before upgrade reload failed:", err)
+    }
+    switchToNarration(upgradedId, false, true)
+  }
+  window.addEventListener(NARRATION_UPGRADED_EVENT, onNarrationUpgraded)
+
+  // QA harness for the Corpán Plus preview → full JIT upgrade. Reachable from
+  // the Safari Web Inspector / Chrome DevTools console on a REAL subscribed
+  // device, where every natural install fetches the full ZIP and so the preview
+  // condition can never occur organically (leaving the JIT path untestable).
+  //
+  // NOT gated on `import.meta.env.DEV`: packs are built in PRODUCTION mode even
+  // when loaded by a dev app, so a DEV gate would tree-shake this away exactly
+  // when QA needs it. It's capability-safe — `installPreview` only downloads the
+  // PUBLIC preview ZIP, and the upgrade path still uses the device's REAL
+  // subscription to fetch the full ZIP, so it cannot grant unearned entitlement.
+  // Namespaced under one global, matching the `window.__corpanDebug` convention.
+  ;(window as unknown as { __corpanUpgradeDebug?: unknown }).__corpanUpgradeDebug = {
+    list: () => listInstalled(), // installed narrations (+ full flag)
+    status: (id: string) => debugInstallStatus(id), // 'preview' | 'full' | 'unknown' | 'not-installed'
+    installPreview: (id: string) => debugInstallPreview(id), // force-install the public preview ZIP
+    jit: (id: string) => maybeUpgradeOnOpen(id), // trigger the JIT upgrade directly
+    sweep: () => runUpgradeSweep(), // trigger the background sweep
+  }
 
   // Persist scoped drawer state on change
   const persistUnsub = drawerStore.subscribe(() => {
@@ -903,8 +1137,17 @@ export function createAppShell(
   }
 
   /** THE one function for activating a narration. Sets the canonical store,
-   *  mounts the reader, and updates pills. Nothing else writes narration state. */
-  function switchToNarration(narrationId: string, closeDrawer = false): void {
+   *  mounts the reader, and updates pills. Nothing else writes narration state.
+   *
+   *  `forcePlay` makes the new instance auto-continue playback even when the
+   *  outgoing reader wasn't playing — used for the post-purchase upgrade reload,
+   *  where the preview's playback had just ENDED at the paywall but we want to
+   *  flow straight into the now-full content from the saved bookmark. */
+  function switchToNarration(
+    narrationId: string,
+    closeDrawer = false,
+    forcePlay = false
+  ): void {
     if (!isInstalled(narrationId)) return
     const info = getInstalled(narrationId)
     if (!info) return
@@ -925,7 +1168,7 @@ export function createAppShell(
       bookId: info.bookId,
       bookTitle: info.bookTitle,
       language: info.language,
-      autoPlay: wasPlaying,
+      autoPlay: forcePlay || wasPlaying,
       startAtSegmentStart: true,
     }
 
@@ -945,6 +1188,16 @@ export function createAppShell(
       language: info.language,
       voiceId: info.voiceId,
     })
+
+    // Layer 3 (JIT self-heal): opening a preview while Plus upgrades it in the
+    // background. Fire-and-forget — on success it dispatches
+    // `corpan:narration-upgraded`, which reloads this same book into the full
+    // content (auto-continuing). `forcePlay` here would just be the reload's
+    // job, so we DON'T re-open with play; we let the upgraded event drive it
+    // (and only if it's still the active book). No-op when already full / not Plus.
+    if (!forcePlay) {
+      void maybeUpgradeOnOpen(narrationId)
+    }
   }
 
   // --- Now Playing section rendering ---
@@ -2973,6 +3226,14 @@ export function createAppShell(
     window.removeEventListener("corpan:purchase-recorded", onPurchaseEvent)
     window.removeEventListener("corpan:subscription-recorded", onPurchaseEvent)
     window.removeEventListener("corpan:restore-purchases-completed", onPurchaseEvent)
+    window.removeEventListener("corpan:book-finished", onBookFinished)
+    dismissEndOfBookSuggestion()
+    window.removeEventListener(ENTITLEMENTS_CHANGED_EVENT, onEntitlementsChanged)
+    window.removeEventListener(NARRATION_UPGRADED_EVENT, onNarrationUpgraded)
+    setUpgradeCatalogProvider(null)
+    try {
+      delete (window as unknown as { __corpanUpgradeDebug?: unknown }).__corpanUpgradeDebug
+    } catch { /* non-configurable in some envs — ignore */ }
     if (narratorDetailInstance) {
       narratorDetailInstance.dispose()
       narratorDetailInstance = null

@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-06-19
+
+### Changed
+- Tightened the store/catalog description to a concise, on-brand line
+  ("Make music with the language you're learning. Scratch real phrases from
+  50+ languages, all offline. No music theory needed.") across the manifest,
+  the app's bundled catalog, and `web/data/packs.json`, with all 54 localized
+  descriptions updated to match.
+
 ## [0.3.1] - 2026-06-18
 
 ### Changed

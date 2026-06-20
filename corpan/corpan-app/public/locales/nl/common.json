@@ -568,6 +568,7 @@
       "noMatches": "Geen resultaten.",
       "filter": {
         "all": "Alle",
+        "available": "Beschikbaar",
         "free": "Gratis",
         "paid": "Betaald",
         "installed": "Geïnstalleerd"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Frasenpakketten verkennen",
       "inactiveBadge": "Inactief",
       "moreActionsLabel": "Meer acties",
-      "install": "Installeren"
+      "install": "Installeren",
+      "downloadAll": "Alles downloaden",
+      "downloadAllSummary": "{{count}} beschikbaar · ~{{size}} MB",
+      "installingBatch": "{{current}} van {{total}} installeren…",
+      "batchFailed": "{{count}} kon niet worden geïnstalleerd — tik om opnieuw te proberen"
     },
     "unlockWithPlus": "Ontgrendel met Corpán Plus",
     "plus": "Corpán Plus",

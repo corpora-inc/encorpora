@@ -568,6 +568,7 @@
       "noMatches": "Κανένα αποτέλεσμα.",
       "filter": {
         "all": "Όλα",
+        "available": "Διαθέσιμα",
         "free": "Δωρεάν",
         "paid": "Επί πληρωμή",
         "installed": "Εγκατεστημένο"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Περιήγηση πακέτων φράσεων",
       "inactiveBadge": "Ανενεργό",
       "moreActionsLabel": "Περισσότερες ενέργειες",
-      "install": "Εγκατάσταση"
+      "install": "Εγκατάσταση",
+      "downloadAll": "Λήψη όλων",
+      "downloadAllSummary": "{{count}} διαθέσιμα · ~{{size}} MB",
+      "installingBatch": "Εγκατάσταση {{current}} από {{total}}…",
+      "batchFailed": "{{count}} δεν εγκαταστάθηκαν — πατήστε για επανάληψη"
     },
     "unlockWithPlus": "Ξεκλειδώστε με το Corpán Plus",
     "plus": "Corpán Plus",

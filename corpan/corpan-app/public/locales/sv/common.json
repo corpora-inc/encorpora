@@ -568,6 +568,7 @@
       "noMatches": "Inga träffar.",
       "filter": {
         "all": "Alla",
+        "available": "Tillgänglig",
         "free": "Gratis",
         "paid": "Betald",
         "installed": "Installerad"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Bläddra bland fraspaket",
       "inactiveBadge": "Inaktiv",
       "moreActionsLabel": "Fler åtgärder",
-      "install": "Installera"
+      "install": "Installera",
+      "downloadAll": "Ladda ner alla",
+      "downloadAllSummary": "{{count}} tillgängliga · ~{{size}} MB",
+      "installingBatch": "Installerar {{current}} av {{total}}…",
+      "batchFailed": "{{count}} kunde inte installeras — tryck för att försöka igen"
     },
     "unlockWithPlus": "Lås upp med Corpán Plus",
     "plus": "Corpán Plus",

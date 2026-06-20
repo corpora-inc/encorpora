@@ -10,6 +10,32 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Book owners now download the full narration, not the preview.** Two-ZIP
+  premium entries signed the full ZIP only for Corpán Plus subscribers; a
+  one-time book owner without Plus got the truncated preview and the upgrade
+  layer never replaced it. The two-ZIP install now resolves a book-purchase
+  receipt (then falls back to a subscription) and signs the full ZIP under the
+  owned book's product id; the row also advertises the full size to owners.
+- **End-of-book "read next" suggestion now appears for restored-library
+  readers.** Opening an installed book from the restored library and finishing
+  it without ever opening the drawer left the catalog unfetched, so the
+  suggestion silently no-op'd; the `corpan:book-finished` handler now
+  lazy-hydrates the catalog before choosing the next book.
+
+## [0.7.1] - 2026-06-19
+
+### Added
+- **Seamless preview→full upgrade after subscribing to Corpán Plus.** The app
+  shell now upgrades installed preview narrations to the full versions in place
+  (no manual reinstall). The book open at the end-of-preview paywall upgrades the
+  instant you subscribe and the reader reloads + resumes from where the preview
+  cut off, auto-continuing into the full audio; the background sweep of other
+  previews runs only on confirmed-unmetered connections (otherwise it defers and
+  the just-in-time on-open upgrade covers it); opening any preview while Plus
+  upgrades it on access. The
+  reader exposes `persistBookmark` so the reload resumes at the exact position.
+
 ## [0.7.0] - 2026-06-16 — First-run seed: instant book in your stack languages
 
 ### Added

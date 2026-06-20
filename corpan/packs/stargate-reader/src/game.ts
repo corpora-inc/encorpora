@@ -517,6 +517,26 @@ export function createStargateReader(
     }
   }
 
+  // End of a full book → ask the host (appShell, which owns the catalog) to
+  // suggest the next book to read. The host picks the next title and presents
+  // the suggestion; the reader only signals that the book finished.
+  function maybeSuggestNextBook() {
+    try {
+      window.dispatchEvent(
+        new CustomEvent("corpan:book-finished", {
+          detail: {
+            bookId,
+            language: currentLanguage,
+            bookTitle: bookDisplayName,
+            theme: "stargate",
+          },
+        })
+      )
+    } catch (err) {
+      console.warn("[StargateReader] book-finished dispatch failed:", err)
+    }
+  }
+
   // Corpán Plus: report deepest segment reached for the host progress store.
   function reportSegmentProgress(index: number) {
     try {
@@ -1331,9 +1351,13 @@ export function createStargateReader(
           void stopNativeKeepAlive()
           nativeSessionActive = false
           nativePlaybackStateHint = "unknown"
-          // Corpán Plus: finished preview → ask host to surface the paywall.
+          // End of book. A truncated free preview ends early → offer Plus.
+          // A full book (subscriber / owned) reached its real end → let the
+          // host suggest the next book to read.
           if (isPreview) {
             maybeOfferPlus()
+          } else {
+            maybeSuggestNextBook()
           }
         },
         (segmentId, buffer) => {

@@ -568,10 +568,15 @@
       "noMatches": "Tidak ada hasil.",
       "filter": {
         "all": "Semua",
+        "available": "Tersedia",
         "free": "Gratis",
         "paid": "Berbayar",
         "installed": "Terpasang"
       },
+      "downloadAll": "Unduh semua",
+      "downloadAllSummary": "{{count}} tersedia · ~{{size}} MB",
+      "installingBatch": "Memasang {{current}} dari {{total}}…",
+      "batchFailed": "{{count}} gagal dipasang — ketuk untuk coba lagi",
       "activeInStack": "Aktif",
       "activeBadge": "Aktif",
       "subBadge": "Langganan",

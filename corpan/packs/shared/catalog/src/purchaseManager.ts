@@ -605,6 +605,25 @@ export async function resolveReceiptForEntry(
 }
 
 /**
+ * Resolve a receipt for a one-time BOOK purchase of THIS entry (non-consumable
+ * IAP), if the user owns it. No subscription fallback — used by the two-ZIP
+ * install path so a book OWNER (not just a subscriber) can download the full
+ * ZIP instead of the truncated preview. Returns null if not owned.
+ */
+export async function resolveBookReceipt(
+  entry: CatalogNarrationEntry
+): Promise<NarrationPurchaseReceipt | null> {
+  if (entry.purchase.type !== "iap" || !entry.purchase.productId) return null
+  const platform = getReaderPlatform() ?? "desktop"
+  const inapp = await restorePurchasesOfType("inapp")
+  const match = inapp.find((p) => p.productId === entry.purchase.productId)
+  if (!match) return null
+  const receipt = receiptFromRaw(match)
+  if (!receipt) return null
+  return { transactionId: match.id ?? match.orderId ?? "", receipt, platform }
+}
+
+/**
  * Resolve an active subscription receipt (Corpán Plus). Used by the two-ZIP
  * install path to authorise the full ZIP download. No book product involved.
  */

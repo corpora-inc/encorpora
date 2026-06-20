@@ -51,7 +51,7 @@ Status: **FROZEN v1.0** · 2026-06-14 · Owner: architecture lead
 | Lambda | existing `corpan-verify-purchase` extended (no new Lambda) — routes by `event.routeKey` |
 | Code normalization | `raw.trim().toUpperCase().replace(/\s+/g,"")`; valid `^[A-Z0-9_-]{1,32}$` (purchase.ts L156-162) |
 
-`<NORMALIZED>` everywhere below = the normalized code (e.g. `IAN30`).
+`<NORMALIZED>` everywhere below = the normalized code (e.g. `PARTNER1CODE`).
 
 ---
 
@@ -63,7 +63,7 @@ raw code; the server is the only classifier (plan §2.1-§2.2).
 ### 2.1 Request
 ```jsonc
 {
-  "code": "IAN30",                  // raw; server normalizes
+  "code": "PARTNER1CODE",                  // raw; server normalizes
   "subjectId": "8f1c…-uuid",        // anon UUID (purchase.ts getCorpanSubjectId)
   "platform": "ios | android",      // "macos" maps to "ios" branch
   "productId": "corpan.sub.annual"  // optional; lets server pick the offer
@@ -78,7 +78,7 @@ list collapses into these; `purchaseAction` carries the platform mechanic):
 |---|---|
 | `discount` | platform offer, no revenue share (registry `revenueSharePct == 0`) |
 | `affiliate` | revenue-share partner, no discount |
-| `discount+affiliate` | both (the IAN30…/`LCCLT` case) |
+| `discount+affiliate` | both (the PARTNER1CODE…/`LCCLT` case) |
 | `unknown` | not in registry → unverified free-text tracking |
 
 `purchaseAction` enum (drives the client CTA):
@@ -96,10 +96,10 @@ list collapses into these; `purchaseAction` carries the platform mechanic):
 ```jsonc
 {
   "status": "ok",
-  "code": "IAN30",
+  "code": "PARTNER1CODE",
   "classification": "discount+affiliate",
   "purchaseAction": "REDEEM_APPLE_SHEET",
-  "partnerName": "Ian",                       // null when classification == discount/unknown
+  "partnerName": "Partner 1",                       // null when classification == discount/unknown
   "discountLabel": "30% off your first year", // localized server-side; null if no discount
   "offerId": null,                            // see per-branch
   "offerTokenHint": null,                     // see per-branch
@@ -112,13 +112,13 @@ list collapses into these; `purchaseAction` carries the platform mechanic):
 **Branch A — Apple, `discount+affiliate` → `REDEEM_APPLE_SHEET`** (platform=ios):
 ```jsonc
 {
-  "status": "ok", "code": "IAN30",
+  "status": "ok", "code": "PARTNER1CODE",
   "classification": "discount+affiliate",
   "purchaseAction": "REDEEM_APPLE_SHEET",
-  "partnerName": "Ian",
+  "partnerName": "Partner 1",
   "discountLabel": "30% off your first year",
-  "appleOfferId": "IAN30",                    // = registry appleOfferIdentifier
-  "appleRedeemUrl": "https://apps.apple.com/redeem?ctx=offercode&id=<asc-offer-id>&code=IAN30", // <iOS16 fallback
+  "appleOfferId": "PARTNER1CODE",                    // = registry appleOfferIdentifier
+  "appleRedeemUrl": "https://apps.apple.com/redeem?ctx=offercode&id=<asc-offer-id>&code=PARTNER1CODE", // <iOS16 fallback
   "offerId": null, "offerTokenHint": null,
   "resolutionToken": "…", "expiresInSec": 900
 }
@@ -127,19 +127,19 @@ list collapses into these; `purchaseAction` carries the platform mechanic):
 **Branch B — Android, `discount+affiliate` → `USE_OFFER_TOKEN`** (platform=android):
 ```jsonc
 {
-  "status": "ok", "code": "IAN30",
+  "status": "ok", "code": "PARTNER1CODE",
   "classification": "discount+affiliate",
   "purchaseAction": "USE_OFFER_TOKEN",
-  "partnerName": "Ian",
+  "partnerName": "Partner 1",
   "discountLabel": "30% off your first year",
-  "offerId": "code-ian30",                    // = registry googleOfferId; client re-reads
-  "offerTokenHint": { "googleOfferId": "code-ian30", "basePlanId": "annual", "offerTags": ["code-ian30"] },
+  "offerId": "code-partner1",                    // = registry googleOfferId; client re-reads
+  "offerTokenHint": { "googleOfferId": "code-partner1", "basePlanId": "annual", "offerTags": ["code-partner1"] },
   "appleOfferId": null,
   "resolutionToken": "…", "expiresInSec": 900
 }
 ```
 > The client re-reads the live `offerToken` from `getProducts()` by matching
-> `subscriptionOfferDetails[].offerId == "code-ian30"` (offer tokens are session-
+> `subscriptionOfferDetails[].offerId == "code-partner1"` (offer tokens are session-
 > bound, never returned by the backend). (plan §4.1 note)
 
 **Branch C — `affiliate` (no discount) → `ATTRIBUTE_ONLY`** (either platform):
@@ -206,12 +206,12 @@ JWT header `{ "alg":"HS256", "typ":"JWT", "kid":"v1" }`. Claims:
   "v": 1,
   "iss": "corpan-codes",
   "sub": "8f1c…-uuid",          // subjectId — token is bound to this subject
-  "code": "IAN30",              // NORMALIZED
-  "partnerId": "ian",           // null for classification == unknown
+  "code": "PARTNER1CODE",              // NORMALIZED
+  "partnerId": "partner1",           // null for classification == unknown
   "classification": "discount+affiliate",
   "purchaseAction": "REDEEM_APPLE_SHEET",
-  "appleOfferId": "IAN30",      // echo for verify cross-check (null if n/a)
-  "googleOfferId": "code-ian30",// echo (null if n/a)
+  "appleOfferId": "PARTNER1CODE",      // echo for verify cross-check (null if n/a)
+  "googleOfferId": "code-partner1",// echo (null if n/a)
   "registryVersion": 3,         // CODE#…/META registryVersion at resolve time
   "iat": 1750000000,
   "exp": 1750000900             // iat + 900s  (≈15 min)
@@ -267,7 +267,7 @@ Existing behavior (verify receipt, sign CloudFront URL) is preserved. Add:
 ```jsonc
 {
   // …existing: platform, productId, transactionId, subjectId, receipt|purchaseToken, packId, downloadPath
-  "affiliateCode": "IAN30",         // already sent (today dropped, plan §1.2)
+  "affiliateCode": "PARTNER1CODE",         // already sent (today dropped, plan §1.2)
   "resolutionToken": "<from /code/resolve>"   // NEW — required for any attribution write
 }
 ```
@@ -314,11 +314,11 @@ L198) to **`purchases.subscriptionsv2.get`** (plan §1.2 gap 6, §4.2). Capture:
   "subjectId": "8f1c…-uuid", "plus": true,
   "entitlementToken": "<JWT-HS256, §4>",
   "affiliateAttribution": {
-    "code": "IAN30",
+    "code": "PARTNER1CODE",
     "locked": true,
     "verified": true,            // false for unknown/unverified
-    "partnerName": "Ian",
-    "message": "Credited to Ian"
+    "partnerName": "Partner 1",
+    "message": "Credited to Partner 1"
   }
 }
 ```
@@ -398,35 +398,35 @@ named `code-<lowercase>` with `relativeDiscount: 0.7` (= 30% off) on base plan
 `annual`, `offerTags:["code-<lowercase>"]`. `classification: "discount+affiliate"`,
 `revenueSharePct: 0.30`, `discountLabel "30% off your first year"`.
 
-Partner ids: `ian, sky, august, ac, flo, monica, dwalker, agus`.
+Partner ids: `partner1, partner2, partner3, partner4, partner5, partner6, partner7, partner8`.
 
 ```jsonc
 // infra/codes/seed.json — DynamoDB BatchWrite source. partners[] → PARTNER#<id>/META, codes[] → CODE#<CODE>/META
 {
   "registryVersion": 1,
   "partners": [
-    { "partnerId": "ian",     "name": "Ian",     "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "sky",     "name": "Sky",     "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "august",  "name": "August",  "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "ac",      "name": "AC",      "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "flo",     "name": "Flo",     "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "monica",  "name": "Monica",  "defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "dwalker", "name": "D. Walker","defaultRevenueSharePct": 0.30, "status": "active" },
-    { "partnerId": "agus",    "name": "Agus",    "defaultRevenueSharePct": 0.30, "status": "active" }
+    { "partnerId": "partner1",     "name": "Partner 1",     "defaultRevenueSharePct": 0.30, "status": "active" },
+    { "partnerId": "partner2",     "name": "Partner 2",     "defaultRevenueSharePct": 0.30, "status": "active" },
+    { "partnerId": "partner3",  "name": "Partner 3",  "defaultRevenueSharePct": 0.30, "status": "active" },
+    { "partnerId": "partner4",      "name": "Partner 4",      "defaultRevenueSharePct": 0.30, "status": "active" },
+    { "partnerId": "partner5",     "name": "Partner 5",     "defaultRevenueSharePct": 0.30, "status": "active" },
+    { "partnerId": "partner6",  "name": "Partner 6",  "defaultRevenueSharePct": 0.30, "status": "active" },
+    { "partnerId": "partner7", "name": "Partner 7","defaultRevenueSharePct": 0.30, "status": "active" },
+    { "partnerId": "partner8",    "name": "Partner 8",    "defaultRevenueSharePct": 0.30, "status": "active" }
   ],
   "codes": [
-    { "code": "IAN30",     "partnerId": "ian",     "classification": "discount+affiliate", "appleOfferIdentifier": "IAN30",     "googleOfferId": "code-ian30",     "googleOfferTags": ["code-ian30"],     "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "SKY30",     "partnerId": "sky",     "classification": "discount+affiliate", "appleOfferIdentifier": "SKY30",     "googleOfferId": "code-sky30",     "googleOfferTags": ["code-sky30"],     "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "AUGUST30",  "partnerId": "august",  "classification": "discount+affiliate", "appleOfferIdentifier": "AUGUST30",  "googleOfferId": "code-august30",  "googleOfferTags": ["code-august30"],  "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "AC30",      "partnerId": "ac",      "classification": "discount+affiliate", "appleOfferIdentifier": "AC30",      "googleOfferId": "code-ac30",      "googleOfferTags": ["code-ac30"],      "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "FLO30",     "partnerId": "flo",     "classification": "discount+affiliate", "appleOfferIdentifier": "FLO30",     "googleOfferId": "code-flo30",     "googleOfferTags": ["code-flo30"],     "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "MONICA30",  "partnerId": "monica",  "classification": "discount+affiliate", "appleOfferIdentifier": "MONICA30",  "googleOfferId": "code-monica30",  "googleOfferTags": ["code-monica30"],  "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "DWALKER30", "partnerId": "dwalker", "classification": "discount+affiliate", "appleOfferIdentifier": "DWALKER30", "googleOfferId": "code-dwalker30", "googleOfferTags": ["code-dwalker30"], "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
-    { "code": "AGUS30",    "partnerId": "agus",    "classification": "discount+affiliate", "appleOfferIdentifier": "AGUS30",    "googleOfferId": "code-agus30",    "googleOfferTags": ["code-agus30"],    "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null }
+    { "code": "PARTNER1CODE",     "partnerId": "partner1",     "classification": "discount+affiliate", "appleOfferIdentifier": "PARTNER1CODE",     "googleOfferId": "code-partner1",     "googleOfferTags": ["code-partner1"],     "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
+    { "code": "PARTNER2CODE",     "partnerId": "partner2",     "classification": "discount+affiliate", "appleOfferIdentifier": "PARTNER2CODE",     "googleOfferId": "code-partner2",     "googleOfferTags": ["code-partner2"],     "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
+    { "code": "PARTNER3CODE",  "partnerId": "partner3",  "classification": "discount+affiliate", "appleOfferIdentifier": "PARTNER3CODE",  "googleOfferId": "code-partner3",  "googleOfferTags": ["code-partner3"],  "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
+    { "code": "PARTNER4CODE",      "partnerId": "partner4",      "classification": "discount+affiliate", "appleOfferIdentifier": "PARTNER4CODE",      "googleOfferId": "code-partner4",      "googleOfferTags": ["code-partner4"],      "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
+    { "code": "PARTNER5CODE",     "partnerId": "partner5",     "classification": "discount+affiliate", "appleOfferIdentifier": "PARTNER5CODE",     "googleOfferId": "code-partner5",     "googleOfferTags": ["code-partner5"],     "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
+    { "code": "PARTNER6CODE",  "partnerId": "partner6",  "classification": "discount+affiliate", "appleOfferIdentifier": "PARTNER6CODE",  "googleOfferId": "code-partner6",  "googleOfferTags": ["code-partner6"],  "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
+    { "code": "PARTNER7CODE", "partnerId": "partner7", "classification": "discount+affiliate", "appleOfferIdentifier": "PARTNER7CODE", "googleOfferId": "code-partner7", "googleOfferTags": ["code-partner7"], "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null },
+    { "code": "PARTNER8CODE",    "partnerId": "partner8",    "classification": "discount+affiliate", "appleOfferIdentifier": "PARTNER8CODE",    "googleOfferId": "code-partner8",    "googleOfferTags": ["code-partner8"],    "googleBasePlanId": "annual", "discountLabelKey": "code.discount.first_year_30", "discountLabelEn": "30% off your first year", "revenueSharePct": 0.30, "active": true, "registryVersion": 1, "validFrom": "2026-06-14T00:00:00Z", "validTo": null }
   ]
 }
 ```
-> Google offers (`code-ian30`…) must be **created in Play Console by WS-E** before
+> Google offers (`code-partner1`…) must be **created in Play Console by WS-E** before
 > the Android `USE_OFFER_TOKEN` path works; the registry rows ship regardless
 > (Apple path is live first). `validTo:null` = open-ended.
 
@@ -481,7 +481,7 @@ flagged with a split rule.**
 
 ### WS-E — Play offers tooling (separate effort)
 - `corpan/infra/asc/` / Play tooling — create the 8 Google subscription offers
-  `code-ian30…code-agus30` (`relativeDiscount: 0.7`, `offerTags:["code-<x>"]`)
+  `code-partner1…code-partner8` (`relativeDiscount: 0.7`, `offerTags:["code-<x>"]`)
   on base plan `annual`; create the 8 Apple custom offer codes in App Store
   Connect (codes already exist per task — verify `offerIdentifier` == UPPERCASE).
 - Play RTDN Pub/Sub topic + push subscription to `/google-notifications`;

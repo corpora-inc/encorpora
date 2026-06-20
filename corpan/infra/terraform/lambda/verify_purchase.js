@@ -29,6 +29,77 @@ const json = (statusCode, payload) => ({
   body: JSON.stringify(payload),
 });
 
+// Convert a Google Play `Money` ({units, nanos, currencyCode}) to a decimal
+// number. units = whole currency units, nanos = billionths of a unit (can be
+// negative). Returns null for absent input. Rounded to 6dp to kill float noise.
+const moneyToNumber = (m) => {
+  if (!m || (m.units == null && m.nanos == null)) return null;
+  const v = Number(m.units || 0) + Number(m.nanos || 0) / 1e9;
+  return Math.round(v * 1e6) / 1e6;
+};
+
+// Apple records `price` in milliunits (e.g. 4990 = $4.99). Normalize to a
+// decimal number so the ledger stores comparable amounts across stores.
+const milliunitsToNumber = (p) => (p == null ? null : Number(p) / 1000);
+
+// Pick the Google product type for verification. A subscription token MUST be
+// verified via subscriptionsv2; using the products endpoint yields Google's
+// "The document type is not supported" (the bug that dropped every Android
+// sub). Honor an explicit client value; else infer from the `*.sub.*` id
+// convention; default to "subs" (per-book one-time IAP is retired).
+const googleProductTypeFor = (productId, explicit) => {
+  if (explicit) return explicit;
+  if (typeof productId === "string" && !productId.includes(".sub.")) return "inapp";
+  return "subs";
+};
+
+// Map an Apple ASSN V2 notificationType to a lifecycle action. "initial" =
+// new paid sub (attribute offer + extend), "renewal" = credit renewal + extend,
+// "extend" = refresh entitlement from authoritative state, "clawback" = reverse
+// credit on refund/revoke, "reinstate" = refund reversed, "ignore" = no-op.
+const appleNotificationAction = (t) =>
+  ({
+    SUBSCRIBED: "initial",
+    OFFER_REDEEMED: "initial",
+    DID_RENEW: "renewal",
+    DID_FAIL_TO_RENEW: "extend",
+    GRACE_PERIOD_EXPIRED: "extend",
+    EXPIRED: "extend",
+    REFUND: "clawback",
+    REVOKE: "clawback",
+    REFUND_REVERSED: "reinstate",
+  })[t] || "ignore";
+
+// Map a Google RTDN subscriptionNotification.notificationType (int) to an
+// action. Ints per developer.android.com/google/play/billing/rtdn-reference.
+const googleNotificationAction = (t) =>
+  ({
+    4: "initial", // SUBSCRIPTION_PURCHASED
+    2: "renewal", // SUBSCRIPTION_RENEWED
+    1: "extend", // SUBSCRIPTION_RECOVERED
+    7: "extend", // SUBSCRIPTION_RESTARTED
+    3: "extend", // SUBSCRIPTION_CANCELED (entitled until expiry)
+    5: "extend", // SUBSCRIPTION_ON_HOLD
+    6: "extend", // SUBSCRIPTION_IN_GRACE_PERIOD
+    10: "extend", // SUBSCRIPTION_PAUSED
+    13: "extend", // SUBSCRIPTION_EXPIRED
+    12: "clawback", // SUBSCRIPTION_REVOKED
+  })[t] || "ignore";
+
+// Exported for unit tests (pure helpers, no I/O).
+exports.moneyToNumber = moneyToNumber;
+exports.milliunitsToNumber = milliunitsToNumber;
+exports.googleProductTypeFor = googleProductTypeFor;
+exports.appleNotificationAction = appleNotificationAction;
+exports.googleNotificationAction = googleNotificationAction;
+// Notification route handlers + a test seam for the Apple JWS verify step.
+exports.handleAppleNotification = handleAppleNotification;
+exports.handleGoogleNotification = handleGoogleNotification;
+exports.handleVerifyPurchase = handleVerifyPurchase;
+exports._setAppleVerifyForTest = _setAppleVerifyForTest;
+exports._setCatalogFetchForTest = _setCatalogFetchForTest;
+exports._setVerifyForTest = _setVerifyForTest;
+
 const getHeader = (event, key) => {
   const headers = event.headers || {};
   const match = Object.keys(headers).find(
@@ -79,6 +150,106 @@ function generateSignedDownloadUrl(packDownloadPath, signingPrivateKey) {
     privateKey: signingPrivateKey,
     dateLessThan: expires.toISOString(),
   });
+}
+
+// ---------------------------------------------------------------------------
+// Catalog (product → premium-ZIP binding)
+// ---------------------------------------------------------------------------
+//
+// The public catalog is the source of truth that binds a one-time book product
+// (corpan.book.*) to BOTH the narration packId and the exact premium ZIP path.
+// We use it to enforce that a verified one-time receipt may only sign the ZIP it
+// actually paid for (see handleVerifyPurchase). Fetch is cached in the warm
+// container; a `_setCatalogFetchForTest` seam lets tests inject a fixture so the
+// suite makes no real network calls. FAIL CLOSED: if the catalog can't be
+// fetched (or the pack/product doesn't match) we deny signing.
+
+const CATALOG_URL = "https://d38iwc9748jekz.cloudfront.net/catalog-v2.json";
+const CATALOG_TTL_MS = 10 * 60 * 1000; // 10 min — premium paths rarely change
+const CATALOG_TIMEOUT_MS = 4000;
+
+let _catalogCache = null; // { fetchedAt, narrations: [...] }
+
+// Default catalog fetcher (Node 18+/22 global fetch + AbortController timeout).
+async function _defaultCatalogFetch() {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), CATALOG_TIMEOUT_MS);
+  try {
+    const res = await fetch(CATALOG_URL, { signal: ctrl.signal });
+    if (!res.ok) throw new Error(`catalog HTTP ${res.status}`);
+    return await res.json();
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+let _catalogFetch = _defaultCatalogFetch;
+function _setCatalogFetchForTest(fn) {
+  _catalogFetch = fn || _defaultCatalogFetch;
+  _catalogCache = null; // drop any warm cache so the injected fixture is used
+}
+
+// Return the catalog narrations array (cached). Returns null on any failure —
+// callers MUST fail closed (deny signing) when this is null.
+async function getCatalogNarrations() {
+  const now = Date.now();
+  if (_catalogCache && now - _catalogCache.fetchedAt < CATALOG_TTL_MS) {
+    return _catalogCache.narrations;
+  }
+  try {
+    const data = await _catalogFetch();
+    const narrations = Array.isArray(data?.narrations) ? data.narrations : [];
+    _catalogCache = { fetchedAt: now, narrations };
+    return narrations;
+  } catch (err) {
+    console.error("[catalog] fetch failed (fail-closed for one-time downloads):", err.message);
+    // If we have a stale cache, prefer it over denying (still authoritative
+    // enough for a path/product binding — paths only change on a version bump).
+    if (_catalogCache) return _catalogCache.narrations;
+    return null;
+  }
+}
+
+// Normalize a catalog full.url (absolute) to the path we compare against the
+// client downloadPath (no leading slash, no scheme/host).
+function _pathOf(urlOrPath) {
+  if (typeof urlOrPath !== "string" || !urlOrPath) return null;
+  try {
+    return new URL(urlOrPath).pathname.replace(/^\/+/, "");
+  } catch {
+    return urlOrPath.replace(/^\/+/, "");
+  }
+}
+
+// Bind a verified one-time product to the requested pack + download path via the
+// catalog. Returns { ok:true } only if the narration identified by `packId`
+// (a) has purchase.productId === verifiedProductId AND (b) its premium full.url
+// path equals the requested downloadPath. Fail closed on any miss / no catalog.
+async function bindOneTimeDownload({ packId, verifiedProductId, downloadPath }) {
+  if (!verifiedProductId) return { ok: false, reason: "no verified product" };
+  const narrations = await getCatalogNarrations();
+  if (!narrations) return { ok: false, reason: "catalog unavailable" };
+
+  // Prefer matching by packId (the narration id the client sends); also accept a
+  // match by the requested downloadPath if packId is absent/ambiguous.
+  let n = packId ? narrations.find((x) => x && x.id === packId) : null;
+  if (!n && downloadPath) {
+    n = narrations.find((x) => x && _pathOf(x.full?.url) === downloadPath);
+  }
+  if (!n) return { ok: false, reason: "pack not in catalog" };
+
+  const pid = n.purchase?.productId || null;
+  if (!pid || pid !== verifiedProductId) {
+    return { ok: false, reason: `product mismatch (catalog=${pid} verified=${verifiedProductId})` };
+  }
+
+  // The requested path must be THIS narration's premium full ZIP.
+  const fullPath = _pathOf(n.full?.url);
+  if (!fullPath) return { ok: false, reason: "no premium ZIP for pack" };
+  if (downloadPath && downloadPath !== fullPath) {
+    return { ok: false, reason: "downloadPath does not match purchased pack" };
+  }
+  return { ok: true, downloadPath: fullPath };
 }
 
 // ---------------------------------------------------------------------------
@@ -164,8 +335,13 @@ async function tryVerifyAppleWith(body, appleSecrets, environment) {
       offerType: decoded.offerType ?? null,
       offerIdentifier: decoded.offerIdentifier ?? null,
       offerDiscountType: decoded.offerDiscountType ?? null,
-      price: decoded.price ?? null,
+      // Apple `price` is milliunits (4990 = $4.99); normalize to a decimal so
+      // the ledger stores comparable amounts across stores.
+      price: milliunitsToNumber(decoded.price),
       currency: decoded.currency ?? null,
+      // TestFlight / Xcode purchases verify in the Sandbox environment; flag so
+      // the caller can exclude them from revenue/affiliate crediting.
+      isTestPurchase: (decoded.environment || "") === "Sandbox",
     };
   } catch (err) {
     const errDetail = err.message || err.errorMessage || err.toString();
@@ -220,6 +396,8 @@ async function verifyGoogle(body, secrets) {
       let lineProductId = null;
       let offerId = null;
       let offerTags = [];
+      let renewalMoney = null;
+      let lineOrderId = null;
       for (const li of lineItems) {
         const exp = li.expiryTime ? Date.parse(li.expiryTime) : 0;
         if (exp > expiryMs) expiryMs = exp;
@@ -227,6 +405,10 @@ async function verifyGoogle(body, secrets) {
         const od = li.offerDetails || {};
         if (!offerId && od.offerId) offerId = od.offerId;
         if (od.offerTags && od.offerTags.length) offerTags = od.offerTags;
+        if (!renewalMoney && li.autoRenewingPlan?.recurringPrice)
+          renewalMoney = li.autoRenewingPlan.recurringPrice;
+        if (!lineOrderId && li.latestSuccessfulOrderId)
+          lineOrderId = li.latestSuccessfulOrderId;
       }
 
       const state = sub.subscriptionState; // e.g. SUBSCRIPTION_STATE_ACTIVE / _IN_GRACE_PERIOD
@@ -240,8 +422,34 @@ async function verifyGoogle(body, secrets) {
       const obfHash =
         sub.externalAccountIdentifiers?.obfuscatedExternalAccountId ?? null;
 
+      // §8 — presence of `testPurchase` marks a license-tester purchase; never
+      // count it as revenue / credit affiliates (it still gets entitlement).
+      const isTestPurchase = !!sub.testPurchase;
+      const orderId = lineOrderId || sub.latestOrderId || null;
+
+      // The ACTUAL amount charged (incl. intro/offer discount + tax) lives in
+      // the Orders API — subscriptionsv2 only exposes `recurringPrice` (the
+      // NEXT renewal price), not what was paid this period. Best-effort: an
+      // orders.get miss must never fail an otherwise-valid verification.
+      let price = null;
+      let currency = null;
+      if (orderId) {
+        try {
+          const ord = await androidPublisher.orders.get({ packageName, orderId });
+          const total = ord?.data?.total;
+          if (total) {
+            price = moneyToNumber(total);
+            currency = total.currencyCode || null;
+          }
+        } catch (ordErr) {
+          console.warn(`[google] orders.get failed (non-fatal) order=${orderId}: ${ordErr.message}`);
+        }
+      }
+      const renewalPrice = moneyToNumber(renewalMoney);
+      const renewalCurrency = renewalMoney?.currencyCode || null;
+
       if (inGrace) {
-        console.log(`[google] Subscription in grace period: order=${sub.latestOrderId}, state=${state}`);
+        console.log(`[google] Subscription in grace period: order=${orderId}, state=${state}`);
       }
 
       // Acknowledge if needed (v2 ackState lives on the subscription).
@@ -260,7 +468,7 @@ async function verifyGoogle(body, secrets) {
 
       return {
         verified: verifiedSub,
-        transactionId: sub.latestOrderId,
+        transactionId: orderId,
         // §5.3 — use the line-item product, NOT the echoed client productId.
         productId: lineProductId || productId,
         isSubscription: true,
@@ -269,10 +477,16 @@ async function verifyGoogle(body, secrets) {
         expiresAt: expiryMs ? new Date(expiryMs).toISOString() : null,
         autoRenewing: !!lineItems.find((li) => li.autoRenewingPlan?.autoRenewEnabled),
         acknowledged: true,
+        isTestPurchase,
         // §5.3 attribution/offer fields.
         obfHash,
         offerId,
         offerTags,
+        // Real charged amount (this period) + the next renewal price.
+        price,
+        currency,
+        renewalPrice,
+        renewalCurrency,
       };
     } else {
       // One-time product verification
@@ -321,6 +535,16 @@ async function verifyGoogle(body, secrets) {
 // Route: POST /verify-purchase
 // ---------------------------------------------------------------------------
 
+// Swappable receipt-verify references (default = the real implementations).
+// Tests inject a deterministic verified result via _setVerifyForTest so the
+// entitlement-gate logic can be exercised without a live Apple/Play call.
+let _verifyApple = verifyApple;
+let _verifyGoogle = verifyGoogle;
+function _setVerifyForTest({ apple, google } = {}) {
+  _verifyApple = apple || verifyApple;
+  _verifyGoogle = google || verifyGoogle;
+}
+
 async function handleVerifyPurchase(body, secrets) {
   const { platform, productId, packId } = body;
 
@@ -328,25 +552,41 @@ async function handleVerifyPurchase(body, secrets) {
     return json(400, { status: "failed", error: "Missing platform or productId" });
   }
 
-  // Verify the receipt with the platform
+  console.log(
+    `[verify] in platform=${platform} productId=${productId} packId=${packId || "-"} ` +
+      `hasCode=${!!body.affiliateCode} hasResToken=${!!body.resolutionToken} hasSubject=${!!body.subjectId}`
+  );
+
+  // Verify the receipt with the platform (via swappable refs so tests can inject
+  // a verified result without a real Apple/Play call — see _setVerifyForTest).
   let result;
   if (platform === "ios" || platform === "macos") {
     if (!body.transactionId) {
       return json(400, { status: "failed", error: "Missing transactionId for Apple" });
     }
-    result = await verifyApple(body, secrets);
+    result = await _verifyApple(body, secrets);
   } else if (platform === "android") {
     if (!body.purchaseToken) {
       return json(400, { status: "failed", error: "Missing purchaseToken for Google" });
     }
-    result = await verifyGoogle(body, secrets);
+    // Subscriptions MUST be verified via subscriptionsv2 (see googleProductTypeFor).
+    const productType = googleProductTypeFor(productId, body.productType);
+    result = await _verifyGoogle({ ...body, productType }, secrets);
   } else {
     return json(400, { status: "failed", error: `Unsupported platform: ${platform}` });
   }
 
   if (!result.verified) {
+    console.warn(
+      `[verify] FAILED platform=${platform} productId=${productId} error=${result.error || "unknown"}`
+    );
     return json(403, { status: "failed", error: result.error || "Verification failed" });
   }
+
+  console.log(
+    `[verify] OK platform=${platform} txn=${result.transactionId} isSub=${!!result.isSubscription} ` +
+      `active=${!!result.subscriptionActive} offer=${result.offerId || result.offerIdentifier || "none"}`
+  );
 
   // For subscription or individual purchase, generate a signed download URL
   const response = {
@@ -386,7 +626,10 @@ async function handleVerifyPurchase(body, secrets) {
         hmac
       );
 
-      if (tokenCheck.valid) {
+      // Never credit affiliate revenue for test/sandbox purchases (TestFlight,
+      // Xcode, Play license testers) — they still get entitlement below.
+      const isNonProd = !!result.isTestPurchase || result.environment === "Sandbox";
+      if (tokenCheck.valid && !isNonProd) {
         const claims = tokenCheck.claims;
         // §5.2/§5.3 confirm the offer applied matches the token.
         const offerApplied = isApple
@@ -395,6 +638,12 @@ async function handleVerifyPurchase(body, secrets) {
         const offerMatches = isApple
           ? !claims.appleOfferId || result.offerIdentifier === claims.appleOfferId
           : !claims.googleOfferId || result.offerId === claims.googleOfferId;
+
+        console.log(
+          `[codes] attributing partner=${claims.partnerId} code=${claims.code} ` +
+            `platform=${isApple ? "apple" : "android"} txn=${txnOrOriginalId} ` +
+            `offerApplied=${offerApplied} offerMatches=${offerMatches}`
+        );
 
         const attribution = await codes.attributePurchase({
           claims,
@@ -416,8 +665,12 @@ async function handleVerifyPurchase(body, secrets) {
         });
         if (attribution) {
           response.affiliateAttribution = attribution;
+          console.log(`[codes] attribution: ${JSON.stringify(attribution)}`);
         }
       } else if (result.subscriptionActive) {
+        console.log(
+          `[codes] no valid resolutionToken (${tokenCheck.reason || "none"}); recording entitlement-only sub`
+        );
         // §4 — NO valid code, but a verified active sub. attributePurchase
         // never ran (it's gated on a resolutionToken), so persist the
         // entitlement PURCHASE# row here so /entitlement-token reflects a real
@@ -443,24 +696,72 @@ async function handleVerifyPurchase(body, secrets) {
   // since filenames include the version (e.g. "pack-id-0.1.0.zip").
   // Fall back to packId-only path for backwards compatibility.
   if (packId || body.downloadPath) {
+    let downloadPath;
+    if (typeof body.downloadPath === "string" && body.downloadPath.length > 0) {
+      // Client sends the path from the catalog's downloadUrl
+      downloadPath = body.downloadPath.replace(/^\/+/, "");
+    } else {
+      downloadPath = `narrations/premium/${packId}.zip`;
+    }
+    // Only sign paths under narrations/premium/ to prevent signing arbitrary URLs.
+    if (!downloadPath.startsWith("narrations/premium/")) {
+      return json(400, { status: "failed", error: "Invalid downloadPath" });
+    }
+
+    // --- §B entitlement gate: "verified" alone is NOT enough to issue a
+    // premium download. The client is open-source/bypassable, so THIS Lambda is
+    // the gate. Two cases:
+    //
+    //   (1) Subscription-backed request (Plus, all-access): require an ACTIVE
+    //       subscription. A verified-but-inactive (expired/lapsed) sub must get
+    //       403, not a signed URL. (Note: never-block-a-subscriber is about
+    //       PLAYBACK of already-installed content — gating fresh DOWNLOAD URLs on
+    //       active state is correct and does not violate it.)
+    //   (2) One-time book request (legacy per-book ownership): the verified
+    //       receipt must actually entitle the requested ZIP — bind the verified
+    //       product to the requested pack + path via the public catalog.
+    const isSubscriptionRequest =
+      body.productType === "subs" ||
+      productId === "corpan.plus" ||
+      !!result.isSubscription;
+
+    if (isSubscriptionRequest) {
+      if (!result.subscriptionActive) {
+        console.warn(`[signed-url] DENY: subscription not active (productId=${productId})`);
+        return json(403, { status: "failed", error: "Subscription not active" });
+      }
+      // Active Plus is all-access: any premium narration ZIP is allowed.
+    } else {
+      // One-time path. For Apple the verified receipt must be FOR the claimed
+      // product (verifyApple returns any found transaction's productId without
+      // binding it to body.productId).
+      const isApple = platform === "ios" || platform === "macos";
+      if (isApple && result.productId && productId && result.productId !== productId) {
+        console.warn(`[signed-url] DENY: Apple receipt product mismatch (receipt=${result.productId} requested=${productId})`);
+        return json(403, { status: "failed", error: "Receipt does not match requested product" });
+      }
+      // Bind the verified product to the requested pack + premium ZIP via the
+      // catalog (fail closed if the catalog is unavailable or doesn't match).
+      const bound = await bindOneTimeDownload({
+        packId,
+        verifiedProductId: result.productId || productId,
+        downloadPath,
+      });
+      if (!bound.ok) {
+        console.warn(`[signed-url] DENY: one-time binding failed: ${bound.reason}`);
+        return json(403, { status: "failed", error: "Not entitled to this download" });
+      }
+      // Trust the catalog-derived path over the client-supplied one.
+      downloadPath = bound.downloadPath;
+    }
+
     try {
       const signingKey = secrets.cloudfront?.signingPrivateKey;
-      let downloadPath;
-      if (typeof body.downloadPath === "string" && body.downloadPath.length > 0) {
-        // Client sends the path from the catalog's downloadUrl
-        downloadPath = body.downloadPath.replace(/^\/+/, "");
-      } else {
-        downloadPath = `narrations/premium/${packId}.zip`;
-      }
-      // Only sign paths under narrations/premium/ to prevent signing arbitrary URLs
-      if (!downloadPath.startsWith("narrations/premium/")) {
-        return json(400, { status: "failed", error: "Invalid downloadPath" });
-      }
       response.signedUrl = generateSignedDownloadUrl(downloadPath, signingKey);
       console.log(`[signed-url] Signed: ${downloadPath}`);
     } catch (err) {
       console.warn("[signed-url] Could not generate signed URL:", err.message);
-      // Non-fatal: verification succeeded, signed URL is a bonus
+      // Non-fatal: verification succeeded, signed URL is a bonus.
     }
   }
 
@@ -498,6 +799,48 @@ async function handleSubscriptionStatus(body, secrets) {
 // Route: POST /apple-notifications (App Store Server Notifications V2)
 // ---------------------------------------------------------------------------
 
+// Verify + decode an ASSN V2 signed payload, returning the decoded notification
+// payload or null on failure/misconfiguration. Extracted to a swappable
+// module-level reference so tests can drive the handler's post-verify logic
+// without a real JWS / Apple root chain (see _setAppleVerifyForTest). Default
+// implementation does the real signature verification.
+async function _defaultAppleVerify(signedPayload, appleSecrets) {
+  const bundleId = appleSecrets.bundleId || "com.corpora.corpan";
+  const appleRootCerts = (appleSecrets.rootCerts || []).map((c) =>
+    Buffer.from(c, "base64")
+  );
+  // appAppleId MUST be a number — SignedDataVerifier compares it to the
+  // payload's numeric appAppleId; a string fails as INVALID_APP_IDENTIFIER.
+  const appAppleId = Number(appleSecrets.appAppleId);
+  if (!appleRootCerts.length || !appAppleId) {
+    console.error("[apple-notification] CRITICAL: apple.rootCerts / apple.appAppleId not configured — cannot verify");
+    return null;
+  }
+  // ASSN V2 arrive from BOTH Sandbox and Production senders; the JWS only
+  // verifies against the matching-environment verifier. Try both (chain is
+  // validated to the Apple root either way). enableOnlineChecks=false avoids
+  // OCSP network flakiness in Lambda — the x5c chain + signature still prove
+  // authenticity. §6.1.
+  let verErr;
+  for (const env of [Environment.PRODUCTION, Environment.SANDBOX]) {
+    try {
+      const verifier = new SignedDataVerifier(
+        appleRootCerts, false, env, bundleId, appAppleId
+      );
+      return await verifier.verifyAndDecodeNotification(signedPayload);
+    } catch (e) {
+      verErr = e;
+    }
+  }
+  console.error("[apple-notification] signature verify failed (both envs): status=" + (verErr && (verErr.status ?? verErr.message)));
+  return null;
+}
+
+let _appleVerify = _defaultAppleVerify;
+function _setAppleVerifyForTest(fn) {
+  _appleVerify = fn || _defaultAppleVerify;
+}
+
 async function handleAppleNotification(body, secrets) {
   // Apple sends { signedPayload: "..." } — a JWS signed notification
   const { signedPayload } = body;
@@ -509,88 +852,120 @@ async function handleAppleNotification(body, secrets) {
   try {
     // §6.1 — Verify the ASSN V2 JWS signature with SignedDataVerifier.
     const appleSecrets = secrets?.apple || {};
-    const bundleId = appleSecrets.bundleId || "com.corpora.corpan";
-    let payload;
-    try {
-      const appleRootCerts = (appleSecrets.rootCerts || []).map((c) =>
-        Buffer.from(c, "base64")
-      );
-      const env = appleSecrets.notificationEnvironment === "Sandbox"
-        ? Environment.SANDBOX
-        : Environment.PRODUCTION;
-      const verifier = new SignedDataVerifier(
-        appleRootCerts,
-        appleSecrets.appAppleId ? true : appleRootCerts.length > 0, // enableOnlineChecks when certs present
-        env,
-        bundleId,
-        appleSecrets.appAppleId
-      );
-      payload = await verifier.verifyAndDecodeNotification(signedPayload);
-    } catch (verErr) {
-      console.error("[apple-notification] signature verify failed:", verErr.message);
-      // Reject unverified notifications (§6.1). 200 so Apple stops retrying a
-      // permanently-unverifiable payload, but DO NOT credit.
+    const payload = await _appleVerify(signedPayload, appleSecrets);
+    if (!payload) {
+      // _appleVerify already logged the reason (unconfigured or verify failure).
       return json(200, { received: true, verified: false });
     }
 
     const notificationType = payload.notificationType;
     const subtype = payload.subtype;
+    const action = appleNotificationAction(notificationType);
     console.log("[apple-notification]", JSON.stringify({
-      notificationType, subtype, notificationUUID: payload.notificationUUID,
+      notificationType, subtype, action, notificationUUID: payload.notificationUUID,
     }));
 
-    // §6.1 — On DID_RENEW / SUBSCRIBED, credit a renewal by appAccountToken.
-    if (notificationType === "DID_RENEW" || notificationType === "SUBSCRIBED") {
-      const signedTxn = payload.data?.signedTransactionInfo;
-      if (signedTxn) {
-        const txn = JSON.parse(
-          Buffer.from(signedTxn.split(".")[1], "base64url").toString()
-        );
-        const appAccountToken = txn.appAccountToken;
-        const renewalTxnId = txn.transactionId;
-        if (appAccountToken && renewalTxnId) {
-          // appAccountToken IS the subjectId (Apple uses it as PK directly, §7.3).
-          // (1) Extend the SUBSCRIBER ENTITLEMENT — the PURCHASE# row that backs
-          // /entitlement-token — with the renewed expiry, REGARDLESS of affiliate
-          // attribution. Without this a renewing subscriber's entitlement lapses
-          // once the ORIGINAL purchase row's expiresAt passes (renewals only
-          // credited the affiliate ledger before, and skipped non-affiliate subs
-          // entirely). Idempotent per renewal transaction; readLatestEntitlement
-          // then picks the row with the newest expiry.
-          const renewedExpiresAt = txn.expiresDate
-            ? new Date(txn.expiresDate).toISOString()
-            : null;
-          if (renewedExpiresAt) {
-            await codes.recordEntitlementPurchase({
-              subjectId: appAccountToken,
-              platform: "apple",
-              txnOrOriginalId: renewalTxnId,
-              productId: txn.productId || null,
-              expiresAt: renewedExpiresAt,
-              environment: txn.environment || null,
-              appAccountToken,
-            });
-          }
-          // (2) Affiliate ledger credit — only when this subject was attributed
-          // to a partner via a code.
-          const attr = await codes.getAttribution(appAccountToken);
-          if (attr && attr.partnerId) {
-            await codes.creditRenewal({
-              partnerId: attr.partnerId,
-              subjectId: appAccountToken,
-              platform: "apple",
-              renewalTxnId,
-              productId: txn.productId || null,
-              price: txn.price ?? null,
-              currency: txn.currency ?? null,
-              notificationType,
-            });
-          }
-        }
+    // §6 — Dedupe: ASSN is at-least-once and may duplicate/reorder. Process
+    // each notificationUUID at most once. Use a READ-only probe here to skip
+    // obvious replays; the authoritative dedupe row is committed AFTER the
+    // side-effect work succeeds (see below) so a transient post-read failure
+    // leaves the event reprocessable on redelivery (all writes are idempotent).
+    if (payload.notificationUUID) {
+      const seen = await codes.isEventProcessed(`apple#${payload.notificationUUID}`);
+      if (seen) {
+        console.log(`[apple-notification] duplicate ${payload.notificationUUID} — skipped`);
+        return json(200, { received: true, duplicate: true });
       }
     }
+
+    const signedTxn = payload.data?.signedTransactionInfo;
+    const txn = signedTxn
+      ? JSON.parse(Buffer.from(signedTxn.split(".")[1], "base64url").toString())
+      : null;
+
+    if (txn && action !== "ignore") {
+      const subjectKey = txn.appAccountToken || null;
+      const txnId = txn.transactionId;
+      const origId = txn.originalTransactionId || txnId;
+      const productId = txn.productId || null;
+      const price = milliunitsToNumber(txn.price);
+      const currency = txn.currency ?? null;
+      const environment = txn.environment || null;
+      const isTest = environment === "Sandbox";
+      const expiresAt = txn.expiresDate ? new Date(txn.expiresDate).toISOString() : null;
+      // Apple offerType 3 = offer code (the partner attribution hook, §3).
+      const isOfferCode = txn.offerType === 3 && !!txn.offerIdentifier;
+
+      // Extend the subscriber entitlement (PURCHASE# row behind /entitlement-token)
+      // for any live txn with a known subject + expiry. A clawback (REFUND /
+      // REVOKE) usually still carries a future expiresDate, so guard it out —
+      // mirroring the Google path — to avoid refreshing entitlement on a revoked
+      // txn. Per the never-block-a-subscriber priority we do NOT write a negative
+      // / expire row here; existing entitlement simply lapses at natural expiry.
+      if (subjectKey && expiresAt && action !== "clawback") {
+        await codes.recordEntitlementPurchase({
+          subjectId: subjectKey, platform: "apple", txnOrOriginalId: txnId,
+          productId, expiresAt, environment, appAccountToken: subjectKey,
+        });
+      }
+
+      if (action === "initial" && isOfferCode) {
+        // Offer-code redemption (incl. OUT-OF-APP, where appAccountToken is
+        // absent) → attribute the partner straight from the offer id. §3.4.
+        const r = await codes.attributeFromOffer({
+          offerId: txn.offerIdentifier, subjectKey, platform: "apple",
+          txnOrOriginalId: origId, productId, price, currency, expiresAt, environment, isTest,
+        });
+        if (r) console.log(`[apple-notification] offer-code attribution: ${JSON.stringify(r)}`);
+      } else if (action === "renewal" && subjectKey && !isTest) {
+        const attr = await codes.getAttribution(subjectKey);
+        if (attr && attr.partnerId) {
+          const meta = attr.code ? await codes.getCode(attr.code) : null;
+          await codes.creditRenewal({
+            partnerId: attr.partnerId, subjectId: subjectKey, platform: "apple",
+            renewalTxnId: txnId, productId, price, currency,
+            revenueSharePct: meta?.revenueSharePct ?? null, notificationType,
+          });
+        }
+      } else if (action === "clawback") {
+        // Refund / revoke → reverse affiliate credit for this txn (§7).
+        // Reverse against the SPECIFIC refunded transaction id (`txnId`), NOT
+        // the original id: a renewal credit is keyed on its OWN renewal txn id
+        // (creditRenewal → EVENT#apple#<renewalTxnId>), so reversing on origId
+        // would never offset it. For the INITIAL purchase txnId === origId
+        // (Apple's first transaction is its own original), so the initial credit
+        // (keyed on origId) still nets out. Apple gives us the refunded
+        // transactionId in the notification, so it matches whatever id the
+        // matching credit row used for that period.
+        const attr = subjectKey ? await codes.getAttribution(subjectKey) : null;
+        const partnerId = attr?.partnerId
+          || (isOfferCode ? (await codes.findCodeByOffer(txn.offerIdentifier))?.partnerId : null);
+        if (partnerId) {
+          await codes.reverseCredit({
+            partnerId, platform: "apple", txnOrOriginalId: txnId, price, currency,
+            reason: notificationType,
+          });
+        }
+      }
+      // "extend"/"reinstate" handled by the entitlement refresh above.
+    }
+
+    // §6 — Commit the dedupe row only AFTER all side-effect work above has
+    // succeeded. A crash/throw before this point leaves the event unmarked so a
+    // redelivery safely reprocesses (every write is an idempotent conditional
+    // put). If the throw happens, control jumps to catch and we do NOT mark.
+    if (payload.notificationUUID) {
+      await codes.markEventProcessed(`apple#${payload.notificationUUID}`);
+    }
   } catch (err) {
-    console.error("[apple-notification] handler error (non-fatal):", err.message);
+    // A CAUGHT processing error (a transient DynamoDB write failure in the
+    // side-effect work or the post-work mark) must NOT be ACK'd. Returning a
+    // retryable 500 makes Apple redeliver the notification; the dedupe-after-work
+    // ordering means a redelivery safely reprocesses (idempotent conditional puts
+    // + the isEventProcessed probe short-circuits a genuinely-completed one). A
+    // 200 here would permanently lose the event (no redelivery).
+    console.error("[apple-notification] handler error (retryable):", err.message);
+    return json(500, { received: false, error: "retryable processing error" });
   }
 
   // Apple expects 200 OK to acknowledge receipt (so it stops retrying).
@@ -610,10 +985,18 @@ async function handleGoogleNotification(body, secrets, authHeader) {
   }
 
   // §6.2 — Validate the Pub/Sub push OIDC token before trusting the payload.
+  // Fail-CLOSED: if the OIDC config (google.pubsubAudience /
+  // pubsubServiceAccount) is absent we REJECT and do NOT process the body (and
+  // do NOT burn a dedupe id) — never accept an unauthenticated push. Prod has
+  // these set, so this only removes a dangerous fallback.
   const googleSecrets = secrets?.google || {};
-  const expectedAudience = googleSecrets.pubsubAudience; // configured push audience
-  const expectedEmail = googleSecrets.pubsubServiceAccount; // push SA email
-  if (expectedAudience || expectedEmail) {
+  const expectedAudience = googleSecrets.pubsubAudience;
+  const expectedEmail = googleSecrets.pubsubServiceAccount;
+  if (!expectedAudience && !expectedEmail) {
+    console.error("[google-notification] CRITICAL: Pub/Sub OIDC NOT configured (no google.pubsubAudience/pubsubServiceAccount) — rejecting unauthenticated push");
+    return json(403, { error: "forbidden" });
+  }
+  {
     const ok = await verifyPubSubOidc(authHeader, expectedAudience, expectedEmail);
     if (!ok) {
       console.error("[google-notification] OIDC validation failed — rejecting");
@@ -624,55 +1007,127 @@ async function handleGoogleNotification(body, secrets, authHeader) {
   try {
     const decoded = JSON.parse(Buffer.from(message.data, "base64").toString());
     const subNotif = decoded.subscriptionNotification;
+    const voided = decoded.voidedPurchaseNotification;
+    const action = subNotif ? googleNotificationAction(subNotif.notificationType) : null;
     console.log("[google-notification]", JSON.stringify({
       packageName: decoded.packageName,
       eventTimeMillis: decoded.eventTimeMillis,
-      subscriptionNotification: subNotif,
-      oneTimeProductNotification: decoded.oneTimeProductNotification,
+      notificationType: subNotif?.notificationType,
+      action,
+      voided: voided ? { orderId: voided.orderId, refundType: voided.refundType } : undefined,
+      test: !!decoded.testNotification,
     }));
 
-    // §6.2 — On SUBSCRIPTION_RENEWED (2), reverse-map via GSI1 and credit.
-    if (subNotif && subNotif.notificationType === 2) {
+    // Dedupe at-least-once Pub/Sub delivery by messageId. READ-only probe at the
+    // top to skip replays; the authoritative dedupe row is committed AFTER the
+    // side-effect work succeeds (see the markEventProcessed calls in each exit
+    // path below) so a transient post-probe failure leaves the event
+    // reprocessable on redelivery (all writes are idempotent).
+    const eventId = message.messageId ? `google#${message.messageId}` : null;
+    if (eventId && (await codes.isEventProcessed(eventId))) {
+      console.log(`[google-notification] duplicate ${message.messageId} — skipped`);
+      return json(200, { received: true, duplicate: true });
+    }
+
+    if (decoded.testNotification) {
+      console.log("[google-notification] test notification OK");
+      if (eventId) await codes.markEventProcessed(eventId);
+      return json(200, { received: true, test: true });
+    }
+
+    // §7 — Refund / chargeback → reverse affiliate credit for that order.
+    if (voided && voided.purchaseToken) {
+      const verify = await verifyGoogle(
+        { purchaseToken: voided.purchaseToken, productId: voided.subscriptionId, productType: "subs" },
+        secrets
+      );
+      // Never trust an unverified authoritative re-fetch: a transient Play API
+      // outage returns { verified:false } with no fields. Doing the clawback +
+      // markEventProcessed here would burn the event on a transient failure.
+      // Return a retryable 500 so Pub/Sub redelivers (no partial work, no mark).
+      if (!verify.verified) {
+        console.error("[google-notification] voided re-fetch unverified — retryable, not marking");
+        return json(500, { received: false, error: "retryable verify failure" });
+      }
+      const attr = verify.obfHash ? await codes.findSubjectByObfHash(verify.obfHash) : null;
+      if (attr && attr.partnerId) {
+        await codes.reverseCredit({
+          partnerId: attr.partnerId, platform: "android",
+          txnOrOriginalId: voided.orderId || verify.transactionId, reason: "VOIDED",
+        });
+      }
+      if (eventId) await codes.markEventProcessed(eventId);
+      return json(200, { received: true });
+    }
+
+    if (subNotif && action !== "ignore") {
+      // §5 — Never trust the notification body: re-fetch authoritative state.
       const verify = await verifyGoogle(
         { purchaseToken: subNotif.purchaseToken, productId: subNotif.subscriptionId, productType: "subs" },
         secrets
       );
+      // verifyGoogle swallows Play API failures and returns { verified:false }
+      // with missing fields. Proceeding would do NO real work (no entitlement /
+      // renewal / clawback) and then markEventProcessed — burning the event on a
+      // transient Play outage. Return a retryable 500 so it redelivers; do NOT do
+      // partial work and do NOT mark the event processed.
+      if (!verify.verified) {
+        console.error("[google-notification] subscription re-fetch unverified — retryable, not marking");
+        return json(500, { received: false, error: "retryable verify failure" });
+      }
       const obfHash = verify.obfHash;
       const orderId = verify.transactionId;
-      if (obfHash && orderId) {
-        const attr = await codes.findSubjectByObfHash(obfHash);
-        const subjectId = attr && attr.subjectId ? attr.subjectId : null;
-        // (1) Extend the subscriber entitlement with the renewed expiry,
-        // REGARDLESS of affiliate attribution. Every verified sub (code or not)
-        // has a PURCHASE# row, so findSubjectByObfHash resolves the subject.
-        if (subjectId && verify.expiresAt) {
-          await codes.recordEntitlementPurchase({
-            subjectId,
-            platform: "android",
-            txnOrOriginalId: orderId,
-            productId: verify.productId || null,
-            expiresAt: verify.expiresAt,
-            environment: null,
-            appAccountToken: null,
-          });
-        }
-        // (2) Affiliate ledger credit — only for partner-attributed subjects.
-        if (attr && attr.partnerId) {
-          await codes.creditRenewal({
-            partnerId: attr.partnerId,
-            subjectId: attr.subjectId || null,
-            platform: "android",
-            renewalTxnId: orderId,
-            productId: verify.productId || null,
-            price: verify.price ?? null,
-            currency: verify.currency ?? null,
-            notificationType: "SUBSCRIPTION_RENEWED",
-          });
-        }
+      const isTest = !!verify.isTestPurchase;
+      const attr = obfHash ? await codes.findSubjectByObfHash(obfHash) : null;
+      const subjectId = attr?.subjectId || null;
+
+      // Extend the subscriber entitlement with the authoritative expiry for any
+      // live action (purchase/renew/recover/restart/cancel-still-active/grace).
+      if (subjectId && verify.expiresAt && action !== "clawback") {
+        await codes.recordEntitlementPurchase({
+          subjectId, platform: "android", txnOrOriginalId: orderId,
+          productId: verify.productId || null, expiresAt: verify.expiresAt,
+          environment: null, appAccountToken: null,
+        });
+      }
+
+      if (action === "initial") {
+        // First server-side sighting of a paid sub (e.g. out-of-app or a missed
+        // in-app verify) → attribute the partner from the offer id.
+        const r = await codes.attributeFromOffer({
+          offerId: verify.offerId, subjectKey: subjectId, obfHash, platform: "android",
+          txnOrOriginalId: orderId, productId: verify.productId || null,
+          price: verify.price ?? null, currency: verify.currency ?? null,
+          expiresAt: verify.expiresAt, isTest,
+        });
+        if (r) console.log(`[google-notification] offer attribution: ${JSON.stringify(r)}`);
+      } else if (action === "renewal" && attr?.partnerId && !isTest) {
+        const meta = attr.code ? await codes.getCode(attr.code) : null;
+        await codes.creditRenewal({
+          partnerId: attr.partnerId, subjectId, platform: "android",
+          renewalTxnId: orderId, productId: verify.productId || null,
+          price: verify.price ?? null, currency: verify.currency ?? null,
+          revenueSharePct: meta?.revenueSharePct ?? null, notificationType: "SUBSCRIPTION_RENEWED",
+        });
+      } else if (action === "clawback" && attr?.partnerId) {
+        await codes.reverseCredit({
+          partnerId: attr.partnerId, platform: "android", txnOrOriginalId: orderId, reason: "REVOKED",
+        });
       }
     }
+
+    // Commit the dedupe row only AFTER all side-effect work above has succeeded.
+    // A throw before this point jumps to catch and leaves the event unmarked so
+    // a redelivery safely reprocesses (every write is an idempotent put).
+    if (eventId) await codes.markEventProcessed(eventId);
   } catch (err) {
-    console.error("[google-notification] handler error (non-fatal):", err.message);
+    // A CAUGHT processing error (transient DynamoDB write in the side-effect work
+    // or the post-work mark) must NOT be ACK'd. For Pub/Sub push a 200 ACKs the
+    // message and permanently loses it; a retryable 500 makes Pub/Sub redeliver,
+    // and the dedupe-after-work ordering reprocesses safely (idempotent
+    // conditional puts + isEventProcessed short-circuit).
+    console.error("[google-notification] handler error (retryable):", err.message);
+    return json(500, { received: false, error: "retryable processing error" });
   }
 
   // Google expects 200 OK to acknowledge

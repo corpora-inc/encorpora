@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run a single language end-to-end through the post-EN pipeline.
 # Assumes: segments_<lang>.json already exists in the pack.
-# Does: nvidia-smi guard → validate → generate → fixup → master --all → audit → publish → patch-catalog → CDN check.
+# Does: nvidia-smi guard → validate → generate → fixup → master --all → audit → publish → CDN check (ttsctl publish now writes publishedAt).
 #
 # Usage:  run_lang_pipeline.sh <lang> <version>
 set -euo pipefail
@@ -135,15 +135,12 @@ echo "[$(date +%T)] [$LANG] ttsctl publish (preview/premium)"
 $BIN/ttsctl publish "$PACK" --lang "$LANG" --voice-id ian-chill-clear --tier public --with-preview --version "$VERSION" > "$LOG/publish.log" 2>&1
 tail -5 "$LOG/publish.log"
 
-echo "[$(date +%T)] [$LANG] patch-catalog.py"
-( cd /home/skyl/encorpora/corpan/infra && $BIN/python patch-catalog.py ) > "$LOG/patch.log" 2>&1
-tail -3 "$LOG/patch.log"
 
 echo "[$(date +%T)] [$LANG] CDN verify"
 curl -s 'https://d38iwc9748jekz.cloudfront.net/catalog-v2.json' | $BIN/python -c "
 import json, sys
 c = json.load(sys.stdin)
-n = [n for n in c['narrations'] if n.get('bookId')=='book_biomes_tropical_rainforest' and n.get('language')=='$LANG']
+n = [n for n in c['narrations'] if n.get('bookId')=='$EXPECTED_BOOK_ID' and n.get('language')=='$LANG']
 print('  CDN narrations for [$LANG]:', n)
 "
 
@@ -153,7 +150,7 @@ import json
 from datetime import datetime, timezone
 rec = {
     "lang": "$LANG",
-    "book": "biomes-tropical-rainforest",
+    "book": "biomes-hot-desert",
     "voice_id": "ian-chill-clear",
     "version": "$VERSION",
     "engine": "chatterbox",

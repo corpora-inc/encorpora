@@ -423,6 +423,26 @@ export function createEarthgateReader(
     }
   }
 
+  // End of a full book → ask the host (appShell, which owns the catalog) to
+  // suggest the next book to read. The host picks the next title and presents
+  // the suggestion; the reader only signals that the book finished.
+  function maybeSuggestNextBook() {
+    try {
+      window.dispatchEvent(
+        new CustomEvent("corpan:book-finished", {
+          detail: {
+            bookId,
+            language: currentLanguage,
+            bookTitle: bookDisplayName,
+            theme: "earthgate",
+          },
+        })
+      )
+    } catch (err) {
+      console.warn("[EarthgateReader] book-finished dispatch failed:", err)
+    }
+  }
+
   // Corpán Plus: report deepest segment reached so the host's progress store
   // can power the Library "Continue" shelf + streaks. Fire-and-forget.
   function reportSegmentProgress(index: number) {
@@ -970,6 +990,8 @@ export function createEarthgateReader(
           // preview on next install.
           if (isPreview) {
             maybeOfferPlus()
+          } else {
+            maybeSuggestNextBook()
           }
         },
         () => {

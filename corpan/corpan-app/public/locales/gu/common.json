@@ -568,10 +568,15 @@
       "noMatches": "કોઈ પરિણામ નથી.",
       "filter": {
         "all": "બધાં",
+        "available": "ઉપલબ્ધ",
         "free": "મફત",
         "paid": "ચૂકવેલ",
         "installed": "ઇન્સ્ટોલ કરેલ"
       },
+      "downloadAll": "બધું ડાઉનલોડ કરો",
+      "downloadAllSummary": "{{count}} ઉપલબ્ધ · ~{{size}} MB",
+      "installingBatch": "{{total}} માંથી {{current}} ઇન્સ્ટોલ થઈ રહ્યું છે…",
+      "batchFailed": "{{count}} ઇન્સ્ટોલ ન થઈ શક્યાં — ફરી પ્રયાસ કરવા ટૅપ કરો",
       "activeInStack": "સક્રિય",
       "activeBadge": "સક્રિય",
       "subBadge": "સબ્સ્ક્રિપ્શન",

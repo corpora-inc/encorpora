@@ -126,7 +126,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         "--seed",
-        default=str(Path(__file__).with_name("seed.json")),
+        default=str(Path(__file__).with_name("seed.local.json") if Path(__file__).with_name("seed.local.json").exists() else Path(__file__).with_name("seed.json")),
         help="Path to seed.json (default: alongside this script).",
     )
     parser.add_argument(

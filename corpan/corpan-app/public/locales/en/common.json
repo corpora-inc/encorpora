@@ -658,10 +658,15 @@
       "noMatches": "Nothing matches that search yet.",
       "filter": {
         "all": "All",
+        "available": "Available",
         "free": "Free",
         "paid": "Paid",
         "installed": "Installed"
       },
+      "downloadAll": "Download all",
+      "downloadAllSummary": "{{count}} available · ~{{size}} MB",
+      "installingBatch": "Installing {{current}} of {{total}}…",
+      "batchFailed": "{{count}} couldn't install — tap to retry",
       "activeInStack": "Active in stack",
       "activeBadge": "Active",
       "inactiveBadge": "Inactive",

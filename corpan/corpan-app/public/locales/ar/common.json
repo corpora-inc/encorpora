@@ -568,6 +568,7 @@
       "noMatches": "لا توجد نتائج.",
       "filter": {
         "all": "الكل",
+        "available": "متاح",
         "free": "مجاني",
         "paid": "مدفوع",
         "installed": "مثبَّت"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "تصفح حزم العبارات",
       "inactiveBadge": "غير نشط",
       "moreActionsLabel": "مزيد من الإجراءات",
-      "install": "تثبيت"
+      "install": "تثبيت",
+      "downloadAll": "تنزيل الكل",
+      "downloadAllSummary": "{{count}} متاحة · ~{{size}} MB",
+      "installingBatch": "جارٍ تثبيت {{current}} من {{total}}…",
+      "batchFailed": "تعذّر تثبيت {{count}} — اضغط لإعادة المحاولة"
     },
     "unlockWithPlus": "افتح مع Corpán Plus",
     "plus": "Corpán Plus",

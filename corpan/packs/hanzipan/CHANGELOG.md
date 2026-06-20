@@ -10,6 +10,41 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.6.5] - 2026-06-19
+
+### Added
+- **"Show hint" button** on the canvas toolbar. Reveals the next stroke once, on
+  demand, regardless of the guided auto-hint toggle — the affordance you
+  previously could only trigger by switching the graduation-cap toggle off and
+  back on.
+
+### Changed
+- **Canvas toolbar regrouped into two edge-pinned clusters.** LEFT = "learn"
+  (Play / Guided / Show hint), RIGHT = "tools" (Brush / Free draw / Clear),
+  flushed to opposite edges of the panel (`space-between`) so the canvas reads
+  as a clean workspace flanked by controls instead of two groups floating in
+  the center. **Play** is now the gold-gradient hero action; **Clear** carries a
+  quiet warm-red destructive hover. Chips shrink slightly on phones so the two
+  3-button clusters never overflow.
+- **Premium UI pass to match the host app's latest chrome standard.** The fixed
+  exit button now lands in the same top-right band as Home/Settings
+  (`getTopBarPaddingTop` ≈ 50px) instead of jamming up into the status bar, and
+  is a squared-off bezel button rather than a circle. The whole studio shifts
+  down to clear the safe-area band. Every pill/circle control (exit, nav
+  arrows, pinyin, toolbar chips, play, toggles, action buttons, chips, brush-
+  widget tabs/presets) now uses the house "iPhone-bezel" rounding
+  (`--radius-btn` 11px / `--radius-chip` 9px) — only true-round shapes
+  (progress track, slider thumbs) keep their circular geometry. The canvas
+  toolbar gets roomier inter/intra-group spacing so it no longer reads as
+  cramped on iPad.
+
+### Fixed
+- **iPad no longer ignored by the safe-area top inset.** iPadOS reports a
+  desktop UA (`Macintosh` / `MacIntel`), so it fell into the desktop branch and
+  got `--safe-top: 0`, pushing the exit button and hero up under the status
+  bar. It is now detected via `platform === "MacIntel" && maxTouchPoints > 1`
+  (plus the legacy `iPad` UA) and given the proper top clearance.
+
 ## [0.6.4] - 2026-06-18
 
 ### Changed

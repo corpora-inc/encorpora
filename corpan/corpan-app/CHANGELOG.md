@@ -7,6 +7,157 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Security
+- **Content-pack installer path-traversal hardening (native).** `pack_id` is
+  now strictly validated (`validate_pack_id`: `[A-Za-z0-9._-]` only; rejects
+  empty, `.`/`..`, path separators, NUL) at the top of every native path that
+  interpolates it into a filesystem path — full-pack install
+  (`download_and_install`), module install (`install_module`),
+  `module_file_exists`, and `get_manifest_url`. A belt-and-suspenders
+  canonical-containment check (`assert_within_root`) additionally asserts the
+  tmp/staging/final/backup and module destination paths resolve inside the
+  `corpan-packs` root before any write/remove. Previously `pack_id` from the
+  catalog/module payload was interpolated raw, and the only id check happened
+  *after* the paths were built.
+
+### Reliability
+- **Download stall watchdog (native).** Pack and module downloads now use a
+  shared client with a 30s connect timeout and a 120s per-read (idle/stall)
+  timeout instead of a bare `reqwest::Client::new()` that could hang forever on
+  a wedged CDN socket. The per-read deadline resets as bytes arrive, so it does
+  not break slow-but-progressing multi-GB model-pack downloads — only a stalled
+  stream is failed (surfaced via the existing `pack-install-progress` error
+  stage).
+
+### Changed
+- **Unverified-install visibility (native).** When the catalog provides no
+  `expected_sha256`, the installer now logs a clear warning (full pack and
+  module) instead of silently skipping integrity. Provided hashes are still
+  enforced (mismatch hard-fails); free packs without a sha are not blocked.
+
+## [0.19.2] - 2026-06-19
+
+### Fixed
+- **Store-notification reliability (server-side).** The receipt-verify Lambda's
+  Apple ASSN and Google RTDN handlers no longer acknowledge a notification with
+  HTTP 200 when a transient backend error occurs while processing it (a 200 ACKs
+  the message and permanently loses it). A caught processing error — or a Google
+  authoritative re-fetch that comes back unverified during a Play API outage —
+  now returns a retryable 500 so the store redelivers; no partial work is done
+  and the dedupe row is not committed, so the redelivery reprocesses cleanly
+  (every write is an idempotent conditional put). Prevents silently dropped
+  renewals/refunds/entitlement updates on transient failures.
+- **Premium download entitlement gate (server-side).** `/verify-purchase` now
+  issues a CloudFront-signed premium-narration download only when the requester
+  is actually entitled to that ZIP, not merely because a receipt verified. An
+  expired/lapsed subscription is denied (403) instead of getting the full ZIP;
+  an active Corpán Plus subscription remains all-access. One-time book downloads
+  are bound to the purchased product via the public catalog (the requested pack
+  and ZIP path must match the verified product), closing a cross-product hole
+  where any valid receipt could sign any premium ZIP. Active Plus subscribers and
+  legacy book owners downloading their own content are unaffected.
+
+### Changed
+- **Smoother pack-launch transition.** In the first-run launch animation, the
+  chosen card no longer snaps to full opacity the instant it climbs to the front
+  of the shuffling deck (which abruptly hid the still-advancing shuffle). It now
+  rises translucent — so the live shuffle reads through it — and only firms to
+  fully solid as it settles dead center.
+
+### Added
+- **Phrase packs drawer: "Download all" and an "Available" lens.** The browser
+  gains an **Available** filter chip (not-installed packs you can grab without
+  paying — free packs plus anything unlocked by an active Plus subscription), so
+  the existing **All** chip can stay a mix of installed and not. Every
+  price/install chip now carries a live count badge that respects the active
+  search + category facets. A sticky **Download all** bar batch-installs every
+  installable pack in the current view (so "filter to a category, grab the lot"
+  works), showing total count + approximate download size, a live
+  "Installing N of M…" progress bar, and a tap-to-retry line if any pack fails.
+  New strings localized across all ~54 locales.
+- **Onboarding launch animation now ends with a success haptic on iOS.** The
+  first-launch razzle already gave a heavy impact when the chosen card lands;
+  the completion handoff — when the colour wash finishes and the chosen
+  experience boots underneath — now also fires a success notification haptic to
+  confirm the selection. Reuses the existing `triggerHaptic` seam
+  (`util/haptics.ts`), fires once per completion. Works on both iOS
+  (UIImpactFeedbackGenerator) and Android (native Vibrator, with a
+  `navigator.vibrate` fallback in the WebView); a safe no-op only on
+  unsupported web/desktop.
+- **Seamless Corpán Plus narration upgrade after subscribing.** When a user
+  subscribes (or restores Plus, or launches already-Plus), the app dispatches a
+  `corpan:entitlements-changed` `{plus:true}` signal that the reader/catalog
+  layer uses to upgrade installed preview narrations to the full versions in
+  place — no manual uninstall/reinstall. The book the user is reading at the
+  end-of-preview paywall upgrades first (any connection) and the reader resumes
+  straight into the full content; the background sweep of the rest runs only on
+  confirmed-unmetered connections (when metering can't be confirmed — e.g. iOS —
+  it defers and the just-in-time on-open upgrade covers it); a JIT self-heal
+  upgrades any preview opened while Plus. The decoupled trigger
+  fires on the inactive→active edge of the live subscription, so every
+  activation path is covered without touching the offline-subscriber durability
+  logic.
+
+### Fixed
+- **Android subscription verification was failing for every subscriber.** The
+  `/verify-purchase` call now sends `productType`, and the server verifies
+  Google subscriptions via `subscriptionsv2` instead of the one-time-products
+  endpoint (which Google rejects for a subscription token). Previously every
+  Android subscription — including affiliate/discount code redemptions — failed
+  server verification, so no affiliate partner was credited and no entitlement
+  token was minted (blocking Plus-gated content downloads). iOS/macOS unaffected.
+- **Android Plus full-narration download was verifying as a one-time product.**
+  The signed-URL request for the gated full ZIP now sends `productType: "subs"`
+  (it authorizes under `corpan.plus`, which carries no `.sub.` marker, so the
+  server would otherwise verify it as an in-app product and reject the
+  subscription token — "document type is not supported"). The legacy per-book
+  download is pinned to `inapp` (unchanged behavior).
+- **Store-notification backend hardening (refunds, revocations, dedupe).**
+  Apple refunds of a *renewal* now net against the right ledger row; refund/
+  revoke no longer keeps extending Plus; store-notification dedupe is committed
+  only after the side-effects succeed (so a transient write failure is safely
+  reprocessed); Google push notifications fail closed when the OIDC trust isn't
+  configured; and refund/revoke reversals now carry the original charge's amount
+  and revenue-share so partner payouts are clawed back on refund (previously
+  Android refunds left the payout uncredited-back). Server-side only.
+- **Phrase packs "Download all" retry no longer becomes a dead tap.** The
+  failed-batch retry tracked failures as a global count and re-ran against the
+  *current view's* installable packs, so after a failure you could switch to a
+  filter/category with nothing installable and still see "tap to retry" while
+  the tap did nothing. Failures are now tracked by pack **ID** and retry
+  re-installs exactly those packs, resolved from the full catalog independent of
+  the active filter/search — and the retry affordance clears automatically once
+  every failed pack has installed (here or elsewhere) so it never offers a tap
+  that can't act. (`PhrasePackBrowser.tsx`, `resolveFailedPacks.ts`)
+- **Reordering a language no longer wobbles the drawer.** Dragging a chip in
+  the re-orderable language stack (in the Quick Settings drawer and anywhere
+  else the stack appears) is a dnd-kit drag; the enclosing vaul drawer was also
+  grabbing the vertical gesture and drifting toward closing. The chips are now
+  marked `data-vaul-no-drag`, so the drawer ignores touches that begin on a
+  chip while still closing normally from its handle/overlay.
+  (`LanguageSelectOrder.tsx`)
+- **Quick Settings drawer scrolls across its full width.** The scroll
+  container was capped + centered, so on a wide iPad the scrollbar floated in
+  from the right and the generous padded sides weren't a scroll surface. The
+  full drawer width is now the scroll region (scrollbar flush right, swipe
+  anywhere) while the controls stay width-capped and centered via an inner
+  wrapper. (`QuickSettingsSheet.tsx`)
+- **Installed packs are no longer dev-reloaded, fixing a pack-launch crash on
+  `tauri ios dev` over LAN.** A downloaded catalog pack (e.g. beatlounge) is
+  served from a `corpan-pack://localhost/…` (iOS/desktop) or
+  `http://corpan-pack.localhost/…` (Android) URL — both parse to a `localhost`
+  host, so the dev-reload poller wrongly treated every installed pack as a
+  hot-reload target. The poller then re-ran the pack's mount while the prior
+  React root was still mid-teardown (teardown is deferred to a
+  `requestAnimationFrame`), producing "createRoot() on a container that has
+  already been passed to createRoot()" + a detached-node `NotFoundError` and a
+  failed launch. Dev-reload polling is now scoped to packs actually served from
+  the local Vite `/packs` dev middleware in a DEV build; installed
+  `corpan-pack://` packs are never polled. Remount is also hardened: `load()`
+  now awaits the prior instance's deferred teardown before mounting a fresh one,
+  and clears the container before `mount()`, so a reload can never overlap two
+  roots. (`contentPacks/devReload.ts`, `ContentPackHost.tsx`.)
+
 ## [0.19.1] - 2026-06-18
 
 ### Added

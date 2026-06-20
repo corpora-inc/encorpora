@@ -568,10 +568,15 @@
       "noMatches": "کوئی نتیجہ نہیں۔",
       "filter": {
         "all": "سب",
+        "available": "دستیاب",
         "free": "مفت",
         "paid": "ادائیگی والا",
         "installed": "نصب شدہ"
       },
+      "downloadAll": "سب ڈاؤن لوڈ کریں",
+      "downloadAllSummary": "{{count}} دستیاب · ~{{size}} MB",
+      "installingBatch": "{{total}} میں سے {{current}} انسٹال ہو رہا ہے…",
+      "batchFailed": "{{count}} انسٹال نہ ہو سکے — دوبارہ کوشش کے لیے ٹیپ کریں",
       "activeInStack": "فعال",
       "activeBadge": "فعال",
       "subBadge": "سبسکرپشن",

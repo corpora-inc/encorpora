@@ -568,6 +568,7 @@
       "noMatches": "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ।",
       "filter": {
         "all": "ਸਾਰੇ",
+        "available": "ਉਪਲਬਧ",
         "free": "ਮੁਫ਼ਤ",
         "paid": "ਪੇਡ",
         "installed": "ਇੰਸਟਾਲ ਕੀਤਾ"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "ਫ੍ਰੇਜ਼ ਪੈਕ ਵੇਖੋ",
       "inactiveBadge": "ਗੈਰ-ਸਰਗਰਮ",
       "moreActionsLabel": "ਹੋਰ ਕਾਰਵਾਈਆਂ",
-      "install": "ਸਥਾਪਤ ਕਰੋ"
+      "install": "ਸਥਾਪਤ ਕਰੋ",
+      "downloadAll": "ਸਾਰੇ ਡਾਊਨਲੋਡ ਕਰੋ",
+      "downloadAllSummary": "{{count}} ਉਪਲਬਧ · ~{{size}} MB",
+      "installingBatch": "{{total}} ਵਿੱਚੋਂ {{current}} ਇੰਸਟਾਲ ਹੋ ਰਿਹਾ ਹੈ…",
+      "batchFailed": "{{count}} ਇੰਸਟਾਲ ਨਹੀਂ ਹੋ ਸਕੇ — ਮੁੜ ਕੋਸ਼ਿਸ਼ ਲਈ ਟੈਪ ਕਰੋ"
     },
     "unlockWithPlus": "Corpán Plus ਨਾਲ ਅਨਲੌਕ ਕਰੋ",
     "plus": "Corpán Plus",

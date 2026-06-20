@@ -568,6 +568,7 @@
       "noMatches": "결과가 없습니다.",
       "filter": {
         "all": "전체",
+        "available": "받기 가능",
         "free": "무료",
         "paid": "유료",
         "installed": "설치됨"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "구문 팩 둘러보기",
       "inactiveBadge": "비활성",
       "moreActionsLabel": "더 많은 작업",
-      "install": "설치"
+      "install": "설치",
+      "downloadAll": "모두 다운로드",
+      "downloadAllSummary": "{{count}}개 받기 가능 · 약 {{size}} MB",
+      "installingBatch": "{{total}}개 중 {{current}}개 설치 중…",
+      "batchFailed": "{{count}}개를 설치하지 못했습니다 — 다시 시도하려면 누르세요"
     },
     "unlockWithPlus": "Corpán Plus로 잠금 해제",
     "plus": "Corpán Plus",

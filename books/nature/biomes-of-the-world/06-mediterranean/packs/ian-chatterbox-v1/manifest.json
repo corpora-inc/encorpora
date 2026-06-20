@@ -1,0 +1,14 @@
+{
+  "id": "book_biomes_mediterranean",
+  "name": "The Mediterranean Biome",
+  "version": "0.1.0",
+  "type": "book",
+  "primary_language": "en",
+  "metadata": {
+    "series": "Biomes of the World",
+    "author": "Skylar Saveland",
+    "tts": true,
+    "estimatedListenTime": "10 minutes",
+    "publishedAt": "2026-06-19"
+  }
+}

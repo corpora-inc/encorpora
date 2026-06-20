@@ -44,32 +44,41 @@ import { createDailyQuota } from "@shared/monetization"
       <div class="workspace">
         <div class="panel draw-panel">
           <div class="panel-toolbar">
+            <!-- LEFT cluster = "learn": animate, auto-hint toggle, single hint.
+                 RIGHT cluster = "tools": brush config, free-draw, clear.
+                 The two clusters are pushed to opposite edges of the panel so
+                 the canvas reads as a clean workspace flanked by controls. -->
             <div class="toolbar-left">
-              <button class="icon-chip play-chip" data-action="replay" aria-label="Play">
+              <button class="icon-chip play-chip" data-action="replay" aria-label="Play" title="Animate">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M8 6.5 18 12 8 17.5Z" fill="currentColor" stroke="none" />
                 </svg>
               </button>
-              <button class="icon-chip" data-action="brush-settings" aria-label="Brush settings">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M18 2l3 3-3 3M18 5H9a4 4 0 0 0 0 8h1M6 22l-3-3 3-3M6 19h9a4 4 0 0 0 0-8h-1" />
-                </svg>
-              </button>
-            </div>
-            <div class="toolbar-right">
-              <button class="icon-chip" data-action="toggle-freedraw" data-freedraw-toggle aria-label="Free draw mode">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                </svg>
-              </button>
-              <button class="icon-chip active" data-guided-toggle aria-label="Guided hints">
+              <button class="icon-chip active" data-guided-toggle aria-label="Guided hints" title="Guided on">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     d="M4 9.5 12 5l8 4.5-8 4.5-8-4.5zM8 13.5v3.2c0 .8 2.1 1.8 4 1.8s4-1 4-1.8v-3.2"
                   />
                 </svg>
               </button>
-              <button class="icon-chip" data-action="clear" aria-label="Clear">
+              <button class="icon-chip" data-action="show-hint" aria-label="Show hint" title="Show hint">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9.5 18.5h5M10.5 21h3M12 3a6 6 0 0 0-3.6 10.8c.6.45.95 1.05 1.05 1.7l.1.5h4.9l.1-.5c.1-.65.45-1.25 1.05-1.7A6 6 0 0 0 12 3z" />
+                </svg>
+              </button>
+            </div>
+            <div class="toolbar-right">
+              <button class="icon-chip" data-action="brush-settings" aria-label="Brush settings" title="Brush">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18 2l3 3-3 3M18 5H9a4 4 0 0 0 0 8h1M6 22l-3-3 3-3M6 19h9a4 4 0 0 0 0-8h-1" />
+                </svg>
+              </button>
+              <button class="icon-chip" data-action="toggle-freedraw" data-freedraw-toggle aria-label="Free draw mode" title="Free draw">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                </svg>
+              </button>
+              <button class="icon-chip clear-chip" data-action="clear" aria-label="Clear" title="Clear">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5" />
                 </svg>
@@ -1743,11 +1752,28 @@ import { createDailyQuota } from "@shared/monetization"
     // Detect iPhone/iPod only (not iPad)
     const isIPhone = /iPhone|iPod/i.test(ua);
 
+    // Detect iPad. Modern iPadOS Safari/WKWebView reports a DESKTOP user agent
+    // ("Macintosh; Intel Mac OS X") with platform "MacIntel" — the only tell
+    // that separates it from a real Mac is a touch screen (maxTouchPoints > 1;
+    // a Mac reports 0). Older iPadOS still carries "iPad" in the UA. Either way
+    // it is NOT caught by the iPhone test above but still sits behind a status
+    // bar, so the fixed exit button + top padding need to clear it — otherwise
+    // they jam up into the status bar (this is why env(safe-area-inset-top)
+    // resolves to 0 in this WebView, mirroring the host app's getTopBarPaddingTop
+    // which also uses a flat per-platform clearance instead of the inset).
+    const isIPad =
+      /iPad/i.test(ua) ||
+      (platform === "MacIntel" && maxTouchPoints > 1);
+
     // Detect Android
     const isAndroid = /Android/i.test(ua);
 
     if (isIPhone) {
       root.style.setProperty("--safe-top", "30px");
+    } else if (isIPad) {
+      // Lands the exit button + hero in the same band as Home/Settings
+      // (getTopBarPaddingTop ≈ 50px once the clamp base is added).
+      root.style.setProperty("--safe-top", "24px");
     } else if (isAndroid) {
       root.style.setProperty("--safe-top", "25px");
     } else {
@@ -2672,6 +2698,13 @@ import { createDailyQuota } from "@shared/monetization"
           } else {
             engine.replay();
           }
+        }
+        if (action === "show-hint") {
+          // Reveal the next stroke once, on demand, regardless of whether the
+          // guided auto-hint toggle is on (force bypasses the guided check).
+          // This is the affordance you previously only got by toggling the
+          // graduation cap off and back on.
+          showGuidedHint(engine.currentStrokeIndex, { force: true });
         }
         if (action === "speak") {
           const zh = (state.stackConfig.languages || []).find((lang) => lang.startsWith("zh"));

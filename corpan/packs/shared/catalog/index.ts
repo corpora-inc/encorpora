@@ -51,7 +51,25 @@ export {
   listInstalled,
   listInstalledForBook,
   totalInstalledSizeMb,
+  setNarrationFullness,
+  isPreviewInstalled,
+  listPreviewNarrationIds,
 } from "./src/libraryStore"
+
+export {
+  upgradeNarration,
+  upgradeActiveNarration,
+  runUpgradeSweep,
+  maybeUpgradeOnOpen,
+  isLikelyUnmetered,
+  isConfirmedUnmetered,
+  canRunSweep,
+  setUpgradeCatalogProvider,
+  debugInstallPreview,
+  debugInstallStatus,
+  NARRATION_UPGRADED_EVENT,
+  ENTITLEMENTS_CHANGED_EVENT,
+} from "./src/upgradeManager"
 
 export {
   groupByBook,
@@ -59,6 +77,7 @@ export {
   sortBooksWithinSeries,
   sortBooks,
   type BookSort,
+  chooseNextBook,
   groupByCharacter,
   filterByLanguage,
   filterByCharacter,
@@ -70,6 +89,7 @@ export {
 
 export {
   installNarration,
+  installNarrationPreview,
   deleteNarration,
   isTauriAvailable,
   getPackUrl,

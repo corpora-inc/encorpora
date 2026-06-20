@@ -568,6 +568,7 @@
       "noMatches": "नतिजा छैन।",
       "filter": {
         "all": "सबै",
+        "available": "उपलब्ध",
         "free": "नि:शुल्क",
         "paid": "शुल्क",
         "installed": "स्थापित"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "फ्रेज प्याक हेर्नुहोस्",
       "inactiveBadge": "निष्क्रिय",
       "moreActionsLabel": "थप कार्यहरू",
-      "install": "स्थापना गर्नुहोस्"
+      "install": "स्थापना गर्नुहोस्",
+      "downloadAll": "सबै डाउनलोड गर्नुहोस्",
+      "downloadAllSummary": "{{count}} उपलब्ध · ~{{size}} MB",
+      "installingBatch": "{{total}} मध्ये {{current}} स्थापना गर्दै…",
+      "batchFailed": "{{count}} स्थापना हुन सकेन — पुनः प्रयास गर्न ट्याप गर्नुहोस्"
     },
     "unlockWithPlus": "Corpán Plus सँग अनलक गर्नुहोस्",
     "plus": "Corpán Plus",

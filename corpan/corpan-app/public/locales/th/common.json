@@ -568,10 +568,15 @@
       "noMatches": "ไม่พบผลลัพธ์",
       "filter": {
         "all": "ทั้งหมด",
+        "available": "พร้อมใช้งาน",
         "free": "ฟรี",
         "paid": "เสียค่าใช้จ่าย",
         "installed": "ติดตั้งแล้ว"
       },
+      "downloadAll": "ดาวน์โหลดทั้งหมด",
+      "downloadAllSummary": "พร้อมใช้งาน {{count}} รายการ · ~{{size}} MB",
+      "installingBatch": "กำลังติดตั้ง {{current}} จาก {{total}}…",
+      "batchFailed": "{{count}} รายการติดตั้งไม่ได้ — แตะเพื่อลองใหม่",
       "activeInStack": "ใช้งานอยู่",
       "activeBadge": "ใช้งานอยู่",
       "subBadge": "สมาชิก",

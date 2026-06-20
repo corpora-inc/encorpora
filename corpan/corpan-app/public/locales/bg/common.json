@@ -568,6 +568,7 @@
       "noMatches": "Няма резултати.",
       "filter": {
         "all": "Всички",
+        "available": "Налични",
         "free": "Безплатно",
         "paid": "Платено",
         "installed": "Инсталирано"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Разгледай пакети с фрази",
       "inactiveBadge": "Неактивен",
       "moreActionsLabel": "Още действия",
-      "install": "Инсталирай"
+      "install": "Инсталирай",
+      "downloadAll": "Изтегли всички",
+      "downloadAllSummary": "{{count}} налични · ~{{size}} MB",
+      "installingBatch": "Инсталиране на {{current}} от {{total}}…",
+      "batchFailed": "{{count}} не се инсталираха — докоснете за повторен опит"
     },
     "unlockWithPlus": "Отключете с Corpán Plus",
     "plus": "Corpán Plus",

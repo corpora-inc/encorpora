@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
 """
-Download s3://corpan-prod/artifacts/catalog-v2.json, merge in the
-narrator-first model fields (characters, voiceProfiles, books) plus
-characterId/coverImageUrl on each narration, and upload the result back.
+⛔⛔⛔ DO NOT RUN THIS AGAINST PROD. ⛔⛔⛔
 
-Then issue a CloudFront invalidation so readers see the new fields.
+This script REBUILDS the entire `books` array from the in-repo BOOK_META +
+asset-urls.json and uploads it over the live catalog. The backend `ttsctl
+publish` has since become the source of truth and writes richer book data
+(covers, descriptions) that is NOT in this file. Running this now WIPES cover
+art + descriptions for every book not hand-listed in BOOK_META — verified on
+2026-06-19 it would drop 23 of 36 covers. It is dead bootstrap code.
 
-CAUTION: ttsctl publish on the backend machine will overwrite this catalog
-unless ttsctl has been updated to preserve the new fields. Treat this as
-bootstrap data — once the backend pipeline learns the schema, this script
-becomes unnecessary.
+To stamp `publishedAt` on new books (the only reason anyone reaches for this),
+use the surgical, non-destructive tool instead:
+
+    corpan/infra/patch-published-dates.py        # see CATALOG_DATES_RUNBOOK.md
+
+Original purpose (historical): download catalog-v2.json, merge narrator-first
+model fields (characters, voiceProfiles, books) + characterId/coverImageUrl,
+upload back, invalidate CloudFront.
 """
 from __future__ import annotations
 
@@ -540,6 +547,22 @@ BOOK_META = {
         "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device", "diy", "hardware"],
         "published": "2026-06-03",
     },
+    "book_ai_this_week_2026_06_14": {
+        "description": (
+            "AI This Week for June 14, 2026 — Sundays, and Who We Are. A "
+            "special episode: the show moves to Sundays and, for the first "
+            "time on-mic, says who makes it — Corpora, the small "
+            "independent team behind the Corpán app. Open weights run deep: "
+            "DiffusionGemma, dots.tts, Higgs Audio v3, and Nemotron 3 Ultra. "
+            "Headlines on Kimi K2.7-Code, Cohere's North Mini Code, Apple's "
+            "WWDC on-device pitch, and Qwen 3.7-Plus. Top story is beatlounge "
+            "in Corpán — a sequencer where the samples are sentences. Concept "
+            "of the week is diffusion versus autoregressive. About twelve "
+            "minutes."
+        ),
+        "tags": ["adults", "tech", "ai", "news", "podcast", "dialog", "weekly", "open-weights", "on-device"],
+        "published": "2026-06-14",
+    },
     "book_ai_this_week_2026_05_20": {
         "description": (
             "AI This Week for May 20, 2026 — Magnifica Humanitas. Two hosts on "
@@ -598,6 +621,7 @@ BOOK_META = {
             "of the World series."
         ),
         "tags": ["nature", "biomes", "science", "language-learning"],
+        "published": "2026-06-15",
     },
     "book_biomes_hot_desert": {
         "description": (
@@ -608,6 +632,7 @@ BOOK_META = {
             "three of the Biomes of the World series."
         ),
         "tags": ["nature", "biomes", "science", "language-learning"],
+        "published": "2026-06-16",
     },
     "book_biomes_temperate_forest": {
         "description": (
@@ -616,6 +641,17 @@ BOOK_META = {
             "the deer and bears that know each one, and the people whose "
             "languages, songs, and cities grew up among these trees. Book "
             "four of the Biomes of the World series."
+        ),
+        "tags": ["nature", "biomes", "science", "language-learning"],
+        "published": "2026-06-17",
+    },
+    "book_biomes_temperate_grassland": {
+        "description": (
+            "A short, plain-spoken tour of the temperate grassland — a "
+            "wide sea of grass under a huge sky, prairie, steppe, and "
+            "pampas; the herds and burrowers that depend on the grass, "
+            "and the horse-riding peoples whose lives grew up with the "
+            "wind. Book five of the Biomes of the World series."
         ),
         "tags": ["nature", "biomes", "science", "language-learning"],
     },

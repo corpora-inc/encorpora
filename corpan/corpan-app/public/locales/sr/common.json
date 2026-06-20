@@ -568,6 +568,7 @@
       "noMatches": "Нема резултата.",
       "filter": {
         "all": "Све",
+        "available": "Доступно",
         "free": "Бесплатно",
         "paid": "Плаћено",
         "installed": "Инсталирано"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Прегледај пакете фраза",
       "inactiveBadge": "Neaktivno",
       "moreActionsLabel": "Još radnji",
-      "install": "Instaliraj"
+      "install": "Instaliraj",
+      "downloadAll": "Preuzmi sve",
+      "downloadAllSummary": "{{count}} dostupno · ~{{size}} MB",
+      "installingBatch": "Instaliranje {{current}} od {{total}}…",
+      "batchFailed": "{{count}} nije moguće instalirati — dodirnite za ponovni pokušaj"
     },
     "unlockWithPlus": "Otključajte uz Corpán Plus",
     "plus": "Corpán Plus",

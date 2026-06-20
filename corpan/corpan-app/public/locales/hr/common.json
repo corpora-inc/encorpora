@@ -568,10 +568,15 @@
       "noMatches": "Nema rezultata.",
       "filter": {
         "all": "Sve",
+        "available": "Dostupno",
         "free": "Besplatno",
         "paid": "Plaćeno",
         "installed": "Instalirano"
       },
+      "downloadAll": "Preuzmi sve",
+      "downloadAllSummary": "{{count}} dostupno · ~{{size}} MB",
+      "installingBatch": "Instaliram {{current}} od {{total}}…",
+      "batchFailed": "{{count}} se nije moglo instalirati — dodirni za ponovni pokušaj",
       "activeInStack": "Aktivno",
       "activeBadge": "Aktivno",
       "subBadge": "Pretplata",

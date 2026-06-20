@@ -148,10 +148,25 @@ export function createWordStream(scene: Scene): WordStream {
   // Track which word indices are currently assigned to which pool meshes
   const assignedMeshes = new Map<number, WordMesh>()
 
+  // Per-frame rasterization budget. Drawing a glyph onto a DynamicTexture
+  // (measureText + fillText + a 512x384 GPU upload) is the most expensive
+  // synchronous step in this renderer. When several words cross into the
+  // look-ahead range in the same frame (dense phrase, post-seek, post-swipe),
+  // doing all of them at once is the source of the occasional hitch.
+  //
+  // Words are fully transparent (computeFade === 0) while z > FADE_IN_Z, and the
+  // look-ahead range extends to LOOK_AHEAD_Z (well beyond FADE_IN_Z), so a word
+  // has a long runway of invisible frames before it must be legible. We rasterize
+  // immediately for any word that is at/inside the fade-in zone (must be ready),
+  // and cap rasterizations of still-invisible far words to this budget per frame.
+  // Deferred far words stay invisible (alpha 0) regardless, so output is identical.
+  const MAX_RASTERIZE_PER_FRAME = 2
+
   return {
     root,
 
     update: (currentMs: number, words: TimelineWord[], currentWordIndex: number, wordHold = true) => {
+      let rasterizeBudget = MAX_RASTERIZE_PER_FRAME
       const lookAheadMs = LOOK_AHEAD_Z * MS_PER_Z_UNIT
       const lookBehindMs = LOOK_BEHIND_Z * MS_PER_Z_UNIT
 
@@ -189,8 +204,27 @@ export function createWordStream(scene: Scene): WordStream {
           assignedMeshes.set(i, mesh)
         }
 
-        // Render text (only on assignment change)
-        renderWord(mesh, word.word)
+        // Render text (only on assignment change). Glyph rasterization is the
+        // heaviest synchronous step, so we spread it across frames for words
+        // that are still fully transparent (z > FADE_IN_Z): they are invisible
+        // until they reach the fade-in zone, giving a long runway to prepare
+        // the texture. Words at/inside the fade-in zone must be ready now.
+        const needsRender = mesh.assignedWord !== word.word
+        if (needsRender) {
+          if (z <= FADE_IN_Z) {
+            // Must be legible this frame — always rasterize.
+            renderWord(mesh, word.word)
+          } else if (rasterizeBudget > 0) {
+            renderWord(mesh, word.word)
+            rasterizeBudget--
+          } else {
+            // Defer: word is fully transparent at this z, so leaving the stale
+            // texture for a frame is visually identical. Keep it hidden until
+            // its glyph is ready to avoid flashing a previous word's texture.
+            mesh.plane.isVisible = false
+            continue
+          }
+        }
         mesh.plane.isVisible = true
 
         mesh.plane.position.x = 0

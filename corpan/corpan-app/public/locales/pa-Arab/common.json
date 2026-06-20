@@ -568,6 +568,7 @@
       "noMatches": "کوئی نتیجہ نئیں۔",
       "filter": {
         "all": "ساریاں",
+        "available": "دستیاب",
         "free": "مفت",
         "paid": "پیسے والا",
         "installed": "نصب شدہ"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "فریز پیک ویکھو",
       "inactiveBadge": "غیر فعال",
       "moreActionsLabel": "ہوڑ کارروائیاں",
-      "install": "انسٹال کرو"
+      "install": "انسٹال کرو",
+      "downloadAll": "ساریاں ڈاؤن لوڈ کرو",
+      "downloadAllSummary": "{{count}} دستیاب · ~{{size}} MB",
+      "installingBatch": "{{total}} وچوں {{current}} نصب ہو رہیا اے…",
+      "batchFailed": "{{count}} نصب نئیں ہو سکے — دوبارہ کوشش لئی ٹیپ کرو"
     },
     "unlockWithPlus": "Corpán Plus نال اَنلاک کرو",
     "plus": "Corpán Plus",

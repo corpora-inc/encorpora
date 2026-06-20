@@ -568,10 +568,15 @@
       "noMatches": "Sonuç yok.",
       "filter": {
         "all": "Tümü",
+        "available": "Mevcut",
         "free": "Ücretsiz",
         "paid": "Ücretli",
         "installed": "Yüklü"
       },
+      "downloadAll": "Tümünü indir",
+      "downloadAllSummary": "{{count}} mevcut · ~{{size}} MB",
+      "installingBatch": "{{total}} öğeden {{current}}. yükleniyor…",
+      "batchFailed": "{{count}} öğe yüklenemedi — yeniden denemek için dokunun",
       "activeInStack": "Etkin",
       "activeBadge": "Etkin",
       "subBadge": "Abonelik",

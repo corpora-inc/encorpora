@@ -568,6 +568,7 @@
       "noMatches": "Nėra atitikmenų.",
       "filter": {
         "all": "Visi",
+        "available": "Galima",
         "free": "Nemokama",
         "paid": "Mokama",
         "installed": "Įdiegta"
@@ -594,7 +595,11 @@
       "openDrawerLabel": "Naršyti frazių paketus",
       "inactiveBadge": "Neaktyvu",
       "moreActionsLabel": "Daugiau veiksmų",
-      "install": "Įdiegti"
+      "install": "Įdiegti",
+      "downloadAll": "Atsisiųsti viską",
+      "downloadAllSummary": "{{count}} galima · ~{{size}} MB",
+      "installingBatch": "Diegiama {{current}} iš {{total}}…",
+      "batchFailed": "{{count}} nepavyko įdiegti — bakstelėkite, kad pakartotumėte"
     },
     "unlockWithPlus": "Atrakinti su Corpán Plus",
     "plus": "Corpán Plus",

@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Mediterranean Biome",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Mediterranean Biome",
+      "text_markdown": "The Mediterranean Biome"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Where This Biome Grows",
+      "text_markdown": "Where This Biome Grows"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welcome to the Mediterranean biome.",
+      "text_markdown": "Welcome to the Mediterranean biome.",
+      "tts": {
+        "text": "Welcome to the Mediterranean biome.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is one of the great biomes of the world.",
+      "text_markdown": "This is one of the great biomes of the world.",
+      "tts": {
+        "text": "This is one of the great biomes of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "text_markdown": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "tts": {
+        "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Mediterranean biome is named for the lands around the Mediterranean Sea.",
+      "text_markdown": "The Mediterranean biome is named for the lands around the Mediterranean Sea.",
+      "tts": {
+        "text": "The Mediterranean biome is named for the lands around the Mediterranean Sea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But it does not only grow there.",
+      "text_markdown": "But it does not only grow there.",
+      "tts": {
+        "text": "But it does not only grow there.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Mediterranean biome appears in five small parts of the world.",
+      "text_markdown": "The Mediterranean biome appears in five small parts of the world.",
+      "tts": {
+        "text": "The Mediterranean biome appears in five small parts of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It grows in the lands around the Mediterranean Sea, in southern Europe and along the coast of North Africa.",
+      "text_markdown": "It grows in the lands around the Mediterranean Sea, in southern Europe and along the coast of North Africa.",
+      "tts": {
+        "text": "It grows in the lands around the Mediterranean Sea, in southern Europe and along the coast of North Africa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It grows in California, in the western part of North America.",
+      "text_markdown": "It grows in California, in the western part of North America.",
+      "tts": {
+        "text": "It grows in California, in the western part of North America.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It grows along the middle of the coast of Chile, in South America.",
+      "text_markdown": "It grows along the middle of the coast of Chile, in South America.",
+      "tts": {
+        "text": "It grows along the middle of the coast of Chile, in South America.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It grows near the southern tip of Africa, around the Cape.",
+      "text_markdown": "It grows near the southern tip of Africa, around the Cape.",
+      "tts": {
+        "text": "It grows near the southern tip of Africa, around the Cape.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It grows in the southwest and southern parts of Australia.",
+      "text_markdown": "It grows in the southwest and southern parts of Australia.",
+      "tts": {
+        "text": "It grows in the southwest and southern parts of Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each of these places is far from the others.",
+      "text_markdown": "Each of these places is far from the others.",
+      "tts": {
+        "text": "Each of these places is far from the others.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But they all share the same special weather.",
+      "text_markdown": "But they all share the same special weather.",
+      "tts": {
+        "text": "But they all share the same special weather.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The summers are hot and dry, and the winters are mild and wet.",
+      "text_markdown": "The summers are hot and dry, and the winters are mild and wet.",
+      "tts": {
+        "text": "The summers are hot and dry, and the winters are mild and wet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is rare on Earth.",
+      "text_markdown": "That is rare on Earth.",
+      "tts": {
+        "text": "That is rare on Earth.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most biomes have their rainy time in the warm months.",
+      "text_markdown": "Most biomes have their rainy time in the warm months.",
+      "tts": {
+        "text": "Most biomes have their rainy time in the warm months.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Here, the rain falls in the cool months instead.",
+      "text_markdown": "Here, the rain falls in the cool months instead.",
+      "tts": {
+        "text": "Here, the rain falls in the cool months instead.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each of these five places has its own plants and animals.",
+      "text_markdown": "Each of these five places has its own plants and animals.",
+      "tts": {
+        "text": "Each of these five places has its own plants and animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the shapes are the same.",
+      "text_markdown": "But the shapes are the same.",
+      "tts": {
+        "text": "But the shapes are the same.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Short tough shrubs, scattered trees, fragrant herbs, and bare rocky hills.",
+      "text_markdown": "Short tough shrubs, scattered trees, fragrant herbs, and bare rocky hills.",
+      "tts": {
+        "text": "Short tough shrubs, scattered trees, fragrant herbs, and bare rocky hills.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you stand in a Mediterranean land in summer, the air smells of dry herbs and warm stone.",
+      "text_markdown": "When you stand in a Mediterranean land in summer, the air smells of dry herbs and warm stone.",
+      "tts": {
+        "text": "When you stand in a Mediterranean land in summer, the air smells of dry herbs and warm stone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The light is strong and golden.",
+      "text_markdown": "The light is strong and golden.",
+      "tts": {
+        "text": "The light is strong and golden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The hills are dotted with low silver-green bushes.",
+      "text_markdown": "The hills are dotted with low silver-green bushes.",
+      "tts": {
+        "text": "The hills are dotted with low silver-green bushes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the Mediterranean biome.",
+      "text_markdown": "That is the Mediterranean biome.",
+      "tts": {
+        "text": "That is the Mediterranean biome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Where This Biome Grows",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A bright, dry, fragrant world that grows in five small corners of the Earth.",
+      "text_markdown": "A bright, dry, fragrant world that grows in five small corners of the Earth.",
+      "tts": {
+        "text": "A bright, dry, fragrant world that grows in five small corners of the Earth.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Weather",
+      "text_markdown": "The Weather"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The weather in the Mediterranean biome is unusual.",
+      "text_markdown": "The weather in the Mediterranean biome is unusual.",
+      "tts": {
+        "text": "The weather in the Mediterranean biome is unusual.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are two clear seasons.",
+      "text_markdown": "There are two clear seasons.",
+      "tts": {
+        "text": "There are two clear seasons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There is a long, hot, dry summer.",
+      "text_markdown": "There is a long, hot, dry summer.",
+      "tts": {
+        "text": "There is a long, hot, dry summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There is a shorter, mild, wet winter.",
+      "text_markdown": "There is a shorter, mild, wet winter.",
+      "tts": {
+        "text": "There is a shorter, mild, wet winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer, the sky is blue for weeks at a time.",
+      "text_markdown": "In the summer, the sky is blue for weeks at a time.",
+      "tts": {
+        "text": "In the summer, the sky is blue for weeks at a time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The sun is strong, and the air is dry.",
+      "text_markdown": "The sun is strong, and the air is dry.",
+      "tts": {
+        "text": "The sun is strong, and the air is dry.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Almost no rain falls for many months.",
+      "text_markdown": "Almost no rain falls for many months.",
+      "tts": {
+        "text": "Almost no rain falls for many months.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "By the end of summer, the grass is brown and the streams shrink to a few quiet pools.",
+      "text_markdown": "By the end of summer, the grass is brown and the streams shrink to a few quiet pools.",
+      "tts": {
+        "text": "By the end of summer, the grass is brown and the streams shrink to a few quiet pools.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, the first cool winds come from the sea.",
+      "text_markdown": "In the autumn, the first cool winds come from the sea.",
+      "tts": {
+        "text": "In the autumn, the first cool winds come from the sea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The clouds gather, and the first heavy rains fall on the dry earth.",
+      "text_markdown": "The clouds gather, and the first heavy rains fall on the dry earth.",
+      "tts": {
+        "text": "The clouds gather, and the first heavy rains fall on the dry earth.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The land drinks up the water, and the grass turns green again.",
+      "text_markdown": "The land drinks up the water, and the grass turns green again.",
+      "tts": {
+        "text": "The land drinks up the water, and the grass turns green again.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Winters are not very cold.",
+      "text_markdown": "Winters are not very cold.",
+      "tts": {
+        "text": "Winters are not very cold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It rarely snows, except high in the mountains.",
+      "text_markdown": "It rarely snows, except high in the mountains.",
+      "tts": {
+        "text": "It rarely snows, except high in the mountains.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The rain falls in long, soft showers and the rivers run full.",
+      "text_markdown": "The rain falls in long, soft showers and the rivers run full.",
+      "tts": {
+        "text": "The rain falls in long, soft showers and the rivers run full.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the spring, the air is warm and the hills are green.",
+      "text_markdown": "In the spring, the air is warm and the hills are green.",
+      "tts": {
+        "text": "In the spring, the air is warm and the hills are green.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For a few short weeks, wildflowers cover every slope.",
+      "text_markdown": "For a few short weeks, wildflowers cover every slope.",
+      "tts": {
+        "text": "For a few short weeks, wildflowers cover every slope.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then summer begins again, and the cycle starts over.",
+      "text_markdown": "Then summer begins again, and the cycle starts over.",
+      "tts": {
+        "text": "Then summer begins again, and the cycle starts over.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fire is also a part of this biome.",
+      "text_markdown": "Fire is also a part of this biome.",
+      "tts": {
+        "text": "Fire is also a part of this biome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the long dry summer, lightning or a careless spark can set the dry brush burning.",
+      "text_markdown": "In the long dry summer, lightning or a careless spark can set the dry brush burning.",
+      "tts": {
+        "text": "In the long dry summer, lightning or a careless spark can set the dry brush burning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of the plants here have learned to live with fire and to grow back quickly when it passes.",
+      "text_markdown": "Many of the plants here have learned to live with fire and to grow back quickly when it passes.",
+      "tts": {
+        "text": "Many of the plants here have learned to live with fire and to grow back quickly when it passes.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Land and the Water",
+      "text_markdown": "The Land and the Water"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The land of the Mediterranean biome is often hilly.",
+      "text_markdown": "The land of the Mediterranean biome is often hilly.",
+      "tts": {
+        "text": "The land of the Mediterranean biome is often hilly.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mountains rise close to the coast in many of these regions.",
+      "text_markdown": "Mountains rise close to the coast in many of these regions.",
+      "tts": {
+        "text": "Mountains rise close to the coast in many of these regions.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The slopes are rocky, and the soil is often thin.",
+      "text_markdown": "The slopes are rocky, and the soil is often thin.",
+      "tts": {
+        "text": "The slopes are rocky, and the soil is often thin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The seas and oceans nearby shape the weather.",
+      "text_markdown": "The seas and oceans nearby shape the weather.",
+      "tts": {
+        "text": "The seas and oceans nearby shape the weather.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The cool water keeps the summers from getting as hot as a desert, and the winters from getting as cold as the lands further inland.",
+      "text_markdown": "The cool water keeps the summers from getting as hot as a desert, and the winters from getting as cold as the lands further inland.",
+      "tts": {
+        "text": "The cool water keeps the summers from getting as hot as a desert, and the winters from getting as cold as the lands further inland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Water is precious here.",
+      "text_markdown": "Water is precious here.",
+      "tts": {
+        "text": "Water is precious here.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most rivers shrink to a trickle by the end of summer.",
+      "text_markdown": "Most rivers shrink to a trickle by the end of summer.",
+      "tts": {
+        "text": "Most rivers shrink to a trickle by the end of summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some smaller streams disappear completely.",
+      "text_markdown": "Some smaller streams disappear completely.",
+      "tts": {
+        "text": "Some smaller streams disappear completely.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the winter rains return, the rivers fill up quickly and rush down the hills toward the sea.",
+      "text_markdown": "When the winter rains return, the rivers fill up quickly and rush down the hills toward the sea.",
+      "tts": {
+        "text": "When the winter rains return, the rivers fill up quickly and rush down the hills toward the sea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In some places, deep underground water rises to make a spring.",
+      "text_markdown": "In some places, deep underground water rises to make a spring.",
+      "tts": {
+        "text": "In some places, deep underground water rises to make a spring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A spring is a small pool of fresh water that flows out of the rock all year.",
+      "text_markdown": "A spring is a small pool of fresh water that flows out of the rock all year.",
+      "tts": {
+        "text": "A spring is a small pool of fresh water that flows out of the rock all year.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For thousands of years, people, animals, and trees have gathered around these springs.",
+      "text_markdown": "For thousands of years, people, animals, and trees have gathered around these springs.",
+      "tts": {
+        "text": "For thousands of years, people, animals, and trees have gathered around these springs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Along the coast, the land meets the sea in cliffs, beaches, and small bays.",
+      "text_markdown": "Along the coast, the land meets the sea in cliffs, beaches, and small bays.",
+      "tts": {
+        "text": "Along the coast, the land meets the sea in cliffs, beaches, and small bays.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The sea is full of life.",
+      "text_markdown": "The sea is full of life.",
+      "tts": {
+        "text": "The sea is full of life.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fish, octopus, and sea birds find food in the warm, salty water.",
+      "text_markdown": "Fish, octopus, and sea birds find food in the warm, salty water.",
+      "tts": {
+        "text": "Fish, octopus, and sea birds find food in the warm, salty water.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The biome lives between the land, the sea, and the long blue summer sky.",
+      "text_markdown": "The biome lives between the land, the sea, and the long blue summer sky.",
+      "tts": {
+        "text": "The biome lives between the land, the sea, and the long blue summer sky.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Plants",
+      "text_markdown": "The Plants"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The plants of the Mediterranean biome are tough and clever.",
+      "text_markdown": "The plants of the Mediterranean biome are tough and clever.",
+      "tts": {
+        "text": "The plants of the Mediterranean biome are tough and clever.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They have learned how to live through a long, dry summer.",
+      "text_markdown": "They have learned how to live through a long, dry summer.",
+      "tts": {
+        "text": "They have learned how to live through a long, dry summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most of them are not tall.",
+      "text_markdown": "Most of them are not tall.",
+      "tts": {
+        "text": "Most of them are not tall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They grow as low shrubs, with thick, leathery leaves.",
+      "text_markdown": "They grow as low shrubs, with thick, leathery leaves.",
+      "tts": {
+        "text": "They grow as low shrubs, with thick, leathery leaves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The leaves are small and shiny, sometimes silver or gray-green.",
+      "text_markdown": "The leaves are small and shiny, sometimes silver or gray-green.",
+      "tts": {
+        "text": "The leaves are small and shiny, sometimes silver or gray-green.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A small, shiny leaf loses less water to the sun.",
+      "text_markdown": "A small, shiny leaf loses less water to the sun.",
+      "tts": {
+        "text": "A small, shiny leaf loses less water to the sun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A pale leaf reflects more of the sunlight away.",
+      "text_markdown": "A pale leaf reflects more of the sunlight away.",
+      "tts": {
+        "text": "A pale leaf reflects more of the sunlight away.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of the plants give off a strong, sweet smell when you brush against them.",
+      "text_markdown": "Many of the plants give off a strong, sweet smell when you brush against them.",
+      "tts": {
+        "text": "Many of the plants give off a strong, sweet smell when you brush against them.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That smell comes from oils inside the leaves.",
+      "text_markdown": "That smell comes from oils inside the leaves.",
+      "tts": {
+        "text": "That smell comes from oils inside the leaves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The oils slow water loss and help the plant survive the heat.",
+      "text_markdown": "The oils slow water loss and help the plant survive the heat.",
+      "tts": {
+        "text": "The oils slow water loss and help the plant survive the heat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is why so many of our favorite cooking herbs come from these lands.",
+      "text_markdown": "That is why so many of our favorite cooking herbs come from these lands.",
+      "tts": {
+        "text": "That is why so many of our favorite cooking herbs come from these lands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Plants like rosemary, sage, thyme, lavender, mint, and oregano all grow wild in the Mediterranean biome.",
+      "text_markdown": "Plants like rosemary, sage, thyme, lavender, mint, and oregano all grow wild in the Mediterranean biome.",
+      "tts": {
+        "text": "Plants like rosemary, sage, thyme, lavender, mint, and oregano all grow wild in the Mediterranean biome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The most famous tree of this biome is the olive tree.",
+      "text_markdown": "The most famous tree of this biome is the olive tree.",
+      "tts": {
+        "text": "The most famous tree of this biome is the olive tree.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An olive tree has a thick, twisted trunk and small, silver-gray leaves.",
+      "text_markdown": "An olive tree has a thick, twisted trunk and small, silver-gray leaves.",
+      "tts": {
+        "text": "An olive tree has a thick, twisted trunk and small, silver-gray leaves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some olive trees live for more than a thousand years.",
+      "text_markdown": "Some olive trees live for more than a thousand years.",
+      "tts": {
+        "text": "Some olive trees live for more than a thousand years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Other common trees are short evergreen oaks, pines, and cork trees.",
+      "text_markdown": "Other common trees are short evergreen oaks, pines, and cork trees.",
+      "tts": {
+        "text": "Other common trees are short evergreen oaks, pines, and cork trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wild grape vine also began in these lands and climbed up out of the bushes.",
+      "text_markdown": "The wild grape vine also began in these lands and climbed up out of the bushes.",
+      "tts": {
+        "text": "The wild grape vine also began in these lands and climbed up out of the bushes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Along the coast, you may find tall stands of bamboo, fig trees, and almond trees.",
+      "text_markdown": "Along the coast, you may find tall stands of bamboo, fig trees, and almond trees.",
+      "tts": {
+        "text": "Along the coast, you may find tall stands of bamboo, fig trees, and almond trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most of the plants here keep their leaves all year, instead of dropping them in the autumn.",
+      "text_markdown": "Most of the plants here keep their leaves all year, instead of dropping them in the autumn.",
+      "tts": {
+        "text": "Most of the plants here keep their leaves all year, instead of dropping them in the autumn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They cannot afford to grow new leaves every spring.",
+      "text_markdown": "They cannot afford to grow new leaves every spring.",
+      "tts": {
+        "text": "They cannot afford to grow new leaves every spring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So they hold on to small, tough leaves all year long.",
+      "text_markdown": "So they hold on to small, tough leaves all year long.",
+      "tts": {
+        "text": "So they hold on to small, tough leaves all year long.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That gives the Mediterranean biome its dusty, evergreen look.",
+      "text_markdown": "That gives the Mediterranean biome its dusty, evergreen look.",
+      "tts": {
+        "text": "That gives the Mediterranean biome its dusty, evergreen look.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Animals",
+      "text_markdown": "The Animals"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The animals of the Mediterranean biome have many ways to live with the heat and the dry summer.",
+      "text_markdown": "The animals of the Mediterranean biome have many ways to live with the heat and the dry summer.",
+      "tts": {
+        "text": "The animals of the Mediterranean biome have many ways to live with the heat and the dry summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most of them are small and quick.",
+      "text_markdown": "Most of them are small and quick.",
+      "tts": {
+        "text": "Most of them are small and quick.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A small animal can hide easily under a bush or in a crack between rocks.",
+      "text_markdown": "A small animal can hide easily under a bush or in a crack between rocks.",
+      "tts": {
+        "text": "A small animal can hide easily under a bush or in a crack between rocks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of them rest through the hot middle of the day and come out in the cool of the morning and the evening.",
+      "text_markdown": "Many of them rest through the hot middle of the day and come out in the cool of the morning and the evening.",
+      "tts": {
+        "text": "Many of them rest through the hot middle of the day and come out in the cool of the morning and the evening.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rabbits and hares live in many of these lands.",
+      "text_markdown": "Rabbits and hares live in many of these lands.",
+      "tts": {
+        "text": "Rabbits and hares live in many of these lands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They feed at dusk and dawn, and they spend the day in a hidden burrow under a bush.",
+      "text_markdown": "They feed at dusk and dawn, and they spend the day in a hidden burrow under a bush.",
+      "tts": {
+        "text": "They feed at dusk and dawn, and they spend the day in a hidden burrow under a bush.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Foxes hunt rabbits and other small animals.",
+      "text_markdown": "Foxes hunt rabbits and other small animals.",
+      "tts": {
+        "text": "Foxes hunt rabbits and other small animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A fox knows every path through the brush.",
+      "text_markdown": "A fox knows every path through the brush.",
+      "tts": {
+        "text": "A fox knows every path through the brush.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wild boars dig in the soft soil for roots, nuts, and small animals.",
+      "text_markdown": "Wild boars dig in the soft soil for roots, nuts, and small animals.",
+      "tts": {
+        "text": "Wild boars dig in the soft soil for roots, nuts, and small animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They are strong and shy, and they move in small family groups.",
+      "text_markdown": "They are strong and shy, and they move in small family groups.",
+      "tts": {
+        "text": "They are strong and shy, and they move in small family groups.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In some Mediterranean lands, small wild cats hunt by night.",
+      "text_markdown": "In some Mediterranean lands, small wild cats hunt by night.",
+      "tts": {
+        "text": "In some Mediterranean lands, small wild cats hunt by night.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The lynx is one of these cats, with a short tail and tufted ears.",
+      "text_markdown": "The lynx is one of these cats, with a short tail and tufted ears.",
+      "tts": {
+        "text": "The lynx is one of these cats, with a short tail and tufted ears.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is now rare and lives in only a few wild corners.",
+      "text_markdown": "It is now rare and lives in only a few wild corners.",
+      "tts": {
+        "text": "It is now rare and lives in only a few wild corners.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deer live in the woods at the edge of the biome too.",
+      "text_markdown": "Deer live in the woods at the edge of the biome too.",
+      "tts": {
+        "text": "Deer live in the woods at the edge of the biome too.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Snakes and lizards are everywhere.",
+      "text_markdown": "Snakes and lizards are everywhere.",
+      "tts": {
+        "text": "Snakes and lizards are everywhere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A lizard sitting on a warm rock is a common sight in the summer.",
+      "text_markdown": "A lizard sitting on a warm rock is a common sight in the summer.",
+      "tts": {
+        "text": "A lizard sitting on a warm rock is a common sight in the summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tortoises move slowly through the brush, eating leaves and grass.",
+      "text_markdown": "Tortoises move slowly through the brush, eating leaves and grass.",
+      "tts": {
+        "text": "Tortoises move slowly through the brush, eating leaves and grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Mediterranean tortoise can live for many decades.",
+      "text_markdown": "The Mediterranean tortoise can live for many decades.",
+      "tts": {
+        "text": "The Mediterranean tortoise can live for many decades.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many birds live here.",
+      "text_markdown": "Many birds live here.",
+      "tts": {
+        "text": "Many birds live here.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sparrows, robins, and warblers fill the bushes with sound.",
+      "text_markdown": "Sparrows, robins, and warblers fill the bushes with sound.",
+      "tts": {
+        "text": "Sparrows, robins, and warblers fill the bushes with sound.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "High overhead, eagles and other large birds drift on the warm afternoon air.",
+      "text_markdown": "High overhead, eagles and other large birds drift on the warm afternoon air.",
+      "tts": {
+        "text": "High overhead, eagles and other large birds drift on the warm afternoon air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the spring, butterflies dance from flower to flower.",
+      "text_markdown": "In the spring, butterflies dance from flower to flower.",
+      "tts": {
+        "text": "In the spring, butterflies dance from flower to flower.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Crickets and grasshoppers sing in the warm summer evenings.",
+      "text_markdown": "Crickets and grasshoppers sing in the warm summer evenings.",
+      "tts": {
+        "text": "Crickets and grasshoppers sing in the warm summer evenings.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "By the sea, gulls and other sea birds nest on the cliffs and rocky islands.",
+      "text_markdown": "By the sea, gulls and other sea birds nest on the cliffs and rocky islands.",
+      "tts": {
+        "text": "By the sea, gulls and other sea birds nest on the cliffs and rocky islands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every animal here knows how to find shade in summer, how to drink at the spring, and how to wait for the cool of the winter rains.",
+      "text_markdown": "Every animal here knows how to find shade in summer, how to drink at the spring, and how to wait for the cool of the winter rains.",
+      "tts": {
+        "text": "Every animal here knows how to find shade in summer, how to drink at the spring, and how to wait for the cool of the winter rains.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The People",
+      "text_markdown": "The People"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Mediterranean biome has been home to people for a very long time.",
+      "text_markdown": "The Mediterranean biome has been home to people for a very long time.",
+      "tts": {
+        "text": "The Mediterranean biome has been home to people for a very long time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some of the world's oldest cities and farms began here.",
+      "text_markdown": "Some of the world's oldest cities and farms began here.",
+      "tts": {
+        "text": "Some of the world's oldest cities and farms began here.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For thousands of years, people on the shores of the Mediterranean Sea have grown three plants together.",
+      "text_markdown": "For thousands of years, people on the shores of the Mediterranean Sea have grown three plants together.",
+      "tts": {
+        "text": "For thousands of years, people on the shores of the Mediterranean Sea have grown three plants together.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They grow olive trees for oil.",
+      "text_markdown": "They grow olive trees for oil.",
+      "tts": {
+        "text": "They grow olive trees for oil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They grow grape vines for fruit and wine.",
+      "text_markdown": "They grow grape vines for fruit and wine.",
+      "tts": {
+        "text": "They grow grape vines for fruit and wine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They grow wheat and other grains for bread.",
+      "text_markdown": "They grow wheat and other grains for bread.",
+      "tts": {
+        "text": "They grow wheat and other grains for bread.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Together, these three are sometimes called the heart of Mediterranean food.",
+      "text_markdown": "Together, these three are sometimes called the heart of Mediterranean food.",
+      "tts": {
+        "text": "Together, these three are sometimes called the heart of Mediterranean food.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To them, the people added vegetables, fruits, and the wild herbs of the hills.",
+      "text_markdown": "To them, the people added vegetables, fruits, and the wild herbs of the hills.",
+      "tts": {
+        "text": "To them, the people added vegetables, fruits, and the wild herbs of the hills.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People have also kept herds of sheep and goats in these lands for many thousands of years.",
+      "text_markdown": "People have also kept herds of sheep and goats in these lands for many thousands of years.",
+      "tts": {
+        "text": "People have also kept herds of sheep and goats in these lands for many thousands of years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The animals can find food on the rocky slopes where it is hard to grow crops.",
+      "text_markdown": "The animals can find food on the rocky slopes where it is hard to grow crops.",
+      "tts": {
+        "text": "The animals can find food on the rocky slopes where it is hard to grow crops.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They give milk for cheese and yogurt, wool for clothing, and meat.",
+      "text_markdown": "They give milk for cheese and yogurt, wool for clothing, and meat.",
+      "tts": {
+        "text": "They give milk for cheese and yogurt, wool for clothing, and meat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Because the seas and oceans are close, the people of this biome have always been fishers and sailors.",
+      "text_markdown": "Because the seas and oceans are close, the people of this biome have always been fishers and sailors.",
+      "tts": {
+        "text": "Because the seas and oceans are close, the people of this biome have always been fishers and sailors.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wooden boats put out at dawn and return with fish, octopus, and other seafood.",
+      "text_markdown": "Wooden boats put out at dawn and return with fish, octopus, and other seafood.",
+      "tts": {
+        "text": "Wooden boats put out at dawn and return with fish, octopus, and other seafood.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the other Mediterranean lands of the world, in California, Chile, southern Africa, and Australia, the people who lived there for thousands of years used the same wild plants and animals in their own ways.",
+      "text_markdown": "In the other Mediterranean lands of the world, in California, Chile, southern Africa, and Australia, the people who lived there for thousands of years used the same wild plants and animals in their own ways.",
+      "tts": {
+        "text": "In the other Mediterranean lands of the world, in California, Chile, southern Africa, and Australia, the people who lived there for thousands of years used the same wild plants and animals in their own ways.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When farmers from the lands around the Mediterranean Sea came to those places much later, they brought their olives, their grape vines, and their wheat with them.",
+      "text_markdown": "When farmers from the lands around the Mediterranean Sea came to those places much later, they brought their olives, their grape vines, and their wheat with them.",
+      "tts": {
+        "text": "When farmers from the lands around the Mediterranean Sea came to those places much later, they brought their olives, their grape vines, and their wheat with them.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Today, all five Mediterranean regions of the world grow the same kinds of food.",
+      "text_markdown": "Today, all five Mediterranean regions of the world grow the same kinds of food.",
+      "tts": {
+        "text": "Today, all five Mediterranean regions of the world grow the same kinds of food.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The land seems to invite it.",
+      "text_markdown": "The land seems to invite it.",
+      "tts": {
+        "text": "The land seems to invite it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The kitchens of every Mediterranean region share the same basic gifts.",
+      "text_markdown": "The kitchens of every Mediterranean region share the same basic gifts.",
+      "tts": {
+        "text": "The kitchens of every Mediterranean region share the same basic gifts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bread, cheese, olive oil, fresh tomatoes, fish, fruit, and wine.",
+      "text_markdown": "Bread, cheese, olive oil, fresh tomatoes, fish, fruit, and wine.",
+      "tts": {
+        "text": "Bread, cheese, olive oil, fresh tomatoes, fish, fruit, and wine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The people of these lands have always known how to make the most of a long, dry summer.",
+      "text_markdown": "The people of these lands have always known how to make the most of a long, dry summer.",
+      "tts": {
+        "text": "The people of these lands have always known how to make the most of a long, dry summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They eat fresh in the warm months.",
+      "text_markdown": "They eat fresh in the warm months.",
+      "tts": {
+        "text": "They eat fresh in the warm months.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They put away food in oil, in salt, and in jars for the rainy winter.",
+      "text_markdown": "They put away food in oil, in salt, and in jars for the rainy winter.",
+      "tts": {
+        "text": "They put away food in oil, in salt, and in jars for the rainy winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In every Mediterranean region, this kind of life has its own languages, songs, and stories.",
+      "text_markdown": "In every Mediterranean region, this kind of life has its own languages, songs, and stories.",
+      "tts": {
+        "text": "In every Mediterranean region, this kind of life has its own languages, songs, and stories.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Biome Today",
+      "text_markdown": "The Biome Today"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Mediterranean biome is small but very important.",
+      "text_markdown": "The Mediterranean biome is small but very important.",
+      "tts": {
+        "text": "The Mediterranean biome is small but very important.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Although it covers only a small part of the Earth, it holds a huge number of plants and animals found nowhere else.",
+      "text_markdown": "Although it covers only a small part of the Earth, it holds a huge number of plants and animals found nowhere else.",
+      "tts": {
+        "text": "Although it covers only a small part of the Earth, it holds a huge number of plants and animals found nowhere else.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For people, this biome has been the cradle of food and farming for thousands of years.",
+      "text_markdown": "For people, this biome has been the cradle of food and farming for thousands of years.",
+      "tts": {
+        "text": "For people, this biome has been the cradle of food and farming for thousands of years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the biome is in trouble in many places.",
+      "text_markdown": "But the biome is in trouble in many places.",
+      "tts": {
+        "text": "But the biome is in trouble in many places.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cities and towns have grown along the coasts where the weather is mild and the sea is near.",
+      "text_markdown": "Cities and towns have grown along the coasts where the weather is mild and the sea is near.",
+      "tts": {
+        "text": "Cities and towns have grown along the coasts where the weather is mild and the sea is near.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roads, houses, hotels, and farms have replaced many of the wild bushes and trees.",
+      "text_markdown": "Roads, houses, hotels, and farms have replaced many of the wild bushes and trees.",
+      "tts": {
+        "text": "Roads, houses, hotels, and farms have replaced many of the wild bushes and trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Long dry summers, hotter than before, are making the fires bigger and more dangerous.",
+      "text_markdown": "Long dry summers, hotter than before, are making the fires bigger and more dangerous.",
+      "tts": {
+        "text": "Long dry summers, hotter than before, are making the fires bigger and more dangerous.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some animals, like the lynx and the Mediterranean tortoise, have become very rare.",
+      "text_markdown": "Some animals, like the lynx and the Mediterranean tortoise, have become very rare.",
+      "tts": {
+        "text": "Some animals, like the lynx and the Mediterranean tortoise, have become very rare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many groups around the world are working to take care of what is left.",
+      "text_markdown": "Many groups around the world are working to take care of what is left.",
+      "tts": {
+        "text": "Many groups around the world are working to take care of what is left.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They set aside parks where the wild plants and animals can still live.",
+      "text_markdown": "They set aside parks where the wild plants and animals can still live.",
+      "tts": {
+        "text": "They set aside parks where the wild plants and animals can still live.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They plant new olive trees and protect old ones.",
+      "text_markdown": "They plant new olive trees and protect old ones.",
+      "tts": {
+        "text": "They plant new olive trees and protect old ones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They help farmers grow food in ways that are kind to the land.",
+      "text_markdown": "They help farmers grow food in ways that are kind to the land.",
+      "tts": {
+        "text": "They help farmers grow food in ways that are kind to the land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They study the biome so we can understand it better.",
+      "text_markdown": "They study the biome so we can understand it better.",
+      "tts": {
+        "text": "They study the biome so we can understand it better.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A healthy Mediterranean biome is a quiet, fragrant, beautiful place.",
+      "text_markdown": "A healthy Mediterranean biome is a quiet, fragrant, beautiful place.",
+      "tts": {
+        "text": "A healthy Mediterranean biome is a quiet, fragrant, beautiful place.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "The Biome Today",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is worth our care.",
+      "text_markdown": "It is worth our care.",
+      "tts": {
+        "text": "It is worth our care.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Closing",
+      "text_markdown": "Closing"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the Mediterranean biome.",
+      "text_markdown": "That is the Mediterranean biome.",
+      "tts": {
+        "text": "That is the Mediterranean biome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A bright, dry, fragrant world of olive trees, low shrubs, and warm summer evenings.",
+      "text_markdown": "A bright, dry, fragrant world of olive trees, low shrubs, and warm summer evenings.",
+      "tts": {
+        "text": "A bright, dry, fragrant world of olive trees, low shrubs, and warm summer evenings.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you ever stand in one, be still for a minute.",
+      "text_markdown": "If you ever stand in one, be still for a minute.",
+      "tts": {
+        "text": "If you ever stand in one, be still for a minute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Smell the warm herbs in the air.",
+      "text_markdown": "Smell the warm herbs in the air.",
+      "tts": {
+        "text": "Smell the warm herbs in the air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Listen to the crickets in the dry grass.",
+      "text_markdown": "Listen to the crickets in the dry grass.",
+      "tts": {
+        "text": "Listen to the crickets in the dry grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Look out toward the sea.",
+      "text_markdown": "Look out toward the sea.",
+      "tts": {
+        "text": "Look out toward the sea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You will feel the heart of the biome beating around you.",
+      "text_markdown": "You will feel the heart of the biome beating around you.",
+      "tts": {
+        "text": "You will feel the heart of the biome beating around you.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

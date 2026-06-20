@@ -29,9 +29,11 @@ import { triggerHaptic } from "@/util/haptics"
  * the real experience boots underneath.
  *
  * PURELY VISUAL. App.tsx owns all logic and timing handoff — this component only
- * animates and fires one haptic; it reports its two beats via `onReveal`
- * (chosen begins its center/wash → caller launches the experience under us) and
- * `onComplete` (the wash has covered + the overlay should unmount). It ALWAYS
+ * animates and fires two haptics (a heavy impact when the chosen card lands at
+ * the pop, and a success notification as the wash completes and the pack boots);
+ * it reports its two beats via `onReveal` (chosen begins its center/wash → caller
+ * launches the experience under us) and `onComplete` (the wash has covered + the
+ * overlay should unmount). It ALWAYS
  * reaches `onComplete` (a hard safety timeout backstops the animation), so it can
  * never trap the user. Honors reduced motion: skips the shuffle for a gentle
  * ~1s cross-fade, still firing the haptic + both callbacks.
@@ -218,6 +220,12 @@ export function PackLaunchTransition({
   const doComplete = () => {
     if (firedComplete.current) return
     firedComplete.current = true
+    // A success notification haptic seals the handoff as the colour wash finishes
+    // and the chosen experience boots underneath — the "you're in" confirmation
+    // that was missing on iOS after the animation completes. Guarded by
+    // `firedComplete`, so it fires exactly once per onboarding completion
+    // (incl. under StrictMode double-effects and the hard safety backstop).
+    triggerHaptic("success")
     onComplete()
   }
 
@@ -425,6 +433,14 @@ export function PackLaunchTransition({
 
               const chosenShuffleScale = 0.72 + p * 0.36 // 0.72 → 1.08 (present from the start, still grows forward)
               const chosenShuffleZ = Math.round(2 + p * SHUFFLE_PASSES * 5) // 2 → ~22, passing others (z10)
+              // The chosen rises to the FRONT of the deck (climbing z) while the
+              // shuffle is still re-sorting behind it — so if it were already
+              // opaque it would obscure the live shuffle. Instead it stays
+              // translucent and GROWS opaque as it climbs, only reaching full
+              // solidity as it settles dead center (eased so it lingers see-
+              // through through the middle and firms up at the very end). The
+              // pop beat then finishes the handoff to a fully solid hero card.
+              const chosenShuffleOpacity = 0.15 + 0.75 * Math.pow(p, 1.6) // ~0.15 → ~0.9, ramps late
 
               // Non-chosen recede + blur + fade as the chosen pops.
               const recede = phase === "pop" && !isChosen
@@ -445,8 +461,16 @@ export function PackLaunchTransition({
                   animate={{
                     // Non-chosen ride at reduced opacity so they read as an
                     // ambient backing deck and the rising chosen shows through
-                    // them even before it climbs to the front.
-                    opacity: recede ? 0 : isChosen ? 1 : 0.5,
+                    // them even before it climbs to the front. The chosen itself
+                    // stays translucent while it rises (so the live shuffle shows
+                    // THROUGH it) and only firms to fully solid as it lands.
+                    opacity: recede
+                      ? 0
+                      : isChosen
+                        ? phase === "pop"
+                          ? 1
+                          : chosenShuffleOpacity
+                        : 0.5,
                     x: `${x}%`,
                     y: `${y}%`,
                     rotate: rot,

@@ -187,6 +187,16 @@ export type InstalledNarration = {
   series?: string
   volume?: number
   installedAt: number
+  /**
+   * Corpán Plus two-ZIP fullness flag, recorded at install time:
+   *   true  — the FULL ZIP (every segment) was installed (subscriber path).
+   *   false — the truncated PREVIEW ZIP was installed (non-subscriber path).
+   *   undefined — legacy record installed before this field existed; fullness is
+   *     unknown until backfilled by reading segments.json on disk (see
+   *     `isPreviewInstalled` in libraryStore).
+   * Single-ZIP (legacy / free) entries record `true` — they are never previews.
+   */
+  full?: boolean
 }
 
 /** Download progress state for a single narration */

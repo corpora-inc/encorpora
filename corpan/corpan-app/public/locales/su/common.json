@@ -658,6 +658,7 @@
       "noMatches": "Teu aya anu cocog sareng pilarian éta acan.",
       "filter": {
         "all": "Sadaya",
+        "available": "Sayogi",
         "free": "Gratis",
         "paid": "Mayar",
         "installed": "Dipasang"
@@ -670,6 +671,10 @@
       "paid": "Mayar",
       "free": "Gratis",
       "install": "Pasang",
+      "downloadAll": "Unduh sadayana",
+      "downloadAllSummary": "{{count}} sayogi · ~{{size}} MB",
+      "installingBatch": "Masang {{current}} ti {{total}}…",
+      "batchFailed": "{{count}} teu tiasa dipasang — toél pikeun nyobian deui",
       "unlockSub": "Buka nganggo Corpán Plus",
       "entryCount": "{{n}} frasa",
       "offlineEmpty": "Anjeun offline. Sambungkeun pikeun jelajah paket frasa.",

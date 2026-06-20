@@ -65,11 +65,15 @@ export function createPulseRing(scene: Scene): PulseRing {
     return pts
   }
 
-  // Live ring — tracks amplitude directly
+  // Live ring — tracks amplitude directly.
+  // `useVertexAlpha` is required for `mesh.alpha` to blend: Babylon's LinesMesh
+  // bakes alpha blending into its shader material at creation time, and only
+  // enables it when this flag is set. Without it `mesh.alpha` is ignored at the
+  // blend stage, so rings render fully opaque and never visibly fade.
   const livePoints = makePoints(0)
   const liveMesh = MeshBuilder.CreateLines(
     "pulseRing",
-    { points: livePoints, updatable: true },
+    { points: livePoints, updatable: true, useVertexAlpha: true },
     scene
   )
   liveMesh.color = color
@@ -82,7 +86,7 @@ export function createPulseRing(scene: Scene): PulseRing {
     const pts = makePoints(0)
     const mesh = MeshBuilder.CreateLines(
       `pulseGhost${g}`,
-      { points: pts, updatable: true },
+      { points: pts, updatable: true, useVertexAlpha: true },
       scene
     )
     mesh.color = color

@@ -2,6 +2,7 @@ import type { CatalogNarrationEntry, NarrationArtifact } from "./types"
 import { addInstalled, removeInstalled } from "./libraryStore"
 import {
   resolveReceiptForEntry,
+  resolveBookReceipt,
   resolveSubscriptionReceipt,
   isCurrentlySubscribed,
 } from "./purchaseManager"
@@ -74,7 +75,8 @@ async function requestSignedUrl(
   packId: string,
   transactionId: string,
   receipt: string,
-  platform: string
+  platform: string,
+  productType?: "subs" | "inapp"
 ): Promise<SignedUrlResult> {
   if (typeof navigator !== "undefined" && !navigator.onLine) {
     return {
@@ -108,6 +110,7 @@ async function requestSignedUrl(
         productId,
         packId,
         transactionId,
+        ...(productType ? { productType } : {}),
         ...(downloadPath ? { downloadPath } : {}),
         ...(platform === "android" ? { purchaseToken: receipt } : { receipt }),
       }),
@@ -225,6 +228,10 @@ async function getSignedDownloadUrl(
         productId: entry.purchase.productId,
         packId: entry.id,
         transactionId,
+        // Legacy per-book purchase is a one-time IAP. Explicit so the Lambda
+        // verifies via Google's products endpoint (the default for a ".sub."-less
+        // id, but pinned here for clarity / future-proofing).
+        productType: "inapp",
         ...(downloadPath ? { downloadPath } : {}),
         ...(platform === "android" ? { purchaseToken: receipt } : { receipt }),
       }),
@@ -307,6 +314,58 @@ function truncate(s: string, n: number): string {
  * Returns a structured result so callers can surface the failure reason to
  * the user. Old `boolean` callers can check `.ok`.
  */
+/**
+ * Force-install the PUBLIC preview ZIP for a two-ZIP entry, recording the
+ * library record as a preview (`full:false`) — IGNORING subscription state.
+ *
+ * This is the shared implementation of the non-subscriber preview path (the
+ * normal `installNarration` flow calls it), AND the seam the JIT/QA harness
+ * uses to force the preview condition on a really-subscribed device (where
+ * every natural install would otherwise fetch the FULL ZIP, leaving the
+ * preview→full upgrade path untestable). It is capability-safe: it only ever
+ * downloads the public, unauthenticated preview ZIP — it cannot grant any
+ * entitlement the device hasn't earned.
+ *
+ * Only valid for two-ZIP entries (a legacy single-ZIP entry has no preview /
+ * is never a preview) — returns a clear failure otherwise.
+ */
+export async function installNarrationPreview(
+  entry: CatalogNarrationEntry
+): Promise<InstallResult> {
+  const invoke = getTauriInvoke()
+  if (!invoke) {
+    console.log("[reader-catalog] No Tauri runtime — skipping preview install for", entry.id)
+    return {
+      ok: false,
+      code: "NO_TAURI",
+      message: "Downloads aren't available in this environment",
+    }
+  }
+  if (!isTwoZipEntry(entry)) {
+    return {
+      ok: false,
+      code: "DOWNLOAD_FAILED",
+      message: "Preview install is only available for two-ZIP narrations",
+      detail: `entry ${entry.id} has no preview/full artifacts`,
+    }
+  }
+  try {
+    await invoke("content_packs_install_from_url", {
+      packId: entry.id,
+      downloadUrl: entry.preview.url,
+      expectedSha256: entry.preview.sha256 || null,
+    })
+    // Preview ZIP landed — mark it as a preview so the post-subscribe sweep /
+    // JIT self-heal can find and upgrade it once the user goes Plus.
+    addInstalled(entry, false)
+    return { ok: true }
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error("[reader-catalog] Preview install failed:", entry.id, err)
+    return { ok: false, code: "DOWNLOAD_FAILED", message: "Download or install failed", detail: msg }
+  }
+}
+
 export async function installNarration(
   entry: CatalogNarrationEntry,
   purchaseInfo?: {
@@ -327,30 +386,54 @@ export async function installNarration(
 
   // ── Corpán Plus two-ZIP model ──
   // New-shape entries carry preview (public) + full (Plus-gated). The new
-  // runtime reads ONLY these: subscribers get the full ZIP via signed URL;
-  // everyone else gets the public preview ZIP. The legacy downloadUrl is
-  // ignored here.
+  // runtime reads ONLY these. Who gets the FULL ZIP (via signed URL):
+  //   • a Corpán Plus subscriber              → signed as corpan.plus
+  //   • a one-time OWNER of this premium book  → signed as its corpan.book.* id
+  // Anyone else gets the public preview ZIP. The legacy downloadUrl is ignored.
   if (isTwoZipEntry(entry)) {
-    const sub = await isCurrentlySubscribed()
-    const wantFull = sub.ok && sub.entitled
+    // Resolve an authorizing receipt + the product id to sign the full ZIP
+    // under. Prefer a book purchase (so owners who never subscribed still get
+    // the full book), then fall back to an active subscription. A freshly
+    // passed `purchaseInfo` (just bought the book) short-circuits the restore.
+    const bookProductId = entry.purchase.type === "iap" ? entry.purchase.productId : undefined
+    let auth: { transactionId: string; receipt: string; platform: string; productId: string } | null = null
 
-    if (wantFull) {
-      const receipt = await resolveSubscriptionReceipt()
-      if (!receipt) {
-        return {
-          ok: false,
-          code: "NO_RECEIPT",
-          message: "We couldn't find your Corpán Plus subscription",
-          detail: "resolveSubscriptionReceipt returned nothing. Try Restore Purchases.",
+    if (bookProductId) {
+      const owned = purchaseInfo ?? (await resolveBookReceipt(entry))
+      if (owned) auth = { ...owned, productId: bookProductId }
+    }
+    if (!auth) {
+      const sub = await isCurrentlySubscribed()
+      if (sub.ok && sub.entitled) {
+        const receipt = await resolveSubscriptionReceipt()
+        if (!receipt) {
+          return {
+            ok: false,
+            code: "NO_RECEIPT",
+            message: "We couldn't find your Corpán Plus subscription",
+            detail: "resolveSubscriptionReceipt returned nothing. Try Restore Purchases.",
+          }
         }
+        auth = { ...receipt, productId: "corpan.plus" }
       }
+    }
+
+    if (auth) {
+      // The full ZIP is authorized either by a one-time book IAP (corpan.book.*)
+      // or by a Corpán Plus subscription (corpan.plus). The subscription id has
+      // no ".sub." marker, so the Lambda would otherwise infer `inapp` and POST
+      // the SUBSCRIPTION token to Google's products endpoint → "document type not
+      // supported". Pin the productType explicitly per auth source.
+      const productType: "subs" | "inapp" =
+        auth.productId === "corpan.plus" ? "subs" : "inapp"
       const signed = await requestSignedUrl(
         entry.full.url,
-        "corpan.plus",
+        auth.productId,
         entry.id,
-        receipt.transactionId,
-        receipt.receipt,
-        receipt.platform
+        auth.transactionId,
+        auth.receipt,
+        auth.platform,
+        productType
       )
       if (!signed.ok) {
         return { ok: false, code: signed.code, message: signed.message, detail: signed.detail }
@@ -361,7 +444,9 @@ export async function installNarration(
           downloadUrl: signed.url,
           expectedSha256: entry.full.sha256 || null,
         })
-        addInstalled(entry)
+        // Full ZIP landed — record fullness so the upgrade layers treat this
+        // as complete (idempotent no-op) and never re-download it.
+        addInstalled(entry, true)
         return { ok: true }
       } catch (err) {
         const msg = err instanceof Error ? err.message : String(err)
@@ -370,20 +455,11 @@ export async function installNarration(
       }
     }
 
-    // Non-subscriber → public preview ZIP, no auth.
-    try {
-      await invoke("content_packs_install_from_url", {
-        packId: entry.id,
-        downloadUrl: entry.preview.url,
-        expectedSha256: entry.preview.sha256 || null,
-      })
-      addInstalled(entry)
-      return { ok: true }
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err)
-      console.error("[reader-catalog] Preview install failed:", entry.id, err)
-      return { ok: false, code: "DOWNLOAD_FAILED", message: "Download or install failed", detail: msg }
-    }
+    // Neither a subscriber nor an owner → public preview ZIP, no auth.
+    // (Shared with the QA harness's force-preview path so the "mark it as a
+    // preview so the post-subscribe sweep / JIT self-heal can upgrade it" logic
+    // lives in one place.)
+    return installNarrationPreview(entry)
   }
 
   let downloadUrl = entry.downloadUrl
@@ -432,7 +508,9 @@ export async function installNarration(
       downloadUrl,
       expectedSha256: entry.sha256 || null,
     })
-    addInstalled(entry)
+    // Legacy single-ZIP (or free) entry — always the complete narration, never
+    // a truncated preview.
+    addInstalled(entry, true)
     return { ok: true }
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err)

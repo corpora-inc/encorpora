@@ -1598,6 +1598,15 @@
   outline-offset: 2px;
 }
 
+/* Focused AND selected: keep the dark-on-accent label high-contrast (a focus
+   ring must never recolor the text to white-on-accent), and draw the ring in
+   the page colour so it stays visible against the accent fill instead of an
+   invisible accent-on-accent ring. */
+.catalog-sort-opt--active:focus-visible {
+  color: var(--catalog-bg);
+  outline-color: var(--catalog-bg);
+}
+
 /* Density toggle (compact ↔ expanded) */
 .catalog-view-toggle {
   display: inline-flex;
@@ -2243,4 +2252,117 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* --- End-of-book "read next" suggestion -------------------------------- */
+/* Shown when a full book finishes. Inherits the reader's --catalog-* theme. */
+
+.catalog-eob {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(20px + env(safe-area-inset-top, 0px)) 20px
+    calc(20px + env(safe-area-inset-bottom, 0px)) 20px;
+  background: color-mix(in srgb, var(--catalog-bg) 78%, transparent);
+  font-family: var(--catalog-font);
+  color: var(--catalog-text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease;
+}
+
+.catalog-eob--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.catalog-eob-card {
+  position: relative;
+  width: min(360px, 100%);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 28px 24px 24px 24px;
+  background: var(--catalog-surface);
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  transform: translateY(12px);
+  transition: transform 250ms ease;
+}
+
+.catalog-eob--open .catalog-eob-card {
+  transform: translateY(0);
+}
+
+.catalog-eob-close {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.catalog-eob-close:hover {
+  color: var(--catalog-text);
+}
+
+.catalog-eob-kicker {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-eob-cover {
+  width: 96px;
+  aspect-ratio: 2 / 3;
+  margin: 4px 0;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  border: 1px solid var(--catalog-border);
+}
+
+.catalog-eob-lead {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-eob-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--catalog-text);
+}
+
+.catalog-eob-series {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-eob-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.catalog-eob-actions .catalog-btn {
+  flex: 1 1 0;
+  min-width: 0;
 }

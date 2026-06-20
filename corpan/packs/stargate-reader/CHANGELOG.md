@@ -10,6 +10,67 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Fixed
+- **Book owners now download the full narration, not the preview.** Two-ZIP
+  premium entries signed the full ZIP only for Corpán Plus subscribers; a
+  one-time book owner without Plus got the truncated preview and the upgrade
+  layer never replaced it. The two-ZIP install now resolves a book-purchase
+  receipt (then falls back to a subscription) and signs the full ZIP under the
+  owned book's product id; the row also advertises the full size to owners.
+- **End-of-book "read next" suggestion now appears for restored-library
+  readers.** Opening an installed book from the restored library and finishing
+  it without ever opening the drawer left the catalog unfetched, so the
+  suggestion silently no-op'd; the `corpan:book-finished` handler now
+  lazy-hydrates the catalog before choosing the next book.
+
+## [0.7.2] - 2026-06-19
+
+### Added
+- **End-of-book "read next" suggestion.** When a full book reaches its end
+  (subscriber/owned path — a truncated free preview still offers Plus instead),
+  a tasteful overlay suggests the next book to read: the next volume in the same
+  series when available, otherwise the newest other title you can play in the
+  current language. "Read next" installs + opens it; "Browse books" opens the
+  catalog; × dismisses. The reader signals end-of-book via a new
+  `corpan:book-finished` window event; the app shell (which owns the catalog)
+  picks the next book and renders the suggestion. Next-book selection lives in
+  the shared catalog module (`chooseNextBook`).
+- **Seamless preview→full upgrade after subscribing to Corpán Plus.** The app
+  shell now upgrades installed preview narrations to the full versions in place
+  (no manual reinstall). The book open at the end-of-preview paywall upgrades the
+  instant you subscribe and the reader reloads + resumes from where the preview
+  cut off, auto-continuing into the full audio; the background sweep of other
+  previews runs only on confirmed-unmetered connections (otherwise it defers and
+  the just-in-time on-open upgrade covers it); opening any preview while Plus
+  upgrades it on access. The
+  reader exposes `persistBookmark` so the reload resumes at the exact position.
+
+### Fixed
+- **Pulse Ring trail/fade regression.** Visualization rings lingered at full
+  opacity and only vanished when their slot was reused by a new ring; the
+  Settings → Pulse Ring → "Trail" slider had no visible effect. Cause: the
+  Babylon 9 upgrade (deps bump from `@babylonjs/core` 6.x → 9.x) made
+  `LinesMesh` alpha blending opt-in — without `useVertexAlpha` the per-ring
+  `alpha` is ignored at the blend stage, so the time-based fade math (which was
+  correct all along) never showed. The ring meshes are now created with
+  `useVertexAlpha: true`, so rings fade smoothly and the Trail setting again
+  controls how long they persist (low = quick fade, high = long trail).
+- Browse → Latest|Title|Series tabs: the selected tab now stays
+  high-contrast when it also has keyboard focus (previously the text could
+  render low-contrast against the accent fill), and its focus ring is drawn
+  in the page colour so it remains visible over the accent background.
+- **Word-stream micro-jitter when a new word/phrase enters view.** Glyph
+  rasterization (drawing text onto a 512×384 DynamicTexture and uploading it to
+  the GPU) is the heaviest synchronous step in the renderer. When several words
+  crossed into the look-ahead range in the same frame (dense phrase, or right
+  after a seek/swipe) they were all rasterized at once, occasionally causing a
+  one-frame hitch. New words are now prepared with a small per-frame budget
+  while they are still fully transparent in the far approach zone (they have a
+  long invisible runway before they must be legible); words at/inside the
+  fade-in zone still rasterize immediately. Output is visually identical — only
+  fully-transparent far words are deferred, and never shown stale. No change to
+  audio timing or sync. (`src/rendering/wordStream.ts`)
+
 ## [0.7.1] - 2026-06-16
 
 ### Changed

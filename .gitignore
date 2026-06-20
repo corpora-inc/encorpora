@@ -110,3 +110,7 @@ voices/data/samples/
 corpan/infra/catalog-v2.patched.json
 corpan/infra/asset-urls.json
 
+
+# Real affiliate partner roster (names + terms) — never commit; live source is DynamoDB corpan-iap
+corpan/infra/codes/seed.local.json
+**/seed.local.json
