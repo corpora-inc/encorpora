@@ -7,21 +7,6 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
-### Fixed
-- **Android subscription verification was failing for every subscriber.** The
-  `/verify-purchase` call now sends `productType`, and the server verifies
-  Google subscriptions via `subscriptionsv2` instead of the one-time-products
-  endpoint (which Google rejects for a subscription token). Previously every
-  Android subscription — including affiliate/discount code redemptions — failed
-  server verification, so no affiliate partner was credited and no entitlement
-  token was minted (blocking Plus-gated content downloads). iOS/macOS unaffected.
-- **Android Plus full-narration download was verifying as a one-time product.**
-  The signed-URL request for the gated full ZIP now sends `productType: "subs"`
-  (it authorizes under `corpan.plus`, which carries no `.sub.` marker, so the
-  server would otherwise verify it as an in-app product and reject the
-  subscription token — "document type is not supported"). The legacy per-book
-  download is pinned to `inapp` (unchanged behavior).
-
 ## [0.19.2] - 2026-06-19
 
 ### Changed
@@ -66,6 +51,27 @@ Conventions: `corpan/CHANGELOGS.md`.
   logic.
 
 ### Fixed
+- **Android subscription verification was failing for every subscriber.** The
+  `/verify-purchase` call now sends `productType`, and the server verifies
+  Google subscriptions via `subscriptionsv2` instead of the one-time-products
+  endpoint (which Google rejects for a subscription token). Previously every
+  Android subscription — including affiliate/discount code redemptions — failed
+  server verification, so no affiliate partner was credited and no entitlement
+  token was minted (blocking Plus-gated content downloads). iOS/macOS unaffected.
+- **Android Plus full-narration download was verifying as a one-time product.**
+  The signed-URL request for the gated full ZIP now sends `productType: "subs"`
+  (it authorizes under `corpan.plus`, which carries no `.sub.` marker, so the
+  server would otherwise verify it as an in-app product and reject the
+  subscription token — "document type is not supported"). The legacy per-book
+  download is pinned to `inapp` (unchanged behavior).
+- **Store-notification backend hardening (refunds, revocations, dedupe).**
+  Apple refunds of a *renewal* now net against the right ledger row; refund/
+  revoke no longer keeps extending Plus; store-notification dedupe is committed
+  only after the side-effects succeed (so a transient write failure is safely
+  reprocessed); Google push notifications fail closed when the OIDC trust isn't
+  configured; and refund/revoke reversals now carry the original charge's amount
+  and revenue-share so partner payouts are clawed back on refund (previously
+  Android refunds left the payout uncredited-back). Server-side only.
 - **Phrase packs "Download all" retry no longer becomes a dead tap.** The
   failed-batch retry tracked failures as a global count and re-ran against the
   *current view's* installable packs, so after a failure you could switch to a

@@ -140,7 +140,7 @@ echo "[$(date +%T)] [$LANG] CDN verify"
 curl -s 'https://d38iwc9748jekz.cloudfront.net/catalog-v2.json' | $BIN/python -c "
 import json, sys
 c = json.load(sys.stdin)
-n = [n for n in c['narrations'] if n.get('bookId')=='book_biomes_tropical_rainforest' and n.get('language')=='$LANG']
+n = [n for n in c['narrations'] if n.get('bookId')=='$EXPECTED_BOOK_ID' and n.get('language')=='$LANG']
 print('  CDN narrations for [$LANG]:', n)
 "
 
@@ -150,7 +150,7 @@ import json
 from datetime import datetime, timezone
 rec = {
     "lang": "$LANG",
-    "book": "biomes-tropical-rainforest",
+    "book": "biomes-mediterranean",
     "voice_id": "ian-chill-clear",
     "version": "$VERSION",
     "engine": "chatterbox",

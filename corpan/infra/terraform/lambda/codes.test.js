@@ -883,6 +883,30 @@ test("reverseCredit: snapshots original credit's revenueSharePct (same month)", 
   assert.equal(row.code, "DEMO30", "code carried over for the report");
 });
 
+test("reverseCredit: Google refund w/o price backfills the negated original price", async () => {
+  // The Android refund/revoke paths call reverseCredit WITHOUT a price; without
+  // the fallback the reversal is price:null and the report skips it (no clawback).
+  const doc = freshDoc();
+  const mm = codes.yyyymm(new Date().toISOString());
+  doc.store.set(`LEDGER#demo#${mm}|EVENT#android#ORDER7`, {
+    PK: `LEDGER#demo#${mm}`, SK: "EVENT#android#ORDER7",
+    subjectId: "subjG", code: "DEMO30", productId: "corpan.sub.annual",
+    price: 24, currency: "USD", kind: "initial", revenueSharePct: 0.3,
+    eventTime: new Date().toISOString(),
+  });
+
+  // No price / currency passed — exactly how the Google VOIDED/REVOKED calls do it.
+  const ok = await codes.reverseCredit({
+    partnerId: "demo", platform: "android", txnOrOriginalId: "ORDER7", reason: "VOIDED",
+  });
+  assert.equal(ok, true);
+  const row = doc.store.get(`LEDGER#demo#${mm}|EVENT#android#ORDER7#reversal`);
+  assert.ok(row, "reversal row written");
+  assert.equal(row.price, -24, "price backfilled (negated) from the original credit");
+  assert.equal(row.currency, "USD", "currency backfilled from the original credit");
+  assert.equal(row.revenueSharePct, 0.3, "rev-share snapshotted so payout claws back");
+});
+
 test("reverseCredit: finds an original credit in a PRIOR month partition", async () => {
   const doc = freshDoc();
   const now = new Date();

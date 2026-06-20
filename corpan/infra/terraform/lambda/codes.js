@@ -843,7 +843,17 @@ async function reverseCredit({ partnerId, platform, txnOrOriginalId, productId, 
       subjectId: original?.subjectId ?? null,
       code: original?.code ?? null,
       productId: productId ?? original?.productId ?? null,
-      price: price != null ? -Math.abs(price) : null,
+      // Carry the (negated) refunded amount so the payout report claws it back.
+      // Apple notifications pass `price`; the Google refund/revoke paths don't,
+      // so fall back to the original credit's price — otherwise the reversal row
+      // is price:null and the report skips it as a zero-dollar row, leaving the
+      // partner payout un-clawed-back.
+      price:
+        price != null
+          ? -Math.abs(price)
+          : original?.price != null
+            ? -Math.abs(original.price)
+            : null,
       currency: currency ?? original?.currency ?? null,
       kind: "reversal",
       // Snapshot the original rev-share so the report claws the payout back.
