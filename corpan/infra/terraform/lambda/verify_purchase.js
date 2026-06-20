@@ -646,26 +646,35 @@ async function handleAppleNotification(body, secrets) {
     const appleSecrets = secrets?.apple || {};
     const bundleId = appleSecrets.bundleId || "com.corpora.corpan";
     let payload;
-    try {
+    {
       const appleRootCerts = (appleSecrets.rootCerts || []).map((c) =>
         Buffer.from(c, "base64")
       );
-      const env = appleSecrets.notificationEnvironment === "Sandbox"
-        ? Environment.SANDBOX
-        : Environment.PRODUCTION;
-      const verifier = new SignedDataVerifier(
-        appleRootCerts,
-        appleSecrets.appAppleId ? true : appleRootCerts.length > 0, // enableOnlineChecks when certs present
-        env,
-        bundleId,
-        appleSecrets.appAppleId
-      );
-      payload = await verifier.verifyAndDecodeNotification(signedPayload);
-    } catch (verErr) {
-      console.error("[apple-notification] signature verify failed:", verErr.message);
-      // Reject unverified notifications (§6.1). 200 so Apple stops retrying a
-      // permanently-unverifiable payload, but DO NOT credit.
-      return json(200, { received: true, verified: false });
+      if (!appleRootCerts.length || !appleSecrets.appAppleId) {
+        console.error("[apple-notification] CRITICAL: apple.rootCerts / apple.appAppleId not configured — cannot verify");
+        return json(200, { received: true, verified: false });
+      }
+      // ASSN V2 arrive from BOTH Sandbox and Production senders; the JWS only
+      // verifies against the matching-environment verifier. Try both (chain is
+      // validated to the Apple root either way). enableOnlineChecks=false avoids
+      // OCSP network flakiness in Lambda — the x5c chain + signature still prove
+      // authenticity. §6.1.
+      let verErr;
+      for (const env of [Environment.PRODUCTION, Environment.SANDBOX]) {
+        try {
+          const verifier = new SignedDataVerifier(
+            appleRootCerts, false, env, bundleId, appleSecrets.appAppleId
+          );
+          payload = await verifier.verifyAndDecodeNotification(signedPayload);
+          break;
+        } catch (e) {
+          verErr = e;
+        }
+      }
+      if (!payload) {
+        console.error("[apple-notification] signature verify failed (both envs):", verErr && verErr.message);
+        return json(200, { received: true, verified: false });
+      }
     }
 
     const notificationType = payload.notificationType;

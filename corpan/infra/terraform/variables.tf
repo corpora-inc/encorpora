@@ -82,3 +82,9 @@ variable "enable_premium_content" {
   description = "Whether to provision CloudFront signed URL infrastructure for premium/paid content."
   default     = false
 }
+
+variable "alert_email" {
+  type        = string
+  description = "Email subscribed to IAP alerts (verify/notification handler errors)."
+  default     = "skylar.saveland@gmail.com"
+}
