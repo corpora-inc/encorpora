@@ -1,16 +1,15 @@
 # Catalog `publishedAt` — runbook for the next publisher
 
-Last updated: 2026-06-19
+Last updated: 2026-06-19 (ttsctl now writes publishedAt at publish time)
 
 ## TL;DR
 
-Every narration book needs a **`publishedAt`** date in the catalog, or it
-sorts wrong in the app's **Browse → Latest** tab and breaks **within-series
-reading order**. The backend publisher (`ttsctl`) does **not** currently set
-this, so until it does, **you must stamp the date yourself after every
-publish** using the safe surgical tool below.
+Every narration book needs a **`publishedAt`** date in the catalog, or
+it sorts wrong in the app's **Browse → Latest** tab and breaks
+**within-series reading order**.
 
-- ✅ **Use `corpan/infra/patch-published-dates.py`** — adds *only* `publishedAt`, preserves everything else.
+- ✅ **For new packs**: set `metadata.publishedAt` in the pack's `manifest.json` (ISO `YYYY-MM-DD`). `ttsctl publish` (as of 2026-06-19) reads it and stamps it on both the narration row and the matching `books[]` row, preserving any existing value.
+- ✅ **For backfills / hand-corrections**: `corpan/infra/patch-published-dates.py` — surgical, only touches `publishedAt`, preserves everything else.
 - ⛔ **NEVER run `corpan/infra/patch-catalog.py`** — it rebuilds the whole books array from stale in-repo data and **wipes cover art + descriptions** for any book it doesn't know about (verified: it would drop 23 of 36 covers). It is dead bootstrap code.
 
 ## Why `publishedAt` matters
@@ -28,19 +27,38 @@ The date is read at the **narration row** level (the client groups narrations in
   `s3://corpan-prod/artifacts/catalog-v2.json` → `https://d38iwc9748jekz.cloudfront.net/catalog-v2.json`
 - `catalog.json` — legacy fallback for old clients (predates Latest sort). Not patched here; low priority.
 
-## The real fix (do this when you can): make `ttsctl` set the date
+## Publish-time stamping (the default path going forward)
 
-`ttsctl publish` (on the DGX Spark build box, not in this repo) writes
-`catalog-v2.json`. It should, at publish time:
+`ttsctl publish` (since 2026-06-19) reads `metadata.publishedAt` from
+the pack's `manifest.json` and stamps it on both the narration row and
+the matching `books[]` row in `catalog.json` and `catalog-v2.json`.
 
-1. Set `publishedAt` on every narration row **and** book row it writes (ISO `YYYY-MM-DD`). Use the book's intended release date (see conventions below), not "now" — re-publishing an old book must not re-date it.
-2. **Preserve** any existing `publishedAt` already in the catalog when it re-uploads (don't drop fields it doesn't recognize).
+Precedence (what wins when there's a value on both sides):
 
-Until `ttsctl` does this, every `ttsctl publish` may **wipe** the dates this
-runbook sets — so re-run the interim step (below) after each publish, and treat
-"books are dated" as part of the publish checklist.
+1. **Existing narration `publishedAt`** in the live catalog (re-publish
+   of an old narration never re-dates it).
+2. **Existing `books[]` `publishedAt`** in the live catalog (re-publish
+   of a new lang for an existing book inherits the book's date).
+3. **Manifest value** (`metadata.publishedAt` in the pack manifest) —
+   only used when nothing is on file yet.
 
-## Interim procedure (after every publish)
+The book row only ever gets a `publishedAt` added if it currently has
+none; existing dates are never overwritten. ttsctl does NOT create new
+`books[]` rows — book metadata (cover, description, series) is owned by
+other tooling.
+
+To enable this on a new pack, add to `manifest.json`:
+
+```json
+{
+  "id": "book_<id>",
+  "name": "...",
+  "version": "0.1.0",
+  "metadata": { "publishedAt": "YYYY-MM-DD", ... }
+}
+```
+
+## Backfill procedure (for books with no date yet)
 
 1. Edit the `DATES` map in `corpan/infra/patch-published-dates.py` — add an entry
    for each new book: `"book_<id>": "YYYY-MM-DD"`.

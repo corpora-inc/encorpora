@@ -31,13 +31,63 @@ AWS_REGION = "us-east-2"
 CLOUDFRONT_DISTRIBUTION_ID = "E1RDNUCVE70SCI"
 
 # bookId -> publishedAt (the only change we make)
+#
+# Dates are best-guess from git first-commit dates of each book directory,
+# with same-day series staggered by 1 day each to give a sensible
+# within-series read order. New books should be added here in publish order
+# (ttsctl publish now also stamps publishedAt at publish time from each
+# pack's manifest.json `metadata.publishedAt`, but we keep this script as
+# the catch-up tool for backfills).
 DATES = {
-    "book_biomes_tropical_rainforest": "2026-06-14",
-    "book_biomes_tropical_savanna": "2026-06-15",
-    "book_biomes_hot_desert": "2026-06-16",
-    "book_biomes_temperate_forest": "2026-06-17",
-    "book_biomes_temperate_grassland": "2026-06-18",
+    # ── Spring 2026 backlog (best-guess from git first-commit) ──────────
+    # Religion
+    "bible_genesis": "2026-03-25",
+    # History: fascinating curiosities + pirate biographies
+    "book_monte_alban":            "2026-03-28",
+    "book_mystery_of_the_olmec":   "2026-03-29",
+    "book_zheng_yi_sao":           "2026-04-18",
+    "book_hayreddin_barbarossa":   "2026-04-19",
+    # Sports: U10 7v7 Soccer (4 books, in field-position order)
+    "book_u10_goalie":             "2026-04-01",
+    "book_u10_sweeper":            "2026-04-02",
+    "book_u10_defender":           "2026-04-03",
+    "book_u10_striker":            "2026-04-04",
+    # Science: fascinating science
+    "book_science_atom":           "2026-04-05",
+    "book_science_volcanoes":      "2026-04-06",
+    "book_science_cell":           "2026-04-18",
+    "book_science_heart":          "2026-04-19",
+    # Literature: Tolstoy short stories
+    "book_tolstoy_three_questions":  "2026-04-27",
+    "book_tolstoy_what_men_live_by": "2026-04-28",
+    # Lifestyle: little escapes
+    "book_sky_diving":             "2026-04-29",
+    "book_gardening":              "2026-05-18",
+    "book_sailing":                "2026-05-19",
+    # Vehicles
+    "book_motorcycles_history":    "2026-05-16",
+    "book_train_history":          "2026-05-17",
+    # Food: food-of-the-world
+    "book_soul_food_southern_us":  "2026-05-08",
+    "book_persian_food":           "2026-05-12",
+    # Music: instruments-of-the-world
+    "book_oud_history":            "2026-05-15",
+    # Sports for Kids (3 books, in published order)
+    "book_sports_for_kids_baseball":     "2026-05-21",
+    "book_sports_for_kids_gymnastics":   "2026-05-22",
+    "book_sports_for_kids_cheerleading": "2026-05-23",
+    # ── AI This Week (weekly podcast, dated by episode) ────────────────
+    "book_ai_this_week_2026_05_13": "2026-05-13",
+    "book_ai_this_week_2026_05_20": "2026-05-20",
+    "book_ai_this_week_2026_05_27": "2026-05-27",
+    "book_ai_this_week_2026_06_03": "2026-06-03",
     "book_ai_this_week_2026_06_14": "2026-06-14",
+    # ── Biomes of the World (new series, sequential daily) ─────────────
+    "book_biomes_tropical_rainforest": "2026-06-14",
+    "book_biomes_tropical_savanna":    "2026-06-15",
+    "book_biomes_hot_desert":          "2026-06-16",
+    "book_biomes_temperate_forest":    "2026-06-17",
+    "book_biomes_temperate_grassland": "2026-06-18",
 }
 
 
