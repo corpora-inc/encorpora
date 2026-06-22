@@ -38,9 +38,9 @@ beforeAll(async () => {
 const SYNTH_KINDS = new Set(["synth", "fmSynth", "wavetable", "analogSynth"])
 
 describe("INSTRUMENT_PRESETS corpus", () => {
-  it("ships a broad, world-class palette (40+ presets)", () => {
-    expect(INSTRUMENT_PRESETS.length).toBeGreaterThanOrEqual(40)
-    expect(INSTRUMENT_PRESETS.length).toBeLessThanOrEqual(80)
+  it("ships a broad, world-class palette (120+ presets)", () => {
+    expect(INSTRUMENT_PRESETS.length).toBeGreaterThanOrEqual(120)
+    expect(INSTRUMENT_PRESETS.length).toBeLessThanOrEqual(200)
   })
 
   it("every family is well-stocked (≥4 members) for a deep palette", () => {
