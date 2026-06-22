@@ -4,7 +4,8 @@
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
@@ -13,10 +14,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": {
-      "@shared/monetization": ["../shared/monetization/index.ts"]
-    }
+    "skipLibCheck": true
   },
   "include": ["src"]
 }
-
