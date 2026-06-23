@@ -23,26 +23,32 @@ const RTL_LANGS = new Set(["ar", "he", "fa", "ur"]);
  * Game — "CATCH THE TRANSLATION".
  *
  * The player sees a phrase in the language they ALREADY KNOW (primary =
- * stack.languages[0], also the UI language). Its translation in the TARGET
- * (learning) language falls down the three lanes WORD BY WORD, IN ORDER. The
- * player catches each correct next word as it crosses the strum line; on catch
- * the target word is SPOKEN (so they hear the pronunciation) and revealed in an
- * assembling target-phrase strip. Reconstructing + hearing the translation,
- * prompted by the known phrase, IS the learning.
+ * stack.languages[0], also the UI language). At round start its translation in
+ * the TARGET (learning) language is laid out as a FALLING CHART: every word of
+ * the translation becomes a note, IN ORDER, spaced in TIME (vertical gap = the
+ * gap between their strum beats) — like a phrase of guitar-hero notes. They
+ * fall continuously; the player catches each correct word at the strum line in
+ * rhythm. Catching in order assembles the phrase + speaks each target word (the
+ * learning).
  *
- * Difficulty ramps with the combo: at first ONLY correct words fall (pure
- * rhythm catch); as the player heats up, DISTRACTOR target words fall in the
- * OTHER lanes and must be dodged.
+ * STREAK-DRIVEN DIFFICULTY (reset to relaxed on any fail):
+ *   - Streak 0: words spaced FAR apart in time (generous) and ZERO decoys.
+ *   - As the streak builds: COMPRESS the inter-word spacing toward natural
+ *     speech tempo AND add DECOYS (wrong target-language words in OTHER lanes,
+ *     interleaved with the correct sequence) — 0 -> 1 -> 2 decoys per sentence.
+ *   - On FAIL (whiff / miss a correct word / catch a decoy → combo break):
+ *     spacing resets to relaxed and decoys to 0 for the NEXT chart.
  *
- * COHERENCE CONTRACT: at any instant exactly ONE catchable card carries the
- * next correct token of the target translation. Catching it advances the
- * sequence; tapping a distractor or letting the correct word pass is a miss.
+ * COHERENCE CONTRACT: the correct words are a strict ordered sequence; the
+ * player must catch the NEXT one (seqIndex === caughtCount). Catching it
+ * advances the sequence; catching a decoy or letting the next correct word
+ * sail past the strum is a miss.
  *
  * This file keeps the proven engine intact — delta-timed falling motion,
  * canvas-relative input (InputManager), forgiving hit detection (LaneSystem),
  * the typed event bus, and the effects/audio/hud/progression streams. Only the
- * CONTENT MODEL (phrase → ordered words), spawn cadence, catch-in-sequence
- * input, and the assembling strip are new.
+ * CONTENT MODEL (phrase → time-spaced chart), the batch chart layout, the
+ * catch-in-sequence input, and the assembling strip are new.
  */
 export class Game {
   private canvas: HTMLCanvasElement;
@@ -87,11 +93,9 @@ export class Game {
   private caughtCount: number = 0;
   /** The words revealed in the assembling strip so far. */
   private assembled: string[] = [];
-  /** True while a correct-word card for the current step is in flight. */
-  private stepActive: boolean = false;
   /** True iff EVERY word this round has been caught cleanly (no pass / wrong). */
   private roundAllCaught: boolean = true;
-  /** performance.now() after which the next round/step may spawn. */
+  /** performance.now() after which the next round may load (post-resolve gap). */
   private nextSpawnTime: number = 0;
   /** Fires the round's once-per-round verdict exactly once. */
   private roundResolved: boolean = false;
@@ -101,6 +105,24 @@ export class Game {
   private currentWord: WordIdentity | null = null;
   /** Monotonic counter so note ids are unique even within the same ms. */
   private noteSeq: number = 0;
+
+  // ---- Streak-driven chart difficulty -------------------------------------
+  /**
+   * The "difficulty streak" — how many CHARTS in a row the player has caught
+   * cleanly (every correct word, no decoy taps). It drives spacing compression
+   * + the decoy ramp, and RESETS to 0 on any fail. Distinct from the scoring
+   * combo (which is per-word): a single whiffed word resets both, but the
+   * difficulty streak only climbs at the granularity of whole clean charts so
+   * the ramp feels deliberate.
+   */
+  private chartStreak: number = 0;
+  /** Tracks, within the current chart, whether the player has failed anything. */
+  private chartClean: boolean = true;
+  /**
+   * Seconds between consecutive correct-word strum beats for the CURRENT chart,
+   * chosen at layout time from the streak (relaxed -> natural-speech tempo).
+   */
+  private beatGap: number = 1.6;
 
   // Track lane activation for visuals.
   private lanePressTimes: number[] = [0, 0, 0];
@@ -235,6 +257,22 @@ export class Game {
 
     this.laneSystem.resize(width, height);
     this.speed = (height * 0.8 + 100) / this.NOTE_TRAVEL_SECONDS;
+
+    // Reserve a clear HUD band ABOVE the lanes: measure the bottom of the top
+    // HUD (prompt chip + exit/mute controls) and push it to the LaneSystem so
+    // the Renderer only draws notes BELOW it — notes emerge fully visible
+    // instead of spawning occluded behind the chip/audio button. Deferred to
+    // the next frame so the DOM HUD has laid out (fonts/safe-area applied).
+    this.measureHudBand();
+    requestAnimationFrame(() => this.measureHudBand());
+  }
+
+  /** Push the current DOM HUD band bottom into the LaneSystem (canvas-local). */
+  private measureHudBand() {
+    if (!this.hud) return;
+    const rect = this.canvas.getBoundingClientRect();
+    const bandBottom = this.hud.measureHudBandBottom({ top: rect.top });
+    this.laneSystem.setPlayTop(bandBottom);
   }
 
   private showMenu() {
@@ -255,12 +293,19 @@ export class Game {
     this.roundWords = [];
     this.caughtCount = 0;
     this.assembled = [];
-    this.stepActive = false;
     this.nextSpawnTime = 0;
+    this.chartStreak = 0;
+    this.chartClean = true;
 
     this.bus.emit("gameStart", { mode, language: this.activeLanguage });
     this.bus.emit("scoreChange", { value: 0, delta: 0 });
     this.bus.emit("comboChange", { value: 0, previous: 0 });
+
+    // The HUD is now visible (gameStart un-hides it). Re-measure the reserved
+    // HUD band so the play-area top reflects the real, laid-out prompt chip +
+    // controls before the first chart falls.
+    this.measureHudBand();
+    requestAnimationFrame(() => this.measureHudBand());
 
     try {
       await this.startRound();
@@ -293,10 +338,12 @@ export class Game {
   }
 
   // -------------------------------------------------------------------------
-  // ROUND lifecycle: load a phrase, then spawn its words one step at a time.
+  // ROUND lifecycle: load a phrase, then lay out the WHOLE translation as a
+  // time-spaced falling CHART (true Guitar-Hero timing). Difficulty (spacing +
+  // decoys) is chosen from the streak at layout time and reset on any fail.
   // -------------------------------------------------------------------------
 
-  /** Load a fresh round from content + reset per-round state, then spawn step 0. */
+  /** Load a fresh round from content + reset per-round state, then build the chart. */
   private async startRound() {
     // Guard against the loop firing a second load while the first is in flight.
     if (this.loadingRound) return;
@@ -322,9 +369,9 @@ export class Game {
     this.roundWords = round.targetWords;
     this.caughtCount = 0;
     this.assembled = [];
-    this.stepActive = false;
     this.roundResolved = false;
     this.roundAllCaught = true;
+    this.chartClean = true;
 
     this.currentWord = {
       entryId: round.entryId,
@@ -338,85 +385,130 @@ export class Game {
     this.hud.setRomanization(round.romanization ?? "");
     this.hud.setAssembled([], this.roundWords.length, this.activeLanguage.isRTL);
 
-    this.spawnStep();
+    // The prompt chip + assembling strip just changed height for this round;
+    // re-measure the reserved HUD band next frame so the play-area top tracks
+    // the (possibly taller) prompt and notes still clear it.
+    requestAnimationFrame(() => this.measureHudBand());
+
+    this.buildChart();
   }
 
   /**
-   * Number of DISTRACTOR cards to put in the OTHER lanes for the current step.
-   * Difficulty ramp tied to the combo (gentle, gradual):
-   *   combo < 3   → 0 (Level 1: only the correct word falls — pure rhythm)
-   *   combo 3..6  → 1 distractor (probabilistically, easing in)
-   *   combo >= 7  → up to 2 distractors (dodge to catch the right one)
-   * Never exceeds the 2 free lanes, and never exceeds the available pool.
+   * Inter-word beat spacing (seconds between consecutive CORRECT strum beats)
+   * for the given difficulty streak. Streak 0 is relaxed/generous; it compresses
+   * toward a natural-speech tempo floor as the streak climbs.
    */
-  private distractorCountForStep(): number {
+  private beatGapForStreak(streak: number): number {
+    const RELAXED = 1.7; // generous gap at streak 0
+    const TIGHT = 0.85; // natural-speech-ish floor
+    // Reach the floor by ~streak 6; smooth ramp in between.
+    const t = Math.min(1, streak / 6);
+    return RELAXED + (TIGHT - RELAXED) * t;
+  }
+
+  /**
+   * Number of DECOYS to interleave across the whole chart for the given streak:
+   *   streak 0    → 0 (only the correct words fall, in order — relaxed start)
+   *   streak 1..2 → 1 decoy in the sentence
+   *   streak >= 3 → 2 decoys in the sentence
+   * Capped by the available decoy pool.
+   */
+  private decoyCountForStreak(streak: number): number {
     const pool = this.round?.distractorWords.length ?? 0;
-    if (pool === 0) return 0;
-    const c = this.combo;
-    if (c < 3) return 0;
-    if (c < 7) {
-      // Ease in: ~60% chance of a single distractor in this band.
-      return Math.random() < 0.6 ? Math.min(1, pool) : 0;
-    }
-    // Hot: usually 1, sometimes 2 (fill both free lanes).
-    const want = Math.random() < 0.45 ? 2 : 1;
-    return Math.min(want, 2, pool);
+    if (pool === 0 || streak <= 0) return 0;
+    const want = streak >= 3 ? 2 : 1;
+    return Math.min(want, pool);
   }
 
   /**
-   * Spawn the next correct word (the catchable target) + 0..2 distractors in
-   * the OTHER lanes per the difficulty ramp. Exactly one catchable target card
-   * is in flight at a time (coherence contract).
+   * Lay out the ENTIRE target translation as a falling chart: each correct word
+   * is a note whose strum beat is `beatGap` after the previous one, in order.
+   * Decoys (per the streak ramp) are inserted at the midpoints BETWEEN correct
+   * beats, placed in a lane OTHER than the surrounding correct words so they
+   * read as dodge-me foils interleaved with the sequence. Notes derive their y
+   * each frame from (strumTime - now), so the whole chart is timed up front.
    */
-  private spawnStep() {
+  private buildChart() {
     if (!this.round) return;
-    if (this.caughtCount >= this.roundWords.length) return;
+    const words = this.roundWords;
+    if (!words.length) return;
 
-    const lanes = [0, 1, 2].sort(() => Math.random() - 0.5) as LaneIndex[];
-    const targetLane = lanes[0];
-    const seqIndex = this.caughtCount;
-    const targetWord = this.roundWords[seqIndex];
+    // Choose difficulty for THIS chart from the streak (reset on prior fail).
+    this.beatGap = this.beatGapForStreak(this.chartStreak);
+    const decoys = this.decoyCountForStreak(this.chartStreak);
 
-    const targetNote: Note = {
-      id: `note-${Date.now()}-${this.noteSeq++}-t`,
-      lane: targetLane,
-      y: -120,
-      text: targetWord,
-      isTarget: true,
-      seqIndex,
-      hit: false,
-      missed: false,
-      spawnTime: Date.now(),
-    };
+    const now = performance.now();
+    // Lead-in so the first word doesn't strum the instant the chart loads — give
+    // the player the full travel time plus a small beat to read the prompt.
+    const leadIn = now + this.NOTE_TRAVEL_SECONDS * 1000 + 450;
+    const gapMs = this.beatGap * 1000;
 
-    const notes: Note[] = [targetNote];
+    // Correct-word lanes: vary lane per word so the chart weaves across all
+    // three lanes (avoid a static single-lane column), never repeating the
+    // immediately previous lane.
+    const correctLanes: LaneIndex[] = [];
+    let prevLane = -1;
+    for (let i = 0; i < words.length; i++) {
+      let lane = Math.floor(Math.random() * 3);
+      if (lane === prevLane) lane = (lane + 1) % 3;
+      correctLanes.push(lane as LaneIndex);
+      prevLane = lane;
+    }
 
-    // Distractors: real target-language words NOT in this sequence, in the
-    // OTHER lanes. Drawn fresh each step so the foils vary.
-    const dCount = this.distractorCountForStep();
-    if (dCount > 0 && this.round.distractorWords.length) {
+    const notes: Note[] = [];
+    for (let i = 0; i < words.length; i++) {
+      const strumTime = leadIn + i * gapMs;
+      notes.push(
+        this.makeNote(words[i], correctLanes[i], true, i, strumTime)
+      );
+    }
+
+    // Interleave decoys: pick distinct gaps between correct beats, drop a foil
+    // at the midpoint of each chosen gap, in a lane different from BOTH adjacent
+    // correct words so it never collides with the catchable sequence.
+    if (decoys > 0 && words.length >= 2) {
       const pool = [...this.round.distractorWords].sort(
         () => Math.random() - 0.5
       );
-      for (let i = 0; i < dCount && i < lanes.length - 1; i++) {
-        const w = pool[i % pool.length];
-        if (!w) continue;
-        notes.push({
-          id: `note-${Date.now()}-${this.noteSeq++}-d${i}`,
-          lane: lanes[i + 1],
-          y: -120,
-          text: w,
-          isTarget: false,
-          seqIndex: -1,
-          hit: false,
-          missed: false,
-          spawnTime: Date.now(),
-        });
+      const gapIdx = Array.from({ length: words.length - 1 }, (_, k) => k).sort(
+        () => Math.random() - 0.5
+      );
+      const slots = Math.min(decoys, gapIdx.length, pool.length);
+      for (let s = 0; s < slots; s++) {
+        const g = gapIdx[s];
+        const word = pool[s];
+        if (!word) continue;
+        const strumTime = leadIn + (g + 0.5) * gapMs;
+        const taken = new Set([correctLanes[g], correctLanes[g + 1]]);
+        let lane = 0;
+        while (taken.has(lane as LaneIndex) && lane < 2) lane++;
+        notes.push(this.makeNote(word, lane as LaneIndex, false, -1, strumTime));
       }
     }
 
     this.notes.push(...notes);
-    this.stepActive = true;
+  }
+
+  /** Build a single chart note seeded above the screen; physics drives its y. */
+  private makeNote(
+    text: string,
+    lane: LaneIndex,
+    isTarget: boolean,
+    seqIndex: number,
+    strumTime: number
+  ): Note {
+    return {
+      id: `note-${Date.now()}-${this.noteSeq++}-${isTarget ? "t" : "d"}`,
+      lane,
+      y: -160,
+      text,
+      isTarget,
+      seqIndex,
+      hit: false,
+      missed: false,
+      spawnTime: Date.now(),
+      strumTime,
+    };
   }
 
   private setScore(value: number) {
@@ -434,27 +526,22 @@ export class Game {
   }
 
   /**
-   * Reveal the next word in the assembling target strip + advance the step.
-   * `caught` true = the player caught it (score/combo handled by the caller);
-   * false = it passed or the player missed it (we still reveal it so the phrase
-   * stays coherent and teaching continues). Spawns the next step or, when the
-   * sequence is complete, resolves the round.
+   * Advance the catch sequence by exactly one correct word: reveal it in the
+   * assembling strip and bump caughtCount. `caught` true = the player caught it
+   * (score/combo handled by the caller); false = the correct word sailed past
+   * (we still reveal it so the assembled phrase stays coherent and teaching
+   * continues). When the last correct word is consumed, resolves the round.
+   *
+   * Unlike the old one-at-a-time model this NEVER spawns — the whole chart is
+   * already in flight (buildChart). advanceStep only tracks SEQUENCE progress.
    */
   private advanceStep(caught: boolean) {
     if (!this.round) return;
-    // Strict per-step idempotency: a step is resolved exactly once. `stepActive`
-    // is set true only by spawnStep() and cleared here on the first call, so any
-    // re-entrant or delayed second call for the same step is a hard no-op. This
-    // closes every re-entrancy path into the caughtCount mutation below.
-    // (adversarial-review, PR #390)
-    if (!this.stepActive) return;
-    this.stepActive = false;
     // The sequence is already complete — never advance past the last word, so
     // caughtCount can't overshoot roundWords.length or corrupt the assembling
-    // strip / spawn state.
-    if (this.caughtCount >= this.roundWords.length) {
-      return;
-    }
+    // strip.
+    if (this.caughtCount >= this.roundWords.length) return;
+
     const idx = this.caughtCount;
     this.assembled.push(this.roundWords[idx]);
     this.hud.setAssembled(
@@ -462,19 +549,23 @@ export class Game {
       this.roundWords.length,
       this.activeLanguage.isRTL
     );
-    // Clamp the increment to the sequence length so caughtCount can never
-    // exceed roundWords.length even under a (guarded-against) re-entrant call.
     this.caughtCount = Math.min(this.caughtCount + 1, this.roundWords.length);
 
     if (this.caughtCount >= this.roundWords.length) {
       // Sequence complete — resolve the round and queue the next one.
       this.resolveRound(this.roundAllCaught ? "correct" : "wrong");
+      // STREAK: a fully-clean chart bumps the difficulty streak (tighter +
+      // more decoys next time); any fail this chart resets it to relaxed.
+      this.chartStreak = this.chartClean ? this.chartStreak + 1 : 0;
       this.nextSpawnTime = performance.now() + 1100;
       void caught;
-    } else {
-      // Brief beat between words so the catch reads as deliberate, not a stream.
-      this.nextSpawnTime = performance.now() + 320;
     }
+  }
+
+  /** Record a fail this chart: resets the difficulty streak for the next chart. */
+  private failChart() {
+    this.chartClean = false;
+    this.roundAllCaught = false;
   }
 
   /**
@@ -509,8 +600,8 @@ export class Game {
       lang: this.activeLanguage.code,
     };
 
-    if (hitNote && hitNote.isTarget) {
-      // CAUGHT the correct next word.
+    if (hitNote && hitNote.isTarget && hitNote.seqIndex === this.caughtCount) {
+      // CAUGHT the correct NEXT word in the sequence.
       hitNote.hit = true;
       hitNote.hitTime = performance.now();
       const points = 100 + this.combo * 10;
@@ -536,10 +627,10 @@ export class Game {
 
       this.advanceStep(true);
     } else if (hitNote && !hitNote.isTarget) {
-      // Tapped a DISTRACTOR — miss/penalty, combo breaks. The correct word
-      // keeps falling; the player can still catch it.
+      // Caught a DECOY — miss/penalty, combo breaks + difficulty streak resets.
+      // The correct words keep falling; the player can still catch them.
       hitNote.hit = true;
-      this.roundAllCaught = false;
+      this.failChart();
       this.setCombo(0);
       this.setScore(this.score - 40);
       this.bus.emit("noteMiss", {
@@ -551,15 +642,16 @@ export class Game {
         word,
       });
     } else {
-      // Empty lane tap. Only a *genuine* whiffed catch breaks the combo: there
-      // must be a live catchable target in flight (un-hit, un-missed) for the
-      // tap to count as a real gameplay error. Taps during the dead air between
-      // steps (no target on the board) are a no-op, so an accidental press in a
-      // gap doesn't punish the player. (adversarial-review, PR #390)
-      const liveTarget = this.notes.some(
-        (n) => n.isTarget && !n.hit && !n.missed
+      // Empty lane tap (or a tap that grabbed a not-yet-due correct note — we
+      // ignore those so the player isn't punished for tapping early on a future
+      // word). Only a *genuine* whiffed catch breaks the combo: the NEXT correct
+      // word must be live (un-hit, un-missed) for the tap to count as a real
+      // gameplay error. Taps during dead air are a no-op.
+      const liveNext = this.notes.some(
+        (n) => n.isTarget && n.seqIndex === this.caughtCount && !n.hit && !n.missed
       );
-      if (!liveTarget) return;
+      if (!liveNext) return;
+      this.failChart();
       this.setCombo(0);
       this.bus.emit("noteMiss", {
         lane,
@@ -581,7 +673,9 @@ export class Game {
     this.lastTimestamp = timestamp;
 
     if (this.state === GameState.PLAYING) {
-      // 1. SPAWNING — step / round cadence.
+      // 1. ROUND CADENCE — the whole chart is laid out by buildChart(); the loop
+      //    only gates loading the NEXT round after the current one resolves +
+      //    clears. No per-word spawning.
       if (!this.round) {
         // No active round (post-resolve gap): start the next one when due.
         if (timestamp > this.nextSpawnTime) {
@@ -596,51 +690,59 @@ export class Game {
           this.round = null;
           this.startRound();
         }
-      } else if (
-        !this.stepActive &&
-        !this.roundResolved &&
-        this.caughtCount < this.roundWords.length &&
-        timestamp > this.nextSpawnTime
-      ) {
-        this.spawnStep();
       }
 
-      // 2. PHYSICS — delta-timed falling motion (the hero).
+      // 2. PHYSICS — delta-timed falling motion (the hero). Chart notes derive
+      //    their y from their strum BEAT: y = strumY - (strumTime - now)*speed,
+      //    so the whole phrase falls on its pre-laid timeline. Notes without a
+      //    strumTime (legacy/defensive) fall by the old delta integration.
+      const now = performance.now();
       const boundsHeight = this.canvas.clientHeight;
       const strumY = this.laneSystem.getStrumLineY();
       const passLine = strumY + this.laneSystem.getNoteRadius() * 2.2;
 
       this.notes.forEach((note) => {
-        note.y += this.speed * dt;
+        if (note.hit) return;
+        if (typeof note.strumTime === "number") {
+          note.y = strumY - ((note.strumTime - now) / 1000) * this.speed;
+        } else {
+          note.y += this.speed * dt;
+        }
 
         if (note.y > boundsHeight + 120) note.missed = true;
 
-        if (note.isTarget && note.y > passLine && !note.hit && !note.missed) {
-          // The correct word sailed past the strum unhit → a miss. Combo
-          // breaks and the same point penalty as a wrong (distractor) catch
-          // applies, so missing the real answer is never lower-risk than
-          // whiffing a foil (symmetric miss contract). We reveal the word
-          // anyway (assembling strip) and advance so the phrase stays coherent
-          // and the player keeps learning. (adversarial-review, PR #390)
-          note.missed = true;
-          this.roundAllCaught = false;
-          this.setCombo(0);
-          this.setScore(this.score - 40);
-          this.bus.emit("noteMiss", {
-            lane: note.lane,
-            x: this.laneSystem.getLaneX(note.lane),
-            y: strumY,
-            reason: "passed",
-            mode: this.mode,
-            word:
-              this.currentWord ?? {
-                entryId: -1,
-                foreign: this.round?.targetText ?? "",
-                english: note.text,
-                lang: this.activeLanguage.code,
-              },
-          });
-          this.advanceStep(false);
+        if (note.y > passLine && !note.hit && !note.missed) {
+          if (note.isTarget && note.seqIndex === this.caughtCount) {
+            // The NEXT correct word sailed past the strum unhit → a miss. Combo
+            // breaks + difficulty streak resets, same penalty as catching a
+            // decoy (symmetric miss). We reveal the word anyway (assembling
+            // strip) and advance so the phrase stays coherent and the player
+            // keeps learning.
+            note.missed = true;
+            this.failChart();
+            this.setCombo(0);
+            this.setScore(this.score - 40);
+            this.bus.emit("noteMiss", {
+              lane: note.lane,
+              x: this.laneSystem.getLaneX(note.lane),
+              y: strumY,
+              reason: "passed",
+              mode: this.mode,
+              word:
+                this.currentWord ?? {
+                  entryId: -1,
+                  foreign: this.round?.targetText ?? "",
+                  english: note.text,
+                  lang: this.activeLanguage.code,
+                },
+            });
+            this.advanceStep(false);
+          } else {
+            // A decoy or an already-consumed/out-of-sequence note falling past
+            // the line is simply retired — no penalty (dodging a decoy is the
+            // correct play).
+            note.missed = true;
+          }
         }
       });
 

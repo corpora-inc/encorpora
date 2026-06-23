@@ -7,9 +7,16 @@ export class LaneSystem {
   // Logical scale (updated on resize)
   private canvasHeight: number = 0;
 
+  // Top of the clear PLAY AREA, in canvas-local px. The DOM HUD (prompt chip +
+  // exit/mute controls) occupies the band above this; falling notes are only
+  // drawn at/below it so they emerge fully visible BELOW the HUD instead of
+  // spawning occluded behind the chip/audio button. Game measures the HUD band
+  // each resize and pushes it here; 0 until then (no clip).
+  private playTopY: number = 0;
+
   // Visual config
   // Now relative to screen size instead of fixed pixels
-  private noteRadius: number = 40; 
+  private noteRadius: number = 40;
   private readonly STRUM_LINE_Y_RATIO = 0.8;
 
   constructor(width: number, height: number) {
@@ -46,7 +53,24 @@ export class LaneSystem {
   getStrumLineY(): number {
     return this.canvasHeight * this.STRUM_LINE_Y_RATIO;
   }
-  
+
+  /**
+   * Set the top of the clear play area (canvas-local px) — the baseline BELOW
+   * the DOM HUD band. Clamped to a sane range so a mis-measured HUD can never
+   * push the play-area top past the strum line (which would hide every note).
+   */
+  setPlayTop(y: number): void {
+    const strumY = this.getStrumLineY();
+    // Never eat more than the top ~55% of the track, and never go negative.
+    const cap = strumY > 0 ? strumY * 0.55 : this.canvasHeight * 0.44;
+    this.playTopY = Math.max(0, Math.min(y, cap));
+  }
+
+  /** Top of the clear play area (canvas-local px). Notes draw at/below this. */
+  getPlayTopY(): number {
+    return this.playTopY;
+  }
+
   getNoteRadius(): number {
     return this.noteRadius;
   }

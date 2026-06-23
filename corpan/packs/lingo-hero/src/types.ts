@@ -38,6 +38,14 @@ export interface Note {
   missed: boolean; // Did it pass the line without a catch?
   spawnTime: number;
   hitTime?: number;
+  /**
+   * Wall-clock time (performance.now() ms) at which this note's center should
+   * cross the strum line — its "beat" in the falling chart. Physics derives the
+   * note's y each frame from (strumTime - now) and the fall speed, so the whole
+   * chart is laid out in TIME up front (true Guitar-Hero timing) rather than
+   * spawned one-at-a-time. Optional so any legacy/ad-hoc note still falls.
+   */
+  strumTime?: number;
 }
 
 export enum GameState {
