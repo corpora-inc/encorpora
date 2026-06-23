@@ -81,6 +81,37 @@ describe("degree rows resolve in key", () => {
   })
 })
 
+describe("degree rows — full instrument range (#394)", () => {
+  it("covers the whole MIDI window (A0–C8), high→low, all in range + in key", () => {
+    const d = doc()
+    const ap = activePitches(d, 0)
+    const rows = degreeRows(d, { range: { loMidi: 21, hiMidi: 108 } })
+    // Far more rows than the ~2-octave window, all within the window.
+    expect(rows.length).toBeGreaterThan(7 * 7) // > ~7 octaves of degrees
+    for (const r of rows) {
+      expect(r.midi).toBeGreaterThanOrEqual(21)
+      expect(r.midi).toBeLessThanOrEqual(108)
+    }
+    // High → low, strictly descending MIDI (distinct rows).
+    for (let i = 1; i < rows.length; i++) {
+      expect(rows[i].midi).toBeLessThan(rows[i - 1].midi)
+    }
+    // Every row's pitch class is in the active set (still in key).
+    const pcs = new Set(ap.pcs)
+    for (const r of rows) expect(pcs.has(((r.midi % 12) + 12) % 12)).toBe(true)
+    // Reaches near both ends of the window.
+    expect(rows[0].midi).toBeGreaterThan(100)
+    expect(rows[rows.length - 1].midi).toBeLessThan(30)
+  })
+
+  it("spans many more octaves than the fixed 2-octave window", () => {
+    const d = doc()
+    const windowed = degreeRows(d, { octaves: 2 }).length
+    const full = degreeRows(d, { range: { loMidi: 21, hiMidi: 108 } }).length
+    expect(full).toBeGreaterThan(windowed * 2)
+  })
+})
+
 describe("+ layer (add)", () => {
   it("is additive — keeps existing notes and adds more, in key", () => {
     const d = doc()

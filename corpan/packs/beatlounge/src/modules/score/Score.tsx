@@ -59,8 +59,13 @@ export interface ScoreProps {
   audio?: AudioFacade
 }
 
-/** ~2 octaves around the working tonic — singable, mostly-ascending register. */
+/** The register the +/- generator works in (singable, mostly-ascending). The
+ *  VIEW shows far more than this — see SCORE_RANGE. */
 const OCTAVES = 2
+
+/** The score VIEW shows the full instrument range (88-key piano, A0–C8),
+ *  scrollable — so notes can be seen and placed anywhere, not just ~3 octaves. */
+const SCORE_RANGE = { loMidi: 21, hiMidi: 108 } as const
 
 /** The Variation seed-policy values + their short, translatable labels. */
 const VARIATIONS: readonly AutoVariation[] = ["lock", "evolve", "new"]
@@ -92,11 +97,27 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
     TRANSITION_TABLES.find((t) => t.id === tableId) ?? TRANSITION_TABLES[0]
 
   // The grid view (rows = degrees, columns = steps), cells filled from the track.
+  // Full instrument range (scrollable) so notes can be placed anywhere (#394).
   const view: ScoreView | null = useMemo(() => {
     if (!track || !isInstrumentTrack(track)) return null
-    const base = buildScoreView(doc, track.grid, { octaves: OCTAVES })
+    const base = buildScoreView(doc, track.grid, { range: SCORE_RANGE })
     return fillScoreCells(base, track.notes, track.grid)
   }, [doc, track])
+
+  // Open scrolled to ~middle C so the user starts in a useful register (the full
+  // range is tall; row 0 is the highest pitch). Center ONCE PER TRACK — re-center
+  // when you switch tracks, but never on note edits (which would yank the scroll
+  // back mid-placement). Keyed by trackId, not the view.
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const centeredFor = useRef<string | null>(null)
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el || !view || view.rows.length === 0) return
+    if (centeredFor.current === trackId) return
+    const frac = (SCORE_RANGE.hiMidi - 60) / (SCORE_RANGE.hiMidi - SCORE_RANGE.loMidi)
+    el.scrollTop = Math.max(0, frac * el.scrollHeight - el.clientHeight / 2)
+    centeredFor.current = trackId
+  }, [view, trackId])
 
   // Live playhead → current step on this track's grid. (Auto generation now runs
   // in the rig-level AutoConductor, not here, so it survives leaving the screen.)
@@ -319,7 +340,7 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
       </div>
 
       {/* ---- the degree grid (rows = scale degrees, in key) ---- */}
-      <div className="bl-grid-scroll bl-score-scroll">
+      <div ref={scrollRef} className="bl-grid-scroll bl-score-scroll">
         <LaneGrid
           lanes={lanes}
           steps={view.steps}

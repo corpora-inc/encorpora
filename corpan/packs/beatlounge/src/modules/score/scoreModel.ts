@@ -121,12 +121,37 @@ export const workingTonicMidi = (ap: ActivePitches, centerMidi = 60): number => 
  */
 export const degreeRows = (
   doc: BeatloungeDoc,
-  opts: { tick?: Tick; octaves?: number; centerMidi?: number } = {}
+  opts: {
+    tick?: Tick
+    octaves?: number
+    centerMidi?: number
+    /** Full-range mode (#394): emit every in-scale row whose pitch lands in this
+     *  MIDI window (the instrument's range) instead of a fixed octave window. */
+    range?: { loMidi: number; hiMidi: number }
+  } = {}
 ): DegreeRow[] => {
   const ap = activePitches(doc, opts.tick ?? 0)
   const size = ap.cents.length > 0 ? ap.cents.length : 7
-  const octaves = Math.max(1, Math.floor(opts.octaves ?? 2))
   const tonicMidi = workingTonicMidi(ap, opts.centerMidi ?? 60)
+
+  // Full-range mode (#394): walk degrees outward from the tonic and keep every
+  // row whose resolved pitch lands in [loMidi, hiMidi], HIGH→LOW — so the score
+  // shows + scrolls the whole instrument range, not just a couple of octaves.
+  if (opts.range) {
+    const { loMidi, hiMidi } = opts.range
+    const stepSemis = 12 / size // ≈ semitones per scale degree
+    const dHi = Math.ceil((hiMidi - tonicMidi) / stepSemis) + size
+    const dLo = Math.floor((loMidi - tonicMidi) / stepSemis) - size
+    const rangeRows: DegreeRow[] = []
+    for (let d = dHi; d >= dLo; d--) {
+      const p = degreeToPitch(d, ap, tonicMidi)
+      if (p.midi < loMidi || p.midi > hiMidi) continue
+      rangeRows.push({ degree: d, midi: p.midi, detuneCents: p.detuneCents, key: String(d) })
+    }
+    return rangeRows
+  }
+
+  const octaves = Math.max(1, Math.floor(opts.octaves ?? 2))
   // Span: `octaves` above and (octaves-1) below the tonic, so the tonic sits a
   // little below center — a singable, mostly-ascending register.
   const lo = -((octaves - 1) * size)
@@ -173,7 +198,7 @@ const midiLabel = (midi: number): string => {
 export const buildScoreView = (
   doc: BeatloungeDoc,
   grid: Grid,
-  opts: { octaves?: number; centerMidi?: number } = {}
+  opts: { octaves?: number; centerMidi?: number; range?: { loMidi: number; hiMidi: number } } = {}
 ): ScoreView => {
   const steps = stepsInLoop(doc.loopLengthTicks, grid)
   const stepsPerBeat = Math.max(1, Math.round(grid.denominator / 4))
