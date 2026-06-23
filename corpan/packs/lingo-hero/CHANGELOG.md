@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.5] - 2026-06-23
+
+iOS/iPad audio fix (issue #428): music was silent on iPad/iOS Safari while
+working on Android/desktop — the canonical iOS Web Audio gotcha.
+
+### Fixed
+- **Music now unlocks on iPad/iOS Safari (#428).** iOS creates the AudioContext
+  in the `suspended` state and only lets it start when `resume()` is called from
+  inside a real user-gesture handler; if the first tap isn't spent on the
+  unlock, audio stays suspended and silent. The context was previously unlocked
+  only on the menu Start button, so a first tap landing elsewhere (a canvas lane
+  tap, tap-to-begin) left iOS audio dead. We now unlock from the FIRST
+  window-level user gesture (`pointerdown` / `touchend` / `click`) and detach
+  after — covering the InputManager canvas taps and any tap-to-begin. We also
+  `resume()` the context on every `visibilitychange`→visible (iOS suspends the
+  context when the app backgrounds even on the menu, where the loop pause/resume
+  gate never fires). Resuming an already-running context is a no-op, so Android
+  and desktop are unaffected; the music content/feel is unchanged. The unlock
+  wiring is now e2e-verified: the context is not running before any gesture and
+  flips to `running` after a simulated tap. (`audio/index.ts`,
+  `audio/SynthEngine.ts`; `window.__lingoHero.audioContextState()` /
+  `audioUnlocked()` introspection.)
+
 ## [0.4.4] - 2026-06-23
 
 A juice / visual pass (issues #427 and #429): the lane tracks now read as

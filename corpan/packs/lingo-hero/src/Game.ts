@@ -331,6 +331,21 @@ export class Game {
     return this.activeLanguage;
   }
 
+  /**
+   * Test/diagnostic introspection for the iOS audio-unlock wiring (issue #428).
+   * The e2e harness asserts the AudioContext is NOT running before any gesture
+   * and flips to "running" after a simulated tap — proving the unlock wiring
+   * fires on a gesture (real iOS audio OUTPUT cannot be verified headlessly).
+   */
+  audioContextState(): AudioContextState | null {
+    return this.audio.contextState();
+  }
+
+  /** True once a user gesture has unlocked the AudioContext (issue #428). */
+  audioUnlocked(): boolean {
+    return this.audio.isUnlocked();
+  }
+
   private getLaneFromX(x: number): LaneIndex | null {
     return this.laneSystem.laneAtX(x);
   }

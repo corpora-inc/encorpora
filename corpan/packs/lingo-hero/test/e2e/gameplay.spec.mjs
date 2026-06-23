@@ -442,6 +442,56 @@ async function collectRoundTargets(p, wantRounds) {
   await rp.close();
 }
 
+// --- iOS AUDIO UNLOCK WIRING (issue #428). -----------------------------------
+// We CANNOT verify real iOS audio OUTPUT headlessly, so we verify the WIRING:
+// the AudioContext must NOT be running before any user gesture (it is lazy — no
+// context exists yet), and the FIRST real gesture (a pointerdown, like a canvas
+// lane tap or tap-to-begin on iOS) must unlock it -> state "running" + unlocked
+// flag true. This proves the canonical iOS gesture-unlock path is wired without
+// requiring the menu Start button specifically, and (resuming a running context
+// being a no-op) guarantees it does not regress Android/desktop.
+{
+  const ap = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+  ap.on("pageerror", (e) => fail("pageerror(audio): " + e.message));
+  await ap.goto(harness);
+  await ap.waitForFunction(() => !!window.__lingoHero, { timeout: 10000 });
+
+  // BEFORE any gesture: the engine is lazy, so no context exists and it is not
+  // unlocked. (On iOS a pre-gesture context would be stuck `suspended` + silent;
+  // we never create one before the gesture, which is the correct iOS behavior.)
+  const pre = await ap.evaluate(() => ({
+    state: window.__lingoHero.audioContextState(),
+    unlocked: window.__lingoHero.audioUnlocked(),
+  }));
+  if (pre.unlocked) fail(`audio reported unlocked BEFORE any gesture: ${JSON.stringify(pre)}`);
+  if (pre.state === "running") fail(`AudioContext was RUNNING before any gesture (iOS would never allow this): ${JSON.stringify(pre)}`);
+  else console.log(`OK: audio not unlocked pre-gesture (state=${pre.state}, unlocked=${pre.unlocked})`);
+
+  // Dispatch a REAL pointerdown on the canvas (a lane tap) — the InputManager
+  // gesture path, NOT the menu Start button — to prove the window-level
+  // first-gesture unlock fires regardless of WHERE the first tap lands.
+  const box = await ap.evaluate(() => {
+    const r = window.__lingoHero.canvas.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height * 0.6 };
+  });
+  await ap.mouse.click(box.x, box.y);
+  // The context.resume() promise resolves async; give it a beat to flip.
+  await ap.waitForFunction(
+    () => window.__lingoHero.audioContextState() === "running",
+    { timeout: 5000 }
+  ).catch(() => {});
+
+  const post = await ap.evaluate(() => ({
+    state: window.__lingoHero.audioContextState(),
+    unlocked: window.__lingoHero.audioUnlocked(),
+  }));
+  if (!post.unlocked) fail(`audio did NOT unlock after a gesture: ${JSON.stringify(post)}`);
+  else if (post.state !== "running") fail(`AudioContext did not reach "running" after a gesture (unlock wiring): ${JSON.stringify(post)}`);
+  else console.log(`OK: first gesture unlocked AudioContext (state=${post.state}, unlocked=${post.unlocked})`);
+
+  await ap.close();
+}
+
 await browser.close();
 console.log(failures === 0 ? "\nGAMEPLAY E2E: PASS" : `\nGAMEPLAY E2E: ${failures} FAILURE(S)`);
 process.exit(failures === 0 ? 0 : 1);
