@@ -82,6 +82,10 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
   // Local UI: the head selection (degree-row keys) + the live playhead step.
   const [selected, setSelected] = useState<ReadonlySet<string>>(new Set())
   const [playStep, setPlayStep] = useState(-1)
+  // Note-level selection (#331): a "Select" mode where the grid stroke selects
+  // lit notes instead of painting them. Selected cells are keyed "rowIndex:step".
+  const [selectMode, setSelectMode] = useState(false)
+  const [selectedCells, setSelectedCells] = useState<ReadonlySet<string>>(new Set())
 
   // Per-track Auto config (Feel/Motion/Density/Variation + the arm flag) lives in
   // the persisted store — so the line keeps regenerating after you leave this
@@ -187,6 +191,45 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
     })
   }
 
+  // ---- note selection (#331) ------------------------------------------------
+  const setCellSelected = (rowIndex: number, step: number, sel: boolean) => {
+    const key = `${rowIndex}:${step}`
+    setSelectedCells((cur) => {
+      if (cur.has(key) === sel) return cur
+      const next = new Set(cur)
+      if (sel) next.add(key)
+      else next.delete(key)
+      return next
+    })
+  }
+  const toggleSelectMode = () => {
+    setSelectMode((on) => {
+      if (on) setSelectedCells(new Set()) // leaving select mode clears the set
+      return !on
+    })
+  }
+  // A fresh track starts with no note-selection (rows/notes differ per track).
+  useEffect(() => {
+    setSelectMode(false)
+    setSelectedCells(new Set())
+  }, [trackId])
+
+  // The selected cells resolved to real note ids — what downstream actions
+  // (#395 +/− on selection, #332 evolve selection) operate on.
+  const selectedNoteIds = useMemo(() => {
+    const ids = new Set<string>()
+    if (!track || !isInstrumentTrack(track) || !view) return ids
+    for (const key of selectedCells) {
+      const [ri, s] = key.split(":").map(Number)
+      const row = view.rows[ri]
+      if (!row) continue
+      const tick = tickForStep(s, track.grid)
+      const note = track.notes.find((n) => n.tick === tick && n.pitch === row.midi)
+      if (note) ids.add(note.id)
+    }
+    return ids
+  }, [selectedCells, track, view])
+
   // ---- the +/− layer dial — one undo batch per tap --------------------------
   const runDial = (op: "add" | "remove") => {
     // A manual layer tap on an armed track wins: disarm so the conductor stops
@@ -277,6 +320,17 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
               </option>
             ))}
           </select>
+          <button
+            type="button"
+            className={`bl-chip${selectMode ? " is-armed" : ""}`}
+            aria-pressed={selectMode}
+            onClick={toggleSelectMode}
+            title={ct("score.selectHint")}
+          >
+            {selectMode && selectedNoteIds.size > 0
+              ? ct("score.selectCount", { n: String(selectedNoteIds.size) })
+              : ct("score.select")}
+          </button>
           {audio && (
             <button
               type="button"
@@ -351,6 +405,9 @@ export const Score = ({ host, store, trackId, audio }: ScoreProps) => {
           onToggleLane={toggleLane}
           setCell={setCell}
           isCellOn={isCellOn}
+          selectMode={selectMode}
+          selectedCells={selectedCells}
+          setCellSelected={setCellSelected}
         />
       </div>
     </div>

@@ -1390,6 +1390,23 @@
   opacity: var(--bl-cell-vel, 0.9);
   box-shadow: var(--bl-glow) color-mix(in srgb, var(--bl-cell-on) 70%, transparent);
 }
+/* note-selection (#331): a bold accent frame + brightened core so a selected
+   note reads clearly apart from a normal lit note. */
+.bl-cell.is-selected-cell {
+  border-color: var(--bl-accent-hot);
+  background: color-mix(in srgb, var(--bl-accent-hot) 55%, var(--bl-cell-off));
+  box-shadow:
+    inset 0 0 0 3px var(--bl-accent-hot),
+    0 0 20px color-mix(in srgb, var(--bl-accent-hot) 95%, transparent);
+  transform: scale(1.06);
+  z-index: 2;
+}
+.bl-cell.is-selected-cell .bl-cell-core {
+  inset: 10%;
+  background: #fff;
+  opacity: 1;
+  box-shadow: 0 0 16px var(--bl-accent-hot);
+}
 .bl-cell.is-active {
   background: var(--bl-playhead);
 }
