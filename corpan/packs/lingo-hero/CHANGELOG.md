@@ -21,3 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   class (`ui/Hud.ts`) that owns the DOM overlay.
 - RTL awareness (`ar`/`he`/`fa`/`ur`) surfaced on the active-language context.
 - First canvas paint is gated on `document.fonts.ready`.
+- Super-premium VFX layer (`src/effects/*`): pooled additive particle bursts
+  on hits, combo-escalating shards/stars, trauma-based screen shake on
+  misses/big combos, expanding hit shockwaves, floating `+score` popups, combo
+  milestone banners, a living parallax/aurora background that reacts to combo
+  energy, and cinematic scene transitions (menu/play/game-over). Note motion
+  trails, a breathing strum line, and animated fret buttons added in
+  `Renderer.ts`. All GPU-cheap Canvas 2D, 60fps-targeted, offline.

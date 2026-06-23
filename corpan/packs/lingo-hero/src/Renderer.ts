@@ -57,17 +57,26 @@ export class Renderer {
         this.ctx.stroke();
     }
     
-    // 3. Strum Line (Target Area)
-    // Draw a bar across
-    this.ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
-    this.ctx.fillRect(trackX, strumY - 10, trackWidth, 20);
-    
-    this.ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+    // 3. Strum Line (Target Area) — breathing energy bar.
+    const tNow = performance.now();
+    const breathe = 0.5 + 0.5 * Math.sin(tNow * 0.004);
+    const barGrad = this.ctx.createLinearGradient(trackX, 0, trackX + trackWidth, 0);
+    barGrad.addColorStop(0, "rgba(0,255,255,0.05)");
+    barGrad.addColorStop(0.5, `rgba(255,255,255,${0.1 + breathe * 0.06})`);
+    barGrad.addColorStop(1, "rgba(0,255,0,0.05)");
+    this.ctx.fillStyle = barGrad;
+    this.ctx.fillRect(trackX, strumY - 12, trackWidth, 24);
+
+    this.ctx.save();
+    this.ctx.shadowBlur = 8 + breathe * 8;
+    this.ctx.shadowColor = "rgba(255,255,255,0.8)";
+    this.ctx.strokeStyle = `rgba(255, 255, 255, ${0.45 + breathe * 0.3})`;
     this.ctx.lineWidth = 2;
     this.ctx.beginPath();
     this.ctx.moveTo(trackX, strumY);
     this.ctx.lineTo(trackX + trackWidth, strumY);
     this.ctx.stroke();
+    this.ctx.restore();
 
     // 4. Hit Targets (Fret Buttons)
     for (let i = 0; i < 3; i++) {
@@ -82,20 +91,32 @@ export class Renderer {
         this.ctx.arc(centerX, strumY, r, 0, Math.PI * 2);
         
         if (isActive) {
-            // "Pressed" Animation State
-            this.ctx.fillStyle = color;
-            this.ctx.shadowBlur = 20;
+            // "Pressed" Animation State — bright slam with an expanding halo.
+            this.ctx.save();
+            this.ctx.shadowBlur = 32;
             this.ctx.shadowColor = color;
+            this.ctx.fillStyle = color;
             this.ctx.fill();
-            
-            this.ctx.fillStyle = "rgba(255,255,255,0.8)";
+            this.ctx.fillStyle = "rgba(255,255,255,0.85)";
             this.ctx.fill();
+            // Halo ring around the pressed button.
+            this.ctx.beginPath();
+            this.ctx.arc(centerX, strumY, r * 1.35, 0, Math.PI * 2);
+            this.ctx.strokeStyle = color;
+            this.ctx.lineWidth = 3;
+            this.ctx.stroke();
+            this.ctx.restore();
         } else {
-            // Resting State (Hollow Ring)
+            // Resting State (Hollow Ring) with a gentle idle breathe.
+            const idle = 0.5 + 0.5 * Math.sin(performance.now() * 0.003 + i * 1.3);
+            this.ctx.save();
+            this.ctx.shadowBlur = 6 + idle * 8;
+            this.ctx.shadowColor = color;
             this.ctx.strokeStyle = color;
             this.ctx.lineWidth = 4;
             this.ctx.stroke();
-            
+            this.ctx.restore();
+
             this.ctx.fillStyle = "rgba(0,0,0,0.5)";
             this.ctx.fill();
         }
@@ -105,61 +126,93 @@ export class Renderer {
 
   drawNotes(notes: Note[]) {
     const now = performance.now();
-    
-    // Draw notes top to bottom (linear)
+    const strumY = this.laneSystem.getStrumLineY();
+
+    // PASS 1 — motion trails behind every falling note (drawn additively so
+    // overlaps bloom). Cheap vertical gradient comet-tail; reads as speed/juice.
+    this.ctx.save();
+    this.ctx.globalCompositeOperation = "lighter";
     for (const note of notes) {
-      if (note.missed) continue; 
-      
+      if (note.missed || note.hit || note.y < -50) continue;
       const centerX = this.laneSystem.getLaneX(note.lane);
       const y = note.y;
-      
+      const r = this.laneSystem.getNoteRadius();
+      // Brighten as the note nears the strum line (anticipation).
+      const proximity = Math.max(0, 1 - Math.abs(y - strumY) / (strumY + 1));
+      const trailLen = r * (2.2 + proximity * 2.4);
+      const grad = this.ctx.createLinearGradient(0, y - trailLen, 0, y);
+      grad.addColorStop(0, this.rgbaColor(note.lane, 0));
+      grad.addColorStop(1, this.rgbaColor(note.lane, 0.32 + proximity * 0.35));
+      this.ctx.fillStyle = grad;
+      const tw = r * (0.5 + proximity * 0.25);
+      this.ctx.beginPath();
+      this.ctx.moveTo(centerX - tw, y);
+      this.ctx.lineTo(centerX + tw, y);
+      this.ctx.lineTo(centerX + tw * 0.25, y - trailLen);
+      this.ctx.lineTo(centerX - tw * 0.25, y - trailLen);
+      this.ctx.closePath();
+      this.ctx.fill();
+    }
+    this.ctx.restore();
+
+    // PASS 2 — the notes themselves.
+    for (const note of notes) {
+      if (note.missed) continue;
+
+      const centerX = this.laneSystem.getLaneX(note.lane);
+      const y = note.y;
+
       // Hit Effect (Explosion)
       if (note.hit) {
          if (note.hitTime && (now - note.hitTime < 300)) {
              const progress = (now - note.hitTime) / 300;
              const alpha = 1 - progress;
              const r = this.laneSystem.getNoteRadius() * (1 + progress * 0.5);
-             
+
              this.ctx.save();
              this.ctx.globalAlpha = alpha;
              this.ctx.translate(centerX, y);
-             
+
              // Flash
              this.ctx.beginPath();
              this.ctx.arc(0, 0, r, 0, Math.PI * 2);
              this.ctx.fillStyle = "white";
              this.ctx.fill();
-             
+
              // Ring
              this.ctx.beginPath();
              this.ctx.arc(0, 0, r * 1.5, 0, Math.PI * 2);
              this.ctx.strokeStyle = this.getNeonColor(note.lane);
              this.ctx.lineWidth = 5;
              this.ctx.stroke();
-             
+
              this.ctx.restore();
          }
          continue;
       }
-      
+
       // Don't draw if off screen (top)
       if (y < -50) continue;
 
       const r = this.laneSystem.getNoteRadius();
       const color = this.getNeonColor(note.lane);
-      
+
       // Draw Note (Rectangular "Tape" / "Card" style for Linear view)
       const laneW = this.laneSystem.getLaneBounds(0).width;
       const cardW = laneW * 0.9;
-      const cardH = r * 1.5; 
-      
+      const cardH = r * 1.5;
+
       const x = centerX - cardW / 2;
       const cardY = y - cardH / 2;
-      
+
+      // Pulsing approach glow as the note nears the strum line.
+      const proximity = Math.max(0, 1 - Math.abs(y - strumY) / (strumY + 1));
+      const pulse = 0.5 + 0.5 * Math.sin(now * 0.012 + note.lane * 1.7);
+
       // Glow
-      this.ctx.shadowBlur = 15;
+      this.ctx.shadowBlur = 15 + proximity * 18 + pulse * 6;
       this.ctx.shadowColor = color;
-      
+
       // Body
       this.ctx.fillStyle = "rgba(20, 20, 20, 0.95)";
       this.ctx.beginPath();
@@ -169,12 +222,12 @@ export class Renderer {
           this.ctx.rect(x, cardY, cardW, cardH);
       }
       this.ctx.fill();
-      
+
       // Border / Color indicator
       this.ctx.strokeStyle = color;
-      this.ctx.lineWidth = 3;
+      this.ctx.lineWidth = 3 + proximity * 1.5;
       this.ctx.stroke();
-      
+
       // Sidebar highlight (like a gem on the side?)
       this.ctx.fillStyle = color;
       this.ctx.beginPath();
@@ -184,7 +237,7 @@ export class Renderer {
           this.ctx.fillRect(x, cardY, 10, cardH);
       }
       this.ctx.fill();
-      
+
       this.ctx.shadowBlur = 0;
 
       // Text Rendering
@@ -229,6 +282,15 @@ export class Renderer {
       case 1: return "#ff00ff"; // Pink
       case 2: return "#00ff00"; // Green
       default: return "white";
+    }
+  }
+
+  private rgbaColor(lane: LaneIndex, a: number): string {
+    switch (lane) {
+      case 0: return `rgba(0,255,255,${a})`;
+      case 1: return `rgba(255,0,255,${a})`;
+      case 2: return `rgba(0,255,0,${a})`;
+      default: return `rgba(255,255,255,${a})`;
     }
   }
 }
