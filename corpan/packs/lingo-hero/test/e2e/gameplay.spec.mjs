@@ -91,6 +91,45 @@ await page.waitForFunction(() => (window.__lingoHero.notes || []).length > 0, { 
   }
 }
 
+// --- Contract (f): #432 — LEVEL METER is PERSISTENT during play. -------------
+// The bottom HUD's center level meter must be present + visible from the START
+// of a run (the ZERO state, before any wave resolves), so the row reads as the
+// intended 3-part HUD (Score | meter | Streak) and never collapses to a lone
+// centered SCORE. We assert the #mastery-readout exists, is not [hidden], has a
+// non-empty label, has real layout size, AND carries a streak-0 placeholder
+// (the STREAK plate must also stay visible — non-zero opacity — at streak 0).
+{
+  const meter = await page.evaluate(() => {
+    const m = document.querySelector("#mastery-readout");
+    if (!m) return { present: false };
+    const r = m.getBoundingClientRect();
+    const cs = getComputedStyle(m);
+    const combo = document.querySelector("#combo-box");
+    const cr = combo ? combo.getBoundingClientRect() : null;
+    const ccs = combo ? getComputedStyle(combo) : null;
+    return {
+      present: true,
+      hidden: m.hidden,
+      label: (m.textContent || "").trim(),
+      w: r.width,
+      h: r.height,
+      visible: cs.display !== "none" && parseFloat(cs.opacity || "1") > 0.05,
+      placeholder: m.classList.contains("is-placeholder"),
+      // Streak plate (zero state) must stay visible — non-zero opacity.
+      comboVisible:
+        !!combo && cr.width > 0 && parseFloat(ccs.opacity || "1") > 0.05,
+      comboLabel: combo ? (combo.textContent || "").trim() : "",
+    };
+  });
+  if (!meter.present) fail("#432: no #mastery-readout (level meter) element present during play");
+  else if (meter.hidden) fail("#432: level meter is [hidden] during play (should be persistent)");
+  else if (!meter.label) fail("#432: level meter has no label text during play");
+  else if (!(meter.w > 0 && meter.h > 0)) fail(`#432: level meter has no layout size (w=${meter.w}, h=${meter.h})`);
+  else if (!meter.visible) fail("#432: level meter present but not visible (display:none / opacity ~0)");
+  else if (!meter.comboVisible) fail(`#432: STREAK plate not visible at streak 0 (should be a dimmed placeholder, not invisible): ${JSON.stringify(meter)}`);
+  else console.log(`OK: level meter persistent during play (label "${meter.label}", placeholder=${meter.placeholder}) + STREAK plate visible at 0 ("${meter.comboLabel}")`);
+}
+
 // --- Contract (c): control tap (Pause) must NOT score (no tap-through). ------
 // The top-left chrome is now a PAUSE control that opens a Resume/Exit sheet, plus
 // a single MUTE toggle. Both sit in the pointer-events:none overlay but opt back

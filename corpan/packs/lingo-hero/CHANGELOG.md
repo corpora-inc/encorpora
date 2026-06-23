@@ -6,6 +6,46 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.7] - 2026-06-23
+
+Bottom-HUD + top-prompt polish follow-ups from the 0.4.6 design-critic pass
+(#432, #433, #445) — preview channel, non-gating cosmetics. No gameplay,
+scoring, audio, or layout-contract changes; the 0.4.6 prompt full-visibility,
+lane-tap isolation, and iOS audio-unlock contracts are all preserved.
+
+### Changed
+- **Persistent level meter (#432).** The bottom row's center level meter now
+  shows at ALL times during play — including the zero state ("Lv 1 · 0%") before
+  the first wave resolves — so the row always reads as the intended 3-part HUD
+  (Score | meter | Streak) instead of collapsing to a lone centered SCORE plate.
+  The zero-state readout is a quiet placeholder (standing level + its progress
+  bar), brightening into the live caught/seen accuracy readout once waves land.
+- **STREAK plate visible at streak 0 (#432 / #445).** The streak plate was fully
+  invisible (`opacity: 0`) until the first catch, leaving the right side of the
+  row empty. It is now a dimmed, legible PLACEHOLDER ("Streak x0", desaturated,
+  no neon glow) at streak 0 — the inactive twin of the SCORE plate — and
+  brightens to the full juicy amber as soon as the player has a streak.
+- **Tighter ring↔HUD gap (#432).** Raised the bottom stats row (a clamped,
+  viewport-proportional inset) so it tucks up closer beneath the hit-ring
+  circles instead of hugging the very bottom edge with a large empty band above
+  it. Short/landscape screens keep their low inset (the tighten is for tall
+  phones, where the gap was largest).
+- **Compact phone meter label (#445).** At narrow phone widths the center meter
+  now uses a compact "Lv N · pp%" label (drops the caught/seen fraction) so it
+  isn't cramped between the two plates; roomier widths still show the full
+  "Lv N · c/s · pp%". Also stopped force-uppercasing the in-stats meter label so
+  it reads as designed ("Lv 1 · 0%", mixed case + middot) rather than "LV 1...".
+
+### Fixed
+- **Spawn clearance from the prompt (#433 / #445).** A freshly-spawned falling
+  tile could near/graze the top prompt label as it entered — most visible on a
+  narrow phone where a 2-line wrapped prompt sits closer to the spawn zone. The
+  play-area top now holds a SMALL clearance just below the printed prompt block
+  (measured per phrase + per resize, nudged down a touch more when the prompt
+  wraps to 2+ lines), so tiles fade in clear of the prompt text. The translucent
+  show-through header (#426) is preserved — notes still appear within the header
+  band below the text, they just no longer touch the glyphs.
+
 ## [0.4.6] - 2026-06-23
 
 Prompt full-visibility fix (#441), lane-tap isolation (#442), and a big-screen

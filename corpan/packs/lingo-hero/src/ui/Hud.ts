@@ -28,6 +28,12 @@ export interface MasteryReadout {
   label: string;
   /** Optional 0..1 progress for a bar fill; omit to hide the bar. */
   progress?: number;
+  /**
+   * #432 — true for the persistent ZERO-state placeholder (level shown before
+   * any wave resolves). Styled slightly quieter than the earned live readout so
+   * the row stays composed without overclaiming progress that hasn't happened.
+   */
+  placeholder?: boolean;
 }
 
 /**
@@ -534,6 +540,7 @@ export class Hud {
     if (!readout || !readout.label.trim()) {
       this.masteryEl.hidden = true;
       this.masteryEl.innerHTML = "";
+      this.masteryEl.classList.remove("is-placeholder");
       return;
     }
     const bar =
@@ -543,10 +550,31 @@ export class Hud {
             Math.min(1, readout.progress)
           ) * 100}%"></span></span>`
         : "";
-    this.masteryEl.innerHTML = `<span class="mastery-label">${this.escape(
-      readout.label
-    )}</span>${bar}`;
+    // PHONE LABEL DENSITY (#445.3): the full "Lv N · c/s · pp%" label is cramped
+    // at the narrowest widths. Carry BOTH the full label and a compact variant
+    // (drop the c/s fraction → "Lv N · pp%"); CSS shows the compact one on a
+    // phone and the full one on roomier widths. Both stay non-overlapping.
+    const full = this.escape(readout.label);
+    const compact = this.escape(this.compactMasteryLabel(readout.label));
+    this.masteryEl.innerHTML =
+      `<span class="mastery-label mastery-label-full">${full}</span>` +
+      `<span class="mastery-label mastery-label-compact" aria-hidden="true">${compact}</span>` +
+      bar;
+    this.masteryEl.classList.toggle("is-placeholder", readout.placeholder === true);
     this.masteryEl.hidden = false;
+  }
+
+  /**
+   * Compact a "Lv N · c/s · pp%" mastery label for narrow widths by dropping the
+   * middle caught/seen fraction → "Lv N · pp%" (#445.3). Labels without that
+   * shape pass through unchanged.
+   */
+  private compactMasteryLabel(label: string): string {
+    const parts = label.split("·").map((p) => p.trim());
+    if (parts.length === 3 && /^\d+\s*\/\s*\d+$/.test(parts[1])) {
+      return `${parts[0]} · ${parts[2]}`;
+    }
+    return label;
   }
 
   /** Minimal HTML-escape for text fed into slot innerHTML. */
@@ -570,6 +598,33 @@ export class Hud {
   /** Re-fit the prompt to the current viewport (Game calls this on resize). */
   onResize(): void {
     this.fitPrompt();
+  }
+
+  /**
+   * SPAWN CLEARANCE (#433 / #445.1): report the prompt block's bottom edge in
+   * VIEWPORT px (relative to `containerTop`), and whether the prompt has wrapped
+   * to 2+ lines, so Game can hold a SMALL clearance band below it — falling
+   * tiles fade in just under the prompt instead of grazing/touching it. We
+   * measure the whole prompt stack (foreign prompt + romanization + the
+   * assembling strip) so the clearance tracks every line the header actually
+   * shows. Returns 0/false when the prompt is empty (no clearance needed).
+   *
+   * The header stays a TRANSLUCENT overlay (#426 contract preserved): notes
+   * still appear BEHIND/within the header band below the text — we only push
+   * their entry a few px clear of the printed lines so the top reads cleanly.
+   */
+  getPromptClearance(containerTop: number): { bottom: number; wrapped: boolean } {
+    const stack = this.root.querySelector<HTMLElement>(".prompt-stack");
+    const qb = this.questionBox;
+    if (!stack || !qb.textContent) return { bottom: 0, wrapped: false };
+    const rect = stack.getBoundingClientRect();
+    const bottom = Math.max(0, rect.bottom - containerTop);
+    // Wrapped to 2+ lines when the question box is taller than ~1.6 line-heights.
+    const cs = getComputedStyle(qb);
+    const fontPx = parseFloat(cs.fontSize) || 20;
+    const lineH = parseFloat(cs.lineHeight) || fontPx * 1.18;
+    const wrapped = qb.getBoundingClientRect().height > lineH * 1.6;
+    return { bottom, wrapped };
   }
 
   // -------------------------------------------------------------------------
@@ -805,14 +860,34 @@ export class Hud {
   /**
    * (d) Recompute + push the in-run mastery readout. Blends this run's live
    * accuracy with the persisted level progress so the player always feels
-   * forward motion. Hidden on the very first wave (nothing to show yet).
+   * forward motion.
+   *
+   * PERSISTENT (#432): the level meter is shown at ALL times during play —
+   * including the zero state, BEFORE the first wave resolves — so the bottom
+   * row always reads as the intended 3-part HUD (Score | meter | Streak) and
+   * never collapses to a lone centered SCORE plate. On the first wave (nothing
+   * caught yet) we render the persisted LEVEL only, with the level-progress bar
+   * fill, and no run fraction; once waves resolve we fold in this run's
+   * accuracy + caught/seen tally.
    */
   private refreshMastery(): void {
+    const snap = this.progression?.getSnapshot();
+    const lvl = snap?.level ?? 1;
+    const levelProgress =
+      typeof snap?.levelProgress === "number" ? snap.levelProgress : 0;
+
     if (this.runSeen === 0) {
-      this.setMastery(null);
+      // Zero state: persistent placeholder so the row is never sparse. Shows the
+      // standing LEVEL + its progress bar; the compact phone format drops the
+      // run fraction (there is none yet). Marked `placeholder` so styling can
+      // read it slightly quieter than the live, earned readout.
+      this.setMastery({
+        label: `Lv ${lvl} · 0%`,
+        progress: levelProgress,
+        placeholder: true,
+      });
       return;
     }
-    const snap = this.progression?.getSnapshot();
     const acc = Math.round((this.runCorrect / this.runSeen) * 100);
     // Prefer the persisted level bar for the fill (a true sense of progress);
     // fall back to this run's accuracy when progression isn't wired.
@@ -820,7 +895,6 @@ export class Hud {
       typeof snap?.levelProgress === "number"
         ? snap.levelProgress
         : this.runCorrect / this.runSeen;
-    const lvl = snap?.level ?? 1;
     this.setMastery({
       label: `Lv ${lvl} · ${this.runCorrect}/${this.runSeen} · ${acc}%`,
       progress,

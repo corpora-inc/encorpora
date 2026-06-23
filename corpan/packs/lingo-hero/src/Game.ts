@@ -377,12 +377,39 @@ export class Game {
     // first constructor-time resize; guard for that.
     this.hud?.onResize();
 
-    // The lane now runs FULL HEIGHT to the very top edge: notes spawn at the top
-    // and are seen THROUGH the translucent header as they enter (the header is a
-    // transparent overlay, not a reserved band). So the play-area top is 0 — no
-    // HUD-band reservation, no clip. The header text stays readable above the
-    // notes and never blocks taps on the lanes behind it (pointer-events:none).
-    this.laneSystem.setPlayTop(0);
+    // The lane runs essentially full height: notes are seen THROUGH the
+    // translucent header as they enter (the header is a transparent overlay, not
+    // a reserved band) — the #426 show-through look. We do NOT reserve the whole
+    // header band. We DO hold a SMALL spawn-clearance just under the printed
+    // prompt lines (#433 / #445.1) so a freshly-spawned tile fades in clear of
+    // the prompt text instead of grazing it — nudged down a touch more when the
+    // prompt wraps to 2+ lines (the case the operator hit on a narrow phone).
+    this.applySpawnClearance();
+  }
+
+  /**
+   * Hold a small play-area top so spawning tiles clear the prompt text
+   * (#433 / #445.1). This is intentionally SMALL — a few px below the printed
+   * prompt block, not a full HUD-band reservation — so the translucent
+   * show-through header look (#426) is preserved: notes still appear within the
+   * header band, just clear of the glyphs. Re-applied on resize AND on each new
+   * phrase (wrap count changes per phrase). Falls back to 0 if the Hud/measure
+   * isn't ready yet.
+   */
+  private applySpawnClearance(): void {
+    if (!this.hud) {
+      this.laneSystem.setPlayTop(0);
+      return;
+    }
+    const containerTop = this.canvas.getBoundingClientRect().top;
+    const { bottom, wrapped } = this.hud.getPromptClearance(containerTop);
+    if (bottom <= 0) {
+      this.laneSystem.setPlayTop(0);
+      return;
+    }
+    // A small gap below the prompt block; a bit more when wrapped to 2+ lines.
+    const gap = wrapped ? 18 : 10;
+    this.laneSystem.setPlayTop(bottom + gap);
   }
 
   private showMenu() {
@@ -505,6 +532,15 @@ export class Game {
     this.hud.setQuestion(this.cleanPrompt(round.promptText));
     this.hud.setRomanization(round.romanization ?? "");
     this.hud.setAssembled([], this.roundWords.length, this.activeLanguage.isRTL);
+
+    // Re-measure spawn clearance for THIS phrase: a longer phrase wraps to more
+    // lines, so the clearance band below the prompt must track it (#433/#445.1).
+    // Run now (synchronous fitPrompt has applied) and again next frame so the
+    // measure reflects the settled wrapped layout.
+    this.applySpawnClearance();
+    if (typeof requestAnimationFrame === "function") {
+      requestAnimationFrame(() => this.applySpawnClearance());
+    }
 
     this.buildChart();
   }
