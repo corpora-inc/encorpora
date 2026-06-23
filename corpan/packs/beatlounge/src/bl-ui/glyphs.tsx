@@ -16,6 +16,7 @@ export type GlyphName =
   | "drawer"
   | "chevron-down"
   | "chevron-left"
+  | "chevron-right"
   | "undo"
   | "redo"
   | "mute"
@@ -70,6 +71,7 @@ const PATHS: Record<GlyphName, JSX.Element> = {
   record: <circle cx="12" cy="12" r="6" fill="currentColor" stroke="none" />,
   "chevron-down": <path d="M6 9.5l6 6 6-6" />,
   "chevron-left": <path d="M14.5 6l-6 6 6 6" />,
+  "chevron-right": <path d="M9.5 6l6 6-6 6" />,
   undo: <path d="M9 7L5 11l4 4M5 11h9a4 4 0 0 1 0 8h-2" />,
   redo: <path d="M15 7l4 4-4 4M19 11h-9a4 4 0 0 0 0 8h2" />,
   mute: (
@@ -105,6 +107,7 @@ const PATHS: Record<GlyphName, JSX.Element> = {
 const DIRECTIONAL: ReadonlySet<GlyphName> = new Set<GlyphName>([
   "play",
   "chevron-left",
+  "chevron-right",
 ])
 
 export const Glyph = ({

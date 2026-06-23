@@ -2132,6 +2132,19 @@ export const instantiatePreset = (id: string): InstrumentConfig | undefined => {
   return structuredClone(preset.config)
 }
 
+/** The id of the next (`dir = +1`) or previous (`dir = -1`) preset relative to the
+ *  preset `config` currently matches, wrapping around the corpus. If `config`
+ *  matches no preset (a hand-edited / soundfont / tts voice), this steps in from
+ *  the first/last so a quick-switch always lands the track on a real preset. */
+export const cyclePresetId = (config: InstrumentConfig, dir: 1 | -1): string => {
+  const list = INSTRUMENT_PRESETS
+  const cur = matchPreset(config)
+  const idx = cur ? list.findIndex((p) => p.id === cur.id) : -1
+  if (idx < 0) return dir === 1 ? list[0].id : list[list.length - 1].id
+  const n = (((idx + dir) % list.length) + list.length) % list.length
+  return list[n].id
+}
+
 /** The default voice a brand-new instrument track gets — a sensible, audible
  *  starting point (a bright saw lead). */
 export const DEFAULT_PRESET_ID = "saw-lead"
