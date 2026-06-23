@@ -2,15 +2,18 @@
 """Adversarial PR review — the machine gatekeeper that replaces the human.
 
 Runs three independent adversarial lenses (correctness, security, pack-compat)
-over a PR diff using the Anthropic Messages API, posts a single sticky findings
-comment, and exits non-zero iff there is an unresolved HIGH-severity finding.
-That exit code becomes the `adversarial-review` required status check.
+over a PR diff, posts a single sticky findings comment, and exits non-zero iff
+there is an unresolved HIGH-severity finding. That exit code becomes the
+`adversarial-review` required status check.
 
-Self-contained: stdlib only (urllib), so the workflow needs no pip install.
+Provider-agnostic: prefers Anthropic if ANTHROPIC_API_KEY is set, otherwise uses
+the repo's existing OPENAI_KEY (the same secret pr-agent already uses — no new
+secret to add). Self-contained: stdlib only (urllib), so no pip install.
 
 Env:
-  ANTHROPIC_API_KEY   required — the review model key
-  ADVERSARIAL_MODEL   model id (default: claude-sonnet-4-6)
+  ANTHROPIC_API_KEY   if set → review via Claude (preferred)
+  OPENAI_KEY / OPENAI_API_KEY   fallback → review via OpenAI
+  ADVERSARIAL_MODEL   model id override (default per provider)
   GITHUB_TOKEN        for posting the sticky PR comment (optional in merge_group)
   GITHUB_REPOSITORY   owner/repo (set by Actions)
   PR_NUMBER           PR number (empty in merge_group → comment skipped)
@@ -26,8 +29,20 @@ import sys
 import urllib.request
 import urllib.error
 
-API_URL = "https://api.anthropic.com/v1/messages"
+ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
+OPENAI_URL = "https://api.openai.com/v1/chat/completions"
+DEFAULT_MODEL = {"anthropic": "claude-sonnet-4-6", "openai": "gpt-4.1"}
 MARKER = "<!-- adversarial-review -->"
+
+
+def provider_and_key():
+    """Pick the review provider. Anthropic if its key is set, else OpenAI."""
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        return "anthropic", os.environ["ANTHROPIC_API_KEY"]
+    key = os.environ.get("OPENAI_KEY") or os.environ.get("OPENAI_API_KEY")
+    if key:
+        return "openai", key
+    return None, None
 
 LENSES = {
     "correctness": (
@@ -93,25 +108,42 @@ def get_diff():
     return rng, diff
 
 
-def call_anthropic(model, system, user):
-    body = json.dumps({
-        "model": model,
-        "max_tokens": 2000,
-        "system": system,
-        "messages": [{"role": "user", "content": user}],
-    }).encode()
+def _post(url, headers, payload):
     req = urllib.request.Request(
-        API_URL, data=body, method="POST",
-        headers={
-            "x-api-key": os.environ["ANTHROPIC_API_KEY"],
-            "anthropic-version": "2023-06-01",
-            "content-type": "application/json",
-        },
+        url, data=json.dumps(payload).encode(), method="POST", headers=headers,
     )
     with urllib.request.urlopen(req, timeout=180) as resp:
-        data = json.loads(resp.read())
-    parts = [b.get("text", "") for b in data.get("content", []) if b.get("type") == "text"]
-    return "".join(parts)
+        return json.loads(resp.read())
+
+
+def call_model(provider, key, model, system, user):
+    if provider == "anthropic":
+        data = _post(ANTHROPIC_URL, {
+            "x-api-key": key,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        }, {
+            "model": model,
+            "max_tokens": 2000,
+            "system": system,
+            "messages": [{"role": "user", "content": user}],
+        })
+        return "".join(
+            b.get("text", "") for b in data.get("content", []) if b.get("type") == "text"
+        )
+    # openai
+    data = _post(OPENAI_URL, {
+        "authorization": f"Bearer {key}",
+        "content-type": "application/json",
+    }, {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ],
+        "response_format": {"type": "json_object"},
+    })
+    return data["choices"][0]["message"]["content"]
 
 
 def parse_findings(text):
@@ -136,19 +168,22 @@ def parse_findings(text):
     return []
 
 
-def review_lens(model, name, instruction, diff):
+def review_lens(provider, key, model, name, instruction, diff):
     user = (
         f"{instruction}\n\nReview this unified diff. {SCHEMA_HINT}\n\n"
         f"```diff\n{diff}\n```"
     )
     try:
-        raw = call_anthropic(model, "You are a rigorous, adversarial code reviewer.", user)
+        raw = call_model(
+            provider, key, model,
+            "You are a rigorous, adversarial code reviewer.", user,
+        )
     except urllib.error.HTTPError as e:
         print(f"::warning::{name} lens API error {e.code}: {e.read()[:300]!r}")
-        return []
+        return None
     except Exception as e:  # noqa: BLE001
         print(f"::warning::{name} lens failed: {e}")
-        return []
+        return None
     out = []
     for f in parse_findings(raw):
         f["lens"] = name
@@ -216,17 +251,29 @@ def post_sticky_comment(body):
 
 
 def main():
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        print("::error::ANTHROPIC_API_KEY not set.")
+    provider, key = provider_and_key()
+    if not provider:
+        print("::error::no review key set (need ANTHROPIC_API_KEY or OPENAI_KEY).")
         return 1
-    model = os.environ.get("ADVERSARIAL_MODEL", "claude-sonnet-4-6")
+    model = os.environ.get("ADVERSARIAL_MODEL") or DEFAULT_MODEL[provider]
+    print(f"Adversarial review via {provider} ({model}).")
     rng, diff = get_diff()
     if not diff.strip():
         print("Empty diff; nothing to review.")
         return 0
     findings = []
+    errored = 0
     for name, instruction in LENSES.items():
-        findings += review_lens(model, name, instruction, diff)
+        result = review_lens(provider, key, model, name, instruction, diff)
+        if result is None:
+            errored += 1
+        else:
+            findings += result
+    # A gate that couldn't run must NOT green-light the merge. If every lens
+    # errored (bad key, outage), fail closed rather than reporting "no findings".
+    if errored == len(LENSES):
+        print("::error::all review lenses failed to run; failing closed.")
+        return 1
     body, highs = render_markdown(rng, findings)
     post_sticky_comment(body)
     summary = os.environ.get("GITHUB_STEP_SUMMARY")

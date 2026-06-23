@@ -40,8 +40,11 @@ jobs:
 
       - name: Run adversarial review
         env:
+          # Reuses the existing OPENAI_KEY (same secret pr-agent uses). Prefers
+          # Claude automatically if ANTHROPIC_API_KEY is ever added to secrets.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          ADVERSARIAL_MODEL: ${{ vars.ADVERSARIAL_MODEL || 'claude-sonnet-4-6' }}
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          ADVERSARIAL_MODEL: ${{ vars.ADVERSARIAL_MODEL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
