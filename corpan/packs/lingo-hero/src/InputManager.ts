@@ -15,7 +15,7 @@ export class InputManager {
   private listeners: InputCallback[] = [];
 
   constructor(
-    private container: HTMLElement,
+    _container: HTMLElement,
     private canvas: HTMLCanvasElement,
     private getLaneFromX: (x: number) => LaneIndex | null
   ) {

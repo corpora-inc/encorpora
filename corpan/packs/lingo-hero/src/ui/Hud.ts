@@ -44,9 +44,10 @@ export interface HudCallbacks {
   /** User asked to return to the main menu. */
   onShowMenu: () => void;
   /**
-   * User tapped the audio-REPLAY button (slot b): re-speak the current prompt.
-   * Optional so older call sites that don't pass it still compile; the button
-   * is wired only when present.
+   * User tapped the foreign PROMPT itself to hear it again: re-speak the current
+   * prompt. There is NO separate speaker/replay button (the design mandate is a
+   * single, unambiguous audio control — the mute toggle). The prompt is the
+   * "hear again" affordance. Optional so older call sites still compile.
    */
   onReplayPrompt?: () => void;
 }
@@ -58,7 +59,8 @@ export class Hud {
   private gameOverScreen: HTMLElement;
   private questionBox: HTMLElement;
   private romanizationEl: HTMLElement;
-  private replayBtn: HTMLElement;
+  private cueEl: HTMLElement;
+  private phraseStrip: HTMLElement;
   private feedbackCard: HTMLElement;
   private masteryEl: HTMLElement;
   private scoreEl: HTMLElement;
@@ -121,15 +123,17 @@ export class Hud {
       <div class="hud hidden" id="hud">
         <div class="top-bar">
           <div class="prompt-stack">
-            <div class="question-box" id="question-box" aria-live="polite"></div>
+            <!-- The foreign prompt IS the "hear again" control — tap it to replay.
+                 There is no separate speaker button (single audio control = mute). -->
+            <button class="question-box" id="question-box" type="button" aria-live="polite" aria-label="Replay prompt"></button>
             <!-- (a) romanization line under the foreign prompt -->
             <div class="romanization-line" id="romanization-line" aria-live="polite" hidden></div>
+            <!-- one-line cue so the round reads as intentional -->
+            <div class="lh-cue" id="lh-cue" aria-hidden="true">Tap the matching word</div>
           </div>
-          <!-- (b) audio-replay button: re-speaks the current prompt -->
-          <button class="replay-btn" id="replay-btn" type="button" aria-label="Replay audio" hidden>
-            <span class="replay-icon" aria-hidden="true">&#128266;</span>
-          </button>
         </div>
+        <!-- phrase-assembly progress strip: "Thank ___ ___" -> "Thank you ___" ... -->
+        <div class="phrase-strip" id="phrase-strip" aria-live="polite" hidden></div>
         <!-- (d) progress / mastery readout slot -->
         <div class="mastery-readout" id="mastery-readout" aria-live="polite" hidden></div>
         <div class="score-container">
@@ -183,7 +187,8 @@ export class Hud {
     this.gameOverScreen = this.root.querySelector("#game-over")!;
     this.questionBox = this.root.querySelector("#question-box")!;
     this.romanizationEl = this.root.querySelector("#romanization-line")!;
-    this.replayBtn = this.root.querySelector("#replay-btn")!;
+    this.cueEl = this.root.querySelector("#lh-cue")!;
+    this.phraseStrip = this.root.querySelector("#phrase-strip")!;
     this.feedbackCard = this.root.querySelector("#feedback-card")!;
     this.masteryEl = this.root.querySelector("#mastery-readout")!;
     this.scoreEl = this.root.querySelector("#score")!;
@@ -214,10 +219,11 @@ export class Hud {
       window.dispatchEvent(new CustomEvent("corpan:exit"))
     );
 
-    // (b) Wire the audio-replay button only if the host provided a callback.
+    // Tapping the foreign PROMPT re-speaks it (the single "hear again"
+    // affordance — there is no separate speaker button). Wired only if a
+    // callback was provided.
     if (this.callbacks.onReplayPrompt) {
-      this.replayBtn.hidden = false;
-      this.bindButton("#replay-btn", () => this.callbacks.onReplayPrompt!());
+      this.bindButton("#question-box", () => this.callbacks.onReplayPrompt!());
     }
 
     this.subscribe();
@@ -248,12 +254,31 @@ export class Hud {
   }
 
   /**
-   * (b) Programmatic show/hide of the replay button (e.g. hide between waves).
-   * The button is auto-shown at construction iff an onReplayPrompt callback
-   * was provided; this lets the ui stream toggle it without re-wiring.
+   * PHRASE-ASSEMBLY STRIP — show the English answer being assembled word by
+   * word: collected words read as solid chips, the NEXT word is highlighted as
+   * the active blank, and remaining words are dim blanks. `collected` is the
+   * count of words already placed (== the current beat index). Pass an empty
+   * `words` array to clear/hide the strip.
    */
-  setReplayEnabled(enabled: boolean): void {
-    this.replayBtn.hidden = !enabled || !this.callbacks.onReplayPrompt;
+  setPhraseProgress(words: string[], collected: number): void {
+    if (!words || words.length === 0) {
+      this.phraseStrip.hidden = true;
+      this.phraseStrip.innerHTML = "";
+      return;
+    }
+    const html = words
+      .map((w, i) => {
+        if (i < collected) {
+          return `<span class="ps-word is-done">${this.escape(w)}</span>`;
+        }
+        const cls = i === collected ? "ps-word is-active" : "ps-word is-blank";
+        // Blank width hints at the word length without revealing it.
+        const fill = "_".repeat(Math.max(2, Math.min(8, w.length)));
+        return `<span class="${cls}" aria-hidden="true">${fill}</span>`;
+      })
+      .join(" ");
+    this.phraseStrip.innerHTML = html;
+    this.phraseStrip.hidden = false;
   }
 
   /**
@@ -381,6 +406,8 @@ export class Hud {
         // Reset transient learning slots + run tally for a fresh run.
         this.hideFeedback();
         this.setRomanization("");
+        this.setPhraseProgress([], 0);
+        this.cueEl.classList.remove("is-dim");
         this.runSeen = 0;
         this.runCorrect = 0;
         this.refreshMastery();
@@ -391,6 +418,7 @@ export class Hud {
         this.gameOverScreen.classList.add("hidden");
         this.hideFeedback();
         this.setMastery(null);
+        this.setPhraseProgress([], 0);
       }),
       this.bus.on("scoreChange", (e) => {
         this.scoreEl.textContent = e.value.toLocaleString();
@@ -400,6 +428,11 @@ export class Hud {
         this.comboEl.textContent = e.value.toString();
         this.comboBox.classList.toggle("zero", e.value === 0);
         if (e.value > e.previous) this.pulseCombo();
+      }),
+      // Fade the "Tap the matching word" cue once the player is clearly going —
+      // it's a teaching aid, not permanent chrome.
+      this.bus.on("noteHit", () => {
+        this.cueEl.classList.add("is-dim");
       }),
       this.bus.on("gameOver", (e) => {
         this.hudPanel.classList.add("hidden");

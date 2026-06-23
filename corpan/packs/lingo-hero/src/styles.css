@@ -623,6 +623,28 @@ canvas {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   animation: q-pop 0.32s var(--ease-snap);
+  /* The prompt is a real <button> now (tap to replay), so reset button chrome
+     and make it clearly interactive. There is no separate speaker button. */
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform var(--na-dur-fast) var(--na-ease-snap),
+    box-shadow var(--na-dur-base) var(--na-ease-out);
+}
+.question-box:hover,
+.question-box:focus-visible {
+  box-shadow:
+    0 14px 36px -16px rgba(0, 0, 0, 0.8),
+    0 0 30px -6px rgba(47, 243, 255, 0.6),
+    0 1px 0 var(--glass-hi) inset;
+}
+.question-box:active {
+  transform: scale(0.97);
+}
+.question-box:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--na-accent) 80%, white);
+  outline-offset: 3px;
 }
 .question-box::before {
   content: "";
@@ -927,74 +949,66 @@ canvas {
   }
 }
 
-/* ----- (b) Audio-replay button — re-speaks the current prompt ----- */
-.replay-btn {
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  width: clamp(2.6rem, 11vmin, 3.2rem);
-  height: clamp(2.6rem, 11vmin, 3.2rem);
-  padding: 0;
-  border-radius: var(--na-radius-pill);
-  cursor: pointer;
-  pointer-events: auto;
-  color: var(--na-accent);
-  background:
-    radial-gradient(120% 120% at 50% 20%, color-mix(in srgb, var(--na-accent) 24%, transparent), transparent 65%),
-    var(--na-glass-bg);
-  border: 1px solid color-mix(in srgb, var(--na-accent) 45%, transparent);
-  box-shadow:
-    var(--na-glow-cyan),
-    0 8px 22px -12px rgba(0, 0, 0, 0.8),
-    0 1px 0 var(--na-glass-hi) inset;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition:
-    transform var(--na-dur-fast) var(--na-ease-snap),
-    box-shadow var(--na-dur-base) var(--na-ease-out),
-    border-color var(--na-dur-base) var(--na-ease-out),
-    background var(--na-dur-base) var(--na-ease-out);
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+/* ----- One-line round cue: "Tap the matching word" ----- */
+.lh-cue {
+  font-family: var(--na-font-body);
+  font-weight: 700;
+  font-size: clamp(var(--na-fs-xs), 3vmin, var(--na-fs-sm));
+  letter-spacing: var(--na-tracking-wide);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--na-text-faint);
+  opacity: 0.9;
+  transition: opacity var(--na-dur-base) var(--na-ease-out);
 }
-.replay-btn[hidden] {
+.lh-cue.is-dim {
+  opacity: 0; /* fades out once the player is clearly going */
+}
+
+/* ----- Phrase-assembly strip — the English answer built word by word ----- */
+.phrase-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--na-space-2);
+  align-self: center;
+  max-width: min(92%, 560px);
+  padding: var(--na-space-2) var(--na-space-3);
+  border-radius: var(--na-radius-pill);
+  background: var(--na-glass-bg);
+  border: 1px solid var(--na-glass-stroke);
+  box-shadow: 0 1px 0 var(--na-glass-hi) inset, var(--na-glow-soft);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.phrase-strip[hidden] {
   display: none;
 }
-.replay-icon {
-  font-size: clamp(1.05rem, 4.6vmin, 1.4rem);
+.ps-word {
+  font-family: var(--na-font-display, var(--font-display));
+  font-weight: 800;
+  font-size: clamp(0.95rem, 4vmin, 1.3rem);
   line-height: 1;
-  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--na-accent) 70%, transparent));
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
-.replay-btn:hover,
-.replay-btn:focus-visible {
-  transform: translateY(-2px) scale(1.04);
-  border-color: var(--na-accent);
-  box-shadow:
-    var(--na-bloom-md),
-    0 12px 26px -12px rgba(0, 0, 0, 0.85),
-    0 1px 0 var(--na-glass-hi) inset;
+.ps-word.is-done {
+  color: var(--na-text);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--na-lane-3, #7bff7b) 55%, transparent);
 }
-.replay-btn:active {
-  transform: translateY(0) scale(0.94);
+.ps-word.is-active {
+  color: var(--na-accent);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--na-accent) 70%, transparent);
+  animation: ps-pulse 1.1s var(--na-ease-out) infinite;
 }
-.replay-btn:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--na-accent) 80%, white);
-  outline-offset: 3px;
+.ps-word.is-blank {
+  color: var(--na-text-faint);
+  opacity: 0.55;
 }
-/* tiny ping ring on tap to confirm the re-speak fired */
-.replay-btn:active .replay-icon {
-  animation: replay-ping var(--na-dur-slow) var(--na-ease-out);
-}
-@keyframes replay-ping {
-  0% {
-    transform: scale(1);
-  }
-  45% {
-    transform: scale(0.82);
-  }
-  100% {
-    transform: scale(1);
-  }
+@keyframes ps-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
 }
 
 /* ----- (d) Mastery readout — a real sense of progress, in-run ----- */

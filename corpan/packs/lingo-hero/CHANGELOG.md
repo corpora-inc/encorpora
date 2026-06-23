@@ -6,6 +6,49 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-23
+
+The **Word Lanes** redesign. The old phrase-on-a-card loop is gone: long
+phrases overflowed the card on mobile, cards were unequal sizes, and there were
+two near-identical speaker buttons. The new loop is built around single words.
+
+### Changed
+- **New core loop — Word Lanes.** A foreign phrase is shown at the top and
+  spoken (RAW foreign text). Its English translation is split into WORDS and
+  collected left-to-right, one beat at a time: at each beat the correct NEXT
+  English word falls in one lane and single-word distractors (drawn from other
+  vocabulary) fall in the other lanes. The player taps the lane carrying the
+  correct word as it crosses the strum line. A correct tap assembles the word
+  into a progress strip ("Thank ___ ___" → "Thank you ___" → …), scores, and
+  builds combo; a wrong tap or a miss breaks the combo and re-presents the same
+  beat (forgiving — the word can always be retried). Completing the phrase plays
+  a brief celebration, then the next phrase loads. One phrase == one
+  `wave-resolved` outcome, so the learning/effects/audio bus ABI is unchanged.
+- **Uniform single-word cards.** Because every note is one short word, all three
+  lanes' cards are now the same fixed size with ≥14px inner padding; the word
+  sits on a single centered line that never wraps, overflows, or touches the
+  border. (Replaces the variable-height, two-line-wrapping phrase cards.)
+- **Tightened lane glow + approach bloom** so the volumetric lane shafts and
+  per-card bloom never wash out the words or the hit rings — hit targets stay
+  high-contrast.
+
+### Fixed
+- **Two near-identical speaker buttons → one unambiguous audio control.** The
+  separate replay/speaker button is removed; the single mute toggle (clear
+  speaker-on / speaker-off state) is now the only audio control. "Hear again" is
+  the foreign PROMPT itself — it is tappable to replay, with no second
+  speaker-looking button. Exit stays top-left.
+
+### Added
+- **Phrase-assembly progress strip** that shows the English answer being built
+  word by word (done words solid, the next word highlighted as the active blank,
+  remaining words as dim blanks).
+- **One-line round cue** ("Tap the matching word") that reads as intentional and
+  fades once the player is clearly going.
+- The headless gameplay e2e (`test/e2e/`) now asserts the redesign contracts:
+  tapping the lane of the correct word scores; the mute tap doesn't leak into a
+  lane; and there is exactly one audio control with no separate replay button.
+
 ## [0.2.2] - 2026-06-23
 
 ### Fixed

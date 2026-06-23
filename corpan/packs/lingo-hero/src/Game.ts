@@ -10,7 +10,7 @@ import {
 import { LaneSystem } from "./LaneSystem";
 import { Renderer } from "./Renderer";
 import { InputManager } from "./InputManager";
-import { ContentManager } from "./ContentManager";
+import { ContentManager, tokenizeWords, normalizeWord } from "./ContentManager";
 import { createEventBus, type GameEventBus } from "./events";
 import { Hud } from "./ui/Hud";
 import { initEffects, type EffectsHandle } from "./effects";
@@ -62,16 +62,26 @@ export class Game {
   // Current active question (foreign prompt, display label)
   private currentQuestionText: string = "";
 
-  // Identity of the target word for the CURRENT wave. Carried on
-  // noteHit/noteMiss/wave-resolved so the learning stream + UI can react.
-  // Null between waves. RAW foreign text + entryId is the stable spacing key.
+  // ---- WORD LANES phrase state -------------------------------------------
+  // The current phrase's identity (entry). One PHRASE == one "wave" for the
+  // learning/effects/audio bus ABI: noteHit/noteMiss fire per beat, but
+  // wave-resolved fires exactly once per phrase with the final verdict.
   private currentWord: WordIdentity | null = null;
-  // Guards "wave-resolved" so it fires exactly once per wave even though
-  // noteMiss can fire on distractor taps before the wave truly resolves.
+  // Guards "wave-resolved" so it fires exactly once per phrase.
   private waveResolved: boolean = false;
   // The RAW foreign text + lang for the current prompt (for audio replay).
   private currentSpeakText: string = "";
   private currentSpeakLang: string = "";
+
+  // The English answer split into the WORDS the player must collect, in order.
+  private phraseWords: string[] = [];
+  // Single-word distractor pool for THIS phrase (distinct from phraseWords).
+  private distractorPool: string[] = [];
+  // Index of the next word the player must tap (0..phraseWords.length).
+  private beatIndex: number = 0;
+  // Tracks whether the current phrase was completed without any wrong/missed
+  // beat — drives the once-per-phrase wave-resolved verdict.
+  private phraseClean: boolean = true;
 
   // Track lane activation for visuals
   private lanePressTimes: number[] = [0, 0, 0];
@@ -231,6 +241,9 @@ export class Game {
     this.isWaveActive = false;
     this.nextWaveTime = 0;
     this.currentQuestionText = "";
+    this.phraseWords = [];
+    this.distractorPool = [];
+    this.beatIndex = 0;
 
     this.bus.emit("gameStart", { mode, language: this.activeLanguage });
     // Reset HUD counters via the bus contract.
@@ -278,98 +291,146 @@ export class Game {
     return clean;
   }
 
+  /**
+   * Load the NEXT phrase: fetch one entry's foreign prompt + its English split
+   * into the words to collect, plus a single-word distractor pool. Shows the
+   * foreign prompt at the top, speaks the RAW foreign text, primes the
+   * progress strip, and spawns the FIRST beat. One phrase == one wave for the
+   * bus ABI (wave-resolved fires once per phrase).
+   */
   private async spawnWave() {
     this.isWaveActive = true;
     this.waveResolved = false;
+    this.phraseClean = true;
+    this.beatIndex = 0;
+    this.notes = [];
 
     try {
-      const { target, distractors } = await this.contentManager.getWaveContent(
+      const phrase = await this.contentManager.getPhrase(
         this.activeLanguage.code
       );
 
-      const indices = [0, 1, 2].sort(() => Math.random() - 0.5);
-      const t0 = target.translations[0];
+      // DISPLAY is cleaned; AUDIO speaks the RAW foreign text (decoupled).
+      this.currentQuestionText = this.cleanDisplay(phrase.foreign);
+      this.currentSpeakText = phrase.foreign;
+      this.currentSpeakLang = phrase.foreignLang;
 
-      let speakText = ""; // RAW text fed to TTS
-      let speakLang = "";
-      let visualText = ""; // English answer shown on the target note
-      let romanization: string | undefined; // optional, host-provided
-
-      // Prefer the user's resolved active language; fall back to any non-English.
-      const foreign =
-        target.translations.find(
-          (t) => t.language_code === this.activeLanguage.code
-        ) ?? target.translations.find((t) => t.language_code !== "en");
-
-      if (foreign) {
-        // DISPLAY is cleaned; AUDIO speaks the raw entry text (decoupled).
-        this.currentQuestionText = this.cleanDisplay(foreign.text);
-        speakText = foreign.text;
-        speakLang = foreign.language_code;
-        romanization = foreign.romanization?.trim() || undefined;
-
-        const enTrans =
-          target.translations.find((t) => t.language_code === "en")?.text ||
-          "???";
-        visualText = this.cleanDisplay(enTrans);
-      } else {
-        this.currentQuestionText = this.cleanDisplay(t0?.text || "?");
-        speakText = t0?.text || "";
-        speakLang = t0?.language_code || "en";
-        romanization = t0?.romanization?.trim() || undefined;
-        visualText = this.cleanDisplay(t0?.text || "");
+      const englishDisplay = this.cleanDisplay(phrase.english);
+      this.phraseWords = tokenizeWords(phrase.english);
+      if (this.phraseWords.length === 0) {
+        // Degenerate entry (no English words) — skip to the next phrase.
+        this.isWaveActive = false;
+        this.nextWaveTime = performance.now() + 200;
+        return;
       }
+      this.distractorPool = phrase.distractorWords;
 
-      // Establish the target word identity for this wave (learning ABI).
+      // Phrase identity for the learning ABI (one outcome per phrase).
       this.currentWord = {
-        entryId: target.entry_id,
-        foreign: speakText,
-        english: visualText,
-        romanization,
-        lang: speakLang,
+        entryId: phrase.entryId,
+        foreign: phrase.foreign,
+        english: englishDisplay,
+        romanization: phrase.romanization,
+        lang: phrase.foreignLang,
       };
-      this.currentSpeakText = speakText;
-      this.currentSpeakLang = speakLang;
 
       this.hud.setQuestion(this.currentQuestionText);
-      this.hud.setRomanization(romanization ?? "");
+      this.hud.setRomanization(phrase.romanization ?? "");
+      // Prime the assembly strip with all blanks.
+      this.hud.setPhraseProgress(this.phraseWords, 0);
 
-      const targetNote: Note = {
-        id: `note-${Date.now()}-t`,
-        lane: indices[0],
+      // Speak the RAW foreign prompt once at the start of the phrase.
+      this.contentManager.speak(
+        phrase.foreign,
+        phrase.foreignLang,
+        this.activeLanguage.rate
+      );
+
+      this.spawnBeat();
+    } catch (e) {
+      console.error("Failed to spawn phrase", e);
+      this.isWaveActive = false;
+    }
+  }
+
+  /**
+   * Spawn ONE beat: the correct NEXT word in a random lane + single-word
+   * distractors (distinct from the correct word) in the other lanes. Every
+   * note is a single, short word so the cards are uniform and never overflow.
+   */
+  private spawnBeat() {
+    const correctWord = this.phraseWords[this.beatIndex];
+    if (correctWord === undefined) return;
+
+    const indices = [0, 1, 2].sort(() => Math.random() - 0.5);
+    const used = new Set<string>([normalizeWord(correctWord)]);
+    const now = Date.now();
+
+    const targetNote: Note = {
+      id: `beat-${now}-${this.beatIndex}-t`,
+      lane: indices[0],
+      y: -100,
+      text: correctWord,
+      isTarget: true,
+      hit: false,
+      missed: false,
+      spawnTime: now,
+    };
+
+    const notes: Note[] = [targetNote];
+
+    // Distractors: pull distinct single words, never equal to the correct word
+    // (or to each other / another visible word) so the right answer is on
+    // exactly one lane. Fall back to other phrase words if the pool is thin.
+    const fallback = this.phraseWords.filter(
+      (w) => normalizeWord(w) !== normalizeWord(correctWord)
+    );
+    const candidates = shuffle([...this.distractorPool]).concat(
+      shuffle(fallback)
+    );
+    let ci = 0;
+    for (let slot = 1; slot <= 2; slot++) {
+      let word = "";
+      while (ci < candidates.length) {
+        const c = candidates[ci++];
+        const key = normalizeWord(c);
+        if (!key || used.has(key)) continue;
+        used.add(key);
+        word = c;
+        break;
+      }
+      if (!word) continue; // not enough distinct words — leave the lane empty
+      notes.push({
+        id: `beat-${now}-${this.beatIndex}-d${slot}`,
+        lane: indices[slot],
         y: -100,
-        text: visualText,
-        isTarget: true,
+        text: word,
+        isTarget: false,
         hit: false,
         missed: false,
-        spawnTime: Date.now(),
-      };
-
-      // Speak the RAW foreign text at the host-configured rate.
-      this.contentManager.speak(speakText, speakLang, this.activeLanguage.rate);
-
-      const distractorNotes = distractors.map((d, i) => {
-        const dNative = d.translations.find((t) => t.language_code === "en");
-        const dText = dNative
-          ? this.cleanDisplay(dNative.text)
-          : this.cleanDisplay(d.translations[0]?.text || "???");
-
-        return {
-          id: `note-${Date.now()}-d-${i}`,
-          lane: indices[i + 1],
-          y: -100,
-          text: dText,
-          isTarget: false,
-          hit: false,
-          missed: false,
-          spawnTime: Date.now(),
-        };
+        spawnTime: now,
       });
+    }
 
-      this.notes.push(targetNote, ...distractorNotes);
-    } catch (e) {
-      console.error("Failed to spawn wave", e);
+    this.notes.push(...notes);
+  }
+
+  /**
+   * A beat was answered correctly: assemble the word into the strip, advance,
+   * and either spawn the next beat or complete the phrase.
+   */
+  private advanceBeat() {
+    this.beatIndex += 1;
+    this.hud.setPhraseProgress(this.phraseWords, this.beatIndex);
+
+    if (this.beatIndex >= this.phraseWords.length) {
+      // PHRASE COMPLETE — brief celebration, then resolve + queue the next.
+      this.resolveWave(this.phraseClean ? "correct" : "wrong");
       this.isWaveActive = false;
+      // Practice + Blitz alike: a short celebratory gap before the next phrase.
+      this.nextWaveTime = performance.now() + 1100;
+    } else {
+      this.spawnBeat();
     }
   }
 
@@ -409,13 +470,15 @@ export class Game {
     this.lanePressTimes[lane] = performance.now();
 
     if (this.state !== GameState.PLAYING) return;
+    // Ignore taps during the celebration gap (no active beat).
+    if (!this.isWaveActive) return;
 
     const hitNote = this.laneSystem.checkHit(lane, this.notes);
     const strumY = this.laneSystem.getStrumLineY();
     const laneX = this.laneSystem.getLaneX(lane);
 
-    // The wave's target identity (always set during an active wave). Fall back
-    // to a synthetic identity so the strongly-typed event always carries a word.
+    // The phrase's identity (always set during an active phrase). Fall back to
+    // a synthetic identity so the strongly-typed event always carries a word.
     const word: WordIdentity = this.currentWord ?? {
       entryId: -1,
       foreign: this.currentSpeakText,
@@ -423,50 +486,38 @@ export class Game {
       lang: this.currentSpeakLang || this.activeLanguage.code,
     };
 
-    if (hitNote) {
-      if (hitNote.isTarget) {
-        hitNote.hit = true;
-        hitNote.hitTime = performance.now();
-        const points = 100 + this.combo * 10;
-        this.setScore(this.score + points);
-        this.setCombo(this.combo + 1);
-        this.bus.emit("noteHit", {
-          lane,
-          x: laneX,
-          y: strumY,
-          combo: this.combo,
-          points,
-          mode: this.mode,
-          word,
-        });
-        this.resolveWave("correct");
-
-        if (this.mode === GameMode.PRACTICE) {
-          this.notes.forEach((n) => {
-            if (!n.hit && !n.isTarget) n.hit = true;
-          });
-          this.isWaveActive = false;
-          this.nextWaveTime = performance.now() + 1000;
-        }
-      } else {
-        hitNote.hit = true;
-        this.setCombo(0);
-        this.setScore(Math.max(0, this.score - 50));
-        this.bus.emit("noteMiss", {
-          lane,
-          x: laneX,
-          y: strumY,
-          reason: "wrong",
-          mode: this.mode,
-          word,
-        });
-        // A wrong distractor tap does NOT end the wave (preserves prior feel):
-        // the target keeps falling and the player can still hit it. The wave
-        // resolves only when the target is hit ("correct") or passes
-        // ("passed", emitted from the loop). So no resolveWave() here.
-      }
+    if (hitNote && hitNote.isTarget) {
+      // CORRECT next word — collect it, advance the beat.
+      hitNote.hit = true;
+      hitNote.hitTime = performance.now();
+      // Clear the distractors of this beat so they don't keep falling.
+      this.notes.forEach((n) => {
+        if (!n.hit && !n.isTarget) n.hit = true;
+      });
+      const points = 100 + this.combo * 10;
+      this.setScore(this.score + points);
+      this.setCombo(this.combo + 1);
+      this.bus.emit("noteHit", {
+        lane,
+        x: laneX,
+        y: strumY,
+        combo: this.combo,
+        points,
+        mode: this.mode,
+        word,
+      });
+      // Speak the collected English word for reinforcement.
+      this.contentManager.speak(hitNote.text, "en", this.activeLanguage.rate);
+      this.advanceBeat();
     } else {
+      // WRONG word OR empty tap — combo break, the beat re-presents (forgiving).
+      // Mark this whole beat's notes consumed; respawn the same beat fresh.
+      this.phraseClean = false;
+      this.notes.forEach((n) => {
+        if (!n.hit) n.hit = true;
+      });
       this.setCombo(0);
+      this.setScore(Math.max(0, this.score - 50));
       this.bus.emit("noteMiss", {
         lane,
         x: laneX,
@@ -475,6 +526,8 @@ export class Game {
         mode: this.mode,
         word,
       });
+      // Re-present the SAME beat so the player can still get this word.
+      this.spawnBeat();
     }
   }
 
@@ -489,19 +542,11 @@ export class Game {
     this.lastTimestamp = timestamp;
 
     if (this.state === GameState.PLAYING) {
-      // 1. Spawning
-      if (this.mode === GameMode.PRACTICE) {
-        if (!this.isWaveActive && timestamp > this.nextWaveTime) {
-          this.spawnWave();
-        }
-      } else {
-        if (timestamp > this.nextWaveTime) {
-          this.spawnWave();
-          // Calm, confidence-building cadence: a fresh wave every 5.5s, easing to
-          // a 3.5s floor as the score climbs. (Was as low as ~1.2s.)
-          const interval = Math.max(3500, 5500 - this.score * 3);
-          this.nextWaveTime = timestamp + interval;
-        }
+      // 1. Spawning — between phrases (celebration gap or initial), queue the
+      //    next phrase. Same forgiving cadence in Practice and Blitz: the phrase
+      //    advances beat-by-beat on taps, not on a timer.
+      if (!this.isWaveActive && timestamp > this.nextWaveTime) {
+        this.spawnWave();
       }
 
       // 2. Physics / Movement
@@ -515,12 +560,16 @@ export class Game {
           note.missed = true;
         }
 
+        // The CORRECT word sailed past the strum line without a tap: combo
+        // break + re-present the SAME beat (forgiving — the word can be retried).
         if (
           note.isTarget &&
           note.y > strumY + this.laneSystem.getNoteRadius() * 2.2 &&
           !note.hit &&
-          !note.missed
+          !note.missed &&
+          this.isWaveActive
         ) {
+          this.phraseClean = false;
           this.setCombo(0);
           const passedWord: WordIdentity = this.currentWord ?? {
             entryId: -1,
@@ -536,12 +585,11 @@ export class Game {
             mode: this.mode,
             word: passedWord,
           });
-          this.resolveWave("passed");
-
-          if (this.mode === GameMode.PRACTICE) {
-            this.isWaveActive = false;
-            this.nextWaveTime = timestamp + 1000;
-          }
+          // Consume this beat's notes and re-present the same beat.
+          this.notes.forEach((n) => {
+            if (!n.hit) n.missed = true;
+          });
+          this.spawnBeat();
         }
       });
 
@@ -582,4 +630,13 @@ export class Game {
     this.bus.clear();
     this.canvas.remove();
   }
+}
+
+/** In-place Fisher–Yates shuffle; returns the same array for chaining. */
+function shuffle<T>(arr: T[]): T[] {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }

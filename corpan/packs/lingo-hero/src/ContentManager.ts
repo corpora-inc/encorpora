@@ -164,6 +164,88 @@ export class ContentManager {
   }
 
   /**
+   * WORD LANES content. Returns the foreign prompt for ONE entry plus a large
+   * pool of DISTINCT single English words drawn from OTHER entries. The Game
+   * splits the target's English into its words and, beat by beat, drops the next
+   * correct word in one lane and single-word distractors (pulled from this pool,
+   * excluding any word that appears in the target phrase) in the others.
+   *
+   * Correctness contract carried over from the phrase design: every distractor
+   * word is GUARANTEED distinct from the target's words at the moment it's
+   * chosen (Game re-checks against the live beat), so the correct next word can
+   * never appear on two lanes.
+   */
+  async getPhrase(activeLang: string): Promise<{
+    entryId: number;
+    foreign: string; // RAW foreign prompt (spoken)
+    foreignLang: string;
+    romanization?: string;
+    english: string; // full English answer (display)
+    distractorWords: string[]; // distinct single English words from other entries
+  }> {
+    const byId = new Map<number, EntryOut>();
+    for (let attempt = 0; attempt < 4 && byId.size < 8; attempt++) {
+      for (const e of await this.fetchBatch(8)) {
+        if (e && !byId.has(e.entry_id)) byId.set(e.entry_id, e);
+      }
+    }
+    const pool = [...byId.values()];
+    if (pool.length === 0) throw new Error("No content available");
+
+    const valid = pool.filter((e) => this.hasForeign(e) && this.englishOf(e));
+
+    this.selector?.observePool?.(valid, activeLang);
+    const inValid = (e: EntryOut | undefined | null): e is EntryOut =>
+      !!e && valid.some((v) => v.entry_id === e.entry_id);
+    const chosen = this.selector?.chooseTarget?.(valid, activeLang);
+
+    const target =
+      (inValid(chosen) ? chosen : undefined) ??
+      valid.find((e) =>
+        e.translations.some(
+          (t) => t.language_code === activeLang && t.text.trim()
+        )
+      ) ??
+      valid[0] ??
+      pool[0];
+
+    const foreign =
+      target.translations.find((t) => t.language_code === activeLang) ??
+      target.translations.find((t) => t.language_code !== "en") ??
+      target.translations[0];
+
+    const english = this.englishOf(target) || target.translations[0]?.text || "";
+
+    // Build a distinct single-word distractor pool from every OTHER entry's
+    // English. We tokenize English answers into words so the lanes are always
+    // single, short, uniformly-sized words. Exclude any word that appears in the
+    // target phrase (case-insensitive) so a distractor can't equal a beat answer.
+    const targetWordSet = new Set(
+      tokenizeWords(english).map((w) => normalizeWord(w))
+    );
+    const seen = new Set<string>();
+    const distractorWords: string[] = [];
+    for (const e of pool) {
+      if (e.entry_id === target.entry_id) continue;
+      for (const w of tokenizeWords(this.englishOf(e))) {
+        const key = normalizeWord(w);
+        if (!key || targetWordSet.has(key) || seen.has(key)) continue;
+        seen.add(key);
+        distractorWords.push(w);
+      }
+    }
+
+    return {
+      entryId: target.entry_id,
+      foreign: foreign?.text || english,
+      foreignLang: foreign?.language_code || activeLang,
+      romanization: foreign?.romanization?.trim() || undefined,
+      english,
+      distractorWords,
+    };
+  }
+
+  /**
    * Speak RAW text in the given language. The current HostApi.speak takes
    * (lang, text) and reads rate from its own stack config, so `rate` is a
    * forward-compat hint the host already applies.
@@ -171,4 +253,28 @@ export class ContentManager {
   speak(text: string, lang: string, _rate?: number) {
     this.hostApi.speak(lang, text);
   }
+}
+
+/**
+ * Split an English answer into display words. Keeps internal apostrophes
+ * (don't, I'm) and hyphenated compounds; drops surrounding punctuation. Empty
+ * tokens are filtered. These are the SINGLE WORDS that ride the lanes — short
+ * by construction, so the uniform fixed-size cards never overflow.
+ */
+export function tokenizeWords(text: string): string[] {
+  return (text || "")
+    .replace(/\s*\([^)]*\)\s*/g, " ") // drop parenthetical glosses
+    .split(/\s+/)
+    .map((w) => w.replace(/^[^\p{L}\p{N}'’-]+|[^\p{L}\p{N}'’-]+$/gu, "").trim())
+    .filter(Boolean);
+}
+
+/** Case/diacritic-insensitive key for word de-dup + answer matching. */
+export function normalizeWord(w: string): string {
+  return (w || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[’]/g, "'")
+    .trim();
 }

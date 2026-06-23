@@ -162,10 +162,12 @@ export class Renderer {
       const halfW = lane0.width * 0.5;
       // Vertical shaft: brightest band hugging the strum line.
       const shaft = ctx.createLinearGradient(0, strumY - height * 0.62, 0, strumY + 12);
-      const baseA = 0.05 + energy * 0.06;
+      // Tightened: lower base alpha + gentler near-strum lift so the shafts read
+      // as ambient lane light without washing out the cards / hit rings on top.
+      const baseA = 0.035 + energy * 0.045;
       shaft.addColorStop(0, rgba(c, 0));
-      shaft.addColorStop(0.78, rgba(c, baseA));
-      shaft.addColorStop(1, rgba(c, baseA + 0.1 + energy * 0.08));
+      shaft.addColorStop(0.82, rgba(c, baseA));
+      shaft.addColorStop(1, rgba(c, baseA + 0.06 + energy * 0.05));
       ctx.fillStyle = shaft;
       ctx.fillRect(cx - halfW, strumY - height * 0.62, halfW * 2, height * 0.62 + 12);
 
@@ -557,27 +559,40 @@ export class Renderer {
       const proximity = clamp01(1 - Math.abs(y - strumY) / (strumY + 1));
       const pulse = 0.5 + 0.5 * Math.sin(now * 0.011 + note.lane * 1.7);
 
+      // UNIFORM single-word cards: every lane's card is the SAME fixed size; only
+      // the word inside differs. Single words by construction, so the word is
+      // laid out on ONE line, shrink-to-fit only if a rare long token needs it,
+      // with >=PAD px of inner padding that the text never crosses.
       const laneW = this.laneSystem.getLaneBounds(0).width;
-      const cardW = laneW * 0.9;
-      // Lay the word out FIRST (wrap to <=2 lines at a readable size) so the card
-      // can grow to fit two lines instead of shrinking text to an unreadable size.
-      const wordFont = "'Russo One', 'Lingo Sans', system-ui, sans-serif";
-      const layout = note.text
-        ? layoutWord(ctx, note.text, cardW - 24, Math.max(30, r * 0.62), 21, wordFont)
-        : null;
-      const cardH = (layout && layout.lines.length >= 2 ? 2.15 : 1.5) * r;
+      const cardW = Math.min(laneW * 0.9, r * 2.6);
+      const cardH = r * 1.55; // fixed for ALL cards
+      const PAD = 14; // >=12px inner padding requirement
       const x = cx - cardW / 2;
       const cardY = y - cardH / 2;
       const radius = Math.min(16, cardH * 0.32);
 
+      const wordFont = "'Russo One', 'Lingo Sans', system-ui, sans-serif";
+      const layout = note.text
+        ? fitWord(
+            ctx,
+            note.text,
+            cardW - PAD * 2,
+            Math.max(20, r * 0.6),
+            14,
+            wordFont
+          )
+        : null;
+
       // --- APPROACH BLOOM: a soft lane-colored glow pad behind the card that
-      //     swells as it nears the strum line (anticipation). Additive. ---
+      //     swells as it nears the strum line (anticipation). Additive but
+      //     TIGHT — kept small + low-alpha so it never washes out the word or
+      //     the hit rings underneath. ---
       if (proximity > 0.02) {
         ctx.save();
         ctx.globalCompositeOperation = "lighter";
-        const bloomR = cardW * (0.7 + proximity * 0.5);
+        const bloomR = cardW * (0.46 + proximity * 0.28);
         const bg = ctx.createRadialGradient(cx, y, 0, cx, y, bloomR);
-        bg.addColorStop(0, rgba(c, (0.18 + pulse * 0.06) * proximity));
+        bg.addColorStop(0, rgba(c, (0.1 + pulse * 0.03) * proximity));
         bg.addColorStop(1, rgba(c, 0));
         ctx.fillStyle = bg;
         ctx.beginPath();
@@ -588,8 +603,8 @@ export class Renderer {
 
       // --- GLASS CARD BODY ---
       ctx.save();
-      // Outer neon glow on the card edge (scales with proximity).
-      ctx.shadowBlur = 12 + proximity * 20 + pulse * 5;
+      // Outer neon glow on the card edge (tightened so the word stays crisp).
+      ctx.shadowBlur = 8 + proximity * 12 + pulse * 3;
       ctx.shadowColor = rgbStr(c);
 
       // Frosted glass fill: vertical gradient from a lifted top to a darker base.
@@ -622,7 +637,7 @@ export class Renderer {
       ctx.fill();
       ctx.restore();
 
-      // --- WORD (wrapped, readable) ---
+      // --- WORD (single line, centered, never touches the border) ---
       if (layout) {
         ctx.save();
         ctx.textAlign = "center";
@@ -631,11 +646,7 @@ export class Renderer {
         ctx.shadowColor = "rgba(0,0,0,0.55)";
         ctx.shadowBlur = 4;
         ctx.fillStyle = rgbStr(this.textColor);
-        const lineH = layout.fontSize * 1.14;
-        const startY = y - (lineH * (layout.lines.length - 1)) / 2;
-        for (let li = 0; li < layout.lines.length; li++) {
-          ctx.fillText(layout.lines[li], cx + 3, startY + li * lineH);
-        }
+        ctx.fillText(layout.text, cx + 3, y);
         ctx.restore();
       }
     }
@@ -647,44 +658,26 @@ export class Renderer {
 // ---------------------------------------------------------------------------
 
 /**
- * Lay a word/phrase out to fit a card: keep it on one line at `baseFont` if it
- * fits; otherwise wrap to TWO balanced lines and only shrink the font as far as
- * `minFont` (so phrases stay readable on mobile instead of shrinking to nothing
- * on a single line — the old behavior). A single un-splittable long token falls
- * back to a shrink-to-fit single line. Returns the lines + the font size to use.
+ * Fit a SINGLE word on one line inside `maxW` (the card width minus inner
+ * padding). Uses `baseFont` if it fits; otherwise shrinks to fit, floored at
+ * `minFont`. Word Lanes notes are single, short words by construction, so this
+ * almost always returns `baseFont` — the shrink path is just a safety net for a
+ * rare long token (e.g. a German compound). The word never wraps and never
+ * touches the border (the caller subtracts the padding before passing maxW).
  */
-function layoutWord(
+function fitWord(
   ctx: CanvasRenderingContext2D,
   text: string,
   maxW: number,
   baseFont: number,
   minFont: number,
   family: string
-): { lines: string[]; fontSize: number } {
-  const widthAt = (s: string, px: number) => {
-    ctx.font = `bold ${px}px ${family}`;
-    return ctx.measureText(s).width;
-  };
-
-  if (widthAt(text, baseFont) <= maxW) return { lines: [text], fontSize: baseFont };
-
-  const words = text.split(/\s+/).filter(Boolean);
-  if (words.length < 2) {
-    // Un-splittable: shrink single line to fit, floored at minFont.
-    const fit = (maxW / widthAt(text, baseFont)) * baseFont;
-    return { lines: [text], fontSize: Math.max(minFont, Math.min(baseFont, fit)) };
-  }
-
-  // Choose the split that minimizes the WIDER of the two lines (balanced wrap).
-  let best = { a: words.slice(0, 1).join(" "), b: words.slice(1).join(" "), wide: Infinity };
-  for (let i = 1; i < words.length; i++) {
-    const a = words.slice(0, i).join(" ");
-    const b = words.slice(i).join(" ");
-    const wide = Math.max(widthAt(a, baseFont), widthAt(b, baseFont));
-    if (wide < best.wide) best = { a, b, wide };
-  }
-  const fit = best.wide <= maxW ? baseFont : (maxW / best.wide) * baseFont;
-  return { lines: [best.a, best.b], fontSize: Math.max(minFont, Math.min(baseFont, fit)) };
+): { text: string; fontSize: number } {
+  ctx.font = `bold ${baseFont}px ${family}`;
+  const w = ctx.measureText(text).width;
+  if (w <= maxW || w === 0) return { text, fontSize: baseFont };
+  const fit = (maxW / w) * baseFont;
+  return { text, fontSize: Math.max(minFont, Math.min(baseFont, fit)) };
 }
 
 function cssVar(root: HTMLElement | null, name: string): string {
