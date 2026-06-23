@@ -267,3 +267,58 @@
   padding: 0;
   line-height: 1;
 }
+
+/* ---------------------------------------------------------- New… world form */
+.bl-newworld {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  margin-top: var(--bl-s3);
+  padding: var(--bl-s4);
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+}
+.bl-newworld-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-newworld-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr auto;
+  align-items: center;
+  gap: var(--bl-s3);
+}
+.bl-newworld-facet {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  letter-spacing: 0.03em;
+}
+.bl-newworld-value {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  color: var(--bl-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-newworld-lock {
+  color: var(--bl-text-dim);
+}
+.bl-newworld-lock.is-locked {
+  color: var(--bl-accent);
+}
+.bl-newworld-actions {
+  display: flex;
+  gap: var(--bl-s2);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.bl-newworld-reroll {
+  margin-inline-end: auto;
+}
+.bl-newworld-create {
+  color: var(--bl-accent);
+  border-color: color-mix(in srgb, var(--bl-accent) 45%, var(--bl-border));
+}

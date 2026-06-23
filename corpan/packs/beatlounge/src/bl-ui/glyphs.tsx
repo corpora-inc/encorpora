@@ -26,6 +26,7 @@ export type GlyphName =
   | "trash"
   | "dice"
   | "record"
+  | "lock"
 
 const PATHS: Record<GlyphName, JSX.Element> = {
   play: <path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none" />,
@@ -69,6 +70,12 @@ const PATHS: Record<GlyphName, JSX.Element> = {
     </>
   ),
   record: <circle cx="12" cy="12" r="6" fill="currentColor" stroke="none" />,
+  lock: (
+    <>
+      <rect x="5.5" y="10.5" width="13" height="9" rx="2" />
+      <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" />
+    </>
+  ),
   "chevron-down": <path d="M6 9.5l6 6 6-6" />,
   "chevron-left": <path d="M14.5 6l-6 6 6 6" />,
   "chevron-right": <path d="M9.5 6l6 6-6 6" />,

@@ -1,6 +1,14 @@
 import { describe, expect, it } from "vitest"
-import { buildEmptySnapshot, buildRandomSnapshot } from "./startFresh"
+import {
+  buildEmptySnapshot,
+  buildRandomSnapshot,
+  buildSnapshotFromDraft,
+  rollDraftWorld,
+  type DraftFacet,
+  type DraftWorld,
+} from "./startFresh"
 import { isInstrumentTrack, isFragmentTrack } from "../../model/document"
+import { makeRng } from "../../music/chords/random"
 import { RHYTHMS } from "../../rhythm"
 
 const noteCount = (snap: ReturnType<typeof buildEmptySnapshot>) =>
@@ -93,5 +101,88 @@ describe("buildRandomSnapshot — the randomized world", () => {
     expect(sigs.some((s) => s !== "4/4")).toBe(true)
     // The loop length tracks the meter (one bar), so it varies too.
     expect(new Set(Array.from({ length: 40 }, (_, i) => buildRandomSnapshot(i + 1).snapshot.loopLengthTicks)).size).toBeGreaterThan(2)
+  })
+})
+
+// Facet names don't 1:1 the DraftWorld keys (tempo→bpm, kit→kitId, groove→grooveId),
+// so read a facet's comparable value explicitly.
+const facetValue = (w: DraftWorld, f: DraftFacet): unknown => {
+  switch (f) {
+    case "meter":
+      return w.meter
+    case "tempo":
+      return w.bpm
+    case "key":
+      return w.key
+    case "kit":
+      return w.kitId
+    case "groove":
+      return w.grooveId
+    case "bass":
+    case "mid":
+    case "lead":
+      return w.voices[f]
+  }
+}
+
+describe("rollDraftWorld — per-facet lock / reroll", () => {
+  const ALL_FACETS: DraftFacet[] = ["meter", "tempo", "key", "kit", "bass", "mid", "lead", "groove"]
+
+  it("keeps every locked facet and rerolls the rest", () => {
+    const base = rollDraftWorld(makeRng(123))
+    // Reroll with everything locked but one facet, many times, and confirm the
+    // locked facets never move (the free one is allowed to, but isn't required to).
+    for (const free of ALL_FACETS) {
+      const lock = new Set(ALL_FACETS.filter((f) => f !== free))
+      for (let s = 1; s <= 8; s++) {
+        const next = rollDraftWorld(makeRng(s), { from: base, lock })
+        for (const f of ALL_FACETS) {
+          if (f === free) continue
+          expect(facetValue(next, f)).toEqual(facetValue(base, f))
+        }
+      }
+    }
+  })
+
+  it("with no locks is a full reroll (matches the all-random path)", () => {
+    // Same seed → identical draft whether via buildRandomSnapshot or rollDraftWorld.
+    const a = buildSnapshotFromDraft(rollDraftWorld(makeRng(77)))
+    const b = buildRandomSnapshot(77)
+    expect(stripIds(a.snapshot)).toEqual(stripIds(b.snapshot))
+    expect(a.grooveId).toBe(b.grooveId)
+  })
+})
+
+describe("buildSnapshotFromDraft — concrete draft → snapshot", () => {
+  // Seed a real draft for a valid Mode, then override the facets we assert on.
+  const seeded = rollDraftWorld(makeRng(5))
+  const draft: DraftWorld = {
+    ...seeded,
+    meter: { numerator: 7, denominator: 8 },
+    bpm: 96,
+    key: { ...seeded.key, tonic: 2, symbols: [] },
+    kitId: "studio",
+    voices: { bass: "sub-bass", mid: "warm-pad", lead: "saw-lead" },
+    grooveId: RHYTHMS[0].id,
+  }
+
+  it("honors the draft's meter, tempo, kit, and groove; no notes", () => {
+    const { snapshot, grooveId } = buildSnapshotFromDraft(draft)
+    expect(snapshot.bpm).toBe(96)
+    expect(snapshot.meterMap[0].sig).toEqual({ numerator: 7, denominator: 8 })
+    expect(grooveId).toBe(RHYTHMS[0].id)
+    expect(noteCount(snapshot)).toBe(0)
+    const drum = snapshot.tracks.find(
+      (t) => isInstrumentTrack(t) && t.instrument.kind === "drumSampler"
+    )
+    expect(drum && isInstrumentTrack(drum) && drum.instrument.kind === "drumSampler"
+      ? drum.instrument.kitId
+      : null).toBe("studio")
+  })
+
+  it("empty key symbols ⇒ a modal harmony", () => {
+    const { snapshot } = buildSnapshotFromDraft(draft)
+    expect(snapshot.harmony.mode).toBe("modal")
+    expect(snapshot.harmony.tonic).toBe(2)
   })
 })

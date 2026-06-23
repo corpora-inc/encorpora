@@ -10,12 +10,14 @@
  * datetime, Rename, Delete. The currently-loaded scene is highlighted.
  */
 
+import { useState } from "react"
 import type { BeatloungeHost } from "../../contracts/module"
 import { Glyph } from "../../bl-ui"
 import type { Scene } from "../../store/scenesStore"
 import type { ScenesController } from "./scenesController"
 import { useScenes } from "./scenesController"
 import { SceneNameEdit } from "./SceneNameEdit"
+import { NewWorldForm } from "./NewWorldForm"
 import { DEMO_SONGS } from "./demos"
 import { ct } from "../../i18n/strings"
 
@@ -66,6 +68,12 @@ export const ScenesImmersive = ({ ctrl, host }: Props) => {
     toast(ct("scenes.randomizedToast"))
   }
 
+  const [showNew, setShowNew] = useState(false)
+  const onNewCreated = () => {
+    setShowNew(false)
+    toast(ct("scenes.newCreatedToast"))
+  }
+
   const onLoadDemo = (id: string, name: string) => {
     if (ctrl.loadDemo(id)) toast(ct("scenes.demoToast", { name }))
   }
@@ -85,7 +93,19 @@ export const ScenesImmersive = ({ ctrl, host }: Props) => {
             <Glyph name="dice" size={14} />
             <span>{ct("scenes.randomize")}</span>
           </button>
+          <button
+            type="button"
+            className={`bl-chip bl-fresh-btn${showNew ? " is-active" : ""}`}
+            aria-expanded={showNew}
+            onClick={() => setShowNew((v) => !v)}
+          >
+            <Glyph name="sliders" size={14} />
+            <span>{ct("scenes.new")}</span>
+          </button>
         </div>
+        {showNew && (
+          <NewWorldForm ctrl={ctrl} onCreate={onNewCreated} onCancel={() => setShowNew(false)} />
+        )}
         {DEMO_SONGS.length > 0 && (
           <div className="bl-fresh-demos" role="list" aria-label={ct("scenes.demos")}>
             {DEMO_SONGS.map((d) => (
