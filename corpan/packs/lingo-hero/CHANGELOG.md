@@ -21,3 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   class (`ui/Hud.ts`) that owns the DOM overlay.
 - RTL awareness (`ar`/`he`/`fa`/`ur`) surfaced on the active-language context.
 - First canvas paint is gated on `document.fonts.ready`.
+- Catalog registration: listed in `web/data/packs.json` on the `preview`
+  channel as a free `game` pack (`minAppVersion` 0.17.0).
+- Pages deploy wiring (`.github/workflows/deploy-pages.yml`): install, build,
+  zip (`manifest.json` + `dist/` + optional `assets/` fonts/audio), and copy
+  the pack into `web/io/out` for the static catalog.

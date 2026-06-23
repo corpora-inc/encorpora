@@ -226,6 +226,22 @@ jobs:
           zip -r beatlounge.zip manifest.json dist/ beatlounge-avatar.png
           cd ../../..
 
+      - name: Install Lingo Hero Dependencies
+        working-directory: corpan/packs/lingo-hero
+        run: npm install --legacy-peer-deps
+
+      - name: Build Lingo Hero
+        working-directory: corpan/packs/lingo-hero
+        run: npm run build
+
+      - name: Package Lingo Hero as ZIP
+        run: |
+          cd corpan/packs/lingo-hero
+          ZIP_PATHS="manifest.json dist/"
+          if [ -d assets ]; then ZIP_PATHS="$ZIP_PATHS assets/"; fi
+          zip -r lingo-hero.zip $ZIP_PATHS
+          cd ../../..
+
       - name: Copy Hover Runner into io/out
         run: |
           mkdir -p "web/io/out/corpan/packs/hover-runner"
@@ -298,6 +314,14 @@ jobs:
           cp corpan/packs/beatlounge/beatlounge-avatar.png "web/io/out/corpan/packs/beatlounge/"
           cp -R corpan/packs/beatlounge/dist "web/io/out/corpan/packs/beatlounge/"
           cp corpan/packs/beatlounge/beatlounge.zip "web/io/out/corpan/packs/beatlounge.zip"
+
+      - name: Copy Lingo Hero into io/out
+        run: |
+          mkdir -p "web/io/out/corpan/packs/lingo-hero"
+          cp corpan/packs/lingo-hero/manifest.json "web/io/out/corpan/packs/lingo-hero/"
+          cp -R corpan/packs/lingo-hero/dist "web/io/out/corpan/packs/lingo-hero/"
+          if [ -d corpan/packs/lingo-hero/assets ]; then cp -R corpan/packs/lingo-hero/assets "web/io/out/corpan/packs/lingo-hero/"; fi
+          cp corpan/packs/lingo-hero/lingo-hero.zip "web/io/out/corpan/packs/lingo-hero.zip"
 
       - name: Copy Tutomaton into io/out
         # Shell only; per-language sqlites stream from the CloudFront catalog
