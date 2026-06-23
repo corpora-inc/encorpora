@@ -2,7 +2,7 @@
   "id": "lingo_hero",
   "channel": "preview",
   "name": "Lingo Hero",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Rhythm-based language learning. Feel the beat, learn the words.",
   "entry": "dist/app.js",
   "styles": [
