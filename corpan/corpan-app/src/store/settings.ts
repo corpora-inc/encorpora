@@ -133,7 +133,7 @@ export const ALL_DOMAINS = [
     "everyday",
 ];
 
-export const ALL_TEXT_SIZES = ["small", "medium", "large", "extra-large"] as const;
+export const ALL_TEXT_SIZES = ["small", "medium", "semi-large", "large", "extra-large"] as const;
 export type TextSizeType = (typeof ALL_TEXT_SIZES)[number];
 
 export type Theme = "system" | "light" | "dark";
@@ -317,7 +317,7 @@ const DEFAULT_SETTINGS: StackSettings = {
     // has a relaxation ladder behind this for the edge cases.
     levels: ["A0", "A1", "A2"],
     rate: 0.7,
-    textSize: "medium",
+    textSize: "semi-large",
     showRomanization: true,
     scrollNavigationEnabled: true,
     voicePrefs: {}, // important: always an object

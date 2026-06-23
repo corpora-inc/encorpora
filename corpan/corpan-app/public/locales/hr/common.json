@@ -93,6 +93,7 @@
     "textSize": "Veličina teksta",
     "small": "Malo",
     "medium": "Srednje",
+    "semi-large": "Srednje veliko",
     "large": "Veliko",
     "extra-large": "Ekstra veliko",
     "testTts": "Testiraj TTS s gumbima ispod:",

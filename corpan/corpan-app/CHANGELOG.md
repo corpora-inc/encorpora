@@ -7,6 +7,12 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Added
+- **New "Semi large" text-size option.** Adds a size between Medium and Large
+  (`1.1rem`, CSS class `text-semi-large`) to the text-size picker, and makes it
+  the default for new profiles so default reading text is a touch larger. New
+  `settings.semi-large` locale key added across all locales.
+
 ### Changed
 - **Voice picker "Select all" is now a toggle.** When every available voice in
   every learning language is already selected, the onboarding/settings voice

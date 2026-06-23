@@ -93,6 +93,7 @@
     "textSize": "Taille du texte",
     "small": "Petit",
     "medium": "Moyen",
+    "semi-large": "Semi-grand",
     "large": "Grand",
     "extra-large": "Très grand",
     "testTts": "Testez le TTS avec les boutons ci-dessous :",

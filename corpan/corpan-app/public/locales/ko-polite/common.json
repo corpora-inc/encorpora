@@ -93,6 +93,7 @@
     "textSize": "텍스트 크기",
     "small": "작게",
     "medium": "보통",
+    "semi-large": "약간 큼",
     "large": "크게",
     "extra-large": "아주 크게",
     "testTts": "아래 버튼을 눌러 TTS 설정을 테스트해 보세요:",

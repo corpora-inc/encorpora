@@ -93,6 +93,7 @@
     "textSize": "Betűméret",
     "small": "Kicsi",
     "medium": "Közepes",
+    "semi-large": "Félnagy",
     "large": "Nagy",
     "extra-large": "Nagyon nagy",
     "testTts": "Tesztelje a TTS beállításokat az alábbi gombokkal:",

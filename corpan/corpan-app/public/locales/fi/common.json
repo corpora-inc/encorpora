@@ -93,6 +93,7 @@
     "textSize": "Tekstikoko",
     "small": "Pieni",
     "medium": "Keskikokoinen",
+    "semi-large": "Puolisuuri",
     "large": "Suuri",
     "extra-large": "Erittäin suuri",
     "testTts": "Testaa tekstistä puheeksi -toimintoa alla olevilla painikkeilla:",

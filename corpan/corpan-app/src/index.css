@@ -92,6 +92,10 @@ body {
     font-size: 1rem;
 }
 
+.text-semi-large {
+     font-size: 1.1rem;
+}
+
 .text-large {
     font-size: 1.2rem;
 }

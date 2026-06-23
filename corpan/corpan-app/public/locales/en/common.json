@@ -95,6 +95,7 @@
     "textSize": "Text size",
     "small": "Small",
     "medium": "Medium",
+    "semi-large": "Semi large",
     "large": "Large",
     "extra-large": "Extra large",
     "testTts": "Test TTS with the buttons below:",

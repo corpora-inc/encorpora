@@ -318,6 +318,9 @@
         "medium": {
           "type": "string"
         },
+        "semi-large": {
+          "type": "string"
+        },
         "large": {
           "type": "string"
         },
@@ -361,6 +364,7 @@
         "textSize",
         "small",
         "medium",
+        "semi-large",
         "large",
         "extra-large",
         "testTts",

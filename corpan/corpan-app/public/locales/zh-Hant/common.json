@@ -93,6 +93,7 @@
     "textSize": "文字大小",
     "small": "小",
     "medium": "中",
+    "semi-large": "中大",
     "large": "大",
     "extra-large": "特大",
     "testTts": "點擊下方按鈕以測試您的 TTS 設定：",

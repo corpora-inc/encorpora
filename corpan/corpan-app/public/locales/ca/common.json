@@ -93,6 +93,7 @@
     "textSize": "Mida del text",
     "small": "Petit",
     "medium": "Mitjà",
+    "semi-large": "Semi gran",
     "large": "Gran",
     "extra-large": "Molt gran",
     "testTts": "Prova TTS amb els botons a continuació:",

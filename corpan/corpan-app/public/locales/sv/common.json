@@ -93,6 +93,7 @@
     "textSize": "Textstorlek",
     "small": "Liten",
     "medium": "Mellan",
+    "semi-large": "Halvstor",
     "large": "Stor",
     "extra-large": "Extra stor",
     "testTts": "Testa text-till-tal med knapparna nedan:",
