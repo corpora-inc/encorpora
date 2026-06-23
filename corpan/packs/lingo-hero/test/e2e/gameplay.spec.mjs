@@ -163,6 +163,105 @@ if (catches === 0 && failures === 0) fail("no target word reached the strum line
 }
 
 await page.screenshot({ path: join(outDir, "gameplay-final.png") });
+
+// =============================================================================
+// Issue #407 — language-selection correctness.
+// These run on dedicated harnesses with non-default stacks so we exercise the
+// resolution policy directly via window.__lingoHero introspection.
+// =============================================================================
+const harnessMulti = "file://" + join(here, "harness-multi.html");
+const harnessReading = "file://" + join(here, "harness-reading.html");
+
+// Drive several rounds and collect the TARGET language seen at the start of each
+// fresh round. Returns the ordered list of observed targetLangs (one per round).
+async function collectRoundTargets(p, wantRounds) {
+  await p.evaluate(() => {
+    const b = [...document.querySelectorAll("button")].find((x) => /practice/i.test(x.textContent || ""));
+    if (b) b.click(); else window.__lingoHero.startGame("PRACTICE");
+  });
+  await p.waitForFunction(() => (window.__lingoHero.notes || []).length > 0, { timeout: 10000 });
+  const seen = [];
+  let lastEntryId = -1;
+  const deadline = Date.now() + 60000;
+  while (seen.length < wantRounds && Date.now() < deadline) {
+    const s = await p.evaluate(() => {
+      const g = window.__lingoHero, r = g.round;
+      return r ? { entryId: r.entryId, targetLang: r.targetLang, primaryLang: g.activeLanguage.primary, words: r.targetWords } : null;
+    });
+    if (s && s.entryId !== lastEntryId) { lastEntryId = s.entryId; seen.push(s); }
+    // Advance rounds without manual play: catch the next correct word if it is
+    // on the strum line; otherwise let the no-input watchdog resolve the chart.
+    const st = await p.evaluate(() => {
+      const g = window.__lingoHero, ls = g.laneSystem, rr = g.canvas.getBoundingClientRect();
+      const t = (g.notes || []).find((n) => n.isTarget && n.seqIndex === g.caughtCount && !n.hit && !n.missed);
+      const strumY = ls.getStrumLineY();
+      if (t && t.y >= strumY - 44 && t.y <= strumY + 44) {
+        return { click: { x: rr.left + ls.getLaneX(t.lane), y: rr.top + strumY } };
+      }
+      return { click: null };
+    });
+    if (st.click) await p.mouse.click(st.click.x, st.click.y);
+    await p.waitForTimeout(120);
+  }
+  return seen;
+}
+
+// --- Bug A: ≥3-language stack → TARGET rotates randomly (not pinned to [1]). --
+{
+  const mp = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+  mp.on("pageerror", (e) => fail("pageerror(multi): " + e.message));
+  await mp.goto(harnessMulti);
+  await mp.waitForFunction(() => !!window.__lingoHero, { timeout: 10000 });
+  const rounds = await collectRoundTargets(mp, 12);
+  const targets = rounds.map((r) => r.targetLang);
+  const primaries = new Set(rounds.map((r) => r.primaryLang));
+  const distinct = new Set(targets);
+  console.log(`multi-stack targets over ${rounds.length} rounds: ${JSON.stringify(targets)}`);
+  if (rounds.length < 4) fail(`only saw ${rounds.length} rounds on multi-stack (need >=4 to judge rotation)`);
+  if (primaries.size !== 1 || ![...primaries][0] || [...primaries][0] !== "en") {
+    fail(`multi-stack prompt language not pinned to known lang 'en': ${JSON.stringify([...primaries])}`);
+  }
+  // The learning langs are {es, fr, de}. The target MUST vary across rounds —
+  // the old bug pinned it to languages[1] (es) forever.
+  if (distinct.size < 2) fail(`multi-stack target did NOT rotate (always ${[...distinct][0]}); Bug A not fixed`);
+  else console.log(`OK: multi-stack target rotated across ${distinct.size} learning langs ${JSON.stringify([...distinct])}`);
+  // And every observed target must be one of the learning langs, never the known lang.
+  const bad = targets.filter((t) => t === "en" || !["es", "fr", "de"].includes(t));
+  if (bad.length) fail(`multi-stack target leaked outside learning langs: ${JSON.stringify(bad)}`);
+  await mp.screenshot({ path: join(outDir, "multi-stack.png") });
+  await mp.close();
+}
+
+// --- Bug B: 1-language stack → READING mode (target === primary === lang). ----
+{
+  const rp = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+  rp.on("pageerror", (e) => fail("pageerror(reading): " + e.message));
+  await rp.goto(harnessReading);
+  await rp.waitForFunction(() => !!window.__lingoHero, { timeout: 10000 });
+  const rounds = await collectRoundTargets(rp, 4);
+  console.log(`reading-stack rounds: ${JSON.stringify(rounds.map((r) => ({ t: r.targetLang, p: r.primaryLang })))}`);
+  if (rounds.length < 1) fail("reading-stack never produced a round");
+  for (const r of rounds) {
+    // The single stack language is "en". Target MUST be that same language —
+    // NEVER a foreign substitute (the old bug grabbed es/ar). And the catchable
+    // words must be that language's own tokens (a real, non-empty sequence).
+    if (r.targetLang !== "en") fail(`reading-stack target was '${r.targetLang}', expected 'en' (no foreign substitute)`);
+    if (r.primaryLang !== "en") fail(`reading-stack primary was '${r.primaryLang}', expected 'en'`);
+    if (!Array.isArray(r.words) || r.words.length < 1) fail(`reading-stack had no catchable tokens: ${JSON.stringify(r.words)}`);
+    // Catchable tokens must be ENGLISH (the stack lang), not Spanish. Heuristic:
+    // the joined token string must NOT contain the entry's Spanish-only markers.
+    const joined = (r.words || []).join(" ").toLowerCase();
+    if (/dónde|está|gato|días|gracias|cuesta|perro|gusta|leer/.test(joined)) {
+      fail(`reading-stack catchable words look like a foreign substitute: ${JSON.stringify(r.words)}`);
+    }
+  }
+  if (rounds.every((r) => r.targetLang === "en" && r.primaryLang === "en" && (r.words || []).length >= 1)) {
+    console.log(`OK: reading-stack stayed in 'en' (prompt + catchable tokens), no foreign substitute`);
+  }
+  await rp.screenshot({ path: join(outDir, "reading-stack.png") });
+  await rp.close();
+}
+
 await browser.close();
 console.log(failures === 0 ? "\nGAMEPLAY E2E: PASS" : `\nGAMEPLAY E2E: ${failures} FAILURE(S)`);
 process.exit(failures === 0 ? 0 : 1);

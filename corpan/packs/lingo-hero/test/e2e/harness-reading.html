@@ -1,0 +1,54 @@
+<!doctype html>
+<!--
+  Single-language stack harness for issue #407 (Bug B — READING mode).
+  Stack = ["en"] only: there is NO foreign language to translate into, so the
+  round is a READING exercise — prompt AND catchable words are BOTH "en" (the
+  phrase's own tokens, in order). The game must NEVER substitute a foreign
+  language here. Run `npm run build` first.
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../dist/app.css" />
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #07060f; }
+  #host { position: static; margin: 90px 0 0 70px; width: 360px; height: 720px; }
+</style>
+</head>
+<body>
+<div id="host"></div>
+<script>window.__corpanHostActive = true;</script>
+<script src="../../dist/app.js"></script>
+<script>
+  // Entries carry en (the only stack language) PLUS a foreign translation, to
+  // prove the game does NOT grab the foreign one when the stack is single-lang.
+  const ROWS = [
+    ["the cat sleeps", "el gato duerme"],
+    ["good morning everyone", "buenos días a todos"],
+    ["thank you very much", "muchas gracias"],
+    ["see you tomorrow friend", "hasta mañana amigo"],
+    ["where is the station", "dónde está la estación"],
+    ["how much is this", "cuánto cuesta esto"],
+    ["the big red dog", "el gran perro rojo"],
+    ["I like to read books", "me gusta leer libros"],
+  ];
+  const ENTRIES = ROWS.map(([en, es], i) => ({
+    entry_id: i + 1, level: "A1", domains: ["travel"],
+    translations: [
+      { language_code: "en", text: en },
+      { language_code: "es", text: es },
+    ],
+  }));
+  let k = 0;
+  const host = {
+    speak() {}, stopSpeech() {},
+    getStackConfig() { return { languages: ["en"], domains: [], levels: [], rate: 1, textSize: "m", showRomanization: false }; },
+    onStackConfigChange() { return () => {}; },
+    getRandomEntries(n) { const o = []; for (let i = 0; i < n; i++) o.push(ENTRIES[(k++) % ENTRIES.length]); return Promise.resolve(o); },
+    getRandomEntry() { return Promise.resolve(ENTRIES[(k++) % ENTRIES.length]); },
+    isMock: true,
+  };
+  window.CorpanGames.lingo_hero.mount(document.getElementById("host"), host);
+</script>
+</body>
+</html>

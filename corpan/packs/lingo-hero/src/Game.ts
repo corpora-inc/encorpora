@@ -293,11 +293,13 @@ export class Game {
   }
 
   /**
-   * Resolve the resolved active TARGET (learning) language + the player's
-   * primary (known/UI) language from the host stack. primary = languages[0];
-   * target = the first non-primary language (with the single-language
-   * fallbacks the ContentManager uses). `code` is the TARGET language — the one
-   * whose words fall and get spoken.
+   * Resolve the INITIAL active TARGET (learning) language + the player's primary
+   * (known/UI) language from the host stack, for HUD/RTL setup before the first
+   * round loads. `code` is the TARGET language — the one whose words fall and get
+   * spoken. With a ≥2-language stack the TARGET actually ROTATES per round
+   * (chosen in ContentManager.getRound); `startRound` re-syncs `activeLanguage`
+   * to the round's real target each round. With a 1-language stack this resolves
+   * to READING mode (target === primary). This method only seeds sane defaults.
    */
   private resolveActiveLanguage(cfg: StackConfig): ActiveLanguage {
     const { primary, target } = this.contentManager.resolveLanguages(
@@ -438,6 +440,20 @@ export class Game {
     this.roundResolved = false;
     this.roundAllCaught = true;
     this.chartClean = true;
+
+    // Re-sync the active TARGET language to THIS round's actual target. In a
+    // ≥2-language stack the target rotates randomly per round (issue #407), so
+    // the language whose words fall + get spoken must follow the round, not the
+    // one-time mount-time resolution. RTL + the HUD direction follow too. (In
+    // reading mode round.targetLang === primary, so this is a no-op.)
+    if (round.targetLang && round.targetLang !== this.activeLanguage.code) {
+      this.activeLanguage = {
+        ...this.activeLanguage,
+        code: round.targetLang,
+        isRTL: RTL_LANGS.has(round.targetLang),
+      };
+      this.hud.applyLanguage(this.activeLanguage);
+    }
 
     this.currentWord = {
       entryId: round.entryId,

@@ -128,33 +128,43 @@ export class ContentManager {
   }
 
   /**
-   * Resolve the TARGET (learning) language for a round given the host stack.
-   *  - primary = languages[0] (the language the player already knows)
-   *  - target  = the first stack language that is NOT the primary
-   *  - if the stack has only one language, target = "en" when primary != en,
-   *    else fall back to a sensible second language present on the entry.
-   * `entry` is consulted only for the single-language fallback.
+   * Resolve the PROMPT (known/UI) language + the TARGET (learning) language for a
+   * round, given the host stack. The stack convention is
+   * `languages[0]` = the language the player already KNOWS (prompt / UI) and
+   * `languages[1..]` = the learning TARGET languages.
+   *
+   * Two first-class modes (issue #407):
+   *
+   *  - **≥2 languages — translation mode**: prompt in `languages[0]`; the TARGET
+   *    is chosen RANDOMLY among `languages[1..]` so over many rounds the player
+   *    practices EVERY learning language in the stack, not just `languages[1]`.
+   *    `reading` is false.
+   *
+   *  - **exactly 1 language — READING mode**: there is no foreign language to
+   *    translate INTO, so we NEVER substitute one. Instead the round is a reading
+   *    exercise in that single language: the prompt and the catchable words are
+   *    BOTH that language (`primary === target`). `reading` is true.
+   *
+   * Pass `rng` to make the random target choice deterministic in tests. `entry`
+   * is no longer consulted — single-language stacks resolve purely to reading
+   * mode in their own language (no cross-language guessing from the pool).
    */
   resolveLanguages(
     languages: string[],
-    entry?: EntryOut
-  ): { primary: string; target: string } {
+    rng: () => number = Math.random
+  ): { primary: string; target: string; reading: boolean } {
     const langs = (languages ?? []).filter(Boolean);
     const primary = langs[0] ?? "en";
-    let target = langs.find((l) => l !== primary) ?? "";
-    if (!target) {
-      if (primary !== "en") {
-        target = "en";
-      } else if (entry) {
-        // Single-language stack of "en": pick any non-en translation present.
-        target =
-          entry.translations.find((t) => t.language_code !== "en")
-            ?.language_code || "en";
-      } else {
-        target = "es";
-      }
+    // The learning targets are everything after the known/UI language.
+    const targets = langs.slice(1).filter((l) => l && l !== primary);
+    if (targets.length === 0) {
+      // Single-language stack → READING mode in that one language. Never pick a
+      // foreign substitute (the old "default to en/es" behavior — issue #407).
+      return { primary, target: primary, reading: true };
     }
-    return { primary, target };
+    // Translation mode: rotate the target RANDOMLY across all learning langs.
+    const target = targets[Math.floor(rng() * targets.length) % targets.length];
+    return { primary, target, reading: false };
   }
 
   /**
@@ -174,27 +184,30 @@ export class ContentManager {
     const pool = [...byId.values()];
     if (pool.length === 0) throw new Error("No content available");
 
-    // Provisional language resolution (may be refined once we know the entry,
-    // for the single-language fallback case).
-    let { primary, target } = this.resolveLanguages(languages, pool[0]);
+    // Per-round language resolution. In TRANSLATION mode the target rotates
+    // randomly across languages[1..] each round; in READING mode (1-lang stack)
+    // primary === target and the round is read in that single language.
+    const { primary, target, reading } = this.resolveLanguages(languages);
 
-    // A valid target entry must carry BOTH the prompt (primary) AND the target
-    // translation. If none does (e.g. mock pool only has en+es and primary is
-    // something else), relax: require just the target-language translation and
-    // use the entry's primary OR any other translation as the prompt.
-    let valid = pool.filter(
-      (e) => this.hasLang(e, primary) && this.hasLang(e, target)
-    );
-    if (valid.length === 0) {
-      const re = this.resolveLanguages(languages, pool[0]);
-      primary = re.primary;
-      target = re.target;
+    // A valid round entry must carry the TARGET translation; in translation mode
+    // it must ALSO carry the prompt (primary). In reading mode primary === target
+    // so this collapses to "has the one language" — exactly what we want (the
+    // prompt and catchable tokens are the same single-language text).
+    let valid = reading
+      ? pool.filter((e) => this.hasLang(e, target))
+      : pool.filter((e) => this.hasLang(e, primary) && this.hasLang(e, target));
+    if (valid.length === 0 && !reading) {
+      // No entry carries both prompt+target (e.g. mock pool lacks the chosen
+      // target lang). Relax: require just the target-language translation and use
+      // any other translation as the prompt. Never silently leave reading mode.
       valid = pool.filter(
         (e) => this.hasLang(e, target) && e.translations.length >= 2
       );
     }
-    if (valid.length === 0) {
-      // Last resort: anything with two translations; treat the first as prompt.
+    if (valid.length === 0 && !reading) {
+      // Last resort (translation mode only): anything with two translations;
+      // treat the first as prompt. Reading mode never falls through to a foreign
+      // language — if the single language is absent we error rather than guess.
       valid = pool.filter((e) => e.translations.length >= 2);
     }
     if (valid.length === 0) throw new Error("No usable round content");
