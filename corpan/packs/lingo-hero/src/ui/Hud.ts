@@ -58,6 +58,7 @@ export class Hud {
   private hudPanel: HTMLElement;
   private gameOverScreen: HTMLElement;
   private questionBox: HTMLElement;
+  private questionWord: HTMLElement;
   private romanizationEl: HTMLElement;
   private cueEl: HTMLElement;
   private phraseStrip: HTMLElement;
@@ -124,8 +125,13 @@ export class Hud {
         <div class="top-bar">
           <div class="prompt-stack">
             <!-- The foreign prompt IS the "hear again" control — tap it to replay.
-                 There is no separate speaker button (single audio control = mute). -->
-            <button class="question-box" id="question-box" type="button" aria-live="polite" aria-label="Replay prompt"></button>
+                 There is no separate speaker button (single audio control = mute).
+                 A small replay glyph + caption makes that purpose unmistakable
+                 instead of reading as a mystery pill. -->
+            <button class="question-box" id="question-box" type="button" aria-live="polite" aria-label="Replay prompt">
+              <span class="qb-word" id="question-word"></span>
+              <span class="qb-replay" aria-hidden="true"><span class="qb-replay-icon">&#8635;</span> Tap to replay</span>
+            </button>
             <!-- (a) romanization line under the foreign prompt -->
             <div class="romanization-line" id="romanization-line" aria-live="polite" hidden></div>
             <!-- one-line cue so the round reads as intentional -->
@@ -186,6 +192,7 @@ export class Hud {
     this.hudPanel = this.root.querySelector("#hud")!;
     this.gameOverScreen = this.root.querySelector("#game-over")!;
     this.questionBox = this.root.querySelector("#question-box")!;
+    this.questionWord = this.root.querySelector("#question-word")!;
     this.romanizationEl = this.root.querySelector("#romanization-line")!;
     this.cueEl = this.root.querySelector("#lh-cue")!;
     this.phraseStrip = this.root.querySelector("#phrase-strip")!;
@@ -249,7 +256,7 @@ export class Hud {
 
   /** The prompt text shown in the in-game question box (foreign word). */
   setQuestion(text: string): void {
-    this.questionBox.textContent = text;
+    this.questionWord.textContent = text;
     // A new wave begins: clear any lingering meaning-reveal card so it never
     // overlaps the fresh prompt (the auto-hide timer may still be pending).
     this.hideFeedback();
@@ -290,9 +297,12 @@ export class Hud {
           return `<span class="ps-word is-done">${this.escape(w)}</span>`;
         }
         const cls = i === collected ? "ps-word is-active" : "ps-word is-blank";
-        // Blank width hints at the word length without revealing it.
-        const fill = "_".repeat(Math.max(2, Math.min(8, w.length)));
-        return `<span class="${cls}" aria-hidden="true">${fill}</span>`;
+        // Empty slots are rendered as fixed proportional boxes (width hints at
+        // the word length) with a single centred placeholder dash — so the tray
+        // reads as a row of distinct, fillable word-slots, not an illegible
+        // run of underscores merging into one dashed blob.
+        const slots = Math.max(2, Math.min(6, w.length));
+        return `<span class="${cls}" style="--ps-slot:${slots}" aria-hidden="true"><span class="ps-dash">&middot;&middot;&middot;</span></span>`;
       })
       .join(" ");
     this.phraseStrip.innerHTML = html;

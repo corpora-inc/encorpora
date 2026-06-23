@@ -116,7 +116,10 @@ export class MuteToggle {
       this.btn.style.opacity = "0.92";
     } else {
       this.btn.style.color = "var(--na-accent, #2ff3ff)";
-      this.btn.style.borderColor = "var(--na-accent, #2ff3ff)";
+      // Subtle border (not a full-strength ring) so the speaker GLYPH is the
+      // hero and the circular outline never reads as a second nested button.
+      this.btn.style.borderColor =
+        "color-mix(in srgb, var(--na-accent, #2ff3ff) 45%, transparent)";
       this.btn.style.background = "var(--na-glass-bg, rgba(18,20,40,.55))";
       this.btn.style.boxShadow =
         "var(--na-glow-cyan, 0 0 12px rgba(47,243,255,.55)), var(--na-shadow-panel, 0 8px 24px rgba(0,0,0,.5))";
@@ -138,7 +141,8 @@ export class MuteToggle {
       padding: "0",
       margin: "0",
       "border-radius": "var(--na-radius-pill, 999px)",
-      border: "1px solid var(--na-accent, #2ff3ff)",
+      border:
+        "1px solid color-mix(in srgb, var(--na-accent, #2ff3ff) 45%, transparent)",
       background: "var(--na-glass-bg, rgba(18,20,40,.55))",
       "backdrop-filter": "blur(10px)",
       "-webkit-backdrop-filter": "blur(10px)",

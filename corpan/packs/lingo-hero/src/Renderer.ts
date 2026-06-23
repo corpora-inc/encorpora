@@ -186,22 +186,23 @@ export class Renderer {
       // NARROWED: a contained column (was the full lane width) + stops short of
       // the strum so the ring sits in clear air, not inside the beam's brightest
       // band. This is the fix for the "cones merge into the rings" washout.
-      const halfW = lane0.width * 0.34;
+      const halfW = lane0.width * 0.28;
       const shaftBottom = strumY - this.laneSystem.getNoteRadius() * 1.3;
       const shaft = ctx.createLinearGradient(0, shaftTop, 0, shaftBottom);
-      // Capped, energy-modest alpha so the shafts read as ambient lane light
-      // without ever washing out the cards / hit rings on top.
-      const baseA = Math.min(0.06, 0.028 + energy * 0.03);
+      // HARD-CAPPED, energy-modest alpha so the shafts stay faint ambient lane
+      // light and never bloom into the bright cones that wash the playfield
+      // (fixes major (d)). Peak alpha is half what it was.
+      const baseA = Math.min(0.032, 0.018 + energy * 0.014);
       shaft.addColorStop(0, rgba(c, 0));
       shaft.addColorStop(0.85, rgba(c, baseA));
       shaft.addColorStop(1, rgba(c, 0));
       ctx.fillStyle = shaft;
       ctx.fillRect(cx - halfW, shaftTop, halfW * 2, shaftBottom - shaftTop);
 
-      // A tighter, brighter central glow line down each lane (also stops short).
+      // A tighter, dimmer central glow line down each lane (also stops short).
       const core = ctx.createLinearGradient(cx - halfW * 0.12, 0, cx + halfW * 0.12, 0);
       core.addColorStop(0, rgba(c, 0));
-      core.addColorStop(0.5, rgba(c, Math.min(0.1, 0.05 + energy * 0.05)));
+      core.addColorStop(0.5, rgba(c, Math.min(0.06, 0.03 + energy * 0.025)));
       core.addColorStop(1, rgba(c, 0));
       ctx.fillStyle = core;
       ctx.fillRect(cx - halfW * 0.12, shaftTop, halfW * 0.24, shaftBottom - shaftTop);
@@ -356,15 +357,17 @@ export class Renderer {
     ];
 
     for (const rail of rails) {
-      // Soft halo column around the rail.
-      const halo = ctx.createLinearGradient(rail.x - 6, 0, rail.x + 6, 0);
+      // Soft halo column around the rail (capped so the dividers stay crisp
+      // lines, not glowing bars that merge with the lane shafts).
+      const halo = ctx.createLinearGradient(rail.x - 5, 0, rail.x + 5, 0);
+      const haloA = Math.min(0.12, 0.09 + energy * 0.06);
       halo.addColorStop(0, rgba(rail.c, 0));
-      halo.addColorStop(0.5, rgba(rail.c, 0.18 + energy * 0.14));
+      halo.addColorStop(0.5, rgba(rail.c, haloA));
       halo.addColorStop(1, rgba(rail.c, 0));
       ctx.fillStyle = halo;
-      ctx.fillRect(rail.x - 6, 0, 12, height);
+      ctx.fillRect(rail.x - 5, 0, 10, height);
       // Crisp 1px neon core.
-      ctx.strokeStyle = rgba(rail.c, 0.5 + energy * 0.3);
+      ctx.strokeStyle = rgba(rail.c, 0.45 + energy * 0.25);
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(rail.x, 0);
@@ -600,20 +603,27 @@ export class Renderer {
 
     // PASS 1 — additive motion trails behind every live note (comet tails that
     // brighten as they approach the strum line). One additive pass = cheap bloom.
+    // The card's center is clamped to stop a fixed gap above the ring (see
+    // drawNotes PASS 2); the trail must follow the CARD, not the raw note.y, so
+    // it never streaks down across the card→ring gap into the fret ring.
+    const ringTop = strumY - r;
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
     for (const note of notes) {
       if (note.missed || note.hit || note.y < -50) continue;
       const cx = this.laneSystem.getLaneX(note.lane);
-      const y = note.y;
+      const cardH = Math.min(r * 1.35, 96);
+      const RING_GAP = Math.max(10, r * 0.22);
+      const maxCardCenter = ringTop - RING_GAP - cardH / 2;
+      const y = Math.min(note.y, maxCardCenter); // trail tracks the drawn card
       const c = this.laneColors[note.lane];
-      const proximity = clamp01(1 - Math.abs(y - strumY) / (strumY + 1));
-      const trailLen = r * (2.0 + proximity * 2.8);
+      const proximity = clamp01(1 - Math.abs(note.y - strumY) / (strumY + 1));
+      const trailLen = r * (1.6 + proximity * 2.2);
       const grad = ctx.createLinearGradient(0, y - trailLen, 0, y);
       grad.addColorStop(0, rgba(c, 0));
-      grad.addColorStop(1, rgba(c, 0.28 + proximity * 0.34));
+      grad.addColorStop(1, rgba(c, 0.2 + proximity * 0.26));
       ctx.fillStyle = grad;
-      const tw = r * (0.42 + proximity * 0.24);
+      const tw = r * (0.38 + proximity * 0.2);
       ctx.beginPath();
       ctx.moveTo(cx - tw, y);
       ctx.lineTo(cx + tw, y);
@@ -663,19 +673,32 @@ export class Renderer {
       // CONTACT STATE: the card is inside the scored hit window ("now tap").
       const inWindow = Math.abs(y - strumY) <= hitBand;
 
-      // UNIFORM single-word cards: every lane's card is the SAME fixed size; only
-      // the word inside differs. Single words by construction, so the word is
-      // laid out on ONE line, shrink-to-fit only if a rare long token needs it,
-      // with >=PAD px of inner padding that the text never crosses. NOTE: card
-      // size + glow are IDENTICAL across lanes (no per-lane phase/pulse) so the
-      // three lanes are perfectly uniform — only the lane COLOR differs.
+      // UNIFORM single-word cards: every lane's card is the SAME rigid slot —
+      // IDENTICAL width, height and corner radius across all three lanes,
+      // computed ONCE from the lane geometry and totally independent of the
+      // word's length (a short "I" reads in the exact same box as "thank").
+      // Only the lane COLOR and the (single) word inside differ. The word sits
+      // on ONE line, shrink-to-fit only as a safety net for a rare long token,
+      // with >=PAD px of inner padding the text never crosses. (Fixes blocker
+      // (c): no per-content sizing.)
       const laneW = this.laneSystem.getLaneBounds(0).width;
-      const cardW = Math.min(laneW * 0.9, r * 2.6);
-      const cardH = r * 1.55; // fixed for ALL cards
-      const PAD = 14; // >=12px inner padding requirement
+      // Fixed slot dims — clamped to safe constants so the box is the same on
+      // every lane and every frame, and never deforms as it descends.
+      const cardW = Math.min(laneW * 0.82, 132);
+      const cardH = Math.min(r * 1.35, 96); // fixed for ALL cards
+      const PAD = 16; // >=12px inner padding requirement
+      // Constant card→ring gap: the card NEVER overlaps the fret ring. We clamp
+      // the card's CENTER so its bottom edge always stays a fixed gap above the
+      // ring's top, even as note.y crosses the strum line — so the rounded card
+      // and the circular ring stay two visibly distinct elements (fixes blocker
+      // (b) "card merges into the ring" and minor "ambiguous card↔ring gap").
+      const RING_GAP = Math.max(10, r * 0.22);
+      const ringTop = strumY - r;
+      const maxCardCenter = ringTop - RING_GAP - cardH / 2;
+      const drawCy = Math.min(y, maxCardCenter);
       const x = cx - cardW / 2;
-      const cardY = y - cardH / 2;
-      const radius = Math.min(16, cardH * 0.32);
+      const cardY = drawCy - cardH / 2;
+      const radius = 14; // CONSTANT corner radius — never scales with the box
 
       const wordFont = "'Russo One', 'Lingo Sans', system-ui, sans-serif";
       const layout = note.text
@@ -697,46 +720,56 @@ export class Renderer {
       if (proximity > 0.02) {
         ctx.save();
         ctx.globalCompositeOperation = "lighter";
-        const bloomR = cardW * (0.4 + proximity * 0.18);
-        const bloomA = Math.min(0.11, 0.07 * proximity + (inWindow ? 0.04 : 0));
-        const bg = ctx.createRadialGradient(cx, y, 0, cx, y, bloomR);
+        const bloomR = cardW * (0.34 + proximity * 0.12);
+        const bloomA = Math.min(0.08, 0.05 * proximity + (inWindow ? 0.03 : 0));
+        const bg = ctx.createRadialGradient(cx, drawCy, 0, cx, drawCy, bloomR);
         bg.addColorStop(0, rgba(c, bloomA));
         bg.addColorStop(1, rgba(c, 0));
         ctx.fillStyle = bg;
         ctx.beginPath();
-        ctx.arc(cx, y, bloomR, 0, Math.PI * 2);
+        ctx.arc(cx, drawCy, bloomR, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
 
-      // --- GLASS CARD BODY ---
+      // --- GLASS CARD BODY — a discrete, rigid slot drawn as ONE layer above
+      //     the ring. Constant box + corner radius every frame; never morphs. ---
       ctx.save();
       // Outer neon glow on the card edge — uniform across lanes; a small extra
       // lift ONLY in the hit window so "now tap" reads as a contact state.
-      ctx.shadowBlur = (inWindow ? 16 : 8) + proximity * 8;
+      // Capped so the card's own glow can't bloom into the ring below.
+      ctx.shadowBlur = (inWindow ? 12 : 7) + proximity * 5;
       ctx.shadowColor = rgbStr(c);
 
-      // Frosted glass fill: vertical gradient from a lifted top to a darker base.
-      const glass = ctx.createLinearGradient(0, cardY, 0, cardY + cardH);
-      glass.addColorStop(0, rgba(mix(this.bgBot, c, 0.14), 0.94));
-      glass.addColorStop(0.5, rgba(mix(this.bgMid, c, 0.06), 0.96));
-      glass.addColorStop(1, rgba(this.bgTop, 0.95));
-      ctx.fillStyle = glass;
+      // SCRIM PASS: an OPAQUE dark base behind the card so whatever lane beam or
+      // ghost sits behind it is fully occluded — guarantees word contrast and
+      // makes the card read as a solid object on top of the field (fixes major
+      // (d) "ghosts/beams wash into the field"). Drawn source-over, fully solid.
+      ctx.fillStyle = rgbStr(mix(this.bgTop, { r: 0, g: 0, b: 0 }, 0.25));
       roundRectPath(ctx, x, cardY, cardW, cardH, radius);
       ctx.fill();
       ctx.shadowBlur = 0;
 
+      // Frosted glass tint on top of the opaque scrim (now fully opaque overall).
+      const glass = ctx.createLinearGradient(0, cardY, 0, cardY + cardH);
+      glass.addColorStop(0, rgba(mix(this.bgBot, c, 0.16), 1));
+      glass.addColorStop(0.5, rgba(mix(this.bgMid, c, 0.07), 1));
+      glass.addColorStop(1, rgba(this.bgTop, 1));
+      ctx.fillStyle = glass;
+      roundRectPath(ctx, x, cardY, cardW, cardH, radius);
+      ctx.fill();
+
       // Top glass highlight sheen (the "Apple-grade" specular line).
       const sheen = ctx.createLinearGradient(0, cardY, 0, cardY + cardH * 0.5);
-      sheen.addColorStop(0, rgba({ r: 255, g: 255, b: 255 }, 0.16));
+      sheen.addColorStop(0, rgba({ r: 255, g: 255, b: 255 }, 0.14));
       sheen.addColorStop(1, rgba({ r: 255, g: 255, b: 255 }, 0));
       ctx.fillStyle = sheen;
-      roundRectPath(ctx, x + 2, cardY + 2, cardW - 4, cardH * 0.5, radius * 0.8);
+      roundRectPath(ctx, x + 2, cardY + 2, cardW - 4, cardH * 0.5, radius * 0.7);
       ctx.fill();
 
       // Neon border — uniform weight across lanes; a crisp brighter ring ONLY
       // when the card is in the hit window (the "contact" cue).
-      ctx.strokeStyle = rgba(c, inWindow ? 1 : 0.88);
+      ctx.strokeStyle = rgba(c, inWindow ? 1 : 0.9);
       ctx.lineWidth = inWindow ? 3 : 2;
       roundRectPath(ctx, x, cardY, cardW, cardH, radius);
       ctx.stroke();
@@ -754,11 +787,11 @@ export class Renderer {
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.font = `bold ${layout.fontSize}px ${wordFont}`;
-        ctx.shadowColor = "rgba(0,0,0,0.55)";
+        ctx.shadowColor = "rgba(0,0,0,0.6)";
         ctx.shadowBlur = 4;
         ctx.fillStyle = rgbStr(this.textColor);
         // Centered in the area right of the 6px spine so it never crowds it.
-        ctx.fillText(layout.text, cx + 3, y);
+        ctx.fillText(layout.text, cx + 3, drawCy);
         ctx.restore();
       }
     }

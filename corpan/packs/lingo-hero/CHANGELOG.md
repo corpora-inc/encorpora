@@ -7,6 +7,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Fixed
+- **Lane cards are now perfectly uniform, rigid slots.** Every falling card uses
+  a fixed width/height and a constant corner radius computed once from the lane
+  geometry, fully independent of the word's length — a short "I" reads in the
+  exact same box as "thank". Only the lane colour and the single word inside
+  differ.
+- **Cards no longer merge into the hit rings.** The card's drawn centre is
+  clamped so its bottom edge always stays a constant gap above the fret ring's
+  top, even as the note crosses the strum line. The rounded card and the
+  circular ring stay two visibly distinct elements through the entire fall; the
+  card bounding box and corner radius never deform. Motion trails follow the
+  drawn card so they no longer streak down across the gap into the ring.
+- **Cards read as solid objects over the field.** Each card now has an opaque
+  dark scrim behind it so lane beams / upper-card ghosts are fully occluded,
+  guaranteeing word contrast even under heavy combo glow.
+- **Beam bloom capped.** Lane shafts and edge-rail halos had their peak opacity
+  roughly halved and their widths narrowed, so the cyan/magenta/lime beams stay
+  faint ambient light and never brighten into washed-out cones that muddy the
+  playfield.
+- **Prompt pill purpose is now explicit.** The foreign-prompt button shows a
+  replay glyph + "Tap to replay" caption, so its role as the single "hear again"
+  control is unmistakable (still no second speaker button). The resting Combo
+  chip reads as an intentional designed chip rather than a washed-out
+  placeholder; empty phrase-tray slots render as fixed dashed slot-boxes instead
+  of an illegible run of underscores.
+- **Single audio control tightened.** The mute toggle's circular outline is
+  softened so the speaker glyph is the hero and the ring never reads as a second
+  nested button — unmistakably one tap target.
 - **Falling cards no longer clip or draw over the HUD.** Introduced a measured
   *play field* whose top sits below the live HUD band (prompt + cue + phrase
   strip + score/combo chips). Cards now spawn with their top edge at the play
