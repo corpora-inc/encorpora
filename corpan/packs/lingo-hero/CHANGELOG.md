@@ -6,6 +6,80 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Neon Arcade premium foundation.** A cohesive design-token layer (`--na-*`
+  palette / glow + bloom shadows / type scale / spacing / radii / motion) at the
+  top of `styles.css` that everything downstream styles from. The event bus now
+  carries the target **word identity** (`{ entryId, foreign, english,
+  romanization?, lang }`) on `noteHit` / `noteMiss` plus a new once-per-wave
+  `wave-resolved` event, so the learning stream can do spaced difficulty and the
+  UI can do meaning-reveal. New HUD slots: a romanization line under the prompt,
+  an audio-replay button, a post-answer feedback card, and a mastery readout
+  (minimal no-ops that keep the game playable). `ContentManager` accepts an
+  optional injected `WordSelector` (or a process-wide default via
+  `setDefaultWordSelector`) to bias wave content toward due/weak words while
+  still guaranteeing distinct entries + distinct English answers.
+- **Neon Arcade board visuals.** The canvas (`Renderer`) is rebuilt to the
+  Neon Arcade bar: a scrolling synthwave perspective grid floor converging to a
+  horizon, volumetric glowing lane shafts + neon edge rails in the `--na-lane-*`
+  colors (cyan / magenta / lime, single-sourced from the design tokens), premium
+  glass note cards with a top specular sheen, lane-color spine, and an approach
+  bloom that swells as a note nears the strum line, plus a glass strum bar that
+  leans toward the hottest lane. Hits fire a lane-flash light column + white-hot
+  pop ring; misses flush the floor red; the whole board escalates intensity with
+  the combo (grid speed, lane glow, strum bloom). The VFX particle / shockwave /
+  screen-shake layer now reads the same elevated palette so the board reads as
+  one instrument. The Renderer reacts to gameplay through a shared
+  `effects/boardState` seam written by the bus-subscribed effects layer, so none
+  of this touches `Game.ts`. All Canvas2D, additive-bloom, 60fps-targeted, and
+  fully offline (palette resolves from `:root` tokens with matching hardcoded
+  fallbacks).
+- **Neon Arcade shell + learning surfaces (UI).** Filled the foundation HUD
+  slots with a cohesive, token-driven UI: a romanization line tucked under the
+  foreign prompt, a glassy audio-**replay** button, a premium post-answer
+  **feedback card** (outcome-tinted verdict + foreign → romanization → English
+  meaning reveal, wired to the once-per-wave `wave-resolved` event), and an
+  in-run **mastery readout** (level · correct/seen · accuracy with a progress
+  bar fed from persisted level progress). Added a static synthwave perspective
+  grid backdrop behind the canvas. RTL-aware (bidi `dir="auto"` on revealed
+  text, mirrored chevrons/bars), contrast-checked, fully offline (no remote
+  assets), and reduced-motion safe.
+- **Spaced difficulty + mastery (learning depth).** A new `src/learning/*`
+  layer gives the loop a memory: per-word correctness is tracked over time in a
+  Leitner/SM-2-lite scheduler (`wordStats.ts`), keyed by host entry id and
+  scoped per (stack, language), persisted offline-first to localStorage with an
+  in-memory fallback. The spaced-difficulty `WordSelector` (`selector.ts`)
+  resurfaces **due / weak** words as the quiz target and orders believable foils
+  as distractors — biasing choice only, never breaking the distinct-entries +
+  distinct-English dedup contract (selected target is validated within the pool;
+  distractor weighting is re-deduped after). A **gentle, hysteretic adaptive
+  difficulty** (`difficulty.ts`) reads rolling accuracy to lean harder into
+  resurfacing when the learner is hot and ease off when they struggle — it
+  tunes *content* pressure only and never touches note speed/spawn timing, so
+  the calibrated ~7s travel feel is preserved. A live **mastery readout**
+  (mastered · learning · due, with a mean-strength progress bar) is surfaced via
+  the foundation's `#mastery-readout` HUD slot and on the progression snapshot
+  (`mastery` / `difficulty`). Wired with **no Game.ts edits** — the learning
+  layer initialises from the progression module (which already receives the bus
+  + hostApi) and injects via `setDefaultWordSelector`.
+- **Synthwave audio palette (fully offline, procedural).** The WebAudio layer
+  splits the master into independent SFX + music sub-buses with a synthesized
+  convolution reverb (procedural impulse, no IR files). A new evolving
+  **MusicBed** — Cm pad + pulsing sub-bass + a combo-faded arp sparkle layer —
+  is driven by a lookahead scheduler; combo swells the music level, lifts tempo
+  (84→104 BPM), and cools on streak break (reduced-motion = lower steady level,
+  arp suppressed). Every SFX cue was elevated with reverb sends + sub-body, tuned
+  to the Cm tonic, plus a subtle per-wave verdict accent. A self-contained neon
+  **mute toggle** (token-styled, 44px touch target, safe-area insets,
+  localStorage-persisted) mutes the whole bus and pauses/resumes the bed. All
+  procedurally synthesized — zero binary assets, no network/fonts.
+- **Premium integration.** Merged the four disjoint premium streams (board /
+  shell / learning / audio) onto the foundation; verified the non-negotiable
+  contracts hold post-merge (distinct-entry + distinct-English wave dedup, TTS
+  speaks raw foreign text, `lingo_hero` pack id, delta-timed ~7s note travel,
+  fully offline — no remote URLs/fonts/fetch) and that the pack builds to
+  `dist/app.js` + `dist/app.css` and registers `window.CorpanGames["lingo_hero"]`.
+
 ### Fixed
 - **Correct answers were being scored as wrong (core logic).** Wave content had
   no dedup, so on a small per-language pool the *correct* English could appear on

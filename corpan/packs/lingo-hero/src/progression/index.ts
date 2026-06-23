@@ -16,6 +16,8 @@ import {
   saveState,
   type PersistedProgression,
 } from "./storage";
+import { initLearning, type LearningApi } from "../learning";
+import type { MasterySummary } from "../learning/mastery";
 
 /**
  * Progression layer — XP, levels, combo multipliers, streaks, high scores,
@@ -116,6 +118,19 @@ export interface ProgressionSnapshot {
   runs: number;
   /** End-of-run summary (null until a run ends; reset on next start). */
   lastRun: RunStats | null;
+
+  // --- learning extensions (spaced difficulty + mastery) ---
+  /**
+   * Spaced-repetition mastery for the active (stack, lang) scope: seen /
+   * mastered / learning / due counts, mean strength, coarse mastery level.
+   * Null before any word has been encountered. Surfaced here so any consumer
+   * holding the ProgressionApi (e.g. the HUD/game-over panel) can read mastery
+   * without importing the learning module. The HUD's live mastery readout slot
+   * is driven directly by the learning layer.
+   */
+  mastery: MasterySummary | null;
+  /** Gentle content-difficulty signal (0..1) for the active scope. */
+  difficulty: number;
 }
 
 export interface ProgressionApi {
@@ -146,6 +161,22 @@ export function initProgression(
 
   // Durable lifetime state.
   const persisted: PersistedProgression = loadState(stackId);
+
+  // --- learning layer (spaced difficulty + mastery) ----------------------
+  // Initialised here because Game.ts already hands progression the bus +
+  // hostApi, so this is the no-Game.ts-edit hook. Importing the learning module
+  // also registers the spaced-difficulty WordSelector as ContentManager's
+  // process-wide default (see learning/index.ts import-time side effect), so
+  // Game.ts's existing `new ContentManager(hostApi)` transparently picks it up.
+  // Fully guarded: if anything in the learning layer throws, the core game and
+  // progression keep working.
+  let learning: LearningApi | null = null;
+  try {
+    learning = initLearning(bus, hostApi);
+  } catch (err) {
+    console.error("[progression] learning init failed; continuing without:", err);
+    learning = null;
+  }
 
   // Live per-run session state (reset on gameStart).
   let mode: GameMode = GameMode.PRACTICE;
@@ -309,6 +340,8 @@ export function initProgression(
       lifetimeHits: persisted.lifetimeHits,
       runs: persisted.runs,
       lastRun,
+      mastery: learning?.getMastery() ?? null,
+      difficulty: learning?.getDifficulty() ?? 0,
     };
   };
 
@@ -323,6 +356,13 @@ export function initProgression(
     for (const off of offFns) off();
     offFns.length = 0;
     milestoneHandlers.clear();
+    // Tear down the learning layer (flushes per-scope word memory).
+    try {
+      learning?.dispose();
+    } catch (err) {
+      console.error("[progression] learning dispose threw:", err);
+    }
+    learning = null;
     // Final flush in case a run was abandoned mid-flight.
     if (runActive) persist();
   };
