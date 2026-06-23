@@ -1,0 +1,30 @@
+name: Idea / Bug
+description: Drop an idea, improvement, or bug into the Inbox. Keep it short — a worker will pick it up.
+labels: []
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What
+      description: One or two sentences. The idea, improvement, or bug.
+      placeholder: e.g. Juice Squeeze combo counter resets a frame too early on level-up.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: Pack / app / file / screen. Wherever you noticed it.
+      placeholder: e.g. corpan/packs/juice-squeeze, or "app settings screen"
+    validations:
+      required: false
+  - type: textarea
+    id: repro_or_desired
+    attributes:
+      label: Repro (bug) or Desired outcome (idea)
+      description: For a bug, how to see it. For an idea, what "done" looks like.
+      placeholder: |
+        Bug: open level 3, clear 5 tiles fast, watch the counter.
+        Idea: counter should hold for 200ms after the last clear.
+    validations:
+      required: false
