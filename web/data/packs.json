@@ -155,6 +155,44 @@
     "tagline": "A living city that turns every encounter into a lesson."
   },
   {
+    "id": "lingo-hero",
+    "name": "Lingo Hero",
+    "description": "A three-lane rhythm game: hear a word in the language you're learning, then strum the lane with the right English answer as the notes fall. Combos, score multipliers, Practice and Blitz modes.",
+    "status": "prototype",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/lingo-hero/manifest.json",
+    "zipUrl": "/corpan/packs/lingo-hero.zip",
+    "landingUrl": "/corpan/packs/lingo-hero/",
+    "avatarSource": "corpan/packs/lingo-hero/lingo-hero-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/lingo-hero",
+    "minAppVersion": "0.17.0",
+    "v1Listed": false,
+    "channel": "preview",
+    "packType": "game",
+    "purchase": {
+      "type": "free"
+    },
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "games",
+      "wild"
+    ],
+    "goodForClass": [
+      "learner",
+      "enjoyer",
+      "kid_native"
+    ],
+    "recommendOrder": 7,
+    "featuredFor": [
+      "games"
+    ],
+    "kidFriendly": true,
+    "tagline": "Feel the beat, learn the words. Strum the right answer as it falls."
+  },
+  {
     "id": "teletron",
     "name": "Teletron",
     "description": "A private-by-default waiting room for real conversations with other learners, softened and translated by local AI on both devices.",

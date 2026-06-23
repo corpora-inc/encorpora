@@ -39,3 +39,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   energy, and cinematic scene transitions (menu/play/game-over). Note motion
   trails, a breathing strum line, and animated fret buttons added in
   `Renderer.ts`. All GPU-cheap Canvas 2D, 60fps-targeted, offline.
+- Offline WebAudio SFX + haptics layer (`src/audio/*`): procedural,
+  zero-asset synthesis — combo-rising pentatonic hit chimes, miss thud,
+  passed-by descend, milestone arpeggio riser, combo-break deflate, menu/start/
+  game-over stings, lane-to-stereo panning, and `navigator.vibrate` patterns
+  gated on `prefers-reduced-motion`. AudioContext unlocks on first gesture.
+- Gamification/progression layer (`src/scoring/curve.ts`,
+  `src/progression/*`): combo→multiplier staircase, super-linear XP/level
+  curve, combo tiers (HOT STREAK→GODLIKE), S/A/B/C/D end-of-run grade, and
+  offline-first per-stack localStorage persistence with in-memory fallback.
+- Catalog registration: listed in `web/data/packs.json` on the `preview`
+  channel as a free `game` pack (`minAppVersion` 0.17.0).
+- Pages deploy wiring (`.github/workflows/deploy-pages.yml`): install, build,
+  zip (`manifest.json` + `dist/` + optional `assets/` fonts/audio), and copy
+  the pack into `web/io/out` for the static catalog.
