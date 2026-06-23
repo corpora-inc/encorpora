@@ -34,7 +34,14 @@ import {
 } from "../../store/scenesStore"
 import { selectGroove } from "../../store/selectedGroove"
 import { disarmAllRecord } from "../../store/recordArm"
-import { buildEmptySnapshot, buildRandomSnapshot } from "./startFresh"
+import {
+  buildEmptySnapshot,
+  buildRandomSnapshot,
+  buildSnapshotFromDraft,
+  rollDraftWorld,
+  type DraftFacet,
+  type DraftWorld,
+} from "./startFresh"
 import { compileDemo, getDemo } from "./demos"
 
 export interface ScenesState {
@@ -59,6 +66,12 @@ export interface ScenesController {
   /** Start fresh: an empty grid with randomized instruments / kit / harmony /
    *  meter (Randomize). One undoable step; also re-rolls the selected groove. */
   randomize(): void
+  /** Roll a fresh randomized-world DRAFT (every facet resolved), carrying over
+   *  any `lock`ed facets from `opts.from`. Uses the controller's rng. */
+  rollWorld(opts?: { from?: DraftWorld; lock?: ReadonlySet<DraftFacet> }): DraftWorld
+  /** Apply a resolved world draft as a fresh start (empty grid, one undoable
+   *  step; re-selects the groove, disarms record). */
+  applyWorld(draft: DraftWorld): void
   /** Start fresh: load a shipped demo song by id (no-op if unknown). Undoable. */
   loadDemo(demoId: string): boolean
   /** Rename a scene (ignored if blank). */
@@ -182,6 +195,19 @@ export const createScenesController = (
       const { snapshot, grooveId } = buildRandomSnapshot(rng)
       bus.dispatch({ t: "loadScene", snapshot })
       selectGroove(grooveId) // the selected-groove slice lives outside the doc
+      disarmAllRecord()
+      baseSnapshot = null
+      vanilla.setState({ activeSceneId: null, dirty: false })
+    },
+
+    rollWorld(opts = {}): DraftWorld {
+      return rollDraftWorld(rng, opts)
+    },
+
+    applyWorld(draft: DraftWorld): void {
+      const { snapshot, grooveId } = buildSnapshotFromDraft(draft)
+      bus.dispatch({ t: "loadScene", snapshot })
+      selectGroove(grooveId)
       disarmAllRecord()
       baseSnapshot = null
       vanilla.setState({ activeSceneId: null, dirty: false })

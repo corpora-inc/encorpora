@@ -18,6 +18,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   flips the selected synth through the preset corpus (one `setInstrument` per
   step = one undo) without opening the Instruments page. (Beat-Lounge-Plus;
   closes #337.)
+- "New…" world form (Scenes): turns one-tap Randomize into a controllable roll —
+  each of the eight facets (meter, tempo, key, kit, the three voices, groove)
+  shows its rolled value with a lock toggle; Reroll re-rolls only the unlocked
+  facets, Create applies the draft as a fresh empty-grid world (one undo). The
+  randomizer is refactored to build from an explicit `DraftWorld`
+  (`rollDraftWorld` / `buildSnapshotFromDraft`); `buildRandomSnapshot` is now a
+  thin all-random wrapper. (Beat-Lounge-Plus; closes #326.)
 
 ## [0.3.2] - 2026-06-19
 
