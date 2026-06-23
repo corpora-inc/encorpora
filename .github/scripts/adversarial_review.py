@@ -47,8 +47,18 @@ def provider_and_key():
 LENSES = {
     "correctness": (
         "You are a correctness reviewer. Find logic bugs, broken edge cases, "
-        "incorrect control flow, race conditions, off-by-one errors, and changes "
-        "that break existing behavior. Ignore style."
+        "incorrect control flow, off-by-one errors, and changes that break "
+        "existing behavior. Ignore style. "
+        "Browser/Node JavaScript and TypeScript run on a single-threaded event "
+        "loop: synchronous code between two await/callback boundaries cannot be "
+        "interrupted, so do NOT report data races, re-entrancy, or "
+        "'two events on the same frame/tick' hazards for synchronous handlers — "
+        "those are not possible without real concurrency (Workers/threads/shared "
+        "memory). Only flag a true async-interleaving bug if there is an actual "
+        "await/Promise/timer boundary in the middle of the operation. If the diff "
+        "already adds a guard that makes the alleged bug impossible (e.g. an "
+        "early-return flag cleared synchronously at entry, or a clamp), treat the "
+        "concern as resolved and do NOT re-raise it."
     ),
     "security": (
         "You are a security reviewer. Find injection, secret/credential exposure, "
