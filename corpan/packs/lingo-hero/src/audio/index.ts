@@ -2,7 +2,6 @@ import type { GameEventBus } from "../events";
 import { LaneIndex } from "../types";
 import { SynthEngine } from "./SynthEngine";
 import { MusicBed } from "./MusicBed";
-import { MuteToggle } from "./MuteToggle";
 import { Haptics } from "./haptics";
 import {
   playHit,
@@ -21,13 +20,18 @@ import {
  *   - combo-pitched hit chimes, milestone risers, a soft non-punitive miss,
  *   - a per-wave verdict accent that reinforces the learning moment,
  *   - a menu stinger + an energetic start swell + a dramatic game-over sting,
- *   - an EVOLVING ambient/music BED that intensifies with the combo, and
+ *   - an EVOLVING ambient/music BED (a LIBRARY of procedural tunes that rotate
+ *     on round/level transitions and pick up pace with progress), and
  *   - navigator.vibrate haptic taps.
  *
- * Plus a self-contained, neon-styled MUTE TOGGLE (persisted to localStorage)
- * and full prefers-reduced-motion respect.
+ * It also PAUSES (suspends the AudioContext) on `gamePaused` and RESUMES +
+ * resyncs the music scheduler on `gameResumed`, so audio never keeps running
+ * while the game loop is frozen in the background. Full prefers-reduced-motion
+ * respect throughout.
  *
- * STREAM: audio. Everything is wired off the bus; Game.ts is untouched. All
+ * The in-game mute BUTTON was removed (it overlapped the playfield and stole
+ * top space); a stored mute preference is still honored here so a future pause
+ * menu can flip it. STREAM: audio. Everything is wired off the bus; Game.ts is untouched. All
  * sound is synthesized at runtime (no bundled audio assets) so the pack stays
  * fully offline with zero binary weight. The AudioContext is unlocked on the
  * first `gameStart` (which originates from a click/touch handler) to satisfy
@@ -76,6 +80,16 @@ function milestoneCrossed(prev: number, value: number): number {
   return newTier > prevTier ? newTier : 0;
 }
 
+/** Read the persisted mute preference (set by a future pause menu). */
+const MUTE_STORAGE_KEY = "lingoHero.audio.muted";
+function readStoredMuted(): boolean {
+  try {
+    return localStorage.getItem(MUTE_STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 export function initAudioHaptics(bus: GameEventBus): AudioHandle {
   const reduced = prefersReducedMotion();
   const synth = new SynthEngine();
@@ -83,23 +97,10 @@ export function initAudioHaptics(bus: GameEventBus): AudioHandle {
   const haptics = new Haptics();
   const unsubs: Array<() => void> = [];
 
-  // Self-contained neon mute control. Created up front; attached to the HUD
-  // overlay once it exists (first menu/start). Toggling mutes the whole bus
-  // (SFX + music) and the bed pauses/resumes its scheduler accordingly.
-  const mute = new MuteToggle((muted) => {
-    synth.setMuted(muted);
-    if (muted) {
-      // Stop scheduling so a muted run isn't quietly burning the clock.
-      music.stop(0.1);
-    } else if (synth.ready) {
-      music.start();
-    }
-  });
-
-  /** Sync engine + bed to the persisted mute preference once audio is live. */
-  const applyMute = () => {
-    synth.setMuted(mute.isMuted);
-  };
+  // Honor a stored mute preference (no in-game button anymore; a future pause
+  // menu can write this key). Default = unmuted.
+  let muted = readStoredMuted();
+  const applyMute = () => synth.setMuted(muted);
 
   // --- gameStart: unlock audio (first gesture) + swell + start the bed -----
   unsubs.push(
@@ -107,10 +108,12 @@ export function initAudioHaptics(bus: GameEventBus): AudioHandle {
       // Critical: this fires from the menu click/touch handler, so it is a
       // valid user-gesture context to create/resume the AudioContext.
       synth.unlock();
+      muted = readStoredMuted();
       applyMute();
-      mute.attach();
       playStart(synth);
-      if (!mute.isMuted) {
+      // Fresh tune rotation per run; gentle opener leads (good for beginners).
+      music.chooseRotation();
+      if (!muted) {
         music.setCombo(0);
         music.start();
       }
@@ -122,18 +125,46 @@ export function initAudioHaptics(bus: GameEventBus): AudioHandle {
     bus.on("menuShown", () => {
       // The very first menu may show before any gesture; unlock() is a no-op
       // until then, so this simply stays silent until audio is permitted.
-      mute.attach();
       if (synth.ready) {
+        muted = readStoredMuted();
         applyMute();
         playMenu(synth);
         // Keep a soft menu bed running if not muted, otherwise hush it.
-        if (!mute.isMuted) {
+        if (!muted) {
           music.cool();
           music.start();
         } else {
           music.stop(0.3);
         }
       }
+    })
+  );
+
+  // --- gamePaused / gameResumed: PAUSE + RESUME audio with the loop --------
+  // Suspending the AudioContext freezes its clock so the bed's scheduler can't
+  // run ahead of the frozen game loop (the background-brick desync). On resume
+  // we resync the bed's beat baseline to the live clock.
+  unsubs.push(
+    bus.on("gamePaused", () => {
+      music.stop(0.15);
+      synth.suspend();
+    })
+  );
+  unsubs.push(
+    bus.on("gameResumed", () => {
+      synth.resume();
+      if (synth.ready && !muted) {
+        music.resync();
+        music.start();
+      }
+    })
+  );
+
+  // --- roundAdvance: rotate to a fresh tune + pick up pace with level ------
+  unsubs.push(
+    bus.on("roundAdvance", (e) => {
+      music.setLevel(e.level);
+      if (synth.ready && !muted) music.nextTune();
     })
   );
 
@@ -209,7 +240,6 @@ export function initAudioHaptics(bus: GameEventBus): AudioHandle {
       }
       unsubs.length = 0;
       haptics.cancel();
-      mute.dispose();
       music.dispose();
       synth.dispose();
     },

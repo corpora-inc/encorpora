@@ -44,22 +44,20 @@ export interface HudCallbacks {
   /** User asked to return to the main menu. */
   onShowMenu: () => void;
   /**
-   * User tapped the audio-REPLAY button (slot b): re-speak the current prompt.
-   * Optional so older call sites that don't pass it still compile; the button
-   * is wired only when present.
+   * User tapped to CONTINUE past the phrase-complete result linger (advance to
+   * the next phrase immediately instead of waiting out the dwell). Optional so
+   * older call sites still compile.
    */
-  onReplayPrompt?: () => void;
+  onContinue?: () => void;
 }
 
 export class Hud {
   private root: HTMLElement;
   private menuScreen: HTMLElement;
   private hudPanel: HTMLElement;
-  private topBar!: HTMLElement;
   private gameOverScreen: HTMLElement;
   private questionBox: HTMLElement;
   private romanizationEl: HTMLElement;
-  private instructionEl: HTMLElement;
   private assembledEl: HTMLElement;
   private feedbackCard: HTMLElement;
   private masteryEl: HTMLElement;
@@ -121,14 +119,15 @@ export class Hud {
       </div>
 
       <div class="hud hidden" id="hud">
+        <!-- Transparent / translucent OVERLAY header: full screen width, minimal
+             height (just prompt + building pills). No title. Falling notes spawn
+             at the very top and are seen behind it. pointer-events:none so it
+             never blocks taps on the lanes underneath. -->
         <div class="top-bar">
           <div class="prompt-stack">
-            <!-- One clear instruction cue. -->
-            <p class="lh-instruction" id="lh-instruction">Catch the translation</p>
-            <!-- The PROMPT in the language you already know. Tap it to hear the
-                 target translation again ("hear again" = tap the prompt). -->
-            <button class="question-box" id="question-box" type="button"
-                    aria-live="polite" aria-label="Tap to hear the translation"></button>
+            <!-- The PROMPT in the language you already know. Display only — it
+                 wraps/auto-fits so a long phrase is never cut off. -->
+            <div class="question-box" id="question-box" aria-live="polite"></div>
             <!-- (a) romanization line under the prompt -->
             <div class="romanization-line" id="romanization-line" aria-live="polite" hidden></div>
             <!-- The target-phrase strip that ASSEMBLES as words are caught. -->
@@ -191,11 +190,9 @@ export class Hud {
 
     this.menuScreen = this.root.querySelector("#menu")!;
     this.hudPanel = this.root.querySelector("#hud")!;
-    this.topBar = this.root.querySelector(".top-bar")!;
     this.gameOverScreen = this.root.querySelector("#game-over")!;
     this.questionBox = this.root.querySelector("#question-box")!;
     this.romanizationEl = this.root.querySelector("#romanization-line")!;
-    this.instructionEl = this.root.querySelector("#lh-instruction")!;
     this.assembledEl = this.root.querySelector("#lh-assemble")!;
     this.feedbackCard = this.root.querySelector("#feedback-card")!;
     this.masteryEl = this.root.querySelector("#mastery-readout")!;
@@ -227,12 +224,10 @@ export class Hud {
       window.dispatchEvent(new CustomEvent("corpan:exit"))
     );
 
-    // "Hear again" = tap the PROMPT. There is no second speaker button (one
-    // clear audio control only — the mute toggle). Wired iff the host provided
-    // a replay callback.
-    if (this.callbacks.onReplayPrompt) {
-      this.questionBox.classList.add("is-tappable");
-      this.bindButton("#question-box", () => this.callbacks.onReplayPrompt!());
+    // The held result card is itself a tap-to-continue surface (it sits in the
+    // pointer-events:none overlay but takes pointer-events:auto while held).
+    if (this.callbacks.onContinue) {
+      this.bindButton("#feedback-card", () => this.callbacks.onContinue!());
     }
 
     this.subscribe();
@@ -262,10 +257,6 @@ export class Hud {
     this.romanizationEl.hidden = t.length === 0;
   }
 
-  /** Set the one-line instruction cue (e.g. "Catch the translation"). */
-  setInstruction(text: string): void {
-    this.instructionEl.textContent = text;
-  }
 
   /**
    * Render the ASSEMBLING target-phrase strip: `words` are the target words
@@ -339,10 +330,11 @@ export class Hud {
         <div class="fb-arrow" aria-hidden="true">&#8595;</div>
         <div class="fb-english" dir="auto">${this.escape(data.english)}</div>
       </div>
+      <div class="fb-continue" hidden>Tap to continue</div>
     `;
     this.feedbackCard.hidden = false;
     // Restart the entrance animation each reveal.
-    this.feedbackCard.classList.remove("is-in");
+    this.feedbackCard.classList.remove("is-in", "is-held");
     void this.feedbackCard.offsetWidth;
     this.feedbackCard.classList.add("is-in");
 
@@ -355,10 +347,38 @@ export class Hud {
     }
   }
 
+  /**
+   * HOLD the just-shown result card for `dwellMs` so the player can READ the
+   * full assembled target phrase + its meaning before the next phrase loads (a
+   * key learning beat). Cancels any auto-hide from showFeedback and reveals the
+   * "Tap to continue" affordance. The card stays up until the next setQuestion()
+   * (new round) clears it — Game also auto-advances when the dwell elapses, so
+   * the player is never stuck. We do NOT hide on a timer here: the card lingers
+   * visibly through the whole dwell and the new round's setQuestion() removes it.
+   */
+  holdResult(dwellMs: number): void {
+    if (this.feedbackCard.hidden) return;
+    if (this.feedbackTimer) {
+      clearTimeout(this.feedbackTimer);
+      this.feedbackTimer = 0;
+    }
+    this.feedbackCard.classList.add("is-held");
+    const hint = this.feedbackCard.querySelector<HTMLElement>(".fb-continue");
+    if (hint) {
+      // Reveal the tap-to-continue cue shortly into the dwell, so the player
+      // reads the result first, then sees they can advance early.
+      const reveal = Math.min(900, Math.max(300, dwellMs * 0.3));
+      window.setTimeout(() => {
+        if (!this.feedbackCard.hidden && hint.isConnected) hint.hidden = false;
+      }, reveal);
+    }
+  }
+
   /** (c) Hide/clear the feedback card. */
   hideFeedback(): void {
     this.feedbackCard.hidden = true;
     this.feedbackCard.innerHTML = "";
+    this.feedbackCard.classList.remove("is-held");
     if (this.feedbackTimer) clearTimeout(this.feedbackTimer);
   }
 
@@ -403,37 +423,6 @@ export class Hud {
     this.root.setAttribute("data-text-size", lang.textSize);
   }
 
-  /**
-   * Measure the bottom of the HUD band — the y, in the canvas's LOCAL
-   * coordinate space, below which the falling-note play area is clear of every
-   * top HUD element. This reserves room for BOTH the centered prompt stack
-   * (instruction + question chip + romanization + assembling strip) AND the
-   * top-corner controls (exit / mute), so notes are never spawned occluded
-   * behind them. Returns a px offset from the canvas top (>= 0).
-   *
-   * `canvasRect` is the canvas's bounding rect; we subtract its top so the
-   * result is canvas-local (the canvas may be offset within the host
-   * container). The exit + mute controls live on `.ui-layer` at a fixed top
-   * inset; we read whichever live element sits lowest and add a small breathing
-   * gap so the first row of notes clears the HUD with margin.
-   */
-  measureHudBandBottom(canvasRect: { top: number }): number {
-    const gap = 14; // breathing room below the HUD before notes appear
-    let lowest = 0;
-    const consider = (el: Element | null) => {
-      if (!el) return;
-      const r = (el as HTMLElement).getBoundingClientRect();
-      if (r.height <= 0 && r.width <= 0) return; // hidden / not laid out
-      lowest = Math.max(lowest, r.bottom - canvasRect.top);
-    };
-    // Centered prompt stack (the source-sentence chip lives here).
-    consider(this.topBar);
-    // Top-corner controls: exit (in this.root) + mute (mounted on .ui-layer).
-    consider(this.root.querySelector("#lh-exit"));
-    consider(document.querySelector(".na-mute-toggle"));
-    return lowest > 0 ? lowest + gap : 0;
-  }
-
   dispose(): void {
     for (const off of this.offFns) off();
     this.offFns = [];
@@ -459,7 +448,6 @@ export class Hud {
         this.hideFeedback();
         this.setRomanization("");
         this.setAssembled([], 0);
-        this.setInstruction("Catch the translation");
         this.runSeen = 0;
         this.runCorrect = 0;
         this.refreshMastery();
@@ -493,6 +481,9 @@ export class Hud {
       this.bus.on("wave-resolved", (e) => {
         this.runSeen += 1;
         if (e.correct) this.runCorrect += 1;
+        // No auto-hide: Game.holdResult() controls the LINGER dwell so the
+        // player can read the assembled phrase + meaning; the next round's
+        // setQuestion() clears the card.
         this.showFeedback(
           {
             foreign: e.word.foreign,
@@ -501,8 +492,7 @@ export class Hud {
             correct: e.correct,
             outcome: e.outcome,
           },
-          // Correct answers flash by; misses linger so the meaning sinks in.
-          e.correct ? 1400 : 2600
+          0
         );
         this.refreshMastery();
       })

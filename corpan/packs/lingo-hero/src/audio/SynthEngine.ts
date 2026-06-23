@@ -156,6 +156,36 @@ export class SynthEngine {
     }
   }
 
+  /**
+   * PAUSE all audio when the app/tab is BACKGROUNDED. Suspending the
+   * AudioContext freezes its clock so the music bed's scheduler (which queues
+   * beats off ctx.currentTime) doesn't keep running silently while the game
+   * loop is frozen — the root cause of the "audio kept playing, game bricked on
+   * return" desync. Never throws; no-op if not yet unlocked.
+   */
+  suspend(): void {
+    if (!this.ctx) return;
+    try {
+      if (this.ctx.state === "running") void this.ctx.suspend();
+    } catch {
+      /* degrade silently */
+    }
+  }
+
+  /**
+   * RESUME audio after returning to the foreground. Mirrors suspend(); the
+   * AudioContext clock picks up where it left off so the bed's lookahead math
+   * stays coherent. No-op if not unlocked or already running.
+   */
+  resume(): void {
+    if (!this.ctx || !this.unlocked) return;
+    try {
+      if (this.ctx.state === "suspended") void this.ctx.resume();
+    } catch {
+      /* degrade silently */
+    }
+  }
+
   get isMuted(): boolean {
     return this.muted;
   }

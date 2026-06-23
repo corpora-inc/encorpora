@@ -6,16 +6,71 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-06-24
+
+A learning-beat + anti-brick + chrome pass: the phrase-complete result now
+LINGERS as a celebration you can read, the game can no longer brick on
+backgrounding or idle, the top header is a compact full-width transparent
+overlay (no title, no in-game audio buttons), the bottom HUD respects the
+Android safe area, and the music is now a rotating library of tunes.
+
+### Added
+- **Result LINGER + celebration.** When a phrase is completed, the round now
+  HOLDS the result card (target phrase → primary meaning) noticeably longer so
+  you can read the full assembled phrase and let it sink in — a key learning
+  beat. The dwell scales with phrase length and clean-ness (a clean, high-combo
+  phrase lands longer), and a satisfying fireworks burst (existing particle
+  system, scaled by performance) punctuates it. A "Tap to continue" affordance
+  lets you advance early; otherwise it auto-advances after the dwell so you are
+  never stuck. (`Game.enterResultLinger` / `result-celebrate` event /
+  `Hud.holdResult`.)
+- **Music VARIETY.** The single looping tune is now a LIBRARY of 16 procedural,
+  fully-synthesized tunes spanning calm openers to driving outrun. A random
+  rotation is picked per session (the gentle beginner tune always opens); the
+  tune CHANGES on round/level transitions and picks up pace as your level and
+  combo climb — transitioning at bar boundaries so it never jars. (`MusicBed`
+  tune library + `roundAdvance` event.)
+
 ### Fixed
-- **Notes no longer spawn behind the HUD.** The top HUD band (source-sentence
-  chip + exit/mute controls) was sharing pixels with the top of the falling-note
-  lanes, so notes spawned clipped/occluded behind the prompt chip and audio
-  button — shortening read-time and hiding which word/lane was incoming. The
-  game now measures the HUD band each resize / round and reserves a clear play
-  area below it (`LaneSystem.setPlayTop`); the Renderer clips both note passes to
-  that play area and fades each card in over a short ramp just below the band, so
-  every note is fully visible from the moment it appears. Gameplay timing, hit
-  detection, input, and the e2e contracts are unchanged.
+- **No more BACKGROUND brick.** When the app/tab is backgrounded the rAF loop
+  paused but WebAudio kept running, desyncing the chart on return (notes stopped,
+  strip half-filled, no fail screen). The game now uses the Page Visibility API
+  (+ window blur / pagehide) to PAUSE the game loop AND suspend the AudioContext
+  on hidden, and to RESUME cleanly on visible — rebasing the delta-time and chart
+  timeline by the paused duration so nothing teleports, and resyncing the music
+  scheduler. The loop and audio freeze and thaw together.
+- **No more IDLE brick (round always resolves).** If a chart's notes all pass
+  without the phrase being completed (e.g. no input), the round now always
+  resolves — missed/passed words count toward a fail, the result lingers, and the
+  next phrase loads. A watchdog force-resolves any exhausted-but-unresolved chart
+  so the player can never be left with empty lanes + a half-filled strip + no
+  result.
+- **Bottom HUD respects the Android safe area.** The compact bottom strip
+  (level/progress + SCORE/COMBO) now adds `env(safe-area-inset-bottom)` padding
+  and floors its position above the inset, so it clears the gesture/nav bar and
+  is never clipped or overlapped.
+
+### Changed
+- **Reclaimed top space; notes enter from the very top.** Removed the
+  "Catch the translation" title. The top header (prompt + assembling strip) is
+  now a TRANSPARENT, full-width, edge-to-edge overlay with minimal padding; the
+  falling-note lane runs full height to the very top edge so notes spawn at the
+  top and are seen behind the translucent header as they enter (header text stays
+  readable above them and never blocks taps on the lanes —
+  `pointer-events:none`). Replaces the old reserved-HUD-band approach.
+- **Long prompts never truncate.** The prompt uses the full screen width and
+  wraps / auto-fits, so even a long sentence ("When my passport disappeared at
+  the hostel") always shows in full.
+- **Exit-only chrome.** Removed the in-game MUTE button and the redundant
+  "hear native phrase" button — they fell through to the game board and wasted
+  top space (the native prompt does not need to be spoken; the TARGET word is
+  still spoken on catch). Only a small Exit button remains, and it captures its
+  own taps (no fall-through). A mute can return later in a pause menu (the stored
+  mute preference is still honored).
+
+### Tests
+- e2e: the tap-through contract now targets the Exit button (mute removed), and
+  a new assertion verifies a round with NO INPUT eventually resolves (no brick).
 
 ## [0.4.0] - 2026-06-23
 
