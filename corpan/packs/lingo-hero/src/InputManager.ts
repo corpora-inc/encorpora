@@ -70,7 +70,13 @@ export class InputManager {
    * the lane against the CANVAS rect.
    */
   private setupPointer() {
-    this.container.addEventListener(
+    // Listen on the CANVAS (z-index 1), NOT the container. The HUD/controls live
+    // in a separate `pointer-events:none` overlay ABOVE the canvas; only the
+    // buttons are `pointer-events:auto`. So a tap on a button (mute / replay /
+    // exit) is handled by that button and NEVER reaches the canvas — no
+    // tap-through into a lane — while a tap on the play area passes through the
+    // transparent overlay to the canvas and fires a lane.
+    this.canvas.addEventListener(
       "pointerdown",
       (e: PointerEvent) => {
         e.preventDefault();

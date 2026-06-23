@@ -7,3 +7,4 @@ node_modules/
 # Editor/OS cruft
 .DS_Store
 *.log
+test/e2e/out/
