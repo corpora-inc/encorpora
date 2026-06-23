@@ -3,45 +3,82 @@ import { HostApi, EntryOut } from "./sdk/types";
 export class ContentManager {
   constructor(private hostApi: HostApi) {}
 
-  async getWaveContent(): Promise<{
-    target: EntryOut;
-    distractors: EntryOut[];
-  }> {
-    // We need 3 items: 1 target, 2 distractors
-    let entries: EntryOut[] = [];
-    
-    // Attempt to get random entries
+  private englishOf(e: EntryOut): string {
+    return (
+      e.translations.find((t) => t.language_code === "en")?.text || ""
+    ).trim();
+  }
+
+  private hasForeign(e: EntryOut): boolean {
+    return e.translations.some((t) => t.language_code !== "en" && t.text.trim());
+  }
+
+  private async fetchBatch(n: number): Promise<EntryOut[]> {
     if (this.hostApi.getRandomEntries) {
-      entries = await this.hostApi.getRandomEntries(3);
-    } else {
-      // Fallback if bulk fetch not available
-      const p1 = this.hostApi.getRandomEntry ? this.hostApi.getRandomEntry() : Promise.resolve(null);
-      const p2 = this.hostApi.getRandomEntry ? this.hostApi.getRandomEntry() : Promise.resolve(null);
-      const p3 = this.hostApi.getRandomEntry ? this.hostApi.getRandomEntry() : Promise.resolve(null);
-      
-      const results = await Promise.all([p1, p2, p3]);
-      entries = results.filter(e => e !== null) as EntryOut[];
+      return (await this.hostApi.getRandomEntries(n)) ?? [];
     }
-    
-    // Ensure unique entries if possible (simple dedup by ID)
-    // For a prototype, raw fetch is okay.
+    if (this.hostApi.getRandomEntry) {
+      const out = await Promise.all(
+        Array.from({ length: n }, () => this.hostApi.getRandomEntry!())
+      );
+      return out.filter(Boolean) as EntryOut[];
+    }
+    return [];
+  }
 
-    if (entries.length === 0) {
-        throw new Error("No content available");
+  /**
+   * Returns one target + up to two distractors that are GUARANTEED to be
+   * distinct entries with DISTINCT English answers. This is the core
+   * correctness contract: the correct English must appear on exactly ONE note,
+   * so tapping the right answer can never be scored wrong. We accumulate across
+   * a few random batches to dedup — which matters when a language's entry pool
+   * is small (the prior code did no dedup, so the correct answer often appeared
+   * on two notes and the "wrong" copy beat the player down).
+   */
+  async getWaveContent(
+    activeLang: string
+  ): Promise<{ target: EntryOut; distractors: EntryOut[] }> {
+    const byId = new Map<number, EntryOut>();
+    for (let attempt = 0; attempt < 4 && byId.size < 6; attempt++) {
+      for (const e of await this.fetchBatch(6)) {
+        if (e && !byId.has(e.entry_id)) byId.set(e.entry_id, e);
+      }
+    }
+    const pool = [...byId.values()];
+    if (pool.length === 0) throw new Error("No content available");
+
+    // Target must have a foreign prompt AND an English answer; prefer one whose
+    // prompt is in the user's active language.
+    const valid = pool.filter((e) => this.hasForeign(e) && this.englishOf(e));
+    const target =
+      valid.find((e) =>
+        e.translations.some(
+          (t) => t.language_code === activeLang && t.text.trim()
+        )
+      ) ??
+      valid[0] ??
+      pool[0];
+
+    // Distinct answers only: never repeat the target's English on a distractor.
+    const seenEnglish = new Set<string>([this.englishOf(target).toLowerCase()]);
+    const distractors: EntryOut[] = [];
+    for (const e of pool) {
+      if (e.entry_id === target.entry_id) continue;
+      const en = this.englishOf(e);
+      const key = en.toLowerCase();
+      if (!en || seenEnglish.has(key)) continue;
+      seenEnglish.add(key);
+      distractors.push(e);
+      if (distractors.length === 2) break;
     }
 
-    // Pick one as target
-    const target = entries[0];
-    const distractors = entries.slice(1);
-    
     return { target, distractors };
   }
 
   /**
-   * Speak RAW text in the given language. `rate` is accepted for signature
-   * symmetry with the host stack config; the current HostApi.speak takes
-   * (lang, text) and reads rate from its own stack config, so rate is a
-   * forward-compat hint here (host applies its configured rate).
+   * Speak RAW text in the given language. The current HostApi.speak takes
+   * (lang, text) and reads rate from its own stack config, so `rate` is a
+   * forward-compat hint the host already applies.
    */
   speak(text: string, lang: string, _rate?: number) {
     this.hostApi.speak(lang, text);

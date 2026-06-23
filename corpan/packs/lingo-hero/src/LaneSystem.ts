@@ -36,6 +36,13 @@ export class LaneSystem {
     return this.startX + (index * this.laneWidth) + (this.laneWidth / 2);
   }
 
+  // Inverse of getLaneX, honoring the centered/capped lane band. Taps in the
+  // side margins clamp to the nearest edge lane. Keeps input lanes == drawn lanes.
+  laneAtX(x: number): LaneIndex {
+    const idx = Math.floor((x - this.startX) / this.laneWidth);
+    return Math.max(0, Math.min(2, idx)) as LaneIndex;
+  }
+
   getStrumLineY(): number {
     return this.canvasHeight * this.STRUM_LINE_Y_RATIO;
   }
@@ -56,12 +63,19 @@ export class LaneSystem {
     const hitY = this.getStrumLineY();
     const hitZoneRadius = this.noteRadius * 2.4; // Generous, forgiving timing window
 
-    // Find the note in this lane that is closest to the strum line
-    // and hasn't been hit yet
-    const hittableNote = notes
-      .filter(n => n.lane === lane && !n.hit && !n.missed)
-      .find(n => Math.abs(n.y - hitY) < hitZoneRadius);
-
-    return hittableNote || null;
+    // The hittable note in this lane CLOSEST to the strum line (the prior code
+    // returned the first in array order, which could grab the wrong note when
+    // two were on screen).
+    let best: Note | null = null;
+    let bestDist = Infinity;
+    for (const n of notes) {
+      if (n.lane !== lane || n.hit || n.missed) continue;
+      const dist = Math.abs(n.y - hitY);
+      if (dist < hitZoneRadius && dist < bestDist) {
+        best = n;
+        bestDist = dist;
+      }
+    }
+    return best;
   }
 }
