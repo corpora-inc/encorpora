@@ -1,32 +1,18 @@
 name: CI
 
-# Lightweight build gate on every PR and push to main.
-# Path-filtered so unrelated changes (books/, voices/, etc.) don't trigger.
+# Runs on EVERY PR to main and every merge_group (the merge queue), so the
+# `ci-gate` summary status always reports. A required check that is filtered out
+# at the workflow level would leave unrelated PRs "expecting" it forever and
+# deadlock the queue. Path filtering instead lives in the `changes` job below,
+# which skips the heavy build/test jobs when their area is untouched. The
+# `changes` job is cheap (checkout + git diff), so running it on every PR is fine.
 
 on:
   pull_request:
-    paths:
-      - "corpan/corpan-app/**"
-      - "corpan/packs/**"
-      - "corpan/infra/terraform/**"
-      - "web/io/**"
-      - "web/data/**"
-      - "web/pages/**"
-      - "web/scripts/**"
-      - ".github/workflows/ci.yml"
-      - ".github/workflows/deploy-pages.yml"
+    branches: ["main"]
+  merge_group:
   push:
     branches: ["main"]
-    paths:
-      - "corpan/corpan-app/**"
-      - "corpan/packs/**"
-      - "corpan/infra/terraform/**"
-      - "web/io/**"
-      - "web/data/**"
-      - "web/pages/**"
-      - "web/scripts/**"
-      - ".github/workflows/ci.yml"
-      - ".github/workflows/deploy-pages.yml"
   workflow_dispatch: {}
 
 concurrency:
@@ -50,8 +36,8 @@ jobs:
       - id: filter
         name: Detect changed areas
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha || github.sha }}
           EVENT_NAME: ${{ github.event_name }}
         run: |
           set -euo pipefail
@@ -157,7 +143,7 @@ jobs:
         run: npm run build
 
   changed-packs:
-    name: changed packs · build
+    name: changed packs · test + build
     needs: changes
     if: needs.changes.outputs.packs == 'true'
     runs-on: ubuntu-latest
@@ -168,10 +154,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Build changed packs
+      - name: Test, typecheck, validate manifest, build changed packs
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha || github.sha }}
         run: |
           set -euo pipefail
 
@@ -198,7 +184,30 @@ jobs:
             fi
 
             echo "::group::${pack}"
+
+            # Manifest schema sanity: must be valid JSON with id + version.
+            if [ -f "${dir}/manifest.json" ]; then
+              node -e '
+                const fs = require("fs");
+                const m = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+                for (const k of ["id", "version"]) {
+                  if (!m[k]) { console.error(`manifest.json missing required key: ${k}`); process.exit(1); }
+                }
+                console.log(`manifest ok: ${m.id}@${m.version}`);
+              ' "${dir}/manifest.json"
+            else
+              echo "Note: ${pack} has no manifest.json (source-only pack)."
+            fi
+
             npm install --prefix "${dir}" --legacy-peer-deps
+
+            # Run the pack's own test + typecheck when defined (back-compat gate).
+            if node -e 'process.exit(require(process.argv[1]).scripts?.test ? 0 : 1)' "${dir}/package.json" 2>/dev/null; then
+              npm run --prefix "${dir}" test
+            else
+              echo "No test script for ${pack}; skipping."
+            fi
+            npm run --prefix "${dir}" tsc --if-present
             npm run --prefix "${dir}" build --if-present
             echo "::endgroup::"
           done
@@ -222,3 +231,28 @@ jobs:
       - name: Validate
         working-directory: corpan/infra/terraform
         run: terraform validate
+
+  # Single summary status that aggregates every job above. THIS is the context to
+  # mark as a required check on `main` — it always runs (if: always()) and always
+  # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.
+  # Skipped needs are fine; any failure or cancellation fails the gate.
+  ci-gate:
+    name: ci-gate
+    needs: [changes, corpan-app, lambda, web-io, changed-packs, terraform]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require all CI jobs to have passed or been skipped
+        env:
+          RESULTS: ${{ join(needs.*.result, ',') }}
+        run: |
+          set -euo pipefail
+          echo "needs results: ${RESULTS}"
+          IFS=',' read -ra arr <<< "${RESULTS}"
+          for r in "${arr[@]}"; do
+            if [ "${r}" = "failure" ] || [ "${r}" = "cancelled" ]; then
+              echo "::error::A required CI job did not pass (result: ${r})."
+              exit 1
+            fi
+          done
+          echo "All required CI jobs passed or were skipped."
