@@ -37,6 +37,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Home voice switcher: a long instrument name no longer pushes the next arrow off
   the safe screen zone — the name truncates in a stable-width slot and the arrows
   hold their position. (Beat-Lounge-Plus)
+- Instrument score now shows the **full instrument range** (88-key piano, A0–C8),
+  scrollable, instead of a ~3-octave window — notes can be seen and placed
+  anywhere. Opens scrolled to ~middle C; the +/− generator still works in the
+  singable register. (Beat-Lounge-Plus; closes #394.)
 
 ## [0.3.2] - 2026-06-19
 
