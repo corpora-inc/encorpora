@@ -43,6 +43,14 @@ import {
 export interface AudioHandle {
   /** Close the AudioContext and detach listeners. */
   dispose: () => void;
+  /**
+   * Introspection for the e2e harness (iOS unlock-wiring proof). Reports the
+   * live AudioContext.state ("suspended" | "running" | "closed") or null if no
+   * context exists yet. NOT used by gameplay — purely a test/diagnostic hook.
+   */
+  contextState: () => AudioContextState | null;
+  /** True once a real user gesture has unlocked (created/resumed) the context. */
+  isUnlocked: () => boolean;
 }
 
 /** Combo milestone every N hits triggers the celebratory riser. */
@@ -119,6 +127,58 @@ export function initAudioHaptics(bus: GameEventBus): AudioHandle {
       }
     })
   );
+
+  // --- iOS FIRST-GESTURE UNLOCK (issue #428) -------------------------------
+  // On iOS/iPadOS Safari the AudioContext is born `suspended` and Safari will
+  // ONLY transition it to `running` if resume()/the first sound is initiated
+  // from INSIDE a real user-gesture handler (pointerdown/touchend/click). The
+  // menu Practice button already drives `gameStart` -> synth.unlock(), but a
+  // player's FIRST tap may land elsewhere (a canvas lane tap, a tap-to-begin),
+  // and on iOS that first tap is the one gesture we must spend on the unlock.
+  // So we also unlock from the very first window-level gesture, then detach.
+  // unlock() creates-then-resumes; resuming an already-running context is a
+  // harmless no-op, so this never regresses Android/desktop (where the context
+  // is already permitted) and never double-creates (unlock() is idempotent).
+  let gestureUnlockDetach: (() => void) | null = null;
+  if (typeof window !== "undefined") {
+    const onFirstGesture = () => {
+      synth.unlock();
+      gestureUnlockDetach?.();
+    };
+    // touchend + click cover iOS Safari's accepted gesture set; pointerdown
+    // covers the canvas InputManager taps and mouse/desktop. `once` lets the
+    // browser auto-remove, and we also detach explicitly after the first fire.
+    const opts = { capture: true, passive: true } as AddEventListenerOptions;
+    const events: Array<keyof WindowEventMap> = [
+      "pointerdown",
+      "touchend",
+      "click",
+    ];
+    for (const ev of events) window.addEventListener(ev, onFirstGesture, opts);
+    gestureUnlockDetach = () => {
+      for (const ev of events)
+        window.removeEventListener(ev, onFirstGesture, opts);
+      gestureUnlockDetach = null;
+    };
+    unsubs.push(() => gestureUnlockDetach?.());
+  }
+
+  // --- iOS RESUME-FROM-BACKGROUND (issue #428) -----------------------------
+  // iOS suspends the AudioContext whenever the app/tab is backgrounded — even
+  // when the game itself was not paused (e.g. sitting on the menu). The Game's
+  // own pause/resume gate (`gameResumed`) only fires if the LOOP was paused, so
+  // a menu-time background->foreground would leave audio stuck `suspended` and
+  // silent. Resume on every visibilitychange->visible directly, independent of
+  // the loop pause gate. Resuming a running context is a no-op (no regression).
+  if (typeof document !== "undefined") {
+    const onVisible = () => {
+      if (!document.hidden) synth.resume();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    unsubs.push(() =>
+      document.removeEventListener("visibilitychange", onVisible)
+    );
+  }
 
   // --- gameStart: unlock audio (first gesture) + swell + start the bed -----
   unsubs.push(
@@ -258,6 +318,8 @@ export function initAudioHaptics(bus: GameEventBus): AudioHandle {
   );
 
   return {
+    contextState: () => synth.state,
+    isUnlocked: () => synth.isUnlocked,
     dispose: () => {
       for (const off of unsubs) {
         try {

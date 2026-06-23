@@ -111,6 +111,19 @@ export class SynthEngine {
     return this.unlocked && this.ctx !== null && this.ctx.state === "running";
   }
 
+  /** Whether a user gesture has unlocked (created/resumed) the context. */
+  get isUnlocked(): boolean {
+    return this.unlocked;
+  }
+
+  /**
+   * The live AudioContext.state, or null if no context has been created yet.
+   * Used by the e2e harness to prove the iOS unlock wiring fires on a gesture.
+   */
+  get state(): AudioContextState | null {
+    return this.ctx ? this.ctx.state : null;
+  }
+
   /** Raw context accessor for advanced subsystems (music bed). Null until unlocked. */
   get context(): AudioContext | null {
     return this.ctx;
