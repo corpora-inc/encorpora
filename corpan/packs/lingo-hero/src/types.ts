@@ -256,6 +256,15 @@ export interface ResultCelebrateEvent {
 }
 
 /**
+ * Emitted when the player toggles the in-game MUTE control. The audio stream
+ * applies it live (and the preference is also persisted so it carries across
+ * runs). One mute control owns this — there is exactly one in the HUD.
+ */
+export interface MuteChangeEvent {
+  muted: boolean;
+}
+
+/**
  * The full event map. Keys are event names, values are payload types.
  * `GameEventBus` (src/events.ts) is typed against this map.
  */
@@ -272,6 +281,7 @@ export interface GameEventMap {
   gameResumed: GameResumedEvent;
   roundAdvance: RoundAdvanceEvent;
   "result-celebrate": ResultCelebrateEvent;
+  muteChange: MuteChangeEvent;
 }
 
 export type GameEventName = keyof GameEventMap;

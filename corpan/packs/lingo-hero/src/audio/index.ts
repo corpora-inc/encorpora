@@ -97,10 +97,27 @@ export function initAudioHaptics(bus: GameEventBus): AudioHandle {
   const haptics = new Haptics();
   const unsubs: Array<() => void> = [];
 
-  // Honor a stored mute preference (no in-game button anymore; a future pause
-  // menu can write this key). Default = unmuted.
+  // Honor a stored mute preference. The in-game MUTE control (one, in the HUD)
+  // flips this live via the `muteChange` event below; the preference also
+  // persists so it carries across runs. Default = unmuted.
   let muted = readStoredMuted();
   const applyMute = () => synth.setMuted(muted);
+
+  // --- muteChange: the single in-game mute toggle, applied LIVE -------------
+  unsubs.push(
+    bus.on("muteChange", (e) => {
+      muted = e.muted;
+      applyMute();
+      // Stop or (re)start the bed to match, so muting actually silences the
+      // running music bed and unmuting brings it back during play.
+      if (muted) {
+        music.stop(0.2);
+      } else if (synth.ready) {
+        music.resync();
+        music.start();
+      }
+    })
+  );
 
   // --- gameStart: unlock audio (first gesture) + swell + start the bed -----
   unsubs.push(
