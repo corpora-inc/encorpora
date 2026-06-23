@@ -872,7 +872,12 @@ canvas {
 .lh-stats {
   position: absolute;
   left: 50%;
-  bottom: calc(10px + var(--safe-bottom));
+  /* TIGHTER ring↔HUD gap (#432): raise the stats row so it sits closer beneath
+     the hit-ring circles (rings' bottom ≈ 0.74·h + noteRadius) instead of
+     hugging the very bottom edge with a big empty band above it. Uses a
+     viewport-proportional inset (clamped) so the row tucks up under the rings on
+     tall phones yet keeps a comfortable bottom margin + safe area. */
+  bottom: calc(clamp(20px, 4.5vh, 56px) + var(--safe-bottom));
   transform: translateX(-50%);
   display: flex;
   flex-direction: row;
@@ -922,6 +927,50 @@ canvas {
 .lh-stats .mastery-bar {
   min-width: 34px;
 }
+/* The in-stats meter label is a mixed-case readout ("Lv 1 · 0%") — keep its
+   intended casing + middot separator (#445.3); do NOT uppercase it like the
+   plate eyebrow labels (that turned "Lv" into "LV"). */
+.lh-stats .mastery-label {
+  text-transform: none;
+}
+/* LABEL DENSITY (#445.3): show the FULL "Lv N · c/s · pp%" label on roomy
+   widths; on a narrow phone show the COMPACT "Lv N · pp%" variant so the center
+   meter never reads cramped. Default = full visible / compact hidden; the phone
+   media query below flips it. The hidden twin is removed from layout (not just
+   transparent) so only one label ever takes width. */
+.lh-stats .mastery-label-full {
+  display: inline;
+}
+.lh-stats .mastery-label-compact {
+  display: none;
+}
+/* The persistent ZERO-state placeholder (#432) reads a touch quieter than the
+   earned live readout — it shows the standing level, not progress just made. */
+.lh-stats .mastery-readout.is-placeholder {
+  opacity: 0.82;
+}
+.lh-stats .mastery-readout.is-placeholder .mastery-fill {
+  opacity: 0.7;
+}
+/* Phone widths: swap to the compact label + tighten the meter so its single
+   line ("Lv 1 · 0%") sits comfortably between the two plates. */
+@media (max-width: 460px) {
+  .lh-stats .mastery-label-full {
+    display: none;
+  }
+  .lh-stats .mastery-label-compact {
+    display: inline;
+  }
+  .lh-stats .mastery-readout {
+    min-width: clamp(64px, 26vw, 120px);
+    gap: 6px;
+    padding: clamp(3px, 1vmin, 5px) clamp(6px, 2.4vw, 10px);
+    white-space: nowrap;
+  }
+  .lh-stats .mastery-label {
+    font-variant-numeric: tabular-nums;
+  }
+}
 .lh-stats .score-box .stat-value {
   font-size: clamp(1.2rem, 5.2vmin, 2rem);
 }
@@ -937,7 +986,10 @@ canvas {
    rings already cleared the bottom band, so the row stays put.) */
 @media (max-height: 560px) {
   .lh-stats {
-    bottom: calc(6px + var(--safe-bottom));
+    /* Short/landscape: less vertical room below the rings, so keep the row low
+       (just clear of the bottom safe area) — the proportional tighten above is
+       for tall phones, not these. */
+    bottom: calc(8px + var(--safe-bottom));
     gap: clamp(6px, 1.6vw, 14px);
     width: min(calc(100vw - 16px), 640px);
   }
@@ -1023,16 +1075,29 @@ canvas {
     transform: scale(1);
   }
 }
-/* Combo is HIDDEN until the player actually has a streak (>0), so the HUD reads
-   calm at the start of a round; it fades in on the first catch. */
+/* STREAK plate stays VISIBLE at zero (#432 / #445.2) — for left/right symmetry
+   with the SCORE plate the row never reads as a lone centered SCORE. At streak 0
+   it's a quiet, dimmed PLACEHOLDER (legible "Streak x0", desaturated, no glow);
+   it brightens to the full juicy amber as soon as the player has a streak. */
 .combo-box {
   transition: opacity var(--na-dur-base, 240ms) var(--na-ease-out, ease),
     filter var(--na-dur-base, 240ms) var(--na-ease-out, ease);
 }
 .combo-box.zero {
-  opacity: 0;
-  filter: saturate(0.4);
+  /* Visible but calm: dimmed (not invisible), softened color + no neon glow, so
+     it reads as the inactive twin of the SCORE plate rather than disappearing. */
+  opacity: 0.62;
+  filter: saturate(0.55);
   pointer-events: none;
+  border-color: color-mix(in srgb, var(--neon-amber) 18%, transparent);
+  background: linear-gradient(160deg, rgba(255, 194, 61, 0.05), rgba(10, 8, 22, 0.5));
+}
+.combo-box.zero .stat-label {
+  color: color-mix(in srgb, var(--neon-amber) 45%, var(--ink-faint));
+}
+.combo-box.zero .combo-value {
+  color: color-mix(in srgb, var(--neon-amber) 60%, var(--ink-dim));
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
 }
 
 /* Score delta flyout */
