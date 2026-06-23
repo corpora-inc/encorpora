@@ -62,6 +62,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   (`mastery` / `difficulty`). Wired with **no Game.ts edits** — the learning
   layer initialises from the progression module (which already receives the bus
   + hostApi) and injects via `setDefaultWordSelector`.
+- **Synthwave audio palette (fully offline, procedural).** The WebAudio layer
+  splits the master into independent SFX + music sub-buses with a synthesized
+  convolution reverb (procedural impulse, no IR files). A new evolving
+  **MusicBed** — Cm pad + pulsing sub-bass + a combo-faded arp sparkle layer —
+  is driven by a lookahead scheduler; combo swells the music level, lifts tempo
+  (84→104 BPM), and cools on streak break (reduced-motion = lower steady level,
+  arp suppressed). Every SFX cue was elevated with reverb sends + sub-body, tuned
+  to the Cm tonic, plus a subtle per-wave verdict accent. A self-contained neon
+  **mute toggle** (token-styled, 44px touch target, safe-area insets,
+  localStorage-persisted) mutes the whole bus and pauses/resumes the bed. All
+  procedurally synthesized — zero binary assets, no network/fonts.
+- **Premium integration.** Merged the four disjoint premium streams (board /
+  shell / learning / audio) onto the foundation; verified the non-negotiable
+  contracts hold post-merge (distinct-entry + distinct-English wave dedup, TTS
+  speaks raw foreign text, `lingo_hero` pack id, delta-timed ~7s note travel,
+  fully offline — no remote URLs/fonts/fetch) and that the pack builds to
+  `dist/app.js` + `dist/app.css` and registers `window.CorpanGames["lingo_hero"]`.
 
 ### Fixed
 - **Correct answers were being scored as wrong (core logic).** Wave content had
