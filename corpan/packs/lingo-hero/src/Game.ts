@@ -5,6 +5,7 @@ import {
   Note,
   LaneIndex,
   type ActiveLanguage,
+  type WordIdentity,
 } from "./types";
 import { LaneSystem } from "./LaneSystem";
 import { Renderer } from "./Renderer";
@@ -60,6 +61,17 @@ export class Game {
   // Current active question (foreign prompt, display label)
   private currentQuestionText: string = "";
 
+  // Identity of the target word for the CURRENT wave. Carried on
+  // noteHit/noteMiss/wave-resolved so the learning stream + UI can react.
+  // Null between waves. RAW foreign text + entryId is the stable spacing key.
+  private currentWord: WordIdentity | null = null;
+  // Guards "wave-resolved" so it fires exactly once per wave even though
+  // noteMiss can fire on distractor taps before the wave truly resolves.
+  private waveResolved: boolean = false;
+  // The RAW foreign text + lang for the current prompt (for audio replay).
+  private currentSpeakText: string = "";
+  private currentSpeakLang: string = "";
+
   // Track lane activation for visuals
   private lanePressTimes: number[] = [0, 0, 0];
 
@@ -102,6 +114,7 @@ export class Game {
       {
         onStartGame: (mode) => this.startGame(mode),
         onShowMenu: () => this.showMenu(),
+        onReplayPrompt: () => this.replayPrompt(),
       },
       this.progression
     );
@@ -149,6 +162,20 @@ export class Game {
   /** The resolved active target language (for the UI stream). */
   getActiveLanguage(): ActiveLanguage {
     return this.activeLanguage;
+  }
+
+  /**
+   * Re-speak the CURRENT prompt's RAW foreign text at the host rate. Wired to
+   * the Hud audio-replay button (callback). No-op if no wave is active yet.
+   * Speaks RAW text (not display-cleaned) per the TTS contract.
+   */
+  replayPrompt(): void {
+    if (!this.currentSpeakText) return;
+    this.contentManager.speak(
+      this.currentSpeakText,
+      this.currentSpeakLang || this.activeLanguage.code,
+      this.activeLanguage.rate
+    );
   }
 
   private getLaneFromX(x: number): LaneIndex | null {
@@ -243,6 +270,7 @@ export class Game {
 
   private async spawnWave() {
     this.isWaveActive = true;
+    this.waveResolved = false;
 
     try {
       const { target, distractors } = await this.contentManager.getWaveContent(
@@ -255,6 +283,7 @@ export class Game {
       let speakText = ""; // RAW text fed to TTS
       let speakLang = "";
       let visualText = ""; // English answer shown on the target note
+      let romanization: string | undefined; // optional, host-provided
 
       // Prefer the user's resolved active language; fall back to any non-English.
       const foreign =
@@ -267,6 +296,7 @@ export class Game {
         this.currentQuestionText = this.cleanDisplay(foreign.text);
         speakText = foreign.text;
         speakLang = foreign.language_code;
+        romanization = foreign.romanization?.trim() || undefined;
 
         const enTrans =
           target.translations.find((t) => t.language_code === "en")?.text ||
@@ -276,10 +306,23 @@ export class Game {
         this.currentQuestionText = this.cleanDisplay(t0?.text || "?");
         speakText = t0?.text || "";
         speakLang = t0?.language_code || "en";
+        romanization = t0?.romanization?.trim() || undefined;
         visualText = this.cleanDisplay(t0?.text || "");
       }
 
+      // Establish the target word identity for this wave (learning ABI).
+      this.currentWord = {
+        entryId: target.entry_id,
+        foreign: speakText,
+        english: visualText,
+        romanization,
+        lang: speakLang,
+      };
+      this.currentSpeakText = speakText;
+      this.currentSpeakLang = speakLang;
+
       this.hud.setQuestion(this.currentQuestionText);
+      this.hud.setRomanization(romanization ?? "");
 
       const targetNote: Note = {
         id: `note-${Date.now()}-t`,
@@ -333,6 +376,25 @@ export class Game {
     this.bus.emit("comboChange", { value, previous });
   }
 
+  /**
+   * Emit the single, authoritative "wave-resolved" event for the current wave.
+   * Fires at most once per wave (guarded by `waveResolved`) so the learning
+   * stream records exactly one outcome and the UI raises one feedback card.
+   * Distractor taps before resolution don't resolve the wave (the player can
+   * still hit the target), so only target-hit / target-passed call this.
+   */
+  private resolveWave(outcome: "correct" | "wrong" | "passed") {
+    if (this.waveResolved || !this.currentWord) return;
+    this.waveResolved = true;
+    this.bus.emit("wave-resolved", {
+      word: this.currentWord,
+      outcome,
+      correct: outcome === "correct",
+      combo: this.combo,
+      mode: this.mode,
+    });
+  }
+
   private handleInput(lane: LaneIndex) {
     this.lanePressTimes[lane] = performance.now();
 
@@ -341,6 +403,15 @@ export class Game {
     const hitNote = this.laneSystem.checkHit(lane, this.notes);
     const strumY = this.laneSystem.getStrumLineY();
     const laneX = this.laneSystem.getLaneX(lane);
+
+    // The wave's target identity (always set during an active wave). Fall back
+    // to a synthetic identity so the strongly-typed event always carries a word.
+    const word: WordIdentity = this.currentWord ?? {
+      entryId: -1,
+      foreign: this.currentSpeakText,
+      english: "",
+      lang: this.currentSpeakLang || this.activeLanguage.code,
+    };
 
     if (hitNote) {
       if (hitNote.isTarget) {
@@ -356,7 +427,9 @@ export class Game {
           combo: this.combo,
           points,
           mode: this.mode,
+          word,
         });
+        this.resolveWave("correct");
 
         if (this.mode === GameMode.PRACTICE) {
           this.notes.forEach((n) => {
@@ -375,7 +448,12 @@ export class Game {
           y: strumY,
           reason: "wrong",
           mode: this.mode,
+          word,
         });
+        // A wrong distractor tap does NOT end the wave (preserves prior feel):
+        // the target keeps falling and the player can still hit it. The wave
+        // resolves only when the target is hit ("correct") or passes
+        // ("passed", emitted from the loop). So no resolveWave() here.
       }
     } else {
       this.setCombo(0);
@@ -385,6 +463,7 @@ export class Game {
         y: strumY,
         reason: "wrong",
         mode: this.mode,
+        word,
       });
     }
   }
@@ -433,13 +512,21 @@ export class Game {
           !note.missed
         ) {
           this.setCombo(0);
+          const passedWord: WordIdentity = this.currentWord ?? {
+            entryId: -1,
+            foreign: this.currentSpeakText,
+            english: note.text,
+            lang: this.currentSpeakLang || this.activeLanguage.code,
+          };
           this.bus.emit("noteMiss", {
             lane: note.lane,
             x: this.laneSystem.getLaneX(note.lane),
             y: strumY,
             reason: "passed",
             mode: this.mode,
+            word: passedWord,
           });
+          this.resolveWave("passed");
 
           if (this.mode === GameMode.PRACTICE) {
             this.isWaveActive = false;

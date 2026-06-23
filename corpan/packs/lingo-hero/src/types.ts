@@ -72,6 +72,29 @@ export interface ActiveLanguage {
 // Game.ts emits; effects/audio/progression/ui subscribe. Do NOT widen these
 // without coordinating — they are the cross-stream ABI.
 
+/**
+ * The identity of the TARGET word a wave is quizzing. Carried on noteHit /
+ * noteMiss / wave-resolved so the learning stream can do spaced-difficulty
+ * bookkeeping and the UI can do meaning-reveal / feedback cards WITHOUT
+ * reaching into Game.ts or ContentManager. This is the learning ABI.
+ *
+ * `foreign` is the RAW (un-cleaned) foreign prompt text — the same string that
+ * is spoken — so the learning stream keys on stable identity, not the
+ * display-cleaned label. `english` is the display-cleaned correct answer.
+ */
+export interface WordIdentity {
+  /** Stable host entry id for the target word (dedup/spacing key). */
+  entryId: number;
+  /** RAW foreign prompt text (what TTS speaks), not the display-cleaned form. */
+  foreign: string;
+  /** The correct English answer (display-cleaned). */
+  english: string;
+  /** Optional romanization of the foreign prompt, if the host provided one. */
+  romanization?: string;
+  /** Language code of the foreign prompt (e.g. "es", "ar"). */
+  lang: string;
+}
+
 /** Emitted once per game start (Practice or Blitz). */
 export interface GameStartEvent {
   mode: GameMode;
@@ -97,6 +120,12 @@ export interface NoteHitEvent {
   /** Base points awarded for this hit (pre-progression-multiplier). */
   points: number;
   mode: GameMode;
+  /**
+   * Identity of the target word the player just answered correctly. Drives
+   * spaced-difficulty (mark word easier) and meaning-reveal. Always present
+   * on a correct hit.
+   */
+  word: WordIdentity;
 }
 
 /** Emitted when the player hits a WRONG note OR lets the target pass. */
@@ -107,6 +136,31 @@ export interface NoteMissEvent {
   y: number;
   /** "wrong" = tapped a distractor; "passed" = target fell past the line. */
   reason: "wrong" | "passed";
+  mode: GameMode;
+  /**
+   * Identity of the target word the player missed. Drives spaced-difficulty
+   * (mark word due-sooner / weaker) and the meaning-reveal feedback card.
+   * Always present.
+   */
+  word: WordIdentity;
+}
+
+/**
+ * Emitted exactly once when a wave concludes — whether the player got it right,
+ * tapped a distractor, or let the target pass. This is the single, reliable
+ * hook for the learning stream to record an outcome and for the UI to raise the
+ * post-answer feedback card. (noteHit/noteMiss can fire on distractor taps mid-
+ * wave; wave-resolved fires once with the FINAL verdict.)
+ */
+export interface WaveResolvedEvent {
+  /** Identity of the target word this wave quizzed. */
+  word: WordIdentity;
+  /** Final outcome of the wave. */
+  outcome: "correct" | "wrong" | "passed";
+  /** True iff outcome === "correct". Convenience for subscribers. */
+  correct: boolean;
+  /** Combo value at the moment the wave resolved. */
+  combo: number;
   mode: GameMode;
 }
 
@@ -139,6 +193,7 @@ export interface GameEventMap {
   menuShown: MenuShownEvent;
   noteHit: NoteHitEvent;
   noteMiss: NoteMissEvent;
+  "wave-resolved": WaveResolvedEvent;
   comboChange: ComboChangeEvent;
   scoreChange: ScoreChangeEvent;
   gameOver: GameOverEvent;

@@ -3,6 +3,29 @@ import type { ProgressionApi } from "../progression";
 import { GameMode, type ActiveLanguage } from "../types";
 
 /**
+ * Payload for the post-answer FEEDBACK card (slot c). The shell-ui stream fills
+ * this from `wave-resolved`. Foundation only renders the surface + exposes the
+ * setter; the actual wiring (subscribe to wave-resolved → showFeedback) lives
+ * in the ui stream so Foundation stays minimal.
+ */
+export interface FeedbackCardData {
+  foreign: string;
+  english: string;
+  romanization?: string;
+  correct: boolean;
+  /** "correct" | "wrong" | "passed" — for nuanced copy/styling. */
+  outcome?: "correct" | "wrong" | "passed";
+}
+
+/** Payload for the progress / mastery readout (slot d). */
+export interface MasteryReadout {
+  /** Free-form short label, e.g. "12 mastered · 3 due". */
+  label: string;
+  /** Optional 0..1 progress for a bar fill; omit to hide the bar. */
+  progress?: number;
+}
+
+/**
  * Hud — OWNS the DOM overlay (menu / in-game HUD / game-over) for Lingo Hero.
  *
  * STREAM: ui. Foundation MOVED the original uiRoot.innerHTML + updateHUD +
@@ -20,6 +43,12 @@ export interface HudCallbacks {
   onStartGame: (mode: GameMode) => void;
   /** User asked to return to the main menu. */
   onShowMenu: () => void;
+  /**
+   * User tapped the audio-REPLAY button (slot b): re-speak the current prompt.
+   * Optional so older call sites that don't pass it still compile; the button
+   * is wired only when present.
+   */
+  onReplayPrompt?: () => void;
 }
 
 export class Hud {
@@ -28,6 +57,10 @@ export class Hud {
   private hudPanel: HTMLElement;
   private gameOverScreen: HTMLElement;
   private questionBox: HTMLElement;
+  private romanizationEl: HTMLElement;
+  private replayBtn: HTMLElement;
+  private feedbackCard: HTMLElement;
+  private masteryEl: HTMLElement;
   private scoreEl: HTMLElement;
   private comboEl: HTMLElement;
   private comboBox: HTMLElement;
@@ -42,6 +75,7 @@ export class Hud {
   private lastMode: GameMode = GameMode.PRACTICE;
   private comboPulseTimer = 0;
   private flyoutTimer = 0;
+  private feedbackTimer = 0;
 
   constructor(
     container: HTMLElement,
@@ -80,8 +114,18 @@ export class Hud {
 
       <div class="hud hidden" id="hud">
         <div class="top-bar">
-          <div class="question-box" id="question-box" aria-live="polite"></div>
+          <div class="prompt-stack">
+            <div class="question-box" id="question-box" aria-live="polite"></div>
+            <!-- (a) romanization line under the foreign prompt -->
+            <div class="romanization-line" id="romanization-line" aria-live="polite" hidden></div>
+          </div>
+          <!-- (b) audio-replay button: re-speaks the current prompt -->
+          <button class="replay-btn" id="replay-btn" type="button" aria-label="Replay audio" hidden>
+            <span class="replay-icon" aria-hidden="true">&#128266;</span>
+          </button>
         </div>
+        <!-- (d) progress / mastery readout slot -->
+        <div class="mastery-readout" id="mastery-readout" aria-live="polite" hidden></div>
         <div class="score-container">
           <div class="stat score-box">
             <span class="stat-label">Score</span>
@@ -93,6 +137,8 @@ export class Hud {
             <span class="combo-value"><span class="x">x</span><span id="combo">0</span></span>
           </div>
         </div>
+        <!-- (c) post-answer FEEDBACK card surface (foreign <-> english + state) -->
+        <div class="feedback-card" id="feedback-card" role="status" aria-live="polite" hidden></div>
       </div>
 
       <div class="game-over-screen hidden" id="game-over" role="dialog" aria-label="Game over">
@@ -130,6 +176,10 @@ export class Hud {
     this.hudPanel = this.root.querySelector("#hud")!;
     this.gameOverScreen = this.root.querySelector("#game-over")!;
     this.questionBox = this.root.querySelector("#question-box")!;
+    this.romanizationEl = this.root.querySelector("#romanization-line")!;
+    this.replayBtn = this.root.querySelector("#replay-btn")!;
+    this.feedbackCard = this.root.querySelector("#feedback-card")!;
+    this.masteryEl = this.root.querySelector("#mastery-readout")!;
     this.scoreEl = this.root.querySelector("#score")!;
     this.comboEl = this.root.querySelector("#combo")!;
     this.comboBox = this.root.querySelector("#combo-box")!;
@@ -151,6 +201,12 @@ export class Hud {
     );
     this.bindButton("#btn-menu", () => this.callbacks.onShowMenu());
 
+    // (b) Wire the audio-replay button only if the host provided a callback.
+    if (this.callbacks.onReplayPrompt) {
+      this.replayBtn.hidden = false;
+      this.bindButton("#replay-btn", () => this.callbacks.onReplayPrompt!());
+    }
+
     this.subscribe();
   }
 
@@ -162,6 +218,95 @@ export class Hud {
     // force reflow so the animation restarts
     void this.questionBox.offsetWidth;
     this.questionBox.style.animation = "";
+  }
+
+  /**
+   * (a) ROMANIZATION SLOT — set the line shown under the foreign prompt.
+   * Pass "" to clear/hide. Foundation no-op styling; the ui stream restyles.
+   * Game.ts calls this each wave with the host romanization (may be empty).
+   */
+  setRomanization(text: string): void {
+    const t = (text ?? "").trim();
+    this.romanizationEl.textContent = t;
+    this.romanizationEl.hidden = t.length === 0;
+  }
+
+  /**
+   * (b) Programmatic show/hide of the replay button (e.g. hide between waves).
+   * The button is auto-shown at construction iff an onReplayPrompt callback
+   * was provided; this lets the ui stream toggle it without re-wiring.
+   */
+  setReplayEnabled(enabled: boolean): void {
+    this.replayBtn.hidden = !enabled || !this.callbacks.onReplayPrompt;
+  }
+
+  /**
+   * (c) FEEDBACK CARD SLOT — raise the post-answer card showing the
+   * foreign↔english pairing, romanization, and correct/incorrect state. The
+   * ui stream calls this from a `wave-resolved` subscription. `autoHideMs`
+   * (default 0 = stay until next call / hideFeedback) auto-dismisses.
+   * Foundation default render is a minimal, correct surface; the ui stream
+   * may replace innerHTML entirely if it wants a richer card.
+   */
+  showFeedback(data: FeedbackCardData, autoHideMs = 0): void {
+    const roman = data.romanization?.trim()
+      ? `<div class="fb-roman">${this.escape(data.romanization)}</div>`
+      : "";
+    this.feedbackCard.className =
+      "feedback-card " + (data.correct ? "is-correct" : "is-wrong");
+    this.feedbackCard.dataset.outcome = data.outcome ?? (data.correct ? "correct" : "wrong");
+    this.feedbackCard.innerHTML = `
+      <div class="fb-foreign">${this.escape(data.foreign)}</div>
+      ${roman}
+      <div class="fb-arrow" aria-hidden="true">&#8595;</div>
+      <div class="fb-english">${this.escape(data.english)}</div>
+    `;
+    this.feedbackCard.hidden = false;
+    if (this.feedbackTimer) clearTimeout(this.feedbackTimer);
+    if (autoHideMs > 0) {
+      this.feedbackTimer = window.setTimeout(
+        () => this.hideFeedback(),
+        autoHideMs
+      );
+    }
+  }
+
+  /** (c) Hide/clear the feedback card. */
+  hideFeedback(): void {
+    this.feedbackCard.hidden = true;
+    this.feedbackCard.innerHTML = "";
+    if (this.feedbackTimer) clearTimeout(this.feedbackTimer);
+  }
+
+  /**
+   * (d) MASTERY READOUT SLOT — set the progress/mastery line. Pass null to
+   * hide. The ui/learning stream feeds this from spaced-difficulty state.
+   */
+  setMastery(readout: MasteryReadout | null): void {
+    if (!readout || !readout.label.trim()) {
+      this.masteryEl.hidden = true;
+      this.masteryEl.innerHTML = "";
+      return;
+    }
+    const bar =
+      typeof readout.progress === "number"
+        ? `<span class="mastery-bar"><span class="mastery-fill" style="width:${Math.max(
+            0,
+            Math.min(1, readout.progress)
+          ) * 100}%"></span></span>`
+        : "";
+    this.masteryEl.innerHTML = `<span class="mastery-label">${this.escape(
+      readout.label
+    )}</span>${bar}`;
+    this.masteryEl.hidden = false;
+  }
+
+  /** Minimal HTML-escape for text fed into slot innerHTML. */
+  private escape(s: string): string {
+    return s
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
   }
 
   /**
@@ -179,6 +324,7 @@ export class Hud {
     this.offFns = [];
     if (this.comboPulseTimer) clearTimeout(this.comboPulseTimer);
     if (this.flyoutTimer) clearTimeout(this.flyoutTimer);
+    if (this.feedbackTimer) clearTimeout(this.feedbackTimer);
     this.root.remove();
   }
 
@@ -194,11 +340,15 @@ export class Hud {
         this.comboEl.textContent = "0";
         this.comboBox.classList.add("zero");
         this.comboBox.classList.remove("pulse");
+        // Reset transient learning slots for a fresh run.
+        this.hideFeedback();
+        this.setRomanization("");
       }),
       this.bus.on("menuShown", () => {
         this.menuScreen.classList.remove("hidden");
         this.hudPanel.classList.add("hidden");
         this.gameOverScreen.classList.add("hidden");
+        this.hideFeedback();
       }),
       this.bus.on("scoreChange", (e) => {
         this.scoreEl.textContent = e.value.toLocaleString();

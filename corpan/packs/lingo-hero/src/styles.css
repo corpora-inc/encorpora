@@ -85,6 +85,112 @@
   --radius-sm: 10px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* =====================================================================
+     NEON ARCADE — cohesive token layer (FOUNDATION).
+     Everything downstream (Hud slots, feedback card, replay button,
+     romanization, mastery readout) styles from THESE, never from raw
+     hex. Semantic aliases sit on top of the brand spectrum above so the
+     palette stays single-sourced.
+     ===================================================================== */
+
+  /* -- Semantic surface + glass aliases (single-sourced from above) -- */
+  --na-bg: var(--bg-0);
+  --na-bg-elev: var(--bg-1);
+  --na-surface: var(--bg-2);
+  --na-glass-bg: var(--glass-bg);
+  --na-glass-stroke: var(--glass-stroke);
+  --na-glass-hi: var(--glass-hi);
+
+  /* -- The three canonical LANE neons (cyan / magenta / lime) -- */
+  --na-lane-1: var(--neon-cyan);     /* left  lane  */
+  --na-lane-2: var(--neon-magenta);  /* center lane */
+  --na-lane-3: var(--neon-lime);     /* right lane  */
+
+  /* -- Semantic accents -- */
+  --na-accent: var(--neon-cyan);
+  --na-accent-2: var(--neon-magenta);
+  --na-accent-3: var(--neon-lime);
+  --na-correct: var(--neon-lime);    /* right-answer feedback */
+  --na-wrong: var(--neon-pink);      /* wrong-answer feedback */
+  --na-warn: var(--neon-amber);
+
+  /* -- Text -- */
+  --na-text: var(--ink);
+  --na-text-dim: var(--ink-dim);
+  --na-text-faint: var(--ink-faint);
+
+  /* -- Glow / bloom shadow ramp (drop-in box/text-shadow values) -- */
+  --na-glow-cyan: 0 0 12px rgba(47, 243, 255, 0.55), 0 0 28px rgba(47, 243, 255, 0.32);
+  --na-glow-magenta: 0 0 12px rgba(255, 0, 212, 0.55), 0 0 28px rgba(255, 0, 212, 0.30);
+  --na-glow-lime: 0 0 12px rgba(123, 255, 123, 0.50), 0 0 28px rgba(123, 255, 123, 0.28);
+  --na-glow-soft: 0 0 10px rgba(154, 130, 255, 0.30);
+  --na-bloom-sm: 0 0 8px rgba(47, 243, 255, 0.35);
+  --na-bloom-md: 0 0 18px rgba(47, 243, 255, 0.40), 0 0 44px rgba(154, 130, 255, 0.22);
+  --na-bloom-lg: 0 0 28px rgba(47, 243, 255, 0.45), 0 0 72px rgba(255, 0, 212, 0.22);
+  --na-shadow-panel: 0 24px 64px rgba(0, 0, 0, 0.55), inset 0 1px 0 var(--glass-hi);
+
+  /* -- Type scale (modular, ~1.25). Pair with --na-font-* families. -- */
+  --na-font-display: var(--font-display);
+  --na-font-body: var(--font-body);
+  --na-fs-2xs: 0.6875rem; /* 11px micro labels  */
+  --na-fs-xs: 0.8125rem;  /* 13px captions      */
+  --na-fs-sm: 0.9375rem;  /* 15px body          */
+  --na-fs-md: 1.125rem;   /* 18px               */
+  --na-fs-lg: 1.5rem;     /* 24px               */
+  --na-fs-xl: 2rem;       /* 32px               */
+  --na-fs-2xl: 2.75rem;   /* 44px prompt        */
+  --na-fs-3xl: 3.75rem;   /* 60px hero          */
+  --na-lh-tight: 1.08;
+  --na-lh-snug: 1.25;
+  --na-lh-body: 1.5;
+  --na-tracking-wide: 0.08em;
+  --na-tracking-wider: 0.16em;
+
+  /* -- Spacing scale (8pt-ish) -- */
+  --na-space-0: 0;
+  --na-space-1: 4px;
+  --na-space-2: 8px;
+  --na-space-3: 12px;
+  --na-space-4: 16px;
+  --na-space-5: 24px;
+  --na-space-6: 32px;
+  --na-space-7: 48px;
+  --na-space-8: 64px;
+
+  /* -- Radii (semantic aliases over the layout radii) -- */
+  --na-radius-xs: 8px;
+  --na-radius-sm: var(--radius-sm);
+  --na-radius-md: var(--radius-md);
+  --na-radius-lg: var(--radius-lg);
+  --na-radius-pill: 999px;
+
+  /* -- Motion durations + easings -- */
+  --na-dur-instant: 80ms;
+  --na-dur-fast: 140ms;
+  --na-dur-base: 240ms;
+  --na-dur-slow: 420ms;
+  --na-dur-slower: 680ms;
+  --na-ease-snap: var(--ease-snap);
+  --na-ease-out: var(--ease-out);
+  --na-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --na-ease-linear: linear;
+
+  /* -- Z-index ladder for HUD slots -- */
+  --na-z-grid: 1;
+  --na-z-hud: 10;
+  --na-z-feedback: 30;
+  --na-z-overlay: 40;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --na-dur-instant: 0ms;
+    --na-dur-fast: 0ms;
+    --na-dur-base: 0ms;
+    --na-dur-slow: 0ms;
+    --na-dur-slower: 0ms;
+  }
 }
 
 * {

@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- **Neon Arcade premium foundation.** A cohesive design-token layer (`--na-*`
+  palette / glow + bloom shadows / type scale / spacing / radii / motion) at the
+  top of `styles.css` that everything downstream styles from. The event bus now
+  carries the target **word identity** (`{ entryId, foreign, english,
+  romanization?, lang }`) on `noteHit` / `noteMiss` plus a new once-per-wave
+  `wave-resolved` event, so the learning stream can do spaced difficulty and the
+  UI can do meaning-reveal. New HUD slots: a romanization line under the prompt,
+  an audio-replay button, a post-answer feedback card, and a mastery readout
+  (minimal no-ops that keep the game playable). `ContentManager` accepts an
+  optional injected `WordSelector` (or a process-wide default via
+  `setDefaultWordSelector`) to bias wave content toward due/weak words while
+  still guaranteeing distinct entries + distinct English answers.
+
 ### Fixed
 - **Correct answers were being scored as wrong (core logic).** Wave content had
   no dedup, so on a small per-language pool the *correct* English could appear on
