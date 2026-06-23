@@ -50,7 +50,32 @@ export class LaneSystem {
 
   // Inverse of getLaneX, honoring the centered/capped lane band. Taps in the
   // side margins clamp to the nearest edge lane. Keeps input lanes == drawn lanes.
+  // NOTE: this clamps everything to a lane; for hit-testing that must REJECT taps
+  // outside the lane columns (chrome / dead margins), use laneAtXStrict (#442).
   laneAtX(x: number): LaneIndex {
+    const idx = Math.floor((x - this.startX) / this.laneWidth);
+    return Math.max(0, Math.min(2, idx)) as LaneIndex;
+  }
+
+  /**
+   * #442 — lane hit-testing constrained to the lane COLUMN band. Returns the
+   * lane only when `x` falls within the drawn 3-lane band (the columns where the
+   * hit-ring circles + falling notes live), with a small forgiving edge margin.
+   * Taps OUTSIDE the band — the top-left pause/mute chrome, or the dead side
+   * gutters on a wide screen where the lanes cap at 600px and center — return
+   * `null`, so they neither score nor register a miss. The band is the same
+   * geometry the renderer draws, so input columns == visible columns.
+   */
+  laneAtXStrict(x: number): LaneIndex | null {
+    const bandWidth = this.laneWidth * 3;
+    // Forgive a SMALL amount past each outer edge (a fat thumb right on the edge
+    // lane) — a fraction of a lane, NOT the whole margin — so genuine edge taps
+    // still count but a tap out in the gutter / on the top-left chrome does not.
+    // Kept tight (≈quarter lane, capped) so the dead margins truly reject.
+    const edgeSlack = Math.min(this.laneWidth * 0.25, this.noteRadius * 0.5, 40);
+    const left = this.startX - edgeSlack;
+    const right = this.startX + bandWidth + edgeSlack;
+    if (x < left || x > right) return null;
     const idx = Math.floor((x - this.startX) / this.laneWidth);
     return Math.max(0, Math.min(2, idx)) as LaneIndex;
   }

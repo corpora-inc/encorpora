@@ -6,6 +6,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.6] - 2026-06-23
+
+Prompt full-visibility fix (#441), lane-tap isolation (#442), and a big-screen
+bottom HUD row (#443) — shipped together.
+
+### Fixed
+- **The prompt phrase is now ALWAYS fully visible (#441).** On iPad many phrases
+  (e.g. "They built a fort, then argued about what to defend it from") clipped —
+  cut at the comma / forced to one line that ran off the band. Root cause: the
+  0.4.3 `fitPrompt()` tried to JAM every phrase into ≤2 lines and bottomed out at
+  a font floor, so a long sentence wrapped to a 3rd line that overflowed the
+  reserved header band (its `scrollHeight` exceeded the flex-squeezed box height).
+  Inverted the model: the phrase now WRAPS freely to as many lines as it needs
+  within a generous height budget, and the font only SHRINKS (floored, never
+  past a readable size) when the wrapped text genuinely exceeds that budget. The
+  `.question-box` is `flex: 0 0 auto` / `height: auto` so the flex column can no
+  longer squeeze it below its own content, and the fit re-runs on the next frame
+  (rAF) so it never measures against a pre-layout width. Re-fits on resize /
+  orientation. Verified by a headless harness against a long comma phrase at
+  phone, iPad-portrait, and iPad-landscape: every word present, zero glyph clip
+  (Range-measured), at all three widths.
+- **Lane taps are isolated to the lane columns (#442).** Hit-testing spanned the
+  whole screen width, so a tap on the top-left pause/mute chrome or in the dead
+  side margins (where the lanes cap at 600px and center on a wide screen) could
+  register a lane hit/miss. Added `LaneSystem.laneAtXStrict()` — it returns the
+  lane only when the tap lands within the drawn 3-lane band (with a small
+  forgiving edge slack), and `null` outside it, so chrome / margin taps neither
+  score nor register a miss. The 0.4.3 chrome `stopPropagation` (no tap-through)
+  and canvas-relative input are preserved.
+
+### Changed
+- **Big-screen bottom HUD row (#443):** SCORE | thin level meter | STREAK — two
+  equal "fat" plates flanking a slim center meter, the row now spanning the full
+  width of the 3 lanes (capped to the 600px lane band and centered on wide
+  screens). Comfortable and premium at iPad / landscape width instead of a
+  cramped center cluster, still tidy on a phone. Responsive; respects the bottom
+  safe area; never flanks/overlaps the falling-note lanes.
+
 ## [0.4.5] - 2026-06-23
 
 iOS/iPad audio fix (issue #428): music was silent on iPad/iOS Safari while
