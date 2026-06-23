@@ -10,6 +10,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.3] - 2026-06-23
+
+### Fixed
+- **End-of-book "Up next" no longer loops between two books (#381).**
+  `chooseNextBook` now reads on-device reading history (the progress store) and
+  never re-suggests the just-finished or any completed book, deprioritizes
+  recently-read / in-progress titles, and randomizes across the newest few
+  eligible candidates — so finishing book A then book B can't ping-pong back to
+  A. Near-term anti-loop heuristic; superseded by the data-driven engine (#380).
+
 ## [0.7.2] - 2026-06-23
 
 ### Fixed
@@ -30,12 +40,6 @@ Conventions: `corpan/CHANGELOGS.md`.
   it without ever opening the drawer left the catalog unfetched, so the
   suggestion silently no-op'd; the `corpan:book-finished` handler now
   lazy-hydrates the catalog before choosing the next book.
-- **End-of-book "Up next" no longer loops between two books (#381).**
-  `chooseNextBook` now reads on-device reading history (the progress store) and
-  never re-suggests the just-finished or any completed book, deprioritizes
-  recently-read / in-progress titles, and randomizes across the newest few
-  eligible candidates — so finishing book A then book B can't ping-pong back to
-  A. Near-term anti-loop heuristic; superseded by the data-driven engine (#380).
 
 ## [0.7.1] - 2026-06-19
 
