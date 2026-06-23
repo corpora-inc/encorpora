@@ -153,22 +153,31 @@ body {
 
 /* --- Status HUD (score/streak top-left) --- */
 
-/* ── Scorecard: a compact glass card, top-left — the exact mirror of the
+/* ── Scorecard: a compact glass card, top-left — the mirror of the
       command-drawer hamburger (top-right). Big SCORE on the left, a 2×2 grid of
-      mini-stats on the right (combo·best / 🔥 days / ⚡ quota / ✓ net). Card
-      height is LOCKED to the hamburger across the same breakpoints. ────────── */
+      mini-stats on the right (combo·best / 🔥 days / ⚡ quota / ✓ net).
+
+      Sizing is RESPONSIVE via clamp() keyed to vmin: the phone floor matches the
+      previous fixed sizes, and every dimension grows smoothly as the viewport
+      gets bigger so the card reads premium at iPad/desktop size (where the scene
+      has room to spare) instead of staying phone-sized. The hamburger is a shared
+      component that stays 48px, so on big screens the scorecard intentionally
+      grows a touch MORE — per #435 it should scale "at least as much as the
+      hamburger, arguably more". The small-screen media queries below still pin it
+      tight on cramped/landscape phones. ────────── */
 .scorecard {
   position: absolute;
   left: calc(16px + var(--safe-left));
   top: calc(15px + var(--safe-top));
-  height: 48px;
+  /* phone floor 48px → grows on tablet/desktop, capped so it never dominates */
+  height: clamp(48px, 5.6vmin + 30px, 76px);
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: clamp(12px, 1.4vmin + 8px, 20px);
   width: max-content;
-  padding: 0 13px;
-  border-radius: 12px;
+  padding: 0 clamp(13px, 1.4vmin + 9px, 22px);
+  border-radius: clamp(12px, 1vmin + 8px, 18px);
   background: linear-gradient(180deg, rgba(14, 20, 36, 0.82), rgba(8, 11, 22, 0.8));
   border: 1px solid rgba(170, 200, 255, 0.16);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -178,9 +187,9 @@ body {
   font-variant-numeric: tabular-nums;
   z-index: 10;
 }
-/* Match the hamburger's responsive heights (see commandDrawer.css). */
+/* Cramped / landscape phones: pin tight (these override the clamp floor). */
 @media (max-width: 480px) {
-  .scorecard { height: 42px; padding: 0 12px; gap: 10px; }
+  .scorecard { height: 42px; padding: 0 12px; gap: 10px; border-radius: 12px; }
 }
 @media (max-height: 520px) {
   .scorecard { height: 38px; top: calc(10px + var(--safe-top)); padding: 0 11px; }
@@ -190,7 +199,7 @@ body {
 }
 
 .sc-score {
-  font: 800 22px/1 "Trebuchet MS", "Helvetica Neue", sans-serif;
+  font: 800 clamp(22px, 2.8vmin + 12px, 38px)/1 "Trebuchet MS", "Helvetica Neue", sans-serif;
   letter-spacing: 0.01em;
   text-shadow: 0 1px 10px rgba(120, 180, 255, 0.25);
 }
@@ -200,7 +209,7 @@ body {
 .sc-grid {
   display: grid;
   grid-template-columns: auto auto;
-  column-gap: 11px;
+  column-gap: clamp(11px, 1.2vmin + 7px, 18px);
   row-gap: 1px;
   align-content: center;
 }
@@ -209,7 +218,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  font-size: 12px;
+  font-size: clamp(12px, 1.1vmin + 8px, 18px);
   font-weight: 600;
   line-height: 1.3;
 }
@@ -217,7 +226,7 @@ body {
 .sc-stat.is-hidden { visibility: hidden; }
 
 .sc-ic { display: inline-flex; }
-.sc-ic svg { width: 12px; height: 12px; display: block; }
+.sc-ic svg { width: clamp(12px, 1.1vmin + 8px, 18px); height: clamp(12px, 1.1vmin + 8px, 18px); display: block; }
 .sc-stat.is-combo .sc-ic { color: #7fd6ff; }
 .sc-stat.is-days .sc-ic { color: #ffb27a; }
 .sc-stat.is-quota .sc-ic { color: #c0a9ff; }
@@ -231,7 +240,7 @@ body {
 .sc-sub {
   color: #aebbd6;
   opacity: 0.65;
-  font-size: 10px;
+  font-size: clamp(10px, 0.9vmin + 7px, 15px);
   font-weight: 500;
 }
 .sc-stat.is-combo .sc-sub::before { content: "·"; margin-right: 1px; }

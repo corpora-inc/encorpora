@@ -10,6 +10,21 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-06-23 — Scorecard scales up on tablet/large viewports
+
+### Changed
+- **Scorecard HUD (top-left) now scales up on bigger screens.** Card height,
+  score font, stat font, and stat-icon sizes are now `clamp()`-keyed to `vmin`
+  instead of fixed pixels, so the card grows smoothly across phone → tablet →
+  desktop. Previously the card was pinned at phone size (48px / score 22px /
+  stat 12px) with media queries that only ever shrank it for small/landscape
+  screens — on iPad it stayed tiny while the scene had room to spare (#435,
+  #438 row #22). The phone floor is unchanged and the existing small-screen
+  shrink breakpoints still pin it tight on cramped/landscape phones; on
+  tablet/desktop the card now reads premium-sized (height up to 76px, score up
+  to 38px). CSS-only — no layout/JS change. The hamburger stays a shared 48px,
+  so the scorecard intentionally grows a touch more on big screens.
+
 ### Added
 - **Status HUD shows today's phrase quota + days-in-a-row streak.** The top-left
   readout now lays out four numbers in a compact 2-column grid: 🔥 visit streak
