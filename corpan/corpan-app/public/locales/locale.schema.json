@@ -294,6 +294,9 @@
         "selectAll": {
           "type": "string"
         },
+        "deselectAll": {
+          "type": "string"
+        },
         "allLevelsIncluded": {
           "type": "string"
         },

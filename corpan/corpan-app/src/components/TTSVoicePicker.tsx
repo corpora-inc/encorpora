@@ -584,6 +584,21 @@ export function TTSVoicePicker({ onSkip }: TTSVoicePickerProps = {}) {
         [langs, voices, os],
     );
 
+    // True when every available voice in every language is already selected, so
+    // the "Select all" button flips to "Deselect all".
+    const isAllSelected = useMemo(() => {
+        if (!voices || !canSmartSelect) return false;
+        return langs.every((code) => {
+            const availableIds = (voicesForLang(code) || []).map((v) => v.id);
+            const selectedIds = voicePrefs[code]?.ids ?? [];
+            return (
+                availableIds.length > 0 &&
+                availableIds.every((id) => selectedIds.includes(id))
+            );
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [langs, voices, voicePrefs, canSmartSelect]);
+
     function setSelectionForLang(code: string, desiredIds: string[]) {
         const current = new Set((voicePrefs[code]?.ids ?? []).slice());
         const desired = new Set(desiredIds);
@@ -596,9 +611,12 @@ export function TTSVoicePicker({ onSkip }: TTSVoicePickerProps = {}) {
     }
 
     function smartSelectAll() {
+        const deselect = isAllSelected;
         for (const code of langs) {
-            const allIds = (voicesForLang(code) || []).map((v) => v.id);
-            setSelectionForLang(code, allIds);
+            const targetIds = deselect
+                ? []
+                : (voicesForLang(code) || []).map((v) => v.id);
+            setSelectionForLang(code, targetIds);
         }
     }
 
@@ -862,6 +880,7 @@ export function TTSVoicePicker({ onSkip }: TTSVoicePickerProps = {}) {
                                                         onOpenSettings={openSettings}
                                                         onSmartSelect={smartSelectAll}
                                                         canSmartSelect={canSmartSelect}
+                                                        isAllSelected={isAllSelected}
                                                         engineStatus={engineStatus}
                                                         engineStatusReady={engineStatusReady}
                                                     />
