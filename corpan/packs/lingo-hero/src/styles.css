@@ -549,6 +549,47 @@ canvas {
   justify-content: center;
   gap: var(--na-space-3);
   width: 100%;
+  /* Reserve the top corners for the Exit (left) and Mute (right) controls so the
+     centered prompt + replay never sit underneath them. */
+  padding-left: calc(56px + env(safe-area-inset-left, 0px));
+  padding-right: calc(56px + env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+}
+
+/* Exit control — top-left corner, mirroring the audio mute toggle (top-right).
+   In the .ui-layer overlay (pointer-events:none) but itself interactive. */
+.lh-exit-btn {
+  position: absolute;
+  top: calc(var(--na-space-3) + env(safe-area-inset-top, 0px));
+  left: calc(var(--na-space-3) + env(safe-area-inset-left, 0px));
+  z-index: var(--na-z-overlay, 40);
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0;
+  border-radius: var(--na-radius-pill);
+  border: 1px solid color-mix(in srgb, var(--na-text) 35%, transparent);
+  background: var(--na-glass-bg);
+  color: var(--na-text);
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform var(--na-dur-fast) var(--na-ease-snap),
+    border-color var(--na-dur-base) var(--na-ease-out);
+}
+.lh-exit-btn:hover,
+.lh-exit-btn:focus-visible {
+  border-color: var(--na-text);
+}
+.lh-exit-btn:active {
+  transform: scale(0.92);
 }
 
 /* Prompt stack: foreign prompt + romanization line, vertically grouped so the

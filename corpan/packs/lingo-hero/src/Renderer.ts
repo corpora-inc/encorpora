@@ -559,7 +559,13 @@ export class Renderer {
 
       const laneW = this.laneSystem.getLaneBounds(0).width;
       const cardW = laneW * 0.9;
-      const cardH = r * 1.5;
+      // Lay the word out FIRST (wrap to <=2 lines at a readable size) so the card
+      // can grow to fit two lines instead of shrinking text to an unreadable size.
+      const wordFont = "'Russo One', 'Lingo Sans', system-ui, sans-serif";
+      const layout = note.text
+        ? layoutWord(ctx, note.text, cardW - 24, Math.max(30, r * 0.62), 21, wordFont)
+        : null;
+      const cardH = (layout && layout.lines.length >= 2 ? 2.15 : 1.5) * r;
       const x = cx - cardW / 2;
       const cardY = y - cardH / 2;
       const radius = Math.min(16, cardH * 0.32);
@@ -616,24 +622,20 @@ export class Renderer {
       ctx.fill();
       ctx.restore();
 
-      // --- WORD ---
-      if (note.text) {
+      // --- WORD (wrapped, readable) ---
+      if (layout) {
         ctx.save();
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        let fontSize = Math.max(26, r * 0.6);
-        ctx.font = `bold ${fontSize}px 'Russo One', 'Lingo Sans', system-ui, sans-serif`;
-        const maxTextW = cardW - 24;
-        const metrics = ctx.measureText(note.text);
-        if (metrics.width > maxTextW) {
-          fontSize = fontSize * (maxTextW / metrics.width);
-          ctx.font = `bold ${fontSize}px 'Russo One', 'Lingo Sans', system-ui, sans-serif`;
-        }
-        // Soft contrast shadow so the word stays legible over the glow.
+        ctx.font = `bold ${layout.fontSize}px ${wordFont}`;
         ctx.shadowColor = "rgba(0,0,0,0.55)";
         ctx.shadowBlur = 4;
         ctx.fillStyle = rgbStr(this.textColor);
-        ctx.fillText(note.text, cx + 3, y);
+        const lineH = layout.fontSize * 1.14;
+        const startY = y - (lineH * (layout.lines.length - 1)) / 2;
+        for (let li = 0; li < layout.lines.length; li++) {
+          ctx.fillText(layout.lines[li], cx + 3, startY + li * lineH);
+        }
         ctx.restore();
       }
     }
@@ -643,6 +645,47 @@ export class Renderer {
 // ---------------------------------------------------------------------------
 // Color + path helpers (module-scope, allocation-light).
 // ---------------------------------------------------------------------------
+
+/**
+ * Lay a word/phrase out to fit a card: keep it on one line at `baseFont` if it
+ * fits; otherwise wrap to TWO balanced lines and only shrink the font as far as
+ * `minFont` (so phrases stay readable on mobile instead of shrinking to nothing
+ * on a single line — the old behavior). A single un-splittable long token falls
+ * back to a shrink-to-fit single line. Returns the lines + the font size to use.
+ */
+function layoutWord(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  maxW: number,
+  baseFont: number,
+  minFont: number,
+  family: string
+): { lines: string[]; fontSize: number } {
+  const widthAt = (s: string, px: number) => {
+    ctx.font = `bold ${px}px ${family}`;
+    return ctx.measureText(s).width;
+  };
+
+  if (widthAt(text, baseFont) <= maxW) return { lines: [text], fontSize: baseFont };
+
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length < 2) {
+    // Un-splittable: shrink single line to fit, floored at minFont.
+    const fit = (maxW / widthAt(text, baseFont)) * baseFont;
+    return { lines: [text], fontSize: Math.max(minFont, Math.min(baseFont, fit)) };
+  }
+
+  // Choose the split that minimizes the WIDER of the two lines (balanced wrap).
+  let best = { a: words.slice(0, 1).join(" "), b: words.slice(1).join(" "), wide: Infinity };
+  for (let i = 1; i < words.length; i++) {
+    const a = words.slice(0, i).join(" ");
+    const b = words.slice(i).join(" ");
+    const wide = Math.max(widthAt(a, baseFont), widthAt(b, baseFont));
+    if (wide < best.wide) best = { a, b, wide };
+  }
+  const fit = best.wide <= maxW ? baseFont : (maxW / best.wide) * baseFont;
+  return { lines: [best.a, best.b], fontSize: Math.max(minFont, Math.min(baseFont, fit)) };
+}
 
 function cssVar(root: HTMLElement | null, name: string): string {
   if (!root || typeof getComputedStyle !== "function") return "";

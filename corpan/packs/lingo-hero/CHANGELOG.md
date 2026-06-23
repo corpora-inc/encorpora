@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-06-23
+
+### Fixed
+- **Taps on the on-screen buttons (mute / replay) leaked through into a lane**,
+  making the controls impossible to use. Input now listens on the canvas itself,
+  so taps on the HUD controls never reach the lanes. (Verified in a headless
+  browser: a mute-button tap no longer scores; a lane tap still does.)
+- **Mute and replay buttons overlapped in the top-right.** The top bar now
+  reserves both corners; replay and mute sit side by side without overlapping.
+- **Long phrases were shrunk to an unreadable size.** Note text now wraps to two
+  balanced lines at a readable minimum size, and the card grows to fit.
+
+### Added
+- **Exit button** (top-left) that leaves the pack via the host's `corpan:exit`
+  event — no longer dependent on the OS back button.
+- Headless-browser **gameplay test + screenshot capture** (`test/e2e/`) that
+  asserts the interaction contracts (correct tap scores; button taps don't leak)
+  and produces visual proof — the basis for an automated CI gate.
+
 ## [0.2.1] - 2026-06-23
 
 ### Fixed

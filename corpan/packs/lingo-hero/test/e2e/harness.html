@@ -1,0 +1,50 @@
+<!doctype html>
+<!--
+  Standalone harness for the headless gameplay test (test/e2e/gameplay.spec.mjs).
+  Loads the BUILT bundle and mounts the game into an OFFSET, unpositioned
+  container — deliberately reproducing the app's layout (where the host passes
+  its own container that the absolutely-positioned canvas is not anchored to).
+  Run `npm run build` first so ../../dist exists.
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../dist/app.css" />
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #07060f; }
+  /* Offset + STATIC on purpose — see note above. */
+  #host { position: static; margin: 90px 0 0 70px; width: 360px; height: 720px; }
+</style>
+</head>
+<body>
+<div id="host"></div>
+<script>window.__corpanHostActive = true;</script>
+<script src="../../dist/app.js"></script>
+<script>
+  const PAIRS = [
+    ["cat", "el gato"],
+    ["I would like a cup of coffee, please", "quisiera una taza de café, por favor"],
+    ["good morning everyone", "buenos días a todos"],
+    ["where is the train station", "dónde está la estación de tren"],
+    ["thank you very much", "muchas gracias"],
+    ["how much does this cost", "cuánto cuesta esto"],
+    ["see you tomorrow", "hasta mañana"],
+    ["the weather is nice today", "hace buen tiempo hoy"],
+  ];
+  const ENTRIES = PAIRS.map(([en, es], i) => ({
+    entry_id: i + 1, level: "A1", domains: ["travel"],
+    translations: [{ language_code: "es", text: es }, { language_code: "en", text: en }],
+  }));
+  let k = 0;
+  const host = {
+    speak() {}, stopSpeech() {},
+    getStackConfig() { return { languages: ["es"], domains: [], levels: [], rate: 1, textSize: "m", showRomanization: true }; },
+    onStackConfigChange() { return () => {}; },
+    getRandomEntries(n) { const o = []; for (let i = 0; i < n; i++) o.push(ENTRIES[(k++) % ENTRIES.length]); return Promise.resolve(o); },
+    getRandomEntry() { return Promise.resolve(ENTRIES[(k++) % ENTRIES.length]); },
+    isMock: true,
+  };
+  window.CorpanGames.lingo_hero.mount(document.getElementById("host"), host);
+</script>
+</body>
+</html>

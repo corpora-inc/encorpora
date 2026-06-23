@@ -89,6 +89,9 @@ export class Hud {
     this.root = document.createElement("div");
     this.root.className = "ui-layer";
     this.root.innerHTML = `
+      <button class="lh-exit-btn" id="lh-exit" type="button" aria-label="Exit Lingo Hero" title="Exit">
+        <span aria-hidden="true">&#8592;</span>
+      </button>
       <div class="menu-screen" id="menu" role="dialog" aria-label="Lingo Hero main menu">
         <div class="brand">
           <p class="brand-kicker">Rhythm · Language</p>
@@ -203,6 +206,13 @@ export class Hud {
       this.callbacks.onStartGame(this.lastMode)
     );
     this.bindButton("#btn-menu", () => this.callbacks.onShowMenu());
+
+    // Exit the pack entirely: the Corpán host listens for `corpan:exit` (App.tsx)
+    // and dismisses the game. Persistent (menu + gameplay) so there's always a
+    // way out besides the OS back button.
+    this.bindButton("#lh-exit", () =>
+      window.dispatchEvent(new CustomEvent("corpan:exit"))
+    );
 
     // (b) Wire the audio-replay button only if the host provided a callback.
     if (this.callbacks.onReplayPrompt) {
