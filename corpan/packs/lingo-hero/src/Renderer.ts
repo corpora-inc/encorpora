@@ -115,6 +115,9 @@ export class Renderer {
     const height = parseFloat(this.canvas.style.height);
     const width = parseFloat(this.canvas.style.width);
     const strumY = this.laneSystem.getStrumLineY();
+    // Top of the play field — all lane FX + notes are clipped to [fieldTop,
+    // height] so beams/cards never bloom up into the DOM HUD band.
+    const fieldTop = this.laneSystem.getPlayFieldTop();
 
     const lane0 = this.laneSystem.getLaneBounds(0);
     const lane2 = this.laneSystem.getLaneBounds(2);
@@ -131,6 +134,24 @@ export class Renderer {
     sky.addColorStop(1, rgbStr(mix(this.bgBot, this.horizonColor, 0.12)));
     ctx.fillStyle = sky;
     ctx.fillRect(0, 0, width, height);
+
+    // CLIP EVERYTHING BELOW TO THE PLAY FIELD. The grid, lane shafts, rails,
+    // strum bar and fret pads all draw inside [fieldTop, height] so their glow
+    // can never bleed up over the prompt/score HUD band. (drawNotes applies the
+    // same clip.) A tiny feather at the top keeps the clip edge from reading as
+    // a hard seam.
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(0, fieldTop, width, height - fieldTop);
+    ctx.clip();
+
+    // A soft top scrim that fades the field into the HUD band (so the clip edge
+    // is a graceful gradient, not a razor line).
+    const topFade = ctx.createLinearGradient(0, fieldTop, 0, fieldTop + 36);
+    topFade.addColorStop(0, rgba(this.bgTop, 0.6));
+    topFade.addColorStop(1, rgba(this.bgTop, 0));
+    ctx.fillStyle = topFade;
+    ctx.fillRect(0, fieldTop, width, 36);
 
     // 2) TRACK FLOOR — the perspective grid lives between the horizon (a little
     //    above the top of the visible track band) and the strum line, then a
@@ -156,28 +177,34 @@ export class Renderer {
     //    lane, brightest at the strum line, fading up the track. Additive.
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
+    // Shaft top is clamped to the play field so the beam is a contained column,
+    // not a full-height cone that merges with the hit rings.
+    const shaftTop = Math.max(fieldTop, strumY - height * 0.5);
     for (let i = 0; i < 3; i++) {
       const c = this.laneColors[i];
       const cx = this.laneSystem.getLaneX(i as LaneIndex);
-      const halfW = lane0.width * 0.5;
-      // Vertical shaft: brightest band hugging the strum line.
-      const shaft = ctx.createLinearGradient(0, strumY - height * 0.62, 0, strumY + 12);
-      // Tightened: lower base alpha + gentler near-strum lift so the shafts read
-      // as ambient lane light without washing out the cards / hit rings on top.
-      const baseA = 0.035 + energy * 0.045;
+      // NARROWED: a contained column (was the full lane width) + stops short of
+      // the strum so the ring sits in clear air, not inside the beam's brightest
+      // band. This is the fix for the "cones merge into the rings" washout.
+      const halfW = lane0.width * 0.34;
+      const shaftBottom = strumY - this.laneSystem.getNoteRadius() * 1.3;
+      const shaft = ctx.createLinearGradient(0, shaftTop, 0, shaftBottom);
+      // Capped, energy-modest alpha so the shafts read as ambient lane light
+      // without ever washing out the cards / hit rings on top.
+      const baseA = Math.min(0.06, 0.028 + energy * 0.03);
       shaft.addColorStop(0, rgba(c, 0));
-      shaft.addColorStop(0.82, rgba(c, baseA));
-      shaft.addColorStop(1, rgba(c, baseA + 0.06 + energy * 0.05));
+      shaft.addColorStop(0.85, rgba(c, baseA));
+      shaft.addColorStop(1, rgba(c, 0));
       ctx.fillStyle = shaft;
-      ctx.fillRect(cx - halfW, strumY - height * 0.62, halfW * 2, height * 0.62 + 12);
+      ctx.fillRect(cx - halfW, shaftTop, halfW * 2, shaftBottom - shaftTop);
 
-      // A tighter, brighter central glow line down each lane.
+      // A tighter, brighter central glow line down each lane (also stops short).
       const core = ctx.createLinearGradient(cx - halfW * 0.12, 0, cx + halfW * 0.12, 0);
       core.addColorStop(0, rgba(c, 0));
-      core.addColorStop(0.5, rgba(c, 0.08 + energy * 0.07));
+      core.addColorStop(0.5, rgba(c, Math.min(0.1, 0.05 + energy * 0.05)));
       core.addColorStop(1, rgba(c, 0));
       ctx.fillStyle = core;
-      ctx.fillRect(cx - halfW * 0.12, strumY - height * 0.55, halfW * 0.24, height * 0.55);
+      ctx.fillRect(cx - halfW * 0.12, shaftTop, halfW * 0.24, shaftBottom - shaftTop);
     }
     ctx.restore();
 
@@ -188,6 +215,12 @@ export class Renderer {
     // 5) STRUM LINE — a premium glass energy bar with a bright neon edge and a
     //    breathing bloom. Color leans toward the hottest recent lane.
     this.drawStrumBar(trackX, trackWidth, strumY, now, energy, heat, board);
+
+    // 5b) HIT-WINDOW BAND — a defined "now tap" zone bracketing the strum line so
+    //     the rhythm read is unambiguous (the timing window the game actually
+    //     scores against). Two faint guide lines + a soft fill; drawn UNDER the
+    //     fret rings so the rings stay the crisp focal target.
+    this.drawHitWindow(trackX, trackWidth, strumY, now, energy);
 
     // 6) FRET PADS — glassy hit targets per lane with idle breathe + press slam.
     for (let i = 0; i < 3; i++) {
@@ -207,6 +240,9 @@ export class Renderer {
       ctx.fillRect(trackX, strumY - 120, trackWidth, 160);
       ctx.restore();
     }
+
+    // Close the play-field clip opened after the sky fill.
+    ctx.restore();
   }
 
   /**
@@ -398,6 +434,47 @@ export class Renderer {
     ctx.restore();
   }
 
+  /**
+   * The defined HIT-WINDOW band: the scoring zone around the strum line drawn as
+   * a pair of faint guide hairlines (top = "approach edge", bottom = "release
+   * edge") with a barely-there fill between them. Gives the rhythm game a clear
+   * "now tap" region distinct from the approach beam. Height tracks the actual
+   * timing tolerance (≈ the note radius) so what you see is what's scored.
+   */
+  private drawHitWindow(
+    trackX: number,
+    trackWidth: number,
+    strumY: number,
+    now: number,
+    energy: number
+  ): void {
+    const ctx = this.ctx;
+    const r = this.laneSystem.getNoteRadius();
+    const band = r * 1.05; // half-height of the visible window
+    const breathe = 0.5 + 0.5 * Math.sin(now * 0.0035);
+    ctx.save();
+    // Soft fill between the brackets (source-over, low alpha — never additive so
+    // it can't pile onto the beam and wash the rings).
+    const fill = ctx.createLinearGradient(0, strumY - band, 0, strumY + band);
+    fill.addColorStop(0, rgba({ r: 255, g: 255, b: 255 }, 0));
+    fill.addColorStop(0.5, rgba({ r: 255, g: 255, b: 255 }, 0.03 + breathe * 0.015));
+    fill.addColorStop(1, rgba({ r: 255, g: 255, b: 255 }, 0));
+    ctx.fillStyle = fill;
+    ctx.fillRect(trackX, strumY - band, trackWidth, band * 2);
+    // Two guide hairlines marking the window edges.
+    ctx.strokeStyle = rgba({ r: 255, g: 255, b: 255 }, 0.1 + energy * 0.06);
+    ctx.lineWidth = 1;
+    ctx.setLineDash([6, 6]);
+    ctx.beginPath();
+    ctx.moveTo(trackX, strumY - band);
+    ctx.lineTo(trackX + trackWidth, strumY - band);
+    ctx.moveTo(trackX, strumY + band);
+    ctx.lineTo(trackX + trackWidth, strumY + band);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+  }
+
   /** Glass fret pad with idle breathe, press slam, and a hit-flash column. */
   private drawFretPad(
     lane: LaneIndex,
@@ -420,12 +497,15 @@ export class Renderer {
       const k = 1 - flashAge / 0.36;
       ctx.save();
       ctx.globalCompositeOperation = "lighter";
-      const beamW = r * (0.9 + (1 - k) * 0.5);
-      const beam = ctx.createLinearGradient(0, strumY - r * 7, 0, strumY);
+      // CAPPED: shorter, narrower beam (was r*7 tall, full lane) + lower peak
+      // alpha so the hit response doesn't bloom into a cone over the rings.
+      const beamW = r * (0.55 + (1 - k) * 0.3);
+      const beamH = r * 3.2;
+      const beam = ctx.createLinearGradient(0, strumY - beamH, 0, strumY);
       beam.addColorStop(0, rgba(c, 0));
-      beam.addColorStop(1, rgba(c, 0.5 * k * flash.power));
+      beam.addColorStop(1, rgba(c, 0.34 * k * flash.power));
       ctx.fillStyle = beam;
-      ctx.fillRect(cx - beamW, strumY - r * 7, beamW * 2, r * 7);
+      ctx.fillRect(cx - beamW, strumY - beamH, beamW * 2, beamH);
       ctx.restore();
     }
 
@@ -466,18 +546,29 @@ export class Renderer {
       ctx.arc(cx, strumY, r, 0, Math.PI * 2);
       ctx.fill();
 
-      // Neon ring (additive glow).
+      // GLOW UNDERLAY (additive, capped) — a soft halo so the ring reads neon,
+      // kept separate from the crisp stroke below so it can't wash the ring out.
       ctx.globalCompositeOperation = "lighter";
-      ctx.shadowBlur = 6 + idle * 8 + energy * 8;
+      ctx.shadowBlur = Math.min(14, 5 + idle * 5 + energy * 5);
       ctx.shadowColor = rgbStr(c);
-      ctx.strokeStyle = rgba(c, 0.55 + idle * 0.25 + energy * 0.15);
+      ctx.strokeStyle = rgba(c, 0.28 + idle * 0.12);
       ctx.lineWidth = 3.5;
       ctx.beginPath();
       ctx.arc(cx, strumY, r, 0, Math.PI * 2);
       ctx.stroke();
-      // Thin bright inner rim highlight (glass edge).
+
+      // CRISP RING — drawn source-over (NOT additive) at full opacity so it
+      // always sits sharp ON TOP of any beam/shaft glow. This is the high-
+      // contrast hit target the player reads.
+      ctx.globalCompositeOperation = "source-over";
       ctx.shadowBlur = 0;
-      ctx.strokeStyle = rgba({ r: 255, g: 255, b: 255 }, 0.12 + idle * 0.08);
+      ctx.strokeStyle = rgba(c, 0.95);
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(cx, strumY, r, 0, Math.PI * 2);
+      ctx.stroke();
+      // Thin bright inner rim highlight (glass edge).
+      ctx.strokeStyle = rgba({ r: 255, g: 255, b: 255 }, 0.16 + idle * 0.08);
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.arc(cx, strumY, r * 0.86, 0, Math.PI * 2);
@@ -494,6 +585,18 @@ export class Renderer {
     const now = performance.now();
     const strumY = this.laneSystem.getStrumLineY();
     const r = this.laneSystem.getNoteRadius();
+    const fieldTop = this.laneSystem.getPlayFieldTop();
+    const width = parseFloat(this.canvas.style.width);
+    const height = parseFloat(this.canvas.style.height);
+    // Half-height of the scored hit window (matches drawHitWindow's band).
+    const hitBand = r * 1.05;
+
+    // Clip ALL note drawing to the play field so a freshly spawned card can
+    // never paint over the HUD band above fieldTop.
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(0, fieldTop, width, height - fieldTop);
+    ctx.clip();
 
     // PASS 1 — additive motion trails behind every live note (comet tails that
     // brighten as they approach the strum line). One additive pass = cheap bloom.
@@ -557,12 +660,15 @@ export class Renderer {
       if (y < -50) continue;
 
       const proximity = clamp01(1 - Math.abs(y - strumY) / (strumY + 1));
-      const pulse = 0.5 + 0.5 * Math.sin(now * 0.011 + note.lane * 1.7);
+      // CONTACT STATE: the card is inside the scored hit window ("now tap").
+      const inWindow = Math.abs(y - strumY) <= hitBand;
 
       // UNIFORM single-word cards: every lane's card is the SAME fixed size; only
       // the word inside differs. Single words by construction, so the word is
       // laid out on ONE line, shrink-to-fit only if a rare long token needs it,
-      // with >=PAD px of inner padding that the text never crosses.
+      // with >=PAD px of inner padding that the text never crosses. NOTE: card
+      // size + glow are IDENTICAL across lanes (no per-lane phase/pulse) so the
+      // three lanes are perfectly uniform — only the lane COLOR differs.
       const laneW = this.laneSystem.getLaneBounds(0).width;
       const cardW = Math.min(laneW * 0.9, r * 2.6);
       const cardH = r * 1.55; // fixed for ALL cards
@@ -576,7 +682,8 @@ export class Renderer {
         ? fitWord(
             ctx,
             note.text,
-            cardW - PAD * 2,
+            // Usable text width = card minus L/R padding minus the accent spine.
+            cardW - PAD * 2 - 6,
             Math.max(20, r * 0.6),
             14,
             wordFont
@@ -585,14 +692,15 @@ export class Renderer {
 
       // --- APPROACH BLOOM: a soft lane-colored glow pad behind the card that
       //     swells as it nears the strum line (anticipation). Additive but
-      //     TIGHT — kept small + low-alpha so it never washes out the word or
-      //     the hit rings underneath. ---
+      //     TIGHT + CAPPED — small radius, low alpha, identical per lane, so it
+      //     never washes out the word or the hit rings underneath. ---
       if (proximity > 0.02) {
         ctx.save();
         ctx.globalCompositeOperation = "lighter";
-        const bloomR = cardW * (0.46 + proximity * 0.28);
+        const bloomR = cardW * (0.4 + proximity * 0.18);
+        const bloomA = Math.min(0.11, 0.07 * proximity + (inWindow ? 0.04 : 0));
         const bg = ctx.createRadialGradient(cx, y, 0, cx, y, bloomR);
-        bg.addColorStop(0, rgba(c, (0.1 + pulse * 0.03) * proximity));
+        bg.addColorStop(0, rgba(c, bloomA));
         bg.addColorStop(1, rgba(c, 0));
         ctx.fillStyle = bg;
         ctx.beginPath();
@@ -603,8 +711,9 @@ export class Renderer {
 
       // --- GLASS CARD BODY ---
       ctx.save();
-      // Outer neon glow on the card edge (tightened so the word stays crisp).
-      ctx.shadowBlur = 8 + proximity * 12 + pulse * 3;
+      // Outer neon glow on the card edge — uniform across lanes; a small extra
+      // lift ONLY in the hit window so "now tap" reads as a contact state.
+      ctx.shadowBlur = (inWindow ? 16 : 8) + proximity * 8;
       ctx.shadowColor = rgbStr(c);
 
       // Frosted glass fill: vertical gradient from a lifted top to a darker base.
@@ -625,9 +734,10 @@ export class Renderer {
       roundRectPath(ctx, x + 2, cardY + 2, cardW - 4, cardH * 0.5, radius * 0.8);
       ctx.fill();
 
-      // Neon border.
-      ctx.strokeStyle = rgba(c, 0.85 + proximity * 0.15);
-      ctx.lineWidth = 2 + proximity * 1.5;
+      // Neon border — uniform weight across lanes; a crisp brighter ring ONLY
+      // when the card is in the hit window (the "contact" cue).
+      ctx.strokeStyle = rgba(c, inWindow ? 1 : 0.88);
+      ctx.lineWidth = inWindow ? 3 : 2;
       roundRectPath(ctx, x, cardY, cardW, cardH, radius);
       ctx.stroke();
 
@@ -637,7 +747,8 @@ export class Renderer {
       ctx.fill();
       ctx.restore();
 
-      // --- WORD (single line, centered, never touches the border) ---
+      // --- WORD (single line, centered in the usable area, never touches the
+      //     border or the accent spine) ---
       if (layout) {
         ctx.save();
         ctx.textAlign = "center";
@@ -646,10 +757,14 @@ export class Renderer {
         ctx.shadowColor = "rgba(0,0,0,0.55)";
         ctx.shadowBlur = 4;
         ctx.fillStyle = rgbStr(this.textColor);
+        // Centered in the area right of the 6px spine so it never crowds it.
         ctx.fillText(layout.text, cx + 3, y);
         ctx.restore();
       }
     }
+
+    // Close the play-field clip opened at the top of drawNotes.
+    ctx.restore();
   }
 }
 

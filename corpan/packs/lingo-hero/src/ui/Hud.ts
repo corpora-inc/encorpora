@@ -229,6 +229,24 @@ export class Hud {
     this.subscribe();
   }
 
+  /**
+   * The bottom edge (in CSS px, relative to the game container) of the in-game
+   * HUD band — i.e. the lowest of the visible top-anchored HUD chrome (score /
+   * combo chips, which sit below the prompt + cue + phrase strip). Falling cards
+   * and lane FX must start BELOW this so they never collide with or draw under
+   * the HUD. Returns 0 when the HUD isn't visible (menu / game-over).
+   */
+  getHudBottom(): number {
+    if (this.hudPanel.classList.contains("hidden")) return 0;
+    const hostRect = this.root.getBoundingClientRect();
+    // The score/combo strip is the lowest persistent top-band element. Measure
+    // its bottom relative to the container; the feedback card + phrase strip are
+    // either transient or sit above it.
+    const ref = this.scoreEl.closest(".score-container") ?? this.hudPanel;
+    const r = (ref as HTMLElement).getBoundingClientRect();
+    return Math.max(0, r.bottom - hostRect.top);
+  }
+
   /** The prompt text shown in the in-game question box (foreign word). */
   setQuestion(text: string): void {
     this.questionBox.textContent = text;

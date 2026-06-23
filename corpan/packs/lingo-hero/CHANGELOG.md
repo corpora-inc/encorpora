@@ -6,6 +6,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Falling cards no longer clip or draw over the HUD.** Introduced a measured
+  *play field* whose top sits below the live HUD band (prompt + cue + phrase
+  strip + score/combo chips). Cards now spawn with their top edge at the play
+  field top and fall from there — fully inside the field from frame one, never
+  half-off the top frame, never overlapping the prompt header, and never drawn
+  behind the SCORE/COMBO chips. All lane FX and note drawing are clipped to the
+  play field, so nothing bleeds up into the HUD. Word text keeps ≥14px interior
+  padding (also accounting for the lane accent spine) so it never touches a card
+  edge.
+- **Glow/bloom no longer washes out the hit rings under load.** The volumetric
+  lane shafts are narrowed to contained columns and stop short of the strum
+  line; the per-card approach bloom and the lane hit-flash beam are capped in
+  radius and alpha. The resting fret ring is now drawn in two layers — a capped
+  additive glow underlay plus a crisp `source-over` ring stroke at full opacity
+  on top — so the target stays sharp and high-contrast over any beam.
+- **Phrase-assembly premise is now clearly on screen.** The word-by-word
+  progress tray reads as real fillable slot-chips (collected = solid lime chips,
+  active = pulsing accent chip, remaining = outlined blanks), so the core loop
+  ("a phrase assembles") is visible during gameplay.
+- **Defined hit-window band + contact state.** A dashed bracket band marks the
+  scored "now tap" zone around the strum line; a card brightens its border and
+  glow when it enters the window, giving a clear contact cue distinct from the
+  approach.
+
+### Changed
+- **Perfectly uniform lanes.** Removed the per-lane phase/pulse that made the
+  center (magenta) card read larger/brighter; card size and glow are now
+  identical across all three lanes — only the lane color differs.
+- **Unambiguous mute glyph.** The single mute toggle uses a filled speaker icon
+  with sound waves when on (cyan glow) and a filled speaker with a bold
+  strike-through when off (muted pink, no glow), so on/off state is readable
+  from both glyph and color.
+
 ## [0.3.0] - 2026-06-23
 
 The **Word Lanes** redesign. The old phrase-on-a-card loop is gone: long

@@ -965,7 +965,9 @@ canvas {
   opacity: 0; /* fades out once the player is clearly going */
 }
 
-/* ----- Phrase-assembly strip — the English answer built word by word ----- */
+/* ----- Phrase-assembly strip — the English answer built word by word. This is
+   the visible heart of the core loop ("a phrase assembles"), so it reads as a
+   real tray of word-slots, not a faint caption. ----- */
 .phrase-strip {
   display: flex;
   flex-wrap: wrap;
@@ -973,14 +975,15 @@ canvas {
   justify-content: center;
   gap: var(--na-space-2);
   align-self: center;
-  max-width: min(92%, 560px);
-  padding: var(--na-space-2) var(--na-space-3);
-  border-radius: var(--na-radius-pill);
-  background: var(--na-glass-bg);
+  max-width: min(94%, 580px);
+  padding: var(--na-space-3) var(--na-space-4);
+  border-radius: var(--na-radius-lg, 18px);
+  background: color-mix(in srgb, var(--na-bg-elev, #0d0b1a) 78%, transparent);
   border: 1px solid var(--na-glass-stroke);
-  box-shadow: 0 1px 0 var(--na-glass-hi) inset, var(--na-glow-soft);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 var(--na-glass-hi) inset, var(--na-glow-soft),
+    0 10px 28px -16px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .phrase-strip[hidden] {
   display: none;
@@ -988,27 +991,36 @@ canvas {
 .ps-word {
   font-family: var(--na-font-display, var(--font-display));
   font-weight: 800;
-  font-size: clamp(0.95rem, 4vmin, 1.3rem);
+  font-size: clamp(1rem, 4.4vmin, 1.4rem);
   line-height: 1;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  /* Every slot is a real chip so the tray reads as fillable boxes. */
+  padding: 0.32em 0.6em;
+  border-radius: var(--na-radius-sm, 10px);
+  border: 1px solid transparent;
 }
 .ps-word.is-done {
   color: var(--na-text);
+  background: color-mix(in srgb, var(--na-lane-3, #7bff7b) 18%, transparent);
+  border-color: color-mix(in srgb, var(--na-lane-3, #7bff7b) 45%, transparent);
   text-shadow: 0 0 10px color-mix(in srgb, var(--na-lane-3, #7bff7b) 55%, transparent);
 }
 .ps-word.is-active {
   color: var(--na-accent);
+  background: color-mix(in srgb, var(--na-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--na-accent) 70%, transparent);
   text-shadow: 0 0 12px color-mix(in srgb, var(--na-accent) 70%, transparent);
   animation: ps-pulse 1.1s var(--na-ease-out) infinite;
 }
 .ps-word.is-blank {
   color: var(--na-text-faint);
-  opacity: 0.55;
+  border-color: var(--na-glass-stroke);
+  opacity: 0.7;
 }
 @keyframes ps-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.55; }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 color-mix(in srgb, var(--na-accent) 40%, transparent); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 4px color-mix(in srgb, var(--na-accent) 0%, transparent); }
 }
 
 /* ----- (d) Mastery readout — a real sense of progress, in-run ----- */

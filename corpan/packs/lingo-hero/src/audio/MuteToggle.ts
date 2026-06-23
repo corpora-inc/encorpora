@@ -20,9 +20,12 @@
 
 const STORAGE_KEY = "lingoHero.audio.muted";
 
-/** Speaker-on / speaker-off inline SVGs (no external icon font). */
-const ICON_ON = `<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8 8 0 0 1 0 12"/></svg>`;
-const ICON_OFF = `<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M22 9l-6 6"/><path d="M16 9l6 6"/></svg>`;
+/** Speaker-on / speaker-off inline SVGs (no external icon font). The speaker
+ *  body is FILLED (currentColor) so the glyph reads as a solid icon at a glance;
+ *  ON adds two sound waves, OFF replaces them with a bold strike-through so the
+ *  two states are unambiguous even with no color cue. */
+const ICON_ON = `<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" stroke="none"/><path d="M16.5 8.5a5 5 0 0 1 0 7" fill="none"/><path d="M19 6a8 8 0 0 1 0 12" fill="none"/></svg>`;
+const ICON_OFF = `<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z" stroke="none"/><path d="M23 9l-6 6M17 9l6 6" fill="none"/></svg>`;
 
 function readStoredMuted(): boolean {
   try {
@@ -100,16 +103,24 @@ export class MuteToggle {
       this.muted ? "Unmute sound" : "Mute sound"
     );
     this.btn.title = this.muted ? "Sound off" : "Sound on";
-    // Active = lime-glow on; muted = dimmed faint.
+    // ON = bright cyan glow (sound is live). OFF = muted pink + no glow + faded
+    // background, so the disabled state is unmistakable at a glance (color +
+    // glyph both change). Not just a dimmed version of the same look.
     if (this.muted) {
-      this.btn.style.color = "var(--na-text-faint, #8a90b8)";
-      this.btn.style.borderColor = "var(--na-glass-stroke, rgba(255,255,255,.12))";
+      this.btn.style.color = "var(--na-wrong, #ff3ea5)";
+      this.btn.style.borderColor =
+        "color-mix(in srgb, var(--na-wrong, #ff3ea5) 60%, transparent)";
+      this.btn.style.background =
+        "color-mix(in srgb, var(--na-wrong, #ff3ea5) 10%, var(--na-glass-bg, rgba(18,20,40,.55)))";
       this.btn.style.boxShadow = "var(--na-shadow-panel, 0 8px 24px rgba(0,0,0,.5))";
+      this.btn.style.opacity = "0.92";
     } else {
       this.btn.style.color = "var(--na-accent, #2ff3ff)";
       this.btn.style.borderColor = "var(--na-accent, #2ff3ff)";
+      this.btn.style.background = "var(--na-glass-bg, rgba(18,20,40,.55))";
       this.btn.style.boxShadow =
         "var(--na-glow-cyan, 0 0 12px rgba(47,243,255,.55)), var(--na-shadow-panel, 0 8px 24px rgba(0,0,0,.5))";
+      this.btn.style.opacity = "1";
     }
   }
 

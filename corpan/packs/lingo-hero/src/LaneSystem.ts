@@ -7,9 +7,16 @@ export class LaneSystem {
   // Logical scale (updated on resize)
   private canvasHeight: number = 0;
 
+  // Top of the PLAY FIELD in CSS px — the y below which notes fall and lane FX
+  // are drawn. Sits below the DOM HUD band (header + cue + phrase strip + score
+  // chips) so falling cards never collide with or draw under the HUD. Measured
+  // from the live HUD layout each frame via setPlayFieldTop(); the fallback is a
+  // proportional gutter so geometry is still sane before the first measurement.
+  private playFieldTop: number = 0;
+
   // Visual config
   // Now relative to screen size instead of fixed pixels
-  private noteRadius: number = 40; 
+  private noteRadius: number = 40;
   private readonly STRUM_LINE_Y_RATIO = 0.8;
 
   constructor(width: number, height: number) {
@@ -18,18 +25,40 @@ export class LaneSystem {
 
   resize(width: number, height: number) {
     this.canvasHeight = height;
-    
+
     // Make lanes fill width on mobile, but cap on desktop
     // On mobile (narrow width), fill 100%. On desktop, max 600px total?
     const totalMaxWidth = 600;
     const actualTotalWidth = Math.min(width, totalMaxWidth);
-    
+
     this.laneWidth = actualTotalWidth / 3;
     this.startX = (width - actualTotalWidth) / 2;
-    
+
     // Scale note radius based on lane width — bigger cards so the words are
     // readable while they fall.
     this.noteRadius = Math.min(72, this.laneWidth * 0.5);
+
+    // Proportional fallback gutter until the HUD is measured (≈ a third of the
+    // height, which clears the header + chips on phone aspect ratios).
+    if (this.playFieldTop <= 0) {
+      this.playFieldTop = Math.min(height * 0.34, this.getStrumLineY() - this.noteRadius * 3);
+    }
+  }
+
+  /**
+   * Set the top of the play field (CSS px), measured from the live HUD layout.
+   * Clamped so it always leaves at least a card's worth of fall above the strum
+   * line — the player must see the note travel, never teleport. Game.ts calls
+   * this each resize / each HUD update.
+   */
+  setPlayFieldTop(y: number): void {
+    const maxTop = this.getStrumLineY() - this.noteRadius * 3;
+    this.playFieldTop = Math.max(0, Math.min(y, maxTop));
+  }
+
+  /** Top of the play field (CSS px) — notes fall from here to the strum line. */
+  getPlayFieldTop(): number {
+    return this.playFieldTop;
   }
 
   getLaneX(index: LaneIndex): number {

@@ -219,9 +219,46 @@ export class Game {
     if (ctx) ctx.scale(dpr, dpr);
 
     this.laneSystem.resize(width, height);
-    // px/sec so a note covers spawn(-100)→strum(0.8·H) in NOTE_TRAVEL_SECONDS,
-    // independent of canvas size and device refresh rate.
-    this.speed = (height * 0.8 + 100) / this.NOTE_TRAVEL_SECONDS;
+    // Sync the play-field top to the live HUD layout (below the header + chips)
+    // so cards spawn and fall inside the field, never over the HUD.
+    this.syncPlayFieldTop();
+    // px/sec so a note covers the play-field span (playFieldTop→strum) in
+    // NOTE_TRAVEL_SECONDS, independent of canvas size and device refresh rate.
+    this.speed = this.computeSpeed();
+  }
+
+  /**
+   * Measure the HUD's bottom edge and push it to the lane system as the top of
+   * the play field. Cards spawn just above this line and fall to the strum,
+   * so they never overlap the prompt/cue/phrase-strip/score band. No-op when
+   * the HUD isn't laid out yet (returns 0 → keeps the proportional fallback).
+   */
+  private syncPlayFieldTop(): void {
+    const hudBottom = this.hud?.getHudBottom() ?? 0;
+    if (hudBottom > 0) {
+      // A small breathing gutter below the HUD before the fall region begins.
+      this.laneSystem.setPlayFieldTop(hudBottom + 12);
+    }
+  }
+
+  /** Fall speed (px/sec) so a card travels from its spawn center to the strum
+   *  line in NOTE_TRAVEL_SECONDS, independent of canvas size + refresh rate. */
+  private computeSpeed(): number {
+    const cardHalfH = this.laneSystem.getNoteRadius() * 1.55 * 0.5;
+    const span =
+      this.laneSystem.getStrumLineY() -
+      (this.laneSystem.getPlayFieldTop() + cardHalfH);
+    return Math.max(60, span) / this.NOTE_TRAVEL_SECONDS;
+  }
+
+  /** The y a freshly spawned card's CENTER starts at: positioned so the card's
+   *  TOP edge sits at the play-field top — the whole card (and its word) is
+   *  inside the field from frame one, never clipped and never over the HUD. The
+   *  card is `noteRadius * 1.55` tall (see Renderer), so half that is its top
+   *  inset from center. */
+  private spawnY(): number {
+    const cardHalfH = this.laneSystem.getNoteRadius() * 1.55 * 0.5;
+    return this.laneSystem.getPlayFieldTop() + cardHalfH;
   }
 
   private showMenu() {
@@ -338,6 +375,11 @@ export class Game {
       this.hud.setRomanization(phrase.romanization ?? "");
       // Prime the assembly strip with all blanks.
       this.hud.setPhraseProgress(this.phraseWords, 0);
+      // The HUD just grew (prompt + romanization + phrase strip) — re-measure
+      // the play-field top and recompute speed BEFORE spawning the first beat so
+      // the cards start below the (now taller) HUD band.
+      this.syncPlayFieldTop();
+      this.speed = this.computeSpeed();
 
       // Speak the RAW foreign prompt once at the start of the phrase.
       this.contentManager.speak(
@@ -365,11 +407,16 @@ export class Game {
     const indices = [0, 1, 2].sort(() => Math.random() - 0.5);
     const used = new Set<string>([normalizeWord(correctWord)]);
     const now = Date.now();
+    // Re-sync the field top (the phrase strip can change the HUD height between
+    // beats) and recompute the fall speed for the current span.
+    this.syncPlayFieldTop();
+    this.speed = this.computeSpeed();
+    const spawnY = this.spawnY();
 
     const targetNote: Note = {
       id: `beat-${now}-${this.beatIndex}-t`,
       lane: indices[0],
-      y: -100,
+      y: spawnY,
       text: correctWord,
       isTarget: true,
       hit: false,
@@ -403,7 +450,7 @@ export class Game {
       notes.push({
         id: `beat-${now}-${this.beatIndex}-d${slot}`,
         lane: indices[slot],
-        y: -100,
+        y: spawnY,
         text: word,
         isTarget: false,
         hit: false,
