@@ -1,0 +1,104 @@
+name: hygiene
+
+# Cheap gates that protect the trunk: secret scanning + a big-file guard.
+# Single job named `hygiene` so it always reports a status — safe as a required
+# check on `main`. Runs on every PR and in the merge queue.
+
+on:
+  pull_request:
+    branches: ["main"]
+  merge_group:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hygiene-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  hygiene:
+    name: hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve diff range
+        id: range
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha || github.sha }}
+        run: |
+          set -euo pipefail
+          base="${BASE_SHA}"
+          head="${HEAD_SHA}"
+          if [ -z "${base}" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            base="$(git rev-parse "${head}^" 2>/dev/null || true)"
+          fi
+          echo "base=${base}" >> "${GITHUB_OUTPUT}"
+          echo "head=${head}" >> "${GITHUB_OUTPUT}"
+          echo "Scanning range ${base}..${head}"
+
+      # Secret scanning via the gitleaks binary (free; the GitHub Action requires a
+      # paid license for org accounts). Scans only the PR's commit range so legacy
+      # history can't fail a new PR.
+      - name: Install gitleaks
+        run: |
+          set -euo pipefail
+          VERSION="8.18.4"
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}"
+          tarball="gitleaks_${VERSION}_linux_x64.tar.gz"
+          curl -sSLO "${base}/${tarball}"
+          curl -sSLO "${base}/gitleaks_${VERSION}_checksums.txt"
+          # Verify integrity against the release's published checksums before use.
+          grep " ${tarball}\$" "gitleaks_${VERSION}_checksums.txt" | sha256sum -c -
+          tar -xz -C /usr/local/bin -f "${tarball}" gitleaks
+          gitleaks version
+
+      - name: Secret scan (diff range)
+        env:
+          BASE: ${{ steps.range.outputs.base }}
+          HEAD: ${{ steps.range.outputs.head }}
+        run: |
+          set -euo pipefail
+          if [ -z "${BASE}" ]; then
+            echo "No base commit resolved; scanning HEAD commit only."
+            gitleaks detect --no-banner --redact --log-opts="--max-count=1 ${HEAD}"
+          else
+            gitleaks detect --no-banner --redact --log-opts="${BASE}..${HEAD}"
+          fi
+
+      # Big-file guard: fail when a PR adds a large blob that isn't tracked by LFS.
+      - name: Big-file guard
+        env:
+          BASE: ${{ steps.range.outputs.base }}
+          HEAD: ${{ steps.range.outputs.head }}
+          MAX_BYTES: "5242880" # 5 MiB
+        run: |
+          set -euo pipefail
+          if [ -z "${BASE}" ]; then
+            echo "No base commit; skipping big-file guard."
+            exit 0
+          fi
+          # Files added (A) or modified (M) in this range.
+          mapfile -t files < <(git diff --name-only --diff-filter=AM "${BASE}" "${HEAD}")
+          fail=0
+          for f in "${files[@]}"; do
+            [ -f "${f}" ] || continue
+            # Skip files declared as LFS in .gitattributes.
+            if git check-attr filter -- "${f}" 2>/dev/null | grep -q 'filter: lfs'; then
+              continue
+            fi
+            size=$(stat -c%s "${f}")
+            if [ "${size}" -gt "${MAX_BYTES}" ]; then
+              echo "::error file=${f}::${f} is ${size} bytes (> ${MAX_BYTES}). Use Git LFS or store it out of the repo."
+              fail=1
+            fi
+          done
+          if [ "${fail}" -ne 0 ]; then
+            exit 1
+          fi
+          echo "No oversized non-LFS files added."
