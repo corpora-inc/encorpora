@@ -442,15 +442,21 @@ export class Game {
    */
   private advanceStep(caught: boolean) {
     if (!this.round) return;
-    const idx = this.caughtCount;
-    if (idx < this.roundWords.length) {
-      this.assembled.push(this.roundWords[idx]);
-      this.hud.setAssembled(
-        this.assembled,
-        this.roundWords.length,
-        this.activeLanguage.isRTL
-      );
+    // The sequence is already complete — never advance past the last word.
+    // (Step cadence makes this single-call-per-step in practice, but guard the
+    // invariant so caughtCount can't overshoot roundWords.length and corrupt
+    // the assembling strip / spawn state.) (adversarial-review, PR #390)
+    if (this.caughtCount >= this.roundWords.length) {
+      this.stepActive = false;
+      return;
     }
+    const idx = this.caughtCount;
+    this.assembled.push(this.roundWords[idx]);
+    this.hud.setAssembled(
+      this.assembled,
+      this.roundWords.length,
+      this.activeLanguage.isRTL
+    );
     this.caughtCount += 1;
     this.stepActive = false;
 
