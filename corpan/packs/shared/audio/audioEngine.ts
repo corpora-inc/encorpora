@@ -62,7 +62,18 @@ export function createAudioEngine(
   let analyser: AnalyserNode | null = null
   let gainNode: GainNode | null = null
   let currentSource: AudioBufferSourceNode | null = null
+  // Per-source gain node, inserted between each source and the master gainNode.
+  // Gives every source an independent fade envelope so a seek/switch can fade
+  // the outgoing source to 0 while the incoming source ramps up from 0 —
+  // without the two ramps fighting over one shared gain param.
+  let currentSourceGain: GainNode | null = null
   let playing = false
+  // When set, the next source `playSegment` starts is a discontinuity (seek,
+  // resume, language switch) rather than a smooth segment-to-segment handoff,
+  // so it must ramp gain up from ~0 to avoid a click. Cleared once consumed.
+  // Normal segment handoffs leave this false: gain stays pinned at 1.0 so we
+  // don't chop a dip into the start of every segment.
+  let fadeInNextStart = false
   let waitingForNextSegment = false
   let waitingOwnerGeneration: number | null = null
   let nextSegmentTimer: ReturnType<typeof setTimeout> | null = null
@@ -140,6 +151,8 @@ export function createAudioEngine(
     // Invalidate stale source/state from dead context
     outputLatencyLoggedOnce = false
     currentSource = null
+    currentSourceGain = null
+    fadeInNextStart = false
 
     waitingForNextSegment = false
     waitingOwnerGeneration = null
@@ -269,34 +282,43 @@ export function createAudioEngine(
 
     if (!currentSource) return
     const source = currentSource
+    const sourceGain = currentSourceGain
     currentSource = null  // release the reference immediately so callers see "not playing"
+    currentSourceGain = null
 
-    if (fadeMs > 0 && ctx && gainNode) {
+    if (fadeMs > 0 && ctx && sourceGain) {
       const now = ctx.currentTime
       const end = now + fadeMs / 1000
       try {
-        gainNode.gain.cancelScheduledValues(now)
-        // Pin the current value so the ramp starts from wherever we actually are.
-        gainNode.gain.setValueAtTime(gainNode.gain.value, now)
+        // Ramp this source's OWN gain to silence — independent of the master
+        // gain and of any incoming source's fade-in, so a seek/switch can
+        // overlap the two without one ramp clobbering the other.
+        sourceGain.gain.cancelScheduledValues(now)
+        sourceGain.gain.setValueAtTime(sourceGain.gain.value, now)
         // linearRampToValueAtTime requires a non-zero target.
-        gainNode.gain.linearRampToValueAtTime(0.0001, end)
+        sourceGain.gain.linearRampToValueAtTime(0.0001, end)
         source.stop(end)
         // Don't disconnect yet — disconnect would cut the source off from the
         // graph before the ramp finishes. Let the source play through to `end`,
         // then detach it. setTimeout uses ms, Web Audio uses seconds.
         setTimeout(() => {
           try { source.disconnect() } catch { /* already gone */ }
+          try { sourceGain.disconnect() } catch { /* already gone */ }
         }, fadeMs + 5)
       } catch (e) {
         console.warn("[audio] fade-stop failed, hard-stopping:", e)
         try { source.stop() } catch { /* already stopped */ }
         try { source.disconnect() } catch { /* already disconnected */ }
+        try { sourceGain.disconnect() } catch { /* already disconnected */ }
       }
       return
     }
 
     try { source.stop() } catch (e) { console.warn("[audio] source.stop():", e) }
     try { source.disconnect() } catch (e) { console.warn("[audio] source.disconnect():", e) }
+    if (sourceGain) {
+      try { sourceGain.disconnect() } catch (e) { console.warn("[audio] sourceGain.disconnect():", e) }
+    }
   }
 
   /**
@@ -468,15 +490,38 @@ export function createAudioEngine(
 
     const source = context.createBufferSource()
     source.buffer = buffer
-    source.connect(gainNode)
+
+    // Each source gets its own gain node so its fade envelope is independent of
+    // any outgoing source still fading out (seek / switch overlap).
+    const sourceGain = context.createGain()
+    source.connect(sourceGain)
+    sourceGain.connect(gainNode)
+
+    // If this start follows a discontinuity (seek / resume / narration switch),
+    // ramp this source up from near-silence so it doesn't pop in at full
+    // amplitude mid-waveform. Smooth segment handoffs skip this (gain starts at
+    // 1.0) so continuous playback isn't notched at every segment boundary.
+    if (fadeInNextStart) {
+      fadeInNextStart = false
+      const now = context.currentTime
+      try {
+        sourceGain.gain.setValueAtTime(0.0001, now)
+        sourceGain.gain.linearRampToValueAtTime(1.0, now + FADE_MS / 1000)
+      } catch (e) { console.warn("[audio] seek/switch fade-in failed:", e) }
+    } else {
+      sourceGain.gain.value = 1.0
+    }
 
     segmentStartedAtCtxTime = context.currentTime
     segmentPlaybackOffset = clampedOffset
     accumulatedTimeMs = segmentAbsoluteStartMs[index]
 
     source.onended = () => {
+      // Detach this source's gain node from the graph so it doesn't leak.
+      try { sourceGain.disconnect() } catch { /* already gone */ }
       if (currentSource === source) {
         currentSource = null
+        currentSourceGain = null
       }
       if (disposed || !playing || gen !== playbackGeneration) return
 
@@ -488,6 +533,7 @@ export function createAudioEngine(
 
     source.start(0, clampedOffset / 1000)
     currentSource = source
+    currentSourceGain = sourceGain
 
     waitingForNextSegment = false
     waitingOwnerGeneration = null
@@ -526,17 +572,11 @@ export function createAudioEngine(
 
       // Symmetric fade-in to match the out-fade in stopSource — avoids the
       // click on resume/narration-switch that would otherwise pair with the
-      // fade-out click we just eliminated.
-      if (context && gainNode) {
-        const now = context.currentTime
-        try {
-          gainNode.gain.cancelScheduledValues(now)
-          gainNode.gain.setValueAtTime(0.0001, now)
-          gainNode.gain.linearRampToValueAtTime(1.0, now + FADE_MS / 1000)
-        } catch (e) { console.warn("[audio] fade-in failed:", e) }
-      }
-
+      // fade-out click we just eliminated. The per-source gain (set in
+      // playSegment when fadeInNextStart is armed) carries the ramp; the master
+      // gainNode stays pinned at 1.0.
       playing = true
+      fadeInNextStart = true
       playSegment(currentSegmentIndex, segmentPlaybackOffset)
     },
 
@@ -572,7 +612,10 @@ export function createAudioEngine(
       playing = false
       playbackGeneration++
 
-      stopSource()
+      // Fade the outgoing source to silence before stopping (anti-click on the
+      // old position) and ramp the new one up from 0 (anti-click on the new
+      // position). Without the fades a scrub cuts/starts mid-waveform → pop.
+      stopSource(wasPlaying ? FADE_MS : 0)
 
       currentSegmentIndex = Math.max(0, Math.min(index, segments.length - 1))
       segmentPlaybackOffset = 0
@@ -580,6 +623,7 @@ export function createAudioEngine(
 
       if (wasPlaying) {
         playing = true
+        fadeInNextStart = true
         playSegment(currentSegmentIndex)
       }
     },
@@ -590,7 +634,8 @@ export function createAudioEngine(
       playing = false
       playbackGeneration++
 
-      stopSource()
+      // See seekToSegment — fade out the old source, ramp in the new one.
+      stopSource(wasPlaying ? FADE_MS : 0)
 
       const { index: segIdx, offsetMs: offsetWithinSegment } = resolveSeekTarget(targetMs)
 
@@ -600,6 +645,7 @@ export function createAudioEngine(
 
       if (wasPlaying) {
         playing = true
+        fadeInNextStart = true
         playSegment(segIdx, offsetWithinSegment)
       }
     },
@@ -608,7 +654,9 @@ export function createAudioEngine(
       // Invalidate any pending async playback
       playbackGeneration++
 
-      stopSource()
+      // Paused-scrub preview: no audio is playing so a hard stop won't click,
+      // but if a source is somehow live (race), fade it.
+      stopSource(currentSource ? FADE_MS : 0)
 
       const { index: segIdx, offsetMs: offsetWithinSegment } = resolveSeekTarget(targetMs)
 
