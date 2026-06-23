@@ -10,7 +10,15 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.3] - 2026-06-23
+
 ### Fixed
+- **No more click/pop when scrubbing or switching narration language.**
+  Seeking and language switches cut the playing source off mid-waveform and
+  started the new one at full amplitude, producing an audible click. The audio
+  engine now gives each source its own gain envelope: the outgoing source fades
+  to silence before it stops and the incoming source ramps up from zero, so
+  there is never a hard discontinuity on seek or language switch.
 - **Book owners now download the full narration, not the preview.** Two-ZIP
   premium entries signed the full ZIP only for Corpán Plus subscribers; a
   one-time book owner without Plus got the truncated preview and the upgrade
