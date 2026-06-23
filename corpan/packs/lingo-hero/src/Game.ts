@@ -24,6 +24,7 @@ export class Game {
   private renderer: Renderer;
   private laneSystem: LaneSystem;
   private inputManager: InputManager;
+  private resizeObserver?: ResizeObserver;
   private contentManager: ContentManager;
 
   private bus: GameEventBus;
@@ -101,7 +102,9 @@ export class Game {
     this.laneSystem = new LaneSystem(0, 0); // resized immediately below
     this.renderer = new Renderer(this.canvas, this.laneSystem);
     this.contentManager = new ContentManager(hostApi);
-    this.inputManager = new InputManager(container, (x) => this.getLaneFromX(x));
+    this.inputManager = new InputManager(container, this.canvas, (x) =>
+      this.getLaneFromX(x)
+    );
     this.inputManager.onInput((lane) => this.handleInput(lane));
 
     // Event bus + stream modules (no-op stubs the streams fill in).
@@ -125,9 +128,16 @@ export class Game {
       this.laneSystem
     );
 
-    // Initial resize (DPI) + responsive handler
+    // Initial resize (DPI) + responsive handler. A ResizeObserver tracks the
+    // ACTUAL container size — critical in the app, where the game can mount
+    // before the host's container has its final size (a window 'resize' may
+    // never fire), which would otherwise leave the lane geometry stale.
     this.handleResize(container);
     window.addEventListener("resize", () => this.handleResize(container));
+    if (typeof ResizeObserver !== "undefined") {
+      this.resizeObserver = new ResizeObserver(() => this.handleResize(container));
+      this.resizeObserver.observe(container);
+    }
 
     // Gate the first canvas draw on fonts so 'Russo One' is loaded before paint.
     if (document.fonts && document.fonts.ready) {
@@ -563,6 +573,7 @@ export class Game {
   dispose() {
     this.isRunning = false;
     this.offStackConfigChange?.();
+    this.resizeObserver?.disconnect();
     this.inputManager.dispose();
     this.effects.dispose();
     this.audio.dispose();
