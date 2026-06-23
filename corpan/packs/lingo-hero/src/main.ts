@@ -9,7 +9,11 @@ type GlobalScope = typeof globalThis & {
   __corpanHostActive?: boolean
 }
 
-const GAME_ID = "lingo-hero"
+// Pack id MUST be the underscore form. The installer derives the pack id from
+// the zip filename and normalizes hyphens to underscores (see install.ts), so
+// the game must register under — and the manifest id must be — `lingo_hero`,
+// else install fails with "Pack id mismatch". Paths/zip stay hyphenated.
+const GAME_ID = "lingo_hero"
 
 const registerGame = () => {
   const scope = globalThis as GlobalScope

@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Fixed
+- Install no longer fails with "Pack id mismatch": the pack id is now the
+  underscore form `lingo_hero` (manifest, catalog, and game registration) to
+  match the id the installer derives from the `lingo-hero.zip` filename. Paths
+  and the zip stay hyphenated.
+- Added the pack avatar (`lingo-hero-avatar.png`); the catalog entry previously
+  pointed at a non-existent image, so the pack shipped with no artwork.
 - TTS now speaks the raw entry text instead of the display-cleaned label;
   display labels are cleaned separately and title-casing is restricted to
   Latin/ASCII text (foreign scripts are left intact).

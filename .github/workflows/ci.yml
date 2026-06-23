@@ -232,13 +232,30 @@ jobs:
         working-directory: corpan/infra/terraform
         run: terraform validate
 
+  # Pack catalog integrity: every catalog entry's id matches the installer's
+  # zip-derived id (else "Pack id mismatch" on install) and every declared
+  # avatarSource resolves to a real file (else the pack ships with no artwork).
+  # Runs whenever packs OR the catalog (web/data) change. Cheap, no npm.
+  pack-catalog:
+    name: pack-catalog · integrity
+    needs: changes
+    if: needs.changes.outputs.packs == 'true' || needs.changes.outputs.web == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validate pack ids + artwork against the catalog
+        run: node .github/scripts/pack_catalog_check.js
+
   # Single summary status that aggregates every job above. THIS is the context to
   # mark as a required check on `main` — it always runs (if: always()) and always
   # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.
   # Skipped needs are fine; any failure or cancellation fails the gate.
   ci-gate:
     name: ci-gate
-    needs: [changes, corpan-app, lambda, web-io, changed-packs, terraform]
+    needs: [changes, corpan-app, lambda, web-io, changed-packs, terraform, pack-catalog]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:

@@ -155,7 +155,7 @@
     "tagline": "A living city that turns every encounter into a lesson."
   },
   {
-    "id": "lingo-hero",
+    "id": "lingo_hero",
     "name": "Lingo Hero",
     "description": "A three-lane rhythm game: hear a word in the language you're learning, then strum the lane with the right English answer as the notes fall. Combos, score multipliers, Practice and Blitz modes.",
     "status": "prototype",
