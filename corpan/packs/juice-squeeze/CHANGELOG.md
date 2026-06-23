@@ -10,6 +10,8 @@ preview-gated alongside the original `juice_squeeze` until promoted.
 ## [Unreleased]
 
 ### Fixed
+- Added the pack avatar (`juice-squeeze-avatar.png`); the catalog entry pointed
+  at a non-existent image, so the pack shipped with no artwork.
 - **Audio in the INSTALLED pack (0.1.1)** — `fetch()`/XHR is blocked against the
   `corpan-pack://` scheme on iOS WebKit, so the slimmed fetch+decode engine loaded
   no SFX in the sideloaded pack (it worked over the http dev server, which is why
