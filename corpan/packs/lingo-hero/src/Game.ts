@@ -539,7 +539,15 @@ export class Game {
         word,
       });
     } else {
-      // Empty lane tap — a whiffed catch breaks the combo (no point penalty).
+      // Empty lane tap. Only a *genuine* whiffed catch breaks the combo: there
+      // must be a live catchable target in flight (un-hit, un-missed) for the
+      // tap to count as a real gameplay error. Taps during the dead air between
+      // steps (no target on the board) are a no-op, so an accidental press in a
+      // gap doesn't punish the player. (adversarial-review, PR #390)
+      const liveTarget = this.notes.some(
+        (n) => n.isTarget && !n.hit && !n.missed
+      );
+      if (!liveTarget) return;
       this.setCombo(0);
       this.bus.emit("noteMiss", {
         lane,

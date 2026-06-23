@@ -55,6 +55,10 @@ RECONSTRUCT a translation rather than pick a single answer.
   **increases** across frames (guards the old "frozen notes" bug), that catching
   the **correct next** target word scores, and that tapping the mute control does
   **not** score (no tap-through). Exit-code gating.
+- **Empty-lane taps only break the combo on a genuine whiff** — i.e. when there
+  is a live catchable target in flight. An accidental tap during the dead air
+  between words (no target on the board) is now a no-op rather than a combo
+  reset, so stray presses in the gaps don't punish the player.
 
 ## [0.2.2] - 2026-06-23
 
