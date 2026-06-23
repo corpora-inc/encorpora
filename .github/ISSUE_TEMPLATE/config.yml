@@ -1,0 +1,2 @@
+# Keep friction near zero: a blank issue is always allowed for fast dumps.
+blank_issues_enabled: true

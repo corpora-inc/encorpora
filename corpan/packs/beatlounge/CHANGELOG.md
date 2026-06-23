@@ -5,6 +5,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- 50 new software-instrument presets across all seven families (keys, bass,
+  lead, pad, pluck, brass, fx), bringing the corpus to 123 voices. Pure data
+  over the existing synth / fmSynth / wavetable / analogSynth engines — no new
+  assets. (Beat-Lounge-Plus; closes #325.)
+
 ## [0.3.2] - 2026-06-19
 
 ### Changed
