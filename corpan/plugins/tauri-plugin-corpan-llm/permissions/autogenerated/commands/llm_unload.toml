@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-llm-unload"
+description = "Enables the llm_unload command without any pre-configured scope."
+commands.allow = ["llm_unload"]
+
+[[permission]]
+identifier = "deny-llm-unload"
+description = "Denies the llm_unload command without any pre-configured scope."
+commands.deny = ["llm_unload"]

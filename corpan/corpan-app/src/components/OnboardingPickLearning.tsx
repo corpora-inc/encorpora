@@ -1,127 +1,41 @@
-import { useMemo } from "react";
-import { useSettingsStore, ALL_LANGUAGES } from "@/store/settings";
-import { ArrowRightCircle, ArrowLeftCircle, CheckCircle2 } from "lucide-react";
-import { ScrollIndicatorWrapper } from "./ScrollIndicatorWrapper";
 import { useTranslation } from "react-i18next";
-import { toCamelCase } from "@/util/convert";
+import { useSettingsStore } from "@/store/settings";
+import { LanguageSelectOrder } from "@/components/LanguageSelectOrder";
+import { DismissableTip } from "./DismissableTip";
+import { Button } from "@/components/ui/button";
+import { OnboardingShell } from "@/onboarding/OnboardingShell";
+import type { OnboardingStepProps } from "@/onboarding/types";
 
-export function OnboardingPickLearning() {
+export function OnboardingPickLearning({ onAdvance, onBack }: OnboardingStepProps = {}) {
   const setStep = useSettingsStore((s) => s.setOnboardingStep);
-  const languages = useSettingsStore((s) => s.languages);
-  const setLanguages = useSettingsStore((s) => s.setLanguages);
-  const { t, i18n } = useTranslation();
-  const dir = useSettingsStore((s) => s.dir);
-
-  // Primary at the START
-  const primary = languages[0];
-  const learning = languages.slice(1);
-  const choices = ALL_LANGUAGES.filter((code) => code !== primary);
-
-  const toggleLearning = (code: string) => {
-    const selected = learning.includes(code)
-      ? learning.filter((c) => c !== code)
-      : [...learning, code];
-    // Keep primary at the start
-    setLanguages([primary, ...selected]);
-  };
-
-  const canProceed = learning.length > 0;
-
-  // Locale-aware sorting by translated label
-  const sortedChoices = useMemo(() => {
-    const collator = new Intl.Collator(i18n.language || "en", {
-      sensitivity: "base",
-      ignorePunctuation: true,
-      numeric: true,
-    });
-
-    const items = choices.map((code) => {
-      const key = `languages.${toCamelCase(code)}` as const;
-      const label = t(key, { defaultValue: code }) as string;
-      return { code, label };
-    });
-
-    items.sort((a, b) => collator.compare(a.label, b.label));
-    return items;
-  }, [choices, t, i18n.language]);
+  const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 h-full w-full my-3">
-      {/* Header always on top */}
-      <div className="w-full max-w-xl mx-auto flex flex-row items-center justify-between py-5 px-2"
-        style={{ height: 100 }}
-      >
-        <button
-          className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-md p-3 shadow transition border"
-          onClick={() => setStep(1)}
-          tabIndex={0}
-        >
-          <ArrowLeftCircle size={30} />
-        </button>
-        <div
-          className="flex-1 text-center text-sm font-semibold text-gray-800 select-none px-1"
-          style={{ letterSpacing: 0.25 }}
-          dir={dir()}
-        >
-          {t("onboarding.pickLanguagesToLearn")}
-        </div>
-        <button
-          className={`flex items-center justify-center rounded-md p-3 shadow transition
-            ${canProceed
-              ? "bg-black hover:bg-gray-900 text-white border border-purple-400"
-              : "bg-gray-200 text-gray-400 border cursor-not-allowed"
-            }`}
-          onClick={() => canProceed && setStep(3)}
-          disabled={!canProceed}
-          tabIndex={0}
-        >
-          <ArrowRightCircle size={30} />
-        </button>
-      </div>
+    <OnboardingShell
+      canBack
+      onBack={onBack ?? (() => setStep(2))}
+      maxWidthClass="max-w-xl"
+      footer={
+        <Button className="w-full !h-12" aria-label="Continue" onClick={onAdvance ?? (() => setStep(4))}>
+          {t("onboarding.continue")}
+        </Button>
+      }
+    >
+      <h1 className="text-center text-2xl font-bold text-foreground">
+        {t("onboarding.pickLanguagesToLearn")}
+      </h1>
 
-      {/* Make the outer container the scroll area (like Pick Primary) */}
-      <ScrollIndicatorWrapper className="flex-1 min-h-0 w-full">
-        <div className="w-full max-w-xl flex flex-col gap-2 items-stretch px-2 pb-10 mx-auto">
-          {sortedChoices.map(({ code, label }) => {
-            const selected = learning.includes(code);
-            return (
-              <button
-                key={code}
-                onClick={() => toggleLearning(code)}
-                lang={code}
-                className={`
-                  w-full px-5 py-4
-                  rounded-md shadow
-                  bg-white border border-gray-200
-                  text-lg font-semibold text-gray-900
-                  flex items-center justify-between
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400
-                  hover:bg-gray-50 hover:border-purple-400
-                  transition
-                  ${dir() === "rtl" ? "text-right" : "text-left"}
-                  break-words
-                  select-text
-                  ${selected ? "border-purple-500 bg-purple-50" : ""}
-                `}
-                style={{
-                  minHeight: 56,
-                  wordBreak: "break-word",
-                  whiteSpace: "normal",
-                  lineHeight: 1.25,
-                }}
-                dir={dir()}
-              >
-                <span className="flex-1">{label}</span>
-                {selected ? (
-                  <CheckCircle2 className="ml-4 shrink-0 w-6 h-6 text-purple-500" size={24} />
-                ) : (
-                  <span className="ml-4 shrink-0 w-6 h-6" />
-                )}
-              </button>
-            );
+      <div className="mt-6 w-full">
+        <DismissableTip
+          storageKey="tip:language-order"
+          title={t("onboarding.languageOrderTipTitle", { defaultValue: "Tip" })}
+          body={t("onboarding.languageOrderTipBody", {
+            defaultValue:
+              "The bottom language in the list is the app's UI language. To change the UI language, drag a different language to the bottom.",
           })}
-        </div>
-      </ScrollIndicatorWrapper>
-    </div>
+        />
+        <LanguageSelectOrder />
+      </div>
+    </OnboardingShell>
   );
 }

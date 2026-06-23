@@ -1,0 +1,45 @@
+book:
+  volume: 1
+  title: "The Story of the Motorcycle"
+  subtitle: "From the First Sputter to the Electric Future"
+  target_segments: 100
+
+  audience: "Boys 6–15 learning a second language."
+  primary_language: en
+  pack_id: book_motorcycles_history
+
+  core_machines:
+    - The 1885 Daimler Reitwagen — the first motorcycle
+    - The 1903 Harley-Davidson — the first machine from a small Milwaukee shed
+    - The 1907 Indian — early American champion, racing roots
+    - The Triumph Model H — the British army's bike in the First World War
+    - The BMW R75 — a sidecar bike for the Second World War
+    - The 1958 Honda Super Cub — the best-selling motor vehicle of all time
+    - The MV Agusta and the Honda CB750 — the first superbikes
+
+  core_themes:
+    - Engineering wonder — engines, wheels, gears, exhaust pipes
+    - Real heroes — Daimler, Harley, the Davidsons, Soichiro Honda
+    - World stories — Germany, America, Britain, Italy, Japan
+    - Speed — from 7 mph in 1885 to 200+ mph today
+    - Today's many shapes — cruiser, dirt, sport, adventure, electric
+
+  vocabulary_targets:
+    - motorcycle, bike, engine, wheel, road, fast
+    - factory, builder, rider, race, mile, year
+    - small, big, loud, new, old, first, last
+
+  pacing:
+    - 7 chapters + frontmatter + backmatter
+    - 5–15 word sentences, one idea each
+    - All numbers spelled out in tts.text (no Arabic numerals)
+    - Repeat key vocabulary across chapters
+
+  outline:
+    - chapter_1: "The First Two-Wheeler That Went Vroom — Daimler's 1885 Reitwagen"
+    - chapter_2: "The First Companies — Indian, Harley, Triumph, Royal Enfield, BMW"
+    - chapter_3: "Motorcycles Go to War — military bikes 1914–1945"
+    - chapter_4: "The Rise of Japan — Honda, Yamaha, Suzuki, Kawasaki"
+    - chapter_5: "Faster, Faster, Faster — the superbike era"
+    - chapter_6: "Many Kinds of Motorcycles — the modern family of bikes"
+    - chapter_7: "A New Road — what comes next, and what the next eleven books are about"

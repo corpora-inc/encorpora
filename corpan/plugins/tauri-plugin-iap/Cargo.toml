@@ -1,0 +1,38 @@
+[package]
+name = "tauri-plugin-iap"
+version = "0.9.0"
+authors = ["You"]
+description = "A Tauri v2 plugin that enables In-App Purchases (IAP)"
+edition = "2024"
+rust-version = "1.90"
+exclude = ["/examples", "/dist-js", "/guest-js", "/node_modules"]
+links = "tauri-plugin-iap"
+license = "MIT"
+repository = "https://github.com/Choochmeque/tauri-plugin-iap"
+categories = ["api-bindings"]
+keywords = ["tauri", "tauri-plugin", "iap", "in-app-purchase", "billing"]
+
+[dependencies]
+tauri = { version = "2" }
+serde = "1.0"
+serde_json = "1.0"
+thiserror = "2"
+log = "0.4"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+swift-bridge = { version = "0.1", features = ["async"] }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+windows = { version = "0.61", features = [
+    "Foundation",
+    "Foundation_Collections",
+    "Services_Store",
+    "System",
+] }
+windows-collections = "0.2"
+
+[build-dependencies]
+tauri-plugin = { version = "2", features = ["build"] }
+
+[target.'cfg(target_os = "macos")'.build-dependencies]
+swift-bridge-build = "0.1"

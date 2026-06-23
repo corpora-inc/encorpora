@@ -1,0 +1,2018 @@
+[
+  {
+    "english": "Save the file before you close it.",
+    "level": "A2"
+  },
+  {
+    "english": "Could you send me that document?",
+    "level": "A2"
+  },
+  {
+    "english": "The folder is on the desktop.",
+    "level": "A2"
+  },
+  {
+    "english": "I can't find the file I saved yesterday.",
+    "level": "A2"
+  },
+  {
+    "english": "Search the whole drive for the name.",
+    "level": "B1"
+  },
+  {
+    "english": "He renamed the file by mistake.",
+    "level": "B1"
+  },
+  {
+    "english": "The download went to the wrong folder.",
+    "level": "B1"
+  },
+  {
+    "english": "The file is too big to email.",
+    "level": "A2"
+  },
+  {
+    "english": "Could you compress it into a zip?",
+    "level": "B1"
+  },
+  {
+    "english": "The cloud folder syncs automatically.",
+    "level": "B1"
+  },
+  {
+    "english": "She organizes everything in dated subfolders.",
+    "level": "B2"
+  },
+  {
+    "english": "The trash is fuller than the rest of the drive.",
+    "level": "B2"
+  },
+  {
+    "english": "He keeps a backup of every project.",
+    "level": "B1"
+  },
+  {
+    "english": "The shared folder updated for everyone.",
+    "level": "B1"
+  },
+  {
+    "english": "A file you can't find might as well not exist.",
+    "level": "B2"
+  },
+  {
+    "english": "I forgot my password.",
+    "level": "A2"
+  },
+  {
+    "english": "Reset the password from the login screen.",
+    "level": "B1"
+  },
+  {
+    "english": "Don't use the same password for everything.",
+    "level": "B1"
+  },
+  {
+    "english": "A password manager remembers them for you.",
+    "level": "B1"
+  },
+  {
+    "english": "Two-factor adds a step but a lot of safety.",
+    "level": "B2"
+  },
+  {
+    "english": "Check your email for a verification code.",
+    "level": "B1"
+  },
+  {
+    "english": "The link expired in fifteen minutes.",
+    "level": "B1"
+  },
+  {
+    "english": "She created a new account for the project.",
+    "level": "B1"
+  },
+  {
+    "english": "He signs out on shared computers.",
+    "level": "B1"
+  },
+  {
+    "english": "The username is already taken.",
+    "level": "A2"
+  },
+  {
+    "english": "Save the recovery code somewhere safe.",
+    "level": "B1"
+  },
+  {
+    "english": "Don't click suspicious login links.",
+    "level": "B2"
+  },
+  {
+    "english": "Update the recovery email when you move.",
+    "level": "B2"
+  },
+  {
+    "english": "A passkey is faster than a password.",
+    "level": "B1"
+  },
+  {
+    "english": "Your phone is also an account these days.",
+    "level": "B2"
+  },
+  {
+    "english": "Have you tried restarting it?",
+    "level": "A2"
+  },
+  {
+    "english": "The cable was loose.",
+    "level": "B1"
+  },
+  {
+    "english": "The screen froze for a minute.",
+    "level": "B1"
+  },
+  {
+    "english": "Close all the tabs and try again.",
+    "level": "B1"
+  },
+  {
+    "english": "Check that you're connected to the right network.",
+    "level": "B1"
+  },
+  {
+    "english": "The keyboard isn't responding.",
+    "level": "B1"
+  },
+  {
+    "english": "The fan is louder than usual.",
+    "level": "B1"
+  },
+  {
+    "english": "Clear the cache and reload.",
+    "level": "B1"
+  },
+  {
+    "english": "Try a different browser.",
+    "level": "A2"
+  },
+  {
+    "english": "The update fixed the bug.",
+    "level": "A2"
+  },
+  {
+    "english": "The battery drained overnight.",
+    "level": "B1"
+  },
+  {
+    "english": "The webcam stopped working after the update.",
+    "level": "B2"
+  },
+  {
+    "english": "Sometimes the simplest fix is to wait a minute.",
+    "level": "B2"
+  },
+  {
+    "english": "A reboot solves more problems than people admit.",
+    "level": "B2"
+  },
+  {
+    "english": "He explained the error message in plain words.",
+    "level": "B2"
+  },
+  {
+    "english": "The page is taking forever to load.",
+    "level": "A2"
+  },
+  {
+    "english": "The site is down for everyone.",
+    "level": "B1"
+  },
+  {
+    "english": "Bookmark it so you can find it again.",
+    "level": "B1"
+  },
+  {
+    "english": "The link in the email opens in a new tab.",
+    "level": "B1"
+  },
+  {
+    "english": "The video keeps buffering.",
+    "level": "B1"
+  },
+  {
+    "english": "The signal is weak in the back room.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you share the link with me?",
+    "level": "A2"
+  },
+  {
+    "english": "The website looks different on mobile.",
+    "level": "B1"
+  },
+  {
+    "english": "The pop-up asked me to accept cookies.",
+    "level": "B2"
+  },
+  {
+    "english": "The advertisement is hard to close.",
+    "level": "B1"
+  },
+  {
+    "english": "He uses an ad blocker on every machine.",
+    "level": "B2"
+  },
+  {
+    "english": "The search returned too many results.",
+    "level": "B1"
+  },
+  {
+    "english": "Refine the search with quotation marks.",
+    "level": "B2"
+  },
+  {
+    "english": "The article moved behind a paywall.",
+    "level": "B2"
+  },
+  {
+    "english": "The page is from a website I trust.",
+    "level": "B1"
+  },
+  {
+    "english": "The app updated overnight.",
+    "level": "A2"
+  },
+  {
+    "english": "The new version looks completely different.",
+    "level": "B1"
+  },
+  {
+    "english": "She removed the apps she never opened.",
+    "level": "B1"
+  },
+  {
+    "english": "The notification settings are buried in the menu.",
+    "level": "B2"
+  },
+  {
+    "english": "Mute it during the meeting.",
+    "level": "A2"
+  },
+  {
+    "english": "The keyboard shortcut is faster than the menu.",
+    "level": "B1"
+  },
+  {
+    "english": "Dark mode is easier on the eyes at night.",
+    "level": "B1"
+  },
+  {
+    "english": "Turn off auto-play.",
+    "level": "A2"
+  },
+  {
+    "english": "The notification badge never goes away.",
+    "level": "B2"
+  },
+  {
+    "english": "He set up the laptop the way he likes it.",
+    "level": "B1"
+  },
+  {
+    "english": "Don't open attachments from unknown senders.",
+    "level": "B2"
+  },
+  {
+    "english": "The link in that message looks suspicious.",
+    "level": "B2"
+  },
+  {
+    "english": "Check the sender's full address.",
+    "level": "B1"
+  },
+  {
+    "english": "The free Wi-Fi at the airport is not private.",
+    "level": "B2"
+  },
+  {
+    "english": "Cover the camera when it's not in use.",
+    "level": "B2"
+  },
+  {
+    "english": "Lock the screen when you step away.",
+    "level": "B1"
+  },
+  {
+    "english": "Be careful with information you can't take back.",
+    "level": "B2"
+  },
+  {
+    "english": "Read what you're agreeing to.",
+    "level": "B1"
+  },
+  {
+    "english": "Most data leaks come from reused passwords.",
+    "level": "B2"
+  },
+  {
+    "english": "The simplest scams still work because they're simple.",
+    "level": "B2"
+  },
+  {
+    "english": "The laptop is slower since the last update.",
+    "level": "B1"
+  },
+  {
+    "english": "The screen is cracked but it still works.",
+    "level": "B1"
+  },
+  {
+    "english": "The new monitor arrived this morning.",
+    "level": "A2"
+  },
+  {
+    "english": "He plugged in three cables before finding the right one.",
+    "level": "B2"
+  },
+  {
+    "english": "The battery doesn't last like it used to.",
+    "level": "B1"
+  },
+  {
+    "english": "The keyboard collected crumbs over the years.",
+    "level": "B2"
+  },
+  {
+    "english": "The fan kicks in when the room gets warm.",
+    "level": "B2"
+  },
+  {
+    "english": "The printer is offline again.",
+    "level": "B1"
+  },
+  {
+    "english": "The headphones cut out on one side.",
+    "level": "B2"
+  },
+  {
+    "english": "He cleans the screen with a soft cloth.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you take a screenshot?",
+    "level": "A2"
+  },
+  {
+    "english": "The file was sent at midnight.",
+    "level": "A2"
+  },
+  {
+    "english": "The calendar invite came through twice.",
+    "level": "B1"
+  },
+  {
+    "english": "Drag the file into the window.",
+    "level": "B1"
+  },
+  {
+    "english": "Right-click to see more options.",
+    "level": "A2"
+  },
+  {
+    "english": "Hold shift to select more than one.",
+    "level": "B1"
+  },
+  {
+    "english": "The undo button has saved me many times.",
+    "level": "B2"
+  },
+  {
+    "english": "The clipboard remembers the last thing you copied.",
+    "level": "B2"
+  },
+  {
+    "english": "Autocorrect is helpful and occasionally embarrassing.",
+    "level": "B2"
+  },
+  {
+    "english": "A clean desktop makes everything easier to find.",
+    "level": "B1"
+  },
+  {
+    "english": "I use a computer.",
+    "level": "A0"
+  },
+  {
+    "english": "The screen is on.",
+    "level": "A1"
+  },
+  {
+    "english": "A great engineer keeps a small library of mistakes carefully labeled by year.",
+    "level": "C1"
+  },
+  {
+    "english": "A computer is a stack of polite agreements between physics, mathematics, and human impatience, held together by the small daily faith that the next layer will keep its promises to the one above it.",
+    "level": "C2"
+  },
+  {
+    "english": "Restart the computer now.",
+    "level": "A1"
+  },
+  {
+    "english": "The mouse is not moving.",
+    "level": "A1"
+  },
+  {
+    "english": "The sound is off.",
+    "level": "A1"
+  },
+  {
+    "english": "Turn the volume up.",
+    "level": "A1"
+  },
+  {
+    "english": "The charger is unplugged.",
+    "level": "A1"
+  },
+  {
+    "english": "Open the settings menu.",
+    "level": "A1"
+  },
+  {
+    "english": "The app will not open.",
+    "level": "A1"
+  },
+  {
+    "english": "Click the help button.",
+    "level": "A1"
+  },
+  {
+    "english": "The printer needs paper.",
+    "level": "A1"
+  },
+  {
+    "english": "Start the program again.",
+    "level": "A1"
+  },
+  {
+    "english": "The password box is empty.",
+    "level": "A1"
+  },
+  {
+    "english": "The cursor is missing.",
+    "level": "A1"
+  },
+  {
+    "english": "Check the power button.",
+    "level": "A1"
+  },
+  {
+    "english": "The update is ready.",
+    "level": "A1"
+  },
+  {
+    "english": "Save your work, then restart the laptop.",
+    "level": "A2"
+  },
+  {
+    "english": "The sound returned after I changed the speaker setting.",
+    "level": "A2"
+  },
+  {
+    "english": "Unplug the charger, and plug it in again.",
+    "level": "A2"
+  },
+  {
+    "english": "The mouse worked after I changed the batteries.",
+    "level": "A2"
+  },
+  {
+    "english": "Close the program if it stops responding.",
+    "level": "A2"
+  },
+  {
+    "english": "The printer started after we added more paper.",
+    "level": "A2"
+  },
+  {
+    "english": "Turn Wi-Fi off, then turn it back on.",
+    "level": "A2"
+  },
+  {
+    "english": "The page opened after I refreshed it twice.",
+    "level": "A2"
+  },
+  {
+    "english": "Check the volume before you blame the speakers.",
+    "level": "A2"
+  },
+  {
+    "english": "The screen came back when I moved the mouse.",
+    "level": "A2"
+  },
+  {
+    "english": "Run the update tonight if you need the computer now.",
+    "level": "A2"
+  },
+  {
+    "english": "The app crashed, but my work was saved.",
+    "level": "A2"
+  },
+  {
+    "english": "Choose repair if the installer offers that option.",
+    "level": "A2"
+  },
+  {
+    "english": "The microphone worked after I allowed permission.",
+    "level": "A2"
+  },
+  {
+    "english": "Check the date and time settings first.",
+    "level": "A2"
+  },
+  {
+    "english": "The login page failed, so I tried again later.",
+    "level": "A2"
+  },
+  {
+    "english": "Turn the monitor off, and wait ten seconds.",
+    "level": "A2"
+  },
+  {
+    "english": "The scanner needs drivers before it can work.",
+    "level": "A2"
+  },
+  {
+    "english": "Write down the error code before closing the message.",
+    "level": "A2"
+  },
+  {
+    "english": "The update paused because the battery was low.",
+    "level": "A2"
+  },
+  {
+    "english": "Check for updates before you call support.",
+    "level": "A2"
+  },
+  {
+    "english": "The touchpad works again after a full shutdown.",
+    "level": "A2"
+  },
+  {
+    "english": "Restart the router if every device loses connection.",
+    "level": "A2"
+  },
+  {
+    "english": "The screen looked normal after I changed the brightness.",
+    "level": "A2"
+  },
+  {
+    "english": "Plug the camera in before you join the call.",
+    "level": "A2"
+  },
+  {
+    "english": "The program asked me to restart after installation.",
+    "level": "A2"
+  },
+  {
+    "english": "Check the trash before you restore a backup.",
+    "level": "A2"
+  },
+  {
+    "english": "The download failed, so I started it again.",
+    "level": "A2"
+  },
+  {
+    "english": "Remove the stuck print job from the queue.",
+    "level": "A2"
+  },
+  {
+    "english": "The computer needs space before it can update.",
+    "level": "A2"
+  },
+  {
+    "english": "Call support if the same warning appears again.",
+    "level": "A2"
+  },
+  {
+    "english": "Before changing anything serious, take a screenshot of the error.",
+    "level": "B1"
+  },
+  {
+    "english": "The help desk asked me what changed before the problem started.",
+    "level": "B1"
+  },
+  {
+    "english": "When the update failed, I checked whether there was enough storage.",
+    "level": "B1"
+  },
+  {
+    "english": "It was not broken, it was just stuck halfway through setup.",
+    "level": "B1"
+  },
+  {
+    "english": "The printer queue was jammed with one old document from Tuesday.",
+    "level": "B1"
+  },
+  {
+    "english": "I fixed the sound by choosing the right output device.",
+    "level": "B1"
+  },
+  {
+    "english": "The laptop behaved better after I removed one heavy startup app.",
+    "level": "B1"
+  },
+  {
+    "english": "Support found the problem by asking boring but useful questions.",
+    "level": "B1"
+  },
+  {
+    "english": "Troubleshooting is often less about genius than about checking the obvious in order.",
+    "level": "B2"
+  },
+  {
+    "english": "The error looked dramatic, but it only meant the app needed permission.",
+    "level": "B2"
+  },
+  {
+    "english": "A stalled update feels worse when the progress bar refuses to move.",
+    "level": "B2"
+  },
+  {
+    "english": "He copied the warning text before searching, which saved ten minutes of guessing.",
+    "level": "B2"
+  },
+  {
+    "english": "The machine was not slow everywhere, only when the old browser extension was running.",
+    "level": "B2"
+  },
+  {
+    "english": "If several fixes work once, write down the one that works twice.",
+    "level": "B2"
+  },
+  {
+    "english": "The best help desk notes explain the problem without insulting the person who has it.",
+    "level": "B2"
+  },
+  {
+    "english": "A factory reset should feel like the last clean step, not the first nervous one.",
+    "level": "B2"
+  },
+  {
+    "english": "A good support call begins with symptoms, timing, and changes, not with theories about blame.",
+    "level": "C1"
+  },
+  {
+    "english": "The most useful error message is the one you preserve before the screen politely forgets it.",
+    "level": "C1"
+  },
+  {
+    "english": "Updates are small acts of maintenance, but they still deserve a saved document and a charged battery.",
+    "level": "C1"
+  },
+  {
+    "english": "When a problem appears after an installation, the calendar is often as useful as the manual.",
+    "level": "C1"
+  },
+  {
+    "english": "The sensible question is not whether the computer is broken, but what still works reliably.",
+    "level": "C1"
+  },
+  {
+    "english": "Before reinstalling anything, confirm that the account, connection, permissions, and storage are not the real issue.",
+    "level": "C1"
+  },
+  {
+    "english": "A repeated warning becomes less mysterious when you record the exact words and the moment it appears.",
+    "level": "C1"
+  },
+  {
+    "english": "The restart is humble technology, a way of letting tangled processes begin again in a known order.",
+    "level": "C1"
+  },
+  {
+    "english": "Remote support depends on translation, because the user's tiny annoyance must become a technician's precise clue.",
+    "level": "C1"
+  },
+  {
+    "english": "The difference between repair and panic is often a checklist, a backup, and five quiet minutes.",
+    "level": "C1"
+  },
+  {
+    "english": "If the fix changes three settings at once, nobody knows which one actually mattered.",
+    "level": "C1"
+  },
+  {
+    "english": "In everyday computing, diagnosis rarely arrives like lightning; it gathers from dull evidence, the timestamp, the cable, the permission box, the update history, until the machine's complaint finally has a shape.",
+    "level": "C2"
+  },
+  {
+    "english": "The help desk script sounds repetitive because computers fail repetitively, in small domestic ways, through sleepy batteries, crowded storage, forgotten permissions, and windows left open like lights in an empty office.",
+    "level": "C2"
+  },
+  {
+    "english": "A restart is not magic, only mercy for a crowded system, clearing unfinished tasks so the next click can be judged on its own merits.",
+    "level": "C2"
+  },
+  {
+    "english": "The finest troubleshooting has a certain courtesy to it, touching one setting at a time, preserving the user's work, and leaving behind a path someone else could follow tomorrow.",
+    "level": "C2"
+  },
+  {
+    "english": "I log in now.",
+    "level": "A0"
+  },
+  {
+    "english": "Open the app first.",
+    "level": "A1"
+  },
+  {
+    "english": "Type your username carefully.",
+    "level": "A1"
+  },
+  {
+    "english": "She logs in every morning.",
+    "level": "A1"
+  },
+  {
+    "english": "He forgot the app PIN.",
+    "level": "A1"
+  },
+  {
+    "english": "This code is for today.",
+    "level": "A1"
+  },
+  {
+    "english": "Tap the sign in button.",
+    "level": "A1"
+  },
+  {
+    "english": "The app asks for permission.",
+    "level": "A1"
+  },
+  {
+    "english": "Use a stronger password.",
+    "level": "A1"
+  },
+  {
+    "english": "My account is locked.",
+    "level": "A1"
+  },
+  {
+    "english": "She changed her password yesterday.",
+    "level": "A1"
+  },
+  {
+    "english": "The code came by text.",
+    "level": "A1"
+  },
+  {
+    "english": "He saved the new login.",
+    "level": "A1"
+  },
+  {
+    "english": "This app needs my email.",
+    "level": "A1"
+  },
+  {
+    "english": "Please sign out before lunch.",
+    "level": "A1"
+  },
+  {
+    "english": "The app remembered my name, but it still asked for my password.",
+    "level": "A2"
+  },
+  {
+    "english": "I made a new password, and the app accepted it.",
+    "level": "A2"
+  },
+  {
+    "english": "She entered the code, but the screen did not change.",
+    "level": "A2"
+  },
+  {
+    "english": "The account opened after he answered two security questions.",
+    "level": "A2"
+  },
+  {
+    "english": "I will update my password when I get home.",
+    "level": "A2"
+  },
+  {
+    "english": "The app sent a code, so keep your phone nearby.",
+    "level": "A2"
+  },
+  {
+    "english": "He used face unlock, and the bank app opened quickly.",
+    "level": "A2"
+  },
+  {
+    "english": "The password looks short, but it is hard to guess.",
+    "level": "A2"
+  },
+  {
+    "english": "She wrote the hint, but not the real password.",
+    "level": "A2"
+  },
+  {
+    "english": "The app logged me out after one hour.",
+    "level": "A2"
+  },
+  {
+    "english": "I changed the account name because customers could see it.",
+    "level": "A2"
+  },
+  {
+    "english": "The old password failed, so I tried the new one.",
+    "level": "A2"
+  },
+  {
+    "english": "He copied the code, but a space came with it.",
+    "level": "A2"
+  },
+  {
+    "english": "The site asked for my birthday and phone number.",
+    "level": "A2"
+  },
+  {
+    "english": "I denied camera access because the app did not need it.",
+    "level": "A2"
+  },
+  {
+    "english": "The password manager filled the form, but I checked it first.",
+    "level": "A2"
+  },
+  {
+    "english": "She turned on login alerts after a strange email arrived.",
+    "level": "A2"
+  },
+  {
+    "english": "The account was quiet until someone tried to enter it.",
+    "level": "A2"
+  },
+  {
+    "english": "I use one email for shopping and another for work.",
+    "level": "A2"
+  },
+  {
+    "english": "The app asked again because I changed devices.",
+    "level": "A2"
+  },
+  {
+    "english": "He added his fingerprint, and the tablet unlocked faster.",
+    "level": "A2"
+  },
+  {
+    "english": "The code expired, so she requested another one.",
+    "level": "A2"
+  },
+  {
+    "english": "I checked the app settings before I shared my contacts.",
+    "level": "A2"
+  },
+  {
+    "english": "The login page looked normal, but the address was wrong.",
+    "level": "A2"
+  },
+  {
+    "english": "She saved the backup code in her paper notebook.",
+    "level": "A2"
+  },
+  {
+    "english": "The password field hides each letter as you type.",
+    "level": "A2"
+  },
+  {
+    "english": "He turned off old devices that still had access.",
+    "level": "A2"
+  },
+  {
+    "english": "The app asked for my location, but I chose not now.",
+    "level": "A2"
+  },
+  {
+    "english": "I updated my phone number before the old one stopped working.",
+    "level": "A2"
+  },
+  {
+    "english": "The account settings are plain once you know where to look.",
+    "level": "A2"
+  },
+  {
+    "english": "She checked recent activity and found only her own logins.",
+    "level": "A2"
+  },
+  {
+    "english": "I keep one long password for the vault and let the manager handle the rest.",
+    "level": "B1"
+  },
+  {
+    "english": "The app locked me out, but the help page finally made sense.",
+    "level": "B1"
+  },
+  {
+    "english": "He treats login codes like milk, useful for a short time only.",
+    "level": "B1"
+  },
+  {
+    "english": "She changed the password after her cousin used the family tablet.",
+    "level": "B1"
+  },
+  {
+    "english": "The account recovery form wanted enough proof to feel like a small interview.",
+    "level": "B1"
+  },
+  {
+    "english": "I trust fingerprint login for speed, but I still keep the password written safely.",
+    "level": "B1"
+  },
+  {
+    "english": "The hardest part was proving I owned the account I used every day.",
+    "level": "B1"
+  },
+  {
+    "english": "He removed access for the old phone before selling it online.",
+    "level": "B1"
+  },
+  {
+    "english": "A login screen feels simple until one missing phone number blocks the whole afternoon.",
+    "level": "B2"
+  },
+  {
+    "english": "The password manager turned a drawer full of sticky notes into one locked vault.",
+    "level": "B2"
+  },
+  {
+    "english": "She uses separate accounts because one careless app should not open her whole life.",
+    "level": "B2"
+  },
+  {
+    "english": "The second code is annoying at breakfast, but priceless after a stolen laptop.",
+    "level": "B2"
+  },
+  {
+    "english": "Account security often feels invisible until it becomes the only thing that matters.",
+    "level": "B2"
+  },
+  {
+    "english": "He chose longer passphrases because memory likes stories better than random punctuation.",
+    "level": "B2"
+  },
+  {
+    "english": "The app requested contacts for convenience, and she read that as a negotiation.",
+    "level": "B2"
+  },
+  {
+    "english": "Modern identity is half password, half proof that your phone still belongs to you.",
+    "level": "B2"
+  },
+  {
+    "english": "The best login system is the one strong enough to protect you and clear enough to survive Monday morning.",
+    "level": "B2"
+  },
+  {
+    "english": "A password is no longer a secret word alone, but a small agreement among devices, addresses, and recovery habits.",
+    "level": "C1"
+  },
+  {
+    "english": "The recovery page asked ordinary questions with serious consequences, because a wrong answer could lock away years of receipts.",
+    "level": "C1"
+  },
+  {
+    "english": "She distrusted any app that wanted her contacts before explaining what problem those contacts were supposed to solve.",
+    "level": "C1"
+  },
+  {
+    "english": "Two step login makes security visible, which is useful, although visibility can easily be mistaken for difficulty.",
+    "level": "C1"
+  },
+  {
+    "english": "The password manager did not remove responsibility, but it moved the burden from memory to maintenance.",
+    "level": "C1"
+  },
+  {
+    "english": "Every forgotten login reveals a quiet dependency, the email address, phone number, or device we assumed would always be there.",
+    "level": "C1"
+  },
+  {
+    "english": "He reviewed connected apps the way a landlord checks spare keys, calmly removing access that no longer had a reason.",
+    "level": "C1"
+  },
+  {
+    "english": "A good passphrase survives both guessing software and the ordinary human talent for forgetting clever tricks.",
+    "level": "C1"
+  },
+  {
+    "english": "The app's permission request sounded harmless until she noticed it wanted photos, contacts, location, and the microphone.",
+    "level": "C1"
+  },
+  {
+    "english": "Account recovery is designed for emergencies, yet it often fails people during the exact confusion that creates one.",
+    "level": "C1"
+  },
+  {
+    "english": "The little code on his phone felt trivial, but it was the hinge between privacy and exposure.",
+    "level": "C1"
+  },
+  {
+    "english": "Digital identity is practical paperwork now, with passwords, backup codes, trusted devices, and names that must match across systems.",
+    "level": "C1"
+  },
+  {
+    "english": "The login page, with its neat boxes and patient button, concealed a whole bureaucracy of trust, suspicion, memory, and proof.",
+    "level": "C2"
+  },
+  {
+    "english": "She had not lost herself, only a password, yet the locked account made her feel briefly undocumented in her own digital life.",
+    "level": "C2"
+  },
+  {
+    "english": "A password manager is a modest act of realism, accepting that modern life has asked the human mind to become a filing cabinet with anxiety.",
+    "level": "C2"
+  },
+  {
+    "english": "The verification code arrived like a tiny passport stamp, valid for minutes, powerful enough to open bank records, calendars, and photographs.",
+    "level": "C2"
+  },
+  {
+    "english": "To sign in is to perform a small ceremony of belonging, offering a name, a secret, a device, and sometimes the patience to prove all three agree.",
+    "level": "C2"
+  },
+  {
+    "english": "I open a page.",
+    "level": "A0"
+  },
+  {
+    "english": "The browser opens fast.",
+    "level": "A1"
+  },
+  {
+    "english": "Type the address here.",
+    "level": "A1"
+  },
+  {
+    "english": "This tab is for email.",
+    "level": "A1"
+  },
+  {
+    "english": "That link looks safe.",
+    "level": "A1"
+  },
+  {
+    "english": "I saved the bookmark.",
+    "level": "A1"
+  },
+  {
+    "english": "The page loaded quickly.",
+    "level": "A1"
+  },
+  {
+    "english": "Open a new tab.",
+    "level": "A1"
+  },
+  {
+    "english": "Close this old tab.",
+    "level": "A1"
+  },
+  {
+    "english": "Scroll down a little.",
+    "level": "A1"
+  },
+  {
+    "english": "The menu is at the top.",
+    "level": "A1"
+  },
+  {
+    "english": "This search is better.",
+    "level": "A1"
+  },
+  {
+    "english": "The image loads slowly.",
+    "level": "A1"
+  },
+  {
+    "english": "Click the back button.",
+    "level": "A1"
+  },
+  {
+    "english": "The download starts now.",
+    "level": "A1"
+  },
+  {
+    "english": "The browser remembers me.",
+    "level": "A1"
+  },
+  {
+    "english": "Use the address bar, not the search box, for full web addresses.",
+    "level": "A2"
+  },
+  {
+    "english": "I opened five tabs, and then I lost the one I needed.",
+    "level": "A2"
+  },
+  {
+    "english": "The browser history showed the recipe page from Tuesday night.",
+    "level": "A2"
+  },
+  {
+    "english": "She pinned the train schedule, so it stays open all week.",
+    "level": "A2"
+  },
+  {
+    "english": "The download paused when the Wi-Fi dropped in the cafe.",
+    "level": "A2"
+  },
+  {
+    "english": "If the page looks broken, reload it after a few seconds.",
+    "level": "A2"
+  },
+  {
+    "english": "He copied the web address, but he pasted only half of it.",
+    "level": "A2"
+  },
+  {
+    "english": "The search engine guessed my question before I finished typing it.",
+    "level": "A2"
+  },
+  {
+    "english": "I keep school links in one bookmark folder.",
+    "level": "A2"
+  },
+  {
+    "english": "The browser asked before saving my card details.",
+    "level": "A2"
+  },
+  {
+    "english": "She opened a private window for the gift search.",
+    "level": "A2"
+  },
+  {
+    "english": "The address begins with https, so the connection is encrypted.",
+    "level": "A2"
+  },
+  {
+    "english": "He zoomed in because the text was too small.",
+    "level": "A2"
+  },
+  {
+    "english": "The page refreshed, and my form answers disappeared.",
+    "level": "A2"
+  },
+  {
+    "english": "I dragged the tab into its own window.",
+    "level": "A2"
+  },
+  {
+    "english": "The browser offered to translate the page into English.",
+    "level": "A2"
+  },
+  {
+    "english": "She downloaded the manual, then opened it from the toolbar.",
+    "level": "A2"
+  },
+  {
+    "english": "The shopping site kept my basket after I signed in.",
+    "level": "A2"
+  },
+  {
+    "english": "A broken link often leads to a blank error page.",
+    "level": "A2"
+  },
+  {
+    "english": "He cleared his browsing history before returning the borrowed laptop.",
+    "level": "A2"
+  },
+  {
+    "english": "The search results changed when I added the city name.",
+    "level": "A2"
+  },
+  {
+    "english": "She saved the article to read later on the train.",
+    "level": "A2"
+  },
+  {
+    "english": "The browser warned me before opening an unsafe page.",
+    "level": "A2"
+  },
+  {
+    "english": "I opened the same tab twice by accident.",
+    "level": "A2"
+  },
+  {
+    "english": "The website asked for location access, but I declined.",
+    "level": "A2"
+  },
+  {
+    "english": "He used the find tool to search inside the page.",
+    "level": "A2"
+  },
+  {
+    "english": "The progress bar reached the end, but nothing opened.",
+    "level": "A2"
+  },
+  {
+    "english": "She changed the homepage to a simple search page.",
+    "level": "A2"
+  },
+  {
+    "english": "The browser extension puts a small icon near the address bar.",
+    "level": "A2"
+  },
+  {
+    "english": "I opened the link in the background and kept reading.",
+    "level": "A2"
+  },
+  {
+    "english": "The page title appears at the top of the tab.",
+    "level": "A2"
+  },
+  {
+    "english": "When a browser has twenty tabs open, memory becomes a quiet tax.",
+    "level": "B1"
+  },
+  {
+    "english": "He went down a search-results rabbit hole and forgot the original question.",
+    "level": "B1"
+  },
+  {
+    "english": "The address bar is where the web becomes a street map.",
+    "level": "B1"
+  },
+  {
+    "english": "I trust a site more when its menus lead somewhere sensible.",
+    "level": "B1"
+  },
+  {
+    "english": "She keeps recipes, bank pages, and bus times in separate bookmark folders.",
+    "level": "B1"
+  },
+  {
+    "english": "A good search term can save you ten pages of guessing.",
+    "level": "B1"
+  },
+  {
+    "english": "The browser remembers convenience first, which is not always what you want.",
+    "level": "B1"
+  },
+  {
+    "english": "He opened a private window, mostly to keep the birthday present secret.",
+    "level": "B1"
+  },
+  {
+    "english": "Tabbed browsing feels tidy until every small question becomes a permanent little rectangle.",
+    "level": "B2"
+  },
+  {
+    "english": "A search engine is useful, but it rewards the person who asks a sharper question.",
+    "level": "B2"
+  },
+  {
+    "english": "The modern browser is part map, part notebook, and part security guard.",
+    "level": "B2"
+  },
+  {
+    "english": "She treats bookmarks like kitchen labels, plain names in places she can find.",
+    "level": "B2"
+  },
+  {
+    "english": "A download button can look generous while hiding three louder buttons beside it.",
+    "level": "B2"
+  },
+  {
+    "english": "He checks the address before entering details, because familiar logos can be borrowed.",
+    "level": "B2"
+  },
+  {
+    "english": "Browser history is less a diary than a trail of unfinished errands.",
+    "level": "B2"
+  },
+  {
+    "english": "The best web pages make the important path obvious without shouting for attention.",
+    "level": "B2"
+  },
+  {
+    "english": "When the browser offers to remember everything, privacy becomes a settings question.",
+    "level": "B2"
+  },
+  {
+    "english": "The address bar looks modest, yet it decides whether you visit a bank, a copy, or nowhere at all.",
+    "level": "C1"
+  },
+  {
+    "english": "A crowded tab row is a small portrait of modern attention, each label asking not to be forgotten.",
+    "level": "C1"
+  },
+  {
+    "english": "Search results feel neutral until you notice how much depends on wording, location, and earlier clicks.",
+    "level": "C1"
+  },
+  {
+    "english": "A bookmark is useful only when its name still makes sense six months later.",
+    "level": "C1"
+  },
+  {
+    "english": "The download shelf gives the web a strange physical feeling, as if pages could fall into your hand.",
+    "level": "C1"
+  },
+  {
+    "english": "Private browsing reduces the local trace, but it does not make the wider internet forget you.",
+    "level": "C1"
+  },
+  {
+    "english": "A browser extension may solve one annoyance while quietly adding another company to the room.",
+    "level": "C1"
+  },
+  {
+    "english": "The back button is a mercy, except on pages that treat every click as a new maze.",
+    "level": "C1"
+  },
+  {
+    "english": "A good website respects the browser controls instead of trapping the user inside its own habits.",
+    "level": "C1"
+  },
+  {
+    "english": "Autocomplete can feel like help, interruption, or surveillance, depending on the moment and the field.",
+    "level": "C1"
+  },
+  {
+    "english": "The web trains us to skim, then punishes us when the important warning is written in small gray text.",
+    "level": "C1"
+  },
+  {
+    "english": "A clean bookmark bar is not minimalism, it is a promise that the next search will start from somewhere known.",
+    "level": "C1"
+  },
+  {
+    "english": "In the narrow space of the address bar, a person can begin with a memory, a rumor, or a typo, and still expect the world to arrange itself into clickable answers.",
+    "level": "C2"
+  },
+  {
+    "english": "The browser flatters us with speed, yet every instant page carries a hidden procession of servers, scripts, certificates, auctions, and permissions passing under the glass.",
+    "level": "C2"
+  },
+  {
+    "english": "A tab left open for weeks becomes less a tool than a postponed decision, glowing patiently among weather reports, invoices, recipes, and half-read arguments.",
+    "level": "C2"
+  },
+  {
+    "english": "The web once felt like a library with strange doors; now the browser is also the librarian, the hallway, the guard, and sometimes the shopkeeper.",
+    "level": "C2"
+  },
+  {
+    "english": "To search well is to admit that language is an instrument, because a single added word can move a person from rumor to evidence.",
+    "level": "C2"
+  },
+  {
+    "english": "I open the folder.",
+    "level": "A0"
+  },
+  {
+    "english": "This file has a clear name.",
+    "level": "A1"
+  },
+  {
+    "english": "Put the photo in this folder.",
+    "level": "A1"
+  },
+  {
+    "english": "The report is in Documents.",
+    "level": "A1"
+  },
+  {
+    "english": "I made a new folder.",
+    "level": "A1"
+  },
+  {
+    "english": "Delete the old copy today.",
+    "level": "A1"
+  },
+  {
+    "english": "The file name has spaces.",
+    "level": "A1"
+  },
+  {
+    "english": "My photos are in one place.",
+    "level": "A1"
+  },
+  {
+    "english": "Open the folder named Work.",
+    "level": "A1"
+  },
+  {
+    "english": "Copy this file to your laptop.",
+    "level": "A1"
+  },
+  {
+    "english": "Move the receipt into Expenses.",
+    "level": "A1"
+  },
+  {
+    "english": "The backup is on the drive.",
+    "level": "A1"
+  },
+  {
+    "english": "Sort the list by date.",
+    "level": "A1"
+  },
+  {
+    "english": "This folder has no files.",
+    "level": "A1"
+  },
+  {
+    "english": "The file opens quickly now.",
+    "level": "A1"
+  },
+  {
+    "english": "Put today's notes in School.",
+    "level": "A1"
+  },
+  {
+    "english": "I saved three copies, but only the newest one matters.",
+    "level": "A2"
+  },
+  {
+    "english": "Name the file clearly, and your future self will thank you.",
+    "level": "A2"
+  },
+  {
+    "english": "The scanner made ten files, so I put them in one folder.",
+    "level": "A2"
+  },
+  {
+    "english": "She moved the photos to cloud storage before her phone broke.",
+    "level": "A2"
+  },
+  {
+    "english": "The search found the draft because the title had my name.",
+    "level": "A2"
+  },
+  {
+    "english": "I deleted the duplicate, but I kept the original receipt.",
+    "level": "A2"
+  },
+  {
+    "english": "Back up the folder tonight, and check it again tomorrow.",
+    "level": "A2"
+  },
+  {
+    "english": "The folder looks messy, so I sorted everything by month.",
+    "level": "A2"
+  },
+  {
+    "english": "He copied the spreadsheet to a USB drive for the meeting.",
+    "level": "A2"
+  },
+  {
+    "english": "The old file stayed in downloads until the drive was almost full.",
+    "level": "A2"
+  },
+  {
+    "english": "I added the date to the name, and now it sorts neatly.",
+    "level": "A2"
+  },
+  {
+    "english": "Save a copy first, then edit the version you can afford to lose.",
+    "level": "A2"
+  },
+  {
+    "english": "The cloud copy is current, but the laptop copy is old.",
+    "level": "A2"
+  },
+  {
+    "english": "She shared the folder, and we all saw the new photos.",
+    "level": "A2"
+  },
+  {
+    "english": "The file extension changed, so the computer opened it differently.",
+    "level": "A2"
+  },
+  {
+    "english": "Put invoices in one folder, or tax season becomes painful.",
+    "level": "A2"
+  },
+  {
+    "english": "I searched for the word \"budget,\" and the missing file appeared.",
+    "level": "A2"
+  },
+  {
+    "english": "The drive has space, but the backup still needs time.",
+    "level": "A2"
+  },
+  {
+    "english": "He moved school files into folders for each class.",
+    "level": "A2"
+  },
+  {
+    "english": "The document was not gone, it was sitting in drafts.",
+    "level": "A2"
+  },
+  {
+    "english": "The cloud folder is full, so we need more storage.",
+    "level": "A2"
+  },
+  {
+    "english": "I keep raw photos separate, and I edit copies only.",
+    "level": "A2"
+  },
+  {
+    "english": "The archive folder is old, but the files still matter.",
+    "level": "A2"
+  },
+  {
+    "english": "She labeled the folder \"Final,\" then made another final version.",
+    "level": "A2"
+  },
+  {
+    "english": "Drag the folder carefully, or it may land inside another one.",
+    "level": "A2"
+  },
+  {
+    "english": "The file name was too long, so the upload failed.",
+    "level": "A2"
+  },
+  {
+    "english": "I pinned the folder, so it stays near the top.",
+    "level": "A2"
+  },
+  {
+    "english": "We found the contract by searching for the client's address.",
+    "level": "A2"
+  },
+  {
+    "english": "The backup ran last night, and the log showed no errors.",
+    "level": "A2"
+  },
+  {
+    "english": "The new drive mounted slowly, but all the files were there.",
+    "level": "A2"
+  },
+  {
+    "english": "Rename screenshots right away, because their numbers mean nothing later.",
+    "level": "A2"
+  },
+  {
+    "english": "A messy downloads folder tells the story of a busy week.",
+    "level": "B1"
+  },
+  {
+    "english": "I save drafts in one place, otherwise ideas scatter across the machine.",
+    "level": "B1"
+  },
+  {
+    "english": "Before you delete a folder, make sure it is not hiding someone else's work.",
+    "level": "B1"
+  },
+  {
+    "english": "The best file name is boring enough to be useful later.",
+    "level": "B1"
+  },
+  {
+    "english": "Cloud storage feels simple until two devices disagree about the latest version.",
+    "level": "B1"
+  },
+  {
+    "english": "I trust backups more when I have restored one on purpose.",
+    "level": "B1"
+  },
+  {
+    "english": "The folder tree made sense to him, but nobody else could follow it.",
+    "level": "B1"
+  },
+  {
+    "english": "If the search fails, try a word from inside the document.",
+    "level": "B1"
+  },
+  {
+    "english": "A clear folder system does not feel clever, it just saves small moments of panic.",
+    "level": "B2"
+  },
+  {
+    "english": "The computer can store thousands of files, but it cannot guess which ones matter.",
+    "level": "B2"
+  },
+  {
+    "english": "When every draft is called \"final,\" the file names stop doing their quiet job.",
+    "level": "B2"
+  },
+  {
+    "english": "Good backups are boring most days, which is exactly why people forget to test them.",
+    "level": "B2"
+  },
+  {
+    "english": "Cloud storage is convenient, but a weak naming habit follows you onto every device.",
+    "level": "B2"
+  },
+  {
+    "english": "The old archive looked chaotic until she explained the dates, initials, and project codes.",
+    "level": "B2"
+  },
+  {
+    "english": "A folder shared with five people needs rules, or it becomes a second inbox.",
+    "level": "B2"
+  },
+  {
+    "english": "Search is powerful, but it rewards the small discipline of naming things clearly.",
+    "level": "B2"
+  },
+  {
+    "english": "Keeping everything \"just for now\" is how a hard drive becomes a museum.",
+    "level": "B2"
+  },
+  {
+    "english": "The point of a file system is not tidiness for its own sake, but memory that survives distraction.",
+    "level": "C1"
+  },
+  {
+    "english": "A folder named \"miscellaneous\" is sometimes honest, yet it should not become the capital city of your work.",
+    "level": "C1"
+  },
+  {
+    "english": "Backups seem excessive until the one ordinary afternoon when a laptop, a coffee cup, and a deadline meet.",
+    "level": "C1"
+  },
+  {
+    "english": "Naming a file well is a small courtesy to everyone who may have to open it later.",
+    "level": "C1"
+  },
+  {
+    "english": "The cloud has made storage feel weightless, but lost documents still waste the same human patience.",
+    "level": "C1"
+  },
+  {
+    "english": "A reliable archive balances detail and restraint, giving each file enough context without turning names into essays.",
+    "level": "C1"
+  },
+  {
+    "english": "Version numbers are dull until two people edit the same proposal and both believe theirs is current.",
+    "level": "C1"
+  },
+  {
+    "english": "A local copy is reassuring, but it is only a backup if it can outlive the machine.",
+    "level": "C1"
+  },
+  {
+    "english": "Search can rescue a careless filing system, though it rarely teaches anyone to build a better one.",
+    "level": "C1"
+  },
+  {
+    "english": "The folder structure should match the work, not the fantasy of how organized the work should be.",
+    "level": "C1"
+  },
+  {
+    "english": "Old project files deserve enough order that a returning colleague can understand them without a guided tour.",
+    "level": "C1"
+  },
+  {
+    "english": "Deleting a duplicate is less risky when the original has a name, a date, and a known home.",
+    "level": "C1"
+  },
+  {
+    "english": "Every filing system begins as a promise to the future, then meets the ordinary weather of interruptions, revisions, downloads, and names chosen at midnight.",
+    "level": "C2"
+  },
+  {
+    "english": "The cloud did not abolish clutter, it merely lifted the boxes out of the room and made their labels searchable from a train.",
+    "level": "C2"
+  },
+  {
+    "english": "A backup is not an act of fear, but a quiet admission that valuable work should not depend on one fragile piece of hardware.",
+    "level": "C2"
+  },
+  {
+    "english": "In a well-kept archive, even abandoned drafts retain their dignity, because their names explain what they tried to become and why they were left behind.",
+    "level": "C2"
+  },
+  {
+    "english": "Few things make a computer feel more human than the hunt through old folders, where memory appears as invoices, photos, drafts, and badly named evidence.",
+    "level": "C2"
+  },
+  {
+    "english": "I clean my mouse.",
+    "level": "A0"
+  },
+  {
+    "english": "The laptop feels warm.",
+    "level": "A1"
+  },
+  {
+    "english": "My tablet needs charging.",
+    "level": "A1"
+  },
+  {
+    "english": "This mouse is small.",
+    "level": "A1"
+  },
+  {
+    "english": "The monitor is too bright.",
+    "level": "A1"
+  },
+  {
+    "english": "Please close the lid gently.",
+    "level": "A1"
+  },
+  {
+    "english": "The power button is here.",
+    "level": "A1"
+  },
+  {
+    "english": "The speakers sound quiet.",
+    "level": "A1"
+  },
+  {
+    "english": "This cable looks new.",
+    "level": "A1"
+  },
+  {
+    "english": "The charger is in my bag.",
+    "level": "A1"
+  },
+  {
+    "english": "The touchpad feels sticky.",
+    "level": "A1"
+  },
+  {
+    "english": "Dust covers the back vent.",
+    "level": "A1"
+  },
+  {
+    "english": "The screen tilts forward.",
+    "level": "A1"
+  },
+  {
+    "english": "My desktop sits under the table.",
+    "level": "A1"
+  },
+  {
+    "english": "The keys feel smooth.",
+    "level": "A1"
+  },
+  {
+    "english": "Unplug the tablet first.",
+    "level": "A1"
+  },
+  {
+    "english": "The laptop gets hot, so I lift it off the blanket.",
+    "level": "A2"
+  },
+  {
+    "english": "Plug the charger in firmly, and check the small light.",
+    "level": "A2"
+  },
+  {
+    "english": "She bought a stand, and her screen sits at eye level.",
+    "level": "A2"
+  },
+  {
+    "english": "The tablet slipped once, but the case took the damage.",
+    "level": "A2"
+  },
+  {
+    "english": "Wipe the keys gently, or dust will settle between them.",
+    "level": "A2"
+  },
+  {
+    "english": "My old mouse clicks twice when I press it once.",
+    "level": "A2"
+  },
+  {
+    "english": "The monitor flickers sometimes, but it works after a short rest.",
+    "level": "A2"
+  },
+  {
+    "english": "He moved the tower higher, so less dust reaches the floor vent.",
+    "level": "A2"
+  },
+  {
+    "english": "Keep drinks away from the keyboard when the desk is crowded.",
+    "level": "A2"
+  },
+  {
+    "english": "The hinge creaks now, but the laptop still opens smoothly.",
+    "level": "A2"
+  },
+  {
+    "english": "I turned the brightness down because the room was dark.",
+    "level": "A2"
+  },
+  {
+    "english": "The charger brick gets warm, so I leave space around it.",
+    "level": "A2"
+  },
+  {
+    "english": "She labels each cable, and setup takes half the time.",
+    "level": "A2"
+  },
+  {
+    "english": "A tablet screen shows fingerprints after one bus ride.",
+    "level": "A2"
+  },
+  {
+    "english": "The webcam cover slides open when the meeting begins.",
+    "level": "A2"
+  },
+  {
+    "english": "He replaced the mouse batteries before the presentation started.",
+    "level": "A2"
+  },
+  {
+    "english": "The second monitor helps, but it needs more desk space.",
+    "level": "A2"
+  },
+  {
+    "english": "I carry the laptop in a sleeve inside my backpack.",
+    "level": "A2"
+  },
+  {
+    "english": "The space bar sticks, so I press it near the center.",
+    "level": "A2"
+  },
+  {
+    "english": "The ports face the wall, and the plugs bend too sharply.",
+    "level": "A2"
+  },
+  {
+    "english": "A larger monitor made the spreadsheet easier to read.",
+    "level": "A2"
+  },
+  {
+    "english": "The power strip has room, but the desk still looks crowded.",
+    "level": "A2"
+  },
+  {
+    "english": "She turned the tablet sideways, and the keyboard filled the screen.",
+    "level": "A2"
+  },
+  {
+    "english": "The old speakers hum softly when the volume is low.",
+    "level": "A2"
+  },
+  {
+    "english": "I cleaned the charging port, and the plug fit better.",
+    "level": "A2"
+  },
+  {
+    "english": "The laptop lid closes with a small magnetic snap.",
+    "level": "A2"
+  },
+  {
+    "english": "He raised the monitor on books until the stand arrived.",
+    "level": "A2"
+  },
+  {
+    "english": "The desk lamp reflects on the glossy screen.",
+    "level": "A2"
+  },
+  {
+    "english": "A wireless mouse is neat, but batteries always run out.",
+    "level": "A2"
+  },
+  {
+    "english": "The case has scratches, but the tablet is safe.",
+    "level": "A2"
+  },
+  {
+    "english": "Touch the metal frame first, then open the computer case.",
+    "level": "A2"
+  },
+  {
+    "english": "The computer tower gathers dust behind the desk.",
+    "level": "A2"
+  },
+  {
+    "english": "My laptop looks fine from outside, but the hinge is getting tired.",
+    "level": "B1"
+  },
+  {
+    "english": "She treats the charger like glass because one bent tip ended her week.",
+    "level": "B1"
+  },
+  {
+    "english": "A cheap keyboard can feel expensive if the keys land cleanly.",
+    "level": "B1"
+  },
+  {
+    "english": "The tablet survives my bag because the cover closes before anything else.",
+    "level": "B1"
+  },
+  {
+    "english": "I stopped eating over the keyboard after one raisin became a problem.",
+    "level": "B1"
+  },
+  {
+    "english": "The monitor was not broken; it was just set to the wrong input.",
+    "level": "B1"
+  },
+  {
+    "english": "He keeps a tiny screwdriver nearby for the screws laptops always hide.",
+    "level": "B1"
+  },
+  {
+    "english": "A clean port can save you from buying a new charger.",
+    "level": "B1"
+  },
+  {
+    "english": "The machine felt faster after cleaning, although nothing inside the software had changed.",
+    "level": "B2"
+  },
+  {
+    "english": "A laptop on a soft bed looks harmless, but it traps heat exactly where vents need air.",
+    "level": "B2"
+  },
+  {
+    "english": "Good hardware care is mostly boring: dry hands, clear vents, and cables that are not forced.",
+    "level": "B2"
+  },
+  {
+    "english": "The tablet became easier to use once she added a stand and stopped holding it all day.",
+    "level": "B2"
+  },
+  {
+    "english": "I trust a heavy monitor stand more than a beautiful one that wobbles at every keystroke.",
+    "level": "B2"
+  },
+  {
+    "english": "The best desk setup makes the device disappear, leaving only the work in front of you.",
+    "level": "B2"
+  },
+  {
+    "english": "He learned the price of patience when a rushed pull snapped the charging cable.",
+    "level": "B2"
+  },
+  {
+    "english": "A quiet fan can be reassuring, but a silent hot laptop deserves attention.",
+    "level": "B2"
+  },
+  {
+    "english": "The keyboard tells a history of lunches, late nights, and hands that forgot to wash.",
+    "level": "B2"
+  },
+  {
+    "english": "The device itself is rarely mysterious; most trouble begins where heat, dust, pressure, and careless hands meet.",
+    "level": "C1"
+  },
+  {
+    "english": "A laptop rewards small habits, because a clear vent and an unstrained hinge can postpone an expensive repair.",
+    "level": "C1"
+  },
+  {
+    "english": "She chose the dull black keyboard because accuracy mattered more than the thin silver one that looked better in photos.",
+    "level": "C1"
+  },
+  {
+    "english": "The monitor's height changed the whole room, turning neck pain into a problem of furniture instead of endurance.",
+    "level": "C1"
+  },
+  {
+    "english": "There is a quiet dignity in labeling cables before the crisis, when every plug suddenly looks identical.",
+    "level": "C1"
+  },
+  {
+    "english": "Hardware has a memory of how it was treated, in scratches, loose ports, shiny keys, and fans full of dust.",
+    "level": "C1"
+  },
+  {
+    "english": "The tablet felt modern until its cracked corner reminded him that glass is still glass, however clever the software.",
+    "level": "C1"
+  },
+  {
+    "english": "A good case is not glamorous, but it understands gravity better than the person carrying the device.",
+    "level": "C1"
+  },
+  {
+    "english": "The cleanest desk is not empty; it simply gives every charger, dock, and keyboard enough room to behave.",
+    "level": "C1"
+  },
+  {
+    "english": "When the fan rises during a simple task, the computer may be asking for airflow rather than sympathy.",
+    "level": "C1"
+  },
+  {
+    "english": "The difference between careful and fussy is practical: careful saves the hinge, while fussy only polishes the lid.",
+    "level": "C1"
+  },
+  {
+    "english": "Before blaming the machine, she checked the outlet, the adapter, the cable, and the small charging light.",
+    "level": "C1"
+  },
+  {
+    "english": "The old desktop, square and stubborn under the desk, taught him that computers age less like clocks than like kitchens, gathering heat, dust, stains, and the habits of everyone who touches them.",
+    "level": "C2"
+  },
+  {
+    "english": "On a crowded table, the tablet seemed almost weightless, yet one careless elbow was enough to remind the room that convenience still answers to glass, metal, and gravity.",
+    "level": "C2"
+  },
+  {
+    "english": "He never called himself careful, but his laptop told a different story, with straight cables, quiet hinges, clean vents, and a screen that had never met a key.",
+    "level": "C2"
+  },
+  {
+    "english": "A monitor can change the moral weather of a workday, not through intelligence, but by letting the body stop fighting the furniture long enough to think.",
+    "level": "C2"
+  },
+  {
+    "english": "The keyboard had become a map of attention, its polished vowels, dusty edges, and patient space bar recording years of ordinary decisions no backup could preserve.",
+    "level": "C2"
+  }
+]

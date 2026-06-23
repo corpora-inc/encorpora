@@ -1,0 +1,4 @@
+Style: Crosshatch pen illustration, high detail, warm sepia/earth tones
+Subject: Diagram of the Rashidian brothers' agent network in Tehran
+Details: A network diagram in period intelligence-report style showing the three Rashidian brothers at the center, with lines radiating outward to their contacts in the military, the clergy, the bazaar, the press, parliament, and the street gangs. Each node labeled with a category rather than individual names. The diagram should convey the breadth and reach of the network -- military officers, newspaper editors, mullahs, bazaar merchants, zurkhaneh bosses. MI6 and CIA connections shown at the top. The overall effect should resemble a declassified intelligence chart.
+Aspect: Landscape, suitable for full-width 6x9

@@ -1,0 +1,3028 @@
+{
+  "id": "plaza-walled",
+  "bounds": {
+    "minX": -120,
+    "maxX": 120,
+    "minZ": -120,
+    "maxZ": 120
+  },
+  "spawns": [
+    {
+      "x": 0,
+      "z": 11.5
+    },
+    {
+      "x": 11.5,
+      "z": 0
+    },
+    {
+      "x": 0,
+      "z": -11.5
+    },
+    {
+      "x": -11.5,
+      "z": 0
+    }
+  ],
+  "blockers": [
+    {
+      "x": 0,
+      "z": 0,
+      "w": 3,
+      "d": 3
+    },
+    {
+      "x": -115,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -115,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -99,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -99,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -83,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -83,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -75,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -75,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -59,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -59,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -51,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -51,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -35,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -35,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -19,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -19,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -11,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": -11,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 5,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 5,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 13,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 13,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 29,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 29,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 37,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 37,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 53,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 53,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 61,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 61,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 77,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 77,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 93,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 93,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 101,
+      "z": 118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 101,
+      "z": -118.5,
+      "w": 7,
+      "d": 3
+    },
+    {
+      "x": 118.5,
+      "z": -115,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": -115,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": -99,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": -99,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": -83,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": -83,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": -75,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": -75,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": -59,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": -59,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": -51,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": -51,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": -35,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": -35,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": -19,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": -19,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": -11,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": -11,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": 5,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": 5,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": 13,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": 13,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": 29,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": 29,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": 37,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": 37,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": 53,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": 53,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": 61,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": 61,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": 77,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": 77,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": 93,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": 93,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": 118.5,
+      "z": 101,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -118.5,
+      "z": 101,
+      "w": 3,
+      "d": 7
+    },
+    {
+      "x": -6,
+      "z": -108.45,
+      "w": 6,
+      "d": 6
+    },
+    {
+      "x": 6,
+      "z": -108.45,
+      "w": 6,
+      "d": 6
+    },
+    {
+      "x": -18.12,
+      "z": -13.25,
+      "w": 5.36,
+      "d": 4.33
+    },
+    {
+      "x": 17.25,
+      "z": -17.25,
+      "w": 6.79,
+      "d": 4.05
+    },
+    {
+      "x": 13.38,
+      "z": 18.25,
+      "w": 7.28,
+      "d": 5.79
+    },
+    {
+      "x": -35,
+      "z": -17.12,
+      "w": 4.94,
+      "d": 6.36
+    },
+    {
+      "x": -35,
+      "z": -7.37,
+      "w": 5.01,
+      "d": 6.75
+    },
+    {
+      "x": -35,
+      "z": 7.38,
+      "w": 5.92,
+      "d": 5.81
+    },
+    {
+      "x": -35,
+      "z": 17.13,
+      "w": 5.44,
+      "d": 6.13
+    },
+    {
+      "x": -17.12,
+      "z": -35,
+      "w": 5.12,
+      "d": 4.53
+    },
+    {
+      "x": -7.37,
+      "z": -35,
+      "w": 4.43,
+      "d": 5.91
+    },
+    {
+      "x": -17.12,
+      "z": 35,
+      "w": 4.47,
+      "d": 4.19
+    },
+    {
+      "x": -7.37,
+      "z": 35,
+      "w": 6.41,
+      "d": 5.33
+    },
+    {
+      "x": 35,
+      "z": 7.38,
+      "w": 5.78,
+      "d": 6.28
+    },
+    {
+      "x": 35,
+      "z": 17.13,
+      "w": 4.33,
+      "d": 4.96
+    },
+    {
+      "x": -35,
+      "z": -35,
+      "w": 4.42,
+      "d": 6.03
+    },
+    {
+      "x": -39,
+      "z": 35,
+      "w": 6,
+      "d": 5.69
+    },
+    {
+      "x": -31,
+      "z": 35,
+      "w": 5.21,
+      "d": 5.6
+    },
+    {
+      "x": 35,
+      "z": -35,
+      "w": 6.25,
+      "d": 6.3
+    },
+    {
+      "x": 31,
+      "z": 35,
+      "w": 4.48,
+      "d": 5.78
+    },
+    {
+      "x": 39,
+      "z": 35,
+      "w": 6,
+      "d": 6.03
+    },
+    {
+      "x": -56,
+      "z": -17.12,
+      "w": 4.96,
+      "d": 7.32
+    },
+    {
+      "x": -56,
+      "z": -7.37,
+      "w": 6.96,
+      "d": 4.07
+    },
+    {
+      "x": -17.12,
+      "z": 56,
+      "w": 5.11,
+      "d": 4.87
+    },
+    {
+      "x": -7.37,
+      "z": 56,
+      "w": 5.08,
+      "d": 5.62
+    },
+    {
+      "x": 7.38,
+      "z": -56,
+      "w": 7.25,
+      "d": 4.86
+    },
+    {
+      "x": 17.13,
+      "z": -56,
+      "w": 7.45,
+      "d": 6.92
+    },
+    {
+      "x": 56,
+      "z": 7.38,
+      "w": 6.74,
+      "d": 5.86
+    },
+    {
+      "x": 56,
+      "z": 17.13,
+      "w": 4.38,
+      "d": 5.51
+    },
+    {
+      "x": -60,
+      "z": -35,
+      "w": 5.5,
+      "d": 4.74
+    },
+    {
+      "x": -52,
+      "z": -35,
+      "w": 5.12,
+      "d": 4.14
+    },
+    {
+      "x": -60,
+      "z": 35,
+      "w": 6,
+      "d": 6.86
+    },
+    {
+      "x": -52,
+      "z": 35,
+      "w": 6,
+      "d": 4
+    },
+    {
+      "x": -39,
+      "z": -56,
+      "w": 5.84,
+      "d": 5.9
+    },
+    {
+      "x": -31,
+      "z": -56,
+      "w": 5.8,
+      "d": 5.37
+    },
+    {
+      "x": -35,
+      "z": 56,
+      "w": 5.92,
+      "d": 4.53
+    },
+    {
+      "x": 35,
+      "z": -56,
+      "w": 4.15,
+      "d": 4.78
+    },
+    {
+      "x": 52,
+      "z": 35,
+      "w": 5.76,
+      "d": 4.91
+    },
+    {
+      "x": 60,
+      "z": 35,
+      "w": 5.81,
+      "d": 4.8
+    },
+    {
+      "x": -77,
+      "z": -17.12,
+      "w": 5.83,
+      "d": 5.92
+    },
+    {
+      "x": -77,
+      "z": -7.37,
+      "w": 5.56,
+      "d": 5.5
+    },
+    {
+      "x": -77,
+      "z": 12.25,
+      "w": 6.24,
+      "d": 5.09
+    },
+    {
+      "x": 7.38,
+      "z": -77,
+      "w": 5.94,
+      "d": 5.42
+    },
+    {
+      "x": 17.13,
+      "z": -77,
+      "w": 6.52,
+      "d": 6.96
+    },
+    {
+      "x": 7.38,
+      "z": 77,
+      "w": 3.97,
+      "d": 6.45
+    },
+    {
+      "x": 17.13,
+      "z": 77,
+      "w": 5.61,
+      "d": 6.21
+    },
+    {
+      "x": 77,
+      "z": 7.38,
+      "w": 5.25,
+      "d": 5.35
+    },
+    {
+      "x": 77,
+      "z": 17.13,
+      "w": 5.32,
+      "d": 6.86
+    },
+    {
+      "x": -60,
+      "z": -56,
+      "w": 4.77,
+      "d": 5.49
+    },
+    {
+      "x": -52,
+      "z": -56,
+      "w": 5.84,
+      "d": 6.92
+    },
+    {
+      "x": 56,
+      "z": 56,
+      "w": 4.66,
+      "d": 4.35
+    },
+    {
+      "x": -35,
+      "z": -77,
+      "w": 5.59,
+      "d": 5.79
+    },
+    {
+      "x": -35,
+      "z": 77,
+      "w": 5.73,
+      "d": 6.18
+    },
+    {
+      "x": 31,
+      "z": -77,
+      "w": 6,
+      "d": 6.17
+    },
+    {
+      "x": 39,
+      "z": -77,
+      "w": 4.8,
+      "d": 6.86
+    },
+    {
+      "x": 77,
+      "z": 35,
+      "w": 4.44,
+      "d": 4.49
+    },
+    {
+      "x": -81,
+      "z": -56,
+      "w": 5.37,
+      "d": 6.68
+    },
+    {
+      "x": -73,
+      "z": -56,
+      "w": 6,
+      "d": 4.63
+    },
+    {
+      "x": -81,
+      "z": 56,
+      "w": 6,
+      "d": 4.15
+    },
+    {
+      "x": -73,
+      "z": 56,
+      "w": 5.12,
+      "d": 4.51
+    },
+    {
+      "x": -60,
+      "z": -77,
+      "w": 6,
+      "d": 6.04
+    },
+    {
+      "x": -52,
+      "z": -77,
+      "w": 4.28,
+      "d": 6.79
+    },
+    {
+      "x": 52,
+      "z": -77,
+      "w": 5.61,
+      "d": 4.28
+    },
+    {
+      "x": 60,
+      "z": -77,
+      "w": 3.97,
+      "d": 5.4
+    },
+    {
+      "x": 73,
+      "z": -56,
+      "w": 4.16,
+      "d": 4.6
+    },
+    {
+      "x": 81,
+      "z": -56,
+      "w": 6,
+      "d": 5.34
+    },
+    {
+      "x": -17.12,
+      "z": -98,
+      "w": 6.63,
+      "d": 4.63
+    },
+    {
+      "x": -7.37,
+      "z": -98,
+      "w": 4.92,
+      "d": 5.63
+    },
+    {
+      "x": 98,
+      "z": -12.25,
+      "w": 5.81,
+      "d": 7.18
+    },
+    {
+      "x": 98,
+      "z": 7.38,
+      "w": 5,
+      "d": 6.42
+    },
+    {
+      "x": 98,
+      "z": 17.13,
+      "w": 5.37,
+      "d": 7.09
+    },
+    {
+      "x": -102,
+      "z": -35,
+      "w": 3.87,
+      "d": 4.49
+    },
+    {
+      "x": -94,
+      "z": -35,
+      "w": 6,
+      "d": 5.19
+    },
+    {
+      "x": -39,
+      "z": -98,
+      "w": 6,
+      "d": 4.96
+    },
+    {
+      "x": -31,
+      "z": -98,
+      "w": 6,
+      "d": 5.86
+    },
+    {
+      "x": 31,
+      "z": 98,
+      "w": 6,
+      "d": 6.31
+    },
+    {
+      "x": 39,
+      "z": 98,
+      "w": 3.81,
+      "d": 4.36
+    },
+    {
+      "x": 94,
+      "z": 35,
+      "w": 6,
+      "d": 4.56
+    },
+    {
+      "x": 102,
+      "z": 35,
+      "w": 6,
+      "d": 5.54
+    },
+    {
+      "x": -81,
+      "z": -77,
+      "w": 6,
+      "d": 6.1
+    },
+    {
+      "x": -73,
+      "z": -77,
+      "w": 5.35,
+      "d": 4.55
+    },
+    {
+      "x": -81,
+      "z": 77,
+      "w": 4.79,
+      "d": 6.33
+    },
+    {
+      "x": -73,
+      "z": 77,
+      "w": 6,
+      "d": 6.56
+    },
+    {
+      "x": -60,
+      "z": -98,
+      "w": 4.87,
+      "d": 6.24
+    },
+    {
+      "x": -52,
+      "z": -98,
+      "w": 6,
+      "d": 4.6
+    },
+    {
+      "x": -60,
+      "z": 98,
+      "w": 3.97,
+      "d": 4.84
+    },
+    {
+      "x": -52,
+      "z": 98,
+      "w": 5.38,
+      "d": 5.32
+    },
+    {
+      "x": 52,
+      "z": -98,
+      "w": 6,
+      "d": 6.83
+    },
+    {
+      "x": 60,
+      "z": -98,
+      "w": 4.91,
+      "d": 6.41
+    },
+    {
+      "x": 52,
+      "z": 98,
+      "w": 4.33,
+      "d": 4.3
+    },
+    {
+      "x": 60,
+      "z": 98,
+      "w": 6,
+      "d": 4.25
+    },
+    {
+      "x": 94,
+      "z": -56,
+      "w": 5.31,
+      "d": 6.59
+    },
+    {
+      "x": 102,
+      "z": -56,
+      "w": 5.93,
+      "d": 4.32
+    },
+    {
+      "x": 98,
+      "z": 56,
+      "w": 5.28,
+      "d": 6.07
+    },
+    {
+      "x": -102,
+      "z": -77,
+      "w": 5.73,
+      "d": 6.98
+    },
+    {
+      "x": -94,
+      "z": -77,
+      "w": 6,
+      "d": 5.53
+    },
+    {
+      "x": -102,
+      "z": 77,
+      "w": 4.66,
+      "d": 5.75
+    },
+    {
+      "x": -94,
+      "z": 77,
+      "w": 5.12,
+      "d": 4.46
+    },
+    {
+      "x": -81,
+      "z": 98,
+      "w": 6,
+      "d": 5.89
+    },
+    {
+      "x": -73,
+      "z": 98,
+      "w": 4.29,
+      "d": 4.7
+    },
+    {
+      "x": 77,
+      "z": -98,
+      "w": 6.42,
+      "d": 7
+    },
+    {
+      "x": 73,
+      "z": 98,
+      "w": 5.33,
+      "d": 5.6
+    },
+    {
+      "x": 81,
+      "z": 98,
+      "w": 5.86,
+      "d": 6.95
+    },
+    {
+      "x": 94,
+      "z": -77,
+      "w": 4.59,
+      "d": 4.71
+    },
+    {
+      "x": 102,
+      "z": -77,
+      "w": 4.86,
+      "d": 5.03
+    },
+    {
+      "x": 94,
+      "z": 77,
+      "w": 6,
+      "d": 5.34
+    },
+    {
+      "x": 102,
+      "z": 77,
+      "w": 5.75,
+      "d": 6.39
+    },
+    {
+      "x": 94,
+      "z": -98,
+      "w": 5.52,
+      "d": 5.18
+    },
+    {
+      "x": 102,
+      "z": -98,
+      "w": 4.34,
+      "d": 6
+    }
+  ],
+  "anchors": [
+    {
+      "id": "fountain",
+      "role": "decor",
+      "kind": "fountain",
+      "x": 0,
+      "z": 0
+    },
+    {
+      "id": "plaza_bench_0",
+      "role": "bench",
+      "kind": "bench",
+      "x": 8.03,
+      "z": 3.3,
+      "facing": -2.75
+    },
+    {
+      "id": "plaza_lamp_1",
+      "role": "decor",
+      "kind": "decor",
+      "x": 3.34,
+      "z": 8.01,
+      "facing": -1.97
+    },
+    {
+      "id": "plaza_bench_2",
+      "role": "bench",
+      "kind": "bench",
+      "x": -3.3,
+      "z": 8.03,
+      "facing": -1.18
+    },
+    {
+      "id": "plaza_lamp_3",
+      "role": "decor",
+      "kind": "decor",
+      "x": -8.01,
+      "z": 3.34,
+      "facing": -0.4
+    },
+    {
+      "id": "plaza_bench_4",
+      "role": "bench",
+      "kind": "bench",
+      "x": -8.03,
+      "z": -3.3,
+      "facing": 0.39
+    },
+    {
+      "id": "plaza_lamp_5",
+      "role": "decor",
+      "kind": "decor",
+      "x": -3.34,
+      "z": -8.01,
+      "facing": 1.18
+    },
+    {
+      "id": "plaza_bench_6",
+      "role": "bench",
+      "kind": "bench",
+      "x": 3.3,
+      "z": -8.03,
+      "facing": 1.96
+    },
+    {
+      "id": "plaza_lamp_7",
+      "role": "decor",
+      "kind": "decor",
+      "x": 8.01,
+      "z": -3.34,
+      "facing": 2.75
+    },
+    {
+      "id": "plaza_market",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 12.8,
+      "z": -11.5,
+      "facing": 2.31
+    },
+    {
+      "id": "plaza_crier",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -11.5,
+      "z": 12.8,
+      "facing": -0.88
+    },
+    {
+      "id": "city_gate",
+      "role": "portal",
+      "kind": "city_gate",
+      "x": 0,
+      "z": -108.45,
+      "facing": -1.57
+    },
+    {
+      "id": "portal_0",
+      "role": "portal",
+      "kind": "portal",
+      "x": -22.2,
+      "z": -13.25,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_1",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -23.1,
+      "z": -13.25,
+      "facing": 0
+    },
+    {
+      "id": "portal_2",
+      "role": "portal",
+      "kind": "portal",
+      "x": 22.05,
+      "z": -17.25,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_3",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 22.95,
+      "z": -17.25,
+      "facing": -3.14
+    },
+    {
+      "id": "decor_4",
+      "role": "decor",
+      "kind": "decor",
+      "x": 22.05,
+      "z": -14.62
+    },
+    {
+      "id": "portal_5",
+      "role": "portal",
+      "kind": "portal",
+      "x": 13.38,
+      "z": 22.55,
+      "facing": 1.57
+    },
+    {
+      "id": "npc_station_6",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 13.38,
+      "z": 23.45,
+      "facing": -1.57
+    },
+    {
+      "id": "portal_7",
+      "role": "portal",
+      "kind": "portal",
+      "x": -35,
+      "z": -21.7,
+      "facing": -1.57
+    },
+    {
+      "id": "decor_8",
+      "role": "decor",
+      "kind": "decor",
+      "x": -31.93,
+      "z": -21.7
+    },
+    {
+      "id": "portal_9",
+      "role": "portal",
+      "kind": "portal",
+      "x": -35,
+      "z": -2.59,
+      "facing": 1.57
+    },
+    {
+      "id": "npc_station_10",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -35,
+      "z": -1.69,
+      "facing": -1.57
+    },
+    {
+      "id": "decor_11",
+      "role": "decor",
+      "kind": "decor",
+      "x": -38.1,
+      "z": -2.59
+    },
+    {
+      "id": "portal_12",
+      "role": "portal",
+      "kind": "portal",
+      "x": -35,
+      "z": 3.08,
+      "facing": -1.57
+    },
+    {
+      "id": "npc_station_13",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -35,
+      "z": 2.18,
+      "facing": 1.57
+    },
+    {
+      "id": "decor_14",
+      "role": "decor",
+      "kind": "decor",
+      "x": -31.44,
+      "z": 3.08
+    },
+    {
+      "id": "portal_15",
+      "role": "portal",
+      "kind": "portal",
+      "x": -35,
+      "z": 21.6,
+      "facing": 1.57
+    },
+    {
+      "id": "vendor_16",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -35,
+      "z": 22.49,
+      "facing": -1.57
+    },
+    {
+      "id": "decor_17",
+      "role": "decor",
+      "kind": "decor",
+      "x": -38.32,
+      "z": 21.6
+    },
+    {
+      "id": "portal_18",
+      "role": "portal",
+      "kind": "portal",
+      "x": -21.08,
+      "z": -35,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_19",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -21.98,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "portal_20",
+      "role": "portal",
+      "kind": "portal",
+      "x": -3.76,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_21",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -2.86,
+      "z": -35,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_22",
+      "role": "portal",
+      "kind": "portal",
+      "x": -20.76,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_23",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -21.65,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "portal_24",
+      "role": "portal",
+      "kind": "portal",
+      "x": -2.76,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_25",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -1.86,
+      "z": 35,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_26",
+      "role": "portal",
+      "kind": "portal",
+      "x": 35,
+      "z": 2.84,
+      "facing": -1.57
+    },
+    {
+      "id": "portal_27",
+      "role": "portal",
+      "kind": "portal",
+      "x": 35,
+      "z": 21.01,
+      "facing": 1.57
+    },
+    {
+      "id": "npc_station_28",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 35,
+      "z": 21.91,
+      "facing": -1.57
+    },
+    {
+      "id": "decor_29",
+      "role": "decor",
+      "kind": "decor",
+      "x": 32.24,
+      "z": 21.01
+    },
+    {
+      "id": "portal_30",
+      "role": "portal",
+      "kind": "portal",
+      "x": -35,
+      "z": -39.41,
+      "facing": -1.57
+    },
+    {
+      "id": "vendor_31",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -35,
+      "z": -40.31,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_32",
+      "role": "portal",
+      "kind": "portal",
+      "x": -43.4,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "portal_33",
+      "role": "portal",
+      "kind": "portal",
+      "x": -26.99,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "vendor_34",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -26.1,
+      "z": 35,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_35",
+      "role": "portal",
+      "kind": "portal",
+      "x": 35,
+      "z": -39.55,
+      "facing": -1.57
+    },
+    {
+      "id": "npc_station_36",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 35,
+      "z": -40.45,
+      "facing": 1.57
+    },
+    {
+      "id": "decor_37",
+      "role": "decor",
+      "kind": "decor",
+      "x": 38.73,
+      "z": -39.55
+    },
+    {
+      "id": "portal_38",
+      "role": "portal",
+      "kind": "portal",
+      "x": 27.36,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_39",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 26.46,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "portal_40",
+      "role": "portal",
+      "kind": "portal",
+      "x": 43.4,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_41",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 44.3,
+      "z": 35,
+      "facing": -3.14
+    },
+    {
+      "id": "decor_42",
+      "role": "decor",
+      "kind": "decor",
+      "x": 43.4,
+      "z": 38.62
+    },
+    {
+      "id": "portal_43",
+      "role": "portal",
+      "kind": "portal",
+      "x": -56,
+      "z": -22.18,
+      "facing": -1.57
+    },
+    {
+      "id": "decor_44",
+      "role": "decor",
+      "kind": "decor",
+      "x": -52.92,
+      "z": -22.18
+    },
+    {
+      "id": "portal_45",
+      "role": "portal",
+      "kind": "portal",
+      "x": -56,
+      "z": -3.93,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_46",
+      "role": "portal",
+      "kind": "portal",
+      "x": -21.08,
+      "z": 56,
+      "facing": 3.14
+    },
+    {
+      "id": "portal_47",
+      "role": "portal",
+      "kind": "portal",
+      "x": -3.43,
+      "z": 56,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_48",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -2.53,
+      "z": 56,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_49",
+      "role": "portal",
+      "kind": "portal",
+      "x": 2.35,
+      "z": -56,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_50",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 1.45,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "portal_51",
+      "role": "portal",
+      "kind": "portal",
+      "x": 22.26,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "decor_52",
+      "role": "decor",
+      "kind": "decor",
+      "x": 22.26,
+      "z": -51.94
+    },
+    {
+      "id": "portal_53",
+      "role": "portal",
+      "kind": "portal",
+      "x": 56,
+      "z": 3.05,
+      "facing": -1.57
+    },
+    {
+      "id": "vendor_54",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 56,
+      "z": 2.15,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_55",
+      "role": "portal",
+      "kind": "portal",
+      "x": 56,
+      "z": 21.28,
+      "facing": 1.57
+    },
+    {
+      "id": "vendor_56",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 56,
+      "z": 22.18,
+      "facing": -1.57
+    },
+    {
+      "id": "decor_57",
+      "role": "decor",
+      "kind": "decor",
+      "x": 53.21,
+      "z": 21.28
+    },
+    {
+      "id": "portal_58",
+      "role": "portal",
+      "kind": "portal",
+      "x": -64.15,
+      "z": -35,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_59",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -65.05,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "portal_60",
+      "role": "portal",
+      "kind": "portal",
+      "x": -48.04,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_61",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -47.14,
+      "z": -35,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_62",
+      "role": "portal",
+      "kind": "portal",
+      "x": -64.4,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "decor_63",
+      "role": "decor",
+      "kind": "decor",
+      "x": -64.4,
+      "z": 30.97
+    },
+    {
+      "id": "portal_64",
+      "role": "portal",
+      "kind": "portal",
+      "x": -47.6,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_65",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -46.7,
+      "z": 35,
+      "facing": -3.14
+    },
+    {
+      "id": "decor_66",
+      "role": "decor",
+      "kind": "decor",
+      "x": -47.6,
+      "z": 37.6
+    },
+    {
+      "id": "portal_67",
+      "role": "portal",
+      "kind": "portal",
+      "x": -43.32,
+      "z": -56,
+      "facing": 3.14
+    },
+    {
+      "id": "portal_68",
+      "role": "portal",
+      "kind": "portal",
+      "x": -26.7,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_69",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -25.8,
+      "z": -56,
+      "facing": -3.14
+    },
+    {
+      "id": "decor_70",
+      "role": "decor",
+      "kind": "decor",
+      "x": -26.7,
+      "z": -52.71
+    },
+    {
+      "id": "portal_71",
+      "role": "portal",
+      "kind": "portal",
+      "x": -39.36,
+      "z": 56,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_72",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -40.26,
+      "z": 56,
+      "facing": 0
+    },
+    {
+      "id": "decor_73",
+      "role": "decor",
+      "kind": "decor",
+      "x": -39.36,
+      "z": 53.14
+    },
+    {
+      "id": "portal_74",
+      "role": "portal",
+      "kind": "portal",
+      "x": 35,
+      "z": -59.79,
+      "facing": -1.57
+    },
+    {
+      "id": "decor_75",
+      "role": "decor",
+      "kind": "decor",
+      "x": 37.67,
+      "z": -59.79
+    },
+    {
+      "id": "portal_76",
+      "role": "portal",
+      "kind": "portal",
+      "x": 47.72,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_77",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 46.82,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "portal_78",
+      "role": "portal",
+      "kind": "portal",
+      "x": 64.31,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_79",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 65.21,
+      "z": 35,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_80",
+      "role": "portal",
+      "kind": "portal",
+      "x": -77,
+      "z": -21.48,
+      "facing": -1.57
+    },
+    {
+      "id": "npc_station_81",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -77,
+      "z": -22.38,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_82",
+      "role": "portal",
+      "kind": "portal",
+      "x": -77,
+      "z": -3.22,
+      "facing": 1.57
+    },
+    {
+      "id": "vendor_83",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -77,
+      "z": -2.32,
+      "facing": -1.57
+    },
+    {
+      "id": "portal_84",
+      "role": "portal",
+      "kind": "portal",
+      "x": -81.52,
+      "z": 12.25,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_85",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -82.42,
+      "z": 12.25,
+      "facing": 0
+    },
+    {
+      "id": "portal_86",
+      "role": "portal",
+      "kind": "portal",
+      "x": 3.01,
+      "z": -77,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_87",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 2.11,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "portal_88",
+      "role": "portal",
+      "kind": "portal",
+      "x": 21.79,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "decor_89",
+      "role": "decor",
+      "kind": "decor",
+      "x": 21.79,
+      "z": -72.92
+    },
+    {
+      "id": "portal_90",
+      "role": "portal",
+      "kind": "portal",
+      "x": 4,
+      "z": 77,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_91",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 3.1,
+      "z": 77,
+      "facing": 0
+    },
+    {
+      "id": "portal_92",
+      "role": "portal",
+      "kind": "portal",
+      "x": 21.34,
+      "z": 77,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_93",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 22.24,
+      "z": 77,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_94",
+      "role": "portal",
+      "kind": "portal",
+      "x": 77,
+      "z": 3.31,
+      "facing": -1.57
+    },
+    {
+      "id": "vendor_95",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 77,
+      "z": 2.41,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_96",
+      "role": "portal",
+      "kind": "portal",
+      "x": 77,
+      "z": 21.96,
+      "facing": 1.57
+    },
+    {
+      "id": "npc_station_97",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 77,
+      "z": 22.86,
+      "facing": -1.57
+    },
+    {
+      "id": "portal_98",
+      "role": "portal",
+      "kind": "portal",
+      "x": -63.78,
+      "z": -56,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_99",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -64.68,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "portal_100",
+      "role": "portal",
+      "kind": "portal",
+      "x": -47.68,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "vendor_101",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -46.78,
+      "z": -56,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_102",
+      "role": "portal",
+      "kind": "portal",
+      "x": 52.27,
+      "z": 56,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_103",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 51.37,
+      "z": 56,
+      "facing": 0
+    },
+    {
+      "id": "decor_104",
+      "role": "decor",
+      "kind": "decor",
+      "x": 52.27,
+      "z": 53.23
+    },
+    {
+      "id": "portal_105",
+      "role": "portal",
+      "kind": "portal",
+      "x": -35,
+      "z": -81.29,
+      "facing": -1.57
+    },
+    {
+      "id": "vendor_106",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -35,
+      "z": -82.19,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_107",
+      "role": "portal",
+      "kind": "portal",
+      "x": -35,
+      "z": 72.51,
+      "facing": -1.57
+    },
+    {
+      "id": "vendor_108",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -35,
+      "z": 71.61,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_109",
+      "role": "portal",
+      "kind": "portal",
+      "x": 26.6,
+      "z": -77,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_110",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 25.7,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "portal_111",
+      "role": "portal",
+      "kind": "portal",
+      "x": 42.8,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "vendor_112",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 43.7,
+      "z": -77,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_113",
+      "role": "portal",
+      "kind": "portal",
+      "x": 77,
+      "z": 31.36,
+      "facing": -1.57
+    },
+    {
+      "id": "npc_station_114",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 77,
+      "z": 30.46,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_115",
+      "role": "portal",
+      "kind": "portal",
+      "x": -85.08,
+      "z": -56,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_116",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -85.98,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "portal_117",
+      "role": "portal",
+      "kind": "portal",
+      "x": -68.6,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "portal_118",
+      "role": "portal",
+      "kind": "portal",
+      "x": -85.4,
+      "z": 56,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_119",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -86.3,
+      "z": 56,
+      "facing": 0
+    },
+    {
+      "id": "portal_120",
+      "role": "portal",
+      "kind": "portal",
+      "x": -69.04,
+      "z": 56,
+      "facing": 0
+    },
+    {
+      "id": "vendor_121",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -68.14,
+      "z": 56,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_122",
+      "role": "portal",
+      "kind": "portal",
+      "x": -64.4,
+      "z": -77,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_123",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -65.3,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "portal_124",
+      "role": "portal",
+      "kind": "portal",
+      "x": -48.46,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_125",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -47.56,
+      "z": -77,
+      "facing": -3.14
+    },
+    {
+      "id": "decor_126",
+      "role": "decor",
+      "kind": "decor",
+      "x": -48.46,
+      "z": -73
+    },
+    {
+      "id": "portal_127",
+      "role": "portal",
+      "kind": "portal",
+      "x": 47.8,
+      "z": -77,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_128",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 46.9,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "portal_129",
+      "role": "portal",
+      "kind": "portal",
+      "x": 63.39,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "portal_130",
+      "role": "portal",
+      "kind": "portal",
+      "x": 69.52,
+      "z": -56,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_131",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 68.62,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "portal_132",
+      "role": "portal",
+      "kind": "portal",
+      "x": 85.4,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "decor_133",
+      "role": "decor",
+      "kind": "decor",
+      "x": 85.4,
+      "z": -52.73
+    },
+    {
+      "id": "portal_134",
+      "role": "portal",
+      "kind": "portal",
+      "x": -21.83,
+      "z": -98,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_135",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -22.73,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "decor_136",
+      "role": "decor",
+      "kind": "decor",
+      "x": -21.83,
+      "z": -100.91
+    },
+    {
+      "id": "portal_137",
+      "role": "portal",
+      "kind": "portal",
+      "x": -3.51,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_138",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -2.61,
+      "z": -98,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_139",
+      "role": "portal",
+      "kind": "portal",
+      "x": 93.7,
+      "z": -12.25,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_140",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 92.79,
+      "z": -12.25,
+      "facing": 0
+    },
+    {
+      "id": "decor_141",
+      "role": "decor",
+      "kind": "decor",
+      "x": 93.7,
+      "z": -16.44
+    },
+    {
+      "id": "portal_142",
+      "role": "portal",
+      "kind": "portal",
+      "x": 98,
+      "z": 2.77,
+      "facing": -1.57
+    },
+    {
+      "id": "vendor_143",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 98,
+      "z": 1.87,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_144",
+      "role": "portal",
+      "kind": "portal",
+      "x": 98,
+      "z": 22.08,
+      "facing": 1.57
+    },
+    {
+      "id": "vendor_145",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 98,
+      "z": 22.98,
+      "facing": -1.57
+    },
+    {
+      "id": "decor_146",
+      "role": "decor",
+      "kind": "decor",
+      "x": 94.72,
+      "z": 22.08
+    },
+    {
+      "id": "portal_147",
+      "role": "portal",
+      "kind": "portal",
+      "x": -105.33,
+      "z": -35,
+      "facing": 3.14
+    },
+    {
+      "id": "decor_148",
+      "role": "decor",
+      "kind": "decor",
+      "x": -105.33,
+      "z": -37.84
+    },
+    {
+      "id": "portal_149",
+      "role": "portal",
+      "kind": "portal",
+      "x": -89.6,
+      "z": -35,
+      "facing": 0
+    },
+    {
+      "id": "vendor_150",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -88.7,
+      "z": -35,
+      "facing": -3.14
+    },
+    {
+      "id": "decor_151",
+      "role": "decor",
+      "kind": "decor",
+      "x": -89.6,
+      "z": -31.8
+    },
+    {
+      "id": "portal_152",
+      "role": "portal",
+      "kind": "portal",
+      "x": -43.4,
+      "z": -98,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_153",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -44.3,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "portal_154",
+      "role": "portal",
+      "kind": "portal",
+      "x": -26.6,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "portal_155",
+      "role": "portal",
+      "kind": "portal",
+      "x": 26.6,
+      "z": 98,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_156",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 25.7,
+      "z": 98,
+      "facing": 0
+    },
+    {
+      "id": "decor_157",
+      "role": "decor",
+      "kind": "decor",
+      "x": 26.6,
+      "z": 94.25
+    },
+    {
+      "id": "portal_158",
+      "role": "portal",
+      "kind": "portal",
+      "x": 42.31,
+      "z": 98,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_159",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 43.21,
+      "z": 98,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_160",
+      "role": "portal",
+      "kind": "portal",
+      "x": 89.6,
+      "z": 35,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_161",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 88.7,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "portal_162",
+      "role": "portal",
+      "kind": "portal",
+      "x": 106.4,
+      "z": 35,
+      "facing": 0
+    },
+    {
+      "id": "vendor_163",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 107.3,
+      "z": 35,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_164",
+      "role": "portal",
+      "kind": "portal",
+      "x": -85.4,
+      "z": -77,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_165",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -86.3,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "portal_166",
+      "role": "portal",
+      "kind": "portal",
+      "x": -68.92,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_167",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -68.02,
+      "z": -77,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_168",
+      "role": "portal",
+      "kind": "portal",
+      "x": -84.79,
+      "z": 77,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_169",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -85.69,
+      "z": 77,
+      "facing": 0
+    },
+    {
+      "id": "decor_170",
+      "role": "decor",
+      "kind": "decor",
+      "x": -84.79,
+      "z": 73.24
+    },
+    {
+      "id": "portal_171",
+      "role": "portal",
+      "kind": "portal",
+      "x": -68.6,
+      "z": 77,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_172",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -67.7,
+      "z": 77,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_173",
+      "role": "portal",
+      "kind": "portal",
+      "x": -63.83,
+      "z": -98,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_174",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -64.73,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "decor_175",
+      "role": "decor",
+      "kind": "decor",
+      "x": -63.83,
+      "z": -101.72
+    },
+    {
+      "id": "portal_176",
+      "role": "portal",
+      "kind": "portal",
+      "x": -47.6,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_177",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -46.7,
+      "z": -98,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_178",
+      "role": "portal",
+      "kind": "portal",
+      "x": -63.38,
+      "z": 98,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_179",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -64.28,
+      "z": 98,
+      "facing": 0
+    },
+    {
+      "id": "portal_180",
+      "role": "portal",
+      "kind": "portal",
+      "x": -47.91,
+      "z": 98,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_181",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -47.01,
+      "z": 98,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_182",
+      "role": "portal",
+      "kind": "portal",
+      "x": 47.6,
+      "z": -98,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_183",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 46.7,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "portal_184",
+      "role": "portal",
+      "kind": "portal",
+      "x": 63.86,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "portal_185",
+      "role": "portal",
+      "kind": "portal",
+      "x": 48.44,
+      "z": 98,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_186",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 47.54,
+      "z": 98,
+      "facing": 0
+    },
+    {
+      "id": "decor_187",
+      "role": "decor",
+      "kind": "decor",
+      "x": 48.44,
+      "z": 95.25
+    },
+    {
+      "id": "portal_188",
+      "role": "portal",
+      "kind": "portal",
+      "x": 64.4,
+      "z": 98,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_189",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 65.3,
+      "z": 98,
+      "facing": -3.14
+    },
+    {
+      "id": "decor_190",
+      "role": "decor",
+      "kind": "decor",
+      "x": 64.4,
+      "z": 100.73
+    },
+    {
+      "id": "portal_191",
+      "role": "portal",
+      "kind": "portal",
+      "x": 89.95,
+      "z": -56,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_192",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 89.04,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "decor_193",
+      "role": "decor",
+      "kind": "decor",
+      "x": 89.95,
+      "z": -59.89
+    },
+    {
+      "id": "portal_194",
+      "role": "portal",
+      "kind": "portal",
+      "x": 106.37,
+      "z": -56,
+      "facing": 0
+    },
+    {
+      "id": "vendor_195",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 107.27,
+      "z": -56,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_196",
+      "role": "portal",
+      "kind": "portal",
+      "x": 98,
+      "z": 51.57,
+      "facing": -1.57
+    },
+    {
+      "id": "npc_station_197",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 98,
+      "z": 50.67,
+      "facing": 1.57
+    },
+    {
+      "id": "portal_198",
+      "role": "portal",
+      "kind": "portal",
+      "x": -106.26,
+      "z": -77,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_199",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": -107.16,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "portal_200",
+      "role": "portal",
+      "kind": "portal",
+      "x": -89.6,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "vendor_201",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -88.7,
+      "z": -77,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_202",
+      "role": "portal",
+      "kind": "portal",
+      "x": -105.73,
+      "z": 77,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_203",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": -106.63,
+      "z": 77,
+      "facing": 0
+    },
+    {
+      "id": "decor_204",
+      "role": "decor",
+      "kind": "decor",
+      "x": -105.73,
+      "z": 73.53
+    },
+    {
+      "id": "portal_205",
+      "role": "portal",
+      "kind": "portal",
+      "x": -90.04,
+      "z": 77,
+      "facing": 0
+    },
+    {
+      "id": "decor_206",
+      "role": "decor",
+      "kind": "decor",
+      "x": -90.04,
+      "z": 79.83
+    },
+    {
+      "id": "portal_207",
+      "role": "portal",
+      "kind": "portal",
+      "x": -85.4,
+      "z": 98,
+      "facing": 3.14
+    },
+    {
+      "id": "decor_208",
+      "role": "decor",
+      "kind": "decor",
+      "x": -85.4,
+      "z": 94.46
+    },
+    {
+      "id": "portal_209",
+      "role": "portal",
+      "kind": "portal",
+      "x": -69.45,
+      "z": 98,
+      "facing": 0
+    },
+    {
+      "id": "portal_210",
+      "role": "portal",
+      "kind": "portal",
+      "x": 77,
+      "z": -102.9,
+      "facing": -1.57
+    },
+    {
+      "id": "portal_211",
+      "role": "portal",
+      "kind": "portal",
+      "x": 68.94,
+      "z": 98,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_212",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 68.04,
+      "z": 98,
+      "facing": 0
+    },
+    {
+      "id": "portal_213",
+      "role": "portal",
+      "kind": "portal",
+      "x": 85.33,
+      "z": 98,
+      "facing": 0
+    },
+    {
+      "id": "npc_station_214",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 86.23,
+      "z": 98,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_215",
+      "role": "portal",
+      "kind": "portal",
+      "x": 90.31,
+      "z": -77,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_216",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 89.41,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "decor_217",
+      "role": "decor",
+      "kind": "decor",
+      "x": 90.31,
+      "z": -79.95
+    },
+    {
+      "id": "portal_218",
+      "role": "portal",
+      "kind": "portal",
+      "x": 105.83,
+      "z": -77,
+      "facing": 0
+    },
+    {
+      "id": "vendor_219",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 106.73,
+      "z": -77,
+      "facing": -3.14
+    },
+    {
+      "id": "decor_220",
+      "role": "decor",
+      "kind": "decor",
+      "x": 105.83,
+      "z": -73.89
+    },
+    {
+      "id": "portal_221",
+      "role": "portal",
+      "kind": "portal",
+      "x": 89.6,
+      "z": 77,
+      "facing": 3.14
+    },
+    {
+      "id": "npc_station_222",
+      "role": "npc_station",
+      "kind": "npc_station",
+      "x": 88.7,
+      "z": 77,
+      "facing": 0
+    },
+    {
+      "id": "decor_223",
+      "role": "decor",
+      "kind": "decor",
+      "x": 89.6,
+      "z": 73.73
+    },
+    {
+      "id": "portal_224",
+      "role": "portal",
+      "kind": "portal",
+      "x": 106.28,
+      "z": 77,
+      "facing": 0
+    },
+    {
+      "id": "vendor_225",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 107.18,
+      "z": 77,
+      "facing": -3.14
+    },
+    {
+      "id": "portal_226",
+      "role": "portal",
+      "kind": "portal",
+      "x": 89.84,
+      "z": -98,
+      "facing": 3.14
+    },
+    {
+      "id": "vendor_227",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 88.94,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "decor_228",
+      "role": "decor",
+      "kind": "decor",
+      "x": 89.84,
+      "z": -101.19
+    },
+    {
+      "id": "portal_229",
+      "role": "portal",
+      "kind": "portal",
+      "x": 105.57,
+      "z": -98,
+      "facing": 0
+    },
+    {
+      "id": "vendor_230",
+      "role": "vendor",
+      "kind": "vendor",
+      "x": 106.47,
+      "z": -98,
+      "facing": -3.14
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+/* EPUB styles for The Mystery of Great Zimbabwe */
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 1em;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 1.8em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  text-align: center;
+  page-break-before: always;
+}
+
+h2 {
+  font-size: 1.4em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: justify;
+  text-indent: 1.5em;
+}
+
+/* First paragraph after heading: no indent */
+h1 + p, h2 + p, h3 + p {
+  text-indent: 0;
+}
+
+blockquote {
+  margin: 1em 2em;
+  font-style: italic;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+
+/* Glossary terms */
+dt {
+  font-weight: bold;
+  margin-top: 0.8em;
+}
+
+dd {
+  margin-left: 1.5em;
+  margin-bottom: 0.5em;
+}

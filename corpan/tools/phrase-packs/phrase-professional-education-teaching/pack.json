@@ -1,0 +1,14 @@
+{
+  "id": "phrase-professional-education-teaching",
+  "version": "0.1.0",
+  "name": "Education and Teaching",
+  "description": "Professional language for classrooms, lesson planning, assessment, student support, and communication with families.",
+  "category": "professional",
+  "topic": "Education and Teaching",
+  "icon": "graduation-cap",
+  "accent_color": "#d97706",
+  "purchase": {"type": "free"},
+  "tags": ["professional", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

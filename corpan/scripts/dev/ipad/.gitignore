@@ -1,0 +1,3 @@
+# Scenario run outputs — timestamped screenshots + reports. Throwaway local
+# artifacts; never version these (see SCENARIOS.md).
+runs/

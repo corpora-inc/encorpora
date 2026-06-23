@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Corpan City — Phone verify</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: linear-gradient(160deg, #6ea7c9, #3f6f8c);
+      }
+      /* The phone mounts inside `.wp-overlay`; fill the viewport like the game. */
+      .wp-overlay {
+        position: fixed;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wp-overlay" id="overlay"></div>
+    <script type="module" src="/qa/phone-verify.ts"></script>
+  </body>
+</html>

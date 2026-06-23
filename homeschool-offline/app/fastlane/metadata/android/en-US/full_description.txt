@@ -1,0 +1,64 @@
+Homeschool Offline is a 100% offline calendar app designed specifically for homeschooling families. Track your homeschool days, add notes, attach photos, and keep everything organized - all without an internet connection.
+
+✨ FEATURES
+
+📅 Calendar View
+• Mark days as homeschool days
+• View monthly calendar at a glance
+• Navigate easily between dates
+• Track total homeschool days
+
+📝 Daily Notes
+• Add notes for each day
+• Auto-saves as you type
+• Rich text support
+• Perfect for lesson plans and observations
+
+📸 Photo Attachments
+• Attach multiple photos per day
+• Capture student work and activities
+• Photos stored locally on your device
+• Easy photo gallery view
+
+👨‍👩‍👧‍👦 Multiple Students
+• Support for multiple children
+• Switch between students easily
+• Separate tracking for each student
+• Perfect for families with multiple grades
+
+💾 Backup & Restore
+• Export all data to ZIP file
+• Import from backup
+• Transfer between devices
+• You own your data
+
+🔒 PRIVACY FIRST
+
+• 100% offline - no internet required
+• No login, no account, no subscription
+• No cloud storage
+• No ads
+• No tracking
+• Your data stays on your device
+
+📱 CROSS-PLATFORM
+
+Works on all devices:
+• Android phones and tablets
+• iPhone and iPad
+• macOS, Windows, Linux desktop
+
+🎯 PERFECT FOR
+
+• Homeschooling families
+• Unschoolers
+• Roadschoolers
+• Worldschoolers
+• Parents who value privacy
+• Anyone who wants to track educational progress offline
+
+📚 DOCUMENTATION
+
+Track homeschool days for your state's requirements while maintaining complete privacy. Perfect for portfolio reviews and annual reports.
+
+Made with ❤️ by Corpora Inc

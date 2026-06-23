@@ -1,0 +1,19 @@
+# permissions/default.toml
+[default]
+description = "Default permissions for the STT plugin"
+permissions = [
+    "allow-prepare",
+    "allow-start-session",
+    "allow-stop-session",
+    "allow-cancel-session",
+    "allow-is-available",
+    "allow-get-status",
+    "allow-wipe-model",
+    "allow-install-model",
+    "allow-validate-model",
+    "allow-list-installed",
+    "allow-unload",
+    "allow-release-audio",
+    "allow-register-listener",
+    "allow-remove-listener",
+]

@@ -1,0 +1,27 @@
+{
+  "name": "en_settings_tts",
+  "title": "English UI — Settings pane, TTS configurator, Quick Settings over Phrase Flip",
+  "persona": "An onboarded English+Spanish learner opening Settings from Home. Screenshots the single Settings pane (Stacks, languages, levels, Plus / Advanced+dev unlock), opens the standalone Text-to-speech configurator, then opens Quick Settings over Phrase Flip.",
+  "ui_lang": "en",
+  "beats": [
+    {
+      "narrate": "Seed an onboarded English + Spanish stack.",
+      "set_state": { "languages": ["en", "es"], "onboarded": true, "interests": ["read", "study"] }
+    },
+
+    { "narrate": "Home.", "wait_text": "For you", "screenshot": "01-home" },
+    { "narrate": "Open Settings (the gear, top-right).", "tap_anchor": { "aria": "Settings" }, "settle": 1.6 },
+
+    { "narrate": "Settings pane — Stacks, languages, levels, rate, Plus, Advanced.", "wait_text": "Settings", "screenshot": "02-settings-top" },
+    { "narrate": "Confirm the standalone TTS configurator entry button is present.", "assert_anchor": { "aria": "Open TTS settings" } },
+
+    { "narrate": "Open the Text-to-speech configurator (standalone, over Settings).", "tap_anchor": { "aria": "Open TTS settings" }, "settle": 2.0 },
+    { "narrate": "TTS configurator — per-language voice picker + Choose voices disclosure.", "wait_text": "Tap a voice to hear it", "screenshot": "03-tts-configurator" },
+    { "narrate": "Back out of the configurator (the standalone Back arrow).", "tap_anchor": { "aria": "Back" }, "settle": 1.6 },
+
+    { "narrate": "Back on Home — open Phrase Flip to reach the in-pack Quick settings.", "goto": "phrase_main", "settle": 2.5, "screenshot": "04-phrase_main" },
+    { "narrate": "Open Quick settings (the in-pack gear, leading corner).", "tap_anchor": { "aria": "Quick settings" }, "settle": 1.6 },
+    { "narrate": "Quick settings sheet — speed, languages, levels, phrase packs, Full settings.", "wait_text": "Quick settings", "screenshot": "05-quick-settings" },
+    { "narrate": "Confirm the Full settings escape hatch is present.", "assert_text": "Full settings" }
+  ]
+}

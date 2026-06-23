@@ -1,0 +1,22 @@
+{
+  "id": "book_oud_history",
+  "name": "The Oud",
+  "version": "0.1.4",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "metadata": {
+    "series": "Musical Instruments of the World",
+    "volume": 1,
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Curious listeners and language learners. Any age.",
+    "estimatedReadTime": "10-15 minutes",
+    "estimatedListenTime": "10-12 minutes"
+  }
+}

@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-llm-query-pack-db"
+description = "Enables the llm_query_pack_db command without any pre-configured scope."
+commands.allow = ["llm_query_pack_db"]
+
+[[permission]]
+identifier = "deny-llm-query-pack-db"
+description = "Denies the llm_query_pack_db command without any pre-configured scope."
+commands.deny = ["llm_query_pack_db"]

@@ -14,7 +14,7 @@ export function RomanizationToggle() {
     >
       <label
         htmlFor="toggle-romanization"
-        className="text-gray-800 text-sm font-medium select-none"
+        className="text-foreground text-sm font-medium select-none"
         style={{ minWidth: 0, flex: 1 }}
       >
         {t("settings.showRomanization")}
@@ -23,7 +23,7 @@ export function RomanizationToggle() {
         id="toggle-romanization"
         checked={showRomanization}
         onCheckedChange={setShowRomanization}
-        className="data-[state=checked]:bg-gray-800 data-[state=unchecked]:bg-gray-300 transition-colors"
+        className="transition-colors"
       />
     </div>
   );

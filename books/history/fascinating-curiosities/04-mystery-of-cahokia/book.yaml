@@ -1,0 +1,25 @@
+book:
+  volume: 4
+  title: "The Mystery of Cahokia"
+  subtitle: "America's Forgotten Metropolis"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Mound 72 — a paramount chief buried on a bird-shaped bed of 20,000 marine shell beads, surrounded by over 270 interments including rows of apparently sacrificed young women
+      - The "Big Bang" of ~1050 CE — Cahokia transformed from a modest village to a planned city almost overnight, with a population larger than contemporary London
+      - The complete abandonment by ~1400 CE — America's largest pre-Columbian city north of Mexico vanished from memory, and no European ever saw it alive
+    secondary:
+      - Monks Mound — the largest earthen structure in the Americas, with a base larger than the Great Pyramid of Giza, built entirely by hand
+      - Woodhenge — timber post circles aligned to solstices and equinoxes, a "wooden Stonehenge" in Illinois
+      - The Mound Builder myth — the racist lie that Indigenous peoples could not have built the mounds, used to justify Indian Removal
+      - The continental trade network — copper from the Great Lakes, mica from the Appalachians, marine shells from the Gulf Coast, obsidian from the Rockies
+
+  key_scholarly_sources:
+    - "Timothy Pauketat — Cahokia: Ancient America's Great City on the Mississippi (2009), the leading modern synthesis"
+    - "Thomas Emerson — University of Illinois; Cahokian material culture, figurines, and ritual"
+    - "Biloine Whiting Young and Melvin Fowler — Cahokia: The Great Native American Metropolis (2000)"
+    - "Melvin Fowler — excavator of Mound 72, the paramount burial"
+    - "Sally Kit Chappell — Cahokia: Mirror of the Cosmos (2002)"
+    - "Cyrus Thomas — Report on the Mound Explorations of the Bureau of Ethnology (1894), proved mounds were built by Native Americans"
+    - "George Milner — The Moundbuilders: Ancient Peoples of Eastern North America (2004)"

@@ -1,0 +1,12 @@
+{
+  "name": "corpan-analytics-ingest",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Anonymous reader analytics ingest — validates events and forwards to Firehose.",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-firehose": "^3.0.0"
+  }
+}

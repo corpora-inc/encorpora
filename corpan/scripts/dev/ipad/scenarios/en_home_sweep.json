@@ -1,0 +1,35 @@
+{
+  "name": "en_home_sweep",
+  "title": "English UI — Home sweep + launch every experience pack",
+  "persona": "An onboarded English+Spanish learner exploring Home. Sweeps the Home hub (For you hero, Show me another, Recommended, Browse phrase packs, all-packs listing, Plus chip), then deep-links into each of the eight experiences via ?game=<id>, screenshots it, and moves on. Pack→pack navigation reuses goto (replaces the ?game= param); a final clean re-entry returns to Home.",
+  "ui_lang": "en",
+  "beats": [
+    {
+      "narrate": "Seed an onboarded English + Spanish stack (merges into the active stack, reloads).",
+      "set_state": { "languages": ["en", "es"], "onboarded": true, "interests": ["read", "study", "games", "speak"] }
+    },
+
+    { "narrate": "Home — the post-onboarding hub.", "wait_text": "For you", "screenshot": "01-home" },
+    { "narrate": "Confirm the Settings gear is present + on-screen.", "assert_anchor": { "aria": "Settings" } },
+
+    { "narrate": "For you hero — cycle to the next recommendation (Show me another).", "tap_anchor": { "testid": "hero-cycle" }, "settle": 1.2, "screenshot": "02-home-cycled" },
+    { "narrate": "Cycle once more to show the carousel is live.", "tap_anchor": { "testid": "hero-cycle" }, "settle": 1.2, "screenshot": "03-home-cycled-2" },
+
+    { "narrate": "Browse phrase packs — opens the shared phrase-pack drawer.", "tap_anchor": { "testid": "browse-phrase-packs" }, "settle": 1.6, "screenshot": "04-phrase-pack-drawer" },
+    { "narrate": "Reload to dismiss the drawer and return to a clean Home.", "set_state": { "languages": ["en", "es"], "onboarded": true }, "wait_text": "For you", "screenshot": "05-home-again" },
+
+    { "narrate": "Launch Phrase Flip (phrase_main) — the native phrase experience.", "goto": "phrase_main", "settle": 2.5, "screenshot": "06-phrase_main" },
+    { "narrate": "Confirm the in-pack Quick settings gear + Home button chrome is present.", "assert_anchor": { "aria": "Quick settings" } },
+
+    { "narrate": "Earthgate Reader.", "goto": "earthgate_reader", "settle": 3.0, "screenshot": "07-earthgate_reader" },
+    { "narrate": "Hover Runner (game).", "goto": "hover_runner", "settle": 3.0, "screenshot": "08-hover_runner" },
+    { "narrate": "Juice Squeeze (game).", "goto": "juice_squeeze", "settle": 3.0, "screenshot": "09-juice_squeeze" },
+    { "narrate": "Parlometron (pronunciation_coach).", "goto": "pronunciation_coach", "settle": 3.0, "screenshot": "10-pronunciation_coach" },
+    { "narrate": "Hanzipan (Mandarin character studio).", "goto": "hanzipan", "settle": 3.0, "screenshot": "11-hanzipan" },
+    { "narrate": "World Radio.", "goto": "world_radio", "settle": 3.0, "screenshot": "12-world_radio" },
+    { "narrate": "Stargate Reader (audiobook reader).", "goto": "stargate_reader", "settle": 3.0, "screenshot": "13-stargate_reader" },
+
+    { "narrate": "Clean re-entry to Home (strip ?game=, restore onboarded).", "reset": true },
+    { "narrate": "Restore the onboarded stack so Home renders (not onboarding).", "set_state": { "languages": ["en", "es"], "onboarded": true }, "wait_text": "For you", "screenshot": "14-home-final" }
+  ]
+}

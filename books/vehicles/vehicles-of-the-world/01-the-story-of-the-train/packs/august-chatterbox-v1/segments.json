@@ -1,0 +1,2435 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Note for the Reader",
+      "text_markdown": "A Note for the Reader"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For two hundred years, the train has been the iron road of the world.",
+      "text_markdown": "For two hundred years, the train has been the iron road of the world.",
+      "tts": {
+        "text": "For two hundred years, the train has been the iron road of the world.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Trains move people.",
+      "text_markdown": "Trains move people.",
+      "tts": {
+        "text": "Trains move people.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trains move goods.",
+      "text_markdown": "Trains move goods.",
+      "tts": {
+        "text": "Trains move goods.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A long train can carry a whole town's worth of grain.",
+      "text_markdown": "A long train can carry a whole town's worth of grain.",
+      "tts": {
+        "text": "A long train can carry a whole town's worth of grain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A fast train can outrun a car on the highway.",
+      "text_markdown": "A fast train can outrun a car on the highway.",
+      "tts": {
+        "text": "A fast train can outrun a car on the highway.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The story of the train begins in England, almost two hundred years ago, with a man, a fire, and a kettle of boiling water.",
+      "text_markdown": "The story of the train begins in England, almost two hundred years ago, with a man, a fire, and a kettle of boiling water.",
+      "tts": {
+        "text": "The story of the train begins in England, almost two hundred years ago, with a man, a fire, and a kettle of boiling water.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Chapter 1 — The First Steam Train",
+      "text_markdown": "Chapter 1 — The First Steam Train"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A train is a line of cars that runs on iron rails.",
+      "text_markdown": "A train is a line of cars that runs on iron rails.",
+      "tts": {
+        "text": "A train is a line of cars that runs on iron rails.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The first car is the locomotive.",
+      "text_markdown": "The first car is the locomotive.",
+      "tts": {
+        "text": "The first car is the locomotive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It pulls all the others.",
+      "text_markdown": "It pulls all the others.",
+      "tts": {
+        "text": "It pulls all the others.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first trains were powered by steam.",
+      "text_markdown": "The first trains were powered by steam.",
+      "tts": {
+        "text": "The first trains were powered by steam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A steam engine burns coal to boil water.",
+      "text_markdown": "A steam engine burns coal to boil water.",
+      "tts": {
+        "text": "A steam engine burns coal to boil water.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The hot steam pushes pistons.",
+      "text_markdown": "The hot steam pushes pistons.",
+      "tts": {
+        "text": "The hot steam pushes pistons.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The pistons turn the wheels.",
+      "text_markdown": "The pistons turn the wheels.",
+      "tts": {
+        "text": "The pistons turn the wheels.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The wheels run on the rails.",
+      "text_markdown": "The wheels run on the rails.",
+      "tts": {
+        "text": "The wheels run on the rails.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The story begins in England.",
+      "text_markdown": "The story begins in England.",
+      "tts": {
+        "text": "The story begins in England.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In the year 1825, the first public railway opened.",
+      "text_markdown": "In the year 1825, the first public railway opened.",
+      "tts": {
+        "text": "In the year eighteen twenty five, the first public railway opened.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It was called the Stockton and Darlington Railway.",
+      "text_markdown": "It was called the Stockton and Darlington Railway.",
+      "tts": {
+        "text": "It was called the Stockton and Darlington Railway.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It carried coal from a mine to the river.",
+      "text_markdown": "It carried coal from a mine to the river.",
+      "tts": {
+        "text": "It carried coal from a mine to the river.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A man named George Stephenson built the locomotives.",
+      "text_markdown": "A man named George Stephenson built the locomotives.",
+      "tts": {
+        "text": "A man named George Stephenson built the locomotives.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "People called him the Father of the Railways.",
+      "text_markdown": "People called him the Father of the Railways.",
+      "tts": {
+        "text": "People called him the Father of the Railways.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1829, his son Robert Stephenson built a famous locomotive called the Rocket.",
+      "text_markdown": "In 1829, his son Robert Stephenson built a famous locomotive called the Rocket.",
+      "tts": {
+        "text": "In eighteen twenty nine, his son Robert Stephenson built a famous locomotive called the Rocket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It won a race for the fastest train.",
+      "text_markdown": "It won a race for the fastest train.",
+      "tts": {
+        "text": "It won a race for the fastest train.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Rocket could go almost 30 miles per hour.",
+      "text_markdown": "The Rocket could go almost 30 miles per hour.",
+      "tts": {
+        "text": "The Rocket could go almost thirty miles per hour.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "That was faster than any horse.",
+      "text_markdown": "That was faster than any horse.",
+      "tts": {
+        "text": "That was faster than any horse.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The First Steam Train",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The age of the train had begun.",
+      "text_markdown": "The age of the train had begun.",
+      "tts": {
+        "text": "The age of the train had begun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Chapter 2 — The Iron Road Spreads",
+      "text_markdown": "Chapter 2 — The Iron Road Spreads"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After the Rocket, railways spread quickly.",
+      "text_markdown": "After the Rocket, railways spread quickly.",
+      "tts": {
+        "text": "After the Rocket, railways spread quickly.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Britain laid thousands of miles of track.",
+      "text_markdown": "Britain laid thousands of miles of track.",
+      "tts": {
+        "text": "Britain laid thousands of miles of track.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Then the rest of the world followed.",
+      "text_markdown": "Then the rest of the world followed.",
+      "tts": {
+        "text": "Then the rest of the world followed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1830, the first big American railway opened.",
+      "text_markdown": "In 1830, the first big American railway opened.",
+      "tts": {
+        "text": "In eighteen thirty, the first big American railway opened.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was called the Baltimore and Ohio.",
+      "text_markdown": "It was called the Baltimore and Ohio.",
+      "tts": {
+        "text": "It was called the Baltimore and Ohio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It connected the city of Baltimore to the Ohio River.",
+      "text_markdown": "It connected the city of Baltimore to the Ohio River.",
+      "tts": {
+        "text": "It connected the city of Baltimore to the Ohio River.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In France, the first railway opened in 1832.",
+      "text_markdown": "In France, the first railway opened in 1832.",
+      "tts": {
+        "text": "In France, the first railway opened in eighteen thirty two.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It carried coal, like the British line.",
+      "text_markdown": "It carried coal, like the British line.",
+      "tts": {
+        "text": "It carried coal, like the British line.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Germany, the first long railway opened in 1839.",
+      "text_markdown": "In Germany, the first long railway opened in 1839.",
+      "tts": {
+        "text": "In Germany, the first long railway opened in eighteen thirty nine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It ran between two cities, Leipzig and Dresden.",
+      "text_markdown": "It ran between two cities, Leipzig and Dresden.",
+      "tts": {
+        "text": "It ran between two cities, Leipzig and Dresden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Russia built its first railway in 1837.",
+      "text_markdown": "Russia built its first railway in 1837.",
+      "tts": {
+        "text": "Russia built its first railway in eighteen thirty seven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The line ran from Saint Petersburg to a town nearby.",
+      "text_markdown": "The line ran from Saint Petersburg to a town nearby.",
+      "tts": {
+        "text": "The line ran from Saint Petersburg to a town nearby.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Building a railway was hard work.",
+      "text_markdown": "Building a railway was hard work.",
+      "tts": {
+        "text": "Building a railway was hard work.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Men dug tunnels through mountains.",
+      "text_markdown": "Men dug tunnels through mountains.",
+      "tts": {
+        "text": "Men dug tunnels through mountains.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They built bridges over rivers.",
+      "text_markdown": "They built bridges over rivers.",
+      "tts": {
+        "text": "They built bridges over rivers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They laid every rail by hand.",
+      "text_markdown": "They laid every rail by hand.",
+      "tts": {
+        "text": "They laid every rail by hand.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Towns grew along the lines.",
+      "text_markdown": "Towns grew along the lines.",
+      "tts": {
+        "text": "Towns grew along the lines.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A small village with a station could become a city.",
+      "text_markdown": "A small village with a station could become a city.",
+      "tts": {
+        "text": "A small village with a station could become a city.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The train brought people.",
+      "text_markdown": "The train brought people.",
+      "tts": {
+        "text": "The train brought people.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The train brought goods.",
+      "text_markdown": "The train brought goods.",
+      "tts": {
+        "text": "The train brought goods.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Iron Road Spreads",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The train brought the world a little closer.",
+      "text_markdown": "The train brought the world a little closer.",
+      "tts": {
+        "text": "The train brought the world a little closer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Chapter 3 — The Great Lines",
+      "text_markdown": "Chapter 3 — The Great Lines"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some railways are short.",
+      "text_markdown": "Some railways are short.",
+      "tts": {
+        "text": "Some railways are short.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Some are very long.",
+      "text_markdown": "Some are very long.",
+      "tts": {
+        "text": "Some are very long.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The longest lines crossed whole continents.",
+      "text_markdown": "The longest lines crossed whole continents.",
+      "tts": {
+        "text": "The longest lines crossed whole continents.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the United States, two companies built a railway across the country.",
+      "text_markdown": "In the United States, two companies built a railway across the country.",
+      "tts": {
+        "text": "In the United States, two companies built a railway across the country.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "One started in California and worked east.",
+      "text_markdown": "One started in California and worked east.",
+      "tts": {
+        "text": "One started in California and worked east.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The other started in Nebraska and worked west.",
+      "text_markdown": "The other started in Nebraska and worked west.",
+      "tts": {
+        "text": "The other started in Nebraska and worked west.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They met at a place called Promontory Summit, in Utah.",
+      "text_markdown": "They met at a place called Promontory Summit, in Utah.",
+      "tts": {
+        "text": "They met at a place called Promontory Summit, in Utah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This was in the year 1869.",
+      "text_markdown": "This was in the year 1869.",
+      "tts": {
+        "text": "This was in the year eighteen sixty nine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The last spike was made of gold.",
+      "text_markdown": "The last spike was made of gold.",
+      "tts": {
+        "text": "The last spike was made of gold.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "People called it the Golden Spike.",
+      "text_markdown": "People called it the Golden Spike.",
+      "tts": {
+        "text": "People called it the Golden Spike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The line was called the Transcontinental Railroad.",
+      "text_markdown": "The line was called the Transcontinental Railroad.",
+      "tts": {
+        "text": "The line was called the Transcontinental Railroad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Now you could ride a train from one ocean to the other in about a week.",
+      "text_markdown": "Now you could ride a train from one ocean to the other in about a week.",
+      "tts": {
+        "text": "Now you could ride a train from one ocean to the other in about a week.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Russia built an even longer line.",
+      "text_markdown": "Russia built an even longer line.",
+      "tts": {
+        "text": "Russia built an even longer line.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is called the Trans Siberian Railway.",
+      "text_markdown": "It is called the Trans Siberian Railway.",
+      "tts": {
+        "text": "It is called the Trans Siberian Railway.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It runs from Moscow in the west to Vladivostok in the east.",
+      "text_markdown": "It runs from Moscow in the west to Vladivostok in the east.",
+      "tts": {
+        "text": "It runs from Moscow in the west to Vladivostok in the east.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The line was finished in 1916.",
+      "text_markdown": "The line was finished in 1916.",
+      "tts": {
+        "text": "The line was finished in nineteen sixteen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "It is more than nine thousand kilometers long.",
+      "text_markdown": "It is more than nine thousand kilometers long.",
+      "tts": {
+        "text": "It is more than nine thousand kilometers long.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "A full trip takes about seven days.",
+      "text_markdown": "A full trip takes about seven days.",
+      "tts": {
+        "text": "A full trip takes about seven days.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — The Great Lines",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "It is still the longest railway in the world.",
+      "text_markdown": "It is still the longest railway in the world.",
+      "tts": {
+        "text": "It is still the longest railway in the world.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Chapter 4 — Steam, Diesel, Electric",
+      "text_markdown": "Chapter 4 — Steam, Diesel, Electric"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For about a hundred years, almost every train was a steam train.",
+      "text_markdown": "For about a hundred years, almost every train was a steam train.",
+      "tts": {
+        "text": "For about a hundred years, almost every train was a steam train.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Steam locomotives were big and loud.",
+      "text_markdown": "Steam locomotives were big and loud.",
+      "tts": {
+        "text": "Steam locomotives were big and loud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They burned coal.",
+      "text_markdown": "They burned coal.",
+      "tts": {
+        "text": "They burned coal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They sent thick smoke into the sky.",
+      "text_markdown": "They sent thick smoke into the sky.",
+      "tts": {
+        "text": "They sent thick smoke into the sky.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then came the diesel locomotive.",
+      "text_markdown": "Then came the diesel locomotive.",
+      "tts": {
+        "text": "Then came the diesel locomotive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A diesel engine burns oil instead of coal.",
+      "text_markdown": "A diesel engine burns oil instead of coal.",
+      "tts": {
+        "text": "A diesel engine burns oil instead of coal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It is smaller and cleaner.",
+      "text_markdown": "It is smaller and cleaner.",
+      "tts": {
+        "text": "It is smaller and cleaner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It does not need a fire and a tank of water.",
+      "text_markdown": "It does not need a fire and a tank of water.",
+      "tts": {
+        "text": "It does not need a fire and a tank of water.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diesel trains became common in the 1940s and 1950s.",
+      "text_markdown": "Diesel trains became common in the 1940s and 1950s.",
+      "tts": {
+        "text": "Diesel trains became common in the nineteen forties and nineteen fifties.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Slowly, the great steam locomotives were retired.",
+      "text_markdown": "Slowly, the great steam locomotives were retired.",
+      "tts": {
+        "text": "Slowly, the great steam locomotives were retired.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A few are still kept in museums and tourist lines.",
+      "text_markdown": "A few are still kept in museums and tourist lines.",
+      "tts": {
+        "text": "A few are still kept in museums and tourist lines.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The next step was the electric train.",
+      "text_markdown": "The next step was the electric train.",
+      "tts": {
+        "text": "The next step was the electric train.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "An electric train has no engine that burns fuel.",
+      "text_markdown": "An electric train has no engine that burns fuel.",
+      "tts": {
+        "text": "An electric train has no engine that burns fuel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It takes power from a wire above the track or from a third rail beside the track.",
+      "text_markdown": "It takes power from a wire above the track or from a third rail beside the track.",
+      "tts": {
+        "text": "It takes power from a wire above the track or from a third rail beside the track.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Electric trains are quiet and very clean.",
+      "text_markdown": "Electric trains are quiet and very clean.",
+      "tts": {
+        "text": "Electric trains are quiet and very clean.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They are also very strong.",
+      "text_markdown": "They are also very strong.",
+      "tts": {
+        "text": "They are also very strong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Most trains in cities and most fast trains today are electric.",
+      "text_markdown": "Most trains in cities and most fast trains today are electric.",
+      "tts": {
+        "text": "Most trains in cities and most fast trains today are electric.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Steam, diesel, electric.",
+      "text_markdown": "Steam, diesel, electric.",
+      "tts": {
+        "text": "Steam, diesel, electric.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Steam, Diesel, Electric",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Three engines, three eras.",
+      "text_markdown": "Three engines, three eras.",
+      "tts": {
+        "text": "Three engines, three eras.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "text_markdown": "Chapter 5 — Bullet Trains and the Race for Speed"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1964, Japan opened a brand new railway.",
+      "text_markdown": "In 1964, Japan opened a brand new railway.",
+      "tts": {
+        "text": "In nineteen sixty four, Japan opened a brand new railway.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It ran from Tokyo to Osaka.",
+      "text_markdown": "It ran from Tokyo to Osaka.",
+      "tts": {
+        "text": "It ran from Tokyo to Osaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The trains looked like long white bullets.",
+      "text_markdown": "The trains looked like long white bullets.",
+      "tts": {
+        "text": "The trains looked like long white bullets.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "People called them bullet trains.",
+      "text_markdown": "People called them bullet trains.",
+      "tts": {
+        "text": "People called them bullet trains.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The Japanese name is Shinkansen.",
+      "text_markdown": "The Japanese name is Shinkansen.",
+      "tts": {
+        "text": "The Japanese name is Shinkansen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first bullet trains went 130 miles per hour.",
+      "text_markdown": "The first bullet trains went 130 miles per hour.",
+      "tts": {
+        "text": "The first bullet trains went one hundred thirty miles per hour.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "That was very fast for a train in 1964.",
+      "text_markdown": "That was very fast for a train in 1964.",
+      "tts": {
+        "text": "That was very fast for a train in nineteen sixty four.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The line opened just in time for the Tokyo Olympic Games.",
+      "text_markdown": "The line opened just in time for the Tokyo Olympic Games.",
+      "tts": {
+        "text": "The line opened just in time for the Tokyo Olympic Games.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Other countries followed.",
+      "text_markdown": "Other countries followed.",
+      "tts": {
+        "text": "Other countries followed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "France opened its high speed line in 1981.",
+      "text_markdown": "France opened its high speed line in 1981.",
+      "tts": {
+        "text": "France opened its high speed line in nineteen eighty one.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The trains are called the TGV.",
+      "text_markdown": "The trains are called the TGV.",
+      "tts": {
+        "text": "The trains are called the T G V.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Germany followed with the ICE.",
+      "text_markdown": "Germany followed with the ICE.",
+      "tts": {
+        "text": "Germany followed with the I C E.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Italy, Spain, and Korea built their own high speed lines.",
+      "text_markdown": "Italy, Spain, and Korea built their own high speed lines.",
+      "tts": {
+        "text": "Italy, Spain, and Korea built their own high speed lines.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "China was last to start, but it built fast.",
+      "text_markdown": "China was last to start, but it built fast.",
+      "tts": {
+        "text": "China was last to start, but it built fast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Today, China has the largest high speed network in the world.",
+      "text_markdown": "Today, China has the largest high speed network in the world.",
+      "tts": {
+        "text": "Today, China has the largest high speed network in the world.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "There are tens of thousands of kilometers of track.",
+      "text_markdown": "There are tens of thousands of kilometers of track.",
+      "tts": {
+        "text": "There are tens of thousands of kilometers of track.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern bullet trains can cruise at more than 200 miles per hour.",
+      "text_markdown": "Modern bullet trains can cruise at more than 200 miles per hour.",
+      "tts": {
+        "text": "Modern bullet trains can cruise at more than two hundred miles per hour.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They are smooth, quiet, and almost always on time.",
+      "text_markdown": "They are smooth, quiet, and almost always on time.",
+      "tts": {
+        "text": "They are smooth, quiet, and almost always on time.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Bullet Trains and the Race for Speed",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "For many trips, they are faster than flying.",
+      "text_markdown": "For many trips, they are faster than flying.",
+      "tts": {
+        "text": "For many trips, they are faster than flying.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Chapter 6 — Many Kinds of Trains",
+      "text_markdown": "Chapter 6 — Many Kinds of Trains"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Not all trains are the same.",
+      "text_markdown": "Not all trains are the same.",
+      "tts": {
+        "text": "Not all trains are the same.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "There are many kinds.",
+      "text_markdown": "There are many kinds.",
+      "tts": {
+        "text": "There are many kinds.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A passenger train carries people.",
+      "text_markdown": "A passenger train carries people.",
+      "tts": {
+        "text": "A passenger train carries people.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It has seats, windows, and sometimes a dining car or a sleeping car.",
+      "text_markdown": "It has seats, windows, and sometimes a dining car or a sleeping car.",
+      "tts": {
+        "text": "It has seats, windows, and sometimes a dining car or a sleeping car.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A freight train carries goods.",
+      "text_markdown": "A freight train carries goods.",
+      "tts": {
+        "text": "A freight train carries goods.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The cars are called wagons.",
+      "text_markdown": "The cars are called wagons.",
+      "tts": {
+        "text": "The cars are called wagons.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Some carry grain.",
+      "text_markdown": "Some carry grain.",
+      "tts": {
+        "text": "Some carry grain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Some carry oil.",
+      "text_markdown": "Some carry oil.",
+      "tts": {
+        "text": "Some carry oil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Some carry whole shipping containers stacked two high.",
+      "text_markdown": "Some carry whole shipping containers stacked two high.",
+      "tts": {
+        "text": "Some carry whole shipping containers stacked two high.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A subway is an underground train in a city.",
+      "text_markdown": "A subway is an underground train in a city.",
+      "tts": {
+        "text": "A subway is an underground train in a city.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The first subway opened in London in 1863.",
+      "text_markdown": "The first subway opened in London in 1863.",
+      "tts": {
+        "text": "The first subway opened in London in eighteen sixty three.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Today, big cities have huge subway networks under their streets.",
+      "text_markdown": "Today, big cities have huge subway networks under their streets.",
+      "tts": {
+        "text": "Today, big cities have huge subway networks under their streets.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A tram or light rail is a small train that runs on city streets.",
+      "text_markdown": "A tram or light rail is a small train that runs on city streets.",
+      "tts": {
+        "text": "A tram or light rail is a small train that runs on city streets.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It often shares the road with cars and buses.",
+      "text_markdown": "It often shares the road with cars and buses.",
+      "tts": {
+        "text": "It often shares the road with cars and buses.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A mountain train climbs up steep hills.",
+      "text_markdown": "A mountain train climbs up steep hills.",
+      "tts": {
+        "text": "A mountain train climbs up steep hills.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Some have a special toothed rail down the middle, called a cog.",
+      "text_markdown": "Some have a special toothed rail down the middle, called a cog.",
+      "tts": {
+        "text": "Some have a special toothed rail down the middle, called a cog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The locomotive grips the cog to go up and to come down safely.",
+      "text_markdown": "The locomotive grips the cog to go up and to come down safely.",
+      "tts": {
+        "text": "The locomotive grips the cog to go up and to come down safely.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some trains are also tourist trains.",
+      "text_markdown": "Some trains are also tourist trains.",
+      "tts": {
+        "text": "Some trains are also tourist trains.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — Many Kinds of Trains",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They run through forests and mountains, just for the view.",
+      "text_markdown": "They run through forests and mountains, just for the view.",
+      "tts": {
+        "text": "They run through forests and mountains, just for the view.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Chapter 7 — The Future on the Rails",
+      "text_markdown": "Chapter 7 — The Future on the Rails"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The story of the train is not over.",
+      "text_markdown": "The story of the train is not over.",
+      "tts": {
+        "text": "The story of the train is not over.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "New kinds of trains are being built right now.",
+      "text_markdown": "New kinds of trains are being built right now.",
+      "tts": {
+        "text": "New kinds of trains are being built right now.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The most amazing is the maglev.",
+      "text_markdown": "The most amazing is the maglev.",
+      "tts": {
+        "text": "The most amazing is the maglev.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The word maglev is short for magnetic levitation.",
+      "text_markdown": "The word maglev is short for magnetic levitation.",
+      "tts": {
+        "text": "The word maglev is short for magnetic levitation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A maglev train does not touch its track.",
+      "text_markdown": "A maglev train does not touch its track.",
+      "tts": {
+        "text": "A maglev train does not touch its track.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It floats on a cushion of magnets.",
+      "text_markdown": "It floats on a cushion of magnets.",
+      "tts": {
+        "text": "It floats on a cushion of magnets.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "There are no wheels turning.",
+      "text_markdown": "There are no wheels turning.",
+      "tts": {
+        "text": "There are no wheels turning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "There is no friction.",
+      "text_markdown": "There is no friction.",
+      "tts": {
+        "text": "There is no friction.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 2004, a maglev line opened in Shanghai, China.",
+      "text_markdown": "In 2004, a maglev line opened in Shanghai, China.",
+      "tts": {
+        "text": "In twenty oh four, a maglev line opened in Shanghai, China.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The train can reach more than 250 miles per hour.",
+      "text_markdown": "The train can reach more than 250 miles per hour.",
+      "tts": {
+        "text": "The train can reach more than two hundred fifty miles per hour.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In Japan, a test maglev train has gone faster than 370 miles per hour.",
+      "text_markdown": "In Japan, a test maglev train has gone faster than 370 miles per hour.",
+      "tts": {
+        "text": "In Japan, a test maglev train has gone faster than three hundred seventy miles per hour.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Other engineers are working on the hydrogen train.",
+      "text_markdown": "Other engineers are working on the hydrogen train.",
+      "tts": {
+        "text": "Other engineers are working on the hydrogen train.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A hydrogen train makes electricity from a small fuel cell.",
+      "text_markdown": "A hydrogen train makes electricity from a small fuel cell.",
+      "tts": {
+        "text": "A hydrogen train makes electricity from a small fuel cell.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The only thing that comes out of the engine is water vapor.",
+      "text_markdown": "The only thing that comes out of the engine is water vapor.",
+      "tts": {
+        "text": "The only thing that comes out of the engine is water vapor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No smoke.",
+      "text_markdown": "No smoke.",
+      "tts": {
+        "text": "No smoke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "No coal.",
+      "text_markdown": "No coal.",
+      "tts": {
+        "text": "No coal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The first hydrogen trains began service in Germany in 2018.",
+      "text_markdown": "The first hydrogen trains began service in Germany in 2018.",
+      "tts": {
+        "text": "The first hydrogen trains began service in Germany in twenty eighteen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trains are very old.",
+      "text_markdown": "Trains are very old.",
+      "tts": {
+        "text": "Trains are very old.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They are also very new.",
+      "text_markdown": "They are also very new.",
+      "tts": {
+        "text": "They are also very new.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Future on the Rails",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Two hundred years after the Rocket, the rails are still the future.",
+      "text_markdown": "Two hundred years after the Rocket, the rails are still the future.",
+      "tts": {
+        "text": "Two hundred years after the Rocket, the rails are still the future.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "The Iron Road Goes On",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Iron Road Goes On",
+      "text_markdown": "The Iron Road Goes On"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "The Iron Road Goes On",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "From the Rocket to the maglev, the train has carried the world forward for almost two hundred years.",
+      "text_markdown": "From the Rocket to the maglev, the train has carried the world forward for almost two hundred years.",
+      "tts": {
+        "text": "From the Rocket to the maglev, the train has carried the world forward for almost two hundred years.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "The Iron Road Goes On",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "New lines are being laid right now, in deserts, in mountains, and under cities.",
+      "text_markdown": "New lines are being laid right now, in deserts, in mountains, and under cities.",
+      "tts": {
+        "text": "New lines are being laid right now, in deserts, in mountains, and under cities.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "The Iron Road Goes On",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The next station is always somewhere ahead.",
+      "text_markdown": "The next station is always somewhere ahead.",
+      "tts": {
+        "text": "The next station is always somewhere ahead.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

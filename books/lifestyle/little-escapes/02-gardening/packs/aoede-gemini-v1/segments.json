@@ -1,0 +1,5711 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 359,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Hook",
+      "text_markdown": "The Hook"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There is a moment, the first warm morning of the year, when the soil smells different.",
+      "text_markdown": "There is a moment, the first warm morning of the year, when the soil smells different.",
+      "tts": {
+        "text": "There is a moment, the first warm morning of the year, when the soil smells different.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You step outside in old shoes, with a cup of something warm in your hand, and the air has changed.",
+      "text_markdown": "You step outside in old shoes, with a cup of something warm in your hand, and the air has changed.",
+      "tts": {
+        "text": "You step outside in old shoes, with a cup of something warm in your hand, and the air has changed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It is sweet and dark and a little wet.",
+      "text_markdown": "It is sweet and dark and a little wet.",
+      "tts": {
+        "text": "It is sweet and dark and a little wet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Your shoulders drop without you noticing.",
+      "text_markdown": "Your shoulders drop without you noticing.",
+      "tts": {
+        "text": "Your shoulders drop without you noticing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You are home, in a way you forgot you were missing.",
+      "text_markdown": "You are home, in a way you forgot you were missing.",
+      "tts": {
+        "text": "You are home, in a way you forgot you were missing.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People ask me why I garden.",
+      "text_markdown": "People ask me why I garden.",
+      "tts": {
+        "text": "People ask me why I garden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They expect me to say it is the vegetables, or the flowers, or the saving of money.",
+      "text_markdown": "They expect me to say it is the vegetables, or the flowers, or the saving of money.",
+      "tts": {
+        "text": "They expect me to say it is the vegetables, or the flowers, or the saving of money.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It is none of those.",
+      "text_markdown": "It is none of those.",
+      "tts": {
+        "text": "It is none of those.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The vegetables are a happy bonus.",
+      "text_markdown": "The vegetables are a happy bonus.",
+      "tts": {
+        "text": "The vegetables are a happy bonus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The flowers are a gift.",
+      "text_markdown": "The flowers are a gift.",
+      "tts": {
+        "text": "The flowers are a gift.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The money, honestly, you do not save.",
+      "text_markdown": "The money, honestly, you do not save.",
+      "tts": {
+        "text": "The money, honestly, you do not save.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "What I am chasing is the slowness.",
+      "text_markdown": "What I am chasing is the slowness.",
+      "tts": {
+        "text": "What I am chasing is the slowness.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A garden moves at its own pace, and that pace is not yours.",
+      "text_markdown": "A garden moves at its own pace, and that pace is not yours.",
+      "tts": {
+        "text": "A garden moves at its own pace, and that pace is not yours.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You can stand over a seed all afternoon, and it will not sprout faster.",
+      "text_markdown": "You can stand over a seed all afternoon, and it will not sprout faster.",
+      "tts": {
+        "text": "You can stand over a seed all afternoon, and it will not sprout faster.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You learn, very gently, to stop hurrying.",
+      "text_markdown": "You learn, very gently, to stop hurrying.",
+      "tts": {
+        "text": "You learn, very gently, to stop hurrying.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Most of life pulls you forward.",
+      "text_markdown": "Most of life pulls you forward.",
+      "tts": {
+        "text": "Most of life pulls you forward.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The garden asks you to wait, and to look, and to wait a little more.",
+      "text_markdown": "The garden asks you to wait, and to look, and to wait a little more.",
+      "tts": {
+        "text": "The garden asks you to wait, and to look, and to wait a little more.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gardeners are not patient by nature.",
+      "text_markdown": "Gardeners are not patient by nature.",
+      "tts": {
+        "text": "Gardeners are not patient by nature.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Most of us were anxious people who found a quiet teacher.",
+      "text_markdown": "Most of us were anxious people who found a quiet teacher.",
+      "tts": {
+        "text": "Most of us were anxious people who found a quiet teacher.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "We dig in the dirt the way other people sit in temples.",
+      "text_markdown": "We dig in the dirt the way other people sit in temples.",
+      "tts": {
+        "text": "We dig in the dirt the way other people sit in temples.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Something in the chest unclenches.",
+      "text_markdown": "Something in the chest unclenches.",
+      "tts": {
+        "text": "Something in the chest unclenches.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "And every season, the lesson comes back around.",
+      "text_markdown": "And every season, the lesson comes back around.",
+      "tts": {
+        "text": "And every season, the lesson comes back around.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first time I grew a tomato from seed, I cried at the kitchen sink.",
+      "text_markdown": "The first time I grew a tomato from seed, I cried at the kitchen sink.",
+      "tts": {
+        "text": "The first time I grew a tomato from seed, I cried at the kitchen sink.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I did not expect to.",
+      "text_markdown": "I did not expect to.",
+      "tts": {
+        "text": "I did not expect to.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A grown adult, holding a single warm red fruit in two hands, weeping over it like a small miracle.",
+      "text_markdown": "A grown adult, holding a single warm red fruit in two hands, weeping over it like a small miracle.",
+      "tts": {
+        "text": "A grown adult, holding a single warm red fruit in two hands, weeping over it like a small miracle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "My partner laughed gently and kissed the top of my head.",
+      "text_markdown": "My partner laughed gently and kissed the top of my head.",
+      "tts": {
+        "text": "My partner laughed gently and kissed the top of my head.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "They had seen it coming.",
+      "text_markdown": "They had seen it coming.",
+      "tts": {
+        "text": "They had seen it coming.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "That was the moment I knew I was a gardener for life.",
+      "text_markdown": "That was the moment I knew I was a gardener for life.",
+      "tts": {
+        "text": "That was the moment I knew I was a gardener for life.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gardening is not about being good with plants.",
+      "text_markdown": "Gardening is not about being good with plants.",
+      "tts": {
+        "text": "Gardening is not about being good with plants.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is about finding the one place where time goes soft.",
+      "text_markdown": "It is about finding the one place where time goes soft.",
+      "tts": {
+        "text": "It is about finding the one place where time goes soft.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "For some people, that place is a long bath.",
+      "text_markdown": "For some people, that place is a long bath.",
+      "tts": {
+        "text": "For some people, that place is a long bath.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "For some, it is a fishing pier at dawn.",
+      "text_markdown": "For some, it is a fishing pier at dawn.",
+      "tts": {
+        "text": "For some, it is a fishing pier at dawn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "For some, it is a kitchen, or a bicycle, or a quiet church on a Tuesday.",
+      "text_markdown": "For some, it is a kitchen, or a bicycle, or a quiet church on a Tuesday.",
+      "tts": {
+        "text": "For some, it is a kitchen, or a bicycle, or a quiet church on a Tuesday.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "For me, it is a patch of dirt the size of a kitchen table.",
+      "text_markdown": "For me, it is a patch of dirt the size of a kitchen table.",
+      "tts": {
+        "text": "For me, it is a patch of dirt the size of a kitchen table.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "And a small green thing pushing up through it.",
+      "text_markdown": "And a small green thing pushing up through it.",
+      "tts": {
+        "text": "And a small green thing pushing up through it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The pull, once you feel it, is hard to explain to a friend at dinner.",
+      "text_markdown": "The pull, once you feel it, is hard to explain to a friend at dinner.",
+      "tts": {
+        "text": "The pull, once you feel it, is hard to explain to a friend at dinner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You will try, and they will smile, and you will give up.",
+      "text_markdown": "You will try, and they will smile, and you will give up.",
+      "tts": {
+        "text": "You will try, and they will smile, and you will give up.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "That is fine.",
+      "text_markdown": "That is fine.",
+      "tts": {
+        "text": "That is fine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You did not start gardening to win an argument.",
+      "text_markdown": "You did not start gardening to win an argument.",
+      "tts": {
+        "text": "You did not start gardening to win an argument.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You started because, the first time you pressed a seed into damp soil, something in you said, oh, there you are.",
+      "text_markdown": "You started because, the first time you pressed a seed into damp soil, something in you said, oh, there you are.",
+      "tts": {
+        "text": "You started because, the first time you pressed a seed into damp soil, something in you said, oh, there you are.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Have you ever stood in a yard and felt your hand reach toward a leaf, just to touch it?",
+      "text_markdown": "Have you ever stood in a yard and felt your hand reach toward a leaf, just to touch it?",
+      "tts": {
+        "text": "Have you ever stood in a yard and felt your hand reach toward a leaf, just to touch it?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "If you have, you already know what I am talking about.",
+      "text_markdown": "If you have, you already know what I am talking about.",
+      "tts": {
+        "text": "If you have, you already know what I am talking about.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gardening is what happens when you stop pretending you do not reach.",
+      "text_markdown": "Gardening is what happens when you stop pretending you do not reach.",
+      "tts": {
+        "text": "Gardening is what happens when you stop pretending you do not reach.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You kneel down, on purpose, and put your hands into the place your body has been quietly asking about.",
+      "text_markdown": "You kneel down, on purpose, and put your hands into the place your body has been quietly asking about.",
+      "tts": {
+        "text": "You kneel down, on purpose, and put your hands into the place your body has been quietly asking about.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "And then, very slowly, you learn that the work was never the work.",
+      "text_markdown": "And then, very slowly, you learn that the work was never the work.",
+      "tts": {
+        "text": "And then, very slowly, you learn that the work was never the work.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The work was the calm.",
+      "text_markdown": "The work was the calm.",
+      "tts": {
+        "text": "The work was the calm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Once you start, the rushing leaves you.",
+      "text_markdown": "Once you start, the rushing leaves you.",
+      "tts": {
+        "text": "Once you start, the rushing leaves you.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "What is left is something almost like prayer.",
+      "text_markdown": "What is left is something almost like prayer.",
+      "tts": {
+        "text": "What is left is something almost like prayer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The light moves across the beds.",
+      "text_markdown": "The light moves across the beds.",
+      "tts": {
+        "text": "The light moves across the beds.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The day, for once, is the right size.",
+      "text_markdown": "The day, for once, is the right size.",
+      "tts": {
+        "text": "The day, for once, is the right size.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is what I would tell you, if you asked me on a long walk.",
+      "text_markdown": "That is what I would tell you, if you asked me on a long walk.",
+      "tts": {
+        "text": "That is what I would tell you, if you asked me on a long walk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Why does a busy and reasonable person spend their weekends pulling weeds?",
+      "text_markdown": "Why does a busy and reasonable person spend their weekends pulling weeds?",
+      "tts": {
+        "text": "Why does a busy and reasonable person spend their weekends pulling weeds?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I would tell you it is the quietest thing I do.",
+      "text_markdown": "I would tell you it is the quietest thing I do.",
+      "tts": {
+        "text": "I would tell you it is the quietest thing I do.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "And I would mean it.",
+      "text_markdown": "And I would mean it.",
+      "tts": {
+        "text": "And I would mean it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "First Time",
+      "text_markdown": "First Time"
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Let me put you in the garden.",
+      "text_markdown": "Let me put you in the garden.",
+      "tts": {
+        "text": "Let me put you in the garden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You are kneeling on a folded towel beside a small patch of soil.",
+      "text_markdown": "You are kneeling on a folded towel beside a small patch of soil.",
+      "tts": {
+        "text": "You are kneeling on a folded towel beside a small patch of soil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The sun is gentle on the back of your neck.",
+      "text_markdown": "The sun is gentle on the back of your neck.",
+      "tts": {
+        "text": "The sun is gentle on the back of your neck.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A friend has handed you a paper packet of seeds and a little trowel.",
+      "text_markdown": "A friend has handed you a paper packet of seeds and a little trowel.",
+      "tts": {
+        "text": "A friend has handed you a paper packet of seeds and a little trowel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They give you the patient smile of someone who knows what is about to happen.",
+      "text_markdown": "They give you the patient smile of someone who knows what is about to happen.",
+      "tts": {
+        "text": "They give you the patient smile of someone who knows what is about to happen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Your friend tells you, calmly, that you cannot really do this wrong.",
+      "text_markdown": "Your friend tells you, calmly, that you cannot really do this wrong.",
+      "tts": {
+        "text": "Your friend tells you, calmly, that you cannot really do this wrong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You nod.",
+      "text_markdown": "You nod.",
+      "tts": {
+        "text": "You nod.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You have nodded so many times in the last hour that your neck is starting to hurt.",
+      "text_markdown": "You have nodded so many times in the last hour that your neck is starting to hurt.",
+      "tts": {
+        "text": "You have nodded so many times in the last hour that your neck is starting to hurt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then you push the trowel into the earth.",
+      "text_markdown": "Then you push the trowel into the earth.",
+      "tts": {
+        "text": "Then you push the trowel into the earth.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The soil parts like soft cake.",
+      "text_markdown": "The soil parts like soft cake.",
+      "tts": {
+        "text": "The soil parts like soft cake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is darker than you expected, and cooler, and it smells like rain and old leaves and something almost like bread.",
+      "text_markdown": "It is darker than you expected, and cooler, and it smells like rain and old leaves and something almost like bread.",
+      "tts": {
+        "text": "It is darker than you expected, and cooler, and it smells like rain and old leaves and something almost like bread.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You crumble a clod between your fingers.",
+      "text_markdown": "You crumble a clod between your fingers.",
+      "tts": {
+        "text": "You crumble a clod between your fingers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tiny roots, a pale pebble, the curl of a worm moving away from the light.",
+      "text_markdown": "Tiny roots, a pale pebble, the curl of a worm moving away from the light.",
+      "tts": {
+        "text": "Tiny roots, a pale pebble, the curl of a worm moving away from the light.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You hold a piece of the world in your hand, and the world keeps moving inside it.",
+      "text_markdown": "You hold a piece of the world in your hand, and the world keeps moving inside it.",
+      "tts": {
+        "text": "You hold a piece of the world in your hand, and the world keeps moving inside it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Your friend nods.",
+      "text_markdown": "Your friend nods.",
+      "tts": {
+        "text": "Your friend nods.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They say, a little deeper.",
+      "text_markdown": "They say, a little deeper.",
+      "tts": {
+        "text": "They say, a little deeper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They say, now the seed.",
+      "text_markdown": "They say, now the seed.",
+      "tts": {
+        "text": "They say, now the seed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You tip the packet, and one small dark grain rolls into your palm.",
+      "text_markdown": "You tip the packet, and one small dark grain rolls into your palm.",
+      "tts": {
+        "text": "You tip the packet, and one small dark grain rolls into your palm.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is so small.",
+      "text_markdown": "It is so small.",
+      "tts": {
+        "text": "It is so small.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "That is the first surprise.",
+      "text_markdown": "That is the first surprise.",
+      "tts": {
+        "text": "That is the first surprise.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The thing that will become a whole plant, with leaves and stems and fruit, fits under your thumbnail with room to spare.",
+      "text_markdown": "The thing that will become a whole plant, with leaves and stems and fruit, fits under your thumbnail with room to spare.",
+      "tts": {
+        "text": "The thing that will become a whole plant, with leaves and stems and fruit, fits under your thumbnail with room to spare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You stare at it for a second longer than you mean to.",
+      "text_markdown": "You stare at it for a second longer than you mean to.",
+      "tts": {
+        "text": "You stare at it for a second longer than you mean to.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then you press it down into the dark.",
+      "text_markdown": "Then you press it down into the dark.",
+      "tts": {
+        "text": "Then you press it down into the dark.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You cover it.",
+      "text_markdown": "You cover it.",
+      "tts": {
+        "text": "You cover it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You pat the soil flat, like tucking in a child.",
+      "text_markdown": "You pat the soil flat, like tucking in a child.",
+      "tts": {
+        "text": "You pat the soil flat, like tucking in a child.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You sit back on your heels.",
+      "text_markdown": "You sit back on your heels.",
+      "tts": {
+        "text": "You sit back on your heels.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Your friend hands you a watering can.",
+      "text_markdown": "Your friend hands you a watering can.",
+      "tts": {
+        "text": "Your friend hands you a watering can.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You pour gently, and the water sinks straight in.",
+      "text_markdown": "You pour gently, and the water sinks straight in.",
+      "tts": {
+        "text": "You pour gently, and the water sinks straight in.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "The patch goes the color of strong coffee.",
+      "text_markdown": "The patch goes the color of strong coffee.",
+      "tts": {
+        "text": "The patch goes the color of strong coffee.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You look around.",
+      "text_markdown": "You look around.",
+      "tts": {
+        "text": "You look around.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The garden is still very quiet, but it is different now.",
+      "text_markdown": "The garden is still very quiet, but it is different now.",
+      "tts": {
+        "text": "The garden is still very quiet, but it is different now.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You have done a small thing that the soil will remember.",
+      "text_markdown": "You have done a small thing that the soil will remember.",
+      "tts": {
+        "text": "You have done a small thing that the soil will remember.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You are a gardener.",
+      "text_markdown": "You are a gardener.",
+      "tts": {
+        "text": "You are a gardener.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Not in your head.",
+      "text_markdown": "Not in your head.",
+      "tts": {
+        "text": "Not in your head.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You, your hands, your knees, your slow breath, are a gardener.",
+      "text_markdown": "You, your hands, your knees, your slow breath, are a gardener.",
+      "tts": {
+        "text": "You, your hands, your knees, your slow breath, are a gardener.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Your friend taps you on the shoulder.",
+      "text_markdown": "Your friend taps you on the shoulder.",
+      "tts": {
+        "text": "Your friend taps you on the shoulder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They walk you to the next row.",
+      "text_markdown": "They walk you to the next row.",
+      "tts": {
+        "text": "They walk you to the next row.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You plant another seed.",
+      "text_markdown": "You plant another seed.",
+      "tts": {
+        "text": "You plant another seed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "And another.",
+      "text_markdown": "And another.",
+      "tts": {
+        "text": "And another.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The work has a rhythm now, like rocking a baby, like kneading bread.",
+      "text_markdown": "The work has a rhythm now, like rocking a baby, like kneading bread.",
+      "tts": {
+        "text": "The work has a rhythm now, like rocking a baby, like kneading bread.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The sun moves a little.",
+      "text_markdown": "The sun moves a little.",
+      "tts": {
+        "text": "The sun moves a little.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Your back warms.",
+      "text_markdown": "Your back warms.",
+      "tts": {
+        "text": "Your back warms.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "A bird lands on a fence and watches without comment.",
+      "text_markdown": "A bird lands on a fence and watches without comment.",
+      "tts": {
+        "text": "A bird lands on a fence and watches without comment.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The world goes quiet.",
+      "text_markdown": "The world goes quiet.",
+      "tts": {
+        "text": "The world goes quiet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The phone is gone.",
+      "text_markdown": "The phone is gone.",
+      "tts": {
+        "text": "The phone is gone.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The list is gone.",
+      "text_markdown": "The list is gone.",
+      "tts": {
+        "text": "The list is gone.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The hurry is gone.",
+      "text_markdown": "The hurry is gone.",
+      "tts": {
+        "text": "The hurry is gone.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You are kneeling now, with dirt under your nails.",
+      "text_markdown": "You are kneeling now, with dirt under your nails.",
+      "tts": {
+        "text": "You are kneeling now, with dirt under your nails.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "In front of you, a small flat bed of brown earth holds a dozen invisible promises.",
+      "text_markdown": "In front of you, a small flat bed of brown earth holds a dozen invisible promises.",
+      "tts": {
+        "text": "In front of you, a small flat bed of brown earth holds a dozen invisible promises.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The garden is suddenly very, very still.",
+      "text_markdown": "The garden is suddenly very, very still.",
+      "tts": {
+        "text": "The garden is suddenly very, very still.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "You can hear the bees in the next yard.",
+      "text_markdown": "You can hear the bees in the next yard.",
+      "tts": {
+        "text": "You can hear the bees in the next yard.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "You can hear yourself breathing.",
+      "text_markdown": "You can hear yourself breathing.",
+      "tts": {
+        "text": "You can hear yourself breathing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Your friend laughs softly and asks how you are doing.",
+      "text_markdown": "Your friend laughs softly and asks how you are doing.",
+      "tts": {
+        "text": "Your friend laughs softly and asks how you are doing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "You cannot answer for a moment, because you are smiling, or near tears, or both.",
+      "text_markdown": "You cannot answer for a moment, because you are smiling, or near tears, or both.",
+      "tts": {
+        "text": "You cannot answer for a moment, because you are smiling, or near tears, or both.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first watering takes about five minutes.",
+      "text_markdown": "The first watering takes about five minutes.",
+      "tts": {
+        "text": "The first watering takes about five minutes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They are five of the most peaceful minutes of your day.",
+      "text_markdown": "They are five of the most peaceful minutes of your day.",
+      "tts": {
+        "text": "They are five of the most peaceful minutes of your day.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you stand up, your knees crack and your back complains, and you brush the soil off your hands and stop.",
+      "text_markdown": "When you stand up, your knees crack and your back complains, and you brush the soil off your hands and stop.",
+      "tts": {
+        "text": "When you stand up, your knees crack and your back complains, and you brush the soil off your hands and stop.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The grass is real again.",
+      "text_markdown": "The grass is real again.",
+      "tts": {
+        "text": "The grass is real again.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The afternoon is solid again.",
+      "text_markdown": "The afternoon is solid again.",
+      "tts": {
+        "text": "The afternoon is solid again.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You turn around and look back at the patch of bare earth.",
+      "text_markdown": "You turn around and look back at the patch of bare earth.",
+      "tts": {
+        "text": "You turn around and look back at the patch of bare earth.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "And you understand, for the first time, what your friend has been trying to tell you all these years.",
+      "text_markdown": "And you understand, for the first time, what your friend has been trying to tell you all these years.",
+      "tts": {
+        "text": "And you understand, for the first time, what your friend has been trying to tell you all these years.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Getting Started",
+      "text_markdown": "Getting Started"
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Here is the honest truth about beginning a garden.",
+      "text_markdown": "Here is the honest truth about beginning a garden.",
+      "tts": {
+        "text": "Here is the honest truth about beginning a garden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You need less than the magazines tell you, and more than your friends warn you about.",
+      "text_markdown": "You need less than the magazines tell you, and more than your friends warn you about.",
+      "tts": {
+        "text": "You need less than the magazines tell you, and more than your friends warn you about.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The hard part is not the money.",
+      "text_markdown": "The hard part is not the money.",
+      "tts": {
+        "text": "The hard part is not the money.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The hard part is the waiting.",
+      "text_markdown": "The hard part is the waiting.",
+      "tts": {
+        "text": "The hard part is the waiting.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Start small.",
+      "text_markdown": "Start small.",
+      "tts": {
+        "text": "Start small.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Smaller than you think.",
+      "text_markdown": "Smaller than you think.",
+      "tts": {
+        "text": "Smaller than you think.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A single pot on a sunny windowsill is a real garden.",
+      "text_markdown": "A single pot on a sunny windowsill is a real garden.",
+      "tts": {
+        "text": "A single pot on a sunny windowsill is a real garden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A wooden box on a balcony is a real garden.",
+      "text_markdown": "A wooden box on a balcony is a real garden.",
+      "tts": {
+        "text": "A wooden box on a balcony is a real garden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A patch of yard the size of a bath towel is a real garden.",
+      "text_markdown": "A patch of yard the size of a bath towel is a real garden.",
+      "tts": {
+        "text": "A patch of yard the size of a bath towel is a real garden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "People fail because they begin with a kingdom and find they cannot rule it.",
+      "text_markdown": "People fail because they begin with a kingdom and find they cannot rule it.",
+      "tts": {
+        "text": "People fail because they begin with a kingdom and find they cannot rule it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Begin with a corner you can love.",
+      "text_markdown": "Begin with a corner you can love.",
+      "tts": {
+        "text": "Begin with a corner you can love.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You will need a few things.",
+      "text_markdown": "You will need a few things.",
+      "tts": {
+        "text": "You will need a few things.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A trowel, a watering can, gloves if your hands are tender, and good soil.",
+      "text_markdown": "A trowel, a watering can, gloves if your hands are tender, and good soil.",
+      "tts": {
+        "text": "A trowel, a watering can, gloves if your hands are tender, and good soil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Of these, the soil matters most.",
+      "text_markdown": "Of these, the soil matters most.",
+      "tts": {
+        "text": "Of these, the soil matters most.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cheap soil grows cheap plants.",
+      "text_markdown": "Cheap soil grows cheap plants.",
+      "tts": {
+        "text": "Cheap soil grows cheap plants.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Spend a little extra on a bag that smells rich and dark when you open it.",
+      "text_markdown": "Spend a little extra on a bag that smells rich and dark when you open it.",
+      "tts": {
+        "text": "Spend a little extra on a bag that smells rich and dark when you open it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You will also need light.",
+      "text_markdown": "You will also need light.",
+      "tts": {
+        "text": "You will also need light.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walk around your space at three different hours, morning, noon, and late afternoon.",
+      "text_markdown": "Walk around your space at three different hours, morning, noon, and late afternoon.",
+      "tts": {
+        "text": "Walk around your space at three different hours, morning, noon, and late afternoon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Notice where the sun lingers.",
+      "text_markdown": "Notice where the sun lingers.",
+      "tts": {
+        "text": "Notice where the sun lingers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Plants do not negotiate about light.",
+      "text_markdown": "Plants do not negotiate about light.",
+      "tts": {
+        "text": "Plants do not negotiate about light.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "If a corner is shady, choose plants that love shade.",
+      "text_markdown": "If a corner is shady, choose plants that love shade.",
+      "tts": {
+        "text": "If a corner is shady, choose plants that love shade.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "If a wall is hot, choose plants that love heat.",
+      "text_markdown": "If a wall is hot, choose plants that love heat.",
+      "tts": {
+        "text": "If a wall is hot, choose plants that love heat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "The garden is a conversation with the sun.",
+      "text_markdown": "The garden is a conversation with the sun.",
+      "tts": {
+        "text": "The garden is a conversation with the sun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Water is the next teacher.",
+      "text_markdown": "Water is the next teacher.",
+      "tts": {
+        "text": "Water is the next teacher.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "New gardeners almost always drown their plants.",
+      "text_markdown": "New gardeners almost always drown their plants.",
+      "tts": {
+        "text": "New gardeners almost always drown their plants.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The instinct, when something looks sad, is to pour.",
+      "text_markdown": "The instinct, when something looks sad, is to pour.",
+      "tts": {
+        "text": "The instinct, when something looks sad, is to pour.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The truth is that most sad plants are sad because they are sitting in cold wet feet.",
+      "text_markdown": "The truth is that most sad plants are sad because they are sitting in cold wet feet.",
+      "tts": {
+        "text": "The truth is that most sad plants are sad because they are sitting in cold wet feet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Push a finger into the soil before you water.",
+      "text_markdown": "Push a finger into the soil before you water.",
+      "tts": {
+        "text": "Push a finger into the soil before you water.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "If it is damp at the second knuckle, walk away.",
+      "text_markdown": "If it is damp at the second knuckle, walk away.",
+      "tts": {
+        "text": "If it is damp at the second knuckle, walk away.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Choose easy things first.",
+      "text_markdown": "Choose easy things first.",
+      "tts": {
+        "text": "Choose easy things first.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lettuce and herbs and beans forgive almost everything.",
+      "text_markdown": "Lettuce and herbs and beans forgive almost everything.",
+      "tts": {
+        "text": "Lettuce and herbs and beans forgive almost everything.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tomatoes will reward your attention generously, but they will also test it.",
+      "text_markdown": "Tomatoes will reward your attention generously, but they will also test it.",
+      "tts": {
+        "text": "Tomatoes will reward your attention generously, but they will also test it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Leave the rare and difficult plants for next year.",
+      "text_markdown": "Leave the rare and difficult plants for next year.",
+      "tts": {
+        "text": "Leave the rare and difficult plants for next year.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "This first season is for confidence, not for showing off.",
+      "text_markdown": "This first season is for confidence, not for showing off.",
+      "tts": {
+        "text": "This first season is for confidence, not for showing off.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Read the back of a seed packet, slowly.",
+      "text_markdown": "Read the back of a seed packet, slowly.",
+      "tts": {
+        "text": "Read the back of a seed packet, slowly.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It will tell you almost everything you need.",
+      "text_markdown": "It will tell you almost everything you need.",
+      "tts": {
+        "text": "It will tell you almost everything you need.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "When to plant.",
+      "text_markdown": "When to plant.",
+      "tts": {
+        "text": "When to plant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "How deep.",
+      "text_markdown": "How deep.",
+      "tts": {
+        "text": "How deep.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "How far apart.",
+      "text_markdown": "How far apart.",
+      "tts": {
+        "text": "How far apart.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Seed packets are written by people who have made every mistake on your behalf.",
+      "text_markdown": "Seed packets are written by people who have made every mistake on your behalf.",
+      "tts": {
+        "text": "Seed packets are written by people who have made every mistake on your behalf.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Trust them, mostly.",
+      "text_markdown": "Trust them, mostly.",
+      "tts": {
+        "text": "Trust them, mostly.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Expect failure.",
+      "text_markdown": "Expect failure.",
+      "tts": {
+        "text": "Expect failure.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Half the things you plant in your first year will not work.",
+      "text_markdown": "Half the things you plant in your first year will not work.",
+      "tts": {
+        "text": "Half the things you plant in your first year will not work.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A seedling will get nibbled in the night.",
+      "text_markdown": "A seedling will get nibbled in the night.",
+      "tts": {
+        "text": "A seedling will get nibbled in the night.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A pot will dry out on a hot day while you were at work.",
+      "text_markdown": "A pot will dry out on a hot day while you were at work.",
+      "tts": {
+        "text": "A pot will dry out on a hot day while you were at work.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A tomato will split for no reason you can name.",
+      "text_markdown": "A tomato will split for no reason you can name.",
+      "tts": {
+        "text": "A tomato will split for no reason you can name.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "None of this is your fault.",
+      "text_markdown": "None of this is your fault.",
+      "tts": {
+        "text": "None of this is your fault.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "All of it is the fee for joining the club.",
+      "text_markdown": "All of it is the fee for joining the club.",
+      "tts": {
+        "text": "All of it is the fee for joining the club.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The entry barrier, honestly, is your patience.",
+      "text_markdown": "The entry barrier, honestly, is your patience.",
+      "tts": {
+        "text": "The entry barrier, honestly, is your patience.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You can buy a pot in an afternoon.",
+      "text_markdown": "You can buy a pot in an afternoon.",
+      "tts": {
+        "text": "You can buy a pot in an afternoon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You cannot buy a third week.",
+      "text_markdown": "You cannot buy a third week.",
+      "tts": {
+        "text": "You cannot buy a third week.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The lettuce takes as long as the lettuce takes.",
+      "text_markdown": "The lettuce takes as long as the lettuce takes.",
+      "tts": {
+        "text": "The lettuce takes as long as the lettuce takes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "There is no faster lettuce.",
+      "text_markdown": "There is no faster lettuce.",
+      "tts": {
+        "text": "There is no faster lettuce.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "This is the real test, and most people pass it without realizing they were being tested.",
+      "text_markdown": "This is the real test, and most people pass it without realizing they were being tested.",
+      "tts": {
+        "text": "This is the real test, and most people pass it without realizing they were being tested.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You do not need a teacher, but a kind neighbor helps.",
+      "text_markdown": "You do not need a teacher, but a kind neighbor helps.",
+      "tts": {
+        "text": "You do not need a teacher, but a kind neighbor helps.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Find the person on your street with the messiest, happiest garden.",
+      "text_markdown": "Find the person on your street with the messiest, happiest garden.",
+      "tts": {
+        "text": "Find the person on your street with the messiest, happiest garden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They will be flattered if you ask one good question.",
+      "text_markdown": "They will be flattered if you ask one good question.",
+      "tts": {
+        "text": "They will be flattered if you ask one good question.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Most of what gardeners know was given to them by another gardener over a fence.",
+      "text_markdown": "Most of what gardeners know was given to them by another gardener over a fence.",
+      "tts": {
+        "text": "Most of what gardeners know was given to them by another gardener over a fence.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You are now part of that long chain.",
+      "text_markdown": "You are now part of that long chain.",
+      "tts": {
+        "text": "You are now part of that long chain.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Buy a notebook.",
+      "text_markdown": "Buy a notebook.",
+      "tts": {
+        "text": "Buy a notebook.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Write the date you planted.",
+      "text_markdown": "Write the date you planted.",
+      "tts": {
+        "text": "Write the date you planted.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Write what came up and what did not.",
+      "text_markdown": "Write what came up and what did not.",
+      "tts": {
+        "text": "Write what came up and what did not.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Next year, you will read it and laugh at how much you learned without noticing.",
+      "text_markdown": "Next year, you will read it and laugh at how much you learned without noticing.",
+      "tts": {
+        "text": "Next year, you will read it and laugh at how much you learned without noticing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "That notebook is the second most useful tool you will own.",
+      "text_markdown": "That notebook is the second most useful tool you will own.",
+      "tts": {
+        "text": "That notebook is the second most useful tool you will own.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p40",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The first is your own slowed-down breath.",
+      "text_markdown": "The first is your own slowed-down breath.",
+      "tts": {
+        "text": "The first is your own slowed-down breath.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Craft",
+      "text_markdown": "The Craft"
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After a few seasons, something shifts.",
+      "text_markdown": "After a few seasons, something shifts.",
+      "tts": {
+        "text": "After a few seasons, something shifts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You stop thinking about plants as items on a list, and you start thinking about them as neighbors.",
+      "text_markdown": "You stop thinking about plants as items on a list, and you start thinking about them as neighbors.",
+      "tts": {
+        "text": "You stop thinking about plants as items on a list, and you start thinking about them as neighbors.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You know which ones get along.",
+      "text_markdown": "You know which ones get along.",
+      "tts": {
+        "text": "You know which ones get along.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You know which ones argue.",
+      "text_markdown": "You know which ones argue.",
+      "tts": {
+        "text": "You know which ones argue.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You know which ones quietly run the place.",
+      "text_markdown": "You know which ones quietly run the place.",
+      "tts": {
+        "text": "You know which ones quietly run the place.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first thing experienced gardeners notice is the soil.",
+      "text_markdown": "The first thing experienced gardeners notice is the soil.",
+      "tts": {
+        "text": "The first thing experienced gardeners notice is the soil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Beginners look at the leaves.",
+      "text_markdown": "Beginners look at the leaves.",
+      "tts": {
+        "text": "Beginners look at the leaves.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Insiders look at the dirt.",
+      "text_markdown": "Insiders look at the dirt.",
+      "tts": {
+        "text": "Insiders look at the dirt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They pick up a handful, smell it, crumble it, watch how it falls.",
+      "text_markdown": "They pick up a handful, smell it, crumble it, watch how it falls.",
+      "tts": {
+        "text": "They pick up a handful, smell it, crumble it, watch how it falls.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Good soil is alive.",
+      "text_markdown": "Good soil is alive.",
+      "tts": {
+        "text": "Good soil is alive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "It is dark and crumbly and full of small white roots and tiny moving things.",
+      "text_markdown": "It is dark and crumbly and full of small white roots and tiny moving things.",
+      "tts": {
+        "text": "It is dark and crumbly and full of small white roots and tiny moving things.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Bad soil is pale and tight and silent.",
+      "text_markdown": "Bad soil is pale and tight and silent.",
+      "tts": {
+        "text": "Bad soil is pale and tight and silent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Most of the work, in a mature garden, is feeding the soil, not the plant.",
+      "text_markdown": "Most of the work, in a mature garden, is feeding the soil, not the plant.",
+      "tts": {
+        "text": "Most of the work, in a mature garden, is feeding the soil, not the plant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Compost, fallen leaves, old coffee grounds, the rinds of fruit.",
+      "text_markdown": "Compost, fallen leaves, old coffee grounds, the rinds of fruit.",
+      "tts": {
+        "text": "Compost, fallen leaves, old coffee grounds, the rinds of fruit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "You are running a slow kitchen for billions of guests you will never see.",
+      "text_markdown": "You are running a slow kitchen for billions of guests you will never see.",
+      "tts": {
+        "text": "You are running a slow kitchen for billions of guests you will never see.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The second thing is timing.",
+      "text_markdown": "The second thing is timing.",
+      "tts": {
+        "text": "The second thing is timing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "New gardeners plant when the calendar says to plant.",
+      "text_markdown": "New gardeners plant when the calendar says to plant.",
+      "tts": {
+        "text": "New gardeners plant when the calendar says to plant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Old gardeners plant when the soil says to plant.",
+      "text_markdown": "Old gardeners plant when the soil says to plant.",
+      "tts": {
+        "text": "Old gardeners plant when the soil says to plant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "There is a feeling in the ground, a softness and a warmth, that arrives at slightly different moments each year.",
+      "text_markdown": "There is a feeling in the ground, a softness and a warmth, that arrives at slightly different moments each year.",
+      "tts": {
+        "text": "There is a feeling in the ground, a softness and a warmth, that arrives at slightly different moments each year.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You learn to wait for it.",
+      "text_markdown": "You learn to wait for it.",
+      "tts": {
+        "text": "You learn to wait for it.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You learn that a seed pushed into cold earth will sulk, and a seed pushed into ready earth will leap.",
+      "text_markdown": "You learn that a seed pushed into cold earth will sulk, and a seed pushed into ready earth will leap.",
+      "tts": {
+        "text": "You learn that a seed pushed into cold earth will sulk, and a seed pushed into ready earth will leap.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The third thing is rhythm.",
+      "text_markdown": "The third thing is rhythm.",
+      "tts": {
+        "text": "The third thing is rhythm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A garden has a daily rhythm and a yearly rhythm, and the craft is learning to dance with both.",
+      "text_markdown": "A garden has a daily rhythm and a yearly rhythm, and the craft is learning to dance with both.",
+      "tts": {
+        "text": "A garden has a daily rhythm and a yearly rhythm, and the craft is learning to dance with both.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You walk the beds in the morning with a cup of something warm.",
+      "text_markdown": "You walk the beds in the morning with a cup of something warm.",
+      "tts": {
+        "text": "You walk the beds in the morning with a cup of something warm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You notice what changed in the night.",
+      "text_markdown": "You notice what changed in the night.",
+      "tts": {
+        "text": "You notice what changed in the night.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A bean has climbed another finger.",
+      "text_markdown": "A bean has climbed another finger.",
+      "tts": {
+        "text": "A bean has climbed another finger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "A cucumber has set fruit.",
+      "text_markdown": "A cucumber has set fruit.",
+      "tts": {
+        "text": "A cucumber has set fruit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "You do almost nothing on these walks, and that almost-nothing is the most important hour of the day.",
+      "text_markdown": "You do almost nothing on these walks, and that almost-nothing is the most important hour of the day.",
+      "tts": {
+        "text": "You do almost nothing on these walks, and that almost-nothing is the most important hour of the day.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You also learn to do less.",
+      "text_markdown": "You also learn to do less.",
+      "tts": {
+        "text": "You also learn to do less.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The biggest mistake gardeners make, after their second or third season, is over-helping.",
+      "text_markdown": "The biggest mistake gardeners make, after their second or third season, is over-helping.",
+      "tts": {
+        "text": "The biggest mistake gardeners make, after their second or third season, is over-helping.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They prune what should be left alone.",
+      "text_markdown": "They prune what should be left alone.",
+      "tts": {
+        "text": "They prune what should be left alone.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They water what is already moist.",
+      "text_markdown": "They water what is already moist.",
+      "tts": {
+        "text": "They water what is already moist.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "They dig where they should leave the roots in peace.",
+      "text_markdown": "They dig where they should leave the roots in peace.",
+      "tts": {
+        "text": "They dig where they should leave the roots in peace.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The craft, slowly, becomes the art of standing still and letting the plants do their work.",
+      "text_markdown": "The craft, slowly, becomes the art of standing still and letting the plants do their work.",
+      "tts": {
+        "text": "The craft, slowly, becomes the art of standing still and letting the plants do their work.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Your job is to set the table.",
+      "text_markdown": "Your job is to set the table.",
+      "tts": {
+        "text": "Your job is to set the table.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Their job is to eat.",
+      "text_markdown": "Their job is to eat.",
+      "tts": {
+        "text": "Their job is to eat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You start to read the plants like faces.",
+      "text_markdown": "You start to read the plants like faces.",
+      "tts": {
+        "text": "You start to read the plants like faces.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A drooping leaf in the afternoon is not always thirst.",
+      "text_markdown": "A drooping leaf in the afternoon is not always thirst.",
+      "tts": {
+        "text": "A drooping leaf in the afternoon is not always thirst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Many plants droop on purpose to save water, and perk up at sunset.",
+      "text_markdown": "Many plants droop on purpose to save water, and perk up at sunset.",
+      "tts": {
+        "text": "Many plants droop on purpose to save water, and perk up at sunset.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A yellow lower leaf is often just an old leaf saying goodbye.",
+      "text_markdown": "A yellow lower leaf is often just an old leaf saying goodbye.",
+      "tts": {
+        "text": "A yellow lower leaf is often just an old leaf saying goodbye.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You learn the difference between worry and weather.",
+      "text_markdown": "You learn the difference between worry and weather.",
+      "tts": {
+        "text": "You learn the difference between worry and weather.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You learn the bugs, too.",
+      "text_markdown": "You learn the bugs, too.",
+      "tts": {
+        "text": "You learn the bugs, too.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Most are friends.",
+      "text_markdown": "Most are friends.",
+      "tts": {
+        "text": "Most are friends.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The ones that look terrifying are often eating the ones eating your plants.",
+      "text_markdown": "The ones that look terrifying are often eating the ones eating your plants.",
+      "tts": {
+        "text": "The ones that look terrifying are often eating the ones eating your plants.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You stop reaching for sprays.",
+      "text_markdown": "You stop reaching for sprays.",
+      "tts": {
+        "text": "You stop reaching for sprays.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You start reaching for a small bowl of soapy water for the few real villains.",
+      "text_markdown": "You start reaching for a small bowl of soapy water for the few real villains.",
+      "tts": {
+        "text": "You start reaching for a small bowl of soapy water for the few real villains.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The garden balances itself if you let it.",
+      "text_markdown": "The garden balances itself if you let it.",
+      "tts": {
+        "text": "The garden balances itself if you let it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You start saving seeds.",
+      "text_markdown": "You start saving seeds.",
+      "tts": {
+        "text": "You start saving seeds.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The plant that did best, the tomato that was sweetest, the bean that climbed highest.",
+      "text_markdown": "The plant that did best, the tomato that was sweetest, the bean that climbed highest.",
+      "tts": {
+        "text": "The plant that did best, the tomato that was sweetest, the bean that climbed highest.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You let one go to seed at the end of the season.",
+      "text_markdown": "You let one go to seed at the end of the season.",
+      "tts": {
+        "text": "You let one go to seed at the end of the season.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You shake the dry pod into a paper envelope and write the date and the name.",
+      "text_markdown": "You shake the dry pod into a paper envelope and write the date and the name.",
+      "tts": {
+        "text": "You shake the dry pod into a paper envelope and write the date and the name.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Next year, you will plant a garden that knows your weather, your hand, your soil.",
+      "text_markdown": "Next year, you will plant a garden that knows your weather, your hand, your soil.",
+      "tts": {
+        "text": "Next year, you will plant a garden that knows your weather, your hand, your soil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "That is when you stop being a person with a hobby, and start being a person who is part of a place.",
+      "text_markdown": "That is when you stop being a person with a hobby, and start being a person who is part of a place.",
+      "tts": {
+        "text": "That is when you stop being a person with a hobby, and start being a person who is part of a place.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The deepest skill, in the end, is attention.",
+      "text_markdown": "The deepest skill, in the end, is attention.",
+      "tts": {
+        "text": "The deepest skill, in the end, is attention.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gardeners are people who learned to look slowly, and to keep looking, and to be changed by what they saw.",
+      "text_markdown": "Gardeners are people who learned to look slowly, and to keep looking, and to be changed by what they saw.",
+      "tts": {
+        "text": "Gardeners are people who learned to look slowly, and to keep looking, and to be changed by what they saw.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Moments",
+      "text_markdown": "Moments"
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Let me tell you three small stories.",
+      "text_markdown": "Let me tell you three small stories.",
+      "tts": {
+        "text": "Let me tell you three small stories.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Not the big ones.",
+      "text_markdown": "Not the big ones.",
+      "tts": {
+        "text": "Not the big ones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The small ones, which are the real ones.",
+      "text_markdown": "The small ones, which are the real ones.",
+      "tts": {
+        "text": "The small ones, which are the real ones.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first is about a single pea.",
+      "text_markdown": "The first is about a single pea.",
+      "tts": {
+        "text": "The first is about a single pea.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was my first spring with my own little plot.",
+      "text_markdown": "It was my first spring with my own little plot.",
+      "tts": {
+        "text": "It was my first spring with my own little plot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I had planted a row of peas because a friend told me peas were forgiving.",
+      "text_markdown": "I had planted a row of peas because a friend told me peas were forgiving.",
+      "tts": {
+        "text": "I had planted a row of peas because a friend told me peas were forgiving.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "For two weeks, nothing.",
+      "text_markdown": "For two weeks, nothing.",
+      "tts": {
+        "text": "For two weeks, nothing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "I checked every morning.",
+      "text_markdown": "I checked every morning.",
+      "tts": {
+        "text": "I checked every morning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "I stopped checking.",
+      "text_markdown": "I stopped checking.",
+      "tts": {
+        "text": "I stopped checking.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "I went away for a weekend, came home tired and a little sad, and walked out to the bed without expecting anything.",
+      "text_markdown": "I went away for a weekend, came home tired and a little sad, and walked out to the bed without expecting anything.",
+      "tts": {
+        "text": "I went away for a weekend, came home tired and a little sad, and walked out to the bed without expecting anything.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "There they were.",
+      "text_markdown": "There they were.",
+      "tts": {
+        "text": "There they were.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "A whole row of pale green hooks, lifting the soil like tiny shoulders.",
+      "text_markdown": "A whole row of pale green hooks, lifting the soil like tiny shoulders.",
+      "tts": {
+        "text": "A whole row of pale green hooks, lifting the soil like tiny shoulders.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "I sat down right there in the dirt, in my traveling clothes, and just looked at them.",
+      "text_markdown": "I sat down right there in the dirt, in my traveling clothes, and just looked at them.",
+      "tts": {
+        "text": "I sat down right there in the dirt, in my traveling clothes, and just looked at them.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "I have seen many things grow since.",
+      "text_markdown": "I have seen many things grow since.",
+      "tts": {
+        "text": "I have seen many things grow since.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Nothing has ever felt as much like magic as that first quiet line of peas.",
+      "text_markdown": "Nothing has ever felt as much like magic as that first quiet line of peas.",
+      "tts": {
+        "text": "Nothing has ever felt as much like magic as that first quiet line of peas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The second is about my grandmother.",
+      "text_markdown": "The second is about my grandmother.",
+      "tts": {
+        "text": "The second is about my grandmother.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "She was eighty when she taught me to deadhead her roses.",
+      "text_markdown": "She was eighty when she taught me to deadhead her roses.",
+      "tts": {
+        "text": "She was eighty when she taught me to deadhead her roses.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "She did not call it teaching.",
+      "text_markdown": "She did not call it teaching.",
+      "tts": {
+        "text": "She did not call it teaching.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "She handed me a small pair of scissors and stood beside me and told me where to cut.",
+      "text_markdown": "She handed me a small pair of scissors and stood beside me and told me where to cut.",
+      "tts": {
+        "text": "She handed me a small pair of scissors and stood beside me and told me where to cut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Right there, just above where the leaves come out in fives.",
+      "text_markdown": "Right there, just above where the leaves come out in fives.",
+      "tts": {
+        "text": "Right there, just above where the leaves come out in fives.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Yes, like that.",
+      "text_markdown": "Yes, like that.",
+      "tts": {
+        "text": "Yes, like that.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Good.",
+      "text_markdown": "Good.",
+      "tts": {
+        "text": "Good.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "We worked along the row together for an hour, slowly, without much talking.",
+      "text_markdown": "We worked along the row together for an hour, slowly, without much talking.",
+      "tts": {
+        "text": "We worked along the row together for an hour, slowly, without much talking.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "The bees moved between us.",
+      "text_markdown": "The bees moved between us.",
+      "tts": {
+        "text": "The bees moved between us.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "I remember the warmth of the sun on my arms and the quiet snip of the scissors.",
+      "text_markdown": "I remember the warmth of the sun on my arms and the quiet snip of the scissors.",
+      "tts": {
+        "text": "I remember the warmth of the sun on my arms and the quiet snip of the scissors.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "I remember the way she nodded once, when I got it right without being told.",
+      "text_markdown": "I remember the way she nodded once, when I got it right without being told.",
+      "tts": {
+        "text": "I remember the way she nodded once, when I got it right without being told.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "She has been gone for some time now.",
+      "text_markdown": "She has been gone for some time now.",
+      "tts": {
+        "text": "She has been gone for some time now.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Every time I cut a spent flower, she is there.",
+      "text_markdown": "Every time I cut a spent flower, she is there.",
+      "tts": {
+        "text": "Every time I cut a spent flower, she is there.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "The garden is full of people who taught us things.",
+      "text_markdown": "The garden is full of people who taught us things.",
+      "tts": {
+        "text": "The garden is full of people who taught us things.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 14,
+      "block_type": "text",
+      "text": "They never really leave it.",
+      "text_markdown": "They never really leave it.",
+      "tts": {
+        "text": "They never really leave it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The third is about a tomato in late summer.",
+      "text_markdown": "The third is about a tomato in late summer.",
+      "tts": {
+        "text": "The third is about a tomato in late summer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The vines were heavy and tired.",
+      "text_markdown": "The vines were heavy and tired.",
+      "tts": {
+        "text": "The vines were heavy and tired.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The leaves had started to yellow at the bottom.",
+      "text_markdown": "The leaves had started to yellow at the bottom.",
+      "tts": {
+        "text": "The leaves had started to yellow at the bottom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I went out at the end of a long, hard week, just to stand for a minute.",
+      "text_markdown": "I went out at the end of a long, hard week, just to stand for a minute.",
+      "tts": {
+        "text": "I went out at the end of a long, hard week, just to stand for a minute.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "I picked one tomato off the vine.",
+      "text_markdown": "I picked one tomato off the vine.",
+      "tts": {
+        "text": "I picked one tomato off the vine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Still warm from the sun.",
+      "text_markdown": "Still warm from the sun.",
+      "tts": {
+        "text": "Still warm from the sun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "I bit into it standing there, juice running down my wrist.",
+      "text_markdown": "I bit into it standing there, juice running down my wrist.",
+      "tts": {
+        "text": "I bit into it standing there, juice running down my wrist.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Salt on my tongue from sweat, the smell of the leaves on my hands.",
+      "text_markdown": "Salt on my tongue from sweat, the smell of the leaves on my hands.",
+      "tts": {
+        "text": "Salt on my tongue from sweat, the smell of the leaves on my hands.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "I did not think about anything.",
+      "text_markdown": "I did not think about anything.",
+      "tts": {
+        "text": "I did not think about anything.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "I did not need to.",
+      "text_markdown": "I did not need to.",
+      "tts": {
+        "text": "I did not need to.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "The whole long week stopped existing for the length of one tomato.",
+      "text_markdown": "The whole long week stopped existing for the length of one tomato.",
+      "tts": {
+        "text": "The whole long week stopped existing for the length of one tomato.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "I do not know how to explain what a sun-warm tomato tastes like in your own garden on your own quiet evening.",
+      "text_markdown": "I do not know how to explain what a sun-warm tomato tastes like in your own garden on your own quiet evening.",
+      "tts": {
+        "text": "I do not know how to explain what a sun-warm tomato tastes like in your own garden on your own quiet evening.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "You have to grow one.",
+      "text_markdown": "You have to grow one.",
+      "tts": {
+        "text": "You have to grow one.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "There is no shortcut.",
+      "text_markdown": "There is no shortcut.",
+      "tts": {
+        "text": "There is no shortcut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "These are the moments that bring people back.",
+      "text_markdown": "These are the moments that bring people back.",
+      "tts": {
+        "text": "These are the moments that bring people back.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Not the big harvest.",
+      "text_markdown": "Not the big harvest.",
+      "tts": {
+        "text": "Not the big harvest.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Not the photograph.",
+      "text_markdown": "Not the photograph.",
+      "tts": {
+        "text": "Not the photograph.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The small private ones that no one else will quite understand.",
+      "text_markdown": "The small private ones that no one else will quite understand.",
+      "tts": {
+        "text": "The small private ones that no one else will quite understand.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The first sprout.",
+      "text_markdown": "The first sprout.",
+      "tts": {
+        "text": "The first sprout.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The hand of a person you love beside yours in the dirt.",
+      "text_markdown": "The hand of a person you love beside yours in the dirt.",
+      "tts": {
+        "text": "The hand of a person you love beside yours in the dirt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "The taste of something you grew yourself, eaten where you grew it.",
+      "text_markdown": "The taste of something you grew yourself, eaten where you grew it.",
+      "tts": {
+        "text": "The taste of something you grew yourself, eaten where you grew it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You will have your own.",
+      "text_markdown": "You will have your own.",
+      "tts": {
+        "text": "You will have your own.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They will surprise you.",
+      "text_markdown": "They will surprise you.",
+      "tts": {
+        "text": "They will surprise you.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A bumblebee asleep in a squash flower at dawn.",
+      "text_markdown": "A bumblebee asleep in a squash flower at dawn.",
+      "tts": {
+        "text": "A bumblebee asleep in a squash flower at dawn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The sound of rain on dry leaves after a long week.",
+      "text_markdown": "The sound of rain on dry leaves after a long week.",
+      "tts": {
+        "text": "The sound of rain on dry leaves after a long week.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The day a child you love pulls up a carrot and laughs because it is real.",
+      "text_markdown": "The day a child you love pulls up a carrot and laughs because it is real.",
+      "tts": {
+        "text": "The day a child you love pulls up a carrot and laughs because it is real.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The first frost, and the way the garden becomes still and silver.",
+      "text_markdown": "The first frost, and the way the garden becomes still and silver.",
+      "tts": {
+        "text": "The first frost, and the way the garden becomes still and silver.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "These moments are not rewards for the work.",
+      "text_markdown": "These moments are not rewards for the work.",
+      "tts": {
+        "text": "These moments are not rewards for the work.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They are the work.",
+      "text_markdown": "They are the work.",
+      "tts": {
+        "text": "They are the work.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The weeding and the watering and the waiting are how you stay close enough to be there when the small thing happens.",
+      "text_markdown": "The weeding and the watering and the waiting are how you stay close enough to be there when the small thing happens.",
+      "tts": {
+        "text": "The weeding and the watering and the waiting are how you stay close enough to be there when the small thing happens.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "And the small thing always happens, if you keep showing up.",
+      "text_markdown": "And the small thing always happens, if you keep showing up.",
+      "tts": {
+        "text": "And the small thing always happens, if you keep showing up.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Why It Stays",
+      "text_markdown": "Why It Stays"
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People sometimes ask me, after a few years, whether I am tired of it yet.",
+      "text_markdown": "People sometimes ask me, after a few years, whether I am tired of it yet.",
+      "tts": {
+        "text": "People sometimes ask me, after a few years, whether I am tired of it yet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Whether the novelty has worn off.",
+      "text_markdown": "Whether the novelty has worn off.",
+      "tts": {
+        "text": "Whether the novelty has worn off.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Whether I am ready to move on to something new.",
+      "text_markdown": "Whether I am ready to move on to something new.",
+      "tts": {
+        "text": "Whether I am ready to move on to something new.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I always smile, because I understand the question, and because I know the answer surprises them.",
+      "text_markdown": "I always smile, because I understand the question, and because I know the answer surprises them.",
+      "tts": {
+        "text": "I always smile, because I understand the question, and because I know the answer surprises them.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gardening is not a phase, because a garden is not a project.",
+      "text_markdown": "Gardening is not a phase, because a garden is not a project.",
+      "tts": {
+        "text": "Gardening is not a phase, because a garden is not a project.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A project ends.",
+      "text_markdown": "A project ends.",
+      "tts": {
+        "text": "A project ends.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A garden does not.",
+      "text_markdown": "A garden does not.",
+      "tts": {
+        "text": "A garden does not.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-310",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Each year, the soil asks you to come back, and each year, you find you want to.",
+      "text_markdown": "Each year, the soil asks you to come back, and each year, you find you want to.",
+      "tts": {
+        "text": "Each year, the soil asks you to come back, and each year, you find you want to.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The seasons keep turning, and you turn with them.",
+      "text_markdown": "The seasons keep turning, and you turn with them.",
+      "tts": {
+        "text": "The seasons keep turning, and you turn with them.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You plant in the cool spring.",
+      "text_markdown": "You plant in the cool spring.",
+      "tts": {
+        "text": "You plant in the cool spring.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "You tend in the long summer.",
+      "text_markdown": "You tend in the long summer.",
+      "tts": {
+        "text": "You tend in the long summer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "You harvest in the slow fall, and you rest in the quiet winter.",
+      "text_markdown": "You harvest in the slow fall, and you rest in the quiet winter.",
+      "tts": {
+        "text": "You harvest in the slow fall, and you rest in the quiet winter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p61",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Then it begins again, and you are slightly different, and so is the garden.",
+      "text_markdown": "Then it begins again, and you are slightly different, and so is the garden.",
+      "tts": {
+        "text": "Then it begins again, and you are slightly different, and so is the garden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It stays because it teaches you, gently, the things you most need to learn.",
+      "text_markdown": "It stays because it teaches you, gently, the things you most need to learn.",
+      "tts": {
+        "text": "It stays because it teaches you, gently, the things you most need to learn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It teaches you that you are not in charge of everything.",
+      "text_markdown": "It teaches you that you are not in charge of everything.",
+      "tts": {
+        "text": "It teaches you that you are not in charge of everything.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The weather will do what it will do.",
+      "text_markdown": "The weather will do what it will do.",
+      "tts": {
+        "text": "The weather will do what it will do.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The frost will come when it comes.",
+      "text_markdown": "The frost will come when it comes.",
+      "tts": {
+        "text": "The frost will come when it comes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The pest will arrive on its own schedule.",
+      "text_markdown": "The pest will arrive on its own schedule.",
+      "tts": {
+        "text": "The pest will arrive on its own schedule.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You can be careful, and clever, and kind, and still lose the squash.",
+      "text_markdown": "You can be careful, and clever, and kind, and still lose the squash.",
+      "tts": {
+        "text": "You can be careful, and clever, and kind, and still lose the squash.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "The garden does not care about your plans.",
+      "text_markdown": "The garden does not care about your plans.",
+      "tts": {
+        "text": "The garden does not care about your plans.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p62",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "And somehow, the longer you garden, the more this becomes a comfort, not a frustration.",
+      "text_markdown": "And somehow, the longer you garden, the more this becomes a comfort, not a frustration.",
+      "tts": {
+        "text": "And somehow, the longer you garden, the more this becomes a comfort, not a frustration.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It stays because it gives you something to look forward to that is not on a screen.",
+      "text_markdown": "It stays because it gives you something to look forward to that is not on a screen.",
+      "tts": {
+        "text": "It stays because it gives you something to look forward to that is not on a screen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In the dead of winter, you sit at a kitchen table with a warm cup and a stack of seed packets.",
+      "text_markdown": "In the dead of winter, you sit at a kitchen table with a warm cup and a stack of seed packets.",
+      "tts": {
+        "text": "In the dead of winter, you sit at a kitchen table with a warm cup and a stack of seed packets.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "You plan.",
+      "text_markdown": "You plan.",
+      "tts": {
+        "text": "You plan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You imagine the beans climbing.",
+      "text_markdown": "You imagine the beans climbing.",
+      "tts": {
+        "text": "You imagine the beans climbing.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You imagine the basil dense and fragrant.",
+      "text_markdown": "You imagine the basil dense and fragrant.",
+      "tts": {
+        "text": "You imagine the basil dense and fragrant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "The hope alone is worth the price of the seeds.",
+      "text_markdown": "The hope alone is worth the price of the seeds.",
+      "tts": {
+        "text": "The hope alone is worth the price of the seeds.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It stays because it slows your thinking down to a speed your body actually likes.",
+      "text_markdown": "It stays because it slows your thinking down to a speed your body actually likes.",
+      "tts": {
+        "text": "It stays because it slows your thinking down to a speed your body actually likes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The mind, left alone with a row of weeds, sorts itself out.",
+      "text_markdown": "The mind, left alone with a row of weeds, sorts itself out.",
+      "tts": {
+        "text": "The mind, left alone with a row of weeds, sorts itself out.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Problems you carried into the garden walk out of you on their own.",
+      "text_markdown": "Problems you carried into the garden walk out of you on their own.",
+      "tts": {
+        "text": "Problems you carried into the garden walk out of you on their own.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "You did not solve them.",
+      "text_markdown": "You did not solve them.",
+      "tts": {
+        "text": "You did not solve them.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You just gave them somewhere quiet to sit.",
+      "text_markdown": "You just gave them somewhere quiet to sit.",
+      "tts": {
+        "text": "You just gave them somewhere quiet to sit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "By the time you wash your hands at the kitchen sink, half of them have wandered off without saying goodbye.",
+      "text_markdown": "By the time you wash your hands at the kitchen sink, half of them have wandered off without saying goodbye.",
+      "tts": {
+        "text": "By the time you wash your hands at the kitchen sink, half of them have wandered off without saying goodbye.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It stays because it connects you to people.",
+      "text_markdown": "It stays because it connects you to people.",
+      "tts": {
+        "text": "It stays because it connects you to people.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Other gardeners, anywhere, are immediately your friends.",
+      "text_markdown": "Other gardeners, anywhere, are immediately your friends.",
+      "tts": {
+        "text": "Other gardeners, anywhere, are immediately your friends.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A neighbor over a fence.",
+      "text_markdown": "A neighbor over a fence.",
+      "tts": {
+        "text": "A neighbor over a fence.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A stranger at a market with a tray of seedlings.",
+      "text_markdown": "A stranger at a market with a tray of seedlings.",
+      "tts": {
+        "text": "A stranger at a market with a tray of seedlings.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Gardening is one of the oldest conversations humans have.",
+      "text_markdown": "Gardening is one of the oldest conversations humans have.",
+      "tts": {
+        "text": "Gardening is one of the oldest conversations humans have.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "You have joined it, and you will never run out of people to talk with.",
+      "text_markdown": "You have joined it, and you will never run out of people to talk with.",
+      "tts": {
+        "text": "You have joined it, and you will never run out of people to talk with.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "And it stays because, year after year, it gives you back your sense of time.",
+      "text_markdown": "And it stays because, year after year, it gives you back your sense of time.",
+      "tts": {
+        "text": "And it stays because, year after year, it gives you back your sense of time.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A garden does not let you forget that life moves in seasons.",
+      "text_markdown": "A garden does not let you forget that life moves in seasons.",
+      "tts": {
+        "text": "A garden does not let you forget that life moves in seasons.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "There is a time for planting and a time for resting.",
+      "text_markdown": "There is a time for planting and a time for resting.",
+      "tts": {
+        "text": "There is a time for planting and a time for resting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "There is a time for tending and a time for letting go.",
+      "text_markdown": "There is a time for tending and a time for letting go.",
+      "tts": {
+        "text": "There is a time for tending and a time for letting go.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "You feel this in your hands, in your back, in your knees.",
+      "text_markdown": "You feel this in your hands, in your back, in your knees.",
+      "tts": {
+        "text": "You feel this in your hands, in your back, in your knees.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Your body knows the year because your garden made you live it.",
+      "text_markdown": "Your body knows the year because your garden made you live it.",
+      "tts": {
+        "text": "Your body knows the year because your garden made you live it.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Picture us on a slow walk in early spring.",
+      "text_markdown": "Picture us on a slow walk in early spring.",
+      "tts": {
+        "text": "Picture us on a slow walk in early spring.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You ask why I still kneel in the dirt after all this time.",
+      "text_markdown": "You ask why I still kneel in the dirt after all this time.",
+      "tts": {
+        "text": "You ask why I still kneel in the dirt after all this time.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I will give you my answer.",
+      "text_markdown": "I will give you my answer.",
+      "tts": {
+        "text": "I will give you my answer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The garden gave me a life that fits me. Slower.",
+      "text_markdown": "The garden gave me a life that fits me.",
+      "tts": {
+        "text": "The garden gave me a life that fits me. Slower.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Smaller.",
+      "text_markdown": "Smaller.",
+      "tts": {
+        "text": "Smaller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Greener.",
+      "text_markdown": "Greener.",
+      "tts": {
+        "text": "Greener.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Closer to the ground.",
+      "text_markdown": "Closer to the ground.",
+      "tts": {
+        "text": "Closer to the ground.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "And I would not trade it for anything the world is selling.",
+      "text_markdown": "And I would not trade it for anything the world is selling.",
+      "tts": {
+        "text": "And I would not trade it for anything the world is selling.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is why it stays.",
+      "text_markdown": "That is why it stays.",
+      "tts": {
+        "text": "That is why it stays.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Not because I love it more each year, although I do.",
+      "text_markdown": "Not because I love it more each year, although I do.",
+      "tts": {
+        "text": "Not because I love it more each year, although I do.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Because it loves me back, in its quiet way, every single season.",
+      "text_markdown": "Because it loves me back, in its quiet way, every single season.",
+      "tts": {
+        "text": "Because it loves me back, in its quiet way, every single season.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

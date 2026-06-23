@@ -1,0 +1,35 @@
+beatlounge-gm.sf2 — License & Attribution
+==========================================
+
+WHAT THIS IS
+  A compact General-MIDI SoundFont (SF2) shipped with the beatlounge Corpán
+  pack. It defines a preset for every GM melodic program (0..127), grouped into
+  the 16 standard families (Piano, Organ, Strings, Bass, Brass, ...), so a track
+  can be a real, named GM instrument addressed by program/bank.
+
+HOW IT WAS MADE — and why it is unambiguously redistributable
+  Every sample in this bank is SYNTHESIZED FROM MATH by the beatlounge build
+  itself (see src/instruments/gmSoundbank.ts). No third-party recordings or
+  samples of any kind are included, so there are no upstream sample-ownership or
+  redistribution questions. The SF2 container is written with spessasynth_core
+  (Apache-2.0), an authoring/synthesis library — none of its code or assets are
+  embedded in the .sf2 file, only the SF2 byte format it produces.
+
+LICENSE
+  CC0 1.0 Universal (Public Domain Dedication).
+  To the extent possible under law, the beatlounge authors have waived all
+  copyright and related or neighboring rights to beatlounge-gm.sf2. You may
+  copy, modify, distribute, and use it, including for commercial purposes, all
+  without asking permission.
+  Full text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+REGENERATING / REPLACING IT
+  Run the test that builds + proves it:
+      npx vitest run src/instruments/gmSoundbank.test.ts
+  which re-emits this file. To swap in a studio-grade bank instead, drop any
+  GM-compatible SF2/SF3 here under the same basename (beatlounge-gm.sf2) — the
+  engine code is identical. A well-known low-footprint option is "GeneralUser GS"
+  by S. Christian Collins (https://www.schristiancollins.com/generaluser); its
+  license permits private and commercial use and bundling, but it asks that you
+  not hotlink its download files, so it is NOT committed here — fetch/host it
+  yourself if you want it.

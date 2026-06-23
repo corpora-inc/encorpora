@@ -1,0 +1,332 @@
+/**
+ * beatlounge — fx-rack module styles (co-located; Vite bundles into app.css).
+ * Uses only --bl-* tokens. No edits to styles.css.
+ */
+
+/* ---- tile (project-wide effects summary) ---- */
+.bl-fxtile-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-fxtile-row {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-width: 0;
+}
+.bl-fxtile-track {
+  flex: 0 0 auto;
+  max-width: 38%;
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  letter-spacing: 0.04em;
+  color: var(--bl-text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-fxtile-chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s1);
+  align-content: flex-start;
+  min-width: 0;
+}
+.bl-fxtile-pill {
+  font: 600 var(--bl-fs-micro) / 1 var(--bl-font);
+  letter-spacing: 0.04em;
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  border-radius: var(--bl-radius-sm);
+  padding: 4px 9px;
+  white-space: nowrap;
+}
+.bl-fxtile-pill.is-off {
+  background: var(--bl-surface-2);
+  color: var(--bl-text-dim);
+}
+.bl-fxtile-pill.is-more {
+  background: transparent;
+  border: 1px solid var(--bl-border);
+  color: var(--bl-text-dim);
+}
+.bl-fxtile-empty {
+  font: var(--bl-fs-label) / 1.4 var(--bl-font);
+  color: var(--bl-text-dim);
+}
+.bl-fxtile-sends {
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+}
+
+/* ---- immersive rack ---- */
+.bl-fxrack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  padding: var(--bl-s4);
+  /* Fill the immersive sheet on BOTH axes (the sheet is a flex column). On a
+   * wide iPad the rack stretches edge-to-edge instead of a narrow column. */
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden auto;
+}
+/* Let the chain take the freed-up height so the track switcher reads as a
+ * calm header above it. */
+.bl-fxrack > .bl-fxchain {
+  flex: 1;
+}
+.bl-fxrack-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+}
+.bl-fxrack-tracks {
+  display: flex;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+  flex: 1;
+}
+/* The effect cards reflow into columns as the rack widens (iPad/desktop) so a
+ * short chain doesn't leave a tall empty column on the right; ONE column under
+ * ~340px (a card needs room for the XY pad + a row of knobs). align-content
+ * keeps the cards top-packed; the add button spans the full width below them. */
+.bl-fxrack-chain {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: var(--bl-s3);
+  align-content: start;
+}
+.bl-fxrack-chain > .bl-fxrack-add {
+  grid-column: 1 / -1;
+}
+
+/* ---- reusable chain wrapper (shared by the rack module + the Drums page) ---- */
+.bl-fxchain {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  min-width: 0;
+}
+.bl-fxchain-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bl-s2);
+}
+.bl-fxchain-count {
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+
+.bl-fxcard {
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  padding: var(--bl-s3);
+  transition: opacity var(--bl-dur) var(--bl-ease);
+}
+.bl-fxcard.is-bypassed {
+  opacity: 0.5;
+}
+.bl-fxcard-head {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  margin-bottom: var(--bl-s2);
+}
+.bl-fxcard-power {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--bl-text-dim);
+  background: transparent;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 0;
+}
+.bl-fxcard-power.is-on {
+  border-color: var(--bl-accent);
+  background: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
+.bl-fxcard-name {
+  font: 600 var(--bl-fs-body) / 1 var(--bl-font);
+  color: var(--bl-text);
+  flex: 1;
+}
+.bl-fxcard-actions {
+  display: flex;
+  gap: var(--bl-s1);
+}
+.bl-fxcard-params {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s3);
+  align-items: flex-start;
+}
+
+/* Filter X/Y control surface — a compact square that complements the knobs. */
+.bl-fxcard-xy {
+  display: flex;
+  margin-bottom: var(--bl-s3);
+}
+.bl-fxcard-xy .bl-xypad {
+  width: 168px;
+}
+
+.bl-iconbtn {
+  min-width: 32px;
+  height: 32px;
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  font: var(--bl-fs-body) / 1 var(--bl-font);
+  cursor: pointer;
+}
+.bl-iconbtn:hover {
+  border-color: var(--bl-accent);
+}
+.bl-iconbtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.bl-iconbtn.is-danger:hover {
+  border-color: var(--bl-error);
+  color: var(--bl-error);
+}
+
+/* ---- enum (filter type) ---- */
+.bl-fxenum {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+}
+.bl-fxenum-label {
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+  text-align: center;
+}
+.bl-fxenum-select {
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: var(--bl-s1) var(--bl-s2);
+  font: var(--bl-fs-label) / 1 var(--bl-font);
+  min-height: 32px;
+}
+
+/* ---- add menu ---- */
+.bl-fxrack-add {
+  display: flex;
+}
+.bl-fxrack-addbtn {
+  width: 100%;
+  border: 1px dashed var(--bl-border);
+  border-radius: var(--bl-radius);
+  background: transparent;
+  color: var(--bl-text-dim);
+  padding: var(--bl-s3);
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  cursor: pointer;
+  min-height: var(--bl-hit);
+}
+.bl-fxrack-addbtn:hover {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+}
+.bl-fxrack-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s2);
+  width: 100%;
+}
+
+/* ---- sends ---- */
+.bl-fxsends {
+  border-top: 1px solid var(--bl-border);
+  padding-top: var(--bl-s3);
+}
+.bl-fxsends-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--bl-s2);
+}
+.bl-fxsends-title {
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  color: var(--bl-text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.bl-fxsends-rows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s4);
+}
+.bl-fxsend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s1);
+}
+.bl-fxsend-name {
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+}
+
+/* ---- delay beat-sync presets (lock the time to the grid) ---- */
+.bl-fxsync {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  padding: var(--bl-s2) var(--bl-s3) 0;
+}
+.bl-fxsync-label {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+  flex: 0 0 auto;
+}
+.bl-fxsync-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bl-s1);
+}
+.bl-fxsync-chip {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  background: var(--bl-cell-off);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: 4px 7px;
+  min-height: 28px;
+  cursor: pointer;
+  transition: color var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-fxsync-chip:active {
+  transform: scale(0.94);
+}
+.bl-fxsync-chip.is-on {
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+  border-color: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
+/* Too long at the current tempo (would exceed the delay's maxDelay) — dimmed. */
+.bl-fxsync-chip.is-over {
+  opacity: 0.32;
+  cursor: not-allowed;
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <!-- beatlounge — one-color line-art mark: a centred waveform (the "beat"),
+       drawn in a single stroke colour, no fills. Round caps for a premium feel.
+       Tint via `stroke` (currentColor-friendly); default is the beatlounge cyan. -->
+  <g stroke="#39e0ff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <!-- rounded-square frame -->
+    <rect x="49" y="49" width="414" height="414" rx="88" />
+    <!-- centre baseline -->
+    <path d="M120 256H392" stroke-opacity="0.35" />
+    <!-- waveform bars (a gentle envelope, left→right) -->
+    <path d="M150 230V282" />
+    <path d="M186 196V316" />
+    <path d="M222 150V362" />
+    <path d="M258 210V302" />
+    <path d="M294 128V384" />
+    <path d="M330 192V320" />
+    <path d="M366 224V288" />
+  </g>
+</svg>

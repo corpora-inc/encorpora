@@ -1,0 +1,10 @@
+[default]
+description = "Default permissions for the Corpán on-device LLM plugin"
+permissions = [
+  "allow-llm-status",
+  "allow-llm-load",
+  "allow-llm-chat",
+  "allow-llm-stop",
+  "allow-llm-unload",
+  "allow-llm-query-pack-db",
+]

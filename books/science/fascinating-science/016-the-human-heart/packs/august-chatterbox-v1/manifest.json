@@ -1,0 +1,18 @@
+{
+  "id": "book_science_heart",
+  "name": "The Human Heart",
+  "version": "0.1.1",
+  "type": "book",
+  "primary_language": "en",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "metadata": {
+    "series": "Fascinating Science",
+    "author": "Skylar Saveland",
+    "tts": true
+  }
+}

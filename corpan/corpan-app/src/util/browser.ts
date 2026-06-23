@@ -1,10 +1,7 @@
-export function isAndroid() {
-    return /Android/i.test(navigator.userAgent);
-}
-
-export function isIOS() {
-    return /iPhone|iPad|iPod|iOS/i.test(navigator.userAgent);
-}
+/**
+ * Comprehensive platform detection utilities
+ * Handles modern devices including iPadOS 13+ that masquerade as desktop
+ */
 
 // Helpers: detect platforms with UA-CH (userAgentData) fallback to UA string.
 function isChromeOS(): boolean {
@@ -15,34 +12,136 @@ function isChromeOS(): boolean {
     return /CrOS/i.test(ua) || /Chrome\s?OS/i.test(String(uaPlatform));
 }
 
-function isAndroidButNotChromeOS(): boolean {
+export function isAndroid(): boolean {
     const ua = navigator.userAgent || "";
     return /Android/i.test(ua) && !isChromeOS();
 }
 
-export function getPlatformBottomPadding() {
-    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
+/**
+ * Detect iOS devices including modern iPads that report as desktop
+ * iPadOS 13+ often reports as "Macintosh" to get desktop sites by default
+ */
+export function isIOS(): boolean {
+    const ua = navigator.userAgent || "";
+
+    // Check for explicit iOS identifiers
+    if (/iPhone|iPod/i.test(ua)) {
+        return true;
+    }
+
+    // Legacy iPad detection (pre-iPadOS 13)
+    if (/iPad/i.test(ua)) {
+        return true;
+    }
+
+    // Modern iPad detection (iPadOS 13+)
+    // These devices report as "Macintosh" but have touch support
+    const platform = navigator.platform || "";
+    const maxTouchPoints = navigator.maxTouchPoints || 0;
+
+    // MacIntel + touch = likely iPad masquerading as desktop
+    if (/Mac/i.test(platform) && maxTouchPoints > 1) {
+        return true;
+    }
+
+    // Check for explicit iOS in platform string
+    if (/iOS/i.test(platform)) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * Detect if running in Safari browser
+ */
+export function isSafari(): boolean {
+    const ua = navigator.userAgent || "";
+    // Safari without Chrome/Chromium
+    return /Safari/i.test(ua) && !/Chrome|Chromium|CriOS/i.test(ua);
+}
+
+/**
+ * Detect macOS (excluding iPads masquerading as Mac)
+ */
+export function isMacOS(): boolean {
+    const ua = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+    const maxTouchPoints = navigator.maxTouchPoints || 0;
+
+    // Mac platform but NOT touch-enabled (which would be iPad)
+    return /Mac/i.test(platform) && maxTouchPoints <= 1 && !/iPhone|iPod|iPad/i.test(ua);
+}
+
+/**
+ * Detect Windows
+ */
+export function isWindows(): boolean {
+    const ua = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+    return /Win/i.test(platform) || /Windows/i.test(ua);
+}
+
+/**
+ * Get a canonical platform identifier
+ */
+export function getPlatform(): "ios" | "android" | "macos" | "windows" | "chromeos" | "other" {
+    if (isIOS()) return "ios";
+    if (isAndroid()) return "android";
+    if (isMacOS()) return "macos";
+    if (isWindows()) return "windows";
+    if (isChromeOS()) return "chromeos";
+    return "other";
+}
+
+/**
+ * `backdrop-filter: blur` is a per-frame GPU render pass that, on the Mali
+ * drivers common to budget Android devices, compiles/runs shaders on the frame
+ * critical path — a documented source of "Unresponsive GPU" ANRs (the WebView's
+ * RenderThread blocks the main thread waiting on shader compilation). Apple
+ * GPUs (iPad/iPhone/Mac) and desktop handle it cheaply, so we keep the frosted
+ * glass there and only fall back to a solid surface on Android.
+ *
+ * Usage: `className={glass("bg-background/80 backdrop-blur", "bg-background/90")}`
+ * — first arg is the glassy class string (capable GPUs), second is the solid
+ * fallback (Android). Evaluated once at module load.
+ */
+const PREFER_NO_GPU_BLUR = isAndroid();
+export function glass(glassClasses: string, solidClasses: string): string {
+    return PREFER_NO_GPU_BLUR ? solidClasses : glassClasses;
+}
+
+/**
+ * Platform-specific padding utilities
+ * Use the robust detection functions above
+ */
+
+export function getPlatformBottomPadding(): number {
+    // Mobile platforms need more bottom padding for safe area
+    if (isIOS() || isAndroid()) {
         return 180;
-    } if (isAndroidButNotChromeOS()) {
-        return 195;
     }
     return 180;
 }
 
-export function getPlatformTopPaddingButtons() {
-    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 55;
-    } if (isAndroidButNotChromeOS()) {
-        return 27;
+export function getPlatformTopPaddingButtons(): number {
+    if (isIOS()) {
+        return 35;
+    }
+    if (isAndroid()) {
+        return 30;
     }
     return 10;
 }
 
-export function getPlatformTopPaddingTranslations() {
-    if (/iPhone|iPad|iPod|iOS/i.test(navigator.userAgent)) {
-        return 150;
-    } if (isAndroidButNotChromeOS()) {
-        return 125;
-    }
-    return 75;
+/**
+ * Top padding (px) shared by the home top bar (gear) and the settings header
+ * (close-X), so the two buttons land in the exact same spot and the bars are
+ * consistent. This is a flat platform clearance (no env(safe-area-inset-top)
+ * added on top) — adding the inset on devices double-counted it and made the
+ * home bar puffy; the flat value already clears the inset and the windowed
+ * macOS/Stage-Manager "stoplight" controls.
+ */
+export function getTopBarPaddingTop(): number {
+    return getPlatformTopPaddingButtons() + 15;
 }

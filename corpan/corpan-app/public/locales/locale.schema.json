@@ -10,7 +10,7 @@
         "en": {
           "type": "string"
         },
-        "koPolite": {
+        "ko-polite": {
           "type": "string"
         },
         "es": {
@@ -22,16 +22,16 @@
         "de": {
           "type": "string"
         },
-        "ptBR": {
+        "pt-BR": {
           "type": "string"
         },
         "ja": {
           "type": "string"
         },
-        "zhHans": {
+        "zh-Hans": {
           "type": "string"
         },
-        "zhHant": {
+        "zh-Hant": {
           "type": "string"
         },
         "ar": {
@@ -57,24 +57,138 @@
         },
         "fa": {
           "type": "string"
+        },
+        "bn": {
+          "type": "string"
+        },
+        "th": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "tr": {
+          "type": "string"
+        },
+        "ta": {
+          "type": "string"
+        },
+        "te": {
+          "type": "string"
+        },
+        "kn": {
+          "type": "string"
+        },
+        "mr": {
+          "type": "string"
+        },
+        "gu": {
+          "type": "string"
+        },
+        "pa-Guru": {
+          "type": "string"
+        },
+        "pa-Arab": {
+          "type": "string"
+        },
+        "ur": {
+          "type": "string"
+        },
+        "ne": {
+          "type": "string"
+        },
+        "pt-PT": {
+          "type": "string"
+        },
+        "hr": {
+          "type": "string"
+        },
+        "sr": {
+          "type": "string"
+        },
+        "uk": {
+          "type": "string"
+        },
+        "bg": {
+          "type": "string"
+        },
+        "ro": {
+          "type": "string"
+        },
+        "ca": {
+          "type": "string"
+        },
+        "yue-Hant-HK": {
+          "type": "string"
+        },
+        "cs": {
+          "type": "string"
+        },
+        "lt": {
+          "type": "string"
+        },
+        "sk": {
+          "type": "string"
+        },
+        "sl": {
+          "type": "string"
+        },
+        "jv": {
+          "type": "string"
+        },
+        "su": {
+          "type": "string"
+        },
+        "tl": {
+          "type": "string"
         }
       },
       "required": [
         "en",
-        "koPolite",
+        "ko-polite",
         "es",
         "fr",
         "de",
-        "ptBR",
+        "pt-BR",
         "ja",
-        "zhHans",
+        "zh-Hans",
         "ar",
         "ru",
         "it",
         "hi",
         "vi",
         "pl",
-        "hu"
+        "hu",
+        "fa",
+        "bn",
+        "zh-Hant",
+        "th",
+        "id",
+        "jv",
+        "su",
+        "tr",
+        "ta",
+        "te",
+        "kn",
+        "mr",
+        "gu",
+        "pa-Guru",
+        "pa-Arab",
+        "ur",
+        "ne",
+        "pt-PT",
+        "hr",
+        "sr",
+        "uk",
+        "bg",
+        "ro",
+        "ca",
+        "yue-Hant-HK",
+        "cs",
+        "lt",
+        "sk",
+        "sl",
+        "tl"
       ],
       "additionalProperties": false
     },
@@ -147,6 +261,9 @@
         "selectedLanguages": {
           "type": "string"
         },
+        "removeLanguage": {
+          "type": "string"
+        },
         "settings": {
           "type": "string"
         },
@@ -177,6 +294,9 @@
         "selectAll": {
           "type": "string"
         },
+        "deselectAll": {
+          "type": "string"
+        },
         "allLevelsIncluded": {
           "type": "string"
         },
@@ -198,13 +318,13 @@
         "medium": {
           "type": "string"
         },
-        "semiLarge": {
+        "semi-large": {
           "type": "string"
         },
         "large": {
           "type": "string"
         },
-        "extraLarge": {
+        "extra-large": {
           "type": "string"
         },
         "testTts": {
@@ -212,11 +332,21 @@
         },
         "showRomanization": {
           "type": "string"
+        },
+        "scrollNavigation": {
+          "type": "string"
+        },
+        "home": {
+          "type": "string"
+        },
+        "developer": {
+          "type": "string"
         }
       },
       "required": [
         "addMoreLanguages",
         "selectedLanguages",
+        "removeLanguage",
         "settings",
         "adjustToYourPreferences",
         "speechRate",
@@ -234,67 +364,189 @@
         "textSize",
         "small",
         "medium",
-        "semiLarge",
+        "semi-large",
         "large",
-        "extraLarge",
+        "extra-large",
         "testTts",
-        "showRomanization"
+        "showRomanization",
+        "scrollNavigation",
+        "home",
+        "developer"
       ],
       "additionalProperties": false
+    },
+    "dialects": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": {
+        "type": "string"
+      }
     },
     "onboarding": {
       "type": "object",
       "properties": {
-        "welcome": {
-          "type": "string"
-        },
-        "makePrimaryLanguage": {
-          "type": "string"
-        },
-        "canChangeLater": {
-          "type": "string"
-        },
         "pickLanguagesToLearn": {
+          "type": "string"
+        },
+        "noVoices": {
+          "type": "string"
+        },
+        "noVoicesHint": {
+          "type": "string"
+        },
+        "languageOrderTipTitle": {
+          "type": "string"
+        },
+        "languageOrderTipBody": {
           "type": "string"
         },
         "textToSpeechSetup": {
           "type": "string"
         },
-        "ttsPoorQualityNote": {
+        "reconfigureStack": {
           "type": "string"
         },
-        "howToSetupTtsOn": {
+        "openVoiceSettings": {
           "type": "string"
         },
-        "welcomeTitle": {
+        "openTTSSetup": {
           "type": "string"
         },
-        "welcomeBody": {
+        "ttsOsTipTitle": {
           "type": "string"
         },
-        "welcomeVisit": {
+        "ttsOsTipAndroid": {
           "type": "string"
         },
-        "linkCopied": {
+        "ttsOsTipIOS": {
           "type": "string"
         },
-        "reonboard": {
+        "ttsOsTipMac": {
+          "type": "string"
+        },
+        "ttsOsTipWindows": {
+          "type": "string"
+        },
+        "ttsOsTipOther": {
+          "type": "string"
+        },
+        "installVoicesAndroid": {
+          "type": "string"
+        },
+        "sendAppleFeedback": {
           "type": "string"
         }
       },
       "required": [
-        "welcome",
-        "makePrimaryLanguage",
-        "canChangeLater",
         "pickLanguagesToLearn",
+        "noVoices",
+        "noVoicesHint",
+        "languageOrderTipTitle",
+        "languageOrderTipBody",
         "textToSpeechSetup",
-        "ttsPoorQualityNote",
-        "howToSetupTtsOn",
-        "welcomeTitle",
-        "welcomeBody",
-        "welcomeVisit",
-        "linkCopied",
-        "reonboard"
+        "reconfigureStack",
+        "openVoiceSettings",
+        "openTTSSetup",
+        "ttsOsTipTitle",
+        "ttsOsTipAndroid",
+        "ttsOsTipIOS",
+        "ttsOsTipMac",
+        "ttsOsTipWindows",
+        "ttsOsTipOther",
+        "installVoicesAndroid",
+        "sendAppleFeedback"
+      ],
+      "additionalProperties": false
+    },
+    "socials": {
+      "type": "object",
+      "properties": {
+        "youtube": {
+          "type": "object",
+          "properties": {
+            "cta": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cta",
+            "title",
+            "desc"
+          ],
+          "additionalProperties": false
+        },
+        "github": {
+          "type": "object",
+          "properties": {
+            "cta": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cta",
+            "title",
+            "desc"
+          ],
+          "additionalProperties": false
+        },
+        "blog": {
+          "type": "object",
+          "properties": {
+            "cta": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cta",
+            "title",
+            "desc"
+          ],
+          "additionalProperties": false
+        },
+        "website": {
+          "type": "object",
+          "properties": {
+            "cta": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "desc": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cta",
+            "title",
+            "desc"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "youtube",
+        "github",
+        "blog",
+        "website"
       ],
       "additionalProperties": false
     },
@@ -394,6 +646,10 @@
           "type": "string",
           "description": "Tooltip/label for the rename button."
         },
+        "renameLabel": {
+          "type": "string",
+          "description": "Label for the rename input field."
+        },
         "selectAria": {
           "type": "string",
           "description": "ARIA label for the stack select."
@@ -413,8 +669,161 @@
         "new",
         "newName",
         "rename",
+        "renameLabel",
         "selectAria",
         "selectPlaceholder"
+      ],
+      "additionalProperties": false
+    },
+    "rating": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "rateNow": {
+          "type": "string"
+        },
+        "close": {
+          "type": "string"
+        },
+        "feedbackHint": {
+          "type": "string"
+        },
+        "emailButton": {
+          "type": "string"
+        },
+        "githubButton": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "rateNow",
+        "close",
+        "feedbackHint",
+        "emailButton",
+        "githubButton"
+      ],
+      "additionalProperties": false
+    },
+    "packs": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "available": {
+          "type": "string"
+        },
+        "emptyAvailable": {
+          "type": "string"
+        },
+        "installed": {
+          "type": "string"
+        },
+        "emptyInstalled": {
+          "type": "string"
+        },
+        "updates": {
+          "type": "string"
+        },
+        "new": {
+          "type": "string"
+        },
+        "get": {
+          "type": "string"
+        },
+        "open": {
+          "type": "string"
+        },
+        "remove": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "refresh": {
+          "type": "string"
+        },
+        "free": {
+          "type": "string"
+        },
+        "install": {
+          "type": "string"
+        },
+        "installing": {
+          "type": "string"
+        },
+        "installFailed": {
+          "type": "string"
+        },
+        "update": {
+          "type": "string"
+        },
+        "updating": {
+          "type": "string"
+        },
+        "offline": {
+          "type": "string"
+        },
+        "manifestTitle": {
+          "type": "string"
+        },
+        "manifestPlaceholder": {
+          "type": "string"
+        },
+        "manifestHint": {
+          "type": "string"
+        },
+        "devUnlockTitle": {
+          "type": "string"
+        },
+        "devUnlockHint": {
+          "type": "string"
+        },
+        "devUnlockToast": {
+          "type": "string"
+        },
+        "devIntro": {
+          "type": "string"
+        },
+        "devLink": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "available",
+        "emptyAvailable",
+        "installed",
+        "emptyInstalled",
+        "updates",
+        "new",
+        "get",
+        "open",
+        "remove",
+        "version",
+        "refresh",
+        "free",
+        "install",
+        "installing",
+        "installFailed",
+        "update",
+        "updating",
+        "offline",
+        "manifestTitle",
+        "manifestPlaceholder",
+        "manifestHint",
+        "devUnlockTitle",
+        "devUnlockHint",
+        "devUnlockToast",
+        "devIntro",
+        "devLink"
       ],
       "additionalProperties": false
     }
@@ -424,9 +833,11 @@
     "categories",
     "settings",
     "onboarding",
+    "socials",
     "common",
     "footer",
-    "stacks"
+    "stacks",
+    "packs"
   ],
   "additionalProperties": false
 }

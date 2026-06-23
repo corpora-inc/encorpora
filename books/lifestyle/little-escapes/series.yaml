@@ -1,0 +1,83 @@
+series:
+  title: "Little Escapes"
+  tagline: "Short audio vacations into the things people love."
+  planned_volumes: open
+  primary_language: en
+
+  philosophy: |
+    Each volume is a short, immersive walk through one hobby or pursuit,
+    voiced by an expert friend. The narrator slides naturally between first
+    person ("My favorite part is the moment right before…") and second
+    person ("You feel the cold air rush past your cheeks…"). The goal is
+    to put the listener inside the experience for twenty-five minutes —
+    not a lecture, not a how-to, an escape.
+
+    Every volume is also a language-learning artifact. A learner who
+    finishes a Little Escape can hold a conversation with a native speaker
+    who is into the activity: ask the right questions, recognize the
+    feeling words, follow the story when an enthusiast describes their
+    last great day.
+
+    Volumes are unordered. Any volume can be experienced independently.
+    The series can grow indefinitely across hobbies, sports, crafts,
+    pursuits, and first-time experiences.
+
+  audience: |
+    Adults learning a new language at any level. Curious people who like
+    imagining themselves into other lives. Listeners who want a short,
+    sensory escape that doubles as language input. Native speakers who
+    want to hear their own activity described in their language with
+    warmth and precision.
+
+  voice: |
+    Expert friend, mid-thirties to mid-forties, calm and clear, the
+    person who pumps you up about the thing they love without showing
+    off. Warmth first, technique second, humility throughout. The voice
+    moves freely between "I" and "you" — the reader is in the moment
+    with the narrator, not being lectured.
+
+  output:
+    formats: [corpan-pack]
+    tts: true
+    target_words: "3000-3400"
+    target_time: "~25 minutes listen"
+
+  editorial_rules:
+    - Mix first-person enthusiast and second-person immersive voice within and across chapters.
+    - No place names. No country, climate, or culture-specific cues that won't carry into every supported language.
+    - No numbers as digits in any segment — always spelled out (Chatterbox cannot read Arabic numerals).
+    - No acronyms in segment text — always spelled out in full prose.
+    - No em-dashes mid-sentence; prefer commas or two short sentences.
+    - No semicolons; prosody is unstable across languages.
+    - No parentheticals; if it isn't worth a comma, it isn't worth saying.
+    - Sentences average eight to twelve words; hard ceiling around twenty-two.
+    - Date-conversation vocabulary woven naturally — never a separate phrasebook chapter.
+    - Six-chapter template across every volume: The Hook, First Time, Getting Started, The Craft, Moments, Why It Stays.
+
+  template:
+    chapters:
+      - { number: 1, slug: "the-hook", function: "Why people fall for it. The pull. What this thing IS, in feeling." }
+      - { number: 2, slug: "first-time", function: "Sensory immersion. What it feels like in your body the first time." }
+      - { number: 3, slug: "getting-started", function: "What it takes to begin. Honest entry barrier." }
+      - { number: 4, slug: "the-craft", function: "The deeper layer. Technique, mindset, what insiders notice." }
+      - { number: 5, slug: "moments", function: "Two or three short story-moments that show why people keep coming back." }
+      - { number: 6, slug: "why-it-stays", function: "The reflection. Why this is not a phase. How enthusiasts talk about it." }
+
+  volumes:
+    - number: 1
+      title: "Skydiving"
+      slug: "01-sky-diving"
+      directory: "01-sky-diving"
+      tier: public
+    - number: 2
+      title: "Gardening"
+      slug: "02-gardening"
+      directory: "02-gardening"
+      tier: premium
+      price_usd: 1.99
+    - number: 3
+      title: "Sailing"
+      slug: "03-sailing"
+      directory: "03-sailing"
+      tier: premium
+      price_usd: 1.99

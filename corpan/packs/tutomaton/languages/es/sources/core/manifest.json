@@ -1,0 +1,23 @@
+{
+  "packType": "tutomaton-rag-source",
+  "id": "tutomaton-corpus-es-core-v1",
+  "name": {
+    "en": "Spanish Core",
+    "es": "Español"
+  },
+  "tutomatonLanguage": "es",
+  "authoritative": true,
+  "priority": 100,
+  "categories": [
+    "vocab",
+    "grammar",
+    "themes",
+    "idioms"
+  ],
+  "schemaVersion": 1,
+  "files": {
+    "database": "data/spanish.sqlite3",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "minTutomatonVersion": "0.1.0"
+}

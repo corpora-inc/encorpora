@@ -1,0 +1,23 @@
+{
+  "id": "book_ai_this_week_2026_05_27",
+  "name": "AI This Week — May 27, 2026 — The Most-Used Model on Earth",
+  "version": "0.1.1",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "format": "dialog",
+  "metadata": {
+    "series": "AI This Week",
+    "issue": 3,
+    "issue_date": "2026-05-27",
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Curious technical listeners who want a calm conversation about real AI news, leaning open weights and on-device.",
+    "estimatedListenTime": "15 minutes"
+  }
+}

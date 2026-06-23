@@ -1,0 +1,3 @@
+[default]
+description = "Default permissions for the iOS Share plugin"
+permissions = ["allow-share-file"]

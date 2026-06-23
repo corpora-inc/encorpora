@@ -1,0 +1,15 @@
+{
+  "_comment": "Latest released app version per platform. The Corpán app fetches this from https://d38iwc9748jekz.cloudfront.net/app-version.json to decide whether to show an in-app update prompt. Bump AFTER a release is live in the relevant store. Apple platforms also use the iTunes Lookup API, so the ios/mac entries here are advisory fallbacks.",
+  "ios": {
+    "version": "0.15.6",
+    "url": "https://apps.apple.com/app/id6746082061"
+  },
+  "mac": {
+    "version": "0.15.6",
+    "url": "https://apps.apple.com/app/id6746082061"
+  },
+  "android": {
+    "version": "0.15.6",
+    "url": "https://play.google.com/store/apps/details?id=com.corpora.corpan"
+  }
+}

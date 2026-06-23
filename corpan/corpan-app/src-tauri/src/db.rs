@@ -1,40 +1,57 @@
-use rusqlite::ffi;
 use rusqlite::Connection;
-use std::convert::TryInto;
-use std::ffi::CString;
-use tauri::AppHandle;
+use std::path::{Path, PathBuf};
+use std::sync::Mutex;
 
-/// Embed your prebuilt SQLite at compile time.
-/// Make sure the path is correct relative to db.rs!
-const EMBEDDED_DB: &[u8] = include_bytes!("../../../dja/db.sqlite3");
+/// Embed the prebuilt SQLite database at compile time.
+const EMBEDDED_DB: &[u8] = include_bytes!("../../../dja/release.sqlite3");
 
-pub fn open_connection(_: &AppHandle) -> Result<Connection, String> {
-    // Open an in-memory database.
-    let conn =
-        Connection::open_in_memory().map_err(|e| format!("failed to open in-memory DB: {}", e))?;
+pub struct DbState {
+    pub conn: Mutex<Connection>,
+}
 
-    // Copy the embedded DB bytes into "main".
-    unsafe {
-        let db_handle = conn.handle();
-        let name = CString::new("main").unwrap();
-        let ptr = EMBEDDED_DB.as_ptr() as *mut _;
-        let len = EMBEDDED_DB.len();
+impl DbState {
+    /// Write the compiled-in DB to disk (first launch or after app update),
+    /// then open it read-only with mmap.  This avoids the 82 MB
+    /// `sqlite3_deserialize` allocation that caused startup ANRs / SIGABRT.
+    pub fn new(data_dir: PathBuf) -> Result<Self, String> {
+        let db_path = data_dir.join("release.sqlite3");
 
-        let read_bytes: i64 = len.try_into().unwrap();
-        let alloc_bytes: i64 = len.try_into().unwrap();
+        // Write or update when file is missing or size differs (app update).
+        let needs_write = match std::fs::metadata(&db_path) {
+            Ok(meta) => meta.len() != EMBEDDED_DB.len() as u64,
+            Err(_) => true,
+        };
 
-        let rc = ffi::sqlite3_deserialize(
-            db_handle,
-            name.as_ptr(),
-            ptr,
-            read_bytes,
-            alloc_bytes,
-            ffi::SQLITE_DESERIALIZE_READONLY,
-        );
-        if rc != ffi::SQLITE_OK {
-            return Err(format!("sqlite3_deserialize failed: code {}", rc));
+        if needs_write {
+            std::fs::create_dir_all(&data_dir)
+                .map_err(|e| format!("failed to create data dir: {}", e))?;
+            std::fs::write(&db_path, EMBEDDED_DB)
+                .map_err(|e| format!("failed to write DB to {}: {}", db_path.display(), e))?;
         }
+
+        Ok(Self {
+            conn: Mutex::new(open_connection(&db_path)?),
+        })
     }
+}
+
+fn open_connection(path: &Path) -> Result<Connection, String> {
+    let flags = rusqlite::OpenFlags::SQLITE_OPEN_READ_ONLY
+        | rusqlite::OpenFlags::SQLITE_OPEN_NO_MUTEX;
+
+    let conn = Connection::open_with_flags(path, flags)
+        .map_err(|e| format!("failed to open DB at {}: {}", path.display(), e))?;
+
+    conn.execute_batch(
+        r#"
+        PRAGMA query_only=ON;
+        PRAGMA temp_store=MEMORY;
+        PRAGMA cache_size=-4096;
+        PRAGMA case_sensitive_like=ON;
+        PRAGMA mmap_size=67108864;
+        "#,
+    )
+    .map_err(|e| e.to_string())?;
 
     Ok(conn)
 }

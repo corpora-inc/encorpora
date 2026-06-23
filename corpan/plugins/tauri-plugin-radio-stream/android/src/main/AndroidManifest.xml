@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Plugin manifest fragment merged into the host app's AndroidManifest.xml
+  by the Gradle manifest merger. Path is sensitive: must live exactly at
+  android/src/main/AndroidManifest.xml.
+
+  - FOREGROUND_SERVICE + FOREGROUND_SERVICE_MEDIA_PLAYBACK: Android 14+
+    hard-requires the typed permission for any startForeground in the
+    media-playback foreground type. Without it, ExoPlayer's MediaSessionService
+    will throw ForegroundServiceTypeException within seconds of locking the
+    screen.
+  - POST_NOTIFICATIONS: required from Android 13+ to publish the system
+    media notification that doubles as the lock-screen card.
+  - WAKE_LOCK: ExoPlayer pulls this when configured with setWakeMode, which
+    keeps the CPU alive through long screen-locked playback.
+  - INTERNET / ACCESS_NETWORK_STATE: streaming is the whole point.
+  - PlaybackService: registered as a MediaSessionService so the system
+    automatically shows the now-playing card and forwards remote commands
+    (lock-screen play/pause/stop, headphone media keys, Bluetooth, Wear OS).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!--
+      networkSecurityConfig is contributed by this plugin (not the host app)
+      so World Radio's cleartext exception travels with the radio code path,
+      mirroring how iOS scopes NSAllowsArbitraryLoadsForMedia in
+      corpan-app/src-tauri/ios/project.yml. The Android Manifest Merger
+      adds this attribute to the host app's <application> element; on
+      API 24+ it fully supersedes android:usesCleartextTraffic.
+    -->
+    <application
+        android:networkSecurityConfig="@xml/radio_stream_network_security_config">
+        <service
+            android:name="com.corpora.radio_stream.PlaybackService"
+            android:exported="true"
+            android:foregroundServiceType="mediaPlayback">
+            <intent-filter>
+                <action android:name="androidx.media3.session.MediaSessionService" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

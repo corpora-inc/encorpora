@@ -1,0 +1,2311 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_forest",
+  "total_segments": 156,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Temperate Forest",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Temperate Forest",
+      "text_markdown": "The Temperate Forest"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Where Temperate Forests Grow",
+      "text_markdown": "Where Temperate Forests Grow"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welcome to the temperate forest.",
+      "text_markdown": "Welcome to the temperate forest.",
+      "tts": {
+        "text": "Welcome to the temperate forest.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is one of the great biomes of the world.",
+      "text_markdown": "This is one of the great biomes of the world.",
+      "tts": {
+        "text": "This is one of the great biomes of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "text_markdown": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "tts": {
+        "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The temperate forest is a forest of broad, leafy trees.",
+      "text_markdown": "The temperate forest is a forest of broad, leafy trees.",
+      "tts": {
+        "text": "The temperate forest is a forest of broad, leafy trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most of the trees here lose their leaves once a year and grow new ones in the spring.",
+      "text_markdown": "Most of the trees here lose their leaves once a year and grow new ones in the spring.",
+      "tts": {
+        "text": "Most of the trees here lose their leaves once a year and grow new ones in the spring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trees that drop their leaves like this are called deciduous trees.",
+      "text_markdown": "Trees that drop their leaves like this are called deciduous trees.",
+      "tts": {
+        "text": "Trees that drop their leaves like this are called deciduous trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Temperate forests grow in the middle parts of the world, between the cold north and the warm tropics.",
+      "text_markdown": "Temperate forests grow in the middle parts of the world, between the cold north and the warm tropics.",
+      "tts": {
+        "text": "Temperate forests grow in the middle parts of the world, between the cold north and the warm tropics.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are great temperate forests in the eastern part of North America.",
+      "text_markdown": "There are great temperate forests in the eastern part of North America.",
+      "tts": {
+        "text": "There are great temperate forests in the eastern part of North America.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are temperate forests across much of Europe.",
+      "text_markdown": "There are temperate forests across much of Europe.",
+      "tts": {
+        "text": "There are temperate forests across much of Europe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are temperate forests in eastern Asia, in China, Korea, and Japan.",
+      "text_markdown": "There are temperate forests in eastern Asia, in China, Korea, and Japan.",
+      "tts": {
+        "text": "There are temperate forests in eastern Asia, in China, Korea, and Japan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are smaller patches in southern South America, in southeastern Australia, and in southern New Zealand.",
+      "text_markdown": "There are smaller patches in southern South America, in southeastern Australia, and in southern New Zealand.",
+      "tts": {
+        "text": "There are smaller patches in southern South America, in southeastern Australia, and in southern New Zealand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each of these forests grew up on its own, far from the others.",
+      "text_markdown": "Each of these forests grew up on its own, far from the others.",
+      "tts": {
+        "text": "Each of these forests grew up on its own, far from the others.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So the kinds of trees and animals are different in each part of the world.",
+      "text_markdown": "So the kinds of trees and animals are different in each part of the world.",
+      "tts": {
+        "text": "So the kinds of trees and animals are different in each part of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But they all share the same pattern.",
+      "text_markdown": "But they all share the same pattern.",
+      "tts": {
+        "text": "But they all share the same pattern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A canopy of leafy trees, a soft floor of fallen leaves, and four very different seasons.",
+      "text_markdown": "A canopy of leafy trees, a soft floor of fallen leaves, and four very different seasons.",
+      "tts": {
+        "text": "A canopy of leafy trees, a soft floor of fallen leaves, and four very different seasons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you walk into a temperate forest, the air feels cool and gentle.",
+      "text_markdown": "When you walk into a temperate forest, the air feels cool and gentle.",
+      "tts": {
+        "text": "When you walk into a temperate forest, the air feels cool and gentle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer, the sunlight falls through the leaves in soft green patches.",
+      "text_markdown": "In the summer, the sunlight falls through the leaves in soft green patches.",
+      "tts": {
+        "text": "In the summer, the sunlight falls through the leaves in soft green patches.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, the leaves turn yellow, orange, and red.",
+      "text_markdown": "In the autumn, the leaves turn yellow, orange, and red.",
+      "tts": {
+        "text": "In the autumn, the leaves turn yellow, orange, and red.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the winter, the trees stand bare against the sky.",
+      "text_markdown": "In the winter, the trees stand bare against the sky.",
+      "tts": {
+        "text": "In the winter, the trees stand bare against the sky.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the spring, tiny green buds appear, and the whole forest wakes up again.",
+      "text_markdown": "In the spring, tiny green buds appear, and the whole forest wakes up again.",
+      "tts": {
+        "text": "In the spring, tiny green buds appear, and the whole forest wakes up again.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the temperate forest.",
+      "text_markdown": "That is the temperate forest.",
+      "tts": {
+        "text": "That is the temperate forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Where Temperate Forests Grow",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A green world that changes its face four times a year.",
+      "text_markdown": "A green world that changes its face four times a year.",
+      "tts": {
+        "text": "A green world that changes its face four times a year.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Weather",
+      "text_markdown": "The Weather"
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The weather in the temperate forest changes a great deal across the year.",
+      "text_markdown": "The weather in the temperate forest changes a great deal across the year.",
+      "tts": {
+        "text": "The weather in the temperate forest changes a great deal across the year.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are four seasons, and each one is very different.",
+      "text_markdown": "There are four seasons, and each one is very different.",
+      "tts": {
+        "text": "There are four seasons, and each one is very different.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer, the days are long and warm.",
+      "text_markdown": "In the summer, the days are long and warm.",
+      "tts": {
+        "text": "In the summer, the days are long and warm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It rains often, and sometimes a heavy storm rolls in over the trees.",
+      "text_markdown": "It rains often, and sometimes a heavy storm rolls in over the trees.",
+      "tts": {
+        "text": "It rains often, and sometimes a heavy storm rolls in over the trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The forest is full of green leaves and the songs of birds.",
+      "text_markdown": "The forest is full of green leaves and the songs of birds.",
+      "tts": {
+        "text": "The forest is full of green leaves and the songs of birds.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, the days grow shorter, and the air turns cool.",
+      "text_markdown": "In the autumn, the days grow shorter, and the air turns cool.",
+      "tts": {
+        "text": "In the autumn, the days grow shorter, and the air turns cool.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The leaves of the trees change color and fall to the ground.",
+      "text_markdown": "The leaves of the trees change color and fall to the ground.",
+      "tts": {
+        "text": "The leaves of the trees change color and fall to the ground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A walk in an autumn forest is a walk over a soft, bright carpet of leaves.",
+      "text_markdown": "A walk in an autumn forest is a walk over a soft, bright carpet of leaves.",
+      "tts": {
+        "text": "A walk in an autumn forest is a walk over a soft, bright carpet of leaves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the winter, the days are short, and the nights are long and cold.",
+      "text_markdown": "In the winter, the days are short, and the nights are long and cold.",
+      "tts": {
+        "text": "In the winter, the days are short, and the nights are long and cold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In many places, snow covers the forest for weeks at a time.",
+      "text_markdown": "In many places, snow covers the forest for weeks at a time.",
+      "tts": {
+        "text": "In many places, snow covers the forest for weeks at a time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The bare branches of the trees stand still against a gray sky.",
+      "text_markdown": "The bare branches of the trees stand still against a gray sky.",
+      "tts": {
+        "text": "The bare branches of the trees stand still against a gray sky.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many animals sleep through the cold or hide in their burrows.",
+      "text_markdown": "Many animals sleep through the cold or hide in their burrows.",
+      "tts": {
+        "text": "Many animals sleep through the cold or hide in their burrows.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then the spring comes.",
+      "text_markdown": "Then the spring comes.",
+      "tts": {
+        "text": "Then the spring comes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The snow melts, the rains begin again, and the soil warms.",
+      "text_markdown": "The snow melts, the rains begin again, and the soil warms.",
+      "tts": {
+        "text": "The snow melts, the rains begin again, and the soil warms.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Green buds open on the branches, flowers push up from the ground, and the forest fills with sound and color once more.",
+      "text_markdown": "Green buds open on the branches, flowers push up from the ground, and the forest fills with sound and color once more.",
+      "tts": {
+        "text": "Green buds open on the branches, flowers push up from the ground, and the forest fills with sound and color once more.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The temperate forest knows how to wait through the cold, and how to celebrate when the warmth returns.",
+      "text_markdown": "The temperate forest knows how to wait through the cold, and how to celebrate when the warmth returns.",
+      "tts": {
+        "text": "The temperate forest knows how to wait through the cold, and how to celebrate when the warmth returns.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Land and the Water",
+      "text_markdown": "The Land and the Water"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The land under a temperate forest is rich.",
+      "text_markdown": "The land under a temperate forest is rich.",
+      "tts": {
+        "text": "The land under a temperate forest is rich.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For thousands of years, leaves have fallen from the trees and turned slowly into dark, soft soil.",
+      "text_markdown": "For thousands of years, leaves have fallen from the trees and turned slowly into dark, soft soil.",
+      "tts": {
+        "text": "For thousands of years, leaves have fallen from the trees and turned slowly into dark, soft soil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This kind of soil holds water well, and it gives the trees plenty of food.",
+      "text_markdown": "This kind of soil holds water well, and it gives the trees plenty of food.",
+      "tts": {
+        "text": "This kind of soil holds water well, and it gives the trees plenty of food.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The forest floor is covered in old leaves, broken twigs, and patches of green moss.",
+      "text_markdown": "The forest floor is covered in old leaves, broken twigs, and patches of green moss.",
+      "tts": {
+        "text": "The forest floor is covered in old leaves, broken twigs, and patches of green moss.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you push aside the leaves, you find dark soil full of tiny living things.",
+      "text_markdown": "When you push aside the leaves, you find dark soil full of tiny living things.",
+      "tts": {
+        "text": "When you push aside the leaves, you find dark soil full of tiny living things.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Worms and insects move through it.",
+      "text_markdown": "Worms and insects move through it.",
+      "tts": {
+        "text": "Worms and insects move through it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mushrooms push up from underneath after a rain.",
+      "text_markdown": "Mushrooms push up from underneath after a rain.",
+      "tts": {
+        "text": "Mushrooms push up from underneath after a rain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Streams wind through every temperate forest.",
+      "text_markdown": "Streams wind through every temperate forest.",
+      "tts": {
+        "text": "Streams wind through every temperate forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They run cold and clear in the spring, full of melting snow.",
+      "text_markdown": "They run cold and clear in the spring, full of melting snow.",
+      "tts": {
+        "text": "They run cold and clear in the spring, full of melting snow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer they run slower, with stones showing in the shallow water.",
+      "text_markdown": "In the summer they run slower, with stones showing in the shallow water.",
+      "tts": {
+        "text": "In the summer they run slower, with stones showing in the shallow water.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, golden leaves float down them like little boats.",
+      "text_markdown": "In the autumn, golden leaves float down them like little boats.",
+      "tts": {
+        "text": "In the autumn, golden leaves float down them like little boats.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the winter, the smaller streams freeze, and the water hides under a roof of ice.",
+      "text_markdown": "In the winter, the smaller streams freeze, and the water hides under a roof of ice.",
+      "tts": {
+        "text": "In the winter, the smaller streams freeze, and the water hides under a roof of ice.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of the great rivers of the temperate world begin in these forests.",
+      "text_markdown": "Many of the great rivers of the temperate world begin in these forests.",
+      "tts": {
+        "text": "Many of the great rivers of the temperate world begin in these forests.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The trees hold the soil in place and feed the streams a little water at a time.",
+      "text_markdown": "The trees hold the soil in place and feed the streams a little water at a time.",
+      "tts": {
+        "text": "The trees hold the soil in place and feed the streams a little water at a time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Without the forest, the rivers would not be the same.",
+      "text_markdown": "Without the forest, the rivers would not be the same.",
+      "tts": {
+        "text": "Without the forest, the rivers would not be the same.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-058",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Plants",
+      "text_markdown": "The Plants"
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The trees are the heart of the temperate forest.",
+      "text_markdown": "The trees are the heart of the temperate forest.",
+      "tts": {
+        "text": "The trees are the heart of the temperate forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of them grow tall and strong, with thick trunks and wide branches.",
+      "text_markdown": "Many of them grow tall and strong, with thick trunks and wide branches.",
+      "tts": {
+        "text": "Many of them grow tall and strong, with thick trunks and wide branches.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Their wood is hard, and a single tree can live for hundreds of years.",
+      "text_markdown": "Their wood is hard, and a single tree can live for hundreds of years.",
+      "tts": {
+        "text": "Their wood is hard, and a single tree can live for hundreds of years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some grow even longer than that.",
+      "text_markdown": "Some grow even longer than that.",
+      "tts": {
+        "text": "Some grow even longer than that.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The most famous trees of the temperate forest are the oak, the maple, the beech, and the birch.",
+      "text_markdown": "The most famous trees of the temperate forest are the oak, the maple, the beech, and the birch.",
+      "tts": {
+        "text": "The most famous trees of the temperate forest are the oak, the maple, the beech, and the birch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In different parts of the world, you find different kinds of these trees.",
+      "text_markdown": "In different parts of the world, you find different kinds of these trees.",
+      "tts": {
+        "text": "In different parts of the world, you find different kinds of these trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But they share the same shape and the same yearly story.",
+      "text_markdown": "But they share the same shape and the same yearly story.",
+      "tts": {
+        "text": "But they share the same shape and the same yearly story.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the spring, new leaves open on every branch.",
+      "text_markdown": "In the spring, new leaves open on every branch.",
+      "tts": {
+        "text": "In the spring, new leaves open on every branch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The leaves are pale green and soft.",
+      "text_markdown": "The leaves are pale green and soft.",
+      "tts": {
+        "text": "The leaves are pale green and soft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Through the summer, they spread wide to catch the sunlight.",
+      "text_markdown": "Through the summer, they spread wide to catch the sunlight.",
+      "tts": {
+        "text": "Through the summer, they spread wide to catch the sunlight.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each green leaf turns sunlight, water, and air into food for the tree.",
+      "text_markdown": "Each green leaf turns sunlight, water, and air into food for the tree.",
+      "tts": {
+        "text": "Each green leaf turns sunlight, water, and air into food for the tree.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, the leaves change color before they fall.",
+      "text_markdown": "In the autumn, the leaves change color before they fall.",
+      "tts": {
+        "text": "In the autumn, the leaves change color before they fall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some turn bright red, some glow yellow, and some go a deep brown.",
+      "text_markdown": "Some turn bright red, some glow yellow, and some go a deep brown.",
+      "tts": {
+        "text": "Some turn bright red, some glow yellow, and some go a deep brown.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The colors paint whole hillsides for a few short weeks.",
+      "text_markdown": "The colors paint whole hillsides for a few short weeks.",
+      "tts": {
+        "text": "The colors paint whole hillsides for a few short weeks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then the leaves drop, and the tree rests through the cold.",
+      "text_markdown": "Then the leaves drop, and the tree rests through the cold.",
+      "tts": {
+        "text": "Then the leaves drop, and the tree rests through the cold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wood of the tree saves what it needs, deep inside.",
+      "text_markdown": "The wood of the tree saves what it needs, deep inside.",
+      "tts": {
+        "text": "The wood of the tree saves what it needs, deep inside.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When spring returns, the tree begins again.",
+      "text_markdown": "When spring returns, the tree begins again.",
+      "tts": {
+        "text": "When spring returns, the tree begins again.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Below the tall trees, smaller plants grow.",
+      "text_markdown": "Below the tall trees, smaller plants grow.",
+      "tts": {
+        "text": "Below the tall trees, smaller plants grow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are bushes with berries that animals love.",
+      "text_markdown": "There are bushes with berries that animals love.",
+      "tts": {
+        "text": "There are bushes with berries that animals love.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are ferns and soft mosses on the rocks and old logs.",
+      "text_markdown": "There are ferns and soft mosses on the rocks and old logs.",
+      "tts": {
+        "text": "There are ferns and soft mosses on the rocks and old logs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In early spring, before the big trees have leaves, wildflowers fill the forest floor.",
+      "text_markdown": "In early spring, before the big trees have leaves, wildflowers fill the forest floor.",
+      "tts": {
+        "text": "In early spring, before the big trees have leaves, wildflowers fill the forest floor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For a few weeks, the ground is covered in bluebells, daffodils, or other bright flowers.",
+      "text_markdown": "For a few weeks, the ground is covered in bluebells, daffodils, or other bright flowers.",
+      "tts": {
+        "text": "For a few weeks, the ground is covered in bluebells, daffodils, or other bright flowers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the trees grow their leaves and shade the ground, the flowers fade away.",
+      "text_markdown": "When the trees grow their leaves and shade the ground, the flowers fade away.",
+      "tts": {
+        "text": "When the trees grow their leaves and shade the ground, the flowers fade away.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They will wait for next spring under the soil.",
+      "text_markdown": "They will wait for next spring under the soil.",
+      "tts": {
+        "text": "They will wait for next spring under the soil.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Animals",
+      "text_markdown": "The Animals"
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The temperate forest is home to many kinds of animals.",
+      "text_markdown": "The temperate forest is home to many kinds of animals.",
+      "tts": {
+        "text": "The temperate forest is home to many kinds of animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the trees and on the ground, they all have ways to live with the changing seasons.",
+      "text_markdown": "In the trees and on the ground, they all have ways to live with the changing seasons.",
+      "tts": {
+        "text": "In the trees and on the ground, they all have ways to live with the changing seasons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deer are common in many temperate forests.",
+      "text_markdown": "Deer are common in many temperate forests.",
+      "tts": {
+        "text": "Deer are common in many temperate forests.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They walk softly through the trees and eat leaves, grass, and small plants.",
+      "text_markdown": "They walk softly through the trees and eat leaves, grass, and small plants.",
+      "tts": {
+        "text": "They walk softly through the trees and eat leaves, grass, and small plants.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer their coats are short and brown.",
+      "text_markdown": "In the summer their coats are short and brown.",
+      "tts": {
+        "text": "In the summer their coats are short and brown.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the winter their coats grow thick and gray.",
+      "text_markdown": "In the winter their coats grow thick and gray.",
+      "tts": {
+        "text": "In the winter their coats grow thick and gray.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bears live in some of these forests too.",
+      "text_markdown": "Bears live in some of these forests too.",
+      "tts": {
+        "text": "Bears live in some of these forests too.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A bear eats almost anything — berries, fish, honey, and small animals.",
+      "text_markdown": "A bear eats almost anything — berries, fish, honey, and small animals.",
+      "tts": {
+        "text": "A bear eats almost anything — berries, fish, honey, and small animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, a bear eats as much as it can.",
+      "text_markdown": "In the autumn, a bear eats as much as it can.",
+      "tts": {
+        "text": "In the autumn, a bear eats as much as it can.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then it finds a quiet place and sleeps deeply through the coldest part of the winter.",
+      "text_markdown": "Then it finds a quiet place and sleeps deeply through the coldest part of the winter.",
+      "tts": {
+        "text": "Then it finds a quiet place and sleeps deeply through the coldest part of the winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wolves and foxes hunt in the forest.",
+      "text_markdown": "Wolves and foxes hunt in the forest.",
+      "tts": {
+        "text": "Wolves and foxes hunt in the forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wolves live in family groups and travel many miles each day.",
+      "text_markdown": "Wolves live in family groups and travel many miles each day.",
+      "tts": {
+        "text": "Wolves live in family groups and travel many miles each day.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Foxes are smaller, and they hunt alone, often at night.",
+      "text_markdown": "Foxes are smaller, and they hunt alone, often at night.",
+      "tts": {
+        "text": "Foxes are smaller, and they hunt alone, often at night.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Squirrels are everywhere.",
+      "text_markdown": "Squirrels are everywhere.",
+      "tts": {
+        "text": "Squirrels are everywhere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, they gather nuts and bury them across the forest.",
+      "text_markdown": "In the autumn, they gather nuts and bury them across the forest.",
+      "tts": {
+        "text": "In the autumn, they gather nuts and bury them across the forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the winter, they dig up their hidden stores to eat.",
+      "text_markdown": "In the winter, they dig up their hidden stores to eat.",
+      "tts": {
+        "text": "In the winter, they dig up their hidden stores to eat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sometimes they forget a few, and those nuts grow into the next trees.",
+      "text_markdown": "Sometimes they forget a few, and those nuts grow into the next trees.",
+      "tts": {
+        "text": "Sometimes they forget a few, and those nuts grow into the next trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rabbits and small mice live in the soft soil and under fallen logs.",
+      "text_markdown": "Rabbits and small mice live in the soft soil and under fallen logs.",
+      "tts": {
+        "text": "Rabbits and small mice live in the soft soil and under fallen logs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many kinds of birds fill the temperate forest with sound.",
+      "text_markdown": "Many kinds of birds fill the temperate forest with sound.",
+      "tts": {
+        "text": "Many kinds of birds fill the temperate forest with sound.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some birds stay all year, and you can see them on the bare winter branches.",
+      "text_markdown": "Some birds stay all year, and you can see them on the bare winter branches.",
+      "tts": {
+        "text": "Some birds stay all year, and you can see them on the bare winter branches.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many other birds fly south for the winter and come back when spring returns.",
+      "text_markdown": "Many other birds fly south for the winter and come back when spring returns.",
+      "tts": {
+        "text": "Many other birds fly south for the winter and come back when spring returns.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Woodpeckers hammer on the trunks of trees.",
+      "text_markdown": "Woodpeckers hammer on the trunks of trees.",
+      "tts": {
+        "text": "Woodpeckers hammer on the trunks of trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Owls hunt in the night.",
+      "text_markdown": "Owls hunt in the night.",
+      "tts": {
+        "text": "Owls hunt in the night.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In ponds and streams, frogs sing, and small fish swim under the ice in winter.",
+      "text_markdown": "In ponds and streams, frogs sing, and small fish swim under the ice in winter.",
+      "tts": {
+        "text": "In ponds and streams, frogs sing, and small fish swim under the ice in winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Butterflies and bees come out in the warm months, when the flowers open.",
+      "text_markdown": "Butterflies and bees come out in the warm months, when the flowers open.",
+      "tts": {
+        "text": "Butterflies and bees come out in the warm months, when the flowers open.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every animal here knows the four seasons in its body.",
+      "text_markdown": "Every animal here knows the four seasons in its body.",
+      "tts": {
+        "text": "Every animal here knows the four seasons in its body.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each one knows when to be busy, when to rest, and when to wake again.",
+      "text_markdown": "Each one knows when to be busy, when to rest, and when to wake again.",
+      "tts": {
+        "text": "Each one knows when to be busy, when to rest, and when to wake again.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The People",
+      "text_markdown": "The People"
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People have lived in the temperate forest for many thousands of years.",
+      "text_markdown": "People have lived in the temperate forest for many thousands of years.",
+      "tts": {
+        "text": "People have lived in the temperate forest for many thousands of years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The mild seasons and the rich soil have always made these places good for human life.",
+      "text_markdown": "The mild seasons and the rich soil have always made these places good for human life.",
+      "tts": {
+        "text": "The mild seasons and the rich soil have always made these places good for human life.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Long ago, people in these forests hunted deer and small animals.",
+      "text_markdown": "Long ago, people in these forests hunted deer and small animals.",
+      "tts": {
+        "text": "Long ago, people in these forests hunted deer and small animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They gathered nuts, berries, and roots from the forest floor.",
+      "text_markdown": "They gathered nuts, berries, and roots from the forest floor.",
+      "tts": {
+        "text": "They gathered nuts, berries, and roots from the forest floor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They knew which mushrooms were safe and which were not.",
+      "text_markdown": "They knew which mushrooms were safe and which were not.",
+      "tts": {
+        "text": "They knew which mushrooms were safe and which were not.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They built their homes from the wood of the trees around them.",
+      "text_markdown": "They built their homes from the wood of the trees around them.",
+      "tts": {
+        "text": "They built their homes from the wood of the trees around them.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A house of logs and a roof of bark can keep a family warm through a long winter.",
+      "text_markdown": "A house of logs and a roof of bark can keep a family warm through a long winter.",
+      "tts": {
+        "text": "A house of logs and a roof of bark can keep a family warm through a long winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the spring and summer, they grew food in small fields cleared from the forest.",
+      "text_markdown": "In the spring and summer, they grew food in small fields cleared from the forest.",
+      "tts": {
+        "text": "In the spring and summer, they grew food in small fields cleared from the forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They planted grain, beans, and roots that would do well in the cool weather.",
+      "text_markdown": "They planted grain, beans, and roots that would do well in the cool weather.",
+      "tts": {
+        "text": "They planted grain, beans, and roots that would do well in the cool weather.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autumn, they gathered the harvest and stored it away for the cold months.",
+      "text_markdown": "In autumn, they gathered the harvest and stored it away for the cold months.",
+      "tts": {
+        "text": "In autumn, they gathered the harvest and stored it away for the cold months.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the winter, they sat by their fires, mended their tools, told stories, and waited for spring.",
+      "text_markdown": "In the winter, they sat by their fires, mended their tools, told stories, and waited for spring.",
+      "tts": {
+        "text": "In the winter, they sat by their fires, mended their tools, told stories, and waited for spring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The forest gave them wood for fires and for building.",
+      "text_markdown": "The forest gave them wood for fires and for building.",
+      "tts": {
+        "text": "The forest gave them wood for fires and for building.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It gave them bark and leaves for medicine.",
+      "text_markdown": "It gave them bark and leaves for medicine.",
+      "tts": {
+        "text": "It gave them bark and leaves for medicine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It gave them dyes for cloth, and food in every season.",
+      "text_markdown": "It gave them dyes for cloth, and food in every season.",
+      "tts": {
+        "text": "It gave them dyes for cloth, and food in every season.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Over time, many of these forests were cut down to make farms and cities.",
+      "text_markdown": "Over time, many of these forests were cut down to make farms and cities.",
+      "tts": {
+        "text": "Over time, many of these forests were cut down to make farms and cities.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The villages grew into towns, and the towns grew into the great cities of the temperate world.",
+      "text_markdown": "The villages grew into towns, and the towns grew into the great cities of the temperate world.",
+      "tts": {
+        "text": "The villages grew into towns, and the towns grew into the great cities of the temperate world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But people still know the forest in their stories and songs.",
+      "text_markdown": "But people still know the forest in their stories and songs.",
+      "tts": {
+        "text": "But people still know the forest in their stories and songs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of the old songs and stories of these lands are full of trees, wolves, deer, and the long winter nights.",
+      "text_markdown": "Many of the old songs and stories of these lands are full of trees, wolves, deer, and the long winter nights.",
+      "tts": {
+        "text": "Many of the old songs and stories of these lands are full of trees, wolves, deer, and the long winter nights.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In every temperate forest, this kind of life has its own languages, its own foods, and its own ways of waiting for spring.",
+      "text_markdown": "In every temperate forest, this kind of life has its own languages, its own foods, and its own ways of waiting for spring.",
+      "tts": {
+        "text": "In every temperate forest, this kind of life has its own languages, its own foods, and its own ways of waiting for spring.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Forest Today",
+      "text_markdown": "The Forest Today"
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The temperate forest is one of the most important biomes for people.",
+      "text_markdown": "The temperate forest is one of the most important biomes for people.",
+      "tts": {
+        "text": "The temperate forest is one of the most important biomes for people.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most of the great cities of the world stand in places that were once temperate forest.",
+      "text_markdown": "Most of the great cities of the world stand in places that were once temperate forest.",
+      "tts": {
+        "text": "Most of the great cities of the world stand in places that were once temperate forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The forests give us wood for building, paper for writing, and clean water for drinking.",
+      "text_markdown": "The forests give us wood for building, paper for writing, and clean water for drinking.",
+      "tts": {
+        "text": "The forests give us wood for building, paper for writing, and clean water for drinking.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The trees take in the gas we breathe out and use it to grow.",
+      "text_markdown": "The trees take in the gas we breathe out and use it to grow.",
+      "tts": {
+        "text": "The trees take in the gas we breathe out and use it to grow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They give back the gas we breathe in.",
+      "text_markdown": "They give back the gas we breathe in.",
+      "tts": {
+        "text": "They give back the gas we breathe in.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autumn, the forest is one of the most beautiful sights on Earth.",
+      "text_markdown": "In autumn, the forest is one of the most beautiful sights on Earth.",
+      "tts": {
+        "text": "In autumn, the forest is one of the most beautiful sights on Earth.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People travel long distances just to see the colored leaves.",
+      "text_markdown": "People travel long distances just to see the colored leaves.",
+      "tts": {
+        "text": "People travel long distances just to see the colored leaves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the temperate forest has lost a lot of its land.",
+      "text_markdown": "But the temperate forest has lost a lot of its land.",
+      "tts": {
+        "text": "But the temperate forest has lost a lot of its land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Over thousands of years, much of the original forest was cut down.",
+      "text_markdown": "Over thousands of years, much of the original forest was cut down.",
+      "tts": {
+        "text": "Over thousands of years, much of the original forest was cut down.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Where there were once endless trees, there are now fields, towns, roads, and cities.",
+      "text_markdown": "Where there were once endless trees, there are now fields, towns, roads, and cities.",
+      "tts": {
+        "text": "Where there were once endless trees, there are now fields, towns, roads, and cities.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The forests that remain are smaller and broken up.",
+      "text_markdown": "The forests that remain are smaller and broken up.",
+      "tts": {
+        "text": "The forests that remain are smaller and broken up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many groups around the world are working to take care of what is left.",
+      "text_markdown": "Many groups around the world are working to take care of what is left.",
+      "tts": {
+        "text": "Many groups around the world are working to take care of what is left.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They plant new trees where old ones were lost.",
+      "text_markdown": "They plant new trees where old ones were lost.",
+      "tts": {
+        "text": "They plant new trees where old ones were lost.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They protect old forests from being cut down.",
+      "text_markdown": "They protect old forests from being cut down.",
+      "tts": {
+        "text": "They protect old forests from being cut down.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They study the forest so we can understand it better.",
+      "text_markdown": "They study the forest so we can understand it better.",
+      "tts": {
+        "text": "They study the forest so we can understand it better.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A young forest can grow back in a hundred years.",
+      "text_markdown": "A young forest can grow back in a hundred years.",
+      "tts": {
+        "text": "A young forest can grow back in a hundred years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "An old forest can hold living trees that are older than any building near it.",
+      "text_markdown": "An old forest can hold living trees that are older than any building near it.",
+      "tts": {
+        "text": "An old forest can hold living trees that are older than any building near it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "The Forest Today",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is worth our care.",
+      "text_markdown": "It is worth our care.",
+      "tts": {
+        "text": "It is worth our care.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Closing",
+      "text_markdown": "Closing"
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the temperate forest.",
+      "text_markdown": "That is the temperate forest.",
+      "tts": {
+        "text": "That is the temperate forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A green world of tall trees, cool streams, and four very different seasons.",
+      "text_markdown": "A green world of tall trees, cool streams, and four very different seasons.",
+      "tts": {
+        "text": "A green world of tall trees, cool streams, and four very different seasons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you ever walk into one, stand still for a minute.",
+      "text_markdown": "If you ever walk into one, stand still for a minute.",
+      "tts": {
+        "text": "If you ever walk into one, stand still for a minute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Listen to the wind in the leaves above you.",
+      "text_markdown": "Listen to the wind in the leaves above you.",
+      "tts": {
+        "text": "Listen to the wind in the leaves above you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Look at the soft carpet of old leaves under your feet.",
+      "text_markdown": "Look at the soft carpet of old leaves under your feet.",
+      "tts": {
+        "text": "Look at the soft carpet of old leaves under your feet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You will hear the heart of the biome beating around you.",
+      "text_markdown": "You will hear the heart of the biome beating around you.",
+      "tts": {
+        "text": "You will hear the heart of the biome beating around you.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+version: 1
+engine: chatterbox
+tts:
+  cfg_weight: 0.85
+  exaggeration: 0.3
+  temperature: 0.6
+  top_p: 0.85
+  min_p: 0.1
+  repetition_penalty: 2.5
+voices:
+  en: pre-mastered/isabelle-gymnastic-1__mastered-18.wav
+mastering:
+  target_lufs: -18.0
+  target_tp: -1.0
+  audio_codec: aac
+  audio_bitrate: '64000'
+  output_ext: .m4a
+  target_sample_rate: null
+filter_chain:
+  highpass:
+    enabled: true
+    frequency: 80
+    width_type: q
+    width: 0.7
+  adeclick:
+    enabled: true
+    window: 55
+    overlap: 75
+    threshold: 1.5
+  afftdn:
+    enabled: true
+    nr: 15
+    nf: -35
+    tn: 1
+  agate:
+    enabled: true
+    threshold: 0.018
+    range: 0.01
+    attack: 5
+    release: 50
+  acompressor:
+    enabled: true
+    threshold: 0.1
+    ratio: 2
+    attack: 10
+    release: 100
+    makeup: 1
+  alimiter:
+    enabled: true
+    limit: 0.8913
+    level: false
+denoise:
+  enabled: false
+trimming:
+  zcr_window_ms: 500
+  zcr_multiplier: 2.5
+  consecutive_windows: 3
+  scan_start_ratio: 0.6
+  buffer_sec: 0.3
+  tail_ms: 500
+  fade_ms: 50
+  fade_sec: 0.05
+  tail_grace_ms: 100
+  tail_fade_ms: 150
+  always_trim: false
+  max_sec_per_char:
+    en: 0.12
+    es: 0.12
+    zh: 0.25
+    ar: 0.15
+    fr: 0.12
+    he: 0.15
+  base_buffer_sec:
+    en: 5.0
+    es: 5.0
+    zh: 5.0
+    ar: 5.0
+    fr: 5.0
+    he: 5.0
+validation:
+  min_word_ratio: 0.8
+  max_trailing_silence_ratio: 0.25
+  max_stacked_words: 3
+  min_trailing_silence_ms: 75
+  max_inter_word_gap_ms: 3000
+  min_word_duration_ms: 30
+  max_short_words: 2
+  cluster_window_ms: 200
+  max_words_in_cluster: 5
+  max_tail_spike_ratio: 2.0
+  max_tail_energy_ratio: 0.3
+  min_tail_energy_ms: 50.0
+  min_lead_in_ms: 50
+  max_ending_energy_ratio: 0.2
+  tts_audio_truncated_min_post_whisper_ms: 175
+  first_word_weak_threshold: 0.2
+  no_gemini_downgrade_checks: []
+  tail_free_transcribe_gate_ms: 600
+  tail_free_transcribe_window_ms: 4000
+  tail_free_transcribe_tail_words: 3
+  tail_free_transcribe_fail_wer: 0.5
+  tts_audio_truncated_min_vad_fade_ms_by_lang:
+    pt: 200
+  max_sec_per_char:
+    en: 0.12
+    es: 0.12
+    zh: 0.25
+    ar: 0.15
+    fr: 0.12
+    he: 0.15
+  min_sec_per_char:
+    en: 0.02
+    es: 0.02
+    zh: 0.03
+    ar: 0.02
+    fr: 0.02
+    he: 0.02
+  base_buffer_sec:
+    en: 5.0
+    es: 5.0
+    zh: 5.0
+    ar: 5.0
+    fr: 5.0
+    he: 5.0
+  wer_per_lang:
+    ar: 0.5
+    da: 0.5
+    de: 0.3
+    el: 0.58
+    en: 0.3
+    es: 0.3
+    fi: 0.33
+    fr: 0.3
+    hi: 0.43
+    it: 0.3
+    ko: 0.5
+    ms: 0.5
+    nl: 0.5
+    'no': 0.5
+    pl: 0.33
+    pt: 0.3
+    ru: 0.3
+    sv: 0.33
+    sw: 1.0
+    tr: 0.5
+  cer_per_lang:
+    he: 0.69
+    ja: 0.3
+    zh: 0.3
+  mms_enabled: true
+  llm_judge_enabled: true
+  llm_judge_model: claude-haiku-4-5-20251001
+  mms_truncation_override_langs:
+  - ta
+  - te
+  - kn
+  - gu
+  - bn
+  - mr
+  - ne
+  - ur
+  - hi
+  - th
+  mms_truncation_override_threshold: 0.5
+  mms_primary_align_langs:
+  - ta
+  - te
+  - kn
+  - gu
+  - bn
+  - mr
+  - ne
+  - ur
+  - hi
+  - th
+  sibling_languages: {}
+  whisper_params: null
+  whisper_params_by_lang: {}
+retry:
+  max_retries: 5
+  max_rewrites: 3
+  jitter: 0.05
+  early_stop_plateau: 5
+  schedules:
+  - {}
+  - cfg_weight: 0.8
+    temperature: 0.5
+  - cfg_weight: 0.5
+    temperature: 0.3
+    exaggeration: 0.2
+  - cfg_weight: 0.6
+    temperature: 0.7
+    exaggeration: 0.6
+  - cfg_weight: 1.0
+    temperature: 0.2
+gemini:
+  director_prompt: ''
+overrides: {}
+speakers: {}
+host_speaker_id: null

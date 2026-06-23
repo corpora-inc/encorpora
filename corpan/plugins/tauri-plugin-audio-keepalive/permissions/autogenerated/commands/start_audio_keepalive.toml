@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-start-audio-keepalive"
+description = "Enables the start_audio_keepalive command without any pre-configured scope."
+commands.allow = ["start_audio_keepalive"]
+
+[[permission]]
+identifier = "deny-start-audio-keepalive"
+description = "Denies the start_audio_keepalive command without any pre-configured scope."
+commands.deny = ["start_audio_keepalive"]

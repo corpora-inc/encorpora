@@ -1,0 +1,258 @@
+name: CI
+
+# Runs on EVERY PR to main and every merge_group (the merge queue), so the
+# `ci-gate` summary status always reports. A required check that is filtered out
+# at the workflow level would leave unrelated PRs "expecting" it forever and
+# deadlock the queue. Path filtering instead lives in the `changes` job below,
+# which skips the heavy build/test jobs when their area is untouched. The
+# `changes` job is cheap (checkout + git diff), so running it on every PR is fine.
+
+on:
+  pull_request:
+    branches: ["main"]
+  merge_group:
+  push:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    name: changes
+    runs-on: ubuntu-latest
+    outputs:
+      corpan_app: ${{ steps.filter.outputs.corpan_app }}
+      lambda: ${{ steps.filter.outputs.lambda }}
+      packs: ${{ steps.filter.outputs.packs }}
+      terraform: ${{ steps.filter.outputs.terraform }}
+      web: ${{ steps.filter.outputs.web }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: filter
+        name: Detect changed areas
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha || github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+
+          base="${BASE_SHA}"
+          head="${HEAD_SHA}"
+          if [ -z "${base}" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            base="$(git rev-parse "${head}^" 2>/dev/null || true)"
+          fi
+
+          changed="$(mktemp)"
+          if [ -n "${base}" ]; then
+            git diff --name-only "${base}" "${head}" > "${changed}"
+          else
+            git diff-tree --no-commit-id --name-only -r "${head}" > "${changed}"
+          fi
+
+          echo "Changed files:"
+          sed 's/^/  /' "${changed}"
+
+          run_all=false
+          if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
+            run_all=true
+          fi
+
+          set_output() {
+            local name="$1"
+            local pattern="$2"
+            if [ "${run_all}" = "true" ] || grep -Eq "${pattern}" "${changed}"; then
+              echo "${name}=true" >> "${GITHUB_OUTPUT}"
+            else
+              echo "${name}=false" >> "${GITHUB_OUTPUT}"
+            fi
+          }
+
+          set_output corpan_app '^(corpan/corpan-app/|\.github/workflows/ci\.yml$)'
+          set_output lambda '^(corpan/infra/terraform/lambda/|\.github/workflows/ci\.yml$)'
+          set_output packs '^(corpan/packs/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+          set_output terraform '^(corpan/infra/terraform/.*(\.tf|\.tfvars|\.tf\.json)$|corpan/infra/terraform/\.terraform\.lock\.hcl$|\.github/workflows/ci\.yml$)'
+          set_output web '^(web/(io|data|pages|scripts)/|\.github/workflows/(ci|deploy-pages)\.yml$)'
+
+  corpan-app:
+    name: corpan-app · tsc + build
+    needs: changes
+    if: needs.changes.outputs.corpan_app == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: corpan/corpan-app/package-lock.json
+      - name: Install
+        working-directory: corpan/corpan-app
+        run: npm ci
+      - name: Test
+        working-directory: corpan/corpan-app
+        run: npm test
+      - name: Typecheck
+        working-directory: corpan/corpan-app
+        run: npm run tsc
+      - name: Build
+        working-directory: corpan/corpan-app
+        run: npm run build
+
+  lambda:
+    name: lambda · tests
+    needs: changes
+    if: needs.changes.outputs.lambda == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: corpan/infra/terraform/lambda/package-lock.json
+      - name: Install
+        working-directory: corpan/infra/terraform/lambda
+        run: npm ci
+      - name: Test
+        working-directory: corpan/infra/terraform/lambda
+        run: npm test
+
+  web-io:
+    name: web/io · build
+    needs: changes
+    if: needs.changes.outputs.web == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: web/io/package-lock.json
+      - name: Install
+        working-directory: web/io
+        run: npm ci
+      - name: Build
+        working-directory: web/io
+        run: npm run build
+
+  changed-packs:
+    name: changed packs · test + build
+    needs: changes
+    if: needs.changes.outputs.packs == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Test, typecheck, validate manifest, build changed packs
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.event.merge_group.head_sha || github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${BASE_SHA}" ] || ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
+            BASE_SHA="$(git rev-parse "${HEAD_SHA}^")"
+          fi
+
+          mapfile -t packs < <(
+            git diff --name-only "${BASE_SHA}" "${HEAD_SHA}" |
+              awk -F/ '/^corpan\/packs\/[^/]+\// { print $3 }' |
+              sort -u
+          )
+
+          if [ "${#packs[@]}" -eq 0 ]; then
+            echo "No changed packs."
+            exit 0
+          fi
+
+          for pack in "${packs[@]}"; do
+            dir="corpan/packs/${pack}"
+            if [ ! -f "${dir}/package.json" ]; then
+              echo "Skipping ${pack}: no package.json."
+              continue
+            fi
+
+            echo "::group::${pack}"
+
+            # Manifest schema sanity: must be valid JSON with id + version.
+            if [ -f "${dir}/manifest.json" ]; then
+              node -e '
+                const fs = require("fs");
+                const m = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+                for (const k of ["id", "version"]) {
+                  if (!m[k]) { console.error(`manifest.json missing required key: ${k}`); process.exit(1); }
+                }
+                console.log(`manifest ok: ${m.id}@${m.version}`);
+              ' "${dir}/manifest.json"
+            else
+              echo "Note: ${pack} has no manifest.json (source-only pack)."
+            fi
+
+            npm install --prefix "${dir}" --legacy-peer-deps
+
+            # Run the pack's own test + typecheck when defined (back-compat gate).
+            if node -e 'process.exit(require(process.argv[1]).scripts?.test ? 0 : 1)' "${dir}/package.json" 2>/dev/null; then
+              npm run --prefix "${dir}" test
+            else
+              echo "No test script for ${pack}; skipping."
+            fi
+            npm run --prefix "${dir}" tsc --if-present
+            npm run --prefix "${dir}" build --if-present
+            echo "::endgroup::"
+          done
+
+  terraform:
+    name: terraform · fmt + validate
+    needs: changes
+    if: needs.changes.outputs.terraform == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.5.7"
+      - name: Init (no backend)
+        working-directory: corpan/infra/terraform
+        run: terraform init -backend=false
+      - name: Format check
+        working-directory: corpan/infra/terraform
+        run: terraform fmt -check -recursive
+      - name: Validate
+        working-directory: corpan/infra/terraform
+        run: terraform validate
+
+  # Single summary status that aggregates every job above. THIS is the context to
+  # mark as a required check on `main` — it always runs (if: always()) and always
+  # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.
+  # Skipped needs are fine; any failure or cancellation fails the gate.
+  ci-gate:
+    name: ci-gate
+    needs: [changes, corpan-app, lambda, web-io, changed-packs, terraform]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require all CI jobs to have passed or been skipped
+        env:
+          RESULTS: ${{ join(needs.*.result, ',') }}
+        run: |
+          set -euo pipefail
+          echo "needs results: ${RESULTS}"
+          IFS=',' read -ra arr <<< "${RESULTS}"
+          for r in "${arr[@]}"; do
+            if [ "${r}" = "failure" ] || [ "${r}" = "cancelled" ]; then
+              echo "::error::A required CI job did not pass (result: ${r})."
+              exit 1
+            fi
+          done
+          echo "All required CI jobs passed or were skipped."

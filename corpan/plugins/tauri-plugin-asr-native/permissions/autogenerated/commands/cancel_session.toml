@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-cancel-session"
+description = "Enables the cancel_session command without any pre-configured scope."
+commands.allow = ["cancel_session"]
+
+[[permission]]
+identifier = "deny-cancel-session"
+description = "Denies the cancel_session command without any pre-configured scope."
+commands.deny = ["cancel_session"]

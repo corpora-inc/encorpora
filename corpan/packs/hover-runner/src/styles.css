@@ -1,0 +1,575 @@
+:root {
+  color-scheme: dark;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Drawer theme — matches stargate's cyan/space palette for now.
+     Hover Runner's own accent (cyan) is identical, so no overrides
+     are needed. Future game packs can override these per-pack. */
+  --catalog-bg: rgba(2, 4, 9, 0.96);
+  --catalog-surface: rgba(15, 25, 45, 0.85);
+  --catalog-text: #c0d0e8;
+  --catalog-text-dim: #6080a0;
+  --catalog-accent: #7fd6ff;
+  --catalog-accent-hover: #a0e4ff;
+  --catalog-border: rgba(127, 214, 255, 0.12);
+  --catalog-font: system-ui, -apple-system, sans-serif;
+  --catalog-radius: 12px;
+  --drawer-backdrop: rgba(2, 4, 9, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#corpan-game-root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #05070f;
+}
+
+body {
+  overflow: hidden;
+}
+
+.hover-runner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 60% 20%, #11203b, #05070f 55%, #020409 100%);
+  overflow: hidden;
+}
+
+.hover-runner canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+/* --- Phrase HUD (bottom-center prompt/answer overlay) --- */
+
+.phrase-hud {
+  position: absolute;
+  left: 50%;
+  bottom: calc(18px + var(--safe-bottom));
+  transform: translateX(-50%);
+  width: min(620px, 92vw);
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(6, 10, 20, 0.7);
+  border: 1px solid rgba(234, 242, 255, 0.18);
+  color: #eaf2ff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: none;
+  transition: bottom 0.55s ease, transform 0.55s ease, opacity 0.55s ease;
+  z-index: 10;
+}
+
+.phrase-hud.intro {
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  box-shadow: 0 18px 36px rgba(12, 24, 48, 0.35);
+}
+
+.phrase-hud.intro .phrase-hud-text {
+  font-size: 22px;
+}
+
+.phrase-hud.intro .phrase-hud-romanization {
+  font-size: 16px;
+}
+
+.phrase-hud.celebrate {
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  background: rgba(12, 18, 36, 0.85);
+  box-shadow: 0 20px 40px rgba(30, 140, 210, 0.35);
+}
+
+.phrase-hud.celebrate .phrase-hud-text {
+  font-size: 22px;
+}
+
+.phrase-hud.celebrate .phrase-hud-answer {
+  font-size: 24px;
+}
+
+.phrase-hud.celebrate .phrase-hud-romanization,
+.phrase-hud.celebrate .phrase-hud-answer-romanization {
+  font-size: 16px;
+}
+
+.phrase-hud-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.phrase-hud-text {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.phrase-hud-romanization {
+  font-size: 16px;
+  opacity: 0.75;
+  line-height: 1.2;
+}
+
+.phrase-hud-answer {
+  font-size: 24px;
+  font-weight: 700;
+  color: #bfe6ff;
+  line-height: 1.3;
+}
+
+.phrase-hud-answer-romanization {
+  font-size: 16px;
+  opacity: 0.75;
+  line-height: 1.2;
+}
+
+.phrase-hud.match {
+  box-shadow: 0 0 24px rgba(127, 214, 255, 0.22);
+}
+
+.phrase-hud-label.bad {
+  color: #ff9a9a;
+  opacity: 0.85;
+}
+
+/* --- Status HUD (score/streak top-left) --- */
+
+/* ── Scorecard: a compact glass card, top-left — the exact mirror of the
+      command-drawer hamburger (top-right). Big SCORE on the left, a 2×2 grid of
+      mini-stats on the right (combo·best / 🔥 days / ⚡ quota / ✓ net). Card
+      height is LOCKED to the hamburger across the same breakpoints. ────────── */
+.scorecard {
+  position: absolute;
+  left: calc(16px + var(--safe-left));
+  top: calc(15px + var(--safe-top));
+  height: 48px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  padding: 0 13px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(14, 20, 36, 0.82), rgba(8, 11, 22, 0.8));
+  border: 1px solid rgba(170, 200, 255, 0.16);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: #eef4ff;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-variant-numeric: tabular-nums;
+  z-index: 10;
+}
+/* Match the hamburger's responsive heights (see commandDrawer.css). */
+@media (max-width: 480px) {
+  .scorecard { height: 42px; padding: 0 12px; gap: 10px; }
+}
+@media (max-height: 520px) {
+  .scorecard { height: 38px; top: calc(10px + var(--safe-top)); padding: 0 11px; }
+}
+@media (max-height: 380px) {
+  .scorecard { height: 34px; top: calc(8px + var(--safe-top)); }
+}
+
+.sc-score {
+  font: 800 22px/1 "Trebuchet MS", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 10px rgba(120, 180, 255, 0.25);
+}
+@media (max-width: 480px) { .sc-score { font-size: 20px; } }
+@media (max-height: 380px) { .sc-score { font-size: 18px; } }
+
+.sc-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 11px;
+  row-gap: 1px;
+  align-content: center;
+}
+
+.sc-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+/* Hidden cells keep their slot so the 2×2 never reflows. */
+.sc-stat.is-hidden { visibility: hidden; }
+
+.sc-ic { display: inline-flex; }
+.sc-ic svg { width: 12px; height: 12px; display: block; }
+.sc-stat.is-combo .sc-ic { color: #7fd6ff; }
+.sc-stat.is-days .sc-ic { color: #ffb27a; }
+.sc-stat.is-quota .sc-ic { color: #c0a9ff; }
+.sc-stat.is-net .sc-ic { color: #9aa7c2; }
+.sc-stat.is-net.is-pos .sc-ic,
+.sc-stat.is-net.is-pos .sc-val { color: #7ef0b0; }
+.sc-stat.is-net.is-neg .sc-ic,
+.sc-stat.is-net.is-neg .sc-val { color: #ff9aa6; }
+
+.sc-val { color: #eef4ff; }
+.sc-sub {
+  color: #aebbd6;
+  opacity: 0.65;
+  font-size: 10px;
+  font-weight: 500;
+}
+.sc-stat.is-combo .sc-sub::before { content: "·"; margin-right: 1px; }
+.sc-stat.is-quota .sc-sub::before { content: "/"; }
+.sc-sub:empty { display: none; }
+.sc-sub:empty::before { content: none; }
+
+/* --- Show-Prompt toggle (rendered inside the drawer's Display section) --- */
+
+.hud-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  padding: 8px 0;
+  color: #c0d0e8;
+}
+
+.hud-toggle input {
+  accent-color: #7fd6ff;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* --- Motion Controls row (rendered inside the drawer's Gameplay section) ---
+   Composite row: vertical stack on the left (label + live status line)
+   with an ON/OFF toggle on the right. The status line is the single
+   surface for permission feedback — it replaces the legacy floating
+   "Enable Motion / Motion Active" pill. */
+
+.hr-motion-row {
+  align-items: center;
+}
+
+.hr-motion-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.hr-motion-status {
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: rgba(192, 208, 232, 0.55);
+  transition: color 0.2s ease;
+}
+
+.hr-motion-status:empty {
+  display: none;
+}
+
+.hr-motion-status--info {
+  color: rgba(127, 214, 255, 0.75);
+}
+
+.hr-motion-status--active {
+  color: rgba(127, 214, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hr-motion-status--active::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4cff9f;
+  box-shadow: 0 0 6px rgba(76, 255, 159, 0.7);
+  animation: hr-motion-pulse 1.4s ease-in-out infinite;
+}
+
+.hr-motion-status--warn {
+  color: #ff9a9a;
+}
+
+@keyframes hr-motion-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* --- Skin picker (rendered inside the drawer's Display section) --- */
+
+.skin-panel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  color: #f4f7ff;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skin-panel label {
+  opacity: 0.85;
+}
+
+.skin-select {
+  appearance: none;
+  background: rgba(234, 242, 255, 0.08);
+  color: inherit;
+  border: 1px solid rgba(234, 242, 255, 0.2);
+  border-radius: 999px;
+  padding: 8px 26px 8px 12px;
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  outline: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 40px;
+}
+
+.skin-select:focus {
+  border-color: rgba(234, 242, 255, 0.5);
+}
+
+.skin-cycle {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(234, 242, 255, 0.25);
+  background: rgba(234, 242, 255, 0.12);
+  color: inherit;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  min-height: 40px;
+}
+
+.skin-cycle:active {
+  transform: translateY(1px) scale(0.98);
+  border-color: rgba(234, 242, 255, 0.5);
+  background: rgba(234, 242, 255, 0.18);
+}
+
+/* --- Motion-permission overlay (iOS first-run) ---
+   Full-screen scrim + centered card. The "Enable Motion" button is
+   the only path WebKit reliably honours for
+   DeviceOrientationEvent.requestPermission() — direct click on a real
+   <button>. Shown on iOS at launch when motion is supported and the
+   user's setting is ON; auto-dismisses on grant/deny. */
+
+.hr-motion-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(2, 4, 9, 0.78);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  backdrop-filter: blur(10px) saturate(120%);
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 280ms ease;
+}
+
+.hr-motion-overlay--shown {
+  opacity: 1;
+}
+
+.hr-motion-overlay--hiding {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hr-motion-overlay-card {
+  max-width: min(420px, 92vw);
+  width: 100%;
+  padding: 28px 28px 20px;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 25, 45, 0.96) 0%,
+    rgba(8, 16, 32, 0.96) 100%
+  );
+  border: 1px solid rgba(127, 214, 255, 0.22);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(127, 214, 255, 0.12),
+    inset 0 1px 0 rgba(192, 208, 232, 0.08);
+  color: #c0d0e8;
+  text-align: center;
+  transform: translateY(8px) scale(0.985);
+  opacity: 0;
+  transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1), opacity 280ms ease;
+}
+
+.hr-motion-overlay--shown .hr-motion-overlay-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.hr-motion-overlay-glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 0 8px rgba(127, 214, 255, 0.35));
+}
+
+.hr-motion-overlay-title {
+  margin: 0 0 10px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #d0e8ff;
+}
+
+.hr-motion-overlay-body {
+  margin: 0 0 22px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(192, 208, 232, 0.7);
+}
+
+.hr-motion-overlay-allow {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  margin: 0 0 6px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(127, 214, 255, 0.55);
+  background: linear-gradient(
+    180deg,
+    rgba(127, 214, 255, 0.22) 0%,
+    rgba(127, 214, 255, 0.08) 100%
+  );
+  color: #e0f2ff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.hr-motion-overlay-allow:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(127, 214, 255, 0.32) 0%,
+    rgba(127, 214, 255, 0.16) 100%
+  );
+  border-color: rgba(127, 214, 255, 0.85);
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(127, 214, 255, 0.28);
+}
+
+.hr-motion-overlay-allow:active {
+  transform: scale(0.985);
+}
+
+.hr-motion-overlay-dismiss {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(192, 208, 232, 0.18);
+  background: rgba(192, 208, 232, 0.06);
+  color: rgba(224, 242, 255, 0.82);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.hr-motion-overlay-dismiss:hover {
+  border-color: rgba(192, 208, 232, 0.34);
+  background: rgba(192, 208, 232, 0.12);
+  color: #ffffff;
+}
+
+/* --- Score popup animation (kept; lives outside the drawer) --- */
+
+.score-popup {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  font-size: 72px;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow:
+    0 0 20px rgba(127, 214, 255, 0.9),
+    0 0 40px rgba(127, 214, 255, 0.6),
+    0 0 60px rgba(90, 180, 255, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+  letter-spacing: 0.05em;
+  font-family: "Trebuchet MS", "Impact", sans-serif;
+  -webkit-text-stroke: 2px rgba(10, 50, 100, 0.8);
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e0f2ff 30%,
+    #7fd6ff 70%,
+    #5ab4ff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: score-glow 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes score-glow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(127, 214, 255, 0.6));
+  }
+  to {
+    filter: drop-shadow(0 0 20px rgba(127, 214, 255, 0.9));
+  }
+}

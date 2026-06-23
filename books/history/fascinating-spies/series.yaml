@@ -1,0 +1,84 @@
+series:
+  title: "Fascinating Spies"
+  tagline: "True stories of espionage that shaped the modern world."
+  planned_volumes: "10+"
+  philosophy: |
+    Each volume tells the true story of an intelligence operative, network,
+    or operation — drawn from declassified records and scholarly sources.
+    Written at an accessible reading level: riveting for adults, comprehensible
+    to a motivated 9-year-old. Every sentence must stand alone as a clear
+    statement of fact or narrative.
+
+    We present the moral complexity of espionage honestly. These are not
+    heroes or villains — they are people operating in extraordinary
+    circumstances. Let the reader decide.
+
+    The series follows a rough chronological arc from the 1890s Klondike
+    through the 1953 Iranian coup, tracing the emergence of modern
+    intelligence services through the lives of their operatives.
+  audience:
+    reading_level: "4th-5th grade"
+    target: "curious readers 9+ and adult language learners"
+  output:
+    formats: [pdf, epub, corpan-pack]
+    tts: true
+    target_words: "6000-7000"
+    target_time: "~3 hours"
+    trim: "6x9"
+  editorial_rules:
+    - "Every claim must trace to a scholarly source listed in book.yaml"
+    - "Present competing interpretations; never assert a single truth about disputed events"
+    - "Avoid anachronistic moral judgments — describe actions and consequences"
+    - "Use primary-source quotations when available"
+    - "Acknowledge what remains unknown or classified"
+  volumes:
+    - number: 1
+      title: "Klondike Joe: The Canadian Who Saved a Queen"
+      directory: "01-klondike-joe"
+      era: "1890s – 1920s"
+      region: "Canada/Romania/Russia"
+    - number: 2
+      title: "The Ace of Spies: Sidney Reilly"
+      directory: "02-the-ace-of-spies"
+      era: "1900s – 1920s"
+      region: "Russia/Britain"
+    - number: 3
+      title: "Jolly George: Captain George Hill"
+      directory: "03-jolly-george"
+      era: "1910s – 1920s"
+      region: "Russia/Britain"
+    - number: 4
+      title: "The Ambassador's Plot: Bruce Lockhart"
+      directory: "04-the-ambassadors-plot"
+      era: "1918"
+      region: "Russia/Britain"
+    - number: 5
+      title: "The Children's Author: Arthur Ransome"
+      directory: "05-the-childrens-author"
+      era: "1910s – 1930s"
+      region: "Russia/Britain"
+    - number: 6
+      title: "Intrepid: William Stephenson"
+      directory: "06-intrepid"
+      era: "1940s"
+      region: "North America/Britain"
+    - number: 7
+      title: "The Shadow War in Persia"
+      directory: "07-the-shadow-war-in-persia"
+      era: "1941 – 1943"
+      region: "Iran"
+    - number: 8
+      title: "Tehran 1943"
+      directory: "08-tehran-1943"
+      era: "1943"
+      region: "Iran"
+    - number: 9
+      title: "The Coup: Kermit Roosevelt and Operation Ajax"
+      directory: "09-the-coup"
+      era: "1953"
+      region: "Iran/USA"
+    - number: 10
+      title: "The Great Game: Synthesis"
+      directory: "10-the-great-game"
+      era: "1890s – 1953"
+      region: "Global"

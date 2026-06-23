@@ -1,0 +1,47 @@
+series:
+  title: "AI This Week"
+  tagline: "Real tech news. Two hosts. Ten minutes."
+  primary_language: en
+
+  philosophy: |
+    A weekly conversation about what actually happened in artificial
+    intelligence over the past seven days. Two hosts. One short show.
+    Each issue follows the same shape — model releases, leaderboard
+    movement, a vocabulary deep dive, and one bigger-picture story
+    from the wider world and how it touches AI in both directions.
+
+    No hype. No marketing reread. Hosts say when a claim is
+    unverified, when a benchmark is contaminated, when something
+    is rumor instead of fact. Listeners who follow along weekly
+    leave with a real working vocabulary for the field.
+
+  audience: |
+    Curious listeners who want to understand the AI industry without
+    reading sixty newsletters a week. Engineers, founders, policy
+    people, students. Anyone who would rather hear a calm conversation
+    than a feed of dunks and screenshots.
+
+  format:
+    # Ep 2+ structure. Earlier "Bigger Picture" framing is folded into
+    # Top Story but can still appear when an outside-AI piece anchors.
+    sections:
+      - "Open-weights & releases — what shipped in open / DIY land, training infra, community models"
+      - "Leaderboards & evals — what the boards did, eval-quality and contamination notes"
+      - "Headlines — fast clip of big-co + industry news, light touch, no PR voice"
+      - "Top Story — one deep dive; usually open-source / technical, sometimes outside-AI with a clean angle"
+      - "Concept of the week — one technical concept, plain language to a little deeper"
+    cast:
+      - id: vindy
+        role: host
+        archetype: "Curious, calm, asks the questions a listener would ask."
+      - id: ron
+        role: analyst
+        archetype: "Patient explainer. Brings the numbers and the context."
+    cadence: weekly
+    target_runtime_min: 12
+    primary_language: en
+
+  output:
+    formats: [corpan-pack]
+    tts: true
+    primary_language: en

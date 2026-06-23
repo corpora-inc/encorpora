@@ -1,0 +1,161 @@
+/**
+ * beatlounge — Phrase Jam page styles. The page MIRRORS the Drums page: the
+ * selectable lane grid, the bottom pipeline drawer, and the mixer strip are all
+ * SHARED (../track-studio/track-studio.css — the page root carries `bl-trackpage`
+ * so those rules apply). This file only adds the PHRASE-specific bits: the
+ * free-slide pitch ribbon at the TOP of the grid, the empty state, and the tile.
+ *
+ * ONLY global --bl-* tokens. ≥44px hit targets, safe-area aware, reduced-motion
+ * respected, one z-scale, never document.body.
+ */
+
+/* The page root (.bl-jam) and grid region (.bl-jam-grid-region) get all their
+ * layout from the shared .bl-trackpage / .bl-trackpage-grid / .bl-grid rules —
+ * the page carries both `bl-jam` and `bl-trackpage` so nothing extra is needed.
+ * Give the top ribbon a little breathing room from the toolbar above it. */
+.bl-jam-grid-region > .bl-jam-ribbon {
+  margin-bottom: var(--bl-s2);
+}
+
+/* ---------------------------------------------------------- the free-slide ribbon
+ * Sits at the TOP of the grid region, above the lane grid (so it never overlaps
+ * the bottom drawer). A continuous low → high bend: NO scales, NO keys, NO
+ * semitone/cents readout — just a smooth slide. */
+.bl-jam-ribbon {
+  --bl-jam-bend: 50%;
+  --bl-jam-bend-on: 0;
+  flex: 0 0 auto;
+  position: relative;
+  height: 72px;
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--bl-accent-2) 22%, transparent) 0%,
+      var(--bl-surface-2) 50%,
+      color-mix(in srgb, var(--bl-accent) 22%, transparent) 100%
+    );
+  overflow: hidden;
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.bl-jam-ribbon.is-silent {
+  opacity: 0.5;
+}
+/* the resting centre line */
+.bl-jam-ribbon-center {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 50%;
+  width: 1px;
+  background: color-mix(in srgb, var(--bl-text-dim) 60%, transparent);
+  transform: translateX(-0.5px);
+}
+/* the live thumb — positioned via --bl-jam-bend, glows while held */
+.bl-jam-ribbon-thumb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--bl-jam-bend);
+  width: 3px;
+  transform: translateX(-1.5px);
+  background: var(--bl-accent-hot);
+  opacity: calc(0.25 + 0.75 * var(--bl-jam-bend-on));
+  box-shadow: 0 0 calc(6px + 18px * var(--bl-jam-bend-on)) var(--bl-accent-hot);
+  transition:
+    left var(--bl-dur-fast) var(--bl-ease),
+    opacity var(--bl-dur) var(--bl-ease),
+    box-shadow var(--bl-dur) var(--bl-ease);
+}
+/* While dragging, the thumb tracks the finger 1:1 — NO `left` easing. The
+ * transition is restored on pointerup so the snap-back-to-centre eases smooth. */
+.bl-jam-ribbon.is-dragging .bl-jam-ribbon-thumb {
+  transition:
+    opacity var(--bl-dur) var(--bl-ease),
+    box-shadow var(--bl-dur) var(--bl-ease);
+}
+.bl-jam-ribbon-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.04em;
+  color: var(--bl-text-dim);
+  pointer-events: none;
+  opacity: calc(1 - var(--bl-jam-bend-on));
+  transition: opacity var(--bl-dur) var(--bl-ease);
+}
+.bl-jam-ribbon:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------- empty state */
+.bl-jam-empty {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s3);
+  text-align: center;
+  padding: var(--bl-s6) var(--bl-s4);
+  color: var(--bl-text-dim);
+}
+.bl-jam-empty-title {
+  margin: 0;
+  font-size: var(--bl-fs-title);
+  color: var(--bl-text);
+}
+.bl-jam-empty-sub {
+  margin: 0;
+  max-width: 32ch;
+  font-size: var(--bl-fs-label);
+  line-height: 1.5;
+}
+.bl-jam-empty strong,
+.bl-jam-empty-sub strong {
+  color: var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- tile */
+.bl-tile-jam {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  height: 100%;
+}
+.bl-tile-jam-body {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+}
+.bl-tile-jam-stat {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+}
+.bl-tile-jam-stat strong {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  color: var(--bl-text);
+}
+.bl-tile-jam-hint {
+  font-size: var(--bl-fs-micro);
+  line-height: 1.45;
+  color: var(--bl-text-dim);
+}
+.bl-tile-jam-hint strong {
+  color: var(--bl-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-jam-ribbon-thumb {
+    transition: none;
+  }
+}

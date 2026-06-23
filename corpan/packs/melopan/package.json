@@ -1,0 +1,31 @@
+{
+  "name": "corpan-melopan",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:watch": "vite build --watch",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "dev:corpan": "node scripts/dev-corpan.mjs",
+    "preview": "vite preview",
+    "pack": "node scripts/pack.mjs",
+    "pack:all": "npm run build && npm run pack",
+    "voice-kit": "python3 scripts/generate-voice-kit.py"
+  },
+  "dependencies": {
+    "idb": "^8.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tone": "^15.1.22",
+    "zustand": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.4.0",
+    "vite": "^6.0.3"
+  }
+}

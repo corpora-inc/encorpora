@@ -1,0 +1,135 @@
+/**
+ * beatlounge — AnalogPanel styles (the analog VOICE-TYPE editor body). Migrated
+ * from the retired synth-analog module's stylesheet; uses only --bl-* tokens.
+ * The track-bar + keyboard rules are gone (the Instruments page owns those); the
+ * tile rules left with the tile. No edits to the design-system file.
+ */
+
+.bl-synth {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s4);
+  padding: var(--bl-s4);
+  height: 100%;
+  overflow: hidden auto;
+}
+.bl-synth-presets {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+}
+.bl-synth-presetchips {
+  display: flex;
+  gap: var(--bl-s2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.bl-synth-customtag {
+  font: 600 var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bl-accent);
+  border: 1px solid var(--bl-accent);
+  border-radius: var(--bl-radius-pill);
+  padding: 3px 8px;
+}
+.bl-synth-section-label {
+  font: var(--bl-fs-micro) / 1 var(--bl-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bl-text-dim);
+  flex: 0 0 auto;
+}
+
+/* responsive panel grid: 1 col on phone, multi on tablet/desktop */
+.bl-synth-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--bl-s4);
+}
+@media (min-width: 720px) {
+  .bl-synth-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.bl-synth-panel {
+  background: var(--bl-surface);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  padding: var(--bl-s3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+}
+.bl-synth-panel-title {
+  margin: 0;
+  font: 600 var(--bl-fs-label) / 1 var(--bl-font);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bl-text);
+}
+.bl-synth-row {
+  display: flex;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.bl-synth-knobs {
+  display: flex;
+  gap: var(--bl-s3);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.bl-synth-adsr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+
+/* the marquee Cutoff × Resonance pad */
+.bl-synth-xy {
+  display: flex;
+}
+.bl-synth-xy .bl-xypad {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* ---- enum / wave selects ---- */
+.bl-synth-enum {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+}
+.bl-synth-enum-label {
+  font: var(--bl-fs-micro) / 1 var(--bl-font);
+  color: var(--bl-text-dim);
+}
+.bl-synth-enum-select {
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  padding: var(--bl-s1) var(--bl-s2);
+  font: var(--bl-fs-label) / 1 var(--bl-font);
+  min-height: var(--bl-hit);
+}
+
+/* ---- make-analog invitation ---- */
+.bl-synth-makeanalog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  align-items: flex-start;
+  padding: var(--bl-s4);
+  background: var(--bl-surface);
+  border: 1px dashed var(--bl-border);
+  border-radius: var(--bl-radius);
+}
+.bl-synth-makeanalog-copy {
+  margin: 0;
+  font: var(--bl-fs-body) / 1.4 var(--bl-font);
+  color: var(--bl-text);
+}

@@ -1,0 +1,34 @@
+{
+  "name": "encorpora",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n io,pages,packs,watch,serve \"npm:dev:io\" \"npm:dev:pages\" \"npm:dev:packs\" \"npm:dev:watch-packs\" \"npm:dev:serve\"",
+    "dev:io": "cd web/io && npm run dev",
+    "dev:pages": "node web/pages/watch.js",
+    "dev:packs": "concurrently -n hover,juice \"cd corpan/packs/hover-runner && npm run dev:watch\" \"cd corpan/packs/juice-squeeze && npm run dev:watch\"",
+    "dev:watch-packs": "node web/scripts/watch-packs.js",
+    "dev:serve": "wait-on web/io/.next/build-manifest.json && sleep 2 && node web/scripts/dev-server.js",
+    "build": "npm run build:io && npm run build:pages && npm run build:packs",
+    "build:io": "cd web/io && npm run build",
+    "build:pages": "node web/pages/build.js web/io/out",
+    "build:packs": "npm run build:hover-runner && npm run build:juice-squeeze && npm run package:packs && npm run copy:packs",
+    "build:hover-runner": "cd corpan/packs/hover-runner && npm run build",
+    "build:juice-squeeze": "cd corpan/packs/juice-squeeze && npm run build",
+    "package:packs": "npm run package:hover-runner && npm run package:juice-squeeze && npm run package:hanzipan",
+    "package:hover-runner": "cd corpan/packs/hover-runner && zip -r hover-runner.zip manifest.json dist/",
+    "package:juice-squeeze": "cd corpan/packs/juice-squeeze && zip -r juice-squeeze.zip manifest.json dist/",
+    "package:hanzipan": "cd corpan/packs/hanzipan && mkdir -p dist && cat hanziwriter.min.js > dist/app.js && printf '\\n;' >> dist/app.js && cat index.js >> dist/app.js && cp styles.css dist/app.css && zip -r hanzipan.zip manifest.json dist/ HANZIWRITER_LICENSE.txt data/",
+    "copy:packs": "npm run copy:hover-runner && npm run copy:juice-squeeze && npm run copy:hanzipan",
+    "copy:hover-runner": "mkdir -p web/io/out/corpan/packs/hover-runner && cp corpan/packs/hover-runner/manifest.json web/io/out/corpan/packs/hover-runner/ && cp -R corpan/packs/hover-runner/dist web/io/out/corpan/packs/hover-runner/ && cp corpan/packs/hover-runner/hover-runner.zip web/io/out/corpan/packs/",
+    "copy:juice-squeeze": "mkdir -p web/io/out/corpan/packs/juice-squeeze && cp corpan/packs/juice-squeeze/manifest.json web/io/out/corpan/packs/juice-squeeze/ && cp -R corpan/packs/juice-squeeze/dist web/io/out/corpan/packs/juice-squeeze/ && cp corpan/packs/juice-squeeze/juice-squeeze.zip web/io/out/corpan/packs/",
+    "copy:hanzipan": "mkdir -p web/io/out/corpan/packs/hanzipan && cp corpan/packs/hanzipan/manifest.json web/io/out/corpan/packs/hanzipan/ && cp -R corpan/packs/hanzipan/dist web/io/out/corpan/packs/hanzipan/ && cp -R corpan/packs/hanzipan/data web/io/out/corpan/packs/hanzipan/ && cp corpan/packs/hanzipan/hanzipan.zip web/io/out/corpan/packs/",
+    "serve": "cd web/io/out && python3 -m http.server 8000",
+    "clean": "rm -rf web/io/out web/io/.next .local-pages"
+  },
+  "devDependencies": {
+    "chokidar": "^4.0.3",
+    "concurrently": "^9.1.2",
+    "wait-on": "^8.0.1"
+  }
+}

@@ -1,0 +1,152 @@
+/* ============================================================
+   beatlounge — ribbon module styles. Co-located; builds ONLY on the
+   frozen --bl-* tokens (never edits the design-system file).
+
+   The RIBBON SURFACE rules (.bl-ribbon, .bl-ribbon-surface, frets, comet,
+   readout, etc.) MOVED to instrument-surface/instrument-surface.css with the
+   reusable InstrumentRibbon. What stays here is SHARED chrome used by several
+   modules (the segmented toggle, icon buttons, select, the "Following" field)
+   plus the ribbon TILE preview that only the standalone Ribbon module renders.
+   ============================================================ */
+
+.bl-ribbon-field {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+
+.bl-select {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s5) 0 var(--bl-s3);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface-2)
+    linear-gradient(45deg, transparent 50%, var(--bl-text-dim) 50%) no-repeat;
+  background-position: calc(100% - var(--bl-s3)) center;
+  background-size: 6px 6px;
+  color: var(--bl-text);
+  font-family: var(--bl-font);
+  font-size: var(--bl-fs-body);
+  cursor: pointer;
+}
+.bl-select:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+
+/* segmented toggles (fretted/fretless · voices · span) */
+.bl-seg {
+  display: inline-flex;
+  border: 1px solid var(--bl-border);
+  /* squared-off aesthetic — segmented control, not a rounded pill */
+  border-radius: var(--bl-radius-sm);
+  overflow: hidden;
+  background: var(--bl-surface);
+}
+.bl-seg-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s3);
+  border: 0;
+  background: transparent;
+  color: var(--bl-text-dim);
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition:
+    color var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-seg-btn + .bl-seg-btn {
+  border-inline-start: 1px solid var(--bl-border);
+}
+.bl-seg-btn.is-on {
+  color: var(--bl-bg);
+  background: var(--bl-accent);
+}
+.bl-seg-btn:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: -2px;
+}
+
+.bl-icon-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--bl-hit);
+  height: var(--bl-hit);
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius-sm);
+  background: var(--bl-surface-2);
+  color: var(--bl-text);
+  cursor: pointer;
+  transition: border-color var(--bl-dur) var(--bl-ease);
+}
+.bl-icon-btn:active {
+  transform: scale(0.94);
+}
+.bl-icon-btn:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------- tile preview */
+.bl-ribbon-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+  width: 100%;
+  height: 100%;
+  padding: var(--bl-s3);
+}
+.bl-ribbon-tile-head {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-ribbon-tile-title {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.05em;
+  color: var(--bl-text);
+}
+.bl-ribbon-tile-key {
+  margin-inline-start: auto;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.04em;
+  color: var(--bl-accent);
+}
+.bl-ribbon-tile-strip {
+  position: relative;
+  flex: 1;
+  min-height: 28px;
+  border-radius: var(--bl-radius-sm);
+  background: linear-gradient(180deg, var(--bl-surface-2), var(--bl-surface));
+  border: 1px solid var(--bl-border);
+  overflow: hidden;
+}
+.bl-ribbon-tile-fret {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-0.5px);
+  background: color-mix(in srgb, var(--bl-accent) 16%, transparent);
+}
+.bl-ribbon-tile-fret.is-tonic {
+  width: 2px;
+  background: color-mix(in srgb, var(--bl-accent) 52%, transparent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--bl-accent) 40%, transparent);
+}

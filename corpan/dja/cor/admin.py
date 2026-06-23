@@ -51,7 +51,7 @@ class EntryAdmin(admin.ModelAdmin):
 
 @admin.register(Translation)
 class TranslationAdmin(admin.ModelAdmin):
-    list_display = ("entry_summary", "language", "short_text")
+    list_display = ("entry_summary", "language", "short_text", "romanization")
     search_fields = ("text", "entry__en_text")
     list_filter = ("language",)
     ordering = ("language",)

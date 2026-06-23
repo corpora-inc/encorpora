@@ -1,0 +1,20 @@
+{
+  "id": "book_u10_goalie",
+  "name": "You Are the Goalkeeper",
+  "version": "0.1.2",
+  "type": "book",
+  "primary_language": "en",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "metadata": {
+    "series": "U10 7v7 Soccer",
+    "author": "Skylar Saveland",
+    "tts": true,
+    "estimatedReadTime": "20-30 minutes",
+    "estimatedListenTime": "15-20 minutes"
+  }
+}

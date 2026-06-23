@@ -17,9 +17,9 @@ const SelectTrigger = React.forwardRef<
     <SelectPrimitive.Trigger
         ref={ref}
         className={cn(
-            "flex h-10 w-full items-center justify-between rounded-md border border-gray-300",
-            "bg-white px-3 py-2 text-sm ring-offset-white",
-            "placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-neutral-400",
+            "flex h-10 w-full items-center justify-between rounded-md border border-input",
+            "bg-background px-3 py-2 text-sm ring-offset-background",
+            "placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring",
             "disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer",
             className
         )}
@@ -80,7 +80,7 @@ const SelectContent = React.forwardRef<
             <SelectPrimitive.Content
                 ref={ref}
                 className={cn(
-                    "z-[2000] overflow-hidden rounded-md border bg-white text-gray-900 shadow-md",
+                    "z-[2000] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md",
                     "w-[var(--radix-select-trigger-width)]",
                     "max-w-[min(100vw-2rem,var(--radix-select-trigger-width))]",
                     position === "popper" &&
@@ -124,7 +124,7 @@ const SelectItem = React.forwardRef<
         className={cn(
             "relative flex w-full cursor-pointer select-none items-center rounded-md",
             "px-3 pr-9 py-2.5 text-base outline-none",
-            "focus:bg-gray-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+            "focus:bg-accent data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
             className
         )}
         {...props}
@@ -132,7 +132,7 @@ const SelectItem = React.forwardRef<
         <SelectPrimitive.ItemText className="flex-1 truncate">
             {children}
         </SelectPrimitive.ItemText>
-        <SelectPrimitive.ItemIndicator className="absolute right-3 inline-flex items-center">
+        <SelectPrimitive.ItemIndicator className="absolute end-3 inline-flex items-center">
             <Check className="h-4 w-4" />
         </SelectPrimitive.ItemIndicator>
     </SelectPrimitive.Item>
@@ -143,7 +143,7 @@ const SelectSeparator = React.forwardRef<
     React.ElementRef<typeof SelectPrimitive.Separator>,
     React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
 >(({ className, ...props }, ref) => (
-    <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-gray-200", className)} {...props} />
+    <SelectPrimitive.Separator ref={ref} className={cn("-mx-1 my-1 h-px bg-border", className)} {...props} />
 ));
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 

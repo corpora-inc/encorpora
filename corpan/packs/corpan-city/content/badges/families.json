@@ -1,0 +1,83 @@
+{
+  "$comment": "Badge family generator templates (BADGES_PROGRESSION §1.2, §2.2-2.3). Each family carries the deposit WEIGHT (fractional share of a deposit's XP — sum across a fan-out is <= 1, no inflation), the tierScale (broad badges aggregate slower: ×2.5), the medal glyph base, and the localization copyKey pattern. CDN-tunable, no app release.",
+  "tierLadder": [120, 400, 1000, 2400],
+  "families": {
+    "A": {
+      "label": "Domain mastery",
+      "weight": 0.3,
+      "tierScale": 2.5,
+      "copyKey": "family.A",
+      "glyphFrom": "domain"
+    },
+    "B": {
+      "label": "Domain × CEFR",
+      "weight": 0.4,
+      "tierScale": 1,
+      "copyKey": "family.B",
+      "glyphFrom": "domain"
+    },
+    "C": {
+      "label": "Skill mastery",
+      "weight": 0.3,
+      "tierScale": 2.5,
+      "copyKey": "family.C",
+      "glyphFrom": "skill"
+    },
+    "D": {
+      "label": "Skill × CEFR",
+      "weight": 0.4,
+      "tierScale": 1,
+      "copyKey": "family.D",
+      "glyphFrom": "skill"
+    },
+    "E": {
+      "label": "Domain × Skill",
+      "weight": 0.5,
+      "tierScale": 1,
+      "copyKey": "family.E",
+      "glyphFrom": "domain"
+    },
+    "F": {
+      "label": "Domain × Skill × CEFR",
+      "weight": 1,
+      "tierScale": 1,
+      "copyKey": "family.F",
+      "glyphFrom": "domain"
+    },
+    "G": {
+      "label": "Subtopic cluster",
+      "weight": 0.6,
+      "tierScale": 1,
+      "copyKey": "family.G",
+      "glyphFrom": "cluster"
+    },
+    "H": {
+      "label": "Tool virtuoso",
+      "weight": 0.25,
+      "tierScale": 1,
+      "copyKey": "family.H",
+      "glyphFrom": "tool"
+    },
+    "I": {
+      "label": "Consistency",
+      "weight": 0,
+      "tierScale": 1,
+      "copyKey": "family.I",
+      "glyphFrom": "streak"
+    },
+    "J": {
+      "label": "Quest / story",
+      "weight": 0,
+      "tierScale": 1,
+      "copyKey": "family.J",
+      "glyphFrom": "quest"
+    },
+    "K": {
+      "label": "Seasonal",
+      "weight": 0,
+      "tierScale": 1,
+      "copyKey": "family.K",
+      "glyphFrom": "season"
+    }
+  }
+}

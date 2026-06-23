@@ -25,7 +25,6 @@ const PdfSearch: React.FC<PdfSearchProps> = ({
   file,
   numPages,
   onGoToPage,
-  currentPage,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);

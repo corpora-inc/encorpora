@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+        No system permissions required for inference. Internet permission lives
+        in the host app (download is done via the existing pack installer).
+    -->
+</manifest>

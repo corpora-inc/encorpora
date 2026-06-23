@@ -1,0 +1,47 @@
+{
+  "name": "en_onboard_learn",
+  "title": "English UI — LEARN journey, learning Spanish from scratch",
+  "persona": "An English speaker who wants to learn Spanish from zero. We walk the full LEARN onboarding graph (welcome → pickPrimary → fork[learn] → pickLearning → calibrateLearn → pickPhrasePacks → tts → interests → finish) all the way to Home, screenshotting every step.",
+  "ui_lang": "en",
+  "beats": [
+    {
+      "narrate": "Fresh first run — clear onboarding + landing, land on a clean URL.",
+      "reset": true
+    },
+
+    { "narrate": "Welcome — animated multilingual word cloud + Corpán wordmark.", "wait_text": "Corpán", "screenshot": "01-welcome" },
+    { "narrate": "Begin (the purple Next arrow).", "tap_anchor": { "aria": "Next" }, "settle": 2.0 },
+
+    { "narrate": "Pick primary (UI) language — the celebratory ~50-language list.", "wait_text": "Make English my primary language", "screenshot": "02-pick-primary" },
+    { "narrate": "Choose English as the UI / primary language.", "tap": "Make English my primary language", "settle": 2.0 },
+
+    { "narrate": "Fork — What brings you to Corpán?", "wait_text": "What brings you to Corpán?", "screenshot": "03-fork" },
+    { "narrate": "Pick the LEARN journey.", "tap": "Learn a language", "settle": 1.8 },
+
+    { "narrate": "Pick languages to learn — drag-orderable stack (English at the bottom = UI).", "wait_text": "Pick languages to learn", "screenshot": "04-pick-learning" },
+    { "narrate": "Add Spanish as the target language (the add-language chip).", "tap": "Spanish", "settle": 1.0 },
+    { "narrate": "Verify Continue is reachable in the pinned footer.", "assert_in_viewport": { "aria": "Continue" } },
+    { "narrate": "Continue to calibration (footer primary).", "tap_anchor": { "aria": "Continue" }, "settle": 1.8 },
+
+    { "narrate": "Calibrate — Have you studied Spanish before?", "wait_text": "Have you studied", "screenshot": "05-calibrate" },
+    { "narrate": "Never — total beginner (A0, slowest speech).", "tap": "Never — total beginner", "settle": 1.8 },
+
+    { "narrate": "Pick your topics — starter phrase packs (all pre-selected).", "wait_text": "Pick your topics", "screenshot": "06-phrase-packs" },
+    { "narrate": "Keep the full starter shelf, Continue (footer primary).", "tap_anchor": { "aria": "Continue" }, "settle": 2.0 },
+
+    { "narrate": "Text-to-speech setup — voice picker for Spanish (+ English).", "wait_text": "Tap a voice to hear it", "screenshot": "07-tts" },
+    { "narrate": "Accept the auto-picked voices, Continue (footer primary).", "tap_anchor": { "aria": "Continue" }, "settle": 1.8 },
+
+    { "narrate": "Interests — What do you want to do? (skippable multi-select).", "wait_text": "What do you want to do?", "screenshot": "08-interests" },
+    { "narrate": "Pick a couple of interests to seed recommendations.", "tap": "Study & drill", "settle": 0.6 },
+    { "narrate": "Also Practice speaking.", "tap": "Practice speaking", "settle": 0.6 },
+    { "narrate": "Continue (footer primary).", "tap_anchor": { "aria": "Continue" }, "settle": 1.8 },
+
+    { "narrate": "Finish / engagement page — You're all set + socials.", "wait_text": "You're all set", "screenshot": "09-finish" },
+    { "narrate": "Start exploring → commit + land on Home.", "tap": "Start exploring", "settle": 3.0 },
+
+    { "narrate": "Home — the For you hero + Recommended + packs.", "wait_text": "For you", "screenshot": "10-home" },
+    { "narrate": "Confirm the Settings gear is present and on-screen.", "assert_anchor": { "aria": "Settings" } },
+    { "narrate": "Confirm the For-you hero CTA (Try it / Get) is present.", "assert_anchor": { "aria": "Not for me" } }
+  ]
+}

@@ -1,0 +1,24 @@
+book:
+  volume: 4
+  title: "The Ambassador's Plot: Bruce Lockhart"
+  subtitle: "Diplomacy, Conspiracy, and the Lockhart Plot"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - R.H. Bruce Lockhart was sent to revolutionary Russia in January 1918 as an unofficial British diplomatic representative -- his mission evolved from diplomacy into conspiracy to overthrow the Bolshevik government
+      - The Lockhart Plot of August 1918 aimed to bribe the Latvian Riflemen guarding the Kremlin to arrest the Bolshevik leadership -- whether this was a genuine British operation or a Cheka provocation (the Lettish trap) remains one of the central debates in intelligence history
+      - The assassination of German ambassador Count Wilhelm von Mirbach by Left Socialist Revolutionary Yakov Blumkin on July 6, 1918 and the Left SR uprising complicated the Allied conspiracy and reshaped the Cheka's priorities
+    secondary:
+      - Lockhart's relationship with Moura Budberg -- the Russian aristocrat who became his lover, later lived with H.G. Wells and Maxim Gorky, and was suspected by multiple intelligence services of being a Soviet agent
+      - The diplomatic consequences of the plot's exposure, including the Red Terror launched in September 1918 and the rupture of Anglo-Soviet relations
+      - Lockhart's memoir "Memoirs of a British Agent" (1932) -- how it shaped the public narrative while omitting key operational details
+      - The Reilly-Lockhart-Hill triangle in Moscow 1918 and the incompatible accounts each man left of the same events
+
+  key_scholarly_sources:
+    - "R.H. Bruce Lockhart -- Memoirs of a British Agent (1932); Lockhart's own account, vivid and selective"
+    - "Gordon Brook-Shepherd -- Iron Maze: The Western Secret Services and the Bolsheviks (1998); the Allied intelligence context"
+    - "Jonathan Schneer -- The Lockhart Plot: Love, Betrayal, Assassination and Counter-Revolution in Lenin's Russia (2020); the most recent comprehensive account"
+    - "Robert Service -- Spies and Commissars: Bolshevik Russia and the West (2011); the revolutionary context from both sides"
+    - "Keith Jeffery -- MI6: The History of the Secret Intelligence Service 1909-1949 (2010); authorized institutional history"
+    - "Nina Berberova -- Moura: The Dangerous Life of the Baroness Budberg (2005); biography of Moura from Russian literary sources"

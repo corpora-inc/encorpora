@@ -1,0 +1,210 @@
+/* Corpan City commerce overlay — buy / sell / trade with an NPC merchant.
+   Warm paper-cutout, mobile-first, premium. Every selector scoped .wp-shop-*.
+
+   LAYOUT DISCIPLINE (PREMIUM_FOUNDATIONS §4):
+   - The root is position:fixed from its FIRST frame → it can never push the
+     world canvas into document flow.
+   - open/close is COMPOSITOR-ONLY (opacity + transform), never width/height or
+     anything that triggers layout. No layout shift, guaranteed.                */
+
+.wp-shop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-family: ui-rounded, "SF Pro Rounded", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #3a2a1c;
+  /* compositor-only fade; pointer-events off while hidden so it never blocks */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.wp-shop--in { opacity: 1; pointer-events: auto; }
+
+.wp-shop-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 0%, rgba(60, 40, 20, 0.28), rgba(40, 26, 14, 0.5));
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.wp-shop-sheet {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: min(88vh, 760px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: #fffaf0;
+  border-radius: 28px 28px 0 0;
+  border: 2px solid #fdf3e0;
+  border-bottom: 0;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 -18px 50px -12px rgba(80, 50, 20, 0.45);
+  padding: 0 0 max(14px, env(safe-area-inset-bottom));
+  /* compositor-only rise */
+  transform: translateY(16px);
+  transition: transform 0.3s cubic-bezier(0.18, 0.9, 0.3, 1.1);
+}
+.wp-shop--in .wp-shop-sheet { transform: translateY(0); }
+
+@media (min-width: 600px) {
+  .wp-shop { align-items: center; }
+  .wp-shop-sheet { border-radius: 28px; border-bottom: 2px solid #fdf3e0; transform: translateY(22px) scale(0.98); }
+  .wp-shop--in .wp-shop-sheet { transform: translateY(0) scale(1); }
+}
+
+/* ---- header: merchant + wallet ---- */
+.wp-shop-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px 10px;
+  border-bottom: 1px solid rgba(120, 90, 60, 0.12);
+}
+.wp-shop-merchant { display: flex; align-items: center; gap: 11px; min-width: 0; flex: 1; }
+.wp-shop-merchant-avatar {
+  width: 46px; height: 46px; flex: none;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffe9c2, #e0b079);
+  display: grid; place-items: center;
+  font-size: 24px;
+  box-shadow: 0 2px 6px rgba(80, 50, 20, 0.22);
+}
+.wp-shop-merchant-name { font: 800 17px/1.1 inherit; }
+.wp-shop-merchant-sub { font: 500 12.5px/1.2 inherit; color: #8a6a44; margin-top: 2px; }
+
+.wp-shop-wallet {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(#fff3d6, #ffe7b0);
+  border: 1px solid #e9c987;
+  color: #7a5512;
+  font: 800 15px/1 inherit;
+  padding: 8px 13px; border-radius: 999px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset;
+}
+.wp-shop-coin { font-size: 15px; }
+
+.wp-shop-close {
+  position: absolute; top: 12px; right: 14px;
+  width: 34px; height: 34px; border: 0;
+  border-radius: 50%;
+  background: rgba(120, 90, 60, 0.12);
+  color: #7a5a3a; font: 700 18px/1 inherit;
+  cursor: pointer; display: grid; place-items: center;
+  transition: background 0.16s ease, transform 0.12s ease;
+}
+.wp-shop-close:hover { background: rgba(120, 90, 60, 0.2); }
+.wp-shop-close:active { transform: scale(0.92); }
+
+/* ---- tabs ---- */
+.wp-shop-tabs { display: flex; gap: 6px; padding: 10px 14px 4px; }
+.wp-shop-tab {
+  flex: 1; border: 0; cursor: pointer;
+  background: rgba(120, 90, 60, 0.08);
+  color: #8a6a44; font: 700 13.5px/1 inherit;
+  padding: 9px 8px; border-radius: 12px;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+.wp-shop-tab--on { background: #c46b4a; color: #fff7ec; box-shadow: 0 2px 8px rgba(150, 70, 40, 0.3); }
+
+/* ---- grid ---- */
+.wp-shop-body { overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 8px 14px 4px; }
+.wp-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
+  gap: 9px;
+  padding-bottom: 6px;
+}
+.wp-shop-empty { text-align: center; color: #a08868; font: 500 14px/1.5 inherit; padding: 30px 10px; }
+
+.wp-shop-cell {
+  position: relative;
+  border: 1.5px solid #f0e4cc;
+  background: #fffdf6;
+  border-radius: 15px;
+  padding: 9px 8px 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.12s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+.wp-shop-cell:hover { border-color: #e6c98f; box-shadow: 0 4px 12px rgba(120, 80, 40, 0.16); }
+.wp-shop-cell:active { transform: scale(0.96); }
+.wp-shop-cell--sel { border-color: #c46b4a; box-shadow: 0 0 0 2px rgba(196, 107, 74, 0.3); }
+
+.wp-shop-art {
+  width: 100%; aspect-ratio: 1; border-radius: 11px;
+  display: grid; place-items: center;
+  font-size: 30px;
+  background: linear-gradient(155deg, #fff5e0, #f6e3c0);
+  margin-bottom: 5px;
+}
+.wp-shop-cell-name { font: 700 11.5px/1.15 inherit; color: #4a3422; display: block; min-height: 26px; }
+.wp-shop-cell-foot { display: flex; align-items: center; justify-content: center; gap: 3px; margin-top: 3px; font: 800 12px/1 inherit; color: #7a5512; }
+
+.wp-shop-qty {
+  position: absolute; top: 5px; right: 6px;
+  background: #5a4329; color: #fff3d6;
+  font: 800 10.5px/1 inherit; padding: 3px 6px; border-radius: 999px;
+}
+.wp-shop-badge {
+  position: absolute; top: 5px; left: 6px;
+  font: 800 9px/1 inherit; padding: 3px 6px; border-radius: 999px; letter-spacing: .03em;
+}
+.wp-shop-badge--need { background: #2e7d4f; color: #eafff2; }
+.wp-shop-badge--sell { background: rgba(120,90,60,.16); color: #8a6a44; }
+
+/* rarity hairline accent on the art */
+.wp-shop-art--common { box-shadow: inset 0 0 0 1.5px rgba(150,120,80,.18); }
+.wp-shop-art--rare { box-shadow: inset 0 0 0 1.5px rgba(52, 124, 196, .5); }
+.wp-shop-art--epic { box-shadow: inset 0 0 0 1.5px rgba(142, 68, 173, .55); }
+.wp-shop-art--seasonal { box-shadow: inset 0 0 0 1.5px rgba(224, 144, 42, .6); }
+
+/* ---- detail card ---- */
+.wp-shop-detail {
+  border-top: 1px solid rgba(120, 90, 60, 0.14);
+  padding: 13px 16px 4px;
+  display: flex; gap: 13px; align-items: flex-start;
+}
+.wp-shop-detail-art {
+  width: 64px; height: 64px; flex: none; border-radius: 14px;
+  display: grid; place-items: center; font-size: 34px;
+  background: linear-gradient(155deg, #fff5e0, #f6e3c0);
+}
+.wp-shop-detail-main { flex: 1; min-width: 0; }
+.wp-shop-detail-name { font: 800 16px/1.2 inherit; }
+.wp-shop-detail-kind { font: 700 11px/1 inherit; color: #b08a55; text-transform: uppercase; letter-spacing: .05em; margin-top: 3px; }
+.wp-shop-detail-desc { font: 500 13px/1.4 inherit; color: #6a5238; margin-top: 6px; }
+
+.wp-shop-actions { display: flex; gap: 8px; padding: 11px 16px 4px; }
+.wp-shop-btn {
+  flex: 1; border: 0; cursor: pointer;
+  font: 800 14px/1 inherit; padding: 13px 12px; border-radius: 14px;
+  transition: transform 0.12s ease, filter 0.16s ease, background 0.16s ease;
+}
+.wp-shop-btn:active { transform: scale(0.97); }
+.wp-shop-btn--buy { background: linear-gradient(#d8804f, #c46b4a); color: #fff7ec; box-shadow: 0 4px 12px rgba(150, 70, 40, 0.3); }
+.wp-shop-btn--sell { background: linear-gradient(#7fa86a, #6f9c54); color: #f4fff0; box-shadow: 0 4px 12px rgba(70, 110, 40, 0.28); }
+.wp-shop-btn--equip { background: linear-gradient(#5b96c7, #4a8cc4); color: #f0f8ff; box-shadow: 0 4px 12px rgba(40, 90, 150, 0.28); }
+.wp-shop-btn--ghost { background: rgba(120, 90, 60, 0.1); color: #7a5a3a; }
+.wp-shop-btn:disabled { filter: grayscale(0.6) opacity(0.55); cursor: not-allowed; }
+
+/* ---- toast (transient feedback, compositor-only) ---- */
+.wp-shop-toast {
+  position: absolute; left: 50%; bottom: calc(100% + 10px);
+  transform: translate(-50%, 6px); opacity: 0;
+  background: #3a2a1c; color: #fff3d6;
+  font: 700 13px/1 inherit; padding: 9px 15px; border-radius: 999px;
+  white-space: nowrap; pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.wp-shop-toast--show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-shop, .wp-shop-sheet, .wp-shop-toast, .wp-shop-cell, .wp-shop-btn { transition: none !important; }
+}

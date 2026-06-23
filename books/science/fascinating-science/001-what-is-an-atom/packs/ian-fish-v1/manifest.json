@@ -1,0 +1,20 @@
+{
+  "id": "book_science_atom",
+  "name": "What Is an Atom",
+  "version": "0.2.2",
+  "type": "book",
+  "primary_language": "en",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "metadata": {
+    "series": "Fascinating Science",
+    "author": "Skylar Saveland",
+    "tts": true,
+    "estimatedReadTime": "15-20 minutes",
+    "estimatedListenTime": "12-15 minutes"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "book_dialog_test",
+  "name": "Dialog Test — AI This Week Cold Open",
+  "version": "0.1.0",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "metadata": {
+    "series": "AI This Week (test)",
+    "volume": 1,
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Smoke test for multi-voice + multi-backend dialog packs.",
+    "estimatedReadTime": "2 minutes",
+    "estimatedListenTime": "2 minutes"
+  }
+}

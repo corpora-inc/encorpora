@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "@shared/audio": ["../shared/audio/index.ts"],
+      "@shared/analytics": ["../shared/analytics/index.ts"]
+    }
+  },
+  "include": [
+    "src",
+    "../shared/audio/index.ts",
+    "../shared/audio/nativeKeepAlive.ts",
+    "../shared/audio/nativeRadio.ts",
+    "../shared/analytics/index.ts",
+    "../shared/ui/offlineNotice.ts"
+  ]
+}

@@ -1,7 +1,116 @@
+.env
+node_modules/
 *.pyc
 __pycache__/
+.venv/
+*.egg-info/
 target/
 # TODO: we actually would like this but the members
 # don't match because of rusqlite versus sqlx
 Cargo.lock
 
+# GitHub Pages builds
+.local-pages/
+.pages/
+.pages-temp/
+web/io/out/
+web/io/.next/
+corpan/plugins/*/ios/.build/
+corpan/games/
+.DS_Store
+.claude/
+
+# Raw TTS WAV files (large, kept locally for A/B comparison only)
+**/audio/*/wav/
+
+# Voice comparison A/B test outputs (local only)
+**/audio/voice-comparison/
+
+# Audio files — served from CloudFront, hydrate locally with corpan/infra/hydrate-audio.sh
+**/pack/audio/
+**/packs/*/audio/
+!**/packs/shared/audio/
+corpan/infra/captures/branding/music/
+
+# Voice reference wavs — backed up to S3, not tracked in git
+voices/data/*.wav
+
+# Pre-mastered voice reference variants (HPF + denoise + compressor + loudnorm
+# applied to the raw refs at -22 / -18 / etc. LUFS targets). Derived: regen via
+# voices/scripts/sample_clone_premaster_*.py. Backed to S3 sources/voices/data/.
+voices/data/pre-mastered/
+
+# Voice candidate samples (large, local only)
+voices/samples/
+
+# Per-narrator language-eval samples — backed to S3 (sources/voices/data/samples),
+# rehydrate via corpan/infra/hydrate-voices.sh
+voices/data/samples/
+
+# Derived pack data — managed by ttsctl push/pull (S3 pack-store)
+**/pack/segments_*.json
+**/pack/alignment_*.json
+**/pack/audio_manifest_*.json
+**/pack/pipeline_state_*.json
+**/pack/.packstore.json
+**/packs/*/segments_*.json
+**/packs/*/alignment_*.json
+**/packs/*/audio_manifest_*.json
+**/packs/*/pipeline_state_*.json
+**/packs/*/pipeline_state.json
+**/packs/*/.packstore.json
+
+# Pipeline run locks — per-language scratch files held during ttsctl runs.
+# Process-local; never history-of-record.
+**/pack/.pipeline_*.lock
+**/packs/*/.pipeline_*.lock
+
+# Transcription audit results — auto-generated quality reports, regenerable
+# from current audio. Useful as local working notes; not history-of-record.
+**/pack/audits/
+**/packs/*/audits/
+
+# Per-language analytics from pipeline runs (run summaries: segments, errors,
+# worst-case timings). Regenerable from logs + current audio; useful as local
+# scratch / human-readable post-run report, not history-of-record. Mirrored to
+# pack_store on S3.
+**/pack/analytics_*.json
+**/packs/*/analytics_*.json
+
+# Per-language declick detection reports (false-positive/true-positive lists,
+# regen targets). Regenerable from current audio; not history-of-record.
+**/pack/declick_report_*.json
+**/packs/*/declick_report_*.json
+
+# Per-language audit JSONL summary records, one file per language under
+# <series>/lang_records/. Append-only aggregate audit trail; useful as local
+# scratch, eligible for periodic rollup to markdown summaries. Tier-2 (S3).
+**/lang_records/*.jsonl
+
+# State snapshots from in-place migrations (e.g. .pre_mms_clear left by the
+# MMS-clear pass). One-shot rollback only; never history-of-record.
+*.pre_mms_clear
+
+# Backup snapshots from in-place pipeline migrations (e.g. .pre-nikkud.bak,
+# .pre-clear-fp.bak, .pre-cjk-clear.bak). Useful for one-shot rollback,
+# never useful in git history. The .bak.<timestamp> shape comes from ad-hoc
+# `cp file file.bak.$(date +...)` snapshots taken by agents during pipeline
+# work — also rollback-only, also not history-of-record.
+*.bak
+*.bak.*
+
+# Pronunciation test scratch — risky_words.json, generated WAVs, results.json.
+# Used to manually QA voice pronunciations before generation; not history-of-record.
+**/pack/pronunciation_tests/
+**/packs/*/pronunciation_tests/
+
+# Catalog asset bootstrap artifacts — regenerable from
+# corpan/infra/generate-catalog-assets.py and patch-catalog.py. Stale within
+# a day; not history-of-record. Same rationale as audio_manifest_*.json above.
+corpan/infra/catalog-v2.patched.json
+corpan/infra/asset-urls.json
+
+
+# Real affiliate partner roster (names + terms) — never commit; live source is DynamoDB corpan-iap
+corpan/infra/codes/seed.local.json
+**/seed.local.json

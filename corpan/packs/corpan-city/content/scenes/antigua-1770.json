@@ -1,0 +1,27 @@
+{
+  "id": "antigua-1770",
+  "topologyId": "plaza-sq-a",
+  "setting": { "place": "Corpan City", "era": "today", "mood": "warm market-day morning" },
+  "themeId": "paper",
+  "narrativeBlurb": "Streets still wet with dew; a café opens its shutters and a tram bell rings somewhere up the hill.",
+  "anchorSkins": {
+    "fountain": { "spriteRef": { "url": "placeholder:fountain" } },
+    "cafe_counter": { "spriteRef": { "url": "placeholder:cafe" } },
+    "market_stall": { "spriteRef": { "url": "placeholder:stall" } },
+    "tailor": { "spriteRef": { "url": "placeholder:tailor" } },
+    "traveler": { "spriteRef": { "url": "placeholder:traveler" } },
+    "bench_w": { "spriteRef": { "url": "placeholder:bench" } },
+    "bench_e": { "spriteRef": { "url": "placeholder:bench" } }
+  },
+  "npcSkins": {
+    "cafe_counter": { "spriteRef": { "url": "placeholder:npc-baker" }, "voiceHint": "es-ES" },
+    "tailor": { "spriteRef": { "url": "placeholder:npc-tailor" }, "voiceHint": "es-ES" },
+    "traveler": { "spriteRef": { "url": "placeholder:npc-traveler" }, "voiceHint": "es-MX" }
+  },
+  "palette": {
+    "ground": "#d9c7a3",
+    "groundAlt": "#cdb892",
+    "sky": "#bfe0e8",
+    "accent": "#c46b4a"
+  }
+}

@@ -1,0 +1,26 @@
+book:
+  volume: 8
+  title: "The Mysteries of the Arctic Peoples"
+  subtitle: "The Sivullirmiut, the Vanished Dorset, and the City on the Ice"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - The Dorset people survived three thousand years in one of Earth's harshest environments, then vanished within centuries of the Thule expansion -- what happened to them?
+      - Ipiutak -- a city of several thousand people at the edge of the Arctic Ocean, with death masks of ivory and jet that echo cultures across the Bering Strait
+      - The 2010 Saqqaq genome revealed that the earliest Arctic peoples were genetically distinct from both modern Inuit and Native Americans -- an entirely separate migration from Siberia
+    secondary:
+      - The Thule expansion from Alaska to Greenland in roughly a century -- one of the fastest large-scale migrations in human history
+      - The Dorset carved miniature ivory sculptures of haunting beauty but lost or abandoned bow and arrow technology
+      - The Norse-Inuit encounter in Greenland -- centuries of coexistence, remarkably little interaction, then the Norse vanished
+      - Arctic survival technology -- igloos, kayaks, inuksuit, caribou-hide clothing -- engineering solutions of extraordinary sophistication
+      - A 2,000-year-old child's boot preserved in permafrost, a small object that connects us across millennia
+
+  key_scholarly_sources:
+    - "Robert McGhee -- Ancient People of the Arctic (1996); The Last Imaginary Place (2005); leading Arctic archaeologist"
+    - "Froelich Rainey and Helge Larsen -- discoverers and excavators of Ipiutak (1939-1941)"
+    - "Maanasa Raghavan et al. -- Saqqaq genome study (2010); ancient DNA analysis of Paleo-Eskimo populations"
+    - "Max Friesen -- specialist in Dorset and Thule transitions; University of Toronto"
+    - "Peter Schledermann -- Norse-Inuit contact studies in the High Arctic"
+    - "Owen Mason -- specialist in Ipiutak and Norton tradition archaeology"
+    - "T. Max Friesen and Charles Arnold -- Inuvialuit archaeology and the Lagoon Site"

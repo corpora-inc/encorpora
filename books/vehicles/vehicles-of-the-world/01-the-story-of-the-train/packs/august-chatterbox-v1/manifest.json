@@ -1,0 +1,22 @@
+{
+  "id": "book_train_history",
+  "name": "The Story of the Train",
+  "version": "0.1.3",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "metadata": {
+    "series": "Vehicles of the World",
+    "volume": 1,
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Children and adults learning a new language",
+    "estimatedReadTime": "10-15 minutes",
+    "estimatedListenTime": "10-15 minutes"
+  }
+}

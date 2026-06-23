@@ -1,0 +1,86 @@
+series:
+  title: "Motorcycles"
+  tagline: "The story of the world's fastest two-wheeled machines."
+  planned_volumes: 12
+  primary_language: en
+
+  philosophy: |
+    Twelve short books for young readers learning a new language. Every
+    sentence is short, clear, and fun to say out loud. Volume 1 tells the
+    big story of the motorcycle, from the first sputtering steam contraption
+    to the electric superbikes of today. The next eleven dive into the
+    machines, factories, and racers that made the motorcycle what it is.
+
+    Each book is roughly one hundred sentences and ten minutes of audio.
+    Every translation matches the English sentence-for-sentence so a learner
+    can read along, hear the same idea in a new language, and build vocabulary
+    one motorcycle at a time.
+
+  audience: |
+    Boys age six to fifteen — and any reader, any age, who is learning a
+    new language and loves things that go fast. The vocabulary is concrete:
+    motorcycle, engine, wheel, race, factory, road. The pace is brisk. The
+    heroes are real people who built and rode real machines.
+
+  voice:
+    name: August
+    voiceId: august
+    reference: august-20.wav
+    notes: |
+      Warm, friendly narrator. The same voice across all twelve books and
+      every language in the live catalog.
+
+  output:
+    formats: [corpan-pack]
+    tts: true
+    primary_language: en
+
+  volumes:
+    - number: 1
+      title: "The Story of the Motorcycle"
+      slug: 01-the-story-of-the-motorcycle
+      angle: "History overview. Sets up the next eleven books."
+    - number: 2
+      title: "Harley-Davidson: American Thunder"
+      slug: 02-harley-davidson-american-thunder
+      angle: "American brand portrait. Milwaukee, V-twins, freedom."
+    - number: 3
+      title: "Honda: The Greatest Comeback"
+      slug: 03-honda-the-greatest-comeback
+      angle: "Soichiro Honda, the Super Cub, the Japanese boom."
+    - number: 4
+      title: "Ducati: Italian Red"
+      slug: 04-ducati-italian-red
+      angle: "Bologna, desmodromic engines, MotoGP wins."
+    - number: 5
+      title: "BMW Motorrad: The German Way"
+      slug: 05-bmw-motorrad-the-german-way
+      angle: "Boxer twin, the GS, German engineering."
+    - number: 6
+      title: "Triumph: Made in England"
+      slug: 06-triumph-made-in-england
+      angle: "Steve McQueen, the Bonneville, the Speed Triple."
+    - number: 7
+      title: "Dirt Bikes: Off the Road"
+      slug: 07-dirt-bikes-off-the-road
+      angle: "Motocross, enduro, jumps, kids' first bikes."
+    - number: 8
+      title: "Sport Bikes: Built for Speed"
+      slug: 08-sport-bikes-built-for-speed
+      angle: "Superbikes, fairings, top speeds, the Big Four."
+    - number: 9
+      title: "Cruisers and Choppers"
+      slug: 09-cruisers-and-choppers
+      angle: "Long, low, custom culture, Easy Rider."
+    - number: 10
+      title: "Adventure Bikes: Around the World"
+      slug: 10-adventure-bikes-around-the-world
+      angle: "GS, KTM, Long Way Round, big trips."
+    - number: 11
+      title: "Racing: From the Track to the Stars"
+      slug: 11-racing-from-the-track-to-the-stars
+      angle: "Isle of Man TT, MotoGP, Dakar, the great racers."
+    - number: 12
+      title: "Electric Bikes and the Future"
+      slug: 12-electric-bikes-and-the-future
+      angle: "Zero, LiveWire, Energica, what comes next."

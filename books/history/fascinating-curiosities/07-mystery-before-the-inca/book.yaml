@@ -1,0 +1,26 @@
+book:
+  volume: 7
+  title: "The Mystery Before the Inca"
+  subtitle: "Tiwanaku, the Gate of the Sun, and the Engineers of the Sky"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - How did Tiwanaku sustain a major urban center at 3,850 meters altitude, in one of the most extreme environments on Earth?
+      - The Gate of the Sun -- a ten-ton monolith carved with a central figure and 48 winged attendants whose meaning remains undeciphered
+      - Puma Punku's precision-cut stone blocks with interlocking H-shaped joints -- extraordinary engineering with Bronze Age technology
+    secondary:
+      - The raised field system (suka kollus) that outperformed modern agriculture when experimentally reconstructed
+      - The "vertical archipelago" economic model -- colonies at different altitudes producing different resources
+      - Tiwanaku and Wari -- two contemporary empires sharing iconography but separated by 600 km
+      - The drought-driven collapse around 1000 CE, confirmed by Quelccaya glacier ice cores
+      - The Inca claim that their civilization was born at Tiwanaku -- another case of appropriating a predecessor's legacy
+
+  key_scholarly_sources:
+    - "Alan Kolata -- The Tiwanaku: Portrait of an Andean Civilization (1993); Tiwanaku and Its Hinterland (1996, 2003)"
+    - "John Janusek -- Identity and Power in the Ancient Andes (2004); social organization and identity at Tiwanaku"
+    - "Paul Goldstein -- specialist in Tiwanaku colonies and the vertical archipelago model"
+    - "William Isbell -- leading scholar of the Wari empire"
+    - "Alexei Vranich -- excavator of Puma Punku; revised dating and construction analysis"
+    - "Charles Stanish -- Ancient Titicaca (2003); comprehensive regional study"
+    - "Clark Erickson -- raised field (suka kollu) experimental archaeology"

@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-speak-concurrent"
+description = "Enables the speak_concurrent command without any pre-configured scope."
+commands.allow = ["speak_concurrent"]
+
+[[permission]]
+identifier = "deny-speak-concurrent"
+description = "Denies the speak_concurrent command without any pre-configured scope."
+commands.deny = ["speak_concurrent"]

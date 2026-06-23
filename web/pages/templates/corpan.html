@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corpán</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #171717;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.875rem;
+            color: #737373;
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb a {
+            color: #171717;
+            text-decoration: none;
+            transition: opacity 0.15s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #171717;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            color: #737373;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.875rem 2rem;
+            background: #171717;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta:hover {
+            opacity: 0.85;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .section {
+            margin: 4rem 0;
+        }
+
+        .section h2 {
+            color: #171717;
+            margin-bottom: 2rem;
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature:hover {
+            border-color: #171717;
+        }
+
+        .feature h3 {
+            color: #171717;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #737373;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .link-button {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #e5e5e5;
+            color: #171717;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .link-button:hover {
+            border-color: #171717;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+            color: #737373;
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: #171717;
+            text-decoration: none;
+            transition: opacity 0.15s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 640px) {
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17513523888"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17513523888');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="{{BASE_PATH}}">← encorpora.io</a>
+        </div>
+
+        <header>
+            <div class="logo-container">
+                <img src="{{BASE_PATH}}assets/logo-512.png" alt="Corpán" class="logo">
+            </div>
+            <h1>Corpán</h1>
+            <p class="tagline">Cross-platform language learning through interactive packs</p>
+            <a href="{{BASE_PATH}}corpan/packs/" class="cta">Browse Packs</a>
+        </header>
+
+        <main>
+            <div class="section">
+                <h2>Features</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>Pluggable Packs</h3>
+                        <p>Modular pack system with SDK for standalone development</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Text-to-Speech</h3>
+                        <p>Native TTS support for pronunciation practice</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Cross-Platform</h3>
+                        <p>Desktop and mobile support across all major platforms</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Multiple Languages</h3>
+                        <p>Support for numerous language pairs and dialects</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Content Packs</h3>
+                        <p>Downloadable pack and language content bundles</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Fast & Native</h3>
+                        <p>Built with Rust and Tauri for optimal performance</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Featured Pack: Hanzipan</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>Character Studio</h3>
+                        <p>Practice Mandarin characters with guided strokes, real-time feedback, and infinite examples.</p>
+                        <div class="links">
+                            <a href="{{BASE_PATH}}corpan/packs/hanzipan/" class="link-button">View Pack</a>
+                            <a href="{{BASE_PATH}}corpan/packs/hanzipan.zip" class="link-button">Install Pack</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Resources</h2>
+                <div class="links">
+                    <a href="{{BASE_PATH}}corpan/packs/" class="link-button">Browse Packs</a>
+                    <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan" target="_blank" rel="noopener" class="link-button">GitHub ↗</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>
+                <a href="https://github.com/corpora-inc/encorpora" target="_blank" rel="noopener">
+                    GitHub
+                </a>
+                ·
+                <a href="https://encorpora.io" target="_blank" rel="noopener">
+                    encorpora.io
+                </a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

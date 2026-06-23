@@ -1,6 +1,6 @@
 [package]
 name = "corpan"
-version = "0.1.0"
+version = "0.19.2"
 description = "Language learning app"
 authors = ["you"]
 edition = "2021"
@@ -21,10 +21,63 @@ tauri-build = { version = "2", features = [] }
 tauri = { version = "2", features = ["wry"] }
 tauri-plugin-safe-area-insets-css = "0.2"
 tauri-plugin-opener = "2"
+tauri-plugin-clipboard-manager = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-rusqlite = { version = "0.35.0", features = ["bundled"] }
-# tauri-plugin-tts = { git = "https://github.com/httpjamesm/tauri-plugin-tts.git" }
-# tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "force-language-android" }
-tauri-plugin-tts = { git = "https://github.com/skyl/tauri-plugin-tts.git", branch = "ext-hack-swift" }
-# tauri-plugin-tts = { path = "/Users/skyl/Code/github/tauri-plugin-tts" }
+rusqlite = { version = "0.38", features = ["bundled"] }
+tauri-plugin-os = "2.3.2"
+tauri-plugin-game-packs = { path = "../../plugins/tauri-plugin-game-packs" }
+reqwest = { version = "0.12", default-features = false, features = [
+    "json",
+    "rustls-tls",
+    "stream",
+] }
+sha2 = "0.10"
+zip = "2.2.2"
+tauri-plugin-tts = { path = "../../plugins/tauri-plugin-tts" }
+tauri-plugin-audio-keepalive = { path = "../../plugins/tauri-plugin-audio-keepalive" }
+tauri-plugin-haptics = { path = "../../plugins/tauri-plugin-haptics" }
+tauri-plugin-radio-stream = { path = "../../plugins/tauri-plugin-radio-stream" }
+tauri-plugin-subscriptions = { path = "../../plugins/tauri-plugin-subscriptions" }
+tauri-plugin-iap = { path = "../../plugins/tauri-plugin-iap" }
+tauri-plugin-stt = { path = "../../plugins/tauri-plugin-stt" }
+tauri-plugin-corpan-llm = { path = "../../plugins/tauri-plugin-corpan-llm" }
+# Provider-agnostic dictation over OS-native STT (Apple SpeechAnalyzer/
+# SFSpeechRecognizer + Android SpeechRecognizer). Out-of-process, zero download.
+tauri-plugin-asr-native = { path = "../../plugins/tauri-plugin-asr-native" }
+futures-util = "0.3"
+
+# Android-only: raw POSIX signal handling for the native-crash breadcrumb
+# (install_native_crash_breadcrumb in lib.rs). A SIGSEGV/SIGABRT in a
+# statically-linked native lib (llama/ggml/whisper) leaves no Rust panic and an
+# unsymbolicated, unattributable tombstone in the Play Console; the handler
+# records the faulting thread name + signal before chaining to debuggerd.
+[target.'cfg(target_os = "android")'.dependencies]
+libc = "0.2"
+
+# Production optimizations for release builds
+[profile.release]
+opt-level = "z"   # Optimize for size (important for mobile apps)
+lto = true        # Link-time optimization for better performance and smaller binary
+codegen-units = 1 # Better optimization at cost of compile time
+debug = 1         # Line tables — Gradle's debugSymbolLevel="FULL" uploads these to Play
+strip = false     # Let Gradle strip the .so for the APK and bundle symbols into the AAB
+panic = "abort"   # Smaller binary, no unwinding
+
+# Vendored fork of ndk-context 0.1.1 with the abort-on-reinit assert removed.
+# Upstream `initialize_android_context` calls `assert!(previous.is_none())`, which
+# crashes the process whenever Android recreates the Activity (config changes
+# beyond what AndroidManifest's configChanges absorbs, "Don't keep activities",
+# system reclaiming the Activity but keeping the process). 7+ users hit this in
+# 0.13.1 on Play Console. See vendor/ndk-context/src/lib.rs.
+[patch.crates-io]
+ndk-context = { path = "vendor/ndk-context" }
+
+# Vendored fork of llama-cpp-sys-2 0.1.146. Upstream's build.rs hardcodes the
+# conservative `-march=armv8-a` baseline for the Android arm64-v8a ABI, which
+# strips the vectorized Q4_K matmul kernels (dotprod/fp16) and runs scalar
+# fallbacks → ~20 tok/s prefill on a flagship. The fork sets
+# GGML_CPU_ARM_ARCH=armv8.2-a+dotprod+fp16 for that one ABI only (Apple/Metal
+# and other ABIs untouched). See vendor/llama-cpp-sys-2/build.rs (search
+# "CORPAN FORK") and plugins/tauri-plugin-corpan-llm/ANDROID_PERF.md.
+llama-cpp-sys-2 = { path = "vendor/llama-cpp-sys-2" }

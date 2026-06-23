@@ -1,0 +1,2026 @@
+[
+  {
+    "english": "The car is red.",
+    "level": "A1"
+  },
+  {
+    "english": "I drive to work.",
+    "level": "A1"
+  },
+  {
+    "english": "The traffic is bad.",
+    "level": "A1"
+  },
+  {
+    "english": "He has a new car.",
+    "level": "A1"
+  },
+  {
+    "english": "The road is long.",
+    "level": "A1"
+  },
+  {
+    "english": "Stop at the light.",
+    "level": "A1"
+  },
+  {
+    "english": "Turn left here.",
+    "level": "A1"
+  },
+  {
+    "english": "The tank is empty.",
+    "level": "A1"
+  },
+  {
+    "english": "She drives slowly.",
+    "level": "A1"
+  },
+  {
+    "english": "We are almost there.",
+    "level": "A1"
+  },
+  {
+    "english": "The road is wet.",
+    "level": "A1"
+  },
+  {
+    "english": "The garage is full.",
+    "level": "A1"
+  },
+  {
+    "english": "The car is fast.",
+    "level": "A1"
+  },
+  {
+    "english": "I need gas.",
+    "level": "A1"
+  },
+  {
+    "english": "The driver was kind.",
+    "level": "A1"
+  },
+  {
+    "english": "The engine starts on the first turn.",
+    "level": "A2"
+  },
+  {
+    "english": "The traffic is bad at five.",
+    "level": "A2"
+  },
+  {
+    "english": "She drives slowly when it rains.",
+    "level": "A2"
+  },
+  {
+    "english": "The mechanic found the leak in ten minutes.",
+    "level": "A2"
+  },
+  {
+    "english": "A long road trip is the best kind of conversation.",
+    "level": "A2"
+  },
+  {
+    "english": "The tire is flat and the spare is in the trunk.",
+    "level": "A2"
+  },
+  {
+    "english": "We took the back roads to avoid traffic.",
+    "level": "A2"
+  },
+  {
+    "english": "He learned to drive a stick from his father.",
+    "level": "A2"
+  },
+  {
+    "english": "The car needs new brakes.",
+    "level": "A2"
+  },
+  {
+    "english": "The battery died in the middle of the parking lot.",
+    "level": "A2"
+  },
+  {
+    "english": "Highway driving is easier than city driving.",
+    "level": "A2"
+  },
+  {
+    "english": "We listened to music for the whole drive.",
+    "level": "A2"
+  },
+  {
+    "english": "The window will not roll down anymore.",
+    "level": "A2"
+  },
+  {
+    "english": "He fixed the car in his own driveway.",
+    "level": "A2"
+  },
+  {
+    "english": "She parallel-parks better than most drivers.",
+    "level": "A2"
+  },
+  {
+    "english": "The kids slept the whole drive home.",
+    "level": "A2"
+  },
+  {
+    "english": "The car smells like coffee and old maps.",
+    "level": "A2"
+  },
+  {
+    "english": "We pulled over to look at the view.",
+    "level": "A2"
+  },
+  {
+    "english": "The road was empty all the way to the coast.",
+    "level": "A2"
+  },
+  {
+    "english": "He waved the other driver through.",
+    "level": "A2"
+  },
+  {
+    "english": "A small dent on the bumper has its own story.",
+    "level": "A2"
+  },
+  {
+    "english": "The mechanic explained everything in plain words.",
+    "level": "A2"
+  },
+  {
+    "english": "We changed the oil ourselves on a Saturday.",
+    "level": "A2"
+  },
+  {
+    "english": "The first car you own is rarely the best one.",
+    "level": "A2"
+  },
+  {
+    "english": "He honked, then waved, then laughed.",
+    "level": "A2"
+  },
+  {
+    "english": "The roads are quiet at five in the morning.",
+    "level": "A2"
+  },
+  {
+    "english": "The traffic light at the corner has never worked right.",
+    "level": "A2"
+  },
+  {
+    "english": "She drove the same car for twenty years.",
+    "level": "A2"
+  },
+  {
+    "english": "The new car has too many beeps.",
+    "level": "A2"
+  },
+  {
+    "english": "The truck behind us was patient.",
+    "level": "A2"
+  },
+  {
+    "english": "The mountain road has too many turns to count.",
+    "level": "A2"
+  },
+  {
+    "english": "The headlights cut through the fog.",
+    "level": "A2"
+  },
+  {
+    "english": "The gas station was the only light for miles.",
+    "level": "A2"
+  },
+  {
+    "english": "We rolled the windows down and the dust came in.",
+    "level": "A2"
+  },
+  {
+    "english": "He always checks the tires before a long trip.",
+    "level": "A2"
+  },
+  {
+    "english": "A road trip with a stranger turns the stranger into a friend by hour three.",
+    "level": "B1"
+  },
+  {
+    "english": "The car you learn to drive on is the car you remember the longest.",
+    "level": "B1"
+  },
+  {
+    "english": "A good mechanic is worth their weight in saved weekends.",
+    "level": "B1"
+  },
+  {
+    "english": "The engine warned us for two weeks before it gave up.",
+    "level": "B1"
+  },
+  {
+    "english": "He drove with his grandmother's cassette tapes the whole way across the state.",
+    "level": "B1"
+  },
+  {
+    "english": "The road map in the glove box outlived the GPS that replaced it.",
+    "level": "B1"
+  },
+  {
+    "english": "A small car on a long trip teaches you about your own patience.",
+    "level": "B1"
+  },
+  {
+    "english": "The first time you drive on a highway, the world widens.",
+    "level": "B1"
+  },
+  {
+    "english": "A car in the rain at night is its own kind of silence.",
+    "level": "B1"
+  },
+  {
+    "english": "The driver next to us was singing at the top of his lungs.",
+    "level": "B1"
+  },
+  {
+    "english": "The roads got narrower as the mountains got taller.",
+    "level": "B1"
+  },
+  {
+    "english": "A long traffic jam is a small society with its own customs.",
+    "level": "B1"
+  },
+  {
+    "english": "The car overheated in a small town that turned out to have a great diner.",
+    "level": "B1"
+  },
+  {
+    "english": "He kept a paper map in the glove box even after he stopped needing it.",
+    "level": "B1"
+  },
+  {
+    "english": "The drive to the airport at four in the morning is a particular kind of quiet.",
+    "level": "B1"
+  },
+  {
+    "english": "A flat tire on a back road is the start of every road trip story.",
+    "level": "B1"
+  },
+  {
+    "english": "The smell of a new car fades faster than people admit.",
+    "level": "B1"
+  },
+  {
+    "english": "An old car you take care of will take care of you back, mostly.",
+    "level": "B1"
+  },
+  {
+    "english": "The first car you owned is the car you forgive every later car for not being.",
+    "level": "B2"
+  },
+  {
+    "english": "A road trip is the kind of slow conversation no airport can host.",
+    "level": "B2"
+  },
+  {
+    "english": "The mechanic who refuses to lie to you is the most expensive friend you will keep.",
+    "level": "B2"
+  },
+  {
+    "english": "A traffic light at three in the morning is a small meditation on the rule of law.",
+    "level": "B2"
+  },
+  {
+    "english": "A long highway is the cheapest way to think for several hours uninterrupted.",
+    "level": "B2"
+  },
+  {
+    "english": "A car in the right hands becomes a small extension of the body that owns it.",
+    "level": "B2"
+  },
+  {
+    "english": "The roads we drive most often disappear from our memory, by being too well known to notice.",
+    "level": "B2"
+  },
+  {
+    "english": "A pothole on the route home is a familiar inconvenience the city quietly forgives every year.",
+    "level": "B2"
+  },
+  {
+    "english": "The end of a long drive returns you to yourself in a way no other arrival does.",
+    "level": "B2"
+  },
+  {
+    "english": "A car accident is mostly small mistakes accumulated by people who were almost paying attention.",
+    "level": "B2"
+  },
+  {
+    "english": "The most underrated luxury in a car is silence on the dashboard.",
+    "level": "B2"
+  },
+  {
+    "english": "A flat tire is bad luck for the driver and a small economy for someone nearby with a wrench.",
+    "level": "B2"
+  },
+  {
+    "english": "The map app routes you efficiently and the back road routes you home.",
+    "level": "B2"
+  },
+  {
+    "english": "A great driver does not announce themselves; you only notice the calm.",
+    "level": "B2"
+  },
+  {
+    "english": "The car you drive eventually shapes the route you take, more than the other way around.",
+    "level": "B2"
+  },
+  {
+    "english": "The car reorganized the city around itself faster than any other invention of the last century.",
+    "level": "C1"
+  },
+  {
+    "english": "A long drive on a familiar road is one of the rare modern places where the mind is allowed to wander without supervision.",
+    "level": "C1"
+  },
+  {
+    "english": "A mechanic is a translator between the language of the engine and the language of its owner.",
+    "level": "C1"
+  },
+  {
+    "english": "The car you can fix yourself is the car you will love longest.",
+    "level": "C1"
+  },
+  {
+    "english": "A car is part vehicle and part room, and the room part matters more than people admit.",
+    "level": "C1"
+  },
+  {
+    "english": "The freedom of the road is real, and partly an inheritance of cheap fuel, which is its own complicated story.",
+    "level": "C1"
+  },
+  {
+    "english": "A road trip is the cheapest education in regional difference any country offers its citizens.",
+    "level": "C1"
+  },
+  {
+    "english": "The driver's seat teaches a small daily lesson in attention and humility.",
+    "level": "C1"
+  },
+  {
+    "english": "A long highway flattens the country into a place to pass through, and only the back roads remind you it is also a place to stop.",
+    "level": "C1"
+  },
+  {
+    "english": "A great car is one you do not have to talk to a friend over.",
+    "level": "C1"
+  },
+  {
+    "english": "A child's first car ride is a small surrender of a small body to a large machine, and most parents never quite forget the weight of it.",
+    "level": "C1"
+  },
+  {
+    "english": "A road map is a story about choices the cartographer was making, only some of which were geographical.",
+    "level": "C1"
+  },
+  {
+    "english": "The car promised freedom and delivered a more complicated freedom, half ours and half belonging to the road, the price of fuel, and the long shadow of the highway department.",
+    "level": "C2"
+  },
+  {
+    "english": "A long road trip teaches the body that home is partly a posture, and the mind that home is partly an attention.",
+    "level": "C2"
+  },
+  {
+    "english": "A great mechanic is a kind of family physician for the machine, and the gratitude of a fixed engine is the gratitude of a returned friend.",
+    "level": "C2"
+  },
+  {
+    "english": "A car is a small room moving through a large world; the longer the drive, the more the room becomes the world, and the world becomes a kind of weather.",
+    "level": "C2"
+  },
+  {
+    "english": "The end of a long drive, with the engine still ticking as it cools, is one of the small under-celebrated pleasures of modern life.",
+    "level": "C2"
+  },
+  {
+    "english": "I drive a car.",
+    "level": "A0"
+  },
+  {
+    "english": "I park here.",
+    "level": "A0"
+  },
+  {
+    "english": "The bus lane is closed.",
+    "level": "A1"
+  },
+  {
+    "english": "I check my mirrors.",
+    "level": "A1"
+  },
+  {
+    "english": "She parks near the curb.",
+    "level": "A1"
+  },
+  {
+    "english": "He waits at the stop sign.",
+    "level": "A1"
+  },
+  {
+    "english": "The lane is too narrow.",
+    "level": "A1"
+  },
+  {
+    "english": "I signal before I turn.",
+    "level": "A1"
+  },
+  {
+    "english": "The taxi cuts across traffic.",
+    "level": "A1"
+  },
+  {
+    "english": "We miss the green light.",
+    "level": "A1"
+  },
+  {
+    "english": "He changes lanes carefully.",
+    "level": "A1"
+  },
+  {
+    "english": "The driver leaves space.",
+    "level": "A1"
+  },
+  {
+    "english": "I park on the street.",
+    "level": "A1"
+  },
+  {
+    "english": "The city road feels busy.",
+    "level": "A1"
+  },
+  {
+    "english": "I used my blinker, but the van still rushed past.",
+    "level": "A2"
+  },
+  {
+    "english": "She backed into the space and smiled at the curb.",
+    "level": "A2"
+  },
+  {
+    "english": "At the four-way stop, everyone waited one extra second.",
+    "level": "A2"
+  },
+  {
+    "english": "He will merge after the blue truck passes.",
+    "level": "A2"
+  },
+  {
+    "english": "The cyclist was close, so I opened the door slowly.",
+    "level": "A2"
+  },
+  {
+    "english": "We missed the exit, and the next turn took ten minutes.",
+    "level": "A2"
+  },
+  {
+    "english": "She checked both mirrors before she crossed the lane.",
+    "level": "A2"
+  },
+  {
+    "english": "The delivery van blocked half the street again.",
+    "level": "A2"
+  },
+  {
+    "english": "I parked twice because the first try was too crooked.",
+    "level": "A2"
+  },
+  {
+    "english": "He let the bus in, and traffic moved better.",
+    "level": "A2"
+  },
+  {
+    "english": "The light changed, but the intersection was still full.",
+    "level": "A2"
+  },
+  {
+    "english": "We crawled through downtown while rain tapped the roof.",
+    "level": "A2"
+  },
+  {
+    "english": "She practiced parking between cones behind the school.",
+    "level": "A2"
+  },
+  {
+    "english": "The right lane ends, so move over soon.",
+    "level": "A2"
+  },
+  {
+    "english": "I waited for a clear gap before merging.",
+    "level": "A2"
+  },
+  {
+    "english": "He stopped too late, and everyone rocked forward.",
+    "level": "A2"
+  },
+  {
+    "english": "The parking space looked bigger from across the street.",
+    "level": "A2"
+  },
+  {
+    "english": "She kept both hands steady in heavy traffic.",
+    "level": "A2"
+  },
+  {
+    "english": "We took three blocks to find one open space.",
+    "level": "A2"
+  },
+  {
+    "english": "The horn behind me did not make the light change.",
+    "level": "A2"
+  },
+  {
+    "english": "I turned the wheel slowly and watched the rear bumper.",
+    "level": "A2"
+  },
+  {
+    "english": "He paused for the pedestrian before turning right.",
+    "level": "A2"
+  },
+  {
+    "english": "The taxi stopped short, so I left more room.",
+    "level": "A2"
+  },
+  {
+    "english": "She will drive around the block and try again.",
+    "level": "A2"
+  },
+  {
+    "english": "The city teaches drivers to watch every corner.",
+    "level": "A2"
+  },
+  {
+    "english": "I found a space, but a scooter was already there.",
+    "level": "A2"
+  },
+  {
+    "english": "At rush hour, even a short bridge feels long.",
+    "level": "A2"
+  },
+  {
+    "english": "The left turn arrow disappeared before we moved.",
+    "level": "A2"
+  },
+  {
+    "english": "He learned the size of his car by scraping nothing.",
+    "level": "A2"
+  },
+  {
+    "english": "Parallel parking feels like a small public exam with strangers grading silently.",
+    "level": "B1"
+  },
+  {
+    "english": "I never trust a gap in traffic until I see it twice.",
+    "level": "B1"
+  },
+  {
+    "english": "The best lane change is the one nobody has to notice.",
+    "level": "B1"
+  },
+  {
+    "english": "At a four-way stop, confidence can look a lot like confusion.",
+    "level": "B1"
+  },
+  {
+    "english": "She drives downtown with one eye on mirrors and one on manners.",
+    "level": "B1"
+  },
+  {
+    "english": "A calm driver can make a crowded street feel slightly wider.",
+    "level": "B1"
+  },
+  {
+    "english": "He left room for the cab, and the whole block exhaled.",
+    "level": "B1"
+  },
+  {
+    "english": "City driving is mostly guessing what someone will do next.",
+    "level": "B1"
+  },
+  {
+    "english": "I missed the turn, so I took the mistake around the block.",
+    "level": "B1"
+  },
+  {
+    "english": "The parking meter blinked red before I had even shut the door.",
+    "level": "B1"
+  },
+  {
+    "english": "A good merge feels less like force and more like timing.",
+    "level": "B1"
+  },
+  {
+    "english": "She waited through two lights because the box was already blocked.",
+    "level": "B1"
+  },
+  {
+    "english": "The narrow street made every side mirror feel expensive.",
+    "level": "B1"
+  },
+  {
+    "english": "He backed in slowly, trusting the camera but believing the mirrors.",
+    "level": "B1"
+  },
+  {
+    "english": "Rush hour turns every driver into a student of small delays.",
+    "level": "B1"
+  },
+  {
+    "english": "The city rewards drivers who can be decisive without becoming pushy.",
+    "level": "B2"
+  },
+  {
+    "english": "A crowded intersection exposes the difference between having the right of way and using it wisely.",
+    "level": "B2"
+  },
+  {
+    "english": "She merged with the patience of someone who knew speed was not the whole skill.",
+    "level": "B2"
+  },
+  {
+    "english": "The curb was close enough to teach humility, but not close enough to scratch the wheel.",
+    "level": "B2"
+  },
+  {
+    "english": "In traffic, courtesy is not softness; it is a practical system for avoiding metal and anger.",
+    "level": "B2"
+  },
+  {
+    "english": "Every city has one lane that looks promising until it becomes a parked truck.",
+    "level": "B2"
+  },
+  {
+    "english": "The driver behind me wanted urgency, but the crosswalk wanted attention.",
+    "level": "B2"
+  },
+  {
+    "english": "A careful lane change is a little negotiation conducted with lights, speed, and trust.",
+    "level": "B2"
+  },
+  {
+    "english": "He learned rush-hour patience from brake lights reflected in a rain-dark windshield.",
+    "level": "B2"
+  },
+  {
+    "english": "The hardest part of parallel parking is accepting that everyone can see you think.",
+    "level": "B2"
+  },
+  {
+    "english": "City traffic makes the car feel less like freedom and more like citizenship.",
+    "level": "B2"
+  },
+  {
+    "english": "She treated the four-way stop like a conversation, not a contest.",
+    "level": "B2"
+  },
+  {
+    "english": "A lane is not merely paint on asphalt; in heavy traffic, it is a fragile public agreement.",
+    "level": "C1"
+  },
+  {
+    "english": "The driver who leaves space in front of them is often protecting the strangers behind them.",
+    "level": "C1"
+  },
+  {
+    "english": "Parallel parking compresses judgment into inches, asking the driver to imagine the car from outside itself.",
+    "level": "C1"
+  },
+  {
+    "english": "At rush hour, impatience spreads through traffic faster than speed ever could.",
+    "level": "C1"
+  },
+  {
+    "english": "A four-way stop works because ordinary people briefly accept choreography without a conductor.",
+    "level": "C1"
+  },
+  {
+    "english": "The cleanest merge happens when no one wins, because everyone has adjusted by a car length.",
+    "level": "C1"
+  },
+  {
+    "english": "City driving requires a moral imagination of bumpers, bicycles, doors, dogs, buses, and blind corners.",
+    "level": "C1"
+  },
+  {
+    "english": "The horn is a crude instrument, useful sometimes, but rarely as precise as patience.",
+    "level": "C1"
+  },
+  {
+    "english": "A driver becomes mature when they stop treating every open space as an invitation.",
+    "level": "C1"
+  },
+  {
+    "english": "The parking lane teaches geometry in the only language most adults still respect, embarrassment.",
+    "level": "C1"
+  },
+  {
+    "english": "In the dense grammar of city traffic, a turn signal is less a request than a promise made in public, and breaking it changes the mood of the street.",
+    "level": "C2"
+  },
+  {
+    "english": "The four-way stop, humble as a metal sign on a corner, depends on a civic intelligence more delicate than any engine under the hood.",
+    "level": "C2"
+  },
+  {
+    "english": "Parallel parking turns the car from machine into measuring instrument, with the curb, the mirror, and the waiting driver behind you all supplying their quiet verdicts.",
+    "level": "C2"
+  },
+  {
+    "english": "Rush hour reveals the strange intimacy of modern streets, where strangers sit in separate rooms of glass and steel, reading one another through brake lights and hesitation.",
+    "level": "C2"
+  },
+  {
+    "english": "The car is electric.",
+    "level": "A1"
+  },
+  {
+    "english": "I charge the car.",
+    "level": "A1"
+  },
+  {
+    "english": "The plug is here.",
+    "level": "A1"
+  },
+  {
+    "english": "This car is quiet.",
+    "level": "A1"
+  },
+  {
+    "english": "The screen shows range.",
+    "level": "A1"
+  },
+  {
+    "english": "We need a charger.",
+    "level": "A1"
+  },
+  {
+    "english": "The battery is low.",
+    "level": "A1"
+  },
+  {
+    "english": "He drives a hybrid.",
+    "level": "A1"
+  },
+  {
+    "english": "The cable is heavy.",
+    "level": "A1"
+  },
+  {
+    "english": "The car parks itself.",
+    "level": "A1"
+  },
+  {
+    "english": "The charger is slow.",
+    "level": "A1"
+  },
+  {
+    "english": "The motor feels smooth.",
+    "level": "A1"
+  },
+  {
+    "english": "I charged the car overnight, and it was ready by morning.",
+    "level": "A2"
+  },
+  {
+    "english": "The dashboard says we can drive two hundred miles.",
+    "level": "A2"
+  },
+  {
+    "english": "She uses electric power in town and gas on highways.",
+    "level": "A2"
+  },
+  {
+    "english": "We found a fast charger beside the grocery store.",
+    "level": "A2"
+  },
+  {
+    "english": "The car was silent, so the dog looked confused.",
+    "level": "A2"
+  },
+  {
+    "english": "He planned the route around chargers, not gas stations.",
+    "level": "A2"
+  },
+  {
+    "english": "The battery warmed up before the winter drive.",
+    "level": "A2"
+  },
+  {
+    "english": "My phone tells me when the charge is finished.",
+    "level": "A2"
+  },
+  {
+    "english": "The car slowed down when it saw the cyclist.",
+    "level": "A2"
+  },
+  {
+    "english": "We rented an electric car for the weekend trip.",
+    "level": "A2"
+  },
+  {
+    "english": "The plug clicked, and the blue light came on.",
+    "level": "A2"
+  },
+  {
+    "english": "He forgot the adapter, so we charged very slowly.",
+    "level": "A2"
+  },
+  {
+    "english": "The hybrid saved fuel during stop and go traffic.",
+    "level": "A2"
+  },
+  {
+    "english": "The car changed lanes, but I kept my hands ready.",
+    "level": "A2"
+  },
+  {
+    "english": "A quiet taxi arrived with no engine sound at all.",
+    "level": "A2"
+  },
+  {
+    "english": "The charging station was full, so we waited ten minutes.",
+    "level": "A2"
+  },
+  {
+    "english": "She likes one pedal driving after a week of practice.",
+    "level": "A2"
+  },
+  {
+    "english": "The car updates itself while it sits in the driveway.",
+    "level": "A2"
+  },
+  {
+    "english": "We stopped for coffee while the battery filled up.",
+    "level": "A2"
+  },
+  {
+    "english": "The rental car asked me to choose a drive mode.",
+    "level": "A2"
+  },
+  {
+    "english": "He checks the range before every cold morning commute.",
+    "level": "A2"
+  },
+  {
+    "english": "The charger near the motel worked after midnight.",
+    "level": "A2"
+  },
+  {
+    "english": "Our electric van carries groceries without smelling like fuel.",
+    "level": "A2"
+  },
+  {
+    "english": "The car warned us before the battery got too low.",
+    "level": "A2"
+  },
+  {
+    "english": "She parked near the charger and walked to lunch.",
+    "level": "A2"
+  },
+  {
+    "english": "The steering wheel moved, and everyone got quiet.",
+    "level": "A2"
+  },
+  {
+    "english": "We paid for charging with an app, not cash.",
+    "level": "A2"
+  },
+  {
+    "english": "The quiet motor made the snow feel even softer.",
+    "level": "A2"
+  },
+  {
+    "english": "Range anxiety fades when you know where the chargers are.",
+    "level": "B1"
+  },
+  {
+    "english": "The first time the car steered itself, I trusted it only halfway.",
+    "level": "B1"
+  },
+  {
+    "english": "A hybrid feels sensible when the city keeps stopping you.",
+    "level": "B1"
+  },
+  {
+    "english": "We learned to plan lunch around the fastest charger on the map.",
+    "level": "B1"
+  },
+  {
+    "english": "The electric car climbed the hill without drama or exhaust.",
+    "level": "B1"
+  },
+  {
+    "english": "He misses engine noise, but he does not miss gas prices.",
+    "level": "B1"
+  },
+  {
+    "english": "The car saw the brake lights before I did.",
+    "level": "B1"
+  },
+  {
+    "english": "A charging stop turns a road trip into a slower conversation.",
+    "level": "B1"
+  },
+  {
+    "english": "She treats the range number like weather, useful but never final.",
+    "level": "B1"
+  },
+  {
+    "english": "The dealer explained kilowatts better than he explained the warranty.",
+    "level": "B1"
+  },
+  {
+    "english": "In a quiet electric car, tire noise becomes part of the music.",
+    "level": "B1"
+  },
+  {
+    "english": "The car can park itself, but my father still judges it.",
+    "level": "B1"
+  },
+  {
+    "english": "Cold weather takes miles from the battery before breakfast.",
+    "level": "B1"
+  },
+  {
+    "english": "The future arrived first as a charger behind a pharmacy.",
+    "level": "B1"
+  },
+  {
+    "english": "Electric driving changes the rhythm of travel, because every stop becomes partly intentional.",
+    "level": "B2"
+  },
+  {
+    "english": "The autonomous mode is impressive, but it still makes the driver responsible for doubt.",
+    "level": "B2"
+  },
+  {
+    "english": "A charging network is invisible when it works and unforgettable when it fails.",
+    "level": "B2"
+  },
+  {
+    "english": "The hybrid is a practical treaty between old habits and new machinery.",
+    "level": "B2"
+  },
+  {
+    "english": "You begin to measure distance in battery percent, coffee stops, and bathroom patience.",
+    "level": "B2"
+  },
+  {
+    "english": "The electric pickup turned farm errands into something quieter, though not exactly simpler.",
+    "level": "B2"
+  },
+  {
+    "english": "Self driving features make traffic feel less personal, until they make a strange choice.",
+    "level": "B2"
+  },
+  {
+    "english": "The quiet cabin exposes every loose cup, every zipper, every nervous cough.",
+    "level": "B2"
+  },
+  {
+    "english": "Charging at home feels ordinary until you remember you stopped visiting gas stations.",
+    "level": "B2"
+  },
+  {
+    "english": "The car knows the lane markings, but the driver knows the local habits.",
+    "level": "B2"
+  },
+  {
+    "english": "An electric road trip rewards the person who can enjoy a planned pause.",
+    "level": "B2"
+  },
+  {
+    "english": "The battery beneath the floor gives the car a planted, almost stubborn calm.",
+    "level": "B2"
+  },
+  {
+    "english": "The electric car does not abolish maintenance, it merely moves the worry from oil to software, tires, and battery health.",
+    "level": "C1"
+  },
+  {
+    "english": "Autonomous driving asks a strange question of the human behind the wheel, how alert can supervision remain without action?",
+    "level": "C1"
+  },
+  {
+    "english": "A fast charger beside a highway diner is not romance in the old sense, but it has its own glow.",
+    "level": "C1"
+  },
+  {
+    "english": "The hybrid powertrain feels like a compromise made by engineers who understood both nostalgia and traffic.",
+    "level": "C1"
+  },
+  {
+    "english": "When a car updates overnight, ownership begins to feel less like possession and more like a subscription to behavior.",
+    "level": "C1"
+  },
+  {
+    "english": "The silence of an electric motor makes speed feel cleaner than it is, which is part comfort and part illusion.",
+    "level": "C1"
+  },
+  {
+    "english": "Range estimates turn weather, elevation, and driving style into a private arithmetic every electric driver slowly learns.",
+    "level": "C1"
+  },
+  {
+    "english": "The self parking car performs confidence as choreography, while everyone nearby pretends not to watch.",
+    "level": "C1"
+  },
+  {
+    "english": "If the old dashboard was a set of gauges, the new one is a negotiation with a computer.",
+    "level": "C1"
+  },
+  {
+    "english": "The electric highway still promises freedom, but now the promise includes a working charger, a payment app, and twenty quiet minutes beside a humming cabinet.",
+    "level": "C2"
+  },
+  {
+    "english": "A self driving car changes the old bargain of the road, because the person in charge is now both passenger and witness, expected to trust and interrupt at once.",
+    "level": "C2"
+  },
+  {
+    "english": "The future of driving may arrive less like a shining machine than like a revised errand, quieter in the driveway, stranger in the shop, and more dependent on invisible networks.",
+    "level": "C2"
+  },
+  {
+    "english": "In an electric car crossing the desert, the old romance of fuel and distance gives way to another romance, made of planned pauses, battery heat, and faith in a blue dot on a screen.",
+    "level": "C2"
+  },
+  {
+    "english": "The engine is warm.",
+    "level": "A0"
+  },
+  {
+    "english": "The hood is open.",
+    "level": "A1"
+  },
+  {
+    "english": "I check the oil.",
+    "level": "A1"
+  },
+  {
+    "english": "The brake feels soft.",
+    "level": "A1"
+  },
+  {
+    "english": "The belt looks loose.",
+    "level": "A1"
+  },
+  {
+    "english": "This wrench is heavy.",
+    "level": "A1"
+  },
+  {
+    "english": "The battery is weak.",
+    "level": "A1"
+  },
+  {
+    "english": "The fan is noisy.",
+    "level": "A1"
+  },
+  {
+    "english": "He adds coolant.",
+    "level": "A1"
+  },
+  {
+    "english": "She hears a knock.",
+    "level": "A1"
+  },
+  {
+    "english": "The shop smells oily.",
+    "level": "A1"
+  },
+  {
+    "english": "My hands are dirty.",
+    "level": "A1"
+  },
+  {
+    "english": "The gauge reads hot.",
+    "level": "A1"
+  },
+  {
+    "english": "I opened the hood, and steam rose from the engine.",
+    "level": "A2"
+  },
+  {
+    "english": "The oil looked black, so we booked a service.",
+    "level": "A2"
+  },
+  {
+    "english": "He changed the filter before the road trip began.",
+    "level": "A2"
+  },
+  {
+    "english": "The starter clicked twice, but the engine did not catch.",
+    "level": "A2"
+  },
+  {
+    "english": "She pressed the brake pedal, and it sank too far.",
+    "level": "A2"
+  },
+  {
+    "english": "A loose belt squealed when the morning got cold.",
+    "level": "A2"
+  },
+  {
+    "english": "The mechanic tested the battery and cleaned the terminals.",
+    "level": "A2"
+  },
+  {
+    "english": "We heard a rattle, so we drove to the shop.",
+    "level": "A2"
+  },
+  {
+    "english": "The dashboard light came on after the last hill.",
+    "level": "A2"
+  },
+  {
+    "english": "He topped up the coolant before crossing the desert.",
+    "level": "A2"
+  },
+  {
+    "english": "The dipstick showed low oil, and nobody felt lucky.",
+    "level": "A2"
+  },
+  {
+    "english": "A new spark plug made the idle sound smoother.",
+    "level": "A2"
+  },
+  {
+    "english": "The brake pads were thin, but the rotors survived.",
+    "level": "A2"
+  },
+  {
+    "english": "She kept receipts for every repair in the glove box.",
+    "level": "A2"
+  },
+  {
+    "english": "The exhaust smelled strange, so we left the windows open.",
+    "level": "A2"
+  },
+  {
+    "english": "He tightened one bolt, and the noise disappeared.",
+    "level": "A2"
+  },
+  {
+    "english": "The air filter was dusty after the gravel road.",
+    "level": "A2"
+  },
+  {
+    "english": "We waited in the service bay while rain hit the roof.",
+    "level": "A2"
+  },
+  {
+    "english": "The mechanic raised the car and spun each wheel.",
+    "level": "A2"
+  },
+  {
+    "english": "A small oil stain spread under the front axle.",
+    "level": "A2"
+  },
+  {
+    "english": "The clutch slipped on hills, so he drove gently.",
+    "level": "A2"
+  },
+  {
+    "english": "The radiator fan ran loudly after the traffic jam.",
+    "level": "A2"
+  },
+  {
+    "english": "She replaced the wipers while the oil drained.",
+    "level": "A2"
+  },
+  {
+    "english": "The check engine light blinked, and the trip felt shorter.",
+    "level": "A2"
+  },
+  {
+    "english": "He found a cracked hose behind the coolant tank.",
+    "level": "A2"
+  },
+  {
+    "english": "The brakes squeaked at sunrise, but they stopped cleanly.",
+    "level": "A2"
+  },
+  {
+    "english": "We bought jumper cables after one cold morning.",
+    "level": "A2"
+  },
+  {
+    "english": "The engine oil smelled burnt, so I called the garage.",
+    "level": "A2"
+  },
+  {
+    "english": "The engine has a rough idle, like it is clearing its throat.",
+    "level": "B1"
+  },
+  {
+    "english": "A cheap repair feels expensive until the car starts cleanly again.",
+    "level": "B1"
+  },
+  {
+    "english": "He knows trouble by sound before he ever opens the hood.",
+    "level": "B1"
+  },
+  {
+    "english": "The brake pedal told the truth before the dashboard did.",
+    "level": "B1"
+  },
+  {
+    "english": "I trust a mechanic who shows me the worn part.",
+    "level": "B1"
+  },
+  {
+    "english": "The old pickup needs patience, oil, and a socket set.",
+    "level": "B1"
+  },
+  {
+    "english": "When the alternator failed, every light on the dash looked guilty.",
+    "level": "B1"
+  },
+  {
+    "english": "A good tuneup can make an old engine remember itself.",
+    "level": "B1"
+  },
+  {
+    "english": "She learned the smell of hot brakes on a mountain descent.",
+    "level": "B1"
+  },
+  {
+    "english": "The service bay was loud, but the diagnosis was almost gentle.",
+    "level": "B1"
+  },
+  {
+    "english": "You hear a car differently after you have paid for one.",
+    "level": "B1"
+  },
+  {
+    "english": "The oil change took thirty minutes and saved a long argument.",
+    "level": "B1"
+  },
+  {
+    "english": "A bad bearing turns every mile into a question.",
+    "level": "B1"
+  },
+  {
+    "english": "He carried a funnel because old engines rarely ask politely.",
+    "level": "B1"
+  },
+  {
+    "english": "The engine cooled while we watched the mechanic wipe his hands.",
+    "level": "B1"
+  },
+  {
+    "english": "Under the hood, a simple noise can mean a loose belt, a tired pump, or a ruined weekend.",
+    "level": "B2"
+  },
+  {
+    "english": "The best garages feel practical, with coffee, old invoices, and someone who listens before guessing.",
+    "level": "B2"
+  },
+  {
+    "english": "A brake inspection is less dramatic than a breakdown, which is exactly why it matters.",
+    "level": "B2"
+  },
+  {
+    "english": "The engine sounded healthier after the tuneup, but the owner sounded relieved first.",
+    "level": "B2"
+  },
+  {
+    "english": "An honest estimate has its own music, part numbers, labor hours, and no performance.",
+    "level": "B2"
+  },
+  {
+    "english": "Old cars teach budgeting in small, oily lessons that arrive without checking your calendar.",
+    "level": "B2"
+  },
+  {
+    "english": "The mechanic's bay turns private worry into public evidence, lifted on steel arms under fluorescent light.",
+    "level": "B2"
+  },
+  {
+    "english": "A weak battery makes every winter morning feel like a negotiation with chemistry.",
+    "level": "B2"
+  },
+  {
+    "english": "The first rule of engine trouble is to listen before the noise becomes a bill.",
+    "level": "B2"
+  },
+  {
+    "english": "Good brakes are invisible until the one day they become the whole story.",
+    "level": "B2"
+  },
+  {
+    "english": "The smell of warm oil can be either comfort or warning, depending on the mile.",
+    "level": "B2"
+  },
+  {
+    "english": "A car with fresh fluids carries itself differently, as if maintenance were a form of manners.",
+    "level": "B2"
+  },
+  {
+    "english": "The engine bay is honest in a way the dashboard is not, because leaks and scorched belts leave physical testimony.",
+    "level": "C1"
+  },
+  {
+    "english": "Routine maintenance is the unromantic half of mobility, the quiet bargain that lets the open road keep its charm.",
+    "level": "C1"
+  },
+  {
+    "english": "A mechanic's confidence should sound less like certainty than method, one test leading patiently to the next.",
+    "level": "C1"
+  },
+  {
+    "english": "The brake system compresses fear into hydraulics, and most drivers notice it only when trust briefly thins.",
+    "level": "C1"
+  },
+  {
+    "english": "There is a peculiar intimacy in learning your car's noises, because diagnosis begins before language has a name for them.",
+    "level": "C1"
+  },
+  {
+    "english": "An oil change is not care in the sentimental sense, but neglect announces itself quickly in metal.",
+    "level": "C1"
+  },
+  {
+    "english": "The battery is a small box of deferred departures, harmless until one cold morning edits the whole schedule.",
+    "level": "C1"
+  },
+  {
+    "english": "A service record is a biography written in mileage, parts, labor, and the careful grammar of prevention.",
+    "level": "C1"
+  },
+  {
+    "english": "When a mechanic wipes a dipstick and pauses, the silence can feel more precise than speech.",
+    "level": "C1"
+  },
+  {
+    "english": "The underside of a car reveals the roads it has survived, salt, gravel, heat, and small impacts preserved as evidence.",
+    "level": "C1"
+  },
+  {
+    "english": "Beneath the hood, the engine keeps its crowded parliament of belts, fluids, sparks, and heat, each part arguing in motion until one small failure gives the whole machine a voice.",
+    "level": "C2"
+  },
+  {
+    "english": "A good mechanic listens the way a doctor listens, not for drama but for pattern, because a knock at idle may contain the history of every postponed errand.",
+    "level": "C2"
+  },
+  {
+    "english": "The oil-dark floor of a repair bay is a map of ordinary dependence, where family plans, work shifts, and weekend departures wait for a socket wrench to restore them.",
+    "level": "C2"
+  },
+  {
+    "english": "The check engine light is a tiny amber accusation, vague enough to frighten everyone and useful enough to send us back to the humble sciences of pressure, timing, and combustion.",
+    "level": "C2"
+  },
+  {
+    "english": "This car is mine.",
+    "level": "A0"
+  },
+  {
+    "english": "I wash my car on Sunday.",
+    "level": "A1"
+  },
+  {
+    "english": "My uncle sells used cars.",
+    "level": "A1"
+  },
+  {
+    "english": "This old car still runs.",
+    "level": "A1"
+  },
+  {
+    "english": "She bought her first car yesterday.",
+    "level": "A1"
+  },
+  {
+    "english": "He keeps the title in a drawer.",
+    "level": "A1"
+  },
+  {
+    "english": "The dealer smiles too much.",
+    "level": "A1"
+  },
+  {
+    "english": "Our car has one owner.",
+    "level": "A1"
+  },
+  {
+    "english": "I paid cash for it.",
+    "level": "A1"
+  },
+  {
+    "english": "The seats are cracked.",
+    "level": "A1"
+  },
+  {
+    "english": "My brother loves classic cars.",
+    "level": "A1"
+  },
+  {
+    "english": "The garage smells like wax.",
+    "level": "A1"
+  },
+  {
+    "english": "We keep every receipt.",
+    "level": "A1"
+  },
+  {
+    "english": "We bought a used hatchback, and it came with winter tires.",
+    "level": "A2"
+  },
+  {
+    "english": "The salesman lowered the price, but my mother still walked away.",
+    "level": "A2"
+  },
+  {
+    "english": "I will save for insurance before I choose the car.",
+    "level": "A2"
+  },
+  {
+    "english": "He found the service records, so the old sedan felt safer.",
+    "level": "A2"
+  },
+  {
+    "english": "She waxes the hood every month, and the paint still shines.",
+    "level": "A2"
+  },
+  {
+    "english": "The coupe needed a clutch, but the body had no rust.",
+    "level": "A2"
+  },
+  {
+    "english": "We test-drove three cars, then chose the quietest one.",
+    "level": "A2"
+  },
+  {
+    "english": "My father kept the keys, but he let me steer.",
+    "level": "A2"
+  },
+  {
+    "english": "The classic truck starts loudly, and neighbors come outside to look.",
+    "level": "A2"
+  },
+  {
+    "english": "I sold my scooter, so I could afford the down payment.",
+    "level": "A2"
+  },
+  {
+    "english": "The odometer is high, but the engine sounds honest.",
+    "level": "A2"
+  },
+  {
+    "english": "We signed the papers, and the car became ours.",
+    "level": "A2"
+  },
+  {
+    "english": "He parks under a cover, because the sun fades old paint.",
+    "level": "A2"
+  },
+  {
+    "english": "She joined a car club, and Saturday mornings got busier.",
+    "level": "A2"
+  },
+  {
+    "english": "The mechanic checked the frame, then warned us about hidden rust.",
+    "level": "A2"
+  },
+  {
+    "english": "I will replace the radio but keep the original knobs.",
+    "level": "A2"
+  },
+  {
+    "english": "The dealer offered coffee while we studied the warranty.",
+    "level": "A2"
+  },
+  {
+    "english": "We cleaned the trunk, and found coins from another owner.",
+    "level": "A2"
+  },
+  {
+    "english": "The old wagon leaks oil, but everyone knows its name.",
+    "level": "A2"
+  },
+  {
+    "english": "He saved every manual, so the buyer trusted him.",
+    "level": "A2"
+  },
+  {
+    "english": "My cousin restored the grille, and the car looked awake.",
+    "level": "A2"
+  },
+  {
+    "english": "The used van has dents, but it carries our whole family.",
+    "level": "A2"
+  },
+  {
+    "english": "We drove home carefully, because the plates were temporary.",
+    "level": "A2"
+  },
+  {
+    "english": "She chose cloth seats, since leather gets hot in summer.",
+    "level": "A2"
+  },
+  {
+    "english": "The auction was loud, and the bidding moved too fast.",
+    "level": "A2"
+  },
+  {
+    "english": "He traded his sedan, but he kept the lucky keychain.",
+    "level": "A2"
+  },
+  {
+    "english": "The showroom lights were bright, yet the car looked nervous.",
+    "level": "A2"
+  },
+  {
+    "english": "We washed off the chalk price, and it finally felt private.",
+    "level": "A2"
+  },
+  {
+    "english": "Buying a car taught me that the cheapest price is only the first bill.",
+    "level": "B1"
+  },
+  {
+    "english": "He knows every rattle by location, season, and level of worry.",
+    "level": "B1"
+  },
+  {
+    "english": "The dealer called it pre-owned, but my cousin called it experienced.",
+    "level": "B1"
+  },
+  {
+    "english": "We spent more time choosing floor mats than choosing the bank loan.",
+    "level": "B1"
+  },
+  {
+    "english": "Her restored Mustang looks loud even when it is sitting still.",
+    "level": "B1"
+  },
+  {
+    "english": "A car club meeting can turn a parking lot into a family album.",
+    "level": "B1"
+  },
+  {
+    "english": "He talks about carburetors the way gardeners talk about soil.",
+    "level": "B1"
+  },
+  {
+    "english": "The old jeep is unreliable, but nobody in the family wants to sell it.",
+    "level": "B1"
+  },
+  {
+    "english": "My neighbor polishes his classic Buick before every parade in July.",
+    "level": "B1"
+  },
+  {
+    "english": "The first scratch hurt less after the first good mile together.",
+    "level": "B1"
+  },
+  {
+    "english": "A good used car carries proof that someone cared before you.",
+    "level": "B1"
+  },
+  {
+    "english": "The dealership smelled of coffee, tire shine, and careful monthly payments.",
+    "level": "B1"
+  },
+  {
+    "english": "He bought the convertible for summer, then drove it through three winters.",
+    "level": "B1"
+  },
+  {
+    "english": "Ownership begins with keys, but it settles in through chores.",
+    "level": "B1"
+  },
+  {
+    "english": "A restored car is never only restored; it is edited by every hand that saved it.",
+    "level": "B2"
+  },
+  {
+    "english": "The nicest cars at the meet were not perfect, which made them easier to love.",
+    "level": "B2"
+  },
+  {
+    "english": "He could afford a newer sedan, but the old one had his habits built in.",
+    "level": "B2"
+  },
+  {
+    "english": "At the dealership, every promise sounded polished, so we trusted the dusty service folder.",
+    "level": "B2"
+  },
+  {
+    "english": "Car ownership turns money into maintenance, and maintenance into a surprisingly personal calendar.",
+    "level": "B2"
+  },
+  {
+    "english": "The classic coupe spent more weekends on jack stands than on pavement, yet nobody called it a failure.",
+    "level": "B2"
+  },
+  {
+    "english": "A used car asks for trust before it offers loyalty, which is fair enough.",
+    "level": "B2"
+  },
+  {
+    "english": "She bought a practical compact and slowly filled it with charms, receipts, and decisions.",
+    "level": "B2"
+  },
+  {
+    "english": "The title changed names in ten minutes, but the car took months to become ours.",
+    "level": "B2"
+  },
+  {
+    "english": "Some people collect cars for status; others collect the exact sound a door should make.",
+    "level": "B2"
+  },
+  {
+    "english": "A dealership can make desire feel organized, with financing desks where daydreams become obligations.",
+    "level": "B2"
+  },
+  {
+    "english": "The restoration budget doubled quietly, as if the car had learned negotiation.",
+    "level": "B2"
+  },
+  {
+    "english": "Restoring a car is a negotiation between authenticity and use, because museum purity rarely survives a weekday commute.",
+    "level": "C1"
+  },
+  {
+    "english": "The culture around old cars can be generous and fussy at once, measuring friendship in borrowed tools.",
+    "level": "C1"
+  },
+  {
+    "english": "A used car lot teaches a practical form of reading, where silence, smell, and paperwork all matter.",
+    "level": "C1"
+  },
+  {
+    "english": "His attachment to the sedan was not nostalgia exactly, but a loyalty built from repeated repairs.",
+    "level": "C1"
+  },
+  {
+    "english": "A classic car owner learns that preservation is not freezing time, but choosing which changes to accept.",
+    "level": "C1"
+  },
+  {
+    "english": "Dealerships sell certainty in glass rooms, while private sellers offer stories that may or may not be evidence.",
+    "level": "C1"
+  },
+  {
+    "english": "The longer you own a car, the less it feels like property and the more it resembles a witness.",
+    "level": "C1"
+  },
+  {
+    "english": "In a restoration shop, patience becomes visible as labeled bolts, sanded panels, and parts wrapped in newspaper.",
+    "level": "C1"
+  },
+  {
+    "english": "The culture of ownership is partly economic, partly sentimental, and always shaped by what a person can fix.",
+    "level": "C1"
+  },
+  {
+    "english": "The car he inherited was not valuable in any guidebook, but its worn steering wheel held the pressure of three generations of errands, arguments, and quiet returns.",
+    "level": "C2"
+  },
+  {
+    "english": "A classic car meet is a museum without walls, where pride stands beside compromise, and every open hood invites both admiration and correction.",
+    "level": "C2"
+  },
+  {
+    "english": "To buy a used car well is to practice a small, secular skepticism, trusting neither shine nor story until metal, paperwork, and instinct begin to agree.",
+    "level": "C2"
+  },
+  {
+    "english": "Ownership, over years, turns a machine into an archive, because every repair chooses what to preserve, what to replace, and what kind of past may still be driven.",
+    "level": "C2"
+  },
+  {
+    "english": "We pack the car.",
+    "level": "A0"
+  },
+  {
+    "english": "The map is on my lap.",
+    "level": "A1"
+  },
+  {
+    "english": "We leave before sunrise.",
+    "level": "A1"
+  },
+  {
+    "english": "Dad buys chips at the station.",
+    "level": "A1"
+  },
+  {
+    "english": "The motel has a bright sign.",
+    "level": "A1"
+  },
+  {
+    "english": "My sister chooses the next song.",
+    "level": "A1"
+  },
+  {
+    "english": "We stop for clean bathrooms.",
+    "level": "A1"
+  },
+  {
+    "english": "The highway feels wide today.",
+    "level": "A1"
+  },
+  {
+    "english": "I sleep in the back seat.",
+    "level": "A1"
+  },
+  {
+    "english": "We pass fields and barns.",
+    "level": "A1"
+  },
+  {
+    "english": "Mom keeps coins for tolls.",
+    "level": "A1"
+  },
+  {
+    "english": "The cooler holds cold drinks.",
+    "level": "A1"
+  },
+  {
+    "english": "Our bags fill the trunk.",
+    "level": "A1"
+  },
+  {
+    "english": "We left early, but the highway was already busy.",
+    "level": "A2"
+  },
+  {
+    "english": "I will drive after lunch, and you can rest.",
+    "level": "A2"
+  },
+  {
+    "english": "We stopped for coffee, then followed the river north.",
+    "level": "A2"
+  },
+  {
+    "english": "The kids counted trucks until the mountains came into view.",
+    "level": "A2"
+  },
+  {
+    "english": "Our snacks melted in the sun, so we bought ice.",
+    "level": "A2"
+  },
+  {
+    "english": "The motel pool looked small, but everyone jumped in.",
+    "level": "A2"
+  },
+  {
+    "english": "We missed the exit, so the trip gained twenty minutes.",
+    "level": "A2"
+  },
+  {
+    "english": "The playlist changed with each state, and nobody complained.",
+    "level": "A2"
+  },
+  {
+    "english": "We ate tacos near the freeway and kept moving west.",
+    "level": "A2"
+  },
+  {
+    "english": "The phone lost signal, but the paper directions helped.",
+    "level": "A2"
+  },
+  {
+    "english": "She packed pillows because the back seat gets hard.",
+    "level": "A2"
+  },
+  {
+    "english": "We crossed the bridge at sunset, and the car went quiet.",
+    "level": "A2"
+  },
+  {
+    "english": "The rain stopped after dinner, so we drove two more hours.",
+    "level": "A2"
+  },
+  {
+    "english": "He cleaned the windshield while I paid for gas.",
+    "level": "A2"
+  },
+  {
+    "english": "The rest stop had maps, vending machines, and sleepy families.",
+    "level": "A2"
+  },
+  {
+    "english": "We chose the scenic route, but it added fifty miles.",
+    "level": "A2"
+  },
+  {
+    "english": "The dashboard clock was wrong, so dinner felt early.",
+    "level": "A2"
+  },
+  {
+    "english": "I saved a sandwich for the last stretch home.",
+    "level": "A2"
+  },
+  {
+    "english": "We filled the tank before the desert began.",
+    "level": "A2"
+  },
+  {
+    "english": "The dog barked at every motorcycle we passed.",
+    "level": "A2"
+  },
+  {
+    "english": "At noon, the asphalt shimmered like water ahead.",
+    "level": "A2"
+  },
+  {
+    "english": "We bought postcards in town and mailed them later.",
+    "level": "A2"
+  },
+  {
+    "english": "The car smelled of oranges, sunscreen, and warm vinyl.",
+    "level": "A2"
+  },
+  {
+    "english": "We followed Highway 1 until the ocean stayed beside us.",
+    "level": "A2"
+  },
+  {
+    "english": "A motel clerk gave us towels and better directions.",
+    "level": "A2"
+  },
+  {
+    "english": "We parked under cottonwoods, and the engine cooled quickly.",
+    "level": "A2"
+  },
+  {
+    "english": "By morning, every seat held crumbs and souvenir receipts.",
+    "level": "A2"
+  },
+  {
+    "english": "We drove past cornfields, then found barbecue before dusk.",
+    "level": "A2"
+  },
+  {
+    "english": "The best road snacks are the ones you regret before the next county.",
+    "level": "B1"
+  },
+  {
+    "english": "By the second day, everyone had a favorite gas station bathroom.",
+    "level": "B1"
+  },
+  {
+    "english": "We argued over the playlist until the road chose silence for us.",
+    "level": "B1"
+  },
+  {
+    "english": "A roadside diner can make a tired driver believe in breakfast again.",
+    "level": "B1"
+  },
+  {
+    "english": "The first motel after midnight always looks more welcoming than it should.",
+    "level": "B1"
+  },
+  {
+    "english": "We kept missing sunsets because the highway kept bending the wrong way.",
+    "level": "B1"
+  },
+  {
+    "english": "Nothing tests a friendship like sharing legroom for six hundred miles.",
+    "level": "B1"
+  },
+  {
+    "english": "The car became our kitchen, coat closet, theater, and argument room.",
+    "level": "B1"
+  },
+  {
+    "english": "Every state line felt official, even when the sign was small.",
+    "level": "B1"
+  },
+  {
+    "english": "We learned which exits had coffee and which ones only promised it.",
+    "level": "B1"
+  },
+  {
+    "english": "The cooler leaked once, and the trunk smelled like peaches for days.",
+    "level": "B1"
+  },
+  {
+    "english": "A long drive makes tiny towns feel like chapters in order.",
+    "level": "B1"
+  },
+  {
+    "english": "We followed the storm for an hour before it finally crossed us.",
+    "level": "B1"
+  },
+  {
+    "english": "The best view was not planned; it was beside a closed fruit stand.",
+    "level": "B1"
+  },
+  {
+    "english": "On a long trip, the highway teaches patience in miles rather than minutes.",
+    "level": "B2"
+  },
+  {
+    "english": "We remembered the journey by its small economies, cheap coffee, shared fries, and motel soap.",
+    "level": "B2"
+  },
+  {
+    "english": "The road made strangers of familiar places, then returned them to us at dusk.",
+    "level": "B2"
+  },
+  {
+    "english": "By Kansas, even the playlist felt less like entertainment than a shared weather system.",
+    "level": "B2"
+  },
+  {
+    "english": "A gas receipt from another state can hold a whole afternoon inside it.",
+    "level": "B2"
+  },
+  {
+    "english": "The farther we drove, the more the car felt like a rented version of home.",
+    "level": "B2"
+  },
+  {
+    "english": "Motels along the interstate offer privacy, ice machines, and the blunt mercy of clean sheets.",
+    "level": "B2"
+  },
+  {
+    "english": "We planned the route carefully, then let hunger and construction revise it all day.",
+    "level": "B2"
+  },
+  {
+    "english": "The passenger seat has its own authority, part navigator, part snack manager, part witness.",
+    "level": "B2"
+  },
+  {
+    "english": "Across the plains, distance stopped feeling dramatic and started feeling like honest work.",
+    "level": "B2"
+  },
+  {
+    "english": "Each refill, each rest stop, each county line measured our escape in ordinary units.",
+    "level": "B2"
+  },
+  {
+    "english": "Road trips make a country legible through fuel prices, sandwich counters, and weather reports.",
+    "level": "B2"
+  },
+  {
+    "english": "A cross-country drive turns geography into a sequence of bodily negotiations, coffee, posture, temperature, and the next clean restroom.",
+    "level": "C1"
+  },
+  {
+    "english": "The romance of the highway survives because it keeps making practical demands on us, check the oil, choose an exit, stay awake.",
+    "level": "C1"
+  },
+  {
+    "english": "After three days in the car, companionship becomes less about conversation than about tolerating the same silence generously.",
+    "level": "C1"
+  },
+  {
+    "english": "The interstate can make every town look interchangeable, until one waitress, one mechanic, or one wrong turn restores its particulars.",
+    "level": "C1"
+  },
+  {
+    "english": "We believed we were crossing the country, but mostly we were learning how much attention distance requires.",
+    "level": "C1"
+  },
+  {
+    "english": "A motel parking lot at dawn reveals the private fleet of other people's departures, each windshield silvered with dew.",
+    "level": "C1"
+  },
+  {
+    "english": "The playlist became an archive of moods we would never have named if the road had not kept changing.",
+    "level": "C1"
+  },
+  {
+    "english": "Road snacks are comic at first, then necessary, then faintly archaeological, layered under seats like evidence of passage.",
+    "level": "C1"
+  },
+  {
+    "english": "A highway at night reduces the world to instruments, reflectors, and the fragile agreement of headlights in lanes.",
+    "level": "C1"
+  },
+  {
+    "english": "The passenger who reads the map aloud becomes a coauthor of the trip, selecting not just roads but possible memories.",
+    "level": "C1"
+  },
+  {
+    "english": "To drive for days is to discover that distance is not empty space, but an accumulation of gas pumps, weather shifts, motel curtains, and decisions made while someone else is sleeping.",
+    "level": "C2"
+  },
+  {
+    "english": "The cross-country road trip flatters the driver with freedom, then quietly reminds every passenger that freedom has cup holders, receipts, sore knees, and a scheduled oil change waiting somewhere ahead.",
+    "level": "C2"
+  },
+  {
+    "english": "At its best, the highway does not erase the country but edits it fiercely, offering grain elevators, casinos, orchards, refineries, and diners as brief, illuminated clauses in a sentence too long to finish.",
+    "level": "C2"
+  },
+  {
+    "english": "Years later, what remains of the trip is rarely the famous overlook, but the hour after midnight when the car smelled of fries, the radio faded, and nobody wanted to be the first to say they were tired.",
+    "level": "C2"
+  }
+]

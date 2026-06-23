@@ -1,0 +1,1429 @@
+/* Tutomaton — premium on-device tutor UI.
+ * Dark, calm, understated. Phone / tablet / desktop are all first-class. */
+
+:root {
+  --lt-bg: #0e0f13;
+  --lt-bg-elev: #161922;
+  --lt-fg: #e9eaf0;
+  --lt-muted: #8b91a3;
+  --lt-border: #242834;
+  --lt-accent: #3b82f6;
+  --lt-accent-2: #60a5fa;
+  --lt-user-bg: linear-gradient(180deg, #2f6df0, #2257d6);
+  --lt-user-fg: #ffffff;
+  --lt-bot-bg: #1c2030;
+  --lt-bot-fg: #e9eaf0;
+  --lt-danger: #ef4444;
+  --lt-radius: 16px;
+  --lt-safe-top: env(safe-area-inset-top, 0px);
+  --lt-safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.lt-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  background:
+    radial-gradient(140% 100% at 50% -10%, rgba(59, 130, 246, 0.10), transparent 55%),
+    var(--lt-bg);
+  color: var(--lt-fg);
+  font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* ---------- header ----------
+   Left→right: back chevron · brand mark · wordmark · ……… · language switcher.
+   Top/left padding clears the iPad window controls (the "stoplight" / grip that
+   floats over the top-left in Stage Manager and resized windows). */
+.lt-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Top inset clears the iPad Stage-Manager window grip (the "•••" that floats
+     at the window's top-left and is NOT covered by safe-area-inset). */
+  padding:
+    calc(max(var(--lt-safe-top), 44px)) 16px 10px
+    max(var(--lt-safe-left, 0px), 16px);
+  border-bottom: 1px solid var(--lt-border);
+  background: rgba(10, 11, 15, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Never let the trigger/kebab push the header wider than the pack — the
+     trigger ellipsises its name instead (keeps the container query honest). */
+  overflow: hidden;
+}
+
+/* back-to-home chevron — iOS-standard exit, far top-left */
+.lt-back {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  margin-left: -4px;
+  border-radius: 11px;
+  border: 0;
+  background: transparent;
+  color: var(--lt-fg);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.lt-back svg { display: block; }
+.lt-back:hover { background: rgba(255, 255, 255, 0.06); }
+.lt-back:active { transform: scale(0.92); }
+
+/* the REAL Corpán mark (ear + ziggurat), matching the home screen */
+.lt-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.lt-brand-mark img {
+  display: block;
+  height: 26px;
+  width: auto;
+}
+.lt-brand-name {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+/* very narrow: keep the mark, drop the wordmark before it can crowd the switcher */
+@media (max-width: 400px) {
+  .lt-brand-name { display: none; }
+}
+
+/* compact tutor switcher — right-aligned, never crowds the brand */
+.lt-lang-trigger {
+  flex: 0 1 auto;
+  min-width: 0;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 46vw;
+  padding: 7px 10px 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.lt-lang-trigger:hover { border-color: #34384a; }
+.lt-lang-trigger:active { transform: scale(0.97); }
+.lt-lt-flag { font-size: 15px; flex: 0 0 auto; }
+.lt-lt-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.lt-lt-chev {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  color: var(--lt-muted);
+  transition: transform 0.2s ease;
+}
+.lt-lang-trigger[aria-expanded="true"] .lt-lt-chev { transform: rotate(180deg); }
+
+/* ---------- floating action cluster (bottom-right, above the input) ----------
+   Translucent, out of the way, easy to reach: mute toggle + new conversation. */
+/* Tucked top-left, just under the logo, inside the conversation area. The user
+   always speaks first and their message sits on the RIGHT, so this corner stays
+   clear; later messages scroll beneath the translucent buttons. */
+.lt-fabs {
+  position: absolute;
+  left: max(var(--lt-safe-left, 0px), 14px);
+  /* Drop clear of the header into the conversation area, vertically level with
+     the first (right-side) user message. Header = top inset + ~56px brand row +
+     border; the log's first bubble starts ~18px below that. */
+  top: calc(max(var(--lt-safe-top), 44px) + 64px);
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.lt-fab {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid var(--lt-border);
+  background: color-mix(in srgb, var(--lt-bg-elev) 72%, transparent);
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+  opacity: 0.72;
+}
+.lt-fab svg { display: block; }
+.lt-fab:hover { opacity: 1; color: var(--lt-fg); border-color: #34384a; }
+.lt-fab:active { transform: scale(0.92); }
+/* speaker-on is the resting "active" state; muted dims it */
+.lt-fab.lt-tts.active { opacity: 1; color: var(--lt-fg); }
+.lt-fab.lt-tts:not(.active) { opacity: 0.6; }
+
+/* ---------- "jump to latest" scroll-lock chip ----------
+   Shown only when the reader has scrolled up (autoscroll released). Floats just
+   above the composer, centered on the chat's reading column, understated. */
+.lt-jump {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Sit clear of the composer footer (input row + quota line + safe area). */
+  bottom: calc(86px + var(--lt-safe-bottom));
+  z-index: 11;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--lt-border);
+  background: color-mix(in srgb, var(--lt-bg-elev) 86%, transparent);
+  color: var(--lt-fg);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.34);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+  opacity: 0.92;
+}
+.lt-jump[hidden] { display: none; }
+.lt-jump svg { display: block; }
+.lt-jump:hover { opacity: 1; border-color: #34384a; }
+.lt-jump:active { transform: translateX(-50%) scale(0.92); }
+
+/* ---------- header overflow (kebab) ----------
+   On NARROW widths the floating .lt-fabs overlap the chat text, so they're
+   hidden and this single kebab in the header takes their place (opening a
+   popover with the same four actions). On WIDE widths the kebab is hidden and
+   the fabs float. The decision is CONTAINER-based (see .lt-root container-type)
+   so it's correct inside the pack overlay regardless of the device viewport. */
+.lt-kebab {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  margin-right: -2px;
+  border-radius: 11px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: none; /* shown only below the breakpoint (container query below) */
+  place-items: center;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+.lt-kebab svg { display: block; }
+.lt-kebab:hover { color: var(--lt-fg); border-color: #34384a; }
+.lt-kebab:active { transform: scale(0.92); }
+.lt-kebab[aria-expanded="true"] { color: var(--lt-fg); border-color: var(--lt-accent); }
+
+/* overflow popover — anchored under the header, top-right */
+.lt-actionmenu { position: absolute; inset: 0; z-index: 30; }
+.lt-actionmenu[hidden] { display: none; }
+.lt-actionmenu-scrim { position: absolute; inset: 0; background: transparent; }
+.lt-actionmenu-popover {
+  position: absolute;
+  top: calc(max(var(--lt-safe-top), 44px) + 50px);
+  right: max(var(--lt-safe-right, 0px), 12px);
+  min-width: 224px;
+  max-width: min(280px, calc(100vw - 24px));
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  border-radius: 16px;
+  border: 1px solid var(--lt-border);
+  background: linear-gradient(180deg, #1c2030, #161a24);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  transform-origin: top right;
+  transform: translateY(-6px) scale(0.97);
+  opacity: 0;
+  transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.16s ease;
+}
+.lt-actionmenu.open .lt-actionmenu-popover { transform: translateY(0) scale(1); opacity: 1; }
+.lt-actionmenu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 46px;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--lt-fg);
+  font: inherit;
+  font-size: 14.5px;
+  font-weight: 550;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.lt-actionmenu-item[hidden] { display: none; }
+.lt-actionmenu-item:hover { background: rgba(255, 255, 255, 0.06); }
+.lt-actionmenu-item:active { background: rgba(255, 255, 255, 0.1); }
+.lt-actionmenu-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: var(--lt-muted);
+}
+.lt-actionmenu-icon svg { display: block; }
+.lt-actionmenu-label { min-width: 0; }
+[dir="rtl"] .lt-actionmenu-item { text-align: right; }
+[dir="rtl"] .lt-actionmenu-popover { right: auto; left: max(var(--lt-safe-left, 0px), 12px); transform-origin: top left; }
+
+/* The pack root is the container for the fab/kebab decision (correct inside the
+   overlay regardless of viewport). Narrow → kebab; wide → floating fabs. */
+.lt-root { container-type: inline-size; container-name: lt; }
+@container lt (max-width: 559px) {
+  .lt-fabs { display: none; }
+  .lt-kebab { display: grid; }
+  /* The kebab now needs room. Whenever it's present, drop the wordmark and cap
+     the language trigger so back · mark · switcher · kebab always fit, even on
+     the narrowest phones. The brand mark + active-tutor flag still identify it. */
+  .lt-brand-name { display: none; }
+  .lt-lang-trigger { max-width: 42vw; }
+}
+/* Fallback for engines without container queries: same decisions by viewport. */
+@supports not (container-type: inline-size) {
+  @media (max-width: 559px) {
+    .lt-fabs { display: none; }
+    .lt-kebab { display: grid; }
+    .lt-brand-name { display: none; }
+    .lt-lang-trigger { max-width: 42vw; }
+  }
+}
+
+/* ---------- log ---------- */
+.lt-log {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 14px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* center column on big screens */
+.lt-log > * { width: 100%; max-width: 760px; margin-inline: auto; }
+
+.lt-msg { display: flex; }
+.lt-msg-user { justify-content: flex-end; }
+.lt-msg-assistant { justify-content: flex-start; }
+.lt-msg-system { justify-content: center; }
+
+.lt-msg-body {
+  max-width: 86%;
+  padding: 11px 15px;
+  border-radius: var(--lt-radius);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.55;
+}
+.lt-msg-user .lt-msg-body {
+  background: var(--lt-user-bg);
+  color: var(--lt-user-fg);
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 6px 18px rgba(34, 87, 214, 0.28);
+}
+.lt-msg-assistant .lt-msg-body {
+  background: var(--lt-bot-bg);
+  color: var(--lt-bot-fg);
+  border: 1px solid var(--lt-border);
+  border-bottom-left-radius: 5px;
+}
+/* Tap an assistant reply to (re)hear it. Subtle affordance: a speaker glyph
+   fades in on hover/press; the whole bubble is the tap target. */
+.lt-speakable .lt-msg-body {
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  /* a long-press must not start text selection / the iOS callout */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+/* while holding past the long-press threshold: cue "release to copy" */
+.lt-speakable .lt-msg-body.lt-holding {
+  border-color: var(--lt-accent-2);
+  background: rgba(96, 165, 250, 0.1);
+}
+.lt-speakable .lt-msg-body.lt-holding::before {
+  content: var(--lt-hold-label, "Release to copy");
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--lt-fg);
+  background: var(--lt-bg-elev);
+  border: 1px solid var(--lt-border);
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.lt-speakable .lt-msg-body[dir="rtl"].lt-holding::before { right: auto; left: 10px; }
+/* brief confirmation flash when a long-press copies the reply */
+.lt-speakable .lt-msg-body.lt-copied {
+  border-color: var(--lt-accent);
+  background: rgba(59, 130, 246, 0.16);
+}
+.lt-speakable .lt-msg-body.lt-copied::before {
+  content: var(--lt-copied-label, "Copied");
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--lt-accent);
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.lt-speakable .lt-msg-body[dir="rtl"].lt-copied::before { right: auto; left: 10px; }
+.lt-speakable .lt-msg-body::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  background: currentColor;
+  -webkit-mask: center / contain no-repeat
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5 6 9H2v6h4l5 4z'/><path d='M15.5 8.5a5 5 0 0 1 0 7'/></svg>");
+  mask: center / contain no-repeat
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5 6 9H2v6h4l5 4z'/><path d='M15.5 8.5a5 5 0 0 1 0 7'/></svg>");
+}
+.lt-speakable .lt-msg-body:hover { border-color: #34384a; }
+.lt-speakable .lt-msg-body:hover::after { opacity: 0.5; }
+.lt-speakable .lt-msg-body:active { background: #232838; }
+/* RTL replies place the speaker glyph on the left so it doesn't sit under text */
+.lt-speakable .lt-msg-body[dir="rtl"]::after { right: auto; left: 8px; }
+.lt-msg.lt-error .lt-msg-body {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #fecaca;
+}
+.lt-msg-system {
+  font-size: 12.5px;
+  color: var(--lt-muted);
+  font-style: italic;
+}
+
+/* streaming caret */
+.lt-caret {
+  display: inline-block;
+  width: 7px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -2px;
+  border-radius: 2px;
+  background: var(--lt-accent-2);
+  animation: lt-blink 1s steps(2, start) infinite;
+}
+@keyframes lt-blink { 50% { opacity: 0; } }
+
+/* ---------- welcome / empty state ---------- */
+.lt-welcome {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 28px 16px;
+  max-width: 560px;
+}
+.lt-welcome-mark {
+  display: flex;
+  justify-content: center;
+}
+.lt-welcome-mark img {
+  height: 64px;
+  width: auto;
+  filter: drop-shadow(0 4px 18px rgba(245, 158, 11, 0.25));
+}
+.lt-welcome-title { margin: 4px 0 0; font-size: 21px; font-weight: 650; letter-spacing: -0.01em; }
+.lt-welcome-sub { margin: 0; color: var(--lt-muted); font-size: 14.5px; max-width: 420px; }
+.lt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 12px;
+}
+.lt-chip {
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.lt-chip:hover { border-color: var(--lt-accent); background: rgba(59, 130, 246, 0.1); }
+.lt-chip:active { transform: scale(0.97); }
+.lt-model-lab-open {
+  margin-top: 6px;
+  padding: 8px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(96, 165, 250, 0.45);
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--lt-accent-2);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+.lt-model-lab-note {
+  max-width: 430px;
+  margin: -4px 0 0;
+  color: var(--lt-muted);
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+/* intro language picker on the welcome screen — your languages, then "All …" */
+.lt-welcome-langs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+.lt-langpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.lt-langpill:hover { border-color: #34384a; }
+.lt-langpill:active { transform: scale(0.97); }
+.lt-langpill.active {
+  border-color: var(--lt-accent);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0.07));
+}
+.lt-langpill-flag { font-size: 18px; line-height: 1; }
+.lt-langpill-more { color: var(--lt-muted); }
+.lt-langpill-more:hover { color: var(--lt-fg); border-color: var(--lt-accent); }
+.lt-langpill-chev { display: inline-grid; place-items: center; }
+
+/* ---------- input / composer ----------
+   STABLE HEIGHT by construction: a single action row (mic · field · send) plus
+   a quota sub-line that always reserves one line-height. The mic keeps its slot
+   even when hidden (visibility, not display) so the row never reflows; the quota
+   keeps its line even when empty. The composer therefore never jumps as the mic
+   appears/disappears or the quota text changes. */
+.lt-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px calc(12px + var(--lt-safe-bottom));
+  border-top: 1px solid var(--lt-border);
+  background: rgba(10, 11, 15, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+/* the action row: mic · field · send, bottom-aligned, centered column on wide */
+.lt-input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+}
+.lt-quota {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+  color: var(--lt-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  /* Reserve one line always, so an empty/changing quota never shifts the row. */
+  min-height: 1.25em;
+  line-height: 1.25;
+}
+.lt-quota:empty::after { content: "\00a0"; } /* keep the line height when blank */
+.lt-quota.is-plus {
+  color: var(--lt-accent-2);
+}
+.lt-quota.is-empty {
+  /* Calm/neutral at the cap — NOT an error. The green-check accomplishment
+     lock is the communication; the composer just reads as gently unavailable. */
+  color: var(--lt-muted);
+}
+.lt-input.is-quota-empty .lt-field {
+  /* Quietly inert (slightly recessed), never an alarming red error border. */
+  border-color: var(--lt-border);
+  opacity: 0.6;
+  cursor: pointer;
+}
+.lt-input.is-quota-empty .lt-text::placeholder {
+  color: var(--lt-muted);
+  opacity: 0.9;
+}
+.lt-field {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  background: var(--lt-bg-elev);
+  border: 1px solid var(--lt-border);
+  border-radius: 22px;
+  padding: 4px 4px 4px 6px;
+  min-width: 0;
+  transition: border-color 0.15s ease;
+}
+.lt-field:focus-within { border-color: var(--lt-accent); }
+.lt-text {
+  flex: 1;
+  resize: none;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--lt-fg);
+  font: inherit;
+  font-size: 16px; /* >=16px avoids iOS zoom-on-focus */
+  line-height: 1.45;
+  padding: 8px 6px 8px 10px;
+  max-height: 140px;
+}
+.lt-text::placeholder { color: var(--lt-muted); }
+.lt-text:disabled { opacity: 0.5; }
+
+/* ---- mic: ALWAYS in the input row (no separate voice mode). Hold to talk. ---- */
+.lt-mic {
+  flex: 0 0 auto;
+  align-self: flex-end;
+  width: 38px;
+  height: 38px;
+  margin: 2px 2px 2px 0;
+  border-radius: 50%;
+  border: 0;
+  background: transparent;
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  /* hold-to-talk: don't let the press scroll / select / show callout */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+.lt-mic svg { display: block; }
+.lt-mic:hover { color: var(--lt-fg); }
+.lt-mic:active { transform: scale(0.92); }
+.lt-mic.recording {
+  background: var(--lt-danger);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.22), 0 0 22px rgba(239, 68, 68, 0.5);
+  animation: lt-pulse 1.2s ease-in-out infinite;
+}
+.lt-mic.transcribing {
+  background: var(--lt-bot-bg);
+  color: var(--lt-accent-2);
+  animation: lt-mic-spin 0.9s linear infinite;
+}
+/* Stable composer width: the mic is the LEADING control (left), the send is the
+   TRAILING control (right). Both ALWAYS keep their box — they hide via
+   visibility, never display:none — so the field width is constant and the row
+   never reflows as the mic shows/hides or the send swaps in. iMessage feel:
+   empty field → mic visible; text present → send visible. */
+.lt-input.has-text .lt-mic { visibility: hidden; pointer-events: none; }
+.lt-input:not(.has-text) .lt-send { visibility: hidden; pointer-events: none; }
+/* No ASR provider for this language → mic stays hidden but its slot is kept,
+   so adding/removing the mic never resizes the field. */
+.lt-mic[hidden] { display: grid; visibility: hidden; pointer-events: none; }
+
+.lt-send {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: 0;
+  background: var(--lt-user-bg);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 18px rgba(34, 87, 214, 0.3);
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+.lt-send svg { display: block; }
+.lt-send:active { transform: scale(0.94); }
+.lt-send:disabled { opacity: 0.4; box-shadow: none; cursor: default; }
+
+@keyframes lt-pulse { 0%, 100% { transform: scale(1.08); } 50% { transform: scale(1.16); } }
+@keyframes lt-mic-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .lt-mic.recording, .lt-mic.transcribing { animation: none; }
+}
+
+/* larger breathing room on tablet/desktop */
+@media (min-width: 768px) {
+  .lt-log { padding: 26px 24px; gap: 14px; }
+  .lt-input { padding: 16px 24px calc(16px + var(--lt-safe-bottom)); }
+  /* keep the top/left stoplight clearance even on wide layouts */
+  .lt-header { padding: calc(max(var(--lt-safe-top), 44px)) 24px 12px max(var(--lt-safe-left, 0px), 22px); }
+  .lt-lang-trigger { max-width: 280px; }
+}
+
+/* ============================================================
+   Tutor switcher sheet — bottom sheet on mobile, modal on desktop
+   ============================================================ */
+.lt-langsheet {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+}
+.lt-langsheet[hidden] { display: none; }
+
+.lt-langsheet-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 7, 10, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.lt-langsheet.open .lt-langsheet-scrim { opacity: 1; }
+
+.lt-langsheet-panel {
+  position: relative;
+  margin-top: auto;            /* bottom sheet on mobile */
+  width: 100%;
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 18px calc(20px + var(--lt-safe-bottom));
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  border: 1px solid var(--lt-border);
+  border-bottom: 0;
+  background: linear-gradient(180deg, #1a1e29, #14161e);
+  box-shadow: 0 -24px 70px rgba(0, 0, 0, 0.55);
+  transform: translateY(100%);
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lt-langsheet.open .lt-langsheet-panel { transform: translateY(0); }
+
+/* 44px hit band with a centered 44x5 visible bar (canonical grab-area pattern) */
+.lt-langsheet-grip-zone {
+  flex: 0 0 auto;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+}
+.lt-langsheet-grip {
+  width: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: #3a3f4f;
+}
+.lt-langsheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 2px 12px;
+}
+.lt-langsheet-title { margin: 0; font-size: 19px; font-weight: 660; letter-spacing: -0.01em; }
+.lt-langsheet-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lt-langsheet-close:hover { color: var(--lt-fg); border-color: #34384a; }
+
+/* search field — keeps the sheet usable at ~50 languages */
+.lt-langsheet-search {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 2px 12px;
+  padding: 0 12px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  transition: border-color 0.15s ease;
+}
+.lt-langsheet-search:focus-within { border-color: var(--lt-accent); }
+.lt-langsheet-search-icon { display: grid; place-items: center; color: var(--lt-muted); flex: 0 0 auto; }
+.lt-langsheet-input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--lt-fg);
+  font: inherit;
+  font-size: 16px; /* >=16px avoids iOS zoom-on-focus */
+}
+.lt-langsheet-input::placeholder { color: var(--lt-muted); }
+
+.lt-langsheet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 2px;
+}
+
+/* grouping headers ("Your languages" / "All languages") */
+.lt-langsheet-section {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lt-muted);
+  padding: 10px 6px 2px;
+}
+.lt-langsheet-section:first-child { padding-top: 2px; }
+.lt-langsheet-empty {
+  text-align: center;
+  color: var(--lt-muted);
+  font-size: 14px;
+  padding: 28px 8px;
+}
+
+.lt-langcard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 60px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+}
+.lt-langcard:hover { border-color: #34384a; }
+.lt-langcard:active { transform: scale(0.99); }
+.lt-langcard.lt-langcard-locked { opacity: 0.4; cursor: default; }
+.lt-langcard.lt-langcard-locked:hover { border-color: var(--lt-border); }
+.lt-langcard.lt-langcard-locked:active { transform: none; }
+.lt-langcard-note { font-size: 11px; color: var(--lt-muted); font-weight: 600; }
+.lt-langcard.active {
+  border-color: var(--lt-accent);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0.07));
+}
+.lt-langcard-flag { font-size: 26px; flex: 0 0 auto; line-height: 1; }
+.lt-langcard-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
+.lt-langcard-name { font-size: 17px; font-weight: 640; letter-spacing: -0.01em; }
+.lt-langcard-sub { font-size: 13px; color: var(--lt-muted); }
+.lt-langcard-check {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  color: var(--lt-accent-2);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.lt-langcard.active .lt-langcard-check { opacity: 1; transform: scale(1); }
+
+/* desktop: center as a modal card instead of a bottom sheet */
+@media (min-width: 768px) {
+  .lt-langsheet-panel {
+    margin: auto;
+    width: min(440px, 92vw);
+    max-height: 78vh;
+    padding: 6px 22px 22px;
+    border-radius: 22px;
+    border-bottom: 1px solid var(--lt-border);
+    transform: translateY(0) scale(0.94);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .lt-langsheet.open .lt-langsheet-panel { transform: translateY(0) scale(1); opacity: 1; }
+  .lt-langsheet-grip { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lt-langsheet-scrim,
+  .lt-langsheet-panel,
+  .lt-lt-chev { transition: none; }
+}
+
+/* ============================================================
+   On-device model lab
+   ============================================================ */
+.lt-modelsheet {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  display: flex;
+}
+.lt-modelsheet[hidden] { display: none; }
+.lt-modelsheet-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 7, 10, 0.68);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.lt-modelsheet.open .lt-modelsheet-scrim { opacity: 1; }
+.lt-modelsheet-panel {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  /* Full-screen: clear the top inset (notch / iPad window grip) like the
+     header, and the home-indicator inset at the bottom. */
+  padding:
+    calc(max(var(--lt-safe-top), 44px)) 22px calc(22px + var(--lt-safe-bottom));
+  border-radius: 0;
+  background: linear-gradient(180deg, #1a1e29, #12141c);
+  transform: scale(0.99);
+  opacity: 0;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.lt-modelsheet.open .lt-modelsheet-panel { transform: scale(1); opacity: 1; }
+/* Floating centered modal only on larger (above medium) screens. */
+@media (min-width: 768px) {
+  .lt-modelsheet-panel {
+    margin: auto;
+    width: min(620px, calc(100vw - 24px));
+    height: auto;
+    max-height: min(860px, calc(100vh - 32px));
+    padding: 22px;
+    border-radius: 22px;
+    border: 1px solid var(--lt-border);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65);
+    transform: scale(0.97);
+  }
+}
+.lt-modelsheet-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.lt-modelsheet-title { margin: 0; font-size: 20px; }
+.lt-modelsheet-language { margin: 2px 0 0; color: var(--lt-accent-2); font-size: 12px; font-weight: 650; }
+.lt-modelsheet-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lt-modelsheet-intro {
+  margin: 13px 0 18px;
+  color: var(--lt-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.lt-model-prompt-label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 700; }
+.lt-model-prompt {
+  box-sizing: border-box;
+  width: 100%;
+  resize: vertical;
+  min-height: 130px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--lt-border);
+  outline: none;
+  background: #0f1118;
+  color: var(--lt-fg);
+  font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.lt-model-prompt:focus { border-color: var(--lt-accent); }
+.lt-model-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.lt-model-control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--lt-border);
+  background: rgba(255, 255, 255, 0.025);
+}
+.lt-model-control > span { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+.lt-model-control output { color: var(--lt-accent-2); font-variant-numeric: tabular-nums; }
+.lt-model-control small { min-height: 32px; color: var(--lt-muted); font-size: 11px; line-height: 1.4; }
+.lt-model-control input { width: 100%; accent-color: var(--lt-accent); }
+.lt-modelsheet-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+.lt-modelsheet-actions button {
+  min-height: 42px;
+  padding: 0 15px;
+  border-radius: 12px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+.lt-modelsheet-actions .lt-model-done { border-color: transparent; background: var(--lt-user-bg); color: #fff; }
+@media (max-width: 560px) {
+  .lt-modelsheet-panel {
+    padding:
+      calc(max(var(--lt-safe-top), 44px)) 18px calc(18px + var(--lt-safe-bottom));
+  }
+  .lt-model-controls { grid-template-columns: 1fr; }
+  .lt-modelsheet-actions { justify-content: stretch; }
+  .lt-modelsheet-actions button { flex: 1; }
+}
+
+/* ============================================================
+   Sticky per-language tutor voice
+   ============================================================ */
+.lt-voicesheet {
+  position: absolute;
+  inset: 0;
+  z-index: 46;
+  display: flex;
+}
+.lt-voicesheet[hidden] { display: none; }
+.lt-voicesheet-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 7, 10, 0.68);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.lt-voicesheet.open .lt-voicesheet-scrim { opacity: 1; }
+.lt-voicesheet-panel {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  /* Full-screen: clear the top inset (notch / iPad window grip) like the
+     header, and the home-indicator inset at the bottom. */
+  padding:
+    calc(max(var(--lt-safe-top), 44px)) 22px calc(22px + var(--lt-safe-bottom));
+  border-radius: 0;
+  background: linear-gradient(180deg, #1a1e29, #12141c);
+  transform: scale(0.99);
+  opacity: 0;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.lt-voicesheet.open .lt-voicesheet-panel { transform: scale(1); opacity: 1; }
+/* Floating centered modal only on larger (above medium) screens. */
+@media (min-width: 768px) {
+  .lt-voicesheet-panel {
+    margin: auto;
+    width: min(520px, calc(100vw - 24px));
+    height: auto;
+    max-height: min(760px, calc(100vh - 32px));
+    padding: 22px;
+    border-radius: 22px;
+    border: 1px solid var(--lt-border);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65);
+    transform: scale(0.97);
+  }
+}
+.lt-voicesheet-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.lt-voicesheet-title { margin: 0; font-size: 20px; }
+.lt-voicesheet-language { margin: 2px 0 0; color: var(--lt-accent-2); font-size: 12px; font-weight: 650; }
+.lt-voicesheet-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lt-voicesheet-intro,
+.lt-voice-status {
+  margin: 13px 0 18px;
+  color: var(--lt-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.lt-voice-status:empty { display: none; }
+.lt-voice-list { display: grid; gap: 9px; }
+.lt-voice-option {
+  width: 100%;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 15px;
+  border: 1px solid var(--lt-border);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--lt-fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.lt-voice-option:hover { border-color: #34384a; background: rgba(255, 255, 255, 0.05); }
+.lt-voice-option[aria-checked="true"] {
+  border-color: var(--lt-accent);
+  background: rgba(59, 130, 246, 0.12);
+}
+.lt-voice-option-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--lt-bg-elev);
+  color: var(--lt-accent-2);
+}
+.lt-voice-option-detail { min-width: 0; display: grid; gap: 2px; }
+.lt-voice-option-detail strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
+.lt-voice-option-detail small { color: var(--lt-muted); font-size: 11px; }
+.lt-voice-option-badges { display: flex; align-items: center; gap: 8px; }
+.lt-voice-badge {
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.12);
+  color: var(--lt-accent-2);
+  font-size: 10px;
+  font-weight: 700;
+}
+.lt-voice-check { color: var(--lt-accent-2); opacity: 0; font-size: 18px; font-weight: 800; }
+.lt-voice-option[aria-checked="true"] .lt-voice-check { opacity: 1; }
+@media (max-width: 560px) {
+  .lt-voicesheet-panel {
+    padding:
+      calc(max(var(--lt-safe-top), 44px)) 18px calc(18px + var(--lt-safe-bottom));
+  }
+  .lt-voice-badge { display: none; }
+}
+
+/* ============================================================
+   Model setup gate — premium first-run / loading overlay
+   ============================================================ */
+.lt-setup {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(59, 130, 246, 0.14), transparent 60%),
+    rgba(14, 15, 19, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.lt-setup[hidden] { display: none; }
+.lt-setup-card {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 34px 28px;
+  border-radius: 22px;
+  border: 1px solid var(--lt-border);
+  background: linear-gradient(180deg, rgba(28, 32, 48, 0.7), rgba(18, 20, 28, 0.7));
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
+}
+.lt-setup-glyph {
+  display: flex;
+  justify-content: center;
+}
+.lt-setup-glyph img {
+  height: 72px;
+  width: auto;
+  filter: drop-shadow(0 4px 20px rgba(245, 158, 11, 0.28));
+}
+.lt-setup-title { margin: 0; font-size: 23px; font-weight: 660; letter-spacing: -0.01em; }
+.lt-setup-body { margin: 0; font-size: 15px; line-height: 1.6; color: var(--lt-fg); opacity: 0.86; }
+.lt-setup-progress { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.lt-setup-progress[hidden] { display: none; }
+.lt-setup-bar { width: 100%; height: 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+.lt-setup-fill {
+  height: 100%; width: 0%; border-radius: 999px;
+  background: linear-gradient(90deg, var(--lt-accent), var(--lt-accent-2));
+  transition: width 0.3s ease;
+}
+.lt-setup-pct { font-size: 13px; color: var(--lt-muted); font-variant-numeric: tabular-nums; }
+.lt-setup-action {
+  margin-top: 6px;
+  min-height: 50px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 15px;
+  background: var(--lt-user-bg);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 650;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(34, 87, 214, 0.34);
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+.lt-setup-action:hover { transform: translateY(-1px); }
+.lt-setup-action:active { transform: translateY(0); }
+.lt-setup-action[hidden] { display: none; }
+.lt-setup-action:disabled { opacity: 0.5; cursor: default; box-shadow: none; }
+.lt-setup-note { margin: 4px 0 0; font-size: 12px; color: var(--lt-muted); }
+
+/* Model-size picker (0.6B / 1.7B / 4B) */
+.lt-setup-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  margin: 12px 0 2px;
+}
+.lt-setup-sizes[hidden] { display: none; }
+.lt-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 96px;
+  padding: 9px 12px;
+  border: 1.5px solid var(--lt-border);
+  border-radius: 8px;
+  background: var(--lt-bg-elev);
+  color: var(--lt-fg);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+.lt-size:hover:not(:disabled) { border-color: var(--lt-user-bg); }
+.lt-size.is-chosen {
+  border-color: var(--lt-user-bg);
+  box-shadow: inset 0 0 0 1px var(--lt-user-bg);
+}
+.lt-size.is-disabled { opacity: 0.45; cursor: default; }
+.lt-size-name { font-size: 16px; font-weight: 700; line-height: 1; }
+.lt-size-note {
+  font-size: 11px;
+  color: var(--lt-muted);
+  text-align: center;
+  line-height: 1.2;
+}
+.lt-size.is-rec .lt-size-note { color: var(--lt-user-bg); font-weight: 650; }
+
+/* ============================================================
+   Premium "Tutor model" sheet — choose / download / switch
+   ============================================================ */
+.lt-msheet { position: absolute; inset: 0; z-index: 47; display: flex; }
+.lt-msheet[hidden] { display: none; }
+.lt-msheet-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 7, 10, 0.68);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.lt-msheet.open .lt-msheet-scrim { opacity: 1; }
+.lt-msheet-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: calc(max(var(--lt-safe-top), 44px)) 22px calc(26px + var(--lt-safe-bottom));
+  background: linear-gradient(180deg, #1a1e29, #12141c);
+  transform: scale(0.99);
+  opacity: 0;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.lt-msheet.open .lt-msheet-panel { transform: scale(1); opacity: 1; }
+@media (min-width: 768px) {
+  .lt-msheet-panel {
+    margin: auto;
+    width: min(540px, calc(100vw - 24px));
+    height: auto;
+    max-height: min(720px, calc(100vh - 32px));
+    padding: 24px;
+    border-radius: 22px;
+    border: 1px solid var(--lt-border);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65);
+    transform: scale(0.97);
+  }
+}
+.lt-msheet-grip-zone { display: flex; justify-content: center; padding-bottom: 8px; }
+@media (min-width: 768px) { .lt-msheet-grip-zone { display: none; } }
+.lt-msheet-grip { width: 38px; height: 4px; border-radius: 999px; background: var(--lt-border); }
+.lt-msheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.lt-msheet-title { margin: 0; font-size: 21px; letter-spacing: -0.01em; }
+.lt-msheet-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--lt-border);
+  background: var(--lt-bg-elev);
+  color: var(--lt-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+.lt-msheet-intro { margin: 12px 0 18px; color: var(--lt-muted); font-size: 13px; line-height: 1.5; }
+.lt-msheet-list { display: grid; gap: 11px; }
+
+/* --- model card --- */
+.lt-mcard {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid var(--lt-border);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--lt-fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+button.lt-mcard:hover { border-color: #3a3f52; background: rgba(255, 255, 255, 0.05); }
+button.lt-mcard:active { transform: scale(0.992); }
+.lt-mcard.is-disabled { opacity: 0.42; cursor: default; }
+.lt-mcard.is-rec { border-color: color-mix(in srgb, var(--lt-accent) 55%, var(--lt-border)); }
+.lt-mcard.is-active {
+  border-color: var(--lt-accent);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(59, 130, 246, 0.16), transparent 60%),
+    rgba(59, 130, 246, 0.06);
+  box-shadow: inset 0 0 0 1px var(--lt-accent), 0 8px 30px rgba(34, 87, 214, 0.22);
+  cursor: default;
+}
+
+/* the param-size badge (e.g. "1.7B") */
+.lt-mcard-size {
+  flex: 0 0 auto;
+  min-width: 58px;
+  height: 50px;
+  padding: 0 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--lt-bg-elev);
+  border: 1px solid var(--lt-border);
+  font-size: 17px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+.lt-mcard.is-active .lt-mcard-size,
+.lt-mcard.is-rec .lt-mcard-size {
+  background: var(--lt-user-bg);
+  color: var(--lt-user-fg);
+  border-color: transparent;
+}
+
+.lt-mcard-meta { min-width: 0; display: grid; gap: 3px; }
+.lt-mcard-name {
+  font-size: 15.5px;
+  font-weight: 650;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.lt-mcard-rec {
+  flex: 0 0 auto;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--lt-user-fg);
+  background: var(--lt-user-bg);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+.lt-mcard-sub { font-size: 12px; color: var(--lt-muted); line-height: 1.3; }
+.lt-mcard-reason { font-size: 11.5px; color: var(--lt-muted); line-height: 1.3; }
+.lt-mcard.is-disabled .lt-mcard-reason { color: var(--lt-muted); }
+.lt-mcard.is-busy .lt-mcard-reason { display: none; }
+
+.lt-mcard-right { flex: 0 0 auto; display: grid; place-items: end center; justify-items: end; gap: 4px; min-width: 56px; }
+.lt-mcard-act {
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--lt-accent-2);
+  white-space: nowrap;
+  padding: 7px 12px;
+  border-radius: 9px;
+  border: 1px solid color-mix(in srgb, var(--lt-accent) 45%, transparent);
+  background: rgba(59, 130, 246, 0.08);
+}
+.lt-mcard-check {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--lt-user-bg);
+  color: var(--lt-user-fg);
+}
+.lt-mcard-prog { display: grid; gap: 5px; justify-items: end; min-width: 92px; }
+.lt-mcard-bar { width: 92px; height: 6px; border-radius: 999px; background: var(--lt-bg-elev); overflow: hidden; }
+.lt-mcard-fill { height: 100%; border-radius: 999px; background: var(--lt-user-bg); transition: width 0.2s ease; }
+.lt-mcard-pct { font-size: 11.5px; color: var(--lt-muted); font-weight: 600; white-space: nowrap; }
+.lt-mcard.is-busy { cursor: default; }

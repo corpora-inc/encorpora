@@ -1,0 +1,10 @@
+.github
+.changeset
+.vscode
+.build
+pnpm-lock.yaml
+build
+node_modules
+schema.json
+target
+**/gen/*

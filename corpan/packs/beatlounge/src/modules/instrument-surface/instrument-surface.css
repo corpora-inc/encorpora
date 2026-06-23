@@ -1,0 +1,266 @@
+/* ============================================================
+   beatlounge — instrument-surface styles: the reusable performance RIBBON
+   (InstrumentRibbon), shared by the standalone Ribbon module and the
+   Instruments page. Builds ONLY on the frozen --bl-* tokens (never edits the
+   design-system file). A wide, premium ribbon: pitch across the X axis,
+   expression up the Y axis, fretted snap-glow + a finger comet trail. 60fps —
+   only transform/opacity animate; the comet + beam are positioned via the
+   --bl-ribbon-x / --bl-ribbon-y custom properties written in JS.
+
+   NOTE: the segmented toggle (.bl-seg / .bl-seg-btn), .bl-icon-btn, .bl-select
+   and .bl-ribbon-field are shared chrome and stay defined in ribbon/styles.css
+   (also used by composer / piano-roll / the shell). The surface-only rules live
+   here so the InstrumentRibbon brings its own look wherever it mounts.
+   ============================================================ */
+
+.bl-ribbon {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: var(--bl-s4);
+  gap: var(--bl-s3);
+}
+
+/* armed Record reuses the shared accent-error treatment */
+.bl-ribbon .bl-chip.is-armed {
+  border-color: var(--bl-error);
+  color: var(--bl-error);
+  background: color-mix(in srgb, var(--bl-error) 22%, var(--bl-surface-2));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--bl-error) 40%, transparent);
+}
+
+/* ---------------------------------------------------------- control strip
+   Two tidy rows: Lock/Free (+ optional slot) above, the octave window below. The
+   key/mode is shown ONCE — the clickable Harmony summary atop the page — so
+   there's no "following …" label here. */
+.bl-ribbon-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s2);
+}
+.bl-ribbon-ctl-row {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+}
+/* the slot (e.g. the page's Record arm) fills the rest of row 1 */
+.bl-ribbon-ctl-slot {
+  flex: 1 1 auto;
+  display: flex;
+  min-width: 0;
+}
+.bl-ribbon-ctl-slot > .bl-chip {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+/* row 2 — span centred between the shift edges; the range read at each edge */
+.bl-ribbon-octrow {
+  justify-content: space-between;
+}
+.bl-ribbon-oct-edge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-ribbon-oct-label {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  min-width: 3ch;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------- the ribbon */
+.bl-ribbon-surface {
+  --bl-ribbon-x: 50%;
+  --bl-ribbon-y: 50%;
+  --bl-ribbon-on: 0;
+  position: relative;
+  flex: 1;
+  min-height: 160px;
+  border: 1px solid var(--bl-border);
+  border-radius: var(--bl-radius);
+  background:
+    radial-gradient(
+      120% 90% at 50% 120%,
+      color-mix(in srgb, var(--bl-accent) 10%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--bl-surface-2), var(--bl-surface));
+  overflow: hidden;
+  cursor: crosshair;
+  /* CRITICAL for touch: the ribbon owns the gesture, never scrolls/zooms. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: box-shadow var(--bl-dur) var(--bl-ease);
+}
+.bl-ribbon-surface.is-playing {
+  box-shadow: inset 0 0 60px
+    color-mix(in srgb, var(--bl-accent) 18%, transparent);
+}
+.bl-ribbon-surface.is-silent {
+  opacity: 0.45;
+}
+
+/* frets — vertical lines on in-scale degrees; tonic accented + labelled */
+.bl-ribbon-frets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.bl-fret {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-0.5px);
+  background: color-mix(in srgb, var(--bl-accent) 16%, transparent);
+}
+.bl-ribbon-surface.is-fretless .bl-fret {
+  opacity: 0.35; /* frets are guides only in fretless mode */
+}
+.bl-fret.is-tonic {
+  width: 2px;
+  background: color-mix(in srgb, var(--bl-accent) 46%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--bl-accent) 40%, transparent);
+}
+.bl-fret-label {
+  position: absolute;
+  top: var(--bl-s2);
+  inset-inline-start: 4px;
+  /* a single-line label inside an absolutely-placed span — pin its baseline with
+   * an explicit line-height so it never drifts vertically (WebKit safety). */
+  line-height: 1;
+  font-family: var(--bl-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--bl-accent) 70%, var(--bl-text-dim));
+  white-space: nowrap;
+}
+
+/* the vertical beam under the finger (the "active column") */
+.bl-ribbon-beam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--bl-ribbon-x);
+  width: 3px;
+  transform: translateX(-1.5px);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--bl-accent-hot),
+    transparent
+  );
+  opacity: calc(var(--bl-ribbon-on) * 0.9);
+  pointer-events: none;
+  transition: opacity var(--bl-dur-fast) var(--bl-ease);
+}
+
+/* per-finger lit markers — one glowing bar per active pointer so EVERY held
+   note lights, not just the primary finger. Positioned by `left` straight on
+   the DOM node (no React re-render); opacity toggles as fingers come/go. */
+.bl-ribbon-marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.bl-ribbon-mark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-1px);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--bl-accent-hot) 85%, transparent),
+    transparent
+  );
+  box-shadow: 0 0 10px color-mix(in srgb, var(--bl-accent) 55%, transparent);
+  /* opacity is toggled in JS; soften the on/off so a lift doesn't snap-flicker */
+  transition: opacity var(--bl-dur-fast) var(--bl-ease);
+}
+/* each finger's OWN note label, pinned to the foot of its marker bar — so a chord
+   shows every note and lifting one finger clears only that one (no shared readout
+   stranding the last note under another finger). textContent is set in JS. */
+.bl-ribbon-mark-label {
+  position: absolute;
+  left: 50%;
+  bottom: var(--bl-s3);
+  transform: translateX(-50%);
+  line-height: 1;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-accent-hot);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--bl-accent) 60%, transparent);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* the finger comet — a soft glowing puck at (x, y) */
+.bl-ribbon-comet {
+  position: absolute;
+  left: var(--bl-ribbon-x);
+  top: var(--bl-ribbon-y);
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--bl-accent-hot),
+    color-mix(in srgb, var(--bl-accent) 60%, transparent) 55%,
+    transparent 72%
+  );
+  box-shadow: var(--bl-glow) var(--bl-accent);
+  opacity: var(--bl-ribbon-on);
+  pointer-events: none;
+  /* snappy follow: position is set every move; this just softens micro-jitter */
+  transition: opacity var(--bl-dur-fast) var(--bl-ease);
+}
+/* fretted mode gives the comet a crisper, "locked" ring */
+.bl-ribbon-surface.is-fretted .bl-ribbon-comet {
+  background: radial-gradient(
+    circle,
+    var(--bl-bg),
+    var(--bl-accent-hot) 35%,
+    color-mix(in srgb, var(--bl-accent) 50%, transparent) 60%,
+    transparent 74%
+  );
+}
+
+.bl-ribbon-readout {
+  position: absolute;
+  left: var(--bl-ribbon-x);
+  bottom: var(--bl-s3);
+  transform: translateX(-50%);
+  /* single-line readout — pin the baseline so it never jumps with the value. */
+  line-height: 1;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  color: var(--bl-accent-hot);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--bl-accent) 60%, transparent);
+  pointer-events: none;
+}
+.bl-ribbon-hint {
+  position: absolute;
+  inset: auto 0 var(--bl-s4) 0;
+  text-align: center;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.05em;
+  color: var(--bl-text-dim);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-ribbon-comet,
+  .bl-ribbon-beam,
+  .bl-ribbon-mark {
+    transition: none;
+  }
+}
+

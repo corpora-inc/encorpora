@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
+    "target": "ES2021",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2021", "DOM"],
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@corpan-city/contracts": ["../corpan-city/contracts/src/index.ts"],
+      "@corpan-city/contracts/*": ["../corpan-city/contracts/src/*"],
+      "@shared/asr": ["../shared/asr/index.ts"],
+      "@shared/moderation": ["../shared/moderation/index.ts"],
+      "@shared/net/*": ["../shared/net/*"],
+      "colyseus.js": ["node_modules/colyseus.js"],
+      "zod": ["node_modules/zod/index.d.ts"]
+    }
+  },
+  "include": ["src"]
+}

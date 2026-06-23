@@ -1,0 +1,19 @@
+{
+  "id": "phrase-professional-construction-trades",
+  "version": "0.1.0",
+  "name": "Construction and Trades",
+  "description": "Professional language for job sites, inspections, safety, tools, schedules, and trade coordination.",
+  "category": "professional",
+  "topic": "Construction and Trades",
+  "icon": "hard-hat",
+  "accent_color": "#b7791f",
+  "purchase": {
+    "type": "free"
+  },
+  "tags": [
+    "professional",
+    "new"
+  ],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

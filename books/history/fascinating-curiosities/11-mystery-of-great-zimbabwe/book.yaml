@@ -1,0 +1,25 @@
+book:
+  volume: 11
+  title: "The Mystery of Great Zimbabwe"
+  subtitle: "The Stone City They Said Couldn't Exist"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - Massive dry-stone walls up to 11 meters high built without mortar -- the largest ancient structures in sub-Saharan Africa -- whose builders were denied by colonial powers for over a century
+      - The Conical Tower inside the Great Enclosure -- a solid stone structure 9 meters tall with no doors, windows, or internal chambers -- whose purpose remains unknown
+      - Over 300 similar stone enclosures across the Zimbabwe Plateau, representing a monumental building tradition with no parallel elsewhere in Africa
+    secondary:
+      - The colonial lie -- Karl Mauch, Cecil Rhodes, and the systematic suppression of evidence that Africans built Great Zimbabwe
+      - The soapstone birds -- eight carved figures found at the site, unique in African art, now the national emblem of Zimbabwe
+      - The gold trade network connecting the Zimbabwe Plateau to the Indian Ocean world -- China, India, Arabia
+      - The decline around 1450 CE -- environmental degradation, political fragmentation, or both?
+      - The relationship between Great Zimbabwe, Mapungubwe, and the successor states of Mutapa and Torwa
+
+  key_scholarly_sources:
+    - "Gertrude Caton-Thompson -- The Zimbabwe Culture (1931); first professional excavation confirming African origin"
+    - "Peter Garlake -- Great Zimbabwe (1973); comprehensive archaeological study by a scholar exiled from Rhodesia"
+    - "Thomas Huffman -- Snakes and Crocodiles (1996); interpretive framework for Great Zimbabwe's symbolism"
+    - "Shadreck Chirikure -- Great Zimbabwe: Reclaiming a 'Confiscated' Past (2020); contemporary African archaeological perspective"
+    - "Innocent Pikirayi -- The Zimbabwe Culture (2001); synthesis of Zimbabwe Plateau archaeology"
+    - "Webber Ndoro -- conservation and heritage management at Great Zimbabwe"

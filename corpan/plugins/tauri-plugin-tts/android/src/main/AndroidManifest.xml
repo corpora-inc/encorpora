@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <queries>
+  <intent>
+      <action android:name="android.intent.action.TTS_SERVICE" />
+  </intent>
+  <package android:name="com.google.android.tts" />
+  <package android:name="com.samsung.SMT" />
+  <package android:name="com.iflytek.speechcloud" />
+  <package android:name="com.acapelagroup.android.tts" />
+ </queries>
+</manifest>

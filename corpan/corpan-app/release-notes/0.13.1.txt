@@ -1,0 +1,20 @@
+Corpán 0.13.1 - the Parlometron release.
+
+Parlometron arrives, formerly the Pronunciation Coach. A full rebrand and a new multiplayer mode: pass-the-phone pronunciation duels in any of Corpán's 51 languages, scored on-device by Whisper. No servers, no accounts. Solo practice is still there for the quieter days.
+
+A new Large q8 model option ships with Parlometron - our own 8-bit quantization of Whisper Large v3, about 1.6 GB, delivered from our CDN. Noticeably faster than the default Large on most phones, at the same accuracy.
+
+Steadier on-device speech:
+- Model swaps no longer crash the app. A memory-headroom gate inspects free RAM before loading and refuses cleanly when a load would exceed safe limits.
+- The iPhone microphone indicator no longer stays on after you leave a pronunciation session. The audio engine is fully torn down when the pack closes.
+- Back-to-back recordings work reliably on iPhone and Android, and TTS volume between mic tries is back to full.
+
+Sturdier on Android 15+. The Whisper native library is now 16 KB page-size aligned, so it loads natively on Pixel 9 and other 2025+ Android devices without the slow 4 KB emulation shim. Snappier startup, slightly better battery on new hardware.
+
+Main-screen polish:
+- The language stack now picks its vertical placement to fit your text size and stack count without ever clipping the last row under the nav bar.
+- Onboarding's language picker scrolls cleanly on small devices when the coming-soon list runs long.
+
+Privacy. Anonymous, opt-out usage analytics arrive in Settings, "Send anonymous usage data". Country-only geolocation, ephemeral session IDs, no persistent identifiers. Off in one tap. Privacy Promise on encorpora.io updated to match.
+
+Pure learning.

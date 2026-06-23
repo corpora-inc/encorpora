@@ -1,0 +1,17 @@
+{
+  "title": "Under 10 Soccer 7v7",
+  "subtitle": "Easy as 1-2-3",
+  "author": "Skylar Saveland",
+  "publisher": "Corpora Inc",
+  "language": "en-US",
+  "format": "6x9",
+  "target_pages": 25,
+  "target_words": 6000,
+  "audience": ["coaches", "players age 9-10", "families"],
+  "voice": "Direct, practical, personal. First-person where it helps. Written from real experience, not theory.",
+  "build": {
+    "tool": "pandoc",
+    "script": "build.sh",
+    "outputs": ["pdf", "epub"]
+  }
+}

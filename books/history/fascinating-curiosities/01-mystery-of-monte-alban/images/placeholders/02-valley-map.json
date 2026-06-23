@@ -1,0 +1,16 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, bird's-eye view looking down at the Valley of Oaxaca in southern Mexico, a Y-shaped valley formed by three arms converging, the Etla arm stretching to the northwest, the Tlacolula arm extending to the east, and the Zimatlan arm reaching south, the Atoyac river threading through the flat valley floor as a thin winding line, patchwork of brown and green agricultural fields on the valley floor, dry rounded mountains surrounding the valley rising to 3000 meters with brown-gold semi-arid slopes and darker pine-oak forest at higher elevations, a prominent hilltop at the convergence of the three arms",
+  "negative_prompt": "blurry, low quality, distorted, deformed, cartoon, anime, 3D render, text, words, letters, writing, captions",
+  "seed": 43,
+  "width": 1024,
+  "height": 1024,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "dtype": "float16",
+  "generation_time_s": 81.52,
+  "timestamp": "2026-02-22T05:58:36.694135+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

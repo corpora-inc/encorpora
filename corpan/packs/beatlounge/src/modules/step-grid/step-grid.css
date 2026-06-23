@@ -1,0 +1,52 @@
+/**
+ * beatlounge — Drums page (step-grid immersive) layout.
+ *
+ * The whole layout — the selectable lane grid, the bottom pipeline drawer, and
+ * the mixer strip — is now SHARED with the Phrase Jam page and lives in
+ * ../track-studio/track-studio.css (so the two pages can't drift). The Drums
+ * page root carries both `bl-drums` and `bl-trackpage`, so the shared rules
+ * apply. This file only re-imports the shared sheet for the module's tile /
+ * standalone load paths (the immersive view also imports it directly).
+ */
+@import "../track-studio/track-studio.css";
+
+/* ---- empty / recovery state: drums are first-class + always recoverable ---- */
+.bl-drums-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s4);
+  height: 100%;
+  padding: var(--bl-s5);
+  text-align: center;
+}
+.bl-drums-empty-title {
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-label);
+  letter-spacing: 0.04em;
+}
+.bl-drums-empty-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: var(--bl-hit, 44px);
+  padding: 0 var(--bl-s5);
+  border: 1px solid var(--bl-accent);
+  border-radius: var(--bl-radius-sm);
+  background: color-mix(in srgb, var(--bl-accent) 16%, transparent);
+  color: var(--bl-accent);
+  font: 600 var(--bl-fs-body) var(--bl-font);
+  cursor: pointer;
+  transition: background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-drums-empty-btn:hover { background: color-mix(in srgb, var(--bl-accent) 26%, transparent); }
+.bl-drums-empty-btn:focus-visible { outline: 2px solid var(--bl-accent); outline-offset: 2px; }
+.bl-drums-empty--tile {
+  width: 100%;
+  border: 1px dashed var(--bl-border);
+  border-radius: var(--bl-radius);
+  background: transparent;
+  cursor: pointer;
+  min-height: 64px;
+}
+.bl-drums-empty--tile:hover { border-color: var(--bl-accent); }

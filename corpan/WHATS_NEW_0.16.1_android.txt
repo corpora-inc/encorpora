@@ -1,0 +1,87 @@
+<en-US>
+On-device language tutors — patient, private, and fully offline. A redesigned home that suggests what to do next, smarter voice setup for your language, and many stability fixes. Pure learning. No ads.
+</en-US>
+<ar>
+معلّمو لغات يعملون على جهازك — صبورون وخاصّون وبلا إنترنت تمامًا. واجهة رئيسية جديدة تقترح ما تفعله تاليًا، وإعداد صوت أذكى للغتك، والعديد من تحسينات الاستقرار. تعلّم نقيّ. بدون إعلانات.
+</ar>
+<cs-CZ>
+Jazykoví lektoři přímo ve vašem zařízení — trpěliví, soukromí a zcela offline. Nová domovská obrazovka s tipy, co dělat dál, chytřejší nastavení hlasu pro váš jazyk a řada oprav stability. Čisté učení. Bez reklam.
+</cs-CZ>
+<da-DK>
+Sprogundervisere på din enhed — tålmodige, private og helt offline. En ny startskærm, der foreslår, hvad du skal gøre, smartere stemmeopsætning til dit sprog og mange stabilitetsrettelser. Ren læring. Ingen reklamer.
+</da-DK>
+<de-DE>
+Sprachtutoren direkt auf deinem Gerät – geduldig, privat und komplett offline. Ein neuer Startbildschirm mit Vorschlägen, eine intelligentere Stimmeinrichtung für deine Sprache und viele Stabilitätsverbesserungen. Reines Lernen. Keine Werbung.
+</de-DE>
+<es-419>
+Tutores de idiomas en tu dispositivo: pacientes, privados y totalmente sin conexión. Una nueva pantalla de inicio que sugiere qué hacer, una configuración de voz más inteligente para tu idioma y muchas mejoras de estabilidad. Aprendizaje puro. Sin anuncios.
+</es-419>
+<es-ES>
+Tutores de idiomas en tu dispositivo: pacientes, privados y totalmente sin conexión. Una nueva pantalla de inicio que sugiere qué hacer, una configuración de voz más inteligente para tu idioma y muchas mejoras de estabilidad. Aprendizaje puro. Sin anuncios.
+</es-ES>
+<fi-FI>
+Kielitutorit suoraan laitteellasi – kärsivällisiä, yksityisiä ja täysin offline. Uusi aloitusnäkymä ehdottaa, mitä tehdä seuraavaksi, älykkäämpi äänen määritys kielellesi ja paljon vakauskorjauksia. Puhdasta oppimista. Ei mainoksia.
+</fi-FI>
+<fr-FR>
+Des tuteurs de langue sur votre appareil — patients, privés et entièrement hors ligne. Un nouvel écran d'accueil qui suggère quoi faire, une configuration vocale plus maligne pour votre langue et de nombreuses corrections de stabilité. Apprentissage pur. Sans publicité.
+</fr-FR>
+<hi-IN>
+आपके डिवाइस पर ही चलने वाले भाषा ट्यूटर — धैर्यवान, निजी और पूरी तरह ऑफ़लाइन। नया होम जो बताता है आगे क्या करें, आपकी भाषा के लिए स्मार्ट वॉइस सेटअप, और कई स्थिरता सुधार। शुद्ध सीखना। कोई विज्ञापन नहीं।
+</hi-IN>
+<hu-HU>
+Nyelvtanárok közvetlenül az eszközödön – türelmesek, privátak és teljesen offline. Új kezdőképernyő, amely javaslatot ad, okosabb hangbeállítás a nyelvedhez és számos stabilitási javítás. Tiszta tanulás. Reklámok nélkül.
+</hu-HU>
+<id>
+Tutor bahasa langsung di perangkat Anda — sabar, pribadi, dan sepenuhnya offline. Beranda baru yang menyarankan langkah berikutnya, penyiapan suara yang lebih cerdas untuk bahasa Anda, dan banyak perbaikan stabilitas. Belajar murni. Tanpa iklan.
+</id>
+<it-IT>
+Tutor di lingue sul tuo dispositivo — pazienti, privati e completamente offline. Una nuova schermata Home che suggerisce cosa fare, una configurazione vocale più intelligente per la tua lingua e molte correzioni di stabilità. Puro apprendimento. Senza pubblicità.
+</it-IT>
+<iw-IL>
+מורים לשפות ישירות במכשיר שלך — סבלניים, פרטיים ולגמרי ללא אינטרנט. מסך בית חדש שמציע מה לעשות, הגדרת קול חכמה יותר לשפה שלך והרבה שיפורי יציבות. למידה טהורה. ללא פרסומות.
+</iw-IL>
+<ja-JP>
+デバイス上で動く語学チューター。辛抱強く、プライベートで、完全オフライン。次に何をするか提案する新しいホーム、あなたの言語に合った賢い音声設定、多数の安定性の改善も。純粋な学びを。広告なし。
+</ja-JP>
+<ko-KR>
+기기에서 바로 작동하는 언어 튜터 — 인내심 있고 비공개이며 완전한 오프라인. 다음에 무엇을 할지 제안하는 새 홈, 언어에 맞는 더 똑똑한 음성 설정, 그리고 다양한 안정성 개선. 순수한 학습. 광고 없음.
+</ko-KR>
+<nl-NL>
+Taaltutors op je eigen apparaat — geduldig, privé en volledig offline. Een nieuw startscherm dat voorstelt wat je nu kunt doen, slimmere steminstellingen voor jouw taal en veel stabiliteitsverbeteringen. Puur leren. Geen advertenties.
+</nl-NL>
+<no-NO>
+Språklærere rett på enheten din – tålmodige, private og helt frakoblet. En ny startskjerm som foreslår hva du skal gjøre, smartere stemmeoppsett for språket ditt og mange stabilitetsforbedringer. Ren læring. Ingen reklame.
+</no-NO>
+<pl-PL>
+Korepetytorzy językowi na Twoim urządzeniu — cierpliwi, prywatni i w pełni offline. Nowy ekran główny z podpowiedziami, co robić dalej, inteligentniejsza konfiguracja głosu dla Twojego języka i wiele poprawek stabilności. Czysta nauka. Bez reklam.
+</pl-PL>
+<pt-BR>
+Tutores de idiomas no seu dispositivo — pacientes, privados e totalmente off-line. Uma nova tela inicial que sugere o que fazer, uma configuração de voz mais inteligente para o seu idioma e muitas correções de estabilidade. Aprendizado puro. Sem anúncios.
+</pt-BR>
+<ro>
+Tutori de limbi chiar pe dispozitivul tău — răbdători, privați și complet offline. Un ecran principal nou care sugerează ce să faci, o configurare vocală mai inteligentă pentru limba ta și multe remedieri de stabilitate. Învățare pură. Fără reclame.
+</ro>
+<ru-RU>
+Языковые репетиторы прямо на вашем устройстве — терпеливые, приватные и полностью офлайн. Новый главный экран с подсказками, что делать дальше, более умная настройка голоса для вашего языка и множество исправлений стабильности. Чистое обучение. Без рекламы.
+</ru-RU>
+<sk>
+Jazykoví lektori priamo vo vašom zariadení — trpezliví, súkromní a úplne offline. Nová domovská obrazovka s tipmi, čo robiť ďalej, inteligentnejšie nastavenie hlasu pre váš jazyk a množstvo opráv stability. Čisté učenie. Bez reklám.
+</sk>
+<sv-SE>
+Språklärare direkt på din enhet – tålmodiga, privata och helt offline. En ny startskärm som föreslår vad du kan göra, smartare röstinställning för ditt språk och många stabilitetsfixar. Ren inlärning. Inga annonser.
+</sv-SE>
+<th>
+ติวเตอร์ภาษาบนอุปกรณ์ของคุณ — ใจเย็น เป็นส่วนตัว และใช้งานออฟไลน์ได้เต็มที่ หน้าหลักใหม่ที่แนะนำสิ่งที่ควรทำต่อไป การตั้งค่าเสียงที่ฉลาดขึ้นสำหรับภาษาของคุณ และการแก้ไขความเสถียรอีกมากมาย การเรียนรู้ที่บริสุทธิ์ ไม่มีโฆษณา
+</th>
+<tr-TR>
+Cihazınızda çalışan dil eğitmenleri — sabırlı, gizli ve tamamen çevrimdışı. Ne yapacağınızı öneren yeni bir ana ekran, diliniz için daha akıllı ses kurulumu ve birçok kararlılık düzeltmesi. Saf öğrenme. Reklam yok.
+</tr-TR>
+<uk>
+Мовні репетитори прямо на вашому пристрої — терплячі, приватні й повністю офлайн. Новий головний екран із підказками, що робити далі, розумніше налаштування голосу для вашої мови та багато виправлень стабільності. Чисте навчання. Без реклами.
+</uk>
+<vi>
+Gia sư ngôn ngữ ngay trên thiết bị của bạn — kiên nhẫn, riêng tư và hoàn toàn ngoại tuyến. Màn hình chính mới gợi ý việc nên làm tiếp theo, thiết lập giọng nói thông minh hơn cho ngôn ngữ của bạn và nhiều bản sửa lỗi ổn định. Học tập thuần túy. Không quảng cáo.
+</vi>
+<zh-CN>
+在你的设备上运行的语言导师——耐心、私密、完全离线。全新主页会推荐接下来该做什么，为你的语言提供更智能的语音设置，以及多项稳定性修复。纯粹学习。没有广告。
+</zh-CN>

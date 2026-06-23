@@ -1,0 +1,24 @@
+book:
+  volume: 9
+  title: "The Coup"
+  subtitle: "How the CIA Overthrew a Democracy"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - CIA officer Kermit Roosevelt Jr. (grandson of Theodore Roosevelt) directed Operation TPAJAX from a Tehran basement in August 1953 -- overthrew democratically elected Prime Minister Mohammad Mosaddegh and restored Shah Mohammad Reza Pahlavi; the first attempt on August 15-16 failed and Roosevelt was ordered to abort, but he stayed and improvised a second attempt on August 19 that succeeded
+      - The degree of CIA control versus Iranian agency remains debated -- Roosevelt's memoir claims near-total American direction, but Iranian participants had their own motives and networks, and the declassified CIA internal history reveals more chaos and improvisation than the legend suggests
+      - Full operational mechanics documented in the CIA internal history by Donald Wilber (partially declassified 2000, more fully in 2013 and 2017), but significant gaps remain -- the British files from Operation Boot are still largely classified
+    secondary:
+      - British origins of the coup -- MI6 conceived Operation Boot before the Americans were involved, and the Rashidian brothers network was a British asset
+      - Mosaddegh's nationalization of the Anglo-Iranian Oil Company in 1951 and the British embargo that followed
+      - The role of Ayatollah Kashani and the bazaar merchants in the August 19 street mobilization
+      - Consequences -- the Shah's increasingly autocratic rule from 1953 to the 1979 Islamic Revolution, and the coup's role as a template for Cold War intervention (Guatemala 1954, Chile 1973)
+
+  key_scholarly_sources:
+    - "Ervand Abrahamian -- The Coup: 1953, the CIA, and the Roots of Modern U.S.-Iranian Relations (2013); the most thorough scholarly account, drawing on declassified documents and Iranian sources"
+    - "Kermit Roosevelt -- Countercoup: The Struggle for the Control of Iran (1979); the CIA officer's own account, self-serving but essential as a primary source"
+    - "Malcolm Byrne, ed. -- CIA internal history by Donald Wilber (declassified 2017); the operational plan and after-action report written by the plan's author"
+    - "Mark Gasiorowski and Malcolm Byrne, eds. -- Mohammad Mosaddeq and the 1953 Coup in Iran (2004); collected essays by leading scholars with declassified documents"
+    - "Christopher de Bellaigue -- Patriot of Persia: Muhammad Mossadegh and a Very British Coup (2012); biography of Mosaddegh that foregrounds Iranian perspectives"
+    - "Stephen Kinzer -- All the Shah's Men: An American Coup and the Roots of Middle East Terror (2003); accessible narrative history for general readers"

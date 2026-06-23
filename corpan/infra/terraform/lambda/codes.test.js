@@ -1,0 +1,958 @@
+// codes.test.js — WS-B unit tests (node:test). No live AWS: the DynamoDB
+// document client is mocked via codes.setDocClient.
+
+const { test } = require("node:test");
+const assert = require("node:assert/strict");
+const codes = require("./codes");
+
+const HMAC_KEY = Buffer.from("test-hmac-key-at-least-32-bytes-long!!").toString("base64");
+
+// ---------------------------------------------------------------------------
+// Mock DynamoDB document client
+// ---------------------------------------------------------------------------
+
+// A minimal in-memory store keyed by `${PK}|${SK}` honoring the conditional
+// expressions codes.js uses (attribute_not_exists(SK) / status==unverified).
+function makeMockDoc() {
+  const store = new Map();
+  const key = (it) => `${it.PK}|${it.SK}`;
+  const sends = [];
+  const doc = {
+    store,
+    sends,
+    async send(cmd) {
+      const name = cmd.constructor.name;
+      sends.push(name);
+      const input = cmd.input;
+      if (name === "GetCommand") {
+        const it = store.get(`${input.Key.PK}|${input.Key.SK}`);
+        return { Item: it ? { ...it } : undefined };
+      }
+      if (name === "PutCommand") {
+        const it = input.Item;
+        const existing = store.get(key(it));
+        const cond = input.ConditionExpression || "";
+        if (cond.includes("attribute_not_exists(PK)")) {
+          if (existing) {
+            const e = new Error("conditional failed");
+            e.name = "ConditionalCheckFailedException";
+            throw e;
+          }
+        }
+        if (cond.includes("attribute_not_exists(SK)")) {
+          if (existing) {
+            // allow upgrade-once form: OR #status = :unverified
+            if (
+              cond.includes(":unverified") &&
+              existing.status === "unverified"
+            ) {
+              store.set(key(it), { ...it });
+              return {};
+            }
+            const e = new Error("conditional failed");
+            e.name = "ConditionalCheckFailedException";
+            throw e;
+          }
+        }
+        store.set(key(it), { ...it });
+        return {};
+      }
+      if (name === "QueryCommand") {
+        const items = [...store.values()];
+        // GSI1 query by GSI1PK
+        if (input.IndexName === "GSI1") {
+          const h = input.ExpressionAttributeValues[":h"];
+          return { Items: items.filter((it) => it.GSI1PK === h) };
+        }
+        // PURCHASE# begins_with query
+        const pk = input.ExpressionAttributeValues[":pk"];
+        const skPrefix = input.ExpressionAttributeValues[":sk"];
+        return {
+          Items: items.filter(
+            (it) => it.PK === pk && (!skPrefix || String(it.SK).startsWith(skPrefix))
+          ),
+        };
+      }
+      throw new Error("unhandled command " + name);
+    },
+  };
+  return doc;
+}
+
+function jsonResponder() {
+  const calls = [];
+  const json = (statusCode, payload) => {
+    calls.push({ statusCode, payload });
+    return { statusCode, body: JSON.stringify(payload) };
+  };
+  return { json, calls };
+}
+
+function freshDoc() {
+  const doc = makeMockDoc();
+  codes.setDocClient(doc);
+  codes._resetRateLimit();
+  return doc;
+}
+
+const SECRETS = { codeSigning: { hmacKey: HMAC_KEY, kid: "v1" } };
+
+// A discount+affiliate registry META row.
+const IAN_META = {
+  PK: "CODE#DEMO30",
+  SK: "META",
+  partnerId: "demo",
+  partnerName: "Demo",
+  classification: "discount+affiliate",
+  appleOfferIdentifier: "DEMO30",
+  googleOfferId: "code-demo30",
+  googleOfferTags: ["code-demo30"],
+  googleBasePlanId: "annual",
+  discountLabelKey: "code.discount.first_year_30",
+  discountLabelEn: "30% off your first year",
+  revenueSharePct: 0.3,
+  active: true,
+  registryVersion: 1,
+};
+
+// ===========================================================================
+// Classification
+// ===========================================================================
+
+test("classifyCode: discount+affiliate (revenue share + offer)", () => {
+  assert.equal(codes.classifyCode(IAN_META), "discount+affiliate");
+});
+
+test("classifyCode: discount only (offer, no revenue share)", () => {
+  assert.equal(
+    codes.classifyCode({ appleOfferIdentifier: "X", revenueSharePct: 0 }),
+    "discount"
+  );
+});
+
+test("classifyCode: affiliate only (revenue share, no offer)", () => {
+  assert.equal(
+    codes.classifyCode({ revenueSharePct: 0.3 }),
+    "affiliate"
+  );
+});
+
+test("selectPurchaseAction branches by platform + offer presence", () => {
+  assert.equal(
+    codes.selectPurchaseAction({ classification: "discount+affiliate", platform: "ios", meta: IAN_META }),
+    "REDEEM_APPLE_SHEET"
+  );
+  assert.equal(
+    codes.selectPurchaseAction({ classification: "discount+affiliate", platform: "android", meta: IAN_META }),
+    "USE_OFFER_TOKEN"
+  );
+  assert.equal(
+    codes.selectPurchaseAction({ classification: "affiliate", platform: "ios", meta: { revenueSharePct: 0.3 } }),
+    "ATTRIBUTE_ONLY"
+  );
+  assert.equal(
+    codes.selectPurchaseAction({ classification: "unknown", platform: "ios", meta: null }),
+    "ATTRIBUTE_UNVERIFIED"
+  );
+});
+
+// ===========================================================================
+// HS256 sign/verify roundtrip + tamper/expiry
+// ===========================================================================
+
+test("HS256 sign + verify roundtrip", () => {
+  const token = codes.signJwt({ iss: "corpan-codes", sub: "abc", exp: codes_nowSec() + 100 }, HMAC_KEY);
+  const payload = codes.verifyJwt(token, HMAC_KEY);
+  assert.equal(payload.sub, "abc");
+  assert.equal(payload.iss, "corpan-codes");
+});
+
+test("HS256 rejects tampered payload", () => {
+  const token = codes.signJwt({ sub: "abc", exp: codes_nowSec() + 100 }, HMAC_KEY);
+  const [h, , s] = token.split(".");
+  const forged = Buffer.from(JSON.stringify({ sub: "evil", exp: codes_nowSec() + 100 })).toString("base64url");
+  const tampered = `${h}.${forged}.${s}`;
+  assert.throws(() => codes.verifyJwt(tampered, HMAC_KEY), /bad signature/);
+});
+
+test("HS256 rejects wrong key", () => {
+  const token = codes.signJwt({ sub: "abc", exp: codes_nowSec() + 100 }, HMAC_KEY);
+  const otherKey = Buffer.from("a-totally-different-key-32-bytes-xxxxx").toString("base64");
+  assert.throws(() => codes.verifyJwt(token, otherKey), /bad signature/);
+});
+
+test("HS256 rejects expired token", () => {
+  const token = codes.signJwt({ sub: "abc", exp: codes_nowSec() - 5 }, HMAC_KEY);
+  assert.throws(() => codes.verifyJwt(token, HMAC_KEY), /expired/);
+});
+
+test("validateResolutionToken: subject + code binding", () => {
+  const token = codes.mintResolutionToken(
+    { subjectId: "sub-1", code: "DEMO30", partnerId: "demo", classification: "discount+affiliate", purchaseAction: "REDEEM_APPLE_SHEET", appleOfferId: "DEMO30", googleOfferId: "code-demo30", registryVersion: 1 },
+    HMAC_KEY
+  );
+  const ok = codes.validateResolutionToken(token, { subjectId: "sub-1", affiliateCode: "demo30" }, HMAC_KEY);
+  assert.equal(ok.valid, true);
+  assert.equal(ok.claims.partnerId, "demo");
+
+  // subject mismatch
+  const bad = codes.validateResolutionToken(token, { subjectId: "other", affiliateCode: "DEMO30" }, HMAC_KEY);
+  assert.equal(bad.valid, false);
+  assert.equal(bad.reason, "subject mismatch");
+
+  // code mismatch
+  const bad2 = codes.validateResolutionToken(token, { subjectId: "sub-1", affiliateCode: "OTHER30" }, HMAC_KEY);
+  assert.equal(bad2.valid, false);
+});
+
+function codes_nowSec() {
+  return Math.floor(Date.now() / 1000);
+}
+
+// ===========================================================================
+// discountLabel localization
+// ===========================================================================
+
+test("localizeDiscountLabel: Accept-Language with English fallback", () => {
+  const meta = { discountLabelKey: "code.discount.first_year_30", discountLabelEn: "30% off your first year" };
+  assert.equal(codes.localizeDiscountLabel(meta, "es-MX,es;q=0.9,en;q=0.8"), "30% de descuento el primer año");
+  assert.equal(codes.localizeDiscountLabel(meta, "qq,zz"), "30% off your first year");
+  assert.equal(codes.localizeDiscountLabel(meta, undefined), "30% off your first year");
+  // unknown key → english fallback
+  assert.equal(codes.localizeDiscountLabel({ discountLabelKey: "nope", discountLabelEn: "Fallback" }, "es"), "Fallback");
+});
+
+// ===========================================================================
+// /code/resolve handler
+// ===========================================================================
+
+test("handleCodeResolve: Apple discount+affiliate → REDEEM_APPLE_SHEET", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#DEMO30|META", IAN_META);
+  const { json, calls } = jsonResponder();
+  await codes.handleCodeResolve(
+    { code: "demo30", subjectId: "sub-1", platform: "ios" },
+    { secrets: SECRETS, json, acceptLanguage: "es", sourceIp: "1.2.3.4" }
+  );
+  const r = calls[0];
+  assert.equal(r.statusCode, 200);
+  assert.equal(r.payload.status, "ok");
+  assert.equal(r.payload.classification, "discount+affiliate");
+  assert.equal(r.payload.purchaseAction, "REDEEM_APPLE_SHEET");
+  assert.equal(r.payload.appleOfferId, "DEMO30");
+  assert.equal(r.payload.partnerName, "Demo");
+  assert.equal(r.payload.discountLabel, "30% de descuento el primer año");
+  assert.ok(r.payload.resolutionToken);
+  // token validates + carries the partner
+  const v = codes.validateResolutionToken(r.payload.resolutionToken, { subjectId: "sub-1" }, HMAC_KEY);
+  assert.equal(v.valid, true);
+  assert.equal(v.claims.partnerId, "demo");
+});
+
+test("handleCodeResolve: Android → USE_OFFER_TOKEN with offerTokenHint", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#DEMO30|META", IAN_META);
+  const { json, calls } = jsonResponder();
+  await codes.handleCodeResolve(
+    { code: "DEMO30", subjectId: "sub-2", platform: "android" },
+    { secrets: SECRETS, json }
+  );
+  const r = calls[0].payload;
+  assert.equal(r.purchaseAction, "USE_OFFER_TOKEN");
+  assert.equal(r.offerId, "code-demo30");
+  assert.deepEqual(r.offerTokenHint.offerTags, ["code-demo30"]);
+  assert.equal(r.offerTokenHint.basePlanId, "annual");
+});
+
+test("handleCodeResolve: miss → unknown / ATTRIBUTE_UNVERIFIED (still tokens)", async () => {
+  freshDoc();
+  const { json, calls } = jsonResponder();
+  await codes.handleCodeResolve(
+    { code: "FOO", subjectId: "sub-3", platform: "ios" },
+    { secrets: SECRETS, json }
+  );
+  const r = calls[0].payload;
+  assert.equal(r.status, "ok");
+  assert.equal(r.classification, "unknown");
+  assert.equal(r.purchaseAction, "ATTRIBUTE_UNVERIFIED");
+  assert.equal(r.partnerName, null);
+  assert.ok(r.resolutionToken);
+});
+
+test("handleCodeResolve: bad input → 400 status:error (not ok)", async () => {
+  freshDoc();
+  const { json, calls } = jsonResponder();
+  await codes.handleCodeResolve({ code: "DEMO30", platform: "ios" }, { secrets: SECRETS, json });
+  assert.equal(calls[0].statusCode, 400);
+  assert.equal(calls[0].payload.status, "error");
+  assert.notEqual(calls[0].payload.status, "ok");
+});
+
+test("handleCodeResolve: registry read error → 502 status:error (no fail-open)", async () => {
+  const doc = freshDoc();
+  doc.send = async () => { throw new Error("dynamo down"); };
+  const { json, calls } = jsonResponder();
+  await codes.handleCodeResolve(
+    { code: "DEMO30", subjectId: "sub-4", platform: "ios" },
+    { secrets: SECRETS, json }
+  );
+  assert.equal(calls[0].statusCode, 502);
+  assert.equal(calls[0].payload.status, "error");
+});
+
+test("handleCodeResolve: rate-limit → 429 status:error", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#DEMO30|META", IAN_META);
+  const { json, calls } = jsonResponder();
+  // 20 allowed, 21st blocked (same subject+IP key)
+  for (let i = 0; i < 20; i++) {
+    await codes.handleCodeResolve(
+      { code: "DEMO30", subjectId: "sub-rl", platform: "ios" },
+      { secrets: SECRETS, json, sourceIp: "9.9.9.9" }
+    );
+  }
+  await codes.handleCodeResolve(
+    { code: "DEMO30", subjectId: "sub-rl", platform: "ios" },
+    { secrets: SECRETS, json, sourceIp: "9.9.9.9" }
+  );
+  const last = calls[calls.length - 1];
+  assert.equal(last.statusCode, 429);
+  assert.equal(last.payload.status, "error");
+});
+
+// ===========================================================================
+// attributePurchase — idempotency + first-verified-touch lock + ledger
+// ===========================================================================
+
+// REAL token claims — mint via mintResolutionToken + validateResolutionToken so
+// the tests exercise the actual on-the-wire claim shape (NOT a hand-built object
+// that injects fields the real token never carries). This is what masked BUG 4:
+// a hand-injected `revenueSharePct` hid that the minted token omitted it.
+function verifiedClaims(over = {}) {
+  const {
+    subjectId = "sub-A",
+    code = "DEMO30",
+    partnerId = "demo",
+    classification = "discount+affiliate",
+    purchaseAction = "REDEEM_APPLE_SHEET",
+    appleOfferId = "DEMO30",
+    googleOfferId = "code-demo30",
+    revenueSharePct = 0.3,
+    registryVersion = 1,
+    // back-compat with callers that override the bound subject via `sub`.
+    sub,
+  } = over;
+  const token = codes.mintResolutionToken(
+    {
+      subjectId: sub ?? subjectId,
+      code,
+      partnerId,
+      classification,
+      purchaseAction,
+      appleOfferId,
+      googleOfferId,
+      registryVersion,
+      revenueSharePct,
+    },
+    HMAC_KEY
+  );
+  const v = codes.validateResolutionToken(token, {}, HMAC_KEY);
+  assert.equal(v.valid, true);
+  return v.claims;
+}
+
+test("attributePurchase: first verified write creates purchase + lock + ledger", async () => {
+  const doc = freshDoc();
+  const out = await codes.attributePurchase({
+    claims: verifiedClaims(),
+    subjectId: "sub-A",
+    partnerName: "Demo",
+    platform: "apple",
+    txnOrOriginalId: "orig-1",
+    productId: "corpan.sub.annual",
+    price: 1999,
+    currency: "USD",
+    offerApplied: true,
+    offerType: 3,
+    offerIdentifier: "DEMO30",
+    environment: "Production",
+    appAccountToken: "sub-A",
+  });
+  assert.equal(out.verified, true);
+  assert.equal(out.locked, true);
+  assert.ok(out.message.includes("Demo"));
+  // rows present
+  assert.ok(doc.store.get("SUBJECT#sub-A|PURCHASE#apple#orig-1"));
+  assert.ok(doc.store.get("SUBJECT#sub-A|ATTRIBUTION"));
+  const ledgerKeys = [...doc.store.keys()].filter((k) => k.startsWith("LEDGER#demo#"));
+  assert.equal(ledgerKeys.length, 1);
+  assert.equal(doc.store.get(ledgerKeys[0]).kind, "initial");
+  // The ledger credit must carry the real payout pct from the token claims.
+  assert.equal(doc.store.get(ledgerKeys[0]).revenueSharePct, 0.3);
+});
+
+test("attributePurchase: replayed txn → no double credit", async () => {
+  const doc = freshDoc();
+  const args = {
+    claims: verifiedClaims(),
+    subjectId: "sub-A",
+    partnerName: "Demo",
+    platform: "apple",
+    txnOrOriginalId: "orig-1",
+    productId: "corpan.sub.annual",
+    price: 1999,
+    currency: "USD",
+    offerApplied: true,
+    appAccountToken: "sub-A",
+  };
+  await codes.attributePurchase(args);
+  const ledgerAfterFirst = [...doc.store.keys()].filter((k) => k.startsWith("LEDGER#demo#")).length;
+  const out2 = await codes.attributePurchase(args); // replay
+  assert.equal(out2.replay, true);
+  const ledgerAfterReplay = [...doc.store.keys()].filter((k) => k.startsWith("LEDGER#demo#")).length;
+  assert.equal(ledgerAfterFirst, 1);
+  assert.equal(ledgerAfterReplay, 1); // no double credit
+});
+
+test("attributePurchase: verified lock never overwritten by later code", async () => {
+  const doc = freshDoc();
+  // First verified lock to demo.
+  await codes.attributePurchase({
+    claims: verifiedClaims(),
+    subjectId: "sub-B",
+    partnerName: "Demo",
+    platform: "apple",
+    txnOrOriginalId: "txn-1",
+    appAccountToken: "sub-B",
+  });
+  const lockedTo = doc.store.get("SUBJECT#sub-B|ATTRIBUTION").partnerId;
+  assert.equal(lockedTo, "demo");
+
+  // A different verified code, NEW txn → purchase row writes, but attribution
+  // lock must NOT change (verified never overwrites verified).
+  await codes.attributePurchase({
+    claims: verifiedClaims({ partnerId: "other", code: "OTHER30" }),
+    subjectId: "sub-B",
+    partnerName: "Other",
+    platform: "apple",
+    txnOrOriginalId: "txn-2",
+    appAccountToken: "sub-B",
+  });
+  assert.equal(doc.store.get("SUBJECT#sub-B|ATTRIBUTION").partnerId, "demo");
+});
+
+test("attributePurchase: unverified lock upgrades to verified once", async () => {
+  const doc = freshDoc();
+  // Unverified first (unknown code → no partnerId).
+  await codes.attributePurchase({
+    claims: { v: 1, iss: "corpan-codes", sub: "sub-C", code: "FOO", partnerId: null, classification: "unknown" },
+    subjectId: "sub-C",
+    partnerName: null,
+    platform: "apple",
+    txnOrOriginalId: "txn-u1",
+    appAccountToken: "sub-C",
+  });
+  assert.equal(doc.store.get("SUBJECT#sub-C|ATTRIBUTION").status, "unverified");
+
+  // Verified upgrade.
+  await codes.attributePurchase({
+    claims: verifiedClaims({ sub: "sub-C" }),
+    subjectId: "sub-C",
+    partnerName: "Demo",
+    platform: "apple",
+    txnOrOriginalId: "txn-v1",
+    appAccountToken: "sub-C",
+  });
+  const lock = doc.store.get("SUBJECT#sub-C|ATTRIBUTION");
+  assert.equal(lock.status, "verified");
+  assert.equal(lock.partnerId, "demo");
+});
+
+test("attributePurchase: no claims → null (no write)", async () => {
+  const doc = freshDoc();
+  const out = await codes.attributePurchase({ claims: null, subjectId: "x", platform: "apple", txnOrOriginalId: "z" });
+  assert.equal(out, null);
+  assert.equal(doc.store.size, 0);
+});
+
+test("attributePurchase: unknown classification writes lock but NO ledger", async () => {
+  const doc = freshDoc();
+  const out = await codes.attributePurchase({
+    claims: { v: 1, iss: "corpan-codes", sub: "sub-D", code: "FOO", partnerId: null, classification: "unknown" },
+    subjectId: "sub-D",
+    partnerName: null,
+    platform: "android",
+    txnOrOriginalId: "order-1",
+    appAccountToken: "hash-d",
+  });
+  assert.equal(out.verified, false);
+  const ledgerKeys = [...doc.store.keys()].filter((k) => k.startsWith("LEDGER#"));
+  assert.equal(ledgerKeys.length, 0);
+});
+
+// ===========================================================================
+// BUG 4 — initial ledger rows must carry the real payout pct (end-to-end)
+// ===========================================================================
+
+test("mintResolutionToken: token carries revenueSharePct claim", () => {
+  const token = codes.mintResolutionToken(
+    { subjectId: "sub-p", code: "DEMO30", partnerId: "demo", classification: "discount+affiliate", purchaseAction: "REDEEM_APPLE_SHEET", revenueSharePct: 0.3 },
+    HMAC_KEY
+  );
+  const v = codes.validateResolutionToken(token, { subjectId: "sub-p" }, HMAC_KEY);
+  assert.equal(v.valid, true);
+  // The real token MUST carry the payout share (not undefined/null) — this is
+  // what attributePurchase reads to credit the ledger.
+  assert.equal(v.claims.revenueSharePct, 0.3);
+});
+
+test("/code/resolve mints a token whose claims carry revenueSharePct", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#DEMO30|META", IAN_META);
+  const { json, calls } = jsonResponder();
+  await codes.handleCodeResolve(
+    { code: "DEMO30", subjectId: "sub-rs", platform: "ios" },
+    { secrets: SECRETS, json }
+  );
+  const token = calls[0].payload.resolutionToken;
+  const v = codes.validateResolutionToken(token, { subjectId: "sub-rs" }, HMAC_KEY);
+  assert.equal(v.claims.revenueSharePct, 0.3);
+});
+
+test("end-to-end /code/resolve → attributePurchase: ledger row carries non-null pct", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#DEMO30|META", IAN_META);
+
+  // 1) Resolve (server is the only classifier; token is the wire artifact).
+  const { json, calls } = jsonResponder();
+  await codes.handleCodeResolve(
+    { code: "DEMO30", subjectId: "sub-e2e", platform: "ios" },
+    { secrets: SECRETS, json }
+  );
+  const token = calls[0].payload.resolutionToken;
+
+  // 2) Validate the token exactly as verify-purchase does, then attribute.
+  const check = codes.validateResolutionToken(
+    token,
+    { subjectId: "sub-e2e", affiliateCode: "DEMO30" },
+    HMAC_KEY
+  );
+  assert.equal(check.valid, true);
+  await codes.attributePurchase({
+    claims: check.claims,
+    subjectId: "sub-e2e",
+    partnerName: "Demo",
+    platform: "apple",
+    txnOrOriginalId: "orig-e2e",
+    productId: "corpan.sub.annual",
+    price: 1999,
+    currency: "USD",
+    offerApplied: true,
+    expiresAt: new Date(Date.now() + 86400000).toISOString(),
+    appAccountToken: "sub-e2e",
+  });
+
+  const ledgerKey = [...doc.store.keys()].find((k) => k.startsWith("LEDGER#demo#"));
+  assert.ok(ledgerKey, "ledger row written");
+  const ledger = doc.store.get(ledgerKey);
+  // The regression this guards: the minted token dropped revenueSharePct, so
+  // the real ledger row got null even though the registry said 0.30.
+  assert.equal(ledger.revenueSharePct, 0.3);
+  assert.notEqual(ledger.revenueSharePct, null);
+});
+
+// ===========================================================================
+// BUG 3 — PURCHASE# row must carry expiresAt so /entitlement-token works
+// ===========================================================================
+
+test("attributePurchase: PURCHASE# row persists expiresAt (drives entitlement)", async () => {
+  const doc = freshDoc();
+  const exp = new Date(Date.now() + 86400000).toISOString();
+  await codes.attributePurchase({
+    claims: verifiedClaims({ subjectId: "sub-exp" }),
+    subjectId: "sub-exp",
+    partnerName: "Demo",
+    platform: "apple",
+    txnOrOriginalId: "orig-exp",
+    productId: "corpan.sub.annual",
+    expiresAt: exp,
+    appAccountToken: "sub-exp",
+  });
+  const row = doc.store.get("SUBJECT#sub-exp|PURCHASE#apple#orig-exp");
+  assert.ok(row);
+  assert.equal(row.expiresAt, exp);
+
+  // …and /entitlement-token now reflects the active sub (was broken: the row
+  // had no expiresAt → readLatestEntitlement treated it as inactive).
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({ subjectId: "sub-exp" }, { secrets: SECRETS, json });
+  assert.equal(calls[0].payload.status, "ok");
+  assert.equal(calls[0].payload.plus, true);
+});
+
+test("recordEntitlementPurchase: NORMAL (no-code) sub → /entitlement-token ok", async () => {
+  const doc = freshDoc();
+  const exp = new Date(Date.now() + 86400000).toISOString();
+  // No resolutionToken/claims at all — a plain verified subscription.
+  const written = await codes.recordEntitlementPurchase({
+    subjectId: "sub-nc",
+    platform: "apple",
+    txnOrOriginalId: "orig-nc",
+    productId: "corpan.sub.annual",
+    expiresAt: exp,
+    appAccountToken: "sub-nc",
+  });
+  assert.equal(written, true);
+  const row = doc.store.get("SUBJECT#sub-nc|PURCHASE#apple#orig-nc");
+  assert.ok(row, "entitlement row written without a code");
+  assert.equal(row.expiresAt, exp);
+  assert.equal(row.partnerId, null);
+
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({ subjectId: "sub-nc" }, { secrets: SECRETS, json });
+  assert.equal(calls[0].payload.status, "ok");
+  assert.equal(calls[0].payload.plus, true);
+  assert.equal(calls[0].payload.expiresAt, exp);
+});
+
+test("recordEntitlementPurchase: idempotent, never clobbers a richer code row", async () => {
+  const doc = freshDoc();
+  const exp = new Date(Date.now() + 86400000).toISOString();
+  // Code path writes first (carries partnerId + code).
+  await codes.attributePurchase({
+    claims: verifiedClaims({ subjectId: "sub-idem" }),
+    subjectId: "sub-idem",
+    partnerName: "Demo",
+    platform: "apple",
+    txnOrOriginalId: "orig-idem",
+    productId: "corpan.sub.annual",
+    expiresAt: exp,
+    appAccountToken: "sub-idem",
+  });
+  // A later entitlement-only write for the SAME txn must not overwrite it.
+  const written = await codes.recordEntitlementPurchase({
+    subjectId: "sub-idem",
+    platform: "apple",
+    txnOrOriginalId: "orig-idem",
+    productId: "corpan.sub.annual",
+    expiresAt: exp,
+  });
+  assert.equal(written, false); // conditional fail → left the code row intact
+  const row = doc.store.get("SUBJECT#sub-idem|PURCHASE#apple#orig-idem");
+  assert.equal(row.partnerId, "demo");
+  assert.equal(row.code, "DEMO30");
+});
+
+test("renewal extends entitlement: a renewal row's later expiry wins after the original lapses", async () => {
+  freshDoc();
+  const past = new Date(Date.now() - 86400000).toISOString(); // original already lapsed
+  const future = new Date(Date.now() + 30 * 86400000).toISOString(); // renewed expiry
+
+  // Original purchase, now expired.
+  await codes.recordEntitlementPurchase({
+    subjectId: "sub-renew",
+    platform: "apple",
+    txnOrOriginalId: "orig-1",
+    productId: "corpan.sub.monthly",
+    expiresAt: past,
+    appAccountToken: "sub-renew",
+  });
+
+  // BEFORE the renewal row exists, entitlement is failed — exactly the bug
+  // (a renewing subscriber would be denied once the original expiry passed).
+  {
+    const { json, calls } = jsonResponder();
+    await codes.handleEntitlementToken({ subjectId: "sub-renew" }, { secrets: SECRETS, json });
+    assert.equal(calls[0].payload.status, "failed");
+    assert.equal(calls[0].payload.plus, false);
+  }
+
+  // A DID_RENEW / SUBSCRIPTION_RENEWED notification writes a NEW PURCHASE row
+  // (keyed by the renewal txn id) carrying the renewed expiry.
+  const written = await codes.recordEntitlementPurchase({
+    subjectId: "sub-renew",
+    platform: "apple",
+    txnOrOriginalId: "renew-2",
+    productId: "corpan.sub.monthly",
+    expiresAt: future,
+    appAccountToken: "sub-renew",
+  });
+  assert.equal(written, true);
+
+  // Now entitlement is active again with the RENEWED expiry (newest row wins).
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({ subjectId: "sub-renew" }, { secrets: SECRETS, json });
+  assert.equal(calls[0].payload.status, "ok");
+  assert.equal(calls[0].payload.plus, true);
+  assert.equal(calls[0].payload.expiresAt, future);
+});
+
+// ===========================================================================
+// creditRenewal + GSI reverse-map
+// ===========================================================================
+
+test("creditRenewal: idempotent renewal ledger row", async () => {
+  const doc = freshDoc();
+  const args = { partnerId: "demo", subjectId: "sub-A", platform: "apple", renewalTxnId: "renew-1", productId: "p", revenueSharePct: 0.3, notificationType: "DID_RENEW" };
+  const a = await codes.creditRenewal(args);
+  const b = await codes.creditRenewal(args); // replay
+  assert.equal(a, true);
+  assert.equal(b, true); // conditional-fail still reported handled
+  const keys = [...doc.store.keys()].filter((k) => k.startsWith("LEDGER#demo#"));
+  assert.equal(keys.length, 1);
+  assert.equal(doc.store.get(keys[0]).kind, "renewal");
+});
+
+test("findSubjectByObfHash: GSI1 reverse-map finds the attribution lock", async () => {
+  const doc = freshDoc();
+  await codes.attributePurchase({
+    claims: verifiedClaims({ sub: "sub-G" }),
+    subjectId: "sub-G",
+    partnerName: "Demo",
+    platform: "android",
+    txnOrOriginalId: "order-g",
+    appAccountToken: "hash-g",
+  });
+  const obfHash = codes.sha256Hex("sub-G");
+  const found = await codes.findSubjectByObfHash(obfHash);
+  assert.ok(found);
+  assert.equal(found.partnerId, "demo");
+  assert.equal(found.subjectId, "sub-G"); // derived from PK, not a row attribute
+});
+
+test("findSubjectByObfHash: resolves a NORMAL no-code sub (no partner lock)", async () => {
+  freshDoc();
+  const exp = new Date(Date.now() + 86400000).toISOString();
+  // A plain verified Google sub: only a partnerId:null PURCHASE# row exists.
+  await codes.recordEntitlementPurchase({
+    subjectId: "sub-nc-g",
+    platform: "android",
+    txnOrOriginalId: "order-nc-g",
+    productId: "corpan.sub.monthly",
+    expiresAt: exp,
+  });
+  // recordEntitlementPurchase keys GSI1PK = sha256Hex(subjectId).
+  const found = await codes.findSubjectByObfHash(codes.sha256Hex("sub-nc-g"));
+  // Previously returned null (only partner-bearing rows were considered), so a
+  // non-affiliate Google renewal could never extend /entitlement-token.
+  assert.ok(found, "non-affiliate sub now resolves");
+  assert.equal(found.subjectId, "sub-nc-g");
+  assert.equal(found.partnerId, null);
+});
+
+// ===========================================================================
+// /entitlement-token
+// ===========================================================================
+
+test("handleEntitlementToken: active purchase → ok + token", async () => {
+  const doc = freshDoc();
+  doc.store.set("SUBJECT#sub-E|PURCHASE#apple#orig-1", {
+    PK: "SUBJECT#sub-E",
+    SK: "PURCHASE#apple#orig-1",
+    expiresAt: new Date(Date.now() + 86400000).toISOString(),
+  });
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({ subjectId: "sub-E" }, { secrets: SECRETS, json });
+  const r = calls[0].payload;
+  assert.equal(r.status, "ok");
+  assert.equal(r.plus, true);
+  assert.ok(r.entitlementToken);
+  const v = codes.verifyJwt(r.entitlementToken, HMAC_KEY);
+  assert.equal(v.iss, "corpan-ent");
+  assert.equal(v.plus, true);
+});
+
+test("handleEntitlementToken: no purchase → failed plus:false", async () => {
+  freshDoc();
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({ subjectId: "nobody" }, { secrets: SECRETS, json });
+  assert.equal(calls[0].statusCode, 200);
+  assert.equal(calls[0].payload.status, "failed");
+  assert.equal(calls[0].payload.plus, false);
+});
+
+test("handleEntitlementToken: expired purchase → failed", async () => {
+  const doc = freshDoc();
+  doc.store.set("SUBJECT#sub-X|PURCHASE#apple#o", {
+    PK: "SUBJECT#sub-X",
+    SK: "PURCHASE#apple#o",
+    expiresAt: new Date(Date.now() - 1000).toISOString(),
+  });
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({ subjectId: "sub-X" }, { secrets: SECRETS, json });
+  assert.equal(calls[0].payload.status, "failed");
+});
+
+test("handleEntitlementToken: missing subjectId → 400", async () => {
+  freshDoc();
+  const { json, calls } = jsonResponder();
+  await codes.handleEntitlementToken({}, { secrets: SECRETS, json });
+  assert.equal(calls[0].statusCode, 400);
+});
+
+// ===========================================================================
+// Notification-driven attribution + lifecycle (Stage 2)
+// ===========================================================================
+
+test("findCodeByOffer: resolves Apple (code) and Google (code-*) offer ids", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#DEMO30|META", { ...IAN_META });
+  assert.equal((await codes.findCodeByOffer("DEMO30"))?.partnerId, "demo"); // Apple
+  assert.equal((await codes.findCodeByOffer("code-demo30"))?.partnerId, "demo"); // Google
+  assert.equal((await codes.findCodeByOffer("nope")), null);
+  assert.equal((await codes.findCodeByOffer("")), null);
+});
+
+test("markEventProcessed: first-seen true, replays false (dedupe)", async () => {
+  freshDoc();
+  assert.equal(await codes.markEventProcessed("uuid-1"), true);
+  assert.equal(await codes.markEventProcessed("uuid-1"), false);
+  assert.equal(await codes.markEventProcessed("uuid-2"), true);
+  // no id => cannot dedupe => process
+  assert.equal(await codes.markEventProcessed(null), true);
+});
+
+test("attributeFromOffer: credits partner + writes ledger; idempotent on txn", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#DEMO30|META", { ...IAN_META });
+  const r1 = await codes.attributeFromOffer({
+    offerId: "code-demo30", subjectKey: "subjA", platform: "android",
+    txnOrOriginalId: "ORDER1", productId: "corpan.sub.annual",
+    price: 55.99, currency: "USD", expiresAt: "2027-01-01T00:00:00Z",
+  });
+  assert.equal(r1.partnerId, "demo");
+  assert.equal(r1.credited, true);
+  const ledger = doc.store.get("LEDGER#demo#" + codes.yyyymm(new Date().toISOString()) + "|EVENT#android#ORDER1");
+  assert.ok(ledger, "ledger initial event written");
+  assert.equal(ledger.kind, "initial");
+  assert.equal(ledger.price, 55.99);
+  assert.ok(doc.store.get("SUBJECT#subjA|ATTRIBUTION"), "attribution row written");
+  // replay: same txn => no double credit
+  const r2 = await codes.attributeFromOffer({
+    offerId: "code-demo30", subjectKey: "subjA", platform: "android", txnOrOriginalId: "ORDER1",
+  });
+  assert.equal(r2.replay, true);
+});
+
+test("attributeFromOffer: non-partner offer => null; test purchase => no ledger", async () => {
+  const doc = freshDoc();
+  doc.store.set("CODE#DEMO30|META", { ...IAN_META });
+  assert.equal(await codes.attributeFromOffer({ offerId: "free-trial-7d", subjectKey: "s", platform: "android", txnOrOriginalId: "T" }), null);
+  const r = await codes.attributeFromOffer({
+    offerId: "DEMO30", subjectKey: "subjB", platform: "apple", txnOrOriginalId: "TXN2", isTest: true,
+  });
+  assert.equal(r.credited, false);
+  const mm = codes.yyyymm(new Date().toISOString());
+  assert.equal(doc.store.get("LEDGER#demo#" + mm + "|EVENT#apple#TXN2"), undefined, "no ledger for test purchase");
+});
+
+test("reverseCredit: writes a negative reversal ledger row", async () => {
+  const doc = freshDoc();
+  const ok = await codes.reverseCredit({ partnerId: "demo", platform: "android", txnOrOriginalId: "ORDER1", price: 55.99, currency: "USD", reason: "REFUND" });
+  assert.equal(ok, true);
+  const row = doc.store.get("LEDGER#demo#" + codes.yyyymm(new Date().toISOString()) + "|EVENT#android#ORDER1#reversal");
+  assert.ok(row, "reversal row written");
+  assert.equal(row.kind, "reversal");
+  assert.equal(row.price, -55.99);
+});
+
+// Fix B [P1] — the reversal MUST snapshot the original credit's revenueSharePct,
+// or the payout report (payout += net × rate, rate defaults to 0) never claws the
+// partner payout back and partners stay overpaid after a refund.
+test("reverseCredit: snapshots original credit's revenueSharePct (same month)", async () => {
+  const doc = freshDoc();
+  const mm = codes.yyyymm(new Date().toISOString());
+  // Seed the original affiliate credit (e.g. attributeFromOffer wrote this).
+  doc.store.set(`LEDGER#demo#${mm}|EVENT#android#ORDER1`, {
+    PK: `LEDGER#demo#${mm}`, SK: "EVENT#android#ORDER1",
+    subjectId: "subjA", code: "DEMO30", productId: "corpan.sub.annual",
+    price: 24, currency: "USD", kind: "initial", revenueSharePct: 0.3,
+    eventTime: new Date().toISOString(),
+  });
+
+  const ok = await codes.reverseCredit({
+    partnerId: "demo", platform: "android", txnOrOriginalId: "ORDER1",
+    price: 24, currency: "USD", reason: "VOIDED",
+  });
+  assert.equal(ok, true);
+  const row = doc.store.get(`LEDGER#demo#${mm}|EVENT#android#ORDER1#reversal`);
+  assert.ok(row, "reversal row written");
+  assert.equal(row.kind, "reversal");
+  assert.equal(row.price, -24);
+  assert.equal(row.revenueSharePct, 0.3, "rev-share snapshotted from original credit");
+  assert.equal(row.code, "DEMO30", "code carried over for the report");
+});
+
+test("reverseCredit: Google refund w/o price backfills the negated original price", async () => {
+  // The Android refund/revoke paths call reverseCredit WITHOUT a price; without
+  // the fallback the reversal is price:null and the report skips it (no clawback).
+  const doc = freshDoc();
+  const mm = codes.yyyymm(new Date().toISOString());
+  doc.store.set(`LEDGER#demo#${mm}|EVENT#android#ORDER7`, {
+    PK: `LEDGER#demo#${mm}`, SK: "EVENT#android#ORDER7",
+    subjectId: "subjG", code: "DEMO30", productId: "corpan.sub.annual",
+    price: 24, currency: "USD", kind: "initial", revenueSharePct: 0.3,
+    eventTime: new Date().toISOString(),
+  });
+
+  // No price / currency passed — exactly how the Google VOIDED/REVOKED calls do it.
+  const ok = await codes.reverseCredit({
+    partnerId: "demo", platform: "android", txnOrOriginalId: "ORDER7", reason: "VOIDED",
+  });
+  assert.equal(ok, true);
+  const row = doc.store.get(`LEDGER#demo#${mm}|EVENT#android#ORDER7#reversal`);
+  assert.ok(row, "reversal row written");
+  assert.equal(row.price, -24, "price backfilled (negated) from the original credit");
+  assert.equal(row.currency, "USD", "currency backfilled from the original credit");
+  assert.equal(row.revenueSharePct, 0.3, "rev-share snapshotted so payout claws back");
+});
+
+test("reverseCredit: finds an original credit in a PRIOR month partition", async () => {
+  const doc = freshDoc();
+  const now = new Date();
+  const prevMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 1, 1));
+  const prevMm = codes.yyyymm(prevMonth);
+  const nowMm = codes.yyyymm(now.toISOString());
+  // Credit landed last month; refund arrives this month (cross-partition).
+  doc.store.set(`LEDGER#demo#${prevMm}|EVENT#apple#TXN9`, {
+    PK: `LEDGER#demo#${prevMm}`, SK: "EVENT#apple#TXN9",
+    kind: "initial", revenueSharePct: 0.25, price: 60, currency: "USD",
+    eventTime: prevMonth.toISOString(),
+  });
+  const ok = await codes.reverseCredit({
+    partnerId: "demo", platform: "apple", txnOrOriginalId: "TXN9",
+    price: 60, currency: "USD", reason: "REFUND",
+  });
+  assert.equal(ok, true);
+  const row = doc.store.get(`LEDGER#demo#${nowMm}|EVENT#apple#TXN9#reversal`);
+  assert.ok(row, "reversal row written this month");
+  assert.equal(row.revenueSharePct, 0.25, "rev-share found across partitions");
+});
+
+// End-to-end payout math: an affiliate purchase at 30% then a refund nets the
+// partner payout back to ~0 (user example: $24 @30%, net basis ≈ $6.12 → ~0).
+test("reverseCredit: refund nets payout back to ~0 (report math)", async () => {
+  const doc = freshDoc();
+  const mm = codes.yyyymm(new Date().toISOString());
+  doc.store.set(`LEDGER#demo#${mm}|EVENT#android#ORDER1`, {
+    PK: `LEDGER#demo#${mm}`, SK: "EVENT#android#ORDER1",
+    kind: "initial", revenueSharePct: 0.3, price: 24, currency: "USD",
+    eventTime: new Date().toISOString(),
+  });
+  await codes.reverseCredit({
+    partnerId: "demo", platform: "android", txnOrOriginalId: "ORDER1",
+    price: 24, currency: "USD", reason: "VOIDED",
+  });
+
+  // Mirror revenue_report.py: net = gross × (1 − fee); payout += net × rate.
+  const fee = 0.15;
+  let payout = 0;
+  for (const it of doc.store.values()) {
+    if (!String(it.PK).startsWith("LEDGER#")) continue;
+    const gross = Number(it.price || 0);
+    const net = gross * (1 - fee);
+    const rate = Number(it.revenueSharePct || 0);
+    payout += net * rate;
+  }
+  assert.ok(Math.abs(payout) < 1e-9, `payout nets to ~0 after refund, got ${payout}`);
+});

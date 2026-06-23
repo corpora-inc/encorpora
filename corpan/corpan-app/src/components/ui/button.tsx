@@ -22,10 +22,15 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
+        // Buttons grow vertically on tablet+ widths. iPad has the
+        // room for a 44pt-friendly tap target (Apple HIG min); phones
+        // keep the denser sizing so packed tool palettes stay
+        // scannable. Idiomatic Tailwind responsive prefix on the
+        // CVA — applies app-wide without touching call sites.
+        default: "h-9 md:h-11 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 md:h-10 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 md:h-12 rounded-md px-6 has-[>svg]:px-4",
+        icon: "size-9 md:size-10",
       },
     },
     defaultVariants: {
@@ -50,7 +55,7 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={`${cn(buttonVariants({ variant, size, className }))} hover:cursor-pointer`}
       {...props}
     />
   )

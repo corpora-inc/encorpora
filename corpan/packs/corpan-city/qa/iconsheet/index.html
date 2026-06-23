@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>loading</title>
+    <style>
+      :root { color-scheme: light; }
+      body {
+        margin: 0;
+        padding: 20px 24px 40px;
+        font: 13px/1.4 -apple-system, system-ui, sans-serif;
+        background: #f3ece1;
+        color: #3a2e22;
+      }
+      h1 { font-size: 18px; margin: 0 0 4px; }
+      .lede { color: #7a6a55; margin: 0 0 18px; }
+      h2.sec {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #8a6a3a;
+        margin: 22px 0 8px;
+        border-bottom: 1px solid #d8cab3;
+        padding-bottom: 4px;
+      }
+      .grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .cell {
+        background: #fffaf0;
+        border: 1px solid #e3d7c0;
+        border-radius: 10px;
+        padding: 8px 10px 6px;
+        box-shadow: 0 1px 3px rgba(60,40,20,0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 78px;
+      }
+      .icons {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        height: 52px;
+      }
+      .cap {
+        margin-top: 6px;
+        font-size: 10px;
+        color: #6a5a45;
+        text-align: center;
+        max-width: 92px;
+      }
+      canvas { display: block; image-rendering: auto; }
+      /* a dark backdrop variant strip so light icons are also legible */
+      .dark { background: #2a2118; }
+    </style>
+  </head>
+  <body>
+    <h1>Corpan City · IconRenderer contact sheet</h1>
+    <p class="lede">Every currency, badge tier, and item family at 24px + 48px. No emoji, no placeholders — all procedural canvas.</p>
+    <div id="sheet"></div>
+    <script type="module" src="./sheet.ts"></script>
+  </body>
+</html>

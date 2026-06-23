@@ -1,0 +1,20 @@
+{
+  "code": "pt",
+  "displayName": {
+    "en": "Portuguese",
+    "pt": "Português"
+  },
+  "voiceLanguageCode": "pt-BR",
+  "contentVersion": "0.1.0",
+  "minTutomatonVersion": "0.1.0",
+  "files": {
+    "database": "data/pt.sqlite3",
+    "systemPrompt": "prompts/system_prompt.txt",
+    "groundingInstruction": "prompts/grounding_instruction.txt",
+    "retriever": "retrieval/retriever.ts"
+  },
+  "rag": {
+    "schemaVersion": 1,
+    "themeBypassEnabled": true
+  }
+}

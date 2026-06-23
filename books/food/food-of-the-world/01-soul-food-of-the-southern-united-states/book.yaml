@@ -1,0 +1,52 @@
+book:
+  volume: 1
+  title: "Soul Food of the Southern United States"
+  subtitle: "A short tour of an American cuisine with deep roots."
+  target_segments: 170
+
+  audience: "Adults learning a new language. Anyone curious about American food."
+  primary_language: en
+  pack_id: book_soul_food_southern_us
+
+  core_subjects:
+    - The term "soul food" — when it began to be used and what it points to
+    - West African ingredients carried across the Atlantic — okra, black-eyed peas, watermelon, sesame, rice
+    - Indigenous American crops — corn, sweet potatoes, beans, peanuts
+    - The cast-iron skillet and the slow-cooked pot
+    - Pork, chicken, and catfish — the everyday proteins
+    - Regional barbecue — the Carolinas, Memphis, Texas, Kansas City
+    - The classic plate — fried chicken, collard greens, mac and cheese, cornbread, sweet tea, pie
+    - The table — family-style serving, hands and forks, what surprises a European
+
+  core_themes:
+    - Real history — where each plant and animal on the plate comes from
+    - Real geography — fields, rivers, smokehouses, kitchens
+    - Real technique — frying, slow stewing, smoking, baking
+    - Real names — collard greens, hush puppies, gumbo, cornbread, grits
+
+  vocabulary_targets:
+    - food, plate, fork, fire, pot, pan, oven, salt, sugar, butter
+    - chicken, pork, fish, rice, corn, bean, greens, bread, pie, tea
+    - South, river, field, market, kitchen, table
+    - fry, bake, stew, smoke, slow, hot, sweet, spicy, soft, crisp
+
+  pacing:
+    - 7 chapters + frontmatter + backmatter
+    - 5–15 word sentences, one idea each
+    - All numbers spelled out in tts.text (no Arabic numerals)
+    - Repeat key vocabulary across chapters
+
+  content_rules:
+    - "Narrator is Kym — a friend from the South telling a curious foreigner."
+    - "Concrete topical content only. No pop-psychology, no self-help, no breathwork."
+    - "No personal-life references (bills, divorce, troubles)."
+    - "Stay in the kitchen, on the porch, in the field, at the table."
+
+  outline:
+    - chapter_1: "What Is Soul Food — the term, the place, the people"
+    - chapter_2: "The Ingredients — what came from Africa, what came from the Americas"
+    - chapter_3: "The Meats and the Fish — pork, chicken, catfish"
+    - chapter_4: "The Cooking Ways — the iron skillet, the slow pot, the smokehouse"
+    - chapter_5: "Regional Barbecue — Carolina, Memphis, Texas, Kansas City"
+    - chapter_6: "The Classic Plate — fried chicken, greens, cornbread, sweet tea, pie"
+    - chapter_7: "The Table — utensils, family-style, what is shared"

@@ -1,0 +1,37 @@
+{
+  "name": "en_onboard_enjoy",
+  "title": "English UI — ENJOY journey, single-language (English only)",
+  "persona": "A native/fluent English speaker who just wants to enjoy Corpán's content in their own language. Exercises the single-language immersion path: welcome → pickPrimary → fork[enjoy] → calibrateEnjoy → tts → interests → finish → Home. No 'add a target language' gate appears.",
+  "ui_lang": "en",
+  "beats": [
+    {
+      "narrate": "Fresh first run — clear onboarding + landing, clean URL.",
+      "reset": true
+    },
+
+    { "narrate": "Welcome screen.", "wait_text": "Corpán", "screenshot": "01-welcome" },
+    { "narrate": "Begin (Next arrow).", "tap_anchor": { "aria": "Next" }, "settle": 2.0 },
+
+    { "narrate": "Pick primary (UI) language.", "wait_text": "Make English my primary language", "screenshot": "02-pick-primary" },
+    { "narrate": "English as the single language.", "tap": "Make English my primary language", "settle": 2.0 },
+
+    { "narrate": "Fork — What brings you to Corpán?", "wait_text": "What brings you to Corpán?", "screenshot": "03-fork" },
+    { "narrate": "Pick the ENJOY journey (single-language, no target-language gate).", "tap": "Enjoy Corpán", "settle": 1.8 },
+
+    { "narrate": "Calibrate comfort — How well do you read English?", "wait_text": "How well do you read", "screenshot": "04-calibrate-enjoy" },
+    { "narrate": "Fluently — it's my language.", "tap": "Fluently", "settle": 1.8 },
+
+    { "narrate": "Text-to-speech setup — single English voice picker.", "wait_text": "Tap a voice to hear it", "screenshot": "05-tts" },
+    { "narrate": "Accept auto-picked voice, Continue.", "tap_anchor": { "aria": "Continue" }, "settle": 1.8 },
+
+    { "narrate": "Interests — skippable multi-select.", "wait_text": "What do you want to do?", "screenshot": "06-interests" },
+    { "narrate": "Pick Read stories & books.", "tap": "Read stories", "settle": 0.6 },
+    { "narrate": "Continue (skip the rest).", "tap_anchor": { "aria": "Continue" }, "settle": 1.8 },
+
+    { "narrate": "Finish / engagement page.", "wait_text": "You're all set", "screenshot": "07-finish" },
+    { "narrate": "Start exploring → commit + Home.", "tap": "Start exploring", "settle": 3.0 },
+
+    { "narrate": "Home — single-language stack lands in the Library tab intent.", "wait_text": "For you", "screenshot": "08-home" },
+    { "narrate": "Confirm Settings gear present.", "assert_anchor": { "aria": "Settings" } }
+  ]
+}

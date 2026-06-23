@@ -1,0 +1,32 @@
+{
+  "name": "corpan-hover-runner",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:watch": "vite build --watch",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "build:models": "blender --background --python scripts/svg_to_3d_v2.py",
+    "dev:corpan": "node scripts/dev-corpan.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^9.11.0",
+    "@babylonjs/loaders": "^9.11.0",
+    "zustand": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.0",
+    "@vitest/ui": "^4.1.0",
+    "baseline-browser-mapping": "^2.10.0",
+    "happy-dom": "^20.10.0",
+    "typescript": "^6.0.0",
+    "vite": "^8.0.0",
+    "vitest": "^4.1.0"
+  }
+}
