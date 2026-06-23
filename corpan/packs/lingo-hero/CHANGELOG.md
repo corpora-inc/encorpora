@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-23
+
+The premium **Neon Arcade** release: a billion-dollar-bar rebuild of the single
+rhythm-match loop — neon synthwave board, glass UI, real learning depth (meaning
+reveal, romanization, audio replay, spaced difficulty, mastery), and procedural
+synthwave audio. Also folds in the install fix, artwork, playability overhaul,
+and the core scoring-correctness fix that shipped since 0.1.0.
+
 ### Added
 - **Neon Arcade premium foundation.** A cohesive design-token layer (`--na-*`
   palette / glow + bloom shadows / type scale / spacing / radii / motion) at the
