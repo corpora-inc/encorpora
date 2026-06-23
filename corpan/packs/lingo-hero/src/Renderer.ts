@@ -627,10 +627,16 @@ export class Renderer {
       roundRectPath(ctx, x, cardY, cardW, cardH, radius);
       ctx.stroke();
 
-      // Lane-color accent spine on the leading (left) edge.
+      // Lane-color accent spine on the leading (left) edge. CLIP to the card's
+      // rounded-rect so the spine's top/bottom follow the card's rounded corners
+      // EXACTLY (a plain bar would poke past the rounding). We clip to the full
+      // card path, then paint a left-edge band; the clip carves it to the curve.
+      ctx.save();
+      roundRectPath(ctx, x, cardY, cardW, cardH, radius);
+      ctx.clip();
       ctx.fillStyle = rgba(c, isTgt ? 0.95 : 0.6);
-      roundRectPath(ctx, x, cardY, 6, cardH, [radius, 0, 0, radius]);
-      ctx.fill();
+      ctx.fillRect(x, cardY, 6, cardH);
+      ctx.restore();
       ctx.restore();
 
       // --- WORD (single line, centered, always inside with padding) ---

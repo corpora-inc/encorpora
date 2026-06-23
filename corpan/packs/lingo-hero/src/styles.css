@@ -757,13 +757,81 @@ canvas {
   }
 }
 
+/* STATS STRIP — pulled OUT of the central play area. Default (tall screens):
+   docked just BELOW the hit-ring circles (the strum line sits at 80% height;
+   the rings have up to ~72px radius, so we anchor the strip in the bottom band
+   under them). It spans only a centered, content-width cluster so it never
+   flanks the falling-note lanes. pointer-events stay off for the strip itself;
+   the stat plates don't need interaction. */
+.lh-stats {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Below the rings: strum line at 80% of height, ring radius up to ~72px → sit
+     the strip a touch under that, with a floor so it never hugs the very edge. */
+  top: min(calc(80% + 86px), calc(100% - 92px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  max-width: min(94vw, 460px);
+  pointer-events: none;
+}
+
+/* Compact the moved-out stat plates so the strip stays a tidy cluster below the
+   rings instead of the old full-width banner. */
+.lh-stats .mastery-readout {
+  width: min(90vw, 320px);
+  align-self: center;
+  padding: 4px 12px;
+}
+.lh-stats .stat {
+  padding: 0.3rem 0.7rem;
+}
+.lh-stats .score-box .stat-value {
+  font-size: clamp(1.15rem, 5vmin, 1.7rem);
+}
+.lh-stats .combo-value #combo {
+  font-size: clamp(1.4rem, 6.5vmin, 2.3rem);
+}
+.lh-stats .combo-value .x {
+  font-size: clamp(0.85rem, 3.5vmin, 1.2rem);
+}
+
 /* Score + combo strip */
 .score-container {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Short / landscape screens: there isn't room below the rings, so collapse the
+   stats to a slim row pinned at the very TOP (above the prompt), still out of
+   the falling-note lanes' way. */
+@media (max-height: 560px) {
+  .lh-stats {
+    top: calc(var(--safe-top) + 6px);
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    max-width: min(96vw, 560px);
+  }
+  .lh-stats .mastery-readout {
+    width: auto;
+    max-width: 46vw;
+  }
+  .lh-stats .score-container {
+    gap: 8px;
+  }
+  .lh-stats .stat {
+    padding: 0.25rem 0.6rem;
+  }
+  /* Nudge the prompt stack down so the slim top stats row doesn't collide. */
+  .hud .top-bar {
+    margin-top: 40px;
+  }
 }
 
 .stat {

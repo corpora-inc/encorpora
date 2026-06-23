@@ -134,17 +134,23 @@ export class Hud {
             <div class="lh-assemble" id="lh-assemble" aria-live="polite" hidden></div>
           </div>
         </div>
-        <!-- (d) progress / mastery readout slot -->
-        <div class="mastery-readout" id="mastery-readout" aria-live="polite" hidden></div>
-        <div class="score-container">
-          <div class="stat score-box">
-            <span class="stat-label">Score</span>
-            <span class="stat-value" id="score">0</span>
-            <span class="score-flyout" id="score-flyout" aria-hidden="true"></span>
-          </div>
-          <div class="stat combo-box zero" id="combo-box">
-            <span class="stat-label">Combo</span>
-            <span class="combo-value"><span class="x">x</span><span id="combo">0</span></span>
+        <!-- STATS STRIP — moved OUT of the central play area so SCORE / COMBO /
+             progress never flank the falling-note lanes. On tall screens it
+             docks BELOW the hit-ring circles (near the bottom); on short
+             screens it collapses to a slim row at the very top. -->
+        <div class="lh-stats" id="lh-stats">
+          <!-- (d) progress / mastery readout slot -->
+          <div class="mastery-readout" id="mastery-readout" aria-live="polite" hidden></div>
+          <div class="score-container">
+            <div class="stat score-box">
+              <span class="stat-label">Score</span>
+              <span class="stat-value" id="score">0</span>
+              <span class="score-flyout" id="score-flyout" aria-hidden="true"></span>
+            </div>
+            <div class="stat combo-box zero" id="combo-box">
+              <span class="stat-label">Combo</span>
+              <span class="combo-value"><span class="x">x</span><span id="combo">0</span></span>
+            </div>
           </div>
         </div>
         <!-- (c) post-answer FEEDBACK card surface (foreign <-> english + state) -->

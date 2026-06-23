@@ -6,6 +6,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-06-23
+
+Rebuilt the spawn into a true **Guitar-Hero chart** and pulled the stats out of
+the play area.
+
+### Changed
+- **Batch-timed CHART spawn (replaces one-word-at-a-time).** At round start the
+  ENTIRE target translation is now laid out as a single falling chart: every word
+  becomes a note, **in order**, spaced in **time** (vertical gap = the gap
+  between their strum beats, timed to a phrase tempo). The notes fall
+  continuously and the player catches each correct word at the strum line in
+  rhythm — a phrase of notes, not a trickle. Notes derive their position from
+  their strum beat (`y = strumY − (strumTime − now) · speed`), so the whole
+  phrase rides one pre-laid timeline; the proven delta-timed motion, forgiving
+  hit window, canvas-relative input, scoring/combo, and event/effects/audio
+  streams are unchanged.
+- **Streak-driven difficulty (resets on fail).** A relaxed start: at streak 0 the
+  words are spaced **far apart** in time and **zero decoys** fall (only the
+  correct words, in order). As the clean-chart streak builds, the inter-word
+  spacing **compresses** toward a natural-speech tempo **and decoys ramp**
+  `0 → 1 → 2` per sentence — wrong target-language words placed in OTHER lanes,
+  interleaved between the correct beats, to dodge. Whiffing or missing a correct
+  word, or catching a decoy, **resets** spacing to relaxed and decoys to 0 for
+  the next chart.
+- **Stats moved OUT of the center.** The level/progress readout + SCORE + COMBO
+  plates no longer flank the falling-note lanes. On tall screens they dock in a
+  compact strip **below the hit-ring circles**; on short/landscape screens they
+  collapse to a slim row at the very top. The prompt + assembling-phrase strip
+  stay at the top (gameplay-relevant).
+
+### Fixed
+- **Card accent spine now follows the rounded corners.** The lane-color spine on
+  each word card's leading edge is clipped to the card's rounded-rect, so its
+  top/bottom follow the corner radius exactly instead of poking past it as a
+  straight bar.
+
 ## [0.3.0] - 2026-06-23
 
 New mechanic: **Catch the Translation**. The game now teaches by having you

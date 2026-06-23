@@ -1,5 +1,5 @@
 /**
- * Headless gameplay test for Lingo Hero — "CATCH THE TRANSLATION".
+ * Headless gameplay test for Lingo Hero — "CATCH THE TRANSLATION" (batch CHART).
  *
  * It drives the BUILT bundle in a real (headless) browser, in an app-like
  * OFFSET container, and asserts the core interaction contracts that humans kept
@@ -7,9 +7,11 @@
  * cannot "see" because nothing else actually PLAYS the game:
  *
  *   (a) MOTION IS REAL — a falling card's y INCREASES across sampled frames.
- *       (Catches the prior "frozen notes" no-ship bug head-on.)
- *   (b) CATCH SCORES — tapping the lane of the correct NEXT target word, at its
- *       visual position on the strum line, INCREASES the score. (input coords)
+ *       (Catches the prior "frozen notes" no-ship bug head-on; the chart now
+ *       times notes off their strum beat, so this guards that math too.)
+ *   (b) CATCH SCORES — tapping the lane of the correct NEXT target word (the
+ *       one with seqIndex === caughtCount), at its visual position on the strum
+ *       line, INCREASES the score. (input coords + catch-in-sequence)
  *   (c) NO TAP-THROUGH — tapping the on-screen mute control does NOT score.
  *
  * It also captures menu + gameplay screenshots (visual proof) into test/e2e/out/.
@@ -42,7 +44,7 @@ await page.screenshot({ path: join(outDir, "menu.png") });
 const read = () => page.evaluate(() => {
   const g = window.__lingoHero, ls = g.laneSystem, r = g.canvas.getBoundingClientRect();
   return {
-    score: g.score, strumY: ls.getStrumLineY(),
+    score: g.score, strumY: ls.getStrumLineY(), caughtCount: g.caughtCount,
     laneX: [ls.getLaneX(0), ls.getLaneX(1), ls.getLaneX(2)],
     canvas: { left: r.left, top: r.top },
     notes: (g.notes || []).map((n) => ({
@@ -93,14 +95,17 @@ else {
 }
 
 // --- Contract (b): catching the correct NEXT target word scores. -------------
-// Catch the catchable target card (isTarget) when it crosses the strum line, by
-// clicking ITS lane at the strum-line position. Do this for a couple of words so
-// we exercise the catch-in-sequence advance, asserting the score climbs.
+// The whole translation is laid out as a time-spaced chart; the catchable word
+// is the target note whose seqIndex === caughtCount. Click ITS lane at the
+// strum-line position when it arrives. Do this for a couple of words so we
+// exercise the catch-in-sequence advance, asserting the score climbs.
 let catches = 0;
-const deadline = Date.now() + 20000;
+const deadline = Date.now() + 25000;
 while (Date.now() < deadline && catches < 2) {
   const s = await read();
-  const t = s.notes.find((n) => n.isTarget && !n.hit && !n.missed);
+  const t = s.notes.find(
+    (n) => n.isTarget && n.seqIndex === s.caughtCount && !n.hit && !n.missed
+  );
   if (t && t.y >= s.strumY - 44 && t.y <= s.strumY + 44) {
     const before = s.score;
     if (catches === 0) await page.screenshot({ path: join(outDir, "gameplay.png") });
