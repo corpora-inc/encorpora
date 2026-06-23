@@ -557,30 +557,35 @@ canvas {
   align-items: center;
   justify-content: center;
   width: 100%;
-  /* Clear the top-left Exit button; nothing on the right anymore. A hair of
-     side gutter keeps text off the very edge while still reading full-width. */
-  padding-left: calc(52px + env(safe-area-inset-left, 0px));
-  padding-right: calc(12px + env(safe-area-inset-right, 0px));
+  /* The prompt centers across the FULL width and starts BELOW the top-left
+     chrome band (pause + mute pills are ~40px tall in the corner), so a long
+     phrase can use the whole width + wrap without ever colliding with the
+     controls or crowding the right edge. Symmetric side gutters keep text off
+     the very edges. */
+  padding-left: calc(14px + env(safe-area-inset-left, 0px));
+  padding-right: calc(14px + env(safe-area-inset-right, 0px));
+  padding-top: 46px;
   box-sizing: border-box;
 }
 
-/* Exit control — top-left corner, mirroring the audio mute toggle (top-right).
-   In the .ui-layer overlay (pointer-events:none) but itself interactive. */
-.lh-exit-btn {
+/* TOP-LEFT CHROME (issue #426): the small PAUSE control + a single MUTE toggle.
+   Both live in the .ui-layer overlay (pointer-events:none) but opt back IN, and
+   their JS handlers stopPropagation, so taps never leak through to the canvas
+   lanes. Compact 40px pills; the pair tucks into the top-left corner. */
+.lh-chrome-btn {
   position: absolute;
   top: calc(var(--na-space-3) + env(safe-area-inset-top, 0px));
-  left: calc(var(--na-space-3) + env(safe-area-inset-left, 0px));
   z-index: var(--na-z-overlay, 40);
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   line-height: 1;
   padding: 0;
   border-radius: var(--na-radius-pill);
-  border: 1px solid color-mix(in srgb, var(--na-text) 35%, transparent);
+  border: 1px solid color-mix(in srgb, var(--na-text) 32%, transparent);
   background: var(--na-glass-bg);
   color: var(--na-text);
   cursor: pointer;
@@ -590,14 +595,111 @@ canvas {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   transition: transform var(--na-dur-fast) var(--na-ease-snap),
-    border-color var(--na-dur-base) var(--na-ease-out);
+    border-color var(--na-dur-base) var(--na-ease-out),
+    opacity var(--na-dur-base) var(--na-ease-out);
 }
-.lh-exit-btn:hover,
-.lh-exit-btn:focus-visible {
+.lh-pause-btn {
+  left: calc(var(--na-space-3) + env(safe-area-inset-left, 0px));
+  font-size: 0.9rem;
+  letter-spacing: -1px;
+}
+.lh-mute-btn {
+  left: calc(var(--na-space-3) + 48px + env(safe-area-inset-left, 0px));
+}
+.lh-chrome-btn:hover,
+.lh-chrome-btn:focus-visible {
   border-color: var(--na-text);
 }
-.lh-exit-btn:active {
+.lh-chrome-btn:active {
   transform: scale(0.92);
+}
+/* Mute toggle: show the speaker-on glyph by default; swap to muted when pressed. */
+.lh-mute-btn .lh-mute-off {
+  display: none;
+}
+.lh-mute-btn.is-muted .lh-mute-on {
+  display: none;
+}
+.lh-mute-btn.is-muted .lh-mute-off {
+  display: inline;
+}
+.lh-mute-btn.is-muted {
+  color: var(--ink-dim);
+  border-color: color-mix(in srgb, var(--na-text) 20%, transparent);
+}
+
+/* AUTO-FADE: during active play the top-left chrome tucks away (unobtrusive). It
+   stays clickable for a moment as it fades, then drops pointer-events so a faded
+   control can't eat a lane tap. It reappears on any lane tap (Game re-shows it)
+   or whenever the pause sheet is open. */
+.ui-layer.chrome-hidden .lh-chrome-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+/* OFF the playfield (menu / game-over): pause + mute have no meaning, so the
+   in-game chrome is fully removed (those screens own their own navigation). */
+.ui-layer.chrome-off .lh-chrome-btn {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lh-chrome-btn {
+    transition: none;
+  }
+}
+
+/* PAUSE SHEET — a small modal (Resume / Exit) so an accidental tap on the pause
+   control can't dump a run mid-combo. Covers the screen with a dimmed scrim;
+   the card is centered. pointer-events:auto so it captures all taps (the loop is
+   frozen underneath anyway). */
+.lh-pause-sheet {
+  position: absolute;
+  inset: 0;
+  z-index: calc(var(--na-z-overlay, 40) + 5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6vmin;
+  background: rgba(7, 6, 15, 0.66);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: auto;
+  animation: lh-sheet-in var(--na-dur-base, 240ms) var(--na-ease-out, ease);
+}
+.lh-pause-sheet[hidden] {
+  display: none;
+}
+.lh-pause-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(86vw, 340px);
+  padding: clamp(1.1rem, 4vmin, 1.8rem);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-stroke);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.85);
+}
+.lh-pause-title {
+  margin: 0 0 4px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.2rem, 5vmin, 1.6rem);
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+@keyframes lh-sheet-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lh-pause-sheet {
+    animation: none;
+  }
 }
 
 /* Prompt stack: foreign prompt + romanization line, vertically grouped so the
@@ -747,84 +849,80 @@ canvas {
   }
 }
 
-/* STATS STRIP — pulled OUT of the central play area. Default (tall screens):
-   docked just BELOW the hit-ring circles (the strum line sits at 80% height;
-   the rings have up to ~72px radius, so we anchor the strip in the bottom band
-   under them). It spans only a centered, content-width cluster so it never
-   flanks the falling-note lanes. pointer-events stay off for the strip itself;
-   the stat plates don't need interaction. */
+/* BOTTOM STATS ROW (issue #426) — ONE fixed, compact row across the very
+   bottom: level meter · SCORE · STREAK. It is pinned UNDER the hit-ring circles
+   (the strum line was pulled up to 0.74 height; the rings clear this band) and
+   is a centered, content-width cluster so it NEVER flanks the falling-note
+   lanes (preserves the 0.4.0 fix). The bottom inset RESPECTS the Android safe
+   area (gesture/nav bar) so nothing is clipped or overlapped by system chrome.
+   pointer-events stay off the row (the plates don't need interaction). */
 .lh-stats {
   position: absolute;
   left: 50%;
+  bottom: calc(8px + var(--safe-bottom));
   transform: translateX(-50%);
-  /* Below the rings: strum line at 80% of height, ring radius up to ~72px → sit
-     the strip a touch under that, with a floor so it never hugs the very edge.
-     The floor RESPECTS the Android bottom SAFE AREA (gesture/nav bar) via
-     env(safe-area-inset-bottom) so the SCORE/COMBO strip is never clipped or
-     overlapped by system chrome; the bottom padding reserves the band too. */
-  top: min(calc(80% + 86px), calc(100% - 92px - var(--safe-bottom)));
-  padding-bottom: var(--safe-bottom);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: 8px;
   width: max-content;
-  max-width: min(94vw, 460px);
+  max-width: calc(100vw - 24px);
   pointer-events: none;
 }
 
-/* Compact the moved-out stat plates so the strip stays a tidy cluster below the
-   rings instead of the old full-width banner. */
+/* Compact the plates so the whole row reads as one tidy bottom HUD bar (smaller
+   than the old stacked banner) and fits a narrow phone without flanking lanes. */
 .lh-stats .mastery-readout {
-  width: min(90vw, 320px);
   align-self: center;
-  padding: 4px 12px;
+  width: auto;
+  max-width: 44vw;
+  margin: 0;
+  gap: 8px;
+  padding: 4px 10px;
+  font-size: clamp(0.62rem, 2.6vmin, 0.8rem);
+}
+/* Keep the meter's progress bar from collapsing in the compact row. */
+.lh-stats .mastery-bar {
+  min-width: 34px;
 }
 .lh-stats .stat {
-  padding: 0.3rem 0.7rem;
+  padding: 0.28rem 0.7rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+/* In the bottom row the combo plate is centered (not right-flushed). */
+.lh-stats .combo-box {
+  align-items: center;
+  text-align: center;
 }
 .lh-stats .score-box .stat-value {
-  font-size: clamp(1.15rem, 5vmin, 1.7rem);
+  font-size: clamp(1.05rem, 4.6vmin, 1.5rem);
 }
 .lh-stats .combo-value #combo {
-  font-size: clamp(1.4rem, 6.5vmin, 2.3rem);
+  font-size: clamp(1.25rem, 5.4vmin, 1.9rem);
 }
 .lh-stats .combo-value .x {
-  font-size: clamp(0.85rem, 3.5vmin, 1.2rem);
+  font-size: clamp(0.8rem, 3.2vmin, 1.05rem);
 }
 
-/* Score + combo strip */
-.score-container {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  gap: 10px;
-}
-
-/* Short / landscape screens: there isn't room below the rings, so collapse the
-   stats to a slim row pinned at the very TOP (above the prompt), still out of
-   the falling-note lanes' way. */
+/* Very short / landscape screens: keep the same single compact bottom row, just
+   trim the padding so it never grows tall. (No longer relocated to the top — the
+   rings already cleared the bottom band, so the row stays put.) */
 @media (max-height: 560px) {
   .lh-stats {
-    top: calc(var(--safe-top) + 6px);
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    max-width: min(96vw, 560px);
+    bottom: calc(6px + var(--safe-bottom));
+    gap: 6px;
+    max-width: calc(100vw - 16px);
   }
   .lh-stats .mastery-readout {
-    width: auto;
-    max-width: 46vw;
-  }
-  .lh-stats .score-container {
-    gap: 8px;
+    max-width: 40vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .lh-stats .stat {
-    padding: 0.25rem 0.6rem;
-  }
-  /* Nudge the prompt stack down so the slim top stats row doesn't collide. */
-  .hud .top-bar {
-    margin-top: 40px;
+    padding: 0.22rem 0.55rem;
   }
 }
 

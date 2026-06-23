@@ -12,9 +12,12 @@
  *   (b) CATCH SCORES — tapping the lane of the correct NEXT target word (the
  *       one with seqIndex === caughtCount), at its visual position on the strum
  *       line, INCREASES the score. (input coords + catch-in-sequence)
- *   (c) NO TAP-THROUGH — tapping the on-screen Exit control does NOT score
- *       (the in-game mute button was removed; Exit is the only top chrome and
- *       must capture its own taps rather than leaking into a lane).
+ *   (c) NO TAP-THROUGH — tapping the on-screen chrome (the Pause control + its
+ *       Resume/Exit sheet, and the single Mute toggle) does NOT score; the
+ *       controls must capture their own taps rather than leaking into a lane.
+ *   (e) PROMPT FULLY VISIBLE — a deliberately LONG primary-language prompt
+ *       renders without truncation (no horizontal overflow; wraps within the
+ *       header band). The #426 prompt auto-fit/wrap contract.
  *   (d) NO BRICK — a round left with NO INPUT eventually RESOLVES (the chart
  *       exhausts and the phrase resolves into the result linger / next round)
  *       rather than leaving the player stuck with empty lanes + half strip.
@@ -87,25 +90,111 @@ await page.waitForFunction(() => (window.__lingoHero.notes || []).length > 0, { 
   }
 }
 
-// --- Contract (c): control tap (Exit) must NOT score (no tap-through). -------
-// The Exit button is the only top chrome now. It sits in the pointer-events:none
-// overlay but opts back in, so a tap on it must NOT reach the lane input. We
-// stub corpan:exit so the click doesn't actually tear the game down mid-test.
+// --- Contract (c): control tap (Pause) must NOT score (no tap-through). ------
+// The top-left chrome is now a PAUSE control that opens a Resume/Exit sheet, plus
+// a single MUTE toggle. Both sit in the pointer-events:none overlay but opt back
+// in + stopPropagation, so a tap on them must NOT reach the lane input. We stub
+// corpan:exit so the eventual Exit doesn't tear the game down mid-test, and
+// force the chrome visible (it auto-fades during play) before measuring.
 await page.evaluate(() => {
   window.__exitFired = 0;
   window.addEventListener("corpan:exit", () => { window.__exitFired++; }, true);
+  // Surface the auto-fading chrome so the control is hittable in this frame.
+  document.querySelector(".ui-layer")?.classList.remove("chrome-hidden");
 });
-const exit = await page.evaluate(() => {
-  const b = document.querySelector("#lh-exit"); if (!b) return null;
+const pauseCtl = await page.evaluate(() => {
+  const b = document.querySelector("#lh-pause"); if (!b) return null;
   const r = b.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
 });
-if (!exit) fail("no #lh-exit control found");
+if (!pauseCtl) fail("no #lh-pause control found");
 else {
   const before = (await read()).score;
-  await page.mouse.click(exit.x, exit.y);
+  await page.mouse.click(pauseCtl.x, pauseCtl.y);
   await page.waitForTimeout(140);
-  if ((await read()).score !== before) fail("tap-through: Exit tap changed the score");
-  else console.log("OK: Exit tap did not leak into a lane");
+  if ((await read()).score !== before) fail("tap-through: Pause tap changed the score");
+  else console.log("OK: Pause tap did not leak into a lane");
+  // The pause sheet must now be open (Resume / Exit) and the run paused.
+  const sheetOpen = await page.evaluate(() => {
+    const s = document.querySelector("#lh-pause-sheet");
+    return !!s && !s.hidden && !!document.querySelector("#lh-exit") && !!document.querySelector("#lh-resume");
+  });
+  if (!sheetOpen) fail("pause control did not open the Resume/Exit sheet");
+  else console.log("OK: pause control opened the Resume/Exit sheet");
+  // Tapping Exit inside the sheet must NOT score either, and must fire corpan:exit.
+  const exit = await page.evaluate(() => {
+    const b = document.querySelector("#lh-exit"); if (!b) return null;
+    const r = b.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  });
+  if (!exit) fail("no #lh-exit control found inside the pause sheet");
+  else {
+    const before = (await read()).score;
+    await page.mouse.click(exit.x, exit.y);
+    await page.waitForTimeout(120);
+    if ((await read()).score !== before) fail("tap-through: Exit tap changed the score");
+    else if (!(await page.evaluate(() => window.__exitFired > 0))) fail("Exit tap did not dispatch corpan:exit");
+    else console.log("OK: Exit tap fired corpan:exit and did not leak into a lane");
+  }
+  // Resume so the rest of the test plays normally (Exit was stubbed, run is live).
+  await page.evaluate(() => window.__lingoHero.resume && window.__lingoHero.resume());
+}
+
+// --- Contract (c2): MUTE control tap must NOT score (no tap-through). --------
+await page.evaluate(() => document.querySelector(".ui-layer")?.classList.remove("chrome-hidden"));
+const muteCtl = await page.evaluate(() => {
+  const b = document.querySelector("#lh-mute"); if (!b) return null;
+  // Exactly ONE mute control must exist.
+  if (document.querySelectorAll("#lh-mute, .lh-mute-btn").length !== 1) return { dupe: true };
+  const r = b.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+});
+if (!muteCtl) fail("no #lh-mute control found");
+else if (muteCtl.dupe) fail("more than one mute control present");
+else {
+  const before = (await read()).score;
+  await page.mouse.click(muteCtl.x, muteCtl.y);
+  await page.waitForTimeout(120);
+  if ((await read()).score !== before) fail("tap-through: Mute tap changed the score");
+  else console.log("OK: Mute tap did not leak into a lane");
+  // Unmute again so audio state is neutral for later phases.
+  await page.mouse.click(muteCtl.x, muteCtl.y);
+}
+
+// --- Contract (e): the PROMPT shows the FULL phrase (no truncation). ---------
+// Inject a deliberately LONG primary-language prompt and assert the question box
+// renders it WITHOUT clipping: scrollWidth must fit clientWidth (no horizontal
+// overflow) and scrollHeight must fit within the wrapped-line budget. This is the
+// #426 prompt auto-fit/wrap contract — long phrases must never be cut off.
+{
+  const LONG = "When my passport disappeared at the hostel in the middle of the night";
+  const probe = await page.evaluate((text) => {
+    const g = window.__lingoHero;
+    g.hud.setQuestion(text);
+    const el = document.querySelector("#question-box");
+    if (!el) return null;
+    const cs = getComputedStyle(el);
+    return {
+      text: el.textContent,
+      scrollWidth: el.scrollWidth,
+      clientWidth: el.clientWidth,
+      scrollHeight: el.scrollHeight,
+      fontPx: parseFloat(cs.fontSize),
+      lineHeightPx: parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.16,
+    };
+  }, LONG);
+  if (!probe) fail("no #question-box element to check prompt fit");
+  else {
+    if (probe.text !== LONG) fail(`prompt text was altered/truncated: ${JSON.stringify(probe.text)}`);
+    if (probe.scrollWidth > probe.clientWidth + 1) {
+      fail(`prompt overflows horizontally (scrollWidth ${probe.scrollWidth} > clientWidth ${probe.clientWidth})`);
+    }
+    // Allow up to ~3 lines of slack (the box wraps to 2; padding adds a little).
+    const maxH = probe.lineHeightPx * 3 + 8;
+    if (probe.scrollHeight > maxH) {
+      fail(`prompt overflows vertically (scrollHeight ${probe.scrollHeight} > budget ${maxH.toFixed(0)})`);
+    }
+    if (failures === 0 || probe.scrollWidth <= probe.clientWidth + 1) {
+      console.log(`OK: long prompt fully visible (font ${probe.fontPx.toFixed(0)}px, ${probe.scrollWidth}<=${probe.clientWidth}w, ${probe.scrollHeight}px tall)`);
+    }
+  }
 }
 
 // --- Contract (b): catching the correct NEXT target word scores. -------------

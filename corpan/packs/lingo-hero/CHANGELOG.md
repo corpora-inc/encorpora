@@ -6,6 +6,50 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.3] - 2026-06-24
+
+A HUD / layout pass (issue #426): the prompt always shows in full, the bottom
+stats collapse into one compact row clear of the rings, and the top-left exit
+becomes an accessible auto-hiding pause control with an Android-back path.
+
+### Fixed
+- **Prompt never truncates.** The top primary-language prompt used to clip on
+  longer phrases. It now auto-fits: the font shrinks (to a readable floor) and
+  the phrase wraps so the ENTIRE prompt is visible at any length, and it re-fits
+  on resize/rotation. The prompt also centers across the full width below the
+  top-left chrome so it never crowds the edge or collides with the controls.
+  (`Hud.setQuestion` / `Hud.fitPrompt`, `.question-box` / `.top-bar` styles,
+  `Game.handleResize` → `Hud.onResize`.)
+- **Bottom HUD is one compact row, clear of the rings.** The level meter, SCORE,
+  and STREAK now sit in a SINGLE fixed compact row pinned across the very bottom,
+  UNDER the hit-ring circles (the strum line / rings were nudged UP from 0.74
+  height so the rings are fully visible and never clipped at the screen edge).
+  The row is a centered, content-width cluster so it never flanks or overlaps the
+  falling-note lanes (preserves the 0.4.0 layout fix); the bottom inset respects
+  the Android safe area. (`Hud` stats markup, `.lh-stats` styles,
+  `LaneSystem.STRUM_LINE_Y_RATIO` + `getStrumRatio`.)
+
+### Changed
+- **Exit is now an accessible auto-hiding pause control.** The bare top-left exit
+  arrow is replaced by a small PAUSE control that opens a Resume/Exit sheet, so an
+  accidental tap can't dump a run mid-combo. It AUTO-FADES during active play and
+  reappears on any tap / when paused. The Android hardware/gesture BACK button
+  (`popstate`) is wired to the same pause→exit path, so Android users get both a
+  visible control and the back gesture (iOS keeps the visible affordance). Exactly
+  ONE mute toggle sits beside it; both are canvas-input-safe (`stopPropagation`,
+  above the canvas) so taps never leak through into a lane. On the menu /
+  game-over screens the in-game chrome is hidden (those own their own navigation).
+  (`Hud` pause/mute/back wiring, `Game` pause/resume/mute callbacks, `muteChange`
+  event applied live in `audio/index.ts`.)
+
+### Tests
+- `test/e2e/gameplay.spec.mjs` now asserts a deliberately LONG prompt renders in
+  full (no horizontal overflow; wraps within the header band), that tapping the
+  pause control / its Exit / the single mute toggle does NOT score or register a
+  lane hit (no tap-through), that the pause control opens the Resume/Exit sheet,
+  and that exactly one mute control exists. Existing motion / catch / no-brick /
+  #407 language-rule assertions are unchanged.
+
 ## [0.4.2] - 2026-06-24
 
 A language-selection correctness fix (issue #407): the falling/spoken TARGET

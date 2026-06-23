@@ -2,6 +2,11 @@ import type { GameEventBus } from "../events";
 import type { ProgressionApi } from "../progression";
 import { GameMode, type ActiveLanguage } from "../types";
 
+/** Shared with the audio stream — the single persisted mute preference key. */
+const MUTE_STORAGE_KEY = "lingoHero.audio.muted";
+/** Idle delay before the top-left chrome auto-fades during active play. */
+const CHROME_IDLE_MS = 2600;
+
 /**
  * Payload for the post-answer FEEDBACK card (slot c). The shell-ui stream fills
  * this from `wave-resolved`. Foundation only renders the surface + exposes the
@@ -49,6 +54,15 @@ export interface HudCallbacks {
    * older call sites still compile.
    */
   onContinue?: () => void;
+  /**
+   * User opened the PAUSE sheet (or pressed the OS/gesture back). Game pauses
+   * the loop + audio. Optional for older call sites.
+   */
+  onPause?: () => void;
+  /** User dismissed the pause sheet (Resume). Game resumes the loop + audio. */
+  onResume?: () => void;
+  /** User toggled the single MUTE control. Game emits `muteChange` on the bus. */
+  onSetMuted?: (muted: boolean) => void;
 }
 
 export class Hud {
@@ -71,11 +85,23 @@ export class Hud {
   private goLevelEl: HTMLElement;
   private goHighEl: HTMLElement;
 
+  private pauseBtn: HTMLElement;
+  private muteBtn: HTMLElement;
+  private pauseSheet: HTMLElement;
+
   private offFns: Array<() => void> = [];
   private lastMode: GameMode = GameMode.PRACTICE;
   private comboPulseTimer = 0;
   private flyoutTimer = 0;
   private feedbackTimer = 0;
+  /** Auto-fade timer for the top-left chrome (pause/mute) during active play. */
+  private chromeIdleTimer = 0;
+  /** True while the pause sheet is open (chrome must stay visible). */
+  private pauseOpen = false;
+  /** Persisted mute preference, mirrored into the toggle's pressed state. */
+  private muted = false;
+  /** Detach handle for the Android/gesture back (popstate) listener. */
+  private offPopState?: () => void;
   /** Words seen this run + correct count (drive the in-run mastery readout). */
   private runSeen = 0;
   private runCorrect = 0;
@@ -87,11 +113,41 @@ export class Hud {
     private progression?: ProgressionApi
   ) {
     this.root = document.createElement("div");
-    this.root.className = "ui-layer";
+    // Start on the menu: the in-game pause/mute chrome is hidden until a run
+    // begins (gameStart removes `chrome-off`).
+    this.root.className = "ui-layer chrome-off";
     this.root.innerHTML = `
-      <button class="lh-exit-btn" id="lh-exit" type="button" aria-label="Exit Lingo Hero" title="Exit">
-        <span aria-hidden="true">&#8592;</span>
+      <!-- TOP-LEFT chrome (issue #426): a single PAUSE control that opens a small
+           sheet (Resume / Exit) so an accidental tap can't dump a run mid-combo.
+           It AUTO-FADES during active play and reappears on tap / when paused.
+           Plus ONE mute toggle. Both are pointer-events:auto and stopPropagation,
+           so taps never leak through to the canvas lanes. The legacy #lh-exit id
+           is kept (inside the sheet) so the host/tests still resolve "exit". -->
+      <button class="lh-chrome-btn lh-pause-btn" id="lh-pause" type="button"
+              aria-label="Pause" title="Pause" aria-haspopup="dialog" aria-expanded="false">
+        <span aria-hidden="true">&#10073;&#10073;</span>
       </button>
+      <button class="lh-chrome-btn lh-mute-btn" id="lh-mute" type="button"
+              aria-label="Mute audio" aria-pressed="false" title="Mute">
+        <span class="lh-mute-on" aria-hidden="true">&#128266;</span>
+        <span class="lh-mute-off" aria-hidden="true">&#128263;</span>
+      </button>
+      <div class="lh-pause-sheet" id="lh-pause-sheet" role="dialog"
+           aria-label="Paused" aria-modal="true" hidden>
+        <div class="lh-pause-card">
+          <p class="lh-pause-title">Paused</p>
+          <button class="menu-btn blitz" id="lh-resume" type="button">
+            <span class="btn-icon" aria-hidden="true">&#9654;</span>
+            <span class="btn-labels"><span class="btn-title">Resume</span></span>
+            <span class="btn-chevron" aria-hidden="true">&#10095;</span>
+          </button>
+          <button class="menu-btn secondary" id="lh-exit" type="button" aria-label="Exit Lingo Hero">
+            <span class="btn-icon" aria-hidden="true">&#8592;</span>
+            <span class="btn-labels"><span class="btn-title">Exit</span></span>
+            <span class="btn-chevron" aria-hidden="true">&#10095;</span>
+          </button>
+        </div>
+      </div>
       <div class="menu-screen" id="menu" role="dialog" aria-label="Lingo Hero main menu">
         <div class="brand">
           <p class="brand-kicker">Rhythm · Language</p>
@@ -134,23 +190,22 @@ export class Hud {
             <div class="lh-assemble" id="lh-assemble" aria-live="polite" hidden></div>
           </div>
         </div>
-        <!-- STATS STRIP — moved OUT of the central play area so SCORE / COMBO /
-             progress never flank the falling-note lanes. On tall screens it
-             docks BELOW the hit-ring circles (near the bottom); on short
-             screens it collapses to a slim row at the very top. -->
+        <!-- BOTTOM STATS ROW — a SINGLE fixed, compact row pinned across the very
+             bottom (issue #426): level meter · SCORE · STREAK/COMBO. It sits
+             UNDER the hit-ring circles (which were nudged up) and is a centered,
+             content-width cluster so it NEVER flanks/overlaps the falling-note
+             lanes (preserves the 0.4.0 fix). pointer-events stay off the row. -->
         <div class="lh-stats" id="lh-stats">
-          <!-- (d) progress / mastery readout slot -->
+          <!-- (d) level / mastery meter slot (left of the row) -->
           <div class="mastery-readout" id="mastery-readout" aria-live="polite" hidden></div>
-          <div class="score-container">
-            <div class="stat score-box">
-              <span class="stat-label">Score</span>
-              <span class="stat-value" id="score">0</span>
-              <span class="score-flyout" id="score-flyout" aria-hidden="true"></span>
-            </div>
-            <div class="stat combo-box zero" id="combo-box">
-              <span class="stat-label">Combo</span>
-              <span class="combo-value"><span class="x">x</span><span id="combo">0</span></span>
-            </div>
+          <div class="stat score-box">
+            <span class="stat-label">Score</span>
+            <span class="stat-value" id="score">0</span>
+            <span class="score-flyout" id="score-flyout" aria-hidden="true"></span>
+          </div>
+          <div class="stat combo-box zero" id="combo-box">
+            <span class="stat-label">Streak</span>
+            <span class="combo-value"><span class="x">x</span><span id="combo">0</span></span>
           </div>
         </div>
         <!-- (c) post-answer FEEDBACK card surface (foreign <-> english + state) -->
@@ -188,6 +243,9 @@ export class Hud {
     `;
     container.appendChild(this.root);
 
+    this.pauseBtn = this.root.querySelector("#lh-pause")!;
+    this.muteBtn = this.root.querySelector("#lh-mute")!;
+    this.pauseSheet = this.root.querySelector("#lh-pause-sheet")!;
     this.menuScreen = this.root.querySelector("#menu")!;
     this.hudPanel = this.root.querySelector("#hud")!;
     this.gameOverScreen = this.root.querySelector("#game-over")!;
@@ -217,12 +275,30 @@ export class Hud {
     );
     this.bindButton("#btn-menu", () => this.callbacks.onShowMenu());
 
-    // Exit the pack entirely: the Corpán host listens for `corpan:exit` (App.tsx)
-    // and dismisses the game. Persistent (menu + gameplay) so there's always a
-    // way out besides the OS back button.
-    this.bindButton("#lh-exit", () =>
-      window.dispatchEvent(new CustomEvent("corpan:exit"))
-    );
+    // PAUSE control (top-left) → opens the small Resume/Exit sheet. Consolidating
+    // the top-left into a pause (not a bare exit) means an accidental tap can't
+    // dump a run mid-combo (issue #426). The sheet's Exit dispatches the host
+    // `corpan:exit` (App.tsx dismisses the game); Resume closes the sheet.
+    this.bindButton("#lh-pause", () => this.openPause());
+    this.bindButton("#lh-resume", () => this.closePause(true));
+    this.bindButton("#lh-exit", () => this.doExit());
+    // Tapping the sheet backdrop (outside the card) resumes — same as Resume.
+    this.bindButton("#lh-pause-sheet", (e) => {
+      if (e && e.target === this.pauseSheet) this.closePause(true);
+    });
+
+    // The single MUTE toggle. Reads the persisted preference for its initial
+    // pressed state, then flips it live + persists on each tap.
+    this.muted = this.readStoredMuted();
+    this.reflectMute();
+    this.bindButton("#lh-mute", () => this.toggleMute());
+
+    // ANDROID hardware/gesture BACK: wire window 'popstate' to the SAME exit
+    // path so Android users get a back-gesture exit in addition to the visible
+    // pause control (iOS has no system back button → the visible control is the
+    // accessible affordance). We push one history entry when the run starts so
+    // the first back press lands here instead of leaving the SPA.
+    this.installBackHandler();
 
     // The held result card is itself a tap-to-continue surface (it sits in the
     // pointer-events:none overlay but takes pointer-events:auto while held).
@@ -244,6 +320,48 @@ export class Hud {
     // force reflow so the animation restarts
     void this.questionBox.offsetWidth;
     this.questionBox.style.animation = "";
+    // AUTO-FIT: the prompt must ALWAYS show in full (issue #426). The phrase may
+    // be a long sentence; CSS wraps it, but a big base font on a narrow phone can
+    // still overflow the reserved header band. Shrink the font (down to a sane
+    // floor) until the FULL text fits within the band at up to ~2 lines, so it is
+    // never clipped at any length.
+    this.fitPrompt();
+  }
+
+  /**
+   * Shrink the prompt font until the entire phrase fits inside the header band
+   * (up to ~2 wrapped lines), floored so short phrases stay big and long ones
+   * stay legible. Measured against the element's own scroll size so it works for
+   * any phrase length / script. Idempotent + cheap (a handful of reflows). The
+   * upper bound is the CSS-resolved size so short prompts keep their full scale.
+   */
+  private fitPrompt(): void {
+    const el = this.questionBox;
+    if (!el.textContent) return;
+    // Reset to the CSS-driven size, then read it as our ceiling.
+    el.style.fontSize = "";
+    const ceiling = parseFloat(getComputedStyle(el).fontSize) || 24;
+    const FLOOR = 13; // px — never shrink below this (still readable)
+    // Two passes: first cap the height to ~2 lines, then ensure no horizontal
+    // overflow. Bisect-ish linear step keeps it bounded (<= ~12 iterations).
+    let size = ceiling;
+    el.style.fontSize = `${size}px`;
+    const lineH = 1.16;
+    // Budget: at most 2 lines tall. maxH derives from the current font (2 lines
+    // + the box's vertical padding, already in offsetHeight via clientHeight).
+    const fits = (): boolean => {
+      const maxLines = 2;
+      const maxH = size * lineH * maxLines + 2;
+      return (
+        el.scrollHeight <= maxH + 1 && el.scrollWidth <= el.clientWidth + 1
+      );
+    };
+    let guard = 0;
+    while (size > FLOOR && !fits() && guard < 24) {
+      size = Math.max(FLOOR, size - 1);
+      el.style.fontSize = `${size}px`;
+      guard++;
+    }
   }
 
   /**
@@ -423,12 +541,152 @@ export class Hud {
     this.root.setAttribute("data-text-size", lang.textSize);
   }
 
+  /** Re-fit the prompt to the current viewport (Game calls this on resize). */
+  onResize(): void {
+    this.fitPrompt();
+  }
+
+  // -------------------------------------------------------------------------
+  // TOP-LEFT CHROME: pause sheet, mute, auto-fade, Android back. (Issue #426)
+  // -------------------------------------------------------------------------
+
+  /** Open the pause sheet (Resume / Exit) and pause the game. */
+  private openPause(): void {
+    if (this.pauseOpen) return;
+    this.pauseOpen = true;
+    this.pauseSheet.hidden = false;
+    this.pauseBtn.setAttribute("aria-expanded", "true");
+    this.showChrome(); // keep chrome visible while paused
+    this.callbacks.onPause?.();
+    // Move focus into the sheet for keyboard/AT users.
+    const resume = this.pauseSheet.querySelector<HTMLElement>("#lh-resume");
+    resume?.focus?.();
+  }
+
+  /** Close the pause sheet. `resume` true → resume gameplay (vs. on exit). */
+  private closePause(resume: boolean): void {
+    if (!this.pauseOpen) return;
+    this.pauseOpen = false;
+    this.pauseSheet.hidden = true;
+    this.pauseBtn.setAttribute("aria-expanded", "false");
+    if (resume) {
+      this.callbacks.onResume?.();
+      this.showChrome(); // re-arm the auto-fade after resuming
+    }
+  }
+
+  /** Exit the pack: close the sheet, then ask the host to dismiss the game. */
+  private doExit(): void {
+    this.closePause(false);
+    window.dispatchEvent(new CustomEvent("corpan:exit"));
+  }
+
+  /** Toggle the single mute control: flip, persist, reflect, notify Game. */
+  private toggleMute(): void {
+    this.muted = !this.muted;
+    try {
+      localStorage.setItem(MUTE_STORAGE_KEY, this.muted ? "1" : "0");
+    } catch {
+      /* storage may be unavailable; the live toggle still works this session */
+    }
+    this.reflectMute();
+    this.callbacks.onSetMuted?.(this.muted);
+    this.showChrome();
+  }
+
+  private readStoredMuted(): boolean {
+    try {
+      return localStorage.getItem(MUTE_STORAGE_KEY) === "1";
+    } catch {
+      return false;
+    }
+  }
+
+  /** Sync the mute button's pressed state + label to `this.muted`. */
+  private reflectMute(): void {
+    this.muteBtn.setAttribute("aria-pressed", this.muted ? "true" : "false");
+    this.muteBtn.setAttribute(
+      "aria-label",
+      this.muted ? "Unmute audio" : "Mute audio"
+    );
+    this.muteBtn.classList.toggle("is-muted", this.muted);
+  }
+
+  /**
+   * Reveal the top-left chrome (pause + mute) and arm an auto-fade so it tucks
+   * away during active play (issue #426 — unobtrusive). It reappears on any tap
+   * (handled by Game forwarding interaction) or whenever the sheet is open.
+   */
+  private showChrome(): void {
+    this.root.classList.remove("chrome-hidden");
+    if (this.chromeIdleTimer) clearTimeout(this.chromeIdleTimer);
+    // Never fade while paused (the user needs the sheet + controls visible).
+    if (this.pauseOpen) return;
+    this.chromeIdleTimer = window.setTimeout(() => {
+      // Only fade during active gameplay (not on the menu / game-over).
+      if (!this.hudPanel.classList.contains("hidden") && !this.pauseOpen) {
+        this.root.classList.add("chrome-hidden");
+      }
+    }, CHROME_IDLE_MS);
+  }
+
+  /**
+   * Game calls this on any lane interaction so the chrome briefly reappears
+   * (then re-fades), giving the player a reliable way to surface the exit/pause
+   * without leaving it permanently on screen.
+   */
+  notifyInteraction(): void {
+    this.showChrome();
+  }
+
+  /** True while the pause sheet is open (Game gates its own input on this). */
+  isPaused(): boolean {
+    return this.pauseOpen;
+  }
+
+  /**
+   * Wire the Android hardware/gesture BACK button (and desktop browser back) to
+   * the pause/exit path via History + popstate. We push a sentinel state on
+   * gameStart; the first back press fires popstate (consumed here) instead of
+   * navigating away. If a run is active we open the pause sheet (so back doesn't
+   * instantly dump the run); a second back from the open sheet exits.
+   */
+  private installBackHandler(): void {
+    if (typeof window === "undefined") return;
+    const onPop = () => {
+      // Only meaningful during gameplay; ignore on menu/game-over.
+      if (this.hudPanel.classList.contains("hidden")) return;
+      // Re-arm a sentinel so a subsequent back is caught again.
+      this.armHistorySentinel();
+      if (this.pauseOpen) {
+        // Already paused → back means EXIT.
+        this.doExit();
+      } else {
+        this.openPause();
+      }
+    };
+    window.addEventListener("popstate", onPop);
+    this.offPopState = () => window.removeEventListener("popstate", onPop);
+  }
+
+  /** Push one sentinel history entry so the next back press hits popstate. */
+  private armHistorySentinel(): void {
+    try {
+      window.history.pushState({ lingoHero: true }, "");
+    } catch {
+      /* history may be unavailable (e.g. file:// sandboxes); degrade silently */
+    }
+  }
+
   dispose(): void {
     for (const off of this.offFns) off();
     this.offFns = [];
     if (this.comboPulseTimer) clearTimeout(this.comboPulseTimer);
     if (this.flyoutTimer) clearTimeout(this.flyoutTimer);
     if (this.feedbackTimer) clearTimeout(this.feedbackTimer);
+    if (this.chromeIdleTimer) clearTimeout(this.chromeIdleTimer);
+    this.offPopState?.();
+    this.offPopState = undefined;
     this.root.remove();
   }
 
@@ -451,6 +709,13 @@ export class Hud {
         this.runSeen = 0;
         this.runCorrect = 0;
         this.refreshMastery();
+        // A run begins: reveal the in-game chrome (pause + mute), close any
+        // pause sheet, surface the chrome (it then auto-fades), and arm the
+        // Android-back sentinel for this run.
+        this.root.classList.remove("chrome-off");
+        this.closePause(false);
+        this.showChrome();
+        this.armHistorySentinel();
       }),
       this.bus.on("menuShown", () => {
         this.menuScreen.classList.remove("hidden");
@@ -458,6 +723,12 @@ export class Hud {
         this.gameOverScreen.classList.add("hidden");
         this.hideFeedback();
         this.setMastery(null);
+        // Off the playfield (menu): pause/mute have no meaning here — hide the
+        // in-game chrome entirely (the menu has its own affordances).
+        this.closePause(false);
+        this.root.classList.add("chrome-off");
+        this.root.classList.remove("chrome-hidden");
+        if (this.chromeIdleTimer) clearTimeout(this.chromeIdleTimer);
       }),
       this.bus.on("scoreChange", (e) => {
         this.scoreEl.textContent = e.value.toLocaleString();
@@ -473,6 +744,12 @@ export class Hud {
         this.gameOverScreen.classList.remove("hidden");
         this.finalScoreEl.textContent = e.finalScore.toLocaleString();
         this.populateGameOverStats(e.finalScore);
+        // Run ended: the game-over panel owns navigation (Retry / Main Menu),
+        // so hide the in-game pause/mute chrome here too.
+        this.closePause(false);
+        this.root.classList.add("chrome-off");
+        this.root.classList.remove("chrome-hidden");
+        if (this.chromeIdleTimer) clearTimeout(this.chromeIdleTimer);
       }),
       // (c) LEARNING SURFACE — the single, reliable per-wave verdict hook.
       // Raise the meaning-reveal feedback card and advance the run mastery
@@ -566,7 +843,7 @@ export class Hud {
     this.newBestEl.classList.toggle("hidden", !isNewBest);
   }
 
-  private bindButton(selector: string, action: () => void): void {
+  private bindButton(selector: string, action: (e?: Event) => void): void {
     const btn = this.root.querySelector(selector);
     if (!btn) return;
 
@@ -574,11 +851,13 @@ export class Hud {
     const handleEvent = (e: Event) => {
       if (handled) return;
       e.preventDefault();
+      // stopPropagation is CRITICAL: these controls live in the ui overlay above
+      // the canvas; without it a tap could bubble/leak into a lane (tap-through).
       e.stopPropagation();
       handled = true;
       setTimeout(() => (handled = false), 300);
       try {
-        action();
+        action(e);
       } catch (err) {
         console.error(`[Hud] Error in button action:`, err);
       }

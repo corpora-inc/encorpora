@@ -188,6 +188,12 @@ export class Game {
         onShowMenu: () => this.showMenu(),
         // Result-linger tap-to-continue: advance immediately past the dwell.
         onContinue: () => this.continueFromResult(),
+        // Pause sheet (issue #426): pause/resume the loop + audio together.
+        onPause: () => this.pause("manual"),
+        onResume: () => this.resume(),
+        // Single mute control → flip the audio stream live (+ already persisted
+        // by the Hud). Game is the only bus emitter, so it forwards the toggle.
+        onSetMuted: (muted) => this.bus.emit("muteChange", { muted }),
       },
       this.progression
     );
@@ -337,7 +343,12 @@ export class Game {
     if (ctx) ctx.scale(dpr, dpr);
 
     this.laneSystem.resize(width, height);
-    this.speed = (height * 0.8 + 100) / this.NOTE_TRAVEL_SECONDS;
+    this.speed = (height * this.laneSystem.getStrumRatio() + 100) / this.NOTE_TRAVEL_SECONDS;
+
+    // Re-fit the prompt to the new viewport so a long phrase stays fully visible
+    // after rotation / resize (issue #426). Hud may not exist yet on the very
+    // first constructor-time resize; guard for that.
+    this.hud?.onResize();
 
     // The lane now runs FULL HEIGHT to the very top edge: notes spawn at the top
     // and are seen THROUGH the translucent header as they enter (the header is a
@@ -763,6 +774,9 @@ export class Game {
 
   private handleInput(lane: LaneIndex) {
     this.lanePressTimes[lane] = performance.now();
+    // Any lane interaction briefly resurfaces the auto-faded top-left chrome
+    // (pause/mute) so the player always has a reliable way to reach the exit.
+    this.hud?.notifyInteraction();
     if (this.state !== GameState.PLAYING) return;
     // While backgrounded-paused or holding the result linger, lane taps don't
     // play (a tap during the linger is consumed by tap-to-continue instead).

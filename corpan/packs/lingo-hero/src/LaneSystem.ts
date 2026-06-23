@@ -17,7 +17,12 @@ export class LaneSystem {
   // Visual config
   // Now relative to screen size instead of fixed pixels
   private noteRadius: number = 40;
-  private readonly STRUM_LINE_Y_RATIO = 0.8;
+  // The strum line (hit-ring circles) sits at this fraction of the canvas
+  // height. Pulled UP from the old 0.8 (issue #426) so the rings are FULLY
+  // visible (never clipped by the bottom edge) and leave a clear band below for
+  // the single compact stats row (level · score · combo). The rings' bottom is
+  // strumY + noteRadius; at 0.74 that clears the bottom band on a tall phone.
+  private readonly STRUM_LINE_Y_RATIO = 0.74;
 
   constructor(width: number, height: number) {
     this.resize(width, height);
@@ -52,6 +57,11 @@ export class LaneSystem {
 
   getStrumLineY(): number {
     return this.canvasHeight * this.STRUM_LINE_Y_RATIO;
+  }
+
+  /** The strum-line height fraction (so the fall-speed math stays in sync). */
+  getStrumRatio(): number {
+    return this.STRUM_LINE_Y_RATIO;
   }
 
   /**
