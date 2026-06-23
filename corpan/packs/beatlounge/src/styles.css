@@ -275,32 +275,49 @@
   align-items: baseline;
   gap: var(--bl-s4);
   margin-bottom: var(--bl-s5);
+  /* let children shrink instead of overflowing (the stage clips horizontal) */
+  min-width: 0;
 }
 .bl-song-name {
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-label);
   color: var(--bl-text-dim);
   letter-spacing: 0.04em;
+  /* the song name absorbs tight space first (truncates) so it never pushes the
+     voice switcher's arrows off the safe zone */
+  min-width: 0;
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-/* Home voice switcher — prev / name / next, trailing edge of the Stage head */
+/* Home voice switcher — prev / name / next, trailing edge of the Stage head.
+   The switcher is a STABLE size and never shrinks, so the arrows hold their
+   position regardless of the voice name's length. */
 .bl-voice-switch {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   margin-inline-start: auto;
   align-self: center;
+  flex: 0 0 auto;
+  max-width: 100%;
 }
 .bl-voice-arrow {
   min-width: calc(var(--bl-hit) * 0.72);
   min-height: calc(var(--bl-hit) * 0.72);
+  /* arrows never shrink or move — they are the fixed frame around the name */
+  flex: 0 0 auto;
 }
 .bl-voice-name {
   font-family: var(--bl-font-mono);
   font-size: var(--bl-fs-label);
   color: var(--bl-text);
   letter-spacing: 0.02em;
-  min-width: 7ch;
-  max-width: 16ch;
+  /* ONE stable width (not min/max) so the next arrow sits at a fixed x; long
+     names truncate with an ellipsis rather than pushing the arrow off-screen */
+  width: clamp(5ch, 20vw, 11ch);
+  flex: 0 0 auto;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
