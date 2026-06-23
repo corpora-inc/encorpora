@@ -15,7 +15,9 @@ export class InputManager {
   private listeners: InputCallback[] = [];
 
   constructor(
-    private container: HTMLElement,
+    // `container` is accepted for call-site compatibility (Game passes it) but
+    // input is resolved against the CANVAS rect, so it is intentionally unused.
+    _container: HTMLElement,
     private canvas: HTMLCanvasElement,
     private getLaneFromX: (x: number) => LaneIndex | null
   ) {

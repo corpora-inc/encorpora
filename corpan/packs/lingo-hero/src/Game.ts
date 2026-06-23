@@ -10,7 +10,7 @@ import {
 import { LaneSystem } from "./LaneSystem";
 import { Renderer } from "./Renderer";
 import { InputManager } from "./InputManager";
-import { ContentManager } from "./ContentManager";
+import { ContentManager, type Round } from "./ContentManager";
 import { createEventBus, type GameEventBus } from "./events";
 import { Hud } from "./ui/Hud";
 import { initEffects, type EffectsHandle } from "./effects";
@@ -19,6 +19,31 @@ import { initProgression, type ProgressionApi } from "./progression";
 
 const RTL_LANGS = new Set(["ar", "he", "fa", "ur"]);
 
+/**
+ * Game — "CATCH THE TRANSLATION".
+ *
+ * The player sees a phrase in the language they ALREADY KNOW (primary =
+ * stack.languages[0], also the UI language). Its translation in the TARGET
+ * (learning) language falls down the three lanes WORD BY WORD, IN ORDER. The
+ * player catches each correct next word as it crosses the strum line; on catch
+ * the target word is SPOKEN (so they hear the pronunciation) and revealed in an
+ * assembling target-phrase strip. Reconstructing + hearing the translation,
+ * prompted by the known phrase, IS the learning.
+ *
+ * Difficulty ramps with the combo: at first ONLY correct words fall (pure
+ * rhythm catch); as the player heats up, DISTRACTOR target words fall in the
+ * OTHER lanes and must be dodged.
+ *
+ * COHERENCE CONTRACT: at any instant exactly ONE catchable card carries the
+ * next correct token of the target translation. Catching it advances the
+ * sequence; tapping a distractor or letting the correct word pass is a miss.
+ *
+ * This file keeps the proven engine intact — delta-timed falling motion,
+ * canvas-relative input (InputManager), forgiving hit detection (LaneSystem),
+ * the typed event bus, and the effects/audio/hud/progression streams. Only the
+ * CONTENT MODEL (phrase → ordered words), spawn cadence, catch-in-sequence
+ * input, and the assembling strip are new.
+ */
 export class Game {
   private canvas: HTMLCanvasElement;
   private renderer: Renderer;
@@ -39,41 +64,45 @@ export class Game {
   private notes: Note[] = [];
   private score: number = 0;
   private combo: number = 0;
-  // Seconds a note takes to fall from spawn to the strum line. Higher = slower &
-  // easier — THE primary playability knob. (Was effectively ~1.3–2.7s AND
-  // frame-rate-dependent, which made it unplayable on high-refresh phones.)
-  private readonly NOTE_TRAVEL_SECONDS = 7;
-  // Note fall speed in PIXELS PER SECOND, derived from NOTE_TRAVEL_SECONDS on
-  // resize and applied with delta-time in the loop (frame-rate independent).
+  // Seconds a word takes to fall from spawn to the strum line. Higher = slower
+  // & easier — THE primary playability knob, delta-timed so it is frame-rate
+  // independent on high-refresh phones.
+  private readonly NOTE_TRAVEL_SECONDS = 6;
   private speed: number = 200;
   private lastTimestamp: number = 0;
 
   private isRunning: boolean = false;
   private fontsReady: boolean = false;
 
-  private isWaveActive: boolean = false;
-  private nextWaveTime: number = 0;
-
   // Host language context
   private stackConfig: StackConfig;
   private activeLanguage: ActiveLanguage;
   private offStackConfigChange?: () => void;
 
-  // Current active question (foreign prompt, display label)
-  private currentQuestionText: string = "";
-
-  // Identity of the target word for the CURRENT wave. Carried on
-  // noteHit/noteMiss/wave-resolved so the learning stream + UI can react.
-  // Null between waves. RAW foreign text + entryId is the stable spacing key.
+  // ---- Round ("Catch the Translation") state ------------------------------
+  private round: Round | null = null;
+  /** Display tokens of the target translation, in catch order. */
+  private roundWords: string[] = [];
+  /** How many correct words have been caught (or auto-resolved) this round. */
+  private caughtCount: number = 0;
+  /** The words revealed in the assembling strip so far. */
+  private assembled: string[] = [];
+  /** True while a correct-word card for the current step is in flight. */
+  private stepActive: boolean = false;
+  /** True iff EVERY word this round has been caught cleanly (no pass / wrong). */
+  private roundAllCaught: boolean = true;
+  /** performance.now() after which the next round/step may spawn. */
+  private nextSpawnTime: number = 0;
+  /** Fires the round's once-per-round verdict exactly once. */
+  private roundResolved: boolean = false;
+  /** True while startRound() is awaiting content, so the loop can't double-load. */
+  private loadingRound: boolean = false;
+  /** Identity of the round (whole target translation) for the learning ABI. */
   private currentWord: WordIdentity | null = null;
-  // Guards "wave-resolved" so it fires exactly once per wave even though
-  // noteMiss can fire on distractor taps before the wave truly resolves.
-  private waveResolved: boolean = false;
-  // The RAW foreign text + lang for the current prompt (for audio replay).
-  private currentSpeakText: string = "";
-  private currentSpeakLang: string = "";
+  /** Monotonic counter so note ids are unique even within the same ms. */
+  private noteSeq: number = 0;
 
-  // Track lane activation for visuals
+  // Track lane activation for visuals.
   private lanePressTimes: number[] = [0, 0, 0];
 
   constructor(
@@ -81,12 +110,18 @@ export class Game {
     hostApi: HostApi,
     initialState?: { stackConfig?: StackConfig }
   ) {
-    // Resolve host stack config (prefer explicit initialState, else query host).
-    this.stackConfig =
-      initialState?.stackConfig ?? hostApi.getStackConfig();
-    this.activeLanguage = this.resolveActiveLanguage(this.stackConfig);
+    this.stackConfig = initialState?.stackConfig ?? hostApi.getStackConfig();
 
-    // Subscribe to live stack-config changes so language/rate/textSize update.
+    this.canvas = document.createElement("canvas");
+    container.appendChild(this.canvas);
+
+    this.laneSystem = new LaneSystem(0, 0);
+    this.renderer = new Renderer(this.canvas, this.laneSystem);
+    this.contentManager = new ContentManager(hostApi);
+
+    // Resolve languages now that the ContentManager (which owns the resolution
+    // policy) exists; then subscribe to live stack-config changes.
+    this.activeLanguage = this.resolveActiveLanguage(this.stackConfig);
     if (hostApi.onStackConfigChange) {
       this.offStackConfigChange = hostApi.onStackConfigChange((next) => {
         this.stackConfig = next;
@@ -95,19 +130,11 @@ export class Game {
       });
     }
 
-    this.canvas = document.createElement("canvas");
-    container.appendChild(this.canvas);
-
-    // Core systems
-    this.laneSystem = new LaneSystem(0, 0); // resized immediately below
-    this.renderer = new Renderer(this.canvas, this.laneSystem);
-    this.contentManager = new ContentManager(hostApi);
     this.inputManager = new InputManager(container, this.canvas, (x) =>
       this.getLaneFromX(x)
     );
     this.inputManager.onInput((lane) => this.handleInput(lane));
 
-    // Event bus + stream modules (no-op stubs the streams fill in).
     this.bus = createEventBus();
     this.progression = initProgression(this.bus, hostApi);
     this.audio = initAudioHaptics(this.bus);
@@ -128,18 +155,15 @@ export class Game {
       this.laneSystem
     );
 
-    // Initial resize (DPI) + responsive handler. A ResizeObserver tracks the
-    // ACTUAL container size — critical in the app, where the game can mount
-    // before the host's container has its final size (a window 'resize' may
-    // never fire), which would otherwise leave the lane geometry stale.
     this.handleResize(container);
     window.addEventListener("resize", () => this.handleResize(container));
     if (typeof ResizeObserver !== "undefined") {
-      this.resizeObserver = new ResizeObserver(() => this.handleResize(container));
+      this.resizeObserver = new ResizeObserver(() =>
+        this.handleResize(container)
+      );
       this.resizeObserver.observe(container);
     }
 
-    // Gate the first canvas draw on fonts so 'Russo One' is loaded before paint.
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => {
         this.fontsReady = true;
@@ -153,45 +177,46 @@ export class Game {
   }
 
   /**
-   * Resolve the active target language from the host stack config.
-   * Picks the first non-English entry the user configured; falls back to the
-   * first language, then to "es". Carries rate/textSize/romanization through.
+   * Resolve the resolved active TARGET (learning) language + the player's
+   * primary (known/UI) language from the host stack. primary = languages[0];
+   * target = the first non-primary language (with the single-language
+   * fallbacks the ContentManager uses). `code` is the TARGET language — the one
+   * whose words fall and get spoken.
    */
   private resolveActiveLanguage(cfg: StackConfig): ActiveLanguage {
-    const langs = cfg.languages ?? [];
-    const code = langs.find((l) => l !== "en") ?? langs[0] ?? "es";
+    const { primary, target } = this.contentManager.resolveLanguages(
+      cfg.languages ?? []
+    );
     return {
-      code,
-      isRTL: RTL_LANGS.has(code),
+      code: target,
+      primary,
+      isRTL: RTL_LANGS.has(target),
       rate: typeof cfg.rate === "number" ? cfg.rate : 1,
       textSize: cfg.textSize ?? "medium",
       showRomanization: cfg.showRomanization ?? false,
     };
   }
 
-  /** The resolved active target language (for the UI stream). */
   getActiveLanguage(): ActiveLanguage {
     return this.activeLanguage;
   }
 
   /**
-   * Re-speak the CURRENT prompt's RAW foreign text at the host rate. Wired to
-   * the Hud audio-replay button (callback). No-op if no wave is active yet.
-   * Speaks RAW text (not display-cleaned) per the TTS contract.
+   * Re-speak the CURRENT prompt. "Hear again" = tap the prompt (the Hud wires
+   * the prompt box to this). We speak the TARGET translation (the thing being
+   * learned), not the primary phrase the player already knows. No-op between
+   * rounds. Speaks RAW text per the TTS contract.
    */
   replayPrompt(): void {
-    if (!this.currentSpeakText) return;
+    if (!this.round || !this.round.targetText) return;
     this.contentManager.speak(
-      this.currentSpeakText,
-      this.currentSpeakLang || this.activeLanguage.code,
+      this.round.targetText,
+      this.round.targetLang,
       this.activeLanguage.rate
     );
   }
 
   private getLaneFromX(x: number): LaneIndex | null {
-    // Use the SAME lane geometry the renderer draws with (centered, capped at
-    // 600px). The old naive width/3 split didn't account for the side margins,
-    // so on wide layouts the lane you tapped wasn't the lane you saw.
     return this.laneSystem.laneAtX(x);
   }
 
@@ -209,8 +234,6 @@ export class Game {
     if (ctx) ctx.scale(dpr, dpr);
 
     this.laneSystem.resize(width, height);
-    // px/sec so a note covers spawn(-100)→strum(0.8·H) in NOTE_TRAVEL_SECONDS,
-    // independent of canvas size and device refresh rate.
     this.speed = (height * 0.8 + 100) / this.NOTE_TRAVEL_SECONDS;
   }
 
@@ -220,36 +243,32 @@ export class Game {
   }
 
   private async startGame(mode: GameMode) {
-    // Prime TTS on user gesture (important for mobile web).
-    this.contentManager.speak(" ", "en", this.activeLanguage.rate);
+    // Prime TTS on the user gesture (important for mobile web).
+    this.contentManager.speak(" ", this.activeLanguage.primary, this.activeLanguage.rate);
 
     this.state = GameState.PLAYING;
     this.mode = mode;
     this.score = 0;
     this.combo = 0;
     this.notes = [];
-    this.isWaveActive = false;
-    this.nextWaveTime = 0;
-    this.currentQuestionText = "";
+    this.round = null;
+    this.roundWords = [];
+    this.caughtCount = 0;
+    this.assembled = [];
+    this.stepActive = false;
+    this.nextSpawnTime = 0;
 
     this.bus.emit("gameStart", { mode, language: this.activeLanguage });
-    // Reset HUD counters via the bus contract.
     this.bus.emit("scoreChange", { value: 0, delta: 0 });
     this.bus.emit("comboChange", { value: 0, previous: 0 });
 
     try {
-      await this.spawnWave();
+      await this.startRound();
     } catch (e) {
-      console.error("Failed initial spawn", e);
+      console.error("Failed initial round", e);
     }
   }
 
-  /**
-   * End the current run: flips to GAME_OVER and emits the gameOver event (the
-   * Hud shows the game-over panel off this). No mode currently triggers it
-   * automatically (endless play); exposed so a future game-over condition or
-   * the integrator can call it. The bus event is the contract streams react to.
-   */
   gameOver() {
     if (this.state !== GameState.PLAYING) return;
     this.state = GameState.GAME_OVER;
@@ -257,126 +276,154 @@ export class Game {
   }
 
   /**
-   * Clean text for DISPLAY ONLY. Strips parenthetical glosses and trims; for
-   * long comma-listed glosses keep the first sense. Title-casing is applied
-   * ONLY to Latin-script ASCII text (never to foreign scripts). The RAW entry
-   * text is what gets spoken — see spawnWave / contentManager.speak.
+   * Clean a phrase for DISPLAY at the prompt. Strips parenthetical glosses and,
+   * for long comma-listed glosses, keeps the first sense. The TARGET words are
+   * NOT cleaned this way (they fall verbatim so the assembled translation is
+   * faithful), only the primary-language prompt label.
    */
-  private cleanDisplay(text: string): string {
+  private cleanPrompt(text: string): string {
     let clean = text.replace(/\s*\(.*?\)\s*/g, "").trim();
-
-    if (clean.length > 20 && clean.includes(",")) {
+    if (clean.length > 28 && clean.includes(",")) {
       clean = clean.split(",")[0].trim();
     }
-
-    // Title-case the first letter only for ASCII Latin text. Non-Latin scripts
-    // (ar/he/zh/ja/ko/ru/…) must be left untouched.
     if (clean.length > 0 && /^[a-z]/.test(clean)) {
       clean = clean.charAt(0).toUpperCase() + clean.slice(1);
     }
-
     return clean;
   }
 
-  private async spawnWave() {
-    this.isWaveActive = true;
-    this.waveResolved = false;
+  // -------------------------------------------------------------------------
+  // ROUND lifecycle: load a phrase, then spawn its words one step at a time.
+  // -------------------------------------------------------------------------
 
+  /** Load a fresh round from content + reset per-round state, then spawn step 0. */
+  private async startRound() {
+    // Guard against the loop firing a second load while the first is in flight.
+    if (this.loadingRound) return;
+    this.loadingRound = true;
+    let round: Round;
     try {
-      const { target, distractors } = await this.contentManager.getWaveContent(
-        this.activeLanguage.code
-      );
-
-      const indices = [0, 1, 2].sort(() => Math.random() - 0.5);
-      const t0 = target.translations[0];
-
-      let speakText = ""; // RAW text fed to TTS
-      let speakLang = "";
-      let visualText = ""; // English answer shown on the target note
-      let romanization: string | undefined; // optional, host-provided
-
-      // Prefer the user's resolved active language; fall back to any non-English.
-      const foreign =
-        target.translations.find(
-          (t) => t.language_code === this.activeLanguage.code
-        ) ?? target.translations.find((t) => t.language_code !== "en");
-
-      if (foreign) {
-        // DISPLAY is cleaned; AUDIO speaks the raw entry text (decoupled).
-        this.currentQuestionText = this.cleanDisplay(foreign.text);
-        speakText = foreign.text;
-        speakLang = foreign.language_code;
-        romanization = foreign.romanization?.trim() || undefined;
-
-        const enTrans =
-          target.translations.find((t) => t.language_code === "en")?.text ||
-          "???";
-        visualText = this.cleanDisplay(enTrans);
-      } else {
-        this.currentQuestionText = this.cleanDisplay(t0?.text || "?");
-        speakText = t0?.text || "";
-        speakLang = t0?.language_code || "en";
-        romanization = t0?.romanization?.trim() || undefined;
-        visualText = this.cleanDisplay(t0?.text || "");
+      round = await this.contentManager.getRound(this.stackConfig.languages ?? []);
+      // Guard: a round must have at least one target word — retry once.
+      if (!round.targetWords.length) {
+        round = await this.contentManager.getRound(
+          this.stackConfig.languages ?? []
+        );
       }
+    } catch (e) {
+      console.error("Failed to load round", e);
+      this.loadingRound = false;
+      return;
+    }
+    this.loadingRound = false;
+    if (!round.targetWords.length) return;
 
-      // Establish the target word identity for this wave (learning ABI).
-      this.currentWord = {
-        entryId: target.entry_id,
-        foreign: speakText,
-        english: visualText,
-        romanization,
-        lang: speakLang,
-      };
-      this.currentSpeakText = speakText;
-      this.currentSpeakLang = speakLang;
+    this.round = round;
+    this.roundWords = round.targetWords;
+    this.caughtCount = 0;
+    this.assembled = [];
+    this.stepActive = false;
+    this.roundResolved = false;
+    this.roundAllCaught = true;
 
-      this.hud.setQuestion(this.currentQuestionText);
-      this.hud.setRomanization(romanization ?? "");
+    this.currentWord = {
+      entryId: round.entryId,
+      foreign: round.targetText,
+      english: this.cleanPrompt(round.promptText),
+      romanization: round.romanization,
+      lang: round.targetLang,
+    };
 
-      const targetNote: Note = {
-        id: `note-${Date.now()}-t`,
-        lane: indices[0],
-        y: -100,
-        text: visualText,
-        isTarget: true,
-        hit: false,
-        missed: false,
-        spawnTime: Date.now(),
-      };
+    this.hud.setQuestion(this.cleanPrompt(round.promptText));
+    this.hud.setRomanization(round.romanization ?? "");
+    this.hud.setAssembled([], this.roundWords.length, this.activeLanguage.isRTL);
 
-      // Speak the RAW foreign text at the host-configured rate.
-      this.contentManager.speak(speakText, speakLang, this.activeLanguage.rate);
+    this.spawnStep();
+  }
 
-      const distractorNotes = distractors.map((d, i) => {
-        const dNative = d.translations.find((t) => t.language_code === "en");
-        const dText = dNative
-          ? this.cleanDisplay(dNative.text)
-          : this.cleanDisplay(d.translations[0]?.text || "???");
+  /**
+   * Number of DISTRACTOR cards to put in the OTHER lanes for the current step.
+   * Difficulty ramp tied to the combo (gentle, gradual):
+   *   combo < 3   → 0 (Level 1: only the correct word falls — pure rhythm)
+   *   combo 3..6  → 1 distractor (probabilistically, easing in)
+   *   combo >= 7  → up to 2 distractors (dodge to catch the right one)
+   * Never exceeds the 2 free lanes, and never exceeds the available pool.
+   */
+  private distractorCountForStep(): number {
+    const pool = this.round?.distractorWords.length ?? 0;
+    if (pool === 0) return 0;
+    const c = this.combo;
+    if (c < 3) return 0;
+    if (c < 7) {
+      // Ease in: ~60% chance of a single distractor in this band.
+      return Math.random() < 0.6 ? Math.min(1, pool) : 0;
+    }
+    // Hot: usually 1, sometimes 2 (fill both free lanes).
+    const want = Math.random() < 0.45 ? 2 : 1;
+    return Math.min(want, 2, pool);
+  }
 
-        return {
-          id: `note-${Date.now()}-d-${i}`,
-          lane: indices[i + 1],
-          y: -100,
-          text: dText,
+  /**
+   * Spawn the next correct word (the catchable target) + 0..2 distractors in
+   * the OTHER lanes per the difficulty ramp. Exactly one catchable target card
+   * is in flight at a time (coherence contract).
+   */
+  private spawnStep() {
+    if (!this.round) return;
+    if (this.caughtCount >= this.roundWords.length) return;
+
+    const lanes = [0, 1, 2].sort(() => Math.random() - 0.5) as LaneIndex[];
+    const targetLane = lanes[0];
+    const seqIndex = this.caughtCount;
+    const targetWord = this.roundWords[seqIndex];
+
+    const targetNote: Note = {
+      id: `note-${Date.now()}-${this.noteSeq++}-t`,
+      lane: targetLane,
+      y: -120,
+      text: targetWord,
+      isTarget: true,
+      seqIndex,
+      hit: false,
+      missed: false,
+      spawnTime: Date.now(),
+    };
+
+    const notes: Note[] = [targetNote];
+
+    // Distractors: real target-language words NOT in this sequence, in the
+    // OTHER lanes. Drawn fresh each step so the foils vary.
+    const dCount = this.distractorCountForStep();
+    if (dCount > 0 && this.round.distractorWords.length) {
+      const pool = [...this.round.distractorWords].sort(
+        () => Math.random() - 0.5
+      );
+      for (let i = 0; i < dCount && i < lanes.length - 1; i++) {
+        const w = pool[i % pool.length];
+        if (!w) continue;
+        notes.push({
+          id: `note-${Date.now()}-${this.noteSeq++}-d${i}`,
+          lane: lanes[i + 1],
+          y: -120,
+          text: w,
           isTarget: false,
+          seqIndex: -1,
           hit: false,
           missed: false,
           spawnTime: Date.now(),
-        };
-      });
-
-      this.notes.push(targetNote, ...distractorNotes);
-    } catch (e) {
-      console.error("Failed to spawn wave", e);
-      this.isWaveActive = false;
+        });
+      }
     }
+
+    this.notes.push(...notes);
+    this.stepActive = true;
   }
 
   private setScore(value: number) {
-    const delta = value - this.score;
-    this.score = value;
-    if (delta !== 0) this.bus.emit("scoreChange", { value, delta });
+    const v = Math.max(0, Math.round(value));
+    const delta = v - this.score;
+    this.score = v;
+    if (delta !== 0) this.bus.emit("scoreChange", { value: v, delta });
   }
 
   private setCombo(value: number) {
@@ -387,15 +434,45 @@ export class Game {
   }
 
   /**
-   * Emit the single, authoritative "wave-resolved" event for the current wave.
-   * Fires at most once per wave (guarded by `waveResolved`) so the learning
-   * stream records exactly one outcome and the UI raises one feedback card.
-   * Distractor taps before resolution don't resolve the wave (the player can
-   * still hit the target), so only target-hit / target-passed call this.
+   * Reveal the next word in the assembling target strip + advance the step.
+   * `caught` true = the player caught it (score/combo handled by the caller);
+   * false = it passed or the player missed it (we still reveal it so the phrase
+   * stays coherent and teaching continues). Spawns the next step or, when the
+   * sequence is complete, resolves the round.
    */
-  private resolveWave(outcome: "correct" | "wrong" | "passed") {
-    if (this.waveResolved || !this.currentWord) return;
-    this.waveResolved = true;
+  private advanceStep(caught: boolean) {
+    if (!this.round) return;
+    const idx = this.caughtCount;
+    if (idx < this.roundWords.length) {
+      this.assembled.push(this.roundWords[idx]);
+      this.hud.setAssembled(
+        this.assembled,
+        this.roundWords.length,
+        this.activeLanguage.isRTL
+      );
+    }
+    this.caughtCount += 1;
+    this.stepActive = false;
+
+    if (this.caughtCount >= this.roundWords.length) {
+      // Sequence complete — resolve the round and queue the next one.
+      this.resolveRound(this.roundAllCaught ? "correct" : "wrong");
+      this.nextSpawnTime = performance.now() + 1100;
+      void caught;
+    } else {
+      // Brief beat between words so the catch reads as deliberate, not a stream.
+      this.nextSpawnTime = performance.now() + 320;
+    }
+  }
+
+  /**
+   * Emit the single authoritative "wave-resolved" event for the round (the Hud
+   * shows the meaning-reveal card off this; the learning stream records the
+   * outcome). Fires at most once per round.
+   */
+  private resolveRound(outcome: "correct" | "wrong" | "passed") {
+    if (this.roundResolved || !this.currentWord) return;
+    this.roundResolved = true;
     this.bus.emit("wave-resolved", {
       word: this.currentWord,
       outcome,
@@ -407,65 +484,62 @@ export class Game {
 
   private handleInput(lane: LaneIndex) {
     this.lanePressTimes[lane] = performance.now();
-
     if (this.state !== GameState.PLAYING) return;
 
     const hitNote = this.laneSystem.checkHit(lane, this.notes);
     const strumY = this.laneSystem.getStrumLineY();
     const laneX = this.laneSystem.getLaneX(lane);
 
-    // The wave's target identity (always set during an active wave). Fall back
-    // to a synthetic identity so the strongly-typed event always carries a word.
     const word: WordIdentity = this.currentWord ?? {
       entryId: -1,
-      foreign: this.currentSpeakText,
+      foreign: this.round?.targetText ?? "",
       english: "",
-      lang: this.currentSpeakLang || this.activeLanguage.code,
+      lang: this.activeLanguage.code,
     };
 
-    if (hitNote) {
-      if (hitNote.isTarget) {
-        hitNote.hit = true;
-        hitNote.hitTime = performance.now();
-        const points = 100 + this.combo * 10;
-        this.setScore(this.score + points);
-        this.setCombo(this.combo + 1);
-        this.bus.emit("noteHit", {
-          lane,
-          x: laneX,
-          y: strumY,
-          combo: this.combo,
-          points,
-          mode: this.mode,
-          word,
-        });
-        this.resolveWave("correct");
+    if (hitNote && hitNote.isTarget) {
+      // CAUGHT the correct next word.
+      hitNote.hit = true;
+      hitNote.hitTime = performance.now();
+      const points = 100 + this.combo * 10;
+      this.setScore(this.score + points);
+      this.setCombo(this.combo + 1);
 
-        if (this.mode === GameMode.PRACTICE) {
-          this.notes.forEach((n) => {
-            if (!n.hit && !n.isTarget) n.hit = true;
-          });
-          this.isWaveActive = false;
-          this.nextWaveTime = performance.now() + 1000;
-        }
-      } else {
-        hitNote.hit = true;
-        this.setCombo(0);
-        this.setScore(Math.max(0, this.score - 50));
-        this.bus.emit("noteMiss", {
-          lane,
-          x: laneX,
-          y: strumY,
-          reason: "wrong",
-          mode: this.mode,
-          word,
-        });
-        // A wrong distractor tap does NOT end the wave (preserves prior feel):
-        // the target keeps falling and the player can still hit it. The wave
-        // resolves only when the target is hit ("correct") or passes
-        // ("passed", emitted from the loop). So no resolveWave() here.
-      }
+      // SPEAK the caught TARGET word so the player hears its pronunciation.
+      this.contentManager.speak(
+        hitNote.text,
+        this.activeLanguage.code,
+        this.activeLanguage.rate
+      );
+
+      this.bus.emit("noteHit", {
+        lane,
+        x: laneX,
+        y: strumY,
+        combo: this.combo,
+        points,
+        mode: this.mode,
+        word,
+      });
+
+      this.advanceStep(true);
+    } else if (hitNote && !hitNote.isTarget) {
+      // Tapped a DISTRACTOR — miss/penalty, combo breaks. The correct word
+      // keeps falling; the player can still catch it.
+      hitNote.hit = true;
+      this.roundAllCaught = false;
+      this.setCombo(0);
+      this.setScore(this.score - 40);
+      this.bus.emit("noteMiss", {
+        lane,
+        x: laneX,
+        y: strumY,
+        reason: "wrong",
+        mode: this.mode,
+        word,
+      });
     } else {
+      // Empty lane tap — a whiffed catch breaks the combo (no point penalty).
       this.setCombo(0);
       this.bus.emit("noteMiss", {
         lane,
@@ -481,76 +555,76 @@ export class Game {
   private loop(timestamp: number) {
     if (!this.isRunning) return;
 
-    // Frame-rate-independent timestep (clamped so a backgrounded tab resuming
-    // can't teleport notes through the strum line).
     const dt = this.lastTimestamp
       ? Math.min(0.05, (timestamp - this.lastTimestamp) / 1000)
       : 0;
     this.lastTimestamp = timestamp;
 
     if (this.state === GameState.PLAYING) {
-      // 1. Spawning
-      if (this.mode === GameMode.PRACTICE) {
-        if (!this.isWaveActive && timestamp > this.nextWaveTime) {
-          this.spawnWave();
+      // 1. SPAWNING — step / round cadence.
+      if (!this.round) {
+        // No active round (post-resolve gap): start the next one when due.
+        if (timestamp > this.nextSpawnTime) {
+          this.startRound();
         }
-      } else {
-        if (timestamp > this.nextWaveTime) {
-          this.spawnWave();
-          // Calm, confidence-building cadence: a fresh wave every 5.5s, easing to
-          // a 3.5s floor as the score climbs. (Was as low as ~1.2s.)
-          const interval = Math.max(3500, 5500 - this.score * 3);
-          this.nextWaveTime = timestamp + interval;
+      } else if (
+        this.roundResolved &&
+        this.notes.every((n) => n.hit || n.missed)
+      ) {
+        // Round resolved + board cleared: queue the next round.
+        if (timestamp > this.nextSpawnTime) {
+          this.round = null;
+          this.startRound();
         }
+      } else if (
+        !this.stepActive &&
+        !this.roundResolved &&
+        this.caughtCount < this.roundWords.length &&
+        timestamp > this.nextSpawnTime
+      ) {
+        this.spawnStep();
       }
 
-      // 2. Physics / Movement
+      // 2. PHYSICS — delta-timed falling motion (the hero).
       const boundsHeight = this.canvas.clientHeight;
       const strumY = this.laneSystem.getStrumLineY();
+      const passLine = strumY + this.laneSystem.getNoteRadius() * 2.2;
 
       this.notes.forEach((note) => {
         note.y += this.speed * dt;
 
-        if (note.y > boundsHeight + 100) {
-          note.missed = true;
-        }
+        if (note.y > boundsHeight + 120) note.missed = true;
 
-        if (
-          note.isTarget &&
-          note.y > strumY + this.laneSystem.getNoteRadius() * 2.2 &&
-          !note.hit &&
-          !note.missed
-        ) {
+        if (note.isTarget && note.y > passLine && !note.hit && !note.missed) {
+          // The correct word sailed past the strum unhit → a miss. Combo
+          // breaks; we reveal the word anyway (assembling strip) and advance so
+          // the phrase stays coherent and the player keeps learning.
+          note.missed = true;
+          this.roundAllCaught = false;
           this.setCombo(0);
-          const passedWord: WordIdentity = this.currentWord ?? {
-            entryId: -1,
-            foreign: this.currentSpeakText,
-            english: note.text,
-            lang: this.currentSpeakLang || this.activeLanguage.code,
-          };
           this.bus.emit("noteMiss", {
             lane: note.lane,
             x: this.laneSystem.getLaneX(note.lane),
             y: strumY,
             reason: "passed",
             mode: this.mode,
-            word: passedWord,
+            word:
+              this.currentWord ?? {
+                entryId: -1,
+                foreign: this.round?.targetText ?? "",
+                english: note.text,
+                lang: this.activeLanguage.code,
+              },
           });
-          this.resolveWave("passed");
-
-          if (this.mode === GameMode.PRACTICE) {
-            this.isWaveActive = false;
-            this.nextWaveTime = timestamp + 1000;
-          }
+          this.advanceStep(false);
         }
       });
 
       this.notes = this.notes.filter(
-        (n) => !n.missed && !(n.hit && n.y > boundsHeight)
+        (n) => !(n.missed && n.y > strumY) && !(n.hit && n.y > boundsHeight)
       );
     }
 
-    // Gate first paint on fonts being ready (avoid FOUT in canvas text).
     if (this.fontsReady) {
       this.renderer.clear();
 
@@ -563,7 +637,6 @@ export class Game {
       this.renderer.drawLanes(activeLanes);
       this.renderer.drawNotes(this.notes);
 
-      // Optional effects-stream paint hook (no-op until effects stream fills it).
       this.effects.render?.(now);
     }
 

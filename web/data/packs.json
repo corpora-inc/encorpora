@@ -157,7 +157,7 @@
   {
     "id": "lingo_hero",
     "name": "Lingo Hero",
-    "description": "A three-lane rhythm game: hear a word in the language you're learning, then strum the lane with the right English answer as the notes fall. Combos, score multipliers, Practice and Blitz modes.",
+    "description": "Catch the translation. A phrase you already know sits at the top; its translation in the language you're learning falls word-by-word down three lanes. Catch each word in order, hear it spoken, and rebuild the phrase. Distractor words ramp in as your combo climbs.",
     "status": "prototype",
     "listed": true,
     "manifestUrl": "/corpan/packs/lingo-hero/manifest.json",
@@ -190,7 +190,7 @@
       "games"
     ],
     "kidFriendly": true,
-    "tagline": "Feel the beat, learn the words. Strum the right answer as it falls."
+    "tagline": "Catch the translation, word by word."
   },
   {
     "id": "teletron",

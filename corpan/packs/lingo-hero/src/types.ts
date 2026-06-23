@@ -21,11 +21,21 @@ export enum LaneIndex {
 export interface Note {
   id: string;
   lane: LaneIndex;
-  y: number;      // Current vertical position (0 to 1, or pixels)
-  text: string;   // The translation text
-  isTarget: boolean; // Is this the correct answer?
-  hit: boolean;   // Has it been hit?
-  missed: boolean; // Did it pass the line without hit?
+  y: number;      // Current vertical position in canvas pixels
+  text: string;   // The single TARGET-language word printed on the card
+  /**
+   * True iff this card carries the NEXT word the player must catch (the correct
+   * next token of the target translation). In "Catch the Translation" exactly
+   * one such card is catchable at a time. Distractor cards have isTarget=false.
+   */
+  isTarget: boolean;
+  /**
+   * Index of this word in the target translation sequence (target cards only;
+   * -1 for distractors). Lets the loop verify catch-in-order.
+   */
+  seqIndex: number;
+  hit: boolean;   // Has it been caught/tapped?
+  missed: boolean; // Did it pass the line without a catch?
   spawnTime: number;
   hitTime?: number;
 }
@@ -53,8 +63,14 @@ export interface GameConfig {
 // hostApi.getStackConfig().languages (first non-English entry, falling back to
 // the first entry). `isRTL` is true for ar/he/fa/ur so the UI can mirror.
 export interface ActiveLanguage {
-  /** The target language being quizzed (the foreign prompt), e.g. "es". */
+  /** The TARGET (learning) language whose words fall + get spoken, e.g. "es". */
   code: string;
+  /**
+   * The PRIMARY language the player already knows (stack.languages[0]) — also
+   * the UI language. The prompt phrase is shown in this language and is never
+   * required to be spoken aloud.
+   */
+  primary: string;
   /** True for right-to-left scripts: ar, he, fa, ur. */
   isRTL: boolean;
   /** TTS playback rate from stack config (0..1+), pass-through to speak(). */

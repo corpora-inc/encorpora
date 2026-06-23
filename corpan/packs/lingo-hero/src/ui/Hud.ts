@@ -58,7 +58,8 @@ export class Hud {
   private gameOverScreen: HTMLElement;
   private questionBox: HTMLElement;
   private romanizationEl: HTMLElement;
-  private replayBtn: HTMLElement;
+  private instructionEl: HTMLElement;
+  private assembledEl: HTMLElement;
   private feedbackCard: HTMLElement;
   private masteryEl: HTMLElement;
   private scoreEl: HTMLElement;
@@ -96,7 +97,7 @@ export class Hud {
         <div class="brand">
           <p class="brand-kicker">Rhythm · Language</p>
           <h1 class="logo-title">Lingo<span class="accent"> Hero</span></h1>
-          <p class="brand-tagline">Feel the beat. Learn the words.</p>
+          <p class="brand-tagline">Catch the translation, word by word.</p>
         </div>
         <div class="menu-actions">
           <button class="menu-btn practice" id="btn-practice" type="button">
@@ -121,14 +122,17 @@ export class Hud {
       <div class="hud hidden" id="hud">
         <div class="top-bar">
           <div class="prompt-stack">
-            <div class="question-box" id="question-box" aria-live="polite"></div>
-            <!-- (a) romanization line under the foreign prompt -->
+            <!-- One clear instruction cue. -->
+            <p class="lh-instruction" id="lh-instruction">Catch the translation</p>
+            <!-- The PROMPT in the language you already know. Tap it to hear the
+                 target translation again ("hear again" = tap the prompt). -->
+            <button class="question-box" id="question-box" type="button"
+                    aria-live="polite" aria-label="Tap to hear the translation"></button>
+            <!-- (a) romanization line under the prompt -->
             <div class="romanization-line" id="romanization-line" aria-live="polite" hidden></div>
+            <!-- The target-phrase strip that ASSEMBLES as words are caught. -->
+            <div class="lh-assemble" id="lh-assemble" aria-live="polite" hidden></div>
           </div>
-          <!-- (b) audio-replay button: re-speaks the current prompt -->
-          <button class="replay-btn" id="replay-btn" type="button" aria-label="Replay audio" hidden>
-            <span class="replay-icon" aria-hidden="true">&#128266;</span>
-          </button>
         </div>
         <!-- (d) progress / mastery readout slot -->
         <div class="mastery-readout" id="mastery-readout" aria-live="polite" hidden></div>
@@ -183,7 +187,8 @@ export class Hud {
     this.gameOverScreen = this.root.querySelector("#game-over")!;
     this.questionBox = this.root.querySelector("#question-box")!;
     this.romanizationEl = this.root.querySelector("#romanization-line")!;
-    this.replayBtn = this.root.querySelector("#replay-btn")!;
+    this.instructionEl = this.root.querySelector("#lh-instruction")!;
+    this.assembledEl = this.root.querySelector("#lh-assemble")!;
     this.feedbackCard = this.root.querySelector("#feedback-card")!;
     this.masteryEl = this.root.querySelector("#mastery-readout")!;
     this.scoreEl = this.root.querySelector("#score")!;
@@ -214,10 +219,12 @@ export class Hud {
       window.dispatchEvent(new CustomEvent("corpan:exit"))
     );
 
-    // (b) Wire the audio-replay button only if the host provided a callback.
+    // "Hear again" = tap the PROMPT. There is no second speaker button (one
+    // clear audio control only — the mute toggle). Wired iff the host provided
+    // a replay callback.
     if (this.callbacks.onReplayPrompt) {
-      this.replayBtn.hidden = false;
-      this.bindButton("#replay-btn", () => this.callbacks.onReplayPrompt!());
+      this.questionBox.classList.add("is-tappable");
+      this.bindButton("#question-box", () => this.callbacks.onReplayPrompt!());
     }
 
     this.subscribe();
@@ -247,13 +254,44 @@ export class Hud {
     this.romanizationEl.hidden = t.length === 0;
   }
 
+  /** Set the one-line instruction cue (e.g. "Catch the translation"). */
+  setInstruction(text: string): void {
+    this.instructionEl.textContent = text;
+  }
+
   /**
-   * (b) Programmatic show/hide of the replay button (e.g. hide between waves).
-   * The button is auto-shown at construction iff an onReplayPrompt callback
-   * was provided; this lets the ui stream toggle it without re-wiring.
+   * Render the ASSEMBLING target-phrase strip: `words` are the target words
+   * caught so far (in order); `total` is the full word count so empty slots can
+   * show as placeholders. Pass an empty array to reset to all-placeholders.
+   * RTL targets render right-to-left.
    */
-  setReplayEnabled(enabled: boolean): void {
-    this.replayBtn.hidden = !enabled || !this.callbacks.onReplayPrompt;
+  setAssembled(words: string[], total: number, isRTL = false): void {
+    const n = Math.max(total, words.length);
+    if (n === 0) {
+      this.assembledEl.hidden = true;
+      this.assembledEl.innerHTML = "";
+      return;
+    }
+    this.assembledEl.dir = isRTL ? "rtl" : "ltr";
+    const chips: string[] = [];
+    for (let i = 0; i < n; i++) {
+      if (i < words.length) {
+        chips.push(
+          `<span class="lh-chip filled" dir="auto">${this.escape(words[i])}</span>`
+        );
+      } else {
+        chips.push(`<span class="lh-chip empty" aria-hidden="true"></span>`);
+      }
+    }
+    this.assembledEl.innerHTML = chips.join("");
+    this.assembledEl.hidden = false;
+    // Pop the most-recently-revealed chip.
+    const last = this.assembledEl.querySelector(".lh-chip.filled:last-of-type");
+    if (last) {
+      last.classList.remove("just-in");
+      void (last as HTMLElement).offsetWidth;
+      last.classList.add("just-in");
+    }
   }
 
   /**
@@ -381,6 +419,8 @@ export class Hud {
         // Reset transient learning slots + run tally for a fresh run.
         this.hideFeedback();
         this.setRomanization("");
+        this.setAssembled([], 0);
+        this.setInstruction("Catch the translation");
         this.runSeen = 0;
         this.runCorrect = 0;
         this.refreshMastery();
