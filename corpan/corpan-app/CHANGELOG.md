@@ -7,6 +7,13 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Voice picker "Select all" is now a toggle.** When every available voice in
+  every learning language is already selected, the onboarding/settings voice
+  picker button flips to "Deselect all" (with an `X` icon) and clears the
+  selection; otherwise it selects all as before. New `settings.deselectAll`
+  locale key added across all locales.
+
 ### Security
 - **Content-pack installer path-traversal hardening (native).** `pack_id` is
   now strictly validated (`validate_pack_id`: `[A-Za-z0-9._-]` only; rejects
