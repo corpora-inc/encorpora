@@ -1,0 +1,4258 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_olafur_egilsson",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Note to the Reader",
+      "text_markdown": "A Note to the Reader"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is a true story, but it is not told from the pirate's point of view.",
+      "text_markdown": "This is a true story, but it is not told from the pirate's point of view.",
+      "tts": {
+        "text": "This is a true story, but it is not told from the pirate's point of view.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is told from the side of those who were taken.",
+      "text_markdown": "It is told from the side of those who were taken.",
+      "tts": {
+        "text": "It is told from the side of those who were taken.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most pirate stories celebrate daring raids and treasure.",
+      "text_markdown": "Most pirate stories celebrate daring raids and treasure.",
+      "tts": {
+        "text": "Most pirate stories celebrate daring raids and treasure.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "This story is about what happened to the people left behind in the smoke.",
+      "text_markdown": "This story is about what happened to the people left behind in the smoke.",
+      "tts": {
+        "text": "This story is about what happened to the people left behind in the smoke.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer of 1627, pirates from North Africa sailed all the way to Iceland.",
+      "text_markdown": "In the summer of 1627, pirates from North Africa sailed all the way to Iceland.",
+      "tts": {
+        "text": "In the summer of sixteen twenty-seven, pirates from North Africa sailed all the way to Iceland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They captured nearly four hundred people and carried them across the sea to be sold as slaves.",
+      "text_markdown": "They captured nearly four hundred people and carried them across the sea to be sold as slaves.",
+      "tts": {
+        "text": "They captured nearly four hundred people and carried them across the sea to be sold as slaves.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "One of those captives was a pastor named Ólafur Egilsson.",
+      "text_markdown": "One of those captives was a pastor named Ólafur Egilsson.",
+      "tts": {
+        "text": "One of those captives was a pastor named Ólafur Egilsson.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He wrote a book about what he saw, what he suffered, and what he lost.",
+      "text_markdown": "He wrote a book about what he saw, what he suffered, and what he lost.",
+      "tts": {
+        "text": "He wrote a book about what he saw, what he suffered, and what he lost.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is his story.",
+      "text_markdown": "This is his story.",
+      "tts": {
+        "text": "This is his story.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It belongs in a book about pirates because piracy was never just about the pirates.",
+      "text_markdown": "It belongs in a book about pirates because piracy was never just about the pirates.",
+      "tts": {
+        "text": "It belongs in a book about pirates because piracy was never just about the pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It was always, also, about the people they hurt.",
+      "text_markdown": "It was always, also, about the people they hurt.",
+      "tts": {
+        "text": "It was always, also, about the people they hurt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Westman Islands",
+      "text_markdown": "The Westman Islands"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Far off the southern coast of Iceland, a cluster of small volcanic islands rises out of the North Atlantic.",
+      "text_markdown": "Far off the southern coast of Iceland, a cluster of small volcanic islands rises out of the North Atlantic.",
+      "tts": {
+        "text": "Far off the southern coast of Iceland, a cluster of small volcanic islands rises out of the North Atlantic.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Icelanders call them Vestmannaeyjar, the Westman Islands.",
+      "text_markdown": "The Icelanders call them Vestmannaeyjar, the Westman Islands.",
+      "tts": {
+        "text": "The Icelanders call them Vestmannaeyjar, the Westman Islands.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They are among the most isolated communities in all of Europe.",
+      "text_markdown": "They are among the most isolated communities in all of Europe.",
+      "tts": {
+        "text": "They are among the most isolated communities in all of Europe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The largest island is called Heimaey, and it is the only one that has ever been permanently settled.",
+      "text_markdown": "The largest island is called Heimaey, and it is the only one that has ever been permanently settled.",
+      "tts": {
+        "text": "The largest island is called Heimaey, and it is the only one that has ever been permanently settled.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Even Heimaey is small, barely five kilometers across, with steep cliffs on almost every side.",
+      "text_markdown": "Even Heimaey is small, barely five kilometers across, with steep cliffs on almost every side.",
+      "tts": {
+        "text": "Even Heimaey is small, barely five kilometers across, with steep cliffs on almost every side.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The islands were formed by volcanic eruptions on the ocean floor.",
+      "text_markdown": "The islands were formed by volcanic eruptions on the ocean floor.",
+      "tts": {
+        "text": "The islands were formed by volcanic eruptions on the ocean floor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The rock is dark basalt, and the cliffs drop straight into crashing surf.",
+      "text_markdown": "The rock is dark basalt, and the cliffs drop straight into crashing surf.",
+      "tts": {
+        "text": "The rock is dark basalt, and the cliffs drop straight into crashing surf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In summer, millions of seabirds nest on the ledges.",
+      "text_markdown": "In summer, millions of seabirds nest on the ledges.",
+      "tts": {
+        "text": "In summer, millions of seabirds nest on the ledges.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In winter, storms batter the islands for weeks at a time.",
+      "text_markdown": "In winter, storms batter the islands for weeks at a time.",
+      "tts": {
+        "text": "In winter, storms batter the islands for weeks at a time.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Life on the Edge of the World",
+      "text_markdown": "Life on the Edge of the World"
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the early 1600s, about five hundred people lived on Heimaey.",
+      "text_markdown": "In the early 1600s, about five hundred people lived on Heimaey.",
+      "tts": {
+        "text": "In the early sixteen hundreds, about five hundred people lived on Heimaey.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They survived by fishing, raising sheep, and collecting seabird eggs from the cliffs.",
+      "text_markdown": "They survived by fishing, raising sheep, and collecting seabird eggs from the cliffs.",
+      "tts": {
+        "text": "They survived by fishing, raising sheep, and collecting seabird eggs from the cliffs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The islanders spoke Icelandic, a language that had changed little since the time of the Vikings.",
+      "text_markdown": "The islanders spoke Icelandic, a language that had changed little since the time of the Vikings.",
+      "tts": {
+        "text": "The islanders spoke Icelandic, a language that had changed little since the time of the Vikings.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They were Lutherans, and their church was the center of community life.",
+      "text_markdown": "They were Lutherans, and their church was the center of community life.",
+      "tts": {
+        "text": "They were Lutherans, and their church was the center of community life.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Iceland was ruled by the Kingdom of Denmark, which controlled all trade through a strict monopoly.",
+      "text_markdown": "Iceland was ruled by the Kingdom of Denmark, which controlled all trade through a strict monopoly.",
+      "tts": {
+        "text": "Iceland was ruled by the Kingdom of Denmark, which controlled all trade through a strict monopoly.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Only Danish merchants could buy and sell goods, and the Icelanders had very little contact with the outside world.",
+      "text_markdown": "Only Danish merchants could buy and sell goods, and the Icelanders had very little contact with the outside world.",
+      "tts": {
+        "text": "Only Danish merchants could buy and sell goods, and the Icelanders had very little contact with the outside world.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Little Ice Age",
+      "text_markdown": "The Little Ice Age"
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The 1600s were part of a long cold period that historians call the Little Ice Age.",
+      "text_markdown": "The 1600s were part of a long cold period that historians call the Little Ice Age.",
+      "tts": {
+        "text": "The sixteen hundreds were part of a long cold period that historians call the Little Ice Age.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In Iceland, sea ice sometimes surrounded the island for months, blocking ships and killing livestock.",
+      "text_markdown": "In Iceland, sea ice sometimes surrounded the island for months, blocking ships and killing livestock.",
+      "tts": {
+        "text": "In Iceland, sea ice sometimes surrounded the island for months, blocking ships and killing livestock.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On the Westman Islands, the growing season was too short for grain.",
+      "text_markdown": "On the Westman Islands, the growing season was too short for grain.",
+      "tts": {
+        "text": "On the Westman Islands, the growing season was too short for grain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The people relied on the sea, and when storms prevented fishing, they went hungry.",
+      "text_markdown": "The people relied on the sea, and when storms prevented fishing, they went hungry.",
+      "tts": {
+        "text": "The people relied on the sea, and when storms prevented fishing, they went hungry.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "A Peaceful and Vulnerable Place",
+      "text_markdown": "A Peaceful and Vulnerable Place"
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Despite these hardships, the Westman Islands were peaceful.",
+      "text_markdown": "Despite these hardships, the Westman Islands were peaceful.",
+      "tts": {
+        "text": "Despite these hardships, the Westman Islands were peaceful.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "There were no soldiers, no fort, no wall, and no harbor defense.",
+      "text_markdown": "There were no soldiers, no fort, no wall, and no harbor defense.",
+      "tts": {
+        "text": "There were no soldiers, no fort, no wall, and no harbor defense.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The islanders had no weapons beyond knives and the tools of their trades.",
+      "text_markdown": "The islanders had no weapons beyond knives and the tools of their trades.",
+      "tts": {
+        "text": "The islanders had no weapons beyond knives and the tools of their trades.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nobody expected an attack.",
+      "text_markdown": "Nobody expected an attack.",
+      "tts": {
+        "text": "Nobody expected an attack.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pirates belonged to stories about distant seas.",
+      "text_markdown": "Pirates belonged to stories about distant seas.",
+      "tts": {
+        "text": "Pirates belonged to stories about distant seas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The North Atlantic seemed too cold, too rough, and too far from anywhere valuable.",
+      "text_markdown": "The North Atlantic seemed too cold, too rough, and too far from anywhere valuable.",
+      "tts": {
+        "text": "The North Atlantic seemed too cold, too rough, and too far from anywhere valuable.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The only defense the islands had was their remoteness.",
+      "text_markdown": "The only defense the islands had was their remoteness.",
+      "tts": {
+        "text": "The only defense the islands had was their remoteness.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "But something was changing in the world that would bring danger to even this forgotten corner of the sea.",
+      "text_markdown": "But something was changing in the world that would bring danger to even this forgotten corner of the sea.",
+      "tts": {
+        "text": "But something was changing in the world that would bring danger to even this forgotten corner of the sea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Barbary Corsairs Reach North",
+      "text_markdown": "The Barbary Corsairs Reach North"
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Along the coast of North Africa, powerful port cities thrived on maritime raiding.",
+      "text_markdown": "Along the coast of North Africa, powerful port cities thrived on maritime raiding.",
+      "tts": {
+        "text": "Along the coast of North Africa, powerful port cities thrived on maritime raiding.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algiers, Tunis, and Salé were home to the Barbary corsairs, who operated with the support of the Ottoman Empire.",
+      "text_markdown": "Algiers, Tunis, and Salé were home to the Barbary corsairs, who operated with the support of the Ottoman Empire.",
+      "tts": {
+        "text": "Algiers, Tunis, and Salé were home to the Barbary corsairs, who operated with the support of the Ottoman Empire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For centuries, the corsairs had raided Spain, Italy, and France, capturing people and selling them into slavery.",
+      "text_markdown": "For centuries, the corsairs had raided Spain, Italy, and France, capturing people and selling them into slavery.",
+      "tts": {
+        "text": "For centuries, the corsairs had raided Spain, Italy, and France, capturing people and selling them into slavery.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The slave markets of Algiers were famous throughout the Mediterranean.",
+      "text_markdown": "The slave markets of Algiers were famous throughout the Mediterranean.",
+      "tts": {
+        "text": "The slave markets of Algiers were famous throughout the Mediterranean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the early 1600s, European renegades who joined the corsairs brought new ships, navigation skills, and knowledge of the northern seas.",
+      "text_markdown": "In the early 1600s, European renegades who joined the corsairs brought new ships, navigation skills, and knowledge of the northern seas.",
+      "tts": {
+        "text": "In the early sixteen hundreds, European renegades who joined the corsairs brought new ships, navigation skills, and knowledge of the northern seas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The corsairs began venturing into the Atlantic, raiding England, Ireland, and even Iceland.",
+      "text_markdown": "The corsairs began venturing into the Atlantic, raiding England, Ireland, and even Iceland.",
+      "tts": {
+        "text": "The corsairs began venturing into the Atlantic, raiding England, Ireland, and even Iceland.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "One of the most important renegades was a Dutchman who had reinvented himself as a Barbary captain.",
+      "text_markdown": "One of the most important renegades was a Dutchman who had reinvented himself as a Barbary captain.",
+      "tts": {
+        "text": "One of the most important renegades was a Dutchman who had reinvented himself as a Barbary captain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Westman Islands",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The isolation that had protected the Westman Islands for centuries was about to end.",
+      "text_markdown": "The isolation that had protected the Westman Islands for centuries was about to end.",
+      "tts": {
+        "text": "The isolation that had protected the Westman Islands for centuries was about to end.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Day the Pirates Came",
+      "text_markdown": "The Day the Pirates Came"
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On a summer day in July of 1627, a fleet of ships appeared on the horizon south of Iceland.",
+      "text_markdown": "On a summer day in July of 1627, a fleet of ships appeared on the horizon south of Iceland.",
+      "tts": {
+        "text": "On a summer day in July of sixteen twenty-seven, a fleet of ships appeared on the horizon south of Iceland.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They were not Danish merchant vessels.",
+      "text_markdown": "They were not Danish merchant vessels.",
+      "tts": {
+        "text": "They were not Danish merchant vessels.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They were warships from the Barbary Coast.",
+      "text_markdown": "They were warships from the Barbary Coast.",
+      "tts": {
+        "text": "They were warships from the Barbary Coast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The fleet was led by a man the Europeans called Murat Reis the Younger.",
+      "text_markdown": "The fleet was led by a man the Europeans called Murat Reis the Younger.",
+      "tts": {
+        "text": "The fleet was led by a man the Europeans called Murat Reis the Younger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His real name was Jan Janszoon van Haarlem, and he had been born in the Dutch Republic.",
+      "text_markdown": "His real name was Jan Janszoon van Haarlem, and he had been born in the Dutch Republic.",
+      "tts": {
+        "text": "His real name was Jan Janszoon van Haarlem, and he had been born in the Dutch Republic.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was a sailor who had turned pirate, converted to Islam, and risen to become one of the most powerful corsair captains in the Atlantic.",
+      "text_markdown": "He was a sailor who had turned pirate, converted to Islam, and risen to become one of the most powerful corsair captains in the Atlantic.",
+      "tts": {
+        "text": "He was a sailor who had turned pirate, converted to Islam, and risen to become one of the most powerful corsair captains in the Atlantic.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Dutch Renegade",
+      "text_markdown": "The Dutch Renegade"
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jan Janszoon was born around 1570 in the city of Haarlem.",
+      "text_markdown": "Jan Janszoon was born around 1570 in the city of Haarlem.",
+      "tts": {
+        "text": "Jan Janszoon was born around fifteen seventy in the city of Haarlem.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He began as a Dutch privateer, licensed to attack Spanish ships during the long war between the Netherlands and Spain.",
+      "text_markdown": "He began as a Dutch privateer, licensed to attack Spanish ships during the long war between the Netherlands and Spain.",
+      "tts": {
+        "text": "He began as a Dutch privateer, licensed to attack Spanish ships during the long war between the Netherlands and Spain.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "At some point, Janszoon was captured by corsairs and taken to the port of Salé in Morocco.",
+      "text_markdown": "At some point, Janszoon was captured by corsairs and taken to the port of Salé in Morocco.",
+      "tts": {
+        "text": "At some point, Janszoon was captured by corsairs and taken to the port of Salé in Morocco.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Instead of remaining a captive, he converted to Islam, took the name Murat Reis, and proved himself a ruthless commander.",
+      "text_markdown": "Instead of remaining a captive, he converted to Islam, took the name Murat Reis, and proved himself a ruthless commander.",
+      "tts": {
+        "text": "Instead of remaining a captive, he converted to Islam, took the name Murat Reis, and proved himself a ruthless commander.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He rose to become the president of the Republic of Salé, a pirate state on the Moroccan coast.",
+      "text_markdown": "He rose to become the president of the Republic of Salé, a pirate state on the Moroccan coast.",
+      "tts": {
+        "text": "He rose to become the president of the Republic of Salé, a pirate state on the Moroccan coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "From Salé and later Algiers, he led raids across the Atlantic.",
+      "text_markdown": "From Salé and later Algiers, he led raids across the Atlantic.",
+      "tts": {
+        "text": "From Salé and later Algiers, he led raids across the Atlantic.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He even raided the town of Baltimore in Ireland in 1631, carrying off more than a hundred captives.",
+      "text_markdown": "He even raided the town of Baltimore in Ireland in 1631, carrying off more than a hundred captives.",
+      "tts": {
+        "text": "He even raided the town of Baltimore in Ireland in sixteen thirty-one, carrying off more than a hundred captives.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Route North",
+      "text_markdown": "The Route North"
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "English and Dutch renegades who joined the corsairs brought knowledge of the Atlantic winds and currents.",
+      "text_markdown": "English and Dutch renegades who joined the corsairs brought knowledge of the Atlantic winds and currents.",
+      "tts": {
+        "text": "English and Dutch renegades who joined the corsairs brought knowledge of the Atlantic winds and currents.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They knew that Iceland was almost completely undefended.",
+      "text_markdown": "They knew that Iceland was almost completely undefended.",
+      "tts": {
+        "text": "They knew that Iceland was almost completely undefended.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The slave markets of Algiers demanded a constant supply of captives.",
+      "text_markdown": "The slave markets of Algiers demanded a constant supply of captives.",
+      "tts": {
+        "text": "The slave markets of Algiers demanded a constant supply of captives.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mediterranean raiding grounds were becoming more heavily patrolled, and the corsairs needed new hunting grounds.",
+      "text_markdown": "Mediterranean raiding grounds were becoming more heavily patrolled, and the corsairs needed new hunting grounds.",
+      "tts": {
+        "text": "Mediterranean raiding grounds were becoming more heavily patrolled, and the corsairs needed new hunting grounds.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Iceland was perfect: isolated, defenseless, and ignored by the Danish authorities.",
+      "text_markdown": "Iceland was perfect: isolated, defenseless, and ignored by the Danish authorities.",
+      "tts": {
+        "text": "Iceland was perfect: isolated, defenseless, and ignored by the Danish authorities.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Raids Begin",
+      "text_markdown": "The Raids Begin"
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The corsair fleet first struck the eastern coast of Iceland, raiding small settlements.",
+      "text_markdown": "The corsair fleet first struck the eastern coast of Iceland, raiding small settlements.",
+      "tts": {
+        "text": "The corsair fleet first struck the eastern coast of Iceland, raiding small settlements.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "These initial raids were terrifying but small.",
+      "text_markdown": "These initial raids were terrifying but small.",
+      "tts": {
+        "text": "These initial raids were terrifying but small.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On July the sixteenth, the corsairs turned toward the Westman Islands.",
+      "text_markdown": "On July the sixteenth, the corsairs turned toward the Westman Islands.",
+      "tts": {
+        "text": "On July the sixteenth, the corsairs turned toward the Westman Islands.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They arrived at Heimaey under cover of early morning fog.",
+      "text_markdown": "They arrived at Heimaey under cover of early morning fog.",
+      "tts": {
+        "text": "They arrived at Heimaey under cover of early morning fog.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The islanders had heard rumors of raids but had no way to prepare.",
+      "text_markdown": "The islanders had heard rumors of raids but had no way to prepare.",
+      "tts": {
+        "text": "The islanders had heard rumors of raids but had no way to prepare.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Attack on Heimaey",
+      "text_markdown": "The Attack on Heimaey"
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The pirates landed on the eastern shore where the cliffs were lowest.",
+      "text_markdown": "The pirates landed on the eastern shore where the cliffs were lowest.",
+      "tts": {
+        "text": "The pirates landed on the eastern shore where the cliffs were lowest.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They came ashore in small boats, armed with swords, muskets, and torches.",
+      "text_markdown": "They came ashore in small boats, armed with swords, muskets, and torches.",
+      "tts": {
+        "text": "They came ashore in small boats, armed with swords, muskets, and torches.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur Egilsson was at home with his wife Ásta and their children.",
+      "text_markdown": "Ólafur Egilsson was at home with his wife Ásta and their children.",
+      "tts": {
+        "text": "Ólafur Egilsson was at home with his wife Ásta and their children.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was the island's pastor, a man of learning and faith, sixty-three years old.",
+      "text_markdown": "He was the island's pastor, a man of learning and faith, sixty-three years old.",
+      "tts": {
+        "text": "He was the island's pastor, a man of learning and faith, sixty-three years old.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The pirates moved quickly, breaking down doors and dragging people from their homes.",
+      "text_markdown": "The pirates moved quickly, breaking down doors and dragging people from their homes.",
+      "tts": {
+        "text": "The pirates moved quickly, breaking down doors and dragging people from their homes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Some islanders tried to hide in caves along the cliffs.",
+      "text_markdown": "Some islanders tried to hide in caves along the cliffs.",
+      "tts": {
+        "text": "Some islanders tried to hide in caves along the cliffs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Others scrambled over lava fields in the dark.",
+      "text_markdown": "Others scrambled over lava fields in the dark.",
+      "tts": {
+        "text": "Others scrambled over lava fields in the dark.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The raiders set fire to buildings, including the church.",
+      "text_markdown": "The raiders set fire to buildings, including the church.",
+      "tts": {
+        "text": "The raiders set fire to buildings, including the church.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ólafur later wrote that watching his church burn was one of the most painful moments of the ordeal.",
+      "text_markdown": "Ólafur later wrote that watching his church burn was one of the most painful moments of the ordeal.",
+      "tts": {
+        "text": "Ólafur later wrote that watching his church burn was one of the most painful moments of the ordeal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It was the heart of his community.",
+      "text_markdown": "It was the heart of his community.",
+      "tts": {
+        "text": "It was the heart of his community.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Capture",
+      "text_markdown": "The Capture"
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "By the end of the raid, the corsairs had captured roughly two hundred and forty people from Heimaey.",
+      "text_markdown": "By the end of the raid, the corsairs had captured roughly two hundred and forty people from Heimaey.",
+      "tts": {
+        "text": "By the end of the raid, the corsairs had captured roughly two hundred and forty people from Heimaey.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Men, women, and children were herded together on the shore.",
+      "text_markdown": "Men, women, and children were herded together on the shore.",
+      "tts": {
+        "text": "Men, women, and children were herded together on the shore.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur, Ásta, and their children were among the captives.",
+      "text_markdown": "Ólafur, Ásta, and their children were among the captives.",
+      "tts": {
+        "text": "Ólafur, Ásta, and their children were among the captives.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They were forced onto the pirate ships along with their neighbors and friends.",
+      "text_markdown": "They were forced onto the pirate ships along with their neighbors and friends.",
+      "tts": {
+        "text": "They were forced onto the pirate ships along with their neighbors and friends.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Across all the raids that summer, approximately four hundred Icelanders were taken.",
+      "text_markdown": "Across all the raids that summer, approximately four hundred Icelanders were taken.",
+      "tts": {
+        "text": "Across all the raids that summer, approximately four hundred Icelanders were taken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "For a country with a population of only about fifty thousand, this was devastating.",
+      "text_markdown": "For a country with a population of only about fifty thousand, this was devastating.",
+      "tts": {
+        "text": "For a country with a population of only about fifty thousand, this was devastating.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The corsairs set sail for the south.",
+      "text_markdown": "The corsairs set sail for the south.",
+      "tts": {
+        "text": "The corsairs set sail for the south.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Westman Islanders watched their homes disappear behind them.",
+      "text_markdown": "The Westman Islanders watched their homes disappear behind them.",
+      "tts": {
+        "text": "The Westman Islanders watched their homes disappear behind them.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Day the Pirates Came",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Most would never see Iceland again.",
+      "text_markdown": "Most would never see Iceland again.",
+      "tts": {
+        "text": "Most would never see Iceland again.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-101",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Voyage to Algiers",
+      "text_markdown": "The Voyage to Algiers"
+    },
+    {
+      "id": "ch03-102",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The ships turned south into the open Atlantic.",
+      "text_markdown": "The ships turned south into the open Atlantic.",
+      "tts": {
+        "text": "The ships turned south into the open Atlantic.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "For the captives below deck, a new kind of suffering began.",
+      "text_markdown": "For the captives below deck, a new kind of suffering began.",
+      "tts": {
+        "text": "For the captives below deck, a new kind of suffering began.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur described the voyage in detail in his book.",
+      "text_markdown": "Ólafur described the voyage in detail in his book.",
+      "tts": {
+        "text": "Ólafur described the voyage in detail in his book.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The captives were held in cramped, dark spaces with little food, little water, and no privacy.",
+      "text_markdown": "The captives were held in cramped, dark spaces with little food, little water, and no privacy.",
+      "tts": {
+        "text": "The captives were held in cramped, dark spaces with little food, little water, and no privacy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The heat grew worse as the ships sailed farther south.",
+      "text_markdown": "The heat grew worse as the ships sailed farther south.",
+      "tts": {
+        "text": "The heat grew worse as the ships sailed farther south.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Conditions Aboard",
+      "text_markdown": "Conditions Aboard"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The captives were packed tightly in the hold.",
+      "text_markdown": "The captives were packed tightly in the hold.",
+      "tts": {
+        "text": "The captives were packed tightly in the hold.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Many were seasick, the air was foul, and diseases spread quickly.",
+      "text_markdown": "Many were seasick, the air was foul, and diseases spread quickly.",
+      "tts": {
+        "text": "Many were seasick, the air was foul, and diseases spread quickly.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The corsairs treated the captives as cargo.",
+      "text_markdown": "The corsairs treated the captives as cargo.",
+      "tts": {
+        "text": "The corsairs treated the captives as cargo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They were fed just enough to stay alive.",
+      "text_markdown": "They were fed just enough to stay alive.",
+      "tts": {
+        "text": "They were fed just enough to stay alive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To the corsairs, these people were goods to be delivered to market.",
+      "text_markdown": "To the corsairs, these people were goods to be delivered to market.",
+      "tts": {
+        "text": "To the corsairs, these people were goods to be delivered to market.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur, as a pastor, tried to lead prayers and keep spirits from breaking entirely.",
+      "text_markdown": "Ólafur, as a pastor, tried to lead prayers and keep spirits from breaking entirely.",
+      "tts": {
+        "text": "Ólafur, as a pastor, tried to lead prayers and keep spirits from breaking entirely.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "But the despair was overwhelming.",
+      "text_markdown": "But the despair was overwhelming.",
+      "tts": {
+        "text": "But the despair was overwhelming.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The voyage lasted several weeks, passing along the coasts of Europe and through the Strait of Gibraltar into the Mediterranean.",
+      "text_markdown": "The voyage lasted several weeks, passing along the coasts of Europe and through the Strait of Gibraltar into the Mediterranean.",
+      "tts": {
+        "text": "The voyage lasted several weeks, passing along the coasts of Europe and through the Strait of Gibraltar into the Mediterranean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Arrival in Algiers",
+      "text_markdown": "Arrival in Algiers"
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the ships reached Algiers, the captives were brought on deck.",
+      "text_markdown": "When the ships reached Algiers, the captives were brought on deck.",
+      "tts": {
+        "text": "When the ships reached Algiers, the captives were brought on deck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "What they saw astonished them.",
+      "text_markdown": "What they saw astonished them.",
+      "tts": {
+        "text": "What they saw astonished them.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algiers was one of the largest cities on the Mediterranean coast, climbing up a steep hillside in a maze of white buildings and minarets.",
+      "text_markdown": "Algiers was one of the largest cities on the Mediterranean coast, climbing up a steep hillside in a maze of white buildings and minarets.",
+      "tts": {
+        "text": "Algiers was one of the largest cities on the Mediterranean coast, climbing up a steep hillside in a maze of white buildings and minarets.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was home to perhaps a hundred thousand people, far more than the entire population of Iceland.",
+      "text_markdown": "It was home to perhaps a hundred thousand people, far more than the entire population of Iceland.",
+      "tts": {
+        "text": "It was home to perhaps a hundred thousand people, far more than the entire population of Iceland.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For people who had spent their lives on a tiny volcanic island, the sight was impossible to comprehend.",
+      "text_markdown": "For people who had spent their lives on a tiny volcanic island, the sight was impossible to comprehend.",
+      "tts": {
+        "text": "For people who had spent their lives on a tiny volcanic island, the sight was impossible to comprehend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The noise, the heat, the crowds, the call to prayer — all of it was overwhelming.",
+      "text_markdown": "The noise, the heat, the crowds, the call to prayer — all of it was overwhelming.",
+      "tts": {
+        "text": "The noise, the heat, the crowds, the call to prayer — all of it was overwhelming.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Ottoman Algiers",
+      "text_markdown": "Ottoman Algiers"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algiers was nominally part of the Ottoman Empire but was ruled in practice by local military leaders.",
+      "text_markdown": "Algiers was nominally part of the Ottoman Empire but was ruled in practice by local military leaders.",
+      "tts": {
+        "text": "Algiers was nominally part of the Ottoman Empire but was ruled in practice by local military leaders.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Its economy was built on corsair raiding and the slave trade.",
+      "text_markdown": "Its economy was built on corsair raiding and the slave trade.",
+      "tts": {
+        "text": "Its economy was built on corsair raiding and the slave trade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historians estimate that tens of thousands of enslaved Europeans lived in the Barbary states at any given time.",
+      "text_markdown": "Historians estimate that tens of thousands of enslaved Europeans lived in the Barbary states at any given time.",
+      "tts": {
+        "text": "Historians estimate that tens of thousands of enslaved Europeans lived in the Barbary states at any given time.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Captives came from Spain, Italy, France, Portugal, England, and now Iceland.",
+      "text_markdown": "Captives came from Spain, Italy, France, Portugal, England, and now Iceland.",
+      "tts": {
+        "text": "Captives came from Spain, Italy, France, Portugal, England, and now Iceland.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The city was cosmopolitan in a way few European cities could match.",
+      "text_markdown": "The city was cosmopolitan in a way few European cities could match.",
+      "tts": {
+        "text": "The city was cosmopolitan in a way few European cities could match.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muslims, Jews, Christians, and renegades from dozens of countries lived side by side.",
+      "text_markdown": "Muslims, Jews, Christians, and renegades from dozens of countries lived side by side.",
+      "tts": {
+        "text": "Muslims, Jews, Christians, and renegades from dozens of countries lived side by side.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Slave Market",
+      "text_markdown": "The Slave Market"
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur's description of the slave market is one of the most vivid passages in his book.",
+      "text_markdown": "Ólafur's description of the slave market is one of the most vivid passages in his book.",
+      "tts": {
+        "text": "Ólafur's description of the slave market is one of the most vivid passages in his book.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Captives were taken to an open area near the harbor and examined by buyers who checked their teeth, hands, and health.",
+      "text_markdown": "Captives were taken to an open area near the harbor and examined by buyers who checked their teeth, hands, and health.",
+      "tts": {
+        "text": "Captives were taken to an open area near the harbor and examined by buyers who checked their teeth, hands, and health.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The young and strong fetched the highest prices.",
+      "text_markdown": "The young and strong fetched the highest prices.",
+      "tts": {
+        "text": "The young and strong fetched the highest prices.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Women and children were sold separately, often to different buyers.",
+      "text_markdown": "Women and children were sold separately, often to different buyers.",
+      "tts": {
+        "text": "Women and children were sold separately, often to different buyers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Families that had survived the voyage were torn apart.",
+      "text_markdown": "Families that had survived the voyage were torn apart.",
+      "tts": {
+        "text": "Families that had survived the voyage were torn apart.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur described the screaming and weeping as husbands were pulled from wives and parents watched their children led away.",
+      "text_markdown": "Ólafur described the screaming and weeping as husbands were pulled from wives and parents watched their children led away.",
+      "tts": {
+        "text": "Ólafur described the screaming and weeping as husbands were pulled from wives and parents watched their children led away.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He wrote that no words could capture the horror of that day.",
+      "text_markdown": "He wrote that no words could capture the horror of that day.",
+      "tts": {
+        "text": "He wrote that no words could capture the horror of that day.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Separation",
+      "text_markdown": "Separation"
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur and his wife Ásta were separated at the market.",
+      "text_markdown": "Ólafur and his wife Ásta were separated at the market.",
+      "tts": {
+        "text": "Ólafur and his wife Ásta were separated at the market.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Their children were taken as well.",
+      "text_markdown": "Their children were taken as well.",
+      "tts": {
+        "text": "Their children were taken as well.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For Ólafur, the separation was the worst part of captivity.",
+      "text_markdown": "For Ólafur, the separation was the worst part of captivity.",
+      "tts": {
+        "text": "For Ólafur, the separation was the worst part of captivity.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He did not know where Ásta had been taken.",
+      "text_markdown": "He did not know where Ásta had been taken.",
+      "tts": {
+        "text": "He did not know where Ásta had been taken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The uncertainty was a kind of torture that never ended.",
+      "text_markdown": "The uncertainty was a kind of torture that never ended.",
+      "tts": {
+        "text": "The uncertainty was a kind of torture that never ended.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Economy of Human Beings",
+      "text_markdown": "The Economy of Human Beings"
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Barbary slave trade was enormous.",
+      "text_markdown": "The Barbary slave trade was enormous.",
+      "tts": {
+        "text": "The Barbary slave trade was enormous.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Historians estimate that between 1530 and 1780, the corsairs enslaved more than a million Europeans.",
+      "text_markdown": "Historians estimate that between 1530 and 1780, the corsairs enslaved more than a million Europeans.",
+      "tts": {
+        "text": "Historians estimate that between fifteen thirty and seventeen eighty, the corsairs enslaved more than a million Europeans.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slavery took many forms: household service, construction, farming, or rowing in the galleys chained to an oar.",
+      "text_markdown": "Slavery took many forms: household service, construction, farming, or rowing in the galleys chained to an oar.",
+      "tts": {
+        "text": "Slavery took many forms: household service, construction, farming, or rowing in the galleys chained to an oar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Those who converted to Islam were often given more freedom, though conversion did not guarantee release.",
+      "text_markdown": "Those who converted to Islam were often given more freedom, though conversion did not guarantee release.",
+      "tts": {
+        "text": "Those who converted to Islam were often given more freedom, though conversion did not guarantee release.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For most captives, the only realistic hope was ransom.",
+      "text_markdown": "For most captives, the only realistic hope was ransom.",
+      "tts": {
+        "text": "For most captives, the only realistic hope was ransom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Religious orders like the Trinitarians specialized in negotiating releases, but the process was slow and expensive.",
+      "text_markdown": "Religious orders like the Trinitarians specialized in negotiating releases, but the process was slow and expensive.",
+      "tts": {
+        "text": "Religious orders like the Trinitarians specialized in negotiating releases, but the process was slow and expensive.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For the Icelanders, the chances were slim.",
+      "text_markdown": "For the Icelanders, the chances were slim.",
+      "tts": {
+        "text": "For the Icelanders, the chances were slim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Voyage to Algiers",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iceland was poor, Denmark showed little urgency, and communication alone took months.",
+      "text_markdown": "Iceland was poor, Denmark showed little urgency, and communication alone took months.",
+      "tts": {
+        "text": "Iceland was poor, Denmark showed little urgency, and communication alone took months.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Captivity and the Mission",
+      "text_markdown": "Captivity and the Mission"
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur spent months in Algiers as a captive.",
+      "text_markdown": "Ólafur spent months in Algiers as a captive.",
+      "tts": {
+        "text": "Ólafur spent months in Algiers as a captive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was sixty-three years old, not suited to hard labor, and his value on the slave market was low.",
+      "text_markdown": "He was sixty-three years old, not suited to hard labor, and his value on the slave market was low.",
+      "tts": {
+        "text": "He was sixty-three years old, not suited to hard labor, and his value on the slave market was low.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But he was educated, he could read and write, and he was a man of the church.",
+      "text_markdown": "But he was educated, he could read and write, and he was a man of the church.",
+      "tts": {
+        "text": "But he was educated, he could read and write, and he was a man of the church.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "That gave him a certain status even in captivity.",
+      "text_markdown": "That gave him a certain status even in captivity.",
+      "tts": {
+        "text": "That gave him a certain status even in captivity.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Chosen as Negotiator",
+      "text_markdown": "Chosen as Negotiator"
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Someone had to travel to Europe and plead the captives' case before the Danish king.",
+      "text_markdown": "Someone had to travel to Europe and plead the captives' case before the Danish king.",
+      "tts": {
+        "text": "Someone had to travel to Europe and plead the captives' case before the Danish king.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ólafur was chosen for this mission.",
+      "text_markdown": "Ólafur was chosen for this mission.",
+      "tts": {
+        "text": "Ólafur was chosen for this mission.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It was a painful assignment.",
+      "text_markdown": "It was a painful assignment.",
+      "tts": {
+        "text": "It was a painful assignment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It meant a kind of freedom, but also leaving behind everyone he loved without knowing if he would see them again.",
+      "text_markdown": "It meant a kind of freedom, but also leaving behind everyone he loved without knowing if he would see them again.",
+      "tts": {
+        "text": "It meant a kind of freedom, but also leaving behind everyone he loved without knowing if he would see them again.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He accepted because he believed it was the only chance to save his people.",
+      "text_markdown": "He accepted because he believed it was the only chance to save his people.",
+      "tts": {
+        "text": "He accepted because he believed it was the only chance to save his people.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "If he succeeded, hundreds might be freed.",
+      "text_markdown": "If he succeeded, hundreds might be freed.",
+      "tts": {
+        "text": "If he succeeded, hundreds might be freed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "If he failed, they would remain enslaved for life.",
+      "text_markdown": "If he failed, they would remain enslaved for life.",
+      "tts": {
+        "text": "If he failed, they would remain enslaved for life.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Journey Through Europe",
+      "text_markdown": "The Journey Through Europe"
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur's journey from Algiers to Copenhagen was long and difficult.",
+      "text_markdown": "Ólafur's journey from Algiers to Copenhagen was long and difficult.",
+      "tts": {
+        "text": "Ólafur's journey from Algiers to Copenhagen was long and difficult.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He traveled by ship and by land through the Mediterranean and northern Europe.",
+      "text_markdown": "He traveled by ship and by land through the Mediterranean and northern Europe.",
+      "tts": {
+        "text": "He traveled by ship and by land through the Mediterranean and northern Europe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was an elderly pastor with no money, no connections, and no influence.",
+      "text_markdown": "He was an elderly pastor with no money, no connections, and no influence.",
+      "tts": {
+        "text": "He was an elderly pastor with no money, no connections, and no influence.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He did not speak the languages of the countries he passed through.",
+      "text_markdown": "He did not speak the languages of the countries he passed through.",
+      "tts": {
+        "text": "He did not speak the languages of the countries he passed through.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He relied on the charity of strangers and letters from sympathetic clergy.",
+      "text_markdown": "He relied on the charity of strangers and letters from sympathetic clergy.",
+      "tts": {
+        "text": "He relied on the charity of strangers and letters from sympathetic clergy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Along the way, he observed the world beyond Iceland for the first time.",
+      "text_markdown": "Along the way, he observed the world beyond Iceland for the first time.",
+      "tts": {
+        "text": "Along the way, he observed the world beyond Iceland for the first time.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His descriptions are valuable to historians as an outsider's view of seventeenth-century Europe.",
+      "text_markdown": "His descriptions are valuable to historians as an outsider's view of seventeenth-century Europe.",
+      "tts": {
+        "text": "His descriptions are valuable to historians as an outsider's view of seventeenth-century Europe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Copenhagen and the Danish Court",
+      "text_markdown": "Copenhagen and the Danish Court"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When Ólafur reached Copenhagen, he described the raid, the captivity, and the suffering of his people.",
+      "text_markdown": "When Ólafur reached Copenhagen, he described the raid, the captivity, and the suffering of his people.",
+      "tts": {
+        "text": "When Ólafur reached Copenhagen, he described the raid, the captivity, and the suffering of his people.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He begged for ransom money.",
+      "text_markdown": "He begged for ransom money.",
+      "tts": {
+        "text": "He begged for ransom money.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The response was disappointing.",
+      "text_markdown": "The response was disappointing.",
+      "tts": {
+        "text": "The response was disappointing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Denmark was not wealthy, the Thirty Years' War consumed Europe, and Iceland was a distant colony.",
+      "text_markdown": "Denmark was not wealthy, the Thirty Years' War consumed Europe, and Iceland was a distant colony.",
+      "tts": {
+        "text": "Denmark was not wealthy, the Thirty Years' War consumed Europe, and Iceland was a distant colony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The king had his own expenses.",
+      "text_markdown": "The king had his own expenses.",
+      "tts": {
+        "text": "The king had his own expenses.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Committees were formed and letters were written, but funds were promised and rarely delivered.",
+      "text_markdown": "Committees were formed and letters were written, but funds were promised and rarely delivered.",
+      "tts": {
+        "text": "Committees were formed and letters were written, but funds were promised and rarely delivered.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The bureaucracy moved at its own pace while hundreds remained enslaved.",
+      "text_markdown": "The bureaucracy moved at its own pace while hundreds remained enslaved.",
+      "tts": {
+        "text": "The bureaucracy moved at its own pace while hundreds remained enslaved.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Church's Response",
+      "text_markdown": "The Church's Response"
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur also appealed to the Lutheran Church.",
+      "text_markdown": "Ólafur also appealed to the Lutheran Church.",
+      "tts": {
+        "text": "Ólafur also appealed to the Lutheran Church.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p95",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Collections were organized and sermons preached, but the amounts raised were never enough.",
+      "text_markdown": "Collections were organized and sermons preached, but the amounts raised were never enough.",
+      "tts": {
+        "text": "Collections were organized and sermons preached, but the amounts raised were never enough.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The ransom demands from Algiers were high, far more than the church or crown would pay.",
+      "text_markdown": "The ransom demands from Algiers were high, far more than the church or crown would pay.",
+      "tts": {
+        "text": "The ransom demands from Algiers were high, far more than the church or crown would pay.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p96",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Negotiations dragged on for years.",
+      "text_markdown": "Negotiations dragged on for years.",
+      "tts": {
+        "text": "Negotiations dragged on for years.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Ransom Networks",
+      "text_markdown": "Ransom Networks"
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Catholic countries, religious orders like the Trinitarians had centuries of experience ransoming captives.",
+      "text_markdown": "In Catholic countries, religious orders like the Trinitarians had centuries of experience ransoming captives.",
+      "tts": {
+        "text": "In Catholic countries, religious orders like the Trinitarians had centuries of experience ransoming captives.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p98",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "But in the Protestant north, there was no equivalent institution.",
+      "text_markdown": "But in the Protestant north, there was no equivalent institution.",
+      "tts": {
+        "text": "But in the Protestant north, there was no equivalent institution.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Denmark had to build its ransom effort from scratch.",
+      "text_markdown": "Denmark had to build its ransom effort from scratch.",
+      "tts": {
+        "text": "Denmark had to build its ransom effort from scratch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p99",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Money had to cross borders, change currencies, and reach the right people in Algiers.",
+      "text_markdown": "Money had to cross borders, change currencies, and reach the right people in Algiers.",
+      "tts": {
+        "text": "Money had to cross borders, change currencies, and reach the right people in Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p99",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The process was full of delays, corruption, and broken promises.",
+      "text_markdown": "The process was full of delays, corruption, and broken promises.",
+      "tts": {
+        "text": "The process was full of delays, corruption, and broken promises.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Years of Waiting",
+      "text_markdown": "Years of Waiting"
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur spent years petitioning for the ransom, writing letters and visiting officials.",
+      "text_markdown": "Ólafur spent years petitioning for the ransom, writing letters and visiting officials.",
+      "tts": {
+        "text": "Ólafur spent years petitioning for the ransom, writing letters and visiting officials.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p101",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The years passed, and the captives remained in Algiers.",
+      "text_markdown": "The years passed, and the captives remained in Algiers.",
+      "tts": {
+        "text": "The years passed, and the captives remained in Algiers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "During this time, he wrote his book.",
+      "text_markdown": "During this time, he wrote his book.",
+      "tts": {
+        "text": "During this time, he wrote his book.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p102",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He set down everything he had witnessed, from the raid to the slave markets to his journey across Europe.",
+      "text_markdown": "He set down everything he had witnessed, from the raid to the slave markets to his journey across Europe.",
+      "tts": {
+        "text": "He set down everything he had witnessed, from the raid to the slave markets to his journey across Europe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The book was not published in his lifetime but circulated as a manuscript.",
+      "text_markdown": "The book was not published in his lifetime but circulated as a manuscript.",
+      "tts": {
+        "text": "The book was not published in his lifetime but circulated as a manuscript.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p103",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It became one of the most important documents of the entire episode.",
+      "text_markdown": "It became one of the most important documents of the entire episode.",
+      "tts": {
+        "text": "It became one of the most important documents of the entire episode.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Indifference of Power",
+      "text_markdown": "The Indifference of Power"
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "One of the most painful themes in Ólafur's account is the indifference of those in power.",
+      "text_markdown": "One of the most painful themes in Ólafur's account is the indifference of those in power.",
+      "tts": {
+        "text": "One of the most painful themes in Ólafur's account is the indifference of those in power.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p105",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Danish officials were not cruel; they simply had other priorities.",
+      "text_markdown": "The Danish officials were not cruel; they simply had other priorities.",
+      "tts": {
+        "text": "The Danish officials were not cruel; they simply had other priorities.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The people who suffered were poor, remote, and politically insignificant.",
+      "text_markdown": "The people who suffered were poor, remote, and politically insignificant.",
+      "tts": {
+        "text": "The people who suffered were poor, remote, and politically insignificant.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p106",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Their government mourned them in public and neglected them in private.",
+      "text_markdown": "Their government mourned them in public and neglected them in private.",
+      "tts": {
+        "text": "Their government mourned them in public and neglected them in private.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur's writing reflects a growing bitterness.",
+      "text_markdown": "Ólafur's writing reflects a growing bitterness.",
+      "tts": {
+        "text": "Ólafur's writing reflects a growing bitterness.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p107",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had risked everything to carry his people's message to Copenhagen.",
+      "text_markdown": "He had risked everything to carry his people's message to Copenhagen.",
+      "tts": {
+        "text": "He had risked everything to carry his people's message to Copenhagen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity and the Mission",
+      "paragraph_id": "p107",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The answer was that they were not important enough to save quickly.",
+      "text_markdown": "The answer was that they were not important enough to save quickly.",
+      "tts": {
+        "text": "The answer was that they were not important enough to save quickly.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Those Who Came Back and Those Who Did Not",
+      "text_markdown": "Those Who Came Back and Those Who Did Not"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Of the roughly four hundred Icelanders captured in 1627, only a small number ever returned.",
+      "text_markdown": "Of the roughly four hundred Icelanders captured in 1627, only a small number ever returned.",
+      "tts": {
+        "text": "Of the roughly four hundred Icelanders captured in sixteen twenty-seven, only a small number ever returned.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p109",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The ransom effort took nearly a decade, and by the time money arrived, many had already died.",
+      "text_markdown": "The ransom effort took nearly a decade, and by the time money arrived, many had already died.",
+      "tts": {
+        "text": "The ransom effort took nearly a decade, and by the time money arrived, many had already died.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Disease, overwork, and despair killed many in the first years.",
+      "text_markdown": "Disease, overwork, and despair killed many in the first years.",
+      "tts": {
+        "text": "Disease, overwork, and despair killed many in the first years.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p110",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The transition from Iceland's cold air to the heat of Algiers was devastating.",
+      "text_markdown": "The transition from Iceland's cold air to the heat of Algiers was devastating.",
+      "tts": {
+        "text": "The transition from Iceland's cold air to the heat of Algiers was devastating.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Those Who Converted",
+      "text_markdown": "Those Who Converted"
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some captives converted to Islam.",
+      "text_markdown": "Some captives converted to Islam.",
+      "tts": {
+        "text": "Some captives converted to Islam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p112",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Conversion offered real advantages: a convert could no longer legally be held as a slave, and it opened doors to work and marriage.",
+      "text_markdown": "Conversion offered real advantages: a convert could no longer legally be held as a slave, and it opened doors to work and marriage.",
+      "tts": {
+        "text": "Conversion offered real advantages: a convert could no longer legally be held as a slave, and it opened doors to work and marriage.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For some, conversion was survival, not belief.",
+      "text_markdown": "For some, conversion was survival, not belief.",
+      "tts": {
+        "text": "For some, conversion was survival, not belief.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p113",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Others genuinely embraced their new religion and built new lives.",
+      "text_markdown": "Others genuinely embraced their new religion and built new lives.",
+      "tts": {
+        "text": "Others genuinely embraced their new religion and built new lives.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Icelandic church viewed these conversions with horror.",
+      "text_markdown": "The Icelandic church viewed these conversions with horror.",
+      "tts": {
+        "text": "The Icelandic church viewed these conversions with horror.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p114",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "But from the captives' side, conversion was sometimes the only way to survive.",
+      "text_markdown": "But from the captives' side, conversion was sometimes the only way to survive.",
+      "tts": {
+        "text": "But from the captives' side, conversion was sometimes the only way to survive.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Ransomed Few",
+      "text_markdown": "The Ransomed Few"
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1636, nearly nine years after the raid, a ransom was finally paid.",
+      "text_markdown": "In 1636, nearly nine years after the raid, a ransom was finally paid.",
+      "tts": {
+        "text": "In sixteen thirty-six, nearly nine years after the raid, a ransom was finally paid.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p116",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thirty-four captives were freed and sent home.",
+      "text_markdown": "Thirty-four captives were freed and sent home.",
+      "tts": {
+        "text": "Thirty-four captives were freed and sent home.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thirty-four out of four hundred.",
+      "text_markdown": "Thirty-four out of four hundred.",
+      "tts": {
+        "text": "Thirty-four out of four hundred.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p117",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Some had died, some had converted, and many could not be found or their owners refused to sell.",
+      "text_markdown": "Some had died, some had converted, and many could not be found or their owners refused to sell.",
+      "tts": {
+        "text": "Some had died, some had converted, and many could not be found or their owners refused to sell.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Guðríður Símonardóttir",
+      "text_markdown": "Guðríður Símonardóttir"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Among those eventually ransomed was Guðríður Símonardóttir.",
+      "text_markdown": "Among those eventually ransomed was Guðríður Símonardóttir.",
+      "tts": {
+        "text": "Among those eventually ransomed was Guðríður Símonardóttir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p119",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "She had been captured as a young woman and spent nearly a decade enslaved in Algiers.",
+      "text_markdown": "She had been captured as a young woman and spent nearly a decade enslaved in Algiers.",
+      "tts": {
+        "text": "She had been captured as a young woman and spent nearly a decade enslaved in Algiers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When she returned to Iceland, she was a changed person.",
+      "text_markdown": "When she returned to Iceland, she was a changed person.",
+      "tts": {
+        "text": "When she returned to Iceland, she was a changed person.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p120",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "She spoke Arabic and had lived in a world utterly different from the one she had been taken from.",
+      "text_markdown": "She spoke Arabic and had lived in a world utterly different from the one she had been taken from.",
+      "tts": {
+        "text": "She spoke Arabic and had lived in a world utterly different from the one she had been taken from.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After her return, she married Hallgrímur Pétursson, who would become one of the greatest poets in Icelandic history.",
+      "text_markdown": "After her return, she married Hallgrímur Pétursson, who would become one of the greatest poets in Icelandic history.",
+      "tts": {
+        "text": "After her return, she married Hallgrímur Pétursson, who would become one of the greatest poets in Icelandic history.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p121",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His Passion Hymns are still considered a masterwork of Icelandic literature.",
+      "text_markdown": "His Passion Hymns are still considered a masterwork of Icelandic literature.",
+      "tts": {
+        "text": "His Passion Hymns are still considered a masterwork of Icelandic literature.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A woman enslaved in North Africa married the man who would become Iceland's most beloved religious poet.",
+      "text_markdown": "A woman enslaved in North Africa married the man who would become Iceland's most beloved religious poet.",
+      "tts": {
+        "text": "A woman enslaved in North Africa married the man who would become Iceland's most beloved religious poet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p122",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Together they built a life, though the shadow of captivity never fully left her.",
+      "text_markdown": "Together they built a life, though the shadow of captivity never fully left her.",
+      "tts": {
+        "text": "Together they built a life, though the shadow of captivity never fully left her.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Ólafur's Return",
+      "text_markdown": "Ólafur's Return"
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur himself eventually made it back to Iceland, a broken and exhausted man.",
+      "text_markdown": "Ólafur himself eventually made it back to Iceland, a broken and exhausted man.",
+      "tts": {
+        "text": "Ólafur himself eventually made it back to Iceland, a broken and exhausted man.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p124",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had lost most of his family, and the mission he undertook had largely failed.",
+      "text_markdown": "He had lost most of his family, and the mission he undertook had largely failed.",
+      "tts": {
+        "text": "He had lost most of his family, and the mission he undertook had largely failed.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His wife Ásta's fate remains uncertain.",
+      "text_markdown": "His wife Ásta's fate remains uncertain.",
+      "tts": {
+        "text": "His wife Ásta's fate remains uncertain.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p125",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Historians believe she died in captivity, though the circumstances are not known.",
+      "text_markdown": "Historians believe she died in captivity, though the circumstances are not known.",
+      "tts": {
+        "text": "Historians believe she died in captivity, though the circumstances are not known.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p125",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The silence in his account speaks more loudly than words.",
+      "text_markdown": "The silence in his account speaks more loudly than words.",
+      "tts": {
+        "text": "The silence in his account speaks more loudly than words.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur lived until 1651, reaching the age of eighty-seven.",
+      "text_markdown": "Ólafur lived until 1651, reaching the age of eighty-seven.",
+      "tts": {
+        "text": "Ólafur lived until sixteen fifty-one, reaching the age of eighty-seven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p126",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He spent his final years carrying the weight of everything he had seen and lost.",
+      "text_markdown": "He spent his final years carrying the weight of everything he had seen and lost.",
+      "tts": {
+        "text": "He spent his final years carrying the weight of everything he had seen and lost.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Trauma That Lingered",
+      "text_markdown": "The Trauma That Lingered"
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The returned captives found that Iceland had moved on.",
+      "text_markdown": "The returned captives found that Iceland had moved on.",
+      "tts": {
+        "text": "The returned captives found that Iceland had moved on.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p128",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Their homes had been given to others and their property was gone.",
+      "text_markdown": "Their homes had been given to others and their property was gone.",
+      "tts": {
+        "text": "Their homes had been given to others and their property was gone.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The church required returnees to undergo a public examination of faith to prove they had not converted.",
+      "text_markdown": "The church required returnees to undergo a public examination of faith to prove they had not converted.",
+      "tts": {
+        "text": "The church required returnees to undergo a public examination of faith to prove they had not converted.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p129",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "This was humiliating for people who had already suffered beyond imagination.",
+      "text_markdown": "This was humiliating for people who had already suffered beyond imagination.",
+      "tts": {
+        "text": "This was humiliating for people who had already suffered beyond imagination.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many struggled to readjust.",
+      "text_markdown": "Many struggled to readjust.",
+      "tts": {
+        "text": "Many struggled to readjust.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p130",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They had been changed in ways their neighbors could not understand.",
+      "text_markdown": "They had been changed in ways their neighbors could not understand.",
+      "tts": {
+        "text": "They had been changed in ways their neighbors could not understand.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Tyrkjaránið, as Icelanders call the Turkish Abductions, left a scar on the national memory.",
+      "text_markdown": "The Tyrkjaránið, as Icelanders call the Turkish Abductions, left a scar on the national memory.",
+      "tts": {
+        "text": "The Tyrkjaránið, as Icelanders call the Turkish Abductions, left a scar on the national memory.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p131",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Songs and stories about the raid were passed down for generations.",
+      "text_markdown": "Songs and stories about the raid were passed down for generations.",
+      "tts": {
+        "text": "Songs and stories about the raid were passed down for generations.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Those Who Came Back and Those Who Did Not",
+      "paragraph_id": "p131",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Westman Islands never forgot.",
+      "text_markdown": "The Westman Islands never forgot.",
+      "tts": {
+        "text": "The Westman Islands never forgot.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Book That Survived",
+      "text_markdown": "The Book That Survived"
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur's book, the Reisubók, was never published during his lifetime.",
+      "text_markdown": "Ólafur's book, the Reisubók, was never published during his lifetime.",
+      "tts": {
+        "text": "Ólafur's book, the Reisubók, was never published during his lifetime.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p133",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It circulated as a handwritten manuscript, copied and passed from reader to reader.",
+      "text_markdown": "It circulated as a handwritten manuscript, copied and passed from reader to reader.",
+      "tts": {
+        "text": "It circulated as a handwritten manuscript, copied and passed from reader to reader.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p133",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Over the centuries it became one of the most important historical documents in Icelandic literature.",
+      "text_markdown": "Over the centuries it became one of the most important historical documents in Icelandic literature.",
+      "tts": {
+        "text": "Over the centuries it became one of the most important historical documents in Icelandic literature.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is one of the very few firsthand accounts of the Barbary slave trade written by a Northern European.",
+      "text_markdown": "It is one of the very few firsthand accounts of the Barbary slave trade written by a Northern European.",
+      "tts": {
+        "text": "It is one of the very few firsthand accounts of the Barbary slave trade written by a Northern European.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p134",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ólafur's perspective, as an Icelandic pastor from a tiny volcanic island, is unique in all of European literature.",
+      "text_markdown": "Ólafur's perspective, as an Icelandic pastor from a tiny volcanic island, is unique in all of European literature.",
+      "tts": {
+        "text": "Ólafur's perspective, as an Icelandic pastor from a tiny volcanic island, is unique in all of European literature.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "What the Book Teaches",
+      "text_markdown": "What the Book Teaches"
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur wrote with the careful eye of a scholar.",
+      "text_markdown": "Ólafur wrote with the careful eye of a scholar.",
+      "tts": {
+        "text": "Ólafur wrote with the careful eye of a scholar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p136",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He described Algiers, its customs, the slave market, and daily captivity without excessive exaggeration.",
+      "text_markdown": "He described Algiers, its customs, the slave market, and daily captivity without excessive exaggeration.",
+      "tts": {
+        "text": "He described Algiers, its customs, the slave market, and daily captivity without excessive exaggeration.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His book teaches us that piracy was not just about the pirates.",
+      "text_markdown": "His book teaches us that piracy was not just about the pirates.",
+      "tts": {
+        "text": "His book teaches us that piracy was not just about the pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p137",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "For every raid, there were real people whose lives were destroyed.",
+      "text_markdown": "For every raid, there were real people whose lives were destroyed.",
+      "tts": {
+        "text": "For every raid, there were real people whose lives were destroyed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p137",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ólafur is one of the few victims who told his own story.",
+      "text_markdown": "Ólafur is one of the few victims who told his own story.",
+      "tts": {
+        "text": "Ólafur is one of the few victims who told his own story.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Reisubók also reveals the failures of European powers to protect their people.",
+      "text_markdown": "The Reisubók also reveals the failures of European powers to protect their people.",
+      "tts": {
+        "text": "The Reisubók also reveals the failures of European powers to protect their people.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p138",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Denmark ruled Iceland but did almost nothing to defend it.",
+      "text_markdown": "Denmark ruled Iceland but did almost nothing to defend it.",
+      "tts": {
+        "text": "Denmark ruled Iceland but did almost nothing to defend it.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p138",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The captives were abandoned by the governments meant to protect them.",
+      "text_markdown": "The captives were abandoned by the governments meant to protect them.",
+      "tts": {
+        "text": "The captives were abandoned by the governments meant to protect them.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Why This Story Belongs in a Pirate Series",
+      "text_markdown": "Why This Story Belongs in a Pirate Series"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This book is part of a series about famous pirates.",
+      "text_markdown": "This book is part of a series about famous pirates.",
+      "tts": {
+        "text": "This book is part of a series about famous pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p140",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ólafur was not a pirate.",
+      "text_markdown": "Ólafur was not a pirate.",
+      "tts": {
+        "text": "Ólafur was not a pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p140",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was a victim of piracy.",
+      "text_markdown": "He was a victim of piracy.",
+      "tts": {
+        "text": "He was a victim of piracy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p140",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "But his story is essential to understanding what piracy really meant.",
+      "text_markdown": "But his story is essential to understanding what piracy really meant.",
+      "tts": {
+        "text": "But his story is essential to understanding what piracy really meant.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piracy is often romanticized.",
+      "text_markdown": "Piracy is often romanticized.",
+      "tts": {
+        "text": "Piracy is often romanticized.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p141",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "But at its core, it was organized violence against ordinary people.",
+      "text_markdown": "But at its core, it was organized violence against ordinary people.",
+      "tts": {
+        "text": "But at its core, it was organized violence against ordinary people.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p141",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The Barbary corsairs did not just steal goods.",
+      "text_markdown": "The Barbary corsairs did not just steal goods.",
+      "tts": {
+        "text": "The Barbary corsairs did not just steal goods.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p141",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "They stole people.",
+      "text_markdown": "They stole people.",
+      "tts": {
+        "text": "They stole people.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur's story forces us to see piracy from the other side.",
+      "text_markdown": "Ólafur's story forces us to see piracy from the other side.",
+      "tts": {
+        "text": "Ólafur's story forces us to see piracy from the other side.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p142",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It asks us to imagine being torn from home, separated from family, sold in a market, and forgotten by your government.",
+      "text_markdown": "It asks us to imagine being torn from home, separated from family, sold in a market, and forgotten by your government.",
+      "tts": {
+        "text": "It asks us to imagine being torn from home, separated from family, sold in a market, and forgotten by your government.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "The Westman Islands Today",
+      "text_markdown": "The Westman Islands Today"
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Westman Islands are still inhabited, with about four thousand people living on Heimaey today.",
+      "text_markdown": "The Westman Islands are still inhabited, with about four thousand people living on Heimaey today.",
+      "tts": {
+        "text": "The Westman Islands are still inhabited, with about four thousand people living on Heimaey today.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p144",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The islands are known for natural beauty, puffin colonies, and an annual festival.",
+      "text_markdown": "The islands are known for natural beauty, puffin colonies, and an annual festival.",
+      "tts": {
+        "text": "The islands are known for natural beauty, puffin colonies, and an annual festival.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The memory of the 1627 raid is still alive.",
+      "text_markdown": "The memory of the 1627 raid is still alive.",
+      "tts": {
+        "text": "The memory of the sixteen twenty-seven raid is still alive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p145",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A memorial on Heimaey honors the victims, and local historians have worked to identify the captives by name.",
+      "text_markdown": "A memorial on Heimaey honors the victims, and local historians have worked to identify the captives by name.",
+      "tts": {
+        "text": "A memorial on Heimaey honors the victims, and local historians have worked to identify the captives by name.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 2009, a monument was erected to honor those who were taken.",
+      "text_markdown": "In 2009, a monument was erected to honor those who were taken.",
+      "tts": {
+        "text": "In two thousand nine, a monument was erected to honor those who were taken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p146",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Its inscription reminds visitors that ordinary people once lived here and were carried by force to the other side of the world.",
+      "text_markdown": "Its inscription reminds visitors that ordinary people once lived here and were carried by force to the other side of the world.",
+      "tts": {
+        "text": "Its inscription reminds visitors that ordinary people once lived here and were carried by force to the other side of the world.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Memory and Legacy",
+      "text_markdown": "Memory and Legacy"
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ólafur has been dead for nearly four hundred years, but his words still speak.",
+      "text_markdown": "Ólafur has been dead for nearly four hundred years, but his words still speak.",
+      "tts": {
+        "text": "Ólafur has been dead for nearly four hundred years, but his words still speak.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p148",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His book reminds us that history is not only made by kings and conquerors.",
+      "text_markdown": "His book reminds us that history is not only made by kings and conquerors.",
+      "tts": {
+        "text": "His book reminds us that history is not only made by kings and conquerors.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p148",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It is also made by ordinary people who endure extraordinary suffering and find a way to bear witness.",
+      "text_markdown": "It is also made by ordinary people who endure extraordinary suffering and find a way to bear witness.",
+      "tts": {
+        "text": "It is also made by ordinary people who endure extraordinary suffering and find a way to bear witness.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Reisubók is his testimony.",
+      "text_markdown": "The Reisubók is his testimony.",
+      "tts": {
+        "text": "The Reisubók is his testimony.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p149",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is the voice of a man who lost almost everything but refused to let his story die.",
+      "text_markdown": "It is the voice of a man who lost almost everything but refused to let his story die.",
+      "tts": {
+        "text": "It is the voice of a man who lost almost everything but refused to let his story die.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Book That Survived",
+      "paragraph_id": "p149",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "As long as his book survives, the people taken from the Westman Islands in 1627 will not be forgotten.",
+      "text_markdown": "As long as his book survives, the people taken from the Westman Islands in 1627 will not be forgotten.",
+      "tts": {
+        "text": "As long as his book survives, the people taken from the Westman Islands in sixteen twenty-seven will not be forgotten.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

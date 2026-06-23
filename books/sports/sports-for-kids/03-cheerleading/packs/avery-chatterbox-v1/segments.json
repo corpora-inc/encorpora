@@ -1,0 +1,5963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sports_for_kids_cheerleading",
+  "total_segments": 375,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hey, I'm Avery, and I'm a Cheerleader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hey, I'm Avery, and I'm a Cheerleader",
+      "text_markdown": "Hey, I'm Avery, and I'm a Cheerleader"
+    },
+    {
+      "id": "ch02-002",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "I'm Avery",
+      "text_markdown": "I'm Avery"
+    },
+    {
+      "id": "ch02-003",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hey.",
+      "text_markdown": "Hey.",
+      "tts": {
+        "text": "Hey.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I'm Avery.",
+      "text_markdown": "I'm Avery.",
+      "tts": {
+        "text": "I'm Avery.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-005",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I'm ten years old.",
+      "text_markdown": "I'm ten years old.",
+      "tts": {
+        "text": "I'm ten years old.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-006",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I'm a girl, and I'm a cheerleader.",
+      "text_markdown": "I'm a girl, and I'm a cheerleader.",
+      "tts": {
+        "text": "I'm a girl, and I'm a cheerleader.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch02-007",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I know what some people picture when they hear that.",
+      "text_markdown": "I know what some people picture when they hear that.",
+      "tts": {
+        "text": "I know what some people picture when they hear that.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pom-poms and big smiles, and that's it.",
+      "text_markdown": "Pom-poms and big smiles, and that's it.",
+      "tts": {
+        "text": "Pom-poms and big smiles, and that's it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-009",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There is way more to it.",
+      "text_markdown": "There is way more to it.",
+      "tts": {
+        "text": "There is way more to it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I'm on a team with about twenty kids.",
+      "text_markdown": "I'm on a team with about twenty kids.",
+      "tts": {
+        "text": "I'm on a team with about twenty kids.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We wear matching uniforms.",
+      "text_markdown": "We wear matching uniforms.",
+      "tts": {
+        "text": "We wear matching uniforms.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I have a coach.",
+      "text_markdown": "I have a coach.",
+      "tts": {
+        "text": "I have a coach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "She used to compete in college, and now she trains us.",
+      "text_markdown": "She used to compete in college, and now she trains us.",
+      "tts": {
+        "text": "She used to compete in college, and now she trains us.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-014",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We are a coed team.",
+      "text_markdown": "We are a coed team.",
+      "tts": {
+        "text": "We are a coed team.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That means boys and girls together.",
+      "text_markdown": "That means boys and girls together.",
+      "tts": {
+        "text": "That means boys and girls together.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's pretty normal in cheer now.",
+      "text_markdown": "That's pretty normal in cheer now.",
+      "tts": {
+        "text": "That's pretty normal in cheer now.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I cheer at school basketball games.",
+      "text_markdown": "I cheer at school basketball games.",
+      "tts": {
+        "text": "I cheer at school basketball games.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I also compete in cheer competitions.",
+      "text_markdown": "I also compete in cheer competitions.",
+      "tts": {
+        "text": "I also compete in cheer competitions.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Those are two different things, and I do both.",
+      "text_markdown": "Those are two different things, and I do both.",
+      "tts": {
+        "text": "Those are two different things, and I do both.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Don't worry if this is all new.",
+      "text_markdown": "Don't worry if this is all new.",
+      "tts": {
+        "text": "Don't worry if this is all new.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't have to know anything yet.",
+      "text_markdown": "You don't have to know anything yet.",
+      "tts": {
+        "text": "You don't have to know anything yet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I'm going to walk you through it.",
+      "text_markdown": "I'm going to walk you through it.",
+      "tts": {
+        "text": "I'm going to walk you through it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I'll tell you what we do and why I love it.",
+      "text_markdown": "I'll tell you what we do and why I love it.",
+      "tts": {
+        "text": "I'll tell you what we do and why I love it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stick with me.",
+      "text_markdown": "Stick with me.",
+      "tts": {
+        "text": "Stick with me.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cheer is awesome.",
+      "text_markdown": "Cheer is awesome.",
+      "tts": {
+        "text": "Cheer is awesome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "part": 0,
+      "chapter": 2,
+      "title": "I'm Avery",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Let me show you.",
+      "text_markdown": "Let me show you.",
+      "tts": {
+        "text": "Let me show you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Why I Love It",
+      "text_markdown": "Why I Love It"
+    },
+    {
+      "id": "ch03-028",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So why do I love cheer.",
+      "text_markdown": "So why do I love cheer.",
+      "tts": {
+        "text": "So why do I love cheer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-029",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A lot of reasons.",
+      "text_markdown": "A lot of reasons.",
+      "tts": {
+        "text": "A lot of reasons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first one is the team.",
+      "text_markdown": "The first one is the team.",
+      "tts": {
+        "text": "The first one is the team.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We see each other almost every day.",
+      "text_markdown": "We see each other almost every day.",
+      "tts": {
+        "text": "We see each other almost every day.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We sweat together and mess up together.",
+      "text_markdown": "We sweat together and mess up together.",
+      "tts": {
+        "text": "We sweat together and mess up together.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-033",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We get it right together.",
+      "text_markdown": "We get it right together.",
+      "tts": {
+        "text": "We get it right together.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you nail a routine, everyone screams.",
+      "text_markdown": "When you nail a routine, everyone screams.",
+      "tts": {
+        "text": "When you nail a routine, everyone screams.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Not just the crowd, you scream too.",
+      "text_markdown": "Not just the crowd, you scream too.",
+      "tts": {
+        "text": "Not just the crowd, you scream too.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You can't help it.",
+      "text_markdown": "You can't help it.",
+      "tts": {
+        "text": "You can't help it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The second reason is the crowd.",
+      "text_markdown": "The second reason is the crowd.",
+      "tts": {
+        "text": "The second reason is the crowd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-038",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Have you ever been in a loud gym.",
+      "text_markdown": "Have you ever been in a loud gym.",
+      "tts": {
+        "text": "Have you ever been in a loud gym.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It's amazing.",
+      "text_markdown": "It's amazing.",
+      "tts": {
+        "text": "It's amazing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A whole room of people clapping.",
+      "text_markdown": "A whole room of people clapping.",
+      "tts": {
+        "text": "A whole room of people clapping.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You start a chant and the crowd picks it up.",
+      "text_markdown": "You start a chant and the crowd picks it up.",
+      "tts": {
+        "text": "You start a chant and the crowd picks it up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Suddenly hundreds of people are saying it with you.",
+      "text_markdown": "Suddenly hundreds of people are saying it with you.",
+      "tts": {
+        "text": "Suddenly hundreds of people are saying it with you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the coolest feeling.",
+      "text_markdown": "That is the coolest feeling.",
+      "tts": {
+        "text": "That is the coolest feeling.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The third reason is harder to explain.",
+      "text_markdown": "The third reason is harder to explain.",
+      "tts": {
+        "text": "The third reason is harder to explain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It's the feeling of doing something brave.",
+      "text_markdown": "It's the feeling of doing something brave.",
+      "tts": {
+        "text": "It's the feeling of doing something brave.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cheer is a brave sport.",
+      "text_markdown": "Cheer is a brave sport.",
+      "tts": {
+        "text": "Cheer is a brave sport.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You jump and you flip.",
+      "text_markdown": "You jump and you flip.",
+      "tts": {
+        "text": "You jump and you flip.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You lift other people, and you trust other people to lift you.",
+      "text_markdown": "You lift other people, and you trust other people to lift you.",
+      "tts": {
+        "text": "You lift other people, and you trust other people to lift you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.67
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you do something you couldn't do last month, that's huge.",
+      "text_markdown": "When you do something you couldn't do last month, that's huge.",
+      "tts": {
+        "text": "When you do something you couldn't do last month, that's huge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You feel taller after.",
+      "text_markdown": "You feel taller after.",
+      "tts": {
+        "text": "You feel taller after.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The last reason is the music.",
+      "text_markdown": "The last reason is the music.",
+      "tts": {
+        "text": "The last reason is the music.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When a competition song hits, your body just goes.",
+      "text_markdown": "When a competition song hits, your body just goes.",
+      "tts": {
+        "text": "When a competition song hits, your body just goes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't even think.",
+      "text_markdown": "You don't even think.",
+      "tts": {
+        "text": "You don't even think.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You've practiced it so many times.",
+      "text_markdown": "You've practiced it so many times.",
+      "tts": {
+        "text": "You've practiced it so many times.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Your arms know what to do.",
+      "text_markdown": "Your arms know what to do.",
+      "tts": {
+        "text": "Your arms know what to do.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It's like flying.",
+      "text_markdown": "It's like flying.",
+      "tts": {
+        "text": "It's like flying.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's why I love it.",
+      "text_markdown": "That's why I love it.",
+      "tts": {
+        "text": "That's why I love it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Why I Love It",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's not even all of it, but it's a start.",
+      "text_markdown": "That's not even all of it, but it's a start.",
+      "tts": {
+        "text": "That's not even all of it, but it's a start.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Two Kinds of Cheer",
+      "text_markdown": "Two Kinds of Cheer"
+    },
+    {
+      "id": "ch04-060",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A lot of people don't know this.",
+      "text_markdown": "A lot of people don't know this.",
+      "tts": {
+        "text": "A lot of people don't know this.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are basically two kinds of cheer.",
+      "text_markdown": "There are basically two kinds of cheer.",
+      "tts": {
+        "text": "There are basically two kinds of cheer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first one is sideline cheer.",
+      "text_markdown": "The first one is sideline cheer.",
+      "tts": {
+        "text": "The first one is sideline cheer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-063",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's the one you've probably seen on TV.",
+      "text_markdown": "That's the one you've probably seen on TV.",
+      "tts": {
+        "text": "That's the one you've probably seen on TV.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The cheerleaders stand on the side of the basketball court, or the football field.",
+      "text_markdown": "The cheerleaders stand on the side of the basketball court, or the football field.",
+      "tts": {
+        "text": "The cheerleaders stand on the side of the basketball court, or the football field.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-065",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They cheer for the team that is playing.",
+      "text_markdown": "They cheer for the team that is playing.",
+      "tts": {
+        "text": "They cheer for the team that is playing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They lead the crowd and do chants.",
+      "text_markdown": "They lead the crowd and do chants.",
+      "tts": {
+        "text": "They lead the crowd and do chants.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They do little stunts during timeouts.",
+      "text_markdown": "They do little stunts during timeouts.",
+      "tts": {
+        "text": "They do little stunts during timeouts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Their job is to bring the energy.",
+      "text_markdown": "Their job is to bring the energy.",
+      "tts": {
+        "text": "Their job is to bring the energy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We do that for our school.",
+      "text_markdown": "We do that for our school.",
+      "tts": {
+        "text": "We do that for our school.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We cheer at basketball games all winter.",
+      "text_markdown": "We cheer at basketball games all winter.",
+      "tts": {
+        "text": "We cheer at basketball games all winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The second kind is competitive cheer.",
+      "text_markdown": "The second kind is competitive cheer.",
+      "tts": {
+        "text": "The second kind is competitive cheer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is its own sport.",
+      "text_markdown": "This is its own sport.",
+      "tts": {
+        "text": "This is its own sport.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The cheer team is not cheering for anyone else.",
+      "text_markdown": "The cheer team is not cheering for anyone else.",
+      "tts": {
+        "text": "The cheer team is not cheering for anyone else.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The team is the team being judged.",
+      "text_markdown": "The team is the team being judged.",
+      "tts": {
+        "text": "The team is the team being judged.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You perform a routine, other teams perform their routines.",
+      "text_markdown": "You perform a routine, other teams perform their routines.",
+      "tts": {
+        "text": "You perform a routine, other teams perform their routines.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Judges score everything.",
+      "text_markdown": "Judges score everything.",
+      "tts": {
+        "text": "Judges score everything.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The team with the highest score wins.",
+      "text_markdown": "The team with the highest score wins.",
+      "tts": {
+        "text": "The team with the highest score wins.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A competition routine is about two and a half minutes.",
+      "text_markdown": "A competition routine is about two and a half minutes.",
+      "tts": {
+        "text": "A competition routine is about two and a half minutes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That doesn't sound long, but it's forever.",
+      "text_markdown": "That doesn't sound long, but it's forever.",
+      "tts": {
+        "text": "That doesn't sound long, but it's forever.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You do tumbling, stunts, a pyramid, a dance.",
+      "text_markdown": "You do tumbling, stunts, a pyramid, a dance.",
+      "tts": {
+        "text": "You do tumbling, stunts, a pyramid, a dance.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "All to music, all without stopping.",
+      "text_markdown": "All to music, all without stopping.",
+      "tts": {
+        "text": "All to music, all without stopping.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So just remember.",
+      "text_markdown": "So just remember.",
+      "tts": {
+        "text": "So just remember.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sideline cheer supports another team.",
+      "text_markdown": "Sideline cheer supports another team.",
+      "tts": {
+        "text": "Sideline cheer supports another team.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Competitive cheer is the team.",
+      "text_markdown": "Competitive cheer is the team.",
+      "tts": {
+        "text": "Competitive cheer is the team.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most cheerleaders I know do both.",
+      "text_markdown": "Most cheerleaders I know do both.",
+      "tts": {
+        "text": "Most cheerleaders I know do both.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I do both.",
+      "text_markdown": "I do both.",
+      "tts": {
+        "text": "I do both.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Both are great.",
+      "text_markdown": "Both are great.",
+      "tts": {
+        "text": "Both are great.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Two Kinds of Cheer",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Both are cheer.",
+      "text_markdown": "Both are cheer.",
+      "tts": {
+        "text": "Both are cheer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "What We Actually Do",
+      "text_markdown": "What We Actually Do"
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Let me walk you through the basics.",
+      "text_markdown": "Let me walk you through the basics.",
+      "tts": {
+        "text": "Let me walk you through the basics.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "These are the building blocks.",
+      "text_markdown": "These are the building blocks.",
+      "tts": {
+        "text": "These are the building blocks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chants come first.",
+      "text_markdown": "Chants come first.",
+      "tts": {
+        "text": "Chants come first.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A chant is short and it repeats.",
+      "text_markdown": "A chant is short and it repeats.",
+      "tts": {
+        "text": "A chant is short and it repeats.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The crowd can say it with us.",
+      "text_markdown": "The crowd can say it with us.",
+      "tts": {
+        "text": "The crowd can say it with us.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Something like: let's go team, let's go.",
+      "text_markdown": "Something like: let's go team, let's go.",
+      "tts": {
+        "text": "Something like: let's go team, let's go.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You say it twice and clap on the beats.",
+      "text_markdown": "You say it twice and clap on the beats.",
+      "tts": {
+        "text": "You say it twice and clap on the beats.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anyone can learn one.",
+      "text_markdown": "Anyone can learn one.",
+      "tts": {
+        "text": "Anyone can learn one.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cheers are longer than chants.",
+      "text_markdown": "Cheers are longer than chants.",
+      "tts": {
+        "text": "Cheers are longer than chants.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A cheer might be eight or sixteen counts.",
+      "text_markdown": "A cheer might be eight or sixteen counts.",
+      "tts": {
+        "text": "A cheer might be eight or sixteen counts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It tells a little story.",
+      "text_markdown": "It tells a little story.",
+      "tts": {
+        "text": "It tells a little story.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The crowd doesn't say a cheer with us.",
+      "text_markdown": "The crowd doesn't say a cheer with us.",
+      "tts": {
+        "text": "The crowd doesn't say a cheer with us.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The crowd watches and claps at the end.",
+      "text_markdown": "The crowd watches and claps at the end.",
+      "tts": {
+        "text": "The crowd watches and claps at the end.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then there are motions.",
+      "text_markdown": "Then there are motions.",
+      "tts": {
+        "text": "Then there are motions.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motions are the arm shapes.",
+      "text_markdown": "Motions are the arm shapes.",
+      "tts": {
+        "text": "Motions are the arm shapes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arms straight up in a V is called a high V.",
+      "text_markdown": "Arms straight up in a V is called a high V.",
+      "tts": {
+        "text": "Arms straight up in a V is called a high V.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arms down low in a V is a low V.",
+      "text_markdown": "Arms down low in a V is a low V.",
+      "tts": {
+        "text": "Arms down low in a V is a low V.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arms straight out to the sides is a T.",
+      "text_markdown": "Arms straight out to the sides is a T.",
+      "tts": {
+        "text": "Arms straight out to the sides is a T.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fists tight on your hips is called clean.",
+      "text_markdown": "Fists tight on your hips is called clean.",
+      "tts": {
+        "text": "Fists tight on your hips is called clean.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every motion has a name.",
+      "text_markdown": "Every motion has a name.",
+      "tts": {
+        "text": "Every motion has a name.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The motions have to be sharp.",
+      "text_markdown": "The motions have to be sharp.",
+      "tts": {
+        "text": "The motions have to be sharp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If your arm is a little floppy, you lose points.",
+      "text_markdown": "If your arm is a little floppy, you lose points.",
+      "tts": {
+        "text": "If your arm is a little floppy, you lose points.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-112",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We practice motions in a mirror.",
+      "text_markdown": "We practice motions in a mirror.",
+      "tts": {
+        "text": "We practice motions in a mirror.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sometimes I practice them in my room.",
+      "text_markdown": "Sometimes I practice them in my room.",
+      "tts": {
+        "text": "Sometimes I practice them in my room.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It probably looks weird, but I don't care.",
+      "text_markdown": "It probably looks weird, but I don't care.",
+      "tts": {
+        "text": "It probably looks weird, but I don't care.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then there are voices.",
+      "text_markdown": "Then there are voices.",
+      "tts": {
+        "text": "Then there are voices.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yes, voices.",
+      "text_markdown": "Yes, voices.",
+      "tts": {
+        "text": "Yes, voices.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We train our voices like an instrument.",
+      "text_markdown": "We train our voices like an instrument.",
+      "tts": {
+        "text": "We train our voices like an instrument.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A cheer voice is not your normal voice.",
+      "text_markdown": "A cheer voice is not your normal voice.",
+      "tts": {
+        "text": "A cheer voice is not your normal voice.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is higher and comes from the chest.",
+      "text_markdown": "It is higher and comes from the chest.",
+      "tts": {
+        "text": "It is higher and comes from the chest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You have to project, which means you push the sound out.",
+      "text_markdown": "You have to project, which means you push the sound out.",
+      "tts": {
+        "text": "You have to project, which means you push the sound out.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't yell at the back of your throat, because that hurts.",
+      "text_markdown": "You don't yell at the back of your throat, because that hurts.",
+      "tts": {
+        "text": "You don't yell at the back of your throat, because that hurts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You yell from way down.",
+      "text_markdown": "You yell from way down.",
+      "tts": {
+        "text": "You yell from way down.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you do it right, you can be loud for hours.",
+      "text_markdown": "If you do it right, you can be loud for hours.",
+      "tts": {
+        "text": "If you do it right, you can be loud for hours.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you do it wrong, you lose your voice.",
+      "text_markdown": "If you do it wrong, you lose your voice.",
+      "tts": {
+        "text": "If you do it wrong, you lose your voice.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you lose your voice, you sound like a frog for two days.",
+      "text_markdown": "If you lose your voice, you sound like a frog for two days.",
+      "tts": {
+        "text": "If you lose your voice, you sound like a frog for two days.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "What We Actually Do",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It's the worst.",
+      "text_markdown": "It's the worst.",
+      "tts": {
+        "text": "It's the worst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Team",
+      "text_markdown": "The Team"
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Okay, this is important.",
+      "text_markdown": "Okay, this is important.",
+      "tts": {
+        "text": "Okay, this is important.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A cheer team has roles.",
+      "text_markdown": "A cheer team has roles.",
+      "tts": {
+        "text": "A cheer team has roles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Different bodies do different jobs.",
+      "text_markdown": "Different bodies do different jobs.",
+      "tts": {
+        "text": "Different bodies do different jobs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The first role is the flyer.",
+      "text_markdown": "The first role is the flyer.",
+      "tts": {
+        "text": "The first role is the flyer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A flyer is the cheerleader who goes up in the air.",
+      "text_markdown": "A flyer is the cheerleader who goes up in the air.",
+      "tts": {
+        "text": "A flyer is the cheerleader who goes up in the air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They get lifted, they get tossed.",
+      "text_markdown": "They get lifted, they get tossed.",
+      "tts": {
+        "text": "They get lifted, they get tossed.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They stand on people's hands.",
+      "text_markdown": "They stand on people's hands.",
+      "tts": {
+        "text": "They stand on people's hands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They smile the whole time.",
+      "text_markdown": "They smile the whole time.",
+      "tts": {
+        "text": "They smile the whole time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Flyers are usually smaller, but not always.",
+      "text_markdown": "Flyers are usually smaller, but not always.",
+      "tts": {
+        "text": "Flyers are usually smaller, but not always.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It's about being strong and steady.",
+      "text_markdown": "It's about being strong and steady.",
+      "tts": {
+        "text": "It's about being strong and steady.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-138",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You have to hold your body super tight.",
+      "text_markdown": "You have to hold your body super tight.",
+      "tts": {
+        "text": "You have to hold your body super tight.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-139",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A floppy flyer is a falling flyer.",
+      "text_markdown": "A floppy flyer is a falling flyer.",
+      "tts": {
+        "text": "A floppy flyer is a falling flyer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch06-140",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The next role is the base.",
+      "text_markdown": "The next role is the base.",
+      "tts": {
+        "text": "The next role is the base.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-141",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A base is one of the cheerleaders who lifts the flyer.",
+      "text_markdown": "A base is one of the cheerleaders who lifts the flyer.",
+      "tts": {
+        "text": "A base is one of the cheerleaders who lifts the flyer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-142",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are usually two bases per flyer.",
+      "text_markdown": "There are usually two bases per flyer.",
+      "tts": {
+        "text": "There are usually two bases per flyer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-143",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bases need strong legs and strong shoulders.",
+      "text_markdown": "Bases need strong legs and strong shoulders.",
+      "tts": {
+        "text": "Bases need strong legs and strong shoulders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I am a base on my team.",
+      "text_markdown": "I am a base on my team.",
+      "tts": {
+        "text": "I am a base on my team.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I am pretty strong.",
+      "text_markdown": "I am pretty strong.",
+      "tts": {
+        "text": "I am pretty strong.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then there is the back spot.",
+      "text_markdown": "Then there is the back spot.",
+      "tts": {
+        "text": "Then there is the back spot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The back spot stands behind the stunt.",
+      "text_markdown": "The back spot stands behind the stunt.",
+      "tts": {
+        "text": "The back spot stands behind the stunt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Their job is to keep the flyer safe.",
+      "text_markdown": "Their job is to keep the flyer safe.",
+      "tts": {
+        "text": "Their job is to keep the flyer safe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They hold the flyer's ankles and guide them up.",
+      "text_markdown": "They hold the flyer's ankles and guide them up.",
+      "tts": {
+        "text": "They hold the flyer's ankles and guide them up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They catch them coming down.",
+      "text_markdown": "They catch them coming down.",
+      "tts": {
+        "text": "They catch them coming down.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They are like the team's safety net.",
+      "text_markdown": "They are like the team's safety net.",
+      "tts": {
+        "text": "They are like the team's safety net.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So that's a stunt group.",
+      "text_markdown": "So that's a stunt group.",
+      "tts": {
+        "text": "So that's a stunt group.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A flyer, two bases, a back spot.",
+      "text_markdown": "A flyer, two bases, a back spot.",
+      "tts": {
+        "text": "A flyer, two bases, a back spot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Four people, all for one stunt.",
+      "text_markdown": "Four people, all for one stunt.",
+      "tts": {
+        "text": "Four people, all for one stunt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trust is everything in cheer.",
+      "text_markdown": "Trust is everything in cheer.",
+      "tts": {
+        "text": "Trust is everything in cheer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I trust my flyer to stay tight.",
+      "text_markdown": "I trust my flyer to stay tight.",
+      "tts": {
+        "text": "I trust my flyer to stay tight.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "My flyer trusts me to hold her.",
+      "text_markdown": "My flyer trusts me to hold her.",
+      "tts": {
+        "text": "My flyer trusts me to hold her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I trust the back spot to catch.",
+      "text_markdown": "I trust the back spot to catch.",
+      "tts": {
+        "text": "I trust the back spot to catch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We have all caught each other before.",
+      "text_markdown": "We have all caught each other before.",
+      "tts": {
+        "text": "We have all caught each other before.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trust isn't a word you just say.",
+      "text_markdown": "Trust isn't a word you just say.",
+      "tts": {
+        "text": "Trust isn't a word you just say.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It's something you build at practice, slowly.",
+      "text_markdown": "It's something you build at practice, slowly.",
+      "tts": {
+        "text": "It's something you build at practice, slowly.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Team",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then one day you look up and you have it.",
+      "text_markdown": "Then one day you look up and you have it.",
+      "tts": {
+        "text": "Then one day you look up and you have it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Stunts and Pyramids",
+      "text_markdown": "Stunts and Pyramids"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Okay, stunts.",
+      "text_markdown": "Okay, stunts.",
+      "tts": {
+        "text": "Okay, stunts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is the part people lose their minds over.",
+      "text_markdown": "This is the part people lose their minds over.",
+      "tts": {
+        "text": "This is the part people lose their minds over.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A stunt is when a flyer is lifted into the air.",
+      "text_markdown": "A stunt is when a flyer is lifted into the air.",
+      "tts": {
+        "text": "A stunt is when a flyer is lifted into the air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The simplest stunt is called a thigh stand.",
+      "text_markdown": "The simplest stunt is called a thigh stand.",
+      "tts": {
+        "text": "The simplest stunt is called a thigh stand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The flyer stands on the bases' thighs.",
+      "text_markdown": "The flyer stands on the bases' thighs.",
+      "tts": {
+        "text": "The flyer stands on the bases' thighs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's it, pretty low and pretty safe.",
+      "text_markdown": "That's it, pretty low and pretty safe.",
+      "tts": {
+        "text": "That's it, pretty low and pretty safe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We all start there.",
+      "text_markdown": "We all start there.",
+      "tts": {
+        "text": "We all start there.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The next step up is a prep.",
+      "text_markdown": "The next step up is a prep.",
+      "tts": {
+        "text": "The next step up is a prep.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A prep is when the flyer stands on the bases' hands.",
+      "text_markdown": "A prep is when the flyer stands on the bases' hands.",
+      "tts": {
+        "text": "A prep is when the flyer stands on the bases' hands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The hands are about chin height.",
+      "text_markdown": "The hands are about chin height.",
+      "tts": {
+        "text": "The hands are about chin height.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p174",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It looks higher than it is.",
+      "text_markdown": "It looks higher than it is.",
+      "tts": {
+        "text": "It looks higher than it is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p175",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then there is an extension.",
+      "text_markdown": "Then there is an extension.",
+      "tts": {
+        "text": "Then there is an extension.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p176",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In an extension, the bases push the flyer all the way up.",
+      "text_markdown": "In an extension, the bases push the flyer all the way up.",
+      "tts": {
+        "text": "In an extension, the bases push the flyer all the way up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p177",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arms locked out.",
+      "text_markdown": "Arms locked out.",
+      "tts": {
+        "text": "Arms locked out.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p178",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The flyer is high above our heads.",
+      "text_markdown": "The flyer is high above our heads.",
+      "tts": {
+        "text": "The flyer is high above our heads.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p179",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A flyer up in an extension can see the whole gym.",
+      "text_markdown": "A flyer up in an extension can see the whole gym.",
+      "tts": {
+        "text": "A flyer up in an extension can see the whole gym.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p180",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Now, I have to be honest with you.",
+      "text_markdown": "Now, I have to be honest with you.",
+      "tts": {
+        "text": "Now, I have to be honest with you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p181",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stunts can be dangerous.",
+      "text_markdown": "Stunts can be dangerous.",
+      "tts": {
+        "text": "Stunts can be dangerous.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p182",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's not a secret.",
+      "text_markdown": "That's not a secret.",
+      "tts": {
+        "text": "That's not a secret.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p183",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's why we have rules, so many rules.",
+      "text_markdown": "That's why we have rules, so many rules.",
+      "tts": {
+        "text": "That's why we have rules, so many rules.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p184",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We always have a back spot.",
+      "text_markdown": "We always have a back spot.",
+      "tts": {
+        "text": "We always have a back spot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p185",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We always have mats when we are learning.",
+      "text_markdown": "We always have mats when we are learning.",
+      "tts": {
+        "text": "We always have mats when we are learning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p186",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We never try something new without our coach.",
+      "text_markdown": "We never try something new without our coach.",
+      "tts": {
+        "text": "We never try something new without our coach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p187",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We progress slowly.",
+      "text_markdown": "We progress slowly.",
+      "tts": {
+        "text": "We progress slowly.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p188",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That word matters.",
+      "text_markdown": "That word matters.",
+      "tts": {
+        "text": "That word matters.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p189",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Progress.",
+      "text_markdown": "Progress.",
+      "tts": {
+        "text": "Progress.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p190",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't just decide one day to do a basket toss.",
+      "text_markdown": "You don't just decide one day to do a basket toss.",
+      "tts": {
+        "text": "You don't just decide one day to do a basket toss.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p191",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A basket toss is when the bases launch the flyer up.",
+      "text_markdown": "A basket toss is when the bases launch the flyer up.",
+      "tts": {
+        "text": "A basket toss is when the bases launch the flyer up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p192",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "She flips and comes back down.",
+      "text_markdown": "She flips and comes back down.",
+      "tts": {
+        "text": "She flips and comes back down.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p193",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't do that on day one.",
+      "text_markdown": "You don't do that on day one.",
+      "tts": {
+        "text": "You don't do that on day one.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p194",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You do it after months of practice, maybe years.",
+      "text_markdown": "You do it after months of practice, maybe years.",
+      "tts": {
+        "text": "You do it after months of practice, maybe years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p195",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You earn it.",
+      "text_markdown": "You earn it.",
+      "tts": {
+        "text": "You earn it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p196",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pyramids are stunts connected together.",
+      "text_markdown": "Pyramids are stunts connected together.",
+      "tts": {
+        "text": "Pyramids are stunts connected together.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p197",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Multiple flyers in the air at once.",
+      "text_markdown": "Multiple flyers in the air at once.",
+      "tts": {
+        "text": "Multiple flyers in the air at once.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p198",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Holding hands, linked at the wrists.",
+      "text_markdown": "Holding hands, linked at the wrists.",
+      "tts": {
+        "text": "Holding hands, linked at the wrists.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p199",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It looks like a moving sculpture.",
+      "text_markdown": "It looks like a moving sculpture.",
+      "tts": {
+        "text": "It looks like a moving sculpture.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p200",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the music is right, it's the most beautiful thing in the sport.",
+      "text_markdown": "When the music is right, it's the most beautiful thing in the sport.",
+      "tts": {
+        "text": "When the music is right, it's the most beautiful thing in the sport.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p201",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The whole team is one shape.",
+      "text_markdown": "The whole team is one shape.",
+      "tts": {
+        "text": "The whole team is one shape.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Stunts and Pyramids",
+      "paragraph_id": "p202",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That moment is worth all the work.",
+      "text_markdown": "That moment is worth all the work.",
+      "tts": {
+        "text": "That moment is worth all the work.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-203",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p203",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tumbling and Jumps",
+      "text_markdown": "Tumbling and Jumps"
+    },
+    {
+      "id": "ch08-204",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p204",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tumbling is the other big piece.",
+      "text_markdown": "Tumbling is the other big piece.",
+      "tts": {
+        "text": "Tumbling is the other big piece.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-205",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p205",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tumbling is the gymnastics part of cheer.",
+      "text_markdown": "Tumbling is the gymnastics part of cheer.",
+      "tts": {
+        "text": "Tumbling is the gymnastics part of cheer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-206",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p206",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yes, cheerleaders tumble, a lot.",
+      "text_markdown": "Yes, cheerleaders tumble, a lot.",
+      "tts": {
+        "text": "Yes, cheerleaders tumble, a lot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-207",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p207",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It starts simple.",
+      "text_markdown": "It starts simple.",
+      "tts": {
+        "text": "It starts simple.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-208",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p208",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cartwheel.",
+      "text_markdown": "Cartwheel.",
+      "tts": {
+        "text": "Cartwheel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-209",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p209",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Everyone learns a cartwheel first.",
+      "text_markdown": "Everyone learns a cartwheel first.",
+      "tts": {
+        "text": "Everyone learns a cartwheel first.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-210",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p210",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hands down, feet over, land.",
+      "text_markdown": "Hands down, feet over, land.",
+      "tts": {
+        "text": "Hands down, feet over, land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-211",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p211",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The next one is a round-off.",
+      "text_markdown": "The next one is a round-off.",
+      "tts": {
+        "text": "The next one is a round-off.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-212",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p212",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A round-off is like a cartwheel, but you snap your feet together at the end.",
+      "text_markdown": "A round-off is like a cartwheel, but you snap your feet together at the end.",
+      "tts": {
+        "text": "A round-off is like a cartwheel, but you snap your feet together at the end.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-213",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p213",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You land facing the other way.",
+      "text_markdown": "You land facing the other way.",
+      "tts": {
+        "text": "You land facing the other way.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-214",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p214",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It gives you power.",
+      "text_markdown": "It gives you power.",
+      "tts": {
+        "text": "It gives you power.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-215",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p215",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tumblers chain skills together.",
+      "text_markdown": "Tumblers chain skills together.",
+      "tts": {
+        "text": "Tumblers chain skills together.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-216",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p216",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Round-off into a back handspring.",
+      "text_markdown": "Round-off into a back handspring.",
+      "tts": {
+        "text": "Round-off into a back handspring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-217",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p217",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A back handspring is when you spring backward onto your hands, then back to your feet.",
+      "text_markdown": "A back handspring is when you spring backward onto your hands, then back to your feet.",
+      "tts": {
+        "text": "A back handspring is when you spring backward onto your hands, then back to your feet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-218",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p218",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is so fast.",
+      "text_markdown": "It is so fast.",
+      "tts": {
+        "text": "It is so fast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-219",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p219",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you can do them in a row, that's a tumbling pass.",
+      "text_markdown": "When you can do them in a row, that's a tumbling pass.",
+      "tts": {
+        "text": "When you can do them in a row, that's a tumbling pass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-220",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p220",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A tumbler usually starts with cartwheels and round-offs.",
+      "text_markdown": "A tumbler usually starts with cartwheels and round-offs.",
+      "tts": {
+        "text": "A tumbler usually starts with cartwheels and round-offs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-221",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p221",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then back handsprings come next.",
+      "text_markdown": "Then back handsprings come next.",
+      "tts": {
+        "text": "Then back handsprings come next.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-222",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p222",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each new skill takes time and a coach to spot you.",
+      "text_markdown": "Each new skill takes time and a coach to spot you.",
+      "tts": {
+        "text": "Each new skill takes time and a coach to spot you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-223",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p223",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spot means the coach holds your back as you go over.",
+      "text_markdown": "Spot means the coach holds your back as you go over.",
+      "tts": {
+        "text": "Spot means the coach holds your back as you go over.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-224",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p224",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slowly you need less help.",
+      "text_markdown": "Slowly you need less help.",
+      "tts": {
+        "text": "Slowly you need less help.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-225",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p225",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's how you learn.",
+      "text_markdown": "That's how you learn.",
+      "tts": {
+        "text": "That's how you learn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-226",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p226",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You have your part on the team.",
+      "text_markdown": "You have your part on the team.",
+      "tts": {
+        "text": "You have your part on the team.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-227",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p227",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I'm a strong base, that's my part.",
+      "text_markdown": "I'm a strong base, that's my part.",
+      "tts": {
+        "text": "I'm a strong base, that's my part.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-228",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p228",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Now, jumps.",
+      "text_markdown": "Now, jumps.",
+      "tts": {
+        "text": "Now, jumps.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-229",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p229",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A jump is when you push off the ground with both feet.",
+      "text_markdown": "A jump is when you push off the ground with both feet.",
+      "tts": {
+        "text": "A jump is when you push off the ground with both feet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-230",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p230",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You make a shape in the air, then you land.",
+      "text_markdown": "You make a shape in the air, then you land.",
+      "tts": {
+        "text": "You make a shape in the air, then you land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-231",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p231",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The most famous jump is the toe touch.",
+      "text_markdown": "The most famous jump is the toe touch.",
+      "tts": {
+        "text": "The most famous jump is the toe touch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-232",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p232",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In a toe touch, your legs go out to the sides.",
+      "text_markdown": "In a toe touch, your legs go out to the sides.",
+      "tts": {
+        "text": "In a toe touch, your legs go out to the sides.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-233",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p233",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Your hands reach forward.",
+      "text_markdown": "Your hands reach forward.",
+      "tts": {
+        "text": "Your hands reach forward.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-234",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p234",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You look like a giant letter V.",
+      "text_markdown": "You look like a giant letter V.",
+      "tts": {
+        "text": "You look like a giant letter V.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-235",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p235",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is harder than it looks.",
+      "text_markdown": "It is harder than it looks.",
+      "tts": {
+        "text": "It is harder than it looks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-236",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p236",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Another jump is the herkie.",
+      "text_markdown": "Another jump is the herkie.",
+      "tts": {
+        "text": "Another jump is the herkie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-237",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p237",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In a herkie, one leg goes straight to the side.",
+      "text_markdown": "In a herkie, one leg goes straight to the side.",
+      "tts": {
+        "text": "In a herkie, one leg goes straight to the side.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-238",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p238",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The other leg bends behind you.",
+      "text_markdown": "The other leg bends behind you.",
+      "tts": {
+        "text": "The other leg bends behind you.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-239",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p239",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It looks like you're sitting on the wind.",
+      "text_markdown": "It looks like you're sitting on the wind.",
+      "tts": {
+        "text": "It looks like you're sitting on the wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-240",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p240",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A good jumper makes it look effortless.",
+      "text_markdown": "A good jumper makes it look effortless.",
+      "tts": {
+        "text": "A good jumper makes it look effortless.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-241",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p241",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is not effortless.",
+      "text_markdown": "It is not effortless.",
+      "tts": {
+        "text": "It is not effortless.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-242",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p242",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Your legs burn after.",
+      "text_markdown": "Your legs burn after.",
+      "tts": {
+        "text": "Your legs burn after.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-243",
+      "part": 0,
+      "chapter": 8,
+      "title": "Tumbling and Jumps",
+      "paragraph_id": "p243",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But when a whole team hits a jump at the same time, snap, it's gorgeous.",
+      "text_markdown": "But when a whole team hits a jump at the same time, snap, it's gorgeous.",
+      "tts": {
+        "text": "But when a whole team hits a jump at the same time, snap, it's gorgeous.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch09-244",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p244",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Game Day",
+      "text_markdown": "Game Day"
+    },
+    {
+      "id": "ch09-245",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p245",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Game days are a whole vibe.",
+      "text_markdown": "Game days are a whole vibe.",
+      "tts": {
+        "text": "Game days are a whole vibe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-246",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p246",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's how my coach says it.",
+      "text_markdown": "That's how my coach says it.",
+      "tts": {
+        "text": "That's how my coach says it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-247",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p247",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We have a varsity basketball team at our school, and we cheer for them.",
+      "text_markdown": "We have a varsity basketball team at our school, and we cheer for them.",
+      "tts": {
+        "text": "We have a varsity basketball team at our school, and we cheer for them.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-248",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p248",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You feel it before your feet touch the floor.",
+      "text_markdown": "You feel it before your feet touch the floor.",
+      "tts": {
+        "text": "You feel it before your feet touch the floor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-249",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p249",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We pack our bag the night before.",
+      "text_markdown": "We pack our bag the night before.",
+      "tts": {
+        "text": "We pack our bag the night before.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-250",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p250",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uniform, shoes, bow, water bottle, snack.",
+      "text_markdown": "Uniform, shoes, bow, water bottle, snack.",
+      "tts": {
+        "text": "Uniform, shoes, bow, water bottle, snack.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-251",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p251",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The uniform is a big deal.",
+      "text_markdown": "The uniform is a big deal.",
+      "tts": {
+        "text": "The uniform is a big deal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-252",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p252",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We all match, that's the whole point.",
+      "text_markdown": "We all match, that's the whole point.",
+      "tts": {
+        "text": "We all match, that's the whole point.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-253",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p253",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some of the boys wear a top with shorts.",
+      "text_markdown": "Some of the boys wear a top with shorts.",
+      "tts": {
+        "text": "Some of the boys wear a top with shorts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-254",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p254",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It still matches.",
+      "text_markdown": "It still matches.",
+      "tts": {
+        "text": "It still matches.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-255",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p255",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The point is that you look like one team.",
+      "text_markdown": "The point is that you look like one team.",
+      "tts": {
+        "text": "The point is that you look like one team.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-256",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p256",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hair has to be tight and out of your face.",
+      "text_markdown": "Hair has to be tight and out of your face.",
+      "tts": {
+        "text": "Hair has to be tight and out of your face.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-257",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p257",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In a high pony with a bow.",
+      "text_markdown": "In a high pony with a bow.",
+      "tts": {
+        "text": "In a high pony with a bow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-258",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p258",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The bow is part of the uniform, too.",
+      "text_markdown": "The bow is part of the uniform, too.",
+      "tts": {
+        "text": "The bow is part of the uniform, too.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-259",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p259",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It's bigger than your head.",
+      "text_markdown": "It's bigger than your head.",
+      "tts": {
+        "text": "It's bigger than your head.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-260",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p260",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pom-poms.",
+      "text_markdown": "Pom-poms.",
+      "tts": {
+        "text": "Pom-poms.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-261",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p261",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People think cheer is just pom-poms, but it's not.",
+      "text_markdown": "People think cheer is just pom-poms, but it's not.",
+      "tts": {
+        "text": "People think cheer is just pom-poms, but it's not.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-262",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p262",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We do use them though.",
+      "text_markdown": "We do use them though.",
+      "tts": {
+        "text": "We do use them though.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-263",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p263",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A pom-pom is two layers of plastic strips on a handle.",
+      "text_markdown": "A pom-pom is two layers of plastic strips on a handle.",
+      "tts": {
+        "text": "A pom-pom is two layers of plastic strips on a handle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch09-264",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p264",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you shake it, it sounds like rain.",
+      "text_markdown": "When you shake it, it sounds like rain.",
+      "tts": {
+        "text": "When you shake it, it sounds like rain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-265",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p265",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A whole team shaking them sounds amazing.",
+      "text_markdown": "A whole team shaking them sounds amazing.",
+      "tts": {
+        "text": "A whole team shaking them sounds amazing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-266",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p266",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Game day starts before the game.",
+      "text_markdown": "Game day starts before the game.",
+      "tts": {
+        "text": "Game day starts before the game.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch09-267",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p267",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We warm up in a side hallway.",
+      "text_markdown": "We warm up in a side hallway.",
+      "tts": {
+        "text": "We warm up in a side hallway.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-268",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p268",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We stretch and run through chants.",
+      "text_markdown": "We stretch and run through chants.",
+      "tts": {
+        "text": "We stretch and run through chants.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-269",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p269",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We hype each other up.",
+      "text_markdown": "We hype each other up.",
+      "tts": {
+        "text": "We hype each other up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-270",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p270",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then the players run out of the locker room.",
+      "text_markdown": "Then the players run out of the locker room.",
+      "tts": {
+        "text": "Then the players run out of the locker room.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-271",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p271",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We line the tunnel and slap their hands.",
+      "text_markdown": "We line the tunnel and slap their hands.",
+      "tts": {
+        "text": "We line the tunnel and slap their hands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-272",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p272",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The gym is already loud.",
+      "text_markdown": "The gym is already loud.",
+      "tts": {
+        "text": "The gym is already loud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-273",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p273",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The pep band is playing.",
+      "text_markdown": "The pep band is playing.",
+      "tts": {
+        "text": "The pep band is playing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-274",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p274",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then the game starts.",
+      "text_markdown": "Then the game starts.",
+      "tts": {
+        "text": "Then the game starts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-275",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p275",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If our team scores, we go.",
+      "text_markdown": "If our team scores, we go.",
+      "tts": {
+        "text": "If our team scores, we go.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-276",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p276",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If they steal the ball, we go.",
+      "text_markdown": "If they steal the ball, we go.",
+      "tts": {
+        "text": "If they steal the ball, we go.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-277",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p277",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If they need a boost, we go louder.",
+      "text_markdown": "If they need a boost, we go louder.",
+      "tts": {
+        "text": "If they need a boost, we go louder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-278",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p278",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Timeouts are our time.",
+      "text_markdown": "Timeouts are our time.",
+      "tts": {
+        "text": "Timeouts are our time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-279",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p279",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the buzzer goes for a timeout, we run out onto the court.",
+      "text_markdown": "When the buzzer goes for a timeout, we run out onto the court.",
+      "tts": {
+        "text": "When the buzzer goes for a timeout, we run out onto the court.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-280",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p280",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We do a quick cheer, then we run off before the players come back.",
+      "text_markdown": "We do a quick cheer, then we run off before the players come back.",
+      "tts": {
+        "text": "We do a quick cheer, then we run off before the players come back.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-281",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p281",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Halftime is our biggest moment.",
+      "text_markdown": "Halftime is our biggest moment.",
+      "tts": {
+        "text": "Halftime is our biggest moment.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-282",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p282",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We do a full performance at halftime.",
+      "text_markdown": "We do a full performance at halftime.",
+      "tts": {
+        "text": "We do a full performance at halftime.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-283",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p283",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Music, stunts, the whole thing.",
+      "text_markdown": "Music, stunts, the whole thing.",
+      "tts": {
+        "text": "Music, stunts, the whole thing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-284",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p284",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The whole gym is watching.",
+      "text_markdown": "The whole gym is watching.",
+      "tts": {
+        "text": "The whole gym is watching.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-285",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p285",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I love halftime.",
+      "text_markdown": "I love halftime.",
+      "tts": {
+        "text": "I love halftime.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-286",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p286",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After the game we line up again.",
+      "text_markdown": "After the game we line up again.",
+      "tts": {
+        "text": "After the game we line up again.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-287",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p287",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We slap hands with our players, win or lose.",
+      "text_markdown": "We slap hands with our players, win or lose.",
+      "tts": {
+        "text": "We slap hands with our players, win or lose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-288",
+      "part": 0,
+      "chapter": 9,
+      "title": "Game Day",
+      "paragraph_id": "p288",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That part matters.",
+      "text_markdown": "That part matters.",
+      "tts": {
+        "text": "That part matters.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-289",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p289",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Competition",
+      "text_markdown": "Competition"
+    },
+    {
+      "id": "ch10-290",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p290",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Competitions are different.",
+      "text_markdown": "Competitions are different.",
+      "tts": {
+        "text": "Competitions are different.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-291",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p291",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bigger, louder, scarier.",
+      "text_markdown": "Bigger, louder, scarier.",
+      "tts": {
+        "text": "Bigger, louder, scarier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-292",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p292",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In a good way.",
+      "text_markdown": "In a good way.",
+      "tts": {
+        "text": "In a good way.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-293",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p293",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We compete a few times a year.",
+      "text_markdown": "We compete a few times a year.",
+      "tts": {
+        "text": "We compete a few times a year.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch10-294",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p294",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some competitions are in school gyms.",
+      "text_markdown": "Some competitions are in school gyms.",
+      "tts": {
+        "text": "Some competitions are in school gyms.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-295",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p295",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some are in giant arenas.",
+      "text_markdown": "Some are in giant arenas.",
+      "tts": {
+        "text": "Some are in giant arenas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-296",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p296",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The lights at an arena are huge.",
+      "text_markdown": "The lights at an arena are huge.",
+      "tts": {
+        "text": "The lights at an arena are huge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-297",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p297",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The floor is a special spring floor.",
+      "text_markdown": "The floor is a special spring floor.",
+      "tts": {
+        "text": "The floor is a special spring floor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch10-298",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p298",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It's springy under your shoes.",
+      "text_markdown": "It's springy under your shoes.",
+      "tts": {
+        "text": "It's springy under your shoes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-299",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p299",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spring floors help you tumble higher.",
+      "text_markdown": "Spring floors help you tumble higher.",
+      "tts": {
+        "text": "Spring floors help you tumble higher.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-300",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p300",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each team gets one shot.",
+      "text_markdown": "Each team gets one shot.",
+      "tts": {
+        "text": "Each team gets one shot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-301",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p301",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Two minutes and thirty seconds.",
+      "text_markdown": "Two minutes and thirty seconds.",
+      "tts": {
+        "text": "Two minutes and thirty seconds.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-302",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p302",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's a competition routine.",
+      "text_markdown": "That's a competition routine.",
+      "tts": {
+        "text": "That's a competition routine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-303",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p303",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You walk on the floor and smile.",
+      "text_markdown": "You walk on the floor and smile.",
+      "tts": {
+        "text": "You walk on the floor and smile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-304",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p304",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You hit your starting pose.",
+      "text_markdown": "You hit your starting pose.",
+      "tts": {
+        "text": "You hit your starting pose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-305",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p305",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The music drops.",
+      "text_markdown": "The music drops.",
+      "tts": {
+        "text": "The music drops.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-306",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p306",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then you don't think, you just do.",
+      "text_markdown": "Then you don't think, you just do.",
+      "tts": {
+        "text": "Then you don't think, you just do.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch10-307",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p307",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tumbling, stunts, a pyramid, a dance, jumps, another stunt.",
+      "text_markdown": "Tumbling, stunts, a pyramid, a dance, jumps, another stunt.",
+      "tts": {
+        "text": "Tumbling, stunts, a pyramid, a dance, jumps, another stunt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch10-308",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p308",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "All in two and a half minutes.",
+      "text_markdown": "All in two and a half minutes.",
+      "tts": {
+        "text": "All in two and a half minutes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-309",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p309",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The crowd screams the whole time.",
+      "text_markdown": "The crowd screams the whole time.",
+      "tts": {
+        "text": "The crowd screams the whole time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch10-310",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p310",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You can barely hear the music sometimes.",
+      "text_markdown": "You can barely hear the music sometimes.",
+      "tts": {
+        "text": "You can barely hear the music sometimes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-311",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p311",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You know it in your bones.",
+      "text_markdown": "You know it in your bones.",
+      "tts": {
+        "text": "You know it in your bones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-312",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p312",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The hardest part is the cradle.",
+      "text_markdown": "The hardest part is the cradle.",
+      "tts": {
+        "text": "The hardest part is the cradle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch10-313",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p313",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A cradle is how a flyer comes down safely.",
+      "text_markdown": "A cradle is how a flyer comes down safely.",
+      "tts": {
+        "text": "A cradle is how a flyer comes down safely.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch10-314",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p314",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The bases catch her in their arms.",
+      "text_markdown": "The bases catch her in their arms.",
+      "tts": {
+        "text": "The bases catch her in their arms.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-315",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p315",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you miss a cradle, that's a fall.",
+      "text_markdown": "If you miss a cradle, that's a fall.",
+      "tts": {
+        "text": "If you miss a cradle, that's a fall.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch10-316",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p316",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Falls cost points.",
+      "text_markdown": "Falls cost points.",
+      "tts": {
+        "text": "Falls cost points.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-317",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p317",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We practice cradles a thousand times.",
+      "text_markdown": "We practice cradles a thousand times.",
+      "tts": {
+        "text": "We practice cradles a thousand times.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-318",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p318",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you finish the routine, you hit your final pose.",
+      "text_markdown": "When you finish the routine, you hit your final pose.",
+      "tts": {
+        "text": "When you finish the routine, you hit your final pose.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch10-319",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p319",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You hold it.",
+      "text_markdown": "You hold it.",
+      "tts": {
+        "text": "You hold it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-320",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p320",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The music ends.",
+      "text_markdown": "The music ends.",
+      "tts": {
+        "text": "The music ends.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-321",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p321",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The crowd screams louder.",
+      "text_markdown": "The crowd screams louder.",
+      "tts": {
+        "text": "The crowd screams louder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-322",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p322",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then you walk off the floor, and then you cry.",
+      "text_markdown": "Then you walk off the floor, and then you cry.",
+      "tts": {
+        "text": "Then you walk off the floor, and then you cry.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch10-323",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p323",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Almost everybody cries a little, happy crying.",
+      "text_markdown": "Almost everybody cries a little, happy crying.",
+      "tts": {
+        "text": "Almost everybody cries a little, happy crying.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-324",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p324",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Then you wait for scores.",
+      "text_markdown": "Then you wait for scores.",
+      "tts": {
+        "text": "Then you wait for scores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-325",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p325",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You sit in your warm-up jacket.",
+      "text_markdown": "You sit in your warm-up jacket.",
+      "tts": {
+        "text": "You sit in your warm-up jacket.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-326",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p326",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When they call the scores, your stomach flips.",
+      "text_markdown": "When they call the scores, your stomach flips.",
+      "tts": {
+        "text": "When they call the scores, your stomach flips.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-327",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p327",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you place, you scream and hug.",
+      "text_markdown": "If you place, you scream and hug.",
+      "tts": {
+        "text": "If you place, you scream and hug.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch10-328",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p328",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The team hug after a routine is everything.",
+      "text_markdown": "The team hug after a routine is everything.",
+      "tts": {
+        "text": "The team hug after a routine is everything.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch10-329",
+      "part": 0,
+      "chapter": 10,
+      "title": "Competition",
+      "paragraph_id": "p329",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's why we train.",
+      "text_markdown": "That's why we train.",
+      "tts": {
+        "text": "That's why we train.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-330",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p330",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "If You Try It",
+      "text_markdown": "If You Try It"
+    },
+    {
+      "id": "ch11-331",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p331",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Okay, a few last things.",
+      "text_markdown": "Okay, a few last things.",
+      "tts": {
+        "text": "Okay, a few last things.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-332",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p332",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most days are practice days.",
+      "text_markdown": "Most days are practice days.",
+      "tts": {
+        "text": "Most days are practice days.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch11-333",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p333",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Not competition days, not game days, just practice.",
+      "text_markdown": "Not competition days, not game days, just practice.",
+      "tts": {
+        "text": "Not competition days, not game days, just practice.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch11-334",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p334",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We practice multiple days a week, a couple hours each time.",
+      "text_markdown": "We practice multiple days a week, a couple hours each time.",
+      "tts": {
+        "text": "We practice multiple days a week, a couple hours each time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch11-335",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p335",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We stretch and we condition.",
+      "text_markdown": "We stretch and we condition.",
+      "tts": {
+        "text": "We stretch and we condition.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch11-336",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p336",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That means push-ups and planks and lots of running.",
+      "text_markdown": "That means push-ups and planks and lots of running.",
+      "tts": {
+        "text": "That means push-ups and planks and lots of running.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch11-337",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p337",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cheer is a workout.",
+      "text_markdown": "Cheer is a workout.",
+      "tts": {
+        "text": "Cheer is a workout.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-338",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p338",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People don't always realize that.",
+      "text_markdown": "People don't always realize that.",
+      "tts": {
+        "text": "People don't always realize that.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-339",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p339",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We work on motions in a mirror.",
+      "text_markdown": "We work on motions in a mirror.",
+      "tts": {
+        "text": "We work on motions in a mirror.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-340",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p340",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We drill the same eight counts ten times.",
+      "text_markdown": "We drill the same eight counts ten times.",
+      "tts": {
+        "text": "We drill the same eight counts ten times.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-341",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p341",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's how you get sharp.",
+      "text_markdown": "That's how you get sharp.",
+      "tts": {
+        "text": "That's how you get sharp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-342",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p342",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some practices are hard, some are funny.",
+      "text_markdown": "Some practices are hard, some are funny.",
+      "tts": {
+        "text": "Some practices are hard, some are funny.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch11-343",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p343",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We laugh a lot.",
+      "text_markdown": "We laugh a lot.",
+      "tts": {
+        "text": "We laugh a lot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-344",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p344",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you have never tried cheer, here is what I would say.",
+      "text_markdown": "If you have never tried cheer, here is what I would say.",
+      "tts": {
+        "text": "If you have never tried cheer, here is what I would say.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-345",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p345",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't need to be a certain kind of kid.",
+      "text_markdown": "You don't need to be a certain kind of kid.",
+      "tts": {
+        "text": "You don't need to be a certain kind of kid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-346",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p346",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't need to be flexible yet.",
+      "text_markdown": "You don't need to be flexible yet.",
+      "tts": {
+        "text": "You don't need to be flexible yet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-347",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p347",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't need to know how to do a cartwheel.",
+      "text_markdown": "You don't need to know how to do a cartwheel.",
+      "tts": {
+        "text": "You don't need to know how to do a cartwheel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch11-348",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p348",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't need to be loud yet.",
+      "text_markdown": "You don't need to be loud yet.",
+      "tts": {
+        "text": "You don't need to be loud yet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-349",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p349",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "All of that comes.",
+      "text_markdown": "All of that comes.",
+      "tts": {
+        "text": "All of that comes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-350",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p350",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You just need to be willing to try.",
+      "text_markdown": "You just need to be willing to try.",
+      "tts": {
+        "text": "You just need to be willing to try.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch11-351",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p351",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cheer has a place for tall kids and small kids.",
+      "text_markdown": "Cheer has a place for tall kids and small kids.",
+      "tts": {
+        "text": "Cheer has a place for tall kids and small kids.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch11-352",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p352",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For shy kids and loud kids.",
+      "text_markdown": "For shy kids and loud kids.",
+      "tts": {
+        "text": "For shy kids and loud kids.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch11-353",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p353",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For boys and girls.",
+      "text_markdown": "For boys and girls.",
+      "tts": {
+        "text": "For boys and girls.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-354",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p354",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For everybody.",
+      "text_markdown": "For everybody.",
+      "tts": {
+        "text": "For everybody.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-355",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p355",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You can start by learning one chant.",
+      "text_markdown": "You can start by learning one chant.",
+      "tts": {
+        "text": "You can start by learning one chant.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-356",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p356",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Just one.",
+      "text_markdown": "Just one.",
+      "tts": {
+        "text": "Just one.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-357",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p357",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Learn it with a friend.",
+      "text_markdown": "Learn it with a friend.",
+      "tts": {
+        "text": "Learn it with a friend.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-358",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p358",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Try it in your backyard.",
+      "text_markdown": "Try it in your backyard.",
+      "tts": {
+        "text": "Try it in your backyard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-359",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p359",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "See how it feels to be loud together.",
+      "text_markdown": "See how it feels to be loud together.",
+      "tts": {
+        "text": "See how it feels to be loud together.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-360",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p360",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If there is a team near you, ask.",
+      "text_markdown": "If there is a team near you, ask.",
+      "tts": {
+        "text": "If there is a team near you, ask.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-361",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p361",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most teams welcome new kids.",
+      "text_markdown": "Most teams welcome new kids.",
+      "tts": {
+        "text": "Most teams welcome new kids.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-362",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p362",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If there isn't a team, that's okay.",
+      "text_markdown": "If there isn't a team, that's okay.",
+      "tts": {
+        "text": "If there isn't a team, that's okay.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-363",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p363",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cheer at home, cheer at the playground.",
+      "text_markdown": "Cheer at home, cheer at the playground.",
+      "tts": {
+        "text": "Cheer at home, cheer at the playground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch11-364",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p364",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cheer for your friend at their soccer game.",
+      "text_markdown": "Cheer for your friend at their soccer game.",
+      "tts": {
+        "text": "Cheer for your friend at their soccer game.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-365",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p365",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You don't need a uniform to bring energy.",
+      "text_markdown": "You don't need a uniform to bring energy.",
+      "tts": {
+        "text": "You don't need a uniform to bring energy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-366",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p366",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's the secret.",
+      "text_markdown": "That's the secret.",
+      "tts": {
+        "text": "That's the secret.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-367",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p367",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cheer is mostly about energy.",
+      "text_markdown": "Cheer is mostly about energy.",
+      "tts": {
+        "text": "Cheer is mostly about energy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-368",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p368",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The flips are cool, the stunts are cool.",
+      "text_markdown": "The flips are cool, the stunts are cool.",
+      "tts": {
+        "text": "The flips are cool, the stunts are cool.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch11-369",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p369",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the energy is the heart.",
+      "text_markdown": "But the energy is the heart.",
+      "tts": {
+        "text": "But the energy is the heart.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch11-370",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p370",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I have to go now.",
+      "text_markdown": "I have to go now.",
+      "tts": {
+        "text": "I have to go now.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-371",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p371",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I have practice in a little while.",
+      "text_markdown": "I have practice in a little while.",
+      "tts": {
+        "text": "I have practice in a little while.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-372",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p372",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thanks for listening.",
+      "text_markdown": "Thanks for listening.",
+      "tts": {
+        "text": "Thanks for listening.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-373",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p373",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Go be loud about something today.",
+      "text_markdown": "Go be loud about something today.",
+      "tts": {
+        "text": "Go be loud about something today.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-374",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p374",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That's a cheer thing.",
+      "text_markdown": "That's a cheer thing.",
+      "tts": {
+        "text": "That's a cheer thing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch11-375",
+      "part": 0,
+      "chapter": 11,
+      "title": "If You Try It",
+      "paragraph_id": "p375",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bye.",
+      "text_markdown": "Bye.",
+      "tts": {
+        "text": "Bye.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

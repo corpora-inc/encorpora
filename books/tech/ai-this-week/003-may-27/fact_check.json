@@ -1,0 +1,68 @@
+{
+  "issue_date": "2026-05-27",
+  "ran_at": "2026-05-29",
+  "method": "Manuscript claims audited against the three dated/sourced research files (research/02_open_weights_multimodal.md, 03_open_tts_audio.md, 04_leaderboards_macro.md). Every substantive claim traces to a research item with a verifying URL. Window news vs. context flagged in research; manuscript uses anchored/relative dates and hedges all vendor/benchmark numbers ('they claim', 'trackers report', 'vendor blind test').",
+  "gate": "PASS — no unresolved CORRECTED claims. TTS spend authorized.",
+  "must_fix_applied": [
+    {
+      "claim": "'against about 4.9 trillion for US models'",
+      "correction": "Changed display+audio to 'American models'. 'US' risked being read by the TTS voice as the word 'us'. Substance (US-origin models per OpenRouter telemetry) unchanged.",
+      "segments": ["ch00-072"],
+      "sources": ["https://english.dotdotnews.com/a/202605/26/AP6a151281e4b09ea2331677fb.html"]
+    }
+  ],
+  "hedged_or_kept": [
+    {
+      "claim": "Best open models around 80% on SWE-bench Verified (Kimi K2.6, MiniMax; DeepSeek's biggest model claiming similar)",
+      "status": "HEDGED",
+      "note": "Manuscript explicitly says 'claiming' and 'the trackers disagree with each other' and 'treat any single benchmark number as a claim, not a fact.' Trackers report ~80.2% (MiniMax M2.5, Kimi K2.6) and ~80.6% (DeepSeek V4 Pro Max, claimed); figures are unreconciled vendor/third-party mixes.",
+      "segments": ["ch00-090", "ch00-091", "ch00-093", "ch00-094"],
+      "sources": ["https://www.swebench.com/", "https://andrew.ooo/answers/swe-bench-verified-leaderboard-may-2026/"]
+    },
+    {
+      "claim": "OmniVoice claims over 600 languages",
+      "status": "HEDGED",
+      "note": "Manuscript says 'claims over 600 languages' and immediately adds the skepticism beat: 'Covering a language is not the same as sounding good in it... you still have to listen, language by language, before you trust it.' Coverage breadth, not verified per-lang quality.",
+      "segments": ["ch00-148", "ch00-149", "ch00-151", "ch00-152", "ch00-153", "ch00-154"],
+      "sources": ["https://github.com/k2-fsa/OmniVoice", "https://huggingface.co/k2-fsa/OmniVoice"]
+    },
+    {
+      "claim": "Every 'beats the leader' TTS claim is a vendor blind test",
+      "status": "KEPT",
+      "note": "Manuscript states this explicitly as the skepticism beat (ch00-181 to ch00-183). Research confirms all 'beats ElevenLabs' numbers (Chatterbox 65.3%, Voxtral 68.4%, VoxCPM2 similarity) are vendor-run; VoxCPM2 reportedly loses the full benchmark.",
+      "segments": ["ch00-181", "ch00-182", "ch00-183"],
+      "sources": ["https://www.resemble.ai/chatterbox-turbo/", "https://github.com/OpenBMB/VoxCPM"]
+    },
+    {
+      "claim": "Moonshine v2 beats Whisper on accuracy at a fraction of the size",
+      "status": "KEPT",
+      "note": "True per source (beats Whisper Large-v3 accuracy at far fewer params, built for Pi/phone). English-centric caveat from research omitted for fast-clip brevity; not a misstatement.",
+      "segments": ["ch00-121", "ch00-122"],
+      "sources": ["https://github.com/moonshine-ai/moonshine", "https://arxiv.org/html/2602.12241v1"]
+    }
+  ],
+  "all_verified": [
+    {"claim": "No new frontier open-weights model shipped in the window 2026-05-21 to 05-27", "sources": ["research/02_open_weights_multimodal.md NEGATIVE FINDINGS"]},
+    {"claim": "SGLang shipped a DeepSeek-V4 stability patch on 2026-05-26 (garbled decode on newest cards, crash under heavy load)", "sources": ["https://github.com/sgl-project/sglang/releases/tag/v0.5.12.post1"]},
+    {"claim": "SGLang and vLLM are the two main open self-hosting engines", "sources": ["research/02"]},
+    {"claim": "DeepSeek made its 75% V4-Pro price cut permanent ~2026-05-22; output ~$0.87 per 1M tokens, ~one quarter of launch", "sources": ["https://www.engadget.com/2180062/deepseek-permanently-reduces-the-price-of-its-flagship-v4-model-by-75-percent/", "https://thenextweb.com/news/deepseek-v4-pro-75-percent-price-cut-permanent"]},
+    {"claim": "llama.cpp ships near-daily builds; in-window speed work on Vulkan, Intel, and phone-class chips", "sources": ["https://github.com/ggml-org/llama.cpp/releases"]},
+    {"claim": "April Chinese open wave: DeepSeek V4, Qwen 3.6, Kimi K2.6 and more within ~2 weeks", "sources": ["https://www.abhs.in/blog/chinese-open-weights-models-4-in-12-days-glm-minimax-kimi-deepseek-cost-war-2026"]},
+    {"claim": "Qwen 3.7 Max is API-only (no open weights); open Qwen still tops at 3.6; Mistral-style closed-flagship/open-mid-tier fork; no open Qwen 3.7 on Hugging Face as of the window", "sources": ["https://www.yottalabs.ai/post/qwen-3-7-vs-qwen-3-6-what-actually-exists-and-what-to-use-in-production"]},
+    {"claim": "OpenRouter usage week May 18-24 (pub 05-26): DeepSeek V4-Flash #1 at ~3.43T tokens; Chinese models ~9.2T vs US ~4.9T; 4th straight week China leads usage", "sources": ["https://english.dotdotnews.com/a/202605/26/AP6a151281e4b09ea2331677fb.html", "https://openrouter.ai/deepseek/deepseek-v4-flash"]},
+    {"claim": "DeepSeek V4-Flash is open-weight, MIT-licensed, 284B total / 13B active MoE, 1M context", "sources": ["https://openrouter.ai/deepseek/deepseek-v4-flash"]},
+    {"claim": "Tencent Hy3 surged on OpenRouter usage; Max Woolf teardown (2026-05-26): high cache-read cost makes effective price ~2x DeepSeek; spike likely one large app", "sources": ["https://minimaxir.com/2026/05/openrouter-hy3/"]},
+    {"claim": "Top of chat-quality and agent-terminal leaderboards is all closed models", "sources": ["https://openlm.ai/chatbot-arena/", "https://www.tbench.ai/leaderboard/terminal-bench/2.0"]},
+    {"claim": "Paper arguing benchmarks should be contamination-resistant submitted 2026-05-19", "sources": ["https://arxiv.org/abs/2605.19999"]},
+    {"claim": "DeepSeek V4-Flash self-host needs ~170GB GPU memory; a pair of top data-center cards ~$7/hr cloud; API wins below very heavy traffic", "sources": ["https://www.runpod.io/blog/deepseek-v4-in-the-wild-and-how-to-run-it-on-runpod", "https://aitechconnect.in/news/deepseek-v4-pro-self-host-break-even-8xh100"]},
+    {"claim": "Community quant groups (e.g. Unsloth) ship tuned/shrunk versions of new models within days", "sources": ["https://unsloth.ai/blog/dynamic-v2"]},
+    {"claim": "NVIDIA Parakeet is the speed pick for bulk server transcription", "sources": ["https://www.gladia.io/blog/best-open-source-speech-to-text-models"]},
+    {"claim": "On 2026-05-21 Jensen Huang said Nvidia has largely conceded China's advanced-chip market to Huawei; China blocking even approved Nvidia imports", "sources": ["https://www.cnbc.com/2026/05/21/nvidia-jensen-huang-china-ai-chip-market-huawei.html", "https://www.tomshardware.com/tech-industry/trump-says-china-is-blocking-h200-purchases"]},
+    {"claim": "Chinese open models topping usage are increasingly trained/served on Huawei silicon; export controls bootstrapped a parallel open stack", "sources": ["https://www.cnbc.com/2026/05/25/huawei-chip-logicfolding-semiconductor-nvidia-china.html", "research/02 HF State-of-Open-Source spring 2026"]},
+    {"claim": "Chatterbox (Resemble AI) is MIT-licensed, 23 languages, runs on-device; Chatterbox-Turbo (2026-03-26) uses a 1-step (vs 10-step) decoder for less compute", "sources": ["https://www.resemble.ai/chatterbox-turbo/", "https://huggingface.co/ResembleAI/chatterbox-turbo"]},
+    {"claim": "VoxCPM2 (OpenBMB) ~2B params, Apache 2.0, 30 languages, 48kHz, LoRA fine-tunable", "sources": ["https://github.com/OpenBMB/VoxCPM", "https://huggingface.co/openbmb/VoxCPM2"]},
+    {"claim": "MOSS-TTS-Nano ~100M params, runs on CPU with no GPU (single core on a MacBook), 20 languages", "sources": ["https://github.com/OpenMOSS/MOSS-TTS-Nano", "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano-100M"]},
+    {"claim": "Mistral Voxtral TTS has open weights but a non-commercial (CC BY-NC 4.0) license; cannot ship in a paid product without a deal", "sources": ["https://mistral.ai/news/voxtral-tts/", "https://techcrunch.com/2026/03/26/mistral-releases-a-new-open-source-model-for-speech-generation/"]},
+    {"claim": "Nearly every top open model is a mixture-of-experts (DeepSeek, Kimi, Qwen); total params = capacity, active params = per-token cost", "sources": ["https://artificialanalysis.ai/articles/deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash"]}
+  ]
+}

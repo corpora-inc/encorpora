@@ -6,7 +6,9 @@ async function loadImageFromAppData(filePath: string): Promise<string | null> {
     const contents = await readFile(filePath, {
       baseDir: BaseDirectory.AppLocalData,
     });
-    const blob = new Blob([contents], { type: "image/png" });
+    // Tauri readFile returns an ArrayBuffer-backed Uint8Array; TS 6's stricter
+    // BlobPart type (ArrayBufferView<ArrayBuffer>) needs the cast.
+    const blob = new Blob([contents as BlobPart], { type: "image/png" });
     const imageUrl = URL.createObjectURL(blob);
     return imageUrl; // Or the imageUrl from Blob for more control
   } catch (error) {

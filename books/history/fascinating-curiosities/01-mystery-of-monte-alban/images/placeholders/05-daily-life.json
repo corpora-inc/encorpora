@@ -1,0 +1,16 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, daily life on the terraced hillsides of an ancient Zapotec mountaintop city circa 500 CE, stone-walled terraces with rows of maize corn plants and squash vines growing, people in simple white cotton garments, a woman grinding corn on a stone metate, another weaving on a backstrap loom, maguey agave plants on the dry slopes, small one-room stone and plaster houses with flat roofs on the terraces, a woman roasting grasshoppers on a clay comal over a small fire, children playing nearby, the I-shaped stone ball court visible on an upper terrace, warm semi-arid Oaxacan landscape with brown hills behind",
+  "negative_prompt": "blurry, low quality, distorted, deformed, cartoon, anime, 3D render, text, words, letters, writing, captions",
+  "seed": 46,
+  "width": 1024,
+  "height": 768,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "dtype": "float16",
+  "generation_time_s": 89.44,
+  "timestamp": "2026-02-22T06:02:09.025867+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

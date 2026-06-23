@@ -1,0 +1,19 @@
+# Everything Is Connected
+
+The study of food chains leads to one powerful conclusion: everything in nature is connected. Energy flows from the Sun to producers to consumers to decomposers and back again. Nutrients cycle through living and nonliving things. No organism exists alone.
+
+The carbon cycle connects all living things. Carbon is an element found in every organism. Plants absorb carbon dioxide from the air during photosynthesis. They build carbon into sugars, fats, and proteins. Animals eat plants and take in that carbon. When organisms breathe, they release carbon dioxide back into the air. When organisms die, decomposers break them down and release carbon. The carbon returns to the air and soil. It becomes available to plants again. The cycle continues.
+
+The nitrogen cycle is equally important. Nitrogen makes up 78 percent of Earth's atmosphere. But most organisms cannot use nitrogen gas directly. Certain bacteria convert nitrogen gas into forms that plants can absorb. These bacteria live in the soil and in the roots of some plants, especially legumes. A legume is a plant like beans, peas, or clover. Plants use nitrogen to build proteins. Animals get nitrogen by eating plants. When organisms die, decomposers release nitrogen back into the soil. Some bacteria convert it back into nitrogen gas. The cycle repeats.
+
+The water cycle connects ecosystems across the planet. The Sun heats water in oceans and lakes. Water evaporates into the atmosphere. It forms clouds and falls as rain or snow. Rain feeds rivers, which flow into oceans. Plants absorb water through their roots. Animals drink water. Water is the medium in which all biochemical reactions occur. Biochemical means relating to the chemistry of living things. Without water, food chains cannot function.
+
+Ecosystems do not exist in isolation. A forest on a mountain affects the river in the valley below. Nutrients wash downhill with rain. A river carries nutrients to the ocean. Ocean currents carry nutrients thousands of miles. Migratory animals carry energy between ecosystems. A salmon born in a river swims to the ocean, grows large, and returns to the river to spawn. Spawn means to release eggs. When the salmon dies, its body fertilizes the river and the surrounding forest. Bears catch salmon and carry them into the woods. Nutrients from the ocean end up in trees.
+
+Humans are part of food chains too. We are consumers. We eat producers and other consumers. We depend on decomposers to maintain the soil that grows our crops. We depend on pollinators to fertilize our fruit trees. A pollinator is an animal that carries pollen between flowers, enabling reproduction. Bees, butterflies, and birds are pollinators. Without pollinators, many of our food crops would fail.
+
+Human actions affect food chains on a global scale. Climate change alters temperatures and weather patterns. It shifts the ranges of species. It disrupts the timing of natural events. If flowers bloom before pollinators arrive, pollination fails. If ice melts before seals can raise their pups, seal populations decline. If ocean temperatures rise, coral reefs die. A coral reef is an underwater ecosystem built by tiny animals called coral polyps. Reefs support about 25 percent of all marine species.
+
+Protecting food chains requires understanding connections. When we protect forests, we protect the producers that feed herbivores, the herbivores that feed predators, and the decomposers that recycle nutrients. When we protect oceans, we protect phytoplankton that produce oxygen, fish that feed billions of people, and whales that fertilize the sea with their waste.
+
+Every organism plays a role. Every connection matters. Food chains are not just diagrams in a textbook. They are the living architecture of our planet. Understanding them is the first step toward protecting the web of life that sustains us all.

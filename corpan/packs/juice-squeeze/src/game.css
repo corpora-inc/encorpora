@@ -1,0 +1,1277 @@
+/*
+ * Juice Squeeze (Fire rebuild) — gameplay UI styles.
+ * Plain, functional, mobile-first. Clean cards, readable text, obvious drop
+ * zones. No shaders/particles — that's a later phase. Honors safe-area insets.
+ */
+
+.jsf-app {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* Top: a generous cushion BELOW the OS status area so the header cluster
+     (score/coin/jar + exit) never crowds the clock/battery/notch. Sides: a touch
+     wider. Bottom: the OS safe inset only (+2px hairline), no extra cushion — the
+     area just above the home indicator is still tappable, so we reclaim it for the
+     word bank's last row on dense phrases. */
+  padding: calc(var(--jsf-safe-top) + 18px) 12px calc(var(--jsf-safe-bottom) + 2px);
+  /* Soft, cool light neutral so the colored juice (orange/red/purple/etc.) POPS
+     against it instead of blending into a warm orange wash. Dark target text +
+     colored chip pills still read fine on this. */
+  background: linear-gradient(180deg, #f6f7fb 0%, #eef0f6 100%);
+  color: #3a2410;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.jsf-swipe {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---- Liquid background (Pixi full-screen layer) ---- */
+/* The liquid is a FULL-VIEWPORT BACKGROUND: it fills the whole screen from the
+ * bottom up, BEHIND all the DOM UI. Its canvas is pointer-events:none so all
+ * taps/drags pass straight through to the floating UI above it. The LiquidStage
+ * sizes itself to this layer (the whole .jsf-app). */
+.jsf-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Keep the interactive UI above the full-screen liquid canvas. */
+.jsf-app > .jsf-header {
+  position: relative;
+  z-index: 1;
+}
+.jsf-app > .jsf-main {
+  position: relative;
+  z-index: 1;
+}
+/* Interactive rows float ABOVE the liquid background (z-index 0); lifted clear. */
+.jsf-main > .jsf-target,
+.jsf-main > .jsf-sentence,
+.jsf-main > .jsf-nav,
+.jsf-main > .jsf-controls-bar,
+.jsf-main > .jsf-bank {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Header ---- */
+.jsf-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  /* Wider gap between the left tally column and the current-fruit lens so the two
+     header clusters read as distinct, unhurried groups. */
+  gap: 14px;
+  min-height: 56px;
+  /* A little air below the header before the play column begins. */
+  padding-bottom: 4px;
+}
+.jsf-header__left {
+  display: flex;
+  flex-direction: column;
+  /* More vertical separation between the tallies row and the jar collection. */
+  gap: 9px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Score (words) + coins (rewards) sit together as the two tally chips. */
+.jsf-header__tallies {
+  display: flex;
+  align-items: center;
+  /* Looser spacing between the score + coin chips so they don't crowd. */
+  gap: 10px;
+}
+
+/* Gold coin tally — the meta-loop reward, glossy to match the score chip. */
+.jsf-coins {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(180deg, #fff7d2 0%, #ffe79a 48%, #ffd768 100%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-weight: 800;
+  font-size: 16px;
+  color: #8a5a12;
+  box-shadow:
+    0 3px 9px rgba(150, 100, 10, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 4px rgba(150, 100, 10, 0.12);
+  overflow: hidden;
+}
+.jsf-coins::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 1px;
+  height: 45%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+.jsf-coins__icon {
+  font-size: 14px;
+  line-height: 1;
+  color: #f4b423;
+  text-shadow:
+    0 1px 1px rgba(140, 90, 10, 0.5),
+    0 0 6px rgba(255, 210, 80, 0.6);
+}
+.jsf-coins__count {
+  position: relative;
+  display: inline-block;
+  min-width: 0.7em;
+  text-align: center;
+  animation: jsf-coin-pop 0.42s cubic-bezier(0.34, 1.56, 0.5, 1);
+}
+@keyframes jsf-coin-pop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.55); color: #f59e00; }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-coins__count { animation: none; }
+}
+
+.jsf-score {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  /* Frosted glass capsule with a faint warm core, a crisp white rim, and a
+     hairline outer ring of light — reads as a polished premium token. */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(255, 255, 255, 0.72) 46%,
+      rgba(252, 246, 240, 0.86) 100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  padding: 4px 13px 4px 5px;
+  font-weight: 800;
+  font-size: 18px;
+  color: #c0392b;
+  align-self: flex-start;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95),
+    0 4px 12px rgba(40, 24, 8, 0.14),
+    0 8px 20px rgba(192, 57, 43, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 5px rgba(140, 40, 30, 0.07);
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+/* Glossy top sheen across the chip. */
+.jsf-score::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 1px;
+  height: 46%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+/* A slow specular streak that travels across the capsule — the "expensive
+   glass catching light" touch. Pure transform; honors reduced-motion below. */
+.jsf-score::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40%;
+  width: 28%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-18deg);
+  pointer-events: none;
+  animation: jsf-score-sheen 5.5s ease-in-out 1.2s infinite;
+}
+/* The star medallion — a tiny domed golden coin that anchors the chip and
+   echoes the coins tally without copying it. */
+.jsf-score__badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    120% 120% at 34% 26%,
+    #fff3c4 0%,
+    #ffdd6e 38%,
+    #ffc23c 68%,
+    #f59a17 100%
+  );
+  box-shadow:
+    0 1px 3px rgba(150, 90, 10, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 3px rgba(150, 90, 10, 0.32);
+}
+.jsf-score__star {
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  text-shadow:
+    0 1px 0 rgba(170, 100, 12, 0.55),
+    0 0 4px rgba(255, 220, 120, 0.7);
+}
+.jsf-score__value {
+  position: relative;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  /* Crisp embossed numerals: white top-light + tight warm shade. */
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85),
+    0 1px 2px rgba(140, 40, 30, 0.18);
+}
+@keyframes jsf-score-sheen {
+  0% { transform: translateX(0) skewX(-18deg); }
+  18% { transform: translateX(640%) skewX(-18deg); }
+  100% { transform: translateX(640%) skewX(-18deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-score::after { animation: none; opacity: 0; }
+}
+
+.jsf-collection {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  flex-wrap: wrap;
+  min-height: 8px;
+}
+/* Each completed bottle is a chunky, glossy little MASON/JUICE JAR: a metal lid
+ * with a screw-band, rounded glass shoulders, a vivid fruit fill, and a vertical
+ * specular highlight running down the glass. The jar-fly celebration lands a
+ * matching jar here so it visually "joins" the collection. */
+.jsf-jar-icon {
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 2px 3px rgba(40, 24, 8, 0.28));
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.4, 1);
+}
+.jsf-jar-icon:hover { transform: translateY(-1px) scale(1.05); }
+/* Metal lid: domed, with a bright specular streak and a subtle bottom shade. */
+.jsf-jar-icon__lid {
+  position: relative;
+  width: 26px;
+  height: 8px;
+  border-radius: 5px 5px 3px 3px;
+  background: linear-gradient(
+    180deg,
+    #f4d488 0%,
+    #d8a04a 34%,
+    #b9792c 70%,
+    #9c641f 100%
+  );
+  border: 1px solid rgba(80, 48, 12, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1.5px 2px rgba(80, 48, 12, 0.4);
+  margin-bottom: -2px;
+  z-index: 2;
+  overflow: hidden;
+}
+/* Screw-band: a thin embossed ring across the lid for the "mason jar" read. */
+.jsf-jar-icon__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1.5px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 22%,
+    rgba(120, 72, 22, 0.5) 50%,
+    rgba(255, 255, 255, 0.55) 78%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+/* Glass body: clear shell with rounded shoulders; the colored fill + shine sit
+ * inside it so the glass edge stays visible all around the juice. */
+.jsf-jar-icon__body {
+  position: relative;
+  width: 26px;
+  height: 32px;
+  border-radius: 6px 6px 9px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 -3px 5px rgba(0, 0, 0, 0.22),
+    inset 0 2px 3px rgba(255, 255, 255, 0.5),
+    inset 1px 0 1px rgba(255, 255, 255, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+/* The juice fill — inset slightly so a glass rim shows around it. */
+.jsf-jar-icon__fill {
+  position: absolute;
+  left: 1.5px;
+  right: 1.5px;
+  top: 2px;
+  bottom: 1.5px;
+  border-radius: 4px 4px 7px 7px;
+  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.28);
+}
+/* Vertical specular highlight down the left of the glass — the gloss key. */
+.jsf-jar-icon__shine {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 5px;
+  height: 70%;
+  border-radius: 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.32) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.jsf-collection__overflow {
+  font-size: 13px;
+  font-weight: 800;
+  color: #8a5a2b;
+  align-self: center;
+  padding-bottom: 2px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ---- Current-fruit header indicator ---- */
+/* The full-screen juice IS the bottle fill now, so the header just shows the
+ * CURRENT fruit (a bit bigger, with a gentle bob) instead of a redundant
+ * mini-bottle. Shifted left of the absolute exit ✕ (right: 10px, 38px wide) via
+ * the margin-right so they never overlap. The fruit cycles with the bottle
+ * color (BottleGauge reads currentColorIndex). */
+.jsf-gauge {
+  --jsf-gauge-tint: #ff8c2b;
+  --jsf-gauge-tint-lo: #ffb84d;
+  --jsf-gauge-tint-hi: #e65100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-right: 44px;
+}
+.jsf-gauge__fruit {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  line-height: 1;
+  isolation: isolate;
+  /* Premium "juice lens": a clear glass disc tinted with the CURRENT fruit's
+     color so it reads unmistakably as the juice being filled now. Light keys
+     from the upper-left; a tinted floor pools at the bottom; a colored halo
+     bleeds beyond the rim. */
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      130% 110% at 30% 20%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.62) 22%,
+      color-mix(in srgb, var(--jsf-gauge-tint) 22%, transparent) 56%,
+      color-mix(in srgb, var(--jsf-gauge-tint-hi) 46%, transparent) 100%
+    );
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--jsf-gauge-tint) 30%, transparent),
+    0 5px 14px rgba(40, 24, 8, 0.2),
+    0 6px 22px color-mix(in srgb, var(--jsf-gauge-tint) 38%, transparent),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -6px 11px color-mix(in srgb, var(--jsf-gauge-tint-hi) 36%, transparent);
+  /* Gentle bob/pulse so the current fruit feels alive without distracting. */
+  animation: jsf-fruit-bob 2.5s ease-in-out infinite;
+  will-change: transform;
+}
+/* Rotating tinted conic ring just outside the glass — a refined "active /
+   filling now" indicator that orbits slowly. */
+.jsf-gauge__ring {
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    color-mix(in srgb, var(--jsf-gauge-tint) 75%, white) 0%,
+    color-mix(in srgb, var(--jsf-gauge-tint-hi) 70%, transparent) 28%,
+    transparent 52%,
+    color-mix(in srgb, var(--jsf-gauge-tint) 65%, white) 78%,
+    color-mix(in srgb, var(--jsf-gauge-tint) 75%, white) 100%
+  );
+  -webkit-mask: radial-gradient(closest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+  mask: radial-gradient(closest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+  opacity: 0.9;
+  animation: jsf-gauge-spin 6s linear infinite;
+  pointer-events: none;
+}
+/* A soft tinted glow pooled in the lower half — the juice "body" inside. */
+.jsf-gauge__glow {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 6%;
+  height: 52%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    100% 100% at 50% 100%,
+    color-mix(in srgb, var(--jsf-gauge-tint) 55%, transparent) 0%,
+    transparent 72%
+  );
+  filter: blur(1px);
+  pointer-events: none;
+}
+.jsf-gauge__emoji {
+  position: relative;
+  font-size: 34px;
+  line-height: 1;
+  text-shadow:
+    0 2px 3px rgba(0, 0, 0, 0.24),
+    0 0 10px color-mix(in srgb, var(--jsf-gauge-tint) 40%, transparent);
+}
+/* Bright crescent specular on the disc's upper-left. */
+.jsf-gauge__fruit::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 6px;
+  width: 22px;
+  height: 13px;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(-18deg);
+  pointer-events: none;
+}
+@keyframes jsf-fruit-bob {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.06); }
+}
+@keyframes jsf-gauge-spin {
+  to { transform: rotate(360deg); }
+}
+/* Respect reduced-motion: hold the fruit + ring still. */
+@media (prefers-reduced-motion: reduce) {
+  .jsf-gauge__fruit { animation: none; }
+  .jsf-gauge__ring { animation: none; }
+}
+
+/* ---- Main column ---- */
+/* With the central jar gone, the main column reclaims the full height:
+ * header → target → sentence → nav → controls → bank, stacked with comfortable
+ * spacing. The bank (flex: 1 1 auto) takes the remaining space and SCROLLS when
+ * a long phrase needs many chip rows. */
+.jsf-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* Comfortable, premium rhythm between stacked rows. The deliberate band split
+     is done with auto-margins below (NOT a fixed height), so the auto-fit/scroll
+     behavior is untouched. */
+  gap: 14px;
+  min-height: 0;
+  /* NO overflow:hidden here — that CLIPPED the bottom bank rows. The bank stays
+     within the safe area because (a) the phrase auto-shrinks (useFitText) to free
+     room so the whole bank fits, and (b) the bank itself can shrink + scroll as a
+     last resort. The screen boundary / safe-bottom is guarded by .jsf-app. */
+  padding-top: 8px;
+}
+
+/* ---- Vertical band rhythm ----
+ * The reviewer wanted the screen used deliberately: target/sentence as a clear
+ * MIDDLE band, with the controls + word bank given comfortable room toward the
+ * BOTTOM — no large dead zone on short phrases.
+ *
+ * We achieve this with AUTO-MARGINS only — never a fixed height — so the
+ * auto-fit (useFitText), the bank's shrink+scroll, and the empty-bank collapse
+ * all keep working exactly as before:
+ *   • A flexible cushion ABOVE the target nudges the target/sentence off the
+ *     header into the middle band.
+ *   • A flexible cushion ABOVE the controls bar pushes the controls + bank down
+ *     to sit toward the bottom.
+ * On a DENSE phrase these auto-margins simply collapse to 0 (no free space to
+ * distribute), so nothing is ever pushed off-screen and the bank still owns all
+ * remaining room. The cushions are unequal (smaller on top, larger toward the
+ * bottom group) so the layout reads as a settled lower-third, not dead-centered. */
+.jsf-main > .jsf-target {
+  margin-top: auto;
+}
+.jsf-main > .jsf-controls-bar {
+  /* The stronger push: send the controls + bank toward the bottom. The 2:3 weight
+     vs. the target's top cushion keeps the middle band slightly high-of-center. */
+  margin-top: auto;
+}
+
+/* ---- Target phrase ---- */
+/* The display title — the phrase the player must translate. Treated as a
+ * high-end glossy headline to match the glass chrome around it: a frosted glass
+ * plaque, a refined display type stack, considered weight/tracking/leading, and
+ * layered DEPTH (a soft emboss/lift below + a faint top sheen above) so it reads
+ * embossed and lifted. The depth is built from TEXT-SHADOWS only (cheap, no
+ * filters) and stays subtle enough to keep every script crisply legible. */
+.jsf-target {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: center;
+  /* The phrase size is governed by useFitText, NOT flex-shrink — so it doesn't
+     steal shrink from the bank. The bank is the sole region that gives way (and
+     scrolls) when space is tight, so it can never clip its last rows. */
+  flex: 0 0 auto;
+  min-height: 0;
+}
+.jsf-target__text {
+  font-family:
+    "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Helvetica Neue", "Hiragino Sans", "Noto Sans", Roboto,
+    system-ui, sans-serif;
+  font-size: clamp(21px, 6.2vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.006em;
+  /* Tighter leading reclaims a lot of vertical real estate on multi-line phrases
+     (pulling the icons + word bank up) while staying comfortable on short ones.
+     The auto-fit hook pulls this in further (down to ~1.05) for very long ones. */
+  line-height: 1.14;
+  text-wrap: balance;
+  /* ONE BIG JUICE BLOCK: the same glossy pill language as the word-blocks below,
+     filled with the CURRENT juice gradient (--jc-1 light → --jc-3 dark, set
+     inline from the active fruit). White ink with a tight dark emboss reads
+     cleanly + punchy on the saturated color. */
+  color: #fff;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--jc-1, #ffb84d) 86%, white) 0%,
+    var(--jc-2, #ff9800) 48%,
+    var(--jc-3, #e65100) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--jc-3, #e65100) 70%, black);
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px 22px;
+  box-shadow:
+    0 7px 18px color-mix(in srgb, var(--jc-2, #ff9800) 45%, transparent),
+    0 2px 4px rgba(0, 0, 0, 0.16),
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -4px 9px color-mix(in srgb, var(--jc-3, #e65100) 72%, black);
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.42),
+    0 1px 6px rgba(0, 0, 0, 0.22);
+  /* Very long target phrases wrap instead of overflowing. */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 92vw;
+  /* No fixed height cap: useFitText shrinks the font + leading exactly enough for
+     the full word bank to fit, ONLY on the large phrases that need it. */
+  align-self: center;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  transition: transform 0.12s cubic-bezier(0.34, 1.5, 0.5, 1), box-shadow 0.15s;
+}
+/* Glossy white top sheen across the block — the word-block ::before gloss. */
+.jsf-target__text::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 2px;
+  height: 42%;
+  border-radius: 16px 16px 28px 28px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.jsf-target__text:active {
+  transform: scale(0.975) translateY(0.5px);
+  box-shadow:
+    0 3px 9px color-mix(in srgb, var(--jc-2, #ff9800) 40%, transparent),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -3px 7px color-mix(in srgb, var(--jc-3, #e65100) 72%, black);
+}
+.jsf-target__build {
+  /* A quiet, refined caption: the target language's own native name. Widely
+     letterspaced small-caps-feel, hushed warm-bronze, gentle white lift — it
+     supports the headline without competing with it. */
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5f6675; /* neutral slate — harmonizes under any juice color */
+  opacity: 0.92;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+/* RTL / CJK native names don't take uppercase or wide Latin tracking well —
+ * relax both so e.g. "العربية" and "日本語" read naturally. */
+.jsf-target__build[dir="rtl"] {
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-target__text { transition: none; }
+}
+
+/* ---- Sentence build area ---- */
+/* Wraps to multiple chip rows; capped so a very long built sentence scrolls
+ * instead of pushing the bank off-screen. */
+.jsf-sentence {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* Natural height — the completion zone grows to show ALL placed blocks, with NO
+     internal scroll and NO clip (it's your answer, it must be fully visible). The
+     tight line spacing (.jsf-row row-gap) keeps it compact; the WORD BANK is the
+     only region that gives way + scrolls as a last resort when space is tight. */
+  flex: 0 0 auto;
+}
+.jsf-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* Keep the horizontal spacing between blocks, but pull the WRAPPED LINES close
+     together (row-gap) so a full completion zone (e.g. ~55 Chinese chars) stays
+     compact and doesn't squeeze the word bank's last rows off the bottom. Blocks
+     are unchanged in size. */
+  column-gap: 8px;
+  row-gap: 3px;
+  min-height: 50px;
+  padding: 6px 9px;
+  border-radius: 16px;
+  border: 2px dashed rgba(192, 57, 43, 0.38);
+  background: rgba(255, 255, 255, 0.38);
+  transition: background 0.15s, border-color 0.15s;
+}
+.jsf-row--rtl { flex-direction: row-reverse; }
+.jsf-row--over {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: #c0392b;
+}
+.jsf-row__placeholder {
+  flex: 1;
+  min-height: 40px;
+}
+
+/* ---- Word bank ---- */
+.jsf-bank {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* Size to CONTENT, not the column: a short (e.g. A0, 4-word) phrase leaves a
+     compact bank, and the freed vertical space becomes visible background juice
+     instead of an oversized empty bank. */
+  flex: 0 1 auto;
+  /* min-height:0 lets the bank SHRINK below its content height when space is
+     tight (the classic flex-overflow fix) so it scrolls internally instead of
+     pushing its last rows off the bottom. No fixed max-height: the bank simply
+     takes whatever vertical room the (auto-fit) phrase + sentence leave. */
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 11px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.32);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: background 0.15s;
+}
+/* Dense phrases (≥16 words): pull the gap BETWEEN the chips + the bank's own
+   padding in, so more rows fit before we ever resort to shrinking the chips. */
+.jsf-bank--dense {
+  gap: 4px;
+  padding: 7px;
+}
+/* Empty bank (all words placed): collapse to a thin drop strip — no void, no
+   chrome, no label — so the completion zone reclaims the space. Still a drop
+   target so a word can be returned (tapping a placed block also returns it). */
+.jsf-bank--empty {
+  padding: 0;
+  min-height: 0;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.jsf-bank--empty .jsf-bank__lang {
+  display: none;
+}
+.jsf-bank--empty .jsf-bank__empty {
+  min-height: 12px;
+}
+.jsf-bank--over { background: rgba(255, 255, 255, 0.58); }
+.jsf-bank__empty { min-height: 40px; width: 100%; }
+/* Build-language tag at the top of the bank — full-width so it sits as a header
+   above the wrapped blocks. Subtle, matching the target label tone. */
+.jsf-bank__lang {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #b5793c;
+  opacity: 0.85;
+}
+
+/* ---- Word block ---- */
+/*
+ * Glossy fruit pill. Each block sets --blk (its palette color) via inline
+ * style; the pill builds depth from it: lightened top → base → darkened bottom,
+ * a subtle white top highlight, a slightly darker border, and a soft drop
+ * shadow. Text is white with a dark shadow so it stays legible even on the
+ * golden-yellow (#FFCE00) block.
+ */
+.jsf-block {
+  --blk: #ff6b35; /* fallback if no inline --blk */
+  /* Default font (overridden inline by the auto-fit size from blockSizing). */
+  font-size: clamp(16px, 4.6vw, 20px);
+  font-weight: 800;
+  color: #fff;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--blk) 62%, white) 0%,
+      color-mix(in srgb, var(--blk) 92%, white) 32%,
+      var(--blk) 58%,
+      color-mix(in srgb, var(--blk) 72%, black) 100%
+    );
+  border: 1px solid color-mix(in srgb, var(--blk) 66%, black);
+  border-radius: 16px;
+  /* Content-sized: padding in `em` scales with the chip's font, so the pill
+     grows to fit its text at any shared font size (no forced width/height). */
+  padding: 0.5em 0.9em;
+  min-height: 2.25em;
+  cursor: grab;
+  /* Crisp but light drop shadow tinted in the block's OWN color (premium,
+     tactile), a soft white top gloss, and an inner bottom shadow for depth. */
+  box-shadow:
+    0 4px 10px color-mix(in srgb, var(--blk) 45%, transparent),
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px color-mix(in srgb, var(--blk) 60%, black);
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.5),
+    0 0 3px rgba(0, 0, 0, 0.25);
+  /* Keep each chip on one line; NEVER clip — the chip grows to fit its text.
+     Only a giant single word shrinks (via fontForWord) and is capped here. */
+  white-space: nowrap;
+  max-width: 80vw;
+  touch-action: none;
+  line-height: 1.1;
+  position: relative;
+}
+/* Glossy white top highlight — a crisp curved sheen across the upper third. */
+.jsf-block::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 2px;
+  height: 42%;
+  border-radius: 12px 12px 16px 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.18) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.jsf-block:active { cursor: grabbing; }
+.jsf-block--over {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.jsf-block--ghost {
+  opacity: 0.95;
+  transform: scale(1.06);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  cursor: grabbing;
+}
+
+/* ---- History nav ---- */
+.jsf-nav {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+.jsf-nav__btn {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.78) 48%,
+    rgba(236, 240, 248, 0.9) 100%
+  );
+  color: #c0392b;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow:
+    0 3px 9px rgba(40, 24, 8, 0.14),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.06);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: transform 0.12s cubic-bezier(0.34, 1.5, 0.5, 1), box-shadow 0.15s, opacity 0.15s;
+}
+.jsf-nav__btn::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 3px;
+  height: 42%;
+  border-radius: 50% 50% 46% 46% / 60% 60% 40% 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.jsf-nav__btn:active:not(:disabled) {
+  transform: scale(0.9) translateY(1px);
+  box-shadow:
+    0 1px 4px rgba(40, 24, 8, 0.18),
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.09);
+}
+.jsf-nav__btn:disabled { opacity: 0.32; cursor: default; }
+
+/* ---- Icon controls ---- */
+/* Glossy glass pucks: a light-to-cool vertical gradient, a crisp white rim, a
+ * specular top sheen (::before), a soft outer drop + inner highlights, and a
+ * springy press that sinks the button and tightens its shadow. */
+.jsf-icon-btn {
+  --jsf-btn-accent: #c0392b;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  /* Dimensional glass puck: a top-lit dome (radial) over a cool vertical body,
+     so it reads as a rounded physical button, not a flat disc. */
+  background:
+    radial-gradient(
+      125% 95% at 32% 16%,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(255, 255, 255, 0.5) 32%,
+      rgba(255, 255, 255, 0) 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(244, 247, 252, 0.86) 48%,
+      rgba(228, 234, 244, 0.94) 100%
+    );
+  font-size: 23px;
+  cursor: pointer;
+  /* Layered depth: a tinted accent halo, a soft contact shadow, a long ambient
+     shadow, plus inner top-light and bottom-shade for the dome. */
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--jsf-btn-accent) 14%, transparent),
+    0 2px 4px rgba(40, 24, 8, 0.12),
+    0 6px 16px rgba(40, 24, 8, 0.16),
+    0 10px 22px color-mix(in srgb, var(--jsf-btn-accent) 16%, transparent),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.98),
+    inset 0 -4px 8px rgba(40, 24, 8, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.13s cubic-bezier(0.34, 1.5, 0.5, 1),
+    box-shadow 0.16s ease,
+    background 0.16s ease;
+}
+/* Curved specular sheen across the upper half. */
+.jsf-icon-btn::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 4px;
+  height: 42%;
+  border-radius: 50% 50% 46% 46% / 60% 60% 40% 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.28) 58%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+/* The glyph rides on its own layer so it can lift/shadow independently of the
+   glass — gives the icon real dimension and a premium micro-interaction. */
+.jsf-icon-btn__glyph {
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  display: inline-flex;
+  filter: drop-shadow(0 1px 1.5px rgba(40, 24, 8, 0.28));
+  transition: transform 0.16s cubic-bezier(0.34, 1.5, 0.5, 1), filter 0.16s ease;
+}
+@media (hover: hover) {
+  .jsf-icon-btn:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--jsf-btn-accent) 26%, transparent),
+      0 4px 8px rgba(40, 24, 8, 0.14),
+      0 9px 22px rgba(40, 24, 8, 0.18),
+      0 14px 28px color-mix(in srgb, var(--jsf-btn-accent) 24%, transparent),
+      inset 0 1.5px 1px rgba(255, 255, 255, 0.98),
+      inset 0 -4px 8px rgba(40, 24, 8, 0.09);
+  }
+  .jsf-icon-btn:hover .jsf-icon-btn__glyph {
+    transform: translateY(-1px) scale(1.06);
+    filter: drop-shadow(0 3px 4px rgba(40, 24, 8, 0.3));
+  }
+}
+.jsf-icon-btn:active {
+  transform: scale(0.9) translateY(1px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--jsf-btn-accent) 20%, transparent),
+    0 2px 6px rgba(40, 24, 8, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.75),
+    inset 0 -2px 5px rgba(40, 24, 8, 0.12),
+    inset 0 3px 7px color-mix(in srgb, var(--jsf-btn-accent) 18%, transparent);
+}
+.jsf-icon-btn:active .jsf-icon-btn__glyph {
+  transform: scale(0.94) translateY(0.5px);
+  filter: drop-shadow(0 1px 1px rgba(40, 24, 8, 0.22));
+}
+
+/* Per-button accent tints — each picks a palette hue so its halo + press glow
+   reads as its own affordance (fruit = orange, ear = cyan, eye = purple). */
+.jsf-icon-btn--fruit { --jsf-btn-accent: #ff6b35; }
+.jsf-icon-btn--ear { --jsf-btn-accent: #00bbf9; }
+.jsf-icon-btn--eye { --jsf-btn-accent: #9b5de5; }
+
+/* Active (fruit-flip on): warm amber glass with a glowing ring + a brighter,
+   slightly larger glyph so the "on" state is unmistakable. */
+.jsf-icon-btn--active {
+  background:
+    radial-gradient(
+      125% 95% at 32% 16%,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 245, 200, 0.4) 34%,
+      rgba(255, 245, 200, 0) 62%
+    ),
+    linear-gradient(
+      180deg,
+      #ffe9a0 0%,
+      #ffd54f 48%,
+      #ffbf2e 100%
+    );
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 0 0 3px rgba(255, 167, 38, 0.5),
+    0 4px 12px rgba(180, 110, 10, 0.3),
+    0 8px 20px rgba(255, 167, 38, 0.28),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 6px rgba(160, 100, 8, 0.24);
+}
+.jsf-icon-btn--active .jsf-icon-btn__glyph {
+  transform: scale(1.04);
+  filter: drop-shadow(0 1px 2px rgba(150, 90, 10, 0.4));
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-icon-btn,
+  .jsf-icon-btn__glyph { transition: none; }
+}
+
+/* Exit stays absolute in the very top-right corner; nothing overlaps it. */
+.jsf-exit {
+  position: absolute;
+  /* Matches the .jsf-app top cushion so the ✕ sits level with the header cluster
+     and stays well clear of the status area. */
+  top: calc(var(--jsf-safe-top) + 18px);
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #c0392b;
+  z-index: 30;
+}
+
+/* In-flow controls bar: a full-width row JUST ABOVE the bank, buttons evenly
+ * spaced. Never overlaps the vessel (which is behind it) OR the word bank. */
+.jsf-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  width: 100%;
+  /* A little more vertical room around the pucks so the bottom group feels
+     unhurried rather than pinched against the bank. */
+  padding: 4px 8px;
+}
+
+/* ---- Overlays / modals ---- */
+.jsf-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 10, 4, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 20;
+}
+.jsf-answer,
+.jsf-levelcomplete,
+.jsf-review {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+.jsf-answer__icon {
+  font-size: 36px;
+  color: #2ecc71;
+  font-weight: 800;
+}
+.jsf-answer__text {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 14px 0 20px;
+  color: #2c1a08;
+}
+
+.jsf-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #f0e6da;
+  color: #6b4423;
+}
+.jsf-btn--primary {
+  background: linear-gradient(180deg, #ff8a5b 0%, #ee5253 100%);
+  color: #fff;
+}
+
+.jsf-levelcomplete__title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #c0392b;
+}
+.jsf-levelcomplete__fruit { font-size: 64px; margin: 12px 0; }
+.jsf-levelcomplete__stat { font-size: 18px; font-weight: 700; }
+.jsf-levelcomplete__hint,
+.jsf-levelcomplete__max {
+  margin: 14px 0;
+  font-size: 14px;
+  color: #6b4423;
+}
+.jsf-levelcomplete__buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.jsf-review { text-align: left; max-height: 80vh; display: flex; flex-direction: column; }
+.jsf-review__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.jsf-review__header h2 { font-size: 18px; margin: 0; }
+.jsf-review__list { overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.jsf-review__item {
+  background: #faf3ea;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+.jsf-review__target { font-weight: 800; }
+.jsf-review__block { color: #6b4423; margin-top: 2px; }
+.jsf-review__empty { color: #8a5a2b; text-align: center; padding: 20px; }
+
+/* ---- Win confirmation pop ---- */
+/* A satisfying, BOUNCY "pop" (~1080ms) so every correct phrase reads as a
+ * celebratory beat, not a blink. The badge springs up with an overshoot, holds,
+ * then fades; the green wash blooms underneath. Pointer-events:none; sits above
+ * the play UI but below give-up / level-complete modals (z 20). Re-mounted on
+ * each win (keyed on winFlash) so the animation always replays. Paired with the
+ * liquid triggerWin surge for a coherent celebratory moment. */
+.jsf-winflash {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* A soft, clean green bloom under the badge — a gentle wash, never a harsh
+     full-screen flash over the light background. */
+  background: radial-gradient(
+    58% 50% at 50% 46%,
+    rgba(46, 204, 113, 0.28) 0%,
+    rgba(46, 204, 113, 0.1) 42%,
+    rgba(46, 204, 113, 0) 72%
+  );
+  animation: jsf-winflash-bg 1040ms ease-out forwards;
+}
+.jsf-winflash__badge {
+  font-size: 96px;
+  color: #2ecc71;
+  font-weight: 900;
+  /* Soft green glow + a clean drop shadow so the check pops off the background
+     without a hard edge. */
+  text-shadow:
+    0 0 18px rgba(46, 204, 113, 0.45),
+    0 6px 18px rgba(0, 0, 0, 0.22);
+  /* Springy overshoot then a clean settle + fade. The bezier gives the up-pop
+     its bounce; the tail lets the badge linger so it reads as a juicy pop. */
+  animation: jsf-winflash-badge 1040ms cubic-bezier(0.16, 1.45, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+@keyframes jsf-winflash-bg {
+  0% { opacity: 0; }
+  14% { opacity: 1; }
+  58% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes jsf-winflash-badge {
+  0% { transform: scale(0.35) rotate(-7deg); opacity: 0; }
+  26% { transform: scale(1.24) rotate(3deg); opacity: 1; }
+  44% { transform: scale(0.96) rotate(-1.5deg); opacity: 1; }
+  58% { transform: scale(1.05) rotate(0deg); opacity: 1; }
+  70% { transform: scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.12) rotate(0deg); opacity: 0; }
+}
+/* Reduced-motion: keep the confirmation but drop the bounce/rotation. */
+@media (prefers-reduced-motion: reduce) {
+  .jsf-winflash__badge {
+    animation: jsf-winflash-bg 1040ms ease-out forwards;
+  }
+}
+
+/* ---- Jar-fly celebration ---- */
+/* On bottle-complete a small CAPPED jar (the completed bottle's fruit gradient)
+ * appears center-screen, caps + scales up, then flies UP into the header
+ * BottleCollection (positions injected via --jf-sx/sy → --jf-tx/ty by jarFly.ts).
+ * It removes itself on animationend. pointer-events:none; above the play UI but
+ * below modals. ~900ms total: a short cap/grow beat, then the translate-up fly
+ * that shrinks as it docks into the collection. */
+.jsf-jarfly {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 18;
+  pointer-events: none;
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.32));
+  animation: jsf-jarfly-move 1300ms cubic-bezier(0.34, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+.jsf-jarfly__lid {
+  width: 56px;
+  height: 16px;
+  border-radius: 7px 7px 4px 4px;
+  background: linear-gradient(180deg, #d8a04a 0%, #b9792c 58%, #9c641f 100%);
+  border: 1.5px solid rgba(80, 48, 12, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  margin-bottom: -2px;
+  z-index: 1;
+}
+.jsf-jarfly__body {
+  width: 52px;
+  height: 66px;
+  border-radius: 5px 5px 12px 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 -3px 7px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+@keyframes jsf-jarfly-move {
+  /* Cap + pop up at the center. */
+  0% {
+    transform: translate(var(--jf-sx), var(--jf-sy)) translate(-50%, -50%) scale(0.4);
+    opacity: 0;
+  }
+  18% {
+    transform: translate(var(--jf-sx), var(--jf-sy)) translate(-50%, -50%) scale(1.12);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(var(--jf-sx), var(--jf-sy)) translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  /* Fly up to the header collection, shrinking as it docks. */
+  100% {
+    transform: translate(var(--jf-tx), var(--jf-ty)) translate(-50%, -50%) scale(0.32);
+    opacity: 0.25;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jsf-jarfly { animation-duration: 600ms; }
+}
+
+.jsf-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: #c0392b;
+  z-index: 10;
+}

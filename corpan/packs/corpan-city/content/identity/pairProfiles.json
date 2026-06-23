@@ -1,0 +1,30 @@
+{
+  "_doc": "Maps a TARGET language (BCP-47 corpus code, e.g. 'es', 'ja', 'pa-Arab') to its PERSONA PROFILE: which name pool (content/identity/names.json), wardrobe theme (a WardrobeTheme id known to src/character/characterGen.ts), starter cosmetic kit (content/cosmetics/starter.json), and starter inventory grant (content/economy/starterGrants.json) a fresh Track of that target is BORN with. Pair Identity (R2-6). Resolved by src/identity/pairProfile.ts. Keyed on the TARGET because the persona is themed to the world you travel INTO (see PAIR_IDENTITY.md §1); for a single-language / immersion stack target===native, so the one language's pool is used (no special case). `_default` covers any target with no explicit row, so ALL 2,450 pairs work day one — explicit `targets` rows are a QUALITY upgrade for popular targets, NEVER a prerequisite. `themeId` is a SOFT HINT for the player's wardrobe only; the actual world/currency is chosen by the Scene/curriculum pipeline. CDN-overridable: a new pool/kit/grant/target is a catalog push, no app release. The resolver treats every id as possibly-unknown and substitutes the universal default with a loud warn.",
+  "version": 1,
+  "_default": {
+    "namePoolId": "pool-universal",
+    "themeId": "antigua-1770",
+    "starterKitId": "kit-traveler",
+    "starterGrantId": "grant-traveler"
+  },
+  "targets": {
+    "es": {
+      "namePoolId": "pool-es",
+      "themeId": "antigua-1770",
+      "starterKitId": "kit-market",
+      "starterGrantId": "grant-market"
+    },
+    "ja": {
+      "namePoolId": "pool-ja",
+      "themeId": "tokyo-2050",
+      "starterKitId": "kit-tokyo",
+      "starterGrantId": "grant-tokyo"
+    },
+    "zh": {
+      "namePoolId": "pool-zh",
+      "themeId": "changan-tang",
+      "starterKitId": "kit-traveler",
+      "starterGrantId": "grant-silkroad"
+    }
+  }
+}

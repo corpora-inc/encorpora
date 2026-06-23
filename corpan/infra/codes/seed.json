@@ -1,0 +1,32 @@
+{
+  "_note": "TEMPLATE ONLY \u2014 no real partner names/terms in version control. The live roster is in DynamoDB (corpan-iap); the real seed is the gitignored seed.local.json. load_seed.py prefers seed.local.json. Do NOT add real partner names here.",
+  "registryVersion": 1,
+  "partners": [
+    {
+      "partnerId": "examplepartner",
+      "name": "Example Partner",
+      "defaultRevenueSharePct": 0.2,
+      "status": "active"
+    }
+  ],
+  "codes": [
+    {
+      "code": "EXAMPLE20",
+      "partnerId": "examplepartner",
+      "classification": "discount+affiliate",
+      "appleOfferIdentifier": "EXAMPLE20",
+      "googleOfferId": "code-example20",
+      "googleOfferTags": [
+        "code-example20"
+      ],
+      "googleBasePlanId": "annual",
+      "discountLabelKey": "code.discount.first_year_30",
+      "discountLabelEn": "30% off your first year",
+      "revenueSharePct": 0.2,
+      "active": true,
+      "registryVersion": 1,
+      "validFrom": "2026-01-01T00:00:00Z",
+      "validTo": null
+    }
+  ]
+}

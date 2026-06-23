@@ -1,0 +1,4471 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_blackbeard",
+  "total_segments": 299,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Note to the Reader",
+      "text_markdown": "A Note to the Reader"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is the true story of the most terrifying pirate who ever lived.",
+      "text_markdown": "This is the true story of the most terrifying pirate who ever lived.",
+      "tts": {
+        "text": "This is the true story of the most terrifying pirate who ever lived.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His name was Edward Teach, but the world remembers him as Blackbeard.",
+      "text_markdown": "His name was Edward Teach, but the world remembers him as Blackbeard.",
+      "tts": {
+        "text": "His name was Edward Teach, but the world remembers him as Blackbeard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He terrorized the seas for only about 2 years, but his legend has lasted for over 300.",
+      "text_markdown": "He terrorized the seas for only about 2 years, but his legend has lasted for over 300.",
+      "tts": {
+        "text": "He terrorized the seas for only about two years, but his legend has lasted for over three hundred.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard did not look like the pirates you see in movies.",
+      "text_markdown": "Blackbeard did not look like the pirates you see in movies.",
+      "tts": {
+        "text": "Blackbeard did not look like the pirates you see in movies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was worse.",
+      "text_markdown": "He was worse.",
+      "tts": {
+        "text": "He was worse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He wove slow-burning fuses into his enormous black beard and lit them before battle.",
+      "text_markdown": "He wove slow-burning fuses into his enormous black beard and lit them before battle.",
+      "tts": {
+        "text": "He wove slow-burning fuses into his enormous black beard and lit them before battle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Smoke curled around his face, making him look like a demon rising from the sea.",
+      "text_markdown": "Smoke curled around his face, making him look like a demon rising from the sea.",
+      "tts": {
+        "text": "Smoke curled around his face, making him look like a demon rising from the sea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This book will take you to the harbors and shipping lanes of the early eighteenth century.",
+      "text_markdown": "This book will take you to the harbors and shipping lanes of the early eighteenth century.",
+      "tts": {
+        "text": "This book will take you to the harbors and shipping lanes of the early eighteenth century.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "You will see how ordinary sailors became outlaws, and how empires struggled to stop them.",
+      "text_markdown": "You will see how ordinary sailors became outlaws, and how empires struggled to stop them.",
+      "tts": {
+        "text": "You will see how ordinary sailors became outlaws, and how empires struggled to stop them.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Everything in this book is based on historical records, court documents, and firsthand accounts.",
+      "text_markdown": "Everything in this book is based on historical records, court documents, and firsthand accounts.",
+      "tts": {
+        "text": "Everything in this book is based on historical records, court documents, and firsthand accounts.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "When the facts are uncertain, we will say so clearly.",
+      "text_markdown": "When the facts are uncertain, we will say so clearly.",
+      "tts": {
+        "text": "When the facts are uncertain, we will say so clearly.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The World That Made a Pirate",
+      "text_markdown": "The World That Made a Pirate"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The late seventeenth century was an age of empires and ocean trade.",
+      "text_markdown": "The late seventeenth century was an age of empires and ocean trade.",
+      "tts": {
+        "text": "The late seventeenth century was an age of empires and ocean trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "England, Spain, France, and the Netherlands all competed for colonies in the Americas.",
+      "text_markdown": "England, Spain, France, and the Netherlands all competed for colonies in the Americas.",
+      "tts": {
+        "text": "England, Spain, France, and the Netherlands all competed for colonies in the Americas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Their merchant ships carried sugar, tobacco, cotton, and enslaved people across the Atlantic.",
+      "text_markdown": "Their merchant ships carried sugar, tobacco, cotton, and enslaved people across the Atlantic.",
+      "tts": {
+        "text": "Their merchant ships carried sugar, tobacco, cotton, and enslaved people across the Atlantic.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wherever valuable cargo moved on the sea, pirates followed.",
+      "text_markdown": "Wherever valuable cargo moved on the sea, pirates followed.",
+      "tts": {
+        "text": "Wherever valuable cargo moved on the sea, pirates followed.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Caribbean Sea was the crossroads of this global trade.",
+      "text_markdown": "The Caribbean Sea was the crossroads of this global trade.",
+      "tts": {
+        "text": "The Caribbean Sea was the crossroads of this global trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hundreds of islands dotted the warm turquoise waters between Florida and South America.",
+      "text_markdown": "Hundreds of islands dotted the warm turquoise waters between Florida and South America.",
+      "tts": {
+        "text": "Hundreds of islands dotted the warm turquoise waters between Florida and South America.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Many of these islands belonged to European powers who used them as sugar plantations.",
+      "text_markdown": "Many of these islands belonged to European powers who used them as sugar plantations.",
+      "tts": {
+        "text": "Many of these islands belonged to European powers who used them as sugar plantations.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ships loaded with sugar and rum sailed from Caribbean ports to Europe every week.",
+      "text_markdown": "Ships loaded with sugar and rum sailed from Caribbean ports to Europe every week.",
+      "tts": {
+        "text": "Ships loaded with sugar and rum sailed from Caribbean ports to Europe every week.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "England and Spain had been rivals for over a century.",
+      "text_markdown": "England and Spain had been rivals for over a century.",
+      "tts": {
+        "text": "England and Spain had been rivals for over a century.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "English privateers like Sir Francis Drake had raided Spanish treasure fleets in the late fifteen hundreds.",
+      "text_markdown": "English privateers like Sir Francis Drake had raided Spanish treasure fleets in the late fifteen hundreds.",
+      "tts": {
+        "text": "English privateers like Sir Francis Drake had raided Spanish treasure fleets in the late fifteen hundreds.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A privateer was a private ship captain authorized by a government to attack enemy vessels.",
+      "text_markdown": "A privateer was a private ship captain authorized by a government to attack enemy vessels.",
+      "tts": {
+        "text": "A privateer was a private ship captain authorized by a government to attack enemy vessels.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Privateers carried a document called a letter of marque that made their attacks legal.",
+      "text_markdown": "Privateers carried a document called a letter of marque that made their attacks legal.",
+      "tts": {
+        "text": "Privateers carried a document called a letter of marque that made their attacks legal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Queen Anne's War broke out in 1702 and lasted until 1713.",
+      "text_markdown": "Queen Anne's War broke out in 1702 and lasted until 1713.",
+      "tts": {
+        "text": "Queen Anne's War broke out in seventeen oh two and lasted until seventeen thirteen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "This was part of a larger European conflict called the War of the Spanish Succession.",
+      "text_markdown": "This was part of a larger European conflict called the War of the Spanish Succession.",
+      "tts": {
+        "text": "This was part of a larger European conflict called the War of the Spanish Succession.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "England and its allies fought against France and Spain for control of trade routes and territories.",
+      "text_markdown": "England and its allies fought against France and Spain for control of trade routes and territories.",
+      "tts": {
+        "text": "England and its allies fought against France and Spain for control of trade routes and territories.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "During the war, thousands of sailors served on privateering ships, raiding enemy merchants for profit.",
+      "text_markdown": "During the war, thousands of sailors served on privateering ships, raiding enemy merchants for profit.",
+      "tts": {
+        "text": "During the war, thousands of sailors served on privateering ships, raiding enemy merchants for profit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the war ended with the Treaty of Utrecht in 1713, everything changed.",
+      "text_markdown": "When the war ended with the Treaty of Utrecht in 1713, everything changed.",
+      "tts": {
+        "text": "When the war ended with the Treaty of Utrecht in seventeen thirteen, everything changed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Privateering commissions were canceled overnight.",
+      "text_markdown": "Privateering commissions were canceled overnight.",
+      "tts": {
+        "text": "Privateering commissions were canceled overnight.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thousands of trained sailors and fighters suddenly had no legal employment.",
+      "text_markdown": "Thousands of trained sailors and fighters suddenly had no legal employment.",
+      "tts": {
+        "text": "Thousands of trained sailors and fighters suddenly had no legal employment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Many of them owned nothing but the clothes on their backs and their knowledge of the sea.",
+      "text_markdown": "Many of them owned nothing but the clothes on their backs and their knowledge of the sea.",
+      "tts": {
+        "text": "Many of them owned nothing but the clothes on their backs and their knowledge of the sea.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Life as an ordinary sailor in this era was brutal.",
+      "text_markdown": "Life as an ordinary sailor in this era was brutal.",
+      "tts": {
+        "text": "Life as an ordinary sailor in this era was brutal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Merchant captains ruled their ships like tyrants.",
+      "text_markdown": "Merchant captains ruled their ships like tyrants.",
+      "tts": {
+        "text": "Merchant captains ruled their ships like tyrants.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sailors were beaten for minor offenses and sometimes not paid at all.",
+      "text_markdown": "Sailors were beaten for minor offenses and sometimes not paid at all.",
+      "tts": {
+        "text": "Sailors were beaten for minor offenses and sometimes not paid at all.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The average sailor earned about 1 pound per month, barely enough to survive on land.",
+      "text_markdown": "The average sailor earned about 1 pound per month, barely enough to survive on land.",
+      "tts": {
+        "text": "The average sailor earned about one pound per month, barely enough to survive on land.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Naval service was even worse in many ways.",
+      "text_markdown": "Naval service was even worse in many ways.",
+      "tts": {
+        "text": "Naval service was even worse in many ways.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The Royal Navy used press gangs to kidnap men off the streets and force them onto warships.",
+      "text_markdown": "The Royal Navy used press gangs to kidnap men off the streets and force them onto warships.",
+      "tts": {
+        "text": "The Royal Navy used press gangs to kidnap men off the streets and force them onto warships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Disease killed more sailors than combat ever did.",
+      "text_markdown": "Disease killed more sailors than combat ever did.",
+      "tts": {
+        "text": "Disease killed more sailors than combat ever did.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Scurvy, dysentery, and tropical fevers swept through cramped lower decks with terrifying speed.",
+      "text_markdown": "Scurvy, dysentery, and tropical fevers swept through cramped lower decks with terrifying speed.",
+      "tts": {
+        "text": "Scurvy, dysentery, and tropical fevers swept through cramped lower decks with terrifying speed.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piracy offered an alternative that many sailors found irresistible.",
+      "text_markdown": "Piracy offered an alternative that many sailors found irresistible.",
+      "tts": {
+        "text": "Piracy offered an alternative that many sailors found irresistible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pirates elected their own captains and voted on major decisions.",
+      "text_markdown": "Pirates elected their own captains and voted on major decisions.",
+      "tts": {
+        "text": "Pirates elected their own captains and voted on major decisions.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Prize money was divided far more equally than on merchant or naval ships.",
+      "text_markdown": "Prize money was divided far more equally than on merchant or naval ships.",
+      "tts": {
+        "text": "Prize money was divided far more equally than on merchant or naval ships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A common pirate could earn in a single raid what a merchant sailor earned in several years.",
+      "text_markdown": "A common pirate could earn in a single raid what a merchant sailor earned in several years.",
+      "tts": {
+        "text": "A common pirate could earn in a single raid what a merchant sailor earned in several years.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The island of New Providence in the Bahamas became the unofficial capital of piracy.",
+      "text_markdown": "The island of New Providence in the Bahamas became the unofficial capital of piracy.",
+      "tts": {
+        "text": "The island of New Providence in the Bahamas became the unofficial capital of piracy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Its main harbor at Nassau could shelter hundreds of ships.",
+      "text_markdown": "Its main harbor at Nassau could shelter hundreds of ships.",
+      "tts": {
+        "text": "Its main harbor at Nassau could shelter hundreds of ships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The island had no strong colonial government and no fort capable of defending it.",
+      "text_markdown": "The island had no strong colonial government and no fort capable of defending it.",
+      "tts": {
+        "text": "The island had no strong colonial government and no fort capable of defending it.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "By the early seventeen hundreds, pirates outnumbered honest citizens in Nassau.",
+      "text_markdown": "By the early seventeen hundreds, pirates outnumbered honest citizens in Nassau.",
+      "tts": {
+        "text": "By the early seventeen hundreds, pirates outnumbered honest citizens in Nassau.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nassau became what historians call the Republic of Pirates.",
+      "text_markdown": "Nassau became what historians call the Republic of Pirates.",
+      "tts": {
+        "text": "Nassau became what historians call the Republic of Pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pirate captains like Benjamin Hornigold, Charles Vane, and Calico Jack Rackham called it home.",
+      "text_markdown": "Pirate captains like Benjamin Hornigold, Charles Vane, and Calico Jack Rackham called it home.",
+      "tts": {
+        "text": "Pirate captains like Benjamin Hornigold, Charles Vane, and Calico Jack Rackham called it home.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ships arrived constantly, bringing stolen goods to trade.",
+      "text_markdown": "Ships arrived constantly, bringing stolen goods to trade.",
+      "tts": {
+        "text": "Ships arrived constantly, bringing stolen goods to trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Taverns and markets sprang up to serve the pirate economy.",
+      "text_markdown": "Taverns and markets sprang up to serve the pirate economy.",
+      "tts": {
+        "text": "Taverns and markets sprang up to serve the pirate economy.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The colonial governments along the American coast were poorly defended.",
+      "text_markdown": "The colonial governments along the American coast were poorly defended.",
+      "tts": {
+        "text": "The colonial governments along the American coast were poorly defended.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Virginia, the Carolinas, and the New England colonies relied on trade for survival.",
+      "text_markdown": "Virginia, the Carolinas, and the New England colonies relied on trade for survival.",
+      "tts": {
+        "text": "Virginia, the Carolinas, and the New England colonies relied on trade for survival.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Their harbors were busy but their navies were small.",
+      "text_markdown": "Their harbors were busy but their navies were small.",
+      "tts": {
+        "text": "Their harbors were busy but their navies were small.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A single well-armed pirate ship could paralyze an entire colony's commerce.",
+      "text_markdown": "A single well-armed pirate ship could paralyze an entire colony's commerce.",
+      "tts": {
+        "text": "A single well-armed pirate ship could paralyze an entire colony's commerce.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This was the world that produced Edward Teach.",
+      "text_markdown": "This was the world that produced Edward Teach.",
+      "tts": {
+        "text": "This was the world that produced Edward Teach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was a world of violent opportunity, where a bold sailor could become rich or die trying.",
+      "text_markdown": "It was a world of violent opportunity, where a bold sailor could become rich or die trying.",
+      "tts": {
+        "text": "It was a world of violent opportunity, where a bold sailor could become rich or die trying.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The line between legal privateering and illegal piracy was thin and constantly shifting.",
+      "text_markdown": "The line between legal privateering and illegal piracy was thin and constantly shifting.",
+      "tts": {
+        "text": "The line between legal privateering and illegal piracy was thin and constantly shifting.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World That Made a Pirate",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Blackbeard would exploit that gray area better than almost anyone.",
+      "text_markdown": "Blackbeard would exploit that gray area better than almost anyone.",
+      "tts": {
+        "text": "Blackbeard would exploit that gray area better than almost anyone.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Making of Edward Teach",
+      "text_markdown": "The Making of Edward Teach"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Almost nothing is known for certain about Blackbeard's early life.",
+      "text_markdown": "Almost nothing is known for certain about Blackbeard's early life.",
+      "tts": {
+        "text": "Almost nothing is known for certain about Blackbeard's early life.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "This is common for pirates, whose lives before piracy rarely made it into official records.",
+      "text_markdown": "This is common for pirates, whose lives before piracy rarely made it into official records.",
+      "tts": {
+        "text": "This is common for pirates, whose lives before piracy rarely made it into official records.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historians must piece together his origins from scattered clues and later accounts.",
+      "text_markdown": "Historians must piece together his origins from scattered clues and later accounts.",
+      "tts": {
+        "text": "Historians must piece together his origins from scattered clues and later accounts.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The most widely accepted theory is that Edward Teach was born in Bristol, England.",
+      "text_markdown": "The most widely accepted theory is that Edward Teach was born in Bristol, England.",
+      "tts": {
+        "text": "The most widely accepted theory is that Edward Teach was born in Bristol, England.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol was one of the greatest port cities in the British Empire during the late 1600s.",
+      "text_markdown": "Bristol was one of the greatest port cities in the British Empire during the late 1600s.",
+      "tts": {
+        "text": "Bristol was one of the greatest port cities in the British Empire during the late sixteen hundreds.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ships sailed from Bristol to Africa, the Caribbean, and the American colonies.",
+      "text_markdown": "Ships sailed from Bristol to Africa, the Caribbean, and the American colonies.",
+      "tts": {
+        "text": "Ships sailed from Bristol to Africa, the Caribbean, and the American colonies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The city's economy was built on maritime trade, including the transatlantic slave trade.",
+      "text_markdown": "The city's economy was built on maritime trade, including the transatlantic slave trade.",
+      "tts": {
+        "text": "The city's economy was built on maritime trade, including the transatlantic slave trade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historians estimate Teach was born around 1680, though no birth record has been found.",
+      "text_markdown": "Historians estimate Teach was born around 1680, though no birth record has been found.",
+      "tts": {
+        "text": "Historians estimate Teach was born around sixteen eighty, though no birth record has been found.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His surname appears in various records as Teach, Thatch, Thach, and Tatch.",
+      "text_markdown": "His surname appears in various records as Teach, Thatch, Thach, and Tatch.",
+      "tts": {
+        "text": "His surname appears in various records as Teach, Thatch, Thach, and Tatch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spelling was not standardized in this era, and names were often written phonetically.",
+      "text_markdown": "Spelling was not standardized in this era, and names were often written phonetically.",
+      "tts": {
+        "text": "Spelling was not standardized in this era, and names were often written phonetically.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some evidence suggests that Teach came from a respectable family.",
+      "text_markdown": "Some evidence suggests that Teach came from a respectable family.",
+      "tts": {
+        "text": "Some evidence suggests that Teach came from a respectable family.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He could read and write, which was unusual for common sailors of the period.",
+      "text_markdown": "He could read and write, which was unusual for common sailors of the period.",
+      "tts": {
+        "text": "He could read and write, which was unusual for common sailors of the period.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A letter he wrote survives in historical archives, showing clear and confident handwriting.",
+      "text_markdown": "A letter he wrote survives in historical archives, showing clear and confident handwriting.",
+      "tts": {
+        "text": "A letter he wrote survives in historical archives, showing clear and confident handwriting.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Literacy suggests at least some formal education, likely at one of Bristol's charity schools.",
+      "text_markdown": "Literacy suggests at least some formal education, likely at one of Bristol's charity schools.",
+      "tts": {
+        "text": "Literacy suggests at least some formal education, likely at one of Bristol's charity schools.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach almost certainly went to sea as a young man.",
+      "text_markdown": "Teach almost certainly went to sea as a young man.",
+      "tts": {
+        "text": "Teach almost certainly went to sea as a young man.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In Bristol, the sea was the most obvious path to employment.",
+      "text_markdown": "In Bristol, the sea was the most obvious path to employment.",
+      "tts": {
+        "text": "In Bristol, the sea was the most obvious path to employment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Boys as young as twelve served as cabin boys or apprentice sailors on merchant vessels.",
+      "text_markdown": "Boys as young as twelve served as cabin boys or apprentice sailors on merchant vessels.",
+      "tts": {
+        "text": "Boys as young as twelve served as cabin boys or apprentice sailors on merchant vessels.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The work was dangerous, but it offered adventure and the chance to see the world.",
+      "text_markdown": "The work was dangerous, but it offered adventure and the chance to see the world.",
+      "tts": {
+        "text": "The work was dangerous, but it offered adventure and the chance to see the world.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When Queen Anne's War began, Teach likely entered service as a privateer.",
+      "text_markdown": "When Queen Anne's War began, Teach likely entered service as a privateer.",
+      "tts": {
+        "text": "When Queen Anne's War began, Teach likely entered service as a privateer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bristol was a major base for privateering operations against French and Spanish shipping.",
+      "text_markdown": "Bristol was a major base for privateering operations against French and Spanish shipping.",
+      "tts": {
+        "text": "Bristol was a major base for privateering operations against French and Spanish shipping.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A young man with sailing experience would have been eagerly recruited.",
+      "text_markdown": "A young man with sailing experience would have been eagerly recruited.",
+      "tts": {
+        "text": "A young man with sailing experience would have been eagerly recruited.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Privateering taught Teach the skills of naval combat that would later make him famous.",
+      "text_markdown": "Privateering taught Teach the skills of naval combat that would later make him famous.",
+      "tts": {
+        "text": "Privateering taught Teach the skills of naval combat that would later make him famous.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The war gave Teach years of experience in ship-to-ship fighting.",
+      "text_markdown": "The war gave Teach years of experience in ship-to-ship fighting.",
+      "tts": {
+        "text": "The war gave Teach years of experience in ship-to-ship fighting.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He learned how to handle cannons, board enemy vessels, and manage a crew under fire.",
+      "text_markdown": "He learned how to handle cannons, board enemy vessels, and manage a crew under fire.",
+      "tts": {
+        "text": "He learned how to handle cannons, board enemy vessels, and manage a crew under fire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He also learned the geography of the Caribbean and the patterns of merchant shipping.",
+      "text_markdown": "He also learned the geography of the Caribbean and the patterns of merchant shipping.",
+      "tts": {
+        "text": "He also learned the geography of the Caribbean and the patterns of merchant shipping.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "This knowledge was invaluable for a future pirate.",
+      "text_markdown": "This knowledge was invaluable for a future pirate.",
+      "tts": {
+        "text": "This knowledge was invaluable for a future pirate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the war ended in 1713, Teach found himself in the same position as thousands of other sailors.",
+      "text_markdown": "When the war ended in 1713, Teach found himself in the same position as thousands of other sailors.",
+      "tts": {
+        "text": "When the war ended in seventeen thirteen, Teach found himself in the same position as thousands of other sailors.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had skills and experience but no legal way to use them.",
+      "text_markdown": "He had skills and experience but no legal way to use them.",
+      "tts": {
+        "text": "He had skills and experience but no legal way to use them.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The peacetime Royal Navy was shrinking, and merchant ships were not hiring.",
+      "text_markdown": "The peacetime Royal Navy was shrinking, and merchant ships were not hiring.",
+      "tts": {
+        "text": "The peacetime Royal Navy was shrinking, and merchant ships were not hiring.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The path to piracy was almost inevitable for men like him.",
+      "text_markdown": "The path to piracy was almost inevitable for men like him.",
+      "tts": {
+        "text": "The path to piracy was almost inevitable for men like him.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach made his way to the island of New Providence in the Bahamas.",
+      "text_markdown": "Teach made his way to the island of New Providence in the Bahamas.",
+      "tts": {
+        "text": "Teach made his way to the island of New Providence in the Bahamas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "There he joined the crew of Captain Benjamin Hornigold, one of the most successful pirates of the era.",
+      "text_markdown": "There he joined the crew of Captain Benjamin Hornigold, one of the most successful pirates of the era.",
+      "tts": {
+        "text": "There he joined the crew of Captain Benjamin Hornigold, one of the most successful pirates of the era.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hornigold was a former privateer who had turned to piracy after the war.",
+      "text_markdown": "Hornigold was a former privateer who had turned to piracy after the war.",
+      "tts": {
+        "text": "Hornigold was a former privateer who had turned to piracy after the war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He commanded a small fleet of vessels operating out of Nassau's harbor.",
+      "text_markdown": "He commanded a small fleet of vessels operating out of Nassau's harbor.",
+      "tts": {
+        "text": "He commanded a small fleet of vessels operating out of Nassau's harbor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hornigold quickly recognized Teach's abilities.",
+      "text_markdown": "Hornigold quickly recognized Teach's abilities.",
+      "tts": {
+        "text": "Hornigold quickly recognized Teach's abilities.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teach was physically imposing, standing well over six feet tall in an age when most men were much shorter.",
+      "text_markdown": "Teach was physically imposing, standing well over six feet tall in an age when most men were much shorter.",
+      "tts": {
+        "text": "Teach was physically imposing, standing well over six feet tall in an age when most men were much shorter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was courageous in battle and natural at commanding other men.",
+      "text_markdown": "He was courageous in battle and natural at commanding other men.",
+      "tts": {
+        "text": "He was courageous in battle and natural at commanding other men.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hornigold gave Teach command of a captured sloop.",
+      "text_markdown": "Hornigold gave Teach command of a captured sloop.",
+      "tts": {
+        "text": "Hornigold gave Teach command of a captured sloop.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In late 1717, Teach and Hornigold captured a large French merchant vessel called La Concorde.",
+      "text_markdown": "In late 1717, Teach and Hornigold captured a large French merchant vessel called La Concorde.",
+      "tts": {
+        "text": "In late seventeen seventeen, Teach and Hornigold captured a large French merchant vessel called La Concorde.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La Concorde was a slave ship, heavily armed and carrying a valuable cargo.",
+      "text_markdown": "La Concorde was a slave ship, heavily armed and carrying a valuable cargo.",
+      "tts": {
+        "text": "La Concorde was a slave ship, heavily armed and carrying a valuable cargo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teach claimed the ship for himself and began to transform it.",
+      "text_markdown": "Teach claimed the ship for himself and began to transform it.",
+      "tts": {
+        "text": "Teach claimed the ship for himself and began to transform it.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He mounted additional cannons until the ship bristled with firepower.",
+      "text_markdown": "He mounted additional cannons until the ship bristled with firepower.",
+      "tts": {
+        "text": "He mounted additional cannons until the ship bristled with firepower.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teach renamed his new flagship Queen Anne's Revenge.",
+      "text_markdown": "Teach renamed his new flagship Queen Anne's Revenge.",
+      "tts": {
+        "text": "Teach renamed his new flagship Queen Anne's Revenge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The name was a deliberate political statement.",
+      "text_markdown": "The name was a deliberate political statement.",
+      "tts": {
+        "text": "The name was a deliberate political statement.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It referenced Queen Anne, during whose reign the privateers had served legally.",
+      "text_markdown": "It referenced Queen Anne, during whose reign the privateers had served legally.",
+      "tts": {
+        "text": "It referenced Queen Anne, during whose reign the privateers had served legally.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Teach was declaring that his piracy was revenge for the broken promises of the Crown.",
+      "text_markdown": "Teach was declaring that his piracy was revenge for the broken promises of the Crown.",
+      "tts": {
+        "text": "Teach was declaring that his piracy was revenge for the broken promises of the Crown.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "With 40 cannons and a crew of over 300 men, Queen Anne's Revenge was one of the most powerful pirate ships afloat.",
+      "text_markdown": "With 40 cannons and a crew of over 300 men, Queen Anne's Revenge was one of the most powerful pirate ships afloat.",
+      "tts": {
+        "text": "With forty cannons and a crew of over three hundred men, Queen Anne's Revenge was one of the most powerful pirate ships afloat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Blackbeard was no longer a junior pirate operating under someone else's authority.",
+      "text_markdown": "Blackbeard was no longer a junior pirate operating under someone else's authority.",
+      "tts": {
+        "text": "Blackbeard was no longer a junior pirate operating under someone else's authority.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was now a force to be reckoned with in his own right.",
+      "text_markdown": "He was now a force to be reckoned with in his own right.",
+      "tts": {
+        "text": "He was now a force to be reckoned with in his own right.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "The Making of Edward Teach",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The legend of Blackbeard was about to begin.",
+      "text_markdown": "The legend of Blackbeard was about to begin.",
+      "tts": {
+        "text": "The legend of Blackbeard was about to begin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Terror of the Atlantic",
+      "text_markdown": "The Terror of the Atlantic"
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In early 1718, Blackbeard sailed Queen Anne's Revenge northward from the Caribbean.",
+      "text_markdown": "In early 1718, Blackbeard sailed Queen Anne's Revenge northward from the Caribbean.",
+      "tts": {
+        "text": "In early seventeen eighteen, Blackbeard sailed Queen Anne's Revenge northward from the Caribbean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was heading for the shipping lanes along the American colonial coast.",
+      "text_markdown": "He was heading for the shipping lanes along the American colonial coast.",
+      "tts": {
+        "text": "He was heading for the shipping lanes along the American colonial coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "These waters were rich with merchant traffic and poorly defended.",
+      "text_markdown": "These waters were rich with merchant traffic and poorly defended.",
+      "tts": {
+        "text": "These waters were rich with merchant traffic and poorly defended.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Blackbeard intended to exploit this vulnerability to its fullest.",
+      "text_markdown": "Blackbeard intended to exploit this vulnerability to its fullest.",
+      "tts": {
+        "text": "Blackbeard intended to exploit this vulnerability to its fullest.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard's strategy was built on terror as much as firepower.",
+      "text_markdown": "Blackbeard's strategy was built on terror as much as firepower.",
+      "tts": {
+        "text": "Blackbeard's strategy was built on terror as much as firepower.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He understood that a terrified enemy would surrender without a fight.",
+      "text_markdown": "He understood that a terrified enemy would surrender without a fight.",
+      "tts": {
+        "text": "He understood that a terrified enemy would surrender without a fight.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A battle avoided was a battle won, because it preserved his crew and his ships.",
+      "text_markdown": "A battle avoided was a battle won, because it preserved his crew and his ships.",
+      "tts": {
+        "text": "A battle avoided was a battle won, because it preserved his crew and his ships.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Every element of his appearance was designed to maximize fear.",
+      "text_markdown": "Every element of his appearance was designed to maximize fear.",
+      "tts": {
+        "text": "Every element of his appearance was designed to maximize fear.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He grew his thick black beard to an enormous length, covering most of his face and chest.",
+      "text_markdown": "He grew his thick black beard to an enormous length, covering most of his face and chest.",
+      "tts": {
+        "text": "He grew his thick black beard to an enormous length, covering most of his face and chest.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Before battle, he wove slow-burning hemp fuses called slow matches into his beard.",
+      "text_markdown": "Before battle, he wove slow-burning hemp fuses called slow matches into his beard.",
+      "tts": {
+        "text": "Before battle, he wove slow-burning hemp fuses called slow matches into his beard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "When lit, these fuses produced clouds of smoke around his head.",
+      "text_markdown": "When lit, these fuses produced clouds of smoke around his head.",
+      "tts": {
+        "text": "When lit, these fuses produced clouds of smoke around his head.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The effect was otherworldly, like a monster emerging from sulfurous fire.",
+      "text_markdown": "The effect was otherworldly, like a monster emerging from sulfurous fire.",
+      "tts": {
+        "text": "The effect was otherworldly, like a monster emerging from sulfurous fire.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He carried multiple pistols strapped across his chest in a leather bandolier.",
+      "text_markdown": "He carried multiple pistols strapped across his chest in a leather bandolier.",
+      "tts": {
+        "text": "He carried multiple pistols strapped across his chest in a leather bandolier.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He also wore several cutlasses and daggers at his belt.",
+      "text_markdown": "He also wore several cutlasses and daggers at his belt.",
+      "tts": {
+        "text": "He also wore several cutlasses and daggers at his belt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His clothing was deliberately theatrical, designed to look as fearsome as possible.",
+      "text_markdown": "His clothing was deliberately theatrical, designed to look as fearsome as possible.",
+      "tts": {
+        "text": "His clothing was deliberately theatrical, designed to look as fearsome as possible.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Witnesses described him as the very image of the devil.",
+      "text_markdown": "Witnesses described him as the very image of the devil.",
+      "tts": {
+        "text": "Witnesses described him as the very image of the devil.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard gathered a small fleet of pirate vessels around him.",
+      "text_markdown": "Blackbeard gathered a small fleet of pirate vessels around him.",
+      "tts": {
+        "text": "Blackbeard gathered a small fleet of pirate vessels around him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "At his peak, he commanded 4 ships and several hundred pirates.",
+      "text_markdown": "At his peak, he commanded 4 ships and several hundred pirates.",
+      "tts": {
+        "text": "At his peak, he commanded four ships and several hundred pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "This was an unusual concentration of pirate power.",
+      "text_markdown": "This was an unusual concentration of pirate power.",
+      "tts": {
+        "text": "This was an unusual concentration of pirate power.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Most pirates operated alone or in pairs, but Blackbeard thought on a larger scale.",
+      "text_markdown": "Most pirates operated alone or in pairs, but Blackbeard thought on a larger scale.",
+      "tts": {
+        "text": "Most pirates operated alone or in pairs, but Blackbeard thought on a larger scale.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His fleet captured ship after ship along the coast.",
+      "text_markdown": "His fleet captured ship after ship along the coast.",
+      "tts": {
+        "text": "His fleet captured ship after ship along the coast.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Merchant captains who saw his black flag often surrendered immediately.",
+      "text_markdown": "Merchant captains who saw his black flag often surrendered immediately.",
+      "tts": {
+        "text": "Merchant captains who saw his black flag often surrendered immediately.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Those who resisted were overwhelmed by superior numbers and firepower.",
+      "text_markdown": "Those who resisted were overwhelmed by superior numbers and firepower.",
+      "tts": {
+        "text": "Those who resisted were overwhelmed by superior numbers and firepower.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Blackbeard's reputation spread through every port from the Caribbean to New England.",
+      "text_markdown": "Blackbeard's reputation spread through every port from the Caribbean to New England.",
+      "tts": {
+        "text": "Blackbeard's reputation spread through every port from the Caribbean to New England.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In a typical attack, Blackbeard would fly false colors to approach his target.",
+      "text_markdown": "In a typical attack, Blackbeard would fly false colors to approach his target.",
+      "tts": {
+        "text": "In a typical attack, Blackbeard would fly false colors to approach his target.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pirates often flew the flag of a friendly nation to get close before revealing themselves.",
+      "text_markdown": "Pirates often flew the flag of a friendly nation to get close before revealing themselves.",
+      "tts": {
+        "text": "Pirates often flew the flag of a friendly nation to get close before revealing themselves.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "At the last moment, they would raise their true pirate flag.",
+      "text_markdown": "At the last moment, they would raise their true pirate flag.",
+      "tts": {
+        "text": "At the last moment, they would raise their true pirate flag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "By then, it was usually too late for the victim to escape.",
+      "text_markdown": "By then, it was usually too late for the victim to escape.",
+      "tts": {
+        "text": "By then, it was usually too late for the victim to escape.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard's flag was distinctive and terrifying.",
+      "text_markdown": "Blackbeard's flag was distinctive and terrifying.",
+      "tts": {
+        "text": "Blackbeard's flag was distinctive and terrifying.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It showed a skeleton holding an hourglass in one hand and a spear in the other.",
+      "text_markdown": "It showed a skeleton holding an hourglass in one hand and a spear in the other.",
+      "tts": {
+        "text": "It showed a skeleton holding an hourglass in one hand and a spear in the other.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The spear was pointed at a bleeding heart.",
+      "text_markdown": "The spear was pointed at a bleeding heart.",
+      "tts": {
+        "text": "The spear was pointed at a bleeding heart.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The message was clear: your time is running out, and death is coming.",
+      "text_markdown": "The message was clear: your time is running out, and death is coming.",
+      "tts": {
+        "text": "The message was clear: your time is running out, and death is coming.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In May 1718, Blackbeard executed his most audacious plan.",
+      "text_markdown": "In May 1718, Blackbeard executed his most audacious plan.",
+      "tts": {
+        "text": "In May of seventeen eighteen, Blackbeard executed his most audacious plan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He sailed his fleet directly into the harbor of Charleston, South Carolina.",
+      "text_markdown": "He sailed his fleet directly into the harbor of Charleston, South Carolina.",
+      "tts": {
+        "text": "He sailed his fleet directly into the harbor of Charleston, South Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Charleston was one of the wealthiest and most important ports in the American colonies.",
+      "text_markdown": "Charleston was one of the wealthiest and most important ports in the American colonies.",
+      "tts": {
+        "text": "Charleston was one of the wealthiest and most important ports in the American colonies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "What followed was one of the most brazen acts of piracy in history.",
+      "text_markdown": "What followed was one of the most brazen acts of piracy in history.",
+      "tts": {
+        "text": "What followed was one of the most brazen acts of piracy in history.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard blockaded the entire harbor of Charleston.",
+      "text_markdown": "Blackbeard blockaded the entire harbor of Charleston.",
+      "tts": {
+        "text": "Blackbeard blockaded the entire harbor of Charleston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "No ship could enter or leave without his permission.",
+      "text_markdown": "No ship could enter or leave without his permission.",
+      "tts": {
+        "text": "No ship could enter or leave without his permission.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "For nearly a week, he held the city hostage.",
+      "text_markdown": "For nearly a week, he held the city hostage.",
+      "tts": {
+        "text": "For nearly a week, he held the city hostage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He captured every vessel that attempted to pass through the harbor mouth.",
+      "text_markdown": "He captured every vessel that attempted to pass through the harbor mouth.",
+      "tts": {
+        "text": "He captured every vessel that attempted to pass through the harbor mouth.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He seized at least 8 ships during the blockade.",
+      "text_markdown": "He seized at least 8 ships during the blockade.",
+      "tts": {
+        "text": "He seized at least eight ships during the blockade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Among his prisoners were some of Charleston's most prominent citizens.",
+      "text_markdown": "Among his prisoners were some of Charleston's most prominent citizens.",
+      "tts": {
+        "text": "Among his prisoners were some of Charleston's most prominent citizens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He took hostages and threatened to kill them all.",
+      "text_markdown": "He took hostages and threatened to kill them all.",
+      "tts": {
+        "text": "He took hostages and threatened to kill them all.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard's demand was surprising.",
+      "text_markdown": "Blackbeard's demand was surprising.",
+      "tts": {
+        "text": "Blackbeard's demand was surprising.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He did not ask for gold or jewels.",
+      "text_markdown": "He did not ask for gold or jewels.",
+      "tts": {
+        "text": "He did not ask for gold or jewels.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Instead, he demanded a chest of medicine.",
+      "text_markdown": "Instead, he demanded a chest of medicine.",
+      "tts": {
+        "text": "Instead, he demanded a chest of medicine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Historians believe his crew was suffering from syphilis and other diseases common among sailors.",
+      "text_markdown": "Historians believe his crew was suffering from syphilis and other diseases common among sailors.",
+      "tts": {
+        "text": "Historians believe his crew was suffering from syphilis and other diseases common among sailors.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The governor of South Carolina had no navy capable of challenging Blackbeard's fleet.",
+      "text_markdown": "The governor of South Carolina had no navy capable of challenging Blackbeard's fleet.",
+      "tts": {
+        "text": "The governor of South Carolina had no navy capable of challenging Blackbeard's fleet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "After tense negotiations, the city sent the medicine to the pirates.",
+      "text_markdown": "After tense negotiations, the city sent the medicine to the pirates.",
+      "tts": {
+        "text": "After tense negotiations, the city sent the medicine to the pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blackbeard released his hostages, though he stripped them of their valuables first.",
+      "text_markdown": "Blackbeard released his hostages, though he stripped them of their valuables first.",
+      "tts": {
+        "text": "Blackbeard released his hostages, though he stripped them of their valuables first.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He sailed away from Charleston with his reputation at its absolute peak.",
+      "text_markdown": "He sailed away from Charleston with his reputation at its absolute peak.",
+      "tts": {
+        "text": "He sailed away from Charleston with his reputation at its absolute peak.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After Charleston, Blackbeard sailed north to Beaufort Inlet in North Carolina.",
+      "text_markdown": "After Charleston, Blackbeard sailed north to Beaufort Inlet in North Carolina.",
+      "tts": {
+        "text": "After Charleston, Blackbeard sailed north to Beaufort Inlet in North Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Here, Queen Anne's Revenge ran aground on a sandbar and was lost.",
+      "text_markdown": "Here, Queen Anne's Revenge ran aground on a sandbar and was lost.",
+      "tts": {
+        "text": "Here, Queen Anne's Revenge ran aground on a sandbar and was lost.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Some historians believe this was a deliberate act by Blackbeard to reduce his fleet and crew.",
+      "text_markdown": "Some historians believe this was a deliberate act by Blackbeard to reduce his fleet and crew.",
+      "tts": {
+        "text": "Some historians believe this was a deliberate act by Blackbeard to reduce his fleet and crew.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Terror of the Atlantic",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hundreds of pirates were left stranded, while Blackbeard kept the best treasure for himself.",
+      "text_markdown": "Hundreds of pirates were left stranded, while Blackbeard kept the best treasure for himself.",
+      "tts": {
+        "text": "Hundreds of pirates were left stranded, while Blackbeard kept the best treasure for himself.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "At the Height of His Power",
+      "text_markdown": "At the Height of His Power"
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After losing Queen Anne's Revenge, Blackbeard sailed to the town of Bath, North Carolina.",
+      "text_markdown": "After losing Queen Anne's Revenge, Blackbeard sailed to the town of Bath, North Carolina.",
+      "tts": {
+        "text": "After losing Queen Anne's Revenge, Blackbeard sailed to the town of Bath, North Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "There he met with Governor Charles Eden and accepted a royal pardon.",
+      "text_markdown": "There he met with Governor Charles Eden and accepted a royal pardon.",
+      "tts": {
+        "text": "There he met with Governor Charles Eden and accepted a royal pardon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The pardon was supposed to end his career as a pirate.",
+      "text_markdown": "The pardon was supposed to end his career as a pirate.",
+      "tts": {
+        "text": "The pardon was supposed to end his career as a pirate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "But Blackbeard had no intention of retiring.",
+      "text_markdown": "But Blackbeard had no intention of retiring.",
+      "tts": {
+        "text": "But Blackbeard had no intention of retiring.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bath was a tiny community of a few dozen houses on the Pamlico River.",
+      "text_markdown": "Bath was a tiny community of a few dozen houses on the Pamlico River.",
+      "tts": {
+        "text": "Bath was a tiny community of a few dozen houses on the Pamlico River.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was an unlikely home for the most feared pirate in the Atlantic.",
+      "text_markdown": "It was an unlikely home for the most feared pirate in the Atlantic.",
+      "tts": {
+        "text": "It was an unlikely home for the most feared pirate in the Atlantic.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But its isolation and its corrupt governor made it perfect for Blackbeard's purposes.",
+      "text_markdown": "But its isolation and its corrupt governor made it perfect for Blackbeard's purposes.",
+      "tts": {
+        "text": "But its isolation and its corrupt governor made it perfect for Blackbeard's purposes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Governor Charles Eden appears to have been Blackbeard's willing partner.",
+      "text_markdown": "Governor Charles Eden appears to have been Blackbeard's willing partner.",
+      "tts": {
+        "text": "Governor Charles Eden appears to have been Blackbeard's willing partner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He provided legal cover for the pirate's continued activities.",
+      "text_markdown": "He provided legal cover for the pirate's continued activities.",
+      "tts": {
+        "text": "He provided legal cover for the pirate's continued activities.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blackbeard would capture ships at sea and then bring the cargo to Bath.",
+      "text_markdown": "Blackbeard would capture ships at sea and then bring the cargo to Bath.",
+      "tts": {
+        "text": "Blackbeard would capture ships at sea and then bring the cargo to Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eden would declare the goods legitimate salvage and take a share of the profits.",
+      "text_markdown": "Eden would declare the goods legitimate salvage and take a share of the profits.",
+      "tts": {
+        "text": "Eden would declare the goods legitimate salvage and take a share of the profits.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard married a local woman during his time in Bath.",
+      "text_markdown": "Blackbeard married a local woman during his time in Bath.",
+      "tts": {
+        "text": "Blackbeard married a local woman during his time in Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "She is believed to have been about 16 years old.",
+      "text_markdown": "She is believed to have been about 16 years old.",
+      "tts": {
+        "text": "She is believed to have been about sixteen years old.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historical records suggest this may have been his fourteenth wife.",
+      "text_markdown": "Historical records suggest this may have been his fourteenth wife.",
+      "tts": {
+        "text": "Historical records suggest this may have been his fourteenth wife.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Most of these marriages were informal arrangements common among seafaring men.",
+      "text_markdown": "Most of these marriages were informal arrangements common among seafaring men.",
+      "tts": {
+        "text": "Most of these marriages were informal arrangements common among seafaring men.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Despite his pardon, Blackbeard continued to prey on shipping.",
+      "text_markdown": "Despite his pardon, Blackbeard continued to prey on shipping.",
+      "tts": {
+        "text": "Despite his pardon, Blackbeard continued to prey on shipping.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He claimed that captured ships were Spanish or French vessels, making them fair prizes.",
+      "text_markdown": "He claimed that captured ships were Spanish or French vessels, making them fair prizes.",
+      "tts": {
+        "text": "He claimed that captured ships were Spanish or French vessels, making them fair prizes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Governor Eden conveniently certified these claims without investigation.",
+      "text_markdown": "Governor Eden conveniently certified these claims without investigation.",
+      "tts": {
+        "text": "Governor Eden conveniently certified these claims without investigation.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard's relationship with the local community was complex.",
+      "text_markdown": "Blackbeard's relationship with the local community was complex.",
+      "tts": {
+        "text": "Blackbeard's relationship with the local community was complex.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Some residents welcomed the wealth he brought to their struggling town.",
+      "text_markdown": "Some residents welcomed the wealth he brought to their struggling town.",
+      "tts": {
+        "text": "Some residents welcomed the wealth he brought to their struggling town.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Others lived in terror of the violent pirate and his armed crew.",
+      "text_markdown": "Others lived in terror of the violent pirate and his armed crew.",
+      "tts": {
+        "text": "Others lived in terror of the violent pirate and his armed crew.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No one dared to challenge him openly.",
+      "text_markdown": "No one dared to challenge him openly.",
+      "tts": {
+        "text": "No one dared to challenge him openly.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He hosted lavish gatherings at his house in Bath.",
+      "text_markdown": "He hosted lavish gatherings at his house in Bath.",
+      "tts": {
+        "text": "He hosted lavish gatherings at his house in Bath.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Prominent locals, including the governor himself, attended these events.",
+      "text_markdown": "Prominent locals, including the governor himself, attended these events.",
+      "tts": {
+        "text": "Prominent locals, including the governor himself, attended these events.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stolen wine and spirits flowed freely.",
+      "text_markdown": "Stolen wine and spirits flowed freely.",
+      "tts": {
+        "text": "Stolen wine and spirits flowed freely.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "These parties helped Blackbeard maintain his network of allies and informants.",
+      "text_markdown": "These parties helped Blackbeard maintain his network of allies and informants.",
+      "tts": {
+        "text": "These parties helped Blackbeard maintain his network of allies and informants.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard also maintained a hideout on Ocracoke Island.",
+      "text_markdown": "Blackbeard also maintained a hideout on Ocracoke Island.",
+      "tts": {
+        "text": "Blackbeard also maintained a hideout on Ocracoke Island.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke was a remote barrier island on the Outer Banks of North Carolina.",
+      "text_markdown": "Ocracoke was a remote barrier island on the Outer Banks of North Carolina.",
+      "tts": {
+        "text": "Ocracoke was a remote barrier island on the Outer Banks of North Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Its shallow waters and treacherous shoals made it nearly impossible for large warships to approach.",
+      "text_markdown": "Its shallow waters and treacherous shoals made it nearly impossible for large warships to approach.",
+      "tts": {
+        "text": "Its shallow waters and treacherous shoals made it nearly impossible for large warships to approach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "For a pirate who knew the channels, it was an impregnable fortress.",
+      "text_markdown": "For a pirate who knew the channels, it was an impregnable fortress.",
+      "tts": {
+        "text": "For a pirate who knew the channels, it was an impregnable fortress.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Other pirates came to Ocracoke to trade, resupply, and socialize.",
+      "text_markdown": "Other pirates came to Ocracoke to trade, resupply, and socialize.",
+      "tts": {
+        "text": "Other pirates came to Ocracoke to trade, resupply, and socialize.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Charles Vane, another notorious pirate captain, visited Blackbeard there.",
+      "text_markdown": "Charles Vane, another notorious pirate captain, visited Blackbeard there.",
+      "tts": {
+        "text": "Charles Vane, another notorious pirate captain, visited Blackbeard there.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The two crews held a days-long celebration on the beach.",
+      "text_markdown": "The two crews held a days-long celebration on the beach.",
+      "tts": {
+        "text": "The two crews held a days-long celebration on the beach.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Reports of this pirate gathering alarmed colonial officials up and down the coast.",
+      "text_markdown": "Reports of this pirate gathering alarmed colonial officials up and down the coast.",
+      "tts": {
+        "text": "Reports of this pirate gathering alarmed colonial officials up and down the coast.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The pirates lived by a code of conduct that Blackbeard enforced strictly.",
+      "text_markdown": "The pirates lived by a code of conduct that Blackbeard enforced strictly.",
+      "tts": {
+        "text": "The pirates lived by a code of conduct that Blackbeard enforced strictly.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Every man had a vote in major decisions.",
+      "text_markdown": "Every man had a vote in major decisions.",
+      "tts": {
+        "text": "Every man had a vote in major decisions.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Plunder was divided according to agreed-upon shares.",
+      "text_markdown": "Plunder was divided according to agreed-upon shares.",
+      "tts": {
+        "text": "Plunder was divided according to agreed-upon shares.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anyone caught stealing from the common treasury was punished severely.",
+      "text_markdown": "Anyone caught stealing from the common treasury was punished severely.",
+      "tts": {
+        "text": "Anyone caught stealing from the common treasury was punished severely.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Merchants and plantation owners along the coast were desperate.",
+      "text_markdown": "Merchants and plantation owners along the coast were desperate.",
+      "tts": {
+        "text": "Merchants and plantation owners along the coast were desperate.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Their trade was being strangled by Blackbeard's constant raids.",
+      "text_markdown": "Their trade was being strangled by Blackbeard's constant raids.",
+      "tts": {
+        "text": "Their trade was being strangled by Blackbeard's constant raids.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Insurance rates for ships traveling through Carolina waters skyrocketed.",
+      "text_markdown": "Insurance rates for ships traveling through Carolina waters skyrocketed.",
+      "tts": {
+        "text": "Insurance rates for ships traveling through Carolina waters skyrocketed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Some merchants stopped sending ships entirely, preferring to lose business rather than lose everything.",
+      "text_markdown": "Some merchants stopped sending ships entirely, preferring to lose business rather than lose everything.",
+      "tts": {
+        "text": "Some merchants stopped sending ships entirely, preferring to lose business rather than lose everything.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The governor of Virginia, Alexander Spotswood, was particularly outraged.",
+      "text_markdown": "The governor of Virginia, Alexander Spotswood, was particularly outraged.",
+      "tts": {
+        "text": "The governor of Virginia, Alexander Spotswood, was particularly outraged.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Virginia's economy depended on tobacco exports shipped through the Chesapeake Bay.",
+      "text_markdown": "Virginia's economy depended on tobacco exports shipped through the Chesapeake Bay.",
+      "tts": {
+        "text": "Virginia's economy depended on tobacco exports shipped through the Chesapeake Bay.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blackbeard's presence nearby threatened Virginia's most vital industry.",
+      "text_markdown": "Blackbeard's presence nearby threatened Virginia's most vital industry.",
+      "tts": {
+        "text": "Blackbeard's presence nearby threatened Virginia's most vital industry.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Spotswood decided that if North Carolina would not deal with the pirate, Virginia would.",
+      "text_markdown": "Spotswood decided that if North Carolina would not deal with the pirate, Virginia would.",
+      "tts": {
+        "text": "Spotswood decided that if North Carolina would not deal with the pirate, Virginia would.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood began secretly planning a military operation to capture or kill Blackbeard.",
+      "text_markdown": "Spotswood began secretly planning a military operation to capture or kill Blackbeard.",
+      "tts": {
+        "text": "Spotswood began secretly planning a military operation to capture or kill Blackbeard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sending Virginia forces into North Carolina without permission was legally questionable.",
+      "text_markdown": "Sending Virginia forces into North Carolina without permission was legally questionable.",
+      "tts": {
+        "text": "Sending Virginia forces into North Carolina without permission was legally questionable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "At the Height of His Power",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But Spotswood decided to act anyway, believing the threat justified extraordinary measures.",
+      "text_markdown": "But Spotswood decided to act anyway, believing the threat justified extraordinary measures.",
+      "tts": {
+        "text": "But Spotswood decided to act anyway, believing the threat justified extraordinary measures.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Battle at Ocracoke",
+      "text_markdown": "The Battle at Ocracoke"
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In November 1718, Governor Spotswood put his plan into action.",
+      "text_markdown": "In November 1718, Governor Spotswood put his plan into action.",
+      "tts": {
+        "text": "In November of seventeen eighteen, Governor Spotswood put his plan into action.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He hired two small sloops from civilian owners and placed them under naval command.",
+      "text_markdown": "He hired two small sloops from civilian owners and placed them under naval command.",
+      "tts": {
+        "text": "He hired two small sloops from civilian owners and placed them under naval command.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The expedition was led by Lieutenant Robert Maynard of the Royal Navy.",
+      "text_markdown": "The expedition was led by Lieutenant Robert Maynard of the Royal Navy.",
+      "tts": {
+        "text": "The expedition was led by Lieutenant Robert Maynard of the Royal Navy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maynard was an experienced officer with a reputation for courage and determination.",
+      "text_markdown": "Maynard was an experienced officer with a reputation for courage and determination.",
+      "tts": {
+        "text": "Maynard was an experienced officer with a reputation for courage and determination.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spotswood chose sloops because they had shallow drafts.",
+      "text_markdown": "Spotswood chose sloops because they had shallow drafts.",
+      "tts": {
+        "text": "Spotswood chose sloops because they had shallow drafts.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Only shallow-bottomed vessels could navigate the channels around Ocracoke Island.",
+      "text_markdown": "Only shallow-bottomed vessels could navigate the channels around Ocracoke Island.",
+      "tts": {
+        "text": "Only shallow-bottomed vessels could navigate the channels around Ocracoke Island.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Larger warships would run aground long before reaching Blackbeard's anchorage.",
+      "text_markdown": "Larger warships would run aground long before reaching Blackbeard's anchorage.",
+      "tts": {
+        "text": "Larger warships would run aground long before reaching Blackbeard's anchorage.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard's two sloops carried about 60 men total.",
+      "text_markdown": "Maynard's two sloops carried about 60 men total.",
+      "tts": {
+        "text": "Maynard's two sloops carried about sixty men total.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They were sailors from Royal Navy warships stationed in Virginia.",
+      "text_markdown": "They were sailors from Royal Navy warships stationed in Virginia.",
+      "tts": {
+        "text": "They were sailors from Royal Navy warships stationed in Virginia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The men were promised a share of any pirate loot they captured.",
+      "text_markdown": "The men were promised a share of any pirate loot they captured.",
+      "tts": {
+        "text": "The men were promised a share of any pirate loot they captured.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The expedition sailed south from Virginia in secrecy.",
+      "text_markdown": "The expedition sailed south from Virginia in secrecy.",
+      "tts": {
+        "text": "The expedition sailed south from Virginia in secrecy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spotswood told almost no one about the mission to prevent Blackbeard from being warned.",
+      "text_markdown": "Spotswood told almost no one about the mission to prevent Blackbeard from being warned.",
+      "tts": {
+        "text": "Spotswood told almost no one about the mission to prevent Blackbeard from being warned.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Speed and surprise were essential to the plan's success.",
+      "text_markdown": "Speed and surprise were essential to the plan's success.",
+      "tts": {
+        "text": "Speed and surprise were essential to the plan's success.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On the evening of November 21, 1718, Maynard's sloops arrived near Ocracoke Island.",
+      "text_markdown": "On the evening of November 21, 1718, Maynard's sloops arrived near Ocracoke Island.",
+      "tts": {
+        "text": "On the evening of November twenty-first, seventeen eighteen, Maynard's sloops arrived near Ocracoke Island.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They anchored at the edge of the channel and waited for dawn.",
+      "text_markdown": "They anchored at the edge of the channel and waited for dawn.",
+      "tts": {
+        "text": "They anchored at the edge of the channel and waited for dawn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maynard could see the lights of Blackbeard's sloop Adventure in the harbor.",
+      "text_markdown": "Maynard could see the lights of Blackbeard's sloop Adventure in the harbor.",
+      "tts": {
+        "text": "Maynard could see the lights of Blackbeard's sloop Adventure in the harbor.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The pirates were celebrating, unaware that their doom was approaching.",
+      "text_markdown": "The pirates were celebrating, unaware that their doom was approaching.",
+      "tts": {
+        "text": "The pirates were celebrating, unaware that their doom was approaching.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "At first light, Maynard's sloops entered the channel.",
+      "text_markdown": "At first light, Maynard's sloops entered the channel.",
+      "tts": {
+        "text": "At first light, Maynard's sloops entered the channel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Blackbeard spotted them immediately and recognized them as a threat.",
+      "text_markdown": "Blackbeard spotted them immediately and recognized them as a threat.",
+      "tts": {
+        "text": "Blackbeard spotted them immediately and recognized them as a threat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He cut his anchor cable and tried to maneuver for a fight.",
+      "text_markdown": "He cut his anchor cable and tried to maneuver for a fight.",
+      "tts": {
+        "text": "He cut his anchor cable and tried to maneuver for a fight.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The narrow, shallow waters of Ocracoke Inlet turned the battle into a close-quarters brawl.",
+      "text_markdown": "The narrow, shallow waters of Ocracoke Inlet turned the battle into a close-quarters brawl.",
+      "tts": {
+        "text": "The narrow, shallow waters of Ocracoke Inlet turned the battle into a close-quarters brawl.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard's first move was devastating.",
+      "text_markdown": "Blackbeard's first move was devastating.",
+      "tts": {
+        "text": "Blackbeard's first move was devastating.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He fired a broadside of cannons loaded with grapeshot and scrap metal.",
+      "text_markdown": "He fired a broadside of cannons loaded with grapeshot and scrap metal.",
+      "tts": {
+        "text": "He fired a broadside of cannons loaded with grapeshot and scrap metal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The blast swept across the deck of one of Maynard's sloops.",
+      "text_markdown": "The blast swept across the deck of one of Maynard's sloops.",
+      "tts": {
+        "text": "The blast swept across the deck of one of Maynard's sloops.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The sloop's commander was killed instantly, along with several of his men.",
+      "text_markdown": "The sloop's commander was killed instantly, along with several of his men.",
+      "tts": {
+        "text": "The sloop's commander was killed instantly, along with several of his men.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard's own sloop took heavy damage from the cannon fire.",
+      "text_markdown": "Maynard's own sloop took heavy damage from the cannon fire.",
+      "tts": {
+        "text": "Maynard's own sloop took heavy damage from the cannon fire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "About a third of his crew was killed or wounded in the opening exchange.",
+      "text_markdown": "About a third of his crew was killed or wounded in the opening exchange.",
+      "tts": {
+        "text": "About a third of his crew was killed or wounded in the opening exchange.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But Maynard had a clever plan.",
+      "text_markdown": "But Maynard had a clever plan.",
+      "tts": {
+        "text": "But Maynard had a clever plan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He ordered most of his surviving men to hide below decks.",
+      "text_markdown": "He ordered most of his surviving men to hide below decks.",
+      "tts": {
+        "text": "He ordered most of his surviving men to hide below decks.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Only a few sailors remained visible on the upper deck.",
+      "text_markdown": "Only a few sailors remained visible on the upper deck.",
+      "tts": {
+        "text": "Only a few sailors remained visible on the upper deck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "When Blackbeard looked across at the apparently empty ship, he assumed most of the crew was dead.",
+      "text_markdown": "When Blackbeard looked across at the apparently empty ship, he assumed most of the crew was dead.",
+      "tts": {
+        "text": "When Blackbeard looked across at the apparently empty ship, he assumed most of the crew was dead.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He ordered his pirates to board Maynard's sloop for the kill.",
+      "text_markdown": "He ordered his pirates to board Maynard's sloop for the kill.",
+      "tts": {
+        "text": "He ordered his pirates to board Maynard's sloop for the kill.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard and his men swung across onto the deck of Maynard's sloop.",
+      "text_markdown": "Blackbeard and his men swung across onto the deck of Maynard's sloop.",
+      "tts": {
+        "text": "Blackbeard and his men swung across onto the deck of Maynard's sloop.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "At that moment, Maynard gave the signal.",
+      "text_markdown": "At that moment, Maynard gave the signal.",
+      "tts": {
+        "text": "At that moment, Maynard gave the signal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His hidden sailors burst up from below, weapons in hand.",
+      "text_markdown": "His hidden sailors burst up from below, weapons in hand.",
+      "tts": {
+        "text": "His hidden sailors burst up from below, weapons in hand.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The pirates found themselves trapped in a furious hand-to-hand battle.",
+      "text_markdown": "The pirates found themselves trapped in a furious hand-to-hand battle.",
+      "tts": {
+        "text": "The pirates found themselves trapped in a furious hand-to-hand battle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard and Maynard fought each other directly.",
+      "text_markdown": "Blackbeard and Maynard fought each other directly.",
+      "tts": {
+        "text": "Blackbeard and Maynard fought each other directly.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Blackbeard swung his cutlass with such force that he snapped Maynard's sword blade.",
+      "text_markdown": "Blackbeard swung his cutlass with such force that he snapped Maynard's sword blade.",
+      "tts": {
+        "text": "Blackbeard swung his cutlass with such force that he snapped Maynard's sword blade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "As Blackbeard raised his cutlass for a killing blow, one of Maynard's men slashed him across the neck.",
+      "text_markdown": "As Blackbeard raised his cutlass for a killing blow, one of Maynard's men slashed him across the neck.",
+      "tts": {
+        "text": "As Blackbeard raised his cutlass for a killing blow, one of Maynard's men slashed him across the neck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Blackbeard staggered but kept fighting.",
+      "text_markdown": "Blackbeard staggered but kept fighting.",
+      "tts": {
+        "text": "Blackbeard staggered but kept fighting.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Finally, Blackbeard collapsed and died on the deck of Maynard's sloop.",
+      "text_markdown": "Finally, Blackbeard collapsed and died on the deck of Maynard's sloop.",
+      "tts": {
+        "text": "Finally, Blackbeard collapsed and died on the deck of Maynard's sloop.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "When his body was examined, they counted 5 gunshot wounds and over 20 sword cuts.",
+      "text_markdown": "When his body was examined, they counted 5 gunshot wounds and over 20 sword cuts.",
+      "tts": {
+        "text": "When his body was examined, they counted five gunshot wounds and over twenty sword cuts.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The remaining pirates surrendered when they saw their captain fall.",
+      "text_markdown": "The remaining pirates surrendered when they saw their captain fall.",
+      "tts": {
+        "text": "The remaining pirates surrendered when they saw their captain fall.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maynard ordered Blackbeard's head cut from his body.",
+      "text_markdown": "Maynard ordered Blackbeard's head cut from his body.",
+      "tts": {
+        "text": "Maynard ordered Blackbeard's head cut from his body.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The head was suspended from the bowsprit of his sloop as proof of the kill.",
+      "text_markdown": "The head was suspended from the bowsprit of his sloop as proof of the kill.",
+      "tts": {
+        "text": "The head was suspended from the bowsprit of his sloop as proof of the kill.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blackbeard's headless body was thrown into the waters of Ocracoke Inlet.",
+      "text_markdown": "Blackbeard's headless body was thrown into the waters of Ocracoke Inlet.",
+      "tts": {
+        "text": "Blackbeard's headless body was thrown into the waters of Ocracoke Inlet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Battle at Ocracoke",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Legend says the body swam around the sloop before sinking, though this is certainly fiction.",
+      "text_markdown": "Legend says the body swam around the sloop before sinking, though this is certainly fiction.",
+      "tts": {
+        "text": "Legend says the body swam around the sloop before sinking, though this is certainly fiction.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Legend That Never Dies",
+      "text_markdown": "The Legend That Never Dies"
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard's death sent shockwaves through the pirate community.",
+      "text_markdown": "Blackbeard's death sent shockwaves through the pirate community.",
+      "tts": {
+        "text": "Blackbeard's death sent shockwaves through the pirate community.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "If the most feared pirate in the Atlantic could be hunted down and killed, no one was safe.",
+      "text_markdown": "If the most feared pirate in the Atlantic could be hunted down and killed, no one was safe.",
+      "tts": {
+        "text": "If the most feared pirate in the Atlantic could be hunted down and killed, no one was safe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Many pirates accepted royal pardons in the months that followed.",
+      "text_markdown": "Many pirates accepted royal pardons in the months that followed.",
+      "tts": {
+        "text": "Many pirates accepted royal pardons in the months that followed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The Golden Age of Piracy was entering its final years.",
+      "text_markdown": "The Golden Age of Piracy was entering its final years.",
+      "tts": {
+        "text": "The Golden Age of Piracy was entering its final years.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The surviving members of Blackbeard's crew were put on trial in Virginia.",
+      "text_markdown": "The surviving members of Blackbeard's crew were put on trial in Virginia.",
+      "tts": {
+        "text": "The surviving members of Blackbeard's crew were put on trial in Virginia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Most were found guilty and hanged.",
+      "text_markdown": "Most were found guilty and hanged.",
+      "tts": {
+        "text": "Most were found guilty and hanged.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Their bodies were displayed in iron cages along the waterfront as a grim warning.",
+      "text_markdown": "Their bodies were displayed in iron cages along the waterfront as a grim warning.",
+      "tts": {
+        "text": "Their bodies were displayed in iron cages along the waterfront as a grim warning.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Colonial authorities wanted to make absolutely clear that the age of pirate tolerance was over.",
+      "text_markdown": "Colonial authorities wanted to make absolutely clear that the age of pirate tolerance was over.",
+      "tts": {
+        "text": "Colonial authorities wanted to make absolutely clear that the age of pirate tolerance was over.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1724, a book called A General History of the Pyrates was published in London.",
+      "text_markdown": "In 1724, a book called A General History of the Pyrates was published in London.",
+      "tts": {
+        "text": "In seventeen twenty-four, a book called A General History of the Pyrates was published in London.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The author was listed as Captain Charles Johnson, though his true identity remains unknown.",
+      "text_markdown": "The author was listed as Captain Charles Johnson, though his true identity remains unknown.",
+      "tts": {
+        "text": "The author was listed as Captain Charles Johnson, though his true identity remains unknown.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "This book devoted an entire chapter to Blackbeard's exploits.",
+      "text_markdown": "This book devoted an entire chapter to Blackbeard's exploits.",
+      "tts": {
+        "text": "This book devoted an entire chapter to Blackbeard's exploits.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "It was the foundation upon which the Blackbeard legend was built.",
+      "text_markdown": "It was the foundation upon which the Blackbeard legend was built.",
+      "tts": {
+        "text": "It was the foundation upon which the Blackbeard legend was built.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Over the centuries, Blackbeard became the very symbol of piracy itself.",
+      "text_markdown": "Over the centuries, Blackbeard became the very symbol of piracy itself.",
+      "tts": {
+        "text": "Over the centuries, Blackbeard became the very symbol of piracy itself.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "When people imagine a pirate, they typically picture someone who looks like Blackbeard.",
+      "text_markdown": "When people imagine a pirate, they typically picture someone who looks like Blackbeard.",
+      "tts": {
+        "text": "When people imagine a pirate, they typically picture someone who looks like Blackbeard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The enormous beard, the smoking fuses, the bandolier of pistols have become standard pirate imagery.",
+      "text_markdown": "The enormous beard, the smoking fuses, the bandolier of pistols have become standard pirate imagery.",
+      "tts": {
+        "text": "The enormous beard, the smoking fuses, the bandolier of pistols have become standard pirate imagery.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No other pirate has had such a lasting impact on popular culture.",
+      "text_markdown": "No other pirate has had such a lasting impact on popular culture.",
+      "tts": {
+        "text": "No other pirate has had such a lasting impact on popular culture.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1996, marine archaeologists discovered the wreck of a ship near Beaufort, North Carolina.",
+      "text_markdown": "In 1996, marine archaeologists discovered the wreck of a ship near Beaufort, North Carolina.",
+      "tts": {
+        "text": "In nineteen ninety-six, marine archaeologists discovered the wreck of a ship near Beaufort, North Carolina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They believe it is the remains of Queen Anne's Revenge.",
+      "text_markdown": "They believe it is the remains of Queen Anne's Revenge.",
+      "tts": {
+        "text": "They believe it is the remains of Queen Anne's Revenge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Over 280,000 artifacts have been recovered from the site since then.",
+      "text_markdown": "Over 280,000 artifacts have been recovered from the site since then.",
+      "tts": {
+        "text": "Over two hundred eighty thousand artifacts have been recovered from the site since then.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "These include cannons, anchors, medical instruments, and gold dust.",
+      "text_markdown": "These include cannons, anchors, medical instruments, and gold dust.",
+      "tts": {
+        "text": "These include cannons, anchors, medical instruments, and gold dust.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The artifacts tell us much about daily life aboard a pirate ship.",
+      "text_markdown": "The artifacts tell us much about daily life aboard a pirate ship.",
+      "tts": {
+        "text": "The artifacts tell us much about daily life aboard a pirate ship.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They reveal that the crew ate well, with evidence of pork, beef, and fish in their diet.",
+      "text_markdown": "They reveal that the crew ate well, with evidence of pork, beef, and fish in their diet.",
+      "tts": {
+        "text": "They reveal that the crew ate well, with evidence of pork, beef, and fish in their diet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Medical instruments suggest the ship carried a surgeon, as most large vessels did.",
+      "text_markdown": "Medical instruments suggest the ship carried a surgeon, as most large vessels did.",
+      "tts": {
+        "text": "Medical instruments suggest the ship carried a surgeon, as most large vessels did.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The gold dust confirms the enormous wealth that piracy could generate.",
+      "text_markdown": "The gold dust confirms the enormous wealth that piracy could generate.",
+      "tts": {
+        "text": "The gold dust confirms the enormous wealth that piracy could generate.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blackbeard's career as a pirate lasted only about two years.",
+      "text_markdown": "Blackbeard's career as a pirate lasted only about two years.",
+      "tts": {
+        "text": "Blackbeard's career as a pirate lasted only about two years.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In that brief time, he captured dozens of ships and terrorized an entire coastline.",
+      "text_markdown": "In that brief time, he captured dozens of ships and terrorized an entire coastline.",
+      "tts": {
+        "text": "In that brief time, he captured dozens of ships and terrorized an entire coastline.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He blockaded a major colonial port and defied the most powerful navy in the world.",
+      "text_markdown": "He blockaded a major colonial port and defied the most powerful navy in the world.",
+      "tts": {
+        "text": "He blockaded a major colonial port and defied the most powerful navy in the world.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "His story remains one of the most dramatic chapters in maritime history.",
+      "text_markdown": "His story remains one of the most dramatic chapters in maritime history.",
+      "tts": {
+        "text": "His story remains one of the most dramatic chapters in maritime history.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Today, Blackbeard's name lives on in countless books, films, and television shows.",
+      "text_markdown": "Today, Blackbeard's name lives on in countless books, films, and television shows.",
+      "tts": {
+        "text": "Today, Blackbeard's name lives on in countless books, films, and television shows.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ocracoke Island is now a popular tourist destination, partly because of its pirate history.",
+      "text_markdown": "Ocracoke Island is now a popular tourist destination, partly because of its pirate history.",
+      "tts": {
+        "text": "Ocracoke Island is now a popular tourist destination, partly because of its pirate history.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every year, the town holds a festival celebrating the anniversary of the famous battle.",
+      "text_markdown": "Every year, the town holds a festival celebrating the anniversary of the famous battle.",
+      "tts": {
+        "text": "Every year, the town holds a festival celebrating the anniversary of the famous battle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "The Legend That Never Dies",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The pirate who lit his beard on fire has become an immortal figure of popular imagination.",
+      "text_markdown": "The pirate who lit his beard on fire has become an immortal figure of popular imagination.",
+      "tts": {
+        "text": "The pirate who lit his beard on fire has become an immortal figure of popular imagination.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

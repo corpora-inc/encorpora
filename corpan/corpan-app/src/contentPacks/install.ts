@@ -19,6 +19,8 @@ export type InstallResult = {
   name?: string
   manifestUrl: string
   version?: string
+  description?: string
+  imageUrl?: string
   installedAt: number
   source: InstallSource
 }
@@ -66,19 +68,47 @@ const hashManifest = async (text: string) => {
   return toHex(digest)
 }
 
-const isTauriRuntime = () =>
-  typeof window !== "undefined" && "__TAURI__" in window
+export const isTauriRuntime = () => {
+  if (typeof window === "undefined") return false
+  // Check for Tauri-specific APIs
+  return (
+    "__TAURI__" in window ||
+    "__TAURI_INTERNALS__" in window ||
+    (window as any).__TAURI_IPC__ !== undefined
+  )
+}
+
+const MANIFEST_FETCH_TIMEOUT_MS = 15_000
 
 const fetchManifestText = async (url: string) => {
   if (!import.meta.env.DEV && isTauriRuntime()) {
     const { fetchContentPackText } = await import("./native")
     return fetchContentPackText(url)
   }
-  const res = await fetch(proxyUrlIfNeeded(url), { cache: "no-store" })
-  if (!res.ok) {
-    throw new Error(`Manifest not found (${res.status})`)
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), MANIFEST_FETCH_TIMEOUT_MS)
+  try {
+    const res = await fetch(proxyUrlIfNeeded(url), {
+      cache: "no-store",
+      signal: controller.signal,
+    })
+    if (!res.ok) {
+      throw new Error(`Manifest not found (${res.status})`)
+    }
+    return await res.text()
+  } catch (err) {
+    if (
+      controller.signal.aborted ||
+      (err instanceof DOMException && err.name === "AbortError")
+    ) {
+      throw new Error(
+        `Manifest fetch timed out after ${MANIFEST_FETCH_TIMEOUT_MS / 1000}s — check your connection.`,
+      )
+    }
+    throw err
+  } finally {
+    clearTimeout(timer)
   }
-  return res.text()
 }
 
 export const installPack = async (
@@ -88,23 +118,44 @@ export const installPack = async (
 
   // Detect .zip URLs and handle as download install
   if (trimmed.endsWith('.zip')) {
-    // Extract pack ID from filename (remove .zip extension and normalize)
+    // Extract pack ID from filename. Strip `.zip` and a trailing `-<version>`
+    // so e.g. `phrase-botany-basics-0.1.0.zip` becomes `phrase-botany-basics`.
+    // We keep hyphens — phrase-pack ids are kebab-case and never have
+    // underscores (game-pack ids historically used underscores and we
+    // preserve that for backward compat below).
     const url = new URL(trimmed, window.location.href)
     const pathname = url.pathname
     const filename = pathname.split('/').pop() || ''
-    // Remove .zip and convert hyphens to underscores to match manifest convention
-    const packId = filename.replace(/\.zip$/, '').replace(/-/g, '_')
+    const stripped = filename.replace(/\.zip$/, '')
+    const packId = stripped.startsWith('phrase-')
+      ? stripped.replace(/-\d+(\.\d+){1,2}([-+][0-9A-Za-z.-]+)?$/, '')
+      : stripped.replace(/-/g, '_')
 
     if (!packId) {
       throw new Error("Could not determine pack ID from ZIP filename")
     }
 
-    return installPackFromDownload({
+    const result = await installPackFromDownload({
       packId,
       downloadUrl: trimmed,
       expectedSha256: request.expectedHash,
       source: request.source,
     })
+    // If this was a phrase pack, register it now. Other pack types are
+    // ignored by the helper.
+    try {
+      const { registerPhrasePackIfApplicable } = await import("./phrasePackRegister")
+      await registerPhrasePackIfApplicable(
+        result.packId,
+        request.source === "manual" ? "manual" : "catalog",
+      )
+    } catch (err) {
+      console.warn("[install] phrase-pack registration failed:", err)
+    }
+    return {
+      ...result,
+      version: result.version ?? request.expectedVersion,
+    }
   }
 
   // Handle manifest.json URLs
@@ -124,6 +175,7 @@ export const installPack = async (
     id?: string
     name?: string
     version?: string
+    description?: string
   }
   if (!manifest.id) {
     throw new Error("Manifest missing id")
@@ -133,6 +185,7 @@ export const installPack = async (
     name: manifest.name,
     manifestUrl: resolved,
     version: manifest.version ?? request.expectedVersion,
+    description: manifest.description,
     installedAt: Date.now(),
     source: request.source,
   }
@@ -141,18 +194,38 @@ export const installPack = async (
 export const installPackFromDownload = async (
   request: DownloadInstallRequest
 ): Promise<InstallResult> => {
-  const { installContentPackFromUrl } = await import("./native")
-  const result = await installContentPackFromUrl({
-    packId: request.packId,
-    downloadUrl: request.downloadUrl,
-    expectedSha256: request.expectedSha256,
-  })
-  return {
-    packId: result.pack.id,
-    name: result.pack.name,
-    manifestUrl: result.pack.manifest_url,
-    version: result.pack.version,
-    installedAt: result.pack.installed_at,
-    source: request.source,
+  console.log("[install] Attempting to install pack:", request.packId)
+  console.log("[install] Tauri runtime detected:", isTauriRuntime())
+  console.log("[install] Window.__TAURI__:", (window as any).__TAURI__)
+
+  try {
+    const { installContentPackFromUrl } = await import("./native")
+    console.log("[install] Native module imported successfully")
+
+    const result = await installContentPackFromUrl({
+      packId: request.packId,
+      downloadUrl: request.downloadUrl,
+      expectedSha256: request.expectedSha256,
+    })
+    console.log("[install] Install successful:", result)
+
+    return {
+      packId: result.pack.id,
+      name: result.pack.name,
+      manifestUrl: result.pack.manifest_url,
+      version: result.pack.version,
+      installedAt: result.pack.installed_at,
+      source: request.source,
+    }
+  } catch (err) {
+    console.error("[install] Install failed:", err)
+    const message = err instanceof Error ? err.message : String(err)
+
+    // If the error suggests Tauri is not available, provide helpful message
+    if (message.includes("__TAURI__") || message.includes("invoke")) {
+      throw new Error("Pack downloads require the Corpán app. This feature is not available in the browser.")
+    }
+
+    throw new Error(`Pack download install failed: ${message}`)
   }
 }

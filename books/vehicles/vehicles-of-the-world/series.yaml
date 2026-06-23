@@ -1,0 +1,60 @@
+series:
+  title: "Vehicles of the World"
+  tagline: "A friend tells you about the things that move the world."
+  planned_volumes: 12
+  primary_language: en
+
+  philosophy: |
+    Twelve short books about the machines that move people and goods. Every
+    sentence is short, clear, and full of useful words. Each book is roughly
+    fifteen hundred words and ten minutes of audio.
+
+    The narrator is a friend telling the story of one kind of vehicle —
+    where it came from, who built it, how it works, where it goes today.
+    The goal is vocabulary. The goal is curiosity. By the end of one book,
+    a learner can talk about that vehicle in a new language.
+
+    Every translation matches the English sentence-for-sentence so a learner
+    can read along, hear the same idea in a new language, and build
+    vocabulary one wheel, one wing, one engine at a time.
+
+  audience: |
+    Anyone learning a new language — children and adults. The vocabulary is
+    concrete: train, track, station, engine, wheel, wing, road. Pace is
+    brisk. The heroes are real people who built and ran real machines.
+
+  voice:
+    name: August
+    voiceId: august
+    reference: august-20.wav
+    notes: |
+      Warm, friendly narrator. The same voice across every book in this
+      series and every translation. Same narrator as the Motorcycles
+      deep-dive series.
+
+  content_rules:
+    do:
+      - "Stick to concrete sensory facts: speeds, distances, wheel arrangements, engine types."
+      - "Use proper nouns: locomotive names, station cities, line names, builders, dates."
+      - "Tell specific historical and geographical facts: where a line was built, who built it, when, how long."
+      - "One idea per sentence, five to fifteen words."
+      - "Spell out numbers in tts.text. No Arabic numerals."
+      - "Let the listener feel what they feel. Describe the machine, not the soul."
+    do_not:
+      - "No psychoanalyzing the listener (no 'people who...', 'most of us are...')."
+      - "No therapy or mindfulness language."
+      - "No second-person reflective prompts ('imagine your problems...')."
+      - "No 'this isn't just about trains, it's about X' framing."
+      - "No personal-life bleed from agent memory."
+      - "Topic content is the whole product. Vocabulary first."
+
+  output:
+    formats: [corpan-pack]
+    tts: true
+    primary_language: en
+
+  volumes:
+    - number: 1
+      title: "The Story of the Train"
+      slug: 01-the-story-of-the-train
+      angle: "Steam to maglev. The big arc of rail."

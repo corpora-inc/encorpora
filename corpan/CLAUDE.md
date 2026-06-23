@@ -2,15 +2,31 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Release notes — read this before shipping
+
+We track release notes per shippable unit. Conventions are in
+`corpan/CHANGELOGS.md`. Summary:
+
+- Every shippable unit (core app, each pack, each plugin, each
+  narration series) keeps its own `CHANGELOG.md` next to its manifest.
+- Format is [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+- **When you make a user-visible change to a unit, add a line to its
+  `[Unreleased]` section before opening a PR.** No batching.
+- When the version in the manifest changes, promote `[Unreleased]` to a
+  dated, versioned entry and start a fresh `[Unreleased]` block.
+
+If a change crosses units (e.g. a Corpán app feature that needs a
+plugin bump), add the entry to *each* affected unit's changelog.
+
 ## Project Overview
 
 Corpan is a cross-platform language learning application built with:
 - **Frontend**: React + TypeScript + Vite + Tailwind CSS
 - **Backend**: Tauri (Rust) for native desktop/mobile capabilities
 - **Data Management**: Django backend (`dja/`) for content generation and SQLite database bundling
-- **Games**: Pluggable game system with SDK for standalone development
+- **Packs**: Pluggable pack system with SDK for standalone development
 
-The app delivers language learning content through mini-games packaged as downloadable content packs.
+The app delivers language learning content through mini-experiences packaged as downloadable content packs.
 
 ## Repository Structure
 
@@ -20,7 +36,7 @@ corpan-app/          # Main Tauri application
 │   ├── components/  # UI components (shadcn/ui + custom)
 │   ├── store/       # Zustand state management
 │   ├── util/        # Utilities (TTS, browser APIs)
-│   └── contentPacks/# Game pack loading logic
+│   └── contentPacks/# Pack loading logic
 ├── src-tauri/       # Rust backend
 │   ├── src/         # Main Rust code (DB queries, Tauri commands)
 │   ├── gen/         # Generated platform code (DO NOT EDIT)
@@ -36,9 +52,9 @@ dja/                 # Django content management
 └── db.sqlite3       # Development database
 └── release.sqlite3  # Production-ready database bundle
 
-games/               # Standalone game packages
-├── sdk/             # Corpan Game SDK for game development
-└── hover-runner/    # Reference game
+packs/               # Standalone pack packages
+├── sdk/             # Corpan Pack SDK for pack development
+└── hover-runner/    # Reference pack
 
 plugins/
 └── tauri-plugin-game-packs/  # Legacy plugin; MVP uses app-managed content pack installs
@@ -101,9 +117,9 @@ python make_release_sqlite.py
 ./add_translations.sh [language_code]
 ```
 
-### Games Development (games/)
+### Packs Development (packs/)
 
-Each game is a standalone package with its own build process. See `games/sdk/README.md` for SDK usage.
+Each pack is a standalone package with its own build process. See `packs/sdk/README.md` for SDK usage.
 
 ## Architecture Notes
 
@@ -137,14 +153,14 @@ Filters: `levels` (CEFR), `domains`, `language_codes`
 - `settings.ts`: User preferences, onboarding, text size, languages, TTS
 - `history.ts`: Learning history tracking
 - `rating.ts`: App rating prompts
-- `games.ts`: Installed games management
+- `games.ts`: Installed packs management
 - `translations.ts`: Translation cache
 
 ### Game System
 
 Games are loaded dynamically:
 1. Game manifests define entry point, styles, and metadata
-2. Games use the SDK (`games/sdk/`) to register with the host
+2. Packs use the SDK (`packs/sdk/`) to register with the host
 3. Host provides API (`hostApi`) for accessing entries, TTS, navigation
 4. Games render into a container and handle their own UI/logic
 
@@ -186,9 +202,9 @@ Native delivery:
 
 ### Creating a New Game
 
-1. Copy `games/sdk/` to your game directory
-2. Implement `registerGame()` with your game logic
-3. Create manifest.json with game metadata
+1. Copy `packs/sdk/` to your pack directory
+2. Implement `registerGame()` with your pack logic
+3. Create manifest.json with pack metadata
 4. Use `mountStandalone()` for browser development
 5. Package for distribution as downloadable content packs (zip + manifest)
 
@@ -214,3 +230,64 @@ Native delivery:
 - **zustand**: State management
 - **i18next**: Internationalization
 - **framer-motion**: Animations
+
+## Internationalization (i18n)
+
+Locales live in `corpan-app/public/locales/<code>/common.json` (~54 locales).
+The build gate `npm run check:i18n` (part of `npm run build`) requires **every
+locale to carry every `en` key** — a missing key **fails the build**, it is not a
+soft warning. So any new `t()` key must be filled into all locales before a PR
+can go green.
+
+**How we translate: agents do it directly.** When you add or change locale keys,
+**translate them yourself using your own language skills and edit each
+`common.json` directly.** Do NOT author or run the OpenAI/python translate
+scripts (`public/locales/translate_*.py` / `add_*.py`) — that pattern is
+retired. Fan out across subagents (each locale is an independent file, so
+disjoint edits never conflict). Preserve `{{placeholders}}` and separators (e.g.
+`·`) exactly; give point-of-sale/paywall copy real translations, not English
+fallback; keep RTL scripts (ar, he, fa, ur, pa-Arab) intact. Verify with
+`npm run check:i18n`.
+
+## Corpán Plus (monetization) — architecture decisions
+
+Subscription-only. **Per-book IAP is retired** (a month of à-la-carte books drew
+zero buyers; per-book SKUs are operationally expensive). Existing per-book
+owners stay entitled; no new per-book buy buttons are shown.
+
+**Free tier = server-truncated, not client-gated.** Corpán is open source, so a
+client-side "free up to segment N" check would be trivially bypassed. Instead
+the publisher (`ttsctl publish --with-preview`) emits a *truncated preview ZIP*
+(public, first `min(floor(total/3), 100)` segments) and a *full ZIP*
+(CloudFront-signed, Plus-gated). The free user never receives the paid bytes.
+
+**Three-shape catalog, clean runtime.** During the (permanent — people don't
+update) transition, `catalog-v2.json` entries carry BOTH legacy fields
+(`downloadUrl`/`tier`/`purchase`, for old runtimes) AND new fields
+(`preview`/`full`/`totalSegments`/`freeSegments`, for new runtimes). The new
+runtime reads ONLY the new fields; entries without them are skipped. The legacy
+public ZIP stays published indefinitely for old clients, so the paywall is
+intentionally "soft" until legacy publishing is ever sunset.
+
+**Key code:**
+- Install switch: `packs/shared/catalog/src/installManager.ts` (`isTwoZipEntry`)
+  — subscriber → signed full ZIP; else → public preview ZIP.
+- Paywall: `corpan-app/src/components/paywall/PaywallSheet.tsx` + `store/paywall.ts`,
+  opened by the `corpan:request-unlock` window event (readers dispatch it at
+  end-of-preview; Library/PackActions dispatch it for "Unlock with Plus").
+- Reader preview detection: `is_preview` flag in segments.json (or
+  `segments.length < total_segments`) → dispatch `corpan:request-unlock`.
+- Onboarding: primary-language-FIRST so the userClass quiz + Plus pitch are
+  localized. `OnboardingUserClass`/`OnboardingPlusPitch`; profile in
+  `store/settings.ts` (`userClass`/`ageBand`/`goalIntensity`).
+- Progress/streaks: `store/progress.ts` (localStorage only), fed by the
+  `corpan:segment-progress` window event from readers. `StreakChip` is opt-in.
+- Backfill existing catalog: `infra/scripts/backfill_two_zip.py` (dry-run first).
+
+**Principles (strongly held design intent — NOT absolutes to ship in copy):**
+ad-free in the app today and working to stay that way; no Corpán-specific login
+(Apple/Google IAP identity only); on-device analytics; generous free tier;
+localize every new string in ~50 langs; no Duolingo dark patterns (streak is
+opt-in/dignified). These are direction, not user-facing promises. Don't ship
+marketing copy that says "forever / never / no X ever / 100% / entirely / always"
+— see `~/.claude/projects/-home-skyl/memory/feedback_no_absolutes_in_marketing.md`.

@@ -1,0 +1,15 @@
+Corpán is getting more alive from the very first tap.
+
+This update adds a new first-run experience that lets you choose how you want to begin: read, study, make music, play language games, or let Corpán surprise you. Then the app brings your choice to life with a smoother animated launch, real content, and a faster path into the good stuff.
+
+Reading now starts with less setup. New users can land directly in a narrated book preview, with language support ready in the background so you can start listening, reading, and exploring right away.
+
+Phrase Flip is now a first-class part of the app, with its own artwork and a proper home alongside your installed experiences. It is still quick, simple phrase practice, but now it feels like it belongs.
+
+Home is cleaner and more useful too. Pack updates are shown where you actually need them, with one-tap updating instead of hiding behind settings.
+
+Corpán Plus is clearer and friendlier, with better free-trial messaging, better code redemption, and fewer confusing subscription moments.
+
+We also fixed catalog loading, offline subscriber access, first-launch routing, duplicate pack cards, and several rough edges in the onboarding and paywall flow.
+
+Corpán is still the same idea: languages through books, games, music, phrase practice, and curiosity. No ads. No login. Built to make learning feel like something you want to come back to.

@@ -1,0 +1,24 @@
+{
+  "code": "de",
+  "displayName": {
+    "en": "German",
+    "es": "Alem\u00e1n",
+    "fr": "Allemand",
+    "de": "Deutsch",
+    "zh": "\u5fb7\u8bed",
+    "ja": "\u30c9\u30a4\u30c4\u8a9e"
+  },
+  "voiceLanguageCode": "de-DE",
+  "contentVersion": "0.2.0",
+  "minTutomatonVersion": "0.1.0",
+  "files": {
+    "database": "sources/core/data/de.sqlite3",
+    "systemPrompt": "prompts/system_prompt.txt",
+    "groundingInstruction": "prompts/grounding_instruction.txt",
+    "retriever": "sources/core/retrieval/retriever.ts"
+  },
+  "rag": {
+    "schemaVersion": 1,
+    "themeBypassEnabled": true
+  }
+}

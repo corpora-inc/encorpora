@@ -1,8 +1,4 @@
-/**
- * Base path utilities for handling the ENCORPORA_BASE_PATH environment variable
- */
-
-const basePath = process.env.NEXT_PUBLIC_ENCORPORA_BASE_PATH || "";
+const basePath = "";
 
 /**
  * Prepends the base path to a URL

@@ -1,0 +1,63 @@
+series:
+  title: "Food of the World"
+  tagline: "A friend tells you about the food of a place — what it is, where it comes from, and how it is made."
+  planned_volumes: 12
+  primary_language: en
+
+  philosophy: |
+    Twelve short books about cuisines from around the world. Every sentence
+    is short, clear, and full of useful words. Each book is roughly fifteen
+    hundred words and ten minutes of audio.
+
+    The narrator is a friend from the place. She tells you the names of
+    the dishes, the names of the ingredients, where they come from, how
+    they grow, how they are cooked, and what is on the table. The goal
+    is vocabulary. The goal is curiosity. By the end of one book, a
+    learner can talk about that cuisine in a new language.
+
+    Every translation matches the English sentence-for-sentence so a
+    learner can read along, hear the same idea in another language, and
+    build vocabulary one ingredient at a time.
+
+  audience: |
+    Adults learning a new language. Anyone who likes food, history, and
+    a friend's voice telling them about a place. Vocabulary is concrete —
+    onion, pot, fire, salt, river, market. Pace is brisk. The narrator
+    is the best kind of expert: knows the food, doesn't lecture.
+
+  voice:
+    name: Kym
+    voiceId: kym
+    reference: kym-40.wav
+    notes: |
+      Warm middle-aged friend from the Southern United States. Real,
+      direct, easy to listen to. She knows the food the way you know
+      your own kitchen. The same voice across every book in this series
+      and every translation.
+
+  content_rules:
+    do:
+      - "Stick to concrete sensory facts: textures, colors, temperatures, smells."
+      - "Use proper nouns: ingredients, dishes, regional names, methods, utensils."
+      - "Tell specific historical and geographical facts: where a plant grew first, how it traveled."
+      - "One idea per sentence, five to fifteen words."
+      - "Spell out numbers in tts.text. No Arabic numerals."
+      - "Let the listener feel what they feel. Describe the dish, not the soul."
+    do_not:
+      - "No psychoanalyzing the listener (no 'people who...', 'most of us are...')."
+      - "No therapy or mindfulness language ('clears the mind', 'shoulders drop', 'breath')."
+      - "No second-person reflective prompts ('imagine your problems...')."
+      - "No 'this isn't just about food, it's about X' framing."
+      - "No personal-life bleed from agent memory (bills, divorce, troubles)."
+      - "Topic content is the whole product. No 'warmth first, technique second.'"
+
+  output:
+    formats: [corpan-pack]
+    tts: true
+    primary_language: en
+
+  volumes:
+    - number: 1
+      title: "Soul Food of the Southern United States"
+      slug: 01-soul-food-of-the-southern-united-states
+      angle: "African and Indigenous roots, the iron skillet, the regional barbecue map, the classic plate."

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Mic capture for SpeechRecognizer. The host app already declares
+         RECORD_AUDIO for tauri-plugin-stt; declared here too so the plugin is
+         self-contained. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Android 11+ package visibility: to bind the OS speech service we must
+         be able to see apps that handle RECOGNIZE_SPEECH. Without this,
+         SpeechRecognizer.isRecognitionAvailable() returns false on API 30+. -->
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+
+</manifest>

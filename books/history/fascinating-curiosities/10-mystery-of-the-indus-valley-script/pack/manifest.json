@@ -1,0 +1,20 @@
+{
+  "id": "book_mystery_of_the_indus_valley_script",
+  "name": "The Mystery of the Indus Valley Script",
+  "version": "0.1.0",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "metadata": {
+    "series": "Fascinating Curiosities of Human History",
+    "volume": 10,
+    "author": "Corpora",
+    "tts": true,
+    "estimatedReadTime": "3-4 hours",
+    "estimatedListenTime": "2.5-3 hours"
+  }
+}

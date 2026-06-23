@@ -13,6 +13,7 @@ import {
   fetchGameCatalog,
   type CatalogGame,
 } from "@/contentPacks/catalog"
+import { localizePack, resolveLocalized } from "@/contentPacks/localized"
 import { installPack } from "@/contentPacks/install"
 
 export function GamesPanel({
@@ -26,7 +27,8 @@ export function GamesPanel({
   showCatalog?: boolean
   showPlatformPacks?: boolean
 }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = i18n.language || "en"
   const gamesMap = useGamesStore((s) => s.games)
   const games = useMemo(() => {
     return Object.values(gamesMap).sort((a, b) => a.name.localeCompare(b.name))
@@ -63,11 +65,13 @@ export function GamesPanel({
         name: result.name ?? result.packId,
         manifestUrl: result.manifestUrl,
         version: result.version,
+        description: result.description,
         source: result.source,
       })
       setManifestUrl("")
     } catch (err) {
-      const message = err instanceof Error ? err.message : ""
+      const message = err instanceof Error ? err.message : String(err)
+      console.error("[packs] manual install failed", err)
       setError(
         message
           ? `${t("packs.installFailed")} ${message}`
@@ -165,10 +169,12 @@ export function GamesPanel({
         name: result.name ?? entry.name ?? result.packId,
         manifestUrl: result.manifestUrl,
         version: result.version,
+        description: result.description ?? entry.description,
         source: result.source,
       })
     } catch (err) {
-      const message = err instanceof Error ? err.message : ""
+      const message = err instanceof Error ? err.message : String(err)
+      console.error("[packs] catalog install failed", err)
       setCatalogError(
         message
           ? `${t("packs.installFailed")} ${message}`
@@ -215,17 +221,19 @@ export function GamesPanel({
               {t("packs.emptyAvailable")}
             </div>
           ) : (
-            availableCatalog.map((entry) => (
+            availableCatalog.map((entry) => {
+              const localized = localizePack(entry, lang)
+              return (
               <div
                 key={entry.id}
-                className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+                className="flex flex-col gap-3 rounded-md border border-border bg-card/80 p-4"
               >
                 <div>
-                  <div className="text-base font-medium">{entry.name}</div>
+                  <div className="text-base font-medium">{localized.name}</div>
                   <div className="text-xs text-muted-foreground">{entry.id}</div>
-                  {entry.description ? (
+                  {localized.description ? (
                     <div className="mt-2 text-sm text-muted-foreground">
-                      {entry.description}
+                      {localized.description}
                     </div>
                   ) : null}
                 </div>
@@ -244,7 +252,8 @@ export function GamesPanel({
                   </div>
                 </div>
               </div>
-            ))
+              )
+            })
           )}
         </div>
       ) : null}
@@ -256,13 +265,20 @@ export function GamesPanel({
             {t("packs.emptyInstalled")}
           </div>
         ) : (
-          games.map((game) => (
+          games.map((game) => {
+            const catalogEntry = catalogMap.get(game.id)
+            const displayName = resolveLocalized(
+              catalogEntry?.nameLocalized,
+              catalogEntry?.name || game.name,
+              lang,
+            )
+            return (
             <div
               key={game.id}
-              className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+              className="flex flex-col gap-3 rounded-md border border-border bg-card/80 p-4"
             >
               <div>
-                <div className="text-base font-medium">{game.name}</div>
+                <div className="text-base font-medium">{displayName}</div>
                 <div className="text-xs text-muted-foreground">{game.id}</div>
                 {game.version ? (
                   <div className="text-xs text-muted-foreground">
@@ -297,12 +313,13 @@ export function GamesPanel({
                 ) : null}
               </div>
             </div>
-          ))
+            )
+          })
         )}
       </div>
 
       {showDevInstall ? (
-        <div className="mt-6 space-y-3 rounded-md border border-gray-200 bg-white/70 p-4">
+        <div className="mt-6 space-y-3 rounded-md border border-border bg-card/70 p-4">
           <div className="space-y-1">
             <div className="text-sm font-semibold">{t("packs.manifestTitle")}</div>
             <div className="text-xs text-muted-foreground">
@@ -319,8 +336,8 @@ export function GamesPanel({
             </div>
           </div>
           <input
-            className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
-            placeholder="https://example.com/game/manifest.json or .../game.zip"
+            className="w-full rounded-md border border-input px-3 py-2 text-sm"
+            placeholder="https://example.com/pack/manifest.json or .../pack.zip"
             value={manifestUrl}
             onChange={(event) => setManifestUrl(event.target.value)}
           />
@@ -357,7 +374,7 @@ export function GamesPanel({
             platformPacks.map((pack) => (
               <div
                 key={pack.id}
-                className="flex flex-col gap-3 rounded-md border border-gray-200 bg-white/80 p-4"
+                className="flex flex-col gap-3 rounded-md border border-border bg-card/80 p-4"
               >
                 <div>
                   <div className="text-base font-medium">{pack.name}</div>

@@ -1,0 +1,52 @@
+version: 1
+engine: chatterbox
+
+speakers:
+  host:
+    backend: gemini
+    provider_voice_id: Vindemiatrix
+    voice_id: gemini-vindemiatrix
+    character_id: vindemiatrix
+    display_name: Vindemiatrix
+    role: host
+  analyst:
+    backend: gemini
+    provider_voice_id: Charon
+    voice_id: gemini-charon
+    character_id: charon
+    display_name: Charon
+    role: analyst
+host_speaker_id: host
+
+tts:
+  cfg_weight: 0.85
+  exaggeration: 0.3
+  temperature: 0.3
+  repetition_penalty: 2.0
+  top_p: 0.85
+  min_p: 0.1
+retry:
+  max_retries: 20
+  jitter: 0.25
+  schedules:
+    - {}
+    - cfg_weight: 0.8
+      temperature: 0.5
+    - cfg_weight: 0.5
+      exaggeration: 0.2
+      temperature: 0.3
+    - cfg_weight: 0.6
+      exaggeration: 0.6
+      temperature: 0.7
+    - cfg_weight: 1.0
+      temperature: 0.2
+mastering:
+  audio_bitrate: '64000'
+  audio_codec: aac
+  output_ext: .m4a
+  target_lufs: -22.0
+  target_tp: -3.0
+denoise:
+  enabled: false
+voices:
+  en: sky-21.wav

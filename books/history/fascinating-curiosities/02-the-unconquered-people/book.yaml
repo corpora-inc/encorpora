@@ -1,0 +1,27 @@
+book:
+  volume: 2
+  title: "The Unconquered People"
+  subtitle: "Unconquered Nation, Unwritten Tongue, Invisible State"
+  target_pages: 80-100
+
+  core_mysteries:
+    primary:
+      - The Mapuche resisted both the Inca Empire and the Spanish Empire for over 300 years — the only indigenous people in the Americas to achieve both
+      - Mapudungun, a language isolate with no known relatives, survived 500 years of colonization despite having no writing system and no state behind it
+      - A decentralized society with no king, no capital, and no standing army coordinated military resistance across hundreds of kilometers for centuries
+    secondary:
+      - The reche-to-Mapuche ethnogenesis — a collective identity forged through the process of resistance itself
+      - The parlamento system — a diplomatic institution where the Spanish Empire had to enter Mapuche territory, speak Mapudungun, and follow Mapuche protocols
+      - The Treaty of Quilín (1641) — the only case in the Americas where Spain formally recognized indigenous sovereignty
+      - Mapudungun encodes evidentiality — speakers grammatically mark how they know what they know
+
+  key_scholarly_sources:
+    - "Tom D. Dillehay — Vanderbilt University; archaeology and political organization of the Mapuche"
+    - "Guillaume Boccara — EHESS (Paris); reche-to-Mapuche ethnogenesis thesis (1998)"
+    - "José Bengoa — Chilean historian; Historia del pueblo mapuche (2000), Historia de los antiguos mapuches del sur (2008)"
+    - "Ineke Smeets — A Grammar of Mapuche (Mouton de Gruyter, 2008)"
+    - "Alonso de Ercilla — La Araucana (1569/1589), the Spanish epic poem by a soldier who fought in the Arauco War"
+    - "José Manuel Zavala — interethnic diplomacy and the parlamento system (with Dillehay)"
+    - "Joanna Crow — The Mapuche in Modern Chile: A Cultural History (2013)"
+    - "Luis de Valdivia — Jesuit missionary; first Mapudungun grammar (1606)"
+    - "Mark C. Baker & Carlos A. Fasola — Araucanian: Mapudungun, in The Oxford Handbook of Polysynthesis (2017)"

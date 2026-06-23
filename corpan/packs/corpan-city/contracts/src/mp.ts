@@ -1,0 +1,244 @@
+import { z } from "zod"
+import { PlayerId } from "./ids"
+import { ChallengeSpec, ChallengeResult } from "./challenge"
+import { ChallengeToolId } from "./challengeTool"
+import { MediatedChatInput, MediatedChatArtifact } from "./chat"
+import { SafeProfile, ProfilePublish } from "./profile"
+
+/**
+ * mp.ts — the player-to-player INTERACTION wire protocol over Colyseus.
+ *
+ * Presence + movement (presence.ts) is the always-on schema-synced layer. THIS
+ * module is the typed `room.send(name, payload)` / `room.onMessage(name, …)`
+ * surface for the *additive* interaction features: profile reveal, AI-mediated
+ * chat, challenge invites, and trade. Every payload is a Zod schema validated at
+ * BOTH ends — the server never trusts a client, and a client never renders an
+ * unvalidated artifact. Nothing here is on the movement hot-path.
+ *
+ * All routing is server-mediated (no P2P sockets): a sender posts a typed
+ * message; the server authorizes, (re)frames, and delivers a typed message to
+ * the recipient. There is no channel for raw free text/audio between players —
+ * the only expressive surfaces are menu choices and AI-mediated artifacts.
+ *
+ * MESSAGE NAMES (the string keys) are centralized in `MP_MSG` so client + server
+ * can't drift. Client→server names are imperative ("invite"); server→client
+ * names are past/notification ("invited").
+ */
+
+export const MP_MSG = {
+  /** C→S: publish my safe profile (stack + raw country for the k-anon gate). */
+  profilePublish: "profile-publish",
+  /** C→S: ask for another player's k-anonymity-coarsened profile card. */
+  profileRequest: "profile-request",
+  /** S→C: a requested SafeProfile card (already coarsened for THIS viewer). */
+  profileCard: "profile-card",
+
+  /** C→S: invite another player to chat / challenge / trade. */
+  invite: "invite",
+  /** S→C: you've been invited (carries the typed offer). */
+  invited: "invited",
+  /** C→S: accept or decline an invite by id. */
+  inviteRespond: "invite-respond",
+  /** S→C: the outcome of an invite you sent (accepted/declined/expired). */
+  inviteResult: "invite-result",
+
+  /** C→S: a locally-cleaned MediatedChatInput to route to a partner. */
+  chatSend: "chat-send",
+  /** S→C: a MediatedChatArtifact framed for the recipient. */
+  chatDeliver: "chat-deliver",
+  /** C→S / S→C: chat lifecycle only; never carries user-authored text. */
+  chatControl: "chat-control",
+
+  /** C→S: my finished challenge result, to route to my peer-challenge partner. */
+  peerResult: "peer-result",
+  /** S→C: my partner's challenge result (for the shared duel/coop reconcile). */
+  peerResultDeliver: "peer-result-deliver",
+
+  /** C→S: a trade lifecycle event (propose/accept/decline/counter/cancel). */
+  trade: "trade",
+  /** S→C: a trade lifecycle update from the partner / server. */
+  tradeUpdate: "trade-update",
+
+  /** C→S: block (or unblock) another player — suppress their invites/messages. */
+  block: "block",
+  /** C→S: report another player to moderation (minimal metadata; no content). */
+  report: "report",
+} as const
+export type MpMsgName = (typeof MP_MSG)[keyof typeof MP_MSG]
+
+/* ----------------------------------------------------------------- profile */
+
+export const ProfileRequest = z.object({ target: PlayerId })
+export type ProfileRequest = z.infer<typeof ProfileRequest>
+
+export { SafeProfile, ProfilePublish }
+
+/* ----------------------------------------------------------------- invites */
+
+/**
+ * The kind of session an invite proposes. `chat` opens the AI-mediated chat;
+ * `challenge` launches a shared minigame (coop or duel) via the existing
+ * challenge system; `trade` opens the menus-only trade. The payload carries just
+ * enough for the recipient to render a tasteful prompt before accepting.
+ */
+export const InviteOffer = z.discriminatedUnion("kind", [
+  z.object({ kind: z.literal("chat") }),
+  z.object({
+    kind: z.literal("challenge"),
+    tool: ChallengeToolId,
+    /** "coop" | "duel" — head-to-head or cooperative. */
+    mode: z.enum(["coop", "duel"]),
+    /** the authoritative spec both clients run (built by the inviter). */
+    spec: ChallengeSpec,
+  }),
+  z.object({ kind: z.literal("trade") }),
+])
+export type InviteOffer = z.infer<typeof InviteOffer>
+
+/** C→S: invite `to` into `offer`. The server stamps `from` from the session. */
+export const InviteMessage = z.object({
+  inviteId: z.string().min(1),
+  to: PlayerId,
+  offer: InviteOffer,
+})
+export type InviteMessage = z.infer<typeof InviteMessage>
+
+/** S→C: delivered to the invitee, with the (trusted) sender id + their name. */
+export const InvitedMessage = z.object({
+  inviteId: z.string().min(1),
+  from: PlayerId,
+  fromName: z.string().min(1).max(40),
+  offer: InviteOffer,
+})
+export type InvitedMessage = z.infer<typeof InvitedMessage>
+
+export const InviteRespond = z.object({
+  inviteId: z.string().min(1),
+  action: z.enum(["accept", "decline"]),
+})
+export type InviteRespond = z.infer<typeof InviteRespond>
+
+/** S→C: the inviter learns how it went. `sessionId` ties an accepted */
+/** challenge/trade to a shared sync channel keyed by the invite. */
+export const InviteResult = z.object({
+  inviteId: z.string().min(1),
+  outcome: z.enum(["accepted", "declined", "expired", "unavailable"]),
+})
+export type InviteResult = z.infer<typeof InviteResult>
+
+/* -------------------------------------------------------------------- chat */
+
+export { MediatedChatInput, MediatedChatArtifact }
+
+/**
+ * Chat lifecycle actions (server→client unless noted).
+ *   • ended            — the pair was deliberately torn down.
+ *   • partner-left     — the partner's socket went away (still re-establishable).
+ *   • partner-returned — the partner is back AND the accepted pair is live.
+ *   • link-stale       — the SENDER tried to chat-send but the server holds no
+ *                        accepted pair for them (server restart / TTL lapse /
+ *                        fresh-join after the reconnect window). The message was
+ *                        NOT delivered; the client should re-establish the link
+ *                        (re-invite) before sending. Without this the server used
+ *                        to drop the send silently and the UI lied "delivered".
+ */
+export const ChatControlAction = z.enum([
+  "ended",
+  "partner-left",
+  "partner-returned",
+  "link-stale",
+])
+export type ChatControlAction = z.infer<typeof ChatControlAction>
+
+export const ChatControlMessage = z.object({
+  to: PlayerId,
+  interactionId: z.string().min(1),
+  action: z.literal("ended"),
+})
+export type ChatControlMessage = z.infer<typeof ChatControlMessage>
+
+export const ChatControlDeliver = z.object({
+  from: PlayerId,
+  fromName: z.string().min(1).max(40).optional(),
+  to: PlayerId,
+  interactionId: z.string().min(1),
+  action: ChatControlAction,
+})
+export type ChatControlDeliver = z.infer<typeof ChatControlDeliver>
+
+/* ------------------------------------------------------------- challenge sync */
+
+/**
+ * A peer's challenge result shared back over the invite channel so both clients
+ * can show "you / them" scores and reward both on completion. Wraps the contract
+ * `ChallengeResult` with the routing `inviteId`.
+ */
+export const PeerChallengeResult = z.object({
+  inviteId: z.string().min(1),
+  result: ChallengeResult,
+})
+export type PeerChallengeResult = z.infer<typeof PeerChallengeResult>
+
+/* ------------------------------------------------------------------- trade */
+
+/**
+ * The trade wire envelope. The economy agent owns the rich `TradeProposal`
+ * (items/coins/notes/validation) in `src/economy/trade.ts`; THIS contract is the
+ * minimal, serializable transport envelope the Colyseus transport carries. The
+ * proposal body is passed as an opaque, size-bounded JSON object so the economy
+ * layer can evolve its proposal shape without a contract bump — the transport
+ * only routes + sequences it. The server still applies coarse anti-grief
+ * (rate/▒size caps) on this envelope.
+ */
+export const TradeEnvelope = z.object({
+  /** stable trade id (the economy proposal's id). */
+  tradeId: z.string().min(1),
+  to: PlayerId,
+  /** propose | accept | decline | counter | cancel — mirrors economy statuses. */
+  action: z.enum(["propose", "accept", "decline", "counter", "cancel"]),
+  /** the economy proposal body, opaque to the transport (bounded JSON). */
+  proposal: z.record(z.string(), z.unknown()),
+})
+export type TradeEnvelope = z.infer<typeof TradeEnvelope>
+
+/** S→C: a trade envelope from the partner, with the trusted sender id stamped. */
+export const TradeUpdateMessage = TradeEnvelope.extend({
+  from: PlayerId,
+})
+export type TradeUpdateMessage = z.infer<typeof TradeUpdateMessage>
+
+/* ----------------------------------------------------------- safety: block/report */
+
+/**
+ * C→S: block or unblock a player. Blocking suppresses their invites and messages
+ * to you (and tears down any live link + buffered messages) for the session. The
+ * durable block list lives on the device; this is the live, server-side mirror.
+ */
+export const BlockMessage = z.object({
+  target: PlayerId,
+  action: z.enum(["block", "unblock"]).default("block"),
+})
+export type BlockMessage = z.infer<typeof BlockMessage>
+
+/** Coarse, all-ages-appropriate report categories. */
+export const ReportReason = z.enum([
+  "harassment",
+  "sexual",
+  "contact-info",
+  "meetup",
+  "spam",
+  "other",
+])
+export type ReportReason = z.infer<typeof ReportReason>
+
+/**
+ * C→S: report a player to moderation. Carries ONLY minimal structured metadata —
+ * never the raw draft. The server records an audit line (reporter, reported,
+ * reason, optional interaction id, timestamp); content is not collected.
+ */
+export const ReportMessage = z.object({
+  target: PlayerId,
+  reason: ReportReason.optional(),
+  interactionId: z.string().min(1).max(120).optional(),
+})
+export type ReportMessage = z.infer<typeof ReportMessage>

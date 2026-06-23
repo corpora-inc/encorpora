@@ -1,0 +1,19 @@
+{
+  "id": "cab01b6b-8427-40b8-807b-bbeff0b2a651",
+  "title": "Third Grade at Home",
+  "subtitle": "An Agile, Economical, and Powerful Homeschool Plan",
+  "purpose": "This book is a calm, practical field guide for homeschooling a third grader, roughly ages 8–10. It helps parents build a joyful, sustainable learning system with low cost and high return. The promise is straightforward: consistent, enjoyable practice in reading, writing, math, and real-world skills leads to compounding capability without burnout.\n\nWe use three lenses throughout the book: agile and bonsai for small plans and pruning, economics for scarce time and high-return choices, and powerlifting for submaximal reps that build strength over time. These are metaphors, not doctrine, and they are explained as they appear. The goal is a home where learning feels doable, fun, and steadily productive.",
+  "author": "Skylar Saveland",
+  "publisher": "Corpora Inc",
+  "isbn": "",
+  "language": "en-US",
+  "publication_date": "2025-11-22",
+  "instructions": "## Writer Instructions for Third Grade at Home\n\nWrite for a brand-new homeschooling parent so they feel two things: this is doable and I have options. Keep it practical and concrete. Avoid pop-philosophy, hype, and trite framing like \"your real job.\"\n\n### Structure rules\n\n- **Sections:** plain text only, written as a few meaty paragraphs.\n- **Subsections:** start with `## <Title>` and then use markdown as needed.\n- **Headers:** bold all headers and avoid parentheses in header text.\n\n### Tone and style\n\n- Calm, competent, optimistic. No guilt, no hype, no self-congratulation.\n- Prefer meaty paragraphs over strings of short, disjointed paragraphs.\n- Use lists only when they clarify; keep them short and mixed with narrative.\n- Define jargon on first use: bonsai, kaizen, kanban, JIT, Chronos, Kairos.\n- Keep the book joyful: reduce cost and friction, maximize return and capability.\n\n### Content guidance\n\n- Emphasize reading, writing, and math as the core, but show how to deliver them with low cost and high joy.\n- Distinguish **compound interest** (skills building over time) from **compound movement** (one activity training multiple skills).\n- Use metaphors to help parents visualize success. Mix metaphors; classroom is only one option.\n- Thread the three lenses through examples, but keep them practical and concrete.\n\n### Markdown\n\n- Keep blockquotes for real definitions or real quotes only.\n- Avoid consecutive blockquotes; Pandoc merges them.\n- Tables are fine if small, and images are optional.\n",
+  "voice": "Voice = plain, competent, and warm. The tone is optimistic and joy-forward: learning should feel light enough to sustain and rich enough to grow. Avoid fear, guilt, or overemphasis on what to avoid.\n\n- Sound like a practical mentor: calm, candid, and concrete.\n- Be skeptical of schoolish habits that waste time or crush motivation. Keep what works, drop what doesn’t.\n- Use agile, economics, and powerlifting as helpful metaphors, not doctrine.\n- Treat time, attention, and energy as scarce resources; aim for high-return routines that compound.\n- Keep the metaphors grounded and explained, and avoid overusing any single image like \"workshop.\"\n\nOverall: practical, economical, child-respecting guidance that helps a parent build a joyful, steady homeschool and a child who becomes more capable, curious, confident, and kind.\n",
+  "has_images": true,
+  "book_size": "6x9",
+  "font_size": "11.00",
+  "output_basename": "third-grade-at-home",
+  "output_pdf": "third-grade-at-home.pdf",
+  "output_epub": "third-grade-at-home.epub"
+}

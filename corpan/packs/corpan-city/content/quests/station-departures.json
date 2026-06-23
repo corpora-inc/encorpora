@@ -1,0 +1,33 @@
+{
+  "id": "station-departures",
+  "title": "Reading the Departures",
+  "narrative": "At the rail station, read the board, buy a ticket, and find your platform.",
+  "learnerPair": { "target": "es", "native": "en" },
+  "domain": "transit",
+  "objective": { "kind": "completeChallenges", "toolId": "listen-choose", "count": 1 },
+  "steps": [
+    {
+      "id": "buy-ticket",
+      "label": "Buy a ticket at the rail station",
+      "anchorId": "rail_station",
+      "kind": "talk",
+      "toolId": "listen-choose"
+    },
+    {
+      "id": "find-platform",
+      "label": "Ask which platform and when it leaves",
+      "anchorId": "rail_station",
+      "kind": "talk",
+      "toolId": "number-drill"
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner buying tickets, reading times, and finding platforms.",
+    "scaffold": "intermediate",
+    "ragSources": ["base-travel", "base-numbers"],
+    "contentSelector": { "levels": ["A2", "B1"], "domains": ["transit", "travel", "numbers"] },
+    "toolWhitelist": ["listen-choose", "number-drill", "fast-translate"]
+  },
+  "rewards": { "xp": 190, "coins": 250, "badge": "platform-ready", "grant": ["city-gate-pass"] },
+  "nextQuestIds": ["bridge-crossing", "harbor-ferry-ride", "civic-cityhall"]
+}

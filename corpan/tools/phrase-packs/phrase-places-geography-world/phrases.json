@@ -1,0 +1,3242 @@
+[
+  {
+    "english": "Africa is bigger than it looks on most maps.",
+    "level": "B2"
+  },
+  {
+    "english": "The Atlantic Ocean separates the Americas from Europe and Africa.",
+    "level": "B2"
+  },
+  {
+    "english": "Antarctica is the coldest continent.",
+    "level": "A2"
+  },
+  {
+    "english": "Asia is home to more than half the world's people.",
+    "level": "B2"
+  },
+  {
+    "english": "Europe and Asia share a continuous landmass.",
+    "level": "B2"
+  },
+  {
+    "english": "Australia is both a country and a continent.",
+    "level": "B1"
+  },
+  {
+    "english": "The Pacific is the largest ocean.",
+    "level": "A2"
+  },
+  {
+    "english": "The Arctic Ocean is partly covered in ice.",
+    "level": "B1"
+  },
+  {
+    "english": "South America has the Amazon rainforest.",
+    "level": "A2"
+  },
+  {
+    "english": "North America stretches from tropical to arctic climates.",
+    "level": "B2"
+  },
+  {
+    "english": "Iceland sits between two tectonic plates.",
+    "level": "B2"
+  },
+  {
+    "english": "Madagascar is the fourth largest island in the world.",
+    "level": "B2"
+  },
+  {
+    "english": "New Zealand has two main islands.",
+    "level": "A2"
+  },
+  {
+    "english": "The Pacific Ring of Fire is where many earthquakes happen.",
+    "level": "B2"
+  },
+  {
+    "english": "The Indian Ocean borders three continents.",
+    "level": "B1"
+  },
+  {
+    "english": "The Nile flows north for thousands of miles.",
+    "level": "B1"
+  },
+  {
+    "english": "The Amazon carries more water than any other river.",
+    "level": "B2"
+  },
+  {
+    "english": "Lake Baikal is the deepest freshwater lake in the world.",
+    "level": "B2"
+  },
+  {
+    "english": "The Mississippi drains most of the central United States.",
+    "level": "B2"
+  },
+  {
+    "english": "The Ganges is sacred to many people.",
+    "level": "B1"
+  },
+  {
+    "english": "The Yangtze is the longest river in Asia.",
+    "level": "B1"
+  },
+  {
+    "english": "The Danube passes through ten countries.",
+    "level": "B2"
+  },
+  {
+    "english": "The Caspian Sea is the largest enclosed body of water.",
+    "level": "B2"
+  },
+  {
+    "english": "The Volga is the longest river entirely in Europe.",
+    "level": "B2"
+  },
+  {
+    "english": "Lake Victoria is the main source of the White Nile.",
+    "level": "B2"
+  },
+  {
+    "english": "The Great Lakes hold a fifth of the world's surface fresh water.",
+    "level": "C1"
+  },
+  {
+    "english": "The Rhine has been a trade route for centuries.",
+    "level": "B2"
+  },
+  {
+    "english": "The Mekong supports millions of people in Southeast Asia.",
+    "level": "B2"
+  },
+  {
+    "english": "Some rivers dry up before they reach the sea.",
+    "level": "B2"
+  },
+  {
+    "english": "The Colorado River carved the Grand Canyon over millions of years.",
+    "level": "B2"
+  },
+  {
+    "english": "Mount Everest is the highest point above sea level.",
+    "level": "B1"
+  },
+  {
+    "english": "The Andes run the length of South America.",
+    "level": "B2"
+  },
+  {
+    "english": "The Alps are popular with hikers in summer.",
+    "level": "B1"
+  },
+  {
+    "english": "The Rockies stretch from Canada into the southwestern United States.",
+    "level": "B2"
+  },
+  {
+    "english": "The Himalayas are still slowly rising.",
+    "level": "B2"
+  },
+  {
+    "english": "Kilimanjaro is the highest peak in Africa.",
+    "level": "B1"
+  },
+  {
+    "english": "The Ural Mountains separate Europe from Asia.",
+    "level": "B1"
+  },
+  {
+    "english": "Mount Fuji is sacred to many in Japan.",
+    "level": "B1"
+  },
+  {
+    "english": "The Atlas Mountains shape the climate of North Africa.",
+    "level": "B2"
+  },
+  {
+    "english": "Glaciers are retreating from mountain ranges worldwide.",
+    "level": "B2"
+  },
+  {
+    "english": "The Sahara is the largest hot desert.",
+    "level": "A2"
+  },
+  {
+    "english": "The Arctic and Antarctic are polar deserts.",
+    "level": "B2"
+  },
+  {
+    "english": "The Amazon has its own weather system.",
+    "level": "B2"
+  },
+  {
+    "english": "Tropical rainforests are warm and wet year round.",
+    "level": "B2"
+  },
+  {
+    "english": "The temperate zones have four distinct seasons.",
+    "level": "B2"
+  },
+  {
+    "english": "Monsoons bring heavy rain to South Asia each summer.",
+    "level": "B2"
+  },
+  {
+    "english": "Tornadoes are most common in the central United States.",
+    "level": "B2"
+  },
+  {
+    "english": "Hurricanes form over warm ocean water.",
+    "level": "B2"
+  },
+  {
+    "english": "The Mediterranean climate is mild and dry in summer.",
+    "level": "B2"
+  },
+  {
+    "english": "Permafrost covers much of Siberia.",
+    "level": "C1"
+  },
+  {
+    "english": "The Atacama is one of the driest places on Earth.",
+    "level": "B2"
+  },
+  {
+    "english": "The tundra has too short a summer for trees.",
+    "level": "B2"
+  },
+  {
+    "english": "Mangroves grow where land meets salt water.",
+    "level": "B2"
+  },
+  {
+    "english": "Coral reefs need warm, clear water to thrive.",
+    "level": "B2"
+  },
+  {
+    "english": "The jet stream affects weather across continents.",
+    "level": "B2"
+  },
+  {
+    "english": "Tokyo has more people than any other metropolitan area.",
+    "level": "B2"
+  },
+  {
+    "english": "Vatican City is the smallest country in the world.",
+    "level": "B1"
+  },
+  {
+    "english": "Russia spans eleven time zones.",
+    "level": "B2"
+  },
+  {
+    "english": "India and China together are over a third of the world's people.",
+    "level": "B2"
+  },
+  {
+    "english": "Brazil shares a border with most South American countries.",
+    "level": "B2"
+  },
+  {
+    "english": "Singapore is a city and a country at the same time.",
+    "level": "B1"
+  },
+  {
+    "english": "Istanbul sits on two continents.",
+    "level": "B1"
+  },
+  {
+    "english": "Cape Town has a famous flat-topped mountain.",
+    "level": "B2"
+  },
+  {
+    "english": "Buenos Aires is sometimes called the Paris of South America.",
+    "level": "B2"
+  },
+  {
+    "english": "Lagos is one of the fastest-growing cities in the world.",
+    "level": "B2"
+  },
+  {
+    "english": "Reykjavik is the world's northernmost capital.",
+    "level": "B1"
+  },
+  {
+    "english": "La Paz is one of the highest capital cities.",
+    "level": "B1"
+  },
+  {
+    "english": "Sydney has one of the largest natural harbors.",
+    "level": "B2"
+  },
+  {
+    "english": "Marrakech has a thousand-year-old old town.",
+    "level": "B2"
+  },
+  {
+    "english": "Hanoi sits along the Red River.",
+    "level": "B1"
+  },
+  {
+    "english": "People have crossed deserts to trade for spices.",
+    "level": "B2"
+  },
+  {
+    "english": "The Silk Road connected China to the Mediterranean.",
+    "level": "B2"
+  },
+  {
+    "english": "Some languages are spoken on only one small island.",
+    "level": "B2"
+  },
+  {
+    "english": "Half the world's population lives near the coast.",
+    "level": "B2"
+  },
+  {
+    "english": "Many cities began as river ports.",
+    "level": "B2"
+  },
+  {
+    "english": "Borders move; rivers and mountains usually don't.",
+    "level": "C1"
+  },
+  {
+    "english": "The world's coastline is more crowded than the interior.",
+    "level": "B2"
+  },
+  {
+    "english": "Many ancient ruins are still being discovered.",
+    "level": "B2"
+  },
+  {
+    "english": "Some islands are slowly disappearing under rising seas.",
+    "level": "B2"
+  },
+  {
+    "english": "Long migrations have shaped almost every continent.",
+    "level": "C1"
+  },
+  {
+    "english": "Australia has animals that exist nowhere else.",
+    "level": "B2"
+  },
+  {
+    "english": "The deepest part of the ocean is the Mariana Trench.",
+    "level": "B2"
+  },
+  {
+    "english": "Greenland is mostly covered in ice.",
+    "level": "B1"
+  },
+  {
+    "english": "Volcanoes can build new islands in a few decades.",
+    "level": "B2"
+  },
+  {
+    "english": "The aurora borealis is best seen from northern latitudes.",
+    "level": "B2"
+  },
+  {
+    "english": "The Earth's continents are slowly drifting apart.",
+    "level": "B2"
+  },
+  {
+    "english": "The driest place on Earth might still get the occasional flood.",
+    "level": "C1"
+  },
+  {
+    "english": "Some lakes are so salty that almost nothing can live in them.",
+    "level": "B2"
+  },
+  {
+    "english": "The world's tallest waterfall is in Venezuela.",
+    "level": "B1"
+  },
+  {
+    "english": "The Sahara was a grassland thousands of years ago.",
+    "level": "B2"
+  },
+  {
+    "english": "Which country borders the most others?",
+    "level": "B1"
+  },
+  {
+    "english": "What's the difference between a country and a state?",
+    "level": "B1"
+  },
+  {
+    "english": "Where is the equator on this map?",
+    "level": "B1"
+  },
+  {
+    "english": "Which ocean is closest to here?",
+    "level": "A2"
+  },
+  {
+    "english": "How long would it take to walk across this country?",
+    "level": "B1"
+  },
+  {
+    "english": "What's the highest peak you've climbed?",
+    "level": "B1"
+  },
+  {
+    "english": "I want to see the northern lights one day.",
+    "level": "B1"
+  },
+  {
+    "english": "Is the capital also the largest city?",
+    "level": "B1"
+  },
+  {
+    "english": "The map looks different upside down.",
+    "level": "B2"
+  },
+  {
+    "english": "Every country has a story worth knowing.",
+    "level": "B2"
+  },
+  {
+    "english": "Where is it?",
+    "level": "A0"
+  },
+  {
+    "english": "I am from here.",
+    "level": "A1"
+  },
+  {
+    "english": "Geography is the slow, patient study of how the shape of the land has quietly negotiated, over centuries, with the people who agreed to call it home, and how each has rewritten the other in the bargain.",
+    "level": "C2"
+  },
+  {
+    "english": "The map shows every continent.",
+    "level": "A1"
+  },
+  {
+    "english": "A compass points north.",
+    "level": "A1"
+  },
+  {
+    "english": "This road crosses the border.",
+    "level": "A1"
+  },
+  {
+    "english": "The ferry follows the coast.",
+    "level": "A1"
+  },
+  {
+    "english": "Our train enters a new country.",
+    "level": "A1"
+  },
+  {
+    "english": "Old maps name old kingdoms.",
+    "level": "A1"
+  },
+  {
+    "english": "The airport is near the river.",
+    "level": "A1"
+  },
+  {
+    "english": "A guide marks the trail.",
+    "level": "A1"
+  },
+  {
+    "english": "The globe turns on my desk.",
+    "level": "A1"
+  },
+  {
+    "english": "Satellites photograph the Earth.",
+    "level": "A1"
+  },
+  {
+    "english": "The border looks thin here.",
+    "level": "A1"
+  },
+  {
+    "english": "A port connects land and sea.",
+    "level": "A1"
+  },
+  {
+    "english": "The atlas has many pages.",
+    "level": "A1"
+  },
+  {
+    "english": "The road map folds badly.",
+    "level": "A1"
+  },
+  {
+    "english": "Early sailors watched stars, and they also read wind.",
+    "level": "A2"
+  },
+  {
+    "english": "A good map shows distance, but it also suggests difficulty.",
+    "level": "A2"
+  },
+  {
+    "english": "The old route crossed mountains before it reached the coast.",
+    "level": "A2"
+  },
+  {
+    "english": "Travelers use phones now, but paper maps still help.",
+    "level": "A2"
+  },
+  {
+    "english": "A border checkpoint can turn a short road into a long wait.",
+    "level": "A2"
+  },
+  {
+    "english": "The survey team measured the valley and marked a new road.",
+    "level": "A2"
+  },
+  {
+    "english": "Air routes bend because the Earth is round.",
+    "level": "A2"
+  },
+  {
+    "english": "The city map changes when a new bridge opens.",
+    "level": "A2"
+  },
+  {
+    "english": "A mountain pass may close when winter snow arrives.",
+    "level": "A2"
+  },
+  {
+    "english": "The ship followed the coast until the lighthouse appeared.",
+    "level": "A2"
+  },
+  {
+    "english": "Modern maps update quickly, but some villages remain missing.",
+    "level": "A2"
+  },
+  {
+    "english": "The railway line crosses plains, then climbs toward the hills.",
+    "level": "A2"
+  },
+  {
+    "english": "A border can divide one river town into two administrations.",
+    "level": "A2"
+  },
+  {
+    "english": "The pilot chose a route around the storm.",
+    "level": "A2"
+  },
+  {
+    "english": "Explorers often gave places names that local people already had.",
+    "level": "A2"
+  },
+  {
+    "english": "The mapmaker drew the coastline after three months at sea.",
+    "level": "A2"
+  },
+  {
+    "english": "A bus route can reveal the shape of a city.",
+    "level": "A2"
+  },
+  {
+    "english": "Pilgrims and traders helped map roads before governments did.",
+    "level": "A2"
+  },
+  {
+    "english": "The new tunnel shortened the journey through the mountains.",
+    "level": "A2"
+  },
+  {
+    "english": "A globe avoids some mistakes that flat maps make.",
+    "level": "A2"
+  },
+  {
+    "english": "The compass needle shook, but the caravan kept moving.",
+    "level": "A2"
+  },
+  {
+    "english": "Some islands appeared on charts before people measured them well.",
+    "level": "A2"
+  },
+  {
+    "english": "A travel visa can change the meaning of distance.",
+    "level": "A2"
+  },
+  {
+    "english": "The harbor map marks rocks, tides, and safe channels.",
+    "level": "A2"
+  },
+  {
+    "english": "Road signs change language when the highway crosses a frontier.",
+    "level": "A2"
+  },
+  {
+    "english": "The explorer's notebook described rivers, villages, and difficult weather.",
+    "level": "A2"
+  },
+  {
+    "english": "Digital maps can warn drivers when roads are flooded.",
+    "level": "A2"
+  },
+  {
+    "english": "The first sketch was rough, but it guided later surveys.",
+    "level": "A2"
+  },
+  {
+    "english": "A canal can move a port closer to the world.",
+    "level": "A2"
+  },
+  {
+    "english": "The route looked simple until the desert began.",
+    "level": "A2"
+  },
+  {
+    "english": "Cartographers use symbols so crowded places remain readable.",
+    "level": "A2"
+  },
+  {
+    "english": "The ferry schedule depends on weather, tide, and border rules.",
+    "level": "A2"
+  },
+  {
+    "english": "A satellite image shows farms, forests, roads, and city edges.",
+    "level": "A2"
+  },
+  {
+    "english": "The safest path on the map was not the shortest one.",
+    "level": "A2"
+  },
+  {
+    "english": "A map can make a journey feel possible before it is easy.",
+    "level": "B1"
+  },
+  {
+    "english": "When roads follow old trade routes, history hides in the traffic pattern.",
+    "level": "B1"
+  },
+  {
+    "english": "The blank spaces on old maps often meant unfamiliarity, not emptiness.",
+    "level": "B1"
+  },
+  {
+    "english": "A railway station can pull distant towns into the same daily rhythm.",
+    "level": "B1"
+  },
+  {
+    "english": "Exploration has often mixed curiosity with power, trade, and uneven record keeping.",
+    "level": "B1"
+  },
+  {
+    "english": "A sea chart cares less about beauty than about surviving the approach to port.",
+    "level": "B1"
+  },
+  {
+    "english": "Border towns teach travelers that maps simplify what daily life complicates.",
+    "level": "B1"
+  },
+  {
+    "english": "The shortest flight may look curved because the map is flat.",
+    "level": "B1"
+  },
+  {
+    "english": "A walking map notices stairways, footbridges, and alleys that drivers miss.",
+    "level": "B1"
+  },
+  {
+    "english": "Many expeditions depended on local guides whose names rarely reached the printed map.",
+    "level": "B1"
+  },
+  {
+    "english": "The GPS signal failed, so the ridge and river became guides again.",
+    "level": "B1"
+  },
+  {
+    "english": "A capital city often sits where roads, rivers, and authority once met.",
+    "level": "B1"
+  },
+  {
+    "english": "Old atlases show political hopes as clearly as mountains and seas.",
+    "level": "B1"
+  },
+  {
+    "english": "Every new road changes a map, but it also changes nearby routines.",
+    "level": "B1"
+  },
+  {
+    "english": "A map projection is a compromise, choosing which truth to stretch and which to preserve.",
+    "level": "B2"
+  },
+  {
+    "english": "Modern travel feels effortless until a closed border reminds passengers that geography still has rules.",
+    "level": "B2"
+  },
+  {
+    "english": "The explorer's route may look heroic on paper, yet it often rested on borrowed knowledge.",
+    "level": "B2"
+  },
+  {
+    "english": "Satellite maps have sharpened coastlines, but they cannot fully explain why people move.",
+    "level": "B2"
+  },
+  {
+    "english": "A newly drawn boundary can make neighbors foreign without moving a single house.",
+    "level": "B2"
+  },
+  {
+    "english": "The map in a schoolroom quietly teaches which places sit at the center.",
+    "level": "B2"
+  },
+  {
+    "english": "Travel networks reveal power as plainly as terrain, especially where trains stop and highways begin.",
+    "level": "B2"
+  },
+  {
+    "english": "Cartography turns measurement into memory, because each line records both a place and the purpose for seeing it.",
+    "level": "C1"
+  },
+  {
+    "english": "The history of exploration is never only movement across space; it is also the uneven right to describe space.",
+    "level": "C1"
+  },
+  {
+    "english": "When a coastline is redrawn after better surveys, the old error remains a trace of earlier limits.",
+    "level": "C1"
+  },
+  {
+    "english": "Digital navigation has made travel feel continuous, although every route still depends on borders, fuel, weather, and law.",
+    "level": "C1"
+  },
+  {
+    "english": "A handmade map of a neighborhood may reveal more social geography than a precise satellite image.",
+    "level": "C1"
+  },
+  {
+    "english": "Empires measured rivers and passes carefully, since control often began with knowing where movement could be stopped.",
+    "level": "C1"
+  },
+  {
+    "english": "The most useful travel map is not always the most accurate, but the one that answers the traveler's actual question.",
+    "level": "C1"
+  },
+  {
+    "english": "Naming a mountain on an official chart can honor a language, or quietly erase one.",
+    "level": "C1"
+  },
+  {
+    "english": "Modern airports compress distance into schedules, yet their routes still follow older patterns of wealth and connection.",
+    "level": "C1"
+  },
+  {
+    "english": "An atlas is never neutral paper; it arranges attention, scale, and authority into a portable world.",
+    "level": "C1"
+  },
+  {
+    "english": "Exploration narratives often celebrate arrival, while the map beneath them preserves the labor of pilots, translators, porters, and hosts.",
+    "level": "C1"
+  },
+  {
+    "english": "Before satellites settled the argument of shorelines, a cartographer's hand could make an island swell, shrink, or drift, and generations of travelers would steer by that confident mistake.",
+    "level": "C2"
+  },
+  {
+    "english": "The maker's map is a pact between mathematics and appetite, measuring the Earth with instruments while revealing which routes a society longs to own, cross, defend, or forget.",
+    "level": "C2"
+  },
+  {
+    "english": "A border printed in a thin black line can look almost polite, although on the ground it may pass through orchards, graveyards, markets, and the remembered shortcuts of childhood.",
+    "level": "C2"
+  },
+  {
+    "english": "Travel redraws the world twice, first through the official grid of roads, gates, tickets, and coordinates, then through the private atlas of delays, kindnesses, missed turns, and weather.",
+    "level": "C2"
+  },
+  {
+    "english": "Rain falls here.",
+    "level": "A0"
+  },
+  {
+    "english": "The day is hot.",
+    "level": "A1"
+  },
+  {
+    "english": "Snow covers the hill.",
+    "level": "A1"
+  },
+  {
+    "english": "Rain feeds the forest.",
+    "level": "A1"
+  },
+  {
+    "english": "The desert is dry.",
+    "level": "A1"
+  },
+  {
+    "english": "Clouds hide the sun.",
+    "level": "A1"
+  },
+  {
+    "english": "Wind moves the sand.",
+    "level": "A1"
+  },
+  {
+    "english": "Ice stays near the pole.",
+    "level": "A1"
+  },
+  {
+    "english": "Fog covers the valley.",
+    "level": "A1"
+  },
+  {
+    "english": "Farmers wait for rain.",
+    "level": "A1"
+  },
+  {
+    "english": "The coast feels mild.",
+    "level": "A1"
+  },
+  {
+    "english": "Grass grows after rain.",
+    "level": "A1"
+  },
+  {
+    "english": "Winters are long here.",
+    "level": "A1"
+  },
+  {
+    "english": "Summer brings warm nights.",
+    "level": "A1"
+  },
+  {
+    "english": "The forest stays green.",
+    "level": "A1"
+  },
+  {
+    "english": "Storms cross the plain.",
+    "level": "A1"
+  },
+  {
+    "english": "Savannas have wet months, and then the grass turns gold.",
+    "level": "A2"
+  },
+  {
+    "english": "Trade winds push moist air toward many tropical coasts.",
+    "level": "A2"
+  },
+  {
+    "english": "Dry seasons can last for months in the tropics.",
+    "level": "A2"
+  },
+  {
+    "english": "Temperate forests lose many leaves before winter arrives.",
+    "level": "A2"
+  },
+  {
+    "english": "Boreal forests grow where winters are dark and cold.",
+    "level": "A2"
+  },
+  {
+    "english": "Rain shadows make one side of a mountain much drier.",
+    "level": "A2"
+  },
+  {
+    "english": "Ocean currents can warm a coast far from the tropics.",
+    "level": "A2"
+  },
+  {
+    "english": "Cold water can make coastal deserts surprisingly foggy.",
+    "level": "A2"
+  },
+  {
+    "english": "High mountains can have snow above green valleys.",
+    "level": "A2"
+  },
+  {
+    "english": "Wetlands store floodwater and shelter many kinds of birds.",
+    "level": "A2"
+  },
+  {
+    "english": "Prairies spread across places where rain is not enough for forests.",
+    "level": "A2"
+  },
+  {
+    "english": "A steppe is dry grassland, but it is not a desert.",
+    "level": "A2"
+  },
+  {
+    "english": "Taiga forests circle much of the far northern land.",
+    "level": "A2"
+  },
+  {
+    "english": "Equatorial places often have short, heavy afternoon storms.",
+    "level": "A2"
+  },
+  {
+    "english": "Near the equator, days and nights stay almost equal.",
+    "level": "A2"
+  },
+  {
+    "english": "Polar nights can last for weeks in high latitudes.",
+    "level": "A2"
+  },
+  {
+    "english": "A sea breeze often cools the city by evening.",
+    "level": "A2"
+  },
+  {
+    "english": "Cold air sinks into valleys during clear winter nights.",
+    "level": "A2"
+  },
+  {
+    "english": "Floodplains are rich, but they can be dangerous in storms.",
+    "level": "A2"
+  },
+  {
+    "english": "Rice grows well where warm fields can hold water.",
+    "level": "A2"
+  },
+  {
+    "english": "Olive trees like dry summers and mild, rainy winters.",
+    "level": "A2"
+  },
+  {
+    "english": "Tea plantations often sit on cool, wet hillsides.",
+    "level": "A2"
+  },
+  {
+    "english": "Cactus plants store water for long dry weeks.",
+    "level": "A2"
+  },
+  {
+    "english": "Mosses and lichens survive where larger plants cannot grow.",
+    "level": "A2"
+  },
+  {
+    "english": "Seasonal floods can refresh soil along low river plains.",
+    "level": "A2"
+  },
+  {
+    "english": "Cyclones have different names in different ocean regions.",
+    "level": "A2"
+  },
+  {
+    "english": "A typhoon is a tropical cyclone in the western Pacific.",
+    "level": "A2"
+  },
+  {
+    "english": "Heat rises from cities and can change local weather.",
+    "level": "A2"
+  },
+  {
+    "english": "Snowmelt fills many rivers after a long mountain winter.",
+    "level": "A2"
+  },
+  {
+    "english": "Drought can empty reservoirs and push farms into crisis.",
+    "level": "A2"
+  },
+  {
+    "english": "Cloud forests collect water from mist as well as rain.",
+    "level": "A2"
+  },
+  {
+    "english": "Coastal marshes can soften storm waves before they reach towns.",
+    "level": "A2"
+  },
+  {
+    "english": "Lightning often starts fires in dry forests and grasslands.",
+    "level": "A2"
+  },
+  {
+    "english": "The same latitude can feel different beside a cold ocean.",
+    "level": "A2"
+  },
+  {
+    "english": "Weather changes by the hour, but climate is the longer pattern.",
+    "level": "B1"
+  },
+  {
+    "english": "In many dry regions, a single rainy week can decide the harvest.",
+    "level": "B1"
+  },
+  {
+    "english": "People build thick walls and shaded courtyards where afternoons grow fierce.",
+    "level": "B1"
+  },
+  {
+    "english": "In river deltas, fertile soil comes with a constant risk of flooding.",
+    "level": "B1"
+  },
+  {
+    "english": "The edge of a forest often marks a change in rainfall.",
+    "level": "B1"
+  },
+  {
+    "english": "Pastoral communities follow grass, water, and seasons across open country.",
+    "level": "B1"
+  },
+  {
+    "english": "A cool current can give a desert coast a strange, gray morning.",
+    "level": "B1"
+  },
+  {
+    "english": "In highland cities, thin air can make sunlight feel unusually sharp.",
+    "level": "B1"
+  },
+  {
+    "english": "The first rains after drought can smell like dust and relief.",
+    "level": "B1"
+  },
+  {
+    "english": "Winter roads in the north are sometimes built across frozen ground.",
+    "level": "B1"
+  },
+  {
+    "english": "A humid night can make a coastal city feel awake and crowded.",
+    "level": "B1"
+  },
+  {
+    "english": "The tree line shows where cold begins to limit the landscape.",
+    "level": "B1"
+  },
+  {
+    "english": "Dry winds can turn a small fire into a regional disaster.",
+    "level": "B1"
+  },
+  {
+    "english": "In some climates, shade is as important as shelter from rain.",
+    "level": "B1"
+  },
+  {
+    "english": "A grassland may look empty, yet it holds a detailed seasonal rhythm.",
+    "level": "B1"
+  },
+  {
+    "english": "Climate does not dictate culture, but it quietly shapes roofs, roads, crops, and daily schedules.",
+    "level": "B2"
+  },
+  {
+    "english": "A map of rainfall often explains settlement more clearly than a map of borders.",
+    "level": "B2"
+  },
+  {
+    "english": "Where storms arrive predictably, calendars, markets, and school years often learn their timing.",
+    "level": "B2"
+  },
+  {
+    "english": "The border between forest and grassland can move when fire, grazing, and rainfall change together.",
+    "level": "B2"
+  },
+  {
+    "english": "A cold sea can cool the air while leaving the land almost rainless.",
+    "level": "B2"
+  },
+  {
+    "english": "Mountain weather compresses distance, so a short climb can cross several seasons.",
+    "level": "B2"
+  },
+  {
+    "english": "The driest landscapes are not empty spaces, but places organized around scarcity and patience.",
+    "level": "B2"
+  },
+  {
+    "english": "Climate zones are broad categories, yet local winds, slopes, soils, and currents make each place particular.",
+    "level": "C1"
+  },
+  {
+    "english": "The monsoon is not simply bad weather, but a seasonal engine for fields, reservoirs, and city life.",
+    "level": "C1"
+  },
+  {
+    "english": "Rainforest abundance depends on a closed cycle, where leaves, vapor, clouds, and soil continually answer one another.",
+    "level": "C1"
+  },
+  {
+    "english": "In the tundra, a few warm weeks carry the work of growth, migration, nesting, and repair.",
+    "level": "C1"
+  },
+  {
+    "english": "The human map often thickens where water is reliable, temperatures are bearable, and transport remains possible.",
+    "level": "C1"
+  },
+  {
+    "english": "Desert cities survive through engineering, trade, memory, and strict attention to the movement of water.",
+    "level": "C1"
+  },
+  {
+    "english": "A biome is not scenery, but a living arrangement among climate, soil, plants, animals, and time.",
+    "level": "C1"
+  },
+  {
+    "english": "When climate shifts, it rarely moves like a line on a page, because livelihoods adjust unevenly.",
+    "level": "C1"
+  },
+  {
+    "english": "Coastal climates can be gentle in temperature and violent in storms, a contradiction many ports know well.",
+    "level": "C1"
+  },
+  {
+    "english": "Fire belongs naturally to some landscapes, though human settlement can turn that cycle into catastrophe.",
+    "level": "C1"
+  },
+  {
+    "english": "The difference between drought and normal dryness is often social as well as meteorological.",
+    "level": "C1"
+  },
+  {
+    "english": "Across the planet, climate writes in recurring patterns, but the handwriting changes with altitude, ocean current, soil, and the stubborn choices of people who remain.",
+    "level": "C2"
+  },
+  {
+    "english": "A rainforest is not merely a wet forest, but a vertical city of light, rot, leaf, insect, root, and weather making itself again.",
+    "level": "C2"
+  },
+  {
+    "english": "In polar regions, cold is not an absence but a force that slows decay, shortens seasons, hardens travel, and gives distance a different meaning.",
+    "level": "C2"
+  },
+  {
+    "english": "The savanna teaches a geography of alternation, where abundance arrives in green waves, then retreats into dust, seed, hoofprint, and waiting.",
+    "level": "C2"
+  },
+  {
+    "english": "Human settlement has always read the sky with practical intelligence, placing houses, fields, wells, roads, and markets where climate allowed a future to be repeated.",
+    "level": "C2"
+  },
+  {
+    "english": "This is a border.",
+    "level": "A0"
+  },
+  {
+    "english": "Canada's capital is Ottawa.",
+    "level": "A1"
+  },
+  {
+    "english": "Egypt's capital is Cairo.",
+    "level": "A1"
+  },
+  {
+    "english": "Kenya's capital is Nairobi.",
+    "level": "A1"
+  },
+  {
+    "english": "Peru's capital is Lima.",
+    "level": "A1"
+  },
+  {
+    "english": "Japan's capital is Tokyo.",
+    "level": "A1"
+  },
+  {
+    "english": "Thailand's capital is Bangkok.",
+    "level": "A1"
+  },
+  {
+    "english": "Chile is long and narrow.",
+    "level": "A1"
+  },
+  {
+    "english": "Portugal borders only Spain.",
+    "level": "A1"
+  },
+  {
+    "english": "Nepal sits between India and China.",
+    "level": "A1"
+  },
+  {
+    "english": "Mexico borders the United States.",
+    "level": "A1"
+  },
+  {
+    "english": "Ottawa is not Canada's largest city.",
+    "level": "A1"
+  },
+  {
+    "english": "Madrid is the capital of Spain.",
+    "level": "A1"
+  },
+  {
+    "english": "Rome is the capital of Italy.",
+    "level": "A1"
+  },
+  {
+    "english": "Seoul is the capital of South Korea.",
+    "level": "A1"
+  },
+  {
+    "english": "Morocco faces Spain across the sea.",
+    "level": "A1"
+  },
+  {
+    "english": "Berlin is Germany's capital, but Munich is also famous.",
+    "level": "A2"
+  },
+  {
+    "english": "The United States shares land borders with Canada and Mexico.",
+    "level": "A2"
+  },
+  {
+    "english": "France has borders in Europe, South America, and the Caribbean.",
+    "level": "A2"
+  },
+  {
+    "english": "South Africa has three capital cities for different government branches.",
+    "level": "A2"
+  },
+  {
+    "english": "The Netherlands has Amsterdam as its capital, but government meets in The Hague.",
+    "level": "A2"
+  },
+  {
+    "english": "Bolivia names Sucre as its capital, while La Paz hosts the government.",
+    "level": "A2"
+  },
+  {
+    "english": "Switzerland has no official capital, but Bern serves that role.",
+    "level": "A2"
+  },
+  {
+    "english": "Kazakhstan moved its capital from Almaty to Astana in 1997.",
+    "level": "A2"
+  },
+  {
+    "english": "Nigeria moved its capital from Lagos to Abuja in 1991.",
+    "level": "A2"
+  },
+  {
+    "english": "Myanmar moved its capital from Yangon to Naypyidaw in 2005.",
+    "level": "A2"
+  },
+  {
+    "english": "Bratislava and Vienna are two very close national capitals.",
+    "level": "A2"
+  },
+  {
+    "english": "The border between Haiti and the Dominican Republic crosses one island.",
+    "level": "A2"
+  },
+  {
+    "english": "Mongolia lies between Russia and China, with no coast.",
+    "level": "A2"
+  },
+  {
+    "english": "Lesotho is completely surrounded by South Africa.",
+    "level": "A2"
+  },
+  {
+    "english": "San Marino is surrounded by Italy, yet remains independent.",
+    "level": "A2"
+  },
+  {
+    "english": "The Gambia follows a river through Senegal to the ocean.",
+    "level": "A2"
+  },
+  {
+    "english": "Panama connects Central and South America, and its canal connects oceans.",
+    "level": "A2"
+  },
+  {
+    "english": "Turkey borders both Greece and Iran, across a wide region.",
+    "level": "A2"
+  },
+  {
+    "english": "Denmark borders Germany by land and Sweden by bridge.",
+    "level": "A2"
+  },
+  {
+    "english": "Ireland and the United Kingdom share a border on one island.",
+    "level": "A2"
+  },
+  {
+    "english": "The Korean Peninsula has two states and one heavily guarded border.",
+    "level": "A2"
+  },
+  {
+    "english": "Cairo lies near the Nile Delta, where Egypt meets the Mediterranean.",
+    "level": "A2"
+  },
+  {
+    "english": "Canberra was planned between Sydney and Melbourne as a compromise capital.",
+    "level": "A2"
+  },
+  {
+    "english": "Brasilia was built inland to help connect Brazil's regions.",
+    "level": "A2"
+  },
+  {
+    "english": "Washington, D.C. is a capital district, not a state.",
+    "level": "A2"
+  },
+  {
+    "english": "Mexico City is both a capital and a huge highland city.",
+    "level": "A2"
+  },
+  {
+    "english": "Addis Ababa is Ethiopia's capital and a center for African diplomacy.",
+    "level": "A2"
+  },
+  {
+    "english": "Brussels is Belgium's capital and hosts many European Union offices.",
+    "level": "A2"
+  },
+  {
+    "english": "Jerusalem is claimed by more than one national story.",
+    "level": "A2"
+  },
+  {
+    "english": "Some countries are islands, and others have no sea coast.",
+    "level": "A2"
+  },
+  {
+    "english": "A border can follow a river, a road, or an old treaty.",
+    "level": "A2"
+  },
+  {
+    "english": "Many capitals are old cities, but some were planned later.",
+    "level": "A2"
+  },
+  {
+    "english": "Maps show borders clearly, but life near them is often mixed.",
+    "level": "A2"
+  },
+  {
+    "english": "A passport tells one story, while family history may tell another.",
+    "level": "A2"
+  },
+  {
+    "english": "Some borders are easy to cross, and others are closely guarded.",
+    "level": "A2"
+  },
+  {
+    "english": "City names can change when governments change language policy.",
+    "level": "A2"
+  },
+  {
+    "english": "A capital city often gathers ministries, courts, archives, and embassies.",
+    "level": "B1"
+  },
+  {
+    "english": "In some regions, the nearest market town lies across an international border.",
+    "level": "B1"
+  },
+  {
+    "english": "Border towns often hear two languages before breakfast.",
+    "level": "B1"
+  },
+  {
+    "english": "A straight border on a map may cross forests, farms, and families.",
+    "level": "B1"
+  },
+  {
+    "english": "The Schengen Area lets many Europeans cross borders without regular passport checks.",
+    "level": "B1"
+  },
+  {
+    "english": "A country may keep its capital inland to feel more connected.",
+    "level": "B1"
+  },
+  {
+    "english": "Embassies make a capital feel like a small atlas of the world.",
+    "level": "B1"
+  },
+  {
+    "english": "Some small countries survive by careful diplomacy with much larger neighbors.",
+    "level": "B1"
+  },
+  {
+    "english": "A river border can shift when the river changes course.",
+    "level": "B1"
+  },
+  {
+    "english": "Maps in classrooms often make political borders look more permanent than they are.",
+    "level": "B1"
+  },
+  {
+    "english": "A capital can move, but old administrative habits often remain behind.",
+    "level": "B1"
+  },
+  {
+    "english": "The border between Spain and Portugal is one of Europe's oldest.",
+    "level": "B1"
+  },
+  {
+    "english": "Some capitals were chosen because no rival city could accept another's victory.",
+    "level": "B1"
+  },
+  {
+    "english": "The name of a country can carry memory, politics, and hope.",
+    "level": "B1"
+  },
+  {
+    "english": "A coastline can give a country ports, trade routes, and strategic worries.",
+    "level": "B1"
+  },
+  {
+    "english": "Political maps invite certainty, although many borders were drawn through argument, conquest, negotiation, and compromise.",
+    "level": "B2"
+  },
+  {
+    "english": "A capital city is often both a workplace for government and a theater of national memory.",
+    "level": "B2"
+  },
+  {
+    "english": "When a country changes its capital, it often signals a new idea of the nation.",
+    "level": "B2"
+  },
+  {
+    "english": "Border regions can be peripheral to capitals yet central to everyday trade and language contact.",
+    "level": "B2"
+  },
+  {
+    "english": "A landlocked country must think about neighbors whenever it thinks about ports and oceans.",
+    "level": "B2"
+  },
+  {
+    "english": "Some borders feel invisible in daily life until a crisis makes them suddenly concrete.",
+    "level": "B2"
+  },
+  {
+    "english": "The capital on the map may not be the city that shapes a country's economy.",
+    "level": "B2"
+  },
+  {
+    "english": "The modern political map is full of clean lines that conceal older routes, seasonal pastures, shared languages, and overlapping claims.",
+    "level": "C1"
+  },
+  {
+    "english": "A capital is never just a dot beside a star, because it concentrates archives, ceremonies, police power, and diplomatic attention.",
+    "level": "C1"
+  },
+  {
+    "english": "Where borders follow mountains or rivers, they can seem natural, yet their legal meaning still comes from human agreement.",
+    "level": "C1"
+  },
+  {
+    "english": "The border between two countries may be a checkpoint for officials and a family road for local residents.",
+    "level": "C1"
+  },
+  {
+    "english": "Choosing an inland capital can be an attempt to rebalance a country long dominated by its coast.",
+    "level": "C1"
+  },
+  {
+    "english": "Federal countries often divide authority between a national capital and strong regional capitals with older loyalties.",
+    "level": "C1"
+  },
+  {
+    "english": "A map of capitals reveals not only centers of power, but also old fears of invasion and separation.",
+    "level": "C1"
+  },
+  {
+    "english": "Many borders appear precise because cartography demands precision, not because history ever offered such neatness.",
+    "level": "C1"
+  },
+  {
+    "english": "The recognition of a state depends on law, diplomacy, control of territory, and the willingness of others to answer its letters.",
+    "level": "C1"
+  },
+  {
+    "english": "A border can harden quickly, but the habits of trade, marriage, and migration usually change more slowly.",
+    "level": "C1"
+  },
+  {
+    "english": "Some capitals are monumental by design, while others became capitals because power had already settled there.",
+    "level": "C1"
+  },
+  {
+    "english": "The political map changes when treaties, wars, referendums, and administrative reforms alter the names by which places are governed.",
+    "level": "C1"
+  },
+  {
+    "english": "On a classroom wall, a country may look like a single color, but on the ground it is a mesh of provinces, ports, border crossings, minority languages, and roads that bend toward older centers of gravity.",
+    "level": "C2"
+  },
+  {
+    "english": "A capital city gathers the grammar of the state into streets and buildings, yet the nation it claims to represent often lives most vividly in places far from its ministries.",
+    "level": "C2"
+  },
+  {
+    "english": "Borders are written as lines, but they are lived as delays, permits, bilingual signs, family stories, and the uneasy knowledge that geography can outlast the governments that name it.",
+    "level": "C2"
+  },
+  {
+    "english": "When a new capital rises from planned avenues and fresh concrete, it asks citizens to imagine a different center, even while memory keeps returning to the older city.",
+    "level": "C2"
+  },
+  {
+    "english": "The most persuasive maps make authority look settled, although every frontier carries traces of surveyors, soldiers, translators, negotiators, and residents who learned to live with the line.",
+    "level": "C2"
+  },
+  {
+    "english": "Cities are busy places.",
+    "level": "A0"
+  },
+  {
+    "english": "A market stands near the station.",
+    "level": "A1"
+  },
+  {
+    "english": "The town has one main street.",
+    "level": "A1"
+  },
+  {
+    "english": "People ride buses across the city.",
+    "level": "A1"
+  },
+  {
+    "english": "The square fills after work.",
+    "level": "A1"
+  },
+  {
+    "english": "Old houses line the narrow lane.",
+    "level": "A1"
+  },
+  {
+    "english": "The subway runs under the river.",
+    "level": "A1"
+  },
+  {
+    "english": "A city needs clean water.",
+    "level": "A1"
+  },
+  {
+    "english": "The port smells of salt.",
+    "level": "A1"
+  },
+  {
+    "english": "Small towns know every road.",
+    "level": "A1"
+  },
+  {
+    "english": "The capital has broad avenues.",
+    "level": "A1"
+  },
+  {
+    "english": "Streetlights shine after sunset.",
+    "level": "A1"
+  },
+  {
+    "english": "The neighborhood has its own bakery.",
+    "level": "A1"
+  },
+  {
+    "english": "Tall buildings shade the sidewalk.",
+    "level": "A1"
+  },
+  {
+    "english": "The bus stop is crowded.",
+    "level": "A1"
+  },
+  {
+    "english": "Cairo grows along the Nile.",
+    "level": "A1"
+  },
+  {
+    "english": "A megacity can contain more people than a small country.",
+    "level": "A2"
+  },
+  {
+    "english": "Some neighborhoods wake early, but others come alive at night.",
+    "level": "A2"
+  },
+  {
+    "english": "Mexico City sits high, so thin air shapes daily life.",
+    "level": "A2"
+  },
+  {
+    "english": "Venice has streets of water, and boats serve as buses.",
+    "level": "A2"
+  },
+  {
+    "english": "A port city often hears many languages near its docks.",
+    "level": "A2"
+  },
+  {
+    "english": "Old city walls sometimes become parks for walkers and cyclists.",
+    "level": "A2"
+  },
+  {
+    "english": "Public squares give a city room to argue and celebrate.",
+    "level": "A2"
+  },
+  {
+    "english": "The metro saves time when traffic blocks the main roads.",
+    "level": "A2"
+  },
+  {
+    "english": "In dense cities, a small apartment may have a wide view.",
+    "level": "A2"
+  },
+  {
+    "english": "Street markets turn local harvests into daily city life.",
+    "level": "A2"
+  },
+  {
+    "english": "A capital city often holds ministries, courts, and foreign embassies.",
+    "level": "A2"
+  },
+  {
+    "english": "Some factory towns changed when their old industries closed.",
+    "level": "A2"
+  },
+  {
+    "english": "New suburbs spread outward when land near the center becomes expensive.",
+    "level": "A2"
+  },
+  {
+    "english": "Seoul has mountains nearby, and they frame many city views.",
+    "level": "A2"
+  },
+  {
+    "english": "A small town may share one school, one clinic, and one field.",
+    "level": "A2"
+  },
+  {
+    "english": "The oldest quarter keeps the street plan from another century.",
+    "level": "A2"
+  },
+  {
+    "english": "Ferries connect islands, and they make the harbor part of transit.",
+    "level": "A2"
+  },
+  {
+    "english": "Apartment blocks can house thousands of people on one city block.",
+    "level": "A2"
+  },
+  {
+    "english": "A city park cools the air and gives children space.",
+    "level": "A2"
+  },
+  {
+    "english": "Night buses matter when nurses, cooks, and guards finish late.",
+    "level": "A2"
+  },
+  {
+    "english": "Jakarta faces floods, and the city is planning major changes.",
+    "level": "A2"
+  },
+  {
+    "english": "A railway station can become the heart of a district.",
+    "level": "A2"
+  },
+  {
+    "english": "Some streets change names after revolutions, unions, or national heroes.",
+    "level": "A2"
+  },
+  {
+    "english": "Urban trees make summer walks easier and soften hard streets.",
+    "level": "A2"
+  },
+  {
+    "english": "A city can grow upward when it cannot grow outward.",
+    "level": "A2"
+  },
+  {
+    "english": "The old market closes late, but the office district empties early.",
+    "level": "A2"
+  },
+  {
+    "english": "Coastal cities watch the tides when they plan new tunnels.",
+    "level": "A2"
+  },
+  {
+    "english": "High rent can push families far from their old neighborhoods.",
+    "level": "A2"
+  },
+  {
+    "english": "A town hall keeps records of births, marriages, and land.",
+    "level": "A2"
+  },
+  {
+    "english": "The skyline changes quickly when cranes fill the financial district.",
+    "level": "A2"
+  },
+  {
+    "english": "Some cities protect old temples beside new train lines.",
+    "level": "A2"
+  },
+  {
+    "english": "Bicycle lanes work best when they connect homes, schools, and shops.",
+    "level": "A2"
+  },
+  {
+    "english": "A neighborhood name can outlast the farms that once stood there.",
+    "level": "A2"
+  },
+  {
+    "english": "Garbage trucks, water pipes, and power lines keep the city alive.",
+    "level": "A2"
+  },
+  {
+    "english": "A city is not just its center; it is also its edges.",
+    "level": "B1"
+  },
+  {
+    "english": "People often know their neighborhood better than they know the whole city.",
+    "level": "B1"
+  },
+  {
+    "english": "In Mumbai, trains carry the rhythm of the working day.",
+    "level": "B1"
+  },
+  {
+    "english": "A good bus network makes distant neighborhoods feel less forgotten.",
+    "level": "B1"
+  },
+  {
+    "english": "Some towns lose young people first, then shops, then evening light.",
+    "level": "B1"
+  },
+  {
+    "english": "The same avenue can hold banks, fruit stalls, churches, and repair shops.",
+    "level": "B1"
+  },
+  {
+    "english": "City life teaches people to share space without always sharing stories.",
+    "level": "B1"
+  },
+  {
+    "english": "When a new bridge opens, it changes more than traffic.",
+    "level": "B1"
+  },
+  {
+    "english": "Old ports often keep warehouses that remember a different economy.",
+    "level": "B1"
+  },
+  {
+    "english": "In Addis Ababa, new rail lines meet roads built for another pace.",
+    "level": "B1"
+  },
+  {
+    "english": "A neighborhood can feel like home after only one familiar corner.",
+    "level": "B1"
+  },
+  {
+    "english": "The busiest city street is sometimes quiet before the first delivery arrives.",
+    "level": "B1"
+  },
+  {
+    "english": "A library, a clinic, and a market can anchor a small town.",
+    "level": "B1"
+  },
+  {
+    "english": "City maps show roads clearly, but they cannot show belonging.",
+    "level": "B1"
+  },
+  {
+    "english": "When rent rises, a street may keep its buildings but lose its memory.",
+    "level": "B1"
+  },
+  {
+    "english": "Large cities concentrate opportunity, yet they also concentrate noise, heat, and waiting.",
+    "level": "B2"
+  },
+  {
+    "english": "A neighborhood is partly geography and partly habit, built by repeated errands and greetings.",
+    "level": "B2"
+  },
+  {
+    "english": "Kinshasa and Brazzaville face each other across the Congo, close enough to feel like one urban conversation.",
+    "level": "B2"
+  },
+  {
+    "english": "The shape of a city often reveals what it feared, valued, or needed to move.",
+    "level": "B2"
+  },
+  {
+    "english": "A small town can be provincial in size and cosmopolitan in memory.",
+    "level": "B2"
+  },
+  {
+    "english": "When highways cut through older districts, speed for some people becomes distance for others.",
+    "level": "B2"
+  },
+  {
+    "english": "Urban life depends on ordinary systems that become visible only when they fail.",
+    "level": "B2"
+  },
+  {
+    "english": "The modern city is a negotiation between density and dignity, measured in commutes, shade, rent, and access.",
+    "level": "C1"
+  },
+  {
+    "english": "Some capitals perform the state in stone and ceremony, while nearby neighborhoods solve the practical problems of breakfast.",
+    "level": "C1"
+  },
+  {
+    "english": "A street grid may look neutral on paper, yet it can preserve old inequalities with remarkable efficiency.",
+    "level": "C1"
+  },
+  {
+    "english": "In cities built around harbors, trade is not an episode of history but a continuing grammar of space.",
+    "level": "C1"
+  },
+  {
+    "english": "The most resilient neighborhoods often combine formal planning with informal knowledge that planners arrive too late to notice.",
+    "level": "C1"
+  },
+  {
+    "english": "Urban growth is not only a matter of population, but of pipes, schools, drainage, transport, and trust.",
+    "level": "C1"
+  },
+  {
+    "english": "A city can display wealth on its skyline while hiding exhaustion in the length of its commutes.",
+    "level": "C1"
+  },
+  {
+    "english": "Small towns are sometimes described by what they lack, although they often preserve skills cities have outsourced.",
+    "level": "C1"
+  },
+  {
+    "english": "The boundary between city and countryside is rarely a line; it is a changing zone of roads, warehouses, fields, and speculation.",
+    "level": "C1"
+  },
+  {
+    "english": "A neighborhood survives through names, routes, smells, and mutual obligations that no official map can fully contain.",
+    "level": "C1"
+  },
+  {
+    "english": "Cities become legible through repetition, as the stranger slowly learns which corner sells bread, which bus arrives late, and which square belongs to evening.",
+    "level": "C1"
+  },
+  {
+    "english": "Every metropolis is an argument in built form, joining money, migration, climate, law, and accident into streets where private hopes must constantly negotiate public space.",
+    "level": "C2"
+  },
+  {
+    "english": "The old quarter of a city can seem picturesque from above, but at ground level it is infrastructure, inheritance, rent pressure, and the stubborn choreography of daily life.",
+    "level": "C2"
+  },
+  {
+    "english": "A small town may appear still to outsiders, yet its quiet streets can register every closed factory, returned child, new clinic, and altered bus schedule.",
+    "level": "C2"
+  },
+  {
+    "english": "Urban geography asks us to read the city not as a backdrop for human life, but as one of the forces that edits it.",
+    "level": "C2"
+  },
+  {
+    "english": "Where megacities expand faster than their services, the future arrives unevenly, with glass towers, informal settlements, expressways, flooded lanes, and children walking to school through dust.",
+    "level": "C2"
+  },
+  {
+    "english": "Continents are very big.",
+    "level": "A0"
+  },
+  {
+    "english": "Africa has many wide regions.",
+    "level": "A1"
+  },
+  {
+    "english": "Asia has many huge cities.",
+    "level": "A1"
+  },
+  {
+    "english": "Europe has many close neighbors.",
+    "level": "A1"
+  },
+  {
+    "english": "Australia sits far south.",
+    "level": "A1"
+  },
+  {
+    "english": "Antarctica has no permanent towns.",
+    "level": "A1"
+  },
+  {
+    "english": "South America narrows toward the south.",
+    "level": "A1"
+  },
+  {
+    "english": "North America widens in the north.",
+    "level": "A1"
+  },
+  {
+    "english": "Oceans divide the big landmasses.",
+    "level": "A1"
+  },
+  {
+    "english": "Maps show land from above.",
+    "level": "A1"
+  },
+  {
+    "english": "Some continents touch at narrow places.",
+    "level": "A1"
+  },
+  {
+    "english": "Many people live in coastal cities.",
+    "level": "A1"
+  },
+  {
+    "english": "Islands can belong to continents.",
+    "level": "A1"
+  },
+  {
+    "english": "Deserts cover large inland areas.",
+    "level": "A1"
+  },
+  {
+    "english": "Plains can hold large farms.",
+    "level": "A1"
+  },
+  {
+    "english": "Continents have different shapes.",
+    "level": "A1"
+  },
+  {
+    "english": "Africa crosses the equator, and its coasts face two oceans.",
+    "level": "A2"
+  },
+  {
+    "english": "Asia reaches from the Mediterranean region to the western Pacific.",
+    "level": "A2"
+  },
+  {
+    "english": "Europe has a long coastline, so many places face the sea.",
+    "level": "A2"
+  },
+  {
+    "english": "South America is broad in the north and pointed in the south.",
+    "level": "A2"
+  },
+  {
+    "english": "North America has large plains between its eastern and western mountains.",
+    "level": "A2"
+  },
+  {
+    "english": "Australia has dry interior lands and greener edges near the coast.",
+    "level": "A2"
+  },
+  {
+    "english": "Antarctica is a continent, but no country owns it all.",
+    "level": "A2"
+  },
+  {
+    "english": "The Americas form one long land chain from north to south.",
+    "level": "A2"
+  },
+  {
+    "english": "Central America links two larger landmasses with a narrow bridge.",
+    "level": "A2"
+  },
+  {
+    "english": "The Sinai Peninsula connects Africa with the edge of Asia.",
+    "level": "A2"
+  },
+  {
+    "english": "The Isthmus of Panama joins North America to South America.",
+    "level": "A2"
+  },
+  {
+    "english": "Many people live on fertile plains because farming is easier there.",
+    "level": "A2"
+  },
+  {
+    "english": "Large deserts often have fewer towns, but important routes cross them.",
+    "level": "A2"
+  },
+  {
+    "english": "Mountain belts can divide regions and guide where roads go.",
+    "level": "A2"
+  },
+  {
+    "english": "Most of Australia is low, old, and worn by time.",
+    "level": "A2"
+  },
+  {
+    "english": "Africa has few deep bays, so some coasts are hard to enter.",
+    "level": "A2"
+  },
+  {
+    "english": "Europe has many peninsulas, and they make the coastline uneven.",
+    "level": "A2"
+  },
+  {
+    "english": "Asia contains high plateaus, wide plains, and crowded river valleys.",
+    "level": "A2"
+  },
+  {
+    "english": "South America's west edge is mountainous, while its east opens wider.",
+    "level": "A2"
+  },
+  {
+    "english": "North America's far north has many islands and frozen shores.",
+    "level": "A2"
+  },
+  {
+    "english": "A continent can include nearby islands, not only the mainland.",
+    "level": "A2"
+  },
+  {
+    "english": "Greenland belongs geographically to North America, though it is politically Danish.",
+    "level": "A2"
+  },
+  {
+    "english": "The Arabian Peninsula is part of Asia and faces three seas.",
+    "level": "A2"
+  },
+  {
+    "english": "India is a large peninsula reaching into the Indian Ocean.",
+    "level": "A2"
+  },
+  {
+    "english": "The Korean Peninsula points south between China and Japan.",
+    "level": "A2"
+  },
+  {
+    "english": "Scandinavia stretches north, and much of it faces cold seas.",
+    "level": "A2"
+  },
+  {
+    "english": "The Iberian Peninsula holds Spain, Portugal, Andorra, and Gibraltar.",
+    "level": "A2"
+  },
+  {
+    "english": "Africa's population is young, and many cities are growing quickly.",
+    "level": "A2"
+  },
+  {
+    "english": "Asia has many crowded deltas where rivers meet the sea.",
+    "level": "A2"
+  },
+  {
+    "english": "Europe is densely settled, but its countries are often small.",
+    "level": "A2"
+  },
+  {
+    "english": "South America's people mostly live near coasts and major rivers.",
+    "level": "A2"
+  },
+  {
+    "english": "North America's population is uneven, with vast lightly settled areas.",
+    "level": "A2"
+  },
+  {
+    "english": "Australia's people mostly live along the eastern and southern coasts.",
+    "level": "A2"
+  },
+  {
+    "english": "Antarctica has research stations, but its residents are temporary.",
+    "level": "A2"
+  },
+  {
+    "english": "Some continental interiors feel empty on maps but hold long histories.",
+    "level": "A2"
+  },
+  {
+    "english": "The old supercontinent Pangaea broke apart long before humans existed.",
+    "level": "A2"
+  },
+  {
+    "english": "Landmasses move slowly, but their shapes still affect daily life.",
+    "level": "A2"
+  },
+  {
+    "english": "Africa's outline looks compact, yet its interior distances can surprise travelers.",
+    "level": "B1"
+  },
+  {
+    "english": "Asia's great river plains help explain why so many cities grew there.",
+    "level": "B1"
+  },
+  {
+    "english": "Europe's small peninsulas make short sea crossings part of regional history.",
+    "level": "B1"
+  },
+  {
+    "english": "South America feels almost like a triangle tilted toward the Atlantic.",
+    "level": "B1"
+  },
+  {
+    "english": "North America combines broad interiors with two long ocean-facing edges.",
+    "level": "B1"
+  },
+  {
+    "english": "Australia's settled rim shows how strongly water shapes where people gather.",
+    "level": "B1"
+  },
+  {
+    "english": "Antarctica reminds us that a continent does not need cities to matter.",
+    "level": "B1"
+  },
+  {
+    "english": "The Suez area is a small hinge between two enormous land systems.",
+    "level": "B1"
+  },
+  {
+    "english": "The Bering Strait leaves Asia and North America within sight of each other.",
+    "level": "B1"
+  },
+  {
+    "english": "Many maps put Europe in the center, but the globe has no center.",
+    "level": "B1"
+  },
+  {
+    "english": "Population maps often glow brightest where rivers, coasts, and plains meet.",
+    "level": "B1"
+  },
+  {
+    "english": "The world's biggest landmasses are not evenly shared by people.",
+    "level": "B1"
+  },
+  {
+    "english": "A narrow isthmus can carry roads, canals, languages, and migrations.",
+    "level": "B1"
+  },
+  {
+    "english": "Continents look fixed in school atlases, but their edges are debated.",
+    "level": "B1"
+  },
+  {
+    "english": "On a globe, the Arctic links northern lands more than it separates them.",
+    "level": "B1"
+  },
+  {
+    "english": "The idea of a continent mixes geology, history, education, and habit.",
+    "level": "B2"
+  },
+  {
+    "english": "Africa's central position on the globe makes its distance from other continents feel less obvious.",
+    "level": "B2"
+  },
+  {
+    "english": "Asia's human density is not uniform, because mountains, deserts, and steppes leave huge spaces thinly settled.",
+    "level": "B2"
+  },
+  {
+    "english": "Europe's political variety rests on a small land area deeply broken by seas and uplands.",
+    "level": "B2"
+  },
+  {
+    "english": "South America's population pattern follows the coast so strongly that the interior can seem hidden.",
+    "level": "B2"
+  },
+  {
+    "english": "North America's shape gives it a wide temperate middle and exposed Arctic frontiers.",
+    "level": "B2"
+  },
+  {
+    "english": "Australia's continental isolation shaped both its ecosystems and the pattern of modern settlement.",
+    "level": "B2"
+  },
+  {
+    "english": "Antarctica is governed by agreements, a reminder that land can be shared without ordinary borders.",
+    "level": "B2"
+  },
+  {
+    "english": "Calling Europe and Asia separate continents shows how cultural memory can outlast the simplicity of physical geography.",
+    "level": "C1"
+  },
+  {
+    "english": "Africa's coastline is less indented than Europe's, a plain fact with lasting consequences for harbors and routes.",
+    "level": "C1"
+  },
+  {
+    "english": "Asia's population is concentrated in monsoon lands, river basins, and coastal plains rather than spread evenly across its vastness.",
+    "level": "C1"
+  },
+  {
+    "english": "Europe's crowded map reflects not only density, but centuries of languages, states, and local landscapes pressed closely together.",
+    "level": "C1"
+  },
+  {
+    "english": "South America's continental form directs attention toward the Andes, the Atlantic-facing cities, and the immense inland basins between them.",
+    "level": "C1"
+  },
+  {
+    "english": "North America's empty-looking spaces are not blank, but regions where climate, distance, and history have limited dense settlement.",
+    "level": "C1"
+  },
+  {
+    "english": "Australia is often imagined by its coast, yet the continental interior gives the country much of its scale.",
+    "level": "C1"
+  },
+  {
+    "english": "Antarctica has no native cities or farms, but it occupies a central place in the planet's climate system.",
+    "level": "C1"
+  },
+  {
+    "english": "The Americas appear divided by convention, yet their landforms continue in arcs, plateaus, forests, and corridors of migration.",
+    "level": "C1"
+  },
+  {
+    "english": "Afro-Eurasia is the largest linked human landscape, containing most of the world's languages, cities, and old trade routes.",
+    "level": "C1"
+  },
+  {
+    "english": "A continent is never just an outline; it is also a way of grouping histories, climates, and distances.",
+    "level": "C1"
+  },
+  {
+    "english": "Population gathers where land offers water, soil, ports, or passage, leaving other continental spaces quiet but never meaningless.",
+    "level": "C1"
+  },
+  {
+    "english": "Seen from space, continents lose the neat colors of school maps and become irregular surfaces of ice, forest, desert, field, and city light, each pattern shaped by both geology and human choice.",
+    "level": "C2"
+  },
+  {
+    "english": "The great landmasses teach scale unevenly, because a short crossing in Europe may pass several borders, while a journey across central Asia can hold the horizon almost unchanged for days.",
+    "level": "C2"
+  },
+  {
+    "english": "Africa's size, often softened by familiar map projections, becomes harder to ignore when its deserts, forests, savannas, highlands, and river basins are considered as one continental body.",
+    "level": "C2"
+  },
+  {
+    "english": "Asia is less a single landscape than a vast meeting of peninsulas, steppes, islands, deltas, plateaus, and megacities, with humanity concentrated in some places and scarcely visible in others.",
+    "level": "C2"
+  },
+  {
+    "english": "Continents are useful names for enormous facts, but their borders remain human decisions laid over moving crust, shifting seas, and the older continuities of climate, terrain, and settlement.",
+    "level": "C2"
+  },
+  {
+    "english": "Water runs downhill.",
+    "level": "A0"
+  },
+  {
+    "english": "Rivers bring fresh water.",
+    "level": "A1"
+  },
+  {
+    "english": "Lakes can freeze in winter.",
+    "level": "A1"
+  },
+  {
+    "english": "A river has two banks.",
+    "level": "A1"
+  },
+  {
+    "english": "Boats cross the lake today.",
+    "level": "A1"
+  },
+  {
+    "english": "Rain fills small streams.",
+    "level": "A1"
+  },
+  {
+    "english": "Fish live in clear rivers.",
+    "level": "A1"
+  },
+  {
+    "english": "The Nile passes many towns.",
+    "level": "A1"
+  },
+  {
+    "english": "The Amazon is very wide.",
+    "level": "A1"
+  },
+  {
+    "english": "The Ganges meets the sea in Bangladesh.",
+    "level": "A1"
+  },
+  {
+    "english": "The Mississippi has many bends.",
+    "level": "A1"
+  },
+  {
+    "english": "Lake Chad changes with the seasons.",
+    "level": "A1"
+  },
+  {
+    "english": "The Thames runs through London.",
+    "level": "A1"
+  },
+  {
+    "english": "The Seine flows through Paris.",
+    "level": "A1"
+  },
+  {
+    "english": "People drink water from wells.",
+    "level": "A1"
+  },
+  {
+    "english": "Ice melts into mountain streams.",
+    "level": "A1"
+  },
+  {
+    "english": "The Danube links capital cities, and barges still carry grain.",
+    "level": "A2"
+  },
+  {
+    "english": "The Congo River is deep, and forests crowd its banks.",
+    "level": "A2"
+  },
+  {
+    "english": "The Zambezi widens before it falls at Victoria Falls.",
+    "level": "A2"
+  },
+  {
+    "english": "Lake Titicaca sits high in the Andes, and boats cross it daily.",
+    "level": "A2"
+  },
+  {
+    "english": "The Niger bends through Mali, then turns south toward Nigeria.",
+    "level": "A2"
+  },
+  {
+    "english": "The Tigris and Euphrates shaped farms in ancient Mesopotamia.",
+    "level": "A2"
+  },
+  {
+    "english": "The Jordan River is short, but its valley carries great history.",
+    "level": "A2"
+  },
+  {
+    "english": "The Rio Grande forms part of a border between Mexico and the United States.",
+    "level": "A2"
+  },
+  {
+    "english": "The St. Lawrence carries Great Lakes water toward the Atlantic.",
+    "level": "A2"
+  },
+  {
+    "english": "The Yellow River brings silt, so its water often looks brown.",
+    "level": "A2"
+  },
+  {
+    "english": "The Murray River is important to farms in southeastern Australia.",
+    "level": "A2"
+  },
+  {
+    "english": "Lake Geneva touches Switzerland and France, and ferries cross its water.",
+    "level": "A2"
+  },
+  {
+    "english": "The Orinoco drains broad plains before reaching the Caribbean Sea.",
+    "level": "A2"
+  },
+  {
+    "english": "The Parana River helps move soybeans, corn, and iron ore.",
+    "level": "A2"
+  },
+  {
+    "english": "The Senegal River marks a border and waters dry country.",
+    "level": "A2"
+  },
+  {
+    "english": "The Okavango spreads inland, so its delta never reaches the ocean.",
+    "level": "A2"
+  },
+  {
+    "english": "The Indus runs through Pakistan, and its water feeds large farms.",
+    "level": "A2"
+  },
+  {
+    "english": "The Dnieper passes Kyiv, and reservoirs break its long course.",
+    "level": "A2"
+  },
+  {
+    "english": "The Elbe connects Czech mountains with the North Sea.",
+    "level": "A2"
+  },
+  {
+    "english": "The Hudson is tidal far upstream from New York Harbor.",
+    "level": "A2"
+  },
+  {
+    "english": "The Pearl River delta is crowded with cities and factories.",
+    "level": "A2"
+  },
+  {
+    "english": "The Lena crosses Siberia, and it freezes for much of winter.",
+    "level": "A2"
+  },
+  {
+    "english": "Lake Tanganyika is long and deep, with villages along its shore.",
+    "level": "A2"
+  },
+  {
+    "english": "The Dead Sea is a lake, though its water is extremely salty.",
+    "level": "A2"
+  },
+  {
+    "english": "The Salween remains less dammed than many Asian rivers.",
+    "level": "A2"
+  },
+  {
+    "english": "The Irrawaddy carries sediment through Myanmar to a wide delta.",
+    "level": "A2"
+  },
+  {
+    "english": "The Brahmaputra joins the Ganges, and the combined waters spread widely.",
+    "level": "A2"
+  },
+  {
+    "english": "The Platte is shallow, but it helped guide westward trails.",
+    "level": "A2"
+  },
+  {
+    "english": "Lake Maracaibo is linked to the sea by a narrow strait.",
+    "level": "A2"
+  },
+  {
+    "english": "The Po crosses northern Italy, and rice fields follow its plain.",
+    "level": "A2"
+  },
+  {
+    "english": "The Vistula reaches the Baltic after passing Warsaw and Krakow.",
+    "level": "A2"
+  },
+  {
+    "english": "The Tagus flows past Lisbon before it meets the Atlantic.",
+    "level": "A2"
+  },
+  {
+    "english": "The Limpopo curves through southern Africa, then enters the Indian Ocean.",
+    "level": "A2"
+  },
+  {
+    "english": "Wetlands beside rivers store floodwater and shelter young fish.",
+    "level": "A2"
+  },
+  {
+    "english": "A river can be a road on one map and a border on another.",
+    "level": "B1"
+  },
+  {
+    "english": "In Cairo, the Nile is not scenery; it is the city's spine.",
+    "level": "B1"
+  },
+  {
+    "english": "Spring snowmelt can turn a quiet mountain stream into a brown, fast river.",
+    "level": "B1"
+  },
+  {
+    "english": "The Mekong's flood pulse helps farmers and fishers plan their year.",
+    "level": "B1"
+  },
+  {
+    "english": "When a lake level falls, old shorelines appear like pale rings.",
+    "level": "B1"
+  },
+  {
+    "english": "The Mississippi Delta shows how moving water can build land grain by grain.",
+    "level": "B1"
+  },
+  {
+    "english": "On the Rhine, freight boats make geography feel practical rather than distant.",
+    "level": "B1"
+  },
+  {
+    "english": "The Amazon basin contains rivers wide enough to hide the opposite bank.",
+    "level": "B1"
+  },
+  {
+    "english": "River names often outlive kingdoms, roads, and official border signs.",
+    "level": "B1"
+  },
+  {
+    "english": "The Volta River's dams changed power, farming, and fishing in Ghana.",
+    "level": "B1"
+  },
+  {
+    "english": "In dry regions, a small spring can decide where a town begins.",
+    "level": "B1"
+  },
+  {
+    "english": "The Nile Delta spreads into fields before meeting the Mediterranean Sea.",
+    "level": "B1"
+  },
+  {
+    "english": "The Loire feels gentle in places, but it still floods its valley.",
+    "level": "B1"
+  },
+  {
+    "english": "Lake Superior can look like an inland sea on a stormy day.",
+    "level": "B1"
+  },
+  {
+    "english": "The Tigris runs past cities where water has mattered for millennia.",
+    "level": "B1"
+  },
+  {
+    "english": "Rivers make borders seem natural until a flood shifts the channel overnight.",
+    "level": "B2"
+  },
+  {
+    "english": "A lake can preserve climate history in layers of mud, pollen, and minerals.",
+    "level": "B2"
+  },
+  {
+    "english": "Along the lower Mekong, seasonal flooding is both a hazard and a calendar.",
+    "level": "B2"
+  },
+  {
+    "english": "The Aral Sea's shrinking shore shows how irrigation can redraw a region's geography.",
+    "level": "B2"
+  },
+  {
+    "english": "Fresh water is unevenly distributed, so abundance in one basin can hide scarcity nearby.",
+    "level": "B2"
+  },
+  {
+    "english": "Dams can steady electricity and deepen trade routes, while also interrupting fish migration.",
+    "level": "B2"
+  },
+  {
+    "english": "In many deltas, the question is not whether land moves, but who notices first.",
+    "level": "B2"
+  },
+  {
+    "english": "The Nile Valley shows how a narrow ribbon of water can concentrate settlement across an otherwise arid landscape.",
+    "level": "C1"
+  },
+  {
+    "english": "In the Amazon basin, distance is often measured by river time, not by straight lines on a road map.",
+    "level": "C1"
+  },
+  {
+    "english": "The Mississippi's levees reveal a long argument between engineering confidence and a river that still wants room.",
+    "level": "C1"
+  },
+  {
+    "english": "Lake Baikal's clear water holds exceptional biodiversity, yet its shores also register the pressures of industry and tourism.",
+    "level": "C1"
+  },
+  {
+    "english": "Where the Ganges and Brahmaputra meet the sea, fresh water, sediment, and tides create a restless delta.",
+    "level": "C1"
+  },
+  {
+    "english": "The Congo's vast flow links rainforest, mineral country, and Atlantic ports without making the region simple.",
+    "level": "C1"
+  },
+  {
+    "english": "A river may look permanent on a school map, but its channel is a record of movement.",
+    "level": "C1"
+  },
+  {
+    "english": "Freshwater geography often turns invisible in cities, where buried streams continue to shape drainage and flood risk.",
+    "level": "C1"
+  },
+  {
+    "english": "The Great Lakes function less like isolated basins than an inland freshwater system with shared consequences.",
+    "level": "C1"
+  },
+  {
+    "english": "In Central Asia, vanished shoreline towns make the Aral Sea a lesson in water politics.",
+    "level": "C1"
+  },
+  {
+    "english": "Glacial lakes can appear young and beautiful while carrying the sudden danger of an outburst flood.",
+    "level": "C1"
+  },
+  {
+    "english": "A river is never just a line through territory; it is a moving archive of rain, soil, labor, treaty, memory, and loss.",
+    "level": "C2"
+  },
+  {
+    "english": "In delta country, where fresh water slows and the sea presses inland, maps become provisional documents, revised by storm surge, silt, and every channel that chooses a new path.",
+    "level": "C2"
+  },
+  {
+    "english": "Lake villages teach a quieter kind of geography, because houses, nets, markets, and prayer places all answer to water levels that rise without ceremony.",
+    "level": "C2"
+  },
+  {
+    "english": "The old river port understands distance differently from the airport city, counting miles by current, sandbar, lock, and bend, rather than by the impatience of straight lines.",
+    "level": "C2"
+  },
+  {
+    "english": "To study freshwater is to notice how civilization depends on things that seem ordinary, a spring above a village, a snowfield beyond sight, a wetland left unpaved.",
+    "level": "C2"
+  },
+  {
+    "english": "People speak many languages.",
+    "level": "A0"
+  },
+  {
+    "english": "Languages cross borders.",
+    "level": "A1"
+  },
+  {
+    "english": "Many families live far from home.",
+    "level": "A1"
+  },
+  {
+    "english": "Arabic is spoken in many countries.",
+    "level": "A1"
+  },
+  {
+    "english": "Spanish travels across the Americas.",
+    "level": "A1"
+  },
+  {
+    "english": "French is heard in West Africa.",
+    "level": "A1"
+  },
+  {
+    "english": "English connects many port cities.",
+    "level": "A1"
+  },
+  {
+    "english": "People carry food names with them.",
+    "level": "A1"
+  },
+  {
+    "english": "Mosques stand in many old cities.",
+    "level": "A1"
+  },
+  {
+    "english": "Church bells mark many town centers.",
+    "level": "A1"
+  },
+  {
+    "english": "Markets mix voices from many places.",
+    "level": "A1"
+  },
+  {
+    "english": "A map can show language areas.",
+    "level": "A1"
+  },
+  {
+    "english": "Some borders divide one community.",
+    "level": "A1"
+  },
+  {
+    "english": "Families send money across oceans.",
+    "level": "A1"
+  },
+  {
+    "english": "New neighbors change a city street.",
+    "level": "A1"
+  },
+  {
+    "english": "Many names remember older homelands.",
+    "level": "A1"
+  },
+  {
+    "english": "The Kurdish language is spoken across several modern borders.",
+    "level": "A2"
+  },
+  {
+    "english": "Swahili links coastal cities from Kenya to northern Mozambique.",
+    "level": "A2"
+  },
+  {
+    "english": "People moved from villages to cities, and accents changed.",
+    "level": "A2"
+  },
+  {
+    "english": "Hindi and Urdu share much speech, but use different scripts.",
+    "level": "A2"
+  },
+  {
+    "english": "Tamil speakers live in India, Sri Lanka, and Singapore.",
+    "level": "A2"
+  },
+  {
+    "english": "The Caribbean holds African, European, and Asian cultural traces.",
+    "level": "A2"
+  },
+  {
+    "english": "Jewish communities have lived across Europe, North Africa, and Asia.",
+    "level": "A2"
+  },
+  {
+    "english": "Sikh temples often stand near railway towns and factory districts.",
+    "level": "A2"
+  },
+  {
+    "english": "Many Chinatown gates mark migration, trade, and family networks.",
+    "level": "A2"
+  },
+  {
+    "english": "The Malay world reaches across islands, coasts, and sea routes.",
+    "level": "A2"
+  },
+  {
+    "english": "Amazigh languages remain tied to mountains, deserts, and towns.",
+    "level": "A2"
+  },
+  {
+    "english": "The Roma have carried music and memory across Europe.",
+    "level": "A2"
+  },
+  {
+    "english": "Polish neighborhoods grew in Chicago after waves of migration.",
+    "level": "A2"
+  },
+  {
+    "english": "Lebanese restaurants in West Africa show old trading ties.",
+    "level": "A2"
+  },
+  {
+    "english": "Religions often follow rivers, roads, armies, and merchants.",
+    "level": "A2"
+  },
+  {
+    "english": "Pilgrimage routes make sacred geography visible on ordinary roads.",
+    "level": "A2"
+  },
+  {
+    "english": "A border may cut through a language like a fence.",
+    "level": "A2"
+  },
+  {
+    "english": "Immigrants often rename shops for cities they left behind.",
+    "level": "A2"
+  },
+  {
+    "english": "Creole languages grew where forced migration met colonial power.",
+    "level": "A2"
+  },
+  {
+    "english": "The Andes contain Quechua words in markets and place names.",
+    "level": "A2"
+  },
+  {
+    "english": "In Canada, French remains strongest in Quebec and nearby communities.",
+    "level": "A2"
+  },
+  {
+    "english": "The African diaspora shaped music from Havana to New Orleans.",
+    "level": "A2"
+  },
+  {
+    "english": "Chinese communities formed around mines, railways, and port labor.",
+    "level": "A2"
+  },
+  {
+    "english": "Maps of religion rarely match the lines of states.",
+    "level": "A2"
+  },
+  {
+    "english": "Some families cross a border daily for work or school.",
+    "level": "A2"
+  },
+  {
+    "english": "A language can survive in songs after daily speech fades.",
+    "level": "A2"
+  },
+  {
+    "english": "Refugee camps sometimes become towns with schools and markets.",
+    "level": "A2"
+  },
+  {
+    "english": "Street signs in two languages can tell a border story.",
+    "level": "A2"
+  },
+  {
+    "english": "The Balkans contain many languages within a small mountain region.",
+    "level": "A2"
+  },
+  {
+    "english": "Persian once served courts from Anatolia to northern India.",
+    "level": "A2"
+  },
+  {
+    "english": "Portuguese links Brazil, Angola, Mozambique, and small island states.",
+    "level": "A2"
+  },
+  {
+    "english": "Many surnames reveal old migrations better than official maps.",
+    "level": "A2"
+  },
+  {
+    "english": "Nomadic herders follow grass, rain, and long customary routes.",
+    "level": "A2"
+  },
+  {
+    "english": "Diaspora newspapers help distant communities keep local debates alive.",
+    "level": "A2"
+  },
+  {
+    "english": "The Armenian diaspora keeps close ties to a homeland many families have never seen.",
+    "level": "B1"
+  },
+  {
+    "english": "On the Swahili Coast, Arabic, Bantu, and Indian Ocean histories meet in everyday speech.",
+    "level": "B1"
+  },
+  {
+    "english": "Migration can make a city bilingual long before the law notices.",
+    "level": "B1"
+  },
+  {
+    "english": "In Brussels, one street can carry French, Dutch, Arabic, and Lingala voices.",
+    "level": "B1"
+  },
+  {
+    "english": "Religious borders are often fuzzy, because families, markets, and marriages cross them.",
+    "level": "B1"
+  },
+  {
+    "english": "A port city usually remembers older arrivals in its food, worship, and slang.",
+    "level": "B1"
+  },
+  {
+    "english": "The Irish diaspora left place names, newspapers, and parades far beyond Ireland.",
+    "level": "B1"
+  },
+  {
+    "english": "In Central Asia, language often follows both old trade routes and Soviet boundaries.",
+    "level": "B1"
+  },
+  {
+    "english": "A census category can hide the mixed geography of a household.",
+    "level": "B1"
+  },
+  {
+    "english": "The Hajj gathers Muslims from many climates into one shared route.",
+    "level": "B1"
+  },
+  {
+    "english": "Some island communities speak languages shaped by sailors, plantations, and survival.",
+    "level": "B1"
+  },
+  {
+    "english": "In borderlands, children may learn one language at home and another at school.",
+    "level": "B1"
+  },
+  {
+    "english": "A prayer house can become the first landmark of a new community.",
+    "level": "B1"
+  },
+  {
+    "english": "When workers move seasonally, culture travels in buses, songs, and phone calls.",
+    "level": "B1"
+  },
+  {
+    "english": "The map of a language is really a map of people meeting.",
+    "level": "B1"
+  },
+  {
+    "english": "Diaspora neighborhoods often begin as practical shelters, then become cultural landmarks for a wider city.",
+    "level": "B2"
+  },
+  {
+    "english": "A language border may look sharp on paper, yet sound gradual from village to village.",
+    "level": "B2"
+  },
+  {
+    "english": "Colonial maps divided many speech communities, leaving families fluent in more than one national story.",
+    "level": "B2"
+  },
+  {
+    "english": "In South Africa, eleven official languages reflect both deep local roots and hard political history.",
+    "level": "B2"
+  },
+  {
+    "english": "Migration turns geography into correspondence, with money, recipes, and advice moving back and forth.",
+    "level": "B2"
+  },
+  {
+    "english": "Sacred sites often draw borders of belonging that do not match any government line.",
+    "level": "B2"
+  },
+  {
+    "english": "When climate pushes people from farms toward cities, dialects and rituals move with them.",
+    "level": "B2"
+  },
+  {
+    "english": "Language families map ancient movement imperfectly, because conquest, trade, prestige, and schooling can replace a tongue without replacing a people.",
+    "level": "C1"
+  },
+  {
+    "english": "The spread of Buddhism across Asia followed monks, merchants, courts, and mountain passes, not a single road.",
+    "level": "C1"
+  },
+  {
+    "english": "Across the Indian Ocean, Gujarati, Arabic, Swahili, and Malay histories met in ports before modern borders hardened.",
+    "level": "C1"
+  },
+  {
+    "english": "A diaspora is not merely a scattered population, but a geography of memory, remittance, argument, and return.",
+    "level": "C1"
+  },
+  {
+    "english": "The Americas contain languages born from violence and resilience, where Indigenous, African, and European worlds collided.",
+    "level": "C1"
+  },
+  {
+    "english": "In the Caucasus, steep valleys helped preserve extraordinary linguistic variety within a compact region.",
+    "level": "C1"
+  },
+  {
+    "english": "Pilgrimage compresses distance into ritual, making a route feel as important as the destination.",
+    "level": "C1"
+  },
+  {
+    "english": "Border cities often translate the nation to itself, because their daily life disproves tidy categories.",
+    "level": "C1"
+  },
+  {
+    "english": "A mother tongue may survive displacement through lullabies, jokes, recipes, and the stubborn naming of children.",
+    "level": "C1"
+  },
+  {
+    "english": "Religious geography is layered, with shrines, cemeteries, processions, and household altars marking different scales of belonging.",
+    "level": "C1"
+  },
+  {
+    "english": "When a state promotes one language, minority tongues often retreat into kitchens, markets, songs, and private tenderness.",
+    "level": "C1"
+  },
+  {
+    "english": "The map of the African diaspora cannot be read only through departure and loss, because its cities, ports, churches, drums, kitchens, and classrooms also record invention under constraint.",
+    "level": "C2"
+  },
+  {
+    "english": "A border checkpoint may seem to divide two nations cleanly, yet the surrounding villages often share ancestors, markets, grazing paths, saints, insults, and weather.",
+    "level": "C2"
+  },
+  {
+    "english": "In multilingual cities, geography is audible before it is visible, in the bus queue, the clinic corridor, the schoolyard, and the careful code switching of tired parents.",
+    "level": "C2"
+  },
+  {
+    "english": "Some sacred landscapes outlast empire because they are renewed by feet, candles, offerings, and stories, not by the official maps that briefly claim authority over them.",
+    "level": "C2"
+  },
+  {
+    "english": "Human geography is most honest when it admits that home can be a valley, a language, a borrowed apartment, a graveyard overseas, and a phone call at midnight.",
+    "level": "C2"
+  },
+  {
+    "english": "The hill is high.",
+    "level": "A0"
+  },
+  {
+    "english": "Mountains hold snow in summer.",
+    "level": "A1"
+  },
+  {
+    "english": "Desert nights can feel cold.",
+    "level": "A1"
+  },
+  {
+    "english": "A valley lies between hills.",
+    "level": "A1"
+  },
+  {
+    "english": "Sand covers much of the dune.",
+    "level": "A1"
+  },
+  {
+    "english": "The path climbs above the village.",
+    "level": "A1"
+  },
+  {
+    "english": "Camels cross dry ground slowly.",
+    "level": "A1"
+  },
+  {
+    "english": "The ridge catches the morning light.",
+    "level": "A1"
+  },
+  {
+    "english": "A plateau is high and flat.",
+    "level": "A1"
+  },
+  {
+    "english": "The canyon walls look red.",
+    "level": "A1"
+  },
+  {
+    "english": "Wind shapes the desert stones.",
+    "level": "A1"
+  },
+  {
+    "english": "People farm on mountain terraces.",
+    "level": "A1"
+  },
+  {
+    "english": "Goats climb rocky slopes easily.",
+    "level": "A1"
+  },
+  {
+    "english": "The oasis has date palms.",
+    "level": "A1"
+  },
+  {
+    "english": "Snow melts into mountain streams.",
+    "level": "A1"
+  },
+  {
+    "english": "The plain stretches beyond the road.",
+    "level": "A1"
+  },
+  {
+    "english": "The Himalayas block cold winds, and villages sit in steep valleys.",
+    "level": "A2"
+  },
+  {
+    "english": "In the Andes, potatoes grow well at high elevations.",
+    "level": "A2"
+  },
+  {
+    "english": "The Sahara has dunes, but much of it is stone.",
+    "level": "A2"
+  },
+  {
+    "english": "Desert towns often gather around wells and shaded markets.",
+    "level": "A2"
+  },
+  {
+    "english": "Mountain roads close in winter, so communities plan ahead.",
+    "level": "A2"
+  },
+  {
+    "english": "The Gobi is cold in winter and hot in summer.",
+    "level": "A2"
+  },
+  {
+    "english": "The Ethiopian Highlands feed rivers that run toward lowlands.",
+    "level": "A2"
+  },
+  {
+    "english": "In Nepal, terraced fields climb almost to the clouds.",
+    "level": "A2"
+  },
+  {
+    "english": "The Kalahari supports grasses, shrubs, and skilled herding cultures.",
+    "level": "A2"
+  },
+  {
+    "english": "The Great Rift Valley holds lakes, escarpments, and fertile farms.",
+    "level": "A2"
+  },
+  {
+    "english": "Some plateaus feel empty, yet they hold old trade routes.",
+    "level": "A2"
+  },
+  {
+    "english": "Volcanic soil can be rich, so farmers settle near slopes.",
+    "level": "A2"
+  },
+  {
+    "english": "The Scottish Highlands have thin soils and wide, open moors.",
+    "level": "A2"
+  },
+  {
+    "english": "Mongolia's steppe is not a desert, but it feels vast.",
+    "level": "A2"
+  },
+  {
+    "english": "The Zagros Mountains guide weather across western Iran.",
+    "level": "A2"
+  },
+  {
+    "english": "In the Sahel, dry land meets seasonal green growth.",
+    "level": "A2"
+  },
+  {
+    "english": "The Patagonian steppe has fierce winds and long horizons.",
+    "level": "A2"
+  },
+  {
+    "english": "Canyons reveal layers of rock, like pages in stone.",
+    "level": "A2"
+  },
+  {
+    "english": "The Karakoram has sharp peaks and difficult passes.",
+    "level": "A2"
+  },
+  {
+    "english": "Nomads in dry regions move with animals and rain.",
+    "level": "A2"
+  },
+  {
+    "english": "The Deccan Plateau covers much of southern India.",
+    "level": "A2"
+  },
+  {
+    "english": "The Outback includes deserts, grasslands, and ancient rock formations.",
+    "level": "A2"
+  },
+  {
+    "english": "Mountain passes once carried salt, wool, and stories.",
+    "level": "A2"
+  },
+  {
+    "english": "In Morocco, cedar forests grow above dry valleys.",
+    "level": "A2"
+  },
+  {
+    "english": "The Namib Desert meets the Atlantic in a foggy coast.",
+    "level": "A2"
+  },
+  {
+    "english": "High mountains create short growing seasons for nearby farmers.",
+    "level": "A2"
+  },
+  {
+    "english": "The Taurus Mountains rise behind Turkey's Mediterranean coast.",
+    "level": "A2"
+  },
+  {
+    "english": "Desert pavement forms when wind removes finer sand and dust.",
+    "level": "A2"
+  },
+  {
+    "english": "The Pamirs are sometimes called the roof of Central Asia.",
+    "level": "A2"
+  },
+  {
+    "english": "A floodplain can be flat, fertile, and dangerous after rain.",
+    "level": "A2"
+  },
+  {
+    "english": "Badlands look bare, but their shapes record ancient environments.",
+    "level": "A2"
+  },
+  {
+    "english": "The Australian deserts hold rock art, tracks, and living languages.",
+    "level": "A2"
+  },
+  {
+    "english": "Mountain air feels thin because pressure drops with height.",
+    "level": "A2"
+  },
+  {
+    "english": "The Himalayas are not just peaks; they are watersheds for crowded plains.",
+    "level": "B1"
+  },
+  {
+    "english": "Across the Sahara, old caravan towns still mark the logic of water.",
+    "level": "B1"
+  },
+  {
+    "english": "In the Andes, altitude changes what people grow, eat, and build with.",
+    "level": "B1"
+  },
+  {
+    "english": "A desert can look empty until you learn where life waits.",
+    "level": "B1"
+  },
+  {
+    "english": "Mountain terraces turn difficult slopes into fields that can feed families.",
+    "level": "B1"
+  },
+  {
+    "english": "The Tibetan Plateau shapes Asian weather far beyond its own borders.",
+    "level": "B1"
+  },
+  {
+    "english": "In dry country, a reliable spring can become the center of memory.",
+    "level": "B1"
+  },
+  {
+    "english": "The Namib's fog gives some plants and insects their daily water.",
+    "level": "B1"
+  },
+  {
+    "english": "Mountain villages often face the sun, because warmth is practical architecture.",
+    "level": "B1"
+  },
+  {
+    "english": "The Rockies and Sierra Nevada store snow that cities use months later.",
+    "level": "B1"
+  },
+  {
+    "english": "A pass through high ground can matter more than a straight border.",
+    "level": "B1"
+  },
+  {
+    "english": "The Sahel is a shifting belt, not a single line on a map.",
+    "level": "B1"
+  },
+  {
+    "english": "In volcanic landscapes, danger and fertility often share the same ground.",
+    "level": "B1"
+  },
+  {
+    "english": "The Himalayas make distance feel vertical, not only measured in miles.",
+    "level": "B1"
+  },
+  {
+    "english": "Desert roads teach a strict geography of fuel, water, and shade.",
+    "level": "B1"
+  },
+  {
+    "english": "The Sahara's edges remind us that deserts advance and retreat with climate, grazing, and policy.",
+    "level": "B2"
+  },
+  {
+    "english": "In mountain regions, culture often follows elevation as closely as it follows language.",
+    "level": "B2"
+  },
+  {
+    "english": "The Andes hold cities where thin air, steep streets, and Indigenous memory coexist.",
+    "level": "B2"
+  },
+  {
+    "english": "A landscape may look permanent, yet glaciers, wind, and erosion keep revising it.",
+    "level": "B2"
+  },
+  {
+    "english": "Dry valleys can preserve ruins clearly, but they can also erase a harvest quickly.",
+    "level": "B2"
+  },
+  {
+    "english": "The Himalayas bind geology to politics, because rivers, passes, and borders meet there.",
+    "level": "B2"
+  },
+  {
+    "english": "On the Tibetan Plateau, the scale of the sky changes how distance feels.",
+    "level": "B2"
+  },
+  {
+    "english": "The Himalayas are often described by their summits, but their greater influence flows downward through rivers, monsoon patterns, and settlement.",
+    "level": "C1"
+  },
+  {
+    "english": "Deserts are not failed landscapes; they are precise systems where shade, salt, wind, and patience decide what endures.",
+    "level": "C1"
+  },
+  {
+    "english": "In the Andes, a village may sit above the clouds while its market depends on roads cut into unstable slopes.",
+    "level": "C1"
+  },
+  {
+    "english": "The Sahara links North and West Africa not as an emptiness, but as a demanding corridor of memory and exchange.",
+    "level": "C1"
+  },
+  {
+    "english": "Mountain passes have often compressed history into narrow places, where armies, traders, pilgrims, and herders left overlapping tracks.",
+    "level": "C1"
+  },
+  {
+    "english": "A plateau can make the horizon feel calm while hiding deep negotiations over water, pasture, and access.",
+    "level": "C1"
+  },
+  {
+    "english": "The Karakoram and Hindu Kush remind map readers that rugged terrain can connect communities as much as it separates them.",
+    "level": "C1"
+  },
+  {
+    "english": "Desert architecture often begins with climate, turning thick walls, courtyards, and narrow streets into practical forms of knowledge.",
+    "level": "C1"
+  },
+  {
+    "english": "Landforms shape culture unevenly; a river valley may invite settlement, while a nearby ridge preserves isolation.",
+    "level": "C1"
+  },
+  {
+    "english": "In Patagonia, wind is not background weather but a daily force that bends trees, fences, and travel plans.",
+    "level": "C1"
+  },
+  {
+    "english": "The Ethiopian Highlands show how elevation can concentrate rain, farming, faith, and political power in one rugged region.",
+    "level": "C1"
+  },
+  {
+    "english": "The Sahara is often imagined as a blank expanse, yet its wells, salt routes, mountain massifs, and seasonal pastures reveal a geography written in intervals of survival.",
+    "level": "C2"
+  },
+  {
+    "english": "Where the Andes lift cities into thin air, ordinary life becomes a negotiation with slope, breath, frost, and distance, and culture learns to measure height in habits as well as meters.",
+    "level": "C2"
+  },
+  {
+    "english": "The Himalayas gather human ambition around famous summits, but their quieter power lies in the rivers they release, the passes they ration, and the weather they bend toward crowded plains.",
+    "level": "C2"
+  },
+  {
+    "english": "A desert does not need abundance to be complex; it can arrange life around brief rains, hidden aquifers, nocturnal movement, and the exact knowledge of when to leave.",
+    "level": "C2"
+  },
+  {
+    "english": "Mountains make borders tempting to draw and difficult to live by, because valleys, pastures, shrines, markets, and family routes often cross the clean lines that maps prefer.",
+    "level": "C2"
+  }
+]

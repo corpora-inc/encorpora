@@ -1,0 +1,71 @@
+{
+  "issue_date": "2026-05-20",
+  "audit_date": "2026-05-22",
+  "flagged_segments": [
+    {
+      "segment_id_or_text_snippet": "Zhipu AI in Beijing is shipping the GLM-5 family",
+      "current_text": "Zhipu AI in Beijing is shipping the GLM-5 family — GLM-5 in February and an update called GLM-5.1 in April.",
+      "issue": "Present continuous 'is shipping' for events that already shipped (GLM-5: Feb 11, 2026; GLM-5.1: Apr 7, 2026). Both are PAST relative to May 20.",
+      "suggested_fix": "Zhipu AI in Beijing shipped the GLM-5 family earlier this year — GLM-5 in February and an update called GLM-5.1 in April."
+    },
+    {
+      "segment_id_or_text_snippet": "Google I/O was Tuesday and Wednesday",
+      "current_text": "Google I/O was Tuesday and Wednesday.",
+      "issue": "Google I/O was May 19-20 (Tuesday-Wednesday). May 20 IS Wednesday — the issue date. Saying 'was Tuesday and Wednesday' on Wednesday itself is awkward; Wednesday is today/still happening. Minor — defensible as past-tense recap if I/O wraps before recording, but worth flagging.",
+      "suggested_fix": "Google I/O ran Tuesday and Wednesday — today is the closing day."
+    },
+    {
+      "segment_id_or_text_snippet": "Gemini 3.5 Flash shipped on Tuesday at Google I/O",
+      "current_text": "Gemini 3.5 Flash shipped on Tuesday at Google I/O, so it is not on the boards yet.",
+      "issue": "Correct tense — Tuesday May 19 is past relative to May 20. No fix needed.",
+      "suggested_fix": "(no change)"
+    },
+    {
+      "segment_id_or_text_snippet": "Cardinal Pietro Parolin will give the concluding remarks",
+      "current_text": "Cardinal Pietro Parolin will give the concluding remarks.",
+      "issue": "Mixed tense within the presenters block. Previous segment says Olah 'is on the stage at the Vatican Synod Hall' (present), but Parolin 'will give' (future). The encyclical publication is May 25 (future), so the presentation event is future — Olah segment should be future too, OR Parolin segment present. Inconsistent tense for the same future event.",
+      "suggested_fix": "Either change Olah line to 'Chris Olah... will be on the stage at the Vatican Synod Hall' OR change this to 'Cardinal Pietro Parolin gives the concluding remarks.' Recommend future tense for both since the event is May 25."
+    },
+    {
+      "segment_id_or_text_snippet": "Chris Olah, co-founder of Anthropic, is on the stage at the Vatican Synod Hall",
+      "current_text": "Chris Olah, co-founder of Anthropic, is on the stage at the Vatican Synod Hall.",
+      "issue": "Present tense 'is on the stage' for the May 25 publication event, which is FUTURE relative to May 20. The Vatican Synod Hall presentation has not happened yet.",
+      "suggested_fix": "Chris Olah, co-founder of Anthropic, will be on the stage at the Vatican Synod Hall."
+    },
+    {
+      "segment_id_or_text_snippet": "Cardinal Víctor Manuel Fernández and Cardinal Michael Czerny are presenting",
+      "current_text": "Cardinal Víctor Manuel Fernández and Cardinal Michael Czerny are presenting.",
+      "issue": "Present continuous for May 25 future event. Should be future tense.",
+      "suggested_fix": "Cardinal Víctor Manuel Fernández and Cardinal Michael Czerny will present."
+    },
+    {
+      "segment_id_or_text_snippet": "two theology professors ... are on the panel",
+      "current_text": "And two theology professors — Anna Rowlands from Durham University in the UK, and Léocadie Lushombo from the Jesuit School of Theology at Santa Clara University — are on the panel.",
+      "issue": "Present tense for May 25 future event.",
+      "suggested_fix": "And two theology professors — Anna Rowlands from Durham University in the UK, and Léocadie Lushombo from the Jesuit School of Theology at Santa Clara University — will be on the panel."
+    },
+    {
+      "segment_id_or_text_snippet": "Ron, the Pope wrote about us this week",
+      "current_text": "Ron, the Pope wrote about us this week.",
+      "issue": "Signing was May 15 (Friday of LAST week, May 11-17). 'This week' for May 20 = May 18-24. The signing was last week, not this week. Publication May 25 is next week.",
+      "suggested_fix": "Ron, the Pope finished writing about us last week."
+    },
+    {
+      "segment_id_or_text_snippet": "Moonshot's Kimi K2.6, released back in late April, is still in the top tier",
+      "current_text": "Moonshot's Kimi K2.6, released back in late April, is still in the top tier on OpenRouter for token volume — it topped the chart in its first week with 1.88 trillion tokens served.",
+      "issue": "Tense is OK ('is still' + past 'topped'). No fix needed.",
+      "suggested_fix": "(no change)"
+    },
+    {
+      "segment_id_or_text_snippet": "That is what is happening this year",
+      "current_text": "That is what is happening this year.",
+      "issue": "OK — broad 'this year' framing is fine for ongoing 2026 trend.",
+      "suggested_fix": "(no change)"
+    }
+  ],
+  "summary_counts": {
+    "real_bugs": 5,
+    "verified_ok": 3,
+    "minor_optional": 2
+  }
+}

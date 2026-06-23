@@ -45,7 +45,7 @@ export function RateAdjuster() {
                 ))}
             </div>
             <div className="flex items-center gap-4" dir={dir}>
-                <span className="text-xs text-gray-500 min-w-[45px]">0.1</span>
+                <span className="text-xs text-muted-foreground min-w-[45px]">0.1</span>
                 <Slider
                     value={sliderValue}
                     min={0.1}
@@ -55,9 +55,9 @@ export function RateAdjuster() {
                     onValueChange={([v]) => setRate(Number(v.toFixed(3)))}
                     dir={dir}
                 />
-                <span className="text-xs text-gray-500 min-w-[45px] text-right">1.5</span>
+                <span className="text-xs text-muted-foreground min-w-[45px] text-right">1.5</span>
             </div>
-            <div className="mt-1 text-xs text-gray-400 text-center" dir={dir}>
+            <div className="mt-1 text-xs text-muted-foreground text-center" dir={dir}>
                 {rate === 1.0
                     ? t("settings.normal")
                     : rate < 1.0

@@ -295,6 +295,30 @@
       "type": "string",
       "oneOf": [
         {
+          "description": "Enables the bind_engine command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-bind-engine",
+          "markdownDescription": "Enables the bind_engine command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the bind_engine command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-bind-engine",
+          "markdownDescription": "Denies the bind_engine command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the get_tts_engine_status command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-tts-engine-status",
+          "markdownDescription": "Enables the get_tts_engine_status command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get_tts_engine_status command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-tts-engine-status",
+          "markdownDescription": "Denies the get_tts_engine_status command without any pre-configured scope."
+        },
+        {
           "description": "Enables the install_tts_data_if_supported command without any pre-configured scope.",
           "type": "string",
           "const": "allow-install-tts-data-if-supported",
@@ -307,6 +331,18 @@
           "markdownDescription": "Denies the install_tts_data_if_supported command without any pre-configured scope."
         },
         {
+          "description": "Enables the install_voice_data_for_language command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-install-voice-data-for-language",
+          "markdownDescription": "Enables the install_voice_data_for_language command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the install_voice_data_for_language command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-install-voice-data-for-language",
+          "markdownDescription": "Denies the install_voice_data_for_language command without any pre-configured scope."
+        },
+        {
           "description": "Enables the list_voices command without any pre-configured scope.",
           "type": "string",
           "const": "allow-list-voices",
@@ -317,6 +353,30 @@
           "type": "string",
           "const": "deny-list-voices",
           "markdownDescription": "Denies the list_voices command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the open_app_details command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-open-app-details",
+          "markdownDescription": "Enables the open_app_details command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the open_app_details command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-open-app-details",
+          "markdownDescription": "Denies the open_app_details command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the open_tts_engine_store command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-open-tts-engine-store",
+          "markdownDescription": "Enables the open_tts_engine_store command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the open_tts_engine_store command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-open-tts-engine-store",
+          "markdownDescription": "Denies the open_tts_engine_store command without any pre-configured scope."
         },
         {
           "description": "Enables the open_tts_settings command without any pre-configured scope.",
@@ -343,6 +403,18 @@
           "markdownDescription": "Denies the ping command without any pre-configured scope."
         },
         {
+          "description": "Enables the probe_tts_health command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-probe-tts-health",
+          "markdownDescription": "Enables the probe_tts_health command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the probe_tts_health command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-probe-tts-health",
+          "markdownDescription": "Denies the probe_tts_health command without any pre-configured scope."
+        },
+        {
           "description": "Enables the speak command without any pre-configured scope.",
           "type": "string",
           "const": "allow-speak",
@@ -353,6 +425,18 @@
           "type": "string",
           "const": "deny-speak",
           "markdownDescription": "Denies the speak command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the speak_concurrent command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-speak-concurrent",
+          "markdownDescription": "Enables the speak_concurrent command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the speak_concurrent command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-speak-concurrent",
+          "markdownDescription": "Denies the speak_concurrent command without any pre-configured scope."
         },
         {
           "description": "Enables the stop command without any pre-configured scope.",
@@ -367,10 +451,34 @@
           "markdownDescription": "Denies the stop command without any pre-configured scope."
         },
         {
-          "description": "Default permissions for the TTS plugin\n#### This default permission set includes:\n\n- `allow-speak`\n- `allow-stop`\n- `allow-open-tts-settings`\n- `allow-install-tts-data-if-supported`\n- `allow-list-voices`",
+          "description": "Enables the synthesize_to_buffer command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-synthesize-to-buffer",
+          "markdownDescription": "Enables the synthesize_to_buffer command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the synthesize_to_buffer command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-synthesize-to-buffer",
+          "markdownDescription": "Denies the synthesize_to_buffer command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the try_auto_recover command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-try-auto-recover",
+          "markdownDescription": "Enables the try_auto_recover command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the try_auto_recover command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-try-auto-recover",
+          "markdownDescription": "Denies the try_auto_recover command without any pre-configured scope."
+        },
+        {
+          "description": "Default permissions for the TTS plugin\n#### This default permission set includes:\n\n- `allow-speak`\n- `allow-speak-concurrent`\n- `allow-synthesize-to-buffer`\n- `allow-stop`\n- `allow-open-tts-settings`\n- `allow-install-tts-data-if-supported`\n- `allow-list-voices`\n- `allow-get-tts-engine-status`\n- `allow-open-tts-engine-store`\n- `allow-probe-tts-health`\n- `allow-try-auto-recover`\n- `allow-bind-engine`\n- `allow-open-app-details`\n- `allow-install-voice-data-for-language`",
           "type": "string",
           "const": "default",
-          "markdownDescription": "Default permissions for the TTS plugin\n#### This default permission set includes:\n\n- `allow-speak`\n- `allow-stop`\n- `allow-open-tts-settings`\n- `allow-install-tts-data-if-supported`\n- `allow-list-voices`"
+          "markdownDescription": "Default permissions for the TTS plugin\n#### This default permission set includes:\n\n- `allow-speak`\n- `allow-speak-concurrent`\n- `allow-synthesize-to-buffer`\n- `allow-stop`\n- `allow-open-tts-settings`\n- `allow-install-tts-data-if-supported`\n- `allow-list-voices`\n- `allow-get-tts-engine-status`\n- `allow-open-tts-engine-store`\n- `allow-probe-tts-health`\n- `allow-try-auto-recover`\n- `allow-bind-engine`\n- `allow-open-app-details`\n- `allow-install-voice-data-for-language`"
         }
       ]
     }

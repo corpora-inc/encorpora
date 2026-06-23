@@ -31,9 +31,9 @@ build();
 // Watch for changes
 const watchPaths = [
   path.join(SCRIPT_DIR, 'templates', '**', '*.html'),
-  path.join(SCRIPT_DIR, 'data', '**', '*.json'),
+  path.join(SCRIPT_DIR, '..', 'data', '**', '*.json'),
   path.join(REPO_ROOT, 'corpan', 'corpan-app', 'src-tauri', 'icons', '512x512.png'),
-  path.join(REPO_ROOT, 'corpan', 'games', '**', '*-avatar.*')
+  path.join(REPO_ROOT, 'corpan', 'packs', '**', '*-avatar.*')
 ];
 
 console.log('[pages] Setting up watchers for:');
@@ -71,7 +71,7 @@ watcher.on('ready', () => {
   console.log('  - templates/**/*.html');
   console.log('  - data/**/*.json');
   console.log('  - corpan/corpan-app/src-tauri/icons/512x512.png');
-  console.log('  - corpan/games/**/**/*-avatar.*');
+  console.log('  - corpan/packs/**/**/*-avatar.*');
   console.log('[pages] Try editing a file to trigger rebuild...');
 });
 

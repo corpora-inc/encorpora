@@ -1,0 +1,303 @@
+import { spawn } from "node:child_process"
+import { createServer } from "node:http"
+import { readFile, readdir, writeFile, stat } from "node:fs/promises"
+import { watch } from "node:fs"
+import path from "node:path"
+import { fileURLToPath } from "node:url"
+import os from "node:os"
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const packRoot = path.resolve(__dirname, "..")
+const packsRoot = path.resolve(packRoot, "..")
+const manifestPath = path.join(packRoot, "manifest.json")
+const distDir = path.join(packRoot, "dist")
+const booksDir = path.resolve(packRoot, "../../../books/fascinating-curiosities")
+
+const isWin = process.platform === "win32"
+const npmCmd = isWin ? "npm.cmd" : "npm"
+
+// --- Manifest update on dist changes ---
+
+let updateTimer = null
+const scheduleManifestUpdate = () => {
+  if (updateTimer) clearTimeout(updateTimer)
+  updateTimer = setTimeout(async () => {
+    try {
+      const raw = await readFile(manifestPath, "utf8")
+      const manifest = JSON.parse(raw)
+      manifest.devRevision = new Date().toISOString()
+      await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`)
+    } catch (err) {
+      console.error("[stargate-reader] Failed to update dev manifest:", err)
+    }
+  }, 150)
+}
+
+const watchDist = () => {
+  try {
+    watch(distDir, { recursive: true }, (_event, filename) => {
+      if (!filename) return
+      if (filename.endsWith(".js") || filename.endsWith(".css")) {
+        scheduleManifestUpdate()
+      }
+    })
+  } catch (err) {
+    console.warn("[stargate-reader] Dist watcher unavailable:", err)
+  }
+}
+
+// --- Book data scanning ---
+
+async function scanBooks() {
+  const map = new Map()
+  try {
+    const entries = await readdir(booksDir)
+    for (const dirName of entries) {
+      const manifestFile = path.join(booksDir, dirName, "pack", "manifest.json")
+      try {
+        const raw = await readFile(manifestFile, "utf8")
+        const manifest = JSON.parse(raw)
+        if (manifest.id) map.set(manifest.id, dirName)
+      } catch {
+        // Not a book or missing manifest
+      }
+    }
+  } catch {
+    console.warn("[stargate-reader] Books directory not found:", booksDir)
+  }
+  return map
+}
+
+async function detectLanguages(dirName) {
+  const packDir = path.join(booksDir, dirName, "pack")
+  const languages = []
+  try {
+    for (const file of await readdir(packDir)) {
+      const match = file.match(/^audio_manifest_(\w+)\.json$/)
+      if (match) languages.push(match[1])
+    }
+  } catch { /* ignore */ }
+  return languages
+}
+
+// --- Content type map ---
+
+const contentTypes = {
+  ".json": "application/json",
+  ".js": "application/javascript",
+  ".mjs": "application/javascript",
+  ".css": "text/css",
+  ".html": "text/html",
+  ".htm": "text/html",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".gif": "image/gif",
+  ".svg": "image/svg+xml",
+  ".webp": "image/webp",
+  ".mp3": "audio/mpeg",
+  ".wav": "audio/wav",
+  ".ogg": "audio/ogg",
+  ".m4a": "audio/mp4",
+  ".aac": "audio/aac",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2",
+  ".ttf": "font/ttf",
+}
+
+// --- Unified dev server on port 8989 ---
+
+async function startUnifiedServer() {
+  const bookMap = await scanBooks()
+  console.log(`[dev-server] Found ${bookMap.size} books: ${[...bookMap.keys()].join(", ")}`)
+
+  const server = createServer(async (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS")
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type")
+
+    if (req.method === "OPTIONS") {
+      res.writeHead(204)
+      res.end()
+      return
+    }
+
+    const url = (req.url || "/").split("?")[0]
+
+    // --- Book data routes (under /stargate-reader/data/) ---
+
+    // Catalog
+    if (url === "/stargate-reader/data/catalog.json") {
+      const catalog = []
+      for (const [id, dirName] of bookMap) {
+        const manifestFile = path.join(booksDir, dirName, "pack", "manifest.json")
+        try {
+          const raw = await readFile(manifestFile, "utf8")
+          const manifest = JSON.parse(raw)
+          const languages = await detectLanguages(dirName)
+          catalog.push({
+            id,
+            name: manifest.name || dirName,
+            volume: manifest.metadata?.volume ?? 0,
+            series: manifest.metadata?.series || "",
+            hasAudio: languages.length > 0,
+            availableLanguages: languages,
+          })
+        } catch {
+          catalog.push({ id, name: dirName, volume: 0, series: "", hasAudio: false, availableLanguages: [] })
+        }
+      }
+      res.writeHead(200, { "Content-Type": "application/json" })
+      res.end(JSON.stringify(catalog))
+      return
+    }
+
+    // Book data: /stargate-reader/data/books/{bookId}/*
+    const bookMatch = url.match(/^\/stargate-reader\/data\/books\/([^/]+)\/(.+)$/)
+    if (bookMatch) {
+      const [, bookId, filePath] = bookMatch
+      const dirName = bookMap.get(bookId)
+      if (!dirName) {
+        res.writeHead(404)
+        res.end(`Book not found: ${bookId}`)
+        return
+      }
+
+      const fullPath = path.join(booksDir, dirName, "pack", filePath)
+      const resolved = path.resolve(fullPath)
+      const packDir = path.resolve(path.join(booksDir, dirName, "pack"))
+
+      if (!resolved.startsWith(packDir)) {
+        res.writeHead(403)
+        res.end("Forbidden")
+        return
+      }
+
+      try {
+        const fileStat = await stat(resolved)
+        if (!fileStat.isFile()) {
+          res.writeHead(404)
+          res.end("Not found")
+          return
+        }
+
+        const data = await readFile(resolved)
+        const ext = path.extname(resolved).toLowerCase()
+        res.writeHead(200, {
+          "Content-Type": contentTypes[ext] || "application/octet-stream",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+        })
+        res.end(data)
+      } catch {
+        res.writeHead(404)
+        res.end("Not found")
+      }
+      return
+    }
+
+    // --- Static pack files (serve from packsRoot, replaces Python http.server) ---
+
+    // Decode URL-encoded characters and resolve to filesystem
+    const decodedUrl = decodeURIComponent(url)
+    const filePath = path.join(packsRoot, decodedUrl)
+    const resolved = path.resolve(filePath)
+
+    // Security: prevent directory traversal
+    if (!resolved.startsWith(path.resolve(packsRoot))) {
+      res.writeHead(403)
+      res.end("Forbidden")
+      return
+    }
+
+    try {
+      const fileStat = await stat(resolved)
+
+      // Serve index.html for directories
+      if (fileStat.isDirectory()) {
+        const indexPath = path.join(resolved, "index.html")
+        try {
+          const data = await readFile(indexPath)
+          res.writeHead(200, { "Content-Type": "text/html" })
+          res.end(data)
+        } catch {
+          res.writeHead(404)
+          res.end("Not found")
+        }
+        return
+      }
+
+      if (!fileStat.isFile()) {
+        res.writeHead(404)
+        res.end("Not found")
+        return
+      }
+
+      const data = await readFile(resolved)
+      const ext = path.extname(resolved).toLowerCase()
+      res.writeHead(200, {
+        "Content-Type": contentTypes[ext] || "application/octet-stream",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+      })
+      res.end(data)
+    } catch {
+      res.writeHead(404)
+      res.end("Not found")
+    }
+  })
+
+  server.listen(8989, "0.0.0.0", () => {
+    let lanIp = ""
+    try {
+      const nets = os.networkInterfaces()
+      for (const ifaces of Object.values(nets)) {
+        for (const iface of ifaces || []) {
+          if (iface.family === "IPv4" && !iface.internal) {
+            lanIp = iface.address
+            break
+          }
+        }
+        if (lanIp) break
+      }
+    } catch { /* ignore */ }
+    console.log("[dev-server] Unified dev server on http://localhost:8989")
+    if (lanIp) console.log(`[dev-server]   LAN: http://${lanIp}:8989`)
+    console.log("[dev-server]   Pack files from:", packsRoot)
+    console.log("[dev-server]   Book data from:", booksDir)
+  })
+
+  return server
+}
+
+// --- Spawn processes ---
+
+const run = (cmd, args, cwd, name) => {
+  const child = spawn(cmd, args, { cwd, stdio: "inherit" })
+  child.on("exit", (code) => {
+    if (code && code !== 0) {
+      console.error(`[stargate-reader] ${name} exited with ${code}`)
+    }
+    process.exit(code ?? 0)
+  })
+  return child
+}
+
+const buildWatcher = run(
+  npmCmd,
+  ["run", "build", "--", "--watch"],
+  packRoot,
+  "build:watch"
+)
+
+const devServer = await startUnifiedServer()
+
+watchDist()
+scheduleManifestUpdate()
+
+const shutdown = () => {
+  buildWatcher.kill("SIGINT")
+  devServer.close()
+  process.exit(0)
+}
+
+process.on("SIGINT", shutdown)
+process.on("SIGTERM", shutdown)

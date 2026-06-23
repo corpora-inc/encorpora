@@ -10,9 +10,9 @@ encorpora/
 │   ├── corpan-app/      # Main application
 │   │   ├── src/         # React frontend
 │   │   └── src-tauri/   # Rust backend
-│   └── games/           # Pluggable language learning games
-│       ├── sdk/         # Game development SDK
-│       └── hover-runner/ # Reference game
+│   └── packs/           # Pluggable language learning packs
+│       ├── sdk/         # Pack development SDK
+│       └── hover-runner/ # Reference pack
 │
 ├── dja/                 # Django content management system
 │   ├── cor/             # Core models (Entry, Translation, Pack)
@@ -28,7 +28,7 @@ encorpora/
 │
 └── web/scripts/            # Dev tooling for Pages site
     ├── dev-server.js   # Development proxy server
-    └── watch-games.js  # Game build watcher
+    └── watch-packs.js  # Pack build watcher
 ```
 
 ## Projects
@@ -138,16 +138,16 @@ node web/pages/watch.js
 
 See `web/pages/DEVELOPMENT.md` for detailed Pages development guide.
 
-### 5. Games (`corpan/games/`)
+### 5. Games (`corpan/packs/`)
 
-Standalone language learning games that integrate with the Corpán app.
+Standalone language learning packs that integrate with the Corpán app.
 
-**SDK:** `corpan/games/sdk/`
-**Reference Game:** `corpan/games/hover-runner/`
+**SDK:** `corpan/packs/sdk/`
+**Reference Game:** `corpan/packs/hover-runner/`
 
 **Development:**
 ```bash
-cd corpan/games/hover-runner
+cd corpan/packs/hover-runner
 
 # Vite dev server
 npm run dev  # Visit http://localhost:5173
@@ -156,7 +156,7 @@ npm run dev  # Visit http://localhost:5173
 npm run dev:watch
 ```
 
-See `corpan/games/sdk/README.md` for game development guide.
+See `corpan/packs/sdk/README.md` for pack development guide.
 
 ## Common Development Workflows
 
@@ -192,15 +192,15 @@ npm run dev
 ### Creating a New Game
 
 ```bash
-# 1. Copy SDK to new game directory
-cp -r corpan/games/sdk corpan/games/my-game
+# 1. Copy SDK to new pack directory
+cp -r corpan/packs/sdk corpan/packs/my-pack
 
-# 2. Implement game logic
-cd corpan/games/my-game
+# 2. Implement pack logic
+cd corpan/packs/my-pack
 # Edit src/ files
 
-# 3. Add to web/pages/data/games.json
-# 4. Update web/scripts/watch-games.js
+# 3. Add to web/pages/data/packs.json
+# 4. Update web/scripts/watch-packs.js
 ```
 
 ## Build & Deployment
@@ -215,14 +215,14 @@ npm run build
 This builds:
 1. Next.js site → `web/io/out/`
 2. Corpán pages → `web/io/out/corpan/`
-3. Games → `web/io/out/corpan/games/`
+3. Games → `web/io/out/corpan/packs/`
 
 ### Deploy to GitHub Pages
 
 GitHub Actions automatically deploys on push:
 - Workflow: `.github/workflows/hover-runner-pages.yml`
-- Triggers: Changes to `web/io/`, `web/pages/`, `corpan/games/`, or workflow
-- Output: `https://corpora-inc.github.io/encorpora/`
+- Triggers: Changes to `web/io/`, `web/pages/`, `corpan/packs/`, or workflow
+- Output: `https://encorpora.io/`
 
 ### Build Corpán App
 
@@ -257,7 +257,7 @@ cd web/io && npm install
 cd corpan/corpan-app && npm install
 
 # Games
-cd corpan/games/hover-runner && npm install --legacy-peer-deps
+cd corpan/packs/hover-runner && npm install --legacy-peer-deps
 ```
 
 ## Troubleshooting
@@ -288,7 +288,7 @@ rm -rf src-tauri/target/
 
 Check console output for:
 - `[pages] ✓ Watchers ready`
-- `[watch-games] ✓ Watchers ready`
+- `[watch-packs] ✓ Watchers ready`
 - `[io] ready started server on 0.0.0.0:3000`
 
 If watchers aren't triggering:
@@ -303,7 +303,7 @@ npm run dev
 - **This file**: Overview of entire monorepo
 - **web/pages/DEVELOPMENT.md**: Pages site development
 - **corpan/CLAUDE.md**: Corpán app development
-- **corpan/games/sdk/README.md**: Game development
+- **corpan/packs/sdk/README.md**: Game development
 - **dja/README.md**: Django CMS (if exists)
 
 ## Architecture Notes
@@ -319,7 +319,7 @@ npm run dev
 
 1. **web/io/**: Next.js marketing site (root)
 2. **web/pages/**: Static Corpán pages compose into `web/io/out/corpan/`
-3. **games/**: Game builds compose into `web/io/out/corpan/games/`
+3. **packs/**: Pack builds compose into `web/io/out/corpan/packs/`
 4. **Result**: Single unified site at `web/io/out/`
 
 ### Game System
@@ -341,7 +341,7 @@ npm run dev
    - **App development**: Go to `corpan/corpan-app/`
    - **Content management**: Go to `dja/`
    - **Website**: Run `npm install && npm run dev` from root
-   - **Game development**: Go to `corpan/games/`
+   - **Game development**: Go to `corpan/packs/`
 
 3. **Follow project-specific docs** in their directories
 
@@ -349,7 +349,7 @@ npm run dev
 
 - **App development**: See `corpan/CLAUDE.md`
 - **Pages site**: See `web/pages/DEVELOPMENT.md`
-- **Games**: See `corpan/games/sdk/README.md`
+- **Games**: See `corpan/packs/sdk/README.md`
 
 ## Platform-Specific Notes
 
@@ -368,5 +368,5 @@ npm run dev
 ### Web (Pages)
 
 - Static deployment via GitHub Pages
-- Promotional pages only (games require app for full functionality)
+- Promotional pages only (packs require app for full functionality)
 - Automatic deployment via GitHub Actions

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "corpan",
+    "title": "Corpan",
+    "description": "Learn from 50+ languages from any language - fully localized, practical sentences, instant audio, and easy switching. Real-world phrases. No ads - just pure learning.",
+    "icon": "/logos/corpan-logo.webp",
+    "featured": true,
+    "platforms": [
+      { "name": "iOS", "link": "https://apps.apple.com/gb/app/corp%C3%A1n/id6746082061", "iconKey": "appStore" },
+      { "name": "Android", "link": "https://play.google.com/store/apps/details?id=com.corpora.corpan", "iconKey": "googlePlay" }
+    ],
+    "landingUrl": "/corpan/",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan"
+  },
+  {
+    "id": "homeschool-offline",
+    "title": "Homeschool Offline",
+    "description": "Your private homeschool journal. Track school days, add notes and photos, manage multiple students - 100% offline, no cloud, you own your data.",
+    "icon": "/logos/homeschool-logo.webp",
+    "featured": true,
+    "platforms": [
+      { "name": "Android", "link": "https://play.google.com/store/apps/details?id=com.corpora.homeschool", "iconKey": "googlePlay" }
+    ],
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/homeschool-offline"
+  },
+  {
+    "id": "yijing",
+    "title": "Yijing | I Ching Oracle",
+    "description": "Explore the I Ching in English & Espanol with original hexagrams, pinyin guidance, and private on-device reading history - your gateway to ancient wisdom!",
+    "icon": "/logos/iching-logo.webp",
+    "featured": false,
+    "platforms": [
+      { "name": "iOS", "link": "https://apps.apple.com/gb/app/y%C3%ACj%C4%ABng/id6744656859", "iconKey": "appStore" },
+      { "name": "Android", "link": "https://play.google.com/store/apps/details?id=com.corpora_yijing.app", "iconKey": "googlePlay" }
+    ],
+    "github": "https://github.com/corpora-inc/yijing"
+  },
+  {
+    "id": "pako",
+    "title": "PaKO A1",
+    "description": "Build Hangeul & English skills with PaKO A1's A1-level TTS flashcards. Instant offline pronunciation in both languages, distraction-free study, and 100% private.",
+    "icon": "/logos/pako-logo.webp",
+    "featured": false,
+    "platforms": [
+      { "name": "iOS", "link": "https://apps.apple.com/gb/app/pako-a1/id6745461113", "iconKey": "appStore" },
+      { "name": "Android", "link": "https://play.google.com/store/apps/details?id=com.pako.app", "iconKey": "googlePlay" }
+    ],
+    "github": "https://github.com/corpora-inc/pako"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "id": "book_gardening",
+  "name": "Gardening",
+  "version": "0.1.2",
+  "type": "book",
+  "primary_language": "en",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "metadata": {
+    "series": "Little Escapes",
+    "author": "Skylar Saveland",
+    "tts": true
+  }
+}

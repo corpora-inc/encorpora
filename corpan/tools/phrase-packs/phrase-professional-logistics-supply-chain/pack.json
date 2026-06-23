@@ -1,0 +1,14 @@
+{
+  "id": "phrase-professional-logistics-supply-chain",
+  "version": "0.1.0",
+  "name": "Logistics and Supply Chain",
+  "description": "Professional language for warehousing, purchasing, inventory, freight, delivery risk, vendors, and operations planning.",
+  "category": "professional",
+  "topic": "Logistics and Supply Chain",
+  "icon": "truck",
+  "accent_color": "#2563eb",
+  "purchase": {"type": "free"},
+  "tags": ["professional", "new"],
+  "min_app_version": "0.15.0",
+  "channel": "stable"
+}

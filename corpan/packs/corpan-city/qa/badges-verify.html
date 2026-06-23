@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Corpan City — Badge Case verify</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #cfe0d4; font-family: ui-sans-serif, system-ui, sans-serif; }
+      /* Mimic the in-game overlay + menu surface so the Badge Case renders in-context. */
+      .wp-overlay { position: absolute; inset: 0; }
+      .wp-menu-stage {
+        position: absolute; top: 60px; left: 50%; transform: translateX(-50%);
+        width: min(560px, 92vw); max-height: 78vh; overflow: auto;
+        background: linear-gradient(180deg, #fbf4e6, #f3e7cf);
+        border-radius: 18px; padding: 18px; box-shadow: 0 18px 50px rgba(20,50,63,0.28);
+      }
+      .wp-menu-body { display: block; }
+      .wp-hud-stage { position: absolute; top: 12px; right: 14px; display: flex; gap: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="wp-overlay">
+      <div class="wp-hud-stage"></div>
+      <div class="wp-menu-stage"><div class="wp-menu-body"></div></div>
+    </div>
+    <script type="module" src="/qa/badges-verify.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+% Chapter and section heading styles for 6x9 book format
+\usepackage{titlesec}
+
+% Part headings
+\titleformat{\part}[display]
+  {\centering\Huge\bfseries}
+  {\partname\ \thepart}
+  {0pt}
+  {\Huge}
+
+% Chapter headings
+\titleformat{\chapter}[display]
+  {\normalfont\Large\bfseries}
+  {}
+  {0pt}
+  {\LARGE}
+\titlespacing*{\chapter}{0pt}{50pt}{20pt}
+
+% Section headings
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\section}{0pt}{24pt}{12pt}
+
+% Subsection headings
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\subsection}{0pt}{18pt}{8pt}
+
+% Running headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\itshape The Mystery of the Sea Peoples}
+\fancyhead[RO]{\small\itshape\leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}

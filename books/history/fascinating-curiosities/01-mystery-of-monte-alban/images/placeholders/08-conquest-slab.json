@@ -1,0 +1,16 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, a single conquest slab from Building J at Monte Alban, a carved stone panel roughly 1 meter tall embedded in a wall, showing in shallow bas-relief an upside-down human head at the bottom with closed eyes and horizontal face paint bands indicating a dead ruler, above the head a torso with outstretched arms and clenched hands, at the top a stylized hill-shaped place glyph representing the conquered town with a small temple shape on top and identifying dots, bar-and-dot numerals for a calendar date, all carved as bold incised outlines in grey volcanic tuff stone, Zapotec artistic style",
+  "negative_prompt": "blurry, low quality, distorted, deformed, cartoon, anime, 3D render, text, words, letters, writing, captions",
+  "seed": 49,
+  "width": 768,
+  "height": 1024,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "dtype": "float16",
+  "generation_time_s": 62.71,
+  "timestamp": "2026-02-22T06:05:48.128390+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

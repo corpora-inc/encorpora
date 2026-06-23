@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Optional speech-to-text dictation (tauri-plugin-asr-native +
+         tauri-plugin-stt). Also declared in those plugins' manifests; listed
+         here too so the app-level permission is explicit. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- AndroidTV support -->
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.corpan"
+        android:usesCleartextTraffic="${usesCleartextTraffic}">
+        <!--
+             Launcher trampoline. Verifies a usable Android System WebView
+             exists BEFORE MainActivity (and therefore the wry/Tauri stack)
+             is created. On devices with a missing/disabled/updating System
+             WebView, wry's startup version probe aborts the process from
+             native code (release builds are panic="abort", so it is
+             uncatchable) before any UI exists. The gate cannot live inside
+             MainActivity: WryActivity.onCreate registers the lifecycle
+             observer that synchronously starts the native build, so the
+             abort races super.onCreate(). The gate uses a translucent theme
+             and a plain Activity, so the happy path renders nothing and just
+             forwards to MainActivity. See LaunchGateActivity.kt.
+        -->
+        <activity
+            android:name=".LaunchGateActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- AndroidTV support -->
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+             Defense in depth against the ndk_context Activity-recreation
+             crash ("assertion failed: previous.is_none()" in
+             ndk_context::initialize_android_context, called from
+             tao::ndk_glue::create on WryActivity.onCreate).
+
+             Primary defense: src-tauri/Cargo.toml [patch.crates-io]
+             vendors a fork of ndk-context that turns the assert into a
+             no-op replace, so re-init can never abort the process.
+
+             Secondary defense (this list): absorb every config change
+             Android can deliver at runtime so the Activity isn't
+             destroyed and recreated in the first place. The
+             0.13.1-shipped list missed fontScale (common for language-
+             learning users adjusting system font size); the rest of
+             the modern list (fontWeightAdjustment from API 31,
+             grammaticalGender from API 34, colorMode, touchscreen) was
+             added alongside the runtime patch.
+        -->
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|fontScale|density|layoutDirection|navigation|mcc|mnc|touchscreen|colorMode|fontWeightAdjustment|grammaticalGender"
+            android:launchMode="singleTask"
+            android:label="@string/main_activity_title"
+            android:name=".MainActivity"
+            android:exported="true" />
+
+        <service
+            android:name="com.corpora.audio_keepalive.AudioKeepAliveService"
+            android:foregroundServiceType="mediaPlayback"
+            android:exported="false" />
+
+        <provider
+          android:name="androidx.core.content.FileProvider"
+          android:authorities="${applicationId}.fileprovider"
+          android:exported="false"
+          android:grantUriPermissions="true">
+          <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+</manifest>

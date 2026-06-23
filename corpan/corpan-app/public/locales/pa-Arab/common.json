@@ -29,7 +29,32 @@
     "gu": "گجراتی",
     "ur": "اردو",
     "pa-Guru": "پنجابی (گورمکھی)",
-    "pa-Arab": "پنجابی (شاہ مکھی)"
+    "pa-Arab": "پنجابی (شاہ مکھی)",
+    "he": "عبرانی",
+    "sv": "سویڈش",
+    "fi": "فنِش",
+    "nl": "ڈَچ",
+    "sw": "سواحلی",
+    "no": "نارویجیَن",
+    "da": "ڈینِش",
+    "el": "یونانی",
+    "ms": "مَلے",
+    "ne": "نیپالی",
+    "pt-PT": "پرتگالی (یورپی)",
+    "hr": "کرواتی",
+    "sr": "سربی",
+    "uk": "یوکرینی",
+    "bg": "بلغاری",
+    "ro": "رومانی",
+    "ca": "کیٹالان",
+    "yue-Hant-HK": "کینٹونیز (روایتی)",
+    "cs": "چیک",
+    "lt": "لتھوانیائی",
+    "sk": "سلوواکی",
+    "sl": "سلووینیائی",
+    "jv": "جاوانی",
+    "su": "سوندانی",
+    "tl": "تاگالوگ"
   },
   "categories": {
     "travel": "سفر",
@@ -72,42 +97,245 @@
     "extra-large": "بہت بڑا",
     "testTts": "نیچے والے بٹنوں سے TTS آزمائیں:",
     "showRomanization": "رومنائزیشن دکھائیں",
-    "scrollNavigation": "سکرول نیویگیشن"
+    "scrollNavigation": "سکرول نیویگیشن",
+    "packs": "پیک",
+    "stacks": "سٹیکس",
+    "theme": "تھیم",
+    "themeLight": "ہلکا",
+    "themeDark": "گوڑھا",
+    "themeSystem": "سسٹم",
+    "phrasePacks": {
+      "header": "جملیاں دے پیکج",
+      "baseCorpusName": "بنیادی کارپس",
+      "emptyHint": "پیکج ٹیب توں پیکج شامل کرو۔",
+      "browseAll": "پیکج ویکھو",
+      "searchPlaceholder": "پیک لبھو…",
+      "filter": {
+        "all": "سارے",
+        "active": "چالو",
+        "inactive": "بند"
+      },
+      "selectAllVisible": "ساریاں چنو",
+      "deselectAllVisible": "صاف کرو",
+      "activateGroup": "ساریاں چالو کرو",
+      "deactivateGroup": "ساریاں بند کرو",
+      "uncategorized": "ہور",
+      "noMatches": "کوئی نتیجہ نئیں۔",
+      "noFiltered": "ایتھے ہنڑ کچھ نئیں۔",
+      "stackTotalPhrases": "‎~{{count}} جملے میل کھاندے نیں",
+      "stackTotalNudge": "ودھ ورائٹی واسطے پیک شامل کرو یا سطحاں ودھاؤ۔",
+      "activeCount": "{{total}} وچوں {{active}} فعال",
+      "baseCorpusSubtitle": "{{n}} جملے"
+    },
+    "sendAnonUsage": "گمنام استعمال دا ڈیٹا بھیجو",
+    "sendAnonUsageHint": "گمنام، سیشن تک محدود۔ نہ اکاؤنٹس، نہ ڈیوائس آئی ڈیز، نہ IP ذخیرہ۔ کدے وی بند کر سکدے او۔",
+    "readPrivacyPromise": "ساڈا رازداری دا وعدہ پڑھو",
+    "showStreak": "پڑھن دی سٹریک وکھائو",
+    "showStreakHint": "ہیڈر وچ دِناں دی اک نِکّی گِݨتی۔ صرف ڈیوائس تے، کوئی یاد دہانی یا نوٹیفکیشن نہیں۔",
+    "primaryLanguage": "پرائمری (UI) بولی",
+    "home": "ہوم",
+    "developer": "ڈیولپر"
   },
   "onboarding": {
-    "welcome": "خوش آمدید",
-    "makePrimaryLanguage": "پنجابی نوں میری بنیادی زبان بناؤ",
-    "canChangeLater": "تسی ایہ کدے وی بدل سکدے او۔",
+    "welcomePact": {
+      "title": "Corpán اگے ودھدا اے",
+      "subtitle": "تُسی شروع دے ورتن آلیاں وچوں او",
+      "bleedingEdgeTitle": "اَتِ-آدھُنِک، جان بُجھ کے",
+      "bleedingEdgeDesc": "Corpán تہاڈے آلے تے نویں AI، بولی دی پہچان، آوازاں تے ڈوبو دین والیاں دنیائیں لیاؤندا اے، نجی تے آف لائن-پہلاں سکھن لئی۔ اسیں ٹیکنالوجی جدوں ایہ ہجے کچی ہوندی اے اوہدوں ہی جاری کردے آں، اس کرکے ایہ عجیب ورتاؤ کر سکدی اے، ہولی چل سکدی اے، یا تہاڈے آلے دی برداشت توں ودھ ہو سکدی اے۔ بدلے وچ، سکھن دے نویں طریقے جیویں ہی ممکن ہوندے نیں تہاڈے کول آ جاندے نیں۔",
+      "yourLangTitle": "اسی ہر اوہ بھاشا نہیں بولدے جِنوں سپورٹ کردے آں",
+      "yourLangDesc": "اسیں کئی بولیاں لئی بناؤندے آں کیونکہ سکھن والے ودھیا اوزاراں دے حقدار نیں، ایہ نہیں کہ سانوں اوہ ساریاں آوندیاں نیں۔ جدوں اسیں کجھ غلط کردے آں، امید اے بولن والے سانوں اوہ ٹھیک کرن وچ مدد دین گے۔",
+      "plea": "کوئی خیال، درستی، یا وکھرا سِکھن دا تجربہ اے جو تُسی ویکھنا چاہندے او؟ سانوں دسو۔ اسی ہر پیغام پڑھدے آں تے ڈونگھی سوچ کردے آں کہ اوہ Corpán تے بھاشا سِکھن لئی کیہہ ممکن بنا سکدا اے۔",
+      "emailCta": "ای میل کرو",
+      "githubCta": "GitHub ایشو کھولو",
+      "join": "Corpán نوں دنیا تک پہنچاؤن وچ مدد کرنا چاہندے او؟ اسی ہمیشہ ساتھی، ترجمہ کار تے مقامی نمائندے لبھدے آں۔ سانوں لبھو۔",
+      "pact": "سِکھنا شروع کرن تے ساڈے نال ودھن لئی تھلے ٹیپ کرو۔ 🤝",
+      "cta": "میں تیار آں — چلو شروع کریے"
+    },
     "pickLanguagesToLearn": "سِکھن لئی زباناں چنو",
     "textToSpeechSetup": "ٹیکسٹ ٹو سپیچ سیٹ اَپ",
-    "ttsPoorQualityNote": "جے آڈیو دی کوالٹی خراب ہوئے، تاں اپنے ڈیوائس دی TTS سیٹنگز وچ ہائی کوالٹی آوازاں انسٹال کرو۔",
-    "howToSetupTtsOn": "TTS کِویں سیٹ اَپ کرنی اے",
-    "welcomeTitle": "Corpán پریوار وچ خوش آمدید!",
-    "welcomeBody": "Corpán اک چھوٹی ٹیم دی اوپن سورس ایپ اے، وڈی کمپنی نئیں۔ اسی زبان تے تعلیم دی بہت پرواہ کردے آں تے ہُن تک شروعاتی مرحلے وچ آں، ایس لئی تہاڈے نوں کجھ کھردرے حصّے یا گم ہوئی خاصیتاں تے زباناں نظر آ سکدیاں نیں۔ جے کوئی چیز کم نہ کرے، تاں مہربانی کر کے GitHub یا ای میل ذریعے سانوں دسو۔ تہاڈا فیڈبیک اسی نوں وار وار اپڈیٹس بھیجن تے ہر کسی لئی زبان سکھن نوں بہتر بنانے وچ مدد کردا اے۔",
-    "welcomeVisit": "encorpora.io وزٹ کرو",
-    "linkCopied": "لنک کاپی ہو گیا۔ براؤزر وچ کھولو:",
     "reconfigureStack": "سٹیک دوبارہ ترتیب دو",
-    "openVoiceSettings": "اپنے ڈیوائس دیاں آواز سیٹنگز کھولو",
+    "openVoiceSettings": "سیٹنگز کھولو",
     "openTTSSetup": "TTS سیٹنگز کھولو",
-    "welcomeFollowUp": "شامل ہون لئی شکریہ - کمیونٹی وچ ملدے آں!",
-    "learning": "زباناں سکھنا",
-    "learningStepTitle": "سکھنا",
-    "tts": "ٹیکسٹ ٹو سپیچ",
-    "ttsStepTitle": "ٹیکسٹ ٹو سپیچ",
-    "socials": "فالو کرو تے جڑو",
-    "socialsStepTitle": "سوشل میڈیا",
     "noVoices": "کوئی آوازاں نئیں",
     "noVoicesHint": "اس زبان نوں چالو کرنے لئی آوازاں انسٹال کرو۔",
     "languageOrderTipTitle": "ٹپ",
-    "languageOrderTipBody": "سب توں تھلے والی زبان ایپ دی UI زبان بن جاندی اے۔ کدے وی بدلّن لئی ڈریگ کرو۔",
+    "languageOrderTipBody": "لسٹ وچ سب توں تھلے والی زبان ایپ دی UI زبان ہوندی اے۔ UI زبان بدلّن لئی، ہور زبان نوں سب توں تھلے ڈریگ کرو۔",
     "ttsOsTipTitle": "ٹپ",
     "ttsOsTipAndroid": "بہترین نتیجے: Google text-to-speech استعمال کرو۔ Samsung TTS Corpán وچ کم نئیں کردا۔",
-    "ttsOsTipIOS": "Settings → Accessibility وچ Spoken Content لَبھو تے آوازاں ڈاؤن لوڈ کرو۔ نوٹ: Apple ہر زبان لئی آوازاں نئیں دیندا۔ جے اپگریڈ نال مدد نہ ملے، تاں Apple Feedback ایپ رائیں سپورٹ منگو۔",
-    "ttsOsTipMac": "System Settings → Accessibility وچ Spoken Content لَبھو تے آوازاں ڈاؤن لوڈ کرو۔ نوٹ: Apple ہر زبان لئی آوازاں نئیں دیندا۔ جے اپگریڈ نال مدد نہ ملے، تاں Apple Feedback ایپ رائیں سپورٹ منگو۔",
+    "ttsOsTipIOS": "تہاڈے ڈیوائس وچ مفت پریمیئم آوازاں موجود نیں — ایپل بس اوہناں نوں بند رکھدا اے۔ اوہناں نوں آن کرو: سیٹنگز → ایکسیسیبلٹی → سپوکن کنٹینٹ → وائسز → تہاڈی بولی، فیر اک پریمیئم یا اینہینسڈ آواز لئی ڈاؤن لوڈ آئیکن اُتے ٹیپ کرو۔ واپس آؤ تے ایہ ایتھے خود بخود ظاہر ہو جاوے گی۔ (ایپل ہجے ہر بولی نوں کور نہیں کردا۔)",
+    "ttsOsTipMac": "تہاڈے میک وچ مفت پریمیئم آوازاں موجود نیں — ایپل بس اوہناں نوں بند رکھدا اے۔ اوہناں نوں آن کرو: سسٹم سیٹنگز → ایکسیسیبلٹی → سپوکن کنٹینٹ → سسٹم وائس → مینیج وائسز، فیر اک پریمیئم یا اینہینسڈ آواز ڈاؤن لوڈ کرو۔ واپس آؤ تے ایہ ایتھے خود بخود ظاہر ہو جاوے گی۔ (ایپل ہجے ہر بولی نوں کور نہیں کردا۔)",
     "ttsOsTipWindows": "Settings وچ speech voices شامل/انسٹال کرو، فیر اتھے واپس آؤ۔",
     "ttsOsTipOther": "اپنے ڈیوائس دی سیٹنگز وچ text-to-speech آوازاں شامل/انسٹال کرو، فیر اتھے واپس آؤ۔",
     "installVoicesAndroid": "آوازاں انسٹال کرو",
-    "sendAppleFeedback": "Apple فیڈبیک بھیجو"
+    "sendAppleFeedback": "Apple فیڈبیک بھیجو",
+    "ttsGoogleInstalled": "Google TTS انسٹال اے",
+    "ttsGoogleMissing": "Google TTS انسٹال نئیں",
+    "ttsSetDefault": "ڈیفالٹ مقرر کرو",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech بند اے",
+        "detail": "دوبارہ چلاون لئی اسی تہانوں سدھے سسٹم پیج تے لے جانگے۔ اک ٹیپ نال ہو جائے گا۔",
+        "button": "Google TTS چلاؤ"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech انسٹال کرو",
+        "detail": "گوگل دا مفت وائس انجن Corpán دیاں زیادہ تر سپورٹ کیتیاں بولیاں لئی اُچی معیار دیاں آوازاں انلاک کردا اے — زیادہ تر فونز ایہدے نال نہیں آندے۔ آؤ ایہنوں شامل کریے:",
+        "button": "Play Store توں انسٹال کرو"
+      },
+      "noEngine": {
+        "heading": "کوئی واج انجن نہیں ملیا",
+        "detail": "تہاڈے ڈیوائس تے کوئی TTS انجن انسٹال نئیں۔ اگے ودھن لئی Google Text-to-Speech انسٹال کرو۔",
+        "button": "Google TTS انسٹال"
+      },
+      "noVoiceData": {
+        "heading": "واج ڈیٹا ڈاؤن لوڈ کرنا چاہیدا اے",
+        "detail": "تہاڈا انجن تیار اے، پر تہاڈیاں بولیاں دا واج ڈیٹا ابھی ڈاؤن لوڈ نہیں ہویا۔",
+        "button": "آوازاں ڈاؤن لوڈ کرو"
+      },
+      "engineHung": {
+        "heading": "واج انجن جواب نئیں دے رہا",
+        "detail": "کدی کدی سسٹم TTS سروس اٹکی جاندی اے۔ ہیٹھاں ٹیپ کرکے دوبارہ کوشش کرو — عام طور تے ٹھیک ہو جاندی اے۔",
+        "button": "دوبارہ کوشش"
+      },
+      "probing": "آوازاں سیٹ ہو رہیاں نیں…",
+      "working": "چل رہا اے…",
+      "skipForNow": "چھڈو — بعد وچ ترتیباں وچ سیٹ کرو",
+      "openTtsSettings": "TTS ترتیباں کھولو",
+      "readyHeading": "آوازاں تیار",
+      "readyEngine": "{{engine}} ورت ریا اے",
+      "installVoicesForLang": "{{lang}} لئی آوازاں ڈاؤن لوڈ کرو",
+      "diagnostics": {
+        "toggle": "تشخیص",
+        "copyButton": "کاپی",
+        "copied": "کاپی ہو گیا"
+      },
+      "currentState": "موجودہ حالت: {{state}}",
+      "state": {
+        "enabled": "فعال",
+        "default": "فعال (سسٹم ڈیفالٹ)",
+        "disabled": "غیر فعال",
+        "disabledUser": "ورتنوالے نے غیر فعال کیتا (یا Samsung Device Care نے)",
+        "disabledUntilUsed": "ورتن تک غیر فعال",
+        "notInstalled": "انسٹال نہیں"
+      }
+    },
+    "phrasePacks": {
+      "hero": "اپنے موضوع چنو",
+      "loading": "لوڈ ہو ریا اے…",
+      "selectAll": "ساریاں چنو ({{count}})",
+      "clearAll": "صاف کرو",
+      "subscriptionNudge": "کجھ پیک Corpán Plus وچ شامل نیں — تسی بعد وچ Settings → Packs توں اپگریڈ کر سکدے او۔",
+      "entryCount": "{{n}} جملے",
+      "paid": "پیسے والا",
+      "emptyHero": "ہلے کوئی پیکج نئیں۔",
+      "emptySub": "چھیتی واپس آؤ۔"
+    },
+    "appleNoVoiceTitle": "Apple ہن تک {{lang}} دی آواز فراہم نہیں کردا",
+    "appleNoVoiceBody": "Apple دی accessibility ٹیم نوں اک چھوٹا نوٹ ایہہ معاملہ مضبوط بنا سکدا اے۔ اِدھرلے وقت وچ {{lang}} Android اُتے فطری طور تے کم کردا اے۔",
+    "back": "پِچھے",
+    "continue": "اگے",
+    "calibrate": {
+      "childAgeTitle": "پڑھن والا کِنّی عمر دا اے؟",
+      "childTeen": "13–17",
+      "childUnder13": "13 توں گھٹ",
+      "enjoyComfortable": "کافی چنگی طرحاں",
+      "enjoyImproving": "میں ہجے وی ایہنوں پڑھنا سِکھ رہیا آں",
+      "enjoyJustStarting": "ہجے شروع کیتا اے — میں ایہنوں پڑھن وچ نواں آں",
+      "enjoyNative": "روانی نال — ایہ میری بولی اے",
+      "enjoyTitle": "تُسی {{lang}} کِنّی چنگی طرحاں پڑھدے او؟",
+      "learnAdvanced": "میں کافی ایڈوانسڈ آں",
+      "learnLittle": "تھوڑا جیہا",
+      "learnNever": "کدی نہیں — بالکل نواں سِکھن والا",
+      "learnTitle": "تُسی پہلے کدی {{lang}} دا مطالعہ کیتا اے؟"
+    },
+    "confident": {
+      "addBetter": "اک ودھیا آواز انلاک کرو",
+      "andMore": "+{{count}} ہور",
+      "chooseVoices": "آوازاں چُنو",
+      "noVoiceFor": "ہجے کوئی {{lang}} آواز نہیں اے — آؤ اک شامل کریے تاکہ Corpán اُچی آواز وچ پڑھ سکے",
+      "voiceCountMany": "{{count}} آوازاں تیار نیں",
+      "voiceCountOne": "1 آواز تیار اے",
+      "yourVoiceFor": "تہاڈی {{lang}} آواز"
+    },
+    "fork": {
+      "child": {
+        "desc": "نرم، کھیڈݨ والے بُکس تے کھیڈاں نِکے سِکھن والیاں لئی۔",
+        "label": "ایہنوں اک بچے لئی سیٹ کرو"
+      },
+      "enjoy": {
+        "desc": "بُکس، کہانیاں، کھیڈاں، مشقاں تے ہور بہت کُجھ — سب تہاڈی بولی وچ۔",
+        "label": "Corpán نوں {{lang}} وچ لطف اندوز کرو"
+      },
+      "learn": {
+        "desc": "کہانیاں، کھیڈاں، مشقاں تے آڈیو اک نویں بولی وچ۔",
+        "label": "اک بولی سِکھو"
+      },
+      "polyglot": {
+        "desc": "کئی بولیاں اکٹھے کرو تے سب کُجھ کھوجو۔",
+        "label": "کئی بولیاں کھوجو"
+      },
+      "subtitle": "اسیں تہاڈے لئی سب کُجھ سیٹ کر دیواں گے۔ تُسی ایہنوں بعد وچ بدل سکدے او۔",
+      "title": "تُہانوں Corpán اُتے کیہ لے آیا؟"
+    },
+    "interests": {
+      "audio": "آڈیو سنو",
+      "audioDesc": "آڈیو بُکس، بیانیہ تے ریڈیو۔",
+      "games": "کھیڈاں کھیڈو",
+      "gamesDesc": "کھیڈݨ والے چیلنجاں راہیں سِکھو۔",
+      "read": "کہانیاں تے بُکس پڑھو",
+      "readDesc": "اپنی بولی وچ پڑھن والیاں وچ ڈُبکی لاؤ۔",
+      "speak": "بولن دی مشق کرو",
+      "speakDesc": "جملے اُچی آواز وچ بولو تے فیڈ بیک حاصل کرو۔",
+      "study": "مطالعہ تے مشق کرو",
+      "studyDesc": "مرکوز مشق نال ذخیرہ الفاظ بناؤ۔",
+      "subtitle": "کوئی وی چیز چُنو جیہڑی پسند آوے — اسیں اوہدے مطابق تجربے تجویز کراں گے۔ اختیاری۔",
+      "title": "تُسی کیہ کرنا چاہندے او؟",
+      "wild": "جنگلی چیزاں کھوجو",
+      "wildDesc": "حیران کُن، تجرباتی تجربے۔"
+    },
+    "ttsIntro": "Corpán اُچی آواز وچ پڑھدا اے۔ اپنی رفتار نال سُنن لئی اک آواز اُتے ٹیپ کرو۔",
+    "voiceGuide": {
+      "intro": "تہاڈے ڈیوائس وچ بھرپور، قدرتی آوازاں موجود نیں — مفت، تے ڈیفالٹ توں کِتے بہتر۔ بنان والا بس اوہناں نوں بند رکھدا اے۔ آؤ اوہناں نوں آن کریے؛ ایہدے لئی بس کُجھ ٹیپ لگدے نیں:",
+      "macStep1": "سسٹم سیٹنگز کھولو۔",
+      "macStep2": "ایکسیسیبلٹی → سپوکن کنٹینٹ اُتے جاؤ۔",
+      "macStep3": "سسٹم وائس دے تھلے، مینیج وائسز کھولو۔",
+      "macStep4": "اپنی بولی لئی اک پریمیئم یا اینہینسڈ آواز ڈاؤن لوڈ کرو۔",
+      "macStep5": "Corpán اُتے واپس آؤ — ایہ ایتھے خود بخود ظاہر ہو جاوے گی۔",
+      "step1": "تھلے اوپن سیٹنگز اُتے ٹیپ کرو۔",
+      "step2": "ایکسیسیبلٹی → سپوکن کنٹینٹ → وائسز اُتے جاؤ۔",
+      "step3": "اپنی بولی اُتے ٹیپ کرو۔",
+      "step4": "اک پریمیئم یا اینہینسڈ آواز ڈاؤن لوڈ کرو۔",
+      "step5": "Corpán اُتے واپس آؤ — ایہ ایتھے خود بخود ظاہر ہو جاوے گی۔",
+      "title": "اپنے ڈیوائس دیاں بہترین آوازاں انلاک کرو"
+    },
+    "voicePreviewAria": "{{name}} دا پیش نظارہ کرو",
+    "voicePreviewSelected": "چُنیا گیا پیش نظارہ",
+    "voiceRecommended": "تجویز کردہ",
+    "voiceSelectedCount": "{{total}} وچوں {{count}}",
+    "whatToStart": {
+      "title": "اسیں کِتھوں شروع کریے؟",
+      "subtitle": "شروع کرن لئی اک چُنو — باقی صرف اک ٹَیپ دی دوری تے اے۔",
+      "read": {
+        "label": "پڑھو",
+        "desc": "کہانیاں تے کتاباں وچ ڈُب جاؤ۔"
+      },
+      "study": {
+        "label": "پڑھائی کرو",
+        "desc": "مرتکز مشق نال اپنے لفظ ودھاؤ۔"
+      },
+      "playMusic": {
+        "label": "موسیقی وجاؤ",
+        "desc": "ڈیکاں تے اپنی بولی اَزماؤ۔"
+      },
+      "playGames": {
+        "label": "کھیڈو",
+        "desc": "مزیدار چیلنجاں راہیں سِکھو۔"
+      },
+      "surprise": {
+        "label": "مینوں حیران کرو!",
+        "desc": "مینوں کسے مزیدار تھاں لے چلو۔"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -129,6 +357,16 @@
       "cta": "وزٹ کرو",
       "title": "encorpora.io",
       "desc": "دستاویزات تے کمیونٹی والی مین سائٹ."
+    },
+    "instagram": {
+      "cta": "فالو کرو",
+      "desc": "@corpanapp",
+      "title": "انسٹاگرام اُتے فالو کرو"
+    },
+    "share": {
+      "title": "Corpán سانجھا کرو",
+      "text": "Corpán نال زباناں سکھو۔",
+      "copied": "لنک کاپی ہو گیا!"
     }
   },
   "common": {
@@ -136,7 +374,9 @@
     "instantPolyglotPractice": "فوری کثیر لسانی مشق",
     "cancel": "منسوخ",
     "delete": "حذف کرو",
-    "create": "بناؤ"
+    "create": "بناؤ",
+    "dismiss": "بند کرو",
+    "skip": "چھڈو"
   },
   "dialects": {
     "en": "انگریزی",
@@ -234,7 +474,28 @@
     "pa-Arab": "پنجابی (شاہ مکھی)",
     "ur": "اردو",
     "ur-IN": "اردو (بھارت)",
-    "ur-PK": "اردو (پاکستان)"
+    "ur-PK": "اردو (پاکستان)",
+    "sv": "سویڈش",
+    "no": "نارویجیَن",
+    "da": "ڈینِش",
+    "nl": "ڈَچ",
+    "ms": "مَلے",
+    "fi": "فنِش",
+    "sw": "سواحلی",
+    "el": "یونانی",
+    "he": "عبرانی",
+    "ne": "نیپالی",
+    "hr": "کرواتی",
+    "sr": "سربی",
+    "uk": "یوکرینی",
+    "bg": "بلغاری",
+    "ro": "رومانی",
+    "ca": "کیٹالان",
+    "yue-Hant-HK": "کینٹونیز (روایتی)",
+    "cs": "چیک",
+    "lt": "لتھوانیائی",
+    "sk": "سلوواکی",
+    "sl": "سلووینیائی"
   },
   "footer": {
     "appVersion": "ایپ ورژن",
@@ -256,28 +517,29 @@
     "rename": "نَواں ناں رکھو",
     "renameLabel": "اسٹیک لئی نواں ناں",
     "selectAria": "سٹیک چنو",
-    "selectPlaceholder": "چنو…"
+    "selectPlaceholder": "چنو…",
+    "introTipTitle": "سٹیک",
+    "introTipBody": "سٹیک وکھ وکھ سکھن دے سیٹ اپ سنبھالدے نیں — اک سفر لئی، دوجا کم لئی۔ نواں سٹیک بنان لئی + تے ٹیپ کرو۔"
   },
   "rating": {
-    "title": "Corpán دا لطف آ رہیا اے?",
-    "description": "Corpán اک چھوٹی اوپن سورس ٹیم بناندی اے۔ جے ایہ 5-سٹار ایپ ورگی لگدی اے، تاں اک چھوٹی ریٹنگ ساڈی بہت مدد کردی اے۔",
-    "rateNow": "⭐ 5 سٹار ریٹ کرو",
-    "remindLater": "بعد وچ",
-    "noThanks": "نہیں، شکریہ",
+    "title": "کیا تہانوں Corpán پسند اے؟",
+    "description": "جے تہانوں Corpán پسند اے، تے اس نوں 5 ستارے دیو۔ ایپ سٹوراں وچ 5 ستاریاں توں گھٹ کوئی وی ریٹنگ Corpán نوں نقصان دیندی اے۔",
+    "rateNow": "⭐ 5 ستارے دیو",
     "close": "بند کرو",
-    "feedbackHint": "ہن تک 5 سٹار نئیں؟ 'فیڈبیک شیئر کرو' ٹَیپ کرو تے دسّو کہ اسی کیویں بہتر کر سکدے آں۔",
-    "feedbackButton": "GitHub تے فیڈبیک شیئر کرو"
+    "feedbackHint": "جے ایہ ہجے تہاڈے لئی 5-ستارہ ایپ نہیں، تے سانوں ای میل کرو یا GitHub تے issue کھولو تے دسو کی ٹھیک کرنا اے۔ اسی ایہنوں بہتر بنانا چاہندے آں۔",
+    "emailButton": "سانوں ای میل کرو",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "پیک",
-    "available": "دستیاب پیک",
-    "emptyAvailable": "ہن تک کوئی پیک نہیں۔",
-    "installed": "انسٹال شدہ پیک",
-    "emptyInstalled": "کوئی پیک انسٹال نہیں۔",
+    "available": "دستیاب",
+    "emptyAvailable": "ہنوز کچھ دستیاب نہیں۔",
+    "installed": "انسٹال شدہ",
+    "emptyInstalled": "ہنوز کچھ انسٹال نہیں ہوا۔",
     "get": "حاصل کرو",
     "open": "کھولو",
     "remove": "ہٹاؤ",
-    "version": "ورژن {{version}}",
+    "version": "v{{version}}",
     "refresh": "ریفریش",
     "free": "مفت",
     "install": "انسٹال",
@@ -288,10 +550,289 @@
     "manifestTitle": "مینیفیسٹ URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "مینیفیسٹ URL پیسٹ کرو۔",
-    "devUnlockTitle": "ڈیولپر پیک",
+    "devUnlockTitle": "Developer Packs",
     "devUnlockHint": "مینیفیسٹ انسٹال ان لاک کرنے لئی 7 وار ٹیپ کرو۔",
-    "devUnlockToast": "ڈیولپر پیک ان لاک ہو گئے۔",
-    "devIntro": "Corpán پیک آزماؤ یا اپنا بناؤ۔",
-    "devLink": "Free2z تے ہور جانو"
+    "devUnlockToast": "Developer Packs انلاک ہو گئے۔",
+    "devIntro": "Corpán Pack آزمائیں یا اپنا بنائیں۔",
+    "devLink": "Free2z تے ہور جانو",
+    "new": "نواں",
+    "offline": "آف لائن",
+    "purchasing": "خریداری ہو رہی اے...",
+    "buy": "{{price}} خریدو",
+    "premium": "پریمیم",
+    "availableOnMobile": "iOS تے Android اتے دستیاب",
+    "checking": "چیک ہو ریا اے…",
+    "phrasePack": {
+      "sectionTitle": "جملیاں دے پیکج",
+      "offlineEmpty": "تسیں آف لائن ہو۔ ویکھن لئی جڑو۔",
+      "searchPlaceholder": "لبھو…",
+      "noMatches": "کوئی نتیجہ نئیں۔",
+      "filter": {
+        "all": "ساریاں",
+        "available": "دستیاب",
+        "free": "مفت",
+        "paid": "پیسے والا",
+        "installed": "نصب شدہ"
+      },
+      "activeInStack": "فعال",
+      "activeBadge": "فعال",
+      "subBadge": "سبسکرپشن",
+      "paid": "پیسے والا",
+      "free": "مفت",
+      "unlockSub": "Corpán Plus نال اَنلاک کرو",
+      "entryCount": "{{n}} جملے",
+      "allInstalled": {
+        "title": "تہاڈے کول سارے فریز پیک نیں۔",
+        "subtitle": "نویں موضوع نیمت نال آؤندے نیں — جدوں چاہو پرت آؤ۔",
+        "manageCta": "Stacks وچ منظم کرو"
+      },
+      "filterEmpty": {
+        "installed": "ہلے کوجھ وی انسٹال نئیں۔",
+        "cta": "ساریاں ویکھاؤ"
+      },
+      "showAll": "ساریاں ویکھاؤ ({{count}})",
+      "collapseList": "گھٹ ویکھاؤ",
+      "openDrawer": "فریز پیک ویکھو ({{count}})",
+      "openDrawerLabel": "فریز پیک ویکھو",
+      "inactiveBadge": "غیر فعال",
+      "moreActionsLabel": "ہوڑ کارروائیاں",
+      "install": "انسٹال کرو",
+      "downloadAll": "ساریاں ڈاؤن لوڈ کرو",
+      "downloadAllSummary": "{{count}} دستیاب · ~{{size}} MB",
+      "installingBatch": "{{total}} وچوں {{current}} نصب ہو رہیا اے…",
+      "batchFailed": "{{count}} نصب نئیں ہو سکے — دوبارہ کوشش لئی ٹیپ کرو"
+    },
+    "unlockWithPlus": "Corpán Plus نال اَنلاک کرو",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "پلس نال شامل",
+    "installFailedTitle": "انسٹالیشن ناکام ہو گئی",
+    "installStuckDetail": "کُجھ دیر توں کوئی ترقی نہیں ہوئی۔ اپنا کنکشن چیک کرو تے دوبارہ کوشش کرو۔",
+    "installStuckTitle": "ڈاؤن لوڈ رُک گیا",
+    "openPack": "{{name}} کھولو",
+    "recent": "حالیہ",
+    "updateAll": "سب نوں اپ ڈیٹ کرو ({{count}})",
+    "updateAvailable": "اپ ڈیٹ دستیاب اے"
+  },
+  "subscription": {
+    "startTrialPeriod": "{{period}} دی مفت اَزمائش شروع کرو",
+    "trialFree": "{{period}} لئی مفت",
+    "trialThenCancel": "فیر {{price}}/{{period}} · کدے وی منسوخ کرو۔ اَج کوئی ادائیگی نہیں۔",
+    "title": "Corpán Plus کھولو",
+    "description": "ہر فیچر، بولی، پیک تے اپڈیٹ تک بے حد رسائی۔",
+    "annual": "سالانہ",
+    "monthly": "ماہانہ",
+    "subscribe": "سبسکرائب کرو",
+    "subscribing": "سبسکرائب ہو رہا اے...",
+    "subscribed": "Corpán Plus فعال اے",
+    "subscribedDescription": "{{plan}} پلان فعال اے۔ سب کجھ کھل گیا اے۔",
+    "manage": "سبسکرپشن دا انتظام کرو",
+    "termsOfUse": "ورتن دیاں شرطاں",
+    "privacyPolicy": "پرائیویسی پالیسی",
+    "autoRenewNotice": "سبسکرپشناں آپے تجدید ہوندیاں نیں۔ اپنے {{store}} اکاؤنٹ توں کدی وی منسوخ کرو۔",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play",
+    "pendingHeading": "منظوری دی اُڈیک",
+    "pendingDetail": "تہاڈی سبسکرپشن منظوری دی اُڈیک وچ اے (Ask to Buy یا بینک تصدیق)۔ منظوری ملدے ایہ خودکار طور تے فعال ہو جاوے گی۔",
+    "storeUnreachable": "اس وقت اسیں App Store تک نہیں پہنچ سکے۔",
+    "tryAgain": "دوبارہ کوشش کرو",
+    "affiliateCodeLabel": "افیلی ایٹ کوڈ",
+    "affiliateCodePlaceholder": "اختیاری",
+    "affiliateInvalidFormat": "حروف، نمبر، ڈیش یا انڈر سکور استعمال کرو۔",
+    "affiliateChecking": "کوڈ چیک ہو رہا ہے...",
+    "affiliateApplied": "کوڈ اس سبسکرپشن نال جڑ جائے گا۔",
+    "affiliateCodeHelp": "جے کسے نے تہانوں ایتھے بھیجیا اے، سبسکرائب کرن توں پہلاں اوہدا کوڈ درج کرو۔",
+    "introPriceHeadline": "{{introPrice}} لئی {{period}}",
+    "introPriceThen": ", پھر {{price}}/{{period}}",
+    "perMonth": "مہینہ",
+    "perYear": "سال",
+    "startFreeTrial": "مفت آزمائش شروع کرو",
+    "trialFirstCharge": "{{period}}: پہلا چارج",
+    "trialHeadline": "{{period}} مفت",
+    "trialReassurance": "اس وقت کوئی ادائیگی نہیں · کسی وقت منسوخ کرو",
+    "trialThenPrice": ", پھر {{price}}/{{period}}",
+    "trialToday": "آج: شروع کرو",
+    "rate": "Corpán نوں ریٹ کرو"
+  },
+  "restore": {
+    "button": "خریداریاں بحال کرو",
+    "restoring": "بحال ہو رہا اے...",
+    "noPurchases": "کوئی پچھلی خریداری نئیں ملی۔",
+    "success": "{{count}} خریداری بحال ہوئی۔",
+    "error": "خریداریاں بحال کرن وچ ناکامی۔"
+  },
+  "catalogPaywall": {
+    "allLanguages": "ساریاں {{count}} بولیاں",
+    "thisBook": "ایہ کتاب",
+    "blurbAll": "ہر بیان، ہنڑ تے اگانہہ۔ ہمیش لئی تہاڈا۔",
+    "blurbOne": "ہمیش لئی تہاڈا۔",
+    "buyWithPrice": "خریدو — {{price}}",
+    "orUnlockEverything": "یا سب کجھ کھولو",
+    "subMonthly": "ماہانہ",
+    "subMonthlyPeriod": "ہر ماہ",
+    "subYearly": "سالانہ",
+    "subYearlyPeriod": "ہر سال · بہترین",
+    "errorHeading": "ہنڑے App Store نال رابطہ نئیں ہو سکیا۔",
+    "tryAgain": "دوبارہ کوشش",
+    "pendingHeading": "منظوری دی اڈیک",
+    "pendingDetail": "تہاڈی خریداری منظوری دی اڈیک کر رہی اے (Ask to Buy یا بینک تصدیق)۔ منظور ہون تے خود کار چالو ہو جائے گی۔",
+    "noProductsError": "App Store کوئی پروڈکٹ نئیں موڑیا۔ عام طور تے کجھ سکنٹاں وچ حل — دوبارہ کوشش کرو۔"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "آواز پلے بیک ناکام",
+    "playbackFailedDetail": "ٹھیک کرن لئی اپنے ڈیوائس دی TTS ترتیباں کھولو۔",
+    "openSettingsAction": "TTS ترتیباں کھولو"
+  },
+  "discoverPacks": {
+    "title": "Corpán نوں اپنا بناؤ",
+    "subtitle": "ڈبّن والے پاٹھک، کھیڈاں تے اوزار شامل کرو — تہاڈی مشق نوں ڈونگھا کرن لئی Corpán وچ بنائے گئے۔",
+    "maybeLater": "شاید بعد وچ",
+    "empty": "ہور پیک آ رہے نیں — ایس دوران Corpán نوں کھوجو۔",
+    "offlineEmpty": "پیک لبھن لئی انٹرنیٹ نال جڑو — یا ہنے چھڈ دیو۔"
+  },
+  "paywall": {
+    "title": "Corpán Plus کھولو",
+    "thanksTitle": "Corpán Plus فعال اے",
+    "thanksBody": "سب کجھ کھل گیا اے۔",
+    "bookSubhead": "{{title}} جاری رکھو تے ہر فیچر کھولو۔",
+    "subhead": "ہر فیچر، بولی تے اپڈیٹ تک بے حد رسائی۔ کوئی اشتہار نہیں۔ تہاڈا ڈیٹا تہاڈے آلے تے ای رہندا اے۔",
+    "pitch": "کتاباں، پیک، گیمز، بولن دے اوزار تے نویں سکھن دے تجربے سارے شامل نیں۔",
+    "maybeLater": "شاید بعد وچ",
+    "continue": "جاری رکھو",
+    "dismiss": "ختم کرو"
+  },
+  "streak": {
+    "title": "{{count}} دِناں دی لڑی"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "بیانیے والے آڈیو بُکس دے نال پڑھو — آرام نال، لفظ بہ لفظ ہائی لائٹ دے نال۔",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "مینڈارن اکھراں وچ مہارت حاصل کرو، سٹروک بہ سٹروک۔",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "اک جملہ سنو، اوہدے نال ملان لئی چلاؤ — کھیڈدیاں سِکھو۔",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "اک تیز کھیڈ وچ جملے ٹکڑے ٹکڑے کرکے بناؤ۔",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "اپنی بولیاں وچ جملیاں وچوں لنگھو — تیز، مرکوز مشق۔",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "جملے اُچی آواز وچ بولو تے تلفظ دا فیڈ بیک حاصل کرو۔",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "اوہی آڈیو بُکس ڈُبکی لاؤن والے 3D وچ — لفظ پڑھدیاں ای خلا وچ وگدے نیں۔",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "دنیا بھر توں لائیو ریڈیو سنو۔",
+      "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "ٹو ٹوماٹن",
+      "blurb": "صبر نال سکھاون والا ٹیوٹر، تُہاڈی ہر زبان لئی، تُہاڈے فون وچ۔"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "ایک زندہ شہر جو ہر ملاقات کو سبق بنا دیتا ہے۔"
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "جیہڑی زبان تسی سکھ رہے او، اوہنوں سیمپل کرو۔ سکریچ کرو جد تک دل دماغ وچ نہ بیٹھ جائے۔"
+    }
+  },
+  "home": {
+    "continueLearning": "سِکھنا جاری رکھو",
+    "experiences": "تجربے",
+    "forYou": "تہاڈے لئی",
+    "get": "حاصل کرو",
+    "installing": "انسٹال ہو رہیا اے…",
+    "library": "لائبریری",
+    "like": "پسند کرو",
+    "notForMe": "میرے لئی نہیں",
+    "open": "کھولو",
+    "openPhrases": "جملے کھولو",
+    "phraseFlipDesc": "اپنی بولیاں وچ جملیاں وچوں لنگھو",
+    "plusChip": "Corpán Plus — سب کُجھ انلاک کرو",
+    "recommended": "تجویز کردہ",
+    "showAnother": "مینوں اک ہور وکھاؤ",
+    "tryIt": "ایہنوں آزماؤ",
+    "packUpdates": "تہاڈے کول پیک اپ ڈیٹس نیں",
+    "updateAll": "سارے اپ ڈیٹ کرو"
+  },
+  "offline": {
+    "cachedSubtitle": "تہاڈے آخری کیش کیتے نتائج وکھائے جا رہے نیں۔",
+    "catalogSubtitle": "نویں پیک لبھن لئی دوبارہ جڑو۔ تہاڈے انسٹال کیتے گئے پیک ہجے وی کم کردے نیں۔",
+    "installNeedsInternet": "ڈاؤن لوڈ کرن لئی دوبارہ جڑو۔",
+    "onboardingBanner": "آف لائن — جدوں تُسی دوبارہ جڑو گے تے چوناں انسٹال ہو جان گیاں۔",
+    "packCatalogSubtitle": "تہاڈے انسٹال کیتے گئے پیک ہجے وی کم کردے نیں۔ ہور براؤز کرن لئی دوبارہ جڑو۔",
+    "packCatalogTitle": "پیک کیٹلاگ نوں انٹرنیٹ دی لوڑ اے۔",
+    "phrasePacksOnboardingSubtitle": "تُسی بعد وچ سیٹنگز → پیکز توں جملے دے پیک چُن سکدے او اک واری دوبارہ جڑن مگروں۔",
+    "phrasePacksSubtitle": "تہاڈے انسٹال کیتے گئے جملے دے پیک ہجے وی کم کردے نیں۔ نویں براؤز کرن لئی دوبارہ جڑو۔",
+    "phrasePacksTitle": "جملے دے پیک کیٹلاگ نوں انٹرنیٹ دی لوڑ اے۔",
+    "purchaseNeedsInternet": "خریدن لئی دوبارہ جڑو۔",
+    "restoreSubtitle": "خریداریاں بحال کرن لئی دوبارہ جڑو۔",
+    "subscriptionSubtitle": "سبسکرائب کرن لئی دوبارہ جڑو۔ تہاڈے انسٹال کیتے گئے پیک تے بنڈل جملے ہجے وی کم کردے نیں۔",
+    "subscriptionTitle": "سبسکرپشنز نوں انٹرنیٹ دی لوڑ اے۔",
+    "title": "انٹرنیٹ نہیں اے۔",
+    "voiceDownloadSubtitle": "تہاڈے ڈیوائس اُتے پہلے توں موجود آوازاں ہجے وی کم کردیاں نیں۔ ہور انسٹال کرن لئی دوبارہ جڑو۔",
+    "voiceDownloadTitle": "آواز ڈاؤن لوڈ کرن لئی انٹرنیٹ دی لوڑ اے۔"
+  },
+  "quickSettings": {
+    "fullSettings": "مکمل سیٹنگز",
+    "title": "فوری سیٹنگز"
+  },
+  "tour": {
+    "maybeLater": "شاید بعد وچ",
+    "progress": "{{total}} وچوں {{n}}"
+  },
+  "update": {
+    "availableLine": "اپ ڈیٹ دستیاب اے → {{version}}",
+    "close": "بند کرو",
+    "description": "Corpán دا اک نواں ورژن تہاڈے ایپ سٹور وچ دستیاب اے۔",
+    "remindLater": "شاید بعد وچ",
+    "skipThisVersion": "ایہ ورژن چھڈ دیو",
+    "title": "اپ ڈیٹ دستیاب اے",
+    "update": "اپ ڈیٹ کرو",
+    "updateNow": "ہن اپ ڈیٹ کرو",
+    "versionLine": "ورژن {{version}} انسٹال کرن لئی تیار اے۔"
+  },
+  "streakBadge": {
+    "label": "{{days}}-روزہ سلسلہ"
+  },
+  "dailyLock": {
+    "title": "آج لئی {{count}} {{unit}}",
+    "streakActive": "{{days}}-روزہ سلسلہ — سلسلہ جاری رکھنے لئی کل واپس آؤ۔",
+    "streakStart": "سلسلہ جاری رکھنے لئی کل واپس آؤ۔",
+    "resetIn": "{{time}} وچ ری سیٹ ہووے گا",
+    "cta": "ہن Corpán Plus نال جاری رکھو",
+    "dismiss": "شاید بعد وچ",
+    "closeAria": "ختم کرو",
+    "countdownHm": "{{h}}گھنٹے {{m}}منٹ",
+    "countdownM": "{{m}}منٹ",
+    "countdownSoon": "کسی وی لمحے"
+  },
+  "code": {
+    "attributedUnverified": "کوڈ آپکی سبسکرپشن کے ساتھ منسلک ہو جائے گا۔",
+    "checkFailed": "چیک نہیں ہو سکا",
+    "checking": "کوڈ چیک ہو رہا ہے…",
+    "creditedTo": "{{partner}} کو جمع کر دیا گیا",
+    "fieldLabel": "آفر یا افیلیئیٹ کوڈ",
+    "help": "کوڈ ہے؟ اپنی آفر لاگو کرنے کے لئے داخل کرو۔",
+    "redeemUnavailable": "ریڈیم سکرین نہیں کھل سکی۔ دوبارہ کوشش کریں۔",
+    "redeemWithApple": "ایپل کے ساتھ ریڈیم کرو",
+    "redeeming": "ریڈیم کھول رہے ہیں…",
+    "retry": "دوبارہ کوشش کرو",
+    "subscribeWithDiscount": "سبسکرائب کرو ({{discount}})",
+    "redeemCode": "کوڈ ورتو",
+    "notApplied": "ایہہ کوڈ کوئی رعایت نہیں دیندا۔"
   }
 }

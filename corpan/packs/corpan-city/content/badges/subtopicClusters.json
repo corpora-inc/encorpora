@@ -1,0 +1,13 @@
+{
+  "$comment": "Family G subtopic clusters (BADGES_PROGRESSION §1.3). A cluster is a named set of corpus entry_ids within a domain (English-pivot, SHARED across all 50 languages — only the display name localizes). entryIds reference real corpus rows; the B0 set covers the shipping Antigua/Guadalajara content. Run-once derivation in B1 (infra/scripts/cluster_subtopics.py). copyKey = `cluster.${clusterId}` (the naming convention badgeStrings + the B1 validator share).",
+  "clusters": [
+    { "clusterId": "greetings", "domain": "social", "copyKey": "cluster.greetings", "entryIds": [1, 2, 3, 4, 5] },
+    { "clusterId": "goodbyes", "domain": "social", "copyKey": "cluster.goodbyes", "entryIds": [6, 7, 8] },
+    { "clusterId": "politeness", "domain": "social", "copyKey": "cluster.politeness", "entryIds": [9, 10, 11, 12] },
+    { "clusterId": "cafe", "domain": "everyday", "copyKey": "cluster.cafe", "entryIds": [201, 202, 203, 204] },
+    { "clusterId": "market", "domain": "everyday", "copyKey": "cluster.market", "entryIds": [205, 206, 207] },
+    { "clusterId": "at-the-airport", "domain": "travel", "copyKey": "cluster.at-the-airport", "entryIds": [1008, 1009, 1010] },
+    { "clusterId": "directions", "domain": "travel", "copyKey": "cluster.directions", "entryIds": [1023, 1024, 1025] },
+    { "clusterId": "days-of-the-week", "domain": "numbers", "copyKey": "cluster.days-of-the-week", "entryIds": [401, 402, 403, 404, 405, 406, 407] }
+  ]
+}

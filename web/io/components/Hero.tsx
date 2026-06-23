@@ -5,7 +5,7 @@ import { FC } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { FaApple, FaGooglePlay, FaBookOpen } from "react-icons/fa";
+import { FaApple, FaGooglePlay } from "react-icons/fa";
 
 export const Hero: FC = () => (
     <motion.section
@@ -74,9 +74,8 @@ export const Hero: FC = () => (
                     size="lg"
                     className="flex items-center gap-2 w-full sm:w-48 justify-center"
                 >
-                    <Link href="https://shop.encorpora.io">
-                        <FaBookOpen size={18} />
-                        Browse Books
+                    <Link href="#apps">
+                        Explore Our Apps
                     </Link>
                 </Button>
             </div>

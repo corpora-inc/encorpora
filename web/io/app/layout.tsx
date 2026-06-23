@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
@@ -15,17 +16,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Update metadata to reflect the purpose of your textbooks
 const favicon = withBasePath("/favicon.ico");
 
 export const metadata: Metadata = {
-  title: "Encorpora – Structured, No-Frills Textbooks",
+  title: "Encorpora — Pure Learning",
   description:
-    "Encorpora offers concise, systematic textbooks designed to help students fully grasp essential concepts—from early math standards to advanced CLEP exam prep. Each lesson is laser-focused, delivering exactly what learners need to master the material.",
+    "Focused books and apps. No ads, no trackers, no wasted time. Offline-first learning tools by Corpora Inc.",
   openGraph: {
-    title: "Encorpora - Structured, No-Frills Textbooks and Apps",
+    title: "Encorpora — Pure Learning",
     description:
-      "We craft direct, distraction-free learning resources that ensure mastery of key topics. Our approach meets or exceeds grade-level expectations and prepares students thoroughly for college-level exams.",
+      "Focused books and apps. No ads, no trackers, no wasted time. Offline-first learning tools by Corpora Inc.",
     images: [
       {
         url: "https://encorpora.io/logo-og.webp",
@@ -47,6 +47,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17513523888"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17513523888');
+          `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

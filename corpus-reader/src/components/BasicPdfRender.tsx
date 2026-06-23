@@ -34,7 +34,7 @@ import {
 import PdfToc from "./pdfViewer/PdfToc";
 import { useTheme } from "@/components/ThemeProvider";
 import { usePdfViewerStore } from "@/store/usePdfViewerStore";
-import PdfMobileMenu from "./pdfViewer/pdfMobileMenu";
+import PdfMobileMenu from "./pdfViewer/PdfMobileMenu";
 
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.mjs";
 

@@ -1,0 +1,98 @@
+engine: fish
+version: 1
+
+voices:
+  en: d0279eee05e8405981dc50e283e2440d
+
+tts:
+  temperature: 0.1
+  top_p: 0.9
+  cfg_weight: 0.7
+  exaggeration: 0.3
+  min_p: 0.1
+  repetition_penalty: 2.0
+
+retry:
+  max_retries: 15
+  jitter: 0.1
+  schedules:
+    - {}
+    - {temperature: 0.15, top_p: 0.85}
+    - {temperature: 0.05, top_p: 0.95}
+    - {temperature: 0.2, top_p: 0.8}
+    - {temperature: 0.1, top_p: 0.7}
+    - {temperature: 0.3, top_p: 0.9}
+    - {temperature: 0.05, top_p: 0.99}
+
+mastering:
+  target_lufs: -22.0
+  target_tp: -3.0
+  audio_bitrate: '128000'
+  audio_codec: aac
+  output_ext: .m4a
+
+filter_chain:
+  highpass:
+    enabled: false
+    frequency: 80
+    width_type: q
+    width: 0.7
+  adeclick:
+    enabled: false
+    window: 55
+    overlap: 75
+    threshold: 1.5
+  afftdn:
+    enabled: false
+    nr: 15
+    nf: -35
+    tn: 1
+  agate:
+    enabled: false
+    threshold: 0.018
+    range: 0.01
+    attack: 5
+    release: 50
+  acompressor:
+    enabled: false
+    threshold: 0.1
+    ratio: 2
+    attack: 10
+    release: 100
+    makeup: 1
+  alimiter:
+    enabled: true
+    limit: 0.708
+    level: false
+
+denoise:
+  enabled: false
+
+trimming:
+  zcr_window_ms: 500
+  zcr_multiplier: 2.5
+  consecutive_windows: 3
+  scan_start_ratio: 0.6
+  buffer_sec: 0.3
+  tail_ms: 500
+  fade_ms: 50
+  fade_sec: 0.05
+  max_sec_per_char:
+    en: 0.12
+  base_buffer_sec:
+    en: 5.0
+
+validation:
+  min_word_ratio: 0.65
+  max_trailing_silence_ratio: 0.25
+  max_stacked_words: 8
+  min_trailing_silence_ms: 75
+  max_inter_word_gap_ms: 3000
+  max_sec_per_char:
+    en: 0.12
+  min_sec_per_char:
+    en: 0.02
+  base_buffer_sec:
+    en: 5.0
+
+overrides: {}

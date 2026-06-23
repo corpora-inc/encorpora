@@ -6,17 +6,734 @@ export type StackConfig = {
   rate: number
   textSize: string
   showRomanization: boolean
+  /** Enabled phrase-pack ids for the active stack. The sampler already keys
+   *  on these; exposed so an experience can render "N packs / base off". */
+  phrasePackIds: string[]
+  /** Whether the bundled base corpus is sampled (vs. only phrase packs). */
+  baseCorpusEnabled: boolean
+  /** Whether scroll-driven prev/next navigation is enabled. */
+  scrollNavigationEnabled: boolean
+}
+
+/** Partial patch an experience may apply to the active stack via
+ *  {@link HostApi.setStackConfig}. Whitelisted axes only — an experience can
+ *  never reach arbitrary host state. All JS-side (no Rust/wire boundary). */
+export type StackConfigPatch = Partial<{
+  levels: string[]
+  rate: number
+  domains: string[]
+  languages: string[]
+  textSize: string
+  showRomanization: boolean
+  scrollNavigationEnabled: boolean
+  phrasePackIds: string[]
+  baseCorpusEnabled: boolean
+}>
+
+/**
+ * The optional launch payload threaded host → pack at mount (App → ContentPack
+ * Overlay → ContentPackHost → the pack's `mount(..., initialState)`). Single
+ * source of truth for the shape so the host seam never drifts. All fields are
+ * optional addressability hints; a pack reads only what it understands.
+ */
+export interface PackLaunchEntry {
+  /** Deep-link to a specific entry id within the pack. */
+  entryId?: number
+  /** Source/corpus hint for the deep-linked entry. */
+  source?: string
+  /** Initial route within the pack. */
+  route?: string
+  /**
+   * Ask a freshly-launched reader to seed a default book's FREE preview
+   * narrations for the user's stack (the first-run "instant wow"). The reader
+   * acts on this only when its library is empty.
+   */
+  seedBookId?: string
+}
+
+/** A (entryId, source) pair the sampler uses for anti-repetition. */
+export type HostHistoryRef = { entryId: number; source: string }
+
+/** Per-stack navigation history surface for the phrase experience. Hides the
+ *  per-stack bookkeeping; all methods self-scope to the active stack. */
+export type HostHistoryApi = {
+  getState: () => { ids: number[]; sources: string[]; index: number }
+  push: (entryId: number, source?: string) => void
+  setIndex: (index: number) => void
+  replaceCurrent: (entryId: number, source?: string) => void
+  getRecentTuples: (n: number) => HostHistoryRef[]
+  /** Fires on active-stack history OR activeStackId changes. */
+  subscribe: (listener: () => void) => () => void
+}
+
+/** Minimal installed-phrase-pack record for rendering source chips. */
+export type HostInstalledPhrasePack = {
+  id: string
+  name: string
+  nameLocalized?: Record<string, string>
+  topic?: string
+  topicLocalized?: Record<string, string>
+  accentColor?: string
+}
+
+export type HostPhrasePacksApi = {
+  getInstalled: () => Record<string, HostInstalledPhrasePack>
+  /** Enable/disable a pack for the active stack (sugar over setStackConfig). */
+  setEnabled: (id: string, on: boolean) => void
+  subscribe: (listener: () => void) => () => void
+}
+
+export type TranslationOut = {
+  language_code: string
+  text: string
+  romanization: string
+}
+
+export type EntryOut = {
+  entry_id: number
+  level: string
+  domains: string[]
+  translations: TranslationOut[]
+  /**
+   * Source identifier: `"base"` for the bundled corpus, or the phrase-pack
+   * id (e.g. `"phrase-botany-basics"`). `entry_id` is only unique within a
+   * source — callers that resume from history need to remember the pair.
+   */
+  source: string
+}
+
+export type PackDbQuery = {
+  sql: string
+  params?: unknown[]
+  dbName?: string
+  packId?: string
+  maxRows?: number
+}
+
+export type PackDbQueryResult = {
+  columns: string[]
+  rows: Record<string, unknown>[]
+}
+
+export type SttErrorCode =
+  | "MODEL_NOT_INSTALLED"
+  | "MODEL_NOT_LOADED"
+  | "NETWORK"
+  | "LOAD_FAILED"
+  | "IO_FAILED"
+  | "BUSY"
+  | "CANCELLED"
+  | "MIC_PERMISSION_DENIED"
+  | "NO_ACTIVE_SESSION"
+  | "AUDIO_FAILED"
+  /** Native ran the unload+pressure-relief sequence but the OS still
+   *  doesn't have enough RAM to safely allocate the new model. The
+   *  previous model has been dropped at this point, so the pack
+   *  should route to a "restart the app and try again" overlay
+   *  rather than retry in-process. The only structured code that
+   *  requires app relaunch for recovery. */
+  | "INSUFFICIENT_MEMORY"
+  | "UNKNOWN"
+
+export type SttPrepareResult = {
+  ready: boolean
+  model: string
+  message?: string
+  /** Structured error code when ready === false. Undefined on success. */
+  code?: SttErrorCode
+}
+
+export type SttInstalledModel = {
+  model: string
+  valid: boolean
+  problems: string[]
+  sizeBytes: number
+  isLoaded: boolean
+}
+
+export type SttListInstalledResult = {
+  models: SttInstalledModel[]
+}
+
+export type SttStartSessionResult = {
+  started: boolean
+  sessionId: string
+}
+
+export type SttStatus = {
+  available: boolean
+  prepared: boolean
+  model: string | null
+  recording: boolean
+  message: string | null
+  /** Per-app jetsam budget in MB. iOS 13+; null on older. */
+  availableMemoryMB?: number | null
+  /** Total physical RAM on the device in MB. */
+  physicalMemoryMB?: number | null
+  /** Set by the native plugin on the first getStatus after a prior
+   *  on-device whisper init crashed (uncatchable native SIGSEGV/abort in
+   *  ggml model load). The native side wrote a breadcrumb before the crash
+   *  and held it across the restart; the host's getStatus wrapper records
+   *  it once into on-device analytics, then the field is cleared natively.
+   *  JSON string with native model-load context and timing fields. */
+  priorInitCrash?: string | null
+}
+
+export type SttWordTiming = {
+  word: string
+  startMs: number
+  endMs: number
+  probability: number
+}
+
+export type SttTranscriptionResult = {
+  sessionId: string
+  text: string
+  expectedText: string
+  /** Full code the pack passed in (e.g. "pa-Arab", "zh-Hans"). */
+  language: string
+  /** Two-letter code actually sent to Whisper (e.g. "pa", "zh"). */
+  whisperLanguage: string
+  durationMs: number
+  overallScore: number
+  transcriptScore: number
+  likelihoodScore: number
+  /** Per-word posterior + per-language ramp + penalty stack. 0..1. */
+  acousticScore: number
+  avgLogprob: number
+  /** Whisper's no-speech posterior (max across segments). > 0.5 → mic was silent. */
+  noSpeechProb: number
+  /** Repetition / gibberish detector (max). > 2.4 → caps overall ≤ 0.4. */
+  compressionRatio: number
+  /** Sampling temperature (max). > 0 → decoder fell back. */
+  temperature: number
+  /** Min chosen-token logprob (worst single decoded token). */
+  minTokenLogprob: number
+  /** Stdev of chosen-token logprobs (high = patchy confidence). */
+  tokenLogprobStdev: number
+  /** Levenshtein(free-decode, expected). 1.0 if dual-decode disabled. */
+  freeVsConstrainedSimilarity: number
+  /** Free-decode transcript (no prompt/prefix bias). Empty if disabled. */
+  freeText: string
+  words: SttWordTiming[]
+}
+
+// ============================================================
+// On-device LLM (tauri-plugin-corpan-llm) — consumed by tutor packs
+// ============================================================
+
+export type LlmChatMessage = { role: "system" | "user" | "assistant"; content: string }
+
+export type LlmChatOptions = {
+  temperature?: number
+  topP?: number
+  topK?: number
+  minP?: number
+  repeatPenalty?: number
+  presencePenalty?: number
+  maxTokens?: number
+  stop?: string[]
+  /** Suppress reasoning on hybrid Qwen3 models via the non-thinking prefill. */
+  noThink?: boolean
+}
+
+export type LlmStatus = {
+  loaded: boolean
+  modelId?: string | null
+  backend?: string | null
+  /** Available device memory in MB (fluctuates). */
+  availableMemoryMb?: number | null
+  /** Total physical RAM in MB — the stable device-class signal for model-size
+   *  selection. `null` where the platform can't be measured (e.g. Windows). */
+  totalMemoryMb?: number | null
+}
+
+/** Callbacks for a streaming generation. */
+export type LlmChatHandlers = {
+  onToken: (token: string) => void
+  onDone: (full: string, stats?: { totalTokens: number; elapsedMs: number }) => void
+  onError: (error: string, code?: string) => void
+}
+
+/** Handle to an in-flight generation. */
+export type LlmChatHandle = {
+  sessionId: string
+  /** Request cancellation; the stream ends via onDone/onError shortly after. */
+  cancel: () => Promise<void>
+}
+
+/** Args to download+install a base model pack (a GGUF content-pack ZIP). */
+export type LlmModelInstall = {
+  /** Pack id, e.g. "llm-base-qwen3-4b-v1". Becomes the on-disk dir name. */
+  packId: string
+  /** Full ZIP URL (CDN). */
+  url: string
+  /** Optional sha256 of the ZIP; verified when present. */
+  sha256?: string
+}
+
+/** Progress during a model install. Mirrors the host `pack-install-progress`
+ *  event: `downloading` carries byte counts; other stages carry a message. */
+export type LlmInstallProgress = {
+  stage: "downloading" | "verifying" | "extracting" | "finalizing" | "error" | string
+  /** Bytes downloaded so far (downloading stage), else 0. */
+  progress: number
+  /** Total bytes (downloading stage, when known), else 0. */
+  total: number
+  message: string
+}
+
+/**
+ * On-device LLM runtime bridge (Metal on Apple / CPU elsewhere). Optional on the
+ * host so packs feature-detect; present whenever `tauri-plugin-corpan-llm` is
+ * registered. Streaming is callback-based (the host owns the Tauri event
+ * listeners and tears them down on done/error/cancel) so packs never touch
+ * `window.__TAURI__`.
+ */
+export type LlmApi = {
+  status: () => Promise<LlmStatus>
+  /** Whether a model pack's files are present on disk (does not load it). */
+  isInstalled: (packId: string) => Promise<boolean>
+  /** Download + extract a base model pack ZIP to disk, with progress. */
+  install: (args: LlmModelInstall, onProgress?: (p: LlmInstallProgress) => void) => Promise<void>
+  /** Load a base model pack (e.g. "llm-base-qwen3-4b-v1"). Multi-second cold load. */
+  load: (args: { modelPackId: string; gpuLayers?: number; contextSize?: number }) => Promise<void>
+  unload: () => Promise<void>
+  /** Begin a streaming chat. Resolves once the session is registered + listeners armed. */
+  chat: (
+    args: { messages: LlmChatMessage[]; options?: LlmChatOptions },
+    handlers: LlmChatHandlers,
+  ) => Promise<LlmChatHandle>
+}
+
+// --- ASR (pure transcription) + model registry ---------------------------
+// The provider-agnostic dictation surface (distinct from `SttApi` above,
+// which is Parlometron's whisper-backed scoring). Mirrors the SDK
+// (`packs/sdk/index.d.ts`) and the `@shared/asr` module. Design:
+// corpan/docs/STT_MASTERPLAN.md + ASR_INTEGRATION_MANIFEST.md.
+export type AsrProviderId = "native" | "whisper" | "qwen3" | "sherpa"
+export type AsrLatencyClass = "instant" | "fast" | "batch"
+export type AsrCaptureMode = "push_to_talk" | "auto_stop"
+
+export type AsrCapability = {
+  providerId: AsrProviderId
+  languages: string[]
+  onDevice: boolean
+  modelSizeMB: number
+  residentMemoryMB: number
+  streaming: boolean
+  latencyClass: AsrLatencyClass
+  needsDownload: boolean
+  autoregressive: boolean
+}
+
+export type AsrTranscript = {
+  text: string
+  confidence: number
+  language: string
+}
+
+export type AsrSession = {
+  onPartial: (cb: (text: string) => void) => void
+  onLevel: (cb: (rms: number, tMs: number) => void) => void
+  onError: (cb: (code: string, message?: string) => void) => void
+  stop: () => Promise<AsrTranscript>
+  cancel: () => void
+}
+
+export type AsrProvider = {
+  readonly id: AsrProviderId
+  capabilities: () => Promise<AsrCapability>
+  isAvailable: (lang: string) => Promise<{ ok: boolean; needsDownload: boolean }>
+  ensure: (lang: string) => Promise<{ ready: boolean; downloading: boolean }>
+  transcribe: (opts: { lang: string; mode: AsrCaptureMode }) => Promise<AsrSession>
+}
+
+export type AsrGoal = "dictation" | "challenge"
+
+/** Selection surface. `pick` returns null = "use the keyboard" (the permanent
+ *  floor — callers MUST handle null). */
+export type AsrApi = {
+  provider: (id: AsrProviderId) => Promise<AsrProvider | null>
+  pick: (args: {
+    lang: string
+    budgetMB?: number
+    goal?: AsrGoal
+  }) => Promise<AsrProvider | null>
+}
+
+export type AssetKind =
+  | "asr-model" | "llm" | "narration" | "phrase-pack" | "sound"
+
+export type AssetRecord = {
+  id: string
+  kind: AssetKind
+  sizeMB: number
+  path: string | null
+  refCount: number
+}
+
+export type ModelBudget = {
+  availableMB: number
+  physicalMB: number
+  resident: { id: string; mb: number; kind: AssetKind }[]
+}
+
+/** Refcount/dedup store for all on-device assets + a live memory Budget
+ *  Arbiter. The Rust backing (refcount install/evict/locate/list) is Phase-2;
+ *  `budget`/`fits`/`whatFitsAlongside` are answerable today from device
+ *  memory + the resident LLM. */
+export type ModelsApi = {
+  list: () => Promise<AssetRecord[]>
+  ensure: (
+    assetId: string,
+    args: { source: string; sizeMB: number; kind: AssetKind },
+  ) => Promise<{ ready: boolean; downloading: boolean }>
+  locate: (assetId: string) => Promise<string | null>
+  evict: (assetId: string) => Promise<void>
+  budget: () => Promise<ModelBudget>
+  fits: (
+    req: { assetId?: string; residentMB?: number },
+  ) => Promise<{ fits: boolean; mustEvict: string[] }>
+  whatFitsAlongside: (residentIds: string[]) => Promise<AsrCapability[]>
+}
+
+export type SttApi = {
+  isAvailable: () => Promise<boolean>
+  getStatus: () => Promise<SttStatus>
+  prepare: (opts?: { model?: string }) => Promise<SttPrepareResult>
+  startSession: (opts: {
+    sessionId: string
+    language: string
+    expectedText: string
+  }) => Promise<SttStartSessionResult>
+  stopSession: (opts: { sessionId: string }) => Promise<SttTranscriptionResult>
+  cancelSession: (opts: { sessionId: string }) => Promise<void>
+  /**
+   * Wipes the on-disk model dir + download cache for the given model name
+   * (or default if omitted). Used as an explicit reset.
+   */
+  wipeModel?: (opts?: { model?: string }) => Promise<{
+    wiped: boolean
+    message?: string
+  }>
+  /**
+   * Inspects on-disk model files. Returns `valid: true` when every
+   * required `.mlmodelc/weights/weight.bin` is present and ≥ 1 KB.
+   */
+  validateModel?: (opts?: { model?: string }) => Promise<{
+    model: string
+    valid: boolean
+    problems: string[]
+  }>
+  /**
+   * Downloads a model into the app's data dir, fsyncs/moves it into place,
+   * and verifies the ggml header plus tail readback. The expensive native
+   * init happens later in `prepare()`, under the runtime memory gate.
+   * Calls `onProgress` with `phase` in
+   * `downloading | verifying | verified | failed`. Throws on failure.
+   */
+  installModel?: (
+    opts: {
+      model: string
+      /** Optional override of the source URL. Used for models we host
+       *  ourselves on our own CDN (e.g. self-quantized Whisper Large
+       *  q8 ggerganov doesn't publish). When omitted the native
+       *  plugin defaults to the hardcoded HuggingFace base. */
+      downloadUrl?: string
+    },
+    onProgress?: (event: SttInstallProgress) => void,
+  ) => Promise<{ installed: boolean; model: string; alreadyInstalled: boolean }>
+  /**
+   * Reports the disk-truth install state for every requested variant in a
+   * single round-trip. Use this on boot and when opening the setup overlay
+   * — the pack should not cache install booleans in localStorage.
+   */
+  listInstalled?: (opts: {
+    models: string[]
+  }) => Promise<SttListInstalledResult>
+  /**
+   * Drops the in-memory WhisperKit instance without touching disk. Safe
+   * to call on memory warnings or when the pack closes; the next
+   * `prepare()` is a load, not a download.
+   */
+  unload?: () => Promise<{ unloaded: boolean }>
+  /**
+   * Tear down the audio engine + audio session entirely. Distinct from
+   * `cancelSession`, which deliberately keeps the engine warm across
+   * back-to-back recordings inside one pack session. **Call this from
+   * the pack's `unmount`** — without it, on iOS the orange mic
+   * indicator stays on and `.duckOthers` keeps the rest of the app
+   * (and other apps) softer until the next process restart.
+   */
+  releaseAudio?: () => Promise<void>
+  /**
+   * Subscribes to a per-buffer audio-level stream emitted by the
+   * native plugin while a recording session is active. Fires at the
+   * platform's natural buffer cadence — ~11 Hz on iOS, ~8 Hz on
+   * Android. Pack JS uses this for client-side silence detection
+   * (auto-stop on quiet). Returns an unsubscribe function. Optional
+   * because older host builds don't ship it; packs should feature-
+   * detect.
+   */
+  subscribeAudioLevel?: (
+    callback: (event: SttAudioLevelEvent) => void,
+  ) => Promise<() => void>
+}
+
+export type SttAudioLevelEvent = {
+  /** RMS amplitude of the latest captured buffer, 0..1. */
+  rms: number
+  /** Milliseconds since the current session started. */
+  t: number
+}
+
+export type SttInstallProgress = {
+  model: string
+  phase: "downloading" | "verifying" | "verified" | "failed"
+  fraction?: number
+  completed?: number
+  total?: number
+  error?: string
+  /** Structured error code on `phase === "failed"`. Undefined otherwise. */
+  code?: SttErrorCode
+}
+
+/** A TTS voice the host can speak with (for a pack's sticky per-NPC voice). */
+export type HostVoiceInfo = {
+  id: string
+  name?: string
+  /** BCP-47 (e.g. "es-MX"). */
+  language: string
+  /** Gender when the platform exposes it (iOS/macOS do; Android often doesn't). */
+  gender?: "male" | "female" | "unspecified"
+  /** Native quality tier. Packs use this to default to the best installed voice. */
+  quality?:
+    | "default"
+    | "enhanced"
+    | "premium"
+    | "very_low"
+    | "low"
+    | "normal"
+    | "high"
+    | "very_high"
+  /** Android-only; true voices are unsuitable for offline-first packs. */
+  networkRequired?: boolean
+}
+
+/**
+ * Read-only snapshot of the host's Plus / subscription entitlement, handed to
+ * packs both via the `__CORPAN_ENTITLEMENT` global (back-compat) and the new
+ * typed `HostApi.entitlement` seam. Purely informational — packs decide what to
+ * gate; the host owns the actual purchase + paywall.
+ */
+export type ContentPackEntitlementSnapshot = {
+  /** Convenience flag: an active Corpán Plus subscription. */
+  plus: boolean
+  /** Anonymous per-install subject id (for server-side attribution). */
+  subjectId: string | null
+  /** Short-lived first-party entitlement token, when minted. */
+  entitlementToken: string | null
+  subscription: {
+    active: boolean
+    plan: "monthly" | "annual" | null
+    expiresAt: string | null
+    autoRenew: boolean
+  }
+  /** When the host last refreshed entitlement, if known. */
+  checkedAt: number | null
+}
+
+/**
+ * Where a pack is asking for the paywall. The host's paywall store defines the
+ * canonical union (`PaywallSurface`); packs may pass any of those OR a free
+ * string (forwarded to analytics) without taking a dependency on the host store.
+ */
+export type ContentPackPaywallContext = {
+  surface: string
+  packId?: string
+  bookTitle?: string
+  bookId?: string
+  language?: string
+  /** Visual skin hint (e.g. a reader passing its own theme). */
+  theme?: string
+}
+
+/**
+ * Typed host monetization seam. ADDITIVE + optional: packs that still read the
+ * `__CORPAN_PLUS` / `__CORPAN_ENTITLEMENT` globals and dispatch
+ * `corpan:request-unlock` keep working unchanged.
+ */
+export type HostEntitlementApi = {
+  /** Synchronous truth: is the user a Plus subscriber right now? */
+  isSubscribed: () => boolean
+  /** Full entitlement snapshot (same shape as the `__CORPAN_ENTITLEMENT` global). */
+  snapshot: () => ContentPackEntitlementSnapshot
+  /** Subscribe to entitlement changes; returns an unsubscribe function. */
+  onChange: (cb: (snapshot: ContentPackEntitlementSnapshot) => void) => () => void
+}
+
+/**
+ * A pack's per-pack visit streak (consecutive local days opened). Mirrors
+ * `StreakState` from packs/shared/streak — a retention signal shown to every
+ * user, never a gate.
+ */
+export type HostStreakState = {
+  /** Consecutive local days visited, ending today (or the last visit day). */
+  current: number
+  /** The longest `current` ever reached for this pack. */
+  longest: number
+  /** Local `YYYY-MM-DD` of the most recent recorded visit ("" if never). */
+  lastDay: string
 }
 
 export type HostApi = {
   speak: (uiCode: string, text: string) => Promise<void>
+  /** Speak concurrently (allows overlapping audio). Returns utterance ID. */
+  speakConcurrent?: (uiCode: string, text: string) => Promise<string>
   stopSpeech?: () => Promise<void>
+  /** Enumerate available TTS voices (optionally filtered to a language), with
+   *  gender when known — lets a pack pin a sticky, gender-matched voice per NPC. */
+  listVoices?: (uiCode?: string) => Promise<HostVoiceInfo[]>
+  /** Speak `text` with a SPECIFIC voice id (from `listVoices`), not just a
+   *  language — the mechanism behind a pack's per-NPC sticky voice. */
+  speakVoice?: (uiCode: string, text: string, voiceId: string) => Promise<void>
+  /** Render TTS to a RAW AUDIO buffer instead of speaking it — the capture path
+   *  music packs need (OS `speak()` ducks other audio and never restores, so a
+   *  music app plays captured TTS through its own Web Audio graph). Optional &
+   *  feature-detected: backed by native `synthesize_to_buffer` (iOS
+   *  AVSpeechSynthesizer.write / Android synthesizeToFile); rejects on desktop
+   *  and older hosts without the command. */
+  synthesizeToBuffer?: (
+    text: string,
+    lang: string,
+    voiceId?: string,
+  ) => Promise<{
+    pcm: ArrayBuffer
+    sampleRate: number
+    channels: number
+    durationMs: number
+    voiceId: string
+    codec: "wav" | "pcm-i16" | "pcm-f32"
+  }>
+  /** Copy text to the system clipboard (native — WKWebView blocks the web API). */
+  copyText?: (text: string) => Promise<void>
   dispose?: () => void
   getStackConfig: () => StackConfig
   onStackConfigChange: (listener: (config: StackConfig) => void) => () => void
-  getRandomEntry: () => Promise<unknown>
-  getRandomEntries?: (count: number) => Promise<unknown[]>
-  getEntryById: (entryId: number) => Promise<unknown>
+  /** Apply a partial config patch to the active stack (whitelisted axes). */
+  setStackConfig?: (patch: StackConfigPatch) => void
+  /** Open the host's compact Quick Settings sheet (speed / languages / levels /
+   *  active phrase packs) over the running pack. Feature-detect on older hosts. */
+  openQuickSettings?: () => void
+  /** Per-stack navigation history (for the phrase experience). */
+  history?: HostHistoryApi
+  /** Feed the host's rating-prompt counter (host owns the actual prompt). */
+  notifyUtterance?: () => void
+  /**
+   * Typed entitlement seam — the documented replacement for reading the
+   * `__CORPAN_PLUS` / `__CORPAN_ENTITLEMENT` globals (which still work). A pack
+   * uses `entitlement.isSubscribed()` to hard-gate synchronously, `snapshot()`
+   * for the full state, and `onChange()` to react to purchases/restores.
+   */
+  entitlement?: HostEntitlementApi
+  /**
+   * The CURRENT pack's visit streak (consecutive local days it was opened). A
+   * retention signal a pack can surface (e.g. "{{n}}-day streak") — read-only and
+   * never a gate. The host records the visit itself at the pack-enter boundary;
+   * this just reads the persisted state. Subscribe to the `corpan:streak-changed`
+   * window event to react live.
+   */
+  getStreak?: () => HostStreakState
+  /**
+   * Ask the host to surface the Corpán Plus paywall at a natural interaction
+   * boundary. The host re-applies its own guards (subscribed / IAP unavailable /
+   * frequency-cap) and resolves to whether the paywall ACTUALLY opened — the
+   * synchronous truth a hard gate needs (`false` means "stay open / let them
+   * continue"). The documented replacement for dispatching `corpan:request-unlock`
+   * (which still works).
+   */
+  requestPaywall?: (context: ContentPackPaywallContext) => Promise<boolean>
+  /**
+   * Ask the host to consider showing its in-app rating prompt. The host re-gates
+   * via its rating-store criteria / OS throttle, so this is safe to call on a
+   * natural boundary (e.g. pack exit) and will no-op when not yet eligible.
+   */
+  showRatingPrompt?: () => void
+  /** Installed phrase-pack registry (for source chips + enable/disable). */
+  phrasePacks?: HostPhrasePacksApi
+  getRandomEntry: () => Promise<EntryOut>
+  /**
+   * Sample N random entries. Accepts EITHER the legacy numeric `count` OR an
+   * options object carrying a CONTENT FILTER (`domains`/`levels`/`languageCodes`).
+   * The numeric form preserves the historical behaviour (user-global `levels`
+   * from settings, domains intentionally NOT forwarded). The options form lets a
+   * pack request a THEMED + LEVEL-SCALED draw — e.g. Corpan City binds a café NPC
+   * to food/everyday phrases and a dock keeper to travel phrases at the player's
+   * level — by forwarding the filter to `get_random_entries_with_translations`,
+   * whose relaxation ladder degrades a starved filter rather than returning empty.
+   * ADDITIVE + back-compatible: existing callers pass a number unchanged.
+   */
+  getRandomEntries?: (
+    q: number | { count: number; domains?: string[]; levels?: string[]; languageCodes?: string[] },
+  ) => Promise<EntryOut[]>
+  /**
+   * Resolve an entry by id. `source` defaults to `"base"` (bundled corpus).
+   * For phrase-pack entries, pass the pack id you stored alongside the
+   * `entry_id` (read from `EntryOut.source` on the original sample).
+   */
+  getEntryById: (entryId: number, source?: string) => Promise<EntryOut>
+  searchEntriesByText?: (options: {
+    text: string
+    languageCodes?: string[]
+    limit?: number
+    offset?: number
+  }) => Promise<EntryOut[]>
+  searchEntriesByTextCount?: (options: {
+    text: string
+    languageCodes?: string[]
+  }) => Promise<number>
+  queryPackDb?: (query: PackDbQuery) => Promise<PackDbQueryResult>
+  /** Download + extract a module ZIP into a subpath of this pack's on-disk dir
+   *  (e.g. a tutor pack's per-language data). Writes the pack manifest if absent
+   *  so `queryPackDb` can resolve the pack's `databases` map. */
+  installModuleZip?: (
+    args: { packId: string; subPath: string; url: string; sha256?: string; packManifest?: string },
+    onProgress?: (p: LlmInstallProgress) => void,
+  ) => Promise<void>
+  /** Whether `corpan-packs/<packId>/<relPath>` exists on disk and is non-empty. */
+  packFileExists?: (packId: string, relPath: string) => Promise<boolean>
+  /** Discover installed content packs of a given `packType` (e.g.
+   *  "tutomaton-rag-source"), surfacing source-descriptor fields from each pack's
+   *  manifest. Tutomaton's RAG SourceRegistry uses this to pick up installed
+   *  source packs at runtime. Native discovery is pending — ships as a `[]` stub,
+   *  so packs run with built-in sources only until the native command lands. */
+  discoverPacksByType?: (packType: string) => Promise<
+    Array<{
+      id: string
+      packId: string
+      name?: Record<string, string>
+      tutomatonLanguage: string | string[]
+      authoritative: boolean
+      priority?: number
+      categories?: string[]
+      schemaVersion?: number
+      requiredHostApis?: string[]
+      dbName?: string | null
+    }>
+  >
+  stt?: SttApi
+  /** On-device LLM runtime (present when tauri-plugin-corpan-llm is registered). */
+  llm?: LlmApi
+  /** Provider-agnostic dictation. `pick`/`provider` return null (→ keyboard)
+   *  until an asr-* provider plugin is registered; the seam is always present
+   *  so packs can program against it. */
+  asr?: AsrApi
+  /** On-device model & asset registry + memory Budget Arbiter. `budget`/`fits`/
+   *  `whatFitsAlongside` answer from real device memory + the resident LLM
+   *  today; the refcount store (install/evict/locate) lands with the registry
+   *  plugin (Phase-2). */
+  models?: ModelsApi
   isMock?: boolean
 }
 
@@ -30,6 +747,7 @@ export type ContentPackManifest = {
   entryType?: "script" | "module"
   sdkVersion?: string
   permissions?: string[]
+  databases?: Record<string, string>
   devRevision?: string
 }
 

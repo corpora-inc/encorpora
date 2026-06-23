@@ -1,0 +1,19 @@
+{
+  "id": "book_zheng_yi_sao",
+  "name": "Zheng Yi Sao: The Pirate Queen of the South China Sea",
+  "version": "0.2.4",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "metadata": {
+    "series": "Pirate Biographies: Lives That Changed the Sea",
+    "volume": 1,
+    "author": "Corpora",
+    "tts": true,
+    "estimatedListenTime": "~30 minutes"
+  }
+}

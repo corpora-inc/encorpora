@@ -103,8 +103,8 @@
         }
 
         .store-button:hover {
-            transform: translateY(-1px);
-            opacity: 0.9;
+            opacity: 0.85;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
         }
 
         .note {
@@ -226,7 +226,7 @@
 
         .install-options {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1rem;
         }
 
@@ -280,11 +280,11 @@
 
         .copy-button:hover {
             background: #404040;
-            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
         }
 
         .copy-button:active {
-            transform: translateY(0);
+            background: #262626;
         }
 
         .copy-button.copied {
@@ -332,11 +332,19 @@
             }
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17513523888"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17513523888');
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="breadcrumb">
-            <a href="{{BASE_PATH}}">← encorpora.io</a> / <a href="{{BASE_PATH}}corpan/">Corpán</a> / <a href="{{BASE_PATH}}corpan/games/">Games</a>
+            <a href="{{BASE_PATH}}">← encorpora.io</a> / <a href="{{BASE_PATH}}corpan/">Corpán</a> / <a href="{{BASE_PATH}}corpan/packs/">Packs</a>
         </div>
 
         <header>
@@ -345,7 +353,7 @@
             </div>
             <h1>{{GAME_NAME}}</h1>
             <p class="tagline">{{GAME_DESCRIPTION}}</p>
-            <p class="version">Version {{GAME_VERSION}}</p>
+            {{GAME_VERSION_BLOCK}}
 
             <div class="store-links">
                 <a href="https://apps.apple.com/gb/app/corp%C3%A1n/id6746082061" class="store-button" target="_blank" rel="noopener">
@@ -355,43 +363,20 @@
                     Get it on Android
                 </a>
             </div>
-            <p class="note">Play this game inside the Corpán app</p>
+            <p class="note">{{GAME_PLAY_NOTE}}</p>
 
-            <div class="dev-section">
-                <h3>Developer Install</h3>
-                <p>Install this pack in Corpán: Open Settings, tap the "Developer packs" button 7 times, then paste one of these URLs in the Install from URL section:</p>
-
-                <div class="install-options">
-                    <div class="install-option">
-                        <div class="install-option-header">
-                            <h4>Web Play</h4>
-                            <span class="install-badge">Always Latest</span>
-                        </div>
-                        <p>Loads from the web each time. Always gets updates automatically.</p>
-                        <button class="copy-button" onclick="copyUrl('manifest')">Copy Install URL</button>
-                    </div>
-
-                    <div class="install-option">
-                        <div class="install-option-header">
-                            <h4>Offline Download</h4>
-                            <span class="install-badge">Works Offline</span>
-                        </div>
-                        <p>Downloads once (5.6 MB). Works 100% offline after installation.</p>
-                        <button class="copy-button" onclick="copyUrl('zip')">Copy Install URL</button>
-                    </div>
-                </div>
-            </div>
+            {{DEV_SECTION}}
         </header>
 
         <main>
             {{VIDEO_SECTION}}
 
             <div class="section">
-                <h2>About This Game</h2>
+                <h2>About This Pack</h2>
                 <div class="features">
                     <div class="feature">
                         <h3>Interactive Learning</h3>
-                        <p>Practice language skills through engaging gameplay</p>
+                        <p>Practice language skills through engaging pack content</p>
                     </div>
                     <div class="feature">
                         <h3>Native Audio</h3>
@@ -407,7 +392,7 @@
 
         <footer>
             <p>
-                <a href="https://github.com/corpora-inc/encorpora/tree/main/corpan/games/{{GAME_ID}}" target="_blank" rel="noopener">
+                <a href="{{GAME_GITHUB}}" target="_blank" rel="noopener">
                     View on GitHub
                 </a>
                 ·
@@ -422,10 +407,23 @@
 
     <script>
         // URL mappings - these get filled in by the build script
-        const URLS = {
-            manifest: '{{BASE_PATH}}corpan/games/{{GAME_ID}}/manifest.json',
-            zip: '{{BASE_PATH}}corpan/games/{{GAME_ID}}.zip'
-        };
+        const URLS = {{URLS_JSON}};
+        const installHint = document.getElementById('install-hint');
+        const optionNodes = document.querySelectorAll('[data-install]');
+        const availableOptions = [];
+
+        optionNodes.forEach((node) => {
+            const key = node.getAttribute('data-install');
+            if (!key || !URLS[key]) {
+                node.remove();
+                return;
+            }
+            availableOptions.push(key);
+        });
+
+        if (availableOptions.length === 1 && installHint) {
+            installHint.textContent = 'Install this pack in Corpán: Open Settings, tap the "Developer packs" button 7 times, then paste this URL in the Install from URL section:';
+        }
 
         function showToast(message) {
             const toast = document.getElementById('copy-toast');

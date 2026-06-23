@@ -1,0 +1,1102 @@
+{
+  "en": {
+    "runtime": {
+      "antiRepeat": "(You already said: {lines}. Do not repeat yourself. Say something NEW and move the conversation forward.)",
+      "greetingSeed": "A traveler walks up to your station. Greet them warmly in English and invite them to talk. Reply only in English.",
+      "fallback": [
+        "Hello, traveler. Welcome to Corpan City.",
+        "Tell me what you are looking for, and I will help.",
+        "Good luck out there. Come back any time."
+      ]
+    },
+    "genericSegue": {
+      "tag": "a game",
+      "chip": "Play",
+      "phrases": [
+        "Let me show you a quick game.",
+        "Let’s practice a little.",
+        "Here’s a short challenge."
+      ]
+    }
+  },
+  "ar": {
+    "runtime": {
+      "antiRepeat": "(لقد قلت بالفعل: {lines}. لا تكرر نفسك. قل شيئًا جديدًا وامضِ في المحادثة.)",
+      "greetingSeed": "سائح يقترب من محطتك. رحب بهم بحرارة باللغة العربية وادعهم للتحدث. رد فقط باللغة العربية.",
+      "fallback": [
+        "مرحبًا، أيها المسافر. مرحبًا بك في مدينة كوربان.",
+        "قل لي ماذا تبحث عنه، وسأساعدك.",
+        "حظًا سعيدًا هناك. عد في أي وقت."
+      ]
+    },
+    "genericSegue": {
+      "tag": "لعبة",
+      "chip": "العب",
+      "phrases": [
+        "دعني أريك لعبة سريعة.",
+        "لنمارس قليلاً.",
+        "إليك تحدٍ قصير."
+      ]
+    }
+  },
+  "bg": {
+    "runtime": {
+      "antiRepeat": "(Вече каза: {lines}. Не повтаряй себе. Кажи нещо НОВО и продължи разговора.)",
+      "greetingSeed": "Пътник се приближава до вашата станция. Поздравете ги топло на български и ги поканете да говорят. Отговорете само на български.",
+      "fallback": [
+        "Здравей, пътнико. Добре дошъл в Корпан Сити.",
+        "Кажи ми какво търсиш и ще помогна.",
+        "Успех навън. Връщай се по всяко време."
+      ]
+    },
+    "genericSegue": {
+      "tag": "игра",
+      "chip": "Играй",
+      "phrases": [
+        "Нека ти покажа бърза игра.",
+        "Нека да практикуваме малко.",
+        "Ето едно кратко предизвикателство."
+      ]
+    }
+  },
+  "bn": {
+    "runtime": {
+      "antiRepeat": "(আপনি ইতিমধ্যে বলেছেন: {lines}. নিজেকে পুনরাবৃত্তি করবেন না। কিছু নতুন বলুন এবং কথোপকথন এগিয়ে নিন।)",
+      "greetingSeed": "একজন যাত্রী আপনার স্টেশনের কাছে আসেন। তাদের উষ্ণ অভ্যর্থনা জানান বাংলায় এবং কথা বলার জন্য আমন্ত্রণ জানান। শুধুমাত্র বাংলায় উত্তর দিন।",
+      "fallback": [
+        "হ্যালো, যাত্রী। কর্পান সিটিতে স্বাগতম।",
+        "আপনি কি খুঁজছেন আমাকে বলুন, আমি সাহায্য করব।",
+        "সেখানে শুভকামনা। যে কোনও সময় ফিরে আসুন।"
+      ]
+    },
+    "genericSegue": {
+      "tag": "একটি খেলা",
+      "chip": "খেলুন",
+      "phrases": [
+        "আমি আপনাকে একটি দ্রুত খেলা দেখাই।",
+        "চলুন একটু অনুশীলন করি।",
+        "এটি একটি সংক্ষিপ্ত চ্যালেঞ্জ।"
+      ]
+    }
+  },
+  "ca": {
+    "runtime": {
+      "antiRepeat": "(Ja has dit: {lines}. No et repeteix. Digues alguna cosa NOVA i fes avançar la conversa.)",
+      "greetingSeed": "Un viatger s'acosta a la teva estació. Saluda'l càlidament en català i convida'l a parlar. Respon només en català.",
+      "fallback": [
+        "Hola, viatger. Benvingut a Corpan City.",
+        "Digues-me què busques i t'ajudaré.",
+        "Bona sort allà fora. Torna quan vulguis."
+      ]
+    },
+    "genericSegue": {
+      "tag": "un joc",
+      "chip": "Juga",
+      "phrases": [
+        "Deixa'm mostrar-te un joc ràpid.",
+        "Practiquem una mica.",
+        "Aquí tens un repte curt."
+      ]
+    }
+  },
+  "cs": {
+    "runtime": {
+      "antiRepeat": "(Už jsi řekl: {lines}. Neopakuj se. Řekni něco NOVÉHO a posuň konverzaci dál.)",
+      "greetingSeed": "Cestovatel přichází k vaší stanici. Srdečně je pozdravte česky a pozvěte je k rozhovoru. Odpovězte pouze česky.",
+      "fallback": [
+        "Ahoj, cestovateli. Vítej ve městě Corpan.",
+        "Řekni mi, co hledáš, a já ti pomohu.",
+        "Hodně štěstí venku. Přijď kdykoli zpět."
+      ]
+    },
+    "genericSegue": {
+      "tag": "hra",
+      "chip": "Hraj",
+      "phrases": [
+        "Nech mě ti ukázat rychlou hru.",
+        "Pojďme si trochu procvičit.",
+        "Tady je krátká výzva."
+      ]
+    }
+  },
+  "da": {
+    "runtime": {
+      "antiRepeat": "(Du har allerede sagt: {lines}. Gentag ikke dig selv. Sig noget NYT og gå samtalen fremad.)",
+      "greetingSeed": "En rejsende går op til din station. Hils dem varmt på dansk og inviter dem til at tale. Svar kun på dansk.",
+      "fallback": [
+        "Hej, rejsende. Velkommen til Corpan City.",
+        "Fortæl mig, hvad du leder efter, så vil jeg hjælpe.",
+        "Held og lykke derude. Kom tilbage når som helst."
+      ]
+    },
+    "genericSegue": {
+      "tag": "et spil",
+      "chip": "Spil",
+      "phrases": [
+        "Lad mig vise dig et hurtigt spil.",
+        "Lad os øve lidt.",
+        "Her er en kort udfordring."
+      ]
+    }
+  },
+  "de": {
+    "runtime": {
+      "antiRepeat": "(Du hast bereits gesagt: {lines}. Wiederhole dich nicht. Sage etwas NEUES und bringe das Gespräch voran.)",
+      "greetingSeed": "Ein Reisender kommt zu deiner Station. Begrüße sie herzlich auf Deutsch und lade sie ein, zu sprechen. Antworte nur auf Deutsch.",
+      "fallback": [
+        "Hallo, Reisender. Willkommen in Corpan City.",
+        "Sag mir, wonach du suchst, und ich helfe dir.",
+        "Viel Glück da draußen. Komm jederzeit zurück."
+      ]
+    },
+    "genericSegue": {
+      "tag": "ein Spiel",
+      "chip": "Spielen",
+      "phrases": [
+        "Lass mich dir ein schnelles Spiel zeigen.",
+        "Lass uns ein wenig üben.",
+        "Hier ist eine kurze Herausforderung."
+      ]
+    }
+  },
+  "el": {
+    "runtime": {
+      "antiRepeat": "(Έχεις ήδη πει: {lines}. Μην επαναλαμβάνεσαι. Πες κάτι ΝΕΟ και προχώρησε τη συζήτηση.)",
+      "greetingSeed": "Ένας ταξιδιώτης πλησιάζει στον σταθμό σας. Χαιρετήστε τους θερμά στα ελληνικά και προσκαλέστε τους να μιλήσουν. Απαντήστε μόνο στα ελληνικά.",
+      "fallback": [
+        "Γειά σου, ταξιδιώτη. Καλώς ήρθες στην πόλη Κόρπαν.",
+        "Πες μου τι ψάχνεις και θα σε βοηθήσω.",
+        "Καλή τύχη εκεί έξω. Επιστρέφεις οποιαδήποτε στιγμή."
+      ]
+    },
+    "genericSegue": {
+      "tag": "ένα παιχνίδι",
+      "chip": "Παίξε",
+      "phrases": [
+        "Άφησέ με να σου δείξω ένα γρήγορο παιχνίδι.",
+        "Ας εξασκηθούμε λίγο.",
+        "Ορίστε μια σύντομη πρόκληση."
+      ]
+    }
+  },
+  "es": {
+    "runtime": {
+      "antiRepeat": "(Ya dijiste: {lines}. No te repitas. Di algo NUEVO y avanza la conversación.)",
+      "greetingSeed": "Un viajero se acerca a tu estación. Salúdalos cálidamente en español e invítalos a hablar. Responde solo en español.",
+      "fallback": [
+        "Hola, viajero. Bienvenido a Corpan City.",
+        "Dime qué estás buscando y te ayudaré.",
+        "Buena suerte allá afuera. Vuelve cuando quieras."
+      ]
+    },
+    "genericSegue": {
+      "tag": "un juego",
+      "chip": "Jugar",
+      "phrases": [
+        "Déjame mostrarte un juego rápido.",
+        "Practiquemos un poco.",
+        "Aquí tienes un desafío corto."
+      ]
+    }
+  },
+  "fa": {
+    "runtime": {
+      "antiRepeat": "(شما قبلاً گفتید: {lines}. خودتان را تکرار نکنید. چیزی جدید بگویید و گفتگو را پیش ببرید.)",
+      "greetingSeed": "یک مسافر به ایستگاه شما نزدیک می‌شود. با گرمی به زبان فارسی به آنها سلام کنید و از آنها دعوت کنید تا صحبت کنند. فقط به زبان فارسی پاسخ دهید.",
+      "fallback": [
+        "سلام، مسافر. به شهر کورپن خوش آمدید.",
+        "به من بگویید چه چیزی را جستجو می‌کنید و من کمک می‌کنم.",
+        "برای شما آرزوی موفقیت می‌کنم. هر زمان که خواستید برگردید."
+      ]
+    },
+    "genericSegue": {
+      "tag": "یک بازی",
+      "chip": "بازی کن",
+      "phrases": [
+        "بگذارید یک بازی سریع به شما نشان دهم.",
+        "بیایید کمی تمرین کنیم.",
+        "این یک چالش کوتاه است."
+      ]
+    }
+  },
+  "fi": {
+    "runtime": {
+      "antiRepeat": "(Olet jo sanonut: {lines}. Älä toista itseäsi. Sano jotain UUTTA ja vie keskustelua eteenpäin.)",
+      "greetingSeed": "Matkustaja lähestyy asemaasi. Tervetuloa heitä lämpimästi suomeksi ja kutsu heitä puhumaan. Vastaa vain suomeksi.",
+      "fallback": [
+        "Hei, matkustaja. Tervetuloa Corpan Cityyn.",
+        "Kerro minulle, mitä etsit, niin autan.",
+        "Onnea siellä ulkona. Tule takaisin milloin vain."
+      ]
+    },
+    "genericSegue": {
+      "tag": "peli",
+      "chip": "Pelaa",
+      "phrases": [
+        "Anna minun näyttää sinulle nopea peli.",
+        "Harjoitellaan vähän.",
+        "Tässä on lyhyt haaste."
+      ]
+    }
+  },
+  "fr": {
+    "runtime": {
+      "antiRepeat": "(Vous avez déjà dit : {lines}. Ne vous répétez pas. Dites quelque chose de NOUVEAU et faites avancer la conversation.)",
+      "greetingSeed": "Un voyageur s'approche de votre station. Accueillez-le chaleureusement en français et invitez-le à parler. Répondez uniquement en français.",
+      "fallback": [
+        "Bonjour, voyageur. Bienvenue à Corpan City.",
+        "Dites-moi ce que vous cherchez et je vous aiderai.",
+        "Bonne chance là-bas. Revenez quand vous voulez."
+      ]
+    },
+    "genericSegue": {
+      "tag": "un jeu",
+      "chip": "Jouer",
+      "phrases": [
+        "Laissez-moi vous montrer un jeu rapide.",
+        "Pratiquons un peu.",
+        "Voici un petit défi."
+      ]
+    }
+  },
+  "gu": {
+    "runtime": {
+      "antiRepeat": "(તમે પહેલાથી જ કહ્યું છે: {lines}. તમારું પુનરાવર્તન ન કરો. કંઈક નવું કહો અને સંવાદને આગળ વધારશો.)",
+      "greetingSeed": "એક મુસાફર તમારી સ્ટેશનની નજીક આવે છે. તેમને ગુજરાતી માં ઉષ્ણ અભિવાદન કરો અને વાત કરવા માટે આમંત્રણ આપો. ફક્ત ગુજરાતી માં જવાબ આપો.",
+      "fallback": [
+        "હેલો, મુસાફર. કોર્પન સિટીમાં આપનું સ્વાગત છે.",
+        "તમે શું શોધી રહ્યા છો તે મને કહો, હું મદદ કરીશ.",
+        "ત્યાં બહાર શુભકામનાઓ. જ્યારે ઇચ્છો પાછા આવો."
+      ]
+    },
+    "genericSegue": {
+      "tag": "એક રમત",
+      "chip": "રમત રમો",
+      "phrases": [
+        "મને તમને ઝડપી રમત બતાવવાની મંજૂરી આપો.",
+        "ચાલો થોડું પ્રેક્ટિસ કરીએ.",
+        "આ એક ટૂંકું પડકાર છે."
+      ]
+    }
+  },
+  "he": {
+    "runtime": {
+      "antiRepeat": "(כבר אמרת: {lines}. אל תחזור על עצמך. אמור משהו חדש והמשך את השיחה.)",
+      "greetingSeed": "מטייל מתקרב לתחנה שלך. קבל אותם בחום בעברית והזמן אותם לדבר. ענה רק בעברית.",
+      "fallback": [
+        "שלום, מטייל. ברוך הבא לעיר קורפן.",
+        "תגיד לי מה אתה מחפש ואני אעזור.",
+        "בהצלחה שם בחוץ. תחזור מתי שתרצה."
+      ]
+    },
+    "genericSegue": {
+      "tag": "משחק",
+      "chip": "שחק",
+      "phrases": [
+        "תן לי להראות לך משחק מהיר.",
+        "בוא נתרגל קצת.",
+        "הנה אתגר קצר."
+      ]
+    }
+  },
+  "hi": {
+    "runtime": {
+      "antiRepeat": "(आपने पहले ही कहा: {lines}. खुद को दोहराएं नहीं। कुछ नया कहें और बातचीत को आगे बढ़ाएं।)",
+      "greetingSeed": "एक यात्री आपकी स्टेशन के पास आता है। उन्हें हिंदी में गर्मजोशी से स्वागत करें और बात करने के लिए आमंत्रित करें। केवल हिंदी में उत्तर दें।",
+      "fallback": [
+        "नमस्ते, यात्री। कॉर्पन सिटी में आपका स्वागत है।",
+        "मुझे बताएं कि आप क्या खोज रहे हैं, मैं मदद करूंगा।",
+        "वहाँ बाहर शुभकामनाएँ। कभी भी वापस आना।"
+      ]
+    },
+    "genericSegue": {
+      "tag": "एक खेल",
+      "chip": "खेलें",
+      "phrases": [
+        "मुझे आपको एक त्वरित खेल दिखाने दें।",
+        "चलो थोड़ा अभ्यास करें।",
+        "यहाँ एक छोटा चुनौती है।"
+      ]
+    }
+  },
+  "hr": {
+    "runtime": {
+      "antiRepeat": "(Već si rekao: {lines}. Ne ponavljaj se. Reci nešto NOVO i pomakni razgovor naprijed.)",
+      "greetingSeed": "Putnik se približava tvojoj stanici. Srdačno ih pozdravi na hrvatskom i pozovi ih da razgovaraju. Odgovori samo na hrvatskom.",
+      "fallback": [
+        "Bok, putniče. Dobrodošao u Corpan City.",
+        "Reci mi što tražiš i pomoći ću ti.",
+        "Sretno vani. Vratite se bilo kada."
+      ]
+    },
+    "genericSegue": {
+      "tag": "igra",
+      "chip": "Igraj",
+      "phrases": [
+        "Pokažem ti brzu igru.",
+        "Vježbajmo malo.",
+        "Evo kratkog izazova."
+      ]
+    }
+  },
+  "hu": {
+    "runtime": {
+      "antiRepeat": "(Már mondtad: {lines}. Ne ismételd magad. Mondj valami ÚJAT, és haladj a beszélgetésben.)",
+      "greetingSeed": "Egy utazó közelít az állomásodhoz. Üdvözöld őket melegen magyarul, és hívd meg őket beszélgetni. Csak magyarul válaszolj.",
+      "fallback": [
+        "Helló, utazó. Üdvözöljük a Corpan Cityben.",
+        "Mondd el, mit keresel, és segítek.",
+        "Sok szerencsét odakint. Gyere vissza bármikor."
+      ]
+    },
+    "genericSegue": {
+      "tag": "egy játék",
+      "chip": "Játssz",
+      "phrases": [
+        "Hadd mutassak neked egy gyors játékot.",
+        "Gyakoroljuk egy kicsit.",
+        "Itt egy rövid kihívás."
+      ]
+    }
+  },
+  "id": {
+    "runtime": {
+      "antiRepeat": "(Anda sudah mengatakan: {lines}. Jangan ulangi diri sendiri. Katakan sesuatu yang BARU dan lanjutkan percakapan.)",
+      "greetingSeed": "Seorang pelancong mendekati stasiun Anda. Sambut mereka dengan hangat dalam bahasa Indonesia dan ajak mereka untuk berbicara. Balas hanya dalam bahasa Indonesia.",
+      "fallback": [
+        "Halo, pelancong. Selamat datang di Corpan City.",
+        "Katakan padaku apa yang kamu cari, dan aku akan membantu.",
+        "Semoga beruntung di luar sana. Kembali kapan saja."
+      ]
+    },
+    "genericSegue": {
+      "tag": "sebuah permainan",
+      "chip": "Main",
+      "phrases": [
+        "Biarkan saya menunjukkan permainan cepat.",
+        "Mari kita berlatih sedikit.",
+        "Ini tantangan singkat."
+      ]
+    }
+  },
+  "it": {
+    "runtime": {
+      "antiRepeat": "(Hai già detto: {lines}. Non ripeterti. Dì qualcosa di NUOVO e fai avanzare la conversazione.)",
+      "greetingSeed": "Un viaggiatore si avvicina alla tua stazione. Accoglili calorosamente in italiano e invitali a parlare. Rispondi solo in italiano.",
+      "fallback": [
+        "Ciao, viaggiatore. Benvenuto a Corpan City.",
+        "Dimmi cosa stai cercando e ti aiuterò.",
+        "Buona fortuna là fuori. Torna quando vuoi."
+      ]
+    },
+    "genericSegue": {
+      "tag": "un gioco",
+      "chip": "Gioca",
+      "phrases": [
+        "Lascia che ti mostri un gioco veloce.",
+        "Pratichiamo un po'.",
+        "Ecco una breve sfida."
+      ]
+    }
+  },
+  "ja": {
+    "runtime": {
+      "antiRepeat": "(あなたはすでに言いました: {lines}. 自分を繰り返さないでください。新しいことを言って会話を進めてください。)",
+      "greetingSeed": "旅行者があなたの駅に近づいてきます。彼らを日本語で温かく迎え、話すように招待してください。日本語でのみ返信してください。",
+      "fallback": [
+        "こんにちは、旅行者。コーパンシティへようこそ。",
+        "あなたが探しているものを教えてください、私は助けます。",
+        "外での幸運を祈ります。いつでも戻ってきてください。"
+      ]
+    },
+    "genericSegue": {
+      "tag": "ゲーム",
+      "chip": "プレイ",
+      "phrases": [
+        "簡単なゲームをお見せしましょう。",
+        "少し練習しましょう。",
+        "短いチャレンジです。"
+      ]
+    }
+  },
+  "ko": {
+    "runtime": {
+      "antiRepeat": "(당신은 이미 말했습니다: {lines}. 자신을 반복하지 마십시오. 새로운 것을 말하고 대화를 진행하십시오.)",
+      "greetingSeed": "여행자가 당신의 역에 다가옵니다. 그들을 따뜻하게 한국어로 맞이하고 대화하도록 초대하세요. 한국어로만 대답하세요.",
+      "fallback": [
+        "안녕하세요, 여행자. 코르판 시티에 오신 것을 환영합니다.",
+        "당신이 찾고 있는 것을 말해 주세요, 제가 도와드리겠습니다.",
+        "밖에서 행운을 빕니다. 언제든지 돌아오세요."
+      ]
+    },
+    "genericSegue": {
+      "tag": "게임",
+      "chip": "플레이",
+      "phrases": [
+        "빠른 게임을 보여드리겠습니다.",
+        "조금 연습해 봅시다.",
+        "짧은 도전입니다."
+      ]
+    }
+  },
+  "lt": {
+    "runtime": {
+      "antiRepeat": "(Jau pasakei: {lines}. Ne kartok savęs. Pasakyk kažką NAUJO ir judėk pokalbyje į priekį.)",
+      "greetingSeed": "Keliautojas artėja prie jūsų stoties. Šiltai juos pasveikinkite lietuviškai ir pakvieskite kalbėtis. Atsakykite tik lietuviškai.",
+      "fallback": [
+        "Sveiki, keliautojau. Sveiki atvykę į Corpan City.",
+        "Pasakykite man, ko ieškote, ir aš padėsiu.",
+        "Sėkmės ten. Grįžkite bet kada."
+      ]
+    },
+    "genericSegue": {
+      "tag": "žaidimas",
+      "chip": "Žaisti",
+      "phrases": [
+        "Leiskite man parodyti jums greitą žaidimą.",
+        "Pasimokykime šiek tiek.",
+        "Štai trumpas iššūkis."
+      ]
+    }
+  },
+  "mr": {
+    "runtime": {
+      "antiRepeat": "(तुम्ही आधीच सांगितले: {lines}. स्वतःला पुनरावृत्ती करू नका. काहीतरी नवीन सांगा आणि संवाद पुढे वाढवा.)",
+      "greetingSeed": "एक प्रवासी तुमच्या स्थानकाकडे येतो. त्यांना मराठीत उष्ण अभिवादन करा आणि बोलण्यासाठी आमंत्रित करा. फक्त मराठीत उत्तर द्या.",
+      "fallback": [
+        "नमस्कार, प्रवासी. कॉर्पन सिटीमध्ये तुमचे स्वागत आहे.",
+        "तुम्ही काय शोधत आहात ते मला सांगा, मी मदत करीन.",
+        "तिथे बाहेर शुभेच्छा. कधीही परत या."
+      ]
+    },
+    "genericSegue": {
+      "tag": "एक खेळ",
+      "chip": "खेळा",
+      "phrases": [
+        "माझ्या तुम्हाला एक जलद खेळ दाखवू द्या.",
+        "चला थोडा सराव करूया.",
+        "हे एक लहान आव्हान आहे."
+      ]
+    }
+  },
+  "ms": {
+    "runtime": {
+      "antiRepeat": "(Anda sudah mengatakan: {lines}. Jangan ulangi diri sendiri. Katakan sesuatu yang BARU dan lanjutkan percakapan.)",
+      "greetingSeed": "Seorang pelancong mendekati stasiun Anda. Sambut mereka dengan hangat dalam bahasa Melayu dan ajak mereka untuk berbicara. Balas hanya dalam bahasa Melayu.",
+      "fallback": [
+        "Halo, pelancong. Selamat datang di Corpan City.",
+        "Katakan pada saya apa yang anda cari, dan saya akan membantu.",
+        "Semoga berjaya di luar sana. Kembali bila-bila masa."
+      ]
+    },
+    "genericSegue": {
+      "tag": "sebuah permainan",
+      "chip": "Main",
+      "phrases": [
+        "Biarkan saya menunjukkan permainan cepat.",
+        "Mari kita berlatih sedikit.",
+        "Ini cabaran pendek."
+      ]
+    }
+  },
+  "ne": {
+    "runtime": {
+      "antiRepeat": "(तपाईंले पहिले नै भनेको छ: {lines}. आफूलाई दोहोर्याउनुहोस्। नयाँ कुरा भन्नुहोस् र संवादलाई अघि बढाउनुहोस्।)",
+      "greetingSeed": "एक यात्री तपाईंको स्टेशनमा आउँछ। तिनीहरूलाई नेपालीमा तातो स्वागत गर्नुहोस् र कुरा गर्नको लागि आमन्त्रित गर्नुहोस्। केवल नेपालीमा जवाफ दिनुहोस्।",
+      "fallback": [
+        "नमस्कार, यात्री। कोर्पन सिटीमा स्वागत छ।",
+        "तपाईं के खोज्दै हुनुहुन्छ मलाई भन्नुहोस्, म मद्दत गर्नेछु।",
+        "त्यहाँ बाहिर शुभकामना। कुनै पनि समयमा फर्कनुहोस्।"
+      ]
+    },
+    "genericSegue": {
+      "tag": "एक खेल",
+      "chip": "खेल्नुहोस्",
+      "phrases": [
+        "मलाई तपाईंलाई एक छिटो खेल देखाउन दिनुहोस्।",
+        "हामी थोरै अभ्यास गरौं।",
+        "यो एक छोटो चुनौती हो।"
+      ]
+    }
+  },
+  "nl": {
+    "runtime": {
+      "antiRepeat": "(Je hebt al gezegd: {lines}. Herhaal jezelf niet. Zeg iets NIEUWS en ga het gesprek verder.)",
+      "greetingSeed": "Een reiziger komt naar je station. Groet ze hartelijk in het Nederlands en nodig ze uit om te praten. Antwoord alleen in het Nederlands.",
+      "fallback": [
+        "Hallo, reiziger. Welkom in Corpan City.",
+        "Vertel me wat je zoekt en ik zal helpen.",
+        "Veel succes daarbuiten. Kom op elk moment terug."
+      ]
+    },
+    "genericSegue": {
+      "tag": "een spel",
+      "chip": "Speel",
+      "phrases": [
+        "Laat me je een snel spel laten zien.",
+        "Laten we een beetje oefenen.",
+        "Hier is een korte uitdaging."
+      ]
+    }
+  },
+  "no": {
+    "runtime": {
+      "antiRepeat": "(Du har allerede sagt: {lines}. Ikke gjenta deg selv. Si noe NYTT og gå samtalen videre.)",
+      "greetingSeed": "En reisende nærmer seg stasjonen din. Hils dem varmt på norsk og inviter dem til å snakke. Svar kun på norsk.",
+      "fallback": [
+        "Hei, reisende. Velkommen til Corpan City.",
+        "Fortell meg hva du leter etter, så vil jeg hjelpe.",
+        "Lykke til der ute. Kom tilbake når som helst."
+      ]
+    },
+    "genericSegue": {
+      "tag": "et spill",
+      "chip": "Spill",
+      "phrases": [
+        "La meg vise deg et raskt spill.",
+        "La oss øve litt.",
+        "Her er en kort utfordring."
+      ]
+    }
+  },
+  "pa": {
+    "runtime": {
+      "antiRepeat": "(ਤੁਸੀਂ ਪਹਿਲਾਂ ਹੀ ਕਿਹਾ ਹੈ: {lines}. ਆਪਣੇ ਆਪ ਨੂੰ ਦੁਹਰਾਓ ਨਾ ਕਰੋ। ਕੁਝ ਨਵਾਂ ਕਹੋ ਅਤੇ ਗੱਲਬਾਤ ਨੂੰ ਅੱਗੇ ਵਧਾਓ।)",
+      "greetingSeed": "ਇੱਕ ਯਾਤਰੀ ਤੁਹਾਡੇ ਸਟੇਸ਼ਨ ਦੇ ਨੇੜੇ ਆਉਂਦਾ ਹੈ। ਉਨ੍ਹਾਂ ਨੂੰ ਪੰਜਾਬੀ ਵਿੱਚ ਗਰਮਜੋਸ਼ੀ ਨਾਲ ਸਵਾਗਤ ਕਰੋ ਅਤੇ ਗੱਲ ਕਰਨ ਲਈ ਬੁਲਾਓ। ਸਿਰਫ ਪੰਜਾਬੀ ਵਿੱਚ ਜਵਾਬ ਦਿਓ।",
+      "fallback": [
+        "ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਯਾਤਰੀ। ਕੋਰਪਨ ਸਿਟੀ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ।",
+        "ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਤੁਸੀਂ ਕੀ ਲੱਭ ਰਹੇ ਹੋ, ਮੈਂ ਮਦਦ ਕਰਾਂਗਾ।",
+        "ਉੱਥੇ ਬਾਹਰ ਚੰਗੀ ਕਿਸਮਤ। ਕਦੇ ਵੀ ਵਾਪਸ ਆਓ।"
+      ]
+    },
+    "genericSegue": {
+      "tag": "ਇੱਕ ਖੇਡ",
+      "chip": "ਖੇਡੋ",
+      "phrases": [
+        "ਮੈਨੂੰ ਤੁਹਾਨੂੰ ਇੱਕ ਤੇਜ਼ ਖੇਡ ਦਿਖਾਉਣ ਦਿਓ।",
+        "ਚਲੋ ਕੁਝ ਅਭਿਆਸ ਕਰੀਏ।",
+        "ਇਹ ਇੱਕ ਛੋਟਾ ਚੁਣੌਤੀ ਹੈ।"
+      ]
+    }
+  },
+  "pl": {
+    "runtime": {
+      "antiRepeat": "(Już powiedziałeś: {lines}. Nie powtarzaj się. Powiedz coś NOWEGO i posuń rozmowę naprzód.)",
+      "greetingSeed": "Podróżny zbliża się do twojej stacji. Przywitaj go serdecznie po polsku i zaproś do rozmowy. Odpowiedz tylko po polsku.",
+      "fallback": [
+        "Cześć, podróżniku. Witaj w Corpan City.",
+        "Powiedz mi, czego szukasz, a pomogę ci.",
+        "Powodzenia na zewnątrz. Wróć w każdej chwili."
+      ]
+    },
+    "genericSegue": {
+      "tag": "gra",
+      "chip": "Graj",
+      "phrases": [
+        "Pozwól, że pokażę ci szybką grę.",
+        "Poćwiczmy trochę.",
+        "Oto krótkie wyzwanie."
+      ]
+    }
+  },
+  "pt": {
+    "runtime": {
+      "antiRepeat": "(Você já disse: {lines}. Não se repita. Diga algo NOVO e avance a conversa.)",
+      "greetingSeed": "Um viajante se aproxima da sua estação. Cumprimente-os calorosamente em português e convide-os a conversar. Responda apenas em português.",
+      "fallback": [
+        "Olá, viajante. Bem-vindo à Corpan City.",
+        "Diga-me o que você está procurando e eu ajudarei.",
+        "Boa sorte lá fora. Volte a qualquer momento."
+      ]
+    },
+    "genericSegue": {
+      "tag": "um jogo",
+      "chip": "Jogar",
+      "phrases": [
+        "Deixe-me mostrar um jogo rápido.",
+        "Vamos praticar um pouco.",
+        "Aqui está um desafio curto."
+      ]
+    }
+  },
+  "ro": {
+    "runtime": {
+      "antiRepeat": "(Ai spus deja: {lines}. Nu te repeta. Spune ceva NOU și du conversația mai departe.)",
+      "greetingSeed": "Un călător se apropie de stația ta. Îi întâmpini călduros în română și îi inviți să vorbească. Răspunde doar în română.",
+      "fallback": [
+        "Bună, călător. Bun venit în Corpan City.",
+        "Spune-mi ce cauți și te voi ajuta.",
+        "Mult noroc acolo afară. Întoarce-te oricând."
+      ]
+    },
+    "genericSegue": {
+      "tag": "un joc",
+      "chip": "Joacă",
+      "phrases": [
+        "Lasă-mă să-ți arăt un joc rapid.",
+        "Hai să exersăm puțin.",
+        "Iată o provocare scurtă."
+      ]
+    }
+  },
+  "ru": {
+    "runtime": {
+      "antiRepeat": "(Вы уже сказали: {lines}. Не повторяйте себя. Скажите что-то НОВОЕ и продолжите разговор.)",
+      "greetingSeed": "Путешественник подходит к вашей станции. Приветствуйте их тепло на русском и пригласите поговорить. Отвечайте только на русском.",
+      "fallback": [
+        "Здравствуйте, путешественник. Добро пожаловать в Корпан Сити.",
+        "Скажите мне, что вы ищете, и я помогу.",
+        "Удачи вам там. Возвращайтесь в любое время."
+      ]
+    },
+    "genericSegue": {
+      "tag": "игра",
+      "chip": "Играть",
+      "phrases": [
+        "Позвольте мне показать вам быструю игру.",
+        "Давайте немного потренируемся.",
+        "Вот короткий вызов."
+      ]
+    }
+  },
+  "sk": {
+    "runtime": {
+      "antiRepeat": "(Už si povedal: {lines}. Neopakuj sa. Povedz niečo NOVÉ a posuň rozhovor ďalej.)",
+      "greetingSeed": "Cestovateľ sa približuje k tvojej stanici. Srdečne ich pozdrav na slovenčine a pozvi ich na rozhovor. Odpovedz iba po slovensky.",
+      "fallback": [
+        "Ahoj, cestovateľ. Vitaj v Corpan City.",
+        "Povedz mi, čo hľadáš, a ja ti pomôžem.",
+        "Veľa šťastia vonku. Vráť sa kedykoľvek."
+      ]
+    },
+    "genericSegue": {
+      "tag": "hra",
+      "chip": "Hraj",
+      "phrases": [
+        "Nechaj ma ti ukázať rýchlu hru.",
+        "Poďme si trochu precvičiť.",
+        "Tu je krátka výzva."
+      ]
+    }
+  },
+  "sl": {
+    "runtime": {
+      "antiRepeat": "(Že si že rekel: {lines}. Ne ponavljaj se. Povej nekaj NOVEGA in napreduj v pogovoru.)",
+      "greetingSeed": "Popotnik se približuje tvoji postaji. Toplo ga pozdravi v slovenščini in ga povabi, da se pogovori. Odgovori samo v slovenščini.",
+      "fallback": [
+        "Živjo, popotnik. Dobrodošel v Corpan City.",
+        "Povej mi, kaj iščeš, in pomagal ti bom.",
+        "Srečno tam zunaj. Vrni se kadarkoli."
+      ]
+    },
+    "genericSegue": {
+      "tag": "igra",
+      "chip": "Igraj",
+      "phrases": [
+        "Pusti me, da ti pokažem hitro igro.",
+        "Vadimo malo.",
+        "Tukaj je kratek izziv."
+      ]
+    }
+  },
+  "sr": {
+    "runtime": {
+      "antiRepeat": "(Već si rekao: {lines}. Ne ponavljaj se. Reci nešto NOVO i pomeri razgovor napred.)",
+      "greetingSeed": "Putnik se približava tvojoj stanici. Srdačno ga pozdravi na srpskom i pozovi ga da razgovara. Odgovori samo na srpskom.",
+      "fallback": [
+        "Zdravo, putniče. Dobrodošao u Corpan City.",
+        "Reci mi šta tražiš i pomoći ću ti.",
+        "Srećno napolju. Vraćaj se bilo kada."
+      ]
+    },
+    "genericSegue": {
+      "tag": "igra",
+      "chip": "Igraj",
+      "phrases": [
+        "Pokažem ti brzu igru.",
+        "Vežbajmo malo.",
+        "Evo kratkog izazova."
+      ]
+    }
+  },
+  "sv": {
+    "runtime": {
+      "antiRepeat": "(Du har redan sagt: {lines}. Upprepa dig inte. Säg något NYTT och gå samtalet framåt.)",
+      "greetingSeed": "En resenär närmar sig din station. Hälsa dem varmt på svenska och bjud in dem att prata. Svara endast på svenska.",
+      "fallback": [
+        "Hej, resenär. Välkommen till Corpan City.",
+        "Berätta för mig vad du letar efter så hjälper jag dig.",
+        "Lycka till där ute. Kom tillbaka när som helst."
+      ]
+    },
+    "genericSegue": {
+      "tag": "ett spel",
+      "chip": "Spela",
+      "phrases": [
+        "Låt mig visa dig ett snabbt spel.",
+        "Låt oss öva lite.",
+        "Här är en kort utmaning."
+      ]
+    }
+  },
+  "sw": {
+    "runtime": {
+      "antiRepeat": "(Umesha sema: {lines}. Usijirudie. Sema kitu KIPYA na uendelee mazungumzo.)",
+      "greetingSeed": "Msafiri anakaribia kituo chako. Mkaribishe kwa joto kwa Kiswahili na uwakaribishe kuzungumza. Jibu tu kwa Kiswahili.",
+      "fallback": [
+        "Habari, msafiri. Karibu Corpan City.",
+        "Nini unatafuta niambie, nitakusaidia.",
+        "Bahati njema huko nje. Rudi wakati wowote."
+      ]
+    },
+    "genericSegue": {
+      "tag": "mchezo",
+      "chip": "Cheza",
+      "phrases": [
+        "Niruhusu nikonyesha mchezo wa haraka.",
+        "Hebu tujaribu kidogo.",
+        "Hapa kuna changamoto fupi."
+      ]
+    }
+  },
+  "ta": {
+    "runtime": {
+      "antiRepeat": "(நீங்கள் ஏற்கனவே கூறியுள்ளீர்கள்: {lines}. உங்கள் சொற்களை மீண்டும் கூற வேண்டாம். புதியதாக கூறுங்கள் மற்றும் உரையாடலை முன்னேற்றுங்கள்.)",
+      "greetingSeed": "ஒரு பயணி உங்கள் நிலையத்திற்கு அருகில் வருகிறார். அவர்களை தமிழில் அன்புடன் வரவேற்கவும் மற்றும் பேச அழைக்கவும். தமிழில் மட்டுமே பதிலளிக்கவும்.",
+      "fallback": [
+        "வணக்கம், பயணி. கார்பன் நகரத்திற்கு வரவேற்கிறேன்.",
+        "நீங்கள் என்ன தேடுகிறீர்கள் என எனக்கு சொல்லுங்கள், நான் உதவுவேன்.",
+        "அங்கு வெளியே நல்ல அதிர்ஷ்டம். எப்போது வேண்டுமானாலும் திரும்பவும் வரவும்."
+      ]
+    },
+    "genericSegue": {
+      "tag": "ஒரு விளையாட்டு",
+      "chip": "விளையாட்டு",
+      "phrases": [
+        "எனக்கு உங்களுக்கு ஒரு விரைவு விளையாட்டு காட்ட அனுமதிக்கவும்.",
+        "சில பயிற்சிகள் செய்யலாம்.",
+        "இது ஒரு குறுகிய சவால்."
+      ]
+    }
+  },
+  "te": {
+    "runtime": {
+      "antiRepeat": "(మీరు ఇప్పటికే చెప్పారు: {lines}. మీను పునరావృతం చేయవద్దు. కొత్తగా చెప్పండి మరియు సంభాషణను ముందుకు తీసుకురండి.)",
+      "greetingSeed": "ఒక ప్రయాణికుడు మీ స్టేషన్‌కు దగ్గరగా వస్తాడు. వారిని తెలుగులో ఆత్మీయంగా స్వాగతించండి మరియు మాట్లాడటానికి ఆహ్వానించండి. కేవలం తెలుగులోనే సమాధానం ఇవ్వండి.",
+      "fallback": [
+        "హలో, ప్రయాణికా. కార్పాన్ సిటీలో మీకు స్వాగతం.",
+        "మీరు ఏమి వెతుకుతున్నారో నాకు చెప్పండి, నేను సహాయం చేస్తాను.",
+        "అక్కడ బయట శుభాకాంక్షలు. ఎప్పుడైనా తిరిగి రా."
+      ]
+    },
+    "genericSegue": {
+      "tag": "ఒక ఆట",
+      "chip": "ఆడండి",
+      "phrases": [
+        "నేను మీకు ఒక వేగవంతమైన ఆట చూపిస్తాను.",
+        "కొంచెం అభ్యాసం చేద్దాం.",
+        "ఇది ఒక చిన్న సవాలు."
+      ]
+    }
+  },
+  "th": {
+    "runtime": {
+      "antiRepeat": "(คุณได้พูดแล้ว: {lines}. อย่าพูดซ้ำตัวเอง. พูดอะไรใหม่และทำให้การสนทนาก้าวหน้า.)",
+      "greetingSeed": "นักเดินทางคนหนึ่งเดินเข้ามาที่สถานีของคุณ ทักทายพวกเขาอย่างอบอุ่นเป็นภาษาไทยและเชิญพวกเขาคุยกัน ตอบเป็นภาษาไทยเท่านั้น",
+      "fallback": [
+        "สวัสดีครับ/ค่ะ นักเดินทาง ยินดีต้อนรับสู่เมืองคอร์แปน",
+        "บอกฉันว่าคุณกำลังมองหาอะไร ฉันจะช่วยคุณ",
+        "โชคดีนะที่นั่น กลับมาเมื่อไหร่ก็ได้"
+      ]
+    },
+    "genericSegue": {
+      "tag": "เกม",
+      "chip": "เล่น",
+      "phrases": [
+        "ให้ฉันแสดงเกมเร็ว ๆ ให้คุณดู",
+        "มาฝึกกันหน่อย",
+        "นี่คือความท้าทายสั้น ๆ"
+      ]
+    }
+  },
+  "tr": {
+    "runtime": {
+      "antiRepeat": "(Zaten söyledin: {lines}. Kendini tekrar etme. YENİ bir şey söyle ve sohbeti ilerlet.)",
+      "greetingSeed": "Bir yolcu istasyonunuza yaklaşıyor. Onları Türkçe sıcak bir şekilde selamlayın ve konuşmaya davet edin. Sadece Türkçe yanıt verin.",
+      "fallback": [
+        "Merhaba, yolcu. Corpan City'ye hoş geldin.",
+        "Ne aradığını bana söyle, yardımcı olacağım.",
+        "Dışarıda bol şans. İstediğin zaman geri dön."
+      ]
+    },
+    "genericSegue": {
+      "tag": "bir oyun",
+      "chip": "Oyna",
+      "phrases": [
+        "Sana hızlı bir oyun göstereyim.",
+        "Biraz pratik yapalım.",
+        "İşte kısa bir meydan okuma."
+      ]
+    }
+  },
+  "uk": {
+    "runtime": {
+      "antiRepeat": "(Ви вже сказали: {lines}. Не повторюйте себе. Скажіть щось НОВЕ і продовжте розмову.)",
+      "greetingSeed": "Мандрівник підходить до вашої станції. Привітайте їх тепло українською та запросіть поговорити. Відповідайте лише українською.",
+      "fallback": [
+        "Привіт, мандрівнику. Ласкаво просимо до Корпан Сіті.",
+        "Скажіть мені, що ви шукаєте, і я допоможу.",
+        "Удачі вам там. Повертайтеся в будь-який час."
+      ]
+    },
+    "genericSegue": {
+      "tag": "гра",
+      "chip": "Грати",
+      "phrases": [
+        "Дозвольте мені показати вам швидку гру.",
+        "Давайте трохи попрактикуємось.",
+        "Ось короткий виклик."
+      ]
+    }
+  },
+  "ur": {
+    "runtime": {
+      "antiRepeat": "(آپ پہلے ہی کہہ چکے ہیں: {lines}. اپنے آپ کو دہرائیں نہیں۔ کچھ نیا کہیں اور گفتگو کو آگے بڑھائیں۔)",
+      "greetingSeed": "ایک مسافر آپ کے اسٹیشن کے قریب آتا ہے۔ انہیں اردو میں گرمجوشی سے خوش آمدید کہیں اور بات کرنے کے لیے مدعو کریں۔ صرف اردو میں جواب دیں۔",
+      "fallback": [
+        "ہیلو، مسافر۔ کارپان سٹی میں خوش آمدید۔",
+        "مجھے بتائیں کہ آپ کیا تلاش کر رہے ہیں، میں مدد کروں گا۔",
+        "وہاں باہر خوش قسمتی۔ کبھی بھی واپس آئیں۔"
+      ]
+    },
+    "genericSegue": {
+      "tag": "ایک کھیل",
+      "chip": "کھیلو",
+      "phrases": [
+        "مجھے آپ کو ایک تیز کھیل دکھانے دیں۔",
+        "آئیے تھوڑا سا مشق کریں۔",
+        "یہ ایک چھوٹا چیلنج ہے۔"
+      ]
+    }
+  },
+  "vi": {
+    "runtime": {
+      "antiRepeat": "(Bạn đã nói: {lines}. Đừng lặp lại chính mình. Hãy nói điều GÌ ĐÓ MỚI và tiến xa hơn trong cuộc trò chuyện.)",
+      "greetingSeed": "Một du khách tiến đến trạm của bạn. Chào đón họ nồng nhiệt bằng tiếng Việt và mời họ nói chuyện. Chỉ trả lời bằng tiếng Việt.",
+      "fallback": [
+        "Xin chào, du khách. Chào mừng đến với Corpan City.",
+        "Hãy cho tôi biết bạn đang tìm kiếm gì và tôi sẽ giúp bạn.",
+        "Chúc bạn may mắn ở ngoài kia. Quay lại bất cứ lúc nào."
+      ]
+    },
+    "genericSegue": {
+      "tag": "một trò chơi",
+      "chip": "Chơi",
+      "phrases": [
+        "Hãy để tôi chỉ cho bạn một trò chơi nhanh.",
+        "Hãy thực hành một chút.",
+        "Đây là một thử thách ngắn."
+      ]
+    }
+  },
+  "yue": {
+    "runtime": {
+      "antiRepeat": "(你已經說過: {lines}. 不要重複自己。說一些新的東西，並推進對話。)",
+      "greetingSeed": "一位旅客走近你的站。用廣東話熱情地迎接他們，並邀請他們交談。只用廣東話回答。",
+      "fallback": [
+        "你好，旅客。歡迎來到科潘市。",
+        "告訴我你在找什麼，我會幫助你。",
+        "祝你好運，隨時回來。"
+      ]
+    },
+    "genericSegue": {
+      "tag": "一個遊戲",
+      "chip": "玩",
+      "phrases": [
+        "讓我給你展示一個快速的遊戲。",
+        "讓我們練習一下。",
+        "這是一個簡短的挑戰。"
+      ]
+    }
+  },
+  "zh": {
+    "runtime": {
+      "antiRepeat": "(您已经说过: {lines}. 不要重复自己。说一些新的东西，并推动对话。)",
+      "greetingSeed": "一位旅行者走近您的车站。用中文热情地欢迎他们，并邀请他们交谈。仅用中文回复。",
+      "fallback": [
+        "你好，旅行者。欢迎来到科潘市。",
+        "告诉我你在找什么，我会帮助你。",
+        "祝你好运，随时欢迎回来。"
+      ]
+    },
+    "genericSegue": {
+      "tag": "一个游戏",
+      "chip": "玩",
+      "phrases": [
+        "让我给你展示一个快速的游戏。",
+        "让我们练习一下。",
+        "这是一个简短的挑战。"
+      ]
+    }
+  },
+  "pt-BR": {
+    "runtime": {
+      "antiRepeat": "(Você já disse: {lines}. Não se repita. Diga algo NOVO e avance a conversa.)",
+      "greetingSeed": "Um viajante se aproxima da sua estação. Cumprimente-os calorosamente em português e convide-os a conversar. Responda apenas em português.",
+      "fallback": [
+        "Olá, viajante. Bem-vindo à Corpan City.",
+        "Diga-me o que você está procurando e eu ajudarei.",
+        "Boa sorte lá fora. Volte a qualquer momento."
+      ]
+    },
+    "genericSegue": {
+      "tag": "um jogo",
+      "chip": "Jogar",
+      "phrases": [
+        "Deixe-me mostrar um jogo rápido.",
+        "Vamos praticar um pouco.",
+        "Aqui está um desafio curto."
+      ]
+    }
+  },
+  "pt-PT": {
+    "runtime": {
+      "antiRepeat": "(Você já disse: {lines}. Não se repita. Diga algo NOVO e avance a conversa.)",
+      "greetingSeed": "Um viajante se aproxima da sua estação. Cumprimente-os calorosamente em português e convide-os a conversar. Responda apenas em português.",
+      "fallback": [
+        "Olá, viajante. Bem-vindo à Corpan City.",
+        "Diga-me o que você está procurando e eu ajudarei.",
+        "Boa sorte lá fora. Volte a qualquer momento."
+      ]
+    },
+    "genericSegue": {
+      "tag": "um jogo",
+      "chip": "Jogar",
+      "phrases": [
+        "Deixe-me mostrar um jogo rápido.",
+        "Vamos praticar um pouco.",
+        "Aqui está um desafio curto."
+      ]
+    }
+  },
+  "zh-Hans": {
+    "runtime": {
+      "antiRepeat": "(您已经说过: {lines}. 不要重复自己。说一些新的东西，并推动对话。)",
+      "greetingSeed": "一位旅行者走近您的车站。用中文热情地欢迎他们，并邀请他们交谈。仅用中文回复。",
+      "fallback": [
+        "你好，旅行者。欢迎来到科潘市。",
+        "告诉我你在找什么，我会帮助你。",
+        "祝你好运，随时欢迎回来。"
+      ]
+    },
+    "genericSegue": {
+      "tag": "一个游戏",
+      "chip": "玩",
+      "phrases": [
+        "让我给你展示一个快速的游戏。",
+        "让我们练习一下。",
+        "这是一个简短的挑战。"
+      ]
+    }
+  },
+  "zh-Hant": {
+    "runtime": {
+      "antiRepeat": "(您已经说过: {lines}. 不要重复自己。说一些新的东西，并推动对话。)",
+      "greetingSeed": "一位旅行者走近您的车站。用中文热情地欢迎他们，并邀请他们交谈。仅用中文回复。",
+      "fallback": [
+        "你好，旅行者。欢迎来到科潘市。",
+        "告诉我你在找什么，我会帮助你。",
+        "祝你好运，随时欢迎回来。"
+      ]
+    },
+    "genericSegue": {
+      "tag": "一个游戏",
+      "chip": "玩",
+      "phrases": [
+        "让我给你展示一个快速的游戏。",
+        "让我们练习一下。",
+        "这是一个简短的挑战。"
+      ]
+    }
+  },
+  "yue-Hant-HK": {
+    "runtime": {
+      "antiRepeat": "(你已經說過: {lines}. 不要重複自己。說一些新的東西，並推進對話。)",
+      "greetingSeed": "一位旅客走近你的站。用廣東話熱情地迎接他們，並邀請他們交談。只用廣東話回答。",
+      "fallback": [
+        "你好，旅客。歡迎來到科潘市。",
+        "告訴我你在找什麼，我會幫助你。",
+        "祝你好運，隨時回來。"
+      ]
+    },
+    "genericSegue": {
+      "tag": "一個遊戲",
+      "chip": "玩",
+      "phrases": [
+        "讓我給你展示一個快速的遊戲。",
+        "讓我們練習一下。",
+        "這是一個簡短的挑戰。"
+      ]
+    }
+  },
+  "ko-polite": {
+    "runtime": {
+      "antiRepeat": "(당신은 이미 말했습니다: {lines}. 자신을 반복하지 마십시오. 새로운 것을 말하고 대화를 진행하십시오.)",
+      "greetingSeed": "여행자가 당신의 역에 다가옵니다. 그들을 따뜻하게 한국어로 맞이하고 대화하도록 초대하세요. 한국어로만 대답하세요.",
+      "fallback": [
+        "안녕하세요, 여행자. 코르판 시티에 오신 것을 환영합니다.",
+        "당신이 찾고 있는 것을 말해 주세요, 제가 도와드리겠습니다.",
+        "밖에서 행운을 빕니다. 언제든지 돌아오세요."
+      ]
+    },
+    "genericSegue": {
+      "tag": "게임",
+      "chip": "플레이",
+      "phrases": [
+        "빠른 게임을 보여드리겠습니다.",
+        "조금 연습해 봅시다.",
+        "짧은 도전입니다."
+      ]
+    }
+  },
+  "pa-Guru": {
+    "runtime": {
+      "antiRepeat": "(ਤੁਸੀਂ ਪਹਿਲਾਂ ਹੀ ਕਿਹਾ ਹੈ: {lines}. ਆਪਣੇ ਆਪ ਨੂੰ ਦੁਹਰਾਓ ਨਾ ਕਰੋ। ਕੁਝ ਨਵਾਂ ਕਹੋ ਅਤੇ ਗੱਲਬਾਤ ਨੂੰ ਅੱਗੇ ਵਧਾਓ।)",
+      "greetingSeed": "ਇੱਕ ਯਾਤਰੀ ਤੁਹਾਡੇ ਸਟੇਸ਼ਨ ਦੇ ਨੇੜੇ ਆਉਂਦਾ ਹੈ। ਉਨ੍ਹਾਂ ਨੂੰ ਪੰਜਾਬੀ ਵਿੱਚ ਗਰਮਜੋਸ਼ੀ ਨਾਲ ਸਵਾਗਤ ਕਰੋ ਅਤੇ ਗੱਲ ਕਰਨ ਲਈ ਬੁਲਾਓ। ਸਿਰਫ ਪੰਜਾਬੀ ਵਿੱਚ ਜਵਾਬ ਦਿਓ।",
+      "fallback": [
+        "ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਯਾਤਰੀ। ਕੋਰਪਨ ਸਿਟੀ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ।",
+        "ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਤੁਸੀਂ ਕੀ ਲੱਭ ਰਹੇ ਹੋ, ਮੈਂ ਮਦਦ ਕਰਾਂਗਾ।",
+        "ਉੱਥੇ ਬਾਹਰ ਚੰਗੀ ਕਿਸਮਤ। ਕਦੇ ਵੀ ਵਾਪਸ ਆਓ।"
+      ]
+    },
+    "genericSegue": {
+      "tag": "ਇੱਕ ਖੇਡ",
+      "chip": "ਖੇਡੋ",
+      "phrases": [
+        "ਮੈਨੂੰ ਤੁਹਾਨੂੰ ਇੱਕ ਤੇਜ਼ ਖੇਡ ਦਿਖਾਉਣ ਦਿਓ।",
+        "ਚਲੋ ਕੁਝ ਅਭਿਆਸ ਕਰੀਏ।",
+        "ਇਹ ਇੱਕ ਛੋਟਾ ਚੁਣੌਤੀ ਹੈ।"
+      ]
+    }
+  },
+  "pa-Arab": {
+    "runtime": {
+      "antiRepeat": "(ਤੁਸੀਂ ਪਹਿਲਾਂ ਹੀ ਕਿਹਾ ਹੈ: {lines}. ਆਪਣੇ ਆਪ ਨੂੰ ਦੁਹਰਾਓ ਨਾ ਕਰੋ। ਕੁਝ ਨਵਾਂ ਕਹੋ ਅਤੇ ਗੱਲਬਾਤ ਨੂੰ ਅੱਗੇ ਵਧਾਓ।)",
+      "greetingSeed": "ਇੱਕ ਯਾਤਰੀ ਤੁਹਾਡੇ ਸਟੇਸ਼ਨ ਦੇ ਨੇੜੇ ਆਉਂਦਾ ਹੈ। ਉਨ੍ਹਾਂ ਨੂੰ ਪੰਜਾਬੀ ਵਿੱਚ ਗਰਮਜੋਸ਼ੀ ਨਾਲ ਸਵਾਗਤ ਕਰੋ ਅਤੇ ਗੱਲ ਕਰਨ ਲਈ ਬੁਲਾਓ। ਸਿਰਫ ਪੰਜਾਬੀ ਵਿੱਚ ਜਵਾਬ ਦਿਓ।",
+      "fallback": [
+        "ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਯਾਤਰੀ। ਕੋਰਪਨ ਸਿਟੀ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ।",
+        "ਮੈਨੂੰ ਦੱਸੋ ਕਿ ਤੁਸੀਂ ਕੀ ਲੱਭ ਰਹੇ ਹੋ, ਮੈਂ ਮਦਦ ਕਰਾਂਗਾ।",
+        "ਉੱਥੇ ਬਾਹਰ ਚੰਗੀ ਕਿਸਮਤ। ਕਦੇ ਵੀ ਵਾਪਸ ਆਓ।"
+      ]
+    },
+    "genericSegue": {
+      "tag": "ਇੱਕ ਖੇਡ",
+      "chip": "ਖੇਡੋ",
+      "phrases": [
+        "ਮੈਨੂੰ ਤੁਹਾਨੂੰ ਇੱਕ ਤੇਜ਼ ਖੇਡ ਦਿਖਾਉਣ ਦਿਓ।",
+        "ਚਲੋ ਕੁਝ ਅਭਿਆਸ ਕਰੀਏ।",
+        "ਇਹ ਇੱਕ ਛੋਟਾ ਚੁਣੌਤੀ ਹੈ।"
+      ]
+    }
+  }
+}

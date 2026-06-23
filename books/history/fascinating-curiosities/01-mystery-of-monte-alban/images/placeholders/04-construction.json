@@ -1,0 +1,16 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, a rounded hilltop 400 meters above a valley being reshaped by hundreds of workers into a terraced city, the natural hill is being cut into over 2000 stone-walled terraces cascading down the slopes, the summit is being leveled flat into a broad plateau, small human figures carry baskets of earth and rough stone blocks up the hillside using wooden carrying poles, workers use wooden digging sticks and stone tools with no metal, a 3-kilometer defensive stone wall visible along one slope, the dry Valley of Oaxaca spread below with scattered farming villages, semi-arid brown hills in the background",
+  "negative_prompt": "blurry, low quality, distorted, deformed, cartoon, anime, 3D render, text, words, letters, writing, captions",
+  "seed": 45,
+  "width": 1024,
+  "height": 768,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "dtype": "float16",
+  "generation_time_s": 63.01,
+  "timestamp": "2026-02-22T06:00:39.460929+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

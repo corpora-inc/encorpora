@@ -60,7 +60,7 @@ export default function StacksManagerDeletePopover({
                     <div className="text-sm font-medium">
                         {t("stacks.confirmDeleteTitle", { defaultValue: "Delete this stack?" }) as string}
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-muted-foreground">
                         {t("stacks.confirmDelete", {
                             defaultValue: activeName
                                 ? `Delete stack “${activeName}”? This cannot be undone.`

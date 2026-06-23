@@ -1,18 +1,42 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { createHostApi } from "./hostApi"
-import type { ContentPackManifest, ContentPackModule } from "./types"
+import type {
+  ContentPackManifest,
+  ContentPackModule,
+  ContentPackEntitlementSnapshot,
+  PackLaunchEntry,
+} from "./types"
+import { useEntitlementStore } from "@/store/entitlements"
+import {
+  isContentPackProtocolUrl,
+  isLocalhostUrl,
+  isPrivateNetworkUrl,
+  shouldDevReloadManifest,
+} from "./devReload"
 
 type LoadState = "idle" | "loading" | "ready" | "error"
 
 type ContentPackHostProps = {
   id: string
   manifestUrl?: string
+  /** Optional deep-link target passed into the pack's mount initialState. */
+  entry?: PackLaunchEntry
 }
 
-const DEV_RELOAD_INTERVAL_MS = 10000
+// `ContentPackEntitlementSnapshot` now lives in ./types (shared with the typed
+// `HostApi.entitlement` seam) so the global and the typed snapshot never drift.
 
-const loadScript = async (src: string, id: string, type: "script" | "module", inline?: boolean) => {
+const DEV_RELOAD_INTERVAL_MS = 20000  // Poll every 2s for faster dev iteration
+
+const loadScript = async (
+  src: string,
+  id: string,
+  type: "script" | "module",
+  inline?: boolean,
+  baseUrl?: string,
+  contentRevision?: string
+) => {
   if (inline) {
     // Inline mode: fetch content and inject as text
     console.log(`[loadScript] Fetching inline script from: ${src}`)
@@ -25,6 +49,13 @@ const loadScript = async (src: string, id: string, type: "script" | "module", in
       script.async = true
       script.dataset.corpGame = "true"
       script.dataset.corpGameId = id
+      if (baseUrl) {
+        script.dataset.corpGameBaseUrl = baseUrl
+      }
+      if (contentRevision) {
+        script.dataset.corpGameContentRevision = contentRevision
+      }
+      script.dataset.corpGameSrc = src
       if (type === "module") {
         script.type = "module"
       }
@@ -44,6 +75,13 @@ const loadScript = async (src: string, id: string, type: "script" | "module", in
     script.async = true
     script.dataset.corpGame = "true"
     script.dataset.corpGameId = id
+    if (baseUrl) {
+      script.dataset.corpGameBaseUrl = baseUrl
+    }
+    if (contentRevision) {
+      script.dataset.corpGameContentRevision = contentRevision
+    }
+    script.dataset.corpGameSrc = src
     if (type === "module") {
       script.type = "module"
     }
@@ -85,13 +123,21 @@ const loadStyle = async (href: string, id: string, inline?: boolean) => {
   return link
 }
 
-const clearInjectedAssets = (id: string) => {
-  document
-    .querySelectorAll(
+const injectedAssetNodes = (id: string) =>
+  Array.from(
+    document.querySelectorAll(
       `script[data-corp-game-id="${id}"], link[data-corp-game-id="${id}"], style[data-corp-game-id="${id}"]`
     )
-    .forEach((node) => node.remove())
-}
+  )
+
+// `isContentPackProtocolUrl` documents the `corpan-pack` custom URI-scheme
+// protocol handler (reachable at `corpan-pack://localhost/...` on
+// macOS/iOS/Linux and `http://corpan-pack.localhost/...` on Android/Windows).
+// Installed-pack URLs are emitted in the platform-correct form by the native
+// `content_packs_*` commands; these must be command-fetched + inlined (the
+// WebView can't `fetch()` the scheme). It now lives in ./devReload alongside
+// the URL classifiers so the dev-reload scoping that depends on it is
+// unit-testable without React. Re-exported here as it is used throughout.
 
 const proxyUrlIfNeeded = (rawUrl: string) => {
   try {
@@ -114,44 +160,6 @@ const proxyUrlIfNeeded = (rawUrl: string) => {
     return `/game-proxy?url=${encodeURIComponent(resolved.toString())}`
   } catch {
     return rawUrl
-  }
-}
-
-const isLocalhostUrl = (rawUrl: string) => {
-  try {
-    const resolved = new URL(rawUrl, window.location.href)
-    return (
-      resolved.hostname === "localhost" ||
-      resolved.hostname === "127.0.0.1" ||
-      resolved.hostname.endsWith(".localhost")
-    )
-  } catch {
-    return false
-  }
-}
-
-const isPrivateNetworkUrl = (rawUrl: string) => {
-  try {
-    const resolved = new URL(rawUrl, window.location.href)
-    const host = resolved.hostname
-    if (host === "localhost" || host === "127.0.0.1" || host === "::1") {
-      return true
-    }
-    if (host.endsWith(".localhost") || host.endsWith(".local")) {
-      return true
-    }
-    const ipv4 = host.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/)
-    if (ipv4) {
-      const [a, b] = [Number(ipv4[1]), Number(ipv4[2])]
-      if (a === 10 || a === 127) return true
-      if (a === 192 && b === 168) return true
-      if (a === 172 && b >= 16 && b <= 31) return true
-      if (a === 169 && b === 254) return true
-      return false
-    }
-    return host.startsWith("fe80:") || host.startsWith("fd") || host.startsWith("fc")
-  } catch {
-    return false
   }
 }
 
@@ -192,13 +200,63 @@ const waitForGameModule = async (
 export default function ContentPackHost({
   id,
   manifestUrl,
+  entry,
 }: ContentPackHostProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [loadState, setLoadState] = useState<LoadState>("idle")
   const [error, setError] = useState<string | null>(null)
   const hasLoadedRef = useRef(false)
 
-  const hostApi = useMemo(() => createHostApi(), [])
+  const hostApi = useMemo(() => createHostApi(id), [id])
+  const subscription = useEntitlementStore((s) => s.subscription)
+  const lastEntitlementRefresh = useEntitlementStore((s) => s.lastRefreshed)
+  const subjectId = useEntitlementStore((s) => s.subjectId)
+  const entitlementToken = useEntitlementStore((s) => s.entitlementToken)
+  const entitlementSnapshot = useMemo<ContentPackEntitlementSnapshot>(
+    () => ({
+      plus: subscription.active,
+      subjectId,
+      entitlementToken,
+      subscription: {
+        active: subscription.active,
+        plan: subscription.plan,
+        expiresAt: subscription.expiresAt,
+        autoRenew: subscription.autoRenew,
+      },
+      checkedAt: lastEntitlementRefresh,
+    }),
+    [
+      lastEntitlementRefresh,
+      entitlementToken,
+      subjectId,
+      subscription.active,
+      subscription.autoRenew,
+      subscription.expiresAt,
+      subscription.plan,
+    ]
+  )
+  const entitlementSnapshotRef = useRef(entitlementSnapshot)
+
+  useEffect(() => {
+    entitlementSnapshotRef.current = entitlementSnapshot
+    const scope = globalThis as typeof globalThis & {
+      __CORPAN_PLUS?: boolean
+      __CORPAN_ENTITLEMENT?: ContentPackEntitlementSnapshot
+      __CORPAN_HOST_CAPS?: { dailyLock?: boolean }
+    }
+    scope.__CORPAN_PLUS = entitlementSnapshot.plus
+    scope.__CORPAN_ENTITLEMENT = entitlementSnapshot
+    // Advertise host capabilities to OTA packs (which may run in older apps).
+    // `dailyLock` = this host renders the gate-v2 DailyLockOverlay, so packs may
+    // hard-block at the daily cap. Absent in pre-0.18.1 hosts → packs degrade to
+    // the soft nag instead of freezing behind an overlay that won't appear.
+    scope.__CORPAN_HOST_CAPS = { ...scope.__CORPAN_HOST_CAPS, dailyLock: true }
+    window.dispatchEvent(
+      new CustomEvent("corpan:entitlement-changed", {
+        detail: entitlementSnapshot,
+      })
+    )
+  }, [entitlementSnapshot])
 
   useEffect(() => {
     let cancelled = false
@@ -210,13 +268,22 @@ export default function ContentPackHost({
     let isLoading = false
 
     const manifestRequestUrl =
-      manifestUrl ?? `/games/${id}/manifest.json`
+      manifestUrl ?? `/packs/${id}/manifest.json`
     const resolvedManifestUrl = new URL(
       manifestRequestUrl,
       window.location.href
     ).toString()
-    const shouldDevReload =
-      isLocalhostUrl(resolvedManifestUrl) || isPrivateNetworkUrl(resolvedManifestUrl)
+    // Dev-reload polling is ONLY for packs served from the local Vite `/packs`
+    // dev middleware — never for an installed `corpan-pack://` catalog pack
+    // (its `localhost`/`*.localhost` host LOOKS local but it's immutable on
+    // disk). Polling an installed pack is what raced the deferred React-root
+    // teardown against a fresh mount on `tauri ios dev` over LAN → the
+    // "createRoot already called" + detached-node NotFoundError crash. See
+    // ./devReload for the full root cause.
+    const shouldDevReload = shouldDevReloadManifest(
+      resolvedManifestUrl,
+      import.meta.env.DEV
+    )
     let activeManifestSourceUrl = resolvedManifestUrl
 
     const getManifestSourceUrls = () => {
@@ -255,7 +322,7 @@ export default function ContentPackHost({
       for (const { sourceUrl, fetchUrl } of candidates) {
         try {
           let manifest: ContentPackManifest
-          const isCorpanPack = sourceUrl.startsWith('corpan-pack://')
+          const isCorpanPack = isContentPackProtocolUrl(sourceUrl)
 
           console.log(`[fetchManifest] Fetching sourceUrl=${sourceUrl}, isCorpanPack=${isCorpanPack}`)
 
@@ -290,7 +357,12 @@ export default function ContentPackHost({
       throw lastError ?? new Error(`Missing content pack: ${id}`)
     }
 
-    const cleanup = () => {
+    // Resolves once the previous pack instance has been FULLY torn down
+    // (React root unmounted + injected assets removed). `load()` awaits this
+    // before mounting a fresh instance so a deferred (rAF) unmount can never
+    // overlap a new `mount()`/`createRoot()` on the same container. Plain
+    // component-unmount callers ignore the promise — they just fire-and-forget.
+    const cleanup = (): Promise<void> => {
       if (devReloadTimer) {
         window.clearInterval(devReloadTimer)
         devReloadTimer = null
@@ -299,6 +371,9 @@ export default function ContentPackHost({
         window.clearTimeout(retryTimer)
         retryTimer = null
       }
+      // Idempotent: snapshot the instance and clear our handle up front so a
+      // second cleanup() (StrictMode double-invoke / overlapping reload) is a
+      // no-op rather than unmounting/clearing assets twice.
       const instanceToUnmount = activeInstance
       activeModule = null
       activeInstance = undefined
@@ -309,15 +384,6 @@ export default function ContentPackHost({
       } catch {
         // Ignore host-dispose dispatch failures.
       }
-      if (instanceToUnmount && typeof instanceToUnmount.unmount === "function") {
-        queueMicrotask(() => {
-          try {
-            instanceToUnmount.unmount?.()
-          } catch {
-            // Avoid unmount errors from crashing the host UI.
-          }
-        })
-      }
       if (hasLoadedRef.current) {
         hostApi.stopSpeech?.()
         hostApi.dispose?.()
@@ -326,7 +392,46 @@ export default function ContentPackHost({
       if (shouldDevReload) {
         ; (globalThis as { __corpanPerf?: boolean }).__corpanPerf = false
       }
-      clearInjectedAssets(id)
+      // ORDERING + TIMING are the whole point of this teardown:
+      //   1. DEFER the pack's React-root unmount past the current render. A bare
+      //      queueMicrotask runs before the next frame while React may still be
+      //      committing → "synchronously unmount a root while React was already
+      //      rendering" → detached DOM → NotFoundError → black screen on reload.
+      //      requestAnimationFrame waits until the current render/commit unwinds.
+      //   2. Only AFTER the pack has unmounted do we remove its injected scripts/
+      //      styles. Clearing them first would yank stylesheets out from under a
+      //      still-mounted tree (flash/half-rendered teardown). The pack root is
+      //      detached together with the host container by React, so the unmount
+      //      itself is the safe moment to drop the orphaned <script>/<style>.
+      // Snapshot the CURRENT injected nodes now, so the deferred clear removes
+      // exactly THIS pack instance's assets and never the fresh ones a
+      // subsequent load() (which runs concurrently after this synchronous
+      // cleanup) may have injected by the time the frame fires.
+      const staleAssets = injectedAssetNodes(id)
+      const finishTeardown = () => {
+        try {
+          instanceToUnmount?.unmount?.()
+        } catch {
+          // Avoid unmount errors from crashing the host UI.
+        }
+        staleAssets.forEach((node) => node.remove())
+      }
+      if (instanceToUnmount && typeof instanceToUnmount.unmount === "function") {
+        // Past the current render, then clear assets once the unmount has run.
+        // The returned promise resolves AFTER finishTeardown runs so a reloading
+        // load() can await the unmount before mounting a fresh instance — this
+        // is what closes the deferred-unmount-vs-fresh-mount race that caused
+        // "createRoot() already called" + NotFoundError on `tauri ios dev`.
+        return new Promise<void>((resolve) => {
+          requestAnimationFrame(() => {
+            finishTeardown()
+            resolve()
+          })
+        })
+      }
+      // Nothing to unmount — still clear this instance's injected assets.
+      staleAssets.forEach((node) => node.remove())
+      return Promise.resolve()
     }
 
     const updateManifestSignature = (manifest: ContentPackManifest) => {
@@ -359,7 +464,18 @@ export default function ContentPackHost({
       isLoading = true
       setLoadState("loading")
       setError(null)
-      cleanup()
+      // AWAIT the prior instance's teardown before we mount a fresh one. cleanup()
+      // defers the React-root unmount to a requestAnimationFrame (so we never
+      // unmount mid-render → NotFoundError); awaiting its promise guarantees that
+      // deferred unmount has actually run before this load reaches `mount()`/
+      // `createRoot()`, eliminating the window where two roots share the
+      // container. `isLoading` is already true, so any concurrent load()/
+      // checkForUpdate() is a no-op while we wait — the loads serialize.
+      await cleanup()
+      if (cancelled) {
+        isLoading = false
+        return
+      }
         ; (globalThis as { __corpanHostActive?: boolean }).__corpanHostActive = true
       if (shouldDevReload) {
         ; (globalThis as { __corpanPerf?: boolean }).__corpanPerf = true
@@ -378,10 +494,16 @@ export default function ContentPackHost({
         const baseUrl = manifest.baseUrl
           ? new URL(manifest.baseUrl, activeManifestSourceUrl).toString()
           : new URL(".", activeManifestSourceUrl).toString()
-        const devToken = shouldDevReload ? manifest.devRevision : undefined
+        const isLocalInstall = isContentPackProtocolUrl(baseUrl)
+        const devToken = isLocalInstall ? undefined : (manifest.devRevision || manifest.version)
 
-        // corpan-pack:// URLs must be fetched via Tauri commands and injected inline
-        const useInlineLoad = baseUrl.startsWith('corpan-pack://')
+        // corpan-pack URLs (either platform form) must be fetched via Tauri
+        // commands and injected inline — the WebView can't fetch() the scheme,
+        // and on Android the entry would otherwise load over an http.localhost
+        // <script src> we'd rather keep as the proven inline path. Direct asset
+        // URLs (<img>, fonts, audio) still resolve against the same protocol
+        // handler natively, which is the whole point of the platform-correct base.
+        const useInlineLoad = isLocalInstall
 
         console.log(`[ContentPackHost] baseUrl=${baseUrl}, useInlineLoad=${useInlineLoad}, entry=${manifest.entry}, styles=${JSON.stringify(manifest.styles)}`)
 
@@ -400,7 +522,7 @@ export default function ContentPackHost({
           withCacheBust(new URL(manifest.entry, baseUrl).toString(), devToken)
         )
         console.log(`[ContentPackHost] Loading script: ${entryUrl}, inline=${useInlineLoad}`)
-        await loadScript(entryUrl, id, manifest.entryType ?? "script", useInlineLoad)
+        await loadScript(entryUrl, id, manifest.entryType ?? "script", useInlineLoad, baseUrl, devToken)
         console.log(`[ContentPackHost] Script loaded: ${entryUrl}`)
 
         activeModule = await waitForGameModule(manifest.id, id)
@@ -412,8 +534,27 @@ export default function ContentPackHost({
           throw new Error("Content pack container missing")
         }
 
+        // Belt-and-suspenders: the awaited cleanup() above has already unmounted
+        // any prior pack root, but if a previous teardown left DOM behind (a
+        // pack whose unmount threw, an async chunk that committed late) the new
+        // pack's `createRoot(container)` would hit React's "container already
+        // passed to createRoot" warning + a detached-node NotFoundError. Start
+        // every fresh mount from an empty container so createRoot always sees a
+        // pristine node. Safe because we only reach here once the prior instance
+        // is fully torn down (or there was none).
+        if (containerRef.current.firstChild) {
+          containerRef.current.replaceChildren()
+        }
+
         activeInstance = activeModule.mount(containerRef.current, hostApi, {
           stackConfig: hostApi.getStackConfig(),
+          isPlus: entitlementSnapshotRef.current.plus,
+          entitlement: entitlementSnapshotRef.current,
+          // Addressability groundwork: a deep-linked entry/route, when present.
+          ...(entry ? { entryId: entry.entryId, source: entry.source, route: entry.route } : {}),
+          // First-run reader seed: auto-download a default book's preview
+          // narrations for the user's stack (the instant "wow").
+          ...(entry?.seedBookId ? { seedBookId: entry.seedBookId } : {}),
         })
 
         if (!cancelled) {
@@ -458,7 +599,7 @@ export default function ContentPackHost({
       cancelled = true
       cleanup()
     }
-  }, [hostApi, id, manifestUrl])
+  }, [hostApi, id, manifestUrl, entry?.entryId, entry?.source, entry?.route, entry?.seedBookId])
 
   return (
     <div className="relative h-full w-full bg-black text-white">

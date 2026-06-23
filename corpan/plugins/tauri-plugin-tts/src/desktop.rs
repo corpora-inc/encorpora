@@ -3,7 +3,10 @@
 use serde::de::DeserializeOwned;
 use tauri::{plugin::PluginApi, AppHandle, Runtime};
 
-use crate::models::VoiceInfo;
+use crate::models::{
+    BindEngineResult, InstallVoiceDataResult, RecoverResult, SpeakResult, SynthesizeResult,
+    TtsEngineStatus, TtsHealthProbe, VoiceInfo,
+};
 
 // Initialize desktop TTS handle
 pub fn init<R: Runtime, C: DeserializeOwned>(
@@ -31,9 +34,50 @@ impl<R: Runtime> Tts<R> {
         }
         #[cfg(not(target_os = "macos"))]
         {
-            // On non-mac desktop, fall back to legacy (no-op)
-            self.speak(text, language, rate)
+            // On non-mac desktop, no-op
+            let _ = (text, language, rate, voice_id);
+            Ok(())
         }
+    }
+
+    /// Speak concurrently using the synthesizer pool. Returns an utterance ID for tracking.
+    pub fn speak_concurrent(
+        &self,
+        text: String,
+        language: Option<String>,
+        rate: Option<f32>,
+        voice_id: Option<String>,
+    ) -> crate::Result<SpeakResult> {
+        #[cfg(target_os = "macos")]
+        {
+            return macos_speak_concurrent(&text, language.as_deref(), rate, voice_id.as_deref());
+        }
+        #[cfg(not(target_os = "macos"))]
+        {
+            // On non-mac desktop, generate a dummy ID
+            let _ = (text, language, rate, voice_id);
+            Ok(SpeakResult {
+                utterance_id: uuid::Uuid::new_v4().to_string(),
+            })
+        }
+    }
+
+    /// `synthesize_to_buffer` is a MOBILE capability (iOS AVSpeechSynthesizer.write /
+    /// Android synthesizeToFile). Desktop has no off-speaker render path here, so it
+    /// returns an `unsupported` error and callers feature-degrade (the beatlounge
+    /// pack falls through to its fragment kit / synth-vox floor).
+    pub fn synthesize_to_buffer(
+        &self,
+        text: String,
+        language: Option<String>,
+        rate: Option<f32>,
+        voice_id: Option<String>,
+    ) -> crate::Result<SynthesizeResult> {
+        let _ = (text, language, rate, voice_id);
+        Err(crate::Error::Io(std::io::Error::new(
+            std::io::ErrorKind::Unsupported,
+            "synthesize_to_buffer is not supported on desktop (mobile-only capability)",
+        )))
     }
 
     pub fn stop(&self) -> crate::Result<()> {
@@ -75,6 +119,76 @@ impl<R: Runtime> Tts<R> {
         {
             Ok(Vec::new())
         }
+    }
+
+    /// Engine status is Android-only; return supported=false on desktop.
+    pub fn get_tts_engine_status(&self) -> crate::Result<TtsEngineStatus> {
+        Ok(TtsEngineStatus {
+            supported: false,
+            default_engine: None,
+            engines: Vec::new(),
+            google_installed: false,
+            google_default: false,
+        })
+    }
+
+    /// Open a store listing for a given engine package (Android only).
+    pub fn open_tts_engine_store(&self, _package_name: String) -> crate::Result<bool> {
+        Ok(false)
+    }
+
+    /// Probe is Android-only; desktop returns a synthetic ready state.
+    pub fn probe_tts_health(&self) -> crate::Result<TtsHealthProbe> {
+        Ok(TtsHealthProbe {
+            supported: false,
+            init_state: "ready".to_string(),
+            current_engine: None,
+            voice_count: 0,
+            voices_empty: false,
+            default_engine: None,
+            engines: Vec::new(),
+            google_installed: false,
+            google_enabled: false,
+            google_default: false,
+            diagnosis: "ready".to_string(),
+            ready: true,
+        })
+    }
+
+    /// Auto-recover is Android-only.
+    pub fn try_auto_recover(&self) -> crate::Result<RecoverResult> {
+        Ok(RecoverResult {
+            recovered: true,
+            engine: None,
+            diagnosis: None,
+            voice_count: None,
+            already_healthy: Some(true),
+        })
+    }
+
+    /// Explicit engine bind is Android-only.
+    pub fn bind_engine(&self, _package_name: String) -> crate::Result<BindEngineResult> {
+        Ok(BindEngineResult {
+            ok: false,
+            reason: Some("not_supported".to_string()),
+            engine: None,
+            voice_count: None,
+        })
+    }
+
+    /// App-details deep-link is Android-only.
+    pub fn open_app_details(&self, _package_name: String) -> crate::Result<bool> {
+        Ok(false)
+    }
+
+    /// Per-language voice data install is Android-only.
+    pub fn install_voice_data_for_language(
+        &self,
+        _language: String,
+    ) -> crate::Result<InstallVoiceDataResult> {
+        Ok(InstallVoiceDataResult {
+            status: "not_supported".to_string(),
+        })
     }
 }
 
@@ -313,6 +427,7 @@ mod macos_impl {
                     engine: Some("Apple TTS".to_string()),
                     gender: gender_opt,
                     quality: quality_bucket(&name, &ident, av_q),
+                    network_required: None,
                 };
 
                 out.push(vi);
@@ -497,7 +612,95 @@ mod macos_impl {
         }
         Ok(())
     }
+
+    // ---------------------- Synthesizer Pool for Concurrent TTS ----------------------
+    // Simple round-robin pool: each call goes to a different synthesizer,
+    // guaranteeing concurrent audio when multiple calls happen in quick succession.
+
+    use std::sync::atomic::{AtomicUsize, Ordering};
+
+    const POOL_SIZE: usize = 8;
+
+    struct SynthesizerPool {
+        slots: Vec<id>, // AVSpeechSynthesizer instances
+        next_slot: AtomicUsize,
+        next_id: AtomicUsize,
+    }
+
+    static POOL_INIT: Once = Once::new();
+    static mut SYNTH_POOL: Option<SynthesizerPool> = None;
+
+    #[allow(static_mut_refs)]
+    unsafe fn get_pool() -> &'static SynthesizerPool {
+        POOL_INIT.call_once(|| {
+            let mut slots = Vec::with_capacity(POOL_SIZE);
+            for _ in 0..POOL_SIZE {
+                let synth: id = msg_send![class!(AVSpeechSynthesizer), new];
+                slots.push(synth);
+            }
+            SYNTH_POOL = Some(SynthesizerPool {
+                slots,
+                next_slot: AtomicUsize::new(0),
+                next_id: AtomicUsize::new(1),
+            });
+        });
+        SYNTH_POOL.as_ref().unwrap()
+    }
+
+    /// Speak concurrently using the synthesizer pool.
+    /// Uses round-robin slot selection to distribute utterances across synthesizers.
+    /// Returns an utterance_id for tracking.
+    pub(super) fn macos_speak_concurrent(
+        text: &str,
+        language: Option<&str>,
+        rate: Option<f32>,
+        voice_id: Option<&str>,
+    ) -> crate::Result<super::SpeakResult> {
+        unsafe {
+            let pool = get_pool();
+            let utterance_id = format!("utt_{}", pool.next_id.fetch_add(1, Ordering::SeqCst));
+
+            // Round-robin: each call uses the next synthesizer in sequence
+            let slot_idx = pool.next_slot.fetch_add(1, Ordering::SeqCst) % POOL_SIZE;
+            let synth = pool.slots[slot_idx];
+
+            let utter: id = msg_send![
+                class!(AVSpeechUtterance),
+                speechUtteranceWithString: crate::ns_string!(text)
+            ];
+
+            if let Some(r) = rate {
+                let mapped = map_web_rate_to_av(r);
+                let _: () = msg_send![utter, setRate: mapped];
+            }
+
+            // Voice selection
+            if let Some(req) = voice_id {
+                let v: id = msg_send![
+                    class!(AVSpeechSynthesisVoice),
+                    voiceWithIdentifier: crate::ns_string!(req)
+                ];
+                if !v.is_null() {
+                    let _: () = msg_send![utter, setVoice: v];
+                }
+            } else if let Some(vc) = best_avfoundation_voice(language) {
+                let _: () = msg_send![utter, setVoice: vc];
+            } else if let Some(lang) = language {
+                let v: id = msg_send![
+                    class!(AVSpeechSynthesisVoice),
+                    voiceWithLanguage: crate::ns_string!(lang)
+                ];
+                if !v.is_null() {
+                    let _: () = msg_send![utter, setVoice: v];
+                }
+            }
+
+            let _: () = msg_send![synth, speakUtterance: utter];
+
+            Ok(super::SpeakResult { utterance_id })
+        }
+    }
 }
 
 #[cfg(target_os = "macos")]
-use macos_impl::{macos_list_voices, macos_speak, macos_stop};
+use macos_impl::{macos_list_voices, macos_speak, macos_speak_concurrent, macos_stop};

@@ -1,0 +1,24 @@
+{
+  "code": "en",
+  "displayName": {
+    "en": "English",
+    "es": "Ingl\u00e9s",
+    "fr": "Anglais",
+    "de": "Englisch",
+    "zh": "\u82f1\u8bed",
+    "ja": "\u82f1\u8a9e"
+  },
+  "voiceLanguageCode": "en-US",
+  "contentVersion": "0.2.0",
+  "minTutomatonVersion": "0.1.0",
+  "files": {
+    "database": "sources/core/data/english.sqlite3",
+    "systemPrompt": "prompts/system_prompt.txt",
+    "groundingInstruction": "prompts/grounding_instruction.txt",
+    "retriever": "sources/core/retrieval/retriever.ts"
+  },
+  "rag": {
+    "schemaVersion": 1,
+    "themeBypassEnabled": true
+  }
+}

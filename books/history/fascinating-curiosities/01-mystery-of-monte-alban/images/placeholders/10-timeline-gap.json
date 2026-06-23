@@ -1,0 +1,16 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, horizontal triptych showing three eras of Monte Alban, left panel shows the city at its peak circa 500 CE with low broad stone platforms plastered white and painted red around a bustling plaza full of people in white garments and carved stone monuments, center panel shows the same plaza circa 900 CE abandoned with dry grass and small trees growing between crumbling grey stone platforms and empty staircases, right panel shows a distant view circa 1521 CE of Spanish galleon ships with crosses on their sails approaching a tropical coastline, the three scenes separated by thin lines",
+  "negative_prompt": "blurry, low quality, distorted, deformed, cartoon, anime, 3D render, text, words, letters, writing, captions",
+  "seed": 51,
+  "width": 1024,
+  "height": 768,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "dtype": "float16",
+  "generation_time_s": 61.68,
+  "timestamp": "2026-02-22T06:07:51.580310+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

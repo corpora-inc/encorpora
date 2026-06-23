@@ -2,11 +2,16 @@
 // honoring random/sequence; fall back to speaking by language if no preferred
 // IDs are currently available.
 
-import { createVoiceTTS } from "@/util/speak";
+import { createVoiceTTS, createVoiceTTSConcurrent } from "@/util/speak";
 import { useSettingsStore } from "@/store/settings";
 import { getVoicesCached } from "@/util/tts-voices";
+import { incrementSegmentCounter } from "@/util/analytics";
 
-export async function speakWithStackPrefs(uiCode: string, text: string, rate: number) {
+/**
+ * Helper to get the voice ID to use based on stack preferences.
+ * Returns undefined if no preferred voice is available.
+ */
+export async function getPreferredVoiceId(uiCode: string): Promise<string | undefined> {
     const state = useSettingsStore.getState();
     const { voicePrefs, nextVoiceId } = state;
 
@@ -20,11 +25,8 @@ export async function speakWithStackPrefs(uiCode: string, text: string, rate: nu
     const baseIds = basePref?.ids ?? [];
     const mergedPrefIds = Array.from(new Set([...exactIds, ...baseIds]));
 
-    // If there are no prefs at all, just speak with language
-    // console.log("mergedPrefIds", mergedPrefIds);
     if (mergedPrefIds.length === 0) {
-        await createVoiceTTS(uiCode)(text, rate);
-        return;
+        return undefined;
     }
 
     // Validate against currently available voices (native first, browser fallback)
@@ -32,16 +34,28 @@ export async function speakWithStackPrefs(uiCode: string, text: string, rate: nu
     const availableIds = new Set(available.map((v) => v.id));
     const pool = mergedPrefIds.filter((id) => availableIds.has(id));
 
-    // console.warn(pool)
     if (pool.length === 0) {
-        // Preferred IDs aren’t installed/available right now; speak by language
-        await createVoiceTTS(uiCode)(text, rate);
-        return;
+        return undefined;
     }
 
-    // Use the exact entry’s mode if present; otherwise base
+    // Use the exact entry's mode if present; otherwise base
     const langKeyForMode = exactPref ? uiCode : base;
-    const chosenId = nextVoiceId(langKeyForMode, pool);
+    return nextVoiceId(langKeyForMode, pool);
+}
 
+export async function speakWithStackPrefs(uiCode: string, text: string, rate: number) {
+    incrementSegmentCounter(uiCode);
+    const chosenId = await getPreferredVoiceId(uiCode);
     await createVoiceTTS(uiCode)(text, rate, chosenId);
+}
+
+/**
+ * Speak concurrently using the synthesizer pool (allows overlapping audio on macOS/iOS).
+ * On Android, falls back to sequential playback due to platform limitations.
+ * Returns an utterance ID for tracking completion.
+ */
+export async function speakConcurrentWithStackPrefs(uiCode: string, text: string, rate: number): Promise<string> {
+    incrementSegmentCounter(uiCode);
+    const chosenId = await getPreferredVoiceId(uiCode);
+    return await createVoiceTTSConcurrent(uiCode)(text, rate, chosenId);
 }

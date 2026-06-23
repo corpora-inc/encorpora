@@ -1,0 +1,54 @@
+/* beatlounge — shared tap-to-rename track label (TrackNameEdit).
+ * Reads as a quiet label; reveals it's editable only on hover/focus so it never
+ * shouts. Each host surface keeps its own size/weight via its existing name
+ * class (passed through `className`); this only adds the edit affordance. */
+
+.bl-trackname {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+  min-width: 0;
+  max-width: 100%;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  border: 1px solid transparent;
+  border-radius: var(--bl-radius-sm, 6px);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: text;
+  transition: background var(--bl-dur-fast) var(--bl-ease),
+    border-color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-trackname:hover,
+.bl-trackname:focus-visible {
+  background: var(--bl-surface-2, rgba(255, 255, 255, 0.05));
+  border-color: var(--bl-border);
+  outline: none;
+}
+.bl-trackname-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bl-trackname.is-editing {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s1);
+}
+.bl-trackname-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  padding: 2px 4px;
+  border: 1px solid var(--bl-accent);
+  border-radius: var(--bl-radius-sm, 6px);
+  background: var(--bl-surface-1, rgba(0, 0, 0, 0.3));
+  color: var(--bl-text);
+  font: inherit;
+  outline: none;
+}

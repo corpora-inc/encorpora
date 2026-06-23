@@ -3,11 +3,18 @@ import { Button } from "@/components/ui/button";
 import { Volume2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useSettingsStore } from "@/store/settings";
+import { useDrawerStore } from "@/store/drawer";
 import { memo } from "react";
 
 /**
- * Jumps into the onboarding flow at the TTS setup step.
- * Assumes global step indices: learning=0, tts=1, levels=2, domains=3, socials=4
+ * Opens the Text-to-speech / voice configurator as a drawer over Settings.
+ *
+ * It used to dispatch `corpan:open-tts` and re-render the full-screen
+ * onboarding TTS shell over the open Settings dialog — but Radix locks
+ * body `pointer-events` while the dialog is open, so that overlay's
+ * Continue/Back were unclickable and trapped the user. Now it opens
+ * `<TTSSettingsDrawer />` (vaul, z above the dialog), which hosts the same
+ * shared <TTSVoicePicker> and is reliably dismissable.
  */
 export const JumpToTTSButton = memo(function JumpToTTSButton({
     className,
@@ -16,18 +23,15 @@ export const JumpToTTSButton = memo(function JumpToTTSButton({
     className?: string;
     fullWidth?: boolean;
 }) {
-    const setStep = useSettingsStore((s) => s.setOnboardingStep);
-    const setOnboarded = useSettingsStore((s) => s.setOnboarded);
     const languages = useSettingsStore((s) => s.languages);
+    const openTTSSettings = useDrawerStore((s) => s.openTTSSettings);
     const { t } = useTranslation();
 
     // Enable once a primary language exists (you can relax this if desired)
     const canEnter = (languages?.length || 0) > 0;
 
     const handleClick = () => {
-        // Jump to TTS step
-        setOnboarded(false);
-        setStep(3);
+        openTTSSettings();
     };
 
     return (
@@ -36,7 +40,12 @@ export const JumpToTTSButton = memo(function JumpToTTSButton({
             onClick={handleClick}
             disabled={!canEnter}
             className={[
-                "inline-flex items-center gap-2 rounded-md p-7",
+                // h-auto lets px-6 py-8 drive the height so this matches
+                // the "Browse phrase packs" / "Reconfigure stack" hero
+                // CTAs on the Stacks tab — without h-auto the Button
+                // default (h-9 md:h-11) would lock the height and the
+                // padding would be inert.
+                "inline-flex items-center gap-2 rounded-md h-auto px-6 py-6 md:py-8",
                 fullWidth ? "w-full justify-center" : "",
                 className || "",
             ].join(" ")}

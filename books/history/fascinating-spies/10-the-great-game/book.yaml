@@ -1,0 +1,24 @@
+book:
+  volume: 10
+  title: "The Great Game: Synthesis"
+  subtitle: "Spies, Empire, and the Invisible Architecture of the Twentieth Century"
+  target_pages: 80-90
+
+  core_mysteries:
+    primary:
+      - The ten individuals and operations in Volumes 13-21 form a connected network spanning sixty years -- from Boyle's freelancing in 1917 to the consequences of Ajax still reverberating decades later
+      - The evolution of intelligence from Victorian amateurism to Cold War professionalism was a series of improvisations, not a planned trajectory -- each institutional form emerged from the failures and accidents of the previous one
+      - The consequences of this sixty-year arc are still unfolding, and the full documentary record remains partially closed -- SIS files classified, CIA files partially declassified, SVR/FSB archives sealed
+    secondary:
+      - The Reilly-Hill-Lockhart-Ransome network in revolutionary Moscow in 1918 as the operational template for everything that followed
+      - The Canadian connection -- Boyle and Stephenson, two frontier Canadians who shaped intelligence history from outside the British establishment
+      - The Iran thread from D'Arcy's oil concession in 1901 through the 1921 coup, the wartime occupation, Tehran 1943, to Operation Ajax in 1953 -- a continuous sixty-year intelligence involvement
+      - The archives that remain closed and the questions they might answer
+
+  key_scholarly_sources:
+    - "Christopher Andrew -- The Secret World: A History of Intelligence (2018); the broadest scholarly overview of intelligence history"
+    - "Keith Jeffery -- MI6: The History of the Secret Intelligence Service 1909-1949 (2010); the authorized institutional history"
+    - "Tim Weiner -- Legacy of Ashes: The History of the CIA (2007); the CIA's institutional failures and consequences"
+    - "Calder Walton -- Spies: The Epic Intelligence War Between East and West (2023); the most recent synthesis of Cold War intelligence"
+    - "Peter Hopkirk -- The Great Game: On Secret Service in High Asia (1990); the classic account of the Victorian intelligence tradition"
+    - "Jonathan Haslam -- Near and Distant Neighbours: A New History of Soviet Intelligence (2015); the Russian perspective"

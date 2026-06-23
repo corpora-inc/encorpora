@@ -93,6 +93,54 @@
         },
         "ur": {
           "type": "string"
+        },
+        "ne": {
+          "type": "string"
+        },
+        "pt-PT": {
+          "type": "string"
+        },
+        "hr": {
+          "type": "string"
+        },
+        "sr": {
+          "type": "string"
+        },
+        "uk": {
+          "type": "string"
+        },
+        "bg": {
+          "type": "string"
+        },
+        "ro": {
+          "type": "string"
+        },
+        "ca": {
+          "type": "string"
+        },
+        "yue-Hant-HK": {
+          "type": "string"
+        },
+        "cs": {
+          "type": "string"
+        },
+        "lt": {
+          "type": "string"
+        },
+        "sk": {
+          "type": "string"
+        },
+        "sl": {
+          "type": "string"
+        },
+        "jv": {
+          "type": "string"
+        },
+        "su": {
+          "type": "string"
+        },
+        "tl": {
+          "type": "string"
         }
       },
       "required": [
@@ -116,6 +164,8 @@
         "zh-Hant",
         "th",
         "id",
+        "jv",
+        "su",
         "tr",
         "ta",
         "te",
@@ -124,7 +174,21 @@
         "gu",
         "pa-Guru",
         "pa-Arab",
-        "ur"
+        "ur",
+        "ne",
+        "pt-PT",
+        "hr",
+        "sr",
+        "uk",
+        "bg",
+        "ro",
+        "ca",
+        "yue-Hant-HK",
+        "cs",
+        "lt",
+        "sk",
+        "sl",
+        "tl"
       ],
       "additionalProperties": false
     },
@@ -268,6 +332,12 @@
         },
         "scrollNavigation": {
           "type": "string"
+        },
+        "home": {
+          "type": "string"
+        },
+        "developer": {
+          "type": "string"
         }
       },
       "required": [
@@ -295,7 +365,9 @@
         "extra-large",
         "testTts",
         "showRomanization",
-        "scrollNavigation"
+        "scrollNavigation",
+        "home",
+        "developer"
       ],
       "additionalProperties": false
     },
@@ -309,34 +381,7 @@
     "onboarding": {
       "type": "object",
       "properties": {
-        "welcome": {
-          "type": "string"
-        },
-        "makePrimaryLanguage": {
-          "type": "string"
-        },
-        "canChangeLater": {
-          "type": "string"
-        },
         "pickLanguagesToLearn": {
-          "type": "string"
-        },
-        "learning": {
-          "type": "string"
-        },
-        "learningStepTitle": {
-          "type": "string"
-        },
-        "tts": {
-          "type": "string"
-        },
-        "ttsStepTitle": {
-          "type": "string"
-        },
-        "socials": {
-          "type": "string"
-        },
-        "socialsStepTitle": {
           "type": "string"
         },
         "noVoices": {
@@ -354,31 +399,10 @@
         "textToSpeechSetup": {
           "type": "string"
         },
-        "ttsPoorQualityNote": {
-          "type": "string"
-        },
-        "howToSetupTtsOn": {
-          "type": "string"
-        },
-        "welcomeTitle": {
-          "type": "string"
-        },
-        "welcomeBody": {
-          "type": "string"
-        },
-        "welcomeVisit": {
-          "type": "string"
-        },
-        "linkCopied": {
-          "type": "string"
-        },
         "reconfigureStack": {
           "type": "string"
         },
         "openVoiceSettings": {
-          "type": "string"
-        },
-        "welcomeFollowUp": {
           "type": "string"
         },
         "openTTSSetup": {
@@ -410,30 +434,14 @@
         }
       },
       "required": [
-        "welcome",
-        "makePrimaryLanguage",
-        "canChangeLater",
         "pickLanguagesToLearn",
-        "learning",
-        "learningStepTitle",
-        "tts",
-        "ttsStepTitle",
-        "socials",
-        "socialsStepTitle",
         "noVoices",
         "noVoicesHint",
         "languageOrderTipTitle",
         "languageOrderTipBody",
         "textToSpeechSetup",
-        "ttsPoorQualityNote",
-        "howToSetupTtsOn",
-        "welcomeTitle",
-        "welcomeBody",
-        "welcomeVisit",
-        "linkCopied",
         "reconfigureStack",
         "openVoiceSettings",
-        "welcomeFollowUp",
         "openTTSSetup",
         "ttsOsTipTitle",
         "ttsOsTipAndroid",
@@ -675,19 +683,16 @@
         "rateNow": {
           "type": "string"
         },
-        "remindLater": {
-          "type": "string"
-        },
-        "noThanks": {
-          "type": "string"
-        },
         "close": {
           "type": "string"
         },
         "feedbackHint": {
           "type": "string"
         },
-        "feedbackButton": {
+        "emailButton": {
+          "type": "string"
+        },
+        "githubButton": {
           "type": "string"
         }
       },
@@ -695,11 +700,10 @@
         "title",
         "description",
         "rateNow",
-        "remindLater",
-        "noThanks",
         "close",
         "feedbackHint",
-        "feedbackButton"
+        "emailButton",
+        "githubButton"
       ],
       "additionalProperties": false
     },
@@ -719,6 +723,12 @@
           "type": "string"
         },
         "emptyInstalled": {
+          "type": "string"
+        },
+        "updates": {
+          "type": "string"
+        },
+        "new": {
           "type": "string"
         },
         "get": {
@@ -754,6 +764,9 @@
         "updating": {
           "type": "string"
         },
+        "offline": {
+          "type": "string"
+        },
         "manifestTitle": {
           "type": "string"
         },
@@ -785,6 +798,8 @@
         "emptyAvailable",
         "installed",
         "emptyInstalled",
+        "updates",
+        "new",
         "get",
         "open",
         "remove",
@@ -796,6 +811,7 @@
         "installFailed",
         "update",
         "updating",
+        "offline",
         "manifestTitle",
         "manifestPlaceholder",
         "manifestHint",

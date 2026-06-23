@@ -1,0 +1,71 @@
+book:
+  issue: 2
+  title: "AI This Week — May 20, 2026"
+  subtitle: "Magnifica Humanitas"
+  date: 2026-05-20
+  target_segments: 160
+
+  audience: "Curious technical listeners who want a calm conversation about real AI news, leaning open weights and on-device."
+  primary_language: en
+  pack_id: ai_this_week_2026_05_20
+
+  cast:
+    host: vindy
+    analyst: ron
+
+  episode_shape: ep2_open_first  # Cold open → Open weights → Leaderboards → Headlines → Top Story → Concept → Sign-off
+
+  topics:
+    open_weights_and_releases:
+      - "Zhipu's GLM-4.7 trained 100% on Huawei Ascend (no NVIDIA); 1.2% hallucination claim — Zhipu's number, not independent"
+      - "Kimi K2.6 (Moonshot) holding #1 on OpenRouter token volume"
+      - "DeepSeek V4-Pro 1.6T/49B active; V4-Flash 284B/13B for cost-sensitive"
+      - "Qwen3 family update — confirm exact version + Apache 2.0"
+      - "ZAYA1-8B from Zyphra: Apache 2.0 MoE, ~760M active, trained on AMD"
+      - "vLLM v0.21.0 shipped May 15 — open serving stack ships while big-co does keynotes"
+
+    leaderboards_and_evals:
+      - "Claude Opus 4.7 still ~1569 Elo, #1 LMSYS coding"
+      - "GPT-5.5 at #7 high-reasoning, #9 Code WebDev"
+      - "Gemini 3.5 Flash too new to rank (shipped May 19)"
+      - "Open-vs-closed gap now 5-15 points per Artificial Analysis"
+      - "SWE-bench Verified still retired (issue 1 callback); SWE-bench Pro and SWE-rebench are the boards"
+
+    headlines:
+      - "Google I/O May 19-20: Gemini 3.5 Flash, Omni (video), Spark (24/7 cloud agent), AI Ultra $250→$100/month, Samsung XR glasses, search redesign"
+      - "Karpathy joined Anthropic's pre-training team May 19"
+      - "Apple confirmed Gemini will power a version of Siri later in 2026"
+      - "California jury rejected Musk vs OpenAI in under two hours (May 14)"
+      - "US Treasury and China working on a shared AI safety protocol"
+
+    top_story:
+      headline: "Pope Leo XIV's first encyclical, 'Magnifica Humanitas', publishes Monday May 25"
+      angle: |
+        Signed May 15 — exactly 135 years after Pope Leo XIII signed
+        Rerum Novarum, the labor/capital encyclical that defined
+        Catholic social teaching on industrialization for over a
+        century. The Pope is positioning AI as the same kind of
+        epochal question. Anthropic co-founder Chris Olah, head of
+        interpretability research, presents alongside the Pope at the
+        Vatican Synod Hall. The choice of an interpretability
+        researcher (not an executive) signals the conversation is
+        about understanding what we are building, not selling it.
+
+    concept:
+      term: "Quantization"
+      angle: |
+        How a 7-billion parameter model fits on your phone. 16-bit
+        float → 14 GB → won't fit; 4-bit → 3.5 GB → fits. Where you
+        lose precision matters: AWQ keeps important channels high,
+        GGUF Q4_K_M mixes precisions inside one model, Apple's
+        on-device foundation model goes to 2-bit using
+        Quantization-Aware Training. Why on-device AI is finally
+        real in 2026.
+
+  pacing:
+    - 5 sections + cold open + sign-off, dialog format
+    - ~140-180 segments, ~12 minutes
+    - **One sentence per segment** (Ep 2+ rule of the road)
+    - Multiple consecutive ANALYST segments are expected when Ron has a multi-sentence thought
+    - Numbers spelled as words in tts.text everywhere; display field uses numerals
+    - Bare dialog text, no Style: prefix (director_prompt layer applies at generate time)

@@ -4,13 +4,6 @@ import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-import {
-  // getPlatformBottomPadding,
-  getPlatformTopPaddingButtons,
-  // getPlatformTopPaddingTranslations,
-  // isAndroid,
-} from "@/util/browser";
-
 function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {
@@ -43,7 +36,7 @@ const DialogOverlay = React.forwardRef<
     ref={ref}
     data-slot="dialog-overlay"
     className={cn(
-      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-[var(--z-overlay)] bg-black/50",
       className
     )}
     {...props}
@@ -54,49 +47,41 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 function DialogContent({
   className,
   children,
+  hideCloseButton,
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Content>) {
+}: React.ComponentProps<typeof DialogPrimitive.Content> & {
+  hideCloseButton?: boolean
+}) {
   return (
     <DialogPortal data-slot="dialog-portal">
       <DialogOverlay />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-md border p-6 shadow-lg duration-200 sm:max-w-lg",
+          // max-h + overflow keep the dialog inside the viewport so a tall
+          // dialog (e.g. the paywall on a small screen with large system font)
+          // can always be scrolled and its controls reached — never a trap.
+          // --dialog-max-h subtracts the safe-area insets so the sheet clears
+          // the notch and home indicator; overscroll-contain stops the scroll
+          // from chaining to the page behind it.
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-[var(--z-modal)] grid w-full max-w-[calc(100%-2rem)] max-h-[var(--dialog-max-h)] translate-x-[-50%] translate-y-[-50%] gap-4 overflow-y-auto overscroll-contain rounded-md border p-6 shadow-lg duration-200 sm:max-w-lg",
           className
         )}
         {...props}
-        style={{
-          paddingTop: getPlatformTopPaddingButtons(),
-        }}
       >
-        {/* Sticky wrapper reserves space; button is absolute so rings don’t affect layout
-        <div className="sticky top-5 z-[1001]"
-        // style={{
-        //   maxWidth: "10px"
-        // }}
-        >
-          <div className="relative h-10">
-            <DialogPrimitive.Close
-              className="absolute right-0 top-0 inline-flex h-10 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none pointer-events-auto"
-              style={{ marginRight: "-0.15em" }}
-            >
-              <XIcon className="h-5 w-5" />
-              <span className="sr-only">Close</span>
-            </DialogPrimitive.Close>
+        {!hideCloseButton && (
+          <div className="sticky top-3 z-[var(--z-modal-close)] ms-auto w-12 pointer-events-none">
+            <div className="relative h-10 w-12">
+              <DialogPrimitive.Close
+                className="pointer-events-auto absolute inset-0 inline-flex h-10 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none"
+                style={{ marginInlineEnd: "-0.15em" }}
+              >
+                <XIcon className="h-5 w-5" />
+                <span className="sr-only">Close</span>
+              </DialogPrimitive.Close>
+            </div>
           </div>
-        </div> */}
-        <div className="sticky top-5 z-[1001] ml-auto w-12 pointer-events-none">
-          <div className="relative h-10 w-12">
-            <DialogPrimitive.Close
-              className="pointer-events-auto absolute inset-0 inline-flex h-10 w-12 items-center justify-center rounded-md border bg-background shadow-sm cursor-pointer transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none"
-              style={{ marginRight: "-0.15em" }}
-            >
-              <XIcon className="h-5 w-5" />
-              <span className="sr-only">Close</span>
-            </DialogPrimitive.Close>
-          </div>
-        </div>
+        )}
 
         {children}
       </DialogPrimitive.Content>

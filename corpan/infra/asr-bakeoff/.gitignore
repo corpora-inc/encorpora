@@ -1,0 +1,8 @@
+# Never commit the heavy blobs or the venv — only code + the report.
+.venv/
+models/
+corpus/
+results/rows.jsonl
+__pycache__/
+*.pyc
+# Keep results/DECISION.md (the deliverable) — it's the report, not data.

@@ -1,0 +1,605 @@
+:root {
+  color-scheme: light;
+  font-family: Georgia, "Times New Roman", serif;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  --eg-bg: #f5f0e8;
+  --eg-text: #3d2b1f;
+  --eg-gold: #c8a96e;
+  --eg-brown: #6b4c2a;
+  --eg-accent: #8b6914;
+  --eg-muted: #a89279;
+
+  /* Keeps the paragraph's centered short content and auto-scrolled current
+     word above the transport's solid zone. Bumped from the original 130px
+     to account for the compact language switcher band the appShell inserts
+     as the first child of the transport bar (`narration-switcher--compact`,
+     ~50px). The book title sits inline next to the chapter, so it adds no
+     extra height. Slightly less than the transport's full height so text
+     can still flow behind the translucent top gradient. */
+  --eg-transport-clearance: 140px;
+
+  /* Symmetric fade band at the top of the reading area: tall enough to mask
+     text behind the hamburger (48px at top:15+safe → bottom at safe+63) and
+     the chapter overlay, while letting text flow through without a dead band. */
+  --eg-top-clearance: 80px;
+
+  /* Catalog browser theme — warm/serif */
+  --catalog-bg: rgba(245, 240, 232, 0.97);
+  --catalog-surface: rgba(235, 225, 210, 0.9);
+  --catalog-text: #3d2b1f;
+  --catalog-text-dim: #8b7355;
+  --catalog-accent: #8b6914;
+  --catalog-accent-hover: #a07818;
+  --catalog-success: #4a8c3f;
+  --catalog-error: #8b4513;
+  --catalog-border: rgba(107, 76, 42, 0.15);
+  --catalog-font: Georgia, "Times New Roman", serif;
+  --catalog-radius: 10px;
+}
+
+html,
+body,
+#corpan-game-root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--eg-bg);
+}
+
+body {
+  overflow: hidden;
+}
+
+/* --- Main container --- */
+
+.earthgate-reader {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  background: var(--eg-bg);
+  overflow: hidden;
+}
+
+/* --- UI overlay ---
+   Paragraph and transport are absolutely positioned siblings so the transport
+   can float above the paragraph. Text in the paragraph can scroll freely
+   through the transport's translucent fade zone — no dead padding band. */
+
+.earthgate-ui {
+  position: absolute;
+  inset: 0;
+}
+
+/* Top fade band — mirrors the transport's bottom gradient. Masks text that
+   would otherwise render behind the hamburger trigger and chapter overlay.
+   Pseudo-element so no DOM changes are required in game.ts. */
+.earthgate-ui::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--eg-top-clearance) + var(--safe-top));
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--eg-bg) 0%,
+    rgba(245, 240, 232, 0.85) 50%,
+    rgba(245, 240, 232, 0) 100%
+  );
+  z-index: 10;
+}
+
+/* --- Paragraph view --- */
+
+.earthgate-paragraph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  /* No decorative top padding — top fade handles clearance visually. This
+     centers short content between the physical screen top and the top of the
+     control bar, not within an offset padded box. */
+  padding: var(--safe-top) calc(24px + var(--safe-right)) var(--eg-transport-clearance) calc(24px + var(--safe-left));
+  color: var(--eg-text);
+  overflow: hidden;
+  min-height: 0;
+  touch-action: pan-y;
+}
+
+.earthgate-paragraph-scroll {
+  flex: 0 1 auto;
+  max-height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  /* scrollIntoView(block:"center") respects this: active word always lands
+     clear of both fade bands (+20px breathing room so it isn't grazing the
+     fade's edge). */
+  scroll-padding-bottom: calc(var(--eg-transport-clearance) + 20px);
+  scroll-padding-top: calc(var(--eg-top-clearance) + 20px);
+  /* Hide the scroll bar — the auto-follow scroll is the experience; a
+     visible track would just pull focus away from the words. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.earthgate-paragraph-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.earthgate-paragraph-inner {
+  max-width: 640px;
+  width: 100%;
+  font-size: 32px;
+  line-height: 1.7;
+  text-align: center;
+  cursor: pointer;
+  /* No baseline padding — short segments center mathematically inside the
+     flex container (which is itself bounded by safe-top above and
+     transport-clearance below, so the reading area is already biased
+     toward the upper half of the viewport). For long segments,
+     paragraphView.ts adds --pad-bottom-extra for smooth-scroll room. */
+}
+
+/* Applied by paragraphView.ts when the first word would otherwise render
+   inside the top fade band. Pushes the inner down so the first word lands
+   in the clean reading area. Short segments don't get this class, so their
+   centering is preserved.
+   The +32px is the buffer below `--eg-top-clearance` (the fade-band
+   height); it pairs with the +20px breathing room inside getCleanTop()
+   so the first word lands comfortably inside the clean zone. */
+.earthgate-paragraph-inner--pad-top {
+  padding-top: calc(var(--eg-top-clearance) + 32px);
+}
+
+/* Applied by paragraphView.ts when the content overflows the scroll
+   container. Extends scrollable range so per-line smooth scrolling can
+   keep the active word at the reading target through the final lines —
+   avoids a drift toward the bottom at end of segment. */
+.earthgate-paragraph-inner--pad-bottom-extra {
+  padding-bottom: 240px;
+}
+@media (max-height: 520px) {
+  .earthgate-paragraph-inner--pad-bottom-extra {
+    padding-bottom: 120px;
+  }
+}
+@media (max-height: 380px) {
+  .earthgate-paragraph-inner--pad-bottom-extra {
+    padding-bottom: 80px;
+  }
+}
+
+.earthgate-word {
+  display: inline;
+  padding: 2px 1px;
+  border-radius: 3px;
+  transition: background-color 0.05s ease;
+}
+
+.earthgate-word--active {
+  background-color: var(--eg-gold);
+  color: #2a1f0e;
+  border-radius: 4px;
+}
+
+/* --- Transport bar --- */
+
+.earthgate-transport {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 16px calc(12px + var(--safe-bottom)) 16px;
+  background: linear-gradient(
+    to top,
+    rgba(245, 240, 232, 0.96) 0%,
+    rgba(245, 240, 232, 0.85) 60%,
+    rgba(245, 240, 232, 0) 100%
+  );
+  z-index: 20;
+  /* Fade zone is pass-through so the user can swipe text flowing through it.
+     Interactive children (pills, scrub, buttons) get pointer-events:auto. */
+  pointer-events: none;
+}
+
+.earthgate-transport > * {
+  pointer-events: auto;
+}
+
+.earthgate-transport-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+  padding: 0 4px;
+}
+
+/* --- Scrub bar --- */
+
+.earthgate-scrub {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  touch-action: none;
+  margin-bottom: 0;
+}
+
+.earthgate-scrub-track {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background: rgba(107, 76, 42, 0.2);
+  border-radius: 1.5px;
+  overflow: visible;
+}
+
+.earthgate-scrub-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--eg-accent);
+  border-radius: 1.5px;
+  pointer-events: none;
+}
+
+.earthgate-scrub-chapters {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.earthgate-scrub-marker {
+  position: absolute;
+  top: -2.5px;
+  width: 2px;
+  height: 8px;
+  background: rgba(107, 76, 42, 0.35);
+  border-radius: 1px;
+  transform: translateX(-1px);
+}
+
+.earthgate-scrub-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--eg-accent);
+  border: 2px solid rgba(139, 105, 20, 0.5);
+  box-shadow: 0 0 4px rgba(139, 105, 20, 0.3);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.earthgate-scrub-thumb--active {
+  transform: translate(-50%, -50%) scale(1.3);
+  box-shadow: 0 0 8px rgba(139, 105, 20, 0.5);
+}
+
+.earthgate-transport-controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* --- Transport buttons --- */
+
+.earthgate-transport-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(107, 76, 42, 0.3);
+  background: rgba(245, 240, 232, 0.8);
+  color: var(--eg-brown);
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.earthgate-transport-btn:hover {
+  border-color: rgba(107, 76, 42, 0.6);
+  background: rgba(200, 169, 110, 0.2);
+  transform: scale(1.05);
+}
+
+.earthgate-transport-btn:active {
+  transform: scale(0.95);
+}
+
+/* --- Play / Pause button (larger) --- */
+
+.earthgate-play-btn {
+  width: 56px;
+  height: 56px;
+  font-size: 22px;
+  border-width: 2px;
+  border-color: rgba(107, 76, 42, 0.4);
+  background: rgba(245, 240, 232, 0.9);
+}
+
+.earthgate-play-btn:hover {
+  border-color: rgba(107, 76, 42, 0.7);
+  background: rgba(200, 169, 110, 0.3);
+  transform: scale(1.08);
+}
+
+/* --- ±30s skip buttons --- */
+
+.earthgate-skip-btn {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* --- Drawer theme overrides --- */
+
+:root {
+  --drawer-backdrop: rgba(61, 43, 31, 0.3);
+}
+
+/* --- Chapter overlay --- */
+
+.earthgate-chapter-overlay {
+  position: absolute;
+  top: calc(16px + var(--safe-top));
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--eg-brown);
+  background: rgba(245, 240, 232, 0.85);
+  padding: 10px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(107, 76, 42, 0.15);
+  pointer-events: none;
+  z-index: 30;
+  white-space: nowrap;
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Chapter label ---
+   Two stacked rows on the left: book title (italic gold, small) above
+   the chapter title (semibold brown, regular). Each row truncates its
+   own text with an ellipsis so a long chapter title can never collide
+   with the time on the right. When the book title is empty the row
+   collapses to zero height and the chapter title sits alone vertically
+   centered against the time. */
+
+.earthgate-chapter {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-right: 12px;
+  letter-spacing: 0.005em;
+  line-height: 1.25;
+}
+
+.earthgate-book-prefix {
+  font-size: 13px;
+  color: var(--eg-accent);
+  font-style: italic;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.earthgate-book-prefix:empty {
+  display: none;
+}
+
+.earthgate-chapter-title {
+  font-size: 10px;
+  color: var(--eg-muted);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Chapterless books leave this empty; collapse cleanly so the book title
+   above (`.earthgate-book-prefix`) is the only thing in the chapter
+   column and centers vertically against the time label on the right.
+   Matches the `:empty { display: none }` treatment we already use on
+   `.earthgate-book-prefix`. */
+.earthgate-chapter-title:empty {
+  display: none;
+}
+
+/* --- Time display --- */
+
+.earthgate-time {
+  padding: 0;
+  color: var(--eg-accent);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* --- Responsive: phone transport bar --- */
+
+@media (max-width: 480px) {
+  .earthgate-transport {
+    padding: 8px 12px calc(8px + var(--safe-bottom)) 12px;
+  }
+
+  .earthgate-transport-controls {
+    gap: 12px;
+  }
+
+  .earthgate-transport-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .earthgate-play-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .earthgate-chapter {
+    font-size: 11px;
+  }
+
+  .earthgate-time {
+    font-size: 11px;
+  }
+
+  .earthgate-skip-btn {
+    font-size: 10px;
+  }
+
+  .earthgate-chapter-overlay {
+    font-size: 17px;
+    padding: 8px 18px;
+  }
+
+  .earthgate-paragraph {
+    padding-left: calc(16px + var(--safe-left));
+    padding-right: calc(16px + var(--safe-right));
+  }
+
+  .earthgate-paragraph-inner {
+    font-size: 24px;
+  }
+
+}
+
+/* --- Responsive: short / landscape viewport ---
+   Transport controls shrink for cramped heights; paragraph font stays the
+   same. Clearance is reduced to match the compacted transport. */
+
+@media (max-height: 520px) {
+  :root {
+    --eg-transport-clearance: 100px;
+    --eg-top-clearance: 68px;
+  }
+
+  .earthgate-paragraph-inner {
+    font-size: 24px;
+    line-height: 1.55;
+  }
+
+  .earthgate-transport {
+    padding: 6px 14px calc(6px + var(--safe-bottom)) 14px;
+  }
+
+  .earthgate-transport-top {
+    margin-bottom: 2px;
+  }
+
+  .earthgate-scrub {
+    height: 32px;
+    margin-bottom: 0;
+  }
+
+  .earthgate-transport-controls {
+    gap: 10px;
+  }
+
+  .earthgate-transport-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+
+  .earthgate-play-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 17px;
+  }
+
+  .earthgate-chapter {
+    font-size: 11px;
+  }
+
+  .earthgate-time {
+    font-size: 11px;
+  }
+
+  .earthgate-skip-btn {
+    font-size: 10px;
+  }
+
+  .earthgate-chapter-overlay {
+    font-size: 16px;
+    padding: 6px 14px;
+    top: calc(8px + var(--safe-top));
+  }
+}
+
+/* Very short viewports (tiny resized windows, small landscape phones). */
+@media (max-height: 380px) {
+  :root {
+    --eg-transport-clearance: 80px;
+    --eg-top-clearance: 58px;
+  }
+
+  .earthgate-paragraph-inner {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .earthgate-transport {
+    padding: 4px 10px calc(4px + var(--safe-bottom)) 10px;
+  }
+
+  .earthgate-scrub {
+    height: 26px;
+  }
+
+  .earthgate-transport-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .earthgate-play-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .earthgate-transport-controls {
+    gap: 8px;
+  }
+}

@@ -1,0 +1,44 @@
+book:
+  volume: 1
+  title: "The Oud"
+  subtitle: "The Pear-Shaped Lute of the Arab World"
+  target_segments: 100
+
+  audience: "Curious listeners and language learners. Any age."
+  primary_language: en
+  pack_id: book_oud_history
+
+  core_concepts:
+    - The shape — pear-bodied, deep bowl, no frets, six pairs of strings
+    - The name — "oud" means "wood" in Arabic
+    - The family — barbat, oud, lute, guitar — a thousand-year line
+    - The maqam — quarter tones and tetrachords, melody not harmony
+    - The makers — Mesopotamia, Persia, the Arab world, Andalusia
+    - The players — al-Farabi, Ziryab, Munir Bashir, Anouar Brahem
+
+  core_themes:
+    - Craft — wood, glue, strings, the slow art of building an instrument
+    - Math — quarter tones, intervals, the science of a vibrating string
+    - Geography — Iraq, Syria, Egypt, Turkey, Iran, Spain, North Africa
+    - History — Baghdad, Córdoba, Damascus, the Silk Road
+    - The bridge — how the oud became the lute became the guitar
+
+  vocabulary_targets:
+    - oud, music, string, wood, sound, song
+    - play, listen, build, sing, world, country
+    - old, new, deep, soft, slow, sweet
+
+  pacing:
+    - 7 chapters + frontmatter + backmatter
+    - 5–15 word sentences, one idea each
+    - Display uses Arabic numerals; tts.text spells them out
+    - Repeat key vocabulary across chapters
+
+  outline:
+    - chapter_1: "What Is an Oud? — pear shape, bowl back, no frets, the sound"
+    - chapter_2: "Where the Name Comes From — wood, the barbat, the journey from Persia"
+    - chapter_3: "How an Oud Is Built — the bowl, the strips, the soundboard, the strings"
+    - chapter_4: "Where the Oud Is Played — the Arab world, Turkey, Greece, Andalusia"
+    - chapter_5: "The Maqam — quarter tones, tetrachords, melody not harmony"
+    - chapter_6: "The Great Masters — al-Farabi, Ziryab, Munir Bashir, Anouar Brahem"
+    - chapter_7: "The Oud and the World — the lute, the guitar, the bridge between cultures"

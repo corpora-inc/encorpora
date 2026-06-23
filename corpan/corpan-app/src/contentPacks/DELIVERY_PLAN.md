@@ -1,7 +1,7 @@
-# Corpan games delivery plan (production)
+# Corpan packs delivery plan (production)
 
 ## Goal
-Build a world-class, end-to-end delivery system for Corpan games:
+Build a world-class, end-to-end delivery system for Corpan packs:
 - Clean user flow: browse -> purchase -> download -> install -> launch.
 - Stable, persistent on-device storage with offline play.
 - Signed, verifiable packs with automatic updates.
@@ -9,17 +9,17 @@ Build a world-class, end-to-end delivery system for Corpan games:
 - No regressions in dev (manifest URL install continues to work).
 
 ## Target user flow
-1. User sees a catalog of available games.
-2. User purchases a game (IAP) or redeems a code.
+1. User sees a catalog of available packs.
+2. User purchases a pack (IAP) or redeems a code.
 3. App verifies purchase with minimal backend.
 4. App downloads a signed pack and installs it locally.
-5. Game launches immediately from local storage.
+5. Pack launches immediately from local storage.
 6. Updates are detected and delivered cleanly (foreground or background).
 
 ## Architecture overview (MVP-first)
 - Catalog (MVP): baked into the app bundle for launch day (no network required).
   - Optional remote override via a single JSON URL for fast iteration.
-  - Keeps the door open to a full catalog service when multiple games ship.
+  - Keeps the door open to a full catalog service when multiple packs ship.
 - Purchase verification (minimal): a single receipt-verify endpoint that returns a signed pack URL.
 - Pack storage: object storage (S3-compatible) with immutable, versioned pack URLs.
 - Pack signing: CI creates hash + signature and publishes metadata alongside packs.
@@ -78,4 +78,4 @@ Build a world-class, end-to-end delivery system for Corpan games:
 3. Add receipt verification endpoint (Lambda + S3).
 4. Implement pack download + signature verification (fail closed).
 5. Integrate CI pipeline for pack publish (hash/sign/upload).
-   - Remote catalog update remains optional until we have multiple games.
+   - Remote catalog update remains optional until we have multiple packs.

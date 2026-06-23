@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "@shared/catalog": ["../shared/catalog/index.ts"],
+      "@shared/core": ["../shared/core/index.ts"],
+      "@shared/sdk": ["../shared/sdk/index.ts"],
+      "@shared/data": ["../shared/data/index.ts"],
+      "@shared/audio": ["../shared/audio/index.ts"],
+      "@shared/state": ["../shared/state/index.ts"],
+      "@shared/ui": ["../shared/ui/index.ts"],
+      "@shared/analytics": ["../shared/analytics/index.ts"],
+      "zustand": ["./node_modules/zustand/index.d.ts"],
+      "zustand/*": ["./node_modules/zustand/*"]
+    }
+  },
+  "include": ["src", "../shared"]
+}

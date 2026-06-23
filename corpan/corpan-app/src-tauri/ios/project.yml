@@ -2,7 +2,7 @@ name: corpan
 options:
   bundleIdPrefix: com.corpora.corpan
   deploymentTarget:
-    iOS: 14.0
+    iOS: 16.0
 fileGroups: [../../src]
 configs:
   debug: debug
@@ -37,6 +37,7 @@ targets:
         buildPhase: resources
         type: folder
       - path: LaunchScreen.storyboard
+      - path: Corpan.storekit
     info:
       path: corpan_iOS/Info.plist
       properties:
@@ -52,11 +53,37 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
-        CFBundleShortVersionString: 0.1.0
-        CFBundleVersion: 0.1.0
+        UIBackgroundModes:
+          - audio
+        # SKAdNetwork identifiers Apple may send install postbacks to.
+        # cstr6suwn9 = Google Ads. Append additional dicts (one per
+        # network) for Meta, TikTok, etc. Metadata only — no SDK.
+        SKAdNetworkItems:
+          - SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
+        # ATS exception for media playback. The World Radio pack streams
+        # public Icecast/Shoutcast radio, which is overwhelmingly delivered
+        # over plain HTTP — WKWebView's `<audio>` element refuses HTTP under
+        # default ATS. `NSAllowsArbitraryLoadsForMedia` is Apple's blessed
+        # opt-out for streaming-media apps; `NSAllowsArbitraryLoadsInWebContent`
+        # belt-and-braces for `<audio>` HLS playlists fetched through web
+        # content. We do NOT enable the global `NSAllowsArbitraryLoads`
+        # because no other corpan code path needs cleartext HTTP — keeping
+        # it scoped to media is friendlier to App Review.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoadsForMedia: true
+          NSAllowsArbitraryLoadsInWebContent: true
+        NSMicrophoneUsageDescription: Corpán uses your microphone for on-device pronunciation practice and optional speech-to-text dictation. Audio is processed locally on your device.
+        NSSpeechRecognitionUsageDescription: Corpán uses on-device speech recognition for optional speech-to-text dictation, so you can speak instead of type. Speech is processed locally on your device.
+        NSMotionUsageDescription: Corpán uses motion sensors in supported packs like Hover Runner so you can steer by tilting your device.
+        # CFBundleShortVersionString + CFBundleVersion are auto-injected by
+        # Tauri from tauri.conf.json's `version` field. Don't hardcode them
+        # here or they'll drift.
     entitlements:
       path: corpan_iOS/corpan_iOS.entitlements
     scheme:
+      run:
+        config: debug
+        storeKitConfiguration: Corpan.storekit
       environmentVariables:
         RUST_BACKTRACE: full
         RUST_LOG: info
@@ -69,11 +96,13 @@ targets:
         LIBRARY_SEARCH_PATHS[arch=arm64]: $(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)
         LIBRARY_SEARCH_PATHS[arch=arm64-sim]: $(inherited) $(PROJECT_DIR)/Externals/arm64-sim/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)
         ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: true
+        LD_RUNPATH_SEARCH_PATHS:
+          - $(inherited)
+          - "@executable_path/Frameworks"
+          - /usr/lib/swift
         EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
         EXCLUDED_ARCHS[sdk=iphoneos*]: arm64-sim x86_64
-        CODE_SIGN_STYLE: Manual
-        CODE_SIGN_IDENTITY: "iPhone Distribution: Corpora Inc (F9AV5HKF6N)"
-        PROVISIONING_PROFILE: 4d5c5e29-f71e-4053-a7b6-fc1d5874d97a
+        CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: F9AV5HKF6N
       groups: [app]
     dependencies:
@@ -86,6 +115,7 @@ targets:
       - sdk: Security.framework
       - sdk: UIKit.framework
       - sdk: WebKit.framework
+      - sdk: StoreKit.framework
     preBuildScripts:
       - script: cargo tauri ios xcode-script -v --platform ${PLATFORM_DISPLAY_NAME:?} --sdk-root ${SDKROOT:?} --framework-search-paths "${FRAMEWORK_SEARCH_PATHS:?}" --header-search-paths "${HEADER_SEARCH_PATHS:?}" --gcc-preprocessor-definitions "${GCC_PREPROCESSOR_DEFINITIONS:-}" --configuration ${CONFIGURATION:?} ${FORCE_COLOR} ${ARCHS:?}
         name: Build Rust Code
@@ -95,6 +125,15 @@ targets:
           - $(SRCROOT)/Externals/arm64/${CONFIGURATION}/libapp.a
           - $(SRCROOT)/Externals/arm64-sim/${CONFIGURATION}/libapp.a
     postBuildScripts:
-      - script: rm -f "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/libapp.a"
-        name: Remove libapp.a from Bundle
+      - script: |
+          rm -f "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/libapp.a"
+          # Remove back-deploy Swift Concurrency shim — iOS 15+ has it in the OS.
+          # The swift-bridge crate embeds it but not its dependency (libswiftCore),
+          # causing a dyld crash. The system version works fine for our deployment target.
+          FWDIR="${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/Frameworks"
+          if [ -f "${FWDIR}/libswift_Concurrency.dylib" ]; then
+            echo "Removing back-deploy libswift_Concurrency.dylib (iOS 15+ has it in the OS)"
+            rm -f "${FWDIR}/libswift_Concurrency.dylib"
+          fi
+        name: Clean app bundle
         basedOnDependencyAnalysis: false

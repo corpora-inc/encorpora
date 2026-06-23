@@ -1,0 +1,16 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, the Grand Plaza of Monte Alban being abandoned circa 900 CE, the same low broad grey-tan stone platforms and wide staircases as when it was active but now with dry grass growing between the paving stones, small scrubby mesquite trees and prickly pear cactus encroaching on the stepped platforms, a handful of small figures walking away down a dirt path on the hillside carrying bundles on their backs, scattered small settlements of houses visible in the Valley of Oaxaca far below, the stone architecture still standing but neglected, a quiet melancholy late afternoon light, semi-arid brown landscape",
+  "negative_prompt": "blurry, low quality, distorted, deformed, cartoon, anime, 3D render, text, words, letters, writing, captions",
+  "seed": 53,
+  "width": 1024,
+  "height": 768,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "dtype": "float16",
+  "generation_time_s": 61.28,
+  "timestamp": "2026-02-22T06:10:13.005253+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

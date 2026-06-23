@@ -1,0 +1,376 @@
+/* beatlounge — Command Bar styles (co-located; uses --bl-* tokens). */
+
+.bl-cmdbar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(640px, 100%);
+  padding: 12px;
+  border-radius: var(--bl-radius, 14px);
+  background: var(--bl-surface, rgba(16, 22, 36, 0.92));
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(14px);
+  color: var(--bl-text, #cdd8ec);
+}
+
+.bl-cmdbar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bl-cmdbar-glyph {
+  display: inline-flex;
+  color: var(--bl-accent, #39e0ff);
+  flex: 0 0 auto;
+}
+
+.bl-cmdbar-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 44px;
+  padding: 0 12px;
+  font-size: 16px;
+  color: var(--bl-text, #cdd8ec);
+  background: var(--bl-surface-2, rgba(26, 34, 54, 0.72));
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  border-radius: var(--bl-radius-sm, 8px);
+  outline: none;
+}
+.bl-cmdbar-input:focus {
+  border-color: var(--bl-accent, #39e0ff);
+}
+.bl-cmdbar-input::placeholder {
+  color: var(--bl-text-dim, #5d6f8c);
+}
+.bl-cmdbar-input:disabled {
+  opacity: 0.6;
+}
+
+.bl-cmdbar-go,
+.bl-cmdbar-keep,
+.bl-cmdbar-reroll,
+.bl-cmdbar-undo {
+  flex: 0 0 auto;
+  /* WebKit centres <button> text by line-height, not flexbox — keep it 1 so the
+   * glyph/label sits dead-centre at any button height. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  line-height: 1;
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  background: var(--bl-surface-2, rgba(26, 34, 54, 0.72));
+  color: var(--bl-text, #cdd8ec);
+  cursor: pointer;
+}
+.bl-cmdbar-go {
+  width: 44px;
+  padding: 0;
+  background: var(--bl-accent, #39e0ff);
+  color: #04111a;
+  border-color: transparent;
+}
+.bl-cmdbar-go:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.bl-cmdbar-reroll {
+  width: 44px;
+  padding: 0;
+}
+
+.bl-cmdbar-browse {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  background: var(--bl-surface-2, rgba(26, 34, 54, 0.72));
+  color: var(--bl-text-dim, #5d6f8c);
+  cursor: pointer;
+}
+.bl-cmdbar-browse:hover {
+  color: var(--bl-text, #cdd8ec);
+  border-color: var(--bl-accent, #39e0ff);
+}
+.bl-cmdbar-browse.is-on {
+  color: #04111a;
+  background: var(--bl-accent, #39e0ff);
+  border-color: transparent;
+}
+
+.bl-cmdbar-close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--bl-radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--bl-text-dim, #5d6f8c);
+  cursor: pointer;
+}
+.bl-cmdbar-close:hover {
+  color: var(--bl-text, #cdd8ec);
+}
+
+.bl-cmdbar-spinner {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--bl-border, rgba(57, 224, 255, 0.3));
+  border-top-color: var(--bl-accent, #39e0ff);
+  animation: bl-cmdbar-spin 0.8s linear infinite;
+}
+@keyframes bl-cmdbar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-cmdbar-spinner {
+    animation-duration: 1.8s;
+  }
+}
+
+.bl-cmdbar-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px 10px;
+  border-radius: var(--bl-radius-sm, 8px);
+  background: var(--bl-surface-2, rgba(26, 34, 54, 0.72));
+  border: 1px solid var(--bl-accent, #39e0ff);
+}
+.bl-cmdbar-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.bl-cmdbar-summary strong {
+  font-size: 15px;
+}
+.bl-cmdbar-via {
+  font-size: 12px;
+  color: var(--bl-text-dim, #5d6f8c);
+}
+.bl-cmdbar-actions {
+  display: flex;
+  gap: 8px;
+}
+.bl-cmdbar-keep {
+  background: var(--bl-accent, #39e0ff);
+  color: #04111a;
+  border-color: transparent;
+}
+
+.bl-cmdbar-message {
+  font-size: 14px;
+  color: var(--bl-text-dim, #5d6f8c);
+  padding: 2px 4px;
+}
+
+.bl-cmdbar-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.bl-cmdbar-chip {
+  min-height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  background: transparent;
+  color: var(--bl-text-dim, #5d6f8c);
+  cursor: pointer;
+}
+.bl-cmdbar-chip:hover {
+  color: var(--bl-text, #cdd8ec);
+  border-color: var(--bl-accent, #39e0ff);
+}
+
+/* Launcher tile (in the Stage) + immersive sheet wrapper. */
+.bl-cmdbar-launcher {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 64px;
+  padding: 0 16px;
+  border-radius: var(--bl-radius, 14px);
+  border: 1px dashed var(--bl-border, rgba(57, 224, 255, 0.16));
+  background: var(--bl-surface, rgba(16, 22, 36, 0.72));
+  color: var(--bl-text-dim, #5d6f8c);
+  font-size: 15px;
+  cursor: pointer;
+}
+.bl-cmdbar-launcher:hover {
+  color: var(--bl-text, #cdd8ec);
+  border-color: var(--bl-accent, #39e0ff);
+}
+
+.bl-cmdbar-immersive {
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+/* ---- Actions picker (the model-optional browse surface) ---- */
+.bl-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: min(56vh, 460px);
+  overflow: hidden auto;
+  padding: 4px 2px 2px;
+  -webkit-overflow-scrolling: touch;
+}
+.bl-picker-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bl-picker-group-label {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim, #5d6f8c);
+}
+.bl-picker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bl-picker-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--bl-radius-sm, 8px);
+  background: var(--bl-surface-2, rgba(26, 34, 54, 0.52));
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.12));
+}
+.bl-picker-row-main {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+.bl-picker-run {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  line-height: 1;
+  min-height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid transparent;
+  background: var(--bl-accent, #39e0ff);
+  color: #04111a;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.bl-picker-run:hover {
+  filter: brightness(1.06);
+}
+.bl-picker-dice {
+  display: inline-flex;
+  opacity: 0.7;
+}
+.bl-picker-describe {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--bl-text-dim, #8294b0);
+  min-width: 0;
+}
+.bl-picker-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  background: transparent;
+  color: var(--bl-text-dim, #5d6f8c);
+  cursor: pointer;
+}
+.bl-picker-toggle[aria-expanded="true"],
+.bl-picker-toggle:hover {
+  color: var(--bl-text, #cdd8ec);
+  border-color: var(--bl-accent, #39e0ff);
+}
+.bl-picker-params {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 2px;
+}
+.bl-picker-param {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--bl-text-dim, #8294b0);
+}
+.bl-picker-param-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-picker-param-val {
+  min-width: 34px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--bl-text, #cdd8ec);
+}
+.bl-picker-param input[type="range"] {
+  width: 100%;
+  accent-color: var(--bl-accent, #39e0ff);
+}
+.bl-picker-param select {
+  min-width: 0;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: var(--bl-radius-sm, 8px);
+  border: 1px solid var(--bl-border, rgba(57, 224, 255, 0.16));
+  background: var(--bl-surface-2, rgba(26, 34, 54, 0.72));
+  color: var(--bl-text, #cdd8ec);
+}
+.bl-picker-param input[type="checkbox"] {
+  justify-self: start;
+  accent-color: var(--bl-accent, #39e0ff);
+}
+
+@media (max-width: 380px) {
+  .bl-picker-param {
+    grid-template-columns: 76px 1fr auto;
+  }
+}

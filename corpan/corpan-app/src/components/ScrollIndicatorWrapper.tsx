@@ -44,14 +44,14 @@ export const ScrollIndicatorWrapper = forwardRef<HTMLDivElement, {
             {!atTop && (
                 <div className="absolute top-0 left-0 w-full flex justify-center pointer-events-none z-10">
                     <div className="h-10 w-full flex items-center justify-center">
-                        <ChevronUp size={48} className="text-gray-300" style={{ opacity: 0.8 }} />
+                        <ChevronUp size={48} className="text-muted-foreground/50" style={{ opacity: 0.8 }} />
                     </div>
                 </div>
             )}
             {!atBottom && (
                 <div className="absolute bottom-0 left-0 w-full flex justify-center pointer-events-none z-10">
                     <div className="h-10 w-full flex items-center justify-center">
-                        <ChevronDown size={48} className="text-gray-300" style={{ opacity: 0.8 }} />
+                        <ChevronDown size={48} className="text-muted-foreground/50" style={{ opacity: 0.8 }} />
                     </div>
                 </div>
             )}

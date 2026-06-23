@@ -1,0 +1,56 @@
+{
+  "_doc": "Market events — scheduled/random shocks that nudge specific goods/currencies and surface as ticker headlines (E1 local sim; E2 server broadcasts globally). Each event has a deterministic daily schedule slot (dayMod: fires when (dayEpoch % every)===offset), a target (good itemId or currency id), a signed magnitude (added to feedMult, bounded by the sim), a decay (ticks), and a localizable headline i18n key + EN default. Informative flavor + a numbers reason to trade — never pay-to-win. CDN-overridable.",
+  "version": 1,
+  "events": [
+    {
+      "id": "coffee-harvest",
+      "target": { "kind": "good", "id": "coffee-sack" },
+      "every": 5,
+      "offset": 0,
+      "magnitude": -0.18,
+      "decayTicks": 60,
+      "headlineKey": "econ.event.coffee-harvest",
+      "headline": "Coffee harvest is in — coffee dips."
+    },
+    {
+      "id": "ferry-strike",
+      "target": { "kind": "good", "id": "salt-pouch" },
+      "every": 7,
+      "offset": 2,
+      "magnitude": 0.22,
+      "decayTicks": 50,
+      "headlineKey": "econ.event.ferry-strike",
+      "headline": "Ferry strike at the docks — staples spike."
+    },
+    {
+      "id": "cacao-festival",
+      "target": { "kind": "good", "id": "spices-cacao" },
+      "every": 6,
+      "offset": 1,
+      "magnitude": 0.28,
+      "decayTicks": 40,
+      "headlineKey": "econ.event.cacao-festival",
+      "headline": "Chocolate festival — cacao in demand."
+    },
+    {
+      "id": "real-mint",
+      "target": { "kind": "currency", "id": "gold-real" },
+      "every": 8,
+      "offset": 3,
+      "magnitude": 0.1,
+      "decayTicks": 70,
+      "headlineKey": "econ.event.real-mint",
+      "headline": "Fresh silver from the mines — the real firms up."
+    },
+    {
+      "id": "weimar-inflation",
+      "target": { "kind": "currency", "id": "weimar-mark" },
+      "every": 2,
+      "offset": 0,
+      "magnitude": -0.4,
+      "decayTicks": 30,
+      "headlineKey": "econ.event.weimar-inflation",
+      "headline": "Prices double overnight — the mark tumbles again."
+    }
+  ]
+}

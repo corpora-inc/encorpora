@@ -1,0 +1,826 @@
+/**
+ * beatlounge — phrase-SCRATCH styles. Dark, premium, elegant. ONLY global
+ * --bl-* tokens (no hardcoded colors). The platter is a real vinyl record the
+ * user drags; the disc rotation is driven by a --bl-scr-rot custom property the
+ * RAF loop writes via React. ≥44px hit targets, safe-area aware, one z-scale,
+ * never document.body, prefers-reduced-motion respected (the disc holds still;
+ * audio scratch still works).
+ */
+
+.bl-scr {
+  /* The immersive mount is a flex ROW; without flex:1 we'd shrink to content
+     width and hug the left. flex:1 makes the scratch view FILL the whole sheet. */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s3);
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  /* The shared bottom drawer (TrackDrawer) is absolutely positioned within this
+     page, so the page must be the positioning context + clip the drawer's slide.
+     Reserve the drawer's peek zone at the bottom so the crossfader / foot are
+     never permanently hidden behind the always-present handle + tab bar. */
+  position: relative;
+  overflow: hidden;
+  padding: var(--bl-s3) var(--bl-s4)
+    calc(var(--bl-drawer-peek, 96px) + min(var(--bl-safe-bottom, 0px), var(--bl-s2)) + var(--bl-s2));
+  box-sizing: border-box;
+}
+
+/* The immersive mount is a `display:flex` ROW with `overflow:auto`; force the
+   scratch mount to a non-scrolling COLUMN so `.bl-scr { flex:1 }` fills the full
+   sheet and the absolutely-positioned drawer anchors to the page, not the row. */
+.bl-immersive-mount:has(> .bl-scr) {
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------- top header
+   The deck toggle (One deck / Two decks) lives at the TOP now so the bottom is
+   free for the crossfader + the phrase-management drawer. FX + Phrases sit on the
+   right. A thin, fixed-height bar — never resizes the decks. */
+.bl-scr-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* the lone deck toggle tucks top-right, out of the way */
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+/* ---------------------------------------------------------- top bar */
+.bl-scr-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  flex: 0 0 auto;
+}
+.bl-scr-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+}
+.bl-scr-picker-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: var(--bl-hit);
+  max-width: 60vw;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  font-size: var(--bl-fs-label);
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    background var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scr-picker-btn:hover {
+  border-color: var(--bl-accent);
+}
+.bl-scr-picker-cur {
+  max-width: 42vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------- picker list
+   OVERLAY (absolute) — opening the picker must never push the turntable down or
+   resize the platter. It floats below the picker button (anchored to the deck,
+   which is `position:relative`), above the stage, on the rail z-layer. */
+.bl-scr-picker {
+  position: absolute;
+  top: calc(var(--bl-hit) + var(--bl-s2));
+  left: 0;
+  right: 0;
+  z-index: var(--bl-z-rail);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s1);
+  max-height: 40vh;
+  overflow: hidden auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--bl-s2);
+  border-radius: var(--bl-radius);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface-2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.bl-scr-picker-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bl-s3);
+  min-height: var(--bl-hit);
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--bl-text);
+  font-size: var(--bl-fs-body);
+  text-align: start;
+  cursor: pointer;
+}
+.bl-scr-picker-row:hover {
+  background: var(--bl-cell-off);
+}
+.bl-scr-picker-row.is-sel {
+  border-color: var(--bl-accent);
+  background: var(--bl-cell-off);
+}
+.bl-scr-picker-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bl-scr-picker-lang {
+  flex: 0 0 auto;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+
+/* ---------------------------------------------------------- decks layout
+   The scratch view FILLS the immersive sheet luxuriously. The decks row is the
+   flexible middle; on a wide screen the two decks sit either side of a center mixer
+   column (a real DJ console); on a narrow screen they stack. Every turntable lives
+   in a RESERVED, fixed-aspect FOOTPRINT — the disc/needle/marker/labels are all
+   positioned ABSOLUTELY inside it — so nothing about playback (spin, marker, words)
+   can change a deck's size or shove its neighbour. */
+.bl-scr-decks {
+  display: flex;
+  flex-direction: column; /* portrait default: stack. Landscape → row (below). */
+  align-items: center;
+  justify-content: space-evenly;
+  gap: var(--bl-s4);
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+.bl-scr-deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s2);
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  max-width: calc(var(--bl-platter) + 2 * var(--bl-s4));
+  position: relative;
+}
+
+/* ---------------------------------------------------------- the platter
+   The platter's footprint is a single value (`--bl-platter`) derived from the
+   available box — width AND height (vh) — minus the fader's lane, so a deck NEVER
+   overflows its column and can't push its neighbour at any size down to ~320px. */
+.bl-scr {
+  /* one deck (portrait default): big & centered. The platter is capped by BOTH the
+     deck width AND the leftover height after the chrome (picker/cut/transport/
+     readout) + the drawer's peek zone, so the spin transport never hides behind the
+     drawer on a phone. (Header is now a single compact toggle — small constant.) */
+  --bl-platter: min(
+    86vw,
+    calc(76vh - 244px),
+    520px
+  );
+}
+.bl-scr-platter {
+  --bl-scr-rot: 0rad;
+  position: relative;
+  width: var(--bl-platter);
+  height: var(--bl-platter);
+  flex: 0 0 auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+  touch-action: none; /* we own the gesture; no scroll/zoom hijack */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.bl-scr-platter.is-active {
+  cursor: grabbing;
+}
+.bl-scr-vinyl {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform: rotate(var(--bl-scr-rot));
+  background:
+    radial-gradient(circle at 50% 50%, var(--bl-surface-2) 0 26%, transparent 26.5%),
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 0, 0, 0.32) 0 2px,
+      transparent 2px 5px
+    ),
+    radial-gradient(circle at 38% 32%, var(--bl-surface-2), var(--bl-bg) 78%);
+  box-shadow:
+    inset 0 0 0 1px var(--bl-border),
+    var(--bl-glow) rgba(0, 0, 0, 0.001);
+  display: grid;
+  place-items: center;
+}
+.bl-scr-platter.is-active .bl-scr-vinyl {
+  box-shadow:
+    inset 0 0 0 1px var(--bl-accent),
+    var(--bl-glow) var(--bl-accent);
+}
+.bl-scr-grooves {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.035) 0 1px,
+    transparent 1px 4px
+  );
+  pointer-events: none;
+}
+.bl-scr-label {
+  position: absolute;
+  width: 36%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 2px;
+  padding: var(--bl-s2);
+  background: radial-gradient(circle at 42% 36%, var(--bl-accent-2), var(--bl-bg) 92%);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+  overflow: hidden;
+}
+.bl-scr-label-lang {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+}
+.bl-scr-spindle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bl-bg);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+}
+
+/* Words placed along the spiral groove at their real buffer-time positions.
+   They ride the rotating vinyl frame; counter-rotated so the text stays upright. */
+.bl-scr-word {
+  position: absolute;
+  left: var(--bl-scr-wx, 50%);
+  top: var(--bl-scr-wy, 50%);
+  transform: translate(-50%, -50%) rotate(calc(-1 * var(--bl-scr-rot, 0rad)));
+  font-size: var(--bl-fs-micro);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--bl-text-dim);
+  white-space: nowrap;
+  pointer-events: none;
+  max-width: 38%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scr-word.is-cur {
+  color: var(--bl-accent);
+  text-shadow: var(--bl-glow) var(--bl-accent);
+}
+
+/* The single START marker — a tasteful tick fixed on the disc at the phrase start
+   (t=0, outer rim). Rides the rotating vinyl; because the loop is rev-quantized it
+   returns under the 3 o'clock needle at the same angle every loop. Absolutely
+   positioned (out of flow) so it never affects the deck footprint. */
+.bl-scr-start {
+  position: absolute;
+  left: var(--bl-scr-sx, 100%);
+  top: var(--bl-scr-sy, 50%);
+  width: 4px;
+  height: 11%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--bl-radius-pill);
+  background: linear-gradient(to bottom, var(--bl-accent-hot), var(--bl-accent));
+  box-shadow: var(--bl-glow) var(--bl-accent);
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+/* Fixed needle at 3 o'clock (the RIGHT): never rotates. The arm comes in from the
+   right edge; the tip sits where the groove meets the needle (the playhead). */
+.bl-scr-needle {
+  position: absolute;
+  top: 50%;
+  right: -2%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.bl-scr-needle-arm {
+  width: 14%;
+  min-width: 28px;
+  height: 3px;
+  border-radius: var(--bl-radius-pill);
+  background: linear-gradient(to left, var(--bl-text-dim), var(--bl-accent));
+}
+.bl-scr-needle-tip {
+  width: 9px;
+  height: 9px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- stage: platter + cut
+   The platter and its cut fader sit side by side in a reserved row; the row's height
+   is the platter footprint, so spinning never resizes it. */
+.bl-scr-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s4);
+  flex: 0 0 auto;
+}
+
+/* ---------------------------------------------------------- cut fader (HORIZONTAL)
+   A real channel fader laid LEFT→RIGHT under the platter: 0 at the left, full at the
+   right, a fat throwable cap. Spans the platter width; tall hit lane for the flick. */
+.bl-scr-cut {
+  --bl-cut: 100%;
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--bl-platter);
+  max-width: 100%;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.bl-scr-cut:focus-visible {
+  outline: 2px solid var(--bl-accent);
+  outline-offset: 3px;
+  border-radius: var(--bl-radius);
+}
+.bl-scr-cut-track {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  margin: auto 0;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-surface-2);
+  box-shadow: inset 0 0 0 1px var(--bl-border), inset 0 2px 6px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+.bl-scr-cut-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--bl-cut);
+  background: linear-gradient(to right, var(--bl-accent-2), var(--bl-accent));
+  opacity: 0.85;
+}
+.bl-scr-cut-cap {
+  position: absolute;
+  top: 50%;
+  left: var(--bl-cut);
+  width: 26px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  border-radius: 7px;
+  background: linear-gradient(to bottom, var(--bl-surface-2), var(--bl-surface));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px var(--bl-border), 0 3px 8px rgba(0, 0, 0, 0.4);
+  transition: box-shadow var(--bl-dur-fast) var(--bl-ease);
+}
+/* A center grip line on the cap — the channel-fader detail. */
+.bl-scr-cut-cap::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-border);
+}
+.bl-scr-cut:active .bl-scr-cut-cap,
+.bl-scr-cut:focus-visible .bl-scr-cut-cap {
+  box-shadow: inset 0 0 0 1px var(--bl-accent), var(--bl-glow) var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- spin / hold transport */
+.bl-scr-transport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s2);
+  flex: 0 0 auto;
+}
+.bl-scr-tbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text);
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    box-shadow var(--bl-dur-fast) var(--bl-ease), color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scr-tbtn:hover {
+  border-color: var(--bl-accent);
+}
+.bl-scr-tbtn.is-on {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
+/* Reverse = the play triangle mirrored to point backward (◀). */
+.bl-scr-tbtn--rev svg {
+  transform: scaleX(-1);
+}
+
+/* ---------------------------------------------------------- readout
+   Sits inline at the end of the transport row (spin buttons + rate/clock). FIXED
+   width + tabular digits: the rate value changes every frame ("hold" → +0.50 →
+   −1.20), and a growing/shrinking box would shove the spin buttons around — so the
+   slot is a constant size and the value just changes WITHIN it (no reflow). */
+.bl-scr-readout {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--bl-s2);
+  white-space: nowrap;
+}
+/* Fixed-width slots (tabular) so the value changing each frame ("hold" → +0.50 →
+   −1.20, 0.00s → 12.34s) never resizes the readout and shoves the spin buttons. */
+.bl-scr-pos {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  font-variant-numeric: tabular-nums;
+  min-width: 4em;
+  text-align: start;
+}
+.bl-scr-rate {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  color: var(--bl-accent);
+  font-variant-numeric: tabular-nums;
+  min-width: 4.2em;
+  text-align: right;
+}
+.bl-scr-rate.is-hold {
+  color: var(--bl-text-dim);
+}
+.bl-scr-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-body);
+}
+
+/* ---------------------------------------------------------- two decks
+   PORTRAIT: stack the decks vertically (each ~half the height). LANDSCAPE (the
+   marquee experience): two platters SIDE BY SIDE, crossfader underneath — see the
+   landscape media query below. */
+.bl-scr.is-dual {
+  /* portrait, stacked: two decks + their chrome + the foot must all fit the
+     height, so each platter is sized off ~half the viewport height. */
+  --bl-platter: min(
+    86vw,
+    calc(42vh - 224px),
+    300px
+  );
+}
+
+/* ---------------------------------------------------------- foot: crossfader + toggle
+   A real DJ crossfader, HORIZONTAL, fixed at the bottom: A on the left, B on the
+   right, a fat throwable handle. Never floats, always reachable on stage. */
+.bl-scr-foot {
+  position: relative; /* anchor the FX rack / bank drawer overlays above it */
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bl-s3);
+  width: 100%;
+  padding-top: var(--bl-s2);
+}
+.bl-scr-xfade {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s3);
+  width: min(100%, 560px);
+  padding: 0 var(--bl-s3);
+}
+.bl-scr-xfade-end {
+  flex: 0 0 auto;
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  font-weight: 600;
+  color: var(--bl-text-dim);
+  width: 1.2em;
+  text-align: center;
+}
+.bl-scr-xfade-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 44px; /* a tall, easy-to-grab lane */
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.bl-scr-xfade-input::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-surface-2);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+}
+.bl-scr-xfade-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 40px;
+  margin-top: -16px; /* centre the fat cap on the 8px track */
+  border-radius: 7px;
+  background: linear-gradient(to bottom, var(--bl-surface-2), var(--bl-surface));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px var(--bl-border), 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+.bl-scr-xfade-input:active::-webkit-slider-thumb {
+  box-shadow: inset 0 0 0 1px var(--bl-accent), var(--bl-glow) var(--bl-accent);
+}
+.bl-scr-xfade-input::-moz-range-track {
+  height: 8px;
+  border-radius: var(--bl-radius-pill);
+  background: var(--bl-surface-2);
+}
+.bl-scr-xfade-input::-moz-range-thumb {
+  width: 30px;
+  height: 40px;
+  border: 1px solid var(--bl-border);
+  border-radius: 7px;
+  background: var(--bl-surface-2);
+}
+
+/* ----------------------------------------------- master FX rack (shared drawer)
+   The scratch master rack IS the canonical FxChainView — the SAME add menu +
+   insert cards + reorder + delay note-length presets the mixer / drums use —
+   driven over the live ScratchFxBus (no doc, no undo). It reuses every fx-rack
+   class (.bl-fxchain / .bl-fxrack-chain / .bl-fxcard / .bl-fxcard-xy / the add
+   menu) verbatim; this is only the drawer-body padding wrapper. */
+.bl-scrfx-chain {
+  padding: var(--bl-s4);
+}
+
+/* ----------------------------------------------- phrases (catalog discovery)
+   The Phrases tab mounts the SHARED PhraseSamplerImmersive discovery flow; it
+   fills the drawer body. A compact A/B aim toggle (dual decks only) sits above. */
+.bl-scrphrase {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.bl-scrphrase .bl-disc {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.bl-scrphrase-aim {
+  display: flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  flex: 0 0 auto;
+  padding: var(--bl-s2) var(--bl-s4) 0;
+}
+.bl-scrphrase-aim-label {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bl-text-dim);
+}
+.bl-scrphrase-aim-btn {
+  min-height: 32px;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-label);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scrphrase-aim-btn:hover {
+  border-color: var(--bl-accent);
+  color: var(--bl-text);
+}
+.bl-scrphrase-aim-btn.is-on {
+  border-color: var(--bl-accent);
+  color: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- controls */
+.bl-scr-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s4);
+  flex: 0 0 auto;
+}
+.bl-scr-deckbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bl-s2);
+  min-height: 34px;
+  padding: 0 var(--bl-s3);
+  border-radius: var(--bl-radius-sm);
+  border: 1px solid var(--bl-border);
+  background: var(--bl-surface);
+  color: var(--bl-text-dim);
+  font-size: var(--bl-fs-label);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color var(--bl-dur-fast) var(--bl-ease),
+    box-shadow var(--bl-dur-fast) var(--bl-ease), color var(--bl-dur-fast) var(--bl-ease);
+}
+.bl-scr-deckbtn:hover {
+  border-color: var(--bl-accent);
+}
+.bl-scr-deckbtn.is-on {
+  border-color: var(--bl-accent);
+  box-shadow: var(--bl-glow) var(--bl-accent);
+  color: var(--bl-accent);
+}
+
+/* ---------------------------------------------------------- empty state */
+.bl-scr-empty {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s3);
+  text-align: center;
+  padding: var(--bl-s5);
+  color: var(--bl-text-dim);
+}
+.bl-scr-empty svg {
+  color: var(--bl-accent);
+  opacity: 0.7;
+}
+.bl-scr-empty-title {
+  margin: 0;
+  font-size: var(--bl-fs-value);
+  font-weight: 600;
+  color: var(--bl-text);
+}
+.bl-scr-empty-sub {
+  margin: 0;
+  max-width: 32ch;
+  font-size: var(--bl-fs-label);
+  line-height: 1.45;
+}
+.bl-scr-empty strong {
+  color: var(--bl-text);
+}
+
+/* ---------------------------------------------------------- spinner */
+.bl-scr-spin {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--bl-border);
+  border-top-color: var(--bl-accent);
+  animation: bl-scr-spin 0.8s linear infinite;
+}
+@keyframes bl-scr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------------------------------------------------- the tile */
+.bl-tile-scr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bl-s3);
+  height: 100%;
+}
+.bl-tile-scr-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bl-s3);
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.bl-tile-scr-disc {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 0, 0, 0.32) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(circle at 40% 34%, var(--bl-surface-2), var(--bl-bg) 80%);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+  animation: bl-scr-disc-spin 6s linear infinite;
+}
+.bl-tile-scr-disc-label {
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 36%, var(--bl-accent-2), var(--bl-bg) 92%);
+  box-shadow: inset 0 0 0 1px var(--bl-border);
+}
+@keyframes bl-scr-disc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.bl-tile-scr-stat {
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text-dim);
+  text-align: center;
+}
+.bl-tile-scr-stat strong {
+  color: var(--bl-text);
+  font-size: var(--bl-fs-value);
+  font-weight: 700;
+}
+.bl-tile-scr-hint {
+  font-size: var(--bl-fs-micro);
+  color: var(--bl-text-dim);
+  text-align: center;
+  line-height: 1.4;
+}
+.bl-tile-scr-hint strong {
+  color: var(--bl-text);
+}
+
+/* ----------------------------------------------------- landscape: the DJ console
+   The marquee experience (big iPad in landscape): TWO platters SIDE BY SIDE, each
+   with its own horizontal cut fader, and the crossfader HORIZONTAL underneath both.
+   Fills the width. Single deck just sits big & centered. */
+@media (orientation: landscape) and (min-width: 720px) {
+  .bl-scr {
+    --bl-platter: min(64vw, calc(86vh - 256px), 520px);
+  }
+  .bl-scr.is-dual {
+    --bl-platter: min(46vw, calc(88vh - 266px), 440px);
+  }
+  .bl-scr.is-dual .bl-scr-decks {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: var(--bl-s5);
+  }
+}
+
+/* ---------------------------------------------------------- reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bl-scr-vinyl {
+    transform: none; /* the disc holds still; audio scratch still works */
+  }
+  .bl-tile-scr-disc {
+    animation: none;
+  }
+  .bl-scr-spin {
+    animation-duration: 1.6s;
+  }
+}

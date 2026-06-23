@@ -29,7 +29,32 @@
     "gu": "古吉拉特语",
     "ur": "乌尔都语",
     "pa-Guru": "旁遮普语（果鲁穆奇文）",
-    "pa-Arab": "旁遮普语（沙希穆基文）"
+    "pa-Arab": "旁遮普语（沙希穆基文）",
+    "he": "希伯来语",
+    "sv": "瑞典语",
+    "fi": "芬兰语",
+    "nl": "荷兰语",
+    "sw": "斯瓦希里语",
+    "no": "挪威语",
+    "da": "丹麦语",
+    "el": "希腊语",
+    "ms": "马来语",
+    "ne": "尼泊尔语",
+    "pt-PT": "葡萄牙语（欧洲）",
+    "hr": "克罗地亚语",
+    "sr": "塞尔维亚语",
+    "uk": "乌克兰语",
+    "bg": "保加利亚语",
+    "ro": "罗马尼亚语",
+    "ca": "加泰罗尼亚语",
+    "yue-Hant-HK": "粤语（繁体）",
+    "cs": "捷克语",
+    "lt": "立陶宛语",
+    "sk": "斯洛伐克语",
+    "sl": "斯洛文尼亚语",
+    "jv": "爪哇语",
+    "su": "巽他语",
+    "tl": "他加禄语"
   },
   "categories": {
     "travel": "旅行",
@@ -72,42 +97,245 @@
     "extra-large": "特大",
     "testTts": "点击下方按钮测试您的 TTS 设置：",
     "showRomanization": "显示罗马化",
-    "scrollNavigation": "滚动导航"
+    "scrollNavigation": "滚动导航",
+    "packs": "包",
+    "stacks": "学习组合",
+    "theme": "主题",
+    "themeLight": "浅色",
+    "themeDark": "深色",
+    "themeSystem": "跟随系统",
+    "phrasePacks": {
+      "header": "短语包",
+      "baseCorpusName": "基础语料",
+      "emptyHint": "在「包」标签页中添加短语包。",
+      "browseAll": "浏览短语包",
+      "searchPlaceholder": "搜索包…",
+      "filter": {
+        "all": "全部",
+        "active": "已启用",
+        "inactive": "未启用"
+      },
+      "selectAllVisible": "全选",
+      "deselectAllVisible": "清除",
+      "activateGroup": "全部启用",
+      "deactivateGroup": "全部关闭",
+      "uncategorized": "其他",
+      "noMatches": "无结果。",
+      "noFiltered": "这里现在没有内容。",
+      "stackTotalPhrases": "~{{count}} 条短语匹配",
+      "stackTotalNudge": "添加更多包或扩大等级以增加多样性。",
+      "activeCount": "{{active}}/{{total}}个活跃",
+      "baseCorpusSubtitle": "{{n}}个短语"
+    },
+    "sendAnonUsage": "发送匿名使用数据",
+    "sendAnonUsageHint": "匿名、仅限当前会话。不使用账号、不使用设备 ID，也不存储 IP。可随时关闭。",
+    "readPrivacyPromise": "阅读我们的隐私承诺",
+    "showStreak": "显示阅读连读天数",
+    "showStreakHint": "在顶部显示一个小小的天数计数。仅限设备本地，无提醒或通知。",
+    "primaryLanguage": "主要（UI）语言",
+    "home": "主页",
+    "developer": "开发者"
   },
   "onboarding": {
-    "welcome": "欢迎",
-    "makePrimaryLanguage": "将简体中文设为我的主要语言",
-    "canChangeLater": "别担心，您可以随时更改。",
+    "welcomePact": {
+      "title": "Corpán 不断进化",
+      "subtitle": "你是最早加入的一批用户",
+      "bleedingEdgeTitle": "刻意为之的尖端技术",
+      "bleedingEdgeDesc": "Corpán 把新的 AI、语音识别、声音和沉浸式世界带到你的设备上，让学习更私密，并优先支持离线使用。我们会在技术仍然原始时发布它，所以它可能表现古怪、运行缓慢，或者超出你的设备承受能力。作为交换，你可以在新的学习方式一成为可能时就用上。",
+      "yourLangTitle": "我们不会说所有支持的语言",
+      "yourLangDesc": "我们为许多语言而构建，是因为学习者值得拥有更好的工具，而不是因为我们全都会。我们出错时，希望说这些语言的人帮助我们改正。",
+      "plea": "你有想法、修正意见，或者希望看到的大胆学习体验吗？请告诉我们。我们会阅读每一条消息，并认真思考它能为 Corpán 和语言学习开启哪些可能。",
+      "emailCta": "给我们发邮件",
+      "githubCta": "去 GitHub 提 issue",
+      "join": "想帮助 Corpán 走向世界吗？我们一直在寻找合作伙伴、翻译者和本地大使。欢迎联系我们。",
+      "pact": "点击下方开始学习，与我们共同成长。🤝",
+      "cta": "我加入，开始吧"
+    },
     "pickLanguagesToLearn": "选择您想学习的语言",
     "textToSpeechSetup": "文字转语音（TTS）设置",
-    "ttsPoorQualityNote": "如果语音质量较差，请进入设备的 TTS 设置并安装高质量语音包。",
-    "howToSetupTtsOn": "如何在以下设备上设置 TTS",
-    "welcomeTitle": "欢迎加入 Corpán 家庭！",
-    "welcomeBody": "Corpán 是由一个很小的团队开发的开源应用，而不是大公司产品，我们非常重视语言和教育。项目还在早期阶段，所以你可能会看到不够完善的地方、缺失的功能或暂时尚未支持的语言。如果有任何功能对你来说不好用，请通过 GitHub 或电子邮件告诉我们。你的反馈能帮助我们频繁更新，也能让所有人的语言学习体验变得更好。",
-    "welcomeVisit": "访问 encorpora.io",
-    "linkCopied": "链接已复制！请在浏览器中打开：",
     "reconfigureStack": "重新配置档案",
-    "openVoiceSettings": "打开语音设置",
+    "openVoiceSettings": "打开“设置”",
     "openTTSSetup": "打开 TTS 设置",
-    "welcomeFollowUp": "感谢您的加入！期待在社区中见到您。",
-    "learningStepTitle": "学习",
-    "tts": "文本转语音",
     "languageOrderTipTitle": "提示",
-    "languageOrderTipBody": "最底部的语言会成为应用界面语言。拖动即可随时更改。",
+    "languageOrderTipBody": "列表最下方的语言就是应用的界面语言。要更改界面语言，请将其他语言拖到最下方。",
     "ttsOsTipTitle": "提示",
     "ttsOsTipAndroid": "最佳效果：使用 Google 语音。Samsung TTS 在 Corpán 中无法使用。",
-    "ttsOsTipIOS": "在“设置 → 辅助功能”中找到“朗读内容”，下载语音。注意：Apple 并不为每种语言提供语音。若升级无效，请通过 Apple 的 Feedback 应用请求支持。",
-    "ttsOsTipMac": "在“系统设置 → 辅助功能”中找到“朗读内容”，下载语音。注意：Apple 并不为每种语言提供语音。若升级无效，请通过 Apple 的 Feedback 应用请求支持。",
+    "ttsOsTipIOS": "您的设备内置了免费的“高级”语音 — Apple只是默认关闭了它们。请开启它们：“设置”→“辅助功能”→“朗读内容”→“语音”→您的语言，然后轻点“高级”或“增强”语音的下载图标。返回后，它将自动显示在此处。（Apple尚未涵盖所有语言。）",
+    "ttsOsTipMac": "您的Mac内置了免费的“高级”语音 — Apple只是默认关闭了它们。请开启它们：“系统设置”→“辅助功能”→“朗读内容”→“系统语音”→“管理语音”，然后下载“高级”或“增强”语音。返回后，它将自动显示在此处。（Apple尚未涵盖所有语言。）",
     "ttsOsTipWindows": "在“设置”里安装语音后返回这里。",
     "ttsOsTipOther": "在设备设置里安装语音后返回这里。",
     "installVoicesAndroid": "安装语音",
-    "learning": "学习语言",
-    "ttsStepTitle": "文字转语音",
-    "socials": "关注并连接",
-    "socialsStepTitle": "社交媒体",
     "noVoices": "无语音",
     "noVoicesHint": "安装语音以启用此语言。",
-    "sendAppleFeedback": "发送 Apple 反馈"
+    "sendAppleFeedback": "发送 Apple 反馈",
+    "ttsGoogleInstalled": "Google TTS已安装",
+    "ttsGoogleMissing": "Google TTS未安装",
+    "ttsSetDefault": "设为默认",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech 已被禁用",
+        "detail": "我们直接带您到系统页面重新启用它。一键搞定。",
+        "button": "启用 Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "安装 Google Text-to-Speech",
+        "detail": "Google的免费语音引擎为Corpán支持的大多数语言解锁了高质量语音 — 大多数手机并未预装。让我们添加它：",
+        "button": "从 Play 商店安装"
+      },
+      "noEngine": {
+        "heading": "未找到语音引擎",
+        "detail": "您的设备未安装任何 TTS 引擎。请安装 Google Text-to-Speech 以继续。",
+        "button": "安装 Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "需要下载语音数据",
+        "detail": "您的引擎已就绪,但您语言的语音数据尚未下载。",
+        "button": "下载语音"
+      },
+      "engineHung": {
+        "heading": "语音引擎无响应",
+        "detail": "有时系统 TTS 服务会卡住。点击下方重试 — 通常会恢复。",
+        "button": "重试"
+      },
+      "probing": "正在配置语音…",
+      "working": "处理中…",
+      "skipForNow": "跳过 — 稍后在设置中配置",
+      "openTtsSettings": "打开 TTS 设置",
+      "readyHeading": "语音就绪",
+      "readyEngine": "正在使用 {{engine}}",
+      "installVoicesForLang": "下载 {{lang}} 语音",
+      "diagnostics": {
+        "toggle": "诊断",
+        "copyButton": "复制",
+        "copied": "已复制"
+      },
+      "currentState": "当前状态:{{state}}",
+      "state": {
+        "enabled": "已启用",
+        "default": "已启用(系统默认)",
+        "disabled": "已停用",
+        "disabledUser": "已被用户停用(或被 Samsung Device Care 停用)",
+        "disabledUntilUsed": "使用前已停用",
+        "notInstalled": "未安装"
+      }
+    },
+    "phrasePacks": {
+      "hero": "选择你的主题",
+      "loading": "加载中…",
+      "selectAll": "全选 ({{count}})",
+      "clearAll": "清除",
+      "subscriptionNudge": "部分包已包含在 Corpán Plus 中 — 你稍后可以在设置 → 包中升级。",
+      "entryCount": "{{n}} 条短语",
+      "paid": "付费",
+      "emptyHero": "暂无短语包。",
+      "emptySub": "稍后再来。"
+    },
+    "appleNoVoiceTitle": "Apple 还未提供 {{lang}} 语音",
+    "appleNoVoiceBody": "给 Apple 无障碍团队发一条简短反馈，会更有助于推动这件事。与此同时，{{lang}} 已可在 Android 上原生使用。",
+    "back": "返回",
+    "continue": "继续",
+    "calibrate": {
+      "childAgeTitle": "读者年龄多大？",
+      "childTeen": "13–17岁",
+      "childUnder13": "13岁以下",
+      "enjoyComfortable": "相当不错",
+      "enjoyImproving": "我还在学习阅读",
+      "enjoyJustStarting": "刚开始 — 我是阅读新手",
+      "enjoyNative": "流利 — 这是我的母语",
+      "enjoyTitle": "您阅读{{lang}}的水平如何？",
+      "learnAdvanced": "我是高级学习者",
+      "learnLittle": "一点点",
+      "learnNever": "从未 — 完全初学者",
+      "learnTitle": "您以前学习过{{lang}}吗？"
+    },
+    "confident": {
+      "addBetter": "解锁更丰富的语音",
+      "andMore": "+{{count}}个更多",
+      "chooseVoices": "选择语音",
+      "noVoiceFor": "暂无{{lang}}语音 — 让我们添加一个，以便Corpán可以朗读。",
+      "voiceCountMany": "{{count}}个语音已就绪",
+      "voiceCountOne": "1个语音已就绪",
+      "yourVoiceFor": "您的{{lang}}语音"
+    },
+    "fork": {
+      "child": {
+        "desc": "为年幼学习者设计的温和、有趣的书籍和游戏。",
+        "label": "为儿童设置"
+      },
+      "enjoy": {
+        "desc": "书籍、故事、游戏、练习等 — 全部使用您的语言。",
+        "label": "用{{lang}}享受Corpán"
+      },
+      "learn": {
+        "desc": "新语言的故事、游戏、练习和音频。",
+        "label": "学习一门语言"
+      },
+      "polyglot": {
+        "desc": "叠加多种语言并探索所有内容。",
+        "label": "探索多种语言"
+      },
+      "subtitle": "我们将为您设置好一切。您可以稍后更改。",
+      "title": "您为什么选择Corpán？"
+    },
+    "interests": {
+      "audio": "听音频",
+      "audioDesc": "有声读物、旁白和电台。",
+      "games": "玩游戏",
+      "gamesDesc": "通过趣味挑战学习。",
+      "read": "阅读故事和书籍",
+      "readDesc": "沉浸在您的语言阅读材料中。",
+      "speak": "练习口语",
+      "speakDesc": "大声说出短语并获得反馈。",
+      "study": "学习和练习",
+      "studyDesc": "通过专注练习积累词汇。",
+      "subtitle": "选择任何您感兴趣的 — 我们会推荐匹配的体验。可选。",
+      "title": "您想做什么？",
+      "wild": "探索新奇事物",
+      "wildDesc": "令人惊喜的实验性体验。"
+    },
+    "ttsIntro": "Corpán会朗读。轻点语音以按您的速度收听。",
+    "voiceGuide": {
+      "intro": "您的设备内置了丰富、自然的语音 — 免费，且远优于默认语音。制造商只是默认关闭了它们。让我们开启它们；只需轻点几下：",
+      "macStep1": "打开“系统设置”。",
+      "macStep2": "前往“辅助功能”→“朗读内容”。",
+      "macStep3": "在“系统语音”下，打开“管理语音”。",
+      "macStep4": "下载您语言的“高级”或“增强”语音。",
+      "macStep5": "返回Corpán — 它将自动显示在此处。",
+      "step1": "轻点下方的“打开设置”。",
+      "step2": "前往“辅助功能”→“朗读内容”→“语音”。",
+      "step3": "轻点您的语言。",
+      "step4": "下载“高级”或“增强”语音。",
+      "step5": "返回Corpán — 它将自动显示在此处。",
+      "title": "解锁您设备上的最佳语音"
+    },
+    "voicePreviewAria": "预览{{name}}",
+    "voicePreviewSelected": "预览已选",
+    "voiceRecommended": "推荐",
+    "voiceSelectedCount": "已选{{count}}/{{total}}",
+    "whatToStart": {
+      "title": "我们从哪里开始？",
+      "subtitle": "选一个直接开始，其余的轻轻一点即可。",
+      "read": {
+        "label": "阅读",
+        "desc": "沉浸在故事和书籍中。"
+      },
+      "study": {
+        "label": "学习",
+        "desc": "通过专注练习积累词汇。"
+      },
+      "playMusic": {
+        "label": "玩音乐",
+        "desc": "在打碟台上试试你的语言。"
+      },
+      "playGames": {
+        "label": "玩游戏",
+        "desc": "在趣味挑战中学习。"
+      },
+      "surprise": {
+        "label": "给我惊喜！",
+        "desc": "带我去个好玩的地方。"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -129,6 +357,16 @@
       "cta": "访问",
       "title": "encorpora.io",
       "desc": "包含文档和社区的主站。"
+    },
+    "instagram": {
+      "cta": "关注",
+      "desc": "@corpanapp",
+      "title": "在Instagram上关注"
+    },
+    "share": {
+      "title": "分享 Corpán",
+      "text": "用 Corpán 学习语言。",
+      "copied": "链接已复制！"
     }
   },
   "common": {
@@ -136,7 +374,9 @@
     "instantPolyglotPractice": "即时多语言练习",
     "cancel": "取消",
     "delete": "删除",
-    "create": "创建"
+    "create": "创建",
+    "dismiss": "关闭",
+    "skip": "跳过"
   },
   "dialects": {
     "en": "英语",
@@ -234,7 +474,28 @@
     "ur-PK": "乌尔都语（巴基斯坦）",
     "ta": "泰米尔语",
     "te": "泰卢固语",
-    "kn": "卡纳达语"
+    "kn": "卡纳达语",
+    "sv": "瑞典语",
+    "no": "挪威语",
+    "da": "丹麦语",
+    "nl": "荷兰语",
+    "ms": "马来语",
+    "fi": "芬兰语",
+    "sw": "斯瓦希里语",
+    "el": "希腊语",
+    "he": "希伯来语",
+    "ne": "尼泊尔语",
+    "hr": "克罗地亚语",
+    "sr": "塞尔维亚语",
+    "uk": "乌克兰语",
+    "bg": "保加利亚语",
+    "ro": "罗马尼亚语",
+    "ca": "加泰罗尼亚语",
+    "yue-Hant-HK": "粤语（繁体）",
+    "cs": "捷克语",
+    "lt": "立陶宛语",
+    "sk": "斯洛伐克语",
+    "sl": "斯洛文尼亚语"
   },
   "footer": {
     "appVersion": "应用版本",
@@ -256,28 +517,29 @@
     "rename": "重命名",
     "renameLabel": "堆栈的新名称",
     "selectAria": "选择档案",
-    "selectPlaceholder": "选择…"
+    "selectPlaceholder": "选择…",
+    "introTipTitle": "Stack",
+    "introTipBody": "Stack 保存不同的学习配置——一个用于旅行，另一个用于工作。点击 + 创建新的 stack。"
   },
   "rating": {
     "title": "喜欢 Corpán 吗？",
-    "description": "Corpán 由一个刚起步的小型开源团队制作。如果你觉得它配得上 5 星，花几秒评分对我们帮助很大。",
-    "rateNow": "⭐ 评为 5 星",
-    "remindLater": "稍后再说",
-    "noThanks": "不了，谢谢",
+    "description": "如果你喜欢 Corpán，请给它 5 星。在应用商店里，任何低于 5 星的评分都会伤害 Corpán。",
+    "rateNow": "⭐ 给 5 星",
     "close": "关闭",
-    "feedbackHint": "还达不到你心中的 5 星？请点“反馈建议”，告诉我们该怎么改进。",
-    "feedbackButton": "在 GitHub 提交反馈"
+    "feedbackHint": "如果它对你来说还不是 5 星应用，请给我们发邮件或在 GitHub 开 issue，告诉我们该修什么。我们想把它做得更好。",
+    "emailButton": "给我们发邮件",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "包",
-    "available": "可用包",
-    "emptyAvailable": "暂无可用包。",
-    "installed": "已安装包",
-    "emptyInstalled": "暂无已安装包。",
+    "available": "可用",
+    "emptyAvailable": "暂无可用内容。",
+    "installed": "已安装",
+    "emptyInstalled": "暂无已安装内容。",
     "get": "获取",
     "open": "打开",
     "remove": "移除",
-    "version": "版本 {{version}}",
+    "version": "v{{version}}",
     "refresh": "刷新",
     "free": "免费",
     "install": "安装",
@@ -288,10 +550,289 @@
     "manifestTitle": "清单 URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "粘贴清单 URL。",
-    "devUnlockTitle": "开发者包",
+    "devUnlockTitle": "开发者Packs",
     "devUnlockHint": "点按 7 次以解锁清单安装。",
-    "devUnlockToast": "开发者包已解锁。",
-    "devIntro": "试试 Corpán 包或自己制作一个。",
-    "devLink": "在 Free2z 了解更多"
+    "devUnlockToast": "开发者Packs已解锁。",
+    "devIntro": "试试 Corpán Pack，或自己制作。",
+    "devLink": "在 Free2z 了解更多",
+    "new": "新",
+    "offline": "离线",
+    "purchasing": "购买中...",
+    "buy": "购买 {{price}}",
+    "premium": "高级",
+    "availableOnMobile": "可在iOS和Android上使用",
+    "checking": "正在检查…",
+    "phrasePack": {
+      "sectionTitle": "短语包",
+      "offlineEmpty": "你已离线。连接后浏览。",
+      "searchPlaceholder": "搜索…",
+      "noMatches": "无匹配。",
+      "filter": {
+        "all": "全部",
+        "available": "可下载",
+        "free": "免费",
+        "paid": "付费",
+        "installed": "已安装"
+      },
+      "downloadAll": "全部下载",
+      "downloadAllSummary": "{{count}} 个可下载 · ~{{size}} MB",
+      "installingBatch": "正在安装第 {{current}}/{{total}} 个…",
+      "batchFailed": "{{count}} 个未能安装 — 点按重试",
+      "activeInStack": "已启用",
+      "activeBadge": "已启用",
+      "subBadge": "订阅",
+      "paid": "付费",
+      "free": "免费",
+      "unlockSub": "使用 Corpán Plus 解锁",
+      "entryCount": "{{n}} 条短语",
+      "allInstalled": {
+        "title": "你已经拥有所有短语包。",
+        "subtitle": "新主题会定期上线 — 随时回来看看。",
+        "manageCta": "在 Stacks 中管理"
+      },
+      "filterEmpty": {
+        "installed": "尚未安装任何包。",
+        "cta": "显示全部"
+      },
+      "showAll": "显示全部 ({{count}})",
+      "collapseList": "收起",
+      "openDrawer": "浏览短语包 ({{count}})",
+      "openDrawerLabel": "浏览短语包",
+      "inactiveBadge": "未启用",
+      "moreActionsLabel": "更多操作",
+      "install": "安装"
+    },
+    "unlockWithPlus": "使用 Corpán Plus 解锁",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Corpán Plus 包含",
+    "installFailedTitle": "安装失败",
+    "installStuckDetail": "一段时间内没有进展。请检查您的连接并重试。",
+    "installStuckTitle": "下载停滞",
+    "openPack": "打开{{name}}",
+    "recent": "最近",
+    "updateAll": "全部更新 ({{count}})",
+    "updateAvailable": "有可用更新"
+  },
+  "subscription": {
+    "startTrialPeriod": "开始 {{period}} 免费试用",
+    "trialFree": "{{period}}内免费",
+    "trialThenCancel": "之后 {{price}}/{{period}} · 随时取消。今日无需付款。",
+    "title": "解锁 Corpán Plus",
+    "description": "无限使用所有功能、语言、包和更新。",
+    "annual": "年付",
+    "monthly": "月付",
+    "subscribe": "订阅",
+    "subscribing": "订阅中...",
+    "subscribed": "Corpán Plus 已激活",
+    "subscribedDescription": "{{plan}} 方案已激活。所有内容都已解锁。",
+    "manage": "管理订阅",
+    "termsOfUse": "使用条款",
+    "privacyPolicy": "隐私政策",
+    "autoRenewNotice": "订阅将自动续订。可随时在 {{store}} 账户中取消。",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play",
+    "pendingHeading": "等待批准",
+    "pendingDetail": "你的订阅正在等待批准（“购买前询问”或银行验证）。获批后将自动生效。",
+    "storeUnreachable": "目前无法连接到 App Store。",
+    "tryAgain": "重试",
+    "affiliateCodeLabel": "联盟代码",
+    "affiliateCodePlaceholder": "可选",
+    "affiliateInvalidFormat": "请使用字母、数字、连字符或下划线。",
+    "affiliateChecking": "正在检查代码...",
+    "affiliateApplied": "该代码将关联到此订阅。",
+    "affiliateCodeHelp": "如果有人推荐你来到这里，请在订阅前输入他们的代码。",
+    "introPriceHeadline": "{{introPrice}}，{{period}}",
+    "introPriceThen": "，之后{{price}}/{{period}}",
+    "perMonth": "月",
+    "perYear": "年",
+    "startFreeTrial": "开始免费试用",
+    "trialFirstCharge": "{{period}}：首次收费",
+    "trialHeadline": "{{period}}免费",
+    "trialReassurance": "现在无需付款 · 随时取消",
+    "trialThenPrice": "，之后{{price}}/{{period}}",
+    "trialToday": "今天：开始",
+    "rate": "评价 Corpán"
+  },
+  "restore": {
+    "button": "恢复购买",
+    "restoring": "恢复中...",
+    "noPurchases": "未找到之前的购买记录。",
+    "success": "已恢复{{count}}项购买。",
+    "error": "恢复购买失败。"
+  },
+  "catalogPaywall": {
+    "allLanguages": "全部 {{count}} 种语言",
+    "thisBook": "这本书",
+    "blurbAll": "每种朗读,现在和未来。永远属于你。",
+    "blurbOne": "永远属于你。",
+    "buyWithPrice": "购买 — {{price}}",
+    "orUnlockEverything": "或解锁全部",
+    "subMonthly": "月度",
+    "subMonthlyPeriod": "每月",
+    "subYearly": "年度",
+    "subYearlyPeriod": "每年 · 最划算",
+    "errorHeading": "现在无法连接到 App Store。",
+    "tryAgain": "重试",
+    "pendingHeading": "等待批准",
+    "pendingDetail": "您的购买正在等待批准 (Ask to Buy 或银行验证)。批准后将自动激活。",
+    "noProductsError": "App Store 未返回任何商品。通常几秒后解决 — 请重试。"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "语音播放失败",
+    "playbackFailedDetail": "打开设备的 TTS 设置来修复。",
+    "openSettingsAction": "打开 TTS 设置"
+  },
+  "discoverPacks": {
+    "title": "让 Corpán 成为你的",
+    "subtitle": "添加沉浸式阅读器、游戏和工具——内置于 Corpán，深化你的练习。",
+    "maybeLater": "稍后再说",
+    "empty": "更多包正在路上——同时探索 Corpán 吧。",
+    "offlineEmpty": "连接互联网以发现包——或暂时跳过。"
+  },
+  "paywall": {
+    "title": "解锁 Corpán Plus",
+    "thanksTitle": "Corpán Plus 已激活",
+    "thanksBody": "所有内容都已解锁。",
+    "bookSubhead": "继续 {{title}}，解锁所有功能。",
+    "subhead": "无限使用所有功能、语言和更新。没有广告。你的数据留在你的设备上。",
+    "pitch": "图书、包、游戏、语音工具和新的学习体验全部包含。",
+    "maybeLater": "稍后考虑",
+    "continue": "继续",
+    "dismiss": "关闭"
+  },
+  "streak": {
+    "title": "{{count}}天学习打卡"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "跟随有声读物阅读 — 宁静，逐字高亮。",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "逐笔掌握汉字。",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "听短语，匹配它 — 边玩边学。",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "在快速游戏中逐个构建短语。",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "翻阅您的语言短语 — 快速、专注的练习。",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "大声说出短语并获得发音反馈。",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "沉浸式3D有声读物 — 朗读时文字在空间中流淌。",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "收听全球直播电台。",
+      "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "图托马顿",
+      "blurb": "你的专属设备内置导师，耐心助你学习每一种语言。"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "一个将每次相遇化为课程的生活城市。"
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "采样你正在学的语言。Scratch 到它刻进脑子里。"
+    }
+  },
+  "home": {
+    "continueLearning": "继续学习",
+    "experiences": "体验",
+    "forYou": "推荐",
+    "get": "获取",
+    "installing": "正在安装…",
+    "library": "资料库",
+    "like": "喜欢",
+    "notForMe": "不感兴趣",
+    "open": "打开",
+    "openPhrases": "打开短语",
+    "phraseFlipDesc": "翻阅您的语言短语",
+    "plusChip": "Corpán Plus — 解锁全部内容",
+    "recommended": "推荐",
+    "showAnother": "再看一个",
+    "tryIt": "试用",
+    "packUpdates": "你有包更新",
+    "updateAll": "全部更新"
+  },
+  "offline": {
+    "cachedSubtitle": "显示您上次缓存的结果。",
+    "catalogSubtitle": "重新连接以发现新内容包。您已安装的内容包仍可使用。",
+    "installNeedsInternet": "重新连接以进行下载。",
+    "onboardingBanner": "离线 — 重新连接后将安装所选内容。",
+    "packCatalogSubtitle": "您已安装的内容包仍可使用。重新连接以浏览更多。",
+    "packCatalogTitle": "内容包目录需要互联网连接",
+    "phrasePacksOnboardingSubtitle": "重新连接后，您可以稍后在“设置”→“内容包”中选择短语包。",
+    "phrasePacksSubtitle": "您已安装的短语包仍可使用。重新连接以浏览新的。",
+    "phrasePacksTitle": "短语包目录需要互联网连接",
+    "purchaseNeedsInternet": "重新连接以进行购买。",
+    "restoreSubtitle": "重新连接以恢复购买。",
+    "subscriptionSubtitle": "重新连接以订阅。您已安装的内容包和捆绑短语仍可使用。",
+    "subscriptionTitle": "订阅需要互联网连接",
+    "title": "无互联网连接",
+    "voiceDownloadSubtitle": "您设备上已有的语音仍可使用。重新连接以安装更多。",
+    "voiceDownloadTitle": "语音下载需要互联网连接"
+  },
+  "quickSettings": {
+    "fullSettings": "完整设置",
+    "title": "快速设置"
+  },
+  "tour": {
+    "maybeLater": "稍后",
+    "progress": "{{n}}/{{total}}"
+  },
+  "update": {
+    "availableLine": "有可用更新 → {{version}}",
+    "close": "关闭",
+    "description": "您的应用商店中有Corpán的新版本可用。",
+    "remindLater": "稍后提醒",
+    "skipThisVersion": "跳过此版本",
+    "title": "有可用更新",
+    "update": "更新",
+    "updateNow": "立即更新",
+    "versionLine": "版本{{version}}已准备好安装。"
+  },
+  "streakBadge": {
+    "label": "{{days}}天连胜"
+  },
+  "dailyLock": {
+    "title": "今天的{{count}}{{unit}}",
+    "streakActive": "{{days}}天连胜——明天再来保持进度。",
+    "streakStart": "明天再来保持进度。",
+    "resetIn": "{{time}}后重置",
+    "cta": "立即使用Corpán Plus继续",
+    "dismiss": "稍后再说",
+    "closeAria": "关闭",
+    "countdownHm": "{{h}}小时{{m}}分钟",
+    "countdownM": "{{m}}分钟",
+    "countdownSoon": "随时"
+  },
+  "code": {
+    "attributedUnverified": "代码将附加到您的订阅。",
+    "checkFailed": "无法检查",
+    "checking": "正在检查代码…",
+    "creditedTo": "记入{{partner}}",
+    "fieldLabel": "优惠或联盟代码",
+    "help": "有代码？输入以应用您的优惠。",
+    "redeemUnavailable": "无法打开兑换屏幕。请重试。",
+    "redeemWithApple": "通过Apple兑换",
+    "redeeming": "正在打开兑换…",
+    "retry": "重试",
+    "subscribeWithDiscount": "订阅（{{discount}}）",
+    "redeemCode": "兑换代码",
+    "notApplied": "此代码不提供折扣。"
   }
 }

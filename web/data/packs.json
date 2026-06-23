@@ -1,0 +1,541 @@
+[
+  {
+    "id": "tutomaton",
+    "name": "Tutomaton",
+    "description": "A patient on-device language tutor for every language you're learning — grounded by your installed phrase packs. Runs entirely on your device.",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/tutomaton/manifest.json",
+    "zipUrl": "/corpan/packs/tutomaton/0.6.0/tutomaton.zip",
+    "landingUrl": "/corpan/packs/tutomaton/",
+    "avatarSource": "corpan/packs/tutomaton/tutomaton-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/tutomaton",
+    "minAppVersion": "0.17.0",
+    "v1Listed": false,
+    "requireVersionedArtifact": true,
+    "channel": "stable",
+    "packType": "tutomaton",
+    "tier": "free",
+    "purchase": {
+      "type": "free",
+      "priceLabel": "Free · Plus gets unlimited messages"
+    },
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "speak",
+      "study"
+    ],
+    "goodForClass": [
+      "learner",
+      "polyglot"
+    ],
+    "recommendOrder": 9,
+    "featuredFor": [
+      "speak",
+      "study"
+    ],
+    "tagline": "A patient on-device tutor for every language you're learning."
+  },
+  {
+    "id": "tutomaton",
+    "name": "Tutomaton",
+    "description": "A patient on-device language tutor for every language you're learning — grounded by your installed phrase packs. Runs entirely on your device.",
+    "status": "active",
+    "listed": true,
+    "webListed": false,
+    "manifestUrl": "/corpan/packs/tutomaton-0.3.2/manifest.json",
+    "zipUrl": "/corpan/packs/tutomaton/0.3.2/tutomaton.zip",
+    "landingUrl": "/corpan/packs/tutomaton-0.3.2/",
+    "avatarSource": "corpan/packs/tutomaton/tutomaton-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/tutomaton",
+    "minAppVersion": "0.16.0",
+    "maxAppVersion": "0.16.99",
+    "v1Listed": false,
+    "requireVersionedArtifact": true,
+    "channel": "stable",
+    "packType": "tutomaton",
+    "tier": "premium",
+    "purchase": {
+      "type": "iap",
+      "priceLabel": "Plus"
+    },
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "speak",
+      "study"
+    ],
+    "goodForClass": [
+      "learner",
+      "polyglot"
+    ],
+    "recommendOrder": 9,
+    "featuredFor": [
+      "speak",
+      "study"
+    ],
+    "tagline": "A patient on-device tutor for every language you're learning."
+  },
+  {
+    "id": "hover_runner",
+    "name": "Hover Runner",
+    "description": "3D fun in Hover Runner: lock in correct translations with the All-Hearing Ear and avoid wrong ones",
+    "status": "active",
+    "manifestUrl": "/corpan/packs/hover-runner/manifest.json",
+    "zipUrl": "/corpan/packs/hover-runner.zip",
+    "landingUrl": "/corpan/packs/hover-runner/",
+    "avatarSource": "corpan/packs/hover-runner/hover-runner-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hover-runner",
+    "minAppVersion": "0.9.0",
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [
+        "GnUNvb7n4hc",
+        "9rtYc8j4UQU",
+        "Rj0x7kug9oc"
+      ],
+      "demos": []
+    },
+    "categories": [
+      "games",
+      "read"
+    ],
+    "goodForClass": [
+      "kid_native",
+      "learner"
+    ],
+    "recommendOrder": 4,
+    "kidFriendly": true,
+    "tagline": "Hear a phrase, steer to match it — learn by playing."
+  },
+  {
+    "id": "corpan_city",
+    "name": "Corpan City",
+    "description": "A living city where you meet AI characters and real players, follow a personal journey, and turn every encounter into a language lesson.",
+    "status": "active",
+    "manifestUrl": "/corpan/packs/corpan-city/manifest.json",
+    "zipUrl": "/corpan/packs/corpan-city.zip",
+    "landingUrl": "/corpan/packs/corpan-city/",
+    "avatarSource": "corpan/packs/corpan-city/corpan-city-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/corpan-city",
+    "minAppVersion": "0.17.0",
+    "v1Listed": false,
+    "requireCompleteLocalization": true,
+    "channel": "preview",
+    "packType": "game",
+    "purchase": {
+      "type": "free"
+    },
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "games",
+      "speak",
+      "wild"
+    ],
+    "goodForClass": [
+      "learner",
+      "polyglot",
+      "enjoyer",
+      "kid_native"
+    ],
+    "recommendOrder": 5,
+    "featuredFor": [
+      "games"
+    ],
+    "kidFriendly": true,
+    "tagline": "A living city that turns every encounter into a lesson."
+  },
+  {
+    "id": "teletron",
+    "name": "Teletron",
+    "description": "A private-by-default waiting room for real conversations with other learners, softened and translated by local AI on both devices.",
+    "status": "prototype",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/teletron/manifest.json",
+    "zipUrl": "/corpan/packs/teletron.zip",
+    "landingUrl": "/corpan/packs/teletron/",
+    "avatarSource": "corpan/packs/teletron/teletron-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/teletron",
+    "minAppVersion": "0.17.0",
+    "v1Listed": false,
+    "channel": "preview",
+    "packType": "social",
+    "purchase": {
+      "type": "free",
+      "priceLabel": "Free · Plus gets unlimited messages"
+    },
+    "categories": [
+      "speak",
+      "wild"
+    ],
+    "goodForClass": [
+      "learner",
+      "polyglot",
+      "enjoyer"
+    ],
+    "recommendOrder": 8,
+    "featuredFor": [
+      "speak"
+    ],
+    "tagline": "Talk to someone new. Local AI keeps the conversation safe."
+  },
+  {
+    "id": "beatlounge",
+    "name": "beatlounge",
+    "description": "Make music with the language you're learning. Scratch real phrases from 50+ languages, all offline. No music theory needed.",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/beatlounge/manifest.json",
+    "zipUrl": "/corpan/packs/beatlounge.zip",
+    "landingUrl": "/corpan/packs/beatlounge/",
+    "avatarSource": "corpan/packs/beatlounge/beatlounge-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/beatlounge",
+    "minAppVersion": "0.18.0",
+    "v1Listed": false,
+    "channel": "stable",
+    "packType": "game",
+    "purchase": {
+      "type": "free",
+      "priceLabel": "Free"
+    },
+    "categories": [
+      "wild",
+      "games",
+      "study"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "learner"
+    ],
+    "recommendOrder": 6,
+    "featuredFor": [
+      "wild"
+    ],
+    "tagline": "Sample the language you're learning. Scratch it till it sticks."
+  },
+  {
+    "id": "hanzipan",
+    "name": "Hanzipan",
+    "description": "A premium Mandarin character studio with stroke guidance, feedback, and infinite contextual examples",
+    "status": "active",
+    "zipUrl": "/corpan/packs/hanzipan.zip",
+    "landingUrl": "/corpan/packs/hanzipan/",
+    "avatarSource": "corpan/packs/hanzipan/hanzipan-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/hanzipan",
+    "minAppVersion": "0.9.0",
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "games",
+      "study",
+      "wild"
+    ],
+    "goodForClass": [
+      "polyglot",
+      "learner"
+    ],
+    "recommendOrder": 7,
+    "languages": [
+      "zh-Hans",
+      "zh-Hant",
+      "yue-Hant-HK"
+    ],
+    "tagline": "Master Mandarin characters, stroke by stroke."
+  },
+  {
+    "id": "juice_squeeze",
+    "name": "Juice Squeeze",
+    "description": "Fast-paced phrase building with splashy juice rewards and native audio feedback",
+    "status": "prototype",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/juice-squeeze/manifest.json",
+    "zipUrl": "/corpan/packs/juice-squeeze.zip",
+    "landingUrl": "/corpan/packs/juice-squeeze/",
+    "avatarSource": "corpan/packs/juice-squeeze/juice-squeeze-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/juice-squeeze",
+    "minAppVersion": "0.9.0",
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "games",
+      "study"
+    ],
+    "goodForClass": [
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 5,
+    "kidFriendly": true,
+    "tagline": "Build phrases piece by piece in a quick game."
+  },
+  {
+    "id": "earthgate_reader",
+    "name": "Earthgate Reader",
+    "description": "Calm, earth-toned audiobook reader with word-level highlighting synced to narrated audio",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/earthgate-reader/manifest.json",
+    "zipUrl": "/corpan/packs/earthgate-reader.zip",
+    "landingUrl": "/corpan/packs/earthgate-reader/",
+    "avatarSource": "corpan/packs/earthgate-reader/earthgate-reader-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/earthgate-reader",
+    "minAppVersion": "0.10.0",
+    "channel": "stable",
+    "packType": "reader",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "read",
+      "audio"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "kid_native",
+      "learner",
+      "polyglot"
+    ],
+    "recommendOrder": 1,
+    "kidFriendly": true,
+    "tagline": "Read along to narrated audiobooks — calm, with word-by-word highlighting."
+  },
+  {
+    "id": "stargate_reader",
+    "name": "Stargate Reader",
+    "description": "Immersive 3D audiobook: words stream through space in sync with narrated audio",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/stargate-reader/manifest.json",
+    "zipUrl": "/corpan/packs/stargate-reader.zip",
+    "landingUrl": "/corpan/packs/stargate-reader/",
+    "avatarSource": "corpan/packs/stargate-reader/stargate-reader-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/stargate-reader",
+    "minAppVersion": "0.10.0",
+    "channel": "stable",
+    "packType": "reader",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "read",
+      "audio",
+      "wild"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "polyglot"
+    ],
+    "recommendOrder": 2,
+    "tagline": "The same audiobooks in immersive 3D — words stream through space as they're read."
+  },
+  {
+    "id": "world_radio",
+    "name": "World Radio",
+    "description": "Tune into live internet radio in any of Corpan's languages — your stack first, the world right after",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/world-radio/manifest.json",
+    "zipUrl": "/corpan/packs/world-radio.zip",
+    "landingUrl": "/corpan/packs/world-radio/",
+    "avatarSource": "corpan/packs/world-radio/world-radio-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/world-radio",
+    "minAppVersion": "0.12.0",
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "audio",
+      "wild"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "polyglot",
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 3,
+    "tagline": "Tune into live radio from around the world."
+  },
+  {
+    "id": "world_radio",
+    "name": "World Radio",
+    "description": "Tune into live internet radio in any of Corpan's languages — your stack first, the world right after",
+    "status": "active",
+    "listed": false,
+    "manifestUrl": "/corpan/packs/world-radio-legacy/manifest.json",
+    "zipUrl": "/corpan/packs/world-radio-legacy.zip",
+    "landingUrl": "/corpan/packs/world-radio/",
+    "avatarSource": "corpan/packs/world-radio/world-radio-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/world-radio",
+    "minAppVersion": "0.10.0",
+    "maxAppVersion": "0.11.99",
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "audio",
+      "wild"
+    ],
+    "goodForClass": [
+      "enjoyer",
+      "polyglot",
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 3,
+    "tagline": "Tune into live radio from around the world."
+  },
+  {
+    "id": "pronunciation_coach",
+    "name": "Parlometron",
+    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels — Whisper-powered scoring with per-word feedback and TTS playback",
+    "status": "active",
+    "listed": true,
+    "webListed": false,
+    "manifestUrl": "/corpan/packs/pronunciation-coach-0.3.5/manifest.json",
+    "zipUrl": "/corpan/packs/pronunciation-coach-0.3.5.zip",
+    "landingUrl": "/corpan/packs/pronunciation-coach/",
+    "avatarSource": "corpan/packs/pronunciation-coach/pronunciation-coach-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
+    "minAppVersion": "0.12.5",
+    "maxAppVersion": "0.12.5",
+    "platforms": [
+      "ios"
+    ],
+    "minOSVersion": "17.0",
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "speak",
+      "games"
+    ],
+    "goodForClass": [
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 6,
+    "tagline": "Say phrases aloud and get pronunciation feedback."
+  },
+  {
+    "id": "pronunciation_coach",
+    "name": "Parlometron",
+    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels — Whisper-powered scoring with per-word feedback and TTS playback",
+    "status": "active",
+    "listed": true,
+    "manifestUrl": "/corpan/packs/pronunciation-coach/manifest.json",
+    "zipUrl": "/corpan/packs/pronunciation-coach.zip",
+    "landingUrl": "/corpan/packs/pronunciation-coach/",
+    "avatarSource": "corpan/packs/pronunciation-coach/pronunciation-coach-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
+    "minAppVersion": "0.12.6",
+    "platforms": [
+      "ios"
+    ],
+    "minOSVersion": "17.0",
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "speak",
+      "games"
+    ],
+    "goodForClass": [
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 6,
+    "tagline": "Say phrases aloud and get pronunciation feedback."
+  },
+  {
+    "id": "pronunciation_coach",
+    "name": "Parlometron",
+    "description": "On-device pronunciation practice and pass-the-phone multiplayer duels — Whisper-powered scoring with per-word feedback and TTS playback",
+    "status": "active",
+    "listed": true,
+    "webListed": false,
+    "manifestUrl": "/corpan/packs/pronunciation-coach/manifest.json",
+    "zipUrl": "/corpan/packs/pronunciation-coach.zip",
+    "landingUrl": "/corpan/packs/pronunciation-coach/",
+    "avatarSource": "corpan/packs/pronunciation-coach/pronunciation-coach-avatar.png",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/pronunciation-coach",
+    "minAppVersion": "0.12.6",
+    "platforms": [
+      "android"
+    ],
+    "channel": "stable",
+    "packType": "game",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "speak",
+      "games"
+    ],
+    "goodForClass": [
+      "learner",
+      "kid_native"
+    ],
+    "recommendOrder": 6,
+    "tagline": "Say phrases aloud and get pronunciation feedback."
+  },
+  {
+    "id": "phrase_main",
+    "name": "Phrase Flip",
+    "description": "Flip through phrases in the languages you're learning — quick, focused practice that's always a tap away. Built into Corpán, ready the moment you open the app.",
+    "status": "active",
+    "builtin": true,
+    "landingUrl": "/corpan/packs/phrase-flip/",
+    "avatarSource": "corpan/corpan-app/src/assets/phrase-flip.svg",
+    "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/corpan-app/src",
+    "v1Listed": false,
+    "channel": "stable",
+    "packType": "core",
+    "videos": {
+      "shorts": [],
+      "demos": []
+    },
+    "categories": [
+      "study",
+      "speak"
+    ],
+    "goodForClass": [
+      "learner",
+      "polyglot"
+    ],
+    "recommendOrder": 4,
+    "tagline": "Quick, focused phrase practice — built into Corpán."
+  }
+]

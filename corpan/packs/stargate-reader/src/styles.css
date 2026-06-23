@@ -1,0 +1,361 @@
+:root {
+  color-scheme: dark;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Catalog browser theme — dark/cyan */
+  --catalog-bg: rgba(2, 4, 9, 0.96);
+  --catalog-surface: rgba(15, 25, 45, 0.85);
+  --catalog-text: #c0d0e8;
+  --catalog-text-dim: #6080a0;
+  --catalog-accent: #7fd6ff;
+  --catalog-accent-hover: #a0e4ff;
+  --catalog-success: #4cff9f;
+  --catalog-error: #ff6060;
+  --catalog-border: rgba(127, 214, 255, 0.12);
+  --catalog-font: system-ui, -apple-system, sans-serif;
+  --catalog-radius: 12px;
+}
+
+html,
+body,
+#corpan-game-root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #020409;
+}
+
+body {
+  overflow: hidden;
+}
+
+/* --- Main container --- */
+
+.stargate-reader {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    #0a1628,
+    #050710 50%,
+    #020409 100%
+  );
+  overflow: hidden;
+}
+
+.stargate-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+/* --- UI overlay --- */
+
+.stargate-ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* --- Transport bar --- */
+
+.stargate-transport {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 16px calc(12px + var(--safe-bottom)) 16px;
+  background: linear-gradient(
+    to top,
+    rgba(2, 4, 9, 0.92) 0%,
+    rgba(2, 4, 9, 0.6) 60%,
+    transparent 100%
+  );
+  pointer-events: auto;
+  z-index: 20;
+}
+
+.stargate-transport-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 0 4px;
+}
+
+/* --- Scrub bar --- */
+
+.stargate-scrub {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  touch-action: none;
+  margin-bottom: 6px;
+}
+
+.stargate-scrub-track {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background: rgba(127, 214, 255, 0.2);
+  border-radius: 1.5px;
+  overflow: visible;
+}
+
+.stargate-scrub-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: #7fd6ff;
+  border-radius: 1.5px;
+  pointer-events: none;
+}
+
+.stargate-scrub-chapters {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.stargate-scrub-marker {
+  position: absolute;
+  top: -2.5px;
+  width: 2px;
+  height: 8px;
+  background: rgba(127, 214, 255, 0.4);
+  border-radius: 1px;
+  transform: translateX(-1px);
+}
+
+.stargate-scrub-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #7fd6ff;
+  border: 2px solid rgba(127, 214, 255, 0.6);
+  box-shadow: 0 0 6px rgba(127, 214, 255, 0.4);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.stargate-scrub-thumb--active {
+  transform: translate(-50%, -50%) scale(1.3);
+  box-shadow: 0 0 10px rgba(127, 214, 255, 0.6);
+}
+
+.stargate-transport-controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* --- Transport buttons --- */
+
+.stargate-transport-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(127, 214, 255, 0.3);
+  background: rgba(8, 16, 32, 0.7);
+  color: #7fd6ff;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.stargate-transport-btn:hover {
+  border-color: rgba(127, 214, 255, 0.6);
+  background: rgba(16, 32, 64, 0.85);
+  transform: scale(1.05);
+}
+
+.stargate-transport-btn:active {
+  transform: scale(0.95);
+}
+
+/* --- Play / Pause button (larger) --- */
+
+.stargate-play-btn {
+  width: 56px;
+  height: 56px;
+  font-size: 22px;
+  border-width: 2px;
+  border-color: rgba(127, 214, 255, 0.4);
+  background: rgba(8, 16, 32, 0.85);
+}
+
+.stargate-play-btn:hover {
+  border-color: rgba(127, 214, 255, 0.7);
+  background: rgba(16, 32, 64, 0.9);
+  transform: scale(1.08);
+}
+
+/* --- ±30s skip buttons --- */
+
+.stargate-skip-btn {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* --- Drawer theme overrides --- */
+
+:root {
+  --drawer-backdrop: rgba(2, 4, 9, 0.5);
+}
+
+/* Settings row styles (.stargate-settings-*) now live in
+   `@shared/ui/settingsRows.css` and are auto-imported by the shared
+   helpers (`createToggleRow`, `createAdvancedSection`). */
+
+/* --- Chapter overlay --- */
+
+.stargate-chapter-overlay {
+  position: absolute;
+  top: calc(16px + var(--safe-top));
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+  font-weight: 600;
+  color: #c0d0e8;
+  background: rgba(2, 4, 9, 0.7);
+  padding: 10px 24px;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 30;
+  white-space: nowrap;
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Chapter label ---
+   Two stacked rows on the left: book title (italic cyan, small) above
+   the chapter title (semibold primary, regular). Each row truncates its
+   own text with an ellipsis so a long chapter title can never collide
+   with the time on the right. When the book title is empty the row
+   collapses to zero height and the chapter title sits alone vertically
+   centered against the time. */
+
+.stargate-chapter {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-right: 12px;
+  letter-spacing: 0.005em;
+  line-height: 1.25;
+}
+
+.stargate-book-prefix {
+  font-size: 13px;
+  color: #7fd6ff;
+  font-style: italic;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stargate-book-prefix:empty {
+  display: none;
+}
+
+.stargate-chapter-title {
+  font-size: 10px;
+  color: rgba(192, 208, 232, 0.55);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Chapterless books leave this empty; collapse cleanly so the book
+   title above (`.stargate-book-prefix`) sits alone in the chapter
+   column and centers vertically against the time on the right.
+   Matches the `:empty { display: none }` treatment on
+   `.stargate-book-prefix`. */
+.stargate-chapter-title:empty {
+  display: none;
+}
+
+/* --- Time display --- */
+
+.stargate-time {
+  padding: 0;
+  color: #7fd6ff;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* --- Responsive: phone transport bar --- */
+
+@media (max-width: 480px) {
+  .stargate-transport {
+    padding: 8px 12px calc(8px + var(--safe-bottom)) 12px;
+  }
+
+  .stargate-transport-controls {
+    gap: 12px;
+  }
+
+  .stargate-transport-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .stargate-play-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .stargate-chapter {
+    font-size: 11px;
+  }
+
+  .stargate-time {
+    font-size: 11px;
+  }
+
+  .stargate-skip-btn {
+    font-size: 10px;
+  }
+
+  .stargate-chapter-overlay {
+    font-size: 17px;
+    padding: 8px 18px;
+  }
+}

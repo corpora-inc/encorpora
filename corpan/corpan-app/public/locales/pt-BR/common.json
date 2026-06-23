@@ -29,7 +29,32 @@
     "gu": "Guzerate",
     "ur": "Urdu",
     "pa-Guru": "Punjabi (Gurmuqui)",
-    "pa-Arab": "Punjabi (Shahmukhi)"
+    "pa-Arab": "Punjabi (Shahmukhi)",
+    "he": "Hebraico",
+    "sv": "Sueco",
+    "fi": "Finlandês",
+    "nl": "Holandês",
+    "sw": "Suaíli",
+    "no": "Norueguês",
+    "da": "Dinamarquês",
+    "el": "Grego",
+    "ms": "Malaio",
+    "ne": "Nepalês",
+    "pt-PT": "Português (Europeu)",
+    "hr": "Croata",
+    "sr": "Sérvio",
+    "uk": "Ucraniano",
+    "bg": "Búlgaro",
+    "ro": "Romeno",
+    "ca": "Catalão",
+    "yue-Hant-HK": "Cantonês (tradicional)",
+    "cs": "Tcheco",
+    "lt": "Lituano",
+    "sk": "Eslovaco",
+    "sl": "Esloveno",
+    "jv": "Javanês",
+    "su": "Sundanês",
+    "tl": "Tagalo"
   },
   "categories": {
     "travel": "Viagem",
@@ -72,42 +97,245 @@
     "extra-large": "Muito grande",
     "testTts": "Teste suas configurações de TTS clicando nos botões abaixo:",
     "showRomanization": "Mostrar romanização",
-    "scrollNavigation": "Navegação por rolagem"
+    "scrollNavigation": "Navegação por rolagem",
+    "packs": "Pacotes",
+    "stacks": "Conjuntos",
+    "theme": "Tema",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
+    "themeSystem": "Sistema",
+    "phrasePacks": {
+      "header": "Pacotes de frases",
+      "baseCorpusName": "Corpus base",
+      "emptyHint": "Adicione pacotes na aba Pacotes.",
+      "browseAll": "Explorar pacotes",
+      "searchPlaceholder": "Buscar pacotes…",
+      "filter": {
+        "all": "Todos",
+        "active": "Ativos",
+        "inactive": "Inativos"
+      },
+      "selectAllVisible": "Selecionar tudo",
+      "deselectAllVisible": "Limpar",
+      "activateGroup": "Ativar todos",
+      "deactivateGroup": "Desativar todos",
+      "uncategorized": "Outros",
+      "noMatches": "Sem resultados.",
+      "noFiltered": "Nada por aqui agora.",
+      "stackTotalPhrases": "~{{count}} frases correspondem",
+      "stackTotalNudge": "Adicione pacotes ou amplie os níveis para mais variedade.",
+      "activeCount": "{{active}} de {{total}} ativos",
+      "baseCorpusSubtitle": "{{n}} frases"
+    },
+    "sendAnonUsage": "Enviar dados de uso anônimos",
+    "sendAnonUsageHint": "Anônimos e limitados à sessão. Sem contas, sem IDs do dispositivo, sem armazenamento de IP. Desative quando quiser.",
+    "readPrivacyPromise": "Ler nossa Promessa de Privacidade",
+    "showStreak": "Mostrar sequência de leitura",
+    "showStreakHint": "Uma pequena contagem de dias no cabeçalho. Apenas no aparelho, sem lembretes ou notificações.",
+    "primaryLanguage": "Idioma principal (interface)",
+    "home": "Início",
+    "developer": "Desenvolvedor"
   },
   "onboarding": {
-    "welcome": "Bem-vindo",
-    "makePrimaryLanguage": "Definir português como idioma principal",
-    "canChangeLater": "Não se preocupe, você poderá alterar isso depois.",
+    "welcomePact": {
+      "title": "Corpán evolui",
+      "subtitle": "Você chegou cedo",
+      "bleedingEdgeTitle": "Vanguarda, de propósito",
+      "bleedingEdgeDesc": "O Corpán traz nova IA, reconhecimento de fala, vozes e mundos imersivos para o seu dispositivo, com aprendizado privado e pensado para funcionar primeiro offline. Lançamos tecnologia enquanto ela ainda está crua, então ela pode se comportar de modo estranho, rodar devagar ou ser mais do que seu dispositivo consegue aguentar. Em troca, você recebe novas formas de aprender assim que elas se tornam possíveis.",
+      "yourLangTitle": "Não falamos todos os idiomas que oferecemos",
+      "yourLangDesc": "Criamos para muitos idiomas porque os estudantes merecem ferramentas melhores, não porque sabemos todos eles. Quando erramos algo, esperamos que falantes nos ajudem a corrigir.",
+      "plea": "Tem uma ideia, uma correção ou uma experiência de aprendizado ousada que gostaria de ver? Conte para nós. Lemos cada mensagem e pensamos profundamente no que ela pode abrir para a Corpán e para o aprendizado de idiomas.",
+      "emailCta": "Mandar e-mail",
+      "githubCta": "Abrir uma issue no GitHub",
+      "join": "Quer ajudar a levar a Corpán para o mundo? Estamos sempre procurando colaboradores, tradutores e embaixadores locais. Venha falar com a gente.",
+      "pact": "Toque abaixo para começar a aprender e crescer com a gente. 🤝",
+      "cta": "Tô dentro — vamos nessa"
+    },
     "pickLanguagesToLearn": "Escolha os idiomas que deseja aprender",
     "textToSpeechSetup": "Configuração de voz (TTS)",
-    "ttsPoorQualityNote": "Se o áudio estiver com má qualidade, acesse as configurações de TTS do seu dispositivo e instale vozes de alta qualidade.",
-    "howToSetupTtsOn": "Como configurar o TTS em",
-    "welcomeTitle": "Bem-vindo à família Corpán!",
-    "welcomeBody": "Corpán é um app de código aberto feito por uma equipe bem pequena, não por uma grande empresa. Levamos idiomas e educação a sério e ainda estamos no começo, então você pode ver cantos rústicos, recursos faltando ou idiomas ainda não disponíveis. Se algo não funcionar bem, fale com a gente pelo GitHub ou por e-mail. Seu feedback nos ajuda a lançar atualizações frequentes e tornar o aprendizado de idiomas melhor para todo mundo.",
-    "welcomeVisit": "Visite encorpora.io",
-    "linkCopied": "Link copiado! Abra no seu navegador:",
     "reconfigureStack": "Reconfigurar perfil",
-    "openVoiceSettings": "Abrir configurações de voz",
+    "openVoiceSettings": "Abrir Ajustes",
     "openTTSSetup": "Abrir configurações de TTS",
-    "welcomeFollowUp": "Obrigado por se juntar a nós — te vemos na comunidade!",
-    "learningStepTitle": "Aprender",
-    "tts": "Texto para fala",
     "languageOrderTipTitle": "Dica",
-    "languageOrderTipBody": "O idioma de baixo vira o idioma do app. Arraste para mudar quando quiser.",
+    "languageOrderTipBody": "O idioma no fim da lista é o idioma da interface do app. Para mudar o idioma da interface, arraste outro idioma para o fim.",
     "ttsOsTipTitle": "Dica",
     "ttsOsTipAndroid": "Para melhores resultados, use o TTS do Google. O Samsung TTS não funciona no Corpán.",
-    "ttsOsTipIOS": "Em Ajustes → Acessibilidade, encontre Conteúdo Falado e baixe vozes. Nota: a Apple não fornece vozes para todos os idiomas. Se atualizar não ajudar, solicite suporte pelo app Feedback da Apple.",
-    "ttsOsTipMac": "Em Ajustes do Sistema → Acessibilidade, encontre Conteúdo Falado e baixe vozes. Nota: a Apple não fornece vozes para todos os idiomas. Se atualizar não ajudar, solicite suporte pelo app Feedback da Apple.",
+    "ttsOsTipIOS": "Seu dispositivo possui vozes Premium gratuitas integradas — a Apple apenas as deixa desativadas. Ative-as: Ajustes → Acessibilidade → Conteúdo Falado → Vozes → seu idioma, então toque no ícone de download para uma voz Premium ou Aprimorada. Volte e ela aparecerá aqui automaticamente. (A Apple ainda não cobre todos os idiomas.)",
+    "ttsOsTipMac": "Seu Mac possui vozes Premium gratuitas integradas — a Apple apenas as deixa desativadas. Ative-as: Ajustes do Sistema → Acessibilidade → Conteúdo Falado → Voz do Sistema → Gerenciar Vozes, então baixe uma voz Premium ou Aprimorada. Volte e ela aparecerá aqui automaticamente. (A Apple ainda não cobre todos os idiomas.)",
     "ttsOsTipWindows": "Em Configurações, instale vozes de fala e volte aqui.",
     "ttsOsTipOther": "Nas configurações do dispositivo, instale vozes de fala e volte aqui.",
     "installVoicesAndroid": "Instalar vozes",
-    "learning": "Aprendendo idiomas",
-    "ttsStepTitle": "Texto para fala",
-    "socials": "Seguir e conectar",
-    "socialsStepTitle": "Redes sociais",
     "noVoices": "Sem vozes",
     "noVoicesHint": "Instale vozes para ativar este idioma.",
-    "sendAppleFeedback": "Enviar feedback à Apple"
+    "sendAppleFeedback": "Enviar feedback à Apple",
+    "ttsGoogleInstalled": "Google TTS instalado",
+    "ttsGoogleMissing": "Google TTS não instalado",
+    "ttsSetDefault": "Definir como padrão",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech está desativado",
+        "detail": "Levamos você direto à página do sistema para reativá-lo. Um toque e está pronto.",
+        "button": "Ativar Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "Instale o Google Text-to-Speech",
+        "detail": "O mecanismo de voz gratuito do Google desbloqueia vozes de alta qualidade para a maioria dos idiomas que Corpán suporta — a maioria dos telefones simplesmente não vem com ele. Vamos adicioná-lo:",
+        "button": "Instalar pela Play Store"
+      },
+      "noEngine": {
+        "heading": "Nenhum mecanismo de voz encontrado",
+        "detail": "Seu dispositivo não tem nenhum mecanismo TTS instalado. Instale o Google Text-to-Speech para continuar.",
+        "button": "Instalar Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "Os dados de voz precisam ser baixados",
+        "detail": "Seu mecanismo está pronto, mas os dados de voz para seus idiomas ainda não foram baixados.",
+        "button": "Baixar vozes"
+      },
+      "engineHung": {
+        "heading": "O mecanismo de voz não está respondendo",
+        "detail": "Às vezes o serviço TTS do sistema trava. Toque abaixo para tentar novamente — geralmente resolve.",
+        "button": "Tentar novamente"
+      },
+      "probing": "Configurando vozes…",
+      "working": "Trabalhando…",
+      "skipForNow": "Pular — configurar depois nos Ajustes",
+      "openTtsSettings": "Abrir ajustes de TTS",
+      "readyHeading": "Vozes prontas",
+      "readyEngine": "Usando {{engine}}",
+      "installVoicesForLang": "Baixar vozes para {{lang}}",
+      "diagnostics": {
+        "toggle": "Diagnóstico",
+        "copyButton": "Copiar",
+        "copied": "Copiado"
+      },
+      "currentState": "Estado atual: {{state}}",
+      "state": {
+        "enabled": "Ativado",
+        "default": "Ativado (padrão do sistema)",
+        "disabled": "Desativado",
+        "disabledUser": "Desativado pelo usuário (ou pelo Device Care da Samsung)",
+        "disabledUntilUsed": "Desativado até o uso",
+        "notInstalled": "Não instalado"
+      }
+    },
+    "phrasePacks": {
+      "hero": "Escolha seus tópicos",
+      "loading": "Carregando…",
+      "selectAll": "Selecionar tudo ({{count}})",
+      "clearAll": "Limpar",
+      "subscriptionNudge": "Alguns pacotes estão incluídos no Corpán Plus — você pode fazer upgrade depois em Configurações → Pacotes.",
+      "entryCount": "{{n}} frases",
+      "paid": "Pago",
+      "emptyHero": "Ainda não há pacotes.",
+      "emptySub": "Volte em breve."
+    },
+    "appleNoVoiceTitle": "A Apple ainda não oferece uma voz em {{lang}}",
+    "appleNoVoiceBody": "Um recado rápido para a equipe de acessibilidade da Apple ajuda a reforçar esse pedido. Enquanto isso, {{lang}} funciona nativamente no Android.",
+    "back": "Voltar",
+    "continue": "Continuar",
+    "calibrate": {
+      "childAgeTitle": "Qual a idade do leitor?",
+      "childTeen": "13–17",
+      "childUnder13": "Menos de 13",
+      "enjoyComfortable": "Muito bem",
+      "enjoyImproving": "Ainda estou aprendendo a ler",
+      "enjoyJustStarting": "Começando agora — sou novo na leitura",
+      "enjoyNative": "Fluentemente — é meu idioma",
+      "enjoyTitle": "Quão bem você lê {{lang}}?",
+      "learnAdvanced": "Sou bastante avançado",
+      "learnLittle": "Um pouco",
+      "learnNever": "Nunca — iniciante total",
+      "learnTitle": "Você já estudou {{lang}} antes?"
+    },
+    "confident": {
+      "addBetter": "Desbloqueie uma voz mais rica",
+      "andMore": "+{{count}} mais",
+      "chooseVoices": "Escolher vozes",
+      "noVoiceFor": "Nenhuma voz de {{lang}} ainda — vamos adicionar uma para que Corpán possa ler em voz alta.",
+      "voiceCountMany": "{{count}} vozes prontas",
+      "voiceCountOne": "1 voz pronta",
+      "yourVoiceFor": "Sua voz de {{lang}}"
+    },
+    "fork": {
+      "child": {
+        "desc": "Livros e jogos suaves e divertidos para aprendizes mais jovens.",
+        "label": "Configurar para uma criança"
+      },
+      "enjoy": {
+        "desc": "Livros, histórias, jogos, exercícios e mais — tudo no seu idioma.",
+        "label": "Aproveite Corpán em {{lang}}"
+      },
+      "learn": {
+        "desc": "Histórias, jogos, exercícios e áudio em um novo idioma.",
+        "label": "Aprender um idioma"
+      },
+      "polyglot": {
+        "desc": "Empilhe vários idiomas e explore tudo.",
+        "label": "Explorar muitos idiomas"
+      },
+      "subtitle": "Vamos configurar tudo para você. Você pode mudar depois.",
+      "title": "O que te traz ao Corpán?"
+    },
+    "interests": {
+      "audio": "Ouvir áudio",
+      "audioDesc": "Audiolivros, narração e rádio.",
+      "games": "Jogar",
+      "gamesDesc": "Aprenda através de desafios divertidos.",
+      "read": "Ler histórias e livros",
+      "readDesc": "Mergulhe em leituras no seu idioma.",
+      "speak": "Praticar fala",
+      "speakDesc": "Diga frases em voz alta e receba feedback.",
+      "study": "Estudar e exercitar",
+      "studyDesc": "Construa vocabulário com prática focada.",
+      "subtitle": "Escolha o que te agrada — sugeriremos experiências correspondentes. Opcional.",
+      "title": "O que você quer fazer?",
+      "wild": "Explorar coisas inusitadas",
+      "wildDesc": "Experiências surpreendentes e experimentais."
+    },
+    "ttsIntro": "Corpán lê em voz alta. Toque em uma voz para ouvi-la na sua velocidade.",
+    "voiceGuide": {
+      "intro": "Seu dispositivo possui vozes ricas e naturais integradas — gratuitas e muito melhores que as padrão. O fabricante apenas as deixa desativadas. Vamos ativá-las; leva apenas alguns toques:",
+      "macStep1": "Abra Ajustes do Sistema.",
+      "macStep2": "Vá para Acessibilidade → Conteúdo Falado.",
+      "macStep3": "Em Voz do Sistema, abra Gerenciar Vozes.",
+      "macStep4": "Baixe uma voz Premium ou Aprimorada para o seu idioma.",
+      "macStep5": "Volte para Corpán — ela aparecerá aqui automaticamente.",
+      "step1": "Toque em Abrir Ajustes abaixo.",
+      "step2": "Vá para Acessibilidade → Conteúdo Falado → Vozes.",
+      "step3": "Toque no seu idioma.",
+      "step4": "Baixe uma voz Premium ou Aprimorada.",
+      "step5": "Volte para Corpán — ela aparecerá aqui automaticamente.",
+      "title": "Desbloqueie as melhores vozes do seu dispositivo"
+    },
+    "voicePreviewAria": "Pré-visualizar {{name}}",
+    "voicePreviewSelected": "Pré-visualização selecionada",
+    "voiceRecommended": "Recomendado",
+    "voiceSelectedCount": "{{count}} de {{total}}",
+    "whatToStart": {
+      "title": "Por onde começamos?",
+      "subtitle": "Escolha uma para começar; o resto está a um toque.",
+      "read": {
+        "label": "Ler",
+        "desc": "Mergulhe em histórias e livros."
+      },
+      "study": {
+        "label": "Estudar",
+        "desc": "Amplie seu vocabulário com prática focada."
+      },
+      "playMusic": {
+        "label": "Tocar música",
+        "desc": "Experimente seu idioma nas pickups."
+      },
+      "playGames": {
+        "label": "Jogar",
+        "desc": "Aprenda com desafios divertidos."
+      },
+      "surprise": {
+        "label": "Me surpreenda!",
+        "desc": "Me leve para um lugar divertido."
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -129,6 +357,16 @@
       "cta": "Visitar",
       "title": "encorpora.io",
       "desc": "Site principal com docs e comunidade."
+    },
+    "instagram": {
+      "cta": "Seguir",
+      "desc": "@corpanapp",
+      "title": "Siga no Instagram"
+    },
+    "share": {
+      "title": "Compartilhar Corpán",
+      "text": "Aprenda idiomas com o Corpán.",
+      "copied": "Link copiado!"
     }
   },
   "common": {
@@ -136,7 +374,9 @@
     "instantPolyglotPractice": "Prática instantânea de poliglota",
     "cancel": "Cancelar",
     "delete": "Excluir",
-    "create": "Criar"
+    "create": "Criar",
+    "dismiss": "Dispensar",
+    "skip": "Pular"
   },
   "dialects": {
     "en": "Inglês",
@@ -234,7 +474,28 @@
     "ur-PK": "Urdu (Paquistão)",
     "ta": "Tâmil",
     "te": "Telugu",
-    "kn": "Kannada"
+    "kn": "Kannada",
+    "sv": "Sueco",
+    "no": "Norueguês",
+    "da": "Dinamarquês",
+    "nl": "Holandês",
+    "ms": "Malaio",
+    "fi": "Finlandês",
+    "sw": "Suaíli",
+    "el": "Grego",
+    "he": "Hebraico",
+    "ne": "Nepalês",
+    "hr": "Croata",
+    "sr": "Sérvio",
+    "uk": "Ucraniano",
+    "bg": "Búlgaro",
+    "ro": "Romeno",
+    "ca": "Catalão",
+    "yue-Hant-HK": "Cantonês (tradicional)",
+    "cs": "Tcheco",
+    "lt": "Lituano",
+    "sk": "Eslovaco",
+    "sl": "Esloveno"
   },
   "footer": {
     "appVersion": "Versão do aplicativo",
@@ -256,28 +517,29 @@
     "rename": "Renomear",
     "renameLabel": "Novo nome para pilha",
     "selectAria": "Selecionar um perfil",
-    "selectPlaceholder": "Escolher…"
+    "selectPlaceholder": "Escolher…",
+    "introTipTitle": "Pilhas",
+    "introTipBody": "As pilhas guardam diferentes configurações de aprendizado — uma para viagem, outra para trabalho. Toque em + para criar uma nova pilha."
   },
   "rating": {
-    "title": "Curtindo o Corpán?",
-    "description": "O Corpán é feito por uma pequena equipe open source que está só começando. Se para você vale 5 estrelas, uma avaliação rápida ajuda demais.",
-    "rateNow": "⭐ Avaliar com 5 estrelas",
-    "remindLater": "Talvez mais tarde",
-    "noThanks": "Não, obrigado",
+    "title": "Você ama o Corpán?",
+    "description": "Se você ama o Corpán, dê 5 estrelas. Nas lojas de apps, qualquer coisa abaixo de 5 estrelas prejudica o Corpán.",
+    "rateNow": "⭐ Dê 5 estrelas",
     "close": "Fechar",
-    "feedbackHint": "Ainda não é 5 estrelas? Toque em “Enviar feedback” e conte o que a gente pode melhorar.",
-    "feedbackButton": "Enviar feedback no GitHub"
+    "feedbackHint": "Se ele ainda não é um app de 5 estrelas para você, mande um e-mail ou abra uma issue no GitHub e diga o que corrigir. Queremos deixar melhor.",
+    "emailButton": "Enviar e-mail",
+    "githubButton": "Issue no GitHub"
   },
   "packs": {
     "title": "Pacotes",
-    "available": "Packs disponíveis",
-    "emptyAvailable": "Ainda não há packs.",
-    "installed": "Packs instalados",
-    "emptyInstalled": "Nenhum pack instalado.",
+    "available": "Disponível",
+    "emptyAvailable": "Nada disponível ainda.",
+    "installed": "Instalado",
+    "emptyInstalled": "Nada instalado ainda.",
     "get": "Obter",
     "open": "Abrir",
     "remove": "Remover",
-    "version": "Versão {{version}}",
+    "version": "v{{version}}",
     "refresh": "Atualizar",
     "free": "Grátis",
     "install": "Instalar",
@@ -291,7 +553,286 @@
     "devUnlockTitle": "Packs de desenvolvedor",
     "devUnlockHint": "Toque 7 vezes para desbloquear instalações por manifesto.",
     "devUnlockToast": "Packs de desenvolvedor desbloqueados.",
-    "devIntro": "Experimente um Pack da Corpán ou crie o seu.",
-    "devLink": "Saiba mais no Free2z"
+    "devIntro": "Teste um Pack da Corpán ou crie o seu.",
+    "devLink": "Saiba mais no Free2z",
+    "new": "Novo",
+    "offline": "Sem conexão",
+    "purchasing": "Comprando...",
+    "buy": "Comprar {{price}}",
+    "premium": "Premium",
+    "availableOnMobile": "Disponível no iOS e Android",
+    "checking": "Verificando…",
+    "phrasePack": {
+      "sectionTitle": "Pacotes de frases",
+      "offlineEmpty": "Você está offline. Conecte-se para explorar.",
+      "searchPlaceholder": "Buscar…",
+      "noMatches": "Sem resultados.",
+      "filter": {
+        "all": "Todos",
+        "available": "Disponível",
+        "free": "Grátis",
+        "paid": "Pago",
+        "installed": "Instalado"
+      },
+      "activeInStack": "Ativo",
+      "activeBadge": "Ativo",
+      "subBadge": "Assinatura",
+      "paid": "Pago",
+      "free": "Grátis",
+      "unlockSub": "Desbloquear com Corpán Plus",
+      "entryCount": "{{n}} frases",
+      "allInstalled": {
+        "title": "Você tem todos os pacotes de frases.",
+        "subtitle": "Lançamos novos pacotes com frequência — volte quando quiser.",
+        "manageCta": "Gerenciar em Stacks"
+      },
+      "filterEmpty": {
+        "installed": "Nada instalado ainda.",
+        "cta": "Mostrar todos"
+      },
+      "showAll": "Mostrar todos ({{count}})",
+      "collapseList": "Mostrar menos",
+      "openDrawer": "Explorar pacotes de frases ({{count}})",
+      "openDrawerLabel": "Explorar pacotes de frases",
+      "inactiveBadge": "Inativo",
+      "moreActionsLabel": "Mais ações",
+      "install": "Instalar",
+      "downloadAll": "Baixar tudo",
+      "downloadAllSummary": "{{count}} disponíveis · ~{{size}} MB",
+      "installingBatch": "Instalando {{current}} de {{total}}…",
+      "batchFailed": "{{count}} não puderam ser instalados — toque para tentar novamente"
+    },
+    "unlockWithPlus": "Desbloquear com Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Incluído com Plus",
+    "installFailedTitle": "Falha na instalação",
+    "installStuckDetail": "Sem progresso por um tempo. Verifique sua conexão e tente novamente.",
+    "installStuckTitle": "Download travado",
+    "openPack": "Abrir {{name}}",
+    "recent": "Recentes",
+    "updateAll": "Atualizar tudo ({{count}})",
+    "updateAvailable": "Atualização disponível"
+  },
+  "subscription": {
+    "startTrialPeriod": "Iniciar teste gratuito de {{period}}",
+    "trialFree": "Grátis por {{period}}",
+    "trialThenCancel": "Depois {{price}}/{{period}} · cancele quando quiser. Sem cobrança hoje.",
+    "title": "Desbloqueie o Corpán Plus",
+    "description": "Acesso ilimitado a todos os recursos, idiomas, pacotes e atualizações.",
+    "annual": "Anual",
+    "monthly": "Mensal",
+    "subscribe": "Assinar",
+    "subscribing": "Assinando...",
+    "subscribed": "Corpán Plus está ativo",
+    "subscribedDescription": "Plano {{plan}} ativo. Tudo está desbloqueado.",
+    "manage": "Gerenciar assinatura",
+    "termsOfUse": "Termos de uso",
+    "privacyPolicy": "Política de privacidade",
+    "autoRenewNotice": "As assinaturas renovam automaticamente. Cancele quando quiser na sua conta {{store}}.",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play",
+    "pendingHeading": "Aguardando aprovação",
+    "pendingDetail": "Sua assinatura está aguardando aprovação (Solicitar compra ou verificação bancária). Ela será ativada automaticamente assim que for aprovada.",
+    "storeUnreachable": "Não foi possível acessar a App Store agora.",
+    "tryAgain": "Tentar novamente",
+    "affiliateCodeLabel": "Código de afiliado",
+    "affiliateCodePlaceholder": "Opcional",
+    "affiliateInvalidFormat": "Use letras, números, hífens ou sublinhados.",
+    "affiliateChecking": "Verificando código...",
+    "affiliateApplied": "O código será vinculado a esta assinatura.",
+    "affiliateCodeHelp": "Se alguém te enviou para cá, insira o código antes de assinar.",
+    "introPriceHeadline": "{{introPrice}} por {{period}}",
+    "introPriceThen": ", depois {{price}}/{{period}}",
+    "perMonth": "mês",
+    "perYear": "ano",
+    "startFreeTrial": "Iniciar Teste Gratuito",
+    "trialFirstCharge": "{{period}}: primeira cobrança",
+    "trialHeadline": "{{period}} grátis",
+    "trialReassurance": "Nenhum pagamento agora · cancele a qualquer momento",
+    "trialThenPrice": ", depois {{price}}/{{period}}",
+    "trialToday": "Hoje: começar",
+    "rate": "Avaliar Corpán"
+  },
+  "restore": {
+    "button": "Restaurar compras",
+    "restoring": "Restaurando...",
+    "noPurchases": "Nenhuma compra anterior encontrada.",
+    "success": "{{count}} compra(s) restaurada(s).",
+    "error": "Falha ao restaurar compras."
+  },
+  "catalogPaywall": {
+    "allLanguages": "Todos os {{count}} idiomas",
+    "thisBook": "Este livro",
+    "blurbAll": "Cada narração, agora e no futuro. Seu para sempre.",
+    "blurbOne": "Seu para sempre.",
+    "buyWithPrice": "Comprar — {{price}}",
+    "orUnlockEverything": "ou desbloquear tudo",
+    "subMonthly": "Mensal",
+    "subMonthlyPeriod": "por mês",
+    "subYearly": "Anual",
+    "subYearlyPeriod": "por ano · melhor opção",
+    "errorHeading": "Não conseguimos contatar a App Store agora.",
+    "tryAgain": "Tentar novamente",
+    "pendingHeading": "Aguardando aprovação",
+    "pendingDetail": "Sua compra está aguardando aprovação (Ask to Buy ou verificação bancária). Será ativada automaticamente após aprovação.",
+    "noProductsError": "A App Store não retornou produtos. Geralmente resolve em alguns segundos — tente novamente."
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "Falha na reprodução de voz",
+    "playbackFailedDetail": "Abra os ajustes de TTS do seu dispositivo para corrigir.",
+    "openSettingsAction": "Abrir ajustes de TTS"
+  },
+  "discoverPacks": {
+    "title": "Deixe o Corpán com a sua cara",
+    "subtitle": "Adicione leitores imersivos, jogos e ferramentas — integrados ao Corpán para aprofundar sua prática.",
+    "maybeLater": "Talvez mais tarde",
+    "empty": "Mais pacotes estão a caminho — explore o Corpán enquanto isso.",
+    "offlineEmpty": "Conecte-se à internet para descobrir pacotes — ou pule por enquanto."
+  },
+  "paywall": {
+    "title": "Desbloqueie o Corpán Plus",
+    "thanksTitle": "Corpán Plus está ativo",
+    "thanksBody": "Tudo está desbloqueado.",
+    "bookSubhead": "Continue {{title}} e desbloqueie todos os recursos.",
+    "subhead": "Acesso ilimitado a todos os recursos, idiomas e atualizações. Sem anúncios. Seus dados ficam no seu dispositivo.",
+    "pitch": "Livros, pacotes, jogos, ferramentas de fala e novas experiências de aprendizado estão todos incluídos.",
+    "maybeLater": "Talvez mais tarde",
+    "continue": "Continuar",
+    "dismiss": "Fechar"
+  },
+  "streak": {
+    "title": "Sequência de {{count}} dias"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "Leia junto com audiolivros narrados — com calma e destaque palavra por palavra.",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "Domine caracteres mandarim, traço por traço.",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "Ouça uma frase, direcione para combiná-la — aprenda jogando.",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "Construa frases peça por peça em um jogo rápido.",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "Folheie frases em seus idiomas — prática rápida e focada.",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "Diga frases em voz alta e receba feedback de pronúncia.",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "Os mesmos audiolivros em 3D imersivo — as palavras fluem pelo espaço enquanto são lidas.",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "Sintonize rádios ao vivo de todo o mundo.",
+      "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "Tutomaton",
+      "blurb": "Um tutor paciente, direto no seu aparelho, para todos os idiomas que você está aprendendo"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "Uma cidade viva que transforma cada encontro em uma lição."
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "Sampleie o idioma que você está aprendendo. Faça scratch até grudar."
+    }
+  },
+  "home": {
+    "continueLearning": "Continuar aprendendo",
+    "experiences": "Experiências",
+    "forYou": "Para você",
+    "get": "Obter",
+    "installing": "Instalando…",
+    "library": "Biblioteca",
+    "like": "Curtir",
+    "notForMe": "Não é para mim",
+    "open": "Abrir",
+    "openPhrases": "Abrir frases",
+    "phraseFlipDesc": "Folheie frases em seus idiomas",
+    "plusChip": "Corpán Plus — desbloqueie tudo",
+    "recommended": "Recomendado",
+    "showAnother": "Mostrar outro",
+    "tryIt": "Experimentar",
+    "packUpdates": "Você tem atualizações de pacotes",
+    "updateAll": "Atualizar tudo"
+  },
+  "offline": {
+    "cachedSubtitle": "Mostrando seus últimos resultados em cache.",
+    "catalogSubtitle": "Reconecte para descobrir novos pacotes. Seus pacotes instalados ainda funcionam.",
+    "installNeedsInternet": "Reconecte para baixar.",
+    "onboardingBanner": "Offline — as seleções serão instaladas ao reconectar.",
+    "packCatalogSubtitle": "Seus pacotes instalados ainda funcionam. Reconecte para navegar por mais.",
+    "packCatalogTitle": "Catálogo de pacotes precisa de internet",
+    "phrasePacksOnboardingSubtitle": "Você pode escolher pacotes de frases mais tarde em Ajustes → Pacotes, após reconectar.",
+    "phrasePacksSubtitle": "Seus pacotes de frases instalados ainda funcionam. Reconecte para navegar por novos.",
+    "phrasePacksTitle": "Catálogo de pacotes de frases precisa de internet",
+    "purchaseNeedsInternet": "Reconecte para comprar.",
+    "restoreSubtitle": "Reconecte para restaurar compras.",
+    "subscriptionSubtitle": "Reconecte para assinar. Seus pacotes instalados e frases incluídas ainda funcionam.",
+    "subscriptionTitle": "Assinaturas precisam de internet",
+    "title": "Sem internet",
+    "voiceDownloadSubtitle": "As vozes já no seu dispositivo ainda funcionam. Reconecte para instalar mais.",
+    "voiceDownloadTitle": "Download de voz precisa de internet"
+  },
+  "quickSettings": {
+    "fullSettings": "Ajustes completos",
+    "title": "Ajustes rápidos"
+  },
+  "tour": {
+    "maybeLater": "Talvez mais tarde",
+    "progress": "{{n}} de {{total}}"
+  },
+  "update": {
+    "availableLine": "Atualização disponível → {{version}}",
+    "close": "Fechar",
+    "description": "Uma versão mais recente do Corpán está disponível na sua loja de aplicativos.",
+    "remindLater": "Lembrar mais tarde",
+    "skipThisVersion": "Pular esta versão",
+    "title": "Atualização disponível",
+    "update": "Atualizar",
+    "updateNow": "Atualizar agora",
+    "versionLine": "A versão {{version}} está pronta para ser instalada."
+  },
+  "streakBadge": {
+    "label": "Sequência de {{days}} dias"
+  },
+  "dailyLock": {
+    "title": "Seu {{count}} {{unit}} de hoje",
+    "streakActive": "Sequência de {{days}} dias — volte amanhã para continuar.",
+    "streakStart": "Volte amanhã para continuar.",
+    "resetIn": "Reinicia em {{time}}",
+    "cta": "Continue agora com Corpán Plus",
+    "dismiss": "Talvez mais tarde",
+    "closeAria": "Dispensar",
+    "countdownHm": "{{h}}h {{m}}m",
+    "countdownM": "{{m}}m",
+    "countdownSoon": "a qualquer momento"
+  },
+  "code": {
+    "attributedUnverified": "Código será vinculado à sua assinatura.",
+    "checkFailed": "Não foi possível verificar",
+    "checking": "Verificando código…",
+    "creditedTo": "creditado a {{partner}}",
+    "fieldLabel": "Código de oferta ou afiliado",
+    "help": "Tem um código? Insira-o para aplicar sua oferta.",
+    "redeemUnavailable": "Não foi possível abrir a tela de resgate. Tente novamente.",
+    "redeemWithApple": "Resgatar com Apple",
+    "redeeming": "Abrindo resgate…",
+    "retry": "Tentar novamente",
+    "subscribeWithDiscount": "Assinar ({{discount}})",
+    "redeemCode": "Resgatar código",
+    "notApplied": "Esse código não dá nenhum desconto."
   }
 }

@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Temperate Grassland",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Temperate Grassland",
+      "text_markdown": "The Temperate Grassland"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Where Temperate Grasslands Grow",
+      "text_markdown": "Where Temperate Grasslands Grow"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welcome to the temperate grassland.",
+      "text_markdown": "Welcome to the temperate grassland.",
+      "tts": {
+        "text": "Welcome to the temperate grassland.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is one of the great biomes of the world.",
+      "text_markdown": "This is one of the great biomes of the world.",
+      "tts": {
+        "text": "This is one of the great biomes of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "text_markdown": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+      "tts": {
+        "text": "A biome is a part of the Earth with its own kind of weather, plants, and animals.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The temperate grassland is a wide land of grass with very few trees.",
+      "text_markdown": "The temperate grassland is a wide land of grass with very few trees.",
+      "tts": {
+        "text": "The temperate grassland is a wide land of grass with very few trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It lies in the middle parts of the world, between the cold north and the warm tropics.",
+      "text_markdown": "It lies in the middle parts of the world, between the cold north and the warm tropics.",
+      "tts": {
+        "text": "It lies in the middle parts of the world, between the cold north and the warm tropics.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unlike the tropical savanna, this land has cold winters and warm summers.",
+      "text_markdown": "Unlike the tropical savanna, this land has cold winters and warm summers.",
+      "tts": {
+        "text": "Unlike the tropical savanna, this land has cold winters and warm summers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The biggest temperate grasslands in the world are in North America and in Eurasia.",
+      "text_markdown": "The biggest temperate grasslands in the world are in North America and in Eurasia.",
+      "tts": {
+        "text": "The biggest temperate grasslands in the world are in North America and in Eurasia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In North America, the great central plains are called the prairies.",
+      "text_markdown": "In North America, the great central plains are called the prairies.",
+      "tts": {
+        "text": "In North America, the great central plains are called the prairies.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Russia, Ukraine, Kazakhstan, and Mongolia, they are called the steppes.",
+      "text_markdown": "In Russia, Ukraine, Kazakhstan, and Mongolia, they are called the steppes.",
+      "tts": {
+        "text": "In Russia, Ukraine, Kazakhstan, and Mongolia, they are called the steppes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Argentina and Uruguay, they are called the pampas.",
+      "text_markdown": "In Argentina and Uruguay, they are called the pampas.",
+      "tts": {
+        "text": "In Argentina and Uruguay, they are called the pampas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are smaller temperate grasslands in southern Africa and in parts of Australia.",
+      "text_markdown": "There are smaller temperate grasslands in southern Africa and in parts of Australia.",
+      "tts": {
+        "text": "There are smaller temperate grasslands in southern Africa and in parts of Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each of these grasslands grew up on its own.",
+      "text_markdown": "Each of these grasslands grew up on its own.",
+      "tts": {
+        "text": "Each of these grasslands grew up on its own.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "So the plants and animals are different in each part of the world.",
+      "text_markdown": "So the plants and animals are different in each part of the world.",
+      "tts": {
+        "text": "So the plants and animals are different in each part of the world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But they all share the same pattern.",
+      "text_markdown": "But they all share the same pattern.",
+      "tts": {
+        "text": "But they all share the same pattern.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A sea of grass, a great open sky, strong winds, and only a few trees along the rivers.",
+      "text_markdown": "A sea of grass, a great open sky, strong winds, and only a few trees along the rivers.",
+      "tts": {
+        "text": "A sea of grass, a great open sky, strong winds, and only a few trees along the rivers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When you stand on a temperate grassland, the wind is almost always blowing.",
+      "text_markdown": "When you stand on a temperate grassland, the wind is almost always blowing.",
+      "tts": {
+        "text": "When you stand on a temperate grassland, the wind is almost always blowing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grass moves like the surface of the sea.",
+      "text_markdown": "The grass moves like the surface of the sea.",
+      "tts": {
+        "text": "The grass moves like the surface of the sea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You can see for miles in every direction.",
+      "text_markdown": "You can see for miles in every direction.",
+      "tts": {
+        "text": "You can see for miles in every direction.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The sky feels twice as big as it does in any forest.",
+      "text_markdown": "The sky feels twice as big as it does in any forest.",
+      "tts": {
+        "text": "The sky feels twice as big as it does in any forest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer, the grass is tall and green.",
+      "text_markdown": "In the summer, the grass is tall and green.",
+      "tts": {
+        "text": "In the summer, the grass is tall and green.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, it turns golden brown.",
+      "text_markdown": "In the autumn, it turns golden brown.",
+      "tts": {
+        "text": "In the autumn, it turns golden brown.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the winter, it is brown and stiff under the snow.",
+      "text_markdown": "In the winter, it is brown and stiff under the snow.",
+      "tts": {
+        "text": "In the winter, it is brown and stiff under the snow.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the spring, it grows back fresh and bright.",
+      "text_markdown": "In the spring, it grows back fresh and bright.",
+      "tts": {
+        "text": "In the spring, it grows back fresh and bright.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the temperate grassland.",
+      "text_markdown": "That is the temperate grassland.",
+      "tts": {
+        "text": "That is the temperate grassland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Where Temperate Grasslands Grow",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A wide, windy world of grass, sky, and changing seasons.",
+      "text_markdown": "A wide, windy world of grass, sky, and changing seasons.",
+      "tts": {
+        "text": "A wide, windy world of grass, sky, and changing seasons.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Weather",
+      "text_markdown": "The Weather"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The weather in the temperate grassland is shaped by the open sky.",
+      "text_markdown": "The weather in the temperate grassland is shaped by the open sky.",
+      "tts": {
+        "text": "The weather in the temperate grassland is shaped by the open sky.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are very few trees and few hills to slow the wind.",
+      "text_markdown": "There are very few trees and few hills to slow the wind.",
+      "tts": {
+        "text": "There are very few trees and few hills to slow the wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are four seasons, and each one is strong.",
+      "text_markdown": "There are four seasons, and each one is strong.",
+      "tts": {
+        "text": "There are four seasons, and each one is strong.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The summers are hot and bright.",
+      "text_markdown": "The summers are hot and bright.",
+      "tts": {
+        "text": "The summers are hot and bright.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The sun beats down on the open grass, and the days are long.",
+      "text_markdown": "The sun beats down on the open grass, and the days are long.",
+      "tts": {
+        "text": "The sun beats down on the open grass, and the days are long.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In a single afternoon, a huge storm can roll in from the horizon.",
+      "text_markdown": "In a single afternoon, a huge storm can roll in from the horizon.",
+      "tts": {
+        "text": "In a single afternoon, a huge storm can roll in from the horizon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lightning flashes far away, and heavy rain falls all at once.",
+      "text_markdown": "Lightning flashes far away, and heavy rain falls all at once.",
+      "tts": {
+        "text": "Lightning flashes far away, and heavy rain falls all at once.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The winters are cold.",
+      "text_markdown": "The winters are cold.",
+      "tts": {
+        "text": "The winters are cold.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In some grasslands, the temperature can drop far below freezing for weeks at a time.",
+      "text_markdown": "In some grasslands, the temperature can drop far below freezing for weeks at a time.",
+      "tts": {
+        "text": "In some grasslands, the temperature can drop far below freezing for weeks at a time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Snow blows across the open land and gathers in long drifts.",
+      "text_markdown": "Snow blows across the open land and gathers in long drifts.",
+      "tts": {
+        "text": "Snow blows across the open land and gathers in long drifts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wind in winter is strong and sharp.",
+      "text_markdown": "The wind in winter is strong and sharp.",
+      "tts": {
+        "text": "The wind in winter is strong and sharp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the spring, the snow melts, and the rivers run high.",
+      "text_markdown": "In the spring, the snow melts, and the rivers run high.",
+      "tts": {
+        "text": "In the spring, the snow melts, and the rivers run high.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grass turns green almost overnight.",
+      "text_markdown": "The grass turns green almost overnight.",
+      "tts": {
+        "text": "The grass turns green almost overnight.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birds return from warmer lands and fill the air with sound.",
+      "text_markdown": "Birds return from warmer lands and fill the air with sound.",
+      "tts": {
+        "text": "Birds return from warmer lands and fill the air with sound.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the autumn, the grass goes golden, the wind grows cooler, and the herds move toward shelter.",
+      "text_markdown": "In the autumn, the grass goes golden, the wind grows cooler, and the herds move toward shelter.",
+      "tts": {
+        "text": "In the autumn, the grass goes golden, the wind grows cooler, and the herds move toward shelter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grassland gets just enough rain to feed the grass.",
+      "text_markdown": "The grassland gets just enough rain to feed the grass.",
+      "tts": {
+        "text": "The grassland gets just enough rain to feed the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is not enough rain to grow great forests, but it is plenty for the grass and the animals that need it.",
+      "text_markdown": "It is not enough rain to grow great forests, but it is plenty for the grass and the animals that need it.",
+      "tts": {
+        "text": "It is not enough rain to grow great forests, but it is plenty for the grass and the animals that need it.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Land and the Water",
+      "text_markdown": "The Land and the Water"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The land of the temperate grassland is mostly flat or gently rolling.",
+      "text_markdown": "The land of the temperate grassland is mostly flat or gently rolling.",
+      "tts": {
+        "text": "The land of the temperate grassland is mostly flat or gently rolling.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In some places, low hills rise out of the grass.",
+      "text_markdown": "In some places, low hills rise out of the grass.",
+      "tts": {
+        "text": "In some places, low hills rise out of the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In others, the land is so flat that you can see the horizon as a perfect straight line.",
+      "text_markdown": "In others, the land is so flat that you can see the horizon as a perfect straight line.",
+      "tts": {
+        "text": "In others, the land is so flat that you can see the horizon as a perfect straight line.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The soil here is some of the richest soil on Earth.",
+      "text_markdown": "The soil here is some of the richest soil on Earth.",
+      "tts": {
+        "text": "The soil here is some of the richest soil on Earth.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For thousands of years, grasses have grown, died, and rotted into the ground.",
+      "text_markdown": "For thousands of years, grasses have grown, died, and rotted into the ground.",
+      "tts": {
+        "text": "For thousands of years, grasses have grown, died, and rotted into the ground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This has made a thick, dark soil that is full of food for plants.",
+      "text_markdown": "This has made a thick, dark soil that is full of food for plants.",
+      "tts": {
+        "text": "This has made a thick, dark soil that is full of food for plants.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is why so many of these lands have been turned into great wheat and corn farms.",
+      "text_markdown": "That is why so many of these lands have been turned into great wheat and corn farms.",
+      "tts": {
+        "text": "That is why so many of these lands have been turned into great wheat and corn farms.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rivers wind through the grasslands in long, slow curves.",
+      "text_markdown": "Rivers wind through the grasslands in long, slow curves.",
+      "tts": {
+        "text": "Rivers wind through the grasslands in long, slow curves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The rivers carry water from far-away mountains and snowmelt across the open land.",
+      "text_markdown": "The rivers carry water from far-away mountains and snowmelt across the open land.",
+      "tts": {
+        "text": "The rivers carry water from far-away mountains and snowmelt across the open land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Along the banks of the rivers, you find a thin line of trees.",
+      "text_markdown": "Along the banks of the rivers, you find a thin line of trees.",
+      "tts": {
+        "text": "Along the banks of the rivers, you find a thin line of trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "These trees follow the water and stand out as green ribbons in the wide sea of grass.",
+      "text_markdown": "These trees follow the water and stand out as green ribbons in the wide sea of grass.",
+      "tts": {
+        "text": "These trees follow the water and stand out as green ribbons in the wide sea of grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Away from the rivers, there are very few trees.",
+      "text_markdown": "Away from the rivers, there are very few trees.",
+      "tts": {
+        "text": "Away from the rivers, there are very few trees.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wind, the cold winters, and the dry summers keep most trees from growing here.",
+      "text_markdown": "The wind, the cold winters, and the dry summers keep most trees from growing here.",
+      "tts": {
+        "text": "The wind, the cold winters, and the dry summers keep most trees from growing here.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the grass does not need much.",
+      "text_markdown": "But the grass does not need much.",
+      "tts": {
+        "text": "But the grass does not need much.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Its long roots reach deep into the rich soil, and it comes back every spring.",
+      "text_markdown": "Its long roots reach deep into the rich soil, and it comes back every spring.",
+      "tts": {
+        "text": "Its long roots reach deep into the rich soil, and it comes back every spring.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fire also moves through these lands from time to time.",
+      "text_markdown": "Fire also moves through these lands from time to time.",
+      "tts": {
+        "text": "Fire also moves through these lands from time to time.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grass burns quickly, but the deep roots stay alive.",
+      "text_markdown": "The grass burns quickly, but the deep roots stay alive.",
+      "tts": {
+        "text": "The grass burns quickly, but the deep roots stay alive.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After a rain, the grass grows back greener and stronger than before.",
+      "text_markdown": "After a rain, the grass grows back greener and stronger than before.",
+      "tts": {
+        "text": "After a rain, the grass grows back greener and stronger than before.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Plants",
+      "text_markdown": "The Plants"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grasses are the heart of this biome.",
+      "text_markdown": "The grasses are the heart of this biome.",
+      "tts": {
+        "text": "The grasses are the heart of this biome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are many different kinds of grass in a temperate grassland.",
+      "text_markdown": "There are many different kinds of grass in a temperate grassland.",
+      "tts": {
+        "text": "There are many different kinds of grass in a temperate grassland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some grasses grow only ankle-high.",
+      "text_markdown": "Some grasses grow only ankle-high.",
+      "tts": {
+        "text": "Some grasses grow only ankle-high.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Others stand as tall as a person.",
+      "text_markdown": "Others stand as tall as a person.",
+      "tts": {
+        "text": "Others stand as tall as a person.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Each kind of grass has a long, soft head full of seeds at the top.",
+      "text_markdown": "Each kind of grass has a long, soft head full of seeds at the top.",
+      "tts": {
+        "text": "Each kind of grass has a long, soft head full of seeds at the top.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer, the wind carries waves of seed heads across the land.",
+      "text_markdown": "In the summer, the wind carries waves of seed heads across the land.",
+      "tts": {
+        "text": "In the summer, the wind carries waves of seed heads across the land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grass has very long roots that reach deep into the dark soil.",
+      "text_markdown": "The grass has very long roots that reach deep into the dark soil.",
+      "tts": {
+        "text": "The grass has very long roots that reach deep into the dark soil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The roots can be longer underground than the grass is tall above the ground.",
+      "text_markdown": "The roots can be longer underground than the grass is tall above the ground.",
+      "tts": {
+        "text": "The roots can be longer underground than the grass is tall above the ground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is how the grass survives the dry times and the cold winters.",
+      "text_markdown": "This is how the grass survives the dry times and the cold winters.",
+      "tts": {
+        "text": "This is how the grass survives the dry times and the cold winters.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is also how the grass quickly comes back after a fire.",
+      "text_markdown": "It is also how the grass quickly comes back after a fire.",
+      "tts": {
+        "text": "It is also how the grass quickly comes back after a fire.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Between the grasses, small flowers bloom in the warm months.",
+      "text_markdown": "Between the grasses, small flowers bloom in the warm months.",
+      "tts": {
+        "text": "Between the grasses, small flowers bloom in the warm months.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wild sunflowers and many other bright flowers fill the grassland in summer.",
+      "text_markdown": "Wild sunflowers and many other bright flowers fill the grassland in summer.",
+      "tts": {
+        "text": "Wild sunflowers and many other bright flowers fill the grassland in summer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bees and butterflies move from one bloom to the next.",
+      "text_markdown": "Bees and butterflies move from one bloom to the next.",
+      "tts": {
+        "text": "Bees and butterflies move from one bloom to the next.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "There are very few trees in most of the grassland.",
+      "text_markdown": "There are very few trees in most of the grassland.",
+      "tts": {
+        "text": "There are very few trees in most of the grassland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Where they do grow, they tend to be small and tough.",
+      "text_markdown": "Where they do grow, they tend to be small and tough.",
+      "tts": {
+        "text": "Where they do grow, they tend to be small and tough.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They grow along the rivers, where there is more water, or in low places where snow gathers in winter.",
+      "text_markdown": "They grow along the rivers, where there is more water, or in low places where snow gathers in winter.",
+      "tts": {
+        "text": "They grow along the rivers, where there is more water, or in low places where snow gathers in winter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Out on the open plain, the grass is alone.",
+      "text_markdown": "Out on the open plain, the grass is alone.",
+      "tts": {
+        "text": "Out on the open plain, the grass is alone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is the green, golden, and silver carpet that holds the whole biome together.",
+      "text_markdown": "It is the green, golden, and silver carpet that holds the whole biome together.",
+      "tts": {
+        "text": "It is the green, golden, and silver carpet that holds the whole biome together.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Animals",
+      "text_markdown": "The Animals"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The animals of the temperate grassland are built for an open, windy world.",
+      "text_markdown": "The animals of the temperate grassland are built for an open, windy world.",
+      "tts": {
+        "text": "The animals of the temperate grassland are built for an open, windy world.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The biggest animals here are large grazers.",
+      "text_markdown": "The biggest animals here are large grazers.",
+      "tts": {
+        "text": "The biggest animals here are large grazers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They eat the grass and move in great herds across the open land.",
+      "text_markdown": "They eat the grass and move in great herds across the open land.",
+      "tts": {
+        "text": "They eat the grass and move in great herds across the open land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In North America, the most famous of these is the bison.",
+      "text_markdown": "In North America, the most famous of these is the bison.",
+      "tts": {
+        "text": "In North America, the most famous of these is the bison.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A bison is huge, heavy, and shaggy, with a great brown head.",
+      "text_markdown": "A bison is huge, heavy, and shaggy, with a great brown head.",
+      "tts": {
+        "text": "A bison is huge, heavy, and shaggy, with a great brown head.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bison once moved across the plains in herds of millions.",
+      "text_markdown": "Bison once moved across the plains in herds of millions.",
+      "tts": {
+        "text": "Bison once moved across the plains in herds of millions.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Eurasia, wild horses once moved in the same way across the steppes.",
+      "text_markdown": "In Eurasia, wild horses once moved in the same way across the steppes.",
+      "tts": {
+        "text": "In Eurasia, wild horses once moved in the same way across the steppes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the pampas of South America, smaller deer and other grazing animals took their place.",
+      "text_markdown": "In the pampas of South America, smaller deer and other grazing animals took their place.",
+      "tts": {
+        "text": "In the pampas of South America, smaller deer and other grazing animals took their place.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many smaller animals live under the grass.",
+      "text_markdown": "Many smaller animals live under the grass.",
+      "tts": {
+        "text": "Many smaller animals live under the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Prairie dogs, ground squirrels, and other small animals dig long tunnels and rooms in the soil.",
+      "text_markdown": "Prairie dogs, ground squirrels, and other small animals dig long tunnels and rooms in the soil.",
+      "tts": {
+        "text": "Prairie dogs, ground squirrels, and other small animals dig long tunnels and rooms in the soil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They come up to feed in the day and dive back into their burrows for safety.",
+      "text_markdown": "They come up to feed in the day and dive back into their burrows for safety.",
+      "tts": {
+        "text": "They come up to feed in the day and dive back into their burrows for safety.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A grassland full of these little animals is full of little holes in the ground.",
+      "text_markdown": "A grassland full of these little animals is full of little holes in the ground.",
+      "tts": {
+        "text": "A grassland full of these little animals is full of little holes in the ground.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wolves, foxes, and small wild cats hunt across the grass.",
+      "text_markdown": "Wolves, foxes, and small wild cats hunt across the grass.",
+      "tts": {
+        "text": "Wolves, foxes, and small wild cats hunt across the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wolf is the great hunter of the open plains.",
+      "text_markdown": "The wolf is the great hunter of the open plains.",
+      "tts": {
+        "text": "The wolf is the great hunter of the open plains.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Smaller hunters like the fox and the wild cat catch mice, rabbits, and birds.",
+      "text_markdown": "Smaller hunters like the fox and the wild cat catch mice, rabbits, and birds.",
+      "tts": {
+        "text": "Smaller hunters like the fox and the wild cat catch mice, rabbits, and birds.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "High in the sky, hawks and eagles circle slowly.",
+      "text_markdown": "High in the sky, hawks and eagles circle slowly.",
+      "tts": {
+        "text": "High in the sky, hawks and eagles circle slowly.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They watch for movement in the grass below.",
+      "text_markdown": "They watch for movement in the grass below.",
+      "tts": {
+        "text": "They watch for movement in the grass below.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many kinds of birds nest right on the ground, hidden in the long grass.",
+      "text_markdown": "Many kinds of birds nest right on the ground, hidden in the long grass.",
+      "tts": {
+        "text": "Many kinds of birds nest right on the ground, hidden in the long grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer, the air is full of insects.",
+      "text_markdown": "In the summer, the air is full of insects.",
+      "tts": {
+        "text": "In the summer, the air is full of insects.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grasshoppers click and jump in the warm wind.",
+      "text_markdown": "Grasshoppers click and jump in the warm wind.",
+      "tts": {
+        "text": "Grasshoppers click and jump in the warm wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Butterflies and bees move from flower to flower.",
+      "text_markdown": "Butterflies and bees move from flower to flower.",
+      "tts": {
+        "text": "Butterflies and bees move from flower to flower.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Snakes glide through the grass, looking for mice and birds' eggs.",
+      "text_markdown": "Snakes glide through the grass, looking for mice and birds' eggs.",
+      "tts": {
+        "text": "Snakes glide through the grass, looking for mice and birds' eggs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Every animal here knows the same lessons.",
+      "text_markdown": "Every animal here knows the same lessons.",
+      "tts": {
+        "text": "Every animal here knows the same lessons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Move with the seasons.",
+      "text_markdown": "Move with the seasons.",
+      "tts": {
+        "text": "Move with the seasons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hide from the hot sun.",
+      "text_markdown": "Hide from the hot sun.",
+      "tts": {
+        "text": "Hide from the hot sun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Run from the cold wind.",
+      "text_markdown": "Run from the cold wind.",
+      "tts": {
+        "text": "Run from the cold wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drink from the river when you can find it.",
+      "text_markdown": "Drink from the river when you can find it.",
+      "tts": {
+        "text": "Drink from the river when you can find it.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The People",
+      "text_markdown": "The People"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "People have lived in the temperate grassland for many thousands of years.",
+      "text_markdown": "People have lived in the temperate grassland for many thousands of years.",
+      "tts": {
+        "text": "People have lived in the temperate grassland for many thousands of years.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The wide open land, the herds of animals, and the rich soil have shaped their way of life.",
+      "text_markdown": "The wide open land, the herds of animals, and the rich soil have shaped their way of life.",
+      "tts": {
+        "text": "The wide open land, the herds of animals, and the rich soil have shaped their way of life.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Long ago, the people of the steppes of Asia tamed the wild horse.",
+      "text_markdown": "Long ago, the people of the steppes of Asia tamed the wild horse.",
+      "tts": {
+        "text": "Long ago, the people of the steppes of Asia tamed the wild horse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On the back of a horse, a person could cross the open plains much faster than on foot.",
+      "text_markdown": "On the back of a horse, a person could cross the open plains much faster than on foot.",
+      "tts": {
+        "text": "On the back of a horse, a person could cross the open plains much faster than on foot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The horse changed everything for the people of the grasslands.",
+      "text_markdown": "The horse changed everything for the people of the grasslands.",
+      "tts": {
+        "text": "The horse changed everything for the people of the grasslands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It changed how they hunted, how they traveled, and how they fought.",
+      "text_markdown": "It changed how they hunted, how they traveled, and how they fought.",
+      "tts": {
+        "text": "It changed how they hunted, how they traveled, and how they fought.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many of the old peoples of the steppes were nomads.",
+      "text_markdown": "Many of the old peoples of the steppes were nomads.",
+      "tts": {
+        "text": "Many of the old peoples of the steppes were nomads.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They moved their herds of horses, cattle, sheep, and goats from one part of the grassland to another.",
+      "text_markdown": "They moved their herds of horses, cattle, sheep, and goats from one part of the grassland to another.",
+      "tts": {
+        "text": "They moved their herds of horses, cattle, sheep, and goats from one part of the grassland to another.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the summer, they traveled to the cool high plains.",
+      "text_markdown": "In the summer, they traveled to the cool high plains.",
+      "tts": {
+        "text": "In the summer, they traveled to the cool high plains.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the winter, they came down to lower, warmer valleys.",
+      "text_markdown": "In the winter, they came down to lower, warmer valleys.",
+      "tts": {
+        "text": "In the winter, they came down to lower, warmer valleys.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Their homes were round tents made of felt and wood.",
+      "text_markdown": "Their homes were round tents made of felt and wood.",
+      "tts": {
+        "text": "Their homes were round tents made of felt and wood.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A round tent like this can be taken apart in an hour, packed on the back of an animal, and put up again somewhere else.",
+      "text_markdown": "A round tent like this can be taken apart in an hour, packed on the back of an animal, and put up again somewhere else.",
+      "tts": {
+        "text": "A round tent like this can be taken apart in an hour, packed on the back of an animal, and put up again somewhere else.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In North America, the people of the plains lived for thousands of years alongside the great herds of bison.",
+      "text_markdown": "In North America, the people of the plains lived for thousands of years alongside the great herds of bison.",
+      "tts": {
+        "text": "In North America, the people of the plains lived for thousands of years alongside the great herds of bison.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They followed the herds across the open land.",
+      "text_markdown": "They followed the herds across the open land.",
+      "tts": {
+        "text": "They followed the herds across the open land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Their homes were tall tents of skin stretched over wooden poles.",
+      "text_markdown": "Their homes were tall tents of skin stretched over wooden poles.",
+      "tts": {
+        "text": "Their homes were tall tents of skin stretched over wooden poles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When the horse came to the plains, the way of life there also changed deeply.",
+      "text_markdown": "When the horse came to the plains, the way of life there also changed deeply.",
+      "tts": {
+        "text": "When the horse came to the plains, the way of life there also changed deeply.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the pampas of South America, herders on horseback became part of the land as well.",
+      "text_markdown": "In the pampas of South America, herders on horseback became part of the land as well.",
+      "tts": {
+        "text": "In the pampas of South America, herders on horseback became part of the land as well.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In the last few hundred years, much of the temperate grassland has changed again.",
+      "text_markdown": "In the last few hundred years, much of the temperate grassland has changed again.",
+      "tts": {
+        "text": "In the last few hundred years, much of the temperate grassland has changed again.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The deep, rich soil has been plowed up to grow wheat, corn, and other grains.",
+      "text_markdown": "The deep, rich soil has been plowed up to grow wheat, corn, and other grains.",
+      "tts": {
+        "text": "The deep, rich soil has been plowed up to grow wheat, corn, and other grains.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Today, much of the grain that feeds the world comes from these lands.",
+      "text_markdown": "Today, much of the grain that feeds the world comes from these lands.",
+      "tts": {
+        "text": "Today, much of the grain that feeds the world comes from these lands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The old way of moving with the herds is gone in many places.",
+      "text_markdown": "The old way of moving with the herds is gone in many places.",
+      "tts": {
+        "text": "The old way of moving with the herds is gone in many places.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the songs, the stories, and the love of the open sky live on.",
+      "text_markdown": "But the songs, the stories, and the love of the open sky live on.",
+      "tts": {
+        "text": "But the songs, the stories, and the love of the open sky live on.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In every great grassland, the people who grew up there carry the wind in their hearts.",
+      "text_markdown": "In every great grassland, the people who grew up there carry the wind in their hearts.",
+      "tts": {
+        "text": "In every great grassland, the people who grew up there carry the wind in their hearts.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Grassland Today",
+      "text_markdown": "The Grassland Today"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The temperate grassland is one of the most important biomes for people.",
+      "text_markdown": "The temperate grassland is one of the most important biomes for people.",
+      "tts": {
+        "text": "The temperate grassland is one of the most important biomes for people.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The deep, rich soil makes it perfect for growing food.",
+      "text_markdown": "The deep, rich soil makes it perfect for growing food.",
+      "tts": {
+        "text": "The deep, rich soil makes it perfect for growing food.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Much of the bread, pasta, and corn that the world eats comes from these lands.",
+      "text_markdown": "Much of the bread, pasta, and corn that the world eats comes from these lands.",
+      "tts": {
+        "text": "Much of the bread, pasta, and corn that the world eats comes from these lands.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the cost has been high.",
+      "text_markdown": "But the cost has been high.",
+      "tts": {
+        "text": "But the cost has been high.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Most of the original grasslands of the world have been plowed up.",
+      "text_markdown": "Most of the original grasslands of the world have been plowed up.",
+      "tts": {
+        "text": "Most of the original grasslands of the world have been plowed up.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The great herds of bison and wild horses are mostly gone.",
+      "text_markdown": "The great herds of bison and wild horses are mostly gone.",
+      "tts": {
+        "text": "The great herds of bison and wild horses are mostly gone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The little burrowing animals have fewer places to live.",
+      "text_markdown": "The little burrowing animals have fewer places to live.",
+      "tts": {
+        "text": "The little burrowing animals have fewer places to live.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The grass that once stretched to the horizon now grows only in small patches.",
+      "text_markdown": "The grass that once stretched to the horizon now grows only in small patches.",
+      "tts": {
+        "text": "The grass that once stretched to the horizon now grows only in small patches.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In some places, when the grass is gone and the soil is left bare, the wind blows the dark earth away.",
+      "text_markdown": "In some places, when the grass is gone and the soil is left bare, the wind blows the dark earth away.",
+      "tts": {
+        "text": "In some places, when the grass is gone and the soil is left bare, the wind blows the dark earth away.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Many groups around the world are working to take care of what is left.",
+      "text_markdown": "Many groups around the world are working to take care of what is left.",
+      "tts": {
+        "text": "Many groups around the world are working to take care of what is left.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They set aside parks where the grass can grow tall again.",
+      "text_markdown": "They set aside parks where the grass can grow tall again.",
+      "tts": {
+        "text": "They set aside parks where the grass can grow tall again.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They help bison and other animals come back to lands they once filled.",
+      "text_markdown": "They help bison and other animals come back to lands they once filled.",
+      "tts": {
+        "text": "They help bison and other animals come back to lands they once filled.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "They study the deep soil so we can use it without losing it.",
+      "text_markdown": "They study the deep soil so we can use it without losing it.",
+      "tts": {
+        "text": "They study the deep soil so we can use it without losing it.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A healthy grassland is one of the most alive places on Earth.",
+      "text_markdown": "A healthy grassland is one of the most alive places on Earth.",
+      "tts": {
+        "text": "A healthy grassland is one of the most alive places on Earth.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "The Grassland Today",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "It is worth our care.",
+      "text_markdown": "It is worth our care.",
+      "tts": {
+        "text": "It is worth our care.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Closing",
+      "text_markdown": "Closing"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "That is the temperate grassland.",
+      "text_markdown": "That is the temperate grassland.",
+      "tts": {
+        "text": "That is the temperate grassland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A wide, windy world of grass, big sky, and changing seasons.",
+      "text_markdown": "A wide, windy world of grass, big sky, and changing seasons.",
+      "tts": {
+        "text": "A wide, windy world of grass, big sky, and changing seasons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "If you ever stand in one, be still for a minute.",
+      "text_markdown": "If you ever stand in one, be still for a minute.",
+      "tts": {
+        "text": "If you ever stand in one, be still for a minute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Listen to the wind moving across the grass.",
+      "text_markdown": "Listen to the wind moving across the grass.",
+      "tts": {
+        "text": "Listen to the wind moving across the grass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Look out at the long horizon.",
+      "text_markdown": "Look out at the long horizon.",
+      "tts": {
+        "text": "Look out at the long horizon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "You will feel the heart of the biome beating around you.",
+      "text_markdown": "You will feel the heart of the biome beating around you.",
+      "tts": {
+        "text": "You will feel the heart of the biome beating around you.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "prompt": "Detailed pen and ink illustration with sepia wash, four stone and clay artifacts displayed side by side like museum pieces showing different ancient writing systems, first a stone tablet with Chinese logographic characters representing whole words, second a clay tablet with rows of cuneiform wedge-shaped syllabic marks, third a stone fragment with Greek alphabetic letters, fourth a Zapotec stone stela with Mesoamerican logo-syllabic glyphs combining pictographic symbols and bar-and-dot numerals read in columns top to bottom, each artifact shown on a neutral background, educational comparison of different writing traditions from the ancient world",
+  "negative_prompt": "blurry, low quality, distorted, deformed, cartoon, anime, 3D render, text, words, letters, writing, captions",
+  "seed": 50,
+  "width": 1024,
+  "height": 768,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "dtype": "float16",
+  "generation_time_s": 61.57,
+  "timestamp": "2026-02-22T06:06:49.761958+00:00",
+  "book": "The Mystery of Monte Alban",
+  "series": "Fascinating Curiosities of Human History",
+  "volume": 1
+}

@@ -1,0 +1,27 @@
+pdf-engine: xelatex
+from: markdown
+to: pdf
+metadata:
+  title: "The Mystery of Great Zimbabwe"
+  subtitle: "The Stone City They Said Couldn't Exist"
+  author: "Corpora"
+  lang: en-US
+  publisher: "Corpora Inc"
+variables:
+  documentclass: memoir
+  classoption:
+    - twoside
+    - 11pt
+  geometry:
+    - paperwidth=6in
+    - paperheight=9in
+    - margin=0.75in
+    - bindingoffset=0.25in
+  mainfont: "Palatino"
+  fontsize: 11pt
+include-in-header:
+  - custom_headings.tex
+include-before-body:
+  - custom_cover.tex
+toc: true
+toc-depth: 2

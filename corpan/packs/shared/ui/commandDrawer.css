@@ -1,0 +1,825 @@
+/* ============================================================
+   Command Drawer — bottom sheet at all sizes
+   Themed via var(--catalog-*) custom properties
+   ============================================================ */
+
+/* --- Backdrop --- */
+
+.command-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: var(--drawer-backdrop, rgba(0, 0, 0, 0.4));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.command-drawer-backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- Trigger button (top-right) --- */
+
+.command-drawer-trigger {
+  position: absolute;
+  top: calc(15px + env(safe-area-inset-top, 0px));
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  width: 48px;
+  height: 48px;
+  border-radius: var(--catalog-radius, 12px);
+  border: 1px solid var(--catalog-border);
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 30;
+  transition: color 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+
+.command-drawer-trigger:hover {
+  color: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+}
+
+.command-drawer-trigger:active {
+  color: var(--catalog-text);
+}
+
+.command-drawer-trigger svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --- Sheet (bottom on mobile) --- */
+
+.command-drawer-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  /* Fixed height instead of max-height so the drawer doesn't jump around
+     when navigating between sections of different content lengths
+     (e.g. an empty Library vs a long Browse list). The catalog is image-
+     heavy — give it most of the viewport. */
+  height: 92vh;
+  background: var(--catalog-bg);
+  font-family: var(--catalog-font);
+  color: var(--catalog-text);
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  pointer-events: none;
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.command-drawer-sheet--open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.command-drawer-sheet--closing {
+  transition: transform 350ms cubic-bezier(0.55, 0, 1, 0.45);
+}
+
+/* --- Handle --- */
+
+.command-drawer-handle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Generous drag-to-dismiss zone (~36px tall) while the visible bar stays
+     subtle. Matches iOS bottom-sheet behaviour: grab anywhere in this band,
+     not just on the 4px bar. The catalog tab strip below also gets drag
+     listeners (button-guarded) so the gaps and underline are draggable too. */
+  height: 36px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.command-drawer-handle:active {
+  cursor: grabbing;
+}
+
+.command-drawer-handle-bar {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--drawer-handle, var(--catalog-border));
+}
+
+/* --- Close button (mobile only) --- */
+
+.command-drawer-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease;
+  z-index: 1;
+}
+
+.command-drawer-close:hover {
+  color: var(--catalog-text);
+  background: var(--catalog-border);
+}
+
+.command-drawer-close svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* ============================================================
+   Narration Switcher — used in two placements via `--mode`:
+     `--compact` : on the reader surface, top-left, mirror of hamburger
+     `--drawer`  : inside the drawer header, replacing the wrapping pill grid
+   Shared layout: horizontal scroll strip + sticky overflow ⋯ button.
+   ============================================================ */
+
+.narration-switcher {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  font-family: var(--catalog-font);
+  direction: ltr;
+}
+
+.narration-switcher-strip {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 2px 0;
+}
+
+.narration-switcher-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.narration-switcher-pill {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+  white-space: nowrap;
+  padding: 0;
+}
+
+.narration-switcher-pill-label {
+  display: inline-block;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  unicode-bidi: plaintext;
+}
+
+.narration-switcher-pill:hover {
+  border-color: var(--catalog-accent);
+  color: var(--catalog-accent);
+}
+
+.narration-switcher-pill--active {
+  background: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
+.narration-switcher-pill--active:hover {
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+  opacity: 0.9;
+}
+
+.narration-switcher-more {
+  flex-shrink: 0;
+  margin-left: 6px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.narration-switcher-more:hover {
+  border-color: var(--catalog-accent);
+  color: var(--catalog-accent);
+}
+
+.narration-switcher-more svg {
+  display: block;
+}
+
+/* --- Compact mode (reader surface, docked above the transport bar) ---
+   Full-bleed band that spans across the transport's horizontal padding so the
+   pill strip reads as a deliberate band, not a boxed widget.
+
+   Scrollability affordances (better-than-default):
+   - Edge mask-fades on the strip so partial pills dissolve instead of clipping.
+   - The ⋯ button is pinned outside the strip with its own solid background, so
+     it never gets covered by scrolling pills and always shows where to dive in.
+   - scroll-snap-align centers pills as you flick.
+   - scroll-behavior: smooth + JS auto-scroll-to-active on refresh keeps the
+     current narration in view without the user having to hunt for it. */
+
+.narration-switcher--compact {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  width: auto;
+  box-sizing: border-box;
+  margin: 0 -16px 8px -16px;       /* bleed across transport's 16px padding */
+  padding: 0;
+  border-bottom: 1px solid var(--catalog-border);
+  pointer-events: auto;
+  gap: 0;
+}
+
+.narration-switcher--compact .narration-switcher-strip {
+  gap: 6px;
+  padding: 6px 14px 8px 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 14px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 14px,
+    black calc(100% - 14px),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 14px,
+    black calc(100% - 14px),
+    transparent 100%
+  );
+}
+
+.narration-switcher--compact .narration-switcher-pill {
+  height: 28px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  scroll-snap-align: center;
+}
+
+.narration-switcher--compact .narration-switcher-pill-label {
+  max-width: 110px;
+}
+
+.narration-switcher--compact .narration-switcher-pill--active {
+  box-shadow: 0 1px 4px color-mix(in srgb, var(--catalog-accent) 35%, transparent);
+}
+
+.narration-switcher--compact .narration-switcher-more {
+  width: 32px;
+  height: 32px;
+  margin: 0 12px 0 0;
+  background: var(--catalog-surface);
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Drawer mode (inside drawer header) --- */
+
+.narration-switcher--drawer {
+  width: 100%;
+}
+
+.narration-switcher--drawer .narration-switcher-pill {
+  height: 32px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.narration-switcher--drawer .narration-switcher-pill-label {
+  max-width: 140px;
+}
+
+.narration-switcher--drawer .narration-switcher-more {
+  width: 32px;
+  height: 32px;
+}
+
+/* --- Sheet sections (reuses .catalog-sheet-* base) --- */
+
+.narration-switcher-sheet-section {
+  padding: 14px 20px 6px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--catalog-text-dim);
+}
+
+.narration-switcher-sheet-name {
+  flex: 1;
+  text-align: left;
+  unicode-bidi: plaintext;
+}
+
+.narration-switcher-sheet-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.narration-switcher-sheet-size {
+  font-size: 11px;
+}
+
+.narration-switcher-sheet-action--locked {
+  color: var(--catalog-text-dim);
+  opacity: 0.7;
+}
+
+.catalog-sheet-item--locked {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* --- Screen nav tabs --- */
+
+.command-drawer-screen-nav {
+  flex-shrink: 0;
+  display: flex;
+  border-bottom: 1px solid var(--catalog-border);
+  padding: 0 20px;
+  gap: 0;
+}
+
+/* Packs that pass `screens: ["now-playing"]` collapse the tab nav so
+   the drawer reads as a single-screen settings sheet. The element
+   still exists in the DOM and absorbs drag-to-dismiss gestures. */
+.command-drawer-screen-nav--hidden {
+  display: none;
+}
+
+.command-drawer-screen-tab {
+  flex: 1;
+  padding: 8px 0 9px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease;
+  text-align: center;
+}
+
+.command-drawer-screen-tab:hover {
+  color: var(--catalog-text);
+}
+
+.command-drawer-screen-tab--active {
+  color: var(--catalog-accent);
+  border-bottom-color: var(--catalog-accent);
+}
+
+/* --- Screen container --- */
+
+.command-drawer-screen-container {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+.command-drawer-screen {
+  display: none;
+  /* Top: 12px lets the screen-nav's bottom border be the visual separator,
+     not extra empty space. Bottom: real 20px so content doesn't crash into
+     the safe area on phones. Horizontal: 20px gutter. */
+  padding: 12px 20px calc(20px + env(safe-area-inset-bottom, 0px));
+  min-height: 100%;
+}
+
+.command-drawer-screen--active {
+  display: block;
+}
+
+/* Inner wrapper inserted by some screen renderers (browse, now-playing).
+   The parent `.command-drawer-screen` already provides the gutter — zero
+   this out so the two padding boxes don't compound to 32px of dead space
+   below the screen-nav. */
+.command-drawer-screen-content {
+  padding: 0;
+}
+
+/* --- Scrollable body (legacy, kept for compat) --- */
+
+.command-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 20px calc(env(safe-area-inset-bottom, 0px));
+}
+
+/* --- Section --- */
+
+.command-drawer-section {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--catalog-border);
+}
+
+.command-drawer-section:last-child {
+  border-bottom: none;
+}
+
+.command-drawer-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--catalog-text-dim);
+  padding-top: 16px;
+  margin-bottom: 12px;
+}
+
+/* --- Library grid (installed books) --- */
+
+.command-drawer-library-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.command-drawer-library-card {
+  position: relative;
+  padding: 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.command-drawer-library-card:hover {
+  border-color: var(--catalog-accent);
+  transform: translateY(-1px);
+}
+
+.command-drawer-library-card--active {
+  border-color: var(--catalog-accent);
+  background: color-mix(in srgb, var(--catalog-accent) 6%, var(--catalog-surface));
+}
+
+/* Fully inert — single narration, already playing */
+.command-drawer-library-card--current {
+  cursor: default;
+}
+
+.command-drawer-library-card--current:hover {
+  transform: none;
+  border-color: var(--catalog-accent);
+}
+
+.command-drawer-library-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.command-drawer-library-card-lang {
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+}
+
+.command-drawer-library-card-playing {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--catalog-accent);
+  margin-top: 4px;
+}
+
+.command-drawer-library-card-update {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--catalog-accent);
+}
+
+/* --- Browse section --- */
+
+.command-drawer-browse-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.command-drawer-browse-search {
+  flex: 1;
+  padding: 8px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.command-drawer-browse-search::placeholder {
+  color: var(--catalog-text-dim);
+}
+
+.command-drawer-browse-search:focus {
+  border-color: var(--catalog-accent);
+}
+
+.command-drawer-browse-filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.command-drawer-browse-empty {
+  text-align: center;
+  padding: 24px;
+  color: var(--catalog-text-dim);
+  font-size: 14px;
+}
+
+/* --- Inline book detail --- */
+
+.command-drawer-detail {
+  /* No entry animation — updates are surgical, not full rebuilds */
+}
+
+.command-drawer-detail-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: border-color 150ms ease;
+}
+
+.command-drawer-detail-back:hover {
+  border-color: var(--catalog-accent);
+}
+
+.command-drawer-detail-back svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.command-drawer-detail-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.command-drawer-detail-subtitle {
+  font-size: 13px;
+  color: var(--catalog-text-dim);
+  margin-bottom: 16px;
+}
+
+/* --- Exit footer --- */
+
+.command-drawer-footer {
+  flex-shrink: 0;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--catalog-border);
+}
+
+.command-drawer-exit {
+  width: 100%;
+  padding: 12px 0;
+  border: 1.5px solid var(--catalog-error);
+  border-radius: var(--catalog-radius);
+  background: transparent;
+  color: var(--catalog-error);
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.command-drawer-exit:hover {
+  background: color-mix(in srgb, var(--catalog-error) 10%, transparent);
+}
+
+/* ============================================================
+   Phone: compact
+   ============================================================ */
+
+@media (max-height: 520px) {
+  .command-drawer-trigger {
+    width: 38px;
+    height: 38px;
+    top: calc(10px + env(safe-area-inset-top, 0px));
+  }
+
+  .command-drawer-trigger svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .narration-switcher--compact {
+    margin-bottom: 4px;
+  }
+
+  .narration-switcher--compact .narration-switcher-strip {
+    padding: 4px 12px;
+  }
+
+  .narration-switcher--compact .narration-switcher-pill {
+    height: 24px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .narration-switcher--compact .narration-switcher-more {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-height: 380px) {
+  .command-drawer-trigger {
+    width: 34px;
+    height: 34px;
+    top: calc(8px + env(safe-area-inset-top, 0px));
+  }
+
+  .command-drawer-trigger svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .narration-switcher--compact {
+    margin-bottom: 2px;
+  }
+
+  .narration-switcher--compact .narration-switcher-strip {
+    padding: 3px 10px;
+  }
+
+  .narration-switcher--compact .narration-switcher-pill {
+    height: 22px;
+    padding: 0 9px;
+    font-size: 10px;
+  }
+
+  .narration-switcher--compact .narration-switcher-more {
+    width: 26px;
+    height: 26px;
+    margin-right: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .command-drawer-sheet {
+    height: 92vh;
+  }
+
+  .command-drawer-handle {
+    height: 32px;
+  }
+
+  .command-drawer-sticky {
+    padding: 10px 16px;
+  }
+
+  .command-drawer-now-playing {
+    margin-bottom: 8px;
+  }
+
+  .command-drawer-now-playing-title {
+    font-size: 15px;
+  }
+
+  .command-drawer-trigger {
+    width: 42px;
+    height: 42px;
+  }
+
+  .command-drawer-trigger svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .command-drawer-languages {
+    gap: 6px;
+  }
+
+  .command-drawer-lang-pill {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  .command-drawer-section {
+    padding: 14px 0;
+  }
+
+  .command-drawer-footer {
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .command-drawer-exit {
+    padding: 9px 0;
+    font-size: 13px;
+  }
+
+  .command-drawer-close {
+    width: 32px;
+    height: 32px;
+    top: 4px;
+    right: 4px;
+  }
+
+  .command-drawer-close svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .command-drawer-library-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .command-drawer-screen-nav {
+    padding: 0 16px;
+  }
+
+  .command-drawer-screen-tab {
+    padding: 8px 0;
+    font-size: 12px;
+  }
+
+  .command-drawer-screen {
+    padding: 12px 16px calc(env(safe-area-inset-bottom, 0px));
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "_doc": "Reward tables (RewardTable in contracts/src/economy.ts). Per Scene/quest/challenge-tier. `base` = baseline payout in COMMON UNITS; `mix` = weighted currency spread (weights sum-normalized; the default Track currency gets the largest weight so progression feels grounded, the spread is the smorgasbord); `scoreCurve` maps a 0..1 score band to floor..perfect multiplier; `bonus` = chance-gated extra currency drops (the 'ooh, a piece of eight!' moment); `itemDrops` piggyback the existing items[] path. CDN-overridable. `sceneDefaults` maps a scene id (or place tag) → the table id rolled when a reward arrives with no explicit table; the runtime falls back to a generic table keyed by the Track default currency if no scene match.",
+  "version": 1,
+  "sceneDefaults": {
+    "antigua-1770": "antigua-market-tier1",
+    "antigua-guatemala": "antigua-market-tier1",
+    "tokyo": "tokyo-tier1",
+    "berlin": "weimar-novelty",
+    "seoul": "seoul-tier1"
+  },
+  "tables": [
+    {
+      "id": "antigua-market-tier1",
+      "base": 10,
+      "mix": [
+        { "currency": "gold-real", "weight": 7, "minShare": 0.5 },
+        { "currency": "silver-tael", "weight": 2 },
+        { "currency": "cowrie-shell", "weight": 1 }
+      ],
+      "scoreCurve": { "floor": 0.5, "perfect": 1.5 },
+      "bonus": [
+        { "currency": "gold-real", "chance": 0.25, "units": 800 },
+        { "currency": "roman-denarius", "chance": 0.08, "units": 400 }
+      ],
+      "itemDrops": [
+        { "itemId": "spices-cinnamon", "chance": 0.18 },
+        { "itemId": "candle-beeswax", "chance": 0.12 }
+      ]
+    },
+    {
+      "id": "antigua-market-daily",
+      "base": 28,
+      "mix": [
+        { "currency": "gold-real", "weight": 6, "minShare": 0.45 },
+        { "currency": "silver-tael", "weight": 2 },
+        { "currency": "dutch-guilder", "weight": 1 },
+        { "currency": "cowrie-shell", "weight": 1 }
+      ],
+      "scoreCurve": { "floor": 0.7, "perfect": 1.6 },
+      "bonus": [
+        { "currency": "gold-real", "chance": 0.4, "units": 3200 },
+        { "currency": "roman-denarius", "chance": 0.12, "units": 400 }
+      ],
+      "itemDrops": [
+        { "itemId": "spices-cacao", "chance": 0.2 },
+        { "itemId": "coffee-sack", "chance": 0.15 }
+      ]
+    },
+    {
+      "id": "tokyo-tier1",
+      "base": 10,
+      "mix": [
+        { "currency": "jpy-yen", "weight": 7, "minShare": 0.5 },
+        { "currency": "usd-dollar", "weight": 2 },
+        { "currency": "krw-won", "weight": 1 }
+      ],
+      "scoreCurve": { "floor": 0.5, "perfect": 1.5 },
+      "bonus": [
+        { "currency": "jpy-yen", "chance": 0.3, "units": 10000 }
+      ]
+    },
+    {
+      "id": "seoul-tier1",
+      "base": 10,
+      "mix": [
+        { "currency": "krw-won", "weight": 7, "minShare": 0.5 },
+        { "currency": "jpy-yen", "weight": 2 },
+        { "currency": "usd-dollar", "weight": 1 }
+      ],
+      "scoreCurve": { "floor": 0.5, "perfect": 1.5 },
+      "bonus": [
+        { "currency": "krw-won", "chance": 0.3, "units": 50000 }
+      ]
+    },
+    {
+      "id": "weimar-novelty",
+      "base": 10,
+      "mix": [
+        { "currency": "weimar-mark", "weight": 8, "minShare": 0.7 },
+        { "currency": "eur-euro", "weight": 2 }
+      ],
+      "scoreCurve": { "floor": 0.5, "perfect": 1.5 },
+      "bonus": [
+        { "currency": "weimar-mark", "chance": 0.6, "units": 1000000 }
+      ]
+    },
+    {
+      "id": "generic-tier1",
+      "base": 10,
+      "mix": [],
+      "scoreCurve": { "floor": 0.5, "perfect": 1.5 }
+    }
+  ]
+}

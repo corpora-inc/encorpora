@@ -1,0 +1,22 @@
+{
+  "id": "book_soul_food_southern_us",
+  "name": "Soul Food of the Southern United States",
+  "version": "0.1.1",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "metadata": {
+    "series": "Food of the World",
+    "volume": 1,
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Adult language learners \u2014 anyone curious about American food",
+    "estimatedReadTime": "10-15 minutes",
+    "estimatedListenTime": "10-15 minutes"
+  }
+}

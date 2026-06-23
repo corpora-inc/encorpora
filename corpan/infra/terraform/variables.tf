@@ -57,3 +57,34 @@ variable "dev_bypass_token" {
   description = "Header token to enable dev bypass on verify endpoint."
   default     = ""
 }
+
+variable "cdn_domain_name" {
+  type        = string
+  description = "Custom domain for CDN e.g. cdn.encorpora.io"
+  default     = ""
+}
+
+variable "enable_cdn" {
+  type        = bool
+  description = "Whether to provision CloudFront CDN for narration artifacts."
+  default     = false
+}
+
+variable "cloudfront_signing_public_key_pem" {
+  type        = string
+  description = "PEM-encoded public key for CloudFront signed URLs (premium content)."
+  default     = ""
+  sensitive   = true
+}
+
+variable "enable_premium_content" {
+  type        = bool
+  description = "Whether to provision CloudFront signed URL infrastructure for premium/paid content."
+  default     = false
+}
+
+variable "alert_email" {
+  type        = string
+  description = "Email subscribed to IAP alerts (verify/notification handler errors)."
+  default     = "skylar.saveland@gmail.com"
+}

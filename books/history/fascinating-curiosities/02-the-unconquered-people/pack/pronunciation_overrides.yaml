@@ -1,0 +1,54 @@
+# Pronunciation overrides for TTS engine (Book 02: The Unconquered People)
+# These map display text → phonetic spellings that trick TTS into correct pronunciation.
+# Applied as simple string replacements before text is sent to TTS.
+#
+# ONLY override words that English TTS will genuinely mispronounce.
+# Don't override common Spanish/place names the TTS already handles (Chile, Valdivia, etc.)
+#
+# Mapuche/Mapudungun terms — these are the real problem words
+Mapuche: Mahpoochay
+Mapudungun: Mahpoodoongun
+Wallmapu: Wahlmahpoo
+Leftraru: Leftrahroo
+Pewenche: Paywenchay
+Lafkenche: Lahfkenchay
+Tawantinsuyu: Tahwantinsooyoo
+Pelantaru: Pelantahroo
+Wenufoye: Wennoofoyay
+lonko: longko
+toqui: tohkee
+Toqui: Tohkee
+machi: mahchee
+Machi: Mahchee
+nguillatun: ngee-yah-toon
+Nguillatun: Ngee-yah-toon
+Ngünechen: Ngoo-nay-chen
+kultrun: kooltroon
+Kultrun: Kooltroon
+koyagtun: koh-yahg-toon
+Koyagtun: Koh-yahg-toon
+Reche: Raychay
+reche: raychay
+Witral: Weetrahl
+witral: weetrahl
+pewen: paywen
+piñón: peen-yohn
+mawida: mahweedah
+lenguaraces: lengwarahsays
+ngen: nyen
+Ayllarewe: Ah-yah-rayweh
+ayllarewe: ah-yah-rayweh
+ad mapu: ahd mahpoo
+# Place names — only the ones TTS will botch
+Araucanía: Ah-rah-oo-kah-neeah
+Arauco: Ah-rah-oo-ko
+Biobío: Bee-oh-bee-oh
+Bío-Bío: Bee-oh-bee-oh
+Chiloé: Chee-lo-ay
+Curalaba: Koo-rah-lah-bah
+Maule: Mah-oo-lay
+# Spanish terms
+encomienda: en-koh-mee-en-dah
+encomiendas: en-koh-mee-en-dahs
+# People — Ercilla is genuinely hard for English TTS
+Ercilla: Air-thee-yah

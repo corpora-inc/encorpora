@@ -1,0 +1,72 @@
+name: post-deploy-smoke
+
+# Post-deploy smoke (NOT a merge gate). After the Pages deploy completes, fetch
+# the live published catalogs and assert every pack ZIP URL is reachable (HTTP
+# 200) and every manifest parses. A red run here means production is serving a
+# broken catalog — fix forward with a new PR. Atomic deploy means a partial
+# publish shouldn't poison the catalog, but this proves it.
+
+on:
+  workflow_run:
+    workflows: ["Deploy Encorpora to GitHub Pages"]
+    types: [completed]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: smoke
+    # Only run when the deploy actually succeeded (or on manual dispatch).
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Smoke the live catalog
+        env:
+          BASE_URL: "https://encorpora.io/corpan/packs"
+        run: |
+          set -euo pipefail
+          fail=0
+
+          check_url() {
+            local url="$1"
+            local code
+            code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 30 "$url" || echo 000)
+            if [ "$code" != "200" ]; then
+              echo "::error::$url returned HTTP $code"
+              fail=1
+            else
+              echo "ok  $code  $url"
+            fi
+          }
+
+          for cat in catalog-v3.json catalog.json; do
+            url="${BASE_URL}/${cat}"
+            echo "::group::${cat}"
+            body="$(curl -s -L --max-time 30 "$url")"
+            if ! echo "$body" | jq empty 2>/dev/null; then
+              echo "::error::${url} did not return valid JSON"
+              fail=1
+              echo "::endgroup::"
+              continue
+            fi
+            check_url "$url"
+
+            # Pull every absolute pack URL referenced by the catalog and HEAD it.
+            mapfile -t urls < <(echo "$body" | jq -r '
+              [.. | objects | (.manifestUrl?, .url?, .zipUrl?)]
+              | map(select(type == "string" and startswith("http")))
+              | unique[]' 2>/dev/null || true)
+            echo "Found ${#urls[@]} pack URL(s) in ${cat}."
+            for u in "${urls[@]}"; do
+              check_url "$u"
+            done
+            echo "::endgroup::"
+          done
+
+          if [ "$fail" -ne 0 ]; then
+            echo "Post-deploy smoke FAILED."
+            exit 1
+          fi
+          echo "Post-deploy smoke passed."

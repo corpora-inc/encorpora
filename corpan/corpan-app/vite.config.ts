@@ -6,12 +6,17 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath, URL } from "url";
 
+const pkg = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
+
 // We *can* still read TAURI_DEV_HOST for iOS / future,
 // but we always fall back to 0.0.0.0 so Android can reach us.
 const rawHost = process.env.TAURI_DEV_HOST;
 const serverHost = rawHost || "127.0.0.1";
 
-const gamesRoot = fileURLToPath(new URL("../games", import.meta.url));
+const packsRoot = fileURLToPath(new URL("../packs", import.meta.url));
+const outPacksRoot = fileURLToPath(
+  new URL("../../web/io/out/corpan/packs", import.meta.url)
+);
 
 const contentTypes: Record<string, string> = {
   ".js": "text/javascript",
@@ -19,27 +24,31 @@ const contentTypes: Record<string, string> = {
   ".json": "application/json",
   ".svg": "image/svg+xml",
   ".png": "image/png",
+  ".zip": "application/zip",
 };
 
-const serveGames = () => ({
-  name: "serve-corpan-games",
+const serveStaticFromRoot = (rootDir: string) => (req: any, res: any, next: any) => {
+  if (!req.url) return next();
+  const requestPath = decodeURIComponent(req.url.split("?")[0]);
+  const filePath = path.join(rootDir, requestPath);
+  if (!filePath.startsWith(rootDir)) {
+    res.statusCode = 403;
+    res.end("Forbidden");
+    return;
+  }
+  fs.stat(filePath, (err, stat) => {
+    if (err || !stat.isFile()) return next();
+    const ext = path.extname(filePath);
+    res.setHeader("Content-Type", contentTypes[ext] ?? "application/octet-stream");
+    fs.createReadStream(filePath).pipe(res);
+  });
+};
+
+const servePacks = () => ({
+  name: "serve-corpan-packs",
   configureServer(server: any) {
-    server.middlewares.use("/games", (req: any, res: any, next: any) => {
-      if (!req.url) return next();
-      const requestPath = decodeURIComponent(req.url.split("?")[0]);
-      const filePath = path.join(gamesRoot, requestPath);
-      if (!filePath.startsWith(gamesRoot)) {
-        res.statusCode = 403;
-        res.end("Forbidden");
-        return;
-      }
-      fs.stat(filePath, (err, stat) => {
-        if (err || !stat.isFile()) return next();
-        const ext = path.extname(filePath);
-        res.setHeader("Content-Type", contentTypes[ext] ?? "application/octet-stream");
-        fs.createReadStream(filePath).pipe(res);
-      });
-    });
+    server.middlewares.use("/packs", serveStaticFromRoot(packsRoot));
+    server.middlewares.use("/corpan/packs", serveStaticFromRoot(outPacksRoot));
     server.middlewares.use("/game-proxy", async (req: any, res: any) => {
       try {
         if (!req.url) {
@@ -72,10 +81,14 @@ const serveGames = () => ({
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [react(), tailwind(), serveGames()],
+  plugins: [react(), tailwind(), servePacks()],
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version),
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@shared": fileURLToPath(new URL("../packs/shared", import.meta.url)),
     },
   },
 
@@ -87,11 +100,15 @@ export default defineConfig(async () => ({
     minify: "esbuild", // Fast minification (default, no extra deps needed)
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Split vendor code for better caching on updates
-          vendor: ["react", "react-dom", "zustand"],
-          i18n: ["i18next", "react-i18next", "i18next-http-backend"],
-          ui: ["@radix-ui/react-dialog", "@radix-ui/react-select", "@radix-ui/react-slider"],
+        // Split vendor code for better caching on updates. Vite 8 / Rolldown
+        // only accepts the function form of manualChunks (the object form was
+        // removed); match on node_modules/<pkg>/ boundaries so "react" doesn't
+        // also capture "react-i18next".
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return
+          if (/[\\/]node_modules[\\/](i18next|react-i18next|i18next-http-backend)[\\/]/.test(id)) return "i18n"
+          if (/[\\/]node_modules[\\/]@radix-ui[\\/]/.test(id)) return "ui"
+          if (/[\\/]node_modules[\\/](react|react-dom|zustand)[\\/]/.test(id)) return "vendor"
         },
       },
     },
@@ -101,7 +118,7 @@ export default defineConfig(async () => ({
   },
 
   server: {
-    port: 1420,
+    port: 1421,
     strictPort: true,
     host: serverHost,
 

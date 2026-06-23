@@ -1,0 +1,26 @@
+{
+  "_doc": "Seeded STARTING inventory per starter kit/world (R2-6 Pair Identity). Each grant is a Reward (src/economy/inventory.ts :: Reward): xp + currency (a Wallet of currencyId -> MINOR units) + items (catalog item ids). Applied ONCE to a fresh Track via inventory().applyReward() at Track birth (see PAIR_IDENTITY.md §3). Currency ids MUST exist in content/economy/currencies.json; item ids MUST exist in content/items/catalog.json — the resolver validates both and drops unknowns with a loud warn (never crashes; an empty grant simply means an empty starting pouch). `grant-traveler` is the UNIVERSAL DEFAULT (any unknown grant id falls back to it). Grants are MODEST + dignified — a small pouch plus a couple of useful, on-theme items — NEVER pay-to-win. Currency is chosen to match the world the pair enters so the opening pouch is already the right money. All referenced ids are real today; Tokyo/Chang'an item flavour is intentionally conservative (only items that exist in the shipping Antigua catalog) until those Theme item bundles land — the seam carries the bespoke flavour without inventing nonexistent ids.",
+  "version": 1,
+  "grants": {
+    "grant-traveler": {
+      "xp": 0,
+      "currency": { "gold-real": 300 },
+      "items": ["water-skin", "fresh-bread"]
+    },
+    "grant-market": {
+      "xp": 0,
+      "currency": { "gold-real": 500 },
+      "items": ["fruit-basket", "water-skin"]
+    },
+    "grant-tokyo": {
+      "xp": 0,
+      "currency": { "jpy-yen": 2000 },
+      "items": ["cup-of-coffee", "water-skin"]
+    },
+    "grant-silkroad": {
+      "xp": 0,
+      "currency": { "silver-tael": 40 },
+      "items": ["herbal-tea", "water-skin"]
+    }
+  }
+}

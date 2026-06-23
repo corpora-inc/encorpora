@@ -29,7 +29,32 @@
     "gu": "गुजराती",
     "ur": "उर्दू",
     "pa-Guru": "पंजाबी (गुरमुखी)",
-    "pa-Arab": "पंजाबी (शाहमुखी)"
+    "pa-Arab": "पंजाबी (शाहमुखी)",
+    "he": "हिब्रू",
+    "sv": "स्वीडिश",
+    "fi": "फ़िनिश",
+    "nl": "डच",
+    "sw": "स्वाहिली",
+    "no": "नॉर्वेजियन",
+    "da": "डेनिश",
+    "el": "यूनानी",
+    "ms": "मलय",
+    "ne": "नेपाली",
+    "pt-PT": "पुर्तगाली (यूरोपीय)",
+    "hr": "क्रोएशियाई",
+    "sr": "सर्बियाई",
+    "uk": "यूक्रेनी",
+    "bg": "बुल्गारियाई",
+    "ro": "रोमानियाई",
+    "ca": "कातालान",
+    "yue-Hant-HK": "कैंटोनीज़ (पारंपरिक)",
+    "cs": "चेक",
+    "lt": "लिथुआनियाई",
+    "sk": "स्लोवाक",
+    "sl": "स्लोवेनियाई",
+    "jv": "जावानीज़",
+    "su": "सुंडानीज़",
+    "tl": "तागालोग"
   },
   "categories": {
     "travel": "यात्रा",
@@ -72,42 +97,245 @@
     "extra-large": "बहुत बड़ा",
     "testTts": "नीचे दिए गए बटनों से अपनी TTS सेटिंग्स जाँचें:",
     "showRomanization": "रोमन लिप्यंतरण दिखाएँ",
-    "scrollNavigation": "स्क्रॉल नेविगेशन"
+    "scrollNavigation": "स्क्रॉल नेविगेशन",
+    "packs": "पैक",
+    "stacks": "स्टैक",
+    "theme": "थीम",
+    "themeLight": "लाइट",
+    "themeDark": "डार्क",
+    "themeSystem": "सिस्टम",
+    "phrasePacks": {
+      "header": "वाक्यांश पैक",
+      "baseCorpusName": "मूल कॉर्पस",
+      "emptyHint": "पैक्स टैब से पैक जोड़ें।",
+      "browseAll": "पैक्स देखें",
+      "searchPlaceholder": "पैक खोजें…",
+      "filter": {
+        "all": "सभी",
+        "active": "सक्रिय",
+        "inactive": "निष्क्रिय"
+      },
+      "selectAllVisible": "सभी चुनें",
+      "deselectAllVisible": "साफ़ करें",
+      "activateGroup": "सभी सक्रिय करें",
+      "deactivateGroup": "सभी निष्क्रिय करें",
+      "uncategorized": "अन्य",
+      "noMatches": "कोई परिणाम नहीं।",
+      "noFiltered": "यहाँ अभी कुछ नहीं है।",
+      "stackTotalPhrases": "~{{count}} वाक्यांश मेल खाते हैं",
+      "stackTotalNudge": "विविधता के लिए पैक जोड़ें या स्तर बढ़ाएँ।",
+      "activeCount": "{{total}} में से {{active}} सक्रिय",
+      "baseCorpusSubtitle": "{{n}} वाक्यांश"
+    },
+    "sendAnonUsage": "अनाम उपयोग डेटा भेजें",
+    "sendAnonUsageHint": "अनाम, सत्र-सीमित। कोई खाता नहीं, कोई डिवाइस आईडी नहीं, कोई IP संग्रह नहीं। इसे कभी भी बंद करें।",
+    "readPrivacyPromise": "हमारा गोपनीयता वादा पढ़ें",
+    "showStreak": "रीडिंग स्ट्रीक दिखाएँ",
+    "showStreakHint": "हेडर में एक छोटी दिन-गणना। केवल डिवाइस पर, कोई रिमाइंडर या सूचनाएँ नहीं।",
+    "primaryLanguage": "प्राथमिक (UI) भाषा",
+    "home": "होम",
+    "developer": "डेवलपर"
   },
   "onboarding": {
-    "welcome": "स्वागत है",
-    "makePrimaryLanguage": "हिंदी को मेरी मुख्य भाषा बनाएँ",
-    "canChangeLater": "आप इसे कभी भी बदल सकते हैं।",
+    "welcomePact": {
+      "title": "Corpán निरंतर विकसित होता है",
+      "subtitle": "आप शुरुआती उपयोगकर्ताओं में से हैं",
+      "bleedingEdgeTitle": "जानबूझकर अत्याधुनिक",
+      "bleedingEdgeDesc": "Corpán आपके डिवाइस पर नई AI, वाक् पहचान, आवाज़ें और इमर्सिव दुनिया लाता है, ताकि सीखना निजी और पहले ऑफलाइन रहे। हम तकनीक को तब जारी करते हैं जब वह अभी कच्ची होती है, इसलिए वह अजीब व्यवहार कर सकती है, धीरे चल सकती है, या आपके डिवाइस की क्षमता से ज़्यादा हो सकती है। बदले में, सीखने के नए तरीके संभव होते ही आपको मिलते हैं।",
+      "yourLangTitle": "हम हर समर्थित भाषा नहीं बोलते",
+      "yourLangDesc": "हम कई भाषाओं के लिए बनाते हैं क्योंकि सीखने वालों को बेहतर औज़ार मिलने चाहिए, इसलिए नहीं कि हम वे सभी भाषाएँ जानते हैं। जब हम कुछ गलत करते हैं, तो उम्मीद है कि बोलने वाले हमें उसे ठीक करने में मदद करेंगे।",
+      "plea": "कोई विचार, सुधार या अनोखा सीखने का अनुभव है जिसे आप देखना चाहते हैं? हमें बताइए। हम हर संदेश पढ़ते हैं और गहराई से सोचते हैं कि वह Corpán और भाषा सीखने के लिए क्या संभव कर सकता है।",
+      "emailCta": "हमें ईमेल करें",
+      "githubCta": "GitHub issue खोलें",
+      "join": "Corpán को दुनिया तक पहुँचाने में मदद करना चाहते हैं? हम हमेशा सहयोगियों, अनुवादकों और स्थानीय प्रतिनिधियों की तलाश में रहते हैं। हमसे जुड़िए।",
+      "pact": "सीखना शुरू करने और हमारे साथ आगे बढ़ने के लिए नीचे टैप करें। 🤝",
+      "cta": "मैं तैयार हूँ — चलिए शुरू करें"
+    },
     "pickLanguagesToLearn": "सीखने के लिए भाषाएँ चुनें",
     "textToSpeechSetup": "टेक्स्ट-टू-स्पीच सेटअप",
-    "ttsPoorQualityNote": "यदि ऑडियो गुणवत्ता खराब है, तो डिवाइस की TTS सेटिंग्स में जाकर उच्च गुणवत्ता की आवाज़ें स्थापित करें।",
-    "howToSetupTtsOn": "पर TTS सेट करें",
-    "welcomeTitle": "कॉर्पन परिवार में आपका स्वागत है!",
-    "welcomeBody": "Corpán एक ओपन सोर्स ऐप है, जिसे किसी बड़ी कंपनी ने नहीं बल्कि कुछ लोगों की छोटी टीम ने बनाया है जो भाषा और शिक्षा की सच में परवाह करती है। हम अभी शुरुआती चरण में हैं, इसलिए आपको कहीं-कहीं अधूरे हिस्से, गायब फीचर या ऐसी भाषाएँ दिख सकती हैं जो अभी जोड़ी नहीं गई हैं। अगर कुछ ठीक से काम नहीं कर रहा हो, तो कृपया GitHub या ईमेल के ज़रिए हमें बताइए। आपका फ़ीडबैक हमें तेज़ी से अपडेट जारी करने और सबके लिए भाषा सीखना बेहतर बनाने में मदद करता है।",
-    "welcomeVisit": "encorpora.io पर जाएँ",
-    "linkCopied": "लिंक कॉपी हो गया। ब्राउज़र में खोलें:",
     "reconfigureStack": "प्रोफ़ाइल पुनः कॉन्फ़िगर करें",
-    "openVoiceSettings": "वॉइस सेटिंग्स खोलें",
+    "openVoiceSettings": "Settings खोलें",
     "openTTSSetup": "TTS सेटिंग्स खोलें",
-    "welcomeFollowUp": "जुड़ने के लिए धन्यवाद — समुदाय में मिलते हैं!",
-    "learningStepTitle": "सीखना",
-    "tts": "पाठ से वाक्",
     "languageOrderTipTitle": "टिप",
-    "languageOrderTipBody": "सबसे नीचे वाली भाषा ऐप की UI भाषा बन जाती है। कभी भी बदलने के लिए खींचें।",
+    "languageOrderTipBody": "सूची में सबसे नीचे की भाषा ऐप की UI भाषा होती है। UI भाषा बदलने के लिए, दूसरी भाषा को सबसे नीचे खींचें।",
     "ttsOsTipTitle": "टिप",
     "ttsOsTipAndroid": "सबसे अच्छा: Google TTS इस्तेमाल करें। Samsung TTS Corpán में काम नहीं करता।",
-    "ttsOsTipIOS": "Settings → Accessibility में Spoken Content ढूँढें और आवाज़ें डाउनलोड करें। नोट: Apple हर भाषा के लिए आवाज़ें नहीं देता। अगर अपग्रेड से मदद नहीं मिलती, तो Apple के Feedback ऐप से सहायता माँगें।",
-    "ttsOsTipMac": "System Settings → Accessibility में Spoken Content ढूँढें और आवाज़ें डाउनलोड करें। नोट: Apple हर भाषा के लिए आवाज़ें नहीं देता। अगर अपग्रेड से मदद नहीं मिलती, तो Apple के Feedback ऐप से सहायता माँगें।",
+    "ttsOsTipIOS": "आपके डिवाइस में मुफ्त Premium आवाज़ें अंतर्निहित हैं — Apple बस उन्हें बंद रखता है। उन्हें चालू करें: Settings → Accessibility → Spoken Content → Voices → आपकी भाषा, फिर एक Premium या Enhanced आवाज़ के लिए डाउनलोड आइकन पर टैप करें। वापस आएँ और यह यहाँ स्वचालित रूप से दिखाई देगा। (Apple अभी तक हर भाषा को कवर नहीं करता है।)",
+    "ttsOsTipMac": "आपके Mac में मुफ्त Premium आवाज़ें अंतर्निहित हैं — Apple बस उन्हें बंद रखता है। उन्हें चालू करें: System Settings → Accessibility → Spoken Content → System Voice → Manage Voices, फिर एक Premium या Enhanced आवाज़ डाउनलोड करें। वापस आएँ और यह यहाँ स्वचालित रूप से दिखाई देगा। (Apple अभी तक हर भाषा को कवर नहीं करता है।)",
     "ttsOsTipWindows": "Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
     "ttsOsTipOther": "डिवाइस Settings में speech voices इंस्टॉल करें, फिर यहाँ लौटें।",
     "installVoicesAndroid": "आवाज़ें इंस्टॉल करें",
-    "learning": "भाषाएँ सीखना",
-    "ttsStepTitle": "टेक्स्ट-टू-स्पीच",
-    "socials": "फॉलो करें और जुड़ें",
-    "socialsStepTitle": "सोशल मीडिया",
     "noVoices": "कोई आवाज़ नहीं",
     "noVoicesHint": "इस भाषा को सक्षम करने के लिए आवाज़ें इंस्टॉल करें।",
-    "sendAppleFeedback": "Apple फ़ीडबैक भेजें"
+    "sendAppleFeedback": "Apple फ़ीडबैक भेजें",
+    "ttsGoogleInstalled": "Google TTS स्थापित",
+    "ttsGoogleMissing": "Google TTS स्थापित नहीं",
+    "ttsSetDefault": "डिफ़ॉल्ट के रूप में सेट करें",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech अक्षम है",
+        "detail": "हम आपको सीधे सिस्टम पेज पर ले जाएँगे ताकि इसे फिर से चालू कर सकें। बस एक टैप।",
+        "button": "Google TTS सक्षम करें"
+      },
+      "engineNotInstalled": {
+        "heading": "Google Text-to-Speech इंस्टॉल करें",
+        "detail": "Google का मुफ्त वॉयस इंजन Corpán द्वारा समर्थित अधिकांश भाषाओं के लिए उच्च-गुणवत्ता वाली आवाज़ें अनलॉक करता है — अधिकांश फोन इसे शिप नहीं करते हैं। आइए इसे जोड़ें:",
+        "button": "Play Store से इंस्टॉल करें"
+      },
+      "noEngine": {
+        "heading": "कोई वॉइस इंजन नहीं मिला",
+        "detail": "आपके डिवाइस पर कोई TTS इंजन इंस्टॉल नहीं है। जारी रखने के लिए Google Text-to-Speech इंस्टॉल करें।",
+        "button": "Google TTS इंस्टॉल करें"
+      },
+      "noVoiceData": {
+        "heading": "वॉइस डेटा डाउनलोड की ज़रूरत है",
+        "detail": "आपका इंजन तैयार है, लेकिन आपकी भाषाओं का वॉइस डेटा अभी डाउनलोड नहीं हुआ है।",
+        "button": "आवाज़ें डाउनलोड करें"
+      },
+      "engineHung": {
+        "heading": "वॉइस इंजन प्रतिक्रिया नहीं दे रहा",
+        "detail": "कभी-कभी सिस्टम TTS सेवा अटक जाती है। नीचे टैप करके फिर से कोशिश करें — आमतौर पर ठीक हो जाता है।",
+        "button": "फिर कोशिश करें"
+      },
+      "probing": "आवाज़ें सेट हो रही हैं…",
+      "working": "चल रहा है…",
+      "skipForNow": "छोड़ें — सेटिंग्स में बाद में सेट करें",
+      "openTtsSettings": "TTS सेटिंग्स खोलें",
+      "readyHeading": "आवाज़ें तैयार",
+      "readyEngine": "{{engine}} का उपयोग",
+      "installVoicesForLang": "{{lang}} के लिए आवाज़ें डाउनलोड करें",
+      "diagnostics": {
+        "toggle": "डायग्नोस्टिक्स",
+        "copyButton": "कॉपी",
+        "copied": "कॉपी हो गया"
+      },
+      "currentState": "वर्तमान स्थिति: {{state}}",
+      "state": {
+        "enabled": "सक्षम",
+        "default": "सक्षम (सिस्टम डिफ़ॉल्ट)",
+        "disabled": "अक्षम",
+        "disabledUser": "उपयोगकर्ता द्वारा अक्षम (या Samsung Device Care द्वारा)",
+        "disabledUntilUsed": "उपयोग तक अक्षम",
+        "notInstalled": "इंस्टॉल नहीं"
+      }
+    },
+    "phrasePacks": {
+      "hero": "विषय चुनें",
+      "loading": "लोड हो रहा है…",
+      "selectAll": "सभी चुनें ({{count}})",
+      "clearAll": "साफ़ करें",
+      "subscriptionNudge": "कुछ पैक Corpán Plus में शामिल हैं — आप बाद में Settings → Packs में अपग्रेड कर सकते हैं।",
+      "entryCount": "{{n}} वाक्यांश",
+      "paid": "सशुल्क",
+      "emptyHero": "अभी कोई पैक नहीं।",
+      "emptySub": "जल्द लौटें।"
+    },
+    "appleNoVoiceTitle": "Apple अभी {{lang}} की आवाज़ उपलब्ध नहीं कराता",
+    "appleNoVoiceBody": "Apple की accessibility टीम को एक छोटा-सा संदेश मदद कर सकता है। तब तक Android पर {{lang}} मूल रूप से काम करता है।",
+    "back": "वापस",
+    "continue": "जारी रखें",
+    "calibrate": {
+      "childAgeTitle": "पाठक की उम्र क्या है?",
+      "childTeen": "13–17",
+      "childUnder13": "13 से कम",
+      "enjoyComfortable": "काफी अच्छी तरह",
+      "enjoyImproving": "मैं इसे पढ़ना सीख रहा हूँ",
+      "enjoyJustStarting": "अभी शुरू कर रहा हूँ — मैं इसे पढ़ने में नया हूँ",
+      "enjoyNative": "धाराप्रवाह — यह मेरी भाषा है",
+      "enjoyTitle": "आप {{lang}} कितनी अच्छी तरह पढ़ते हैं?",
+      "learnAdvanced": "मैं काफी उन्नत हूँ",
+      "learnLittle": "थोड़ा",
+      "learnNever": "कभी नहीं — बिलकुल शुरुआती",
+      "learnTitle": "क्या आपने पहले {{lang}} का अध्ययन किया है?"
+    },
+    "confident": {
+      "addBetter": "एक समृद्ध आवाज़ अनलॉक करें",
+      "andMore": "+{{count}} और",
+      "chooseVoices": "आवाज़ें चुनें",
+      "noVoiceFor": "अभी तक कोई {{lang}} आवाज़ नहीं है — आइए एक जोड़ें ताकि Corpán ज़ोर से पढ़ सके।",
+      "voiceCountMany": "{{count}} आवाज़ें तैयार हैं",
+      "voiceCountOne": "1 आवाज़ तैयार है",
+      "yourVoiceFor": "आपकी {{lang}} आवाज़"
+    },
+    "fork": {
+      "child": {
+        "desc": "छोटे शिक्षार्थियों के लिए सौम्य, चंचल किताबें और खेल।",
+        "label": "एक बच्चे के लिए सेट करें"
+      },
+      "enjoy": {
+        "desc": "किताबें, कहानियाँ, खेल, अभ्यास और बहुत कुछ — सब कुछ आपकी भाषा में।",
+        "label": "{{lang}} में Corpán का आनंद लें"
+      },
+      "learn": {
+        "desc": "एक नई भाषा में कहानियाँ, खेल, अभ्यास और ऑडियो।",
+        "label": "एक भाषा सीखें"
+      },
+      "polyglot": {
+        "desc": "कई भाषाओं को स्टैक करें और सब कुछ एक्सप्लोर करें।",
+        "label": "कई भाषाओं का अन्वेषण करें"
+      },
+      "subtitle": "हम आपके लिए सब कुछ सेट कर देंगे। आप इसे बाद में बदल सकते हैं।",
+      "title": "आपको Corpán में क्या लाता है?"
+    },
+    "interests": {
+      "audio": "ऑडियो सुनें",
+      "audioDesc": "ऑडियोबुक, वर्णन और रेडियो।",
+      "games": "खेल खेलें",
+      "gamesDesc": "चंचल चुनौतियों के माध्यम से सीखें।",
+      "read": "कहानियाँ और किताबें पढ़ें",
+      "readDesc": "अपनी भाषा में पाठकों में गोता लगाएँ।",
+      "speak": "बोलने का अभ्यास करें",
+      "speakDesc": "वाक्यांशों को ज़ोर से बोलें और प्रतिक्रिया प्राप्त करें।",
+      "study": "अध्ययन और अभ्यास करें",
+      "studyDesc": "केंद्रित अभ्यास के साथ शब्दावली बनाएँ।",
+      "subtitle": "जो कुछ भी आपको पसंद आए उसे चुनें — हम मिलान करने के लिए अनुभव सुझाएँगे। वैकल्पिक।",
+      "title": "आप क्या करना चाहते हैं?",
+      "wild": "जंगली चीज़ें एक्सप्लोर करें",
+      "wildDesc": "आश्चर्यजनक, प्रायोगिक अनुभव।"
+    },
+    "ttsIntro": "Corpán ज़ोर से पढ़ता है। अपनी गति से सुनने के लिए एक आवाज़ पर टैप करें।",
+    "voiceGuide": {
+      "intro": "आपके डिवाइस में समृद्ध, प्राकृतिक आवाज़ें अंतर्निहित हैं — मुफ्त, और डिफ़ॉल्ट से कहीं बेहतर। निर्माता बस उन्हें बंद रखता है। आइए उन्हें चालू करें; इसमें केवल कुछ टैप लगते हैं:",
+      "macStep1": "System Settings खोलें।",
+      "macStep2": "Accessibility → Spoken Content पर जाएँ।",
+      "macStep3": "System Voice के तहत, Manage Voices खोलें।",
+      "macStep4": "अपनी भाषा के लिए एक Premium या Enhanced आवाज़ डाउनलोड करें।",
+      "macStep5": "Corpán पर वापस आएँ — यह यहाँ स्वचालित रूप से दिखाई देगा।",
+      "step1": "नीचे “सेटिंग्स खोलें” पर टैप करें।",
+      "step2": "Accessibility → Spoken Content → Voices पर जाएँ।",
+      "step3": "अपनी भाषा पर टैप करें।",
+      "step4": "एक Premium या Enhanced आवाज़ डाउनलोड करें।",
+      "step5": "Corpán पर वापस आएँ — यह यहाँ स्वचालित रूप से दिखाई देगा।",
+      "title": "अपने डिवाइस की सर्वश्रेष्ठ आवाज़ें अनलॉक करें"
+    },
+    "voicePreviewAria": "{{name}} का पूर्वावलोकन करें",
+    "voicePreviewSelected": "पूर्वावलोकन चुना गया",
+    "voiceRecommended": "अनुशंसित",
+    "voiceSelectedCount": "{{total}} में से {{count}}",
+    "whatToStart": {
+      "title": "हम कहाँ से शुरू करें?",
+      "subtitle": "शुरू करने के लिए एक चुनें — बाकी बस एक टैप दूर है।",
+      "read": {
+        "label": "पढ़ें",
+        "desc": "कहानियों और किताबों में डूब जाएँ।"
+      },
+      "study": {
+        "label": "अध्ययन करें",
+        "desc": "केंद्रित अभ्यास से अपने शब्द बढ़ाएँ।"
+      },
+      "playMusic": {
+        "label": "संगीत बजाएँ",
+        "desc": "डेक पर अपनी भाषा आज़माएँ।"
+      },
+      "playGames": {
+        "label": "खेलें",
+        "desc": "मज़ेदार चुनौतियों से सीखें।"
+      },
+      "surprise": {
+        "label": "मुझे चौंका दें!",
+        "desc": "मुझे कहीं मज़ेदार ले चलें।"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -129,6 +357,16 @@
       "cta": "देखें",
       "title": "encorpora.io",
       "desc": "दस्तावेज़ और समुदाय वाला मुख्य साइट।"
+    },
+    "instagram": {
+      "cta": "फ़ॉलो करें",
+      "desc": "@corpanapp",
+      "title": "Instagram पर फ़ॉलो करें"
+    },
+    "share": {
+      "title": "Corpán साझा करें",
+      "text": "Corpán के साथ भाषाएँ सीखें।",
+      "copied": "लिंक कॉपी हो गया!"
     }
   },
   "common": {
@@ -136,7 +374,9 @@
     "instantPolyglotPractice": "तुरंत बहुभाषी अभ्यास",
     "cancel": "रद्द करें",
     "delete": "हटाएँ",
-    "create": "बनाएँ"
+    "create": "बनाएँ",
+    "dismiss": "खारिज करें",
+    "skip": "छोड़ें"
   },
   "dialects": {
     "en": "अंग्रेज़ी",
@@ -234,7 +474,28 @@
     "ur-PK": "उर्दू (पाकिस्तान)",
     "ta": "तमिल",
     "te": "तेलुगु",
-    "kn": "कन्नड़"
+    "kn": "कन्नड़",
+    "sv": "स्वीडिश",
+    "no": "नॉर्वेजियन",
+    "da": "डेनिश",
+    "nl": "डच",
+    "ms": "मलय",
+    "fi": "फ़िनिश",
+    "sw": "स्वाहिली",
+    "el": "यूनानी",
+    "he": "हिब्रू",
+    "ne": "नेपाली",
+    "hr": "क्रोएशियाई",
+    "sr": "सर्बियाई",
+    "uk": "यूक्रेनी",
+    "bg": "बुल्गारियाई",
+    "ro": "रोमानियाई",
+    "ca": "कातालान",
+    "yue-Hant-HK": "कैंटोनीज़ (पारंपरिक)",
+    "cs": "चेक",
+    "lt": "लिथुआनियाई",
+    "sk": "स्लोवाक",
+    "sl": "स्लोवेनियाई"
   },
   "footer": {
     "appVersion": "ऐप संस्करण",
@@ -256,28 +517,29 @@
     "rename": "नाम बदलें",
     "renameLabel": "स्टैक के लिए नया नाम",
     "selectAria": "प्रोफ़ाइल चुनें",
-    "selectPlaceholder": "चुनें…"
+    "selectPlaceholder": "चुनें…",
+    "introTipTitle": "स्टैक्स",
+    "introTipBody": "स्टैक्स अलग-अलग लर्निंग सेटअप सेव करते हैं — एक यात्रा के लिए, दूसरा काम के लिए। नया स्टैक बनाने के लिए + पर टैप करें।"
   },
   "rating": {
-    "title": "Corpán आपको पसंद आ रहा है?",
-    "description": "Corpán एक छोटा ओपन-सोर्स टीम बना रहा है और हम अभी शुरुआत में हैं। अगर यह आपको 5-स्टार ऐप जैसा लगे, तो आपका छोटा-सा रेटिंग हमें बहुत मदद करता है।",
-    "rateNow": "⭐ 5-स्टार रेटिंग दें",
-    "remindLater": "शायद बाद में",
-    "noThanks": "नहीं, धन्यवाद",
+    "title": "Corpán से प्यार है?",
+    "description": "अगर आपको Corpán सच में पसंद है, तो इसे 5 स्टार दें। ऐप स्टोर में 5 स्टार से कम कुछ भी Corpán को नुकसान पहुँचाता है।",
+    "rateNow": "⭐ 5 स्टार दें",
     "close": "बंद करें",
-    "feedbackHint": "अभी 5 स्टार जैसा नहीं लगता? कम रेटिंग देने के बजाय ‘फ़ीडबैक भेजें’ पर टैप करके बताइए क्या सुधारें।",
-    "feedbackButton": "GitHub पर फ़ीडबैक भेजें"
+    "feedbackHint": "अगर यह अभी आपके लिए 5-स्टार ऐप नहीं है, तो हमें ईमेल करें या GitHub पर issue खोलकर बताएं कि क्या ठीक करना है। हम इसे बेहतर बनाना चाहते हैं।",
+    "emailButton": "हमें ईमेल करें",
+    "githubButton": "GitHub issue"
   },
   "packs": {
-    "title": "पैक्स",
-    "available": "उपलब्ध पैक्स",
-    "emptyAvailable": "अभी कोई पैक उपलब्ध नहीं है।",
-    "installed": "इंस्टॉल किए गए पैक्स",
-    "emptyInstalled": "कोई पैक इंस्टॉल नहीं है।",
+    "title": "पैक",
+    "available": "उपलब्ध",
+    "emptyAvailable": "अभी कुछ भी उपलब्ध नहीं है।",
+    "installed": "स्थापित",
+    "emptyInstalled": "अभी कुछ भी स्थापित नहीं है।",
     "get": "प्राप्त करें",
     "open": "खोलें",
     "remove": "हटाएं",
-    "version": "संस्करण {{version}}",
+    "version": "v{{version}}",
     "refresh": "रीफ्रेश",
     "free": "मुफ़्त",
     "install": "इंस्टॉल करें",
@@ -288,10 +550,289 @@
     "manifestTitle": "मैनिफेस्ट URL",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "मैनिफेस्ट URL चिपकाएँ।",
-    "devUnlockTitle": "डेवलपर पैक्स",
+    "devUnlockTitle": "डेवलपर Packs",
     "devUnlockHint": "मैनिफेस्ट इंस्टॉल खोलने के लिए 7 बार टैप करें।",
-    "devUnlockToast": "डेवलपर पैक्स सक्षम हो गए।",
-    "devIntro": "एक Corpán पैक आज़माएँ या अपना बनाएं।",
-    "devLink": "Free2z पर और जानें"
+    "devUnlockToast": "डेवलपर Packs अनलॉक हो गए हैं।",
+    "devIntro": "Corpán Pack आज़माएँ या अपना बनाएं।",
+    "devLink": "Free2z पर और जानें",
+    "new": "नया",
+    "offline": "ऑफ़लाइन",
+    "purchasing": "खरीदा जा रहा है...",
+    "buy": "{{price}} में खरीदें",
+    "premium": "प्रीमियम",
+    "availableOnMobile": "iOS और Android पर उपलब्ध",
+    "checking": "जाँच हो रही है…",
+    "phrasePack": {
+      "sectionTitle": "वाक्यांश पैक",
+      "offlineEmpty": "आप ऑफ़लाइन हैं। देखने के लिए कनेक्ट करें।",
+      "searchPlaceholder": "खोजें…",
+      "noMatches": "कोई परिणाम नहीं।",
+      "filter": {
+        "all": "सभी",
+        "available": "उपलब्ध",
+        "free": "मुफ़्त",
+        "paid": "सशुल्क",
+        "installed": "इंस्टॉल किया गया"
+      },
+      "downloadAll": "सभी डाउनलोड करें",
+      "downloadAllSummary": "{{count}} उपलब्ध · ~{{size}} MB",
+      "installingBatch": "{{total}} में से {{current}} इंस्टॉल हो रहा है…",
+      "batchFailed": "{{count}} इंस्टॉल नहीं हो सके — फिर से प्रयास करने के लिए टैप करें",
+      "activeInStack": "सक्रिय",
+      "activeBadge": "सक्रिय",
+      "subBadge": "सदस्यता",
+      "paid": "सशुल्क",
+      "free": "मुफ़्त",
+      "unlockSub": "Corpán Plus के साथ अनलॉक करें",
+      "entryCount": "{{n}} वाक्यांश",
+      "allInstalled": {
+        "title": "आपके पास सभी फ्रेज़ पैक हैं।",
+        "subtitle": "नए विषय नियमित आते रहते हैं — कभी भी वापस आइए।",
+        "manageCta": "Stacks में प्रबंधित करें"
+      },
+      "filterEmpty": {
+        "installed": "अभी कुछ इंस्टॉल नहीं है।",
+        "cta": "सभी दिखाएँ"
+      },
+      "showAll": "सभी दिखाएँ ({{count}})",
+      "collapseList": "कम दिखाएँ",
+      "openDrawer": "फ्रेज़ पैक ब्राउज़ करें ({{count}})",
+      "openDrawerLabel": "फ्रेज़ पैक ब्राउज़ करें",
+      "inactiveBadge": "निष्क्रिय",
+      "moreActionsLabel": "और कार्रवाइयां",
+      "install": "इंस्टॉल करें"
+    },
+    "unlockWithPlus": "Corpán Plus के साथ अनलॉक करें",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "Plus के साथ शामिल",
+    "installFailedTitle": "इंस्टॉल विफल",
+    "installStuckDetail": "कुछ समय से कोई प्रगति नहीं हुई है। अपना कनेक्शन जाँचें और फिर से प्रयास करें।",
+    "installStuckTitle": "डाउनलोड रुका हुआ",
+    "openPack": "{{name}} खोलें",
+    "recent": "हाल का",
+    "updateAll": "सभी अपडेट करें ({{count}})",
+    "updateAvailable": "अपडेट उपलब्ध है"
+  },
+  "subscription": {
+    "startTrialPeriod": "{{period}} का मुफ़्त ट्रायल शुरू करें",
+    "trialFree": "{{period}} के लिए मुफ़्त",
+    "trialThenCancel": "फिर {{price}}/{{period}} · कभी भी रद्द करें। आज कोई भुगतान नहीं।",
+    "title": "Corpán Plus अनलॉक करें",
+    "description": "हर सुविधा, भाषा, पैक और अपडेट तक असीमित पहुंच।",
+    "annual": "वार्षिक",
+    "monthly": "मासिक",
+    "subscribe": "सदस्यता लें",
+    "subscribing": "सदस्यता ली जा रही है...",
+    "subscribed": "Corpán Plus सक्रिय है",
+    "subscribedDescription": "{{plan}} प्लान सक्रिय है। सब कुछ अनलॉक है।",
+    "manage": "सदस्यता प्रबंधित करें",
+    "termsOfUse": "उपयोग की शर्तें",
+    "privacyPolicy": "गोपनीयता नीति",
+    "autoRenewNotice": "सदस्यताएं स्वचालित रूप से नवीनीकृत होती हैं। अपने {{store}} खाते में कभी भी रद्द करें।",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play",
+    "pendingHeading": "मंजूरी की प्रतीक्षा में",
+    "pendingDetail": "आपकी सदस्यता मंजूरी की प्रतीक्षा में है (Ask to Buy या बैंक सत्यापन)। मंजूरी मिलते ही यह अपने-आप सक्रिय हो जाएगी।",
+    "storeUnreachable": "अभी App Store तक पहुंचा नहीं जा सका।",
+    "tryAgain": "फिर कोशिश करें",
+    "affiliateCodeLabel": "अफ़िलिएट कोड",
+    "affiliateCodePlaceholder": "वैकल्पिक",
+    "affiliateInvalidFormat": "अक्षर, अंक, हाइफ़न या अंडरस्कोर का उपयोग करें।",
+    "affiliateChecking": "कोड जाँचा जा रहा है...",
+    "affiliateApplied": "कोड इस सदस्यता से जोड़ा जाएगा।",
+    "affiliateCodeHelp": "अगर किसी ने आपको यहाँ भेजा है, तो सदस्यता लेने से पहले उसका कोड दर्ज करें।",
+    "introPriceHeadline": "{{introPrice}} के लिए {{period}}",
+    "introPriceThen": ", फिर {{price}}/{{period}}",
+    "perMonth": "महीना",
+    "perYear": "साल",
+    "startFreeTrial": "नि:शुल्क परीक्षण शुरू करें",
+    "trialFirstCharge": "{{period}}: पहला शुल्क",
+    "trialHeadline": "{{period}} नि:शुल्क",
+    "trialReassurance": "अभी कोई भुगतान नहीं · कभी भी रद्द करें",
+    "trialThenPrice": ", फिर {{price}}/{{period}}",
+    "trialToday": "आज: शुरू करें",
+    "rate": "Corpán को रेट करें"
+  },
+  "restore": {
+    "button": "खरीदारी पुनर्स्थापित करें",
+    "restoring": "पुनर्स्थापित हो रहा है...",
+    "noPurchases": "कोई पिछली खरीदारी नहीं मिली।",
+    "success": "{{count}} खरीदारी पुनर्स्थापित की गई।",
+    "error": "खरीदारी पुनर्स्थापित करने में विफल।"
+  },
+  "catalogPaywall": {
+    "allLanguages": "सभी {{count}} भाषाएँ",
+    "thisBook": "यह किताब",
+    "blurbAll": "हर वर्णन, अभी और भविष्य में। हमेशा के लिए आपका।",
+    "blurbOne": "हमेशा के लिए आपका।",
+    "buyWithPrice": "खरीदें — {{price}}",
+    "orUnlockEverything": "या सब कुछ अनलॉक करें",
+    "subMonthly": "मासिक",
+    "subMonthlyPeriod": "प्रति माह",
+    "subYearly": "वार्षिक",
+    "subYearlyPeriod": "प्रति वर्ष · सर्वोत्तम मूल्य",
+    "errorHeading": "हम अभी App Store से संपर्क नहीं कर सके।",
+    "tryAgain": "पुनः प्रयास करें",
+    "pendingHeading": "अनुमोदन की प्रतीक्षा",
+    "pendingDetail": "आपकी खरीद अनुमोदन की प्रतीक्षा कर रही है (Ask to Buy या बैंक सत्यापन)। अनुमोदित होने पर स्वचालित रूप से सक्रिय हो जाएगी।",
+    "noProductsError": "App Store ने कोई उत्पाद नहीं लौटाए। आमतौर पर कुछ सेकंड में हल हो जाता है — पुनः प्रयास करें।"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "वॉइस प्लेबैक विफल",
+    "playbackFailedDetail": "ठीक करने के लिए अपने डिवाइस की TTS सेटिंग्स खोलें।",
+    "openSettingsAction": "TTS सेटिंग्स खोलें"
+  },
+  "discoverPacks": {
+    "title": "Corpán को अपना बनाएं",
+    "subtitle": "ज़बरदस्त रीडर, गेम्स और टूल्स जोड़ें — Corpán में बने हुए, ताकि आपका अभ्यास और गहरा हो।",
+    "maybeLater": "शायद बाद में",
+    "empty": "और भी पैक्स आ रहे हैं — तब तक Corpán एक्सप्लोर करें।",
+    "offlineEmpty": "पैक्स खोजने के लिए इंटरनेट से कनेक्ट करें — या अभी के लिए छोड़ दें।"
+  },
+  "paywall": {
+    "title": "Corpán Plus अनलॉक करें",
+    "thanksTitle": "Corpán Plus सक्रिय है",
+    "thanksBody": "सब कुछ अनलॉक है।",
+    "bookSubhead": "{{title}} जारी रखें और हर सुविधा अनलॉक करें।",
+    "subhead": "हर सुविधा, भाषा और अपडेट तक असीमित पहुंच। कोई विज्ञापन नहीं। आपका डेटा आपके डिवाइस पर ही रहता है।",
+    "pitch": "किताबें, पैक, गेम, बोलने के टूल और नए सीखने के अनुभव सब शामिल हैं।",
+    "maybeLater": "शायद बाद में",
+    "continue": "जारी रखें",
+    "dismiss": "खारिज करें"
+  },
+  "streak": {
+    "title": "{{count}}-दिन की स्ट्रीक"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "वर्णन किए गए ऑडियोबुक के साथ पढ़ें — शांत, शब्द-दर-शब्द हाइलाइटिंग के साथ।",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "मैंडरिन अक्षरों में महारत हासिल करें, स्ट्रोक-दर-स्ट्रोक।",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "एक वाक्यांश सुनें, उसे मिलाने के लिए चलाएँ — खेलकर सीखें।",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "एक त्वरित गेम में वाक्यांशों को टुकड़ों में बनाएँ।",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "अपनी भाषाओं में वाक्यांशों को पलटें — त्वरित, केंद्रित अभ्यास।",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "वाक्यांशों को ज़ोर से बोलें और उच्चारण प्रतिक्रिया प्राप्त करें।",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "वही ऑडियोबुक इमर्सिव 3D में — शब्द पढ़े जाने पर अंतरिक्ष में प्रवाहित होते हैं।",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "दुनिया भर से लाइव रेडियो सुनें।",
+      "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "टूटोमैटन",
+      "blurb": "तुम्हारे फ़ोन पर एक धैर्यवान ट्यूटर, हर उस भाषा के लिए जो तुम सीख रहे हो"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "एक जीवंत शहर जो हर मुलाकात को पाठ में बदलता है।"
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "जो भाषा सीख रहे हैं, उसे सैंपल कीजिए। स्क्रैच कीजिए, जब तक वह याद में बस न जाए।"
+    }
+  },
+  "home": {
+    "continueLearning": "सीखना जारी रखें",
+    "experiences": "अनुभव",
+    "forYou": "आपके लिए",
+    "get": "प्राप्त करें",
+    "installing": "इंस्टॉल हो रहा है…",
+    "library": "लाइब्रेरी",
+    "like": "पसंद करें",
+    "notForMe": "मेरे लिए नहीं",
+    "open": "खोलें",
+    "openPhrases": "वाक्यांश खोलें",
+    "phraseFlipDesc": "अपनी भाषाओं में वाक्यांशों को पलटें",
+    "plusChip": "Corpán Plus — सब कुछ अनलॉक करें",
+    "recommended": "अनुशंसित",
+    "showAnother": "मुझे दूसरा दिखाएँ",
+    "tryIt": "इसे आज़माएँ",
+    "packUpdates": "आपके पैक अपडेट उपलब्ध हैं",
+    "updateAll": "सब अपडेट करें"
+  },
+  "offline": {
+    "cachedSubtitle": "आपके अंतिम कैश किए गए परिणाम दिखाए जा रहे हैं।",
+    "catalogSubtitle": "नए पैक खोजने के लिए फिर से कनेक्ट करें। आपके इंस्टॉल किए गए पैक अभी भी काम करते हैं।",
+    "installNeedsInternet": "डाउनलोड करने के लिए फिर से कनेक्ट करें।",
+    "onboardingBanner": "ऑफ़लाइन — फिर से कनेक्ट होने पर चयन इंस्टॉल हो जाएँगे।",
+    "packCatalogSubtitle": "आपके इंस्टॉल किए गए पैक अभी भी काम करते हैं। और ब्राउज़ करने के लिए फिर से कनेक्ट करें।",
+    "packCatalogTitle": "पैक कैटलॉग के लिए इंटरनेट चाहिए",
+    "phrasePacksOnboardingSubtitle": "फिर से कनेक्ट होने के बाद आप Settings → Packs से वाक्यांश पैक चुन सकते हैं।",
+    "phrasePacksSubtitle": "आपके इंस्टॉल किए गए वाक्यांश पैक अभी भी काम करते हैं। नए ब्राउज़ करने के लिए फिर से कनेक्ट करें।",
+    "phrasePacksTitle": "वाक्यांश पैक कैटलॉग के लिए इंटरनेट चाहिए",
+    "purchaseNeedsInternet": "खरीदने के लिए फिर से कनेक्ट करें।",
+    "restoreSubtitle": "खरीदारी बहाल करने के लिए फिर से कनेक्ट करें।",
+    "subscriptionSubtitle": "सदस्यता लेने के लिए फिर से कनेक्ट करें। आपके इंस्टॉल किए गए पैक और बंडल किए गए वाक्यांश अभी भी काम करते हैं।",
+    "subscriptionTitle": "सदस्यताओं के लिए इंटरनेट चाहिए",
+    "title": "इंटरनेट नहीं है",
+    "voiceDownloadSubtitle": "आपके डिवाइस पर पहले से मौजूद आवाज़ें अभी भी काम करती हैं। और इंस्टॉल करने के लिए फिर से कनेक्ट करें।",
+    "voiceDownloadTitle": "आवाज़ डाउनलोड के लिए इंटरनेट चाहिए"
+  },
+  "quickSettings": {
+    "fullSettings": "पूर्ण Settings",
+    "title": "त्वरित Settings"
+  },
+  "tour": {
+    "maybeLater": "शायद बाद में",
+    "progress": "{{total}} में से {{n}}"
+  },
+  "update": {
+    "availableLine": "अपडेट उपलब्ध है → {{version}}",
+    "close": "बंद करें",
+    "description": "आपके ऐप स्टोर में Corpán का एक नया संस्करण उपलब्ध है।",
+    "remindLater": "शायद बाद में",
+    "skipThisVersion": "इस संस्करण को छोड़ें",
+    "title": "अपडेट उपलब्ध है",
+    "update": "अपडेट करें",
+    "updateNow": "अभी अपडेट करें",
+    "versionLine": "संस्करण {{version}} इंस्टॉल होने के लिए तैयार है।"
+  },
+  "streakBadge": {
+    "label": "{{days}}-दिन की लकीर"
+  },
+  "dailyLock": {
+    "title": "आपका आज का {{count}} {{unit}}",
+    "streakActive": "{{days}}-दिन की लकीर — इसे जारी रखने के लिए कल वापस आएं।",
+    "streakStart": "इसे जारी रखने के लिए कल वापस आएं।",
+    "resetIn": "{{time}} में रीसेट होगा",
+    "cta": "अब Corpán Plus के साथ जारी रखें",
+    "dismiss": "शायद बाद में",
+    "closeAria": "खारिज करें",
+    "countdownHm": "{{h}}घं {{m}}मि",
+    "countdownM": "{{m}}मि",
+    "countdownSoon": "किसी भी क्षण"
+  },
+  "code": {
+    "attributedUnverified": "कोड आपकी सदस्यता से जुड़ा होगा।",
+    "checkFailed": "जांच नहीं कर सके",
+    "checking": "कोड की जांच हो रही है…",
+    "creditedTo": "{{partner}} को श्रेय दिया गया",
+    "fieldLabel": "ऑफ़र या सहबद्ध कोड",
+    "help": "क्या आपके पास कोड है? अपना ऑफ़र लागू करने के लिए इसे दर्ज करें।",
+    "redeemUnavailable": "रिडीम स्क्रीन नहीं खोल सके। कृपया पुनः प्रयास करें।",
+    "redeemWithApple": "Apple के साथ रिडीम करें",
+    "redeeming": "रिडीम खोल रहे हैं…",
+    "retry": "पुनः प्रयास करें",
+    "subscribeWithDiscount": "सदस्यता लें ({{discount}})",
+    "redeemCode": "कोड रिडीम करें",
+    "notApplied": "इस कोड से कोई छूट नहीं मिलती।"
   }
 }

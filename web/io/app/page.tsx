@@ -3,11 +3,12 @@
 import { FC } from "react";
 import { Hero } from "@/components/Hero";
 import { AboutSection } from "@/components/AboutSection";
-import ContactSection from "@/components/Contact";
-import FeaturedBooks from "@/components/FeaturedBooks";
 import WhySection from "@/components/WhySection";
-import Features from "@/components/Features";
 import FeaturedApps from "@/components/FeaturedApp";
+import FeaturedBooks from "@/components/FeaturedBooks";
+import YouTubeSection from "@/components/YouTubeSection";
+import Features from "@/components/Features";
+import ContactSection from "@/components/Contact";
 
 const HomePage: FC = () => {
   return (
@@ -15,9 +16,10 @@ const HomePage: FC = () => {
       <Hero />
       <AboutSection />
       <WhySection />
-      <Features />
       <FeaturedApps />
       <FeaturedBooks />
+      <YouTubeSection />
+      <Features />
       <ContactSection />
     </>
   );

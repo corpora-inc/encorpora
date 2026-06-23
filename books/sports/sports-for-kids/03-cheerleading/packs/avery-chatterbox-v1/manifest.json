@@ -1,0 +1,14 @@
+{
+  "id": "book_sports_for_kids_cheerleading",
+  "name": "Hey, I'm Avery, and I'm a Cheerleader",
+  "version": "0.1.0",
+  "type": "book",
+  "primary_language": "en",
+  "metadata": {
+    "series": "Sports for Kids",
+    "author": "Skylar Saveland",
+    "tts": true,
+    "estimatedReadTime": "12-15 minutes",
+    "estimatedListenTime": "12-15 minutes"
+  }
+}

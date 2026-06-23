@@ -45,7 +45,7 @@ This document lists **manual/out-of-repo** setup required to make production con
 
 ## Assumptions the repo expects
 - `VITE_GAME_VERIFY_URL` points to `/verify-purchase` in prod.
-- `VITE_ENABLE_GAMES` enables the in-app games panel (default: hidden in prod).
+- `VITE_ENABLE_PACKS` enables the in-app packs panel (default: hidden in prod).
 - Pack bundles are uploaded to S3 with immutable versioned URLs.
 - Packs include `manifest.json` and are zipped for download.
 - The app has internet access and can write to app data dir.

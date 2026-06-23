@@ -21,15 +21,18 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
+      ],
+      "@shared/*": [
+        "../packs/shared/*"
       ]
     }
   },
   "include": [
-    "src"
+    "src",
+    "../packs/shared/analytics"
   ],
   "references": [
     {

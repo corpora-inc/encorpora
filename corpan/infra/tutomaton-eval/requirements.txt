@@ -1,0 +1,5 @@
+# py3langid — pure-Python language identification (no C++ compile, bundles its
+# own model). Used for same-script disambiguation (hi/mr/ne, es/it, ru/uk/bg).
+# The harness degrades to script-only coverage if absent, which is already
+# correct for language-unique scripts (Brahmic/Hangul/Thai/Greek/Hebrew).
+py3langid>=0.3.0

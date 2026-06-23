@@ -1,0 +1,4351 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_thomas_pellow",
+  "total_segments": 291,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "A Note to the Reader",
+      "text_markdown": "A Note to the Reader"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This is not a pirate story told from the pirate's side.",
+      "text_markdown": "This is not a pirate story told from the pirate's side.",
+      "tts": {
+        "text": "This is not a pirate story told from the pirate's side.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "This is the story of someone who was taken.",
+      "text_markdown": "This is the story of someone who was taken.",
+      "tts": {
+        "text": "This is the story of someone who was taken.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow was an English boy from Cornwall.",
+      "text_markdown": "Thomas Pellow was an English boy from Cornwall.",
+      "tts": {
+        "text": "Thomas Pellow was an English boy from Cornwall.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "At the age of eleven, he was captured by Barbary corsairs and taken to Morocco.",
+      "text_markdown": "At the age of eleven, he was captured by Barbary corsairs and taken to Morocco.",
+      "tts": {
+        "text": "At the age of eleven, he was captured by Barbary corsairs and taken to Morocco.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He would not return home for twenty-three years.",
+      "text_markdown": "He would not return home for twenty-three years.",
+      "tts": {
+        "text": "He would not return home for twenty-three years.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "During those years, he was forced to convert to Islam, trained as a soldier, and made to serve one of the most powerful and brutal rulers in North African history.",
+      "text_markdown": "During those years, he was forced to convert to Islam, trained as a soldier, and made to serve one of the most powerful and brutal rulers in North African history.",
+      "tts": {
+        "text": "During those years, he was forced to convert to Islam, trained as a soldier, and made to serve one of the most powerful and brutal rulers in North African history.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He witnessed things that no child should ever see.",
+      "text_markdown": "He witnessed things that no child should ever see.",
+      "tts": {
+        "text": "He witnessed things that no child should ever see.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When he finally escaped and returned to England, he wrote a memoir of his captivity.",
+      "text_markdown": "When he finally escaped and returned to England, he wrote a memoir of his captivity.",
+      "tts": {
+        "text": "When he finally escaped and returned to England, he wrote a memoir of his captivity.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is one of the most remarkable documents of the 1700s.",
+      "text_markdown": "It is one of the most remarkable documents of the 1700s.",
+      "tts": {
+        "text": "It is one of the most remarkable documents of the seventeen hundreds.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It is also one of the most painful.",
+      "text_markdown": "It is also one of the most painful.",
+      "tts": {
+        "text": "It is also one of the most painful.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His story reminds us that piracy was not an adventure for everyone.",
+      "text_markdown": "His story reminds us that piracy was not an adventure for everyone.",
+      "tts": {
+        "text": "His story reminds us that piracy was not an adventure for everyone.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note to the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "For every pirate who chose the sea, there were hundreds of people who had no choice at all.",
+      "text_markdown": "For every pirate who chose the sea, there were hundreds of people who had no choice at all.",
+      "tts": {
+        "text": "For every pirate who chose the sea, there were hundreds of people who had no choice at all.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The World of the Barbary Coast",
+      "text_markdown": "The World of the Barbary Coast"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Barbary Coast was the European name for the coast of North Africa.",
+      "text_markdown": "The Barbary Coast was the European name for the coast of North Africa.",
+      "tts": {
+        "text": "The Barbary Coast was the European name for the coast of North Africa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It stretched from Morocco in the west to Libya in the east.",
+      "text_markdown": "It stretched from Morocco in the west to Libya in the east.",
+      "tts": {
+        "text": "It stretched from Morocco in the west to Libya in the east.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "For centuries, it was home to some of the most feared pirates in the world.",
+      "text_markdown": "For centuries, it was home to some of the most feared pirates in the world.",
+      "tts": {
+        "text": "For centuries, it was home to some of the most feared pirates in the world.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Barbary corsairs were not ordinary pirates.",
+      "text_markdown": "The Barbary corsairs were not ordinary pirates.",
+      "tts": {
+        "text": "The Barbary corsairs were not ordinary pirates.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They operated with the blessing and often the direct support of the North African states.",
+      "text_markdown": "They operated with the blessing and often the direct support of the North African states.",
+      "tts": {
+        "text": "They operated with the blessing and often the direct support of the North African states.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Morocco, Algiers, Tunis, and Tripoli all profited from corsair raids.",
+      "text_markdown": "Morocco, Algiers, Tunis, and Tripoli all profited from corsair raids.",
+      "tts": {
+        "text": "Morocco, Algiers, Tunis, and Tripoli all profited from corsair raids.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The corsairs raided European shipping and coastal towns.",
+      "text_markdown": "The corsairs raided European shipping and coastal towns.",
+      "tts": {
+        "text": "The corsairs raided European shipping and coastal towns.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "They captured ships, stole cargo, and took prisoners.",
+      "text_markdown": "They captured ships, stole cargo, and took prisoners.",
+      "tts": {
+        "text": "They captured ships, stole cargo, and took prisoners.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The prisoners were the most valuable prize of all.",
+      "text_markdown": "The prisoners were the most valuable prize of all.",
+      "tts": {
+        "text": "The prisoners were the most valuable prize of all.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Captives could be ransomed back to their families for large sums of money.",
+      "text_markdown": "Captives could be ransomed back to their families for large sums of money.",
+      "tts": {
+        "text": "Captives could be ransomed back to their families for large sums of money.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Those who could not be ransomed were sold as slaves.",
+      "text_markdown": "Those who could not be ransomed were sold as slaves.",
+      "tts": {
+        "text": "Those who could not be ransomed were sold as slaves.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Historians estimate that between 1530 and 1780, over one million Europeans were enslaved by Barbary corsairs.",
+      "text_markdown": "Historians estimate that between 1530 and 1780, over one million Europeans were enslaved by Barbary corsairs.",
+      "tts": {
+        "text": "Historians estimate that between fifteen thirty and seventeen eighty, over one million Europeans were enslaved by Barbary corsairs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "This was the other side of the slave trade.",
+      "text_markdown": "This was the other side of the slave trade.",
+      "tts": {
+        "text": "This was the other side of the slave trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "While European powers were enslaving Africans and shipping them across the Atlantic, North African powers were enslaving Europeans and putting them to work in their own lands.",
+      "text_markdown": "While European powers were enslaving Africans and shipping them across the Atlantic, North African powers were enslaving Europeans and putting them to work in their own lands.",
+      "tts": {
+        "text": "While European powers were enslaving Africans and shipping them across the Atlantic, North African powers were enslaving Europeans and putting them to work in their own lands.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The suffering was real on both sides of the Mediterranean.",
+      "text_markdown": "The suffering was real on both sides of the Mediterranean.",
+      "tts": {
+        "text": "The suffering was real on both sides of the Mediterranean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The corsair port of Sale, on the Atlantic coast of Morocco, was particularly notorious.",
+      "text_markdown": "The corsair port of Sale, on the Atlantic coast of Morocco, was particularly notorious.",
+      "tts": {
+        "text": "The corsair port of Sale, on the Atlantic coast of Morocco, was particularly notorious.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The corsairs of Sale were known as the Sallee Rovers.",
+      "text_markdown": "The corsairs of Sale were known as the Sallee Rovers.",
+      "tts": {
+        "text": "The corsairs of Sale were known as the Sallee Rovers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They ventured far beyond the Mediterranean, raiding as far north as Iceland and Ireland.",
+      "text_markdown": "They ventured far beyond the Mediterranean, raiding as far north as Iceland and Ireland.",
+      "tts": {
+        "text": "They ventured far beyond the Mediterranean, raiding as far north as Iceland and Ireland.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1631, Sallee Rovers raided the village of Baltimore in Ireland and carried off over 100 people.",
+      "text_markdown": "In 1631, Sallee Rovers raided the village of Baltimore in Ireland and carried off over 100 people.",
+      "tts": {
+        "text": "In sixteen thirty-one, Sallee Rovers raided the village of Baltimore in Ireland and carried off over one hundred people.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Most were never seen again.",
+      "text_markdown": "Most were never seen again.",
+      "tts": {
+        "text": "Most were never seen again.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "This was the world that Thomas Pellow would be dragged into.",
+      "text_markdown": "This was the world that Thomas Pellow would be dragged into.",
+      "tts": {
+        "text": "This was the world that Thomas Pellow would be dragged into.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morocco in the early 1700s was ruled by Sultan Moulay Ismail.",
+      "text_markdown": "Morocco in the early 1700s was ruled by Sultan Moulay Ismail.",
+      "tts": {
+        "text": "Morocco in the early seventeen hundreds was ruled by Sultan Moulay Ismail.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was one of the longest-reigning monarchs in Moroccan history, ruling from 1672 to 1727.",
+      "text_markdown": "He was one of the longest-reigning monarchs in Moroccan history, ruling from 1672 to 1727.",
+      "tts": {
+        "text": "He was one of the longest-reigning monarchs in Moroccan history, ruling from sixteen seventy-two to seventeen twenty-seven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was also one of the most brutal.",
+      "text_markdown": "He was also one of the most brutal.",
+      "tts": {
+        "text": "He was also one of the most brutal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moulay Ismail dreamed of making Morocco into a great empire.",
+      "text_markdown": "Moulay Ismail dreamed of making Morocco into a great empire.",
+      "tts": {
+        "text": "Moulay Ismail dreamed of making Morocco into a great empire.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He built a massive palace complex at Meknes, his capital.",
+      "text_markdown": "He built a massive palace complex at Meknes, his capital.",
+      "tts": {
+        "text": "He built a massive palace complex at Meknes, his capital.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The construction was carried out by tens of thousands of slaves, both European and African.",
+      "text_markdown": "The construction was carried out by tens of thousands of slaves, both European and African.",
+      "tts": {
+        "text": "The construction was carried out by tens of thousands of slaves, both European and African.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The sultan was known for extreme acts of violence.",
+      "text_markdown": "The sultan was known for extreme acts of violence.",
+      "tts": {
+        "text": "The sultan was known for extreme acts of violence.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He personally killed servants and courtiers who displeased him.",
+      "text_markdown": "He personally killed servants and courtiers who displeased him.",
+      "tts": {
+        "text": "He personally killed servants and courtiers who displeased him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Foreign ambassadors reported witnessing executions carried out on a whim.",
+      "text_markdown": "Foreign ambassadors reported witnessing executions carried out on a whim.",
+      "tts": {
+        "text": "Foreign ambassadors reported witnessing executions carried out on a whim.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Fear was the foundation of his power.",
+      "text_markdown": "Fear was the foundation of his power.",
+      "tts": {
+        "text": "Fear was the foundation of his power.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He maintained an enormous army, including a personal guard of enslaved Black soldiers known as the Black Guard.",
+      "text_markdown": "He maintained an enormous army, including a personal guard of enslaved Black soldiers known as the Black Guard.",
+      "tts": {
+        "text": "He maintained an enormous army, including a personal guard of enslaved Black soldiers known as the Black Guard.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "This army was fiercely loyal to the sultan and served as both his military force and his instrument of terror.",
+      "text_markdown": "This army was fiercely loyal to the sultan and served as both his military force and his instrument of terror.",
+      "tts": {
+        "text": "This army was fiercely loyal to the sultan and served as both his military force and his instrument of terror.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "European captives in Morocco served many roles.",
+      "text_markdown": "European captives in Morocco served many roles.",
+      "tts": {
+        "text": "European captives in Morocco served many roles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Some were put to hard labor, building the sultan's palaces.",
+      "text_markdown": "Some were put to hard labor, building the sultan's palaces.",
+      "tts": {
+        "text": "Some were put to hard labor, building the sultan's palaces.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Others were trained as soldiers or administrators.",
+      "text_markdown": "Others were trained as soldiers or administrators.",
+      "tts": {
+        "text": "Others were trained as soldiers or administrators.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A few were kept as personal servants.",
+      "text_markdown": "A few were kept as personal servants.",
+      "tts": {
+        "text": "A few were kept as personal servants.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Captives who converted to Islam were treated somewhat better.",
+      "text_markdown": "Captives who converted to Islam were treated somewhat better.",
+      "tts": {
+        "text": "Captives who converted to Islam were treated somewhat better.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Conversion did not guarantee freedom, but it opened doors to higher positions.",
+      "text_markdown": "Conversion did not guarantee freedom, but it opened doors to higher positions.",
+      "tts": {
+        "text": "Conversion did not guarantee freedom, but it opened doors to higher positions.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Many Europeans converted under torture or the threat of death.",
+      "text_markdown": "Many Europeans converted under torture or the threat of death.",
+      "tts": {
+        "text": "Many Europeans converted under torture or the threat of death.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "European governments occasionally negotiated for the release of their citizens.",
+      "text_markdown": "European governments occasionally negotiated for the release of their citizens.",
+      "tts": {
+        "text": "European governments occasionally negotiated for the release of their citizens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ransom payments were common.",
+      "text_markdown": "Ransom payments were common.",
+      "tts": {
+        "text": "Ransom payments were common.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Religious orders, particularly the Trinitarians and Mercedarians, dedicated themselves to redeeming captives.",
+      "text_markdown": "Religious orders, particularly the Trinitarians and Mercedarians, dedicated themselves to redeeming captives.",
+      "tts": {
+        "text": "Religious orders, particularly the Trinitarians and Mercedarians, dedicated themselves to redeeming captives.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the ransoming process was slow, expensive, and unreliable.",
+      "text_markdown": "But the ransoming process was slow, expensive, and unreliable.",
+      "tts": {
+        "text": "But the ransoming process was slow, expensive, and unreliable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Many captives were never ransomed.",
+      "text_markdown": "Many captives were never ransomed.",
+      "tts": {
+        "text": "Many captives were never ransomed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They lived and died in Morocco, far from home.",
+      "text_markdown": "They lived and died in Morocco, far from home.",
+      "tts": {
+        "text": "They lived and died in Morocco, far from home.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "The World of the Barbary Coast",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Thomas Pellow would nearly become one of them.",
+      "text_markdown": "Thomas Pellow would nearly become one of them.",
+      "tts": {
+        "text": "Thomas Pellow would nearly become one of them.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Origins",
+      "text_markdown": "Origins"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow was born in 1704 in the town of Penryn, Cornwall, on the southwestern tip of England.",
+      "text_markdown": "Thomas Pellow was born in 1704 in the town of Penryn, Cornwall, on the southwestern tip of England.",
+      "tts": {
+        "text": "Thomas Pellow was born in seventeen oh four in the town of Penryn, Cornwall, on the southwestern tip of England.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cornwall was a seafaring region.",
+      "text_markdown": "Cornwall was a seafaring region.",
+      "tts": {
+        "text": "Cornwall was a seafaring region.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Its people had looked to the ocean for their livelihoods for generations.",
+      "text_markdown": "Its people had looked to the ocean for their livelihoods for generations.",
+      "tts": {
+        "text": "Its people had looked to the ocean for their livelihoods for generations.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas's uncle, Captain John Pellow, was a merchant sailor who traded with ports across Europe and the Mediterranean.",
+      "text_markdown": "Thomas's uncle, Captain John Pellow, was a merchant sailor who traded with ports across Europe and the Mediterranean.",
+      "tts": {
+        "text": "Thomas's uncle, Captain John Pellow, was a merchant sailor who traded with ports across Europe and the Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was an experienced seaman who knew the risks of the trade.",
+      "text_markdown": "He was an experienced seaman who knew the risks of the trade.",
+      "tts": {
+        "text": "He was an experienced seaman who knew the risks of the trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Among those risks, Barbary corsairs were the most feared.",
+      "text_markdown": "Among those risks, Barbary corsairs were the most feared.",
+      "tts": {
+        "text": "Among those risks, Barbary corsairs were the most feared.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1715, when Thomas was just eleven years old, his uncle took him aboard his ship, the Francis.",
+      "text_markdown": "In 1715, when Thomas was just eleven years old, his uncle took him aboard his ship, the Francis.",
+      "tts": {
+        "text": "In seventeen fifteen, when Thomas was just eleven years old, his uncle took him aboard his ship, the Francis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The voyage was meant to be a trading expedition to the Mediterranean.",
+      "text_markdown": "The voyage was meant to be a trading expedition to the Mediterranean.",
+      "tts": {
+        "text": "The voyage was meant to be a trading expedition to the Mediterranean.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It was supposed to be an education for the boy, a chance to learn the family trade.",
+      "text_markdown": "It was supposed to be an education for the boy, a chance to learn the family trade.",
+      "tts": {
+        "text": "It was supposed to be an education for the boy, a chance to learn the family trade.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas was excited to go to sea.",
+      "text_markdown": "Thomas was excited to go to sea.",
+      "tts": {
+        "text": "Thomas was excited to go to sea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Like most boys in Cornwall, he had grown up hearing tales of distant ports and ocean voyages.",
+      "text_markdown": "Like most boys in Cornwall, he had grown up hearing tales of distant ports and ocean voyages.",
+      "tts": {
+        "text": "Like most boys in Cornwall, he had grown up hearing tales of distant ports and ocean voyages.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The reality of life at sea would prove far different from the stories.",
+      "text_markdown": "The reality of life at sea would prove far different from the stories.",
+      "tts": {
+        "text": "The reality of life at sea would prove far different from the stories.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Francis sailed from Falmouth with a small crew.",
+      "text_markdown": "The Francis sailed from Falmouth with a small crew.",
+      "tts": {
+        "text": "The Francis sailed from Falmouth with a small crew.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Captain Pellow planned to trade English goods for Mediterranean products.",
+      "text_markdown": "Captain Pellow planned to trade English goods for Mediterranean products.",
+      "tts": {
+        "text": "Captain Pellow planned to trade English goods for Mediterranean products.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The route would take them along the coasts of Spain and Portugal.",
+      "text_markdown": "The route would take them along the coasts of Spain and Portugal.",
+      "tts": {
+        "text": "The route would take them along the coasts of Spain and Portugal.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Somewhere off the coast of North Africa, disaster struck.",
+      "text_markdown": "Somewhere off the coast of North Africa, disaster struck.",
+      "tts": {
+        "text": "Somewhere off the coast of North Africa, disaster struck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Corsairs from Sale spotted the Francis and gave chase.",
+      "text_markdown": "Corsairs from Sale spotted the Francis and gave chase.",
+      "tts": {
+        "text": "Corsairs from Sale spotted the Francis and gave chase.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The merchant vessel was no match for the fast, well-armed corsair ships.",
+      "text_markdown": "The merchant vessel was no match for the fast, well-armed corsair ships.",
+      "tts": {
+        "text": "The merchant vessel was no match for the fast, well-armed corsair ships.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Captain Pellow tried to outrun them, but the Francis was too slow.",
+      "text_markdown": "Captain Pellow tried to outrun them, but the Francis was too slow.",
+      "tts": {
+        "text": "Captain Pellow tried to outrun them, but the Francis was too slow.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The corsairs closed the distance and fired warning shots.",
+      "text_markdown": "The corsairs closed the distance and fired warning shots.",
+      "tts": {
+        "text": "The corsairs closed the distance and fired warning shots.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The crew of the Francis had no choice but to surrender.",
+      "text_markdown": "The crew of the Francis had no choice but to surrender.",
+      "tts": {
+        "text": "The crew of the Francis had no choice but to surrender.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The corsairs boarded the ship and took the crew prisoner.",
+      "text_markdown": "The corsairs boarded the ship and took the crew prisoner.",
+      "tts": {
+        "text": "The corsairs boarded the ship and took the crew prisoner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thomas watched as armed men swarmed over the deck.",
+      "text_markdown": "Thomas watched as armed men swarmed over the deck.",
+      "tts": {
+        "text": "Thomas watched as armed men swarmed over the deck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was terrified.",
+      "text_markdown": "He was terrified.",
+      "tts": {
+        "text": "He was terrified.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He was a child, alone among violent strangers.",
+      "text_markdown": "He was a child, alone among violent strangers.",
+      "tts": {
+        "text": "He was a child, alone among violent strangers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The captives were taken to Sale and then marched inland to Meknes, the sultan's capital.",
+      "text_markdown": "The captives were taken to Sale and then marched inland to Meknes, the sultan's capital.",
+      "tts": {
+        "text": "The captives were taken to Sale and then marched inland to Meknes, the sultan's capital.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The journey took several days.",
+      "text_markdown": "The journey took several days.",
+      "tts": {
+        "text": "The journey took several days.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas walked in chains under the North African sun, surrounded by people whose language he could not understand.",
+      "text_markdown": "Thomas walked in chains under the North African sun, surrounded by people whose language he could not understand.",
+      "tts": {
+        "text": "Thomas walked in chains under the North African sun, surrounded by people whose language he could not understand.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When they arrived at Meknes, Thomas saw the sultan's palace for the first time.",
+      "text_markdown": "When they arrived at Meknes, Thomas saw the sultan's palace for the first time.",
+      "tts": {
+        "text": "When they arrived at Meknes, Thomas saw the sultan's palace for the first time.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was enormous, a sprawling complex of courtyards, gardens, and massive walls.",
+      "text_markdown": "It was enormous, a sprawling complex of courtyards, gardens, and massive walls.",
+      "tts": {
+        "text": "It was enormous, a sprawling complex of courtyards, gardens, and massive walls.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It was also a place of suffering, built by the labor of slaves.",
+      "text_markdown": "It was also a place of suffering, built by the labor of slaves.",
+      "tts": {
+        "text": "It was also a place of suffering, built by the labor of slaves.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The captives were presented to Sultan Moulay Ismail.",
+      "text_markdown": "The captives were presented to Sultan Moulay Ismail.",
+      "tts": {
+        "text": "The captives were presented to Sultan Moulay Ismail.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The sultan inspected them as a farmer might inspect livestock.",
+      "text_markdown": "The sultan inspected them as a farmer might inspect livestock.",
+      "tts": {
+        "text": "The sultan inspected them as a farmer might inspect livestock.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He decided who would work, who might be ransomed, and who would serve in his household.",
+      "text_markdown": "He decided who would work, who might be ransomed, and who would serve in his household.",
+      "tts": {
+        "text": "He decided who would work, who might be ransomed, and who would serve in his household.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Captain John Pellow was eventually ransomed.",
+      "text_markdown": "Captain John Pellow was eventually ransomed.",
+      "tts": {
+        "text": "Captain John Pellow was eventually ransomed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He returned to England, but he was unable to secure the release of his nephew.",
+      "text_markdown": "He returned to England, but he was unable to secure the release of his nephew.",
+      "tts": {
+        "text": "He returned to England, but he was unable to secure the release of his nephew.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas was left behind in Morocco, alone and afraid.",
+      "text_markdown": "Thomas was left behind in Morocco, alone and afraid.",
+      "tts": {
+        "text": "Thomas was left behind in Morocco, alone and afraid.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The boy was eleven years old.",
+      "text_markdown": "The boy was eleven years old.",
+      "tts": {
+        "text": "The boy was eleven years old.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was thousands of miles from home.",
+      "text_markdown": "He was thousands of miles from home.",
+      "tts": {
+        "text": "He was thousands of miles from home.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He did not know if he would ever see England again.",
+      "text_markdown": "He did not know if he would ever see England again.",
+      "tts": {
+        "text": "He did not know if he would ever see England again.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "His captivity had begun.",
+      "text_markdown": "His captivity had begun.",
+      "tts": {
+        "text": "His captivity had begun.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His parents must have wondered what had become of their son.",
+      "text_markdown": "His parents must have wondered what had become of their son.",
+      "tts": {
+        "text": "His parents must have wondered what had become of their son.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "No word could reach them from across the sea.",
+      "text_markdown": "No word could reach them from across the sea.",
+      "tts": {
+        "text": "No word could reach them from across the sea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Origins",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "For all they knew, Thomas was dead.",
+      "text_markdown": "For all they knew, Thomas was dead.",
+      "tts": {
+        "text": "For all they knew, Thomas was dead.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Captive",
+      "text_markdown": "The Captive"
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow's first years in captivity were defined by pressure to convert to Islam.",
+      "text_markdown": "Thomas Pellow's first years in captivity were defined by pressure to convert to Islam.",
+      "tts": {
+        "text": "Thomas Pellow's first years in captivity were defined by pressure to convert to Islam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The sultan's court demanded that European captives renounce their Christian faith.",
+      "text_markdown": "The sultan's court demanded that European captives renounce their Christian faith.",
+      "tts": {
+        "text": "The sultan's court demanded that European captives renounce their Christian faith.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Those who converted received better treatment.",
+      "text_markdown": "Those who converted received better treatment.",
+      "tts": {
+        "text": "Those who converted received better treatment.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Those who refused faced punishment.",
+      "text_markdown": "Those who refused faced punishment.",
+      "tts": {
+        "text": "Those who refused faced punishment.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas resisted at first.",
+      "text_markdown": "Thomas resisted at first.",
+      "tts": {
+        "text": "Thomas resisted at first.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was a boy from a Christian country, and his faith was all he had left of home.",
+      "text_markdown": "He was a boy from a Christian country, and his faith was all he had left of home.",
+      "tts": {
+        "text": "He was a boy from a Christian country, and his faith was all he had left of home.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He clung to it with the desperation of a child clinging to the last familiar thing in an alien world.",
+      "text_markdown": "He clung to it with the desperation of a child clinging to the last familiar thing in an alien world.",
+      "tts": {
+        "text": "He clung to it with the desperation of a child clinging to the last familiar thing in an alien world.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But the pressure was relentless.",
+      "text_markdown": "But the pressure was relentless.",
+      "tts": {
+        "text": "But the pressure was relentless.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was beaten and tortured.",
+      "text_markdown": "He was beaten and tortured.",
+      "tts": {
+        "text": "He was beaten and tortured.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "According to his own account, he was subjected to months of abuse designed to break his will.",
+      "text_markdown": "According to his own account, he was subjected to months of abuse designed to break his will.",
+      "tts": {
+        "text": "According to his own account, he was subjected to months of abuse designed to break his will.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The methods were cruel and systematic.",
+      "text_markdown": "The methods were cruel and systematic.",
+      "tts": {
+        "text": "The methods were cruel and systematic.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eventually, Thomas gave in.",
+      "text_markdown": "Eventually, Thomas gave in.",
+      "tts": {
+        "text": "Eventually, Thomas gave in.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He converted to Islam, taking a Muslim name.",
+      "text_markdown": "He converted to Islam, taking a Muslim name.",
+      "tts": {
+        "text": "He converted to Islam, taking a Muslim name.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He would later describe this as the most painful moment of his captivity.",
+      "text_markdown": "He would later describe this as the most painful moment of his captivity.",
+      "tts": {
+        "text": "He would later describe this as the most painful moment of his captivity.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He felt that he had betrayed everything he believed in.",
+      "text_markdown": "He felt that he had betrayed everything he believed in.",
+      "tts": {
+        "text": "He felt that he had betrayed everything he believed in.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern readers should be careful about judging him.",
+      "text_markdown": "Modern readers should be careful about judging him.",
+      "tts": {
+        "text": "Modern readers should be careful about judging him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He was a child, alone, being tortured by adults.",
+      "text_markdown": "He was a child, alone, being tortured by adults.",
+      "tts": {
+        "text": "He was a child, alone, being tortured by adults.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "His conversion was a survival strategy, not a free choice.",
+      "text_markdown": "His conversion was a survival strategy, not a free choice.",
+      "tts": {
+        "text": "His conversion was a survival strategy, not a free choice.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Thousands of other captives made the same decision under the same unbearable conditions.",
+      "text_markdown": "Thousands of other captives made the same decision under the same unbearable conditions.",
+      "tts": {
+        "text": "Thousands of other captives made the same decision under the same unbearable conditions.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "After his conversion, Thomas was trained as a soldier in the sultan's army.",
+      "text_markdown": "After his conversion, Thomas was trained as a soldier in the sultan's army.",
+      "tts": {
+        "text": "After his conversion, Thomas was trained as a soldier in the sultan's army.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He learned to ride, to shoot, and to fight.",
+      "text_markdown": "He learned to ride, to shoot, and to fight.",
+      "tts": {
+        "text": "He learned to ride, to shoot, and to fight.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He became fluent in Arabic and familiar with Moroccan customs.",
+      "text_markdown": "He became fluent in Arabic and familiar with Moroccan customs.",
+      "tts": {
+        "text": "He became fluent in Arabic and familiar with Moroccan customs.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He was assigned to military campaigns in the Moroccan interior.",
+      "text_markdown": "He was assigned to military campaigns in the Moroccan interior.",
+      "tts": {
+        "text": "He was assigned to military campaigns in the Moroccan interior.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The sultan was constantly fighting to maintain control over rebellious tribes.",
+      "text_markdown": "The sultan was constantly fighting to maintain control over rebellious tribes.",
+      "tts": {
+        "text": "The sultan was constantly fighting to maintain control over rebellious tribes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas fought in these campaigns as a soldier, a former captive now serving his captor.",
+      "text_markdown": "Thomas fought in these campaigns as a soldier, a former captive now serving his captor.",
+      "tts": {
+        "text": "Thomas fought in these campaigns as a soldier, a former captive now serving his captor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The violence he witnessed was staggering.",
+      "text_markdown": "The violence he witnessed was staggering.",
+      "tts": {
+        "text": "The violence he witnessed was staggering.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The sultan's punishments for rebellion were savage and public.",
+      "text_markdown": "The sultan's punishments for rebellion were savage and public.",
+      "tts": {
+        "text": "The sultan's punishments for rebellion were savage and public.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Defeated enemies were executed in mass spectacles.",
+      "text_markdown": "Defeated enemies were executed in mass spectacles.",
+      "tts": {
+        "text": "Defeated enemies were executed in mass spectacles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Thomas saw things that haunted him for the rest of his life.",
+      "text_markdown": "Thomas saw things that haunted him for the rest of his life.",
+      "tts": {
+        "text": "Thomas saw things that haunted him for the rest of his life.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He also witnessed the ongoing construction of the palace at Meknes.",
+      "text_markdown": "He also witnessed the ongoing construction of the palace at Meknes.",
+      "tts": {
+        "text": "He also witnessed the ongoing construction of the palace at Meknes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thousands of slaves labored day and night to build the sultan's vision.",
+      "text_markdown": "Thousands of slaves labored day and night to build the sultan's vision.",
+      "tts": {
+        "text": "Thousands of slaves labored day and night to build the sultan's vision.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Workers who collapsed were sometimes buried alive in the walls they were building.",
+      "text_markdown": "Workers who collapsed were sometimes buried alive in the walls they were building.",
+      "tts": {
+        "text": "Workers who collapsed were sometimes buried alive in the walls they were building.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moulay Ismail's palace was meant to rival Versailles.",
+      "text_markdown": "Moulay Ismail's palace was meant to rival Versailles.",
+      "tts": {
+        "text": "Moulay Ismail's palace was meant to rival Versailles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The sultan had heard of the French king's great palace and was determined to surpass it.",
+      "text_markdown": "The sultan had heard of the French king's great palace and was determined to surpass it.",
+      "tts": {
+        "text": "The sultan had heard of the French king's great palace and was determined to surpass it.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The result was an enormous complex that stretched for miles across the landscape.",
+      "text_markdown": "The result was an enormous complex that stretched for miles across the landscape.",
+      "tts": {
+        "text": "The result was an enormous complex that stretched for miles across the landscape.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas served in the sultan's forces for years.",
+      "text_markdown": "Thomas served in the sultan's forces for years.",
+      "tts": {
+        "text": "Thomas served in the sultan's forces for years.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He rose through the ranks, gaining a degree of trust and responsibility.",
+      "text_markdown": "He rose through the ranks, gaining a degree of trust and responsibility.",
+      "tts": {
+        "text": "He rose through the ranks, gaining a degree of trust and responsibility.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But he never forgot that he was a prisoner.",
+      "text_markdown": "But he never forgot that he was a prisoner.",
+      "tts": {
+        "text": "But he never forgot that he was a prisoner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He never stopped wanting to go home.",
+      "text_markdown": "He never stopped wanting to go home.",
+      "tts": {
+        "text": "He never stopped wanting to go home.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He made contact with other European captives in Morocco.",
+      "text_markdown": "He made contact with other European captives in Morocco.",
+      "tts": {
+        "text": "He made contact with other European captives in Morocco.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "There were hundreds of them, scattered across the country.",
+      "text_markdown": "There were hundreds of them, scattered across the country.",
+      "tts": {
+        "text": "There were hundreds of them, scattered across the country.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They formed an underground community, sharing information and supporting each other.",
+      "text_markdown": "They formed an underground community, sharing information and supporting each other.",
+      "tts": {
+        "text": "They formed an underground community, sharing information and supporting each other.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Some captives adapted to their new lives and genuinely converted.",
+      "text_markdown": "Some captives adapted to their new lives and genuinely converted.",
+      "tts": {
+        "text": "Some captives adapted to their new lives and genuinely converted.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Others maintained their original faith in secret, practicing Christianity behind closed doors.",
+      "text_markdown": "Others maintained their original faith in secret, practicing Christianity behind closed doors.",
+      "tts": {
+        "text": "Others maintained their original faith in secret, practicing Christianity behind closed doors.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Thomas existed somewhere between these two worlds.",
+      "text_markdown": "Thomas existed somewhere between these two worlds.",
+      "tts": {
+        "text": "Thomas existed somewhere between these two worlds.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He played the role of a loyal Muslim soldier in public.",
+      "text_markdown": "He played the role of a loyal Muslim soldier in public.",
+      "tts": {
+        "text": "He played the role of a loyal Muslim soldier in public.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In private, he nursed his memories of Cornwall and his hope of escape.",
+      "text_markdown": "In private, he nursed his memories of Cornwall and his hope of escape.",
+      "tts": {
+        "text": "In private, he nursed his memories of Cornwall and his hope of escape.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The duality of his existence was exhausting.",
+      "text_markdown": "The duality of his existence was exhausting.",
+      "tts": {
+        "text": "The duality of his existence was exhausting.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He was always performing, always hiding his true self.",
+      "text_markdown": "He was always performing, always hiding his true self.",
+      "tts": {
+        "text": "He was always performing, always hiding his true self.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Years passed.",
+      "text_markdown": "Years passed.",
+      "tts": {
+        "text": "Years passed.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thomas grew from a boy into a man in the sultan's service.",
+      "text_markdown": "Thomas grew from a boy into a man in the sultan's service.",
+      "tts": {
+        "text": "Thomas grew from a boy into a man in the sultan's service.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The seasons turned in Morocco, and England became a fading memory.",
+      "text_markdown": "The seasons turned in Morocco, and England became a fading memory.",
+      "tts": {
+        "text": "The seasons turned in Morocco, and England became a fading memory.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "The Captive",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "But the desire to escape never died.",
+      "text_markdown": "But the desire to escape never died.",
+      "tts": {
+        "text": "But the desire to escape never died.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Captivity",
+      "text_markdown": "Captivity"
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1727, Sultan Moulay Ismail died after a reign of 55 years.",
+      "text_markdown": "In 1727, Sultan Moulay Ismail died after a reign of 55 years.",
+      "tts": {
+        "text": "In seventeen twenty-seven, Sultan Moulay Ismail died after a reign of fifty-five years.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His death plunged Morocco into chaos.",
+      "text_markdown": "His death plunged Morocco into chaos.",
+      "tts": {
+        "text": "His death plunged Morocco into chaos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A violent succession crisis erupted as his many sons fought for the throne.",
+      "text_markdown": "A violent succession crisis erupted as his many sons fought for the throne.",
+      "tts": {
+        "text": "A violent succession crisis erupted as his many sons fought for the throne.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The next decade was marked by civil war, famine, and plague.",
+      "text_markdown": "The next decade was marked by civil war, famine, and plague.",
+      "tts": {
+        "text": "The next decade was marked by civil war, famine, and plague.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rival princes battled each other across the country.",
+      "text_markdown": "Rival princes battled each other across the country.",
+      "tts": {
+        "text": "Rival princes battled each other across the country.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The army fractured along factional lines.",
+      "text_markdown": "The army fractured along factional lines.",
+      "tts": {
+        "text": "The army fractured along factional lines.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "No one was safe.",
+      "text_markdown": "No one was safe.",
+      "tts": {
+        "text": "No one was safe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For Thomas Pellow, the chaos was both a danger and an opportunity.",
+      "text_markdown": "For Thomas Pellow, the chaos was both a danger and an opportunity.",
+      "tts": {
+        "text": "For Thomas Pellow, the chaos was both a danger and an opportunity.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The collapse of central authority meant that the rules governing captives became less strictly enforced.",
+      "text_markdown": "The collapse of central authority meant that the rules governing captives became less strictly enforced.",
+      "tts": {
+        "text": "The collapse of central authority meant that the rules governing captives became less strictly enforced.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Guards were distracted by civil war.",
+      "text_markdown": "Guards were distracted by civil war.",
+      "tts": {
+        "text": "Guards were distracted by civil war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Escape might finally be possible.",
+      "text_markdown": "Escape might finally be possible.",
+      "tts": {
+        "text": "Escape might finally be possible.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But escape from Morocco was extraordinarily difficult.",
+      "text_markdown": "But escape from Morocco was extraordinarily difficult.",
+      "tts": {
+        "text": "But escape from Morocco was extraordinarily difficult.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The country was vast and unfamiliar.",
+      "text_markdown": "The country was vast and unfamiliar.",
+      "tts": {
+        "text": "The country was vast and unfamiliar.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A European would be immediately recognizable.",
+      "text_markdown": "A European would be immediately recognizable.",
+      "tts": {
+        "text": "A European would be immediately recognizable.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The punishment for a recaptured slave was severe, often death.",
+      "text_markdown": "The punishment for a recaptured slave was severe, often death.",
+      "tts": {
+        "text": "The punishment for a recaptured slave was severe, often death.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas had to plan carefully.",
+      "text_markdown": "Thomas had to plan carefully.",
+      "tts": {
+        "text": "Thomas had to plan carefully.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He needed supplies, a route, and allies.",
+      "text_markdown": "He needed supplies, a route, and allies.",
+      "tts": {
+        "text": "He needed supplies, a route, and allies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He needed to travel hundreds of miles through hostile territory to reach a port where he could find passage to Europe.",
+      "text_markdown": "He needed to travel hundreds of miles through hostile territory to reach a port where he could find passage to Europe.",
+      "tts": {
+        "text": "He needed to travel hundreds of miles through hostile territory to reach a port where he could find passage to Europe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He spent months preparing.",
+      "text_markdown": "He spent months preparing.",
+      "tts": {
+        "text": "He spent months preparing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He gathered food, water, and information about the route north.",
+      "text_markdown": "He gathered food, water, and information about the route north.",
+      "tts": {
+        "text": "He gathered food, water, and information about the route north.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He identified other captives who might be willing to escape with him.",
+      "text_markdown": "He identified other captives who might be willing to escape with him.",
+      "tts": {
+        "text": "He identified other captives who might be willing to escape with him.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas also had to overcome years of conditioning.",
+      "text_markdown": "Thomas also had to overcome years of conditioning.",
+      "tts": {
+        "text": "Thomas also had to overcome years of conditioning.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had been a captive since childhood.",
+      "text_markdown": "He had been a captive since childhood.",
+      "tts": {
+        "text": "He had been a captive since childhood.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The sultan's court was the only adult life he had ever known.",
+      "text_markdown": "The sultan's court was the only adult life he had ever known.",
+      "tts": {
+        "text": "The sultan's court was the only adult life he had ever known.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Leaving it meant abandoning everything familiar, even if what was familiar was a prison.",
+      "text_markdown": "Leaving it meant abandoning everything familiar, even if what was familiar was a prison.",
+      "tts": {
+        "text": "Leaving it meant abandoning everything familiar, even if what was familiar was a prison.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The psychological toll of long captivity cannot be overstated.",
+      "text_markdown": "The psychological toll of long captivity cannot be overstated.",
+      "tts": {
+        "text": "The psychological toll of long captivity cannot be overstated.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Captives who spent decades in bondage often struggled to imagine freedom.",
+      "text_markdown": "Captives who spent decades in bondage often struggled to imagine freedom.",
+      "tts": {
+        "text": "Captives who spent decades in bondage often struggled to imagine freedom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "They had adapted to survive in captivity, and those adaptations made it harder to break free.",
+      "text_markdown": "They had adapted to survive in captivity, and those adaptations made it harder to break free.",
+      "tts": {
+        "text": "They had adapted to survive in captivity, and those adaptations made it harder to break free.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas had served the sultan and his successors for over two decades.",
+      "text_markdown": "Thomas had served the sultan and his successors for over two decades.",
+      "tts": {
+        "text": "Thomas had served the sultan and his successors for over two decades.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He spoke Arabic fluently.",
+      "text_markdown": "He spoke Arabic fluently.",
+      "tts": {
+        "text": "He spoke Arabic fluently.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He knew Moroccan customs intimately.",
+      "text_markdown": "He knew Moroccan customs intimately.",
+      "tts": {
+        "text": "He knew Moroccan customs intimately.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p63",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In many ways, he had become part of the world he wanted to escape.",
+      "text_markdown": "In many ways, he had become part of the world he wanted to escape.",
+      "tts": {
+        "text": "In many ways, he had become part of the world he wanted to escape.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "But he still remembered Cornwall.",
+      "text_markdown": "But he still remembered Cornwall.",
+      "tts": {
+        "text": "But he still remembered Cornwall.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He remembered the green hills and the cold sea.",
+      "text_markdown": "He remembered the green hills and the cold sea.",
+      "tts": {
+        "text": "He remembered the green hills and the cold sea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He remembered his family, though their faces must have grown faint after so many years.",
+      "text_markdown": "He remembered his family, though their faces must have grown faint after so many years.",
+      "tts": {
+        "text": "He remembered his family, though their faces must have grown faint after so many years.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The memory of home was the thread that kept him connected to who he truly was.",
+      "text_markdown": "The memory of home was the thread that kept him connected to who he truly was.",
+      "tts": {
+        "text": "The memory of home was the thread that kept him connected to who he truly was.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "During the years of civil war, Thomas witnessed atrocities committed by all sides.",
+      "text_markdown": "During the years of civil war, Thomas witnessed atrocities committed by all sides.",
+      "tts": {
+        "text": "During the years of civil war, Thomas witnessed atrocities committed by all sides.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cities were sacked.",
+      "text_markdown": "Cities were sacked.",
+      "tts": {
+        "text": "Cities were sacked.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Populations were massacred.",
+      "text_markdown": "Populations were massacred.",
+      "tts": {
+        "text": "Populations were massacred.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The country he had been forced to serve was tearing itself apart.",
+      "text_markdown": "The country he had been forced to serve was tearing itself apart.",
+      "tts": {
+        "text": "The country he had been forced to serve was tearing itself apart.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He saw famine sweep through the countryside.",
+      "text_markdown": "He saw famine sweep through the countryside.",
+      "tts": {
+        "text": "He saw famine sweep through the countryside.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "People died in the streets of Meknes.",
+      "text_markdown": "People died in the streets of Meknes.",
+      "tts": {
+        "text": "People died in the streets of Meknes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The magnificent palace built by Moulay Ismail began to crumble without the army of slaves to maintain it.",
+      "text_markdown": "The magnificent palace built by Moulay Ismail began to crumble without the army of slaves to maintain it.",
+      "tts": {
+        "text": "The magnificent palace built by Moulay Ismail began to crumble without the army of slaves to maintain it.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In this atmosphere of collapse and suffering, Thomas made his decision.",
+      "text_markdown": "In this atmosphere of collapse and suffering, Thomas made his decision.",
+      "tts": {
+        "text": "In this atmosphere of collapse and suffering, Thomas made his decision.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He would escape or die trying.",
+      "text_markdown": "He would escape or die trying.",
+      "tts": {
+        "text": "He would escape or die trying.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Captivity",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He could not spend the rest of his life as a prisoner in a failing state.",
+      "text_markdown": "He could not spend the rest of his life as a prisoner in a failing state.",
+      "tts": {
+        "text": "He could not spend the rest of his life as a prisoner in a failing state.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "The Escape",
+      "text_markdown": "The Escape"
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1738, Thomas Pellow made his break for freedom.",
+      "text_markdown": "In 1738, Thomas Pellow made his break for freedom.",
+      "tts": {
+        "text": "In seventeen thirty-eight, Thomas Pellow made his break for freedom.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He slipped away from his post during a period of confusion caused by the ongoing civil war.",
+      "text_markdown": "He slipped away from his post during a period of confusion caused by the ongoing civil war.",
+      "tts": {
+        "text": "He slipped away from his post during a period of confusion caused by the ongoing civil war.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He was thirty-four years old.",
+      "text_markdown": "He was thirty-four years old.",
+      "tts": {
+        "text": "He was thirty-four years old.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He had been a captive for twenty-three years.",
+      "text_markdown": "He had been a captive for twenty-three years.",
+      "tts": {
+        "text": "He had been a captive for twenty-three years.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The journey north was harrowing.",
+      "text_markdown": "The journey north was harrowing.",
+      "tts": {
+        "text": "The journey north was harrowing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He traveled mostly at night, hiding during the day.",
+      "text_markdown": "He traveled mostly at night, hiding during the day.",
+      "tts": {
+        "text": "He traveled mostly at night, hiding during the day.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He avoided roads and towns where he might be recognized.",
+      "text_markdown": "He avoided roads and towns where he might be recognized.",
+      "tts": {
+        "text": "He avoided roads and towns where he might be recognized.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He was alone in a landscape that was both familiar and hostile.",
+      "text_markdown": "He was alone in a landscape that was both familiar and hostile.",
+      "tts": {
+        "text": "He was alone in a landscape that was both familiar and hostile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He knew the language and the customs, but he was a fugitive.",
+      "text_markdown": "He knew the language and the customs, but he was a fugitive.",
+      "tts": {
+        "text": "He knew the language and the customs, but he was a fugitive.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anyone who discovered his identity could turn him in for a reward.",
+      "text_markdown": "Anyone who discovered his identity could turn him in for a reward.",
+      "tts": {
+        "text": "Anyone who discovered his identity could turn him in for a reward.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He survived on whatever food he could find or steal.",
+      "text_markdown": "He survived on whatever food he could find or steal.",
+      "tts": {
+        "text": "He survived on whatever food he could find or steal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He drank from streams and wells when he dared approach them.",
+      "text_markdown": "He drank from streams and wells when he dared approach them.",
+      "tts": {
+        "text": "He drank from streams and wells when he dared approach them.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The physical hardship was extreme, but he kept moving north.",
+      "text_markdown": "The physical hardship was extreme, but he kept moving north.",
+      "tts": {
+        "text": "The physical hardship was extreme, but he kept moving north.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "At times, he found help from unexpected sources.",
+      "text_markdown": "At times, he found help from unexpected sources.",
+      "tts": {
+        "text": "At times, he found help from unexpected sources.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Some Moroccans took pity on him and gave him food or shelter.",
+      "text_markdown": "Some Moroccans took pity on him and gave him food or shelter.",
+      "tts": {
+        "text": "Some Moroccans took pity on him and gave him food or shelter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Not everyone was an enemy.",
+      "text_markdown": "Not everyone was an enemy.",
+      "tts": {
+        "text": "Not everyone was an enemy.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Even in his flight, Thomas encountered human kindness.",
+      "text_markdown": "Even in his flight, Thomas encountered human kindness.",
+      "tts": {
+        "text": "Even in his flight, Thomas encountered human kindness.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He made his way to the coast, aiming for a port where European ships might be found.",
+      "text_markdown": "He made his way to the coast, aiming for a port where European ships might be found.",
+      "tts": {
+        "text": "He made his way to the coast, aiming for a port where European ships might be found.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The journey took weeks of grueling travel.",
+      "text_markdown": "The journey took weeks of grueling travel.",
+      "tts": {
+        "text": "The journey took weeks of grueling travel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Every day brought the risk of recapture.",
+      "text_markdown": "Every day brought the risk of recapture.",
+      "tts": {
+        "text": "Every day brought the risk of recapture.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He eventually reached the coast and found passage on a ship bound for Europe.",
+      "text_markdown": "He eventually reached the coast and found passage on a ship bound for Europe.",
+      "tts": {
+        "text": "He eventually reached the coast and found passage on a ship bound for Europe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The details of how he secured his berth are unclear in his account.",
+      "text_markdown": "The details of how he secured his berth are unclear in his account.",
+      "tts": {
+        "text": "The details of how he secured his berth are unclear in his account.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "What is clear is that he left Morocco behind and sailed across the Mediterranean.",
+      "text_markdown": "What is clear is that he left Morocco behind and sailed across the Mediterranean.",
+      "tts": {
+        "text": "What is clear is that he left Morocco behind and sailed across the Mediterranean.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "When Thomas finally reached England, he was a stranger in his own country.",
+      "text_markdown": "When Thomas finally reached England, he was a stranger in his own country.",
+      "tts": {
+        "text": "When Thomas finally reached England, he was a stranger in his own country.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had left as a boy of eleven.",
+      "text_markdown": "He had left as a boy of eleven.",
+      "tts": {
+        "text": "He had left as a boy of eleven.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He returned as a man of thirty-four.",
+      "text_markdown": "He returned as a man of thirty-four.",
+      "tts": {
+        "text": "He returned as a man of thirty-four.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Everything had changed, both the country and the man.",
+      "text_markdown": "Everything had changed, both the country and the man.",
+      "tts": {
+        "text": "Everything had changed, both the country and the man.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His family barely recognized him.",
+      "text_markdown": "His family barely recognized him.",
+      "tts": {
+        "text": "His family barely recognized him.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He had been gone for more than half his life.",
+      "text_markdown": "He had been gone for more than half his life.",
+      "tts": {
+        "text": "He had been gone for more than half his life.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He spoke with an accent, moved differently, and carried the weight of experiences they could never understand.",
+      "text_markdown": "He spoke with an accent, moved differently, and carried the weight of experiences they could never understand.",
+      "tts": {
+        "text": "He spoke with an accent, moved differently, and carried the weight of experiences they could never understand.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Returning to normal life was extraordinarily difficult.",
+      "text_markdown": "Returning to normal life was extraordinarily difficult.",
+      "tts": {
+        "text": "Returning to normal life was extraordinarily difficult.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thomas had spent his entire adult life in a foreign culture under conditions of bondage.",
+      "text_markdown": "Thomas had spent his entire adult life in a foreign culture under conditions of bondage.",
+      "tts": {
+        "text": "Thomas had spent his entire adult life in a foreign culture under conditions of bondage.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The skills he had learned in Morocco were useless in Cornwall.",
+      "text_markdown": "The skills he had learned in Morocco were useless in Cornwall.",
+      "tts": {
+        "text": "The skills he had learned in Morocco were useless in Cornwall.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The man who came home was not the boy who had left.",
+      "text_markdown": "The man who came home was not the boy who had left.",
+      "tts": {
+        "text": "The man who came home was not the boy who had left.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He eventually wrote his memoir, which was published under the title The History of the Long Captivity and Adventures of Thomas Pellow.",
+      "text_markdown": "He eventually wrote his memoir, which was published under the title The History of the Long Captivity and Adventures of Thomas Pellow.",
+      "tts": {
+        "text": "He eventually wrote his memoir, which was published under the title The History of the Long Captivity and Adventures of Thomas Pellow.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The book described his capture, his forced conversion, his years of service, and his escape in vivid detail.",
+      "text_markdown": "The book described his capture, his forced conversion, his years of service, and his escape in vivid detail.",
+      "tts": {
+        "text": "The book described his capture, his forced conversion, his years of service, and his escape in vivid detail.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The memoir was popular in England.",
+      "text_markdown": "The memoir was popular in England.",
+      "tts": {
+        "text": "The memoir was popular in England.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It fed public fascination with the exotic East and horror at the Barbary slave trade.",
+      "text_markdown": "It fed public fascination with the exotic East and horror at the Barbary slave trade.",
+      "tts": {
+        "text": "It fed public fascination with the exotic East and horror at the Barbary slave trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It also served as anti-Islamic propaganda in a period of intense religious conflict.",
+      "text_markdown": "It also served as anti-Islamic propaganda in a period of intense religious conflict.",
+      "tts": {
+        "text": "It also served as anti-Islamic propaganda in a period of intense religious conflict.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern historians treat Thomas's account with both respect and caution.",
+      "text_markdown": "Modern historians treat Thomas's account with both respect and caution.",
+      "tts": {
+        "text": "Modern historians treat Thomas's account with both respect and caution.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Some details may have been exaggerated or embellished for the reading public.",
+      "text_markdown": "Some details may have been exaggerated or embellished for the reading public.",
+      "tts": {
+        "text": "Some details may have been exaggerated or embellished for the reading public.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "But the core of the story is supported by other historical evidence.",
+      "text_markdown": "But the core of the story is supported by other historical evidence.",
+      "tts": {
+        "text": "But the core of the story is supported by other historical evidence.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The date and circumstances of Thomas Pellow's death are unknown.",
+      "text_markdown": "The date and circumstances of Thomas Pellow's death are unknown.",
+      "tts": {
+        "text": "The date and circumstances of Thomas Pellow's death are unknown.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He disappears from the historical record after the publication of his memoir.",
+      "text_markdown": "He disappears from the historical record after the publication of his memoir.",
+      "tts": {
+        "text": "He disappears from the historical record after the publication of his memoir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "The Escape",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The man who survived twenty-three years of captivity faded quietly into obscurity.",
+      "text_markdown": "The man who survived twenty-three years of captivity faded quietly into obscurity.",
+      "tts": {
+        "text": "The man who survived twenty-three years of captivity faded quietly into obscurity.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Legacy",
+      "text_markdown": "Legacy"
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow's memoir is one of the most important documents about the Barbary slave trade.",
+      "text_markdown": "Thomas Pellow's memoir is one of the most important documents about the Barbary slave trade.",
+      "tts": {
+        "text": "Thomas Pellow's memoir is one of the most important documents about the Barbary slave trade.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It provides a firsthand account of life as a European captive in Morocco.",
+      "text_markdown": "It provides a firsthand account of life as a European captive in Morocco.",
+      "tts": {
+        "text": "It provides a firsthand account of life as a European captive in Morocco.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Few other sources offer such detailed and personal testimony.",
+      "text_markdown": "Few other sources offer such detailed and personal testimony.",
+      "tts": {
+        "text": "Few other sources offer such detailed and personal testimony.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His story illuminates a chapter of history that is often overlooked.",
+      "text_markdown": "His story illuminates a chapter of history that is often overlooked.",
+      "tts": {
+        "text": "His story illuminates a chapter of history that is often overlooked.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "The enslavement of Europeans by North African states lasted for centuries.",
+      "text_markdown": "The enslavement of Europeans by North African states lasted for centuries.",
+      "tts": {
+        "text": "The enslavement of Europeans by North African states lasted for centuries.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "It affected millions of people and shaped the politics of the Mediterranean world.",
+      "text_markdown": "It affected millions of people and shaped the politics of the Mediterranean world.",
+      "tts": {
+        "text": "It affected millions of people and shaped the politics of the Mediterranean world.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The palace at Meknes that Thomas helped maintain still partially stands today.",
+      "text_markdown": "The palace at Meknes that Thomas helped maintain still partially stands today.",
+      "tts": {
+        "text": "The palace at Meknes that Thomas helped maintain still partially stands today.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It is a UNESCO World Heritage Site.",
+      "text_markdown": "It is a UNESCO World Heritage Site.",
+      "tts": {
+        "text": "It is a UNESCO World Heritage Site.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tourists walk through the same courtyards where slaves once labored.",
+      "text_markdown": "Tourists walk through the same courtyards where slaves once labored.",
+      "tts": {
+        "text": "Tourists walk through the same courtyards where slaves once labored.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The beauty of the ruins hides the suffering that built them.",
+      "text_markdown": "The beauty of the ruins hides the suffering that built them.",
+      "tts": {
+        "text": "The beauty of the ruins hides the suffering that built them.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moulay Ismail, the sultan Thomas served, is remembered differently in Morocco and in Europe.",
+      "text_markdown": "Moulay Ismail, the sultan Thomas served, is remembered differently in Morocco and in Europe.",
+      "tts": {
+        "text": "Moulay Ismail, the sultan Thomas served, is remembered differently in Morocco and in Europe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In Morocco, he is celebrated as a strong ruler who unified the country.",
+      "text_markdown": "In Morocco, he is celebrated as a strong ruler who unified the country.",
+      "tts": {
+        "text": "In Morocco, he is celebrated as a strong ruler who unified the country.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In Europe, he is remembered as a tyrant who enslaved thousands.",
+      "text_markdown": "In Europe, he is remembered as a tyrant who enslaved thousands.",
+      "tts": {
+        "text": "In Europe, he is remembered as a tyrant who enslaved thousands.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Both views contain truth.",
+      "text_markdown": "Both views contain truth.",
+      "tts": {
+        "text": "Both views contain truth.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "History is complicated, and powerful rulers leave complicated legacies.",
+      "text_markdown": "History is complicated, and powerful rulers leave complicated legacies.",
+      "tts": {
+        "text": "History is complicated, and powerful rulers leave complicated legacies.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The slaves who built Meknes would not have called Moulay Ismail a great king.",
+      "text_markdown": "The slaves who built Meknes would not have called Moulay Ismail a great king.",
+      "tts": {
+        "text": "The slaves who built Meknes would not have called Moulay Ismail a great king.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow's story also raises difficult questions about identity.",
+      "text_markdown": "Thomas Pellow's story also raises difficult questions about identity.",
+      "tts": {
+        "text": "Thomas Pellow's story also raises difficult questions about identity.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p89",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "After twenty-three years in Morocco, was Thomas still English?",
+      "text_markdown": "After twenty-three years in Morocco, was Thomas still English?",
+      "tts": {
+        "text": "After twenty-three years in Morocco, was Thomas still English?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p89",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Was he still Christian?",
+      "text_markdown": "Was he still Christian?",
+      "tts": {
+        "text": "Was he still Christian?",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p89",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The answers are not simple.",
+      "text_markdown": "The answers are not simple.",
+      "tts": {
+        "text": "The answers are not simple.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "He had spent more of his life in Morocco than in England.",
+      "text_markdown": "He had spent more of his life in Morocco than in England.",
+      "tts": {
+        "text": "He had spent more of his life in Morocco than in England.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p90",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He spoke Arabic better than many native speakers.",
+      "text_markdown": "He spoke Arabic better than many native speakers.",
+      "tts": {
+        "text": "He spoke Arabic better than many native speakers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p90",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He had fought in Moroccan wars and lived by Moroccan customs.",
+      "text_markdown": "He had fought in Moroccan wars and lived by Moroccan customs.",
+      "tts": {
+        "text": "He had fought in Moroccan wars and lived by Moroccan customs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p90",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "The line between captive and participant had blurred over the decades.",
+      "text_markdown": "The line between captive and participant had blurred over the decades.",
+      "tts": {
+        "text": "The line between captive and participant had blurred over the decades.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His forced conversion was not unique.",
+      "text_markdown": "His forced conversion was not unique.",
+      "tts": {
+        "text": "His forced conversion was not unique.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p91",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Thousands of European captives were compelled to convert to Islam.",
+      "text_markdown": "Thousands of European captives were compelled to convert to Islam.",
+      "tts": {
+        "text": "Thousands of European captives were compelled to convert to Islam.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p91",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Some eventually returned to Christianity.",
+      "text_markdown": "Some eventually returned to Christianity.",
+      "tts": {
+        "text": "Some eventually returned to Christianity.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p91",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Others remained Muslim for the rest of their lives.",
+      "text_markdown": "Others remained Muslim for the rest of their lives.",
+      "tts": {
+        "text": "Others remained Muslim for the rest of their lives.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p91",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "The boundary between forced and genuine conversion was often unclear.",
+      "text_markdown": "The boundary between forced and genuine conversion was often unclear.",
+      "tts": {
+        "text": "The boundary between forced and genuine conversion was often unclear.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "The Barbary slave trade would continue for decades after Thomas's escape.",
+      "text_markdown": "The Barbary slave trade would continue for decades after Thomas's escape.",
+      "tts": {
+        "text": "The Barbary slave trade would continue for decades after Thomas's escape.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p92",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "It was not until the early 1800s that European and American naval power finally suppressed the corsairs.",
+      "text_markdown": "It was not until the early 1800s that European and American naval power finally suppressed the corsairs.",
+      "tts": {
+        "text": "It was not until the early eighteen hundreds that European and American naval power finally suppressed the corsairs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p92",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "The United States fought two wars against the Barbary States, in 1801 and 1815.",
+      "text_markdown": "The United States fought two wars against the Barbary States, in 1801 and 1815.",
+      "tts": {
+        "text": "The United States fought two wars against the Barbary States, in eighteen oh one and eighteen fifteen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Thomas Pellow's story is ultimately about survival.",
+      "text_markdown": "Thomas Pellow's story is ultimately about survival.",
+      "tts": {
+        "text": "Thomas Pellow's story is ultimately about survival.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p93",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He endured twenty-three years of captivity, forced conversion, violence, and isolation.",
+      "text_markdown": "He endured twenty-three years of captivity, forced conversion, violence, and isolation.",
+      "tts": {
+        "text": "He endured twenty-three years of captivity, forced conversion, violence, and isolation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p93",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He survived it all and found his way home.",
+      "text_markdown": "He survived it all and found his way home.",
+      "tts": {
+        "text": "He survived it all and found his way home.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "His memoir stands as testimony to what one person can endure and still remain themselves.",
+      "text_markdown": "His memoir stands as testimony to what one person can endure and still remain themselves.",
+      "tts": {
+        "text": "His memoir stands as testimony to what one person can endure and still remain themselves.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Legacy",
+      "paragraph_id": "p94",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Across all those years, across all that distance, Thomas Pellow never stopped being the boy from Cornwall who wanted to go home.",
+      "text_markdown": "Across all those years, across all that distance, Thomas Pellow never stopped being the boy from Cornwall who wanted to go home.",
+      "tts": {
+        "text": "Across all those years, across all that distance, Thomas Pellow never stopped being the boy from Cornwall who wanted to go home.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

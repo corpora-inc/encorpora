@@ -1,0 +1,10 @@
+Style: Crosshatch pen illustration, book cover style, sepia tones
+Subject: Period-style book covers for Go Spy the Land and The Dreaded Hour
+Details: Two book covers side by side in 1930s British publishing style.
+Left: "Go Spy the Land" by George Hill, published 1932 — a bold adventure
+cover with a silhouette figure against a Russian cityscape. Right: "The
+Dreaded Hour" by George Hill, published 1936 — a more dramatic cover with
+shadows and a sense of danger. Both in the style of interwar British
+adventure publishing — bold typography, limited color palette, dramatic
+composition. The covers should evoke the era of popular adventure memoirs.
+Aspect: Landscape, suitable for half-width paired 6x9 layout

@@ -1,0 +1,2368 @@
+/* ============================================================
+   Catalog Browser — themed via var(--catalog-*) custom properties
+   Each reader (stargate/earthgate) defines these in its styles.css
+   ============================================================ */
+
+/* --- Full-screen overlay --- */
+
+.catalog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--catalog-bg);
+  font-family: var(--catalog-font);
+  color: var(--catalog-text);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 250ms ease, transform 250ms ease;
+  overflow: hidden;
+}
+
+.catalog-overlay--open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* --- Top bar --- */
+
+.catalog-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: calc(16px + env(safe-area-inset-top, 0px)) 20px 12px 20px;
+  flex-shrink: 0;
+}
+
+.catalog-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.catalog-back-btn:hover {
+  border-color: var(--catalog-accent);
+  background: var(--catalog-surface);
+}
+
+.catalog-back-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.catalog-header-spacer {
+  flex: 1;
+}
+
+.catalog-search-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.catalog-search-btn:hover {
+  color: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+}
+
+.catalog-search-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --- Search bar (collapsible) --- */
+
+.catalog-search-bar {
+  display: none;
+  padding: 0 20px 8px;
+}
+
+.catalog-search-bar--open {
+  display: block;
+}
+
+.catalog-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.catalog-search-input::placeholder {
+  color: var(--catalog-text-dim);
+}
+
+.catalog-search-input:focus {
+  border-color: var(--catalog-accent);
+}
+
+/* --- Language filter pills --- */
+
+.catalog-filters {
+  display: flex;
+  gap: 8px;
+  padding: 0 20px 16px;
+  overflow-x: auto;
+  flex-shrink: 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.catalog-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.catalog-filter-pill {
+  flex-shrink: 0;
+  padding: 6px 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+  white-space: nowrap;
+}
+
+.catalog-filter-pill:hover {
+  border-color: var(--catalog-accent);
+  color: var(--catalog-accent);
+}
+
+.catalog-filter-pill--active {
+  background: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+  color: var(--catalog-bg);
+  font-weight: 600;
+}
+
+.catalog-filter-pill--active:hover {
+  background: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+  color: var(--catalog-bg);
+  opacity: 0.85;
+}
+
+/* --- Scrollable content area --- */
+
+.catalog-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 20px calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+/* --- Section headers --- */
+
+.catalog-section {
+  margin-bottom: 24px;
+}
+
+.catalog-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--catalog-text-dim);
+  padding-top: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--catalog-border);
+  margin-bottom: 16px;
+}
+
+/* --- Book card grid --- */
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-narration-row {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .catalog-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .catalog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Book card --- */
+
+.catalog-card {
+  position: relative;
+  padding: 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  cursor: pointer;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--catalog-accent);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.catalog-card:active {
+  transform: translateY(0);
+}
+
+.catalog-card--active {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.catalog-card-langs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.catalog-lang-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--catalog-border);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--catalog-text-dim);
+}
+
+/* Stack-language badge — accent fill so the user's primary languages
+   read first at a glance on a card with many alternatives. */
+.catalog-lang-badge--stack {
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
+/* "+N more" chip — outline style so it reads as a quiet affordance,
+   not a peer to the stack pills. */
+.catalog-lang-badge--more {
+  background: transparent;
+  border: 1px solid var(--catalog-border);
+  color: var(--catalog-text-dim);
+  font-weight: 500;
+}
+
+/* "47 languages" count chip — same outline treatment as "+N more", used
+   only when the user has zero stack overlap with the book. */
+.catalog-lang-badge--count {
+  background: transparent;
+  border: 1px solid var(--catalog-border);
+  color: var(--catalog-text-dim);
+  font-weight: 500;
+}
+
+.catalog-card-meta {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-card-playing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* --- Empty state --- */
+
+.catalog-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--catalog-text-dim);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.catalog-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* --- Loading spinner --- */
+
+.catalog-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--catalog-text-dim);
+  font-size: 14px;
+  gap: 10px;
+}
+
+.catalog-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--catalog-border);
+  border-top-color: var(--catalog-accent);
+  border-radius: 50%;
+  animation: catalog-spin 0.8s linear infinite;
+}
+
+@keyframes catalog-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Book Detail View
+   ============================================================ */
+
+.catalog-detail {
+  position: fixed;
+  inset: 0;
+  z-index: 51;
+  background: var(--catalog-bg);
+  font-family: var(--catalog-font);
+  color: var(--catalog-text);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+  transition: opacity 200ms ease, transform 200ms ease;
+  overflow: hidden;
+}
+
+.catalog-detail--open {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.catalog-detail-header {
+  display: flex;
+  align-items: center;
+  padding: calc(16px + env(safe-area-inset-top, 0px)) 20px 12px;
+  flex-shrink: 0;
+}
+
+.catalog-detail-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 20px calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+/* --- Book hero section --- */
+
+.catalog-detail-hero {
+  padding: 24px;
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  border: 1px solid var(--catalog-border);
+  margin-bottom: 24px;
+}
+
+.catalog-detail-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.catalog-detail-subtitle {
+  font-size: 14px;
+  color: var(--catalog-text-dim);
+  margin-bottom: 4px;
+}
+
+.catalog-detail-meta {
+  font-size: 13px;
+  color: var(--catalog-text-dim);
+}
+
+/* --- Narration list sections --- */
+
+.catalog-detail-section {
+  margin-bottom: 24px;
+}
+
+.catalog-detail-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--catalog-text-dim);
+  margin-bottom: 12px;
+}
+
+/* "Your languages" header — accent the user's stack section so it reads
+   as personalized, distinct from the neutral "More languages" header. */
+.catalog-detail-section-title--stack {
+  color: var(--catalog-accent);
+}
+
+/* Book-detail "Show all N languages" expander — reveals the rest of the
+   narration list when stack-priority collapsed it. Full-width tap target
+   styled like a quiet ghost button so it pairs visually with the rows it
+   replaces. */
+.catalog-detail-expand-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border: 1px dashed var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.catalog-detail-expand-btn:hover,
+.catalog-detail-expand-btn:focus-visible {
+  color: var(--catalog-text);
+  border-color: var(--catalog-text-dim);
+  outline: none;
+}
+
+/* --- Narration row --- */
+
+.catalog-narration-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  margin-bottom: 8px;
+  transition: border-color 150ms ease;
+}
+
+.catalog-narration-row:last-child {
+  margin-bottom: 0;
+}
+
+.catalog-narration-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.catalog-narration-lang {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--catalog-text);
+}
+
+.catalog-narration-voice {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-narration-size {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+  flex-shrink: 0;
+}
+
+/* --- Action buttons --- */
+
+.catalog-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 14px;
+  min-width: 105px;
+  border: 1.5px solid var(--catalog-accent);
+  border-radius: var(--catalog-radius);
+  background: transparent;
+  color: var(--catalog-accent);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.catalog-btn-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.catalog-btn:hover {
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
+.catalog-btn--primary {
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
+.catalog-btn--primary:hover {
+  background: var(--catalog-accent-hover);
+}
+
+.catalog-btn--success {
+  border-color: var(--catalog-success);
+  background: var(--catalog-success);
+  color: var(--catalog-bg);
+}
+
+.catalog-btn--success:hover {
+  opacity: 0.9;
+}
+
+.catalog-btn--danger {
+  border-color: var(--catalog-error);
+  color: var(--catalog-error);
+  padding: 8px 12px;
+  min-width: auto;
+}
+
+.catalog-btn--danger:hover {
+  background: var(--catalog-error);
+  color: var(--catalog-bg);
+}
+
+.catalog-btn--disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* --- Download progress bar (inline on button) --- */
+
+.catalog-btn-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--catalog-accent);
+  transition: width 300ms ease;
+  border-radius: 0 0 var(--catalog-radius) var(--catalog-radius);
+}
+
+.catalog-btn-label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Downloading state — active, not disabled-looking */
+.catalog-btn--downloading {
+  border-color: var(--catalog-accent);
+  color: var(--catalog-accent);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Spinner icon for starting/verifying/extracting states */
+.catalog-btn-spinner {
+  animation: catalog-spin 0.8s linear infinite;
+}
+
+@keyframes catalog-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Error state — distinct from idle */
+.catalog-btn--error {
+  border-color: var(--catalog-error);
+  color: var(--catalog-error);
+}
+
+.catalog-btn--error:hover {
+  background: var(--catalog-error);
+  color: var(--catalog-bg);
+}
+
+/* --- Active narration row (language picker) --- */
+
+.catalog-narration-row--installed {
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.catalog-narration-row--installed:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-narration-row--active {
+  border-color: var(--catalog-accent);
+  background: color-mix(in srgb, var(--catalog-accent) 8%, transparent);
+}
+
+.catalog-narration-active-indicator {
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--catalog-accent);
+  margin-right: 4px;
+}
+
+/* --- Installed narration row extras --- */
+
+.catalog-installed-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.catalog-installed-version {
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-installed-version--update {
+  color: var(--catalog-accent);
+  font-weight: 600;
+}
+
+/* --- Narration version (inline in appShell detail rows) --- */
+
+.catalog-narration-version {
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+  margin-top: 2px;
+}
+
+.catalog-narration-version--update {
+  color: var(--catalog-accent);
+  font-weight: 600;
+}
+
+/* --- Update button --- */
+
+.catalog-btn--update {
+  border-color: var(--catalog-accent);
+  color: var(--catalog-accent);
+  padding: 8px 12px;
+  min-width: auto;
+}
+
+.catalog-btn--update:hover {
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
+/* ============================================================
+   Compact row (v2 unified renderer)
+   Language · voice · v1.2.3 · 20MB   [action][⋯]
+   ============================================================ */
+
+.catalog-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px 10px 6px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  margin-bottom: 6px;
+  min-height: 48px;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.catalog-row:last-child {
+  margin-bottom: 0;
+}
+
+.catalog-row--installed {
+  cursor: pointer;
+}
+
+.catalog-row--installed:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-row--active {
+  border-color: var(--catalog-accent);
+  background: color-mix(in srgb, var(--catalog-accent) 7%, transparent);
+}
+
+.catalog-row-rail {
+  flex: 0 0 4px;
+  align-self: stretch;
+  border-radius: 999px;
+  background: transparent;
+  margin: 2px 0;
+}
+
+.catalog-row-rail--active {
+  background: var(--catalog-accent);
+}
+
+.catalog-row-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.catalog-row-lang {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.catalog-row-meta {
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.catalog-row-meta--update {
+  color: var(--catalog-accent);
+  font-weight: 600;
+}
+
+.catalog-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.catalog-row-more {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.catalog-row-more:hover {
+  background: var(--catalog-border);
+  color: var(--catalog-text);
+}
+
+.catalog-row-more .catalog-btn-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  stroke: none;
+}
+
+/* Compact action buttons */
+.catalog-btn--compact {
+  min-width: 0;
+  padding: 6px 12px;
+  height: 32px;
+  font-size: 12px;
+  gap: 4px;
+}
+
+.catalog-btn--compact .catalog-btn-label {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.catalog-btn--compact .catalog-btn-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Chips (price / Included / muted) */
+.catalog-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.catalog-chip--price {
+  background: color-mix(in srgb, var(--catalog-accent) 12%, transparent);
+  color: var(--catalog-accent);
+}
+
+.catalog-chip--included {
+  background: color-mix(in srgb, var(--catalog-success, #2a8a54) 15%, transparent);
+  color: var(--catalog-success, #2a8a54);
+}
+
+.catalog-chip--muted {
+  background: var(--catalog-border);
+  color: var(--catalog-text-dim);
+}
+
+/* Overflow menu popover */
+.catalog-row-menu {
+  min-width: 160px;
+  background: var(--catalog-surface);
+  border: 1px solid var(--catalog-border);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  z-index: 1100;
+}
+
+.catalog-row-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 120ms ease;
+  text-align: left;
+}
+
+.catalog-row-menu-item:hover {
+  background: var(--catalog-border);
+}
+
+.catalog-row-menu-item--danger {
+  color: var(--catalog-error);
+}
+
+.catalog-row-menu-item--danger:hover {
+  background: color-mix(in srgb, var(--catalog-error) 12%, transparent);
+}
+
+.catalog-row-menu-item .catalog-btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================================
+   Language chooser — anchor button + bottom sheet
+   ============================================================ */
+
+.catalog-lang-chooser {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 120ms ease;
+  margin-bottom: 12px;
+  max-width: 100%;
+}
+
+.catalog-lang-chooser:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-lang-chooser-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.catalog-lang-chooser-caret {
+  opacity: 0.6;
+}
+
+/* Scrim */
+.catalog-sheet-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  z-index: 1200;
+  transition: opacity 180ms ease;
+}
+
+.catalog-sheet-scrim--open {
+  opacity: 1;
+}
+
+/* Sheet itself */
+.catalog-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 75vh;
+  background: var(--catalog-bg);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  opacity: 0;
+  z-index: 1210;
+  transition: transform 220ms cubic-bezier(0.32, 0.72, 0, 1), opacity 180ms ease;
+  font-family: var(--catalog-font);
+  color: var(--catalog-text);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.catalog-sheet--open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (min-width: 640px) {
+  .catalog-sheet {
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, calc(50% + 40px));
+    width: min(460px, calc(100vw - 48px));
+    max-height: 70vh;
+    border-radius: 16px;
+  }
+  .catalog-sheet--open {
+    transform: translate(-50%, 50%);
+  }
+}
+
+.catalog-sheet-header {
+  display: flex;
+  align-items: center;
+  padding: 18px 20px 8px;
+  flex-shrink: 0;
+}
+
+.catalog-sheet-title {
+  font-size: 15px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.catalog-sheet-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.catalog-sheet-close:hover {
+  background: var(--catalog-border);
+  color: var(--catalog-text);
+}
+
+.catalog-sheet-search {
+  margin: 0 20px 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 120ms ease;
+}
+
+.catalog-sheet-search:focus {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-sheet-list {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 12px 16px;
+}
+
+.catalog-sheet-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: background 120ms ease;
+}
+
+.catalog-sheet-item:hover {
+  background: var(--catalog-surface);
+}
+
+.catalog-sheet-item--active {
+  color: var(--catalog-accent);
+  font-weight: 600;
+}
+
+.catalog-sheet-item-check {
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--catalog-accent);
+}
+
+.catalog-sheet-empty {
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--catalog-text-dim);
+  font-size: 13px;
+}
+
+/* --- Library button (placed by the reader in the top-left) --- */
+
+.catalog-library-btn {
+  position: absolute;
+  top: calc(15px + env(safe-area-inset-top, 0px));
+  left: calc(16px + env(safe-area-inset-left, 0px));
+  width: 48px;
+  height: 48px;
+  border-radius: var(--catalog-radius);
+  border: 1px solid var(--catalog-border);
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 30;
+  transition: color 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+
+.catalog-library-btn:hover {
+  color: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+}
+
+.catalog-library-btn:active {
+  color: var(--catalog-text);
+}
+
+.catalog-library-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --- Book-level paid CTA (one offer, not 23 buy buttons) --- */
+
+.catalog-cta {
+  margin: 14px 0 18px 0;
+  padding: 16px 16px 14px 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: calc(var(--catalog-radius) + 2px);
+  background: var(--catalog-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.catalog-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 90% at 0% 0%,
+    color-mix(in srgb, var(--catalog-accent) 10%, transparent) 0%,
+    transparent 60%
+  );
+}
+
+.catalog-cta-eyebrow {
+  position: relative;
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--catalog-accent);
+  margin-bottom: 4px;
+}
+
+.catalog-cta-blurb {
+  position: relative;
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--catalog-text-dim);
+  margin-bottom: 12px;
+  max-width: 36ch;
+}
+
+.catalog-cta-primary {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+  font-family: var(--catalog-font);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 150ms ease, transform 80ms ease;
+}
+
+.catalog-cta-primary:hover {
+  background: var(--catalog-accent-hover, var(--catalog-accent));
+}
+
+.catalog-cta-primary:active {
+  transform: translateY(1px);
+}
+
+.catalog-cta-or {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 10px 0;
+  font-family: var(--catalog-font);
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.catalog-cta-or::before,
+.catalog-cta-or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--catalog-border);
+}
+
+.catalog-cta-subs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.catalog-cta-sub {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-bg);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 150ms ease, background 150ms ease, transform 80ms ease;
+}
+
+.catalog-cta-sub:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-cta-sub:active {
+  transform: translateY(1px);
+}
+
+.catalog-cta-sub--highlight {
+  border-color: color-mix(in srgb, var(--catalog-accent) 60%, var(--catalog-border));
+  background: color-mix(in srgb, var(--catalog-accent) 6%, var(--catalog-bg));
+}
+
+.catalog-cta-sub-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--catalog-text-dim);
+  text-transform: uppercase;
+}
+
+.catalog-cta-sub-price {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--catalog-text);
+  line-height: 1.1;
+}
+
+.catalog-cta-sub-period {
+  font-size: 11px;
+  color: var(--catalog-text-dim);
+}
+
+/* No-price state — single centered word ("Monthly"/"Yearly"), normal case
+   and weight. Looks intentional rather than a fallback. */
+.catalog-cta-sub-solo {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 8px 0;
+}
+
+.catalog-cta--busy {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.catalog-cta--errored {
+  border-color: color-mix(in srgb, #d6586b 60%, var(--catalog-border));
+}
+
+/* Body slot replaced atomically per state (loading / ready / error / pending). */
+.catalog-cta-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Loading skeleton — three pulsing blocks while products fetch. */
+.catalog-cta-skeleton {
+  height: 44px;
+  border-radius: var(--catalog-radius);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--catalog-border) 50%, transparent) 0%,
+    color-mix(in srgb, var(--catalog-border) 80%, transparent) 50%,
+    color-mix(in srgb, var(--catalog-border) 50%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: catalog-cta-skel-pulse 1.4s ease-in-out infinite;
+}
+.catalog-cta-skeleton:nth-child(2) { height: 56px; }
+.catalog-cta-skeleton:nth-child(3) { height: 32px; }
+
+@keyframes catalog-cta-skel-pulse {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Error block — shown when products can't load. */
+.catalog-cta-error-heading {
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+}
+
+.catalog-cta-error-detail {
+  font-family: var(--catalog-font);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--catalog-text-dim);
+  word-break: break-word;
+}
+
+.catalog-cta-retry {
+  align-self: flex-start;
+  padding: 8px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-bg);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.catalog-cta-retry:hover {
+  border-color: var(--catalog-accent);
+}
+
+/* Pending state — Ask-to-Buy / SCA approval. */
+.catalog-cta-pending-heading {
+  font-family: var(--catalog-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+}
+
+.catalog-cta-pending-detail {
+  font-family: var(--catalog-font);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--catalog-text-dim);
+}
+
+/* Restore Purchases link — always visible at bottom of paywall. */
+.catalog-cta-restore {
+  align-self: center;
+  margin-top: 4px;
+  padding: 6px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.catalog-cta-restore:hover {
+  color: var(--catalog-text);
+}
+
+/* Auto-renew disclosure — required by Apple when subscription buttons shown. */
+.catalog-cta-auto-renew {
+  margin-top: 10px;
+  padding: 0 4px;
+  font-family: var(--catalog-font);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--catalog-text-dim);
+  text-align: center;
+}
+
+/* Terms of Use + Privacy Policy links — required on the paywall. */
+.catalog-cta-legal {
+  margin-top: 4px;
+  padding: 0 4px;
+  font-family: var(--catalog-font);
+  font-size: 11px;
+  text-align: center;
+}
+
+.catalog-cta-legal a {
+  color: var(--catalog-text-dim);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.catalog-cta-legal a:hover {
+  color: var(--catalog-text);
+}
+
+.catalog-cta-legal-sep {
+  color: var(--catalog-text-dim);
+  margin: 0 6px;
+}
+
+/* Locked rows — the book-level CTA owns the action; rows stay calm. */
+
+.catalog-row--locked {
+  opacity: 0.78;
+}
+
+.catalog-row--locked .catalog-row-lang {
+  font-weight: 500;
+}
+
+.catalog-row-lock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-row-lock svg {
+  opacity: 0.7;
+}
+
+/* Privacy / analytics toggle ---------------------------------------------- */
+
+.command-drawer-privacy-blurb {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--catalog-text-dim, #888);
+  margin-bottom: 12px;
+}
+
+.command-drawer-privacy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.command-drawer-privacy-row span {
+  font-size: 14px;
+  color: var(--catalog-text, currentColor);
+}
+
+.command-drawer-privacy-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--catalog-accent, #4a90e2);
+}
+
+/* ============================================================
+   Browse mode tabs (Books / Narrators)
+   ============================================================ */
+
+.catalog-tabs {
+  display: flex;
+  gap: 4px;
+  /* No bottom border — the screen-nav above already provides a section
+     break, and the active-tab pill is its own visual anchor. */
+  margin: 0 0 10px 0;
+}
+
+.catalog-tab {
+  padding: 5px 11px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.catalog-tab:hover {
+  color: var(--catalog-text);
+}
+
+.catalog-tab--active {
+  color: var(--catalog-text);
+  background: var(--catalog-surface);
+  border-color: var(--catalog-border);
+}
+
+/* ============================================================
+   Browse controls bar — sort segment + density toggle
+   ============================================================ */
+
+.catalog-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px 0;
+  flex-wrap: wrap;
+}
+
+/* Sort segmented control */
+.catalog-sort {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  gap: 2px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: var(--catalog-surface);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.catalog-sort-opt {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.catalog-sort-opt:hover {
+  color: var(--catalog-text);
+}
+
+.catalog-sort-opt--active {
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+}
+
+.catalog-sort-opt:focus-visible {
+  outline: 2px solid var(--catalog-accent);
+  outline-offset: 2px;
+}
+
+/* Focused AND selected: keep the dark-on-accent label high-contrast (a focus
+   ring must never recolor the text to white-on-accent), and draw the ring in
+   the page colour so it stays visible against the accent fill instead of an
+   invisible accent-on-accent ring. */
+.catalog-sort-opt--active:focus-visible {
+  color: var(--catalog-bg);
+  outline-color: var(--catalog-bg);
+}
+
+/* Density toggle (compact ↔ expanded) */
+.catalog-view-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 7px 12px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.catalog-view-toggle:hover {
+  color: var(--catalog-accent);
+  border-color: var(--catalog-accent);
+}
+
+.catalog-view-toggle:focus-visible {
+  outline: 2px solid var(--catalog-accent);
+  outline-offset: 2px;
+}
+
+.catalog-view-toggle svg {
+  flex-shrink: 0;
+}
+
+/* Hide the toggle's text label on the narrowest screens — the icon carries it. */
+@media (max-width: 380px) {
+  .catalog-view-toggle-label {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Compact list rows (dense, scannable — Apple Books / Audible)
+   ============================================================ */
+
+.catalog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.catalog-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--catalog-radius);
+  background: transparent;
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  cursor: pointer;
+  text-align: left;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.catalog-list-row:hover {
+  background: var(--catalog-surface);
+  border-color: var(--catalog-border);
+}
+
+.catalog-list-row:focus-visible {
+  outline: none;
+  border-color: var(--catalog-accent);
+}
+
+.catalog-list-row--active {
+  border-color: var(--catalog-accent);
+  background: color-mix(in srgb, var(--catalog-accent) 7%, transparent);
+}
+
+.catalog-list-thumb {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: calc(var(--catalog-radius) - 4px);
+  background: var(--catalog-surface);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--catalog-border);
+}
+
+.catalog-list-thumb--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--catalog-text-dim);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.catalog-list-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.catalog-list-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.catalog-list-sub {
+  display: flex;
+  min-width: 0;
+}
+
+.catalog-list-sub-text {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Language badges sit on the meta line in compact rows — kept to one line and
+   clipped so a 50-language book never blows the row height. */
+.catalog-list-langs.catalog-card-langs {
+  margin-bottom: 0;
+  margin-top: 2px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  max-height: 20px;
+}
+
+/* On wide screens the compact list reads better as two columns — the rows are
+   short, so a single column wastes the iPad/desktop width. */
+@media (min-width: 768px) {
+  .catalog-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .catalog-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ============================================================
+   Cover thumbnails on book cards
+   ============================================================ */
+
+.catalog-cover-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--catalog-surface);
+  background-size: cover;
+  background-position: center;
+  border-radius: calc(var(--catalog-radius) - 2px);
+  margin-bottom: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.catalog-cover-thumb--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--catalog-text-dim);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.catalog-cover-thumb-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 8px 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================================
+   Character chip — used in book detail rows and on cover overlays
+   ============================================================ */
+
+.catalog-character-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 3px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: var(--catalog-surface);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.catalog-character-chip:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-character-chip--on-cover {
+  background: rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.catalog-character-chip-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--catalog-bg);
+  flex-shrink: 0;
+}
+
+.catalog-character-chip-avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--catalog-text-dim);
+  background: var(--catalog-bg);
+}
+
+.catalog-character-chip-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================================
+   Narrator grid card (Narrators tab)
+   ============================================================ */
+
+.catalog-narrator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.catalog-narrator-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 14px 10px 16px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.catalog-narrator-card:hover {
+  border-color: var(--catalog-accent);
+  transform: translateY(-1px);
+}
+
+.catalog-narrator-card-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--catalog-bg);
+  margin-bottom: 10px;
+  border: 2px solid var(--catalog-border);
+}
+
+.catalog-narrator-card-avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-narrator-card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--catalog-text);
+  margin-bottom: 2px;
+}
+
+.catalog-narrator-card-meta {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   Narrator profile screen
+   ============================================================ */
+
+.catalog-narrator-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.catalog-narrator-detail-hero {
+  position: relative;
+  background: transparent;
+  /* Reserve room below the banner for the avatar to bleed into. The avatar
+     is positioned bottom:-56px so this padding keeps the layout stable
+     instead of having the avatar collide with the identity block below. */
+  padding-bottom: 56px;
+  margin-bottom: 8px;
+}
+
+.catalog-narrator-detail-banner {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--catalog-bg);
+  border-radius: var(--catalog-radius);
+  overflow: hidden;
+}
+
+.catalog-narrator-detail-banner--placeholder {
+  background:
+    radial-gradient(circle at 30% 50%, color-mix(in srgb, var(--catalog-accent) 35%, transparent), transparent 60%),
+    linear-gradient(135deg, var(--catalog-surface), var(--catalog-bg));
+}
+
+.catalog-narrator-detail-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--catalog-bg);
+  border: 4px solid var(--catalog-bg);
+  position: absolute;
+  left: 24px;
+  bottom: -56px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.catalog-narrator-detail-avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--catalog-text-dim);
+  background: var(--catalog-surface);
+}
+
+.catalog-narrator-detail-identity {
+  padding: 64px 8px 0 8px;
+}
+
+.catalog-narrator-detail-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--catalog-text);
+  margin: 0 0 4px;
+}
+
+.catalog-narrator-detail-tagline {
+  font-size: 14px;
+  color: var(--catalog-text-dim);
+  margin: 0 0 12px;
+}
+
+.catalog-narrator-detail-langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.catalog-narrator-detail-lang-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border: 1px solid var(--catalog-border);
+  border-radius: 999px;
+  background: var(--catalog-surface);
+  color: var(--catalog-text-dim);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Stack pill — filled accent so the user's languages dominate the row
+   on a narrator who supports dozens. */
+.catalog-narrator-detail-lang-pill--stack {
+  border-color: var(--catalog-accent);
+  background: var(--catalog-accent);
+  color: var(--catalog-bg);
+  font-weight: 600;
+}
+
+/* "Other" pill — dimmer than the base so it visually recedes when
+   shown alongside stack pills in the expanded view. */
+.catalog-narrator-detail-lang-pill--other {
+  opacity: 0.7;
+}
+
+.catalog-narrator-detail-bio {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--catalog-text);
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+.catalog-narrator-detail-bio--collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.catalog-narrator-detail-bio-toggle {
+  margin-top: 6px;
+  border: 0;
+  background: transparent;
+  color: var(--catalog-accent);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ============================================================
+   Voice variant cards (inside narrator profile)
+   ============================================================ */
+
+.catalog-voice-variants {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.catalog-voice-variant {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-surface);
+}
+
+.catalog-voice-variant-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.catalog-voice-variant-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.catalog-voice-variant-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--catalog-text);
+}
+
+.catalog-voice-variant-provider {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--catalog-accent) 18%, transparent);
+  color: var(--catalog-accent);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.catalog-voice-variant-status {
+  display: inline-flex;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--catalog-bg);
+  color: var(--catalog-text-dim);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.catalog-voice-variant-meta {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+  line-height: 1.4;
+}
+
+.catalog-voice-preview-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  background: var(--catalog-bg);
+  color: var(--catalog-text);
+  font-family: var(--catalog-font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.catalog-voice-preview-btn:hover {
+  border-color: var(--catalog-accent);
+}
+
+.catalog-voice-preview-btn--playing {
+  border-color: var(--catalog-accent);
+  background: color-mix(in srgb, var(--catalog-accent) 18%, transparent);
+}
+
+.catalog-voice-preview-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   Section titles + book grids inside narrator detail
+   ============================================================ */
+
+.catalog-narrator-detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.catalog-narrator-detail-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--catalog-text);
+}
+
+.catalog-narrator-detail-series {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--catalog-text-dim);
+  margin: 6px 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   Book detail hero (cover + metadata side-by-side)
+   ============================================================ */
+
+.command-drawer-book-hero {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.command-drawer-book-hero-cover {
+  flex-shrink: 0;
+  width: 112px;
+  aspect-ratio: 1 / 1;
+  background: var(--catalog-surface);
+  background-size: cover;
+  background-position: center;
+  border-radius: calc(var(--catalog-radius) - 2px);
+  border: 1px solid var(--catalog-border);
+}
+
+.command-drawer-book-hero-cover--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--catalog-text-dim);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.command-drawer-book-hero-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.command-drawer-book-hero-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--catalog-text);
+  line-height: 1.3;
+}
+
+.command-drawer-book-hero-author {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.command-drawer-book-hero-series {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.command-drawer-book-hero-description {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--catalog-text);
+  margin-bottom: 16px;
+}
+
+.command-drawer-book-hero-description--collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- End-of-book "read next" suggestion -------------------------------- */
+/* Shown when a full book finishes. Inherits the reader's --catalog-* theme. */
+
+.catalog-eob {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(20px + env(safe-area-inset-top, 0px)) 20px
+    calc(20px + env(safe-area-inset-bottom, 0px)) 20px;
+  background: color-mix(in srgb, var(--catalog-bg) 78%, transparent);
+  font-family: var(--catalog-font);
+  color: var(--catalog-text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease;
+}
+
+.catalog-eob--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.catalog-eob-card {
+  position: relative;
+  width: min(360px, 100%);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 28px 24px 24px 24px;
+  background: var(--catalog-surface);
+  border: 1px solid var(--catalog-border);
+  border-radius: var(--catalog-radius);
+  transform: translateY(12px);
+  transition: transform 250ms ease;
+}
+
+.catalog-eob--open .catalog-eob-card {
+  transform: translateY(0);
+}
+
+.catalog-eob-close {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--catalog-text-dim);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.catalog-eob-close:hover {
+  color: var(--catalog-text);
+}
+
+.catalog-eob-kicker {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-eob-cover {
+  width: 96px;
+  aspect-ratio: 2 / 3;
+  margin: 4px 0;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  border: 1px solid var(--catalog-border);
+}
+
+.catalog-eob-lead {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-eob-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--catalog-text);
+}
+
+.catalog-eob-series {
+  font-size: 12px;
+  color: var(--catalog-text-dim);
+}
+
+.catalog-eob-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.catalog-eob-actions .catalog-btn {
+  flex: 1 1 0;
+  min-width: 0;
+}

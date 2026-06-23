@@ -1,0 +1,2614 @@
+:root {
+  color-scheme: light dark;
+  --pc-bg: #f7f7fb;
+  --pc-fg: #1a1a23;
+  --pc-muted: #6b6b78;
+  --pc-card: #ffffff;
+  --pc-border: rgba(0, 0, 0, 0.08);
+  --pc-accent: #7c3aed;
+  --pc-accent-hover: #6d28d9;
+  --pc-accent-soft: rgba(124, 58, 237, 0.12);
+  --pc-good: #16a34a;
+  --pc-okay: #d97706;
+  --pc-bad: #dc2626;
+  --pc-shadow: 0 6px 20px rgba(20, 20, 40, 0.08);
+  --pc-result-col: 600px;
+  /* Horizontal chrome inset of .pc-root (the outer app shell).
+     Exposed as a var so the swipe area can break OUT of this
+     padding via negative margin — cards slide cleanly to the
+     screen edge, while the header chiclets and mic stage stay
+     comfortably inset. Phone media query overrides this to 16px. */
+  --pc-root-pad-x: 22px;
+  --pc-safe-top: env(safe-area-inset-top, 0px);
+  --pc-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --pc-safe-left: env(safe-area-inset-left, 0px);
+  --pc-safe-right: env(safe-area-inset-right, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pc-bg: #0f0f17;
+    --pc-fg: #ececf5;
+    --pc-muted: #9b9bab;
+    --pc-card: #1a1a25;
+    --pc-border: rgba(255, 255, 255, 0.08);
+    --pc-accent: #a78bfa;
+    --pc-accent-hover: #c4b5fd;
+    --pc-accent-soft: rgba(167, 139, 250, 0.18);
+    --pc-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#corpan-game-root {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  background: var(--pc-bg);
+  color: var(--pc-fg);
+  overflow: hidden;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-y;
+  overscroll-behavior: none;
+}
+
+/* Full-viewport backdrop — sits INSIDE the host's pack container (under
+   the same z-index 1100 stacking context the host overlay creates) so it
+   actually covers the visible viewport on iOS, where the host's outer
+   `bg-black` div sometimes doesn't reach the safe-area edges. */
+.pc-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--pc-bg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.pc-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--pc-bg);
+  color: var(--pc-fg);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Top padding sits OUTSIDE the safe-area inset rather than next
+     to it: env(safe-area-inset-top) already accounts for the
+     status bar / Stage Manager title bar, so we only need a
+     tasteful 14px on top of that for visual breathing room.
+     L/R use --pc-root-pad-x so the swipe area can break out of
+     the chrome via matching negative margins below. */
+  padding:
+    calc(14px + var(--pc-safe-top))
+    calc(var(--pc-root-pad-x) + var(--pc-safe-right))
+    calc(18px + var(--pc-safe-bottom))
+    calc(var(--pc-root-pad-x) + var(--pc-safe-left));
+  gap: 14px;
+}
+
+/* Phone-class layout — most iPhones in portrait. Everything scales
+   down proportionally so the deck has breathing room and the mic
+   stays comfortably above the home indicator. The big purple mic
+   that feels right on iPad becomes a too-much chunk of the screen
+   on a 6.1" phone, so it shrinks; the phrase typography clamp
+   bottoms out smaller; the per-word pills and bar grid tighten
+   their grids; and the header chiclets lose a few px of padding.
+   Tested-in-mind dimensions: iPhone SE 3rd gen (375×667),
+   iPhone 13/14 (390×844), iPhone 14 Plus (428×926). */
+/* Responsive overrides moved to the bottom of this file — placing
+   them above the base rules made every override lose the cascade
+   tie to the later, equally-specific base rules (the unconditional
+   `.pc-mic { width: 124px }` was beating `@media (max-width: 480px)
+   .pc-mic { width: 60px }` because it appeared later). */
+
+/* ---- Header — streak (left) · mode + close (right). Three
+   chiclets sized as a single visual rhythm: 36px height, equal
+   border treatment, equal hover behavior. The header reserves
+   the chiclet height so the deck below has a stable y-offset
+   whether or not the streak is visible. ---- */
+.pc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 0 0 auto;
+  min-height: 36px;
+}
+.pc-header-left,
+.pc-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  /* Equal-weight side slots so the centered .pc-lang-badge sits at
+     true horizontal center regardless of streak/mode-button width
+     differences. flex: 1 1 0 makes the two slots take equal share
+     of the row's remaining width; the badge in the middle is then
+     mathematically centered by `justify-content: space-between`
+     on .pc-header. */
+  flex: 1 1 0;
+  min-width: 0;
+}
+.pc-header-left  { justify-content: flex-start; }
+.pc-header-right { justify-content: flex-end; }
+
+/* The "Pronunciation Coach" subtitle is gone from the header (the
+   user's screen is the brand — no need to label it twice). The
+   .pc-subtitle class survives because the setup overlay still uses
+   it as a section label ("Speech Models"). */
+.pc-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pc-fg);
+  opacity: 0.72;
+}
+
+/* Close X / Back ‹ — both match the mode chip dimensions (36×36)
+   for visual rhythm so left/center/right header items align on a
+   single baseline. `.pc-close` is kept for the renderUnavailable
+   error screen; `.pc-back` is the normal practice header. */
+.pc-close,
+.pc-back {
+  appearance: none;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  /* Optical-center the chevron glyph — the `‹` character has its
+     visible bounds biased to the right because of its kerning. */
+  padding-right: 2px;
+  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.pc-close { font-size: 20px; padding-right: 0; }
+.pc-close:hover,
+.pc-back:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); color: var(--pc-accent); }
+.pc-close:active,
+.pc-back:active { transform: scale(0.92); }
+
+/* ---- Mode chip — icon-only, communicates state via fill ----
+   Standard: outlined neutral (the default speech model is the
+     baseline — no fanfare).
+   Advanced: filled-accent with a glowing ✦ (you've turned on the
+     fancy one — feel it). */
+.pc-mode {
+  appearance: none;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 160ms ease, border-color 160ms ease,
+              transform 120ms ease, box-shadow 200ms ease,
+              color 160ms ease;
+  /* Standard glyph: faint sparkle, just enough to signal "model
+     selector" without claiming visual weight. */
+  color: var(--pc-fg);
+  opacity: 0.78;
+}
+.pc-mode:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); opacity: 1; }
+.pc-mode:active { transform: scale(0.94); }
+.pc-mode[disabled] { opacity: 0.4; cursor: not-allowed; }
+.pc-mode-glyph {
+  font-size: 14px;
+  line-height: 1;
+}
+.pc-mode.advanced {
+  background: var(--pc-accent);
+  border-color: var(--pc-accent);
+  color: #fff;
+  opacity: 1;
+  box-shadow:
+    0 0 0 4px var(--pc-accent-soft),
+    0 4px 14px rgba(124, 58, 237, 0.45);
+}
+.pc-mode.advanced:hover { background: var(--pc-accent-hover); border-color: var(--pc-accent-hover); }
+.pc-mode.advanced .pc-mode-glyph {
+  font-size: 16px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ---- Streak indicator — 36px tall pill, rhythmically matches
+   the .pc-mode and .pc-close chiclets to the right. The fire
+   emoji and number sit on a single visual baseline with the
+   icons in the right cluster. ---- */
+.pc-streak {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--pc-accent-soft);
+  border: 1px solid transparent;
+  color: var(--pc-fg);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+.pc-streak[hidden] { display: none; }
+
+/* ---- Swipe area: wraps deck + result so the whole middle of the
+   screen is a swipe target. Touch-action: none so iOS doesn't capture
+   horizontal drags as page scroll. The result overlay is a child of
+   this container (`position: absolute`) so it never pushes the mic
+   stage downward — small phones keep the mic anchored, big iPads see
+   the result floating elegantly over the (faded) phrase. ---- */
+.pc-swipe-area {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 0;
+  touch-action: none;
+  /* Break out of .pc-root's L/R chrome so the deck reaches the
+     actual screen edges. Cards can then slide cleanly off-screen
+     without visible "padding strip" lingering at the trailing
+     edge of the swipe-out animation. The header (above) and mic
+     stage (below) stay inside the chrome — they're separate flex
+     children of .pc-root and aren't affected by this margin. */
+  margin-left: calc(-1 * (var(--pc-root-pad-x) + var(--pc-safe-left)));
+  margin-right: calc(-1 * (var(--pc-root-pad-x) + var(--pc-safe-right)));
+}
+
+/* ---- Phrase deck (sized for the card) ---- */
+.pc-deck {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 240px;
+}
+
+/* The card uses a 3-row grid so the phrase sits at a FIXED vertical
+   slot, no matter what decorations live above or below it. Without
+   this, adding the banner row pushed the phrase up and adding
+   detail rows pushed it again — the user observed the phrase
+   "moving abruptly" between idle and scored states. With grid:
+   - row 1 (1fr): banner sits at its bottom, gravity toward phrase
+   - row 2 (auto): phrase + romanization + native. Always centered
+                   vertically because the two 1fr rows split the
+                   remaining space evenly.
+   - row 3 (1fr): detail sits at its top, gravity toward phrase
+   The phrase never moves. Decorations grow into the surrounding
+   slack. */
+.pc-card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  justify-items: center;
+  /* L/R padding matches the chrome inset (--pc-root-pad-x) so
+     content sits at the same visual position it would inside
+     .pc-root's normal padding. The card itself spans full screen
+     width (because .pc-swipe-area breaks out of .pc-root's
+     L/R chrome via negative margin), so the card slides cleanly
+     off-screen on swipe — but content stays inset from the
+     screen edge by --pc-root-pad-x for visual breathing room. */
+  padding: 16px var(--pc-root-pad-x);
+  text-align: center;
+  will-change: transform, opacity;
+  transition: transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1),
+              opacity 220ms ease;
+  touch-action: pan-y;
+  /* Safety net: if a long phrase + heavy result decorations
+     genuinely overflow the deck on a tiny phone, scroll the card
+     internally rather than pushing the mic off-screen. */
+  overflow-y: auto;
+  /* Hard horizontal clamp: NOTHING in the card may protrude past
+     the deck's right/left edge. A long Whisper transcript, a long
+     romanization, a wide pill row — all clipped to the card width. */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* Soft edge fade so the card content doesn't visibly hard-clip
+     against the deck boundary (especially the mic stage below).
+     Content gracefully dissolves into adjacent regions for a more
+     premium feel. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 18px,
+    #000 calc(100% - 28px),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 18px,
+    #000 calc(100% - 28px),
+    transparent 100%
+  );
+}
+.pc-card-above {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;        /* gravity DOWN, toward phrase */
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding-bottom: 14px;
+  min-height: 0;
+}
+.pc-card-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.pc-card-below {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;      /* gravity UP, toward phrase */
+  gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding-top: 14px;
+  min-height: 0;
+}
+/* The phrase is the visual hero throughout. Result decorations
+   appear around it (banner above, detail below) but the phrase
+   itself never fades or moves — content stability is the whole
+   point of the elite-design pass. The previous `.behind-result`
+   class faded the phrase to 18% to make a result OVERLAY feel like
+   foreground; we removed the overlay, so we removed the fade. */
+.pc-card.dragging {
+  transition: none;
+}
+.pc-card.entering {
+  opacity: 0;
+}
+.pc-card.entered {
+  opacity: 1;
+}
+
+.pc-target {
+  font-size: clamp(30px, 6.5vw, 56px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--pc-fg);
+  margin: 0;
+  word-break: break-word;
+  max-width: 880px;
+  cursor: pointer;
+  transition: color 120ms ease;
+}
+.pc-target:hover { color: var(--pc-accent); }
+.pc-target:active { transform: scale(0.99); }
+
+.pc-romanization {
+  font-size: clamp(14px, 2.4vw, 20px);
+  font-weight: 500;
+  color: var(--pc-muted);
+  margin: 0;
+  font-style: italic;
+  max-width: 720px;
+  cursor: pointer;
+}
+.pc-romanization:hover { color: var(--pc-fg); }
+
+.pc-native {
+  font-size: clamp(15px, 2.4vw, 20px);
+  font-weight: 500;
+  color: var(--pc-muted);
+  margin: 0;
+  max-width: 720px;
+}
+
+/* ---- Mic stage (anchored to bottom, never moves) ----
+   Anchored to the bottom of the pack root via `margin-top: auto` so
+   the mic stays put regardless of whether the inline result reveal
+   below the phrase card is empty or populated. */
+.pc-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  margin-top: auto;
+  justify-content: flex-start;
+}
+
+.pc-mic-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pc-mic {
+  appearance: none;
+  border: none;
+  /* Fluid mic: scales smoothly with the SHORTER viewport edge so
+     it tracks both phone width and reduced iPad window height.
+     Small screen → small button, big screen → big button, no
+     stepwise jumps. Bounded so it never gets absurd at extremes. */
+  width: clamp(48px, 14vmin, 124px);
+  height: clamp(48px, 14vmin, 124px);
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--pc-accent) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  color: white;
+  font-size: clamp(20px, 6vmin, 52px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--pc-shadow);
+  transition: background 120ms ease, transform 120ms ease;
+  font-family: inherit;
+  /* Hold-to-speak: stop the WebView turning a press-and-hold into a
+     scroll, text selection, or long-press callout — any of which would
+     steal the pointer mid-hold and abort recording. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.pc-mic:hover { background: color-mix(in oklab, var(--pc-accent-hover) 92%, transparent); }
+.pc-mic:active { transform: scale(0.96); }
+.pc-mic[disabled] {
+  background: color-mix(in oklab, var(--pc-muted) 80%, transparent);
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.pc-mic[disabled]:hover { background: color-mix(in oklab, var(--pc-muted) 80%, transparent); }
+
+.pc-mic.recording {
+  background: var(--pc-bad);
+  animation: pc-pulse 1.1s ease-in-out infinite;
+}
+@keyframes pc-pulse {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(220, 38, 38, 0.45); }
+  50%      { transform: scale(1.05); box-shadow: 0 0 0 18px rgba(220, 38, 38, 0); }
+}
+
+.pc-mic.scoring {
+  background: var(--pc-muted);
+  cursor: progress;
+}
+
+.pc-spinner {
+  width: clamp(20px, 5vmin, 44px);
+  height: clamp(20px, 5vmin, 44px);
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: pc-spin 0.9s linear infinite;
+}
+@keyframes pc-spin {
+  to { transform: rotate(360deg); }
+}
+
+.pc-mic-label {
+  font-size: 13px;
+  color: var(--pc-muted);
+  font-weight: 500;
+  /* Lock the label to a single line so changing the text (Loading…,
+     Tap to speak, Recording…, Scoring…, Network needed…) can never
+     wrap and push the mic up the screen. The user explicitly
+     called this out: the mic must not move regardless of label
+     content or surrounding state. */
+  min-height: 18px;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(420px, 90vw);
+  text-align: center;
+}
+
+/* ---- Swipe hint ---- */
+.pc-swipe-hint {
+  font-size: 12px;
+  color: var(--pc-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.7;
+}
+
+/* ---- Result decorations — live INSIDE .pc-card, not as a separate
+   overlay. Banner above the phrase, detail below. The phrase is
+   never fragmented from its decorations, so the slide animation
+   carries everything off as one unit on swipe.
+
+   No card chrome on the decorations: no border, no shadow, no
+   separate background. Same surface as the phrase. The decorations
+   are part of the same composition as the phrase, not a popover. ---- */
+
+.pc-result-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--pc-accent-soft);
+  color: var(--pc-fg);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  /* Compact and subordinate to the phrase. The phrase is the verb
+     of this screen; the banner is the adverb. */
+  max-width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  animation: pc-banner-in 240ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.pc-result-banner[hidden] { display: none; }
+.pc-result-banner.good {
+  background: rgba(22, 163, 74, 0.16);
+  color: var(--pc-good);
+}
+.pc-result-banner.okay {
+  background: rgba(217, 119, 6, 0.16);
+  color: var(--pc-okay);
+}
+.pc-result-banner.bad {
+  background: rgba(220, 38, 38, 0.16);
+  color: var(--pc-bad);
+}
+.pc-result-banner-score {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  font-size: 15px;
+}
+.pc-result-banner-sep {
+  opacity: 0.5;
+}
+.pc-result-banner-text {
+  font-weight: 600;
+}
+@keyframes pc-banner-in {
+  from { transform: translateY(-6px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.pc-result-banner.leaving {
+  animation: pc-banner-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  pointer-events: none;
+}
+@keyframes pc-banner-out {
+  to { transform: translateY(-4px); opacity: 0; }
+}
+
+.pc-result-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: var(--pc-result-col);
+  margin: 0 auto;
+  animation: pc-detail-in 280ms cubic-bezier(0.22, 0.61, 0.36, 1) 60ms backwards;
+}
+.pc-result-detail[hidden] { display: none; }
+@keyframes pc-detail-in {
+  from { transform: translateY(6px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+.pc-result-detail.leaving {
+  animation: pc-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  pointer-events: none;
+}
+@keyframes pc-detail-out {
+  to { transform: translateY(4px); opacity: 0; }
+}
+
+/* "Heard you say" slot — sits between the score banner and the
+   phrase. Hosts a single .pc-transcript-row, scoped to the same
+   width as the row's normal container. Reveals in concert with
+   the banner so the above-phrase composition feels like one
+   gesture, not three separate elements. */
+.pc-result-transcript-up {
+  width: 100%;
+  max-width: var(--pc-result-col);
+  margin: 8px auto 0;
+  animation: pc-detail-in 320ms cubic-bezier(0.22, 0.61, 0.36, 1) 40ms backwards;
+}
+.pc-result-transcript-up[hidden] { display: none; }
+.pc-result-transcript-up.leaving {
+  animation: pc-detail-out 220ms cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+/* Bars-above slot — kept as an empty slot in the card grid for
+   layout stability; renderResult() leaves it hidden. The Words /
+   Sounds bars that used to live here were removed in 0.3.5: the
+   headline already shows the overall percentage and the per-word
+   pills carry richer per-word truth than the bars ever did. */
+.pc-result-bars-up { display: none; }
+
+.pc-headline {
+  font-size: clamp(20px, 3.6vw, 30px);
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+.pc-headline.good {
+  color: var(--pc-good);
+  animation: pc-celebrate 700ms ease-out;
+  text-shadow: 0 0 24px rgba(22, 163, 74, 0.35);
+}
+.pc-headline.okay { color: var(--pc-okay); }
+.pc-headline.bad  { color: var(--pc-bad); }
+@keyframes pc-celebrate {
+  0%   { transform: scale(0.6);  opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+.pc-score-big {
+  font-size: clamp(36px, 7vw, 56px);
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
+  color: var(--pc-fg);
+  letter-spacing: -0.02em;
+}
+
+.pc-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--pc-result-col);
+  margin: 0 auto;
+}
+.pc-chip {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--pc-accent-soft);
+  color: var(--pc-fg);
+  font-weight: 500;
+}
+.pc-chip-warn {
+  background: rgba(217, 119, 6, 0.18);
+  color: var(--pc-okay);
+}
+.pc-diagnostics {
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+/* "Heard you say" — stacked, centered block. Small muted label
+   on its own line, then ▶ + transcript inline below. The whole
+   block is the tap target; the ▶ is a visual affordance. Both
+   the success and empty branches share this shape so layout
+   stays steady between attempts. */
+.pc-transcripts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: var(--pc-result-col);
+  margin: 4px auto 0;
+}
+.pc-transcript-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  /* Tappable height comfortable for thumbs (Apple ≥44pt). The whole
+     block is tap-to-play, not just the ▶ button. */
+  min-height: 56px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  text-align: center;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.pc-transcript-row:hover { background: var(--pc-accent-soft); }
+.pc-transcript-row:active { transform: scale(0.99); }
+.pc-transcript-row.empty {
+  /* Failure branch keeps the same shape; just non-interactive. */
+  cursor: default;
+}
+.pc-transcript-row.empty:hover { background: var(--pc-card); }
+.pc-transcript-row.empty:active { transform: none; }
+.pc-transcript-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  font-weight: 600;
+}
+.pc-transcript-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /* Cap the inline row to the column so a long transcript
+     ellipsizes within the block instead of pushing it wider. */
+  max-width: 100%;
+  min-width: 0;
+}
+.pc-transcript-play {
+  appearance: none;
+  border: none;
+  background: var(--pc-accent-soft);
+  color: var(--pc-fg);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  font-family: inherit;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.pc-transcript-row:hover .pc-transcript-play { background: var(--pc-accent); color: var(--pc-card); }
+.pc-transcript-play:active { transform: scale(0.92); }
+.pc-transcript-text {
+  /* min-width:0 lets ellipsis kick in inside the flex line. */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-style: italic;
+  font-size: 15px;
+}
+.pc-transcript-text.empty {
+  opacity: 0.6;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.pc-words {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  /* No inner cap; parent .pc-result-detail already constrains
+     to var(--pc-result-col). */
+}
+/* RTL target languages (Arabic, Hebrew, Persian, Urdu, pa-Arab):
+   reverse pill order so the first expected word is on the right.
+   `row-reverse` flips only the container's main-axis order — pill
+   internals are flipped separately below so the ▸ affordance moves
+   to the LEFT of the text and points leftward (◂) to match reading
+   direction. */
+.pc-words-rtl { flex-direction: row-reverse; }
+.pc-words-rtl .pc-word::after {
+  content: "◂";
+  order: -1;
+  margin-left: 0;
+  margin-right: 6px;
+}
+/* RTL "Heard you say" row: play affordance moves to the right side
+   of the transcript and the ▶ flips to ◀. */
+.pc-transcript-line-rtl { flex-direction: row-reverse; }
+/* Per-word pills double as TTS buttons — tap one to hear it
+   spoken. The bars used to share the score story; now the pills
+   carry it alone, so they get a bit more weight and breathing
+   room than before. */
+.pc-word {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+.pc-word:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18); }
+.pc-word:active { transform: scale(0.96); }
+.pc-word::after {
+  content: "▸";
+  margin-left: 6px;
+  font-size: 11px;
+  opacity: 0.7;
+}
+.pc-word.good { background: rgba(22, 163, 74, 0.15); color: var(--pc-good); border-color: rgba(22, 163, 74, 0.30); }
+.pc-word.okay { background: rgba(217, 119, 6, 0.15); color: var(--pc-okay); border-color: rgba(217, 119, 6, 0.30); }
+.pc-word.bad  { background: rgba(220, 38, 38, 0.15); color: var(--pc-bad);  border-color: rgba(220, 38, 38, 0.30); }
+
+.pc-hear {
+  appearance: none;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+  font-family: inherit;
+}
+.pc-hear:hover { background: var(--pc-accent-soft); }
+.pc-hear:active { transform: scale(0.97); }
+
+.pc-error {
+  color: var(--pc-bad);
+  font-size: 14px;
+  text-align: center;
+  max-width: 480px;
+  margin: 0;
+  /* Float above the mic stage instead of contributing to layout —
+     showing/hiding an error message must NOT shift the mic. The
+     parent `.pc-stage` gets `position: relative` for this anchor. */
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 6px);
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  background: var(--pc-bg);
+  border: 1px solid rgba(220, 38, 38, 0.30);
+  border-radius: 10px;
+  pointer-events: auto;
+  z-index: 5;
+}
+.pc-error[hidden] { display: none; }
+.pc-stage { position: relative; }
+
+.pc-footer {
+  font-size: 11px;
+  color: var(--pc-muted);
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+/* ---- Quota readout ----
+   A subtle, transparent count of new rounds left today, pinned to the lower-
+   right safe corner. Free tier only — hidden for subscribers. Squared-off,
+   muted, low-opacity so it informs without competing with the mic. Tints a
+   touch warm in the last few (".pc-quota-low") to read as "nearly done",
+   never an alarm. */
+.pc-quota {
+  position: absolute;
+  right: calc(10px + var(--pc-safe-right));
+  bottom: calc(10px + var(--pc-safe-bottom));
+  z-index: 6;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--pc-muted);
+  background: var(--pc-accent-soft);
+  border: 1px solid color-mix(in srgb, var(--pc-muted) 22%, transparent);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.pc-quota[hidden] { display: none; }
+.pc-quota.pc-quota-low {
+  color: #b45309;
+  background: color-mix(in srgb, #f59e0b 16%, transparent);
+  border-color: color-mix(in srgb, #f59e0b 35%, transparent);
+  opacity: 0.7;
+}
+@media (prefers-color-scheme: dark) {
+  .pc-quota.pc-quota-low { color: #fbbf24; }
+}
+
+/* ---- Loading overlay ---- */
+.pc-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 22px;
+  color: white;
+  font-size: 19px;
+  font-weight: 600;
+  text-align: center;
+  white-space: pre-line;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+  /* Padding includes safe insets so the spinner/text never crowd
+     the notch / Dynamic Island / home indicator if the overlay
+     content runs long enough to reach the edges. */
+  padding:
+    calc(24px + var(--pc-safe-top))
+    calc(24px + var(--pc-safe-right))
+    calc(24px + var(--pc-safe-bottom))
+    calc(24px + var(--pc-safe-left));
+  line-height: 1.4;
+}
+.pc-overlay .pc-spinner {
+  width: 64px;
+  height: 64px;
+  border-width: 6px;
+}
+
+/* Cancel button on cancel-able overlays (memory-wait retry, etc.).
+   Hidden by default; shown when showOverlay() is called with
+   { cancelLabel, onCancel }. Sized below the message with margin
+   so the action is clearly secondary to the wait state. */
+.pc-overlay #pc-overlay-cancel {
+  margin-top: 12px;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 120ms ease;
+}
+.pc-overlay #pc-overlay-cancel:hover,
+.pc-overlay #pc-overlay-cancel:active {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ---- Unavailable screen ---- */
+.pc-unavailable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 40px 24px;
+  gap: 12px;
+}
+.pc-unavailable h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+.pc-unavailable p {
+  color: var(--pc-muted);
+  margin: 0;
+  max-width: 380px;
+  line-height: 1.5;
+}
+
+/* ---- Confetti for celebration ---- */
+.pc-confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+.pc-confetti span {
+  position: absolute;
+  top: -10px;
+  width: 10px;
+  height: 16px;
+  border-radius: 2px;
+  opacity: 0.9;
+  animation: pc-fall 1100ms ease-in forwards;
+}
+@keyframes pc-fall {
+  0%   { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
+}
+
+/* ---- Setup / settings overlay ---- */
+.pc-setup-root {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow-y: auto;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  background: var(--pc-bg);
+  /* Explicit color is mandatory: the host wraps the pack in a
+     container with `color: white` (its dark modal chrome), so any
+     descendant that doesn't set its own color inherits white. In
+     dark mode the page bg is dark and that reads fine, but in
+     light mode the headline / card-name text becomes white-on-
+     light and disappears. Setting color here makes every setup
+     descendant inherit the right scheme-aware foreground. */
+  color: var(--pc-fg);
+}
+.pc-setup-root .pc-backdrop {
+  z-index: 0;
+}
+.pc-setup {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  /* Bottom padding floor is 120px (was 24px) because Tauri's
+     Android WebView renders edge-to-edge under the system nav bar
+     and does NOT populate `env(safe-area-inset-bottom)` — meaning
+     `var(--pc-safe-bottom)` resolves to 0px on Android. The
+     Samsung gesture / 3-button nav bar can be up to ~120 device
+     pixels on high-density displays (S25 Ultra class), so the
+     floor has to cover that worst case to keep content from
+     sitting on top of the system buttons.
+
+     iOS continues to stack its actual safe-area inset on top of
+     the floor. Net effect on iOS: about 120px of bottom padding
+     in the model chooser even on devices that don't need it. That
+     looks fine — this is a one-time picker screen, not a
+     space-constrained main UI. */
+  padding:
+    calc(20px + var(--pc-safe-top))
+    calc(24px + var(--pc-safe-right))
+    calc(120px + var(--pc-safe-bottom))
+    calc(24px + var(--pc-safe-left));
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.pc-setup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+}
+.pc-setup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.pc-setup-headline {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.pc-setup-sub {
+  margin: 0;
+  color: var(--pc-muted);
+  font-size: 15px;
+  line-height: 1.5;
+  max-width: 60ch;
+}
+.pc-setup-card {
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--pc-shadow);
+}
+.pc-setup-card-suggested {
+  border-color: var(--pc-accent);
+  box-shadow:
+    0 0 0 2px var(--pc-accent-soft),
+    var(--pc-shadow);
+}
+.pc-setup-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.pc-setup-card-name {
+  font-size: 18px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pc-setup-card-meta {
+  font-size: 13px;
+  color: var(--pc-muted);
+  margin-top: 2px;
+}
+.pc-setup-card-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pc-setup-card-status[data-state="active"] {
+  background: rgba(22, 163, 74, 0.18);
+  color: var(--pc-good);
+}
+.pc-setup-card-status[data-state="installed"] {
+  background: var(--pc-accent-soft);
+  color: var(--pc-fg);
+}
+.pc-setup-card-status[data-state="installing"] {
+  background: rgba(217, 119, 6, 0.18);
+  color: var(--pc-okay);
+}
+.pc-setup-card-status[data-state="absent"] {
+  background: transparent;
+  color: var(--pc-muted);
+}
+.pc-setup-card-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--pc-fg);
+  opacity: 0.85;
+}
+
+/* Pros / Cons block — two columns on wider screens, stacked on phones.
+   At-a-glance bullets so both a parent and a Whisper expert can scan
+   the trade-offs without parsing the prose tagline above. */
+.pc-setup-card-procon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin-top: 4px;
+}
+.pc-setup-card-pros,
+.pc-setup-card-cons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pc-setup-card-pros li,
+.pc-setup-card-cons li {
+  font-size: 13px;
+  line-height: 1.4;
+  padding-left: 18px;
+  position: relative;
+  color: var(--pc-fg);
+}
+.pc-setup-card-pros li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--pc-good);
+  font-weight: 700;
+}
+.pc-setup-card-cons li::before {
+  content: "−";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--pc-bad);
+  font-weight: 700;
+}
+@media (max-width: 480px) {
+  .pc-setup-card-procon {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+.pc-setup-card-techid {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--pc-muted);
+  opacity: 0.65;
+  word-break: break-all;
+  margin-top: 2px;
+}
+.pc-setup-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.pc-setup-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    background 120ms ease,
+    transform 120ms ease,
+    border-color 120ms ease;
+}
+.pc-setup-btn:hover { background: var(--pc-accent-soft); }
+.pc-setup-btn:active { transform: scale(0.97); }
+.pc-setup-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.pc-setup-btn-primary {
+  background: var(--pc-accent);
+  color: #fff;
+  border-color: var(--pc-accent);
+}
+.pc-setup-btn-primary:hover { background: var(--pc-accent-hover); }
+.pc-setup-btn-danger {
+  border-color: rgba(220, 38, 38, 0.4);
+  color: var(--pc-bad);
+}
+.pc-setup-btn-danger:hover {
+  background: rgba(220, 38, 38, 0.12);
+}
+.pc-setup-btn-ghost {
+  background: transparent;
+}
+.pc-setup-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pc-setup-progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--pc-accent-soft);
+  overflow: hidden;
+}
+.pc-setup-progress-fill {
+  height: 100%;
+  background: var(--pc-accent);
+  width: 0%;
+  transition: width 200ms linear;
+}
+.pc-setup-progress-label {
+  font-size: 12px;
+  color: var(--pc-muted);
+  font-variant-numeric: tabular-nums;
+}
+.pc-setup-error {
+  font-size: 14px;
+  color: var(--pc-bad);
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.pc-setup-note {
+  font-size: 12px;
+  color: var(--pc-muted);
+  text-align: center;
+  line-height: 1.5;
+  /* The last element in the scrollable setup body — own its
+     bottom clearance directly so the text never sits under the
+     Android system nav bar. Parent `.pc-setup` padding-bottom
+     can get squashed by `.pc-setup-root`'s flex
+     `align-items: stretch` on Android WebView. Margin on the
+     element itself is in the scroll content directly and
+     cannot be eaten. */
+  margin-bottom: calc(20px + var(--pc-safe-bottom));
+}
+
+/* ============================================================
+   Responsive overrides — MUST appear after base rules so they
+   win the CSS cascade. Earlier placement caused base rules
+   defined later in the file to override these silently. The
+   mic itself is now a fluid clamp(); these blocks tighten the
+   surrounding chrome on phones and tiny screens.
+   ============================================================ */
+@media (max-width: 480px), (max-height: 760px) {
+  :root { --pc-root-pad-x: 16px; }
+  .pc-root {
+    /* Phones get a hair less padding than iPad — but still leave
+       enough breathing room above the chiclets that the header
+       doesn't feel jammed against the status-bar edge. */
+    padding:
+      calc(10px + var(--pc-safe-top))
+      calc(var(--pc-root-pad-x) + var(--pc-safe-right))
+      calc(12px + var(--pc-safe-bottom))
+      calc(var(--pc-root-pad-x) + var(--pc-safe-left));
+    gap: 10px;
+  }
+  .pc-mic.recording { transform: none; }
+  .pc-mic-label { font-size: 11px; }
+  .pc-swipe-hint { display: none; }
+  .pc-footer { display: none; }
+
+  /* Header chiclets shrink in lockstep — streak pill height
+     follows the mode/close circle diameter so all three pieces
+     sit on the same baseline. */
+  .pc-header { min-height: 32px; gap: 10px; }
+  .pc-header-left,
+  .pc-header-right { min-height: 32px; gap: 8px; }
+  .pc-subtitle { font-size: 11px; letter-spacing: 0.06em; }
+  .pc-mode { width: 32px; height: 32px; }
+  .pc-mode-glyph { font-size: 12px; }
+  .pc-mode.advanced .pc-mode-glyph { font-size: 14px; }
+  .pc-close { width: 32px; height: 32px; font-size: 18px; }
+  .pc-streak { height: 32px; padding: 0 12px; font-size: 13px; gap: 5px; }
+
+  .pc-target { font-size: clamp(24px, 7vw, 38px); }
+  .pc-romanization { font-size: 14px; }
+  .pc-native { font-size: 14px; }
+
+  .pc-result-banner { font-size: 12px; padding: 5px 12px; gap: 8px; }
+  .pc-result-banner-score { font-size: 14px; }
+  .pc-result-detail { gap: 8px; }
+  .pc-words { gap: 6px; }
+  .pc-word { font-size: 13px; padding: 6px 12px; }
+  .pc-transcript-row { min-height: 50px; padding: 8px 14px; }
+  .pc-transcript-play { width: 30px; height: 30px; font-size: 11px; }
+  .pc-transcript-text { font-size: 14px; }
+  .pc-card-above { padding-bottom: 10px; }
+  .pc-card-below { padding-top: 10px; }
+}
+
+/* Tiny phones — iPhone SE 3rd gen and earlier (<=667pt tall). */
+@media (max-height: 680px) {
+  .pc-target { font-size: clamp(22px, 6.5vw, 34px); }
+  .pc-result-banner { font-size: 11px; padding: 4px 10px; }
+  .pc-result-banner-score { font-size: 13px; }
+  .pc-result-detail { gap: 6px; }
+  .pc-transcript-row { min-height: 44px; padding: 6px 12px; gap: 2px; }
+  .pc-transcript-text { font-size: 13px; }
+  .pc-card-above { padding-bottom: 8px; }
+  .pc-card-below { padding-top: 8px; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Language badge — small uppercase code rendered above the target
+   phrase inside the card. Doubles as the long-press anchor for the
+   Whisper tuner (see whisperTunerUI.ts).
+   ════════════════════════════════════════════════════════════════════ */
+.pc-lang-badge {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--pc-muted);
+  border: 1px solid var(--pc-border);
+  border-radius: 999px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  padding: 6px 18px;
+  margin: 0;
+  min-height: 32px;
+  min-width: 56px;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease, transform 140ms ease;
+  -webkit-tap-highlight-color: transparent;
+  flex: 0 0 auto;
+}
+.pc-lang-badge[hidden] { display: none; }
+.pc-lang-badge:hover {
+  color: var(--pc-fg);
+  border-color: var(--pc-fg);
+}
+.pc-lang-badge:active {
+  transform: scale(0.94);
+  background: var(--pc-accent-soft);
+  color: var(--pc-accent);
+  border-color: var(--pc-accent);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Whisper tuner — bottom-sheet developer surface.
+   Reachable via long-press on .pc-lang-badge. Live-applies to
+   localStorage; the next startSession reads fresh params via
+   `mergeForLang(lang)`. Owned by whisperTunerUI.ts.
+   ════════════════════════════════════════════════════════════════════ */
+
+.pc-tuner-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2000; /* above host overlay (~1100) and pc-overlay (>1000) */
+  pointer-events: none;
+}
+
+.pc-tuner-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 16, 0);
+  transition: background 220ms ease;
+  pointer-events: auto;
+}
+.pc-tuner-root.open .pc-tuner-backdrop {
+  background: rgba(8, 8, 16, 0.55);
+}
+
+.pc-tuner-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 88vh;
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -18px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+  pointer-events: auto;
+  overflow: hidden;
+}
+.pc-tuner-root.open .pc-tuner-sheet {
+  transform: translateY(0);
+}
+
+/* Outer hit area — generous 44 px tall band that catches taps and
+   future drag gestures even when the user doesn't land precisely on
+   the visible 4 px pill. Mirrors `packs/shared/ui/commandDrawer.css`'s
+   `.command-drawer-handle` (36 px there; ours is bumped to 44 px for
+   thumb-friendliness on iPad). Visible bar lives inside as a child
+   so the band can stay roomy without the pill looking heavy. */
+.pc-tuner-handle {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 44px;
+  cursor: grab;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.pc-tuner-handle:active { cursor: grabbing; }
+.pc-tuner-handle-bar {
+  width: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--pc-border);
+  transition: background 140ms ease;
+}
+.pc-tuner-handle:hover .pc-tuner-handle-bar,
+.pc-tuner-handle:active .pc-tuner-handle-bar {
+  background: var(--pc-muted);
+}
+
+.pc-tuner-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 18px 14px;
+  border-bottom: 1px solid var(--pc-border);
+  flex: 0 0 auto;
+}
+
+.pc-tuner-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.pc-tuner-eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+}
+.pc-tuner-lang {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pc-accent);
+  letter-spacing: 0.04em;
+}
+
+.pc-tuner-close {
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: transparent;
+  color: var(--pc-fg);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.pc-tuner-close:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); color: var(--pc-accent); }
+.pc-tuner-close:active { transform: scale(0.94); }
+
+.pc-tuner-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 14px 18px 6px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pc-tuner-section + .pc-tuner-section {
+  margin-top: 18px;
+}
+.pc-tuner-section-title {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.pc-tuner-row {
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--pc-border);
+}
+.pc-tuner-row:last-child { border-bottom: 0; }
+
+.pc-tuner-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.pc-tuner-row-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pc-fg);
+}
+
+.pc-tuner-num {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 84px;
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pc-fg);
+  background: transparent;
+  border: 1px solid var(--pc-border);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+.pc-tuner-num:focus {
+  outline: none;
+  border-color: var(--pc-accent);
+  box-shadow: 0 0 0 3px var(--pc-accent-soft);
+}
+
+.pc-tuner-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 26px;
+  background: transparent;
+  margin: 4px 0 2px;
+  cursor: pointer;
+}
+.pc-tuner-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--pc-border);
+}
+.pc-tuner-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--pc-border);
+}
+.pc-tuner-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pc-accent);
+  border: 3px solid var(--pc-card);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  margin-top: -9px;
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+.pc-tuner-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pc-accent);
+  border: 3px solid var(--pc-card);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+.pc-tuner-slider:active::-webkit-slider-thumb { transform: scale(1.1); }
+
+.pc-tuner-row-trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: var(--pc-muted);
+  margin-top: 6px;
+}
+.pc-tuner-row-trail b { color: var(--pc-fg); font-weight: 600; }
+.pc-tuner-sep { opacity: 0.5; }
+.pc-tuner-modified {
+  color: var(--pc-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--pc-accent-soft);
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
+.pc-tuner-help {
+  font-size: 12px;
+  color: var(--pc-muted);
+  line-height: 1.42;
+  margin: 6px 0 0;
+}
+
+.pc-tuner-row-bool .pc-tuner-row-head { margin-bottom: 0; }
+
+/* Text rows (initial_prompt). Textarea sits below the label, full
+   width of the sheet body, monospace-leaning to honour the
+   developer-tool aesthetic while still rendering Indic script
+   glyphs at a readable size. */
+.pc-tuner-text {
+  width: 100%;
+  min-height: 56px;
+  resize: vertical;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--pc-fg);
+  background: transparent;
+  border: 1px solid var(--pc-border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-top: 4px;
+  /* Keep textarea readable in dark mode; placeholder color follows
+     the muted token. */
+}
+.pc-tuner-text::placeholder { color: var(--pc-muted); opacity: 0.7; }
+.pc-tuner-text:focus {
+  outline: none;
+  border-color: var(--pc-accent);
+  box-shadow: 0 0 0 3px var(--pc-accent-soft);
+}
+
+.pc-tuner-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+  cursor: pointer;
+}
+.pc-tuner-switch input { display: none; }
+.pc-tuner-switch-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--pc-border);
+  border-radius: 999px;
+  transition: background 180ms ease;
+}
+.pc-tuner-switch-slider::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: var(--pc-card);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 180ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.pc-tuner-switch input:checked + .pc-tuner-switch-slider {
+  background: var(--pc-accent);
+}
+.pc-tuner-switch input:checked + .pc-tuner-switch-slider::after {
+  transform: translateX(20px);
+}
+
+.pc-tuner-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 18px 6px;
+  border-top: 1px solid var(--pc-border);
+  flex: 0 0 auto;
+  align-items: center;
+  position: relative;
+}
+.pc-tuner-btn {
+  appearance: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: transparent;
+  color: var(--pc-fg);
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease;
+}
+.pc-tuner-btn:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); color: var(--pc-accent); }
+.pc-tuner-btn:active { transform: scale(0.96); }
+.pc-tuner-btn.primary {
+  background: var(--pc-accent);
+  border-color: var(--pc-accent);
+  color: var(--pc-card);
+  margin-left: auto;
+}
+.pc-tuner-btn.primary:hover {
+  background: var(--pc-accent-hover);
+  border-color: var(--pc-accent-hover);
+  color: var(--pc-card);
+}
+.pc-tuner-btn.danger {
+  color: var(--pc-bad);
+  border-color: rgba(220, 38, 38, 0.30);
+}
+.pc-tuner-btn.danger:hover {
+  background: rgba(220, 38, 38, 0.12);
+  border-color: var(--pc-bad);
+  color: var(--pc-bad);
+}
+
+.pc-tuner-flash {
+  position: absolute;
+  left: 18px;
+  bottom: calc(100% + 4px);
+  background: var(--pc-fg);
+  color: var(--pc-bg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  pointer-events: none;
+  animation: pc-tuner-flash-in 200ms ease both;
+}
+@keyframes pc-tuner-flash-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .pc-tuner-head { padding: 4px 14px 12px; }
+  .pc-tuner-body { padding: 12px 14px 4px; }
+  .pc-tuner-foot { padding: 12px 14px 4px; }
+  .pc-tuner-lang { font-size: 18px; }
+  .pc-tuner-row-label { font-size: 12px; }
+  .pc-tuner-help { font-size: 11px; }
+  .pc-tuner-btn { font-size: 12px; padding: 8px 12px; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Parlometron — the rebranded pack's mode picker, multiplayer lobby /
+   round / results screens. The .pc-pm-* namespace is reserved for the
+   new flow; the existing .pc-* practice-mode classes are untouched.
+   Visual language matches: same accent color, same border radii,
+   same monospaced eyebrows; multi mode adds a touch of theatre via
+   bigger phrase typography and table-based scoreboards.
+   ════════════════════════════════════════════════════════════════════ */
+
+.pc-pm-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding:
+    calc(env(safe-area-inset-top, 0px) + 14px)
+    calc(env(safe-area-inset-right, 0px) + 18px)
+    calc(env(safe-area-inset-bottom, 0px) + 14px)
+    calc(env(safe-area-inset-left, 0px) + 18px);
+  background: var(--pc-bg);
+  color: var(--pc-fg);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Header band shared by lobby / round / results / game-over.
+   Two stacked rows so the X / headline / pagination all live on a
+   single visual line (everything single-line, naturally vertically
+   centered) while the eyebrow sits cleanly above. Previous flat
+   layout had the X (36×36 round button) flanking a two-line title
+   block whose optical centerline was biased toward the bolded
+   headline — that's why the X looked "too high." */
+.pc-pm-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  flex: 0 0 auto;
+}
+.pc-pm-head-eyebrow-row {
+  text-align: center;
+  /* Match the action row's horizontal inset so the eyebrow is
+     visually under the headline (not directly under X/pagination)
+     and reads as part of the title block. */
+  padding: 0 4px;
+}
+.pc-pm-head-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+/* Mirror solo's `.pc-back` exactly so the back chip in lobby /
+   round / between-rounds screens lines up with the practice
+   header's `‹` button on a screen cross-fade. */
+.pc-pm-back {
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 600;
+  padding-right: 2px;  /* optical-center the `‹` glyph */
+  cursor: pointer;
+  font-family: inherit;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 120ms ease, transform 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.pc-pm-back:hover { background: var(--pc-accent-soft); border-color: var(--pc-accent); color: var(--pc-accent); }
+.pc-pm-back:active { transform: scale(0.94); }
+.pc-pm-eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  line-height: 1.2;
+}
+.pc-pm-headline {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--pc-fg);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  /* Truncate if absurdly long — keeps the row from wrapping and
+     breaking the single-line alignment with X / pagination. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pc-pm-head-spacer {
+  width: 36px;
+  flex: 0 0 auto;
+}
+.pc-pm-turn-indicator {
+  width: auto;
+  min-width: 36px;
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--pc-muted);
+  line-height: 1.2;
+  flex: 0 0 auto;
+}
+/* Game-over screen has no X / pagination on the header — just the
+   eyebrow + winner headline. Drop the action-row constraints so the
+   big celebratory headline can breathe. */
+.pc-pm-gameover-head .pc-pm-head-action-row {
+  justify-content: center;
+}
+.pc-pm-gameover-head .pc-pm-headline {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+/* ─── Picker ──────────────────────────────────────────────────── */
+/* Center brand + cards + tagline as a single stack on the screen,
+   instead of pinning the brand to the top and the tagline to the
+   bottom with the body stretching between. The cards now visually
+   sit at screen-vertical-center next to the brand, rather than
+   biased toward the middle of the "between-head-and-foot" region. */
+/* `.pc-pm-root` is already `position: absolute; inset: 0`, so
+   don't add `position: relative` here — that would override
+   it and collapse the picker to its natural content height,
+   leaving the bottom of the screen blank. The close X uses
+   `.pc-pm-root` itself as its positioning context. */
+.pc-pm-picker { justify-content: center; gap: 6px; }
+/* Close X — fires `corpan:exit` to the host, the same way
+   `dispatchExit` in game.ts does. Absolute-positioned at the
+   top-right inside the safe-area so the centered brand stack
+   isn't pushed off-axis. */
+.pc-pm-picker-close {
+  position: absolute;
+  /* Top inset matches solo's `.pc-root` padding-top (safe-area + 14)
+     so the chip sits at the same screen-y as solo's mode chip. The
+     extra `(36-14)/2 = 11` lines up the CENTER of this 36 px chip
+     with the center of solo's 36 px `.pc-mode` chip inside its
+     `min-height: 36` header — i.e. picker's × and solo's ✦ are at
+     the same y when you cross-fade between screens. */
+  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  right: calc(env(safe-area-inset-right, 0px) + 18px);
+  z-index: 10;
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+.pc-pm-picker-close:hover {
+  background: var(--pc-accent-soft);
+  border-color: var(--pc-accent);
+  color: var(--pc-accent);
+}
+.pc-pm-picker-close:active { transform: scale(0.94); }
+.pc-pm-picker-head {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 0 0 14px;
+}
+.pc-pm-brand {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(34px, 9vw, 56px);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--pc-accent);
+  margin: 0;
+  line-height: 1.05;
+}
+.pc-pm-brand-sub {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  margin: 10px 0 0;
+}
+.pc-pm-picker-body {
+  /* Vertical stack of cards. Natural-height — the picker's flex
+     container centers the head + body + foot as a group on the
+     screen, so this body doesn't need to stretch. */
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 6px 0;
+  /* Cap width on big screens — don't let cards become full-width
+     banners on iPad landscape. */
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.pc-pm-mode-card {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  padding: 18px 22px;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  border-radius: 18px;
+  box-shadow: var(--pc-shadow);
+  color: var(--pc-fg);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  /* Natural-height; never stretches to fill the body. */
+  flex: 0 0 auto;
+  width: 100%;
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+.pc-pm-mode-card:hover {
+  border-color: var(--pc-accent);
+  background: var(--pc-accent-soft);
+}
+.pc-pm-mode-card:active { transform: scale(0.985); }
+.pc-pm-mode-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--pc-fg);
+}
+.pc-pm-mode-sub {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--pc-muted);
+}
+.pc-pm-picker-foot {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 14px 0 0;
+}
+.pc-pm-picker-tagline {
+  font-size: 13px;
+  color: var(--pc-muted);
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .pc-pm-mode-card { padding: 16px 18px; }
+  .pc-pm-brand { font-size: 36px; }
+}
+
+/* ─── Lobby ───────────────────────────────────────────────────── */
+.pc-pm-lobby .pc-pm-section { margin-bottom: 22px; }
+.pc-pm-section-title {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+.pc-pm-roster {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pc-pm-roster-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  border-radius: 12px;
+  padding: 8px 10px 8px 14px;
+}
+.pc-pm-roster-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  color: var(--pc-muted);
+  font-weight: 700;
+  min-width: 16px;
+}
+.pc-pm-roster-name {
+  flex: 1 1 0;
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--pc-fg);
+  font-family: inherit;
+  font-size: 16px;
+  padding: 6px 4px;
+  min-width: 0;
+}
+.pc-pm-roster-name:focus { outline: none; }
+.pc-pm-roster-remove {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid var(--pc-border);
+  background: transparent;
+  color: var(--pc-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1;
+}
+.pc-pm-roster-remove:hover:not([disabled]) {
+  color: var(--pc-bad);
+  border-color: var(--pc-bad);
+}
+.pc-pm-roster-remove[disabled] { opacity: 0.3; cursor: not-allowed; }
+.pc-pm-add {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 11px 16px;
+  border: 1px dashed var(--pc-border);
+  background: transparent;
+  color: var(--pc-fg);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+.pc-pm-add:hover:not([disabled]) { color: var(--pc-accent); border-color: var(--pc-accent); }
+.pc-pm-add[disabled] { opacity: 0.4; cursor: not-allowed; }
+.pc-pm-target-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pc-pm-target {
+  appearance: none;
+  width: 56px;
+  height: 44px;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.pc-pm-target.active {
+  background: var(--pc-accent);
+  border-color: var(--pc-accent);
+  color: var(--pc-card);
+}
+.pc-pm-target-suffix {
+  font-size: 14px;
+  color: var(--pc-muted);
+  margin-left: 4px;
+}
+.pc-pm-foot {
+  flex: 0 0 auto;
+  margin-top: auto;
+  padding-top: 12px;
+}
+.pc-pm-start {
+  appearance: none;
+  width: 100%;
+  /* Substantial primary-action button — felt undersized on iPad
+     in the original 14×18 spacing. min-height: 56 hits Apple HIG
+     comfortable tap target; padding bumps for breathing room. */
+  min-height: 56px;
+  padding: 18px 22px;
+  background: var(--pc-accent);
+  color: var(--pc-card);
+  border: 1px solid var(--pc-accent);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.pc-pm-start:hover { background: var(--pc-accent-hover); }
+.pc-pm-start:active { transform: scale(0.98); }
+.pc-pm-start[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+/* ─── Round ───────────────────────────────────────────────────── */
+/* Multi round screen reuses solo's `.pc-card` (3-row grid → stable
+   phrase) + `.pc-stage` (anchored-bottom mic) for layout. Only the
+   multi-specific chrome lives here: the tries dots, the pass chip,
+   and the pass-the-device splash. */
+.pc-pm-round { flex: 1 1 auto; }
+.pc-pm-deck {
+  /* `.pc-card` inside is `position: absolute; inset: 0` — needs a
+     positioned parent with size. */
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 240px;
+}
+/* Multi card uses `minmax(0, 1fr)` (not just `1fr`) for the
+   above/below rows so the slot tracks are hard-capped to 1fr
+   regardless of how tall the banner / transcript / pills get.
+   Without this, the implicit `min-content` minimum on a `1fr`
+   row lets content push the row taller — which then pushes the
+   phrase (auto row) out of the geometric center. Same effect as
+   the `min-height: 0` solo sets on its slot children, applied
+   one level up where it can't be defeated. */
+.pc-pm-card {
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.pc-pm-tries-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Reserve fixed vertical space so toggling dots doesn't shift
+     the mic above. */
+  min-height: 12px;
+}
+.pc-pm-try-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--pc-border);
+  background: transparent;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+.pc-pm-try-dot.used {
+  background: var(--pc-accent);
+  border-color: var(--pc-accent);
+}
+
+.pc-pm-pass-chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Explicit height locks the chip's flex-item size whether or not
+     it's visible — combined with `.is-invisible` (visibility-only
+     hide) the slot above the mic is ALWAYS the same size, so the
+     mic never moves between states. No `[hidden]` attribute on
+     this element; we toggle visibility via the class. */
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--pc-border);
+  color: var(--pc-fg);
+  padding: 0 16px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease, opacity 140ms ease;
+}
+.pc-pm-pass-chip.is-invisible {
+  visibility: hidden;
+  pointer-events: none;
+}
+.pc-pm-pass-chip:hover {
+  background: var(--pc-accent-soft);
+  color: var(--pc-accent);
+  border-color: var(--pc-accent);
+}
+
+/* Pass-the-device splash — full-screen overlay between players. */
+.pc-pm-splash {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 16, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  animation: pc-pm-splash-in 200ms ease both;
+}
+.pc-pm-splash[hidden] { display: none; }
+.pc-pm-splash-inner {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 92vw;
+}
+.pc-pm-splash-pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin: 0;
+}
+.pc-pm-splash-name {
+  font-size: clamp(40px, 10vw, 64px);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+  color: var(--pc-accent);
+}
+.pc-pm-splash-go {
+  appearance: none;
+  margin-top: 10px;
+  padding: 14px 28px;
+  background: var(--pc-accent);
+  color: var(--pc-card);
+  border: 1px solid var(--pc-accent);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pc-pm-splash-go:active { transform: scale(0.97); }
+@keyframes pc-pm-splash-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Results (between-round + game-over) ────────────────────── */
+.pc-pm-results-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 0 20px;
+}
+.pc-pm-results-phrase {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.pc-pm-results-phrase-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+}
+.pc-pm-results-phrase-text {
+  font-size: 16px;
+  color: var(--pc-fg);
+}
+.pc-pm-scoreboard {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--pc-card);
+  border: 1px solid var(--pc-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.pc-pm-scoreboard thead th {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  font-weight: 700;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--pc-border);
+}
+.pc-pm-scoreboard tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--pc-border);
+  vertical-align: top;
+}
+.pc-pm-scoreboard tbody tr:last-child td { border-bottom: 0; }
+.pc-pm-scoreboard tr.winner {
+  background: var(--pc-accent-soft);
+}
+.pc-pm-scoreboard tr.winner .pc-pm-score-name,
+.pc-pm-scoreboard tr.winner .pc-pm-score-pct,
+.pc-pm-scoreboard tr.winner .pc-pm-score-total {
+  color: var(--pc-accent);
+  font-weight: 700;
+}
+.pc-pm-score-rank { width: 28px; color: var(--pc-muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.pc-pm-score-name { font-weight: 600; }
+.pc-pm-score-pct { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; width: 64px; }
+.pc-pm-score-heard {
+  color: var(--pc-muted);
+  font-style: italic;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pc-pm-score-total { width: 60px; text-align: right; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.pc-pm-results-foot {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 10px;
+  padding-top: 4px;
+}
+.pc-pm-results-foot .pc-pm-pass,
+.pc-pm-results-foot .pc-pm-start {
+  flex: 1 1 0;
+}
+.pc-pm-gameover-head { padding: 24px 0 6px; }
+.pc-pm-winner {
+  font-size: clamp(24px, 6vw, 36px);
+  color: var(--pc-accent);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* (The old `.pc-pm-floating-back` / `.pc-pm-practice-host` overlay
+   was removed once practice gained a real `‹` button in its own
+   header — `mountPractice` with `onClose` callback handles the
+   back-to-picker transition. No floating chrome needed.) */
+
+/* ─── Error state ─────────────────────────────────────────────── */
+.pc-pm-error {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+.pc-pm-error p {
+  color: var(--pc-muted);
+  font-size: 15px;
+  max-width: 480px;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .pc-pm-mic { width: 96px; height: 96px; }
+  .pc-pm-mic-icon { font-size: 24px; }
+  .pc-pm-score-heard { max-width: 160px; }
+}
+
+/* ─── Confirm modal ──────────────────────────────────────────── */
+/* In-pack replacement for the broken `window.confirm`. Used by
+   `pmConfirm` in `multiplayer/confirm.ts`. Sits above everything
+   (z-index higher than the tuner sheet so a confirm shown over the
+   tuner reads correctly). */
+.pc-pm-confirm-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.pc-pm-confirm-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 16, 0);
+  transition: background 200ms ease;
+  pointer-events: auto;
+}
+.pc-pm-confirm-root.open .pc-pm-confirm-backdrop {
+  background: rgba(8, 8, 16, 0.55);
+}
+.pc-pm-confirm-sheet {
+  position: relative;
+  width: min(420px, calc(100vw - 40px));
+  background: var(--pc-card);
+  color: var(--pc-fg);
+  border: 1px solid var(--pc-border);
+  border-radius: 18px;
+  padding: 22px 22px 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+  transform: translateY(8px) scale(0.97);
+  opacity: 0;
+  transition:
+    transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 200ms ease;
+}
+.pc-pm-confirm-root.open .pc-pm-confirm-sheet {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+.pc-pm-confirm-msg {
+  margin: 0 0 18px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--pc-fg);
+}
+.pc-pm-confirm-foot {
+  display: flex;
+  gap: 10px;
+  justify-content: stretch;
+}
+.pc-pm-confirm-cancel,
+.pc-pm-confirm-go {
+  appearance: none;
+  flex: 1 1 0;
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.pc-pm-confirm-cancel {
+  background: transparent;
+  border: 1px solid var(--pc-border);
+  color: var(--pc-fg);
+}
+.pc-pm-confirm-cancel:hover {
+  background: var(--pc-accent-soft);
+  color: var(--pc-accent);
+  border-color: var(--pc-accent);
+}
+.pc-pm-confirm-go {
+  background: var(--pc-accent);
+  border: 1px solid var(--pc-accent);
+  color: var(--pc-card);
+}
+.pc-pm-confirm-go:hover { background: var(--pc-accent-hover); border-color: var(--pc-accent-hover); }
+.pc-pm-confirm-go.danger {
+  background: var(--pc-bad);
+  border-color: var(--pc-bad);
+}
+.pc-pm-confirm-go.danger:hover {
+  background: rgba(220, 38, 38, 0.85);
+  border-color: rgba(220, 38, 38, 0.85);
+}
+.pc-pm-confirm-cancel:active,
+.pc-pm-confirm-go:active { transform: scale(0.97); }
+

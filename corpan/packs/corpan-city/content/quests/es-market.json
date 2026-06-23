@@ -1,0 +1,66 @@
+{
+  "id": "es-market-haggle",
+  "title": "A Deal at the Market",
+  "narrative": "Practice your numbers and prices with the market clerk.",
+  "learnerPair": {
+    "target": "es",
+    "native": "en"
+  },
+  "domain": "travel",
+  "objective": {
+    "kind": "completeChallenges",
+    "toolId": "translate-fast",
+    "count": 1
+  },
+  "steps": [
+    {
+      "id": "haggle",
+      "label": "Ask the price at the market",
+      "anchorId": "market",
+      "toolId": "translate-fast",
+      "entryIds": [
+        3835,
+        4129,
+        6233,
+        7158,
+        8221,
+        7038
+      ]
+    }
+  ],
+  "promptProgram": {
+    "personaTemplate": "{persona} You are teaching a learner whose goal is to {objective}. Today's theme is {domain}. Teach {target} to a {native} speaker at a {scaffold} level: keep the learner asking prices, naming market goods, and counting.",
+    "scaffold": "beginner",
+    "ragSources": [
+      "base-travel",
+      "base-market"
+    ],
+    "contentSelector": {
+      "levels": [
+        "A1",
+        "A2"
+      ],
+      "domains": [
+        "travel",
+        "shopping"
+      ],
+      "languageCodes": [
+        "es"
+      ]
+    },
+    "toolWhitelist": [
+      "repeat-after",
+      "listen-choose",
+      "translate-fast"
+    ]
+  },
+  "rewards": {
+    "xp": 150,
+    "coins": 200,
+    "badge": "market-savvy"
+  },
+  "nextQuestIds": [
+    "es-directions",
+    "es-guadalajara-route"
+  ]
+}

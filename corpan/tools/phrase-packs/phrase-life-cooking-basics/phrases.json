@@ -1,0 +1,3234 @@
+[
+  {
+    "english": "Chop the onion finely.",
+    "level": "A2"
+  },
+  {
+    "english": "Boil the water before adding the pasta.",
+    "level": "A2"
+  },
+  {
+    "english": "Stir the sauce while it simmers.",
+    "level": "B1"
+  },
+  {
+    "english": "Season the chicken with salt and pepper.",
+    "level": "B1"
+  },
+  {
+    "english": "Whisk the eggs until they're frothy.",
+    "level": "B1"
+  },
+  {
+    "english": "Fold the flour in gently.",
+    "level": "B2"
+  },
+  {
+    "english": "Let the meat rest for a few minutes.",
+    "level": "B1"
+  },
+  {
+    "english": "Roast the vegetables at high heat.",
+    "level": "B1"
+  },
+  {
+    "english": "Slice the bread on the bias.",
+    "level": "B2"
+  },
+  {
+    "english": "Sauté the garlic but don't burn it.",
+    "level": "B2"
+  },
+  {
+    "english": "Bring the soup back to a boil.",
+    "level": "B1"
+  },
+  {
+    "english": "Simmer the stock for an hour.",
+    "level": "B1"
+  },
+  {
+    "english": "Marinate the chicken overnight.",
+    "level": "B1"
+  },
+  {
+    "english": "Toast the spices in a dry pan first.",
+    "level": "B2"
+  },
+  {
+    "english": "Reduce the wine by half.",
+    "level": "B2"
+  },
+  {
+    "english": "Steam the broccoli for four minutes.",
+    "level": "B1"
+  },
+  {
+    "english": "Caramelize the onions slowly.",
+    "level": "B2"
+  },
+  {
+    "english": "Knead the dough until it's smooth.",
+    "level": "B2"
+  },
+  {
+    "english": "Strain the broth through a fine sieve.",
+    "level": "B2"
+  },
+  {
+    "english": "Grate a little fresh nutmeg on top.",
+    "level": "B2"
+  },
+  {
+    "english": "We're out of olive oil.",
+    "level": "A2"
+  },
+  {
+    "english": "The lemon is too dry to juice.",
+    "level": "B1"
+  },
+  {
+    "english": "Could you pass the salt?",
+    "level": "A1"
+  },
+  {
+    "english": "Fresh basil makes a big difference.",
+    "level": "B1"
+  },
+  {
+    "english": "I buy garlic by the head.",
+    "level": "B1"
+  },
+  {
+    "english": "Brown sugar makes the cookies softer.",
+    "level": "B1"
+  },
+  {
+    "english": "The eggs are still in the fridge.",
+    "level": "A2"
+  },
+  {
+    "english": "The cilantro is almost ready in the garden.",
+    "level": "B1"
+  },
+  {
+    "english": "We need a tomato for the sandwich.",
+    "level": "A2"
+  },
+  {
+    "english": "The butter softens faster on the counter.",
+    "level": "B1"
+  },
+  {
+    "english": "He uses sea salt for everything.",
+    "level": "B1"
+  },
+  {
+    "english": "The flour bag is almost empty.",
+    "level": "A2"
+  },
+  {
+    "english": "The cream went bad over the weekend.",
+    "level": "B1"
+  },
+  {
+    "english": "I prefer Greek yogurt to sour cream.",
+    "level": "B1"
+  },
+  {
+    "english": "The mushrooms shrink as they cook.",
+    "level": "B1"
+  },
+  {
+    "english": "Add a pinch of red pepper.",
+    "level": "A2"
+  },
+  {
+    "english": "The recipe calls for two cups of broth.",
+    "level": "B1"
+  },
+  {
+    "english": "She always keeps anchovies in the pantry.",
+    "level": "B2"
+  },
+  {
+    "english": "The peppers turn sweet when they're roasted.",
+    "level": "B2"
+  },
+  {
+    "english": "Frozen peas are a small miracle.",
+    "level": "B2"
+  },
+  {
+    "english": "The kitchen smells like bread.",
+    "level": "A2"
+  },
+  {
+    "english": "He spilled the rice all over the counter.",
+    "level": "B1"
+  },
+  {
+    "english": "The pan is too hot already.",
+    "level": "A2"
+  },
+  {
+    "english": "I burned the toast again.",
+    "level": "A2"
+  },
+  {
+    "english": "She tasted the sauce and added more salt.",
+    "level": "B1"
+  },
+  {
+    "english": "The smoke alarm went off during dinner.",
+    "level": "B2"
+  },
+  {
+    "english": "He cleans as he goes.",
+    "level": "B1"
+  },
+  {
+    "english": "The pot bubbled over while she answered the phone.",
+    "level": "B2"
+  },
+  {
+    "english": "The fridge needs to be wiped down.",
+    "level": "B1"
+  },
+  {
+    "english": "The kids set the table without being asked.",
+    "level": "B2"
+  },
+  {
+    "english": "The pasta water is bubbling.",
+    "level": "A2"
+  },
+  {
+    "english": "She put a towel under the cutting board so it wouldn't slip.",
+    "level": "C1"
+  },
+  {
+    "english": "He always cooks barefoot.",
+    "level": "B1"
+  },
+  {
+    "english": "The cake fell when I opened the oven.",
+    "level": "B2"
+  },
+  {
+    "english": "We forgot to preheat the oven.",
+    "level": "B1"
+  },
+  {
+    "english": "The dog watched every move from the doorway.",
+    "level": "B2"
+  },
+  {
+    "english": "The kitchen window is open to let the steam out.",
+    "level": "B2"
+  },
+  {
+    "english": "She turned the music up while she cooked.",
+    "level": "B1"
+  },
+  {
+    "english": "The dishes piled up while we ate.",
+    "level": "B2"
+  },
+  {
+    "english": "The leftovers will be lunch tomorrow.",
+    "level": "A2"
+  },
+  {
+    "english": "I followed the recipe step by step.",
+    "level": "A2"
+  },
+  {
+    "english": "The first pancake is always the worst.",
+    "level": "B1"
+  },
+  {
+    "english": "She invented the sauce by accident.",
+    "level": "B2"
+  },
+  {
+    "english": "He taught himself to bake during the winter.",
+    "level": "B1"
+  },
+  {
+    "english": "The cookbook fell open to the same page.",
+    "level": "B2"
+  },
+  {
+    "english": "I doubled the recipe and made too much.",
+    "level": "B1"
+  },
+  {
+    "english": "The video showed me how to fold a dumpling.",
+    "level": "B1"
+  },
+  {
+    "english": "He measures everything with a small scale.",
+    "level": "B1"
+  },
+  {
+    "english": "She cooks by smell more than by clock.",
+    "level": "B2"
+  },
+  {
+    "english": "I tried a new spice and it worked.",
+    "level": "B1"
+  },
+  {
+    "english": "The bread didn't rise the first time.",
+    "level": "B1"
+  },
+  {
+    "english": "She tasted as she went and adjusted.",
+    "level": "B2"
+  },
+  {
+    "english": "He learned this dish from his grandmother.",
+    "level": "B1"
+  },
+  {
+    "english": "The recipe was passed down on a small card.",
+    "level": "B2"
+  },
+  {
+    "english": "Cooking for one is a different art.",
+    "level": "B2"
+  },
+  {
+    "english": "Dinner is ready in five minutes.",
+    "level": "A1"
+  },
+  {
+    "english": "Please pass me the bread.",
+    "level": "A1"
+  },
+  {
+    "english": "The kitchen is the warmest room in the house.",
+    "level": "B1"
+  },
+  {
+    "english": "We ate outside while the sun set.",
+    "level": "B1"
+  },
+  {
+    "english": "Everyone helped with the dishes.",
+    "level": "A2"
+  },
+  {
+    "english": "She always cooks too much, on purpose.",
+    "level": "B2"
+  },
+  {
+    "english": "He always brings a bottle of wine.",
+    "level": "A2"
+  },
+  {
+    "english": "The kids ate three helpings.",
+    "level": "B1"
+  },
+  {
+    "english": "The candles burned all the way down.",
+    "level": "B2"
+  },
+  {
+    "english": "We talked long after the plates were cleared.",
+    "level": "B2"
+  },
+  {
+    "english": "The knife is sharper than it looks.",
+    "level": "B1"
+  },
+  {
+    "english": "Use the wooden spoon for the sauce.",
+    "level": "A2"
+  },
+  {
+    "english": "The cast iron pan is heavy but worth it.",
+    "level": "B2"
+  },
+  {
+    "english": "He keeps the spices in a small drawer.",
+    "level": "B1"
+  },
+  {
+    "english": "A good cutting board makes everything easier.",
+    "level": "B1"
+  },
+  {
+    "english": "The oven is finally hot enough.",
+    "level": "A2"
+  },
+  {
+    "english": "The blender struggles with whole almonds.",
+    "level": "B2"
+  },
+  {
+    "english": "She wiped the counter with a damp cloth.",
+    "level": "B1"
+  },
+  {
+    "english": "The colander is in the second drawer.",
+    "level": "B1"
+  },
+  {
+    "english": "Don't forget the oven mitts.",
+    "level": "B1"
+  },
+  {
+    "english": "Cooking is mostly patience.",
+    "level": "B2"
+  },
+  {
+    "english": "The same ingredients make different dishes in different hands.",
+    "level": "C1"
+  },
+  {
+    "english": "Salt is the first thing you fix.",
+    "level": "B2"
+  },
+  {
+    "english": "Taste before you add more.",
+    "level": "A2"
+  },
+  {
+    "english": "A simple meal eaten slowly is a small victory.",
+    "level": "C1"
+  },
+  {
+    "english": "I like food.",
+    "level": "A0"
+  },
+  {
+    "english": "A kitchen is a long, generous conversation between a cook and the ingredients on the counter, and the meal is the polite agreement they finally reach about how to feed the people in the next room.",
+    "level": "C2"
+  },
+  {
+    "english": "I wash a pear.",
+    "level": "A0"
+  },
+  {
+    "english": "The apples look crisp today.",
+    "level": "A1"
+  },
+  {
+    "english": "Wash the lettuce in cold water.",
+    "level": "A1"
+  },
+  {
+    "english": "These carrots still have soil on them.",
+    "level": "A1"
+  },
+  {
+    "english": "The melon smells sweet at the stem.",
+    "level": "A1"
+  },
+  {
+    "english": "Pick a firm cucumber.",
+    "level": "A1"
+  },
+  {
+    "english": "The spinach wilts fast.",
+    "level": "A1"
+  },
+  {
+    "english": "I bought peaches at the market.",
+    "level": "A1"
+  },
+  {
+    "english": "The tomatoes feel heavy.",
+    "level": "A1"
+  },
+  {
+    "english": "Peel the orange over a bowl.",
+    "level": "A1"
+  },
+  {
+    "english": "The beans snap cleanly.",
+    "level": "A1"
+  },
+  {
+    "english": "She rinses the berries gently.",
+    "level": "A1"
+  },
+  {
+    "english": "This cabbage is very fresh.",
+    "level": "A1"
+  },
+  {
+    "english": "Cut the stems from the kale.",
+    "level": "A1"
+  },
+  {
+    "english": "The plums are soft now.",
+    "level": "A1"
+  },
+  {
+    "english": "He carries herbs in a paper bag.",
+    "level": "A1"
+  },
+  {
+    "english": "The market opens early, so we will buy greens before breakfast.",
+    "level": "A2"
+  },
+  {
+    "english": "Choose tomatoes that smell like vines, not cold shelves.",
+    "level": "A2"
+  },
+  {
+    "english": "I washed the radishes twice, but a little sand stayed.",
+    "level": "A2"
+  },
+  {
+    "english": "The pears were hard yesterday, and they are perfect today.",
+    "level": "A2"
+  },
+  {
+    "english": "She saves carrot tops, then blends them into a bright sauce.",
+    "level": "A2"
+  },
+  {
+    "english": "The farmer gave us fennel, and the kitchen smelled like licorice.",
+    "level": "A2"
+  },
+  {
+    "english": "We will make soup if the leeks look good.",
+    "level": "A2"
+  },
+  {
+    "english": "The zucchini was cheap, so I bought enough for fritters.",
+    "level": "A2"
+  },
+  {
+    "english": "He trims the beans, and I wash the salad leaves.",
+    "level": "A2"
+  },
+  {
+    "english": "The strawberries bruise easily, so keep them on top.",
+    "level": "A2"
+  },
+  {
+    "english": "I forgot the parsley, but the mint saved the salad.",
+    "level": "A2"
+  },
+  {
+    "english": "The corn is sweeter when the husks are still green.",
+    "level": "A2"
+  },
+  {
+    "english": "She picks small eggplants because they cook more evenly.",
+    "level": "A2"
+  },
+  {
+    "english": "The cucumbers were bitter, so we dressed them with yogurt.",
+    "level": "A2"
+  },
+  {
+    "english": "We bought beets, and their red juice stained my fingers.",
+    "level": "A2"
+  },
+  {
+    "english": "The peaches need another day beside the window.",
+    "level": "A2"
+  },
+  {
+    "english": "He checks the avocado with his thumb, but he presses softly.",
+    "level": "A2"
+  },
+  {
+    "english": "The salad tastes brighter after a squeeze of lime.",
+    "level": "A2"
+  },
+  {
+    "english": "She sliced the fennel thin, and it stayed crisp.",
+    "level": "A2"
+  },
+  {
+    "english": "The pumpkin will be easier to cut after ten minutes.",
+    "level": "A2"
+  },
+  {
+    "english": "We found tiny potatoes, and they cooked quickly in butter.",
+    "level": "A2"
+  },
+  {
+    "english": "The basil vendor wrapped the leaves in newspaper.",
+    "level": "A2"
+  },
+  {
+    "english": "I bought too many cherries, so dessert became obvious.",
+    "level": "A2"
+  },
+  {
+    "english": "The green beans squeaked when she tossed them in oil.",
+    "level": "A2"
+  },
+  {
+    "english": "He keeps bruised fruit for compote, not for the bowl.",
+    "level": "A2"
+  },
+  {
+    "english": "The cauliflower looked plain, but it turned creamy in soup.",
+    "level": "A2"
+  },
+  {
+    "english": "We tasted three grapes before choosing the sweetest bunch.",
+    "level": "A2"
+  },
+  {
+    "english": "The lettuce dried on a towel while the eggs boiled.",
+    "level": "A2"
+  },
+  {
+    "english": "She added diced cucumber, and the soup felt cooler.",
+    "level": "A2"
+  },
+  {
+    "english": "The onions came with their green tops still attached.",
+    "level": "A2"
+  },
+  {
+    "english": "I will use the soft tomatoes for sauce tonight.",
+    "level": "A2"
+  },
+  {
+    "english": "The apricots looked beautiful, but two were sour.",
+    "level": "A2"
+  },
+  {
+    "english": "He brings home whatever looks alive in the crates.",
+    "level": "A2"
+  },
+  {
+    "english": "The best peaches announce themselves before you even lift them.",
+    "level": "B1"
+  },
+  {
+    "english": "She knows the mushroom seller by name and trusts his paper bags.",
+    "level": "B1"
+  },
+  {
+    "english": "A tired carrot can still give good sweetness to a soup.",
+    "level": "B1"
+  },
+  {
+    "english": "The salad needed crunch, so I shaved in a raw kohlrabi.",
+    "level": "B1"
+  },
+  {
+    "english": "He bought the ugly tomatoes because they smelled like August.",
+    "level": "B1"
+  },
+  {
+    "english": "At the stall, ripe fruit is a conversation, not a guess.",
+    "level": "B1"
+  },
+  {
+    "english": "The greens looked dramatic in the sink, like laundry for dinner.",
+    "level": "B1"
+  },
+  {
+    "english": "I learned to salt cucumbers before dressing them, and they thanked me.",
+    "level": "B1"
+  },
+  {
+    "english": "The soup changed completely when the celery leaves went in.",
+    "level": "B1"
+  },
+  {
+    "english": "She turned leftover squash into a side dish with quiet confidence.",
+    "level": "B1"
+  },
+  {
+    "english": "A market bag teaches you what the season is willing to offer.",
+    "level": "B1"
+  },
+  {
+    "english": "The first asparagus of spring makes everyone in line stand taller.",
+    "level": "B1"
+  },
+  {
+    "english": "He judges a watermelon by sound, then pretends it is science.",
+    "level": "B1"
+  },
+  {
+    "english": "Ripe fruit asks for restraint, because too much cooking can erase its point.",
+    "level": "B2"
+  },
+  {
+    "english": "The market rewards attention, from the dusty potatoes to the herbs wilting in shade.",
+    "level": "B2"
+  },
+  {
+    "english": "A good salad begins before the knife, with choices made among crates and baskets.",
+    "level": "B2"
+  },
+  {
+    "english": "She buys greens in small amounts, knowing freshness is a promise with a clock.",
+    "level": "B2"
+  },
+  {
+    "english": "The bruised plum became jam, which felt less like thrift than respect.",
+    "level": "B2"
+  },
+  {
+    "english": "When tomatoes are truly ripe, the cook's job is mostly to stay out of the way.",
+    "level": "B2"
+  },
+  {
+    "english": "The soup tasted muddy until a handful of chopped sorrel sharpened it.",
+    "level": "B2"
+  },
+  {
+    "english": "He chooses pears like a patient person reads faces, gently and without rushing.",
+    "level": "B2"
+  },
+  {
+    "english": "A bowl of peas, shelled at the table, slows dinner before cooking even starts.",
+    "level": "B2"
+  },
+  {
+    "english": "The market stall was crowded, but the farmer still noticed which apples we chose.",
+    "level": "B2"
+  },
+  {
+    "english": "In late summer, even the cutting board seems to hold the smell of tomatoes.",
+    "level": "B2"
+  },
+  {
+    "english": "Seasonal cooking depends on accepting limits, then noticing how generous those limits can become.",
+    "level": "C1"
+  },
+  {
+    "english": "The difference between a salad and a heap of leaves often lies in washing, drying, and waiting.",
+    "level": "C1"
+  },
+  {
+    "english": "A cook learns to read produce through touch, scent, weight, and the small betrayals of bruised skin.",
+    "level": "C1"
+  },
+  {
+    "english": "The farmer's market makes freshness visible, but it also makes waste feel more personal.",
+    "level": "C1"
+  },
+  {
+    "english": "A winter soup can carry the memory of summer if the carrots are sweet enough.",
+    "level": "C1"
+  },
+  {
+    "english": "She treated the first cherries as ingredients and the last cherries as news worth sharing.",
+    "level": "C1"
+  },
+  {
+    "english": "The green grocer's advice was practical, but it carried the authority of many ruined peaches.",
+    "level": "C1"
+  },
+  {
+    "english": "Good fruit resists hurry, and the kitchen must make room for ripening as a technique.",
+    "level": "C1"
+  },
+  {
+    "english": "The most useful knife skill at the market is knowing when not to cut anything yet.",
+    "level": "C1"
+  },
+  {
+    "english": "In a bowl of sliced cucumbers, salt becomes a quiet negotiation with water.",
+    "level": "C1"
+  },
+  {
+    "english": "The cook who buys by season learns variety not as abundance, but as rhythm.",
+    "level": "C1"
+  },
+  {
+    "english": "A side dish of beans can feel complete when the beans were picked that morning.",
+    "level": "C1"
+  },
+  {
+    "english": "At the market, abundance is never abstract; it has beet mud under its nails, peach perfume in its paper bags, and a cook nearby deciding what dinner can honestly become.",
+    "level": "C2"
+  },
+  {
+    "english": "A ripe fig requires almost no technique, yet it exposes the cook's discipline, because the hardest instruction is often to stop before improvement becomes damage.",
+    "level": "C2"
+  },
+  {
+    "english": "The green grocer arranges the morning like a quiet argument for seasonality, with bitter chicories beside sweet pears and potatoes still carrying the field's dark grammar.",
+    "level": "C2"
+  },
+  {
+    "english": "When the first peas are shelled into a bowl, the meal begins before heat, in the small domestic weather of thumbs, pods, and patient hunger.",
+    "level": "C2"
+  },
+  {
+    "english": "A kitchen that follows the market learns humility, since dinner depends not only on appetite and skill, but on rain, soil, timing, and the ripeness of one pear.",
+    "level": "C2"
+  },
+  {
+    "english": "I bake bread.",
+    "level": "A0"
+  },
+  {
+    "english": "The dough feels sticky.",
+    "level": "A1"
+  },
+  {
+    "english": "She weighs the flour.",
+    "level": "A1"
+  },
+  {
+    "english": "Butter melts in the pan.",
+    "level": "A1"
+  },
+  {
+    "english": "The cake looks golden.",
+    "level": "A1"
+  },
+  {
+    "english": "He rolls the pastry thin.",
+    "level": "A1"
+  },
+  {
+    "english": "The cookies need ten minutes.",
+    "level": "A1"
+  },
+  {
+    "english": "Sugar dusts the counter.",
+    "level": "A1"
+  },
+  {
+    "english": "The loaf cools on a rack.",
+    "level": "A1"
+  },
+  {
+    "english": "She cuts the cake carefully.",
+    "level": "A1"
+  },
+  {
+    "english": "The yeast wakes in warm water.",
+    "level": "A1"
+  },
+  {
+    "english": "He brushes butter on the rolls.",
+    "level": "A1"
+  },
+  {
+    "english": "The muffins smell sweet.",
+    "level": "A1"
+  },
+  {
+    "english": "I saved the last cookie.",
+    "level": "A1"
+  },
+  {
+    "english": "She sifts the cocoa powder.",
+    "level": "A1"
+  },
+  {
+    "english": "The pie crust cracks easily.",
+    "level": "A1"
+  },
+  {
+    "english": "The bread will rise if the room stays warm.",
+    "level": "A2"
+  },
+  {
+    "english": "She chilled the dough, and the cookies held their shape.",
+    "level": "A2"
+  },
+  {
+    "english": "He forgot the sugar, so the cake tasted plain.",
+    "level": "A2"
+  },
+  {
+    "english": "The butter was too cold, but it softened near the stove.",
+    "level": "A2"
+  },
+  {
+    "english": "We shared the warm rolls before dinner was ready.",
+    "level": "A2"
+  },
+  {
+    "english": "The pie smelled good, but the bottom was still pale.",
+    "level": "A2"
+  },
+  {
+    "english": "She lined the tin with paper before pouring the batter.",
+    "level": "A2"
+  },
+  {
+    "english": "He sprinkled flour on the table and shaped the dough.",
+    "level": "A2"
+  },
+  {
+    "english": "The buns looked small, but they grew in the oven.",
+    "level": "A2"
+  },
+  {
+    "english": "I checked the cake, and the knife came out clean.",
+    "level": "A2"
+  },
+  {
+    "english": "The icing was runny, so she added more powdered sugar.",
+    "level": "A2"
+  },
+  {
+    "english": "He crushed the biscuits and pressed them into the pan.",
+    "level": "A2"
+  },
+  {
+    "english": "The crust turned dark because the oven shelf was too high.",
+    "level": "A2"
+  },
+  {
+    "english": "She saved the egg whites for meringues tomorrow.",
+    "level": "A2"
+  },
+  {
+    "english": "The dough rested all morning and became soft and stretchy.",
+    "level": "A2"
+  },
+  {
+    "english": "He mixed raisins into the batter, but his sister picked them out.",
+    "level": "A2"
+  },
+  {
+    "english": "The jam leaked from the tart and stuck to the tray.",
+    "level": "A2"
+  },
+  {
+    "english": "We warmed the milk first, then mixed in the yeast.",
+    "level": "A2"
+  },
+  {
+    "english": "She dusted the cake with sugar before guests arrived.",
+    "level": "A2"
+  },
+  {
+    "english": "The loaf sounded hollow when he tapped the bottom.",
+    "level": "A2"
+  },
+  {
+    "english": "I left the brownies longer, and the edges became chewy.",
+    "level": "A2"
+  },
+  {
+    "english": "The pastry tore, so she patched it with extra dough.",
+    "level": "A2"
+  },
+  {
+    "english": "He poured honey over the biscuits while they were still hot.",
+    "level": "A2"
+  },
+  {
+    "english": "The cinnamon rolls rose slowly beside the sunny window.",
+    "level": "A2"
+  },
+  {
+    "english": "She measured the vanilla carefully because the bottle was nearly empty.",
+    "level": "A2"
+  },
+  {
+    "english": "The tart cooled outside while coffee brewed in the kitchen.",
+    "level": "A2"
+  },
+  {
+    "english": "He pressed his thumb into each cookie and filled it with jam.",
+    "level": "A2"
+  },
+  {
+    "english": "The sponge cake was light, but the cream made it rich.",
+    "level": "A2"
+  },
+  {
+    "english": "We wrapped the loaf in cloth so the crust stayed tender.",
+    "level": "A2"
+  },
+  {
+    "english": "She made shortbread with three ingredients and a quiet afternoon.",
+    "level": "A2"
+  },
+  {
+    "english": "The first tray burned, but the second tray was perfect.",
+    "level": "A2"
+  },
+  {
+    "english": "He cooled the caramel before spreading it over the base.",
+    "level": "A2"
+  },
+  {
+    "english": "The buns stuck together, so we pulled them apart at breakfast.",
+    "level": "A2"
+  },
+  {
+    "english": "A little steam escaped when she broke open the dinner roll.",
+    "level": "B1"
+  },
+  {
+    "english": "He knows the bread is ready by the color of the crust.",
+    "level": "B1"
+  },
+  {
+    "english": "The cookie dough disappeared faster than the baked cookies ever do.",
+    "level": "B1"
+  },
+  {
+    "english": "She keeps a jar of starter alive like a household pet.",
+    "level": "B1"
+  },
+  {
+    "english": "The birthday cake leaned slightly, but nobody wanted a straighter one.",
+    "level": "B1"
+  },
+  {
+    "english": "He scraped the burnt sugar from the pan without complaint.",
+    "level": "B1"
+  },
+  {
+    "english": "The croissants took all morning and vanished in five quiet minutes.",
+    "level": "B1"
+  },
+  {
+    "english": "She learned to stop mixing when the batter still looked shy.",
+    "level": "B1"
+  },
+  {
+    "english": "The bakery bag left a warm, buttery spot on the table.",
+    "level": "B1"
+  },
+  {
+    "english": "He underbaked the center and called it a pudding by accident.",
+    "level": "B1"
+  },
+  {
+    "english": "The sourdough cracked open beautifully, like it had chosen its own shape.",
+    "level": "B1"
+  },
+  {
+    "english": "She saved the darker cookies for herself because she likes the edge.",
+    "level": "B1"
+  },
+  {
+    "english": "The apple pie settled as it cooled, and the room went quiet.",
+    "level": "B1"
+  },
+  {
+    "english": "Baking rewards the cook who notices small changes before the timer speaks.",
+    "level": "B2"
+  },
+  {
+    "english": "The best bread in the house often begins as a worrying, slack dough.",
+    "level": "B2"
+  },
+  {
+    "english": "She trusted the dough more after learning that stickiness is not failure.",
+    "level": "B2"
+  },
+  {
+    "english": "A cake can look finished while still holding a wet secret at the center.",
+    "level": "B2"
+  },
+  {
+    "english": "The family recipe says a handful, but her handful was never quite mine.",
+    "level": "B2"
+  },
+  {
+    "english": "Butter, flour, and sugar behave differently when the kitchen turns humid.",
+    "level": "B2"
+  },
+  {
+    "english": "He bakes at night because the quiet makes exact work feel less stern.",
+    "level": "B2"
+  },
+  {
+    "english": "The tart shell shrank in the oven, exposing the limits of haste.",
+    "level": "B2"
+  },
+  {
+    "english": "Good pastry asks for cold hands, warm attention, and no dramatic rescue.",
+    "level": "B2"
+  },
+  {
+    "english": "The loaf was dense, but it carried the honest flavor of first attempts.",
+    "level": "B2"
+  },
+  {
+    "english": "She reads a crumb the way others read weather, looking for moisture and air.",
+    "level": "B2"
+  },
+  {
+    "english": "In baking, precision is not the enemy of instinct, but the frame that lets instinct work.",
+    "level": "C1"
+  },
+  {
+    "english": "The slow rise teaches a household to measure time by warmth, patience, and the smell of flour changing.",
+    "level": "C1"
+  },
+  {
+    "english": "A well-made cake keeps a record of restraint, especially in the moments when more mixing feels useful.",
+    "level": "C1"
+  },
+  {
+    "english": "She did not inherit the recipe so much as the gestures around it, the tap, the pause, the glance.",
+    "level": "C1"
+  },
+  {
+    "english": "Bread makes failure visible without making it final, since tomorrow's loaf begins with the same plain ingredients.",
+    "level": "C1"
+  },
+  {
+    "english": "The pastry bench collects small evidence of ambition, floury fingerprints, butter streaks, and the first tear in the dough.",
+    "level": "C1"
+  },
+  {
+    "english": "A sourdough starter is less a shortcut than a standing agreement between appetite, microbes, and regular care.",
+    "level": "C1"
+  },
+  {
+    "english": "The cake collapsed, yet its flavor survived, reminding everyone that structure and pleasure are related but not identical.",
+    "level": "C1"
+  },
+  {
+    "english": "When sugar reaches amber, the cook has seconds to decide whether courage has become bitterness.",
+    "level": "C1"
+  },
+  {
+    "english": "Home baking turns measurement into memory, because every cup and gram eventually belongs to someone's hands.",
+    "level": "C1"
+  },
+  {
+    "english": "The old oven lies by temperature but tells the truth through browned edges and impatient smells.",
+    "level": "C1"
+  },
+  {
+    "english": "Before dawn, the baker turns flour, water, yeast, and salt into loaves that carry the neighborhood's hunger in their warm seams.",
+    "level": "C2"
+  },
+  {
+    "english": "A cookie is a modest object, yet it records exact decisions about heat, fat, sugar, timing, and the generosity of whoever left the last one untouched.",
+    "level": "C2"
+  },
+  {
+    "english": "The grandmother's cake was never written down correctly, because the recipe lived in corrections, in batter scraped from a spoon, in a silence before she said enough.",
+    "level": "C2"
+  },
+  {
+    "english": "Bread forgives slowly, requiring the cook to return, to observe, to wait, and to accept that living dough follows no clock with perfect manners.",
+    "level": "C2"
+  },
+  {
+    "english": "In a small kitchen after rain, the cooling loaf, the sugared plums, and the cracked tart shell made dinner feel briefly older than everyone at the table.",
+    "level": "C2"
+  },
+  {
+    "english": "I cook rice.",
+    "level": "A0"
+  },
+  {
+    "english": "The egg is hot.",
+    "level": "A1"
+  },
+  {
+    "english": "I rinse the rice.",
+    "level": "A1"
+  },
+  {
+    "english": "She fries one egg.",
+    "level": "A1"
+  },
+  {
+    "english": "He drains the beans.",
+    "level": "A1"
+  },
+  {
+    "english": "The rice needs water.",
+    "level": "A1"
+  },
+  {
+    "english": "We eat pasta tonight.",
+    "level": "A1"
+  },
+  {
+    "english": "The yolk broke again.",
+    "level": "A1"
+  },
+  {
+    "english": "I stir the oatmeal.",
+    "level": "A1"
+  },
+  {
+    "english": "She warms the tortillas.",
+    "level": "A1"
+  },
+  {
+    "english": "He salts the noodles.",
+    "level": "A1"
+  },
+  {
+    "english": "The beans smell good.",
+    "level": "A1"
+  },
+  {
+    "english": "I peel a boiled egg.",
+    "level": "A1"
+  },
+  {
+    "english": "We share the last egg.",
+    "level": "A1"
+  },
+  {
+    "english": "The pan holds two eggs.",
+    "level": "A1"
+  },
+  {
+    "english": "Lunch is rice and beans.",
+    "level": "A1"
+  },
+  {
+    "english": "The rice stuck to the bottom, but dinner survived.",
+    "level": "A2"
+  },
+  {
+    "english": "I cracked three eggs, and one shell fell in.",
+    "level": "A2"
+  },
+  {
+    "english": "She will rinse the beans before she warms them.",
+    "level": "A2"
+  },
+  {
+    "english": "He buttered the noodles, then grated cheese over them.",
+    "level": "A2"
+  },
+  {
+    "english": "The omelet tore in half, but it still tasted good.",
+    "level": "A2"
+  },
+  {
+    "english": "We saved plain rice for breakfast with milk and cinnamon.",
+    "level": "A2"
+  },
+  {
+    "english": "She stirred canned tomatoes into beans and called it supper.",
+    "level": "A2"
+  },
+  {
+    "english": "He made scrambled eggs because the bread was stale.",
+    "level": "A2"
+  },
+  {
+    "english": "The pasta clumped together, so I added a little water.",
+    "level": "A2"
+  },
+  {
+    "english": "I fried leftover rice with peas, egg, and scallions.",
+    "level": "A2"
+  },
+  {
+    "english": "The lentils softened slowly, and the room smelled nutty.",
+    "level": "A2"
+  },
+  {
+    "english": "She packed rice and beans for lunch tomorrow.",
+    "level": "A2"
+  },
+  {
+    "english": "He put a lid on the pot, and the rice steamed.",
+    "level": "A2"
+  },
+  {
+    "english": "The eggs cooled in a bowl of water.",
+    "level": "A2"
+  },
+  {
+    "english": "I warmed yesterday's pasta with butter and black pepper.",
+    "level": "A2"
+  },
+  {
+    "english": "The beans needed more time, so we ate later.",
+    "level": "A2"
+  },
+  {
+    "english": "She spooned rice beside the stew and smiled.",
+    "level": "A2"
+  },
+  {
+    "english": "He forgot the timer, and the eggs turned gray.",
+    "level": "A2"
+  },
+  {
+    "english": "I spilled lentils into the sink, then scooped them back.",
+    "level": "A2"
+  },
+  {
+    "english": "The noodles broke when I pushed them into the pot.",
+    "level": "A2"
+  },
+  {
+    "english": "She fried an egg with crisp brown edges.",
+    "level": "A2"
+  },
+  {
+    "english": "We stretched two eggs into dinner with rice.",
+    "level": "A2"
+  },
+  {
+    "english": "He mashed white beans with lemon and parsley.",
+    "level": "A2"
+  },
+  {
+    "english": "The rice cooker clicked off before the salad was ready.",
+    "level": "A2"
+  },
+  {
+    "english": "I saved the bean liquid for soup tomorrow.",
+    "level": "A2"
+  },
+  {
+    "english": "She folded chopped herbs into warm couscous.",
+    "level": "A2"
+  },
+  {
+    "english": "The egg slid from the pan onto the plate.",
+    "level": "A2"
+  },
+  {
+    "english": "We ate chickpeas with pasta when the fridge looked empty.",
+    "level": "A2"
+  },
+  {
+    "english": "He warmed tortillas over the flame and filled them with beans.",
+    "level": "A2"
+  },
+  {
+    "english": "The rice was too wet, but the soup needed it.",
+    "level": "A2"
+  },
+  {
+    "english": "She stirred oats until they turned soft and glossy.",
+    "level": "A2"
+  },
+  {
+    "english": "I dropped an egg, and the floor turned slick.",
+    "level": "A2"
+  },
+  {
+    "english": "He topped the noodles with a fried egg.",
+    "level": "A2"
+  },
+  {
+    "english": "On busy nights, rice and eggs feel like a plan.",
+    "level": "B1"
+  },
+  {
+    "english": "She keeps a pot of beans going whenever money feels tight.",
+    "level": "B1"
+  },
+  {
+    "english": "I know dinner is close when the egg hits the hot oil.",
+    "level": "B1"
+  },
+  {
+    "english": "The rice needs ten quiet minutes before anyone lifts the lid.",
+    "level": "B1"
+  },
+  {
+    "english": "He turns leftover noodles into breakfast without apologizing for it.",
+    "level": "B1"
+  },
+  {
+    "english": "A can of chickpeas can rescue a very tired cook.",
+    "level": "B1"
+  },
+  {
+    "english": "She makes two eggs look like plenty by adding potatoes.",
+    "level": "B1"
+  },
+  {
+    "english": "The pasta was plain, but the butter made it honest.",
+    "level": "B1"
+  },
+  {
+    "english": "He rinses rice until the water stops looking cloudy.",
+    "level": "B1"
+  },
+  {
+    "english": "We ate beans on toast and called the problem solved.",
+    "level": "B1"
+  },
+  {
+    "english": "A soft yolk can make yesterday's rice feel new.",
+    "level": "B1"
+  },
+  {
+    "english": "She salts the lentils late because her mother taught her caution.",
+    "level": "B1"
+  },
+  {
+    "english": "The smallest supper still deserves a warm plate.",
+    "level": "B1"
+  },
+  {
+    "english": "Rice teaches timing gently, because it punishes curiosity but forgives patience.",
+    "level": "B2"
+  },
+  {
+    "english": "A fried egg on top can turn scraps into something that feels composed.",
+    "level": "B2"
+  },
+  {
+    "english": "Beans ask little from the cook, then give back steadiness by the spoonful.",
+    "level": "B2"
+  },
+  {
+    "english": "The cheap pasta in the cupboard has carried us through more Tuesdays than pride admits.",
+    "level": "B2"
+  },
+  {
+    "english": "She measures rice with her palm now, trusting habit more than the printed line.",
+    "level": "B2"
+  },
+  {
+    "english": "An omelet is simple only until you try to fold it in front of someone.",
+    "level": "B2"
+  },
+  {
+    "english": "Leftover rice needs a hot pan, a little fat, and no sentiment.",
+    "level": "B2"
+  },
+  {
+    "english": "The beans tasted flat until a splash of vinegar woke the whole bowl.",
+    "level": "B2"
+  },
+  {
+    "english": "He cooks lentils when the week feels uncertain, because lentils do not judge.",
+    "level": "B2"
+  },
+  {
+    "english": "Plain noodles with butter can be a kindness when nobody has words left.",
+    "level": "B2"
+  },
+  {
+    "english": "The boiled egg rolled under the table, and lunch briefly lost its dignity.",
+    "level": "B2"
+  },
+  {
+    "english": "The daily meal often begins with rice, not because it is plain, but because it leaves room for whatever the day has spared.",
+    "level": "C1"
+  },
+  {
+    "english": "She treats eggs as a form of negotiation, one for breakfast, two for dinner, three when guests appear.",
+    "level": "C1"
+  },
+  {
+    "english": "A pot of beans changes the household clock, asking for occasional attention while freeing the cook from performance.",
+    "level": "C1"
+  },
+  {
+    "english": "Pasta on a weeknight belongs to the honest cuisine of hunger, tired hands, and a drawer with one clean fork.",
+    "level": "C1"
+  },
+  {
+    "english": "The rice at the bottom of the pot tells the truth about heat more clearly than any recipe note.",
+    "level": "C1"
+  },
+  {
+    "english": "He learned to scramble eggs softly, which meant learning when to stop before certainty ruined them.",
+    "level": "C1"
+  },
+  {
+    "english": "A pantry meal is not poverty of imagination; it is imagination meeting the hard edge of what is left.",
+    "level": "C1"
+  },
+  {
+    "english": "The best fried rice begins as neglect, yesterday's rice drying quietly until it is ready for transformation.",
+    "level": "C1"
+  },
+  {
+    "english": "She seasons lentils with restraint, knowing that comfort can be deep without announcing itself loudly.",
+    "level": "C1"
+  },
+  {
+    "english": "Beans, eggs, and rice make a grammar of supper, modest parts arranged into sentences everyone understands.",
+    "level": "C1"
+  },
+  {
+    "english": "When pasta water clouds and thickens, the cook sees starch becoming a tool instead of waste.",
+    "level": "C1"
+  },
+  {
+    "english": "The egg that breaks in the pan reminds her that breakfast is still breakfast, even without symmetry.",
+    "level": "C1"
+  },
+  {
+    "english": "In the small republic of a weeknight kitchen, rice is the citizen that asks least, absorbs most, and somehow makes the table feel governed.",
+    "level": "C2"
+  },
+  {
+    "english": "She cracks eggs with the concentration of someone balancing accounts, because supper must satisfy appetite, budget, memory, and the child waiting with a fork.",
+    "level": "C2"
+  },
+  {
+    "english": "Beans keep their own slow counsel on the stove, thickening the air with patience until the household accepts that dinner cannot be hurried into kindness.",
+    "level": "C2"
+  },
+  {
+    "english": "There are evenings when pasta, butter, and a chipped bowl become enough, not through romance, but through the exact mercy of food that arrives.",
+    "level": "C2"
+  },
+  {
+    "english": "The cook who saves rice, bean broth, and half an onion is practicing a domestic intelligence older than thrift, closer to respect.",
+    "level": "C2"
+  },
+  {
+    "english": "Mom stirs soup in my memory.",
+    "level": "A1"
+  },
+  {
+    "english": "Grandma's apron smelled like cinnamon.",
+    "level": "A1"
+  },
+  {
+    "english": "I miss her Sunday rice.",
+    "level": "A1"
+  },
+  {
+    "english": "Dad makes pancakes her way.",
+    "level": "A1"
+  },
+  {
+    "english": "This stew tastes like home.",
+    "level": "A1"
+  },
+  {
+    "english": "Her old pot sits here.",
+    "level": "A1"
+  },
+  {
+    "english": "We use my aunt's spoon.",
+    "level": "A1"
+  },
+  {
+    "english": "I learned curry from him.",
+    "level": "A1"
+  },
+  {
+    "english": "The bread reminds me of her.",
+    "level": "A1"
+  },
+  {
+    "english": "My mother saved every recipe.",
+    "level": "A1"
+  },
+  {
+    "english": "His beans taste like childhood.",
+    "level": "A1"
+  },
+  {
+    "english": "We cook when we miss her.",
+    "level": "A1"
+  },
+  {
+    "english": "That cake was my grandfather's favorite.",
+    "level": "A1"
+  },
+  {
+    "english": "I hear her in the kitchen.",
+    "level": "A1"
+  },
+  {
+    "english": "My mother wrote the recipe, and I keep it near the stove.",
+    "level": "A2"
+  },
+  {
+    "english": "Grandma used more butter, but nobody complained at dinner.",
+    "level": "A2"
+  },
+  {
+    "english": "I make this soup when the weather turns cold.",
+    "level": "A2"
+  },
+  {
+    "english": "Her rice never stuck, because she listened to the pot.",
+    "level": "A2"
+  },
+  {
+    "english": "We cooked lentils together, and the whole house smelled safe.",
+    "level": "A2"
+  },
+  {
+    "english": "I still use the bowl my father chipped.",
+    "level": "A2"
+  },
+  {
+    "english": "She called every sauce gravy, even when it was red.",
+    "level": "A2"
+  },
+  {
+    "english": "My uncle tasted the beans, then nodded without speaking.",
+    "level": "A2"
+  },
+  {
+    "english": "I learned her dumplings by watching her hands.",
+    "level": "A2"
+  },
+  {
+    "english": "The old cookbook opens to the stain from 1987.",
+    "level": "A2"
+  },
+  {
+    "english": "We make tamales in December, and everyone gets a job.",
+    "level": "A2"
+  },
+  {
+    "english": "My sister keeps Mom's chili in the freezer.",
+    "level": "A2"
+  },
+  {
+    "english": "He fries plantains the way his mother did.",
+    "level": "A2"
+  },
+  {
+    "english": "The first taste brought back my grandmother's small kitchen.",
+    "level": "A2"
+  },
+  {
+    "english": "I wrote down the dish before anyone forgot it.",
+    "level": "A2"
+  },
+  {
+    "english": "She showed me where the cardamom truly belonged.",
+    "level": "A2"
+  },
+  {
+    "english": "We argue about cumin, but we agree on lunch.",
+    "level": "A2"
+  },
+  {
+    "english": "His tomato soup tastes better in her blue bowl.",
+    "level": "A2"
+  },
+  {
+    "english": "I save the chicken bones because Dad always did.",
+    "level": "A2"
+  },
+  {
+    "english": "My grandmother measured rice with a teacup.",
+    "level": "A2"
+  },
+  {
+    "english": "The recipe is simple, but the voice is hers.",
+    "level": "A2"
+  },
+  {
+    "english": "I smell cloves, and I think of holidays.",
+    "level": "A2"
+  },
+  {
+    "english": "We learned couscous from a neighbor who missed home.",
+    "level": "A2"
+  },
+  {
+    "english": "She made noodles when words were too hard.",
+    "level": "A2"
+  },
+  {
+    "english": "My father cooked eggs after every night shift.",
+    "level": "A2"
+  },
+  {
+    "english": "I keep her jam spoon in the drawer.",
+    "level": "A2"
+  },
+  {
+    "english": "He salts potatoes like his grandmother taught him.",
+    "level": "A2"
+  },
+  {
+    "english": "We still serve pickles in her glass dish.",
+    "level": "A2"
+  },
+  {
+    "english": "The cake tastes different, but the memory stays close.",
+    "level": "A2"
+  },
+  {
+    "english": "My aunt laughs whenever the tortillas puff.",
+    "level": "A2"
+  },
+  {
+    "english": "I call her before I make the gravy.",
+    "level": "A2"
+  },
+  {
+    "english": "The soup cooled while we told old kitchen stories.",
+    "level": "A2"
+  },
+  {
+    "english": "I can never make her broth exactly right, but I keep trying.",
+    "level": "B1"
+  },
+  {
+    "english": "When I chop parsley, I remember my mother's quick, steady hands.",
+    "level": "B1"
+  },
+  {
+    "english": "His grandmother's paella taught him that patience has a sound.",
+    "level": "B1"
+  },
+  {
+    "english": "We learned the family mole from a phone call full of corrections.",
+    "level": "B1"
+  },
+  {
+    "english": "The kitchen gets quiet when her favorite pan comes out.",
+    "level": "B1"
+  },
+  {
+    "english": "I make this bread for guests, but really it belongs to my father.",
+    "level": "B1"
+  },
+  {
+    "english": "Every time the onions soften, someone tells the same story again.",
+    "level": "B1"
+  },
+  {
+    "english": "My cousin swears the secret is the pan, not the recipe.",
+    "level": "B1"
+  },
+  {
+    "english": "I burned the first batch, and my mother laughed like forgiveness.",
+    "level": "B1"
+  },
+  {
+    "english": "Her soup was never fancy, just deep enough to answer hunger.",
+    "level": "B1"
+  },
+  {
+    "english": "We cook her dishes aloud, naming each step before it disappears.",
+    "level": "B1"
+  },
+  {
+    "english": "The smell of frying cumin takes me straight back to that apartment.",
+    "level": "B1"
+  },
+  {
+    "english": "My grandmother seasoned by memory, trusting the color of the oil more than any timer.",
+    "level": "B2"
+  },
+  {
+    "english": "I follow my mother's recipe, then pause where her handwriting turns impatient.",
+    "level": "B2"
+  },
+  {
+    "english": "The dish changes in my kitchen, but it still carries her accent.",
+    "level": "B2"
+  },
+  {
+    "english": "He learned to make pho from his father, one quiet correction at a time.",
+    "level": "B2"
+  },
+  {
+    "english": "When the dough resists, I hear my aunt telling me to wait.",
+    "level": "B2"
+  },
+  {
+    "english": "Our Sunday sauce tastes like migration, argument, and three generations of compromise.",
+    "level": "B2"
+  },
+  {
+    "english": "I keep making her soup because grief needs something useful to do.",
+    "level": "B2"
+  },
+  {
+    "english": "The recipe survived because someone kept cooking it after the house was sold.",
+    "level": "B2"
+  },
+  {
+    "english": "She taught me that a burnt edge can still belong at the table.",
+    "level": "B2"
+  },
+  {
+    "english": "My father never wrote recipes, so I learned to read his silences.",
+    "level": "B2"
+  },
+  {
+    "english": "The old skillet holds breakfast, but it also holds a family argument.",
+    "level": "B2"
+  },
+  {
+    "english": "A family recipe is rarely precise; it is a trail of habits, warnings, and borrowed confidence.",
+    "level": "C1"
+  },
+  {
+    "english": "I make my grandmother's beans with canned tomatoes now, and the compromise still feels tender.",
+    "level": "C1"
+  },
+  {
+    "english": "In my mother's kitchen, flavor arrived through correction, not instruction, and every spoonful was revised.",
+    "level": "C1"
+  },
+  {
+    "english": "The first time I cooked her curry alone, I understood how memory edits a dish.",
+    "level": "C1"
+  },
+  {
+    "english": "We call it traditional, but each cook has quietly changed something to keep it alive.",
+    "level": "C1"
+  },
+  {
+    "english": "His father's stew taught him that home can be rebuilt from onions, patience, and a scarred pot.",
+    "level": "C1"
+  },
+  {
+    "english": "I used to think the recipe mattered most, until her absence made the gestures loud.",
+    "level": "C1"
+  },
+  {
+    "english": "The kitchen keeps a private archive, oil stains, folded cards, chipped bowls, and unfinished advice.",
+    "level": "C1"
+  },
+  {
+    "english": "My aunt's tamarind sauce is sharper than mine, perhaps because she remembers a different coast.",
+    "level": "C1"
+  },
+  {
+    "english": "Cooking her food does not bring her back; it gives the missing a daily shape.",
+    "level": "C1"
+  },
+  {
+    "english": "The dish became mine only after I stopped apologizing for the changes.",
+    "level": "C1"
+  },
+  {
+    "english": "In the steam above my mother's pot, I hear a language older than instruction, a grammar of tasting, correcting, waiting, and feeding whoever has come in from the weather.",
+    "level": "C2"
+  },
+  {
+    "english": "My grandmother's kitchen was small, but every cupboard seemed to hold an argument between scarcity and welcome, and every pot found a way to make room.",
+    "level": "C2"
+  },
+  {
+    "english": "I do not inherit the recipe as a museum piece; I inherit the permission to alter it, because the dead taught through appetite, not preservation.",
+    "level": "C2"
+  },
+  {
+    "english": "Long after the meal is finished, the cook's voice remains in the rinsed bowl and the cooling pan, asking whether we fed each other well.",
+    "level": "C2"
+  },
+  {
+    "english": "We eat together.",
+    "level": "A0"
+  },
+  {
+    "english": "Set the table, please.",
+    "level": "A1"
+  },
+  {
+    "english": "The guests arrive soon.",
+    "level": "A1"
+  },
+  {
+    "english": "I made extra rice.",
+    "level": "A1"
+  },
+  {
+    "english": "She pours the tea.",
+    "level": "A1"
+  },
+  {
+    "english": "We share the pie.",
+    "level": "A1"
+  },
+  {
+    "english": "The chairs are outside.",
+    "level": "A1"
+  },
+  {
+    "english": "He lights the candles.",
+    "level": "A1"
+  },
+  {
+    "english": "Please take a plate.",
+    "level": "A1"
+  },
+  {
+    "english": "The soup is for everyone.",
+    "level": "A1"
+  },
+  {
+    "english": "My aunt brings salad.",
+    "level": "A1"
+  },
+  {
+    "english": "We need more forks.",
+    "level": "A1"
+  },
+  {
+    "english": "The table looks full.",
+    "level": "A1"
+  },
+  {
+    "english": "They stayed for coffee.",
+    "level": "A1"
+  },
+  {
+    "english": "I saved you dessert.",
+    "level": "A1"
+  },
+  {
+    "english": "We will eat at seven, so keep the soup warm.",
+    "level": "A2"
+  },
+  {
+    "english": "She made enough beans, but someone brought another pot.",
+    "level": "A2"
+  },
+  {
+    "english": "Put the extra chairs near the window before everyone arrives.",
+    "level": "A2"
+  },
+  {
+    "english": "The bread basket went around twice, and nobody complained.",
+    "level": "A2"
+  },
+  {
+    "english": "I will make tea while you clear the plates.",
+    "level": "A2"
+  },
+  {
+    "english": "He brought dumplings, and they disappeared before the main dish.",
+    "level": "A2"
+  },
+  {
+    "english": "We opened the kitchen door because the room was too hot.",
+    "level": "A2"
+  },
+  {
+    "english": "The children carried napkins, but they forgot the spoons.",
+    "level": "A2"
+  },
+  {
+    "english": "My neighbor brought tamales, so dinner became a small feast.",
+    "level": "A2"
+  },
+  {
+    "english": "Save two seats for my parents near the end.",
+    "level": "A2"
+  },
+  {
+    "english": "The gravy cooled quickly, but the biscuits were still warm.",
+    "level": "A2"
+  },
+  {
+    "english": "We borrowed folding chairs from upstairs for the holiday meal.",
+    "level": "A2"
+  },
+  {
+    "english": "She labeled each dish because three cousins had allergies.",
+    "level": "A2"
+  },
+  {
+    "english": "Everyone brought something, and the table filled by sunset.",
+    "level": "A2"
+  },
+  {
+    "english": "He cut the roast at the counter while we waited.",
+    "level": "A2"
+  },
+  {
+    "english": "The rice cooker clicked off, but the guests were late.",
+    "level": "A2"
+  },
+  {
+    "english": "We passed bowls around until every plate looked generous.",
+    "level": "A2"
+  },
+  {
+    "english": "I set aside a quiet plate for the late shift.",
+    "level": "A2"
+  },
+  {
+    "english": "The kids made place cards, and most names were misspelled.",
+    "level": "A2"
+  },
+  {
+    "english": "We used paper plates because the sink was already full.",
+    "level": "A2"
+  },
+  {
+    "english": "The salad waited in the fridge until the last minute.",
+    "level": "A2"
+  },
+  {
+    "english": "She warmed the serving bowls before ladling out the stew.",
+    "level": "A2"
+  },
+  {
+    "english": "The pie cracked in the middle, but it tasted wonderful.",
+    "level": "A2"
+  },
+  {
+    "english": "We carried the big pot carefully to the long table.",
+    "level": "A2"
+  },
+  {
+    "english": "He forgot the ice, so we chilled drinks in snow.",
+    "level": "A2"
+  },
+  {
+    "english": "The host tasted everything once before calling people in.",
+    "level": "A2"
+  },
+  {
+    "english": "We made room for one more chair at the corner.",
+    "level": "A2"
+  },
+  {
+    "english": "The turkey rested under foil while everyone found their seats.",
+    "level": "A2"
+  },
+  {
+    "english": "The lentil stew stretched further after she added potatoes.",
+    "level": "A2"
+  },
+  {
+    "english": "I kept the coffee hot because people lingered after dinner.",
+    "level": "A2"
+  },
+  {
+    "english": "We wrapped leftovers before anyone argued about taking them home.",
+    "level": "A2"
+  },
+  {
+    "english": "The last roll split neatly, so two people shared it.",
+    "level": "A2"
+  },
+  {
+    "english": "By the time the potatoes arrived, the table had found its own rhythm.",
+    "level": "B1"
+  },
+  {
+    "english": "She hosts potlucks like a conductor, noticing empty glasses before anyone speaks.",
+    "level": "B1"
+  },
+  {
+    "english": "The best seat is near the kitchen, where every story gets seasoned twice.",
+    "level": "B1"
+  },
+  {
+    "english": "He apologized for the burnt edges, but everyone reached for those pieces first.",
+    "level": "B1"
+  },
+  {
+    "english": "When the stew ran short, she added bread and called it supper.",
+    "level": "B1"
+  },
+  {
+    "english": "Nobody remembered the centerpiece, because the beans came out smoking hot.",
+    "level": "B1"
+  },
+  {
+    "english": "We learned to serve the shy guests first, before the loud ones claimed seconds.",
+    "level": "B1"
+  },
+  {
+    "english": "The holiday meal began late, as usual, but the gravy forgave us.",
+    "level": "B1"
+  },
+  {
+    "english": "He carved slowly, giving the children time to choose their favorite pieces.",
+    "level": "B1"
+  },
+  {
+    "english": "A good host knows when to refill a glass and when to leave it alone.",
+    "level": "B1"
+  },
+  {
+    "english": "The potluck table looked uneven at first, then became exactly enough.",
+    "level": "B1"
+  },
+  {
+    "english": "She kept the extra soup warm, in case someone arrived hungry.",
+    "level": "B1"
+  },
+  {
+    "english": "Hosting taught her that timing matters less than the moment everyone stops hovering and sits.",
+    "level": "B2"
+  },
+  {
+    "english": "The long table turned separate dishes into one meal, with steam rising between conversations.",
+    "level": "B2"
+  },
+  {
+    "english": "He planned three courses carefully, then the best part was bread passed hand to hand.",
+    "level": "B2"
+  },
+  {
+    "english": "A feast begins in the kitchen, but it succeeds when people forget who cooked what.",
+    "level": "B2"
+  },
+  {
+    "english": "She set mismatched plates without apology, trusting abundance to make its own pattern.",
+    "level": "B2"
+  },
+  {
+    "english": "The roast was late, yet the room softened around bowls of olives and almonds.",
+    "level": "B2"
+  },
+  {
+    "english": "At a crowded table, generosity often looks like cutting smaller pieces without mentioning it.",
+    "level": "B2"
+  },
+  {
+    "english": "The host kept tasting the stew, not from worry but from responsibility.",
+    "level": "B2"
+  },
+  {
+    "english": "Every holiday has a quiet arithmetic of burners, chairs, serving spoons, and patience.",
+    "level": "B2"
+  },
+  {
+    "english": "Potluck food carries biography, because every casserole arrives with a hand, a house, and a reason.",
+    "level": "B2"
+  },
+  {
+    "english": "He learned that a dinner party needs fewer flourishes and more warm plates.",
+    "level": "B2"
+  },
+  {
+    "english": "The most graceful hosts do not perform control; they arrange warmth, then let the meal become communal.",
+    "level": "C1"
+  },
+  {
+    "english": "Around a feast, etiquette is often less important than noticing who has not yet been offered rice.",
+    "level": "C1"
+  },
+  {
+    "english": "A crowded kitchen can reveal the true architecture of friendship, with people reaching, rinsing, and making space.",
+    "level": "C1"
+  },
+  {
+    "english": "She understood hospitality as a practiced attention, measured in salt bowls, spare chairs, and unhurried seconds.",
+    "level": "C1"
+  },
+  {
+    "english": "The holiday table carried several calendars at once, religious, familial, seasonal, and stubbornly practical.",
+    "level": "C1"
+  },
+  {
+    "english": "When the main dish failed, the evening survived on bread, pickles, laughter, and the host's refusal to panic.",
+    "level": "C1"
+  },
+  {
+    "english": "A shared meal has its own diplomacy, smoothing old grievances through serving spoons and repeated offers.",
+    "level": "C1"
+  },
+  {
+    "english": "He placed the best platter in the center, not for display, but to make passing easier.",
+    "level": "C1"
+  },
+  {
+    "english": "The feast felt generous because no one was rushed, and even the smallest dish found an advocate.",
+    "level": "C1"
+  },
+  {
+    "english": "At the end of hosting, success is often visible only in crumbs, stained napkins, and loosened voices.",
+    "level": "C1"
+  },
+  {
+    "english": "A cook who feeds many learns to trust intervals, the pause before serving and the silence after tasting.",
+    "level": "C1"
+  },
+  {
+    "english": "Long before anyone praised the lamb or criticized the potatoes, the host had negotiated heat, hunger, memory, and pride, turning a roomful of separate appetites into a temporary household.",
+    "level": "C2"
+  },
+  {
+    "english": "At the feast's crowded edge, where elbows met serving bowls and someone laughed with a mouth full of rice, hospitality became less a virtue than a skillful distribution of attention.",
+    "level": "C2"
+  },
+  {
+    "english": "She did not rescue the evening by perfection, but by making failure edible, slicing the fallen cake beside ripe pears and pouring coffee as if this had always been the plan.",
+    "level": "C2"
+  },
+  {
+    "english": "The long table held more than dinner; it held the old treaty between abundance and restraint, where the host watches every plate while pretending, mercifully, not to watch.",
+    "level": "C2"
+  },
+  {
+    "english": "In a kitchen thick with steam and relatives, the shared meal gathered its force slowly, through borrowed chairs, refilled bowls, and the ancient courtesy of saving the last piece for someone else.",
+    "level": "C2"
+  },
+  {
+    "english": "I wash the pot.",
+    "level": "A0"
+  },
+  {
+    "english": "The knife is clean.",
+    "level": "A1"
+  },
+  {
+    "english": "Wash your hands first.",
+    "level": "A1"
+  },
+  {
+    "english": "Put the pan here.",
+    "level": "A1"
+  },
+  {
+    "english": "The spoon is in the drawer.",
+    "level": "A1"
+  },
+  {
+    "english": "I need a bowl.",
+    "level": "A1"
+  },
+  {
+    "english": "She sharpens the small knife.",
+    "level": "A1"
+  },
+  {
+    "english": "He dries the plates.",
+    "level": "A1"
+  },
+  {
+    "english": "Keep the handle turned in.",
+    "level": "A1"
+  },
+  {
+    "english": "The sink is full.",
+    "level": "A1"
+  },
+  {
+    "english": "This lid fits the pot.",
+    "level": "A1"
+  },
+  {
+    "english": "Wipe the blade carefully.",
+    "level": "A1"
+  },
+  {
+    "english": "The apron hangs by the door.",
+    "level": "A1"
+  },
+  {
+    "english": "Use a clean towel.",
+    "level": "A1"
+  },
+  {
+    "english": "The burner is off.",
+    "level": "A1"
+  },
+  {
+    "english": "We stack the bowls.",
+    "level": "A1"
+  },
+  {
+    "english": "I sharpened the knife, and the tomatoes cut cleanly.",
+    "level": "A2"
+  },
+  {
+    "english": "Set out the bowls before you start cooking.",
+    "level": "A2"
+  },
+  {
+    "english": "She lined up the herbs, then washed the cutting board.",
+    "level": "A2"
+  },
+  {
+    "english": "The pot is small, so cook the beans in batches.",
+    "level": "A2"
+  },
+  {
+    "english": "Keep a damp towel nearby, because spills happen quickly.",
+    "level": "A2"
+  },
+  {
+    "english": "He rinsed the knife before cutting the fruit.",
+    "level": "A2"
+  },
+  {
+    "english": "The lid rattled, but the stew stayed in the pot.",
+    "level": "A2"
+  },
+  {
+    "english": "I will scrub the pan after it cools.",
+    "level": "A2"
+  },
+  {
+    "english": "She moved the hot skillet with both hands.",
+    "level": "A2"
+  },
+  {
+    "english": "Put the peels in one bowl and the scraps in another.",
+    "level": "A2"
+  },
+  {
+    "english": "The measuring cups are clean, but the scale needs batteries.",
+    "level": "A2"
+  },
+  {
+    "english": "He checked the drawer before asking for the corkscrew.",
+    "level": "A2"
+  },
+  {
+    "english": "The chef's knife feels safer when it is sharp.",
+    "level": "A2"
+  },
+  {
+    "english": "I dried the cutting board and stood it upright.",
+    "level": "A2"
+  },
+  {
+    "english": "The saucepan lost its lid, so we used a plate.",
+    "level": "A2"
+  },
+  {
+    "english": "She cleared the counter before opening the flour.",
+    "level": "A2"
+  },
+  {
+    "english": "The ladle hangs beside the stove for quick reach.",
+    "level": "A2"
+  },
+  {
+    "english": "I nicked my finger, but the cut was small.",
+    "level": "A2"
+  },
+  {
+    "english": "He labeled the jars so the powders would not mix.",
+    "level": "A2"
+  },
+  {
+    "english": "The timer beeped, and everyone looked toward the stove.",
+    "level": "A2"
+  },
+  {
+    "english": "She set the trash bowl beside the chopping board.",
+    "level": "A2"
+  },
+  {
+    "english": "The handle loosened, so I tightened the screw.",
+    "level": "A2"
+  },
+  {
+    "english": "We washed the knives by hand after dinner.",
+    "level": "A2"
+  },
+  {
+    "english": "The kettle hissed while I found the tea strainer.",
+    "level": "A2"
+  },
+  {
+    "english": "He swept crumbs from the worktable into his palm.",
+    "level": "A2"
+  },
+  {
+    "english": "The pan cooled slowly on the back burner.",
+    "level": "A2"
+  },
+  {
+    "english": "She kept the clean spoons away from the raw meat.",
+    "level": "A2"
+  },
+  {
+    "english": "I put the recipe beside the stove, but it got splashed.",
+    "level": "A2"
+  },
+  {
+    "english": "The drawers stick when the room gets humid.",
+    "level": "A2"
+  },
+  {
+    "english": "He weighed the dough and divided it with a bench scraper.",
+    "level": "A2"
+  },
+  {
+    "english": "The sink filled fast, so we washed dishes between steps.",
+    "level": "A2"
+  },
+  {
+    "english": "She chose the wide pot because the greens needed room.",
+    "level": "A2"
+  },
+  {
+    "english": "I set the knife down flat before answering the door.",
+    "level": "A2"
+  },
+  {
+    "english": "A sharp knife asks for respect, but it also saves time.",
+    "level": "B1"
+  },
+  {
+    "english": "She keeps her station tidy because clutter hides small mistakes.",
+    "level": "B1"
+  },
+  {
+    "english": "The best cooks know where every spoon is before the rush begins.",
+    "level": "B1"
+  },
+  {
+    "english": "I learned to cut carrots evenly by slowing my hands down.",
+    "level": "B1"
+  },
+  {
+    "english": "When the pan handle points outward, someone is bound to bump it.",
+    "level": "B1"
+  },
+  {
+    "english": "He taps each lid until the right one answers.",
+    "level": "B1"
+  },
+  {
+    "english": "A clean counter makes the next decision feel less crowded.",
+    "level": "B1"
+  },
+  {
+    "english": "The kitchen drawer tells the truth about how often we cook.",
+    "level": "B1"
+  },
+  {
+    "english": "She keeps a scrap bowl ready, and the cutting board stays clear.",
+    "level": "B1"
+  },
+  {
+    "english": "I trust a heavy pot when dinner has to wait.",
+    "level": "B1"
+  },
+  {
+    "english": "The first lesson was simple, keep your fingers tucked under.",
+    "level": "B1"
+  },
+  {
+    "english": "He wiped the knife between herbs so the flavors stayed bright.",
+    "level": "B1"
+  },
+  {
+    "english": "Good mise en place feels like a quiet promise to yourself.",
+    "level": "B1"
+  },
+  {
+    "english": "The knife block beside the stove says more about habit than decoration.",
+    "level": "B2"
+  },
+  {
+    "english": "Before the guests arrive, the kitchen becomes a map of small intentions.",
+    "level": "B2"
+  },
+  {
+    "english": "A thin cutting board slides around, so I choose weight over prettiness.",
+    "level": "B2"
+  },
+  {
+    "english": "The old saucepan has a dent, but its handle fits my hand perfectly.",
+    "level": "B2"
+  },
+  {
+    "english": "She arranges bowls in order, giving each ingredient a brief future.",
+    "level": "B2"
+  },
+  {
+    "english": "In a crowded kitchen, courtesy often begins with saying where the hot pan is.",
+    "level": "B2"
+  },
+  {
+    "english": "The best knife skill is not speed, but knowing when to stop cutting.",
+    "level": "B2"
+  },
+  {
+    "english": "He leaves one burner empty, a little harbor for trouble.",
+    "level": "B2"
+  },
+  {
+    "english": "A pot with a thick bottom forgives attention that wanders for a minute.",
+    "level": "B2"
+  },
+  {
+    "english": "The sink can measure a meal almost as honestly as the plates.",
+    "level": "B2"
+  },
+  {
+    "english": "Every drawer has its private logic, learned by reach before thought.",
+    "level": "B2"
+  },
+  {
+    "english": "The cook's first discipline is not heat, but the orderly clearing of space.",
+    "level": "C1"
+  },
+  {
+    "english": "A sharp blade turns vegetables into neat evidence of attention, each piece ready to cook at the same pace.",
+    "level": "C1"
+  },
+  {
+    "english": "Mise en place is ordinary foresight, practiced with bowls, labels, and a knife that has been wiped dry.",
+    "level": "C1"
+  },
+  {
+    "english": "In the working kitchen, cleanliness is not fussiness, it is the grammar of not making people sick.",
+    "level": "C1"
+  },
+  {
+    "english": "The battered pot survives fashion because it distributes heat evenly and tells the hand exactly where balance lives.",
+    "level": "C1"
+  },
+  {
+    "english": "Knife work teaches a modest ethics of pressure, angle, and restraint before it teaches anything showy.",
+    "level": "C1"
+  },
+  {
+    "english": "A crowded counter makes even simple cooking feel argumentative, with every spoon and peel claiming space.",
+    "level": "C1"
+  },
+  {
+    "english": "The cook who sharpens before beginning is already cooking, because preparation changes what the body can notice.",
+    "level": "C1"
+  },
+  {
+    "english": "Under the vent fan's steady drone, the station becomes a small workshop for hunger and timing.",
+    "level": "C1"
+  },
+  {
+    "english": "The drawer of mismatched tools records years of substitutions, repairs, and late dinners that still became meals.",
+    "level": "C1"
+  },
+  {
+    "english": "Good kitchen order is temporary by nature, assembled each evening and undone by use.",
+    "level": "C1"
+  },
+  {
+    "english": "The heavy Dutch oven waits on the lower shelf, less convenient than trustworthy.",
+    "level": "C1"
+  },
+  {
+    "english": "Before the flame is lit, the kitchen has already begun speaking in steel, wood, water, and the mild authority of clean towels.",
+    "level": "C2"
+  },
+  {
+    "english": "A cook's intimacy with tools is rarely sentimental, it is the memory of which knife bites, which pot scorches, and which drawer yields under a hurried hip.",
+    "level": "C2"
+  },
+  {
+    "english": "In the pause before service, the lined bowls look almost ceremonial, yet their purpose is plain, to keep confusion from entering the food.",
+    "level": "C2"
+  },
+  {
+    "english": "The working kitchen is a place where thought becomes placement, a spoon turned outward, a blade laid flat, a pot chosen for the weight of tomorrow's leftovers.",
+    "level": "C2"
+  },
+  {
+    "english": "Long before flavor can be praised, there is the humbler art of making room, washing the board, finding the lid, and giving each hand a trustworthy task.",
+    "level": "C2"
+  },
+  {
+    "english": "I smell basil.",
+    "level": "A0"
+  },
+  {
+    "english": "The cumin smells warm.",
+    "level": "A1"
+  },
+  {
+    "english": "This basil tastes sweet.",
+    "level": "A1"
+  },
+  {
+    "english": "She chopped fresh mint.",
+    "level": "A1"
+  },
+  {
+    "english": "He likes hot curry.",
+    "level": "A1"
+  },
+  {
+    "english": "We need more ginger.",
+    "level": "A1"
+  },
+  {
+    "english": "The sauce needs lime.",
+    "level": "A1"
+  },
+  {
+    "english": "I bought dried oregano.",
+    "level": "A1"
+  },
+  {
+    "english": "Fish sauce smells strong.",
+    "level": "A1"
+  },
+  {
+    "english": "Miso makes soup rich.",
+    "level": "A1"
+  },
+  {
+    "english": "The chili is mild.",
+    "level": "A1"
+  },
+  {
+    "english": "She grows thyme outside.",
+    "level": "A1"
+  },
+  {
+    "english": "He crushed the coriander.",
+    "level": "A1"
+  },
+  {
+    "english": "Turmeric stains the spoon.",
+    "level": "A1"
+  },
+  {
+    "english": "Paprika colors the oil.",
+    "level": "A1"
+  },
+  {
+    "english": "I added cumin to the beans, and the pot smelled deeper.",
+    "level": "A2"
+  },
+  {
+    "english": "She tore basil over the tomatoes, but she saved some leaves.",
+    "level": "A2"
+  },
+  {
+    "english": "Fish sauce smelled fierce at first, then the soup tasted round.",
+    "level": "A2"
+  },
+  {
+    "english": "We stirred miso into warm broth, but we did not boil it.",
+    "level": "A2"
+  },
+  {
+    "english": "He mixed ginger with scallions, and the noodles woke up.",
+    "level": "A2"
+  },
+  {
+    "english": "The rice needed cardamom, so she opened the green pods.",
+    "level": "A2"
+  },
+  {
+    "english": "I sprinkled za'atar on eggs, and breakfast felt less plain.",
+    "level": "A2"
+  },
+  {
+    "english": "She used dried oregano, but fresh parsley finished the plate.",
+    "level": "A2"
+  },
+  {
+    "english": "The curry looked pale, so he added turmeric and paprika.",
+    "level": "A2"
+  },
+  {
+    "english": "We bought lemongrass today, and the kitchen smelled bright.",
+    "level": "A2"
+  },
+  {
+    "english": "The chili paste was salty, so I tasted before adding soy.",
+    "level": "A2"
+  },
+  {
+    "english": "He ground black pepper, and the strawberries tasted surprisingly good.",
+    "level": "A2"
+  },
+  {
+    "english": "She warmed tortillas, then brushed them with chili oil.",
+    "level": "A2"
+  },
+  {
+    "english": "I forgot the bay leaf, but the stew still forgave me.",
+    "level": "A2"
+  },
+  {
+    "english": "The dill wilted quickly, so we tucked it into yogurt.",
+    "level": "A2"
+  },
+  {
+    "english": "He added star anise, and the broth turned sweetly mysterious.",
+    "level": "A2"
+  },
+  {
+    "english": "We ran out of cinnamon, so apple slices stayed simple.",
+    "level": "A2"
+  },
+  {
+    "english": "The salsa needed cilantro, but my brother asked for parsley.",
+    "level": "A2"
+  },
+  {
+    "english": "She kept saffron in a tiny jar, and used it carefully.",
+    "level": "A2"
+  },
+  {
+    "english": "I bruised the mint leaves, and the tea smelled clean.",
+    "level": "A2"
+  },
+  {
+    "english": "He stirred harissa into yogurt, then spooned it over carrots.",
+    "level": "A2"
+  },
+  {
+    "english": "The fennel seeds popped, so I lowered the flame.",
+    "level": "A2"
+  },
+  {
+    "english": "We made rice with cloves, and the whole hallway noticed.",
+    "level": "A2"
+  },
+  {
+    "english": "She added sumac at the end, and the onions brightened.",
+    "level": "A2"
+  },
+  {
+    "english": "The soy sauce darkened the mushrooms, but sesame oil finished them.",
+    "level": "A2"
+  },
+  {
+    "english": "He rubbed rosemary on potatoes, and dinner smelled like rain.",
+    "level": "A2"
+  },
+  {
+    "english": "I tasted the mole, then added a square of chocolate.",
+    "level": "A2"
+  },
+  {
+    "english": "The mustard seeds danced in oil, so she covered the pan.",
+    "level": "A2"
+  },
+  {
+    "english": "We picked curry leaves, and they snapped in hot oil.",
+    "level": "A2"
+  },
+  {
+    "english": "She added tamarind slowly, because the lentils were already sharp.",
+    "level": "A2"
+  },
+  {
+    "english": "The basil turned black, so I added it after cooking.",
+    "level": "A2"
+  },
+  {
+    "english": "He packed dried chilies carefully, but one broke in his bag.",
+    "level": "A2"
+  },
+  {
+    "english": "We shared kimchi with eggs, and the morning felt alive.",
+    "level": "A2"
+  },
+  {
+    "english": "A little cumin makes the beans taste as if they waited all day.",
+    "level": "B1"
+  },
+  {
+    "english": "She learned to finish pho with herbs, not by reading the timer.",
+    "level": "B1"
+  },
+  {
+    "english": "The fish sauce disappeared into the stew, leaving only depth behind.",
+    "level": "B1"
+  },
+  {
+    "english": "He keeps dried chilies by the stove, like matches for flavor.",
+    "level": "B1"
+  },
+  {
+    "english": "When the basil bruised, she used it quickly in green sauce.",
+    "level": "B1"
+  },
+  {
+    "english": "Miso taught me that salt can be quiet and still powerful.",
+    "level": "B1"
+  },
+  {
+    "english": "The curry paste looked angry, but coconut milk softened its voice.",
+    "level": "B1"
+  },
+  {
+    "english": "We tasted the rice twice because cardamom can turn bossy fast.",
+    "level": "B1"
+  },
+  {
+    "english": "She added preserved lemon, and the chicken suddenly felt North African.",
+    "level": "B1"
+  },
+  {
+    "english": "The dill made the yogurt sauce taste cold, even beside hot bread.",
+    "level": "B1"
+  },
+  {
+    "english": "He warmed sesame seeds for rice, and everyone heard dinner begin.",
+    "level": "B1"
+  },
+  {
+    "english": "One spoon of gochujang turned yesterday's vegetables into a new meal.",
+    "level": "B1"
+  },
+  {
+    "english": "Cumin does not shout in a pot of lentils, but it changes the room's memory.",
+    "level": "B2"
+  },
+  {
+    "english": "Fresh basil is fragile, so the cook must decide when beauty should arrive.",
+    "level": "B2"
+  },
+  {
+    "english": "Fish sauce asks for trust, because its sharp smell becomes grace in heat.",
+    "level": "B2"
+  },
+  {
+    "english": "A jar of miso keeps the patience of beans, salt, and time.",
+    "level": "B2"
+  },
+  {
+    "english": "In my kitchen, coriander seeds belong to many maps and no border.",
+    "level": "B2"
+  },
+  {
+    "english": "The first lesson of chili is restraint, since heat can hide every other kindness.",
+    "level": "B2"
+  },
+  {
+    "english": "Saffron is expensive partly because it teaches the hand to be modest.",
+    "level": "B2"
+  },
+  {
+    "english": "A handful of herbs can make a cheap supper feel carefully invited.",
+    "level": "B2"
+  },
+  {
+    "english": "Soy, lime, and ginger can turn a tired pan into conversation.",
+    "level": "B2"
+  },
+  {
+    "english": "When rosemary burns, it stops tasting like the garden and starts tasting like regret.",
+    "level": "B2"
+  },
+  {
+    "english": "The best spice drawer is organized enough to use and messy enough to explore.",
+    "level": "B2"
+  },
+  {
+    "english": "A cook who understands cumin learns that warmth can be built without sweetness, one brown spoonful at a time.",
+    "level": "C1"
+  },
+  {
+    "english": "Basil has a brief green authority, and the dish must be ready when the leaves are.",
+    "level": "C1"
+  },
+  {
+    "english": "Fish sauce reminds the cautious cook that aroma and flavor often travel by separate roads.",
+    "level": "C1"
+  },
+  {
+    "english": "Miso is not merely salty; it carries fermentation's slow record into the simplest bowl.",
+    "level": "C1"
+  },
+  {
+    "english": "To season with za'atar is to borrow a landscape of thyme, sesame, sumac, and bread.",
+    "level": "C1"
+  },
+  {
+    "english": "The small jar of saffron turns economy into ceremony, because waste would feel almost rude.",
+    "level": "C1"
+  },
+  {
+    "english": "Good chili oil holds two lessons at once, fragrance in the top note and danger underneath.",
+    "level": "C1"
+  },
+  {
+    "english": "Parsley, mint, and dill can rescue a heavy table by making each bite feel newly cut.",
+    "level": "C1"
+  },
+  {
+    "english": "A kitchen learns geography through jars, but respect begins with tasting, listening, and naming things correctly.",
+    "level": "C1"
+  },
+  {
+    "english": "When turmeric stains the cloth, it leaves proof that color is also a kind of flavor.",
+    "level": "C1"
+  },
+  {
+    "english": "The cook's hand grows wiser when it knows which herbs should meet heat and which should not.",
+    "level": "C1"
+  },
+  {
+    "english": "Before dinner had a name, cumin bloomed in the pan, and the whole kitchen leaned toward a road that seemed to pass through Cairo, Oaxaca, and someone's childhood apartment.",
+    "level": "C2"
+  },
+  {
+    "english": "The basil was added last, almost as an apology to the summer garden, because heat had already done its blunt work and tenderness deserved a quieter entrance.",
+    "level": "C2"
+  },
+  {
+    "english": "Fish sauce, miso, soy, and anchovy all tell the same old truth in different accents, that depth often begins as something too strong to love alone.",
+    "level": "C2"
+  },
+  {
+    "english": "She opened the spice drawer like a small archive of travel and trade, then chose cardamom for the rice because memory, tonight, needed a green door.",
+    "level": "C2"
+  },
+  {
+    "english": "A good cook does not flatten the world's kitchens into souvenirs; she lets ginger, sumac, lemongrass, and chili keep their edges while finding a place at her table.",
+    "level": "C2"
+  },
+  {
+    "english": "I cook fish.",
+    "level": "A0"
+  },
+  {
+    "english": "The chicken is in the oven.",
+    "level": "A1"
+  },
+  {
+    "english": "Turn the steak once.",
+    "level": "A1"
+  },
+  {
+    "english": "The fish smells fresh.",
+    "level": "A1"
+  },
+  {
+    "english": "She fries an egg.",
+    "level": "A1"
+  },
+  {
+    "english": "He grills the sausages.",
+    "level": "A1"
+  },
+  {
+    "english": "Wash your hands after touching chicken.",
+    "level": "A1"
+  },
+  {
+    "english": "The bacon is crisp.",
+    "level": "A1"
+  },
+  {
+    "english": "I bought salmon today.",
+    "level": "A1"
+  },
+  {
+    "english": "The tofu is ready.",
+    "level": "A1"
+  },
+  {
+    "english": "Check the meat now.",
+    "level": "A1"
+  },
+  {
+    "english": "The pan needs oil.",
+    "level": "A1"
+  },
+  {
+    "english": "She poaches the fish.",
+    "level": "A1"
+  },
+  {
+    "english": "Keep the shrimp cold.",
+    "level": "A1"
+  },
+  {
+    "english": "The roast looks done.",
+    "level": "A1"
+  },
+  {
+    "english": "Cut the chicken into pieces.",
+    "level": "A1"
+  },
+  {
+    "english": "The chicken skin browned, but the center stayed pale.",
+    "level": "A2"
+  },
+  {
+    "english": "I covered the pork, and it cooked gently in its juices.",
+    "level": "A2"
+  },
+  {
+    "english": "She flipped the fillet carefully, so it did not break.",
+    "level": "A2"
+  },
+  {
+    "english": "The shrimp turned pink fast, and dinner suddenly felt close.",
+    "level": "A2"
+  },
+  {
+    "english": "He patted the steak dry before it touched the pan.",
+    "level": "A2"
+  },
+  {
+    "english": "The tofu stuck at first, but the edges became golden.",
+    "level": "A2"
+  },
+  {
+    "english": "We grilled lamb chops outside, and the smoke followed our sleeves.",
+    "level": "A2"
+  },
+  {
+    "english": "The meat thermometer beeped, so I pulled the roast out.",
+    "level": "A2"
+  },
+  {
+    "english": "She cracked eggs into the skillet, and the yolks stayed whole.",
+    "level": "A2"
+  },
+  {
+    "english": "The cod flaked easily, but I gave it one more minute.",
+    "level": "A2"
+  },
+  {
+    "english": "I forgot the lid, and the chicken dried at the edges.",
+    "level": "A2"
+  },
+  {
+    "english": "He spooned hot butter over the fish while it cooked.",
+    "level": "A2"
+  },
+  {
+    "english": "The beans simmered softly, and their skins began to split.",
+    "level": "A2"
+  },
+  {
+    "english": "We roasted a whole chicken, and everyone wanted the crispy wings.",
+    "level": "A2"
+  },
+  {
+    "english": "She drained the tuna and mixed it with celery.",
+    "level": "A2"
+  },
+  {
+    "english": "The sausages hissed in the pan, and fat spattered the stove.",
+    "level": "A2"
+  },
+  {
+    "english": "I lowered the heat, because the duck breast was browning too quickly.",
+    "level": "A2"
+  },
+  {
+    "english": "The turkey slices looked dry, so she warmed gravy in a pan.",
+    "level": "A2"
+  },
+  {
+    "english": "He cracked the crab legs, and the table grew quiet.",
+    "level": "A2"
+  },
+  {
+    "english": "The eggs boiled too long, but the salad still worked.",
+    "level": "A2"
+  },
+  {
+    "english": "We soaked wooden skewers, then threaded chicken between pieces of onion.",
+    "level": "A2"
+  },
+  {
+    "english": "She rinsed the clams well, and no sand spoiled the broth.",
+    "level": "A2"
+  },
+  {
+    "english": "The burger sizzled loudly, but I waited before pressing it.",
+    "level": "A2"
+  },
+  {
+    "english": "He brushed the salmon with mustard before sliding it under the broiler.",
+    "level": "A2"
+  },
+  {
+    "english": "The lentils softened by noon, and the stew needed less meat.",
+    "level": "A2"
+  },
+  {
+    "english": "I wrapped the fish in parchment, and the steam did the work.",
+    "level": "A2"
+  },
+  {
+    "english": "She browned the beef first, then added tomatoes to the pot.",
+    "level": "A2"
+  },
+  {
+    "english": "The ham warmed slowly, and the kitchen smelled like Sunday.",
+    "level": "A2"
+  },
+  {
+    "english": "We shared one roast chicken, but nothing felt missing.",
+    "level": "A2"
+  },
+  {
+    "english": "He scored the squid lightly, so it curled in the pan.",
+    "level": "A2"
+  },
+  {
+    "english": "The steak waited on a board, and its juices settled.",
+    "level": "A2"
+  },
+  {
+    "english": "She packed tofu cubes in a towel, then pressed them flat.",
+    "level": "A2"
+  },
+  {
+    "english": "The pan smoked badly, so I opened the kitchen door.",
+    "level": "A2"
+  },
+  {
+    "english": "A good sear buys flavor, but only if the pan is truly ready.",
+    "level": "B1"
+  },
+  {
+    "english": "She knows the chicken is done by the clear juice near the thigh.",
+    "level": "B1"
+  },
+  {
+    "english": "He treats a thin fish fillet like glass until it reaches the plate.",
+    "level": "B1"
+  },
+  {
+    "english": "The brisket needs time, not attention, once the pot settles into a murmur.",
+    "level": "B1"
+  },
+  {
+    "english": "I overcooked the pork once, and now I trust the thermometer.",
+    "level": "B1"
+  },
+  {
+    "english": "The first shrimp always tells you whether the heat is too fierce.",
+    "level": "B1"
+  },
+  {
+    "english": "She saves the browned bits from the pan and makes them answer for dinner.",
+    "level": "B1"
+  },
+  {
+    "english": "A whole chicken teaches you where heat gathers and where it hides.",
+    "level": "B1"
+  },
+  {
+    "english": "He salts the steak early, then leaves it alone like a promise.",
+    "level": "B1"
+  },
+  {
+    "english": "The tofu tastes better after it has lost some water and gained a crust.",
+    "level": "B1"
+  },
+  {
+    "english": "When the fish smells clean, the cook has fewer excuses to ruin it.",
+    "level": "B1"
+  },
+  {
+    "english": "We ate the crisp skin first, before anyone remembered manners.",
+    "level": "B1"
+  },
+  {
+    "english": "The beans were humble, but their broth carried the whole meal.",
+    "level": "B1"
+  },
+  {
+    "english": "Roasting a chicken looks simple, yet every bird asks a slightly different question of heat.",
+    "level": "B2"
+  },
+  {
+    "english": "The cheapest cut of beef becomes generous when the cook stops rushing and lets the pot speak softly.",
+    "level": "B2"
+  },
+  {
+    "english": "Fish punishes distraction quickly, so I keep my knife, towel, and pan within reach.",
+    "level": "B2"
+  },
+  {
+    "english": "A grill marks meat with fire, but patience decides whether the center stays tender.",
+    "level": "B2"
+  },
+  {
+    "english": "She fries eggs for breakfast with the seriousness other people reserve for pastry.",
+    "level": "B2"
+  },
+  {
+    "english": "Braised lamb makes the apartment feel older, as if someone wiser paid the rent before us.",
+    "level": "B2"
+  },
+  {
+    "english": "The best fried chicken begins before the oil, with dry skin and a cook who has cleaned the sink.",
+    "level": "B2"
+  },
+  {
+    "english": "You can hear a steak changing, from angry hiss to quieter, deeper contact with the pan.",
+    "level": "B2"
+  },
+  {
+    "english": "Lentils ask for almost nothing, then give back a meal with ballast and grace.",
+    "level": "B2"
+  },
+  {
+    "english": "The fishmonger wrapped the trout carefully, and I felt responsible before I reached home.",
+    "level": "B2"
+  },
+  {
+    "english": "Cooking protein well is less about force than timing, attention, and a clean place to land.",
+    "level": "B2"
+  },
+  {
+    "english": "A whole chicken is an anatomy lesson in miniature, demanding respect for breast, thigh, wing, and the spaces between them.",
+    "level": "C1"
+  },
+  {
+    "english": "When braising goes well, toughness is not defeated so much as persuaded, fiber by fiber, into tenderness.",
+    "level": "C1"
+  },
+  {
+    "english": "The cook who listens to oil can hear the difference between confident frying and food merely suffering in grease.",
+    "level": "C1"
+  },
+  {
+    "english": "Fresh fish gives very few chances; its sweetness is brief, and its failure announces itself without tact.",
+    "level": "C1"
+  },
+  {
+    "english": "I learned to turn meat less often, because the pan cannot build a crust under constant suspicion.",
+    "level": "C1"
+  },
+  {
+    "english": "In a shared kitchen, the person carving the roast briefly becomes custodian of fairness, appetite, and visible skill.",
+    "level": "C1"
+  },
+  {
+    "english": "Tofu has no need to imitate meat; pressed, browned, and handled with care, it keeps its own authority.",
+    "level": "C1"
+  },
+  {
+    "english": "The first cut into a roast is a private verdict, though everyone at the table pretends not to wait.",
+    "level": "C1"
+  },
+  {
+    "english": "A fillet teaches restraint better than any lecture, since the difference between silky and dry can be one wandering minute.",
+    "level": "C1"
+  },
+  {
+    "english": "Good sausages reveal the butcher's judgment, the cook's patience, and the appetite of the room in equal measure.",
+    "level": "C1"
+  },
+  {
+    "english": "Eggs are forgiving only until they are not, which is why breakfast can humble an experienced cook.",
+    "level": "C1"
+  },
+  {
+    "english": "Braising fish sounds reckless, but in the right broth, even delicate flesh can become deeply calm.",
+    "level": "C1"
+  },
+  {
+    "english": "To roast a bird properly is to negotiate with contradiction: fierce heat for the skin, gentleness for the breast, enough nerve to trust the thigh, and enough humility to carve what actually happened.",
+    "level": "C2"
+  },
+  {
+    "english": "The old cook never called the fish beautiful until it had left the pan intact, because praise belonged not to silver skin alone, but to timing, restraint, and a hand that knew when to stop.",
+    "level": "C2"
+  },
+  {
+    "english": "In the low pot, beef surrendered slowly to wine, marrow, onion, and time, while the kitchen gathered that particular silence made by people pretending not to be hungry yet.",
+    "level": "C2"
+  },
+  {
+    "english": "A chop on the grill carries the whole argument of cooking in miniature, flame against fat, patience against appetite, smoke against the clean white plate waiting indoors.",
+    "level": "C2"
+  },
+  {
+    "english": "Before refrigeration made abundance ordinary, every egg, chicken, and salted fish carried the weight of season and household, a history still faintly present when we waste none of it.",
+    "level": "C2"
+  }
+]

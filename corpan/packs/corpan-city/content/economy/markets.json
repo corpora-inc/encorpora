@@ -1,0 +1,40 @@
+{
+  "_doc": "Markets, tradable goods, and FX exchange config (E1 — simulated, no server). A `market` is a venue (a Scene's marketplace or a global exchange) quoting goods in its `localCurrency`. A `good` reuses an existing trade-good item id (content/items/catalog.json) and gives it a market mid-price (in the local currency's MINOR units) + a per-good volatility/spread. `priceSim` walks each good's mid deterministically (seeded by day+id) so solo play has a living, reproducible market. `exchange` config holds the NPC money-changer default spread (bps). CDN-overridable.",
+  "version": 1,
+  "exchange": {
+    "defaultSpreadBps": 250,
+    "minSpreadBps": 150,
+    "maxSpreadBps": 400
+  },
+  "markets": [
+    {
+      "id": "antigua-market",
+      "name": "Antigua Market",
+      "localCurrency": "gold-real",
+      "spreadBps": 200,
+      "sceneTags": ["antigua", "colonial", "market"],
+      "goods": [
+        { "itemId": "spices-cinnamon", "mid": 1200, "volatility": 0.35, "depth": 40 },
+        { "itemId": "spices-cacao", "mid": 2800, "volatility": 0.45, "depth": 25 },
+        { "itemId": "spices-vanilla", "mid": 3400, "volatility": 0.5, "depth": 18 },
+        { "itemId": "coffee-sack", "mid": 4000, "volatility": 0.4, "depth": 30 },
+        { "itemId": "woven-cloth", "mid": 1800, "volatility": 0.25, "depth": 35 },
+        { "itemId": "clay-pot", "mid": 900, "volatility": 0.2, "depth": 50 },
+        { "itemId": "salt-pouch", "mid": 1000, "volatility": 0.15, "depth": 60 },
+        { "itemId": "jade-bead", "mid": 15000, "volatility": 0.55, "depth": 8 }
+      ]
+    },
+    {
+      "id": "global-exchange",
+      "name": "Global Exchange",
+      "localCurrency": "usd-dollar",
+      "spreadBps": 120,
+      "sceneTags": ["global", "modern"],
+      "goods": [
+        { "itemId": "spices-cacao", "mid": 340, "volatility": 0.5, "depth": 100 },
+        { "itemId": "coffee-sack", "mid": 480, "volatility": 0.45, "depth": 120 },
+        { "itemId": "jade-bead", "mid": 1800, "volatility": 0.6, "depth": 20 }
+      ]
+    }
+  ]
+}

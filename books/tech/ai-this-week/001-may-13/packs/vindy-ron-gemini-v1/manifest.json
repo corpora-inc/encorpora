@@ -1,0 +1,23 @@
+{
+  "id": "book_ai_this_week_2026_05_13",
+  "name": "AI This Week \u2014 May 13, 2026 \u2014 Rate Cuts and Routers",
+  "version": "0.1.7",
+  "type": "book",
+  "entry": "dist/reader.js",
+  "styles": [
+    "dist/reader.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "primary_language": "en",
+  "format": "dialog",
+  "metadata": {
+    "series": "AI This Week",
+    "issue": 1,
+    "issue_date": "2026-05-13",
+    "author": "Corpora",
+    "tts": true,
+    "audience": "Curious listeners who want a calm conversation about real AI news.",
+    "estimatedListenTime": "12 minutes"
+  }
+}

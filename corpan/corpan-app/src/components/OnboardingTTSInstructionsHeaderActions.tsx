@@ -4,13 +4,15 @@ import {
     Settings,
     CheckCheck,
     MessageSquare,
+    AlertTriangle,
+    XCircle,
     // Lightbulb,
     X,
     type LucideIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { DismissableTip } from "./DismissableTip";
-import { openAppleFeedback } from "@/util/tts-voices";
+import { openAppleFeedback, type TtsEngineStatus } from "@/util/tts-voices";
 
 type Props = {
     os: "android" | "ios" | "macos" | "windows" | "other";
@@ -20,6 +22,8 @@ type Props = {
     onSmartSelect?: () => void;
     canSmartSelect?: boolean;
     isAllSelected?: boolean;
+    engineStatus?: TtsEngineStatus | null;
+    engineStatusReady?: boolean;
 };
 
 type OsSpec = {
@@ -52,11 +56,12 @@ const OS_SPECS: Record<Props["os"], OsSpec> = {
         primaryAction: "settings",
         primaryIcon: Settings,
         primaryLabelKey: "onboarding.openVoiceSettings",
-        primaryLabelDefault: "Open Voice Settings",
+        primaryLabelDefault: "Open Settings",
         tipTitleKey: "onboarding.ttsOsTipTitle",
         tipTitleDefault: "Tip",
         tipBodyKey: "onboarding.ttsOsTipIOS",
-        tipBodyDefault: "Settings → Accessibility → Spoken Content → Voices.",
+        tipBodyDefault:
+            "In Settings, tap Accessibility → Spoken Content → Voices → your language, then download a Premium or Enhanced voice. Come back and it appears here.",
     },
     macos: {
         primaryAction: "settings",
@@ -98,6 +103,8 @@ export function OnboardingTTSInstructionsHeaderActions({
     onSmartSelect,
     canSmartSelect,
     isAllSelected,
+    engineStatus,
+    engineStatusReady,
 }: Props) {
     const { t } = useTranslation();
 
@@ -144,21 +151,75 @@ export function OnboardingTTSInstructionsHeaderActions({
         icon: <MessageSquare size={14} />,
     } : undefined;
 
+    const showAndroidStatus =
+        os === "android" &&
+        engineStatus?.supported &&
+        (!engineStatus.googleInstalled || !engineStatus.googleDefault);
+    const googleInstalled = !!engineStatus?.googleInstalled;
+    const googleDefault = !!engineStatus?.googleDefault;
+    const statusLabel = googleInstalled
+        ? t("onboarding.ttsGoogleInstalled", { defaultValue: "Google TTS installed" })
+        : t("onboarding.ttsGoogleMissing", { defaultValue: "Google TTS not installed" });
+    const StatusIcon = googleInstalled ? AlertTriangle : XCircle;
+    const statusTone = googleInstalled
+        ? "border-amber-200 bg-amber-50 text-amber-700"
+        : "border-rose-200 bg-rose-50 text-rose-700";
+
+    const hideTip = os === "android" && engineStatus?.supported && googleDefault;
+    const androidTipReady = os !== "android" || engineStatusReady === true;
+    const showTip = !hideTip && androidTipReady;
+
     return (
         <div className="w-full py-1">
             {/* {!tipDismissed && ( */}
-            <DismissableTip
-                storageKey={`tip:tts-os:${os}`}
-                title={tipTitle}
-                body={tipBody}
-                action={feedbackAction}
-            />
+            {os !== "android" ? (
+                <DismissableTip
+                    storageKey={`tip:tts-os:${os}`}
+                    title={tipTitle}
+                    body={tipBody}
+                    action={feedbackAction}
+                />
+            ) : (
+                <div
+                    className={[
+                        "overflow-hidden transition-all duration-500 ease-out",
+                        showTip
+                            ? "max-h-[320px] opacity-100 scale-100"
+                            : "max-h-0 opacity-0 scale-95 -translate-y-1 pointer-events-none",
+                    ].join(" ")}
+                    aria-hidden={!showTip}
+                >
+                    <DismissableTip
+                        storageKey={`tip:tts-os:${os}`}
+                        title={tipTitle}
+                        body={tipBody}
+                        action={feedbackAction}
+                    />
+                </div>
+            )}
             {/* )} */}
 
-            <div className="flex w-full items-center justify-center gap-2">
+            {showAndroidStatus && (
+                <div className="mt-2 flex flex-wrap items-center justify-center gap-2 text-xs">
+                    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-1 ${statusTone}`}>
+                        <StatusIcon size={14} />
+                        <span>{statusLabel}</span>
+                    </span>
+                    {googleInstalled && !googleDefault && (
+                        <button
+                            onClick={onOpenSettings}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-2 py-1 text-xs font-medium text-foreground shadow-sm hover:bg-accent hover:cursor-pointer"
+                        >
+                            {t("onboarding.ttsSetDefault", { defaultValue: "Set as default" })}
+                        </button>
+                    )}
+                </div>
+            )}
+
+            <div className="flex w-full flex-wrap items-center justify-center gap-2">
                 <button
                     onClick={handlePrimary}
-                    className="inline-flex items-center gap-2 rounded-md border border-gray-300/70 bg-transparent px-4 py-2 text-sm font-medium text-gray-900 shadow-sm transition hover:cursor-pointer hover:bg-white/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]"
+                    className="inline-flex items-center gap-2 rounded-full border border-input bg-card px-4 py-2 text-sm font-medium text-foreground shadow-sm transition hover:cursor-pointer hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]"
                     aria-label={primaryLabel}
                 >
                     <PrimaryIcon size={16} />
@@ -170,11 +231,11 @@ export function OnboardingTTSInstructionsHeaderActions({
                         onClick={onSmartSelect}
                         disabled={smartDisabled}
                         className={[
-                            "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium shadow-sm transition",
+                            "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm transition",
                             "focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 active:scale-[0.99]",
                             smartDisabled
-                                ? "border border-gray-300/70 bg-gray-200 text-gray-500 cursor-not-allowed"
-                                : "border border-purple-600 bg-purple-600 text-white hover:bg-purple-700",
+                                ? "border border-input bg-muted text-muted-foreground cursor-not-allowed"
+                                : "border border-purple-200 bg-purple-50 text-purple-700 hover:bg-purple-100 hover:cursor-pointer dark:border-purple-800/60 dark:bg-purple-950/40 dark:text-purple-200",
                         ].join(" ")}
                         aria-label={smartLabel}
                     >

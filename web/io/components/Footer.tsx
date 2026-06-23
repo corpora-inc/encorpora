@@ -4,6 +4,7 @@ import {
   FaEnvelope,
   FaGithub,
   FaPhone,
+  FaYoutube,
 } from "react-icons/fa";
 import { SiGitconnected } from "react-icons/si";
 
@@ -13,38 +14,39 @@ import { withBasePath } from "@/lib/basePath";
 interface FooterLink {
   label: string;
   href: string;
+  internal?: boolean;
 }
 
 const Footer: FC = () => {
   const logoSrc = withBasePath("/logo-og.webp");
   const quickLinks: FooterLink[] = [
-    { label: "Shop", href: "https://shop.encorpora.io/" },
-    { label: "Github", href: "https://github.com/corpora-inc" },
+    { label: "Books", href: "/books", internal: true },
+    { label: "Corpán", href: "/corpan/", internal: true },
+    { label: "GitHub", href: "https://github.com/corpora-inc" },
+    { label: "YouTube", href: "https://www.youtube.com/@corp%C3%A1n1" },
     { label: "Blog", href: "https://free2z.cash/corpora" },
-    { label: "Contact", href: "https://shop.encorpora.io/pages/contact" },
   ];
 
   const socialLinks = [
     {
       icon: <FaGithub />,
       href: "https://github.com/corpora-inc",
-      label: "Github",
+      label: "GitHub",
     },
     {
-      // icon: <FaAddressBook />,
-      // icon: <FaConnectdevelop />,
-      // icon: <FaAcquisitionsIncorporated />,
-      // icon: <FaFirefox />,
+      icon: <FaYoutube />,
+      href: "https://www.youtube.com/@corp%C3%A1n1",
+      label: "YouTube",
+    },
+    {
       icon: <SiGitconnected />,
       href: "https://free2z.cash/corpora",
       label: "Free2z",
     },
-
   ];
 
   return (
     <footer className="pt-16 pb-8 px-6 md:px-12 bg-white relative overflow-hidden">
-      {/* Abstract decorative elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
       <div className="absolute -top-16 -right-16 w-32 h-32 rounded-full border border-gray-100"></div>
       <div className="absolute -bottom-8 -left-8 w-24 h-24 rounded-full border border-gray-100"></div>
@@ -74,6 +76,7 @@ const Footer: FC = () => {
                   key={index}
                   href={social.href}
                   target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-black hover:text-white hover:border-black transition-colors duration-300"
                 >
@@ -91,16 +94,29 @@ const Footer: FC = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    className="text-gray-600 hover:text-black transition-colors duration-300 text-sm inline-block relative group"
-                  >
-                    <span className="inline-block transition-transform duration-300">
-                      {link.label}
-                    </span>
-                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-black group-hover:w-full transition-all duration-300"></span>
-                  </a>
+                  {link.internal ? (
+                    <Link
+                      href={link.href}
+                      className="text-gray-600 hover:text-black transition-colors duration-300 text-sm inline-block relative group"
+                    >
+                      <span className="inline-block transition-transform duration-300">
+                        {link.label}
+                      </span>
+                      <span className="absolute -bottom-1 left-0 w-0 h-px bg-black group-hover:w-full transition-all duration-300"></span>
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-black transition-colors duration-300 text-sm inline-block relative group"
+                    >
+                      <span className="inline-block transition-transform duration-300">
+                        {link.label}
+                      </span>
+                      <span className="absolute -bottom-1 left-0 w-0 h-px bg-black group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -147,6 +163,13 @@ const Footer: FC = () => {
               className="text-xs text-gray-500 hover:text-black transition-colors duration-300 mx-3"
             >
               Privacy Policy
+            </Link>
+            <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+            <Link
+              href="/terms"
+              className="text-xs text-gray-500 hover:text-black transition-colors duration-300 mx-3"
+            >
+              Terms of Use
             </Link>
           </div>
         </div>

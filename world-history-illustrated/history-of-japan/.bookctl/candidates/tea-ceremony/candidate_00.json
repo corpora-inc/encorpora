@@ -1,0 +1,12 @@
+{
+  "prompt": "A serene tea ceremony with host preparing matcha in a simple room, Pen and ink wash illustration with subtle watercolor tones, history book for children ages 7-11, detailed, evocative, Japanese sumi-e influenced, educational\n",
+  "negative_prompt": "blurry, low quality, distorted, deformed, text, watermark, photo",
+  "seed": 297608320,
+  "width": 1024,
+  "height": 1024,
+  "steps": 28,
+  "guidance_scale": 4.5,
+  "model": "stabilityai/stable-diffusion-3.5-large",
+  "generation_time_s": 41.41,
+  "timestamp": "2026-02-15T21:35:21.484826+00:00"
+}

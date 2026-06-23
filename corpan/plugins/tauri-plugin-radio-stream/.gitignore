@@ -1,0 +1,14 @@
+/target
+Cargo.lock
+node_modules
+/permissions/schemas
+
+# Android
+android/build
+android/.gradle
+android/local.properties
+
+# iOS
+ios/.build
+ios/.swiftpm
+ios/Package.resolved

@@ -1,0 +1,1500 @@
+/* Hanzipan — Earthgate-aligned theme.
+   Keeps every selector, layout, and animation from the original; only the
+   colors, gradients, shadows, font stack, and border-radius scale shift to
+   match the parchment-and-gold language used by Earthgate / Stargate.
+   Stroke colors (`--stroke-*`, `--accent`, `--accent-strong`) keep their
+   names so JS lookups in main.js continue to resolve. */
+
+/* Palette + tokens are defined on BOTH :root and the pack's own .hanzi-root
+   wrapper. The host injects this stylesheet as a GLOBAL <style> in its document
+   head (ContentPackHost inline mode), so a bare `:root` block lands on the
+   HOST's <html> and can be shadowed by the host app or a sibling pack that
+   defines the same custom properties. When `--paper` / `--bg` resolve to
+   nothing, `background: var(--paper)` silently falls back to `transparent` and
+   the writing-area backdrop (the "character background") visually disappears.
+   Re-declaring the tokens on `.hanzi-root` (higher specificity than :root/html)
+   makes the pack self-contained: its own wrapper always carries the palette,
+   immune to host-side variable shadowing across binary versions. */
+:root,
+.hanzi-root {
+  color-scheme: light;
+  font-family: Georgia, "Times New Roman", serif;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Earthgate palette (mirrors --eg-* tokens) */
+  --bg: #f5f0e8;
+  --bg-deep: #ede6d6;
+  --paper: #fbf6ec;
+  --ink: #3d2b1f;           /* UI text — warm sepia, Earthgate-aligned */
+  --char-ink: #1a1410;      /* Chinese characters — near-black sumi ink,
+                               just enough warmth to belong in the palette */
+  --muted: #8b7355;
+  --brown: #6b4c2a;
+  --accent: #8b6914;        /* gold — primary interactive */
+  --accent-strong: #a07818; /* gold hover */
+  --accent-warm: #8b4513;   /* warm red-brown for warning/error feedback */
+  --gold: #c8a96e;
+  --success: #4a8c3f;
+  --shadow: rgba(61, 43, 31, 0.18);
+  --shadow-soft: rgba(61, 43, 31, 0.08);
+
+  /* Calligraphy ink palette — read by main.js via getComputedStyle.
+     User strokes match --char-ink so the ink the user lays down reads
+     as the same material as the printed character above. */
+  --stroke-ghost: rgba(107, 76, 42, 0.22); /* faded sepia tracing guide */
+  --stroke-user: #1a1410;                  /* near-black sumi ink */
+  --stroke-wrong: #8b4513;                 /* warm red-brown */
+
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  /* Squared-off "iPhone bezel" rounding shared by every control, matching the
+     host app's home/settings buttons (rounded-md ≈ 8-10px). Buttons and chips
+     use these instead of full pills/circles; only true-round shapes (progress
+     tracks, slider thumbs) keep 999px/50%. */
+  --radius-btn: 11px;
+  --radius-chip: 9px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.hanzi-root {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100%;
+  overflow: hidden;
+  /* NOTE: do NOT reset --safe-top to 0 here. The pack is mounted into the
+     host's bare container (no safe-area padding of its own), so the pack owns
+     its safe-area clearance. --safe-top stays bound to env(safe-area-inset-top)
+     (declared above) — the fixed exit button and the app's top padding both
+     read it, so zeroing it jammed everything up into the status bar / notch. */
+  color: var(--ink, #3d2b1f);
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--bg, #f5f0e8);
+}
+
+.hanzi-app {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 3vw, 24px);
+  padding: calc(clamp(18px, 2vw, 26px) + var(--safe-top)) clamp(16px, 4vw, 32px) calc(clamp(12px, 2vw, 20px) + var(--safe-bottom));
+  box-sizing: border-box;
+  height: 100%;
+  /* Earthgate-standard viewport fit: the shell fills the screen exactly and
+     never scrolls as a page. The only growable region (the examples list)
+     scrolls inside its own panel, so the layout "nails" a portrait iPad with
+     no stray vertical scroll while still collapsing cleanly on a phone. */
+  overflow: hidden;
+  overscroll-behavior-y: contain;
+}
+
+
+.hero {
+  display: block;
+  animation: floatIn 600ms ease-out;
+}
+
+.card {
+  background: var(--paper, #fbf6ec);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 28px var(--shadow-soft);
+  border: 1px solid rgba(107, 76, 42, 0.12);
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.exit-btn {
+  /* Matches the host app's home/settings top-right button: a squared-off
+     bezel (rounded-md), 40px tall, sitting just below the safe-area inset so
+     it lands in the same band as the Home/Settings chrome rather than up in
+     the status bar. */
+  position: fixed;
+  top: calc(var(--safe-top) + clamp(16px, 2.2vw, 22px));
+  right: calc(var(--safe-right) + clamp(16px, 2.6vw, 28px));
+  z-index: 20;
+  border: 1px solid rgba(107, 76, 42, 0.28);
+  background: rgba(251, 246, 236, 0.92);
+  color: var(--brown);
+  width: 46px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--shadow-soft);
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exit-btn:hover {
+  background: rgba(200, 169, 110, 0.2);
+  border-color: rgba(107, 76, 42, 0.6);
+  transform: scale(1.05);
+}
+
+.exit-btn:active {
+  transform: scale(0.95);
+}
+
+.exit-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(16px, 3vw, 28px);
+  align-items: center;
+  position: relative;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  position: relative;
+  padding-inline: clamp(36px, 6vw, 52px);
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.char-symbol {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif CJK SC", serif;
+  font-size: clamp(64px, 11vw, 130px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--char-ink);
+}
+
+.char-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pinyin-btn {
+  border: 1px solid rgba(107, 76, 42, 0.3);
+  background: transparent;
+  border-radius: var(--radius-btn);
+  padding: 10px 22px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(18px, 4vw, 34px);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--accent);
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.pinyin-btn:hover {
+  background: rgba(200, 169, 110, 0.18);
+  border-color: rgba(107, 76, 42, 0.5);
+  color: var(--accent-strong);
+}
+
+.pinyin-btn:active {
+  transform: scale(0.97);
+}
+
+.pinyin-btn.is-empty,
+.pinyin-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  box-shadow: none;
+}
+
+.icon-btn {
+  border: 1.5px solid rgba(107, 76, 42, 0.3);
+  border-radius: var(--radius-btn);
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 240, 232, 0.8);
+  color: var(--brown);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.icon-btn:hover {
+  background: rgba(200, 169, 110, 0.2);
+  border-color: rgba(107, 76, 42, 0.6);
+  transform: scale(1.05);
+}
+
+.icon-btn:active {
+  transform: scale(0.95);
+}
+
+.char-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.chip {
+  padding: 6px 12px;
+  border-radius: var(--radius-chip);
+  background: transparent;
+  border: 1px solid rgba(107, 76, 42, 0.2);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.char-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primary-btn {
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 10px 18px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 12px;
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 6px 14px rgba(139, 105, 20, 0.28);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.primary-btn:hover {
+  background: var(--accent-strong);
+  transform: scale(1.04);
+}
+
+.primary-btn:active {
+  transform: scale(0.97);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+}
+
+.ety-text {
+  font-size: clamp(16px, 1.9vw, 20px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.chip-inline {
+  padding: 6px 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.panel-toolbar {
+  /* Two semantic clusters pinned to opposite edges of the canvas panel:
+     LEFT = learn (animate / guided / hint), RIGHT = tools (brush / free /
+     clear). space-between flushes them to the edges so the canvas reads as a
+     clean workspace flanked by controls; within each cluster the buttons sit
+     together as a unit. */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(14px, 2vw, 20px);
+  gap: 12px;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.2vw, 14px);
+}
+
+.icon-chip {
+  border: 1.5px solid rgba(107, 76, 42, 0.3);
+  background: rgba(245, 240, 232, 0.8);
+  color: var(--brown);
+  /* Shrinks just enough on a phone that the two 3-button clusters never
+     overflow the panel, full size on iPad. */
+  width: clamp(38px, 9vw, 44px);
+  height: clamp(38px, 9vw, 44px);
+  border-radius: var(--radius-btn);
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.icon-chip svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.play-chip {
+  /* The hero action — "bring the character to life". Gold-filled so it is the
+     single focal control on the canvas; the parchment triangle reads against
+     it. Slightly larger than its siblings to anchor the left "learn" cluster. */
+  width: clamp(46px, 12vw, 56px);
+  height: clamp(46px, 12vw, 56px);
+  border: none;
+  background: linear-gradient(145deg, var(--accent-strong), var(--accent));
+  color: var(--bg);
+  font-size: 22px;
+  box-shadow: 0 6px 16px rgba(139, 105, 20, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Keep the hero gold (with the parchment triangle) in EVERY interactive state.
+   These use `.icon-chip.play-chip` specificity ON PURPOSE: the generic
+   `.icon-chip:hover` below wins by source order at equal specificity and was
+   washing Play out to a pale icon on a pale translucent-gold ground — and on a
+   touch device the :hover state sticks after a tap, so it stayed washed out.
+   Covering :hover/:focus/:active here guarantees contrast in all states. */
+.icon-chip.play-chip:hover,
+.icon-chip.play-chip:focus,
+.icon-chip.play-chip:active {
+  color: var(--bg);
+  border-color: transparent;
+  background: linear-gradient(145deg, #b0851a, var(--accent-strong));
+  box-shadow: 0 8px 20px rgba(139, 105, 20, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.icon-chip.play-chip:hover {
+  transform: scale(1.07);
+}
+
+.icon-chip.play-chip:active {
+  transform: scale(0.96);
+}
+
+/* No tap-flash outline on touch; a clear ring only for keyboard focus. */
+.icon-chip.play-chip:focus {
+  outline: none;
+}
+
+.icon-chip.play-chip:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+/* Clear is destructive — quiet until hovered/focused, then a warm red-brown so
+   it reads as "remove" without shouting in the resting toolbar. Same higher
+   specificity so the generic .icon-chip:hover can't override it. */
+.icon-chip.clear-chip:hover,
+.icon-chip.clear-chip:focus {
+  background: rgba(139, 69, 19, 0.12);
+  border-color: rgba(139, 69, 19, 0.5);
+  color: var(--accent-warm);
+}
+
+.icon-chip:hover {
+  background: rgba(200, 169, 110, 0.2);
+  border-color: rgba(107, 76, 42, 0.6);
+  transform: scale(1.05);
+}
+
+.icon-chip:active {
+  transform: scale(0.95);
+}
+
+.icon-chip.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.score-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(107, 76, 42, 0.1);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.score-bar.is-active {
+  opacity: 1;
+}
+
+.score-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brown) 0%, var(--gold) 50%, var(--success) 100%);
+  border-radius: inherit;
+  transition: width 240ms ease;
+}
+
+.panel-footer {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.meta-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.total-score {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  transition: transform 200ms ease, color 200ms ease;
+}
+
+.total-score.is-pulse {
+  transform: scale(1.08);
+  color: var(--accent-strong);
+}
+.meta-divider {
+  color: var(--muted);
+}
+
+.complete-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.complete-count svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.score-burst {
+  position: absolute;
+  top: -22px;
+  right: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 120ms ease, transform 280ms ease;
+  pointer-events: none;
+}
+
+.score-burst.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  /* `1fr` row + `flex: 1` makes the workspace claim every pixel between
+     the hero card and the bottom of the page, with both panels stretching
+     to fill. Falls back to fixed clamp heights at the stacked breakpoint
+     below so the portrait layout still scrolls. */
+  grid-template-rows: 1fr;
+  gap: clamp(16px, 3vw, 24px);
+  flex: 1 1 auto;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.panel {
+  background: var(--paper, #fbf6ec);
+  border-radius: var(--radius-lg);
+  padding: clamp(16px, 2.6vw, 20px);
+  box-shadow: 0 14px 32px var(--shadow-soft);
+  border: 1px solid rgba(107, 76, 42, 0.12);
+  min-height: 0;
+}
+
+.draw-panel,
+.examples-panel {
+  display: flex;
+  flex-direction: column;
+  /* No explicit height on wide screens — the grid row's `1fr` track and
+     `align-items: stretch` give each panel the full row height. The
+     clamp() heights only apply once we drop to the stacked layout
+     below, where panel-by-panel sizing matters again. */
+  min-height: 0;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.panel-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid rgba(107, 76, 42, 0.2);
+  padding: 5px 10px;
+  border-radius: var(--radius-chip);
+}
+
+.panel-title {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+.panel-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.panel-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-btn);
+  border: 1.5px solid rgba(107, 76, 42, 0.3);
+  background: rgba(245, 240, 232, 0.8);
+  color: var(--brown);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+  transform: translateY(-50%);
+}
+
+.nav-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav-prev {
+  left: clamp(6px, 1.6vw, 14px);
+}
+
+.nav-next {
+  right: clamp(6px, 1.6vw, 14px);
+}
+
+.nav-btn:hover {
+  background: rgba(200, 169, 110, 0.2);
+  border-color: rgba(107, 76, 42, 0.6);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.nav-btn.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.panel-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toggle-btn {
+  border: 1px solid rgba(107, 76, 42, 0.25);
+  background: transparent;
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: var(--radius-chip);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.toggle-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.toggle-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.toggle-btn:active {
+  transform: scale(0.97);
+}
+
+.canvas-shell {
+  position: relative;
+  background: var(--paper, #fbf6ec);
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 0 0 1px rgba(107, 76, 42, 0.12);
+  padding: 12px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.canvas-shell::after {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border-radius: 18px;
+  border: 1px dashed rgba(107, 76, 42, 0.22);
+  pointer-events: none;
+}
+
+.canvas-layer {
+  position: absolute;
+  inset: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+}
+
+.writer-layer {
+  position: absolute;
+  inset: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  pointer-events: none;
+}
+
+.writer-layer svg,
+.writer-layer canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-overlay {
+  position: absolute;
+  bottom: 26px;
+  right: 24px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.panel-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.score {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  border: 1px solid rgba(107, 76, 42, 0.25);
+  border-radius: var(--radius-btn);
+  padding: 10px 16px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  color: var(--accent);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.action-btn:hover {
+  background: rgba(200, 169, 110, 0.2);
+  border-color: var(--accent);
+}
+
+.action-btn.secondary {
+  background: transparent;
+  color: var(--muted);
+  border-color: rgba(107, 76, 42, 0.2);
+}
+
+.action-btn.secondary:hover {
+  color: var(--ink);
+  border-color: rgba(107, 76, 42, 0.4);
+}
+
+.action-btn:active {
+  transform: scale(0.97);
+}
+
+.examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+  padding-right: 6px;
+  flex: 1;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(107, 76, 42, 0.25) transparent;
+}
+
+.examples-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.examples-list::-webkit-scrollbar-thumb {
+  background: rgba(107, 76, 42, 0.25);
+  border-radius: 3px;
+}
+
+.example-card {
+  background: rgba(235, 225, 210, 0.55);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: 0 4px 10px var(--shadow-soft);
+  border: 1px solid rgba(107, 76, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.example-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.example-text {
+  font-size: 18px;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif CJK SC", serif;
+  color: var(--char-ink);
+}
+
+.example-romanization {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+
+.example-translations {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.speak-btn {
+  border: 1px solid rgba(107, 76, 42, 0.25);
+  background: transparent;
+  color: var(--accent);
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-chip);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.speak-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.speak-btn:hover {
+  background: rgba(200, 169, 110, 0.2);
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.speak-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.examples-footer {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  font-style: italic;
+}
+
+@keyframes floatIn {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1080px) {
+  .workspace {
+    grid-template-columns: 1fr;
+    /* Stacked layout (portrait iPad + phone): keep claiming the space
+       between the hero and the bottom of the screen and split it between
+       the two panels, so the whole app fits the viewport with no page
+       scroll. The drawing panel takes the larger share; the examples panel
+       scrolls internally when its list overflows. */
+    grid-template-rows: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .draw-panel,
+  .examples-panel {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-right {
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  .panel-actions {
+    justify-content: flex-start;
+  }
+
+  /* Phones: give the drawing panel a guaranteed minimum so the canvas
+     never collapses to a sliver, while the workspace still flex-fills the
+     viewport and the examples list scrolls inside its panel. */
+  .draw-panel {
+    min-height: 360px;
+  }
+}
+
+/* Short windows in the stacked layout (e.g. a phone in landscape): tighten
+   the gap so the flex-filled panels keep breathing room. The panels still
+   share the remaining height instead of carrying fixed heights, so nothing
+   is clipped under the shell's `overflow: hidden`. */
+@media (max-width: 1080px) and (max-height: 700px) {
+  .hanzi-app {
+    gap: 14px;
+  }
+
+  .draw-panel {
+    min-height: 0;
+  }
+}
+
+/* Phone (either orientation): drop the viewport-fit contract. An iPad keeps
+   both dimensions >=768px in portrait AND landscape, so it still nails the
+   screen exactly with the examples list scrolling inside its own panel. A
+   phone is either narrow (portrait, <768px wide) or short (landscape, <=600px
+   tall) — in both cases there isn't enough room to fit without crushing the
+   examples or frying the landscape layout, so we let the whole page grow past
+   the bottom and scroll: the root becomes the scroll container, the app sizes
+   to its content, and the examples panel expands to its natural height instead
+   of scrolling internally. The drawing panel keeps a generous, viewport-
+   relative height so the canvas stays usable. */
+@media (max-width: 767px), (max-height: 600px) {
+  .hanzi-root {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .hanzi-app {
+    height: auto;
+    min-height: 100%;
+    overflow: visible;
+  }
+
+  .workspace {
+    /* Natural, content-sized rows — no longer split a fixed viewport height. */
+    grid-template-rows: auto auto;
+    flex: 0 0 auto;
+  }
+
+  .draw-panel {
+    /* Generous canvas relative to the viewport; examples flow below it. */
+    min-height: clamp(360px, 60vh, 520px);
+  }
+
+  .examples-list {
+    /* Expand fully instead of scrolling inside the panel. */
+    flex: 0 0 auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+}
+
+/* ============================================
+   Brush Configuration Widget
+   Mirrors Earthgate's catalog drawer surface:
+   parchment panel, brown borders, gold pill
+   tabs, gold slider thumb on a brown track.
+   ============================================ */
+
+.brush-widget-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(61, 43, 31, 0.3);
+  z-index: 100;
+}
+
+.brush-widget-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(360px, calc(100vw - 32px));
+  max-height: calc(100vh - 80px);
+  background: rgba(245, 240, 232, 0.97);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 48px rgba(61, 43, 31, 0.28), 0 6px 16px var(--shadow-soft);
+  border: 1px solid rgba(107, 76, 42, 0.18);
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.brush-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: rgba(235, 225, 210, 0.6);
+  border-bottom: 1px solid rgba(107, 76, 42, 0.15);
+  cursor: grab;
+  user-select: none;
+}
+
+.brush-widget-header:active {
+  cursor: grabbing;
+}
+
+.brush-widget-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.brush-widget-close {
+  border: none;
+  background: transparent;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  color: var(--muted);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.brush-widget-close:hover {
+  background: rgba(107, 76, 42, 0.08);
+  color: var(--ink);
+}
+
+.brush-widget-close svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.brush-widget-preset-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(107, 76, 42, 0.1);
+}
+
+.brush-widget-select {
+  flex: 1;
+  padding: 9px 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  border: 1px solid rgba(107, 76, 42, 0.25);
+  border-radius: var(--radius-md);
+  background: rgba(251, 246, 236, 0.9);
+  color: var(--ink);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.brush-widget-select:focus {
+  border-color: var(--accent);
+}
+
+.brush-widget-preset-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.brush-widget-btn {
+  border: 1px solid rgba(107, 76, 42, 0.25);
+  background: transparent;
+  color: var(--muted);
+  padding: 7px 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.brush-widget-btn:hover {
+  background: rgba(200, 169, 110, 0.18);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.brush-widget-btn-danger:hover {
+  background: rgba(139, 69, 19, 0.1);
+  border-color: rgba(139, 69, 19, 0.5);
+  color: var(--accent-warm);
+}
+
+.brush-widget-preview {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid rgba(107, 76, 42, 0.1);
+}
+
+.brush-widget-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(107, 76, 42, 0.1);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.brush-widget-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.brush-widget-tab {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  padding: 7px 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-chip);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.brush-widget-tab:hover {
+  color: var(--accent);
+  border-color: rgba(107, 76, 42, 0.18);
+}
+
+.brush-widget-tab.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+.brush-widget-content {
+  flex: 1;
+  padding: 16px 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 320px;
+  max-height: 320px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(107, 76, 42, 0.25) transparent;
+}
+
+.brush-widget-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.brush-widget-content::-webkit-scrollbar-thumb {
+  background: rgba(107, 76, 42, 0.25);
+  border-radius: 3px;
+}
+
+.brush-widget-slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.brush-widget-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brush-widget-label {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.brush-widget-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.brush-widget-slider {
+  width: 100%;
+  height: 32px;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  touch-action: pan-y;
+}
+
+.brush-widget-slider:focus {
+  outline: none;
+}
+
+.brush-widget-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(107, 76, 42, 0.2);
+  border: none;
+}
+
+.brush-widget-slider::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(107, 76, 42, 0.2);
+  border: none;
+}
+
+.brush-widget-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid rgba(139, 105, 20, 0.6);
+  box-shadow: 0 0 4px rgba(139, 105, 20, 0.3);
+  cursor: grab;
+  margin-top: -7px;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.brush-widget-slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 8px rgba(139, 105, 20, 0.5);
+  transform: scale(1.15);
+}
+
+.brush-widget-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+
+.brush-widget-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid rgba(139, 105, 20, 0.6);
+  box-shadow: 0 0 4px rgba(139, 105, 20, 0.3);
+  cursor: grab;
+}
+
+.brush-widget-slider::-moz-range-thumb:hover {
+  box-shadow: 0 0 8px rgba(139, 105, 20, 0.5);
+}
+
+.brush-widget-slider::-moz-range-thumb:active {
+  cursor: grabbing;
+}
+
+.brush-widget-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(139, 105, 20, 0.35);
+}
+
+.brush-widget-slider:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba(139, 105, 20, 0.35);
+}
+
+.brush-widget-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.brush-widget-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.brush-widget-checkbox-label {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.brush-widget-divider {
+  height: 1px;
+  background: rgba(107, 76, 42, 0.12);
+  margin: 4px 0;
+}
+
+.brush-widget-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.brush-widget-curve-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.pressure-curve-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.pressure-curve-canvas {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(107, 76, 42, 0.18);
+  background: rgba(251, 246, 236, 0.85);
+  box-shadow: inset 0 1px 3px var(--shadow-soft);
+  touch-action: none;
+}
+
+.pressure-curve-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.curve-preset-btn {
+  border: 1px solid rgba(107, 76, 42, 0.2);
+  background: transparent;
+  color: var(--muted);
+  padding: 6px 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-chip);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.curve-preset-btn:hover {
+  background: rgba(200, 169, 110, 0.18);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.stroke-preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.stroke-preview-canvas {
+  width: 100%;
+  max-width: 280px;
+  height: 100px;
+  border-radius: var(--radius-md);
+  background: var(--paper, #fbf6ec);
+  border: 1px solid rgba(107, 76, 42, 0.18);
+  box-shadow: inset 0 1px 3px var(--shadow-soft);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.stroke-preview-clear {
+  border: 1px solid rgba(107, 76, 42, 0.2);
+  background: transparent;
+  color: var(--muted);
+  padding: 6px 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-chip);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.stroke-preview-clear:hover {
+  background: rgba(200, 169, 110, 0.15);
+  color: var(--ink);
+}
+
+@media (max-width: 400px) {
+  .brush-widget-panel {
+    width: calc(100vw - 20px);
+  }
+
+  .brush-widget-tabs {
+    padding: 6px 12px;
+  }
+
+  .brush-widget-tab {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .brush-widget-content {
+    padding: 14px 16px;
+  }
+}

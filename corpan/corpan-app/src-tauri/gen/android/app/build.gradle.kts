@@ -49,6 +49,39 @@ android {
                     .plus(getDefaultProguardFile("proguard-android-optimize.txt"))
                     .toList().toTypedArray()
             )
+            ndk {
+                // SYMBOL_TABLE instead of FULL. Both are accepted by
+                // Play Console; SYMBOL_TABLE sidesteps an AGP 8.11
+                // quirk observed locally with NDK 28.2 + the universal
+                // flavor where `FULL` left
+                // `extractUniversalReleaseNativeDebugMetadata/out/`
+                // empty and the AAB's
+                // `BUNDLE-METADATA/com.android.tools.build.debugsymbols/`
+                // directory missing entirely (so Play kept warning
+                // "you've not uploaded debug symbols" after 0.12.6 and
+                // 0.12.7 uploads). SYMBOL_TABLE gives function names
+                // and basic location info — sufficient for Play's
+                // crash symbolication. The CMake side (-g and
+                // -fno-omit-frame-pointer in
+                // plugins/tauri-plugin-stt/android/src/main/cpp/
+                // CMakeLists.txt) plus the Rust side
+                // ([profile.release] debug = 1, strip = false in
+                // src-tauri/Cargo.toml) emit the DWARF that AGP
+                // extracts here.
+                debugSymbolLevel = "SYMBOL_TABLE"
+            }
+            // Belt-and-suspenders: explicitly clear keepDebugSymbols
+            // for release so the strip task can actually strip every
+            // .so. AGP's default is the empty set, but we observed
+            // strip producing byte-identical output to its input on
+            // 0.12.7 — set this defensively in case anything upstream
+            // (Tauri RustPlugin, debugSymbolLevel side-effects, the
+            // STT plugin's packaging block) populates it.
+            packaging {
+                jniLibs {
+                    keepDebugSymbols.clear()
+                }
+            }
         }
     }
 
@@ -88,3 +121,27 @@ dependencies {
 }
 
 apply(from = "tauri.build.gradle.kts")
+
+
+/* BEGIN: corpan patch (idempotent) */
+android {
+    // Pin modern SDK + NDK. compileSdk must be 36+ for androidx.core 1.17.0
+    // (pulled in transitively by tauri-plugin-iap).
+    compileSdk = 36
+    defaultConfig {
+        targetSdk = 36
+    }
+    ndkVersion = "28.2.13676358"
+
+    // Java 17 language level
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+// Kotlin JVM target = 17 (no plugin block assumptions)
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "17"
+}
+/* END: corpan patch */

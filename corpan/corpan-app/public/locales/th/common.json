@@ -29,7 +29,32 @@
     "gu": "คุชราต",
     "ur": "อูรดู",
     "pa-Guru": "ปัญจาบี (กูร์มุขี)",
-    "pa-Arab": "ปัญจาบี (ชาห์มุคี)"
+    "pa-Arab": "ปัญจาบี (ชาห์มุคี)",
+    "he": "ฮีบรู",
+    "sv": "สวีเดน",
+    "fi": "ฟินแลนด์",
+    "nl": "ดัตช์",
+    "sw": "สวาฮีลี",
+    "no": "นอร์เวย์",
+    "da": "เดนมาร์ก",
+    "el": "กรีก",
+    "ms": "มาเลย์",
+    "ne": "ภาษาเนปาล",
+    "pt-PT": "ภาษาโปรตุเกส (ยุโรป)",
+    "hr": "โครเอเชีย",
+    "sr": "เซอร์เบีย",
+    "uk": "ยูเครน",
+    "bg": "บัลแกเรีย",
+    "ro": "โรมาเนีย",
+    "ca": "คาตาลัน",
+    "yue-Hant-HK": "กวางตุ้ง (แบบดั้งเดิม)",
+    "cs": "เช็ก",
+    "lt": "ลิทัวเนีย",
+    "sk": "สโลวัก",
+    "sl": "สโลวีเนีย",
+    "jv": "ชวา",
+    "su": "ซุนดา",
+    "tl": "ตากาล็อก"
   },
   "categories": {
     "travel": "การท่องเที่ยว",
@@ -72,42 +97,245 @@
     "extra-large": "ใหญ่มาก",
     "testTts": "ทดสอบ TTS ด้วยปุ่มด้านล่าง:",
     "showRomanization": "แสดงถอดเสียง",
-    "scrollNavigation": "การนำทางด้วยการเลื่อน"
+    "scrollNavigation": "การนำทางด้วยการเลื่อน",
+    "packs": "แพ็ก",
+    "stacks": "สแต็ก",
+    "theme": "ธีม",
+    "themeLight": "สว่าง",
+    "themeDark": "มืด",
+    "themeSystem": "ระบบ",
+    "phrasePacks": {
+      "header": "ชุดวลี",
+      "baseCorpusName": "คลังพื้นฐาน",
+      "emptyHint": "เพิ่มชุดจากแท็บชุด",
+      "browseAll": "ดูชุดทั้งหมด",
+      "searchPlaceholder": "ค้นหาชุด…",
+      "filter": {
+        "all": "ทั้งหมด",
+        "active": "ใช้งาน",
+        "inactive": "ไม่ใช้งาน"
+      },
+      "selectAllVisible": "เลือกทั้งหมด",
+      "deselectAllVisible": "ล้าง",
+      "activateGroup": "เปิดทั้งหมด",
+      "deactivateGroup": "ปิดทั้งหมด",
+      "uncategorized": "อื่นๆ",
+      "noMatches": "ไม่พบผลลัพธ์",
+      "noFiltered": "ตอนนี้ไม่มีอะไรที่นี่",
+      "stackTotalPhrases": "~{{count}} วลีที่ตรงกัน",
+      "stackTotalNudge": "เพิ่มชุดหรือขยายระดับเพื่อความหลากหลาย",
+      "activeCount": "เปิดใช้งาน {{active}} จาก {{total}}",
+      "baseCorpusSubtitle": "{{n}} วลี"
+    },
+    "sendAnonUsage": "ส่งข้อมูลการใช้งานแบบไม่ระบุตัวตน",
+    "sendAnonUsageHint": "ไม่ระบุตัวตนและจำกัดเฉพาะเซสชัน ไม่มีบัญชี ไม่มีรหัสอุปกรณ์ และไม่เก็บ IP ปิดได้ทุกเมื่อ",
+    "readPrivacyPromise": "อ่านคำมั่นด้านความเป็นส่วนตัวของเรา",
+    "showStreak": "แสดงสถิติการอ่านต่อเนื่อง",
+    "showStreakHint": "แสดงจำนวนวันต่อเนื่องเล็กๆ ในส่วนหัว อยู่ในอุปกรณ์เท่านั้น ไม่มีแจ้งเตือน",
+    "primaryLanguage": "ภาษาหลัก (UI)",
+    "home": "หน้าแรก",
+    "developer": "นักพัฒนา"
   },
   "onboarding": {
-    "welcome": "ยินดีต้อนรับ",
-    "makePrimaryLanguage": "ตั้งภาษาอังกฤษเป็นภาษาหลักของฉัน",
-    "canChangeLater": "คุณสามารถเปลี่ยนได้ทุกเมื่อ",
+    "welcomePact": {
+      "title": "Corpán พัฒนาไม่หยุด",
+      "subtitle": "คุณคือผู้ใช้กลุ่มแรก ๆ",
+      "bleedingEdgeTitle": "ล้ำสมัยอย่างตั้งใจ",
+      "bleedingEdgeDesc": "Corpán นำ AI ใหม่ การรู้จำเสียงพูด เสียงพูด และโลกเสมือนที่ดื่มด่ำมาสู่อุปกรณ์ของคุณ เพื่อการเรียนรู้แบบส่วนตัวที่ให้ความสำคัญกับการใช้งานออฟไลน์ก่อน เราปล่อยเทคโนโลยีตอนที่มันยังดิบอยู่ จึงอาจทำงานแปลก ๆ ช้า หรือหนักเกินกว่าที่อุปกรณ์ของคุณจะรับไหว แลกกับการที่คุณได้วิธีเรียนรู้ใหม่ ๆ ทันทีที่มันเป็นไปได้",
+      "yourLangTitle": "เราไม่ได้พูดทุกภาษาที่เรารองรับ",
+      "yourLangDesc": "เราสร้างเพื่อหลายภาษาเพราะผู้เรียนควรได้เครื่องมือที่ดีกว่า ไม่ใช่เพราะเรารู้ทุกภาษา เมื่อเราทำอะไรผิด เราหวังว่าเจ้าของภาษาจะช่วยเราทำให้ถูกต้อง",
+      "plea": "มีไอเดีย คำแก้ไข หรือประสบการณ์การเรียนรู้สุดล้ำที่อยากเห็นไหม? บอกเราได้เลย เราอ่านทุกข้อความและคิดอย่างลึกซึ้งว่ามันจะเปิดโอกาสอะไรให้ Corpán และการเรียนภาษาได้บ้าง",
+      "emailCta": "อีเมลหาเรา",
+      "githubCta": "เปิด issue บน GitHub",
+      "join": "อยากช่วยนำ Corpán ไปสู่ผู้คนทั่วโลกไหม? เรามองหาผู้ร่วมงาน นักแปล และตัวแทนท้องถิ่นอยู่เสมอ มาร่วมกับเรา",
+      "pact": "แตะด้านล่างเพื่อเริ่มเรียนรู้และเติบโตไปกับเรา 🤝",
+      "cta": "เอาด้วย ไปกันเลย"
+    },
     "pickLanguagesToLearn": "เลือกภาษาที่ต้องการเรียน",
     "textToSpeechSetup": "ตั้งค่าเสียงสังเคราะห์ (TTS)",
-    "ttsPoorQualityNote": "หากเสียงฟังดูไม่ดี ให้ติดตั้งเสียงคุณภาพสูงในการตั้งค่า TTS ของอุปกรณ์",
-    "howToSetupTtsOn": "วิธีตั้งค่า TTS บน",
-    "welcomeTitle": "ยินดีต้อนรับสู่ครอบครัว Corpán!",
-    "welcomeBody": "Corpán เป็นแอปโอเพนซอร์สที่ทีมเล็ก ๆ กลุ่มหนึ่งพัฒนา ไม่ใช่บริษัทใหญ่ แต่เราใส่ใจเรื่องภาษา และการศึกษาอย่างจริงจัง ตอนนี้โปรเจ็กต์ยังอยู่ช่วงเริ่มต้น จึงอาจมีส่วนที่ยังไม่เรียบร้อย ฟีเจอร์ที่หายไป หรือภาษาที่ยังไม่รองรับ หากมีอะไรใช้แล้วไม่ดีนัก โปรดบอกเราผ่าน GitHub หรืออีเมล ข้อเสนอแนะของคุณ ช่วยให้เราอัปเดตบ่อย ๆ และทำให้การเรียนภาษาดีขึ้นสำหรับทุกคน.",
-    "welcomeVisit": "เยี่ยมชม encorpora.io",
-    "linkCopied": "คัดลอกลิงก์แล้ว เปิดในเบราว์เซอร์ของคุณ:",
     "reconfigureStack": "ปรับแต่งสแต็กใหม่",
-    "openVoiceSettings": "เปิดการตั้งค่าเสียงของอุปกรณ์",
+    "openVoiceSettings": "เปิดการตั้งค่า (Settings)",
     "openTTSSetup": "เปิดการตั้งค่า TTS",
-    "welcomeFollowUp": "ขอบคุณที่เข้าร่วม—แล้วพบกันในชุมชน!",
-    "learningStepTitle": "การเรียนรู้",
-    "tts": "ข้อความเป็นเสียง",
     "languageOrderTipTitle": "เคล็ดลับ",
-    "languageOrderTipBody": "ภาษาล่างสุดจะเป็นภาษา UI ของแอป ลากเพื่อเปลี่ยนได้ทุกเมื่อ",
+    "languageOrderTipBody": "ภาษาล่างสุดในรายการคือภาษา UI ของแอป หากต้องการเปลี่ยนภาษา UI ให้ลากภาษาอื่นไปไว้ล่างสุด",
     "ttsOsTipTitle": "เคล็ดลับ",
     "ttsOsTipAndroid": "แนะนำ: ใช้ Google TTS — Samsung TTS ใช้กับ Corpán ไม่ได้",
-    "ttsOsTipIOS": "ใน Settings → Accessibility ให้หา Spoken Content แล้วดาวน์โหลดเสียง หมายเหตุ: Apple ไม่มีเสียงสำหรับทุกภาษา หากอัปเกรดแล้วยังไม่ดีขึ้น ให้ขอความช่วยเหลือผ่านแอป Feedback ของ Apple.",
-    "ttsOsTipMac": "ใน System Settings → Accessibility ให้หา Spoken Content แล้วดาวน์โหลดเสียง หมายเหตุ: Apple ไม่มีเสียงสำหรับทุกภาษา หากอัปเกรดแล้วยังไม่ดีขึ้น ให้ขอความช่วยเหลือผ่านแอป Feedback ของ Apple.",
+    "ttsOsTipIOS": "อุปกรณ์ของคุณมีเสียง Premium ฟรีในตัว — Apple แค่ปิดไว้ เปิดใช้งานได้ที่: การตั้งค่า (Settings) → การช่วยการเข้าถึง (Accessibility) → เนื้อหาเสียงพูด (Spoken Content) → เสียง (Voices) → ภาษาของคุณ จากนั้นแตะไอคอนดาวน์โหลดสำหรับเสียง Premium หรือ Enhanced กลับมาที่นี่แล้วเสียงจะปรากฏขึ้นโดยอัตโนมัติ (Apple ยังไม่รองรับทุกภาษา)",
+    "ttsOsTipMac": "Mac ของคุณมีเสียง Premium ฟรีในตัว — Apple แค่ปิดไว้ เปิดใช้งานได้ที่: การตั้งค่าระบบ (System Settings) → การช่วยการเข้าถึง (Accessibility) → เนื้อหาเสียงพูด (Spoken Content) → เสียงระบบ (System Voice) → จัดการเสียง (Manage Voices) จากนั้นดาวน์โหลดเสียง Premium หรือ Enhanced กลับมาที่นี่แล้วเสียงจะปรากฏขึ้นโดยอัตโนมัติ (Apple ยังไม่รองรับทุกภาษา)",
     "ttsOsTipWindows": "ติดตั้งเสียงพูดใน Settings แล้วกลับมาที่นี่",
     "ttsOsTipOther": "ติดตั้งเสียงพูดในตั้งค่าเครื่อง แล้วกลับมาที่นี่",
     "installVoicesAndroid": "ติดตั้งเสียง",
-    "learning": "การเรียนภาษา",
-    "ttsStepTitle": "ข้อความเป็นเสียง",
-    "socials": "ติดตามและเชื่อมต่อ",
-    "socialsStepTitle": "โซเชียลมีเดีย",
     "noVoices": "ไม่มีเสียง",
     "noVoicesHint": "ติดตั้งเสียงเพื่อเปิดใช้งานภาษานี้",
-    "sendAppleFeedback": "ส่งความคิดเห็นให้ Apple"
+    "sendAppleFeedback": "ส่งความคิดเห็นให้ Apple",
+    "ttsGoogleInstalled": "ติดตั้ง Google TTS แล้ว",
+    "ttsGoogleMissing": "ยังไม่ได้ติดตั้ง Google TTS",
+    "ttsSetDefault": "ตั้งเป็นค่าเริ่มต้น",
+    "ttsRescue": {
+      "engineDisabledUser": {
+        "heading": "Google Text-to-Speech ถูกปิดใช้งาน",
+        "detail": "เราจะพาคุณไปยังหน้าตั้งค่าระบบเพื่อเปิดใช้งานอีกครั้ง แตะครั้งเดียวก็เรียบร้อย",
+        "button": "เปิดใช้ Google TTS"
+      },
+      "engineNotInstalled": {
+        "heading": "ติดตั้ง Google Text-to-Speech",
+        "detail": "เอ็นจิ้นเสียงฟรีของ Google ปลดล็อกเสียงคุณภาพสูงสำหรับภาษาส่วนใหญ่ที่ Corpán รองรับ — โทรศัพท์ส่วนใหญ่ไม่ได้มาพร้อมกับสิ่งนี้ มาเพิ่มกัน:",
+        "button": "ติดตั้งจาก Play Store"
+      },
+      "noEngine": {
+        "heading": "ไม่พบเครื่องยนต์เสียง",
+        "detail": "อุปกรณ์ของคุณยังไม่ได้ติดตั้งเครื่องยนต์ TTS เลย ติดตั้ง Google Text-to-Speech เพื่อดำเนินการต่อ",
+        "button": "ติดตั้ง Google TTS"
+      },
+      "noVoiceData": {
+        "heading": "ต้องดาวน์โหลดข้อมูลเสียง",
+        "detail": "เครื่องยนต์ของคุณพร้อมแล้ว แต่ข้อมูลเสียงสำหรับภาษาของคุณยังไม่ถูกดาวน์โหลด",
+        "button": "ดาวน์โหลดเสียง"
+      },
+      "engineHung": {
+        "heading": "เครื่องยนต์เสียงไม่ตอบสนอง",
+        "detail": "บางครั้งบริการ TTS ของระบบติดขัด แตะด้านล่างเพื่อลองอีกครั้ง — มักจะหายเอง",
+        "button": "ลองอีกครั้ง"
+      },
+      "probing": "กำลังตั้งค่าเสียง…",
+      "working": "กำลังทำงาน…",
+      "skipForNow": "ข้าม — ตั้งค่าภายหลังในการตั้งค่า",
+      "openTtsSettings": "เปิดการตั้งค่า TTS",
+      "readyHeading": "เสียงพร้อมแล้ว",
+      "readyEngine": "กำลังใช้ {{engine}}",
+      "installVoicesForLang": "ดาวน์โหลดเสียงสำหรับ {{lang}}",
+      "diagnostics": {
+        "toggle": "การวินิจฉัย",
+        "copyButton": "คัดลอก",
+        "copied": "คัดลอกแล้ว"
+      },
+      "currentState": "สถานะปัจจุบัน: {{state}}",
+      "state": {
+        "enabled": "เปิดใช้งาน",
+        "default": "เปิดใช้งาน (ค่าเริ่มต้นระบบ)",
+        "disabled": "ปิดใช้งาน",
+        "disabledUser": "ผู้ใช้ปิด (หรือ Samsung Device Care)",
+        "disabledUntilUsed": "ปิดจนกว่าจะใช้",
+        "notInstalled": "ยังไม่ได้ติดตั้ง"
+      }
+    },
+    "phrasePacks": {
+      "hero": "เลือกหัวข้อของคุณ",
+      "loading": "กำลังโหลด…",
+      "selectAll": "เลือกทั้งหมด ({{count}})",
+      "clearAll": "ล้าง",
+      "subscriptionNudge": "บางแพ็กรวมอยู่ใน Corpán Plus — คุณอัปเกรดภายหลังได้ที่การตั้งค่า → แพ็ก",
+      "entryCount": "{{n}} วลี",
+      "paid": "เสียค่าใช้จ่าย",
+      "emptyHero": "ยังไม่มีชุด",
+      "emptySub": "กลับมาเร็วๆ นี้"
+    },
+    "appleNoVoiceTitle": "Apple ยังไม่มีเสียง {{lang}} มาให้",
+    "appleNoVoiceBody": "การส่งข้อความสั้น ๆ ถึงทีมการช่วยการเข้าถึงของ Apple จะช่วยสนับสนุนเรื่องนี้ได้ ระหว่างนี้ {{lang}} ใช้งานได้แบบเนทีฟบน Android",
+    "back": "กลับ",
+    "continue": "ต่อไป",
+    "calibrate": {
+      "childAgeTitle": "ผู้อ่านอายุเท่าไหร่?",
+      "childTeen": "13–17 ปี",
+      "childUnder13": "ต่ำกว่า 13 ปี",
+      "enjoyComfortable": "ค่อนข้างดี",
+      "enjoyImproving": "ฉันยังคงเรียนรู้การอ่าน",
+      "enjoyJustStarting": "เพิ่งเริ่มต้น — ฉันยังใหม่กับการอ่าน",
+      "enjoyNative": "คล่องแคล่ว — นี่คือภาษาของฉัน",
+      "enjoyTitle": "คุณอ่าน {{lang}} ได้ดีแค่ไหน?",
+      "learnAdvanced": "ฉันค่อนข้างเชี่ยวชาญ",
+      "learnLittle": "เล็กน้อย",
+      "learnNever": "ไม่เคย — เป็นมือใหม่ทั้งหมด",
+      "learnTitle": "คุณเคยเรียน {{lang}} มาก่อนหรือไม่?"
+    },
+    "confident": {
+      "addBetter": "ปลดล็อกเสียงที่ไพเราะยิ่งขึ้น",
+      "andMore": "+{{count}} เพิ่มเติม",
+      "chooseVoices": "เลือกเสียง",
+      "noVoiceFor": "ยังไม่มีเสียง {{lang}} — มาเพิ่มเสียงเพื่อให้ Corpán อ่านออกเสียงได้",
+      "voiceCountMany": "มี {{count}} เสียงพร้อมใช้งาน",
+      "voiceCountOne": "มี 1 เสียงพร้อมใช้งาน",
+      "yourVoiceFor": "เสียง {{lang}} ของคุณ"
+    },
+    "fork": {
+      "child": {
+        "desc": "หนังสือและเกมที่อ่อนโยน สนุกสนานสำหรับผู้เรียนอายุน้อย",
+        "label": "ตั้งค่าสำหรับเด็ก"
+      },
+      "enjoy": {
+        "desc": "หนังสือ เรื่องราว เกม แบบฝึกหัด และอื่นๆ — ทั้งหมดในภาษาของคุณ",
+        "label": "เพลิดเพลินกับ Corpán ใน {{lang}}"
+      },
+      "learn": {
+        "desc": "เรื่องราว เกม แบบฝึกหัด และเสียงในภาษาใหม่",
+        "label": "เรียนรู้ภาษา"
+      },
+      "polyglot": {
+        "desc": "เพิ่มหลายภาษาและสำรวจทุกสิ่ง",
+        "label": "สำรวจหลายภาษา"
+      },
+      "subtitle": "เราจะตั้งค่าทุกอย่างให้คุณ คุณสามารถเปลี่ยนได้ภายหลัง",
+      "title": "อะไรที่ทำให้คุณมาที่ Corpán?"
+    },
+    "interests": {
+      "audio": "ฟังเสียง",
+      "audioDesc": "หนังสือเสียง การบรรยาย และวิทยุ",
+      "games": "เล่นเกม",
+      "gamesDesc": "เรียนรู้ผ่านความท้าทายที่สนุกสนาน",
+      "read": "อ่านเรื่องราวและหนังสือ",
+      "readDesc": "ดื่มด่ำกับหนังสืออ่านในภาษาของคุณ",
+      "speak": "ฝึกพูด",
+      "speakDesc": "พูดวลีออกเสียงและรับคำแนะนำ",
+      "study": "ศึกษาและฝึกฝน",
+      "studyDesc": "สร้างคลังคำศัพท์ด้วยการฝึกฝนที่เน้น",
+      "subtitle": "เลือกสิ่งที่คุณสนใจ — เราจะแนะนำประสบการณ์ที่ตรงกัน เลือกได้",
+      "title": "คุณต้องการทำอะไร?",
+      "wild": "สำรวจสิ่งแปลกใหม่",
+      "wildDesc": "ประสบการณ์ที่น่าประหลาดใจและทดลอง"
+    },
+    "ttsIntro": "Corpán อ่านออกเสียง แตะเสียงเพื่อฟังด้วยความเร็วของคุณ",
+    "voiceGuide": {
+      "intro": "อุปกรณ์ของคุณมีเสียงที่ไพเราะและเป็นธรรมชาติในตัว — ฟรี และดีกว่าค่าเริ่มต้นมาก ผู้ผลิตแค่ปิดไว้ มาเปิดใช้งานกัน; ใช้เวลาเพียงไม่กี่แตะ:",
+      "macStep1": "เปิดการตั้งค่าระบบ (System Settings)",
+      "macStep2": "ไปที่ การช่วยการเข้าถึง (Accessibility) → เนื้อหาเสียงพูด (Spoken Content)",
+      "macStep3": "ใต้ เสียงระบบ (System Voice) เปิด จัดการเสียง (Manage Voices)",
+      "macStep4": "ดาวน์โหลดเสียง Premium หรือ Enhanced สำหรับภาษาของคุณ",
+      "macStep5": "กลับมาที่ Corpán — เสียงจะปรากฏขึ้นที่นี่โดยอัตโนมัติ",
+      "step1": "แตะ “เปิดการตั้งค่า” ด้านล่าง",
+      "step2": "ไปที่ การช่วยการเข้าถึง (Accessibility) → เนื้อหาเสียงพูด (Spoken Content) → เสียง (Voices)",
+      "step3": "แตะภาษาของคุณ",
+      "step4": "ดาวน์โหลดเสียง Premium หรือ Enhanced",
+      "step5": "กลับมาที่ Corpán — เสียงจะปรากฏขึ้นที่นี่โดยอัตโนมัติ",
+      "title": "ปลดล็อกเสียงที่ดีที่สุดของอุปกรณ์คุณ"
+    },
+    "voicePreviewAria": "ดูตัวอย่าง {{name}}",
+    "voicePreviewSelected": "ดูตัวอย่างที่เลือก",
+    "voiceRecommended": "แนะนำ",
+    "voiceSelectedCount": "{{count}} จาก {{total}}",
+    "whatToStart": {
+      "title": "เราจะเริ่มจากตรงไหนดี?",
+      "subtitle": "เลือกหนึ่งอย่างเพื่อเริ่มเลย — ที่เหลืออยู่แค่แตะเดียว",
+      "read": {
+        "label": "อ่าน",
+        "desc": "ดำดิ่งไปกับเรื่องราวและหนังสือ"
+      },
+      "study": {
+        "label": "เรียน",
+        "desc": "สะสมคำศัพท์ด้วยการฝึกแบบเจาะจง"
+      },
+      "playMusic": {
+        "label": "เล่นดนตรี",
+        "desc": "ลองสัมผัสภาษาของคุณบนแท่นดีเจ"
+      },
+      "playGames": {
+        "label": "เล่นเกม",
+        "desc": "เรียนรู้ผ่านความท้าทายสนุก ๆ"
+      },
+      "surprise": {
+        "label": "เซอร์ไพรส์ฉันสิ!",
+        "desc": "พาฉันไปที่สนุก ๆ สักที่"
+      }
+    }
   },
   "socials": {
     "youtube": {
@@ -129,6 +357,16 @@
       "cta": "เยี่ยมชม",
       "title": "encorpora.io",
       "desc": "เว็บไซต์หลักพร้อมเอกสารและชุมชน."
+    },
+    "instagram": {
+      "cta": "ติดตาม",
+      "desc": "@corpanapp",
+      "title": "ติดตามบน Instagram"
+    },
+    "share": {
+      "title": "แชร์ Corpán",
+      "text": "เรียนภาษากับ Corpán",
+      "copied": "คัดลอกลิงก์แล้ว!"
     }
   },
   "common": {
@@ -136,7 +374,9 @@
     "instantPolyglotPractice": "ฝึกหลายภาษาได้ทันที",
     "cancel": "ยกเลิก",
     "delete": "ลบ",
-    "create": "สร้าง"
+    "create": "สร้าง",
+    "dismiss": "ปิด",
+    "skip": "ข้าม"
   },
   "dialects": {
     "en": "อังกฤษ",
@@ -234,7 +474,28 @@
     "ur-PK": "อูรดู (ปากีสถาน)",
     "ta": "ทมิฬ",
     "te": "เตลูกู",
-    "kn": "กันนาดา"
+    "kn": "กันนาดา",
+    "sv": "สวีเดน",
+    "no": "นอร์เวย์",
+    "da": "เดนมาร์ก",
+    "nl": "ดัตช์",
+    "ms": "มาเลย์",
+    "fi": "ฟินแลนด์",
+    "sw": "สวาฮีลี",
+    "el": "กรีก",
+    "he": "ฮีบรู",
+    "ne": "ภาษาเนปาล",
+    "hr": "โครเอเชีย",
+    "sr": "เซอร์เบีย",
+    "uk": "ยูเครน",
+    "bg": "บัลแกเรีย",
+    "ro": "โรมาเนีย",
+    "ca": "คาตาลัน",
+    "yue-Hant-HK": "กวางตุ้ง (แบบดั้งเดิม)",
+    "cs": "เช็ก",
+    "lt": "ลิทัวเนีย",
+    "sk": "สโลวัก",
+    "sl": "สโลวีเนีย"
   },
   "footer": {
     "appVersion": "เวอร์ชันแอป",
@@ -256,28 +517,29 @@
     "rename": "เปลี่ยนชื่อ",
     "renameLabel": "ชื่อใหม่สำหรับสแต็ก",
     "selectAria": "เลือกสแต็ก",
-    "selectPlaceholder": "เลือก…"
+    "selectPlaceholder": "เลือก…",
+    "introTipTitle": "สแต็ก",
+    "introTipBody": "Stacks เก็บการตั้งค่าการเรียนรู้ที่แตกต่างกัน — อันหนึ่งสำหรับท่องเที่ยว อีกอันสำหรับงาน แตะ + เพื่อสร้าง stack ใหม่"
   },
   "rating": {
-    "title": "คุณชอบใช้ Corpán ไหม?",
-    "description": "Corpán พัฒนาโดยทีมโอเพ่นซอร์สเล็ก ๆ ที่เพิ่งเริ่มต้น ถ้าคุณคิดว่าแอปนี้คู่ควรกับ 5 ดาว การให้คะแนนสั้น ๆ จะช่วยเราได้มากเลยค่ะ/ครับ。",
-    "feedbackHint": "ถ้ายังไม่ถึง 5 ดาวสำหรับคุณ กรุณากด ‘ส่งความคิดเห็น’ แล้วบอกเราว่าควรปรับปรุงอะไร แทนการให้คะแนนต่ำกว่า。",
-    "feedbackButton": "ส่งความคิดเห็นบน GitHub",
-    "rateNow": "⭐ ให้คะแนน 5 ดาว",
-    "remindLater": "ไว้ทีหลัง",
-    "noThanks": "ไม่ล่ะ ขอบคุณ",
-    "close": "ปิด"
+    "title": "รัก Corpán ไหม?",
+    "description": "ถ้าคุณรัก Corpán ให้คะแนน 5 ดาว ในร้านแอป คะแนนใดก็ตามที่ต่ำกว่า 5 ดาวทำร้าย Corpán",
+    "feedbackHint": "ถ้ายังไม่ใช่แอป 5 ดาวสำหรับคุณ โปรดส่งอีเมลหาเราหรือเปิด issue บน GitHub แล้วบอกเราว่าต้องแก้อะไร เราอยากทำให้ดีขึ้น",
+    "rateNow": "⭐ ให้ 5 ดาว",
+    "close": "ปิด",
+    "emailButton": "ส่งอีเมลหาเรา",
+    "githubButton": "GitHub issue"
   },
   "packs": {
     "title": "แพ็ก",
-    "available": "แพ็กที่มี",
-    "emptyAvailable": "ยังไม่มีแพ็ก",
-    "installed": "แพ็กที่ติดตั้ง",
-    "emptyInstalled": "ยังไม่ได้ติดตั้งแพ็ก",
+    "available": "พร้อมใช้งาน",
+    "emptyAvailable": "ยังไม่มีรายการที่พร้อมใช้งาน",
+    "installed": "ติดตั้งแล้ว",
+    "emptyInstalled": "ยังไม่มีรายการที่ติดตั้งแล้ว",
     "get": "รับ",
     "open": "เปิด",
     "remove": "ลบ",
-    "version": "เวอร์ชัน {{version}}",
+    "version": "v{{version}}",
     "refresh": "รีเฟรช",
     "free": "ฟรี",
     "install": "ติดตั้ง",
@@ -288,10 +550,289 @@
     "manifestTitle": "URL แมนิฟেস্ট",
     "manifestPlaceholder": "https://example.com/manifest.json",
     "manifestHint": "วาง URL แมนิฟেস্ট",
-    "devUnlockTitle": "แพ็กสำหรับนักพัฒนา",
+    "devUnlockTitle": "Packs สำหรับนักพัฒนา",
     "devUnlockHint": "แตะ 7 ครั้งเพื่อปลดล็อกการติดตั้งด้วยแมนิฟেস্ট",
-    "devUnlockToast": "ปลดล็อกแพ็กนักพัฒนาแล้ว",
-    "devIntro": "ลองแพ็ก Corpán หรือสร้างของคุณเอง",
-    "devLink": "ดูเพิ่มที่ Free2z"
+    "devUnlockToast": "ปลดล็อก Packs สำหรับนักพัฒนาแล้ว",
+    "devIntro": "ลอง Corpán Pack หรือสร้างของคุณเอง",
+    "devLink": "ดูเพิ่มที่ Free2z",
+    "new": "ใหม่",
+    "offline": "ออฟไลน์",
+    "purchasing": "กำลังซื้อ...",
+    "buy": "ซื้อ {{price}}",
+    "premium": "พรีเมียม",
+    "availableOnMobile": "มีบน iOS และ Android",
+    "checking": "กำลังตรวจสอบ…",
+    "phrasePack": {
+      "sectionTitle": "ชุดวลี",
+      "offlineEmpty": "คุณออฟไลน์อยู่ เชื่อมต่อเพื่อดู",
+      "searchPlaceholder": "ค้นหา…",
+      "noMatches": "ไม่พบผลลัพธ์",
+      "filter": {
+        "all": "ทั้งหมด",
+        "available": "พร้อมใช้งาน",
+        "free": "ฟรี",
+        "paid": "เสียค่าใช้จ่าย",
+        "installed": "ติดตั้งแล้ว"
+      },
+      "downloadAll": "ดาวน์โหลดทั้งหมด",
+      "downloadAllSummary": "พร้อมใช้งาน {{count}} รายการ · ~{{size}} MB",
+      "installingBatch": "กำลังติดตั้ง {{current}} จาก {{total}}…",
+      "batchFailed": "{{count}} รายการติดตั้งไม่ได้ — แตะเพื่อลองใหม่",
+      "activeInStack": "ใช้งานอยู่",
+      "activeBadge": "ใช้งานอยู่",
+      "subBadge": "สมาชิก",
+      "paid": "เสียค่าใช้จ่าย",
+      "free": "ฟรี",
+      "unlockSub": "ปลดล็อกด้วย Corpán Plus",
+      "entryCount": "{{n}} วลี",
+      "allInstalled": {
+        "title": "คุณมีชุดวลีทั้งหมดแล้ว",
+        "subtitle": "ชุดหัวข้อใหม่ออกสม่ำเสมอ — กลับมาดูได้ทุกเมื่อ",
+        "manageCta": "จัดการใน Stacks"
+      },
+      "filterEmpty": {
+        "installed": "ยังไม่ได้ติดตั้งอะไรเลย",
+        "cta": "แสดงทั้งหมด"
+      },
+      "showAll": "แสดงทั้งหมด ({{count}})",
+      "collapseList": "ย่อ",
+      "openDrawer": "เรียกดูชุดวลี ({{count}})",
+      "openDrawerLabel": "เรียกดูชุดวลี",
+      "inactiveBadge": "ไม่เปิดใช้งาน",
+      "moreActionsLabel": "การดำเนินการเพิ่มเติม",
+      "install": "ติดตั้ง"
+    },
+    "unlockWithPlus": "ปลดล็อกด้วย Corpán Plus",
+    "plus": "Corpán Plus",
+    "includedWithPlus": "รวมอยู่ใน Plus",
+    "installFailedTitle": "ติดตั้งไม่สำเร็จ",
+    "installStuckDetail": "ไม่มีความคืบหน้ามาระยะหนึ่งแล้ว ตรวจสอบการเชื่อมต่อของคุณแล้วลองอีกครั้ง",
+    "installStuckTitle": "การดาวน์โหลดหยุดชะงัก",
+    "openPack": "เปิด {{name}}",
+    "recent": "ล่าสุด",
+    "updateAll": "อัปเดตทั้งหมด ({{count}})",
+    "updateAvailable": "มีการอัปเดต"
+  },
+  "subscription": {
+    "startTrialPeriod": "เริ่มทดลองใช้ฟรี {{period}}",
+    "trialFree": "ฟรี {{period}}",
+    "trialThenCancel": "จากนั้น {{price}}/{{period}} · ยกเลิกได้ทุกเมื่อ ไม่มีการเรียกเก็บเงินวันนี้",
+    "title": "ปลดล็อก Corpán Plus",
+    "description": "เข้าถึงทุกฟีเจอร์ ภาษา แพ็ก และอัปเดตได้ไม่จำกัด",
+    "annual": "รายปี",
+    "monthly": "รายเดือน",
+    "subscribe": "สมัครสมาชิก",
+    "subscribing": "กำลังสมัคร...",
+    "subscribed": "Corpán Plus เปิดใช้งานอยู่",
+    "subscribedDescription": "แผน {{plan}} เปิดใช้งานอยู่ ทุกอย่างถูกปลดล็อกแล้ว",
+    "manage": "จัดการการสมัครสมาชิก",
+    "termsOfUse": "ข้อกำหนดการใช้งาน",
+    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "autoRenewNotice": "การสมัครสมาชิกจะต่ออายุโดยอัตโนมัติ ยกเลิกได้ตลอดเวลาในบัญชี {{store}} ของคุณ",
+    "storeApple": "Apple ID",
+    "storeGoogle": "Google Play",
+    "pendingHeading": "กำลังรอการอนุมัติ",
+    "pendingDetail": "การสมัครของคุณกำลังรอการอนุมัติ (Ask to Buy หรือการยืนยันจากธนาคาร) และจะเปิดใช้งานอัตโนมัติเมื่ออนุมัติแล้ว",
+    "storeUnreachable": "เราไม่สามารถเชื่อมต่อกับ App Store ได้ในขณะนี้",
+    "tryAgain": "ลองอีกครั้ง",
+    "affiliateCodeLabel": "รหัสพันธมิตร",
+    "affiliateCodePlaceholder": "ไม่บังคับ",
+    "affiliateInvalidFormat": "ใช้ตัวอักษร ตัวเลข ขีดกลาง หรือขีดล่าง",
+    "affiliateChecking": "กำลังตรวจสอบรหัส...",
+    "affiliateApplied": "รหัสจะถูกแนบกับการสมัครสมาชิกนี้",
+    "affiliateCodeHelp": "ถ้ามีคนส่งคุณมาที่นี่ ให้ป้อนรหัสของเขาก่อนสมัครสมาชิก",
+    "introPriceHeadline": "{{introPrice}} สำหรับ {{period}}",
+    "introPriceThen": ", จากนั้น {{price}}/{{period}}",
+    "perMonth": "เดือน",
+    "perYear": "ปี",
+    "startFreeTrial": "เริ่มทดลองใช้งานฟรี",
+    "trialFirstCharge": "{{period}}: คิดเงินครั้งแรก",
+    "trialHeadline": "{{period}} ฟรี",
+    "trialReassurance": "ไม่ต้องชำระเงินตอนนี้ · ยกเลิกได้ตลอดเวลา",
+    "trialThenPrice": ", จากนั้น {{price}}/{{period}}",
+    "trialToday": "วันนี้: เริ่มต้น",
+    "rate": "ให้คะแนน Corpán"
+  },
+  "restore": {
+    "button": "กู้คืนการซื้อ",
+    "restoring": "กำลังกู้คืน...",
+    "noPurchases": "ไม่พบการซื้อก่อนหน้า",
+    "success": "กู้คืน {{count}} รายการ",
+    "error": "กู้คืนการซื้อล้มเหลว"
+  },
+  "catalogPaywall": {
+    "allLanguages": "ทั้ง {{count}} ภาษา",
+    "thisBook": "หนังสือเล่มนี้",
+    "blurbAll": "ทุกการบรรยาย ทั้งตอนนี้และในอนาคต เป็นของคุณตลอดไป",
+    "blurbOne": "เป็นของคุณตลอดไป",
+    "buyWithPrice": "ซื้อ — {{price}}",
+    "orUnlockEverything": "หรือปลดล็อกทั้งหมด",
+    "subMonthly": "รายเดือน",
+    "subMonthlyPeriod": "ต่อเดือน",
+    "subYearly": "รายปี",
+    "subYearlyPeriod": "ต่อปี · คุ้มที่สุด",
+    "errorHeading": "ขณะนี้ไม่สามารถเชื่อมต่อ App Store ได้",
+    "tryAgain": "ลองอีกครั้ง",
+    "pendingHeading": "รออนุมัติ",
+    "pendingDetail": "การซื้อของคุณกำลังรออนุมัติ (Ask to Buy หรือตรวจสอบจากธนาคาร) จะเปิดใช้งานอัตโนมัติเมื่อได้รับอนุมัติ",
+    "noProductsError": "App Store ไม่ส่งสินค้ากลับมา โดยปกติจะแก้ไขได้ในไม่กี่วินาที — โปรดลองอีกครั้ง"
+  },
+  "ttsBanner": {
+    "playbackFailedHeading": "การเล่นเสียงล้มเหลว",
+    "playbackFailedDetail": "เปิดการตั้งค่า TTS ของอุปกรณ์เพื่อแก้ไข",
+    "openSettingsAction": "เปิดการตั้งค่า TTS"
+  },
+  "discoverPacks": {
+    "title": "ทำให้ Corpán เป็นของคุณ",
+    "subtitle": "เพิ่มผู้อ่าน เกม และเครื่องมือที่ดื่มด่ำ — สร้างไว้ใน Corpán เพื่อให้การฝึกฝนของคุณลึกซึ้งยิ่งขึ้น",
+    "maybeLater": "ไว้ค่อยทีหลัง",
+    "empty": "มีแพ็กอีกหลายชุดกำลังจะมา — ในระหว่างนี้สำรวจ Corpán ก่อน",
+    "offlineEmpty": "เชื่อมต่ออินเทอร์เน็ตเพื่อค้นหาแพ็ก — หรือข้ามไปก่อน"
+  },
+  "paywall": {
+    "title": "ปลดล็อก Corpán Plus",
+    "thanksTitle": "Corpán Plus เปิดใช้งานอยู่",
+    "thanksBody": "ทุกอย่างถูกปลดล็อกแล้ว",
+    "bookSubhead": "อ่าน {{title}} ต่อและปลดล็อกทุกฟีเจอร์",
+    "subhead": "เข้าถึงทุกฟีเจอร์ ภาษา และอัปเดตได้ไม่จำกัด ไม่มีโฆษณา ข้อมูลของคุณยังอยู่บนอุปกรณ์ของคุณ",
+    "pitch": "หนังสือ แพ็ก เกม เครื่องมือฝึกพูด และประสบการณ์การเรียนรู้ใหม่ ๆ รวมอยู่ทั้งหมด",
+    "maybeLater": "ไว้ทีหลัง",
+    "continue": "ต่อไป",
+    "dismiss": "ปิด"
+  },
+  "streak": {
+    "title": "สถิติต่อเนื่อง {{count}} วัน"
+  },
+  "experiences": {
+    "earthgate_reader": {
+      "blurb": "อ่านไปพร้อมกับหนังสือเสียงบรรยาย — สงบเงียบ พร้อมไฮไลต์คำต่อคำ",
+      "name": "Earthgate Reader"
+    },
+    "hanzipan": {
+      "blurb": "เชี่ยวชาญอักษรจีนแมนดาริน ทีละขีด",
+      "name": "Hanzipan"
+    },
+    "hover_runner": {
+      "blurb": "ฟังวลี แล้วบังคับให้ตรงกัน — เรียนรู้ผ่านการเล่น",
+      "name": "Hover Runner"
+    },
+    "juice_squeeze": {
+      "blurb": "สร้างวลีทีละส่วนในเกมสั้นๆ",
+      "name": "Juice Squeeze"
+    },
+    "phrase_main": {
+      "blurb": "พลิกดูวลีในภาษาของคุณ — ฝึกฝนอย่างรวดเร็วและตรงจุด",
+      "name": "Phrase Flip"
+    },
+    "pronunciation_coach": {
+      "blurb": "พูดวลีออกเสียงและรับคำแนะนำการออกเสียง",
+      "name": "Parlometron"
+    },
+    "stargate_reader": {
+      "blurb": "หนังสือเสียงชุดเดียวกันในรูปแบบ 3 มิติที่สมจริง — คำพูดจะลอยผ่านอวกาศขณะอ่าน",
+      "name": "Stargate Reader"
+    },
+    "world_radio": {
+      "blurb": "ฟังวิทยุสดจากทั่วโลก",
+      "name": "World Radio"
+    },
+    "tutomaton": {
+      "name": "ทูโทมาตอน",
+      "blurb": "ติวเตอร์ส่วนตัวในเครื่องที่ใจเย็น พร้อมช่วยคุณเรียนรู้ทุกภาษาที่คุณสนใจ"
+    },
+    "corpan_city": {
+      "name": "Corpan City",
+      "blurb": "เมืองมีชีวิตที่เปลี่ยนทุกการพบเจอเป็นบทเรียน"
+    },
+    "beatlounge": {
+      "name": "beatlounge",
+      "blurb": "แซมเปิลภาษาที่คุณกำลังเรียน สแครชซ้ำจนจำติดหัว"
+    }
+  },
+  "home": {
+    "continueLearning": "เรียนรู้ต่อ",
+    "experiences": "ประสบการณ์",
+    "forYou": "สำหรับคุณ",
+    "get": "รับ",
+    "installing": "กำลังติดตั้ง…",
+    "library": "คลัง",
+    "like": "ถูกใจ",
+    "notForMe": "ไม่ใช่สำหรับฉัน",
+    "open": "เปิด",
+    "openPhrases": "เปิดวลี",
+    "phraseFlipDesc": "พลิกดูวลีในภาษาของคุณ",
+    "plusChip": "Corpán Plus — ปลดล็อกทุกอย่าง",
+    "recommended": "แนะนำ",
+    "showAnother": "แสดงรายการอื่น",
+    "tryIt": "ลองเลย",
+    "packUpdates": "คุณมีอัปเดตแพ็ก",
+    "updateAll": "อัปเดตทั้งหมด"
+  },
+  "offline": {
+    "cachedSubtitle": "แสดงผลลัพธ์ที่แคชไว้ล่าสุดของคุณ",
+    "catalogSubtitle": "เชื่อมต่อใหม่เพื่อค้นหาแพ็กใหม่ แพ็กที่ติดตั้งไว้ยังคงใช้งานได้",
+    "installNeedsInternet": "เชื่อมต่อใหม่เพื่อดาวน์โหลด",
+    "onboardingBanner": "ออฟไลน์ — รายการที่เลือกจะติดตั้งเมื่อคุณเชื่อมต่อใหม่",
+    "packCatalogSubtitle": "แพ็กที่ติดตั้งไว้ยังคงใช้งานได้ เชื่อมต่อใหม่เพื่อเรียกดูเพิ่มเติม",
+    "packCatalogTitle": "แค็ตตาล็อกแพ็กต้องใช้อินเทอร์เน็ต",
+    "phrasePacksOnboardingSubtitle": "คุณสามารถเลือกแพ็กวลีได้ภายหลังที่ การตั้งค่า (Settings) → แพ็ก (Packs) เมื่อคุณเชื่อมต่อใหม่",
+    "phrasePacksSubtitle": "แพ็กวลีที่ติดตั้งไว้ยังคงใช้งานได้ เชื่อมต่อใหม่เพื่อเรียกดูแพ็กใหม่",
+    "phrasePacksTitle": "แค็ตตาล็อกแพ็กวลีต้องใช้อินเทอร์เน็ต",
+    "purchaseNeedsInternet": "เชื่อมต่อใหม่เพื่อซื้อ",
+    "restoreSubtitle": "เชื่อมต่อใหม่เพื่อกู้คืนการซื้อ",
+    "subscriptionSubtitle": "เชื่อมต่อใหม่เพื่อสมัครสมาชิก แพ็กที่ติดตั้งไว้และวลีที่มาพร้อมกันยังคงใช้งานได้",
+    "subscriptionTitle": "การสมัครสมาชิกต้องใช้อินเทอร์เน็ต",
+    "title": "ไม่มีอินเทอร์เน็ต",
+    "voiceDownloadSubtitle": "เสียงที่มีอยู่บนอุปกรณ์ของคุณยังคงใช้งานได้ เชื่อมต่อใหม่เพื่อติดตั้งเพิ่มเติม",
+    "voiceDownloadTitle": "การดาวน์โหลดเสียงต้องใช้อินเทอร์เน็ต"
+  },
+  "quickSettings": {
+    "fullSettings": "การตั้งค่าทั้งหมด",
+    "title": "การตั้งค่าด่วน"
+  },
+  "tour": {
+    "maybeLater": "ไว้ทีหลัง",
+    "progress": "{{n}} จาก {{total}}"
+  },
+  "update": {
+    "availableLine": "มีการอัปเดต → {{version}}",
+    "close": "ปิด",
+    "description": "Corpán เวอร์ชันใหม่กว่าพร้อมใช้งานใน App Store ของคุณ",
+    "remindLater": "เตือนฉันทีหลัง",
+    "skipThisVersion": "ข้ามเวอร์ชันนี้",
+    "title": "มีการอัปเดต",
+    "update": "อัปเดต",
+    "updateNow": "อัปเดตตอนนี้",
+    "versionLine": "เวอร์ชัน {{version}} พร้อมติดตั้งแล้ว"
+  },
+  "streakBadge": {
+    "label": "สตรีค {{days}} วัน"
+  },
+  "dailyLock": {
+    "title": "{{count}} {{unit}} ของคุณสำหรับวันนี้",
+    "streakActive": "สตรีค {{days}} วัน — กลับมาพรุ่งนี้เพื่อรักษาสตรีค",
+    "streakStart": "กลับมาพรุ่งนี้เพื่อรักษาสตรีค",
+    "resetIn": "รีเซ็ตใน {{time}}",
+    "cta": "ใช้งานต่อด้วย Corpán Plus",
+    "dismiss": "อาจจะทีหลัง",
+    "closeAria": "ปิด",
+    "countdownHm": "{{h}}ชม {{m}}นาที",
+    "countdownM": "{{m}}นาที",
+    "countdownSoon": "ทุกเมื่อ"
+  },
+  "code": {
+    "attributedUnverified": "โค้ดจะถูกแนบไปกับการสมัครของคุณ",
+    "checkFailed": "ไม่สามารถตรวจสอบได้",
+    "checking": "กำลังตรวจสอบโค้ด…",
+    "creditedTo": "เครดิตไปยัง {{partner}}",
+    "fieldLabel": "โค้ดข้อเสนอหรือพันธมิตร",
+    "help": "มีโค้ดหรือไม่? ป้อนเพื่อใช้ข้อเสนอของคุณ",
+    "redeemUnavailable": "ไม่สามารถเปิดหน้าจอแลกได้ กรุณาลองใหม่",
+    "redeemWithApple": "แลกกับ Apple",
+    "redeeming": "กำลังเปิดการแลก…",
+    "retry": "ลองใหม่",
+    "subscribeWithDiscount": "สมัครสมาชิก ({{discount}})",
+    "redeemCode": "ใช้โค้ด",
+    "notApplied": "โค้ดนี้ไม่ได้ให้ส่วนลด"
   }
 }
