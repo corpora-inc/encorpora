@@ -10,6 +10,8 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.2] - 2026-06-23
+
 ### Fixed
 - **No more click/pop when scrubbing or switching narration language.**
   Seeking and language switches cut the playing source off mid-waveform and
