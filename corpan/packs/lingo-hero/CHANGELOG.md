@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+- **Playability overhaul — much slower and easier.** Notes now fall over ~7s
+  (was ~1.3–2.7s) and movement is delta-timed, so it no longer runs 2× faster on
+  90/120Hz phones. Words and note cards are substantially larger and more
+  readable, the hit window is far more forgiving, and BLITZ wave cadence eased
+  from ~1.2s to 3.5–5.5s between waves. Tunable via `NOTE_TRAVEL_SECONDS`.
+
 ### Fixed
 - Install no longer fails with "Pack id mismatch": the pack id is now the
   underscore form `lingo_hero` (manifest, catalog, and game registration) to
