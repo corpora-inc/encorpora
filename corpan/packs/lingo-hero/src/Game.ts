@@ -457,7 +457,9 @@ export class Game {
       this.roundWords.length,
       this.activeLanguage.isRTL
     );
-    this.caughtCount += 1;
+    // Clamp the increment to the sequence length so caughtCount can never
+    // exceed roundWords.length even under a (guarded-against) re-entrant call.
+    this.caughtCount = Math.min(this.caughtCount + 1, this.roundWords.length);
     this.stepActive = false;
 
     if (this.caughtCount >= this.roundWords.length) {
