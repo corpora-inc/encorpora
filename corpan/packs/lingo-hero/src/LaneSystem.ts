@@ -27,8 +27,9 @@ export class LaneSystem {
     this.laneWidth = actualTotalWidth / 3;
     this.startX = (width - actualTotalWidth) / 2;
     
-    // Scale note radius based on lane width
-    this.noteRadius = Math.min(40, this.laneWidth * 0.35);
+    // Scale note radius based on lane width — bigger cards so the words are
+    // readable while they fall.
+    this.noteRadius = Math.min(72, this.laneWidth * 0.5);
   }
 
   getLaneX(index: LaneIndex): number {
@@ -53,7 +54,7 @@ export class LaneSystem {
   // Hit detection logic
   checkHit(lane: LaneIndex, notes: Note[]): Note | null {
     const hitY = this.getStrumLineY();
-    const hitZoneRadius = this.noteRadius * 1.5; // Scale hit zone with note size
+    const hitZoneRadius = this.noteRadius * 2.4; // Generous, forgiving timing window
 
     // Find the note in this lane that is closest to the strum line
     // and hasn't been hit yet

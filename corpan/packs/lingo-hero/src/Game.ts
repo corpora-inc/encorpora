@@ -37,7 +37,14 @@ export class Game {
   private notes: Note[] = [];
   private score: number = 0;
   private combo: number = 0;
-  private speed: number = 3;
+  // Seconds a note takes to fall from spawn to the strum line. Higher = slower &
+  // easier — THE primary playability knob. (Was effectively ~1.3–2.7s AND
+  // frame-rate-dependent, which made it unplayable on high-refresh phones.)
+  private readonly NOTE_TRAVEL_SECONDS = 7;
+  // Note fall speed in PIXELS PER SECOND, derived from NOTE_TRAVEL_SECONDS on
+  // resize and applied with delta-time in the loop (frame-rate independent).
+  private speed: number = 200;
+  private lastTimestamp: number = 0;
 
   private isRunning: boolean = false;
   private fontsReady: boolean = false;
@@ -166,7 +173,9 @@ export class Game {
     if (ctx) ctx.scale(dpr, dpr);
 
     this.laneSystem.resize(width, height);
-    this.speed = Math.max(2, height * 0.005);
+    // px/sec so a note covers spawn(-100)→strum(0.8·H) in NOTE_TRAVEL_SECONDS,
+    // independent of canvas size and device refresh rate.
+    this.speed = (height * 0.8 + 100) / this.NOTE_TRAVEL_SECONDS;
   }
 
   private showMenu() {
@@ -382,6 +391,13 @@ export class Game {
   private loop(timestamp: number) {
     if (!this.isRunning) return;
 
+    // Frame-rate-independent timestep (clamped so a backgrounded tab resuming
+    // can't teleport notes through the strum line).
+    const dt = this.lastTimestamp
+      ? Math.min(0.05, (timestamp - this.lastTimestamp) / 1000)
+      : 0;
+    this.lastTimestamp = timestamp;
+
     if (this.state === GameState.PLAYING) {
       // 1. Spawning
       if (this.mode === GameMode.PRACTICE) {
@@ -390,11 +406,11 @@ export class Game {
         }
       } else {
         if (timestamp > this.nextWaveTime) {
-          const minTimeGap = 150 / this.speed;
           this.spawnWave();
-          const dynamicInterval = Math.max(1200, 2500 - this.score * 5);
-          const finalInterval = Math.max(dynamicInterval, minTimeGap * 16);
-          this.nextWaveTime = timestamp + finalInterval;
+          // Calm, confidence-building cadence: a fresh wave every 5.5s, easing to
+          // a 3.5s floor as the score climbs. (Was as low as ~1.2s.)
+          const interval = Math.max(3500, 5500 - this.score * 3);
+          this.nextWaveTime = timestamp + interval;
         }
       }
 
@@ -403,7 +419,7 @@ export class Game {
       const strumY = this.laneSystem.getStrumLineY();
 
       this.notes.forEach((note) => {
-        note.y += this.speed;
+        note.y += this.speed * dt;
 
         if (note.y > boundsHeight + 100) {
           note.missed = true;
@@ -411,7 +427,7 @@ export class Game {
 
         if (
           note.isTarget &&
-          note.y > strumY + 50 &&
+          note.y > strumY + this.laneSystem.getNoteRadius() * 2.2 &&
           !note.hit &&
           !note.missed
         ) {

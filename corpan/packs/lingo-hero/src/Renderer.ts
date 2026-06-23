@@ -243,7 +243,9 @@ export class Renderer {
       // Text Rendering
       if (note.text) {
         this.ctx.fillStyle = "white";
-        let fontSize = 20; 
+        // Scale the word with the (now larger) note so it's legible at a glance;
+        // it still auto-shrinks below to fit narrow cards / long words.
+        let fontSize = Math.max(30, r * 0.62);
         this.ctx.font = `bold ${fontSize}px 'Russo One', sans-serif`;
         
         // Fit text
