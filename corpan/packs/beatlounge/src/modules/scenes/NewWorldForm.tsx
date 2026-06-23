@@ -73,6 +73,12 @@ export const NewWorldForm = ({ ctrl, onCreate, onCancel }: Props) => {
     })
 
   const reroll = () => setDraft(ctrl.rollWorld({ from: draft, lock: locks }))
+  // Per-facet reroll: roll just this facet, keep every other one (lock = all but f).
+  // The dice is disabled while its facet is locked, so a locked facet never moves.
+  const rerollFacet = (f: DraftFacet) =>
+    setDraft(
+      ctrl.rollWorld({ from: draft, lock: new Set(ROWS.map((r) => r.facet).filter((x) => x !== f)) })
+    )
   const create = () => {
     ctrl.applyWorld(draft)
     onCreate()
@@ -90,6 +96,15 @@ export const NewWorldForm = ({ ctrl, onCreate, onCancel }: Props) => {
               <span className="bl-newworld-value" title={r.value(draft)}>
                 {r.value(draft)}
               </span>
+              <button
+                type="button"
+                className="bl-icon-btn bl-newworld-dice"
+                aria-label={ct("scenes.rerollFacet", { facet: label })}
+                disabled={locked}
+                onClick={() => rerollFacet(r.facet)}
+              >
+                <Glyph name="dice" size={15} />
+              </button>
               <button
                 type="button"
                 className={`bl-icon-btn bl-newworld-lock${locked ? " is-locked" : ""}`}
