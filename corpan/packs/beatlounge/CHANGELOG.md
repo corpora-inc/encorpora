@@ -28,6 +28,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Per-facet reroll in the "New…" form: a dice beside each row rerolls just that
   facet and keeps the rest; disabled while the facet is locked. (Beat-Lounge-Plus;
   closes #327.)
+- Score note selection: a **Select** mode in the instrument score where you tap
+  or **drag across notes** to select a set of them (bold accent highlight + a
+  count). Touch-drag uses a finger-position hit-test (iOS-reliable). Selection
+  clears on mode-off / track-switch and exposes the selected note ids for the
+  upcoming +/− and evolve-on-selection actions. Scoped to the Score — Drums'
+  paint behaviour is unchanged. (Beat-Lounge-Plus; closes #331.)
 
 ### Fixed
 - Scratch empty-state no longer looks broken: with an empty bank the idle

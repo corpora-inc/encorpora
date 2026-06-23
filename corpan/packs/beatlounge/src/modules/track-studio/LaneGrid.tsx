@@ -58,6 +58,14 @@ interface Props {
   setCell: (laneIndex: number, step: number, on: boolean) => void
   /** Is this (laneIndex, step) currently lit? Used to seed the paint stroke. */
   isCellOn: (laneIndex: number, step: number) => boolean
+  // ---- SELECT MODE (Score note-selection, #331) — optional; Drums omits these,
+  //      so its paint behaviour is unchanged. When `selectMode` is true a cell
+  //      stroke toggles the SELECTION of lit notes instead of painting.
+  selectMode?: boolean
+  /** Selected cell keys, formatted "laneIndex:step". */
+  selectedCells?: ReadonlySet<string>
+  /** Set a lit cell's SELECTED state to `sel` (only called for on cells). */
+  setCellSelected?: (laneIndex: number, step: number, sel: boolean) => void
 }
 
 /**
@@ -74,34 +82,72 @@ export const LaneGrid = ({
   onToggleLane,
   setCell,
   isCellOn,
+  selectMode = false,
+  selectedCells,
+  setCellSelected,
 }: Props) => {
   const paintMode = useRef<null | "add" | "remove">(null)
+  // Select-stroke intent: true = selecting, false = deselecting (mirrors paint).
+  const selectStroke = useRef<null | boolean>(null)
   const touched = useRef(new Set<string>())
 
   const onCellDown = (laneIndex: number, step: number) => {
+    if (selectMode) {
+      // Only lit notes are selectable; toggle this one and seed the stroke.
+      if (!isCellOn(laneIndex, step)) return
+      const key = `${laneIndex}:${step}`
+      const want = !(selectedCells?.has(key) ?? false)
+      selectStroke.current = want
+      touched.current = new Set([key])
+      setCellSelected?.(laneIndex, step, want)
+      return
+    }
     const isOn = isCellOn(laneIndex, step)
     paintMode.current = isOn ? "remove" : "add"
     touched.current = new Set([`${laneIndex}:${step}`])
     setCell(laneIndex, step, !isOn)
   }
   const onCellEnter = (laneIndex: number, step: number) => {
-    if (!paintMode.current) return
     const key = `${laneIndex}:${step}`
-    if (touched.current.has(key)) return
+    if (selectMode) {
+      if (selectStroke.current === null || touched.current.has(key)) return
+      if (!isCellOn(laneIndex, step)) return // drag only over notes
+      touched.current.add(key)
+      setCellSelected?.(laneIndex, step, selectStroke.current)
+      return
+    }
+    if (!paintMode.current || touched.current.has(key)) return
     touched.current.add(key)
     setCell(laneIndex, step, paintMode.current === "add")
   }
   const endStroke = () => {
     paintMode.current = null
+    selectStroke.current = null
     touched.current.clear()
+  }
+  // Touch drag-to-SELECT: iOS WebView won't reliably fire pointerenter on sibling
+  // cells mid-drag (the press captures the pointer), so during a select stroke we
+  // hit-test the finger position and extend the selection to whatever cell it's
+  // over. (Paint keeps its tap behaviour; this is gated on an active select stroke.)
+  const onBodyPointerMove = (e: React.PointerEvent) => {
+    if (selectStroke.current === null) return
+    const el = document.elementFromPoint(e.clientX, e.clientY)
+    const cell = el?.closest<HTMLElement>("[data-lane]")
+    if (!cell) return
+    const li = Number(cell.dataset.lane)
+    const s = Number(cell.dataset.step)
+    if (Number.isNaN(li) || Number.isNaN(s)) return
+    onCellEnter(li, s)
   }
 
   return (
     <div
       className="bl-grid-body"
       style={{ ["--bl-steps" as string]: String(steps) }}
+      onPointerMove={onBodyPointerMove}
       onPointerUp={endStroke}
       onPointerLeave={endStroke}
+      onPointerCancel={endStroke}
     >
       {lanes.map((lane, laneIndex) => {
         const isSel = selected.has(lane.selectKey)
@@ -138,9 +184,14 @@ export const LaneGrid = ({
                     "bl-cell" +
                     (cell.on ? " is-on" : "") +
                     (s === playStep ? " is-active" : "") +
-                    (s % stepsPerBeat === 0 ? " is-beat" : "")
+                    (s % stepsPerBeat === 0 ? " is-beat" : "") +
+                    (selectMode && cell.on && selectedCells?.has(`${laneIndex}:${s}`)
+                      ? " is-selected-cell"
+                      : "")
                   }
                   data-bl-nocapture
+                  data-lane={laneIndex}
+                  data-step={s}
                   style={
                     cell.on
                       ? ({ "--bl-cell-vel": String(0.45 + cell.velocity * 0.55) } as React.CSSProperties)
@@ -150,9 +201,10 @@ export const LaneGrid = ({
                     if (e.button != null && e.button > 0) return
                     onCellDown(laneIndex, s)
                   }}
-                  onPointerEnter={(e) => {
-                    if (e.buttons & 1) onCellEnter(laneIndex, s)
-                  }}
+                  // Desktop drag-paint/select goes through enter; touch drag-select is
+                  // handled reliably by the body's pointermove hit-test. onCellEnter
+                  // no-ops unless a stroke is active, so a plain hover is inert.
+                  onPointerEnter={() => onCellEnter(laneIndex, s)}
                 >
                   <span className="bl-cell-core" />
                 </button>
