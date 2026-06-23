@@ -7,6 +7,12 @@ import { Background } from "./background";
 import { Floaters } from "./floaters";
 import { Transitions } from "./transitions";
 import { laneRgb, COLORS, mix, type Rgb } from "./palette";
+import {
+  signalHit,
+  signalMiss,
+  signalCombo,
+  resetBoardState,
+} from "./boardState";
 
 /**
  * VFX layer — particles, screen shake, hit bursts, combo flares, transitions,
@@ -61,6 +67,8 @@ export function initEffects(
     bus.on("noteHit", (e) => {
       const color = laneRgb(e.lane);
       combo = e.combo;
+      // Feed the Renderer's escalation/lane-flash seam (no Game.ts coupling).
+      signalHit(e.lane, e.combo, performance.now());
 
       // Core burst: bright sparks + shards fanning up from the strum line.
       particles.burst(e.x, e.y, {
@@ -135,6 +143,7 @@ export function initEffects(
   offs.push(
     bus.on("noteMiss", (e) => {
       combo = 0;
+      signalMiss(e.reason === "passed" ? 1 : 0.55, performance.now());
       const x = e.x;
       const y = e.y;
       const red = COLORS.RED;
@@ -166,6 +175,7 @@ export function initEffects(
   offs.push(
     bus.on("comboChange", (e) => {
       combo = e.value;
+      signalCombo(e.value);
       // Detect milestone crossings (value rose past a threshold).
       if (e.value > e.previous) {
         for (const m of MILESTONES) {
@@ -180,6 +190,7 @@ export function initEffects(
   offs.push(
     bus.on("gameStart", (e) => {
       combo = 0;
+      resetBoardState();
       particles.clear();
       floaters.clear();
       shake.reset();
@@ -223,6 +234,7 @@ export function initEffects(
         }
       }
       combo = 0;
+      resetBoardState();
       background.reset();
     })
   );
@@ -230,6 +242,7 @@ export function initEffects(
   offs.push(
     bus.on("menuShown", () => {
       combo = 0;
+      resetBoardState();
       particles.clear();
       floaters.clear();
       shake.reset();

@@ -19,6 +19,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   optional injected `WordSelector` (or a process-wide default via
   `setDefaultWordSelector`) to bias wave content toward due/weak words while
   still guaranteeing distinct entries + distinct English answers.
+- **Neon Arcade board visuals.** The canvas (`Renderer`) is rebuilt to the
+  Neon Arcade bar: a scrolling synthwave perspective grid floor converging to a
+  horizon, volumetric glowing lane shafts + neon edge rails in the `--na-lane-*`
+  colors (cyan / magenta / lime, single-sourced from the design tokens), premium
+  glass note cards with a top specular sheen, lane-color spine, and an approach
+  bloom that swells as a note nears the strum line, plus a glass strum bar that
+  leans toward the hottest lane. Hits fire a lane-flash light column + white-hot
+  pop ring; misses flush the floor red; the whole board escalates intensity with
+  the combo (grid speed, lane glow, strum bloom). The VFX particle / shockwave /
+  screen-shake layer now reads the same elevated palette so the board reads as
+  one instrument. The Renderer reacts to gameplay through a shared
+  `effects/boardState` seam written by the bus-subscribed effects layer, so none
+  of this touches `Game.ts`. All Canvas2D, additive-bloom, 60fps-targeted, and
+  fully offline (palette resolves from `:root` tokens with matching hardcoded
+  fallbacks).
 
 ### Fixed
 - **Correct answers were being scored as wrong (core logic).** Wave content had
