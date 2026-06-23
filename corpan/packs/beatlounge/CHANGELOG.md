@@ -25,6 +25,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   randomizer is refactored to build from an explicit `DraftWorld`
   (`rollDraftWorld` / `buildSnapshotFromDraft`); `buildRandomSnapshot` is now a
   thin all-random wrapper. (Beat-Lounge-Plus; closes #326.)
+- Per-facet reroll in the "New…" form: a dice beside each row rerolls just that
+  facet and keeps the rest; disabled while the facet is locked. (Beat-Lounge-Plus;
+  closes #327.)
 
 ## [0.3.2] - 2026-06-19
 

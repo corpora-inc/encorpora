@@ -397,6 +397,7 @@ const en: Record<string, string> = {
   "scenes.newTitle": "New world",
   "scenes.randomize": "Randomize",
   "scenes.randomizedToast": "Randomized",
+  "scenes.rerollFacet": "Reroll {facet}",
   "scenes.saveCurrent": "Save current as Scene",
   "scenes.savedCount": "{n} saved",
   "scenes.savedNamed": "Saved scene \"{name}\"",

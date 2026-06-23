@@ -69,6 +69,31 @@ describe("NewWorldForm", () => {
     })
   })
 
+  it("per-facet dice rerolls only that facet (locks every other one)", () => {
+    const ctrl = makeCtrl()
+    render({ ctrl, onCreate: () => {}, onCancel: () => {} })
+    ;(ctrl.rollWorld as ReturnType<typeof vi.fn>).mockClear()
+    const dice = container!.querySelector<HTMLButtonElement>('button[aria-label="Reroll Kit"]')!
+    act(() => dice.click())
+    expect(ctrl.rollWorld).toHaveBeenCalledTimes(1)
+    const arg = (ctrl.rollWorld as ReturnType<typeof vi.fn>).mock.calls[0][0]
+    expect(arg.from).toBe(draft)
+    // every facet but "kit" is locked, so only kit can move
+    const locked = arg.lock as ReadonlySet<string>
+    expect(locked.has("kit")).toBe(false)
+    expect(locked.has("meter")).toBe(true)
+    expect(locked.size).toBe(7)
+  })
+
+  it("disables a facet's dice while that facet is locked", () => {
+    render({ ctrl: makeCtrl(), onCreate: () => {}, onCancel: () => {} })
+    const dice = () =>
+      container!.querySelector<HTMLButtonElement>('button[aria-label="Reroll Meter"]')!
+    expect(dice().disabled).toBe(false)
+    act(() => container!.querySelector<HTMLButtonElement>('button[aria-label="Lock Meter"]')!.click())
+    expect(dice().disabled).toBe(true)
+  })
+
   it("Create applies the draft and notifies the caller", () => {
     const ctrl = makeCtrl()
     const onCreate = vi.fn()
