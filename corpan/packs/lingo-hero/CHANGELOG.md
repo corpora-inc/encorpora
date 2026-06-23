@@ -44,6 +44,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   grid backdrop behind the canvas. RTL-aware (bidi `dir="auto"` on revealed
   text, mirrored chevrons/bars), contrast-checked, fully offline (no remote
   assets), and reduced-motion safe.
+- **Spaced difficulty + mastery (learning depth).** A new `src/learning/*`
+  layer gives the loop a memory: per-word correctness is tracked over time in a
+  Leitner/SM-2-lite scheduler (`wordStats.ts`), keyed by host entry id and
+  scoped per (stack, language), persisted offline-first to localStorage with an
+  in-memory fallback. The spaced-difficulty `WordSelector` (`selector.ts`)
+  resurfaces **due / weak** words as the quiz target and orders believable foils
+  as distractors — biasing choice only, never breaking the distinct-entries +
+  distinct-English dedup contract (selected target is validated within the pool;
+  distractor weighting is re-deduped after). A **gentle, hysteretic adaptive
+  difficulty** (`difficulty.ts`) reads rolling accuracy to lean harder into
+  resurfacing when the learner is hot and ease off when they struggle — it
+  tunes *content* pressure only and never touches note speed/spawn timing, so
+  the calibrated ~7s travel feel is preserved. A live **mastery readout**
+  (mastered · learning · due, with a mean-strength progress bar) is surfaced via
+  the foundation's `#mastery-readout` HUD slot and on the progression snapshot
+  (`mastery` / `difficulty`). Wired with **no Game.ts edits** — the learning
+  layer initialises from the progression module (which already receives the bus
+  + hostApi) and injects via `setDefaultWordSelector`.
 
 ### Fixed
 - **Correct answers were being scored as wrong (core logic).** Wave content had
