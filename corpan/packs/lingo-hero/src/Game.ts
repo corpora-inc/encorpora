@@ -978,8 +978,10 @@ export class Game {
           note.y += this.speed * dt;
         }
 
-        if (note.y > boundsHeight + 120) note.missed = true;
-
+        // Handle the strum pass-line FIRST (catch / dodge / miss verdicts), then
+        // fall through to the off-screen retire. Ordering matters: if a fast
+        // frame jumped the note past both lines at once, the bottom-bounds retire
+        // must not pre-empt the dodge reward / miss for a note crossing the strum.
         if (note.y > passLine && !note.hit && !note.missed) {
           if (note.isTarget && note.seqIndex === this.caughtCount) {
             // The NEXT correct word sailed past the strum unhit → a miss. Combo
@@ -1022,6 +1024,11 @@ export class Game {
             note.missed = true;
           }
         }
+
+        // Off-screen retire fallback: anything that somehow fell well past the
+        // bottom edge without being resolved above is marked missed so it can be
+        // filtered out (defensive; the pass-line handling above is the norm).
+        if (note.y > boundsHeight + 120 && !note.hit) note.missed = true;
       });
 
       this.notes = this.notes.filter(
