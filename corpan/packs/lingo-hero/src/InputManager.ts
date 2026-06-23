@@ -2,25 +2,47 @@ import { LaneIndex } from "./types";
 
 type InputCallback = (lane: LaneIndex) => void;
 
+/**
+ * Maps player input to a lane. CRITICAL: pointer x is measured relative to the
+ * CANVAS's own bounding rect — the element the notes are actually drawn into —
+ * NOT the container. The canvas is absolutely positioned, so in the app (where
+ * the host passes its own, possibly unpositioned container) the canvas and the
+ * container do NOT share an origin; measuring against the container made every
+ * tap land in the wrong lane. Measuring against the canvas rect (with scale
+ * normalization for any CSS transform) is correct regardless of layout.
+ */
 export class InputManager {
   private listeners: InputCallback[] = [];
 
-  constructor(private container: HTMLElement, private getLaneFromX: (x: number) => LaneIndex | null) {
+  constructor(
+    private container: HTMLElement,
+    private canvas: HTMLCanvasElement,
+    private getLaneFromX: (x: number) => LaneIndex | null
+  ) {
     this.setupKeyboard();
-    this.setupTouch();
+    this.setupPointer();
   }
 
   onInput(callback: InputCallback) {
     this.listeners.push(callback);
   }
 
-  private trigger(lane: LaneIndex) {
-    this.listeners.forEach(cb => cb(lane));
+  private trigger(lane: LaneIndex | null) {
+    if (lane === null) return;
+    this.listeners.forEach((cb) => cb(lane));
+  }
+
+  /** Convert a viewport clientX to the canvas's internal CSS-pixel x. */
+  private canvasX(clientX: number): number {
+    const rect = this.canvas.getBoundingClientRect();
+    // Normalize for any CSS scaling/transform on the canvas or its ancestors so
+    // the value is in the same coordinate space the renderer/lanes use.
+    const scaleX = rect.width > 0 ? this.canvas.clientWidth / rect.width : 1;
+    return (clientX - rect.left) * scaleX;
   }
 
   private setupKeyboard() {
     window.addEventListener("keydown", (e) => {
-      // 1, 2, 3 or A, S, D or Left, Down, Right
       switch (e.key) {
         case "1":
         case "a":
@@ -41,29 +63,24 @@ export class InputManager {
     });
   }
 
-  private setupTouch() {
-    // Basic touch support - split screen into 3 columns
-    // Better way: use the LaneSystem coordinates. 
-    // We passed a helper `getLaneFromX` for this.
-    
-    this.container.addEventListener("touchstart", (e) => {
-      e.preventDefault(); // Prevent scrolling
-      for (let i = 0; i < e.changedTouches.length; i++) {
-        const touch = e.changedTouches[i];
-        // Get X relative to container
-        const rect = this.container.getBoundingClientRect();
-        const x = touch.clientX - rect.left;
-        
-        const lane = this.getLaneFromX(x);
-        if (lane !== null) {
-          this.trigger(lane);
-        }
-      }
-    }, { passive: false });
+  /**
+   * Pointer Events unify mouse + touch + pen and fire once per press (no
+   * touch→click double-trigger). Listen on the container so taps anywhere in the
+   * play area count (they bubble up from the canvas / HUD overlay), but resolve
+   * the lane against the CANVAS rect.
+   */
+  private setupPointer() {
+    this.container.addEventListener(
+      "pointerdown",
+      (e: PointerEvent) => {
+        e.preventDefault();
+        this.trigger(this.getLaneFromX(this.canvasX(e.clientX)));
+      },
+      { passive: false }
+    );
   }
 
   dispose() {
-    // Remove listeners if needed (mostly for HMR/cleanup)
-    // For now simple reload handles it
+    // Listeners are cleaned up when the container/canvas are removed on unmount.
   }
 }

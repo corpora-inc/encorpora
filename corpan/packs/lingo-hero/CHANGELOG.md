@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-06-23
+
+### Fixed
+- **Correct taps were scored as "missed" in the app — every time.** Input x was
+  measured against the *container*, but notes are drawn in the absolutely-
+  positioned *canvas*. In the app the host passes its own (unpositioned)
+  container, so the canvas and container don't share an origin — every tap
+  resolved to the wrong lane. Pointer x is now measured against the **canvas's**
+  bounding rect (with scale normalization), and input uses unified Pointer
+  Events. Added a `ResizeObserver` so lane geometry tracks the container even
+  when the game mounts before it's sized. Reproduced + verified fixed in a
+  headless browser with an offset container (correct tap: old = no score,
+  fixed = scores).
+
 ## [0.2.0] - 2026-06-23
 
 The premium **Neon Arcade** release: a billion-dollar-bar rebuild of the single
