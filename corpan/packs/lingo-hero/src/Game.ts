@@ -605,11 +605,15 @@ export class Game {
 
         if (note.isTarget && note.y > passLine && !note.hit && !note.missed) {
           // The correct word sailed past the strum unhit → a miss. Combo
-          // breaks; we reveal the word anyway (assembling strip) and advance so
-          // the phrase stays coherent and the player keeps learning.
+          // breaks and the same point penalty as a wrong (distractor) catch
+          // applies, so missing the real answer is never lower-risk than
+          // whiffing a foil (symmetric miss contract). We reveal the word
+          // anyway (assembling strip) and advance so the phrase stays coherent
+          // and the player keeps learning. (adversarial-review, PR #390)
           note.missed = true;
           this.roundAllCaught = false;
           this.setCombo(0);
+          this.setScore(this.score - 40);
           this.bus.emit("noteMiss", {
             lane: note.lane,
             x: this.laneSystem.getLaneX(note.lane),

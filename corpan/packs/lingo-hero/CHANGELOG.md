@@ -59,6 +59,9 @@ RECONSTRUCT a translation rather than pick a single answer.
   is a live catchable target in flight. An accidental tap during the dead air
   between words (no target on the board) is now a no-op rather than a combo
   reset, so stray presses in the gaps don't punish the player.
+- **Symmetric miss penalty.** Letting the correct word sail past the strum now
+  costs the same points as catching a wrong (distractor) word, not just a combo
+  reset — so missing the real answer is never lower-risk than whiffing a foil.
 
 ## [0.2.2] - 2026-06-23
 
