@@ -159,8 +159,11 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
   // The master chain is persisted (localStorage) so a rack you dial in survives
   // leaving the pack and coming back — restored on mount, saved on every change.
   const [fxChain, setFxChain] = useState<EffectNode[]>(() => loadScratchChain())
-  const [drawerTab, setDrawerTab] = useState("fx")
-  const [drawer, setDrawer] = useState<DrawerState>("peek")
+  // Empty bank ⇒ open the drawer on Phrases so the first phrase is one tap away.
+  // The idle turntable still renders above (the deck is never hidden), so the
+  // surface never looks "broken/gone" — you just have nothing on the platter yet.
+  const [drawerTab, setDrawerTab] = useState(() => (bank.length === 0 ? "phrases" : "fx"))
+  const [drawer, setDrawer] = useState<DrawerState>(() => (bank.length === 0 ? "open" : "peek"))
   // Which deck a discovered phrase lands on (A unless the user aims B).
   const [aimDeck, setAimDeck] = useState<DeckId>("a")
   const fxBusRef = useRef<ScratchFxBus | null>(null)
@@ -630,30 +633,10 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
     },
   ]
 
-  // ---- empty state: no snippet yet. Keep the shared drawer mounted (open on
-  // Phrases) so the user can DISCOVER + load their first phrase right here. -----
-  if (bank.length === 0) {
-    return (
-      <div className="bl-scr">
-        <div className="bl-scr-empty">
-          <Glyph name="wave" size={28} />
-          <p className="bl-scr-empty-title">{ct("scratch.nothingOnDeck")}</p>
-          <p className="bl-scr-empty-sub">
-            {ct("scratch.openPhrasesToLoad")}
-          </p>
-        </div>
-        <TrackDrawer
-          label={ct("scratch.tools")}
-          tabsLabel={ct("scratch.tools")}
-          tabs={drawerTabs}
-          activeTab="phrases"
-          onTab={openDrawer}
-          state={drawer === "peek" ? "open" : drawer}
-          setState={setDrawer}
-        />
-      </div>
-    )
-  }
+  // NOTE: an empty bank is NOT a special early-return anymore — the deck below
+  // renders an idle turntable (loadDeck no-ops on a null selection) and the drawer
+  // opens on Phrases (see the drawerTab/drawer inits), so the turntable is ALWAYS
+  // visible and the Effects/Phrases toggle is never stuck.
 
   const renderDeck = (
     id: DeckId,
@@ -675,7 +658,13 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
             className="bl-scr-picker-btn"
             aria-haspopup="listbox"
             aria-expanded={pickerFor === id}
-            onClick={() => setPickerFor((v) => (v === id ? null : id))}
+            // Empty bank ⇒ there's nothing to pick; route the tap to the Phrases
+            // loader instead of opening an empty (useless) dropdown.
+            onClick={() =>
+              bank.length === 0
+                ? openDrawer("phrases")
+                : setPickerFor((v) => (v === id ? null : id))
+            }
             title={ct("scratch.chooseSnippet")}
           >
             <span className="bl-scr-picker-cur" lang={selected?.language}>
@@ -685,7 +674,7 @@ export const PhraseScratchImmersive = ({ host, store, audioSource }: Props) => {
           </button>
         </div>
 
-        {pickerFor === id && (
+        {pickerFor === id && bank.length > 0 && (
           <div
             className="bl-scr-picker"
             role="listbox"

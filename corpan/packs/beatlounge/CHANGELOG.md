@@ -26,6 +26,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   (`rollDraftWorld` / `buildSnapshotFromDraft`); `buildRandomSnapshot` is now a
   thin all-random wrapper. (Beat-Lounge-Plus; closes #326.)
 
+### Fixed
+- Scratch empty-state no longer looks broken: with an empty bank the idle
+  turntable always renders (instead of a "nothing here" screen), the Effects /
+  Phrases toggle is no longer stuck, and tapping "Pick snippet" opens the Phrases
+  loader instead of an empty dropdown. (Beat-Lounge-Plus)
+- Home voice switcher: a long instrument name no longer pushes the next arrow off
+  the safe screen zone — the name truncates in a stable-width slot and the arrows
+  hold their position. (Beat-Lounge-Plus)
+
 ## [0.3.2] - 2026-06-19
 
 ### Changed
