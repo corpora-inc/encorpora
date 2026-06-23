@@ -1,0 +1,15 @@
+{
+  "id": "lingo-hero",
+  "channel": "preview",
+  "name": "Lingo Hero",
+  "version": "0.1.0",
+  "description": "Rhythm-based language learning. Feel the beat, learn the words.",
+  "entry": "dist/app.js",
+  "styles": [
+    "dist/app.css"
+  ],
+  "entryType": "script",
+  "sdkVersion": "0.1.0",
+  "minAppVersion": "0.17.0",
+  "devRevision": "2026-06-22T00:00:00.000Z"
+}

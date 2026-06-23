@@ -1,0 +1,147 @@
+// Core geometric types
+export interface Point {
+  x: number;
+  y: number;
+}
+
+export interface Rect {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+// Game specific types
+export enum LaneIndex {
+  Left = 0,
+  Center = 1,
+  Right = 2
+}
+
+export interface Note {
+  id: string;
+  lane: LaneIndex;
+  y: number;      // Current vertical position (0 to 1, or pixels)
+  text: string;   // The translation text
+  isTarget: boolean; // Is this the correct answer?
+  hit: boolean;   // Has it been hit?
+  missed: boolean; // Did it pass the line without hit?
+  spawnTime: number;
+  hitTime?: number;
+}
+
+export enum GameState {
+  MENU,
+  PLAYING,
+  GAME_OVER
+}
+
+export enum GameMode {
+  PRACTICE, // Wait for user
+  BLITZ     // Continuous stream
+}
+
+export interface GameConfig {
+  mode: GameMode;
+  speed: number; // Pixels per frame or similar
+}
+
+// ---------------------------------------------------------------------------
+// Resolved language context (FOUNDATION → UI/Content)
+// ---------------------------------------------------------------------------
+// The active target language the player is being quizzed in, resolved from
+// hostApi.getStackConfig().languages (first non-English entry, falling back to
+// the first entry). `isRTL` is true for ar/he/fa/ur so the UI can mirror.
+export interface ActiveLanguage {
+  /** The target language being quizzed (the foreign prompt), e.g. "es". */
+  code: string;
+  /** True for right-to-left scripts: ar, he, fa, ur. */
+  isRTL: boolean;
+  /** TTS playback rate from stack config (0..1+), pass-through to speak(). */
+  rate: number;
+  /** "small" | "medium" | "large" — host text-size preference. */
+  textSize: string;
+  /** Whether the host wants romanization shown under foreign text. */
+  showRomanization: boolean;
+}
+
+// ---------------------------------------------------------------------------
+// EVENT BUS payload types (FOUNDATION → all streams)
+// ---------------------------------------------------------------------------
+// These are the *only* contract surfaces parallel streams may depend on.
+// Game.ts emits; effects/audio/progression/ui subscribe. Do NOT widen these
+// without coordinating — they are the cross-stream ABI.
+
+/** Emitted once per game start (Practice or Blitz). */
+export interface GameStartEvent {
+  mode: GameMode;
+  /** The resolved active target language at game start. */
+  language: ActiveLanguage;
+}
+
+/** Emitted whenever the MENU screen is (re)shown. */
+export interface MenuShownEvent {
+  /** Final score of the run that just ended, if any (else 0). */
+  lastScore: number;
+}
+
+/** Emitted when the player hits the CORRECT note. */
+export interface NoteHitEvent {
+  lane: LaneIndex;
+  /** Screen-space x of the hit (CSS px), for VFX spawning. */
+  x: number;
+  /** Screen-space y of the hit (CSS px) — the strum line. */
+  y: number;
+  /** Combo value AFTER this hit. */
+  combo: number;
+  /** Base points awarded for this hit (pre-progression-multiplier). */
+  points: number;
+  mode: GameMode;
+}
+
+/** Emitted when the player hits a WRONG note OR lets the target pass. */
+export interface NoteMissEvent {
+  lane: LaneIndex | null;
+  /** Screen-space x of the miss (CSS px); null lane → strum-line center. */
+  x: number;
+  y: number;
+  /** "wrong" = tapped a distractor; "passed" = target fell past the line. */
+  reason: "wrong" | "passed";
+  mode: GameMode;
+}
+
+/** Emitted whenever the combo counter changes (hit increments, miss → 0). */
+export interface ComboChangeEvent {
+  value: number;
+  /** Previous combo value (so effects can detect milestone crossings). */
+  previous: number;
+}
+
+/** Emitted whenever the score changes. */
+export interface ScoreChangeEvent {
+  value: number;
+  /** Signed delta from the previous score (negative on penalty). */
+  delta: number;
+}
+
+/** Emitted once when the run ends. */
+export interface GameOverEvent {
+  finalScore: number;
+  mode: GameMode;
+}
+
+/**
+ * The full event map. Keys are event names, values are payload types.
+ * `GameEventBus` (src/events.ts) is typed against this map.
+ */
+export interface GameEventMap {
+  gameStart: GameStartEvent;
+  menuShown: MenuShownEvent;
+  noteHit: NoteHitEvent;
+  noteMiss: NoteMissEvent;
+  comboChange: ComboChangeEvent;
+  scoreChange: ScoreChangeEvent;
+  gameOver: GameOverEvent;
+}
+
+export type GameEventName = keyof GameEventMap;
