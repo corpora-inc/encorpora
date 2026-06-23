@@ -25,6 +25,12 @@ interface Props {
   onCommand: () => void
   /** Open the Scenes drawer (save / load complete states). Omitted ⇒ no button. */
   onScenes?: () => void
+  /** Toggle record-arm on the selected synth. Omitted ⇒ no record button. */
+  onToggleRecordArm?: () => void
+  /** Whether the selected synth is currently armed (drives the lit state). */
+  recordArmed?: boolean
+  /** Whether there is a selectable melodic track to arm (else the button is disabled). */
+  recordArmAvailable?: boolean
   onExit: () => void
 }
 
@@ -43,6 +49,9 @@ export const DockRail = ({
   onRedo,
   onCommand,
   onScenes,
+  onToggleRecordArm,
+  recordArmed = false,
+  recordArmAvailable = false,
   onExit,
 }: Props) => {
   const [editing, setEditing] = useState(false)
@@ -62,6 +71,20 @@ export const DockRail = ({
       </button>
 
       <Transport playing={playing} onToggle={onToggle} size={vertical ? "lg" : "md"} />
+
+      {onToggleRecordArm && (
+        <button
+          type="button"
+          className={`bl-icon-btn bl-record-btn${recordArmed ? " is-armed" : ""}`}
+          aria-label={ct("shell.record")}
+          aria-pressed={recordArmed}
+          title={recordArmed ? ct("shell.recordOnHint") : ct("shell.recordHint")}
+          disabled={!recordArmAvailable}
+          onClick={onToggleRecordArm}
+        >
+          <Glyph name="record" size={18} />
+        </button>
+      )}
 
       <div className="bl-bpm" data-bl-nocapture>
         {editing ? (

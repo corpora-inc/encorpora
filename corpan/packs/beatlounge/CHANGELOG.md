@@ -10,6 +10,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   lead, pad, pluck, brass, fx), bringing the corpus to 123 voices. Pure data
   over the existing synth / fmSynth / wavetable / analogSynth engines — no new
   assets. (Beat-Lounge-Plus; closes #325.)
+- Record-arm button on the Dock-Rail (home strip): arm/disarm the selected synth
+  for recording without opening the Instruments page. Binds to the same selected
+  melodic track and the existing sticky, persisted record-arm; lit red + pulsing
+  when armed. (Beat-Lounge-Plus; closes #336.)
 
 ## [0.3.2] - 2026-06-19
 

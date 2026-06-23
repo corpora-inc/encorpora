@@ -23,6 +23,8 @@ import type { BeatloungeStore } from "../store/store"
 import { createFormObserver } from "../host/formFactor"
 import { useBeatloungeStore } from "../store/store"
 import { useTransport, stopTransport, syncTransportFromAudio } from "../store/transport"
+import { useSelectedInstrument } from "../store/selectedInstrument"
+import { useRecordArm } from "../store/recordArm"
 import { ModuleHost } from "./ModuleHost"
 import { Tile } from "./Tile"
 import { Immersive } from "./Immersive"
@@ -72,6 +74,11 @@ export const Shell = ({
   // page all read this same flag and toggle through this same path, so there is
   // no second copy of "playing" to drift out of sync.
   const { isPlaying: playing, toggle: toggleTransport } = useTransport(audio)
+  // The Dock-Rail record button binds to the SAME selected melodic track the
+  // Instruments page uses, and toggles its sticky, persisted record-arm — so you
+  // can arm a synth from Home without opening the immersive page.
+  const { trackId: selectedTrackId } = useSelectedInstrument(doc)
+  const { armed: recordArmed, setArmed: setRecordArmed } = useRecordArm(selectedTrackId)
   const [masterLevel, setMasterLevel] = useState(0)
   const [toast, setToast] = useState<ToastState | null>(null)
   const toastSeq = useRef(0)
@@ -201,6 +208,9 @@ export const Shell = ({
         onRedo={store.redo}
         onCommand={() => setCommandOpen(true)}
         onScenes={hasScenes ? () => enterImmersive(SCENES_ID) : undefined}
+        onToggleRecordArm={() => setRecordArmed(!recordArmed)}
+        recordArmed={recordArmed}
+        recordArmAvailable={!!selectedTrackId}
         onExit={() => {
           stopTransport(audio)
           window.dispatchEvent(new CustomEvent("corpan:exit"))

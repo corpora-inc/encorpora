@@ -24,6 +24,7 @@ export type GlyphName =
   | "wave"
   | "trash"
   | "dice"
+  | "record"
 
 const PATHS: Record<GlyphName, JSX.Element> = {
   play: <path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none" />,
@@ -66,6 +67,7 @@ const PATHS: Record<GlyphName, JSX.Element> = {
       <circle cx="15" cy="15" r="1.1" fill="currentColor" stroke="none" />
     </>
   ),
+  record: <circle cx="12" cy="12" r="6" fill="currentColor" stroke="none" />,
   "chevron-down": <path d="M6 9.5l6 6 6-6" />,
   "chevron-left": <path d="M14.5 6l-6 6 6 6" />,
   undo: <path d="M9 7L5 11l4 4M5 11h9a4 4 0 0 1 0 8h-2" />,
