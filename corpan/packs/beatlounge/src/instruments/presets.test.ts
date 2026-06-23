@@ -1,5 +1,6 @@
 import { describe, expect, it, beforeAll } from "vitest"
 import {
+  cyclePresetId,
   DEFAULT_PRESET_ID,
   familyOfPreset,
   getPreset,
@@ -10,6 +11,7 @@ import {
   PRESET_FAMILIES,
   type PresetFamily,
 } from "./presets"
+import type { InstrumentConfig } from "../model/document"
 import { createInstrument } from "./createInstrument"
 import { WAVETABLES } from "./wavetables"
 import { ANALOG_PARAMS } from "./analogSynth"
@@ -184,6 +186,29 @@ describe("instantiatePreset", () => {
 
   it("returns undefined for unknown ids", () => {
     expect(instantiatePreset("nope")).toBeUndefined()
+  })
+
+  describe("cyclePresetId", () => {
+    const ids = INSTRUMENT_PRESETS.map((p) => p.id)
+    it("steps forward and back through the corpus, wrapping at the ends", () => {
+      const first = INSTRUMENT_PRESETS[0]
+      const second = INSTRUMENT_PRESETS[1]
+      const last = INSTRUMENT_PRESETS[ids.length - 1]
+      expect(cyclePresetId(first.config, 1)).toBe(second.id)
+      expect(cyclePresetId(second.config, -1)).toBe(first.id)
+      expect(cyclePresetId(last.config, 1)).toBe(first.id) // wrap forward
+      expect(cyclePresetId(first.config, -1)).toBe(last.id) // wrap back
+    })
+    it("lands on a real preset when the config matches no preset", () => {
+      const custom = {
+        kind: "soundfont",
+        soundfontId: "x",
+        program: 0,
+        bank: 0,
+      } as InstrumentConfig
+      expect(cyclePresetId(custom, 1)).toBe(ids[0])
+      expect(cyclePresetId(custom, -1)).toBe(ids[ids.length - 1])
+    })
   })
 
   it("mutating an instantiated config never touches the frozen source", () => {

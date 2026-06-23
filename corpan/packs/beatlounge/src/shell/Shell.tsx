@@ -29,10 +29,13 @@ import { ModuleHost } from "./ModuleHost"
 import { Tile } from "./Tile"
 import { Immersive } from "./Immersive"
 import { DockRail } from "./DockRail"
+import { VoiceSwitcher } from "./VoiceSwitcher"
+import { cyclePresetId, instantiatePreset, matchPreset } from "../instruments/presets"
+import { isInstrumentTrack } from "../model/document"
 import { Toast, type ToastState } from "./Toast"
 import { CommandBar, createCommandBarController } from "../modules/command-bar"
 import { SCENES_ID } from "../modules/scenes"
-import { uiDir } from "../i18n/strings"
+import { ct, uiDir } from "../i18n/strings"
 
 export interface ShellChromeApi {
   enterImmersive(id: ModuleId): () => void
@@ -79,6 +82,18 @@ export const Shell = ({
   // can arm a synth from Home without opening the immersive page.
   const { trackId: selectedTrackId } = useSelectedInstrument(doc)
   const { armed: recordArmed, setArmed: setRecordArmed } = useRecordArm(selectedTrackId)
+  // Home voice switcher: the selected melodic track's current instrument config,
+  // flipped through the preset corpus (one setInstrument per step = one undo).
+  const selectedTrack = selectedTrackId
+    ? doc.tracks.find((t) => t.id === selectedTrackId)
+    : undefined
+  const voiceConfig =
+    selectedTrack && isInstrumentTrack(selectedTrack) ? selectedTrack.instrument : undefined
+  const switchVoice = (dir: 1 | -1) => {
+    if (!selectedTrackId || !voiceConfig) return
+    const config = instantiatePreset(cyclePresetId(voiceConfig, dir))
+    if (config) store.dispatch({ t: "setInstrument", trackId: selectedTrackId, config })
+  }
   const [masterLevel, setMasterLevel] = useState(0)
   const [toast, setToast] = useState<ToastState | null>(null)
   const toastSeq = useRef(0)
@@ -186,6 +201,13 @@ export const Shell = ({
         <div className="bl-stage-head">
           <span className="bl-wordmark">beatlounge</span>
           <span className="bl-song-name">{doc.name}</span>
+          {voiceConfig && (
+            <VoiceSwitcher
+              name={matchPreset(voiceConfig)?.name ?? ct("shell.voiceCustom")}
+              onPrev={() => switchVoice(-1)}
+              onNext={() => switchVoice(1)}
+            />
+          )}
         </div>
         <div className="bl-stage-grid">
           {tiles.map((m) => (

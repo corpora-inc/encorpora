@@ -14,6 +14,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   for recording without opening the Instruments page. Binds to the same selected
   melodic track and the existing sticky, persisted record-arm; lit red + pulsing
   when armed. (Beat-Lounge-Plus; closes #336.)
+- Home voice switcher: a compact prev / name / next control in the Stage head
+  flips the selected synth through the preset corpus (one `setInstrument` per
+  step = one undo) without opening the Instruments page. (Beat-Lounge-Plus;
+  closes #337.)
 
 ## [0.3.2] - 2026-06-19
 

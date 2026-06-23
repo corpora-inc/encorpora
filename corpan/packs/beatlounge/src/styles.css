@@ -282,6 +282,30 @@
   color: var(--bl-text-dim);
   letter-spacing: 0.04em;
 }
+/* Home voice switcher — prev / name / next, trailing edge of the Stage head */
+.bl-voice-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-inline-start: auto;
+  align-self: center;
+}
+.bl-voice-arrow {
+  min-width: calc(var(--bl-hit) * 0.72);
+  min-height: calc(var(--bl-hit) * 0.72);
+}
+.bl-voice-name {
+  font-family: var(--bl-font-mono);
+  font-size: var(--bl-fs-label);
+  color: var(--bl-text);
+  letter-spacing: 0.02em;
+  min-width: 7ch;
+  max-width: 16ch;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 /* ----------------------------------------------------------
    Stage bento grid.
