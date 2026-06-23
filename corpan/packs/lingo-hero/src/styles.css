@@ -664,24 +664,19 @@ canvas {
   font-size: clamp(1.4rem, 6.2vmin, 2.8rem);
   line-height: 1.1;
 }
-/* The replay affordance: a small rotate-arrow glyph + caption so it is
-   unmistakable that tapping the prompt re-speaks it (this is the single
-   "hear again" control — there is no separate speaker button). */
+/* The replay affordance: a quiet, plain-text sentence-case caption — NO icon,
+   NO circular glyph, NO speaker shape. The ONLY audio-looking control on screen
+   is the mute toggle (top-right); this caption simply tells the player the
+   prompt word itself is tappable to hear it again (blocker 2 + 7). */
 .qb-replay {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35em;
+  display: inline-block;
   font-family: var(--na-font-body, var(--font-body));
-  font-weight: 700;
-  font-size: clamp(0.5rem, 1.9vmin, 0.66rem);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--neon-cyan) 80%, white);
-  opacity: 0.85;
-}
-.qb-replay-icon {
-  font-size: 1.25em;
-  line-height: 1;
+  font-weight: 600;
+  font-size: clamp(0.62rem, 2vmin, 0.78rem);
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: color-mix(in srgb, var(--ink) 62%, transparent);
+  opacity: 0.78;
 }
 .question-box:hover .qb-replay,
 .question-box:focus-visible .qb-replay {
@@ -983,20 +978,31 @@ canvas {
   }
 }
 
-/* ----- One-line round cue: "Tap the matching word" ----- */
+/* ----- One-line round cue: "Tap the matching word" — a single concise,
+   SENTENCE-CASE instruction (not heavy tracked all-caps) shown briefly, then
+   faded so it reclaims vertical space for the lanes (blockers 6 + 7). ----- */
 .lh-cue {
   font-family: var(--na-font-body);
-  font-weight: 700;
-  font-size: clamp(var(--na-fs-xs), 3vmin, var(--na-fs-sm));
-  letter-spacing: var(--na-tracking-wide);
-  text-transform: uppercase;
+  font-weight: 600;
+  font-size: clamp(var(--na-fs-xs), 2.6vmin, var(--na-fs-sm));
+  letter-spacing: 0.01em;
+  text-transform: none;
   text-align: center;
   color: var(--na-text-faint);
-  opacity: 0.9;
+  opacity: 0.82;
+  /* Auto-fade after a beat even if the player hasn't hit yet, so it never
+     permanently crowds the playfield. The first hit also dims it (.is-dim). */
+  animation: lh-cue-fade 360ms var(--na-ease-out) 3.4s forwards;
   transition: opacity var(--na-dur-base) var(--na-ease-out);
 }
 .lh-cue.is-dim {
   opacity: 0; /* fades out once the player is clearly going */
+  animation: none;
+}
+@keyframes lh-cue-fade {
+  to {
+    opacity: 0;
+  }
 }
 
 /* ----- Phrase-assembly strip — the English answer built word by word. This is

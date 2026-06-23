@@ -192,7 +192,7 @@ export class Renderer {
       // HARD-CAPPED, energy-modest alpha so the shafts stay faint ambient lane
       // light and never bloom into the bright cones that wash the playfield
       // (fixes major (d)). Peak alpha is half what it was.
-      const baseA = Math.min(0.032, 0.018 + energy * 0.014);
+      const baseA = Math.min(0.018, 0.01 + energy * 0.008);
       shaft.addColorStop(0, rgba(c, 0));
       shaft.addColorStop(0.85, rgba(c, baseA));
       shaft.addColorStop(1, rgba(c, 0));
@@ -202,7 +202,7 @@ export class Renderer {
       // A tighter, dimmer central glow line down each lane (also stops short).
       const core = ctx.createLinearGradient(cx - halfW * 0.12, 0, cx + halfW * 0.12, 0);
       core.addColorStop(0, rgba(c, 0));
-      core.addColorStop(0.5, rgba(c, Math.min(0.06, 0.03 + energy * 0.025)));
+      core.addColorStop(0.5, rgba(c, Math.min(0.035, 0.018 + energy * 0.015)));
       core.addColorStop(1, rgba(c, 0));
       ctx.fillStyle = core;
       ctx.fillRect(cx - halfW * 0.12, shaftTop, halfW * 0.24, shaftBottom - shaftTop);
@@ -360,7 +360,7 @@ export class Renderer {
       // Soft halo column around the rail (capped so the dividers stay crisp
       // lines, not glowing bars that merge with the lane shafts).
       const halo = ctx.createLinearGradient(rail.x - 5, 0, rail.x + 5, 0);
-      const haloA = Math.min(0.12, 0.09 + energy * 0.06);
+      const haloA = Math.min(0.07, 0.05 + energy * 0.03);
       halo.addColorStop(0, rgba(rail.c, 0));
       halo.addColorStop(0.5, rgba(rail.c, haloA));
       halo.addColorStop(1, rgba(rail.c, 0));
@@ -549,32 +549,43 @@ export class Renderer {
       ctx.arc(cx, strumY, r, 0, Math.PI * 2);
       ctx.fill();
 
-      // GLOW UNDERLAY (additive, capped) — a soft halo so the ring reads neon,
-      // kept separate from the crisp stroke below so it can't wash the ring out.
+      // GLOW UNDERLAY (additive, tightly capped) — a faint halo so the ring
+      // reads neon, kept separate AND much smaller than before so it can't wash
+      // the ring out (blocker 3: bloom cut ~50%).
       ctx.globalCompositeOperation = "lighter";
-      ctx.shadowBlur = Math.min(14, 5 + idle * 5 + energy * 5);
+      ctx.shadowBlur = Math.min(7, 3 + idle * 2 + energy * 2);
       ctx.shadowColor = rgbStr(c);
-      ctx.strokeStyle = rgba(c, 0.28 + idle * 0.12);
-      ctx.lineWidth = 3.5;
-      ctx.beginPath();
-      ctx.arc(cx, strumY, r, 0, Math.PI * 2);
-      ctx.stroke();
-
-      // CRISP RING — drawn source-over (NOT additive) at full opacity so it
-      // always sits sharp ON TOP of any beam/shaft glow. This is the high-
-      // contrast hit target the player reads.
-      ctx.globalCompositeOperation = "source-over";
-      ctx.shadowBlur = 0;
-      ctx.strokeStyle = rgba(c, 0.95);
+      ctx.strokeStyle = rgba(c, 0.18 + idle * 0.08);
       ctx.lineWidth = 3;
       ctx.beginPath();
       ctx.arc(cx, strumY, r, 0, Math.PI * 2);
       ctx.stroke();
-      // Thin bright inner rim highlight (glass edge).
-      ctx.strokeStyle = rgba({ r: 255, g: 255, b: 255 }, 0.16 + idle * 0.08);
-      ctx.lineWidth = 1;
+
+      // FOREGROUND BACKING — a small dark disc UNDER the crisp ring so the ring
+      // sits on its own clean ground and never blends into the lane beam behind
+      // it. This brings the most important gameplay element (the target ring)
+      // forward as the sharpest, highest-contrast layer (blocker 3).
+      ctx.globalCompositeOperation = "source-over";
+      ctx.shadowBlur = 0;
       ctx.beginPath();
-      ctx.arc(cx, strumY, r * 0.86, 0, Math.PI * 2);
+      ctx.arc(cx, strumY, r * 0.98, 0, Math.PI * 2);
+      ctx.fillStyle = rgba(mix(this.bgTop, { r: 0, g: 0, b: 0 }, 0.25), 0.4);
+      ctx.fill();
+
+      // CRISP RING — drawn source-over (NOT additive) at full, brighter opacity
+      // and a heavier stroke so it always sits sharp ON TOP of any beam/shaft
+      // glow. This is the high-contrast hit target the player reads.
+      ctx.strokeStyle = rgba(c, 1);
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(cx, strumY, r, 0, Math.PI * 2);
+      ctx.stroke();
+      // Bright inner rim highlight (glass edge) — crisper so the ring reads as a
+      // sharp double line, not a fuzzy glow.
+      ctx.strokeStyle = rgba({ r: 255, g: 255, b: 255 }, 0.32 + idle * 0.08);
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.arc(cx, strumY, r * 0.84, 0, Math.PI * 2);
       ctx.stroke();
     }
     ctx.restore();
@@ -601,6 +612,31 @@ export class Renderer {
     ctx.rect(0, fieldTop, width, height - fieldTop);
     ctx.clip();
 
+    // ONE SHARED FONT SIZE for every card this frame — derived from the LONGEST
+    // visible word so all three lanes render their (single) word at the SAME
+    // type scale. This is the fix for blocker (1): previously each card fit its
+    // own word independently, so a short word ("cat") drew large while a longer
+    // one ("station") shrank — the type did not share one scale. Now we measure
+    // the widest word once and lock that size across all cards. Uniform box +
+    // uniform type = pixel-uniform cards.
+    const laneW0 = this.laneSystem.getLaneBounds(0).width;
+    const cardW = Math.min(laneW0 * 0.82, 132);
+    const cardH = Math.min(r * 1.35, 96); // fixed for ALL cards
+    const PAD = 16; // >=12px inner padding requirement
+    const radius = 14; // CONSTANT corner radius — never scales with the box
+    const wordFont = "'Russo One', 'Lingo Sans', system-ui, sans-serif";
+    const usableW = cardW - PAD * 2 - 6; // minus L/R padding minus accent spine
+    const baseFont = Math.max(20, r * 0.6);
+    const minFont = 14;
+    const sharedFontSize = fitSharedFont(
+      ctx,
+      notes,
+      usableW,
+      baseFont,
+      minFont,
+      wordFont
+    );
+
     // PASS 1 — additive motion trails behind every live note (comet tails that
     // brighten as they approach the strum line). One additive pass = cheap bloom.
     // The card's center is clamped to stop a fixed gap above the ring (see
@@ -612,16 +648,17 @@ export class Renderer {
     for (const note of notes) {
       if (note.missed || note.hit || note.y < -50) continue;
       const cx = this.laneSystem.getLaneX(note.lane);
-      const cardH = Math.min(r * 1.35, 96);
       const RING_GAP = Math.max(10, r * 0.22);
       const maxCardCenter = ringTop - RING_GAP - cardH / 2;
       const y = Math.min(note.y, maxCardCenter); // trail tracks the drawn card
       const c = this.laneColors[note.lane];
       const proximity = clamp01(1 - Math.abs(note.y - strumY) / (strumY + 1));
-      const trailLen = r * (1.6 + proximity * 2.2);
+      // Bloom cut ~50% (blocker 3): shorter, fainter comet so the trail never
+      // hazes the words/rings below it.
+      const trailLen = r * (1.1 + proximity * 1.4);
       const grad = ctx.createLinearGradient(0, y - trailLen, 0, y);
       grad.addColorStop(0, rgba(c, 0));
-      grad.addColorStop(1, rgba(c, 0.2 + proximity * 0.26));
+      grad.addColorStop(1, rgba(c, 0.1 + proximity * 0.14));
       ctx.fillStyle = grad;
       const tw = r * (0.38 + proximity * 0.2);
       ctx.beginPath();
@@ -674,44 +711,26 @@ export class Renderer {
       const inWindow = Math.abs(y - strumY) <= hitBand;
 
       // UNIFORM single-word cards: every lane's card is the SAME rigid slot —
-      // IDENTICAL width, height and corner radius across all three lanes,
-      // computed ONCE from the lane geometry and totally independent of the
-      // word's length (a short "I" reads in the exact same box as "thank").
-      // Only the lane COLOR and the (single) word inside differ. The word sits
-      // on ONE line, shrink-to-fit only as a safety net for a rare long token,
-      // with >=PAD px of inner padding the text never crosses. (Fixes blocker
-      // (c): no per-content sizing.)
-      const laneW = this.laneSystem.getLaneBounds(0).width;
-      // Fixed slot dims — clamped to safe constants so the box is the same on
-      // every lane and every frame, and never deforms as it descends.
-      const cardW = Math.min(laneW * 0.82, 132);
-      const cardH = Math.min(r * 1.35, 96); // fixed for ALL cards
-      const PAD = 16; // >=12px inner padding requirement
+      // IDENTICAL width, height and corner radius (computed once above from the
+      // lane geometry) AND a SINGLE shared font size (sharedFontSize, derived
+      // from the longest visible word) across all three lanes. Totally
+      // independent of THIS word's length: a short "cat" reads in the exact same
+      // box at the exact same type scale as "station". Only the lane COLOR and
+      // the (single) word inside differ. (Fixes blocker (1): no per-content box
+      // OR type sizing — pixel-uniform cards.)
+      //
       // Constant card→ring gap: the card NEVER overlaps the fret ring. We clamp
       // the card's CENTER so its bottom edge always stays a fixed gap above the
       // ring's top, even as note.y crosses the strum line — so the rounded card
-      // and the circular ring stay two visibly distinct elements (fixes blocker
-      // (b) "card merges into the ring" and minor "ambiguous card↔ring gap").
+      // and the circular ring stay two visibly distinct elements.
       const RING_GAP = Math.max(10, r * 0.22);
       const ringTop = strumY - r;
       const maxCardCenter = ringTop - RING_GAP - cardH / 2;
       const drawCy = Math.min(y, maxCardCenter);
       const x = cx - cardW / 2;
       const cardY = drawCy - cardH / 2;
-      const radius = 14; // CONSTANT corner radius — never scales with the box
 
-      const wordFont = "'Russo One', 'Lingo Sans', system-ui, sans-serif";
-      const layout = note.text
-        ? fitWord(
-            ctx,
-            note.text,
-            // Usable text width = card minus L/R padding minus the accent spine.
-            cardW - PAD * 2 - 6,
-            Math.max(20, r * 0.6),
-            14,
-            wordFont
-          )
-        : null;
+      const layout = note.text ? { text: note.text, fontSize: sharedFontSize } : null;
 
       // --- APPROACH BLOOM: a soft lane-colored glow pad behind the card that
       //     swells as it nears the strum line (anticipation). Additive but
@@ -806,26 +825,39 @@ export class Renderer {
 // ---------------------------------------------------------------------------
 
 /**
- * Fit a SINGLE word on one line inside `maxW` (the card width minus inner
- * padding). Uses `baseFont` if it fits; otherwise shrinks to fit, floored at
- * `minFont`. Word Lanes notes are single, short words by construction, so this
- * almost always returns `baseFont` — the shrink path is just a safety net for a
- * rare long token (e.g. a German compound). The word never wraps and never
- * touches the border (the caller subtracts the padding before passing maxW).
+ * Compute ONE shared font size for ALL currently-visible cards, derived from the
+ * LONGEST word among them so every lane renders its (single) word at the SAME
+ * type scale. Uses `baseFont` if even the widest word fits inside `maxW` (the
+ * card width minus inner padding); otherwise shrinks just enough that the widest
+ * word fits, floored at `minFont`, and applies that single size everywhere.
+ *
+ * This is the heart of blocker (1): fitting each word independently let a short
+ * word ("cat") draw at full size while a longer one ("station") shrank, so the
+ * type did not share one scale. Measuring the widest word ONCE and locking that
+ * size across all cards makes the type pixel-uniform. Word Lanes notes are
+ * single short words by construction, so this almost always returns `baseFont`;
+ * the shrink path is the safety net for a rare long token (e.g. a German
+ * compound). Words never wrap and never touch the border (the caller subtracts
+ * the padding before passing maxW).
  */
-function fitWord(
+function fitSharedFont(
   ctx: CanvasRenderingContext2D,
-  text: string,
+  notes: Note[],
   maxW: number,
   baseFont: number,
   minFont: number,
   family: string
-): { text: string; fontSize: number } {
+): number {
   ctx.font = `bold ${baseFont}px ${family}`;
-  const w = ctx.measureText(text).width;
-  if (w <= maxW || w === 0) return { text, fontSize: baseFont };
-  const fit = (maxW / w) * baseFont;
-  return { text, fontSize: Math.max(minFont, Math.min(baseFont, fit)) };
+  let widest = 0;
+  for (const note of notes) {
+    if (note.missed || !note.text) continue;
+    const w = ctx.measureText(note.text).width;
+    if (w > widest) widest = w;
+  }
+  if (widest <= maxW || widest === 0) return baseFont;
+  const fit = (maxW / widest) * baseFont;
+  return Math.max(minFont, Math.min(baseFont, fit));
 }
 
 function cssVar(root: HTMLElement | null, name: string): string {

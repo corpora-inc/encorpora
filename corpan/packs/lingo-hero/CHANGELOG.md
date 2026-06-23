@@ -7,6 +7,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Fixed
+- **Card TYPE now shares one scale across lanes.** The single word inside every
+  card is drawn at ONE shared font size derived from the longest visible word,
+  so a short "cat" and a longer "station" render at the same size in the same
+  box — not large vs. shrunk. Combined with the fixed box this makes the three
+  lanes pixel-uniform, removing the size tell that telegraphed the answer.
+- **Removed the second audio-looking control.** The prompt's circular replay
+  glyph is gone; the prompt now carries only a quiet plain-text "Tap word to
+  hear again" caption (no icon, no speaker shape). The mute toggle (top-right)
+  is the only control that looks like audio output.
+- **Bloom cut further so the hit rings are the sharpest layer.** Lane-shaft,
+  edge-rail and motion-trail opacities/lengths were reduced again (~50%); the
+  resting target ring is brighter (full opacity, heavier 4px stroke) and gets a
+  dark backing disc so it sits crisp in the foreground over any beam.
+- **Faster, readable descent.** Note travel time dropped from 7s to ~3.4s so the
+  cards visibly fall beat-to-beat and the rhythm/scoring reads as live motion
+  rather than a static field (still forgiving).
+- **Instruction collapsed to one sentence-case cue.** "Tap the matching word"
+  shows briefly then auto-fades, reclaiming vertical space; the prompt caption
+  is sentence case too. Heavy tracked all-caps is reserved for tiny utility
+  labels only.
 - **Lane cards are now perfectly uniform, rigid slots.** Every falling card uses
   a fixed width/height and a constant corner radius computed once from the lane
   geometry, fully independent of the word's length — a short "I" reads in the

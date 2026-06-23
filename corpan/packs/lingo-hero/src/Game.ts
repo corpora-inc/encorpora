@@ -42,7 +42,10 @@ export class Game {
   // Seconds a note takes to fall from spawn to the strum line. Higher = slower &
   // easier — THE primary playability knob. (Was effectively ~1.3–2.7s AND
   // frame-rate-dependent, which made it unplayable on high-refresh phones.)
-  private readonly NOTE_TRAVEL_SECONDS = 7;
+  // ~3.4s gives a clear, readable descent (cards visibly move beat-to-beat —
+  // the motion + scoring IS the promise of a rhythm game) while staying very
+  // forgiving. 7s was so slow the field read as static (major 4).
+  private readonly NOTE_TRAVEL_SECONDS = 3.4;
   // Note fall speed in PIXELS PER SECOND, derived from NOTE_TRAVEL_SECONDS on
   // resize and applied with delta-time in the loop (frame-rate independent).
   private speed: number = 200;

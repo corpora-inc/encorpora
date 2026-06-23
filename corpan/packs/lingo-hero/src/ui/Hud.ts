@@ -124,13 +124,14 @@ export class Hud {
       <div class="hud hidden" id="hud">
         <div class="top-bar">
           <div class="prompt-stack">
-            <!-- The foreign prompt IS the "hear again" control — tap it to replay.
-                 There is no separate speaker button (single audio control = mute).
-                 A small replay glyph + caption makes that purpose unmistakable
-                 instead of reading as a mystery pill. -->
-            <button class="question-box" id="question-box" type="button" aria-live="polite" aria-label="Replay prompt">
+            <!-- The foreign prompt IS the "hear again" control — tap the WORD to
+                 replay it. There is NO glyph here: the single audio-looking
+                 control on screen is the mute toggle (top-right). The caption is
+                 plain sentence-case text (no circular ↻ / speaker glyph) so it
+                 cannot be mistaken for a second audio output control (blocker 2). -->
+            <button class="question-box" id="question-box" type="button" aria-live="polite" aria-label="Tap word to hear it again">
               <span class="qb-word" id="question-word"></span>
-              <span class="qb-replay" aria-hidden="true"><span class="qb-replay-icon">&#8635;</span> Tap to replay</span>
+              <span class="qb-replay" aria-hidden="true">Tap word to hear again</span>
             </button>
             <!-- (a) romanization line under the foreign prompt -->
             <div class="romanization-line" id="romanization-line" aria-live="polite" hidden></div>
@@ -435,7 +436,12 @@ export class Hud {
         this.hideFeedback();
         this.setRomanization("");
         this.setPhraseProgress([], 0);
+        // Re-arm the brief cue (sentence-case "Tap the matching word"): clear the
+        // dim state and restart its auto-fade animation for this fresh run.
         this.cueEl.classList.remove("is-dim");
+        this.cueEl.style.animation = "none";
+        void this.cueEl.offsetWidth;
+        this.cueEl.style.animation = "";
         this.runSeen = 0;
         this.runCorrect = 0;
         this.refreshMastery();
