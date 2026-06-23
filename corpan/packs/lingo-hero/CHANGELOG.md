@@ -6,6 +6,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.4] - 2026-06-23
+
+A juice / visual pass (issues #427 and #429): the lane tracks now read as
+continuous full-height beams, and correctly DODGING a decoy is celebrated
+instead of passing silently.
+
+### Added
+- **Dodging a decoy is now rewarded (#429).** When a DECOY (distractor) word
+  crosses the strum line UN-caught — the correct play — the player now earns
+  points, a combo boost, and a small celebration: a mint-green "DODGED +N"
+  popup, an upward sparkle burst with gold glints, a soft shockwave + lane
+  flash, and a bright airy "phew" SFX. Points are scaled below a correct catch
+  (`40 + combo*4` vs `100 + combo*10`) so dodging can never out-score catching
+  the real words, and a clean dodge keeps the difficulty streak climbing.
+  Catching a decoy is still a miss/combo-break; letting the CORRECT word pass is
+  still a miss (never a dodge reward). New `decoy-dodged` bus event +
+  `playDecoyDodged` SFX; `window.__lingoHero.decoyDodges` is introspectable.
+  (`Game.rewardDecoyDodge`, `effects/index.ts`, `audio/sounds.ts` + `audio/index.ts`.)
+
+### Changed
+- **Lane color beams now extend the full playfield height (#427).** Each lane's
+  colored beam previously started partway down the track; it now runs as one
+  continuous column from the top edge (where notes spawn), brightest hugging the
+  strum line, carried down to the bottom edge — so every lane reads as an
+  unbroken track from spawn past the strum. Tuned to stay restrained (Neon
+  Arcade): the beam concentrates its light at the action band and never
+  out-glows the falling word cards. (`Renderer.drawLanes` volumetric shafts.)
+
 ## [0.4.3] - 2026-06-24
 
 A HUD / layout pass (issue #426): the prompt always shows in full, the bottom

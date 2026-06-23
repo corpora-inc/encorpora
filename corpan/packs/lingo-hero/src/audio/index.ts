@@ -13,6 +13,7 @@ import {
   playStart,
   playGameOver,
   playWaveVerdict,
+  playDecoyDodged,
 } from "./sounds";
 
 /**
@@ -203,6 +204,16 @@ export function initAudioHaptics(bus: GameEventBus): AudioHandle {
         playMiss(synth, lanePan(e.lane));
         haptics.miss();
       }
+    })
+  );
+
+  // --- decoy-dodged: bright "phew + sparkle" reward + a light haptic tick ---
+  // The player correctly dodged a distractor (issue #429). A positive, airy cue
+  // that celebrates the avoidance without competing with the catch bell.
+  unsubs.push(
+    bus.on("decoy-dodged", (e) => {
+      playDecoyDodged(synth, lanePan(e.lane));
+      haptics.hit(Math.max(1, e.combo));
     })
   );
 
