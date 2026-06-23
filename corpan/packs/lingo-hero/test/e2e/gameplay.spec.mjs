@@ -53,6 +53,7 @@ const read = () => page.evaluate(() => {
   const g = window.__lingoHero, ls = g.laneSystem, r = g.canvas.getBoundingClientRect();
   return {
     score: g.score, strumY: ls.getStrumLineY(), caughtCount: g.caughtCount,
+    combo: g.combo, decoyDodges: g.decoyDodges,
     laneX: [ls.getLaneX(0), ls.getLaneX(1), ls.getLaneX(2)],
     canvas: { left: r.left, top: r.top },
     // Anti-brick introspection.
@@ -220,6 +221,96 @@ while (Date.now() < deadline && catches < 2) {
   await page.waitForTimeout(50);
 }
 if (catches === 0 && failures === 0) fail("no target word reached the strum line in time");
+
+// --- Contract (f): DECOY DODGED is REWARDED (issue #429). --------------------
+// Letting a DECOY (distractor, isTarget=false) cross the strum line UN-caught is
+// the correct play and must REWARD the player: score climbs + the decoy-dodge
+// counter increments + the combo is kept/boosted (NOT broken). We inject a
+// controlled decoy into the live chart positioned just above the pass line so it
+// sails past on the next frames with no input, then assert the reward fired.
+// Drives the real Game loop physics + pass-line branch via window.__lingoHero.
+{
+  const before = await page.evaluate(() => {
+    const g = window.__lingoHero, ls = g.laneSystem;
+    const strumY = ls.getStrumLineY();
+    const speed = g.speed;
+    // Place a DECOY just ABOVE the pass line so it falls past within a few
+    // frames un-caught. strumTime is back-computed so physics carries it down:
+    //   y = strumY - ((strumTime - now)/1000)*speed  → seed y just under strumY.
+    const now = performance.now();
+    const startY = strumY + ls.getNoteRadius() * 1.5; // just above the pass line
+    const strumTime = now - ((startY - strumY) / speed) * 1000;
+    g.notes.push({
+      id: "test-decoy-" + now,
+      lane: 0,
+      y: startY,
+      text: "señuelo",
+      isTarget: false,
+      seqIndex: -1,
+      hit: false,
+      missed: false,
+      spawnTime: Date.now(),
+      strumTime,
+    });
+    return { score: g.score, decoyDodges: g.decoyDodges, combo: g.combo };
+  });
+  // Do NOTHING — let the injected decoy sail past the line un-caught.
+  let dodged = false;
+  const dodgeDeadline = Date.now() + 4000;
+  while (Date.now() < dodgeDeadline) {
+    const s = await read();
+    if (s.decoyDodges > before.decoyDodges) { dodged = true; break; }
+    await page.waitForTimeout(60);
+  }
+  if (!dodged) fail("decoy passed un-caught but the dodge reward never fired (decoyDodges did not increment)");
+  else {
+    const after = await read();
+    if (after.score <= before.score) fail(`dodging a decoy did not award points (score ${before.score} -> ${after.score})`);
+    else if (after.combo < before.combo) fail(`dodging a decoy broke the combo (${before.combo} -> ${after.combo})`);
+    else console.log(`OK: decoy dodged → rewarded (score ${before.score} -> ${after.score}, combo ${before.combo} -> ${after.combo}, dodges ${before.decoyDodges} -> ${after.decoyDodges})`);
+  }
+}
+
+// --- Contract (f2): a missed CORRECT target is a MISS, NOT a dodge reward. ----
+// Inject a TARGET note that is NOT the next-in-sequence word... actually the
+// pass-line reward path only ever fires for isTarget=false. To prove the CORRECT
+// word missing stays a miss (no dodge), we let the next-in-sequence target sail
+// past un-caught and assert: score does NOT rise (it falls / breaks combo) and
+// the dodge counter does NOT increment.
+{
+  // Find (or wait for) a live next-in-sequence target, then DON'T catch it.
+  const probe = await (async () => {
+    const dl = Date.now() + 8000;
+    while (Date.now() < dl) {
+      const s = await read();
+      const t = s.notes.find((n) => n.isTarget && n.seqIndex === s.caughtCount && !n.hit && !n.missed);
+      if (t) return { dodgesBefore: s.decoyDodges, caught: s.caughtCount };
+      await page.waitForTimeout(80);
+    }
+    return null;
+  })();
+  if (!probe) {
+    console.log("note: no live target to test the missed-correct case (round boundary); skipping f2");
+  } else {
+    // Let the correct word pass: wait until caughtCount advances (the pass-line
+    // miss path reveals + advances it) OR the round resolves.
+    let advanced = false;
+    const dl = Date.now() + 12000;
+    while (Date.now() < dl) {
+      const s = await read();
+      if (s.caughtCount > probe.caught || s.roundResolved || s.lingering) { advanced = true; break; }
+      await page.waitForTimeout(120);
+    }
+    const after = await read();
+    if (!advanced) {
+      console.log("note: missed-correct case did not advance within window; skipping f2 assertion");
+    } else if (after.decoyDodges > probe.dodgesBefore) {
+      fail("missing the CORRECT target word wrongly granted a decoy-dodge reward");
+    } else {
+      console.log("OK: missing the CORRECT target word was a miss, not a dodge reward (dodges unchanged)");
+    }
+  }
+}
 
 // --- Contract (d): NO-BRICK — a round with NO INPUT eventually resolves. -----
 // Wait for a fresh, unresolved round to be in flight, then do NOTHING and

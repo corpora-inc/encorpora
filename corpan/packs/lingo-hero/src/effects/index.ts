@@ -172,6 +172,66 @@ export function initEffects(
     })
   );
 
+  // DECOY DODGED — issue #429. The player correctly let a distractor sail past.
+  // A small, JUICY celebration that reads clearly as POSITIVE and distinct from
+  // both the catch burst (white/lane) and the miss puff (red): a tight mint/lime
+  // upward sparkle + a quick gold glint + a "DODGED +N" popup + a soft shockwave.
+  // Deliberately smaller + lower-trauma than a catch so it rewards without
+  // obscuring the falling cards or stealing the catch's thunder.
+  offs.push(
+    bus.on("decoy-dodged", (e) => {
+      combo = e.combo;
+      const mint: Rgb = { r: 120, g: 255, b: 180 }; // fresh "correct avoidance" green
+      // Feed the lane-flash seam so the lane the foil dropped down pulses too
+      // (a soft positive acknowledgement on the right lane).
+      signalHit(e.lane, e.combo, performance.now());
+
+      // Upward mint sparkle fan — the foil whooshing harmlessly by.
+      particles.burst(e.x, e.y, {
+        count: 12,
+        speedMin: 90,
+        speedMax: 300,
+        sizeMin: 1.4,
+        sizeMax: 3.6,
+        lifeMin: 0.3,
+        lifeMax: 0.7,
+        gravity: 360,
+        drag: 0.88,
+        spread: Math.PI * 1.1,
+        angle: -Math.PI / 2,
+        color: mint,
+        glow: 1.05,
+      });
+      // A few gold glints for that "nice!" pop.
+      particles.burst(e.x, e.y, {
+        count: 6,
+        speedMin: 60,
+        speedMax: 200,
+        sizeMin: 1.6,
+        sizeMax: 3.6,
+        lifeMin: 0.35,
+        lifeMax: 0.7,
+        drag: 0.85,
+        spread: Math.PI * 2,
+        shape: "star",
+        color: COLORS.GOLD,
+        glow: 1.15,
+      });
+      floaters.shockwave(e.x, e.y, mint, 0.85);
+      floaters.popup(
+        e.x,
+        e.y - laneSystem.getNoteRadius(),
+        `DODGED +${e.points}`,
+        mint,
+        22
+      );
+      // A light, happy kick — smaller than a catch so it stays secondary.
+      shake.add(0.1);
+      background.setHue(mix(mint, COLORS.WHITE, 0.2));
+      background.pulse(0.16);
+    })
+  );
+
   offs.push(
     bus.on("comboChange", (e) => {
       combo = e.value;

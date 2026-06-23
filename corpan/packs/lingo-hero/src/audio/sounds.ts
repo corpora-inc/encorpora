@@ -354,6 +354,50 @@ export function playGameOver(synth: SynthEngine): void {
 }
 
 /**
+ * Decoy DODGED (issue #429): the player correctly let a distractor sail past.
+ * A bright, airy "phew + sparkle" — a quick rising two-note chime over a soft
+ * upward noise swish (the foil whooshing harmlessly by). Positive and light:
+ * it celebrates the correct avoidance without competing with the fuller catch
+ * bell, so dodging FEELS rewarding but reads as secondary to a real catch.
+ */
+export function playDecoyDodged(synth: SynthEngine, lanePan: number): void {
+  const pan = lanePan * 0.5;
+  // Rising two-note sparkle (a confident little "nice").
+  synth.playVoice({
+    type: "triangle",
+    freq: 659.25, // E5
+    freqTo: 987.77, // B5
+    gain: 0.16,
+    attack: 0.004,
+    release: 0.16,
+    pan,
+    reverb: 0.32,
+  });
+  // Octave shimmer on top for a glint of "magic".
+  synth.playVoice({
+    type: "sine",
+    freq: 1318.51, // E6
+    gain: 0.07,
+    attack: 0.003,
+    release: 0.12,
+    delay: 0.05,
+    pan,
+    reverb: 0.4,
+  });
+  // Soft upward air swish — the foil whooshing harmlessly past.
+  synth.playNoise({
+    gain: 0.08,
+    dur: 0.22,
+    cutoff: 1200,
+    cutoffTo: 6000,
+    filter: "bandpass",
+    q: 0.9,
+    pan,
+    reverb: 0.3,
+  });
+}
+
+/**
  * Wave verdict accent (learning-feel): a tiny confirm/deny ping layered on top
  * of the per-tap SFX when a whole wave resolves. Correct = a clean two-note
  * "up" affirmation; wrong/passed = a soft single low note. Subtle by design so

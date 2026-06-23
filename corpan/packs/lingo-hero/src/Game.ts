@@ -70,6 +70,12 @@ export class Game {
   private notes: Note[] = [];
   private score: number = 0;
   private combo: number = 0;
+  /**
+   * How many DECOYS the player has correctly DODGED this run (a wrong card
+   * crossed the strum line un-caught — the right play, issue #429). Introspected
+   * by the e2e harness via window.__lingoHero to prove the dodge reward fires.
+   */
+  private decoyDodges: number = 0;
   // Seconds a word takes to fall from spawn to the strum line. Higher = slower
   // & easier — THE primary playability knob, delta-timed so it is frame-rate
   // independent on high-refresh phones.
@@ -371,6 +377,7 @@ export class Game {
     this.mode = mode;
     this.score = 0;
     this.combo = 0;
+    this.decoyDodges = 0;
     this.notes = [];
     this.round = null;
     this.roundWords = [];
@@ -857,6 +864,39 @@ export class Game {
     }
   }
 
+  /**
+   * REWARD a correctly-dodged DECOY (issue #429): the player let a distractor
+   * card sail past the strum line un-caught — the right play. We award points
+   * (scaled BELOW a correct catch so dodging can never out-score catching the
+   * real words), KEEP and gently boost the combo (a clean dodge sustains the
+   * streak rather than just not breaking it), and fire a small celebration via
+   * the bus (effects burst + a positive SFX). A dodge does NOT mark the chart
+   * unclean — avoiding a foil is correct, so the difficulty streak keeps
+   * climbing. Only ever called for a genuine decoy note (isTarget === false).
+   */
+  private rewardDecoyDodge(lane: LaneIndex) {
+    if (this.state !== GameState.PLAYING) return;
+    this.decoyDodges++;
+    // Points: a catch is 100 + combo*10; a dodge is deliberately smaller so a
+    // run of dodges can't beat actually catching the translation.
+    const points = 40 + this.combo * 4;
+    this.setScore(this.score + points);
+    // A clean dodge sustains/boosts the streak (combo +1) — it should FEEL like
+    // a win, not merely a non-loss — but never breaks it.
+    this.setCombo(this.combo + 1);
+
+    const x = this.laneSystem.getLaneX(lane);
+    const y = this.laneSystem.getStrumLineY();
+    this.bus.emit("decoy-dodged", {
+      lane,
+      x,
+      y,
+      combo: this.combo,
+      points,
+      mode: this.mode,
+    });
+  }
+
   private loop(timestamp: number) {
     if (!this.isRunning) return;
 
@@ -966,10 +1006,19 @@ export class Game {
                 },
             });
             this.advanceStep(false);
+          } else if (!note.isTarget) {
+            // DECOY DODGED (issue #429): a distractor card crossed the strum
+            // line UN-caught — exactly the right play. Reward it: points, a
+            // combo boost, and a small celebration (juice). Distinct from a
+            // missed correct word (handled above, still a miss) and from a
+            // consumed/out-of-sequence target (retired silently below).
+            note.missed = true;
+            this.rewardDecoyDodge(note.lane);
           } else {
-            // A decoy or an already-consumed/out-of-sequence note falling past
-            // the line is simply retired — no penalty (dodging a decoy is the
-            // correct play).
+            // An already-consumed / out-of-sequence TARGET note falling past the
+            // line is simply retired — no penalty and no reward (it was already
+            // caught earlier in the sequence, or is a future word the player has
+            // not reached). Only a genuine decoy earns the dodge reward.
             note.missed = true;
           }
         }

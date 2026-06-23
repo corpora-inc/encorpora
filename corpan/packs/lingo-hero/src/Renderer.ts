@@ -152,30 +152,51 @@ export class Renderer {
       dt
     );
 
-    // 3) VOLUMETRIC NEON LANE SHAFTS — a soft column of lane-colored light per
-    //    lane, brightest at the strum line, fading up the track. Additive.
+    // 3) VOLUMETRIC NEON LANE SHAFTS — a CONTINUOUS lane-colored beam per lane,
+    //    running the FULL HEIGHT of the playfield (top edge → past the strum,
+    //    down to the bottom edge) so every lane reads as one unbroken track from
+    //    spawn to strum (issue #427). Brightness is shaped along the column:
+    //    softly present at the very top (notes spawn here), brightest hugging the
+    //    strum line (the action band), then carried — dimmer — all the way to the
+    //    bottom edge so the track never visually "stops short". Tastefully
+    //    restrained (Neon Arcade): the column never out-glows the falling word
+    //    cards; the strum band is where it concentrates its light. Additive.
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
+    const strumStop = height > 0 ? clamp01(strumY / height) : 0.74;
     for (let i = 0; i < 3; i++) {
       const c = this.laneColors[i];
       const cx = this.laneSystem.getLaneX(i as LaneIndex);
       const halfW = lane0.width * 0.5;
-      // Vertical shaft: brightest band hugging the strum line.
-      const shaft = ctx.createLinearGradient(0, strumY - height * 0.62, 0, strumY + 12);
-      const baseA = 0.05 + energy * 0.06;
-      shaft.addColorStop(0, rgba(c, 0));
-      shaft.addColorStop(0.78, rgba(c, baseA));
-      shaft.addColorStop(1, rgba(c, baseA + 0.1 + energy * 0.08));
-      ctx.fillStyle = shaft;
-      ctx.fillRect(cx - halfW, strumY - height * 0.62, halfW * 2, height * 0.62 + 12);
 
-      // A tighter, brighter central glow line down each lane.
+      // Full-height beam: one gradient from the top edge to the bottom edge.
+      // Top: a gentle wash so the spawn zone reads as the same track. Strum:
+      // the brightest band. Bottom: a faded-but-present tail so the beam reaches
+      // the very edge (continuous), without competing with the bottom HUD row.
+      const shaft = ctx.createLinearGradient(0, 0, 0, height);
+      const topA = 0.035 + energy * 0.03; // subtle at spawn
+      const strumA = 0.13 + energy * 0.1; // brightest at the action band
+      const botA = 0.07 + energy * 0.05; // carried to the bottom edge (present, not dark)
+      shaft.addColorStop(0, rgba(c, topA));
+      // Ramp up toward the strum line (placed at its real screen fraction).
+      shaft.addColorStop(Math.max(0.02, strumStop - 0.18), rgba(c, topA + 0.035));
+      shaft.addColorStop(strumStop, rgba(c, strumA));
+      // Carry the beam below the strum to the bottom edge so it never stops short
+      // — a visible-but-restrained tail keeps the track continuous past the rings
+      // without competing with the bottom HUD stats row.
+      shaft.addColorStop(Math.min(0.999, strumStop + 0.05), rgba(c, strumA * 0.72));
+      shaft.addColorStop(1, rgba(c, botA));
+      ctx.fillStyle = shaft;
+      ctx.fillRect(cx - halfW, 0, halfW * 2, height);
+
+      // A tighter, brighter central glow line down each lane — also full height,
+      // so the lane's "spine" of light reads continuously top→bottom.
       const core = ctx.createLinearGradient(cx - halfW * 0.12, 0, cx + halfW * 0.12, 0);
       core.addColorStop(0, rgba(c, 0));
-      core.addColorStop(0.5, rgba(c, 0.08 + energy * 0.07));
+      core.addColorStop(0.5, rgba(c, 0.07 + energy * 0.06));
       core.addColorStop(1, rgba(c, 0));
       ctx.fillStyle = core;
-      ctx.fillRect(cx - halfW * 0.12, strumY - height * 0.55, halfW * 0.24, height * 0.55);
+      ctx.fillRect(cx - halfW * 0.12, 0, halfW * 0.24, height);
     }
     ctx.restore();
 

@@ -265,6 +265,27 @@ export interface MuteChangeEvent {
 }
 
 /**
+ * Emitted when the player correctly DODGES a DECOY (distractor) word: a wrong
+ * target-language card crossed the strum line UN-caught (the right play). This
+ * is a REWARD, not a miss — it awards points, keeps/boosts the combo, and fires
+ * a small celebration (issue #429). Only decoy cards trigger it; a missed
+ * CORRECT word is still a miss (NoteMiss), never a dodge.
+ */
+export interface DecoyDodgedEvent {
+  /** The lane the dodged decoy fell down (for placing the VFX/sound pan). */
+  lane: LaneIndex;
+  /** Screen-space x of the reward (CSS px) — the dodged lane at the strum line. */
+  x: number;
+  /** Screen-space y of the reward (CSS px) — the strum line. */
+  y: number;
+  /** Combo value AFTER this dodge (dodging keeps/boosts the streak). */
+  combo: number;
+  /** Points awarded for the dodge (scaled below a correct catch). */
+  points: number;
+  mode: GameMode;
+}
+
+/**
  * The full event map. Keys are event names, values are payload types.
  * `GameEventBus` (src/events.ts) is typed against this map.
  */
@@ -282,6 +303,7 @@ export interface GameEventMap {
   roundAdvance: RoundAdvanceEvent;
   "result-celebrate": ResultCelebrateEvent;
   muteChange: MuteChangeEvent;
+  "decoy-dodged": DecoyDodgedEvent;
 }
 
 export type GameEventName = keyof GameEventMap;
