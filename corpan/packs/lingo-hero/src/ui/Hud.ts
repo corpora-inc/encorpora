@@ -76,6 +76,9 @@ export class Hud {
   private comboPulseTimer = 0;
   private flyoutTimer = 0;
   private feedbackTimer = 0;
+  /** Words seen this run + correct count (drive the in-run mastery readout). */
+  private runSeen = 0;
+  private runCorrect = 0;
 
   constructor(
     container: HTMLElement,
@@ -213,6 +216,9 @@ export class Hud {
   /** The prompt text shown in the in-game question box (foreign word). */
   setQuestion(text: string): void {
     this.questionBox.textContent = text;
+    // A new wave begins: clear any lingering meaning-reveal card so it never
+    // overlaps the fresh prompt (the auto-hide timer may still be pending).
+    this.hideFeedback();
     // re-trigger the pop animation each wave
     this.questionBox.style.animation = "none";
     // force reflow so the animation restarts
@@ -249,19 +255,41 @@ export class Hud {
    * may replace innerHTML entirely if it wants a richer card.
    */
   showFeedback(data: FeedbackCardData, autoHideMs = 0): void {
+    const outcome = data.outcome ?? (data.correct ? "correct" : "wrong");
     const roman = data.romanization?.trim()
       ? `<div class="fb-roman">${this.escape(data.romanization)}</div>`
       : "";
+
+    // RTL-aware, outcome-nuanced verdict copy. "passed" (the prompt fell by)
+    // reads differently from a tapped-wrong distractor — both reveal meaning.
+    const verdict =
+      outcome === "correct"
+        ? { icon: "&#10003;", label: "Nailed it" }
+        : outcome === "passed"
+          ? { icon: "&#8987;", label: "Missed it" }
+          : { icon: "&#10005;", label: "Not quite" };
+
     this.feedbackCard.className =
       "feedback-card " + (data.correct ? "is-correct" : "is-wrong");
-    this.feedbackCard.dataset.outcome = data.outcome ?? (data.correct ? "correct" : "wrong");
+    this.feedbackCard.dataset.outcome = outcome;
     this.feedbackCard.innerHTML = `
-      <div class="fb-foreign">${this.escape(data.foreign)}</div>
-      ${roman}
-      <div class="fb-arrow" aria-hidden="true">&#8595;</div>
-      <div class="fb-english">${this.escape(data.english)}</div>
+      <div class="fb-verdict">
+        <span class="fb-verdict-icon" aria-hidden="true">${verdict.icon}</span>
+        <span class="fb-verdict-label">${verdict.label}</span>
+      </div>
+      <div class="fb-pair">
+        <div class="fb-foreign" dir="auto">${this.escape(data.foreign)}</div>
+        ${roman}
+        <div class="fb-arrow" aria-hidden="true">&#8595;</div>
+        <div class="fb-english" dir="auto">${this.escape(data.english)}</div>
+      </div>
     `;
     this.feedbackCard.hidden = false;
+    // Restart the entrance animation each reveal.
+    this.feedbackCard.classList.remove("is-in");
+    void this.feedbackCard.offsetWidth;
+    this.feedbackCard.classList.add("is-in");
+
     if (this.feedbackTimer) clearTimeout(this.feedbackTimer);
     if (autoHideMs > 0) {
       this.feedbackTimer = window.setTimeout(
@@ -340,15 +368,19 @@ export class Hud {
         this.comboEl.textContent = "0";
         this.comboBox.classList.add("zero");
         this.comboBox.classList.remove("pulse");
-        // Reset transient learning slots for a fresh run.
+        // Reset transient learning slots + run tally for a fresh run.
         this.hideFeedback();
         this.setRomanization("");
+        this.runSeen = 0;
+        this.runCorrect = 0;
+        this.refreshMastery();
       }),
       this.bus.on("menuShown", () => {
         this.menuScreen.classList.remove("hidden");
         this.hudPanel.classList.add("hidden");
         this.gameOverScreen.classList.add("hidden");
         this.hideFeedback();
+        this.setMastery(null);
       }),
       this.bus.on("scoreChange", (e) => {
         this.scoreEl.textContent = e.value.toLocaleString();
@@ -364,8 +396,53 @@ export class Hud {
         this.gameOverScreen.classList.remove("hidden");
         this.finalScoreEl.textContent = e.finalScore.toLocaleString();
         this.populateGameOverStats(e.finalScore);
+      }),
+      // (c) LEARNING SURFACE — the single, reliable per-wave verdict hook.
+      // Raise the meaning-reveal feedback card and advance the run mastery
+      // tally. This is the ui-stream wiring the foundation deliberately left
+      // to us (Game.ts only emits; it never calls showFeedback/setMastery).
+      this.bus.on("wave-resolved", (e) => {
+        this.runSeen += 1;
+        if (e.correct) this.runCorrect += 1;
+        this.showFeedback(
+          {
+            foreign: e.word.foreign,
+            english: e.word.english,
+            romanization: e.word.romanization,
+            correct: e.correct,
+            outcome: e.outcome,
+          },
+          // Correct answers flash by; misses linger so the meaning sinks in.
+          e.correct ? 1400 : 2600
+        );
+        this.refreshMastery();
       })
     );
+  }
+
+  /**
+   * (d) Recompute + push the in-run mastery readout. Blends this run's live
+   * accuracy with the persisted level progress so the player always feels
+   * forward motion. Hidden on the very first wave (nothing to show yet).
+   */
+  private refreshMastery(): void {
+    if (this.runSeen === 0) {
+      this.setMastery(null);
+      return;
+    }
+    const snap = this.progression?.getSnapshot();
+    const acc = Math.round((this.runCorrect / this.runSeen) * 100);
+    // Prefer the persisted level bar for the fill (a true sense of progress);
+    // fall back to this run's accuracy when progression isn't wired.
+    const progress =
+      typeof snap?.levelProgress === "number"
+        ? snap.levelProgress
+        : this.runCorrect / this.runSeen;
+    const lvl = snap?.level ?? 1;
+    this.setMastery({
+      label: `Lv ${lvl} · ${this.runCorrect}/${this.runSeen} · ${acc}%`,
+      progress,
+    });
   }
 
   /** Brief scale-pulse on the combo number when it climbs. */

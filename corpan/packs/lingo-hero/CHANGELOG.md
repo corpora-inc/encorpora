@@ -19,6 +19,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   optional injected `WordSelector` (or a process-wide default via
   `setDefaultWordSelector`) to bias wave content toward due/weak words while
   still guaranteeing distinct entries + distinct English answers.
+- **Neon Arcade shell + learning surfaces (UI).** Filled the foundation HUD
+  slots with a cohesive, token-driven UI: a romanization line tucked under the
+  foreign prompt, a glassy audio-**replay** button, a premium post-answer
+  **feedback card** (outcome-tinted verdict + foreign → romanization → English
+  meaning reveal, wired to the once-per-wave `wave-resolved` event), and an
+  in-run **mastery readout** (level · correct/seen · accuracy with a progress
+  bar fed from persisted level progress). Added a static synthwave perspective
+  grid backdrop behind the canvas. RTL-aware (bidi `dir="auto"` on revealed
+  text, mirrored chevrons/bars), contrast-checked, fully offline (no remote
+  assets), and reduced-motion safe.
 
 ### Fixed
 - **Correct answers were being scored as wrong (core logic).** Wave content had

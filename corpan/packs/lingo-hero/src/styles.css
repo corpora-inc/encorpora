@@ -228,6 +228,29 @@ html {
     linear-gradient(180deg, var(--bg-1), var(--bg-0));
 }
 
+/* Synthwave perspective grid backdrop — a subtle, static horizon glow + grid
+   that lives BEHIND the canvas (z 0) so it never competes with gameplay. Pure
+   CSS, no assets. Honors reduced-motion (no animation here, it's static). */
+#lingo-hero-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 40% at 50% 64%, color-mix(in srgb, var(--na-accent) 16%, transparent), transparent 70%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(11.11% - 1px),
+      color-mix(in srgb, var(--na-accent) 8%, transparent) calc(11.11% - 1px),
+      color-mix(in srgb, var(--na-accent) 8%, transparent) 11.11%
+    );
+  -webkit-mask-image: linear-gradient(180deg, transparent 52%, #000 100%);
+  mask-image: linear-gradient(180deg, transparent 52%, #000 100%);
+  opacity: 0.5;
+}
+
 canvas {
   position: absolute;
   top: 0;
@@ -522,8 +545,20 @@ canvas {
 
 .top-bar {
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: var(--na-space-3);
   width: 100%;
+}
+
+/* Prompt stack: foreign prompt + romanization line, vertically grouped so the
+   romanization tucks neatly under the question box. */
+.prompt-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--na-space-1);
+  min-width: 0;
 }
 
 .question-box {
@@ -813,6 +848,308 @@ canvas {
   100% {
     opacity: 1;
     transform: scale(1) rotate(0);
+  }
+}
+
+/* =========================================================================
+   LEARNING SURFACES (SHELL stream) — romanization · replay · feedback · mastery
+   All styled from the --na-* Neon Arcade tokens. RTL-aware, contrast-checked,
+   reduced-motion safe. These fill the foundation Hud slots.
+   ========================================================================= */
+
+/* ----- (a) Romanization line — sits under the foreign prompt ----- */
+.romanization-line {
+  max-width: min(92%, 640px);
+  font-family: var(--na-font-body);
+  font-weight: 700;
+  font-size: clamp(var(--na-fs-xs), 3.4vmin, var(--na-fs-md));
+  line-height: var(--na-lh-snug);
+  letter-spacing: var(--na-tracking-wide);
+  text-align: center;
+  color: var(--na-text-dim);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  opacity: 0.92;
+  /* gentle entrance, re-keyed each wave by the hidden→shown toggle */
+  animation: roman-in var(--na-dur-base) var(--na-ease-out) both;
+}
+.romanization-line[hidden] {
+  display: none;
+}
+@keyframes roman-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 0.92;
+    transform: none;
+  }
+}
+
+/* ----- (b) Audio-replay button — re-speaks the current prompt ----- */
+.replay-btn {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: clamp(2.6rem, 11vmin, 3.2rem);
+  height: clamp(2.6rem, 11vmin, 3.2rem);
+  padding: 0;
+  border-radius: var(--na-radius-pill);
+  cursor: pointer;
+  pointer-events: auto;
+  color: var(--na-accent);
+  background:
+    radial-gradient(120% 120% at 50% 20%, color-mix(in srgb, var(--na-accent) 24%, transparent), transparent 65%),
+    var(--na-glass-bg);
+  border: 1px solid color-mix(in srgb, var(--na-accent) 45%, transparent);
+  box-shadow:
+    var(--na-glow-cyan),
+    0 8px 22px -12px rgba(0, 0, 0, 0.8),
+    0 1px 0 var(--na-glass-hi) inset;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    transform var(--na-dur-fast) var(--na-ease-snap),
+    box-shadow var(--na-dur-base) var(--na-ease-out),
+    border-color var(--na-dur-base) var(--na-ease-out),
+    background var(--na-dur-base) var(--na-ease-out);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.replay-btn[hidden] {
+  display: none;
+}
+.replay-icon {
+  font-size: clamp(1.05rem, 4.6vmin, 1.4rem);
+  line-height: 1;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--na-accent) 70%, transparent));
+}
+.replay-btn:hover,
+.replay-btn:focus-visible {
+  transform: translateY(-2px) scale(1.04);
+  border-color: var(--na-accent);
+  box-shadow:
+    var(--na-bloom-md),
+    0 12px 26px -12px rgba(0, 0, 0, 0.85),
+    0 1px 0 var(--na-glass-hi) inset;
+}
+.replay-btn:active {
+  transform: translateY(0) scale(0.94);
+}
+.replay-btn:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--na-accent) 80%, white);
+  outline-offset: 3px;
+}
+/* tiny ping ring on tap to confirm the re-speak fired */
+.replay-btn:active .replay-icon {
+  animation: replay-ping var(--na-dur-slow) var(--na-ease-out);
+}
+@keyframes replay-ping {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.82);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ----- (d) Mastery readout — a real sense of progress, in-run ----- */
+.mastery-readout {
+  display: flex;
+  align-items: center;
+  gap: var(--na-space-3);
+  align-self: center;
+  width: min(86%, 420px);
+  padding: var(--na-space-2) var(--na-space-4);
+  border-radius: var(--na-radius-pill);
+  background: var(--na-glass-bg);
+  border: 1px solid var(--na-glass-stroke);
+  box-shadow: 0 1px 0 var(--na-glass-hi) inset, var(--na-glow-soft);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: mastery-in var(--na-dur-base) var(--na-ease-out) both;
+}
+.mastery-readout[hidden] {
+  display: none;
+}
+@keyframes mastery-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.mastery-label {
+  flex: 0 0 auto;
+  font-family: var(--na-font-body);
+  font-weight: 900;
+  font-size: var(--na-fs-2xs);
+  letter-spacing: var(--na-tracking-wide);
+  text-transform: uppercase;
+  color: var(--na-text-dim);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.mastery-bar {
+  position: relative;
+  flex: 1 1 auto;
+  height: 6px;
+  min-width: 48px;
+  border-radius: var(--na-radius-pill);
+  background: color-mix(in srgb, var(--na-text-faint) 28%, transparent);
+  overflow: hidden;
+}
+.mastery-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--na-accent), var(--na-accent-3));
+  box-shadow: var(--na-glow-lime);
+  transition: width var(--na-dur-slow) var(--na-ease-out);
+}
+/* RTL: the fill grows from the right edge to match reading direction. */
+[dir="rtl"] .mastery-fill {
+  margin-inline-start: auto;
+}
+
+/* ----- (c) Post-answer FEEDBACK card — meaning reveal ----- */
+.feedback-card {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(16%, 26vh, 32%);
+  transform: translateX(-50%);
+  z-index: var(--na-z-feedback);
+  width: min(88vw, 440px);
+  padding: var(--na-space-5) var(--na-space-5) var(--na-space-4);
+  text-align: center;
+  pointer-events: none;
+  border-radius: var(--na-radius-lg);
+  background:
+    radial-gradient(120% 90% at 50% -10%, color-mix(in srgb, var(--na-accent) 14%, transparent), transparent 60%),
+    var(--na-glass-bg);
+  border: 1px solid var(--na-glass-stroke);
+  box-shadow: var(--na-shadow-panel), var(--na-bloom-md);
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  overflow: hidden;
+}
+.feedback-card[hidden] {
+  display: none;
+}
+.feedback-card.is-in {
+  animation: fb-in var(--na-dur-slow) var(--na-ease-snap) both;
+}
+@keyframes fb-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(14px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+/* Outcome-tinted top edge + accent. */
+.feedback-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  background: var(--fb-accent, var(--na-accent));
+  box-shadow: 0 0 16px var(--fb-accent, var(--na-accent));
+}
+.feedback-card.is-correct {
+  --fb-accent: var(--na-correct);
+  border-color: color-mix(in srgb, var(--na-correct) 50%, var(--na-glass-stroke));
+  box-shadow: var(--na-shadow-panel), var(--na-glow-lime);
+}
+.feedback-card.is-wrong {
+  --fb-accent: var(--na-wrong);
+  border-color: color-mix(in srgb, var(--na-wrong) 45%, var(--na-glass-stroke));
+  box-shadow: var(--na-shadow-panel), 0 0 22px rgba(255, 62, 165, 0.34);
+}
+
+.fb-verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  margin-bottom: var(--na-space-3);
+  padding: 0.28em 0.85em;
+  border-radius: var(--na-radius-pill);
+  font-family: var(--na-font-body);
+  font-weight: 900;
+  font-size: var(--na-fs-2xs);
+  letter-spacing: var(--na-tracking-wider);
+  text-transform: uppercase;
+  color: var(--fb-accent, var(--na-accent));
+  background: color-mix(in srgb, var(--fb-accent, var(--na-accent)) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fb-accent, var(--na-accent)) 40%, transparent);
+}
+.fb-verdict-icon {
+  font-size: 1.1em;
+  line-height: 1;
+}
+.fb-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--na-space-1);
+}
+.fb-foreign {
+  font-family: var(--na-font-display);
+  font-weight: 800;
+  font-size: clamp(var(--na-fs-lg), 6vmin, var(--na-fs-xl));
+  line-height: var(--na-lh-tight);
+  color: var(--na-text);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+  word-break: break-word;
+}
+.fb-roman {
+  font-family: var(--na-font-body);
+  font-weight: 700;
+  font-size: var(--na-fs-sm);
+  letter-spacing: var(--na-tracking-wide);
+  color: var(--na-text-dim);
+  opacity: 0.9;
+}
+.fb-arrow {
+  font-size: var(--na-fs-md);
+  line-height: 1;
+  color: var(--fb-accent, var(--na-accent));
+  opacity: 0.85;
+  margin: var(--na-space-1) 0;
+  filter: drop-shadow(0 0 8px var(--fb-accent, var(--na-accent)));
+}
+.fb-english {
+  font-family: var(--na-font-body);
+  font-weight: 900;
+  font-size: clamp(var(--na-fs-md), 4.6vmin, var(--na-fs-lg));
+  line-height: var(--na-lh-snug);
+  color: var(--na-text);
+  word-break: break-word;
+}
+
+/* RTL: mirror the feedback transform origin so the centered card stays put. */
+[dir="rtl"] .feedback-card {
+  /* translateX(-50%) is direction-agnostic; nothing to flip, but foreign
+     scripts get their own dir="auto" on the line for correct bidi shaping. */
+}
+
+/* Short / landscape phones: lift the card so it clears the strum line. */
+@media (max-height: 560px) {
+  .feedback-card {
+    bottom: 14%;
+    padding: var(--na-space-3) var(--na-space-4);
+  }
+  .fb-verdict {
+    margin-bottom: var(--na-space-2);
   }
 }
 
