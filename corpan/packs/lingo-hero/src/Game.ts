@@ -442,12 +442,17 @@ export class Game {
    */
   private advanceStep(caught: boolean) {
     if (!this.round) return;
-    // The sequence is already complete — never advance past the last word.
-    // (Step cadence makes this single-call-per-step in practice, but guard the
-    // invariant so caughtCount can't overshoot roundWords.length and corrupt
-    // the assembling strip / spawn state.) (adversarial-review, PR #390)
+    // Strict per-step idempotency: a step is resolved exactly once. `stepActive`
+    // is set true only by spawnStep() and cleared here on the first call, so any
+    // re-entrant or delayed second call for the same step is a hard no-op. This
+    // closes every re-entrancy path into the caughtCount mutation below.
+    // (adversarial-review, PR #390)
+    if (!this.stepActive) return;
+    this.stepActive = false;
+    // The sequence is already complete — never advance past the last word, so
+    // caughtCount can't overshoot roundWords.length or corrupt the assembling
+    // strip / spawn state.
     if (this.caughtCount >= this.roundWords.length) {
-      this.stepActive = false;
       return;
     }
     const idx = this.caughtCount;
@@ -460,7 +465,6 @@ export class Game {
     // Clamp the increment to the sequence length so caughtCount can never
     // exceed roundWords.length even under a (guarded-against) re-entrant call.
     this.caughtCount = Math.min(this.caughtCount + 1, this.roundWords.length);
-    this.stepActive = false;
 
     if (this.caughtCount >= this.roundWords.length) {
       // Sequence complete — resolve the round and queue the next one.
