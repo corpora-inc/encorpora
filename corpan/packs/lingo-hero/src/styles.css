@@ -1,27 +1,110 @@
-:root {
-  --neon-blue: #00ffff;
-  --neon-pink: #ff00ff;
-  --neon-green: #00ff00;
-  --neon-yellow: #ffff00;
-  --bg-dark: #111;
-  --fret-board: #1a1a1a;
-  --glass-bg: rgba(20, 20, 30, 0.9);
-  --glass-border: rgba(255, 255, 255, 0.2);
+/* =========================================================================
+   LINGO HERO — Design System (UIUX stream)
+   Offline-first: fonts are vendored locally (assets/fonts/*.woff2). No remote
+   @import. Renderer.ts paints canvas text in 'Russo One', so we alias that
+   family name to our vendored display font here — do NOT rename it.
+   ========================================================================= */
+
+/* ---- Vendored fonts (Lato, OFL-1.1 — see assets/fonts/Lato-LICENSE.txt) ----
+   Each woff2 is declared EXACTLY ONCE so the lib build inlines each file a
+   single time. The display + canvas families are aliases via font-family
+   fallback stacks (see --font-display / .question-box / 'Russo One'), not
+   duplicate @font-face blocks. */
+@font-face {
+  font-family: "Lingo Sans";
+  src: url("../assets/fonts/lato-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lingo Sans";
+  src: url("../assets/fonts/lato-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lingo Sans";
+  src: url("../assets/fonts/lato-900.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+/* Display headlines + scores. Lato Heavy (≈800). Declared under the name
+   'Russo One' because src/Renderer.ts hard-codes that family for canvas glyph
+   rendering — so the canvas gets a real vendored font with zero network. */
+@font-face {
+  font-family: "Russo One";
+  src: url("../assets/fonts/lato-heavy.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@400;700&display=swap');
+/* ----------------------------- Design tokens ----------------------------- */
+:root {
+  /* Brand spectrum */
+  --neon-cyan: #2ff3ff;
+  --neon-blue: #4d7cff;
+  --neon-violet: #9a5bff;
+  --neon-pink: #ff3ea5;
+  --neon-magenta: #ff00d4;
+  --neon-amber: #ffc23d;
+  --neon-lime: #7bff7b;
 
-body, html {
+  /* Surfaces */
+  --bg-0: #07060f;
+  --bg-1: #0d0b1a;
+  --bg-2: #14112a;
+  --ink: #f4f1ff;
+  --ink-dim: #b6aede;
+  --ink-faint: #7d75a8;
+
+  /* Glass */
+  --glass-bg: linear-gradient(160deg, rgba(28, 24, 56, 0.82), rgba(10, 8, 22, 0.92));
+  --glass-stroke: rgba(154, 130, 255, 0.32);
+  --glass-hi: rgba(255, 255, 255, 0.14);
+
+  /* Mode accents */
+  --accent-practice: var(--neon-cyan);
+  --accent-blitz: var(--neon-pink);
+
+  /* Motion */
+  --ease-snap: cubic-bezier(0.2, 0.9, 0.25, 1.2);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Type */
+  --font-body: "Lingo Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* 'Russo One' is our vendored heavy display face (see @font-face above). */
+  --font-display: "Russo One", "Lingo Sans", system-ui, sans-serif;
+
+  /* Layout */
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  height: 100dvh; 
-  background-color: var(--bg-dark);
-  color: white;
-  font-family: 'Roboto', sans-serif;
+  height: 100dvh;
+  background-color: var(--bg-0);
+  color: var(--ink);
+  font-family: var(--font-body);
   overflow: hidden;
-  touch-action: none; 
+  touch-action: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 #lingo-hero-root {
@@ -33,10 +116,10 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #111;
-  background-image: 
-      linear-gradient(rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95)),
-      url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm1 1h38v38H1V1z' fill='%23222' fill-opacity='0.2'/%3E%3C/svg%3E");
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(77, 124, 255, 0.18), transparent 60%),
+    radial-gradient(100% 70% at 50% 110%, rgba(255, 62, 165, 0.14), transparent 60%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-0));
 }
 
 canvas {
@@ -47,6 +130,7 @@ canvas {
   display: block;
 }
 
+/* ------------------------------- UI layer -------------------------------- */
 .ui-layer {
   position: absolute;
   inset: 0;
@@ -55,161 +139,47 @@ canvas {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: var(--font-body);
 }
 
-/* Glassmorphism / Metal Style */
+/* RTL: the Hud sets dir on .ui-layer. Logical props below keep layout mirrored. */
+
+/* -------------------------- Reusable glass panel ------------------------- */
 .glass-panel {
-  background: linear-gradient(135deg, rgba(40,40,40,0.95), rgba(10,10,10,0.98));
-  border: 2px solid var(--neon-blue);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), inset 0 0 50px rgba(0,0,0,0.8);
-  border-radius: 12px;
-  padding: 5vmin;
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 5vmin, 2.75rem);
   text-align: center;
   pointer-events: auto;
-  max-width: 90%;
-  transform: skewX(-5deg);
+  max-width: min(92vw, 460px);
+  box-shadow:
+    0 24px 60px -20px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 1px 0 var(--glass-hi) inset;
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  overflow: hidden;
 }
-
-/* Menu Screen */
-.menu-screen {
+.glass-panel::before {
+  /* animated sheen sweep */
+  content: "";
   position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.8);
-  pointer-events: auto;
-  padding: 5vmin;
-  backdrop-filter: blur(5px);
+  inset: -40% -10%;
+  background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, 0.08) 50%, transparent 58%);
+  transform: translateX(-30%);
+  animation: sheen 6s linear infinite;
+  pointer-events: none;
+}
+@keyframes sheen {
+  to {
+    transform: translateX(60%);
+  }
 }
 
-.logo-title {
-  font-family: 'Russo One', sans-serif;
-  font-size: clamp(3rem, 12vmin, 6rem);
-  text-transform: uppercase;
-  margin-bottom: 5vh;
-  text-align: center;
-  color: #fff;
-  text-shadow: 
-    0 0 10px var(--neon-blue),
-    0 0 20px var(--neon-pink),
-    4px 4px 0px #000;
-  transform: skewY(-5deg);
-  letter-spacing: 2px;
-}
-
-.menu-btn {
-  font-family: 'Russo One', sans-serif;
-  background: linear-gradient(90deg, #111, #333);
-  border: none;
-  border-left: 5px solid var(--neon-blue);
-  color: white;
-  
-  width: min(80%, 350px);
-  padding: 1.5rem 2rem;
-  margin: 1.5vh 0;
-  font-size: clamp(1.2rem, 5vmin, 2rem);
-  
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  cursor: pointer;
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-  transition: all 0.2s ease;
-  
-  box-shadow: 5px 5px 0px rgba(0,243,255,0.2);
-  
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  pointer-events: auto;
-}
-
-.menu-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px rgba(0,243,255,0.2);
-}
-
-.menu-btn.blitz {
-  border-left-color: var(--neon-pink);
-  box-shadow: 5px 5px 0px rgba(188, 19, 254, 0.2);
-}
-
-.menu-btn.blitz:active {
-  box-shadow: 2px 2px 0px rgba(188, 19, 254, 0.2);
-}
-
-/* HUD */
-.hud {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  padding: 10px 2vmin;
-  box-sizing: border-box;
-  padding-top: max(10px, env(safe-area-inset-top)); 
-}
-
-.top-bar {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.question-box {
-  background: rgba(0,0,0,0.8);
-  border: 2px solid var(--neon-blue);
-  box-shadow: 0 0 15px var(--neon-blue);
-  color: white;
-  font-family: 'Russo One', sans-serif;
-  font-size: clamp(1.5rem, 5vmin, 3rem);
-  padding: 15px 30px;
-  border-radius: 8px;
-  text-transform: uppercase;
-  text-align: center;
-  min-width: 50%;
-  transform: skewX(-10deg);
-}
-
-.score-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.score-box {
-  font-family: 'Russo One', sans-serif;
-  font-size: clamp(1.5rem, 6vmin, 2.5rem);
-  color: white;
-  text-shadow: 2px 2px 0 #000;
-  background: rgba(0,0,0,0.5);
-  padding: 5px 15px;
-  border-radius: 5px;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-.combo-box {
-  font-family: 'Russo One', sans-serif;
-  font-size: clamp(2rem, 8vmin, 3.5rem);
-  color: var(--neon-yellow);
-  text-shadow: 
-    0 0 10px var(--neon-yellow),
-    3px 3px 0 #000;
-  transform: skew(-15deg);
-  text-align: center;
-  line-height: 1;
-}
-
-.streak-text {
-  font-size: 0.4em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: block;
-  text-shadow: none;
-}
-
-/* Game Over */
+/* --------------------------- Full-screen scrims -------------------------- */
+.menu-screen,
 .game-over-screen {
   position: absolute;
   inset: 0;
@@ -217,11 +187,565 @@ canvas {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.95);
+  gap: clamp(0.5rem, 2.5vmin, 1.25rem);
+  padding: calc(var(--safe-top) + 5vmin) 6vmin calc(var(--safe-bottom) + 5vmin);
   pointer-events: auto;
+  background:
+    radial-gradient(80% 60% at 50% 30%, rgba(154, 91, 255, 0.16), transparent 70%),
+    rgba(6, 5, 14, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: scrim-in 0.45s var(--ease-out) both;
+}
+.game-over-screen {
   z-index: 20;
 }
+@keyframes scrim-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
+/* ------------------------------ Brand mark ------------------------------- */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: clamp(1rem, 4vh, 2.5rem);
+  animation: rise 0.6s var(--ease-snap) both;
+}
+.brand-kicker {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.7rem, 2.6vmin, 0.95rem);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+  margin: 0 0 0.4em;
+  padding-inline-start: 0.42em; /* compensate trailing letter-spacing */
+  opacity: 0.9;
+}
+.logo-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.8rem, 13vmin, 5.5rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, #d7c9ff 55%, #9a5bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(154, 91, 255, 0.55)) drop-shadow(0 4px 0 rgba(0, 0, 0, 0.4));
+}
+.logo-title .accent {
+  background: linear-gradient(180deg, #fff 0%, #ffd0ec 50%, var(--neon-pink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand-tagline {
+  font-weight: 700;
+  font-size: clamp(0.78rem, 3vmin, 1.05rem);
+  color: var(--ink-dim);
+  margin: 0.7em 0 0;
+  letter-spacing: 0.02em;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------ Menu actions ----------------------------- */
+.menu-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(0.75rem, 2.2vh, 1.1rem);
+  width: min(86vw, 360px);
+  animation: rise 0.6s 0.08s var(--ease-snap) both;
+}
+
+/* --------------------------- Juicy mode buttons -------------------------- */
+.menu-btn {
+  --btn-accent: var(--neon-cyan);
+  --btn-accent-2: var(--neon-blue);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: clamp(1rem, 3.4vmin, 1.4rem) clamp(1.25rem, 4vmin, 1.75rem);
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: clamp(1.05rem, 4.4vmin, 1.5rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: start;
+  color: var(--ink);
+  cursor: pointer;
+  pointer-events: auto;
+  border: 1px solid color-mix(in srgb, var(--btn-accent) 55%, transparent);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 40%),
+    linear-gradient(135deg, color-mix(in srgb, var(--btn-accent) 26%, var(--bg-2)), var(--bg-1));
+  box-shadow:
+    0 10px 28px -10px color-mix(in srgb, var(--btn-accent) 60%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 1px 0 var(--glass-hi) inset;
+  transition: transform 0.16s var(--ease-snap), box-shadow 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  overflow: hidden;
+}
+.menu-btn::after {
+  /* hover/active glow sweep */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(120% 140% at 0% 50%, color-mix(in srgb, var(--btn-accent) 35%, transparent), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-out);
+  pointer-events: none;
+}
+.menu-btn .btn-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: clamp(2rem, 8vmin, 2.6rem);
+  height: clamp(2rem, 8vmin, 2.6rem);
+  border-radius: 50%;
+  font-size: 0.95em;
+  background: color-mix(in srgb, var(--btn-accent) 30%, rgba(0, 0, 0, 0.4));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--btn-accent) 70%, transparent), 0 0 0 1px var(--glass-hi) inset;
+}
+.menu-btn .btn-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  min-width: 0;
+}
+.menu-btn .btn-sub {
+  font-weight: 700;
+  font-size: 0.56em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.menu-btn .btn-chevron {
+  margin-inline-start: auto;
+  font-weight: 900;
+  font-size: 0.9em;
+  color: var(--btn-accent);
+  transform: translateX(0);
+  transition: transform 0.2s var(--ease-snap);
+}
+[dir="rtl"] .menu-btn .btn-chevron {
+  transform: scaleX(-1);
+}
+
+.menu-btn:hover,
+.menu-btn:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--btn-accent);
+  box-shadow:
+    0 16px 38px -12px color-mix(in srgb, var(--btn-accent) 75%, transparent),
+    0 0 22px -4px color-mix(in srgb, var(--btn-accent) 55%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+.menu-btn:hover::after,
+.menu-btn:focus-visible::after {
+  opacity: 1;
+}
+.menu-btn:hover .btn-chevron {
+  transform: translateX(4px);
+}
+[dir="rtl"] .menu-btn:hover .btn-chevron {
+  transform: scaleX(-1) translateX(4px);
+}
+.menu-btn:active {
+  transform: translateY(1px) scale(0.985);
+  box-shadow:
+    0 6px 16px -10px color-mix(in srgb, var(--btn-accent) 60%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+.menu-btn:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--btn-accent) 80%, white);
+  outline-offset: 3px;
+}
+
+.menu-btn.practice {
+  --btn-accent: var(--accent-practice);
+}
+.menu-btn.blitz {
+  --btn-accent: var(--accent-blitz);
+}
+/* secondary (menu/retry) — quieter */
+.menu-btn.secondary {
+  --btn-accent: var(--neon-violet);
+  font-size: clamp(0.95rem, 3.6vmin, 1.2rem);
+  padding: clamp(0.8rem, 2.8vmin, 1.1rem) clamp(1.1rem, 3.5vmin, 1.5rem);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 50%),
+    linear-gradient(135deg, rgba(154, 91, 255, 0.14), var(--bg-1));
+}
+
+/* ------------------------------ In-game HUD ------------------------------ */
+.hud {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: calc(var(--safe-top) + 12px) clamp(10px, 3vmin, 22px) 0;
+  gap: 12px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.question-box {
+  position: relative;
+  max-width: min(92%, 640px);
+  padding: clamp(0.6rem, 2.4vmin, 1rem) clamp(1.1rem, 5vmin, 2.2rem);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 6.2vmin, 2.8rem);
+  line-height: 1.1;
+  text-align: center;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 14px 36px -16px rgba(0, 0, 0, 0.8),
+    0 0 24px -8px rgba(47, 243, 255, 0.4),
+    0 1px 0 var(--glass-hi) inset;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: q-pop 0.32s var(--ease-snap);
+}
+.question-box::before {
+  content: "";
+  position: absolute;
+  inset-inline: 18%;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  opacity: 0.8;
+}
+@keyframes q-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* per-language tuning: RTL scripts often need a touch more line height */
+[data-lang="ar"] .question-box,
+[data-lang="he"] .question-box,
+[data-lang="fa"] .question-box,
+[data-lang="ur"] .question-box {
+  line-height: 1.4;
+  font-family: var(--font-body); /* Lato lacks these scripts; defer to system fallback cleanly */
+  font-weight: 900;
+}
+
+/* Score + combo strip */
+.score-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: rgba(10, 8, 22, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.stat-label {
+  font-weight: 700;
+  font-size: clamp(0.55rem, 2vmin, 0.72rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.score-box .stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 6.5vmin, 2.4rem);
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Combo cluster — the juicy bit */
+.combo-box {
+  align-items: flex-end;
+  text-align: end;
+  border-color: color-mix(in srgb, var(--neon-amber) 35%, transparent);
+  background: linear-gradient(160deg, rgba(255, 194, 61, 0.1), rgba(10, 8, 22, 0.5));
+}
+.combo-box .stat-label {
+  color: color-mix(in srgb, var(--neon-amber) 75%, white);
+}
+.combo-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.08em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.9;
+  color: var(--neon-amber);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 18px rgba(255, 194, 61, 0.6), 0 3px 0 rgba(0, 0, 0, 0.45);
+}
+.combo-value .x {
+  font-size: clamp(1.1rem, 4.5vmin, 1.7rem);
+  opacity: 0.85;
+}
+.combo-value #combo {
+  font-size: clamp(2rem, 9vmin, 3.4rem);
+  transition: transform 0.12s var(--ease-snap);
+}
+/* combo pulse — toggled by a CSS animation class the Hud adds on change */
+.combo-box.pulse .combo-value #combo {
+  animation: combo-kick 0.34s var(--ease-snap);
+}
+@keyframes combo-kick {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.combo-box.zero {
+  opacity: 0.5;
+  filter: saturate(0.4);
+}
+
+/* Score delta flyout */
+.score-box {
+  position: relative;
+}
+.score-flyout {
+  position: absolute;
+  inset-inline-start: 0;
+  top: -0.4em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(0.9rem, 3.4vmin, 1.25rem);
+  pointer-events: none;
+  opacity: 0;
+}
+.score-flyout.show {
+  animation: flyout 0.7s var(--ease-out);
+}
+.score-flyout.gain {
+  color: var(--neon-lime);
+}
+.score-flyout.loss {
+  color: var(--neon-pink);
+}
+@keyframes flyout {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+}
+
+/* ------------------------------- Game over ------------------------------- */
+.go-eyebrow {
+  font-weight: 900;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  font-size: clamp(0.7rem, 2.6vmin, 0.95rem);
+  color: var(--neon-pink);
+  margin: 0 0 0.2em;
+  padding-inline-start: 0.36em;
+}
+.go-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 9vmin, 3.4rem);
+  text-transform: uppercase;
+  margin: 0 0 0.6rem;
+  background: linear-gradient(180deg, #fff, #ffb0dd 60%, var(--neon-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.go-score {
+  margin: 0.5rem 0 0.4rem;
+}
+.go-score .stat-label {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.1em;
+}
+.final-score {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 16vmin, 5.5rem);
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 26px rgba(154, 91, 255, 0.6);
+  animation: count-pop 0.5s var(--ease-snap) both;
+}
+@keyframes count-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.go-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.75rem, 4vmin, 1.5rem);
+  margin: 1rem 0 1.4rem;
+  flex-wrap: wrap;
+}
+.go-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  min-width: 4.5rem;
+}
+.go-stat .v {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.2rem, 5vmin, 1.7rem);
+  color: var(--neon-cyan);
+  font-variant-numeric: tabular-nums;
+}
+.go-stat .k {
+  font-size: clamp(0.55rem, 2vmin, 0.72rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.go-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 0.4rem;
+}
+
+/* New-best ribbon */
+.new-best {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin: 0 auto 0.3rem;
+  padding: 0.3em 0.9em;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: clamp(0.7rem, 2.8vmin, 0.95rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1206;
+  background: linear-gradient(135deg, var(--neon-amber), #ffec9e);
+  box-shadow: 0 0 22px rgba(255, 194, 61, 0.6);
+  animation: badge-pop 0.5s 0.2s var(--ease-snap) both;
+}
+.new-best.hidden {
+  display: none !important;
+}
+@keyframes badge-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-8deg);
+  }
+  70% {
+    transform: scale(1.12) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* --------------------------------- Utils --------------------------------- */
 .hidden {
   display: none !important;
+}
+
+/* Screen transitions */
+.screen-leave {
+  animation: scrim-out 0.28s var(--ease-out) both;
+}
+@keyframes scrim-out {
+  to {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+}
+
+/* Reduced motion: respect the user. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Short / landscape phones: tighten vertical rhythm. */
+@media (max-height: 560px) {
+  .brand {
+    margin-bottom: 0.8rem;
+  }
+  .menu-actions {
+    gap: 0.6rem;
+  }
+  .menu-btn {
+    padding: 0.7rem 1.1rem;
+  }
 }

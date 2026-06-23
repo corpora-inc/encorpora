@@ -9,10 +9,11 @@ import { GameMode, type ActiveLanguage } from "../types";
  * showMenu + gameOver out of Game.ts into here. Game.ts just instantiates Hud
  * and provides button callbacks; everything else this class drives off the bus.
  *
- * The ui stream may freely restyle/expand this markup (transitions, level-up
- * banners, streak chips, celebration) WITHOUT touching Game.ts — it subscribes
- * to scoreChange/comboChange/gameStart/menuShown/gameOver and may poll the
- * ProgressionApi for XP/level/multiplier.
+ * This is the UIUX premium pass: a cohesive glass/neon design system, juicy
+ * buttons, animated combo + score feedback, a progression-aware game-over
+ * panel (XP/level/best-streak/high-score polled from ProgressionApi), RTL
+ * mirroring, and accessible focus states. All visuals live in styles.css; this
+ * class only owns the markup + bus wiring. It NEVER touches Game.ts.
  */
 export interface HudCallbacks {
   /** User chose a mode on the menu (or "retry"). */
@@ -29,10 +30,18 @@ export class Hud {
   private questionBox: HTMLElement;
   private scoreEl: HTMLElement;
   private comboEl: HTMLElement;
+  private comboBox: HTMLElement;
+  private scoreFlyout: HTMLElement;
   private finalScoreEl: HTMLElement;
+  private newBestEl: HTMLElement;
+  private goStreakEl: HTMLElement;
+  private goLevelEl: HTMLElement;
+  private goHighEl: HTMLElement;
 
   private offFns: Array<() => void> = [];
   private lastMode: GameMode = GameMode.PRACTICE;
+  private comboPulseTimer = 0;
+  private flyoutTimer = 0;
 
   constructor(
     container: HTMLElement,
@@ -43,26 +52,75 @@ export class Hud {
     this.root = document.createElement("div");
     this.root.className = "ui-layer";
     this.root.innerHTML = `
-      <div class="menu-screen" id="menu">
-        <h1 class="logo-title">Lingo Hero</h1>
-        <button class="menu-btn" id="btn-practice">Practice</button>
-        <button class="menu-btn blitz" id="btn-blitz">Blitz Mode</button>
+      <div class="menu-screen" id="menu" role="dialog" aria-label="Lingo Hero main menu">
+        <div class="brand">
+          <p class="brand-kicker">Rhythm · Language</p>
+          <h1 class="logo-title">Lingo<span class="accent"> Hero</span></h1>
+          <p class="brand-tagline">Feel the beat. Learn the words.</p>
+        </div>
+        <div class="menu-actions">
+          <button class="menu-btn practice" id="btn-practice" type="button">
+            <span class="btn-icon" aria-hidden="true">&#9835;</span>
+            <span class="btn-labels">
+              <span class="btn-title">Practice</span>
+              <span class="btn-sub">Learn at your pace</span>
+            </span>
+            <span class="btn-chevron" aria-hidden="true">&#10095;</span>
+          </button>
+          <button class="menu-btn blitz" id="btn-blitz" type="button">
+            <span class="btn-icon" aria-hidden="true">&#9889;</span>
+            <span class="btn-labels">
+              <span class="btn-title">Blitz Mode</span>
+              <span class="btn-sub">Endless · chase the combo</span>
+            </span>
+            <span class="btn-chevron" aria-hidden="true">&#10095;</span>
+          </button>
+        </div>
       </div>
+
       <div class="hud hidden" id="hud">
         <div class="top-bar">
-             <div class="question-box" id="question-box"></div>
+          <div class="question-box" id="question-box" aria-live="polite"></div>
         </div>
         <div class="score-container">
-            <div class="score-box">Score: <span id="score">0</span></div>
-            <div class="combo-box">x<span id="combo">0</span></div>
+          <div class="stat score-box">
+            <span class="stat-label">Score</span>
+            <span class="stat-value" id="score">0</span>
+            <span class="score-flyout" id="score-flyout" aria-hidden="true"></span>
+          </div>
+          <div class="stat combo-box zero" id="combo-box">
+            <span class="stat-label">Combo</span>
+            <span class="combo-value"><span class="x">x</span><span id="combo">0</span></span>
+          </div>
         </div>
       </div>
-      <div class="game-over-screen hidden" id="game-over">
+
+      <div class="game-over-screen hidden" id="game-over" role="dialog" aria-label="Game over">
         <div class="glass-panel">
-          <h2>Game Over</h2>
-          <p class="score-box">Final Score: <span id="final-score">0</span></p>
-          <button class="menu-btn" id="btn-retry">Retry</button>
-          <button class="menu-btn" id="btn-menu">Main Menu</button>
+          <p class="new-best hidden" id="new-best"><span aria-hidden="true">&#9733;</span> New Best!</p>
+          <p class="go-eyebrow">Run Complete</p>
+          <h2 class="go-title">Game Over</h2>
+          <div class="go-score">
+            <span class="stat-label">Final Score</span>
+            <div class="final-score" id="final-score">0</div>
+          </div>
+          <div class="go-stats">
+            <div class="go-stat"><span class="v" id="go-streak">0</span><span class="k">Best Streak</span></div>
+            <div class="go-stat"><span class="v" id="go-level">1</span><span class="k">Level</span></div>
+            <div class="go-stat"><span class="v" id="go-high">0</span><span class="k">High Score</span></div>
+          </div>
+          <div class="go-actions">
+            <button class="menu-btn blitz" id="btn-retry" type="button">
+              <span class="btn-icon" aria-hidden="true">&#8635;</span>
+              <span class="btn-labels"><span class="btn-title">Retry</span></span>
+              <span class="btn-chevron" aria-hidden="true">&#10095;</span>
+            </button>
+            <button class="menu-btn secondary" id="btn-menu" type="button">
+              <span class="btn-icon" aria-hidden="true">&#9776;</span>
+              <span class="btn-labels"><span class="btn-title">Main Menu</span></span>
+              <span class="btn-chevron" aria-hidden="true">&#10095;</span>
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -74,7 +132,13 @@ export class Hud {
     this.questionBox = this.root.querySelector("#question-box")!;
     this.scoreEl = this.root.querySelector("#score")!;
     this.comboEl = this.root.querySelector("#combo")!;
+    this.comboBox = this.root.querySelector("#combo-box")!;
+    this.scoreFlyout = this.root.querySelector("#score-flyout")!;
     this.finalScoreEl = this.root.querySelector("#final-score")!;
+    this.newBestEl = this.root.querySelector("#new-best")!;
+    this.goStreakEl = this.root.querySelector("#go-streak")!;
+    this.goLevelEl = this.root.querySelector("#go-level")!;
+    this.goHighEl = this.root.querySelector("#go-high")!;
 
     this.bindButton("#btn-practice", () =>
       this.callbacks.onStartGame(GameMode.PRACTICE)
@@ -93,6 +157,11 @@ export class Hud {
   /** The prompt text shown in the in-game question box (foreign word). */
   setQuestion(text: string): void {
     this.questionBox.textContent = text;
+    // re-trigger the pop animation each wave
+    this.questionBox.style.animation = "none";
+    // force reflow so the animation restarts
+    void this.questionBox.offsetWidth;
+    this.questionBox.style.animation = "";
   }
 
   /**
@@ -102,11 +171,14 @@ export class Hud {
   applyLanguage(lang: ActiveLanguage): void {
     this.root.setAttribute("dir", lang.isRTL ? "rtl" : "ltr");
     this.root.setAttribute("data-lang", lang.code);
+    this.root.setAttribute("data-text-size", lang.textSize);
   }
 
   dispose(): void {
     for (const off of this.offFns) off();
     this.offFns = [];
+    if (this.comboPulseTimer) clearTimeout(this.comboPulseTimer);
+    if (this.flyoutTimer) clearTimeout(this.flyoutTimer);
     this.root.remove();
   }
 
@@ -120,6 +192,8 @@ export class Hud {
         this.hudPanel.classList.remove("hidden");
         this.scoreEl.textContent = "0";
         this.comboEl.textContent = "0";
+        this.comboBox.classList.add("zero");
+        this.comboBox.classList.remove("pulse");
       }),
       this.bus.on("menuShown", () => {
         this.menuScreen.classList.remove("hidden");
@@ -127,19 +201,63 @@ export class Hud {
         this.gameOverScreen.classList.add("hidden");
       }),
       this.bus.on("scoreChange", (e) => {
-        this.scoreEl.textContent = e.value.toString();
+        this.scoreEl.textContent = e.value.toLocaleString();
+        if (e.delta !== 0) this.showScoreFlyout(e.delta);
       }),
       this.bus.on("comboChange", (e) => {
         this.comboEl.textContent = e.value.toString();
+        this.comboBox.classList.toggle("zero", e.value === 0);
+        if (e.value > e.previous) this.pulseCombo();
       }),
       this.bus.on("gameOver", (e) => {
         this.hudPanel.classList.add("hidden");
         this.gameOverScreen.classList.remove("hidden");
-        this.finalScoreEl.textContent = e.finalScore.toString();
-        // ui stream may surface progression stats here:
-        void this.progression;
+        this.finalScoreEl.textContent = e.finalScore.toLocaleString();
+        this.populateGameOverStats(e.finalScore);
       })
     );
+  }
+
+  /** Brief scale-pulse on the combo number when it climbs. */
+  private pulseCombo(): void {
+    this.comboBox.classList.remove("pulse");
+    void this.comboBox.offsetWidth; // reflow to restart animation
+    this.comboBox.classList.add("pulse");
+    if (this.comboPulseTimer) clearTimeout(this.comboPulseTimer);
+    this.comboPulseTimer = window.setTimeout(
+      () => this.comboBox.classList.remove("pulse"),
+      400
+    );
+  }
+
+  /** Floating +N / −N near the score on every scoring event. */
+  private showScoreFlyout(delta: number): void {
+    const gain = delta > 0;
+    this.scoreFlyout.textContent = `${gain ? "+" : "−"}${Math.abs(delta)}`;
+    this.scoreFlyout.classList.remove("show", "gain", "loss");
+    void this.scoreFlyout.offsetWidth;
+    this.scoreFlyout.classList.add("show", gain ? "gain" : "loss");
+    if (this.flyoutTimer) clearTimeout(this.flyoutTimer);
+    this.flyoutTimer = window.setTimeout(
+      () => this.scoreFlyout.classList.remove("show"),
+      720
+    );
+  }
+
+  /** Poll progression for the celebration panel. Cheap + synchronous. */
+  private populateGameOverStats(finalScore: number): void {
+    const snap = this.progression?.getSnapshot();
+    const bestStreak = snap?.bestStreak ?? 0;
+    const level = snap?.level ?? 1;
+    const highScore = snap?.highScore ?? 0;
+
+    this.goStreakEl.textContent = bestStreak.toLocaleString();
+    this.goLevelEl.textContent = level.toLocaleString();
+    this.goHighEl.textContent = highScore.toLocaleString();
+
+    // A new best when this run's score meets/exceeds the persisted high.
+    const isNewBest = finalScore > 0 && finalScore >= highScore;
+    this.newBestEl.classList.toggle("hidden", !isNewBest);
   }
 
   private bindButton(selector: string, action: () => void): void {
