@@ -723,13 +723,23 @@ canvas {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  padding: clamp(0.25rem, 1.2vmin, 0.5rem) clamp(0.5rem, 2.5vmin, 1rem);
+  /* NEVER let the flex column squeeze the prompt below its own wrapped content
+     height — that was the #441 clip (box rendered 2px shorter than its 3-line
+     text). flex-shrink:0 + height:auto means the box always grows to fit every
+     wrapped line; fitPrompt() shrinks the FONT (not the box) when a phrase is
+     genuinely huge, so the full phrase is visible at any length. */
+  flex: 0 0 auto;
+  height: auto;
+  /* A touch of vertical padding fully contains each line box's leading so the
+     wrapped phrase never grazes the band edge (the residual iPad ~1px the strict
+     #441 clip check saw is line-leading, not glyph ink — this absorbs it). */
+  padding: clamp(0.4rem, 1.4vmin, 0.6rem) clamp(0.5rem, 2.5vmin, 1rem);
   font-family: var(--font-display);
   font-weight: 800;
   /* Auto-fit: scale with viewport but cap so long phrases shrink to fit the
-     full width and wrap to at most a couple of lines rather than clipping. */
+     full width and wrap across a few lines rather than clipping. */
   font-size: clamp(1.05rem, 5vw, 2rem);
-  line-height: 1.12;
+  line-height: 1.18;
   text-align: center;
   color: var(--ink);
   letter-spacing: 0.01em;
@@ -738,7 +748,9 @@ canvas {
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.85),
     0 0 14px rgba(0, 0, 0, 0.7);
-  /* Wrap rules: break long words/sentences, never truncate. */
+  /* Wrap rules: break long words/sentences, never truncate. The phrase wraps to
+     as many lines as it needs; no nowrap, no ellipsis, no fixed-height clip. */
+  overflow: visible;
   overflow-wrap: anywhere;
   word-break: normal;
   white-space: normal;
@@ -849,62 +861,75 @@ canvas {
   }
 }
 
-/* BOTTOM STATS ROW (issue #426) — ONE fixed, compact row across the very
-   bottom: level meter · SCORE · STREAK. It is pinned UNDER the hit-ring circles
-   (the strum line was pulled up to 0.74 height; the rings clear this band) and
-   is a centered, content-width cluster so it NEVER flanks the falling-note
-   lanes (preserves the 0.4.0 fix). The bottom inset RESPECTS the Android safe
-   area (gesture/nav bar) so nothing is clipped or overlapped by system chrome.
-   pointer-events stay off the row (the plates don't need interaction). */
+/* BOTTOM STATS ROW (issue #443, evolves #426) — SCORE | thin level meter |
+   STREAK. Two EQUAL "fat" plates flank a THIN center meter, and the whole row
+   spans the FULL WIDTH of the 3 lanes (the lanes cap at 600px and center, so
+   the row matches that band: min(100vw − gutters, 600px), centered). On a phone
+   the lanes fill the width so the row does too; on iPad/landscape it stays the
+   premium 600px band — comfortable, never a cramped center cluster, never wider
+   than the lanes (preserves the 0.4.0 no-flank rule). Pinned UNDER the hit-ring
+   circles (strum at 0.74h) and RESPECTS the bottom safe area. pointer-events off. */
 .lh-stats {
   position: absolute;
   left: 50%;
-  bottom: calc(8px + var(--safe-bottom));
+  bottom: calc(10px + var(--safe-bottom));
   transform: translateX(-50%);
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
-  gap: 8px;
-  width: max-content;
-  max-width: calc(100vw - 24px);
+  gap: clamp(8px, 2.2vw, 18px);
+  /* Span the full lane band: full phone width, capped to the 600px lane cap on
+     wide screens, with symmetric side gutters so it never touches the edges. */
+  width: min(calc(100vw - 28px), 600px);
   pointer-events: none;
 }
 
-/* Compact the plates so the whole row reads as one tidy bottom HUD bar (smaller
-   than the old stacked banner) and fits a narrow phone without flanking lanes. */
-.lh-stats .mastery-readout {
-  align-self: center;
-  width: auto;
-  max-width: 44vw;
-  margin: 0;
-  gap: 8px;
-  padding: 4px 10px;
-  font-size: clamp(0.62rem, 2.6vmin, 0.8rem);
-}
-/* Keep the meter's progress bar from collapsing in the compact row. */
-.lh-stats .mastery-bar {
-  min-width: 34px;
-}
+/* The two outer plates are EQUAL and FAT — they share the row evenly and grow
+   to fill the lane-band width comfortably at iPad size. */
 .lh-stats .stat {
-  padding: 0.28rem 0.7rem;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: clamp(0.4rem, 1.4vmin, 0.7rem) clamp(0.7rem, 2.4vw, 1.3rem);
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+.lh-stats .score-box {
+  align-items: center;
 }
 /* In the bottom row the combo plate is centered (not right-flushed). */
 .lh-stats .combo-box {
   align-items: center;
   text-align: center;
 }
+
+/* The CENTER meter is THIN: it does NOT grow like the fat plates — it takes a
+   modest fixed-ish slice between them, so the two score/streak plates dominate
+   and the meter reads as a slim progress strip. */
+.lh-stats .mastery-readout {
+  flex: 0 1 auto;
+  align-self: center;
+  width: auto;
+  min-width: clamp(72px, 22vw, 150px);
+  max-width: 32%;
+  margin: 0;
+  gap: 8px;
+  padding: clamp(3px, 1vmin, 6px) clamp(8px, 1.6vw, 14px);
+  font-size: clamp(0.6rem, 2.4vmin, 0.78rem);
+}
+/* Keep the meter's progress bar from collapsing in the compact row. */
+.lh-stats .mastery-bar {
+  min-width: 34px;
+}
 .lh-stats .score-box .stat-value {
-  font-size: clamp(1.05rem, 4.6vmin, 1.5rem);
+  font-size: clamp(1.2rem, 5.2vmin, 2rem);
 }
 .lh-stats .combo-value #combo {
-  font-size: clamp(1.25rem, 5.4vmin, 1.9rem);
+  font-size: clamp(1.35rem, 5.8vmin, 2.2rem);
 }
 .lh-stats .combo-value .x {
-  font-size: clamp(0.8rem, 3.2vmin, 1.05rem);
+  font-size: clamp(0.85rem, 3.4vmin, 1.2rem);
 }
 
 /* Very short / landscape screens: keep the same single compact bottom row, just
@@ -913,16 +938,16 @@ canvas {
 @media (max-height: 560px) {
   .lh-stats {
     bottom: calc(6px + var(--safe-bottom));
-    gap: 6px;
-    max-width: calc(100vw - 16px);
+    gap: clamp(6px, 1.6vw, 14px);
+    width: min(calc(100vw - 16px), 640px);
   }
   .lh-stats .mastery-readout {
-    max-width: 40vw;
+    max-width: 28%;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .lh-stats .stat {
-    padding: 0.22rem 0.55rem;
+    padding: 0.3rem 0.7rem;
   }
 }
 

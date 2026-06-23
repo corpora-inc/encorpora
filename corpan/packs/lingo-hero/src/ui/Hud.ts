@@ -190,19 +190,20 @@ export class Hud {
             <div class="lh-assemble" id="lh-assemble" aria-live="polite" hidden></div>
           </div>
         </div>
-        <!-- BOTTOM STATS ROW — a SINGLE fixed, compact row pinned across the very
-             bottom (issue #426): level meter · SCORE · STREAK/COMBO. It sits
-             UNDER the hit-ring circles (which were nudged up) and is a centered,
-             content-width cluster so it NEVER flanks/overlaps the falling-note
-             lanes (preserves the 0.4.0 fix). pointer-events stay off the row. -->
+        <!-- BOTTOM STATS ROW (issue #443, evolves #426): SCORE | thin level meter |
+             STREAK — two equal "fat" plates flanking a THIN center meter, the row
+             spanning the FULL WIDTH of the 3 lanes. Premium + comfortable at
+             iPad/landscape width (not a cramped center cluster), still tidy on a
+             phone. It sits UNDER the hit-ring circles and respects the bottom safe
+             area. pointer-events stay off the row. DOM order == visual order. -->
         <div class="lh-stats" id="lh-stats">
-          <!-- (d) level / mastery meter slot (left of the row) -->
-          <div class="mastery-readout" id="mastery-readout" aria-live="polite" hidden></div>
           <div class="stat score-box">
             <span class="stat-label">Score</span>
             <span class="stat-value" id="score">0</span>
             <span class="score-flyout" id="score-flyout" aria-hidden="true"></span>
           </div>
+          <!-- (d) thin CENTER level / mastery meter (between the two plates) -->
+          <div class="mastery-readout" id="mastery-readout" aria-live="polite" hidden></div>
           <div class="stat combo-box zero" id="combo-box">
             <span class="stat-label">Streak</span>
             <span class="combo-value"><span class="x">x</span><span id="combo">0</span></span>
@@ -329,37 +330,62 @@ export class Hud {
   }
 
   /**
-   * Shrink the prompt font until the entire phrase fits inside the header band
-   * (up to ~2 wrapped lines), floored so short phrases stay big and long ones
-   * stay legible. Measured against the element's own scroll size so it works for
-   * any phrase length / script. Idempotent + cheap (a handful of reflows). The
-   * upper bound is the CSS-resolved size so short prompts keep their full scale.
+   * Auto-fit the prompt so the ENTIRE phrase is always visible — #441.
+   *
+   * The 0.4.3 version tried to JAM every phrase into <=2 lines and bottomed out
+   * at a font floor; a long sentence then wrapped to a 3rd line that overflowed
+   * the band (scrollHeight > clientHeight) — the exact iPad clip the operator
+   * kept hitting. The model here is inverted and correct:
+   *
+   *   - The phrase WRAPS freely (CSS: white-space:normal / overflow-wrap:anywhere).
+   *   - We give it a GENEROUS height budget (a fraction of the viewport, capped
+   *     to a max line count that is large enough to never clip a real phrase).
+   *   - We START at the CSS ceiling and only SHRINK the font when the wrapped
+   *     text exceeds that budget OR a single unbreakable token overflows width,
+   *     floored so it stays readable.
+   *
+   * Because layout must be settled to measure, we run once now and again on the
+   * next frame (rAF) — the first call can fire before flex layout resolves
+   * (which made the old fit silently no-op against a stale/zero width).
    */
   private fitPrompt(): void {
+    if (typeof requestAnimationFrame === "function") {
+      requestAnimationFrame(() => this.fitPromptNow());
+    }
+    // Also run synchronously so callers/tests that measure immediately see a fit.
+    this.fitPromptNow();
+  }
+
+  private fitPromptNow(): void {
     const el = this.questionBox;
     if (!el.textContent) return;
     // Reset to the CSS-driven size, then read it as our ceiling.
     el.style.fontSize = "";
+    el.style.lineHeight = "";
     const ceiling = parseFloat(getComputedStyle(el).fontSize) || 24;
+    const cssLineH = parseFloat(getComputedStyle(el).lineHeight) || ceiling * 1.16;
+    const lineRatio = cssLineH / ceiling || 1.16;
     const FLOOR = 13; // px — never shrink below this (still readable)
-    // Two passes: first cap the height to ~2 lines, then ensure no horizontal
-    // overflow. Bisect-ish linear step keeps it bounded (<= ~12 iterations).
+    // Generous height budget: up to MAX_LINES of text, but never taller than a
+    // fraction of the viewport. MAX_LINES is high enough that a normal sentence
+    // never clips; the font only shrinks if a phrase is genuinely huge.
+    const MAX_LINES = 4;
+    const vh = window.innerHeight || 800;
+    const budget = Math.min(MAX_LINES * ceiling * lineRatio, vh * 0.3);
+
     let size = ceiling;
-    el.style.fontSize = `${size}px`;
-    const lineH = 1.16;
-    // Budget: at most 2 lines tall. maxH derives from the current font (2 lines
-    // + the box's vertical padding, already in offsetHeight via clientHeight).
-    const fits = (): boolean => {
-      const maxLines = 2;
-      const maxH = size * lineH * maxLines + 2;
-      return (
-        el.scrollHeight <= maxH + 1 && el.scrollWidth <= el.clientWidth + 1
-      );
+    const apply = (s: number) => {
+      el.style.fontSize = `${s}px`;
     };
+    apply(size);
+    // scrollHeight is the wrapped content height; scrollWidth>clientWidth means a
+    // single token can't break (rare). Shrink until BOTH fit the budget/width.
+    const fits = (): boolean =>
+      el.scrollHeight <= budget + 1 && el.scrollWidth <= el.clientWidth + 1;
     let guard = 0;
-    while (size > FLOOR && !fits() && guard < 24) {
+    while (size > FLOOR && !fits() && guard < 40) {
       size = Math.max(FLOOR, size - 1);
-      el.style.fontSize = `${size}px`;
+      apply(size);
       guard++;
     }
   }

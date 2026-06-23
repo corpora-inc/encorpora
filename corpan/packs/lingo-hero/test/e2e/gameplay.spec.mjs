@@ -159,6 +159,104 @@ else {
   await page.mouse.click(muteCtl.x, muteCtl.y);
 }
 
+// --- Contract (c3): #442 — lane hit-testing is ISOLATED to the lane COLUMNS. ---
+// A tap OUTSIDE the lane band (the dead side margins where the lanes cap+center
+// on a wide screen, or the top-left chrome region) must NOT resolve to a lane —
+// no score, no miss. A tap INSIDE a lane column DOES resolve. We verify the
+// geometry contract directly (laneAtXStrict) AND prove a real margin tap doesn't
+// score, on a WIDE viewport where the lanes cap at 600px so true dead margins
+// exist. Uses window.__lingoHero introspection — no private internals leaked.
+{
+  const wide = await browser.newPage({ viewport: { width: 1180, height: 820 }, deviceScaleFactor: 2 });
+  wide.on("pageerror", (e) => fail("pageerror(442): " + e.message));
+  await wide.goto(harness);
+  await wide.waitForFunction(() => !!window.__lingoHero, { timeout: 10000 });
+  await wide.evaluate(() => {
+    const h = document.getElementById("host");
+    if (h) { h.style.margin = "0"; h.style.width = "100vw"; h.style.height = "100vh"; }
+  });
+  await wide.evaluate(() => {
+    const p = [...document.querySelectorAll("button")].find((b) => /practice/i.test(b.textContent || ""));
+    if (p) p.click(); else window.__lingoHero.startGame("PRACTICE");
+  });
+  await wide.waitForFunction(() => (window.__lingoHero.notes || []).length > 0, { timeout: 10000 });
+
+  // Geometry contract: laneAtXStrict rejects the dead margins, accepts the lanes.
+  const geo = await wide.evaluate(() => {
+    const ls = window.__lingoHero.laneSystem;
+    const lb0 = ls.getLaneBounds(0), lb2 = ls.getLaneBounds(2);
+    const bandLeft = lb0.x, bandRight = lb2.x + lb2.width;
+    return {
+      // Far-left and far-right margins (well outside the band) must be null.
+      farLeft: ls.laneAtXStrict(bandLeft - 60),
+      farRight: ls.laneAtXStrict(bandRight + 60),
+      // Centers of each lane column must resolve to that lane.
+      lane0: ls.laneAtXStrict(ls.getLaneX(0)),
+      lane1: ls.laneAtXStrict(ls.getLaneX(1)),
+      lane2: ls.laneAtXStrict(ls.getLaneX(2)),
+      bandLeft, bandRight,
+    };
+  });
+  if (geo.farLeft !== null) fail(`#442: a tap in the LEFT dead margin resolved to lane ${geo.farLeft} (must be null)`);
+  if (geo.farRight !== null) fail(`#442: a tap in the RIGHT dead margin resolved to lane ${geo.farRight} (must be null)`);
+  if (geo.lane0 !== 0 || geo.lane1 !== 1 || geo.lane2 !== 2) {
+    fail(`#442: lane-column centers did not resolve to their lanes (got ${geo.lane0}/${geo.lane1}/${geo.lane2})`);
+  } else if (geo.farLeft === null && geo.farRight === null) {
+    console.log(`OK: #442 lane hit-testing isolated to columns (margins→null, lanes 0/1/2 resolve; band ${geo.bandLeft.toFixed(0)}–${geo.bandRight.toFixed(0)})`);
+  }
+
+  // Behavioral: a REAL tap out in the dead side margin must not change the score
+  // (no lane hit, no miss). Tap at the canvas top-left margin, far from any lane.
+  const wread = () => wide.evaluate(() => ({ score: window.__lingoHero.score, combo: window.__lingoHero.combo }));
+  {
+    const before = await wread();
+    const pt = await wide.evaluate(() => {
+      const g = window.__lingoHero, ls = g.laneSystem, r = g.canvas.getBoundingClientRect();
+      const lb0 = ls.getLaneBounds(0);
+      // A point in the dead left margin (canvas-left edge), at the strum height.
+      const marginX = Math.max(8, lb0.x * 0.4);
+      return { x: r.left + marginX, y: r.top + ls.getStrumLineY() };
+    });
+    await wide.mouse.click(pt.x, pt.y);
+    await wide.waitForTimeout(140);
+    const after = await wread();
+    if (after.score !== before.score || after.combo > before.combo) {
+      fail(`#442: a tap in the dead side margin changed score/combo (${before.score}/${before.combo} -> ${after.score}/${after.combo})`);
+    } else {
+      console.log("OK: #442 a real tap in the dead side margin did not score or register a lane hit");
+    }
+  }
+
+  // And prove a tap IN a lane column at the strum DOES score (positive control).
+  {
+    let scored = false;
+    const dl = Date.now() + 20000;
+    while (Date.now() < dl && !scored) {
+      const s = await wide.evaluate(() => {
+        const g = window.__lingoHero, ls = g.laneSystem, r = g.canvas.getBoundingClientRect();
+        const strumY = ls.getStrumLineY();
+        const t = (g.notes || []).find((n) => n.isTarget && n.seqIndex === g.caughtCount && !n.hit && !n.missed);
+        return {
+          score: g.score,
+          ready: !!t && t.y >= strumY - 44 && t.y <= strumY + 44,
+          click: t ? { x: r.left + ls.getLaneX(t.lane), y: r.top + strumY } : null,
+        };
+      });
+      if (s.ready && s.click) {
+        const before = s.score;
+        await wide.mouse.click(s.click.x, s.click.y);
+        await wide.waitForTimeout(140);
+        const ns = await wread();
+        if (ns.score > before) { scored = true; console.log("OK: #442 a tap in a lane column at the strum DID score (positive control)"); }
+      }
+      await wide.waitForTimeout(50);
+    }
+    if (!scored) fail("#442: could not land an in-column lane catch to confirm lanes still score");
+  }
+  await wide.screenshot({ path: join(outDir, "lane-isolation-442.png") });
+  await wide.close();
+}
+
 // --- Contract (e): the PROMPT shows the FULL phrase (no truncation). ---------
 // Inject a deliberately LONG primary-language prompt and assert the question box
 // renders it WITHOUT clipping: scrollWidth must fit clientWidth (no horizontal
@@ -195,6 +293,75 @@ else {
     if (failures === 0 || probe.scrollWidth <= probe.clientWidth + 1) {
       console.log(`OK: long prompt fully visible (font ${probe.fontPx.toFixed(0)}px, ${probe.scrollWidth}<=${probe.clientWidth}w, ${probe.scrollHeight}px tall)`);
     }
+  }
+}
+
+// --- Contract (e2): #441 — LONG + COMMA prompt FULLY VISIBLE at PHONE *and*
+// IPAD widths (portrait + landscape). The 0.4.3 fitPrompt() jammed phrases into
+// <=2 lines, hit a font floor, and let the overflow spill the band on iPad — the
+// exact clip the operator kept hitting. This proves the FULL phrase (every word)
+// renders without any glyph clipped, measured with a Range over the rendered text
+// (immune to scrollHeight/clientHeight integer rounding), across viewport widths.
+{
+  const LONG = "They built a fort, then argued about what to defend it from";
+  const WORDS = LONG.replace(/[.,]/g, "").split(/\s+/).filter(Boolean);
+  const SIZES = [
+    { name: "phone-portrait", w: 390, h: 844 },
+    { name: "ipad-portrait", w: 834, h: 1112 },
+    { name: "ipad-landscape", w: 1180, h: 820 },
+  ];
+  for (const sz of SIZES) {
+    const vp = await browser.newPage({ viewport: { width: sz.w, height: sz.h }, deviceScaleFactor: 2 });
+    vp.on("pageerror", (e) => fail(`pageerror(441-${sz.name}): ` + e.message));
+    await vp.goto(harness);
+    await vp.waitForFunction(() => !!window.__lingoHero, { timeout: 10000 });
+    // Give the pack the FULL viewport (the app hands the pack the whole screen).
+    await vp.evaluate(() => {
+      const h = document.getElementById("host");
+      if (h) { h.style.margin = "0"; h.style.width = "100vw"; h.style.height = "100vh"; }
+    });
+    await vp.evaluate(() => {
+      const p = [...document.querySelectorAll("button")].find((b) => /practice/i.test(b.textContent || ""));
+      if (p) p.click(); else window.__lingoHero.startGame("PRACTICE");
+    });
+    await vp.waitForTimeout(350);
+    const m = await vp.evaluate((args) => {
+      const [text, words] = args;
+      window.__lingoHero.hud.setQuestion(text);
+      const el = document.querySelector("#question-box");
+      if (!el) return null;
+      const cs = getComputedStyle(el);
+      const eb = el.getBoundingClientRect();
+      const padT = parseFloat(cs.paddingTop) || 0, padB = parseFloat(cs.paddingBottom) || 0;
+      const padL = parseFloat(cs.paddingLeft) || 0, padR = parseFloat(cs.paddingRight) || 0;
+      const rng = document.createRange(); rng.selectNodeContents(el);
+      const tb = rng.getBoundingClientRect();
+      const txt = el.textContent || "";
+      return {
+        fontPx: parseFloat(cs.fontSize),
+        allPresent: words.every((w) => txt.includes(w)),
+        missing: words.filter((w) => !txt.includes(w)),
+        // glyph spill past the content box (Range measures the line box, which
+        // includes ~1px font leading — so 1.5px is the real-clip threshold).
+        spillBottom: Math.max(0, tb.bottom - (eb.bottom - padB)),
+        spillTop: Math.max(0, (eb.top + padT) - tb.top),
+        spillRight: Math.max(0, tb.right - (eb.right - padR)),
+        spillLeft: Math.max(0, (eb.left + padL) - tb.left),
+      };
+    }, [LONG, WORDS]);
+    if (!m) { fail(`#441 ${sz.name}: no #question-box`); }
+    else {
+      const SPILL = 1.5;
+      if (!m.allPresent) fail(`#441 ${sz.name}: prompt missing words ${JSON.stringify(m.missing)}`);
+      if (m.spillBottom > SPILL || m.spillTop > SPILL || m.spillRight > SPILL || m.spillLeft > SPILL) {
+        fail(`#441 ${sz.name}: prompt CLIPPED — spill(t/b/l/r)=${m.spillTop.toFixed(1)}/${m.spillBottom.toFixed(1)}/${m.spillLeft.toFixed(1)}/${m.spillRight.toFixed(1)} (font ${m.fontPx}px)`);
+      }
+      if (m.allPresent && m.spillBottom <= SPILL && m.spillTop <= SPILL && m.spillRight <= SPILL && m.spillLeft <= SPILL) {
+        console.log(`OK: #441 long+comma prompt fully visible at ${sz.name} ${sz.w}x${sz.h} (font ${m.fontPx}px, all ${WORDS.length} words, spill<=${SPILL}px)`);
+      }
+    }
+    await vp.screenshot({ path: join(outDir, `prompt-441-${sz.name}.png`) });
+    await vp.close();
   }
 }
 

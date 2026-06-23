@@ -347,7 +347,13 @@ export class Game {
   }
 
   private getLaneFromX(x: number): LaneIndex | null {
-    return this.laneSystem.laneAtX(x);
+    // #442: a tap only counts as a lane hit when it lands within the lane COLUMN
+    // band (around the hit-ring circles). Taps on the top-left chrome or out in
+    // the dead side margins resolve to null → no score, no miss. The overlay
+    // chrome buttons still stopPropagation when visible (0.4.3); this also covers
+    // the case where they've auto-faded to pointer-events:none and a tap there
+    // would otherwise pass through to the canvas.
+    return this.laneSystem.laneAtXStrict(x);
   }
 
   private handleResize(container: HTMLElement) {
