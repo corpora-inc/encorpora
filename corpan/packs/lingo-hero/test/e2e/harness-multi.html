@@ -1,0 +1,54 @@
+<!doctype html>
+<!--
+  Multi-language stack harness for issue #407 (Bug A — random target rotation).
+  Stack = ["en","es","fr","de"]: prompt in en (known), TARGET rotates randomly
+  across {es, fr, de} every round. Each entry carries all four languages so any
+  target is always catchable. Run `npm run build` first.
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../dist/app.css" />
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #07060f; }
+  #host { position: static; margin: 90px 0 0 70px; width: 360px; height: 720px; }
+</style>
+</head>
+<body>
+<div id="host"></div>
+<script>window.__corpanHostActive = true;</script>
+<script src="../../dist/app.js"></script>
+<script>
+  // [en, es, fr, de] for each entry — every learning language is always present.
+  const ROWS = [
+    ["the cat", "el gato", "le chat", "die Katze"],
+    ["good morning", "buenos días", "bonjour", "guten Morgen"],
+    ["thank you very much", "muchas gracias", "merci beaucoup", "danke schön"],
+    ["see you tomorrow", "hasta mañana", "à demain", "bis morgen"],
+    ["where is the station", "dónde está la estación", "où est la gare", "wo ist der Bahnhof"],
+    ["how much is this", "cuánto cuesta esto", "combien ça coûte", "wie viel kostet das"],
+    ["the weather is nice", "hace buen tiempo", "il fait beau", "das Wetter ist schön"],
+    ["I would like coffee", "quisiera un café", "je voudrais un café", "ich möchte einen Kaffee"],
+  ];
+  const ENTRIES = ROWS.map(([en, es, fr, de], i) => ({
+    entry_id: i + 1, level: "A1", domains: ["travel"],
+    translations: [
+      { language_code: "en", text: en },
+      { language_code: "es", text: es },
+      { language_code: "fr", text: fr },
+      { language_code: "de", text: de },
+    ],
+  }));
+  let k = 0;
+  const host = {
+    speak() {}, stopSpeech() {},
+    getStackConfig() { return { languages: ["en", "es", "fr", "de"], domains: [], levels: [], rate: 1, textSize: "m", showRomanization: false }; },
+    onStackConfigChange() { return () => {}; },
+    getRandomEntries(n) { const o = []; for (let i = 0; i < n; i++) o.push(ENTRIES[(k++) % ENTRIES.length]); return Promise.resolve(o); },
+    getRandomEntry() { return Promise.resolve(ENTRIES[(k++) % ENTRIES.length]); },
+    isMock: true,
+  };
+  window.CorpanGames.lingo_hero.mount(document.getElementById("host"), host);
+</script>
+</body>
+</html>

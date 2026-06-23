@@ -6,6 +6,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-06-24
+
+A language-selection correctness fix (issue #407): the falling/spoken TARGET
+language now rotates randomly across ALL of your learning languages, and a
+single-language stack becomes a same-language reading exercise instead of
+silently substituting a foreign language.
+
+### Fixed
+- **Target now rotates across ALL learning languages.** With a multi-language
+  stack the game previously always used `languages[1]` as the target, so a
+  player studying several languages only ever practiced the first one. The
+  TARGET is now chosen RANDOMLY among `languages[1..]` each round (prompt stays
+  in `languages[0]`, the language you know), so over a session you practice
+  every language in your stack with random phrases. The active target language —
+  the one whose words fall and get spoken — re-syncs per round.
+  (`ContentManager.resolveLanguages` / `getRound`, `Game.startRound`.)
+- **Single-language stacks are now a READING exercise, not a wrong foreign
+  substitute.** With only one language in the stack (e.g. a kid learning to READ
+  in their native language) the game used to default the target to a wrong
+  foreign language (Arabic/Spanish were seen). It now NEVER substitutes a
+  foreign language: the prompt AND the catchable falling words are both in that
+  single language (catch the phrase's own tokens, in order). (`resolveLanguages`
+  reading-mode branch.)
+
+### Tests
+- `test/e2e/gameplay.spec.mjs` now asserts, via `window.__lingoHero`, that a
+  ≥3-language stack varies its target across rounds (not pinned to
+  `languages[1]`) and that a 1-language stack keeps target === primary with the
+  stack language's own tokens as the catchable words. New harnesses
+  `harness-multi.html` + `harness-reading.html`.
+
 ## [0.4.1] - 2026-06-24
 
 A learning-beat + anti-brick + chrome pass: the phrase-complete result now
