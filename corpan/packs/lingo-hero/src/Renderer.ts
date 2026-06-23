@@ -493,9 +493,33 @@ export class Renderer {
     const strumY = this.laneSystem.getStrumLineY();
     const r = this.laneSystem.getNoteRadius();
 
+    // PLAY-AREA CLIP — the DOM HUD (prompt chip + exit/mute controls) owns the
+    // band above `playTopY`; notes must NEVER draw into it (they'd render
+    // occluded behind the chip/audio button at spawn, shortening read-time).
+    // We clip BOTH note passes to [playTopY, height] and fade cards in over a
+    // short ramp just below the band so they emerge cleanly rather than popping.
+    const width = parseFloat(this.canvas.style.width);
+    const height = parseFloat(this.canvas.style.height);
+    const playTopY = this.laneSystem.getPlayTopY();
+    const fadeBand = Math.max(r * 1.1, 36); // soft entry ramp below the band
+    // Visibility of a card at screen-y `y`: 0 above the band, ramping to 1 over
+    // `fadeBand` px below it (so a note appears below the HUD, never inside it).
+    const bandAlpha = (y: number): number => {
+      if (playTopY <= 0) return 1;
+      if (y <= playTopY) return 0;
+      if (y >= playTopY + fadeBand) return 1;
+      return (y - playTopY) / fadeBand;
+    };
+
     // PASS 1 — additive motion trails behind every live note (comet tails that
     // brighten as they approach the strum line). One additive pass = cheap bloom.
+    // Clipped to the play area so trails never streak up behind the HUD.
     ctx.save();
+    if (playTopY > 0) {
+      ctx.beginPath();
+      ctx.rect(0, playTopY, width, height - playTopY);
+      ctx.clip();
+    }
     ctx.globalCompositeOperation = "lighter";
     for (const note of notes) {
       if (note.missed || note.hit || note.y < -50) continue;
@@ -519,12 +543,21 @@ export class Renderer {
     }
     ctx.restore();
 
-    // PASS 2 — glass cards (+ hit pop).
+    // PASS 2 — glass cards (+ hit pop). Clipped to the play area so a card's
+    // body/word can never bleed into the reserved HUD band.
+    ctx.save();
+    if (playTopY > 0) {
+      ctx.beginPath();
+      ctx.rect(0, playTopY, width, height - playTopY);
+      ctx.clip();
+    }
     for (const note of notes) {
       if (note.missed) continue;
       const cx = this.laneSystem.getLaneX(note.lane);
       const y = note.y;
       const c = this.laneColors[note.lane];
+      // Fade the card in as it crosses below the HUD band (0 inside the band).
+      const enter = bandAlpha(y);
 
       // HIT POP — quick expanding white core + lane ring, owned by Renderer so
       // the note's own light response reads instantly even before particles.
@@ -553,6 +586,9 @@ export class Renderer {
       }
 
       if (y < -50) continue;
+      // Fully inside the reserved HUD band — don't draw it at all (the clip
+      // would hide it anyway; this also skips the wasted gradient allocs).
+      if (enter <= 0) continue;
 
       const proximity = clamp01(1 - Math.abs(y - strumY) / (strumY + 1));
       const pulse = 0.5 + 0.5 * Math.sin(now * 0.011 + note.lane * 1.7);
@@ -586,7 +622,7 @@ export class Renderer {
         ctx.globalCompositeOperation = "lighter";
         const bloomR = cardW * (0.6 + proximity * 0.42);
         const bg = ctx.createRadialGradient(cx, y, 0, cx, y, bloomR);
-        bg.addColorStop(0, rgba(c, (0.13 + pulse * 0.04) * proximity));
+        bg.addColorStop(0, rgba(c, (0.13 + pulse * 0.04) * proximity * enter));
         bg.addColorStop(1, rgba(c, 0));
         ctx.fillStyle = bg;
         ctx.beginPath();
@@ -597,7 +633,7 @@ export class Renderer {
 
       // --- GLASS CARD BODY ---
       ctx.save();
-      ctx.globalAlpha = isTgt ? 1 : 0.9;
+      ctx.globalAlpha = (isTgt ? 1 : 0.9) * enter;
       // Outer neon glow on the card edge (scales with proximity, tightened so it
       // never bleeds over the word).
       ctx.shadowBlur = (8 + proximity * 12 + pulse * 3) * glowK;
@@ -642,6 +678,7 @@ export class Renderer {
       // --- WORD (single line, centered, always inside with padding) ---
       if (fontSize > 0) {
         ctx.save();
+        ctx.globalAlpha = enter;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.font = `bold ${fontSize}px ${wordFont}`;
@@ -654,6 +691,7 @@ export class Renderer {
         ctx.restore();
       }
     }
+    ctx.restore(); // close the PASS 2 play-area clip
   }
 }
 

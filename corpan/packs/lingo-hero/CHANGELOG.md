@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Notes no longer spawn behind the HUD.** The top HUD band (source-sentence
+  chip + exit/mute controls) was sharing pixels with the top of the falling-note
+  lanes, so notes spawned clipped/occluded behind the prompt chip and audio
+  button — shortening read-time and hiding which word/lane was incoming. The
+  game now measures the HUD band each resize / round and reserves a clear play
+  area below it (`LaneSystem.setPlayTop`); the Renderer clips both note passes to
+  that play area and fades each card in over a short ramp just below the band, so
+  every note is fully visible from the moment it appears. Gameplay timing, hit
+  detection, input, and the e2e contracts are unchanged.
+
 ## [0.4.0] - 2026-06-23
 
 Rebuilt the spawn into a true **Guitar-Hero chart** and pulled the stats out of

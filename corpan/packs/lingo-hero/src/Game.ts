@@ -257,6 +257,22 @@ export class Game {
 
     this.laneSystem.resize(width, height);
     this.speed = (height * 0.8 + 100) / this.NOTE_TRAVEL_SECONDS;
+
+    // Reserve a clear HUD band ABOVE the lanes: measure the bottom of the top
+    // HUD (prompt chip + exit/mute controls) and push it to the LaneSystem so
+    // the Renderer only draws notes BELOW it — notes emerge fully visible
+    // instead of spawning occluded behind the chip/audio button. Deferred to
+    // the next frame so the DOM HUD has laid out (fonts/safe-area applied).
+    this.measureHudBand();
+    requestAnimationFrame(() => this.measureHudBand());
+  }
+
+  /** Push the current DOM HUD band bottom into the LaneSystem (canvas-local). */
+  private measureHudBand() {
+    if (!this.hud) return;
+    const rect = this.canvas.getBoundingClientRect();
+    const bandBottom = this.hud.measureHudBandBottom({ top: rect.top });
+    this.laneSystem.setPlayTop(bandBottom);
   }
 
   private showMenu() {
@@ -284,6 +300,12 @@ export class Game {
     this.bus.emit("gameStart", { mode, language: this.activeLanguage });
     this.bus.emit("scoreChange", { value: 0, delta: 0 });
     this.bus.emit("comboChange", { value: 0, previous: 0 });
+
+    // The HUD is now visible (gameStart un-hides it). Re-measure the reserved
+    // HUD band so the play-area top reflects the real, laid-out prompt chip +
+    // controls before the first chart falls.
+    this.measureHudBand();
+    requestAnimationFrame(() => this.measureHudBand());
 
     try {
       await this.startRound();
@@ -362,6 +384,11 @@ export class Game {
     this.hud.setQuestion(this.cleanPrompt(round.promptText));
     this.hud.setRomanization(round.romanization ?? "");
     this.hud.setAssembled([], this.roundWords.length, this.activeLanguage.isRTL);
+
+    // The prompt chip + assembling strip just changed height for this round;
+    // re-measure the reserved HUD band next frame so the play-area top tracks
+    // the (possibly taller) prompt and notes still clear it.
+    requestAnimationFrame(() => this.measureHudBand());
 
     this.buildChart();
   }

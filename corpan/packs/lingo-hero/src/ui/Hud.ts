@@ -55,6 +55,7 @@ export class Hud {
   private root: HTMLElement;
   private menuScreen: HTMLElement;
   private hudPanel: HTMLElement;
+  private topBar!: HTMLElement;
   private gameOverScreen: HTMLElement;
   private questionBox: HTMLElement;
   private romanizationEl: HTMLElement;
@@ -190,6 +191,7 @@ export class Hud {
 
     this.menuScreen = this.root.querySelector("#menu")!;
     this.hudPanel = this.root.querySelector("#hud")!;
+    this.topBar = this.root.querySelector(".top-bar")!;
     this.gameOverScreen = this.root.querySelector("#game-over")!;
     this.questionBox = this.root.querySelector("#question-box")!;
     this.romanizationEl = this.root.querySelector("#romanization-line")!;
@@ -399,6 +401,37 @@ export class Hud {
     this.root.setAttribute("dir", lang.isRTL ? "rtl" : "ltr");
     this.root.setAttribute("data-lang", lang.code);
     this.root.setAttribute("data-text-size", lang.textSize);
+  }
+
+  /**
+   * Measure the bottom of the HUD band — the y, in the canvas's LOCAL
+   * coordinate space, below which the falling-note play area is clear of every
+   * top HUD element. This reserves room for BOTH the centered prompt stack
+   * (instruction + question chip + romanization + assembling strip) AND the
+   * top-corner controls (exit / mute), so notes are never spawned occluded
+   * behind them. Returns a px offset from the canvas top (>= 0).
+   *
+   * `canvasRect` is the canvas's bounding rect; we subtract its top so the
+   * result is canvas-local (the canvas may be offset within the host
+   * container). The exit + mute controls live on `.ui-layer` at a fixed top
+   * inset; we read whichever live element sits lowest and add a small breathing
+   * gap so the first row of notes clears the HUD with margin.
+   */
+  measureHudBandBottom(canvasRect: { top: number }): number {
+    const gap = 14; // breathing room below the HUD before notes appear
+    let lowest = 0;
+    const consider = (el: Element | null) => {
+      if (!el) return;
+      const r = (el as HTMLElement).getBoundingClientRect();
+      if (r.height <= 0 && r.width <= 0) return; // hidden / not laid out
+      lowest = Math.max(lowest, r.bottom - canvasRect.top);
+    };
+    // Centered prompt stack (the source-sentence chip lives here).
+    consider(this.topBar);
+    // Top-corner controls: exit (in this.root) + mute (mounted on .ui-layer).
+    consider(this.root.querySelector("#lh-exit"));
+    consider(document.querySelector(".na-mute-toggle"));
+    return lowest > 0 ? lowest + gap : 0;
   }
 
   dispose(): void {
