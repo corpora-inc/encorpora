@@ -85,6 +85,7 @@
     "faster": "Nopeammin",
     "levels": "Tasot",
     "selectAll": "Valitse kaikki",
+    "deselectAll": "Poista kaikkien valinta",
     "allLevelsIncluded": "Kaikki tasot sisällytetty.",
     "selected": "valittu",
     "domains": "Aihealueet",

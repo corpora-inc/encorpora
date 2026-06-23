@@ -85,6 +85,7 @@
     "faster": "さらに速く",
     "levels": "レベル",
     "selectAll": "すべて選択",
+    "deselectAll": "すべて選択解除",
     "allLevelsIncluded": "すべてのレベルが含まれています。",
     "selected": "選択中",
     "domains": "分野",

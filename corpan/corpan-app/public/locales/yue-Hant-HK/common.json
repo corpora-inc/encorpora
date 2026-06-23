@@ -85,6 +85,7 @@
     "faster": "更快",
     "levels": "級別",
     "selectAll": "全選",
+    "deselectAll": "取消全選",
     "allLevelsIncluded": "所有級別均已包含。",
     "selected": "已選擇",
     "domains": "領域",
