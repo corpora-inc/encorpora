@@ -239,6 +239,71 @@ export function initEffects(
     })
   );
 
+  // PHRASE-COMPLETE CELEBRATION — a satisfying fireworks burst when a phrase
+  // resolves, scaled by performance (bigger for a clean, high-combo phrase).
+  // Premium, not gaudy: a few timed shells rising + bursting in lane/gold hues.
+  offs.push(
+    bus.on("result-celebrate", (e) => {
+      const w = cssW();
+      const h = cssH();
+      // Scale the show by combo + clean-ness. A clean, hot phrase earns more
+      // shells and a touch more reach; a scrappy finish still pops, modestly.
+      const heat = Math.min(1, e.combo / 16);
+      const shells = e.clean ? 3 + Math.round(heat * 3) : 2 + Math.round(heat * 2);
+      const reach = 360 + heat * 320;
+      const gold = COLORS.GOLD;
+
+      transitions.flash(e.clean ? COLORS.WHITE : { r: 180, g: 220, b: 255 }, 0.32);
+      shake.add(e.clean ? 0.4 + heat * 0.3 : 0.28);
+      background.pulse(0.5 + heat * 0.4);
+      background.setHue(e.clean ? gold : mix(gold, COLORS.WHITE, 0.4));
+
+      // Timed firework shells across the upper playfield. Stagger via a tiny
+      // recursive scheduler so they don't all bloom on the same frame.
+      let fired = 0;
+      const fireOne = () => {
+        if (fired >= shells) return;
+        const fx = w * (0.18 + Math.random() * 0.64);
+        const fy = h * (0.26 + Math.random() * 0.32);
+        const hue = fired % 2 === 0 ? gold : laneRgb(fired % 3);
+        // Radial shell burst.
+        particles.burst(fx, fy, {
+          count: 22 + Math.round(heat * 18),
+          speedMin: 120,
+          speedMax: reach,
+          sizeMin: 1.8,
+          sizeMax: 4.6,
+          lifeMin: 0.6,
+          lifeMax: 1.3,
+          gravity: 420,
+          drag: 0.9,
+          spread: Math.PI * 2,
+          shape: fired % 2 === 0 ? "star" : "shard",
+          color: hue,
+          glow: 1.2,
+        });
+        // White-hot core flash.
+        particles.burst(fx, fy, {
+          count: 10,
+          speedMin: 30,
+          speedMax: 150,
+          sizeMin: 1.2,
+          sizeMax: 3,
+          lifeMin: 0.2,
+          lifeMax: 0.45,
+          drag: 0.82,
+          spread: Math.PI * 2,
+          color: COLORS.WHITE,
+          glow: 1.3,
+        });
+        floaters.shockwave(fx, fy, hue, 1.1 + heat * 0.5);
+        fired++;
+        if (fired < shells) window.setTimeout(fireOne, 150 + Math.random() * 160);
+      };
+      fireOne();
+    })
+  );
+
   offs.push(
     bus.on("menuShown", () => {
       combo = 0;

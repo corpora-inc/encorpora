@@ -42,6 +42,17 @@ const mockPhrases: EntryOut[] = [
   { entry_id: 8, level: "A1", domains: ["travel"], translations: [
     { language_code: "en", text: "dog" },
     { language_code: "es", text: "perro" }
+  ]},
+  // A deliberately LONG phrase so dev/e2e exercises prompt wrapping/auto-fit —
+  // the full prompt must always show (never truncated) and the assembling strip
+  // must hold all its words. (Deliverable 5.)
+  { entry_id: 9, level: "B1", domains: ["travel"], translations: [
+    { language_code: "en", text: "When my passport disappeared at the hostel" },
+    { language_code: "es", text: "Cuando mi pasaporte desapareció en el albergue" }
+  ]},
+  { entry_id: 10, level: "A2", domains: ["travel"], translations: [
+    { language_code: "en", text: "Where is the train station" },
+    { language_code: "es", text: "Dónde está la estación de tren" }
   ]}
 ]
 

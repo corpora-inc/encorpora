@@ -209,6 +209,53 @@ export interface GameOverEvent {
 }
 
 /**
+ * Emitted when the game is PAUSED because the app/tab was backgrounded (Page
+ * Visibility hidden / window blur / pagehide). Subscribers pause their own
+ * scheduling (audio suspends the AudioContext; effects can freeze). Pairing
+ * `gamePaused`/`gameResumed` guarantees audio never keeps running while the rAF
+ * loop is frozen — the root cause of the background "brick".
+ */
+export interface GamePausedEvent {
+  /** Why we paused — for debug/telemetry. */
+  reason: "hidden" | "blur" | "pagehide" | "manual";
+}
+
+/** Emitted when the game RESUMES after a pause (app/tab visible again). */
+export interface GameResumedEvent {
+  /** Milliseconds the game spent paused (wall clock). */
+  pausedMs: number;
+}
+
+/**
+ * Emitted at a ROUND/level TRANSITION (after a phrase resolves, before the next
+ * one loads). The music stream uses this to rotate to a fresh tune and the
+ * effects stream can punctuate the transition. `level` is the player's current
+ * progression level so the music can pick up pace with progress.
+ */
+export interface RoundAdvanceEvent {
+  /** Player's progression level (1-based) at the transition. */
+  level: number;
+  /** Difficulty streak (clean charts in a row) at the transition. */
+  streak: number;
+}
+
+/**
+ * Emitted exactly once when a phrase is COMPLETED cleanly enough to celebrate
+ * (all words consumed). Drives the big fireworks/particle burst, scaled by
+ * performance. Distinct from `wave-resolved` (which fires for every outcome,
+ * including all-missed); this fires for the celebratory result LANDING so the
+ * effects stream can scale the burst by combo / clean-ness.
+ */
+export interface ResultCelebrateEvent {
+  /** True iff every word was caught cleanly (no pass / wrong tap). */
+  clean: boolean;
+  /** Combo at completion — scales the burst size. */
+  combo: number;
+  /** Number of words in the completed phrase. */
+  wordCount: number;
+}
+
+/**
  * The full event map. Keys are event names, values are payload types.
  * `GameEventBus` (src/events.ts) is typed against this map.
  */
@@ -221,6 +268,10 @@ export interface GameEventMap {
   comboChange: ComboChangeEvent;
   scoreChange: ScoreChangeEvent;
   gameOver: GameOverEvent;
+  gamePaused: GamePausedEvent;
+  gameResumed: GameResumedEvent;
+  roundAdvance: RoundAdvanceEvent;
+  "result-celebrate": ResultCelebrateEvent;
 }
 
 export type GameEventName = keyof GameEventMap;

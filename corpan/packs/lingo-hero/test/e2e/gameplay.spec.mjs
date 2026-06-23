@@ -12,7 +12,12 @@
  *   (b) CATCH SCORES — tapping the lane of the correct NEXT target word (the
  *       one with seqIndex === caughtCount), at its visual position on the strum
  *       line, INCREASES the score. (input coords + catch-in-sequence)
- *   (c) NO TAP-THROUGH — tapping the on-screen mute control does NOT score.
+ *   (c) NO TAP-THROUGH — tapping the on-screen Exit control does NOT score
+ *       (the in-game mute button was removed; Exit is the only top chrome and
+ *       must capture its own taps rather than leaking into a lane).
+ *   (d) NO BRICK — a round left with NO INPUT eventually RESOLVES (the chart
+ *       exhausts and the phrase resolves into the result linger / next round)
+ *       rather than leaving the player stuck with empty lanes + half strip.
  *
  * It also captures menu + gameplay screenshots (visual proof) into test/e2e/out/.
  *
@@ -47,6 +52,8 @@ const read = () => page.evaluate(() => {
     score: g.score, strumY: ls.getStrumLineY(), caughtCount: g.caughtCount,
     laneX: [ls.getLaneX(0), ls.getLaneX(1), ls.getLaneX(2)],
     canvas: { left: r.left, top: r.top },
+    // Anti-brick introspection.
+    lingering: g.lingering, roundResolved: g.roundResolved, hasRound: !!g.round,
     notes: (g.notes || []).map((n) => ({
       id: n.id, lane: n.lane, y: n.y, isTarget: n.isTarget,
       seqIndex: n.seqIndex, hit: n.hit, missed: n.missed,
@@ -80,18 +87,25 @@ await page.waitForFunction(() => (window.__lingoHero.notes || []).length > 0, { 
   }
 }
 
-// --- Contract (c): control tap (mute) must NOT score. ------------------------
-const mute = await page.evaluate(() => {
-  const b = document.querySelector(".na-mute-toggle"); if (!b) return null;
+// --- Contract (c): control tap (Exit) must NOT score (no tap-through). -------
+// The Exit button is the only top chrome now. It sits in the pointer-events:none
+// overlay but opts back in, so a tap on it must NOT reach the lane input. We
+// stub corpan:exit so the click doesn't actually tear the game down mid-test.
+await page.evaluate(() => {
+  window.__exitFired = 0;
+  window.addEventListener("corpan:exit", () => { window.__exitFired++; }, true);
+});
+const exit = await page.evaluate(() => {
+  const b = document.querySelector("#lh-exit"); if (!b) return null;
   const r = b.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
 });
-if (!mute) fail("no .na-mute-toggle control found");
+if (!exit) fail("no #lh-exit control found");
 else {
   const before = (await read()).score;
-  await page.mouse.click(mute.x, mute.y);
+  await page.mouse.click(exit.x, exit.y);
   await page.waitForTimeout(140);
-  if ((await read()).score !== before) fail("tap-through: mute tap changed the score");
-  else console.log("OK: mute tap did not leak into a lane");
+  if ((await read()).score !== before) fail("tap-through: Exit tap changed the score");
+  else console.log("OK: Exit tap did not leak into a lane");
 }
 
 // --- Contract (b): catching the correct NEXT target word scores. -------------
@@ -117,6 +131,36 @@ while (Date.now() < deadline && catches < 2) {
   await page.waitForTimeout(50);
 }
 if (catches === 0 && failures === 0) fail("no target word reached the strum line in time");
+
+// --- Contract (d): NO-BRICK — a round with NO INPUT eventually resolves. -----
+// Wait for a fresh, unresolved round to be in flight, then do NOTHING and
+// assert it resolves (the chart exhausts → result linger / next round) within a
+// generous window. This guards the foreground brick: empty lanes + half strip +
+// no resolution must never persist.
+{
+  // Wait until a round is active and not yet resolved (a fresh chart in flight).
+  let fresh = false;
+  const freshDeadline = Date.now() + 12000;
+  while (Date.now() < freshDeadline) {
+    const s = await read();
+    if (s.hasRound && !s.roundResolved && !s.lingering) { fresh = true; break; }
+    await page.waitForTimeout(120);
+  }
+  if (!fresh) {
+    fail("never observed a fresh unresolved round to test no-brick");
+  } else {
+    // Do nothing; the chart should exhaust and the round must resolve.
+    let resolved = false;
+    const resolveDeadline = Date.now() + 30000;
+    while (Date.now() < resolveDeadline) {
+      const s = await read();
+      if (s.lingering || s.roundResolved) { resolved = true; break; }
+      await page.waitForTimeout(200);
+    }
+    if (!resolved) fail("BRICK: a round with no input never resolved (stuck)");
+    else console.log("OK: no-input round resolved (no brick)");
+  }
+}
 
 await page.screenshot({ path: join(outDir, "gameplay-final.png") });
 await browser.close();

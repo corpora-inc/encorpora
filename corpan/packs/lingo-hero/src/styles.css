@@ -535,24 +535,32 @@ canvas {
 }
 
 /* ------------------------------ In-game HUD ------------------------------ */
+/* The in-game HUD is a TRANSPARENT / translucent OVERLAY. The falling-note lane
+   runs full-height to the very top edge and notes are seen BEHIND this header as
+   they enter, so the HUD must not paint a solid band and must not block taps on
+   the lanes underneath (pointer-events:none; only the result card + exit opt back
+   in). Minimal top padding so the playfield is maximized. */
 .hud {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: calc(var(--safe-top) + 12px) clamp(10px, 3vmin, 22px) 0;
-  gap: 12px;
+  padding: calc(var(--safe-top) + 4px) 0 0;
+  gap: 4px;
+  pointer-events: none;
 }
 
+/* Full-width, edge-to-edge top header — just prompt + building pills, minimum
+   vertical space. Leaves the top-LEFT corner clear for the Exit button only
+   (no mute / no replay controls anymore). */
 .top-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--na-space-3);
   width: 100%;
-  /* Reserve the top corners for the Exit (left) and Mute (right) controls so the
-     centered prompt + replay never sit underneath them. */
-  padding-left: calc(56px + env(safe-area-inset-left, 0px));
-  padding-right: calc(56px + env(safe-area-inset-right, 0px));
+  /* Clear the top-left Exit button; nothing on the right anymore. A hair of
+     side gutter keeps text off the very edge while still reading full-width. */
+  padding-left: calc(52px + env(safe-area-inset-left, 0px));
+  padding-right: calc(12px + env(safe-area-inset-right, 0px));
   box-sizing: border-box;
 }
 
@@ -593,45 +601,56 @@ canvas {
 }
 
 /* Prompt stack: foreign prompt + romanization line, vertically grouped so the
-   romanization tucks neatly under the question box. */
+   romanization tucks neatly under the question box. Full-width so a long prompt
+   uses the whole screen instead of a narrow centered box. */
 .prompt-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--na-space-1);
   min-width: 0;
+  width: 100%;
 }
 
+/* The prompt is a TRANSLUCENT overlay label — no solid card, so the falling
+   notes are visible behind it as they enter from the very top. It uses the full
+   width and WRAPS / auto-fits so even a long sentence ("When my passport
+   disappeared at the hostel") shows in full and is NEVER truncated. */
 .question-box {
   position: relative;
-  max-width: min(92%, 640px);
-  padding: clamp(0.6rem, 2.4vmin, 1rem) clamp(1.1rem, 5vmin, 2.2rem);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: clamp(0.25rem, 1.2vmin, 0.5rem) clamp(0.5rem, 2.5vmin, 1rem);
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(1.4rem, 6.2vmin, 2.8rem);
-  line-height: 1.1;
+  /* Auto-fit: scale with viewport but cap so long phrases shrink to fit the
+     full width and wrap to at most a couple of lines rather than clipping. */
+  font-size: clamp(1.05rem, 5vw, 2rem);
+  line-height: 1.12;
   text-align: center;
   color: var(--ink);
   letter-spacing: 0.01em;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-stroke);
-  border-radius: var(--radius-md);
-  box-shadow:
-    0 14px 36px -16px rgba(0, 0, 0, 0.8),
-    0 0 24px -8px rgba(47, 243, 255, 0.4),
-    0 1px 0 var(--glass-hi) inset;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* Translucent — readable text with a soft scrim so notes show through. */
+  background: transparent;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.85),
+    0 0 14px rgba(0, 0, 0, 0.7);
+  /* Wrap rules: break long words/sentences, never truncate. */
+  overflow-wrap: anywhere;
+  word-break: normal;
+  white-space: normal;
+  hyphens: auto;
   animation: q-pop 0.32s var(--ease-snap);
 }
 .question-box::before {
   content: "";
   position: absolute;
-  inset-inline: 18%;
-  bottom: -1px;
+  inset-inline: 24%;
+  bottom: -2px;
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-  opacity: 0.8;
+  opacity: 0.7;
 }
 @keyframes q-pop {
   from {
@@ -653,45 +672,12 @@ canvas {
   font-weight: 900;
 }
 
-/* The prompt is a real tappable control ("hear again" = tap the prompt). Reset
-   button chrome so it reads as the glass prompt card, not a system button. */
-.question-box {
-  appearance: none;
-  -webkit-appearance: none;
-  cursor: default;
-  font: inherit;
-}
-.question-box.is-tappable {
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  transition: transform var(--na-dur-fast, 140ms) var(--na-ease-snap, ease),
-    box-shadow var(--na-dur-base, 240ms) var(--na-ease-out, ease);
-}
-.question-box.is-tappable::after {
-  /* A tiny "tap to hear" speaker glyph hint, baked into the prompt — NOT a
-     second control. */
-  content: "\1F50A";
-  position: absolute;
-  top: 50%;
-  inset-inline-end: 0.5rem;
-  transform: translateY(-50%);
-  font-size: 0.7em;
-  opacity: 0.5;
-}
-.question-box.is-tappable:hover,
-.question-box.is-tappable:focus-visible {
-  box-shadow:
-    0 14px 36px -16px rgba(0, 0, 0, 0.8),
-    0 0 30px -6px rgba(47, 243, 255, 0.6),
-    0 1px 0 var(--glass-hi) inset;
-}
-.question-box.is-tappable:active {
-  transform: scale(0.985);
-}
+/* (in-game audio replay / "tap to hear" control removed — the prompt is now a
+   plain display label; the TARGET word is still spoken on catch.) */
 
-/* One clear instruction cue above the prompt. */
+/* (Removed instruction cue style — kept for reference; selector unused.) */
 .lh-instruction {
+  display: none;
   margin: 0;
   font-family: var(--na-font-body);
   font-weight: 700;
@@ -702,14 +688,18 @@ canvas {
   opacity: 0.85;
 }
 
-/* The ASSEMBLING target-phrase strip — fills in as words are caught. */
+/* The ASSEMBLING target-phrase strip — fills in as words are caught. Full
+   width, edge-to-edge, with a light gutter so it never clips on mobile. */
 .lh-assemble {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 6px 8px;
-  max-width: min(94%, 640px);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 clamp(6px, 3vw, 16px);
   margin-top: 2px;
 }
 .lh-assemble[hidden] {
@@ -768,8 +758,12 @@ canvas {
   left: 50%;
   transform: translateX(-50%);
   /* Below the rings: strum line at 80% of height, ring radius up to ~72px → sit
-     the strip a touch under that, with a floor so it never hugs the very edge. */
-  top: min(calc(80% + 86px), calc(100% - 92px));
+     the strip a touch under that, with a floor so it never hugs the very edge.
+     The floor RESPECTS the Android bottom SAFE AREA (gesture/nav bar) via
+     env(safe-area-inset-bottom) so the SCORE/COMBO strip is never clipped or
+     overlapped by system chrome; the bottom padding reserves the band too. */
+  top: min(calc(80% + 86px), calc(100% - 92px - var(--safe-bottom)));
+  padding-bottom: var(--safe-bottom);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1294,6 +1288,68 @@ canvas {
   --fb-accent: var(--na-wrong);
   border-color: color-mix(in srgb, var(--na-wrong) 45%, var(--na-glass-stroke));
   box-shadow: var(--na-shadow-panel), 0 0 22px rgba(255, 62, 165, 0.34);
+}
+
+/* HELD result LANGER: the phrase-complete card "lands" centered and stays put
+   for the dwell so the player reads the assembled target phrase → meaning. It
+   becomes tappable (the overlay is pointer-events:none; the held card opts back
+   in) so tap-to-continue works, and gets a gentle landing pop + breathing glow.
+   It is moved toward center so the big result is the focus during the linger. */
+.feedback-card.is-held {
+  pointer-events: auto;
+  cursor: pointer;
+  bottom: clamp(28%, 38vh, 44%);
+  width: min(92vw, 480px);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  animation: fb-land var(--na-dur-slow) var(--na-ease-snap) both;
+}
+.feedback-card.is-held.is-correct {
+  box-shadow: var(--na-shadow-panel), var(--na-glow-lime), 0 0 48px -6px var(--na-correct);
+}
+@keyframes fb-land {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(18px) scale(0.9);
+  }
+  60% {
+    transform: translateX(-50%) translateY(0) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feedback-card.is-held {
+    animation: none;
+  }
+}
+
+/* Tap-to-continue hint inside the held card. */
+.fb-continue {
+  margin-top: var(--na-space-3);
+  font-family: var(--na-font-body);
+  font-weight: 800;
+  font-size: var(--na-fs-2xs);
+  letter-spacing: var(--na-tracking-wider);
+  text-transform: uppercase;
+  color: var(--na-text-dim);
+  opacity: 0.9;
+  animation: fb-continue-pulse 1.4s var(--na-ease-out) infinite;
+}
+.fb-continue[hidden] {
+  display: none;
+}
+@keyframes fb-continue-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fb-continue {
+    animation: none;
+    opacity: 0.85;
+  }
 }
 
 .fb-verdict {

@@ -80,6 +80,26 @@ export class Game {
   private isRunning: boolean = false;
   private fontsReady: boolean = false;
 
+  // ---- Backgrounding pause/resume (anti-brick) ----------------------------
+  /** True while the game is paused because the app/tab is backgrounded. */
+  private paused: boolean = false;
+  /** performance.now() when we paused, to measure paused duration on resume. */
+  private pausedAt: number = 0;
+  /** Detach handles for the visibility / blur / pagehide listeners. */
+  private visibilityHandlers: Array<() => void> = [];
+
+  // ---- Result LINGER (phrase-complete celebration dwell) ------------------
+  /**
+   * When a phrase completes, the round enters a LINGER: the result card is held
+   * so the player can READ the full assembled target phrase + its meaning and
+   * let it sink in (a key learning beat). The next phrase only loads after the
+   * dwell elapses OR the player taps to continue. `nextSpawnTime` is the
+   * earliest auto-advance time; `lingering` gates the tap-to-continue affordance.
+   */
+  private lingering: boolean = false;
+  /** Detach handle for the document-level tap-to-continue listener. */
+  private offContinueTap?: () => void;
+
   // Host language context
   private stackConfig: StackConfig;
   private activeLanguage: ActiveLanguage;
@@ -166,7 +186,8 @@ export class Game {
       {
         onStartGame: (mode) => this.startGame(mode),
         onShowMenu: () => this.showMenu(),
-        onReplayPrompt: () => this.replayPrompt(),
+        // Result-linger tap-to-continue: advance immediately past the dwell.
+        onContinue: () => this.continueFromResult(),
       },
       this.progression
     );
@@ -186,6 +207,8 @@ export class Game {
       this.resizeObserver.observe(container);
     }
 
+    this.installVisibilityHandlers();
+
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => {
         this.fontsReady = true;
@@ -196,6 +219,77 @@ export class Game {
 
     this.isRunning = true;
     requestAnimationFrame((t) => this.loop(t));
+  }
+
+  // -------------------------------------------------------------------------
+  // BACKGROUNDING (anti-brick). The rAF loop pauses when the tab is hidden but
+  // WebAudio keeps running; on return the game would be desynced (notes stop,
+  // strip half-filled, chart dead). We listen on the Page Visibility API plus
+  // window blur / pagehide and PAUSE the loop + audio on hidden, then RESUME
+  // cleanly on visible — rebasing the delta-time + chart-time baseline so the
+  // chart picks up exactly where it paused (nothing teleports).
+  // -------------------------------------------------------------------------
+  private installVisibilityHandlers() {
+    if (typeof document === "undefined") return;
+    const onVisibility = () => {
+      if (document.hidden) this.pause("hidden");
+      else this.resume();
+    };
+    const onBlur = () => this.pause("blur");
+    const onFocus = () => this.resume();
+    const onPageHide = () => this.pause("pagehide");
+    const onPageShow = () => this.resume();
+
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("blur", onBlur);
+    window.addEventListener("focus", onFocus);
+    window.addEventListener("pagehide", onPageHide);
+    window.addEventListener("pageshow", onPageShow);
+
+    this.visibilityHandlers.push(
+      () => document.removeEventListener("visibilitychange", onVisibility),
+      () => window.removeEventListener("blur", onBlur),
+      () => window.removeEventListener("focus", onFocus),
+      () => window.removeEventListener("pagehide", onPageHide),
+      () => window.removeEventListener("pageshow", onPageShow)
+    );
+  }
+
+  /** Pause the game loop + audio. Idempotent. */
+  pause(reason: "hidden" | "blur" | "pagehide" | "manual" = "manual") {
+    if (this.paused) return;
+    this.paused = true;
+    this.pausedAt = performance.now();
+    this.bus.emit("gamePaused", { reason });
+  }
+
+  /**
+   * Resume after a pause. CRITICAL: rebase every timing baseline so nothing
+   * teleports. The chart is timed off performance.now() via each note's
+   * strumTime; while paused real time advanced but the chart should not have, so
+   * we shift every live note's strumTime forward by the paused duration. We also
+   * push the linger auto-advance deadline forward and reset the delta-time
+   * baseline so the first post-resume frame has dt≈0.
+   */
+  resume() {
+    if (!this.paused) return;
+    this.paused = false;
+    const now = performance.now();
+    const pausedMs = Math.max(0, now - this.pausedAt);
+
+    // Shift the whole chart timeline forward by the time we were paused so each
+    // note resumes from exactly where it was (no teleport / no missed backlog).
+    for (const note of this.notes) {
+      if (typeof note.strumTime === "number") note.strumTime += pausedMs;
+    }
+    // Keep the post-resolve gap + linger auto-advance honest across the pause.
+    if (this.nextSpawnTime > 0) this.nextSpawnTime += pausedMs;
+
+    // Reset the delta-time baseline so the loop's first frame doesn't integrate
+    // the whole paused gap (the legacy non-strum fall path would teleport).
+    this.lastTimestamp = 0;
+
+    this.bus.emit("gameResumed", { pausedMs });
   }
 
   /**
@@ -223,21 +317,6 @@ export class Game {
     return this.activeLanguage;
   }
 
-  /**
-   * Re-speak the CURRENT prompt. "Hear again" = tap the prompt (the Hud wires
-   * the prompt box to this). We speak the TARGET translation (the thing being
-   * learned), not the primary phrase the player already knows. No-op between
-   * rounds. Speaks RAW text per the TTS contract.
-   */
-  replayPrompt(): void {
-    if (!this.round || !this.round.targetText) return;
-    this.contentManager.speak(
-      this.round.targetText,
-      this.round.targetLang,
-      this.activeLanguage.rate
-    );
-  }
-
   private getLaneFromX(x: number): LaneIndex | null {
     return this.laneSystem.laneAtX(x);
   }
@@ -258,21 +337,12 @@ export class Game {
     this.laneSystem.resize(width, height);
     this.speed = (height * 0.8 + 100) / this.NOTE_TRAVEL_SECONDS;
 
-    // Reserve a clear HUD band ABOVE the lanes: measure the bottom of the top
-    // HUD (prompt chip + exit/mute controls) and push it to the LaneSystem so
-    // the Renderer only draws notes BELOW it — notes emerge fully visible
-    // instead of spawning occluded behind the chip/audio button. Deferred to
-    // the next frame so the DOM HUD has laid out (fonts/safe-area applied).
-    this.measureHudBand();
-    requestAnimationFrame(() => this.measureHudBand());
-  }
-
-  /** Push the current DOM HUD band bottom into the LaneSystem (canvas-local). */
-  private measureHudBand() {
-    if (!this.hud) return;
-    const rect = this.canvas.getBoundingClientRect();
-    const bandBottom = this.hud.measureHudBandBottom({ top: rect.top });
-    this.laneSystem.setPlayTop(bandBottom);
+    // The lane now runs FULL HEIGHT to the very top edge: notes spawn at the top
+    // and are seen THROUGH the translucent header as they enter (the header is a
+    // transparent overlay, not a reserved band). So the play-area top is 0 — no
+    // HUD-band reservation, no clip. The header text stays readable above the
+    // notes and never blocks taps on the lanes behind it (pointer-events:none).
+    this.laneSystem.setPlayTop(0);
   }
 
   private showMenu() {
@@ -296,16 +366,12 @@ export class Game {
     this.nextSpawnTime = 0;
     this.chartStreak = 0;
     this.chartClean = true;
+    this.lingering = false;
+    this.clearContinueTap();
 
     this.bus.emit("gameStart", { mode, language: this.activeLanguage });
     this.bus.emit("scoreChange", { value: 0, delta: 0 });
     this.bus.emit("comboChange", { value: 0, previous: 0 });
-
-    // The HUD is now visible (gameStart un-hides it). Re-measure the reserved
-    // HUD band so the play-area top reflects the real, laid-out prompt chip +
-    // controls before the first chart falls.
-    this.measureHudBand();
-    requestAnimationFrame(() => this.measureHudBand());
 
     try {
       await this.startRound();
@@ -384,11 +450,6 @@ export class Game {
     this.hud.setQuestion(this.cleanPrompt(round.promptText));
     this.hud.setRomanization(round.romanization ?? "");
     this.hud.setAssembled([], this.roundWords.length, this.activeLanguage.isRTL);
-
-    // The prompt chip + assembling strip just changed height for this round;
-    // re-measure the reserved HUD band next frame so the play-area top tracks
-    // the (possibly taller) prompt and notes still clear it.
-    requestAnimationFrame(() => this.measureHudBand());
 
     this.buildChart();
   }
@@ -552,14 +613,113 @@ export class Game {
     this.caughtCount = Math.min(this.caughtCount + 1, this.roundWords.length);
 
     if (this.caughtCount >= this.roundWords.length) {
-      // Sequence complete — resolve the round and queue the next one.
+      // Sequence complete — resolve the round and enter the result LINGER.
       this.resolveRound(this.roundAllCaught ? "correct" : "wrong");
       // STREAK: a fully-clean chart bumps the difficulty streak (tighter +
       // more decoys next time); any fail this chart resets it to relaxed.
       this.chartStreak = this.chartClean ? this.chartStreak + 1 : 0;
-      this.nextSpawnTime = performance.now() + 1100;
+      this.enterResultLinger();
       void caught;
     }
+  }
+
+  /**
+   * Phrase complete → HOLD the result so the player can read the full assembled
+   * target phrase + its meaning and let it sink in (a key learning beat). Fires
+   * the celebration burst (scaled by performance) and arms a tap-to-continue
+   * that also auto-advances after the dwell. The next round only loads once the
+   * linger ends (loop gates on `lingering`).
+   */
+  private enterResultLinger() {
+    this.lingering = true;
+
+    // Celebrate: bigger for a clean, high-combo phrase. The effects stream
+    // turns this into fireworks scaled by combo + clean-ness.
+    this.bus.emit("result-celebrate", {
+      clean: this.roundAllCaught && this.chartClean,
+      combo: this.combo,
+      wordCount: this.roundWords.length,
+    });
+
+    // Rotate music + pick up pace at the transition.
+    const snap = this.progression.getSnapshot?.();
+    this.bus.emit("roundAdvance", {
+      level: snap?.level ?? 1,
+      streak: this.chartStreak,
+    });
+
+    // Dwell: long enough to READ the result. Scale a little with phrase length
+    // (more words = more to read) and clamp to a sane window. A clean phrase
+    // lands a touch longer so the celebration breathes.
+    const base = 2600;
+    const perWord = 220;
+    const bonus = this.roundAllCaught ? 600 : 0;
+    const dwell = Math.min(5200, base + this.roundWords.length * perWord + bonus);
+    this.nextSpawnTime = performance.now() + dwell;
+
+    // Tell the Hud to HOLD the result card for the dwell + show tap-to-continue.
+    this.hud.holdResult(dwell);
+
+    // Arm a tap-to-continue anywhere: advances immediately past the dwell. We
+    // listen on the document (capture) so a tap on the canvas/lanes also works,
+    // but ignore the very first frame so the completing catch's own tap doesn't
+    // instantly skip the linger.
+    this.clearContinueTap();
+    const armedAt = performance.now();
+    const onTap = () => {
+      if (performance.now() - armedAt < 220) return; // debounce the catch tap
+      this.continueFromResult();
+    };
+    const opts = { capture: true } as AddEventListenerOptions;
+    window.addEventListener("pointerdown", onTap, opts);
+    window.addEventListener("keydown", onTap, opts);
+    this.offContinueTap = () => {
+      window.removeEventListener("pointerdown", onTap, opts);
+      window.removeEventListener("keydown", onTap, opts);
+    };
+  }
+
+  /** Advance past the result linger NOW (tap-to-continue or dwell elapsed). */
+  private continueFromResult() {
+    if (!this.lingering) return;
+    this.lingering = false;
+    this.clearContinueTap();
+    this.hud.hideFeedback();
+    // Let the loop load the next round on its next tick (board may still be
+    // clearing); make the gap immediate now that the player has read it.
+    this.nextSpawnTime = performance.now();
+  }
+
+  /** Detach the tap-to-continue listener if armed. */
+  private clearContinueTap() {
+    this.offContinueTap?.();
+    this.offContinueTap = undefined;
+  }
+
+  /**
+   * NO-BRICK fallback: the chart is exhausted (all notes hit/passed/gone) but
+   * the phrase never resolved. Reveal any words still missing from the
+   * assembling strip (so the learning phrase stays complete), mark the chart
+   * failed, and resolve + linger exactly like a normal completion — so the
+   * round always ends and the next one can load. Idempotent via roundResolved.
+   */
+  private resolveExhaustedChart() {
+    if (this.roundResolved) return;
+    // Fill in any remaining words so the assembled phrase + result card are
+    // complete and coherent (the player still gets the teaching).
+    while (this.caughtCount < this.roundWords.length) {
+      this.assembled.push(this.roundWords[this.caughtCount]);
+      this.caughtCount++;
+    }
+    this.hud.setAssembled(
+      this.assembled,
+      this.roundWords.length,
+      this.activeLanguage.isRTL
+    );
+    this.failChart();
+    this.resolveRound("passed");
+    this.chartStreak = 0; // a chart that ran out unresolved resets the ramp
+    this.enterResultLinger();
   }
 
   /** Record a fail this chart: resets the difficulty streak for the next chart. */
@@ -588,6 +748,9 @@ export class Game {
   private handleInput(lane: LaneIndex) {
     this.lanePressTimes[lane] = performance.now();
     if (this.state !== GameState.PLAYING) return;
+    // While backgrounded-paused or holding the result linger, lane taps don't
+    // play (a tap during the linger is consumed by tap-to-continue instead).
+    if (this.paused || this.lingering) return;
 
     const hitNote = this.laneSystem.checkHit(lane, this.notes);
     const strumY = this.laneSystem.getStrumLineY();
@@ -667,29 +830,65 @@ export class Game {
   private loop(timestamp: number) {
     if (!this.isRunning) return;
 
+    // PAUSED (backgrounded): freeze the simulation entirely. We keep requesting
+    // frames + re-rendering the last frame so the resume is instant and the
+    // canvas doesn't go black, but advance NOTHING — physics, round cadence, and
+    // time baselines are all held. resume() rebases lastTimestamp + the chart so
+    // nothing teleports. This is the anti-brick guarantee paired with the audio
+    // suspend: the loop and the audio are frozen together.
+    if (this.paused) {
+      if (this.fontsReady) {
+        this.renderer.clear();
+        this.renderer.drawLanes([]);
+        this.renderer.drawNotes(this.notes);
+      }
+      requestAnimationFrame((t) => this.loop(t));
+      return;
+    }
+
     const dt = this.lastTimestamp
       ? Math.min(0.05, (timestamp - this.lastTimestamp) / 1000)
       : 0;
     this.lastTimestamp = timestamp;
 
     if (this.state === GameState.PLAYING) {
+      // 0. RESULT LINGER auto-advance — the result card is HELD for the dwell so
+      //    the player can read it. When the dwell elapses we end the linger
+      //    (same path as a tap-to-continue), so the next phrase loads. This is
+      //    what makes the linger a DWELL, not a permanent stop.
+      if (this.lingering && timestamp > this.nextSpawnTime) {
+        this.continueFromResult();
+      }
+
       // 1. ROUND CADENCE — the whole chart is laid out by buildChart(); the loop
       //    only gates loading the NEXT round after the current one resolves +
-      //    clears. No per-word spawning.
+      //    clears. No per-word spawning. While the result LINGER is held we do
+      //    NOT load the next round (the player is reading the result card).
       if (!this.round) {
         // No active round (post-resolve gap): start the next one when due.
-        if (timestamp > this.nextSpawnTime) {
+        if (!this.lingering && timestamp > this.nextSpawnTime) {
           this.startRound();
         }
       } else if (
         this.roundResolved &&
         this.notes.every((n) => n.hit || n.missed)
       ) {
-        // Round resolved + board cleared: queue the next round.
-        if (timestamp > this.nextSpawnTime) {
+        // Round resolved + board cleared: queue the next round once the linger
+        // dwell has elapsed (or the player tapped to continue, which sets
+        // nextSpawnTime to now and clears `lingering`).
+        if (!this.lingering && timestamp > this.nextSpawnTime) {
           this.round = null;
           this.startRound();
         }
+      } else if (!this.roundResolved && this.round) {
+        // NO-BRICK WATCHDOG — if the chart is EXHAUSTED (every note has been hit
+        // or has passed/missed) but the phrase never resolved, force-resolve so
+        // the player is never left stuck with empty lanes + a half-filled strip
+        // + no result. This catches any edge the per-note pass-line advance
+        // might miss (e.g. a note removed before its pass-line frame fired).
+        const exhausted =
+          this.notes.length === 0 || this.notes.every((n) => n.hit || n.missed);
+        if (exhausted) this.resolveExhaustedChart();
       }
 
       // 2. PHYSICS — delta-timed falling motion (the hero). Chart notes derive
@@ -773,6 +972,9 @@ export class Game {
     this.isRunning = false;
     this.offStackConfigChange?.();
     this.resizeObserver?.disconnect();
+    for (const off of this.visibilityHandlers) off();
+    this.visibilityHandlers = [];
+    this.clearContinueTap();
     this.inputManager.dispose();
     this.effects.dispose();
     this.audio.dispose();
