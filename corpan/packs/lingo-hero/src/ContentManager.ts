@@ -37,7 +37,13 @@ export class ContentManager {
     return { target, distractors };
   }
 
-  speak(text: string, lang: string) {
+  /**
+   * Speak RAW text in the given language. `rate` is accepted for signature
+   * symmetry with the host stack config; the current HostApi.speak takes
+   * (lang, text) and reads rate from its own stack config, so rate is a
+   * forward-compat hint here (host applies its configured rate).
+   */
+  speak(text: string, lang: string, _rate?: number) {
     this.hostApi.speak(lang, text);
   }
 }

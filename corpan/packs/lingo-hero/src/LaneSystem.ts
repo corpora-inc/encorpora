@@ -1,12 +1,10 @@
 import { LaneIndex, Note } from "./types";
 
 export class LaneSystem {
-  private lanes: number = 3;
   private laneWidth: number = 0;
   private startX: number = 0;
-  
+
   // Logical scale (updated on resize)
-  private canvasWidth: number = 0;
   private canvasHeight: number = 0;
 
   // Visual config
@@ -19,7 +17,6 @@ export class LaneSystem {
   }
 
   resize(width: number, height: number) {
-    this.canvasWidth = width;
     this.canvasHeight = height;
     
     // Make lanes fill width on mobile, but cap on desktop

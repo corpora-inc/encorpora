@@ -1,5 +1,5 @@
 import "./styles.css"
-import type { GameModule, HostApi, StackConfig } from "./sdk/types"
+import type { GameModule, HostApi } from "./sdk/types"
 import { createMockHostApi } from "./sdk/mockHostApi"
 import { Game } from "./Game"
 
@@ -7,10 +7,6 @@ type GlobalScope = typeof globalThis & {
   CorpanGames?: Record<string, GameModule>
   __lingoHero?: { dispose: () => void }
   __corpanHostActive?: boolean
-}
-
-type InitialState = {
-  stackConfig?: StackConfig
 }
 
 const GAME_ID = "lingo-hero"
@@ -27,8 +23,8 @@ const registerGame = () => {
         scope.__lingoHero = undefined
       }
       
-      const instance = new Game(container, hostApi)
-      
+      const instance = new Game(container, hostApi, initialState)
+
       scope.__lingoHero = instance
       return {
         unmount: () => {
