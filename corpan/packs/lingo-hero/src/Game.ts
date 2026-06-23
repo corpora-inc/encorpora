@@ -152,11 +152,10 @@ export class Game {
   }
 
   private getLaneFromX(x: number): LaneIndex | null {
-    const width = this.canvas.clientWidth;
-    const third = width / 3;
-    if (x < third) return LaneIndex.Left;
-    else if (x < third * 2) return LaneIndex.Center;
-    else return LaneIndex.Right;
+    // Use the SAME lane geometry the renderer draws with (centered, capped at
+    // 600px). The old naive width/3 split didn't account for the side margins,
+    // so on wide layouts the lane you tapped wasn't the lane you saw.
+    return this.laneSystem.laneAtX(x);
   }
 
   private handleResize(container: HTMLElement) {
@@ -246,7 +245,9 @@ export class Game {
     this.isWaveActive = true;
 
     try {
-      const { target, distractors } = await this.contentManager.getWaveContent();
+      const { target, distractors } = await this.contentManager.getWaveContent(
+        this.activeLanguage.code
+      );
 
       const indices = [0, 1, 2].sort(() => Math.random() - 0.5);
       const t0 = target.translations[0];

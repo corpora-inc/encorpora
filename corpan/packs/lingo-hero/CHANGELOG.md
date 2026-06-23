@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- **Correct answers were being scored as wrong (core logic).** Wave content had
+  no dedup, so on a small per-language pool the *correct* English could appear on
+  both the target and a distractor — tapping the right answer hit the duplicate
+  and was penalized. Wave content now guarantees one target + distractors with
+  **distinct entries and distinct English answers**.
+- **Tap-lane vs shown-lane mismatch.** Input split the full width into thirds
+  while the board is centered/capped at 600px, so on wide layouts the lane you
+  tapped wasn't the lane you saw. Input now uses the exact board geometry.
+- Hit detection now selects the note *closest* to the strum line (was first in
+  array order).
+
 ### Changed
 - **Playability overhaul — much slower and easier.** Notes now fall over ~7s
   (was ~1.3–2.7s) and movement is delta-timed, so it no longer runs 2× faster on
