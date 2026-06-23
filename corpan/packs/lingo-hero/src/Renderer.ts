@@ -557,27 +557,36 @@ export class Renderer {
       const proximity = clamp01(1 - Math.abs(y - strumY) / (strumY + 1));
       const pulse = 0.5 + 0.5 * Math.sin(now * 0.011 + note.lane * 1.7);
 
+      // UNIFORM, FIXED-SIZE cards across all lanes. Every card carries a SINGLE
+      // target-language word, so the card geometry is constant and the word is
+      // always laid out on ONE line (shrink-to-fit for the rare long token), with
+      // comfortable padding — never wrapped, never clipped.
       const laneW = this.laneSystem.getLaneBounds(0).width;
-      const cardW = laneW * 0.9;
-      // Lay the word out FIRST (wrap to <=2 lines at a readable size) so the card
-      // can grow to fit two lines instead of shrinking text to an unreadable size.
+      const cardW = laneW * 0.88;
+      const cardH = r * 1.5;
       const wordFont = "'Russo One', 'Lingo Sans', system-ui, sans-serif";
-      const layout = note.text
-        ? layoutWord(ctx, note.text, cardW - 24, Math.max(30, r * 0.62), 21, wordFont)
-        : null;
-      const cardH = (layout && layout.lines.length >= 2 ? 2.15 : 1.5) * r;
+      const fontSize = note.text
+        ? fitOneLine(ctx, note.text, cardW - 26, Math.round(r * 0.6), 17, wordFont)
+        : 0;
       const x = cx - cardW / 2;
       const cardY = y - cardH / 2;
       const radius = Math.min(16, cardH * 0.32);
 
+      // The CATCHABLE target card gets the strong bloom; distractor cards read
+      // clearly present but with restrained glow so the eye locks onto the word
+      // to catch (tightened bloom — it never washes out the text).
+      const isTgt = note.isTarget;
+      const glowK = isTgt ? 1 : 0.42;
+
       // --- APPROACH BLOOM: a soft lane-colored glow pad behind the card that
-      //     swells as it nears the strum line (anticipation). Additive. ---
-      if (proximity > 0.02) {
+      //     swells as it nears the strum line (anticipation). Reserved-strong
+      //     for the target lane; muted for distractors. Additive. ---
+      if (proximity > 0.02 && isTgt) {
         ctx.save();
         ctx.globalCompositeOperation = "lighter";
-        const bloomR = cardW * (0.7 + proximity * 0.5);
+        const bloomR = cardW * (0.6 + proximity * 0.42);
         const bg = ctx.createRadialGradient(cx, y, 0, cx, y, bloomR);
-        bg.addColorStop(0, rgba(c, (0.18 + pulse * 0.06) * proximity));
+        bg.addColorStop(0, rgba(c, (0.13 + pulse * 0.04) * proximity));
         bg.addColorStop(1, rgba(c, 0));
         ctx.fillStyle = bg;
         ctx.beginPath();
@@ -588,15 +597,17 @@ export class Renderer {
 
       // --- GLASS CARD BODY ---
       ctx.save();
-      // Outer neon glow on the card edge (scales with proximity).
-      ctx.shadowBlur = 12 + proximity * 20 + pulse * 5;
+      ctx.globalAlpha = isTgt ? 1 : 0.9;
+      // Outer neon glow on the card edge (scales with proximity, tightened so it
+      // never bleeds over the word).
+      ctx.shadowBlur = (8 + proximity * 12 + pulse * 3) * glowK;
       ctx.shadowColor = rgbStr(c);
 
       // Frosted glass fill: vertical gradient from a lifted top to a darker base.
       const glass = ctx.createLinearGradient(0, cardY, 0, cardY + cardH);
-      glass.addColorStop(0, rgba(mix(this.bgBot, c, 0.14), 0.94));
-      glass.addColorStop(0.5, rgba(mix(this.bgMid, c, 0.06), 0.96));
-      glass.addColorStop(1, rgba(this.bgTop, 0.95));
+      glass.addColorStop(0, rgba(mix(this.bgBot, c, isTgt ? 0.14 : 0.06), 0.95));
+      glass.addColorStop(0.5, rgba(mix(this.bgMid, c, 0.05), 0.97));
+      glass.addColorStop(1, rgba(this.bgTop, 0.96));
       ctx.fillStyle = glass;
       roundRectPath(ctx, x, cardY, cardW, cardH, radius);
       ctx.fill();
@@ -604,38 +615,36 @@ export class Renderer {
 
       // Top glass highlight sheen (the "Apple-grade" specular line).
       const sheen = ctx.createLinearGradient(0, cardY, 0, cardY + cardH * 0.5);
-      sheen.addColorStop(0, rgba({ r: 255, g: 255, b: 255 }, 0.16));
+      sheen.addColorStop(0, rgba({ r: 255, g: 255, b: 255 }, isTgt ? 0.16 : 0.1));
       sheen.addColorStop(1, rgba({ r: 255, g: 255, b: 255 }, 0));
       ctx.fillStyle = sheen;
       roundRectPath(ctx, x + 2, cardY + 2, cardW - 4, cardH * 0.5, radius * 0.8);
       ctx.fill();
 
       // Neon border.
-      ctx.strokeStyle = rgba(c, 0.85 + proximity * 0.15);
-      ctx.lineWidth = 2 + proximity * 1.5;
+      ctx.strokeStyle = rgba(c, (isTgt ? 0.8 + proximity * 0.2 : 0.5));
+      ctx.lineWidth = (isTgt ? 2 + proximity * 1.4 : 1.5);
       roundRectPath(ctx, x, cardY, cardW, cardH, radius);
       ctx.stroke();
 
       // Lane-color accent spine on the leading (left) edge.
-      ctx.fillStyle = rgba(c, 0.95);
+      ctx.fillStyle = rgba(c, isTgt ? 0.95 : 0.6);
       roundRectPath(ctx, x, cardY, 6, cardH, [radius, 0, 0, radius]);
       ctx.fill();
       ctx.restore();
 
-      // --- WORD (wrapped, readable) ---
-      if (layout) {
+      // --- WORD (single line, centered, always inside with padding) ---
+      if (fontSize > 0) {
         ctx.save();
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.font = `bold ${layout.fontSize}px ${wordFont}`;
-        ctx.shadowColor = "rgba(0,0,0,0.55)";
+        ctx.font = `bold ${fontSize}px ${wordFont}`;
+        ctx.shadowColor = "rgba(0,0,0,0.6)";
         ctx.shadowBlur = 4;
-        ctx.fillStyle = rgbStr(this.textColor);
-        const lineH = layout.fontSize * 1.14;
-        const startY = y - (lineH * (layout.lines.length - 1)) / 2;
-        for (let li = 0; li < layout.lines.length; li++) {
-          ctx.fillText(layout.lines[li], cx + 3, startY + li * lineH);
-        }
+        ctx.fillStyle = isTgt
+          ? rgbStr(this.textColor)
+          : rgba(this.textColor, 0.82);
+        ctx.fillText(note.text, cx + 3, y);
         ctx.restore();
       }
     }
@@ -647,44 +656,25 @@ export class Renderer {
 // ---------------------------------------------------------------------------
 
 /**
- * Lay a word/phrase out to fit a card: keep it on one line at `baseFont` if it
- * fits; otherwise wrap to TWO balanced lines and only shrink the font as far as
- * `minFont` (so phrases stay readable on mobile instead of shrinking to nothing
- * on a single line — the old behavior). A single un-splittable long token falls
- * back to a shrink-to-fit single line. Returns the lines + the font size to use.
+ * Fit a SINGLE word on ONE line inside a uniform card: use `baseFont` if it
+ * fits within `maxW`; otherwise shrink to fit, floored at `minFont` (the rare
+ * very long token stays on one line at the floor rather than wrapping or
+ * overflowing — every catchable token is a single word, so this stays
+ * comfortably readable). Returns the px font size to use.
  */
-function layoutWord(
+function fitOneLine(
   ctx: CanvasRenderingContext2D,
   text: string,
   maxW: number,
   baseFont: number,
   minFont: number,
   family: string
-): { lines: string[]; fontSize: number } {
-  const widthAt = (s: string, px: number) => {
-    ctx.font = `bold ${px}px ${family}`;
-    return ctx.measureText(s).width;
-  };
-
-  if (widthAt(text, baseFont) <= maxW) return { lines: [text], fontSize: baseFont };
-
-  const words = text.split(/\s+/).filter(Boolean);
-  if (words.length < 2) {
-    // Un-splittable: shrink single line to fit, floored at minFont.
-    const fit = (maxW / widthAt(text, baseFont)) * baseFont;
-    return { lines: [text], fontSize: Math.max(minFont, Math.min(baseFont, fit)) };
-  }
-
-  // Choose the split that minimizes the WIDER of the two lines (balanced wrap).
-  let best = { a: words.slice(0, 1).join(" "), b: words.slice(1).join(" "), wide: Infinity };
-  for (let i = 1; i < words.length; i++) {
-    const a = words.slice(0, i).join(" ");
-    const b = words.slice(i).join(" ");
-    const wide = Math.max(widthAt(a, baseFont), widthAt(b, baseFont));
-    if (wide < best.wide) best = { a, b, wide };
-  }
-  const fit = best.wide <= maxW ? baseFont : (maxW / best.wide) * baseFont;
-  return { lines: [best.a, best.b], fontSize: Math.max(minFont, Math.min(baseFont, fit)) };
+): number {
+  ctx.font = `bold ${baseFont}px ${family}`;
+  const w = ctx.measureText(text).width;
+  if (w <= maxW || w === 0) return baseFont;
+  const fit = (maxW / w) * baseFont;
+  return Math.max(minFont, Math.min(baseFont, fit));
 }
 
 function cssVar(root: HTMLElement | null, name: string): string {

@@ -653,6 +653,110 @@ canvas {
   font-weight: 900;
 }
 
+/* The prompt is a real tappable control ("hear again" = tap the prompt). Reset
+   button chrome so it reads as the glass prompt card, not a system button. */
+.question-box {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: default;
+  font: inherit;
+}
+.question-box.is-tappable {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform var(--na-dur-fast, 140ms) var(--na-ease-snap, ease),
+    box-shadow var(--na-dur-base, 240ms) var(--na-ease-out, ease);
+}
+.question-box.is-tappable::after {
+  /* A tiny "tap to hear" speaker glyph hint, baked into the prompt — NOT a
+     second control. */
+  content: "\1F50A";
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 0.5rem;
+  transform: translateY(-50%);
+  font-size: 0.7em;
+  opacity: 0.5;
+}
+.question-box.is-tappable:hover,
+.question-box.is-tappable:focus-visible {
+  box-shadow:
+    0 14px 36px -16px rgba(0, 0, 0, 0.8),
+    0 0 30px -6px rgba(47, 243, 255, 0.6),
+    0 1px 0 var(--glass-hi) inset;
+}
+.question-box.is-tappable:active {
+  transform: scale(0.985);
+}
+
+/* One clear instruction cue above the prompt. */
+.lh-instruction {
+  margin: 0;
+  font-family: var(--na-font-body);
+  font-weight: 700;
+  font-size: clamp(0.72rem, 2.8vmin, 0.95rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--na-text-dim);
+  opacity: 0.85;
+}
+
+/* The ASSEMBLING target-phrase strip — fills in as words are caught. */
+.lh-assemble {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 8px;
+  max-width: min(94%, 640px);
+  margin-top: 2px;
+}
+.lh-assemble[hidden] {
+  display: none;
+}
+.lh-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4em;
+  min-height: 1.6em;
+  padding: 0.18em 0.5em;
+  border-radius: var(--na-radius-sm, 10px);
+  font-family: var(--na-font-body);
+  font-weight: 800;
+  font-size: clamp(0.85rem, 3.6vmin, 1.15rem);
+  line-height: 1.1;
+}
+.lh-chip.filled {
+  color: var(--na-bg, #07060f);
+  background: linear-gradient(180deg, #fff, var(--na-correct, #7bff7b));
+  box-shadow: 0 0 14px -2px color-mix(in srgb, var(--na-correct) 70%, transparent);
+}
+.lh-chip.empty {
+  min-width: 2.2em;
+  background: color-mix(in srgb, var(--na-text) 10%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--na-text) 22%, transparent);
+}
+.lh-chip.just-in {
+  animation: lh-chip-pop var(--na-dur-base, 240ms) var(--na-ease-snap, ease);
+}
+@keyframes lh-chip-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lh-chip.just-in {
+    animation: none;
+  }
+}
+
 /* Score + combo strip */
 .score-container {
   display: flex;
@@ -734,9 +838,16 @@ canvas {
     transform: scale(1);
   }
 }
+/* Combo is HIDDEN until the player actually has a streak (>0), so the HUD reads
+   calm at the start of a round; it fades in on the first catch. */
+.combo-box {
+  transition: opacity var(--na-dur-base, 240ms) var(--na-ease-out, ease),
+    filter var(--na-dur-base, 240ms) var(--na-ease-out, ease);
+}
 .combo-box.zero {
-  opacity: 0.5;
+  opacity: 0;
   filter: saturate(0.4);
+  pointer-events: none;
 }
 
 /* Score delta flyout */

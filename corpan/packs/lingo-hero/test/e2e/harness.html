@@ -38,7 +38,7 @@
   let k = 0;
   const host = {
     speak() {}, stopSpeech() {},
-    getStackConfig() { return { languages: ["es"], domains: [], levels: [], rate: 1, textSize: "m", showRomanization: true }; },
+    getStackConfig() { return { languages: ["en", "es"], domains: [], levels: [], rate: 1, textSize: "m", showRomanization: true }; },
     onStackConfigChange() { return () => {}; },
     getRandomEntries(n) { const o = []; for (let i = 0; i < n; i++) o.push(ENTRIES[(k++) % ENTRIES.length]); return Promise.resolve(o); },
     getRandomEntry() { return Promise.resolve(ENTRIES[(k++) % ENTRIES.length]); },

@@ -6,6 +6,63 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-23
+
+New mechanic: **Catch the Translation**. The game now teaches by having you
+RECONSTRUCT a translation rather than pick a single answer.
+
+### Changed
+- **Core content model — "Catch the Translation".** The prompt is now the phrase
+  in your **primary** language (`stack.languages[0]` — the language you already
+  know, also the UI language), shown large at the top. The **target** (learning)
+  language is the first stack language that isn't your primary (single-language
+  stacks fall back sensibly). That phrase's translation in the target language
+  falls down the three lanes **word by word, in order**, and you catch each
+  correct next word as it crosses the strum line. On a catch the word is
+  **spoken in the target language** (so you hear the pronunciation), its lane
+  ring flashes, score + combo climb, and the word is revealed in an assembling
+  **target-phrase strip** under the prompt. Reconstructing + hearing the
+  translation, cued by the phrase you already know, is the learning.
+- **Difficulty ramp.** Level 1 (low combo) is pure rhythm — only the correct
+  words fall, in order. As your combo climbs, **distractor** target-language
+  words (real words that are NOT in this phrase) start falling in the other
+  lanes; you catch the right next word and **dodge** the foils (tapping a foil
+  or letting the correct word pass the strum is a miss). Distractor frequency
+  ramps in gently.
+- **Uniform, fixed-size word cards.** Every card now carries a single target
+  word on one line, always inside the card with padding (shrink-to-fit for rare
+  long tokens) — no wrapping, no clipping, consistent geometry across lanes.
+- **Tightened glow / composition.** Strong approach bloom is reserved for the
+  one catchable target card; distractor cards read clearly but with restrained
+  glow so the word you must catch stands out and the bloom never washes out the
+  text.
+
+### Added
+- **Assembling target-phrase strip** under the prompt that fills in (with a pop)
+  as you catch each word, with placeholder slots for the words still to come.
+- **One clear instruction cue** ("Catch the translation") above the prompt.
+
+### Fixed / polish
+- **One audio control only.** Removed the separate replay/speaker button;
+  "hear again" is now **tap the prompt** (it re-speaks the target translation).
+  The mute toggle (top-right) is the single, obvious on/off audio control; Exit
+  stays top-left.
+- **Combo is hidden until you have a streak** (fades in on the first catch) so
+  the HUD reads calm at the start of a round.
+- Hit/miss feedback stays bound to the specific lane/ring (lane-flash + hit pop),
+  and motion is delta-timed so cards visibly fall on any refresh rate.
+- Sharpened the headless gameplay e2e: it now asserts a falling card's `y`
+  **increases** across frames (guards the old "frozen notes" bug), that catching
+  the **correct next** target word scores, and that tapping the mute control does
+  **not** score (no tap-through). Exit-code gating.
+- **Empty-lane taps only break the combo on a genuine whiff** — i.e. when there
+  is a live catchable target in flight. An accidental tap during the dead air
+  between words (no target on the board) is now a no-op rather than a combo
+  reset, so stray presses in the gaps don't punish the player.
+- **Symmetric miss penalty.** Letting the correct word sail past the strum now
+  costs the same points as catching a wrong (distractor) word, not just a combo
+  reset — so missing the real answer is never lower-risk than whiffing a foil.
+
 ## [0.2.2] - 2026-06-23
 
 ### Fixed
