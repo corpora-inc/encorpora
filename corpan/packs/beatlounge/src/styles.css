@@ -953,6 +953,33 @@
 .bl-cmd-btn {
   color: var(--bl-accent);
 }
+/* record-arm: dim when idle, lit red + gently pulsing when armed */
+.bl-record-btn.is-armed {
+  color: var(--bl-error);
+}
+.bl-record-btn.is-armed:hover:not(:disabled) {
+  color: var(--bl-error);
+  background: color-mix(in srgb, var(--bl-error) 16%, transparent);
+}
+.bl-record-btn.is-armed .bl-glyph,
+.bl-record-btn.is-armed svg {
+  animation: bl-record-pulse 1.4s var(--bl-ease) infinite;
+}
+@keyframes bl-record-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bl-record-btn.is-armed .bl-glyph,
+  .bl-record-btn.is-armed svg {
+    animation: none;
+  }
+}
 
 /* ---------------------------------------------------------- Meter */
 .bl-meter {
