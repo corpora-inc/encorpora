@@ -844,5 +844,13 @@
     "installing": "Đang cài đặt…",
     "installFailed": "Không cài được. Kiểm tra kết nối rồi thử lại.",
     "retry": "Thử lại"
+  },
+  "wordPacks": {
+    "header": "Giải thích từ",
+    "intro": "Cài một gói để nhấn giữ bất kỳ từ nào trong Phrase Flip và đọc nghĩa của nó bằng ngôn ngữ của bạn.",
+    "install": "Cài đặt ({{size}})",
+    "installing": "Đang cài đặt…",
+    "installed": "Đã cài đặt",
+    "retry": "Thử lại"
   }
 }

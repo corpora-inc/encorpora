@@ -40,6 +40,7 @@ export function WordExplanationText({
   text,
   lang,
   packId,
+  packZipUrl,
   preferredLangs,
   className,
   style,
@@ -49,6 +50,12 @@ export function WordExplanationText({
   lang: string
   /** The (native→en) word-pack id, or null if no pack covers the user. */
   packId: string | null
+  /** S3 download URL for `packId`, resolved from the word-pack index. The
+   *  JIT install path uses this so word packs install from S3, NOT from the
+   *  main catalog / `web/data/packs.json`. Null when the index doesn't (yet)
+   *  list a pack for the user's pair; install then surfaces a friendly error
+   *  rather than guessing a URL. */
+  packZipUrl: string | null
   /** Stack languages in store order (native first) for native-first lookup. */
   preferredLangs: string[]
   className?: string
@@ -101,7 +108,9 @@ export function WordExplanationText({
       if (!packId) return
       setState({ kind: "installing", word })
       try {
-        await installWordPack(packId)
+        // S3 zipUrl from the word-pack index (dev falls back to the vite-
+        // served in-repo zip inside installWordPack when packZipUrl is null).
+        await installWordPack(packId, packZipUrl ?? undefined)
       } catch {
         setState({ kind: "install-failed", word })
         return
@@ -114,7 +123,7 @@ export function WordExplanationText({
           : { kind: "missing", word },
       )
     },
-    [packId, preferredLangs],
+    [packId, packZipUrl, preferredLangs],
   )
 
   // No pack covers this user (or non-en side): render plain text, fully

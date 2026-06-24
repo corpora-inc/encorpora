@@ -18,7 +18,7 @@ let selectPreferred: (
   preferred: string[],
 ) => WordExplanation | null
 let packIdForNative: (nativeLang: string) => string | null
-let downloadUrlForPack: (packId: string) => string
+let devDownloadUrlForPack: (packId: string) => string
 
 before(async () => {
   const { build } = await import("esbuild")
@@ -38,7 +38,7 @@ before(async () => {
   )
   selectPreferred = mod.selectPreferred
   packIdForNative = mod.packIdForNative
-  downloadUrlForPack = mod.downloadUrlForPack
+  devDownloadUrlForPack = mod.devDownloadUrlForPack
 })
 
 test("selectPreferred picks the native language first", () => {
@@ -78,12 +78,12 @@ test("packIdForNative maps es → wordpan_es_en and is null otherwise", () => {
   assert.equal(packIdForNative("fr"), null)
 })
 
-test("downloadUrlForPack maps the underscore id back to the hyphenated zip", () => {
-  // build with import.meta.env.DEV=false (see before()) → prod CDN URL.
-  // The id is underscore-canonical, but the zip stem is hyphenated so the
-  // installer's filename→id derivation lands back on `wordpan_es_en`.
+test("devDownloadUrlForPack maps the underscore id to the hyphenated dev zip", () => {
+  // Word packs ship from the S3 word-pack index in production; this helper is
+  // only the dev-server (vite `/packs`) fallback. The id is underscore-
+  // canonical; the zip stem is hyphenated.
   assert.equal(
-    downloadUrlForPack("wordpan_es_en"),
-    "https://encorpora.io/corpan/packs/wordpan-es-en.zip",
+    devDownloadUrlForPack("wordpan_es_en"),
+    "/packs/wordpan/wordpan-es-en.zip",
   )
 })

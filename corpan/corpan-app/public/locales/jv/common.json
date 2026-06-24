@@ -844,5 +844,13 @@
     "installing": "Masang…",
     "installFailed": "Ora bisa dipasang. Priksa sambungan lan coba maneh.",
     "retry": "Coba maneh"
+  },
+  "wordPacks": {
+    "header": "Panjelasan tembung",
+    "intro": "Pasang paket banjur penet suwe tembung apa wae ing Phrase Flip lan waca maknane ing basamu.",
+    "install": "Pasang ({{size}})",
+    "installing": "Masang…",
+    "installed": "Wis dipasang",
+    "retry": "Coba maneh"
   }
 }

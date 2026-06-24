@@ -844,5 +844,13 @@
     "installing": "Installing…",
     "installFailed": "Couldn't install. Check your connection and try again.",
     "retry": "Try again"
+  },
+  "wordPacks": {
+    "header": "Word explanations",
+    "intro": "Install a pack to long-press any word in Phrase Flip and read what it means in your language.",
+    "install": "Install ({{size}})",
+    "installing": "Installing…",
+    "installed": "Installed",
+    "retry": "Try again"
   }
 }

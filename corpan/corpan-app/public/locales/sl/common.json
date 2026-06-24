@@ -844,5 +844,13 @@
     "installing": "Nameščanje…",
     "installFailed": "Namestitev ni uspela. Preverite povezavo in poskusite znova.",
     "retry": "Poskusi znova"
+  },
+  "wordPacks": {
+    "header": "Razlage besed",
+    "intro": "Namestite paket, da lahko v Phrase Flip pridržite katero koli besedo in preberete, kaj pomeni v vašem jeziku.",
+    "install": "Namesti ({{size}})",
+    "installing": "Nameščanje…",
+    "installed": "Nameščeno",
+    "retry": "Poskusi znova"
   }
 }

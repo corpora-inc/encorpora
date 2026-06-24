@@ -844,5 +844,13 @@
     "installing": "Inštaluje sa…",
     "installFailed": "Inštalácia zlyhala. Skontrolujte pripojenie a skúste znova.",
     "retry": "Skúsiť znova"
+  },
+  "wordPacks": {
+    "header": "Vysvetlenia slov",
+    "intro": "Nainštalujte balík, aby ste mohli podržať ktorékoľvek slovo v Phrase Flip a prečítať si, čo znamená vo vašom jazyku.",
+    "install": "Nainštalovať ({{size}})",
+    "installing": "Inštaluje sa…",
+    "installed": "Nainštalované",
+    "retry": "Skúsiť znova"
   }
 }

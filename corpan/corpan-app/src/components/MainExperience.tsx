@@ -26,6 +26,7 @@ import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
 import { WordExplanationText } from "@/components/WordExplanationText";
 import { packIdForNative } from "@/util/wordPack";
+import { useWordPackCatalog } from "@/hooks/useWordPackCatalog";
 
 /* ----------------------------- Monetization ----------------------------- */
 
@@ -179,6 +180,7 @@ function TranslationBlock({
     reduceMotion,
     delay,
     wordPackId,
+    wordPackZipUrl,
     preferredLangs,
 }: {
     uiCode: string;
@@ -191,6 +193,9 @@ function TranslationBlock({
     delay: number;
     /** (native→en) word-pack id when long-press explanations cover this text. */
     wordPackId: string | null;
+    /** S3 download URL for `wordPackId`, resolved from the word-pack index;
+     *  null when the index lists no pack for the user's pair. */
+    wordPackZipUrl: string | null;
     /** Stack languages in store order (native first) for native-first lookup. */
     preferredLangs: string[];
 }) {
@@ -225,6 +230,7 @@ function TranslationBlock({
                         text={text}
                         lang={uiCode}
                         packId={wordPackId}
+                        packZipUrl={wordPackZipUrl}
                         preferredLangs={preferredLangs}
                         className="text-center text-2xl md:text-2xl lg:text-3xl mt-1 my-1"
                         style={{ wordBreak: "break-word", maxWidth: "80vw", lineHeight: 1.1 }}
@@ -320,6 +326,15 @@ export function MainExperience() {
     // the feature is a no-op for unsupported natives.
     const nativeLang = languages[0] ?? "en";
     const wordPackId = useMemo(() => packIdForNative(nativeLang), [nativeLang]);
+    // Resolve the S3 download URL for this (native→en) pair from the word-pack
+    // index. The JIT install in the popover uses this — word packs ship from
+    // S3, never from the main catalog. Null until the index is fetched or if it
+    // lists no pack for the pair (install then surfaces a friendly error).
+    const wordPackCatalog = useWordPackCatalog();
+    const wordPackZipUrl = useMemo(
+        () => wordPackCatalog.findForPair(nativeLang, "en")?.zipUrl ?? null,
+        [wordPackCatalog, nativeLang],
+    );
 
     const [currEntry, setCurrEntry] = useState<EntryOut | null>(null);
     const fetchSeqRef = useRef(0);
@@ -707,6 +722,7 @@ export function MainExperience() {
                                     reduceMotion={!!reduceMotion}
                                     delay={idx * 0.035}
                                     wordPackId={uiCode === "en" ? wordPackId : null}
+                                    wordPackZipUrl={uiCode === "en" ? wordPackZipUrl : null}
                                     preferredLangs={languages}
                                 />
                             );

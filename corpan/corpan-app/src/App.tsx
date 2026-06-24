@@ -24,6 +24,7 @@ import { useGamesStore, type InstalledGame } from "@/store/games";
 import { useRecentNativeStore } from "@/store/recentNative";
 import { useCatalogStore } from "@/store/catalog";
 import { usePhrasePackCatalogStore } from "@/store/phrasePackCatalog";
+import { useWordPackCatalogStore } from "@/store/wordPackCatalog";
 import { jitter } from "@/contentPacks/catalogFetch";
 import { useThemeEffect } from "@/hooks/useThemeEffect";
 import { refreshEntitlements, getPlatform, restoreAndSync, getCorpanSubjectId, installPurchaseUpdatedListener } from "@/contentPacks/purchase";
@@ -189,6 +190,7 @@ export default function App() {
   const fetchPhrasePackCatalog = usePhrasePackCatalogStore(
     (s) => s.fetchCatalog,
   );
+  const fetchWordPackCatalog = useWordPackCatalogStore((s) => s.fetchCatalog);
 
   // Fetch catalog and refresh entitlements on mount
   useEffect(() => {
@@ -199,6 +201,11 @@ export default function App() {
     // no PR. Two fetches, two stores — kept independent so a v3 catalog
     // outage can't mask phrase-pack availability and vice versa.
     void fetchPhrasePackCatalog();
+    // Word packs (long-press explanations) ship through their OWN dedicated
+    // S3 index — NOT the main catalog and NOT the phrase-pack catalog. They
+    // never appear on Home; the index only powers Settings discovery + the
+    // Phrase Flip JIT install. Independent store/TTL, same as phrase packs.
+    void fetchWordPackCatalog();
     // Detect platform then refresh IAP entitlements (local, no network)
     getPlatform().then(() => refreshEntitlements()).catch(() => {});
     // Wire the StoreKit Transaction.updates → purchaseUpdated seam so Apple
@@ -220,7 +227,7 @@ export default function App() {
         console.warn("[App] phrase-pack rehydrate failed:", err);
       }
     })();
-  }, [fetchCatalog, fetchPhrasePackCatalog]);
+  }, [fetchCatalog, fetchPhrasePackCatalog, fetchWordPackCatalog]);
 
   // Keep the Home/discovery catalogs fresh while the app stays open. The
   // stores enforce their own TTL + online checks and now revalidate with a
@@ -238,6 +245,7 @@ export default function App() {
       if (!navigator.onLine) return;
       void fetchCatalog();
       void fetchPhrasePackCatalog();
+      void fetchWordPackCatalog();
     };
 
     let timer = 0;
@@ -263,7 +271,7 @@ export default function App() {
       window.removeEventListener("focus", refreshStaleCatalogs);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
-  }, [fetchCatalog, fetchPhrasePackCatalog]);
+  }, [fetchCatalog, fetchPhrasePackCatalog, fetchWordPackCatalog]);
 
   // Re-check entitlements when the app returns to the foreground. Without
   // this, a subscription that lapsed while the app was backgrounded (sandbox

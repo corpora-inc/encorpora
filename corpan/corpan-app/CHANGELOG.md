@@ -7,6 +7,37 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+### Changed
+- **Word-explanation packs ship from a dedicated S3 index, not the main
+  catalog (#477, #478, #479; supersedes #498's catalog registration).** Word
+  packs ("wordpan") are a new kind of artifact that must never appear in the
+  in-app catalog (`catalog-v3.json`) or on Home — they are discovered in
+  Settings and the Phrase Flip long-press popover, and downloaded from a
+  separate CloudFront index (`corpan/word-packs/index.json`), keyed by a
+  (native→target) language pair, mirroring the phrase-pack catalog. New
+  `contentPacks/wordPackCatalog.ts` (typed parse + channel/minAppVersion gating
+  + pair resolver), `store/wordPackCatalog.ts` (5-min-TTL polled store), and
+  `hooks/useWordPackCatalog.ts`. A new word-pack section in Settings lists the
+  packs that explain words in the user's native language and installs them
+  (≈3 MB) from the index `zipUrl`. The Phrase Flip long-press install path now
+  resolves the same index `zipUrl` instead of a `packs.json` entry. The
+  popover/lookup behaviour and tap-to-speak TTS are unchanged. New
+  `wordPacks.*` locale keys (all 54 locales).
+
+  Root-cause fix for the #498 leak: `web/pages/build.js` now excludes
+  `packType: "data"` word packs from `catalog-v3.json` (and they stay out of
+  the v1 catalog and the public packs page). Previously catalog-v3 included
+  every non-`builtin` pack, so `listed: false` did NOT keep the entry off the
+  Home picker — that was the bug. The `wordpan_es_en` `packs.json` entry is
+  kept ONLY as a back-compat / website-landing route (gated `webListed:false`,
+  `v1Listed:false`, `packType:"data"`); it no longer reaches catalog-v3 / Home.
+  No published `voiceId` or version floor changed; no in-field client (≤ 0.19.2,
+  which predates #498) ever discovered this pack via the catalog.
+
+  GitHub Pages no longer publishes the word-pack zip (the #499 "Package
+  Wordpan" + "Copy Wordpan into io/out" steps in `deploy-pages.yml` are
+  reverted); the pack ships from S3.
+
 ### Added
 - **Long-press word explanations in Phrase Flip (#477, #478, #479).** Long-press
   (touch) or right-click / long mouse-press (desktop) any English word in a

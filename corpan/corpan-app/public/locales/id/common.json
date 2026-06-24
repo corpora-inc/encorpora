@@ -844,5 +844,13 @@
     "installing": "Memasang…",
     "installFailed": "Tidak dapat memasang. Periksa koneksi Anda dan coba lagi.",
     "retry": "Coba lagi"
+  },
+  "wordPacks": {
+    "header": "Penjelasan kata",
+    "intro": "Pasang sebuah pack untuk menekan lama kata mana pun di Phrase Flip dan membaca artinya dalam bahasa Anda.",
+    "install": "Pasang ({{size}})",
+    "installing": "Memasang…",
+    "installed": "Terpasang",
+    "retry": "Coba lagi"
   }
 }

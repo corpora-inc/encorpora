@@ -844,5 +844,13 @@
     "installing": "Instalowanie…",
     "installFailed": "Nie udało się zainstalować. Sprawdź połączenie i spróbuj ponownie.",
     "retry": "Spróbuj ponownie"
+  },
+  "wordPacks": {
+    "header": "Objaśnienia słów",
+    "intro": "Zainstaluj pakiet, aby przytrzymać dowolne słowo w Phrase Flip i przeczytać, co znaczy w Twoim języku.",
+    "install": "Zainstaluj ({{size}})",
+    "installing": "Instalowanie…",
+    "installed": "Zainstalowano",
+    "retry": "Spróbuj ponownie"
   }
 }

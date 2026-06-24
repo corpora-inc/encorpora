@@ -299,6 +299,8 @@
     "description": "Long-press any English word in Phrase Flip to read what it means, in Spanish. Ships ~11,757 word explanations (Spanish + English).",
     "status": "prototype",
     "listed": false,
+    "webListed": false,
+    "v1Listed": false,
     "zipUrl": "/corpan/packs/wordpan-es-en.zip",
     "github": "https://github.com/corpora-inc/encorpora/tree/main/corpan/packs/wordpan",
     "minAppVersion": "0.9.0",

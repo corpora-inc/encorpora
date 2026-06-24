@@ -844,5 +844,13 @@
     "installing": "Installeren…",
     "installFailed": "Installeren mislukt. Controleer je verbinding en probeer het opnieuw.",
     "retry": "Opnieuw proberen"
+  },
+  "wordPacks": {
+    "header": "Woorduitleg",
+    "intro": "Installeer een pakket om in Phrase Flip op een woord te drukken en te lezen wat het in jouw taal betekent.",
+    "install": "Installeren ({{size}})",
+    "installing": "Installeren…",
+    "installed": "Geïnstalleerd",
+    "retry": "Opnieuw proberen"
   }
 }

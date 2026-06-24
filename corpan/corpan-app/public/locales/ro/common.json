@@ -844,5 +844,13 @@
     "installing": "Se instalează…",
     "installFailed": "Instalarea a eșuat. Verifică conexiunea și încearcă din nou.",
     "retry": "Încearcă din nou"
+  },
+  "wordPacks": {
+    "header": "Explicații de cuvinte",
+    "intro": "Instalează un pachet ca să ții apăsat orice cuvânt în Phrase Flip și să citești ce înseamnă în limba ta.",
+    "install": "Instalează ({{size}})",
+    "installing": "Se instalează…",
+    "installed": "Instalat",
+    "retry": "Încearcă din nou"
   }
 }

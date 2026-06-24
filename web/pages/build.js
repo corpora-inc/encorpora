@@ -552,7 +552,18 @@ function buildPages(outputDir) {
   // Built-in experiences (Phrase Flip) ship inside the app — they get a website
   // landing page but must NEVER appear in the in-app catalog, or the Home picker
   // would offer to "download" a pack that has no artifact.
-  const catalogV3Packs = packsWithAssets.filter((pack) => pack.builtin !== true).map(pack => {
+  //
+  // Word-explanation packs (`packType: "data"`, e.g. wordpan_es_en) are a
+  // SEPARATE KIND of artifact: they are distributed via the dedicated S3
+  // word-pack index (corpan/word-packs/index.json), discovered in Settings /
+  // the Phrase Flip long-press popover, and must NEVER appear in catalog-v3 /
+  // on Home. Excluding them by type here is the structural fix for the leak
+  // that #498 introduced — `listed: false` alone does NOT keep an entry out of
+  // catalog-v3 (filtering here was builtin-only), which was the bug. Any
+  // remaining packs.json entry is a website-landing / compat route only.
+  const catalogV3Packs = packsWithAssets
+    .filter((pack) => pack.builtin !== true && pack.packType !== 'data')
+    .map(pack => {
     const zipUrl = pack.zipUrl
       ? (pack.zipUrl.startsWith('/') ? `https://encorpora.io${pack.zipUrl}` : pack.zipUrl)
       : `https://encorpora.io/corpan/packs/${pack.id}.zip`;

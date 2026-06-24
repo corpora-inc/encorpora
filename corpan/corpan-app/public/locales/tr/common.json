@@ -844,5 +844,13 @@
     "installing": "Yükleniyor…",
     "installFailed": "Yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.",
     "retry": "Tekrar dene"
+  },
+  "wordPacks": {
+    "header": "Kelime açıklamaları",
+    "intro": "Phrase Flip'te herhangi bir kelimeye uzun basıp anlamını kendi dilinizde okumak için bir paket yükleyin.",
+    "install": "Yükle ({{size}})",
+    "installing": "Yükleniyor…",
+    "installed": "Yüklendi",
+    "retry": "Tekrar dene"
   }
 }

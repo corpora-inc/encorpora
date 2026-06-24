@@ -844,5 +844,13 @@
     "installing": "Instalace…",
     "installFailed": "Instalace se nezdařila. Zkontrolujte připojení a zkuste to znovu.",
     "retry": "Zkusit znovu"
+  },
+  "wordPacks": {
+    "header": "Vysvětlení slov",
+    "intro": "Nainstalujte balíček, abyste mohli podržet libovolné slovo v Phrase Flip a přečíst si, co znamená ve vašem jazyce.",
+    "install": "Nainstalovat ({{size}})",
+    "installing": "Instalace…",
+    "installed": "Nainstalováno",
+    "retry": "Zkusit znovu"
   }
 }

@@ -844,5 +844,13 @@
     "installing": "Ini-install…",
     "installFailed": "Hindi ma-install. Suriin ang koneksyon at subukan muli.",
     "retry": "Subukan muli"
+  },
+  "wordPacks": {
+    "header": "Mga paliwanag sa salita",
+    "intro": "Mag-install ng pack para pindutin nang matagal ang anumang salita sa Phrase Flip at basahin ang kahulugan nito sa iyong wika.",
+    "install": "I-install ({{size}})",
+    "installing": "Ini-install…",
+    "installed": "Naka-install na",
+    "retry": "Subukan muli"
   }
 }
