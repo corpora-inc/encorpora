@@ -3,6 +3,14 @@ import { createJSONStorage, persist } from "zustand/middleware"
 
 // iOS detection removed - no longer needed for performance tuning
 
+// Touch / coarse-pointer devices are where native haptics exist and are
+// expected; default the haptics setting ON there and OFF on desktop. Guarded
+// for non-browser (SSR/test) environments.
+const isTouchDevice =
+  typeof window !== "undefined" &&
+  typeof window.matchMedia === "function" &&
+  window.matchMedia("(pointer: coarse)").matches
+
 export type TuningSettings = {
   // Core gameplay
   autoAdjustDifficulty: boolean
@@ -13,6 +21,10 @@ export type TuningSettings = {
   sfxEnabled: boolean
   musicVolume: number
   sfxVolume: number
+  // Haptics (native iOS/Android via tauri-plugin-haptics; no-op off-device).
+  // Default ON for touch/coarse-pointer devices, OFF elsewhere. A settings UI
+  // can toggle this later via setSetting("hapticsEnabled", ...).
+  hapticsEnabled: boolean
   // Advanced gameplay (baseline values for auto-adjustment)
   baselineSpeed: number // Starting speed before auto-adjustment
   baselineCorrectProb: number // Starting probability of correct answer (0-1, default 0.5)
@@ -85,6 +97,7 @@ const DEFAULT_SETTINGS: TuningSettings = {
   sfxEnabled: true,
   musicVolume: 0.3,
   sfxVolume: 0.5,
+  hapticsEnabled: isTouchDevice, // ON for touch/mobile, OFF on desktop
   // Advanced gameplay baselines
   baselineSpeed: 12,
   baselineCorrectProb: 0.5, // 50% correct at start (1 in 2)
