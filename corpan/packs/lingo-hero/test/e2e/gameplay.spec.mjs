@@ -756,6 +756,109 @@ async function collectRoundTargets(p, wantRounds) {
   await rp.close();
 }
 
+// =============================================================================
+// Issue #463 — SCRIPT-AWARE tokenization + offline glyph rendering.
+// These are the REGRESSION TEETH for the languages the old whitespace-only
+// split left completely UNPLAYABLE. For each target script we drive the real
+// game with REAL phrases and prove: (1) the phrase SEGMENTS into >= 2 catchable
+// units (the old code yielded ZERO units for no-space scripts → bricked round),
+// (2) catching the correct next unit at the strum line SCORES (genuinely
+// playable, not just non-crashing), (3) the note glyphs RENDER (an offscreen
+// script-font render of a unit has real ink — guards the per-script offline
+// font fallback against tofu), and for RTL (ar) the assembling strip is dir=rtl.
+// =============================================================================
+const harnessScript = (lang) => "file://" + join(here, `harness-script.html?lang=${lang}`);
+
+// Offscreen ink count of `text` in `font` — 0 ≈ tofu/blank; >12 = real glyphs.
+async function unitInk(p, text, font) {
+  return p.evaluate(([text, font]) => {
+    const c = document.createElement("canvas");
+    c.width = 256; c.height = 64;
+    const x = c.getContext("2d");
+    x.clearRect(0, 0, c.width, c.height);
+    x.fillStyle = "#fff"; x.textBaseline = "middle"; x.font = `bold 34px ${font}`;
+    x.fillText(text, 4, 32);
+    const d = x.getImageData(0, 0, c.width, c.height).data;
+    let ink = 0;
+    for (let i = 3; i < d.length; i += 4) if (d[i] > 24) ink++;
+    return ink;
+  }, [text, font]);
+}
+
+// Acceptance gate (zh/ja/th) + RTL/Indic must-also-work (ar/hi).
+const SCRIPT_CASES = [
+  { lang: "zh", font: "'Noto Sans CJK SC', sans-serif", rtl: false },
+  { lang: "ja", font: "'Noto Sans CJK JP', sans-serif", rtl: false },
+  { lang: "th", font: "'Noto Sans Thai', 'Noto Looped Thai', sans-serif", rtl: false },
+  { lang: "ar", font: "'Noto Sans Arabic', sans-serif", rtl: true },
+  { lang: "hi", font: "'Noto Sans Devanagari', 'Lohit Devanagari', sans-serif", rtl: false },
+];
+
+for (const tc of SCRIPT_CASES) {
+  const sp = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+  sp.on("pageerror", (e) => fail(`pageerror(${tc.lang}): ${e.message}`));
+  await sp.goto(harnessScript(tc.lang));
+  await sp.waitForFunction(() => !!window.__lingoHero, { timeout: 10000 });
+  await sp.evaluate(() => document.fonts && document.fonts.ready);
+  await sp.evaluate(() => {
+    const b = [...document.querySelectorAll("button")].find((x) => /practice/i.test(x.textContent || ""));
+    if (b) b.click(); else window.__lingoHero.startGame("PRACTICE");
+  });
+  await sp.waitForFunction(() => (window.__lingoHero.notes || []).length > 0, { timeout: 10000 });
+
+  // (1) SEGMENT — >= 2 units for a multi-word phrase (the core #463 fix).
+  const r = await sp.evaluate(() => {
+    const rd = window.__lingoHero.round;
+    return rd ? { lang: rd.targetLang, text: rd.targetText, words: rd.targetWords } : null;
+  });
+  if (!r) fail(`#463[${tc.lang}]: no round produced`);
+  else {
+    if (r.lang !== tc.lang) fail(`#463[${tc.lang}]: target lang was '${r.lang}'`);
+    if (!Array.isArray(r.words) || r.words.length < 2)
+      fail(`#463[${tc.lang}]: phrase did NOT segment into >=2 catchable units (got ${JSON.stringify(r.words)} for "${r.text}") — the old whitespace split bricked this script`);
+    else console.log(`OK: #463[${tc.lang}] segmented "${r.text}" into ${r.words.length} units ${JSON.stringify(r.words)}`);
+
+    // (3) RENDER — the first unit has real script ink (not tofu/blank).
+    const ink = await unitInk(sp, r.words[0], tc.font);
+    if (!(ink > 12)) fail(`#463[${tc.lang}]: unit "${r.words[0]}" rendered with ~no ink in its script font (tofu): ink=${ink}`);
+    else console.log(`OK: #463[${tc.lang}] unit "${r.words[0]}" renders real glyphs (${ink}px ink)`);
+
+    // RTL strip direction (ar).
+    if (tc.rtl) {
+      const dir = await sp.evaluate(() => {
+        const s = document.querySelector(".lh-assemble");
+        return s ? (s.getAttribute("dir") || getComputedStyle(s).direction) : null;
+      });
+      if (dir !== "rtl") fail(`#463[${tc.lang}]: assembling strip not RTL (dir=${dir})`);
+      else console.log(`OK: #463[${tc.lang}] assembling strip dir=rtl`);
+    }
+
+    // (2) PLAY — catching the correct next unit at the strum line SCORES.
+    let scored = false;
+    const before = await sp.evaluate(() => window.__lingoHero.score);
+    const dl = Date.now() + 12000;
+    while (Date.now() < dl && !scored) {
+      const st = await sp.evaluate(() => {
+        const g = window.__lingoHero, ls = g.laneSystem, rr = g.canvas.getBoundingClientRect();
+        const strumY = ls.getStrumLineY();
+        const t = (g.notes || []).find((n) => n.isTarget && n.seqIndex === g.caughtCount && !n.hit && !n.missed);
+        return t && t.y >= strumY - 46 && t.y <= strumY + 46
+          ? { click: { x: rr.left + ls.getLaneX(t.lane), y: rr.top + strumY } } : { click: null };
+      });
+      if (st.click) {
+        await sp.mouse.click(st.click.x, st.click.y);
+        await sp.waitForTimeout(90);
+        if ((await sp.evaluate(() => window.__lingoHero.score)) > before) scored = true;
+      }
+      await sp.waitForTimeout(70);
+    }
+    if (!scored) fail(`#463[${tc.lang}]: could NOT catch a unit to score — script is not playable`);
+    else console.log(`OK: #463[${tc.lang}] catching the correct unit SCORED (playable)`);
+  }
+  await sp.screenshot({ path: join(outDir, `script-${tc.lang}.png`) });
+  await sp.close();
+}
+
 // --- iOS AUDIO UNLOCK WIRING (issue #428). -----------------------------------
 // We CANNOT verify real iOS audio OUTPUT headlessly, so we verify the WIRING:
 // the AudioContext must NOT be running before any user gesture (it is lazy — no

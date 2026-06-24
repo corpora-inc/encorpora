@@ -1,0 +1,105 @@
+<!doctype html>
+<!--
+  Script-aware target-language harness (issue #463). The stack is
+  ["en", TARGET] where TARGET is taken from ?lang=zh|ja|th|ar|he|hi (default zh),
+  so the prompt is English (known) and the catchable TARGET is a real no-space /
+  RTL / Indic phrase. Every entry carries en + the target language, with REAL
+  phrases in each script. `host.speak` records the (lang, text) it is asked to
+  speak so the test can prove TTS gets the RAW target unit. Run `npm run build`.
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../dist/app.css" />
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #07060f; }
+  #host { position: static; margin: 90px 0 0 70px; width: 360px; height: 720px; }
+</style>
+</head>
+<body>
+<div id="host"></div>
+<script>window.__corpanHostActive = true;</script>
+<script src="../../dist/app.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const LANG = params.get("lang") || "zh";
+
+  // REAL phrases per script. [en, target]. Multiple rows so the distractor pool
+  // is populated and we can sample several rounds.
+  const BANK = {
+    zh: [
+      ["I love learning Chinese", "我爱学习中文"],
+      ["good morning", "早上好"],
+      ["thank you very much", "非常感谢你"],
+      ["where is the station", "车站在哪里"],
+      ["the weather is nice today", "今天天气很好"],
+      ["I would like a coffee", "我想要一杯咖啡"],
+    ],
+    ja: [
+      ["I study Japanese", "私は日本語を勉強します"],
+      ["good morning", "おはようございます"],
+      ["thank you very much", "どうもありがとうございます"],
+      ["where is the station", "駅はどこですか"],
+      ["the weather is nice today", "今日はいい天気です"],
+      ["I would like a coffee", "コーヒーをください"],
+    ],
+    th: [
+      ["I love learning Thai", "ฉันรักการเรียนภาษาไทย"],
+      ["good morning", "สวัสดีตอนเช้า"],
+      ["thank you very much", "ขอบคุณมากครับ"],
+      ["where is the station", "สถานีอยู่ที่ไหน"],
+      ["the weather is nice today", "วันนี้อากาศดี"],
+      ["I would like a coffee", "ฉันอยากได้กาแฟ"],
+    ],
+    ar: [
+      ["I love learning Arabic", "أنا أحب تعلم اللغة العربية"],
+      ["good morning", "صباح الخير"],
+      ["thank you very much", "شكرا جزيلا لك"],
+      ["where is the station", "أين المحطة"],
+      ["the weather is nice today", "الطقس جميل اليوم"],
+      ["I would like a coffee", "أريد فنجان قهوة"],
+    ],
+    he: [
+      ["I love learning Hebrew", "אני אוהב ללמוד עברית"],
+      ["good morning", "בוקר טוב"],
+      ["thank you very much", "תודה רבה לך"],
+      ["where is the station", "איפה התחנה"],
+      ["the weather is nice today", "מזג האוויר נחמד היום"],
+      ["I would like a coffee", "אני רוצה כוס קפה"],
+    ],
+    hi: [
+      ["I love learning Hindi", "मुझे हिंदी सीखना पसंद है"],
+      ["good morning", "सुप्रभात मित्र"],
+      ["thank you very much", "आपका बहुत बहुत धन्यवाद"],
+      ["where is the station", "स्टेशन कहाँ है"],
+      ["the weather is nice today", "आज मौसम अच्छा है"],
+      ["I would like a coffee", "मुझे एक कॉफ़ी चाहिए"],
+    ],
+  };
+
+  const ROWS = BANK[LANG] || BANK.zh;
+  const ENTRIES = ROWS.map(([en, tgt], i) => ({
+    entry_id: i + 1, level: "A1", domains: ["travel"],
+    translations: [
+      { language_code: "en", text: en },
+      { language_code: LANG, text: tgt },
+    ],
+  }));
+
+  let k = 0;
+  window.__spoken = []; // {lang, text} log so the test can verify RAW target TTS.
+  const host = {
+    speak(lang, text) { window.__spoken.push({ lang, text }); },
+    stopSpeech() {},
+    getStackConfig() {
+      return { languages: ["en", LANG], domains: [], levels: [], rate: 1, textSize: "m", showRomanization: false };
+    },
+    onStackConfigChange() { return () => {}; },
+    getRandomEntries(n) { const o = []; for (let i = 0; i < n; i++) o.push(ENTRIES[(k++) % ENTRIES.length]); return Promise.resolve(o); },
+    getRandomEntry() { return Promise.resolve(ENTRIES[(k++) % ENTRIES.length]); },
+    isMock: true,
+  };
+  window.CorpanGames.lingo_hero.mount(document.getElementById("host"), host);
+</script>
+</body>
+</html>

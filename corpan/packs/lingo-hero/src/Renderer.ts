@@ -1,5 +1,6 @@
 import { LaneIndex, Note } from "./types";
 import { LaneSystem } from "./LaneSystem";
+import { scriptFontStack } from "./segment";
 import {
   getBoardState,
   tickBoardState,
@@ -66,6 +67,12 @@ export class Renderer {
   // Scrolling phase for the synthwave floor grid (advances with energy).
   private gridScroll = 0;
 
+  // Per-script canvas font stack for the falling note cards (#463). Defaults to
+  // the Latin display face; Game calls setActiveLang() so CJK/Thai/Arabic/etc.
+  // get an on-device system font that actually carries the script (no tofu),
+  // fully offline. See src/segment.ts (scriptFontStack).
+  private wordFontStack = "'Russo One', 'Lingo Sans', system-ui, sans-serif";
+
   constructor(private canvas: HTMLCanvasElement, private laneSystem: LaneSystem) {
     this.ctx = canvas.getContext("2d")!;
     this.ctx.textAlign = "center";
@@ -93,6 +100,17 @@ export class Renderer {
     const width = parseFloat(this.canvas.style.width);
     const height = parseFloat(this.canvas.style.height);
     this.ctx.clearRect(0, 0, width, height);
+  }
+
+  /**
+   * Set the active TARGET language so the note cards use a font stack that
+   * carries that language's script (#463). Latin keeps the branded display
+   * face; non-Latin scripts append on-device system fonts so glyphs render
+   * instead of tofu — all offline. Game calls this whenever the round's target
+   * language changes.
+   */
+  setActiveLang(lang: string): void {
+    this.wordFontStack = scriptFontStack(lang);
   }
 
   // -------------------------------------------------------------------------
@@ -621,7 +639,7 @@ export class Renderer {
       const laneW = this.laneSystem.getLaneBounds(0).width;
       const cardW = laneW * 0.88;
       const cardH = r * 1.5;
-      const wordFont = "'Russo One', 'Lingo Sans', system-ui, sans-serif";
+      const wordFont = this.wordFontStack;
       const fontSize = note.text
         ? fitOneLine(ctx, note.text, cardW - 26, Math.round(r * 0.6), 17, wordFont)
         : 0;

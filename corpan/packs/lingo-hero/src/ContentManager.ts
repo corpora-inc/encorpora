@@ -1,4 +1,5 @@
 import { HostApi, EntryOut } from "./sdk/types";
+import { segmentPhrase } from "./segment";
 
 /**
  * WordSelector — the injection point that lets the learning stream bias round
@@ -74,14 +75,19 @@ export interface Round {
   distractorWords: string[];
 }
 
-/** Split a phrase into display tokens. Splits on whitespace; keeps punctuation
- *  attached to the word it trails (so "café," stays one catchable token). */
-function tokenize(text: string): string[] {
-  return text
-    .trim()
-    .split(/\s+/)
-    .map((w) => w.trim())
-    .filter(Boolean);
+/**
+ * Split a phrase into ORDERED catchable units, SCRIPT-AWARE (issue #463).
+ *
+ * `lang` is the TARGET language: a whitespace split only works for space-
+ * delimited scripts and yields ZERO units for no-space scripts (zh/ja/th),
+ * which is why those were completely unplayable. `segmentPhrase` uses the
+ * built-in offline `Intl.Segmenter` to produce meaningful units per script
+ * (CJK words / per-hanzi, Thai words, Indic words, space-split for Latin),
+ * keeping punctuation attached for Latin and never splitting grapheme
+ * clusters. See src/segment.ts (shared with beatlounge #465).
+ */
+function tokenize(text: string, lang: string): string[] {
+  return segmentPhrase(text, lang);
 }
 
 /** Strip surrounding punctuation for dedup/comparison (keeps inner apostrophes). */
@@ -234,7 +240,7 @@ export class ContentManager {
       .find((t) => t.language_code === target)
       ?.romanization?.trim();
 
-    const targetWords = tokenize(targetText);
+    const targetWords = tokenize(targetText, target);
 
     // Distractor pool: real target-language words from OTHER entries, not in the
     // sequence. Order biased by the optional selector weight.
@@ -252,7 +258,7 @@ export class ContentManager {
     for (const e of distractorSources) {
       const t = this.transIn(e, target);
       if (!t) continue;
-      for (const w of tokenize(t)) {
+      for (const w of tokenize(t, target)) {
         const key = normWord(w);
         if (!key || seqNorms.has(key) || seenDistractor.has(key)) continue;
         seenDistractor.add(key);

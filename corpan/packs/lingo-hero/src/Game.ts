@@ -175,6 +175,7 @@ export class Game {
         this.stackConfig = next;
         this.activeLanguage = this.resolveActiveLanguage(next);
         this.hud?.applyLanguage(this.activeLanguage);
+        this.renderer.setActiveLang(this.activeLanguage.code);
       });
     }
 
@@ -204,6 +205,7 @@ export class Game {
       this.progression
     );
     this.hud.applyLanguage(this.activeLanguage);
+    this.renderer.setActiveLang(this.activeLanguage.code);
     // #460 — whenever the prompt (re-)fits (per round, on resize, and crucially
     // when the heavy display font swaps in and reflows the phrase taller), keep
     // the spawn play-top in sync so falling tiles never cover the prompt's last
@@ -539,6 +541,7 @@ export class Game {
         isRTL: RTL_LANGS.has(round.targetLang),
       };
       this.hud.applyLanguage(this.activeLanguage);
+      this.renderer.setActiveLang(this.activeLanguage.code);
     }
 
     this.currentWord = {
