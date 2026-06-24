@@ -660,16 +660,45 @@ def translate_entry_batch(
     ]
 
     print(f"{messages}")
+    # Do NOT swallow the LLM error: a failed call must propagate, never fall
+    # through to an unbound/partial `result` (that masked the real failure with
+    # an UnboundLocalError and could persist garbage). Fail loud.
     try:
         result = llm.get_data_completion(messages, TranslationResponse)
     except Exception as e:
-        print(f"LLM translation error: {e}")
-        import traceback
-
-        traceback.print_exc()
+        raise RuntimeError(
+            f"LLM translation failed for language {lang_code} "
+            f"({len(entries)} entries): {e}"
+        ) from e
 
     print("RESULT:")
     print(result.translations)
+
+    # Reconcile-and-raise: the LLM must return exactly one translation per
+    # requested entry id (correct count AND correct ids). A short / garbled /
+    # misaligned response must fail loud, never silently bulk_create a partial
+    # or wrong-id set into the shipped DB. Mirrors the guard in
+    # cor/utils/llm_source.py:translate_source_to_english_batch.
+    requested_ids = [entry_id for entry_id, _ in entries]
+    requested_set = set(requested_ids)
+    returned_ids = [item.entry_id for item in result.translations]
+    returned_set = set(returned_ids)
+
+    missing = sorted(i for i in requested_set if i not in returned_set)
+    unknown = sorted(
+        i for i in returned_set if i is not None and i not in requested_set
+    )
+    has_null = any(i is None for i in returned_ids)
+    has_dupes = len(returned_ids) != len(returned_set)
+
+    if missing or unknown or has_null or has_dupes:
+        raise ValueError(
+            "Incomplete/misaligned translation batch for language "
+            f"{lang_code}: requested {len(requested_set)} entries, "
+            f"got {len(result.translations)} translations. "
+            f"missing_ids={missing} unknown_ids={unknown} "
+            f"null_ids={has_null} duplicate_ids={has_dupes}"
+        )
 
     objs = [
         Translation(
