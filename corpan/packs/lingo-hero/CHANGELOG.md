@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.10] - 2026-06-24
+
+THE actual comma-truncation fix (#460). The prompt was being chopped at the
+first comma by `Game.cleanPrompt()` — `if (len > 28 && includes(",")) clean =
+clean.split(",")[0]` — so "I dropped an egg, and the floor got slippery" rendered
+as "I dropped an egg". It was a CONTENT truncation, not CSS/layout: 0.4.3/0.4.6/
+0.4.8 all chased the wrong layer, and the repro harness injected the full phrase
+straight into `setQuestion` (bypassing `cleanPrompt`), so it never reproduced.
+Removed the truncation — the prompt always keeps the full phrase and wraps/auto-
+fits. Added an e2e assertion against the real `cleanPrompt` path. Preview channel.
+
 ## [0.4.9] - 2026-06-24
 
 Script-aware tokenization + offline glyph rendering — the correctness fix that

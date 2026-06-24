@@ -49,6 +49,27 @@ await page.waitForFunction(() => !!window.__lingoHero, { timeout: 10000 });
 await page.waitForTimeout(300);
 await page.screenshot({ path: join(outDir, "menu.png") });
 
+// #460/#467 — REGRESSION: the prompt MUST NOT be truncated at a comma. The real
+// game runs the primary-language phrase through cleanPrompt() before setQuestion;
+// it used to chop everything after the first comma on phrases >28 chars, dropping
+// half of any real sentence (the operator's recurring "comma truncation" that
+// three CSS "fixes" + a setQuestion-injecting harness all missed). Test the
+// ACTUAL cleanPrompt path, not an injected string.
+{
+  const longComma = "I dropped an egg, and the floor got slippery on the kitchen tiles";
+  const cleaned = await page.evaluate(
+    (p) => window.__lingoHero.cleanPrompt(p),
+    longComma
+  );
+  if (!cleaned.includes("slippery") || !cleaned.includes("floor")) {
+    fail(`cleanPrompt TRUNCATED a comma phrase — got "${cleaned}" (the post-comma clause is missing)`);
+  }
+  if (!cleaned.includes(",")) {
+    fail(`cleanPrompt dropped the comma/second clause — got "${cleaned}"`);
+  }
+  console.log("OK cleanPrompt keeps the full comma phrase");
+}
+
 const read = () => page.evaluate(() => {
   const g = window.__lingoHero, ls = g.laneSystem, r = g.canvas.getBoundingClientRect();
   return {

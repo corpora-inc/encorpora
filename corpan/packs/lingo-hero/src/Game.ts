@@ -477,18 +477,22 @@ export class Game {
   }
 
   /**
-   * Clean a phrase for DISPLAY at the prompt. Strips parenthetical glosses and,
-   * for long comma-listed glosses, keeps the first sense. The TARGET words are
-   * NOT cleaned this way (they fall verbatim so the assembled translation is
-   * faithful), only the primary-language prompt label.
+   * Clean a phrase for DISPLAY at the prompt. Strips parenthetical glosses and
+   * capitalizes — and ALWAYS keeps the FULL phrase. The prompt wraps + auto-fits
+   * (Hud.fitPrompt), so a long, comma-containing sentence shows in full.
+   *
+   * We used to chop everything after the first comma on phrases >28 chars
+   * (`clean.split(",")[0]`). That silently dropped half of any real sentence —
+   * e.g. "I dropped an egg, and the floor got slippery" rendered as just
+   * "I dropped an egg". That was the operator's recurring "comma truncation"
+   * (mis-diagnosed as a CSS/layout clip three times; it was here all along).
+   * NEVER truncate the prompt. The TARGET words are NOT cleaned this way (they
+   * fall verbatim so the assembled translation is faithful).
    */
   private cleanPrompt(text: string): string {
-    let clean = text.replace(/\s*\(.*?\)\s*/g, "").trim();
-    if (clean.length > 28 && clean.includes(",")) {
-      clean = clean.split(",")[0].trim();
-    }
+    const clean = text.replace(/\s*\(.*?\)\s*/g, "").trim();
     if (clean.length > 0 && /^[a-z]/.test(clean)) {
-      clean = clean.charAt(0).toUpperCase() + clean.slice(1);
+      return clean.charAt(0).toUpperCase() + clean.slice(1);
     }
     return clean;
   }
