@@ -10,6 +10,18 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.6] - 2026-06-24
+
+### Fixed
+- **Narration now pauses behind the Corpán Plus paywall (#436).** When the Plus
+  paywall (or any host blocking overlay) opened — e.g. at the end of a free
+  preview — the reader kept streaming narration audio behind the modal. The
+  shared reader shell now listens for the host's generic `corpan:host-pause` /
+  `corpan:host-resume` window events and pauses/resumes playback. The reader
+  only auto-resumes the pause IT made for the host, so a manual pause taken
+  while the overlay is up is never overridden; an explicit user play/pause also
+  clears the host-pause flag. No audio, alignment, or sync changed.
+
 ## [0.7.5] - 2026-06-24
 
 ### Fixed

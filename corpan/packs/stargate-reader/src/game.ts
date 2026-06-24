@@ -118,6 +118,10 @@ export function createStargateReader(
   let mediaAnchor: MediaSessionAnchor | null = null
   let playInFlight = false
   let desiredPlaying = false
+  // True while a host blocking overlay (e.g. the Plus paywall) has paused us.
+  // We only auto-resume if WE paused for the host, so a user's manual pause
+  // taken while the overlay is up is never overridden on host-resume.
+  let hostPaused = false
   let playRequestSeq = 0
   let mediaArtworkUrl: string | undefined
   let lastMediaSessionSyncAt = 0
@@ -477,6 +481,22 @@ export function createStargateReader(
     stopBackgroundTimers()
     if (document.hidden) backgroundedAt = 0
     tracePlayback("doPause:done", { requestId }, true)
+  }
+
+  /** Pause/resume for a host blocking overlay (Plus paywall). On pause, only
+   *  act if we're actually playing, and remember that the host paused us. On
+   *  resume, only resume if WE paused for the host (never override the user's
+   *  own manual pause). */
+  function setPlaybackPaused(paused: boolean) {
+    if (paused) {
+      if (!isPlaying && !desiredPlaying) return
+      hostPaused = true
+      doPause()
+    } else {
+      if (!hostPaused) return
+      hostPaused = false
+      void doPlay()
+    }
   }
 
   // Module-level state for language/book switching
@@ -858,6 +878,9 @@ export function createStargateReader(
     lastRemotePlayPauseCmd = cmd
     lastRemotePlayPauseAt = now
     tracePlayback("cmd:dispatch", { cmd, source }, true)
+    // Any explicit play/pause command means the host-overlay pause is no longer
+    // ours to manage — drop the flag so host-resume can't override the user.
+    hostPaused = false
     if (cmd === "play") {
       void doPlay()
       return
@@ -889,10 +912,13 @@ export function createStargateReader(
   }
 
   transport.onPlay(() => {
+    // User-driven play overrides any host-overlay pause we were holding.
+    hostPaused = false
     void doPlay()
   })
 
   transport.onPause(() => {
+    hostPaused = false
     doPause()
   })
 
@@ -1792,6 +1818,8 @@ export function createStargateReader(
     persistBookmark,
     /** Whether audio is currently playing */
     isPlaying: () => isPlaying,
+    /** Pause/resume for a host blocking overlay (e.g. Plus paywall) */
+    setPlaybackPaused,
     /** Get display settings DrawerSectionDef for injection into command drawer */
     getDisplaySection(): DrawerSectionDef {
       return {

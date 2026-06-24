@@ -8,6 +8,16 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Paywall pauses the active pack/reader (#436).** When the Corpán Plus
+  paywall opens over a running pack or reader, the host now dispatches a generic
+  `corpan:host-pause` window event (and `corpan:host-resume` when it closes),
+  following the `corpan:host-dispose` convention. This is fired once at the
+  paywall store's open/close chokepoint on a genuine closed↔open transition, so
+  it never double-fires regardless of which surface triggered it (reader
+  end-of-preview, Library "Unlock with Plus", engagement moments). Listeners
+  already shipped: hover-runner (#459) pauses its game loop; the shared reader
+  shell pauses narration audio (stargate/earthgate); lingo-hero's listener is a
+  separate follow-up. No user-facing strings; no locale keys added.
 - **New "Semi large" text-size option.** Adds a size between Medium and Large
   (`1.1rem`, CSS class `text-semi-large`) to the text-size picker, and makes it
   the default for new profiles so default reading text is a touch larger. New
