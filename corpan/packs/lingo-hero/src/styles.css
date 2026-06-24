@@ -623,14 +623,32 @@ canvas {
   font-size: 0.8rem;
   letter-spacing: -1px;
 }
+/* #490: the visible pill stays a small/unobtrusive 36px, but the TOUCH target is
+   expanded to ~44px (Apple HIG / WCAG 2.5.5 comfortable minimum) via an
+   invisible inset-overflowing hit area so the glyph doesn't grow but the finger
+   has room. pointer-events flow through it to the button. */
+.lh-chrome-btn::before {
+  content: "";
+  position: absolute;
+  /* (44 - 36) / 2 = 4px of grab room on every side. */
+  inset: -4px;
+  border-radius: inherit;
+}
 .lh-chrome-btn:hover,
 .lh-chrome-btn:focus-visible {
   opacity: 1;
   border-color: var(--na-text);
 }
-.lh-chrome-btn:active {
+/* #490: a clearly visible PRESSED/active state — the corner pill was previously
+   only scaling on :active, which is easy to miss on a small low-opacity glyph.
+   Add an accent ring + lift the fill so a tap reads as registered. */
+.lh-chrome-btn:active,
+.lh-chrome-btn.is-pressed {
   opacity: 1;
   transform: scale(0.92);
+  border-color: var(--na-accent, var(--na-text));
+  background: color-mix(in srgb, var(--na-accent, var(--na-text)) 28%, var(--na-glass-bg));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--na-accent, var(--na-text)) 45%, transparent);
 }
 /* OFF the playfield (menu / game-over): the pause control has no meaning, so it
    is fully removed (those screens own their own navigation). */
@@ -697,6 +715,21 @@ canvas {
   font-size: clamp(1.2rem, 5vmin, 1.6rem);
   color: var(--ink);
   letter-spacing: 0.02em;
+}
+
+/* #490: TERMINAL-ACTION sheet rows (Resume / Mute / Exit). These ACT in place
+   rather than drilling into a submenu, so they carry NO trailing `›` chevron
+   (the chevron is the menu's "go deeper" affordance). With the chevron gone, the
+   icon + label center as a balanced, obviously-tappable action instead of
+   hanging left with an empty right gutter where the chevron used to push them. */
+.menu-btn.terminal-action {
+  justify-content: center;
+}
+.menu-btn.terminal-action .btn-icon {
+  flex: 0 0 auto;
+}
+.menu-btn.terminal-action .btn-labels {
+  flex: 0 1 auto;
 }
 @keyframes lh-sheet-in {
   from {

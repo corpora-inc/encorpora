@@ -38,11 +38,6 @@ export function setDefaultWordSelector(selector: WordSelector | null): void {
   defaultSelector = selector;
 }
 
-/** Read the current default selector (mostly for tests / introspection). */
-export function getDefaultWordSelector(): WordSelector | null {
-  return defaultSelector;
-}
-
 /**
  * A single "Catch the Translation" round.
  *

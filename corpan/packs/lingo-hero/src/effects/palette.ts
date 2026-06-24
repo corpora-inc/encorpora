@@ -31,11 +31,6 @@ export function laneRgb(lane: LaneIndex | number): Rgb {
   return LANE_RGB[lane] ?? WHITE;
 }
 
-export function laneHex(lane: LaneIndex | number): string {
-  const c = laneRgb(lane);
-  return rgbToHex(c);
-}
-
 export function rgbToHex(c: Rgb): string {
   return `rgb(${c.r | 0},${c.g | 0},${c.b | 0})`;
 }
