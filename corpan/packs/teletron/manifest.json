@@ -2,7 +2,7 @@
   "id": "teletron",
   "channel": "preview",
   "name": "Teletron",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "entry": "dist/app.js",
   "entryType": "script",
   "styles": [

@@ -15,7 +15,14 @@ import {
 } from "@shared/moderation"
 import type { HostApi, LlmChatMessage, LlmChatOptions } from "../../corpan-city/src/npc/hostTypes"
 
-const MAX_TEXT = 280
+// Reply-chip labels are tap targets in the composer; a hard cap keeps them
+// button-sized. This is a *display affordance* on short suggestions, never a
+// cap on the message the recipient reads or hears.
+const MAX_REPLY_LABEL = 80
+// Defense-in-depth length guard for the safe-relay pipeline's on-device LLM
+// output. Generous enough to hold a full chat message plus the expansion a
+// translation can add, so the recipient never gets a mid-word chop.
+const MAX_RELAY_TEXT = 1000
 const INBOUND_FALLBACK = "Let's talk about something friendly."
 
 export type PrepareOutboundArgs = {
@@ -48,8 +55,19 @@ export type ChatMediatorEvents = {
   onDone?: (label: string, fullText: string) => void
 }
 
-function bounded(value: unknown, max = MAX_TEXT): string {
-  return typeof value === "string" ? value.trim().slice(0, max) : ""
+// Normalize an LLM/string value WITHOUT dropping content: trim whitespace only.
+// The recipient must read and hear the whole translated message — never a
+// silent mid-word chop. (The safe-relay pipeline already bounds on-device LLM
+// output upstream; teletron must not re-truncate the result it displays/speaks.)
+function clean(value: unknown): string {
+  return typeof value === "string" ? value.trim() : ""
+}
+
+// Trim a short *display label* to a fixed width. Only for reply-chip buttons —
+// never for displayed or spoken message text.
+function boundedLabel(value: unknown, max = MAX_REPLY_LABEL): string {
+  const text = clean(value)
+  return text.length > max ? text.slice(0, max).trimEnd() : text
 }
 
 function mint(prefix: string): string {
@@ -72,7 +90,7 @@ function composeSafeRelayInput(
     interactionId: args.interactionId,
     source: {
       kind: "text",
-      text: bounded(outbound.relayText) || INBOUND_FALLBACK,
+      text: clean(outbound.relayText) || INBOUND_FALLBACK,
     },
     sourceLanguage: "en" as LanguageCode,
     targetLanguage: args.targetLanguage,
@@ -113,10 +131,10 @@ function artifactFromLesson(
     targetPlayerId: input.to,
     sourceLanguage: input.sourceLanguage,
     targetLanguage: recipient.target,
-    visibleText: bounded(lesson.targetText) || INBOUND_FALLBACK,
-    naturalTranslation: bounded(lesson.nativeText) || undefined,
+    visibleText: clean(lesson.targetText) || INBOUND_FALLBACK,
+    naturalTranslation: clean(lesson.nativeText) || undefined,
     suggestedReplies: lesson.suggestedReplies
-      .map((label, index) => ({ id: `r${index}`, label: bounded(label, 80) }))
+      .map((label, index) => ({ id: `r${index}`, label: boundedLabel(label) }))
       .filter((reply) => reply.label),
     lessonNotes: [],
     moderation: {
@@ -180,6 +198,13 @@ export function createChatMediator(hostApi: HostApi, events: ChatMediatorEvents 
   const pipeline = createSafeRelayPipeline({
     runLlm: (messages, options, label) => run(messages, options, label),
     sampleSafePhrase: createHostSafePhraseSampler(hostApi),
+    // A chat message plus its translation expansion (verbose A1 register, long
+    // compounds in de/fi, RTL, etc.) routinely runs past the relay's default
+    // 280-char guard. The pipeline's own translate pass already allows ~180
+    // tokens; this lifts the post-hoc char clamp to match so a full message is
+    // never silently chopped mid-word before the recipient reads or hears it.
+    // Still a generous defense-in-depth bound, not unbounded.
+    maxText: MAX_RELAY_TEXT,
   })
 
   return {

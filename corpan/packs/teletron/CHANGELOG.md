@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+## 0.1.10 - 2026-06-24
+
+- **Stop silently chopping mediated messages.** The recipient-side mediator
+  re-sliced every translated message to 280 characters (`MAX_TEXT`) before
+  showing it in the bubble AND speaking it aloud — a silent mid-word cut with no
+  ellipsis, no log, and no rationale (the chat contract has no length cap). A
+  longer message (verbose A1 register, long German/Finnish compounds, RTL) lost
+  its tail in both the displayed text and the spoken audio. The cap on
+  displayed/spoken/stored text is removed; the safe-relay pipeline's own length
+  guard is raised to a generous defense-in-depth bound so a full message is never
+  chopped mid-word. The only remaining trim is on suggested-reply *chip labels*
+  (tap targets), which are display affordances, never message content. Regression
+  test added: a >280-char mediated message survives whole through the real
+  mediator path. (Part of #484; fixes #487.)
+
 ## 0.1.9 - 2026-06-09
 
 - **Reliable chat delivery (live, offline, and rejoin).** The accepted-pair link
