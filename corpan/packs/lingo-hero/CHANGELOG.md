@@ -6,6 +6,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.11] - 2026-06-24
+
+Slim mobile chrome (#462). The top-left in-game chrome wasted vertical space and
+auto-hid in a way that fought the game (it was revealed by tapping the playfield
+— but tapping the playfield IS the gameplay). Reworked per operator direction.
+
+### Changed
+- **ONE small PERSISTENT pause control** (top-left corner). It is now ALWAYS
+  visible during play — low-opacity / unobtrusive, but never auto-hidden and
+  never tap-the-playfield-to-reveal. It floats over the corner and opens the
+  pause sheet. OS/gesture back (Android) still opens it too. This supersedes the
+  0.4.3 auto-hide behavior.
+- **The mute toggle moved INTO the pause sheet** (Resume / Mute / Exit). The
+  always-visible HUD mute pill is gone — the OS volume / silent switch handles
+  audio on mobile, and a permanent mute pill wasted vertical space.
+
+### Fixed / reclaimed
+- **Reclaimed the reserved ~46px top band.** `.top-bar` no longer reserves a
+  band for the chrome (padding-top dropped from 46px to a few px); the single
+  small control floats over the corner instead. The prompt + play area get that
+  vertical space back. Side gutters were widened just enough that the centered
+  prompt's wrapped lines never run under the corner control on a narrow phone.
+
+### Preserved
+- The 0.4.3 stopPropagation contract — the pause control still captures its own
+  taps; a tap on it never leaks into a lane (e2e enforced).
+- #460 prompt full-visibility (the reclaimed band only helps), #463 script
+  rendering, delta-timed motion, `window.__lingoHero`, canvas-relative input.
+
+Host finding (not shipped, for the record): the host app (`corpan-app/src/App.tsx`)
+renders content packs BARE — its Home/gear chrome (`PhraseFlipChrome`) is shown
+ONLY for the native Phrase Flip experience, NOT over a content pack. So the host
+Home is NOT visible over Lingo Hero; the in-pack pause-sheet Exit is kept as the
+iOS escape (Android also has OS-back). Preview channel.
+
 ## [0.4.10] - 2026-06-24
 
 THE actual comma-truncation fix (#460). The prompt was being chopped at the

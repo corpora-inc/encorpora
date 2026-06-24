@@ -4,8 +4,6 @@ import { GameMode, type ActiveLanguage } from "../types";
 
 /** Shared with the audio stream — the single persisted mute preference key. */
 const MUTE_STORAGE_KEY = "lingoHero.audio.muted";
-/** Idle delay before the top-left chrome auto-fades during active play. */
-const CHROME_IDLE_MS = 2600;
 
 /**
  * Payload for the post-answer FEEDBACK card (slot c). The shell-ui stream fills
@@ -100,11 +98,9 @@ export class Hud {
   private comboPulseTimer = 0;
   private flyoutTimer = 0;
   private feedbackTimer = 0;
-  /** Auto-fade timer for the top-left chrome (pause/mute) during active play. */
-  private chromeIdleTimer = 0;
-  /** True while the pause sheet is open (chrome must stay visible). */
+  /** True while the pause sheet is open. */
   private pauseOpen = false;
-  /** Persisted mute preference, mirrored into the toggle's pressed state. */
+  /** Persisted mute preference, mirrored into the in-sheet toggle's state. */
   private muted = false;
   /** Detach handle for the Android/gesture back (popstate) listener. */
   private offPopState?: () => void;
@@ -133,20 +129,21 @@ export class Hud {
     // begins (gameStart removes `chrome-off`).
     this.root.className = "ui-layer chrome-off";
     this.root.innerHTML = `
-      <!-- TOP-LEFT chrome (issue #426): a single PAUSE control that opens a small
-           sheet (Resume / Exit) so an accidental tap can't dump a run mid-combo.
-           It AUTO-FADES during active play and reappears on tap / when paused.
-           Plus ONE mute toggle. Both are pointer-events:auto and stopPropagation,
-           so taps never leak through to the canvas lanes. The legacy #lh-exit id
-           is kept (inside the sheet) so the host/tests still resolve "exit". -->
+      <!-- TOP-LEFT chrome (#462, supersedes the #426 auto-hide): ONE small,
+           PERSISTENT pause control tucked in the corner. It is ALWAYS visible
+           during play (low-opacity / unobtrusive, never auto-hidden, never
+           tap-the-playfield-to-reveal — tapping the playfield IS gameplay). It
+           opens the pause sheet (Resume / Mute / Exit). The OS/gesture back also
+           opens it (Android). pointer-events:auto + stopPropagation, so a tap on
+           it never leaks through to the canvas lanes (the 0.4.3 contract). It
+           floats over the corner — the .top-bar no longer reserves a band for it,
+           so the prompt + play area reclaim that vertical space. The mute toggle
+           moved INTO the sheet (the OS volume / silent switch handles audio on
+           mobile; a permanent mute pill wasted vertical space). The legacy
+           #lh-exit id stays (inside the sheet) so the host/tests resolve "exit". -->
       <button class="lh-chrome-btn lh-pause-btn" id="lh-pause" type="button"
               aria-label="Pause" title="Pause" aria-haspopup="dialog" aria-expanded="false">
         <span aria-hidden="true">&#10073;&#10073;</span>
-      </button>
-      <button class="lh-chrome-btn lh-mute-btn" id="lh-mute" type="button"
-              aria-label="Mute audio" aria-pressed="false" title="Mute">
-        <span class="lh-mute-on" aria-hidden="true">&#128266;</span>
-        <span class="lh-mute-off" aria-hidden="true">&#128263;</span>
       </button>
       <div class="lh-pause-sheet" id="lh-pause-sheet" role="dialog"
            aria-label="Paused" aria-modal="true" hidden>
@@ -155,6 +152,15 @@ export class Hud {
           <button class="menu-btn blitz" id="lh-resume" type="button">
             <span class="btn-icon" aria-hidden="true">&#9654;</span>
             <span class="btn-labels"><span class="btn-title">Resume</span></span>
+            <span class="btn-chevron" aria-hidden="true">&#10095;</span>
+          </button>
+          <button class="menu-btn secondary lh-mute-btn" id="lh-mute" type="button"
+                  aria-label="Mute audio" aria-pressed="false">
+            <span class="btn-icon" aria-hidden="true">
+              <span class="lh-mute-on">&#128266;</span>
+              <span class="lh-mute-off">&#128263;</span>
+            </span>
+            <span class="btn-labels"><span class="btn-title lh-mute-label">Mute</span></span>
             <span class="btn-chevron" aria-hidden="true">&#10095;</span>
           </button>
           <button class="menu-btn secondary" id="lh-exit" type="button" aria-label="Exit Lingo Hero">
@@ -304,8 +310,9 @@ export class Hud {
       if (e && e.target === this.pauseSheet) this.closePause(true);
     });
 
-    // The single MUTE toggle. Reads the persisted preference for its initial
-    // pressed state, then flips it live + persists on each tap.
+    // The single MUTE toggle — now INSIDE the pause sheet (Resume / Mute / Exit),
+    // not a permanent HUD pill (#462). Reads the persisted preference for its
+    // initial pressed state, then flips it live + persists on each tap.
     this.muted = this.readStoredMuted();
     this.reflectMute();
     this.bindButton("#lh-mute", () => this.toggleMute());
@@ -662,16 +669,16 @@ export class Hud {
   }
 
   // -------------------------------------------------------------------------
-  // TOP-LEFT CHROME: pause sheet, mute, auto-fade, Android back. (Issue #426)
+  // TOP-LEFT CHROME: persistent pause control + sheet (Resume / Mute / Exit),
+  // Android back. (#462 — supersedes the #426 auto-hide.)
   // -------------------------------------------------------------------------
 
-  /** Open the pause sheet (Resume / Exit) and pause the game. */
+  /** Open the pause sheet (Resume / Mute / Exit) and pause the game. */
   private openPause(): void {
     if (this.pauseOpen) return;
     this.pauseOpen = true;
     this.pauseSheet.hidden = false;
     this.pauseBtn.setAttribute("aria-expanded", "true");
-    this.showChrome(); // keep chrome visible while paused
     this.callbacks.onPause?.();
     // Move focus into the sheet for keyboard/AT users.
     const resume = this.pauseSheet.querySelector<HTMLElement>("#lh-resume");
@@ -686,7 +693,6 @@ export class Hud {
     this.pauseBtn.setAttribute("aria-expanded", "false");
     if (resume) {
       this.callbacks.onResume?.();
-      this.showChrome(); // re-arm the auto-fade after resuming
     }
   }
 
@@ -706,7 +712,6 @@ export class Hud {
     }
     this.reflectMute();
     this.callbacks.onSetMuted?.(this.muted);
-    this.showChrome();
   }
 
   private readStoredMuted(): boolean {
@@ -717,7 +722,7 @@ export class Hud {
     }
   }
 
-  /** Sync the mute button's pressed state + label to `this.muted`. */
+  /** Sync the in-sheet mute button's pressed state + label to `this.muted`. */
   private reflectMute(): void {
     this.muteBtn.setAttribute("aria-pressed", this.muted ? "true" : "false");
     this.muteBtn.setAttribute(
@@ -725,33 +730,18 @@ export class Hud {
       this.muted ? "Unmute audio" : "Mute audio"
     );
     this.muteBtn.classList.toggle("is-muted", this.muted);
+    const label = this.muteBtn.querySelector<HTMLElement>(".lh-mute-label");
+    if (label) label.textContent = this.muted ? "Unmute" : "Mute";
   }
 
   /**
-   * Reveal the top-left chrome (pause + mute) and arm an auto-fade so it tucks
-   * away during active play (issue #426 — unobtrusive). It reappears on any tap
-   * (handled by Game forwarding interaction) or whenever the sheet is open.
-   */
-  private showChrome(): void {
-    this.root.classList.remove("chrome-hidden");
-    if (this.chromeIdleTimer) clearTimeout(this.chromeIdleTimer);
-    // Never fade while paused (the user needs the sheet + controls visible).
-    if (this.pauseOpen) return;
-    this.chromeIdleTimer = window.setTimeout(() => {
-      // Only fade during active gameplay (not on the menu / game-over).
-      if (!this.hudPanel.classList.contains("hidden") && !this.pauseOpen) {
-        this.root.classList.add("chrome-hidden");
-      }
-    }, CHROME_IDLE_MS);
-  }
-
-  /**
-   * Game calls this on any lane interaction so the chrome briefly reappears
-   * (then re-fades), giving the player a reliable way to surface the exit/pause
-   * without leaving it permanently on screen.
+   * #462 — the pause control is now PERSISTENT (always visible during play, no
+   * auto-fade, no tap-the-playfield-to-reveal). Game still calls this on lane
+   * interaction; it is now a no-op (kept so older call sites compile) since the
+   * control never hides during a run.
    */
   notifyInteraction(): void {
-    this.showChrome();
+    /* no-op: the pause control is always visible during play (#462). */
   }
 
   /** True while the pause sheet is open (Game gates its own input on this). */
@@ -799,7 +789,6 @@ export class Hud {
     if (this.comboPulseTimer) clearTimeout(this.comboPulseTimer);
     if (this.flyoutTimer) clearTimeout(this.flyoutTimer);
     if (this.feedbackTimer) clearTimeout(this.feedbackTimer);
-    if (this.chromeIdleTimer) clearTimeout(this.chromeIdleTimer);
     this.offPopState?.();
     this.offPopState = undefined;
     this.root.remove();
@@ -824,12 +813,11 @@ export class Hud {
         this.runSeen = 0;
         this.runCorrect = 0;
         this.refreshMastery();
-        // A run begins: reveal the in-game chrome (pause + mute), close any
-        // pause sheet, surface the chrome (it then auto-fades), and arm the
-        // Android-back sentinel for this run.
+        // A run begins: reveal the persistent corner pause control, close any
+        // pause sheet, and arm the Android-back sentinel for this run. The
+        // control stays visible for the whole run (no auto-fade) — #462.
         this.root.classList.remove("chrome-off");
         this.closePause(false);
-        this.showChrome();
         this.armHistorySentinel();
       }),
       this.bus.on("menuShown", () => {
@@ -838,12 +826,10 @@ export class Hud {
         this.gameOverScreen.classList.add("hidden");
         this.hideFeedback();
         this.setMastery(null);
-        // Off the playfield (menu): pause/mute have no meaning here — hide the
-        // in-game chrome entirely (the menu has its own affordances).
+        // Off the playfield (menu): the pause control has no meaning here — hide
+        // it entirely (the menu has its own affordances).
         this.closePause(false);
         this.root.classList.add("chrome-off");
-        this.root.classList.remove("chrome-hidden");
-        if (this.chromeIdleTimer) clearTimeout(this.chromeIdleTimer);
       }),
       this.bus.on("scoreChange", (e) => {
         this.scoreEl.textContent = e.value.toLocaleString();
@@ -860,11 +846,9 @@ export class Hud {
         this.finalScoreEl.textContent = e.finalScore.toLocaleString();
         this.populateGameOverStats(e.finalScore);
         // Run ended: the game-over panel owns navigation (Retry / Main Menu),
-        // so hide the in-game pause/mute chrome here too.
+        // so hide the in-game pause control here too.
         this.closePause(false);
         this.root.classList.add("chrome-off");
-        this.root.classList.remove("chrome-hidden");
-        if (this.chromeIdleTimer) clearTimeout(this.chromeIdleTimer);
       }),
       // (c) LEARNING SURFACE — the single, reliable per-wave verdict hook.
       // Raise the meaning-reveal feedback card and advance the run mastery

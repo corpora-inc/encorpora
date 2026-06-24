@@ -558,47 +558,56 @@ canvas {
 }
 
 /* Full-width, edge-to-edge top header — just prompt + building pills, minimum
-   vertical space. Leaves the top-LEFT corner clear for the Exit button only
-   (no mute / no replay controls anymore). */
+   vertical space. The single small PAUSE control FLOATS over the top-left corner
+   (#462) — the header no longer reserves a ~46px band for it, so the prompt +
+   play area reclaim that vertical space. */
 .top-bar {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  /* The prompt centers across the FULL width and starts BELOW the top-left
-     chrome band (pause + mute pills are ~40px tall in the corner), so a long
-     phrase can use the whole width + wrap without ever colliding with the
-     controls or crowding the right edge. Symmetric side gutters keep text off
-     the very edges. */
-  padding-left: calc(14px + env(safe-area-inset-left, 0px));
-  padding-right: calc(14px + env(safe-area-inset-right, 0px));
-  padding-top: 46px;
+  /* #462 — symmetric SIDE GUTTERS wide enough that the centered prompt's wrapped
+     lines never run UNDER the floating corner control (a 36px pill at ~12px in →
+     it occupies the leftmost ~48px). We keep a matching gutter on BOTH sides so
+     the centered text stays balanced and clears the control on a narrow phone.
+     The prompt centers across the remaining width and wraps freely. */
+  padding-left: calc(52px + env(safe-area-inset-left, 0px));
+  padding-right: calc(52px + env(safe-area-inset-right, 0px));
+  /* Just a hair of top breathing room (the reserved 46px band is gone — the
+     control floats over the corner instead of pushing the prompt down). */
+  padding-top: calc(6px + env(safe-area-inset-top, 0px));
   box-sizing: border-box;
   /* #460 — never clip the wrapped prompt (see .hud note). */
   overflow: visible;
   min-height: 0;
 }
 
-/* TOP-LEFT CHROME (issue #426): the small PAUSE control + a single MUTE toggle.
-   Both live in the .ui-layer overlay (pointer-events:none) but opt back IN, and
-   their JS handlers stopPropagation, so taps never leak through to the canvas
-   lanes. Compact 40px pills; the pair tucks into the top-left corner. */
+/* TOP-LEFT CHROME (#462, supersedes the #426 auto-hide): ONE small, PERSISTENT
+   pause control that floats over the corner — ALWAYS visible during play, never
+   auto-hidden, never tap-the-playfield-to-reveal. It lives in the .ui-layer
+   overlay (pointer-events:none) but opts back IN, and its JS handler
+   stopPropagation()s, so a tap on it never leaks through to the canvas lanes
+   (the 0.4.3 contract). Compact 36px pill tucked in the top-left corner at low
+   opacity so it reads as unobtrusive but is always reachable. */
 .lh-chrome-btn {
   position: absolute;
-  top: calc(var(--na-space-3) + env(safe-area-inset-top, 0px));
+  top: calc(var(--na-space-2, 8px) + env(safe-area-inset-top, 0px));
   z-index: var(--na-z-overlay, 40);
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1;
   padding: 0;
   border-radius: var(--na-radius-pill);
-  border: 1px solid color-mix(in srgb, var(--na-text) 32%, transparent);
+  border: 1px solid color-mix(in srgb, var(--na-text) 26%, transparent);
   background: var(--na-glass-bg);
   color: var(--na-text);
+  /* Unobtrusive: resting low-opacity so it never competes with the playfield,
+     but always visible + always hittable (full pointer-events). */
+  opacity: 0.6;
   cursor: pointer;
   pointer-events: auto;
   backdrop-filter: blur(10px);
@@ -610,21 +619,34 @@ canvas {
     opacity var(--na-dur-base) var(--na-ease-out);
 }
 .lh-pause-btn {
-  left: calc(var(--na-space-3) + env(safe-area-inset-left, 0px));
-  font-size: 0.9rem;
+  left: calc(var(--na-space-2, 8px) + env(safe-area-inset-left, 0px));
+  font-size: 0.8rem;
   letter-spacing: -1px;
-}
-.lh-mute-btn {
-  left: calc(var(--na-space-3) + 48px + env(safe-area-inset-left, 0px));
 }
 .lh-chrome-btn:hover,
 .lh-chrome-btn:focus-visible {
+  opacity: 1;
   border-color: var(--na-text);
 }
 .lh-chrome-btn:active {
+  opacity: 1;
   transform: scale(0.92);
 }
-/* Mute toggle: show the speaker-on glyph by default; swap to muted when pressed. */
+/* OFF the playfield (menu / game-over): the pause control has no meaning, so it
+   is fully removed (those screens own their own navigation). */
+.ui-layer.chrome-off .lh-chrome-btn {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lh-chrome-btn {
+    transition: none;
+  }
+}
+
+/* In-sheet MUTE toggle (#462): the mute moved OUT of the HUD into the pause
+   sheet as a Resume / Mute / Exit row item. Show the speaker-on glyph by
+   default; swap to muted when pressed. The button reuses the .menu-btn styling
+   (it's a sheet row), so only the glyph swap is bespoke here. */
 .lh-mute-btn .lh-mute-off {
   display: none;
 }
@@ -633,29 +655,6 @@ canvas {
 }
 .lh-mute-btn.is-muted .lh-mute-off {
   display: inline;
-}
-.lh-mute-btn.is-muted {
-  color: var(--ink-dim);
-  border-color: color-mix(in srgb, var(--na-text) 20%, transparent);
-}
-
-/* AUTO-FADE: during active play the top-left chrome tucks away (unobtrusive). It
-   stays clickable for a moment as it fades, then drops pointer-events so a faded
-   control can't eat a lane tap. It reappears on any lane tap (Game re-shows it)
-   or whenever the pause sheet is open. */
-.ui-layer.chrome-hidden .lh-chrome-btn {
-  opacity: 0;
-  pointer-events: none;
-}
-/* OFF the playfield (menu / game-over): pause + mute have no meaning, so the
-   in-game chrome is fully removed (those screens own their own navigation). */
-.ui-layer.chrome-off .lh-chrome-btn {
-  display: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .lh-chrome-btn {
-    transition: none;
-  }
 }
 
 /* PAUSE SHEET — a small modal (Resume / Exit) so an accidental tap on the pause
