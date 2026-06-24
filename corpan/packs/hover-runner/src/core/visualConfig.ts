@@ -130,7 +130,7 @@ export const POST_PROCESSING = {
   bloom: {
     enabled: true,
     threshold: 0.9,     // Only pixels brighter than this bloom (0-1)
-    weight: 0.01,       // Bloom intensity
+    weight: 0.99,       // Bloom intensity
     kernel: 32,         // Blur radius (8 = sharp, 64 = soft)
     scale: 0.3,         // Bloom texture resolution
   },
@@ -138,13 +138,13 @@ export const POST_PROCESSING = {
   // Sharpen
   sharpen: {
     enabled: true,
-    edgeAmount: 1.5,    // Sharpening strength
+    edgeAmount: 0.2,    // Sharpening strength
   },
 
   // Film Grain
   grain: {
     enabled: true,
-    intensity: 2,       // Grain amount (0 = off, 8 = heavy)
+    intensity: 3,       // Grain amount (0 = off, 8 = heavy)
     animated: true,
   },
 }
