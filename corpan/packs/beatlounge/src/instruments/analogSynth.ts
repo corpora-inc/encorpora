@@ -639,10 +639,14 @@ export const createAnalogSynthInstrument = (config: AnalogConfig): Instrument =>
   // Mono mode keeps ONE voice that glides between notes.
   let monoVoice: AnalogVoice | null = null
 
+  // Fractional MIDI = pitch + cents/100; the voice's setPitch resolves it through
+  // Tone.Frequency, so the microtonal offset lands on every oscillator.
+  const tunedPitch = (note: TriggerNote): number => note.pitch + (note.detuneCents ?? 0) / 100
+
   const triggerPoly = (note: TriggerNote, when: number) => {
     const v = allocate(when)
     v.applyMix(vp)
-    v.trigger(note.pitch, note.velocity, note.durationSec, when, vp, 0)
+    v.trigger(tunedPitch(note), note.velocity, note.durationSec, when, vp, 0)
   }
 
   const triggerMono = (note: TriggerNote, when: number) => {
@@ -652,7 +656,7 @@ export const createAnalogSynthInstrument = (config: AnalogConfig): Instrument =>
       wireLfo()
     }
     monoVoice.applyMix(vp)
-    monoVoice.trigger(note.pitch, note.velocity, note.durationSec, when, vp, vp.glide)
+    monoVoice.trigger(tunedPitch(note), note.velocity, note.durationSec, when, vp, vp.glide)
   }
 
   const applyAll = () => {

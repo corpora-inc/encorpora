@@ -35,6 +35,11 @@ export interface TriggerNote {
   pitch: Midi
   velocity: Normalized
   durationSec: number
+  /** Microtonal offset (cents) to apply on top of the 12-TET pitch — the bridge
+   *  that makes sequenced notes honor the active tuning (maqam neutral tones,
+   *  pythagorean/just, …). Absent/0 ⇒ plain 12-TET (unchanged). Engines that can't
+   *  detune (e.g. the GM soundfont worklet) ignore it. */
+  detuneCents?: number
   // ttsFragment extras:
   fragmentId?: Id
   pitchSemis?: number

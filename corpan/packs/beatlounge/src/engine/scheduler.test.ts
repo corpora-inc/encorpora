@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { collectTriggers, occurrencesInWindow, trackLength } from "./scheduler"
-import { DRUM_PITCH, type InstrumentTrack } from "../model/document"
+import { DRUM_PITCH, createDefaultDoc, type InstrumentTrack } from "../model/document"
 import { reduce } from "../model/reduce"
 import { PPQ } from "../model/timing"
 import { stockLoopDoc } from "../testing/stockLoop"
@@ -80,5 +80,31 @@ describe("collectTriggers — the pure scheduling core", () => {
     const planned = collectTriggers(doc, 0, PPQ * 4)
     expect(planned.length).toBeGreaterThan(0)
     expect(planned.every((p) => p.note.velocity > 0 && p.note.durationSec > 0)).toBe(true)
+  })
+})
+
+describe("collectTriggers — microtonal detune from the active tuning (#415)", () => {
+  const withNotes = (doc: ReturnType<typeof createDefaultDoc>, pitches: number[]) => {
+    const tid = (doc.tracks[1] as InstrumentTrack).id
+    return reduce(doc, {
+      t: "setNotes",
+      trackId: tid,
+      notes: pitches.map((pitch, i) => ({ tick: i * PPQ, duration: PPQ, pitch, velocity: 0.8 })),
+    })
+  }
+  const detuneOf = (doc: ReturnType<typeof createDefaultDoc>, pitch: number) =>
+    collectTriggers(doc, 0, doc.loopLengthTicks).find((p) => p.note.pitch === pitch)?.note.detuneCents
+
+  it("attaches the maqam's neutral-tone detune to scheduled notes (Rast)", () => {
+    let d = reduce(createDefaultDoc(0), { t: "setHarmonyMode", mode: "modal" })
+    d = reduce(d, { t: "setScale", family: "maqam", id: "maqam.rast" })
+    d = withNotes(d, [60, 64]) // tonic C, and the 12-TET major third E
+    expect(detuneOf(d, 60) ?? 0).toBeCloseTo(0, 0) // tonic ~ in tune
+    expect(detuneOf(d, 64)!).toBeLessThan(-20) // bends DOWN to Rast's neutral 3rd
+  })
+
+  it("a plain 12-TET doc emits zero detune (backward-compatible)", () => {
+    const d = withNotes(createDefaultDoc(0), [64])
+    expect(detuneOf(d, 64) ?? 0).toBe(0)
   })
 })

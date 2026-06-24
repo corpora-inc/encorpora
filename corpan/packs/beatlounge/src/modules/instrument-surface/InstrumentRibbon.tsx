@@ -47,7 +47,7 @@ import {
   type RibbonWindow,
 } from "../../music/ribbonScales"
 import { docHarmony } from "../../model/document"
-import { activeMidiInRange, quantizeToHarmony } from "../../music/resolver"
+import { activeMidiInRange, detuneForMidi, quantizeToHarmony } from "../../music/resolver"
 import { clearAction } from "../ribbon/actions"
 import { runAction } from "../runAction"
 import { placeRecordedNote } from "./recordPlacement"
@@ -276,6 +276,15 @@ export const InstrumentRibbon = ({
       : raw
   }
 
+  // The actual SOUNDING pitch: the snapped degree + the active tuning's microtonal
+  // offset — the SAME `detuneForMidi` the sequencer uses, so the ribbon and the
+  // grid agree. Fretted only (free glide is already continuous). The RECORDED pitch
+  // stays the integer degree (resolveMidi); playback re-derives the cents.
+  const playPitch = (midi: number): number =>
+    live.current.fretted
+      ? midi + detuneForMidi(midi, store.vanilla.getState().doc, 0) / 100
+      : midi
+
   /** Record a (resolved) pitch into the bound track for ONE finger. Per-pointer
    *  step dedupe so two fingers can both lay notes without clobbering. The
    *  placement rules (dedupe + quantize on/off + duplicate-cell) are pure. */
@@ -312,8 +321,10 @@ export const InstrumentRibbon = ({
     const x = xFromEvent(e.clientX)
     const expr = exprFromEvent(e.clientY)
     const midi = resolveMidi(x)
-    // Open a live voice on the BOUND TRACK's real instrument (polyphonic).
-    const handle = host.playLiveVoice(trackId, midi, 0.9)
+    // Open a live voice on the BOUND TRACK's real instrument (polyphonic). The
+    // sounding pitch carries the maqam/tuning detune; the recorded pitch (below)
+    // stays the integer degree.
+    const handle = host.playLiveVoice(trackId, playPitch(midi), 0.9)
     // Soundfont/sampler fallback: no live pool → a stepped one-shot per crossing.
     if (!handle) host.previewTrack(trackId, 0.9, Math.round(midi))
     applyExpression(expr)
@@ -340,7 +351,7 @@ export const InstrumentRibbon = ({
     if (midi !== t.midi) {
       const crossed = Math.round(midi) !== Math.round(t.midi)
       t.midi = midi
-      if (t.handle) t.handle.bend(midi)
+      if (t.handle) t.handle.bend(playPitch(midi))
       else if (crossed) host.previewTrack(trackId, 0.9, Math.round(midi)) // stepped fallback
       setLiveLabel(noteLabel(midi))
       if (crossed) recordIntoTrack(t, midi)

@@ -54,9 +54,11 @@ export const createWavetableInstrument = (config: WavetableConfig): Instrument =
     output: out,
     live: live.api,
     trigger(note: TriggerNote, when: number) {
-      const name = Tone.Frequency(note.pitch, "midi").toNote()
+      const freq =
+        Tone.Frequency(note.pitch, "midi").toFrequency() *
+        Math.pow(2, (note.detuneCents ?? 0) / 1200)
       try {
-        poly.triggerAttackRelease(name, Math.max(0.02, note.durationSec), when, note.velocity)
+        poly.triggerAttackRelease(freq, Math.max(0.02, note.durationSec), when, note.velocity)
       } catch {
         /* ignore voice exhaustion on rapid retriggers */
       }

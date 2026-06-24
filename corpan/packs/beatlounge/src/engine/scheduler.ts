@@ -16,6 +16,7 @@ import type { Scheduler, ScheduledTrigger, TriggerNote } from "../contracts/engi
 import type { BeatloungeDoc, Track } from "../model/document"
 import { isInstrumentTrack } from "../model/document"
 import { gridTicks, secondsPerTick, swingOffsetTicks, wrapTick, type Tick } from "../model/timing"
+import { detuneForMidi } from "../music/resolver"
 
 const LOOKAHEAD_SEC = 0.12
 const TIMER_MS = 25
@@ -84,6 +85,9 @@ export const collectTriggers = (
           pitch: n.pitch,
           velocity: n.velocity,
           durationSec: Math.max(0.02, n.duration * spt),
+          // Honor the active tuning (maqam neutral tones / pythagorean / just …) at
+          // play time — computed from the doc's harmony, never frozen into the note.
+          detuneCents: detuneForMidi(n.pitch, doc, n.tick),
         }
         for (const abs of occ) {
           out.push({ trackId: track.id, baseTick: abs, scheduledTick: abs + swing + micro, note })

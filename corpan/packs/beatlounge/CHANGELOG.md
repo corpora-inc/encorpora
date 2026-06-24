@@ -6,6 +6,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- Microtonal playback (tuning Phase 0): sequenced notes **and** the in-key ribbon
+  now sound the active tuning's exact cents (maqam neutral tones, pythagorean,
+  just) instead of 12-TET. The scheduler computes the detune from the doc's
+  harmony (`detuneForMidi`) into `TriggerNote.detuneCents`; the synth / FM /
+  wavetable / pad / analog engines apply it; the ribbon plays the same detune on
+  its live voice (recording the clean integer degree, re-deriving cents at play —
+  so changing key/school re-tunes everything live). GM soundfont stays 12-TET for
+  now (worklet is integer-MIDI). (Beat-Lounge-Plus; closes #415.)
 - 50 new software-instrument presets across all seven families (keys, bass,
   lead, pad, pluck, brass, fx), bringing the corpus to 123 voices. Pure data
   over the existing synth / fmSynth / wavetable / analogSynth engines — no new
