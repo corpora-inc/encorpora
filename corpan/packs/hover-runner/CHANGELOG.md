@@ -10,6 +10,57 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.5] - 2026-06-23 — iOS audio unlock + premium post-process re-tune + revived velocity effects + paywall pause
+
+### Fixed
+- **iOS/iPad music & SFX no longer stuck silent (#437).** On iOS the
+  `AudioContext` is created `suspended` and re-suspended whenever the app/tab is
+  backgrounded — even when the game itself was never paused — so audio could
+  sit silent forever. We now resume it on the first user gesture (already wired
+  via `sfx.unlock()` on the wake-lock pointerdown) **and** on every
+  `visibilitychange → visible` (new `sfx.resume()` in `audio.ts`, called from
+  `onVisibilityChange` in `game.ts`). Resuming a running context is a no-op, so
+  Android/desktop are unaffected. Same root-cause fix that shipped for Lingo
+  Hero (#439). Stays fully offline. (iPad has no haptics but does have audio.)
+
+### Changed
+- **Post-process re-tune for premium glow + legible glyphs (#438 PR-4).** Now
+  that `game.ts` reads `POST_PROCESSING` from `core/visualConfig.ts` (the live
+  source of truth since #458), tuned the values there:
+  - **Bloom:** threshold `0.9 → 0.7`, weight `0.99 → 0.45`. The old pairing let
+    almost nothing cross the threshold, so the visible glow was entirely the
+    GlowLayer; bloom now actually halos the bright neon emissives (road center
+    line, avatar ring, electric arcs) without blowing out.
+  - **Chromatic aberration:** amount `15 → 5`. 15 smeared red/blue fringes onto
+    every glyph edge — bad in a text game. 5 keeps a tasteful peripheral lens
+    tint while restoring glyph legibility.
+  - **Sharpen:** edgeAmount `0.2 → 0.3` (crisp glyph edges).
+  - **Film grain:** intensity `3 → 2` (subtle filmic texture, doesn't fight the
+    text).
+  These are taste calls — operator reviews on device.
+- **Particle visibility bumped to a tasteful, profile-minded level (#438 PR-5).**
+  Emit rates that had been slashed near-invisible are restored: ambient dust
+  `8 → 16`, starfield `10 → 18`, energy-field wisps `8 → 14`.
+
+### Added
+- **Revived speed-lines velocity-feel (#438 PR-5).** `updateSpeedLines()` was
+  exported but never called, so the effect was dead. It's now driven every
+  frame from the render loop, keyed to the live phrase speed
+  (`getPhraseSpeed()` normalized over baseline..max into a 0..1 multiplier), so
+  streaks stay calm at slow speed and ramp up as the game speeds up. Emit-rate
+  floor raised so the streaks read even at the slow end.
+- **Host pause/resume listeners for the paywall (#436).** Added `window`
+  listeners for `corpan:host-pause` (stop the RAF update advance via the
+  existing `paused` gate + suspend the `AudioContext`) and `corpan:host-resume`
+  (resume audio + restart the update advance), dispatched by core-app when it
+  overlays the paywall. Reuses the same `setPaused` path the settings drawer
+  uses; both listeners are torn down on dispose.
+
+### Preserved
+- Gameplay, scoring, translations, i18n, offline behavior, native haptics
+  (0.3.3), the #458 dead-code/config-truth cleanup, and frame-rate-independent
+  motion are all unchanged.
+
 ## [0.3.4] - 2026-06-24 — Dead-code removal + post-process config is the single source of truth
 
 ### Removed

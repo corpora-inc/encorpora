@@ -17,6 +17,8 @@ const pickRandom = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length
 
 type SfxHandle = {
   unlock: () => void
+  resume: () => void
+  suspend: () => void
   setVolume: (volume: number) => void
   setSfxVolume: (volume: number) => void
   setMusicVolume: (volume: number) => void
@@ -259,6 +261,31 @@ const createSfxHandle = (): SfxHandle => {
     ensureMusicBuffer()
   }
 
+  // iOS (#437): the AudioContext is created `suspended` and iOS re-suspends it
+  // whenever the app/tab is backgrounded — even when the game itself was never
+  // paused. Resume it on every user gesture and on visibilitychange->visible so
+  // music/SFX don't get stuck silent. Resuming a running context is a no-op, so
+  // this is safe on Android/desktop and never regresses them. Same root-cause
+  // fix that shipped for Lingo Hero (#439). Stays fully offline.
+  const resume = () => {
+    if (ctx && ctx.state === "suspended") {
+      void ctx.resume().catch((err) => {
+        console.warn("[hover-runner] AudioContext resume failed:", err)
+      })
+    }
+  }
+
+  // Paywall/host-pause (#436): suspend the context so music/SFX go quiet while
+  // paused. resume() (above) restores it. Guarded so it never runs on a closed
+  // or absent context.
+  const suspend = () => {
+    if (ctx && ctx.state === "running") {
+      void ctx.suspend().catch((err) => {
+        console.warn("[hover-runner] AudioContext suspend failed:", err)
+      })
+    }
+  }
+
   const setSfxVolume = (next: number) => {
     sfxVolume = clamp(next, 0, 1)
     if (sfxGain) {
@@ -313,6 +340,8 @@ const createSfxHandle = (): SfxHandle => {
 
   return {
     unlock,
+    resume,
+    suspend,
     setVolume,
     setSfxVolume,
     setMusicVolume,

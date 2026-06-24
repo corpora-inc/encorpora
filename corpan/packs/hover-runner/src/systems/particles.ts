@@ -167,7 +167,7 @@ export const createAmbientParticles = (
   particleSystem.minLifeTime = 2.0
   particleSystem.maxLifeTime = 4.0
 
-  particleSystem.emitRate = 8  // Reduced from 20
+  particleSystem.emitRate = 16  // #438 PR-5: 8 was near-invisible; bumped to 16
 
   // Gentle drift
   particleSystem.minEmitPower = 0.5
@@ -215,7 +215,7 @@ export const createStarfieldParticles = (
   particleSystem.minLifeTime = 1.0
   particleSystem.maxLifeTime = 2.0
 
-  particleSystem.emitRate = 10  // Reduced from 25
+  particleSystem.emitRate = 18  // #438 PR-5: 10 was near-invisible; bumped to 18
 
   // Fast toward camera
   particleSystem.minEmitPower = 15
@@ -265,7 +265,7 @@ export const createEnergyFieldParticles = (
   particleSystem.minLifeTime = 1.2
   particleSystem.maxLifeTime = 2.5
 
-  particleSystem.emitRate = 8  // Reduced from 25
+  particleSystem.emitRate = 14  // #438 PR-5: 8 was near-invisible; bumped to 14
 
   // Rising motion
   particleSystem.minEmitPower = 1.5
@@ -339,12 +339,16 @@ export const createSpeedLines = (
   return particleSystem
 }
 
-// Update speed lines intensity based on game speed (kept subtle)
+// Update speed lines intensity based on game speed.
+// #438 PR-5: this is now CALLED every frame from the render loop (it was dead
+// before — exported but never invoked), so the velocity-feel reacts to the live
+// phrase speed. Floor bumped 10 -> 18 so streaks read even at the slow end;
+// scales with the 0..1 speedMultiplier toward a brisk-but-tasteful top.
 export const updateSpeedLines = (
   particleSystem: ParticleSystem,
   speedMultiplier: number
 ) => {
-  particleSystem.emitRate = 10 + speedMultiplier * 10  // Reduced base and multiplier
+  particleSystem.emitRate = 18 + speedMultiplier * 22
   particleSystem.minEmitPower = 40 + speedMultiplier * 20
   particleSystem.maxEmitPower = 70 + speedMultiplier * 30
 }

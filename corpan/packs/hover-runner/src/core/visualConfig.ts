@@ -113,9 +113,15 @@ export const SSAO = {
 // ============================================================
 export const POST_PROCESSING = {
   // Chromatic Aberration (color fringing at edges)
+  //
+  // #438 PR-4: dropped 15 -> 5. This is a TEXT game — the player reads glyphs
+  // on the phrase surfaces, and amount:15 smeared visible red/blue fringes onto
+  // every glyph edge, hurting legibility. 5 keeps a tasteful "premium lens"
+  // edge tint at the screen periphery without mauling the text. (Tasteful call,
+  // device review.)
   chromaticAberration: {
     enabled: true,
-    amount: 15,         // Aberration strength
+    amount: 5,          // Aberration strength (was 15 — fringed glyphs)
     radialIntensity: 0.8,
   },
 
@@ -127,24 +133,37 @@ export const POST_PROCESSING = {
   },
 
   // Bloom (glow on bright areas)
+  //
+  // #438 PR-4: threshold 0.9 / weight 0.99 meant almost nothing crossed the
+  // threshold, so the DefaultRenderingPipeline bloom did essentially nothing —
+  // the visible "glow" was entirely the GlowLayer. Lowered threshold to 0.7 so
+  // the bright neon emissives (road center line, avatar ring, electric arcs)
+  // actually bloom, and set weight to 0.45 so it's a tasteful halo, not a
+  // blown-out wash. kernel/scale unchanged. (Tasteful call, device review.)
   bloom: {
     enabled: true,
-    threshold: 0.9,     // Only pixels brighter than this bloom (0-1)
-    weight: 0.99,       // Bloom intensity
+    threshold: 0.7,     // bloom the bright neon emissives (was 0.9 = ~nothing)
+    weight: 0.45,       // visible but tasteful halo (was 0.99, paired w/ 0.9 thr)
     kernel: 32,         // Blur radius (8 = sharp, 64 = soft)
     scale: 0.3,         // Bloom texture resolution
   },
 
   // Sharpen
+  //
+  // #438 PR-4: nudged 0.2 -> 0.3 to keep glyph edges crisp now that bloom is
+  // actually contributing softness. Kept modest to avoid ringing artifacts.
   sharpen: {
     enabled: true,
-    edgeAmount: 0.2,    // Sharpening strength
+    edgeAmount: 0.3,    // Sharpening strength (was 0.2)
   },
 
   // Film Grain
+  //
+  // #438 PR-4: intensity 3 was a touch coarse over text; eased to 2 for a
+  // subtle filmic texture that doesn't compete with glyph legibility.
   grain: {
     enabled: true,
-    intensity: 3,       // Grain amount (0 = off, 8 = heavy)
+    intensity: 2,       // Grain amount (was 3) — 0 = off, 8 = heavy
     animated: true,
   },
 }
