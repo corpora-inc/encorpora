@@ -22,6 +22,7 @@ import {
 } from "@babylonjs/core"
 import "@babylonjs/loaders/glTF"
 import { getSfx } from "./audio"
+import { triggerHaptic } from "./haptics"
 import { tuningStore } from "./tuningStore"
 import type { EntryOut, HostApi, StackConfig } from "./sdk/types"
 import { t, setLanguage as setUiLanguage, onChange as onUiLangChange } from "./i18n"
@@ -433,7 +434,11 @@ export const createHoverRunner = (
     sfx,
     motion: motionControl,
     extraSections: [displaySection],
-    onOpen: () => setPaused(true),
+    onOpen: () => {
+      // Haptic: settings/menu drawer opened → light.
+      triggerHaptic("light")
+      setPaused(true)
+    },
     onClose: () => setPaused(false),
     onExit: () => requestExit(),
     onResetExtras: () => {
@@ -1641,6 +1646,8 @@ export const createHoverRunner = (
     // (mount + next-round) is covered — show the accomplishment lock instead.
     // Subscribers never block (isBlocked() is always false for them).
     if (paywallGate.isBlocked()) {
+      // Haptic: daily-cap lock reached → heavy.
+      triggerHaptic("heavy")
       paywallGate.requestDailyLock()
       return
     }
@@ -2026,6 +2033,8 @@ export const createHoverRunner = (
       // round — re-show the accomplishment-lock overlay instead. Subscribers
       // never block. They got EXACTLY the daily cap (QUOTAS.hover_phrases).
       if (paywallGate.isBlocked()) {
+        // Haptic: daily-cap lock reached (post-celebration) → heavy.
+        triggerHaptic("heavy")
         paywallGate.requestDailyLock()
         return
       }
@@ -2283,8 +2292,22 @@ export const createHoverRunner = (
             draft.incorrectStreak = 0
           })
           if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
+          // Haptic: correct hit → success. Capture streak/level around the
+          // record so we can fire a distinct "milestone" buzz on a combo
+          // threshold (every 5) or a level-up, layered on top of success.
+          const beforeStats = tuningStore.getState().stats
           const points = getPhraseScore(round.answer, round.answerLang)
           tuningStore.getState().recordCorrect(points)
+          triggerHaptic("success")
+          const afterStats = tuningStore.getState().stats
+          const crossedComboMilestone =
+            afterStats.streak > 0 &&
+            afterStats.streak % 5 === 0 &&
+            afterStats.streak !== beforeStats.streak
+          const leveledUp = afterStats.level > beforeStats.level
+          if (crossedComboMilestone || leveledUp) {
+            triggerHaptic("medium")
+          }
           hoverboard.adjustParticleIntensity?.(true)
           tuningStore.getState().recordPhraseResult(
             current.spec.id,
@@ -2315,6 +2338,8 @@ export const createHoverRunner = (
             )
           }
           if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
+          // Haptic: wrong hit → heavy (strongest negative).
+          triggerHaptic("heavy")
           createFailParticles(scene, phrasePosition)
           triggerScreenShake()
           setPromptStatus(t("phrase.wrong"), true)
@@ -2340,6 +2365,8 @@ export const createHoverRunner = (
           tuningStore.getState().recordWrong()
           hoverboard.adjustParticleIntensity?.(false)
           if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
+          // Haptic: missed a correct phrase (passed the hit window) → warning.
+          triggerHaptic("warning")
           createFailParticles(scene, passedPosition)
           triggerScreenShake()
           setPromptStatus(t("phrase.missed"), true)
@@ -2349,6 +2376,8 @@ export const createHoverRunner = (
         } else {
           // Successfully dodged a wrong answer - no miss increment!
           tuningStore.getState().recordDodge()
+          // Haptic: dodged a wrong answer → light (gentle positive).
+          triggerHaptic("light")
           scoreAnimator.showScorePopup(1)
           if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
         }
@@ -2373,6 +2402,8 @@ export const createHoverRunner = (
           tuningStore.getState().recordWrong()
           hoverboard.adjustParticleIntensity?.(false)
           if (tuningStore.getState().settings.sfxEnabled) sfx.playFail()
+          // Haptic: missed a correct phrase (fell off the end) → warning.
+          triggerHaptic("warning")
           createFailParticles(scene, endPosition)
           triggerScreenShake()
           setPromptStatus(t("phrase.missed"), true)
@@ -2382,6 +2413,8 @@ export const createHoverRunner = (
         } else {
           // Successfully dodged a wrong answer - no miss increment!
           tuningStore.getState().recordDodge()
+          // Haptic: dodged a wrong answer → light (gentle positive).
+          triggerHaptic("light")
           scoreAnimator.showScorePopup(1)
           if (tuningStore.getState().settings.sfxEnabled) sfx.playSuccess()
         }

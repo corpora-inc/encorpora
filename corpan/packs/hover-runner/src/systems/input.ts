@@ -1,4 +1,5 @@
 import { getSfx } from "../audio"
+import { triggerHaptic } from "../haptics"
 import { tuningStore } from "../tuningStore"
 import { clamp } from "../core/utils"
 import type { InputState } from "../core/types"
@@ -34,6 +35,22 @@ export const initInput = (
     tiltActive: false,
     tiltX: 0,
     tiltY: 0,
+  }
+
+  // Lane/row change haptic. Fired only when the discrete lane (col) or row
+  // actually changes, and DEBOUNCED so rapid input (or repeated key events)
+  // can't machine-gun the vibration motor. `triggerHaptic` itself is gated by
+  // the `hapticsEnabled` setting and is a silent no-op off-device.
+  const LANE_HAPTIC_DEBOUNCE_MS = 60
+  let lastLaneHapticAt = 0
+  const fireLaneChangeHaptic = () => {
+    const now =
+      typeof performance !== "undefined" && typeof performance.now === "function"
+        ? performance.now()
+        : Date.now()
+    if (now - lastLaneHapticAt < LANE_HAPTIC_DEBOUNCE_MS) return
+    lastLaneHapticAt = now
+    triggerHaptic("selection")
   }
 
   let tiltState: TiltState = "off"
@@ -117,6 +134,9 @@ export const initInput = (
       audio.playMusic()
     }
 
+    const prevRow = state.row
+    const prevCol = state.col
+
     if (event.key === "ArrowUp" || event.key === "w") {
       state.row = clamp(state.row - 1, 0, 2)
     }
@@ -128,6 +148,10 @@ export const initInput = (
     }
     if (event.key === "ArrowRight" || event.key === "d") {
       state.col = 1
+    }
+
+    if (state.row !== prevRow || state.col !== prevCol) {
+      fireLaneChangeHaptic()
     }
   }
 
@@ -147,6 +171,9 @@ export const initInput = (
       audio.playMusic()
     }
 
+    const prevRow = state.row
+    const prevCol = state.col
+
     const x = event.clientX - rect.left
     const y = event.clientY - rect.top
     state.col = x < rect.width / 2 ? 0 : 1
@@ -156,6 +183,10 @@ export const initInput = (
       state.row = 1
     } else {
       state.row = 2
+    }
+
+    if (state.row !== prevRow || state.col !== prevCol) {
+      fireLaneChangeHaptic()
     }
   }
 

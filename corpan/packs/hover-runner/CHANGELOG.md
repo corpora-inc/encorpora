@@ -10,6 +10,22 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-06-23 — Native haptics
+
+### Added
+- **Native haptics across 8 gameplay events.** Adds `src/haptics.ts`, a small
+  singleton (`triggerHaptic(style)`) that copies the juice-squeeze pattern —
+  direct `plugin:haptics|impact` IPC into the host's Tauri webview (no host
+  rebuild needed on Corpán 0.19.0+) with a `navigator.vibrate` fallback. Off
+  device / desktop / mock → silent no-op. Wired triggers: correct hit →
+  `success`; wrong hit → `heavy`; missed correct phrase → `warning`; dodged a
+  wrong answer → `light`; combo milestone (every 5) / level-up → `medium`;
+  daily-cap lock → `heavy`; lane/row change (touch + keyboard) → `selection`
+  (debounced, gated); settings/menu drawer open → `light`. New
+  `hapticsEnabled` setting in `tuningStore` (defaults ON for touch/coarse-pointer
+  devices, OFF on desktop) gates all of it, ready for a future settings toggle.
+  No gameplay, scoring, audio, or translation changes.
+
 ## [0.3.2] - 2026-06-23 — Scorecard scales up on tablet/large viewports
 
 ### Changed
