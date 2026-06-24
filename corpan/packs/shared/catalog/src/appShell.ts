@@ -592,12 +592,59 @@ export function createAppShell(
     window.setTimeout(() => el.remove(), 250)
   }
 
+  /**
+   * Read on-device reading history (the corpan-app progress store, persisted
+   * to localStorage) and project it onto the current `language` so the
+   * end-of-book suggestion never re-pushes a completed book and won't ping-pong
+   * between two items (issue #381). Pure read; tolerant of missing/old data.
+   */
+  function readingHistoryFor(language: string): {
+    completedBookIds: string[]
+    inProgressBookIds: string[]
+    recentBookIds: string[]
+  } {
+    const empty = { completedBookIds: [], inProgressBookIds: [], recentBookIds: [] }
+    try {
+      const raw = localStorage.getItem("corpan-progress-v1")
+      if (!raw) return empty
+      const byKey = (JSON.parse(raw)?.state?.byKey ?? {}) as Record<
+        string,
+        { segmentsReached?: number; totalSegments?: number; lastOpenedAt?: string }
+      >
+      const completed: string[] = []
+      const inProgress: string[] = []
+      const recent: Array<{ bookId: string; at: number }> = []
+      for (const [k, p] of Object.entries(byKey)) {
+        const sep = k.lastIndexOf("::")
+        if (sep < 0) continue
+        const bookId = k.slice(0, sep)
+        const lang = k.slice(sep + 2)
+        if (lang !== language || !bookId) continue
+        const done =
+          p?.totalSegments != null &&
+          (p?.segmentsReached ?? 0) >= p.totalSegments
+        if (done) completed.push(bookId)
+        else inProgress.push(bookId)
+        recent.push({ bookId, at: Date.parse(p?.lastOpenedAt ?? "") || 0 })
+      }
+      recent.sort((a, b) => b.at - a.at)
+      return {
+        completedBookIds: completed,
+        inProgressBookIds: inProgress,
+        recentBookIds: recent.map((r) => r.bookId),
+      }
+    } catch {
+      return empty
+    }
+  }
+
   /** Show the next-book suggestion for the book that just finished. */
   function showEndOfBookSuggestion(finishedBookId: string, language: string): void {
     if (disposed) return
     // Only meaningful once the catalog is loaded.
     if (allNarrations.length === 0) return
-    const next = chooseNextBook(allNarrations, finishedBookId, language)
+    const history = readingHistoryFor(language)
+    const next = chooseNextBook(allNarrations, finishedBookId, language, history)
     if (!next) return // nothing sensible to suggest — stay out of the way
 
     // Replace any prior suggestion (e.g. user re-finished a book).

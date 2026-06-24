@@ -157,28 +157,79 @@ export function sortBooks(books: BookGroup[], sort: BookSort): BookGroup[] {
 }
 
 /**
+ * Reading-history signals fed into `chooseNextBook` so the end-of-book
+ * suggestion stops ping-ponging between the same two items (issue #381).
+ *
+ * All sets/lists are keyed by `bookId` and scoped to the reader's CURRENT
+ * `language` by the caller (appShell reads them from the on-device progress
+ * store). This is the near-term anti-loop heuristic; the data-driven
+ * recommendation engine (#380) supersedes it.
+ */
+export type ChooseNextOpts = {
+  /**
+   * Books the user has already FINISHED in this language. Never suggested —
+   * completed items must not be re-pushed.
+   */
+  completedBookIds?: Iterable<string>
+  /**
+   * Books currently IN PROGRESS (opened but not finished) in this language.
+   * Deprioritized so we prefer something fresh, but allowed as a last resort
+   * (so we never dead-end into "nothing to suggest" when only in-flight books
+   * remain).
+   */
+  inProgressBookIds?: Iterable<string>
+  /**
+   * Recently-opened books, most-recent-first, in this language. Deprioritized
+   * to break the two-item cycle: the thing you just bounced off of won't be
+   * shoved back at you immediately.
+   */
+  recentBookIds?: Iterable<string>
+  /**
+   * How many of the newest eligible candidates to randomize across, so the
+   * fallback can't deterministically ping-pong onto the single newest book.
+   * Defaults to 3.
+   */
+  diversifyTop?: number
+  /** Injectable RNG in [0,1) for deterministic tests. Defaults to Math.random. */
+  random?: () => number
+}
+
+/**
  * Pick the book to suggest when the reader finishes `finishedBookId`.
  *
- * Preference order, all pure off the catalog:
- *   1. The next volume in the SAME series (series reading order — see
- *      `sortBooksWithinSeries`): the first book after the finished one that the
- *      reader can play in `language`.
- *   2. Otherwise the newest other book (by `sortBooks(..., "latest")`) the
- *      reader can play in `language`.
+ * Preference order, all pure off the catalog + the (optional) on-device
+ * reading-history signals:
+ *   1. The next UNFINISHED volume in the SAME series (series reading order —
+ *      see `sortBooksWithinSeries`) the reader can play in `language`.
+ *   2. Otherwise a fresh other book the reader can play in `language`,
+ *      preferring books they have NOT recently read / are not mid-way through,
+ *      randomized across the newest few eligible candidates so it can't
+ *      deterministically cycle between two items.
+ *   3. As a last resort (everything fresh is exhausted), fall back to recent /
+ *      in-progress books so we still suggest *something* rather than dead-end.
  *
  * "Can play in `language`" means the book has a narration in that language.
- * The finished book is never suggested. Returns the chosen book plus the
- * concrete narration to launch (the one matching `language`). Returns null when
- * nothing suitable exists (e.g. the only book in the catalog just finished, or
- * no other book is narrated in `language`).
+ * The finished book and any completed book are never suggested. Returns the
+ * chosen book plus the concrete narration to launch (the one matching
+ * `language`). Returns null when nothing suitable exists.
  */
 export function chooseNextBook(
   narrations: CatalogNarrationEntry[],
   finishedBookId: string,
-  language: string
+  language: string,
+  opts: ChooseNextOpts = {}
 ): { book: BookGroup; narration: CatalogNarrationEntry } | null {
   const books = groupByBook(narrations)
   const finished = books.find((b) => b.bookId === finishedBookId)
+
+  const completed = new Set(opts.completedBookIds ?? [])
+  // The just-finished book is always treated as completed for this language,
+  // even if the caller's progress signal hasn't caught up yet.
+  completed.add(finishedBookId)
+  const inProgress = new Set(opts.inProgressBookIds ?? [])
+  const recent = new Set(opts.recentBookIds ?? [])
+  const diversifyTop = Math.max(1, opts.diversifyTop ?? 3)
+  const random = opts.random ?? Math.random
 
   // A book is playable when it has a narration in the reader's current language
   // (so "Read next" actually plays rather than dead-ending).
@@ -193,7 +244,7 @@ export function chooseNextBook(
     return narration ? { book, narration } : null
   }
 
-  // 1. Next volume in the same series.
+  // 1. Next UNFINISHED volume in the same series.
   if (finished?.series) {
     const seriesBooks = sortBooksWithinSeries(
       books.filter((b) => b.series === finished.series)
@@ -201,19 +252,36 @@ export function chooseNextBook(
     const idx = seriesBooks.findIndex((b) => b.bookId === finishedBookId)
     if (idx >= 0) {
       for (let i = idx + 1; i < seriesBooks.length; i++) {
-        const chosen = pick(seriesBooks[i])
+        const book = seriesBooks[i]
+        if (completed.has(book.bookId)) continue
+        const chosen = pick(book)
         if (chosen) return chosen
       }
     }
   }
 
-  // 2. Fall back to the newest other playable book.
+  // 2 + 3. Fall back to other playable books, newest-first, then bucketed by
+  // freshness so we exhaust never-touched books before re-suggesting recent or
+  // in-progress ones. Completed books are dropped entirely.
   const others = sortBooks(
-    books.filter((b) => b.bookId !== finishedBookId),
+    books.filter((b) => b.bookId !== finishedBookId && !completed.has(b.bookId)),
     "latest"
+  ).filter((b) => playableIn(b) !== undefined)
+
+  // Freshest first: never read AND not recently opened > in-progress/recent.
+  const fresh = others.filter(
+    (b) => !inProgress.has(b.bookId) && !recent.has(b.bookId)
   )
-  for (const book of others) {
-    const chosen = pick(book)
+  const stale = others.filter(
+    (b) => inProgress.has(b.bookId) || recent.has(b.bookId)
+  )
+
+  // Diversify across the newest few fresh candidates so two items can't loop.
+  const bucket = fresh.length > 0 ? fresh : stale
+  if (bucket.length > 0) {
+    const window = bucket.slice(0, Math.min(diversifyTop, bucket.length))
+    const choice = window[Math.floor(random() * window.length)] ?? window[0]
+    const chosen = pick(choice)
     if (chosen) return chosen
   }
 
