@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Prenumeruoti ({{discount}})",
     "redeemCode": "Išpirkti kodą",
     "notApplied": "Šis kodas nesuteikia nuolaidos."
+  },
+  "wordExplain": {
+    "loading": "Ieškoma…",
+    "notFound": "Šiam žodžiui paaiškinimo dar nėra.",
+    "installPrompt": "Įdiekite ispaniškus anglų kalbos žodžių paaiškinimus (≈3 MB), kad matytumėte jų reikšmes.",
+    "installCta": "Įdiegti (≈3 MB)",
+    "installing": "Diegiama…",
+    "installFailed": "Nepavyko įdiegti. Patikrinkite ryšį ir bandykite dar kartą.",
+    "retry": "Bandyti dar kartą"
   }
 }

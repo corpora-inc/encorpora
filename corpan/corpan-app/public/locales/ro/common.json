@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Abonează-te ({{discount}})",
     "redeemCode": "Valorifică codul",
     "notApplied": "Acest cod nu oferă nicio reducere."
+  },
+  "wordExplain": {
+    "loading": "Se caută…",
+    "notFound": "Încă nu există o explicație pentru acest cuvânt.",
+    "installPrompt": "Instalează explicațiile în spaniolă pentru cuvinte englezești (≈3 MB) ca să vezi ce înseamnă.",
+    "installCta": "Instalează (≈3 MB)",
+    "installing": "Se instalează…",
+    "installFailed": "Instalarea a eșuat. Verifică conexiunea și încearcă din nou.",
+    "retry": "Încearcă din nou"
   }
 }

@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Prenumerera ({{discount}})",
     "redeemCode": "Lös in kod",
     "notApplied": "Den här koden ger ingen rabatt."
+  },
+  "wordExplain": {
+    "loading": "Söker…",
+    "notFound": "Det finns ännu ingen förklaring för det här ordet.",
+    "installPrompt": "Installera de spanska förklaringarna av engelska ord (≈3 MB) för att se vad de betyder.",
+    "installCta": "Installera (≈3 MB)",
+    "installing": "Installerar…",
+    "installFailed": "Kunde inte installeras. Kontrollera anslutningen och försök igen.",
+    "retry": "Försök igen"
   }
 }

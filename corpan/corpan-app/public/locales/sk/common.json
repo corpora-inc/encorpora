@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Predplatiť ({{discount}})",
     "redeemCode": "Uplatniť kód",
     "notApplied": "Tento kód neposkytuje zľavu."
+  },
+  "wordExplain": {
+    "loading": "Hľadanie…",
+    "notFound": "Pre toto slovo zatiaľ nie je vysvetlenie.",
+    "installPrompt": "Nainštalujte španielske vysvetlenia anglických slov (≈3 MB), aby ste videli, čo znamenajú.",
+    "installCta": "Nainštalovať (≈3 MB)",
+    "installing": "Inštaluje sa…",
+    "installFailed": "Inštalácia zlyhala. Skontrolujte pripojenie a skúste znova.",
+    "retry": "Skúsiť znova"
   }
 }

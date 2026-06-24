@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "구독하기 ({{discount}})",
     "redeemCode": "코드 사용하기",
     "notApplied": "이 코드로는 할인을 받을 수 없어요."
+  },
+  "wordExplain": {
+    "loading": "찾는 중…",
+    "notFound": "이 단어에 대한 설명이 아직 없어요.",
+    "installPrompt": "영어 단어의 스페인어 설명(약 3 MB)을 설치하면 뜻을 볼 수 있어요.",
+    "installCta": "설치 (약 3 MB)",
+    "installing": "설치 중…",
+    "installFailed": "설치하지 못했어요. 연결을 확인하고 다시 시도해 주세요.",
+    "retry": "다시 시도"
   }
 }

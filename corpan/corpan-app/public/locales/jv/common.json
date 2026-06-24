@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Langganan ({{discount}})",
     "redeemCode": "Gunakake kode",
     "notApplied": "Kode iki ora menehi diskon."
+  },
+  "wordExplain": {
+    "loading": "Nggoleki…",
+    "notFound": "Durung ana panjelasan kanggo tembung iki.",
+    "installPrompt": "Pasang panjelasan basa Spanyol kanggo tembung Inggris (≈3 MB) supaya weruh maknane.",
+    "installCta": "Pasang (≈3 MB)",
+    "installing": "Masang…",
+    "installFailed": "Ora bisa dipasang. Priksa sambungan lan coba maneh.",
+    "retry": "Coba maneh"
   }
 }

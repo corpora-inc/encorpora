@@ -24,6 +24,8 @@ import { isRTL } from "@/util/convert";
 import { getPlatformBottomPadding } from "@/util/browser";
 import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 import { speakConcurrentWithStackPrefs } from "@/util/speakWithStackPrefs";
+import { WordExplanationText } from "@/components/WordExplanationText";
+import { packIdForNative } from "@/util/wordPack";
 
 /* ----------------------------- Monetization ----------------------------- */
 
@@ -176,6 +178,8 @@ function TranslationBlock({
     onSpeak,
     reduceMotion,
     delay,
+    wordPackId,
+    preferredLangs,
 }: {
     uiCode: string;
     label: string;
@@ -185,6 +189,10 @@ function TranslationBlock({
     onSpeak: () => void;
     reduceMotion: boolean;
     delay: number;
+    /** (native→en) word-pack id when long-press explanations cover this text. */
+    wordPackId: string | null;
+    /** Stack languages in store order (native first) for native-first lookup. */
+    preferredLangs: string[];
 }) {
     const dir = isRTL(uiCode) ? "rtl" : "ltr";
     const hasText = Boolean(text);
@@ -212,12 +220,23 @@ function TranslationBlock({
             >
                 <div className="text-xs text-muted-foreground">{label}</div>
 
-                <div
-                    className="text-center text-2xl md:text-2xl lg:text-3xl mt-1 my-1"
-                    style={{ wordBreak: "break-word", maxWidth: "80vw", lineHeight: 1.1 }}
-                >
-                    {hasText ? text : <span className="opacity-30">—</span>}
-                </div>
+                {hasText && wordPackId ? (
+                    <WordExplanationText
+                        text={text}
+                        lang={uiCode}
+                        packId={wordPackId}
+                        preferredLangs={preferredLangs}
+                        className="text-center text-2xl md:text-2xl lg:text-3xl mt-1 my-1"
+                        style={{ wordBreak: "break-word", maxWidth: "80vw", lineHeight: 1.1 }}
+                    />
+                ) : (
+                    <div
+                        className="text-center text-2xl md:text-2xl lg:text-3xl mt-1 my-1"
+                        style={{ wordBreak: "break-word", maxWidth: "80vw", lineHeight: 1.1 }}
+                    >
+                        {hasText ? text : <span className="opacity-30">—</span>}
+                    </div>
+                )}
 
                 {showRomanization && romanization ? (
                     <div
@@ -293,6 +312,14 @@ export function MainExperience() {
     const replaceCurrent = useHistoryStore((s) => s.replaceCurrent);
 
     const displayedLanguages = useMemo(() => [...languages].reverse(), [languages]);
+
+    // Long-press word explanations: the data pack explains ENGLISH words in the
+    // user's native language (`languages[0]`, store order). When a (native→en)
+    // word pack exists, the `en` block becomes long-pressable. es → en is the
+    // first shipped pair; `packIdForNative` returns null for everyone else, so
+    // the feature is a no-op for unsupported natives.
+    const nativeLang = languages[0] ?? "en";
+    const wordPackId = useMemo(() => packIdForNative(nativeLang), [nativeLang]);
 
     const [currEntry, setCurrEntry] = useState<EntryOut | null>(null);
     const fetchSeqRef = useRef(0);
@@ -679,6 +706,8 @@ export function MainExperience() {
                                     onSpeak={() => speak(uiCode, txt)}
                                     reduceMotion={!!reduceMotion}
                                     delay={idx * 0.035}
+                                    wordPackId={uiCode === "en" ? wordPackId : null}
+                                    preferredLangs={languages}
                                 />
                             );
                         })}

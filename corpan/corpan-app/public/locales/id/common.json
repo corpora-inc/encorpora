@@ -83,7 +83,7 @@
     "fast": "Cepat",
     "slower": "Lebih lambat",
     "faster": "Lebih cepat",
-        "levels": "Tingkatan",
+    "levels": "Tingkatan",
     "selectAll": "Pilih semua",
     "deselectAll": "Batalkan pilihan semua",
     "allLevelsIncluded": "Semua tingkatan termasuk.",
@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Langganan ({{discount}})",
     "redeemCode": "Tukarkan kode",
     "notApplied": "Kode ini tidak memberi diskon."
+  },
+  "wordExplain": {
+    "loading": "Mencari…",
+    "notFound": "Belum ada penjelasan untuk kata ini.",
+    "installPrompt": "Pasang penjelasan bahasa Spanyol untuk kata bahasa Inggris (≈3 MB) untuk melihat artinya.",
+    "installCta": "Pasang (≈3 MB)",
+    "installing": "Memasang…",
+    "installFailed": "Tidak dapat memasang. Periksa koneksi Anda dan coba lagi.",
+    "retry": "Coba lagi"
   }
 }

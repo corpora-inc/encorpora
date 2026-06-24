@@ -83,7 +83,7 @@
     "fast": "Gyors",
     "slower": "Lassabb",
     "faster": "Gyorsabb",
-        "levels": "Szintek",
+    "levels": "Szintek",
     "selectAll": "Összes kiválasztása",
     "deselectAll": "Összes kiválasztásának megszüntetése",
     "allLevelsIncluded": "Minden szint benne van.",
@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Előfizetés ({{discount}})",
     "redeemCode": "Kód beváltása",
     "notApplied": "Ez a kód nem ad kedvezményt."
+  },
+  "wordExplain": {
+    "loading": "Keresés…",
+    "notFound": "Ehhez a szóhoz még nincs magyarázat.",
+    "installPrompt": "Telepítsd az angol szavak spanyol magyarázatait (≈3 MB), hogy lásd, mit jelentenek.",
+    "installCta": "Telepítés (≈3 MB)",
+    "installing": "Telepítés…",
+    "installFailed": "A telepítés nem sikerült. Ellenőrizd a kapcsolatot, és próbáld újra.",
+    "retry": "Újra"
   }
 }

@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Tilaa ({{discount}})",
     "redeemCode": "Lunasta koodi",
     "notApplied": "Tämä koodi ei anna alennusta."
+  },
+  "wordExplain": {
+    "loading": "Haetaan…",
+    "notFound": "Tälle sanalle ei ole vielä selitystä.",
+    "installPrompt": "Asenna englanninkielisten sanojen espanjankieliset selitykset (≈3 MB), niin näet niiden merkitykset.",
+    "installCta": "Asenna (≈3 MB)",
+    "installing": "Asennetaan…",
+    "installFailed": "Asennus epäonnistui. Tarkista yhteys ja yritä uudelleen.",
+    "retry": "Yritä uudelleen"
   }
 }

@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "הירשם ({{discount}})",
     "redeemCode": "מימוש קוד",
     "notApplied": "הקוד הזה לא מקנה הנחה."
+  },
+  "wordExplain": {
+    "loading": "מחפש…",
+    "notFound": "אין עדיין הסבר למילה הזו.",
+    "installPrompt": "התקן את ההסברים בספרדית למילים באנגלית (≈3 מ\"ב) כדי לראות מה הן אומרות.",
+    "installCta": "התקן (≈3 מ\"ב)",
+    "installing": "מתקין…",
+    "installFailed": "ההתקנה נכשלה. בדוק את החיבור ונסה שוב.",
+    "retry": "נסה שוב"
   }
 }

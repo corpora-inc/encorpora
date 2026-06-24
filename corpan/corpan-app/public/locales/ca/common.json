@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Subscriu-te ({{discount}})",
     "redeemCode": "Bescanvia el codi",
     "notApplied": "Aquest codi no dóna cap descompte."
+  },
+  "wordExplain": {
+    "loading": "Cercant…",
+    "notFound": "Encara no hi ha explicació per a aquesta paraula.",
+    "installPrompt": "Instal·la les explicacions en castellà de paraules en anglès (≈3 MB) per veure què signifiquen.",
+    "installCta": "Instal·la (≈3 MB)",
+    "installing": "Instal·lant…",
+    "installFailed": "No s'ha pogut instal·lar. Comprova la connexió i torna-ho a provar.",
+    "retry": "Torna-ho a provar"
   }
 }

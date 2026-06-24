@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "割引で購読 ({{discount}})",
     "redeemCode": "コードを使う",
     "notApplied": "このコードでは割引を利用できません。"
+  },
+  "wordExplain": {
+    "loading": "検索中…",
+    "notFound": "この単語の説明はまだありません。",
+    "installPrompt": "英単語のスペイン語の説明（約3 MB）をインストールして意味を確認しましょう。",
+    "installCta": "インストール（約3 MB）",
+    "installing": "インストール中…",
+    "installFailed": "インストールできませんでした。接続を確認して再試行してください。",
+    "retry": "再試行"
   }
 }

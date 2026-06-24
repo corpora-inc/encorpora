@@ -83,7 +83,7 @@
     "fast": "Szybko",
     "slower": "Wolniej",
     "faster": "Szybciej",
-        "levels": "Poziomy",
+    "levels": "Poziomy",
     "selectAll": "Zaznacz wszystko",
     "deselectAll": "Odznacz wszystko",
     "allLevelsIncluded": "Wszystkie poziomy są uwzględnione.",
@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Subskrybuj ({{discount}})",
     "redeemCode": "Zrealizuj kod",
     "notApplied": "Ten kod nie daje zniżki."
+  },
+  "wordExplain": {
+    "loading": "Wyszukiwanie…",
+    "notFound": "Brak na razie wyjaśnienia tego słowa.",
+    "installPrompt": "Zainstaluj hiszpańskie wyjaśnienia angielskich słów (≈3 MB), aby zobaczyć, co znaczą.",
+    "installCta": "Zainstaluj (≈3 MB)",
+    "installing": "Instalowanie…",
+    "installFailed": "Nie udało się zainstalować. Sprawdź połączenie i spróbuj ponownie.",
+    "retry": "Spróbuj ponownie"
   }
 }
