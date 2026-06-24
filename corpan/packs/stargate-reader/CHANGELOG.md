@@ -10,6 +10,31 @@ Conventions: `corpan/CHANGELOGS.md`.
 
 ## [Unreleased]
 
+## [0.7.5] - 2026-06-24
+
+### Fixed
+- **No more micro-stutter at segment boundaries (#455).** Each time playback
+  crossed into a new segment, the first few words of that segment — which the
+  forced alignment often packs into a tight cluster after the inter-segment
+  pause — could reach the legibility threshold (`FADE_IN_Z`) in the same frame.
+  Glyphs that "must be legible this frame" bypassed the per-frame rasterization
+  budget, so several `DynamicTexture` draws + GPU uploads ran synchronously on
+  one frame: a one-frame hitch. The word stream now **pre-warms** upcoming
+  glyphs during their long invisible runway, rasterizing the words *nearest* to
+  crossing `FADE_IN_Z` first (priority-ordered within the existing per-frame
+  budget), so by the time a word becomes legible its texture is already drawn
+  and nothing has to be rasterized at the boundary. Output is visually
+  identical; the boundary just no longer hitches. Motion remains fully
+  audio-clock-driven (frame-rate independent); no audio timing, alignment, word
+  list, or sync changed.
+
+### Added
+- **Opt-in perf diagnostic for segment-boundary smoothness (#455).** Enable with
+  `?srperf=1` (or `localStorage.sr_perf = "1"`) to log and draw the worst frame
+  time in a ~0.5s window around each segment boundary plus the count of forced
+  (un-pre-warmed) glyph rasterizations — the metric the fix drives toward zero.
+  Off by default with no runtime cost when disabled.
+
 ## [0.7.4] - 2026-06-23
 
 ### Fixed
