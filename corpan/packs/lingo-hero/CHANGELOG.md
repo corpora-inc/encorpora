@@ -6,6 +6,49 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.9] - 2026-06-24
+
+Script-aware tokenization + offline glyph rendering — the correctness fix that
+makes whole non-Latin language classes actually PLAYABLE (#463). Preview channel.
+
+### Fixed
+- **Chinese (zh), Japanese (ja), and Thai (th) now genuinely play (#463).**
+  Operator-confirmed completely broken: the phrase→catchable-notes split was
+  whitespace-only, so a no-space script (CJK, Thai) produced ZERO playable
+  units and the round bricked. Replaced the whitespace `tokenize` with a new
+  reusable, OFFLINE, script-aware `segmentPhrase(text, lang)` (built on the
+  built-in `Intl.Segmenter`) in `src/segment.ts`:
+  - Space-delimited (Latin/Cyrillic/Greek): word granularity filtered to
+    word-like segments (≈ prior behavior; punctuation stays attached).
+  - CJK no-space (zh/ja): word granularity → meaningful multi-char units, with
+    a per-character fall back when the segmenter returns one giant run, so the
+    phrase is always playable as a hanzi/kana sequence (reading mode).
+  - Thai + SE Asian no-space (th/lo/km/my): word granularity, grapheme-cluster
+    safe — a Thai combining vowel/tone mark is never split off its base.
+  - Indic (hi/bn/…): space-split words, conjuncts/matras kept as intact
+    grapheme clusters.
+  - Fallback when `Intl.Segmenter` is missing: space-split if spaces present,
+    else per grapheme-cluster.
+  Distractor-word collection is segmented the same script-aware way, so foils
+  are real target-language units (answer dedup preserved).
+- **Non-Latin scripts no longer render as TOFU (#463).** The neon display face
+  (Russo One / Lato) is Latin-only, so zh/ja/th/ar/he/Devanagari showed as
+  boxes on the canvas note cards and the DOM prompt/strip. Added a per-script
+  OFFLINE system-font fallback stack (`scriptFontStack` in `src/segment.ts`):
+  the Renderer now picks the active target language's stack for canvas glyph
+  rendering (`Renderer.setActiveLang`), and the CSS adds matching `[data-lang]`
+  fallbacks on `.question-box` + `.lh-chip`. No large CJK/Thai fonts vendored —
+  device system fonts carry these scripts.
+- **RTL assembling strip (ar/he/fa/ur).** The caught-word strip follows logical
+  (RTL) reading order with `dir=rtl`, matching the already-RTL prompt.
+
+### Tests
+- `test/e2e/gameplay.spec.mjs` grows the #463 regression teeth: for
+  zh/ja/th/ar/hi it drives the real game with REAL phrases and asserts the
+  phrase segments into >= 2 units, the note glyphs render with real ink (not
+  tofu), catching the correct unit SCORES (genuinely playable), and the strip
+  is RTL for Arabic. New `harness-script.html` mounts an `?lang=` stack.
+
 ## [0.4.8] - 2026-06-24
 
 The prompt-truncation fix that the 0.4.3 and 0.4.6 "fixes" only *appeared* to

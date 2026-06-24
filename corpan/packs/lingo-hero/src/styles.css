@@ -800,6 +800,117 @@ canvas {
   font-weight: 900;
 }
 
+/* =========================================================================
+   PER-SCRIPT FONT FALLBACKS (issue #463)
+   The branded display/body faces (Lato) are Latin-only, so non-Latin target
+   scripts render as TOFU (□□□) on the prompt AND the assembling strip. Lingo
+   Hero is fully OFFLINE (no remote fonts), so we lean on the platform's OWN
+   system fonts, which carry these scripts on every shipping device. We never
+   vendor large CJK/Thai files. The canvas note cards get the same treatment in
+   Renderer.ts via scriptFontStack() — single-sourced intent in src/segment.ts.
+   Each stack keeps the Latin display face FIRST (branded Latin), then the
+   on-device system fonts that actually carry the script.
+   ========================================================================= */
+
+/* --- CJK (Chinese, Japanese, Korean) --- */
+[data-lang="zh"] .question-box,
+[data-lang="zh"] .lh-chip,
+[data-lang="ja"] .question-box,
+[data-lang="ja"] .lh-chip,
+[data-lang="ko"] .question-box,
+[data-lang="ko"] .lh-chip {
+  font-family:
+    "Russo One", "Lingo Sans", "PingFang SC", "PingFang TC", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Noto Sans CJK SC", "Noto Sans CJK JP",
+    "Noto Sans SC", "Noto Sans JP", "Microsoft YaHei", "Yu Gothic",
+    "Source Han Sans", system-ui, sans-serif;
+}
+
+/* --- Thai + SE Asian no-space (Lao, Khmer, Burmese) --- */
+[data-lang="th"] .question-box,
+[data-lang="th"] .lh-chip,
+[data-lang="lo"] .question-box,
+[data-lang="lo"] .lh-chip,
+[data-lang="km"] .question-box,
+[data-lang="km"] .lh-chip,
+[data-lang="my"] .question-box,
+[data-lang="my"] .lh-chip {
+  font-family:
+    "Russo One", "Lingo Sans", "Thonburi", "Noto Sans Thai", "Noto Looped Thai",
+    "Leelawadee UI", "Noto Sans Lao", "Noto Looped Lao", "Noto Sans Khmer",
+    "Noto Sans Myanmar", system-ui, sans-serif;
+  /* Thai stacks combining vowels/tones above + below — give them headroom. */
+  line-height: 1.5;
+}
+
+/* --- Arabic / Persian / Urdu (RTL) --- */
+[data-lang="ar"] .lh-chip,
+[data-lang="fa"] .lh-chip,
+[data-lang="ur"] .lh-chip,
+[data-lang="fa"] .question-box,
+[data-lang="ur"] .question-box {
+  font-family:
+    "Lingo Sans", "Geeza Pro", "SF Arabic", "Noto Sans Arabic",
+    "Noto Naskh Arabic", "Segoe UI", "Tahoma", system-ui, sans-serif;
+}
+/* ar already sets font-body above; ensure the strip chip matches it. */
+[data-lang="ar"] .lh-chip {
+  font-family:
+    "Lingo Sans", "Geeza Pro", "SF Arabic", "Noto Sans Arabic",
+    "Noto Naskh Arabic", "Segoe UI", "Tahoma", system-ui, sans-serif;
+}
+
+/* --- Hebrew (RTL) --- */
+[data-lang="he"] .lh-chip,
+[data-lang="he"] .question-box {
+  font-family:
+    "Lingo Sans", "Arial Hebrew", "SF Hebrew", "Noto Sans Hebrew", "Segoe UI",
+    "Tahoma", system-ui, sans-serif;
+}
+
+/* --- Devanagari (Hindi, Marathi, …) --- */
+[data-lang="hi"] .question-box,
+[data-lang="hi"] .lh-chip,
+[data-lang="mr"] .question-box,
+[data-lang="mr"] .lh-chip {
+  font-family:
+    "Russo One", "Lingo Sans", "Kohinoor Devanagari", "Devanagari Sangam MN",
+    "Noto Sans Devanagari", "Lohit Devanagari", "Nirmala UI", system-ui,
+    sans-serif;
+  /* Devanagari matras/conjuncts stack — a touch more leading reads cleaner. */
+  line-height: 1.45;
+}
+
+/* --- Other Indic (Bengali, Tamil, Telugu, …) — broad Noto Indic net --- */
+[data-lang="bn"] .question-box,
+[data-lang="bn"] .lh-chip,
+[data-lang="ta"] .question-box,
+[data-lang="ta"] .lh-chip,
+[data-lang="te"] .question-box,
+[data-lang="te"] .lh-chip,
+[data-lang="kn"] .question-box,
+[data-lang="kn"] .lh-chip,
+[data-lang="ml"] .question-box,
+[data-lang="ml"] .lh-chip,
+[data-lang="gu"] .question-box,
+[data-lang="gu"] .lh-chip {
+  font-family:
+    "Russo One", "Lingo Sans", "Noto Sans Bengali", "Noto Sans Tamil",
+    "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Malayalam",
+    "Noto Sans Gujarati", "Nirmala UI", system-ui, sans-serif;
+  line-height: 1.45;
+}
+
+/* The assembling strip must follow RTL reading order for RTL targets. The Hud
+   sets dir="rtl" on the container, and flex honors it (right-to-left visual
+   order = logical caught order). Make that explicit + keep chips upright. */
+[data-lang="ar"] .lh-assemble,
+[data-lang="he"] .lh-assemble,
+[data-lang="fa"] .lh-assemble,
+[data-lang="ur"] .lh-assemble {
+  direction: rtl;
+}
+
 /* (in-game audio replay / "tap to hear" control removed — the prompt is now a
    plain display label; the TARGET word is still spoken on catch.) */
 
