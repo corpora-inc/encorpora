@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Đăng ký ({{discount}})",
     "redeemCode": "Đổi mã",
     "notApplied": "Mã này không áp dụng giảm giá."
+  },
+  "wordExplain": {
+    "loading": "Đang tra cứu…",
+    "notFound": "Chưa có giải thích cho từ này.",
+    "installPrompt": "Cài phần giải thích tiếng Tây Ban Nha cho từ tiếng Anh (≈3 MB) để xem nghĩa của chúng.",
+    "installCta": "Cài đặt (≈3 MB)",
+    "installing": "Đang cài đặt…",
+    "installFailed": "Không cài được. Kiểm tra kết nối rồi thử lại.",
+    "retry": "Thử lại"
   }
 }

@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Pretplati se ({{discount}})",
     "redeemCode": "Искористи код",
     "notApplied": "Овај код не доноси попуст."
+  },
+  "wordExplain": {
+    "loading": "Претрага…",
+    "notFound": "За ову реч још нема објашњења.",
+    "installPrompt": "Инсталирајте шпанска објашњења енглеских речи (≈3 MB) да видите шта значе.",
+    "installCta": "Инсталирај (≈3 MB)",
+    "installing": "Инсталирање…",
+    "installFailed": "Инсталација није успела. Проверите везу и покушајте поново.",
+    "retry": "Покушај поново"
   }
 }

@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Naroči se ({{discount}})",
     "redeemCode": "Unovči kodo",
     "notApplied": "Ta koda ne prinese popusta."
+  },
+  "wordExplain": {
+    "loading": "Iskanje…",
+    "notFound": "Za to besedo še ni razlage.",
+    "installPrompt": "Namestite španske razlage angleških besed (≈3 MB), da vidite, kaj pomenijo.",
+    "installCta": "Namesti (≈3 MB)",
+    "installing": "Nameščanje…",
+    "installFailed": "Namestitev ni uspela. Preverite povezavo in poskusite znova.",
+    "retry": "Poskusi znova"
   }
 }

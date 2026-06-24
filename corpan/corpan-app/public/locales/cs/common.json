@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Předplatit ({{discount}})",
     "redeemCode": "Uplatnit kód",
     "notApplied": "Tento kód neposkytuje slevu."
+  },
+  "wordExplain": {
+    "loading": "Vyhledávání…",
+    "notFound": "Pro toto slovo zatím není vysvětlení.",
+    "installPrompt": "Nainstalujte španělská vysvětlení anglických slov (≈3 MB), abyste viděli, co znamenají.",
+    "installCta": "Nainstalovat (≈3 MB)",
+    "installing": "Instalace…",
+    "installFailed": "Instalace se nezdařila. Zkontrolujte připojení a zkuste to znovu.",
+    "retry": "Zkusit znovu"
   }
 }

@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Abone Ol ({{discount}})",
     "redeemCode": "Kodu kullan",
     "notApplied": "Bu kod indirim sağlamıyor."
+  },
+  "wordExplain": {
+    "loading": "Aranıyor…",
+    "notFound": "Bu kelime için henüz açıklama yok.",
+    "installPrompt": "İngilizce kelimelerin İspanyolca açıklamalarını (≈3 MB) yükleyerek anlamlarını görün.",
+    "installCta": "Yükle (≈3 MB)",
+    "installing": "Yükleniyor…",
+    "installFailed": "Yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.",
+    "retry": "Tekrar dene"
   }
 }

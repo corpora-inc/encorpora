@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Jisajili ({{discount}})",
     "redeemCode": "Tumia msimbo",
     "notApplied": "Msimbo huu hautoi punguzo lolote."
+  },
+  "wordExplain": {
+    "loading": "Inatafuta…",
+    "notFound": "Bado hakuna maelezo ya neno hili.",
+    "installPrompt": "Sakinisha maelezo ya Kihispania ya maneno ya Kiingereza (≈3 MB) ili kuona maana yake.",
+    "installCta": "Sakinisha (≈3 MB)",
+    "installing": "Inasakinisha…",
+    "installFailed": "Imeshindwa kusakinisha. Angalia muunganisho wako na ujaribu tena.",
+    "retry": "Jaribu tena"
   }
 }

@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "S'abonner ({{discount}})",
     "redeemCode": "Utiliser le code",
     "notApplied": "Ce code ne donne aucune remise."
+  },
+  "wordExplain": {
+    "loading": "Recherche…",
+    "notFound": "Pas encore d'explication pour ce mot.",
+    "installPrompt": "Installez les explications en espagnol des mots anglais (≈3 Mo) pour voir leur sens.",
+    "installCta": "Installer (≈3 Mo)",
+    "installing": "Installation…",
+    "installFailed": "Installation impossible. Vérifiez votre connexion et réessayez.",
+    "retry": "Réessayer"
   }
 }

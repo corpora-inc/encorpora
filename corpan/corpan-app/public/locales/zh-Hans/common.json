@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "订阅（{{discount}}）",
     "redeemCode": "兑换代码",
     "notApplied": "此代码不提供折扣。"
+  },
+  "wordExplain": {
+    "loading": "查询中…",
+    "notFound": "这个词暂时还没有解释。",
+    "installPrompt": "安装英文单词的西班牙语解释（约3 MB），即可查看词义。",
+    "installCta": "安装（约3 MB）",
+    "installing": "安装中…",
+    "installFailed": "无法安装。请检查网络后重试。",
+    "retry": "重试"
   }
 }

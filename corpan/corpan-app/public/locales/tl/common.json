@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Mag-subscribe ({{discount}})",
     "redeemCode": "Tubusin ang code",
     "notApplied": "Walang diskwento ang code na ito."
+  },
+  "wordExplain": {
+    "loading": "Hinahanap…",
+    "notFound": "Wala pang paliwanag para sa salitang ito.",
+    "installPrompt": "I-install ang mga paliwanag sa Espanyol para sa mga salitang Ingles (≈3 MB) para makita ang kahulugan.",
+    "installCta": "I-install (≈3 MB)",
+    "installing": "Ini-install…",
+    "installFailed": "Hindi ma-install. Suriin ang koneksyon at subukan muli.",
+    "retry": "Subukan muli"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "id": "wordpan_es_en",
+  "name": "Spanish explanations for English",
+  "version": "0.1.0",
+  "entryType": "data",
+  "sdkVersion": "0.1.0",
+  "databases": {
+    "main": "data/word.sqlite3"
+  },
+  "languages": ["en", "es"],
+  "nameLocalized": {
+    "en": "Spanish explanations for English",
+    "es": "Explicaciones en español de palabras en inglés"
+  },
+  "descriptionLocalized": {
+    "en": "Long-press any English word in Phrase Flip to read what it means, in Spanish.",
+    "es": "Mantén pulsada cualquier palabra en inglés en Phrase Flip para leer qué significa, en español."
+  }
+}

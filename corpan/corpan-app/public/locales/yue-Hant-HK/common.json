@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "訂閱（{{discount}}）",
     "redeemCode": "使用代碼",
     "notApplied": "呢個代碼冇折扣優惠。"
+  },
+  "wordExplain": {
+    "loading": "搵緊…",
+    "notFound": "呢個字暫時仲未有解釋。",
+    "installPrompt": "安裝英文字嘅西班牙文解釋（約3 MB），就可以睇到佢哋嘅意思。",
+    "installCta": "安裝（約3 MB）",
+    "installing": "安裝緊…",
+    "installFailed": "裝唔到。請檢查網絡再試。",
+    "retry": "再試"
   }
 }

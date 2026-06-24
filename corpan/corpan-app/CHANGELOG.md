@@ -8,6 +8,17 @@ Conventions: `corpan/CHANGELOGS.md`.
 ## [Unreleased]
 
 ### Added
+- **Long-press word explanations in Phrase Flip (#477, #478, #479).** Long-press
+  (touch) or right-click / long mouse-press (desktop) any English word in a
+  phrase to open a popover explaining what it means, in your native language,
+  with an English fallback when the native paragraph is missing — mirroring
+  Hanzipan's native-first etymology lookup. The explanations ship as an
+  on-demand, data-only content pack (`wordpan_es_en`, es→en first); if it isn't
+  installed yet the popover shows a friendly "Install (≈3 MB)" prompt wired to
+  the standard content-pack installer. A short tap is unchanged — it still
+  speaks the whole phrase (TTS is not regressed). New `wordExplain.*` locale
+  keys (all 54 locales). The feature is a no-op for native languages without a
+  word pack yet.
 - **Paywall pauses the active pack/reader (#436).** When the Corpán Plus
   paywall opens over a running pack or reader, the host now dispatches a generic
   `corpan:host-pause` window event (and `corpan:host-resume` when it closes),

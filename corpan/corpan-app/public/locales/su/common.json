@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Langganan ({{discount}})",
     "redeemCode": "Anggo kode",
     "notApplied": "Kode ieu teu masihan diskon."
+  },
+  "wordExplain": {
+    "loading": "Néangan…",
+    "notFound": "Tacan aya katerangan pikeun kecap ieu.",
+    "installPrompt": "Pasang katerangan basa Spanyol pikeun kecap Inggris (≈3 MB) supaya nyaho hartina.",
+    "installCta": "Pasang (≈3 MB)",
+    "installing": "Masang…",
+    "installFailed": "Teu tiasa dipasang. Pariksa koneksi sareng cobian deui.",
+    "retry": "Cobian deui"
   }
 }

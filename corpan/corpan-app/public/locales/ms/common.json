@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Langgan ({{discount}})",
     "redeemCode": "Tebus kod",
     "notApplied": "Kod ini tidak memberi diskaun."
+  },
+  "wordExplain": {
+    "loading": "Mencari…",
+    "notFound": "Belum ada penjelasan untuk perkataan ini.",
+    "installPrompt": "Pasang penjelasan bahasa Sepanyol untuk perkataan Inggeris (≈3 MB) untuk melihat maksudnya.",
+    "installCta": "Pasang (≈3 MB)",
+    "installing": "Memasang…",
+    "installFailed": "Tidak dapat dipasang. Periksa sambungan anda dan cuba lagi.",
+    "retry": "Cuba lagi"
   }
 }

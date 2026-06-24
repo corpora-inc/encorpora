@@ -835,5 +835,14 @@
     "subscribeWithDiscount": "Abonneren ({{discount}})",
     "redeemCode": "Code inwisselen",
     "notApplied": "Deze code geeft geen korting."
+  },
+  "wordExplain": {
+    "loading": "Opzoeken…",
+    "notFound": "Nog geen uitleg voor dit woord.",
+    "installPrompt": "Installeer de Spaanse uitleg van Engelse woorden (≈3 MB) om te zien wat ze betekenen.",
+    "installCta": "Installeren (≈3 MB)",
+    "installing": "Installeren…",
+    "installFailed": "Installeren mislukt. Controleer je verbinding en probeer het opnieuw.",
+    "retry": "Opnieuw proberen"
   }
 }

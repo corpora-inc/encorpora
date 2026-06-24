@@ -835,5 +835,14 @@
     "redeeming": "Opening redeem…",
     "retry": "Retry",
     "subscribeWithDiscount": "Subscribe ({{discount}})"
+  },
+  "wordExplain": {
+    "loading": "Looking up…",
+    "notFound": "No explanation for this word yet.",
+    "installPrompt": "Install Spanish explanations for English (≈3 MB) to see what words mean.",
+    "installCta": "Install (≈3 MB)",
+    "installing": "Installing…",
+    "installFailed": "Couldn't install. Check your connection and try again.",
+    "retry": "Try again"
   }
 }
