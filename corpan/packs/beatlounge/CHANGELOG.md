@@ -5,6 +5,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.5.0] "Plus" - 2026-06-23
+
 ### Added
 - Microtonal playback (tuning Phase 0): sequenced notes **and** the in-key ribbon
   now sound the active tuning's exact cents (maqam neutral tones, pythagorean,
@@ -62,6 +64,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   scrollable, instead of a ~3-octave window — notes can be seen and placed
   anywhere. Opens scrolled to ~middle C; the +/− generator still works in the
   singable register. (Beat-Lounge-Plus; closes #394.)
+- Corrected three maqam interval errors (verified against maqamworld.com), now
+  audible via the microtonal playback above: **Nikriz** has a **minor 7th** (B♭ —
+  upper jins is Nahawand, not Rast; was a neutral 7th); **Ajam** is the **major
+  scale** (major 7th — was a ♭7/Mixolydian; upper Nahawand roots on the 6th);
+  **Kurd**'s upper jins re-roots to the **4th** (correct A♭ 6th). Hijazkar
+  (double-harmonic) and Sikah confirmed correct as-is. (Beat-Lounge-Plus.)
 
 ## [0.3.2] - 2026-06-19
 
