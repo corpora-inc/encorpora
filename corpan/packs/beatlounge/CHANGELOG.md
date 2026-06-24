@@ -34,8 +34,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   clears on mode-off / track-switch and exposes the selected note ids for the
   upcoming +/− and evolve-on-selection actions. Scoped to the Score — Drums'
   paint behaviour is unchanged. (Beat-Lounge-Plus; closes #331.)
+- Score "Evolve" action: with notes selected, **Evolve** varies them in key —
+  a coherent in-scale transpose or a contour mirror. One undo per evolve.
+  (Beat-Lounge-Plus; closes #332.)
 
 ### Fixed
+- Score +/− now act on the note selection when one exists: **−** removes exactly
+  the selected notes, and **+** spreads a fresh layer across the selected notes'
+  rows (all of them, not one). With no selection the dial behaves as before.
+  (Beat-Lounge-Plus; closes #395.)
 - Scratch empty-state no longer looks broken: with an empty bank the idle
   turntable always renders (instead of a "nothing here" screen), the Effects /
   Phrases toggle is no longer stuck, and tapping "Pick snippet" opens the Phrases
