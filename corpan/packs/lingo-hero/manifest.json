@@ -2,7 +2,7 @@
   "id": "lingo_hero",
   "channel": "preview",
   "name": "Lingo Hero",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "Catch the translation. The phrase you know falls as a chart of timed notes in the language you're learning — catch each word in rhythm, in order, and hear it spoken.",
   "entry": "dist/app.js",
   "styles": [
