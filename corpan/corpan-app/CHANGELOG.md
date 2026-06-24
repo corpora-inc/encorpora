@@ -25,6 +25,15 @@ Conventions: `corpan/CHANGELOGS.md`.
   popover/lookup behaviour and tap-to-speak TTS are unchanged. New
   `wordPacks.*` locale keys (all 54 locales).
 
+  Not a back-compat break: the `wordpan_es_en` catalog entry was added by
+  #498 in this SAME `[Unreleased]` cycle and never shipped in a released
+  build (last release is 0.19.2, which predates #498), so no in-field client
+  has ever discovered or installed this pack via the main catalog. The #498
+  install path also never read the catalog entry — it called
+  `content_packs_install_from_url` with a hard-coded URL — so even dev/preview
+  installs did not depend on the `packs.json` route being removed here. No
+  compat floor / redirect is needed.
+
 ### Added
 - **Long-press word explanations in Phrase Flip (#477, #478, #479).** Long-press
   (touch) or right-click / long mouse-press (desktop) any English word in a
