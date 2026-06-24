@@ -149,24 +149,27 @@ export class Hud {
            aria-label="Paused" aria-modal="true" hidden>
         <div class="lh-pause-card">
           <p class="lh-pause-title">Paused</p>
-          <button class="menu-btn blitz" id="lh-resume" type="button">
+          <!-- #490: pause-sheet rows are TERMINAL actions (they act, they don't
+               drill into a submenu), so they carry NO trailing drill-in chevron.
+               That chevron glyph is reserved for the menu's drill-in buttons
+               (Practice / Blitz / Retry / Main Menu). The terminal-action class
+               drops the chevron affordance and keeps the row a flat, tappable
+               action. -->
+          <button class="menu-btn blitz terminal-action" id="lh-resume" type="button">
             <span class="btn-icon" aria-hidden="true">&#9654;</span>
             <span class="btn-labels"><span class="btn-title">Resume</span></span>
-            <span class="btn-chevron" aria-hidden="true">&#10095;</span>
           </button>
-          <button class="menu-btn secondary lh-mute-btn" id="lh-mute" type="button"
+          <button class="menu-btn secondary terminal-action lh-mute-btn" id="lh-mute" type="button"
                   aria-label="Mute audio" aria-pressed="false">
             <span class="btn-icon" aria-hidden="true">
               <span class="lh-mute-on">&#128266;</span>
               <span class="lh-mute-off">&#128263;</span>
             </span>
             <span class="btn-labels"><span class="btn-title lh-mute-label">Mute</span></span>
-            <span class="btn-chevron" aria-hidden="true">&#10095;</span>
           </button>
-          <button class="menu-btn secondary" id="lh-exit" type="button" aria-label="Exit Lingo Hero">
+          <button class="menu-btn secondary terminal-action" id="lh-exit" type="button" aria-label="Exit Lingo Hero">
             <span class="btn-icon" aria-hidden="true">&#8592;</span>
             <span class="btn-labels"><span class="btn-title">Exit</span></span>
-            <span class="btn-chevron" aria-hidden="true">&#10095;</span>
           </button>
         </div>
       </div>
@@ -303,6 +306,11 @@ export class Hud {
     // dump a run mid-combo (issue #426). The sheet's Exit dispatches the host
     // `corpan:exit` (App.tsx dismisses the game); Resume closes the sheet.
     this.bindButton("#lh-pause", () => this.openPause());
+    // #490: explicit pressed-state on the small corner pill. `:active` can be
+    // unreliable for a low-opacity glyph inside the pointer-events overlay, so
+    // toggle `.is-pressed` directly on press/release for a guaranteed-visible
+    // tap acknowledgement (the CSS gives it an accent ring + lifted fill).
+    this.bindPressedState("#lh-pause");
     this.bindButton("#lh-resume", () => this.closePause(true));
     this.bindButton("#lh-exit", () => this.doExit());
     // Tapping the sheet backdrop (outside the card) resumes — same as Resume.
@@ -983,5 +991,22 @@ export class Hud {
 
     btn.addEventListener("touchstart", handleEvent, { passive: false });
     btn.addEventListener("click", handleEvent);
+  }
+
+  /**
+   * #490: toggle a `.is-pressed` class on press / release so a small control has
+   * a reliable visible pressed state on touch (where CSS `:active` is flaky).
+   * Pure visual feedback — the actual action stays wired via {@link bindButton}.
+   */
+  private bindPressedState(selector: string): void {
+    const btn = this.root.querySelector(selector);
+    if (!btn) return;
+    const on = () => btn.classList.add("is-pressed");
+    const off = () => btn.classList.remove("is-pressed");
+    btn.addEventListener("touchstart", on, { passive: true });
+    btn.addEventListener("pointerdown", on);
+    for (const ev of ["touchend", "touchcancel", "pointerup", "pointercancel", "pointerleave"]) {
+      btn.addEventListener(ev, off);
+    }
   }
 }

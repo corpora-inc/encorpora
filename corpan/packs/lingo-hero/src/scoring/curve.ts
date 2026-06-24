@@ -126,13 +126,6 @@ export function xpToCompleteLevel(level: number): number {
   return Math.floor(LEVEL_BASE * Math.pow(L, LEVEL_EXP));
 }
 
-/** Cumulative XP needed to be sitting *at the start of* `level`. */
-export function cumulativeXpForLevel(level: number): number {
-  let total = 0;
-  for (let l = 1; l < level; l++) total += xpToCompleteLevel(l);
-  return total;
-}
-
 export interface LevelState {
   level: number;
   /** XP accrued within the current level. */

@@ -6,6 +6,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.4.12] - 2026-06-24
+
+Hardening + chrome polish (#485, #490). A structural type fix that closes the
+cleanPrompt saga, plus the follow-up pause-sheet polish the #462 design-critic
+called out. No gameplay/contract changes.
+
+### Changed
+- **Pause-sheet rows lose the drill-in chevron (#490).** Resume / Mute / Exit are
+  TERMINAL actions, but they carried a trailing `›` that reads as "drill into a
+  submenu." Dropped the chevron on those three rows (new `terminal-action` class)
+  and centered the icon+label so they read as flat, tappable actions. The chevron
+  stays on the menu's real drill-in buttons (Practice / Blitz / Retry / Main Menu).
+- **Corner pause pill: visible pressed state + comfortable touch target (#490).**
+  The small (intentionally unobtrusive 36px) corner pill now shows a clear pressed
+  state (accent ring + lifted fill, driven by an `is-pressed` class so it is
+  reliable on touch where `:active` is flaky), and its hit area is expanded to
+  ~44px via an invisible inset overflow — the glyph stays small, the finger gets
+  room (WCAG 2.5.5 / Apple HIG).
+
+### Internal / tests
+- **Typed the `window.__lingoHero` debug surface (#485).** It was typed as
+  `{ dispose }` but is the full `Game` instance at runtime, so the e2e harness
+  reached past the type into untyped internals — exactly how the #460 cleanPrompt
+  comma-truncation hid from tests for five rounds. Declared an explicit
+  `LingoHeroDebug` introspection contract (dispose, startGame, resume, cleanPrompt,
+  score, combo, notes, caughtCount, decoyDodges, round, activeLanguage, laneSystem,
+  canvas, hud.setQuestion, audioContextState, audioUnlocked) and typed
+  `window.__lingoHero` as it, so tests call real methods (incl. `cleanPrompt`)
+  through a typed contract a future content-mangler can't hide behind. Clearly a
+  debug/introspection contract, not a public API.
+- Removed three dead exports flagged by the #484 audit (`cumulativeXpForLevel`,
+  `getDefaultWordSelector`, `laneHex`) — grep-confirmed zero importers.
+- e2e: added a **4-line worst-case prompt clearance** check on the narrowest phone
+  column (the #462 gutters can push a long phrase to one more wrap line — confirms
+  the falling-note spawn zone still clears a 4-line prompt), and assertions that
+  terminal sheet rows have no chevron while menu drill-in buttons keep theirs.
+
+### Preserved
+- #460 prompt full-visibility (long comma phrase still renders fully, e2e
+  enforced), #462 persistent-pause + no-tap-through + mute-in-sheet, #463 script
+  rendering, canvas-relative input, delta-timed motion, the typed `__lingoHero`.
+
 ## [0.4.11] - 2026-06-24
 
 Slim mobile chrome (#462). The top-left in-game chrome wasted vertical space and

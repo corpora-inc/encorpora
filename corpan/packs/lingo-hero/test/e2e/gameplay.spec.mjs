@@ -213,6 +213,25 @@ else {
   if (!sheetOpen) fail("pause control did not open the Resume/Mute/Exit sheet");
   else console.log("OK: pause control opened the Resume/Mute/Exit sheet");
 
+  // --- #490: pause-sheet rows are TERMINAL actions → NO drill-in `›` chevron.
+  // The chevron stays reserved for the menu's drill-in buttons (Practice/Blitz/
+  // Retry/Main Menu) so the affordance reads honestly (chevron = "go deeper").
+  const chevrons = await page.evaluate(() => {
+    const has = (sel) => !!document.querySelector(`${sel} .btn-chevron`);
+    return {
+      resume: has("#lh-resume"),
+      mute: has("#lh-mute"),
+      exit: has("#lh-exit"),
+      practice: has("#btn-practice"),
+      retry: has("#btn-retry"),
+    };
+  });
+  if (chevrons.resume || chevrons.mute || chevrons.exit)
+    fail(`#490: terminal pause-sheet rows must NOT carry a drill-in chevron (resume=${chevrons.resume} mute=${chevrons.mute} exit=${chevrons.exit})`);
+  else if (!chevrons.practice || !chevrons.retry)
+    fail(`#490: menu drill-in buttons should KEEP their chevron (practice=${chevrons.practice} retry=${chevrons.retry})`);
+  else console.log("OK: #490 terminal sheet rows drop the chevron; menu drill-in buttons keep it");
+
   // --- Contract (c2): the MUTE control now lives INSIDE the open sheet (#462).
   // Exactly ONE mute control must exist, and it must be within the pause sheet.
   // Tapping it must NOT leak a tap into a lane (score unchanged).
@@ -437,6 +456,11 @@ else {
     { name: "ipad-portrait-col", vw: 834, vh: 1112, hw: 430, hh: 980, phrase: LONG },
     { name: "ipad11-landscape-col", vw: 1194, vh: 834, hw: 390, hh: 780, phrase: EXTRA },
     { name: "phone-portrait", vw: 390, vh: 844, hw: 0, hh: 0, phrase: LONG },
+    // #490: 4-line WORST CASE on the NARROWEST phone column. The #462 gutters
+    // narrowed the prompt band, so the 20-word EXTRA phrase wraps to ~4 lines at
+    // 390px-wide full-bleed — the most wrap lines the smallest device produces.
+    // The spawn play-top must STILL clear that tallest prompt (coverPx > 0).
+    { name: "phone-portrait-4line", vw: 390, vh: 844, hw: 0, hh: 0, phrase: EXTRA },
   ];
   for (const sz of SIZES) {
     const words = sz.phrase.replace(/[.,]/g, "").split(/\s+/).filter(Boolean);
@@ -512,6 +536,16 @@ else {
       rng.selectNodeContents(el);
       const t = rng.getBoundingClientRect();
       const txt = el.textContent || "";
+      // Count wrapped lines by clustering the range's client rects on their top
+      // edge (each visual line is one band) — lets us assert the worst case
+      // really stresses the 4-line wrap, not just any wrap.
+      const rects = [...rng.getClientRects()];
+      const tops = [];
+      for (const r of rects) {
+        if (r.height < 1) continue;
+        if (!tops.some((y) => Math.abs(y - r.top) <= 2)) tops.push(r.top);
+      }
+      const lineCount = tops.length;
       // (3) Walk the ancestor chain — find the FIRST clipper (overflow != visible
       // that cuts the wrapped text) or a viewport cut.
       const desc = (n) => {
@@ -555,6 +589,7 @@ else {
         promptBottomLocal,
         playTopY,
         coverPx: promptBottomLocal - playTopY,
+        lineCount,
       };
     }, [sz.phrase, words]);
     if (!m) {
@@ -567,9 +602,14 @@ else {
       // The prompt's last line must clear the spawn play-top (tiles must not
       // spawn over it). A small tolerance for sub-pixel rounding.
       if (m.coverPx > 2.0)
-        fail(`#460 ${sz.name}: prompt last line COVERED by spawn area by ${m.coverPx.toFixed(1)}px (promptBottom ${m.promptBottomLocal.toFixed(0)} > playTop ${m.playTopY.toFixed(0)}, col ${m.qbWidth}px)`);
+        fail(`#460 ${sz.name}: prompt last line COVERED by spawn area by ${m.coverPx.toFixed(1)}px (promptBottom ${m.promptBottomLocal.toFixed(0)} > playTop ${m.playTopY.toFixed(0)}, col ${m.qbWidth}px, ${m.lineCount} lines)`);
+      // #490: the dedicated worst-case must actually reach the 4-line wrap it is
+      // designed to stress (else a future layout change could silently shrink it
+      // back to an easy 2-liner and the clearance check would lose its teeth).
+      if (sz.name === "phone-portrait-4line" && m.lineCount < 4)
+        fail(`#490 ${sz.name}: expected a 4-line worst-case wrap but got ${m.lineCount} lines (col ${m.qbWidth}px, font ${m.fontPx.toFixed(0)}px) — worst-case no longer exercised`);
       if (m.allPresent && !m.clipper && m.coverPx <= 2.0)
-        console.log(`OK: #460 long+comma prompt fully visible at ${sz.name} (col ${m.qbWidth}px, font ${m.fontPx.toFixed(0)}px, all ${words.length} words, no ancestor clip, clears spawn by ${(-m.coverPx).toFixed(0)}px)`);
+        console.log(`OK: #460 long+comma prompt fully visible at ${sz.name} (col ${m.qbWidth}px, font ${m.fontPx.toFixed(0)}px, ${m.lineCount} lines, all ${words.length} words, no ancestor clip, clears spawn by ${(-m.coverPx).toFixed(0)}px)`);
     }
     await vp.screenshot({ path: join(outDir, `prompt-460-${sz.name}.png`) });
     await vp.close();
